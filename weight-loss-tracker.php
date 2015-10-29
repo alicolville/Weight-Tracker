@@ -52,17 +52,21 @@ include WS_LS_ABSPATH . 'includes/shortcode-weight-loss-tracker.php';
 include WS_LS_ABSPATH . 'includes/shortcode-various.php';
 include WS_LS_ABSPATH . 'pages/page.settings.php';
 include WS_LS_ABSPATH . 'pages/page.pro.advertise.php';
+include WS_LS_ABSPATH . 'includes/license.php';
 
 // Following line of code is used to include a test file to generate a lot of user data
 //include WS_LS_ABSPATH . 'development/tests/index.php';
 
 // -----------------------------------------------------------------------------------------
-// AC: Load Pro features?
+// AC: Load Pro features (if valid license)
 // ----------------------------------------------------------------------------------------
 
-$ws_ls_pro_features_path = WS_LS_ABSPATH . 'pro-features/pro.php';
-if(file_exists($ws_ls_pro_features_path)) {
-  include $ws_ls_pro_features_path;
+include WS_LS_ABSPATH . 'pro-features/feature-list.php';
+
+if(ws_ls_has_a_valid_license()){
+    include WS_LS_ABSPATH . 'pro-features/pro.php';
+} else {
+  define('WS_LS_IS_PRO', false);
 }
 
 // -----------------------------------------------------------------------------------------

@@ -11,72 +11,135 @@ function ws_ls_advertise_pro() {
 	}
 
 		?>
+
 		<div class="wrap">
 
+			<div id="icon-options-general" class="icon32"></div>
+			<h2><?php esc_attr_e( 'Heading String', 'wp_admin_style' ); ?></h2>
 
+			<div id="poststuff">
 
-	<div id="icon-options-general" class="icon32"></div>
+				<div id="post-body" class="metabox-holder columns-2">
 
-	<div id="poststuff">
+					<!-- main content -->
+					<div id="post-body-content">
 
-		<div id="post-body" class="metabox-holder columns-3">
+						<div class="meta-box-sortables ui-sortable">
 
-			<!-- main content -->
-			<div id="post-body-content">
+							<div class="postbox">
 
-				<div class="meta-box-sortables ui-sortable">
+								<div class="handlediv" title="Click to toggle"><br></div>
+								<!-- Toggle -->
 
-					<div class="postbox">
-						<h3 class="hndle"><span><?php echo __('Get ' . WE_LS_TITLE . ' Pro!', WE_LS_SLUG); ?> </span></h3>
-						<div style="padding: 0px 15px 0px 15px">
-							<p><?php echo __('We are shortly releasing a pro version of this plugin. We aim to keep the price under &pound;30 and have the following features', WE_LS_SLUG); ?>:</p>
-							<center>
-							<a href="https://www.yeken.uk/show-interest-in-weight-loss-tracker-pro/" target="_blank" class="button-primary"><?php echo __('Show your interest now and get 25% off when released', WE_LS_SLUG); ?></a>
-					<br /><br /><small><?php echo __('Seeing the level of interest will help motivate me to develop it!', WE_LS_SLUG); ?> :)</small>	</centeR><br />
+								<h3 class="hndle"><span><?php echo __('Get ' . WE_LS_TITLE . ' Pro!', WE_LS_SLUG); ?></span>
+								</h3>
+
+								<div class="inside">
+									<p><?php echo __('Get Weight Loss Tracker Pro for', WE_LS_SLUG) . ' &pound;' . WS_LS_PRO_PRICE .  __(' and have the following features listed below.', WE_LS_SLUG); ?> <?php echo __('In case you need, your <strong>Site Hash</strong>', WE_LS_SLUG); ?>: <?php echo ws_ls_generate_site_hash(); ?></p>
+									<center>
+										<a href="#" style="width:60%;font-size:15px;text-align:center;" target="_blank" class="button-primary"><?php echo __('Upgrade now for', WE_LS_SLUG); ?> &pound;<?php echo WS_LS_PRO_PRICE; ?></a>
+									</center>
+								</div>
+								<!-- .inside -->
+
+							</div>
+							<!-- .postbox -->
+
 						</div>
-						</div>
-						<div class="postbox">
-							<h3 class="hndle"><span><?php echo __('Features of Pro version', WE_LS_SLUG); ?> </span></h3>
-							<div style="padding: 0px 15px 0px 15px">
-								<p><?php echo __('Below is a list of the intended features of the Pro version:', WE_LS_SLUG); ?></p>
-						<table class="form-table" >
-							<?php
+						<!-- .meta-box-sortables .ui-sortable -->
 
-							$class = '';
-
-							foreach ($pro_features as $feature) {
-
-								$class = ('alternate' == $class) ? '' : 'alternate';
-
-								?>
-								<tr valign="top" class="<?php echo $class; ?>">
-									<td scope="row" style="padding-left:30px"><label for="tablecell">
-										&middot; <?php echo $feature; ?>
-									</label></td>
-
-								</tr>
-
-								<?php
-							}
-							?>
-
-
-						</table>
 					</div>
+
+					<!-- sidebar -->
+					<div id="postbox-container-1" class="postbox-container">
+
+						<div class="meta-box-sortables">
+
+							<div class="postbox">
+
+								<div class="handlediv" title="Click to toggle"><br></div>
+								<!-- Toggle -->
+
+								<h3 class="hndle"><span><?php echo __('Enter License Key', WE_LS_SLUG); ?></span></h3>
+
+								<div class="inside">
+									<p><?php echo __('Got an existing license key? If so, enter it below:', WE_LS_SLUG); ?></p>
+									<input type="text" name="license-key" class="large-text" placeholder="<?php echo __('Enter license key', WE_LS_SLUG); ?>" />
+									<input type="submit" class="button-primary large-text" value="<?php echo __('Add', WE_LS_SLUG); ?>" />
+								</div>
+								<!-- .inside -->
+
+							</div>
+							<!-- .postbox -->
+
+						</div>
+						<!-- .meta-box-sortables -->
+
+					</div>
+					<!-- #postbox-container-1 .postbox-container -->
+
+					<!-- post-body-content -->
+					<div id="post-body" class="metabox-holder columns-3">
+
+						<!-- main content -->
+						<div id="post-body-content">
+
+							<div class="meta-box-sortables ui-sortable">
+
+								<div class="postbox">
+
+									<div class="handlediv" title="Click to toggle"><br></div>
+									<!-- Toggle -->
+
+									<h3 class="hndle"><span><?php echo __('Features of Pro version', WE_LS_SLUG); ?></span></h3>
+									<div style="padding: 0px 15px 0px 15px">
+
+									<div class="inside">
+										<p><?php echo __('Below is a list of the intended features of the Pro version:', WE_LS_SLUG); ?></p>
+										<table class="form-table" >
+											<?php
+
+											$class = '';
+
+											foreach ($pro_features as $feature) {
+
+												$class = ('alternate' == $class) ? '' : 'alternate';
+
+												?>
+												<tr valign="top" class="<?php echo $class; ?>">
+													<td scope="row" style="padding-left:30px"><label for="tablecell">
+														&middot; <?php echo $feature; ?>
+													</label></td>
+
+												</tr>
+
+												<?php
+											}
+											?>
+
+
+										</table>
+									</div>
+									<!-- .inside -->
+
+								</div>
+								<!-- .postbox -->
+
+							</div>
+							<!-- .meta-box-sortables .ui-sortable -->
+
+						</div>
+						<!-- post-body-content -->
+
 
 
 				</div>
-				<!-- .meta-box-sortables .ui-sortable -->
+				<!-- #post-body .metabox-holder .columns-2 -->
 
+				<br class="clear">
 			</div>
-			<!-- post-body-content -->
+			<!-- #poststuff -->
 
-		</div>
-		<!-- #post-body .metabox-holder .columns-2 -->
+		</div> <!-- .wrap -->
 
-		<br class="clear">
-	</div>
-	<!-- #poststuff -->
-
-</div> <!-- .wrap -->
 <?php } ?>

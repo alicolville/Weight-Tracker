@@ -117,3 +117,7 @@ defined('ABSPATH') or die("Jog on!");
 	define('WE_LS_CACHE_KEY_TARGET_WEIGHT', "target-weight");
 	define('WE_LS_CACHE_KEY_WEIGHT_EXTREME', "weight-extreme-");
 	define('WE_LS_TABLE_MAX_WEEK_FILTERS', 100);
+	define('WS_LS_LICENSE_SITE_HASH', 'ws-ls-license-site-hash');
+  define('WS_LS_LICENSE', 'ws-ls-license');
+  define('WS_LS_LICENSE_VALID', 'ws-ls-license-valid');
+	define('WS_LS_PRO_PRICE', 20.00);
