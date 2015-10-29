@@ -1,0 +1,297 @@
+<?php
+defined('ABSPATH') or die("Jog on!");
+
+/*
+Date Interval class doesn't exist before PHP 4.3.
+*/
+function ws_ls_is_date_intervals_enabled()	{
+  return class_exists('DateInterval');
+}
+
+/* Get string representation of a weight  */
+function ws_ls_weight_object($kg, $pounds, $stones, $pounds_only, $notes = '', $date = false, $detect_and_convert_missing_values = false)
+{
+    $weight['display'] = '';
+    $weight['user_id'] = false;
+    $weight['only_pounds'] = $pounds_only;
+    $weight['kg'] = $kg;
+    $weight['stones'] = $stones;
+    $weight['pounds'] = $pounds;
+    $weight['graph_value'] = 0;
+    $weight['notes'] = esc_html($notes);
+
+    // Build different date formats
+    if($date != false && !empty($date)) {
+
+        $time = strtotime($date);
+        $weight['date'] = $date;
+        $weight['date-uk'] = date('d/m/Y',$time);
+        $weight['date-us'] = date('m/d/Y',$time);
+        $weight['date-graph'] = date('d M',$time);
+    }
+
+    // If enabled, detect which weight fields need to be calculated and do it
+    if ($detect_and_convert_missing_values)
+    {
+      switch (WE_LS_DATA_UNITS) {
+    			case 'pounds_only':
+
+        			$weight['kg'] = ws_ls_pounds_to_kg($weight['only_pounds']);
+              $conversion = ws_ls_pounds_to_stone_pounds($weight['only_pounds']);
+              $weight['stones'] = $conversion['stones'];
+              $weight['pounds'] = $conversion['pounds'];
+            break;
+    			case 'kg':
+    				  $weight['only_pounds'] = ws_ls_to_lb($weight['kg']);
+              $conversion = ws_ls_to_stone_pounds($weight['kg']);
+              $weight['stones'] = $conversion['stones'];
+              $weight['pounds'] = $conversion['pounds'];
+    				break;
+    			default:
+    					$weight['kg'] = ws_ls_to_kg($weight['stones'], $weight['pounds']);
+              $weight['only_pounds'] = ws_ls_stones_pounds_to_pounds_only($weight['stones'], $weight['pounds']);
+    				break;
+    	}
+    }
+
+    // If not allowing decimals, then round figures down
+    if(!WS_LS_USE_DECIMALS){
+      $weight = ws_ls_round_weights($weight);
+    }
+
+    // Generate display
+    switch (WE_LS_DATA_UNITS) {
+      case 'pounds_only':
+        $data = ws_ls_round_decimals($weight['only_pounds']);
+        $weight['display'] = $data . __('lbs', WE_LS_SLUG);
+        $weight['graph_value'] = $data;
+        break;
+      case 'kg':
+        $weight['display'] = $weight['kg'] . __('Kg', WE_LS_SLUG);
+        $weight['graph_value'] = $weight['kg'];
+        break;
+      default:
+        $weight['display'] = $weight['stones'] . __('St', WE_LS_SLUG) . " " . $pounds . __('lbs', WE_LS_SLUG);
+        $weight['graph_value'] = ($weight['stones'] * 14) + $weight['pounds'];
+        break;
+  }
+
+  return $weight;
+}
+
+
+
+/* Delete ALL existing user data */
+function ws_ls_delete_existing_data() {
+    if(is_admin())  {
+        global $wpdb;
+        $wpdb->query('TRUNCATE TABLE ' . $wpdb->prefix . WE_LS_TARGETS_TABLENAME);
+        $wpdb->query('TRUNCATE TABLE ' . $wpdb->prefix . WE_LS_TABLENAME);
+    }
+}
+
+/* Admin tool to check the relevant tables exist for this plugin */
+function ws_ls_admin_check_mysql_tables_exist()
+{
+    $error_text = '';
+    global $wpdb;
+
+    // Check Target table exists!
+    $rows = $wpdb->get_row('Show columns in ' . $wpdb->prefix . WE_LS_TARGETS_TABLENAME);
+    if (0 == count($rows)) {
+        $error_text .= '<li>' . $wpdb->prefix . WE_LS_TARGETS_TABLENAME . '</li>';
+    }
+
+    // Check main data table exists!
+    $rows = $wpdb->get_row('Show columns in ' . $wpdb->prefix . WE_LS_TABLENAME);
+    if (0 == count($rows)) {
+        $error_text .= '<li>' . $wpdb->prefix . WE_LS_TABLENAME . '</li>';
+    }
+
+    // Return error message if tables missing
+    if (!empty($error_text))  {
+        return  __('The following MySQL tables are missing for this plugin', WE_LS_SLUG) . ':<ul>' . $error_text . '</ul>';
+    }
+    return false;
+}
+
+/*
+  Used to display a jQuery dialog box in the admin panel
+*/
+function ws_ls_create_dialog_jquery_code($title, $message, $class_used_to_prompt_confirmation, $js_call = false)
+{
+  	global $wp_scripts;
+  	$queryui = $wp_scripts->query('jquery-ui-core');
+  	$url = "//ajax.googleapis.com/ajax/libs/jqueryui/".$queryui->ver."/themes/smoothness/jquery-ui.css";
+  	wp_enqueue_script( 'jquery-ui-dialog' );
+  	wp_enqueue_style('jquery-ui-smoothness', $url, false, null);
+    $id_hash = md5($title . $message . $class_used_to_prompt_confirmation);
+
+    ?>
+    <div id='<?php echo $id_hash; ?>' title='<?php echo $title; ?>'>
+      <p><?php echo $message; ?></p>
+    </div>
+     <script>
+          jQuery(function($) {
+            var $info = $('#<?php echo $id_hash; ?>');
+            $info.dialog({
+                'dialogClass'   : 'wp-dialog',
+                'modal'         : true,
+                'autoOpen'      : false
+            });
+            $('.<?php echo $class_used_to_prompt_confirmation; ?>').click(function(event) {
+                event.preventDefault();
+                target_url = $(this).attr('href');
+                var $info = $('#<?php echo $id_hash; ?>');
+                $info.dialog({
+                    'dialogClass'   : 'wp-dialog',
+                    'modal'         : true,
+                    'autoOpen'      : false,
+                    'closeOnEscape' : true,
+                    'buttons'       : {
+                        'Yes': function() {
+
+                            <?php if ($js_call != false): ?>
+                                <?php echo $js_call; ?>
+
+                                $(this).dialog('close');
+                            <?php else: ?>
+                                window.location.href = target_url;
+                            <?php endif; ?>
+                        },
+                         'No': function() {
+                            $(this).dialog('close');
+                        }
+                    }
+                });
+                $info.dialog('open');
+            });
+
+        });
+
+
+
+
+      </script>
+
+  <?php
+}
+function ws_ls_render_date($weight_object)
+{
+  // Return US date if enabled otherwise return UK date
+  if(WE_LS_US_DATE) {
+    return $weight_object['date-us'];
+  }
+  else {
+    return $weight_object['date-uk'];
+  }
+
+}
+function ws_ls_get_unit()
+{
+
+  switch (WE_LS_DATA_UNITS) {
+    case 'pounds_only':
+      $unit = __("lbs", WE_LS_SLUG);
+      break;
+    case 'kg':
+      $unit = __("Kg", WE_LS_SLUG);
+      break;
+    default:
+      $unit = __("St", WE_LS_SLUG) . " " . __("lbs", WE_LS_SLUG);
+      break;
+  }
+
+  return $unit;
+}
+function ws_ls_get_week_ranges()
+{
+  $entered_date_ranges = ws_ls_get_min_max_dates(get_current_user_id());
+
+  if ($entered_date_ranges != false)  {
+
+    // Get min and max dates for weight entries
+    $start_date = new DateTime($entered_date_ranges->min_date);
+    $end_date = new DateTime($entered_date_ranges->max_date);
+
+    // Grab all the weekly intervals between those dates
+    $interval = new DateInterval('P1W');
+    $daterange = new DatePeriod($start_date, $interval ,$end_date);
+
+    $date_ranges = array();
+
+    $i = 1;
+
+    // Build an easy to use array
+    foreach($daterange as $date){
+
+      $end_of_week = clone $date;
+      $end_of_week = date_modify($end_of_week, '+1 week' );
+
+        $date_ranges[$i] =  array("start" => $date->format("Y-m-d"), "end" => $end_of_week->format("Y-m-d") );
+
+        $i++;
+    }
+
+    return $date_ranges;
+  }
+
+  return false;
+}
+function ws_ls_get_date_format()
+{
+  if(WE_LS_US_DATE){
+    return 'm/d/Y';
+  }
+
+  return 'd/m/Y';
+}
+function ws_ls_display_week_filters($week_ranges, $selected_week_number)
+{
+  $output = '';
+
+  // If we have valid options for week dropdown, start building it
+  if ($week_ranges != false && count($week_ranges > 1))	{
+
+    $output .= '<form action="' .  get_permalink() . '#wlt-weight-history" method="post">
+                  <input type="hidden" value="true" name="week_filter">
+                    <div class="ws_ls_week_controls">
+                      <select name="week_number" onchange="this.form.submit()" class="ws-ls-select">
+                        <option value="-1" ' . (($selected_week_number == -1) ?  ' selected="selected"' : '') . '>'. __('View all weeks', WE_LS_SLUG) . '</option>';
+
+    // Loop through each weekly option and build drop down
+    foreach ($week_ranges as $key => $week) {
+
+      $date_format = ws_ls_get_date_format();
+
+      $start_date = new DateTime($week['start']);
+      $start_date = $start_date->format($date_format);
+
+      $end_date = new DateTime($week['end']);
+      $end_date = $end_date->format($date_format);
+
+      $output .= '<option value="' . $key . '" ' . (($selected_week_number == $key) ? ' selected="selected"' : '') . '>'
+                  . __('View Week', WE_LS_SLUG) . ' ' . $key . ' - ' . $start_date . ' ' . __('to', WE_LS_SLUG) . ' ' . $end_date . '</option>';
+
+    }
+
+    $output .= '</select>
+              </div>
+            </form>';
+  }
+
+  return $output;
+
+}
+
+function ws_ls_round_weights($weight)
+{
+  $weight['only_pounds'] = round($weight['only_pounds']);
+  $weight['kg'] = round($weight['kg']);
+  $weight['stones'] = round($weight['stones']);
+  $weight['pounds'] = round($weight['pounds']);
+
+  return $weight;
+}
+
+?>
