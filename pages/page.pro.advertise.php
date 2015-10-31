@@ -61,11 +61,36 @@ function ws_ls_advertise_pro() {
 								<!-- Toggle -->
 
 								<h3 class="hndle"><span><?php echo __('Enter License Key', WE_LS_SLUG); ?></span></h3>
+								<?php
 
+								$display_form = true;
+
+								if(ws_ls_has_a_valid_license()){
+									$display_form = false;
+								}
+								elseif (isset($_GET['add-license']) && 'true' == $_GET['add-license'] && !empty($_POST['license-key'])){
+
+									$entered_license = $_POST['license-key'];
+									$valid_license = ws_ls_is_validate_license($entered_license);
+
+									if ($valid_license) {
+										$display_form = false;
+									}
+								}
+
+								?>
 								<div class="inside">
-									<p><?php echo __('Got an existing license key? If so, enter it below:', WE_LS_SLUG); ?></p>
-									<input type="text" name="license-key" class="large-text" placeholder="<?php echo __('Enter license key', WE_LS_SLUG); ?>" />
-									<input type="submit" class="button-primary large-text" value="<?php echo __('Add', WE_LS_SLUG); ?>" />
+									<?php if ($display_form): ?>
+									<form action="<?php echo admin_url('admin.php?page=ws-ls-weight-loss-tracker-pro&add-license=true'); ?>" method="post">
+										<p><?php echo __('Got an existing license key? If so, enter it below', WE_LS_SLUG); ?>. <?php echo __('In case you need, your <strong>Site Hash</strong>', WE_LS_SLUG); ?>: <?php echo ws_ls_generate_site_hash(); ?></p>
+										<input type="text" name="license-key" class="large-text" placeholder="<?php echo __('Enter license key', WE_LS_SLUG); ?>" />
+										<br /><br />
+										<input type="submit" class="button-primary large-text" value="<?php echo __('Add License', WE_LS_SLUG); ?>" />
+									</form>
+								<?php else: ?>
+									<p>Thank you! Your license key for future reference is: <br /><br /><strong><?php echo ws_ls_get_license(); ?></strong></p>
+
+								<?php endif; ?>
 								</div>
 								<!-- .inside -->
 
