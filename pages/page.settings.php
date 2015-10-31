@@ -220,7 +220,5 @@ function ws_ls_register_settings()
   	register_setting( 'we-ls-options-group', 'ws-ls-line-colour' );
 		register_setting( 'we-ls-options-group', 'ws-ls-use-us-dates' );
 		register_setting( 'we-ls-options-group', 'ws-ls-disable-css' );
-
-
 }
 add_action( 'admin_init', 'ws_ls_register_settings' );

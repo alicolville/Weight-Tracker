@@ -12,7 +12,37 @@
 		'WE_LS_TARGET_LINE_COLOUR' => '#76bada',
 		'WE_LS_WEIGHT_LINE_COLOUR' => '#aeaeae',
 		'WE_LS_WEIGHT_FILL_COLOUR' => '#f9f9f9',
-		'WE_LS_US_DATE' => false
+		'WE_LS_US_DATE' => false,
+
+		// To move into settings page for Pro
+		'WE_LS_CHART_TYPE' => 'line', //line, bar
+		'WS_LS_USE_DECIMALS' => false,
+		'WE_LS_CHART_MAX_POINTS' => 25,
+		'WE_LS_CHART_HEIGHT' => 250,
+		'WE_LS_CHART_BEZIER_CURVE' => true,
+		'WE_LS_CHART_POINT_SIZE' => 3,
+		'WE_LS_CHART_SHOW_GRID_LINES' => true,
+		'WE_LS_USE_MINIFIED_SCRIPTS' => true,
+
+		// Constants - highly recommended that you don't change these
+		'WE_LS_TITLE' => 'Weight Loss Tracker',
+		'WE_LS_SLUG' => 'weight-loss-tracker',
+		'WE_LS_TABLENAME' => 'WS_LS_DATA',
+		'WE_LS_TARGETS_TABLENAME' => 'WS_LS_DATA_TARGETS',
+		'WE_LS_VERSION' => 'WS_LS_VERSION',
+		'WE_LS_CACHE_ENABLED' => true,
+		'WE_LS_CACHE_TIME' => 15 * MINUTE_IN_SECONDS,
+		'WE_LS_CACHE_KEY_TARGET' => 'target-data',
+		'WE_LS_CACHE_KEY_DATA' => 'weight-data',
+		'WE_LS_CACHE_KEY_MIN_MAX_DATES' => 'min-max-dates',
+		'WE_LS_CACHE_KEY_TARGET_WEIGHT' => 'target-weight',
+		'WE_LS_CACHE_KEY_WEIGHT_EXTREME' => 'weight-extreme-',
+		'WE_LS_TABLE_MAX_WEEK_FILTERS' => 100,
+		'WS_LS_LICENSE_SITE_HASH' => 'ws-ls-license-site-hash',
+		'WS_LS_LICENSE' => 'ws-ls-license',
+		'WS_LS_LICENSE_VALID' => 'ws-ls-license-valid',
+		'WS_LS_PRO_PRICE' => 20.00
+
 	);
 
 	// -----------------------------------------------------------------------------------
@@ -70,34 +100,3 @@
 	foreach ($globals as $key => $value) {
 		define($key, $value);
 	}
-
-	// TODO: Move into settings page, etc for version 3.0
-	define('WE_LS_CHART_TYPE', 'line'); //line, bar
-	define('WS_LS_USE_DECIMALS', false);
-	define('WE_LS_CHART_MAX_POINTS', 25);
-	define('WE_LS_CHART_HEIGHT', 250);
-	define('WE_LS_CHART_BEZIER_CURVE', true);
-	define('WE_LS_CHART_POINT_SIZE', 3);
-	define('WE_LS_CHART_SHOW_GRID_LINES', true);
-	define('WE_LS_USE_MINIFIED_SCRIPTS', true);
-	// -----------------------------------------------------------------------------------------
-	// AC: Other defined fields that can't be changed in settings page.
-	// -----------------------------------------------------------------------------------------
-
-	define('WE_LS_TITLE', "Weight Loss Tracker");
-	define('WE_LS_SLUG', "weight-loss-tracker");
-	define('WE_LS_TABLENAME', "WS_LS_DATA");
-	define('WE_LS_TARGETS_TABLENAME', "WS_LS_DATA_TARGETS");
-	define('WE_LS_VERSION', "WS_LS_VERSION");
-	define('WE_LS_CACHE_ENABLED', true);
-	define('WE_LS_CACHE_TIME', 15 * MINUTE_IN_SECONDS ); // HOUR_IN_SECONDS
-	define('WE_LS_CACHE_KEY_TARGET', "target-data");
-	define('WE_LS_CACHE_KEY_DATA', "weight-data");
-	define('WE_LS_CACHE_KEY_MIN_MAX_DATES', "min-max-dates");
-	define('WE_LS_CACHE_KEY_TARGET_WEIGHT', "target-weight");
-	define('WE_LS_CACHE_KEY_WEIGHT_EXTREME', "weight-extreme-");
-	define('WE_LS_TABLE_MAX_WEEK_FILTERS', 100);
-	define('WS_LS_LICENSE_SITE_HASH', 'ws-ls-license-site-hash');
-  define('WS_LS_LICENSE', 'ws-ls-license');
-  define('WS_LS_LICENSE_VALID', 'ws-ls-license-valid');
-	define('WS_LS_PRO_PRICE', 20.00);
