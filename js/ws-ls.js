@@ -1,4 +1,4 @@
-jQuery( window ).ready(function ($) {
+jQuery( document ).ready(function ($) {
 
   if ('true' == ws_ls_config['tabs-enabled']) {
     $("#ws-ls-tabs").zozoTabs({

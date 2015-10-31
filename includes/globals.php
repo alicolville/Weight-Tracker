@@ -14,6 +14,8 @@
 		'WE_LS_WEIGHT_FILL_COLOUR' => '#f9f9f9',
 		'WE_LS_US_DATE' => false,
 
+		// Pro features
+
 		// To move into settings page for Pro
 		'WE_LS_CHART_TYPE' => 'line', //line, bar
 		'WS_LS_USE_DECIMALS' => false,
@@ -38,13 +40,18 @@
 		'WE_LS_CACHE_KEY_TARGET_WEIGHT' => 'target-weight',
 		'WE_LS_CACHE_KEY_WEIGHT_EXTREME' => 'weight-extreme-',
 		'WE_LS_TABLE_MAX_WEEK_FILTERS' => 100,
-		'WS_LS_LICENSE_SITE_HASH' => 'ws-ls-license-site-hash',
-		'WS_LS_LICENSE' => 'ws-ls-license',
-		'WS_LS_LICENSE_VALID' => 'ws-ls-license-valid',
 		'WS_LS_PRO_PRICE' => 20.00
 
 	);
 
+	// -----------------------------------------------------------------------------------
+	// Allow user's to override the default admin settings?
+	// -----------------------------------------------------------------------------------
+	if (WS_LS_IS_PRO && (false == get_option('ws-ls-allow-user-preferences') || 'yes' == get_option('ws-ls-allow-user-preferences'))) {
+		define('WE_LS_ALLOW_USER_PREFERENCES', true);
+	} else {
+		define('WE_LS_ALLOW_USER_PREFERENCES', false);
+	}
 	// -----------------------------------------------------------------------------------
 	// Define whether Imperial and Units
 	// -----------------------------------------------------------------------------------

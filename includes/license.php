@@ -21,6 +21,10 @@
   // Leave below. Just break above!
   // ------------------------------------------------------------------------------------------------------------
 
+	define('WS_LS_LICENSE_SITE_HASH', 'ws-ls-license-site-hash');
+	define('WS_LS_LICENSE', 'ws-ls-license');
+	define('WS_LS_LICENSE_VALID', 'ws-ls-license-valid');
+
   function ws_ls_generate_site_hash()
   {
     $site_hash = get_option(WS_LS_LICENSE_SITE_HASH);

@@ -8,6 +8,14 @@ function ws_ls_settings_page() {
 		wp_die( __( 'You do not have sufficient permissions to access this page.' , WE_LS_SLUG) );
 	}
 
+	$disable_if_not_pro_class = (WS_LS_IS_PRO) ? '' : 'ws-ls-disabled';
+
+	wp_enqueue_script('jquery-tabs',plugins_url( '../js/tabs.min.js', __FILE__ ), array('jquery'), WE_LS_CURRENT_VERSION);
+	wp_enqueue_style('wlt-tabs', plugins_url( '../css/tabs.min.css', __FILE__ ), array(), WE_LS_CURRENT_VERSION);
+	wp_enqueue_style('wlt-tabs-flat', plugins_url( '../css/tabs.flat.min.css', __FILE__ ), array(), WE_LS_CURRENT_VERSION);
+	wp_enqueue_script('ws-ls-admin',plugins_url( '../js/admin.js', __FILE__ ), array('jquery'), WE_LS_CURRENT_VERSION);
+	wp_enqueue_style('ws-ls-admin-style', plugins_url( '../css/admin.css', __FILE__ ), array(), WE_LS_CURRENT_VERSION);
+
 	$clear_cache = (isset($_GET['settings-updated']) && 'true' == $_GET['settings-updated']) ? true : false;
 
 	// If remove existing data
@@ -41,7 +49,7 @@ function ws_ls_settings_page() {
 	<?php
 	endif;
 
-
+var_dump(WE_LS_ALLOW_USER_PREFERENCES);
 ?>
 
 
@@ -55,13 +63,6 @@ function ws_ls_settings_page() {
 			<div id="post-body-content">
 
 				<div class="meta-box-sortables ui-sortable">
-
-					<div class="postbox">
-						<h3 class="hndle"><span><?php echo __( WE_LS_TITLE . ' Instructions', WE_LS_SLUG); ?> </span></h3>
-						<div style="padding: 0px 15px 0px 15px">
-							<p><?php echo __( 'Place the tag [weight-loss-tracker] on a given page and the user is presented with a form to enter a date, weight and notes for that entry. When the person saves their entry the data table and graph is refreshed.', WE_LS_SLUG ); ?></p>
-						</div>
-					</div>
 
 					<div class="postbox">
 
@@ -78,92 +79,116 @@ function ws_ls_settings_page() {
 
 								?>
 
-									<table class="form-table">
-										<tr>
-											<th scope="row"><?php echo __( 'Weight Units' , WE_LS_SLUG); ?></th>
-											<td>
-												<select id="ws-ls-units" name="ws-ls-units">
-													<option value="kg" <?php selected( get_option('ws-ls-units'), 'kg' ); ?>><?php echo __('Kg', WE_LS_SLUG); ?></option>
-													<option value="stones_pounds" <?php selected( get_option('ws-ls-units'), 'stones_pounds' ); ?>><?php echo __('Stones & Pounds', WE_LS_SLUG); ?></option>
-													<option value="pounds_only" <?php selected( get_option('ws-ls-units'), 'pounds_only' ); ?>><?php echo __('Pounds', WE_LS_SLUG); ?></option>
-												</select>
-												<p><?php echo __('You can specify whether to display weights in Kg, Stones & Pounds or just Pounds. Please note: The graph will be displayed in Pounds if "Stones & Pounds" is selected.', WE_LS_SLUG);?></p>
-											</td>
-										</tr>
-										<tr>
-											<th scope="row"><?php echo __( 'Allow target weights?' , WE_LS_SLUG); ?></th>
-											<td>
-												<select id="ws-ls-allow-targets" name="ws-ls-allow-targets">
-													<option value="no" <?php selected( get_option('ws-ls-allow-targets'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG); ?></option>
-													<option value="yes" <?php selected( get_option('ws-ls-allow-targets'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG); ?></option>
-												</select>
-												<p><?php echo __('If enabled, a user is allowed to enter a target weight. This will be displayed as a horizontal bar on the line chart.', WE_LS_SLUG); ?></p>
-											</td>
-										</tr>
-										<tr>
-											<th scope="row"><?php echo __( 'UK or US Date format?' , WE_LS_SLUG); ?></th>
-											<td>
-												<select id="ws-ls-use-us-dates" name="ws-ls-use-us-dates">
-													<option value="uk" <?php selected( get_option('ws-ls-use-us-dates'), 'uk' ); ?>><?php echo __('UK (DD/MM/YYYY)', WE_LS_SLUG); ?></option>
-													<option value="us" <?php selected( get_option('ws-ls-use-us-dates'), 'us' ); ?>><?php echo __('US (MM/DD/YYYY)', WE_LS_SLUG); ?></option>
-												</select>
-												<p><?php echo __('Specify what format dates should be displayed in (i.e. UK or US format)', WE_LS_SLUG); ?></p>
-											</td>
-										</tr>
-										<tr>
-											<th scope="row"><?php echo __( 'Display points on graph?', WE_LS_SLUG ); ?></th>
-											<td>
-												<select id="ws-ls-allow-points" name="ws-ls-allow-points">
-													<option value="yes" <?php selected( get_option('ws-ls-allow-points'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
-													<option value="no" <?php selected( get_option('ws-ls-allow-points'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+								<div id="ws-ls-tabs">
+									<ul>
+											<li><a><?php echo __( 'General', WE_LS_SLUG); ?><span><?php echo __( 'General settings', WE_LS_SLUG); ?></span></a></li>
+											<li><a><?php echo __( 'Chart', WE_LS_SLUG); ?><span><?php echo __( 'Chart styling and config', WE_LS_SLUG); ?></span></a></li>
+									</ul>
+									<div>
+										<div>
+												<table class="form-table">
+													<tr>
+														<th scope="row"><?php echo __( 'Weight Units' , WE_LS_SLUG); ?></th>
+														<td>
+															<select id="ws-ls-units" name="ws-ls-units">
+																<option value="kg" <?php selected( get_option('ws-ls-units'), 'kg' ); ?>><?php echo __('Kg', WE_LS_SLUG); ?></option>
+																<option value="stones_pounds" <?php selected( get_option('ws-ls-units'), 'stones_pounds' ); ?>><?php echo __('Stones & Pounds', WE_LS_SLUG); ?></option>
+																<option value="pounds_only" <?php selected( get_option('ws-ls-units'), 'pounds_only' ); ?>><?php echo __('Pounds', WE_LS_SLUG); ?></option>
+															</select>
+															<p><?php echo __('You can specify whether to display weights in Kg, Stones & Pounds or just Pounds. Please note: The graph will be displayed in Pounds if "Stones & Pounds" is selected.', WE_LS_SLUG);?></p>
+														</td>
+													</tr>
+													<tr>
+														<th scope="row"><?php echo __( 'Allow target weights?' , WE_LS_SLUG); ?></th>
+														<td>
+															<select id="ws-ls-allow-targets" name="ws-ls-allow-targets">
+																<option value="no" <?php selected( get_option('ws-ls-allow-targets'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG); ?></option>
+																<option value="yes" <?php selected( get_option('ws-ls-allow-targets'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG); ?></option>
+															</select>
+															<p><?php echo __('If enabled, a user is allowed to enter a target weight. This will be displayed as a horizontal bar on the line chart.', WE_LS_SLUG); ?></p>
+														</td>
+													</tr>
+													<tr>
+														<th scope="row"><?php echo __( 'UK or US Date format?' , WE_LS_SLUG); ?></th>
+														<td>
+															<select id="ws-ls-use-us-dates" name="ws-ls-use-us-dates">
+																<option value="uk" <?php selected( get_option('ws-ls-use-us-dates'), 'uk' ); ?>><?php echo __('UK (DD/MM/YYYY)', WE_LS_SLUG); ?></option>
+																<option value="us" <?php selected( get_option('ws-ls-use-us-dates'), 'us' ); ?>><?php echo __('US (MM/DD/YYYY)', WE_LS_SLUG); ?></option>
+															</select>
+															<p><?php echo __('Specify what format dates should be displayed in (i.e. UK or US format)', WE_LS_SLUG); ?></p>
+														</td>
+													</tr>
+													<tr>
+														<th scope="row"><?php echo __( 'Display data in tabs?' , WE_LS_SLUG); ?></th>
+														<td>
+															<select id="ws-ls-use-tabs" name="ws-ls-use-tabs">
+																<option value="no" <?php selected( get_option('ws-ls-use-tabs'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+																<option value="yes" <?php selected( get_option('ws-ls-use-tabs'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+															</select>
+															<p><?php echo __('If enabled, "Weight History" and "Target Weight" will be displayed on sepearate tabs.', WE_LS_SLUG)?></p>
+														</td>
+													</tr>
+													<tr class="<?php echo $disable_if_not_pro_class; ?>">
+														<th scope="row"><?php echo __( 'Allow user preferences' , WE_LS_SLUG); ?></th>
+														<td>
+															<select id="ws-ls-allow-user-preferences" name="ws-ls-allow-user-preferences">
+																<option value="yes" <?php selected( get_option('ws-ls-allow-user-preferences'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+																<option value="no" <?php selected( get_option('ws-ls-allow-user-preferences'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+															</select>
+															<p><?php echo __('Allow your users to select their own weight unit, date format, etc', WE_LS_SLUG)?></p>
+														</td>
+													</tr>
+													<tr>
+														<th scope="row"><?php echo __( 'Disable plugin CSS?' , WE_LS_SLUG); ?></th>
+														<td>
+															<select id="ws-ls-disable-css" name="ws-ls-disable-css">
+																<option value="no" <?php selected( get_option('ws-ls-disable-css'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+																<option value="yes" <?php selected( get_option('ws-ls-disable-css'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+															</select>
+															<p><?php echo __('If you wish to style the forms in your own way, you can use this option to disable WLT\'s style sheets.', WE_LS_SLUG)?></p>
+														</td>
+													</tr>
+											</table>
+										</div>
+										<div>
+											<table class="form-table">
+												<tr>
+													<th scope="row"><?php echo __( 'Display points on graph?', WE_LS_SLUG ); ?></th>
+													<td>
+														<select id="ws-ls-allow-points" name="ws-ls-allow-points">
+															<option value="yes" <?php selected( get_option('ws-ls-allow-points'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+															<option value="no" <?php selected( get_option('ws-ls-allow-points'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
 
-												</select>
-												<p><?php echo __('If enabled, "Allows points and labels to be displayed on graph.', WE_LS_SLUG); ?></p>
-											</td>
-										</tr>
-										<tr>
-											<th scope="row"><?php echo __( 'Graph: Weight colour?', WE_LS_SLUG ); ?></th>
-											<td>
-												<input id="ws-ls-line-colour" name="ws-ls-line-colour" type="color" value="<?php echo WE_LS_WEIGHT_LINE_COLOUR; ?>">
-												<p><?php echo __('If enabled, enter a HEX colour code to use for the Weight history line on graph.', WE_LS_SLUG); ?></p>
-											</td>
-										</tr>
-										<tr>
-											<th scope="row"><?php echo __( 'Graph: Weight fill colour?', WE_LS_SLUG ); ?></th>
-											<td>
-												<input id="ws-ls-line-fill-colour" name="ws-ls-line-fill-colour" type="color" value="<?php echo WE_LS_WEIGHT_FILL_COLOUR; ?>">
-												<p><?php echo __('If enabled, enter a HEX colour code to use forthe shading underneath the Weight history line on graph. Line charts only.', WE_LS_SLUG); ?></p>
-											</td>
-										</tr>
-										<tr>
-											<th scope="row"><?php echo __( 'Graph: Target line colour?', WE_LS_SLUG ); ?></th>
-											<td>
-												<input id="ws-ls-target-colour" name="ws-ls-target-colour" type="color" value="<?php echo WE_LS_TARGET_LINE_COLOUR; ?>">
-												<p><?php echo __('If enabled, enter a HEX colour code to use for the Target line on graph.', WE_LS_SLUG); ?></p>
-											</td>
-										</tr>
+														</select>
+														<p><?php echo __('If enabled, "Allows points and labels to be displayed on graph.', WE_LS_SLUG); ?></p>
+													</td>
+												</tr>
+												<tr>
+													<th scope="row"><?php echo __( 'Graph: Weight colour?', WE_LS_SLUG ); ?></th>
+													<td>
+														<input id="ws-ls-line-colour" name="ws-ls-line-colour" type="color" value="<?php echo WE_LS_WEIGHT_LINE_COLOUR; ?>">
+														<p><?php echo __('If enabled, enter a HEX colour code to use for the Weight history line on graph.', WE_LS_SLUG); ?></p>
+													</td>
+												</tr>
+												<tr>
+													<th scope="row"><?php echo __( 'Graph: Weight fill colour?', WE_LS_SLUG ); ?></th>
+													<td>
+														<input id="ws-ls-line-fill-colour" name="ws-ls-line-fill-colour" type="color" value="<?php echo WE_LS_WEIGHT_FILL_COLOUR; ?>">
+														<p><?php echo __('If enabled, enter a HEX colour code to use forthe shading underneath the Weight history line on graph. Line charts only.', WE_LS_SLUG); ?></p>
+													</td>
+												</tr>
+												<tr>
+													<th scope="row"><?php echo __( 'Graph: Target line colour?', WE_LS_SLUG ); ?></th>
+													<td>
+														<input id="ws-ls-target-colour" name="ws-ls-target-colour" type="color" value="<?php echo WE_LS_TARGET_LINE_COLOUR; ?>">
+														<p><?php echo __('If enabled, enter a HEX colour code to use for the Target line on graph.', WE_LS_SLUG); ?></p>
+													</td>
+												</tr>
+											</table>
+										</div>
+									</div>
+								</div>
 
-										<tr>
-											<th scope="row"><?php echo __( 'Display data in tabs?' , WE_LS_SLUG); ?></th>
-											<td>
-												<select id="ws-ls-use-tabs" name="ws-ls-use-tabs">
-													<option value="no" <?php selected( get_option('ws-ls-use-tabs'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
-													<option value="yes" <?php selected( get_option('ws-ls-use-tabs'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
-												</select>
-												<p><?php echo __('If enabled, "Weight History" and "Target Weight" will be displayed on sepearate tabs.', WE_LS_SLUG)?></p>
-											</td>
-										</tr>
-										<tr>
-											<th scope="row"><?php echo __( 'Disable plugin CSS?' , WE_LS_SLUG); ?></th>
-											<td>
-												<select id="ws-ls-disable-css" name="ws-ls-disable-css">
-													<option value="no" <?php selected( get_option('ws-ls-disable-css'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
-													<option value="yes" <?php selected( get_option('ws-ls-disable-css'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
-												</select>
-												<p><?php echo __('If you wish to style the forms in your own way, you can use this option to disable WLT\'s style sheets.', WE_LS_SLUG)?></p>
-											</td>
-										</tr>
-								</table>
 
 
 								<?php submit_button(); ?>
@@ -220,5 +245,12 @@ function ws_ls_register_settings()
   	register_setting( 'we-ls-options-group', 'ws-ls-line-colour' );
 		register_setting( 'we-ls-options-group', 'ws-ls-use-us-dates' );
 		register_setting( 'we-ls-options-group', 'ws-ls-disable-css' );
+
+		// Pro only open
+		if(WS_LS_IS_PRO)
+		{
+			register_setting( 'we-ls-options-group', 'ws-ls-allow-user-preferences' );
+		}
+
 }
 add_action( 'admin_init', 'ws_ls_register_settings' );

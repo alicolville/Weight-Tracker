@@ -103,7 +103,10 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 
 = PRO =
 
+Core changes:
+
 - Removed support for Avada theme
+- Changed jQuery to document ready instead of window ready (jQuery kicks in quicker) 
 
 = 2.0.1 =
 

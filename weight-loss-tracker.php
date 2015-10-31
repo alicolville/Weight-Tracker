@@ -37,6 +37,17 @@ define('WE_LS_CURRENT_VERSION', '2.0.1');
 register_activation_hook(   __FILE__, 'ws_ls_activate');
 
 // -----------------------------------------------------------------------------------------
+// AC: Check if valid pro license (if valid license)
+// ----------------------------------------------------------------------------------------
+
+include WS_LS_ABSPATH . 'includes/license.php';
+
+if(ws_ls_has_a_valid_license()){
+  define('WS_LS_IS_PRO', true);
+} else {
+  define('WS_LS_IS_PRO', false);
+}
+// -----------------------------------------------------------------------------------------
 // AC: Include all relevant PHP files
 // -----------------------------------------------------------------------------------------
 
@@ -52,21 +63,18 @@ include WS_LS_ABSPATH . 'includes/shortcode-weight-loss-tracker.php';
 include WS_LS_ABSPATH . 'includes/shortcode-various.php';
 include WS_LS_ABSPATH . 'pages/page.settings.php';
 include WS_LS_ABSPATH . 'pages/page.pro.advertise.php';
-include WS_LS_ABSPATH . 'includes/license.php';
+include WS_LS_ABSPATH . 'pages/page.help.php';
+include WS_LS_ABSPATH . 'pro-features/feature-list.php';
 
 // Following line of code is used to include a test file to generate a lot of user data
 //include WS_LS_ABSPATH . 'development/tests/index.php';
 
 // -----------------------------------------------------------------------------------------
-// AC: Load Pro features (if valid license)
-// ----------------------------------------------------------------------------------------
-
-include WS_LS_ABSPATH . 'pro-features/feature-list.php';
-
-if(ws_ls_has_a_valid_license()){
-    include WS_LS_ABSPATH . 'pro-features/pro.php';
-} else {
-  define('WS_LS_IS_PRO', false);
+// AC: Include Pro files
+// --------------------------------------------------------------------------------------
+if(WS_LS_IS_PRO)
+{
+    
 }
 
 // -----------------------------------------------------------------------------------------
