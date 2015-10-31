@@ -6,10 +6,6 @@
   {
     $html_output = '';
 
-    if (WE_LS_SUPPORT_AVADA_THEME) {
-        $html_output .= '<div class="fusion-table table-2">';
-    }
-
     $html_output .= '
     <table width="100%" class="ws-ls-data-table">
       <thead>
@@ -31,10 +27,6 @@
     }
 
     $html_output .= '<tbody></table>';
-
-    if (WE_LS_SUPPORT_AVADA_THEME) {
-      $html_output .= '</div>';
-    }
 
     return $html_output;
   }
@@ -164,7 +156,7 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 {
 	$html_output  = '';
 	$form_id = 'ws_ls_form_' . rand(10,1000) . '_' . rand(10,1000);
-	$form_class = (WE_LS_SUPPORT_AVADA_THEME) ? ' avada-contact-form' : ' ws_ls_display_form';
+	$form_class = ' ws_ls_display_form';
 
 	if(false == $user_id){
 		$user_id = get_current_user_id();

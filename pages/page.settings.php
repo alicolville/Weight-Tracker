@@ -163,17 +163,7 @@ function ws_ls_settings_page() {
 												<p><?php echo __('If you wish to style the forms in your own way, you can use this option to disable WLT\'s style sheets.', WE_LS_SLUG)?></p>
 											</td>
 										</tr>
-										<tr>
-											<th scope="row"><?php echo __( 'Enable support for Avada theme?' , WE_LS_SLUG) ?>:</th>
-											<td>
-												<select id="ws-ls-support-avada" name="ws-ls-support-avada">
-													<option value="no" <?php selected( get_option('ws-ls-support-avada'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
-													<option value="yes" <?php selected( get_option('ws-ls-support-avada'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
-												</select>
-												<p><?php echo __('<strong style="color:red">Deprecated. This feature will very shortly be removed from the plugin and is currently no longer supported</strong>. Enables additional styling to support theAvada theme</a>.', WE_LS_SLUG)?></p>
-											</td>
-										</tr>
-									</table>
+								</table>
 
 
 								<?php submit_button(); ?>
@@ -225,7 +215,6 @@ function ws_ls_register_settings()
   	register_setting( 'we-ls-options-group', 'ws-ls-allow-targets' );
   	register_setting( 'we-ls-options-group', 'ws-ls-allow-points' );
   	register_setting( 'we-ls-options-group', 'ws-ls-use-tabs' );
-  	register_setting( 'we-ls-options-group', 'ws-ls-support-avada' );
   	register_setting( 'we-ls-options-group', 'ws-ls-target-colour' );
   	register_setting( 'we-ls-options-group', 'ws-ls-line-fill-colour' );
   	register_setting( 'we-ls-options-group', 'ws-ls-line-colour' );

@@ -118,9 +118,5 @@ function ws_ls_end_tab()	{
 }
 function ws_ls_title($title_text)
 {
-	if(WE_LS_SUPPORT_AVADA_THEME) {
-		return '<div class="fusion-title title"><h2 class="title-heading-left">' . $title_text . '</h2><div class="title-sep-container"><div class="title-sep sep-single sep-dashed"></div></div></div>';
-	}	else {
-		return '<h3 class="ws_ls_title">' . $title_text . '</h3>';
-	}
+	return '<h3 class="ws_ls_title">' . $title_text . '</h3>';
 }

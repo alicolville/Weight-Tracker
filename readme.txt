@@ -74,11 +74,11 @@ Currently it supports both UK (dd/mm/yyy) and US (mm/dd/yyyy) date formats.
 
 = Does it support the Avada theme? =
 
-Yes. However, as of version 2.0 it will be deprecated and finally removed. In WordPress Admin goto Settings > Weight Loss Tracker and change the setting "Enable support for Avada theme?" to Yes.
+Prior to version 3.0, yes, this plugin did support the Avada theme. However, wanting to be independent of any theme support has now been removed.
 
 = How do I switch it from Metric (Kg) to Imperial (Stones / Pounds)? =
 
-In WordPress Admin goto Settings > Weight Loss Tracker and change the setting "Weight Units" to the desried type.
+In WordPress Admin goto Settings > Weight Loss Tracker and change the setting "Weight Units" to the desired type.
 
 = How do I enable tabs? =
 
@@ -101,12 +101,16 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 
 == Changelog ==
 
+= PRO =
+
+- Removed support for Avada theme
+
 = 2.0.1 =
 
 BUG FIX: Target weight was appearing twice on non-tabbed mode.
 
 - Removed some reundant jQuery regarding old tab library.
-- Added an additional CSS rule to override some theme CSS causing issues. 
+- Added an additional CSS rule to override some theme CSS causing issues.
 
 = 2.0 =
 
