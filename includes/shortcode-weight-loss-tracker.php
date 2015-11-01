@@ -21,7 +21,7 @@
 						$html_output .= '<blockquote class="ws-ls-blockquote ws-ls-error-text"><p>' . __('An error occurred while saving your data!', WE_LS_SLUG) . '</p></blockquote>';
 					}
 			}
-
+			
 			// Has the user selected a particular week to look at?
 			$selected_week_number = -1;
 			if (isset($_POST["week_number"]) && is_numeric($_POST["week_number"])) {
@@ -43,8 +43,13 @@
 						<div id="ws-ls-tabs">
 							<ul>
 									<li><a>' . __('Overview', WE_LS_SLUG) . '<span>' . __('Chart / Add Weight', WE_LS_SLUG) . '</span></a></li>
-									<li><a>' . __('In Detail', WE_LS_SLUG) . '<span>' . __('View all recorded weights', WE_LS_SLUG) . '</span></a></li>
-							</ul>
+									<li><a>' . __('In Detail', WE_LS_SLUG) . '<span>' . __('View all recorded weights', WE_LS_SLUG) . '</span></a></li>';
+									// If enabled, have a third tab to allow users to manage their own settings!
+									if(WE_LS_ALLOW_USER_PREFERENCES){
+										$html_output .= '<li><a>' . __('Settings', WE_LS_SLUG) . '<span>' . __('Choose weight units, date format, etc', WE_LS_SLUG) . '</span></a></li>';
+									}
+
+							$html_output .= '</ul>
 							<div>';
 			}
 
@@ -96,6 +101,14 @@
 				$html_output .= __('You haven\'t entered any weight data yet.', WE_LS_SLUG);
 			}
 			$html_output .= ws_ls_end_tab();
+
+			// If enabled, have a third tab to allow users to manage their own settings!
+			if(WE_LS_ALLOW_USER_PREFERENCES){
+				$html_output .= ws_ls_start_tab('wlt-user-preferences');
+				$html_output .= ws_ls_user_preferences_form();
+				$html_output .= ws_ls_end_tab();
+			}
+
 			$html_output .= ws_ls_end_tab();
 			$html_output .= ws_ls_end_tab();
 
@@ -106,7 +119,7 @@
 
 function ws_ls_start_tab($tab_name)	{
 	if (WE_LS_USE_TABS) {
-		return '<div>';
+		return '<div' . (($tab_name) ? ' class="' . $tab_name . '"' : '') . '>';
 	}
 	return '';
 }

@@ -200,3 +200,74 @@ function ws_does_target_weight_exist($user_id)
 
   return false;
 }
+function ws_ls_set_user_preferences($settings, $user_id = false)
+{
+  global $wpdb;
+
+  if(false == $user_id){
+    $user_id = get_current_user_id();
+  }
+
+  // If not an array passed in blank Settings
+  if(!is_array($settings)) {
+    $settings = array();
+  }
+
+  $table_name = $wpdb->prefix . WE_LS_USER_PREFERENCES_TABLENAME;
+
+  // Build array of fields to pass to DB
+  $db_fields['user_id'] = $user_id;
+  $db_fields['settings'] = json_encode($settings);
+
+  // Set data types
+  $db_field_types = array('%d','%s');
+
+  // Update or insert
+  $result = $wpdb->replace(
+                            $table_name,
+                            $db_fields,
+                            $db_field_types
+                          );
+
+  $result = ($result === false) ? false : true;
+
+  // Tidy up cache
+  ws_ls_delete_cache_for_given_user($user_id);
+  return $result;
+}
+
+function ws_ls_get_user_preferences($user_id = false)
+{
+  global $wpdb;
+
+  if(false == $user_id){
+    $user_id = get_current_user_id();
+  }
+
+  $table_name = $wpdb->prefix . WE_LS_USER_PREFERENCES_TABLENAME;
+
+  $cache_key = $user_id . '-' . WE_LS_CACHE_KEY_USER_PREFERENCE;
+  $cache = ws_ls_get_cache($cache_key);
+
+  // Return cache if found!
+  if ($cache)   {
+      return $cache;
+  }
+
+  $sql =  $wpdb->prepare('SELECT settings FROM ' . $table_name . ' WHERE user_id = %d', $user_id);
+  $row = $wpdb->get_row($sql);
+
+  $settings = false;
+
+  if (!is_null($row)) {
+    $settings = json_decode($row->settings, true);
+  }
+
+  if (!is_array($settings))  {
+    $settings = array();
+  }
+//var_dump($sql,$settings);wp_die();
+//  ws_ls_set_cache($cache_key, $settings);
+
+  return $settings;
+}

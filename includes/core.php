@@ -44,7 +44,7 @@
 			$chart_type = 'line';
 		}
 
-		$y_axis_unit = (WE_LS_IMPERIAL_WEIGHTS) ? __('lbs', WE_LS_SLUG) : __('Kg', WE_LS_SLUG) ;
+		$y_axis_unit = (ws_ls_get_config('WE_LS_IMPERIAL_WEIGHTS')) ? __('lbs', WE_LS_SLUG) : __('Kg', WE_LS_SLUG) ;
 
 		// Build graph data
 		$graph_data['labels'] = array();
@@ -185,7 +185,7 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 				$default_date = date("d/m/Y");
 
 				// Overide if US
-				if (WE_LS_US_DATE) {
+				if (ws_ls_get_config('WE_LS_US_DATE')) {
 					$default_date = date("m/d/Y");
 				}
 
@@ -200,9 +200,9 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 			}
 
 			// Display the relevant weight fields depending on weight unit selected
-			if(WE_LS_IMPERIAL_WEIGHTS)
+			if(ws_ls_get_config('WE_LS_IMPERIAL_WEIGHTS'))
 			{
-				if (WE_LS_DATA_UNITS == 'stones_pounds') {
+				if (ws_ls_get_config('WE_LS_DATA_UNITS') == 'stones_pounds') {
 					$html_output .= '<input  type="number"  tabindex="' . ws_ls_get_next_tab_index() . '" step="any" min="0" name="we-ls-weight-stones" id="we-ls-weight-stones" value="" placeholder="' . __('Stones', WE_LS_SLUG) . '" size="11" tabindex="2" >';
 					$html_output .= '<input  type="number" tabindex="' . ws_ls_get_next_tab_index() . '" step="any" min="0" max="14" name="we-ls-weight-pounds" id="we-ls-weight-pounds" value="" placeholder="' . __('Pounds', WE_LS_SLUG) . '" size="11" tabindex="3" >';
 				}
@@ -241,7 +241,7 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 }
 function ws_ls_convert_date_to_iso($date)
 {
-	if (WE_LS_US_DATE) {
+	if (ws_ls_get_config('WE_LS_US_DATE')) {
 		list($month,$day,$year) = sscanf($date, "%d/%d/%d");
 		$date = "$year-$month-$day";
 	} else {
@@ -278,7 +278,7 @@ function ws_ls_capture_form_validate_and_save()
 	$weight_notes = (!$is_target_form) ? $form_values['we-ls-notes'] : '' ;
 	$weight_date = (!$is_target_form) ? $form_values['we-ls-date'] : false ;
 
-	switch (WE_LS_DATA_UNITS) {
+	switch (ws_ls_get_config('WE_LS_DATA_UNITS')) {
 			case 'pounds_only':
 					$weight_object = ws_ls_weight_object(0, 0, 0, $form_values['we-ls-weight-pounds'], $weight_notes,	$weight_date, true);
 				break;
@@ -307,10 +307,12 @@ function ws_ls_validate_weight_data($weight_object, $is_target_form = false)
 
 function ws_ls_get_chosen_weight_unit_as_string(){
 
-	if(WE_LS_IMPERIAL_WEIGHTS && 'stones_pounds' == WE_LS_DATA_UNITS)	{
+	$use_imperial_weights = ws_ls_get_config('WE_LS_IMPERIAL_WEIGHTS');
+
+	if($use_imperial_weights && 'stones_pounds' == ws_ls_get_config('WE_LS_DATA_UNITS'))	{
 		return 'imperial-both';
 	}
-	elseif(WE_LS_IMPERIAL_WEIGHTS && 'pounds_only' == WE_LS_DATA_UNITS)	{
+	elseif($use_imperial_weights && 'pounds_only' == ws_ls_get_config('WE_LS_DATA_UNITS'))	{
 		return 'imperial-pounds';
 	}
 	else	{
@@ -319,12 +321,13 @@ function ws_ls_get_chosen_weight_unit_as_string(){
 }
 function ws_ls_get_js_config()
 {
-	$message_for_pounds = (WE_LS_IMPERIAL_WEIGHTS && 'stones_pounds' == WE_LS_DATA_UNITS) ? __('Please enter a between 1-14 for pounds', WE_LS_SLUG) : __('Please enter a valid figure for pounds', WE_LS_SLUG);
+	$message_for_pounds = (ws_ls_get_config('WE_LS_IMPERIAL_WEIGHTS') && 'stones_pounds' == ws_ls_get_config('WE_LS_DATA_UNITS')) ? __('Please enter a between 1-14 for pounds', WE_LS_SLUG) : __('Please enter a valid figure for pounds', WE_LS_SLUG);
 
+	$use_us_date = ws_ls_get_config('WE_LS_US_DATE');
 
 	return array (
-		'us-date' => (WE_LS_US_DATE) ? 'true' : 'false',
-		'date-format' => (WE_LS_US_DATE) ? 'mm/dd/yy' : 'dd/mm/yy',
+		'us-date' => ($use_us_date) ? 'true' : 'false',
+		'date-format' => ($use_us_date) ? 'mm/dd/yy' : 'dd/mm/yy',
 		'validation-we-ls-weight-pounds' => $message_for_pounds,
 		'validation-we-ls-weight-kg' => __('Please enter a valid figure for Kg', WE_LS_SLUG),
 		'validation-we-ls-weight-stones' => __('Please enter a valid figure for Stones', WE_LS_SLUG),

@@ -33,7 +33,7 @@ function ws_ls_weight_object($kg, $pounds, $stones, $pounds_only, $notes = '', $
     // If enabled, detect which weight fields need to be calculated and do it
     if ($detect_and_convert_missing_values)
     {
-      switch (WE_LS_DATA_UNITS) {
+      switch (ws_ls_get_config('WE_LS_DATA_UNITS')) {
     			case 'pounds_only':
 
         			$weight['kg'] = ws_ls_pounds_to_kg($weight['only_pounds']);
@@ -60,7 +60,7 @@ function ws_ls_weight_object($kg, $pounds, $stones, $pounds_only, $notes = '', $
     }
 
     // Generate display
-    switch (WE_LS_DATA_UNITS) {
+    switch (ws_ls_get_config('WE_LS_DATA_UNITS')) {
       case 'pounds_only':
         $data = ws_ls_round_decimals($weight['only_pounds']);
         $weight['display'] = $data . __('lbs', WE_LS_SLUG);
@@ -179,7 +179,7 @@ function ws_ls_create_dialog_jquery_code($title, $message, $class_used_to_prompt
 function ws_ls_render_date($weight_object)
 {
   // Return US date if enabled otherwise return UK date
-  if(WE_LS_US_DATE) {
+  if(ws_ls_get_config('WE_LS_US_DATE')) {
     return $weight_object['date-us'];
   }
   else {
@@ -190,7 +190,7 @@ function ws_ls_render_date($weight_object)
 function ws_ls_get_unit()
 {
 
-  switch (WE_LS_DATA_UNITS) {
+  switch (ws_ls_get_config('WE_LS_DATA_UNITS')) {
     case 'pounds_only':
       $unit = __("lbs", WE_LS_SLUG);
       break;
@@ -240,7 +240,7 @@ function ws_ls_get_week_ranges()
 }
 function ws_ls_get_date_format()
 {
-  if(WE_LS_US_DATE){
+  if(ws_ls_get_config('WE_LS_US_DATE')){
     return 'm/d/Y';
   }
 
@@ -294,4 +294,49 @@ function ws_ls_round_weights($weight)
   return $weight;
 }
 
+function ws_ls_get_config($key)
+{
+  // If user preferences are enabled, then see if they specified
+  if (WE_LS_ALLOW_USER_PREFERENCES)  {
+
+    // Look to see if the user had a preference, if not, default to admin choice
+    $user_preference = ws_ls_get_user_preference($key);
+
+    if(is_null($user_preference)) {
+      return constant($key);
+    } else {
+      return $user_preference;
+    }
+
+  }
+  else {
+    // Use admin default
+    return constant($key);
+  }
+}
+function ws_ls_get_user_preference($key, $user_id = false)
+{
+  if(false == $user_id){
+    $user_id = get_current_user_id();
+  }
+
+  $user_preferences = ws_ls_get_user_preferences($user_id);
+
+  if(array_key_exists($key, $user_preferences)){
+    return $user_preferences[$key];
+  }
+
+  return NULL;
+}
+function ws_ls_string_to_bool($value)
+{
+  if('false' == $value) {
+    return false;
+  }
+  elseif('true' == $value) {
+    return true;
+  }
+
+  return $value;
+}
 ?>

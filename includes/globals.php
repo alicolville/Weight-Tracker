@@ -24,25 +24,27 @@
 		'WE_LS_CHART_BEZIER_CURVE' => true,
 		'WE_LS_CHART_POINT_SIZE' => 3,
 		'WE_LS_CHART_SHOW_GRID_LINES' => true,
-		'WE_LS_USE_MINIFIED_SCRIPTS' => true,
-
-		// Constants - highly recommended that you don't change these
-		'WE_LS_TITLE' => 'Weight Loss Tracker',
-		'WE_LS_SLUG' => 'weight-loss-tracker',
-		'WE_LS_TABLENAME' => 'WS_LS_DATA',
-		'WE_LS_TARGETS_TABLENAME' => 'WS_LS_DATA_TARGETS',
-		'WE_LS_VERSION' => 'WS_LS_VERSION',
-		'WE_LS_CACHE_ENABLED' => true,
-		'WE_LS_CACHE_TIME' => 15 * MINUTE_IN_SECONDS,
-		'WE_LS_CACHE_KEY_TARGET' => 'target-data',
-		'WE_LS_CACHE_KEY_DATA' => 'weight-data',
-		'WE_LS_CACHE_KEY_MIN_MAX_DATES' => 'min-max-dates',
-		'WE_LS_CACHE_KEY_TARGET_WEIGHT' => 'target-weight',
-		'WE_LS_CACHE_KEY_WEIGHT_EXTREME' => 'weight-extreme-',
-		'WE_LS_TABLE_MAX_WEEK_FILTERS' => 100,
-		'WS_LS_PRO_PRICE' => 20.00
-
+		'WE_LS_USE_MINIFIED_SCRIPTS' => true
 	);
+
+	// -----------------------------------------------------------------------------------
+	// Constants - highly recommended that you don't change these
+	// -----------------------------------------------------------------------------------
+	define('WE_LS_TITLE', 'Weight Loss Tracker');
+	define('WE_LS_SLUG', 'weight-loss-tracker');
+	define('WE_LS_TABLENAME', 'WS_LS_DATA');
+	define('WE_LS_TARGETS_TABLENAME', 'WS_LS_DATA_TARGETS');
+	define('WE_LS_USER_PREFERENCES_TABLENAME', 'WS_LS_DATA_USER_PREFERENCES');
+	define('WE_LS_CACHE_ENABLED', true);
+	define('WE_LS_CACHE_TIME', 15 * MINUTE_IN_SECONDS);
+	define('WE_LS_CACHE_KEY_TARGET', 'target-data');
+	define('WE_LS_CACHE_KEY_DATA', 'weight-data');
+	define('WE_LS_CACHE_KEY_MIN_MAX_DATES', 'min-max-dates');
+	define('WE_LS_CACHE_KEY_TARGET_WEIGHT', 'target-weight');
+	define('WE_LS_CACHE_KEY_WEIGHT_EXTREME', 'weight-extreme-');
+	define('WE_LS_CACHE_KEY_USER_PREFERENCE', 'user-preference');
+	define('WE_LS_TABLE_MAX_WEEK_FILTERS', 100);
+	define('WS_LS_PRO_PRICE', 20.00);
 
 	// -----------------------------------------------------------------------------------
 	// Allow user's to override the default admin settings?
@@ -101,9 +103,18 @@
 	if (get_option('ws-ls-line-fill-colour')) {
 		$globals['WE_LS_WEIGHT_FILL_COLOUR'] = get_option('ws-ls-line-fill-colour');
 	}
-
-
+	// -----------------------------------------------------------------------------------
+	// Override plugin settings with user preferences (if enabled!)
+	// -----------------------------------------------------------------------------------
+	// add_filter('ws-ls-user-perferences', )
+	//
+	// if(WE_LS_ALLOW_USER_PREFERENCES) {
+	// 	$temp = ws_ls_get_user_preferences();
+	// //	var_Dump($temp);wp_die();
+	// }
+	// -----------------------------------------------------------------------------------
 	// Loop through array and set defines!
-	foreach ($globals as $key => $value) {
+	// -----------------------------------------------------------------------------------
+  foreach($globals as $key => $value) {
 		define($key, $value);
 	}

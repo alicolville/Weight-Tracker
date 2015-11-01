@@ -8,7 +8,7 @@ function ws_ls_weight_start()
 		return '';
 	}
 
-	if (WE_LS_DATA_UNITS == "pounds_only") {
+	if (ws_ls_get_config('WE_LS_DATA_UNITS') == "pounds_only") {
 		$weight = ws_ls_get_start_weight_in_pounds();
 	}
 	else {
@@ -23,7 +23,7 @@ function ws_ls_weight_recent()
 		return '';
 	}
 
-	if (WE_LS_DATA_UNITS == "pounds_only") {
+	if (ws_ls_get_config('WE_LS_DATA_UNITS') == "pounds_only") {
 		$weight =  ws_ls_get_recent_weight_in_pounds();
 	}
 	else {
@@ -39,7 +39,7 @@ function ws_ls_weight_difference()
 		return '';
 	}
 
-	if (WE_LS_DATA_UNITS == "pounds_only"){
+	if (ws_ls_get_config('WE_LS_DATA_UNITS') == "pounds_only"){
 		$start_weight = ws_ls_get_start_weight_in_pounds();
 		$recent_weight = ws_ls_get_recent_weight_in_pounds();
 	}
@@ -63,7 +63,7 @@ function ws_ls_weight_difference_target()
 		return '';
 	}
 
-	if (WE_LS_DATA_UNITS == "pounds_only")
+	if (ws_ls_get_config('WE_LS_DATA_UNITS') == "pounds_only")
 	{
 		$target_weight = ws_ls_get_target_weight_in_pounds();
 		$recent_weight = ws_ls_get_recent_weight_in_pounds();
@@ -162,9 +162,9 @@ function ws_ls_get_weight_target($user_id, $unit = "target_weight_weight")
 }
 function we_ls_format_weight_into_correct_string_format($weight)
 {
-	if(WE_LS_IMPERIAL_WEIGHTS)
+	if(ws_ls_get_config('WE_LS_IMPERIAL_WEIGHTS'))
 	{
-		if (WE_LS_DATA_UNITS == "pounds_only")
+		if (ws_ls_get_config('WE_LS_DATA_UNITS') == "pounds_only")
 			return $weight . __("lbs", WE_LS_SLUG);
 		else
 		{

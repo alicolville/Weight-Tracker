@@ -49,7 +49,6 @@ function ws_ls_settings_page() {
 	<?php
 	endif;
 
-var_dump(WE_LS_ALLOW_USER_PREFERENCES);
 ?>
 
 

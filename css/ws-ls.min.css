@@ -1,1 +1,79 @@
-.ws-ls-tabs{margin:30px}.ws-ls-inner-form p{font-size:1em;margin-bottom:5px}.ws_ls_title{margin-top:0!important;margin-bottom:15px!important}.we-ls-weight-form{width:100%}.we-ls-datepicker,.we-ls-weight-form input[type=number],.we-ls-weight-form input[type=text],.we-ls-weight-form select,.we-ls-weight-form textarea,.ws-ls-select{width:98%!important;padding-left:5px 0 0 0!important;border:1px solid #c1c1c1;transition:box-shadow .3s,border .3s}.we-ls-datepicker.focus,.we-ls-weight-form input[type=number].focus,.we-ls-weight-form input[type=text].focus,.we-ls-weight-form select.focus,.ws-ls-select.focus{border:1px solid #707070;box-shadow:0 0 5px 1px #969696}.we-ls-weight-form .we-ls-datepicker,.we-ls-weight-form .ws-ls-select,.we-ls-weight-form input[type=number],.we-ls-weight-form input[type=text],.we-ls-weight-form select{height:30px}#ws-ls-tabs .we-ls-datepicker,#ws-ls-tabs .ws-ls-select,#ws-ls-tabs input[type=number],#ws-ls-tabs input[type=text],#ws-ls-tabs select{height:30px;padding:5px}#ws-ls-tabs textarea{padding:5px}.we-ls-weight-form .ws-ls-error-summary{width:100%;padding-left:30px;color:red;display:none}.we-ls-weight-form .ws-ls-error-summary ul{width:100%;padding:0;margin:0 0 10px}.ws-ls-error-text{color:red;font-weight:700}
+.ws-ls-tabs
+{
+	margin:30px;
+}
+.ws-ls-inner-form p
+{
+  font-size: 1.0em;
+	margin-bottom: 5px;
+}
+ /* MAKE BELOW OPTIONAL */
+.ws_ls_title
+{
+	margin-top: 0px !important;
+	margin-bottom: 15px !important;
+
+}
+.we-ls-weight-form
+{
+	width: 100%;
+
+}
+.we-ls-weight-form input[type=number], .we-ls-weight-form input[type=text], .we-ls-weight-form textarea, .we-ls-weight-form select,
+.we-ls-datepicker, .ws-ls-select
+{
+	width:98% !important;
+	padding-left: 5px 0px 0px 0px !important;
+	border: solid 1px #c1c1c1;
+	transition: box-shadow 0.3s, border 0.3s;
+}
+.we-ls-weight-form input[type=number].focus, .we-ls-weight-form input[type=text].focus, .we-ls-weight-form select.focus,
+.we-ls-datepicker.focus, .ws-ls-select.focus, #ws-ls-tabs .wlt-user-preferences input, #ws-ls-tabs .wlt-user-preferences select {
+  border: solid 1px #707070;
+  box-shadow: 0 0 5px 1px #969696;
+}
+.we-ls-weight-form input[type=number], .we-ls-weight-form input[type=text], .we-ls-weight-form select, .we-ls-weight-form .we-ls-datepicker,
+.we-ls-weight-form .ws-ls-select, #ws-ls-tabs .wlt-user-preferences input, #ws-ls-tabs .wlt-user-preferences select
+{
+	height: 30px;
+}
+#ws-ls-tabs input[type=number], #ws-ls-tabs input[type=text], #ws-ls-tabs select, #ws-ls-tabs .we-ls-datepicker, #ws-ls-tabs .ws-ls-select,
+#ws-ls-tabs .wlt-user-preferences input, #ws-ls-tabs .wlt-user-preferences select
+{
+	height: 30px;
+	padding:5px;
+}
+#ws-ls-tabs .wlt-user-preferences select
+{
+  width:100%;
+}
+#ws-ls-tabs .wlt-user-preferences label
+{
+  margin-bottom: 20px;
+}
+#ws-ls-tabs textarea
+{
+	padding:5px;
+}
+.we-ls-weight-form .ws-ls-error-summary
+{
+	width: 100%;
+	padding-left: 30px;
+	color: red;
+	display:none;
+}
+.we-ls-weight-form .ws-ls-error-summary ul
+{
+	width: 100%;
+	padding: 0px;
+	margin: 0px 0px 10px 0px;
+}
+.ws-ls-error-text
+{
+  color: red;
+  font-weight: bold;
+}
+.ws-ls-data-table td, th
+{
+
+}

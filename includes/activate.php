@@ -42,6 +42,17 @@
 
 		 dbDelta( $sql );
 
+		 $table_name = $wpdb->prefix . WE_LS_USER_PREFERENCES_TABLENAME;
+
+		 $sql = "CREATE TABLE $table_name (
+				 user_id integer NOT NULL,
+				 settings text not null,
+				 UNIQUE KEY user_id (user_id)
+		 ) $charset_collate;";
+
+			dbDelta( $sql );
+
+
 	}
 
 ?>

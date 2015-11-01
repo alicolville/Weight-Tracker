@@ -50,13 +50,12 @@ if(ws_ls_has_a_valid_license()){
 // -----------------------------------------------------------------------------------------
 // AC: Include all relevant PHP files
 // -----------------------------------------------------------------------------------------
-
+include WS_LS_ABSPATH . 'includes/caching.php';
+include WS_LS_ABSPATH . 'includes/db.php';
 include WS_LS_ABSPATH . 'includes/globals.php';
 include WS_LS_ABSPATH . 'includes/activate.php';
 include WS_LS_ABSPATH . 'includes/hooks.php';
 include WS_LS_ABSPATH . 'includes/functions.php';
-include WS_LS_ABSPATH . 'includes/db.php';
-include WS_LS_ABSPATH . 'includes/caching.php';
 include WS_LS_ABSPATH . 'includes/converters.php';
 include WS_LS_ABSPATH . 'includes/core.php';
 include WS_LS_ABSPATH . 'includes/shortcode-weight-loss-tracker.php';
@@ -72,11 +71,9 @@ include WS_LS_ABSPATH . 'pro-features/feature-list.php';
 // -----------------------------------------------------------------------------------------
 // AC: Include Pro files
 // --------------------------------------------------------------------------------------
-if(WS_LS_IS_PRO)
-{
-    
+if(WS_LS_IS_PRO){
+  include WS_LS_ABSPATH . 'pro-features/init.php';
 }
-
 // -----------------------------------------------------------------------------------------
 // AC: Load relevant language files
 // -----------------------------------------------------------------------------------------
@@ -85,3 +82,16 @@ function ws_ls_load_textdomain() {
   load_plugin_textdomain( WE_LS_SLUG, false, dirname( plugin_basename( __FILE__ )  ) . '/languages/' );
 }
 add_action( 'plugins_loaded', 'ws_ls_load_textdomain' );
+
+
+function ali_test()
+{
+  if($_POST && isset($_POST['ws-ls-user-pref']) && 'true' == $_POST['ws-ls-user-pref'])	{
+wp_redirect('http://www.google.co.uk');
+wp_redirect(get_permalink($_POST['ws-ls-user-pref-redirect']));
+//var_Dump(get_permalink($_POST['ws-ls-user-pref-redirect']),$_POST);wp_die();
+
+  }
+
+}
+add_action('init', 'ali_test');
