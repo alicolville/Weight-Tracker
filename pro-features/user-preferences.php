@@ -9,27 +9,11 @@ function ws_ls_user_preferences_form()
 
 			$html_output .= '<div id="ws-ls-user-pref-saved" style="display:none"></div>';
 
-			// List of form fields / globals we want to store for the user
-			$keys_to_save = array('WE_LS_DATA_UNITS', 'WE_LS_US_DATE');
 
-			$user_preferences = array();
-
-			foreach ($keys_to_save as $key) {
-					$user_preferences[$key] = ws_ls_string_to_bool($_POST[$key]);
-			}
-
-			if ('stones_pounds' == $user_preferences['WE_LS_DATA_UNITS'] || 'pounds_only' == $user_preferences['WE_LS_DATA_UNITS']) {
-				$user_preferences['WE_LS_IMPERIAL_WEIGHTS'] = true;
-			} else {
-				$user_preferences['WE_LS_IMPERIAL_WEIGHTS'] = false;
-			}
-
-			ws_ls_set_user_preferences($user_preferences);
-			//var_dump($user_preferences);
 
 	}
 
-	$html_output .= '<form action="' .  get_permalink() . '" method="post">
+	$html_output .= '<form action="' .  get_permalink() . '" class="ws-ls-user-pref-form" method="post">
   <input type="hidden" name="ws-ls-user-pref" value="true" />
 	<input type="hidden" name="ws-ls-user-pref-redirect" value="' . get_the_ID() . '" />
   <label>' . __('Which unit would you like to record your weight in:', WE_LS_SLUG) . '</label>

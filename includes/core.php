@@ -332,7 +332,11 @@ function ws_ls_get_js_config()
 		'validation-we-ls-weight-kg' => __('Please enter a valid figure for Kg', WE_LS_SLUG),
 		'validation-we-ls-weight-stones' => __('Please enter a valid figure for Stones', WE_LS_SLUG),
 		'validation-we-ls-date' => __('Please enter a valid date', WE_LS_SLUG),
-		'tabs-enabled' => (WE_LS_USE_TABS) ? 'true' : 'false'
+		'tabs-enabled' => (WE_LS_USE_TABS) ? 'true' : 'false',
+		'ajax-url' => admin_url('admin-ajax.php'),
+		'ajax-security-nonce-user-pref' => wp_create_nonce( 'ws_ls_save_preferences' ),
+		'is-pro' => (WS_LS_IS_PRO) ? 'true' : 'false',
+		'user-id' => get_current_user_id()
 	);
 
 }
