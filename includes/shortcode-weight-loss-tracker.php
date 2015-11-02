@@ -22,6 +22,9 @@
 					}
 			}elseif(isset($_GET['user-preference-saved']) && 'true' == $_GET['user-preference-saved'])	{
 					$html_output .= '<blockquote class="ws-ls-blockquote"><p>' . __('Your settings have been saved!', WE_LS_SLUG) . '</p></blockquote>';
+			}elseif(WE_LS_ALLOW_USER_PREFERENCES && isset($_GET['user-delete-all']) && 'true' == $_GET['user-delete-all'])	{
+					ws_ls_delete_data_for_user();
+					$html_output .= '<blockquote class="ws-ls-blockquote"><p>' . __('Your weight history has been deleted!', WE_LS_SLUG) . '</p></blockquote>';
 			}
 			// Has the user selected a particular week to look at?
 			$selected_week_number = -1;
