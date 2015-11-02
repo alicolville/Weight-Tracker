@@ -82,16 +82,3 @@ function ws_ls_load_textdomain() {
   load_plugin_textdomain( WE_LS_SLUG, false, dirname( plugin_basename( __FILE__ )  ) . '/languages/' );
 }
 add_action( 'plugins_loaded', 'ws_ls_load_textdomain' );
-
-
-function ali_test()
-{
-  if($_POST && isset($_POST['ws-ls-user-pref']) && 'true' == $_POST['ws-ls-user-pref'])	{
-wp_redirect('http://www.google.co.uk');
-wp_redirect(get_permalink($_POST['ws-ls-user-pref-redirect']));
-//var_Dump(get_permalink($_POST['ws-ls-user-pref-redirect']),$_POST);wp_die();
-
-  }
-
-}
-add_action('init', 'ali_test');

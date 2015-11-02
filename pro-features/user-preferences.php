@@ -4,14 +4,6 @@ defined('ABSPATH') or die("Jog on!");
 function ws_ls_user_preferences_form()
 {
 	$html_output = '';
-	// Capture user preferences post
-	if($_POST && isset($_POST['ws-ls-user-pref']) && 'true' == $_POST['ws-ls-user-pref'])	{
-
-			$html_output .= '<div id="ws-ls-user-pref-saved" style="display:none"></div>';
-
-
-
-	}
 
 	$html_output .= '<form action="' .  get_permalink() . '" class="ws-ls-user-pref-form" method="post">
   <input type="hidden" name="ws-ls-user-pref" value="true" />

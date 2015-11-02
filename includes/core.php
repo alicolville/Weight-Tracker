@@ -336,7 +336,8 @@ function ws_ls_get_js_config()
 		'ajax-url' => admin_url('admin-ajax.php'),
 		'ajax-security-nonce-user-pref' => wp_create_nonce( 'ws_ls_save_preferences' ),
 		'is-pro' => (WS_LS_IS_PRO) ? 'true' : 'false',
-		'user-id' => get_current_user_id()
+		'user-id' => get_current_user_id(),
+		'current-url' => get_permalink()
 	);
 
 }

@@ -6,7 +6,7 @@ function ws_ls_save_preferences_callback()
 {
   $ajax_response = 0;
 
-//  check_ajax_referer( 'ws_ls_save_preferences', 'security' ); //TODO: Add back in!
+  check_ajax_referer( 'ws_ls_save_preferences', 'security' ); //TODO: Add back in!
 
   // List of form fields / globals we want to store for the user
   $keys_to_save = array('WE_LS_DATA_UNITS', 'WE_LS_US_DATE');
