@@ -128,13 +128,13 @@ function ws_ls_settings_page() {
 														</td>
 													</tr>
 													<tr class="<?php echo $disable_if_not_pro_class; ?>">
-														<th scope="row"><?php echo __( 'Allow user preferences' , WE_LS_SLUG); ?></th>
+														<th scope="row"><?php echo __( 'Allow user settings' , WE_LS_SLUG); ?></th>
 														<td>
 															<select id="ws-ls-allow-user-preferences" name="ws-ls-allow-user-preferences">
 																<option value="yes" <?php selected( get_option('ws-ls-allow-user-preferences'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
 																<option value="no" <?php selected( get_option('ws-ls-allow-user-preferences'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
 															</select>
-															<p><?php echo __('Allow your users to select their own weight unit, date format, etc', WE_LS_SLUG)?></p>
+															<p><?php echo __('Allow your users to select their own weight unit, date format and remove all their data.', WE_LS_SLUG)?></p>
 														</td>
 													</tr>
 													<tr>

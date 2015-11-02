@@ -3,7 +3,7 @@ defined('ABSPATH') or die("Jog on!");
 
 function ws_ls_user_preferences_form()
 {
-	$html_output = '';
+	$html_output = ws_ls_title(__('Settings', WE_LS_SLUG));
 
 	$html_output .= '<form action="' .  get_permalink() . '" class="ws-ls-user-pref-form" method="post">
   <input type="hidden" name="ws-ls-user-pref" value="true" />
@@ -24,6 +24,7 @@ function ws_ls_user_preferences_form()
     </select>
   <br /><br />
   <input name="submit_button" type="submit" id="we-ls-user-pref-submit"  tabindex="' . ws_ls_get_next_tab_index() . '" value="' .  __('Save Settings', WE_LS_SLUG) . '" class="comment-submit btn btn-default button default small fusion-button button-small button-default button-round button-flat">
+
 </form>
   ';
 	return $html_output;
