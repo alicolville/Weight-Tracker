@@ -8,19 +8,14 @@
 			// Display error if user not logged in
 			if (!is_user_logged_in())	{
 				return '<blockquote class="ws-ls-blockquote"><p>' .	__('You need to be logged in to record your weight.', WE_LS_SLUG) . ' <a href="' . wp_login_url(get_permalink()) . '">' . __('Login now', WE_LS_SLUG) . '</a>.</p></blockquote>';
-			}
+			}   
 
-			$html_output = '';
-
-			// Capture and save HTML post?
-			if ($_POST && isset($_POST['ws_ls_is_weight_form']) && 'true' == $_POST['ws_ls_is_weight_form']) {
-					$save_success = ws_ls_capture_form_validate_and_save();
-					if ($save_success) {
-						$html_output .= '<blockquote class="ws-ls-blockquote"><p>' . __('Saved!', WE_LS_SLUG) . '</p></blockquote>';
-					} else {
-						$html_output .= '<blockquote class="ws-ls-blockquote ws-ls-error-text"><p>' . __('An error occurred while saving your data!', WE_LS_SLUG) . '</p></blockquote>';
-					}
-			}elseif(isset($_GET['user-preference-saved']) && 'true' == $_GET['user-preference-saved'])	{
+            $user_id = get_current_user_id();
+        
+			$html_output = ws_ls_capture_and_handle_form_post($user_id, $form_number);
+    
+        
+			if(isset($_GET['user-preference-saved']) && 'true' == $_GET['user-preference-saved'])	{
 					$html_output .= '<blockquote class="ws-ls-blockquote"><p>' . __('Your settings have been saved!', WE_LS_SLUG) . '</p></blockquote>';
 			}elseif(WE_LS_ALLOW_USER_PREFERENCES && isset($_GET['user-delete-all']) && 'true' == $_GET['user-delete-all'])	{
 					ws_ls_delete_data_for_user();
@@ -38,7 +33,7 @@
 			}
 
 			// Load user's weight dta (taking into account selected week)
-			$weight_data = ws_ls_get_weights(get_current_user_id(), 1000, $selected_week_number);
+			$weight_data = ws_ls_get_weights($user_id, 1000, $selected_week_number);
 
 			// If enabled, render tab header
 			if (WE_LS_USE_TABS)	{
@@ -72,11 +67,11 @@
 
 			// Include target form?
 			if (WE_LS_ALLOW_TARGET_WEIGHTS) {
-				$html_output .= ws_ls_display_weight_form(true, 'ws-ls-target-form');
+				$html_output .= ws_ls_display_weight_form(true, 'ws-ls-target-form', false, false, 1, false);
 			}
 
 			// Display input form
-			$html_output .= ws_ls_display_weight_form();
+			$html_output .= ws_ls_display_weight_form(false, false, false, false, 2, false);
 
 			// Close first tab
 			$html_output .= ws_ls_end_tab();
@@ -90,7 +85,7 @@
 			if ($weight_data && (count($weight_data) > 0 || $selected_week_number != -1))	{
 
 					if (WE_LS_ALLOW_TARGET_WEIGHTS && WE_LS_USE_TABS) {
-						$html_output .= ws_ls_display_weight_form(true, 'ws-ls-target-form');
+						$html_output .= ws_ls_display_weight_form(true, 'ws-ls-target-form', false, false, 3, false);
 					}
 
 					// Display week filters and data tab

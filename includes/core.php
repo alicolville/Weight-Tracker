@@ -32,48 +32,60 @@
   }
 
   /* Display Chart */
-	function ws_ls_display_chart($weight_data, $chart_type = false, $chart_height = WE_LS_CHART_HEIGHT)
+	function ws_ls_display_chart($weight_data, $options = false)
 	{
+		// Build the default arguments for a chart. This can then be overrided by what is being passed in (i.e. to support shortcode arguments)
+		$chart_config = array(
+			'type' => WE_LS_CHART_TYPE,
+			'height' => WE_LS_CHART_HEIGHT,
+            'width' => false,
+			'weight-line-color' => WE_LS_WEIGHT_LINE_COLOUR,
+			'weight-fill-color' => WE_LS_WEIGHT_FILL_COLOUR,
+			'weight-target-color' => WE_LS_TARGET_LINE_COLOUR,
+			'show-gridlines' => WE_LS_CHART_SHOW_GRID_LINES,
+			'bezier' => WE_LS_CHART_BEZIER_CURVE
+		);
+        
+        // If we are PRO and the developer has specified options then override the default
+        if($options && WS_LS_IS_PRO){
+            $chart_config = wp_parse_args( $options, $chart_config );
+        }
+     
 		$chart_id = 'ws_ls_chart_' . rand(10,1000) . '_' . rand(10,1000);
-
-		// Det the chart type. If not specified, set to default
-		$chart_type = (false == $chart_type) ? WE_LS_CHART_TYPE : $chart_type;
 
 		// If Pro disabled then force to line
 		if(!WS_LS_IS_PRO) {
-			$chart_type = 'line';
+			$chart_config['type'] = 'line';
 		}
 
 		$y_axis_unit = (ws_ls_get_config('WE_LS_IMPERIAL_WEIGHTS')) ? __('lbs', WE_LS_SLUG) : __('Kg', WE_LS_SLUG) ;
 
 		// Build graph data
 		$graph_data['labels'] = array();
-		$graph_data['datasets'][0] = array(
-																				'label' =>  __('Weight', WE_LS_SLUG),
-																				'fillColor' => WE_LS_WEIGHT_FILL_COLOUR,
-															          'strokeColor' => WE_LS_WEIGHT_LINE_COLOUR,
-															          'pointColor' => WE_LS_WEIGHT_LINE_COLOUR,
-															          'pointStrokeColor' => '#fff',
-															          'pointHighlightFill' => '#fff',
-															          'pointHighlightStroke' => 'rgba(220,220,220,1)'
-																			);
+		$graph_data['datasets'][0] = array(  'label' =>  __('Weight', WE_LS_SLUG),
+											 'fillColor' => $chart_config['weight-fill-color'],
+											 'strokeColor' => $chart_config['weight-line-color'],
+											 'pointColor' => $chart_config['weight-line-color'],
+											 'pointStrokeColor' => '#fff',
+											 'pointHighlightFill' => '#fff',
+											 'pointHighlightStroke' => 'rgba(220,220,220,1)'
+								            );
 		$graph_data['datasets'][0]['data'] = array();
 
 		$target_weight = ws_ls_get_user_target(get_current_user_id());
 
-		$chart_type_supports_target_data = ('bar' == $chart_type) ? false : true;
+		$chart_type_supports_target_data = ('bar' == $chart_config['type']) ? false : true;
 
 		// If target weights are enabled, then include into javascript data object
 		if ($target_weight != false && WE_LS_ALLOW_TARGET_WEIGHTS && $chart_type_supports_target_data){
-				$graph_data['datasets'][1] = array(
-																						'label' =>  __('Target', WE_LS_SLUG),
-																						'fillColor' => 'rgba(255,255,255,0.2)',
-																	          'strokeColor' => WE_LS_TARGET_LINE_COLOUR,
-																	          'pointColor' => WE_LS_TARGET_LINE_COLOUR,
-																	          'pointStrokeColor' => '#fff',
-																	          'pointHighlightFill' => '#fff',
-																	          'pointHighlightStroke' => 'rgba(220,220,220,1)'
-																					);
+				$graph_data['datasets'][1] = array( 'label' =>  __('Target', WE_LS_SLUG),
+												    'fillColor' => 'rgba(255,255,255,0.2)',
+													'strokeColor' => $chart_config['weight-target-color'],
+													'pointColor' => $chart_config['weight-target-color'],
+													'pointStrokeColor' => '#fff',
+													'pointHighlightFill' => '#fff',
+													'pointHighlightStroke' => 'rgba(220,220,220,1)'
+												);
 				$graph_data['datasets'][1]['data'] = array();
 		}
 
@@ -94,11 +106,11 @@
 		$graph_line_options = array();
 
 		// Build the Chart options for JS library depending on type of Chart
-		if('bar' == $chart_type)	{
+		if('bar' == $chart_config['type'])	{
 
 				$graph_line_options = array(
 			  	'scaleBeginAtZero' => true,
-					'scaleShowGridLines' => ((WE_LS_CHART_SHOW_GRID_LINES) ? 'true' : ''),
+					'scaleShowGridLines' => (($chart_config['show-gridlines']) ? 'true' : ''),
 					'scaleGridLineColor:' => 'rgba(0,0,0,.05)',
 					'scaleGridLineWidth:' => 1,
 					'scaleShowHorizontalLines' => true,
@@ -111,17 +123,17 @@
 					'barDatasetSpacing' => 1
 				);
 		}
-		elseif ('line' == $chart_type) {
+		elseif ('line' == $chart_config['type']) {
 
 			$graph_line_options = array(
-		  	'scaleShowGridLines' => ((WE_LS_CHART_SHOW_GRID_LINES) ? 'true' : ''),
+		  	'scaleShowGridLines' => (($chart_config['show-gridlines']) ? 'true' : ''),
 				'scaleGridLineColor' => 'rgba(0,0,0,.05)',
 				'scaleGridLineWidth' => 1,
 				'scaleOverride' => false,
 				'scaleSteps:' => 14,
 				'scaleStepWidth:' => 10,
 				'scaleStartValue:' => 20,
-				'bezierCurve' => ((WE_LS_CHART_BEZIER_CURVE) ? 'true' : ''),
+				'bezierCurve' => (($chart_config['bezier'] == true) ? 'true' : ''),
 				'bezierCurveTension' => 0.4,
 				'pointDot' =>  ((WE_LS_ALLOW_POINTS) ? 'true' : ''),
 				'pointDotRadius' => WE_LS_CHART_POINT_SIZE,
@@ -145,34 +157,49 @@
 		// Embed JavaScript options object for this graph into page
 		wp_localize_script( 'jquery-chart-ws-ls', $chart_id . '_options', $graph_line_options );
 
-		return '<div style="width:94%;float:left;"><canvas id="' . $chart_id . '" class="ws-ls-chart" height="' . $chart_height . '" data-chart-type="' . $chart_type . '" data-target-weight="' . $target_weight['graph_value'] . '" data-target-colour="' . WE_LS_TARGET_LINE_COLOUR . '"></canvas></div>';
+		return '<div style="width:94%;float:left;"><canvas id="' . $chart_id . '" class="ws-ls-chart" ' . (($chart_config['width']) ? 'width="'.  $chart_config['width'] . '" ' : '') . 'height="' . $chart_config['height'] . '" data-chart-type="' . $chart_config['type']  . '" data-target-weight="' . $target_weight['graph_value'] . '" data-target-colour="' . $chart_config['weight-target-color'] . '"></canvas></div>';
 	}
 /*
 
 	Displays either a target or weight form
 
 */
-function ws_ls_display_weight_form($target_form = false, $class_name = false, $user_id = false)
+function ws_ls_display_weight_form($target_form = false, $class_name = false, $user_id = false, $hide_titles = false, $form_number = false, $perform_save = true)
 {
-	$html_output  = '';
-	$form_id = 'ws_ls_form_' . rand(10,1000) . '_' . rand(10,1000);
-	$form_class = ' ws_ls_display_form';
-
-	if(false == $user_id){
+    $html_output  = '';
+    
+    if(false == $user_id){
 		$user_id = get_current_user_id();
 	}
+    
+    // If form ID specified add anchor
+    if($form_number != false && $perform_save){
+        $html_output .= '<a name="' . $form_number . '" />';
+    }
+
+        
+    $form_id = 'ws_ls_form_' . rand(10,1000) . '_' . rand(10,1000);
+	$form_class = ' ws_ls_display_form';
 
 	// Set title / validator
-	if($target_form)	{
-		$html_output .= '<h3 class="ws_ls_title">' . __('Target Weight', WE_LS_SLUG) . '</h3>';
-	}else {
-		$html_output .= '<h3 class="ws_ls_title">' . __('Add a new weight', WE_LS_SLUG) . '</h3>';
-	}
-
+    if (!$hide_titles)
+    {
+        if($target_form)	{
+            $html_output .= '<h3 class="ws_ls_title">' . __('Target Weight', WE_LS_SLUG) . '</h3>';
+        }else {
+            $html_output .= '<h3 class="ws_ls_title">' . __('Add a new weight', WE_LS_SLUG) . '</h3>';
+        }
+    }
+    
+    if($perform_save) {
+        $html_output .= ws_ls_capture_and_handle_form_post($user_id, $form_number);
+    }
+    
 	$html_output .= '
-	<form action="' .  get_permalink() . '" method="post" class="we-ls-weight-form we-ls-weight-form-validate' . $form_class . (($class_name) ? ' ' . $class_name : '') . '" id="' . $form_id . '" data-is-target-form="' . (($target_form) ? 'true' : 'false') . '" data-metric-unit="' . ws_ls_get_chosen_weight_unit_as_string() . '">
+	<form action="' .  get_permalink() . '#' . $form_number . '" method="post" class="we-ls-weight-form we-ls-weight-form-validate' . $form_class . (($class_name) ? ' ' . $class_name : '') . '" id="' . $form_id . '" data-is-target-form="' . (($target_form) ? 'true' : 'false') . '" data-metric-unit="' . ws_ls_get_chosen_weight_unit_as_string() . '">
 		<input type="hidden" value="' . (($target_form) ? 'true' : 'false') . '" id="ws_ls_is_target" name="ws_ls_is_target" />
 		<input type="hidden" value="true" id="ws_ls_is_weight_form" name="ws_ls_is_weight_form" />
+        <input type="hidden" value="' . $form_number . '" id="ws_ls_form_number" name="ws_ls_form_number" />
 		<div class="ws-ls-inner-form comment-input">
 			<div class="ws-ls-error-summary">
 				<ul></ul>
@@ -253,8 +280,12 @@ function ws_ls_convert_date_to_iso($date)
 }
 
 
-function ws_ls_capture_form_validate_and_save()
+function ws_ls_capture_form_validate_and_save($user_id = false)
 {
+    if(false == $user_id){
+        $user_id = get_current_user_id();
+    }
+    
 	$allowed_post_keys = array('ws_ls_is_target', 'we-ls-date', 'we-ls-weight-pounds',
 															'we-ls-weight-stones', 'we-ls-weight-kg', 'we-ls-notes');
 
@@ -290,7 +321,7 @@ function ws_ls_capture_form_validate_and_save()
 				break;
 	}
 
-	return ws_ls_save_data(get_current_user_id(), $weight_object, $is_target_form);
+	return ws_ls_save_data($user_id, $weight_object, $is_target_form);
 }
 
 function ws_ls_validate_weight_data($weight_object, $is_target_form = false)

@@ -359,4 +359,13 @@ function ws_ls_string_to_bool($value)
 
   return $value;
 }
+function ws_ls_force_bool_argument($value)
+{
+    
+    if (strtolower($value) == 'true' || (is_bool($value) === true && $value == true)) {
+        return true;
+    }
+    
+    return false;
+}
 ?>
