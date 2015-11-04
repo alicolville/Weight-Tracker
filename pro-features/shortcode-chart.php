@@ -7,8 +7,8 @@ function ws_ls_shortcode_chart($user_defined_arguments)
     if(!WS_LS_IS_PRO) {
        return false;
     }
-    
-    $chart_arguments = shortcode_atts( 
+
+    $chart_arguments = shortcode_atts(
         array(
             'user-id' => get_current_user_id(),
             'max-data-points' => WE_LS_CHART_MAX_POINTS,
@@ -21,29 +21,27 @@ function ws_ls_shortcode_chart($user_defined_arguments)
             'show-gridlines' => WE_LS_CHART_SHOW_GRID_LINES,
             'bezier' => WE_LS_CHART_BEZIER_CURVE
            ), $user_defined_arguments );
-    
-    
+
     // Tidy up a few configs
     $chart_arguments['bezier'] = ws_ls_force_bool_argument($chart_arguments['bezier']);
     $chart_arguments['show-gridlines'] = ws_ls_force_bool_argument($chart_arguments['show-gridlines']);
-  
+
     // Validate height
     if (!is_numeric($chart_arguments['height']) || $chart_arguments['height'] < 50) {
        $chart_arguments['height'] = WE_LS_CHART_HEIGHT;
     }
-    
+
     // Validate max points
     if (!is_numeric($chart_arguments['max-data-points']) || $chart_arguments['max-data-points'] < 2) {
        $chart_arguments['max-data-points'] = WE_LS_CHART_MAX_POINTS;
-    } 
+    }
     // Fetch data for chart
     $weight_data = ws_ls_get_weights($chart_arguments['user-id'], $chart_arguments['max-data-points']);
-    
+
     // Render chart
-    if ($weight_data){ 
+    if ($weight_data){
         return ws_ls_display_chart($weight_data, $chart_arguments);
     } else {
         return '<p>' . __('No weight data was found for the specified user.', WE_LS_SLUG) . '</p>';
     }
 }
-

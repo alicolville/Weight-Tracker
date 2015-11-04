@@ -1,6 +1,8 @@
 <?php
 	defined('ABSPATH') or die("Jog on!");
 
+	global $form_number;
+
 	// Set defaults
 	$globals = array(
 		'WE_LS_DATA_UNITS' => 'kg',

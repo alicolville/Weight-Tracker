@@ -36,6 +36,7 @@
 	{
 		// Build the default arguments for a chart. This can then be overrided by what is being passed in (i.e. to support shortcode arguments)
 		$chart_config = array(
+			'user-id' => get_current_user_id(),
 			'type' => WE_LS_CHART_TYPE,
 			'height' => WE_LS_CHART_HEIGHT,
             'width' => false,
@@ -45,12 +46,12 @@
 			'show-gridlines' => WE_LS_CHART_SHOW_GRID_LINES,
 			'bezier' => WE_LS_CHART_BEZIER_CURVE
 		);
-        
-        // If we are PRO and the developer has specified options then override the default
-        if($options && WS_LS_IS_PRO){
-            $chart_config = wp_parse_args( $options, $chart_config );
-        }
-     
+
+    // If we are PRO and the developer has specified options then override the default
+    if($options && WS_LS_IS_PRO){
+        $chart_config = wp_parse_args( $options, $chart_config );
+    }
+
 		$chart_id = 'ws_ls_chart_' . rand(10,1000) . '_' . rand(10,1000);
 
 		// If Pro disabled then force to line
@@ -72,7 +73,7 @@
 								            );
 		$graph_data['datasets'][0]['data'] = array();
 
-		$target_weight = ws_ls_get_user_target(get_current_user_id());
+		$target_weight = ws_ls_get_user_target($chart_config['user-id']);
 
 		$chart_type_supports_target_data = ('bar' == $chart_config['type']) ? false : true;
 
@@ -164,22 +165,17 @@
 	Displays either a target or weight form
 
 */
-function ws_ls_display_weight_form($target_form = false, $class_name = false, $user_id = false, $hide_titles = false, $form_number = false, $perform_save = true)
+function ws_ls_display_weight_form($target_form = false, $class_name = false, $user_id = false, $hide_titles = false, $form_number = false)
 {
+		global $save_response;
     $html_output  = '';
-    
-    if(false == $user_id){
-		$user_id = get_current_user_id();
-	}
-    
-    // If form ID specified add anchor
-    if($form_number != false && $perform_save){
-        $html_output .= '<a name="' . $form_number . '" />';
-    }
 
-        
+    if(false == $user_id){
+			$user_id = get_current_user_id();
+		}
+
     $form_id = 'ws_ls_form_' . rand(10,1000) . '_' . rand(10,1000);
-	$form_class = ' ws_ls_display_form';
+		$form_class = ' ws_ls_display_form';
 
 	// Set title / validator
     if (!$hide_titles)
@@ -190,17 +186,24 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
             $html_output .= '<h3 class="ws_ls_title">' . __('Add a new weight', WE_LS_SLUG) . '</h3>';
         }
     }
-    
-    if($perform_save) {
-        $html_output .= ws_ls_capture_and_handle_form_post($user_id, $form_number);
-    }
-    
+
+	// If a form was previously submitted then display resulting message!
+	if (!empty($save_response) && $save_response['form_number'] == $form_number){
+		$html_output .= $save_response['message'];
+	}
+
 	$html_output .= '
-	<form action="' .  get_permalink() . '#' . $form_number . '" method="post" class="we-ls-weight-form we-ls-weight-form-validate' . $form_class . (($class_name) ? ' ' . $class_name : '') . '" id="' . $form_id . '" data-is-target-form="' . (($target_form) ? 'true' : 'false') . '" data-metric-unit="' . ws_ls_get_chosen_weight_unit_as_string() . '">
+	<form action="' .  get_permalink() . '" method="post" class="we-ls-weight-form we-ls-weight-form-validate' . $form_class . (($class_name) ? ' ' . $class_name : '') . '" id="' . $form_id . '" data-is-target-form="' . (($target_form) ? 'true' : 'false') . '" data-metric-unit="' . ws_ls_get_chosen_weight_unit_as_string() . '">
 		<input type="hidden" value="' . (($target_form) ? 'true' : 'false') . '" id="ws_ls_is_target" name="ws_ls_is_target" />
 		<input type="hidden" value="true" id="ws_ls_is_weight_form" name="ws_ls_is_weight_form" />
-        <input type="hidden" value="' . $form_number . '" id="ws_ls_form_number" name="ws_ls_form_number" />
-		<div class="ws-ls-inner-form comment-input">
+    <input type="hidden" value="' . $user_id . '" id="ws_ls_user_id" name="ws_ls_user_id" />
+		<input type="hidden" value="' . wp_hash($user_id) . '" id="ws_ls_security" name="ws_ls_security" />';
+
+		if($form_number){
+				$html_output .= '	<input type="hidden" value="' . $form_number . '" id="ws_ls_form_number" name="ws_ls_form_number" />';
+		}
+
+		$html_output .= '<div class="ws-ls-inner-form comment-input">
 			<div class="ws-ls-error-summary">
 				<ul></ul>
 			</div>
@@ -285,7 +288,7 @@ function ws_ls_capture_form_validate_and_save($user_id = false)
     if(false == $user_id){
         $user_id = get_current_user_id();
     }
-    
+
 	$allowed_post_keys = array('ws_ls_is_target', 'we-ls-date', 'we-ls-weight-pounds',
 															'we-ls-weight-stones', 'we-ls-weight-kg', 'we-ls-notes');
 

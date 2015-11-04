@@ -5,16 +5,21 @@
 
 	function ws_ls_shortcode()
 	{
+			global $save_response;
+
 			// Display error if user not logged in
 			if (!is_user_logged_in())	{
 				return '<blockquote class="ws-ls-blockquote"><p>' .	__('You need to be logged in to record your weight.', WE_LS_SLUG) . ' <a href="' . wp_login_url(get_permalink()) . '">' . __('Login now', WE_LS_SLUG) . '</a>.</p></blockquote>';
-			}   
+			}
 
-            $user_id = get_current_user_id();
-        
-			$html_output = ws_ls_capture_and_handle_form_post($user_id, $form_number);
-    
-        
+      $user_id = get_current_user_id();
+			$html_output = '';
+
+			// If a form was previously submitted then display resulting message!
+			if (!empty($save_response) && $save_response['form_number'] == false){
+				$html_output .= $save_response['message'];
+			}
+
 			if(isset($_GET['user-preference-saved']) && 'true' == $_GET['user-preference-saved'])	{
 					$html_output .= '<blockquote class="ws-ls-blockquote"><p>' . __('Your settings have been saved!', WE_LS_SLUG) . '</p></blockquote>';
 			}elseif(WE_LS_ALLOW_USER_PREFERENCES && isset($_GET['user-delete-all']) && 'true' == $_GET['user-delete-all'])	{
@@ -67,11 +72,11 @@
 
 			// Include target form?
 			if (WE_LS_ALLOW_TARGET_WEIGHTS) {
-				$html_output .= ws_ls_display_weight_form(true, 'ws-ls-target-form', false, false, 1, false);
+				$html_output .= ws_ls_display_weight_form(true, 'ws-ls-target-form', false, false);
 			}
 
 			// Display input form
-			$html_output .= ws_ls_display_weight_form(false, false, false, false, 2, false);
+			$html_output .= ws_ls_display_weight_form(false, false, false, false);
 
 			// Close first tab
 			$html_output .= ws_ls_end_tab();
@@ -85,7 +90,7 @@
 			if ($weight_data && (count($weight_data) > 0 || $selected_week_number != -1))	{
 
 					if (WE_LS_ALLOW_TARGET_WEIGHTS && WE_LS_USE_TABS) {
-						$html_output .= ws_ls_display_weight_form(true, 'ws-ls-target-form', false, false, 3, false);
+						$html_output .= ws_ls_display_weight_form(true, 'ws-ls-target-form', false, false);
 					}
 
 					// Display week filters and data tab
