@@ -117,6 +117,17 @@ function ws_ls_settings_page() {
 															<p><?php echo __('Specify what format dates should be displayed in (i.e. UK or US format)', WE_LS_SLUG); ?></p>
 														</td>
 													</tr>
+													<tr class="<?php echo $disable_if_not_pro_class; ?>">
+														<th scope="row"><?php echo __( 'Allow decimal places?' , WE_LS_SLUG); ?></th>
+														<td>
+															<select id="ws-ls-allow-decimals" name="ws-ls-allow-decimals">
+																<option value="yes" <?php selected( get_option('ws-ls-allow-decimals'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+																<option value="no" <?php selected( get_option('ws-ls-allow-decimals'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+
+															</select>
+															<p><?php echo __('If enabled, Decimal weight entries will be allowed in Kg or Pounds mode.', WE_LS_SLUG)?></p>
+														</td>
+													</tr>
 													<tr>
 														<th scope="row"><?php echo __( 'Display data in tabs?' , WE_LS_SLUG); ?></th>
 														<td>
@@ -249,6 +260,7 @@ function ws_ls_register_settings()
 		if(WS_LS_IS_PRO)
 		{
 			register_setting( 'we-ls-options-group', 'ws-ls-allow-user-preferences' );
+			register_setting( 'we-ls-options-group', 'ws-ls-allow-decimals' );	
 		}
 
 }

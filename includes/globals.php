@@ -15,12 +15,12 @@
 		'WE_LS_WEIGHT_LINE_COLOUR' => '#aeaeae',
 		'WE_LS_WEIGHT_FILL_COLOUR' => '#f9f9f9',
 		'WE_LS_US_DATE' => false,
+		'WS_LS_USE_DECIMALS' => false,
 
 		// Pro features
 
 		// To move into settings page for Pro
 		'WE_LS_CHART_TYPE' => 'line', //line, bar
-		'WS_LS_USE_DECIMALS' => false,
 		'WE_LS_CHART_MAX_POINTS' => 25,
 		'WE_LS_CHART_HEIGHT' => 250,
 		'WE_LS_CHART_BEZIER_CURVE' => true,
@@ -68,6 +68,12 @@
 	// -----------------------------------------------------------------------------------
 	if ('us' == get_option('ws-ls-use-us-dates')){
 		$globals['WE_LS_US_DATE'] = true;
+	}
+	// -----------------------------------------------------------------------------------
+	// Allow decimals?
+	// -----------------------------------------------------------------------------------
+	if ('yes' == get_option('ws-ls-allow-decimals')){
+		$globals['WS_LS_USE_DECIMALS'] = true;
 	}
 	// -----------------------------------------------------------------------------------
 	// Define if target weights enabled
