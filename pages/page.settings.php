@@ -162,6 +162,17 @@ function ws_ls_settings_page() {
 										</div>
 										<div>
 											<table class="form-table">
+												<tr  class="<?php echo $disable_if_not_pro_class; ?>">
+													<th scope="row"><?php echo __( 'Default chart type', WE_LS_SLUG ); ?></th>
+													<td>
+														<select id="ws-ls-chart-type" name="ws-ls-chart-type">
+															<option value="line" <?php selected( get_option('ws-ls-chart-type'), 'line' ); ?>><?php echo __('Line Chart', WE_LS_SLUG)?></option>
+															<option value="bar" <?php selected( get_option('ws-ls-chart-type'), 'bar' ); ?>><?php echo __('Bar Chart', WE_LS_SLUG)?></option>
+
+														</select>
+														<p><?php echo __('If enabled, "Allows points and labels to be displayed on graph.', WE_LS_SLUG); ?></p>
+													</td>
+												</tr>
 												<tr>
 													<th scope="row"><?php echo __( 'Display points on graph?', WE_LS_SLUG ); ?></th>
 													<td>
@@ -257,10 +268,10 @@ function ws_ls_register_settings()
 		register_setting( 'we-ls-options-group', 'ws-ls-disable-css' );
 
 		// Pro only open
-		if(WS_LS_IS_PRO)
-		{
+		if(WS_LS_IS_PRO){
 			register_setting( 'we-ls-options-group', 'ws-ls-allow-user-preferences' );
-			register_setting( 'we-ls-options-group', 'ws-ls-allow-decimals' );	
+			register_setting( 'we-ls-options-group', 'ws-ls-allow-decimals' );
+			register_setting( 'we-ls-options-group', 'ws-ls-chart-type' );
 		}
 
 }

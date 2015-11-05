@@ -16,11 +16,13 @@
 		'WE_LS_WEIGHT_FILL_COLOUR' => '#f9f9f9',
 		'WE_LS_US_DATE' => false,
 		'WS_LS_USE_DECIMALS' => false,
+		'WE_LS_CHART_TYPE' => 'line', //line, bar
 
 		// Pro features
 
 		// To move into settings page for Pro
-		'WE_LS_CHART_TYPE' => 'line', //line, bar
+		'WS_LS_ADVANCED_TABLES' => false,
+
 		'WE_LS_CHART_MAX_POINTS' => 25,
 		'WE_LS_CHART_HEIGHT' => 250,
 		'WE_LS_CHART_BEZIER_CURVE' => true,
@@ -46,7 +48,7 @@
 	define('WE_LS_CACHE_KEY_WEIGHT_EXTREME', 'weight-extreme-');
 	define('WE_LS_CACHE_KEY_USER_PREFERENCE', 'user-preference');
 	define('WE_LS_TABLE_MAX_WEEK_FILTERS', 100);
-	define('WS_LS_PRO_PRICE', 20.00);
+	define('WS_LS_PRO_PRICE', 25.00);
 
 	// -----------------------------------------------------------------------------------
 	// Allow user's to override the default admin settings?
@@ -74,6 +76,13 @@
 	// -----------------------------------------------------------------------------------
 	if ('yes' == get_option('ws-ls-allow-decimals')){
 		$globals['WS_LS_USE_DECIMALS'] = true;
+	}
+	// -----------------------------------------------------------------------------------
+	// Bar chart?
+	// -----------------------------------------------------------------------------------
+	if (WS_LS_IS_PRO && in_array(get_option('ws-ls-chart-type'), array('bar', 'line'))){
+		$globals['WE_LS_CHART_TYPE'] = get_option('ws-ls-chart-type');
+		var_dump(get_option('ws-ls-chart-type'));
 	}
 	// -----------------------------------------------------------------------------------
 	// Define if target weights enabled
