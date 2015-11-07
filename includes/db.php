@@ -25,7 +25,7 @@ function ws_ls_get_user_target($user_id) {
 
       if (!is_null($row))
       {
-            $target_weight = ws_ls_weight_object($row->target_weight_weight, $row->target_weight_pounds, $row->target_weight_stones, $row->target_weight_only_pounds);
+            $target_weight = ws_ls_weight_object($user_id, $row->target_weight_weight, $row->target_weight_pounds, $row->target_weight_stones, $row->target_weight_only_pounds);
 
             // Store in cache
             ws_ls_set_cache($cache_key, $target_weight);
@@ -73,7 +73,8 @@ function ws_ls_get_weights($user_id, $limit = 100, $selected_week_number = -1)
         $weight_data = array();
 
         foreach ($rows as $raw_weight_data) {
-          array_push($weight_data, ws_ls_weight_object($raw_weight_data->weight_weight,
+          array_push($weight_data, ws_ls_weight_object($user_id,
+                                                        $raw_weight_data->weight_weight,
                                                         $raw_weight_data->weight_pounds,
                                                         $raw_weight_data->weight_stones,
                                                         $raw_weight_data->weight_only_pounds,
@@ -86,6 +87,39 @@ function ws_ls_get_weights($user_id, $limit = 100, $selected_week_number = -1)
         $cache[$cache_sub_key] = $weight_data;
         ws_ls_set_cache($cache_key, $cache);
         return $weight_data;
+      }
+    }
+
+    return false;
+}
+
+/* Fetch start weight data for given user */
+function ws_ls_get_start_weight($user_id)
+{
+    // Check if data exists in cache.
+    $cache_key = $user_id . '-' . WE_LS_CACHE_KEY_START_WEIGHT;
+    $cache = ws_ls_get_cache($cache_key);
+
+    // Return cache if found!
+    if ($cache && !empty($cache))   {
+        return $cache;
+    }
+    // No cache? hit the DB
+    else {
+
+      global $wpdb;
+      $table_name = $wpdb->prefix . WE_LS_TABLENAME;
+      $sql =  $wpdb->prepare('SELECT weight_weight FROM ' . $table_name . ' where weight_user_id = %d order by weight_date asc limit 0, 1', $user_id);
+      $cols = $wpdb->get_col($sql);
+
+      // If data found in DB then save to cache and return
+      if (is_array($cols) && count($cols) > 0) {
+
+        $first_weight = $cols[0];
+
+        // Fetch existing cached object for this user and store
+        ws_ls_set_cache($cache_key, $first_weight);
+        return $first_weight;
       }
     }
 

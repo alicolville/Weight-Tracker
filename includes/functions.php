@@ -9,16 +9,18 @@ function ws_ls_is_date_intervals_enabled()	{
 }
 
 /* Get string representation of a weight  */
-function ws_ls_weight_object($kg, $pounds, $stones, $pounds_only, $notes = '', $date = false, $detect_and_convert_missing_values = false)
+function ws_ls_weight_object($user_id, $kg, $pounds, $stones, $pounds_only, $notes = '', $date = false, $detect_and_convert_missing_values = false)
 {
     $weight['display'] = '';
-    $weight['user_id'] = false;
+    $weight['user_id'] = $user_id;
     $weight['only_pounds'] = $pounds_only;
     $weight['kg'] = $kg;
     $weight['stones'] = $stones;
     $weight['pounds'] = $pounds;
     $weight['graph_value'] = 0;
     $weight['notes'] = esc_html($notes);
+    $weight['first_weight'] = false;
+    $weight['difference_from_unit'] = '';
 
     // Build different date formats
     if($date != false && !empty($date)) {
@@ -76,6 +78,13 @@ function ws_ls_weight_object($kg, $pounds, $stones, $pounds_only, $notes = '', $
         break;
   }
 
+  // Generate weight index
+  if ($weight['user_id']) {
+    $weight['first_weight'] = ws_ls_get_start_weight($weight['user_id']);
+    if(is_numeric($weight['first_weight']) && $weight['first_weight'] > 0 && $weight['first_weight'] <> $weight['kg']) {
+      $weight['difference_from_start'] = (($weight['kg'] - $weight['first_weight']) / $weight['first_weight']) * 100;
+    }
+  }
   return $weight;
 }
 
@@ -361,11 +370,11 @@ function ws_ls_string_to_bool($value)
 }
 function ws_ls_force_bool_argument($value)
 {
-    
+
     if (strtolower($value) == 'true' || (is_bool($value) === true && $value == true)) {
         return true;
     }
-    
+
     return false;
 }
 ?>

@@ -98,8 +98,12 @@
 					if(count($week_ranges) <= WE_LS_TABLE_MAX_WEEK_FILTERS) {
 						$html_output .= ws_ls_display_week_filters($week_ranges, $selected_week_number);
 					}
-					$html_output .= ws_ls_display_table($weight_data);
 
+					// if (WS_LS_ADVANCED_TABLES){
+					// 	$html_output .= ws_ls_advanced_data_table($weight_data);
+					// } else {
+					// 	$html_output .= ws_ls_display_table($weight_data);
+					// }
 			}
 			elseif (WE_LS_USE_TABS) {
 				$html_output .= __('You haven\'t entered any weight data yet.', WE_LS_SLUG);
@@ -116,7 +120,11 @@
 			$html_output .= ws_ls_end_tab();
 			$html_output .= ws_ls_end_tab();
 
-
+	if (WS_LS_ADVANCED_TABLES){
+		$html_output .= ws_ls_advanced_data_table($weight_data);
+	} else {
+		$html_output .= ws_ls_display_table($weight_data);
+	}
 			return $html_output;
 
 	}

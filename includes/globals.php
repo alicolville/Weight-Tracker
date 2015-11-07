@@ -21,8 +21,8 @@
 		// Pro features
 
 		// To move into settings page for Pro
-		'WS_LS_ADVANCED_TABLES' => false,
-
+		'WS_LS_ADVANCED_TABLES' => true,
+		'WS_LS_DISPLAY_WEIGHT_INDEX' => true,
 		'WE_LS_CHART_MAX_POINTS' => 25,
 		'WE_LS_CHART_HEIGHT' => 250,
 		'WE_LS_CHART_BEZIER_CURVE' => true,
@@ -45,6 +45,7 @@
 	define('WE_LS_CACHE_KEY_DATA', 'weight-data');
 	define('WE_LS_CACHE_KEY_MIN_MAX_DATES', 'min-max-dates');
 	define('WE_LS_CACHE_KEY_TARGET_WEIGHT', 'target-weight');
+	define('WE_LS_CACHE_KEY_START_WEIGHT', 'start-weight');
 	define('WE_LS_CACHE_KEY_WEIGHT_EXTREME', 'weight-extreme-');
 	define('WE_LS_CACHE_KEY_USER_PREFERENCE', 'user-preference');
 	define('WE_LS_TABLE_MAX_WEEK_FILTERS', 100);
@@ -82,7 +83,6 @@
 	// -----------------------------------------------------------------------------------
 	if (WS_LS_IS_PRO && in_array(get_option('ws-ls-chart-type'), array('bar', 'line'))){
 		$globals['WE_LS_CHART_TYPE'] = get_option('ws-ls-chart-type');
-		var_dump(get_option('ws-ls-chart-type'));
 	}
 	// -----------------------------------------------------------------------------------
 	// Define if target weights enabled

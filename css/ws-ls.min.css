@@ -42,7 +42,7 @@
 #ws-ls-tabs .wlt-user-preferences input, #ws-ls-tabs .wlt-user-preferences select
 {
 	height: 30px;
-	
+
 }
 #ws-ls-tabs .wlt-user-preferences select
 {
@@ -74,10 +74,6 @@
 {
   color: red;
   font-weight: bold;
-}
-.ws-ls-data-table td, th
-{
-
 }
 .ws-ls-notice
 {

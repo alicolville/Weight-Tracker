@@ -314,13 +314,13 @@ function ws_ls_capture_form_validate_and_save($user_id = false)
 
 	switch (ws_ls_get_config('WE_LS_DATA_UNITS')) {
 			case 'pounds_only':
-					$weight_object = ws_ls_weight_object(0, 0, 0, $form_values['we-ls-weight-pounds'], $weight_notes,	$weight_date, true);
+					$weight_object = ws_ls_weight_object($user_id, 0, 0, 0, $form_values['we-ls-weight-pounds'], $weight_notes,	$weight_date, true);
 				break;
 			case 'kg':
-					$weight_object = ws_ls_weight_object($form_values['we-ls-weight-kg'], 0, 0, 0, $weight_notes,	$weight_date, true);
+					$weight_object = ws_ls_weight_object($user_id, $form_values['we-ls-weight-kg'], 0, 0, 0, $weight_notes,	$weight_date, true);
 				break;
 			default:
-					$weight_object = ws_ls_weight_object(0, $form_values['we-ls-weight-pounds'], $form_values['we-ls-weight-stones'], 0, $weight_notes,	$weight_date, true);
+					$weight_object = ws_ls_weight_object($user_id, 0, $form_values['we-ls-weight-pounds'], $form_values['we-ls-weight-stones'], 0, $weight_notes,	$weight_date, true);
 				break;
 	}
 
@@ -368,6 +368,7 @@ function ws_ls_get_js_config()
 		'validation-we-ls-date' => __('Please enter a valid date', WE_LS_SLUG),
 		'validation-we-ls-history' => __('Please confirm you wish to delete ALL your weight history', WE_LS_SLUG),
 		'tabs-enabled' => (WE_LS_USE_TABS) ? 'true' : 'false',
+		'advanced-tables-enabled' => (WS_LS_ADVANCED_TABLES) ? 'true' : 'false',
 		'ajax-url' => admin_url('admin-ajax.php'),
 		'ajax-security-nonce-user-pref' => wp_create_nonce( 'ws_ls_save_preferences' ),
 		'is-pro' => (WS_LS_IS_PRO) ? 'true' : 'false',
