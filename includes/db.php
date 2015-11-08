@@ -64,7 +64,7 @@ function ws_ls_get_weights($user_id, $limit = 100, $selected_week_number = -1)
       }
 
       $table_name = $wpdb->prefix . WE_LS_TABLENAME;
-      $sql =  $wpdb->prepare('SELECT weight_date, weight_weight, weight_stones, weight_pounds, weight_only_pounds, weight_notes FROM ' . $table_name . ' where weight_user_id = %d ' . $additional_sql. ' order by weight_date limit 0, %d', $user_id,  $limit);
+      $sql =  $wpdb->prepare('SELECT id, weight_date, weight_weight, weight_stones, weight_pounds, weight_only_pounds, weight_notes FROM ' . $table_name . ' where weight_user_id = %d ' . $additional_sql. ' order by weight_date limit 0, %d', $user_id,  $limit);
       $rows = $wpdb->get_results( $sql );
 
       // If data found in DB then save to cache and return
@@ -79,7 +79,9 @@ function ws_ls_get_weights($user_id, $limit = 100, $selected_week_number = -1)
                                                         $raw_weight_data->weight_stones,
                                                         $raw_weight_data->weight_only_pounds,
                                                         $raw_weight_data->weight_notes,
-                                                        $raw_weight_data->weight_date
+                                                        $raw_weight_data->weight_date,
+                                                        false,
+                                                        $raw_weight_data->id
                                                       ));
         }
 

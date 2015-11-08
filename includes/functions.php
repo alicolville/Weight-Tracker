@@ -9,7 +9,7 @@ function ws_ls_is_date_intervals_enabled()	{
 }
 
 /* Get string representation of a weight  */
-function ws_ls_weight_object($user_id, $kg, $pounds, $stones, $pounds_only, $notes = '', $date = false, $detect_and_convert_missing_values = false)
+function ws_ls_weight_object($user_id, $kg, $pounds, $stones, $pounds_only, $notes = '', $date = false, $detect_and_convert_missing_values = false, $database_row_id = false)
 {
     $weight['display'] = '';
     $weight['user_id'] = $user_id;
@@ -21,6 +21,7 @@ function ws_ls_weight_object($user_id, $kg, $pounds, $stones, $pounds_only, $not
     $weight['notes'] = esc_html($notes);
     $weight['first_weight'] = false;
     $weight['difference_from_unit'] = '';
+    $weight['db_row_id'] = $database_row_id;
 
     // Build different date formats
     if($date != false && !empty($date)) {
@@ -83,6 +84,7 @@ function ws_ls_weight_object($user_id, $kg, $pounds, $stones, $pounds_only, $not
     $weight['first_weight'] = ws_ls_get_start_weight($weight['user_id']);
     if(is_numeric($weight['first_weight']) && $weight['first_weight'] > 0 && $weight['first_weight'] <> $weight['kg']) {
       $weight['difference_from_start'] = (($weight['kg'] - $weight['first_weight']) / $weight['first_weight']) * 100;
+      $weight['difference_from_start'] = round($weight['difference_from_start']);
     }
   }
   return $weight;
@@ -319,6 +321,10 @@ function ws_ls_round_weights($weight)
   $weight['kg'] = round($weight['kg']);
   $weight['stones'] = round($weight['stones']);
   $weight['pounds'] = round($weight['pounds']);
+
+  if (is_numeric($weight['difference_from_start'])) {
+    $weight['difference_from_start'] = round($weight['difference_from_start']);
+  }
 
   return $weight;
 }

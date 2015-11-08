@@ -99,11 +99,11 @@
 						$html_output .= ws_ls_display_week_filters($week_ranges, $selected_week_number);
 					}
 
-					// if (WS_LS_ADVANCED_TABLES){
-					// 	$html_output .= ws_ls_advanced_data_table($weight_data);
-					// } else {
-					// 	$html_output .= ws_ls_display_table($weight_data);
-					// }
+					if (WS_LS_ADVANCED_TABLES){
+						$html_output .= ws_ls_advanced_data_table($weight_data);
+					} else {
+						$html_output .= ws_ls_display_table($weight_data);
+					}
 			}
 			elseif (WE_LS_USE_TABS) {
 				$html_output .= __('You haven\'t entered any weight data yet.', WE_LS_SLUG);
@@ -119,19 +119,20 @@
 
 			$html_output .= ws_ls_end_tab();
 			$html_output .= ws_ls_end_tab();
-
-	if (WS_LS_ADVANCED_TABLES){
-		$html_output .= ws_ls_advanced_data_table($weight_data);
-	} else {
-		$html_output .= ws_ls_display_table($weight_data);
-	}
+//TODO: REmove
+	// if (WS_LS_ADVANCED_TABLES){
+	// 	$html_output .= ws_ls_advanced_table_test($weight_data);
+	$html_output .= ws_ls_advanced_data_table($weight_data);
+	// } else {
+	// 	$html_output .= ws_ls_display_table($weight_data);
+	// }
 			return $html_output;
 
 	}
 
 function ws_ls_start_tab($tab_name)	{
 	if (WE_LS_USE_TABS) {
-		return '<div' . (($tab_name) ? ' class="' . $tab_name . '"' : '') . '>';
+		return '<div' . (($tab_name) ? ' class="' . $tab_name . '"' : '') . '">';
 	}
 	return '';
 }
