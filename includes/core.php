@@ -188,7 +188,7 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
     }
 
 	// If a form was previously submitted then display resulting message!
-	if (!empty($save_response) && $save_response['form_number'] == $form_number){
+	if ($form_number && !empty($save_response) && $save_response['form_number'] == $form_number){
 		$html_output .= $save_response['message'];
 	}
 
