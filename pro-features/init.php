@@ -27,21 +27,10 @@ add_action( 'init', 'ws_ls_register_pro_shortcodes');
 function ws_ls_enqeue_pro_scripts(){
 
   if(WS_LS_ADVANCED_TABLES) {
-
-    //TODO: Tidy up
-  //  wp_enqueue_style('ws-ls-datatables', plugins_url( '../pro-features/DataTables/datatables.min.css', __FILE__ ), array(), WE_LS_CURRENT_VERSION);
-    //wp_enqueue_style('ws-ls-datatables-responsive', plugins_url( '../pro-features/DataTables/Responsive-1.0.7/css/responsive.dataTables.min.css', __FILE__ ), array(), WE_LS_CURRENT_VERSION);
-  //  wp_enqueue_script('ws-ls-datatables', plugins_url( '../pro-features/DataTables/datatables.min.js', __FILE__ ), array('jquery'), WE_LS_CURRENT_VERSION);
-
-
-    //wp_enqueue_script('ws-ls-datatables-moment', '//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js', array('jquery'), WE_LS_CURRENT_VERSION);
-    //wp_enqueue_script('ws-ls-datatables-moment-date', '//cdn.datatables.net/plug-ins/1.10.7/sorting/datetime-moment.js', array('jquery'), WE_LS_CURRENT_VERSION);
-
-    //wp_enqueue_script('ws-ls-datatables', 'https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js', array('jquery'), WE_LS_CURRENT_VERSION);
     wp_enqueue_script('ws-ls-datatables-responsive', 'https://cdn.datatables.net/r/dt/dt-1.10.9,r-1.0.7/datatables.min.js', array('jquery'), WE_LS_CURRENT_VERSION);
-
-    //wp_enqueue_style('ws-ls-datatables',  'https://cdn.datatables.net/1.10.9/css/jquery.dataTables.min.css', array(), WE_LS_CURRENT_VERSION);
     wp_enqueue_style('ws-ls-datatables-responsive', 'https://cdn.datatables.net/r/dt/dt-1.10.9,r-1.0.7/datatables.min.css', array(), WE_LS_CURRENT_VERSION);
+    wp_enqueue_script('ws-ls-datatables-moment', '//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js', array('jquery'), WE_LS_CURRENT_VERSION);
+    wp_enqueue_script('ws-ls-datatables-moment-date', '//cdn.datatables.net/plug-ins/1.10.7/sorting/datetime-moment.js', array('jquery'), WE_LS_CURRENT_VERSION);
 
   }
 }

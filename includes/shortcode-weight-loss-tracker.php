@@ -119,13 +119,7 @@
 
 			$html_output .= ws_ls_end_tab();
 			$html_output .= ws_ls_end_tab();
-//TODO: REmove
-	// if (WS_LS_ADVANCED_TABLES){
-	// 	$html_output .= ws_ls_advanced_table_test($weight_data);
-	$html_output .= ws_ls_advanced_data_table($weight_data);
-	// } else {
-	// 	$html_output .= ws_ls_display_table($weight_data);
-	// }
+
 			return $html_output;
 
 	}
