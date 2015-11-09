@@ -9,6 +9,7 @@ if(defined('WS_LS_ABSPATH')){
   include WS_LS_ABSPATH . 'pro-features/shortcode-chart.php';
   include WS_LS_ABSPATH . 'pro-features/shortcode-form.php';
   include WS_LS_ABSPATH . 'pro-features/advanced_table.php';
+  include WS_LS_ABSPATH . 'pro-features/widgets.php';
 }
 
 // Register shortcodes
