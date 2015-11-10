@@ -9,7 +9,8 @@ if(defined('WS_LS_ABSPATH')){
   include WS_LS_ABSPATH . 'pro-features/shortcode-chart.php';
   include WS_LS_ABSPATH . 'pro-features/shortcode-form.php';
   include WS_LS_ABSPATH . 'pro-features/advanced_table.php';
-  include WS_LS_ABSPATH . 'pro-features/widgets.php';
+  include WS_LS_ABSPATH . 'pro-features/widget-chart.php';
+  include WS_LS_ABSPATH . 'pro-features/widget-form.php';
 }
 
 // Register shortcodes
@@ -36,3 +37,11 @@ function ws_ls_enqeue_pro_scripts(){
   }
 }
 add_action( 'wp_enqueue_scripts', 'ws_ls_enqeue_pro_scripts');
+
+
+function we_ls_register_widgets()
+{
+    register_widget( 'ws_ls_widget_chart' );
+    register_widget( 'ws_ls_widget_form' );
+}
+add_action( 'after_setup_theme', 'we_ls_register_widgets', 20 );

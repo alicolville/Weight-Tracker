@@ -39,7 +39,7 @@
 			'user-id' => get_current_user_id(),
 			'type' => WE_LS_CHART_TYPE,
 			'height' => WE_LS_CHART_HEIGHT,
-            'width' => false,
+      'width' => false,
 			'weight-line-color' => WE_LS_WEIGHT_LINE_COLOUR,
 			'weight-fill-color' => WE_LS_WEIGHT_FILL_COLOUR,
 			'weight-target-color' => WE_LS_TARGET_LINE_COLOUR,
@@ -130,10 +130,6 @@
 		  	'scaleShowGridLines' => (($chart_config['show-gridlines']) ? 'true' : ''),
 				'scaleGridLineColor' => 'rgba(0,0,0,.05)',
 				'scaleGridLineWidth' => 1,
-				'scaleOverride' => false,
-				'scaleSteps:' => 14,
-				'scaleStepWidth:' => 10,
-				'scaleStartValue:' => 20,
 				'bezierCurve' => (($chart_config['bezier'] == true) ? 'true' : ''),
 				'bezierCurveTension' => 0.4,
 				'pointDot' =>  ((WE_LS_ALLOW_POINTS) ? 'true' : ''),
@@ -158,14 +154,14 @@
 		// Embed JavaScript options object for this graph into page
 		wp_localize_script( 'jquery-chart-ws-ls', $chart_id . '_options', $graph_line_options );
 
-		return '<div style="width:94%;float:left;"><canvas id="' . $chart_id . '" class="ws-ls-chart" ' . (($chart_config['width']) ? 'width="'.  $chart_config['width'] . '" ' : '') . 'height="' . $chart_config['height'] . '" data-chart-type="' . $chart_config['type']  . '" data-target-weight="' . $target_weight['graph_value'] . '" data-target-colour="' . $chart_config['weight-target-color'] . '"></canvas></div>';
+		return '<div><canvas id="' . $chart_id . '" class="ws-ls-chart" ' . (($chart_config['width']) ? 'width="'.  $chart_config['width'] . '" ' : '') . 'height="' . $chart_config['height'] . '" data-chart-type="' . $chart_config['type']  . '" data-target-weight="' . $target_weight['graph_value'] . '" data-target-colour="' . $chart_config['weight-target-color'] . '"></canvas></div>';
 	}
 /*
 
 	Displays either a target or weight form
 
 */
-function ws_ls_display_weight_form($target_form = false, $class_name = false, $user_id = false, $hide_titles = false, $form_number = false)
+function ws_ls_display_weight_form($target_form = false, $class_name = false, $user_id = false, $hide_titles = false, $form_number = false, $force_to_todays_date = false)
 {
 		global $save_response;
     $html_output  = '';
@@ -219,7 +215,12 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 					$default_date = date("m/d/Y");
 				}
 
-				$html_output .= '<input type="text" name="we-ls-date" tabindex="' . ws_ls_get_next_tab_index() . '" id="we-ls-date" value="' . $default_date . '" placeholder="' . $default_date . '" size="22" tabindex="1" class="we-ls-datepicker">';
+				if(false == $force_to_todays_date){
+					$html_output .= '<input type="text" name="we-ls-date" tabindex="' . ws_ls_get_next_tab_index() . '" id="we-ls-date-' . $form_id . '" value="' . $default_date . '" placeholder="' . $default_date . '" size="22" tabindex="1" class="we-ls-datepicker">';
+				} else {
+					$html_output .= '<input type="hidden" name="we-ls-date" value="' . $default_date . '">';
+				}
+
 			} else {
 
 				$target_weight = ws_ls_get_user_target($user_id);

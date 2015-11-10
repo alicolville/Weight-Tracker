@@ -1,0 +1,3 @@
+TODO:
+
+- Chart widget width ok in Line. Shit in bar.

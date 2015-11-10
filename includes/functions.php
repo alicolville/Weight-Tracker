@@ -383,4 +383,11 @@ function ws_ls_force_bool_argument($value)
 
     return false;
 }
+function ws_ls_remove_non_numeric($text)
+{
+  if(!empty($text)){
+    return preg_replace("/[^0-9]/", "", $text);
+  }
+  return $text;
+}
 ?>

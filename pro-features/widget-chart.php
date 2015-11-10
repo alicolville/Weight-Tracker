@@ -8,7 +8,7 @@ class ws_ls_widget_chart extends WP_Widget {
 
 	function __construct() {
 		parent::__construct(
-			'ws_ls_widget',
+			'ws_ls_widget_chart',
 			__('Weight Loss Tracker - Chart', WE_LS_SLUG),
 			array( 'description' => __('Display a chart to see your current progress.', WE_LS_SLUG) ) // Args
 		);
@@ -140,8 +140,3 @@ class ws_ls_widget_chart extends WP_Widget {
 	}
 
 }
-function we_ls_register_widgets()
-{
-    register_widget( 'ws_ls_widget_chart' );
-}
-add_action( 'after_setup_theme', 'we_ls_register_widgets', 20 );
