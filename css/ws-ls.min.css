@@ -110,3 +110,7 @@
 {
 	padding: 1px 1px 1px 3px !important;
 }
+.ws-ls-hide
+{
+	display: none !important;
+}

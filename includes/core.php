@@ -371,7 +371,7 @@ function ws_ls_get_js_config()
 		'tabs-enabled' => (WE_LS_USE_TABS) ? 'true' : 'false',
 		'advanced-tables-enabled' => (WS_LS_ADVANCED_TABLES) ? 'true' : 'false',
 		'ajax-url' => admin_url('admin-ajax.php'),
-		'ajax-security-nonce-user-pref' => wp_create_nonce( 'ws_ls_save_preferences' ),
+		'ajax-security-nonce' => wp_create_nonce( 'ws-ls-nonce' ),
 		'is-pro' => (WS_LS_IS_PRO) ? 'true' : 'false',
 		'user-id' => get_current_user_id(),
 		'current-url' => get_permalink()

@@ -189,6 +189,23 @@ function ws_ls_save_data($user_id, $weight_object, $is_target_form = false)
   return $result;
 }
 
+function ws_ls_delete_entry($user_id, $row_id)
+{
+  $result = false;
+  global $wpdb;
+
+  if (is_numeric($user_id) && is_numeric($row_id)) {
+    $result = $wpdb->delete($wpdb->prefix . WE_LS_TABLENAME, array( 'id' => $row_id, 'weight_user_id' => $user_id));
+
+    if ($result !== false) {
+      $result = true;
+      // Tidy up cache
+      ws_ls_delete_cache_for_given_user($user_id);
+    }
+  }
+  return $result;
+}
+
 function ws_ls_get_min_max_dates($user_id)
 {
   global $wpdb;

@@ -6,7 +6,7 @@ function ws_ls_save_preferences_callback()
 {
   $ajax_response = 0;
 
-  check_ajax_referer( 'ws_ls_save_preferences', 'security' ); //TODO: Add back in!
+  check_ajax_referer( 'ws-ls-nonce', 'security' ); //TODO: Add back in!
 
   // List of form fields / globals we want to store for the user
   $keys_to_save = array('WE_LS_DATA_UNITS', 'WE_LS_US_DATE');
@@ -34,7 +34,28 @@ function ws_ls_save_preferences_callback()
 	wp_die();
 }
 add_action( 'wp_ajax_ws_ls_save_preferences', 'ws_ls_save_preferences_callback' );
-add_action( 'wp_ajax_nopriv_ws_ls_save_preferences', 'ws_ls_save_preferences_callback' ); //TODO: REmove to non-logged in users
+
+function ws_ls_delete_entry_callback()
+{
+  $ajax_response = 0;
+
+  check_ajax_referer( 'ws-ls-nonce', 'security' ); //TODO: Add back in!
+
+  $user_id = ws_ls_ajax_post_value('user-id');
+  $row_id = ws_ls_ajax_post_value('row-id');
+
+  if(true == ws_ls_delete_entry($user_id, $row_id)){
+    $ajax_response = 1;
+  }
+  echo $ajax_response;
+	wp_die();
+}
+add_action( 'wp_ajax_ws_ls_delete_entry', 'ws_ls_delete_entry_callback' );
+
+
+
+
+
 
 function ws_ls_ajax_post_value($key, $json_decode = false)
 {

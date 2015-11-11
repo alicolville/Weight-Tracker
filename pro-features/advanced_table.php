@@ -3,8 +3,10 @@
 
   function ws_ls_advanced_data_table($weight_data)
   {
+			$table_id = 'ws_ls_data_table_' . rand(10,1000) . '_' . rand(10,1000);
+
       $html_output = '
-      <table id="ws-ls-main-data-table" class="display ws-ls-advanced-data-table" cellspacing="0" width="100%">
+      <table id="' . $table_id . '" class="display ws-ls-advanced-data-table" cellspacing="0" width="100%">
         <thead>
         <tr>
           <th>' . __('Date', WE_LS_SLUG) .'</th>
@@ -19,7 +21,7 @@
 
       foreach ($weight_data as $weight_object)
       {
-                $html_output .= '<tr>
+                $html_output .= '<tr id="ws-ls-row-' . $weight_object['db_row_id'] . '">
                             <td>' . ws_ls_render_date($weight_object) . '</td>
                             <td>' . $weight_object['display'] . '</td>
                             <td>' . ((isset($weight_object['difference_from_start']) && is_numeric($weight_object['difference_from_start'])) ? $weight_object['difference_from_start'] . '%' : '') . '</td>

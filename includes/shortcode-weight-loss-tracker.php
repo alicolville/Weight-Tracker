@@ -48,6 +48,7 @@
 							<ul>
 									<li><a>' . __('Overview', WE_LS_SLUG) . '<span>' . __('Chart / Add Weight', WE_LS_SLUG) . '</span></a></li>
 									<li><a>' . __('In Detail', WE_LS_SLUG) . '<span>' . __('View all recorded weights', WE_LS_SLUG) . '</span></a></li>';
+
 									// If enabled, have a third tab to allow users to manage their own settings!
 									if(WE_LS_ALLOW_USER_PREFERENCES){
 										$html_output .= '<li><a>' . __('Settings', WE_LS_SLUG) . '<span>' . __('Choose weight units, date format, etc', WE_LS_SLUG) . '</span></a></li>';
