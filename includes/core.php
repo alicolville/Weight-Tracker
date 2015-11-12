@@ -121,7 +121,8 @@
 					'scaleLabel' => '&nbsp;<%= value%>',
 					'barStrokeWidth' => 2,
 					'barValueSpacing' => 1,
-					'barDatasetSpacing' => 1
+					'barDatasetSpacing' => 1,
+					'responsive' => true
 				);
 		}
 		elseif ('line' == $chart_config['type']) {

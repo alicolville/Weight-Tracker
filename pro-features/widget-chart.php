@@ -17,7 +17,6 @@ class ws_ls_widget_chart extends WP_Widget {
             'title' => __('Weight Loss Tracker', WE_LS_SLUG),
             'max-points' => 5,
             'user-id' => '',
-            'height' => '',
             'type' => 'line'
         );
 
@@ -39,11 +38,7 @@ class ws_ls_widget_chart extends WP_Widget {
             $chart_arguments =  array('user-id' => get_current_user_id(),
                                     'max-data-points' => WE_LS_CHART_MAX_POINTS);
 
-            // Override defaults if specified
-            if(is_numeric($instance['height'])) {
-                $chart_arguments['height'] = $instance['height'];
-            }
-            if(is_numeric($instance['user-id']) && $instance['user-id'] != 0) {
+						if(is_numeric($instance['user-id']) && $instance['user-id'] != 0) {
                 $chart_arguments['user-id'] = $instance['user-id'];
             }
             if(is_numeric($instance['max-points'])) {
@@ -109,10 +104,7 @@ class ws_ls_widget_chart extends WP_Widget {
 			<label for="<?php echo $this->get_field_id( 'user-id' ); ?>"><?php _e('ID of user (leave blank to show chart for current user)', WE_LS_SLUG); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id( 'user-id' ); ?>" name="<?php echo $this->get_field_name( 'user-id' ); ?>" type="text" value="<?php echo esc_attr( $field_values['user-id'] ); ?>">
 		</p>
-        <p>
-			<label for="<?php echo $this->get_field_id( 'height' ); ?>"><?php _e('Height of Chart in pixels (Leave blank to use defaults)', WE_LS_SLUG); ?></label>
-			<input class="widefat" id="<?php echo $this->get_field_id( 'height' ); ?>" name="<?php echo $this->get_field_name( 'height' ); ?>" type="text" value="<?php echo esc_attr( $field_values['height'] ); ?>">
-		</p>
+
     <p><small><?php _e('Note: By default, the chart will be displayed in the weight unit chosen by the logged in user. If not specfied the plugin default will be used.', WE_LS_SLUG); ?></small></p>
 
 		<?php
