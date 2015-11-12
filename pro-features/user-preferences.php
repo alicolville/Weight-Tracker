@@ -1,4 +1,4 @@
-<?php
+ <?php
 defined('ABSPATH') or die("Jog on!");
 
 function ws_ls_user_preferences_form()
@@ -21,7 +21,7 @@ function ws_ls_user_preferences_form()
       <option value="true" ' . selected( ws_ls_get_config('WE_LS_US_DATE'), true, false ) . '>' . __('US (MM/DD/YYYY)', WE_LS_SLUG) . '</option>
     </select>
   <input name="submit_button" type="submit" id="we-ls-user-pref-submit"  tabindex="' . ws_ls_get_next_tab_index() . '" value="' .  __('Save Settings', WE_LS_SLUG) . '" class="comment-submit btn btn-default button default small fusion-button button-small button-default button-round button-flat">
-</form>
+</form><br />
 ' . ws_ls_title(__('Delete existing data', WE_LS_SLUG)) . '
 <form action="' .  get_permalink() . '?user-delete-all=true" class="ws-ls-user-delete-all" method="post">
 <div class="ws-ls-error-summary">

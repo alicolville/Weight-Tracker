@@ -154,7 +154,10 @@
 		// Embed JavaScript options object for this graph into page
 		wp_localize_script( 'jquery-chart-ws-ls', $chart_id . '_options', $graph_line_options );
 
-		return '<div><canvas id="' . $chart_id . '" class="ws-ls-chart" ' . (($chart_config['width']) ? 'width="'.  $chart_config['width'] . '" ' : '') . 'height="' . $chart_config['height'] . '" data-chart-type="' . $chart_config['type']  . '" data-target-weight="' . $target_weight['graph_value'] . '" data-target-colour="' . $chart_config['weight-target-color'] . '"></canvas></div>';
+		$html = '<div><canvas id="' . $chart_id . '" class="ws-ls-chart" ' . (($chart_config['width']) ? 'width="'.  $chart_config['width'] . '" ' : '') . 'height="' . $chart_config['height'] . '" data-chart-type="' . $chart_config['type']  . '" data-target-weight="' . $target_weight['graph_value'] . '" data-target-colour="' . $chart_config['weight-target-color'] . '"></canvas>';
+		$html .= '<div class="ws-ls-notice-of-refresh ws-ls-reload-page-if-clicked ws-ls-hide"><a href="#">' . __('You have modified data. Please refresh page.', WE_LS_SLUG) . '</a></div>';
+		$html .= '</div>';
+		return $html;
 	}
 /*
 

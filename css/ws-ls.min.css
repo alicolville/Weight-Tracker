@@ -27,43 +27,43 @@
     padding: 0px 0px 0px 5px;
 }
 .we-ls-weight-form input[type=number].focus, .we-ls-weight-form input[type=text].focus, .we-ls-weight-form select.focus,
-.we-ls-datepicker.focus, .ws-ls-select.focus, #ws-ls-tabs .wlt-user-preferences input, #ws-ls-tabs .wlt-user-preferences select {
+.we-ls-datepicker.focus, .ws-ls-select.focus, .ws-ls-user-pref-form input, .ws-ls-user-pref-form select, .ws-ls-user-delete-all select {
   border: solid 1px #707070;
   box-shadow: 0 0 5px 1px #969696;
     box-sizing: content-box !important;
 }
 .we-ls-weight-form input[type=number], .we-ls-weight-form input[type=text], .we-ls-weight-form select, .we-ls-weight-form .we-ls-datepicker,
-.we-ls-weight-form .ws-ls-select, #ws-ls-tabs .wlt-user-preferences input, #ws-ls-tabs .wlt-user-preferences select
+.we-ls-weight-form .ws-ls-select, .ws-ls-user-pref-form input, .ws-ls-user-pref-form select, .ws-ls-user-delete-all select
 {
 	height: 30px;
 }
 .we-ls-weight-form input[type=number], .we-ls-weight-form input[type=text], .we-ls-weight-form select, .we-ls-weight-form .we-ls-datepicker, .we-ls-weight-form .ws-ls-select,
-#ws-ls-tabs .wlt-user-preferences input, #ws-ls-tabs .wlt-user-preferences select
+ .ws-ls-user-pref-form input, .ws-ls-user-pref-form select, .ws-ls-user-delete-all select
 {
 	height: 30px;
 
 }
-#ws-ls-tabs .wlt-user-preferences select
+.ws-ls-user-pref-form select, .ws-ls-user-delete-all select
 {
   width:100%;
 	margin-bottom: 20px;
 }
-#ws-ls-tabs .wlt-user-preferences form
+ .ws-ls-user-pref-form form
 {
 	margin-bottom: 20px;
 }
-#ws-ls-tabs textarea
+.we-ls-weight-form textarea
 {
 	padding:5px;
 }
-.we-ls-weight-form .ws-ls-error-summary
+.ws-ls-error-summary
 {
 	width: 100%;
 	padding-left: 30px;
 	color: red;
 	display:none;
 }
-.we-ls-weight-form .ws-ls-error-summary ul
+.ws-ls-error-summary ul
 {
 	width: 100%;
 	padding: 0px;
@@ -113,4 +113,11 @@
 .ws-ls-hide
 {
 	display: none !important;
+}
+.ws-ls-notice-of-refresh
+{
+	width: 100%;
+	text-align: center;
+	margin-bottom:3px;
+	font-size:0.8em;
 }
