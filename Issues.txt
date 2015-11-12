@@ -1,3 +1,4 @@
 TODO:
 
 - Stop main shortcode being placed more than once on a page
+- Add clear form button

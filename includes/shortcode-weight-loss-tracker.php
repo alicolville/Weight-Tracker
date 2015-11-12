@@ -77,7 +77,7 @@
 			}
 
 			// Display input form
-			$html_output .= ws_ls_display_weight_form(false, false, false, false);
+			$html_output .= ws_ls_display_weight_form(false, 'ws-ls-main-weight-form', false, false);
 
 			// Close first tab
 			$html_output .= ws_ls_end_tab();

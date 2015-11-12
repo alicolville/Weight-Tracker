@@ -94,7 +94,29 @@ function ws_ls_get_weights($user_id, $limit = 100, $selected_week_number = -1)
 
     return false;
 }
+function ws_ls_get_weight($user_id, $row_id)
+{
+    global $wpdb;
+    $table_name = $wpdb->prefix . WE_LS_TABLENAME;
+    $sql =  $wpdb->prepare('SELECT * FROM ' . $table_name . ' where weight_user_id = %d and id = %d', $user_id, $row_id);
+    $row = $wpdb->get_row( $sql );
 
+    if (!is_null($row) ) {
+
+        return ws_ls_weight_object($user_id,
+                                    $row->weight_weight,
+                                    $row->weight_pounds,
+                                    $row->weight_stones,
+                                    $row->weight_only_pounds,
+                                    $row->weight_notes,
+                                    $row->weight_date,
+                                    false,
+                                    $row->id
+                                  );
+    }
+
+    return false;
+}
 /* Fetch start weight data for given user */
 function ws_ls_get_start_weight($user_id)
 {
