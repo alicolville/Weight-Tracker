@@ -50,6 +50,8 @@ class ws_ls_widget_chart extends WP_Widget {
 
             $weight_data = ws_ls_get_weights($chart_arguments['user-id'], $chart_arguments['max-data-points']);
 
+						$chart_arguments['height'] = false;
+
             if ($weight_data) {
                 echo $args['before_widget'];
                 echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
