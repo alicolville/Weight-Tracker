@@ -1,0 +1,622 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2015-11-14 12:32+0000\n"
+"PO-Revision-Date: 2015-11-14 12:41+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.6\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: includes/core.php:13 pro-features/advanced_table.php:12
+msgid "Date"
+msgstr ""
+
+#: includes/core.php:14 includes/core.php:66 includes/core.php:249
+#: pro-features/advanced_table.php:13
+msgid "Weight"
+msgstr ""
+
+#: includes/core.php:15 includes/core.php:257
+#: pro-features/advanced_table.php:15
+msgid "Notes"
+msgstr ""
+
+#: includes/core.php:62 includes/functions.php:69 includes/functions.php:77
+#: includes/functions.php:226 includes/functions.php:232
+#: includes/shortcode-various.php:168 includes/shortcode-various.php:172
+msgid "lbs"
+msgstr ""
+
+#: includes/core.php:62 includes/core.php:249 includes/functions.php:73
+#: includes/functions.php:229 includes/shortcode-various.php:177
+#: pages/page.settings.php:93 pro-features/user-preferences.php:13
+msgid "Kg"
+msgstr ""
+
+#: includes/core.php:82
+msgid "Target"
+msgstr ""
+
+#: includes/core.php:159
+msgid "You have modified data. Please refresh page."
+msgstr ""
+
+#: includes/core.php:184
+msgid "Target Weight"
+msgstr ""
+
+#: includes/core.php:186
+msgid "Add a new weight"
+msgstr ""
+
+#: includes/core.php:233
+msgid "Your target weight is"
+msgstr ""
+
+#: includes/core.php:241
+msgid "Stones"
+msgstr ""
+
+#: includes/core.php:242 includes/core.php:245 pages/page.settings.php:95
+#: pro-features/user-preferences.php:15
+msgid "Pounds"
+msgstr ""
+
+#: includes/core.php:262
+msgid "Set Target"
+msgstr ""
+
+#: includes/core.php:262
+msgid "Save Entry"
+msgstr ""
+
+#: includes/core.php:363
+msgid "Please enter a between 1-14 for pounds"
+msgstr ""
+
+#: includes/core.php:363
+msgid "Please enter a valid figure for pounds"
+msgstr ""
+
+#: includes/core.php:371
+msgid "Please enter a valid figure for Kg"
+msgstr ""
+
+#: includes/core.php:372
+msgid "Please enter a valid figure for Stones"
+msgstr ""
+
+#: includes/core.php:373
+msgid "Please enter a valid date"
+msgstr ""
+
+#: includes/core.php:374
+msgid "Please confirm you wish to delete ALL your weight history"
+msgstr ""
+
+#: includes/functions.php:77 includes/functions.php:232
+msgid "St"
+msgstr ""
+
+#: includes/functions.php:144
+msgid "The following MySQL tables are missing for this plugin"
+msgstr ""
+
+#: includes/functions.php:291
+msgid "View all weeks"
+msgstr ""
+
+#: includes/functions.php:305
+msgid "View Week"
+msgstr ""
+
+#: includes/functions.php:305
+msgid "to"
+msgstr ""
+
+#: includes/hooks.php:8 includes/shortcode-weight-loss-tracker.php:54
+#: pro-features/user-preferences.php:6
+msgid "Settings"
+msgstr ""
+
+#: includes/hooks.php:11
+msgid "Manage User Data"
+msgstr ""
+
+#: includes/hooks.php:12
+msgid "Get Pro Version"
+msgstr ""
+
+#: includes/hooks.php:15
+msgid "Help"
+msgstr ""
+
+#: includes/save-data.php:34
+msgid "Saved!"
+msgstr ""
+
+#: includes/save-data.php:36
+msgid "An error occurred while saving your data!"
+msgstr ""
+
+#: includes/save-data.php:39
+msgid "No user specified (hash)"
+msgstr ""
+
+#: includes/save-data.php:42
+msgid "No user specified"
+msgstr ""
+
+#: includes/shortcode-various.php:172
+msgid "st"
+msgstr ""
+
+#: includes/shortcode-weight-loss-tracker.php:12
+msgid "You need to be logged in to record your weight."
+msgstr ""
+
+#: includes/shortcode-weight-loss-tracker.php:12
+msgid "Login now"
+msgstr ""
+
+#: includes/shortcode-weight-loss-tracker.php:24
+msgid "Your settings have been saved!"
+msgstr ""
+
+#: includes/shortcode-weight-loss-tracker.php:27
+msgid "Your weight history has been deleted!"
+msgstr ""
+
+#: includes/shortcode-weight-loss-tracker.php:49
+msgid "Overview"
+msgstr ""
+
+#: includes/shortcode-weight-loss-tracker.php:49
+msgid "Chart / Add Weight"
+msgstr ""
+
+#: includes/shortcode-weight-loss-tracker.php:50
+msgid "In Detail"
+msgstr ""
+
+#: includes/shortcode-weight-loss-tracker.php:50
+msgid "View all recorded weights"
+msgstr ""
+
+#: includes/shortcode-weight-loss-tracker.php:54
+msgid "Choose weight units, date format, etc"
+msgstr ""
+
+#: includes/shortcode-weight-loss-tracker.php:66
+msgid "In a chart"
+msgstr ""
+
+#: includes/shortcode-weight-loss-tracker.php:71
+msgid "A pretty graph shall appear once you have recorded several weights."
+msgstr ""
+
+#: includes/shortcode-weight-loss-tracker.php:98
+msgid "Weight History"
+msgstr ""
+
+#: includes/shortcode-weight-loss-tracker.php:110
+msgid "You haven't entered any weight data yet."
+msgstr ""
+
+#: pages/page.help.php:21
+msgid " Instructions"
+msgstr ""
+
+#: pages/page.help.php:23
+msgid ""
+"Place the tag [weight-loss-tracker] on a given page and the user is "
+"presented with a form to enter a date, weight and notes for that entry. When "
+"the person saves their entry the data table and graph is refreshed."
+msgstr ""
+
+#: pages/page.pro.advertise.php:10 pages/page.settings.php:8
+msgid "You do not have sufficient permissions to access this page."
+msgstr ""
+
+#: pages/page.pro.advertise.php:32
+msgid "Get "
+msgstr ""
+
+#: pages/page.pro.advertise.php:36
+msgid "Get Weight Loss Tracker Pro for"
+msgstr ""
+
+#: pages/page.pro.advertise.php:36
+msgid " and have the following features listed below."
+msgstr ""
+
+#: pages/page.pro.advertise.php:36 pages/page.pro.advertise.php:83
+msgid "In case you need, your <strong>Site Hash</strong>"
+msgstr ""
+
+#: pages/page.pro.advertise.php:38
+msgid "Upgrade now for"
+msgstr ""
+
+#: pages/page.pro.advertise.php:61
+msgid "Enter License Key"
+msgstr ""
+
+#: pages/page.pro.advertise.php:83
+msgid "Got an existing license key? If so, enter it below"
+msgstr ""
+
+#: pages/page.pro.advertise.php:84
+msgid "Enter license key"
+msgstr ""
+
+#: pages/page.pro.advertise.php:86
+msgid "Add License"
+msgstr ""
+
+#: pages/page.pro.advertise.php:117
+msgid "Features of Pro version"
+msgstr ""
+
+#: pages/page.pro.advertise.php:121
+msgid "Below is a list of the intended features of the Pro version:"
+msgstr ""
+
+#: pages/page.settings.php:47
+msgid "Rebuild them now"
+msgstr ""
+
+#: pages/page.settings.php:69
+msgid " Settings"
+msgstr ""
+
+#: pages/page.settings.php:83
+msgid "General"
+msgstr ""
+
+#: pages/page.settings.php:83
+msgid "General settings"
+msgstr ""
+
+#: pages/page.settings.php:84
+msgid "Chart"
+msgstr ""
+
+#: pages/page.settings.php:84
+msgid "Chart styling and config"
+msgstr ""
+
+#: pages/page.settings.php:90
+msgid "Weight Units"
+msgstr ""
+
+#: pages/page.settings.php:94 pro-features/user-preferences.php:14
+msgid "Stones & Pounds"
+msgstr ""
+
+#: pages/page.settings.php:97
+msgid ""
+"You can specify whether to display weights in Kg, Stones & Pounds or just "
+"Pounds. Please note: The graph will be displayed in Pounds if \"Stones & "
+"Pounds\" is selected."
+msgstr ""
+
+#: pages/page.settings.php:101
+msgid "Allow target weights?"
+msgstr ""
+
+#: pages/page.settings.php:104 pages/page.settings.php:125
+#: pages/page.settings.php:135 pages/page.settings.php:146
+#: pages/page.settings.php:155 pages/page.settings.php:181
+msgid "No"
+msgstr ""
+
+#: pages/page.settings.php:105 pages/page.settings.php:124
+#: pages/page.settings.php:136 pages/page.settings.php:145
+#: pages/page.settings.php:156 pages/page.settings.php:180
+msgid "Yes"
+msgstr ""
+
+#: pages/page.settings.php:107
+msgid ""
+"If enabled, a user is allowed to enter a target weight. This will be "
+"displayed as a horizontal bar on the line chart."
+msgstr ""
+
+#: pages/page.settings.php:111
+msgid "UK or US Date format?"
+msgstr ""
+
+#: pages/page.settings.php:114 pro-features/user-preferences.php:20
+msgid "UK (DD/MM/YYYY)"
+msgstr ""
+
+#: pages/page.settings.php:115 pro-features/user-preferences.php:21
+msgid "US (MM/DD/YYYY)"
+msgstr ""
+
+#: pages/page.settings.php:117
+msgid "Specify what format dates should be displayed in (i.e. UK or US format)"
+msgstr ""
+
+#: pages/page.settings.php:121
+msgid "Allow decimal places?"
+msgstr ""
+
+#: pages/page.settings.php:128
+msgid ""
+"If enabled, Decimal weight entries will be allowed in Kg or Pounds mode."
+msgstr ""
+
+#: pages/page.settings.php:132
+msgid "Display data in tabs?"
+msgstr ""
+
+#: pages/page.settings.php:138
+msgid ""
+"If enabled, \"Weight History\" and \"Target Weight\" will be displayed on "
+"sepearate tabs."
+msgstr ""
+
+#: pages/page.settings.php:142
+msgid "Allow user settings"
+msgstr ""
+
+#: pages/page.settings.php:148
+msgid ""
+"Allow your users to select their own weight unit, date format and remove all "
+"their data."
+msgstr ""
+
+#: pages/page.settings.php:152
+msgid "Disable plugin CSS?"
+msgstr ""
+
+#: pages/page.settings.php:158
+msgid ""
+"If you wish to style the forms in your own way, you can use this option to "
+"disable WLT's style sheets."
+msgstr ""
+
+#: pages/page.settings.php:166
+msgid "Default chart type"
+msgstr ""
+
+#: pages/page.settings.php:169
+msgid "Line Chart"
+msgstr ""
+
+#: pages/page.settings.php:170
+msgid "Bar Chart"
+msgstr ""
+
+#: pages/page.settings.php:173 pages/page.settings.php:184
+msgid "If enabled, \"Allows points and labels to be displayed on graph."
+msgstr ""
+
+#: pages/page.settings.php:177
+msgid "Display points on graph?"
+msgstr ""
+
+#: pages/page.settings.php:188
+msgid "Graph: Weight colour?"
+msgstr ""
+
+#: pages/page.settings.php:191
+msgid ""
+"If enabled, enter a HEX colour code to use for the Weight history line on "
+"graph."
+msgstr ""
+
+#: pages/page.settings.php:195
+msgid "Graph: Weight fill colour?"
+msgstr ""
+
+#: pages/page.settings.php:198
+msgid ""
+"If enabled, enter a HEX colour code to use forthe shading underneath the "
+"Weight history line on graph. Line charts only."
+msgstr ""
+
+#: pages/page.settings.php:202
+msgid "Graph: Target line colour?"
+msgstr ""
+
+#: pages/page.settings.php:205
+msgid ""
+"If enabled, enter a HEX colour code to use for the Target line on graph."
+msgstr ""
+
+#: pages/page.settings.php:227 pro-features/user-preferences.php:25
+msgid "Delete existing data"
+msgstr ""
+
+#: pages/page.settings.php:229
+msgid "Remove ALL user data"
+msgstr ""
+
+#: pages/page.settings.php:230
+msgid ""
+"You can use the following button to remove all user data currently stored by "
+"the plugin. <strong>All weight entries for every user will be lost!</strong>"
+msgstr ""
+
+#: pages/page.settings.php:251
+msgid "Are you sure you?"
+msgstr ""
+
+#: pages/page.settings.php:252
+msgid "Are you sure you wish to remove all user data?"
+msgstr ""
+
+#: pro-features/feature-list.php:6
+msgid ""
+"<strong>Widgets.</strong> Widgets that allow you to display the graph and "
+"quick weight entry form within any widget area."
+msgstr ""
+
+#: pro-features/feature-list.php:7
+msgid ""
+"<strong>Chart and form Shortcodes.</strong> That allow you to display the "
+"graph and quick weight entry form by placing a shortcode on any post or page."
+msgstr ""
+
+#: pro-features/feature-list.php:8
+msgid ""
+"<strong>Text Shortcodes.</strong> Additional shortcodes for earliest and "
+"most recent dates entered."
+msgstr ""
+
+#: pro-features/feature-list.php:9
+msgid ""
+"<strong>Admin: View / Edit user data</strong>. Admin will be able to view, "
+"edit and delete existing user data."
+msgstr ""
+
+#: pro-features/feature-list.php:10
+msgid ""
+"<strong>User preferences</strong>. If enabled, the user will be able to "
+"select which unit they wish to store their weight in Metric or Imperial. "
+"They will also be able to specify date format and clear all their weight "
+"data."
+msgstr ""
+
+#: pro-features/feature-list.php:11
+msgid ""
+"<strong>Bar Charts</strong>. Fancy something different to a line chart? The "
+"plugin will also support Bar Charts."
+msgstr ""
+
+#: pro-features/feature-list.php:12
+msgid ""
+"<strong>Decimals</strong>. Decimals will be allowed weight in Pounds only or "
+"Kg modes."
+msgstr ""
+
+#: pro-features/feature-list.php:13
+msgid ""
+"<strong>Delete existing entry</strong>. A logged in user will be able to "
+"delete an existing weight entry."
+msgstr ""
+
+#: pro-features/feature-list.php:14
+msgid ""
+"<strong>Better Tables.</strong>. Data tables in front end and admin will "
+"support paging and sorting."
+msgstr ""
+
+#: pro-features/feature-list.php:15
+msgid ""
+"<strong>Admin: Extra Settings</strong>. Extra settings to customise the "
+"plugin will be added e.g. number of plot points on graph, rows per page, etc."
+msgstr ""
+
+#: pro-features/shortcode-chart.php:45
+msgid "No weight data was found for the specified user."
+msgstr ""
+
+#: pro-features/user-preferences.php:11
+msgid "Which unit would you like to record your weight in:"
+msgstr ""
+
+#: pro-features/user-preferences.php:17
+msgid "Display dates in the following formats:"
+msgstr ""
+
+#: pro-features/user-preferences.php:23
+msgid "Save Settings"
+msgstr ""
+
+#: pro-features/user-preferences.php:31
+msgid ""
+"The button below allows you to clear your existing weight history. Confirm:"
+msgstr ""
+
+#: pro-features/user-preferences.php:36
+msgid "Delete"
+msgstr ""
+
+#: pro-features/widget-chart.php:12
+msgid "Weight Loss Tracker - Chart"
+msgstr ""
+
+#: pro-features/widget-chart.php:13
+msgid "Display a chart to see your current progress."
+msgstr ""
+
+#: pro-features/widget-chart.php:17
+msgid "Weight Loss Tracker"
+msgstr ""
+
+#: pro-features/widget-chart.php:86 pro-features/widget-form.php:64
+msgid "Title"
+msgstr ""
+
+#: pro-features/widget-chart.php:90
+msgid "Type"
+msgstr ""
+
+#: pro-features/widget-chart.php:97
+msgid "Maximum number of plot points on chart"
+msgstr ""
+
+#: pro-features/widget-chart.php:106
+msgid "ID of user (leave blank to show chart for current user)"
+msgstr ""
+
+#: pro-features/widget-chart.php:110
+msgid ""
+"Note: By default, the chart will be displayed in the weight unit chosen by "
+"the logged in user. If not specfied the plugin default will be used."
+msgstr ""
+
+#: pro-features/widget-form.php:12
+msgid "Weight Loss Tracker - Form"
+msgstr ""
+
+#: pro-features/widget-form.php:13
+msgid ""
+"Display a quick entry form for logged in users to record their weight for "
+"today."
+msgstr ""
+
+#: pro-features/widget-form.php:17
+msgid "Your weight today"
+msgstr ""
+
+#: pro-features/widget-form.php:68
+msgid "Allow user to specify a date?"
+msgstr ""
+
+#: pro-features/widget-form.php:70
+msgid "No. Automatically set to today's date"
+msgstr ""
+
+#: pro-features/widget-form.php:71
+msgid "Allow user to specify a date"
+msgstr ""
+
+#~ msgid "Enable support for Avada theme?"
+#~ msgstr "Enable support for Avada theme?"
+
+#~ msgid ""
+#~ "Enables additional styling to support the <a href=\"http://theme-fusion."
+#~ "com/avada/\" target=\"_blank\">Avada theme</a>."
+#~ msgstr ""
+#~ "Enables additional styling to support the <a href=\"http://theme-fusion."
+#~ "com/avada/\" target=\"_blank\">Avada theme</a>."
+
+#~ msgid "Your current target is"
+#~ msgstr "Your current target is"
+
+#~ msgid "Currently, you haven't specified a target weight."
+#~ msgstr "Currently, you haven't specified a target weight."
