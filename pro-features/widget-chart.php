@@ -48,7 +48,7 @@ class ws_ls_widget_chart extends WP_Widget {
                 $chart_arguments['type'] = $instance['type'];
             }
 
-            $weight_data = ws_ls_get_weights($chart_arguments['user-id'], $chart_arguments['max-data-points']);
+            $weight_data = ws_ls_get_weights($chart_arguments['user-id'], $chart_arguments['max-data-points'], -1, 'desc');
 
 						$chart_arguments['height'] = false;
 
