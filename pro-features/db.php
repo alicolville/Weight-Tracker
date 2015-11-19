@@ -8,8 +8,8 @@ function ws_ls_user_data($filters = false)
 
     $table_name = $wpdb->prefix . WE_LS_TABLENAME;
     $user_table_name = $wpdb->prefix . 'users';
-    $sql =  $wpdb->prepare('SELECT ' . $table_name . '.id, weight_date, weight_weight, weight_stones, weight_pounds, weight_only_pounds, weight_notes, weight_user_id, user_nicename FROM ' . $table_name
-                            . ' INNER JOIN ' . $user_table_name . ' on ' . $user_table_name . '.id = ' . $table_name . '.weight_user_id', '');
+    $sql = 'SELECT ' . $table_name . '.id, weight_date, weight_weight, weight_stones, weight_pounds, weight_only_pounds, weight_notes, weight_user_id, user_nicename FROM ' . $table_name
+                            . ' INNER JOIN ' . $user_table_name . ' on ' . $user_table_name . '.id = ' . $table_name . '.weight_user_id';
 
     // Searching column for something specific?
     if (isset($filters['search']) && !empty($filters['search'])) {

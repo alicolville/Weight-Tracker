@@ -39,9 +39,6 @@ function ws_ls_manage_user_data_page() {
 
 						<div class="inside">
 
-							<form method="post" action="options.php">
-
-
 								<div id="ws-ls-tabs">
 									<ul>
 											<li><a><?php echo __( 'View / Edit', WE_LS_SLUG); ?><span><?php echo __( 'View and edit existing user data', WE_LS_SLUG); ?></span></a></li>
@@ -77,19 +74,15 @@ function ws_ls_manage_user_data_page() {
 										</div>
 										<div>
 
-											Tab 2
+											 <p><?php echo __( 'You can use the following button to remove all user data currently stored by the plugin. <strong>All weight entries for every user will be lost!</strong>', WE_LS_SLUG ); ?></p>
+					                       <a class="button-secondary delete-confirm" href="<?php echo get_permalink() . '?page=ws-ls-weight-loss-tracker-main-menu';  ?>&amp;removedata=y"><?php echo __( 'Remove ALL user data', WE_LS_SLUG); ?></a>
+							               
 
 										</div>
 									</div>
 								</div>
 
 
-
-								<?php submit_button(); ?>
-
-
-
-							</form>
 						</div>
 						<!-- .inside -->
 
@@ -106,12 +99,14 @@ function ws_ls_manage_user_data_page() {
 		</div>
 		<!-- #post-body .metabox-holder .columns-2 -->
 
-		<br class="clear">
 	</div>
 	<!-- #poststuff -->
-	<br class="clear">
-</div> <!-- .wrap -->
+<!-- .wrap -->
 <?php
 
+    	echo ws_ls_create_dialog_jquery_code(__('Are you sure you?', WE_LS_SLUG),
+		__('Are you sure you wish to remove all user data?', WE_LS_SLUG) . '<br /><br />',
+			'delete-confirm');
+    
 }
 ?>

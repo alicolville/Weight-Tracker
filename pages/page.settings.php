@@ -224,13 +224,6 @@ function ws_ls_settings_page() {
 					<!-- .postbox -->
 
 					<div class="postbox">
-						<h3 class="hndle"><span><?php echo __( 'Delete existing data', WE_LS_SLUG); ?> </span></h3>
-						<div style="padding: 15px 15px 0px 15px">
-							<a class="button-secondary delete-confirm" href="<?php echo get_permalink() . '?page=ws-ls-weight-loss-tracker-main-menu';  ?>&amp;removedata=y"><?php echo __( 'Remove ALL user data', WE_LS_SLUG); ?></a>
-							<p><?php echo __( 'You can use the following button to remove all user data currently stored by the plugin. <strong>All weight entries for every user will be lost!</strong>', WE_LS_SLUG ); ?></p>
-						</div>
-					</div>
-
 				</div>
 				<!-- .meta-box-sortables .ui-sortable -->
 
@@ -248,9 +241,7 @@ function ws_ls_settings_page() {
 
 	<?php
 
-	echo ws_ls_create_dialog_jquery_code(__('Are you sure you?', WE_LS_SLUG),
-		__('Are you sure you wish to remove all user data?', WE_LS_SLUG) . '<br /><br />',
-			'delete-confirm');
+
 
 
 }
