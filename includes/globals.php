@@ -48,6 +48,7 @@
 	define('WE_LS_CACHE_KEY_START_WEIGHT', 'start-weight');
 	define('WE_LS_CACHE_KEY_WEIGHT_EXTREME', 'weight-extreme-');
 	define('WE_LS_CACHE_KEY_USER_PREFERENCE', 'user-preference');
+	define('WE_LS_CACHE_ADMIN_USER_DATA', 'admin-user-data');
 	define('WE_LS_TABLE_MAX_WEEK_FILTERS', 100);
 	define('WS_LS_PRO_PRICE', 25.00);
 

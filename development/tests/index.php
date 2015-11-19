@@ -15,9 +15,9 @@ $sample_latin = array(
 'Etiam feugiat lorem non metus.'
 );
 
-$user_id = 1;
+$user_id = 4;
 $i = 1;
-while ($i < 300)
+while ($i < 2300)
 {
    $weight_date =  date('Y-m-d', strtotime('+' . $i++ . ' day'));
 

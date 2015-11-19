@@ -41,7 +41,7 @@ function ws_ls_get_weights($user_id, $limit = 100, $selected_week_number = -1, $
 {
     // Check if data exists in cache.
     $cache_key = $user_id . '-' . WE_LS_CACHE_KEY_DATA;
-    $cache_sub_key = $user_id . '-' . WE_LS_CACHE_KEY_DATA . '-' . $limit . '-' . $selected_week_number;
+    $cache_sub_key = $user_id . '-' . WE_LS_CACHE_KEY_DATA . '-' . $limit . '-' . $selected_week_number . '-' . $sort_order;
 
     $cache = ws_ls_get_cache($cache_key);
 

@@ -9,10 +9,12 @@ function ws_ls_is_date_intervals_enabled()	{
 }
 
 /* Get string representation of a weight  */
-function ws_ls_weight_object($user_id, $kg, $pounds, $stones, $pounds_only, $notes = '', $date = false, $detect_and_convert_missing_values = false, $database_row_id = false)
+function ws_ls_weight_object($user_id, $kg, $pounds, $stones, $pounds_only, $notes = '', $date = false,
+                              $detect_and_convert_missing_values = false, $database_row_id = false, $user_nicename = '')
 {
     $weight['display'] = '';
     $weight['user_id'] = $user_id;
+    $weight['user_nicename'] = $user_nicename;
     $weight['only_pounds'] = $pounds_only;
     $weight['kg'] = $kg;
     $weight['stones'] = $stones;
@@ -79,13 +81,24 @@ function ws_ls_weight_object($user_id, $kg, $pounds, $stones, $pounds_only, $not
         break;
   }
 
-  // Generate weight index
   if ($weight['user_id']) {
+
+    // Generate weight index
+    $weight['user_id'] = $user_id;
+
     $weight['first_weight'] = ws_ls_get_start_weight($weight['user_id']);
     if(is_numeric($weight['first_weight']) && $weight['first_weight'] > 0 && $weight['first_weight'] <> $weight['kg']) {
       $weight['difference_from_start'] = (($weight['kg'] - $weight['first_weight']) / $weight['first_weight']) * 100;
       $weight['difference_from_start'] = round($weight['difference_from_start']);
     }
+
+    // Get user display name
+    // $user_info = get_userdata($weight['user_id']);
+    //
+    // if($user_info) {
+    //   $weight['user_nicename'] = $user_info->user_nicename;
+    // }
+
   }
   return $weight;
 }
