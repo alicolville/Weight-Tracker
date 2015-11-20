@@ -19,6 +19,9 @@
         </thead>
       <tbody>';
 
+			$delete_image = plugins_url( '../css/images/delete.png', __FILE__ );
+			$edit_image = plugins_url( '../css/images/edit.png', __FILE__ );
+
       foreach ($weight_data as $weight_object)
       {
                 $html_output .= '<tr id="ws-ls-row-' . $weight_object['db_row_id'] . '">
@@ -29,8 +32,8 @@
                             <td>' . $weight_object['kg'] . '</td>
 														<td class="ws-ls-table-options">
 
-																<img src="' . plugins_url( '../css/images/edit.png', __FILE__ ) .'" width="15" height="15" id="ws-ls-edit-' . $weight_object['db_row_id'] . '" data-row-id="' . $weight_object['db_row_id'] . '" class="ws-ls-edit-row" />
-																<img src="' . plugins_url( '../css/images/delete.png', __FILE__ ) .'" width="15" height="15" id="ws-ls-delete-' . $weight_object['db_row_id'] . '" data-row-id="' . $weight_object['db_row_id'] . '" class="ws-ls-delete-row" />
+																<img src="' . $edit_image .'" width="15" height="15" id="ws-ls-edit-' . $weight_object['db_row_id'] . '" data-row-id="' . $weight_object['db_row_id'] . '" class="ws-ls-edit-row" />
+																<img src="' . $delete_image .'" width="15" height="15" id="ws-ls-delete-' . $weight_object['db_row_id'] . '" data-row-id="' . $weight_object['db_row_id'] . '" class="ws-ls-delete-row" />
 
 														</td>
                           </tr>';

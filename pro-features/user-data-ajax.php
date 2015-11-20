@@ -1,6 +1,23 @@
 <?php
 	defined('ABSPATH') or die('Jog on!');
 
+function ws_ls_admin_delete_entry_callback()
+{
+  $ajax_response = 0;
+
+  check_ajax_referer( 'ajax-security-nonce', 'security' ); //TODO: Add back in!
+
+  $user_id = ws_ls_ajax_post_value('user-id');
+  $row_id = ws_ls_ajax_post_value('row-id');
+
+  if(true == ws_ls_delete_entry($user_id, $row_id)){
+    $ajax_response = 1;
+  }
+  echo $ajax_response;
+	wp_die();
+}
+add_action( 'wp_ajax_ws_ls_admin_delete_entry', 'ws_ls_admin_delete_entry_callback' );
+
 function ws_ls_user_data_callback()
 {
   $ajax_response = 0;
@@ -31,25 +48,14 @@ function ws_ls_user_data_callback()
 		$filters['search'] = $search['value'];
 	}
 
-
-//var_dump($_GET, $filters);
-
-
-
-
+	//var_dump($_GET, $filters);
 
 	echo ws_ls_load_json($draw_id, $filters);
 
-
-  //echo $ajax_response;
 	wp_die();
 }
 add_action( 'wp_ajax_ws_ls_user_data', 'ws_ls_user_data_callback' );
 add_action( 'wp_ajax_nopriv_ws_ls_user_data', 'ws_ls_user_data_callback' ); //TODO: REMOVE
-
-
-
-
 
 function ws_ls_load_json($draw_id, $filters)
 {
@@ -65,8 +71,10 @@ function ws_ls_load_json($draw_id, $filters)
 		$data['recordsTotal'] = ws_ls_user_data_count();
 		$data['recordsFiltered'] = $data_from_db['count'];
 
+		$delete_image = plugins_url( '../css/images/delete.png', __FILE__ );
+
 		foreach ($data_from_db['weight_data'] as $weight) {
-			array_push($data['data'], array($weight['user_nicename'], ws_ls_render_date($weight), $weight['display'], $weight['notes'], ''));
+			array_push($data['data'], array($weight['user_nicename'], ws_ls_render_date($weight), $weight['display'], $weight['notes'], '<img src="' . $delete_image . '" width="15" height="15" border="0"  class="ws-ls-admin-delete-weight" id="ws-ls-delete-row-' . $weight['db_row_id'] . '" data-user-id="' . $weight['user_id'] . '" data-row-id="' . $weight['db_row_id'] . '" />', 'row-id' => $weight['db_row_id'], 'user-id' => $weight['user_id'] ));
 		}
 	}
 

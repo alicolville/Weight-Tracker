@@ -39,7 +39,7 @@ function ws_ls_delete_entry_callback()
 {
   $ajax_response = 0;
 
-  check_ajax_referer( 'ws-ls-nonce', 'security' ); //TODO: Add back in!
+  check_ajax_referer( 'ajax-security-nonce', 'security' ); //TODO: Add back in!
 
   $user_id = ws_ls_ajax_post_value('user-id');
   $row_id = ws_ls_ajax_post_value('row-id');

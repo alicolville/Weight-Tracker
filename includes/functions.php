@@ -345,7 +345,7 @@ function ws_ls_round_weights($weight)
 function ws_ls_get_config($key)
 {
   // If user preferences are enabled, then see if they specified
-  if (WE_LS_ALLOW_USER_PREFERENCES)  {
+  if (WE_LS_ALLOW_USER_PREFERENCES && !is_admin())  {
 
     // Look to see if the user had a preference, if not, default to admin choice
     $user_preference = ws_ls_get_user_preference($key);
