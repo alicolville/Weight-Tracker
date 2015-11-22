@@ -18,12 +18,6 @@ function ws_ls_settings_page() {
 
 	$clear_cache = (isset($_GET['settings-updated']) && 'true' == $_GET['settings-updated']) ? true : false;
 
-	// If remove existing data
-	if (is_admin() && isset($_GET['removedata']) && 'y' == $_GET['removedata']) {
-		ws_ls_delete_existing_data();
-		$clear_cache = true;
-	}
-
 	if (is_admin() && isset($_GET['recreatetables']) && 'y' == $_GET['recreatetables']) {
 		ws_ls_activate();
 		$clear_cache = true;

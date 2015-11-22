@@ -17,7 +17,7 @@ function ws_ls_capture_and_handle_form_post()
 		$html_output = '';
 
 		// Capture and validate user id from form
-    $user_id = (isset($_POST['ws_ls_user_id']) && is_numeric($_POST['ws_ls_user_id'])) ? intval($_POST['ws_ls_user_id']) : false;
+        $user_id = (isset($_POST['ws_ls_user_id']) && is_numeric($_POST['ws_ls_user_id'])) ? intval($_POST['ws_ls_user_id']) : false;
 		$form_number = (isset($_POST['ws_ls_form_number']) && is_numeric($_POST['ws_ls_form_number'])) ? intval($_POST['ws_ls_form_number']) : false;
 
 		$save_response['form_number'] = $form_number;
@@ -51,4 +51,4 @@ function ws_ls_capture_and_handle_form_post()
     return $html_output;
 
 }
-add_action('wp_loaded', 'ws_ls_capture_and_handle_form_post');
+add_action('init', 'ws_ls_capture_and_handle_form_post');

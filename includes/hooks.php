@@ -36,6 +36,11 @@
 	 	add_shortcode( 'weightloss_weight_most_recent', 'ws_ls_weight_recent' );
 		add_shortcode( 'weightloss_weight_difference_from_target', 'ws_ls_weight_difference_target' );
 
+        // If user has deleted all their data then delete it here. That way cache isn't displayed
+        if(WE_LS_ALLOW_USER_PREFERENCES && isset($_GET['user-delete-all']) && 'true' == $_GET['user-delete-all'])	{
+					ws_ls_delete_data_for_user();
+        }
+        
 	}
 	add_action( 'init', 'ws_ls_register_shortcodes');
 

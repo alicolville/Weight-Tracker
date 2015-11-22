@@ -18,6 +18,18 @@ function ws_ls_manage_user_data_page() {
 
 	wp_localize_script( 'ws-ls-admin', 'ws_ls_user_data', array('ajax-url' => admin_url('admin-ajax.php') . '?action=ws_ls_user_data&security=' . wp_create_nonce( 'ws-ls-security' ), 'security' => wp_create_nonce( 'ajax-security-nonce' ) ) );
 
+    $clear_cache = false;
+    
+    // If remove existing data
+	if (is_admin() && isset($_GET['removedata']) && 'y' == $_GET['removedata']) {
+		ws_ls_delete_existing_data();
+		$clear_cache = true;
+	}
+
+	if($clear_cache) {
+		ws_ls_delete_all_cache();
+	}
+    
 ?>
 
 
@@ -75,7 +87,7 @@ function ws_ls_manage_user_data_page() {
 										<div>
 
 											 <p><?php echo __( 'You can use the following button to remove all user data currently stored by the plugin. <strong>All weight entries for every user will be lost!</strong>', WE_LS_SLUG ); ?></p>
-					                       <a class="button-secondary delete-confirm" href="<?php echo get_permalink() . '?page=ws-ls-weight-loss-tracker-main-menu';  ?>&amp;removedata=y"><?php echo __( 'Remove ALL user data', WE_LS_SLUG); ?></a>
+					                       <a class="button-secondary delete-confirm" href="<?php echo get_permalink() . '?page=ws-ls-weight-loss-tracker-pro';  ?>&amp;removedata=y"><?php echo __( 'Remove ALL user data', WE_LS_SLUG); ?></a>
 
 
 										</div>

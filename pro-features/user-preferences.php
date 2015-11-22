@@ -1,4 +1,4 @@
- <?php
+<?php
 defined('ABSPATH') or die("Jog on!");
 
 function ws_ls_user_preferences_form()

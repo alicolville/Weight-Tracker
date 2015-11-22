@@ -329,7 +329,11 @@ function ws_ls_capture_form_validate_and_save($user_id = false)
 				break;
 	}
 
-	return ws_ls_save_data($user_id, $weight_object, $is_target_form);
+	$result = ws_ls_save_data($user_id, $weight_object, $is_target_form);
+    
+    ws_ls_delete_cache_for_given_user($user_id);
+    
+    return $result;
 }
 
 function ws_ls_validate_weight_data($weight_object, $is_target_form = false)
@@ -360,7 +364,7 @@ function ws_ls_get_chosen_weight_unit_as_string(){
 }
 function ws_ls_get_js_config()
 {
-	$message_for_pounds = (ws_ls_get_config('WE_LS_IMPERIAL_WEIGHTS') && 'stones_pounds' == ws_ls_get_config('WE_LS_DATA_UNITS')) ? __('Please enter a between 1-14 for pounds', WE_LS_SLUG) : __('Please enter a valid figure for pounds', WE_LS_SLUG);
+	$message_for_pounds = (ws_ls_get_config('WE_LS_IMPERIAL_WEIGHTS') && 'stones_pounds' == ws_ls_get_config('WE_LS_DATA_UNITS')) ? __('Please enter a between 0-14 for pounds', WE_LS_SLUG) : __('Please enter a valid figure for pounds', WE_LS_SLUG);
 
 	$use_us_date = ws_ls_get_config('WE_LS_US_DATE');
 
@@ -373,7 +377,7 @@ function ws_ls_get_js_config()
 		'validation-we-ls-date' => __('Please enter a valid date', WE_LS_SLUG),
 		'validation-we-ls-history' => __('Please confirm you wish to delete ALL your weight history', WE_LS_SLUG),
 		'tabs-enabled' => (WE_LS_USE_TABS) ? 'true' : 'false',
-		'advanced-tables-enabled' => (WS_LS_ADVANCED_TABLES) ? 'true' : 'false',
+		'advanced-tables-enabled' => (WS_LS_ADVANCED_TABLES && WS_LS_IS_PRO) ? 'true' : 'false',
 		'ajax-url' => admin_url('admin-ajax.php'),
 		'ajax-security-nonce' => wp_create_nonce( 'ws-ls-nonce' ),
 		'is-pro' => (WS_LS_IS_PRO) ? 'true' : 'false',

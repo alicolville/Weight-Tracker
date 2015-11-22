@@ -55,7 +55,11 @@ class ws_ls_widget_chart extends WP_Widget {
             if ($weight_data) {
                 echo $args['before_widget'];
                 echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
-                echo ws_ls_display_chart($weight_data, $chart_arguments);
+                if (count($weight_data) > 1) {
+                   echo ws_ls_display_chart($weight_data, $chart_arguments);
+                } else {
+                    echo '<p>' . __('A pretty graph shall appear once you have recorded several weights.', WE_LS_SLUG) . '</p>';
+                }
                 echo $args['after_widget'];
             } else {
                 echo '<!-- WLT Chart: No user data found for given ID -->';

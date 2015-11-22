@@ -341,8 +341,6 @@ function ws_ls_get_user_preferences($user_id = false)
   if (!is_array($settings))  {
     $settings = array();
   }
-//var_dump($sql,$settings);wp_die();
-//  ws_ls_set_cache($cache_key, $settings);
 
   return $settings;
 }

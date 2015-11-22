@@ -23,7 +23,6 @@
 			if(isset($_GET['user-preference-saved']) && 'true' == $_GET['user-preference-saved'])	{
 					$html_output .= '<blockquote class="ws-ls-blockquote"><p>' . __('Your settings have been saved!', WE_LS_SLUG) . '</p></blockquote>';
 			}elseif(WE_LS_ALLOW_USER_PREFERENCES && isset($_GET['user-delete-all']) && 'true' == $_GET['user-delete-all'])	{
-					ws_ls_delete_data_for_user();
 					$html_output .= '<blockquote class="ws-ls-blockquote"><p>' . __('Your weight history has been deleted!', WE_LS_SLUG) . '</p></blockquote>';
 			}
 			// Has the user selected a particular week to look at?
@@ -87,7 +86,7 @@
 				$html_output .= ws_ls_start_tab('wlt-weight-history');
 			}
 
-			//If we have data, display data table
+            //If we have data, display data table
 			if ($weight_data && (count($weight_data) > 0 || $selected_week_number != -1))	{
 
 					if (WE_LS_ALLOW_TARGET_WEIGHTS && WE_LS_USE_TABS) {
@@ -100,11 +99,17 @@
 						$html_output .= ws_ls_display_week_filters($week_ranges, $selected_week_number);
 					}
 
-					if (WS_LS_ADVANCED_TABLES){
+					if (WS_LS_ADVANCED_TABLES && WS_LS_IS_PRO){
 						$html_output .= ws_ls_advanced_data_table($weight_data);
 					} else {
 						$html_output .= ws_ls_display_table($weight_data);
 					}
+			}
+            elseif (WE_LS_USE_TABS && $selected_week_number != -1) {
+				$html_output .= __('There is no data for this week, please try selecting another:', WE_LS_SLUG);
+                if(count($week_ranges) <= WE_LS_TABLE_MAX_WEEK_FILTERS) {
+                    $html_output .= ws_ls_display_week_filters($week_ranges, $selected_week_number);
+                }
 			}
 			elseif (WE_LS_USE_TABS) {
 				$html_output .= __('You haven\'t entered any weight data yet.', WE_LS_SLUG);
