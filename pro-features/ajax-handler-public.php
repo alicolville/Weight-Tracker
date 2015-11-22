@@ -35,11 +35,11 @@ function ws_ls_save_preferences_callback()
 }
 add_action( 'wp_ajax_ws_ls_save_preferences', 'ws_ls_save_preferences_callback' );
 
-function ws_ls_delete_entry_callback()
-{
-  $ajax_response = 0;
+function ws_ls_delete_weight_entry_callback()
+{ 
+    $ajax_response = 0;
 
-  check_ajax_referer( 'ajax-security-nonce', 'security' ); //TODO: Add back in!
+  check_ajax_referer( 'ws-ls-nonce', 'security' ); //TODO: Add back in!
 
   $user_id = ws_ls_ajax_post_value('user-id');
   $row_id = ws_ls_ajax_post_value('row-id');
@@ -50,7 +50,7 @@ function ws_ls_delete_entry_callback()
   echo $ajax_response;
 	wp_die();
 }
-add_action( 'wp_ajax_ws_ls_delete_entry', 'ws_ls_delete_entry_callback' );
+add_action( 'wp_ajax_ws_ls_delete_weight_entry', 'ws_ls_delete_weight_entry_callback' );
 
 function ws_ls_get_entry_callback()
 {
