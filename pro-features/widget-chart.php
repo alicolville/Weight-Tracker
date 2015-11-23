@@ -50,7 +50,7 @@ class ws_ls_widget_chart extends WP_Widget {
 
             $weight_data = ws_ls_get_weights($chart_arguments['user-id'], $chart_arguments['max-data-points'], -1, 'desc');
 
-						$chart_arguments['height'] = false;
+			$chart_arguments['height'] = false;
 
             if ($weight_data) {
                 echo $args['before_widget'];
@@ -83,8 +83,8 @@ class ws_ls_widget_chart extends WP_Widget {
         foreach($this->field_values as $key => $default) {
             $field_values[$key] = !empty($instance[$key]) ? $instance[$key] : $default;
         }
-      //  var_dump($instance,$field_values);
-		?>
+    
+        ?>
         <p>Display a chart and / or form for the current user. The widget will be hidden if the user is <strong>not logged in</strong>.</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Title', WE_LS_SLUG); ?></label>

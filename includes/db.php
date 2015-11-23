@@ -129,7 +129,7 @@ function ws_ls_get_start_weight($user_id)
     }
     // No cache? hit the DB
     else {
-  echo $sql;
+
       global $wpdb;
       $table_name = $wpdb->prefix . WE_LS_TABLENAME;
       $sql =  $wpdb->prepare('SELECT weight_weight FROM ' . $table_name . ' where weight_user_id = %d order by weight_date asc limit 0, 1', $user_id);

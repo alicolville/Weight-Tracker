@@ -26,8 +26,6 @@ function ws_ls_user_data($filters = false)
     $number_of_results = ws_ls_sql_count($sql);
     $sql .=  $wpdb->prepare(' LIMIT %d, %d', $filters['start'], $filters['limit']);
 
-  //  var_dump($sql);
-
     $rows = $wpdb->get_results( $sql );
 
     // If data found in DB then save to cache and return

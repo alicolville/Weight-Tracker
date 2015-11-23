@@ -155,7 +155,7 @@ function ws_ls_settings_page() {
 																	<option value="yes" <?php selected( get_option('ws-ls-allow-advanced-tables'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
 																	<option value="no" <?php selected( get_option('ws-ls-allow-advanced-tables'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
 																</select>
-																<p><?php echo __("User's weight history is presented in tables that allow sorting, paging, editing and deleting.", WE_LS_SLUG)?></p>
+																<p><?php echo __("User's weight history is presented in responsive tables that allow sorting, paging, editing and deleting. Weight Index (i.e. percentage lost / gained to be displayed.)", WE_LS_SLUG)?></p>
 															</td>
 														</tr>
 													<tr>
@@ -194,8 +194,8 @@ function ws_ls_settings_page() {
 															<p><?php echo __('If enabled, lines between points on a line graph will be curved', WE_LS_SLUG); ?></p>
 														</td>
 													</tr>
-													<tr>
-														<th scope="row" class="<?php echo $disable_if_not_pro_class; ?>"><?php echo __( 'Display gridlines?', WE_LS_SLUG ); ?></th>
+													<tr  class="<?php echo $disable_if_not_pro_class; ?>" >
+														<th scope="row"><?php echo __( 'Display gridlines?', WE_LS_SLUG ); ?></th>
 														<td>
 															<select id="ws-ls-grid-lines" name="ws-ls-grid-lines">
 																<option value="yes" <?php selected( get_option('ws-ls-grid-lines'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
@@ -205,7 +205,7 @@ function ws_ls_settings_page() {
 															<p><?php echo __('If enabled, gridlines will be displayed on the Graph canvas.', WE_LS_SLUG); ?></p>
 														</td>
 													</tr>
-												<tr>
+												<tr  class="<?php echo $disable_if_not_pro_class; ?>">
 													<th scope="row"><?php echo __( 'Display points on graph?', WE_LS_SLUG ); ?></th>
 													<td>
 														<select id="ws-ls-allow-points" name="ws-ls-allow-points">
@@ -216,8 +216,8 @@ function ws_ls_settings_page() {
 														<p><?php echo __('If enabled, "Allows points and labels to be displayed on graph.', WE_LS_SLUG); ?></p>
 													</td>
 												</tr>
-													<tr>
-														<th scope="row" class="<?php echo $disable_if_not_pro_class; ?>"><?php echo __( 'Maximum points per graph', WE_LS_SLUG ); ?></th>
+													<tr  class="<?php echo $disable_if_not_pro_class; ?>">
+														<th scope="row"><?php echo __( 'Maximum points per graph', WE_LS_SLUG ); ?></th>
 														<td>
 															<?php $chart_options = array(5,10,25,50,100,200); ?>
 															<select id="ws-ls-max-points" name="ws-ls-max-points">
@@ -228,8 +228,8 @@ function ws_ls_settings_page() {
 															</select>
 															<p><?php echo __('If enabled, "Allows points and labels to be displayed on graph.', WE_LS_SLUG); ?></p>
 														</td>
-													</tr>
-														<tr>
+													</tr >
+														<tr  class="<?php echo $disable_if_not_pro_class; ?>">
 															<th scope="row" class="<?php echo $disable_if_not_pro_class; ?>"><?php echo __( 'Point thickness (Line only)', WE_LS_SLUG ); ?></th>
 															<td>
 																<?php $chart_options = array(1,2,3,4,5,6,7,8,9,10); ?>
@@ -239,7 +239,7 @@ function ws_ls_settings_page() {
 																	<?php endforeach; ?>
 
 																</select>
-																<p><?php echo __('If enabled, "Allows points and labels to be displayed on graph.', WE_LS_SLUG); ?></p>
+																<p><?php echo __('Specifies the point thickness on a line chart.', WE_LS_SLUG); ?></p>
 															</td>
 														</tr>
 												<tr>

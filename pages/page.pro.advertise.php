@@ -33,8 +33,9 @@ function ws_ls_advertise_pro() {
 								</h3>
 
 								<div class="inside">
-									<p><?php echo __('Get Weight Loss Tracker Pro for', WE_LS_SLUG) . ' &pound;' . WS_LS_PRO_PRICE .  __(' and have the following features listed below.', WE_LS_SLUG); ?> <?php echo __('In case you need, your <strong>Site Hash</strong>', WE_LS_SLUG); ?>: <?php echo ws_ls_generate_site_hash(); ?></p>
-									<center>
+									<p><?php echo __('Get Weight Loss Tracker Pro for', WE_LS_SLUG) . ' &pound;' . WS_LS_PRO_PRICE .  __(' and have the following features listed below.', WE_LS_SLUG); ?> </p>
+                                    <center>
+                                        <h3><?php echo __('In case you need, your <strong>Site Hash</strong> is', WE_LS_SLUG); ?>: <?php echo ws_ls_generate_site_hash(); ?></h3>
 										<a href="#" style="width:60%;font-size:15px;text-align:center;" target="_blank" class="button-primary"><?php echo __('Upgrade now for', WE_LS_SLUG); ?> &pound;<?php echo WS_LS_PRO_PRICE; ?></a>
 									</center>
 								</div>
@@ -73,6 +74,7 @@ function ws_ls_advertise_pro() {
 
 									if ($valid_license) {
 										$display_form = false;
+                                        ws_ls_delete_all_cache();
 									}
 								}
 

@@ -48,8 +48,6 @@ function ws_ls_user_data_callback()
 		$filters['search'] = $search['value'];
 	}
 
-	//var_dump($_GET, $filters);
-
 	echo ws_ls_load_json($draw_id, $filters);
 
 	wp_die();

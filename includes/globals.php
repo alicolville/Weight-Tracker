@@ -145,15 +145,7 @@
 	if (get_option('ws-ls-line-fill-colour')) {
 		$globals['WE_LS_WEIGHT_FILL_COLOUR'] = get_option('ws-ls-line-fill-colour');
 	}
-	// -----------------------------------------------------------------------------------
-	// Override plugin settings with user preferences (if enabled!)
-	// -----------------------------------------------------------------------------------
-	// add_filter('ws-ls-user-perferences', )
-	//
-	// if(WE_LS_ALLOW_USER_PREFERENCES) {
-	// 	$temp = ws_ls_get_user_preferences();
-	// //	var_Dump($temp);wp_die();
-	// }
+
 	// -----------------------------------------------------------------------------------
 	// Loop through array and set defines!
 	// -----------------------------------------------------------------------------------
