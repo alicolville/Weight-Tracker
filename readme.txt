@@ -37,11 +37,11 @@ Also supports the following tags:
 Fully supported (have all translations):
 
 - English (UK)
+- German (thanks Michael @ Activate the Beast)
 
 Languages partially supported (have some of the translations):
 
 - Portuguese-Brazil (thanks Team Jota)
-- German (thanks Activate the Beast)
 - French (thanks @alexiarna)
 - Spanish (thanks @idelfonsog2)
 - Romanian (thanks @alexiarna)
