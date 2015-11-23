@@ -75,6 +75,7 @@ function ws_ls_settings_page() {
 								<div id="ws-ls-tabs">
 									<ul>
 											<li><a><?php echo __( 'General', WE_LS_SLUG); ?><span><?php echo __( 'General settings', WE_LS_SLUG); ?></span></a></li>
+											<li><a><?php echo __( 'User Experience', WE_LS_SLUG); ?><span><?php echo __( "Settings that effect the user's overall experience", WE_LS_SLUG); ?></span></a></li>
 											<li><a><?php echo __( 'Chart', WE_LS_SLUG); ?><span><?php echo __( 'Chart styling and config', WE_LS_SLUG); ?></span></a></li>
 									</ul>
 									<div>
@@ -91,16 +92,7 @@ function ws_ls_settings_page() {
 															<p><?php echo __('You can specify whether to display weights in Kg, Stones & Pounds or just Pounds. Please note: The graph will be displayed in Pounds if "Stones & Pounds" is selected.', WE_LS_SLUG);?></p>
 														</td>
 													</tr>
-													<tr>
-														<th scope="row"><?php echo __( 'Allow target weights?' , WE_LS_SLUG); ?></th>
-														<td>
-															<select id="ws-ls-allow-targets" name="ws-ls-allow-targets">
-																<option value="no" <?php selected( get_option('ws-ls-allow-targets'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG); ?></option>
-																<option value="yes" <?php selected( get_option('ws-ls-allow-targets'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG); ?></option>
-															</select>
-															<p><?php echo __('If enabled, a user is allowed to enter a target weight. This will be displayed as a horizontal bar on the line chart.', WE_LS_SLUG); ?></p>
-														</td>
-													</tr>
+
 													<tr>
 														<th scope="row"><?php echo __( 'UK or US Date format?' , WE_LS_SLUG); ?></th>
 														<td>
@@ -123,15 +115,29 @@ function ws_ls_settings_page() {
 														</td>
 													</tr>
 													<tr>
-														<th scope="row"><?php echo __( 'Display data in tabs?' , WE_LS_SLUG); ?></th>
+														<th scope="row"><?php echo __( 'Disable plugin CSS?' , WE_LS_SLUG); ?></th>
 														<td>
-															<select id="ws-ls-use-tabs" name="ws-ls-use-tabs">
-																<option value="no" <?php selected( get_option('ws-ls-use-tabs'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
-																<option value="yes" <?php selected( get_option('ws-ls-use-tabs'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+															<select id="ws-ls-disable-css" name="ws-ls-disable-css">
+																<option value="no" <?php selected( get_option('ws-ls-disable-css'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+																<option value="yes" <?php selected( get_option('ws-ls-disable-css'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
 															</select>
-															<p><?php echo __('If enabled, "Weight History" and "Target Weight" will be displayed on sepearate tabs.', WE_LS_SLUG)?></p>
+															<p><?php echo __('If you wish to style the forms in your own way, you can use this option to disable WLT\'s style sheets.', WE_LS_SLUG)?></p>
 														</td>
 													</tr>
+											</table>
+										</div>
+										<div>
+											<table class="form-table">
+												<tr>
+													<th scope="row"><?php echo __( 'Allow target weights?' , WE_LS_SLUG); ?></th>
+													<td>
+														<select id="ws-ls-allow-targets" name="ws-ls-allow-targets">
+															<option value="no" <?php selected( get_option('ws-ls-allow-targets'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG); ?></option>
+															<option value="yes" <?php selected( get_option('ws-ls-allow-targets'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG); ?></option>
+														</select>
+														<p><?php echo __('If enabled, a user is allowed to enter a target weight. This will be displayed as a horizontal bar on the line chart.', WE_LS_SLUG); ?></p>
+													</td>
+												</tr>
 													<tr class="<?php echo $disable_if_not_pro_class; ?>">
 														<th scope="row"><?php echo __( 'Allow user settings' , WE_LS_SLUG); ?></th>
 														<td>
@@ -142,14 +148,24 @@ function ws_ls_settings_page() {
 															<p><?php echo __('Allow your users to select their own weight unit, date format and remove all their data.', WE_LS_SLUG)?></p>
 														</td>
 													</tr>
+													<tr class="<?php echo $disable_if_not_pro_class; ?>">
+															<th scope="row"><?php echo __( 'Advanced data tables?' , WE_LS_SLUG); ?></th>
+															<td>
+																<select id="ws-ls-allow-advanced-tables" name="ws-ls-allow-advanced-tables">
+																	<option value="yes" <?php selected( get_option('ws-ls-allow-advanced-tables'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+																	<option value="no" <?php selected( get_option('ws-ls-allow-advanced-tables'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+																</select>
+																<p><?php echo __("User's weight history is presented in tables that allow sorting, paging, editing and deleting.", WE_LS_SLUG)?></p>
+															</td>
+														</tr>
 													<tr>
-														<th scope="row"><?php echo __( 'Disable plugin CSS?' , WE_LS_SLUG); ?></th>
+														<th scope="row"><?php echo __( 'Display data in tabs?' , WE_LS_SLUG); ?></th>
 														<td>
-															<select id="ws-ls-disable-css" name="ws-ls-disable-css">
-																<option value="no" <?php selected( get_option('ws-ls-disable-css'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
-																<option value="yes" <?php selected( get_option('ws-ls-disable-css'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+															<select id="ws-ls-use-tabs" name="ws-ls-use-tabs">
+																<option value="no" <?php selected( get_option('ws-ls-use-tabs'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+																<option value="yes" <?php selected( get_option('ws-ls-use-tabs'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
 															</select>
-															<p><?php echo __('If you wish to style the forms in your own way, you can use this option to disable WLT\'s style sheets.', WE_LS_SLUG)?></p>
+															<p><?php echo __('If enabled, "Weight History" and "Target Weight" will be displayed on sepearate tabs.', WE_LS_SLUG)?></p>
 														</td>
 													</tr>
 											</table>
@@ -167,6 +183,28 @@ function ws_ls_settings_page() {
 														<p><?php echo __('If enabled, "Allows points and labels to be displayed on graph.', WE_LS_SLUG); ?></p>
 													</td>
 												</tr>
+													<tr  class="<?php echo $disable_if_not_pro_class; ?>">
+														<th scope="row"><?php echo __( 'Bezier Curve (Line only)?', WE_LS_SLUG ); ?></th>
+														<td>
+															<select id="ws-ls-bezier-curve" name="ws-ls-bezier-curve">
+																<option value="yes" <?php selected( get_option('ws-ls-bezier-curve'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+																<option value="no" <?php selected( get_option('ws-ls-bezier-curve'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+
+															</select>
+															<p><?php echo __('If enabled, lines between points on a line graph will be curved', WE_LS_SLUG); ?></p>
+														</td>
+													</tr>
+													<tr>
+														<th scope="row" class="<?php echo $disable_if_not_pro_class; ?>"><?php echo __( 'Display gridlines?', WE_LS_SLUG ); ?></th>
+														<td>
+															<select id="ws-ls-grid-lines" name="ws-ls-grid-lines">
+																<option value="yes" <?php selected( get_option('ws-ls-grid-lines'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+																<option value="no" <?php selected( get_option('ws-ls-grid-lines'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+
+															</select>
+															<p><?php echo __('If enabled, gridlines will be displayed on the Graph canvas.', WE_LS_SLUG); ?></p>
+														</td>
+													</tr>
 												<tr>
 													<th scope="row"><?php echo __( 'Display points on graph?', WE_LS_SLUG ); ?></th>
 													<td>
@@ -178,22 +216,48 @@ function ws_ls_settings_page() {
 														<p><?php echo __('If enabled, "Allows points and labels to be displayed on graph.', WE_LS_SLUG); ?></p>
 													</td>
 												</tr>
+													<tr>
+														<th scope="row" class="<?php echo $disable_if_not_pro_class; ?>"><?php echo __( 'Maximum points per graph', WE_LS_SLUG ); ?></th>
+														<td>
+															<?php $chart_options = array(5,10,25,50,100,200); ?>
+															<select id="ws-ls-max-points" name="ws-ls-max-points">
+																<?php foreach ($chart_options as $option):?>
+																	<option value="<?php echo $option; ?>" <?php selected( WE_LS_CHART_MAX_POINTS, $option ); ?>><?php echo $option; ?></option>
+																<?php endforeach; ?>
+
+															</select>
+															<p><?php echo __('If enabled, "Allows points and labels to be displayed on graph.', WE_LS_SLUG); ?></p>
+														</td>
+													</tr>
+														<tr>
+															<th scope="row" class="<?php echo $disable_if_not_pro_class; ?>"><?php echo __( 'Point thickness (Line only)', WE_LS_SLUG ); ?></th>
+															<td>
+																<?php $chart_options = array(1,2,3,4,5,6,7,8,9,10); ?>
+																<select id="ws-ls-point-size" name="ws-ls-point-size">
+																	<?php foreach ($chart_options as $option):?>
+																		<option value="<?php echo $option; ?>" <?php selected( WE_LS_CHART_POINT_SIZE, $option ); ?>><?php echo $option; ?></option>
+																	<?php endforeach; ?>
+
+																</select>
+																<p><?php echo __('If enabled, "Allows points and labels to be displayed on graph.', WE_LS_SLUG); ?></p>
+															</td>
+														</tr>
 												<tr>
-													<th scope="row"><?php echo __( 'Graph: Weight colour?', WE_LS_SLUG ); ?></th>
+													<th scope="row"><?php echo __( 'Weight colour?', WE_LS_SLUG ); ?></th>
 													<td>
 														<input id="ws-ls-line-colour" name="ws-ls-line-colour" type="color" value="<?php echo WE_LS_WEIGHT_LINE_COLOUR; ?>">
 														<p><?php echo __('If enabled, enter a HEX colour code to use for the Weight history line on graph.', WE_LS_SLUG); ?></p>
 													</td>
 												</tr>
 												<tr>
-													<th scope="row"><?php echo __( 'Graph: Weight fill colour?', WE_LS_SLUG ); ?></th>
+													<th scope="row"><?php echo __( 'Weight fill colour?', WE_LS_SLUG ); ?></th>
 													<td>
 														<input id="ws-ls-line-fill-colour" name="ws-ls-line-fill-colour" type="color" value="<?php echo WE_LS_WEIGHT_FILL_COLOUR; ?>">
 														<p><?php echo __('If enabled, enter a HEX colour code to use forthe shading underneath the Weight history line on graph. Line charts only.', WE_LS_SLUG); ?></p>
 													</td>
 												</tr>
 												<tr>
-													<th scope="row"><?php echo __( 'Graph: Target line colour?', WE_LS_SLUG ); ?></th>
+													<th scope="row"><?php echo __( 'Target line colour?', WE_LS_SLUG ); ?></th>
 													<td>
 														<input id="ws-ls-target-colour" name="ws-ls-target-colour" type="color" value="<?php echo WE_LS_TARGET_LINE_COLOUR; ?>">
 														<p><?php echo __('If enabled, enter a HEX colour code to use for the Target line on graph.', WE_LS_SLUG); ?></p>
@@ -203,9 +267,6 @@ function ws_ls_settings_page() {
 										</div>
 									</div>
 								</div>
-
-
-
 								<?php submit_button(); ?>
 
 
@@ -257,6 +318,11 @@ function ws_ls_register_settings()
 			register_setting( 'we-ls-options-group', 'ws-ls-allow-user-preferences' );
 			register_setting( 'we-ls-options-group', 'ws-ls-allow-decimals' );
 			register_setting( 'we-ls-options-group', 'ws-ls-chart-type' );
+			register_setting( 'we-ls-options-group', 'ws-ls-allow-advanced-tables' );
+			register_setting( 'we-ls-options-group', 'ws-ls-max-points' );
+			register_setting( 'we-ls-options-group', 'ws-ls-bezier-curve' );
+			register_setting( 'we-ls-options-group', 'ws-ls-point-size' );
+			register_setting( 'we-ls-options-group', 'ws-ls-grid-lines' );
 		}
 
 }

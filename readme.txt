@@ -1,9 +1,9 @@
 === Plugin Name ===
 Contributors: aliakro
-Tags: weight, graph, track, stones, kg, table, data, plot, targetm history
+Tags: weight, graph, track, stones, kg, table, data, plot, target, history
 Requires at least: 4.0.0
 Tested up to: 4.3.1
-Stable tag: 2.0.1
+Stable tag: 3.0.0-beta
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -40,11 +40,13 @@ Fully supported (have all translations):
 
 Languages partially supported (have some of the translations):
 
+- Portuguese-Brazil (thanks Team Jota)
+- German (thanks Activate the Beast)
 - French (thanks @alexiarna)
 - Spanish (thanks @idelfonsog2)
 - Romanian (thanks @alexiarna)
 - Danish (thanks @kfasterholdt)
-- Dutch
+- Dutch (thanks Dennis)
 
 Need a translation? Email us: email@YeKen.uk and get the Pro version for free
 
@@ -106,7 +108,7 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 Core changes:
 
 - Removed support for Avada theme
-- Changed jQuery to document ready instead of window ready (jQuery kicks in quicker) 
+- Changed jQuery to document ready instead of window ready (jQuery kicks in quicker)
 
 = 2.0.1 =
 

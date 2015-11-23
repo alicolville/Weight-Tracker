@@ -10,7 +10,7 @@ $pro_features = array(
   __('<strong>User preferences</strong>. If enabled, the user will be able to select which unit they wish to store their weight in Metric or Imperial. They will also be able to specify date format and clear all their weight data.', WE_LS_SLUG),
   __('<strong>Bar Charts</strong>. Fancy something different to a line chart? The plugin will also support Bar Charts.', WE_LS_SLUG),
   __('<strong>Decimals</strong>. Decimals will be allowed weight in Pounds only or Kg modes.', WE_LS_SLUG),
-  __('<strong>Delete existing entry</strong>. A logged in user will be able to delete an existing weight entry.', WE_LS_SLUG),
+  __('<strong>Delete existing entry</strong>. A logged in user will be able to delete or edit an existing weight entry.', WE_LS_SLUG),
   __('<strong>Better Tables.</strong>. Data tables in front end and admin will support paging and sorting.', WE_LS_SLUG),
   __('<strong>Admin: Extra Settings</strong>. Extra settings to customise the plugin will be added e.g. number of plot points on graph, rows per page, etc.', WE_LS_SLUG)
 

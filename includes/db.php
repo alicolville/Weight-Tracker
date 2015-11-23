@@ -38,8 +38,7 @@ function ws_ls_get_user_target($user_id) {
 
 /* Fetch weight data for given user */
 function ws_ls_get_weights($user_id, $limit = 100, $selected_week_number = -1, $sort_order = 'asc')
-{
-    // Check if data exists in cache.
+{    // Check if data exists in cache.
     $cache_key = $user_id . '-' . WE_LS_CACHE_KEY_DATA;
     $cache_sub_key = $user_id . '-' . WE_LS_CACHE_KEY_DATA . '-' . $limit . '-' . $selected_week_number . '-' . $sort_order;
 
@@ -122,15 +121,15 @@ function ws_ls_get_start_weight($user_id)
 {
     // Check if data exists in cache.
     $cache_key = $user_id . '-' . WE_LS_CACHE_KEY_START_WEIGHT;
-    $cache = ws_ls_get_cache($cache_key);
+    $cache_data = ws_ls_get_cache($cache_key);
 
     // Return cache if found!
-    if ($cache && !empty($cache))   {
-        return $cache;
+    if ($cache_data && !empty($cache_data))   {
+      return $cache_data;
     }
     // No cache? hit the DB
     else {
-
+  echo $sql;
       global $wpdb;
       $table_name = $wpdb->prefix . WE_LS_TABLENAME;
       $sql =  $wpdb->prepare('SELECT weight_weight FROM ' . $table_name . ' where weight_user_id = %d order by weight_date asc limit 0, 1', $user_id);

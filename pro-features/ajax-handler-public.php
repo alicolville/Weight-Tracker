@@ -36,7 +36,7 @@ function ws_ls_save_preferences_callback()
 add_action( 'wp_ajax_ws_ls_save_preferences', 'ws_ls_save_preferences_callback' );
 
 function ws_ls_delete_weight_entry_callback()
-{ 
+{
     $ajax_response = 0;
 
   check_ajax_referer( 'ws-ls-nonce', 'security' ); //TODO: Add back in!

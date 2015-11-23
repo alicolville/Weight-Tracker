@@ -407,6 +407,6 @@ function ws_ls_remove_non_numeric($text)
 //TODO: REMOVE!
 function ws_ls_debug($text)
 {
-  file_put_contents ('c:\ali_dev.txt', $text, FILE_APPEND);
+  file_put_contents ('c:\ali_dev.txt', $text . PHP_EOL, FILE_APPEND);
 }
 ?>

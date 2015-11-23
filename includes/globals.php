@@ -17,18 +17,12 @@
 		'WE_LS_US_DATE' => false,
 		'WS_LS_USE_DECIMALS' => false,
 		'WE_LS_CHART_TYPE' => 'line', //line, bar
-
-		// Pro features
-
-		// To move into settings page for Pro
 		'WS_LS_ADVANCED_TABLES' => true,
-		'WS_LS_DISPLAY_WEIGHT_INDEX' => true,
 		'WE_LS_CHART_MAX_POINTS' => 25,
 		'WE_LS_CHART_HEIGHT' => 250,
 		'WE_LS_CHART_BEZIER_CURVE' => true,
 		'WE_LS_CHART_POINT_SIZE' => 3,
-		'WE_LS_CHART_SHOW_GRID_LINES' => true,
-		'WE_LS_USE_MINIFIED_SCRIPTS' => true
+		'WE_LS_CHART_SHOW_GRID_LINES' => true
 	);
 
 	// -----------------------------------------------------------------------------------
@@ -45,13 +39,13 @@
 	define('WE_LS_CACHE_KEY_DATA', 'weight-data');
 	define('WE_LS_CACHE_KEY_MIN_MAX_DATES', 'min-max-dates');
 	define('WE_LS_CACHE_KEY_TARGET_WEIGHT', 'target-weight');
-	define('WE_LS_CACHE_KEY_START_WEIGHT', 'start-weight');
+	define('WE_LS_CACHE_KEY_START_WEIGHT', 'start-weight-index');
 	define('WE_LS_CACHE_KEY_WEIGHT_EXTREME', 'weight-extreme-');
 	define('WE_LS_CACHE_KEY_USER_PREFERENCE', 'user-preference');
 	define('WE_LS_CACHE_ADMIN_USER_DATA', 'admin-user-data');
 	define('WE_LS_TABLE_MAX_WEEK_FILTERS', 100);
-	define('WS_LS_PRO_PRICE', 25.00);
-
+	define('WS_LS_PRO_PRICE', 20.00);
+	define('WE_LS_USE_MINIFIED_SCRIPTS', true);
 	// -----------------------------------------------------------------------------------
 	// Allow user's to override the default admin settings?
 	// -----------------------------------------------------------------------------------
@@ -80,10 +74,40 @@
 		$globals['WS_LS_USE_DECIMALS'] = true;
 	}
 	// -----------------------------------------------------------------------------------
+	// Plot points
+	// -----------------------------------------------------------------------------------
+	if (WS_LS_IS_PRO && get_option('ws-ls-max-points')){
+		$globals['WE_LS_CHART_MAX_POINTS'] = get_option('ws-ls-max-points');
+	}
+	// -----------------------------------------------------------------------------------
+	// Point Size
+	// -----------------------------------------------------------------------------------
+	if (WS_LS_IS_PRO && get_option('ws-ls-point-size')){
+		$globals['WE_LS_CHART_POINT_SIZE'] = get_option('ws-ls-point-size');
+	}
+	// -----------------------------------------------------------------------------------
+	// Bezier Curve
+	// -----------------------------------------------------------------------------------
+	if (WS_LS_IS_PRO && 'no' == get_option('ws-ls-bezier-curve')){
+		$globals['WE_LS_CHART_BEZIER_CURVE'] = false;
+	}
+	// -----------------------------------------------------------------------------------
+	// Grid Lines?
+	// -----------------------------------------------------------------------------------
+	if (WS_LS_IS_PRO && 'no' == get_option('ws-ls-grid-lines')){
+		$globals['WE_LS_CHART_SHOW_GRID_LINES'] = false;
+	}
+	// -----------------------------------------------------------------------------------
 	// Bar chart?
 	// -----------------------------------------------------------------------------------
 	if (WS_LS_IS_PRO && in_array(get_option('ws-ls-chart-type'), array('bar', 'line'))){
 		$globals['WE_LS_CHART_TYPE'] = get_option('ws-ls-chart-type');
+	}
+	// -----------------------------------------------------------------------------------
+	// Advanced tables?
+	// -----------------------------------------------------------------------------------
+	if (WS_LS_IS_PRO && ('yes' == get_option('ws-ls-allow-advanced-tables') || false == get_option('ws-ls-allow-advanced-tables')) ){
+		$globals['WS_LS_ADVANCED_TABLES'] = true;
 	}
 	// -----------------------------------------------------------------------------------
 	// Define if target weights enabled
