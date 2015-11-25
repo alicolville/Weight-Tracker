@@ -65,11 +65,6 @@ include WS_LS_ABSPATH . 'pages/page.settings.php';
 include WS_LS_ABSPATH . 'pages/page.pro.advertise.php';
 include WS_LS_ABSPATH . 'pages/page.help.php';
 include WS_LS_ABSPATH . 'pro-features/feature-list.php';
-
-
-//TODO Following line of code is used to include a test file to generate a lot of user data
-//include WS_LS_ABSPATH . 'development/tests/index.php';
-
 // -----------------------------------------------------------------------------------------
 // AC: Include Pro files
 // --------------------------------------------------------------------------------------

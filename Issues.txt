@@ -1,5 +1,0 @@
-TODO:
-
-- Stop main shortcode being placed more than once on a page
-- Add clear form button
-- Look at graph widget. Remove height option. Currently shows last entries from given date. Have option to show latest,etc?
