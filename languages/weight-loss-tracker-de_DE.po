@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2015-11-23 18:48+0000\n"
-"PO-Revision-Date: 2015-11-23 18:48+0000\n"
+"POT-Creation-Date: 2015-11-26 18:02+0000\n"
+"PO-Revision-Date: 2015-11-26 18:02+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -103,6 +103,10 @@ msgstr "Bitte ein gültiges Datum eingeben"
 msgid "Please confirm you wish to delete ALL your weight history"
 msgstr "Bitte bestätige, dass Du ALLE Gewichtsverlauf-Daten löchen möchtest!"
 
+#: includes/core.php:379
+msgid "Are you sure you wish to delete this entry? If so, press OK."
+msgstr ""
+
 #: includes/functions.php:79 includes/functions.php:245
 msgid "St"
 msgstr "St"
@@ -136,7 +140,7 @@ msgstr "Benutzerdaten verwalten"
 msgid "Get Pro Version"
 msgstr "Pro Version holen"
 
-#: includes/hooks.php:17
+#: includes/hooks.php:17 pages/page.help.php:21
 msgid "Help"
 msgstr "Hilfe"
 
@@ -220,20 +224,19 @@ msgstr ""
 msgid "You haven't entered any weight data yet."
 msgstr "Du hast noch keine Gewichtsdaten eingegeben."
 
-#: pages/page.help.php:21
-msgid " Instructions"
-msgstr " Anleitung"
-
 #: pages/page.help.php:23
-msgid ""
-"Place the tag [weight-loss-tracker] on a given page and the user is "
-"presented with a form to enter a date, weight and notes for that entry. When "
-"the person saves their entry the data table and graph is refreshed."
+msgid "You can find detailed help with this plugin at our Github Wiki:"
 msgstr ""
-"Füge das Tag [weight-loss-tracker] auf einer beliebigen Seite hinzu und der "
-"Benutzer sieht ein Formular, in dem er Datum, Gewicht und Anmerkungen "
-"hinzufügen kann. Nach dem Speichern aktualisieren sich die Tabelle und das "
-"Diagramm automatisch."
+
+#: pages/page.help.php:29
+msgid "Our road map"
+msgstr ""
+
+#: pages/page.help.php:31
+msgid ""
+"Interested in the future development of this plugin? Then have a peek at our "
+"road map:"
+msgstr ""
 
 #: pages/page.pro.advertise.php:10 pages/page.settings.php:8
 #: pro-features/user-data.php:7
@@ -254,35 +257,39 @@ msgstr "Hole Dir den Weight Loss Tracker Pro für"
 msgid " and have the following features listed below."
 msgstr " und bekomme die unten aufgeführten Features."
 
-#: pages/page.pro.advertise.php:36 pages/page.pro.advertise.php:83
-msgid "In case you need, your <strong>Site Hash</strong>"
-msgstr "Falls benötigt, Dein <strong>Site Hash</strong>"
-
 #: pages/page.pro.advertise.php:38
+msgid "In case you need, your <strong>Site Hash</strong> is"
+msgstr ""
+
+#: pages/page.pro.advertise.php:39
 msgid "Upgrade now for"
 msgstr "Jetzt upgraden für"
 
-#: pages/page.pro.advertise.php:61
+#: pages/page.pro.advertise.php:62
 msgid "Enter License Key"
 msgstr "Lizenzschlüssel eintragen"
 
-#: pages/page.pro.advertise.php:83
+#: pages/page.pro.advertise.php:85
 msgid "Got an existing license key? If so, enter it below"
 msgstr "Lizenzschlüssel vorhanden? Falls ja, trage ihn unten ein"
 
-#: pages/page.pro.advertise.php:84
+#: pages/page.pro.advertise.php:85
+msgid "In case you need, your <strong>Site Hash</strong>"
+msgstr "Falls benötigt, Dein <strong>Site Hash</strong>"
+
+#: pages/page.pro.advertise.php:86
 msgid "Enter license key"
 msgstr "Lizenzschlüssel eintragen"
 
-#: pages/page.pro.advertise.php:86
+#: pages/page.pro.advertise.php:88
 msgid "Add License"
 msgstr "Lizenz hinzufügen"
 
-#: pages/page.pro.advertise.php:117
+#: pages/page.pro.advertise.php:119
 msgid "Features of Pro version"
 msgstr "Features der Pro Version"
 
-#: pages/page.pro.advertise.php:121
+#: pages/page.pro.advertise.php:123
 msgid "Below is a list of the intended features of the Pro version:"
 msgstr "Nachfolgend eine Liste der geplanten Features der Pro-Version:"
 
@@ -421,11 +428,10 @@ msgstr "Erweiterte Datentabellen?"
 
 #: pages/page.settings.php:158
 msgid ""
-"User's weight history is presented in tables that allow sorting, paging, "
-"editing and deleting."
+"User's weight history is presented in responsive tables that allow sorting, "
+"paging, editing and deleting. Weight Index (i.e. percentage lost / gained to "
+"be displayed.)"
 msgstr ""
-"Der Gewichtsverlauf des Benutzers wird in einer Tabelle präsentiert, die das "
-"Sortieren, Seitenumbrüche und Löschen erlaubt."
 
 #: pages/page.settings.php:162
 msgid "Display data in tabs?"
@@ -452,7 +458,7 @@ msgid "Bar Chart"
 msgstr "Balkendiagramm"
 
 #: pages/page.settings.php:183 pages/page.settings.php:216
-#: pages/page.settings.php:229 pages/page.settings.php:242
+#: pages/page.settings.php:229
 msgid "If enabled, \"Allows points and labels to be displayed on graph."
 msgstr ""
 "Falls aktiviert, werden Punkte und Bezeichnungen im Diagramm angezeigt."
@@ -485,6 +491,10 @@ msgstr "Maximale Anzahl an Punkten pro Diagramm"
 #: pages/page.settings.php:233
 msgid "Point thickness (Line only)"
 msgstr "Punkt-Stärke (nur Liniendiagramm)"
+
+#: pages/page.settings.php:242
+msgid "Specifies the point thickness on a line chart."
+msgstr ""
 
 #: pages/page.settings.php:246
 msgid "Weight colour?"
@@ -747,6 +757,26 @@ msgstr "Nein. Automatisch das heutige Datum auswählen."
 #: pro-features/widget-form.php:71
 msgid "Allow user to specify a date"
 msgstr "Benutzer erlauben, ein Datum auszuwählen"
+
+#~ msgid " Instructions"
+#~ msgstr " Anleitung"
+
+#~ msgid ""
+#~ "Place the tag [weight-loss-tracker] on a given page and the user is "
+#~ "presented with a form to enter a date, weight and notes for that entry. "
+#~ "When the person saves their entry the data table and graph is refreshed."
+#~ msgstr ""
+#~ "Füge das Tag [weight-loss-tracker] auf einer beliebigen Seite hinzu und "
+#~ "der Benutzer sieht ein Formular, in dem er Datum, Gewicht und Anmerkungen "
+#~ "hinzufügen kann. Nach dem Speichern aktualisieren sich die Tabelle und "
+#~ "das Diagramm automatisch."
+
+#~ msgid ""
+#~ "User's weight history is presented in tables that allow sorting, paging, "
+#~ "editing and deleting."
+#~ msgstr ""
+#~ "Der Gewichtsverlauf des Benutzers wird in einer Tabelle präsentiert, die "
+#~ "das Sortieren, Seitenumbrüche und Löschen erlaubt."
 
 #~ msgid ""
 #~ "We are shortly releasing a pro version of this plugin. We aim to keep the "
