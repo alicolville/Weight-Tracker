@@ -11,11 +11,7 @@ An easy to use plugin that allows a user to keep track of their weight history i
 
 == Description ==
 
-= Pro Version =
-
-We are currently developing a Pro version with many additional features! Read more and register your interest here: https://www.yeken.uk/show-interest-in-weight-loss-tracker-pro/
-
-= Features =
+= Core Features =
 
 An easy to use plugin that allows a user to keep track of their weight history in both tabular and chart format (Chart.js). Simply place the tag [weight-loss-tracker] on a given page and the user is presented with a tabbed form to enter a date (UK or US), weight and notes for that entry. When the person saves their entry the data table and graph are refreshed. The plugin also allows users to specify their target weight which is drawn on the chart as a comparison. If data is entered for an existing date, then the previous entry is simply updated. The graph is shown when there are two or more entries.
 
@@ -31,6 +27,21 @@ Also supports the following tags:
 	[weightloss_weight_start] - start weight of the logged in member
 	[weightloss_weight_most_recent] - end weight of the logged in member
 	[weightloss_weight_difference_from_target] - difference from target
+
+= Pro Version =
+
+Our Pro version has now been released! If you upgrade, you get he additional features:
+
+- Widgets. Widgets that allow you to display the graph and quick weight entry form within any widget area.
+- Chart and form Shortcodes. That allow you to display the graph and quick weight entry form by placing a shortcode on any post or page.
+- Text Shortcodes. Additional shortcodes for earliest and most recent dates entered.
+- Admin: View / Delete user data. Admin will be able to view and delete existing user data.
+- User preferences. If enabled, the user will be able to select which unit they wish to store their weight in Metric or Imperial. They will also be able to specify date format and clear all their weight data.
+- Bar Charts. Fancy something different to a line chart? The plugin will also support Bar Charts.
+- Decimals. Decimals will be allowed weight in Pounds only or Kg modes.
+- Delete existing entry. A logged in user will be able to delete or edit an existing weight entry.
+- Better Tables.. Data tables in front end and admin will support paging and sorting.
+- Admin: Extra Settings. Extra settings to customise the plugin will be added e.g. number of plot points on graph, rows per page, etc.
 
 = Languages support =
 
@@ -48,7 +59,7 @@ Languages partially supported (have some of the translations):
 - Danish (thanks @kfasterholdt)
 - Dutch (thanks Dennis)
 
-Need a translation? Email us: email@YeKen.uk and get the Pro version for free
+Need a translation? Email us: email@YeKen.uk
 
 * Developed by YeKen.uk *
 
@@ -63,6 +74,10 @@ Paypal Donate: email@YeKen.uk
 
 == Frequently Asked Questions ==
 
+= Do you have any guides / documentation? =
+
+Yes, I'm currently expanding my Wiki: https://github.com/yekenuk/Weight-Loss-Tracker/wiki
+
 = Does it create any custom mySQL tables =
 
 Yes it creates two. One to store weight information per user and another to store target weights:
@@ -76,7 +91,7 @@ Currently it supports both UK (dd/mm/yyy) and US (mm/dd/yyyy) date formats.
 
 = Does it support the Avada theme? =
 
-Prior to version 3.0, yes, this plugin did support the Avada theme. However, wanting to be independent of any theme support has now been removed.
+Prior to version 3.0, yes, this plugin did support the Avada theme. However, wanting to be independent of any theme support this has now been removed.
 
 = How do I switch it from Metric (Kg) to Imperial (Stones / Pounds)? =
 
@@ -96,14 +111,37 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 
 == Screenshots ==
 
-1. Tab one: Chart with Target and Weight entry forms.
-2. Tab two: Target form and Weight history table.
-3. Example usage of other shortcodes.
-4. Settings page
+1. All three tabs of the main [weight-loss-tracker] shortcode
+2. Tab one of [weight-loss-tracker]: Chart, Target and Weight form.
+3. Tab two of [weight-loss-tracker]: Target Weight and Weight History
+4. Tab three of [weight-loss-tracker]: User preferences page
+5. Examples of random placements of [weight-loss-tracker-chart] and [weight-loss-tracker-form]
+6. Examples of the Chart and Form widgets
+7. More examples of Chart and Form widgets
+8. Tab one of settings page
+9. Tab two of settings page
+10. Tab three of settings page
+11. Admin - managing user data
+12. Admin - Delete ALL data
+13. Examples of the [weight-loss-tracker-chart] and [weight-loss-tracker-form] shortcodes
+14. Examples of the shortcodes [weightloss_weight_difference], [weightloss_weight_start], [weightloss_weight_most_recent] and [weightloss_weight_difference_from_target]
 
 == Changelog ==
 
-= PRO =
+= 3.0 =
+
+Wey hey! Our first Pro version, if you upgrade you get the following additional features:
+
+- Widgets. Widgets that allow you to display the graph and quick weight entry form within any widget area.
+- Chart and form Shortcodes. That allow you to display the graph and quick weight entry form by placing a shortcode on any post or page.
+- Text Shortcodes. Additional shortcodes for earliest and most recent dates entered.
+- Admin: View / Delete user data. Admin will be able to view and delete existing user data.
+- User preferences. If enabled, the user will be able to select which unit they wish to store their weight in Metric or Imperial. They will also be able to specify date format and clear all their weight data.
+- Bar Charts. Fancy something different to a line chart? The plugin will also support Bar Charts.
+- Decimals. Decimals will be allowed weight in Pounds only or Kg modes.
+- Delete existing entry. A logged in user will be able to delete or edit an existing weight entry.
+- Better Tables.. Data tables in front end and admin will support paging and sorting.
+- Admin: Extra Settings. Extra settings to customise the plugin will be added e.g. number of plot points on graph, rows per page, etc.
 
 Core changes:
 
