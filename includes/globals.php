@@ -31,6 +31,7 @@
 	define('WE_LS_TITLE', 'Weight Loss Tracker');
 	define('WE_LS_SLUG', 'weight-loss-tracker');
 	define('WE_LS_TABLENAME', 'WS_LS_DATA');
+	define('WE_LS_DATA_URL', 'https://yeken.uk/wlt/plugin-info.json');
 	define('WE_LS_TARGETS_TABLENAME', 'WS_LS_DATA_TARGETS');
 	define('WE_LS_USER_PREFERENCES_TABLENAME', 'WS_LS_DATA_USER_PREFERENCES');
 	define('WE_LS_CACHE_ENABLED', true);
@@ -42,9 +43,10 @@
 	define('WE_LS_CACHE_KEY_START_WEIGHT', 'start-weight-index');
 	define('WE_LS_CACHE_KEY_WEIGHT_EXTREME', 'weight-extreme-');
 	define('WE_LS_CACHE_KEY_USER_PREFERENCE', 'user-preference');
+	define('WE_LS_CACHE_KEY_YEKEN_JSON', 'yeken-json-lookup');
 	define('WE_LS_CACHE_ADMIN_USER_DATA', 'admin-user-data');
 	define('WE_LS_TABLE_MAX_WEEK_FILTERS', 100);
-	define('WS_LS_PRO_PRICE', 20.00);
+	define('WS_LS_PRO_PRICE', 25.00);
 	define('WE_LS_USE_MINIFIED_SCRIPTS', true);
 	// -----------------------------------------------------------------------------------
 	// Allow user's to override the default admin settings?

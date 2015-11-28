@@ -63,6 +63,13 @@ Need a translation? Email us: email@YeKen.uk
 
 * Developed by YeKen.uk *
 
+= Documentation =
+
+Need further help? Please visit the Wiki:
+https://github.com/yekenuk/Weight-Loss-Tracker/wiki
+
+= Donate =
+
 Paypal Donate: email@YeKen.uk
 
 == Installation ==

@@ -10,6 +10,10 @@ function ws_ls_advertise_pro() {
 		wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
 	}
 
+	$yeken_data = ws_ls_get_data_from_yeken();
+
+	$price = ($yeken_data && isset($yeken_data->price)) ? $yeken_data->price : WS_LS_PRO_PRICE;
+
 		?>
 
 		<div class="wrap">
@@ -33,10 +37,10 @@ function ws_ls_advertise_pro() {
 								</h3>
 
 								<div class="inside">
-									<p><?php echo __('Get Weight Loss Tracker Pro for', WE_LS_SLUG) . ' &pound;' . WS_LS_PRO_PRICE .  __(' and have the following features listed below.', WE_LS_SLUG); ?> </p>
+									<p><?php echo __('Get Weight Loss Tracker Pro for', WE_LS_SLUG) . ' &pound;' . $price .  __(' and have the following features listed below.', WE_LS_SLUG); ?> </p>
                                     <center>
                                         <h3><?php echo __('In case you need, your <strong>Site Hash</strong> is', WE_LS_SLUG); ?>: <?php echo ws_ls_generate_site_hash(); ?></h3>
-										<a href="https://www.yeken.uk/weight-loss-tracker-upgrade-to-pro-version/?hash=<?php echo ws_ls_generate_site_hash(); ?>" style="width:60%;font-size:15px;text-align:center;" target="_blank" class="button-primary"><?php echo __('Upgrade now for', WE_LS_SLUG); ?> &pound;<?php echo WS_LS_PRO_PRICE; ?></a>
+										<a href="https://www.yeken.uk/weight-loss-tracker-upgrade-to-pro-version/?hash=<?php echo ws_ls_generate_site_hash(); ?>" style="width:60%;font-size:15px;text-align:center;" target="_blank" class="button-primary"><?php echo __('Upgrade now for', WE_LS_SLUG); ?> &pound;<?php echo $price; ?></a>
 									</center>
 								</div>
 								<!-- .inside -->

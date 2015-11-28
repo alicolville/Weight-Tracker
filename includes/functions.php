@@ -403,10 +403,26 @@ function ws_ls_remove_non_numeric($text)
   }
   return $text;
 }
-
-//TODO: REMOVE!
-function ws_ls_debug($text)
+function ws_ls_get_data_from_yeken()
 {
-  file_put_contents ('c:\ali_dev.txt', $text . PHP_EOL, FILE_APPEND);
+  // Look up date from Yeken.uk
+  $cache = ws_ls_get_cache(WE_LS_CACHE_KEY_YEKEN_JSON);
+
+  // Return cache if found!
+  if ($cache)   {
+      return $cache;
+  }
+  $response = wp_remote_get(WE_LS_DATA_URL);
+
+  if( is_array($response) ) {
+    if (200 == $response['response']['code'] && !empty($response['body'])) {
+      $data = json_decode($response['body']);
+      ws_ls_set_cache(WE_LS_CACHE_KEY_YEKEN_JSON, $data, 3 * HOUR_IN_SECONDS);
+      return $data;
+    }
+  }
+
+  return false;
 }
+
 ?>
