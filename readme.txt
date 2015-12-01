@@ -138,6 +138,7 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 = 3.0.1 =
 
 - Extended MySQL table checker to ensure the data table for user preferences has been created.
+- Removed CSS import statements for Open Sans and Lato.
 
 = 3.0 =
 
