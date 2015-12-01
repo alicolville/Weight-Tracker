@@ -145,11 +145,16 @@ function ws_ls_admin_check_mysql_tables_exist()
     if (0 == count($rows)) {
         $error_text .= '<li>' . $wpdb->prefix . WE_LS_TARGETS_TABLENAME . '</li>';
     }
-
     // Check main data table exists!
     $rows = $wpdb->get_row('Show columns in ' . $wpdb->prefix . WE_LS_TABLENAME);
     if (0 == count($rows)) {
         $error_text .= '<li>' . $wpdb->prefix . WE_LS_TABLENAME . '</li>';
+    }
+
+    // Check user_preferences exists!
+    $rows = $wpdb->get_row('Show columns in ' . $wpdb->prefix . WE_LS_USER_PREFERENCES_TABLENAME);
+    if (0 == count($rows)) {
+        $error_text .= '<li>' . $wpdb->prefix . WE_LS_USER_PREFERENCES_TABLENAME . '</li>';
     }
 
     // Return error message if tables missing
