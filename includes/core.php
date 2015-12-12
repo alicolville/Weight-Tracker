@@ -34,23 +34,33 @@
   /* Display Chart */
 	function ws_ls_display_chart($weight_data, $options = false)
 	{
-		// Build the default arguments for a chart. This can then be overrided by what is being passed in (i.e. to support shortcode arguments)
+        // Build the default arguments for a chart. This can then be overrided by what is being passed in (i.e. to support shortcode arguments)
 		$chart_config = array(
 			'user-id' => get_current_user_id(),
 			'type' => WE_LS_CHART_TYPE,
 			'height' => WE_LS_CHART_HEIGHT,
-      'width' => false,
+            'width' => false,
 			'weight-line-color' => WE_LS_WEIGHT_LINE_COLOUR,
 			'weight-fill-color' => WE_LS_WEIGHT_FILL_COLOUR,
 			'weight-target-color' => WE_LS_TARGET_LINE_COLOUR,
 			'show-gridlines' => WE_LS_CHART_SHOW_GRID_LINES,
-			'bezier' => WE_LS_CHART_BEZIER_CURVE
+			'bezier' => WE_LS_CHART_BEZIER_CURVE,
+            'hide_login_message_if_needed' => true
 		);
 
-    // If we are PRO and the developer has specified options then override the default
-    if($options && WS_LS_IS_PRO){
-        $chart_config = wp_parse_args( $options, $chart_config );
-    }
+        // If we are PRO and the developer has specified options then override the default
+        if($options && WS_LS_IS_PRO){
+            $chart_config = wp_parse_args( $options, $chart_config );
+        }
+        
+        // Make sure they are logged in
+        if (!is_user_logged_in())	{
+            if ($chart_config['hide_login_message_if_needed']) {
+                return '<blockquote class="ws-ls-blockquote"><p>' .	__('You need to be logged in to record your weight.', WE_LS_SLUG) . ' <a href="' . wp_login_url(get_permalink()) . '">' . __('Login now', WE_LS_SLUG) . '</a>.</p></blockquote>';    
+            } else {
+                return;
+            }       
+        }
 
 		$chart_id = 'ws_ls_chart_' . rand(10,1000) . '_' . rand(10,1000);
 
@@ -165,14 +175,24 @@
 	Displays either a target or weight form
 
 */
-function ws_ls_display_weight_form($target_form = false, $class_name = false, $user_id = false, $hide_titles = false, $form_number = false, $force_to_todays_date = false)
+function ws_ls_display_weight_form($target_form = false, $class_name = false, $user_id = false, $hide_titles = false, 
+                                        $form_number = false, $force_to_todays_date = false, $hide_login_message_if_needed = true)
 {
-		global $save_response;
+    global $save_response;
     $html_output  = '';
 
+    // Make sure they are logged in
+    if (!is_user_logged_in())	{
+        if ($hide_login_message_if_needed) {
+            return '<blockquote class="ws-ls-blockquote"><p>' .	__('You need to be logged in to record your weight.', WE_LS_SLUG) . ' <a href="' . wp_login_url(get_permalink()) . '">' . __('Login now', WE_LS_SLUG) . '</a>.</p></blockquote>';    
+        } else {
+            return;
+        }       
+    }
+    
     if(false == $user_id){
-			$user_id = get_current_user_id();
-		}
+        $user_id = get_current_user_id();
+    }
 
     $form_id = 'ws_ls_form_' . rand(10,1000) . '_' . rand(10,1000);
 		$form_class = ' ws_ls_display_form';
@@ -264,8 +284,14 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 			$html_output .= '<div id="comment-submit-container">
 			<p>
 				<div>
-					<input name="submit_button" type="submit" id="we-ls-submit"  tabindex="' . ws_ls_get_next_tab_index() . '" value="' . $button_text . '" class="comment-submit btn btn-default button default small fusion-button button-small button-default button-round button-flat">
-				</div>
+					<input name="submit_button" type="submit" id="we-ls-submit"  tabindex="' . ws_ls_get_next_tab_index() . '" value="' . $button_text . '" class="comment-submit btn btn-default button default small fusion-button button-small button-default button-round button-flat" />';
+            
+                //If a target form, display "Clear Target" button
+                if ($target_form){
+                    $html_output .= '&nbsp;<button name="ws-ls-clear-target" id="ws-ls-clear-target" type="button" tabindex="' . ws_ls_get_next_tab_index() . '" class="ws-ls-clear-target comment-submit btn btn-default button default small fusion-button button-small button-default button-round button-flat" >' . __('Clear Target', WE_LS_SLUG) . '</button>';
+                }
+    
+                $html_output .= '</div>
 			</p>
 		</div>
 	</form>';
@@ -371,6 +397,7 @@ function ws_ls_get_js_config()
 	return array (
 		'us-date' => ($use_us_date) ? 'true' : 'false',
 		'date-format' => ($use_us_date) ? 'mm/dd/yy' : 'dd/mm/yy',
+        'clear-target' => __('Are you sure you wish to clear your target weight?', WE_LS_SLUG),
 		'validation-we-ls-weight-pounds' => $message_for_pounds,
 		'validation-we-ls-weight-kg' => __('Please enter a valid figure for Kg', WE_LS_SLUG),
 		'validation-we-ls-weight-stones' => __('Please enter a valid figure for Stones', WE_LS_SLUG),

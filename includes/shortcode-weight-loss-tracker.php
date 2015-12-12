@@ -12,8 +12,9 @@
 				return '<blockquote class="ws-ls-blockquote"><p>' .	__('You need to be logged in to record your weight.', WE_LS_SLUG) . ' <a href="' . wp_login_url(get_permalink()) . '">' . __('Login now', WE_LS_SLUG) . '</a>.</p></blockquote>';
 			}
 
-      $user_id = get_current_user_id();
-			$html_output = '';
+            $user_id = get_current_user_id();
+			
+            $html_output = '';
 
 			// If a form was previously submitted then display resulting message!
 			if (!empty($save_response) && $save_response['form_number'] == false){
@@ -43,7 +44,8 @@
 			if (WE_LS_USE_TABS)	{
 
 				$html_output .= '
-						<div id="ws-ls-tabs">
+                        <div id="ws-ls-tabs-loading" class="ws-ls-loading"></div>
+						<div id="ws-ls-tabs" style="display:none;">
 							<ul>
 									<li><a>' . __('Overview', WE_LS_SLUG) . '<span>' . __('Chart / Add Weight', WE_LS_SLUG) . '</span></a></li>
 									<li><a>' . __('In Detail', WE_LS_SLUG) . '<span>' . __('View all recorded weights', WE_LS_SLUG) . '</span></a></li>';

@@ -72,16 +72,3 @@ function ws_ls_get_entry_callback()
 add_action( 'wp_ajax_ws_ls_get_entry', 'ws_ls_get_entry_callback' );
 
 
-
-
-function ws_ls_ajax_post_value($key, $json_decode = false)
-{
-    if(isset($_POST[$key]) && $json_decode) {
-        return json_decode($_POST[$key]);
-    }
-    elseif(isset($_POST[$key])) {
-    	return $_POST[$key];
-    }
-
-    return NULL;
-}

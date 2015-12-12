@@ -7,7 +7,7 @@ function ws_ls_shortcode_chart($user_defined_arguments)
     if(!WS_LS_IS_PRO) {
        return false;
     }
-
+    
     $chart_arguments = shortcode_atts(
         array(
             'user-id' => get_current_user_id(),

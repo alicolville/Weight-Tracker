@@ -116,14 +116,13 @@ function ws_ls_delete_existing_data() {
 
 /* Delete all data for a user */
 function ws_ls_delete_data_for_user() {
+    
     if(WE_LS_ALLOW_USER_PREFERENCES)  {
 
         $user_id = get_current_user_id();
         global $wpdb;
         // Delete user targets
-        $table_name =  $wpdb->prefix . WE_LS_TARGETS_TABLENAME;
-        $sql = $wpdb->prepare("Delete from $table_name where weight_user_id = %d", $user_id);
-        $wpdb->query($sql);
+        ws_ls_delete_target($user_id);
 
         // Delete weight history
         $table_name =  $wpdb->prefix . WE_LS_TABLENAME;

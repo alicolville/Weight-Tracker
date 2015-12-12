@@ -6,6 +6,7 @@ global $form_number;
 
 function ws_ls_shortcode_form($user_defined_arguments)
 {
+   
     global $form_number;
   
     if(is_null($form_number)){
