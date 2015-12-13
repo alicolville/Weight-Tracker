@@ -3,7 +3,7 @@
 
 	$ws_ls_tab_index = 1;
 
-	function ws_ls_shortcode()
+	function ws_ls_shortcode($user_defined_arguments)
 	{
 			global $save_response;
 
@@ -12,6 +12,15 @@
 				return '<blockquote class="ws-ls-blockquote"><p>' .	__('You need to be logged in to record your weight.', WE_LS_SLUG) . ' <a href="' . wp_login_url(get_permalink()) . '">' . __('Login now', WE_LS_SLUG) . '</a>.</p></blockquote>';
 			}
 
+            $shortcode_arguments = shortcode_atts(
+            array(
+                'min-chart-points' => 2
+               ), $user_defined_arguments );
+            
+            if (!is_numeric($shortcode_arguments['min-chart-points'])) {
+                $shortcode_arguments['min-chart-points'] = 2;
+            }
+        
             $user_id = get_current_user_id();
 			
             $html_output = '';
@@ -62,7 +71,7 @@
 			// Start Chart Tab
 			$html_output .= ws_ls_start_tab("wlt-chart");
 
-			if ($weight_data && count($weight_data) > 1) {
+            if ($weight_data && count($weight_data) >= $shortcode_arguments['min-chart-points']) {
 				// Great, we have some weight data. Chop it up so we only have (at most) 30 plot points for the graph
 				$html_output .= ws_ls_title(__('In a chart', WE_LS_SLUG));
 				$weight_data_for_graph = array_slice($weight_data, 0, WE_LS_CHART_MAX_POINTS);

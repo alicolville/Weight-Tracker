@@ -45,10 +45,11 @@ Our Pro version has now been released! If you upgrade, you get he additional fea
 
 = Languages support =
 
-Fully supported (have all translations):
+Fully supported (have the majority of translations):
 
 - English (UK)
 - German (thanks Michael @ Activate the Beast)
+- Dutch (thanks Dennis)
 
 Languages partially supported (have some of the translations):
 
@@ -57,7 +58,6 @@ Languages partially supported (have some of the translations):
 - Spanish (thanks @idelfonsog2)
 - Romanian (thanks @alexiarna)
 - Danish (thanks @kfasterholdt)
-- Dutch (thanks Dennis)
 
 Need a translation? Email us: email@YeKen.uk
 
@@ -145,6 +145,7 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 
 **Core changes:**
 
+ * Can now specify the minimum number of weight entries needed before chart is displayed e.g. [weight-loss-tracker min-chart-points=5]
  * Improved jQuery loading of tabs. Tabs are hidden until jQuery has rendered them correctly (this will stop the unstyled tabs appearing).
  * "Clear Target" button added to target forms.
 
