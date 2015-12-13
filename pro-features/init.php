@@ -8,7 +8,8 @@ if(defined('WS_LS_ABSPATH')){
   include WS_LS_ABSPATH . 'pro-features/ajax-handler-public.php';
   include WS_LS_ABSPATH . 'pro-features/shortcode-chart.php';
   include WS_LS_ABSPATH . 'pro-features/shortcode-form.php';
-  include WS_LS_ABSPATH . 'pro-features/advanced_table.php';
+  include WS_LS_ABSPATH . 'pro-features/shortcode-table.php';
+  include WS_LS_ABSPATH . 'pro-features/advanced-table.php';
   include WS_LS_ABSPATH . 'pro-features/widget-chart.php';
   include WS_LS_ABSPATH . 'pro-features/widget-form.php';
   include WS_LS_ABSPATH . 'pro-features/user-data.php';
@@ -22,10 +23,12 @@ function ws_ls_register_pro_shortcodes(){
     /*
         [weight-loss-tracker-chart] - Displays a chart
         [weight-loss-tracker-form] - Displays a form
+        [weight-loss-tracker-table] - Displays a data table
     */
 
     add_shortcode( 'weight-loss-tracker-chart', 'ws_ls_shortcode_chart' );
     add_shortcode( 'weight-loss-tracker-form', 'ws_ls_shortcode_form' );
+    add_shortcode( 'weight-loss-tracker-table', 'ws_ls_shortcode_table' );
 }
 add_action( 'init', 'ws_ls_register_pro_shortcodes');
 

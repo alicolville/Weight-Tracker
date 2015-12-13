@@ -139,6 +139,7 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 
 **Pro Changes:**
 
+* Added new Shortcode for displaying a data table: [weight-loss-tracker-table] - By default it will display data for the current user logged in. Specifying the attribute "user-id" will allow you to display a table for the given user e.g. [weight-loss-tracker-table user-id="5"]
 * BUG FIX:  Charts and Form shortcodes now display a login message when the user isn't logged. Previously they would see the data weight data for admin account.
 
 
