@@ -17,7 +17,8 @@ class ws_ls_widget_chart extends WP_Widget {
             'title' => __('Weight Loss Tracker', WE_LS_SLUG),
             'max-points' => 5,
             'user-id' => '',
-            'type' => 'line'
+            'type' => 'line',
+            'not-logged-in-message' => ''
         );
 
 	}
@@ -38,7 +39,7 @@ class ws_ls_widget_chart extends WP_Widget {
             $chart_arguments =  array('user-id' => get_current_user_id(),
                                     'max-data-points' => WE_LS_CHART_MAX_POINTS);
 
-						if(is_numeric($instance['user-id']) && $instance['user-id'] != 0) {
+            if(is_numeric($instance['user-id']) && $instance['user-id'] != 0) {
                 $chart_arguments['user-id'] = $instance['user-id'];
             }
             if(is_numeric($instance['max-points'])) {
@@ -64,8 +65,11 @@ class ws_ls_widget_chart extends WP_Widget {
             } else {
                 echo '<!-- WLT Chart: No user data found for given ID -->';
             }
-
-
+        } elseif (isset($instance['not-logged-in-message']) && !empty($instance['not-logged-in-message'])) { 
+            echo $args['before_widget'];
+            echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
+            echo '<p>' . $instance['not-logged-in-message'] . '</p>';
+            echo $args['after_widget'];
         }
 
 	}
@@ -106,6 +110,14 @@ class ws_ls_widget_chart extends WP_Widget {
                 <option value="25" <?php selected( $field_values['max-points'], '25'); ?>>25</option>
             </select>
 		</p>
+        <p>
+			<label for="<?php echo $this->get_field_id( 'not-logged-in-message' ); ?>"><?php _e('Message to display if not logged in', WE_LS_SLUG); ?></label>
+			<input class="widefat" id="<?php echo $this->get_field_id( 'not-logged-in-message' ); ?>" name="<?php echo $this->get_field_name( 'not-logged-in-message' ); ?>" type="text" value="<?php echo esc_attr( $field_values['not-logged-in-message'] ); ?>">
+		   <p><small><?php _e('By default the widget is hidden if the user is not logged in. If you wish, you can display a message to the visitor instead.', WE_LS_SLUG); ?></small></p>
+
+        </p>
+
+
 	   <p>
 			<label for="<?php echo $this->get_field_id( 'user-id' ); ?>"><?php _e('ID of user (leave blank to show chart for current user)', WE_LS_SLUG); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id( 'user-id' ); ?>" name="<?php echo $this->get_field_name( 'user-id' ); ?>" type="text" value="<?php echo esc_attr( $field_values['user-id'] ); ?>">
