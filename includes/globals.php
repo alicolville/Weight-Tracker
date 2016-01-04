@@ -3,29 +3,7 @@
 
 	global $form_number;
 
-	// Set defaults
-	$globals = array(
-		'WE_LS_DATA_UNITS' => 'kg',
-		'WE_LS_IMPERIAL_WEIGHTS' => false,
-		'WE_LS_ALLOW_TARGET_WEIGHTS' => true,
-		'WE_LS_ALLOW_POINTS' => true,
-		'WE_LS_USE_TABS' => true,
-		'WE_LS_CSS_ENABLED' => true,
-		'WE_LS_TARGET_LINE_COLOUR' => '#76bada',
-		'WE_LS_WEIGHT_LINE_COLOUR' => '#aeaeae',
-		'WE_LS_WEIGHT_FILL_COLOUR' => '#f9f9f9',
-		'WE_LS_US_DATE' => false,
-		'WS_LS_USE_DECIMALS' => false,
-		'WE_LS_CHART_TYPE' => 'line', //line, bar
-		'WS_LS_ADVANCED_TABLES' => true,
-		'WE_LS_CHART_MAX_POINTS' => 25,
-		'WE_LS_CHART_HEIGHT' => 250,
-		'WE_LS_CHART_BEZIER_CURVE' => true,
-		'WE_LS_CHART_POINT_SIZE' => 3,
-		'WE_LS_CHART_SHOW_GRID_LINES' => true
-	);
-
-	// -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
 	// Constants - highly recommended that you don't change these
 	// -----------------------------------------------------------------------------------
 	define('WE_LS_TITLE', 'Weight Loss Tracker');
@@ -48,6 +26,57 @@
 	define('WE_LS_TABLE_MAX_WEEK_FILTERS', 100);
 	define('WS_LS_PRO_PRICE', 25.00);
 	define('WE_LS_USE_MINIFIED_SCRIPTS', true);
+
+    // -----------------------------------------------------------------------------------
+	// Dynamic Settings based upon user settings, etc
+	// -----------------------------------------------------------------------------------
+	
+    // Set defaults
+	$globals = array(
+		'WE_LS_DATA_UNITS' => 'kg',
+		'WE_LS_IMPERIAL_WEIGHTS' => false,
+		'WE_LS_ALLOW_TARGET_WEIGHTS' => true,
+		'WE_LS_ALLOW_POINTS' => true,
+		'WE_LS_USE_TABS' => true,
+		'WE_LS_CSS_ENABLED' => true,
+		'WE_LS_TARGET_LINE_COLOUR' => '#76bada',
+		'WE_LS_WEIGHT_LINE_COLOUR' => '#aeaeae',
+		'WE_LS_WEIGHT_FILL_COLOUR' => '#f9f9f9',
+		'WE_LS_US_DATE' => false,
+		'WS_LS_USE_DECIMALS' => false,
+		'WE_LS_CHART_TYPE' => 'line', //line, bar
+		'WS_LS_ADVANCED_TABLES' => true,
+		'WE_LS_CHART_MAX_POINTS' => 25,
+		'WE_LS_CHART_HEIGHT' => 250,
+		'WE_LS_CHART_BEZIER_CURVE' => true,
+		'WE_LS_CHART_POINT_SIZE' => 3,
+		'WE_LS_CHART_SHOW_GRID_LINES' => true
+	);
+
+    // -----------------------------------------------------------------------------------
+	// Measurements (4.0+)
+	// -----------------------------------------------------------------------------------
+	
+    // Supported measurements:
+    // Bust/Chest, Waist, Navel, Hips, Buttocks, Right and Left Thighs, Right and Left Biceps, Calves and Height
+
+    $supported_measurements = array(
+        'bust-chest' => array('title' => __('Bust / Chest', WE_LS_SLUG), 'enabled' => true, 'user-preference' => false),
+        'weight' => array('title' => __('Weight', WE_LS_SLUG), 'enabled' => true, 'user-preference' => false),
+        'navel' => array('title' => __('Navel', WE_LS_SLUG), 'enabled' => true, 'user-preference' => false),
+        'hips' => array('title' => __('Hips', WE_LS_SLUG), 'enabled' => true, 'user-preference' => false),
+        'buttocks' => array('title' => __('Buttocks', WE_LS_SLUG), 'enabled' => true, 'user-preference' => false),
+        'left-thigh' => array('title' => __('Left Thigh', WE_LS_SLUG), 'enabled' => true, 'user-preference' => false),
+        'right-thigh' => array('title' => __('Right Thigh', WE_LS_SLUG), 'enabled' => true, 'user-preference' => false),
+        'left-bicep' => array('title' => __('Left Bicep', WE_LS_SLUG), 'enabled' => true, 'user-preference' => false),
+        'right-bicep' => array('title' => __('Right Bicep', WE_LS_SLUG), 'enabled' => true, 'user-preference' => false),
+        'left-calf' => array('title' => __('Left Calf', WE_LS_SLUG), 'enabled' => true, 'user-preference' => false),
+        'right-calf' => array('title' => __('Right Calf', WE_LS_SLUG), 'enabled' => true, 'user-preference' => false),
+        'height' => array('title' => __('Height', WE_LS_SLUG), 'enabled' => true, 'user-preference' => true)
+    );
+    
+    $globals['WE_LS_MEASUREMENTS'] = json_encode($supported_measurements);
+
 	// -----------------------------------------------------------------------------------
 	// Allow user's to override the default admin settings?
 	// -----------------------------------------------------------------------------------
@@ -151,6 +180,6 @@
 	// -----------------------------------------------------------------------------------
 	// Loop through array and set defines!
 	// -----------------------------------------------------------------------------------
-  foreach($globals as $key => $value) {
+    foreach($globals as $key => $value) {
 		define($key, $value);
 	}
