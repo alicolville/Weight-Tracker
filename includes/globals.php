@@ -8,9 +8,10 @@
 	// -----------------------------------------------------------------------------------
 	define('WE_LS_TITLE', 'Weight Loss Tracker');
 	define('WE_LS_SLUG', 'weight-loss-tracker');
-	define('WE_LS_TABLENAME', 'WS_LS_DATA');
 	define('WE_LS_DATA_URL', 'https://yeken.uk/wlt/plugin-info.json');
+	define('WE_LS_TABLENAME', 'WS_LS_DATA');
 	define('WE_LS_TARGETS_TABLENAME', 'WS_LS_DATA_TARGETS');
+    define('WE_LS_MEASUREMENTS_TABLENAME', 'WS_LS_DATA_MEASUREMENTS');
 	define('WE_LS_USER_PREFERENCES_TABLENAME', 'WS_LS_DATA_USER_PREFERENCES');
 	define('WE_LS_CACHE_ENABLED', true);
 	define('WE_LS_CACHE_TIME', 15 * MINUTE_IN_SECONDS);
@@ -59,24 +60,30 @@
 	
     // Supported measurements:
     // Bust/Chest, Waist, Navel, Hips, Buttocks, Right and Left Thighs, Right and Left Biceps, Calves and Height
+    $globals['WE_LS_MEASUREMENTS_ENABLED'] = false;
+
+    if (WS_LS_IS_PRO && ('yes' == get_option('ws-ls-allow-measurements'))) {
+        $globals['WE_LS_MEASUREMENTS_ENABLED'] = true;        
+        $globals['WE_LS_MEASUREMENTS_UNIT'] = (false == get_option('ws-ls-measurement-units')) ? 'cm' : get_option('ws-ls-measurement-units');
+	}
 
     $supported_measurements = array(
-        'bust-chest' => array('title' => __('Bust / Chest', WE_LS_SLUG), 'enabled' => true, 'user-preference' => false),
-        'weight' => array('title' => __('Weight', WE_LS_SLUG), 'enabled' => true, 'user-preference' => false),
-        'navel' => array('title' => __('Navel', WE_LS_SLUG), 'enabled' => true, 'user-preference' => false),
-        'hips' => array('title' => __('Hips', WE_LS_SLUG), 'enabled' => true, 'user-preference' => false),
-        'buttocks' => array('title' => __('Buttocks', WE_LS_SLUG), 'enabled' => true, 'user-preference' => false),
-        'left-thigh' => array('title' => __('Left Thigh', WE_LS_SLUG), 'enabled' => true, 'user-preference' => false),
-        'right-thigh' => array('title' => __('Right Thigh', WE_LS_SLUG), 'enabled' => true, 'user-preference' => false),
-        'left-bicep' => array('title' => __('Left Bicep', WE_LS_SLUG), 'enabled' => true, 'user-preference' => false),
-        'right-bicep' => array('title' => __('Right Bicep', WE_LS_SLUG), 'enabled' => true, 'user-preference' => false),
-        'left-calf' => array('title' => __('Left Calf', WE_LS_SLUG), 'enabled' => true, 'user-preference' => false),
-        'right-calf' => array('title' => __('Right Calf', WE_LS_SLUG), 'enabled' => true, 'user-preference' => false),
-        'height' => array('title' => __('Height', WE_LS_SLUG), 'enabled' => true, 'user-preference' => true)
+        'left_bicep' => array('title' => __('Bicep - Left', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#0101DF'),
+        'right_bicep' => array('title' => __('Bicep - Right', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#0101DF'),
+        'left_calf' => array('title' => __('Calf - Left', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#0101DF'),
+        'right_calf' => array('title' => __('Calf - Right', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#0101DF'),
+        'bust_chest' => array('title' => __('Bust / Chest', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#0101DF'),
+        'buttocks' => array('title' => __('Buttocks', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#0101DF'),
+        'hips' => array('title' => __('Hips', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#0101DF'),
+        'navel' => array('title' => __('Navel', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#0101DF'),
+        'left_thigh' => array('title' => __('Thigh - Left', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#0101DF'),
+        'right_thigh' => array('title' => __('Thigh - Right', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#0101DF'),
+        'waist' => array('title' => __('Waist', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#0101DF'),
+        'height' => array('title' => __('Height', WE_LS_SLUG), 'enabled' => true, 'user_preference' => true)
     );
-    
-    $globals['WE_LS_MEASUREMENTS'] = json_encode($supported_measurements);
 
+    $globals['WE_LS_MEASUREMENTS'] = json_encode($supported_measurements);
+    
 	// -----------------------------------------------------------------------------------
 	// Allow user's to override the default admin settings?
 	// -----------------------------------------------------------------------------------

@@ -5,7 +5,7 @@ defined('ABSPATH') or die('Jog on!');
 /**
  * Plugin Name: Weight Loss Tracker
  * Description: An easy to use plugin that allows a user to keep track of their weight history in both tabular and chart format.
- * Version: 3.1
+ * Version: 4.0
  * Author: YeKen
  * Author URI: https://www.YeKen.uk
  * License: GPL2
@@ -28,7 +28,7 @@ defined('ABSPATH') or die('Jog on!');
 */
 
 define('WS_LS_ABSPATH', plugin_dir_path( __FILE__ ));
-define('WE_LS_CURRENT_VERSION', '3.1');
+define('WE_LS_CURRENT_VERSION', '4.0');
 
 // -----------------------------------------------------------------------------------------
 // AC: Activate / Deactivate / Uninstall Hooks
@@ -56,6 +56,7 @@ include WS_LS_ABSPATH . 'includes/globals.php';
 include WS_LS_ABSPATH . 'includes/activate.php';
 include WS_LS_ABSPATH . 'includes/hooks.php';
 include WS_LS_ABSPATH . 'includes/functions.php';
+include WS_LS_ABSPATH . 'includes/functions.measurements.php';
 include WS_LS_ABSPATH . 'includes/converters.php';
 include WS_LS_ABSPATH . 'includes/core.php';
 include WS_LS_ABSPATH . 'includes/ajax-handler.php';

@@ -42,11 +42,34 @@
 
 		 dbDelta( $sql );
 
+        // 4.0+ Measurements
+        $table_name = $wpdb->prefix . WE_LS_MEASUREMENTS_TABLENAME;
+        
+        $sql = "CREATE TABLE $table_name (
+			  id mediumint(9) NOT NULL,
+			  bust_chest float DEFAULT 0 NULL,
+			  waist float DEFAULT 0 NULL,
+			  navel float DEFAULT 0 NULL,
+			  hips float DEFAULT 0 NULL,
+              buttocks float DEFAULT 0 NULL,
+			  left_thigh float DEFAULT 0 NULL,
+			  right_thigh float DEFAULT 0 NULL,
+			  left_bicep float DEFAULT 0 NULL,
+              right_bicep float DEFAULT 0 NULL,
+			  left_calf float DEFAULT 0 NULL,
+			  right_calf float DEFAULT 0 NULL,
+			 UNIQUE KEY id (id)
+		) $charset_collate;";
+
+		 dbDelta( $sql );
+      
+  
 		 $table_name = $wpdb->prefix . WE_LS_USER_PREFERENCES_TABLENAME;
 
 		 $sql = "CREATE TABLE $table_name (
 				 user_id integer NOT NULL,
 				 settings text not null,
+                 height float DEFAULT 0 NULL,
 				 UNIQUE KEY user_id (user_id)
 		 ) $charset_collate;";
 

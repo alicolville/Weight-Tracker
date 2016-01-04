@@ -138,24 +138,23 @@ function ws_ls_admin_check_mysql_tables_exist()
 {
     $error_text = '';
     global $wpdb;
+    
+    $tables_to_check = array(
+                            $wpdb->prefix . WE_LS_TARGETS_TABLENAME,
+                            $wpdb->prefix . WE_LS_TABLENAME,
+                            $wpdb->prefix . WE_LS_USER_PREFERENCES_TABLENAME,
+                            $wpdb->prefix . WE_LS_MEASUREMENTS_TABLENAME
+                        );
 
-    // Check Target table exists!
-    $rows = $wpdb->get_row('Show columns in ' . $wpdb->prefix . WE_LS_TARGETS_TABLENAME);
-    if (0 == count($rows)) {
-        $error_text .= '<li>' . $wpdb->prefix . WE_LS_TARGETS_TABLENAME . '</li>';
+    // Check each table exists!
+    foreach($tables_to_check as $table_name) {
+        
+        $rows = $wpdb->get_row('Show columns in ' . $table_name);
+        if (0 == count($rows)) {
+            $error_text .= '<li>' . $table_name . '</li>';
+        } 
     }
-    // Check main data table exists!
-    $rows = $wpdb->get_row('Show columns in ' . $wpdb->prefix . WE_LS_TABLENAME);
-    if (0 == count($rows)) {
-        $error_text .= '<li>' . $wpdb->prefix . WE_LS_TABLENAME . '</li>';
-    }
-
-    // Check user_preferences exists!
-    $rows = $wpdb->get_row('Show columns in ' . $wpdb->prefix . WE_LS_USER_PREFERENCES_TABLENAME);
-    if (0 == count($rows)) {
-        $error_text .= '<li>' . $wpdb->prefix . WE_LS_USER_PREFERENCES_TABLENAME . '</li>';
-    }
-
+    
     // Return error message if tables missing
     if (!empty($error_text))  {
         return  __('The following MySQL tables are missing for this plugin', WE_LS_SLUG) . ':<ul>' . $error_text . '</ul>';

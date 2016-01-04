@@ -1,5 +1,7 @@
 jQuery( document ).ready(function ($) {
-  $("#ws-ls-tabs").zozoTabs({
+      
+    
+    $("#ws-ls-tabs").zozoTabs({
       rounded: false,
        multiline: true,
        theme: "silver",

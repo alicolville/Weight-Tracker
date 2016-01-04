@@ -15,8 +15,8 @@ function ws_ls_settings_page() {
 	wp_enqueue_style('wlt-tabs-flat', plugins_url( '../css/tabs.flat.min.css', __FILE__ ), array(), WE_LS_CURRENT_VERSION);
 	wp_enqueue_script('ws-ls-admin',plugins_url( '../js/admin.js', __FILE__ ), array('jquery'), WE_LS_CURRENT_VERSION);
 	wp_enqueue_style('ws-ls-admin-style', plugins_url( '../css/admin.css', __FILE__ ), array(), WE_LS_CURRENT_VERSION);
-
-	$clear_cache = (isset($_GET['settings-updated']) && 'true' == $_GET['settings-updated']) ? true : false;
+   
+  	$clear_cache = (isset($_GET['settings-updated']) && 'true' == $_GET['settings-updated']) ? true : false;
 
 	if (is_admin() && isset($_GET['recreatetables']) && 'y' == $_GET['recreatetables']) {
 		ws_ls_activate();
@@ -74,10 +74,11 @@ function ws_ls_settings_page() {
 
 								<div id="ws-ls-tabs">
 									<ul>
-											<li><a><?php echo __( 'General', WE_LS_SLUG); ?><span><?php echo __( 'General settings', WE_LS_SLUG); ?></span></a></li>
-											<li><a><?php echo __( 'User Experience', WE_LS_SLUG); ?><span><?php echo __( "Settings that effect the user's overall experience", WE_LS_SLUG); ?></span></a></li>
-											<li><a><?php echo __( 'Chart', WE_LS_SLUG); ?><span><?php echo __( 'Chart styling and config', WE_LS_SLUG); ?></span></a></li>
-									</ul>
+                                        <li><a><?php echo __( 'General', WE_LS_SLUG); ?><span><?php echo __( 'General settings', WE_LS_SLUG); ?></span></a></li>
+                                        <li><a><?php echo __( 'User Experience', WE_LS_SLUG); ?><span><?php echo __( "Settings that effect the user's overall experience", WE_LS_SLUG); ?></span></a></li>
+                                        <li><a><?php echo __( 'Chart', WE_LS_SLUG); ?><span><?php echo __( 'Chart styling and config', WE_LS_SLUG); ?></span></a></li>
+                                        <li><a><?php echo __( 'Measurements', WE_LS_SLUG); ?><span><?php echo __( 'Allow users to record their measurements', WE_LS_SLUG); ?></span></a></li>
+                                    </ul>
 									<div>
 										<div>
 												<table class="form-table">
@@ -265,6 +266,66 @@ function ws_ls_settings_page() {
 												</tr>
 											</table>
 										</div>
+                                        <div>
+                                           <table class="form-table">
+                                                <tr  class="<?php echo $disable_if_not_pro_class; ?>">
+                                                	<th scope="row"><?php echo __( 'Allow Measurements?' , WE_LS_SLUG); ?></th>
+													<td>
+														<select id="ws-ls-allow-measurements" name="ws-ls-allow-measurements">
+															<option value="no" <?php selected( get_option('ws-ls-allow-measurements'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG); ?></option>
+															<option value="yes" <?php selected( get_option('ws-ls-allow-measurements'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG); ?></option>
+														</select>
+														<p><?php echo __('If enabled, a user can also add body measurements along with their weights.', WE_LS_SLUG); ?></p>
+													</td>
+												</tr>
+                                                <tr>
+                                                    <th scope="row"><?php echo __( 'Measurement Units' , WE_LS_SLUG); ?></th>
+                                                    <td>
+                                                        <select id="ws-ls-measurement-units" name="ws-ls-measurement-units">
+                                                            <option value="cm" <?php selected( get_option('ws-ls-measurement-units'), 'cm' ); ?>><?php echo __('Centimetres', WE_LS_SLUG); ?></option>
+                                                            <option value="inches" <?php selected( get_option('ws-ls-measurement-units'), 'inches' ); ?>><?php echo __('Inches', WE_LS_SLUG); ?></option>
+                                                        </select>
+                                                        <p><?php echo __('Default unit for recording measurements.', WE_LS_SLUG);?></p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row"><?php echo __( 'Areas of measurements' , WE_LS_SLUG); ?></th>
+                                                    <td>
+                                                    <?php
+    
+                                                    $measurement_settings = ws_ls_get_measurement_settings();
+  
+                                                        ?>
+                                                    <table>
+                                                        <?php foreach ($measurement_settings as $key => $body_part) {
+                                                            if (!$body_part['user_preference']) {
+                                                        ?>
+                                                        
+                                                                <tr>
+                                                                    <td colspan="2">
+                                                                        <label style="font-weight: bold;" for="ws-ls-<?php echo $key; ?>"><?php echo $body_part['title']; ?></label>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <?php echo __( 'Enable' , WE_LS_SLUG); ?>: <input type="checkbox" id="ws-ls-<?php echo $key; ?>" name="ws-ls-measurement[enabled][<?php echo $key; ?>]" value="on" <?php checked($body_part['enabled'], true); ?> />
+                                                                    </td>
+                                                                    <td>
+                                                                        <?php echo __( 'Chart Colour' , WE_LS_SLUG); ?>: <input name="ws-ls-measurement[colors][<?php echo $key; ?>]" type="color" value="<?php echo $body_part['chart_colour']; ?>">
+
+                                                                    </td>
+                                                                </tr>
+                                                        <?php }
+                                                            }
+                                                        ?>
+                                                    </table>
+                                                    </td>
+                                                </tr>
+                                               
+                                               
+                                            </table>
+                                            
+                                        </div>
 									</div>
 								</div>
 								<?php submit_button(); ?>
@@ -303,27 +364,33 @@ function ws_ls_settings_page() {
 
 function ws_ls_register_settings()
 {
-		register_setting( 'we-ls-options-group', 'ws-ls-units' );
-  	register_setting( 'we-ls-options-group', 'ws-ls-allow-targets' );
-  	register_setting( 'we-ls-options-group', 'ws-ls-allow-points' );
-  	register_setting( 'we-ls-options-group', 'ws-ls-use-tabs' );
-  	register_setting( 'we-ls-options-group', 'ws-ls-target-colour' );
-  	register_setting( 'we-ls-options-group', 'ws-ls-line-fill-colour' );
-  	register_setting( 'we-ls-options-group', 'ws-ls-line-colour' );
-		register_setting( 'we-ls-options-group', 'ws-ls-use-us-dates' );
-		register_setting( 'we-ls-options-group', 'ws-ls-disable-css' );
+    register_setting( 'we-ls-options-group', 'ws-ls-units' );
+    register_setting( 'we-ls-options-group', 'ws-ls-allow-targets' );
+    register_setting( 'we-ls-options-group', 'ws-ls-allow-points' );
+    register_setting( 'we-ls-options-group', 'ws-ls-use-tabs' );
+    register_setting( 'we-ls-options-group', 'ws-ls-target-colour' );
+    register_setting( 'we-ls-options-group', 'ws-ls-line-fill-colour' );
+    register_setting( 'we-ls-options-group', 'ws-ls-line-colour' );
+    register_setting( 'we-ls-options-group', 'ws-ls-use-us-dates' );
+    register_setting( 'we-ls-options-group', 'ws-ls-disable-css' );
 
-		// Pro only open
-		if(WS_LS_IS_PRO){
-			register_setting( 'we-ls-options-group', 'ws-ls-allow-user-preferences' );
-			register_setting( 'we-ls-options-group', 'ws-ls-allow-decimals' );
-			register_setting( 'we-ls-options-group', 'ws-ls-chart-type' );
-			register_setting( 'we-ls-options-group', 'ws-ls-allow-advanced-tables' );
-			register_setting( 'we-ls-options-group', 'ws-ls-max-points' );
-			register_setting( 'we-ls-options-group', 'ws-ls-bezier-curve' );
-			register_setting( 'we-ls-options-group', 'ws-ls-point-size' );
-			register_setting( 'we-ls-options-group', 'ws-ls-grid-lines' );
-		}
+    // Pro only open
+    if(WS_LS_IS_PRO){
+        register_setting( 'we-ls-options-group', 'ws-ls-allow-user-preferences' );
+        register_setting( 'we-ls-options-group', 'ws-ls-allow-decimals' );
+        register_setting( 'we-ls-options-group', 'ws-ls-chart-type' );
+        register_setting( 'we-ls-options-group', 'ws-ls-allow-advanced-tables' );
+        register_setting( 'we-ls-options-group', 'ws-ls-max-points' );
+        register_setting( 'we-ls-options-group', 'ws-ls-bezier-curve' );
+        register_setting( 'we-ls-options-group', 'ws-ls-point-size' );
+        register_setting( 'we-ls-options-group', 'ws-ls-grid-lines' );
+
+        // Measurements
+        register_setting( 'we-ls-options-group', 'ws-ls-allow-measurements' );
+        register_setting( 'we-ls-options-group', 'ws-ls-measurement-units' );
+        register_setting( 'we-ls-options-group', 'ws-ls-measurement' );
+       
+    }
 
 }
 add_action( 'admin_init', 'ws_ls_register_settings' );
