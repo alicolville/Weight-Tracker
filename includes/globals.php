@@ -65,7 +65,10 @@
     if (WS_LS_IS_PRO && ('yes' == get_option('ws-ls-allow-measurements'))) {
         $globals['WE_LS_MEASUREMENTS_ENABLED'] = true;        
         $globals['WE_LS_MEASUREMENTS_UNIT'] = (false == get_option('ws-ls-measurement-units')) ? 'cm' : get_option('ws-ls-measurement-units');
-	}
+	    $globals['WE_LS_MEASUREMENTS_MANDATORY'] = (false == get_option('ws-ls-measurements-mandatory') || 'no' == get_option('ws-ls-measurements-mandatory')) ? false : true;
+	   
+        
+    }
 
     $supported_measurements = array(
         'left_bicep' => array('title' => __('Bicep - Left', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#0101DF'),

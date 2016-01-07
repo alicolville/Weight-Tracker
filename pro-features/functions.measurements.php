@@ -32,3 +32,25 @@ function ws_ls_get_measurement_settings()
     }
     return false;
 }
+
+function ws_ls_load_preference_form()
+{ 
+    $public_html = '';
+    $measurement_fields = ws_ls_get_measurement_settings();
+    var_dump($measurement_fields);
+    
+    foreach($measurement_fields as $key => $data) {
+        if($data['enabled'] && false == $data['user_preference']) {
+            $public_html .= ws_ls_measurement_field($key, $data['title']);
+        }
+    }
+    
+    return $public_html;
+}
+
+function ws_ls_measurement_field($field_id, $display_text)
+{
+    $html_output = '<label for="' . $field_id . '">' . $display_text . ':</label>';
+    $html_output .= '<input  type="number"  tabindex="' . ws_ls_get_next_tab_index() . '" step="any" min="0" name="' . $field_id . '" id="' . $field_id . '" value="" placeholder="' . $display_text . '" size="11"  >';
+    return $html_output;
+}

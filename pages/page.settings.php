@@ -288,7 +288,17 @@ function ws_ls_settings_page() {
                                                         <p><?php echo __('Default unit for recording measurements.', WE_LS_SLUG);?></p>
                                                     </td>
                                                 </tr>
-                                                <tr>
+                                                <tr class="<?php echo $disable_if_not_pro_class; ?>">
+                                                	<th scope="row"><?php echo __( 'Measurement fields mandatory?' , WE_LS_SLUG); ?></th>
+													<td>
+														<select id="ws-ls-measurements-mandatory" name="ws-ls-measurements-mandatory">
+															<option value="no" <?php selected( get_option('ws-ls-measurements-mandatory'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG); ?></option>
+															<option value="yes" <?php selected( get_option('ws-ls-measurements-mandatory'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG); ?></option>
+														</select>
+														<p><?php echo __('If yes, a user will be forced to complete all measurement features.', WE_LS_SLUG); ?></p>
+													</td>
+												</tr>
+                                                <tr class="<?php echo $disable_if_not_pro_class; ?>">
                                                     <th scope="row"><?php echo __( 'Areas of measurements' , WE_LS_SLUG); ?></th>
                                                     <td>
                                                     <?php
@@ -389,6 +399,7 @@ function ws_ls_register_settings()
         register_setting( 'we-ls-options-group', 'ws-ls-allow-measurements' );
         register_setting( 'we-ls-options-group', 'ws-ls-measurement-units' );
         register_setting( 'we-ls-options-group', 'ws-ls-measurement' );
+        register_setting( 'we-ls-options-group', 'ws-ls-measurements-mandatory' );
        
     }
 
