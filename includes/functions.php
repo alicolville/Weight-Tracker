@@ -428,5 +428,15 @@ function ws_ls_get_data_from_yeken()
 
   return false;
 }
+function ws_ls_fetch_elements_from_end_of_array($data, $number_to_grab)
+{
+    if (is_array($data) && count($data) > $number_to_grab) {
+        $start = count($data) - $number_to_grab;
+        $data = array_slice($data, $start, $number_to_grab);
+    }
+    
+    return $data;
+}
+    
 
 ?>

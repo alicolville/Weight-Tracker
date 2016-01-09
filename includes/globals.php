@@ -45,7 +45,7 @@
 	define('WE_LS_CACHE_KEY_USER_PREFERENCE', 'user-preference');
 	define('WE_LS_CACHE_KEY_YEKEN_JSON', 'yeken-json-lookup');
 	define('WE_LS_CACHE_ADMIN_USER_DATA', 'admin-user-data');
-	define('WE_LS_TABLE_MAX_WEEK_FILTERS', 100);
+	define('WE_LS_TABLE_MAX_WEEK_FILTERS', 150);
 	define('WS_LS_PRO_PRICE', 25.00);
 	define('WE_LS_USE_MINIFIED_SCRIPTS', true);
 	// -----------------------------------------------------------------------------------

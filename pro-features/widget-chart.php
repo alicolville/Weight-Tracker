@@ -51,6 +51,9 @@ class ws_ls_widget_chart extends WP_Widget {
 
             $weight_data = ws_ls_get_weights($chart_arguments['user-id'], $chart_arguments['max-data-points'], -1, 'desc');
 
+            // Reverse array so in cron order
+            $weight_data = array_reverse($weight_data);
+            
 			$chart_arguments['height'] = false;
 
             if ($weight_data) {
