@@ -7,7 +7,7 @@ function ws_ls_shortcode_chart($user_defined_arguments)
     if(!WS_LS_IS_PRO) {
        return false;
     }
-    
+
     $chart_arguments = shortcode_atts(
         array(
             'user-id' => get_current_user_id(),
@@ -36,8 +36,13 @@ function ws_ls_shortcode_chart($user_defined_arguments)
        $chart_arguments['max-data-points'] = WE_LS_CHART_MAX_POINTS;
     }
     // Fetch data for chart
-    $weight_data = ws_ls_get_weights($chart_arguments['user-id'], $chart_arguments['max-data-points']);
+    $weight_data = ws_ls_get_weights($chart_arguments['user-id'], $chart_arguments['max-data-points'], -1, 'desc');
 
+    // Reverse array so in cron order
+    if (!empty($weight_data)) {
+      $weight_data = array_reverse($weight_data);
+    }
+          
     // Render chart
     if ($weight_data){
         return ws_ls_display_chart($weight_data, $chart_arguments);

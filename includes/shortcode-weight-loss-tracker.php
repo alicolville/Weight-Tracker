@@ -74,7 +74,10 @@
             if ($weight_data && count($weight_data) >= $shortcode_arguments['min-chart-points']) {
 				// Great, we have some weight data. Chop it up so we only have (at most) 30 plot points for the graph
 				$html_output .= ws_ls_title(__('In a chart', WE_LS_SLUG));
-				$weight_data_for_graph = array_slice($weight_data, 0, WE_LS_CHART_MAX_POINTS);
+                
+                $weight_data_for_graph = ws_ls_fetch_elements_from_end_of_array($weight_data, WE_LS_CHART_MAX_POINTS);
+                
+				//$weight_data_for_graph = array_slice($weight_data, 0, WE_LS_CHART_MAX_POINTS);
 				$html_output .= ws_ls_display_chart($weight_data_for_graph);
 			}
 			else	{

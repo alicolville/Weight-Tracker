@@ -52,14 +52,14 @@
         if($options && WS_LS_IS_PRO){
             $chart_config = wp_parse_args( $options, $chart_config );
         }
-        
+
         // Make sure they are logged in
         if (!is_user_logged_in())	{
             if ($chart_config['hide_login_message_if_needed']) {
-                return '<blockquote class="ws-ls-blockquote"><p>' .	__('You need to be logged in to record your weight.', WE_LS_SLUG) . ' <a href="' . wp_login_url(get_permalink()) . '">' . __('Login now', WE_LS_SLUG) . '</a>.</p></blockquote>';    
+                return '<blockquote class="ws-ls-blockquote"><p>' .	__('You need to be logged in to record your weight.', WE_LS_SLUG) . ' <a href="' . wp_login_url(get_permalink()) . '">' . __('Login now', WE_LS_SLUG) . '</a>.</p></blockquote>';
             } else {
                 return;
-            }       
+            }
         }
 
 		$chart_id = 'ws_ls_chart_' . rand(10,1000) . '_' . rand(10,1000);
@@ -175,23 +175,23 @@
 	Displays either a target or weight form
 
 */
-function ws_ls_display_weight_form($target_form = false, $class_name = false, $user_id = false, $hide_titles = false, 
+function ws_ls_display_weight_form($target_form = false, $class_name = false, $user_id = false, $hide_titles = false,
                                         $form_number = false, $force_to_todays_date = false, $hide_login_message_if_needed = true,
                                             $hide_measurements_form = false)
 {
     global $save_response;
     $html_output  = '';
-    $measurements_form_enabled = (WE_LS_MEASUREMENTS_ENABLED && false == $hide_measurements_form) ? true : false;
+    $measurements_form_enabled = (WE_LS_MEASUREMENTS_ENABLED && false == $hide_measurements_form && !$target_form) ? true : false;
 
     // Make sure they are logged in
     if (!is_user_logged_in())	{
         if ($hide_login_message_if_needed) {
-            return '<blockquote class="ws-ls-blockquote"><p>' .	__('You need to be logged in to record your weight.', WE_LS_SLUG) . ' <a href="' . wp_login_url(get_permalink()) . '">' . __('Login now', WE_LS_SLUG) . '</a>.</p></blockquote>';    
+            return '<blockquote class="ws-ls-blockquote"><p>' .	__('You need to be logged in to record your weight.', WE_LS_SLUG) . ' <a href="' . wp_login_url(get_permalink()) . '">' . __('Login now', WE_LS_SLUG) . '</a>.</p></blockquote>';
         } else {
             return;
-        }       
+        }
     }
-    
+
     if(false == $user_id){
         $user_id = get_current_user_id();
     }
@@ -210,10 +210,10 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 	}
 
 	$html_output .= '
-	<form action="' .  get_permalink() . '" method="post" class="we-ls-weight-form we-ls-weight-form-validate' . $form_class . (($class_name) ? ' ' . $class_name : '') . '" id="' . $form_id . '" data-is-target-form="' . (($target_form) ? 'true' : 'false') . '" data-metric-unit="' . ws_ls_get_chosen_weight_unit_as_string() . '">
+	<form action="' .  get_permalink() . '" method="post" class="we-ls-weight-form we-ls-weight-form-validate' . $form_class . (($class_name) ? ' ' . $class_name : '') . '" id="' . $form_id . '" data-measurements-enabled="' . (($measurements_form_enabled) ? 'true' : 'false') . '" data-is-target-form="' . (($target_form) ? 'true' : 'false') . '" data-metric-unit="' . ws_ls_get_chosen_weight_unit_as_string() . '">
 		<input type="hidden" value="' . (($target_form) ? 'true' : 'false') . '" id="ws_ls_is_target" name="ws_ls_is_target" />
 		<input type="hidden" value="true" id="ws_ls_is_weight_form" name="ws_ls_is_weight_form" />
-        <input type="hidden" value="' . $user_id . '" id="ws_ls_user_id" name="ws_ls_user_id" />
+		<input type="hidden" value="' . $user_id . '" id="ws_ls_user_id" name="ws_ls_user_id" />
 		<input type="hidden" value="' . wp_hash($user_id) . '" id="ws_ls_security" name="ws_ls_security" />';
 
 		if($form_number){
@@ -275,24 +275,24 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 											</div>';
 		}
 
-        // Include 
-        if(!$target_form && $measurements_form_enabled) { 
+        // Include
+        if(!$target_form && $measurements_form_enabled) {
             $html_output .= sprintf('<br /><h3 class="ws_ls_title">%s</h3>', __('Add measurements', WE_LS_SLUG));
             $html_output .= ws_ls_load_preference_form();
         }
-    
+
 		$button_text = ($target_form) ?  __('Set Target', WE_LS_SLUG) :  __('Save Entry', WE_LS_SLUG);
 
 			$html_output .= '<div id="comment-submit-container">
 			<p>
 				<div>
 					<input name="submit_button" type="submit" id="we-ls-submit"  tabindex="' . ws_ls_get_next_tab_index() . '" value="' . $button_text . '" class="comment-submit btn btn-default button default small fusion-button button-small button-default button-round button-flat" />';
-            
+
                 //If a target form, display "Clear Target" button
                 if ($target_form){
                     $html_output .= '&nbsp;<button name="ws-ls-clear-target" id="ws-ls-clear-target" type="button" tabindex="' . ws_ls_get_next_tab_index() . '" class="ws-ls-clear-target comment-submit btn btn-default button default small fusion-button button-small button-default button-round button-flat" >' . __('Clear Target', WE_LS_SLUG) . '</button>';
                 }
-    
+
                 $html_output .= '</div>
 			</p>
 		</div>
@@ -358,9 +358,9 @@ function ws_ls_capture_form_validate_and_save($user_id = false)
 	}
 
 	$result = ws_ls_save_data($user_id, $weight_object, $is_target_form);
-    
+
     ws_ls_delete_cache_for_given_user($user_id);
-    
+
     return $result;
 }
 
@@ -399,20 +399,23 @@ function ws_ls_get_js_config()
 	return array (
 		'us-date' => ($use_us_date) ? 'true' : 'false',
 		'date-format' => ($use_us_date) ? 'mm/dd/yy' : 'dd/mm/yy',
-        'clear-target' => __('Are you sure you wish to clear your target weight?', WE_LS_SLUG),
+    'clear-target' => __('Are you sure you wish to clear your target weight?', WE_LS_SLUG),
 		'validation-we-ls-weight-pounds' => $message_for_pounds,
 		'validation-we-ls-weight-kg' => __('Please enter a valid figure for Kg', WE_LS_SLUG),
 		'validation-we-ls-weight-stones' => __('Please enter a valid figure for Stones', WE_LS_SLUG),
 		'validation-we-ls-date' => __('Please enter a valid date', WE_LS_SLUG),
 		'validation-we-ls-history' => __('Please confirm you wish to delete ALL your weight history', WE_LS_SLUG),
-        'confirmation-delete' => __('Are you sure you wish to delete this entry? If so, press OK.', WE_LS_SLUG),
+    'confirmation-delete' => __('Are you sure you wish to delete this entry? If so, press OK.', WE_LS_SLUG),
 		'tabs-enabled' => (WE_LS_USE_TABS) ? 'true' : 'false',
 		'advanced-tables-enabled' => (WS_LS_ADVANCED_TABLES && WS_LS_IS_PRO) ? 'true' : 'false',
 		'ajax-url' => admin_url('admin-ajax.php'),
 		'ajax-security-nonce' => wp_create_nonce( 'ws-ls-nonce' ),
 		'is-pro' => (WS_LS_IS_PRO) ? 'true' : 'false',
 		'user-id' => get_current_user_id(),
-		'current-url' => get_permalink()
+		'current-url' => get_permalink(),
+		'measurements-enabled' => (WE_LS_MEASUREMENTS_ENABLED) ? 'true' : 'false',
+		'measurements-unit' => WE_LS_MEASUREMENTS_UNIT,
+		'validation-we-ls-measurements' => __('Please enter a valid measurement (' . WE_LS_MEASUREMENTS_UNIT . ') which is less that 1000.', WE_LS_SLUG),
 	);
 
 }

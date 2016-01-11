@@ -11,7 +11,7 @@
 	define('WE_LS_DATA_URL', 'https://yeken.uk/wlt/plugin-info.json');
 	define('WE_LS_TABLENAME', 'WS_LS_DATA');
 	define('WE_LS_TARGETS_TABLENAME', 'WS_LS_DATA_TARGETS');
-    define('WE_LS_MEASUREMENTS_TABLENAME', 'WS_LS_DATA_MEASUREMENTS');
+  define('WE_LS_MEASUREMENTS_TABLENAME', 'WS_LS_DATA_MEASUREMENTS');
 	define('WE_LS_USER_PREFERENCES_TABLENAME', 'WS_LS_DATA_USER_PREFERENCES');
 	define('WE_LS_CACHE_ENABLED', true);
 	define('WE_LS_CACHE_TIME', 15 * MINUTE_IN_SECONDS);
@@ -24,14 +24,14 @@
 	define('WE_LS_CACHE_KEY_USER_PREFERENCE', 'user-preference');
 	define('WE_LS_CACHE_KEY_YEKEN_JSON', 'yeken-json-lookup');
 	define('WE_LS_CACHE_ADMIN_USER_DATA', 'admin-user-data');
-	define('WE_LS_TABLE_MAX_WEEK_FILTERS', 100);
+	define('WE_LS_TABLE_MAX_WEEK_FILTERS', 150);
 	define('WS_LS_PRO_PRICE', 25.00);
 	define('WE_LS_USE_MINIFIED_SCRIPTS', true);
 
     // -----------------------------------------------------------------------------------
 	// Dynamic Settings based upon user settings, etc
 	// -----------------------------------------------------------------------------------
-	
+
     // Set defaults
 	$globals = array(
 		'WE_LS_DATA_UNITS' => 'kg',
@@ -57,18 +57,16 @@
     // -----------------------------------------------------------------------------------
 	// Measurements (4.0+)
 	// -----------------------------------------------------------------------------------
-	
+
     // Supported measurements:
     // Bust/Chest, Waist, Navel, Hips, Buttocks, Right and Left Thighs, Right and Left Biceps, Calves and Height
     $globals['WE_LS_MEASUREMENTS_ENABLED'] = false;
+		$globals['WE_LS_MEASUREMENTS_UNIT'] = (false == get_option('ws-ls-measurement-units')) ? 'cm' : get_option('ws-ls-measurement-units');
+		$globals['WE_LS_MEASUREMENTS_MANDATORY'] = (false == get_option('ws-ls-measurements-mandatory') || 'no' == get_option('ws-ls-measurements-mandatory')) ? false : true;
 
     if (WS_LS_IS_PRO && ('yes' == get_option('ws-ls-allow-measurements'))) {
-        $globals['WE_LS_MEASUREMENTS_ENABLED'] = true;        
-        $globals['WE_LS_MEASUREMENTS_UNIT'] = (false == get_option('ws-ls-measurement-units')) ? 'cm' : get_option('ws-ls-measurement-units');
-	    $globals['WE_LS_MEASUREMENTS_MANDATORY'] = (false == get_option('ws-ls-measurements-mandatory') || 'no' == get_option('ws-ls-measurements-mandatory')) ? false : true;
-	   
-        
-    }
+        $globals['WE_LS_MEASUREMENTS_ENABLED'] = true;
+		}
 
     $supported_measurements = array(
         'left_bicep' => array('title' => __('Bicep - Left', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#0101DF'),
@@ -86,7 +84,7 @@
     );
 
     $globals['WE_LS_MEASUREMENTS'] = json_encode($supported_measurements);
-    
+
 	// -----------------------------------------------------------------------------------
 	// Allow user's to override the default admin settings?
 	// -----------------------------------------------------------------------------------
