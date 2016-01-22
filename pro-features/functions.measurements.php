@@ -54,6 +54,6 @@ function ws_ls_measurement_field($field_id, $display_text, $value = false)
 		$field_id = 'ws-ls-' . $field_id;
 
     $html_output = '<label for="' . $field_id . '">' . $display_text . ':</label>';
-    $html_output .= '<input  type="number"' . ((WE_LS_MEASUREMENTS_MANDATORY) ? ' required' : '' ) . ' tabindex="' . ws_ls_get_next_tab_index() . '" step="any" min="0" max="2000" name="' . $field_id . '" id="' . $field_id . '" value="' . $value . '" size="11" class="ws-ls-measurement ws-ls-measurement-required"  />';
+    $html_output .= '<input  type="number"' . ((WE_LS_MEASUREMENTS_MANDATORY) ? ' required' : '' ) . ' tabindex="' . ws_ls_get_next_tab_index() . '" step="any" min="0" max="1000" name="' . $field_id . '" id="' . $field_id . '" value="' . $value . '" size="11" class="ws-ls-measurement ws-ls-measurement-required"  />';
     return $html_output;
 }
