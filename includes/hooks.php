@@ -40,7 +40,7 @@
         if(WE_LS_ALLOW_USER_PREFERENCES && isset($_GET['user-delete-all']) && 'true' == $_GET['user-delete-all'])	{
             ws_ls_delete_data_for_user();
         }
-        
+
 	}
 	add_action( 'init', 'ws_ls_register_shortcodes');
 
@@ -72,4 +72,4 @@
 				wp_enqueue_style('wlt-tabs-flat', plugins_url( '../css/tabs.flat.min.css', __FILE__ ), array(), WE_LS_CURRENT_VERSION);
 			}
 	}
-	add_action( 'wp_head', 'ws_ls_enqueue_files');
+	//add_action( 'wp_head', 'ws_ls_enqueue_files');

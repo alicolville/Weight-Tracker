@@ -7,6 +7,8 @@
 	{
 			global $save_response;
 
+			ws_ls_enqueue_files();
+			
 			// Display error if user not logged in
 			if (!is_user_logged_in())	{
 				return '<blockquote class="ws-ls-blockquote"><p>' .	__('You need to be logged in to record your weight.', WE_LS_SLUG) . ' <a href="' . wp_login_url(get_permalink()) . '">' . __('Login now', WE_LS_SLUG) . '</a>.</p></blockquote>';
@@ -16,13 +18,13 @@
             array(
                 'min-chart-points' => 2
                ), $user_defined_arguments );
-            
+
             if (!is_numeric($shortcode_arguments['min-chart-points'])) {
                 $shortcode_arguments['min-chart-points'] = 2;
             }
-        
+
             $user_id = get_current_user_id();
-			
+
             $html_output = '';
 
 			// If a form was previously submitted then display resulting message!
@@ -74,9 +76,9 @@
             if ($weight_data && count($weight_data) >= $shortcode_arguments['min-chart-points']) {
 				// Great, we have some weight data. Chop it up so we only have (at most) 30 plot points for the graph
 				$html_output .= ws_ls_title(__('In a chart', WE_LS_SLUG));
-                
+
                 $weight_data_for_graph = ws_ls_fetch_elements_from_end_of_array($weight_data, WE_LS_CHART_MAX_POINTS);
-                
+
 				//$weight_data_for_graph = array_slice($weight_data, 0, WE_LS_CHART_MAX_POINTS);
 				$html_output .= ws_ls_display_chart($weight_data_for_graph);
 			}

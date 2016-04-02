@@ -6,9 +6,11 @@ global $form_number;
 
 function ws_ls_shortcode_form($user_defined_arguments)
 {
-   
+
     global $form_number;
-  
+
+  	ws_ls_enqueue_files();
+    
     if(is_null($form_number)){
       $form_number = 1;
     } else {

@@ -7,12 +7,14 @@ function ws_ls_shortcode_table($user_defined_arguments)
     if(!WS_LS_IS_PRO) {
        return false;
     }
-  
+
+    ws_ls_enqueue_files();
+
     $table_arguments = shortcode_atts(
     array(
         'user-id' => get_current_user_id()
      ), $user_defined_arguments );
-  
+
     // Fetch data for chart
     $weight_data = ws_ls_get_weights($table_arguments['user-id']);
 

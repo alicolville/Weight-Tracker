@@ -4,10 +4,13 @@ defined('ABSPATH') or die("Jog on!");
 
 function ws_ls_shortcode_chart($user_defined_arguments)
 {
+
     if(!WS_LS_IS_PRO) {
        return false;
     }
-    
+
+    ws_ls_enqueue_files();
+
     $chart_arguments = shortcode_atts(
         array(
             'user-id' => get_current_user_id(),
@@ -40,7 +43,7 @@ function ws_ls_shortcode_chart($user_defined_arguments)
 
     // Reverse array so in cron order
     $weight_data = array_reverse($weight_data);
-            
+
     // Render chart
     if ($weight_data){
         return ws_ls_display_chart($weight_data, $chart_arguments);
