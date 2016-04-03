@@ -8,7 +8,7 @@
 			global $save_response;
 
 			ws_ls_enqueue_files();
-			
+
 			// Display error if user not logged in
 			if (!is_user_logged_in())	{
 				return '<blockquote class="ws-ls-blockquote"><p>' .	__('You need to be logged in to record your weight.', WE_LS_SLUG) . ' <a href="' . wp_login_url(get_permalink()) . '">' . __('Login now', WE_LS_SLUG) . '</a>.</p></blockquote>';
