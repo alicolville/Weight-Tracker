@@ -58,7 +58,7 @@
 				"lengthMenu"=>      __("Show _MENU_ entries", WE_LS_SLUG),
 				"loadingRecords"=>  __("Loading...", WE_LS_SLUG),
 				"processing"=>      __("Processing...", WE_LS_SLUG),
-				"search"=>          __("Search=> ", WE_LS_SLUG),
+				"search"=>          __("Search: ", WE_LS_SLUG),
 				"zeroRecords"=>     __("No matching records found", WE_LS_SLUG),
 				"paginate"=>  array(
 				    "first"=>       __("First", WE_LS_SLUG),
