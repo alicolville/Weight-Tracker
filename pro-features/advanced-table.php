@@ -14,7 +14,7 @@
           <th>+/-</th>
           <th class="tablet-l">' . __('Notes', WE_LS_SLUG) . '</th>
           <th class="never"></th>
-					<th>Options</th>
+					<th>' . __('Options', WE_LS_SLUG) . '</th>
         </tr>
         </thead>
       <tbody>';

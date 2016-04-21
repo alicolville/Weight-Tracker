@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2016-04-21 20:48+0100\n"
-"PO-Revision-Date: 2016-04-21 20:52+0100\n"
+"POT-Creation-Date: 2016-04-21 20:55+0100\n"
+"PO-Revision-Date: 2016-04-21 21:07+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl_NL\n"
@@ -54,7 +54,6 @@ msgid "Kg"
 msgstr "Kg"
 
 #: includes/core.php:92
-#, fuzzy
 msgid "Target"
 msgstr "Doel"
 
@@ -136,12 +135,10 @@ msgid "The following MySQL tables are missing for this plugin"
 msgstr "Je MySql tabellen mis je voor deze plugin"
 
 #: includes/functions.php:308
-#, fuzzy
 msgid "View all weeks"
 msgstr "Bekijk alle weken"
 
 #: includes/functions.php:322
-#, fuzzy
 msgid "View Week"
 msgstr "Bekijk week"
 
@@ -151,7 +148,6 @@ msgstr "naar"
 
 #: includes/hooks.php:8 includes/shortcode-weight-loss-tracker.php:66
 #: pro-features/user-preferences.php:6
-#, fuzzy
 msgid "Settings"
 msgstr "Intstellingen"
 
@@ -508,7 +504,6 @@ msgid "Specifies the point thickness on a line chart."
 msgstr ""
 
 #: pages/page.settings.php:246
-#, fuzzy
 msgid "Weight colour?"
 msgstr "Gewicht kleur"
 
@@ -519,7 +514,6 @@ msgid ""
 msgstr "Voer hier een HEX kleur code in van de lijn op het diagram"
 
 #: pages/page.settings.php:253
-#, fuzzy
 msgid "Weight fill colour?"
 msgstr "Gewicht opvul kleur"
 
@@ -539,6 +533,10 @@ msgstr "Doel lijn gewicht?"
 msgid ""
 "If enabled, enter a HEX colour code to use for the Target line on graph."
 msgstr "Voer hier de HEX kleur code in van je streefgewicht in het diagram."
+
+#: pro-features/advanced-table.php:17
+msgid "Options"
+msgstr "Instellingen"
 
 #: pro-features/advanced-table.php:52
 msgid "No data available in table"
