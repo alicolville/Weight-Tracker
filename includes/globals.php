@@ -69,17 +69,17 @@
 		}
 
     $supported_measurements = array(
-        'left_bicep' => array('title' => __('Bicep - Left', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#0101DF'),
-        'right_bicep' => array('title' => __('Bicep - Right', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#0101DF'),
-        'left_calf' => array('title' => __('Calf - Left', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#0101DF'),
-        'right_calf' => array('title' => __('Calf - Right', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#0101DF'),
-        'bust_chest' => array('title' => __('Bust / Chest', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#0101DF'),
-        'buttocks' => array('title' => __('Buttocks', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#0101DF'),
-        'hips' => array('title' => __('Hips', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#0101DF'),
-        'navel' => array('title' => __('Navel', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#0101DF'),
-        'left_thigh' => array('title' => __('Thigh - Left', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#0101DF'),
+        'left_bicep' => array('title' => __('Bicep - Left', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#b00125'),
+        'right_bicep' => array('title' => __('Bicep - Right', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#035e60'),
+        'left_calf' => array('title' => __('Calf - Left', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#ffc019'),
+        'right_calf' => array('title' => __('Calf - Right', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#ff7b9c'),
+        'bust_chest' => array('title' => __('Bust / Chest', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#9600ff'),
+        'buttocks' => array('title' => __('Buttocks', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#240d1d'),
+        'hips' => array('title' => __('Hips', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#35e364'),
+        'navel' => array('title' => __('Navel', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#a28c87'),
+        'left_thigh' => array('title' => __('Thigh - Left', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#eaec13'),
         'right_thigh' => array('title' => __('Thigh - Right', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#0101DF'),
-        'waist' => array('title' => __('Waist', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#0101DF'),
+        'waist' => array('title' => __('Waist', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#8b860b'),
         'height' => array('title' => __('Height', WE_LS_SLUG), 'enabled' => true, 'user_preference' => true)
     );
 

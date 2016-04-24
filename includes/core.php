@@ -181,7 +181,7 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 {
     global $save_response;
     $html_output  = '';
-    $measurements_form_enabled = (WE_LS_MEASUREMENTS_ENABLED && false == $hide_measurements_form && !$target_form) ? true : false;
+    $measurements_form_enabled = (WE_LS_MEASUREMENTS_ENABLED && ws_ls_any_active_measurement_fields() && false == $hide_measurements_form && !$target_form) ? true : false;
 
     // Make sure they are logged in
     if (!is_user_logged_in())	{
@@ -210,7 +210,11 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 	}
 
 	$html_output .= '
-	<form action="' .  get_permalink() . '" method="post" class="we-ls-weight-form we-ls-weight-form-validate' . $form_class . (($class_name) ? ' ' . $class_name : '') . '" id="' . $form_id . '" data-measurements-enabled="' . (($measurements_form_enabled) ? 'true' : 'false') . '" data-is-target-form="' . (($target_form) ? 'true' : 'false') . '" data-metric-unit="' . ws_ls_get_chosen_weight_unit_as_string() . '">
+	<form action="' .  get_permalink() . '" method="post" class="we-ls-weight-form we-ls-weight-form-validate' . $form_class . (($class_name) ? ' ' . $class_name : '') . '" id="' . $form_id . '"
+								data-measurements-enabled="' . (($measurements_form_enabled) ? 'true' : 'false') . '"
+								data-measurements-all-required="' . (($measurements_form_enabled && WE_LS_MEASUREMENTS_MANDATORY) ? 'true' : 'false') . '"
+								data-is-target-form="' . (($target_form) ? 'true' : 'false') . '"
+								data-metric-unit="' . ws_ls_get_chosen_weight_unit_as_string() . '">
 		<input type="hidden" value="' . (($target_form) ? 'true' : 'false') . '" id="ws_ls_is_target" name="ws_ls_is_target" />
 		<input type="hidden" value="true" id="ws_ls_is_weight_form" name="ws_ls_is_weight_form" />
 		<input type="hidden" value="' . $user_id . '" id="ws_ls_user_id" name="ws_ls_user_id" />
@@ -275,11 +279,11 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 											</div>';
 		}
 
-        // Include
-        if(!$target_form && $measurements_form_enabled) {
-            $html_output .= sprintf('<br /><h3 class="ws_ls_title">%s</h3>', __('Add measurements', WE_LS_SLUG));
-            $html_output .= ws_ls_load_preference_form();
-        }
+    // Include
+    if(!$target_form && $measurements_form_enabled) {
+        $html_output .= sprintf('<br /><h3 class="ws_ls_title">%s</h3>', __('Add measurements', WE_LS_SLUG));
+        $html_output .= ws_ls_load_preference_form();
+    }
 
 		$button_text = ($target_form) ?  __('Set Target', WE_LS_SLUG) :  __('Save Entry', WE_LS_SLUG);
 

@@ -32,12 +32,20 @@ function ws_ls_get_measurement_settings()
     }
     return false;
 }
+function ws_ls_any_active_measurement_fields(){
+  $measurement_fields = ws_ls_get_measurement_settings();
+  foreach($measurement_fields as $key => $data) {
+      if($data['enabled']) {
+          return true;
+      }
+  }
+  return false;
+}
 
 function ws_ls_load_preference_form()
 {
     $public_html = '';
     $measurement_fields = ws_ls_get_measurement_settings();
-//    var_dump($measurement_fields);
 
     foreach($measurement_fields as $key => $data) {
         if($data['enabled'] && false == $data['user_preference']) {
