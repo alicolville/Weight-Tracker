@@ -22,6 +22,17 @@
 		  weight_pounds float NOT NULL,
 		  weight_only_pounds float NOT NULL,
 		  weight_notes text null,
+			bust_chest float NULL,
+			waist float NULL,
+			navel float NULL,
+			hips float NULL,
+			buttocks float NULL,
+			left_thigh float NULL,
+			right_thigh float NULL,
+			left_bicep float NULL,
+			right_bicep float NULL,
+			left_calf float NULL,
+			right_calf float NULL
 		  UNIQUE KEY id (id)
 		) $charset_collate;";
 
@@ -36,34 +47,12 @@
 			  target_weight_weight float NOT NULL,
 			  target_weight_stones float NOT NULL,
 			  target_weight_pounds float NOT NULL,
-			  target_weight_only_pounds float NOT NULL,
+			  target_weight_only_pounds float NOT NULL
 			  UNIQUE KEY id (id)
 		) $charset_collate;";
 
 		 dbDelta( $sql );
 
-        // 4.0+ Measurements
-        $table_name = $wpdb->prefix . WE_LS_MEASUREMENTS_TABLENAME;
-        
-        $sql = "CREATE TABLE $table_name (
-			  id mediumint(9) NOT NULL,
-			  bust_chest float DEFAULT 0 NULL,
-			  waist float DEFAULT 0 NULL,
-			  navel float DEFAULT 0 NULL,
-			  hips float DEFAULT 0 NULL,
-              buttocks float DEFAULT 0 NULL,
-			  left_thigh float DEFAULT 0 NULL,
-			  right_thigh float DEFAULT 0 NULL,
-			  left_bicep float DEFAULT 0 NULL,
-              right_bicep float DEFAULT 0 NULL,
-			  left_calf float DEFAULT 0 NULL,
-			  right_calf float DEFAULT 0 NULL,
-			 UNIQUE KEY id (id)
-		) $charset_collate;";
-
-		 dbDelta( $sql );
-      
-  
 		 $table_name = $wpdb->prefix . WE_LS_USER_PREFERENCES_TABLENAME;
 
 		 $sql = "CREATE TABLE $table_name (

@@ -10,7 +10,7 @@ function ws_ls_is_date_intervals_enabled()	{
 
 /* Get string representation of a weight  */
 function ws_ls_weight_object($user_id, $kg, $pounds, $stones, $pounds_only, $notes = '', $date = false,
-                              $detect_and_convert_missing_values = false, $database_row_id = false, $user_nicename = '')
+                              $detect_and_convert_missing_values = false, $database_row_id = false, $user_nicename = '', $measurements = false)
 {
     $weight['display'] = '';
     $weight['user_id'] = $user_id;
@@ -24,10 +24,10 @@ function ws_ls_weight_object($user_id, $kg, $pounds, $stones, $pounds_only, $not
     $weight['first_weight'] = false;
     $weight['difference_from_unit'] = '';
     $weight['db_row_id'] = $database_row_id;
+    $weight['measurements'] = $measurements;
 
     // Build different date formats
     if($date != false && !empty($date)) {
-
         $time = strtotime($date);
         $weight['date'] = $date;
         $weight['date-uk'] = date('d/m/Y',$time);
@@ -100,6 +100,17 @@ function ws_ls_weight_object($user_id, $kg, $pounds, $stones, $pounds_only, $not
     // }
 
   }
+
+  // Measurements
+  if(is_array($measurements) && !empty($measurements) && WE_LS_MEASUREMENTS_ENABLED) {
+    foreach ($measurements as $key => $value) {
+      if('cm' != WE_LS_MEASUREMENTS_UNIT) {
+        $measurements[$key] = ws_ls_convert_to_cm(0, $measurements[$key]);
+      }
+    }
+    $weight['measurements'] = $measurements;
+  }
+
   return $weight;
 }
 
@@ -116,7 +127,7 @@ function ws_ls_delete_existing_data() {
 
 /* Delete all data for a user */
 function ws_ls_delete_data_for_user() {
-    
+
     if(WE_LS_ALLOW_USER_PREFERENCES)  {
 
         $user_id = get_current_user_id();
@@ -138,7 +149,7 @@ function ws_ls_admin_check_mysql_tables_exist()
 {
     $error_text = '';
     global $wpdb;
-    
+
     $tables_to_check = array(
                             $wpdb->prefix . WE_LS_TARGETS_TABLENAME,
                             $wpdb->prefix . WE_LS_TABLENAME,
@@ -148,13 +159,13 @@ function ws_ls_admin_check_mysql_tables_exist()
 
     // Check each table exists!
     foreach($tables_to_check as $table_name) {
-        
+
         $rows = $wpdb->get_row('Show columns in ' . $table_name);
         if (0 == count($rows)) {
             $error_text .= '<li>' . $table_name . '</li>';
-        } 
+        }
     }
-    
+
     // Return error message if tables missing
     if (!empty($error_text))  {
         return  __('The following MySQL tables are missing for this plugin', WE_LS_SLUG) . ':<ul>' . $error_text . '</ul>';
@@ -433,9 +444,9 @@ function ws_ls_fetch_elements_from_end_of_array($data, $number_to_grab)
         $start = count($data) - $number_to_grab;
         $data = array_slice($data, $start, $number_to_grab);
     }
-    
+
     return $data;
 }
-    
+
 
 ?>

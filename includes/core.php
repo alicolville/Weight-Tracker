@@ -282,7 +282,7 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
     // Include
     if(!$target_form && $measurements_form_enabled) {
         $html_output .= sprintf('<br /><h3 class="ws_ls_title">%s</h3>', __('Add measurements', WE_LS_SLUG));
-        $html_output .= ws_ls_load_preference_form();
+        $html_output .= ws_ls_load_measurement_form();
     }
 
 		$button_text = ($target_form) ?  __('Set Target', WE_LS_SLUG) :  __('Save Entry', WE_LS_SLUG);
@@ -329,6 +329,13 @@ function ws_ls_capture_form_validate_and_save($user_id = false)
 	$allowed_post_keys = array('ws_ls_is_target', 'we-ls-date', 'we-ls-weight-pounds',
 															'we-ls-weight-stones', 'we-ls-weight-kg', 'we-ls-notes');
 
+	$weight_keys = ws_ls_get_keys_for_active_measurement_fields('ws-ls-');
+
+	// If measurements enabled and PRO add enabled fields to the above list
+	if (WE_LS_MEASUREMENTS_ENABLED) {
+		$allowed_post_keys = array_merge($allowed_post_keys, $weight_keys);
+	}
+
 	// Strip slashes from post object
 	$form_values = stripslashes_deep($_POST);
 
@@ -348,16 +355,24 @@ function ws_ls_capture_form_validate_and_save($user_id = false)
 	$weight_object = false;
 	$weight_notes = (!$is_target_form) ? $form_values['we-ls-notes'] : '' ;
 	$weight_date = (!$is_target_form) ? $form_values['we-ls-date'] : false ;
+	$measurements = [];
+
+	// Build measurement fields up and convert to CM if needed
+	if (WE_LS_MEASUREMENTS_ENABLED && is_array($weight_keys) && !empty($weight_keys)) {
+		foreach ($weight_keys as $key) {
+			$measurements[$key] = round($form_values[$key], 2);
+		}
+	}
 
 	switch (ws_ls_get_config('WE_LS_DATA_UNITS')) {
 			case 'pounds_only':
-					$weight_object = ws_ls_weight_object($user_id, 0, 0, 0, $form_values['we-ls-weight-pounds'], $weight_notes,	$weight_date, true);
+					$weight_object = ws_ls_weight_object($user_id, 0, 0, 0, $form_values['we-ls-weight-pounds'], $weight_notes,	$weight_date, true, false, '', $measurements);
 				break;
 			case 'kg':
-					$weight_object = ws_ls_weight_object($user_id, $form_values['we-ls-weight-kg'], 0, 0, 0, $weight_notes,	$weight_date, true);
+					$weight_object = ws_ls_weight_object($user_id, $form_values['we-ls-weight-kg'], 0, 0, 0, $weight_notes,	$weight_date, true, false, '', $measurements);
 				break;
 			default:
-					$weight_object = ws_ls_weight_object($user_id, 0, $form_values['we-ls-weight-pounds'], $form_values['we-ls-weight-stones'], 0, $weight_notes,	$weight_date, true);
+					$weight_object = ws_ls_weight_object($user_id, 0, $form_values['we-ls-weight-pounds'], $form_values['we-ls-weight-stones'], 0, $weight_notes,	$weight_date, true, false, '', $measurements);
 				break;
 	}
 

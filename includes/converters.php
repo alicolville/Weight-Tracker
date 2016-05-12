@@ -1,6 +1,10 @@
 <?php
 defined('ABSPATH') or die("Jog on!");
 
+function ws_ls_convert_to_cm($feet, $inches = 0) {
+    $inches = ($feet * 12) + $inches;
+    return round($inches / 0.393701, 2);
+}
 function ws_ls_stones_pounds_to_pounds_only($stones, $pounds)
 {
   return ($stones * 14) + $pounds;

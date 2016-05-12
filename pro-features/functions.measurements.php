@@ -41,15 +41,25 @@ function ws_ls_any_active_measurement_fields(){
   }
   return false;
 }
+function ws_ls_get_keys_for_active_measurement_fields($prefix = ''){
+  $measurement_fields = ws_ls_get_measurement_settings();
+	$keys = [];
+  foreach($measurement_fields as $key => $data) {
+      if($data['enabled']) {
+          $keys[] = $prefix . $key;
+      }
+  }
+  return $keys;
+}
 
-function ws_ls_load_preference_form()
+function ws_ls_load_measurement_form()
 {
     $public_html = '';
     $measurement_fields = ws_ls_get_measurement_settings();
 
-    foreach($measurement_fields as $key => $data) {
+	  foreach($measurement_fields as $key => $data) {
         if($data['enabled'] && false == $data['user_preference']) {
-            $public_html .= ws_ls_measurement_field($key, $data['title']);
+            $public_html .= ws_ls_measurement_field($key, $data['title'] . ' (' . WE_LS_MEASUREMENTS_UNIT . ')');
         }
     }
 
