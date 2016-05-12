@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight, graph, track, stones, kg, table, data, plot, target, history, pounds, responsive, chart
 Requires at least: 4.1.0
 Tested up to: 4.5
-Stable tag: 3.5
+Stable tag: 3.5.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -136,10 +136,14 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 
 == Changelog ==
 
+= 3.5.1 =
+
+* BUG FIX: Additional logic around array_reverse when rendering a chart to ensure the object is an array and not empty.
+
 = 3.5 =
 
 * Added locale support for advanced data tables (Pro feature)
-* Updated Dutch translations for advanced data tables and others 
+* Updated Dutch translations for advanced data tables and others
 
 = 3.4.1 =
 

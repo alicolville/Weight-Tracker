@@ -42,7 +42,9 @@ function ws_ls_shortcode_chart($user_defined_arguments)
     $weight_data = ws_ls_get_weights($chart_arguments['user-id'], $chart_arguments['max-data-points'], -1, 'desc');
 
     // Reverse array so in cron order
-    $weight_data = array_reverse($weight_data);
+	if(is_array($weight_data) && !empty($weight_data)) {
+    	$weight_data = array_reverse($weight_data);
+	}
 
     // Render chart
     if ($weight_data){
