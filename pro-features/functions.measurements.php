@@ -59,7 +59,7 @@ function ws_ls_load_measurement_form()
 
 	  foreach($measurement_fields as $key => $data) {
         if($data['enabled'] && false == $data['user_preference']) {
-            $public_html .= ws_ls_measurement_field($key, $data['title'] . ' (' . WE_LS_MEASUREMENTS_UNIT . ')');
+            $public_html .= ws_ls_measurement_field($key, $data['title'] . ' (' . ws_ls_get_config('WE_LS_MEASUREMENTS_UNIT') . ')');
         }
     }
 

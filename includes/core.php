@@ -279,11 +279,11 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 											</div>';
 		}
 
-    // Include
-    if(!$target_form && $measurements_form_enabled) {
-        $html_output .= sprintf('<br /><h3 class="ws_ls_title">%s</h3>', __('Add measurements', WE_LS_SLUG));
-        $html_output .= ws_ls_load_measurement_form();
-    }
+	    // Include
+	    if(!$target_form && $measurements_form_enabled) {
+	        $html_output .= sprintf('<br /><h3 class="ws_ls_title">%s</h3>', __('Add measurements', WE_LS_SLUG));
+	        $html_output .= ws_ls_load_measurement_form();
+	    }
 
 		$button_text = ($target_form) ?  __('Set Target', WE_LS_SLUG) :  __('Save Entry', WE_LS_SLUG);
 
@@ -360,20 +360,26 @@ function ws_ls_capture_form_validate_and_save($user_id = false)
 	// Build measurement fields up and convert to CM if needed
 	if (WE_LS_MEASUREMENTS_ENABLED && is_array($weight_keys) && !empty($weight_keys)) {
 		foreach ($weight_keys as $key) {
-			$measurements[$key] = round($form_values[$key], 2);
+	 		// Convert to CM?
+		 	if('cm' != ws_ls_get_config('WE_LS_MEASUREMENTS_UNIT')) {
+	           $measurements[$key] = ws_ls_convert_to_cm(0, $form_values[$key]);
+		   	} else {
+			   $measurements[$key] = round($form_values[$key], 2);
+		   	}
 		}
+		unset($measurements['ws-ls-height']);	// Remove height key from this form save
 	}
 
 	switch (ws_ls_get_config('WE_LS_DATA_UNITS')) {
-			case 'pounds_only':
-					$weight_object = ws_ls_weight_object($user_id, 0, 0, 0, $form_values['we-ls-weight-pounds'], $weight_notes,	$weight_date, true, false, '', $measurements);
-				break;
-			case 'kg':
-					$weight_object = ws_ls_weight_object($user_id, $form_values['we-ls-weight-kg'], 0, 0, 0, $weight_notes,	$weight_date, true, false, '', $measurements);
-				break;
-			default:
-					$weight_object = ws_ls_weight_object($user_id, 0, $form_values['we-ls-weight-pounds'], $form_values['we-ls-weight-stones'], 0, $weight_notes,	$weight_date, true, false, '', $measurements);
-				break;
+		case 'pounds_only':
+				$weight_object = ws_ls_weight_object($user_id, 0, 0, 0, $form_values['we-ls-weight-pounds'], $weight_notes,	$weight_date, true, false, '', $measurements);
+			break;
+		case 'kg':
+				$weight_object = ws_ls_weight_object($user_id, $form_values['we-ls-weight-kg'], 0, 0, 0, $weight_notes,	$weight_date, true, false, '', $measurements);
+			break;
+		default:
+				$weight_object = ws_ls_weight_object($user_id, 0, $form_values['we-ls-weight-pounds'], $form_values['we-ls-weight-stones'], 0, $weight_notes,	$weight_date, true, false, '', $measurements);
+			break;
 	}
 
 	$result = ws_ls_save_data($user_id, $weight_object, $is_target_form);
@@ -418,13 +424,13 @@ function ws_ls_get_js_config()
 	return array (
 		'us-date' => ($use_us_date) ? 'true' : 'false',
 		'date-format' => ($use_us_date) ? 'mm/dd/yy' : 'dd/mm/yy',
-    'clear-target' => __('Are you sure you wish to clear your target weight?', WE_LS_SLUG),
+    	'clear-target' => __('Are you sure you wish to clear your target weight?', WE_LS_SLUG),
 		'validation-we-ls-weight-pounds' => $message_for_pounds,
 		'validation-we-ls-weight-kg' => __('Please enter a valid figure for Kg', WE_LS_SLUG),
 		'validation-we-ls-weight-stones' => __('Please enter a valid figure for Stones', WE_LS_SLUG),
 		'validation-we-ls-date' => __('Please enter a valid date', WE_LS_SLUG),
 		'validation-we-ls-history' => __('Please confirm you wish to delete ALL your weight history', WE_LS_SLUG),
-    'confirmation-delete' => __('Are you sure you wish to delete this entry? If so, press OK.', WE_LS_SLUG),
+    	'confirmation-delete' => __('Are you sure you wish to delete this entry? If so, press OK.', WE_LS_SLUG),
 		'tabs-enabled' => (WE_LS_USE_TABS) ? 'true' : 'false',
 		'advanced-tables-enabled' => (WS_LS_ADVANCED_TABLES && WS_LS_IS_PRO) ? 'true' : 'false',
 		'ajax-url' => admin_url('admin-ajax.php'),
@@ -433,7 +439,7 @@ function ws_ls_get_js_config()
 		'user-id' => get_current_user_id(),
 		'current-url' => get_permalink(),
 		'measurements-enabled' => (WE_LS_MEASUREMENTS_ENABLED) ? 'true' : 'false',
-		'measurements-unit' => WE_LS_MEASUREMENTS_UNIT,
+		'measurements-unit' => ws_ls_get_config('WE_LS_MEASUREMENTS_UNIT'),
 		'validation-we-ls-measurements' => __('Please enter a valid measurement (' . WE_LS_MEASUREMENTS_UNIT . ') which is less that 1000.', WE_LS_SLUG),
 	);
 

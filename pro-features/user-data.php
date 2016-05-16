@@ -19,7 +19,7 @@ function ws_ls_manage_user_data_page() {
 	wp_localize_script( 'ws-ls-admin', 'ws_ls_user_data', array('ajax-url' => admin_url('admin-ajax.php') . '?action=ws_ls_user_data&security=' . wp_create_nonce( 'ws-ls-security' ), 'security' => wp_create_nonce( 'ajax-security-nonce' ) ) );
 
     $clear_cache = false;
-    
+
     // If remove existing data
 	if (is_admin() && isset($_GET['removedata']) && 'y' == $_GET['removedata']) {
 		ws_ls_delete_existing_data();
@@ -29,7 +29,7 @@ function ws_ls_manage_user_data_page() {
 	if($clear_cache) {
 		ws_ls_delete_all_cache();
 	}
-    
+
 ?>
 
 
@@ -65,7 +65,7 @@ function ws_ls_manage_user_data_page() {
 								                <th>User</th>
 								                <th>Date</th>
 								                <th>Weight</th>
-																<th >Notes</th>
+												<th>Notes</th>
 								                <th></th>
 
 								              </tr>
@@ -75,9 +75,8 @@ function ws_ls_manage_user_data_page() {
 								                <th>User</th>
 								                <th>Date</th>
 								                <th>Weight</th>
-																<th>Notes</th>
+												<th>Notes</th>
 								                <th></th>
-
 								            </tr>
 								        </tfoot>
 								    </table>

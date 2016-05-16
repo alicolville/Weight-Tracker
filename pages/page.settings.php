@@ -15,7 +15,7 @@ function ws_ls_settings_page() {
 	wp_enqueue_style('wlt-tabs-flat', plugins_url( '../css/tabs.flat.min.css', __FILE__ ), array(), WE_LS_CURRENT_VERSION);
 	wp_enqueue_script('ws-ls-admin',plugins_url( '../js/admin.js', __FILE__ ), array('jquery'), WE_LS_CURRENT_VERSION);
 	wp_enqueue_style('ws-ls-admin-style', plugins_url( '../css/admin.css', __FILE__ ), array(), WE_LS_CURRENT_VERSION);
-   
+
   	$clear_cache = (isset($_GET['settings-updated']) && 'true' == $_GET['settings-updated']) ? true : false;
 
 	if (is_admin() && isset($_GET['recreatetables']) && 'y' == $_GET['recreatetables']) {
@@ -24,12 +24,12 @@ function ws_ls_settings_page() {
 	}
 
 	if($clear_cache) {
-			ws_ls_delete_all_cache();
+		ws_ls_delete_all_cache();
 	}
 
 
 		?>
-		<div class="wrap">
+	<div class="wrap">
 
 <?php
 
@@ -302,15 +302,15 @@ function ws_ls_settings_page() {
                                                     <th scope="row"><?php echo __( 'Areas of measurements' , WE_LS_SLUG); ?></th>
                                                     <td>
                                                     <?php
-    
+
                                                     $measurement_settings = ws_ls_get_measurement_settings();
-  
+
                                                         ?>
                                                     <table>
                                                         <?php foreach ($measurement_settings as $key => $body_part) {
                                                             if (!$body_part['user_preference']) {
                                                         ?>
-                                                        
+
                                                                 <tr>
                                                                     <td colspan="2">
                                                                         <label style="font-weight: bold;" for="ws-ls-<?php echo $key; ?>"><?php echo $body_part['title']; ?></label>
@@ -331,10 +331,10 @@ function ws_ls_settings_page() {
                                                     </table>
                                                     </td>
                                                 </tr>
-                                               
-                                               
+
+
                                             </table>
-                                            
+
                                         </div>
 									</div>
 								</div>
@@ -400,7 +400,7 @@ function ws_ls_register_settings()
         register_setting( 'we-ls-options-group', 'ws-ls-measurement-units' );
         register_setting( 'we-ls-options-group', 'ws-ls-measurement' );
         register_setting( 'we-ls-options-group', 'ws-ls-measurements-mandatory' );
-       
+
     }
 
 }

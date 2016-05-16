@@ -99,18 +99,18 @@ function ws_ls_weight_object($user_id, $kg, $pounds, $stones, $pounds_only, $not
     //   $weight['user_nicename'] = $user_info->user_nicename;
     // }
 
-  }
+	if (WE_LS_MEASUREMENTS_ENABLED && is_array($weight['measurements']) && !empty($weight['measurements'])) {
+		foreach ($weight['measurements'] as $key => $value) {
+			// Strip field prefix
+			if(strpos($key, 'ws-ls-') !== false) {
+				$new_key = str_replace('ws-ls-', '', $key);
+				$weight['measurements'][$new_key] = $weight['measurements'][$key];
+				unset($weight['measurements'][$key]);
+			}
+		}
+	}
 
-  // Measurements
-  if(is_array($measurements) && !empty($measurements) && WE_LS_MEASUREMENTS_ENABLED) {
-    foreach ($measurements as $key => $value) {
-      if('cm' != WE_LS_MEASUREMENTS_UNIT) {
-        $measurements[$key] = ws_ls_convert_to_cm(0, $measurements[$key]);
-      }
-    }
-    $weight['measurements'] = $measurements;
   }
-
   return $weight;
 }
 
@@ -153,8 +153,7 @@ function ws_ls_admin_check_mysql_tables_exist()
     $tables_to_check = array(
                             $wpdb->prefix . WE_LS_TARGETS_TABLENAME,
                             $wpdb->prefix . WE_LS_TABLENAME,
-                            $wpdb->prefix . WE_LS_USER_PREFERENCES_TABLENAME,
-                            $wpdb->prefix . WE_LS_MEASUREMENTS_TABLENAME
+                            $wpdb->prefix . WE_LS_USER_PREFERENCES_TABLENAME
                         );
 
     // Check each table exists!

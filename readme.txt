@@ -1,9 +1,9 @@
 === Plugin Name ===
 Contributors: aliakro
 Tags: weight, graph, track, stones, kg, table, data, plot, target, history, pounds, responsive, chart
-Requires at least: 4.0.0
-Tested up to: 4.4
-Stable tag: 3.1.1
+Requires at least: 4.1.0
+Tested up to: 4.5
+Stable tag: 4.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -37,7 +37,7 @@ Our Pro version has now been released! If you upgrade, you get he additional fea
 - Text Shortcodes. Additional shortcodes for earliest and most recent dates entered.
 - Admin: View / Delete user data. Admin will be able to view and delete existing user data.
 - User preferences. If enabled, the user will be able to select which unit they wish to store their weight in Metric or Imperial. They will also be able to specify date format and clear all their weight data.
-- Bar Charts. Fancy something different to a line chart? The plugin will also support Bar Charts.
+- Bar Charts. Fancy something different to a line chart? The plugin will also suppor`````t Bar Charts.
 - Decimals. Decimals will be allowed weight in Pounds only or Kg modes.
 - Delete existing entry. A logged in user will be able to delete or edit an existing weight entry.
 - Better Tables.. Data tables in front end and admin will support paging and sorting.
@@ -50,6 +50,7 @@ Fully supported (have the majority of translations):
 - English (UK)
 - German (thanks Michael @ Activate the Beast)
 - Dutch (thanks Dennis)
+- Finish (thanks Ari)
 
 Languages partially supported (have some of the translations):
 
@@ -134,6 +135,44 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 14. Examples of the shortcodes [weightloss_weight_difference], [weightloss_weight_start], [weightloss_weight_most_recent] and [weightloss_weight_difference_from_target]
 
 == Changelog ==
+
+= 4.0 =
+
+**Pro Changes:**
+
+* Support for measurements added!
+* Measurements for "Bicep - Left", "Bicep - Right", "Calf - Left", "Bust / Chest", "Buttocks", "Hips", "Navel", "Thigh - Left", "Thigh - Right" and "Waist".
+* Height can also be specified on the user preferences page.
+
+**Bug fixes:**
+
+* User preferences are now cached correctly.
+
+= 3.5.1 =
+
+* BUG FIX: Additional logic around array_reverse when rendering a chart to ensure the object is an array and not empty.
+
+= 3.5 =
+
+* Added locale support for advanced data tables (Pro feature)
+* Updated Dutch translations for advanced data tables and others
+
+= 3.4.1 =
+
+* CSS is included by default as some installations had issues. JavaScript includes have been moved to footer.
+
+= 3.4 =
+
+* Modified the including of JavaScript / CSS dependencies. To reduce conflicts with other plugins, JavaScript and CSS files are only included when widgets and shortcodes are placed.
+
+= 3.3 =
+
+* Added some additional Romanian translations (although not complete for plugin).
+* BUG FIX: Finnish translation files were given the wrong code so not included as expected.
+
+= 3.2 =
+
+* Updated Finnish translations.
 
 = 3.1.1 =
 

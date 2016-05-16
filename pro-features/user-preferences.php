@@ -6,16 +6,47 @@ function ws_ls_user_preferences_form()
 	$html_output = ws_ls_title(__('Settings', WE_LS_SLUG));
 
 	$html_output .= '<form action="' .  get_permalink() . '" class="ws-ls-user-pref-form" method="post">
-  <input type="hidden" name="ws-ls-user-pref" value="true" />
-	<input type="hidden" name="ws-ls-user-pref-redirect" value="' . get_the_ID() . '" />
-  <label>' . __('Which unit would you like to record your weight in:', WE_LS_SLUG) . '</label>
+  	<input type="hidden" name="ws-ls-user-pref" value="true" />
+	<input type="hidden" name="ws-ls-user-pref-redirect" value="' . get_the_ID() . '" />';
+
+	// Add height
+	$html_output .= '
+	<label>' . __('Your height:', WE_LS_SLUG) . '</label>
+	<select id="we-ls-height" name="we-ls-height"  tabindex="' . ws_ls_get_next_tab_index() . '">';
+	$heights = ws_ls_heights();
+	$existing_height = 188;
+ws_ls_set_user_height(152);
+var_dump(ws_ls_get_user_height());
+
+	foreach ($heights as $key => $value) {
+		$html_output .= sprintf('<option value="%s" %s>%s</option>', $key, selected($key, $existing_height, false), $value);
+	}
+
+	$html_output .= '</select>';
+
+	ws_ls_measurement_field('we-ls-height', 'Your height (' . ws_ls_get_config('WE_LS_MEASUREMENTS_UNIT') . ')', '');
+
+  	$html_output .= '
+	<label>' . __('Which unit would you like to record your weight in:', WE_LS_SLUG) . '</label>
     <select id="WE_LS_DATA_UNITS" name="WE_LS_DATA_UNITS"  tabindex="' . ws_ls_get_next_tab_index() . '">
       <option value="kg" ' . selected( ws_ls_get_config('WE_LS_DATA_UNITS'), 'kg', false ) . '>' . __('Kg', WE_LS_SLUG) . '</option>
       <option value="stones_pounds" ' . selected( ws_ls_get_config('WE_LS_DATA_UNITS'), 'stones_pounds', false ) . '>' . __('Stones & Pounds', WE_LS_SLUG) . '</option>
       <option value="pounds_only" ' . selected( ws_ls_get_config('WE_LS_DATA_UNITS'), 'pounds_only', false ) . '>' . __('Pounds', WE_LS_SLUG) . '</option>
-    </select>
-    <label>' . __('Display dates in the following formats:', WE_LS_SLUG) . '</label>
+    </select>';
 
+	if(WE_LS_MEASUREMENTS_ENABLED) {
+		$html_output .= '
+			<label>' . __('Which unit would you like to record your measurements in:', WE_LS_SLUG) . '</label>
+		    <select id="WE_LS_MEASUREMENTS_UNIT" name="WE_LS_MEASUREMENTS_UNIT"  tabindex="' . ws_ls_get_next_tab_index() . '">
+		    	<option value="cm" ' . selected( ws_ls_get_config('WE_LS_MEASUREMENTS_UNIT'), 'cm', false ) . '>' . __('Centimetres', WE_LS_SLUG) . '</option>
+		    	<option value="inches" ' . selected( ws_ls_get_config('WE_LS_MEASUREMENTS_UNIT'), 'inches', false ) . '>' . __('Inches', WE_LS_SLUG) . '</option>
+		    </select>
+		';
+	}
+
+    $html_output .= '
+
+	<label>' . __('Display dates in the following formats:', WE_LS_SLUG) . '</label>
     <select id="WE_LS_US_DATE" name="WE_LS_US_DATE"  tabindex="' . ws_ls_get_next_tab_index() . '">
       <option value="false" ' . selected( ws_ls_get_config('WE_LS_US_DATE'), false, false ) . '>' . __('UK (DD/MM/YYYY)', WE_LS_SLUG) . '</option>
       <option value="true" ' . selected( ws_ls_get_config('WE_LS_US_DATE'), true, false ) . '>' . __('US (MM/DD/YYYY)', WE_LS_SLUG) . '</option>

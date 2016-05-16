@@ -151,63 +151,74 @@ function ws_ls_get_start_weight($user_id)
 
 function ws_ls_save_data($user_id, $weight_object, $is_target_form = false)
 {
-  global $wpdb;
+	global $wpdb;
 
-  $db_prefix = ($is_target_form) ? 'target_' : '';
-  $db_is_update = false;
-  $table_name = $wpdb->prefix . WE_LS_TABLENAME;
+	$db_prefix = ($is_target_form) ? 'target_' : '';
+	$db_is_update = false;
+	$table_name = $wpdb->prefix . WE_LS_TABLENAME;
 
-  // Ensure each weight field has been populated!
-  if(!ws_ls_validate_weight_data($weight_object)) {
-    return false;
-  }
+	// Ensure each weight field has been populated!
+	if(!ws_ls_validate_weight_data($weight_object)) {
+		return false;
+	}
 
-  // Build array of fields to pass to DB
-  $db_fields['weight_user_id'] = $user_id;
-  $db_fields[$db_prefix . 'weight_stones'] = $weight_object['stones'];
-  $db_fields[$db_prefix . 'weight_pounds'] = $weight_object['pounds'];
-  $db_fields[$db_prefix . 'weight_only_pounds'] = $weight_object['only_pounds'];
-  $db_fields[$db_prefix . 'weight_weight'] = $weight_object['kg'];
+	// Build array of fields to pass to DB
+	$db_fields['weight_user_id'] = $user_id;
+	$db_fields[$db_prefix . 'weight_stones'] = $weight_object['stones'];
+	$db_fields[$db_prefix . 'weight_pounds'] = $weight_object['pounds'];
+	$db_fields[$db_prefix . 'weight_only_pounds'] = $weight_object['only_pounds'];
+	$db_fields[$db_prefix . 'weight_weight'] = $weight_object['kg'];
 
-  // Set data types
-  $db_field_types = array('%d','%f', '%f', '%f', '%f');
+	// Set data types
+	$db_field_types = array('%d','%f', '%f', '%f', '%f');
 
-  // Customise depending on whether an update or not
-  if($is_target_form) {
-    $db_is_update = ws_does_target_weight_exist($user_id);
-    $table_name = $wpdb->prefix . WE_LS_TARGETS_TABLENAME;
-  } else {
-    $db_is_update = ws_does_weight_exist_for_this_date($user_id, $weight_object['date']);
-    $db_fields['weight_notes'] = $weight_object['notes'];
-    array_push($db_field_types, '%s');
-    $db_fields['weight_date'] = $weight_object['date'];
-    array_push($db_field_types, '%s');
-  }
-  $result = false;
+	// If Measurements enabled then save measurements too.
+	if (WE_LS_MEASUREMENTS_ENABLED) {
+		$weight_keys = ws_ls_get_keys_for_active_measurement_fields();
+		foreach ($weight_keys as $key) {
+			if(isset($weight_object['measurements'][$key])) {
+				$db_fields[$key] = $weight_object['measurements'][$key];
+				$db_field_types[] = '%f';
+			}
+		}
+	}
 
-  // Update or insert
-  if($db_is_update != false) {
-    $result = $wpdb->update(
-      $table_name,
-      $db_fields,
-    	array( 'id' => $db_is_update ),
-    	$db_field_types,
-    	array( '%d' )
-    );
-  }
-  else {
-    $result = $wpdb->insert(
-    	$table_name,
-      $db_fields,
-    	$db_field_types
-    );
-  }
+	// Customise depending on whether an update or not
+	if($is_target_form) {
+		$db_is_update = ws_does_target_weight_exist($user_id);
+	    $table_name = $wpdb->prefix . WE_LS_TARGETS_TABLENAME;
+	} else {
+		$db_is_update = ws_does_weight_exist_for_this_date($user_id, $weight_object['date']);
+	    $db_fields['weight_notes'] = $weight_object['notes'];
+	    array_push($db_field_types, '%s');
+	    $db_fields['weight_date'] = $weight_object['date'];
+	    array_push($db_field_types, '%s');
+	}
+	$result = false;
 
-  $result = ($result === false) ? false : true;
+	// Update or insert
+	if($db_is_update != false) {
+		$result = $wpdb->update(
+	    	$table_name,
+	    	$db_fields,
+	    	array( 'id' => $db_is_update ),
+	    	$db_field_types,
+	    	array( '%d' )
+		);
+	}
+	else {
+	    $result = $wpdb->insert(
+	    	$table_name,
+	      $db_fields,
+	    	$db_field_types
+	    );
+	 }
 
-  // Tidy up cache
-  ws_ls_delete_cache_for_given_user($user_id);
-  return $result;
+	$result = ($result === false) ? false : true;
+
+	// Tidy up cache
+	ws_ls_delete_cache_for_given_user($user_id);
+	return $result;
 }
 
 function ws_ls_delete_entry($user_id, $row_id)
@@ -233,7 +244,7 @@ function ws_ls_delete_target($user_id)
   global $wpdb;
 
   if (is_numeric($user_id)) {
-      
+
     $result = $wpdb->delete($wpdb->prefix . WE_LS_TARGETS_TABLENAME, array( 'weight_user_id' => $user_id));
 
     if ($result !== false) {
@@ -310,9 +321,10 @@ function ws_ls_set_user_preferences($settings, $user_id = false)
   // Build array of fields to pass to DB
   $db_fields['user_id'] = $user_id;
   $db_fields['settings'] = json_encode($settings);
+  $db_fields['height'] = ws_ls_get_user_height($user_id, false);
 
   // Set data types
-  $db_field_types = array('%d','%s');
+  $db_field_types = array('%d','%s','%d');
 
   // Update or insert
   $result = $wpdb->replace(
@@ -328,7 +340,7 @@ function ws_ls_set_user_preferences($settings, $user_id = false)
   return $result;
 }
 
-function ws_ls_get_user_preferences($user_id = false)
+function ws_ls_get_user_preferences($user_id = false, $use_cache = true)
 {
   global $wpdb;
 
@@ -342,7 +354,7 @@ function ws_ls_get_user_preferences($user_id = false)
   $cache = ws_ls_get_cache($cache_key);
 
   // Return cache if found!
-  if ($cache)   {
+  if ($cache && true == $use_cache)   {
       return $cache;
   }
 
@@ -359,5 +371,76 @@ function ws_ls_get_user_preferences($user_id = false)
     $settings = array();
   }
 
+  if($settings !== false) {
+	  ws_ls_set_cache($cache_key, $settings);
+  }
+
   return $settings;
+}
+
+function ws_ls_get_user_height($user_id = false, $use_cache = true)
+{
+  global $wpdb;
+
+  if(false == $user_id){
+    $user_id = get_current_user_id();
+  }
+
+  $table_name = $wpdb->prefix . WE_LS_USER_PREFERENCES_TABLENAME;
+
+  $cache_key = $user_id . '-' . WE_LS_CACHE_KEY_USER_HEIGHT;
+  $cache = ws_ls_get_cache($cache_key);
+
+  // Return cache if found!
+  if ($cache && true == $use_cache)   {
+      return $cache;
+  }
+
+  $sql =  $wpdb->prepare('SELECT height FROM ' . $table_name . ' WHERE user_id = %d', $user_id);
+  $row = $wpdb->get_row($sql);
+
+  $height = false;
+
+  if (!is_null($row) && $row->height != 0 && !is_null($row->height)) {
+    $height = $row->height;
+	ws_ls_set_cache($cache_key, $height);
+  }
+
+  return $height;
+}
+function ws_ls_set_user_height($height, $user_id = false)
+{
+  global $wpdb;
+
+  if(false == $user_id){
+    $user_id = get_current_user_id();
+  }
+
+  // If not a valid height clear value
+  if(!is_numeric($height) || $height < 142 || $height > 201) {
+    $height = 0;
+  }
+
+  $table_name = $wpdb->prefix . WE_LS_USER_PREFERENCES_TABLENAME;
+
+  // Build array of fields to pass to DB
+  $db_fields['user_id'] = $user_id;
+  $db_fields['height'] = $height;
+  $db_fields['settings'] = json_encode(ws_ls_get_user_preferences($user_id, false));
+
+  // Set data types
+  $db_field_types = array('%d','%d','%s');
+
+  // Update or insert
+  $result = $wpdb->replace(
+                            $table_name,
+                            $db_fields,
+                            $db_field_types
+                          );
+
+  $result = ($result === false) ? false : true;
+
+  // Tidy up cache
+  ws_ls_delete_cache_for_given_user($user_id);
+  return $result;
 }

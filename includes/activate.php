@@ -14,14 +14,14 @@
 		$charset_collate = $wpdb->get_charset_collate();
 
 		$sql = "CREATE TABLE $table_name (
-		  id mediumint(9) NOT NULL AUTO_INCREMENT,
-		  weight_date datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
-		  weight_user_id integer NOT NULL,
-		  weight_weight float NOT NULL,
-		  weight_stones float NOT NULL,
-		  weight_pounds float NOT NULL,
-		  weight_only_pounds float NOT NULL,
-		  weight_notes text null,
+			id mediumint(9) NOT NULL AUTO_INCREMENT,
+			weight_date datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+			weight_user_id integer NOT NULL,
+			weight_weight float NOT NULL,
+			weight_stones float NOT NULL,
+			weight_pounds float NOT NULL,
+			weight_only_pounds float NOT NULL,
+			weight_notes text null,
 			bust_chest float NULL,
 			waist float NULL,
 			navel float NULL,
