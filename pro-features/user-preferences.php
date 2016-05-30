@@ -9,22 +9,22 @@ function ws_ls_user_preferences_form()
   	<input type="hidden" name="ws-ls-user-pref" value="true" />
 	<input type="hidden" name="ws-ls-user-pref-redirect" value="' . get_the_ID() . '" />';
 
-	// Add height
-	$html_output .= '
-	<label>' . __('Your height:', WE_LS_SLUG) . '</label>
-	<select id="we-ls-height" name="we-ls-height"  tabindex="' . ws_ls_get_next_tab_index() . '">';
-	$heights = ws_ls_heights();
-	$existing_height = 188;
-ws_ls_set_user_height(152);
-var_dump(ws_ls_get_user_height());
+	// If BMI enabled, record allow height to be soecified
+	if(WE_LS_DISPLAY_BMI_IN_TABLES) {
 
-	foreach ($heights as $key => $value) {
-		$html_output .= sprintf('<option value="%s" %s>%s</option>', $key, selected($key, $existing_height, false), $value);
+		$html_output .= '
+		<label>' . __('Your height:', WE_LS_SLUG) . '</label>
+		<select id="we-ls-height" name="we-ls-height"  tabindex="' . ws_ls_get_next_tab_index() . '">';
+		$heights = ws_ls_heights();
+		$existing_height = ws_ls_get_user_height();
+
+		foreach ($heights as $key => $value) {
+			$html_output .= sprintf('<option value="%s" %s>%s</option>', $key, selected($key, $existing_height, false), $value);
+		}
+
+		$html_output .= '</select>';
+
 	}
-
-	$html_output .= '</select>';
-
-	ws_ls_measurement_field('we-ls-height', 'Your height (' . ws_ls_get_config('WE_LS_MEASUREMENTS_UNIT') . ')', '');
 
   	$html_output .= '
 	<label>' . __('Which unit would you like to record your weight in:', WE_LS_SLUG) . '</label>

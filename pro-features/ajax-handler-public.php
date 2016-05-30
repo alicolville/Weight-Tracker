@@ -6,7 +6,7 @@ function ws_ls_save_preferences_callback()
 {
   	$ajax_response = 0;
 
-  	check_ajax_referer( 'ws-ls-nonce', 'security' ); //TODO: Add back in!
+	check_ajax_referer( 'ws-ls-nonce', 'security' ); //TODO: Add back in!
 
   	// List of form fields / globals we want to store for the user
   	$keys_to_save = array('WE_LS_DATA_UNITS', 'WE_LS_US_DATE');
@@ -32,7 +32,15 @@ function ws_ls_save_preferences_callback()
     	$user_preferences['WE_LS_IMPERIAL_WEIGHTS'] = false;
   	}
 
-  	if(true == ws_ls_set_user_preferences($user_preferences, ws_ls_ajax_post_value('user-id'))){
+	// Save Height?
+	if(WE_LS_DISPLAY_BMI_IN_TABLES) {
+		$height = false;
+		if(!is_null(ws_ls_ajax_post_value('we-ls-height'))) {
+			$height = intval(ws_ls_ajax_post_value('we-ls-height'));
+		}
+	}
+
+  	if(true == ws_ls_set_user_preferences($user_preferences, ws_ls_ajax_post_value('user-id'), $height)){
     	$ajax_response = 1;
   	}
   	echo $ajax_response;

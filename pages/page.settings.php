@@ -115,6 +115,17 @@ function ws_ls_settings_page() {
 															<p><?php echo __('If enabled, Decimal weight entries will be allowed in Kg or Pounds mode.', WE_LS_SLUG)?></p>
 														</td>
 													</tr>
+													<tr class="<?php echo $disable_if_not_pro_class; ?>">
+														<th scope="row"><?php echo __( 'Display BMI in tables?' , WE_LS_SLUG); ?></th>
+														<td>
+															<select id="ws-ls-display-bmi-in-tables" name="ws-ls-display-bmi-in-tables">
+																<option value="yes" <?php selected( get_option('ws-ls-display-bmi-in-tables'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+																<option value="no" <?php selected( get_option('ws-ls-display-bmi-in-tables'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+
+															</select>
+															<p><?php echo __('If enabled, BMI values will be displayed alongside weight entries in data tables.', WE_LS_SLUG)?></p>
+														</td>
+													</tr>
 													<tr>
 														<th scope="row"><?php echo __( 'Disable plugin CSS?' , WE_LS_SLUG); ?></th>
 														<td>
@@ -125,6 +136,7 @@ function ws_ls_settings_page() {
 															<p><?php echo __('If you wish to style the forms in your own way, you can use this option to disable WLT\'s style sheets.', WE_LS_SLUG)?></p>
 														</td>
 													</tr>
+
 											</table>
 										</div>
 										<div>
@@ -400,6 +412,9 @@ function ws_ls_register_settings()
         register_setting( 'we-ls-options-group', 'ws-ls-measurement-units' );
         register_setting( 'we-ls-options-group', 'ws-ls-measurement' );
         register_setting( 'we-ls-options-group', 'ws-ls-measurements-mandatory' );
+
+		// BMI
+		register_setting( 'we-ls-options-group', 'ws-ls-display-bmi-in-tables' );
 
     }
 

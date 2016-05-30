@@ -51,7 +51,8 @@
 		'WE_LS_CHART_HEIGHT' => 250,
 		'WE_LS_CHART_BEZIER_CURVE' => true,
 		'WE_LS_CHART_POINT_SIZE' => 3,
-		'WE_LS_CHART_SHOW_GRID_LINES' => true
+		'WE_LS_CHART_SHOW_GRID_LINES' => true,
+		'WE_LS_DISPLAY_BMI_IN_TABLES' => false,
 	);
 
     // -----------------------------------------------------------------------------------
@@ -61,12 +62,12 @@
     // Supported measurements:
     // Bust/Chest, Waist, Navel, Hips, Buttocks, Right and Left Thighs, Right and Left Biceps, Calves and Height
     $globals['WE_LS_MEASUREMENTS_ENABLED'] = false;
-		$globals['WE_LS_MEASUREMENTS_UNIT'] = (false == get_option('ws-ls-measurement-units')) ? 'cm' : get_option('ws-ls-measurement-units');
-		$globals['WE_LS_MEASUREMENTS_MANDATORY'] = (false == get_option('ws-ls-measurements-mandatory') || 'no' == get_option('ws-ls-measurements-mandatory')) ? false : true;
+	$globals['WE_LS_MEASUREMENTS_UNIT'] = (false == get_option('ws-ls-measurement-units')) ? 'cm' : get_option('ws-ls-measurement-units');
+	$globals['WE_LS_MEASUREMENTS_MANDATORY'] = (false == get_option('ws-ls-measurements-mandatory') || 'no' == get_option('ws-ls-measurements-mandatory')) ? false : true;
 
     if (WS_LS_IS_PRO && ('yes' == get_option('ws-ls-allow-measurements'))) {
-        $globals['WE_LS_MEASUREMENTS_ENABLED'] = true;
-		}
+    	$globals['WE_LS_MEASUREMENTS_ENABLED'] = true;
+	}
 
     $supported_measurements = array(
         'left_bicep' => array('title' => __('Bicep - Left', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#b00125'),
@@ -171,6 +172,12 @@
 	// -----------------------------------------------------------------------------------
 	if ('yes' == get_option('ws-ls-disable-css')) {
 			$globals['WE_LS_CSS_ENABLED'] = false;
+	}
+	// -----------------------------------------------------------------------------------
+	// Display BMI in tables?
+	// -----------------------------------------------------------------------------------
+	if (WS_LS_IS_PRO && ('yes' == get_option('ws-ls-display-bmi-in-tables') || false == get_option('ws-ls-display-bmi-in-tables'))) {
+		$globals['WE_LS_DISPLAY_BMI_IN_TABLES'] = true;
 	}
 	// -----------------------------------------------------------------------------------
 	// Line Colours

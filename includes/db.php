@@ -303,25 +303,36 @@ function ws_does_target_weight_exist($user_id)
 
   return false;
 }
-function ws_ls_set_user_preferences($settings, $user_id = false)
+function ws_ls_set_user_preferences($settings, $user_id = false, $height = false)
 {
   global $wpdb;
 
-  if(false == $user_id){
-    $user_id = get_current_user_id();
-  }
+	  if(false == $user_id){
+	    $user_id = get_current_user_id();
+	  }
 
-  // If not an array passed in blank Settings
-  if(!is_array($settings)) {
-    $settings = array();
-  }
+	  // If not an array passed in blank Settings
+	  if(!is_array($settings)) {
+	    $settings = array();
+	  }
 
-  $table_name = $wpdb->prefix . WE_LS_USER_PREFERENCES_TABLENAME;
+	$table_name = $wpdb->prefix . WE_LS_USER_PREFERENCES_TABLENAME;
 
-  // Build array of fields to pass to DB
-  $db_fields['user_id'] = $user_id;
-  $db_fields['settings'] = json_encode($settings);
-  $db_fields['height'] = ws_ls_get_user_height($user_id, false);
+	// Build array of fields to pass to DB
+	$db_fields['user_id'] = $user_id;
+	$db_fields['settings'] = json_encode($settings);
+
+	// Save Height, if not specified look up.
+	if(WE_LS_DISPLAY_BMI_IN_TABLES) {
+		if (false !== $height) {
+			$height = ws_ls_validate_height($height);
+		} else {
+			$height = ws_ls_get_user_height($user_id, false);
+		}
+	}
+
+
+  $db_fields['height'] = $height;
 
   // Set data types
   $db_field_types = array('%d','%s','%d');
@@ -408,6 +419,14 @@ function ws_ls_get_user_height($user_id = false, $use_cache = true)
 
   return $height;
 }
+function ws_ls_validate_height($height) {
+	 // If not a valid height clear value
+	 if(!is_numeric($height) || $height < 142 || $height > 201) {
+	   $height = 0;
+	 }
+	 return $height;
+}
+
 function ws_ls_set_user_height($height, $user_id = false)
 {
   global $wpdb;
@@ -417,9 +436,7 @@ function ws_ls_set_user_height($height, $user_id = false)
   }
 
   // If not a valid height clear value
-  if(!is_numeric($height) || $height < 142 || $height > 201) {
-    $height = 0;
-  }
+  $height = ws_ls_validate_height($height);
 
   $table_name = $wpdb->prefix . WE_LS_USER_PREFERENCES_TABLENAME;
 
