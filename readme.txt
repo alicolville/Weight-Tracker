@@ -18,6 +18,10 @@ Working on:
 
 - Displaying BMI in data tables. Settings / User preference option done.
 
+To Do:
+
+- Edit weight entries interface
+
 
 ***************************** DELETE ********************************************
 ***************************** DELETE ********************************************
