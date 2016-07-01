@@ -15,7 +15,9 @@
 
   */
 
-  define('WS_LS_I_DONT_WANT_TO_PAY_A_THING', false); // Don't be that person!
+  	define('WS_LS_I_DONT_WANT_TO_PAY_A_THING', false); // Don't be that person!
+
+	define('WS_LS_DEV_NON_PRO', false);
 
   // ------------------------------------------------------------------------------------------------------------
   // Leave below. Just break above!
@@ -41,6 +43,11 @@
   function ws_ls_has_a_valid_license()
   {
     $valid_license = get_option(WS_LS_LICENSE_VALID);
+
+	// In Dev mode?
+	if (true == WS_LS_DEV_NON_PRO) {
+		return false;
+	}
 
     // If we have a tight ass
     if(true == WS_LS_I_DONT_WANT_TO_PAY_A_THING) {

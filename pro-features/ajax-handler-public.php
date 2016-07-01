@@ -52,7 +52,7 @@ function ws_ls_delete_weight_entry_callback()
 {
     $ajax_response = 0;
 
-  check_ajax_referer( 'ws-ls-nonce', 'security' ); //TODO: Add back in!
+  check_ajax_referer( 'ws-ls-nonce', 'security' );
 
   $user_id = ws_ls_ajax_post_value('user-id');
   $row_id = ws_ls_ajax_post_value('row-id');
@@ -69,7 +69,7 @@ function ws_ls_get_entry_callback()
 {
   $ajax_response = 0;
 
-  check_ajax_referer( 'ws-ls-nonce', 'security' ); //TODO: Add back in!
+  check_ajax_referer( 'ws-ls-nonce', 'security' );
 
   $user_id = ws_ls_ajax_post_value('user-id');
   $row_id = ws_ls_ajax_post_value('row-id');

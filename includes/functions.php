@@ -38,24 +38,23 @@ function ws_ls_weight_object($user_id, $kg, $pounds, $stones, $pounds_only, $not
     // If enabled, detect which weight fields need to be calculated and do it
     if ($detect_and_convert_missing_values)
     {
-      switch (ws_ls_get_config('WE_LS_DATA_UNITS')) {
-    			case 'pounds_only':
-
-        			$weight['kg'] = ws_ls_pounds_to_kg($weight['only_pounds']);
-              $conversion = ws_ls_pounds_to_stone_pounds($weight['only_pounds']);
-              $weight['stones'] = $conversion['stones'];
-              $weight['pounds'] = $conversion['pounds'];
-            break;
-    			case 'kg':
-    				  $weight['only_pounds'] = ws_ls_to_lb($weight['kg']);
-              $conversion = ws_ls_to_stone_pounds($weight['kg']);
-              $weight['stones'] = $conversion['stones'];
-              $weight['pounds'] = $conversion['pounds'];
-    				break;
-    			default:
-    					$weight['kg'] = ws_ls_to_kg($weight['stones'], $weight['pounds']);
-              $weight['only_pounds'] = ws_ls_stones_pounds_to_pounds_only($weight['stones'], $weight['pounds']);
-    				break;
+		switch (ws_ls_get_config('WE_LS_DATA_UNITS')) {
+    		case 'pounds_only':
+    			$weight['kg'] = ws_ls_pounds_to_kg($weight['only_pounds']);
+            	$conversion = ws_ls_pounds_to_stone_pounds($weight['only_pounds']);
+	            $weight['stones'] = $conversion['stones'];
+            	$weight['pounds'] = $conversion['pounds'];
+            	break;
+    		case 'kg':
+    			$weight['only_pounds'] = ws_ls_to_lb($weight['kg']);
+            	$conversion = ws_ls_to_stone_pounds($weight['kg']);
+            	$weight['stones'] = $conversion['stones'];
+            	$weight['pounds'] = $conversion['pounds'];
+    			break;
+    		default:
+    			$weight['kg'] = ws_ls_to_kg($weight['stones'], $weight['pounds']);
+              	$weight['only_pounds'] = ws_ls_stones_pounds_to_pounds_only($weight['stones'], $weight['pounds']);
+    			break;
     	}
     }
 
@@ -98,19 +97,25 @@ function ws_ls_weight_object($user_id, $kg, $pounds, $stones, $pounds_only, $not
     // if($user_info) {
     //   $weight['user_nicename'] = $user_info->user_nicename;
     // }
-
-	if (WE_LS_MEASUREMENTS_ENABLED && is_array($weight['measurements']) && !empty($weight['measurements'])) {
-		foreach ($weight['measurements'] as $key => $value) {
-			// Strip field prefix
-			if(strpos($key, 'ws-ls-') !== false) {
-				$new_key = str_replace('ws-ls-', '', $key);
-				$weight['measurements'][$new_key] = $weight['measurements'][$key];
-				unset($weight['measurements'][$key]);
-			}
-		}
-	}
-
   }
+
+
+  if (WE_LS_MEASUREMENTS_ENABLED && is_array($weight['measurements']) && !empty($weight['measurements'])) {
+
+	  foreach ($weight['measurements'] as $key => $value) {
+
+		  // Prep field!
+		  $weight['measurements'][$key] = ws_ls_prep_measurement($weight['measurements'][$key]);
+
+		  // Strip field prefix
+		  if(strpos($key, 'ws-ls-') !== false) {
+			  $new_key = str_replace('ws-ls-', '', $key);
+			  $weight['measurements'][$new_key] = $weight['measurements'][$key];
+			  unset($weight['measurements'][$key]);
+		  }
+	  }
+  }
+
   return $weight;
 }
 
@@ -355,13 +360,14 @@ function ws_ls_round_weights($weight)
   return $weight;
 }
 
-function ws_ls_get_config($key)
+function ws_ls_get_config($key, $user_id = false)
 {
+
   // If user preferences are enabled, then see if they specified
-  if (WE_LS_ALLOW_USER_PREFERENCES && !is_admin())  {
+  if (WE_LS_ALLOW_USER_PREFERENCES && (!is_admin() || $user_id != false))  {
 
     // Look to see if the user had a preference, if not, default to admin choice
-    $user_preference = ws_ls_get_user_preference($key);
+    $user_preference = ws_ls_get_user_preference($key, $user_id);
 
     if(is_null($user_preference)) {
       return constant($key);

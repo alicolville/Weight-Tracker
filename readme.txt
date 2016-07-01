@@ -16,11 +16,13 @@ An easy to use plugin that allows a user to keep track of their weight history i
 
 Working on:
 
-- Displaying BMI in data tables. Settings / User preference option done.
+- Switching in charts
 
-To Do:
 
-- Edit weight entries interface
+DO:
+
+Search for all TODOS
+Search for die and var_dump
 
 
 ***************************** DELETE ********************************************
@@ -156,12 +158,14 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 
 **Pro Changes:**
 
-* Support for measurements added!
+* Support for measurements added - can now add and edit measurements for each entry!
 * Measurements for "Bicep - Left", "Bicep - Right", "Calf - Left", "Bust / Chest", "Buttocks", "Hips", "Navel", "Thigh - Left", "Thigh - Right" and "Waist".
 * Height can also be specified on the user preferences page.
+* If height is specified the BMI value for the given height / weight will be displayed.
 * New Shortcodes:
   [weight-loss-tracker-most-recent-bmi] - Displays the user's BMI for most recent weight given. The argument "display" determines what is rendered: 'index' - Actual BMI value. 'label' - BMI label for given value. 'both' - Label and BMI value in brackets
 * Upgraded jQuery Datatables library to 1.10.12
+* Upgraded Chart.js to version 2! (1.0.2 to 2.1.6)
 
 **Bug fixes:**
 

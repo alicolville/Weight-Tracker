@@ -2,6 +2,20 @@
 
 defined('ABSPATH') or die("Jog on!");
 
+function ws_ls_get_bmi_for_table($cm, $kg) {
+
+	if ($cm) {
+		$bmi = ws_ls_calculate_bmi($cm, $kg);
+
+		if($bmi) {
+			return ws_ls_calculate_bmi_label($bmi);
+		}
+	} else {
+		return 'Add Height';
+	}
+	return '';
+}
+
 function ws_ls_calculate_bmi($cm, $kg) {
 
 	$bmi = false;
@@ -16,6 +30,8 @@ function ws_ls_calculate_bmi($cm, $kg) {
 	return $bmi;
 }
 
+// $bmi = ws_ls_calculate_bmi(150, 66);
+// $label = ws_ls_calculate_bmi_label($bmi);
 function ws_ls_calculate_bmi_label($bmi) {
 
 	if(is_numeric($bmi)) {
@@ -40,7 +56,3 @@ function ws_ls_calculate_bmi_label($bmi) {
 
 	return 'Err';
 }
-
-
-// $bmi = ws_ls_calculate_bmi(150, 66);
-// $label = ws_ls_calculate_bmi_label($bmi);

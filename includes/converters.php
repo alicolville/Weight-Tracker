@@ -1,8 +1,15 @@
 <?php
 defined('ABSPATH') or die("Jog on!");
 
+function ws_ls_convert_to_inches($inches = 0) {
+
+	if(is_numeric($inches) && $inches > 0) {
+		return $inches / 2.54;
+	}
+	return 0;
+}
 function ws_ls_convert_to_cm($feet, $inches = 0) {
-    $inches = ($feet * 12) + $inches;
+	$inches = ($feet * 12) + $inches;
     return round($inches / 0.393701, 2);
 }
 function ws_ls_stones_pounds_to_pounds_only($stones, $pounds)

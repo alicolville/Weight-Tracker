@@ -46,7 +46,7 @@ function ws_ls_get_weights($user_id, $limit = 100, $selected_week_number = -1, $
 
     // Return cache if found!
     if ($cache && !empty($cache[$cache_sub_key]))   {
-        return $cache[$cache_sub_key];
+	 	return $cache[$cache_sub_key];
     }
     // No cache? hit the DB
     else {
@@ -62,8 +62,12 @@ function ws_ls_get_weights($user_id, $limit = 100, $selected_week_number = -1, $
         }
       }
 
+	  // Fetch measurement columns if enabled!
+	  $measurement_columns = ws_ls_get_keys_for_active_measurement_fields('', true);
+	  $measurement_columns_sql = (!empty($measurement_columns)) ? ',' . implode(',', $measurement_columns) : '';
+
       $table_name = $wpdb->prefix . WE_LS_TABLENAME;
-      $sql =  $wpdb->prepare('SELECT id, weight_date, weight_weight, weight_stones, weight_pounds, weight_only_pounds, weight_notes FROM ' . $table_name . ' where weight_user_id = %d ' . $additional_sql. ' order by weight_date ' . $sort_order . ' limit 0, %d', $user_id,  $limit);
+	  $sql =  $wpdb->prepare('SELECT id, weight_date, weight_weight, weight_stones, weight_pounds, weight_only_pounds, weight_notes' . $measurement_columns_sql . ' FROM ' . $table_name . ' where weight_user_id = %d ' . $additional_sql. ' order by weight_date ' . $sort_order . ' limit 0, %d', $user_id,  $limit);
       $rows = $wpdb->get_results( $sql );
 
       // If data found in DB then save to cache and return
@@ -72,6 +76,17 @@ function ws_ls_get_weights($user_id, $limit = 100, $selected_week_number = -1, $
         $weight_data = array();
 
         foreach ($rows as $raw_weight_data) {
+
+			$measurements = false;
+
+			// Build weight array
+			if(WE_LS_MEASUREMENTS_ENABLED && $measurement_columns && !empty($measurement_columns)) {
+				$measurements = array();
+				foreach ($measurement_columns as $key) {
+					$measurements[$key] = $raw_weight_data->{$key};
+				}
+			}
+
           array_push($weight_data, ws_ls_weight_object($user_id,
                                                         $raw_weight_data->weight_weight,
                                                         $raw_weight_data->weight_pounds,
@@ -80,7 +95,9 @@ function ws_ls_get_weights($user_id, $limit = 100, $selected_week_number = -1, $
                                                         $raw_weight_data->weight_notes,
                                                         $raw_weight_data->weight_date,
                                                         false,
-                                                        $raw_weight_data->id
+                                                        $raw_weight_data->id,
+														'',
+														$measurements
                                                       ));
         }
 
@@ -102,6 +119,17 @@ function ws_ls_get_weight($user_id, $row_id)
 
     if (!is_null($row) ) {
 
+		$measurement_columns = ws_ls_get_keys_for_active_measurement_fields('', true);
+		$measurements = false;
+
+		// Build weight array
+		if(WE_LS_MEASUREMENTS_ENABLED && $measurement_columns && !empty($measurement_columns)) {
+			$measurements = array();
+			foreach ($measurement_columns as $key) {
+				$measurements[$key] = ws_ls_prep_measurement_for_display($row->{$key}, $user_id);
+			}
+		}
+
         return ws_ls_weight_object($user_id,
                                     $row->weight_weight,
                                     $row->weight_pounds,
@@ -110,7 +138,9 @@ function ws_ls_get_weight($user_id, $row_id)
                                     $row->weight_notes,
                                     $row->weight_date,
                                     false,
-                                    $row->id
+                                    $row->id,
+									'',
+									$measurements
                                   );
     }
 

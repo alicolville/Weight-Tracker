@@ -13,14 +13,7 @@ jQuery( window ).ready(function ($) {
     $('.ws-ls-advanced-data-table').DataTable( {
             responsive: true,
             "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-            "columns": [
-                null,
-                { "aDataSort": [4,0], "aTargets" : [1] },
-                null,
-                { "bSortable": false },
-                { "bSortable": true, "bSearchable": false, "bVisible": false },
-                { "bSortable": false, "bSearchable": false}
-            ]
+        	'columnDefs': ws_ls_config_advanced_datatables['columns']
         });
    }
 
@@ -79,6 +72,31 @@ jQuery( window ).ready(function ($) {
       console.log('Error deleting entry :(', data, response);
     }
   }
+    $('.ws-ls-clear-target').click(function( event ) {
+      event.preventDefault();
+
+      if(!confirm(ws_ls_config['clear-target'])){
+          return;
+      }
+
+      $post_data = {};
+      $post_data['action'] = 'ws_ls_clear_target';
+      $post_data['security'] = ws_ls_config['ajax-security-nonce'];
+      $post_data['user-id'] = ws_ls_config['user-id'];
+
+      ws_ls_post_data($post_data, ws_ls_clear_target_callback);
+  });
+
+  function ws_ls_clear_target_callback(data, response)
+  {
+    if (response == 1) {
+      ws_ls_show_you_need_to_refresh_messages();
+    }
+    else
+    {
+      console.log('Error clearing target :(', data, response);
+    }
+  }
 
   function ws_ls_edit_row_callback(data, response)
   {
@@ -135,6 +153,11 @@ jQuery( document ).ready(function ($) {
 
     $default_tab = 'tab1';
 
+    var wsLSTabsReady = function(event, item) {
+        $('#ws-ls-tabs-loading').addClass('ws-ls-hide');
+        $('#' + item.id).attr('style', '');
+    };
+
     $tabs_global = $("#ws-ls-tabs").zozoTabs({
         rounded: false,
          multiline: true,
@@ -146,7 +169,8 @@ jQuery( document ).ready(function ($) {
              easing: "easeInOutCirc",
              type: "jquery"
          },
-         defaultTab: $default_tab
+         defaultTab: $default_tab,
+        ready: wsLSTabsReady
     });
 
   }
@@ -220,17 +244,17 @@ jQuery( document ).ready(function ($) {
 
     // Add form validation
     $( "#" + $form_id ).validate({
-      errorClass: "ws-ls-invalid",
-      validClass: "ws-ls-valid",
-      //focusCleanup: true,
       errorContainer: "#" + $form_id + " .ws-ls-error-summary",
       errorLabelContainer: "#" + $form_id + " .ws-ls-error-summary ul",
       wrapper: "li",
+      errorClass: "ws-ls-invalid",
+      validClass: "ws-ls-valid",
       messages: {
           'we-ls-date': ws_ls_config['validation-we-ls-date'],
           'we-ls-weight-pounds': ws_ls_config['validation-we-ls-weight-pounds'],
           'we-ls-weight-kg': ws_ls_config['validation-we-ls-weight-kg'],
-          'we-ls-weight-stones': ws_ls_config['validation-we-ls-weight-stones']
+          'we-ls-weight-stones': ws_ls_config['validation-we-ls-weight-stones'],
+          'we-ls-measurements': ws_ls_config['validation-we-ls-measurements']
       },
       submitHandler: function(form) {
           form.submit();
@@ -257,6 +281,19 @@ jQuery( document ).ready(function ($) {
       }
 
     }
+
+    // Measurement form
+    if ('true' == ws_ls_config['measurements-enabled'] && true == $("#" + $form_id).data('measurements-enabled')) {
+      $( "#" + $form_id + " .ws-ls-measurement").rules( "add", {
+        number: true,
+        range: [1, 1000],
+        messages: {
+          number: ws_ls_config['validation-we-ls-measurements'],
+          range: ws_ls_config['validation-we-ls-measurements']
+        }
+      });
+    }
+
     // Set up numeric fields to validate
     if('imperial-pounds' == $weight_unit)
     {

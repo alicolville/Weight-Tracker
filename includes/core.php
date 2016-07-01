@@ -82,6 +82,8 @@
 											 'pointHighlightStroke' => 'rgba(220,220,220,1)'
 								            );
 		$graph_data['datasets'][0]['data'] = array();
+		$graph_data['datasets'][0]['yAxisID'] = 0;
+
 
 		$target_weight = ws_ls_get_user_target($chart_config['user-id']);
 
@@ -121,7 +123,7 @@
 
 				$graph_line_options = array(
 			  	'scaleBeginAtZero' => true,
-					'scaleShowGridLines' => (($chart_config['show-gridlines']) ? 'true' : ''),
+					'display' => (($chart_config['show-gridlines']) ? 'true' : ''),
 					'scaleGridLineColor:' => 'rgba(0,0,0,.05)',
 					'scaleGridLineWidth:' => 1,
 					'scaleShowHorizontalLines' => true,
@@ -138,26 +140,35 @@
 		elseif ('line' == $chart_config['type']) {
 
 			$graph_line_options = array(
-		  	'scaleShowGridLines' => (($chart_config['show-gridlines']) ? 'true' : ''),
-				'scaleGridLineColor' => 'rgba(0,0,0,.05)',
-				'scaleGridLineWidth' => 1,
-				'bezierCurve' => (($chart_config['bezier'] == true) ? 'true' : ''),
-				'bezierCurveTension' => 0.4,
-				'pointDot' =>  ((WE_LS_ALLOW_POINTS) ? 'true' : ''),
-				'pointDotRadius' => WE_LS_CHART_POINT_SIZE,
-				'pointDotStrokeWidth' => 1,
-				'pointHitDetectionRadius' => 5,
-				'datasetStroke' => true,
-				'datasetStrokeWidth' => 2,
-				'datasetFill' => true,
-				'responsive' => true,
-				'multiTooltipTemplate' => '<%= datasetLabel %> - <%= value %> ' . $y_axis_unit . '',
-				'scaleLabel' => '&nbsp;<%= value%>',
-				'graphTitle' => '',
-				'graphTitleFontFamily' => 'Arial',
-				'graphTitleFontSize' => 24,
-				'graphTitleFontStyle' => 'bold',
-				'graphTitleFontColor' => '#666'
+				// 'gridLines' => array('display' => 'false')
+
+				'yAxes' => array(
+					array('position' => 'left'),
+					array('position' => 'right')
+				)
+
+
+
+				// 		'display' => (($chart_config['show-gridlines']) ? 'true' : 'false'),
+				// 'scaleGridLineColor' => 'rgba(0,0,0,.05)',
+				// 'scaleGridLineWidth' => 1,
+				// 'bezierCurve' => (($chart_config['bezier'] == true) ? 'true' : ''),
+				// 'bezierCurveTension' => 0.4,
+				// 'pointDot' =>  ((WE_LS_ALLOW_POINTS) ? 'true' : ''),
+				// 'pointDotRadius' => WE_LS_CHART_POINT_SIZE,
+				// 'pointDotStrokeWidth' => 1,
+				// 'pointHitDetectionRadius' => 5,
+				// 'datasetStroke' => true,
+				// 'datasetStrokeWidth' => 2,
+				// 'datasetFill' => true,
+				// 'responsive' => true,
+				// 'multiTooltipTemplate' => '<%= datasetLabel %> - <%= value %> ' . $y_axis_unit . '',
+				// 'scaleLabel' => '&nbsp;<%= value%>',
+				// 'graphTitle' => '',
+				// 'graphTitleFontFamily' => 'Arial',
+				// 'graphTitleFontSize' => 24,
+				// 'graphTitleFontStyle' => 'bold',
+				// 'graphTitleFontColor' => '#666'
 			);
 
 		}
@@ -197,7 +208,7 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
     }
 
     $form_id = 'ws_ls_form_' . rand(10,1000) . '_' . rand(10,1000);
-		$form_class = ' ws_ls_display_form';
+	$form_class = ' ws_ls_display_form';
 
 	// Set title / validator
     if (!$hide_titles) {
@@ -331,16 +342,16 @@ function ws_ls_capture_form_validate_and_save($user_id = false)
 
 	$weight_keys = ws_ls_get_keys_for_active_measurement_fields('ws-ls-');
 
-	// If measurements enabled and PRO add enabled fields to the above list
-	if (WE_LS_MEASUREMENTS_ENABLED) {
-		$allowed_post_keys = array_merge($allowed_post_keys, $weight_keys);
-	}
-
 	// Strip slashes from post object
 	$form_values = stripslashes_deep($_POST);
 
 	// Target form?
 	$is_target_form = ('true' == $form_values['ws_ls_is_target']) ? true : false;
+
+	// If measurements enabled and PRO add enabled fields to the above list
+	if (WE_LS_MEASUREMENTS_ENABLED && !$is_target_form) {
+		$allowed_post_keys = array_merge($allowed_post_keys, $weight_keys);
+	}
 
 	// Remove invalid post keys
 	foreach ($form_values as $key => $value) {
@@ -358,7 +369,7 @@ function ws_ls_capture_form_validate_and_save($user_id = false)
 	$measurements = [];
 
 	// Build measurement fields up and convert to CM if needed
-	if (WE_LS_MEASUREMENTS_ENABLED && is_array($weight_keys) && !empty($weight_keys)) {
+	if (WE_LS_MEASUREMENTS_ENABLED && is_array($weight_keys) && !empty($weight_keys) && !$is_target_form) {
 		foreach ($weight_keys as $key) {
 	 		// Convert to CM?
 		 	if('cm' != ws_ls_get_config('WE_LS_MEASUREMENTS_UNIT')) {
