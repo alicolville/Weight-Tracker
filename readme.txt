@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight, graph, track, stones, kg, table, data, plot, target, history, pounds, responsive, chart
 Requires at least: 4.1.0
 Tested up to: 4.5
-Stable tag: 3.5.1
+Stable tag: 3.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -27,6 +27,7 @@ Also supports the following tags:
 	[weightloss_weight_start] - start weight of the logged in member
 	[weightloss_weight_most_recent] - end weight of the logged in member
 	[weightloss_weight_difference_from_target] - difference from target
+	[weightloss_target_weight] - user's target weight (if specified)
 
 = Pro Version =
 
@@ -135,6 +136,10 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 14. Examples of the shortcodes [weightloss_weight_difference], [weightloss_weight_start], [weightloss_weight_most_recent] and [weightloss_weight_difference_from_target]
 
 == Changelog ==
+
+= 3.6 =
+
+ * Added the shortcode [weightloss_target_weight] to display the user's target weight (assuming they have specified one).
 
 = 3.5.1 =
 
