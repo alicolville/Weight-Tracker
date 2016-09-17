@@ -52,7 +52,7 @@
             'hide_login_message_if_needed' => true
 		);
 
-		$measurements_form_enabled = (WE_LS_MEASUREMENTS_ENABLED && ws_ls_any_active_measurement_fields()) ? true : false;
+		$measurements_enabled = (WE_LS_MEASUREMENTS_ENABLED && ws_ls_any_active_measurement_fields()) ? true : false;
 
         // If we are PRO and the developer has specified options then override the default
         if($options && WS_LS_IS_PRO){
@@ -109,22 +109,37 @@
 				$graph_data['datasets'][1]['data'] = array();
 		}
 
+		// ----------------------------------------------------------------------------
+		// Measurements - add measurement sets if enabled!
+		// ----------------------------------------------------------------------------
 
-		// DEV Measurements
+		if($measurements_enabled) {
+			$active_measurement_fields = ws_ls_get_active_measurement_fields();
+			$active_measurment_field_keys = ws_ls_get_keys_for_active_measurement_fields();
+			$measurement_graph_indexes = [];
+			$i = 2;
 
-				$graph_data['datasets'][2] = array( 'label' =>  __('measurements (' . $y_axis_unit . ')', WE_LS_SLUG),
-												    'borderColor' => $chart_config['weight-target-color'],
-													'borderColor' => $chart_config['weight-target-color'],
-													'borderWidth' => $chart_config['width'],
+			foreach ($active_measurement_fields as $key => $data) {
+
+				$graph_data['datasets'][$i] = array( 'label' =>  __( $data['title'] . ' (' . $y_axis_unit . ')', WE_LS_SLUG),
+													'borderColor' => $data['chart_colour'],
+													'borderColor' => $data['chart_colour'],
+													'borderWidth' => $data['width'],
 													'pointRadius' => 3,
 													'fill' => false,
 													'spanGaps' => true,
 													'yAxisID' => 'y-axis-measurements'
 												);
-				$graph_data['datasets'][2]['data'] = array();
+				$graph_data['datasets'][$i]['data'] = array();
 
+				$measurement_graph_indexes[$key] = $i;
+
+				$i++;
+			}
+		}
 
 		foreach ($weight_data as $weight_object) {
+			var_Dump($weight_object);
 			array_push($graph_data['labels'], $weight_object['date-graph']);
 			array_push($graph_data['datasets'][0]['data'], $weight_object['graph_value']);
 
@@ -133,17 +148,30 @@
 				array_push($graph_data['datasets'][1]['data'], $target_weight['graph_value']);
 			}
 
-			// DEV
-		//	array_push($graph_data['datasets'][2]['data'], intval($weight_object['measurements']['left_bicep']));
+			// ----------------------------------------------------------------------------
+			// Add data for all measurements
+			// ----------------------------------------------------------------------------
+			foreach ($active_measurment_field_keys as $key) {
+
+				//$measurement_graph_indexes[$key]
+				if(!is_null($weight_object['measurements'][$key]) && 0 != $weight_object['measurements'][$key]) {
+					array_push($graph_data['datasets'][$measurement_graph_indexes[$key]]['data'], intval($weight_object['measurements'][$key]));
+				}
+			}
+
+
 
 		}
 
-array_push($graph_data['datasets'][2]['data'], 12);
-	array_push($graph_data['datasets'][2]['data'], 23);
-	array_push($graph_data['datasets'][2]['data'], null);
-	array_push($graph_data['datasets'][2]['data'], 99);
-	array_push($graph_data['datasets'][2]['data'], 44);	
-var_dump($graph_data['datasets'][2]['data']);
+// array_push($graph_data['datasets'][2]['data'], 12);
+// 	array_push($graph_data['datasets'][2]['data'], null);
+// 	array_push($graph_data['datasets'][2]['data'], null);
+// 	array_push($graph_data['datasets'][2]['data'], 99);
+// 	array_push($graph_data['datasets'][2]['data'], 44);
+// var_dump($graph_data['datasets'][2]['data']);
+//
+
+
 		// Embed JavaScript data object for this graph into page
 		wp_localize_script( 'jquery-chart-ws-ls', $chart_id . '_data', $graph_data );
 
@@ -176,7 +204,7 @@ var_dump($graph_data['datasets'][2]['data']);
 			);
 
 			// Add measurement Axis?
-			if ($measurements_form_enabled) {
+			if ($measurements_enabled) {
 				$graph_line_options['scales']['yAxes'] = array_merge($graph_line_options['scales']['yAxes'], array(array('type' => "linear", "display" => "true", "position" => "right", "id" => "y-axis-measurements", 'gridLines' => array('display' => $chart_config['show-gridlines']))));
 			}
 
