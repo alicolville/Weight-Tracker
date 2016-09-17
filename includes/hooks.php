@@ -56,7 +56,7 @@
 			wp_enqueue_style('jquery-style', plugins_url( '../css/jquery-ui.min.css', __FILE__ ), array(), WE_LS_CURRENT_VERSION);
 
 			// JavaScript files
-			wp_enqueue_script('jquery-chart-ws-ls', 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.min.js', array( 'jquery' ), WE_LS_CURRENT_VERSION);
+			wp_enqueue_script('jquery-chart-ws-ls', 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.min.js', array( 'jquery' ), WE_LS_CURRENT_VERSION);
 			wp_enqueue_script('jquery-validate',plugins_url( '../js/jquery.validate.min.js', __FILE__ ), array('jquery'), WE_LS_CURRENT_VERSION);
 			wp_enqueue_script('jquery-validate-additional',plugins_url( '../js/additional-methods.min.js', __FILE__ ), array('jquery', 'jquery-validate'), WE_LS_CURRENT_VERSION);
 			wp_enqueue_script('jquery-ui-datepicker');
