@@ -316,7 +316,7 @@ function ws_ls_settings_page() {
                                                     <?php
 
                                                     $measurement_settings = ws_ls_get_measurement_settings();
-
+													
                                                         ?>
                                                     <table>
                                                         <?php foreach ($measurement_settings as $key => $body_part) {
