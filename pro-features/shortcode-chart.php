@@ -4,9 +4,12 @@ defined('ABSPATH') or die("Jog on!");
 
 function ws_ls_shortcode_chart($user_defined_arguments)
 {
+
     if(!WS_LS_IS_PRO) {
        return false;
     }
+
+    ws_ls_enqueue_files();
 
     $chart_arguments = shortcode_atts(
         array(
@@ -39,10 +42,10 @@ function ws_ls_shortcode_chart($user_defined_arguments)
     $weight_data = ws_ls_get_weights($chart_arguments['user-id'], $chart_arguments['max-data-points'], -1, 'desc');
 
     // Reverse array so in cron order
-    if (!empty($weight_data)) {
-      $weight_data = array_reverse($weight_data);
-    }
-          
+	if(is_array($weight_data) && !empty($weight_data)) {
+    	$weight_data = array_reverse($weight_data);
+	}
+
     // Render chart
     if ($weight_data){
         return ws_ls_display_chart($weight_data, $chart_arguments);

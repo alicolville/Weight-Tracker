@@ -1,6 +1,22 @@
 <?php
 	defined('ABSPATH') or die('Jog on!');
 
+function ws_ls_weight_target_weight() {
+
+	// If not logged in then return no value
+	if(!is_user_logged_in()) {
+		return '';
+	}
+
+	$target_weight  = ws_ls_get_user_target(get_current_user_id());
+
+	if ($target_weight) {
+		return $target_weight['display'];
+	}
+
+	return '';
+}
+
 function ws_ls_weight_start()
 {
 	// If not logged in then return no value

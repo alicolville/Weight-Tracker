@@ -52,6 +52,16 @@ function ws_ls_enqeue_pro_scripts(){
 	// Setup config for advanced table (e.g. columns etc)
 	wp_localize_script('ws-ls-datatables-responsive', 'ws_ls_config_advanced_datatables', ws_ls_get_advanced_table_config());
 
+	wp_localize_script('ws-ls-datatables-responsive', 'ws_ls_table_locale', ws_ls_advanced_table_locale());
+
+// =======
+//     wp_enqueue_script('ws-ls-datatables-responsive', 'https://cdn.datatables.net/r/dt/dt-1.10.9,r-1.0.7/datatables.min.js', array('jquery'), WE_LS_CURRENT_VERSION);
+//     wp_enqueue_style('ws-ls-datatables-responsive', 'https://cdn.datatables.net/r/dt/dt-1.10.9,r-1.0.7/datatables.min.css', array(), WE_LS_CURRENT_VERSION);
+//     wp_enqueue_script('ws-ls-datatables-moment', '//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js', array('jquery'), WE_LS_CURRENT_VERSION);
+//     wp_enqueue_script('ws-ls-datatables-moment-date', '//cdn.datatables.net/plug-ins/1.10.7/sorting/datetime-moment.js', array('jquery'), WE_LS_CURRENT_VERSION);
+//
+//     wp_localize_script('ws-ls-datatables-responsive', 'ws_ls_table_locale', ws_ls_advanced_table_locale());
+// >>>>>>> 8084878374cfe583b843ed56d32902e1639a218f
   }
 }
 add_action( 'wp_enqueue_scripts', 'ws_ls_enqeue_pro_scripts');
@@ -62,12 +72,20 @@ function ws_ls_admin_enqeue_pro_scripts(){
     wp_enqueue_style('ws-ls-datatables-responsive', '//cdn.datatables.net/responsive/2.1.0/css/responsive.dataTables.min.css', array(), WE_LS_CURRENT_VERSION);
     wp_enqueue_script('ws-ls-datatables-moment', '//cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js', array('jquery'), WE_LS_CURRENT_VERSION);
     wp_enqueue_script('ws-ls-datatables-moment-date', '//cdn.datatables.net/plug-ins/1.10.11/sorting/datetime-moment.js', array('jquery'), WE_LS_CURRENT_VERSION);
+
+    // wp_enqueue_script('ws-ls-datatables-responsive', 'https://cdn.datatables.net/r/dt/dt-1.10.9,r-1.0.7/datatables.min.js', array('jquery'), WE_LS_CURRENT_VERSION);
+    // wp_enqueue_style('ws-ls-datatables-responsive', 'https://cdn.datatables.net/r/dt/dt-1.10.9,r-1.0.7/datatables.min.css', array(), WE_LS_CURRENT_VERSION);
+    // wp_enqueue_script('ws-ls-datatables-moment', '//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js', array('jquery'), WE_LS_CURRENT_VERSION);
+    // wp_enqueue_script('ws-ls-datatables-moment-date', '//cdn.datatables.net/plug-ins/1.10.7/sorting/datetime-moment.js', array('jquery'), WE_LS_CURRENT_VERSION);
+
+    wp_localize_script('ws-ls-datatables-responsive', 'ws_ls_table_locale', ws_ls_advanced_table_locale());
+
 }
 add_action( 'admin_enqueue_scripts', 'ws_ls_admin_enqeue_pro_scripts');
 
 function we_ls_register_widgets()
 {
     register_widget( 'ws_ls_widget_chart' );
-    register_widget( 'ws_ls_widget_form' );
+    register_widget( 'ws_ls_widget_form' );// Add locilzation data for JS
 }
 add_action( 'after_setup_theme', 'we_ls_register_widgets', 20 );

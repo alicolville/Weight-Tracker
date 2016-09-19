@@ -34,6 +34,8 @@ class ws_ls_widget_form extends WP_Widget {
         // User logged in?
         if(is_user_logged_in()) {
 
+						ws_ls_enqueue_files();
+
 						echo $args['before_widget'];
             echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
 
@@ -41,7 +43,7 @@ class ws_ls_widget_form extends WP_Widget {
 
             echo ws_ls_display_weight_form(false, false, false, true, ws_ls_remove_non_numeric($args['widget_id']) + 10000, $force_to_todays_date);
             echo $args['after_widget'];
-        } elseif (isset($instance['not-logged-in-message']) && !empty($instance['not-logged-in-message'])) { 
+        } elseif (isset($instance['not-logged-in-message']) && !empty($instance['not-logged-in-message'])) {
             echo $args['before_widget'];
             echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
             echo '<p>' . $instance['not-logged-in-message'] . '</p>';

@@ -36,6 +36,8 @@ class ws_ls_widget_chart extends WP_Widget {
         // User logged in?
         if(is_user_logged_in())
         {
+						ws_ls_enqueue_files();
+
             $chart_arguments =  array('user-id' => get_current_user_id(),
                                     'max-data-points' => WE_LS_CHART_MAX_POINTS);
 
@@ -53,8 +55,8 @@ class ws_ls_widget_chart extends WP_Widget {
 
             // Reverse array so in cron order
             $weight_data = array_reverse($weight_data);
-            
-			$chart_arguments['height'] = false;
+
+						$chart_arguments['height'] = false;
 
             if ($weight_data) {
                 echo $args['before_widget'];
@@ -68,7 +70,7 @@ class ws_ls_widget_chart extends WP_Widget {
             } else {
                 echo '<!-- WLT Chart: No user data found for given ID -->';
             }
-        } elseif (isset($instance['not-logged-in-message']) && !empty($instance['not-logged-in-message'])) { 
+        } elseif (isset($instance['not-logged-in-message']) && !empty($instance['not-logged-in-message'])) {
             echo $args['before_widget'];
             echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
             echo '<p>' . $instance['not-logged-in-message'] . '</p>';
@@ -90,7 +92,7 @@ class ws_ls_widget_chart extends WP_Widget {
         foreach($this->field_values as $key => $default) {
             $field_values[$key] = !empty($instance[$key]) ? $instance[$key] : $default;
         }
-    
+
         ?>
         <p>Display a chart and / or form for the current user. The widget will be hidden if the user is <strong>not logged in</strong>.</p>
 		<p>

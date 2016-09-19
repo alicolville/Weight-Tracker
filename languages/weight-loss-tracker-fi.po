@@ -1,11 +1,11 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2016-02-14 18:52+0000\n"
-"PO-Revision-Date: 2016-02-14 18:52+0000\n"
-"Last-Translator: Alex\n"
+"POT-Creation-Date: 2016-02-02 18:40+0000\n"
+"PO-Revision-Date: 2016-02-14 18:45+0000\n"
+"Last-Translator: \n"
 "Language-Team: \n"
-"Language: en_GB\n"
+"Language: fi_FI\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -18,33 +18,33 @@ msgstr ""
 
 #: includes/core.php:13 pro-features/advanced-table.php:12
 msgid "Date"
-msgstr "Data"
+msgstr "Päivä"
 
 #: includes/core.php:14 includes/core.php:76 includes/core.php:269
 #: pro-features/advanced-table.php:13
 msgid "Weight"
-msgstr "Greutate"
+msgstr "Paino"
 
 #: includes/core.php:15 includes/core.php:277
 #: pro-features/advanced-table.php:15
 msgid "Notes"
-msgstr "Notițe"
+msgstr "Huomautus"
 
 #: includes/core.php:59 includes/core.php:187
 #: includes/shortcode-weight-loss-tracker.php:12
 msgid "You need to be logged in to record your weight."
-msgstr "Trebuie să fii autentificat ca să îți inregistrezi greutatea."
+msgstr "Sinun pitää kirjautua tallentaaksesi painon"
 
 #: includes/core.php:59 includes/core.php:187
 #: includes/shortcode-weight-loss-tracker.php:12
 msgid "Login now"
-msgstr "Autentificare"
+msgstr "Kirjaudy nyt"
 
 #: includes/core.php:72 includes/functions.php:71 includes/functions.php:79
 #: includes/functions.php:243 includes/functions.php:249
 #: includes/shortcode-various.php:168 includes/shortcode-various.php:172
 msgid "lbs"
-msgstr "lbs"
+msgstr "Pauna"
 
 #: includes/core.php:72 includes/core.php:269 includes/functions.php:75
 #: includes/functions.php:246 includes/shortcode-various.php:177
@@ -54,23 +54,23 @@ msgstr "Kg"
 
 #: includes/core.php:92
 msgid "Target"
-msgstr "Tinta"
+msgstr "Kohde"
 
 #: includes/core.php:169
 msgid "You have modified data. Please refresh page."
-msgstr ""
+msgstr "Olet päivittänyt tietoja. Olehyvä ja päivitä sivu."
 
 #: includes/core.php:204
 msgid "Target Weight"
-msgstr "Greutatea ideala"
+msgstr "Tavoitepaino"
 
 #: includes/core.php:206
 msgid "Add a new weight"
-msgstr "Adaugă greutate"
+msgstr "Lisää uusi paino"
 
 #: includes/core.php:253
 msgid "Your target weight is"
-msgstr "Greutata ta ideala este"
+msgstr "Sinun tavoitteesi on"
 
 #: includes/core.php:261
 msgid "Stones"
@@ -79,51 +79,51 @@ msgstr "Stone"
 #: includes/core.php:262 includes/core.php:265 pages/page.settings.php:90
 #: pro-features/user-preferences.php:15
 msgid "Pounds"
-msgstr "Livre"
+msgstr "Pauna"
 
 #: includes/core.php:282
 msgid "Set Target"
-msgstr "Actualizeaza greutatea ideala"
+msgstr "Aseta tavoitteesi"
 
 #: includes/core.php:282
 msgid "Save Entry"
-msgstr "Salvează"
+msgstr "Tallenna toiminto"
 
 #: includes/core.php:291
 msgid "Clear Target"
-msgstr ""
+msgstr "Posta tavoitteesi"
 
 #: includes/core.php:393
 msgid "Please enter a between 0-14 for pounds"
-msgstr ""
+msgstr "Olehyvä ja aseta 0-14 paunaa"
 
 #: includes/core.php:393
 msgid "Please enter a valid figure for pounds"
-msgstr "Introdu o valoare corecta pentru livre"
+msgstr "Annan kelvollinen luku paunoina"
 
 #: includes/core.php:400
 msgid "Are you sure you wish to clear your target weight?"
-msgstr ""
+msgstr "Oletko varma että haluat poistaa tavoitepainosi"
 
 #: includes/core.php:402
 msgid "Please enter a valid figure for Kg"
-msgstr "Introdu o valoare corecta pentru Kg"
+msgstr "Anna kelvollinen luku kiloina"
 
 #: includes/core.php:403
 msgid "Please enter a valid figure for Stones"
-msgstr "Introdu o valoare corecta pentru Stones"
+msgstr "Anna kelvollinen luku paunoina"
 
 #: includes/core.php:404
 msgid "Please enter a valid date"
-msgstr "Introdu o data valida"
+msgstr "Anna kelvollinen päiväys"
 
 #: includes/core.php:405
 msgid "Please confirm you wish to delete ALL your weight history"
-msgstr ""
+msgstr "Oletko varma että haluat poistaa KAIKKI sinun painohistoriasi"
 
 #: includes/core.php:406
 msgid "Are you sure you wish to delete this entry? If so, press OK."
-msgstr ""
+msgstr "Oletko varma että halua poistaa tämän valinnan? Jos olet, paina OK."
 
 #: includes/functions.php:79 includes/functions.php:249
 msgid "St"
@@ -131,109 +131,110 @@ msgstr "St"
 
 #: includes/functions.php:161
 msgid "The following MySQL tables are missing for this plugin"
-msgstr "Tabelele urmatoare lipsesc din baza de date:"
+msgstr "Seuraavat MySQL taulokot puuttuvat tästä pluginista"
 
 #: includes/functions.php:308
 msgid "View all weeks"
-msgstr "Vezi toate saptamanile"
+msgstr "Näytä kaikki viikot"
 
 #: includes/functions.php:322
 msgid "View Week"
-msgstr "Vezi saptamana"
+msgstr "Näytä viikko"
 
 #: includes/functions.php:322
 msgid "to"
-msgstr "la"
+msgstr "to"
 
 #: includes/hooks.php:8 includes/shortcode-weight-loss-tracker.php:64
 #: pro-features/user-preferences.php:6
 msgid "Settings"
-msgstr "Setari"
+msgstr "Asetukset"
 
 #: includes/hooks.php:11 includes/hooks.php:14
 msgid "Manage User Data"
-msgstr "Administreaza datele utilizatorilor"
+msgstr "Hallitse käyttäjätietoja"
 
 #: includes/hooks.php:12
 msgid "Get Pro Version"
-msgstr "Obtine versiunea PRO"
+msgstr "Hanki Pro versio"
 
 #: includes/hooks.php:17 pages/page.help.php:21
 msgid "Help"
-msgstr ""
+msgstr "Apua"
 
 #: includes/save-data.php:36
 msgid "Saved!"
-msgstr "Salvat!"
+msgstr "Tallennettu"
 
 #: includes/save-data.php:38
 msgid "An error occurred while saving your data!"
-msgstr "A aparut o eroare la salvarea datelor!"
+msgstr "Sattui virhe tallennettaessa tietoja!"
 
 #: includes/save-data.php:41
 msgid "No user specified (hash)"
-msgstr ""
+msgstr "Ei käyttäjää määritetty (hash)"
 
 #: includes/save-data.php:44
 msgid "No user specified"
-msgstr ""
+msgstr "Ei käyttäjää määritetty"
 
 #: includes/shortcode-various.php:172
 msgid "st"
-msgstr "st"
+msgstr ""
 
 #: includes/shortcode-weight-loss-tracker.php:34
 msgid "Your settings have been saved!"
-msgstr ""
+msgstr "Asetuksesi on tallennettu"
 
 #: includes/shortcode-weight-loss-tracker.php:36
 msgid "Your weight history has been deleted!"
-msgstr ""
+msgstr "Painohistoriasi on poistettu!"
 
 #: includes/shortcode-weight-loss-tracker.php:59
 msgid "Overview"
-msgstr "Prezentare generala"
+msgstr "Yleisnäkymä"
 
 #: includes/shortcode-weight-loss-tracker.php:59
 msgid "Chart / Add Weight"
-msgstr "Grafic / Adauga greutate"
+msgstr "TAulukko / Lisää paino"
 
 #: includes/shortcode-weight-loss-tracker.php:60
 msgid "In Detail"
-msgstr "Detalii"
+msgstr "Yksityiskohdat"
 
 #: includes/shortcode-weight-loss-tracker.php:60
 msgid "View all recorded weights"
-msgstr "Vezi toate saptamanile"
+msgstr "Näytä kaikki tallennetut painosi"
 
 #: includes/shortcode-weight-loss-tracker.php:64
 msgid "Choose weight units, date format, etc"
-msgstr ""
+msgstr "Valitse painoyksiköt, päivä asetukset, jne"
 
 #: includes/shortcode-weight-loss-tracker.php:76
 msgid "In a chart"
-msgstr "Graficul greutatii tale:"
+msgstr "Painonseuranta taulukko"
 
 #: includes/shortcode-weight-loss-tracker.php:84
 #: pro-features/widget-chart.php:65
 msgid "A pretty graph shall appear once you have recorded several weights."
-msgstr "Un grafic drăguț va apărea aici după ce introduci câteva înregistrari."
+msgstr "Diagram ilmestyy muutaman tallennetun painon jälkeen"
 
 #: includes/shortcode-weight-loss-tracker.php:111
 msgid "Weight History"
-msgstr "Istoricul Greutătii"
+msgstr "Paino historia"
 
 #: includes/shortcode-weight-loss-tracker.php:123
 msgid "There is no data for this week, please try selecting another:"
-msgstr ""
+msgstr "Ei löydy tietoja tältä viikolta, Ole hyvä ja valitse toinen:"
 
 #: includes/shortcode-weight-loss-tracker.php:129
 msgid "You haven't entered any weight data yet."
-msgstr ""
+msgstr "Et ole asettanut yhtään painoa vielä"
 
 #: pages/page.help.php:23
 msgid "You can find detailed help with this plugin at our Github Wiki:"
 msgstr ""
+"Löydät yksityiskohtaista apua tähän laajennuksen meidän Github Wiki:stä"
 
 #: pages/page.help.php:29
 msgid "Our road map"
@@ -244,99 +245,101 @@ msgid ""
 "Interested in the future development of this plugin? Then have a peek at our "
 "road map:"
 msgstr ""
+"Kiinnostunut meidän pluginin yksityiskohtaisesta suuntelmasta? Kurkista "
+"meidän road mappia:"
 
 #: pages/page.pro.advertise.php:10 pages/page.settings.php:8
 #: pro-features/user-data.php:7
 msgid "You do not have sufficient permissions to access this page."
-msgstr "Nu ai permisiunea sa accesezi aceasta pagina."
+msgstr "Sinulla ei ole tarvittavia oikeuksia tälle sivulle."
 
 #: pages/page.pro.advertise.php:36
 msgid "Get "
-msgstr "Obtine"
+msgstr "Hanki"
 
 #: pages/page.pro.advertise.php:40
 msgid "Get Weight Loss Tracker Pro for"
-msgstr ""
+msgstr "Hanki Weight Loss Tracker Pro"
 
 #: pages/page.pro.advertise.php:40
 msgid " and have the following features listed below."
-msgstr ""
+msgstr "ja seuraavat ominaisuudet listattuna alla."
 
 #: pages/page.pro.advertise.php:42
 msgid "In case you need, your <strong>Site Hash</strong> is"
-msgstr ""
+msgstr "Sinä tarvitset, <strong>Site Hash</strong> "
 
 #: pages/page.pro.advertise.php:43
 msgid "Upgrade now for"
-msgstr ""
+msgstr "Päivitä nyt"
 
 #: pages/page.pro.advertise.php:66
 msgid "Enter License Key"
-msgstr ""
+msgstr "Anna lisenssiavain"
 
 #: pages/page.pro.advertise.php:89
 msgid "Got an existing license key? If so, enter it below"
-msgstr ""
+msgstr "Saatu voimassa olevan lisenssin avain? Jos näin on, kirjoita se alle"
 
 #: pages/page.pro.advertise.php:89
 msgid "In case you need, your <strong>Site Hash</strong>"
-msgstr ""
+msgstr "Sinä tarvitset, <strong>Site Hash</strong> "
 
 #: pages/page.pro.advertise.php:90
 msgid "Enter license key"
-msgstr ""
+msgstr "Kirjoita lisenssiavain"
 
 #: pages/page.pro.advertise.php:92
 msgid "Add License"
-msgstr ""
+msgstr "Lisää lisenssi"
 
 #: pages/page.pro.advertise.php:123
 msgid "Features of Pro version"
-msgstr "Caracteristici in versiunea PRO"
+msgstr "Pro version ominaisuudet"
 
 #: pages/page.pro.advertise.php:127
 msgid "Below is a list of the intended features of the Pro version:"
-msgstr "Aceasta este lista cu caracteristici ale versiunii PRO"
+msgstr "Alla on listattuna Pro version ominaisuudet"
 
 #: pages/page.settings.php:41
 msgid "Rebuild them now"
-msgstr "Reface acum"
+msgstr "uudelleenrakenna ne nyt"
 
 #: pages/page.settings.php:63
 msgid " Settings"
-msgstr "Parametri"
+msgstr "Asetukset"
 
 #: pages/page.settings.php:77
 msgid "General"
-msgstr ""
+msgstr "Yleinen"
 
 #: pages/page.settings.php:77
 msgid "General settings"
-msgstr ""
+msgstr "Yleiset asetukset"
 
 #: pages/page.settings.php:78
 msgid "User Experience"
-msgstr ""
+msgstr "Käyttäjäkokemus"
 
 #: pages/page.settings.php:78
 msgid "Settings that effect the user's overall experience"
-msgstr ""
+msgstr "Asetukset, jotka vaikuttavat käyttäjän kokemukseen"
 
 #: pages/page.settings.php:79
 msgid "Chart"
-msgstr ""
+msgstr "Taulukko"
 
 #: pages/page.settings.php:79
 msgid "Chart styling and config"
-msgstr ""
+msgstr "Taulukon tyyli ja asetukset"
 
 #: pages/page.settings.php:85
 msgid "Weight Units"
-msgstr "Unitati de greutate"
+msgstr "Painoyksikkö"
 
 #: pages/page.settings.php:89 pro-features/user-preferences.php:14
 msgid "Stones & Pounds"
-msgstr "Livre si Stone"
+msgstr "Stone & Pauna"
 
 #: pages/page.settings.php:92
 msgid ""
@@ -344,29 +347,28 @@ msgid ""
 "Pounds. Please note: The graph will be displayed in Pounds if \"Stones & "
 "Pounds\" is selected."
 msgstr ""
-"Poti alege daca greutatea va fi afisata in Kilograme, Livre & Stone sau doar "
-"in Livre; Daca alegi Livre & Stone graficul va fi afisat in livre.<br>\n"
-"(1stone = 6.35 kg; 1 livra = 0,454 kg)"
+"Voit määrittää, näytetäänkö painot kg, Stone ja Paunat tai vain Paunat. "
+"Huomaa: kuvaaja näytetään punnissa jos \"Stone ja Paunat\" on valittu."
 
 #: pages/page.settings.php:97
 msgid "UK or US Date format?"
-msgstr "Data in format UK sau US?"
+msgstr "UK or US Päivä formaatti?"
 
 #: pages/page.settings.php:100 pro-features/user-preferences.php:20
 msgid "UK (DD/MM/YYYY)"
-msgstr "UK (DD/MM/YYYY)"
+msgstr "UK (Päivä/Kuukausi/Vuosi)"
 
 #: pages/page.settings.php:101 pro-features/user-preferences.php:21
 msgid "US (MM/DD/YYYY)"
-msgstr "US (MM/DD/YYYY)"
+msgstr "US (Kuukausi/Päivä/Vuosi)"
 
 #: pages/page.settings.php:103
 msgid "Specify what format dates should be displayed in (i.e. UK or US format)"
-msgstr "Alege formatul in care vom afisa data (format UK sau US)"
+msgstr "Valitse minä muotona päivät pitäisi näyttää (esim. UK vai US)"
 
 #: pages/page.settings.php:107
 msgid "Allow decimal places?"
-msgstr ""
+msgstr "Salli desimaalimerkki"
 
 #: pages/page.settings.php:110 pages/page.settings.php:122
 #: pages/page.settings.php:136 pages/page.settings.php:145
@@ -374,7 +376,7 @@ msgstr ""
 #: pages/page.settings.php:190 pages/page.settings.php:201
 #: pages/page.settings.php:212
 msgid "Yes"
-msgstr "Da"
+msgstr "Kyllä"
 
 #: pages/page.settings.php:111 pages/page.settings.php:121
 #: pages/page.settings.php:135 pages/page.settings.php:146
@@ -382,49 +384,52 @@ msgstr "Da"
 #: pages/page.settings.php:191 pages/page.settings.php:202
 #: pages/page.settings.php:213
 msgid "No"
-msgstr "Nu"
+msgstr "Ei"
 
 #: pages/page.settings.php:114
 msgid ""
 "If enabled, Decimal weight entries will be allowed in Kg or Pounds mode."
-msgstr ""
+msgstr "Jos valittu, desimaalimerkki on sallittu Kg tai Pauna moodissa"
 
 #: pages/page.settings.php:118
 msgid "Disable plugin CSS?"
-msgstr ""
+msgstr "Disabloi plugin CSS"
 
 #: pages/page.settings.php:124
 msgid ""
 "If you wish to style the forms in your own way, you can use this option to "
 "disable WLT's style sheets."
 msgstr ""
+"Jos haluat käyttää omaa tyyliä tässä formissa, voit valita option poista WLT "
+"tyylitaulukko"
 
 #: pages/page.settings.php:132
 msgid "Allow target weights?"
-msgstr "Permite folosirea greutatii ideale?"
+msgstr "Sallitko kohdepainon?"
 
 #: pages/page.settings.php:138
 msgid ""
 "If enabled, a user is allowed to enter a target weight. This will be "
 "displayed as a horizontal bar on the line chart."
 msgstr ""
-"Daca este activata aceasta optiune utilizatorii vor putea introduce "
-"greutatea lor ideala. Aceasta va fi reprezentata ca linie orizontala in "
-"grafic."
+"Jos sallittu, käyttäjä voi asettaa kohdepainon. Tämä näkyy vaakapalkkina "
+"taulukossa"
 
 #: pages/page.settings.php:142
 msgid "Allow user settings"
-msgstr ""
+msgstr "Salli käyttäjäasetukset"
 
 #: pages/page.settings.php:148
 msgid ""
 "Allow your users to select their own weight unit, date format and remove all "
 "their data."
 msgstr ""
+"Salli käyttäjän valita heidän painoyksikkö, päiväysmuoto ja poistaa kaikki "
+"heidän data"
 
 #: pages/page.settings.php:152
 msgid "Advanced data tables?"
-msgstr ""
+msgstr "Edistynyt data taulukko"
 
 #: pages/page.settings.php:158
 msgid ""
@@ -432,134 +437,135 @@ msgid ""
 "paging, editing and deleting. Weight Index (i.e. percentage lost / gained to "
 "be displayed.)"
 msgstr ""
+"Käyttäjän paino historia esitetään myötämielisenä taulukoita, jotka "
+"mahdollistavat lajittelu, henkilöhaku, muokata ja poistaa. Paino Index (eli "
+"prosentuaalinen kadonnut / saadut näytetään.)"
 
 #: pages/page.settings.php:162
 msgid "Display data in tabs?"
-msgstr "Afiseaza informatiile in file?"
+msgstr "Näytä datataulukko"
 
 #: pages/page.settings.php:168
 msgid ""
 "If enabled, \"Weight History\" and \"Target Weight\" will be displayed on "
 "sepearate tabs."
 msgstr ""
-"Cand este activata aceasta optiune face ca sectiunile Istoric si Greutate "
-"ideala sa fie afisate in file diferite."
+"Jos enabloitu \"painohistoria\" ja \"kohdepaino\" näytetään erillisenä "
+"taulukkona"
 
 #: pages/page.settings.php:176
 msgid "Default chart type"
-msgstr ""
+msgstr "Oletusarvoinen taulukkotyyppi"
 
 #: pages/page.settings.php:179
 msgid "Line Chart"
-msgstr ""
+msgstr "Linja taulukko"
 
 #: pages/page.settings.php:180
 msgid "Bar Chart"
-msgstr ""
+msgstr "Pylvästaulukko"
 
 #: pages/page.settings.php:183 pages/page.settings.php:216
 #: pages/page.settings.php:229
 msgid "If enabled, \"Allows points and labels to be displayed on graph."
-msgstr ""
-"Daca este activata aceasta optiune permite afisarea punctelor si a "
-"etichetelor pe grafic."
+msgstr "Jos käytössä, \"Mahdollistaa pisteet ja etiketit näytetään kaaviossa."
 
 #: pages/page.settings.php:187
 msgid "Bezier Curve (Line only)?"
-msgstr ""
+msgstr "Bezier Käyrä (Ainoastaan viiva)?"
 
 #: pages/page.settings.php:194
 msgid "If enabled, lines between points on a line graph will be curved"
-msgstr ""
+msgstr "Jos käytössä, linjoihin pisteiden välissä viivakuvaaja kaareutuu"
 
 #: pages/page.settings.php:198
 msgid "Display gridlines?"
-msgstr ""
+msgstr "Näyttö ruudukon?"
 
 #: pages/page.settings.php:205
 msgid "If enabled, gridlines will be displayed on the Graph canvas."
-msgstr ""
+msgstr "Jos käytössä, ruudukon viivat näkyy Graph canvas muodossa."
 
 #: pages/page.settings.php:209
 msgid "Display points on graph?"
-msgstr "Arata puncte pe grafic?"
+msgstr "Näytä pisteet kaaviossa"
 
 #: pages/page.settings.php:220
 msgid "Maximum points per graph"
-msgstr ""
+msgstr "Maksimipisteet kaaviossa"
 
 #: pages/page.settings.php:233
 msgid "Point thickness (Line only)"
-msgstr ""
+msgstr "Viivan paksuus (ainostaan linjassa)"
 
 #: pages/page.settings.php:242
 msgid "Specifies the point thickness on a line chart."
-msgstr ""
+msgstr "Määrittää pisteen paksuus viivakaaviossa."
 
 #: pages/page.settings.php:246
 msgid "Weight colour?"
-msgstr ""
+msgstr "Painon väri?"
 
 #: pages/page.settings.php:249
 msgid ""
 "If enabled, enter a HEX colour code to use for the Weight history line on "
 "graph."
 msgstr ""
-"La activare introdu un cod HEX pentru culoarea liniei istoricului greutatii "
-"pe grafic."
+"Jos käytössä, kirjoita HEX värikoodi käyttää Weight historian linja käyrää."
 
 #: pages/page.settings.php:253
 msgid "Weight fill colour?"
-msgstr ""
+msgstr "Painoviivan täyttöväri?"
 
 #: pages/page.settings.php:256
 msgid ""
 "If enabled, enter a HEX colour code to use forthe shading underneath the "
 "Weight history line on graph. Line charts only."
 msgstr ""
-"La activare introdu un cod HEX pentru culoarea suprafetei graficului, sub "
-"linia istoricului greutatii. Doar pentru graficul de tip linie."
+"Jos käytössä, kirjoita HEX värikoodi, käyttää varjostus alla Painohistoria "
+"viiva käyrää. Linjakaavioita vain."
 
 #: pages/page.settings.php:260
 msgid "Target line colour?"
-msgstr ""
+msgstr "Kohdelinjäväri?"
 
 #: pages/page.settings.php:263
 msgid ""
 "If enabled, enter a HEX colour code to use for the Target line on graph."
-msgstr ""
-"La activare introdu un cod HEX pentru culoarea liniei greutatii ideale."
+msgstr "Jos käytössä, kirjoita HEX värikoodi käyttää Kohdelinja käyrää."
 
 #: pro-features/feature-list.php:6
 msgid ""
 "<strong>Widgets.</strong> Widgets that allow you to display the graph and "
 "quick weight entry form within any widget area."
 msgstr ""
-"<strong>Piese.</strong> Piese care permit afisarea graficului si a unui "
-"formular de introducere rapida a greutatii in orice zona de piese."
+"<Strong> Widgetit. </ Strong> Widgetit, joiden avulla voit näyttää kuvaajan "
+"ja nopea painon osuuksina minkä tahansa widget-alueella."
 
 #: pro-features/feature-list.php:7
 msgid ""
 "<strong>Chart and form Shortcodes.</strong> That allow you to display the "
 "graph and quick weight entry form by placing a shortcode on any post or page."
 msgstr ""
-"<strong>Coduri pentru grafic si formular.</strong> Acestea iti permit sa "
-"afisezi un grafic si un formular de inregistrare a greutatii in cadrul "
-"oricarui articol sau pagina."
+"<Strong> Kartta ja muoto Lyhytkoodit. </ Strong> Tämän avulla voit näyttää "
+"kuvaajan ja nopea painon ilmoittautumislomake asettamalla lyhytkoodi mihin "
+"tahansa post tai sivun .."
 
 #: pro-features/feature-list.php:8
 msgid ""
 "<strong>Text Shortcodes.</strong> Additional shortcodes for earliest and "
 "most recent dates entered."
 msgstr ""
-"<strong>Coduri pentru text.</strong> Coduri suplimentare pentru cele mai "
-"vechi si cele mai recente inregistrari introduse."
+"<Strong> Text Lyhytkoodit. </ Strong> Muita lyhytkoodit varten varhaisin ja "
+"viimeisimmän päivämääriä tuli."
 
 #: pro-features/feature-list.php:9
 msgid ""
 "<strong>Admin: View / Delete user data</strong>. Admin will be able to view "
 "and delete existing user data."
 msgstr ""
+"<Strong> Järjestelmänvalvoja: Näytä / poista käyttäjätietoja </ strong>. "
+"Admin voi tarkastella ja poistaa olemassa olevan käyttäjän tietoja."
 
 #: pro-features/feature-list.php:10
 msgid ""
@@ -568,269 +574,193 @@ msgid ""
 "They will also be able to specify date format and clear all their weight "
 "data."
 msgstr ""
+"<Strong> Omat asetukset </ strong>. Jos käytössä, käyttäjä voi valita, minä "
+"yksikkönä he voivat tallentaa niiden painon Metric tai Imperial. Voivat myös "
+"määritellä päivämäärän muoto ja poistaa kaikki heidän painotiedot."
 
 #: pro-features/feature-list.php:11
 msgid ""
 "<strong>Bar Charts</strong>. Fancy something different to a line chart? The "
 "plugin will also support Bar Charts."
 msgstr ""
-"<strong>Grafic cu bare</strong>. Ai nevoie de ceva deosebit? Modulul va avea "
-"optiunea de folosire a unui grafic cu bare."
+"<Strong> pylväskaaviot </ strong>. Mieltymys jotain erilaista viivakaaviota? "
+"Laajennus tukee myös pylväsdiagrammin."
 
 #: pro-features/feature-list.php:12
 msgid ""
 "<strong>Decimals</strong>. Decimals will be allowed weight in Pounds only or "
 "Kg modes."
 msgstr ""
-"<strong>Zecimale</strong>. Stocarea greutatii cu precizie crescuta va fi "
-"disponibila pentru modul de afisare in Livre sau Kg."
+"<Strong> Desimaalia </ strong>. Desimaalit sallitaan paino Punnissa "
+"ainoastaan tai Kg tiloissa."
 
 #: pro-features/feature-list.php:13
 msgid ""
 "<strong>Delete existing entry</strong>. A logged in user will be able to "
 "delete or edit an existing weight entry."
 msgstr ""
+"<Strong> Poista olemassa olevaa merkintä </ strong>. Kirjautunut käyttäjä "
+"voi poistaa tai muokata olemassa olevaa paino merkintöjä."
 
 #: pro-features/feature-list.php:14
 msgid ""
 "<strong>Better Tables.</strong>. Data tables in front end and admin will "
 "support paging and sorting."
 msgstr ""
-"<strong>Tabele imbunatatite.</strong>. Tabelele de date in sectiunea "
-"utilizatorului suporta paginare si sortare."
+"<Strong> Parempi Taulukot. </ Strong>. Arvotaulukoiden front end ja admin "
+"tukee haku- ja lajittelun."
 
 #: pro-features/feature-list.php:15
 msgid ""
 "<strong>Admin: Extra Settings</strong>. Extra settings to customise the "
 "plugin will be added e.g. number of plot points on graph, rows per page, etc."
 msgstr ""
-"<strong>Administrare: Setari suplimentare</strong>. Setari suplimentare gen "
-"numarul de puncte pe grafic sau numarul de linii per pagina in tabele."
+"<Strong> Järjestelmänvalvoja: Extra asetukset </ strong>. Extra asetuksia "
+"muokatessa plugin lisätään esim. määrä tontti pisteiden kuvaaja, riviä sivu "
+"jne"
 
 #: pro-features/shortcode-chart.php:48 pro-features/shortcode-table.php:23
 msgid "No weight data was found for the specified user."
-msgstr ""
+msgstr "Painotietoja ei löytynyt määritetylle käyttäjälle."
 
 #: pro-features/user-data.php:50
 msgid " User Data"
-msgstr ""
+msgstr "Käyttäjä Data"
 
 #: pro-features/user-data.php:56
 msgid "View / Edit"
-msgstr ""
+msgstr "Näytä / muokkaa"
 
 #: pro-features/user-data.php:56
 msgid "View and edit existing user data"
-msgstr ""
+msgstr "Näytä ja muokkaa jo olemassa olevan käyttäjätietoja"
 
 #: pro-features/user-data.php:57
 msgid "Delete All"
-msgstr ""
+msgstr "Poista KAIKKI"
 
 #: pro-features/user-data.php:57
 msgid "Delete all user data!"
-msgstr ""
+msgstr "Poista kaikki käyttäjätiedot"
 
 #: pro-features/user-data.php:89
 msgid ""
 "You can use the following button to remove all user data currently stored by "
 "the plugin. <strong>All weight entries for every user will be lost!</strong>"
 msgstr ""
-"Poti folosi acest buton pentru a elimina toate datele introduse de toti "
-"utilizatorii acestui modul. \n"
-"<strong>\n"
-"Atentie, vom sterge toate datele tuturor utilizatorilor!\n"
-"</strong>"
+"Voit käyttää seuraavaa painiketta poistaaksesi kaikki käyttäjätiedot "
+"nykyisin tallentaa pluginiin. <Strong> Kaikki painomerkinnät jokaiselle "
+"käyttäjälle menetetään! </ Strong>"
 
 #: pro-features/user-data.php:90
 msgid "Remove ALL user data"
-msgstr "Elimina TOATE datele utilizatorilor"
+msgstr "Poista KAIKKI käyttäjätiedot"
 
 #: pro-features/user-data.php:119
 msgid "Are you sure you?"
-msgstr "Sigur esti tu?"
+msgstr "Oletko varma?"
 
 #: pro-features/user-data.php:120
 msgid "Are you sure you wish to remove all user data?"
-msgstr "Sigur vrei sa elimini toate datele utilizatorilor?"
+msgstr "Haluatko että kaikki käyttäjätiedot poistetaan?"
 
 #: pro-features/user-preferences.php:11
 msgid "Which unit would you like to record your weight in:"
-msgstr ""
+msgstr "Minä yksiköinä haluat tallentavan painosi:"
 
 #: pro-features/user-preferences.php:17
 msgid "Display dates in the following formats:"
-msgstr ""
+msgstr "Näytä päiväys ikkunassa:"
 
 #: pro-features/user-preferences.php:23
 msgid "Save Settings"
-msgstr ""
+msgstr "Tallenna asetukset"
 
 #: pro-features/user-preferences.php:25
 msgid "Delete existing data"
-msgstr "Sterge inregistrarile existente"
+msgstr "Poista tieto"
 
 #: pro-features/user-preferences.php:31
 msgid ""
 "The button below allows you to clear your existing weight history. Confirm:"
-msgstr ""
+msgstr "painike tyhjentää olemassa olevat painohistorian. Vahvista:"
 
 #: pro-features/user-preferences.php:36
 msgid "Delete"
-msgstr ""
+msgstr "Poista"
 
 #: pro-features/widget-chart.php:12
 msgid "Weight Loss Tracker - Chart"
-msgstr ""
+msgstr "Weight Loss Tracker - Taulukko"
 
 #: pro-features/widget-chart.php:13
 msgid "Display a chart to see your current progress."
-msgstr ""
+msgstr "Näytä kaavio nähdäksesi nykyisen edistymisen."
 
 #: pro-features/widget-chart.php:17
 msgid "Weight Loss Tracker"
-msgstr ""
+msgstr "Weight Loss Tracker"
 
 #: pro-features/widget-chart.php:97 pro-features/widget-form.php:70
 msgid "Title"
-msgstr ""
+msgstr "Otsikko"
 
 #: pro-features/widget-chart.php:101
 msgid "Type"
-msgstr ""
+msgstr "Tyyppi"
 
 #: pro-features/widget-chart.php:108
 msgid "Maximum number of plot points on chart"
-msgstr ""
+msgstr "Enimmäismäärä pisteitä kaaviossa"
 
 #: pro-features/widget-chart.php:117 pro-features/widget-form.php:81
 msgid "Message to display if not logged in"
-msgstr ""
+msgstr "Viesti näyttää, jos ei kirjautunut"
 
 #: pro-features/widget-chart.php:119 pro-features/widget-form.php:83
 msgid ""
 "By default the widget is hidden if the user is not logged in. If you wish, "
 "you can display a message to the visitor instead."
 msgstr ""
+"Oletuksena widget on piilotettu, jos käyttäjä ei ole kirjautunut sisään. Jos "
+"haluat, voit näyttää viestin vierailija sijaan."
 
 #: pro-features/widget-chart.php:125
 msgid "ID of user (leave blank to show chart for current user)"
-msgstr ""
+msgstr "Käyttäjä ID (jätä tyhjäksi näyttääksesi käyttäjän taulukon)"
 
 #: pro-features/widget-chart.php:129
 msgid ""
 "Note: By default, the chart will be displayed in the weight unit chosen by "
 "the logged in user. If not specfied the plugin default will be used."
 msgstr ""
+"Huomaa: Oletuksena kaaviossa näkyy painoyksikköä valitsemana kirjautunut "
+"käyttäjä. Jos ei ole määritelty plugin oletusarvoisesti käytetään."
 
 #: pro-features/widget-form.php:12
 msgid "Weight Loss Tracker - Form"
-msgstr ""
+msgstr "Weight Loss Tracker - Lomake"
 
 #: pro-features/widget-form.php:13
 msgid ""
 "Display a quick entry form for logged in users to record their weight for "
 "today."
 msgstr ""
+"Näytä nopea ilmoittautumislomake kirjautuneille käyttäjille tallentaaksesi "
+"heidän paino tänään."
 
 #: pro-features/widget-form.php:17
 msgid "Your weight today"
-msgstr ""
+msgstr "Sinun painosi tänään"
 
 #: pro-features/widget-form.php:74
 msgid "Allow user to specify a date?"
-msgstr ""
+msgstr "Sallitko käyttäjien valita päiväys?"
 
 #: pro-features/widget-form.php:76
 msgid "No. Automatically set to today's date"
-msgstr ""
+msgstr "Ei. Automaattisesti aseta tämä päivä."
 
 #: pro-features/widget-form.php:77
 msgid "Allow user to specify a date"
-msgstr ""
-
-#~ msgid "Please enter a between 1-14 for pounds"
-#~ msgstr "Introdu intre 1 si 14 livre"
-
-#~ msgid ""
-#~ "We are shortly releasing a pro version of this plugin. We aim to keep the "
-#~ "price under &pound;30 and have the following features"
-#~ msgstr ""
-#~ "In curand lansam versiunea PRO a acestui modul. Intentionam sa tinem "
-#~ "pretul sub 30 de lire si vom avea urmatoarele caracteristici"
-
-#~ msgid "Show your interest now and get 25% off when released"
-#~ msgstr "Inscrie-te acum si obtine 25% reducere la lansare"
-
-#~ msgid "Seeing the level of interest will help motivate me to develop it!"
-#~ msgstr "Interesul tau ne motiveaza pentru dezvoltarea modulului!"
-
-#~ msgid " Instructions"
-#~ msgstr "Instructiuni"
-
-#~ msgid ""
-#~ "Place the tag [weight-loss-tracker] on a given page and the user is "
-#~ "presented with a form to enter a date, weight and notes for that entry. "
-#~ "When the person saves their entry the data table and graph is refreshed."
-#~ msgstr ""
-#~ "Foloseste eticheta [weightlosstracker] pe orice pagina iar vizitatorul va "
-#~ "avea acces in acea pagina la un formular de introducere a greutatii si a "
-#~ "notitelor. Cand vizitatorul salveaza valori ale greutatii graficul se "
-#~ "actualizeaza automat."
-
-#~ msgid "Graph: Weight colour?"
-#~ msgstr "Grafic: culoarea greutatii?"
-
-#~ msgid "Graph: Weight fill colour?"
-#~ msgstr "Grafic: cloarea suprafetei?"
-
-#~ msgid "Graph: Target line colour?"
-#~ msgstr "Grafic: culoarea greutatii ideale?"
-
-#~ msgid "Enable support for Avada theme?"
-#~ msgstr "Activeaza suportul pentru tema Avada?"
-
-#~ msgid ""
-#~ "<strong style=\"color:red\">Deprecated. This feature will very shortly be "
-#~ "removed from the plugin and is currently no longer supported</strong>. "
-#~ "Enables additional styling to support theAvada theme</a>."
-#~ msgstr ""
-#~ "<strong style=\"color:red\">Depreciata. Aceasta caracteristica va "
-#~ "disparea in scurt timp si nu mai este sustinuta.</strong>. Activeaza "
-#~ "suportul suplimentar pentru tema Avada</a>."
-
-#~ msgid ""
-#~ "<strong>Admin: View / Edit user data</strong>. Admin will be able to "
-#~ "view, edit and delete existing user data."
-#~ msgstr ""
-#~ "<strong>Administrare: Datele utilizatorului</strong>. In aceasta sectiune "
-#~ "poti vedea, modifica sau sterge inregistrarile utilizatorilor."
-
-#~ msgid ""
-#~ "<strong>User can choose Unit</strong>. The user will be allowed to select "
-#~ "which unit they wish to store their weight in Metric or Imperial."
-#~ msgstr ""
-#~ "<strong>Utilizatorul poate alege unitatile de masura</strong>. "
-#~ "Utilizatorul va putea alege individual unitatea de masura in care isi "
-#~ "inregistreaza greutatea - sistem Metric sau Imperial."
-
-#~ msgid ""
-#~ "<strong>Delete existing entry</strong>. A logged in user will be able to "
-#~ "delete an existing weight entry."
-#~ msgstr ""
-#~ "<strong>Sterge o inregistrare existenta</strong>. Utiliatorii "
-#~ "autentificati pot sterge inregistrarile individuale."
-
-#~ msgid ""
-#~ "Enables additional styling to support the <a href=\"http://theme-fusion."
-#~ "com/avada/\" target=\"_blank\">Avada theme</a>."
-#~ msgstr ""
-#~ "Activeaza stiluri suplimentare necesare pentru compatibilitatea cu \n"
-#~ "<a href=\"http://theme-fusion.com/avada/\" target=\"_blank\">tema Avada</"
-#~ "a>."
-
-#~ msgid "Your current target is"
-#~ msgstr "Greutatea ta ideala este"
-
-#~ msgid "Currently, you haven't specified a target weight."
-#~ msgstr "Nu ti-ai introdus greutatea ideala."
+msgstr "Salli käyttäjien valita päivä"

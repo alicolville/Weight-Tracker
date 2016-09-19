@@ -35,6 +35,7 @@
 	 	add_shortcode( 'weightloss_weight_start', 'ws_ls_weight_start' );
 	 	add_shortcode( 'weightloss_weight_most_recent', 'ws_ls_weight_recent' );
 		add_shortcode( 'weightloss_weight_difference_from_target', 'ws_ls_weight_difference_target' );
+		add_shortcode( 'weightloss_target_weight', 'ws_ls_weight_target_weight' );
 
         // If user has deleted all their data then delete it here. That way cache isn't displayed
         if(WE_LS_ALLOW_USER_PREFERENCES && isset($_GET['user-delete-all']) && 'true' == $_GET['user-delete-all'])	{
@@ -44,32 +45,43 @@
 	}
 	add_action( 'init', 'ws_ls_register_shortcodes');
 
+	function ws_ls_enqueue_css(){
+
+		$minified = (WE_LS_USE_MINIFIED_SCRIPTS) ? '.min' : '';
+
+		// CSS
+		if (WE_LS_CSS_ENABLED) {
+			wp_enqueue_style('wlt-style', plugins_url( '../css/ws-ls' . 	$minified . '.css', __FILE__ ), array(), WE_LS_CURRENT_VERSION);
+		}
+
+		wp_enqueue_style('jquery-style', plugins_url( '../css/jquery-ui.min.css', __FILE__ ), array(), WE_LS_CURRENT_VERSION);
+
+		// Tabs enabled?
+		if (WE_LS_USE_TABS)	{
+			wp_enqueue_style('wlt-tabs', plugins_url( '../css/tabs.min.css', __FILE__ ), array(), WE_LS_CURRENT_VERSION);
+			wp_enqueue_style('wlt-tabs-flat', plugins_url( '../css/tabs.flat.min.css', __FILE__ ), array(), WE_LS_CURRENT_VERSION);
+		}
+	}
+	add_action( 'wp_head', 'ws_ls_enqueue_css');
+
 	function ws_ls_enqueue_files(){
 
 			$minified = (WE_LS_USE_MINIFIED_SCRIPTS) ? '.min' : '';
-
-			// CSS
-			if (WE_LS_CSS_ENABLED) {
-				wp_enqueue_style('wlt-style', plugins_url( '../css/ws-ls' . 	$minified . '.css', __FILE__ ), array(), WE_LS_CURRENT_VERSION);
-			}
-
-			wp_enqueue_style('jquery-style', plugins_url( '../css/jquery-ui.min.css', __FILE__ ), array(), WE_LS_CURRENT_VERSION);
 
 			// JavaScript files
 			wp_enqueue_script('jquery-chart-ws-ls', 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.min.js', array( 'jquery' ), WE_LS_CURRENT_VERSION);
 			wp_enqueue_script('jquery-validate',plugins_url( '../js/jquery.validate.min.js', __FILE__ ), array('jquery'), WE_LS_CURRENT_VERSION);
 			wp_enqueue_script('jquery-validate-additional',plugins_url( '../js/additional-methods.min.js', __FILE__ ), array('jquery', 'jquery-validate'), WE_LS_CURRENT_VERSION);
+
 			wp_enqueue_script('jquery-ui-datepicker');
-			wp_enqueue_script('wl-ls-js', plugins_url( '../js/ws-ls' . 	$minified . '.js', __FILE__ ), array(), WE_LS_CURRENT_VERSION);
+			wp_enqueue_script('wl-ls-js', plugins_url( '../js/ws-ls' . 	$minified . '.js', __FILE__ ), array(), WE_LS_CURRENT_VERSION, true);
 
 			// Add locilzation data for JS
 			wp_localize_script('wl-ls-js', 'ws_ls_config', ws_ls_get_js_config());
 
 			// Tabs enabled?
 			if (WE_LS_USE_TABS)	{
-				wp_enqueue_script('jquery-tabs',plugins_url( '../js/tabs.min.js', __FILE__ ), array('jquery'), WE_LS_CURRENT_VERSION);
-				wp_enqueue_style('wlt-tabs', plugins_url( '../css/tabs.min.css', __FILE__ ), array(), WE_LS_CURRENT_VERSION);
-				wp_enqueue_style('wlt-tabs-flat', plugins_url( '../css/tabs.flat.min.css', __FILE__ ), array(), WE_LS_CURRENT_VERSION);
+				wp_enqueue_script('jquery-tabs',plugins_url( '../js/tabs.min.js', __FILE__ ), array('jquery'), WE_LS_CURRENT_VERSION, true);
 			}
 	}
-	add_action( 'wp_head', 'ws_ls_enqueue_files');
+	//add_action( 'wp_head', 'ws_ls_enqueue_files');

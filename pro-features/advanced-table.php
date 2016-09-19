@@ -85,6 +85,7 @@ function ws_ls_advanced_data_table($weight_data)
 
   foreach ($weight_data as $weight_object)
   {
+
     	$html_output .= '<tr id="ws-ls-row-' . $weight_object['db_row_id'] . '">
 							<td>' . $weight_object['kg'] . '</td>
 							<td>' . ws_ls_render_date($weight_object) . '</td>
@@ -116,4 +117,32 @@ function ws_ls_advanced_data_table($weight_data)
   </table>';
 
   return $html_output;
+}
+
+function ws_ls_advanced_table_locale() {
+
+	return array(
+			"decimal"=>         "",
+			"emptyTable"=>      __('No data available in table', WE_LS_SLUG),
+			"info"=>            __("Showing _START_ to _END_ of _TOTAL_ entries", WE_LS_SLUG),
+			"infoEmpty"=>       __("Showing 0 to 0 of 0 entries", WE_LS_SLUG),
+			"infoFiltered"=>    __("(filtered from _MAX_ total entries)", WE_LS_SLUG),
+			"infoPostFix"=>     "",
+			"thousands"=>       ",",
+			"lengthMenu"=>      __("Show _MENU_ entries", WE_LS_SLUG),
+			"loadingRecords"=>  __("Loading...", WE_LS_SLUG),
+			"processing"=>      __("Processing...", WE_LS_SLUG),
+			"search"=>          __("Search: ", WE_LS_SLUG),
+			"zeroRecords"=>     __("No matching records found", WE_LS_SLUG),
+			"paginate"=>  array(
+			    "first"=>       __("First", WE_LS_SLUG),
+			    "last"=>        __("Last", WE_LS_SLUG),
+			    "next"=>        __("Next", WE_LS_SLUG),
+			    "previous"=>    __("Previous", WE_LS_SLUG)
+			),
+			"aria"=>  array(
+			    "sortAscending"=>   __(":  activate to sort column ascending", WE_LS_SLUG),
+			    "sortDescending"=>  __(": activate to sort column descending", WE_LS_SLUG)
+			)
+	);
 }

@@ -3,7 +3,11 @@ Contributors: aliakro
 Tags: weight, graph, track, stones, kg, table, data, plot, target, history, pounds, responsive, chart
 Requires at least: 4.1.0
 Tested up to: 4.5
+<<<<<<< HEAD
 Stable tag: 4.0
+=======
+Stable tag: 3.6.1
+>>>>>>> 8084878374cfe583b843ed56d32902e1639a218f
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -45,6 +49,7 @@ Also supports the following tags:
 	[weightloss_weight_start] - start weight of the logged in member
 	[weightloss_weight_most_recent] - end weight of the logged in member
 	[weightloss_weight_difference_from_target] - difference from target
+	[weightloss_target_weight] - user's target weight (if specified)
 
 = Pro Version =
 
@@ -170,6 +175,36 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 **Bug fixes:**
 
 * User preferences are now cached correctly.
+
+
+////// DEV NOTES (DELETE!!!!!) //////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////
+
+Dev Required:
+
+- Advanced custom tables admin side
+
+
+
+Testing required:
+
+- Everything
+- Ensure Advanced table language lookup not cocked up
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////
+
+= 3.6.1 =
+
+* Fudge fix to remove .git folder from plugin directory!
+
+= 3.6 =
+
+ * Added the shortcode [weightloss_target_weight] to display the user's target weight (assuming they have specified one).
 
 = 3.5.1 =
 
