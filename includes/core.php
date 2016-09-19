@@ -139,7 +139,7 @@
 		}
 
 		foreach ($weight_data as $weight_object) {
-			var_Dump($weight_object);
+			//var_Dump($weight_object);
 			array_push($graph_data['labels'], $weight_object['date-graph']);
 			array_push($graph_data['datasets'][0]['data'], $weight_object['graph_value']);
 

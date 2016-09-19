@@ -20,14 +20,19 @@ An easy to use plugin that allows a user to keep track of their weight history i
 
 Working on:
 
-- Switching in charts
+- Charts supporting measurements
 
+Dev Required:
 
-DO:
+- make chart legend better? condensed?
+- Advanced custom tables admin side
+- Search for all TODOS
+- Search for die and var_dump
 
-Search for all TODOS
-Search for die and var_dump
+Testing required:
 
+- Everything
+- Ensure Advanced table language lookup not cocked up
 
 ***************************** DELETE ********************************************
 ***************************** DELETE ********************************************
@@ -175,28 +180,6 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 **Bug fixes:**
 
 * User preferences are now cached correctly.
-
-
-////// DEV NOTES (DELETE!!!!!) //////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////
-
-Dev Required:
-
-- Advanced custom tables admin side
-
-
-
-Testing required:
-
-- Everything
-- Ensure Advanced table language lookup not cocked up
-
-
-
-
-////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////
 
 = 3.6.1 =
 
