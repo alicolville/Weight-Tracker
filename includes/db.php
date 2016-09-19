@@ -207,7 +207,11 @@ function ws_ls_save_data($user_id, $weight_object, $is_target_form = false)
 		$weight_keys = ws_ls_get_keys_for_active_measurement_fields();
 		foreach ($weight_keys as $key) {
 			if(isset($weight_object['measurements'][$key])) {
-				$db_fields[$key] = $weight_object['measurements'][$key];
+
+				// If empty or zero then NULL field before storing
+				$measurement_value = (empty($weight_object['measurements'][$key]) || 0 == $weight_object['measurements'][$key]) ? NULL : $weight_object['measurements'][$key];
+
+				$db_fields[$key] = $measurement_value;
 				$db_field_types[] = '%f';
 			}
 		}
