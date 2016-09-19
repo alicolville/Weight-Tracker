@@ -115,7 +115,7 @@
 
 		if($measurements_enabled) {
 			$active_measurement_fields = ws_ls_get_active_measurement_fields();
-			$active_measurment_field_keys = ws_ls_get_keys_for_active_measurement_fields();
+			$active_measurment_field_keys = ws_ls_get_keys_for_active_measurement_fields('', true);
 			$measurement_graph_indexes = [];
 			$i = 2;
 
@@ -151,26 +151,18 @@
 			// ----------------------------------------------------------------------------
 			// Add data for all measurements
 			// ----------------------------------------------------------------------------
+
 			foreach ($active_measurment_field_keys as $key) {
 
-				//$measurement_graph_indexes[$key]
+				// If we have a genuine measurement value then add to graph data - otherwise NULL
 				if(!is_null($weight_object['measurements'][$key]) && 0 != $weight_object['measurements'][$key]) {
-					array_push($graph_data['datasets'][$measurement_graph_indexes[$key]]['data'], intval($weight_object['measurements'][$key]));
+					$graph_data['datasets'][$measurement_graph_indexes[$key]]['data'][] = ws_ls_prep_measurement_for_display($weight_object['measurements'][$key]);
+				} else {
+					$graph_data['datasets'][$measurement_graph_indexes[$key]]['data'][] = NULL;
 				}
 			}
 
-
-
 		}
-
-// array_push($graph_data['datasets'][2]['data'], 12);
-// 	array_push($graph_data['datasets'][2]['data'], null);
-// 	array_push($graph_data['datasets'][2]['data'], null);
-// 	array_push($graph_data['datasets'][2]['data'], 99);
-// 	array_push($graph_data['datasets'][2]['data'], 44);
-// var_dump($graph_data['datasets'][2]['data']);
-//
-
 
 		// Embed JavaScript data object for this graph into page
 		wp_localize_script( 'jquery-chart-ws-ls', $chart_id . '_data', $graph_data );
@@ -412,6 +404,7 @@ function ws_ls_capture_form_validate_and_save($user_id = false)
 	// Build measurement fields up and convert to CM if needed
 	if (WE_LS_MEASUREMENTS_ENABLED && is_array($weight_keys) && !empty($weight_keys) && !$is_target_form) {
 		foreach ($weight_keys as $key) {
+
 	 		// Convert to CM?
 		 	if('cm' != ws_ls_get_config('WE_LS_MEASUREMENTS_UNIT')) {
 	           $measurements[$key] = ws_ls_convert_to_cm(0, $form_values[$key]);

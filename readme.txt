@@ -28,6 +28,7 @@ Dev Required:
 - Advanced custom tables admin side
 - Search for all TODOS
 - Search for die and var_dump
+- update plugin sample images and documentation
 
 Testing required:
 
