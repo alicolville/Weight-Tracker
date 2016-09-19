@@ -105,7 +105,7 @@ function ws_ls_prep_measurement($value) {
 }
 function ws_ls_prep_measurement_for_display($cm, $user_id = false) {
 
-	if ('inches' == ws_ls_get_config('WE_LS_MEASUREMENTS_UNIT', $user_id)) {
+	if (!is_null($cm) && 'inches' == ws_ls_get_config('WE_LS_MEASUREMENTS_UNIT', $user_id)) {
 		$inches = ws_ls_convert_to_inches($cm);
 		return round($inches, 2);
 	}
