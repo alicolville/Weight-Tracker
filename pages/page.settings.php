@@ -193,7 +193,7 @@ function ws_ls_settings_page() {
 															<option value="bar" <?php selected( get_option('ws-ls-chart-type'), 'bar' ); ?>><?php echo __('Bar Chart', WE_LS_SLUG)?></option>
 
 														</select>
-														<p><?php echo __('If enabled, "Allows points and labels to be displayed on graph.', WE_LS_SLUG); ?></p>
+														<p><?php echo __('If enabled, "Allows points and labels to be displayed on graph. <strong>Note: If using measurements</strong>, graph type will be forced to Line.', WE_LS_SLUG); ?></p>
 													</td>
 												</tr>
 													<tr  class="<?php echo $disable_if_not_pro_class; ?>">
@@ -316,7 +316,7 @@ function ws_ls_settings_page() {
                                                     <?php
 
                                                     $measurement_settings = ws_ls_get_measurement_settings();
-													
+
                                                         ?>
                                                     <table>
                                                         <?php foreach ($measurement_settings as $key => $body_part) {

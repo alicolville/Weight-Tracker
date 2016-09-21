@@ -70,8 +70,8 @@
 
 		$chart_id = 'ws_ls_chart_' . rand(10,1000) . '_' . rand(10,1000);
 
-		// If Pro disabled then force to line
-		if(!WS_LS_IS_PRO) {
+		// If Pro disabled or Measurements to be displayed then force to line
+		if(!WS_LS_IS_PRO || $measurements_enabled) {
 			$chart_config['type'] = 'line';
 		}
 
@@ -82,12 +82,21 @@
 		// Build graph data
 		$graph_data['labels'] = array();
 		$graph_data['datasets'][0] = array( 'label' =>  __('Weight (' . $y_axis_unit . ')', WE_LS_SLUG),
-											'fillColor' => $chart_config['weight-fill-color'],
 											'borderColor' => $chart_config['weight-line-color'],
-											'borderColor' => $chart_config['weight-line-color'],
-											'lineTension' => ($chart_config['bezier']) ? 0.4 : 0,
-											'pointRadius' => $point_size
-								        );
+										    );
+
+		// Determine fill based on chart type
+		if ('line' == $chart_config['type']) {
+			$graph_data['datasets'][0]['fill'] = false;
+			$graph_data['datasets'][0]['lineTension'] = ($chart_config['bezier']) ? 0.4 : 0;
+			$graph_data['datasets'][0]['pointRadius'] = $point_size;
+		} else {
+			$graph_data['datasets'][0]['fill'] = true;
+			$graph_data['datasets'][0]['backgroundColor'] = $chart_config['weight-fill-color'];
+			$graph_data['datasets'][0]['borderWidth'] = 2;
+
+		}
+
 		$graph_data['datasets'][0]['data'] = array();
 		$graph_data['datasets'][0]['yAxisID'] = 0;
 
@@ -121,7 +130,7 @@
 
 			foreach ($active_measurement_fields as $key => $data) {
 
-				$graph_data['datasets'][$i] = array( 'label' =>  __( $data['title'] . ' (' . $y_axis_unit . ')', WE_LS_SLUG),
+				$graph_data['datasets'][$i] = array( 'label' =>  __( $data['title'], WE_LS_SLUG),
 													'borderColor' => $data['chart_colour'],
 													'borderColor' => $data['chart_colour'],
 													'borderWidth' => $data['width'],
@@ -151,17 +160,17 @@
 			// ----------------------------------------------------------------------------
 			// Add data for all measurements
 			// ----------------------------------------------------------------------------
+			if($measurements_enabled) {
+				foreach ($active_measurment_field_keys as $key) {
 
-			foreach ($active_measurment_field_keys as $key) {
-
-				// If we have a genuine measurement value then add to graph data - otherwise NULL
-				if(!is_null($weight_object['measurements'][$key]) && 0 != $weight_object['measurements'][$key]) {
-					$graph_data['datasets'][$measurement_graph_indexes[$key]]['data'][] = ws_ls_prep_measurement_for_display($weight_object['measurements'][$key]);
-				} else {
-					$graph_data['datasets'][$measurement_graph_indexes[$key]]['data'][] = NULL;
+					// If we have a genuine measurement value then add to graph data - otherwise NULL
+					if(!is_null($weight_object['measurements'][$key]) && 0 != $weight_object['measurements'][$key]) {
+						$graph_data['datasets'][$measurement_graph_indexes[$key]]['data'][] = ws_ls_prep_measurement_for_display($weight_object['measurements'][$key]);
+					} else {
+						$graph_data['datasets'][$measurement_graph_indexes[$key]]['data'][] = NULL;
+					}
 				}
 			}
-
 		}
 
 		// Embed JavaScript data object for this graph into page
@@ -169,26 +178,22 @@
 
 		$graph_line_options = array();
 
-		// Build the Chart options for JS library depending on type of Chart
-		if('bar' == $chart_config['type'])	{
+		// Set initial y axis for weight
+		$graph_line_options = array(
+			'scales' => array('yAxes' => array(array('type' => "linear", "display" => "true", "position" => "left", "id" => "y-axis-weight", '' , 'gridLines' => array('display' => $chart_config['show-gridlines']))))
+		);
 
-				$graph_line_options = array(
-			  		'scaleBeginAtZero' => true,
-					'display' => (($chart_config['show-gridlines']) ? 'true' : ''),
-					'scaleGridLineColor:' => 'rgba(0,0,0,.05)',
-					'scaleGridLineWidth:' => 1,
-					'scaleShowHorizontalLines' => true,
-					'scaleShowVerticalLines' => true,
-					'barShowStroke' => true,
-					'multiTooltipTemplate' => '"<%= datasetLabel %> - <%= value %> ' . $y_axis_unit . '"',
-					'scaleLabel' => '&nbsp;<%= value%>',
-					'barStrokeWidth' => 2,
-					'barValueSpacing' => 1,
-					'barDatasetSpacing' => 1,
-					'responsive' => true
-				);
-		}
-		elseif ('line' == $chart_config['type']) {
+	//	'scaleLabel' => array('labelString' => 'gege')
+	//	$graph_line_options['scales']['yAxes'][0]['scaleLabel']['labelString'] = 'efge';
+
+		// Build the Chart options for JS library depending on type of Chart
+		// if('bar' == $chart_config['type'])	{
+		//
+		//
+		// }
+		// else
+
+		if ('line' == $chart_config['type']) {
 
 			// Add main Y axis (weight)
 			$graph_line_options = array(
@@ -199,12 +204,23 @@
 			if ($measurements_enabled) {
 				$graph_line_options['scales']['yAxes'] = array_merge($graph_line_options['scales']['yAxes'], array(array('type' => "linear", "display" => "true", "position" => "right", "id" => "y-axis-measurements", 'gridLines' => array('display' => $chart_config['show-gridlines']))));
 			}
-
-			// If gridlines are disabled, hide x axes too
-			if(!$chart_config['show-gridlines']) {
-				$graph_line_options['scales']['xAxes'] = array(array('gridLines' => array('display' => false)));
-			}
 		}
+
+		// If gridlines are disabled, hide x axes too
+		if(!$chart_config['show-gridlines']) {
+			$graph_line_options['scales']['xAxes'] = array(array('gridLines' => array('display' => false)));
+		}
+
+		// Legend
+		$graph_line_options['legend']['position'] = 'bottom';
+		$graph_line_options['legend']['labels']['boxWidth'] = 10;
+		$graph_line_options['legend']['labels']['fontSize'] = 10;
+		// legend: {
+        //     display: true,
+        //     labels: {
+        //         fontColor: 'rgb(255, 99, 132)'
+        //     }
+        // }
 
 		// Embed JavaScript options object for this graph into page
 		wp_localize_script( 'jquery-chart-ws-ls', $chart_id . '_options', $graph_line_options );

@@ -29,6 +29,12 @@ Dev Required:
 - Search for all TODOS
 - Search for die and var_dump
 - update plugin sample images and documentation
+- sort chart fill colour
+- ensure measurement titles are translatable
+- animate chart?
+- minify JS / css
+- append units to axis scale
+- cache chart output?
 
 Testing required:
 
