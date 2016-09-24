@@ -53,6 +53,7 @@
 		'WE_LS_CHART_POINT_SIZE' => 3,
 		'WE_LS_CHART_SHOW_GRID_LINES' => true,
 		'WE_LS_DISPLAY_BMI_IN_TABLES' => false,
+		'WE_LS_AXES_START_AT_ZERO' => false
 	);
 
     // -----------------------------------------------------------------------------------
@@ -149,6 +150,13 @@
 	if (WS_LS_IS_PRO && ('yes' == get_option('ws-ls-allow-advanced-tables') || false == get_option('ws-ls-allow-advanced-tables')) ){
 		$globals['WS_LS_ADVANCED_TABLES'] = true;
 	}
+	// -----------------------------------------------------------------------------------
+	// y Axes start at zero
+	// -----------------------------------------------------------------------------------
+	if ('yes' == get_option('ws-ls-axes-start-at-zero')) {
+		$globals['WE_LS_AXES_START_AT_ZERO'] = true;
+	}
+
 	// -----------------------------------------------------------------------------------
 	// Define if target weights enabled
 	// -----------------------------------------------------------------------------------

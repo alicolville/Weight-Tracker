@@ -170,9 +170,13 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 * If height is specified the BMI value for the given height / weight will be displayed.
 * New Shortcodes:
   [weight-loss-tracker-most-recent-bmi] - Displays the user's BMI for most recent weight given. The argument "display" determines what is rendered: 'index' - Actual BMI value. 'label' - BMI label for given value. 'both' - Label and BMI value in brackets
+
+** Other changes: **
+
 * Upgraded jQuery Datatables library to 1.10.12
 * Upgraded Chart.js to version 2! (1.0.2 to 2.2.2)
-* Target Weight line is now dashed to make it stand out more
+* Target Weight line is now dashed to make it stand out more.
+* New chart option added to start y Axes at 0 (instead of auto calculated).
 
 **Bug fixes:**
 

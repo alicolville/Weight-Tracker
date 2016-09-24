@@ -186,14 +186,14 @@
 
 		// Set initial y axis for weight
 		$graph_line_options = array(
-			'scales' => array('yAxes' => array(array('scaleLabel' => array('display' => true, 'labelString' => __('Weight (' . $y_axis_unit . ')', WE_LS_SLUG)), 'type' => "linear", "display" => "true", "position" => "left", "id" => "y-axis-weight", '' , 'gridLines' => array('display' => $chart_config['show-gridlines']))))
+			'scales' => array('yAxes' => array(array('scaleLabel' => array('display' => true, 'labelString' => __('Weight (' . $y_axis_unit . ')', WE_LS_SLUG)), 'type' => "linear", 'ticks' => array('beginAtZero' => WE_LS_AXES_START_AT_ZERO), "display" => "true", "position" => "left", "id" => "y-axis-weight", '' , 'gridLines' => array('display' => $chart_config['show-gridlines']))))
 		);
 
 		if ('line' == $chart_config['type']) {
 
 			// Add measurement Axis?
 			if ($measurements_enabled) {
-				$graph_line_options['scales']['yAxes'] = array_merge($graph_line_options['scales']['yAxes'], array(array('scaleLabel' => array('display' => true, 'labelString' => __('Measurement (' . $y_axis_measurement_unit . ')', WE_LS_SLUG)), 'type' => "linear", "display" => "true", "position" => "right", "id" => "y-axis-measurements", 'gridLines' => array('display' => $chart_config['show-gridlines']))));
+				$graph_line_options['scales']['yAxes'] = array_merge($graph_line_options['scales']['yAxes'], array(array('scaleLabel' => array('display' => true, 'labelString' => __('Measurement (' . $y_axis_measurement_unit . ')', WE_LS_SLUG)), 'ticks' => array('beginAtZero' => WE_LS_AXES_START_AT_ZERO), 'type' => "linear", "display" => "true", "position" => "right", "id" => "y-axis-measurements", 'gridLines' => array('display' => $chart_config['show-gridlines']))));
 			}
 		}
 

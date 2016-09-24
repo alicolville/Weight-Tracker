@@ -208,17 +208,7 @@ function ws_ls_settings_page() {
 															<p><?php echo __('If enabled, gridlines will be displayed on the Graph canvas.', WE_LS_SLUG); ?></p>
 														</td>
 													</tr>
-												<tr  class="<?php echo $disable_if_not_pro_class; ?>">
-													<th scope="row"><?php echo __( 'Display points on graph?', WE_LS_SLUG ); ?></th>
-													<td>
-														<select id="ws-ls-allow-points" name="ws-ls-allow-points">
-															<option value="yes" <?php selected( get_option('ws-ls-allow-points'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
-															<option value="no" <?php selected( get_option('ws-ls-allow-points'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
 
-														</select>
-														<p><?php echo __('If enabled, "Allows points and labels to be displayed on graph.', WE_LS_SLUG); ?></p>
-													</td>
-												</tr>
 													<tr  class="<?php echo $disable_if_not_pro_class; ?>">
 														<th scope="row"><?php echo __( 'Maximum points per graph', WE_LS_SLUG ); ?></th>
 														<td>
@@ -240,7 +230,17 @@ function ws_ls_settings_page() {
 														<p><?php echo __('If enabled, enter a HEX colour code to use for the Weight history line / bar border on graph.', WE_LS_SLUG); ?></p>
 													</td>
 												</tr>
-
+												<tr >
+													<th scope="row"><?php echo __( 'Should y Axes start at 0?', WE_LS_SLUG ); ?></th>
+													<td>
+														<select id="ws-ls-axes-start-at-zero" name="ws-ls-axes-start-at-zero">
+															<option value="no" <?php selected( get_option('ws-ls-axes-start-at-zero'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+															<option value="yes" <?php selected( get_option('ws-ls-axes-start-at-zero'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+															
+														</select>
+														<p><?php echo __('If enabled, y Axes shall start at 0. Otherwise, they are automatically calculated.', WE_LS_SLUG); ?></p>
+													</td>
+												</tr>
 
 												<tr>
 													<th colspan="2">
@@ -263,6 +263,17 @@ function ws_ls_settings_page() {
 													<td>
 														<input id="ws-ls-target-colour" name="ws-ls-target-colour" type="color" value="<?php echo WE_LS_TARGET_LINE_COLOUR; ?>">
 														<p><?php echo __('If enabled, enter a HEX colour code to use for the Target line on graph.', WE_LS_SLUG); ?></p>
+													</td>
+												</tr>
+												<tr  class="<?php echo $disable_if_not_pro_class; ?>">
+													<th scope="row"><?php echo __( 'Display points on graph?', WE_LS_SLUG ); ?></th>
+													<td>
+														<select id="ws-ls-allow-points" name="ws-ls-allow-points">
+															<option value="yes" <?php selected( get_option('ws-ls-allow-points'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+															<option value="no" <?php selected( get_option('ws-ls-allow-points'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+
+														</select>
+														<p><?php echo __('If enabled, "Allows points and labels to be displayed on graph.', WE_LS_SLUG); ?></p>
 													</td>
 												</tr>
 												<tr  class="<?php echo $disable_if_not_pro_class; ?>">
@@ -409,6 +420,7 @@ function ws_ls_register_settings()
     register_setting( 'we-ls-options-group', 'ws-ls-line-colour' );
     register_setting( 'we-ls-options-group', 'ws-ls-use-us-dates' );
     register_setting( 'we-ls-options-group', 'ws-ls-disable-css' );
+	register_setting( 'we-ls-options-group', 'ws-ls-axes-start-at-zero' );
 
     // Pro only open
     if(WS_LS_IS_PRO){
