@@ -173,13 +173,13 @@
 	// Define whether to use tabs
 	// -----------------------------------------------------------------------------------
 	if ('no' == get_option('ws-ls-use-tabs')) {
-			$globals['WE_LS_USE_TABS'] = false;
+		$globals['WE_LS_USE_TABS'] = false;
 	}
 	// -----------------------------------------------------------------------------------
 	// Disable plugin CSS
 	// -----------------------------------------------------------------------------------
 	if ('yes' == get_option('ws-ls-disable-css')) {
-			$globals['WE_LS_CSS_ENABLED'] = false;
+		$globals['WE_LS_CSS_ENABLED'] = false;
 	}
 	// -----------------------------------------------------------------------------------
 	// Display BMI in tables?

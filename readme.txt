@@ -21,9 +21,10 @@ Working on:
 Dev Required:
 
 - Search for all TODOS
-
+- update Go Pro pagew
 - update plugin sample images and documentation
-
+- update Git hub docs (add shortcode for target and bmi)
+- update readme.txt
 
 Testing required:
 
@@ -177,6 +178,7 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 * Upgraded Chart.js to version 2! (1.0.2 to 2.2.2)
 * Target Weight line is now dashed to make it stand out more.
 * New chart option added to start y Axes at 0 (instead of auto calculated).
+* Use of tabs defaults to "Yes" on settings page.
 
 **Bug fixes:**
 

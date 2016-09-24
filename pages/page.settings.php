@@ -175,8 +175,8 @@ function ws_ls_settings_page() {
 														<th scope="row"><?php echo __( 'Display data in tabs?' , WE_LS_SLUG); ?></th>
 														<td>
 															<select id="ws-ls-use-tabs" name="ws-ls-use-tabs">
-																<option value="no" <?php selected( get_option('ws-ls-use-tabs'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
 																<option value="yes" <?php selected( get_option('ws-ls-use-tabs'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+																<option value="no" <?php selected( get_option('ws-ls-use-tabs'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
 															</select>
 															<p><?php echo __('If enabled, "Weight History" and "Target Weight" will be displayed on sepearate tabs.', WE_LS_SLUG)?></p>
 														</td>
@@ -236,7 +236,7 @@ function ws_ls_settings_page() {
 														<select id="ws-ls-axes-start-at-zero" name="ws-ls-axes-start-at-zero">
 															<option value="no" <?php selected( get_option('ws-ls-axes-start-at-zero'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
 															<option value="yes" <?php selected( get_option('ws-ls-axes-start-at-zero'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
-															
+
 														</select>
 														<p><?php echo __('If enabled, y Axes shall start at 0. Otherwise, they are automatically calculated.', WE_LS_SLUG); ?></p>
 													</td>
