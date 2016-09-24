@@ -5,7 +5,7 @@ function ws_ls_admin_delete_entry_callback()
 {
   $ajax_response = 0;
 
-  check_ajax_referer( 'ajax-security-nonce', 'security' ); //TODO: Add back in!
+  check_ajax_referer( 'ajax-security-nonce', 'security' );
 
   $user_id = ws_ls_ajax_post_value('user-id');
   $row_id = ws_ls_ajax_post_value('row-id');
@@ -20,10 +20,10 @@ add_action( 'wp_ajax_ws_ls_admin_delete_entry', 'ws_ls_admin_delete_entry_callba
 
 function ws_ls_user_data_callback()
 {
-  $ajax_response = 0;
+  	$ajax_response = 0;
 	$filters = array();
-
-  //check_ajax_referer( 'ws-ls-nonce', 'security' ); //TODO: Add back in!
+ check_ajax_referer( 'ajax-security-nonce', 'security' );
+  //	check_ajax_referer( 'ajax-security-nonce', 'security' );
 
 	$draw_id = ws_ls_ajax_get_value('draw', true);
 	$table_columns = ws_ls_ajax_get_value('columns');
@@ -53,7 +53,6 @@ function ws_ls_user_data_callback()
 	wp_die();
 }
 add_action( 'wp_ajax_ws_ls_user_data', 'ws_ls_user_data_callback' );
-add_action( 'wp_ajax_nopriv_ws_ls_user_data', 'ws_ls_user_data_callback' ); //TODO: REMOVE
 
 function ws_ls_load_json($draw_id, $filters)
 {
@@ -72,7 +71,30 @@ function ws_ls_load_json($draw_id, $filters)
 		$delete_image = plugins_url( '../css/images/delete.png', __FILE__ );
 
 		foreach ($data_from_db['weight_data'] as $weight) {
-			array_push($data['data'], array($weight['user_nicename'], ws_ls_render_date($weight), $weight['display'], $weight['notes'], '<img src="' . $delete_image . '" width="15" height="15" border="0"  class="ws-ls-admin-delete-weight" id="ws-ls-delete-row-' . $weight['db_row_id'] . '" data-user-id="' . $weight['user_id'] . '" data-row-id="' . $weight['db_row_id'] . '" />', 'row-id' => $weight['db_row_id'], 'user-id' => $weight['user_id'] ));
+
+			$row = [];
+			$row[] = $weight['user_nicename'];
+			$row[] = ws_ls_render_date($weight);
+			$row[] = $weight['display'];
+			$row[] = $weight['notes'];
+
+			// Measurement Columns?
+	 		$measurement_columns = ws_ls_get_active_measurement_fields();
+			if ($measurement_columns) {
+	 			foreach ($measurement_columns as $key => $blah) {
+					$measure = ws_ls_prep_measurement_for_display($weight['measurements'][$key]);
+					$row[] = (is_numeric($measure)) ? $measure : '-';
+	 			}
+			}
+			$row[] = '<img src="' . $delete_image . '" width="15" height="15" border="0"  class="ws-ls-admin-delete-weight" id="ws-ls-delete-row-' . $weight['db_row_id'] . '" data-user-id="' . $weight['user_id'] . '" data-row-id="' . $weight['db_row_id'] . '" />';
+
+
+			$row['row-id'] = $weight['db_row_id'];
+			$row['user-id'] = $weight['user_id'];
+
+			array_push($data['data'], $row);
+
+		//	array_push($data['data'], array($weight['user_nicename'], ws_ls_render_date($weight), $weight['display'], $weight['notes'], '<img src="' . $delete_image . '" width="15" height="15" border="0"  class="ws-ls-admin-delete-weight" id="ws-ls-delete-row-' . $weight['db_row_id'] . '" data-user-id="' . $weight['user_id'] . '" data-row-id="' . $weight['db_row_id'] . '" />', 'row-id' => $weight['db_row_id'], 'user-id' => $weight['user_id'] ));
 		}
 	}
 

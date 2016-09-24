@@ -3,11 +3,7 @@ Contributors: aliakro
 Tags: weight, graph, track, stones, kg, table, data, plot, target, history, pounds, responsive, chart
 Requires at least: 4.1.0
 Tested up to: 4.5
-<<<<<<< HEAD
 Stable tag: 4.0
-=======
-Stable tag: 3.6.1
->>>>>>> 8084878374cfe583b843ed56d32902e1639a218f
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -24,17 +20,10 @@ Working on:
 
 Dev Required:
 
-- make chart legend better? condensed?
-- Advanced custom tables admin side
 - Search for all TODOS
-- Search for die and var_dump
+
 - update plugin sample images and documentation
-- sort chart fill colour
-- ensure measurement titles are translatable
-- animate chart?
-- minify JS / css
-- append units to axis scale
-- cache chart output?
+
 
 Testing required:
 
@@ -182,11 +171,13 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 * New Shortcodes:
   [weight-loss-tracker-most-recent-bmi] - Displays the user's BMI for most recent weight given. The argument "display" determines what is rendered: 'index' - Actual BMI value. 'label' - BMI label for given value. 'both' - Label and BMI value in brackets
 * Upgraded jQuery Datatables library to 1.10.12
-* Upgraded Chart.js to version 2! (1.0.2 to 2.1.6)
+* Upgraded Chart.js to version 2! (1.0.2 to 2.2.2)
+* Target Weight line is now dashed to make it stand out more
 
 **Bug fixes:**
 
 * User preferences are now cached correctly.
+* Fixed nounce check when fetching all user data.
 
 = 3.6.1 =
 

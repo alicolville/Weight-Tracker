@@ -1,22 +1,27 @@
 $tabs_global = false;
 
-jQuery( window ).ready(function ($) {
-  if ('true' == ws_ls_config['advanced-tables-enabled']) {
+jQuery( document ).ready(function ($) {
+	if ('true' == ws_ls_config['advanced-tables-enabled']) {
 
-    if ('true' == ws_ls_config['us-date']) {
-      $.fn.dataTable.moment( 'MM/DD/YYYY' );
-    }
-    else {
-        $.fn.dataTable.moment( 'DD/MM/YYYY' );
-    }
+	    if ('true' == ws_ls_config['us-date']) {
+	      $.fn.dataTable.moment( 'MM/DD/YYYY' );
+	    }
+	    else {
+	        $.fn.dataTable.moment( 'DD/MM/YYYY' );
+	    }
 
-    $('.ws-ls-advanced-data-table').DataTable( {
-            responsive: true,
-            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-        	'columnDefs': ws_ls_config_advanced_datatables['columns']
+	    $('.ws-ls-advanced-data-table').DataTable( {
+            "responsive":true,
+			"order": [[ 1, "desc" ]],
+			"lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+            "columnDefs": ws_ls_config_advanced_datatables['columns'],
+            "language": ws_ls_table_locale
         });
-   }
 
+   }
+	function ws_ls_edit_row(){
+
+	}
    // Delete / Edit links on tables
   $('.ws-ls-edit-row').click(function( event ) {
       event.preventDefault();
@@ -129,6 +134,16 @@ jQuery( window ).ready(function ($) {
             $tabs_global.data("zozoTabs").first();
         }
 
+		// Measurements?
+		if(response['measurements'] != false) {
+			var measurements = response['measurements'];
+			for (var k in measurements) {
+		        if (measurements.hasOwnProperty(k)) {
+				   $('#' + data['form-id'] + ' #ws-ls-' + k).val(measurements[k]);
+		        }
+		    }
+		}
+
         // Set focus on edit form
         $('.ws-ls-main-weight-form input:visible:nth-child(3)').focus();
     }
@@ -156,7 +171,7 @@ jQuery( document ).ready(function ($) {
     var wsLSTabsReady = function(event, item) {
         $('#ws-ls-tabs-loading').addClass('ws-ls-hide');
         $('#' + item.id).attr('style', '');
-    };
+	};
 
     $tabs_global = $("#ws-ls-tabs").zozoTabs({
         rounded: false,
@@ -196,30 +211,13 @@ jQuery( document ).ready(function ($) {
       $("#" + $chart_id).attr("width",width-50);
 
       if ('line' == $chart_type) {
-          new Chart(ctx).Line(this[$chart_id + "_data"], this[$chart_id + "_options"]);
+          new Chart(ctx, {type: 'line', data: this[$chart_id + "_data"], options: this[$chart_id + "_options"]});
       }
       else if ('bar' == $chart_type) {
 
-        $target_colour = $("#" + $chart_id).data('target-colour');
-        $target_weight = $("#" + $chart_id).data('target-weight');
+		  new Chart(ctx, {type: 'bar', data: this[$chart_id + "_data"], options: this[$chart_id + "_options"]});
 
-        // Based on http://stackoverflow.com/questions/28076525/overlay-line-on-chart-js-graph
-        Chart.types.Bar.extend({
-              name: 'BarOverlay',
-              draw: function (ease) {
-                  Chart.types.Bar.prototype.draw.apply(this);
-                  ctx.beginPath();
-                  ctx.lineWidth = 2;
-                  ctx.strokeStyle = $target_colour;
-                  ctx.moveTo(35, this.scale.calculateY($target_weight));
-                  ctx.lineTo(this.scale.calculateX(this.datasets[0].bars.length), this.scale.calculateY($target_weight));
-                  ctx.stroke();
-              }
-          });
-
-          new Chart(ctx).BarOverlay(this[$chart_id + "_data"], this[$chart_id + "_options"]);
-      }
-
+	  }
   }
 
   $('.we-ls-datepicker').each(function() {

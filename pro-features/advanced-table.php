@@ -25,21 +25,53 @@ function ws_ls_get_advanced_table_config() {
 		));
 	}
 
-	// Weight Columns?
-	$weight_columns = ws_ls_get_active_measurement_fields();
-	if ($weight_columns) {
+	// Measurement Columns?
+	$measurement_columns = ws_ls_get_active_measurement_fields();
+	if ($measurement_columns) {
 
-		$weight_cols = array();
+		$measure_cols = array();
 
-		foreach ($weight_columns as $key => $value) {
-			$weight_cols[] = array('targets' => ws_ls_get_column_number());
+		foreach ($measurement_columns as $key => $value) {
+			$measure_cols[] = array('targets' => ws_ls_get_column_number());
 		}
 
-		$columns = array_merge($columns, $weight_cols);
+		$columns = array_merge($columns, $measure_cols);
 	}
 
 	$columns = array_merge($columns, array(
 		array('sortable' => false, 'targets' => ws_ls_get_column_number())
+	));
+
+	return array (
+		'columns' => $columns
+	);
+}
+
+function ws_ls_get_advanced_table_admin_config() {
+
+	$columns = array(
+		array('name' => 'user_nicename', 'responsivePriority' => 0, 'targets' => ws_ls_get_column_number(), 'searchable' => true, 'sortable' => true),							// Name
+		array('name' => 'weight_date', 'responsivePriority' => 1,'targets' => ws_ls_get_column_number(), 'sortable' => true, 'searchable' => true),																		// Date
+		array('name' => 'weight_weight', 'responsivePriority' => 2,'targets' => ws_ls_get_column_number(), 'sortable' => true),																		// Weight
+		array('name' => 'notes', 'responsivePriority' => 3,'targets' => ws_ls_get_column_number(), 'sortable' => false),								// Notes
+		//array('targets' => ws_ls_get_column_number())
+	);
+
+	// Measurement Columns?
+	$measurement_columns = ws_ls_get_active_measurement_fields();
+	if ($measurement_columns) {
+
+		$measure_cols = array();
+
+		foreach ($measurement_columns as $key => $value) {
+			$measure_cols[] = array('targets' => ws_ls_get_column_number());
+		}
+
+		$columns = array_merge($columns, $measure_cols);
+	}
+
+	$columns = array_merge($columns, array(
+		array('sortable' => false, 'targets' => ws_ls_get_column_number(), 'width' => '6px')
 	));
 
 	return array (
@@ -67,9 +99,9 @@ function ws_ls_advanced_data_table($weight_data)
 	}
 
 	// Weight Columns?
-	$weight_columns = ws_ls_get_active_measurement_fields();
-	if ($weight_columns) {
-		foreach ($weight_columns as $key => $data) {
+	$measurement_columns = ws_ls_get_active_measurement_fields();
+	if ($measurement_columns) {
+		foreach ($measurement_columns as $key => $data) {
 			$html_output .= '<th class="none">' . $data['title'] . '</th>';
 		}
 	}
@@ -97,10 +129,10 @@ function ws_ls_advanced_data_table($weight_data)
 			$html_output .= '<td>' . ws_ls_get_bmi_for_table(ws_ls_get_user_height(), $weight_object['kg']) . '</td>';
 		}
 
-		// Weight Columns?
-		$weight_columns = ws_ls_get_active_measurement_fields();
-		if ($weight_columns) {
-			foreach ($weight_columns as $key => $data) {
+		// Measurement Columns?
+		$measurement_columns = ws_ls_get_active_measurement_fields();
+		if ($measurement_columns) {
+			foreach ($measurement_columns as $key => $data) {
 				$html_output .= '<td>' . ws_ls_prep_measurement_for_display($weight_object['measurements'][$key]) . '</td>';
 			}
 		}

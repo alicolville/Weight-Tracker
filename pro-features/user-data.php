@@ -30,6 +30,8 @@ function ws_ls_manage_user_data_page() {
 		ws_ls_delete_all_cache();
 	}
 
+	$measurement_unit = ('inches' == WE_LS_MEASUREMENTS_UNIT) ? __('Inches', WE_LS_SLUG) : __('Cm', WE_LS_SLUG);
+
 ?>
 
 
@@ -62,21 +64,34 @@ function ws_ls_manage_user_data_page() {
 											 <table id="ws-ls-user-data" class="display ws-ls-advanced-data-table" cellspacing="0" width="100%">
 								        <thead>
 								            <tr>
-								                <th>User</th>
+												<th>User</th>
 								                <th>Date</th>
 								                <th>Weight</th>
 												<th>Notes</th>
-								                <th></th>
+
+												<?php
+													$measurement_columns_html = '';
+													// Weight Columns?
+													$measurement_columns = ws_ls_get_active_measurement_fields();
+													if ($measurement_columns) {
+														foreach ($measurement_columns as $key => $data) {
+															$measurement_columns_html .= '<th class="none">' . $data['title'] . ' (' . $measurement_unit . ')</th>';
+														}
+														echo $measurement_columns_html;
+													}
+												?>
+												<th></th>
 
 								              </tr>
 								        </thead>
 								        <tfoot>
 								            <tr>
-								                <th>User</th>
+												<th>User</th>
 								                <th>Date</th>
 								                <th>Weight</th>
 												<th>Notes</th>
-								                <th></th>
+								                <?php echo $measurement_columns_html; ?>
+												<th></th>
 								            </tr>
 								        </tfoot>
 								    </table>

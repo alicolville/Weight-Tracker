@@ -10,3 +10,18 @@
     width:100%;
     white-space: pre;
 }
+.ws-ls-advanced-data-table
+{
+	table-layout: auto !important;
+}
+.ws-ls-advanced-data-table .child ul{
+	width: 100%;
+}
+.ws-ls-advanced-data-table .dtr-title{
+	width: 20%;
+}
+
+.ws-ls-advanced-data-table th
+{
+	padding: 1px 1px 1px 3px !important;
+}

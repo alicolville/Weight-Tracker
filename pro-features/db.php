@@ -6,9 +6,13 @@ function ws_ls_user_data($filters = false)
 {
     global $wpdb;
 
+	 // Fetch measurement columns if enabled!
+  	$measurement_columns = ws_ls_get_keys_for_active_measurement_fields('', true);
+  	$measurement_columns_sql = (!empty($measurement_columns)) ? ',' . implode(',', $measurement_columns) : '';
+
     $table_name = $wpdb->prefix . WE_LS_TABLENAME;
     $user_table_name = $wpdb->prefix . 'users';
-    $sql = 'SELECT ' . $table_name . '.id, weight_date, weight_weight, weight_stones, weight_pounds, weight_only_pounds, weight_notes, weight_user_id, user_nicename FROM ' . $table_name
+    $sql = 'SELECT ' . $table_name . '.id, weight_date, weight_weight, weight_stones, weight_pounds, weight_only_pounds, weight_notes, weight_user_id, user_nicename' . $measurement_columns_sql . ' FROM ' . $table_name
                             . ' INNER JOIN ' . $user_table_name . ' on ' . $user_table_name . '.id = ' . $table_name . '.weight_user_id';
 
     // Searching column for something specific?
@@ -34,6 +38,17 @@ function ws_ls_user_data($filters = false)
       $weight_data = array();
 
       foreach ($rows as $raw_weight_data) {
+
+		 $measurements = false;
+
+		 // Build weight array
+		 if(WE_LS_MEASUREMENTS_ENABLED && $measurement_columns && !empty($measurement_columns)) {
+			 $measurements = array();
+			 foreach ($measurement_columns as $key) {
+				 $measurements[$key] = $raw_weight_data->{$key};
+			 }
+		 }
+
         array_push($weight_data, ws_ls_weight_object($raw_weight_data->weight_user_id,
                                                       $raw_weight_data->weight_weight,
                                                       $raw_weight_data->weight_pounds,
@@ -43,7 +58,8 @@ function ws_ls_user_data($filters = false)
                                                       $raw_weight_data->weight_date,
                                                       false,
                                                       $raw_weight_data->id,
-                                                      $raw_weight_data->user_nicename
+                                                      $raw_weight_data->user_nicename,
+													  $measurements
                                                     ));
       }
 

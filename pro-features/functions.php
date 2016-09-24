@@ -11,7 +11,7 @@ function ws_ls_get_bmi_for_table($cm, $kg) {
 			return ws_ls_calculate_bmi_label($bmi);
 		}
 	} else {
-		return 'Add Height';
+		return __('Add Height for BMI', WE_LS_SLUG);
 	}
 	return '';
 }

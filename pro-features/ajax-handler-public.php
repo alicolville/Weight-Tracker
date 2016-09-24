@@ -6,7 +6,7 @@ function ws_ls_save_preferences_callback()
 {
   	$ajax_response = 0;
 
-	check_ajax_referer( 'ws-ls-nonce', 'security' ); //TODO: Add back in!
+	check_ajax_referer( 'ws-ls-nonce', 'security' ); 
 
   	// List of form fields / globals we want to store for the user
   	$keys_to_save = array('WE_LS_DATA_UNITS', 'WE_LS_US_DATE');
@@ -58,7 +58,7 @@ function ws_ls_delete_weight_entry_callback()
   $row_id = ws_ls_ajax_post_value('row-id');
 
   if(true == ws_ls_delete_entry($user_id, $row_id)){
-    $ajax_response = 1;
+	$ajax_response = 1;
   }
   echo $ajax_response;
 	wp_die();

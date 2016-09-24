@@ -189,24 +189,14 @@ function ws_ls_settings_page() {
 													<th scope="row"><?php echo __( 'Default chart type', WE_LS_SLUG ); ?></th>
 													<td>
 														<select id="ws-ls-chart-type" name="ws-ls-chart-type">
-															<option value="line" <?php selected( get_option('ws-ls-chart-type'), 'line' ); ?>><?php echo __('Line Chart', WE_LS_SLUG)?></option>
+															<option value="line" <?php selected( get_option('ws-ls-chart-type'), 'line' ); ?>><?php echo __('Line Chart', WE_LS_SLUG)?> - (<?php echo __('Highly Recommended', WE_LS_SLUG)?>)</option>
 															<option value="bar" <?php selected( get_option('ws-ls-chart-type'), 'bar' ); ?>><?php echo __('Bar Chart', WE_LS_SLUG)?></option>
 
 														</select>
 														<p><?php echo __('If enabled, "Allows points and labels to be displayed on graph. <strong>Note: If using measurements</strong>, graph type will be forced to Line.', WE_LS_SLUG); ?></p>
 													</td>
 												</tr>
-													<tr  class="<?php echo $disable_if_not_pro_class; ?>">
-														<th scope="row"><?php echo __( 'Bezier Curve (Line only)?', WE_LS_SLUG ); ?></th>
-														<td>
-															<select id="ws-ls-bezier-curve" name="ws-ls-bezier-curve">
-																<option value="yes" <?php selected( get_option('ws-ls-bezier-curve'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
-																<option value="no" <?php selected( get_option('ws-ls-bezier-curve'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
 
-															</select>
-															<p><?php echo __('If enabled, lines between points on a line graph will be curved', WE_LS_SLUG); ?></p>
-														</td>
-													</tr>
 													<tr  class="<?php echo $disable_if_not_pro_class; ?>" >
 														<th scope="row"><?php echo __( 'Display gridlines?', WE_LS_SLUG ); ?></th>
 														<td>
@@ -242,31 +232,30 @@ function ws_ls_settings_page() {
 															<p><?php echo __('If enabled, "Allows points and labels to be displayed on graph.', WE_LS_SLUG); ?></p>
 														</td>
 													</tr >
-														<tr  class="<?php echo $disable_if_not_pro_class; ?>">
-															<th scope="row" class="<?php echo $disable_if_not_pro_class; ?>"><?php echo __( 'Point thickness (Line only)', WE_LS_SLUG ); ?></th>
-															<td>
-																<?php $chart_options = array(1,2,3,4,5,6,7,8,9,10); ?>
-																<select id="ws-ls-point-size" name="ws-ls-point-size">
-																	<?php foreach ($chart_options as $option):?>
-																		<option value="<?php echo $option; ?>" <?php selected( WE_LS_CHART_POINT_SIZE, $option ); ?>><?php echo $option; ?></option>
-																	<?php endforeach; ?>
 
-																</select>
-																<p><?php echo __('Specifies the point thickness on a line chart.', WE_LS_SLUG); ?></p>
-															</td>
-														</tr>
 												<tr>
 													<th scope="row"><?php echo __( 'Weight colour?', WE_LS_SLUG ); ?></th>
 													<td>
 														<input id="ws-ls-line-colour" name="ws-ls-line-colour" type="color" value="<?php echo WE_LS_WEIGHT_LINE_COLOUR; ?>">
-														<p><?php echo __('If enabled, enter a HEX colour code to use for the Weight history line on graph.', WE_LS_SLUG); ?></p>
+														<p><?php echo __('If enabled, enter a HEX colour code to use for the Weight history line / bar border on graph.', WE_LS_SLUG); ?></p>
 													</td>
 												</tr>
+
+
 												<tr>
-													<th scope="row"><?php echo __( 'Weight fill colour?', WE_LS_SLUG ); ?></th>
+													<th colspan="2">
+														<h3><?php echo __( 'Line Chart Options', WE_LS_SLUG ); ?></h3>
+													</th>
+												</tr>
+												<tr  class="<?php echo $disable_if_not_pro_class; ?>">
+													<th scope="row"><?php echo __( 'Bezier Curve?', WE_LS_SLUG ); ?></th>
 													<td>
-														<input id="ws-ls-line-fill-colour" name="ws-ls-line-fill-colour" type="color" value="<?php echo WE_LS_WEIGHT_FILL_COLOUR; ?>">
-														<p><?php echo __('If enabled, enter a HEX colour code to use forthe shading underneath the Weight history line on graph. Line charts only.', WE_LS_SLUG); ?></p>
+														<select id="ws-ls-bezier-curve" name="ws-ls-bezier-curve">
+															<option value="yes" <?php selected( get_option('ws-ls-bezier-curve'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+															<option value="no" <?php selected( get_option('ws-ls-bezier-curve'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+
+														</select>
+														<p><?php echo __('If enabled, lines between points on a line graph will be curved', WE_LS_SLUG); ?></p>
 													</td>
 												</tr>
 												<tr>
@@ -274,6 +263,31 @@ function ws_ls_settings_page() {
 													<td>
 														<input id="ws-ls-target-colour" name="ws-ls-target-colour" type="color" value="<?php echo WE_LS_TARGET_LINE_COLOUR; ?>">
 														<p><?php echo __('If enabled, enter a HEX colour code to use for the Target line on graph.', WE_LS_SLUG); ?></p>
+													</td>
+												</tr>
+												<tr  class="<?php echo $disable_if_not_pro_class; ?>">
+													<th scope="row" class="<?php echo $disable_if_not_pro_class; ?>"><?php echo __( 'Point thickness', WE_LS_SLUG ); ?></th>
+													<td>
+														<?php $chart_options = array(1,2,3,4,5,6,7,8,9,10); ?>
+														<select id="ws-ls-point-size" name="ws-ls-point-size">
+															<?php foreach ($chart_options as $option):?>
+																<option value="<?php echo $option; ?>" <?php selected( WE_LS_CHART_POINT_SIZE, $option ); ?>><?php echo $option; ?></option>
+															<?php endforeach; ?>
+
+														</select>
+														<p><?php echo __('Specifies the point thickness on a line chart.', WE_LS_SLUG); ?></p>
+													</td>
+												</tr>
+												<tr>
+													<th colspan="2">
+														<h3><?php echo __( 'Bar Chart Options', WE_LS_SLUG ); ?></h3>
+													</th>
+												</tr>
+												<tr>
+													<th scope="row"><?php echo __( 'Weight fill colour?', WE_LS_SLUG ); ?></th>
+													<td>
+														<input id="ws-ls-line-fill-colour" name="ws-ls-line-fill-colour" type="color" value="<?php echo WE_LS_WEIGHT_FILL_COLOUR; ?>">
+														<p><?php echo __('If enabled, enter a HEX colour code to use for filling the Weight bars on the graph.', WE_LS_SLUG); ?></p>
 													</td>
 												</tr>
 											</table>
