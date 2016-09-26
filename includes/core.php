@@ -191,9 +191,6 @@
 			}
 		}
 
-	//	var_dump($measurement_graph_indexes, $graph_data['datasets']);
-
-
 		// Embed JavaScript data object for this graph into page
 		wp_localize_script( 'jquery-chart-ws-ls', $chart_id . '_data', $graph_data );
 
