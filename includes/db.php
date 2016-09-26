@@ -62,9 +62,12 @@ function ws_ls_get_weights($user_id, $limit = 100, $selected_week_number = -1, $
         }
       }
 
+	  $measurement_columns_sql = '';
 	  // Fetch measurement columns if enabled!
-	  $measurement_columns = ws_ls_get_keys_for_active_measurement_fields('', true);
-	  $measurement_columns_sql = (!empty($measurement_columns)) ? ',' . implode(',', $measurement_columns) : '';
+	  if (WE_LS_MEASUREMENTS_ENABLED) {
+		  $measurement_columns = ws_ls_get_keys_for_active_measurement_fields('', true);
+    	  $measurement_columns_sql = (!empty($measurement_columns)) ? ',' . implode(',', $measurement_columns) : '';
+	  }
 
       $table_name = $wpdb->prefix . WE_LS_TABLENAME;
 	  $sql =  $wpdb->prepare('SELECT id, weight_date, weight_weight, weight_stones, weight_pounds, weight_only_pounds, weight_notes' . $measurement_columns_sql . ' FROM ' . $table_name . ' where weight_user_id = %d ' . $additional_sql. ' order by weight_date ' . $sort_order . ' limit 0, %d', $user_id,  $limit);

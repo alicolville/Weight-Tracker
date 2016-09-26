@@ -389,7 +389,7 @@ function ws_ls_capture_form_validate_and_save($user_id = false)
 	$allowed_post_keys = array('ws_ls_is_target', 'we-ls-date', 'we-ls-weight-pounds',
 															'we-ls-weight-stones', 'we-ls-weight-kg', 'we-ls-notes');
 
-	$weight_keys = ws_ls_get_keys_for_active_measurement_fields('ws-ls-');
+	$weight_keys = false;
 
 	// Strip slashes from post object
 	$form_values = stripslashes_deep($_POST);
@@ -399,6 +399,7 @@ function ws_ls_capture_form_validate_and_save($user_id = false)
 
 	// If measurements enabled and PRO add enabled fields to the above list
 	if (WE_LS_MEASUREMENTS_ENABLED && !$is_target_form) {
+		$weight_keys = ws_ls_get_keys_for_active_measurement_fields('ws-ls-');
 		$allowed_post_keys = array_merge($allowed_post_keys, $weight_keys);
 	}
 
