@@ -14,6 +14,8 @@
   	define('WE_LS_USER_PREFERENCES_TABLENAME', 'WS_LS_DATA_USER_PREFERENCES');
 	define('WE_LS_CACHE_ENABLED', true);
 	define('WE_LS_CACHE_TIME', 15 * MINUTE_IN_SECONDS);
+	define('WE_LS_CACHE_COMMS_KEY', 4 * WEEK_IN_SECONDS);
+	define('WE_LS_CACHE_COMES_KEY_TIME', 4 * WEEK_IN_SECONDS);
 	define('WE_LS_CACHE_KEY_TARGET', 'target-data');
 	define('WE_LS_CACHE_KEY_DATA', 'weight-data');
 	define('WE_LS_CACHE_KEY_MIN_MAX_DATES', 'min-max-dates');
@@ -53,7 +55,8 @@
 		'WE_LS_CHART_POINT_SIZE' => 3,
 		'WE_LS_CHART_SHOW_GRID_LINES' => true,
 		'WE_LS_DISPLAY_BMI_IN_TABLES' => false,
-		'WE_LS_AXES_START_AT_ZERO' => false
+		'WE_LS_AXES_START_AT_ZERO' => false,
+		'WE_LS_ALLOW_STATS' => false
 	);
 
     // -----------------------------------------------------------------------------------
@@ -156,7 +159,12 @@
 	if ('yes' == get_option('ws-ls-axes-start-at-zero')) {
 		$globals['WE_LS_AXES_START_AT_ZERO'] = true;
 	}
-
+	// -----------------------------------------------------------------------------------
+	// Allow stats to be sent to YeKEn
+	// -----------------------------------------------------------------------------------
+	if ('yes' == get_option('ws-ls-allow-stats')) {
+		$globals['WE_LS_ALLOW_STATS'] = true;
+	}
 	// -----------------------------------------------------------------------------------
 	// Define if target weights enabled
 	// -----------------------------------------------------------------------------------
