@@ -453,5 +453,19 @@ function ws_ls_fetch_elements_from_end_of_array($data, $number_to_grab)
     return $data;
 }
 
+function ws_ls_display_default_measurements() {
+
+	if(defined('WE_LS_MEASUREMENTS')) {
+		$supported_measurements = json_decode(WE_LS_MEASUREMENTS, true);
+		echo '
+			<p>' . __('The plugin supports the following measurements', WE_LS_SLUG) . ':</p>
+			<ul>';
+		foreach ($supported_measurements as $key => $measurement) {
+			echo '<li>' . $measurement['title'] . '</li>';
+		}
+		echo '</ul>';
+	}
+
+}
 
 ?>

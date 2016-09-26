@@ -315,7 +315,7 @@ function ws_ls_settings_page() {
 														<p><?php echo __('If enabled, a user can also add body measurements along with their weights.', WE_LS_SLUG); ?></p>
 													</td>
 												</tr>
-                                                <tr>
+                                                <tr class="<?php echo $disable_if_not_pro_class; ?>">
                                                     <th scope="row"><?php echo __( 'Measurement Units' , WE_LS_SLUG); ?></th>
                                                     <td>
                                                         <select id="ws-ls-measurement-units" name="ws-ls-measurement-units">
@@ -340,31 +340,37 @@ function ws_ls_settings_page() {
                                                     <td>
                                                     <?php
 
-                                                    $measurement_settings = ws_ls_get_measurement_settings();
+                                                    $measurement_settings = (WS_LS_IS_PRO) ? ws_ls_get_measurement_settings() : false;
 
                                                         ?>
                                                     <table>
-                                                        <?php foreach ($measurement_settings as $key => $body_part) {
-                                                            if (!$body_part['user_preference']) {
-                                                        ?>
+                                                        <?php
 
-                                                                <tr>
-                                                                    <td colspan="2">
-                                                                        <label style="font-weight: bold;" for="ws-ls-<?php echo $key; ?>"><?php echo $body_part['title']; ?></label>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>
-                                                                        <?php echo __( 'Enable' , WE_LS_SLUG); ?>: <input type="checkbox" id="ws-ls-<?php echo $key; ?>" name="ws-ls-measurement[enabled][<?php echo $key; ?>]" value="on" <?php checked($body_part['enabled'], true); ?> />
-                                                                    </td>
-                                                                    <td>
-                                                                        <?php echo __( 'Chart Colour' , WE_LS_SLUG); ?>: <input name="ws-ls-measurement[colors][<?php echo $key; ?>]" type="color" value="<?php echo $body_part['chart_colour']; ?>">
+														if($measurement_settings) {
+															foreach ($measurement_settings as $key => $body_part) {
+	                                                            if (!$body_part['user_preference']) {
+	                                                        ?>
 
-                                                                    </td>
-                                                                </tr>
-                                                        <?php }
-                                                            }
-                                                        ?>
+	                                                                <tr>
+	                                                                    <td colspan="2">
+	                                                                        <label style="font-weight: bold;" for="ws-ls-<?php echo $key; ?>"><?php echo $body_part['title']; ?></label>
+	                                                                    </td>
+	                                                                </tr>
+	                                                                <tr>
+	                                                                    <td>
+	                                                                        <?php echo __( 'Enable' , WE_LS_SLUG); ?>: <input type="checkbox" id="ws-ls-<?php echo $key; ?>" name="ws-ls-measurement[enabled][<?php echo $key; ?>]" value="on" <?php checked($body_part['enabled'], true); ?> />
+	                                                                    </td>
+	                                                                    <td>
+	                                                                        <?php echo __( 'Chart Colour' , WE_LS_SLUG); ?>: <input name="ws-ls-measurement[colors][<?php echo $key; ?>]" type="color" value="<?php echo $body_part['chart_colour']; ?>">
+
+	                                                                    </td>
+	                                                                </tr>
+	                                                        <?php }
+	                                                            }
+														} else {
+															ws_ls_display_default_measurements();
+														}
+													    ?>
                                                     </table>
                                                     </td>
                                                 </tr>
