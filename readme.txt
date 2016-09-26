@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight, graph, track, stones, kg, table, data, plot, target, history, pounds, responsive, chart
 Requires at least: 4.1.0
 Tested up to: 4.5
-Stable tag: 4.0
+Stable tag: 4.0-beta1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -29,7 +29,7 @@ Dev Required:
 Testing required:
 
 - Everything
-- Ensure Advanced table language lookup not cocked up
+
 
 ***************************** DELETE ********************************************
 ***************************** DELETE ********************************************
@@ -175,7 +175,7 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 ** Other changes: **
 
 * Upgraded jQuery Datatables library to 1.10.12
-* Upgraded Chart.js to version 2! (1.0.2 to 2.2.2)
+* Upgraded Chart.js to version 2! (1.0.2 to 2.3.0)
 * Target Weight line is now dashed to make it stand out more.
 * New chart option added to start y Axes at 0 (instead of auto calculated).
 * Use of tabs defaults to "Yes" on settings page.

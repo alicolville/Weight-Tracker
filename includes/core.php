@@ -49,15 +49,16 @@
 			'weight-target-color' => WE_LS_TARGET_LINE_COLOUR,
 			'show-gridlines' => WE_LS_CHART_SHOW_GRID_LINES,
 			'bezier' => WE_LS_CHART_BEZIER_CURVE,
-            'hide_login_message_if_needed' => true
+            'hide_login_message_if_needed' => true,
+			'exclude-measurements' => false
 		);
-
-		$measurements_enabled = (WE_LS_MEASUREMENTS_ENABLED && ws_ls_any_active_measurement_fields()) ? true : false;
 
         // If we are PRO and the developer has specified options then override the default
         if($options && WS_LS_IS_PRO){
             $chart_config = wp_parse_args( $options, $chart_config );
         }
+
+		$measurements_enabled = (false == $chart_config['exclude-measurements'] && WE_LS_MEASUREMENTS_ENABLED && ws_ls_any_active_measurement_fields()) ? true : false;
 
         // Make sure they are logged in
         if (!is_user_logged_in())	{
