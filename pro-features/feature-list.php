@@ -3,6 +3,9 @@
 defined('ABSPATH') or die('Jog on!');
 
 $pro_features = array(
+
+__('<strong>Measurements.</strong> Support for recording measurements like Hip, Waist, Leg, Bicep, etc. Displayed on charts and tables.', WE_LS_SLUG),
+__('<strong>BMI.</strong> Allows a user to specify their height. Once specified, their BMI is displayed next to each weight entry. There is also a shortcode to render the latest BMI.', WE_LS_SLUG),
   __('<strong>Widgets.</strong> Widgets that allow you to display the graph and quick weight entry form within any widget area.', WE_LS_SLUG),
   __('<strong>Chart and form Shortcodes.</strong> That allow you to display the graph and quick weight entry form by placing a shortcode on any post or page.', WE_LS_SLUG),
   __('<strong>Text Shortcodes.</strong> Additional shortcodes for earliest and most recent dates entered.', WE_LS_SLUG),
