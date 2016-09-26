@@ -147,6 +147,7 @@
 													'type' => 'line'
 												);
 				$graph_data['datasets'][$i]['data'] = array();
+				$graph_data['datasets'][$i]['data-count'] = 0;
 
 				$measurement_graph_indexes[$key] = $i;
 
@@ -173,12 +174,25 @@
 					// If we have a genuine measurement value then add to graph data - otherwise NULL
 					if(!is_null($weight_object['measurements'][$key]) && 0 != $weight_object['measurements'][$key]) {
 						$graph_data['datasets'][$measurement_graph_indexes[$key]]['data'][] = ws_ls_prep_measurement_for_display($weight_object['measurements'][$key]);
+						$graph_data['datasets'][$measurement_graph_indexes[$key]]['data-count']++;
 					} else {
 						$graph_data['datasets'][$measurement_graph_indexes[$key]]['data'][] = NULL;
 					}
 				}
 			}
 		}
+
+		// Remove any empty measurements from graph
+		if($measurements_enabled) {
+			foreach ($active_measurment_field_keys as $key) {
+				if(0 == $graph_data['datasets'][$measurement_graph_indexes[$key]]['data-count']) {
+					unset($graph_data['datasets'][$measurement_graph_indexes[$key]]);
+				}
+			}
+		}
+
+	//	var_dump($measurement_graph_indexes, $graph_data['datasets']);
+
 
 		// Embed JavaScript data object for this graph into page
 		wp_localize_script( 'jquery-chart-ws-ls', $chart_id . '_data', $graph_data );
