@@ -326,7 +326,7 @@ function ws_ls_settings_page() {
                                                     </td>
                                                 </tr>
                                                 <tr class="<?php echo $disable_if_not_pro_class; ?>">
-                                                	<th scope="row"><?php echo __( 'Measurement fields mandatory?' , WE_LS_SLUG); ?></th>
+                                                	<th scope="row"><?php echo __( 'Measurements mandatory?' , WE_LS_SLUG); ?></th>
 													<td>
 														<select id="ws-ls-measurements-mandatory" name="ws-ls-measurements-mandatory">
 															<option value="no" <?php selected( get_option('ws-ls-measurements-mandatory'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG); ?></option>
