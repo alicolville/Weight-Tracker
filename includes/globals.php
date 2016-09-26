@@ -15,7 +15,7 @@
 	define('WE_LS_CACHE_ENABLED', true);
 	define('WE_LS_CACHE_TIME', 15 * MINUTE_IN_SECONDS);
 	define('WE_LS_CACHE_COMMS_KEY', 4 * WEEK_IN_SECONDS);
-	define('WE_LS_CACHE_COMES_KEY_TIME', 4 * WEEK_IN_SECONDS);
+	define('WE_LS_CACHE_COMMS_KEY_TIME', 4 * WEEK_IN_SECONDS);
 	define('WE_LS_CACHE_KEY_TARGET', 'target-data');
 	define('WE_LS_CACHE_KEY_DATA', 'weight-data');
 	define('WE_LS_CACHE_KEY_MIN_MAX_DATES', 'min-max-dates');
