@@ -18,7 +18,7 @@ function ws_ls_set_cache($key, $data, $time_to_expire = WE_LS_CACHE_TIME) {
 
     if(WE_LS_CACHE_ENABLED) {
       $key = ws_ls_generate_cache_key($key);
-      set_transient($key, $data, WE_LS_CACHE_TIME);
+      set_transient($key, $data, $time_to_expire);
     }
 
     return false;

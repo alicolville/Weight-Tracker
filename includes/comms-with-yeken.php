@@ -10,7 +10,7 @@ defined('ABSPATH') or die('Jog on!');
 */
 
 // If cache key not found time to send communication to YeKen
-if (WE_LS_ALLOW_STATS && !ws_ls_get_cache(WE_LS_CACHE_COMMS_KEY)) {
+if (WE_LS_ALLOW_STATS && is_admin() && false == ws_ls_get_cache(WE_LS_CACHE_COMMS_KEY)) {
 
 	// Build payload to send to Yeken
 	$data = array();
