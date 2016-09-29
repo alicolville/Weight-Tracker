@@ -108,6 +108,7 @@
 		$chart_type_supports_target_data = ('bar' == $chart_config['type']) ? false : true;
 
 		$dataset_index = 1;
+		$number_of_measurement_datasets_with_data = 0;
 
 		// If target weights are enabled, then include into javascript data object
 		if ($target_weight != false && WE_LS_ALLOW_TARGET_WEIGHTS && $chart_type_supports_target_data){
@@ -188,6 +189,8 @@
 			foreach ($active_measurment_field_keys as $key) {
 				if(0 == $graph_data['datasets'][$measurement_graph_indexes[$key]]['data-count']) {
 					unset($graph_data['datasets'][$measurement_graph_indexes[$key]]);
+				} else {
+					$number_of_measurement_datasets_with_data++;
 				}
 			}
 		}
@@ -205,7 +208,7 @@
 		if ('line' == $chart_config['type']) {
 
 			// Add measurement Axis?
-			if ($measurements_enabled) {
+			if ($measurements_enabled && $number_of_measurement_datasets_with_data != 0) {
 				$graph_line_options['scales']['yAxes'] = array_merge($graph_line_options['scales']['yAxes'], array(array('scaleLabel' => array('display' => true, 'labelString' => __('Measurement (' . $y_axis_measurement_unit . ')', WE_LS_SLUG)), 'ticks' => array('beginAtZero' => WE_LS_AXES_START_AT_ZERO), 'type' => "linear", "display" => "true", "position" => "right", "id" => "y-axis-measurements", 'gridLines' => array('display' => $chart_config['show-gridlines']))));
 			}
 		}
