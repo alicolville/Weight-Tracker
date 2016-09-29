@@ -423,7 +423,7 @@ function ws_ls_capture_form_validate_and_save($user_id = false)
 	 		// Convert to CM?
 		 	if('cm' != ws_ls_get_config('WE_LS_MEASUREMENTS_UNIT')) {
 	           $measurements[$key] = ws_ls_convert_to_cm(0, $form_values[$key]);
-		   	} else {
+		   } elseif (isset($form_values[$key])) {
 			   $measurements[$key] = round($form_values[$key], 2);
 		   	}
 		}
