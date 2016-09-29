@@ -5,7 +5,7 @@ defined('ABSPATH') or die('Jog on!');
 /**
  * Plugin Name: Weight Loss Tracker
  * Description: An easy to use plugin that allows a user to keep track of their weight history in both tabular and chart format.
- * Version: 4.0-beta1
+ * Version: 4.0-beta3
  * Author: YeKen
  * Author URI: https://www.YeKen.uk
  * License: GPL2

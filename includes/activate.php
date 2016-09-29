@@ -32,7 +32,7 @@
 			left_bicep float NULL,
 			right_bicep float NULL,
 			left_calf float NULL,
-			right_calf float NULL
+			right_calf float NULL,
 		  UNIQUE KEY id (id)
 		) $charset_collate;";
 
@@ -47,7 +47,7 @@
 			  target_weight_weight float NOT NULL,
 			  target_weight_stones float NOT NULL,
 			  target_weight_pounds float NOT NULL,
-			  target_weight_only_pounds float NOT NULL
+			  target_weight_only_pounds float NOT NULL,
 			  UNIQUE KEY id (id)
 		) $charset_collate;";
 

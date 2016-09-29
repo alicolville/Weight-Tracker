@@ -9,13 +9,15 @@
 	define('WE_LS_TITLE', 'Weight Loss Tracker');
 	define('WE_LS_SLUG', 'weight-loss-tracker');
 	define('WE_LS_DATA_URL', 'https://yeken.uk/wlt/plugin-info.json');
+	define('WE_LS_STATS_URL', 'https://yeken.uk/wlt/stats.php');
 	define('WE_LS_TABLENAME', 'WS_LS_DATA');
 	define('WE_LS_TARGETS_TABLENAME', 'WS_LS_DATA_TARGETS');
   	define('WE_LS_USER_PREFERENCES_TABLENAME', 'WS_LS_DATA_USER_PREFERENCES');
 	define('WE_LS_CACHE_ENABLED', true);
 	define('WE_LS_CACHE_TIME', 15 * MINUTE_IN_SECONDS);
-	define('WE_LS_CACHE_COMMS_KEY', 4 * WEEK_IN_SECONDS);
-	define('WE_LS_CACHE_COMMS_KEY_TIME', 4 * WEEK_IN_SECONDS);
+	define('WE_LS_CACHE_COMMS_KEY', 'comm-with-yeken');
+	//define('WE_LS_CACHE_COMMS_KEY_TIME', 4 * WEEK_IN_SECONDS);
+	define('WE_LS_CACHE_COMMS_KEY_TIME', 5);
 	define('WE_LS_CACHE_KEY_TARGET', 'target-data');
 	define('WE_LS_CACHE_KEY_DATA', 'weight-data');
 	define('WE_LS_CACHE_KEY_MIN_MAX_DATES', 'min-max-dates');

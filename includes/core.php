@@ -103,11 +103,11 @@
 		$graph_data['datasets'][0]['data'] = array();
 		$graph_data['datasets'][0]['yAxisID'] = 0;
 
-
 		$target_weight = ws_ls_get_user_target($chart_config['user-id']);
 
 		$chart_type_supports_target_data = ('bar' == $chart_config['type']) ? false : true;
 
+		$dataset_index = 1;
 
 		// If target weights are enabled, then include into javascript data object
 		if ($target_weight != false && WE_LS_ALLOW_TARGET_WEIGHTS && $chart_type_supports_target_data){
@@ -117,11 +117,12 @@
 													'borderColor' => $chart_config['weight-target-color'],
 													'borderWidth' => $chart_config['width'],
 													'pointRadius' => 0,
-													'borderDash' => [5,5],
+													'borderDash' => array(5,5),
 													'fill' => false,
 													'type' => 'line'
 												);
 				$graph_data['datasets'][1]['data'] = array();
+				$dataset_index = 2;
 		}
 
 		// ----------------------------------------------------------------------------
@@ -131,27 +132,27 @@
 		if($measurements_enabled) {
 			$active_measurement_fields = ws_ls_get_active_measurement_fields();
 			$active_measurment_field_keys = ws_ls_get_keys_for_active_measurement_fields('', true);
-			$measurement_graph_indexes = [];
-			$i = 2;
+			$measurement_graph_indexes = array();
+
 
 			foreach ($active_measurement_fields as $key => $data) {
 
-				$graph_data['datasets'][$i] = array( 'label' =>  __( $data['title'], WE_LS_SLUG),
+				$graph_data['datasets'][$dataset_index] = array( 'label' =>  __( $data['title'], WE_LS_SLUG),
 													'borderColor' => $data['chart_colour'],
 													'borderColor' => $data['chart_colour'],
-													'borderWidth' => $data['width'],
+													'borderWidth' => $chart_config['width'],
 													'pointRadius' => $point_size,
 													'fill' => false,
 													'spanGaps' => true,
 													'yAxisID' => 'y-axis-measurements',
 													'type' => 'line'
 												);
-				$graph_data['datasets'][$i]['data'] = array();
-				$graph_data['datasets'][$i]['data-count'] = 0;
+				$graph_data['datasets'][$dataset_index]['data'] = array();
+				$graph_data['datasets'][$dataset_index]['data-count'] = 0;
 
-				$measurement_graph_indexes[$key] = $i;
+				$measurement_graph_indexes[$key] = $dataset_index;
 
-				$i++;
+				$dataset_index++;
 			}
 		}
 
@@ -413,7 +414,7 @@ function ws_ls_capture_form_validate_and_save($user_id = false)
 	$weight_object = false;
 	$weight_notes = (!$is_target_form) ? $form_values['we-ls-notes'] : '' ;
 	$weight_date = (!$is_target_form) ? $form_values['we-ls-date'] : false ;
-	$measurements = [];
+	$measurements = array();
 
 	// Build measurement fields up and convert to CM if needed
 	if (WE_LS_MEASUREMENTS_ENABLED && is_array($weight_keys) && !empty($weight_keys) && !$is_target_form) {

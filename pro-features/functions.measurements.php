@@ -43,7 +43,7 @@ function ws_ls_any_active_measurement_fields(){
 }
 function ws_ls_get_keys_for_active_measurement_fields($prefix = '', $remove_user_preferences = false){
   	$measurement_fields = ws_ls_get_measurement_settings();
-	$keys = [];
+	$keys = array();
 	if ($measurement_fields) {
 		foreach($measurement_fields as $key => $data) {
 		  if($data['enabled']) {
@@ -59,7 +59,7 @@ function ws_ls_get_keys_for_active_measurement_fields($prefix = '', $remove_user
 }
 function ws_ls_get_active_measurement_fields(){
   	$measurement_fields = ws_ls_get_measurement_settings();
-	$keys = [];
+	$keys = array();
 	if ($measurement_fields) {
 		foreach($measurement_fields as $key => $data) {
 		  if($data['enabled'] && false == $data['user_preference']) {
