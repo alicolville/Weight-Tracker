@@ -5,11 +5,9 @@
 
 	function ws_ls_activate()
 	{
-		$debug_values = true;
-
 		global $wpdb;
 
-   	$table_name = $wpdb->prefix . WE_LS_TABLENAME;
+   		$table_name = $wpdb->prefix . WE_LS_TABLENAME;
 
 		$charset_collate = $wpdb->get_charset_collate();
 
@@ -62,9 +60,19 @@
 				 UNIQUE KEY user_id (user_id)
 		 ) $charset_collate;";
 
-			dbDelta( $sql );
-
+		dbDelta( $sql );
 
 	}
 
-?>
+	function ws_ls_upgrade() {
+
+		$option_key = 'ws-ls-version-number';
+
+		$existing_version = get_option($option_key);
+
+		if(empty($existing_version) || $existing_version != WE_LS_CURRENT_VERSION) {
+			ws_ls_activate();
+			update_option($option_key, WE_LS_CURRENT_VERSION);
+		}
+	}
+	add_action('admin_init', 'ws_ls_upgrade');
