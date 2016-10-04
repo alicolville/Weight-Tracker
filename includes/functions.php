@@ -353,7 +353,7 @@ function ws_ls_round_weights($weight)
   $weight['stones'] = round($weight['stones']);
   $weight['pounds'] = round($weight['pounds']);
 
-  if (!empty($weight) && is_numeric($weight['difference_from_start'])) {
+  if (!empty($weight['difference_from_start']) && is_numeric($weight['difference_from_start'])) {
     $weight['difference_from_start'] = round($weight['difference_from_start']);
   }
 
