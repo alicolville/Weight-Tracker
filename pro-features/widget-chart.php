@@ -18,7 +18,8 @@ class ws_ls_widget_chart extends WP_Widget {
             'max-points' => 5,
             'user-id' => '',
             'type' => 'line',
-            'not-logged-in-message' => ''
+            'not-logged-in-message' => '',
+			'exclude-measurements' => 'no'
         );
 
 	}
@@ -36,7 +37,7 @@ class ws_ls_widget_chart extends WP_Widget {
         // User logged in?
         if(is_user_logged_in())
         {
-						ws_ls_enqueue_files();
+			ws_ls_enqueue_files();
 
             $chart_arguments =  array('user-id' => get_current_user_id(),
                                     'max-data-points' => WE_LS_CHART_MAX_POINTS);
@@ -47,16 +48,21 @@ class ws_ls_widget_chart extends WP_Widget {
             if(is_numeric($instance['max-points'])) {
                 $chart_arguments['max-data-points'] = $instance['max-points'];
             }
-             if(in_array($instance['type'], array('bar', 'line'))) {
+            if(in_array($instance['type'], array('bar', 'line'))) {
                 $chart_arguments['type'] = $instance['type'];
             }
+			if('yes' == $instance['exclude-measurements']) {
+                $chart_arguments['exclude-measurements'] = true;
+            }
+
+
 
             $weight_data = ws_ls_get_weights($chart_arguments['user-id'], $chart_arguments['max-data-points'], -1, 'desc');
 
             // Reverse array so in cron order
             $weight_data = array_reverse($weight_data);
 
-						$chart_arguments['height'] = false;
+			$chart_arguments['height'] = false;
 
             if ($weight_data) {
                 echo $args['before_widget'];
@@ -127,8 +133,15 @@ class ws_ls_widget_chart extends WP_Widget {
 			<label for="<?php echo $this->get_field_id( 'user-id' ); ?>"><?php _e('ID of user (leave blank to show chart for current user)', WE_LS_SLUG); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id( 'user-id' ); ?>" name="<?php echo $this->get_field_name( 'user-id' ); ?>" type="text" value="<?php echo esc_attr( $field_values['user-id'] ); ?>">
 		</p>
+		<p><small><?php _e('Note: By default, the chart will be displayed in the weight unit chosen by the logged in user. If not specfied the plugin default will be used.', WE_LS_SLUG); ?></small></p>
 
-    <p><small><?php _e('Note: By default, the chart will be displayed in the weight unit chosen by the logged in user. If not specfied the plugin default will be used.', WE_LS_SLUG); ?></small></p>
+		<p>
+			<label for="<?php echo $this->get_field_id( 'exclude-measurements' ); ?>"><?php _e('Hide Measurements?', WE_LS_SLUG); ?></label>
+            <select class="widefat" name="<?php echo $this->get_field_name( 'exclude-measurements' ); ?>" id="<?php echo $this->get_field_id( 'exclude-measurements' ); ?>">
+                <option value="no" <?php selected( $field_values['exclude-measurements'], 'no'); ?>>No</option>
+                <option value="yes" <?php selected( $field_values['exclude-measurements'], 'yes'); ?>>Yes</option>
+            </select>
+		</p>
 
 		<?php
 	}
