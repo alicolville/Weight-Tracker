@@ -85,6 +85,6 @@
 			}
 	}
 	function ws_ls_enqueue_admin_files(){
-		wp_enqueue_script('ws-ls-admin',plugins_url( '../js/admin-notifications.js', __FILE__ ), array('jquery'), WE_LS_CURRENT_VERSION);
+		wp_enqueue_script('ws-ls-admin-notifications',plugins_url( '../js/admin-notifications.js', __FILE__ ), array('jquery'), WE_LS_CURRENT_VERSION);
 	}
 	add_action( 'admin_enqueue_scripts', 'ws_ls_enqueue_admin_files');
