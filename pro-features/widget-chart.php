@@ -51,7 +51,7 @@ class ws_ls_widget_chart extends WP_Widget {
             if(in_array($instance['type'], array('bar', 'line'))) {
                 $chart_arguments['type'] = $instance['type'];
             }
-			if('yes' == $instance['exclude-measurements']) {
+			if(isset($instance['exclude-measurements']) && 'yes' == $instance['exclude-measurements']) {
                 $chart_arguments['exclude-measurements'] = true;
             }
 

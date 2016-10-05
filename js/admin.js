@@ -1,6 +1,5 @@
 jQuery( document ).ready(function ($) {
 
-
     $("#ws-ls-tabs").zozoTabs({
       rounded: false,
        multiline: true,
@@ -66,7 +65,7 @@ jQuery( document ).ready(function ($) {
   }
 
     function ws_ls_delete_row_callback(data, response)
-    { console.log(response);
+    {
       if (response == 1) {
 
         var table = $('#' + data['table-id']).DataTable();
@@ -83,7 +82,5 @@ jQuery( document ).ready(function ($) {
         console.log('Error deleting entry :(', data, response);
       }
     }
-
-
 
 });

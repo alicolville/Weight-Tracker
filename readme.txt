@@ -1,13 +1,14 @@
 === Plugin Name ===
-Contributors: aliakro
-Tags: weight, graph, track, stones, kg, table, data, plot, target, history, pounds, responsive, chart
+Contributors: aliakro, alexiarna, idelfonsog2, alexiarna, kfasterholdt
+Tags: weight, loss, lose, helper, bmi, body, mass, index, graph, track, stones, kg, table, data, plot, target, history, pounds, responsive, chart, measurements, cm, centimeters, inches, hip, waist, bicep, thigh
 Requires at least: 4.1.0
-Tested up to: 4.5
-Stable tag: 4.0-beta5
+Tested up to: 4.6.1
+Stable tag: 4.0-beta6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Donate Link: https://www.yeken.uk/donate/
 
-An easy to use plugin that allows a user to keep track of their weight history in both tabular and chart format.
+Allow the registered users of your website to track their weight and relevant body measurements. History can be displayed in both tables & charts.
 
 == Description ==
 
@@ -21,9 +22,7 @@ Working on:
 Dev Required:
 
 - Search for all TODOS
-- update Go Pro pagew
 - update plugin sample images and documentation
-- update Git hub docs (add shortcode for target and bmi)
 - update readme.txt
 
 Testing required:
@@ -37,13 +36,13 @@ Testing required:
 
 = Core Features =
 
-An easy to use plugin that allows a user to keep track of their weight history in both tabular and chart format (Chart.js). Simply place the tag [weight-loss-tracker] on a given page and the user is presented with a tabbed form to enter a date (UK or US), weight and notes for that entry. When the person saves their entry the data table and graph are refreshed. The plugin also allows users to specify their target weight which is drawn on the chart as a comparison. If data is entered for an existing date, then the previous entry is simply updated. The graph is shown when there are two or more entries.
+An easy to use plugin that allows registered users of your website to track their weight and relevant body measurements. Their history can be displayed in both tables, charts, widgets and various shortcodes. Simply place the tag [weight-loss-tracker] on a given page and the user is presented with a tabbed form to enter a date (UK or US), weight and notes for that entry. When the person saves their entry the data table and graph are refreshed. The plugin also allows users to specify their target weight which is drawn on the chart as a comparison. If data is entered for an existing date, then the previous entry is simply updated. The graph is shown when there are two or more entries.
 
 The following weight formats are supported:
 
-- Metric (Kg)
-- Imperial - Stones & Pounds
-- Imperial - Pounds only
+* Metric (Kg)
+* Imperial - Stones & Pounds
+* Imperial - Pounds only
 
 Also supports the following tags:
 
@@ -57,46 +56,50 @@ Also supports the following tags:
 
 Our Pro version has now been released! If you upgrade, you get he additional features:
 
-- Widgets. Widgets that allow you to display the graph and quick weight entry form within any widget area.
-- Chart and form Shortcodes. That allow you to display the graph and quick weight entry form by placing a shortcode on any post or page.
-- Text Shortcodes. Additional shortcodes for earliest and most recent dates entered.
-- Admin: View / Delete user data. Admin will be able to view and delete existing user data.
-- User preferences. If enabled, the user will be able to select which unit they wish to store their weight in Metric or Imperial. They will also be able to specify date format and clear all their weight data.
-- Bar Charts. Fancy something different to a line chart? The plugin will also suppor`````t Bar Charts.
-- Decimals. Decimals will be allowed weight in Pounds only or Kg modes.
-- Delete existing entry. A logged in user will be able to delete or edit an existing weight entry.
-- Better Tables.. Data tables in front end and admin will support paging and sorting.
-- Admin: Extra Settings. Extra settings to customise the plugin will be added e.g. number of plot points on graph, rows per page, etc.
+* **Measurements**. If enabled, users can now track measurements alongside their weight entries. As admin, you can allow the user to track one or more of the following: "Bicep - Left", "Bicep - Right", "Calf - Left", "Bust / Chest", "Buttocks", "Hips", "Navel", "Thigh - Left", "Thigh - Right" and "Waist" (Please get in touch if you have additional fields).
+* **Body Mass Index**. If enabled by admin, once a user has added their Height (via user preferences tab) a BMI value will be presented in data tables.
+* **Widgets**. Widgets that allow you to display the graph and quick weight entry form within any widget area.
+* **Chart and form Shortcodes**. That allow you to display the graph and quick weight entry form by placing a shortcode on any post or page.
+* **Text Shortcodes**. Additional shortcodes for earliest and most recent dates entered.
+* **Better Admin**:
+ * View / Delete user data**. Admin will be able to view and delete existing user data.
+ * Extra Settings. Extra settings to customise the plugin will be added e.g. number of plot points on graph, rows per page, etc.
+* **User preferences**. If enabled, the user will be able to select which unit they wish to store their weight in Metric or Imperial. They will also be able to specify date format and clear all their weight data.
+* **Bar Charts**. Fancy something different to a line chart? The plugin will also suppor`````t Bar Charts.
+* **Decimals**. Decimals will be allowed weight in Pounds only or Kg modes.
+* **Delete existing entry**. A logged in user will be able to delete or edit an existing weight entry.
+* **Better Tables**.. Data tables in front end and admin will support paging and sorting.
 
 = Languages support =
 
 Fully supported (have the majority of translations):
 
-- English (UK)
-- German (thanks Michael @ Activate the Beast)
-- Dutch (thanks Dennis)
-- Finish (thanks Ari)
+* English (UK)
+* German (thanks Michael @ Activate the Beast)
+* Dutch (thanks Dennis)
+* Finish (thanks Ari)
 
 Languages partially supported (have some of the translations):
 
-- Portuguese-Brazil (thanks Team Jota)
-- French (thanks @alexiarna)
-- Spanish (thanks @idelfonsog2)
-- Romanian (thanks @alexiarna)
-- Danish (thanks @kfasterholdt)
+* Portuguese-Brazil (thanks Team Jota)
+* French (thanks @alexiarna)
+* Spanish (thanks @idelfonsog2)
+* Romanian (thanks @alexiarna)
+* Danish (thanks @kfasterholdt)
 
-Need a translation? Email us: email@YeKen.uk
+Need a translation? Email us: [email@YeKen.uk](mailto:email@YeKen.uk "email@YeKen.uk")
 
-* Developed by YeKen.uk *
+* Developed by [YeKen.uk](https://www.yeken.uk "YeKen.uk") *
 
 = Documentation =
 
 Need further help? Please visit the Wiki:
-https://github.com/yekenuk/Weight-Loss-Tracker/wiki
+
+[Weight Loss Tracker Wiki @ Github](https://github.com/yekenuk/Weight-Loss-Tracker/wiki "Weight Loss Tracker Wiki @ Github")
 
 = Donate =
 
-Paypal Donate: email@YeKen.uk
+Paypal Donate: [email@YeKen.uk](mailto:email@YeKen.uk "email@YeKen.uk")
 
 == Installation ==
 
@@ -109,22 +112,27 @@ Paypal Donate: email@YeKen.uk
 
 = Do you have any guides / documentation? =
 
-Yes, I'm currently expanding my Wiki: https://github.com/yekenuk/Weight-Loss-Tracker/wiki
+Yes, I'm currently expanding my Wiki: [Weight Loss Tracker Wiki @ Github](https://github.com/yekenuk/Weight-Loss-Tracker/wiki "Weight Loss Tracker Wiki @ Github")
 
 = Does it create any custom mySQL tables =
 
-Yes it creates two. One to store weight information per user and another to store target weights:
+Yes it creates three:
 
 - WP_WS_LS_DATA_TARGETS - Stores user target data
-- WP_WS_LS_DATA - Stores weight history
+- WP_WS_LS_DATA - Store weight and measurement information per user
+- WS_LS_DATA_USER_PREFERENCES - Stores user preferences
 
 = What date formats doe it support? =
 
 Currently it supports both UK (dd/mm/yyy) and US (mm/dd/yyyy) date formats.
 
-= Does it support the Avada theme? =
+= What measurement formats doe it support? =
 
-Prior to version 3.0, yes, this plugin did support the Avada theme. However, wanting to be independent of any theme support this has now been removed.
+Currently it supports both Centimetres (CM) and Inches.
+
+= How do I change the plugin settings? =
+
+In WordPress Admin goto Settings.
 
 = How do I switch it from Metric (Kg) to Imperial (Stones / Pounds)? =
 
@@ -136,7 +144,7 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 
 = Can I change measurement units while the site is live? =
 
-It is only recommended if you first installed the plugin at version 1.6+ (as it stores measurements in Kg / Pound). Before this, you may find data isn't present for previous date entries.
+Yes. Only recommended if you first installed the plugin at version 1.6 or greater. Newer versions stores measurements in Kg and Pounds. Versions prior 1.6 didn't so you may find data isn't present for previous date entries.
 
 = How do I disable "Target weight" =
 
@@ -151,13 +159,19 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 5. Examples of random placements of [weight-loss-tracker-chart] and [weight-loss-tracker-form]
 6. Examples of the Chart and Form widgets
 7. More examples of Chart and Form widgets
-8. Tab one of settings page
-9. Tab two of settings page
-10. Tab three of settings page
+8. Tab one of (general) settings page
+9. Tab two (user examples) of settings page
+10. Tab three (chart settings) of settings page
+11. Tab four (measurement settings) of settings page
 11. Admin - managing user data
 12. Admin - Delete ALL data
 13. Examples of the [weight-loss-tracker-chart] and [weight-loss-tracker-form] shortcodes
 14. Examples of the shortcodes [weightloss_weight_difference], [weightloss_weight_start], [weightloss_weight_most_recent] and [weightloss_weight_difference_from_target]
+15. Complex chart example with weights, targets and measurements.
+
+ == Upgrade Notice ==
+
+ Support for Body Measurements and Body Mass Index (BMI) values.
 
 == Changelog ==
 
@@ -184,6 +198,7 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 
 * User preferences are now cached correctly.
 * Fixed nounce check when fetching all user data.
+* Various minor bug fixes.
 
 = 3.6.1 =
 

@@ -67,6 +67,8 @@ include WS_LS_ABSPATH . 'pages/page.pro.advertise.php';
 include WS_LS_ABSPATH . 'pages/page.help.php';
 include WS_LS_ABSPATH . 'pro-features/feature-list.php';
 include WS_LS_ABSPATH . 'includes/comms-with-yeken.php';
+include WS_LS_ABSPATH . 'includes/admin-notifications.php';
+
 // -----------------------------------------------------------------------------------------
 // AC: Include Pro files
 // --------------------------------------------------------------------------------------

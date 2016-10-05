@@ -3,11 +3,41 @@
 defined('ABSPATH') or die('Jog on!');
 
 /*
-	This file is used to send stats to YeKen.uk
+	This file is used to send stats to YeKen.uk and fetch read only data
 
 	No personal or identifiable data is sent to YeKen. Nor is any passwords or technical details.
 
 */
+
+// ---------------------------------------------------------------------------------
+// Fetch read only data from YeKen
+// ---------------------------------------------------------------------------------
+
+function ws_ls_get_data_from_yeken()
+{
+  // Look up date from Yeken.uk
+  $cache = ws_ls_get_cache(WE_LS_CACHE_KEY_YEKEN_JSON);
+
+  // Return cache if found!
+  if ($cache)   {
+      return $cache;
+  }
+  $response = wp_remote_get(WE_LS_DATA_URL);
+
+  if( is_array($response) ) {
+    if (200 == $response['response']['code'] && !empty($response['body'])) {
+      $data = json_decode($response['body']);
+      ws_ls_set_cache(WE_LS_CACHE_KEY_YEKEN_JSON, $data, 3 * HOUR_IN_SECONDS);
+      return $data;
+    }
+  }
+
+  return false;
+}
+
+// ---------------------------------------------------------------------------------
+// Post Stats to YeKen
+// ---------------------------------------------------------------------------------
 
 // If cache key not found time to send communication to YeKen
 if (WE_LS_ALLOW_STATS && is_admin() && false == ws_ls_get_cache(WE_LS_CACHE_COMMS_KEY)) {

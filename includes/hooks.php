@@ -84,4 +84,7 @@
 				wp_enqueue_script('jquery-tabs',plugins_url( '../js/tabs.min.js', __FILE__ ), array('jquery'), WE_LS_CURRENT_VERSION, true);
 			}
 	}
-	//add_action( 'wp_head', 'ws_ls_enqueue_files');
+	function ws_ls_enqueue_admin_files(){
+		wp_enqueue_script('ws-ls-admin',plugins_url( '../js/admin-notifications.js', __FILE__ ), array('jquery'), WE_LS_CURRENT_VERSION);
+	}
+	add_action( 'admin_enqueue_scripts', 'ws_ls_enqueue_admin_files');

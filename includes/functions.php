@@ -422,27 +422,6 @@ function ws_ls_remove_non_numeric($text)
   }
   return $text;
 }
-function ws_ls_get_data_from_yeken()
-{
-  // Look up date from Yeken.uk
-  $cache = ws_ls_get_cache(WE_LS_CACHE_KEY_YEKEN_JSON);
-
-  // Return cache if found!
-  if ($cache)   {
-      return $cache;
-  }
-  $response = wp_remote_get(WE_LS_DATA_URL);
-
-  if( is_array($response) ) {
-    if (200 == $response['response']['code'] && !empty($response['body'])) {
-      $data = json_decode($response['body']);
-      ws_ls_set_cache(WE_LS_CACHE_KEY_YEKEN_JSON, $data, 3 * HOUR_IN_SECONDS);
-      return $data;
-    }
-  }
-
-  return false;
-}
 function ws_ls_fetch_elements_from_end_of_array($data, $number_to_grab)
 {
     if (is_array($data) && count($data) > $number_to_grab) {
