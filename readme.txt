@@ -158,16 +158,12 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 4. Tab three of [weight-loss-tracker]: User preferences page
 5. Examples of random placements of [weight-loss-tracker-chart] and [weight-loss-tracker-form]
 6. Examples of the Chart and Form widgets
-7. More examples of Chart and Form widgets
-8. Tab one of (general) settings page
-9. Tab two (user examples) of settings page
-10. Tab three (chart settings) of settings page
-11. Tab four (measurement settings) of settings page
+7. Settings page: General
+8. Settings page: User Experience
+9. Settings page: Chart
+10. Settings page: Measurements
 11. Admin - managing user data
 12. Admin - Delete ALL data
-13. Examples of the [weight-loss-tracker-chart] and [weight-loss-tracker-form] shortcodes
-14. Examples of the shortcodes [weightloss_weight_difference], [weightloss_weight_start], [weightloss_weight_most_recent] and [weightloss_weight_difference_from_target]
-15. Complex chart example with weights, targets and measurements.
 
  == Upgrade Notice ==
 

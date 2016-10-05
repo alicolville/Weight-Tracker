@@ -146,7 +146,8 @@
 													'fill' => false,
 													'spanGaps' => true,
 													'yAxisID' => 'y-axis-measurements',
-													'type' => 'line'
+													'type' => 'line',
+													'lineTension' => ($chart_config['bezier']) ? 0.4 : 0
 												);
 				$graph_data['datasets'][$dataset_index]['data'] = array();
 				$graph_data['datasets'][$dataset_index]['data-count'] = 0;
