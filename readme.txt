@@ -3,36 +3,14 @@ Contributors: aliakro, alexiarna, idelfonsog2, alexiarna, kfasterholdt
 Tags: weight, loss, lose, helper, bmi, body, mass, index, graph, track, stones, kg, table, data, plot, target, history, pounds, responsive, chart, measurements, cm, centimeters, inches, hip, waist, bicep, thigh
 Requires at least: 4.1.0
 Tested up to: 4.6.1
-Stable tag: 4.0-beta6
+Stable tag: 4.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate Link: https://www.yeken.uk/donate/
 
-Allow the registered users of your website to track their weight and relevant body measurements. History can be displayed in both tables & charts.
+Allow registered users of your website to track their weight and relevant body measurements. History can be displayed in both tables & charts.
 
 == Description ==
-
-***************************** DELETE ********************************************
-***************************** DELETE ********************************************
-
-Working on:
-
-- Charts supporting measurements
-
-Dev Required:
-
-- Search for all TODOS
-- update plugin sample images and documentation
-- update readme.txt
-
-Testing required:
-
-- Everything
-
-
-***************************** DELETE ********************************************
-***************************** DELETE ********************************************
-***************************** DELETE ********************************************
 
 = Core Features =
 
@@ -56,7 +34,7 @@ Also supports the following tags:
 
 Our Pro version has now been released! If you upgrade, you get he additional features:
 
-* **Measurements**. If enabled, users can now track measurements alongside their weight entries. As admin, you can allow the user to track one or more of the following: "Bicep - Left", "Bicep - Right", "Calf - Left", "Bust / Chest", "Buttocks", "Hips", "Navel", "Thigh - Left", "Thigh - Right" and "Waist" (Please get in touch if you have additional fields).
+* **Measurements**. If enabled, users can now track measurements alongside their weight entries. As admin, you can allow the user to track one or more of the following: "Bicep - Left", "Bicep - Right", "Forearm - Left", "Forearm - Right", "Calf - Left", "Bust / Chest", "Buttocks", "Hips", "Navel", "Thigh - Left", "Thigh - Right" and "Waist" (Please get in touch if you have additional fields).
 * **Body Mass Index**. If enabled by admin, once a user has added their Height (via user preferences tab) a BMI value will be presented in data tables.
 * **Widgets**. Widgets that allow you to display the graph and quick weight entry form within any widget area.
 * **Chart and form Shortcodes**. That allow you to display the graph and quick weight entry form by placing a shortcode on any post or page.
@@ -176,7 +154,7 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 **Pro Changes:**
 
 * Support for measurements added - can now add and edit measurements for each entry!
-* Measurements for "Bicep - Left", "Bicep - Right", "Calf - Left", "Bust / Chest", "Buttocks", "Hips", "Navel", "Thigh - Left", "Thigh - Right" and "Waist".
+* Measurements for "Bicep - Left", "Bicep - Right", "Forearm - Left", "Forearm - Right", "Calf - Left", "Bust / Chest", "Buttocks", "Hips", "Navel", "Thigh - Left", "Thigh - Right" and "Waist".
 * Height can also be specified on the user preferences page.
 * If height is specified the BMI value for the given height / weight will be displayed.
 * New Shortcodes:

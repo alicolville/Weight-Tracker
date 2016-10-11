@@ -16,7 +16,8 @@ class ws_ls_widget_form extends WP_Widget {
         $this->field_values = array(
             'title' => __('Your weight today', WE_LS_SLUG),
 						'force_todays_date' => 'yes',
-                        'not-logged-in-message' => ''
+                        'not-logged-in-message' => '',
+						'exclude-measurements' => 'no'
         );
 
 	}
@@ -34,14 +35,13 @@ class ws_ls_widget_form extends WP_Widget {
         // User logged in?
         if(is_user_logged_in()) {
 
-						ws_ls_enqueue_files();
+			ws_ls_enqueue_files();
 
-						echo $args['before_widget'];
-            echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
-
-						$force_to_todays_date = ('yes' == $instance['force_todays_date']) ? true : false;
-
-            echo ws_ls_display_weight_form(false, false, false, true, ws_ls_remove_non_numeric($args['widget_id']) + 10000, $force_to_todays_date);
+			echo $args['before_widget'];
+			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
+			$force_to_todays_date = ('yes' == $instance['force_todays_date']) ? true : false;
+			$exclude_measurements = (!empty($instance['exclude-measurements']) && 'yes' == $instance['exclude-measurements']) ? true : false;
+			echo ws_ls_display_weight_form(false, false, false, true, ws_ls_remove_non_numeric($args['widget_id']) + 10000, $force_to_todays_date, true, $exclude_measurements);
             echo $args['after_widget'];
         } elseif (isset($instance['not-logged-in-message']) && !empty($instance['not-logged-in-message'])) {
             echo $args['before_widget'];
@@ -77,6 +77,13 @@ class ws_ls_widget_form extends WP_Widget {
             <select class="widefat" name="<?php echo $this->get_field_name( 'force_todays_date' ); ?>" id="<?php echo $this->get_field_id( 'force_todays_date' ); ?>">
                     <option value="yes" <?php selected( $field_values['force_todays_date'], 'yes'); ?>><?php _e('No. Automatically set to today\'s date', WE_LS_SLUG); ?></option>
                     <option value="no" <?php selected( $field_values['force_todays_date'], 'no'); ?>><?php _e('Allow user to specify a date', WE_LS_SLUG); ?></option>
+            </select>
+		</p>
+		<p>
+			<label for="<?php echo $this->get_field_id( 'exclude-measurements' ); ?>"><?php _e('Hide measurements (Pro)?', WE_LS_SLUG); ?></label>
+            <select class="widefat" name="<?php echo $this->get_field_name( 'exclude-measurements' ); ?>" id="<?php echo $this->get_field_id( 'exclude-measurements' ); ?>">
+				<option value="no" <?php selected( $field_values['exclude-measurements'], 'no'); ?>><?php _e('No', WE_LS_SLUG); ?></option>
+				<option value="yes" <?php selected( $field_values['exclude-measurements'], 'yes'); ?>><?php _e('Yes', WE_LS_SLUG); ?></option>
             </select>
 		</p>
         <p>

@@ -136,7 +136,7 @@ class ws_ls_widget_chart extends WP_Widget {
 		<p><small><?php _e('Note: By default, the chart will be displayed in the weight unit chosen by the logged in user. If not specfied the plugin default will be used.', WE_LS_SLUG); ?></small></p>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'exclude-measurements' ); ?>"><?php _e('Hide Measurements?', WE_LS_SLUG); ?></label>
+			<label for="<?php echo $this->get_field_id( 'exclude-measurements' ); ?>"><?php _e('Hide Measurements (Pro)?', WE_LS_SLUG); ?></label>
             <select class="widefat" name="<?php echo $this->get_field_name( 'exclude-measurements' ); ?>" id="<?php echo $this->get_field_id( 'exclude-measurements' ); ?>">
                 <option value="no" <?php selected( $field_values['exclude-measurements'], 'no'); ?>>No</option>
                 <option value="yes" <?php selected( $field_values['exclude-measurements'], 'yes'); ?>>Yes</option>

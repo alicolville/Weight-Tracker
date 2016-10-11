@@ -78,6 +78,8 @@
     $supported_measurements = array(
         'left_bicep' => array('title' => __('Bicep - Left', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#b00125'),
         'right_bicep' => array('title' => __('Bicep - Right', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#035e60'),
+		'left_forearm' => array('title' => __('Forearm - Left', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#f279ed'),
+        'right_forearm' => array('title' => __('Forearm - Right', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#a2039b'),
         'left_calf' => array('title' => __('Calf - Left', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#ffc019'),
         'right_calf' => array('title' => __('Calf - Right', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#ff7b9c'),
         'bust_chest' => array('title' => __('Bust / Chest', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#9600ff'),

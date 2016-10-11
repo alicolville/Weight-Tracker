@@ -31,6 +31,8 @@
 			right_bicep float NULL,
 			left_calf float NULL,
 			right_calf float NULL,
+			left_forearm float NULL,
+			right_forearm float NULL,
 		  UNIQUE KEY id (id)
 		) $charset_collate;";
 
