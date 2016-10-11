@@ -150,7 +150,8 @@
 													'lineTension' => ($chart_config['bezier']) ? 0.4 : 0
 												);
 				$graph_data['datasets'][$dataset_index]['data'] = array();
-				
+				$graph_data['datasets'][$dataset_index]['data-count'] = 0;
+
 				$measurement_graph_indexes[$key] = $dataset_index;
 
 				$dataset_index++;
@@ -176,9 +177,21 @@
 					// If we have a genuine measurement value then add to graph data - otherwise NULL
 					if(!is_null($weight_object['measurements'][$key]) && 0 != $weight_object['measurements'][$key]) {
 						$graph_data['datasets'][$measurement_graph_indexes[$key]]['data'][] = ws_ls_prep_measurement_for_display($weight_object['measurements'][$key]);
+						$graph_data['datasets'][$measurement_graph_indexes[$key]]['data-count']++;
 					} else {
 						$graph_data['datasets'][$measurement_graph_indexes[$key]]['data'][] = NULL;
 					}
+				}
+			}
+		}
+
+		// Remove any empty measurements from graph
+		if($measurements_enabled) {
+			foreach ($active_measurment_field_keys as $key) {
+				if(0 == $graph_data['datasets'][$measurement_graph_indexes[$key]]['data-count']) {
+			//		unset($graph_data['datasets'][$measurement_graph_indexes[$key]]);
+				} else {
+					$number_of_measurement_datasets_with_data++;
 				}
 			}
 		}
@@ -196,8 +209,8 @@
 		if ('line' == $chart_config['type']) {
 
 			// Add measurement Axis?
-			if ($measurements_enabled) {
-				$graph_line_options['scales']['yAxes'] = array_merge($graph_line_options['scales']['yAxes'], array(array('scaleLabel' => array('display' => true, 'labelString' => __('Measurement (' . $y_axis_measurement_unit . ')', WE_LS_SLUG)), 'ticks' => array('beginAtZero' => WE_LS_AXES_START_AT_ZERO), 'type' => "linear", "display" => "true", "position" => "right", "id" => "y-axis-measurements", 'gridLines' => array('display' => $chart_config['show-gridlines']))));
+			if ($measurements_enabled ) {
+				$graph_line_options['scales']['yAxes'] = array_merge($graph_line_options['scales']['yAxes'], array(array('scaleLabel' => array('display' => true, 'labelString' => __('Measurement (' . $y_axis_measurement_unit . ')', WE_LS_SLUG)), 'ticks' => array('beginAtZero' => WE_LS_AXES_START_AT_ZERO), 'type' => "linear", "display" => (($number_of_measurement_datasets_with_data != 0) ? true : false), "position" => "right", "id" => "y-axis-measurements", 'gridLines' => array('display' => $chart_config['show-gridlines']))));
 			}
 		}
 
