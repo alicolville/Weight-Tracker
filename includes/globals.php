@@ -13,6 +13,7 @@
 	define('WE_LS_TABLENAME', 'WS_LS_DATA');
 	define('WE_LS_TARGETS_TABLENAME', 'WS_LS_DATA_TARGETS');
   	define('WE_LS_USER_PREFERENCES_TABLENAME', 'WS_LS_DATA_USER_PREFERENCES');
+	define('WE_LS_USER_STATS_TABLENAME', 'WS_LS_DATA_USER_STATS');
 	define('WE_LS_CACHE_ENABLED', true);
 	define('WE_LS_CACHE_TIME', 15 * MINUTE_IN_SECONDS);
 	define('WE_LS_CACHE_COMMS_KEY', 'comm-with-yeken');
@@ -58,7 +59,8 @@
 		'WE_LS_CHART_SHOW_GRID_LINES' => true,
 		'WE_LS_DISPLAY_BMI_IN_TABLES' => false,
 		'WE_LS_AXES_START_AT_ZERO' => false,
-		'WE_LS_ALLOW_STATS' => false
+		'WE_LS_ALLOW_STATS' => false,
+		'WE_LS_DISABLE_STATS_CRON' => false
 	);
 
     // -----------------------------------------------------------------------------------
@@ -171,6 +173,12 @@
 	// -----------------------------------------------------------------------------------
 	if ('yes' == get_option('ws-ls-allow-stats')) {
 		$globals['WE_LS_ALLOW_STATS'] = true;
+	}
+	// -----------------------------------------------------------------------------------
+	// Disable stats cron job?
+	// -----------------------------------------------------------------------------------
+	if ('yes' == get_option('ws-ls-disable-stats-cron')) {
+		$globals['WE_LS_DISABLE_STATS_CRON'] = true;
 	}
 	// -----------------------------------------------------------------------------------
 	// Define if target weights enabled

@@ -136,9 +136,18 @@ function ws_ls_settings_page() {
 															<p><?php echo __('If you wish to style the forms in your own way, you can use this option to disable WLT\'s style sheets.', WE_LS_SLUG)?></p>
 														</td>
 													</tr>
-
 													<tr>
-														<th scope="row"><?php echo __( 'Send stats to YeKen?' , WE_LS_SLUG); ?></th>
+														<th scope="row" class="<?php echo $disable_if_not_pro_class; ?>"><?php echo __( 'Disable Stats cron job?' , WE_LS_SLUG); ?></th>
+														<td>
+															<select id="ws-ls-disable-stats-cron" name="ws-ls-disable-stats-cron">
+																<option value="no" <?php selected( get_option('ws-ls-disable-stats-cron'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+																<option value="yes" <?php selected( get_option('ws-ls-disable-stats-cron'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+															</select>
+															<p><?php echo __('Every 24 hours, a cron job is ran on the site to re-generate user stats. This could potentially cause a performance on your site. If you are not using the leaderboard shorcodes it is advised to disable this.', WE_LS_SLUG)?></p>
+														</td>
+													</tr>
+													<tr>
+														<th scope="row"><?php echo __( 'Send usage data to YeKen?' , WE_LS_SLUG); ?></th>
 														<td>
 															<select id="ws-ls-allow-stats" name="ws-ls-allow-stats">
 																<option value="no" <?php selected( get_option('ws-ls-allow-stats'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
@@ -420,9 +429,6 @@ function ws_ls_settings_page() {
 
 	<?php
 
-
-
-
 }
 
 function ws_ls_register_settings()
@@ -459,6 +465,8 @@ function ws_ls_register_settings()
 		// BMI
 		register_setting( 'we-ls-options-group', 'ws-ls-display-bmi-in-tables' );
 
+		// Stats
+		register_setting( 'we-ls-options-group', 'ws-ls-disable-stats-cron' );
     }
 
 }

@@ -65,6 +65,18 @@
 
 		dbDelta( $sql );
 
+		$table_name = $wpdb->prefix . WE_LS_USER_STATS_TABLENAME;
+
+		$sql = "CREATE TABLE $table_name (
+				user_id integer NOT NULL,
+				start_weight float DEFAULT 0 NULL,
+				recent_weight float DEFAULT 0 NULL,
+				total_weight_lost float DEFAULT 0 null,
+				UNIQUE KEY user_id (user_id)
+		) $charset_collate;";
+
+	   dbDelta( $sql );
+
 	}
 
 	function ws_ls_upgrade() {
