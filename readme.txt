@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight, loss, lose, helper, bmi, body, mass, index, graph, track, stones, kg, table, data, plot, target, history, pounds, responsive, chart, measurements, cm, centimeters, inches, hip, waist, bicep, thigh
 Requires at least: 4.1.0
 Tested up to: 4.6.1
-Stable tag: 4.0.1
+Stable tag: 4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate Link: https://www.yeken.uk/donate/
@@ -148,6 +148,8 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
  Support for Body Measurements and Body Mass Index (BMI) values.
 
 == Changelog ==
+
+= 4.1 =
 
 = 4.0.1 =
 
