@@ -71,7 +71,8 @@
 				user_id integer NOT NULL,
 				start_weight float DEFAULT 0 NULL,
 				recent_weight float DEFAULT 0 NULL,
-				total_weight_lost float DEFAULT 0 null,
+				total_weight_lost float DEFAULT 0 NULL,
+				last_update TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 				UNIQUE KEY user_id (user_id)
 		) $charset_collate;";
 

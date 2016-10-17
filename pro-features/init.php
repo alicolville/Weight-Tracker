@@ -18,6 +18,7 @@ if(defined('WS_LS_ABSPATH')){
 	include WS_LS_ABSPATH . 'pro-features/user-data-ajax.php';
 	include WS_LS_ABSPATH . 'pro-features/db.php';
 	include WS_LS_ABSPATH . 'pro-features/functions.measurements.php';
+	include WS_LS_ABSPATH . 'pro-features/functions.stats.php';
 }
 
 // Register shortcodes
