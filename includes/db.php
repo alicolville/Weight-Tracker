@@ -253,6 +253,10 @@ function ws_ls_save_data($user_id, $weight_object, $is_target_form = false)
 
 	// Tidy up cache
 	ws_ls_delete_cache_for_given_user($user_id);
+
+	// Update User stats table
+	ws_ls_stats_update_for_user($user_id);
+
 	return $result;
 }
 
@@ -268,6 +272,9 @@ function ws_ls_delete_entry($user_id, $row_id)
       $result = true;
       // Tidy up cache
       ws_ls_delete_cache_for_given_user($user_id);
+
+	  // Update User stats table
+	  ws_ls_stats_update_for_user($user_id);
     }
   }
   return $result;
