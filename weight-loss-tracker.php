@@ -34,7 +34,8 @@ define('WE_LS_CURRENT_VERSION', '4.1-beta57');
 // AC: Activate / Deactivate / Uninstall Hooks
 // -----------------------------------------------------------------------------------------
 
-register_activation_hook(   __FILE__, 'ws_ls_activate');
+register_activation_hook(__FILE__, 'ws_ls_activate');
+register_deactivation_hook(__FILE__, 'ws_ls_deactivate');
 
 // -----------------------------------------------------------------------------------------
 // AC: Check if valid pro license (if valid license)

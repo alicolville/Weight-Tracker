@@ -32,6 +32,7 @@
 	define('WE_LS_TABLE_MAX_WEEK_FILTERS', 150);
 	define('WS_LS_PRO_PRICE', 25.00);
 	define('WE_LS_USE_MINIFIED_SCRIPTS', true);
+	define('WE_LS_CRON_NAME', 'weight_loss_tracker_hourly');
 
     // -----------------------------------------------------------------------------------
 	// Dynamic Settings based upon user settings, etc

@@ -19,6 +19,7 @@ function ws_ls_stats_run_cron() {
 		}
 	}
 }
+add_action(WE_LS_CRON_NAME, 'ws_ls_stats_run_cron');
 
 function ws_ls_stats_update_for_user($user_id) {
 

@@ -2,6 +2,21 @@
 
 	defined('ABSPATH') or die("Jog on!");
 
+	// Code that should run when plugin is activated
+	function ws_ls_activate() {
+
+		// Register user stats cron job
+		if (! wp_next_scheduled ( WE_LS_CRON_NAME )) {
+			wp_schedule_event(time(), 'hourly', WE_LS_CRON_NAME);
+		}
+	}
+
+	// Code that should run when plugin is deactivated
+	function ws_ls_deactivate() {
+
+		// Remove user stats cron job
+		wp_clear_scheduled_hook( WE_LS_CRON_NAME );
+	}
 
 	function ws_ls_create_mysql_tables()
 	{
