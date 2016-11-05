@@ -60,7 +60,7 @@
 		'WE_LS_DISPLAY_BMI_IN_TABLES' => false,
 		'WE_LS_AXES_START_AT_ZERO' => false,
 		'WE_LS_ALLOW_STATS' => false,
-		'WE_LS_DISABLE_STATS_CRON' => false
+		'WE_LS_DISABLE_USER_STATS' => false
 	);
 
     // -----------------------------------------------------------------------------------
@@ -178,7 +178,7 @@
 	// Disable stats cron job?
 	// -----------------------------------------------------------------------------------
 	if ('yes' == get_option('ws-ls-disable-stats-cron')) {
-		$globals['WE_LS_DISABLE_STATS_CRON'] = true;
+		$globals['WE_LS_DISABLE_USER_STATS'] = true;
 	}
 	// -----------------------------------------------------------------------------------
 	// Define if target weights enabled

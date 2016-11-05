@@ -137,13 +137,13 @@ function ws_ls_settings_page() {
 														</td>
 													</tr>
 													<tr>
-														<th scope="row" class="<?php echo $disable_if_not_pro_class; ?>"><?php echo __( 'Disable Stats cron job?' , WE_LS_SLUG); ?></th>
+														<th scope="row" class="<?php echo $disable_if_not_pro_class; ?>"><?php echo __( 'Disable user stats?' , WE_LS_SLUG); ?></th>
 														<td>
 															<select id="ws-ls-disable-stats-cron" name="ws-ls-disable-stats-cron">
 																<option value="no" <?php selected( get_option('ws-ls-disable-stats-cron'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
 																<option value="yes" <?php selected( get_option('ws-ls-disable-stats-cron'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
 															</select>
-															<p><?php echo __('Every 24 hours, a cron job is ran on the site to re-generate user stats. This could potentially cause a performance on your site. If you are not using the leaderboard shorcodes it is advised to disable this.', WE_LS_SLUG)?></p>
+															<p><?php echo __('User stats are maintained to help power shortcodes such as [*******TODO: leadreboard]. This involves a cron job being run every 6 hours to refresh a user\'s stats such as first weight, recent weight and total lost. The figures are also re-produced on each weight entry modification and can then be used to generate a league table. This feature could <em>potentially</em> reduce performance on your site. If you are not using the leaderboard shortcodes it is advised to disable this.', WE_LS_SLUG)?></p>
 														</td>
 													</tr>
 													<tr>

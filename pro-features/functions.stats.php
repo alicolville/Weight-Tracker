@@ -5,7 +5,7 @@ defined('ABSPATH') or die('Jog on!');
 function ws_ls_stats_run_cron() {
 
 	// If disabled, don't bother
-	if(WE_LS_DISABLE_STATS_CRON) {
+	if(WE_LS_DISABLE_USER_STATS) {
 		return;
 	}
 
@@ -21,6 +21,11 @@ function ws_ls_stats_run_cron() {
 }
 
 function ws_ls_stats_update_for_user($user_id) {
+
+	// If disabled, don't bother
+	if(WE_LS_DISABLE_USER_STATS) {
+		return;
+	}
 
 	if(is_numeric($user_id)) {
 
