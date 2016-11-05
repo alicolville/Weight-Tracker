@@ -31,13 +31,14 @@ function ws_ls_stats_update_for_user($user_id) {
 
 		$stats = [];
 
+		$stats['user_id'] = $user_id;
 		$stats['start_weight'] = ws_ls_get_weight_extreme($user_id);
 		$stats['recent_weight'] = ws_ls_get_weight_extreme($user_id, true);
 		$stats['total_weight_lost'] = (is_numeric($stats['start_weight']) && is_numeric($stats['recent_weight'])) ? $stats['recent_weight'] - $stats['start_weight'] : 0;
 		$stats['last_update'] = current_time('mysql', 1);
 
 		global $wpdb;
-		$wpdb->update( $wpdb->prefix . WE_LS_USER_STATS_TABLENAME, $stats, ['user_id' => $user_id], ['%f', '%f', '%f', '%s'], ['%d'] );
+		$wpdb->replace( $wpdb->prefix . WE_LS_USER_STATS_TABLENAME, $stats, ['%d', '%f', '%f', '%f', '%s'] );
 
 	}
 
