@@ -19,7 +19,7 @@ function ws_ls_settings_page() {
   	$clear_cache = (isset($_GET['settings-updated']) && 'true' == $_GET['settings-updated']) ? true : false;
 
 	if (is_admin() && isset($_GET['recreatetables']) && 'y' == $_GET['recreatetables']) {
-		ws_ls_activate();
+		ws_ls_create_mysql_tables();
 		$clear_cache = true;
 	}
 

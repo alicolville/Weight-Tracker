@@ -3,7 +3,7 @@
 	defined('ABSPATH') or die("Jog on!");
 
 
-	function ws_ls_activate()
+	function ws_ls_create_mysql_tables()
 	{
 		global $wpdb;
 
@@ -87,7 +87,8 @@
 		$existing_version = get_option($option_key);
 
 		if(empty($existing_version) || $existing_version != WE_LS_CURRENT_VERSION) {
-			ws_ls_activate();
+			ws_ls_create_mysql_tables();
+			ws_ls_stats_insert_missing_user_ids_into_stats();
 			update_option($option_key, WE_LS_CURRENT_VERSION);
 		}
 	}
