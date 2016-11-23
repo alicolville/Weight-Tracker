@@ -64,10 +64,10 @@ function ws_ls_manage_user_data_page() {
 											 <table id="ws-ls-user-data" class="display ws-ls-advanced-data-table" cellspacing="0" width="100%">
 								        <thead>
 								            <tr>
-												<th>User</th>
-								                <th>Date</th>
-								                <th>Weight</th>
-												<th>Notes</th>
+												<th><?php echo __('User', WE_LS_SLUG); ?></th>
+								                <th><?php echo __('Date', WE_LS_SLUG); ?></th>
+								                <th><?php echo __('Weight', WE_LS_SLUG); ?></th>
+												<th><?php echo __('Notes', WE_LS_SLUG); ?></th>
 
 												<?php
 													$measurement_columns_html = '';
@@ -86,10 +86,10 @@ function ws_ls_manage_user_data_page() {
 								        </thead>
 								        <tfoot>
 								            <tr>
-												<th>User</th>
-								                <th>Date</th>
-								                <th>Weight</th>
-												<th>Notes</th>
+												<th><?php echo __('User', WE_LS_SLUG); ?></th>
+												<th><?php echo __('Date', WE_LS_SLUG); ?></th>
+												<th><?php echo __('Weight', WE_LS_SLUG); ?></th>
+												<th><?php echo __('Notes', WE_LS_SLUG); ?></th>
 								                <?php echo $measurement_columns_html; ?>
 												<th></th>
 								            </tr>
