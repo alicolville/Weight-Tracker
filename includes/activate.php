@@ -86,7 +86,7 @@
 				user_id integer NOT NULL,
 				start_weight float DEFAULT 0 NULL,
 				recent_weight float DEFAULT 0 NULL,
-				total_weight_lost float DEFAULT 0 NULL,
+				weight_difference float DEFAULT 0 NULL,
 				last_update TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 				UNIQUE KEY user_id (user_id)
 		) $charset_collate;";
@@ -96,14 +96,9 @@
 	}
 
 	function ws_ls_upgrade() {
-
-		$option_key = 'ws-ls-version-number';
-
-		$existing_version = get_option($option_key);
-
-		if(empty($existing_version) || $existing_version != WE_LS_CURRENT_VERSION) {
+		if(update_option('ws-ls-version-number', WE_LS_CURRENT_VERSION)) {
 			ws_ls_create_mysql_tables();
-			ws_ls_stats_insert_missing_user_ids_into_stats();
+			ws_ls_stats_run_cron();
 			update_option($option_key, WE_LS_CURRENT_VERSION);
 		}
 	}

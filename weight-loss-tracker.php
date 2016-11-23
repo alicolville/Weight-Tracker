@@ -28,7 +28,7 @@ defined('ABSPATH') or die('Jog on!');
 */
 
 define('WS_LS_ABSPATH', plugin_dir_path( __FILE__ ));
-define('WE_LS_CURRENT_VERSION', '4.1-beta57');
+define('WE_LS_CURRENT_VERSION', '4.1-beta9');
 
 // -----------------------------------------------------------------------------------------
 // AC: Activate / Deactivate / Uninstall Hooks
@@ -84,3 +84,7 @@ function ws_ls_load_textdomain() {
   load_plugin_textdomain( WE_LS_SLUG, false, dirname( plugin_basename( __FILE__ )  ) . '/languages/' );
 }
 add_action( 'plugins_loaded', 'ws_ls_load_textdomain' );
+
+delete_option(WE_LS_CACHE_KEY_STATS_SUMMARY);
+var_dump(ws_ls_stats_get_summary_stats());
+die;
