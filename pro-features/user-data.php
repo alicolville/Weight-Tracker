@@ -64,10 +64,10 @@ function ws_ls_manage_user_data_page() {
 											 <table id="ws-ls-user-data" class="display ws-ls-advanced-data-table" cellspacing="0" width="100%">
 								        <thead>
 								            <tr>
-												<th>User</th>
-								                <th>Date</th>
-								                <th>Weight</th>
-												<th>Notes</th>
+												<th><?php echo __('User', WE_LS_SLUG); ?></th>
+								                <th><?php echo __('Date', WE_LS_SLUG); ?></th>
+								                <th><?php echo __('Weight', WE_LS_SLUG); ?></th>
+												<th><?php echo __('Notes', WE_LS_SLUG); ?></th>
 
 												<?php
 													$measurement_columns_html = '';
@@ -75,7 +75,7 @@ function ws_ls_manage_user_data_page() {
 													$measurement_columns = ws_ls_get_active_measurement_fields();
 													if ($measurement_columns) {
 														foreach ($measurement_columns as $key => $data) {
-															$measurement_columns_html .= '<th class="none">' . $data['title'] . ' (' . $measurement_unit . ')</th>';
+															$measurement_columns_html .= '<th class="none">' . __($data['title'], WE_LS_SLUG) . ' (' . $measurement_unit . ')</th>';
 														}
 														echo $measurement_columns_html;
 													}
@@ -86,10 +86,10 @@ function ws_ls_manage_user_data_page() {
 								        </thead>
 								        <tfoot>
 								            <tr>
-												<th>User</th>
-								                <th>Date</th>
-								                <th>Weight</th>
-												<th>Notes</th>
+												<th><?php echo __('User', WE_LS_SLUG); ?></th>
+												<th><?php echo __('Date', WE_LS_SLUG); ?></th>
+												<th><?php echo __('Weight', WE_LS_SLUG); ?></th>
+												<th><?php echo __('Notes', WE_LS_SLUG); ?></th>
 								                <?php echo $measurement_columns_html; ?>
 												<th></th>
 								            </tr>

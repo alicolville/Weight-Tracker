@@ -102,7 +102,7 @@ function ws_ls_advanced_data_table($weight_data)
 	$measurement_columns = ws_ls_get_active_measurement_fields();
 	if ($measurement_columns) {
 		foreach ($measurement_columns as $key => $data) {
-			$html_output .= '<th class="none">' . $data['title'] . '</th>';
+			$html_output .= '<th class="none">' . __($data['title'], WE_LS_SLUG) . '</th>';
 		}
 	}
 

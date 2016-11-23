@@ -98,7 +98,6 @@
 
     );
 
-
     $globals['WE_LS_MEASUREMENTS'] = json_encode($supported_measurements);
 
 	// -----------------------------------------------------------------------------------
