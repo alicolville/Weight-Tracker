@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight, loss, lose, helper, bmi, body, mass, index, graph, track, stones, kg, table, data, plot, target, history, pounds, responsive, chart, measurements, cm, centimeters, inches, hip, waist, bicep, thigh
 Requires at least: 4.1.0
 Tested up to: 4.6.1
-Stable tag: 4.0.1
+Stable tag: 4.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate Link: https://www.yeken.uk/donate/
@@ -54,7 +54,6 @@ Fully supported (have the majority of translations):
 
 * English (UK)
 * German (thanks Michael @ Activate the Beast)
-* Dutch (thanks Dennis)
 * Finish (thanks Ari)
 
 Languages partially supported (have some of the translations):
@@ -64,6 +63,7 @@ Languages partially supported (have some of the translations):
 * Spanish (thanks @idelfonsog2)
 * Romanian (thanks @alexiarna)
 * Danish (thanks @kfasterholdt)
+* Dutch (thanks Dennis, Yvon & Bart)
 
 Need a translation? Email us: [email@YeKen.uk](mailto:email@YeKen.uk "email@YeKen.uk")
 
@@ -148,6 +148,15 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
  Support for Body Measurements and Body Mass Index (BMI) values.
 
 == Changelog ==
+
+= 4.0.2 =
+
+* Added some more Dutch translations (thanks Yvon and Bart).
+* Bug fix: Chart yAxes can now be translated
+* Bug fix: Measurement labels can now be translated on form.
+* Bug fix: Measurement columns can now be translated in data table.
+* Bug fix: Measurement columns can now be translated in admin when viewing user data.
+* Bug fix: Header and footer columns on user data page (admin) can now be translated
 
 = 4.0.1 =
 
