@@ -75,7 +75,7 @@ function ws_ls_manage_user_data_page() {
 													$measurement_columns = ws_ls_get_active_measurement_fields();
 													if ($measurement_columns) {
 														foreach ($measurement_columns as $key => $data) {
-															$measurement_columns_html .= '<th class="none">' . $data['title'] . ' (' . $measurement_unit . ')</th>';
+															$measurement_columns_html .= '<th class="none">' . __($data['title'], WE_LS_SLUG) . ' (' . $measurement_unit . ')</th>';
 														}
 														echo $measurement_columns_html;
 													}
