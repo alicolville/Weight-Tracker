@@ -1,1956 +1,1535 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-<title>  - nl_NL - Poedit Export </title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title></title>
+  <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
+  <style>
+
+
+/*
+Based on Minimal CSS (minimalcss.com) under the MIT license.
+*/
+
+/* Reset */
+* { margin: 0; padding: 0; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+
+/* Layout */
+body { background-color: #fff; color: #333;	font: 14px/20px "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif; }
+
+header { width: 100%; margin: 0 auto; position: relative; padding: 20px 0; margin-bottom: 20px; }
+
+nav ul { margin: 0; }
+nav ul li { display: inline; margin-right: 20px; font-size: 16px; line-height: 28px; color: #333; }
+nav ul li a { color: #333; }
+
+.container { position: relative; max-width: 90%; margin: 0 auto; }
+
+footer { border-top:1px solid #ccc; font-size:11px; line-height:26px; color:#999; }
+footer a { color:#999999; }
+footer a:hover { color:#105CB6; }
+footer ul li { display:inline; list-style:none; padding-left:20px; }
+
+/* Typography */
+a { color: #105CB6; text-decoration: none; }
+a:hover, a:focus { color: #105CB6; text-decoration: underline; }
+a:active { color: #105CB6; }
+
+h1 { font-size: 24px; line-height: 20px; margin: 10px 0; }
+h2 { font-size: 20px; line-height: 20px; margin: 10px 0; }
+h3 { font-size: 16px; line-height: 20px; margin: 10px 0; }
+h4 { font-size: 14px; line-height: 20px; margin: 10px 0; }
+h5 { font-size: 12px; line-height: 20px; margin: 10px 0; }
+h5 { font-size: 10px; line-height: 20px; margin: 10px 0; }
+h1,h2,h3,h4,h5,h6 { color: #333; }
+
+p { margin-bottom: 10px; }
+
+.float-left     { float: left; }
+.float-right    { float: right; }
+img.float-left  { float: left; margin: 0 20px 20px 0; }
+img.float-right { float: right; margin: 0 0 20px 20px; }
+img.center      { margin: 0 auto; display: block; }
+
+.text-left    { text-align: left; }
+.text-center  { text-align: center; }
+.text-right   { text-align: right; }
+.text-justify { text-align: justify; }
+
+/* Misc */
+hr { background-color: #ccc; border: 0px; color: #ccc; height: 1px; margin: 8px 0 20px 0; }
+pre, code { background:#E0ECF6; display:block; margin-bottom: 20px; padding:10px; }
+
+blockquote { margin: 10px 10px 20px; padding: 9px; background-color: #f8f8f8; color: #666; border-left: 5px solid #ddd; font: 14px/20px Georgia, Times, serif; quotes: "\201C" "\201D"; }
+blockquote p { margin: 0; }
+blockquote:before { content: open-quote; font-weight: bold; }
+blockquote:after  { content: close-quote; font-weight: bold; }
+
+/* List */
+ul { list-style-position:inside; }
+ol { list-style-position:inside; }
+
+/* Table */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+th { font-weight: bold; }
+tfoot { font-style: italic; }
+
+/* Metadata part */
+
+.metadata {
+  margin-top: 15px;
+  margin-bottom: 10px;
+  font-size: 90%;
+}
+table.metadata td {
+  padding-right: 20px;
+}
+
+.stats {
+  padding-top: 5px;
+  padding-bottom: 20px;
+}
+.graph {
+  width: 100%;
+}
+.graph div { float: left; }
+.graph div:first-child { border-top-left-radius: 3px; border-bottom-left-radius: 3px; }
+.graph div:last-child { border-top-right-radius: 3px; border-bottom-right-radius: 3px; }
+.percent-done    { background-color: #71DD46; height: 10px; }
+.percent-fuzzy   { background-color: #FFD300; height: 10px; }
+.percent-untrans { background-color: #F1F1F1; height: 10px; }
+.legend {
+  font-size: smaller;
+  color: #aaa;
+  padding-top: 12px;
+  text-align: center;
+}
+
+/* Translations */
+table.translations {
+  width: 100%;
+  table-layout: fixed;
+}
+table.translations th, table.translations td {
+  padding: 5px 10px;
+  vertical-align: top;
+  border-bottom: 1px solid #E1E1E1;
+}
+table.translations th {
+  text-align: left;
+}
+table.translations th:first-child, table.translations td:first-child { padding-left: 0; }
+table.translations th:last-child, table.translations td:last-child { padding-right: 0; }
+
+.with-comments td {
+  border-bottom: none !important;
+}
+tr.comments div {
+  float: right;
+  max-width: 75%;
+  font-size: smaller;
+  color: #aaa;
+}
+tr.comments div p:last-child { margin-bottom: 0; }
+
+.fuzzy .tra {
+  color: #a9861b;
+}
+
+.msgctxt {
+  font-size: smaller;
+  color: #6d8e13;
+}
+
+
+  </style>
 </head>
-<body bgcolor='#FFFFFF'>
-<h1>  : nl_NL</h1>
-<table align=center border=1 cellspacing=2 cellpadding=4>
-<tr><th colspan=2>Project info</th></tr>
-<tr><td>Project name and version:</td><td></td></tr>
-<tr><td>Language:</td><td>nl_NL</td></tr>
-<tr><td>Team:</td><td></td></tr>
-<tr><td>Team's email address:</td><td><a href="mailto:"></a></td></tr>
-<tr><td>Charset:</td><td>UTF-8</td></tr>
+<body>
+<div class='container'>
+<table class='metadata'>
+<tr><td>Language:</td><td>Dutch (Netherlands)</td></tr>
 </table>
-Translated: 124 of 148 (83 %)  â€¢  Remaining: 24
-<table border=1 cellspacing=2 cellpadding=4>
-<tr>
-<th>
-Source
-</th>
-<th>
-Translation
-</th>
-<th>
-Notes
-</th>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-Date
-</td>
-<td>
-Datum
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
-Weight
-</td>
-<td>
-Gewicht
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-Notes
-</td>
-<td>
-Notities
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
-lbs
-</td>
-<td>
-lbs
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-Kg
-</td>
-<td>
-Kg
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#E7E4B7'>
-<td>
-Target
-</td>
-<td>
-Allow target weights?
-</td>
-<td>
-<font size="-1">
-Fuzzy translation<BR>
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-You have modified data. Please refresh page.
-</td>
-<td>
-Je hebt je data veranderd. Pagina verversen alsjeblieft.
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
-Target Weight
-</td>
-<td>
-Streefgewicht
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-Add a new weight
-</td>
-<td>
-Voeg een nieuw gewicht toe
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
-Your target weight is
-</td>
-<td>
-Je streef gewicht is
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-Stones
-</td>
-<td>
-Stenen
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
-Pounds
-</td>
-<td>
-Ponden
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-Set Target
-</td>
-<td>
-Gesteld doel
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
-Save Entry
-</td>
-<td>
-Invoer opslaan
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-Please enter a between 0-14 for pounds
-</td>
-<td>
-Voer een getal in tussen de 1-14 pond.
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
-Please enter a valid figure for pounds
-</td>
-<td>
-Voer een geldig getal voor ponden in
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-Please enter a valid figure for Kg
-</td>
-<td>
-Voer een geldig getal voor Kg in
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
-Please enter a valid figure for Stones
-</td>
-<td>
-Voer een geldig getal voor Stones in
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-Please enter a valid date
-</td>
-<td>
-Voer een geldige datum in
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
-Please confirm you wish to delete ALL your weight history
-</td>
-<td>
-Weet je het zeker dat je ALL je gewicht gegevens wilt wissen
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-St
-</td>
-<td>
-St
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
-The following MySQL tables are missing for this plugin
-</td>
-<td>
-Je MySql tabellen mis je voor deze plugin
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F4F1C1'>
-<td>
-View all weeks
-</td>
-<td>
-Se alle uger
-</td>
-<td>
-<font size="-1">
-Fuzzy translation<BR>
-</font>
-</td>
-</tr>
-<tr bgcolor='#E7E4B7'>
-<td>
-View Week
-</td>
-<td>
-Se uge
-</td>
-<td>
-<font size="-1">
-Fuzzy translation<BR>
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-to
-</td>
-<td>
-naar
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#E7E4B7'>
-<td>
-Settings
-</td>
-<td>
- Indstillinger
-</td>
-<td>
-<font size="-1">
-Fuzzy translation<BR>
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-Manage User Data
-</td>
-<td>
-Beheer gebruikers data
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
-Get Pro Version
-</td>
-<td>
-Koop de Pro versie
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-Help
-</td>
-<td>
-Help
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
-Saved!
-</td>
-<td>
-Opgeslagen!
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-An error occurred while saving your data!
-</td>
-<td>
-Er is een error ontstaan tijden het opslaan van je data!
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
-No user specified (hash)
-</td>
-<td>
-Geen gebruiker opgegeven (hash)
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-No user specified
-</td>
-<td>
-Geen gebruiker opgegeven
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
-st
-</td>
-<td>
-st
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-You need to be logged in to record your weight.
-</td>
-<td>
-Je moet ingelogd zijn om je gewicht op te slaan.
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
-Login now
-</td>
-<td>
-Nu inloggen
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-Your settings have been saved!
-</td>
-<td>
-Je gewicht is opgeslagen!
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
-Your weight history has been deleted!
-</td>
-<td>
-Je gewicht-geschiedenis is verwijderd!
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-Overview
-</td>
-<td>
-Overzicht
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
-Chart / Add Weight
-</td>
-<td>
-Tabel / Geicht toevoegen
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-In Detail
-</td>
-<td>
-In Detail
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
-View all recorded weights
-</td>
-<td>
-Bekijk alle opgeslagen gewichten
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-Choose weight units, date format, etc
-</td>
-<td>
-Kies de gewicht maten, datum formaat, ect
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
-In a chart
-</td>
-<td>
-In een grafiek
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-A pretty graph shall appear once you have recorded several weights.
-</td>
-<td>
-Een grafiek zal verschijnen zodra je je gewicht op meerdere data hebt ingevuld.
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
-Weight History
-</td>
-<td>
-Gewicht geschiedenis
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#A5EAEF'>
-<td>
-There is no data for this week, please try selecting another:
-</td>
-<td>
- 
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
-You haven't entered any weight data yet.
-</td>
-<td>
-Je heb nog geen gewicht ingevult
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
- Instructions
-</td>
-<td>
-Instructies
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
-Place the tag [weight-loss-tracker] on a given page and the user is presented with a form to enter a date, weight and notes for that entry. When the person saves their entry the data table and graph is refreshed.
-</td>
-<td>
-Plaats dit : [weight-loss-tracker] op een pagina en de user krijgt een tabel met daarin de datum, gewicht en notities. Wanneer het wordt opgeslagen zie je de tabel in een grafiek vorm verschijnen.
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-You do not have sufficient permissions to access this page.
-</td>
-<td>
-Je hebt geen toestemming voor deze pagina
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
-Get 
-</td>
-<td>
-Koop
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-Get Weight Loss Tracker Pro for
-</td>
-<td>
-Koop Weight Loss Tracker Pro voor
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
- and have the following features listed below.
-</td>
-<td>
-en krijg de volgende functies zoals in de lijst hieronder.
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-In case you need, your &lt;strong&gt;Site Hash&lt;/strong&gt;
-</td>
-<td>
-Voor het geval je het nodig heb, voor je &lt;strong&gt;Site Hash&lt;/strong&gt;
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
-Upgrade now for
-</td>
-<td>
-Upgrade nu voor
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-Enter License Key
-</td>
-<td>
-Voer de licentie code in
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
-Got an existing license key? If so, enter it below
-</td>
-<td>
-Heb je een geldige code? Zo ja, voel hem hieronder in
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-Enter license key
-</td>
-<td>
-Licentie code invoeren
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
-Add License
-</td>
-<td>
-Licentie toevoegen
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-Features of Pro version
-</td>
-<td>
-Fucnties van de Pro versie
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
-Below is a list of the intended features of the Pro version:
-</td>
-<td>
-Hier onder is een lijst met functies van de Pro versie
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-Rebuild them now
-</td>
-<td>
-Verbouw hem nu
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
- Settings
-</td>
-<td>
-Instellingen
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-General
-</td>
-<td>
-Algemeen
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
-General settings
-</td>
-<td>
-Algemene instellingen
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#A5EAEF'>
-<td>
-User Experience
-</td>
-<td>
- 
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#9CDEE3'>
-<td>
-Settings that effect the user's overall experience
-</td>
-<td>
- 
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-Chart
-</td>
-<td>
-Tabel
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
-Chart styling and config
-</td>
-<td>
-Tabel styling en configuratie
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-Weight Units
-</td>
-<td>
-Gewicht eenheden
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
-Stones &amp; Pounds
-</td>
-<td>
-Stenen &amp; ponden
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-You can specify whether to display weights in Kg, Stones &amp; Pounds or just Pounds. Please note: The graph will be displayed in Pounds if \"Stones &amp; Pounds\" is selected.
-</td>
-<td>
-Je kan aangeven of je het gewicht in Kg, Stones &amp; Ponden of alleen ponden. Houd rekening mee dat : De tabel word aangeven in Ponden als je \"Stones &amp; Ponden\" is geselecgteerd
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
-UK or US Date format?
-</td>
-<td>
-UK of US datum formaat
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-UK (DD/MM/YYYY)
-</td>
-<td>
-UK (DD/MM/JJJJ)
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
-US (MM/DD/YYYY)
-</td>
-<td>
-US (MM/DD/JJJJ)
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-Specify what format dates should be displayed in (i.e. UK or US format)
-</td>
-<td>
-Gespecificeerd welke datum getoont moet worden in (o.a UK of US formaat)
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
-Allow decimal places?
-</td>
-<td>
-Decimalen toestaan?
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-Yes
-</td>
-<td>
-Ja
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
-No
-</td>
-<td>
-Nee
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-If enabled, Decimal weight entries will be allowed in Kg or Pounds mode.
-</td>
-<td>
-Wanneer geselecteerd, Decimaal gewicht is toegestaan in KG of Ponden modus.
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
-Disable plugin CSS?
-</td>
-<td>
-Toon plugin CSS
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-If you wish to style the forms in your own way, you can use this option to disable WLT's style sheets.
-</td>
-<td>
-Als je je eigen style wilt gebruiken van je eigen CSS, kan je deze optie gebruiken om WLT's uit te zetten.
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
-Allow target weights?
-</td>
-<td>
-Streefgewicht toestaan?
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-If enabled, a user is allowed to enter a target weight. This will be displayed as a horizontal bar on the line chart.
-</td>
-<td>
-Wanneer geselecteerd, geef je toestemming om je streefgewicht in te voeren. Dit wordt getoont op de horizontale lijn in de tabel
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
-Allow user settings
-</td>
-<td>
-Gebruikers instellingen toestaan
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-Allow your users to select their own weight unit, date format and remove all their data.
-</td>
-<td>
-Toestemming geven om je users zelf te laten selecteren : gewicht, datum formaat en verwijderen van data.
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#9CDEE3'>
-<td>
-Advanced data tables?
-</td>
-<td>
- 
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#A5EAEF'>
-<td>
-User's weight history is presented in tables that allow sorting, paging, editing and deleting.
-</td>
-<td>
- 
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
-Display data in tabs?
-</td>
-<td>
-Data tonen in de tabbladen?
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-If enabled, \"Weight History\" and \"Target Weight\" will be displayed on sepearate tabs.
-</td>
-<td>
-Wanneer geselecteerd, \"Weight Geschiedenis\" en \"Streef gewicht\" zal het getoond worden in 2 apparte tabbladen.
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
-Default chart type
-</td>
-<td>
-Default tabel type
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-Line Chart
-</td>
-<td>
-Lijn van de tabel
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
-Bar Chart
-</td>
-<td>
-Bar van de tabel
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-If enabled, \"Allows points and labels to be displayed on graph.
-</td>
-<td>
-Wanneer geselecteerd \"Sta je punten en labels toe in de tabel wanneer het diagram wordt getoont \"
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#9CDEE3'>
-<td>
-Bezier Curve (Line only)?
-</td>
-<td>
- 
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#A5EAEF'>
-<td>
-If enabled, lines between points on a line graph will be curved
-</td>
-<td>
- 
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#9CDEE3'>
-<td>
-Display gridlines?
-</td>
-<td>
- 
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#A5EAEF'>
-<td>
-If enabled, gridlines will be displayed on the Graph canvas.
-</td>
-<td>
- 
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#9CDEE3'>
-<td>
-Display points on graph?
-</td>
-<td>
- 
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#A5EAEF'>
-<td>
-Maximum points per graph
-</td>
-<td>
- 
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#9CDEE3'>
-<td>
-Point thickness (Line only)
-</td>
-<td>
- 
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F4F1C1'>
-<td>
-Weight colour?
-</td>
-<td>
-Gewicht geschiedenis
-</td>
-<td>
-<font size="-1">
-Fuzzy translation<BR>
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
-If enabled, enter a HEX colour code to use for the Weight history line on graph.
-</td>
-<td>
-Wanneer geselecteerd, voer je een HEX kleur code in , dat is de kleur van de lijn op het diagram
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F4F1C1'>
-<td>
-Weight fill colour?
-</td>
-<td>
-Gewicht geschiedenis
-</td>
-<td>
-<font size="-1">
-Fuzzy translation<BR>
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
-If enabled, enter a HEX colour code to use forthe shading underneath the Weight history line on graph. Line charts only.
-</td>
-<td>
-Wanneer geselecteerd, voer je een HEX kleur code in , dat is de kleur onder de lijn in het diagram. Alleen bij lijn tabellen.
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-Target line colour?
-</td>
-<td>
-Doel lijn gewicht?
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
-If enabled, enter a HEX colour code to use for the Target line on graph.
-</td>
-<td>
-Wanneer geselecteerd, voer je een HEX kleur code in , dat is de kleur van je streef gewicht op het diagram
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-&lt;strong&gt;Widgets.&lt;/strong&gt; Widgets that allow you to display the graph and quick weight entry form within any widget area.
-</td>
-<td>
-&lt;strong&gt;Widgets.&lt;/strong&gt; Met deze widgets zie je snel en makkelijk het gewicht in de widget area.
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
-&lt;strong&gt;Chart and form Shortcodes.&lt;/strong&gt; That allow you to display the graph and quick weight entry form by placing a shortcode on any post or page.
-</td>
-<td>
-&lt;strong&gt;Grafieken en vormen codes.&lt;/strong&gt; Dit geeft je toestemming om de grafiek en het gewicht wat je hebt ingevult te plaatsen op elke post pagina.
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-&lt;strong&gt;Text Shortcodes.&lt;/strong&gt; Additional shortcodes for earliest and most recent dates entered.
-</td>
-<td>
-&lt;strong&gt;Tekst codes.&lt;/strong&gt; Extra shortcodes voor de meest recente data wat je hebt ingevult.
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
-&lt;strong&gt;Admin: View / Delete user data&lt;/strong&gt;. Admin will be able to view and delete existing user data.
-</td>
-<td>
-&lt;strong&gt;Admin: Bekijk / bewerk gebruikers data&lt;/strong&gt;.Je kan als admin gebruikers data bekijken, veranderen en verwijderen
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-&lt;strong&gt;User preferences&lt;/strong&gt;. If enabled, the user will be able to select which unit they wish to store their weight in Metric or Imperial. They will also be able to specify date format and clear all their weight data.
-</td>
-<td>
-&lt;strong&gt;Gebruikers voorkeueren&lt;/strong&gt; wanneer geselecteerd, kies je voor het opslaan van je gewicht in Meteric of Imerial. Je kan bepaalde datums en bepaald gewicht verwijderen.
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
-&lt;strong&gt;Bar Charts&lt;/strong&gt;. Fancy something different to a line chart? The plugin will also support Bar Charts.
-</td>
-<td>
-&lt;strong&gt;Staafdiagram&lt;/strong&gt;. Iets anders dan een lijn diagram? Met deze plugin kan je kiezen voor een staafdiagram.
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-&lt;strong&gt;Decimals&lt;/strong&gt;. Decimals will be allowed weight in Pounds only or Kg modes.
-</td>
-<td>
-&lt;strong&gt;Decimalen&lt;/strong&gt;. Decimalen zijn alleen te zien in de Ponden of Kg modes.
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#9CDEE3'>
-<td>
-&lt;strong&gt;Delete existing entry&lt;/strong&gt;. A logged in user will be able to delete or edit an existing weight entry.
-</td>
-<td>
- 
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-&lt;strong&gt;Better Tables.&lt;/strong&gt;. Data tables in front end and admin will support paging and sorting.
-</td>
-<td>
-&lt;strong&gt;Betere tabellen.&lt;/strong&gt;. De data in de tabellen in front &amp; and admin zullen alles ondersteunen
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
-&lt;strong&gt;Admin: Extra Settings&lt;/strong&gt;. Extra settings to customise the plugin will be added e.g. number of plot points on graph, rows per page, etc.
-</td>
-<td>
-&lt;strong&gt;Admin: Extra Instellingen&lt;/strong&gt; Extra instellingen om deze plugin aan te passen o.a. aantal nummers in de grafies, rijen per pagina, ect.
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-No weight data was found for the specified user.
-</td>
-<td>
-Geen data is gevonden voor bepaalde user
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#9CDEE3'>
-<td>
- User Data
-</td>
-<td>
- 
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#A5EAEF'>
-<td>
-View / Edit
-</td>
-<td>
- 
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#9CDEE3'>
-<td>
-View and edit existing user data
-</td>
-<td>
- 
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#A5EAEF'>
-<td>
-Delete All
-</td>
-<td>
- 
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#9CDEE3'>
-<td>
-Delete all user data!
-</td>
-<td>
- 
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-You can use the following button to remove all user data currently stored by the plugin. &lt;strong&gt;All weight entries for every user will be lost!&lt;/strong&gt;
-</td>
-<td>
-Je kan de volgende knop gebruiken om alle gebruikters data te verwijderen in deze plugin. &lt;strong&gt; ALLE gewichts data wordt verwijderd! &lt;/strong&gt;
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
-Remove ALL user data
-</td>
-<td>
-Verwijder ALLE begruikers data
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-Are you sure you?
-</td>
-<td>
-Weet je het zeker?
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
-Are you sure you wish to remove all user data?
-</td>
-<td>
-Weet je het zeker dat je alle gebruikers data wilt wissen?
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-Which unit would you like to record your weight in:
-</td>
-<td>
-Welke eenheid wil je hebben voor je gewciht:
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
-Display dates in the following formats:
-</td>
-<td>
-Laat datum zien in de volgende formaties:
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-Save Settings
-</td>
-<td>
-Instellingen opslaan
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
-Delete existing data
-</td>
-<td>
-Verwijder betaande data
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-The button below allows you to clear your existing weight history. Confirm:
-</td>
-<td>
-De knop hieronder is om al je data te verwijderen. Weet je het zeker:
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
-Delete
-</td>
-<td>
-Delete
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-Weight Loss Tracker - Chart
-</td>
-<td>
-Weight Loss Tracker - Tabel
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
-Display a chart to see your current progress.
-</td>
-<td>
-Een tabel tonen voor je huidige progressie.
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-Weight Loss Tracker
-</td>
-<td>
-Weight Loss Tracker
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
-Title
-</td>
-<td>
-Titel
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-Type
-</td>
-<td>
-Type
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
-Maximum number of plot points on chart
-</td>
-<td>
-Maximum aantal punten in de tabel
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-ID of user (leave blank to show chart for current user)
-</td>
-<td>
-ID of gebruiker (Laat leeg voor huidige gebruiker)
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
-Note: By default, the chart will be displayed in the weight unit chosen by the logged in user. If not specfied the plugin default will be used.
-</td>
-<td>
-Notitie: Met default, de tabel wordt getoont met de gekozen eenheid wat je hebt ingevult bij het inloggen. Wanneer niks is geslecteerd zal automatisch de default van de plugin worden toegepast.
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-Weight Loss Tracker - Form
-</td>
-<td>
-Weight Loss Tracker - Formulier
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
-Display a quick entry form for logged in users to record their weight for today.
-</td>
-<td>
-Toon een snel invul formulier voor ingelogde gebruikers om hun gewicht van de dag in te vullen.
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-Your weight today
-</td>
-<td>
-Gewicht van vandaag
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
-Allow user to specify a date?
-</td>
-<td>
-Toestaan om gebruikers een datum te selecteren?
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#FFFFFF'>
-<td>
-No. Automatically set to today's date
-</td>
-<td>
-Nee. Automatisch de datum van vandaag.
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
-<tr bgcolor='#F2F2F2'>
-<td>
-Allow user to specify a date
-</td>
-<td>
-Toestaan om gebruikers een datum te selecteren?
-</td>
-<td>
-<font size="-1">
- 
-</font>
-</td>
-</tr>
+<div class='stats'>
+  <div class='graph'>
+    <div class='percent-done' style='width: 78.8546%'>&nbsp;</div>
+    <div class='percent-untrans' style='width: 21.1454%'>&nbsp;</div>
+  </div>
+  <div class='legend'>Translated: 179 of 227 (78 %)  •  Remaining: 48  </div>
+</div>
+<table class='translations'>
+  <thead>
+    <tr>
+      <th>Source text — English</th>
+      <th>Translation — Dutch (Netherlands)</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr class='i'>
+<td class='src'  lang='en'>
+Weight Loss Tracker</td>
+<td class='tra'  lang='nl-NL'>
+Weight Loss Tracker</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Date</td>
+<td class='tra'  lang='nl-NL'>
+Datum</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Weight</td>
+<td class='tra'  lang='nl-NL'>
+Gewicht</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Notes</td>
+<td class='tra'  lang='nl-NL'>
+Notities</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+You need to be logged in to record your weight.</td>
+<td class='tra'  lang='nl-NL'>
+Je moet ingelogd zijn om je gewicht op te slaan.</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Login now</td>
+<td class='tra'  lang='nl-NL'>
+Nu inloggen</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+lbs</td>
+<td class='tra'  lang='nl-NL'>
+lbs</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Kg</td>
+<td class='tra'  lang='nl-NL'>
+Kg</td>
+</tr>
+<tr class='i untrans'>
+<td class='src'  lang='en'>
+Inches</td>
+<td class='tra'  lang='nl-NL'>
+</td>
+</tr>
+<tr class='i untrans'>
+<td class='src'  lang='en'>
+CM</td>
+<td class='tra'  lang='nl-NL'>
+</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Target</td>
+<td class='tra'  lang='nl-NL'>
+Streefgewicht</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Measurement</td>
+<td class='tra'  lang='nl-NL'>
+Meting</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+You have modified data. Please refresh page.</td>
+<td class='tra'  lang='nl-NL'>
+Je hebt je data veranderd, klik hier om de pagina te verversen. </td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Target Weight</td>
+<td class='tra'  lang='nl-NL'>
+Streefgewicht</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Add a new weight</td>
+<td class='tra'  lang='nl-NL'>
+Voeg een nieuw gewicht toe</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Your target weight is</td>
+<td class='tra'  lang='nl-NL'>
+Je streefgewicht is</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Stones</td>
+<td class='tra'  lang='nl-NL'>
+Stenen</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Pounds</td>
+<td class='tra'  lang='nl-NL'>
+Ponden</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Add measurements</td>
+<td class='tra'  lang='nl-NL'>
+Voeg metingen toe</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Set Target</td>
+<td class='tra'  lang='nl-NL'>
+Streefgewicht opslaan</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Save Entry</td>
+<td class='tra'  lang='nl-NL'>
+Invoer opslaan</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Clear Target</td>
+<td class='tra'  lang='nl-NL'>
+Wis je streefgewicht</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Please enter a between 0-14 for pounds</td>
+<td class='tra'  lang='nl-NL'>
+Voer een getal in tussen de 1-14 pond.</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Please enter a valid figure for pounds</td>
+<td class='tra'  lang='nl-NL'>
+Voer een geldig getal voor ponden in</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Are you sure you wish to clear your target weight?</td>
+<td class='tra'  lang='nl-NL'>
+Weet je zeker dat je je streefgewicht wilt wissen?</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Please enter a valid figure for Kg</td>
+<td class='tra'  lang='nl-NL'>
+Voer een geldig getal voor Kg in (gebruik alleen cijfers en eventueel een komma)</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Please enter a valid figure for Stones</td>
+<td class='tra'  lang='nl-NL'>
+Voer een geldig getal voor Stones in</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Please enter a valid date</td>
+<td class='tra'  lang='nl-NL'>
+Voer een geldige datum in</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Please confirm you wish to delete ALL your weight history</td>
+<td class='tra'  lang='nl-NL'>
+Weet je het zeker dat je AL je gewicht gegevens wilt wissen</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Are you sure you wish to delete this entry? If so, press OK.</td>
+<td class='tra'  lang='nl-NL'>
+Weet je zeker dat je deze gegevens wilt verwijderen? Zo ja, klik op OK.</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Please enter a valid measurement (</td>
+<td class='tra'  lang='nl-NL'>
+Voer een geldige meting in, gebruik alleen cijfers en eventueel een komma (</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+St</td>
+<td class='tra'  lang='nl-NL'>
+St</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+The following MySQL tables are missing for this plugin</td>
+<td class='tra'  lang='nl-NL'>
+Je MySql tabellen mis je voor deze plugin</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+View all weeks</td>
+<td class='tra'  lang='nl-NL'>
+Bekijk alle weken</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+View Week</td>
+<td class='tra'  lang='nl-NL'>
+Bekijk week</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+to</td>
+<td class='tra'  lang='nl-NL'>
+naar</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+The plugin supports the following measurements</td>
+<td class='tra'  lang='nl-NL'>
+Deze plugin ondersteunt de volgende metingen</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Forearm - Left</td>
+<td class='tra'  lang='nl-NL'>
+Onderarm - Links</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Forearm - Right</td>
+<td class='tra'  lang='nl-NL'>
+Onderarm - Rechts</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Bicep - Left</td>
+<td class='tra'  lang='nl-NL'>
+Bovenarm - Links</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Bicep - Right</td>
+<td class='tra'  lang='nl-NL'>
+Bovenarm - Rechts</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Calf - Left</td>
+<td class='tra'  lang='nl-NL'>
+Kuit - Links</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Calf - Right</td>
+<td class='tra'  lang='nl-NL'>
+Kuit - Rechts</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Thigh - Left</td>
+<td class='tra'  lang='nl-NL'>
+Dijbeen - Links</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Thigh - Right</td>
+<td class='tra'  lang='nl-NL'>
+Dijbeen - Rechts</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Waist</td>
+<td class='tra'  lang='nl-NL'>
+Taille</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Bust / Chest</td>
+<td class='tra'  lang='nl-NL'>
+Borst</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Shoulders</td>
+<td class='tra'  lang='nl-NL'>
+Schouders</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Height</td>
+<td class='tra'  lang='nl-NL'>
+Lengte</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Buttocks</td>
+<td class='tra'  lang='nl-NL'>
+Billen</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Hips</td>
+<td class='tra'  lang='nl-NL'>
+Heupomvang</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Navel</td>
+<td class='tra'  lang='nl-NL'>
+Navel</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Settings</td>
+<td class='tra'  lang='nl-NL'>
+Intstellingen</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Manage User Data</td>
+<td class='tra'  lang='nl-NL'>
+Beheer gebruikers data</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Get Pro Version</td>
+<td class='tra'  lang='nl-NL'>
+Koop de Pro versie</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Help</td>
+<td class='tra'  lang='nl-NL'>
+Help</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Saved!</td>
+<td class='tra'  lang='nl-NL'>
+Opgeslagen!</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+An error occurred while saving your data!</td>
+<td class='tra'  lang='nl-NL'>
+Er is iets fout gegaan bij het opslaan van je gegevens. Probeer het nogmaals.</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+No user specified (hash)</td>
+<td class='tra'  lang='nl-NL'>
+Geen gebruiker opgegeven (hash)</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+No user specified</td>
+<td class='tra'  lang='nl-NL'>
+Geen gebruiker opgegeven</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+st</td>
+<td class='tra'  lang='nl-NL'>
+st</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Your settings have been saved!</td>
+<td class='tra'  lang='nl-NL'>
+Je gewicht is opgeslagen!</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Your weight history has been deleted!</td>
+<td class='tra'  lang='nl-NL'>
+Je gewicht-geschiedenis is verwijderd!</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Overview</td>
+<td class='tra'  lang='nl-NL'>
+Overzicht</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Chart / Add Weight</td>
+<td class='tra'  lang='nl-NL'>
+Tabel / Gewicht toevoegen</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+In Detail</td>
+<td class='tra'  lang='nl-NL'>
+In Detail</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+View all recorded weights</td>
+<td class='tra'  lang='nl-NL'>
+Bekijk alle opgeslagen gewichten</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Choose weight units, date format, etc</td>
+<td class='tra'  lang='nl-NL'>
+Kies de gewicht eenheid, datum formaat, ect</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+In a chart</td>
+<td class='tra'  lang='nl-NL'>
+In een grafiek</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+A pretty graph shall appear once you have recorded several weights.</td>
+<td class='tra'  lang='nl-NL'>
+Een grafiek zal verschijnen zodra je je gewicht op meerdere dagen hebt ingevuld.</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Weight History</td>
+<td class='tra'  lang='nl-NL'>
+Gewicht geschiedenis</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+There is no data for this week, please try selecting another:</td>
+<td class='tra'  lang='nl-NL'>
+ Er is voor deze week geen data, probeer een andere week</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+You haven't entered any weight data yet.</td>
+<td class='tra'  lang='nl-NL'>
+Je heb nog geen gewicht ingevuld</td>
+</tr>
+<tr class='i untrans'>
+<td class='src'  lang='en'>
+You can find detailed help with this plugin at our Github Wiki:</td>
+<td class='tra'  lang='nl-NL'>
+</td>
+</tr>
+<tr class='i untrans'>
+<td class='src'  lang='en'>
+Our road map</td>
+<td class='tra'  lang='nl-NL'>
+</td>
+</tr>
+<tr class='i untrans'>
+<td class='src'  lang='en'>
+Interested in the future development of this plugin? Then have a peek at our road map:</td>
+<td class='tra'  lang='nl-NL'>
+</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+You do not have sufficient permissions to access this page.</td>
+<td class='tra'  lang='nl-NL'>
+Je hebt geen toestemming voor deze pagina</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Get </td>
+<td class='tra'  lang='nl-NL'>
+Koop</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Get Weight Loss Tracker Pro for</td>
+<td class='tra'  lang='nl-NL'>
+Koop Weight Loss Tracker Pro voor</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+ and have the following features listed below.</td>
+<td class='tra'  lang='nl-NL'>
+en krijg de volgende functies zoals in de lijst hieronder.</td>
+</tr>
+<tr class='i untrans'>
+<td class='src'  lang='en'>
+In case you need, your &lt;strong&gt;Site Hash&lt;/strong&gt; is</td>
+<td class='tra'  lang='nl-NL'>
+</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Upgrade now for</td>
+<td class='tra'  lang='nl-NL'>
+Upgrade nu voor</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Enter License Key</td>
+<td class='tra'  lang='nl-NL'>
+Voer de licentie code in</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Got an existing license key? If so, enter it below</td>
+<td class='tra'  lang='nl-NL'>
+Heb je een geldige code? Zo ja, voer hem hieronder in</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+In case you need, your &lt;strong&gt;Site Hash&lt;/strong&gt;</td>
+<td class='tra'  lang='nl-NL'>
+Voor het geval je het nodig heb, voor je &lt;strong&gt;Site Hash&lt;/strong&gt;</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Enter license key</td>
+<td class='tra'  lang='nl-NL'>
+Licentie code invoeren</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Add License</td>
+<td class='tra'  lang='nl-NL'>
+Licentie toevoegen</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Features of Pro version</td>
+<td class='tra'  lang='nl-NL'>
+Fucnties van de Pro versie</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Below is a list of the intended features of the Pro version:</td>
+<td class='tra'  lang='nl-NL'>
+Hier onder is een lijst met functies van de Pro versie</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Rebuild them now</td>
+<td class='tra'  lang='nl-NL'>
+Bouw ze nu opnieuw op</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+ Settings</td>
+<td class='tra'  lang='nl-NL'>
+Instellingen</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+General</td>
+<td class='tra'  lang='nl-NL'>
+Algemeen</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+General settings</td>
+<td class='tra'  lang='nl-NL'>
+Algemene instellingen</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+User Experience</td>
+<td class='tra'  lang='nl-NL'>
+Gebruikerservaring</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Settings that effect the user's overall experience</td>
+<td class='tra'  lang='nl-NL'>
+Instellingen voor de gebruikerservaring</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Chart</td>
+<td class='tra'  lang='nl-NL'>
+Tabel</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Chart styling and config</td>
+<td class='tra'  lang='nl-NL'>
+Tabel styling en configuratie</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Measurements</td>
+<td class='tra'  lang='nl-NL'>
+Metingen</td>
+</tr>
+<tr class='i untrans'>
+<td class='src'  lang='en'>
+Allow users to record their measurements</td>
+<td class='tra'  lang='nl-NL'>
+</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Weight Units</td>
+<td class='tra'  lang='nl-NL'>
+Gewichtseenheden</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Stones &amp; Pounds</td>
+<td class='tra'  lang='nl-NL'>
+Stenen &amp; ponden</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+You can specify whether to display weights in Kg, Stones &amp; Pounds or just Pounds. Please note: The graph will be displayed in Pounds if "Stones &amp; Pounds" is selected.</td>
+<td class='tra'  lang='nl-NL'>
+Je kan aangeven of je het gewicht in Kg, Stones &amp;amp; Ponden of alleen ponden wilt. Houd met het volgende rekening : De tabel word aangeven in Ponden als je "Stones &amp;amp; Ponden" hebt geselecteerd</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+UK or US Date format?</td>
+<td class='tra'  lang='nl-NL'>
+UK of US datum formaat</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+UK (DD/MM/YYYY)</td>
+<td class='tra'  lang='nl-NL'>
+UK (DD/MM/JJJJ)</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+US (MM/DD/YYYY)</td>
+<td class='tra'  lang='nl-NL'>
+US (MM/DD/JJJJ)</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Specify what format dates should be displayed in (i.e. UK or US format)</td>
+<td class='tra'  lang='nl-NL'>
+Kies welke datum getoond moet worden (o.a UK of US formaat)</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Allow decimal places?</td>
+<td class='tra'  lang='nl-NL'>
+Decimalen toestaan?</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Yes</td>
+<td class='tra'  lang='nl-NL'>
+Ja</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+No</td>
+<td class='tra'  lang='nl-NL'>
+Nee</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+If enabled, Decimal weight entries will be allowed in Kg or Pounds mode.</td>
+<td class='tra'  lang='nl-NL'>
+Toestemming geven om decimalen van gewichten toe te staan in de KG of Ponden modus.</td>
+</tr>
+<tr class='i untrans'>
+<td class='src'  lang='en'>
+Display BMI in tables?</td>
+<td class='tra'  lang='nl-NL'>
+</td>
+</tr>
+<tr class='i untrans'>
+<td class='src'  lang='en'>
+If enabled, BMI values will be displayed alongside weight entries in data tables.</td>
+<td class='tra'  lang='nl-NL'>
+</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Disable plugin CSS?</td>
+<td class='tra'  lang='nl-NL'>
+Toon plugin CSS</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+If you wish to style the forms in your own way, you can use this option to disable WLT's style sheets.</td>
+<td class='tra'  lang='nl-NL'>
+Als je je eigen style wilt gebruiken van je eigen CSS, kan je deze optie gebruiken om WLT's uit te zetten.</td>
+</tr>
+<tr class='i untrans'>
+<td class='src'  lang='en'>
+Send stats to YeKen?</td>
+<td class='tra'  lang='nl-NL'>
+</td>
+</tr>
+<tr class='i untrans'>
+<td class='src'  lang='en'>
+We would love to see how our plugin is used. By consenting, you are allowing permission for the following data to be sent on a monthly basis to YeKen: URL, summary of settings, count of recorded weights and measurements. No user or admin data will ever be transmitted.</td>
+<td class='tra'  lang='nl-NL'>
+</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Allow target weights?</td>
+<td class='tra'  lang='nl-NL'>
+Streefgewicht toestaan?</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+If enabled, a user is allowed to enter a target weight. This will be displayed as a horizontal bar on the line chart.</td>
+<td class='tra'  lang='nl-NL'>
+Toestemming geven om je streefgewicht in te voeren. Dit wordt getoond op de horizontale lijn in de tabel</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Allow user settings</td>
+<td class='tra'  lang='nl-NL'>
+Gebruikers instellingen toestaan</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Allow your users to select their own weight unit, date format and remove all their data.</td>
+<td class='tra'  lang='nl-NL'>
+Toestemming geven om je begruikers zelf te laten selecteren : gewicht, datum formaat en verwijderen van data.</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Advanced data tables?</td>
+<td class='tra'  lang='nl-NL'>
+Data tabellen voor gevorderde</td>
+</tr>
+<tr class='i untrans'>
+<td class='src'  lang='en'>
+User's weight history is presented in responsive tables that allow sorting, paging, editing and deleting. Weight Index (i.e. percentage lost / gained to be displayed.)</td>
+<td class='tra'  lang='nl-NL'>
+</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Display data in tabs?</td>
+<td class='tra'  lang='nl-NL'>
+Data tonen in de tabbladen?</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+If enabled, "Weight History" and "Target Weight" will be displayed on sepearate tabs.</td>
+<td class='tra'  lang='nl-NL'>
+"Weight Geschiedenis" en "Streefgewicht" zal worden getoond in 2 aparte tabbladen.</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Default chart type</td>
+<td class='tra'  lang='nl-NL'>
+Default tabel type</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Line Chart</td>
+<td class='tra'  lang='nl-NL'>
+Lijn van de tabel</td>
+</tr>
+<tr class='i untrans'>
+<td class='src'  lang='en'>
+Highly Recommended</td>
+<td class='tra'  lang='nl-NL'>
+</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Bar Chart</td>
+<td class='tra'  lang='nl-NL'>
+Bar van de tabel</td>
+</tr>
+<tr class='i untrans'>
+<td class='src'  lang='en'>
+If enabled, "Allows points and labels to be displayed on graph. &lt;strong&gt;Note: If using measurements&lt;/strong&gt;, graph type will be forced to Line.</td>
+<td class='tra'  lang='nl-NL'>
+</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Display gridlines?</td>
+<td class='tra'  lang='nl-NL'>
+weergave rasterlijnen?</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+If enabled, gridlines will be displayed on the Graph canvas.</td>
+<td class='tra'  lang='nl-NL'>
+Indien ingeschakeld, zijn de rasterlijnen zichtbaar op het diagram</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Maximum points per graph</td>
+<td class='tra'  lang='nl-NL'>
+Maximum aantal punten per diagram</td>
+</tr>
+<tr class='i untrans'>
+<td class='src'  lang='en'>
+If enabled, "Allows points and labels to be displayed on graph.</td>
+<td class='tra'  lang='nl-NL'>
+</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Weight colour?</td>
+<td class='tra'  lang='nl-NL'>
+Gewicht kleur</td>
+</tr>
+<tr class='i untrans'>
+<td class='src'  lang='en'>
+If enabled, enter a HEX colour code to use for the Weight history line / bar border on graph.</td>
+<td class='tra'  lang='nl-NL'>
+</td>
+</tr>
+<tr class='i untrans'>
+<td class='src'  lang='en'>
+Should y Axes start at 0?</td>
+<td class='tra'  lang='nl-NL'>
+</td>
+</tr>
+<tr class='i untrans'>
+<td class='src'  lang='en'>
+If enabled, y Axes shall start at 0. Otherwise, they are automatically calculated.</td>
+<td class='tra'  lang='nl-NL'>
+</td>
+</tr>
+<tr class='i untrans'>
+<td class='src'  lang='en'>
+Line Chart Options</td>
+<td class='tra'  lang='nl-NL'>
+</td>
+</tr>
+<tr class='i untrans'>
+<td class='src'  lang='en'>
+Bezier Curve?</td>
+<td class='tra'  lang='nl-NL'>
+</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+If enabled, lines between points on a line graph will be curved</td>
+<td class='tra'  lang='nl-NL'>
+indien ingeschakeld, is de lijn tussen de punten een kromme lijn</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Target line colour?</td>
+<td class='tra'  lang='nl-NL'>
+Kleur van lijn voor streefgewicht?</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+If enabled, enter a HEX colour code to use for the Target line on graph.</td>
+<td class='tra'  lang='nl-NL'>
+Voer hier de HEX kleur code in van je streefgewicht in het diagram.</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Display points on graph?</td>
+<td class='tra'  lang='nl-NL'>
+laat punten zien op het diagram</td>
+</tr>
+<tr class='i untrans'>
+<td class='src'  lang='en'>
+Point thickness</td>
+<td class='tra'  lang='nl-NL'>
+</td>
+</tr>
+<tr class='i untrans'>
+<td class='src'  lang='en'>
+Specifies the point thickness on a line chart.</td>
+<td class='tra'  lang='nl-NL'>
+</td>
+</tr>
+<tr class='i untrans'>
+<td class='src'  lang='en'>
+Bar Chart Options</td>
+<td class='tra'  lang='nl-NL'>
+</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Weight fill colour?</td>
+<td class='tra'  lang='nl-NL'>
+Gewicht opvul kleur</td>
+</tr>
+<tr class='i untrans'>
+<td class='src'  lang='en'>
+If enabled, enter a HEX colour code to use for filling the Weight bars on the graph.</td>
+<td class='tra'  lang='nl-NL'>
+</td>
+</tr>
+<tr class='i untrans'>
+<td class='src'  lang='en'>
+Allow Measurements?</td>
+<td class='tra'  lang='nl-NL'>
+</td>
+</tr>
+<tr class='i untrans'>
+<td class='src'  lang='en'>
+If enabled, a user can also add body measurements along with their weights.</td>
+<td class='tra'  lang='nl-NL'>
+</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Measurement Units</td>
+<td class='tra'  lang='nl-NL'>
+Meeteenheden</td>
+</tr>
+<tr class='i untrans'>
+<td class='src'  lang='en'>
+Centimetres</td>
+<td class='tra'  lang='nl-NL'>
+</td>
+</tr>
+<tr class='i untrans'>
+<td class='src'  lang='en'>
+Default unit for recording measurements.</td>
+<td class='tra'  lang='nl-NL'>
+</td>
+</tr>
+<tr class='i untrans'>
+<td class='src'  lang='en'>
+Measurements mandatory?</td>
+<td class='tra'  lang='nl-NL'>
+</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+If yes, a user will be forced to complete all measurement features.</td>
+<td class='tra'  lang='nl-NL'>
+Indien ja, dan zal de gebruiker alle metingen moeten invoeren</td>
+</tr>
+<tr class='i untrans'>
+<td class='src'  lang='en'>
+Areas of measurements</td>
+<td class='tra'  lang='nl-NL'>
+</td>
+</tr>
+<tr class='i untrans'>
+<td class='src'  lang='en'>
+Enable</td>
+<td class='tra'  lang='nl-NL'>
+</td>
+</tr>
+<tr class='i untrans'>
+<td class='src'  lang='en'>
+Chart Colour</td>
+<td class='tra'  lang='nl-NL'>
+</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+No data available in table</td>
+<td class='tra'  lang='nl-NL'>
+Geen data beschikbaar in de tabel</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Showing _START_ to _END_ of _TOTAL_ entries</td>
+<td class='tra'  lang='nl-NL'>
+Bekijk _START_ tot _END_  van _TOTAL_ resultaten</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Showing 0 to 0 of 0 entries</td>
+<td class='tra'  lang='nl-NL'>
+Bekijk 0 tot 0 van 0 resultaten</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+(filtered from _MAX_ total entries)</td>
+<td class='tra'  lang='nl-NL'>
+(gefilterd van _MAX_ totale resultaten)</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Show _MENU_ entries</td>
+<td class='tra'  lang='nl-NL'>
+Bekijk _MENU_ resultaten</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Loading...</td>
+<td class='tra'  lang='nl-NL'>
+Laden...</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Processing...</td>
+<td class='tra'  lang='nl-NL'>
+Verwerken...</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Search: </td>
+<td class='tra'  lang='nl-NL'>
+Zoeken:</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+No matching records found</td>
+<td class='tra'  lang='nl-NL'>
+Geen overeenkomende resultaten gevonden</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+First</td>
+<td class='tra'  lang='nl-NL'>
+Eerste</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Last</td>
+<td class='tra'  lang='nl-NL'>
+Laatste</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Next</td>
+<td class='tra'  lang='nl-NL'>
+Volgende</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Previous</td>
+<td class='tra'  lang='nl-NL'>
+Vorige</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+:  activate to sort column ascending</td>
+<td class='tra'  lang='nl-NL'>
+: Activeer om de kolom oplopend te sorteren</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+: activate to sort column descending</td>
+<td class='tra'  lang='nl-NL'>
+: Activeer om de kolom aflopend te sorteren</td>
+</tr>
+<tr class='i untrans'>
+<td class='src'  lang='en'>
+&lt;strong&gt;Measurements.&lt;/strong&gt; Support for recording measurements like Hip, Waist, Leg, Bicep, etc. Displayed on charts and tables.</td>
+<td class='tra'  lang='nl-NL'>
+</td>
+</tr>
+<tr class='i untrans'>
+<td class='src'  lang='en'>
+&lt;strong&gt;BMI.&lt;/strong&gt; Allows a user to specify their height. Once specified, their BMI is displayed next to each weight entry. There is also a shortcode to render the latest BMI.</td>
+<td class='tra'  lang='nl-NL'>
+</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+&lt;strong&gt;Widgets.&lt;/strong&gt; Widgets that allow you to display the graph and quick weight entry form within any widget area.</td>
+<td class='tra'  lang='nl-NL'>
+&lt;strong&gt;Widgets.&lt;/strong&gt; Met deze widgets zie je snel en makkelijk het gewicht in de widget area.</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+&lt;strong&gt;Chart and form Shortcodes.&lt;/strong&gt; That allow you to display the graph and quick weight entry form by placing a shortcode on any post or page.</td>
+<td class='tra'  lang='nl-NL'>
+&lt;strong&gt;Grafieken en vormen codes.&lt;/strong&gt; Dit geeft je toestemming om de grafiek en het gewicht wat je hebt ingevult te plaatsen op elke post pagina.</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+&lt;strong&gt;Text Shortcodes.&lt;/strong&gt; Additional shortcodes for earliest and most recent dates entered.</td>
+<td class='tra'  lang='nl-NL'>
+&lt;strong&gt;Tekst codes.&lt;/strong&gt; Extra shortcodes voor de meest recente data wat je hebt ingevult.</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+&lt;strong&gt;Admin: View / Delete user data&lt;/strong&gt;. Admin will be able to view and delete existing user data.</td>
+<td class='tra'  lang='nl-NL'>
+&lt;strong&gt;Admin: Bekijk / bewerk gebruikers data&lt;/strong&gt;.Je kan als admin gebruikers data bekijken, veranderen en verwijderen</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+&lt;strong&gt;User preferences&lt;/strong&gt;. If enabled, the user will be able to select which unit they wish to store their weight in Metric or Imperial. They will also be able to specify date format and clear all their weight data.</td>
+<td class='tra'  lang='nl-NL'>
+&lt;strong&gt;Gebruikers voorkeueren&lt;/strong&gt; wanneer geselecteerd, kies je voor het opslaan van je gewicht in Meteric of Imerial. Je kan bepaalde datums en bepaald gewicht verwijderen.</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+&lt;strong&gt;Bar Charts&lt;/strong&gt;. Fancy something different to a line chart? The plugin will also support Bar Charts.</td>
+<td class='tra'  lang='nl-NL'>
+&lt;strong&gt;Staafdiagram&lt;/strong&gt;. Iets anders dan een lijn diagram? Met deze plugin kan je kiezen voor een staafdiagram.</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+&lt;strong&gt;Decimals&lt;/strong&gt;. Decimals will be allowed weight in Pounds only or Kg modes.</td>
+<td class='tra'  lang='nl-NL'>
+&lt;strong&gt;Decimalen&lt;/strong&gt;. Decimalen zijn alleen te zien in de Ponden of Kg modes.</td>
+</tr>
+<tr class='i untrans'>
+<td class='src'  lang='en'>
+&lt;strong&gt;Delete existing entry&lt;/strong&gt;. A logged in user will be able to delete or edit an existing weight entry.</td>
+<td class='tra'  lang='nl-NL'>
+</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+&lt;strong&gt;Better Tables.&lt;/strong&gt;. Data tables in front end and admin will support paging and sorting.</td>
+<td class='tra'  lang='nl-NL'>
+&lt;strong&gt;Betere tabellen.&lt;/strong&gt;. De data in de tabellen in front &amp; and admin zullen alles ondersteunen</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+&lt;strong&gt;Admin: Extra Settings&lt;/strong&gt;. Extra settings to customise the plugin will be added e.g. number of plot points on graph, rows per page, etc.</td>
+<td class='tra'  lang='nl-NL'>
+&lt;strong&gt;Admin: Extra Instellingen&lt;/strong&gt; Extra instellingen om deze plugin aan te passen o.a. aantal nummers in de grafies, rijen per pagina, ect.</td>
+</tr>
+<tr class='i untrans'>
+<td class='src'  lang='en'>
+Add Height for BMI</td>
+<td class='tra'  lang='nl-NL'>
+</td>
+</tr>
+<tr class='i untrans'>
+<td class='src'  lang='en'>
+Underweight</td>
+<td class='tra'  lang='nl-NL'>
+</td>
+</tr>
+<tr class='i untrans'>
+<td class='src'  lang='en'>
+Healthy</td>
+<td class='tra'  lang='nl-NL'>
+</td>
+</tr>
+<tr class='i untrans'>
+<td class='src'  lang='en'>
+Overweight</td>
+<td class='tra'  lang='nl-NL'>
+</td>
+</tr>
+<tr class='i untrans'>
+<td class='src'  lang='en'>
+Heavily Overweight</td>
+<td class='tra'  lang='nl-NL'>
+</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+No weight data was found for the specified user.</td>
+<td class='tra'  lang='nl-NL'>
+Geen data is gevonden voor bepaalde user</td>
+</tr>
+<tr class='i untrans'>
+<td class='src'  lang='en'>
+Height needed</td>
+<td class='tra'  lang='nl-NL'>
+</td>
+</tr>
+<tr class='i untrans'>
+<td class='src'  lang='en'>
+Cm</td>
+<td class='tra'  lang='nl-NL'>
+</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+ User Data</td>
+<td class='tra'  lang='nl-NL'>
+ Gebruikersdata</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+View / Edit</td>
+<td class='tra'  lang='nl-NL'>
+Bekijk / bewerk</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+View and edit existing user data</td>
+<td class='tra'  lang='nl-NL'>
+Bekijk en bewerk bestaande gebruikers data</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Delete All</td>
+<td class='tra'  lang='nl-NL'>
+Alles verwijderen</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Delete all user data!</td>
+<td class='tra'  lang='nl-NL'>
+Verwijder alle gebruikers data?</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+You can use the following button to remove all user data currently stored by the plugin. &lt;strong&gt;All weight entries for every user will be lost!&lt;/strong&gt;</td>
+<td class='tra'  lang='nl-NL'>
+Je kan de volgende knop gebruiken om alle gebruiktergegevens te verwijderen in deze plugin. &lt;strong&gt; ALLE gegevens worden verwijderd! &lt;/strong&gt;</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Remove ALL user data</td>
+<td class='tra'  lang='nl-NL'>
+Verwijder ALLE begruikergegevens</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Are you sure you?</td>
+<td class='tra'  lang='nl-NL'>
+Weet je het zeker?</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Are you sure you wish to remove all user data?</td>
+<td class='tra'  lang='nl-NL'>
+Weet je het zeker dat je alle gebruikergegevens wilt wissen?</td>
+</tr>
+<tr class='i untrans'>
+<td class='src'  lang='en'>
+Your height:</td>
+<td class='tra'  lang='nl-NL'>
+</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Which unit would you like to record your weight in:</td>
+<td class='tra'  lang='nl-NL'>
+Selecteer je eenheid:</td>
+</tr>
+<tr class='i untrans'>
+<td class='src'  lang='en'>
+Which unit would you like to record your measurements in:</td>
+<td class='tra'  lang='nl-NL'>
+</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Display dates in the following formats:</td>
+<td class='tra'  lang='nl-NL'>
+Laat datum zien in de volgende formaten:</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Save Settings</td>
+<td class='tra'  lang='nl-NL'>
+Instellingen opslaan</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Delete existing data</td>
+<td class='tra'  lang='nl-NL'>
+Verwijder betaande data</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+The button below allows you to clear your existing weight history. Confirm:</td>
+<td class='tra'  lang='nl-NL'>
+De knop hieronder is er voor om al je data te verwijderen. Weet je het zeker:</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Delete</td>
+<td class='tra'  lang='nl-NL'>
+Verwijder</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Weight Loss Tracker - Chart</td>
+<td class='tra'  lang='nl-NL'>
+Weight Loss Tracker - Tabel</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Display a chart to see your current progress.</td>
+<td class='tra'  lang='nl-NL'>
+Een tabel tonen voor je huidige voortgang.</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Title</td>
+<td class='tra'  lang='nl-NL'>
+Titel</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Type</td>
+<td class='tra'  lang='nl-NL'>
+Type</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Maximum number of plot points on chart</td>
+<td class='tra'  lang='nl-NL'>
+Maximum aantal punten in de tabel</td>
+</tr>
+<tr class='i untrans'>
+<td class='src'  lang='en'>
+Message to display if not logged in</td>
+<td class='tra'  lang='nl-NL'>
+</td>
+</tr>
+<tr class='i untrans'>
+<td class='src'  lang='en'>
+By default the widget is hidden if the user is not logged in. If you wish, you can display a message to the visitor instead.</td>
+<td class='tra'  lang='nl-NL'>
+</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+ID of user (leave blank to show chart for current user)</td>
+<td class='tra'  lang='nl-NL'>
+ID of gebruiker (Laat leeg voor huidige gebruiker)</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Note: By default, the chart will be displayed in the weight unit chosen by the logged in user. If not specfied the plugin default will be used.</td>
+<td class='tra'  lang='nl-NL'>
+Le op: Standaard wordt de tabel getoond met de gekozen eenheid die je hebt gekozen bij het inloggen. Wanneer niets is geslecteerd zal automatisch de default van de plugin worden toegepast.</td>
+</tr>
+<tr class='i untrans'>
+<td class='src'  lang='en'>
+Hide Measurements (Pro)?</td>
+<td class='tra'  lang='nl-NL'>
+</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Weight Loss Tracker - Form</td>
+<td class='tra'  lang='nl-NL'>
+Weight Loss Tracker - Formulier</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Display a quick entry form for logged in users to record their weight for today.</td>
+<td class='tra'  lang='nl-NL'>
+Toon een snel formulier voor ingelogde gebruikers om hun gewicht van de dag in te vullen.</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Your weight today</td>
+<td class='tra'  lang='nl-NL'>
+Gewicht van vandaag</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Allow user to specify a date?</td>
+<td class='tra'  lang='nl-NL'>
+Gebruikers toestaan een datum te selecteren?</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+No. Automatically set to today's date</td>
+<td class='tra'  lang='nl-NL'>
+Nee. Automatisch de datum van vandaag.</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Allow user to specify a date</td>
+<td class='tra'  lang='nl-NL'>
+Gebruikers toestaan een datum te selecteren</td>
+</tr>
+<tr class='i untrans'>
+<td class='src'  lang='en'>
+Hide measurements (Pro)?</td>
+<td class='tra'  lang='nl-NL'>
+</td>
+</tr>
+</tbody>
 </table>
+</div>
 </body>
 </html>
