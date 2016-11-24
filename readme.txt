@@ -3,7 +3,11 @@ Contributors: aliakro
 Tags: weight, loss, lose, helper, bmi, body, mass, index, graph, track, stones, kg, table, data, plot, target, history, pounds, responsive, chart, measurements, cm, centimeters, inches, hip, waist, bicep, thigh
 Requires at least: 4.1.0
 Tested up to: 4.6.1
+<<<<<<< HEAD
 Stable tag: 4.1
+=======
+Stable tag: 4.0.3
+>>>>>>> 689ddd838849ea39c5612e9847fec27f98c510a8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate Link: https://www.yeken.uk/donate/
@@ -53,17 +57,19 @@ Our Pro version has now been released! If you upgrade, you get he additional fea
 Fully supported (have the majority of translations):
 
 * English (UK)
-* German (thanks Michael @ Activate the Beast)
-* Dutch (thanks Dennis)
-* Finish (thanks Ari)
 
 Languages partially supported (have some of the translations):
 
-* Portuguese-Brazil (thanks Team Jota)
-* French (thanks @alexiarna)
-* Spanish (thanks @idelfonsog2)
-* Romanian (thanks @alexiarna)
 * Danish (thanks @kfasterholdt)
+* Dutch (thanks Dennis, Yvon & Bart)
+* Finish (thanks Ari)
+* French (thanks @alexiarna)
+* German (thanks Michael @ Activate the Beast)
+* Hungarian (thanks Noam)
+* Portuguese-Brazil (thanks Team Jota)
+* Romanian (thanks @alexiarna)
+* Spanish (thanks @idelfonsog2)
+
 
 Need a translation? Email us: [email@YeKen.uk](mailto:email@YeKen.uk "email@YeKen.uk")
 
@@ -150,6 +156,21 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 == Changelog ==
 
 = 4.1 =
+
+
+= 4.0.3 =
+
+* Added Hungarian (Magyar) translations - about 80% translations supplied. Thanks Noam.
+
+= 4.0.2 =
+
+* Added some more Dutch translations (thanks Yvon and Bart).
+* Bug fix: Chart yAxes can now be translated
+* Bug fix: Measurement labels can now be translated on form.
+* Bug fix: Measurement columns can now be translated in data table.
+* Bug fix: Measurement columns can now be translated in admin when viewing user data.
+* Bug fix: Header and footer columns on user data page (admin) can now be translated
+>>>>>>> 689ddd838849ea39c5612e9847fec27f98c510a8
 
 = 4.0.1 =
 
