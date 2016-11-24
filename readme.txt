@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight, loss, lose, helper, bmi, body, mass, index, graph, track, stones, kg, table, data, plot, target, history, pounds, responsive, chart, measurements, cm, centimeters, inches, hip, waist, bicep, thigh
 Requires at least: 4.1.0
 Tested up to: 4.6.1
-Stable tag: 4.0.2
+Stable tag: 4.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate Link: https://www.yeken.uk/donate/
@@ -53,17 +53,18 @@ Our Pro version has now been released! If you upgrade, you get he additional fea
 Fully supported (have the majority of translations):
 
 * English (UK)
-* German (thanks Michael @ Activate the Beast)
-* Finish (thanks Ari)
 
 Languages partially supported (have some of the translations):
 
-* Portuguese-Brazil (thanks Team Jota)
-* French (thanks @alexiarna)
-* Spanish (thanks @idelfonsog2)
-* Romanian (thanks @alexiarna)
 * Danish (thanks @kfasterholdt)
 * Dutch (thanks Dennis, Yvon & Bart)
+* Finish (thanks Ari)
+* French (thanks @alexiarna)
+* German (thanks Michael @ Activate the Beast)
+* Hungarian (thanks Noam)
+* Portuguese-Brazil (thanks Team Jota)
+* Romanian (thanks @alexiarna)
+* Spanish (thanks @idelfonsog2)
 
 Need a translation? Email us: [email@YeKen.uk](mailto:email@YeKen.uk "email@YeKen.uk")
 
@@ -148,6 +149,10 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
  Support for Body Measurements and Body Mass Index (BMI) values.
 
 == Changelog ==
+
+= 4.0.3 =
+
+* Added Hungarian (Magyar) translations - about 80% translations supplied. Thanks Noam.
 
 = 4.0.2 =
 
