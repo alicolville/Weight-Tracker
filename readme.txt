@@ -39,6 +39,7 @@ Also supports the following tags:
 Our Pro version has now been released! If you upgrade, you get he additional features:
 
 * **Measurements**. If enabled, users can now track measurements alongside their weight entries. As admin, you can allow the user to track one or more of the following: "Bicep - Left", "Bicep - Right", "Forearm - Left", "Forearm - Right", "Calf - Left", "Bust / Chest", "Buttocks", "Hips", "Navel", "Thigh - Left", "Thigh - Right" and "Waist" (Please get in touch if you have additional fields).
+* **Community Stats**. Shortcodes to rendered total / lost by community and a league table of who has lost the most in the community.
 * **Body Mass Index**. If enabled by admin, once a user has added their Height (via user preferences tab) a BMI value will be presented in data tables.
 * **Widgets**. Widgets that allow you to display the graph and quick weight entry form within any widget area.
 * **Chart and form Shortcodes**. That allow you to display the graph and quick weight entry form by placing a shortcode on any post or page.
