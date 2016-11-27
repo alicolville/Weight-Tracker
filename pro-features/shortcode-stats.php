@@ -23,5 +23,8 @@ function ws_ls_shortcode_stats_total_lost($user_defined_arguments)
 			$stats['display-value'] = $difference  . __('Kg', WE_LS_SLUG);
 	}
 
+	// Allow theme developer to override stats message
+	$stats = apply_filters('ws-ls-stats-shortcode', $stats);
+
 	return $stats['display-value'];
 }
