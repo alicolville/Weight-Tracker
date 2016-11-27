@@ -91,11 +91,11 @@ function ws_ls_stats_update_for_user($user_id) {
 /*
 	Fetch records that haven't been updated in the last hour
 */
-function ws_ls_stats_fetch_those_that_need_update($max = 50) {
+function ws_ls_stats_fetch_those_that_need_update($max = 100) {
 
 	global $wpdb;
 	$table_name = $wpdb->prefix . WE_LS_USER_STATS_TABLENAME;
-	$sql = 'SELECT * FROM ' . $table_name . ' where last_update < DATE_SUB(NOW(),INTERVAL 1 HOUR) or last_update is null ORDER BY RAND() ';
+	$sql = 'SELECT * FROM ' . $table_name . ' where last_update < DATE_SUB(NOW(),INTERVAL 6 HOUR) or last_update is null ORDER BY RAND() ';
 	$rows = $wpdb->get_results( $sql, ARRAY_A );
 
 	if (is_array($rows) && count($rows) > 0) {
