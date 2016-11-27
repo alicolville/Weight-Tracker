@@ -11,6 +11,7 @@ if(defined('WS_LS_ABSPATH')){
 	include WS_LS_ABSPATH . 'pro-features/shortcode-form.php';
 	include WS_LS_ABSPATH . 'pro-features/shortcode-table.php';
 	include WS_LS_ABSPATH . 'pro-features/shortcode-various.php';
+	include WS_LS_ABSPATH . 'pro-features/shortcode-stats.php';
 	include WS_LS_ABSPATH . 'pro-features/advanced-table.php';
 	include WS_LS_ABSPATH . 'pro-features/widget-chart.php';
 	include WS_LS_ABSPATH . 'pro-features/widget-form.php';
@@ -29,12 +30,17 @@ function ws_ls_register_pro_shortcodes(){
         [weight-loss-tracker-form] - Displays a form
         [weight-loss-tracker-table] - Displays a data table
 		[weight-loss-tracker-most-recent-bmi] - Displays the user's BMI for most recent weight
+		[weight-loss-tracker-total-lost] - Total lost / gained by the entire community. 
     */
 
     add_shortcode( 'weight-loss-tracker-chart', 'ws_ls_shortcode_chart' );
     add_shortcode( 'weight-loss-tracker-form', 'ws_ls_shortcode_form' );
     add_shortcode( 'weight-loss-tracker-table', 'ws_ls_shortcode_table' );
 	add_shortcode( 'weight-loss-tracker-most-recent-bmi', 'ws_ls_get_user_bmi' );
+
+	if(!WE_LS_DISABLE_USER_STATS) {
+		add_shortcode( 'weight-loss-tracker-total-lost', 'ws_ls_shortcode_stats_total_lost' );
+	}
 }
 add_action( 'init', 'ws_ls_register_pro_shortcodes');
 
