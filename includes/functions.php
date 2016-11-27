@@ -146,6 +146,9 @@ function ws_ls_delete_data_for_user() {
         $wpdb->query($sql);
 
         ws_ls_delete_cache_for_given_user($user_id);
+
+		// Update User stats table
+		ws_ls_stats_update_for_user($user_id);
     }
 }
 
