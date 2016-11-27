@@ -158,6 +158,7 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 
 = 4.1 =
 
+* Bug fix: If weight data was empty the Chart widget would throw a PHP exception. Now fixed.
 
 = 4.0.3 =
 
@@ -171,7 +172,6 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 * Bug fix: Measurement columns can now be translated in data table.
 * Bug fix: Measurement columns can now be translated in admin when viewing user data.
 * Bug fix: Header and footer columns on user data page (admin) can now be translated
->>>>>>> 689ddd838849ea39c5612e9847fec27f98c510a8
 
 = 4.0.1 =
 
