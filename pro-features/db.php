@@ -146,7 +146,20 @@ function ws_ls_stats_sum_weight_difference() {
 
 	return false;
 }
+/*
+	Refresh total sum count
+*/
+function ws_ls_stats_sum_all_weights() {
 
+	global $wpdb;
+	$result = $wpdb->get_var( 'SELECT sum(sum_of_weights) FROM ' . $wpdb->prefix . WE_LS_USER_STATS_TABLENAME );
+
+	if (!is_null($result)) {
+		return floatval($result);
+	}
+
+	return false;
+}
 /*
 	Copy user IDs of those that have entered weights into stats table (assuming they aren't they're already)
 */

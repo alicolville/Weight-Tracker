@@ -55,11 +55,14 @@ function ws_ls_stats_refresh_summary_stats() {
 		return;
 	}
 
-	$difference = ws_ls_stats_sum_weight_difference();
+	$stats = array(
+		'difference' => ws_ls_stats_sum_weight_difference(),
+		'sum' => ws_ls_stats_sum_all_weights()		
+	);
 
-	update_option(WE_LS_CACHE_KEY_STATS_SUMMARY, $difference);
+	update_option(WE_LS_CACHE_KEY_STATS_SUMMARY, $stats);
 
-	return $difference;
+	return $stats['difference'];
 }
 
 /*
@@ -85,8 +88,20 @@ function ws_ls_stats_update_for_user($user_id) {
 		global $wpdb;
 		$wpdb->replace( $wpdb->prefix . WE_LS_USER_STATS_TABLENAME, $stats, ['%d', '%f', '%f', '%f', '%s'] );
 
+		// Update sum of weights for user
+		ws_ls_get_sum_of_weights_for_user($user_id);
+
 		ws_ls_stats_refresh_summary_stats();
 	}
 
+	return;
+}
+
+function ws_ls_get_sum_of_weights_for_user($user_id)
+{
+	global $wpdb;
+	$sql = $wpdb->prepare('Update ' . $wpdb->prefix . WE_LS_USER_STATS_TABLENAME . ' set sum_of_weights = (Select sum(weight_weight)
+							from ' . $wpdb->prefix . WE_LS_TABLENAME . ' where weight_user_id = %d) where user_id = %d', $user_id, $user_id);
+	$wpdb->query($sql);
 	return;
 }

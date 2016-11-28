@@ -14,7 +14,10 @@ function ws_ls_shortcode_stats_total_lost($user_defined_arguments)
 		'invert' => false
 	 ), $user_defined_arguments );
 
-	$difference = ws_ls_stats_get_summary_stats();
+	$summary_stats = ws_ls_stats_get_summary_stats();
+	var_Dump($summary_stats);
+	$difference = $summary_stats['difference'];
+
 	$stats = ['kg' => $difference, 'display-unit' => ws_ls_get_config('WE_LS_DATA_UNITS'), 'display-value' => ''];
 
 	// If display number text, remove sign and use text to represent gain / loss

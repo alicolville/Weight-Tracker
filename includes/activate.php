@@ -87,6 +87,7 @@
 				start_weight float DEFAULT 0 NULL,
 				recent_weight float DEFAULT 0 NULL,
 				weight_difference float DEFAULT 0 NULL,
+				sum_of_weights float DEFAULT 0 NULL,
 				last_update TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 				UNIQUE KEY user_id (user_id)
 		) $charset_collate;";
