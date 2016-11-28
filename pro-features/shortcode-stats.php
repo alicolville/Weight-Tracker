@@ -11,11 +11,12 @@ function ws_ls_shortcode_stats_total_lost($user_defined_arguments)
 	$arguments = shortcode_atts(
 	array(
 		'display' => 'number/text',
-		'invert' => false
+		'invert' => false,
+		'force-to-kg' => 'false'
 	 ), $user_defined_arguments );
 
 	$summary_stats = ws_ls_stats_get_summary_stats();
-	var_Dump($summary_stats);
+
 	$difference = $summary_stats['difference'];
 
 	$stats = ['kg' => $difference, 'display-unit' => ws_ls_get_config('WE_LS_DATA_UNITS'), 'display-value' => ''];
@@ -32,7 +33,12 @@ function ws_ls_shortcode_stats_total_lost($user_defined_arguments)
 		$difference = (false === ws_ls_force_bool_argument($arguments['invert'])) ? $difference : -$difference ;
 	}
 
-	switch (ws_ls_get_config('WE_LS_DATA_UNITS')) {
+	// Ignore global and user settings and force display to Kg?
+	if(true == ws_ls_force_bool_argument($arguments['force-to-kg'])) {
+		$stats['display-unit'] = 'kg';
+	}
+
+	switch ($stats['display-unit']) {
 		case 'pounds_only':
 			$stats['display-value'] .= ws_ls_to_lb($difference) .  __('lbs', WE_LS_SLUG);
 			break;
