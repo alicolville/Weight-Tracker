@@ -100,7 +100,7 @@
 		if(update_option('ws-ls-version-number', WE_LS_CURRENT_VERSION)) {
 			ws_ls_create_mysql_tables();
 			ws_ls_stats_run_cron();
-			update_option($option_key, WE_LS_CURRENT_VERSION);
+			ws_ls_activate();
 		}
 	}
 	add_action('admin_init', 'ws_ls_upgrade');
