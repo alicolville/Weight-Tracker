@@ -2,8 +2,9 @@
 Contributors: aliakro
 Tags: weight, loss, lose, helper, bmi, body, mass, index, graph, track, stones, kg, table, data, plot, target, history, pounds, responsive, chart, measurements, cm, centimeters, inches, hip, waist, bicep, thigh
 Requires at least: 4.1.0
-Tested up to: 4.6.1
-Stable tag: 4.0.3
+Tested up to: 4.7
+Stable tag: 4.1
+
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate Link: https://www.yeken.uk/donate/
@@ -30,11 +31,23 @@ Also supports the following tags:
 	[weightloss_weight_difference_from_target] - difference from target
 	[weightloss_target_weight] - user's target weight (if specified)
 
+	Pro Shortcodes:
+
+	[weight-loss-tracker-chart] - Displays a chart
+	[weight-loss-tracker-form] - Displays a form
+	[weight-loss-tracker-table] - Displays a data table
+	[weight-loss-tracker-most-recent-bmi] - Displays the user's BMI for most recent weight
+	[weight-loss-tracker-total-lost] - Total lost / gained by the entire community.
+	[weight-loss-tracker-league-table] - Show a league table of weight loss users.
+
+	[Read our Shortcode guide on GitHub](https://github.com/yekenuk/Weight-Loss-Tracker/wiki/Shortcodes)
+
 = Pro Version =
 
 Our Pro version has now been released! If you upgrade, you get he additional features:
 
 * **Measurements**. If enabled, users can now track measurements alongside their weight entries. As admin, you can allow the user to track one or more of the following: "Bicep - Left", "Bicep - Right", "Forearm - Left", "Forearm - Right", "Calf - Left", "Bust / Chest", "Buttocks", "Hips", "Navel", "Thigh - Left", "Thigh - Right" and "Waist" (Please get in touch if you have additional fields).
+* **Community Stats**. Shortcodes to rendered total / lost by community and a league table of who has lost the most in the community.
 * **Body Mass Index**. If enabled by admin, once a user has added their Height (via user preferences tab) a BMI value will be presented in data tables.
 * **Widgets**. Widgets that allow you to display the graph and quick weight entry form within any widget area.
 * **Chart and form Shortcodes**. That allow you to display the graph and quick weight entry form by placing a shortcode on any post or page.
@@ -146,9 +159,19 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 
  == Upgrade Notice ==
 
- Support for Body Measurements and Body Mass Index (BMI) values.
+ New League Table shortcode added and various tweaks.
 
 == Changelog ==
+
+= 4.1 =
+
+* New shortcode: [weight-loss-tracker-total-lost] - Total lost / gained by the entire community.
+* New shortcode: [weight-loss-tracker-league-table] - Show a league table of weight loss users.
+* New cron job that runs every hour to refresh old user stats.
+* Upgraded DataTables.js library to 1.10.13.
+* Upgraded Chart.js library to 2.4.0.
+* Bug fix: If weight data was empty the Chart widget would throw a PHP exception. Now fixed.
+* Bug fix: Forcing a SQL query to uppercase was causing issues with case sensitive MySQL table names. Thanks Rodrigo!
 
 = 4.0.3 =
 

@@ -10,10 +10,9 @@ function ws_ls_get_user_target($user_id) {
 
     // Check if data exists in cache.
     $cache_key = $user_id . '-' . WE_LS_CACHE_KEY_TARGET;
-    $cache = ws_ls_get_cache($cache_key);
 
     // Return cache if found!
-    if ($cache)   {
+    if ($cache = ws_ls_get_cache($cache_key)) {
         return $cache;
     }
     // No cache? hit the DB
@@ -253,6 +252,10 @@ function ws_ls_save_data($user_id, $weight_object, $is_target_form = false)
 
 	// Tidy up cache
 	ws_ls_delete_cache_for_given_user($user_id);
+
+	// Update User stats table
+	ws_ls_stats_update_for_user($user_id);
+
 	return $result;
 }
 
@@ -268,6 +271,9 @@ function ws_ls_delete_entry($user_id, $row_id)
       $result = true;
       // Tidy up cache
       ws_ls_delete_cache_for_given_user($user_id);
+
+	  // Update User stats table
+	  ws_ls_stats_update_for_user($user_id);
     }
   }
   return $result;

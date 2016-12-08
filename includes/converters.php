@@ -44,7 +44,7 @@ function ws_ls_pounds_to_stone_pounds($lb)
 }
 function ws_ls_to_stone_pounds($kg)
 {
-		$weight = array ("stones" => 0, "pounds" => 0);
+	$weight = array ("stones" => 0, "pounds" => 0);
     $totalPounds = Round($kg * 2.20462, 3);
     $weight["stones"] = floor($totalPounds / 14);
     $weight["pounds"] = Round(fmod($totalPounds, 14), 1);

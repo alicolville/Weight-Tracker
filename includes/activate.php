@@ -2,8 +2,23 @@
 
 	defined('ABSPATH') or die("Jog on!");
 
+	// Code that should run when plugin is activated
+	function ws_ls_activate() {
 
-	function ws_ls_activate()
+		// Register user stats cron job
+		if (! wp_next_scheduled ( WE_LS_CRON_NAME )) {
+			wp_schedule_event(time(), 'hourly', WE_LS_CRON_NAME);
+		}
+	}
+
+	// Code that should run when plugin is deactivated
+	function ws_ls_deactivate() {
+
+		// Remove user stats cron job
+		wp_clear_scheduled_hook( WE_LS_CRON_NAME );
+	}
+
+	function ws_ls_create_mysql_tables()
 	{
 		global $wpdb;
 
@@ -65,17 +80,27 @@
 
 		dbDelta( $sql );
 
+		$table_name = $wpdb->prefix . WE_LS_USER_STATS_TABLENAME;
+
+		$sql = "CREATE TABLE $table_name (
+				user_id integer NOT NULL,
+				start_weight float DEFAULT 0 NULL,
+				recent_weight float DEFAULT 0 NULL,
+				weight_difference float DEFAULT 0 NULL,
+				sum_of_weights float DEFAULT 0 NULL,
+				last_update TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+				UNIQUE KEY user_id (user_id)
+		) $charset_collate;";
+
+	   dbDelta( $sql );
+
 	}
 
 	function ws_ls_upgrade() {
-
-		$option_key = 'ws-ls-version-number';
-
-		$existing_version = get_option($option_key);
-
-		if(empty($existing_version) || $existing_version != WE_LS_CURRENT_VERSION) {
+		if(update_option('ws-ls-version-number', WE_LS_CURRENT_VERSION)) {
+			ws_ls_create_mysql_tables();
+			ws_ls_stats_run_cron();
 			ws_ls_activate();
-			update_option($option_key, WE_LS_CURRENT_VERSION);
 		}
 	}
 	add_action('admin_init', 'ws_ls_upgrade');

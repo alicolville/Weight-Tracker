@@ -13,10 +13,12 @@
 	define('WE_LS_TABLENAME', 'WS_LS_DATA');
 	define('WE_LS_TARGETS_TABLENAME', 'WS_LS_DATA_TARGETS');
   	define('WE_LS_USER_PREFERENCES_TABLENAME', 'WS_LS_DATA_USER_PREFERENCES');
+	define('WE_LS_USER_STATS_TABLENAME', 'WS_LS_DATA_USER_STATS');
 	define('WE_LS_CACHE_ENABLED', true);
 	define('WE_LS_CACHE_TIME', 15 * MINUTE_IN_SECONDS);
 	define('WE_LS_CACHE_COMMS_KEY', 'comm-with-yeken');
 	define('WE_LS_CACHE_COMMS_KEY_TIME', 4 * WEEK_IN_SECONDS);
+	define('WE_LS_CACHE_STATS_TABLE', 'stats-table');
 	define('WE_LS_CACHE_KEY_TARGET', 'target-data');
 	define('WE_LS_CACHE_KEY_DATA', 'weight-data');
 	define('WE_LS_CACHE_KEY_MIN_MAX_DATES', 'min-max-dates');
@@ -26,11 +28,13 @@
 	define('WE_LS_CACHE_KEY_USER_PREFERENCE', 'user-preference');
 	define('WE_LS_CACHE_KEY_USER_HEIGHT', 'user-height');
 	define('WE_LS_CACHE_KEY_YEKEN_JSON', 'yeken-json-lookup-wlt');
+	define('WE_LS_CACHE_KEY_STATS_SUMMARY', 'user-stats');
 	define('WE_LS_KEY_YEKEN_ADMIN_NOTIFICATION', 'yeken-admin-notification');
 	define('WE_LS_CACHE_ADMIN_USER_DATA', 'admin-user-data');
 	define('WE_LS_TABLE_MAX_WEEK_FILTERS', 150);
 	define('WS_LS_PRO_PRICE', 25.00);
 	define('WE_LS_USE_MINIFIED_SCRIPTS', true);
+	define('WE_LS_CRON_NAME', 'weight_loss_tracker_hourly');
 
     // -----------------------------------------------------------------------------------
 	// Dynamic Settings based upon user settings, etc
@@ -58,7 +62,8 @@
 		'WE_LS_CHART_SHOW_GRID_LINES' => true,
 		'WE_LS_DISPLAY_BMI_IN_TABLES' => false,
 		'WE_LS_AXES_START_AT_ZERO' => false,
-		'WE_LS_ALLOW_STATS' => false
+		'WE_LS_ALLOW_STATS' => false,
+		'WE_LS_DISABLE_USER_STATS' => false
 	);
 
     // -----------------------------------------------------------------------------------
@@ -170,6 +175,12 @@
 	// -----------------------------------------------------------------------------------
 	if ('yes' == get_option('ws-ls-allow-stats')) {
 		$globals['WE_LS_ALLOW_STATS'] = true;
+	}
+	// -----------------------------------------------------------------------------------
+	// Disable stats cron job?
+	// -----------------------------------------------------------------------------------
+	if ('yes' == get_option('ws-ls-disable-stats-cron')) {
+		$globals['WE_LS_DISABLE_USER_STATS'] = true;
 	}
 	// -----------------------------------------------------------------------------------
 	// Define if target weights enabled
