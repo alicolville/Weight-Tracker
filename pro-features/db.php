@@ -218,7 +218,7 @@ function ws_ls_stats_league_table_fetch($ignore_cache = false, $limit = 10, $los
 	// -------------------------------------------------
 	// Order
 	// -------------------------------------------------
-	$sql .= ' order by weight_difference ' . ((empty($order) || !in_array($order, ['desc', 'asc'])) ? 'desc' : $order);
+	$sql .= ' order by weight_difference ' . ((empty($order) || !in_array($order, array('desc', 'asc'))) ? 'desc' : $order);
 	// -------------------------------------------------
 	// Limit
 	// -------------------------------------------------

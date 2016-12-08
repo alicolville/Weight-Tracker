@@ -80,7 +80,7 @@ function ws_ls_stats_update_for_user($user_id) {
 
 	if(is_numeric($user_id)) {
 
-		$stats = [];
+		$stats = array();
 
 		$stats['user_id'] = $user_id;
 		$stats['start_weight'] = ws_ls_get_weight_extreme($user_id);
@@ -89,7 +89,7 @@ function ws_ls_stats_update_for_user($user_id) {
 		$stats['last_update'] = current_time('mysql', 1);
 
 		global $wpdb;
-		$wpdb->replace( $wpdb->prefix . WE_LS_USER_STATS_TABLENAME, $stats, ['%d', '%f', '%f', '%f', '%s'] );
+		$wpdb->replace( $wpdb->prefix . WE_LS_USER_STATS_TABLENAME, $stats, array('%d', '%f', '%f', '%f', '%s') );
 
 		// Update sum of weights for user
 		// ws_ls_get_sum_of_weights_for_user($user_id);
