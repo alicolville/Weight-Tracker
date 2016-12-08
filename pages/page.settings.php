@@ -143,7 +143,7 @@ function ws_ls_settings_page() {
 																<option value="no" <?php selected( get_option('ws-ls-disable-stats-cron'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
 																<option value="yes" <?php selected( get_option('ws-ls-disable-stats-cron'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
 															</select>
-															<p><?php echo __('User stats are maintained to help power shortcodes such as [*******TODO: leadreboard]. This involves a cron job being run every 6 hours to refresh a user\'s stats such as first weight, recent weight and total lost. The figures are also re-produced on each weight entry modification and can then be used to generate a league table. This feature could <em>potentially</em> reduce performance on your site. If you are not using the leaderboard shortcodes it is advised to disable this.', WE_LS_SLUG)?></p>
+															<p><?php echo __('User stats are maintained to help power shortcodes such as [weight-loss-tracker-league-table]. This involves a cron job being run every hour to refresh a user\'s stats such as first weight, recent weight and total lost. The figures are also re-produced on each weight entry modification and can then be used to generate a league table. This feature could <em>potentially</em> reduce performance on your site. If you are not using the leaderboard shortcodes it is advised to disable this.', WE_LS_SLUG)?></p>
 														</td>
 													</tr>
 													<tr>

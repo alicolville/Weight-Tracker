@@ -1,7 +1,4 @@
-- cron hook not added on plugin upgrade
-- comms with yeken. Don't cache timeout. Instead store a timestamp in options
-- copy min css into standard css file
-- minify css
+
 - search for todo
 
 Documentation:
