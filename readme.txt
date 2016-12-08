@@ -2,7 +2,7 @@
 Contributors: aliakro
 Tags: weight, loss, lose, helper, bmi, body, mass, index, graph, track, stones, kg, table, data, plot, target, history, pounds, responsive, chart, measurements, cm, centimeters, inches, hip, waist, bicep, thigh
 Requires at least: 4.1.0
-Tested up to: 4.6.1
+Tested up to: 4.7
 Stable tag: 4.1
 
 License: GPLv2 or later
@@ -30,6 +30,17 @@ Also supports the following tags:
 	[weightloss_weight_most_recent] - end weight of the logged in member
 	[weightloss_weight_difference_from_target] - difference from target
 	[weightloss_target_weight] - user's target weight (if specified)
+
+	Pro Shortcodes:
+
+	[weight-loss-tracker-chart] - Displays a chart
+	[weight-loss-tracker-form] - Displays a form
+	[weight-loss-tracker-table] - Displays a data table
+	[weight-loss-tracker-most-recent-bmi] - Displays the user's BMI for most recent weight
+	[weight-loss-tracker-total-lost] - Total lost / gained by the entire community.
+	[weight-loss-tracker-league-table] - Show a league table of weight loss users.
+
+	[Read our Shortcode guide on GitHub](https://github.com/yekenuk/Weight-Loss-Tracker/wiki/Shortcodes)
 
 = Pro Version =
 
@@ -67,7 +78,6 @@ Languages partially supported (have some of the translations):
 * Portuguese-Brazil (thanks Team Jota)
 * Romanian (thanks @alexiarna)
 * Spanish (thanks @idelfonsog2)
-
 
 Need a translation? Email us: [email@YeKen.uk](mailto:email@YeKen.uk "email@YeKen.uk")
 
@@ -155,6 +165,9 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 
 = 4.1 =
 
+* New shortcode: [weight-loss-tracker-total-lost] - Total lost / gained by the entire community.
+* New shortcode: [weight-loss-tracker-league-table] - Show a league table of weight loss users.
+* New cron job that runs every hour to refresh old user stats.
 * Upgraded DataTables.js library to 1.10.13.
 * Upgraded Chart.js library to 2.4.0.
 * Bug fix: If weight data was empty the Chart widget would throw a PHP exception. Now fixed.
