@@ -1,13 +1,16 @@
 - cron hook not added on plugin upgrade
 - comms with yeken. Don't cache timeout. Instead store a timestamp in options
-
-
+- copy min css into standard css file
+- minify css
+- search for todo
 
 Documentation:
 
 - New cron job that runs hourly (unless disabled) to help with the calculating of stats.
 - New shortcode [weight-loss-tracker-total-lost]  that displays the total lost or gained by the community. Arguments:
-	Display. By default the shortcode displays the words "Gained" and "Lost" in front of the weight value. The default also strips out the negative symbol when required. If you prefer to strip remove the text, keep the negative symbol and only have the weight itself, set the display argument to "number" e.g. display="number"
+	Display. By default the shortcode displays the words "Gained" and "Lost" in front of the weight value. The default also strips out the negative symbol when required. If you prefer to remove the text, but keep the negative symbol and only have the weight itself, set the display argument to "number" e.g. display="number"
 	Invert. By default the shortcode displays total community weight lost in negative numbers. For example, say the community lost 140Kg between them, the shortcode would actually show -140Kg. If the community has gained 140Kg between them then it will display 140Kg. Some people prefer to inverse this logic - if you wish to, set the argument "invert" to true e.g.
 	invert="true"
 	force-to-kg - if set to true, override global and user settings and display in Kg.
+
+- New shortcode [weight-loss-tracker-league-table] that displays a league table of Weight Loss Tracker users and their gain / lost

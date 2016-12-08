@@ -3,11 +3,8 @@ Contributors: aliakro
 Tags: weight, loss, lose, helper, bmi, body, mass, index, graph, track, stones, kg, table, data, plot, target, history, pounds, responsive, chart, measurements, cm, centimeters, inches, hip, waist, bicep, thigh
 Requires at least: 4.1.0
 Tested up to: 4.6.1
-<<<<<<< HEAD
 Stable tag: 4.1
-=======
-Stable tag: 4.0.3
->>>>>>> 689ddd838849ea39c5612e9847fec27f98c510a8
+
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate Link: https://www.yeken.uk/donate/
@@ -152,13 +149,16 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 
  == Upgrade Notice ==
 
- Support for Body Measurements and Body Mass Index (BMI) values.
+ New League Table shortcode added and various tweaks.
 
 == Changelog ==
 
 = 4.1 =
 
+* Upgraded DataTables.js library to 1.10.13.
+* Upgraded Chart.js library to 2.4.0.
 * Bug fix: If weight data was empty the Chart widget would throw a PHP exception. Now fixed.
+* Bug fix: Forcing a SQL query to uppercase was causing issues with case sensitive MySQL table names. Thanks Rodrigo!
 
 = 4.0.3 =
 

@@ -57,10 +57,13 @@ function ws_ls_stats_refresh_summary_stats() {
 
 	$stats = array(
 		'difference' => ws_ls_stats_sum_weight_difference(),
-		'sum' => ws_ls_stats_sum_all_weights()		
+		'sum' => 0 //ws_ls_stats_sum_all_weights()
 	);
 
 	update_option(WE_LS_CACHE_KEY_STATS_SUMMARY, $stats);
+
+	// Clear cache for stats table
+	ws_ls_delete_cache(WE_LS_CACHE_STATS_TABLE);
 
 	return $stats['difference'];
 }
@@ -89,7 +92,7 @@ function ws_ls_stats_update_for_user($user_id) {
 		$wpdb->replace( $wpdb->prefix . WE_LS_USER_STATS_TABLENAME, $stats, ['%d', '%f', '%f', '%f', '%s'] );
 
 		// Update sum of weights for user
-		ws_ls_get_sum_of_weights_for_user($user_id);
+		// ws_ls_get_sum_of_weights_for_user($user_id);
 
 		ws_ls_stats_refresh_summary_stats();
 	}

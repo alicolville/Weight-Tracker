@@ -264,3 +264,15 @@ input.ws-ls-valid
     height: 16px;
     background-image: url(images/ajax-loader.gif);
 }
+.ws-ls-stats-table {
+	width: 100%;
+	color: red;
+}
+.ws-col-rank-th {
+	border-top: none;
+}
+.ws-col-rank {
+	width: 30px;
+	background-color: red;
+	text-align: center;
+}

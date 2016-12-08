@@ -18,6 +18,7 @@
 	define('WE_LS_CACHE_TIME', 15 * MINUTE_IN_SECONDS);
 	define('WE_LS_CACHE_COMMS_KEY', 'comm-with-yeken');
 	define('WE_LS_CACHE_COMMS_KEY_TIME', 4 * WEEK_IN_SECONDS);
+	define('WE_LS_CACHE_STATS_TABLE', 'stats-table');
 	define('WE_LS_CACHE_KEY_TARGET', 'target-data');
 	define('WE_LS_CACHE_KEY_DATA', 'weight-data');
 	define('WE_LS_CACHE_KEY_MIN_MAX_DATES', 'min-max-dates');

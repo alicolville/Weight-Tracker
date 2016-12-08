@@ -10,10 +10,9 @@ function ws_ls_get_user_target($user_id) {
 
     // Check if data exists in cache.
     $cache_key = $user_id . '-' . WE_LS_CACHE_KEY_TARGET;
-    $cache = ws_ls_get_cache($cache_key);
 
     // Return cache if found!
-    if ($cache)   {
+    if ($cache = ws_ls_get_cache($cache_key)) {
         return $cache;
     }
     // No cache? hit the DB

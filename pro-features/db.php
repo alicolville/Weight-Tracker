@@ -90,10 +90,9 @@ function ws_ls_sql_count($sql)
 
     if(!empty($sql)) {
         $table_name = $wpdb->prefix . WE_LS_TABLENAME;
-        $sql = strtoupper($sql);
 
         // Find FROM in SQL and remove everything before it. Replace with count.
-        $sql = substr($sql, strpos($sql, 'FROM'), strlen($sql));
+        $sql = substr($sql, stripos($sql, 'FROM'), strlen($sql));
         $sql = 'SELECT count(0) as count ' . $sql;
 
         $result =  $wpdb->get_row($sql);
@@ -186,4 +185,55 @@ function ws_ls_stats_remove_deleted_user_ids_from_stats() {
 
 	$wpdb->query($sql);
 	return;
+}
+
+/*
+	Select league table
+*/
+function ws_ls_stats_league_table_fetch($ignore_cache = false, $limit = 10, $losers_only = false, $order = 'asc') {
+
+	// Return cache if found!
+    if (!$ignore_cache && $cache = ws_ls_get_cache(WE_LS_CACHE_STATS_TABLE)) {
+		echo 'cache';
+        return $cache;
+    }
+
+	global $wpdb;
+
+	$sql = 'SELECT * FROM ' . $wpdb->prefix . WE_LS_USER_STATS_TABLENAME;
+
+	// -------------------------------------------------
+	// Build where clause
+	// -------------------------------------------------
+	$where = array();
+
+	// Select only users that have lost weight?
+	if(true == ws_ls_force_bool_argument($losers_only)) {
+		$where[] = 'weight_difference <= 0';
+	}
+
+	// Add where
+	if (!empty($where)) {
+		$sql .= ' where ' . implode(' and ', $where);
+	}
+	// -------------------------------------------------
+	// Order
+	// -------------------------------------------------
+	$sql .= ' order by weight_difference ' . ((empty($order) || !in_array($order, ['desc', 'asc'])) ? 'desc' : $order);
+	// -------------------------------------------------
+	// Limit
+	// -------------------------------------------------
+	$sql .= $wpdb->prepare(
+							' limit 0, %d',
+							(empty($limit) || !is_numeric($limit)) ? 10 : intval($limit)
+						);
+
+	$results = $wpdb->get_results( $sql, ARRAY_A );
+
+	if(!empty($results)) {
+		ws_ls_set_cache(WE_LS_CACHE_STATS_TABLE, $results);
+		return $results;
+	}
+
+	return false;
 }

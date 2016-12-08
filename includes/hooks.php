@@ -51,7 +51,7 @@
 
 		// CSS
 		if (WE_LS_CSS_ENABLED) {
-			wp_enqueue_style('wlt-style', plugins_url( '../css/ws-ls' . 	$minified . '.css', __FILE__ ), array(), WE_LS_CURRENT_VERSION);
+			wp_enqueue_style('wlt-style', plugins_url( '../css/ws-ls' . 	$minified . '.css', __FILE__ ), array(), WE_LS_CURRENT_VERSION .rand(1,100000)); //TODO: remocve rand
 		}
 
 		wp_enqueue_style('jquery-style', plugins_url( '../css/jquery-ui.min.css', __FILE__ ), array(), WE_LS_CURRENT_VERSION);
@@ -69,7 +69,7 @@
 			$minified = (WE_LS_USE_MINIFIED_SCRIPTS) ? '.min' : '';
 
 			// JavaScript files
-			wp_enqueue_script('jquery-chart-ws-ls', 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.min.js', array( 'jquery' ), WE_LS_CURRENT_VERSION);
+			wp_enqueue_script('jquery-chart-ws-ls', 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js', array( 'jquery' ), WE_LS_CURRENT_VERSION);
 			wp_enqueue_script('jquery-validate',plugins_url( '../js/jquery.validate.min.js', __FILE__ ), array('jquery'), WE_LS_CURRENT_VERSION);
 			wp_enqueue_script('jquery-validate-additional',plugins_url( '../js/additional-methods.min.js', __FILE__ ), array('jquery', 'jquery-validate'), WE_LS_CURRENT_VERSION);
 
