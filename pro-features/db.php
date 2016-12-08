@@ -194,7 +194,6 @@ function ws_ls_stats_league_table_fetch($ignore_cache = false, $limit = 10, $los
 
 	// Return cache if found!
     if (!$ignore_cache && $cache = ws_ls_get_cache(WE_LS_CACHE_STATS_TABLE)) {
-		echo 'cache';
         return $cache;
     }
 
