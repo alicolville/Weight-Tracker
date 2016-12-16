@@ -136,8 +136,8 @@ function ws_ls_settings_page() {
 															<p><?php echo __('If you wish to style the forms in your own way, you can use this option to disable WLT\'s style sheets.', WE_LS_SLUG)?></p>
 														</td>
 													</tr>
-													<tr>
-														<th scope="row" class="<?php echo $disable_if_not_pro_class; ?>"><?php echo __( 'Disable user stats?' , WE_LS_SLUG); ?></th>
+													<tr class="<?php echo $disable_if_not_pro_class; ?>">
+														<th scope="row" ><?php echo __( 'Disable user stats?' , WE_LS_SLUG); ?></th>
 														<td>
 															<select id="ws-ls-disable-stats-cron" name="ws-ls-disable-stats-cron">
 																<option value="no" <?php selected( get_option('ws-ls-disable-stats-cron'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>

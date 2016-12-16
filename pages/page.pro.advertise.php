@@ -125,6 +125,7 @@ function ws_ls_advertise_pro() {
 
 									<div class="inside">
 										<p><?php echo __('Below is a list of the intended features of the Pro version:', WE_LS_SLUG); ?></p>
+										<p><strong><a href="https://github.com/yekenuk/Weight-Loss-Tracker/wiki" target="_blank"><?php echo __('Please visit our Wiki for documentation!', WE_LS_SLUG); ?></a></strong></p>
 										<table class="form-table" >
 											<?php
 
