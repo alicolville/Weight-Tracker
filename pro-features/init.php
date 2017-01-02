@@ -75,7 +75,13 @@ function ws_ls_enqeue_pro_scripts(){
 add_action( 'wp_enqueue_scripts', 'ws_ls_enqeue_pro_scripts');
 
 function ws_ls_admin_enqueue_pro_scripts(){
-	ws_ls_enqueue_datatable_scripts(true);
+
+	// Only add Datatable scripts to User preferences page
+ 	$screen = get_current_screen();
+
+    if ( 'weight-loss-tracker_page_ws-ls-weight-loss-tracker-pro' == $screen->id ){
+		ws_ls_enqueue_datatable_scripts(true);
+	}
 }
 add_action( 'admin_enqueue_scripts', 'ws_ls_admin_enqueue_pro_scripts');
 

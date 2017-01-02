@@ -227,7 +227,7 @@
 		// Embed JavaScript options object for this graph into page
 		wp_localize_script( 'jquery-chart-ws-ls', $chart_id . '_options', $graph_line_options );
 
-		$html = '<div><canvas id="' . $chart_id . '" class="ws-ls-chart" ' . (($chart_config['width']) ? 'width="'.  $chart_config['width'] . '" ' : '') . ' ' . (($chart_config['height']) ? 'height="'.  $chart_config['height'] . '" ' : '') . ' " data-chart-type="' . $chart_config['type']  . '" data-target-weight="' . $target_weight['graph_value'] . '" data-target-colour="' . $chart_config['weight-target-color'] . '"></canvas>';
+		$html = '<div><canvas id="' . $chart_id . '" class="ws-ls-chart" ' . (($chart_config['width']) ? 'width="'.  $chart_config['width'] . '" ' : '') . ' ' . (($chart_config['height']) ? 'height="'.  $chart_config['height'] . '" ' : '') . ' data-chart-type="' . $chart_config['type']  . '" data-target-weight="' . $target_weight['graph_value'] . '" data-target-colour="' . $chart_config['weight-target-color'] . '"></canvas>';
 		$html .= '<div class="ws-ls-notice-of-refresh ws-ls-reload-page-if-clicked ws-ls-hide"><a href="#">' . __('You have modified data. Please refresh page.', WE_LS_SLUG) . '</a></div>';
 		$html .= '</div>';
 		return $html;
@@ -505,8 +505,37 @@ function ws_ls_get_js_config()
 		'measurements-enabled' => (WE_LS_MEASUREMENTS_ENABLED) ? 'true' : 'false',
 		'measurements-unit' => ws_ls_get_config('WE_LS_MEASUREMENTS_UNIT'),
 		'validation-we-ls-measurements' => __('Please enter a valid measurement (' . WE_LS_MEASUREMENTS_UNIT . ') which is less that 1000.', WE_LS_SLUG),
+		'date-picker-locale' => ws_ls_get_js_datapicker_locale()
 	);
+}
 
+/*
+	Use a combination of WP Locale and MO file to translate datepicker
+	Based on: https://gist.github.com/clubdeuce/4053820
+ */
+function ws_ls_get_js_datapicker_locale()
+{
+	global $wp_locale;
+
+	return array(
+	        'closeText'         => __( 'Done', WE_LS_SLUG ),
+	        'currentText'       => __( 'Today', WE_LS_SLUG ),
+	        'monthNames'        => ws_ls_strip_array_indices( $wp_locale->month ),
+	        'monthNamesShort'   => ws_ls_strip_array_indices( $wp_locale->month_abbrev ),
+	        'dayNames'          => ws_ls_strip_array_indices( $wp_locale->weekday ),
+	        'dayNamesShort'     => ws_ls_strip_array_indices( $wp_locale->weekday_abbrev ),
+	        'dayNamesMin'       => ws_ls_strip_array_indices( $wp_locale->weekday_initial ),
+	    	// get the start of week from WP general setting
+	        'firstDay'          => get_option( 'start_of_week' ),
+	    );
+}
+
+function ws_ls_strip_array_indices( $ArrayToStrip ) {
+    foreach( $ArrayToStrip as $objArrayItem) {
+        $NewArray[] =  $objArrayItem;
+    }
+
+    return( $NewArray );
 }
 
 function ws_ls_get_next_tab_index()

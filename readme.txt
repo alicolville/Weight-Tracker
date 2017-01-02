@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight, loss, lose, helper, bmi, body, mass, index, graph, track, stones, kg, table, data, plot, target, history, pounds, responsive, chart, measurements, cm, centimeters, inches, hip, waist, bicep, thigh
 Requires at least: 4.1.0
 Tested up to: 4.7
-Stable tag: 4.1.2
+Stable tag: 4.1.3
 
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -69,6 +69,7 @@ Fully supported (have the majority of translations):
 
 Languages partially supported (have some of the translations):
 
+* Norwegian - Norsk bokmål (Thanks Rodrigo)
 * Danish (thanks @kfasterholdt)
 * Dutch (thanks Dennis, Yvon & Bart)
 * Finish (thanks Ari)
@@ -162,6 +163,14 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
  New League Table shortcode added and various tweaks.
 
 == Changelog ==
+
+= 4.1.3 =
+
+* Added some Norwegian (Norsk bokmål) translations (Thanks Rodrigo).
+* Date picker now translated into relevant locale - the majority driven from the WP Locale object. The words "Today" and "Done" can further be translated if provided.
+* Bug fix: Removed rogue double quote in Chart HTML (Thanks Rodrigo).
+* Bug fix: Only include ws_ls_config_advanced_datatables[] JS object when actually on the admin User Data page (Thanks Rodrigo).
+* Bug fix: Only include wp_config[] JS object once. If multiple widgets / shortcodes were placed it would embed the object more than once.
 
 = 4.1.2 =
 

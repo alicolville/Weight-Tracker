@@ -225,8 +225,17 @@ jQuery( document ).ready(function ($) {
                     changeMonth: true,
                     changeYear: true,
                     showButtonPanel: true,
-                    dateFormat: ws_ls_config['date-format']
-                };
+                    dateFormat: ws_ls_config['date-format'],
+					showButtonPanel: true,
+				    closeText: ws_ls_config['date-picker-locale']['closeText'],
+				    currentText: ws_ls_config['date-picker-locale']['currentText'],
+				    monthNames: ws_ls_config['date-picker-locale']['monthNames'],
+				    monthNamesShort: ws_ls_config['date-picker-locale']['monthNamesShort'],
+				    dayNames: ws_ls_config['date-picker-locale']['dayNames'],
+				    dayNamesShort: ws_ls_config['date-picker-locale']['dayNamesShort'],
+				    dayNamesMin: ws_ls_config['date-picker-locale']['dayNamesMin'],
+				    firstDay: ws_ls_config['date-picker-locale']['firstDay']
+				};
 
     $(this).datepicker(options);
   });
