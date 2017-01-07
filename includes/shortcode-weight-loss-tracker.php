@@ -82,8 +82,8 @@
 				//$weight_data_for_graph = array_slice($weight_data, 0, WE_LS_CHART_MAX_POINTS);
 				$html_output .= ws_ls_display_chart($weight_data_for_graph);
 			}
-			else	{
-					$html_output .= '<blockquote class="ws-ls-blockquote"><p>' . __('A pretty graph shall appear once you have recorded several weights.', WE_LS_SLUG) . '</p></blockquote>';
+			else {
+				$html_output .= '<blockquote class="ws-ls-blockquote"><p>' . __('A graph will appear once several weights have been entered.', WE_LS_SLUG) . '</p></blockquote>';
 			}
 
 			// Include target form?

@@ -16,11 +16,14 @@ function ws_ls_shortcode_stats_league_total($user_defined_arguments)
 		'order' => 'asc',				// asc: Lost the most first. desc: lost the least first
 		'number_to_show' => 10,			// Number of users to display in table
 		'losers_only' => false,			// Only show people that have lost weight
+		'show_percentage' => true,		// Show / hide percentage
 		'ignore_cache' => false			// If we have a cached data set, then use that.
 	 ), $user_defined_arguments );
 
 	$data = ws_ls_stats_league_table_fetch($arguments['ignore_cache'], $arguments['number_to_show'],
 	 										$arguments['losers_only'], $arguments['order']);
+
+	$arguments['show_percentage'] = ws_ls_force_bool_argument($arguments['show_percentage']);
 
 	if($data) {
 
@@ -29,7 +32,13 @@ function ws_ls_shortcode_stats_league_total($user_defined_arguments)
 						<tr>
 							<th class="ws-col-rank-th"></th>
 							<th class="ws-col-name-th">' . __('Name', WE_LS_SLUG) . '</th>
-							<th class="ws-weight-diff-th">' . __('Weight Difference', WE_LS_SLUG) . '</th>
+							<th class="ws-weight-diff-th">' . __('Weight Difference', WE_LS_SLUG) . '</th>';
+
+							if(true == $arguments['show_percentage']) {
+								$html .= '<th class="ws-weight-diff-th">+/-</th>';
+							}
+
+							$html .= '
 						</tr>
 					</thead>
 					<tbody>
@@ -50,17 +59,27 @@ function ws_ls_shortcode_stats_league_total($user_defined_arguments)
 															$arguments
 														);
 
+			$percentage = '';
+			// Calculate %
+			if(true == $arguments['show_percentage']) {
+				$percentage = (($row['recent_weight'] - $row['start_weight']) / $row['start_weight']) * 100;
+				$percentage = (false === ws_ls_force_bool_argument($arguments['invert'])) ? $percentage : -$percentage ;
+		        $percentage = round($percentage) . '%';
+			}
+
 			// Add HTML!
 			$html .= sprintf(
 				'<tr class="ws-rank-%s">
 					<td class="ws-col-rank">%s</td>
 					<td>%s</td>
 					<td>%s</td>
+					%s
 				</tr>',
 				$rank,
 				$rank,
 				$display_name,
-				$stats['display-value']
+				$stats['display-value'],
+				(true == $arguments['show_percentage']) ? '<td>' . $percentage . '</td>' : ''
 			);
 
 			$rank++;
