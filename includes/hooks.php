@@ -92,8 +92,8 @@
 			wp_enqueue_script('jquery-tabs',plugins_url( '../js/tabs.min.js', __FILE__ ), array('jquery'), WE_LS_CURRENT_VERSION, true);
 		}
 
-		// Enqueue Datatables
-		if(WS_LS_ADVANCED_TABLES) {
+		// Enqueue Data
+		if(WS_LS_IS_PRO && WS_LS_ADVANCED_TABLES) {
 	  	  ws_ls_enqueue_datatable_scripts();
 	    }
 
