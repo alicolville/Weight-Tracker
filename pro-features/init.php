@@ -66,13 +66,13 @@ function ws_ls_enqueue_datatable_scripts($admin = false) {
 
 }
 
-function ws_ls_enqeue_pro_scripts(){
-
-  if(WS_LS_ADVANCED_TABLES) {
-	  ws_ls_enqueue_datatable_scripts();
-  }
-}
-add_action( 'wp_enqueue_scripts', 'ws_ls_enqeue_pro_scripts');
+// function ws_ls_enqeue_pro_scripts(){
+//
+//   if(WS_LS_ADVANCED_TABLES) {
+// 	  ws_ls_enqueue_datatable_scripts();
+//   }
+// }
+// add_action( 'wp_enqueue_scripts', 'ws_ls_enqeue_pro_scripts');
 
 function ws_ls_admin_enqueue_pro_scripts(){
 
