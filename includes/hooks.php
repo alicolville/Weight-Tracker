@@ -84,7 +84,7 @@
 		wp_enqueue_script('jquery-ui-datepicker');
 		wp_enqueue_script('wl-ls-js', plugins_url( '../js/ws-ls' . 	$minified . '.js', __FILE__ ), array(), WE_LS_CURRENT_VERSION, true);
 
-		// Add locilzation data for JS
+		// Add localization data for JS
 		wp_localize_script('wl-ls-js', 'ws_ls_config', ws_ls_get_js_config());
 
 		// Tabs enabled?
