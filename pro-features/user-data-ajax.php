@@ -22,9 +22,9 @@ function ws_ls_user_data_callback()
 {
   	$ajax_response = 0;
 	$filters = array();
- check_ajax_referer( 'ajax-security-nonce', 'security' );
-  //	check_ajax_referer( 'ajax-security-nonce', 'security' );
 
+	check_ajax_referer( 'ajax-security-nonce', 'security' );
+  
 	$draw_id = ws_ls_ajax_get_value('draw', true);
 	$table_columns = ws_ls_ajax_get_value('columns');
 
