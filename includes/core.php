@@ -158,32 +158,36 @@
 			}
 		}
 
-		foreach ($weight_data as $weight_object) {
+		if($weight_data) {
+			foreach ($weight_data as $weight_object) {
 
-			array_push($graph_data['labels'], $weight_object['date-graph']);
-			array_push($graph_data['datasets'][0]['data'], $weight_object['graph_value']);
+				array_push($graph_data['labels'], $weight_object['date-graph']);
+				array_push($graph_data['datasets'][0]['data'], $weight_object['graph_value']);
 
-			// Set target weight if specified
-			if ($target_weight != false && WE_LS_ALLOW_TARGET_WEIGHTS && $chart_type_supports_target_data){
-				array_push($graph_data['datasets'][1]['data'], $target_weight['graph_value']);
-			}
+				// Set target weight if specified
+				if ($target_weight != false && WE_LS_ALLOW_TARGET_WEIGHTS && $chart_type_supports_target_data){
+					array_push($graph_data['datasets'][1]['data'], $target_weight['graph_value']);
+				}
 
-			// ----------------------------------------------------------------------------
-			// Add data for all measurements
-			// ----------------------------------------------------------------------------
-			if($measurements_enabled) {
-				foreach ($active_measurment_field_keys as $key) {
+				// ----------------------------------------------------------------------------
+				// Add data for all measurements
+				// ----------------------------------------------------------------------------
+				if($measurements_enabled) {
+					foreach ($active_measurment_field_keys as $key) {
 
-					// If we have a genuine measurement value then add to graph data - otherwise NULL
-					if(!is_null($weight_object['measurements'][$key]) && 0 != $weight_object['measurements'][$key]) {
-						$graph_data['datasets'][$measurement_graph_indexes[$key]]['data'][] = ws_ls_prep_measurement_for_display($weight_object['measurements'][$key]);
-						$graph_data['datasets'][$measurement_graph_indexes[$key]]['data-count']++;
-					} else {
-						$graph_data['datasets'][$measurement_graph_indexes[$key]]['data'][] = NULL;
+						// If we have a genuine measurement value then add to graph data - otherwise NULL
+						if(!is_null($weight_object['measurements'][$key]) && 0 != $weight_object['measurements'][$key]) {
+							$graph_data['datasets'][$measurement_graph_indexes[$key]]['data'][] = ws_ls_prep_measurement_for_display($weight_object['measurements'][$key]);
+							$graph_data['datasets'][$measurement_graph_indexes[$key]]['data-count']++;
+						} else {
+							$graph_data['datasets'][$measurement_graph_indexes[$key]]['data'][] = NULL;
+						}
 					}
 				}
 			}
+
 		}
+
 
 		// Remove any empty measurements from graph
 		if($measurements_enabled) {
