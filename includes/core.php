@@ -31,10 +31,6 @@
     return $html_output;
   }
 
-
-
-
-
   /* Display Chart */
 	function ws_ls_display_chart($weight_data, $options = false)
 	{
@@ -115,7 +111,6 @@
 
 				$graph_data['datasets'][1] = array( 'label' =>  __('Target', WE_LS_SLUG),
 												    'borderColor' => $chart_config['weight-target-color'],
-													'borderColor' => $chart_config['weight-target-color'],
 													'borderWidth' => $chart_config['width'],
 													'pointRadius' => 0,
 													'borderDash' => array(5,5),
@@ -139,7 +134,6 @@
 			foreach ($active_measurement_fields as $key => $data) {
 
 				$graph_data['datasets'][$dataset_index] = array( 'label' =>  __( $data['title'], WE_LS_SLUG),
-													'borderColor' => $data['chart_colour'],
 													'borderColor' => $data['chart_colour'],
 													'borderWidth' => $chart_config['width'],
 													'pointRadius' => $point_size,
