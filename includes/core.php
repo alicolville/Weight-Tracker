@@ -237,7 +237,7 @@
 */
 function ws_ls_display_weight_form($target_form = false, $class_name = false, $user_id = false, $hide_titles = false,
                                         $form_number = false, $force_to_todays_date = false, $hide_login_message_if_needed = true,
-                                            $hide_measurements_form = false)
+                                            $hide_measurements_form = false, $redirect_url = false)
 {
     global $save_response;
     $html_output  = '';
@@ -279,6 +279,11 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 		<input type="hidden" value="true" id="ws_ls_is_weight_form" name="ws_ls_is_weight_form" />
 		<input type="hidden" value="' . $user_id . '" id="ws_ls_user_id" name="ws_ls_user_id" />
 		<input type="hidden" value="' . wp_hash($user_id) . '" id="ws_ls_security" name="ws_ls_security" />';
+
+	    // Redirect form afterwards?
+        if($redirect_url) {
+            $html_output .= '<input type="hidden" value="' . esc_html($redirect_url) . '" id="ws_redirect" name="ws_redirect" />';
+        }
 
 		if($form_number){
 				$html_output .= '	<input type="hidden" value="' . $form_number . '" id="ws_ls_form_number" name="ws_ls_form_number" />';

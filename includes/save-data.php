@@ -32,7 +32,11 @@ function ws_ls_capture_and_handle_form_post()
 
         		$save_success = ws_ls_capture_form_validate_and_save($user_id);
 
-				if ($save_success) {
+                // Do we have a redirect URL?
+                if(isset($_POST['ws_redirect'])) {
+                    wp_safe_redirect($_POST['ws_redirect']);
+                    exit;
+                }  elseif ($save_success) {
 					$html_output .= '<blockquote class="ws-ls-blockquote ws-ls-success"><p>' . __('Saved!', WE_LS_SLUG) . '</p></blockquote>';
 				} else {
 					$error = __('An error occurred while saving your data!', WE_LS_SLUG);

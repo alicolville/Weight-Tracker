@@ -166,7 +166,8 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 
 = 4.2 =
 
-*
+* [Add to documentation]: New attribute "redirect-url" added for the shortcode [ws_ls_shortcode_form]. If specified and once the data has been saved, the user will be redirected to the given URL. Please note, the URL has to be one for the current site, otherwise the redirect will not happen (URL is passed through wp_safe_redirect()).
+* Bug fix: Setting "min-chart-points" attribute to 0 will now display the chart if no weight data has been entered.
 
 = 4.1.6 =
 
