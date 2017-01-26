@@ -117,12 +117,19 @@ function ws_ls_advanced_data_table($weight_data)
 
   foreach ($weight_data as $weight_object)
   {
-
-    	$html_output .= '<tr id="ws-ls-row-' . $weight_object['db_row_id'] . '">
-							<td>' . $weight_object['kg'] . '</td>
-							<td>' . ws_ls_render_date($weight_object) . '</td>
-							<td>' . $weight_object['display'] . '</td>
-							<td>' . ((isset($weight_object['difference_from_start']) && is_numeric($weight_object['difference_from_start'])) ? $weight_object['difference_from_start'] . '%' : '') . '</td>';
+	  	$percentage_lost = ((isset($weight_object['difference_from_start']) && is_numeric($weight_object['difference_from_start'])) ? $weight_object['difference_from_start'] . '%' : '');
+		
+    	$html_output .= sprintf('<tr id="ws-ls-row-%s">
+									<td>%s</td>
+									<td>%s</td>
+									<td>%s</td>
+									<td>%s</td>',
+									$weight_object['db_row_id'],
+									$weight_object['kg'],
+									ws_ls_render_date($weight_object),
+									$weight_object['display'],
+									$percentage_lost
+								);
 
 		// BMI?
 		if(WE_LS_DISPLAY_BMI_IN_TABLES) {

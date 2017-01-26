@@ -12,6 +12,8 @@ if(defined('WS_LS_ABSPATH')){
 	include WS_LS_ABSPATH . 'pro-features/shortcode-table.php';
 	include WS_LS_ABSPATH . 'pro-features/shortcode-various.php';
 	include WS_LS_ABSPATH . 'pro-features/shortcode-stats.php';
+	include WS_LS_ABSPATH . 'pro-features/shortcode-reminders.php';
+	include WS_LS_ABSPATH . 'pro-features/shortcode-progress-bar.php';
 	include WS_LS_ABSPATH . 'pro-features/advanced-table.php';
 	include WS_LS_ABSPATH . 'pro-features/widget-chart.php';
 	include WS_LS_ABSPATH . 'pro-features/widget-form.php';
@@ -32,6 +34,7 @@ function ws_ls_register_pro_shortcodes(){
 		[weight-loss-tracker-most-recent-bmi] - Displays the user's BMI for most recent weight
 		[weight-loss-tracker-total-lost] - Total lost / gained by the entire community.
 		[weight-loss-tracker-league-table] - Show a league table of weight loss users.
+		[weight-loss-tracker-reminder] - Show a reminder to either enter weight for today or target weight
     */
 
     add_shortcode( 'weight-loss-tracker-chart', 'ws_ls_shortcode_chart' );
@@ -40,8 +43,8 @@ function ws_ls_register_pro_shortcodes(){
 	add_shortcode( 'weight-loss-tracker-most-recent-bmi', 'ws_ls_get_user_bmi' );
 	add_shortcode( 'weight-loss-tracker-total-lost', 'ws_ls_shortcode_stats_total_lost' );
 	add_shortcode( 'weight-loss-tracker-league-table', 'ws_ls_shortcode_stats_league_total' );
-
-
+	add_shortcode( 'weight-loss-tracker-reminder', 'ws_ls_shortcode_reminder' );
+	add_shortcode( 'weight-loss-tracker-progress-bar', 'ws_ls_shortcode_progress_bar' );
 }
 add_action( 'init', 'ws_ls_register_pro_shortcodes');
 

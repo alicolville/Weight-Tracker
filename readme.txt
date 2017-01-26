@@ -166,8 +166,16 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 
 = 4.2 =
 
+* [Add to documentation]: Added new shortcode [weight-loss-tracker-reminder]. This allows you to display reminder messages for users to add a target weight or weight / measurement entry for the day.
+							'type' => 'weight', 		// Type of message:
+														// 		'weight' - check they have entered a weight for today.
+														// 		'target' - check they have entered a target weight
+							'message' => '',			// Custom message
+							'additional_css' => '',		// Additional class for containing element
+							'link' => ''
 * [Add to documentation]: New attribute "redirect-url" added for the shortcode [ws_ls_shortcode_form]. If specified and once the data has been saved, the user will be redirected to the given URL. Please note, the URL has to be one for the current site, otherwise the redirect will not happen (URL is passed through wp_safe_redirect()).
 * Bug fix: Setting "min-chart-points" attribute to 0 will now display the chart if no weight data has been entered.
+* Bug fix: Issue generating stats for a user when a target weight is entered but no user weights exist (division by zero).
 
 = 4.1.6 =
 

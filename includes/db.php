@@ -324,16 +324,26 @@ function ws_ls_get_min_max_dates($user_id)
 }
 function ws_does_weight_exist_for_this_date($user_id, $date)
 {
-  global $wpdb;
-  $table_name = $wpdb->prefix . WE_LS_TABLENAME;
-  $sql =  $wpdb->prepare('SELECT id FROM ' . $table_name . ' WHERE weight_date = %s and weight_user_id = %d', $date, $user_id);
-  $row = $wpdb->get_row($sql);
+  	global $wpdb;
 
-  if (!is_null($row)) {
-    return $row->id;
-  }
+	$cache_key = $user_id . '-' . WE_LS_CACHE_KEY_WEIGHT_FOR_DAY;
 
-  return false;
+	// Return cache if found!
+    if ($cache = ws_ls_get_cache($cache_key)) {
+        return $cache;
+    }
+
+	$table_name = $wpdb->prefix . WE_LS_TABLENAME;
+	$sql =  $wpdb->prepare('SELECT id FROM ' . $table_name . ' WHERE weight_date = %s and weight_user_id = %d', $date, $user_id);
+	$row = $wpdb->get_row($sql);
+
+	if (!is_null($row)) {
+		ws_ls_set_cache($cache_key, true);
+		return $row->id;
+	}
+
+	ws_ls_set_cache($cache_key, false);
+  	return false;
 }
 function ws_does_target_weight_exist($user_id)
 {

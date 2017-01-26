@@ -60,8 +60,9 @@ function ws_ls_shortcode_stats_league_total($user_defined_arguments)
 														);
 
 			$percentage = '';
+
 			// Calculate %
-			if(true == $arguments['show_percentage']) {
+			if(true == $arguments['show_percentage'] && 0 !== intval($row['start_weight'])) {
 				$percentage = (($row['recent_weight'] - $row['start_weight']) / $row['start_weight']) * 100;
 				$percentage = (false === ws_ls_force_bool_argument($arguments['invert'])) ? $percentage : -$percentage ;
 		        $percentage = round($percentage) . '%';
