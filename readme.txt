@@ -177,6 +177,14 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 * Bug fix: Setting "min-chart-points" attribute to 0 will now display the chart if no weight data has been entered.
 * Bug fix: Issue generating stats for a user when a target weight is entered but no user weights exist (division by zero).
 
+= 4.1.8 =
+
+* Updated German translations (thanks @Christian)
+
+= 4.1.7 =
+
+* Bug fix: Corrected nonce name. Issue on some installs to do with verfiying nonces used to secure AJAX calls for loading user data in Admin.
+
 = 4.1.6 =
 
 * Added fixes to sort issues with Ultimate Tables plugin when both including the Datatables JS library.

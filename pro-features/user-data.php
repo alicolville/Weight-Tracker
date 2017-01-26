@@ -16,7 +16,7 @@ function ws_ls_manage_user_data_page() {
 	wp_enqueue_style('ws-ls-admin-style', plugins_url( '../css/admin.css', __FILE__ ), array(), WE_LS_CURRENT_VERSION);
 
 
-	wp_localize_script( 'ws-ls-admin', 'ws_ls_user_data', array('ajax-url' => admin_url('admin-ajax.php') . '?action=ws_ls_user_data&security=' . wp_create_nonce( 'ws-ls-security' ), 'security' => wp_create_nonce( 'ajax-security-nonce' ) ) );
+	wp_localize_script( 'ws-ls-admin', 'ws_ls_user_data', array('ajax-url' => admin_url('admin-ajax.php') . '?action=ws_ls_user_data&security=' . wp_create_nonce( 'ajax-security-nonce' ) ) );
 
     $clear_cache = false;
 
