@@ -418,6 +418,14 @@ function ws_ls_force_bool_argument($value)
 
     return false;
 }
+function ws_ls_force_numeric_argument($value, $default = false)
+{
+	if (is_numeric($value)) {
+		return $value;
+	}
+
+    return ($default) ? $default : 0;
+}
 function ws_ls_remove_non_numeric($text)
 {
   if(!empty($text)){

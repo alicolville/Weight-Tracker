@@ -13,7 +13,16 @@ function ws_ls_shortcode_progress_bar($user_defined_arguments) {
 						            'type' => 'line', 			// Type of progress bar:
 																// 		'circle'
 																// 		'line'
-									'display-errors' => true
+									'display-errors' => true,
+									'stroke-width' => 3,
+									'stroke-colour' => '#FFEA82',
+									'trail-width' => 1,
+									'trail-colour' => '#eee',
+									'text-colour' => '#000',
+									'animation-duration' => 1400,	// Animation time in ms. Defaults to 1400
+									'width' => '100%',				// % or pixels
+									'height' => '100%',				// % or pixels
+									'percentage-text' => __('towards weight loss target', WE_LS_SLUG)
 								), $user_defined_arguments );
 
 	$display_errors = ws_ls_force_bool_argument($arguments['display-errors']);
@@ -21,8 +30,23 @@ function ws_ls_shortcode_progress_bar($user_defined_arguments) {
 	// Are targets enabled? If not, no point carrying on!
 	if(WE_LS_ALLOW_TARGET_WEIGHTS) {
 
+		// Width / Height specified for circle?
+		$arguments['width-height-specified'] = (isset($user_defined_arguments['width']) || isset($user_defined_arguments['height'])) ?
+															true :
+															false;
+
+
 		// Validate / apply defaults
 		$arguments['type'] = (in_array($arguments['type'], ['circle', 'line'])) ? $arguments['type'] : 'line';
+		$arguments['stroke-width'] = ws_ls_force_numeric_argument($arguments['stroke-width'], 3);
+		$arguments['trail-width'] = ws_ls_force_numeric_argument($arguments['trail-width'], 1);
+		$arguments['animation-duration'] = ws_ls_force_numeric_argument($arguments['animation-duration'], 1400);
+
+		// If no width or height specified by user, then set circle to a better default size.
+		if('circle' == $arguments['type'] && true == $arguments['width-height-specified']) {
+			$arguments['width'] = '150px';
+			$arguments['height'] = '150px';
+		}
 
 		// Got a target weight?
 		if($arguments['target-weight'] = ws_ls_get_target_weight_in_kg()) {
@@ -46,12 +70,18 @@ function ws_ls_shortcode_progress_bar($user_defined_arguments) {
 				} else {
 					$arguments['progress'] = 0;	// Error
 				}
+				if ($arguments['progress'] == 1) {
+					$arguments['progress-chart'] = 1;
+				} else if ($arguments['progress'] >= 100) {
+					$arguments['progress-chart'] = 1;
+				} else if ($arguments['progress'] > 0) {
+					$arguments['progress-chart'] = round($arguments['progress'] / 100, 2);
+				} else {
+					$arguments['progress-chart'] = 0;
+				}
 
-
-				// TODO : greater or equal than 1 then don't round either.
-				
-
-				$arguments['progress-chart'] = ($arguments['progress'] > 0) ? round($arguments['progress'] / 100, 2) : 0;
+				// Render bar!
+				ws_ls_shortcode_progress_bar_render($arguments);
 
 			} else if ($display_errors) {
 				return __('Please enter add a weight entry to see your progress.', WE_LS_SLUG);
@@ -65,6 +95,41 @@ function ws_ls_shortcode_progress_bar($user_defined_arguments) {
 		return __('This shortcode can not be used as Target weights have been disabled in the plugin\'s settings.', WE_LS_SLUG);
 	}
 
-	var_dump($arguments);
+}
+
+function ws_ls_shortcode_progress_bar_render($arguments = array()) {
+
+	if($arguments) {
+
+		// Enqueue Progress library
+		wp_enqueue_script('ws-ls-progress-bar',plugins_url( '../js/progress-bar.js', __FILE__ ), array('jquery'), WE_LS_CURRENT_VERSION);
+
+		// Create a unique ID
+		$shortcode_id = 'ws_ls_progress_bar_' . rand(10,1000) . '_' . rand(10,1000);
+
+		echo sprintf('<div id="%s" class="ws-ls-progress"
+						data-stroke-width="%s" data-stroke-colour="%s"
+						data-trail-width="%s" data-trail-colour="%s"
+						data-precentage-text="%s" data-text-colour="%s"
+						data-animation-duration="%s"
+						data-width="%s" data-height="%s"
+						data-type="%s" data-progress="%s"></div>',
+					$shortcode_id,
+					esc_html($arguments['stroke-width']),
+					esc_html($arguments['stroke-colour']),
+					esc_html($arguments['trail-width']),
+					esc_html($arguments['trail-colour']),
+					esc_html($arguments['percentage-text']),
+					esc_html($arguments['text-colour']),
+					esc_html($arguments['animation-duration']),
+					esc_html($arguments['width']),
+					esc_html($arguments['height']),
+					esc_html($arguments['type']),
+					esc_html($arguments['progress-chart'])
+		);
+
+		var_dump($arguments);
+	}
+
 
 }
