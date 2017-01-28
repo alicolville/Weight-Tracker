@@ -22,7 +22,7 @@ function ws_ls_shortcode_progress_bar($user_defined_arguments) {
 									'animation-duration' => 1400,	// Animation time in ms. Defaults to 1400
 									'width' => '100%',				// % or pixels
 									'height' => '100%',				// % or pixels
-									'percentage-text' => __('towards weight loss target', WE_LS_SLUG)
+									'percentage-text' => __('towards your target of {t}.', WE_LS_SLUG)
 								), $user_defined_arguments );
 
 	$display_errors = ws_ls_force_bool_argument($arguments['display-errors']);
@@ -35,7 +35,6 @@ function ws_ls_shortcode_progress_bar($user_defined_arguments) {
 															true :
 															false;
 
-
 		// Validate / apply defaults
 		$arguments['type'] = (in_array($arguments['type'], ['circle', 'line'])) ? $arguments['type'] : 'line';
 		$arguments['stroke-width'] = ws_ls_force_numeric_argument($arguments['stroke-width'], 3);
@@ -43,13 +42,16 @@ function ws_ls_shortcode_progress_bar($user_defined_arguments) {
 		$arguments['animation-duration'] = ws_ls_force_numeric_argument($arguments['animation-duration'], 1400);
 
 		// If no width or height specified by user, then set circle to a better default size.
-		if('circle' == $arguments['type'] && true == $arguments['width-height-specified']) {
+		if('circle' == $arguments['type'] && false == $arguments['width-height-specified']) {
 			$arguments['width'] = '150px';
 			$arguments['height'] = '150px';
 		}
 
 		// Got a target weight?
 		if($arguments['target-weight'] = ws_ls_get_target_weight_in_kg()) {
+
+			//$arguments['target-weight-display'] = we_ls_format_weight_into_correct_string_format($arguments['target-weight']);
+			$arguments['target-weight-display'] = ws_ls_convert_kg_into_relevant_weight_String($arguments['target-weight']);
 
 			// Latest weight
 			if($arguments['weight'] = ws_ls_get_recent_weight_in_kg()) {
@@ -107,6 +109,8 @@ function ws_ls_shortcode_progress_bar_render($arguments = array()) {
 		// Create a unique ID
 		$shortcode_id = 'ws_ls_progress_bar_' . rand(10,1000) . '_' . rand(10,1000);
 
+		$arguments['percentage-text'] = str_replace('{t}', $arguments['target-weight-display'], $arguments['percentage-text']);
+
 		echo sprintf('<div id="%s" class="ws-ls-progress"
 						data-stroke-width="%s" data-stroke-colour="%s"
 						data-trail-width="%s" data-trail-colour="%s"
@@ -127,8 +131,6 @@ function ws_ls_shortcode_progress_bar_render($arguments = array()) {
 					esc_html($arguments['type']),
 					esc_html($arguments['progress-chart'])
 		);
-
-		var_dump($arguments);
 	}
 
 

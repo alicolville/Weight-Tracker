@@ -39,6 +39,8 @@ Also supports the following tags:
 	[weight-loss-tracker-most-recent-bmi] - Displays the user's BMI for most recent weight
 	[weight-loss-tracker-total-lost] - Total lost / gained by the entire community.
 	[weight-loss-tracker-league-table] - Show a league table of weight loss users.
+	[weight-loss-tracker-progress-bar] - Show a progress bar indicating progress towards target weight.
+	[weight-loss-tracker-reminder]. This allows you to display reminder messages for users to add a target weight or weight / measurement entry for the day.
 
 	[Read our Shortcode guide on GitHub](https://github.com/yekenuk/Weight-Loss-Tracker/wiki/Shortcodes)
 
@@ -166,6 +168,20 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 
 = 4.2 =
 
+* [Add to documentation]: [weight-loss-tracker-progress-bar] - Show a progress bar indicating progress towards target weight.
+							'type' => 'line', 			// Type of progress bar:
+														// 		'circle'
+														// 		'line'
+							'display-errors' => true,
+							'stroke-width' => 3,
+							'stroke-colour' => '#FFEA82',
+							'trail-width' => 1,
+							'trail-colour' => '#eee',
+							'text-colour' => '#000',
+							'animation-duration' => 1400,	// Animation time in ms. Defaults to 1400
+							'width' => '100%',				// % or pixels
+							'height' => '100%',				// % or pixels
+							'percentage-text' => __('towards your target of {t}.', WE_LS_SLUG)
 * [Add to documentation]: Added new shortcode [weight-loss-tracker-reminder]. This allows you to display reminder messages for users to add a target weight or weight / measurement entry for the day.
 							'type' => 'weight', 		// Type of message:
 														// 		'weight' - check they have entered a weight for today.

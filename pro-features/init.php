@@ -35,6 +35,7 @@ function ws_ls_register_pro_shortcodes(){
 		[weight-loss-tracker-total-lost] - Total lost / gained by the entire community.
 		[weight-loss-tracker-league-table] - Show a league table of weight loss users.
 		[weight-loss-tracker-reminder] - Show a reminder to either enter weight for today or target weight
+		[weight-loss-tracker-progress-bar] - Show a progress bar indicating progress towards target weight.
     */
 
     add_shortcode( 'weight-loss-tracker-chart', 'ws_ls_shortcode_chart' );

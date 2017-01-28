@@ -57,6 +57,29 @@ function ws_ls_round_decimals($value)
   }
   return $value;
 }
+function ws_ls_convert_kg_into_relevant_weight_String($kg) {
+
+	if ($kg) {
+
+		switch (ws_ls_get_config('WE_LS_DATA_UNITS')) {
+			case 'pounds_only':
+				return ws_ls_to_lb($kg) . __('lbs', WE_LS_SLUG);
+			break;
+			case 'kg':
+				return $kg . __('Kg', WE_LS_SLUG);
+			break;
+			default:
+				$weight = ws_ls_to_stone_pounds($kg);
+				return $weight['stones'] . __("St", WE_LS_SLUG) . ' ' . $weight['pounds'] . __("lbs", WE_LS_SLUG);
+			break;
+		}
+
+	}
+
+	return '';
+}
+
+
 function ws_ls_heights() {
 return array(
 	    0 => '',
