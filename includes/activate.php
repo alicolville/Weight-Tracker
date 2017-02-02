@@ -9,12 +9,18 @@
 		if (! wp_next_scheduled ( WE_LS_CRON_NAME )) {
 			wp_schedule_event(time(), 'hourly', WE_LS_CRON_NAME);
 		}
+
+		// Register weekly comms to yeken stats cron job
+		if (! wp_next_scheduled ( WE_LS_CRON_NAME_YEKEN_COMMS )) {
+			wp_schedule_event(time(), WE_LS_CRON_SCHEDULE_WEEKLY, WE_LS_CRON_NAME_YEKEN_COMMS);
+		}
 	}
 
 	// Code that should run when plugin is deactivated
 	function ws_ls_deactivate() {
 
-		// Remove user stats cron job
+		// Remove cron jobs
+		wp_clear_scheduled_hook( WE_LS_CRON_NAME );
 		wp_clear_scheduled_hook( WE_LS_CRON_NAME );
 	}
 

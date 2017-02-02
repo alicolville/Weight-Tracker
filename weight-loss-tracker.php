@@ -56,6 +56,7 @@ include WS_LS_ABSPATH . 'includes/db.php';
 include WS_LS_ABSPATH . 'includes/globals.php';
 include WS_LS_ABSPATH . 'includes/activate.php';
 include WS_LS_ABSPATH . 'includes/hooks.php';
+include WS_LS_ABSPATH . 'includes/cron.php';
 // include WS_LS_ABSPATH . 'includes/incompatibility.php';
 include WS_LS_ABSPATH . 'includes/functions.php';
 include WS_LS_ABSPATH . 'includes/converters.php';
