@@ -170,6 +170,11 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 
 [TO DO] : MINIFY!
 
+
+[BUGS!]:	1) Clear stats table when All data cleared.
+			2) Error displaying league table shortcode when there are no users in the system
+			3) On league table, stone / poind sometimes shows as -1st -1lb.
+
 * [Add to documentation]: Added the following to [weight-loss-tracker]
 							'hide-first-target-form' => false,			// Hide first Target form
 							'hide-second-target-form' => false			// Hide second Target form
