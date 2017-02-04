@@ -66,7 +66,11 @@
 		'WE_LS_DISPLAY_BMI_IN_TABLES' => false,
 		'WE_LS_AXES_START_AT_ZERO' => false,
 		'WE_LS_ALLOW_STATS' => false,
-		'WE_LS_DISABLE_USER_STATS' => false
+		'WE_LS_DISABLE_USER_STATS' => false,
+		'WE_LS_EMAIL_ENABLE' => false,
+		'WE_LS_EMAIL_ADDRESSES' => '',
+		'WE_LS_EMAIL_NOTIFICATIONS_EDIT' => true,
+		'WE_LS_EMAIL_NOTIFICATIONS_NEW' => true
 	);
 
     // -----------------------------------------------------------------------------------
@@ -226,6 +230,21 @@
 	}
 	if (get_option('ws-ls-line-fill-colour')) {
 		$globals['WE_LS_WEIGHT_FILL_COLOUR'] = get_option('ws-ls-line-fill-colour');
+	}
+	// -----------------------------------------------------------------------------------
+	// Email Notifications
+	// -----------------------------------------------------------------------------------
+	if (WS_LS_IS_PRO && ('yes' == get_option('ws-ls-email-enable'))) {
+		$globals['WE_LS_EMAIL_ENABLE'] = true;
+	}
+	if (WS_LS_IS_PRO && !empty(get_option('ws-ls-email-addresses'))) {
+		$globals['WE_LS_EMAIL_ADDRESSES'] = get_option('ws-ls-email-addresses');
+	}
+	if (WS_LS_IS_PRO && 'no' == get_option('ws-ls-email-notifications-edit')) {
+		$globals['WE_LS_EMAIL_NOTIFICATIONS_EDIT'] = false;
+	}
+	if (WS_LS_IS_PRO && 'no' == get_option('ws-ls-email-notifications-new')) {
+		$globals['WE_LS_EMAIL_NOTIFICATIONS_NEW'] = false;
 	}
 
 	// -----------------------------------------------------------------------------------

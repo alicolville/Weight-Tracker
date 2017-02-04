@@ -168,6 +168,12 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 
 = 4.2 =
 
+[TO DO] : MINIFY!
+
+* [Add to documentation]: Added the following to [weight-loss-tracker]
+							'hide-first-target-form' => false,			// Hide first Target form
+							'hide-second-target-form' => false			// Hide second Target form
+							'show-add-button' => false					// Display a "Add weight" button above the chart.
 * [Add to documentation]: [weight-loss-tracker-progress-bar] - Show a progress bar indicating progress towards target weight.
 							'type' => 'line', 			// Type of progress bar:
 														// 		'circle'
@@ -194,7 +200,7 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 * Stats now sent weekly (instead of monthly) using a WP cron job. If "Send usage data to YeKen" is enabled, usage stats will be sent on weekly basis to YeKen by a scheduled WP cron job (instead of relying on an expired cached value to trigger the send).
 * Bug fix: Setting "min-chart-points" attribute to 0 will now display the chart if no weight data has been entered.
 * Bug fix: Issue generating stats for a user when a target weight is entered but no user weights exist (division by zero).
-
+* Bug fix: Deal with negative numbers in ws_ls_pounds_to_stone_pounds() and ws_ls_to_stone_pounds() - Thanks (@GatorDev)
 = 4.1.8 =
 
 * Updated German translations (thanks @Christian)

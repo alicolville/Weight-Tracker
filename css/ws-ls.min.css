@@ -300,3 +300,6 @@ input.ws-ls-valid
 	background-color:#e3f7fc;
     border:1px solid #8ed9f6;
 }
+.ws-ls-add-weight-button {
+	margin: 10px 0px 20px 0px;
+}

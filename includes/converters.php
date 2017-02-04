@@ -38,15 +38,15 @@ function ws_ls_to_stones($pounds)
 function ws_ls_pounds_to_stone_pounds($lb)
 {
 	$weight = array ("stones" => 0, "pounds" => 0);
-	$weight["stones"] = floor($lb / 14);
+	$weight["stones"] = $lb < 0 ? -1 * floor(-1 * $lb / 14) : floor($lb / 14);
  	$weight["pounds"] = Round(fmod($lb, 14), 1);
-  return $weight;
+    return $weight;
 }
 function ws_ls_to_stone_pounds($kg)
 {
 	$weight = array ("stones" => 0, "pounds" => 0);
     $totalPounds = Round($kg * 2.20462, 3);
-    $weight["stones"] = floor($totalPounds / 14);
+    $weight["stones"] = $totalPounds < 0 ? -1 * floor(-1 * $totalPounds / 14) : floor($totalPounds / 14);
     $weight["pounds"] = Round(fmod($totalPounds, 14), 1);
     return $weight;
 }
