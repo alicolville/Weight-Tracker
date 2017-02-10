@@ -79,25 +79,10 @@ if(WS_LS_IS_PRO){
   include WS_LS_ABSPATH . 'pro-features/init.php';
 }
 // -----------------------------------------------------------------------------------------
-// AC: Load relevant language files
+// AC: Load relevant language files (https://wpcentral.io/internationalization/)
 // -----------------------------------------------------------------------------------------
 
 function ws_ls_load_textdomain() {
   load_plugin_textdomain( WE_LS_SLUG, false, dirname( plugin_basename( __FILE__ )  ) . '/languages/' );
 }
 add_action( 'plugins_loaded', 'ws_ls_load_textdomain' );
-
-
-
-
-
-// for ($i = 0; $i < 50; $i++) {
-//
-// 	$weight = array('stones' => -12, 'pounds' => rand(-14, 14) );
-// var_dump($weight);
-// 	$weight = ws_ls_format_stones_pound_for_display($weight);
-//
-// 	var_dump($weight);
-//
-// }
-// die;

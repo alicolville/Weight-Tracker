@@ -2,9 +2,8 @@
 Contributors: aliakro
 Tags: weight, loss, lose, helper, bmi, body, mass, index, graph, track, stones, kg, table, data, plot, target, history, pounds, responsive, chart, measurements, cm, centimeters, inches, hip, waist, bicep, thigh
 Requires at least: 4.1.0
-Tested up to: 4.7.1
+Tested up to: 4.7.2
 Stable tag: 4.2
-
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate Link: https://www.yeken.uk/donate/
@@ -71,6 +70,7 @@ Fully supported (have the majority of translations):
 
 Languages partially supported (have some of the translations):
 
+* Italian (thanks @Salvo)
 * Norwegian - Norsk bokmål (Thanks Rodrigo)
 * Danish (thanks @kfasterholdt and @spaniole)
 * Dutch (thanks Dennis, Yvon & Bart)
@@ -206,6 +206,13 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 * Stats now sent weekly (instead of monthly) using a WP cron job. If "Send usage data to YeKen" is enabled, usage stats will be sent on weekly basis to YeKen by a scheduled WP cron job (instead of relying on an expired cached value to trigger the send).
 * Bug fix: Setting "min-chart-points" attribute to 0 will now display the chart if no weight data has been entered.
 * Bug fix: Issue generating stats for a user when a target weight is entered but no user weights exist (division by zero).
+
+= 4.1.9 =
+
+* Updated Dutch translations (thanks @Robin)
+* Updated Italian translations (thanks @Salvo)
+* Bug fix: Deal with negative numbers in ws_ls_pounds_to_stone_pounds() and ws_ls_to_stone_pounds() - Thanks (@GatorDev)
+
 = 4.1.8 =
 
 * Updated German translations (thanks @Christian)
