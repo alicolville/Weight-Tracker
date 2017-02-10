@@ -147,7 +147,7 @@ function ws_ls_shortcode_stats_display_value($stats, $arguments) {
 				break;
 			case 'stones_pounds':
 				$weight = ws_ls_to_stone_pounds($difference);
-				$stats['display-value'] .= $weight['stones'] . __('St', WE_LS_SLUG) . " " . $weight['pounds'] . __('lbs', WE_LS_SLUG);
+				$stats['display-value'] .= ws_ls_format_stones_pound_for_comparison_display($weight);
 				break;
 			default:
 				$stats['display-value'] .= $difference  . __('Kg', WE_LS_SLUG);

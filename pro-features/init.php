@@ -17,6 +17,7 @@ if(defined('WS_LS_ABSPATH')){
 	include WS_LS_ABSPATH . 'pro-features/advanced-table.php';
 	include WS_LS_ABSPATH . 'pro-features/widget-chart.php';
 	include WS_LS_ABSPATH . 'pro-features/widget-form.php';
+	include WS_LS_ABSPATH . 'pro-features/widget-progress.php';
 	include WS_LS_ABSPATH . 'pro-features/user-data.php';
 	include WS_LS_ABSPATH . 'pro-features/user-data-ajax.php';
 	include WS_LS_ABSPATH . 'pro-features/db.php';
@@ -70,14 +71,6 @@ function ws_ls_enqueue_datatable_scripts($admin = false) {
 
 }
 
-// function ws_ls_enqeue_pro_scripts(){
-//
-//   if(WS_LS_ADVANCED_TABLES) {
-// 	  ws_ls_enqueue_datatable_scripts();
-//   }
-// }
-// add_action( 'wp_enqueue_scripts', 'ws_ls_enqeue_pro_scripts');
-
 function ws_ls_admin_enqueue_pro_scripts(){
 
 	// Only add Datatable scripts to User preferences page
@@ -92,6 +85,7 @@ add_action( 'admin_enqueue_scripts', 'ws_ls_admin_enqueue_pro_scripts');
 function we_ls_register_widgets()
 {
     register_widget( 'ws_ls_widget_chart' );
-    register_widget( 'ws_ls_widget_form' );// Add locilzation data for JS
+    register_widget( 'ws_ls_widget_form' );
+	register_widget( 'ws_ls_widget_progress_bar' );
 }
 add_action( 'after_setup_theme', 'we_ls_register_widgets', 20 );
