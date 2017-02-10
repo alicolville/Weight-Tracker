@@ -1,0 +1,1227 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2017-02-10 10:44+0000\n"
+"PO-Revision-Date: 2017-02-10 10:44+0000\n"
+"Last-Translator: Salvo Mattina <admin@mabodigital.com>\n"
+"Language-Team: \n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.11\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: includes/admin-notifications.php:18 pro-features/widget-chart.php:17
+msgid "Weight Loss Tracker"
+msgstr "Tracker Perdita di peso - Modulo"
+
+#: includes/core.php:13 pro-features/advanced-table.php:92
+#: pro-features/user-data.php:68 pro-features/user-data.php:90
+msgid "Date"
+msgstr "Permette all'utente di specificare una data?"
+
+#: includes/core.php:14 includes/core.php:86 includes/core.php:206
+#: includes/core.php:332 pro-features/advanced-table.php:93
+#: pro-features/user-data.php:69 pro-features/user-data.php:91
+msgid "Weight"
+msgstr "Riempire  con il colore?"
+
+#: includes/core.php:15 includes/core.php:340
+#: pro-features/advanced-table.php:109 pro-features/user-data.php:70
+#: pro-features/user-data.php:92
+msgid "Notes"
+msgstr "Note"
+
+#: includes/core.php:66 includes/core.php:251
+#: includes/shortcode-weight-loss-tracker.php:14
+msgid "You need to be logged in to record your weight."
+msgstr "Devi essere loggato per registrare il peso."
+
+#: includes/core.php:66 includes/core.php:251
+#: includes/shortcode-weight-loss-tracker.php:14
+msgid "Login now"
+msgstr "Accedi ora"
+
+#: includes/core.php:79 includes/functions.php:70 includes/functions.php:78
+#: includes/functions.php:260 includes/functions.php:266
+#: includes/shortcode-various.php:184 includes/shortcode-various.php:188
+#: pro-features/shortcode-stats.php:145 pro-features/shortcode-stats.php:149
+msgid "lbs"
+msgstr "lbs"
+
+#: includes/core.php:79 includes/core.php:332 includes/functions.php:74
+#: includes/functions.php:263 includes/shortcode-various.php:193
+#: pages/page.settings.php:89 pro-features/shortcode-stats.php:152
+#: pro-features/user-preferences.php:32
+msgid "Kg"
+msgstr "Kg"
+
+#: includes/core.php:80 pages/page.settings.php:342
+#: pro-features/user-data.php:33 pro-features/user-preferences.php:42
+msgid "Inches"
+msgstr "Pollici"
+
+#: includes/core.php:80
+msgid "CM"
+msgstr "CM"
+
+#: includes/core.php:116
+msgid "Target"
+msgstr "Your current target is"
+
+#: includes/core.php:213
+msgid "Measurement"
+msgstr "Misurazione"
+
+#: includes/core.php:231
+msgid "You have modified data. Please refresh page."
+msgstr "Hai modificato i dati. Si prega di aggiornare la pagina."
+
+#: includes/core.php:266
+msgid "Target Weight"
+msgstr "Peso Target"
+
+#: includes/core.php:266
+msgid "Add a new weight"
+msgstr "Aggiungere un nuovo peso"
+
+#: includes/core.php:316
+msgid "Your target weight is"
+msgstr "Il tuo obbiettivo del peso è"
+
+#: includes/core.php:324
+msgid "Stones"
+msgstr "Stones"
+
+#: includes/core.php:325 includes/core.php:328 pages/page.settings.php:91
+#: pro-features/user-preferences.php:34
+msgid "Pounds"
+msgstr "Pound"
+
+#: includes/core.php:346
+msgid "Add measurements"
+msgstr "Aggiungi misure"
+
+#: includes/core.php:350
+msgid "Set Target"
+msgstr "Imposta Target"
+
+#: includes/core.php:350
+msgid "Save Entry"
+msgstr "Salva"
+
+#: includes/core.php:359
+msgid "Clear Target"
+msgstr "Annulla Target"
+
+#: includes/core.php:484
+msgid "Please enter a between 0-14 for pounds"
+msgstr "Si prega di inserire un valore  tra 0-14"
+
+#: includes/core.php:484
+msgid "Please enter a valid figure for pounds"
+msgstr "Inserisci un valore valido"
+
+#: includes/core.php:491
+msgid "Are you sure you wish to clear your target weight?"
+msgstr "Sei sicuro di voler cancellare il target peso?"
+
+#: includes/core.php:493
+msgid "Please enter a valid figure for Kg"
+msgstr "Si prega di inserire una cifra valida per Stones"
+
+#: includes/core.php:494
+msgid "Please enter a valid figure for Stones"
+msgstr "Si prega di inserire una cifra valida per Stones"
+
+#: includes/core.php:495
+msgid "Please enter a valid date"
+msgstr "Si prega di inserire una data valida"
+
+#: includes/core.php:496
+msgid "Please confirm you wish to delete ALL your weight history"
+msgstr "Conferma che  vuoi cancellare tutta la tua storia peso"
+
+#: includes/core.php:497
+msgid "Are you sure you wish to delete this entry? If so, press OK."
+msgstr "Sei sicuro di voler eliminare questa voce? Se è così, premere OK."
+
+#: includes/core.php:507
+msgid "Please enter a valid measurement ("
+msgstr "Si prega di inserire una misura valida ("
+
+#: includes/core.php:521
+msgid "Done"
+msgstr "Fatto"
+
+#: includes/core.php:522
+msgid "Today"
+msgstr "Oggi"
+
+#: includes/functions.php:78 includes/functions.php:266
+#: pro-features/shortcode-stats.php:149
+msgid "St"
+msgstr "st"
+
+#: includes/functions.php:178
+msgid "The following MySQL tables are missing for this plugin"
+msgstr "Le seguenti tabelle di MySQL sono assenti per questo plugin"
+
+#: includes/functions.php:325
+msgid "View all weeks"
+msgstr "Visualizza tutte le settimane"
+
+#: includes/functions.php:339
+msgid "View Week"
+msgstr "VisualizzaSettimana"
+
+#: includes/functions.php:339
+msgid "to"
+msgstr "a"
+
+#: includes/functions.php:443
+msgid "The plugin supports the following measurements"
+msgstr "Il plugin supporta le seguenti misure"
+
+#: includes/globals.php:84
+msgid "Forearm - Left"
+msgstr "Avambraccio - Sinistra"
+
+#: includes/globals.php:85
+msgid "Forearm - Right"
+msgstr "Avambraccio - Destra"
+
+#: includes/globals.php:86
+msgid "Bicep - Left"
+msgstr "Bicipite - Sinistra"
+
+#: includes/globals.php:87
+msgid "Bicep - Right"
+msgstr "Bicipite - Destra"
+
+#: includes/globals.php:88
+msgid "Calf - Left"
+msgstr "Polpaccio - Sinistra"
+
+#: includes/globals.php:89
+msgid "Calf - Right"
+msgstr "Polpaccio - Destra"
+
+#: includes/globals.php:90
+msgid "Thigh - Left"
+msgstr "Coscia - Sinistra"
+
+#: includes/globals.php:91
+msgid "Thigh - Right"
+msgstr "Coscia - Destra"
+
+#: includes/globals.php:92
+msgid "Waist"
+msgstr "Giro Vita"
+
+#: includes/globals.php:93
+msgid "Bust / Chest"
+msgstr "Busto / Petto"
+
+#: includes/globals.php:94
+msgid "Shoulders"
+msgstr "Spalle"
+
+#: includes/globals.php:95
+msgid "Height"
+msgstr "Altezza"
+
+#: includes/globals.php:96
+msgid "Buttocks"
+msgstr "Glutei"
+
+#: includes/globals.php:97
+msgid "Hips"
+msgstr "Fianchi"
+
+#: includes/globals.php:98
+msgid "Navel"
+msgstr "Ombelico"
+
+#: includes/hooks.php:8 includes/shortcode-weight-loss-tracker.php:66
+#: pro-features/user-preferences.php:6
+msgid "Settings"
+msgstr "Impostazioni"
+
+#: includes/hooks.php:11 includes/hooks.php:14
+msgid "Manage User Data"
+msgstr "Gestisci dati utente"
+
+#: includes/hooks.php:12
+msgid "Get Pro Version"
+msgstr "Versione Pro"
+
+#: includes/hooks.php:17 pages/page.help.php:21
+msgid "Help"
+msgstr "Aiuto"
+
+#: includes/save-data.php:36
+msgid "Saved!"
+msgstr "Salvato!"
+
+#: includes/save-data.php:38
+msgid "An error occurred while saving your data!"
+msgstr "Errore durante il salvataggio."
+
+#: includes/save-data.php:41
+msgid "No user specified (hash)"
+msgstr "Nessun utente specificato (hash)"
+
+#: includes/save-data.php:44
+msgid "No user specified"
+msgstr "Non è stato specificato un utente"
+
+#: includes/shortcode-various.php:188
+msgid "st"
+msgstr "st"
+
+#: includes/shortcode-weight-loss-tracker.php:36
+msgid "Your settings have been saved!"
+msgstr "Le impostazioni sono state salvate"
+
+#: includes/shortcode-weight-loss-tracker.php:38
+msgid "Your weight history has been deleted!"
+msgstr "Il tuo storico peso è stato cancellato!"
+
+#: includes/shortcode-weight-loss-tracker.php:61
+msgid "Overview"
+msgstr "Panoramica"
+
+#: includes/shortcode-weight-loss-tracker.php:61
+msgid "Chart / Add Weight"
+msgstr "Grafico / aggiungi peso"
+
+#: includes/shortcode-weight-loss-tracker.php:62
+msgid "In Detail"
+msgstr "Dettagli"
+
+#: includes/shortcode-weight-loss-tracker.php:62
+msgid "View all recorded weights"
+msgstr "Visualizza tutti i pesi registrati"
+
+#: includes/shortcode-weight-loss-tracker.php:66
+msgid "Choose weight units, date format, etc"
+msgstr "Scegliere unità di peso, il formato della data, ecc"
+
+#: includes/shortcode-weight-loss-tracker.php:78
+msgid "In a chart"
+msgstr "In un grafico"
+
+#: includes/shortcode-weight-loss-tracker.php:86
+msgid "A graph will appear once several weights have been entered."
+msgstr "Un grafico apparirà una volta che sono stati inseriti diversi pesi."
+
+#: includes/shortcode-weight-loss-tracker.php:113
+msgid "Weight History"
+msgstr "Storico peso"
+
+#: includes/shortcode-weight-loss-tracker.php:125
+msgid "There is no data for this week, please try selecting another:"
+msgstr "Non ci sono dati per questa settimana, prova a selezionare un altro:"
+
+#: includes/shortcode-weight-loss-tracker.php:131
+msgid "You haven't entered any weight data yet."
+msgstr "Non hai ancora inserito alcun dato peso."
+
+#: pages/page.help.php:23
+msgid "You can find detailed help with this plugin at our Github Wiki:"
+msgstr ""
+"È possibile trovare un aiuto dettagliato con questo plugin nel nostro Github "
+"Wiki:"
+
+#: pages/page.help.php:29
+msgid "Our road map"
+msgstr "Road Map"
+
+#: pages/page.help.php:31
+msgid ""
+"Interested in the future development of this plugin? Then have a peek at our "
+"road map:"
+msgstr ""
+"Ti interessa il futuro sviluppo di questo plugin? Poi hanno uno sguardo a "
+"nostra mappa stradale:"
+
+#: pages/page.pro.advertise.php:10 pages/page.settings.php:8
+#: pro-features/user-data.php:7
+msgid "You do not have sufficient permissions to access this page."
+msgstr "Non hai permessi sufficienti per accedere alla pagina."
+
+#: pages/page.pro.advertise.php:36
+msgid "Get "
+msgstr "Ottieni"
+
+#: pages/page.pro.advertise.php:40
+msgid "Get Weight Loss Tracker Pro for"
+msgstr "Ottenere Weight Loss Tracker Pro per"
+
+#: pages/page.pro.advertise.php:40
+msgid " and have the following features listed below."
+msgstr "e hanno le seguenti caratteristiche elencate di seguito."
+
+#: pages/page.pro.advertise.php:42
+msgid "In case you need, your <strong>Site Hash</strong> is"
+msgstr ""
+"In caso di necessità, il vostro <strong>sito</strong> è <strong>Hash</strong>"
+
+#: pages/page.pro.advertise.php:43
+msgid "Upgrade now for"
+msgstr "Effettua ora l’upgrade"
+
+#: pages/page.pro.advertise.php:66
+msgid "Enter License Key"
+msgstr "Inserire il codice licenza"
+
+#: pages/page.pro.advertise.php:89
+msgid "Got an existing license key? If so, enter it below"
+msgstr ""
+"Hai ottenuto una chiave di licenza esistente? Se è così, inseriscilo qui "
+"sotto"
+
+#: pages/page.pro.advertise.php:89
+msgid "In case you need, your <strong>Site Hash</strong>"
+msgstr "In caso di necessità, il vostro <strong>sito Hash</strong>"
+
+#: pages/page.pro.advertise.php:90
+msgid "Enter license key"
+msgstr "Inserire il codice licenza"
+
+#: pages/page.pro.advertise.php:92
+msgid "Add License"
+msgstr "Aggiungi licenza"
+
+#: pages/page.pro.advertise.php:123
+msgid "Features of Pro version"
+msgstr "Caratteristiche della versione Pro"
+
+#: pages/page.pro.advertise.php:127
+msgid "Below is a list of the intended features of the Pro version:"
+msgstr ""
+"Di seguito è riportato un elenco delle caratteristiche previste della "
+"versione Pro:"
+
+#: pages/page.pro.advertise.php:128
+msgid "Please visit our Wiki for documentation!"
+msgstr "Si prega di visitare il nostro Wiki per la documentazione!"
+
+#: pages/page.settings.php:41
+msgid "Rebuild them now"
+msgstr "ricostruirli ora"
+
+#: pages/page.settings.php:63
+msgid " Settings"
+msgstr "Impostazioni"
+
+#: pages/page.settings.php:77
+msgid "General"
+msgstr "Generale"
+
+#: pages/page.settings.php:77
+msgid "General settings"
+msgstr "Impostazioni generali"
+
+#: pages/page.settings.php:78
+msgid "User Experience"
+msgstr "Esperienza Utente"
+
+#: pages/page.settings.php:78
+msgid "Settings that effect the user's overall experience"
+msgstr "Impostazioni che impattano sull'esperienza complessiva degli utenti"
+
+#: pages/page.settings.php:79
+msgid "Chart"
+msgstr "Grafico"
+
+#: pages/page.settings.php:79
+msgid "Chart styling and config"
+msgstr "Grafico styling e di configurazione"
+
+#: pages/page.settings.php:80
+msgid "Measurements"
+msgstr "Aggiungi misure"
+
+#: pages/page.settings.php:80
+msgid "Allow users to record their measurements"
+msgstr "Consentire agli utenti di registrare le loro misure"
+
+#: pages/page.settings.php:86
+msgid "Weight Units"
+msgstr "Unità di misura di peso"
+
+#: pages/page.settings.php:90 pro-features/user-preferences.php:33
+msgid "Stones & Pounds"
+msgstr "Pietre e Sterline"
+
+#: pages/page.settings.php:93
+msgid ""
+"You can specify whether to display weights in Kg, Stones & Pounds or just "
+"Pounds. Please note: The graph will be displayed in Pounds if \"Stones & "
+"Pounds\" is selected."
+msgstr ""
+"È possibile specificare se visualizzare i pesi in Kg, Pietre e Sterline o "
+"semplicemente sterline. Si prega di notare: Il grafico viene visualizzato in "
+"sterline Se si seleziona \"Pietre e Pounds\"."
+
+#: pages/page.settings.php:98
+msgid "UK or US Date format?"
+msgstr "Regno Unito o degli Stati Uniti formato di data?"
+
+#: pages/page.settings.php:101 pro-features/user-preferences.php:51
+msgid "UK (DD/MM/YYYY)"
+msgstr "(gg/mm/aaaa)"
+
+#: pages/page.settings.php:102 pro-features/user-preferences.php:52
+msgid "US (MM/DD/YYYY)"
+msgstr "(gg/mm/aaaa)"
+
+#: pages/page.settings.php:104
+msgid "Specify what format dates should be displayed in (i.e. UK or US format)"
+msgstr ""
+"Specificare quali date formato dovrebbe essere visualizzato in (ad esempio "
+"nel Regno Unito o negli Stati Uniti formato)"
+
+#: pages/page.settings.php:108
+msgid "Allow decimal places?"
+msgstr "Consenti posizioni decimali"
+
+#: pages/page.settings.php:111 pages/page.settings.php:122
+#: pages/page.settings.php:134 pages/page.settings.php:144
+#: pages/page.settings.php:154 pages/page.settings.php:167
+#: pages/page.settings.php:177 pages/page.settings.php:187
+#: pages/page.settings.php:197 pages/page.settings.php:223
+#: pages/page.settings.php:257 pages/page.settings.php:273
+#: pages/page.settings.php:291 pages/page.settings.php:332
+#: pages/page.settings.php:352 pro-features/widget-form.php:86
+msgid "Yes"
+msgstr "Yes"
+
+#: pages/page.settings.php:112 pages/page.settings.php:123
+#: pages/page.settings.php:133 pages/page.settings.php:143
+#: pages/page.settings.php:153 pages/page.settings.php:168
+#: pages/page.settings.php:178 pages/page.settings.php:188
+#: pages/page.settings.php:198 pages/page.settings.php:224
+#: pages/page.settings.php:256 pages/page.settings.php:274
+#: pages/page.settings.php:292 pages/page.settings.php:331
+#: pages/page.settings.php:351 pro-features/widget-form.php:85
+msgid "No"
+msgstr "No"
+
+#: pages/page.settings.php:115
+msgid ""
+"If enabled, Decimal weight entries will be allowed in Kg or Pounds mode."
+msgstr ""
+"Se attivata, le voci di peso decimali saranno ammessi in modalità Kg o "
+"Pounds."
+
+#: pages/page.settings.php:119
+msgid "Display BMI in tables?"
+msgstr "Visualizza BMI nelle tabelle?"
+
+#: pages/page.settings.php:126
+msgid ""
+"If enabled, BMI values will be displayed alongside weight entries in data "
+"tables."
+msgstr ""
+"Se abilitata, i valori di BMI vengono visualizzati insieme alle voci di peso "
+"nelle tabelle dei dati."
+
+#: pages/page.settings.php:130
+msgid "Disable plugin CSS?"
+msgstr "Disabilita plugin"
+
+#: pages/page.settings.php:136
+msgid ""
+"If you wish to style the forms in your own way, you can use this option to "
+"disable WLT's style sheets."
+msgstr ""
+"Se si desidera stilizzare il modulo nel proprio modo, è possibile utilizzare "
+"questa opzione per disabilitare i fogli di stile di WLT."
+
+#: pages/page.settings.php:140
+msgid "Disable user stats?"
+msgstr "Disabilitare le statistiche degli utenti?"
+
+#: pages/page.settings.php:146
+msgid ""
+"User stats are maintained to help power shortcodes such as [weight-loss-"
+"tracker-league-table]. This involves a cron job being run every hour to "
+"refresh a user's stats such as first weight, recent weight and total lost. "
+"The figures are also re-produced on each weight entry modification and can "
+"then be used to generate a league table. This feature could <em>potentially</"
+"em> reduce performance on your site. If you are not using the leaderboard "
+"shortcodes it is advised to disable this."
+msgstr ""
+"Statistiche per utente sono mantenuti per aiutare gli shortcode come [weight-"
+"loss-tracker-league-table]. Si tratta di un processo di cron che viene "
+"eseguito ogni ora per aggiornare le statistiche di un utente come primo "
+"peso, il peso recente e totale perdita. Le figure sono anche ri-prodotte su "
+"ogni modifica  peso e possono quindi essere utilizzati per generare una "
+"classifica. Questa caratteristica potrebbe <em>potenzialmente</em> ridurre "
+"le prestazioni del tuo sito. Se non si utilizzano gli shortcode si consiglia "
+"di disabilitare questo."
+
+#: pages/page.settings.php:150
+msgid "Send usage data to YeKen?"
+msgstr "Invia i dati di utilizzo di YeKen?"
+
+#: pages/page.settings.php:156
+msgid ""
+"We would love to see how our plugin is used. By consenting, you are allowing "
+"permission for the following data to be sent on a monthly basis to YeKen: "
+"URL, summary of settings, count of recorded weights and measurements. No "
+"user or admin data will ever be transmitted."
+msgstr ""
+"Ci piacerebbe vedere come viene usato il nostro plugin. Si consente il "
+"permesso per i seguenti dati da inviare su base mensile a YeKen: URL, "
+"riepilogo delle impostazioni, conte di pesi e misure registrate. verranno "
+"mai trasmessi dati utente o amministratore."
+
+#: pages/page.settings.php:164
+msgid "Allow target weights?"
+msgstr "Consentire pesi nominali?"
+
+#: pages/page.settings.php:170
+msgid ""
+"If enabled, a user is allowed to enter a target weight. This will be "
+"displayed as a horizontal bar on the line chart."
+msgstr ""
+"Se abilitato, un utente può inserire un peso target. Questo verrà "
+"visualizzato come una barra orizzontale sul grafico a linee."
+
+#: pages/page.settings.php:174
+msgid "Allow user settings"
+msgstr "Permetti impostazioni utente"
+
+#: pages/page.settings.php:180
+msgid ""
+"Allow your users to select their own weight unit, date format and remove all "
+"their data."
+msgstr ""
+"Consentire agli utenti di selezionare la propria unità di peso, il formato "
+"della data e rimuovere tutti i loro dati."
+
+#: pages/page.settings.php:184
+msgid "Advanced data tables?"
+msgstr "Tabelle di dati avanzati?"
+
+#: pages/page.settings.php:190
+msgid ""
+"User's weight history is presented in responsive tables that allow sorting, "
+"paging, editing and deleting. Weight Index (i.e. percentage lost / gained to "
+"be displayed.)"
+msgstr ""
+"La storia del peso per l'utente è presentato nelle tabelle  che consentono "
+"l'ordinamento, il paging, la modifica e la cancellazione. Peso Index (vale a "
+"dire la percentuale perso / guadagnato per essere visualizzato.)"
+
+#: pages/page.settings.php:194
+msgid "Display data in tabs?"
+msgstr "Visualizzare dati in schede?"
+
+#: pages/page.settings.php:200
+msgid ""
+"If enabled, \"Weight History\" and \"Target Weight\" will be displayed on "
+"sepearate tabs."
+msgstr ""
+"Se abilitata, \"Storia peso\" e \"Peso Target\" verranno visualizzati in "
+"schede separate."
+
+#: pages/page.settings.php:208
+msgid "Default chart type"
+msgstr "Predefiniti per tipo grafico"
+
+#: pages/page.settings.php:211
+msgid "Line Chart"
+msgstr "Grafico lineare"
+
+#: pages/page.settings.php:211
+msgid "Highly Recommended"
+msgstr "Altamente raccomandato."
+
+#: pages/page.settings.php:212
+msgid "Bar Chart"
+msgstr "Grafico a barre"
+
+#: pages/page.settings.php:215
+msgid ""
+"If enabled, \"Allows points and labels to be displayed on graph. "
+"<strong>Note: If using measurements</strong>, graph type will be forced to "
+"Line."
+msgstr ""
+"Se abilitata, \"Permette di visualizzare punti ed etichette sul "
+"<strong>grafico. Nota: Se si utilizza misure,</strong> il tipo di grafico "
+"sarà costretto in Linea."
+
+#: pages/page.settings.php:220
+msgid "Display gridlines?"
+msgstr "Visualizzare griglia?"
+
+#: pages/page.settings.php:227
+msgid "If enabled, gridlines will be displayed on the Graph canvas."
+msgstr "Se abilitata, le griglie saranno visualizzate sulla tela grafico."
+
+#: pages/page.settings.php:232
+msgid "Maximum points per graph"
+msgstr "Il massimo dei punti per grafico"
+
+#: pages/page.settings.php:241 pages/page.settings.php:295
+msgid "If enabled, \"Allows points and labels to be displayed on graph."
+msgstr ""
+"Se abilitata, \"Permette punti e le etichette da visualizzare sul grafico."
+
+#: pages/page.settings.php:246
+msgid "Weight colour?"
+msgstr "Colore peso?"
+
+#: pages/page.settings.php:249
+msgid ""
+"If enabled, enter a HEX colour code to use for the Weight history line / bar "
+"border on graph."
+msgstr ""
+"Se abilitato, inserire un codice esadecimale del colore da utilizzare per la "
+"storia spessore di linea / bar di confine sul grafico."
+
+#: pages/page.settings.php:253
+msgid "Should y Axes start at 0?"
+msgstr "Nel caso in asse Y iniziare a 0?"
+
+#: pages/page.settings.php:260
+msgid ""
+"If enabled, y Axes shall start at 0. Otherwise, they are automatically "
+"calculated."
+msgstr ""
+"Se abilitata, y assi deve iniziare a 0. In caso contrario, essi sono "
+"calcolati automaticamente."
+
+#: pages/page.settings.php:266
+msgid "Line Chart Options"
+msgstr "Opzioni Diagramma"
+
+#: pages/page.settings.php:270
+msgid "Bezier Curve?"
+msgstr "Curva Bézier"
+
+#: pages/page.settings.php:277
+msgid "If enabled, lines between points on a line graph will be curved"
+msgstr ""
+"Se attivata, le linee tra i punti su un grafico a linee saranno curvate"
+
+#: pages/page.settings.php:281
+msgid "Target line colour?"
+msgstr "Obiettivo colore della linea?"
+
+#: pages/page.settings.php:284
+msgid ""
+"If enabled, enter a HEX colour code to use for the Target line on graph."
+msgstr ""
+"Se abilitato, inserire un codice esadecimale del colore da utilizzare per la "
+"linea di destinazione sul grafico."
+
+#: pages/page.settings.php:288
+msgid "Display points on graph?"
+msgstr "Visualizzare punti sul grafico?"
+
+#: pages/page.settings.php:299
+msgid "Point thickness"
+msgstr "Spessore Punti"
+
+#: pages/page.settings.php:308
+msgid "Specifies the point thickness on a line chart."
+msgstr "Specifica lo spessore del punto su un grafico a linee."
+
+#: pages/page.settings.php:313
+msgid "Bar Chart Options"
+msgstr "Opzioni grafico a barre"
+
+#: pages/page.settings.php:317
+msgid "Weight fill colour?"
+msgstr "Riempire  con il colore?"
+
+#: pages/page.settings.php:320
+msgid ""
+"If enabled, enter a HEX colour code to use for filling the Weight bars on "
+"the graph."
+msgstr ""
+"Se abilitato, inserire un codice esadecimale del colore da utilizzare per il "
+"riempimento delle barre di peso sul grafico."
+
+#: pages/page.settings.php:328
+msgid "Allow Measurements?"
+msgstr "Consentire misurazioni?"
+
+#: pages/page.settings.php:334
+msgid ""
+"If enabled, a user can also add body measurements along with their weights."
+msgstr ""
+"Se abilitato, un utente può anche aggiungere misure del corpo con i loro "
+"pesi."
+
+#: pages/page.settings.php:338
+msgid "Measurement Units"
+msgstr "Unità di misura"
+
+#: pages/page.settings.php:341 pro-features/user-preferences.php:41
+msgid "Centimetres"
+msgstr "Centimetro"
+
+#: pages/page.settings.php:344
+msgid "Default unit for recording measurements."
+msgstr "unità di default per le misure di registrazione."
+
+#: pages/page.settings.php:348
+msgid "Measurements mandatory?"
+msgstr "Misure obbligatorie?"
+
+#: pages/page.settings.php:354
+msgid "If yes, a user will be forced to complete all measurement features."
+msgstr ""
+"In caso affermativo, l'utente sarà costretto a completare tutte le funzioni "
+"di misurazione."
+
+#: pages/page.settings.php:358
+msgid "Areas of measurements"
+msgstr "Aree di misurazioni"
+
+#: pages/page.settings.php:380
+msgid "Enable"
+msgstr "Abilita"
+
+#: pages/page.settings.php:383
+msgid "Chart Colour"
+msgstr "Colore Grafico"
+
+#: pro-features/advanced-table.php:158
+msgid "No data available in table"
+msgstr "Nessun dato disponibile in tabella"
+
+#: pro-features/advanced-table.php:159
+msgid "Showing _START_ to _END_ of _TOTAL_ entries"
+msgstr "Visualizza_INIZIO_a_FINE_di_TOTALE_voci"
+
+#: pro-features/advanced-table.php:160
+msgid "Showing 0 to 0 of 0 entries"
+msgstr "Visualizza da 0 a 0 di 0 voci"
+
+#: pro-features/advanced-table.php:161
+msgid "(filtered from _MAX_ total entries)"
+msgstr "(filtrato da _MAX_total entries)"
+
+#: pro-features/advanced-table.php:164
+msgid "Show _MENU_ entries"
+msgstr "Mostra voci _MENU_"
+
+#: pro-features/advanced-table.php:165
+msgid "Loading..."
+msgstr "Caricamento..."
+
+#: pro-features/advanced-table.php:166
+msgid "Processing..."
+msgstr "In elaborazione…"
+
+#: pro-features/advanced-table.php:167
+msgid "Search: "
+msgstr "Cerca:"
+
+#: pro-features/advanced-table.php:168
+msgid "No matching records found"
+msgstr "Nessun risultato trovato"
+
+#: pro-features/advanced-table.php:170
+msgid "First"
+msgstr "Primo"
+
+#: pro-features/advanced-table.php:171
+msgid "Last"
+msgstr "Ultimo"
+
+#: pro-features/advanced-table.php:172
+msgid "Next"
+msgstr "Prossimo"
+
+#: pro-features/advanced-table.php:173
+msgid "Previous"
+msgstr "Precedente"
+
+#: pro-features/advanced-table.php:176
+msgid ":  activate to sort column ascending"
+msgstr ": attiva per l'ordinamento ascendente della colonna"
+
+#: pro-features/advanced-table.php:177
+msgid ": activate to sort column descending"
+msgstr ": attiva per l'ordinamento discendente della colonna"
+
+#: pro-features/feature-list.php:7
+msgid ""
+"<strong>Measurements.</strong> Support for recording measurements like Hip, "
+"Waist, Leg, Bicep, etc. Displayed on charts and tables."
+msgstr ""
+"<strong>Misure.</strong> Il supporto per le misurazioni di registrazione "
+"come Anca, Vita, Gamba, Bicipite, ecc Visualizzato su grafici e tabelle."
+
+#: pro-features/feature-list.php:8
+msgid ""
+"<strong>BMI.</strong> Allows a user to specify their height. Once specified, "
+"their BMI is displayed next to each weight entry. There is also a shortcode "
+"to render the latest BMI."
+msgstr ""
+"<strong>BMI.</strong> Consente all'utente di specificare la loro altezza. "
+"Una volta specificato, il loro indice di massa corporea viene visualizzato "
+"accanto a ciascuna voce di peso. C'è anche un shortcode per rendere l'ultimo "
+"indice di massa corporea."
+
+#: pro-features/feature-list.php:9
+msgid ""
+"<strong>Overall user stats.</strong> Shortcodes that allow you to display "
+"the total lost / gained for the community and another to display a league "
+"table."
+msgstr ""
+"<strong>Statistiche complessiva dell'utente.</strong> Shortcodes che "
+"consentono di visualizzare il totale perso / guadagnato per la comunità e un "
+"altro per visualizzare una classifica."
+
+#: pro-features/feature-list.php:10
+msgid ""
+"<strong>Widgets.</strong> Widgets that allow you to display the graph and "
+"quick weight entry form within any widget area."
+msgstr ""
+"<strong>Widget.</strong> Widget che consentono di visualizzare il grafico e "
+"scheda di iscrizione di peso rapida all'interno di qualsiasi area del widget."
+
+#: pro-features/feature-list.php:11
+msgid ""
+"<strong>Chart and form Shortcodes.</strong> That allow you to display the "
+"graph and quick weight entry form by placing a shortcode on any post or page."
+msgstr ""
+"<strong>Grafico e la forma Shortcodes.</strong> Che consentono di "
+"visualizzare il grafico e la scheda di iscrizione di peso rapida mettendo un "
+"codice funzione in qualsiasi post o pagina."
+
+#: pro-features/feature-list.php:12
+msgid ""
+"<strong>Text Shortcodes.</strong> Additional shortcodes for earliest and "
+"most recent dates entered."
+msgstr ""
+"<strong>Testo Shortcodes.</strong> codici brevi aggiuntivi per le date primi "
+"e più recenti sono entrati."
+
+#: pro-features/feature-list.php:13
+msgid ""
+"<strong>Admin: View / Delete user data</strong>. Admin will be able to view "
+"and delete existing user data."
+msgstr ""
+"<strong>Admin: Visualizza / Elimina dati utente.</strong> Admin sarà in "
+"grado di visualizzare e cancellare i dati utente esistenti."
+
+#: pro-features/feature-list.php:14
+msgid ""
+"<strong>User preferences</strong>. If enabled, the user will be able to "
+"select which unit they wish to store their weight in Metric or Imperial. "
+"They will also be able to specify date format and clear all their weight "
+"data."
+msgstr ""
+"<strong>Preferenze dell'utente.</strong> Se abilitato, l'utente sarà in "
+"grado di selezionare quale unità desiderano conservare il loro peso in "
+"Metrico o Imperiale. Essi saranno inoltre in grado di specificare il formato "
+"della data e cancellare tutti i dati di peso."
+
+#: pro-features/feature-list.php:15
+msgid ""
+"<strong>Bar Charts</strong>. Fancy something different to a line chart? The "
+"plugin will also support Bar Charts."
+msgstr ""
+"<strong>Grafici a barre.</strong> qualcosa di fantasia diverso da un grafico "
+"a linee? Il plugin sosterrà anche grafici a barre."
+
+#: pro-features/feature-list.php:16
+msgid ""
+"<strong>Decimals</strong>. Decimals will be allowed weight in Pounds only or "
+"Kg modes."
+msgstr ""
+"<strong>Decimali.</strong> I decimali saranno ammessi peso in modalità Kg "
+"soli o Sterline."
+
+#: pro-features/feature-list.php:17
+msgid ""
+"<strong>Delete existing entry</strong>. A logged in user will be able to "
+"delete or edit an existing weight entry."
+msgstr ""
+"<strong>Elimina voce esistente.</strong> Un utente connesso sarà in grado di "
+"eliminare o modificare una voce di peso esistente."
+
+#: pro-features/feature-list.php:18
+msgid ""
+"<strong>Better Tables.</strong>. Data tables in front end and admin will "
+"support paging and sorting."
+msgstr ""
+"<strong>Tabelle migliori.</strong> . Le tabelle di dati di front-end e di "
+"amministrazione sosterrà il paging e l'ordinamento."
+
+#: pro-features/feature-list.php:19
+msgid ""
+"<strong>Admin: Extra Settings</strong>. Extra settings to customise the "
+"plugin will be added e.g. number of plot points on graph, rows per page, etc."
+msgstr ""
+"<strong>Admin: impostazioni aggiuntive.</strong> impostazioni extra per "
+"personalizzare il plugin saranno aggiunti ad esempio il numero di punti "
+"tracciati sul grafico, righe per pagina, ecc"
+
+#: pro-features/functions.php:14
+msgid "Add Height for BMI"
+msgstr "Aggiungere altezza per BMI"
+
+#: pro-features/functions.php:40
+msgid "Underweight"
+msgstr "Sottopeso"
+
+#: pro-features/functions.php:42
+msgid "Healthy"
+msgstr "Sano"
+
+#: pro-features/functions.php:45
+msgid "Overweight"
+msgstr "Sovrappeso"
+
+#: pro-features/functions.php:47
+msgid "Heavily Overweight"
+msgstr "Fortemente sovrappeso"
+
+#: pro-features/shortcode-chart.php:55 pro-features/shortcode-table.php:25
+msgid "No weight data was found for the specified user."
+msgstr "Nessun dato peso è stato trovato per l'utente specificato."
+
+#: pro-features/shortcode-stats.php:8 pro-features/shortcode-stats.php:102
+msgid "Stats disabled"
+msgstr "Statistiche disabilitate"
+
+#: pro-features/shortcode-stats.php:34
+msgid "Name"
+msgstr "Nome"
+
+#: pro-features/shortcode-stats.php:35
+msgid "Weight Difference"
+msgstr "Differenza di peso"
+
+#: pro-features/shortcode-stats.php:129
+msgid "Lost"
+msgstr "Perso"
+
+#: pro-features/shortcode-stats.php:129
+msgid "Gained"
+msgstr "Guadagnato"
+
+#: pro-features/shortcode-various.php:14
+msgid "Height needed"
+msgstr "Altezza richiesta"
+
+#: pro-features/user-data.php:33
+msgid "Cm"
+msgstr "CM"
+
+#: pro-features/user-data.php:52
+msgid " User Data"
+msgstr "Dati Utente"
+
+#: pro-features/user-data.php:58
+msgid "View / Edit"
+msgstr "Visualizza/Modifica..."
+
+#: pro-features/user-data.php:58
+msgid "View and edit existing user data"
+msgstr "Visualizzare e modificare i dati degli utenti esistenti"
+
+#: pro-features/user-data.php:59
+msgid "Delete All"
+msgstr "Elimina Tutto"
+
+#: pro-features/user-data.php:59
+msgid "Delete all user data!"
+msgstr "Eliminare tutti i dati utente!"
+
+#: pro-features/user-data.php:67 pro-features/user-data.php:89
+msgid "User"
+msgstr "Utente"
+
+#: pro-features/user-data.php:103
+msgid ""
+"You can use the following button to remove all user data currently stored by "
+"the plugin. <strong>All weight entries for every user will be lost!</strong>"
+msgstr ""
+"È possibile utilizzare il seguente pulsante per rimuovere tutti i dati "
+"utente memorizzati dal plugin. <strong>Tutte le voci di peso per ogni utente "
+"verranno persi!</strong>"
+
+#: pro-features/user-data.php:104
+msgid "Remove ALL user data"
+msgstr "Rimuovere tutti i dati utente"
+
+#: pro-features/user-data.php:133
+msgid "Are you sure you?"
+msgstr "Sei certo?"
+
+#: pro-features/user-data.php:134
+msgid "Are you sure you wish to remove all user data?"
+msgstr "Sei sicuro di voler rimuovere tutti i dati utente?"
+
+#: pro-features/user-preferences.php:16
+msgid "Your height:"
+msgstr "Altezza:"
+
+#: pro-features/user-preferences.php:30
+msgid "Which unit would you like to record your weight in:"
+msgstr "Con quale unità di misura vuoi registrare il tuo peso?"
+
+#: pro-features/user-preferences.php:39
+msgid "Which unit would you like to record your measurements in:"
+msgstr "Con quale unità di misura vuoi registrare le tue misurazioni?"
+
+#: pro-features/user-preferences.php:49
+msgid "Display dates in the following formats:"
+msgstr "Visualizza date nei seguenti formati:"
+
+#: pro-features/user-preferences.php:54
+msgid "Save Settings"
+msgstr "Salva le Impostazioni"
+
+#: pro-features/user-preferences.php:56
+msgid "Delete existing data"
+msgstr "Cancellare i dati esistenti"
+
+#: pro-features/user-preferences.php:62
+msgid ""
+"The button below allows you to clear your existing weight history. Confirm:"
+msgstr ""
+"Il pulsante in basso permette di cancellare la cronologia peso esistente. "
+"Conferma:"
+
+#: pro-features/user-preferences.php:67
+msgid "Delete"
+msgstr "Elimina"
+
+#: pro-features/widget-chart.php:12
+msgid "Weight Loss Tracker - Chart"
+msgstr "Tracker Perdita di peso - Grafico"
+
+#: pro-features/widget-chart.php:13
+msgid "Display a chart to see your current progress."
+msgstr "Visualizzare un grafico per vedere i progressi in corso."
+
+#: pro-features/widget-chart.php:74
+msgid "A pretty graph shall appear once you have recorded several weights."
+msgstr "Una bel grafico apparirà una volta che avrai registrato diversi pesi."
+
+#: pro-features/widget-chart.php:106 pro-features/widget-form.php:72
+msgid "Title"
+msgstr "Titolo"
+
+#: pro-features/widget-chart.php:110
+msgid "Type"
+msgstr "Tipo"
+
+#: pro-features/widget-chart.php:117
+msgid "Maximum number of plot points on chart"
+msgstr "Numero massimo di punti tracciabili sul grafico"
+
+#: pro-features/widget-chart.php:126 pro-features/widget-form.php:90
+msgid "Message to display if not logged in"
+msgstr "Messaggio da visualizzare se non sei loggato."
+
+#: pro-features/widget-chart.php:128 pro-features/widget-form.php:92
+msgid ""
+"By default the widget is hidden if the user is not logged in. If you wish, "
+"you can display a message to the visitor instead."
+msgstr ""
+"Per impostazione predefinita, il widget è nascosto se l'utente non è "
+"connesso. Se lo si desidera, è possibile visualizzare un messaggio al "
+"visitatore."
+
+#: pro-features/widget-chart.php:134
+msgid "ID of user (leave blank to show chart for current user)"
+msgstr ""
+"ID utente (lasciare in bianco per mostrare il grafico per l'utente corrente)"
+
+#: pro-features/widget-chart.php:137
+msgid ""
+"Note: By default, the chart will be displayed in the weight unit chosen by "
+"the logged in user. If not specfied the plugin default will be used."
+msgstr ""
+"Nota: per impostazione predefinita, il grafico sarà visualizzato nell'unità "
+"di peso scelto dal utente connesso. Se non specificato verrà utilizzato il "
+"valore predefinito."
+
+#: pro-features/widget-chart.php:140
+msgid "Hide Measurements (Pro)?"
+msgstr "Nascondi Misure (Pro)?"
+
+#: pro-features/widget-form.php:12
+msgid "Weight Loss Tracker - Form"
+msgstr "Tracker Perdita di peso - Modulo"
+
+#: pro-features/widget-form.php:13
+msgid ""
+"Display a quick entry form for logged in users to record their weight for "
+"today."
+msgstr ""
+"Visualizzare un modulo di iscrizione rapido agli utenti registrati per "
+"registrare il loro peso attuale."
+
+#: pro-features/widget-form.php:17
+msgid "Your weight today"
+msgstr "Il tuo peso oggi"
+
+#: pro-features/widget-form.php:76
+msgid "Allow user to specify a date?"
+msgstr "Permette all'utente di specificare una data?"
+
+#: pro-features/widget-form.php:78
+msgid "No. Automatically set to today's date"
+msgstr "No. impostare automaticamente alla data odierna"
+
+#: pro-features/widget-form.php:79
+msgid "Allow user to specify a date"
+msgstr "Permette all'utente di specificare una data"
+
+#: pro-features/widget-form.php:83
+msgid "Hide measurements (Pro)?"
+msgstr "Nascondi misure (Pro)?"
+
+#, fuzzy
+#~ msgid "Weight ("
+#~ msgstr "Weight"
+
+#~ msgid " Instructions"
+#~ msgstr " Instructions"
+
+#, fuzzy
+#~ msgid ""
+#~ "Place the tag [weight-loss-tracker] on a given page and the user is "
+#~ "presented with a form to enter a date, weight and notes for that entry. "
+#~ "When the person saves their entry the data table and graph is refreshed."
+#~ msgstr ""
+#~ "Place the tag [weightlosstracker] on a given page and the user is "
+#~ "presented with a form to enter a date, weight and notes for that entry. "
+#~ "When the person saves their entry the data table and graph is refreshed."
+
+#~ msgid "Enable support for Avada theme?"
+#~ msgstr "Enable support for Avada theme?"
+
+#~ msgid ""
+#~ "Enables additional styling to support the <a href=\"http://theme-fusion."
+#~ "com/avada/\" target=\"_blank\">Avada theme</a>."
+#~ msgstr ""
+#~ "Enables additional styling to support the <a href=\"http://theme-fusion."
+#~ "com/avada/\" target=\"_blank\">Avada theme</a>."
+
+#~ msgid "Your current target is"
+#~ msgstr "Your current target is"
+
+#~ msgid "Currently, you haven't specified a target weight."
+#~ msgstr "Currently, you haven't specified a target weight."
