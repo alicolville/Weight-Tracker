@@ -179,6 +179,7 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 							'hide-first-target-form' => false,			// Hide first Target form
 							'hide-second-target-form' => false			// Hide second Target form
 							'show-add-button' => false					// Display a "Add weight" button above the chart.
+* [Add to documentation]: Added widget for progress bar below.
 * [Add to documentation]: [weight-loss-tracker-progress-bar] - Show a progress bar indicating progress towards target weight.
 							'type' => 'line', 			// Type of progress bar:
 														// 		'circle'
