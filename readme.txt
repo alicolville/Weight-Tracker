@@ -206,7 +206,6 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 * Stats now sent weekly (instead of monthly) using a WP cron job. If "Send usage data to YeKen" is enabled, usage stats will be sent on weekly basis to YeKen by a scheduled WP cron job (instead of relying on an expired cached value to trigger the send).
 * Bug fix: Setting "min-chart-points" attribute to 0 will now display the chart if no weight data has been entered.
 * Bug fix: Issue generating stats for a user when a target weight is entered but no user weights exist (division by zero).
-* Bug fix: Deal with negative numbers in ws_ls_pounds_to_stone_pounds() and ws_ls_to_stone_pounds() - Thanks (@GatorDev)
 = 4.1.8 =
 
 * Updated German translations (thanks @Christian)
