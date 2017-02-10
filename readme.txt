@@ -169,6 +169,7 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 
 * Updated Dutch translations (thanks @Robin)
 * Updated Italian translations (thanks @Salvo)
+* Bug fix: Deal with negative numbers in ws_ls_pounds_to_stone_pounds() and ws_ls_to_stone_pounds() - Thanks (@GatorDev)
 
 = 4.1.8 =
 
