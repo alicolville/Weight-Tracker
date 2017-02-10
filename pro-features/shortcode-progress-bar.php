@@ -83,7 +83,7 @@ function ws_ls_shortcode_progress_bar($user_defined_arguments) {
 				}
 
 				// Render bar!
-				ws_ls_shortcode_progress_bar_render($arguments);
+				return ws_ls_shortcode_progress_bar_render($arguments);
 
 			} else if ($display_errors) {
 				return __('Please enter add a weight entry to see your progress.', WE_LS_SLUG);
@@ -113,7 +113,7 @@ function ws_ls_shortcode_progress_bar_render($arguments = array()) {
 
 		$arguments['percentage-text'] = str_replace('{t}', $arguments['target-weight-display'], $arguments['percentage-text']);
 
-		echo sprintf('<div id="%s" class="ws-ls-progress"
+		return sprintf('<div id="%s" class="ws-ls-progress"
 						data-stroke-width="%s" data-stroke-colour="%s"
 						data-trail-width="%s" data-trail-colour="%s"
 						data-precentage-text="%s" data-text-colour="%s"
