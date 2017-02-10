@@ -79,7 +79,7 @@ if(WS_LS_IS_PRO){
   include WS_LS_ABSPATH . 'pro-features/init.php';
 }
 // -----------------------------------------------------------------------------------------
-// AC: Load relevant language files
+// AC: Load relevant language files (https://wpcentral.io/internationalization/)
 // -----------------------------------------------------------------------------------------
 
 function ws_ls_load_textdomain() {

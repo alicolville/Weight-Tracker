@@ -69,6 +69,7 @@ Fully supported (have the majority of translations):
 
 Languages partially supported (have some of the translations):
 
+* Italian (thanks @Salvo)
 * Norwegian - Norsk bokmål (Thanks Rodrigo)
 * Danish (thanks @kfasterholdt and @spaniole)
 * Dutch (thanks Dennis, Yvon & Bart)
@@ -163,6 +164,11 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
  New League Table shortcode added and various tweaks.
 
 == Changelog ==
+
+= 4.1.9 =
+
+* Updated Dutch translations (thanks @Robin)
+* Updated Italian translations (thanks @Salvo)
 
 = 4.1.8 =
 
