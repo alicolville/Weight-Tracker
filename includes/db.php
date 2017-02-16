@@ -256,6 +256,15 @@ function ws_ls_save_data($user_id, $weight_object, $is_target_form = false)
 	// Update User stats table
 	if (WS_LS_IS_PRO) {
 		ws_ls_stats_update_for_user($user_id);
+
+		// Throw data out in case anyone else wants to process it (also used within plugin for sending emails etc)
+		$type = array (
+			'user-id' => $user_id,
+			'type' => ($is_target_form) ? 'target' : 'weight-measurements',
+			'mode' => ($db_is_update) ? 'update' : 'add'
+		);
+
+		do_action(WE_LS_HOOK_DATA_ADDED_EDITED, $type, $weight_object);
 	}
 
 	return $result;

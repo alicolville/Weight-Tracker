@@ -342,7 +342,7 @@ function ws_ls_settings_page() {
 														</td>
 													</tr>
 													<tr class="<?php echo $disable_if_not_pro_class; ?>">
-														<th scope="row"><?php echo __( 'New entries', WE_LS_SLUG ); ?></th>
+														<th scope="row"><?php echo __( 'New weight / measurement entries', WE_LS_SLUG ); ?></th>
 														<td>
 															<select id="ws-ls-email-notifications-new" name="ws-ls-email-notifications-new">
 																<option value="yes" <?php selected( get_option('ws-ls-email-notifications-new'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
@@ -352,13 +352,23 @@ function ws_ls_settings_page() {
 														</td>
 													</tr>
 													<tr class="<?php echo $disable_if_not_pro_class; ?>">
-														<th scope="row"><?php echo __( 'Edited entries', WE_LS_SLUG ); ?></th>
+														<th scope="row"><?php echo __( 'Edited weight / measurement entries', WE_LS_SLUG ); ?></th>
 														<td>
 															<select id="ws-ls-email-notifications-edit" name="ws-ls-email-notifications-edit">
 																<option value="yes" <?php selected( get_option('ws-ls-email-notifications-edit'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
 																<option value="no" <?php selected( get_option('ws-ls-email-notifications-edit'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
 															</select>
 															<p><?php echo __('Receive notifications when a member edits an existing weight / measurement entry.', WE_LS_SLUG); ?></p>
+														</td>
+													</tr>
+													<tr class="<?php echo $disable_if_not_pro_class; ?>">
+														<th scope="row"><?php echo __( 'New / updated targets', WE_LS_SLUG ); ?></th>
+														<td>
+															<select id="ws-ls-email-notifications-targets" name="ws-ls-email-notifications-targets">
+																<option value="yes" <?php selected( get_option('ws-ls-email-notifications-targets'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+																<option value="no" <?php selected( get_option('ws-ls-email-notifications-targets'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+															</select>
+															<p><?php echo __('Receive notifications when a member adds / edits their target.', WE_LS_SLUG); ?></p>
 														</td>
 													</tr>
 												</table>
@@ -514,6 +524,8 @@ function ws_ls_register_settings()
 		register_setting( 'we-ls-options-group', 'ws-ls-email-addresses' );
 		register_setting( 'we-ls-options-group', 'ws-ls-email-notifications-edit' );
 		register_setting( 'we-ls-options-group', 'ws-ls-email-notifications-new' );
+		register_setting( 'we-ls-options-group', 'ws-ls-email-notifications-targets' );
+
     }
 
 }

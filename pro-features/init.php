@@ -23,6 +23,12 @@ if(defined('WS_LS_ABSPATH')){
 	include WS_LS_ABSPATH . 'pro-features/db.php';
 	include WS_LS_ABSPATH . 'pro-features/functions.measurements.php';
 	include WS_LS_ABSPATH . 'pro-features/functions.stats.php';
+
+	// Email notifications enabled?
+	if(WE_LS_EMAIL_ENABLE) {
+		include WS_LS_ABSPATH . 'pro-features/emails.php';
+	}
+
 }
 
 // Register shortcodes

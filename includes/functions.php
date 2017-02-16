@@ -75,10 +75,25 @@ function ws_ls_weight_object($user_id, $kg, $pounds, $stones, $pounds_only, $not
         $weight['graph_value'] = $weight['kg'];
         break;
       default:
-        $weight['display'] = $weight['stones'] . __('St', WE_LS_SLUG) . " " . $pounds . __('lbs', WE_LS_SLUG);
+        $weight['display'] = $weight['stones'] . __('St', WE_LS_SLUG) . " " . $weight['pounds'] . __('lbs', WE_LS_SLUG);
         $weight['graph_value'] = ($weight['stones'] * 14) + $weight['pounds'];
         break;
   }
+
+  // Get Admin display value. Ignore what the user has seleced. (email notifications etc)
+  switch (WE_LS_DATA_UNITS) {
+	case 'pounds_only':
+	  $data = ws_ls_round_decimals($weight['only_pounds']);
+	  $weight['display-admin'] = $data . __('lbs', WE_LS_SLUG);
+	  break;
+	case 'kg':
+	  $weight['display-admin'] = $weight['kg'] . __('Kg', WE_LS_SLUG);
+	  break;
+	default:
+	  $weight['display-admin'] = $weight['stones'] . __('St', WE_LS_SLUG) . " " . $weight['pounds'] . __('lbs', WE_LS_SLUG);
+	  break;
+	}
+
 
   if ($weight['user_id']) {
 
@@ -92,11 +107,13 @@ function ws_ls_weight_object($user_id, $kg, $pounds, $stones, $pounds_only, $not
     }
 
     // Get user display name
-    // $user_info = get_userdata($weight['user_id']);
-    //
-    // if($user_info) {
-    //   $weight['user_nicename'] = $user_info->user_nicename;
-    // }
+    $user_info = get_userdata($weight['user_id']);
+
+    if($user_info) {
+		$weight['user']['id'] = $weight['user_id'];
+      	$weight['user']['display-name'] = $user_info->display_name;
+	  	$weight['user']['email'] = $user_info->user_email;
+    }
   }
 
 
@@ -241,16 +258,17 @@ function ws_ls_create_dialog_jquery_code($title, $message, $class_used_to_prompt
 
   <?php
 }
-function ws_ls_render_date($weight_object)
+function ws_ls_render_date($weight_object, $use_admin_setting = false)
 {
-  // Return US date if enabled otherwise return UK date
-  if(ws_ls_get_config('WE_LS_US_DATE')) {
-    return $weight_object['date-us'];
-  }
-  else {
-    return $weight_object['date-uk'];
-  }
-
+	$config_setting = ($use_admin_setting) ? WE_LS_US_DATE : ws_ls_get_config('WE_LS_US_DATE');
+	
+  	// Return US date if enabled otherwise return UK date
+	if($config_setting) {
+		return $weight_object['date-us'];
+	}
+	else {
+		return $weight_object['date-uk'];
+	}
 }
 function ws_ls_get_unit()
 {

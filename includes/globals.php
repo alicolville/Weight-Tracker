@@ -39,6 +39,12 @@
 	define('WE_LS_CRON_NAME_YEKEN_COMMS', 'weight_loss_tracker_yeken_comms');
 	define('WE_LS_CRON_SCHEDULE_WEEKLY', 'weight_loss_tracker_weekly');
 
+	// -----------------------------------------------------------------------------------
+	// Hooks
+	// -----------------------------------------------------------------------------------
+
+	define('WE_LS_HOOK_DATA_ADDED_EDITED', 'ws-ls-data-added-edited');
+
     // -----------------------------------------------------------------------------------
 	// Dynamic Settings based upon user settings, etc
 	// -----------------------------------------------------------------------------------
@@ -70,7 +76,8 @@
 		'WE_LS_EMAIL_ENABLE' => false,
 		'WE_LS_EMAIL_ADDRESSES' => '',
 		'WE_LS_EMAIL_NOTIFICATIONS_EDIT' => true,
-		'WE_LS_EMAIL_NOTIFICATIONS_NEW' => true
+		'WE_LS_EMAIL_NOTIFICATIONS_NEW' => true,
+		'WE_LS_EMAIL_NOTIFICATIONS_TARGETS' => true
 	);
 
     // -----------------------------------------------------------------------------------
@@ -234,19 +241,25 @@
 	// -----------------------------------------------------------------------------------
 	// Email Notifications
 	// -----------------------------------------------------------------------------------
-	if (WS_LS_IS_PRO && ('yes' == get_option('ws-ls-email-enable'))) {
-		$globals['WE_LS_EMAIL_ENABLE'] = true;
-	}
-	if (WS_LS_IS_PRO && !empty(get_option('ws-ls-email-addresses'))) {
-		$globals['WE_LS_EMAIL_ADDRESSES'] = get_option('ws-ls-email-addresses');
-	}
-	if (WS_LS_IS_PRO && 'no' == get_option('ws-ls-email-notifications-edit')) {
-		$globals['WE_LS_EMAIL_NOTIFICATIONS_EDIT'] = false;
-	}
-	if (WS_LS_IS_PRO && 'no' == get_option('ws-ls-email-notifications-new')) {
-		$globals['WE_LS_EMAIL_NOTIFICATIONS_NEW'] = false;
-	}
 
+	if (WS_LS_IS_PRO) {
+
+		if ('yes' == get_option('ws-ls-email-enable')) {
+			$globals['WE_LS_EMAIL_ENABLE'] = true;
+		}
+		if (!empty(get_option('ws-ls-email-addresses'))) {
+			$globals['WE_LS_EMAIL_ADDRESSES'] = get_option('ws-ls-email-addresses');
+		}
+		if ('no' == get_option('ws-ls-email-notifications-edit')) {
+			$globals['WE_LS_EMAIL_NOTIFICATIONS_EDIT'] = false;
+		}
+		if ('no' == get_option('ws-ls-email-notifications-new')) {
+			$globals['WE_LS_EMAIL_NOTIFICATIONS_NEW'] = false;
+		}
+		if ('no' == get_option('ws-ls-email-notifications-targets')) {
+			$globals['WE_LS_EMAIL_NOTIFICATIONS_TARGETS'] = false;
+		}
+	}
 	// -----------------------------------------------------------------------------------
 	// Loop through array and set defines!
 	// -----------------------------------------------------------------------------------
