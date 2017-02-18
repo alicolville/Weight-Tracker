@@ -107,7 +107,7 @@
 
 			// Display "Add Weight" anchor?
 			if(true == $shortcode_arguments['show-add-button']) {
-				$html_output .= '<a name="add-weight" />';
+				$html_output .= '<a name="add-weight"></a>';
 			}
 
 			// Display input form

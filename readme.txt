@@ -170,11 +170,7 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 
 [TO DO] : MINIFY!
 
-
-[BUGS!]:	1) Clear stats table when All data cleared.
-			2) Error displaying league table shortcode when there are no users in the system
-
-
+* [Add to documentation]: Email notifications for update target, add / edit weight
 * [Add to documentation]: Filters / Hooks
 * [Add to documentation]: Added the following to [weight-loss-tracker]
 							'hide-first-target-form' => false,			// Hide first Target form
@@ -207,6 +203,9 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 * Stats now sent weekly (instead of monthly) using a WP cron job. If "Send usage data to YeKen" is enabled, usage stats will be sent on weekly basis to YeKen by a scheduled WP cron job (instead of relying on an expired cached value to trigger the send).
 * Bug fix: Setting "min-chart-points" attribute to 0 will now display the chart if no weight data has been entered.
 * Bug fix: Issue generating stats for a user when a target weight is entered but no user weights exist (division by zero).
+* Bug fix: Stats are instantly tidied up / re-generated if all user data is delete or an individual user deletes their data.
+* Bug fix: If no target weight has been set, the shortcode will now inform the user when the shortcode [ws_ls_weight_difference_target] is rendered.
+* Bug fix: Weight loss comparison figures shown properly when in stone / pounds.
 
 = 4.1.9 =
 

@@ -40,10 +40,14 @@
 	define('WE_LS_CRON_SCHEDULE_WEEKLY', 'weight_loss_tracker_weekly');
 
 	// -----------------------------------------------------------------------------------
-	// Hooks
+	// Hooks / Filters
 	// -----------------------------------------------------------------------------------
 
 	define('WE_LS_HOOK_DATA_ADDED_EDITED', 'ws-ls-data-added-edited');
+	define('WE_LS_HOOK_DATA_ALL_DELETED', 'ws-ls-data-all-deleted');
+	define('WE_LS_HOOK_DATA_USER_DELETED', 'ws-ls-data-use-deleted');
+
+	define('WE_LS_FILTER_EMAIL_DATA', 'ws-ls-filter-email-data');
 
     // -----------------------------------------------------------------------------------
 	// Dynamic Settings based upon user settings, etc

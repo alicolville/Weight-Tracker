@@ -68,7 +68,7 @@ function ws_ls_weight_difference()
 
 	$display_string = ($difference > 0) ? "+" : "";
 
-	$display_string .= we_ls_format_weight_into_correct_string_format($difference);
+	$display_string .= we_ls_format_weight_into_correct_string_format($difference, true);
 
 	return $display_string;
 }
@@ -79,21 +79,24 @@ function ws_ls_weight_difference_target()
 		return '';
 	}
 
-	if (ws_ls_get_config('WE_LS_DATA_UNITS') == "pounds_only")
-	{
+	if (ws_ls_get_config('WE_LS_DATA_UNITS') == "pounds_only") {
 		$target_weight = ws_ls_get_target_weight_in_pounds();
 		$recent_weight = ws_ls_get_recent_weight_in_pounds();
 	}
-	else
-	{
+	else {
 		$target_weight = ws_ls_get_target_weight_in_kg();
 		$recent_weight = ws_ls_get_weight_extreme(get_current_user_id(), true);
 	}
+
+	if(empty($target_weight)) {
+		return __('No target weight has been set', WE_LS_SLUG);
+	}
+
 	$difference = $recent_weight - $target_weight;
 
 	$display_string = ($difference > 0) ? "+" : "";
 
-	$display_string .= we_ls_format_weight_into_correct_string_format($difference);
+	$display_string .= we_ls_format_weight_into_correct_string_format($difference, true);
 
 	return $display_string;
 }
@@ -176,7 +179,7 @@ function ws_ls_get_weight_target($user_id, $unit = "target_weight_weight")
 	return false;
 
 }
-function we_ls_format_weight_into_correct_string_format($weight)
+function we_ls_format_weight_into_correct_string_format($weight, $comparison = false)
 {
 	if(ws_ls_get_config('WE_LS_IMPERIAL_WEIGHTS'))
 	{
@@ -185,10 +188,18 @@ function we_ls_format_weight_into_correct_string_format($weight)
 		else
 		{
 			$weight_data = ws_ls_to_stone_pounds($weight);
-			return $weight_data["stones"] . __("st", WE_LS_SLUG) . " " . (($weight_data["pounds"] < 0) ? abs($weight_data["pounds"]) : $weight_data["pounds"]) . __("lbs", WE_LS_SLUG);
-		}
 
+			if ($comparison) {
+				return ws_ls_format_stones_pound_for_comparison_display($weight_data);
+			} else {
+				return $weight_data["stones"] . __("st", WE_LS_SLUG) . " " . (($weight_data["pounds"] < 0) ? abs($weight_data["pounds"]) : $weight_data["pounds"]) . __("lbs", WE_LS_SLUG);
+			}
+		}
 	}
-	else
+	else {
 		return $weight . __("Kg", WE_LS_SLUG);
+	}
+
+	return '';
+
 }

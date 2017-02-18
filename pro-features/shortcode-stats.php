@@ -93,7 +93,7 @@ function ws_ls_shortcode_stats_league_total($user_defined_arguments)
 		return apply_filters('weight-loss-stats-table-html', $html);
 	}
 
-	return '[Issue loading Weight Loss table]';
+	return __('No users have entered weights.', WE_LS_SLUG) .'<!-- Issue loading Weight Loss table (No data) -->';
 }
 
 

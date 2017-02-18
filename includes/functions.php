@@ -166,6 +166,9 @@ function ws_ls_delete_data_for_user() {
 
 		// Update User stats table
 		ws_ls_stats_update_for_user($user_id);
+
+		// Let others know we cleared all user data
+		do_action( WE_LS_HOOK_DATA_USER_DELETED, $user_id);
     }
 }
 
@@ -261,7 +264,7 @@ function ws_ls_create_dialog_jquery_code($title, $message, $class_used_to_prompt
 function ws_ls_render_date($weight_object, $use_admin_setting = false)
 {
 	$config_setting = ($use_admin_setting) ? WE_LS_US_DATE : ws_ls_get_config('WE_LS_US_DATE');
-	
+
   	// Return US date if enabled otherwise return UK date
 	if($config_setting) {
 		return $weight_object['date-us'];

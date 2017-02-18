@@ -24,6 +24,9 @@ function ws_ls_manage_user_data_page() {
 	if (is_admin() && isset($_GET['removedata']) && 'y' == $_GET['removedata']) {
 		ws_ls_delete_existing_data();
 		$clear_cache = true;
+
+		// Let others know we cleared all user data
+		do_action( WE_LS_HOOK_DATA_ALL_DELETED );
 	}
 
 	if($clear_cache) {
