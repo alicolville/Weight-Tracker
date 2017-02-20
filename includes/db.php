@@ -48,7 +48,7 @@ function ws_ls_get_weights($user_id, $limit = 100, $selected_week_number = -1, $
 	 	return $cache[$cache_sub_key];
     }
     // No cache? hit the DB
-    else {
+
 
       global $wpdb;
       $additional_sql = '';
@@ -108,7 +108,7 @@ function ws_ls_get_weights($user_id, $limit = 100, $selected_week_number = -1, $
         ws_ls_set_cache($cache_key, $cache);
         return $weight_data;
       }
-    }
+
 
     return false;
 }

@@ -102,8 +102,10 @@ function ws_ls_weight_object($user_id, $kg, $pounds, $stones, $pounds_only, $not
 
     $weight['first_weight'] = ws_ls_get_start_weight($weight['user_id']);
     if(is_numeric($weight['first_weight']) && $weight['first_weight'] > 0 && $weight['first_weight'] <> $weight['kg']) {
-      $weight['difference_from_start'] = (($weight['kg'] - $weight['first_weight']) / $weight['first_weight']) * 100;
-      $weight['difference_from_start'] = round($weight['difference_from_start']);
+		$weight['difference_from_start_kg'] = $weight['kg'] - $weight['first_weight'];
+	  	$weight['difference_from_start'] = (($weight['difference_from_start_kg']) / $weight['first_weight']) * 100;
+      	$weight['difference_from_start'] = round($weight['difference_from_start']);
+		$weight['difference_from_start_display'] = ws_ls_convert_kg_into_relevant_weight_String($weight['difference_from_start_kg'], true);
     }
 
     // Get user display name
@@ -477,6 +479,41 @@ function ws_ls_display_default_measurements() {
 		echo '</ul>';
 	}
 
+}
+
+function ws_ls_format_stones_pound_for_comparison_display($weight) {
+
+	if(isset($weight['stones']) && isset($weight['pounds'])) {
+
+		$text = array();
+
+		$show_stones = true;
+
+		// Is stones equal to zero?
+		if(-0 == $weight['stones'] || 0 == $weight['stones']) {
+			$show_stones = false;
+		}
+
+		if ($show_stones) {
+			$text[] = $weight['stones'] . __('St', WE_LS_SLUG);
+		}
+
+		if (is_numeric($weight['pounds'])) {
+
+			// If both stones and pounds negative then invert pounds.
+			// e.g.
+			// -1 stone -10 pounds will get displayed as -1 stone 10 pounds
+			if ($show_stones && (-0 == $weight['stones'] || $weight['stones'] < 0) && $weight['pounds'] < 0) {
+				$weight['pounds'] = abs($weight['pounds']);
+			}
+
+			$text[] = $weight['pounds'] . __('lbs', WE_LS_SLUG);
+		}
+
+		return implode(' ', $text);
+	}
+
+	return '';
 }
 
 ?>

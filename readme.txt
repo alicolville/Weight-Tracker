@@ -169,6 +169,7 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 = 4.2 =
 
 [TO DO] : MINIFY!
+		: Ensure cache re-enabled in ws_ls_get_weights() db.php
 
 * [Add to documentation]: Email notifications for update target, add / edit weight
 * [Add to documentation]: Filters / Hooks

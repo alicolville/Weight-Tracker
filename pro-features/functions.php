@@ -56,38 +56,3 @@ function ws_ls_calculate_bmi_label($bmi) {
 
 	return 'Err';
 }
-
-function ws_ls_format_stones_pound_for_comparison_display($weight) {
-
-	if(isset($weight['stones']) && isset($weight['pounds'])) {
-
-		$text = array();
-
-		$show_stones = true;
-
-		// Is stones equal to zero?
-		if(-0 == $weight['stones'] || 0 == $weight['stones']) {
-			$show_stones = false;
-		}
-
-		if ($show_stones) {
-			$text[] = $weight['stones'] . __('St', WE_LS_SLUG);
-		}
-
-		if (is_numeric($weight['pounds'])) {
-
-			// If both stones and pounds negative then invert pounds.
-			// e.g.
-			// -1 stone -10 pounds will get displayed as -1 stone 10 pounds
-			if ($show_stones && (-0 == $weight['stones'] || $weight['stones'] < 0) && $weight['pounds'] < 0) {
-				$weight['pounds'] = abs($weight['pounds']);
-			}
-
-			$text[] = $weight['pounds'] . __('lbs', WE_LS_SLUG);
-		}
-
-		return implode(' ', $text);
-	}
-
-	return '';
-}

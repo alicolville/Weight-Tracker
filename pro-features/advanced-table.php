@@ -93,18 +93,18 @@ function ws_ls_advanced_data_table($weight_data)
 			      	<th>' . __('Weight', WE_LS_SLUG) . '</th>
 			      	<th>+/-</th>';
 
-	// BMI?
-	if(WE_LS_DISPLAY_BMI_IN_TABLES) {
-		$html_output .= '<th class="tablet-l tablet-p">BMI</th>';
-	}
+					// BMI?
+					if(WE_LS_DISPLAY_BMI_IN_TABLES) {
+						$html_output .= '<th class="tablet-l tablet-p">BMI</th>';
+					}
 
-	// Weight Columns?
-	$measurement_columns = ws_ls_get_active_measurement_fields();
-	if ($measurement_columns) {
-		foreach ($measurement_columns as $key => $data) {
-			$html_output .= '<th class="none">' . __($data['title'], WE_LS_SLUG) . '</th>';
-		}
-	}
+					// Weight Columns?
+					$measurement_columns = ws_ls_get_active_measurement_fields();
+					if ($measurement_columns) {
+						foreach ($measurement_columns as $key => $data) {
+							$html_output .= '<th class="none">' . __($data['title'], WE_LS_SLUG) . '</th>';
+						}
+					}
 
 	$html_output .= '	<th class="tablet-l">' . __('Notes', WE_LS_SLUG) . '</th>
 					<th></th>
@@ -117,8 +117,12 @@ function ws_ls_advanced_data_table($weight_data)
 
   foreach ($weight_data as $weight_object)
   {
+var_dump($weight_object);
+
 	  	$percentage_lost = ((isset($weight_object['difference_from_start']) && is_numeric($weight_object['difference_from_start'])) ? $weight_object['difference_from_start'] . '%' : '');
-		
+		$percentage_lost .= (!empty($weight_object['difference_from_start_display'])) ? ' / ' . $weight_object['difference_from_start_display'] : '';
+
+
     	$html_output .= sprintf('<tr id="ws-ls-row-%s">
 									<td>%s</td>
 									<td>%s</td>

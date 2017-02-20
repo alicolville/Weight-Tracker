@@ -58,7 +58,7 @@ function ws_ls_round_decimals($value)
   return $value;
 }
 
-function ws_ls_convert_kg_into_relevant_weight_String($kg) {
+function ws_ls_convert_kg_into_relevant_weight_String($kg, $comparison_value = false) {
 
 	if ($kg) {
 
@@ -71,6 +71,11 @@ function ws_ls_convert_kg_into_relevant_weight_String($kg) {
 			break;
 			default:
 				$weight = ws_ls_to_stone_pounds($kg);
+
+				if ($comparison_value) {
+					return ws_ls_format_stones_pound_for_comparison_display($weight);
+				}
+
 				return $weight['stones'] . __("St", WE_LS_SLUG) . ' ' . $weight['pounds'] . __("lbs", WE_LS_SLUG);
 			break;
 		}
