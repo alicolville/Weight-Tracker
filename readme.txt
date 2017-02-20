@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight, loss, lose, helper, bmi, body, mass, index, graph, track, stones, kg, table, data, plot, target, history, pounds, responsive, chart, measurements, cm, centimeters, inches, hip, waist, bicep, thigh
 Requires at least: 4.1.0
 Tested up to: 4.7.2
-Stable tag: 4.1.9
+Stable tag: 4.1.10
 
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -69,6 +69,7 @@ Fully supported (have the majority of translations):
 
 Languages partially supported (have some of the translations):
 
+* Portugese (thanks @Thomas)
 * Italian (thanks @Salvo)
 * Norwegian - Norsk bokmål (Thanks Rodrigo)
 * Danish (thanks @kfasterholdt and @spaniole)
@@ -164,6 +165,10 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
  New League Table shortcode added and various tweaks.
 
 == Changelog ==
+
+= 4.1.10 =
+
+* Updated Portuguese translations. (thanks @Thomas)
 
 = 4.1.9 =
 
