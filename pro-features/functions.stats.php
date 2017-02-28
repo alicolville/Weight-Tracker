@@ -28,6 +28,20 @@ add_action( WE_LS_CRON_NAME , 'ws_ls_stats_run_cron');
 add_action( WE_LS_HOOK_DATA_ALL_DELETED, 'ws_ls_stats_run_cron' );	// Delete stats if all user data has been deleted
 add_action( WE_LS_HOOK_DATA_USER_DELETED, 'ws_ls_stats_run_cron' );	// Tidy up stats if a user deletes their entry
 
+function ws_ls_stats_run_cron_for_first_time() {
+
+	// If disabled, don't bother
+	if(WE_LS_DISABLE_USER_STATS) {
+		return;
+	}
+
+	if(false == WE_LS_DISABLE_USER_STATS && false == get_option('ws-ls-stats-run-for-first-time')) {
+		ws_ls_stats_run_cron();
+		update_option('ws-ls-stats-run-for-first-time', true);
+	}
+}
+add_action('admin_init', 'ws_ls_run_cron_for_first_time');
+
 /*
 	Fetch from cache the summary stats
 */
