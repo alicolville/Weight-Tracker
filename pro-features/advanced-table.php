@@ -117,11 +117,8 @@ function ws_ls_advanced_data_table($weight_data)
 
   foreach ($weight_data as $weight_object)
   {
-var_dump($weight_object);
-
 	  	$percentage_lost = ((isset($weight_object['difference_from_start']) && is_numeric($weight_object['difference_from_start'])) ? $weight_object['difference_from_start'] . '%' : '');
 		$percentage_lost .= (!empty($weight_object['difference_from_start_display'])) ? ' / ' . $weight_object['difference_from_start_display'] : '';
-
 
     	$html_output .= sprintf('<tr id="ws-ls-row-%s">
 									<td>%s</td>

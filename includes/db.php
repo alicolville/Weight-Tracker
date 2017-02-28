@@ -45,10 +45,9 @@ function ws_ls_get_weights($user_id, $limit = 100, $selected_week_number = -1, $
 
     // Return cache if found!
     if ($cache && !empty($cache[$cache_sub_key]))   {
-	 	return $cache[$cache_sub_key];
+		return $cache[$cache_sub_key];
     }
     // No cache? hit the DB
-
 
       global $wpdb;
       $additional_sql = '';
@@ -70,7 +69,8 @@ function ws_ls_get_weights($user_id, $limit = 100, $selected_week_number = -1, $
 
       $table_name = $wpdb->prefix . WE_LS_TABLENAME;
 	  $sql =  $wpdb->prepare('SELECT id, weight_date, weight_weight, weight_stones, weight_pounds, weight_only_pounds, weight_notes' . $measurement_columns_sql . ' FROM ' . $table_name . ' where weight_user_id = %d ' . $additional_sql. ' order by weight_date ' . $sort_order . ' limit 0, %d', $user_id,  $limit);
-      $rows = $wpdb->get_results( $sql );
+
+	  $rows = $wpdb->get_results( $sql );
 
       // If data found in DB then save to cache and return
       if (is_array($rows) && count($rows) > 0) {

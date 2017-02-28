@@ -2,7 +2,7 @@
 
 defined('ABSPATH') or die("Jog on!");
 
-function ws_ls_shortcode_reminder($user_defined_arguments) {
+function ws_ls_shortcode_reminder($user_defined_arguments, $content = null) {
 
 	// If not logged in then return no value
 	if(!is_user_logged_in()) {
@@ -29,7 +29,9 @@ function ws_ls_shortcode_reminder($user_defined_arguments) {
 	}
 
 	// Do we have a message to display?
-	if(!empty($message)) {
+	if(!empty($content)) {
+		return $content;
+	} else if(!empty($message)) {
 
 		// Has a custom message been specified?
 		$message = (!empty($user_defined_arguments['message'])) ? $user_defined_arguments['message'] : $message;

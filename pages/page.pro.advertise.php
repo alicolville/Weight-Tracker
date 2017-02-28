@@ -40,7 +40,7 @@ function ws_ls_advertise_pro() {
 									<p><?php echo __('Get Weight Loss Tracker Pro for', WE_LS_SLUG) . ' &pound;' . $price .  __(' and have the following features listed below.', WE_LS_SLUG); ?> </p>
                                     <center>
                                         <h3><?php echo __('In case you need, your <strong>Site Hash</strong> is', WE_LS_SLUG); ?>: <?php echo ws_ls_generate_site_hash(); ?></h3>
-										<a href="https://www.yeken.uk/weight-loss-tracker-upgrade-to-pro-version/?hash=<?php echo ws_ls_generate_site_hash(); ?>" style="width:60%;font-size:15px;text-align:center;" target="_blank" class="button-primary"><?php echo __('Upgrade now for', WE_LS_SLUG); ?> &pound;<?php echo $price; ?></a>
+										<a href="https://weight.yeken.uk/pro?hash=<?php echo ws_ls_generate_site_hash(); ?>" style="width:60%;font-size:15px;text-align:center;" target="_blank" class="button-primary"><?php echo __('Upgrade now for', WE_LS_SLUG); ?> &pound;<?php echo $price; ?></a>
 									</center>
 								</div>
 								<!-- .inside -->

@@ -444,7 +444,7 @@ function ws_ls_force_bool_argument($value)
 function ws_ls_force_numeric_argument($value, $default = false)
 {
 	if (is_numeric($value)) {
-		return $value;
+		return intval($value);
 	}
 
     return ($default) ? $default : 0;
