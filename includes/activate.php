@@ -106,12 +106,6 @@
 
 		if(update_option('ws-ls-version-number', WE_LS_CURRENT_VERSION)) {
 			ws_ls_create_mysql_tables();
-
-			// Stats enabled? Generate for first time
-			if(WS_LS_IS_PRO && false == WE_LS_DISABLE_USER_STATS) {
-				ws_ls_stats_run_cron();
-			}
-
 			ws_ls_activate();
 		}
 	}
