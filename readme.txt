@@ -4,6 +4,7 @@ Tags: weight, loss, lose, helper, bmi, body, mass, index, graph, track, stones, 
 Requires at least: 4.1.0
 Tested up to: 4.7.2
 Stable tag: 4.2
+
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate Link: https://www.paypal.me/yeken
@@ -175,6 +176,10 @@ Lots of new features. Three new Pro shortcodes, email notifications and more.
 * Bug fix: If no target weight has been set, the shortcode will now inform the user when the shortcode [ws_ls_weight_difference_target] is rendered.
 * Bug fix: Weight loss comparison figures shown properly when in stone / pounds.
 * Bug fix: When using [weight-loss-tracker-total-lost], Kg values are now rounded to two decimal places.
+
+= 4.1.10 =
+
+* Updated Portuguese translations. (thanks @Thomas)
 
 = 4.1.9 =
 
