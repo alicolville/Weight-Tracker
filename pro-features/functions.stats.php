@@ -40,7 +40,7 @@ function ws_ls_stats_run_cron_for_first_time() {
 		update_option('ws-ls-stats-run-for-first-time', true);
 	}
 }
-add_action('admin_init', 'ws_ls_run_cron_for_first_time');
+add_action('admin_init', 'ws_ls_stats_run_cron_for_first_time');
 
 /*
 	Fetch from cache the summary stats
