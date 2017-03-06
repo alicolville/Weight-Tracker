@@ -29,7 +29,7 @@ function ws_ls_shortcode_reminder($user_defined_arguments, $content = null) {
 	}
 
 	// Do we have a message to display?
-	if(!empty($content)) {
+	if(!empty($content) && !empty($message)) {
 		return $content;
 	} else if(!empty($message)) {
 

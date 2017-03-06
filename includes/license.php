@@ -80,7 +80,7 @@
 
     return false;
   }
-	function ws_ls_get_license()
+function ws_ls_get_license()
   {
 		return get_option(WS_LS_LICENSE);
   }

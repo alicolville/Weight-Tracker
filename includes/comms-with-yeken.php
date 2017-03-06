@@ -48,9 +48,8 @@ function ws_ls_stats_send_license_activation_to_yeken() {
 
 	$previously_sent_key = 'ws-ls-license-notify';
 
-	$yeken_notified_before = get_option($previously_sent_key);
+	if(false == get_option($previously_sent_key)) {
 
-	if(false == $yeken_notified_before) {
 		// Build payload to send to Yeken
 		$data = array();
 		$data['reason']	= 'license-activation';
@@ -63,7 +62,8 @@ function ws_ls_stats_send_license_activation_to_yeken() {
 
 	update_option($previously_sent_key, true);
 }
-add_action(WE_LS_CRON_NAME_YEKEN_COMMS, 'ws_ls_stats_send_license_activation_to_yeken');
+add_action(WE_LS_CRON_NAME_YEKEN_COMMS, 'ws_ls_stats_send_license_activation_to_yeken');	// Notification via weekly job
+add_action('admin_init', 'ws_ls_stats_send_license_activation_to_yeken');					// Instant notification
 
 // ---------------------------------------------------------------------------------
 // Post Stats to YeKen on Weekly Cron job
