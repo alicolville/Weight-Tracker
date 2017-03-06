@@ -89,7 +89,7 @@ function ws_ls_advanced_data_table($weight_data)
 			<thead>
 			    <tr>
 					<th class="never"></th>
-					<th>' . __('Date', WE_LS_SLUG) .'</th>
+					<th class="ws_ls_date" style="width:100px;">' . __('Date', WE_LS_SLUG) .'</th>
 			      	<th>' . __('Weight', WE_LS_SLUG) . '</th>
 			      	<th>+/-</th>';
 

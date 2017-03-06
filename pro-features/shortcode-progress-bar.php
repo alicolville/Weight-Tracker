@@ -56,22 +56,51 @@ function ws_ls_shortcode_progress_bar($user_defined_arguments) {
 			// Latest weight
 			if($arguments['weight'] = ws_ls_get_recent_weight_in_kg()) {
 
-				// Have we met or exceeded the target?
-				if ($arguments['weight'] <= $arguments['target-weight']) {
-					$arguments['progress'] = 1.0;
-				// Is recent weight greater than target? If so, calulate %.
-				} else if ($arguments['target-weight'] <= $arguments['weight']) {
+				$arguments['start-weight'] = ws_ls_get_start_weight_in_kg();
 
-					$arguments['start-weight'] = ws_ls_get_start_weight_in_kg();
-					$arguments['weight-to-be-lost'] = abs($arguments['target-weight'] - $arguments['start-weight']);
-					$arguments['weight-lost-so-far'] = $arguments['start-weight'] - $arguments['weight'];
+				// -----------------------------------------------------
+				// Aim to Gain weight?
+				// -----------------------------------------------------
+				if ($arguments['start-weight'] < $arguments['target-weight']) {
+					// Have we met or exceeded the target?
+					if ($arguments['weight'] >= $arguments['target-weight']) {
+						$arguments['progress'] = 1.0;
+					// Is recent weight less than target? If so, calulate %.
+				} else if ($arguments['target-weight'] >= $arguments['weight']) {
 
-					$arguments['progress'] = ($arguments['weight-lost-so-far'] > 0) ?
-												($arguments['weight-lost-so-far'] / $arguments['weight-to-be-lost']) * 100 :
-												0;
+						$arguments['weight-to-be-gained'] = abs($arguments['target-weight'] - $arguments['start-weight']);
+						$arguments['weight-gained-so-far'] = $arguments['weight'] - $arguments['start-weight'];
+
+						$arguments['progress'] = ($arguments['weight-gained-so-far'] > 0) ?
+													($arguments['weight-gained-so-far'] / $arguments['weight-to-be-gained']) * 100 :
+													0;
+					} else {
+						$arguments['progress'] = 0;	// Error
+					}
 				} else {
-					$arguments['progress'] = 0;	// Error
+				// -----------------------------------------------------
+				// Aim to Lose weight?
+				// -----------------------------------------------------
+					// Have we met or exceeded the target?
+					if ($arguments['weight'] <= $arguments['target-weight']) {
+						$arguments['progress'] = 1.0;
+					// Is recent weight greater than target? If so, calulate %.
+					} else if ($arguments['target-weight'] <= $arguments['weight']) {
+
+						$arguments['weight-to-be-lost'] = abs($arguments['target-weight'] - $arguments['start-weight']);
+						$arguments['weight-lost-so-far'] = $arguments['start-weight'] - $arguments['weight'];
+
+						$arguments['progress'] = ($arguments['weight-lost-so-far'] > 0) ?
+													($arguments['weight-lost-so-far'] / $arguments['weight-to-be-lost']) * 100 :
+													0;
+					} else {
+						$arguments['progress'] = 0;	// Error
+					}
 				}
+
+				// -----------------------------------------------------
+				// Set Progress figure for chart library
+				// -----------------------------------------------------
 				if ($arguments['progress'] == 1) {
 					$arguments['progress-chart'] = 1;
 				} else if ($arguments['progress'] >= 100) {
