@@ -15,17 +15,24 @@ function ws_ls_shortcode_reminder($user_defined_arguments, $content = null) {
 						            'type' => 'weight', 		// Type of message:
 																// 		'weight' - check they have entered a weight for today.
 																// 		'target' - check they have entered a target weight
+																//		'both' - check if they have entered both
 									'message' => '',			// Custom message
 									'additional_css' => '',		// Additional class for containing element
 									'link' => ''				// Wrap the message in a link
 								), $user_defined_arguments );
 
+	$target_required = (in_array($arguments['type'], ['target', 'both']) && WE_LS_ALLOW_TARGET_WEIGHTS && false == ws_ls_get_user_target(get_current_user_id()));
+	$weight_required = (in_array($arguments['type'], ['weight', 'both']) && !ws_does_weight_exist_for_this_date(get_current_user_id(), date('Y-m-d')));
+
+	// Missing both?
+	if ('both' == $arguments['type'] && $target_required && $weight_required) {
+		$message = (WE_LS_MEASUREMENTS_ENABLED) ? __('Please remember to enter your weight and measurements for today as well as your target weight.', WE_LS_SLUG) :  __('Please remember to enter your weight for today as well as your target weight.', WE_LS_SLUG) ;
 	// Do they have a target weight?
-	if ('target' == $arguments['type'] && WE_LS_ALLOW_TARGET_WEIGHTS && false == ws_ls_get_user_target(get_current_user_id())) {
+	} else if ('target' == $arguments['type']  && $target_required ) {
 		$message = __('Please remember to enter your target weight.', WE_LS_SLUG);
 	// Do they have a weight entry for today?
-	} else if('weight' == $arguments['type'] && !ws_does_weight_exist_for_this_date(get_current_user_id(), date('Y-m-d'))) {
-		$message = (WE_LS_MEASUREMENTS_ENABLED) ? __('Please remember to enter your weight and measurements for today.', WE_LS_SLUG) :  __('Please remember to enter your weight for today', WE_LS_SLUG) ;
+	} else if ('weight' == $arguments['type'] && $weight_required) {
+		$message = (WE_LS_MEASUREMENTS_ENABLED) ? __('Please remember to enter your weight and measurements for today.', WE_LS_SLUG) :  __('Please remember to enter your weight for today.', WE_LS_SLUG) ;
 	}
 
 	// Do we have a message to display?
