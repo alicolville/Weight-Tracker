@@ -104,7 +104,7 @@ input.ws-ls-valid
 	margin: 10px
 }
 
-.ws-ls-table-options img
+.ws-ls-table-options img, .ws-ls-edit-row, .ws-ls-delete-row
 {
 	width: 15px;
 	height: 15px;

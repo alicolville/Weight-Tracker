@@ -171,6 +171,7 @@ Lots of new features. Three new Pro shortcodes, email notifications and more.
 * Improvement: Upgraded Chart.js to 2.5.0.
 * Improvement: Changed "Upgrade to Pro" and documentation links to point to new website https://weight.yeken.uk
 * Improvement: Changed comms and license activations to be sent to https://weight.yeken.uk (instead of yeken.uk)
+* Improvement: Slight tweaks to advanced data table layouts.
 * Bug fix: Setting "min-chart-points" attribute to 0 will now display the chart if no weight data has been entered.
 * Bug fix: Issue generating stats for a user when a target weight is entered but no user weights exist (division by zero).
 * Bug fix: Stats are instantly tidied up / re-generated if all user data is delete or an individual user deletes their data.

@@ -85,17 +85,17 @@ function ws_ls_advanced_data_table($weight_data)
 	$table_id = 'ws_ls_data_table_' . rand(10,1000) . '_' . rand(10,1000);
 
 	$html_output = '
-		<table id="' . $table_id . '" class="display ws-ls-advanced-data-table responsive hover" cellspacing="0" width="100%">
+		<table id="' . $table_id . '" class="display ws-ls-advanced-data-table responsive hover no-wrap" cellspacing="0" width="100%">
 			<thead>
 			    <tr>
 					<th class="never"></th>
-					<th class="ws_ls_date" style="width:100px;">' . __('Date', WE_LS_SLUG) .'</th>
-			      	<th>' . __('Weight', WE_LS_SLUG) . '</th>
-			      	<th>+/-</th>';
+					<th class="ws_ls_date all">' . __('Date', WE_LS_SLUG) .'</th>
+			      	<th class="all">' . __('Weight', WE_LS_SLUG) . '</th>
+			      	<th class="min-tablet-l no-wrap">+/-</th>';
 
 					// BMI?
 					if(WE_LS_DISPLAY_BMI_IN_TABLES) {
-						$html_output .= '<th class="tablet-l tablet-p">BMI</th>';
+						$html_output .= '<th class="min-tablet-l">BMI</th>';
 					}
 
 					// Weight Columns?
@@ -106,8 +106,8 @@ function ws_ls_advanced_data_table($weight_data)
 						}
 					}
 
-	$html_output .= '	<th class="tablet-l">' . __('Notes', WE_LS_SLUG) . '</th>
-					<th></th>
+	$html_output .= '	<th class="none">' . __('Notes', WE_LS_SLUG) . '</th>
+					<th class="min-tablet-p">Options</th>
 			    </tr>
 			</thead>
 			<tbody>';
@@ -118,7 +118,7 @@ function ws_ls_advanced_data_table($weight_data)
   foreach ($weight_data as $weight_object)
   {
 	  	$percentage_lost = ((isset($weight_object['difference_from_start']) && is_numeric($weight_object['difference_from_start'])) ? $weight_object['difference_from_start'] . '%' : '');
-		$percentage_lost .= (!empty($weight_object['difference_from_start_display'])) ? ' / ' . $weight_object['difference_from_start_display'] : '';
+		$percentage_lost .= (!empty($weight_object['difference_from_start_display'])) ? '&nbsp;/&nbsp;' . $weight_object['difference_from_start_display'] : '';
 
     	$html_output .= sprintf('<tr id="ws-ls-row-%s">
 									<td>%s</td>
@@ -147,8 +147,8 @@ function ws_ls_advanced_data_table($weight_data)
 
 		$html_output .= '	<td style="font-size:0.7em;word-wrap:break-word;">' . $weight_object['notes'] . '</td>
 							<td class="ws-ls-table-options">
-								<img src="' . $edit_image .'" width="15" height="15" id="ws-ls-edit-' . $weight_object['db_row_id'] . '" data-row-id="' . $weight_object['db_row_id'] . '" class="first ws-ls-edit-row" />
-								<img src="' . $delete_image .'" width="15" height="15" id="ws-ls-delete-' . $weight_object['db_row_id'] . '" data-row-id="' . $weight_object['db_row_id'] . '" class="ws-ls-delete-row" />
+								<img  src="' . $edit_image .'"  id="ws-ls-edit-' . $weight_object['db_row_id'] . '" data-row-id="' . $weight_object['db_row_id'] . '" class="first ws-ls-edit-row" />
+								<img src="' . $delete_image .'"  id="ws-ls-delete-' . $weight_object['db_row_id'] . '" data-row-id="' . $weight_object['db_row_id'] . '" class="ws-ls-delete-row" />
 							</td>
 						</tr>';
   }
