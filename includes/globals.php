@@ -8,8 +8,8 @@
 	// -----------------------------------------------------------------------------------
 	define('WE_LS_TITLE', 'Weight Loss Tracker');
 	define('WE_LS_SLUG', 'weight-loss-tracker');
-	define('WE_LS_DATA_URL', 'https://yeken.uk/wlt/plugin-info.json');
-	define('WE_LS_STATS_URL', 'https://yeken.uk/wlt/stats.php');
+	define('WE_LS_DATA_URL', 'https://weight.yeken.uk/wlt/plugin-info.json');
+	define('WE_LS_STATS_URL', 'https://weight.yeken.uk/wlt/stats.php');
 	define('WE_LS_TABLENAME', 'WS_LS_DATA');
 	define('WE_LS_TARGETS_TABLENAME', 'WS_LS_DATA_TARGETS');
   	define('WE_LS_USER_PREFERENCES_TABLENAME', 'WS_LS_DATA_USER_PREFERENCES');
@@ -29,12 +29,25 @@
 	define('WE_LS_CACHE_KEY_USER_HEIGHT', 'user-height');
 	define('WE_LS_CACHE_KEY_YEKEN_JSON', 'yeken-json-lookup-wlt');
 	define('WE_LS_CACHE_KEY_STATS_SUMMARY', 'user-stats');
+	define('WE_LS_CACHE_KEY_WEIGHT_FOR_DAY', 'user-weight-for-day');
 	define('WE_LS_KEY_YEKEN_ADMIN_NOTIFICATION', 'yeken-admin-notification');
 	define('WE_LS_CACHE_ADMIN_USER_DATA', 'admin-user-data');
 	define('WE_LS_TABLE_MAX_WEEK_FILTERS', 150);
 	define('WS_LS_PRO_PRICE', 25.00);
 	define('WE_LS_USE_MINIFIED_SCRIPTS', true);
 	define('WE_LS_CRON_NAME', 'weight_loss_tracker_hourly');
+	define('WE_LS_CRON_NAME_YEKEN_COMMS', 'weight_loss_tracker_yeken_comms');
+	define('WE_LS_CRON_SCHEDULE_WEEKLY', 'weight_loss_tracker_weekly');
+
+	// -----------------------------------------------------------------------------------
+	// Hooks / Filters
+	// -----------------------------------------------------------------------------------
+
+	define('WE_LS_HOOK_DATA_ADDED_EDITED', 'ws-ls-data-added-edited');
+	define('WE_LS_HOOK_DATA_ALL_DELETED', 'ws-ls-data-all-deleted');
+	define('WE_LS_HOOK_DATA_USER_DELETED', 'ws-ls-data-use-deleted');
+
+	define('WE_LS_FILTER_EMAIL_DATA', 'ws-ls-filter-email-data');
 
     // -----------------------------------------------------------------------------------
 	// Dynamic Settings based upon user settings, etc
@@ -63,7 +76,12 @@
 		'WE_LS_DISPLAY_BMI_IN_TABLES' => false,
 		'WE_LS_AXES_START_AT_ZERO' => false,
 		'WE_LS_ALLOW_STATS' => false,
-		'WE_LS_DISABLE_USER_STATS' => false
+		'WE_LS_DISABLE_USER_STATS' => false,
+		'WE_LS_EMAIL_ENABLE' => false,
+		'WE_LS_EMAIL_ADDRESSES' => '',
+		'WE_LS_EMAIL_NOTIFICATIONS_EDIT' => true,
+		'WE_LS_EMAIL_NOTIFICATIONS_NEW' => true,
+		'WE_LS_EMAIL_NOTIFICATIONS_TARGETS' => true
 	);
 
     // -----------------------------------------------------------------------------------
@@ -224,7 +242,28 @@
 	if (get_option('ws-ls-line-fill-colour')) {
 		$globals['WE_LS_WEIGHT_FILL_COLOUR'] = get_option('ws-ls-line-fill-colour');
 	}
+	// -----------------------------------------------------------------------------------
+	// Email Notifications
+	// -----------------------------------------------------------------------------------
 
+	if (WS_LS_IS_PRO) {
+
+		if ('yes' == get_option('ws-ls-email-enable')) {
+			$globals['WE_LS_EMAIL_ENABLE'] = true;
+		}
+		if (!empty(get_option('ws-ls-email-addresses'))) {
+			$globals['WE_LS_EMAIL_ADDRESSES'] = get_option('ws-ls-email-addresses');
+		}
+		if ('no' == get_option('ws-ls-email-notifications-edit')) {
+			$globals['WE_LS_EMAIL_NOTIFICATIONS_EDIT'] = false;
+		}
+		if ('no' == get_option('ws-ls-email-notifications-new')) {
+			$globals['WE_LS_EMAIL_NOTIFICATIONS_NEW'] = false;
+		}
+		if ('no' == get_option('ws-ls-email-notifications-targets')) {
+			$globals['WE_LS_EMAIL_NOTIFICATIONS_TARGETS'] = false;
+		}
+	}
 	// -----------------------------------------------------------------------------------
 	// Loop through array and set defines!
 	// -----------------------------------------------------------------------------------

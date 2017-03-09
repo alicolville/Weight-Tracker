@@ -36,19 +36,55 @@ function ws_ls_get_data_from_yeken()
 }
 
 // ---------------------------------------------------------------------------------
-// Post Stats to YeKen
+// Record activated license with YeKen
 // ---------------------------------------------------------------------------------
 
-// If cache key not found time to send communication to YeKen
-if (WE_LS_ALLOW_STATS && is_admin() && false == ws_ls_get_cache(WE_LS_CACHE_COMMS_KEY)) {
+function ws_ls_stats_send_license_activation_to_yeken() {
+
+	// If not PRO then nothing to do
+	if(false == WS_LS_IS_PRO) {
+		return;
+	}
+
+	$previously_sent_key = 'ws-ls-license-notify';
+
+	if(false == get_option($previously_sent_key)) {
+
+		// Build payload to send to Yeken
+		$data = array();
+		$data['reason']	= 'license-activation';
+		$data['url'] = get_site_url();
+		$data['valid-license'] = ws_ls_has_a_valid_license();
+		$data['site-hash'] = get_option(WS_LS_LICENSE_SITE_HASH);
+		$data['license'] = get_option(WS_LS_LICENSE);
+		$result = wp_remote_post(WE_LS_STATS_URL, array('body' => $data));
+	}
+
+	update_option($previously_sent_key, true);
+}
+add_action(WE_LS_CRON_NAME_YEKEN_COMMS, 'ws_ls_stats_send_license_activation_to_yeken');	// Notification via weekly job
+add_action('admin_init', 'ws_ls_stats_send_license_activation_to_yeken');					// Instant notification
+
+// ---------------------------------------------------------------------------------
+// Post Stats to YeKen on Weekly Cron job
+// ---------------------------------------------------------------------------------
+
+function ws_ls_stats_send_to_yeken() {
+
+	// If disabled or not admin, don't bother
+	if(false == WE_LS_ALLOW_STATS || false == is_admin()) {
+		return;
+	}
+
+	global $globals;
 
 	// Build payload to send to Yeken
 	$data = array();
 	$data['url'] = get_site_url();
+	$data['reason']	= 'weekly-stats';
 	$data['is-pro'] = WS_LS_IS_PRO;
 	$data['valid-license'] = ws_ls_has_a_valid_license();
 	$data['site-hash'] = get_option(WS_LS_LICENSE_SITE_HASH);
-	$data['hash'] = WS_LS_IS_PRO;
 	$data['no-wp-users'] = ws_ls_do_counts();
 	$data['no-wl-users'] = ws_ls_do_counts('wlt');
 	$data['no-entries'] = ws_ls_do_counts('entries');
@@ -57,10 +93,8 @@ if (WE_LS_ALLOW_STATS && is_admin() && false == ws_ls_get_cache(WE_LS_CACHE_COMM
 	$data['preferences'] = json_encode($globals);
 
 	$result = wp_remote_post(WE_LS_STATS_URL, array('body' => $data));
-
-	ws_ls_set_cache(WE_LS_CACHE_COMMS_KEY, 1, WE_LS_CACHE_COMMS_KEY_TIME);
 }
-
+add_action(WE_LS_CRON_NAME_YEKEN_COMMS, 'ws_ls_stats_send_to_yeken');
 
 function ws_ls_do_counts($type = '') {
 

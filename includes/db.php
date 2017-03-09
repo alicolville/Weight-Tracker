@@ -45,10 +45,9 @@ function ws_ls_get_weights($user_id, $limit = 100, $selected_week_number = -1, $
 
     // Return cache if found!
     if ($cache && !empty($cache[$cache_sub_key]))   {
-	 	return $cache[$cache_sub_key];
+		return $cache[$cache_sub_key];
     }
     // No cache? hit the DB
-    else {
 
       global $wpdb;
       $additional_sql = '';
@@ -70,7 +69,8 @@ function ws_ls_get_weights($user_id, $limit = 100, $selected_week_number = -1, $
 
       $table_name = $wpdb->prefix . WE_LS_TABLENAME;
 	  $sql =  $wpdb->prepare('SELECT id, weight_date, weight_weight, weight_stones, weight_pounds, weight_only_pounds, weight_notes' . $measurement_columns_sql . ' FROM ' . $table_name . ' where weight_user_id = %d ' . $additional_sql. ' order by weight_date ' . $sort_order . ' limit 0, %d', $user_id,  $limit);
-      $rows = $wpdb->get_results( $sql );
+
+	  $rows = $wpdb->get_results( $sql );
 
       // If data found in DB then save to cache and return
       if (is_array($rows) && count($rows) > 0) {
@@ -108,7 +108,7 @@ function ws_ls_get_weights($user_id, $limit = 100, $selected_week_number = -1, $
         ws_ls_set_cache($cache_key, $cache);
         return $weight_data;
       }
-    }
+
 
     return false;
 }
@@ -256,6 +256,15 @@ function ws_ls_save_data($user_id, $weight_object, $is_target_form = false)
 	// Update User stats table
 	if (WS_LS_IS_PRO) {
 		ws_ls_stats_update_for_user($user_id);
+
+		// Throw data out in case anyone else wants to process it (also used within plugin for sending emails etc)
+		$type = array (
+			'user-id' => $user_id,
+			'type' => ($is_target_form) ? 'target' : 'weight-measurements',
+			'mode' => ($db_is_update) ? 'update' : 'add'
+		);
+
+		do_action(WE_LS_HOOK_DATA_ADDED_EDITED, $type, $weight_object);
 	}
 
 	return $result;
@@ -324,16 +333,26 @@ function ws_ls_get_min_max_dates($user_id)
 }
 function ws_does_weight_exist_for_this_date($user_id, $date)
 {
-  global $wpdb;
-  $table_name = $wpdb->prefix . WE_LS_TABLENAME;
-  $sql =  $wpdb->prepare('SELECT id FROM ' . $table_name . ' WHERE weight_date = %s and weight_user_id = %d', $date, $user_id);
-  $row = $wpdb->get_row($sql);
+  	global $wpdb;
 
-  if (!is_null($row)) {
-    return $row->id;
-  }
+	$cache_key = $user_id . '-' . WE_LS_CACHE_KEY_WEIGHT_FOR_DAY;
 
-  return false;
+	// Return cache if found!
+    if ($cache = ws_ls_get_cache($cache_key)) {
+        return $cache;
+    }
+
+	$table_name = $wpdb->prefix . WE_LS_TABLENAME;
+	$sql =  $wpdb->prepare('SELECT id FROM ' . $table_name . ' WHERE weight_date = %s and weight_user_id = %d', $date, $user_id);
+	$row = $wpdb->get_row($sql);
+
+	if (!is_null($row)) {
+		ws_ls_set_cache($cache_key, true);
+		return $row->id;
+	}
+
+	ws_ls_set_cache($cache_key, false);
+  	return false;
 }
 function ws_does_target_weight_exist($user_id)
 {

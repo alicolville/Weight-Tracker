@@ -16,12 +16,17 @@
 
             $shortcode_arguments = shortcode_atts(
             array(
-                'min-chart-points' => 2
+                'min-chart-points' => 2,					// Minimum number of data entries before chart is shown
+				'hide-first-target-form' => false,			// Hide first Target form
+				'hide-second-target-form' => false,			// Hide second Target form
+				'show-add-button' => false					// Display a "Add weight" button above the chart.
                ), $user_defined_arguments );
 
-            if (!is_numeric($shortcode_arguments['min-chart-points'])) {
-                $shortcode_arguments['min-chart-points'] = 2;
-            }
+			// Validate arguments
+			$shortcode_arguments['hide-first-target-form'] = ws_ls_force_bool_argument($shortcode_arguments['hide-first-target-form']);
+			$shortcode_arguments['hide-second-target-form'] = ws_ls_force_bool_argument($shortcode_arguments['hide-second-target-form']);
+			$shortcode_arguments['show-add-button'] = ws_ls_force_bool_argument($shortcode_arguments['show-add-button']);
+			$shortcode_arguments['min-chart-points'] = ws_ls_force_numeric_argument($shortcode_arguments['min-chart-points'], 2);
 
             $user_id = get_current_user_id();
 
@@ -73,7 +78,16 @@
 			// Start Chart Tab
 			$html_output .= ws_ls_start_tab("wlt-chart");
 
-            if ($weight_data && count($weight_data) >= $shortcode_arguments['min-chart-points']) {
+            if (($weight_data && count($weight_data) >= $shortcode_arguments['min-chart-points']) ||
+					empty($weight_data) && 0 == $shortcode_arguments['min-chart-points']) {
+
+				// Display "Add Weight" button?
+				if(true == $shortcode_arguments['show-add-button']) {
+					$html_output .= '	<div class="ws-ls-add-weight-button">
+											<input type="button" onclick="location.href=\'#add-weight\';" value="' . __('Add a weight entry', WE_LS_SLUG) . '" />
+										</div>';
+				}
+
 				// Great, we have some weight data. Chop it up so we only have (at most) 30 plot points for the graph
 				$html_output .= ws_ls_title(__('In a chart', WE_LS_SLUG));
 
@@ -87,8 +101,13 @@
 			}
 
 			// Include target form?
-			if (WE_LS_ALLOW_TARGET_WEIGHTS) {
+			if (WE_LS_ALLOW_TARGET_WEIGHTS && false == $shortcode_arguments['hide-first-target-form']) {
 				$html_output .= ws_ls_display_weight_form(true, 'ws-ls-target-form', false, false);
+			}
+
+			// Display "Add Weight" anchor?
+			if(true == $shortcode_arguments['show-add-button']) {
+				$html_output .= '<a name="add-weight"></a>';
 			}
 
 			// Display input form
@@ -105,7 +124,7 @@
             //If we have data, display data table
 			if ($weight_data && (count($weight_data) > 0 || $selected_week_number != -1))	{
 
-					if (WE_LS_ALLOW_TARGET_WEIGHTS && WE_LS_USE_TABS) {
+					if (WE_LS_ALLOW_TARGET_WEIGHTS && WE_LS_USE_TABS && false == $shortcode_arguments['hide-second-target-form']) {
 						$html_output .= ws_ls_display_weight_form(true, 'ws-ls-target-form', false, false);
 					}
 

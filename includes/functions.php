@@ -75,10 +75,25 @@ function ws_ls_weight_object($user_id, $kg, $pounds, $stones, $pounds_only, $not
         $weight['graph_value'] = $weight['kg'];
         break;
       default:
-        $weight['display'] = $weight['stones'] . __('St', WE_LS_SLUG) . " " . $pounds . __('lbs', WE_LS_SLUG);
+        $weight['display'] = $weight['stones'] . __('St', WE_LS_SLUG) . " " . $weight['pounds'] . __('lbs', WE_LS_SLUG);
         $weight['graph_value'] = ($weight['stones'] * 14) + $weight['pounds'];
         break;
   }
+
+  // Get Admin display value. Ignore what the user has seleced. (email notifications etc)
+  switch (WE_LS_DATA_UNITS) {
+	case 'pounds_only':
+	  $data = ws_ls_round_decimals($weight['only_pounds']);
+	  $weight['display-admin'] = $data . __('lbs', WE_LS_SLUG);
+	  break;
+	case 'kg':
+	  $weight['display-admin'] = $weight['kg'] . __('Kg', WE_LS_SLUG);
+	  break;
+	default:
+	  $weight['display-admin'] = $weight['stones'] . __('St', WE_LS_SLUG) . " " . $weight['pounds'] . __('lbs', WE_LS_SLUG);
+	  break;
+	}
+
 
   if ($weight['user_id']) {
 
@@ -87,16 +102,20 @@ function ws_ls_weight_object($user_id, $kg, $pounds, $stones, $pounds_only, $not
 
     $weight['first_weight'] = ws_ls_get_start_weight($weight['user_id']);
     if(is_numeric($weight['first_weight']) && $weight['first_weight'] > 0 && $weight['first_weight'] <> $weight['kg']) {
-      $weight['difference_from_start'] = (($weight['kg'] - $weight['first_weight']) / $weight['first_weight']) * 100;
-      $weight['difference_from_start'] = round($weight['difference_from_start']);
+		$weight['difference_from_start_kg'] = $weight['kg'] - $weight['first_weight'];
+	  	$weight['difference_from_start'] = (($weight['difference_from_start_kg']) / $weight['first_weight']) * 100;
+      	$weight['difference_from_start'] = round($weight['difference_from_start']);
+		$weight['difference_from_start_display'] = ws_ls_convert_kg_into_relevant_weight_String($weight['difference_from_start_kg'], true);
     }
 
     // Get user display name
-    // $user_info = get_userdata($weight['user_id']);
-    //
-    // if($user_info) {
-    //   $weight['user_nicename'] = $user_info->user_nicename;
-    // }
+    $user_info = get_userdata($weight['user_id']);
+
+    if($user_info) {
+		$weight['user']['id'] = $weight['user_id'];
+      	$weight['user']['display-name'] = $user_info->display_name;
+	  	$weight['user']['email'] = $user_info->user_email;
+    }
   }
 
 
@@ -149,6 +168,9 @@ function ws_ls_delete_data_for_user() {
 
 		// Update User stats table
 		ws_ls_stats_update_for_user($user_id);
+
+		// Let others know we cleared all user data
+		do_action( WE_LS_HOOK_DATA_USER_DELETED, $user_id);
     }
 }
 
@@ -241,16 +263,17 @@ function ws_ls_create_dialog_jquery_code($title, $message, $class_used_to_prompt
 
   <?php
 }
-function ws_ls_render_date($weight_object)
+function ws_ls_render_date($weight_object, $use_admin_setting = false)
 {
-  // Return US date if enabled otherwise return UK date
-  if(ws_ls_get_config('WE_LS_US_DATE')) {
-    return $weight_object['date-us'];
-  }
-  else {
-    return $weight_object['date-uk'];
-  }
+	$config_setting = ($use_admin_setting) ? WE_LS_US_DATE : ws_ls_get_config('WE_LS_US_DATE');
 
+  	// Return US date if enabled otherwise return UK date
+	if($config_setting) {
+		return $weight_object['date-us'];
+	}
+	else {
+		return $weight_object['date-uk'];
+	}
 }
 function ws_ls_get_unit()
 {
@@ -418,6 +441,14 @@ function ws_ls_force_bool_argument($value)
 
     return false;
 }
+function ws_ls_force_numeric_argument($value, $default = false)
+{
+	if (is_numeric($value)) {
+		return intval($value);
+	}
+
+    return ($default) ? $default : 0;
+}
 function ws_ls_remove_non_numeric($text)
 {
   if(!empty($text)){
@@ -448,6 +479,41 @@ function ws_ls_display_default_measurements() {
 		echo '</ul>';
 	}
 
+}
+
+function ws_ls_format_stones_pound_for_comparison_display($weight) {
+
+	if(isset($weight['stones']) && isset($weight['pounds'])) {
+
+		$text = array();
+
+		$show_stones = true;
+
+		// Is stones equal to zero?
+		if(-0 == $weight['stones'] || 0 == $weight['stones']) {
+			$show_stones = false;
+		}
+
+		if ($show_stones) {
+			$text[] = $weight['stones'] . __('St', WE_LS_SLUG);
+		}
+
+		if (is_numeric($weight['pounds'])) {
+
+			// If both stones and pounds negative then invert pounds.
+			// e.g.
+			// -1 stone -10 pounds will get displayed as -1 stone 10 pounds
+			if ($show_stones && (-0 == $weight['stones'] || $weight['stones'] < 0) && $weight['pounds'] < 0) {
+				$weight['pounds'] = abs($weight['pounds']);
+			}
+
+			$text[] = $weight['pounds'] . __('lbs', WE_LS_SLUG);
+		}
+
+		return implode(' ', $text);
+	}
+
+	return '';
 }
 
 ?>

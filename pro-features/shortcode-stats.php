@@ -60,8 +60,9 @@ function ws_ls_shortcode_stats_league_total($user_defined_arguments)
 														);
 
 			$percentage = '';
+
 			// Calculate %
-			if(true == $arguments['show_percentage']) {
+			if(true == $arguments['show_percentage'] && 0 !== intval($row['start_weight'])) {
 				$percentage = (($row['recent_weight'] - $row['start_weight']) / $row['start_weight']) * 100;
 				$percentage = (false === ws_ls_force_bool_argument($arguments['invert'])) ? $percentage : -$percentage ;
 		        $percentage = round($percentage) . '%';
@@ -92,7 +93,7 @@ function ws_ls_shortcode_stats_league_total($user_defined_arguments)
 		return apply_filters('weight-loss-stats-table-html', $html);
 	}
 
-	return '[Issue loading Weight Loss table]';
+	return __('No users have entered weights.', WE_LS_SLUG) .'<!-- Issue loading Weight Loss table (No data) -->';
 }
 
 
@@ -146,10 +147,10 @@ function ws_ls_shortcode_stats_display_value($stats, $arguments) {
 				break;
 			case 'stones_pounds':
 				$weight = ws_ls_to_stone_pounds($difference);
-				$stats['display-value'] .= $weight['stones'] . __('St', WE_LS_SLUG) . " " . $weight['pounds'] . __('lbs', WE_LS_SLUG);
+				$stats['display-value'] .= ws_ls_format_stones_pound_for_comparison_display($weight);
 				break;
 			default:
-				$stats['display-value'] .= $difference  . __('Kg', WE_LS_SLUG);
+				$stats['display-value'] .= ws_ls_round_decimals($difference)  . __('Kg', WE_LS_SLUG);
 		}
 
 		// Allow theme developer to override stats message

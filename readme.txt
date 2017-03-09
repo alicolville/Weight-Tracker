@@ -3,11 +3,11 @@ Contributors: aliakro
 Tags: weight, loss, lose, helper, bmi, body, mass, index, graph, track, stones, kg, table, data, plot, target, history, pounds, responsive, chart, measurements, cm, centimeters, inches, hip, waist, bicep, thigh
 Requires at least: 4.1.0
 Tested up to: 4.7.2
-Stable tag: 4.1.10
+Stable tag: 4.2
 
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Donate Link: https://www.yeken.uk/donate/
+Donate Link: https://www.paypal.me/yeken
 
 Allow registered users of your website to track their weight and relevant body measurements. History can be displayed in both tables & charts.
 
@@ -39,62 +39,52 @@ Also supports the following tags:
 	[weight-loss-tracker-most-recent-bmi] - Displays the user's BMI for most recent weight
 	[weight-loss-tracker-total-lost] - Total lost / gained by the entire community.
 	[weight-loss-tracker-league-table] - Show a league table of weight loss users.
+	[weight-loss-tracker-progress-bar] - Show a progress bar indicating progress towards target weight.
+	[weight-loss-tracker-reminder]. This allows you to display reminder messages for users to add a target weight or weight / measurement entry for the day.
 
-	[Read our Shortcode guide on GitHub](https://github.com/yekenuk/Weight-Loss-Tracker/wiki/Shortcodes)
+	[Weight Loss Tracker Website - Shortcode guide](https://weight.yeken.uk/shortcodes "Weight Loss Tracker Website - Shortcode guide")
 
 = Pro Version =
 
-Our Pro version has now been released! If you upgrade, you get he additional features:
+Our Pro version has now been released! If you upgrade, you get the additional features:
 
-* **Measurements**. If enabled, users can now track measurements alongside their weight entries. As admin, you can allow the user to track one or more of the following: "Bicep - Left", "Bicep - Right", "Forearm - Left", "Forearm - Right", "Calf - Left", "Bust / Chest", "Buttocks", "Hips", "Navel", "Thigh - Left", "Thigh - Right" and "Waist" (Please get in touch if you have additional fields).
-* **Community Stats**. Shortcodes to rendered total / lost by community and a league table of who has lost the most in the community.
-* **Body Mass Index**. If enabled by admin, once a user has added their Height (via user preferences tab) a BMI value will be presented in data tables.
-* **Widgets**. Widgets that allow you to display the graph and quick weight entry form within any widget area.
-* **Chart and form Shortcodes**. That allow you to display the graph and quick weight entry form by placing a shortcode on any post or page.
-* **Text Shortcodes**. Additional shortcodes for earliest and most recent dates entered.
-* **Better Admin**:
- * View / Delete user data**. Admin will be able to view and delete existing user data.
- * Extra Settings. Extra settings to customise the plugin will be added e.g. number of plot points on graph, rows per page, etc.
+* **Measurements.** Support for recording measurements like Hip, Waist, Leg, Bicep, etc. Displayed on charts and tables.
+* **BMI.** Allows a user to specify their height. Once specified, their BMI is displayed next to each weight entry. There is also a shortcode to render the latest BMI.
+* **Email notifications.** Receive email notifications when a person updates their target or adds / edits a weight.
+* **Overall user stats.** Shortcodes that allow you to display the total lost / gained for the community and another to display a league table.
+* **Widgets.** Widgets that allow you to display the graph and quick weight entry form within any widget area.
+* **Chart and form Shortcodes.** That allow you to display the graph and quick weight entry form by placing a shortcode on any post or page.
+* **Progress Bar shortcode.** A shortcode that visually displays the logged in user\'s progress towards their target
+* **Reminder shortcode.** A shortcode that can be used to remind the user to enter their target or weight for today.
+* **Message shortcode** A shortcode that allows you to congratulate a user when they lose weight x number of times. It also provides the opposite allowing you to provide encouragement when someone gains weight.
+* **Text Shortcodes.** Additional shortcodes for earliest and most recent dates entered.
+* **Progress Bar shortcode / widget.** Display a user\'s progress towards their weight target.
+* **Reminder shortcode.** Display a reminder to enter their weight for the given day or enter a target.
+* **Admin: View / Delete user data**. Admin will be able to view and delete existing user data.
 * **User preferences**. If enabled, the user will be able to select which unit they wish to store their weight in Metric or Imperial. They will also be able to specify date format and clear all their weight data.
-* **Bar Charts**. Fancy something different to a line chart? The plugin will also suppor`````t Bar Charts.
+* **Bar Charts**. Fancy something different to a line chart? The plugin will also support Bar Charts.
 * **Decimals**. Decimals will be allowed weight in Pounds only or Kg modes.
 * **Delete existing entry**. A logged in user will be able to delete or edit an existing weight entry.
-* **Better Tables**.. Data tables in front end and admin will support paging and sorting.
+* **Better Tables.**. Data tables in front end and admin will support paging and sorting.
+* **Admin: Extra Settings**. Extra settings to customise the plugin will be added e.g. number of plot points on graph, rows per page, etc.', WE_LS_SLUG)
 
 = Languages support =
 
-Fully supported (have the majority of translations):
+The plugin is written in English (UK) but has support for other languages such as French, Spanish, Dutch, Italian, Norwegian, Portuguese-Brazil, etc. For a list of supported languages please visit:
 
-* English (UK)
+[Weight Loss Tracker Website - Supported Languages](https://weight.yeken.uk/weight-units-date-formats-languages/ "Weight Loss Tracker Website - Supported Languages")
 
-Languages partially supported (have some of the translations):
-
-* Portugese (thanks @Thomas)
-* Italian (thanks @Salvo)
-* Norwegian - Norsk bokmål (Thanks Rodrigo)
-* Danish (thanks @kfasterholdt and @spaniole)
-* Dutch (thanks Dennis, Yvon & Bart)
-* Finish (thanks Ari)
-* French (thanks @alexiarna)
-* German (thanks Michael @ Activate the Beast)
-* Hungarian (thanks Noam)
-* Portuguese-Brazil (thanks Team Jota)
-* Romanian (thanks @alexiarna)
-* Spanish (thanks @idelfonsog2)
-
-Need a translation? Email us: [email@YeKen.uk](mailto:email@YeKen.uk "email@YeKen.uk")
-
-* Developed by [YeKen.uk](https://www.yeken.uk "YeKen.uk") *
+Need a translation? Please read the following guide: [Translating the Weight Loss Tracker plugin](https://weight.yeken.uk/translating-weight-loss-tracker-plugin/ "Translating the Weight Loss Tracker plugin")
 
 = Documentation =
 
-Need further help? Please visit the Wiki:
+Need further help? Please visit the dedicated site:
 
-[Weight Loss Tracker Wiki @ Github](https://github.com/yekenuk/Weight-Loss-Tracker/wiki "Weight Loss Tracker Wiki @ Github")
+[Weight Loss Tracker Website](https://weight.yeken.uk "Weight Loss Tracker Website")
 
 = Donate =
 
-Paypal Donate: [email@YeKen.uk](mailto:email@YeKen.uk "email@YeKen.uk")
+Paypal Donate: [www.paypal.me/yeken](https://www.paypal.me/yeken "www.paypal.me/yeken")
 
 == Installation ==
 
@@ -107,7 +97,7 @@ Paypal Donate: [email@YeKen.uk](mailto:email@YeKen.uk "email@YeKen.uk")
 
 = Do you have any guides / documentation? =
 
-Yes, I'm currently expanding my Wiki: [Weight Loss Tracker Wiki @ Github](https://github.com/yekenuk/Weight-Loss-Tracker/wiki "Weight Loss Tracker Wiki @ Github")
+Yes! Please visit our dedicated site [Weight Loss Tracker Website](https://weight.yeken.uk "Weight Loss Tracker Website")
 
 = Does it create any custom mySQL tables =
 
@@ -162,9 +152,32 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 
  == Upgrade Notice ==
 
- New League Table shortcode added and various tweaks.
+Lots of new features. Three new Pro shortcodes, email notifications and more.
 
 == Changelog ==
+
+= 4.2 =
+
+* New feature: Message shortcode to motivate people when they gain weight x number of times or congratulate if they lose weight x number of times. - Read more: https://weight.yeken.uk/shortcodes/
+* New feature: Reminder shortcode to display reminder messages for users to add a target weight or weight / measurement entry for the day. - Read more: https://weight.yeken.uk/shortcodes/
+* New feature: Progress bar towards target [weight-loss-tracker-progress-bar] - Read more: https://weight.yeken.uk/shortcodes/
+* New Feature: Added widget for progress bar shortcode above. - Read more: https://weight.yeken.uk/widgets/
+* New feature: Email notifications for update of user's target or adding / editing a weight entry: https://weight.yeken.uk/email-notifications/
+* New feature: New attribute "redirect-url" added for the shortcode [ws_ls_shortcode_form]. If specified and once the data has been saved, the user will be redirected to the given URL. Please note, the URL has to be one for the current site, otherwise the redirect will not happen (URL is passed through wp_safe_redirect()). Read more https://weight.yeken.uk/shortcodes/
+* New feature / improvements: Additional hooks and filters added. Read more:
+* Improvement: Added the following to [weight-loss-tracker] shortcode: 'hide-first-target-form', 'hide-second-target-form' and 'show-add-button'. Read more: https://weight.yeken.uk/shortcodes/
+* Improvement: Every license activation is instantly sent to YeKen.
+* Improvement: Stats now sent weekly (instead of monthly) using a WP cron job. If "Send usage data to YeKen" is enabled, usage stats will be sent on weekly basis to YeKen by a scheduled WP cron job (instead of relying on an expired cached value to trigger the send).
+* Improvement: Upgraded Chart.js to 2.5.0.
+* Improvement: Changed "Upgrade to Pro" and documentation links to point to new website https://weight.yeken.uk
+* Improvement: Changed comms and license activations to be sent to https://weight.yeken.uk (instead of yeken.uk)
+* Improvement: Slight tweaks to advanced data table layouts.
+* Bug fix: Setting "min-chart-points" attribute to 0 will now display the chart if no weight data has been entered.
+* Bug fix: Issue generating stats for a user when a target weight is entered but no user weights exist (division by zero).
+* Bug fix: Stats are instantly tidied up / re-generated if all user data is delete or an individual user deletes their data.
+* Bug fix: If no target weight has been set, the shortcode will now inform the user when the shortcode [ws_ls_weight_difference_target] is rendered.
+* Bug fix: Weight loss comparison figures shown properly when in stone / pounds.
+* Bug fix: When using [weight-loss-tracker-total-lost], Kg values are now rounded to two decimal places.
 
 = 4.1.10 =
 

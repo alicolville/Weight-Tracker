@@ -50,6 +50,7 @@ function ws_ls_delete_cache_for_given_user($user_id = false)
             WHERE option_name LIKE '%transient_timeout_" . WE_LS_SLUG . $user_id ."%'";
 
     ws_ls_delete_cache($user_id . '-' . WE_LS_CACHE_KEY_START_WEIGHT);
+	ws_ls_delete_cache($user_id . '-' . WE_LS_CACHE_KEY_WEIGHT_FOR_DAY);
 
     $wpdb->query($sql);
   }

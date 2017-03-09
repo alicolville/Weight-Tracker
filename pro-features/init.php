@@ -12,14 +12,24 @@ if(defined('WS_LS_ABSPATH')){
 	include WS_LS_ABSPATH . 'pro-features/shortcode-table.php';
 	include WS_LS_ABSPATH . 'pro-features/shortcode-various.php';
 	include WS_LS_ABSPATH . 'pro-features/shortcode-stats.php';
+	include WS_LS_ABSPATH . 'pro-features/shortcode-reminders.php';
+	include WS_LS_ABSPATH . 'pro-features/shortcode-progress-bar.php';
+	include WS_LS_ABSPATH . 'pro-features/shortcode-messages.php';
 	include WS_LS_ABSPATH . 'pro-features/advanced-table.php';
 	include WS_LS_ABSPATH . 'pro-features/widget-chart.php';
 	include WS_LS_ABSPATH . 'pro-features/widget-form.php';
+	include WS_LS_ABSPATH . 'pro-features/widget-progress.php';
 	include WS_LS_ABSPATH . 'pro-features/user-data.php';
 	include WS_LS_ABSPATH . 'pro-features/user-data-ajax.php';
 	include WS_LS_ABSPATH . 'pro-features/db.php';
 	include WS_LS_ABSPATH . 'pro-features/functions.measurements.php';
 	include WS_LS_ABSPATH . 'pro-features/functions.stats.php';
+
+	// Email notifications enabled?
+	if(WE_LS_EMAIL_ENABLE) {
+		include WS_LS_ABSPATH . 'pro-features/emails.php';
+	}
+
 }
 
 // Register shortcodes
@@ -32,6 +42,9 @@ function ws_ls_register_pro_shortcodes(){
 		[weight-loss-tracker-most-recent-bmi] - Displays the user's BMI for most recent weight
 		[weight-loss-tracker-total-lost] - Total lost / gained by the entire community.
 		[weight-loss-tracker-league-table] - Show a league table of weight loss users.
+		[weight-loss-tracker-reminder] - Show a reminder to either enter weight for today or target weight
+		[weight-loss-tracker-progress-bar] - Show a progress bar indicating progress towards target weight.
+		[weight-loss-tracker-message] - Show a message if the user meets certain criteria (e.g. put weight on)
     */
 
     add_shortcode( 'weight-loss-tracker-chart', 'ws_ls_shortcode_chart' );
@@ -40,8 +53,9 @@ function ws_ls_register_pro_shortcodes(){
 	add_shortcode( 'weight-loss-tracker-most-recent-bmi', 'ws_ls_get_user_bmi' );
 	add_shortcode( 'weight-loss-tracker-total-lost', 'ws_ls_shortcode_stats_total_lost' );
 	add_shortcode( 'weight-loss-tracker-league-table', 'ws_ls_shortcode_stats_league_total' );
-
-
+	add_shortcode( 'weight-loss-tracker-reminder', 'ws_ls_shortcode_reminder' );
+	add_shortcode( 'weight-loss-tracker-progress-bar', 'ws_ls_shortcode_progress_bar' );
+	add_shortcode( 'weight-loss-tracker-message', 'ws_ls_shortcode_message' );
 }
 add_action( 'init', 'ws_ls_register_pro_shortcodes');
 
@@ -66,14 +80,6 @@ function ws_ls_enqueue_datatable_scripts($admin = false) {
 
 }
 
-// function ws_ls_enqeue_pro_scripts(){
-//
-//   if(WS_LS_ADVANCED_TABLES) {
-// 	  ws_ls_enqueue_datatable_scripts();
-//   }
-// }
-// add_action( 'wp_enqueue_scripts', 'ws_ls_enqeue_pro_scripts');
-
 function ws_ls_admin_enqueue_pro_scripts(){
 
 	// Only add Datatable scripts to User preferences page
@@ -88,6 +94,7 @@ add_action( 'admin_enqueue_scripts', 'ws_ls_admin_enqueue_pro_scripts');
 function we_ls_register_widgets()
 {
     register_widget( 'ws_ls_widget_chart' );
-    register_widget( 'ws_ls_widget_form' );// Add locilzation data for JS
+    register_widget( 'ws_ls_widget_form' );
+	register_widget( 'ws_ls_widget_progress_bar' );
 }
 add_action( 'after_setup_theme', 'we_ls_register_widgets', 20 );

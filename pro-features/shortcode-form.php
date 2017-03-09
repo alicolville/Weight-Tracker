@@ -26,7 +26,8 @@ function ws_ls_shortcode_form($user_defined_arguments)
             'user-id' => get_current_user_id(),
             'target' => false,
             'class' => false,
-            'hide-titles' => false
+            'hide-titles' => false,
+            'redirect-url' => false
            ), $user_defined_arguments );
 
     // Argument validation
@@ -37,5 +38,7 @@ function ws_ls_shortcode_form($user_defined_arguments)
     $form_arguments['target'] = ws_ls_force_bool_argument($form_arguments['target']);
     $form_arguments['hide-titles'] = ws_ls_force_bool_argument($form_arguments['hide-titles']);
 
-    return ws_ls_display_weight_form($form_arguments['target'], $form_arguments['class'], $form_arguments['user-id'], $form_arguments['hide-titles'], $form_number);
+    return ws_ls_display_weight_form($form_arguments['target'], $form_arguments['class'], $form_arguments['user-id'], $form_arguments['hide-titles'],
+                                        $form_number, false, true, false, $form_arguments['redirect-url']);
+
 }

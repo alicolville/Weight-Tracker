@@ -77,6 +77,7 @@ function ws_ls_settings_page() {
                                         <li><a><?php echo __( 'General', WE_LS_SLUG); ?><span><?php echo __( 'General settings', WE_LS_SLUG); ?></span></a></li>
                                         <li><a><?php echo __( 'User Experience', WE_LS_SLUG); ?><span><?php echo __( "Settings that effect the user's overall experience", WE_LS_SLUG); ?></span></a></li>
                                         <li><a><?php echo __( 'Chart', WE_LS_SLUG); ?><span><?php echo __( 'Chart styling and config', WE_LS_SLUG); ?></span></a></li>
+										<li><a><?php echo __( 'Notifications', WE_LS_SLUG); ?><span><?php echo __( 'Configure email notifications', WE_LS_SLUG); ?></span></a></li>
                                         <li><a><?php echo __( 'Measurements', WE_LS_SLUG); ?><span><?php echo __( 'Allow users to record their measurements', WE_LS_SLUG); ?></span></a></li>
                                     </ul>
 									<div>
@@ -153,7 +154,7 @@ function ws_ls_settings_page() {
 																<option value="no" <?php selected( get_option('ws-ls-allow-stats'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
 																<option value="yes" <?php selected( get_option('ws-ls-allow-stats'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
 															</select>
-															<p><?php echo __('We would love to see how our plugin is used. By consenting, you are allowing permission for the following data to be sent on a monthly basis to YeKen: URL, summary of settings, count of recorded weights and measurements. No user or admin data will ever be transmitted.', WE_LS_SLUG)?></p>
+															<p><?php echo __('We would love to see how our plugin is used. By consenting, you are allowing permission for the following data to be sent on a weekly basis to YeKen: URL, summary of settings, count of recorded weights and measurements. No user or admin data will ever be transmitted.', WE_LS_SLUG)?></p>
 														</td>
 													</tr>
 											</table>
@@ -322,9 +323,59 @@ function ws_ls_settings_page() {
 												</tr>
 											</table>
 										</div>
+											<div>
+												<table class="form-table">
+													<tr class="<?php echo $disable_if_not_pro_class; ?>">
+														<th scope="row"><?php echo __( 'Enable email notifications', WE_LS_SLUG ); ?></th>
+														<td>
+															<select id="ws-ls-email-enable" name="ws-ls-email-enable">
+																<option value="no" <?php selected( get_option('ws-ls-email-enable'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+																<option value="yes" <?php selected( get_option('ws-ls-email-enable'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+															</select>
+														</td>
+													</tr>
+													<tr class="<?php echo $disable_if_not_pro_class; ?>">
+														<th scope="row"><?php echo __( 'Email addresses to notify', WE_LS_SLUG ); ?></th>
+														<td>
+															<input id="ws-ls-email-addresses" name="ws-ls-email-addresses" type="text" maxlength="500" class="large-text" value="<?php echo WE_LS_EMAIL_ADDRESSES; ?>">
+															<p><?php echo __('Specify one or more email addresses to be notified. Seperate multiple emails with a comma.', WE_LS_SLUG); ?></p>
+														</td>
+													</tr>
+													<tr class="<?php echo $disable_if_not_pro_class; ?>">
+														<th scope="row"><?php echo __( 'New weight / measurement entries', WE_LS_SLUG ); ?></th>
+														<td>
+															<select id="ws-ls-email-notifications-new" name="ws-ls-email-notifications-new">
+																<option value="yes" <?php selected( get_option('ws-ls-email-notifications-new'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+																<option value="no" <?php selected( get_option('ws-ls-email-notifications-new'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+															</select>
+															<p><?php echo __('Receive notifications when a member adds a new weight / measurement entry.', WE_LS_SLUG); ?></p>
+														</td>
+													</tr>
+													<tr class="<?php echo $disable_if_not_pro_class; ?>">
+														<th scope="row"><?php echo __( 'Edited weight / measurement entries', WE_LS_SLUG ); ?></th>
+														<td>
+															<select id="ws-ls-email-notifications-edit" name="ws-ls-email-notifications-edit">
+																<option value="yes" <?php selected( get_option('ws-ls-email-notifications-edit'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+																<option value="no" <?php selected( get_option('ws-ls-email-notifications-edit'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+															</select>
+															<p><?php echo __('Receive notifications when a member edits an existing weight / measurement entry.', WE_LS_SLUG); ?></p>
+														</td>
+													</tr>
+													<tr class="<?php echo $disable_if_not_pro_class; ?>">
+														<th scope="row"><?php echo __( 'New / updated targets', WE_LS_SLUG ); ?></th>
+														<td>
+															<select id="ws-ls-email-notifications-targets" name="ws-ls-email-notifications-targets">
+																<option value="yes" <?php selected( get_option('ws-ls-email-notifications-targets'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+																<option value="no" <?php selected( get_option('ws-ls-email-notifications-targets'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+															</select>
+															<p><?php echo __('Receive notifications when a member adds / edits their target.', WE_LS_SLUG); ?></p>
+														</td>
+													</tr>
+												</table>
+											</div>
                                         <div>
                                            <table class="form-table">
-                                                <tr  class="<?php echo $disable_if_not_pro_class; ?>">
+                                                <tr class="<?php echo $disable_if_not_pro_class; ?>">
                                                 	<th scope="row"><?php echo __( 'Allow Measurements?' , WE_LS_SLUG); ?></th>
 													<td>
 														<select id="ws-ls-allow-measurements" name="ws-ls-allow-measurements">
@@ -467,6 +518,14 @@ function ws_ls_register_settings()
 
 		// Stats
 		register_setting( 'we-ls-options-group', 'ws-ls-disable-stats-cron' );
+
+		// Emails
+		register_setting( 'we-ls-options-group', 'ws-ls-email-enable' );
+		register_setting( 'we-ls-options-group', 'ws-ls-email-addresses' );
+		register_setting( 'we-ls-options-group', 'ws-ls-email-notifications-edit' );
+		register_setting( 'we-ls-options-group', 'ws-ls-email-notifications-new' );
+		register_setting( 'we-ls-options-group', 'ws-ls-email-notifications-targets' );
+
     }
 
 }

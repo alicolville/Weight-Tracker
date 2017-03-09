@@ -31,10 +31,6 @@
     return $html_output;
   }
 
-
-
-
-
   /* Display Chart */
 	function ws_ls_display_chart($weight_data, $options = false)
 	{
@@ -115,7 +111,6 @@
 
 				$graph_data['datasets'][1] = array( 'label' =>  __('Target', WE_LS_SLUG),
 												    'borderColor' => $chart_config['weight-target-color'],
-													'borderColor' => $chart_config['weight-target-color'],
 													'borderWidth' => $chart_config['width'],
 													'pointRadius' => 0,
 													'borderDash' => array(5,5),
@@ -140,7 +135,6 @@
 
 				$graph_data['datasets'][$dataset_index] = array( 'label' =>  __( $data['title'], WE_LS_SLUG),
 													'borderColor' => $data['chart_colour'],
-													'borderColor' => $data['chart_colour'],
 													'borderWidth' => $chart_config['width'],
 													'pointRadius' => $point_size,
 													'fill' => false,
@@ -158,32 +152,36 @@
 			}
 		}
 
-		foreach ($weight_data as $weight_object) {
+		if($weight_data) {
+			foreach ($weight_data as $weight_object) {
 
-			array_push($graph_data['labels'], $weight_object['date-graph']);
-			array_push($graph_data['datasets'][0]['data'], $weight_object['graph_value']);
+				array_push($graph_data['labels'], $weight_object['date-graph']);
+				array_push($graph_data['datasets'][0]['data'], $weight_object['graph_value']);
 
-			// Set target weight if specified
-			if ($target_weight != false && WE_LS_ALLOW_TARGET_WEIGHTS && $chart_type_supports_target_data){
-				array_push($graph_data['datasets'][1]['data'], $target_weight['graph_value']);
-			}
+				// Set target weight if specified
+				if ($target_weight != false && WE_LS_ALLOW_TARGET_WEIGHTS && $chart_type_supports_target_data){
+					array_push($graph_data['datasets'][1]['data'], $target_weight['graph_value']);
+				}
 
-			// ----------------------------------------------------------------------------
-			// Add data for all measurements
-			// ----------------------------------------------------------------------------
-			if($measurements_enabled) {
-				foreach ($active_measurment_field_keys as $key) {
+				// ----------------------------------------------------------------------------
+				// Add data for all measurements
+				// ----------------------------------------------------------------------------
+				if($measurements_enabled) {
+					foreach ($active_measurment_field_keys as $key) {
 
-					// If we have a genuine measurement value then add to graph data - otherwise NULL
-					if(!is_null($weight_object['measurements'][$key]) && 0 != $weight_object['measurements'][$key]) {
-						$graph_data['datasets'][$measurement_graph_indexes[$key]]['data'][] = ws_ls_prep_measurement_for_display($weight_object['measurements'][$key]);
-						$graph_data['datasets'][$measurement_graph_indexes[$key]]['data-count']++;
-					} else {
-						$graph_data['datasets'][$measurement_graph_indexes[$key]]['data'][] = NULL;
+						// If we have a genuine measurement value then add to graph data - otherwise NULL
+						if(!is_null($weight_object['measurements'][$key]) && 0 != $weight_object['measurements'][$key]) {
+							$graph_data['datasets'][$measurement_graph_indexes[$key]]['data'][] = ws_ls_prep_measurement_for_display($weight_object['measurements'][$key]);
+							$graph_data['datasets'][$measurement_graph_indexes[$key]]['data-count']++;
+						} else {
+							$graph_data['datasets'][$measurement_graph_indexes[$key]]['data'][] = NULL;
+						}
 					}
 				}
 			}
+
 		}
+
 
 		// Remove any empty measurements from graph
 		if($measurements_enabled) {
@@ -239,7 +237,7 @@
 */
 function ws_ls_display_weight_form($target_form = false, $class_name = false, $user_id = false, $hide_titles = false,
                                         $form_number = false, $force_to_todays_date = false, $hide_login_message_if_needed = true,
-                                            $hide_measurements_form = false)
+                                            $hide_measurements_form = false, $redirect_url = false)
 {
     global $save_response;
     $html_output  = '';
@@ -281,6 +279,11 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 		<input type="hidden" value="true" id="ws_ls_is_weight_form" name="ws_ls_is_weight_form" />
 		<input type="hidden" value="' . $user_id . '" id="ws_ls_user_id" name="ws_ls_user_id" />
 		<input type="hidden" value="' . wp_hash($user_id) . '" id="ws_ls_security" name="ws_ls_security" />';
+
+	    // Redirect form afterwards?
+        if($redirect_url) {
+            $html_output .= '<input type="hidden" value="' . esc_html($redirect_url) . '" id="ws_redirect" name="ws_redirect" />';
+        }
 
 		if($form_number){
 				$html_output .= '	<input type="hidden" value="' . $form_number . '" id="ws_ls_form_number" name="ws_ls_form_number" />';
