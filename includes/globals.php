@@ -251,8 +251,10 @@
 		if ('yes' == get_option('ws-ls-email-enable')) {
 			$globals['WE_LS_EMAIL_ENABLE'] = true;
 		}
-		if (!empty(get_option('ws-ls-email-addresses'))) {
+		if (get_option('ws-ls-email-addresses')) {
 			$globals['WE_LS_EMAIL_ADDRESSES'] = get_option('ws-ls-email-addresses');
+		} else {
+			$globals['WE_LS_EMAIL_ADDRESSES'] = '';
 		}
 		if ('no' == get_option('ws-ls-email-notifications-edit')) {
 			$globals['WE_LS_EMAIL_NOTIFICATIONS_EDIT'] = false;
