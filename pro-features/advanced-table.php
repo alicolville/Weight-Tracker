@@ -147,8 +147,8 @@ function ws_ls_advanced_data_table($weight_data)
 
 		$html_output .= '	<td style="font-size:0.7em;word-wrap:break-word;">' . $weight_object['notes'] . '</td>
 							<td class="ws-ls-table-options">
-								<img  src="' . $edit_image .'"  id="ws-ls-edit-' . $weight_object['db_row_id'] . '" data-row-id="' . $weight_object['db_row_id'] . '" class="first ws-ls-edit-row" />
-								<img src="' . $delete_image .'"  id="ws-ls-delete-' . $weight_object['db_row_id'] . '" data-row-id="' . $weight_object['db_row_id'] . '" class="ws-ls-delete-row" />
+								<img width="15" height="15" style="width:15px; height: 15px;" src="' . $edit_image .'"  id="ws-ls-edit-' . $weight_object['db_row_id'] . '" data-row-id="' . $weight_object['db_row_id'] . '" class="first ws-ls-edit-row" />
+								<img width="15" height="15" style="width:15px; height: 15px;" src="' . $delete_image .'"  id="ws-ls-delete-' . $weight_object['db_row_id'] . '" data-row-id="' . $weight_object['db_row_id'] . '" class="ws-ls-delete-row" />
 							</td>
 						</tr>';
   }
