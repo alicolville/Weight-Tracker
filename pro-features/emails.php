@@ -85,7 +85,7 @@ function ws_ls_email_notifications_template($placeholders = array()) {
 
 function ws_ls_email_notification_addresses() {
 
-	if(empty(WE_LS_EMAIL_ADDRESSES)) {
+	if(!defined('WE_LS_EMAIL_ADDRESSES')) {
 		return false;
 	}
 
