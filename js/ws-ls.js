@@ -397,10 +397,10 @@ jQuery( document ).ready(function ($) {
 						svgStyle: {width: $(this).data("width"), height: $(this).data("height")},
 						text: {
 							    style: {
-							      color: $(this).data("text-colour"),
+							      color: $(this).data("text-colour")
 							  },
 		  				},
-						step: (state, bar) => {
+						step: function(state, bar) {
 						    bar.setText(Math.round(bar.value() * 100) + "% " + $(this).data("precentage-text"));
 						}
 					};
@@ -410,7 +410,6 @@ jQuery( document ).ready(function ($) {
 		} else {
 			var progress_bar = new ProgressBar.Line("#" + id, options);
 		}
-
 	    progress_bar.animate(progress);
 
    });

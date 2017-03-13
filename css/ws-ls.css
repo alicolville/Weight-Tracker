@@ -104,7 +104,7 @@ input.ws-ls-valid
 	margin: 10px
 }
 
-.ws-ls-table-options img
+.ws-ls-table-options img, .ws-ls-edit-row, .ws-ls-delete-row
 {
 	width: 15px;
 	height: 15px;
@@ -273,4 +273,33 @@ input.ws-ls-valid
 .ws-col-rank {
 	width: 10px;
 	text-align: center;
+}
+.ws-ls-alert-box {
+    color:#555;
+    border-radius:10px;
+    padding:10px 10px 10px 36px;
+    margin:10px;
+}
+.ws-ls-alert-box span {
+    font-weight:bold;
+    text-transform:uppercase;
+}
+.ws-ls-error {
+	background-color:#ffecec;
+    border:1px solid #f5aca6;
+}
+.ws-ls-success {
+	background-color:#e9ffd9;
+    border:1px solid #a6ca8a;
+}
+.ws-ls-warning {
+	background-color:#fff8c4;
+    border:1px solid #f2c779;
+}
+.ws-ls-info {
+	background-color:#e3f7fc;
+    border:1px solid #8ed9f6;
+}
+.ws-ls-add-weight-button {
+	margin: 10px 0px 20px 0px;
 }
