@@ -36,7 +36,7 @@ function ws_ls_shortcode_progress_bar($user_defined_arguments) {
 															false;
 
 		// Validate / apply defaults
-		$arguments['type'] = (in_array($arguments['type'], ['circle', 'line'])) ? $arguments['type'] : 'line';
+		$arguments['type'] = (in_array($arguments['type'], array('circle', 'line'))) ? $arguments['type'] : 'line';
 		$arguments['stroke-width'] = ws_ls_force_numeric_argument($arguments['stroke-width'], 3);
 		$arguments['trail-width'] = ws_ls_force_numeric_argument($arguments['trail-width'], 1);
 		$arguments['animation-duration'] = ws_ls_force_numeric_argument($arguments['animation-duration'], 1400);
