@@ -36,26 +36,35 @@ if(defined('WS_LS_ABSPATH')){
 function ws_ls_register_pro_shortcodes(){
 
     /*
-        [weight-loss-tracker-chart] - Displays a chart
-        [weight-loss-tracker-form] - Displays a form
-        [weight-loss-tracker-table] - Displays a data table
-		[weight-loss-tracker-most-recent-bmi] - Displays the user's BMI for most recent weight
-		[weight-loss-tracker-total-lost] - Total lost / gained by the entire community.
-		[weight-loss-tracker-league-table] - Show a league table of weight loss users.
-		[weight-loss-tracker-reminder] - Show a reminder to either enter weight for today or target weight
-		[weight-loss-tracker-progress-bar] - Show a progress bar indicating progress towards target weight.
-		[weight-loss-tracker-message] - Show a message if the user meets certain criteria (e.g. put weight on)
+        [wlt-chart] - Displays a chart
+        [wlt-form] - Displays a form
+        [wlt-table] - Displays a data table
+		[wlt-recent-bmi] - Displays the user's BMI for most recent weight
+		[wlt-total-lost] - Total lost / gained by the entire community.
+		[wlt-league-table] - Show a league table of weight loss users.
+		[wlt-reminder] - Show a reminder to either enter weight for today or target weight
+		[wlt-progress-bar] - Show a progress bar indicating progress towards target weight.
+		[wlt-message] - Show a message if the user meets certain criteria (e.g. put weight on)
     */
 
     add_shortcode( 'weight-loss-tracker-chart', 'ws_ls_shortcode_chart' );
+	add_shortcode( 'wlt-chart', 'ws_ls_shortcode_chart' );
     add_shortcode( 'weight-loss-tracker-form', 'ws_ls_shortcode_form' );
+	add_shortcode( 'wlt-form', 'ws_ls_shortcode_form' );
     add_shortcode( 'weight-loss-tracker-table', 'ws_ls_shortcode_table' );
+	add_shortcode( 'wlt-table', 'ws_ls_shortcode_table' );
 	add_shortcode( 'weight-loss-tracker-most-recent-bmi', 'ws_ls_get_user_bmi' );
+	add_shortcode( 'wlt-recent-bmi', 'ws_ls_get_user_bmi' );
 	add_shortcode( 'weight-loss-tracker-total-lost', 'ws_ls_shortcode_stats_total_lost' );
+	add_shortcode( 'wlt-total-lost', 'ws_ls_shortcode_stats_total_lost' );
 	add_shortcode( 'weight-loss-tracker-league-table', 'ws_ls_shortcode_stats_league_total' );
+	add_shortcode( 'wlt-league-table', 'ws_ls_shortcode_stats_league_total' );
 	add_shortcode( 'weight-loss-tracker-reminder', 'ws_ls_shortcode_reminder' );
+	add_shortcode( 'wlt-reminder', 'ws_ls_shortcode_reminder' );
 	add_shortcode( 'weight-loss-tracker-progress-bar', 'ws_ls_shortcode_progress_bar' );
+	add_shortcode( 'wlt-progress-bar', 'ws_ls_shortcode_progress_bar' );
 	add_shortcode( 'weight-loss-tracker-message', 'ws_ls_shortcode_message' );
+	add_shortcode( 'wlt-tracker-message', 'ws_ls_shortcode_message' );
 }
 add_action( 'init', 'ws_ls_register_pro_shortcodes');
 

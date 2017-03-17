@@ -81,7 +81,8 @@
 		'WE_LS_EMAIL_ADDRESSES' => '',
 		'WE_LS_EMAIL_NOTIFICATIONS_EDIT' => true,
 		'WE_LS_EMAIL_NOTIFICATIONS_NEW' => true,
-		'WE_LS_EMAIL_NOTIFICATIONS_TARGETS' => true
+		'WE_LS_EMAIL_NOTIFICATIONS_TARGETS' => true,
+		'WE_LS_DISABLE_YEKEN_NOTIFICATIONS' => false
 	);
 
     // -----------------------------------------------------------------------------------
@@ -229,6 +230,12 @@
 	// -----------------------------------------------------------------------------------
 	if (WS_LS_IS_PRO && ('yes' == get_option('ws-ls-display-bmi-in-tables') || false == get_option('ws-ls-display-bmi-in-tables'))) {
 		$globals['WE_LS_DISPLAY_BMI_IN_TABLES'] = true;
+	}
+	// -----------------------------------------------------------------------------------
+	// Disable admin notifications from YeKen
+	// -----------------------------------------------------------------------------------
+	if ('yes' == get_option('ws-ls-disable-yeken-notifications')) {
+		$globals['WE_LS_DISABLE_YEKEN_NOTIFICATIONS'] = true;
 	}
 	// -----------------------------------------------------------------------------------
 	// Line Colours

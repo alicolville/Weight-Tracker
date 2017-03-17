@@ -20,7 +20,7 @@ function ws_ls_shortcode_table($user_defined_arguments)
 
     // Render chart
     if ($weight_data){
-        return ws_ls_advanced_data_table($weight_data);
+        return ws_ls_advanced_data_table($weight_data, ['hide-edit' => true]);
     } else {
         return '<p>' . __('No weight data was found for the specified user.', WE_LS_SLUG) . '</p>';
     }

@@ -105,28 +105,6 @@ function ws_ls_settings_page() {
 															<p><?php echo __('Specify what format dates should be displayed in (i.e. UK or US format)', WE_LS_SLUG); ?></p>
 														</td>
 													</tr>
-													<tr class="<?php echo $disable_if_not_pro_class; ?>">
-														<th scope="row"><?php echo __( 'Allow decimal places?' , WE_LS_SLUG); ?></th>
-														<td>
-															<select id="ws-ls-allow-decimals" name="ws-ls-allow-decimals">
-																<option value="yes" <?php selected( get_option('ws-ls-allow-decimals'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
-																<option value="no" <?php selected( get_option('ws-ls-allow-decimals'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
-
-															</select>
-															<p><?php echo __('If enabled, Decimal weight entries will be allowed in Kg or Pounds mode.', WE_LS_SLUG)?></p>
-														</td>
-													</tr>
-													<tr class="<?php echo $disable_if_not_pro_class; ?>">
-														<th scope="row"><?php echo __( 'Display BMI in tables?' , WE_LS_SLUG); ?></th>
-														<td>
-															<select id="ws-ls-display-bmi-in-tables" name="ws-ls-display-bmi-in-tables">
-																<option value="yes" <?php selected( get_option('ws-ls-display-bmi-in-tables'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
-																<option value="no" <?php selected( get_option('ws-ls-display-bmi-in-tables'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
-
-															</select>
-															<p><?php echo __('If enabled, BMI values will be displayed alongside weight entries in data tables.', WE_LS_SLUG)?></p>
-														</td>
-													</tr>
 													<tr>
 														<th scope="row"><?php echo __( 'Disable plugin CSS?' , WE_LS_SLUG); ?></th>
 														<td>
@@ -157,6 +135,16 @@ function ws_ls_settings_page() {
 															<p><?php echo __('We would love to see how our plugin is used. By consenting, you are allowing permission for the following data to be sent on a weekly basis to YeKen: URL, summary of settings, count of recorded weights and measurements. No user or admin data will ever be transmitted.', WE_LS_SLUG)?></p>
 														</td>
 													</tr>
+													<tr>
+														<th scope="row"><?php echo __( 'Disable notifications from YeKen?' , WE_LS_SLUG); ?></th>
+														<td>
+															<select id="ws-ls-disable-yeken-notifications" name="ws-ls-disable-yeken-notifications">
+																<option value="no" <?php selected( get_option('ws-ls-disable-yeken-notifications'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+																<option value="yes" <?php selected( get_option('ws-ls-disable-yeken-notifications'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+															</select>
+															<p><?php echo __('Occasionally YeKen likes to display simple notifications within your WordPress dashboard. Use this setting if you wish to disable them.', WE_LS_SLUG)?></p>
+														</td>
+													</tr>
 											</table>
 										</div>
 										<div>
@@ -169,6 +157,28 @@ function ws_ls_settings_page() {
 															<option value="no" <?php selected( get_option('ws-ls-allow-targets'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG); ?></option>
 														</select>
 														<p><?php echo __('If enabled, a user is allowed to enter a target weight. This will be displayed as a horizontal bar on the line chart.', WE_LS_SLUG); ?></p>
+													</td>
+												</tr>
+												<tr class="<?php echo $disable_if_not_pro_class; ?>">
+													<th scope="row"><?php echo __( 'Allow decimal places?' , WE_LS_SLUG); ?></th>
+													<td>
+														<select id="ws-ls-allow-decimals" name="ws-ls-allow-decimals">
+															<option value="yes" <?php selected( get_option('ws-ls-allow-decimals'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+															<option value="no" <?php selected( get_option('ws-ls-allow-decimals'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+
+														</select>
+														<p><?php echo __('If enabled, Decimal weight entries will be allowed in Kg or Pounds mode.', WE_LS_SLUG)?></p>
+													</td>
+												</tr>
+												<tr class="<?php echo $disable_if_not_pro_class; ?>">
+													<th scope="row"><?php echo __( 'Display BMI in tables?' , WE_LS_SLUG); ?></th>
+													<td>
+														<select id="ws-ls-display-bmi-in-tables" name="ws-ls-display-bmi-in-tables">
+															<option value="yes" <?php selected( get_option('ws-ls-display-bmi-in-tables'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+															<option value="no" <?php selected( get_option('ws-ls-display-bmi-in-tables'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+
+														</select>
+														<p><?php echo __('If enabled, BMI values will be displayed alongside weight entries in data tables.', WE_LS_SLUG)?></p>
 													</td>
 												</tr>
 													<tr class="<?php echo $disable_if_not_pro_class; ?>">
@@ -198,7 +208,7 @@ function ws_ls_settings_page() {
 																<option value="yes" <?php selected( get_option('ws-ls-use-tabs'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
 																<option value="no" <?php selected( get_option('ws-ls-use-tabs'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
 															</select>
-															<p><?php echo __('If enabled, "Weight History" and "Target Weight" will be displayed on sepearate tabs.', WE_LS_SLUG)?></p>
+															<p><?php echo __('If enabled, "Weight History" and "Target Weight" will be displayed on sepearate tabs when using the [weight-loss-tracker] shortcode.', WE_LS_SLUG)?></p>
 														</td>
 													</tr>
 											</table>
@@ -495,6 +505,7 @@ function ws_ls_register_settings()
     register_setting( 'we-ls-options-group', 'ws-ls-disable-css' );
 	register_setting( 'we-ls-options-group', 'ws-ls-axes-start-at-zero' );
 	register_setting( 'we-ls-options-group', 'ws-ls-allow-stats' );
+	register_setting( 'we-ls-options-group', 'ws-ls-disable-yeken-notifications' );
 
     // Pro only open
     if(WS_LS_IS_PRO){

@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight, loss, lose, helper, bmi, body, mass, index, graph, track, stones, kg, table, data, plot, target, history, pounds, responsive, chart, measurements, cm, centimeters, inches, hip, waist, bicep, thigh
 Requires at least: 4.1.0
 Tested up to: 4.7.2
-Stable tag: 4.2.3
+Stable tag: 4.2.4
 
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -155,6 +155,31 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 Lots of new features. Three new Pro shortcodes, email notifications and more.
 
 == Changelog ==
+
+= 4.2.4 =
+
+* Added shortcodes (don't worry the old ones still work):
+	* [wlt] for [weight-loss-tracker].
+	* [wlt-weight-diff] for [weightloss_weight_difference]
+	* [wlt-weight-start] for [weightloss_weight_start]
+	* [wlt-weight-most-recent] for [weightloss_weight_most_recent]
+	* [wlt-weight-diff-from-target] for [weightloss_weight_difference_from_target]
+	* [wlt-target] for [weightloss_target_weight]
+	* [wlt-chart] for [weight-loss-tracker-chart]
+	* [wlt-form] for [weight-loss-tracker-form]
+	* [wlt-table] for [weight-loss-tracker-table]
+	* [wlt-recent-bmi] for [weight-loss-tracker-most-recent-bmi]
+	* [wlt-total-lost] for [weight-loss-tracker-total-lost]
+	* [wlt-league-table] for [weight-loss-tracker-league-table]
+	* [wlt-reminder] for [weight-loss-tracker-reminder]
+	* [wlt-progress-bar] for [weight-loss-tracker-progress-bar]
+	* [wlt-tracker-message] for [weight-loss-tracker-message]
+* Updated Dutch translations (thanks @Robin).
+* Added a new setting to disable admin notifications from YeKen.
+* Slight tweak to rounding on pound values. Now to one decimal place instead of two.
+* Bug fix: Fixed JS error being thrown in admin.js - wouldn't have caused any issues to users.
+* Bug fix: Removed edit icon from Advanced Table when placed as a shortcode. Edit form only exists in main shortcode.
+* Bug fix: Date column not sorting correctly once clicked in advanced data tables.
 
 = 4.2.3 =
 
