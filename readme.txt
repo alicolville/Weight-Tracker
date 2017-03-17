@@ -25,24 +25,26 @@ The following weight formats are supported:
 
 Also supports the following tags:
 
-	[weightloss_weight_difference] - total weight lost by the logged in member
-	[weightloss_weight_start] - start weight of the logged in member
-	[weightloss_weight_most_recent] - end weight of the logged in member
-	[weightloss_weight_difference_from_target] - difference from target
-	[weightloss_target_weight] - user's target weight (if specified)
+ * [wlt] - main weight loss tracker tool
+ * [wlt-weight-diff] - total weight lost by the logged in member
+ * [wlt-weight-start] - start weight of the logged in member
+ * [wlt-weight-most-recent] - end weight of the logged in member
+ * [wlt-weight-diff-from-target] - difference from target
+ * [wlt-target] - user's target weight (if specified)
 
 	Pro Shortcodes:
 
-	[weight-loss-tracker-chart] - Displays a chart
-	[weight-loss-tracker-form] - Displays a form
-	[weight-loss-tracker-table] - Displays a data table
-	[weight-loss-tracker-most-recent-bmi] - Displays the user's BMI for most recent weight
-	[weight-loss-tracker-total-lost] - Total lost / gained by the entire community.
-	[weight-loss-tracker-league-table] - Show a league table of weight loss users.
-	[weight-loss-tracker-progress-bar] - Show a progress bar indicating progress towards target weight.
-	[weight-loss-tracker-reminder]. This allows you to display reminder messages for users to add a target weight or weight / measurement entry for the day.
+ * [wlt-chart] - Displays a chart
+ * [wlt-form] - Displays a form
+ * [wlt-table] - Displays a data table
+ * [wlt-recent-bmi] - Displays the user's BMI for most recent weight
+ * [wlt-total-lost] - Total lost / gained by the entire community.
+ * [wlt-league-table] - Show a league table of weight loss users.
+ * [wlt-progress-bar] - Show a progress bar indicating progress towards target weight.
+ * [wlt-reminder] - This allows you to display reminder messages for users to add a target weight or weight / measurement entry for the day.
+ * [wlt-message] - Allows you to display messages to users when they consecutively gain or lose weight.
 
-	[Weight Loss Tracker Website - Shortcode guide](https://weight.yeken.uk/shortcodes "Weight Loss Tracker Website - Shortcode guide")
+[Weight Loss Tracker Website - Shortcode guide](https://weight.yeken.uk/shortcodes "Weight Loss Tracker Website - Shortcode guide")
 
 = Pro Version =
 
@@ -90,7 +92,7 @@ Paypal Donate: [www.paypal.me/yeken](https://www.paypal.me/yeken "www.paypal.me/
 
 1. Install "Weight Loss Tracker" via the "Plugins" page in WordPress Admin (or download zip and upload).
 2. Setup the plugin in WordPress Admin panel by goto to Settings > Weight Loss Tracker
-3. Create a page that users will visit. Within the page content add the shortcode [weightlosstracker].
+3. Create a page that users will visit. Within the page content add the shortcode [wlt].
 4. Voila
 
 == Frequently Asked Questions ==
@@ -137,11 +139,11 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 
 == Screenshots ==
 
-1. All three tabs of the main [weight-loss-tracker] shortcode
-2. Tab one of [weight-loss-tracker]: Chart, Target and Weight form.
-3. Tab two of [weight-loss-tracker]: Target Weight and Weight History
-4. Tab three of [weight-loss-tracker]: User preferences page
-5. Examples of random placements of [weight-loss-tracker-chart] and [weight-loss-tracker-form]
+1. All three tabs of the main [wlt] shortcode
+2. Tab one of [wlt]: Chart, Target and Weight form.
+3. Tab two of [wlt]: Target Weight and Weight History
+4. Tab three of [wlt]: User preferences page
+5. Examples of random placements of [wlt-chart] and [wlt-form]
 6. Examples of the Chart and Form widgets
 7. Settings page: General
 8. Settings page: User Experience
@@ -173,13 +175,14 @@ Lots of new features. Three new Pro shortcodes, email notifications and more.
 	* [wlt-league-table] for [weight-loss-tracker-league-table]
 	* [wlt-reminder] for [weight-loss-tracker-reminder]
 	* [wlt-progress-bar] for [weight-loss-tracker-progress-bar]
-	* [wlt-tracker-message] for [weight-loss-tracker-message]
+	* [wlt-message] for [weight-loss-tracker-message]
 * Updated Dutch translations (thanks @Robin).
 * Added a new setting to disable admin notifications from YeKen.
 * Slight tweak to rounding on pound values. Now to one decimal place instead of two.
 * Bug fix: Fixed JS error being thrown in admin.js - wouldn't have caused any issues to users.
 * Bug fix: Removed edit icon from Advanced Table when placed as a shortcode. Edit form only exists in main shortcode.
 * Bug fix: Date column not sorting correctly once clicked in advanced data tables.
+* Bug fix: Fixed issue with JS progress bar displaying "undefined"
 
 = 4.2.3 =
 

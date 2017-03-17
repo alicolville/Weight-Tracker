@@ -64,7 +64,7 @@ function ws_ls_register_pro_shortcodes(){
 	add_shortcode( 'weight-loss-tracker-progress-bar', 'ws_ls_shortcode_progress_bar' );
 	add_shortcode( 'wlt-progress-bar', 'ws_ls_shortcode_progress_bar' );
 	add_shortcode( 'weight-loss-tracker-message', 'ws_ls_shortcode_message' );
-	add_shortcode( 'wlt-tracker-message', 'ws_ls_shortcode_message' );
+	add_shortcode( 'wlt-message', 'ws_ls_shortcode_message' );
 }
 add_action( 'init', 'ws_ls_register_pro_shortcodes');
 
