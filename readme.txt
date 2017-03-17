@@ -160,7 +160,7 @@ Lots of new features. Three new Pro shortcodes, email notifications and more.
 
 = 4.2.4 =
 
-* Added shortcodes (don't worry the old ones still work):
+* Added simpler shortcodes (don't worry the old ones still work):
 	* [wlt] for [weight-loss-tracker].
 	* [wlt-weight-diff] for [weightloss_weight_difference]
 	* [wlt-weight-start] for [weightloss_weight_start]
