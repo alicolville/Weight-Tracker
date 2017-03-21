@@ -26,6 +26,9 @@ function ws_ls_get_user_target($user_id) {
       {
             $target_weight = ws_ls_weight_object($user_id, $row->target_weight_weight, $row->target_weight_pounds, $row->target_weight_stones, $row->target_weight_only_pounds);
 
+			// Clear all cache for this user
+			ws_ls_delete_cache_for_given_user($user_id);
+
             // Store in cache
             ws_ls_set_cache($cache_key, $target_weight);
             return $target_weight;
@@ -103,7 +106,7 @@ function ws_ls_get_weights($user_id, $limit = 100, $selected_week_number = -1, $
                                                       ));
         }
 
-        // Fetch existing cached object for this user and store
+	    // Fetch existing cached object for this user and store
         $cache[$cache_sub_key] = $weight_data;
         ws_ls_set_cache($cache_key, $cache);
         return $weight_data;

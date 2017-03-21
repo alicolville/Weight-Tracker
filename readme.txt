@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight, loss, lose, helper, bmi, body, mass, index, graph, track, stones, kg, table, data, plot, target, history, pounds, responsive, chart, measurements, cm, centimeters, inches, hip, waist, bicep, thigh
 Requires at least: 4.1.0
 Tested up to: 4.7.2
-Stable tag: 4.2.5
+Stable tag: 4.2.6
 
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -65,7 +65,6 @@ Our Pro version has now been released! If you upgrade, you get the additional fe
 * **Admin: View / Delete user data**. Admin will be able to view and delete existing user data.
 * **User preferences**. If enabled, the user will be able to select which unit they wish to store their weight in Metric or Imperial. They will also be able to specify date format and clear all their weight data.
 * **Bar Charts**. Fancy something different to a line chart? The plugin will also support Bar Charts.
-* **Decimals**. Decimals will be allowed weight in Pounds only or Kg modes.
 * **Delete existing entry**. A logged in user will be able to delete or edit an existing weight entry.
 * **Better Tables.**. Data tables in front end and admin will support paging and sorting.
 * **Admin: Extra Settings**. Extra settings to customise the plugin will be added e.g. number of plot points on graph, rows per page, etc.', WE_LS_SLUG)
@@ -157,6 +156,11 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 Lots of new features. Three new Pro shortcodes, email notifications and more.
 
 == Changelog ==
+
+= 4.2.6 =
+
+* Bug fix: Fixed an issue with cache not being cleared properly upon target being set.
+* Bug fix: Fixed issue with cache keys for pounds and Kgs conflicting and replacing each other.
 
 = 4.2.5 =
 

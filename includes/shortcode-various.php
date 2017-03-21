@@ -159,13 +159,13 @@ function ws_ls_get_weight_target($user_id, $unit = "target_weight_weight")
 {
 	global $wpdb;
 
-	$cache_key = $user_id . '-' . WE_LS_CACHE_KEY_TARGET_WEIGHT;
-  $cache = ws_ls_get_cache($cache_key);
+	$cache_key = $user_id . '-' . WE_LS_CACHE_KEY_TARGET_WEIGHT . $unit;
+  	$cache = ws_ls_get_cache($cache_key);
 
-  // Return cache if found!
-  if ($cache)   {
-      return $cache;
-  }
+	  // Return cache if found!
+	  if ($cache)   {
+		 return  $cache;
+	  }
 
 	$table_name = $wpdb->prefix . WE_LS_TARGETS_TABLENAME;
 	$sql =  $wpdb->prepare("SELECT " . $unit . " as weight_value FROM $table_name where weight_user_id = %d", $user_id);
