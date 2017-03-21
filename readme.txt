@@ -65,7 +65,6 @@ Our Pro version has now been released! If you upgrade, you get the additional fe
 * **Admin: View / Delete user data**. Admin will be able to view and delete existing user data.
 * **User preferences**. If enabled, the user will be able to select which unit they wish to store their weight in Metric or Imperial. They will also be able to specify date format and clear all their weight data.
 * **Bar Charts**. Fancy something different to a line chart? The plugin will also support Bar Charts.
-* **Decimals**. Decimals will be allowed weight in Pounds only or Kg modes.
 * **Delete existing entry**. A logged in user will be able to delete or edit an existing weight entry.
 * **Better Tables.**. Data tables in front end and admin will support paging and sorting.
 * **Admin: Extra Settings**. Extra settings to customise the plugin will be added e.g. number of plot points on graph, rows per page, etc.', WE_LS_SLUG)
