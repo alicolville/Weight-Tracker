@@ -58,11 +58,6 @@ function ws_ls_weight_object($user_id, $kg, $pounds, $stones, $pounds_only, $not
     	}
     }
 
-    // If not allowing decimals, then round figures down
-    if(!WS_LS_USE_DECIMALS){
-      $weight = ws_ls_round_weights($weight);
-    }
-
     // Generate display
     switch (ws_ls_get_config('WE_LS_DATA_UNITS')) {
       case 'pounds_only':
