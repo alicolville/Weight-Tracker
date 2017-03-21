@@ -400,8 +400,8 @@ jQuery( document ).ready(function ($) {
 							      color: $(this).data("text-colour")
 							  },
 		  				},
-						step: function(state, bar) {
-						    bar.setText(Math.round(bar.value() * 100) + "% " + $(this).data("precentage-text"));
+						step: function(state, bar, id) {
+						 	bar.setText(Math.round(bar.value() * 100) + "% " + $('#' + bar._container.id).data("precentage-text"));
 						}
 					};
 

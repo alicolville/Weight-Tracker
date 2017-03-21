@@ -12,7 +12,7 @@ function ws_ls_get_advanced_table_config() {
 
 	$columns = array(
 		array('targets' => ws_ls_get_column_number(), 'sortable' => false, 'searchable' => false, 'visible' => false),									// Kg Field
-		array('responsivePriority' => 1, 'targets' => ws_ls_get_column_number(), 'searchable' => false, 'sortable' => false, 'width' => '400px'),		// Options
+		array('responsivePriority' => 1, 'targets' => ws_ls_get_column_number(), 'searchable' => false, 'sortable' => true),		// Options
 		array('responsivePriority' => 2,'targets' => ws_ls_get_column_number()),																		// Date
 		array('responsivePriority' => 3,'targets' => ws_ls_get_column_number(), "orderData" => array(0,2)),												// Weight
 		array('targets' => ws_ls_get_column_number())
@@ -80,9 +80,14 @@ function ws_ls_get_advanced_table_admin_config() {
 }
 
 
-function ws_ls_advanced_data_table($weight_data)
+function ws_ls_advanced_data_table($weight_data, $user_defined_arguments = array())
 {
 	$table_id = 'ws_ls_data_table_' . rand(10,1000) . '_' . rand(10,1000);
+
+	$arguments = shortcode_atts(
+	array(
+		'hide-edit' => false
+	 ), $user_defined_arguments );
 
 	$html_output = '
 		<table id="' . $table_id . '" class="display ws-ls-advanced-data-table responsive hover no-wrap" cellspacing="0" width="100%">
@@ -145,12 +150,14 @@ function ws_ls_advanced_data_table($weight_data)
 			}
 		}
 
-		$html_output .= '	<td style="font-size:0.7em;word-wrap:break-word;">' . $weight_object['notes'] . '</td>
-							<td class="ws-ls-table-options">
-								<img width="15" height="15" style="width:15px; height: 15px;" src="' . $edit_image .'"  id="ws-ls-edit-' . $weight_object['db_row_id'] . '" data-row-id="' . $weight_object['db_row_id'] . '" class="first ws-ls-edit-row" />
-								<img width="15" height="15" style="width:15px; height: 15px;" src="' . $delete_image .'"  id="ws-ls-delete-' . $weight_object['db_row_id'] . '" data-row-id="' . $weight_object['db_row_id'] . '" class="ws-ls-delete-row" />
-							</td>
-						</tr>';
+		$html_output .= sprintf('	<td style="font-size:0.7em;word-wrap:break-word;">' . $weight_object['notes'] . '</td>
+										<td class="ws-ls-table-options">
+											%s
+											<img width="15" height="15" style="width:15px; height: 15px;" src="' . $delete_image .'"  id="ws-ls-delete-' . $weight_object['db_row_id'] . '" data-row-id="' . $weight_object['db_row_id'] . '" class="ws-ls-delete-row" />
+										</td>
+									</tr>',
+								(false == $arguments['hide-edit']) ? '<img width="15" height="15" style="width:15px; height: 15px;" src="' . $edit_image .'"  id="ws-ls-edit-' . $weight_object['db_row_id'] . '" data-row-id="' . $weight_object['db_row_id'] . '" class="first ws-ls-edit-row" />' : ''
+						);
   }
   $html_output .= '</tbody>
 

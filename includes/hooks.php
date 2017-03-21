@@ -23,19 +23,26 @@
 	function ws_ls_register_shortcodes(){
 
 		/*
-			[weightloss_weight_difference] - total weight lost by the logged in member
-			[weightloss_weight_start] - start weight of the logged in member
-			[weightloss_weight_most_recent] - end weight of the logged in member
-			[weightloss_weight_difference_from_target] - difference between latest and target
+			[wlt-weight-diff] - total weight lost by the logged in member
+			[wlt-weight-start] - start weight of the logged in member
+			[wlt-weight-most-recent] - end weight of the logged in member
+			[wlt-weight-diff-from-target] - difference between latest and target
+			[wlt-target] - target weight
 		*/
 
 	 	add_shortcode( 'weightlosstracker', 'ws_ls_shortcode' );
 		add_shortcode( 'weight-loss-tracker', 'ws_ls_shortcode' );
+		add_shortcode( 'wlt', 'ws_ls_shortcode' );
 	 	add_shortcode( 'weightloss_weight_difference', 'ws_ls_weight_difference' );
+		add_shortcode( 'wlt-weight-diff', 'ws_ls_weight_difference' );
 	 	add_shortcode( 'weightloss_weight_start', 'ws_ls_weight_start' );
+		add_shortcode( 'wlt-weight-start', 'ws_ls_weight_start' );
 	 	add_shortcode( 'weightloss_weight_most_recent', 'ws_ls_weight_recent' );
+		add_shortcode( 'wlt-weight-most-recent', 'ws_ls_weight_recent' );
 		add_shortcode( 'weightloss_weight_difference_from_target', 'ws_ls_weight_difference_target' );
+		add_shortcode( 'wlt-weight-diff-from-target', 'ws_ls_weight_difference_target' );
 		add_shortcode( 'weightloss_target_weight', 'ws_ls_weight_target_weight' );
+		add_shortcode( 'wlt-target', 'ws_ls_weight_target_weight' );
 
         // If user has deleted all their data then delete it here. That way cache isn't displayed
         if(WE_LS_ALLOW_USER_PREFERENCES && isset($_GET['user-delete-all']) && 'true' == $_GET['user-delete-all'])	{
