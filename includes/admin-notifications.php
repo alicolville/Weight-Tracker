@@ -4,6 +4,10 @@
 
 	function ws_ls_display_admin_notice() {
 
+		if(WE_LS_DISABLE_YEKEN_NOTIFICATIONS) {
+			return;
+		}
+
 		$yeken_data = ws_ls_get_data_from_yeken();
 
 		// Get md5 of latest message
