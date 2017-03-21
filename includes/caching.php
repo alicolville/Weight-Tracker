@@ -51,6 +51,8 @@ function ws_ls_delete_cache_for_given_user($user_id = false)
 
     ws_ls_delete_cache($user_id . '-' . WE_LS_CACHE_KEY_START_WEIGHT);
 	ws_ls_delete_cache($user_id . '-' . WE_LS_CACHE_KEY_WEIGHT_FOR_DAY);
+	ws_ls_delete_cache($user_id . '-' . WE_LS_CACHE_KEY_TARGET_WEIGHT . 'target_weight_only_pounds');
+	ws_ls_delete_cache($user_id . '-' . WE_LS_CACHE_KEY_TARGET_WEIGHT . 'target_weight_weight');
 
     $wpdb->query($sql);
   }

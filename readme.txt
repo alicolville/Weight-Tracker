@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight, loss, lose, helper, bmi, body, mass, index, graph, track, stones, kg, table, data, plot, target, history, pounds, responsive, chart, measurements, cm, centimeters, inches, hip, waist, bicep, thigh
 Requires at least: 4.1.0
 Tested up to: 4.7.2
-Stable tag: 4.2.5
+Stable tag: 4.2.6
 
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -156,6 +156,11 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 Lots of new features. Three new Pro shortcodes, email notifications and more.
 
 == Changelog ==
+
+= 4.2.6 =
+
+* Bug fix: Fixed an issue with cache not being cleared properly upon target being set.
+* Bug fix: Fixed issue with cache keys for pounds and Kgs conflicting and replacing each other.
 
 = 4.2.5 =
 
