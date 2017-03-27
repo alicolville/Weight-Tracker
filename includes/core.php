@@ -46,7 +46,8 @@
 			'show-gridlines' => WE_LS_CHART_SHOW_GRID_LINES,
 			'bezier' => WE_LS_CHART_BEZIER_CURVE,
             'hide_login_message_if_needed' => true,
-			'exclude-measurements' => false
+			'exclude-measurements' => false,
+			'ignore-login-status' => false
 		);
 
         // If we are PRO and the developer has specified options then override the default
@@ -56,9 +57,9 @@
 
 		$measurements_enabled = (false == $chart_config['exclude-measurements'] && WE_LS_MEASUREMENTS_ENABLED && ws_ls_any_active_measurement_fields()) ? true : false;
 
-        // Make sure they are logged in
-        if (!is_user_logged_in())	{
-            if ($chart_config['hide_login_message_if_needed']) {
+		// Make sure they are logged in
+        if (false == $chart_config['ignore-login-status'] && !is_user_logged_in())	{
+            if (false == $chart_config['hide_login_message_if_needed']) {
                 return '<blockquote class="ws-ls-blockquote"><p>' .	__('You need to be logged in to record your weight.', WE_LS_SLUG) . ' <a href="' . wp_login_url(get_permalink()) . '">' . __('Login now', WE_LS_SLUG) . '</a>.</p></blockquote>';
             } else {
                 return;

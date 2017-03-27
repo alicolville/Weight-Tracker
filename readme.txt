@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight, loss, lose, helper, bmi, body, mass, index, graph, track, stones, kg, table, data, plot, target, history, pounds, responsive, chart, measurements, cm, centimeters, inches, hip, waist, bicep, thigh
 Requires at least: 4.1.0
 Tested up to: 4.7.2
-Stable tag: 4.2.6
+Stable tag: 4.2.7
 
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -157,6 +157,17 @@ Lots of new features. Three new Pro shortcodes, email notifications and more.
 
 == Changelog ==
 
+= 4.2.7 =
+
+* Improvement: New shortcode for user settings [wlt-user-settings] - Read more: https://weight.yeken.uk/shortcodes/
+* Improvement: New option added to [wlt-chart] "ignore-login-status". If set to true, will display the chart's data in the event the user is not logged in (should be used alongside user-id attribute) - Read more: https://weight.yeken.uk/shortcodes/
+* Improvement: Added "Redirect URL" to Form Widget.
+* Improvement: Optimised speed of user preference lookup (if non sepcified). Previously if the user hadn't specified any user preferences the DB would have be queried for every key lookup. This was due to an empty array not being cached. Rules have changed to store an empty array to save querying DB for each user preference.
+* Improvement: Standardised Hook / Filter names (possible breaking change if you use these). Reade more: https://weight.yeken.uk/hooks-and-filters/
+* Improvement: Added "Neck" measurements.
+* Bug fix: Fixed issue with cache keys for pounds and Kgs conflicting and replacing each other when querying extremes.
+* Bug fix: Ensure both cron jobs are removed on plugin deactivation.
+
 = 4.2.6 =
 
 * Bug fix: Fixed an issue with cache not being cleared properly upon target being set.
@@ -164,7 +175,7 @@ Lots of new features. Three new Pro shortcodes, email notifications and more.
 
 = 4.2.5 =
 
-* Decimal places are now a core feature and no longer just a perk of Pro.
+* Decimal places are now a core feature and no longer just be a perk of Pro.
 
 = 4.2.4 =
 

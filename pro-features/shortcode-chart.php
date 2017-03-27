@@ -23,13 +23,15 @@ function ws_ls_shortcode_chart($user_defined_arguments)
             'weight-target-color' => WE_LS_TARGET_LINE_COLOUR,
             'show-gridlines' => WE_LS_CHART_SHOW_GRID_LINES,
             'bezier' => WE_LS_CHART_BEZIER_CURVE,
-			'exclude-measurements' => false
+			'exclude-measurements' => false,
+			'ignore-login-status' => false
            ), $user_defined_arguments );
 
     // Tidy up a few configs
     $chart_arguments['bezier'] = ws_ls_force_bool_argument($chart_arguments['bezier']);
     $chart_arguments['show-gridlines'] = ws_ls_force_bool_argument($chart_arguments['show-gridlines']);
 	$chart_arguments['exclude-measurements'] = ws_ls_force_bool_argument($chart_arguments['exclude-measurements']);
+	$chart_arguments['ignore-login-status'] = ws_ls_force_bool_argument($chart_arguments['ignore-login-status']);
 
     // Validate height
     if (!is_numeric($chart_arguments['height']) || $chart_arguments['height'] < 50) {

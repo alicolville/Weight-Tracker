@@ -21,7 +21,7 @@
 
 		// Remove cron jobs
 		wp_clear_scheduled_hook( WE_LS_CRON_NAME );
-		wp_clear_scheduled_hook( WE_LS_CRON_NAME );
+		wp_clear_scheduled_hook( WE_LS_CRON_NAME_YEKEN_COMMS );
 	}
 
 	function ws_ls_create_mysql_tables()
@@ -55,6 +55,7 @@
 			left_forearm float NULL,
 			right_forearm float NULL,
 			shoulders float NULL,
+			neck float NULL,
 		  UNIQUE KEY id (id)
 		) $charset_collate;";
 

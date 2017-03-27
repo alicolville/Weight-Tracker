@@ -14,10 +14,11 @@ class ws_ls_widget_form extends WP_Widget {
 		);
 
         $this->field_values = array(
-            'title' => __('Your weight today', WE_LS_SLUG),
-						'force_todays_date' => 'yes',
-                        'not-logged-in-message' => '',
-						'exclude-measurements' => 'no'
+            							'title' => __('Your weight today', WE_LS_SLUG),
+										'force_todays_date' => 'yes',
+				                        'not-logged-in-message' => '',
+										'exclude-measurements' => 'no',
+										'redirect-url' => ''
         );
 
 	}
@@ -41,7 +42,8 @@ class ws_ls_widget_form extends WP_Widget {
 			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
 			$force_to_todays_date = ('yes' == $instance['force_todays_date']) ? true : false;
 			$exclude_measurements = (!empty($instance['exclude-measurements']) && 'yes' == $instance['exclude-measurements']) ? true : false;
-			echo ws_ls_display_weight_form(false, false, false, true, ws_ls_remove_non_numeric($args['widget_id']) + 10000, $force_to_todays_date, true, $exclude_measurements);
+			$redirect_url = (!empty($instance['redirect-url'])) ? $instance['redirect-url']  : '';
+			echo ws_ls_display_weight_form(false, false, false, true, ws_ls_remove_non_numeric($args['widget_id']) + 10000, $force_to_todays_date, true, $exclude_measurements, $redirect_url);
             echo $args['after_widget'];
         } elseif (isset($instance['not-logged-in-message']) && !empty($instance['not-logged-in-message'])) {
             echo $args['before_widget'];
@@ -90,8 +92,11 @@ class ws_ls_widget_form extends WP_Widget {
 			<label for="<?php echo $this->get_field_id( 'not-logged-in-message' ); ?>"><?php _e('Message to display if not logged in', WE_LS_SLUG); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id( 'not-logged-in-message' ); ?>" name="<?php echo $this->get_field_name( 'not-logged-in-message' ); ?>" type="text" value="<?php echo esc_attr( $field_values['not-logged-in-message'] ); ?>">
 		   <p><small><?php _e('By default the widget is hidden if the user is not logged in. If you wish, you can display a message to the visitor instead.', WE_LS_SLUG); ?></small></p>
-
-        <!--</p>-->
+		<p>
+			<label for="<?php echo $this->get_field_id( 'redirect-url' ); ?>"><?php _e('Redirect URL (Defaults to current page)', WE_LS_SLUG); ?></label>
+			<input class="widefat" id="<?php echo $this->get_field_id( 'redirect-url' ); ?>" name="<?php echo $this->get_field_name( 'redirect-url' ); ?>" type="text" value="<?php echo esc_attr( $field_values['redirect-url'] ); ?>">
+			<p><small><?php _e('Specify where the user should be redirected to after completing the form. Note: The URL must be within the site domain.', WE_LS_SLUG); ?></small></p>
+		</p>
 
 		<?php
 	}

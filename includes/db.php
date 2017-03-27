@@ -432,7 +432,7 @@ function ws_ls_get_user_preferences($user_id = false, $use_cache = true)
   $cache = ws_ls_get_cache($cache_key);
 
   // Return cache if found!
-  if ($cache && true == $use_cache)   {
+  if (is_array($cache) && true == $use_cache)   {
       return $cache;
   }
 
@@ -449,9 +449,7 @@ function ws_ls_get_user_preferences($user_id = false, $use_cache = true)
     $settings = array();
   }
 
-  if($settings !== false) {
-	  ws_ls_set_cache($cache_key, $settings);
-  }
+  ws_ls_set_cache($cache_key, $settings);
 
   return $settings;
 }

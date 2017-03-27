@@ -34,6 +34,9 @@ function ws_ls_delete_cache($key){
 }
 function ws_ls_delete_cache_for_given_user($user_id = false)
 {
+
+	//TODO: Rewrite caching to use group keys
+
   global $wpdb;
 
   if (WE_LS_CACHE_ENABLED){
@@ -49,12 +52,23 @@ function ws_ls_delete_cache_for_given_user($user_id = false)
     $sql = "Delete FROM  $wpdb->options
             WHERE option_name LIKE '%transient_timeout_" . WE_LS_SLUG . $user_id ."%'";
 
-    ws_ls_delete_cache($user_id . '-' . WE_LS_CACHE_KEY_START_WEIGHT);
-	ws_ls_delete_cache($user_id . '-' . WE_LS_CACHE_KEY_WEIGHT_FOR_DAY);
-	ws_ls_delete_cache($user_id . '-' . WE_LS_CACHE_KEY_TARGET_WEIGHT . 'target_weight_only_pounds');
-	ws_ls_delete_cache($user_id . '-' . WE_LS_CACHE_KEY_TARGET_WEIGHT . 'target_weight_weight');
+	$wpdb->query($sql);
 
-    $wpdb->query($sql);
+	$keys_to_clear = array(
+							$user_id . '-' . WE_LS_CACHE_KEY_START_WEIGHT,
+							$user_id . '-' . WE_LS_CACHE_KEY_WEIGHT_FOR_DAY,
+							$user_id . '-' . WE_LS_CACHE_KEY_TARGET_WEIGHT . 'target_weight_weight',
+							$user_id . '-' . WE_LS_CACHE_KEY_TARGET_WEIGHT . 'target_weight_only_pounds',
+							$user_id . '-' . WE_LS_CACHE_KEY_WEIGHT_EXTREME . '-asc-weight_only_pounds',
+	 						$user_id . '-' . WE_LS_CACHE_KEY_WEIGHT_EXTREME . '-desc-weight_only_pounds',
+							$user_id . '-' . WE_LS_CACHE_KEY_WEIGHT_EXTREME . '-asc-weight_weight',
+							$user_id . '-' . WE_LS_CACHE_KEY_WEIGHT_EXTREME . '-desc-weight_weight'
+						);
+
+	foreach ($keys_to_clear as $key) {
+		ws_ls_delete_cache($key);
+	}
+
   }
 }
 function ws_ls_delete_all_cache()

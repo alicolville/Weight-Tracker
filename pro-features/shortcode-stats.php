@@ -47,7 +47,7 @@ function ws_ls_shortcode_stats_league_total($user_defined_arguments)
 		foreach ($data as $row) {
 
 			// Allow others to manipulate this data
-			$row = apply_filters('weight-loss-stats-table-row', $row);
+			$row = apply_filters(WE_LS_FILTER_STATS_ROW, $row);
 
 			// Display name from WP
 			$user_info = get_userdata($row['user_id']);
@@ -90,7 +90,7 @@ function ws_ls_shortcode_stats_league_total($user_defined_arguments)
 				</table>';
 
 		// Allow others to manipulate this html
-		return apply_filters('weight-loss-stats-table-html', $html);
+		return apply_filters(WE_LS_FILTER_STATS_TABLE_HTML, $html);
 	}
 
 	return __('No users have entered weights.', WE_LS_SLUG) .'<!-- Issue loading Weight Loss table (No data) -->';
@@ -154,7 +154,7 @@ function ws_ls_shortcode_stats_display_value($stats, $arguments) {
 		}
 
 		// Allow theme developer to override stats message
-		$stats = apply_filters('ws-ls-stats-shortcode', $stats);
+		$stats = apply_filters(WE_LS_FILTER_STATS_SHORTCODE, $stats);
 
 		return $stats;
 	}
