@@ -43,11 +43,14 @@
 	// Hooks / Filters
 	// -----------------------------------------------------------------------------------
 
-	define('WE_LS_HOOK_DATA_ADDED_EDITED', 'ws-ls-data-added-edited');
-	define('WE_LS_HOOK_DATA_ALL_DELETED', 'ws-ls-data-all-deleted');
-	define('WE_LS_HOOK_DATA_USER_DELETED', 'ws-ls-data-use-deleted');
+	define('WE_LS_HOOK_DATA_ADDED_EDITED', 'wlt-hook-data-added-edited');
+	define('WE_LS_HOOK_DATA_ALL_DELETED', 'wlt-hook-data-all-deleted');
+	define('WE_LS_HOOK_DATA_USER_DELETED', 'wlt-hook-data-user-deleted');
 
-	define('WE_LS_FILTER_EMAIL_DATA', 'ws-ls-filter-email-data');
+	define('WE_LS_FILTER_EMAIL_DATA', 'wlt-filter-email-data');
+	define('WE_LS_FILTER_STATS_SHORTCODE', 'wlt-filter-stats-shortcode');
+	define('WE_LS_FILTER_STATS_ROW', 'wlt-filter-stats-table-row');
+	define('WE_LS_FILTER_STATS_TABLE_HTML', 'wlt-filter-stats-table-html');
 
     // -----------------------------------------------------------------------------------
 	// Dynamic Settings based upon user settings, etc
@@ -113,8 +116,8 @@
 		'height' => array('title' => __('Height', WE_LS_SLUG), 'enabled' => true, 'user_preference' => true),
         'buttocks' => array('title' => __('Buttocks', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#240d1d'),
         'hips' => array('title' => __('Hips', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#35e364'),
-        'navel' => array('title' => __('Navel', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#a28c87')
-
+        'navel' => array('title' => __('Navel', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#a28c87'),
+		'neck' => array('title' => __('Neck', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#FA8072')
     );
 
     $globals['WE_LS_MEASUREMENTS'] = json_encode($supported_measurements);

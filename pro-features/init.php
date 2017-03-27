@@ -44,7 +44,8 @@ function ws_ls_register_pro_shortcodes(){
 		[wlt-league-table] - Show a league table of weight loss users.
 		[wlt-reminder] - Show a reminder to either enter weight for today or target weight
 		[wlt-progress-bar] - Show a progress bar indicating progress towards target weight.
-		[wlt-message] - Show a message if the user meets certain criteria (e.g. put weight on)
+		[wlt-message] - Show a message if the user meets certain criteria (e.g. put weight on).
+		[wlt-user-settings] - Shows a form for user settings.
     */
 
     add_shortcode( 'weight-loss-tracker-chart', 'ws_ls_shortcode_chart' );
@@ -65,6 +66,8 @@ function ws_ls_register_pro_shortcodes(){
 	add_shortcode( 'wlt-progress-bar', 'ws_ls_shortcode_progress_bar' );
 	add_shortcode( 'weight-loss-tracker-message', 'ws_ls_shortcode_message' );
 	add_shortcode( 'wlt-message', 'ws_ls_shortcode_message' );
+	add_shortcode( 'wlt-user-settings', 'ws_ls_user_preferences_form' );
+
 }
 add_action( 'init', 'ws_ls_register_pro_shortcodes');
 

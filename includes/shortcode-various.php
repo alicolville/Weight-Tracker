@@ -127,12 +127,11 @@ function ws_ls_get_weight_extreme($user_id, $recent = false, $unit = "weight_wei
 	if ($recent)
 		$direction = "desc";
 
-	$cache_key = $user_id . '-' . WE_LS_CACHE_KEY_WEIGHT_EXTREME . '-' . $direction;
-	$cache = ws_ls_get_cache($cache_key);
+	$cache_key = $user_id . '-' . WE_LS_CACHE_KEY_WEIGHT_EXTREME . '-' . $direction . '-' . $unit;
 
 	// Return cache if found!
-	if ($cache)   {
-			return $cache;
+	if ($cache = ws_ls_get_cache($cache_key))   {
+		return $cache;
 	}
 
 	$table_name = $wpdb->prefix . WE_LS_TABLENAME;
