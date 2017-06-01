@@ -7,6 +7,7 @@ if(defined('WS_LS_ABSPATH')){
 	include WS_LS_ABSPATH . 'pro-features/functions.php';
 	include WS_LS_ABSPATH . 'pro-features/user-preferences.php';
 	include WS_LS_ABSPATH . 'pro-features/ajax-handler-public.php';
+	include WS_LS_ABSPATH . 'pro-features/ajax-handler-admin.php';
 	include WS_LS_ABSPATH . 'pro-features/shortcode-chart.php';
 	include WS_LS_ABSPATH . 'pro-features/shortcode-form.php';
 	include WS_LS_ABSPATH . 'pro-features/shortcode-table.php';
@@ -19,11 +20,16 @@ if(defined('WS_LS_ABSPATH')){
 	include WS_LS_ABSPATH . 'pro-features/widget-chart.php';
 	include WS_LS_ABSPATH . 'pro-features/widget-form.php';
 	include WS_LS_ABSPATH . 'pro-features/widget-progress.php';
+	include WS_LS_ABSPATH . 'pro-features/footable.php';
 	include WS_LS_ABSPATH . 'pro-features/user-data.php';
 	include WS_LS_ABSPATH . 'pro-features/user-data-ajax.php';
 	include WS_LS_ABSPATH . 'pro-features/db.php';
 	include WS_LS_ABSPATH . 'pro-features/functions.measurements.php';
 	include WS_LS_ABSPATH . 'pro-features/functions.stats.php';
+
+	// Admin pages for managing user data
+	include WS_LS_ABSPATH . 'pro-features/functions.pages.php';
+	include WS_LS_ABSPATH . 'pro-features/admin-pages/data-home.php';
 
 	// Email notifications enabled?
 	if(WE_LS_EMAIL_ENABLE) {

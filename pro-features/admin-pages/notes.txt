@@ -1,0 +1,20 @@
+
+	$users = new WP_User_Query( array(
+    'search'         => '*'.esc_attr( 'ali' ).'*',
+    'search_columns' => array(
+        'user_login',
+        'user_nicename',
+        'user_email',
+        'user_url',
+    ),
+) );
+$users_found = $users->get_results();
+var_dump($users_found);
+
+
+
+
+
+TODO:
+
+Remove datatable references from back end? Hooks etc?

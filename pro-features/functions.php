@@ -2,6 +2,10 @@
 
 defined('ABSPATH') or die("Jog on!");
 
+function ws_ls_admin_measurment_unit() {
+	return ('inches' == WE_LS_MEASUREMENTS_UNIT) ? __('Inches', WE_LS_SLUG) : __('Cm', WE_LS_SLUG);
+}
+
 function ws_ls_get_bmi_for_table($cm, $kg) {
 
 	if ($cm) {

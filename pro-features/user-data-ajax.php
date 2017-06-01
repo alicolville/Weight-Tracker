@@ -24,7 +24,7 @@ function ws_ls_user_data_callback()
 	$filters = array();
 
 	check_ajax_referer( 'ajax-security-nonce', 'security' );
-  
+
 	$draw_id = ws_ls_ajax_get_value('draw', true);
 	$table_columns = ws_ls_ajax_get_value('columns');
 
@@ -103,12 +103,12 @@ function ws_ls_ajax_get_value($key, $force_to_int = false, $default = false)
 {
 		$return_value = NULL;
 
-    if(isset($_GET[$key]) && $force_to_int) {
-        return intval($_GET[$key]);
-    }
-    elseif(isset($_GET[$key])) {
-    	return $_GET[$key];
-    }
+	    if(isset($_GET[$key]) && $force_to_int) {
+	        return intval($_GET[$key]);
+	    }
+	    elseif(isset($_GET[$key])) {
+	    	return $_GET[$key];
+	    }
 
 		// Use default if aval
 		if ($default && is_null($return_value)) {

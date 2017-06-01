@@ -25,3 +25,11 @@
 {
 	padding: 1px 1px 1px 3px !important;
 }
+.ws-ls-loading-table
+{
+    width: 100%;
+    height: 60px;
+    background-image: url(images/ajax-loader-large.gif);
+	background-repeat: no-repeat;
+	background-position: center;
+}

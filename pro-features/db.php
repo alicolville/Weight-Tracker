@@ -15,9 +15,14 @@ function ws_ls_user_data($filters = false)
     $sql = 'SELECT ' . $table_name . '.id, weight_date, weight_weight, weight_stones, weight_pounds, weight_only_pounds, weight_notes, weight_user_id, user_nicename' . $measurement_columns_sql . ' FROM ' . $table_name
                             . ' INNER JOIN ' . $user_table_name . ' on ' . $user_table_name . '.id = ' . $table_name . '.weight_user_id';
 
-    // Searching column for something specific?
-    if (isset($filters['search']) && !empty($filters['search'])) {
-      $sql .=  $wpdb->prepare(' WHERE user_nicename like %s OR weight_notes like %s', '%' . $filters['search'] . '%', '%' . $filters['search'] . '%');
+    // // Searching column for something specific?
+    // if (isset($filters['search']) && !empty($filters['search'])) {
+    //   $sql .=  $wpdb->prepare(' WHERE user_nicename like %s OR weight_notes like %s', '%' . $filters['search'] . '%', '%' . $filters['search'] . '%');
+    // }
+
+	// Limit to a certain user?
+    if(isset($filters['user-id']) && is_numeric($filters['user-id'])) {
+		$sql .=  $wpdb->prepare(' WHERE weight_user_id = %d', $filters['user-id']);
     }
 
     // Sorting?
@@ -28,7 +33,10 @@ function ws_ls_user_data($filters = false)
     }
 
     $number_of_results = ws_ls_sql_count($sql);
-    $sql .=  $wpdb->prepare(' LIMIT %d, %d', $filters['start'], $filters['limit']);
+
+	if(isset($filters['start']) && isset($filters['limit'])) {
+		$sql .=  $wpdb->prepare(' LIMIT %d, %d', $filters['start'], $filters['limit']);
+	}
 
     $rows = $wpdb->get_results( $sql );
 

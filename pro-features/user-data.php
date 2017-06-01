@@ -1,6 +1,12 @@
 <?php
 	defined('ABSPATH') or die('Jog on!');
 
+	
+
+// -------------------------------------------------------------------------------------------
+// TODO: Remove this code with new user management. Code below is for old User Data page
+// -------------------------------------------------------------------------------------------
+
 function ws_ls_manage_user_data_page() {
 
 	if ( !current_user_can( 'manage_options' ) )  {
