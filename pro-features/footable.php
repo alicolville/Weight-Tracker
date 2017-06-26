@@ -13,6 +13,8 @@ function ws_ls_data_table_placeholder($user_id = false, $max_entries = false) {
 		data-sorting="true"
 		data-editing="true"
 		data-state="true",
+		data-cascade="true",
+		data-toggle-column="last",
 		data-user-id="<?php echo (is_numeric($user_id) ? $user_id : 'false') ?>",
 		data-max-entries="<?php echo (is_numeric($max_entries) ? $max_entries : 'false') ?>">
 	</table>
@@ -106,12 +108,12 @@ function ws_ls_data_table_get_columns() {
 		$unit =  ws_ls_admin_measurment_unit();
 
 		foreach (ws_ls_get_active_measurement_fields() as $key => $data) {
-			array_push($columns, array('name' => $key, 'title' => $data['title'] . ' (' . $unit . ')', 'breakpoints'=> '', 'type' => 'text'));
+			array_push($columns, array('name' => $key, 'title' => $data['title'] . ' (' . $unit . ')', 'breakpoints'=> 'md', 'type' => 'text'));
 		}
 	}
 
 	// Add notes;
-	array_push($columns, array('name' => 'notes', 'title' => 'Notes', 'breakpoints'=> '', 'type' => 'text'));
+	array_push($columns, array('name' => 'notes', 'title' => 'Notes', 'breakpoints'=> 'lg', 'type' => 'text'));
 
 	return $columns;
 }
