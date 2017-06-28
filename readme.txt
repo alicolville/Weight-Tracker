@@ -159,7 +159,7 @@ Lots of new features. Three new Pro shortcodes, email notifications and more.
 
 = 4.2.8 =
 
-
+* Added localisation for missing strings.
 
 = 4.2.7 =
 
