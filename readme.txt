@@ -1,9 +1,9 @@
 === Plugin Name ===
 Contributors: aliakro
 Tags: weight, loss, lose, helper, bmi, body, mass, index, graph, track, stones, kg, table, data, plot, target, history, pounds, responsive, chart, measurements, cm, centimeters, inches, hip, waist, bicep, thigh
-Requires at least: 4.1.0
-Tested up to: 4.7.2
-Stable tag: 4.2.7
+Requires at least: 4.2.0
+Tested up to: 4.8.2
+Stable tag: 4.2.8
 
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -156,6 +156,10 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 Lots of new features. Three new Pro shortcodes, email notifications and more.
 
 == Changelog ==
+
+= 4.2.8 =
+
+* Added localisation for missing strings.
 
 = 4.2.7 =
 

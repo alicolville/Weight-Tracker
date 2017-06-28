@@ -62,7 +62,7 @@ function ws_ls_user_preferences_form()
 	<label for="ws-ls-delete-all">' . __('The button below allows you to clear your existing weight history. Confirm:', WE_LS_SLUG) . '</label>
 	<select id="ws-ls-delete-all" name="ws-ls-delete-all"  tabindex="' . ws_ls_get_next_tab_index() . '" required>
 		<option value=""></option>
-		<option value="true">DELETE ALL DATA</option>
+		<option value="true">' . __('DELETE ALL DATA', WE_LS_SLUG) . '</option>
 	</select>
 	<input name="submit_button" type="submit" tabindex="' . ws_ls_get_next_tab_index() . '" value="' .  __('Delete', WE_LS_SLUG) . '" class="comment-submit btn btn-default button default small fusion-button button-small button-default button-round button-flat">
 </form>

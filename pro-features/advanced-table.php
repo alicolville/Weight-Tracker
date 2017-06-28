@@ -100,7 +100,7 @@ function ws_ls_advanced_data_table($weight_data, $user_defined_arguments = array
 
 					// BMI?
 					if(WE_LS_DISPLAY_BMI_IN_TABLES) {
-						$html_output .= '<th class="min-tablet-l">BMI</th>';
+						$html_output .= '<th class="min-tablet-l">' . __('BMI', WE_LS_SLUG) . '</th>';
 					}
 
 					// Weight Columns?
@@ -112,7 +112,7 @@ function ws_ls_advanced_data_table($weight_data, $user_defined_arguments = array
 					}
 
 	$html_output .= '	<th class="none">' . __('Notes', WE_LS_SLUG) . '</th>
-					<th class="min-tablet-p">Options</th>
+					<th class="min-tablet-p">' . __('Options', WE_LS_SLUG) . '</th>
 			    </tr>
 			</thead>
 			<tbody>';
