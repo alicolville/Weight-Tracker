@@ -30,13 +30,13 @@ jQuery( document ).ready(function ($) {
 		// var post_data = $.merge(post_data, data);
 		var post_data = obj3 = $.extend(post_data, data);
 
-	    $.post(ajaxurl, post_data, function(response) {
+	    $.post(ajaxurl, post_data, function(response, post_data) {
 	 	 // Fire back to given callback with response from server
-	 	 callback && callback(response);
+	 	 callback && callback(response, post_data);
 	    });
 	 }
 
-	function ws_ls_callback_setup_table(response) {
+	function ws_ls_callback_setup_table(response, data) {
 
 		// TODO Validate AJAX response. Display error if needed.
 
@@ -56,7 +56,36 @@ jQuery( document ).ready(function ($) {
 
 		$(table_id).footable({
 	 		"columns": columns,
-	 		"rows": response.rows
+	 		"rows": response.rows,
+			editing: {
+				enabled: true,
+				deleteRow: function(row){
+					if (confirm(ws_user_table_config['label-confirm-delete'])){
+
+						var values = row.val();
+console.log(values);
+						// Fetch the database record ID
+						if ($.isNumeric(values.db_row_id) && $.isNumeric(values.user_id)) {
+
+							// OK, we have a Row ID - send to Ajax handler to delete from DB
+							var data = {};
+					 	   	data['row_id'] = values.db_row_id;
+							data['user_id'] = values.user_id;
+
+							// To keep things looking fast (i.e. so no AJAX lag) delete row instantly from UI
+							row.delete();
+
+							// Post back to WP and delete from dB
+							ws_ls_post_data_to_WP('delete_entry', data, function(response, data) {
+								if(1 !== response) {
+									alert(ws_user_table_config['label-error-delete']);
+								}
+							});
+						}
+
+					}
+				}
+			}
 	 	});
 
 	 }

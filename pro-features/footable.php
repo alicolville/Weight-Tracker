@@ -44,13 +44,13 @@ function ws_ls_data_table_get_rows($user_id = false, $max_entries = false) {
 	// Fetch all relevant weight entries that we're interested in
 	$user_data = ws_ls_user_data($filters);
 
-	// get a lisy of active measurment fields (needed later)
+	// get a list of active measurment fields (needed later)
 	$measurement_fields = ws_ls_get_keys_for_active_measurement_fields();
 
 	// Loop through the data and expected columns and build a clean array of row data for HTML table.
 	$rows = array();
-	foreach ($user_data['weight_data'] as $data) {
 
+	foreach ($user_data['weight_data'] as $data) {
 
 		// Build a row up for given columns
 		$row = array();
@@ -88,16 +88,16 @@ function ws_ls_data_table_get_rows($user_id = false, $max_entries = false) {
 
 /**
  * Depending on settings, return relevant columns for data table
- * @return array - colum definitions
+ * @return array - column definitions
  */
 function ws_ls_data_table_get_columns() {
 
 	$columns = array (
 		array('name' => 'db_row_id', 'title' => 'ID', 'visible'=> false, 'type' => 'number'),
+		array('name' => 'user_id', 'title' => 'USER ID', 'visible'=> false, 'type' => 'number'),
 		array('name' => 'user_nicename', 'title' => 'User', 'breakpoints'=> '', 'type' => 'text'),
 		array('name' => 'date', 'title' => 'Date', 'breakpoints'=> '', 'type' => 'date'),
-		array('name' => 'kg', 'title' => 'Weight', 'visible'=> true, 'type' => 'text'),
-		//array('name' => 'display-admin', 'title' => 'Weight', 'breakpoints'=> '', 'type' => 'text')
+		array('name' => 'kg', 'title' => 'Weight', 'visible'=> true, 'type' => 'text')
 	);
 
 	// Add BMI?
@@ -139,7 +139,9 @@ function ws_ls_data_table_enqueue_scripts() {
 function ws_ls_data_js_config() {
 	return array(
 					'security' => wp_create_nonce('ws-ls-user-tables'),
-					'us-date' => (WE_LS_US_DATE) ? 'true' : 'false'
+					'us-date' => (WE_LS_US_DATE) ? 'true' : 'false',
+					'label-confirm-delete' =>  __('Are you sure you want to delete the row?', WE_LS_SLUG),
+					'label-error-delete' =>  __('Unfortunately there was an error deleting the row.', WE_LS_SLUG)
 				);
 }
 

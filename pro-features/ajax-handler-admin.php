@@ -25,6 +25,27 @@ function ws_ls_get_table_data()
 }
 add_action( 'wp_ajax_table_data', 'ws_ls_get_table_data' );
 
+/**
+	Ajax handler used for deleting rows in a footable
+**/
+function ws_ls_footable_delete_entry()
+{
+  	$ajax_response = 0;
+
+	check_ajax_referer( 'ws-ls-user-tables', 'security' );
+
+	$row_id = ws_ls_get_numeric_post_value('row_id');
+	$user_id = ws_ls_get_numeric_post_value('user_id');
+
+	// IF we have valid inputs, try and delete from DB.
+	if ($row_id && $user_id && ws_ls_delete_entry($user_id, $row_id)) {
+		wp_send_json(1);
+	}
+
+	wp_send_json(0);
+}
+add_action( 'wp_ajax_delete_entry', 'ws_ls_footable_delete_entry' );
+
 function ws_ls_get_numeric_post_value($key, $default = false) {
 	return (isset($_POST[$key]) && is_numeric($_POST[$key])) ? $_POST[$key] : $default;
 }

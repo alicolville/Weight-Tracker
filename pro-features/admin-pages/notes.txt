@@ -20,3 +20,5 @@ TODO:
 - Remove datatable JS references from back end? Hooks etc?
 - Make sure all strings are localised
 - Provide tool tips for table headers
+- update footable.js to latest
+- test all with different weight and date units
