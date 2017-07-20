@@ -17,4 +17,6 @@ var_dump($users_found);
 
 TODO:
 
-Remove datatable references from back end? Hooks etc?
+- Remove datatable JS references from back end? Hooks etc?
+- Make sure all strings are localised
+- Provide tool tips for table headers

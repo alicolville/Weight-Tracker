@@ -92,4 +92,4 @@ add_action( 'plugins_loaded', 'ws_ls_load_textdomain' );
 // AC: Tests
 // -----------------------------------------------------------------------------------------
 //TODO: REMOVE
-// include WS_LS_ABSPATH . 'includes/tests/inc.php';
+ include WS_LS_ABSPATH . 'includes/tests/inc.php';

@@ -6,7 +6,10 @@ function ws_ls_data_table_placeholder($user_id = false, $max_entries = false) {
 
 	ws_ls_data_table_enqueue_scripts();
 
+	$unit =  ws_ls_admin_measurment_unit();
+
 ?>
+	<p>Measurements are in <strong><?php esc_html_e($unit); ?></strong>.</p>
 	<table class="ws-ls-user-data table ws-ls-loading-table" id="<?php echo uniqid('ws-ls-'); ?>"
 		data-paging="true"
 		data-filtering="true"
@@ -104,11 +107,8 @@ function ws_ls_data_table_get_columns() {
 
 	// Add measurements?
 	if(WE_LS_MEASUREMENTS_ENABLED) {
-
-		$unit =  ws_ls_admin_measurment_unit();
-
 		foreach (ws_ls_get_active_measurement_fields() as $key => $data) {
-			array_push($columns, array('name' => $key, 'title' => $data['title'] . ' (' . $unit . ')', 'breakpoints'=> 'md', 'type' => 'text'));
+			array_push($columns, array('name' => $key, 'title' => $data['abv'], 'breakpoints'=> 'md', 'type' => 'text'));
 		}
 	}
 
