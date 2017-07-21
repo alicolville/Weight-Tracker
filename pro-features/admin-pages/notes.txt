@@ -22,3 +22,6 @@ TODO:
 - Provide tool tips for table headers
 - update footable.js to latest
 - test all with different weight and date units
+- sort column toggle on footable
+- finish / check BMI in footable
+- sort AJAX handler for footable

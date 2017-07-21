@@ -15,9 +15,7 @@ function ws_ls_data_table_placeholder($user_id = false, $max_entries = false) {
 		data-filtering="true"
 		data-sorting="true"
 		data-editing="true"
-		data-state="true",
-		data-cascade="true",
-		data-toggle-column="last",
+		data-cascade="true"
 		data-user-id="<?php echo (is_numeric($user_id) ? $user_id : 'false') ?>",
 		data-max-entries="<?php echo (is_numeric($max_entries) ? $max_entries : 'false') ?>">
 	</table>

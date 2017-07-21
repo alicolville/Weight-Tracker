@@ -57,13 +57,19 @@ jQuery( document ).ready(function ($) {
 		$(table_id).footable({
 	 		"columns": columns,
 	 		"rows": response.rows,
+			"state": {
+				"enabled" : true,
+				"key": "ws-ls-admin-footable"
+			},
 			editing: {
 				enabled: true,
+				alwaysShow: true, // Don't show "Edit Rows" button
+				allowAdd: false,
 				deleteRow: function(row){
 					if (confirm(ws_user_table_config['label-confirm-delete'])){
 
 						var values = row.val();
-console.log(values);
+
 						// Fetch the database record ID
 						if ($.isNumeric(values.db_row_id) && $.isNumeric(values.user_id)) {
 
