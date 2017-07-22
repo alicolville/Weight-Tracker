@@ -93,7 +93,7 @@ jQuery( document ).ready(function ($) {
 				},
 				editRow: function(row) {
 					var values = row.val();
-					window.location.href = ws_user_table_config['base-url'] + '&mode=entry&user-id=' + values.user_id + '&entry-id=' + values.db_row_id;
+					window.location.href = ws_user_table_config['base-url'] + '&mode=entry&user-id=' + values.user_id + '&entry-id=' + values.db_row_id + '&redirect=' + ws_user_table_config['current-url-base64'];
 				}
 			}
 	 	});

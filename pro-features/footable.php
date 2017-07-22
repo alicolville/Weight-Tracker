@@ -139,6 +139,7 @@ function ws_ls_data_js_config() {
 					'security' => wp_create_nonce('ws-ls-user-tables'),
 					'us-date' => (WE_LS_US_DATE) ? 'true' : 'false',
 					'base-url' => ws_ls_get_link_to_user_data(),
+					'current-url-base64' => ws_ls_get_url(true),
 					'label-confirm-delete' =>  __('Are you sure you want to delete the row?', WE_LS_SLUG),
 					'label-error-delete' =>  __('Unfortunately there was an error deleting the row.', WE_LS_SLUG)
 				);

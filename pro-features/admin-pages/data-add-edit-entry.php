@@ -18,11 +18,15 @@ function ws_ls_admin_page_data_add_edit() {
 
 	// If we have an entry ID, then load data
 	if ($entry_id) {
-		$data = ws_ls_get_weight($user_id, $entry_id);#
+		$data = ws_ls_get_weight($user_id, $entry_id);
 	}
 
-	var_dump($data);
+	//If we have a Redirect URL, base decode.
+	$redirect_url = ws_ls_querystring_value('redirect');
 
+	if(false === empty($redirect_url)) {
+		$redirect_url = base64_decode($redirect_url);
+	}
 ?>
 	<div class="wrap">
 
@@ -35,7 +39,7 @@ function ws_ls_admin_page_data_add_edit() {
 								<div class="postbox">
 									<h2><span><?php echo __('All entries', WE_LS_SLUG); ?></span></h2>
 									<div class="inside">
-										<?php echo ws_ls_display_weight_form(false, false, $user_id); ?>
+										<?php echo ws_ls_display_weight_form(false, false, $user_id, false, false, false, false, false, $redirect_url, $data); ?>
 									</div>
 								</div>
 							</div>

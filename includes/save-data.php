@@ -58,3 +58,4 @@ function ws_ls_capture_and_handle_form_post()
 
 }
 add_action('init', 'ws_ls_capture_and_handle_form_post');
+add_action('admin_init', 'ws_ls_capture_and_handle_form_post');
