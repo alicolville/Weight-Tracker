@@ -25,3 +25,6 @@ TODO:
 - sort column toggle on footable
 - finish / check BMI in footable
 - sort AJAX handler for footable
+- test all css /JS on add/edit form in front end
+- add relevant security checks to admin pages
+- sanitise check

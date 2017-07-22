@@ -138,9 +138,18 @@ function ws_ls_data_js_config() {
 	return array(
 					'security' => wp_create_nonce('ws-ls-user-tables'),
 					'us-date' => (WE_LS_US_DATE) ? 'true' : 'false',
+					'base-url' => ws_ls_get_link_to_user_data(),
 					'label-confirm-delete' =>  __('Are you sure you want to delete the row?', WE_LS_SLUG),
 					'label-error-delete' =>  __('Unfortunately there was an error deleting the row.', WE_LS_SLUG)
 				);
+}
+
+/**
+ * Return base URL for user data
+ * @return string
+ */
+function ws_ls_get_link_to_user_data() {
+	return admin_url( 'admin.php?page=ws-ls-wlt-data-home');
 }
 
 /**
@@ -150,4 +159,23 @@ function ws_ls_data_js_config() {
  */
 function ws_ls_get_link_to_user_profile($id) {
 	return is_numeric($id) ? esc_url(admin_url( 'admin.php?page=ws-ls-wlt-data-home&user=' . $id )) : '#';
+}
+
+//TODO: test this function / use or remove
+/**
+ * Given a user and entry ID, return a link to the edit entrant page
+ * @param  int $id User ID
+ * @param  int $entry_id Entry ID
+ * @return string
+ */
+function ws_ls_get_link_to_edit_entry($user_id, $entry_id = false) {
+
+	$base_url = admin_url( 'admin.php?page=ws-ls-wlt-data-home&mode=entry&user-id=' . $user_id );
+
+	if(is_numeric($entry_id)) {
+		$base_url .= '&entry-id=' . $entry_id;
+
+	}
+
+	return esc_url($base_url);
 }

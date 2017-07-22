@@ -99,6 +99,8 @@ function ws_ls_load_json($draw_id, $filters)
 	return json_encode($data);
 }
 
+//TODO: should this not be looking at POST? IF not, refactor this funciton and use ws_ls_querystring_value
+
 function ws_ls_ajax_get_value($key, $force_to_int = false, $default = false)
 {
 		$return_value = NULL;

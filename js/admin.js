@@ -16,6 +16,7 @@ jQuery( document ).ready(function ($) {
   	$(".ws-ls-disabled input").prop('disabled', true);
 	$(".ws-ls-disabled select").prop('disabled', true);
 
+	//TODO: Redundant?
 	if(typeof ws_ls_user_data !== 'undefined') {
 		$('.ws-ls-advanced-data-table').DataTable( {
 			"responsive":true,

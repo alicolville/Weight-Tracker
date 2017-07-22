@@ -91,6 +91,7 @@
 
 		wp_enqueue_script('jquery-ui-datepicker');
 		wp_enqueue_script('wl-ls-js', plugins_url( '../js/ws-ls' . 	$minified . '.js', __FILE__ ), array(), WE_LS_CURRENT_VERSION, true);
+		wp_enqueue_script('wl-ls-js-form', plugins_url( '../js/ws-ls-entry-form.js', __FILE__ ), array(), WE_LS_CURRENT_VERSION, true); //TODO: minify this script
 
 		// Add localization data for JS
 		wp_localize_script('wl-ls-js', 'ws_ls_config', ws_ls_get_js_config());
@@ -102,7 +103,7 @@
 
 		// Enqueue Data
 		if(WS_LS_IS_PRO && WS_LS_ADVANCED_TABLES) {
-	  	  ws_ls_enqueue_datatable_scripts(); // TODO: Remove 
+	  	  ws_ls_enqueue_datatable_scripts(); // TODO: Remove
 	    }
 
 		$ws_already_enqueued = true;
@@ -110,5 +111,28 @@
 	}
 	function ws_ls_enqueue_admin_files(){
 		wp_enqueue_script('ws-ls-admin-notifications',plugins_url( '../js/admin-notifications.js', __FILE__ ), array('jquery'), WE_LS_CURRENT_VERSION);
+
+		// If on the add / edit entry page, then include relevant CSS / JS for form
+		if(false === empty($_GET['mode']) && 'entry' == $_GET['mode'] ) {
+			ws_ls_enqueue_form_dependencies();
+		}
+
 	}
 	add_action( 'admin_enqueue_scripts', 'ws_ls_enqueue_admin_files');
+
+
+	function ws_ls_enqueue_form_dependencies() {
+
+		$minified = (WE_LS_USE_MINIFIED_SCRIPTS) ? '.min' : '';
+
+		// CSS
+		wp_enqueue_style('wlt-style', plugins_url( '../css/ws-ls' . 	$minified . '.css', __FILE__ ), array(), WE_LS_CURRENT_VERSION);
+		wp_enqueue_style('jquery-style', plugins_url( '../css/jquery-ui.min.css', __FILE__ ), array(), WE_LS_CURRENT_VERSION);
+
+		// JavaScript
+		wp_enqueue_script('jquery-ui-datepicker');
+		wp_enqueue_script('jquery-validate',plugins_url( '../js/jquery.validate.min.js', __FILE__ ), array('jquery'), WE_LS_CURRENT_VERSION);
+		wp_enqueue_script('jquery-validate-additional',plugins_url( '../js/additional-methods.min.js', __FILE__ ), array('jquery', 'jquery-validate'), WE_LS_CURRENT_VERSION);
+		wp_enqueue_script('wl-ls-js', plugins_url( '../js/ws-ls-entry-form.js', __FILE__ ), array(), WE_LS_CURRENT_VERSION, true);	//TODO: minify this script
+		wp_localize_script('wl-ls-js', 'ws_ls_config', ws_ls_get_js_config());
+	}

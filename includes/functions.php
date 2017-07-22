@@ -511,4 +511,23 @@ function ws_ls_format_stones_pound_for_comparison_display($weight) {
 	return '';
 }
 
+function ws_ls_querystring_value($key, $force_to_int = false, $default = false) {
+
+		$return_value = NULL;
+
+	    if(isset($_GET[$key]) && $force_to_int) {
+	        return intval($_GET[$key]);
+	    }
+	    elseif(isset($_GET[$key])) {
+	    	return $_GET[$key];
+	    }
+
+		// Use default if aval
+		if ($default && is_null($return_value)) {
+			$return_value = $default;
+		}
+    return $return_value;
+}
+
+
 ?>

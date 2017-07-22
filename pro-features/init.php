@@ -30,6 +30,8 @@ if(defined('WS_LS_ABSPATH')){
 	// Admin pages for managing user data
 	include WS_LS_ABSPATH . 'pro-features/functions.pages.php';
 	include WS_LS_ABSPATH . 'pro-features/admin-pages/data-home.php';
+	include WS_LS_ABSPATH . 'pro-features/admin-pages/data-summary.php';
+	include WS_LS_ABSPATH . 'pro-features/admin-pages/data-add-edit-entry.php';
 
 	// Email notifications enabled?
 	if(WE_LS_EMAIL_ENABLE) {
