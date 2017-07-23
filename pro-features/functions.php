@@ -60,3 +60,18 @@ function ws_ls_calculate_bmi_label($bmi) {
 
 	return 'Err';
 }
+
+function ws_ls_tooltip($text, $tooltip) {
+
+	if(empty($text) || empty($tooltip)) {
+		return;
+	}
+
+	return sprintf(
+		'<div class="ws-tooltip">%s
+		  <span class="tooltiptext">%s</span>
+		</div>',
+		esc_html($text),
+		esc_html($tooltip)
+	);
+}

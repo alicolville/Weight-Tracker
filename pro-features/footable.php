@@ -100,13 +100,13 @@ function ws_ls_data_table_get_columns() {
 
 	// Add BMI?
 	if(WE_LS_DISPLAY_BMI_IN_TABLES) {
-		array_push($columns, array('name' => 'bmi', 'title' => 'BMI', 'breakpoints'=> '', 'type' => 'text'));
+		array_push($columns, array('name' => 'bmi', 'title' => ws_ls_tooltip('BMI', __('Body Mass Index', WE_LS_SLUG)), 'breakpoints'=> '', 'type' => 'text'));
 	}
 
 	// Add measurements?
 	if(WE_LS_MEASUREMENTS_ENABLED) {
 		foreach (ws_ls_get_active_measurement_fields() as $key => $data) {
-			array_push($columns, array('name' => $key, 'title' => $data['abv'], 'breakpoints'=> 'md', 'type' => 'text'));
+			array_push($columns, array('name' => esc_attr($key), 'title' => ws_ls_tooltip($data['abv'], $data['title']), 'breakpoints'=> 'md', 'type' => 'text'));
 		}
 	}
 

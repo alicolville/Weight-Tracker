@@ -16,7 +16,7 @@ function ws_ls_admin_page_data_summary() {
 						<div class="postbox">
 							<h2><span><?php echo __('All entries', WE_LS_SLUG); ?></span></h2>
 							<div class="inside">
-								<?php ws_ls_data_table_placeholder(); ?>
+								<?php ws_ls_data_table_placeholder(false, false); ?>
 							</div>
 						</div>
 					</div>
