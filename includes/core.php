@@ -468,7 +468,8 @@ function ws_ls_capture_form_validate_and_save($user_id = false)
 			break;
 	}
 
-	$existing_db_id = (false === empty($form_values['db_row_id'])) ? intval($form_values['db_row_id']) : false;
+	// Do we have a row ID embedded in the form (i.e. are we in admin and editing an entry)?
+	$existing_db_id = (false === empty($_POST['db_row_id'])) ? intval($_POST['db_row_id']) : false;
 
 	$result = ws_ls_save_data($user_id, $weight_object, $is_target_form, $existing_db_id);
 

@@ -13,7 +13,6 @@ function ws_ls_data_table_placeholder($user_id = false, $max_entries = false) {
 		data-sorting="true"
 		data-editing="true"
 		data-cascade="true"
-		data-show-toggle="false"
 		data-user-id="<?php echo (is_numeric($user_id) ? $user_id : 'false') ?>",
 		data-max-entries="<?php echo (is_numeric($max_entries) ? $max_entries : 'false') ?>">
 	</table>
@@ -67,6 +66,9 @@ function ws_ls_data_table_get_rows($user_id = false, $max_entries = false) {
 						$row[$column_name]['options']['sortValue'] = $data['user_nicename'];
 						$row[$column_name]['value'] = sprintf('<a href="%s">%s</a>', ws_ls_get_link_to_user_profile($data['user_id']), $data['user_nicename']);
 						break;
+					// case 'bmi':						TODO: Finish BMI
+					// 	$row[$column_name]['value'] = 'hello';
+					// 	break;
 					default:
 						$row[$column_name] = $data[$column_name];
 						break;

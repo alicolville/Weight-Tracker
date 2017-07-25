@@ -14,7 +14,7 @@ function ws_run_tests(){
 
 	// Add users to WP and add some weight / measurement entries
 	//  ws_ls_test_create_test_data($number_of_users_to_add = 0, $max_number_of_entries_per_user = 10)
-	ws_ls_test_create_test_data(20, 20);
+	ws_ls_test_create_test_data(20, 30);
 
 
 }

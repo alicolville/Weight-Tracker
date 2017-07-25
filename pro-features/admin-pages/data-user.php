@@ -21,9 +21,19 @@ function ws_ls_admin_page_data_user() {
 			<div id="post-body-content">
 				<div class="meta-box-sortables ui-sortable">
 					<div class="postbox">
-						<h2 class="hndle"><span><?php echo __('Summary', WE_LS_SLUG); ?></span></h2>
+						<h2 class="hndle"><span><?php echo __('Chart', WE_LS_SLUG); ?></span></h2>
 						<div class="inside">
-							Something
+							<?php
+
+								// Fetch last 25 weight entries
+								$weight_data = ws_ls_get_weights($user_id, 25);
+
+								// Reverse array so in cron order
+								//$weight_data = array_reverse($weight_data);
+
+								echo ws_ls_display_chart($weight_data, ['type' => 'line', 'max-points' => 25, 'user-id' => $user_id]);
+
+							?>
 						</div>
 					</div>
 					<div class="postbox">

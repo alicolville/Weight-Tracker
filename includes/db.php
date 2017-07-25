@@ -233,7 +233,7 @@ function ws_ls_save_data($user_id, $weight_object, $is_target_form = fals, $exis
 		} else {
 			$db_is_update = ws_does_weight_exist_for_this_date($user_id, $weight_object['date']);
 		}
-		
+
 		$db_fields['weight_notes'] = $weight_object['notes'];
 	    array_push($db_field_types, '%s');
 	    $db_fields['weight_date'] = $weight_object['date'];
