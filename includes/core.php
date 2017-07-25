@@ -306,8 +306,10 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 
 				$default_date = date("d/m/Y");
 
-				// Overide if US
-				if (ws_ls_get_config('WE_LS_US_DATE')) {
+				// Do we have an existing value?
+				if($existing_date = ws_ls_get_existing_value($existing_data, 'date-display')) {
+					$default_date = $existing_date;
+				} else if (ws_ls_get_config('WE_LS_US_DATE')) { // Overide if US
 					$default_date = date("m/d/Y");
 				}
 
@@ -466,7 +468,9 @@ function ws_ls_capture_form_validate_and_save($user_id = false)
 			break;
 	}
 
-	$result = ws_ls_save_data($user_id, $weight_object, $is_target_form);
+	$existing_db_id = (false === empty($form_values['db_row_id'])) ? intval($form_values['db_row_id']) : false;
+
+	$result = ws_ls_save_data($user_id, $weight_object, $is_target_form, $existing_db_id);
 
     ws_ls_delete_cache_for_given_user($user_id);
 

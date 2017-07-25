@@ -184,7 +184,7 @@ function ws_ls_get_start_weight($user_id)
     return false;
 }
 
-function ws_ls_save_data($user_id, $weight_object, $is_target_form = false)
+function ws_ls_save_data($user_id, $weight_object, $is_target_form = fals, $existing_row_id = false)
 {
 	global $wpdb;
 
@@ -225,8 +225,16 @@ function ws_ls_save_data($user_id, $weight_object, $is_target_form = false)
 		$db_is_update = ws_does_target_weight_exist($user_id);
 	    $table_name = $wpdb->prefix . WE_LS_TARGETS_TABLENAME;
 	} else {
-		$db_is_update = ws_does_weight_exist_for_this_date($user_id, $weight_object['date']);
-	    $db_fields['weight_notes'] = $weight_object['notes'];
+
+		$db_is_update = false;
+
+		if($existing_row_id && is_numeric($existing_row_id)) {
+			$db_is_update = $existing_row_id;
+		} else {
+			$db_is_update = ws_does_weight_exist_for_this_date($user_id, $weight_object['date']);
+		}
+		
+		$db_fields['weight_notes'] = $weight_object['notes'];
 	    array_push($db_field_types, '%s');
 	    $db_fields['weight_date'] = $weight_object['date'];
 	    array_push($db_field_types, '%s');

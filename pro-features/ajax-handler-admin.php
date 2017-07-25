@@ -12,7 +12,7 @@ function ws_ls_get_table_data()
 	check_ajax_referer( 'ws-ls-user-tables', 'security' );
 
 	// Filter?
-	$max_entries = false; // For now, lets not limit the number of records returned by AJAX. ws_ls_get_numeric_post_value('max_entries');
+	$max_entries = ws_ls_get_numeric_post_value('max_entries');
 	$user_id = ws_ls_get_numeric_post_value('user_id');
 	$table_id = ws_ls_ajax_post_value('table_id');
 

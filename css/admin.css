@@ -54,3 +54,8 @@
 .ws-tooltip:hover .tooltiptext {
     visibility: visible;
 }
+
+/* Hide column toggle for Footables */
+.form-group.footable-filtering-search .input-group-btn .dropdown-toggle {
+    display: none;
+}

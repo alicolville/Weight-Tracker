@@ -6,21 +6,17 @@ function ws_ls_data_table_placeholder($user_id = false, $max_entries = false) {
 
 	ws_ls_data_table_enqueue_scripts();
 
-	$unit =  ws_ls_admin_measurment_unit();
-
 ?>
-	<p>Measurements are in <strong><?php esc_html_e($unit); ?></strong>.</p>
 	<table class="ws-ls-user-data table ws-ls-loading-table" id="<?php echo uniqid('ws-ls-'); ?>"
 		data-paging="true"
 		data-filtering="true"
 		data-sorting="true"
 		data-editing="true"
 		data-cascade="true"
+		data-show-toggle="false"
 		data-user-id="<?php echo (is_numeric($user_id) ? $user_id : 'false') ?>",
 		data-max-entries="<?php echo (is_numeric($max_entries) ? $max_entries : 'false') ?>">
 	</table>
-
-
 <?php
 }
 
@@ -105,8 +101,11 @@ function ws_ls_data_table_get_columns() {
 
 	// Add measurements?
 	if(WE_LS_MEASUREMENTS_ENABLED) {
+
+		$unit = ws_ls_admin_measurment_unit();
+
 		foreach (ws_ls_get_active_measurement_fields() as $key => $data) {
-			array_push($columns, array('name' => esc_attr($key), 'title' => ws_ls_tooltip($data['abv'], $data['title']), 'breakpoints'=> 'md', 'type' => 'text'));
+			array_push($columns, array('name' => esc_attr($key), 'title' => ws_ls_tooltip($data['abv'], $data['title'] . ' (' . $unit . ')' ), 'breakpoints'=> 'md', 'type' => 'text'));
 		}
 	}
 
@@ -143,40 +142,4 @@ function ws_ls_data_js_config() {
 					'label-confirm-delete' =>  __('Are you sure you want to delete the row?', WE_LS_SLUG),
 					'label-error-delete' =>  __('Unfortunately there was an error deleting the row.', WE_LS_SLUG)
 				);
-}
-
-/**
- * Return base URL for user data
- * @return string
- */
-function ws_ls_get_link_to_user_data() {
-	return admin_url( 'admin.php?page=ws-ls-wlt-data-home');
-}
-
-/**
- * Given a user ID, return a link to the user's profile
- * @param  int $id User ID
- * @return string
- */
-function ws_ls_get_link_to_user_profile($id) {
-	return is_numeric($id) ? esc_url(admin_url( 'admin.php?page=ws-ls-wlt-data-home&user=' . $id )) : '#';
-}
-
-//TODO: test this function / use or remove
-/**
- * Given a user and entry ID, return a link to the edit entrant page
- * @param  int $id User ID
- * @param  int $entry_id Entry ID
- * @return string
- */
-function ws_ls_get_link_to_edit_entry($user_id, $entry_id = false) {
-
-	$base_url = admin_url( 'admin.php?page=ws-ls-wlt-data-home&mode=entry&user-id=' . $user_id );
-
-	if(is_numeric($entry_id)) {
-		$base_url .= '&entry-id=' . $entry_id;
-
-	}
-
-	return esc_url($base_url);
 }

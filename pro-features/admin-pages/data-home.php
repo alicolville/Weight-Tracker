@@ -9,6 +9,9 @@ function ws_ls_admin_page_data_home() {
 
 	// Call relevant page function
 	switch ($page_to_display) {
+		case 'user':
+			ws_ls_admin_page_data_user();
+			break;
 		case 'entry':
 			ws_ls_admin_page_data_add_edit();
 			break;

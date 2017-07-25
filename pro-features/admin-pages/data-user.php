@@ -2,11 +2,20 @@
 
 defined('ABSPATH') or die('Naw ya dinnie!');
 
-function ws_ls_admin_page_data_summary() {
+function ws_ls_admin_page_data_user() {
+
+	$user_id = ws_ls_querystring_value('user-id', true);
+
+	if(true === empty($user_id) )  {
+		return;
+	}
+
+	$user_data = get_userdata( $user_id );
 
 ?>
 <div class="wrap">
-	<h1><?php echo __('Summary', WE_LS_SLUG); ?></h1>
+	<h1><?php echo $user_data->user_nicename; ?>
+			<?php echo ws_ls_get_email_link($user_id, true); ?></h1>
 	<div id="poststuff">
 		<div id="post-body" class="metabox-holder columns-2">
 			<div id="post-body-content">
@@ -18,9 +27,9 @@ function ws_ls_admin_page_data_summary() {
 						</div>
 					</div>
 					<div class="postbox">
-						<h2 class="hndle"><span><?php echo __('Last 100 entries', WE_LS_SLUG); ?></span></h2>
+						<h2 class="hndle"><span><?php echo __('Entries', WE_LS_SLUG); ?></span></h2>
 						<div class="inside">
-							<?php ws_ls_data_table_placeholder(false, 100); ?>
+							<?php ws_ls_data_table_placeholder($user_id); ?>
 						</div>
 					</div>
 				</div>
@@ -28,9 +37,11 @@ function ws_ls_admin_page_data_summary() {
 			<div id="postbox-container-1" class="postbox-container">
 				<div class="meta-box-sortables">
 					<div class="postbox">
-						<h2><span><?php echo __('User Search', WE_LS_SLUG); ?></span></h2>
+						<h2><span><?php echo __('Add Entry', WE_LS_SLUG); ?></span></h2>
 						<div class="inside">
-							<?php ws_ls_box_user_search_form(); ?>
+							<a class="button-primary" href="<?php echo ws_ls_get_link_to_edit_entry($user_id); ?>">
+								<?php echo __('Add a new entry', WE_LS_SLUG); ?>
+							</a>
 						</div>
 					</div>
 					<div class="postbox">

@@ -244,3 +244,37 @@ function ws_ls_stats_league_table_fetch($ignore_cache = false, $limit = 10, $los
 
 	return false;
 }
+
+// -----------------------------------------------------------------
+// Search
+// -----------------------------------------------------------------
+
+
+function ws_ls_user_search($name) {
+
+	if(false === empty($name)) {
+
+		global $wpdb;
+
+		$sql = "SELECT distinct wp_users.* FROM wp_users
+				INNER JOIN wp_ws_ls_data as wd ON ( wp_users.ID = wd.weight_user_id )
+				LEFT JOIN wp_usermeta um ON ( wp_users.ID = um.user_id )
+				WHERE 1=1 AND
+				(
+		  			( um.meta_key = 'first_name' AND um.meta_value LIKE '%%%s%%' )
+		  			OR
+		  			( um.meta_key = 'last_name' AND um.meta_value LIKE '%%%s%%' )
+					OR
+					( user_login LIKE '%%%s%%' OR user_nicename LIKE '%%%s%%' OR user_email LIKE '%%%s%%')
+				)
+				ORDER BY user_login ASC";
+
+		$sql = $wpdb->prepare($sql, $name, $name, $name, $name, $name, $name, $name, $name);
+
+		return $wpdb->get_results($sql);
+
+	}
+
+	return false;
+
+}
