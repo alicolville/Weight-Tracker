@@ -47,14 +47,6 @@ function ws_ls_admin_page_data_user() {
 			<div id="postbox-container-1" class="postbox-container">
 				<div class="meta-box-sortables">
 					<div class="postbox">
-						<h2><span><?php echo __('Add Entry', WE_LS_SLUG); ?></span></h2>
-						<div class="inside">
-							<a class="button-primary" href="<?php echo ws_ls_get_link_to_edit_entry($user_id); ?>">
-								<?php echo __('Add a new entry', WE_LS_SLUG); ?>
-							</a>
-						</div>
-					</div>
-					<div class="postbox">
 						<h2><span><?php echo __('Quick Stats', WE_LS_SLUG); ?></span></h2>
 						<div class="inside">
                            	<h4><?php echo __('Start weight', WE_LS_SLUG); ?></h4>
@@ -93,6 +85,25 @@ function ws_ls_admin_page_data_user() {
 
 						</div>
 					</div>
+                    <div class="postbox">
+                        <h2><span><?php echo __('Add Entry', WE_LS_SLUG); ?></span></h2>
+                        <div class="inside">
+                            <a class="button-primary" href="<?php echo ws_ls_get_link_to_edit_entry($user_id); ?>">
+                                <?php echo __('Add a new entry', WE_LS_SLUG); ?>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="postbox">
+                        <h2><span><?php echo __('Export Data', WE_LS_SLUG); ?></span></h2>
+                        <div class="inside">
+                            <a class="button-secondary" href="#">
+                                <?php echo __('To CSV', WE_LS_SLUG); ?>
+                            </a>
+                            <a class="button-secondary" href="#">
+                                <?php echo __('To JSON', WE_LS_SLUG); ?>
+                            </a>
+                        </div>
+                    </div>
 				</div>
 			</div>
 		</div>
