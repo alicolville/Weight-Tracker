@@ -462,11 +462,11 @@ function ws_ls_get_user_preferences($user_id = false, $use_cache = true)
   return $settings;
 }
 
-function ws_ls_get_user_height($user_id = false, $use_cache = true)
-{
+function ws_ls_get_user_height($user_id = false, $use_cache = true) {
+
   global $wpdb;
 
-  if(false == $user_id){
+  if(false === $user_id){
     $user_id = get_current_user_id();
   }
 

@@ -63,3 +63,10 @@
 .ws-ls-notice-of-refresh {
 	display: none;
 }
+
+.ws_ls_display_form {
+	width: 100%;
+}
+.ws_ls_display_form label, .ws_ls_display_form input {
+	display: block;
+}

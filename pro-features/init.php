@@ -106,6 +106,8 @@ function ws_ls_admin_enqueue_pro_scripts(){
 	// Only add Datatable scripts to User preferences page
  	$screen = get_current_screen();
 
+	wp_enqueue_style('ws-ls-admin-style', plugins_url( '/css/admin.css', dirname(__FILE__) ), array(), WE_LS_CURRENT_VERSION);
+
     if ( 'weight-loss-tracker_page_ws-ls-weight-loss-tracker-pro' == $screen->id ){
 		ws_ls_enqueue_datatable_scripts(true);
 	}

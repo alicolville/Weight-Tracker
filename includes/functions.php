@@ -399,6 +399,7 @@ function ws_ls_get_config($key, $user_id = false)
 
   }
   else {
+
     // Use admin default
     return constant($key);
   }
