@@ -26,10 +26,10 @@ function ws_ls_admin_page_data_user() {
 							<?php
 
 								// Fetch last 25 weight entries
-								$weight_data = ws_ls_get_weights($user_id, 25);
+								$weight_data = ws_ls_get_weights($user_id, 25, -1, 'desc');
 
 								// Reverse array so in cron order
-								//$weight_data = array_reverse($weight_data);
+								$weight_data = array_reverse($weight_data);
 
 								echo ws_ls_display_chart($weight_data, ['type' => 'line', 'max-points' => 25, 'user-id' => $user_id]);
 
