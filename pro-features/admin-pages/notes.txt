@@ -17,6 +17,7 @@ var_dump($users_found);
 
 TODO:
 
+- Add a dashboard widget??
 - restrict various parts of user data to non -pro
 - remove old user data page / etc
 - Remove datatable JS references from back end? Hooks etc?
@@ -31,3 +32,4 @@ TODO:
 - add relevant security checks to admin pages
 - sanitise check
 - remove test code
+- update plugin json on weight.yeken.uk

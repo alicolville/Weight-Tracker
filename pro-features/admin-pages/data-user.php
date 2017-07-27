@@ -47,7 +47,7 @@ function ws_ls_admin_page_data_user() {
 			<div id="postbox-container-1" class="postbox-container">
 				<div class="meta-box-sortables">
 					<div class="postbox">
-						<h2><span><?php echo __('Quick Stats', WE_LS_SLUG); ?></span></h2>
+						<h2 class="hndle"><span><?php echo __('Quick Stats', WE_LS_SLUG); ?></span></h2>
 						<div class="inside">
                            	<h4><?php echo __('Start weight', WE_LS_SLUG); ?></h4>
 							<p><?php echo ws_ls_weight_start($user_id); ?></p>
@@ -55,7 +55,7 @@ function ws_ls_admin_page_data_user() {
 							<h4><?php echo __('Latest weight', WE_LS_SLUG); ?></h4>
 							<p><?php echo ws_ls_weight_recent($user_id); ?></p>
 
-							<h5><?php echo __('Difference from start weight', WE_LS_SLUG); ?></h5>
+							<h4><?php echo __('Difference from start weight', WE_LS_SLUG); ?></h4>
 							<p><?php echo ws_ls_weight_difference($user_id); ?></p>
 
 							<h4><?php echo __('Target weight', WE_LS_SLUG); ?></h4>
@@ -86,7 +86,7 @@ function ws_ls_admin_page_data_user() {
 						</div>
 					</div>
                     <div class="postbox">
-                        <h2><span><?php echo __('Add Entry', WE_LS_SLUG); ?></span></h2>
+                        <h2 class="hndle"><span><?php echo __('Add Entry', WE_LS_SLUG); ?></span></h2>
                         <div class="inside">
                             <a class="button-primary" href="<?php echo ws_ls_get_link_to_edit_entry($user_id); ?>">
                                 <?php echo __('Add a new entry', WE_LS_SLUG); ?>
@@ -94,7 +94,7 @@ function ws_ls_admin_page_data_user() {
                         </div>
                     </div>
                     <div class="postbox">
-                        <h2><span><?php echo __('Export Data', WE_LS_SLUG); ?></span></h2>
+                        <h2 class="hndle"><span><?php echo __('Export Data', WE_LS_SLUG); ?></span></h2>
                         <div class="inside">
                             <a class="button-secondary" href="#">
                                 <?php echo __('To CSV', WE_LS_SLUG); ?>

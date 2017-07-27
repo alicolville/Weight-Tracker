@@ -15,6 +15,9 @@ function ws_ls_admin_page_data_home() {
 		case 'entry':
 			ws_ls_admin_page_data_add_edit();
 			break;
+		case 'all':
+			ws_ls_admin_page_view_all();
+			break;
 		default:
 			ws_ls_admin_page_data_summary();
 			break;

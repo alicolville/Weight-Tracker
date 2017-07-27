@@ -31,6 +31,7 @@ if(defined('WS_LS_ABSPATH')){
 	include WS_LS_ABSPATH . 'pro-features/functions.pages.php';
 	include WS_LS_ABSPATH . 'pro-features/admin-pages/data-home.php';
 	include WS_LS_ABSPATH . 'pro-features/admin-pages/data-summary.php';
+	include WS_LS_ABSPATH . 'pro-features/admin-pages/data-view-all.php';
 	include WS_LS_ABSPATH . 'pro-features/admin-pages/data-add-edit-entry.php';
 	include WS_LS_ABSPATH . 'pro-features/admin-pages/data-user.php';
 

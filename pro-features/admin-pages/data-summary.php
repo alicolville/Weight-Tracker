@@ -14,7 +14,7 @@ function ws_ls_admin_page_data_summary() {
 					<div class="postbox">
 						<h2 class="hndle"><span><?php echo __('Summary', WE_LS_SLUG); ?></span></h2>
 						<div class="inside">
-							Something
+							<?php echo ws_ls_shortcode_stats_league_total([]); ?>
 						</div>
 					</div>
 					<div class="postbox">
@@ -37,6 +37,14 @@ function ws_ls_admin_page_data_summary() {
 						<h2><span><?php echo __('Quick Stats', WE_LS_SLUG); ?></span></h2>
 						<div class="inside">
 							Something
+						</div>
+					</div>
+					<div class="postbox">
+						<h2><span><?php echo __('View All Data', WE_LS_SLUG); ?></span></h2>
+						<div class="inside">
+							<a class="button-primary" href="<?php echo ws_ls_get_link_to_user_data() . '&amp;mode=all'; ?>">
+								<?php echo __('View all entries', WE_LS_SLUG); ?>
+							</a>
 						</div>
 					</div>
 				</div>

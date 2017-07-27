@@ -115,16 +115,6 @@ function ws_ls_settings_page() {
 															<p><?php echo __('If you wish to style the forms in your own way, you can use this option to disable WLT\'s style sheets.', WE_LS_SLUG)?></p>
 														</td>
 													</tr>
-													<tr class="<?php echo $disable_if_not_pro_class; ?>">
-														<th scope="row" ><?php echo __( 'Disable user stats?' , WE_LS_SLUG); ?></th>
-														<td>
-															<select id="ws-ls-disable-stats-cron" name="ws-ls-disable-stats-cron">
-																<option value="no" <?php selected( get_option('ws-ls-disable-stats-cron'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
-																<option value="yes" <?php selected( get_option('ws-ls-disable-stats-cron'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
-															</select>
-															<p><?php echo __('User stats are maintained to help power shortcodes such as [weight-loss-tracker-league-table]. This involves a cron job being run every hour to refresh a user\'s stats such as first weight, recent weight and total lost. The figures are also re-produced on each weight entry modification and can then be used to generate a league table. This feature could <em>potentially</em> reduce performance on your site. If you are not using the leaderboard shortcodes it is advised to disable this.', WE_LS_SLUG)?></p>
-														</td>
-													</tr>
 													<tr>
 														<th scope="row"><?php echo __( 'Send usage data to YeKen?' , WE_LS_SLUG); ?></th>
 														<td>

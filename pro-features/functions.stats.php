@@ -73,7 +73,7 @@ function ws_ls_stats_refresh_summary_stats() {
 
 	$stats = array(
 		'difference' => ws_ls_stats_sum_weight_difference(),
-		'sum' => 0 //ws_ls_stats_sum_all_weights()
+		'sum' => 0
 	);
 
 	update_option(WE_LS_CACHE_KEY_STATS_SUMMARY, $stats);
