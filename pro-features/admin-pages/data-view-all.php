@@ -14,7 +14,7 @@ function ws_ls_admin_page_view_all() {
 					<div class="postbox">
 
 						<h2 class="hndle"><span><?php echo __('View All Data', WE_LS_SLUG); ?></span></h2>
-						<p>
+						<p><?php var_Dump(ws_ls_get_entry_counts()); ?>
 							//TODO: Finish this off -- tidy layout and add stats
 							<a class="button-secondary" href="#">
 								<?php echo __('Export to CSV', WE_LS_SLUG); ?>

@@ -30,6 +30,7 @@
 	define('WE_LS_CACHE_KEY_YEKEN_JSON', 'yeken-json-lookup-wlt');
 	define('WE_LS_CACHE_KEY_STATS_SUMMARY', 'user-stats');
 	define('WE_LS_CACHE_KEY_WEIGHT_FOR_DAY', 'user-weight-for-day');
+    define('WE_LS_CACHE_KEY_ENTRY_COUNTS', 'entry-counts');
 	define('WE_LS_KEY_YEKEN_ADMIN_NOTIFICATION', 'yeken-admin-notification');
 	define('WE_LS_CACHE_ADMIN_USER_DATA', 'admin-user-data');
 	define('WE_LS_TABLE_MAX_WEEK_FILTERS', 150);

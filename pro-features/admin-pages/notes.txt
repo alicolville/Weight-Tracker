@@ -33,3 +33,4 @@ TODO:
 - sanitise check
 - remove test code
 - update plugin json on weight.yeken.uk
+- add delete all somewhere

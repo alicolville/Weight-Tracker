@@ -27,7 +27,7 @@ function ws_ls_shortcode_stats_league_total($user_defined_arguments)
 
 	if($data) {
 
-		$html = '<table class="ws-ls-stats-table">
+		$html = '<table class="ws-ls-stats-table' . (is_admin() ? ' footable table' : '') . '">
 					<thead>
 						<tr>
 							<th class="ws-col-rank-th"></th>
@@ -53,6 +53,11 @@ function ws_ls_shortcode_stats_league_total($user_defined_arguments)
 			$user_info = get_userdata($row['user_id']);
 			$display_name = isset($user_info->display_name) ? $user_info->display_name : '';
 
+            // If used in admin, wrap display name in link
+            if(is_admin()) {
+                $display_name = '<a href="' . ws_ls_get_link_to_user_profile($row['user_id']) . '">' . $display_name . '</a>';
+            }
+
 			// Get the display value for weight
 			$stats = ws_ls_shortcode_stats_display_value(
 															array('kg' => $row['weight_difference'], 'display-unit' => ws_ls_get_config('WE_LS_DATA_UNITS'), 'display-value' => ''),
@@ -68,19 +73,21 @@ function ws_ls_shortcode_stats_league_total($user_defined_arguments)
 		        $percentage = round($percentage) . '%';
 			}
 
+            $table_cell = (is_admin()) ? ' style="display: table-cell;"' : '';
+
 			// Add HTML!
 			$html .= sprintf(
 				'<tr class="ws-rank-%s">
-					<td class="ws-col-rank">%s</td>
-					<td>%s</td>
-					<td>%s</td>
+					<td class="ws-col-rank" ' . $table_cell . '>%s</td>
+					<td ' . $table_cell . '>%s</td>
+					<td ' . $table_cell . '>%s</td>
 					%s
 				</tr>',
 				$rank,
 				$rank,
 				$display_name,
 				$stats['display-value'],
-				(true == $arguments['show_percentage']) ? '<td>' . $percentage . '</td>' : ''
+				(true == $arguments['show_percentage']) ? '<td ' . $table_cell . '>' . $percentage . '</td>' : ''
 			);
 
 			$rank++;

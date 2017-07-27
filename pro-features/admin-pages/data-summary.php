@@ -12,7 +12,7 @@ function ws_ls_admin_page_data_summary() {
 			<div id="post-body-content">
 				<div class="meta-box-sortables ui-sortable">
 					<div class="postbox">
-						<h2 class="hndle"><span><?php echo __('Summary', WE_LS_SLUG); ?></span></h2>
+						<h2 class="hndle"><span><?php echo __('League Table', WE_LS_SLUG); ?></span></h2>
 						<div class="inside">
 							<?php echo ws_ls_shortcode_stats_league_total([]); ?>
 						</div>
@@ -36,7 +36,7 @@ function ws_ls_admin_page_data_summary() {
 					<div class="postbox">
 						<h2><span><?php echo __('Quick Stats', WE_LS_SLUG); ?></span></h2>
 						<div class="inside">
-							Something
+							<?php var_Dump(ws_ls_get_entry_counts()); ?>
 						</div>
 					</div>
 					<div class="postbox">

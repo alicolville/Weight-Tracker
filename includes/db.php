@@ -492,6 +492,30 @@ function ws_ls_get_user_height($user_id = false, $use_cache = true) {
 
   return $height;
 }
+
+function ws_ls_get_entry_counts($use_cache = true) {
+
+    global $wpdb;
+
+    $cache_key = WE_LS_CACHE_KEY_ENTRY_COUNTS;
+    $cache = ws_ls_get_cache($cache_key);
+
+    // Return cache if found!
+    if ($cache && true == $use_cache)   {
+        return $cache;
+    }
+
+    $stats = ['number-of-users' => false, 'number-of-entries' => false, 'number-of-targets' => false];
+
+    $stats['number-of-entries'] = $wpdb->get_var('SELECT count(id) FROM ' . $wpdb->prefix . WE_LS_TABLENAME);
+    $stats['number-of-users'] = $wpdb->get_var('SELECT count(ID) FROM ' . $wpdb->prefix . 'users');
+    $stats['number-of-targets'] = $wpdb->get_var('SELECT count(id) FROM ' . $wpdb->prefix . WE_LS_TARGETS_TABLENAME);
+
+    ws_ls_set_cache($cache_key, $stats);
+
+    return $stats;
+}
+
 function ws_ls_validate_height($height) {
 	 // If not a valid height clear value
 	 if(!is_numeric($height) || $height < 142 || $height > 201) {
