@@ -14,17 +14,31 @@ function ws_ls_admin_page_view_all() {
 					<div class="postbox">
 
 						<h2 class="hndle"><span><?php echo __('View All Data', WE_LS_SLUG); ?></span></h2>
-						<p><?php var_Dump(ws_ls_get_entry_counts()); ?>
-							//TODO: Finish this off -- tidy layout and add stats
-							<a class="button-secondary" href="#">
-								<?php echo __('Export to CSV', WE_LS_SLUG); ?>
-							</a>
-							<a class="button-secondary" href="#">
-								<?php echo __('Export to JSON', WE_LS_SLUG); ?>
-							</a>
-						</p>
+
 						<div class="inside">
-							<?php ws_ls_data_table_placeholder(); ?>
+							<?php
+
+									$entry_counts = ws_ls_get_entry_counts();
+
+									if(false === empty($entry_counts)) {
+
+										echo sprintf('
+														<p>
+															<strong>%s:</strong> %s | <strong>%s:</strong> %s | <strong>%s:</strong> %s |
+															<a href="#">%s</a> | <a href="#">%s</a>
+														</p>',
+														__('Number of WordPress users', WE_LS_SLUG),
+														$entry_counts['number-of-users'],
+														__('Number of weight entries', WE_LS_SLUG),
+														$entry_counts['number-of-entries'],
+														__('Number of targets entered', WE_LS_SLUG),
+														$entry_counts['number-of-targets'],
+														__('Export all data to CSV', WE_LS_SLUG),
+														__('Export all data to JSON', WE_LS_SLUG)
+										);
+									}
+								?>
+								<?php ws_ls_data_table_placeholder(); ?>
 						</div>
 					</div>
 				</div>

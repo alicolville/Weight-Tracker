@@ -26,6 +26,7 @@ if(defined('WS_LS_ABSPATH')){
 	include WS_LS_ABSPATH . 'pro-features/db.php';
 	include WS_LS_ABSPATH . 'pro-features/functions.measurements.php';
 	include WS_LS_ABSPATH . 'pro-features/functions.stats.php';
+	include WS_LS_ABSPATH . 'pro-features/export.php';
 
 	// Admin pages for managing user data
 	include WS_LS_ABSPATH . 'pro-features/functions.pages.php';

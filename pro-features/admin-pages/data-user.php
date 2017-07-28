@@ -21,6 +21,12 @@ function ws_ls_admin_page_data_user() {
 			<div id="post-body-content">
 				<div class="meta-box-sortables ui-sortable">
 					<div class="postbox">
+						<h2 class="hndle"><span><?php echo __('User Card?', WE_LS_SLUG); ?></span></h2>
+						<div class="inside">
+							TODO: nice card here? display wordpress data
+						</div>
+					</div>
+					<div class="postbox">
 						<h2 class="hndle"><span><?php echo __('Chart', WE_LS_SLUG); ?></span></h2>
 						<div class="inside">
 							<?php
