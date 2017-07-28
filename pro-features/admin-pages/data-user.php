@@ -112,6 +112,14 @@ function ws_ls_admin_page_data_user() {
                             </a>
                         </div>
                     </div>
+                    <div class="postbox">
+                        <h2 class="hndle"><span><?php echo __('Delete Data', WE_LS_SLUG); ?></span></h2>
+                        <div class="inside">
+                            <a class="button-secondary" href="#">
+                                <?php echo __('Delete ALL data for this user', WE_LS_SLUG); ?>
+                            </a>
+                        </div>
+                    </div>
 				</div>
 			</div>
 		</div>

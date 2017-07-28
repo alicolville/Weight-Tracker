@@ -6,13 +6,10 @@
 	{
 		add_menu_page(WE_LS_TITLE, WE_LS_TITLE, 'manage_options', 'ws-ls-weight-loss-tracker-main-menu', 'ws_ls_settings_page', 'dashicons-chart-line');
 		add_submenu_page( 'ws-ls-weight-loss-tracker-main-menu', __('Settings', WE_LS_SLUG),  __('Settings', WE_LS_SLUG), 'manage_options', 'ws-ls-weight-loss-tracker-main-menu');
+        add_submenu_page( 'ws-ls-weight-loss-tracker-main-menu', __('Manage User Data', WE_LS_SLUG),  __('Manage User Data', WE_LS_SLUG), 'manage_options', 'ws-ls-wlt-data-home', 'ws_ls_admin_page_data_home');
 
-		if(!WS_LS_IS_PRO) {
-			add_submenu_page( 'ws-ls-weight-loss-tracker-main-menu', __('Manage User Data', WE_LS_SLUG),  __('Manage User Data', WE_LS_SLUG), 'manage_options', 'ws-ls-weight-loss-tracker-pro', 'ws_ls_advertise_pro');
+        if(!WS_LS_IS_PRO) {
 			add_submenu_page( 'ws-ls-weight-loss-tracker-main-menu', __('Get Pro Version', WE_LS_SLUG),  __('Get Pro Version', WE_LS_SLUG), 'manage_options', 'ws-ls-weight-loss-tracker-pro', 'ws_ls_advertise_pro');
-		} else {
-			add_submenu_page( 'ws-ls-weight-loss-tracker-main-menu', __('Manage User Data', WE_LS_SLUG),  __('Manage User Data', WE_LS_SLUG), 'manage_options', 'ws-ls-weight-loss-tracker-pro', 'ws_ls_manage_user_data_page');
-			add_submenu_page( 'ws-ls-weight-loss-tracker-main-menu', __('User Data (beta!)', WE_LS_SLUG),  __('User Data (beta!)', WE_LS_SLUG), 'manage_options', 'ws-ls-wlt-data-home', 'ws_ls_admin_page_data_home');
 		}
 
 		add_submenu_page( 'ws-ls-weight-loss-tracker-main-menu', __('Help', WE_LS_SLUG),  __('Help', WE_LS_SLUG), 'manage_options', 'ws-ls-weight-loss-tracker-help', 'ws_ls_help_page');
@@ -104,12 +101,13 @@
 
 		// Enqueue Data
 		if(WS_LS_IS_PRO && WS_LS_ADVANCED_TABLES) {
-	  	  ws_ls_enqueue_datatable_scripts(); // TODO: Remove
+	  	  ws_ls_enqueue_datatable_scripts();
 	    }
 
 		$ws_already_enqueued = true;
 
 	}
+
 	function ws_ls_enqueue_admin_files(){
 		wp_enqueue_script('ws-ls-admin-notifications',plugins_url( '../js/admin-notifications.js', __FILE__ ), array('jquery'), WE_LS_CURRENT_VERSION);
 

@@ -1,36 +1,16 @@
-
-	$users = new WP_User_Query( array(
-    'search'         => '*'.esc_attr( 'ali' ).'*',
-    'search_columns' => array(
-        'user_login',
-        'user_nicename',
-        'user_email',
-        'user_url',
-    ),
-) );
-$users_found = $users->get_results();
-var_dump($users_found);
-
-
-
-
-
 TODO:
 
 - Add a dashboard widget??
 - restrict various parts of user data to non -pro
-- remove old user data page / etc
-- Remove datatable JS references from back end? Hooks etc?
-- Make sure all strings are localised
-- Provide tool tips for table headers
+
 - update footable.js to latest
 - test all with different weight and date units
 - sort column toggle on footable
 - finish / check BMI in footable
-- sort AJAX handler for footable
+
 - test all css /JS on add/edit form in front end
 - add relevant security checks to admin pages
-- sanitise check
 - remove test code
 - update plugin json on weight.yeken.uk
 - add delete all somewhere
+- test flushing stats table - make sure regenerates.

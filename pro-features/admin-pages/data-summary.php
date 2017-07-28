@@ -14,7 +14,16 @@ function ws_ls_admin_page_data_summary() {
 					<div class="postbox">
 						<h2 class="hndle"><span><?php echo __('League Table', WE_LS_SLUG); ?></span></h2>
 						<div class="inside">
-							<?php echo ws_ls_shortcode_stats_league_total([]); ?>
+							<?php
+
+                                // Run stats if plugin version number has changed!
+                                if(update_option('ws-ls-version-number-stats', WE_LS_CURRENT_VERSION)) {
+                                    ws_ls_stats_run_cron();
+                                }
+
+                                echo ws_ls_shortcode_stats_league_total([]);
+
+                            ?>
 						</div>
 					</div>
 					<div class="postbox">
@@ -78,6 +87,14 @@ function ws_ls_admin_page_data_summary() {
                             </a>
                             <a class="button-secondary" href="<?php echo ws_ls_get_link_to_export('json'); ?>">
                                 <?php echo __('To JSON', WE_LS_SLUG); ?>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="postbox">
+                        <h2 class="hndle"><span><?php echo __('Delete Data', WE_LS_SLUG); ?></span></h2>
+                        <div class="inside">
+                            <a class="button-secondary" href="#">
+                                <?php echo __('Delete data for ALL users', WE_LS_SLUG); ?>
                             </a>
                         </div>
                     </div>

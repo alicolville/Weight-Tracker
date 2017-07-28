@@ -21,7 +21,6 @@ if(defined('WS_LS_ABSPATH')){
 	include WS_LS_ABSPATH . 'pro-features/widget-form.php';
 	include WS_LS_ABSPATH . 'pro-features/widget-progress.php';
 	include WS_LS_ABSPATH . 'pro-features/footable.php';
-	include WS_LS_ABSPATH . 'pro-features/user-data.php';
 	include WS_LS_ABSPATH . 'pro-features/user-data-ajax.php';
 	include WS_LS_ABSPATH . 'pro-features/db.php';
 	include WS_LS_ABSPATH . 'pro-features/functions.measurements.php';
