@@ -111,6 +111,34 @@ function ws_ls_get_link_to_edit_entry($user_id, $entry_id = false, $redirect = t
 	return esc_url($base_url);
 }
 
+/**
+ *
+ * Returns the link for CSV / JSON export
+ *
+ * @param string $type - json / csv
+ * @param bool $user_id - WP user ID
+ * @return mixed
+ */
+function ws_ls_get_link_to_export($type = 'csv', $user_id = false) {
+
+    $type = ('json' == $type) ? 'application/json' : 'text/csv';
+
+    $base_url = admin_url( 'admin-post.php?action=export_data&file-type=' . $type);
+
+    if(is_numeric($user_id)) {
+        $base_url .= '&user-id=' . $user_id;
+    }
+
+    return esc_url($base_url);
+}
+
+/**
+ * Simple function to render a user's email address
+ *
+ * @param $user_id
+ * @param bool $include_brackets
+ * @return string
+ */
 function ws_ls_get_email_link($user_id, $include_brackets = false) {
 
 	if(true === is_numeric($user_id)) {

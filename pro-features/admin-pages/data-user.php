@@ -24,6 +24,8 @@ function ws_ls_admin_page_data_user() {
 						<h2 class="hndle"><span><?php echo __('User Card?', WE_LS_SLUG); ?></span></h2>
 						<div class="inside">
 							TODO: nice card here? display wordpress data
+
+                            display number of entries
 						</div>
 					</div>
 					<div class="postbox">
@@ -102,10 +104,10 @@ function ws_ls_admin_page_data_user() {
                     <div class="postbox">
                         <h2 class="hndle"><span><?php echo __('Export Data', WE_LS_SLUG); ?></span></h2>
                         <div class="inside">
-                            <a class="button-secondary" href="#">
+                            <a class="button-secondary" href="<?php echo ws_ls_get_link_to_export('csv', $user_id); ?>">
                                 <?php echo __('To CSV', WE_LS_SLUG); ?>
                             </a>
-                            <a class="button-secondary" href="#">
+                            <a class="button-secondary" href="<?php echo ws_ls_get_link_to_export('json', $user_id); ?>">
                                 <?php echo __('To JSON', WE_LS_SLUG); ?>
                             </a>
                         </div>

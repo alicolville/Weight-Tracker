@@ -25,7 +25,7 @@ function ws_ls_admin_page_view_all() {
 										echo sprintf('
 														<p>
 															<strong>%s:</strong> %s | <strong>%s:</strong> %s | <strong>%s:</strong> %s |
-															<a href="#">%s</a> | <a href="#">%s</a>
+															<a href="%s">%s</a> | <a href="%s">%s</a>
 														</p>',
 														__('Number of WordPress users', WE_LS_SLUG),
 														$entry_counts['number-of-users'],
@@ -33,8 +33,10 @@ function ws_ls_admin_page_view_all() {
 														$entry_counts['number-of-entries'],
 														__('Number of targets entered', WE_LS_SLUG),
 														$entry_counts['number-of-targets'],
-														__('Export all data to CSV', WE_LS_SLUG),
-														__('Export all data to JSON', WE_LS_SLUG)
+                                                        ws_ls_get_link_to_export(),
+														__('Export to CSV', WE_LS_SLUG),
+                                                        ws_ls_get_link_to_export('json'),
+														__('Export to JSON', WE_LS_SLUG)
 										);
 									}
 								?>

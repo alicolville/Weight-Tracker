@@ -73,10 +73,10 @@ function ws_ls_admin_page_data_summary() {
 					<div class="postbox">
                         <h2 class="hndle"><span><?php echo __('Export all data', WE_LS_SLUG); ?></span></h2>
                         <div class="inside">
-                            <a class="button-secondary" href="#">
+                            <a class="button-secondary" href="<?php echo ws_ls_get_link_to_export('csv'); ?>">
                                 <?php echo __('To CSV', WE_LS_SLUG); ?>
                             </a>
-                            <a class="button-secondary" href="#">
+                            <a class="button-secondary" href="<?php echo ws_ls_get_link_to_export('json'); ?>">
                                 <?php echo __('To JSON', WE_LS_SLUG); ?>
                             </a>
                         </div>
