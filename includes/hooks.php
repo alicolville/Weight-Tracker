@@ -143,3 +143,10 @@
 		wp_enqueue_script('chart-js', 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js', array( 'jquery' ), WE_LS_CURRENT_VERSION);
 		wp_enqueue_script('jquery-chart-ws-ls', plugins_url( '../js/ws-ls-chart.js', __FILE__ ), array('chart-js'), WE_LS_CURRENT_VERSION, true);
 	}
+
+	// Tidy up various things (cache etc) when user data is deleted.
+    function ws_ls_tidy_cache_on_delete(){
+        ws_ls_delete_cache(WE_LS_CACHE_KEY_ENTRY_COUNTS);
+    }
+    add_action(WE_LS_HOOK_DATA_ALL_DELETED, 'ws_ls_tidy_cache_on_delete');
+    add_action(WE_LS_HOOK_DATA_USER_DELETED, 'ws_ls_tidy_cache_on_delete');

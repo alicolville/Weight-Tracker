@@ -4,6 +4,15 @@ defined('ABSPATH') or die('Naw ya dinnie!');
 
 function ws_ls_admin_page_data_summary() {
 
+
+    // DELETE ALL DATA!! AHH!!
+    if (is_admin() && isset($_GET['removedata']) && 'y' == $_GET['removedata']) {
+        ws_ls_delete_existing_data();
+
+        // Let others know we cleared all user data
+        do_action( WE_LS_HOOK_DATA_ALL_DELETED );
+    }
+
 ?>
 <div class="wrap">
 	<h1><?php echo __('Summary', WE_LS_SLUG); ?></h1>
@@ -93,7 +102,7 @@ function ws_ls_admin_page_data_summary() {
                     <div class="postbox">
                         <h2 class="hndle"><span><?php echo __('Delete Data', WE_LS_SLUG); ?></span></h2>
                         <div class="inside">
-                            <a class="button-secondary" href="#">
+                            <a class="button-secondary delete-confirm" href="<?php echo admin_url( 'admin.php?page=ws-ls-wlt-data-home&removedata=y' ); ?>">
                                 <?php echo __('Delete data for ALL users', WE_LS_SLUG); ?>
                             </a>
                         </div>
@@ -104,4 +113,8 @@ function ws_ls_admin_page_data_summary() {
 		<br class="clear">
 	</div>
 <?php
+
+    echo ws_ls_create_dialog_jquery_code(__('Are you sure you?', WE_LS_SLUG),
+        __('Are you sure you wish to remove all user data?', WE_LS_SLUG) . '<br /><br />',
+        'delete-confirm');
 }
