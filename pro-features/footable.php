@@ -57,7 +57,7 @@ function ws_ls_data_table_get_rows($user_id = false, $max_entries = false) {
 				$row[$column_name]['options']['sortValue'] = $data['measurements'][$column_name];
 				$row[$column_name]['value'] = ws_ls_prep_measurement_for_display($data['measurements'][$column_name]);
             } else if ('bmi' === $column_name) {
-                $row[$column_name] =  ws_ls_get_bmi_for_table(ws_ls_get_user_height($data['user_id']), $data['kg']) ;
+                $row[$column_name] =  ws_ls_get_bmi_for_table(ws_ls_get_user_height($data['user_id']), $data['kg'], __('No height', WE_LS_SLUG)) ;
 			} else if (!empty($data[$column_name])) {
 				switch ($column_name) {
 					case 'kg':

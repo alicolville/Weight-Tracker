@@ -493,7 +493,7 @@ function ws_ls_get_user_height($user_id = false, $use_cache = true) {
   return $height;
 }
 
-function ws_ls_get_entry_counts($use_cache = true) {
+function ws_ls_get_entry_counts($user_id = false, $use_cache = true) {
 
     global $wpdb;
 
@@ -501,15 +501,17 @@ function ws_ls_get_entry_counts($use_cache = true) {
     $cache = ws_ls_get_cache($cache_key);
 
     // Return cache if found!
-    if ($cache && true == $use_cache)   {
+    if ($cache && true == $use_cache && false === $user_id)   {
         return $cache;
     }
 
     $stats = ['number-of-users' => false, 'number-of-entries' => false, 'number-of-targets' => false];
 
-    $stats['number-of-entries'] = $wpdb->get_var('SELECT count(id) FROM ' . $wpdb->prefix . WE_LS_TABLENAME);
+    $where = (false === empty($user_id) && true === is_numeric($user_id)) ? intval($user_id) : false;
+
+    $stats['number-of-entries'] = $wpdb->get_var('SELECT count(id) FROM ' . $wpdb->prefix . WE_LS_TABLENAME . (($where) ? ' where weight_user_id = ' . $where : ''));
     $stats['number-of-users'] = $wpdb->get_var('SELECT count(ID) FROM ' . $wpdb->prefix . 'users');
-    $stats['number-of-targets'] = $wpdb->get_var('SELECT count(id) FROM ' . $wpdb->prefix . WE_LS_TARGETS_TABLENAME);
+    $stats['number-of-targets'] = $wpdb->get_var('SELECT count(id) FROM ' . $wpdb->prefix . WE_LS_TARGETS_TABLENAME . (($where) ? ' where weight_user_id = ' . $where : ''));
 
     ws_ls_set_cache($cache_key, $stats);
 

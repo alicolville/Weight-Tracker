@@ -38,7 +38,7 @@ function ws_ls_shortcode_stats_league_total($user_defined_arguments)
 								$html .= '<th class="ws-weight-diff-th">+/-</th>';
 							}
 
-							$html .= '
+							$html .= '<th>' . __('No of entries', WE_LS_SLUG) . '</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -82,12 +82,14 @@ function ws_ls_shortcode_stats_league_total($user_defined_arguments)
 					<td ' . $table_cell . '>%s</td>
 					<td ' . $table_cell . '>%s</td>
 					%s
+					<td ' . $table_cell . '>%s</td>
 				</tr>',
 				$rank,
 				$rank,
 				$display_name,
 				$stats['display-value'],
-				(true == $arguments['show_percentage']) ? '<td ' . $table_cell . '>' . $percentage . '</td>' : ''
+                (true == $arguments['show_percentage']) ? '<td ' . $table_cell . '>' . $percentage . '</td>' : '',
+                $row['no_entries']
 			);
 
 			$rank++;

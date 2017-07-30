@@ -256,9 +256,10 @@ function ws_ls_user_search($name) {
 
 		global $wpdb;
 
-		$sql = "SELECT distinct wp_users.* FROM wp_users
-				INNER JOIN wp_ws_ls_data as wd ON ( wp_users.ID = wd.weight_user_id )
-				LEFT JOIN wp_usermeta um ON ( wp_users.ID = um.user_id )
+		$sql = "SELECT distinct {$wpdb->prefix}users.*, us.* FROM {$wpdb->prefix}users
+				INNER JOIN {$wpdb->prefix}ws_ls_data as wd ON ( {$wpdb->prefix}users.ID = wd.weight_user_id )
+				LEFT JOIN {$wpdb->prefix}ws_ls_data_user_stats as us ON ( {$wpdb->prefix}users.ID = us.user_id )
+				LEFT JOIN {$wpdb->prefix}usermeta um ON ( {$wpdb->prefix}users.ID = um.user_id )
 				WHERE 1=1 AND
 				(
 		  			( um.meta_key = 'first_name' AND um.meta_value LIKE '%%%s%%' )

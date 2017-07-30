@@ -30,6 +30,7 @@ function ws_ls_admin_page_data_user() {
 							TODO: nice card here? display wordpress data
 
                             display number of entries
+                            <?php $stats = ws_ls_get_entry_counts($user_id); var_dump($stats); ?>
 						</div>
 					</div>
 					<div class="postbox">

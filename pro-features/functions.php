@@ -6,7 +6,7 @@ function ws_ls_admin_measurment_unit() {
 	return ('inches' == WE_LS_MEASUREMENTS_UNIT) ? __('Inches', WE_LS_SLUG) : __('Cm', WE_LS_SLUG);
 }
 
-function ws_ls_get_bmi_for_table($cm, $kg) {
+function ws_ls_get_bmi_for_table($cm, $kg, $no_height_text = false) {
 
 	if ($cm) {
 		$bmi = ws_ls_calculate_bmi($cm, $kg);
@@ -15,7 +15,10 @@ function ws_ls_get_bmi_for_table($cm, $kg) {
 			return ws_ls_calculate_bmi_label($bmi);
 		}
 	} else {
-		return __('Add Height for BMI', WE_LS_SLUG);
+
+        $no_height_text = (empty($no_height_text)) ? __('Add Height for BMI', WE_LS_SLUG) : $no_height_text;
+
+		return esc_html($no_height_text);
 	}
 	return '';
 }
