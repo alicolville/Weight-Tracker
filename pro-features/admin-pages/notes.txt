@@ -7,10 +7,15 @@ TODO:
 - test all with different weight and date units
 - sort column toggle on footable
 - finish / check BMI in footable
-
+-update language file
+- update readme.txt etc
 - test all css /JS on add/edit form in front end
 - add relevant security checks to admin pages
 - remove test code
 - update plugin json on weight.yeken.uk
-- add delete all somewhere
+
 - test flushing stats table - make sure regenerates.
+
+
+
+- delete this file.
