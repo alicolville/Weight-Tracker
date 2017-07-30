@@ -10,8 +10,12 @@ function ws_ls_admin_page_data_user() {
 		return;
 	}
 
-	$user_data = get_userdata( $user_id );
+    // DELETE ALL DATA FOR THIS USER!! AHH!!
+    if (is_admin() && isset($_GET['removedata']) && 'y' == $_GET['removedata']) {
+        ws_ls_delete_data_for_user($user_id);
+    }
 
+    $user_data = get_userdata( $user_id );
 ?>
 <div class="wrap">
 	<h1><?php echo $user_data->user_nicename; ?>
@@ -37,7 +41,9 @@ function ws_ls_admin_page_data_user() {
 								$weight_data = ws_ls_get_weights($user_id, 25, -1, 'desc');
 
 								// Reverse array so in cron order
-								$weight_data = array_reverse($weight_data);
+                                if($weight_data) {
+                                    $weight_data = array_reverse($weight_data);
+                                }
 
 								echo ws_ls_display_chart($weight_data, ['type' => 'line', 'max-points' => 25, 'user-id' => $user_id]);
 
@@ -115,7 +121,7 @@ function ws_ls_admin_page_data_user() {
                     <div class="postbox">
                         <h2 class="hndle"><span><?php echo __('Delete Data', WE_LS_SLUG); ?></span></h2>
                         <div class="inside">
-                            <a class="button-secondary" href="">
+                            <a class="button-secondary delete-confirm" href="<?php echo esc_url(admin_url( 'admin.php?page=ws-ls-wlt-data-home&mode=user&removedata=y&user-id=' . $user_id )); ?>">
                                 <?php echo __('Delete ALL data for this user', WE_LS_SLUG); ?>
                             </a>
                         </div>
@@ -126,4 +132,9 @@ function ws_ls_admin_page_data_user() {
 		<br class="clear">
 	</div>
 <?php
+
+    echo ws_ls_create_dialog_jquery_code(__('Are you sure you?', WE_LS_SLUG),
+        __('Are you sure you wish to remove the data for this user?', WE_LS_SLUG) . '<br /><br />',
+        'delete-confirm');
+
 }

@@ -146,11 +146,14 @@ function ws_ls_delete_existing_data() {
 }
 
 /* Delete all data for a user */
-function ws_ls_delete_data_for_user() {
+function ws_ls_delete_data_for_user($user_id = false) {
 
-    if(WE_LS_ALLOW_USER_PREFERENCES)  {
+    if(WE_LS_ALLOW_USER_PREFERENCES || is_admin())  {
 
-        $user_id = get_current_user_id();
+        if(false === $user_id) {
+            $user_id = get_current_user_id();
+        }
+
         global $wpdb;
         // Delete user targets
         ws_ls_delete_target($user_id);

@@ -26,13 +26,16 @@ function ws_ls_admin_page_data_summary() {
 							<?php
 
                                 // Run stats if plugin version number has changed!
-                                if(update_option('ws-ls-version-number-stats', WE_LS_CURRENT_VERSION)) {
+                                if(update_option('ws-ls-version-number-stats', WE_LS_CURRENT_VERSION) || (false === empty($_GET['regenerate-stats']) && 'y' == $_GET['regenerate-stats'])) {
+                                    ws_ls_stats_clear_last_updated_date();
                                     ws_ls_stats_run_cron();
+                                    ws_ls_tidy_cache_on_delete();
                                 }
 
                                 echo ws_ls_shortcode_stats_league_total([]);
 
                             ?>
+                            <a href="<?php echo admin_url( 'admin.php?page=ws-ls-wlt-data-home&regenerate-stats=y' ); ?>"><small>Regenerate these stats</small></a>
 						</div>
 					</div>
 					<div class="postbox">
@@ -67,14 +70,15 @@ function ws_ls_admin_page_data_summary() {
 													<p>%s</p>
 													<h4>%s</h4>
 													<p>%s</p>
-													<p><small>(* %s)</small></p>',
+													<p><small>(* %s %s)</small></p>',
 													__('Number of WordPress users', WE_LS_SLUG),
 													$entry_counts['number-of-users'],
 													__('Number of weight entries', WE_LS_SLUG),
 													$entry_counts['number-of-entries'],
 													__('Number of targets entered', WE_LS_SLUG),
 													$entry_counts['number-of-targets'],
-													__('refreshed every 15 minutes', WE_LS_SLUG)
+													__('refreshed every 15 minutes', WE_LS_SLUG),
+                                                    '<a href="' . admin_url( 'admin.php?page=ws-ls-wlt-data-home&regenerate-stats=y' ) . '"><small>Regenerate these stats</small></a>'
 									);
 								}
 							?>

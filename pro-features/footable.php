@@ -56,6 +56,8 @@ function ws_ls_data_table_get_rows($user_id = false, $max_entries = false) {
 			if(in_array($column_name, $measurement_fields) && !empty($data['measurements'][$column_name])) {
 				$row[$column_name]['options']['sortValue'] = $data['measurements'][$column_name];
 				$row[$column_name]['value'] = ws_ls_prep_measurement_for_display($data['measurements'][$column_name]);
+            } else if ('bmi' === $column_name) {
+                $row[$column_name] =  ws_ls_get_bmi_for_table(ws_ls_get_user_height($data['user_id']), $data['kg']) ;
 			} else if (!empty($data[$column_name])) {
 				switch ($column_name) {
 					case 'kg':
@@ -66,9 +68,6 @@ function ws_ls_data_table_get_rows($user_id = false, $max_entries = false) {
 						$row[$column_name]['options']['sortValue'] = $data['user_nicename'];
 						$row[$column_name]['value'] = sprintf('<a href="%s">%s</a>', ws_ls_get_link_to_user_profile($data['user_id']), $data['user_nicename']);
 						break;
-					// case 'bmi':						TODO: Finish BMI
-					// 	$row[$column_name]['value'] = 'hello';
-					// 	break;
 					default:
 						$row[$column_name] = $data[$column_name];
 						break;
