@@ -35,7 +35,7 @@ function ws_ls_admin_page_data_summary() {
                                 echo ws_ls_shortcode_stats_league_total([]);
 
                             ?>
-                            <a href="<?php echo admin_url( 'admin.php?page=ws-ls-wlt-data-home&regenerate-stats=y' ); ?>"><small>Regenerate these stats</small></a>
+                            <a href="<?php echo admin_url( 'admin.php?page=ws-ls-wlt-data-home&regenerate-stats=y' ); ?>"><small><?php echo __('Regenerate these stats', WE_LS_SLUG); ?></small></a>
 						</div>
 					</div>
 					<div class="postbox">
