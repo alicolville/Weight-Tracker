@@ -82,7 +82,6 @@
 		$minified = (WE_LS_USE_MINIFIED_SCRIPTS) ? '.min' : '';
 
 		// JavaScript files
-		//wp_enqueue_script('jquery-chart-ws-ls', 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js', array( 'jquery' ), WE_LS_CURRENT_VERSION); //TODO: Remove
 		ws_ls_enqueue_chart_dependencies();
 		wp_enqueue_script('jquery-validate',plugins_url( '../js/jquery.validate.min.js', __FILE__ ), array('jquery'), WE_LS_CURRENT_VERSION);
 		wp_enqueue_script('jquery-validate-additional',plugins_url( '../js/additional-methods.min.js', __FILE__ ), array('jquery', 'jquery-validate'), WE_LS_CURRENT_VERSION);

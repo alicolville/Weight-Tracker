@@ -38,8 +38,6 @@ jQuery( document ).ready(function ($) {
 
 	function ws_ls_callback_setup_table(response, data) {
 
-		// TODO Validate AJAX response. Display error if needed.
-
 		var table_id = '#' + response.table_id;
 		var formatters = {};
 

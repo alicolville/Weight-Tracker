@@ -159,12 +159,6 @@ jQuery( document ).ready(function ($) {
     $(".ws-ls-notice-of-refresh").removeClass("ws-ls-hide");
   }
 
-
-});
-
-//TODO tidy this duplicate
-jQuery( document ).ready(function ($) {
-
   if ("true" == ws_ls_config["tabs-enabled"]) {
 
     $default_tab = "tab1";
@@ -197,7 +191,6 @@ jQuery( document ).ready(function ($) {
     $( ".ws-ls-user-delete-all" ).validate({
       errorClass: "ws-ls-invalid",
       validClass: "ws-ls-valid",
-      //focusCleanup: true,
       errorContainer: ".ws-ls-user-delete-all .ws-ls-error-summary",
       errorLabelContainer: ".ws-ls-user-delete-all .ws-ls-error-summary ul",
       wrapper: "li",

@@ -3,19 +3,17 @@ TODO:
 - Add a dashboard widget??
 - restrict various parts of user data to non -pro
 
-- update footable.js to latest
 - test all with different weight and date units
 - sort column toggle on footable
-- finish / check BMI in footable
 -update language file
 - update readme.txt etc
 - test all css /JS on add/edit form in front end
-- add relevant security checks to admin pages
 - remove test code
 - update plugin json on weight.yeken.uk
 
 - test flushing stats table - make sure regenerates.
-
+- update features.php and weight.yeken.uk
+- add screenshots to WP plugin
 
 
 - delete this file.

@@ -34,14 +34,15 @@ function ws_ls_delete_cache($key){
 }
 function ws_ls_delete_cache_for_given_user($user_id = false)
 {
-
-	//TODO: Rewrite caching to use group keys
-
   global $wpdb;
 
   if (WE_LS_CACHE_ENABLED){
     if (false == $user_id)  {
       $user_id = get_current_user_id();
+    }
+
+    if(false === is_numeric($user_id)) {
+        return;
     }
 
     $sql = "Delete FROM  $wpdb->options
