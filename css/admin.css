@@ -70,3 +70,6 @@
 .ws_ls_display_form label, .ws_ls_display_form input {
 	display: block;
 }
+.widefat th {
+    font-weight: bold;
+}

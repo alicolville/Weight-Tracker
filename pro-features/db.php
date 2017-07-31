@@ -272,7 +272,7 @@ function ws_ls_user_search($name) {
 
 		$sql = $wpdb->prepare($sql, $name, $name, $name, $name, $name, $name, $name, $name);
 
-		return $wpdb->get_results($sql);
+		return $wpdb->get_results($sql, ARRAY_A);
 
 	}
 
