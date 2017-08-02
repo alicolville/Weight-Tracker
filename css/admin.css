@@ -73,3 +73,12 @@
 .widefat th {
     font-weight: bold;
 }
+.ws-ls-loss, .ws-ls-good, .ws-ls-healthy {
+    color: #008000;
+}
+.ws-ls-gain, .ws-ls-bad, .ws-ls-overweight {
+    color: #ffA500;
+}
+.ws-ls-heavilyoverweight {
+    color: #ff0000;
+}

@@ -71,9 +71,7 @@ function ws_ls_tooltip($text, $tooltip) {
 	}
 
 	return sprintf(
-		'<div class="ws-tooltip">%s
-		  <span class="tooltiptext">%s</span>
-		</div>',
+		'<div class="ws-tooltip">%s<span class="tooltiptext">%s</span></div>',
 		esc_html($text),
 		esc_html($tooltip)
 	);

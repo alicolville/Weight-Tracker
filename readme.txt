@@ -1,9 +1,9 @@
-=== Plugin Name ===
+=== Weight Loss Tracker ===
 Contributors: aliakro
 Tags: weight, loss, lose, helper, bmi, body, mass, index, graph, track, stones, kg, table, data, plot, target, history, pounds, responsive, chart, measurements, cm, centimeters, inches, hip, waist, bicep, thigh
 Requires at least: 4.1.0
-Tested up to: 4.7.2
-Stable tag: 4.2.7
+Tested up to: 4.8
+Stable tag: 5.0
 
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -50,6 +50,8 @@ Also supports the following tags:
 
 Our Pro version has now been released! If you upgrade, you get the additional features:
 
+* **Admin can view, edit and delete user data. Various tools for viewing user's graphs, tables of entries, BMI, targets, weight lost / gained stats and much more.
+* **CSV and JSON exports for all data or a particular user.
 * **Measurements.** Support for recording measurements like Hip, Waist, Leg, Bicep, etc. Displayed on charts and tables.
 * **BMI.** Allows a user to specify their height. Once specified, their BMI is displayed next to each weight entry. There is also a shortcode to render the latest BMI.
 * **Email notifications.** Receive email notifications when a person updates their target or adds / edits a weight.
@@ -62,7 +64,6 @@ Our Pro version has now been released! If you upgrade, you get the additional fe
 * **Text Shortcodes.** Additional shortcodes for earliest and most recent dates entered.
 * **Progress Bar shortcode / widget.** Display a user\'s progress towards their weight target.
 * **Reminder shortcode.** Display a reminder to enter their weight for the given day or enter a target.
-* **Admin: View / Delete user data**. Admin will be able to view and delete existing user data.
 * **User preferences**. If enabled, the user will be able to select which unit they wish to store their weight in Metric or Imperial. They will also be able to specify date format and clear all their weight data.
 * **Bar Charts**. Fancy something different to a line chart? The plugin will also support Bar Charts.
 * **Delete existing entry**. A logged in user will be able to delete or edit an existing weight entry.
@@ -148,14 +149,27 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 8. Settings page: User Experience
 9. Settings page: Chart
 10. Settings page: Measurements
-11. Admin - managing user data
-12. Admin - Delete ALL data
+11. Admin - User data summary
+12. Admin - Displaying a user's data card
+13. Admin - User search results
+14. Admin - Edit a user's data entry
+15. Admin - User's data card displayed on a tablet
 
- == Upgrade Notice ==
+== Upgrade Notice ==
 
-Lots of new features. Three new Pro shortcodes, email notifications and more.
+5.0! Now view and interact with your user's data like never before.
 
 == Changelog ==
+
+= 5.0 =
+
+* Improvement: New and improved admin interface for interacting with your user's data!
+	* View all user entries in tabular and chart format.
+	* Add, edit and delete user entries.
+	* Sortable and responsive tables.
+	* View league tables of most lost / gained.
+	* View user stats, weight lost, recent weight, start weight, BMI, etc.
+	* Export all or a particular user's data in CSV / JSON.
 
 = 4.2.7 =
 

@@ -77,7 +77,7 @@ function ws_ls_shortcode_stats_league_total($user_defined_arguments)
 
 			// Add HTML!
 			$html .= sprintf(
-				'<tr class="ws-rank-%s">
+				'<tr class="ws-rank-%s%s">
 					<td class="ws-col-rank" ' . $table_cell . '>%s</td>
 					<td ' . $table_cell . '>%s</td>
 					<td ' . $table_cell . '>%s</td>
@@ -85,6 +85,7 @@ function ws_ls_shortcode_stats_league_total($user_defined_arguments)
 					<td ' . $table_cell . '>%s</td>
 				</tr>',
 				$rank,
+                (('asc' == $arguments['order'] && $row['weight_difference'] < 0) || 'desc' == $arguments['order'] && $row['weight_difference'] > 0) ? ' ws-ls-good' : ' ws-ls-bad',
 				$rank,
 				$display_name,
 				$stats['display-value'],
@@ -102,7 +103,7 @@ function ws_ls_shortcode_stats_league_total($user_defined_arguments)
 		return apply_filters(WE_LS_FILTER_STATS_TABLE_HTML, $html);
 	}
 
-	return __('The league table has not been generated yet. This is a scheduled task so please check back in 15 minutes.', WE_LS_SLUG) .'<!-- Issue loading Weight Loss table (No data) -->';
+	return '<p>' . __('The league table has not been generated yet. This is a scheduled task so please check back in 15 minutes or try pressing the button below.', WE_LS_SLUG) .'</p>';
 }
 
 

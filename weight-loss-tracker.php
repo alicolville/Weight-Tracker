@@ -29,7 +29,7 @@ defined('ABSPATH') or die('Jog on!');
 */
 
 define('WS_LS_ABSPATH', plugin_dir_path( __FILE__ ));
-define('WE_LS_CURRENT_VERSION', '5.1');
+define('WE_LS_CURRENT_VERSION', '5.0'); //TODO
 
 // -----------------------------------------------------------------------------------------
 // AC: Activate / Deactivate / Uninstall Hooks
@@ -44,11 +44,15 @@ register_deactivation_hook(__FILE__, 'ws_ls_deactivate');
 
 include WS_LS_ABSPATH . 'includes/license.php';
 
-if(ws_ls_has_a_valid_license()){
-  define('WS_LS_IS_PRO', true);
-} else {
-  define('WS_LS_IS_PRO', false);
-}
+//if(ws_ls_has_a_valid_license()){
+//  define('WS_LS_IS_PRO', true);
+//} else {
+//  define('WS_LS_IS_PRO', false);
+//}
+
+//TODO
+define('WS_LS_IS_PRO', false);
+
 // -----------------------------------------------------------------------------------------
 // AC: Include all relevant PHP files
 // -----------------------------------------------------------------------------------------
@@ -77,7 +81,9 @@ include WS_LS_ABSPATH . 'includes/admin-notifications.php';
 // AC: Include Pro files
 // --------------------------------------------------------------------------------------
 if(WS_LS_IS_PRO){
-  include WS_LS_ABSPATH . 'pro-features/init.php';
+    include WS_LS_ABSPATH . 'pro-features/init.php';
+} else {
+    include WS_LS_ABSPATH . 'pages/page.user.data.advertise.php';
 }
 // -----------------------------------------------------------------------------------------
 // AC: Load relevant language files (https://wpcentral.io/internationalization/)

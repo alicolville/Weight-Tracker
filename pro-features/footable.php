@@ -37,10 +37,13 @@ function ws_ls_data_table_get_rows($user_id = false, $max_entries = false) {
 		$filters['user-id'] = $user_id;
 	}
 
+	$filters['sort-column'] = 'weight_date';
+    $filters['sort-order'] = 'asc';
+
 	// Fetch all relevant weight entries that we're interested in
 	$user_data = ws_ls_user_data($filters);
 
-	// get a list of active measurment fields (needed later)
+    // get a list of active measurment fields (needed later)
 	$measurement_fields = ws_ls_get_keys_for_active_measurement_fields();
 
 	// Loop through the data and expected columns and build a clean array of row data for HTML table.
@@ -59,7 +62,7 @@ function ws_ls_data_table_get_rows($user_id = false, $max_entries = false) {
 
 			if('gainloss' == $column_name) {
 
-				// Compare to previous weight and determin if a gain / loss in weight
+				// Compare to previous weight and determine if a gain / loss in weight
 				$gain_loss = '';
 
 				if(false === empty($previous_user_weight[$data['user_id']])) {
@@ -84,10 +87,11 @@ function ws_ls_data_table_get_rows($user_id = false, $max_entries = false) {
 				$row[$column_name]['value'] = ws_ls_prep_measurement_for_display($data['measurements'][$column_name]);
 			} else if ('gainloss' === $column_name) {
 				$row[$column_name]['value'] = $gain_loss;
-				//$row[$column_name]['options']['classes'] = 'ws-ls-' . sanitize_key($gain_loss); Can use this method for icons
+				$row[$column_name]['options']['classes'] = 'ws-ls-' . sanitize_key($gain_loss); // Can use this method for icons
 			} else if ('bmi' === $column_name) {
-                $row[$column_name] =  ws_ls_get_bmi_for_table(ws_ls_get_user_height($data['user_id']), $data['kg'], __('No height', WE_LS_SLUG)) ;
-			} else if (!empty($data[$column_name])) {
+                $row[$column_name]['value'] =  ws_ls_get_bmi_for_table(ws_ls_get_user_height($data['user_id']), $data['kg'], __('No height', WE_LS_SLUG)) ;
+                $row[$column_name]['options']['classes'] = 'ws-ls-' . sanitize_key($row[$column_name]['value']); // Can use this method for icons
+            } else if (!empty($data[$column_name])) {
 				switch ($column_name) {
 					case 'kg':
 						$row[$column_name]['options']['sortValue'] = $data['kg'];
@@ -106,7 +110,10 @@ function ws_ls_data_table_get_rows($user_id = false, $max_entries = false) {
 		array_push($rows, $row);
 	}
 
-	return $rows;
+    // Reverse the array so most recent entries are shown first (as default)
+    $rows = array_reverse($rows);
+
+    return $rows;
 }
 
 

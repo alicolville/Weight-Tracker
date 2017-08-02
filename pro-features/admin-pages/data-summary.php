@@ -33,7 +33,7 @@ function ws_ls_admin_page_data_summary() {
 							// Are we wanting to see who has lost the most? Or gained?
 							$show_gain = get_option('ws-ls-show-gains') ? true : false;
 						?>
-						<h2 class="hndle"><span><?php echo (false === $show_gain) ? __('League Table for those that have lost the most', WE_LS_SLUG) : __('League Table for those that have gained the most', WE_LS_SLUG) ; ?></span></h2>
+						<h2 class="hndle"><span><?php echo (false === $show_gain) ? __('League table for those that have lost the most', WE_LS_SLUG) : __('League Table for those that have gained the most', WE_LS_SLUG) ; ?></span></h2>
 						<div class="inside">
 							<?php
 								$ignore_cache = false;

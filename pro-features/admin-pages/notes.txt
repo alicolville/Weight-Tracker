@@ -6,11 +6,7 @@ Luxury:
 
 Needed:
 
-- Test with Measurments disabled.
-- Add logic for minfiy scripts
 - Test flushing stats table - make sure regenerates.
-- Sort column toggle on footable
-- Test all css / JS on add / edit form in front end
 - Test all with different weight and date units
 - Update language file. Update weight.yeken.uk with new zip
 - Restrict User Data to non pro (perhaps show screenshots and link to weight.yeken.uk documentation page)
