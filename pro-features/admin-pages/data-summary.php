@@ -21,21 +21,44 @@ function ws_ls_admin_page_data_summary() {
 			<div id="post-body-content">
 				<div class="meta-box-sortables ui-sortable">
 					<div class="postbox">
-						<h2 class="hndle"><span><?php echo __('League Table', WE_LS_SLUG); ?></span></h2>
+						<?php
+
+							// If changing gain / loss set options
+							if(false === empty($_GET['show-gain'])) {
+
+								$value = ('y' === $_GET['show-gain']) ? true : false;
+								update_option('ws-ls-show-gains', $value);
+							}
+
+							// Are we wanting to see who has lost the most? Or gained?
+							$show_gain = get_option('ws-ls-show-gains') ? true : false;
+						?>
+						<h2 class="hndle"><span><?php echo (false === $show_gain) ? __('League Table for those that have lost the most', WE_LS_SLUG) : __('League Table for those that have gained the most', WE_LS_SLUG) ; ?></span></h2>
 						<div class="inside">
 							<?php
+								$ignore_cache = false;
 
                                 // Run stats if plugin version number has changed!
                                 if(update_option('ws-ls-version-number-stats', WE_LS_CURRENT_VERSION) || (false === empty($_GET['regenerate-stats']) && 'y' == $_GET['regenerate-stats'])) {
                                     ws_ls_stats_clear_last_updated_date();
                                     ws_ls_stats_run_cron();
                                     ws_ls_tidy_cache_on_delete();
+									$ignore_cache = true;
                                 }
 
-                                echo ws_ls_shortcode_stats_league_total([]);
+                                echo ws_ls_shortcode_stats_league_total(['ignore_cache' => $ignore_cache, 'order' => (false === $show_gain) ? 'asc' : 'desc']);
 
                             ?>
-                            <a href="<?php echo admin_url( 'admin.php?page=ws-ls-wlt-data-home&regenerate-stats=y' ); ?>"><small><?php echo __('Regenerate these stats', WE_LS_SLUG); ?></small></a>
+                            <a class="btn button-secondary" href="<?php echo admin_url( 'admin.php?page=ws-ls-wlt-data-home&regenerate-stats=y' ); ?>"><?php echo __('Regenerate these stats', WE_LS_SLUG); ?></a>
+							<?php
+
+								echo sprintf(
+												'<a class="btn button-secondary" href="%s">%s</a>',
+												admin_url( 'admin.php?page=ws-ls-wlt-data-home&show-gain=') . ((false === $show_gain) ? 'y' : 'n'),
+												(false === $show_gain) ? __('Show who has gained the most', WE_LS_SLUG) : __('Show who has lost the most', WE_LS_SLUG)
+											);
+
+						 	?>
 						</div>
 					</div>
 					<div class="postbox">

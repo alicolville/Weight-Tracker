@@ -73,6 +73,8 @@ function ws_ls_export_into_json($rows) {
 					$data[$key] = $row[$key];
 				}
 			}
+			$row = ws_ls_export_add_bmi($row);
+
 			$output['rows'][] = $data;
 		}
 
@@ -107,6 +109,7 @@ function ws_ls_csv_from_array($data, $show_column_headers = true, $delimiter = '
 
 		// Build body of CSV
 		foreach ($data as $row) {
+			$row = ws_ls_export_add_bmi($row);
 			$csv_output .= ws_ls_csv_row_write($columns, $row, $delimiter, $end_of_line_char);
 		}
 
@@ -184,12 +187,13 @@ function ws_ls_column_names() {
 		$names = [
 						'user_id' => 'User ID',
 						'user_nicename' => 'Nicename',
-					//	'email' => 'email',
 						'date-display' => 'Date',
 						'kg' => __('Kg', WE_LS_SLUG),
 						'only_pounds' => __('Lbs only', WE_LS_SLUG),
 						'stones' => __('Stones', WE_LS_SLUG),
 						'pounds' => __('Lbs', WE_LS_SLUG),
+						'bmi' => 'BMI',
+						'bmi-readable' => 'BMI Label',
 						'notes' => __('Notes', WE_LS_SLUG),
 						'difference_from_start_display' => __('Difference from start', WE_LS_SLUG)
 		];
@@ -240,6 +244,15 @@ function ws_ls_export_to_browser($data, $file_name = 'weight-loss-tracker.csv', 
 	    exit;
 	}
 
+}
+
+function ws_ls_export_add_bmi($row) {
+	if(false === empty($row['user_id']) && false === empty($row['kg'])) {
+		$row['bmi'] =  ws_ls_calculate_bmi(ws_ls_get_user_height($row['user_id']), $row['kg'], __('No height', WE_LS_SLUG)) ;
+		$row['bmi-readable'] =  (is_numeric($row['bmi'])) ? ws_ls_calculate_bmi_label($row['bmi']) : '';
+	}
+
+	return $row;
 }
 
 function ws_ls_export_permission_check() {

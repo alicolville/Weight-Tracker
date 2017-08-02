@@ -15,11 +15,6 @@ function ws_ls_user_data($filters = false)
     $sql = 'SELECT ' . $table_name . '.id, weight_date, weight_weight, weight_stones, weight_pounds, weight_only_pounds, weight_notes, weight_user_id, user_nicename' . $measurement_columns_sql . ' FROM ' . $table_name
                             . ' INNER JOIN ' . $user_table_name . ' on ' . $user_table_name . '.id = ' . $table_name . '.weight_user_id';
 
-    // // Searching column for something specific?
-    // if (isset($filters['search']) && !empty($filters['search'])) {
-    //   $sql .=  $wpdb->prepare(' WHERE user_nicename like %s OR weight_notes like %s', '%' . $filters['search'] . '%', '%' . $filters['search'] . '%');
-    // }
-
 	// Limit to a certain user?
     if(isset($filters['user-id']) && is_numeric($filters['user-id'])) {
 		$sql .=  $wpdb->prepare(' WHERE weight_user_id = %d', $filters['user-id']);
@@ -200,9 +195,12 @@ function ws_ls_stats_remove_deleted_user_ids_from_stats() {
 */
 function ws_ls_stats_league_table_fetch($ignore_cache = false, $limit = 10, $losers_only = false, $order = 'asc') {
 
+	$cache_key = WE_LS_CACHE_STATS_TABLE . md5($ignore_cache . $limit . $losers_only . $order);
+
 	// Return cache if found!
-    if (!$ignore_cache && $cache = ws_ls_get_cache(WE_LS_CACHE_STATS_TABLE)) {
-        return $cache;
+    if (!$ignore_cache && $cache = ws_ls_get_cache($cache_key)) {
+
+		return $cache;
     }
 
 	global $wpdb;
@@ -238,7 +236,7 @@ function ws_ls_stats_league_table_fetch($ignore_cache = false, $limit = 10, $los
 	$results = $wpdb->get_results( $sql, ARRAY_A );
 
 	if(!empty($results)) {
-		ws_ls_set_cache(WE_LS_CACHE_STATS_TABLE, $results);
+		ws_ls_set_cache($cache_key, $results, 5 * MINUTE_IN_SECONDS);
 		return $results;
 	}
 

@@ -93,3 +93,9 @@ add_action( 'plugins_loaded', 'ws_ls_load_textdomain' );
 // -----------------------------------------------------------------------------------------
 //TODO: REMOVE
  include WS_LS_ABSPATH . 'includes/tests/inc.php';
+
+// function ali_test() {
+// 	print_r(ws_ls_data_table_get_rows(1));
+// 	die;
+// } //TODO
+// add_action('init', 'ali_test');

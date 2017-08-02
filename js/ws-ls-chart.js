@@ -1,3 +1,6 @@
+//
+// To compress this script, use https://jscompress.com
+//
 jQuery( document ).ready(function ($) {
 
 	if ("true" == ws_ls_config["is-pro"]) {

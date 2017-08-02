@@ -25,15 +25,6 @@ function ws_ls_admin_page_data_user() {
 			<div id="post-body-content">
 				<div class="meta-box-sortables ui-sortable">
 					<div class="postbox">
-						<h2 class="hndle"><span><?php echo __('User Card?', WE_LS_SLUG); ?></span></h2>
-						<div class="inside">
-							TODO: nice card here? display wordpress data
-
-                            display number of entries
-                            <?php $stats = ws_ls_get_entry_counts($user_id); var_dump($stats); ?>
-						</div>
-					</div>
-					<div class="postbox">
 						<h2 class="hndle"><span><?php echo __('Chart', WE_LS_SLUG); ?></span></h2>
 						<div class="inside">
 							<?php
@@ -64,6 +55,11 @@ function ws_ls_admin_page_data_user() {
 					<div class="postbox">
 						<h2 class="hndle"><span><?php echo __('Quick Stats', WE_LS_SLUG); ?></span></h2>
 						<div class="inside">
+
+							<?php $stats = ws_ls_get_entry_counts($user_id); ?>
+							<h4><?php echo __('No. of entries', WE_LS_SLUG); ?></h4>
+							<p><?php echo $stats['number-of-entries']; ?></p>
+
                            	<h4><?php echo __('Start weight', WE_LS_SLUG); ?></h4>
 							<p><?php echo ws_ls_weight_start($user_id); ?></p>
 

@@ -16,6 +16,9 @@ function ws_ls_data_table_placeholder($user_id = false, $max_entries = false) {
 		data-user-id="<?php echo (is_numeric($user_id) ? $user_id : 'false') ?>",
 		data-max-entries="<?php echo (is_numeric($max_entries) ? $max_entries : 'false') ?>">
 	</table>
+	<?php if (WE_LS_MEASUREMENTS_ENABLED):  ?>
+		<p><em>Measurements are in <?php echo ('inches' == ws_ls_get_config('WE_LS_MEASUREMENTS_UNIT')) ? __('Inches', WE_LS_SLUG) : __('CM', WE_LS_SLUG); ?>.</em></p>
+	<?php endif;  ?>
 <?php
 }
 
@@ -43,6 +46,8 @@ function ws_ls_data_table_get_rows($user_id = false, $max_entries = false) {
 	// Loop through the data and expected columns and build a clean array of row data for HTML table.
 	$rows = array();
 
+	$previous_user_weight = [];
+
 	foreach ($user_data['weight_data'] as $data) {
 
 		// Build a row up for given columns
@@ -52,11 +57,35 @@ function ws_ls_data_table_get_rows($user_id = false, $max_entries = false) {
 
 			$column_name = $column['name'];
 
+			if('gainloss' == $column_name) {
+
+				// Compare to previous weight and determin if a gain / loss in weight
+				$gain_loss = '';
+
+				if(false === empty($previous_user_weight[$data['user_id']])) {
+
+					if ($data['kg'] > $previous_user_weight[$data['user_id']]) {
+						$gain_loss = __('Gain', WE_LS_SLUG);
+					} elseif ($data['kg'] < $previous_user_weight[$data['user_id']]) {
+						$gain_loss = __('Loss', WE_LS_SLUG);
+					} elseif ($data['kg'] == $previous_user_weight[$data['user_id']]) {
+						$gain_loss = __('Same', WE_LS_SLUG);
+					}
+				} else {
+					$gain_loss = __('First entry', WE_LS_SLUG);
+				}
+
+				$previous_user_weight[$data['user_id']] = $data['kg'];
+			}
+
 			// Is this a measurement field?
 			if(in_array($column_name, $measurement_fields) && !empty($data['measurements'][$column_name])) {
 				$row[$column_name]['options']['sortValue'] = $data['measurements'][$column_name];
 				$row[$column_name]['value'] = ws_ls_prep_measurement_for_display($data['measurements'][$column_name]);
-            } else if ('bmi' === $column_name) {
+			} else if ('gainloss' === $column_name) {
+				$row[$column_name]['value'] = $gain_loss;
+				//$row[$column_name]['options']['classes'] = 'ws-ls-' . sanitize_key($gain_loss); Can use this method for icons
+			} else if ('bmi' === $column_name) {
                 $row[$column_name] =  ws_ls_get_bmi_for_table(ws_ls_get_user_height($data['user_id']), $data['kg'], __('No height', WE_LS_SLUG)) ;
 			} else if (!empty($data[$column_name])) {
 				switch ($column_name) {
@@ -69,7 +98,7 @@ function ws_ls_data_table_get_rows($user_id = false, $max_entries = false) {
 						$row[$column_name]['value'] = sprintf('<a href="%s">%s</a>', ws_ls_get_link_to_user_profile($data['user_id']), $data['user_nicename']);
 						break;
 					default:
-						$row[$column_name] = $data[$column_name];
+						$row[$column_name] = esc_html($data[$column_name]);
 						break;
 				}
 			}
@@ -92,7 +121,8 @@ function ws_ls_data_table_get_columns() {
 		array('name' => 'user_id', 'title' => 'USER ID', 'visible'=> false, 'type' => 'number'),
 		array('name' => 'user_nicename', 'title' => 'User', 'breakpoints'=> '', 'type' => 'text'),
 		array('name' => 'date', 'title' => 'Date', 'breakpoints'=> '', 'type' => 'date'),
-		array('name' => 'kg', 'title' => 'Weight', 'visible'=> true, 'type' => 'text')
+		array('name' => 'kg', 'title' => 'Weight', 'visible'=> true, 'type' => 'text'),
+		array('name' => 'gainloss', 'title' => ws_ls_tooltip('+/-', __('Difference since last entry', WE_LS_SLUG)), 'visible'=> true, 'type' => 'text')
 	);
 
 	// Add BMI?

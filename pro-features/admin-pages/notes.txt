@@ -1,19 +1,26 @@
 TODO:
 
-- Add a dashboard widget??
-- restrict various parts of user data to non -pro
+Luxury:
 
-- test all with different weight and date units
-- sort column toggle on footable
--update language file
-- update readme.txt etc
-- test all css /JS on add/edit form in front end
-- remove test code
-- update plugin json on weight.yeken.uk
+- Add a dashboard widget
 
-- test flushing stats table - make sure regenerates.
-- update features.php and weight.yeken.uk
-- add screenshots to WP plugin
+Needed:
 
+- Test with Measurments disabled.
+- Add logic for minfiy scripts
+- Test flushing stats table - make sure regenerates.
+- Sort column toggle on footable
+- Test all css / JS on add / edit form in front end
+- Test all with different weight and date units
+- Update language file. Update weight.yeken.uk with new zip
+- Restrict User Data to non pro (perhaps show screenshots and link to weight.yeken.uk documentation page)
+- Update plugin readme
+- Update weight.yeken.uk documentation
+- Add screenshots to plugin and above site
+- Update features.php
 
-- delete this file.
+Final Tidy up:
+
+- Update plugin json on weight.yeken.uk
+- Search for any TODO and remedy
+- Delete this file

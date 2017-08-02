@@ -1,3 +1,6 @@
+//
+// To compress this script, use https://jscompress.com
+//
 jQuery( document ).ready(function ($) {
 
 	$(".we-ls-datepicker").each(function() {
