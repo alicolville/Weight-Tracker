@@ -88,7 +88,7 @@
 
 		wp_enqueue_script('jquery-ui-datepicker');
 		wp_enqueue_script('wl-ls-js', plugins_url( '../js/ws-ls' . 	$minified . '.js', __FILE__ ), array(), WE_LS_CURRENT_VERSION, true);
-		wp_enqueue_script('wl-ls-js-form', plugins_url( '../js/ws-ls-entry-form.js', __FILE__ ), array(), WE_LS_CURRENT_VERSION, true); //TODO: minify this script
+		wp_enqueue_script('wl-ls-js-form', plugins_url( '../js/ws-ls-entry-form.js', __FILE__ ), array(), WE_LS_CURRENT_VERSION, true);
 
 		// Add localization data for JS
 		wp_localize_script('wl-ls-js', 'ws_ls_config', ws_ls_get_js_config());
@@ -148,7 +148,7 @@
 		wp_enqueue_script('jquery-ui-datepicker');
 		wp_enqueue_script('jquery-validate',plugins_url( '../js/jquery.validate.min.js', __FILE__ ), array('jquery'), WE_LS_CURRENT_VERSION);
 		wp_enqueue_script('jquery-validate-additional',plugins_url( '../js/additional-methods.min.js', __FILE__ ), array('jquery', 'jquery-validate'), WE_LS_CURRENT_VERSION);
-		wp_enqueue_script('wl-ls-js', plugins_url( '../js/ws-ls-entry-form' . 	$minified . '.js', __FILE__ ), array(), WE_LS_CURRENT_VERSION, true);	//TODO: minify this script
+		wp_enqueue_script('wl-ls-js', plugins_url( '../js/ws-ls-entry-form' . 	$minified . '.js', __FILE__ ), array(), WE_LS_CURRENT_VERSION, true);
 		wp_localize_script('wl-ls-js', 'ws_ls_config', ws_ls_get_js_config());
 	}
 
