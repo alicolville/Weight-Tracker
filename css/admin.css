@@ -82,3 +82,13 @@
 .ws-ls-heavilyoverweight {
     color: #ff0000;
 }
+.ws-ls-user-preview {
+	width: 100%;
+	clear: both;
+}
+.ws-ls-user-preview img {
+	/*width: 48%;
+	float: left;*/
+	max-height: 100%;
+    max-width: 100%;
+}

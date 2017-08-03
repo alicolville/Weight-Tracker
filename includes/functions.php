@@ -539,5 +539,9 @@ function ws_ls_get_url($base_64_encode = false) {
 	return (true === $base_64_encode) ? base64_encode($current_url) : $current_url;
 }
 
-
+function ws_ls_stats_clear_last_updated_date(){
+    global $wpdb;
+    $wpdb->query('Update ' . $wpdb->prefix . WE_LS_USER_STATS_TABLENAME . ' set last_update = NULL');
+    return;
+}
 ?>

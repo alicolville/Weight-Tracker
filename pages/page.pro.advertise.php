@@ -92,7 +92,7 @@ function ws_ls_advertise_pro() {
 										<input type="submit" class="button-primary large-text" value="<?php echo __('Add License', WE_LS_SLUG); ?>" />
 									</form>
 								<?php else: ?>
-									<p>Thank you! Your license key for future reference is: <br /><br /><strong><?php echo ws_ls_get_license(); ?></strong></p>
+									<p><?php echo __( 'Thank you! Your license key for future reference is', WE_LS_SLUG); ?>: <br /><br /><strong><?php echo ws_ls_get_license(); ?></strong></p>
 
 								<?php endif; ?>
 								</div>

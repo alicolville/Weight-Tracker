@@ -128,9 +128,3 @@ function ws_ls_get_sum_of_weights_for_user($user_id)
 	$wpdb->query($sql);
 	return;
 }
-
-function ws_ls_stats_clear_last_updated_date(){
-    global $wpdb;
-    $wpdb->query('Update ' . $wpdb->prefix . WE_LS_USER_STATS_TABLENAME . ' set last_update = NULL');
-    return;
-}

@@ -163,7 +163,7 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 
 = 5.0 =
 
-* Improvement: New and improved admin interface for interacting with your user's data!
+* New Feature: New and improved admin interface for interacting with your user's data!
 	* View all user entries in tabular and chart format.
 	* Add, edit and delete user entries.
 	* Sortable and responsive tables.

@@ -29,7 +29,7 @@ defined('ABSPATH') or die('Jog on!');
 */
 
 define('WS_LS_ABSPATH', plugin_dir_path( __FILE__ ));
-define('WE_LS_CURRENT_VERSION', '5.0'); //TODO
+define('WE_LS_CURRENT_VERSION', '5.0');
 
 // -----------------------------------------------------------------------------------------
 // AC: Activate / Deactivate / Uninstall Hooks
@@ -44,14 +44,11 @@ register_deactivation_hook(__FILE__, 'ws_ls_deactivate');
 
 include WS_LS_ABSPATH . 'includes/license.php';
 
-//if(ws_ls_has_a_valid_license()){
-//  define('WS_LS_IS_PRO', true);
-//} else {
-//  define('WS_LS_IS_PRO', false);
-//}
-
-//TODO
-define('WS_LS_IS_PRO', false);
+if(ws_ls_has_a_valid_license()){
+ define('WS_LS_IS_PRO', true);
+} else {
+ define('WS_LS_IS_PRO', false);
+}
 
 // -----------------------------------------------------------------------------------------
 // AC: Include all relevant PHP files
@@ -99,9 +96,3 @@ add_action( 'plugins_loaded', 'ws_ls_load_textdomain' );
 // -----------------------------------------------------------------------------------------
 //TODO: REMOVE
  include WS_LS_ABSPATH . 'includes/tests/inc.php';
-
-// function ali_test() {
-// 	print_r(ws_ls_data_table_get_rows(1));
-// 	die;
-// } //TODO
-// add_action('init', 'ali_test');
