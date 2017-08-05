@@ -1,7 +1,8 @@
 === Weight Loss Tracker ===
 Contributors: aliakro
 Tags: weight, loss, lose, helper, bmi, body, mass, index, graph, track, stones, kg, table, data, plot, target, history, pounds, responsive, chart, measurements, cm, centimeters, inches, hip, waist, bicep, thigh
-Requires at least: 4.1.0
+
+Requires at least: 4.4.0
 Tested up to: 4.8
 Stable tag: 5.0
 
@@ -170,6 +171,11 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 	* View league tables of most lost / gained.
 	* View user stats, weight lost, recent weight, start weight, BMI, etc.
 	* Export all or a particular user's data in CSV / JSON.
+
+= 4.2.8 =
+
+* Added localisation for missing strings.
+
 
 = 4.2.7 =
 
