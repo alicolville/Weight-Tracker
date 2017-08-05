@@ -8,9 +8,7 @@ function ws_ls_weight_target_weight($user_id = false, $admin_display = false) {
 		return '';
 	}
 
-	if(false === $user_id) {
-		$user_id = get_current_user_id();
-	}
+	$user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
 
 	$target_weight  = ws_ls_get_user_target($user_id);
 
@@ -28,9 +26,7 @@ function ws_ls_weight_start($user_id = false)
 		return '';
 	}
 
-	if(false === $user_id) {
-		$user_id = get_current_user_id();
-	}
+	$user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
 
 	if (ws_ls_get_config('WE_LS_DATA_UNITS') == "pounds_only") {
 		$weight = ws_ls_get_start_weight_in_pounds($user_id);
@@ -47,9 +43,7 @@ function ws_ls_weight_recent($user_id = false)
 		return '';
 	}
 
-	if(false === $user_id) {
-		$user_id = get_current_user_id();
-	}
+	$user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
 
 	if (ws_ls_get_config('WE_LS_DATA_UNITS') == "pounds_only") {
 		$weight =  ws_ls_get_recent_weight_in_pounds($user_id);
@@ -67,9 +61,7 @@ function ws_ls_weight_difference($user_id = false)
 		return '';
 	}
 
-	if(false === $user_id) {
-		$user_id = get_current_user_id();
-	}
+	$user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
 
 	if (ws_ls_get_config('WE_LS_DATA_UNITS') == "pounds_only"){
 		$start_weight = ws_ls_get_start_weight_in_pounds($user_id);
@@ -94,7 +86,7 @@ function ws_ls_weight_difference_target($user_id = false){
 		return '';
 	}
 
-	$user_id = (false === $user_id) ? get_current_user_id() : $user_id;
+	$user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
 
 	if (ws_ls_get_config('WE_LS_DATA_UNITS') == "pounds_only") {
 		$target_weight = ws_ls_get_target_weight_in_pounds($user_id);
@@ -120,25 +112,25 @@ function ws_ls_weight_difference_target($user_id = false){
 
 function ws_ls_get_start_weight_in_kg($user_id = false){
 
-	$user_id = (false === $user_id) ? get_current_user_id() : $user_id;
+	$user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
 
 	return ws_ls_get_weight_extreme($user_id);
 }
 function ws_ls_get_recent_weight_in_kg($user_id = false){
 
-	$user_id = (false === $user_id) ? get_current_user_id() : $user_id;
+	$user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
 
 	return ws_ls_get_weight_extreme($user_id, true);
 }
 function ws_ls_get_start_weight_in_pounds($user_id = false) {
 
-	$user_id = (false === $user_id) ? get_current_user_id() : $user_id;
+	$user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
 
 	return ws_ls_get_weight_extreme($user_id, false, "weight_only_pounds");
 }
 function ws_ls_get_recent_weight_in_pounds($user_id){
 
-	$user_id = (false === $user_id) ? get_current_user_id() : $user_id;
+	$user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
 
 	return ws_ls_get_weight_extreme($user_id, true, "weight_only_pounds");
 }
@@ -173,13 +165,13 @@ function ws_ls_get_weight_extreme($user_id, $recent = false, $unit = "weight_wei
 }
 function ws_ls_get_target_weight_in_kg($user_id = false){
 
-	$user_id = (false === $user_id) ? get_current_user_id() : $user_id;
+	$user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
 
 	return ws_ls_get_weight_target($user_id);
 }
 function ws_ls_get_target_weight_in_pounds($user_id = false){
 
-	$user_id = (false === $user_id) ? get_current_user_id() : $user_id;
+	$user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
 
 	return ws_ls_get_weight_target($user_id, "target_weight_only_pounds");
 }

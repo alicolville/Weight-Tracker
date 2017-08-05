@@ -254,9 +254,12 @@ function ws_ls_user_search($name) {
 
 		global $wpdb;
 
+		$stats_table_name = $wpdb->prefix . WE_LS_USER_STATS_TABLENAME;
+		$data_table_name = $wpdb->prefix . WE_LS_TABLENAME;
+
 		$sql = "SELECT distinct {$wpdb->prefix}users.*, us.* FROM {$wpdb->prefix}users
-				INNER JOIN {$wpdb->prefix}ws_ls_data as wd ON ( {$wpdb->prefix}users.ID = wd.weight_user_id )
-				LEFT JOIN {$wpdb->prefix}ws_ls_data_user_stats as us ON ( {$wpdb->prefix}users.ID = us.user_id )
+				INNER JOIN {$data_table_name} as wd ON ( {$wpdb->prefix}users.ID = wd.weight_user_id )
+				LEFT JOIN {$stats_table_name} as us ON ( {$wpdb->prefix}users.ID = us.user_id )
 				LEFT JOIN {$wpdb->prefix}usermeta um ON ( {$wpdb->prefix}users.ID = um.user_id )
 				WHERE 1=1 AND
 				(
