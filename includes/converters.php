@@ -67,7 +67,7 @@ function ws_ls_convert_kg_into_relevant_weight_String($kg, $comparison_value = f
 				return ws_ls_to_lb($kg) . __('lbs', WE_LS_SLUG);
 			break;
 			case 'kg':
-				return $kg . __('Kg', WE_LS_SLUG);
+				return round($kg, 2) . __('Kg', WE_LS_SLUG);
 			break;
 			default:
 				$weight = ws_ls_to_stone_pounds($kg);

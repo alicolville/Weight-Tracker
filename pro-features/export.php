@@ -132,7 +132,7 @@ function ws_ls_csv_row_header($columns) {
 
 		$columns = array_values($columns);
 
-		// Escape cell contents and encaspulate in double quotes
+		// Escape cell contents and encapsulate in double quotes
 		$columns = array_map('ws_ls_csv_cell_escape', $columns);
 
 		// Implode and build Row
@@ -167,7 +167,7 @@ function ws_ls_csv_row_write($columns, $row, $delimiter = ',', $end_of_line_char
 			}
 		}
 
-		// Escape cell contents and encaspulate in double quotes
+		// Escape cell contents and encapsulate in double quotes
 		$data = array_map('ws_ls_csv_cell_escape', $data);
 
 		// Implode and build Row
@@ -192,10 +192,10 @@ function ws_ls_column_names() {
 						'only_pounds' => __('Lbs only', WE_LS_SLUG),
 						'stones' => __('Stones', WE_LS_SLUG),
 						'pounds' => __('Lbs', WE_LS_SLUG),
+                        'difference_from_start_display' => __('Difference from start', WE_LS_SLUG),
 						'bmi' => 'BMI',
 						'bmi-readable' => 'BMI Label',
-						'notes' => __('Notes', WE_LS_SLUG),
-						'difference_from_start_display' => __('Difference from start', WE_LS_SLUG)
+						'notes' => __('Notes', WE_LS_SLUG)
 		];
 
 		// Add measurements

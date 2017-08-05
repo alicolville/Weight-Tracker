@@ -129,7 +129,7 @@ function ws_ls_data_table_get_columns() {
 		array('name' => 'user_nicename', 'title' => 'User', 'breakpoints'=> '', 'type' => 'text'),
 		array('name' => 'date', 'title' => 'Date', 'breakpoints'=> '', 'type' => 'date'),
 		array('name' => 'kg', 'title' => 'Weight', 'visible'=> true, 'type' => 'text'),
-		array('name' => 'gainloss', 'title' => ws_ls_tooltip('+/-', __('Difference since last entry', WE_LS_SLUG)), 'visible'=> true, 'type' => 'text')
+		array('name' => 'gainloss', 'title' => ws_ls_tooltip('+/-', __('+', WE_LS_SLUG)), 'visible'=> true, 'type' => 'text')
 	);
 
 	// Add BMI?

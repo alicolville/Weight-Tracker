@@ -23,12 +23,12 @@ function ws_ls_test_add_entries_per_user($max_number_of_entries_per_user = 10) {
 		$startdate = new datetime();
 
 		for ($i=0; $i < $max_number_of_entries_per_user; $i++) {
-			$kg = rand(30, 100);
+			$kg = rand(30, 100). '.' . rand(0,99);
 
 			$measurements = array();
 
 			foreach ($weight_keys as $key) {
-		 	  	$measurements[$key] = rand(50,80);
+		 	  	$measurements[$key] = rand(50,80) . '.' . rand(0,99);
 			}
 			unset($measurements['ws-ls-height']);
 
