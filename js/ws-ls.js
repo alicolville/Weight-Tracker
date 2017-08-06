@@ -25,7 +25,7 @@ jQuery( document ).ready(function ($) {
    }
 
    // Delete / Edit links on tables
-  $(".ws-ls-edit-row").click(function( event ) {
+    $('.ws-ls-advanced-data-table').on('click', '.ws-ls-edit-row', function ( event ) {
       event.preventDefault();
 
       $post_data = {};
@@ -38,7 +38,8 @@ jQuery( document ).ready(function ($) {
 
       ws_ls_post_data($post_data, ws_ls_edit_row_callback);
   });
-  $(".ws-ls-delete-row").click(function( event ) {
+
+	$('.ws-ls-advanced-data-table').on('click', '.ws-ls-delete-row', function ( event ) {
       event.preventDefault();
 
       if(!confirm(ws_ls_config["confirmation-delete"])){
