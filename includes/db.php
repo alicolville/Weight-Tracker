@@ -184,7 +184,7 @@ function ws_ls_get_start_weight($user_id)
     return false;
 }
 
-function ws_ls_save_data($user_id, $weight_object, $is_target_form = false)
+function ws_ls_save_data($user_id, $weight_object, $is_target_form = fals, $existing_row_id = false)
 {
 	global $wpdb;
 
@@ -225,8 +225,16 @@ function ws_ls_save_data($user_id, $weight_object, $is_target_form = false)
 		$db_is_update = ws_does_target_weight_exist($user_id);
 	    $table_name = $wpdb->prefix . WE_LS_TARGETS_TABLENAME;
 	} else {
-		$db_is_update = ws_does_weight_exist_for_this_date($user_id, $weight_object['date']);
-	    $db_fields['weight_notes'] = $weight_object['notes'];
+
+		$db_is_update = false;
+
+		if($existing_row_id && is_numeric($existing_row_id)) {
+			$db_is_update = $existing_row_id;
+		} else {
+			$db_is_update = ws_does_weight_exist_for_this_date($user_id, $weight_object['date']);
+		}
+
+		$db_fields['weight_notes'] = $weight_object['notes'];
 	    array_push($db_field_types, '%s');
 	    $db_fields['weight_date'] = $weight_object['date'];
 	    array_push($db_field_types, '%s');
@@ -454,11 +462,11 @@ function ws_ls_get_user_preferences($user_id = false, $use_cache = true)
   return $settings;
 }
 
-function ws_ls_get_user_height($user_id = false, $use_cache = true)
-{
+function ws_ls_get_user_height($user_id = false, $use_cache = true) {
+
   global $wpdb;
 
-  if(false == $user_id){
+  if(false === $user_id){
     $user_id = get_current_user_id();
   }
 
@@ -484,6 +492,32 @@ function ws_ls_get_user_height($user_id = false, $use_cache = true)
 
   return $height;
 }
+
+function ws_ls_get_entry_counts($user_id = false, $use_cache = true) {
+
+    global $wpdb;
+
+    $cache_key = WE_LS_CACHE_KEY_ENTRY_COUNTS;
+    $cache = ws_ls_get_cache($cache_key);
+
+    // Return cache if found!
+    if ($cache && true == $use_cache && false === $user_id)   {
+        return $cache;
+    }
+
+    $stats = ['number-of-users' => false, 'number-of-entries' => false, 'number-of-targets' => false];
+
+    $where = (false === empty($user_id) && true === is_numeric($user_id)) ? intval($user_id) : false;
+
+    $stats['number-of-entries'] = $wpdb->get_var('SELECT count(id) FROM ' . $wpdb->prefix . WE_LS_TABLENAME . (($where) ? ' where weight_user_id = ' . $where : ''));
+    $stats['number-of-users'] = $wpdb->get_var('SELECT count(ID) FROM ' . $wpdb->prefix . 'users');
+    $stats['number-of-targets'] = $wpdb->get_var('SELECT count(id) FROM ' . $wpdb->prefix . WE_LS_TARGETS_TABLENAME . (($where) ? ' where weight_user_id = ' . $where : ''));
+
+    ws_ls_set_cache($cache_key, $stats);
+
+    return $stats;
+}
+
 function ws_ls_validate_height($height) {
 	 // If not a valid height clear value
 	 if(!is_numeric($height) || $height < 142 || $height > 201) {

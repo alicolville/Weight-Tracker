@@ -27,7 +27,7 @@ function ws_ls_shortcode_stats_league_total($user_defined_arguments)
 
 	if($data) {
 
-		$html = '<table class="ws-ls-stats-table">
+		$html = '<table class="ws-ls-stats-table' . (is_admin() ? ' footable table' : '') . '">
 					<thead>
 						<tr>
 							<th class="ws-col-rank-th"></th>
@@ -38,7 +38,7 @@ function ws_ls_shortcode_stats_league_total($user_defined_arguments)
 								$html .= '<th class="ws-weight-diff-th">+/-</th>';
 							}
 
-							$html .= '
+							$html .= '<th>' . __('No of entries', WE_LS_SLUG) . '</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -52,6 +52,11 @@ function ws_ls_shortcode_stats_league_total($user_defined_arguments)
 			// Display name from WP
 			$user_info = get_userdata($row['user_id']);
 			$display_name = isset($user_info->display_name) ? $user_info->display_name : '';
+
+            // If used in admin, wrap display name in link
+            if(is_admin()) {
+                $display_name = '<a href="' . ws_ls_get_link_to_user_profile($row['user_id']) . '">' . $display_name . '</a>';
+            }
 
 			// Get the display value for weight
 			$stats = ws_ls_shortcode_stats_display_value(
@@ -68,19 +73,24 @@ function ws_ls_shortcode_stats_league_total($user_defined_arguments)
 		        $percentage = round($percentage) . '%';
 			}
 
+            $table_cell = (is_admin()) ? ' style="display: table-cell;"' : '';
+
 			// Add HTML!
 			$html .= sprintf(
-				'<tr class="ws-rank-%s">
-					<td class="ws-col-rank">%s</td>
-					<td>%s</td>
-					<td>%s</td>
+				'<tr class="ws-rank-%s%s">
+					<td class="ws-col-rank" ' . $table_cell . '>%s</td>
+					<td ' . $table_cell . '>%s</td>
+					<td ' . $table_cell . '>%s</td>
 					%s
+					<td ' . $table_cell . '>%s</td>
 				</tr>',
 				$rank,
+                (('asc' == $arguments['order'] && $row['weight_difference'] < 0) || 'desc' == $arguments['order'] && $row['weight_difference'] > 0) ? ' ws-ls-good' : ' ws-ls-bad',
 				$rank,
 				$display_name,
 				$stats['display-value'],
-				(true == $arguments['show_percentage']) ? '<td>' . $percentage . '</td>' : ''
+                (true == $arguments['show_percentage']) ? '<td ' . $table_cell . '>' . $percentage . '</td>' : '',
+                $row['no_entries']
 			);
 
 			$rank++;
@@ -93,7 +103,7 @@ function ws_ls_shortcode_stats_league_total($user_defined_arguments)
 		return apply_filters(WE_LS_FILTER_STATS_TABLE_HTML, $html);
 	}
 
-	return __('No users have entered weights.', WE_LS_SLUG) .'<!-- Issue loading Weight Loss table (No data) -->';
+	return '<p>' . __('The league table has not been generated yet. This is a scheduled task so please check back in 15 minutes or try pressing the button below.', WE_LS_SLUG) .'</p>';
 }
 
 

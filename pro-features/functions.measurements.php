@@ -71,14 +71,20 @@ function ws_ls_get_active_measurement_fields(){
 	return $keys;
 }
 
-function ws_ls_load_measurement_form()
+function ws_ls_load_measurement_form($existing_data = false)
 {
     $public_html = '';
     $measurement_fields = ws_ls_get_measurement_settings();
 
 	  foreach($measurement_fields as $key => $data) {
         if($data['enabled'] && false == $data['user_preference']) {
-            $public_html .= ws_ls_measurement_field($key, __($data['title'], WE_LS_SLUG) . ' (' . ws_ls_get_config('WE_LS_MEASUREMENTS_UNIT') . ')');
+
+			// Do we have an existing value
+			if(false === empty($existing_data['measurements']) && is_array($existing_data['measurements'])); {
+				$value = ws_ls_get_existing_value($existing_data['measurements'], $key, false);
+			}
+
+            $public_html .= ws_ls_measurement_field($key, __($data['title'], WE_LS_SLUG) . ' (' . ws_ls_get_config('WE_LS_MEASUREMENTS_UNIT') . ')', $value);
         }
     }
 
@@ -90,8 +96,8 @@ function ws_ls_measurement_field($field_id, $display_text, $value = false)
 	$value = ($value) ? $value : '';
 	$field_id = 'ws-ls-' . $field_id;
 
-    $html_output = '<label for="' . $field_id . '">' . $display_text . ':</label>';
-    $html_output .= '<input  type="number"' . ((WE_LS_MEASUREMENTS_MANDATORY) ? ' required' : '' ) . ' tabindex="' . ws_ls_get_next_tab_index() . '" step="any" min="0" max="1000" name="' . $field_id . '" id="' . $field_id . '" value="' . $value . '" size="11" class="ws-ls-measurement ws-ls-measurement-required"  />';
+    $html_output = '<label for="' . esc_attr($field_id) . '">' . esc_html($display_text) . ':</label>';
+    $html_output .= '<input  type="number"' . ((WE_LS_MEASUREMENTS_MANDATORY) ? ' required' : '' ) . ' tabindex="' . ws_ls_get_next_tab_index() . '" step="any" min="0" max="1000" name="' . esc_attr($field_id) . '" id="' . esc_attr($field_id) . '" value="' . esc_attr($value) . '" size="11" class="ws-ls-measurement ws-ls-measurement-required"  />';
     return $html_output;
 }
 

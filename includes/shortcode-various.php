@@ -1,67 +1,75 @@
 <?php
 	defined('ABSPATH') or die('Jog on!');
 
-function ws_ls_weight_target_weight() {
+function ws_ls_weight_target_weight($user_id = false, $admin_display = false) {
 
 	// If not logged in then return no value
 	if(!is_user_logged_in()) {
 		return '';
 	}
 
-	$target_weight  = ws_ls_get_user_target(get_current_user_id());
+	$user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
+
+	$target_weight  = ws_ls_get_user_target($user_id);
 
 	if ($target_weight) {
-		return $target_weight['display'];
+	    return (true === $admin_display) ? $target_weight['display-admin'] : $target_weight['display'];
 	}
 
 	return '';
 }
 
-function ws_ls_weight_start()
+function ws_ls_weight_start($user_id = false)
 {
 	// If not logged in then return no value
 	if(!is_user_logged_in()) {
 		return '';
 	}
 
+	$user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
+
 	if (ws_ls_get_config('WE_LS_DATA_UNITS') == "pounds_only") {
-		$weight = ws_ls_get_start_weight_in_pounds();
+		$weight = ws_ls_get_start_weight_in_pounds($user_id);
 	}
 	else {
-		$weight = ws_ls_get_weight_extreme(get_current_user_id());
+		$weight = ws_ls_get_weight_extreme($user_id);
 	}
 	return we_ls_format_weight_into_correct_string_format($weight);
 }
-function ws_ls_weight_recent()
+function ws_ls_weight_recent($user_id = false)
 {
 	// If not logged in then return no value
 	if(!is_user_logged_in()) {
 		return '';
 	}
 
+	$user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
+
 	if (ws_ls_get_config('WE_LS_DATA_UNITS') == "pounds_only") {
-		$weight =  ws_ls_get_recent_weight_in_pounds();
+		$weight =  ws_ls_get_recent_weight_in_pounds($user_id);
 	}
 	else {
-		$weight =  ws_ls_get_weight_extreme(get_current_user_id(), true);
+		$weight =  ws_ls_get_weight_extreme($user_id, true);
 	}
 
 	return we_ls_format_weight_into_correct_string_format($weight);
 }
-function ws_ls_weight_difference()
+function ws_ls_weight_difference($user_id = false)
 {
 	// If not logged in then return no value
 	if(!is_user_logged_in()) {
 		return '';
 	}
+
+	$user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
 
 	if (ws_ls_get_config('WE_LS_DATA_UNITS') == "pounds_only"){
-		$start_weight = ws_ls_get_start_weight_in_pounds();
-		$recent_weight = ws_ls_get_recent_weight_in_pounds();
+		$start_weight = ws_ls_get_start_weight_in_pounds($user_id);
+		$recent_weight = ws_ls_get_recent_weight_in_pounds($user_id);
 	}
 	else	{
-		$start_weight = ws_ls_get_start_weight_in_kg();
-		$recent_weight = ws_ls_get_weight_extreme(get_current_user_id(), true);
+		$start_weight = ws_ls_get_start_weight_in_kg($user_id);
+		$recent_weight = ws_ls_get_weight_extreme($user_id, true);
 	}
 
 	$difference = $recent_weight - $start_weight;
@@ -72,20 +80,21 @@ function ws_ls_weight_difference()
 
 	return $display_string;
 }
-function ws_ls_weight_difference_target()
-{
+function ws_ls_weight_difference_target($user_id = false){
 	// If not logged in then return no value
 	if(!is_user_logged_in()) {
 		return '';
 	}
 
+	$user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
+
 	if (ws_ls_get_config('WE_LS_DATA_UNITS') == "pounds_only") {
-		$target_weight = ws_ls_get_target_weight_in_pounds();
-		$recent_weight = ws_ls_get_recent_weight_in_pounds();
+		$target_weight = ws_ls_get_target_weight_in_pounds($user_id);
+		$recent_weight = ws_ls_get_recent_weight_in_pounds($user_id);
 	}
 	else {
-		$target_weight = ws_ls_get_target_weight_in_kg();
-		$recent_weight = ws_ls_get_weight_extreme(get_current_user_id(), true);
+		$target_weight = ws_ls_get_target_weight_in_kg($user_id);
+		$recent_weight = ws_ls_get_weight_extreme($user_id, true);
 	}
 
 	if(empty($target_weight)) {
@@ -101,21 +110,29 @@ function ws_ls_weight_difference_target()
 	return $display_string;
 }
 
-function ws_ls_get_start_weight_in_kg()
-{
-	return ws_ls_get_weight_extreme(get_current_user_id());
+function ws_ls_get_start_weight_in_kg($user_id = false){
+
+	$user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
+
+	return ws_ls_get_weight_extreme($user_id);
 }
-function ws_ls_get_recent_weight_in_kg()
-{
-	return ws_ls_get_weight_extreme(get_current_user_id(), true);
+function ws_ls_get_recent_weight_in_kg($user_id = false){
+
+	$user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
+
+	return ws_ls_get_weight_extreme($user_id, true);
 }
-function ws_ls_get_start_weight_in_pounds()
-{
-	return ws_ls_get_weight_extreme(get_current_user_id(), false, "weight_only_pounds");
+function ws_ls_get_start_weight_in_pounds($user_id = false) {
+
+	$user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
+
+	return ws_ls_get_weight_extreme($user_id, false, "weight_only_pounds");
 }
-function ws_ls_get_recent_weight_in_pounds()
-{
-	return ws_ls_get_weight_extreme(get_current_user_id(), true, "weight_only_pounds");
+function ws_ls_get_recent_weight_in_pounds($user_id){
+
+	$user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
+
+	return ws_ls_get_weight_extreme($user_id, true, "weight_only_pounds");
 }
 
 function ws_ls_get_weight_extreme($user_id, $recent = false, $unit = "weight_weight")
@@ -146,13 +163,17 @@ function ws_ls_get_weight_extreme($user_id, $recent = false, $unit = "weight_wei
 		return false;
 
 }
-function ws_ls_get_target_weight_in_kg()
-{
-	return ws_ls_get_weight_target(get_current_user_id());
+function ws_ls_get_target_weight_in_kg($user_id = false){
+
+	$user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
+
+	return ws_ls_get_weight_target($user_id);
 }
-function ws_ls_get_target_weight_in_pounds()
-{
-	return ws_ls_get_weight_target(get_current_user_id(), "target_weight_only_pounds");
+function ws_ls_get_target_weight_in_pounds($user_id = false){
+
+	$user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
+
+	return ws_ls_get_weight_target($user_id, "target_weight_only_pounds");
 }
 function ws_ls_get_weight_target($user_id, $unit = "target_weight_weight")
 {

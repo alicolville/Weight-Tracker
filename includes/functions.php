@@ -32,6 +32,7 @@ function ws_ls_weight_object($user_id, $kg, $pounds, $stones, $pounds_only, $not
         $weight['date'] = $date;
         $weight['date-uk'] = date('d/m/Y',$time);
         $weight['date-us'] = date('m/d/Y',$time);
+		$weight['date-display'] = ws_ls_get_config('WE_LS_US_DATE') ? $weight['date-us'] : $weight['date-uk'];
         $weight['date-graph'] = date('d M',$time);
     }
 
@@ -145,11 +146,14 @@ function ws_ls_delete_existing_data() {
 }
 
 /* Delete all data for a user */
-function ws_ls_delete_data_for_user() {
+function ws_ls_delete_data_for_user($user_id = false) {
 
-    if(WE_LS_ALLOW_USER_PREFERENCES)  {
+    if(WE_LS_ALLOW_USER_PREFERENCES || is_admin())  {
 
-        $user_id = get_current_user_id();
+        if(false === $user_id) {
+            $user_id = get_current_user_id();
+        }
+
         global $wpdb;
         // Delete user targets
         ws_ls_delete_target($user_id);
@@ -398,6 +402,7 @@ function ws_ls_get_config($key, $user_id = false)
 
   }
   else {
+
     // Use admin default
     return constant($key);
   }
@@ -511,4 +516,32 @@ function ws_ls_format_stones_pound_for_comparison_display($weight) {
 	return '';
 }
 
+function ws_ls_querystring_value($key, $force_to_int = false, $default = false) {
+
+		$return_value = NULL;
+
+	    if(isset($_GET[$key]) && $force_to_int) {
+	        return intval($_GET[$key]);
+	    }
+	    elseif(isset($_GET[$key])) {
+	    	return $_GET[$key];
+	    }
+
+		// Use default if aval
+		if ($default && is_null($return_value)) {
+			$return_value = $default;
+		}
+    return $return_value;
+}
+
+function ws_ls_get_url($base_64_encode = false) {
+	$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+	return (true === $base_64_encode) ? base64_encode($current_url) : $current_url;
+}
+
+function ws_ls_stats_clear_last_updated_date(){
+    global $wpdb;
+    $wpdb->query('Update ' . $wpdb->prefix . WE_LS_USER_STATS_TABLENAME . ' set last_update = NULL');
+    return;
+}
 ?>

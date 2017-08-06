@@ -7,6 +7,7 @@ if(defined('WS_LS_ABSPATH')){
 	include WS_LS_ABSPATH . 'pro-features/functions.php';
 	include WS_LS_ABSPATH . 'pro-features/user-preferences.php';
 	include WS_LS_ABSPATH . 'pro-features/ajax-handler-public.php';
+	include WS_LS_ABSPATH . 'pro-features/ajax-handler-admin.php';
 	include WS_LS_ABSPATH . 'pro-features/shortcode-chart.php';
 	include WS_LS_ABSPATH . 'pro-features/shortcode-form.php';
 	include WS_LS_ABSPATH . 'pro-features/shortcode-table.php';
@@ -19,11 +20,20 @@ if(defined('WS_LS_ABSPATH')){
 	include WS_LS_ABSPATH . 'pro-features/widget-chart.php';
 	include WS_LS_ABSPATH . 'pro-features/widget-form.php';
 	include WS_LS_ABSPATH . 'pro-features/widget-progress.php';
-	include WS_LS_ABSPATH . 'pro-features/user-data.php';
-	include WS_LS_ABSPATH . 'pro-features/user-data-ajax.php';
+	include WS_LS_ABSPATH . 'pro-features/footable.php';
 	include WS_LS_ABSPATH . 'pro-features/db.php';
 	include WS_LS_ABSPATH . 'pro-features/functions.measurements.php';
 	include WS_LS_ABSPATH . 'pro-features/functions.stats.php';
+	include WS_LS_ABSPATH . 'pro-features/export.php';
+
+	// Admin pages for managing user data
+	include WS_LS_ABSPATH . 'pro-features/functions.pages.php';
+	include WS_LS_ABSPATH . 'pro-features/admin-pages/data-home.php';
+	include WS_LS_ABSPATH . 'pro-features/admin-pages/data-summary.php';
+	include WS_LS_ABSPATH . 'pro-features/admin-pages/data-view-all.php';
+	include WS_LS_ABSPATH . 'pro-features/admin-pages/data-add-edit-entry.php';
+	include WS_LS_ABSPATH . 'pro-features/admin-pages/data-user.php';
+    include WS_LS_ABSPATH . 'pro-features/admin-pages/data-search-results.php';
 
 	// Email notifications enabled?
 	if(WE_LS_EMAIL_ENABLE) {
@@ -97,6 +107,8 @@ function ws_ls_admin_enqueue_pro_scripts(){
 	// Only add Datatable scripts to User preferences page
  	$screen = get_current_screen();
 
+	wp_enqueue_style('ws-ls-admin-style', plugins_url( '/css/admin.css', dirname(__FILE__) ), array(), WE_LS_CURRENT_VERSION);
+
     if ( 'weight-loss-tracker_page_ws-ls-weight-loss-tracker-pro' == $screen->id ){
 		ws_ls_enqueue_datatable_scripts(true);
 	}
@@ -110,3 +122,10 @@ function we_ls_register_widgets()
 	register_widget( 'ws_ls_widget_progress_bar' );
 }
 add_action( 'after_setup_theme', 'we_ls_register_widgets', 20 );
+
+
+function wlt_user_action_links($actions, $user_object) {
+	$actions['edit_badges'] = "<a href='" . ws_ls_get_link_to_user_profile($user_object->ID) . "'>" . __( 'View weight entries', WE_LS_SLUG ) . "</a>";
+	return $actions;
+}
+add_filter('user_row_actions', 'wlt_user_action_links', 10, 2);

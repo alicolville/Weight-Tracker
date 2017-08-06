@@ -92,7 +92,7 @@ function ws_ls_advertise_pro() {
 										<input type="submit" class="button-primary large-text" value="<?php echo __('Add License', WE_LS_SLUG); ?>" />
 									</form>
 								<?php else: ?>
-									<p>Thank you! Your license key for future reference is: <br /><br /><strong><?php echo ws_ls_get_license(); ?></strong></p>
+									<p><?php echo __( 'Thank you! Your license key for future reference is', WE_LS_SLUG); ?>: <br /><br /><strong><?php echo ws_ls_get_license(); ?></strong></p>
 
 								<?php endif; ?>
 								</div>
@@ -100,6 +100,22 @@ function ws_ls_advertise_pro() {
 
 							</div>
 							<!-- .postbox -->
+
+                            <div class="postbox">
+
+                                <div class="handlediv" title="Click to toggle"><br></div>
+                                <!-- Toggle -->
+
+                                <h3 class="hndle"><span><?php echo __('Documentation', WE_LS_SLUG); ?></span></h3>
+
+                                <div class="inside">
+                                    <p><?php echo __('Need further help or information, please visit our documentation site:', WE_LS_SLUG); ?></p>
+                                    <p><strong><a href="https://weight.yeken.uk" target="_blank">weight.yeken.uk</a></strong></p>
+                                    <a href="https://weight.yeken.uk" target="_blank"><img class="widefat" src="<?php echo plugins_url( 'images/weight.yeken.uk.jpg', __FILE__ ); ?>" /></a>
+                                </div>
+                                <!-- .inside -->
+
+                            </div>
 
 						</div>
 						<!-- .meta-box-sortables -->
@@ -125,7 +141,6 @@ function ws_ls_advertise_pro() {
 
 									<div class="inside">
 										<p><?php echo __('Below is a list of the intended features of the Pro version:', WE_LS_SLUG); ?></p>
-										<p><strong><a href="https://github.com/yekenuk/Weight-Loss-Tracker/wiki" target="_blank"><?php echo __('Please visit our Wiki for documentation!', WE_LS_SLUG); ?></a></strong></p>
 										<table class="form-table" >
 											<?php
 

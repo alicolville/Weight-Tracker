@@ -54,7 +54,6 @@ function ws_ls_get_advanced_table_admin_config() {
 		array('name' => 'weight_date', 'responsivePriority' => 1,'targets' => ws_ls_get_column_number(), 'sortable' => true, 'searchable' => true),																		// Date
 		array('name' => 'weight_weight', 'responsivePriority' => 2,'targets' => ws_ls_get_column_number(), 'sortable' => true),																		// Weight
 		array('name' => 'notes', 'responsivePriority' => 3,'targets' => ws_ls_get_column_number(), 'sortable' => false),								// Notes
-		//array('targets' => ws_ls_get_column_number())
 	);
 
 	// Measurement Columns?

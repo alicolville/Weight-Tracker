@@ -18,7 +18,7 @@
 	define('WE_LS_CACHE_TIME', 15 * MINUTE_IN_SECONDS);
 	define('WE_LS_CACHE_COMMS_KEY', 'comm-with-yeken');
 	define('WE_LS_CACHE_COMMS_KEY_TIME', 4 * WEEK_IN_SECONDS);
-	define('WE_LS_CACHE_STATS_TABLE', 'stats-table');
+	define('WE_LS_CACHE_STATS_TABLE', 'stats-table-html');
 	define('WE_LS_CACHE_KEY_TARGET', 'target-data');
 	define('WE_LS_CACHE_KEY_DATA', 'weight-data');
 	define('WE_LS_CACHE_KEY_MIN_MAX_DATES', 'min-max-dates');
@@ -28,8 +28,9 @@
 	define('WE_LS_CACHE_KEY_USER_PREFERENCE', 'user-preference');
 	define('WE_LS_CACHE_KEY_USER_HEIGHT', 'user-height');
 	define('WE_LS_CACHE_KEY_YEKEN_JSON', 'yeken-json-lookup-wlt');
-	define('WE_LS_CACHE_KEY_STATS_SUMMARY', 'user-stats');
+	define('WE_LS_CACHE_KEY_STATS_SUMMARY', 'user-stats-summary');
 	define('WE_LS_CACHE_KEY_WEIGHT_FOR_DAY', 'user-weight-for-day');
+    define('WE_LS_CACHE_KEY_ENTRY_COUNTS', 'entry-counts');
 	define('WE_LS_KEY_YEKEN_ADMIN_NOTIFICATION', 'yeken-admin-notification');
 	define('WE_LS_CACHE_ADMIN_USER_DATA', 'admin-user-data');
 	define('WE_LS_TABLE_MAX_WEEK_FILTERS', 150);
@@ -38,7 +39,7 @@
 	define('WE_LS_CRON_NAME', 'weight_loss_tracker_hourly');
 	define('WE_LS_CRON_NAME_YEKEN_COMMS', 'weight_loss_tracker_yeken_comms');
 	define('WE_LS_CRON_SCHEDULE_WEEKLY', 'weight_loss_tracker_weekly');
-
+	define('WE_LS_PERMISSION_EXPORT', 'manage_options');
 	// -----------------------------------------------------------------------------------
 	// Hooks / Filters
 	// -----------------------------------------------------------------------------------
@@ -102,22 +103,22 @@
 	}
 
     $supported_measurements = array(
-		'left_forearm' => array('title' => __('Forearm - Left', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#f279ed'),
-        'right_forearm' => array('title' => __('Forearm - Right', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#a2039b'),
-        'left_bicep' => array('title' => __('Bicep - Left', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#b00125'),
-        'right_bicep' => array('title' => __('Bicep - Right', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#035e60'),
-		'left_calf' => array('title' => __('Calf - Left', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#ffc019'),
-        'right_calf' => array('title' => __('Calf - Right', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#ff7b9c'),
-		'left_thigh' => array('title' => __('Thigh - Left', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#eaec13'),
-        'right_thigh' => array('title' => __('Thigh - Right', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#0101DF'),
-    	'waist' => array('title' => __('Waist', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#8b860b'),
-		'bust_chest' => array('title' => __('Bust / Chest', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#9600ff'),
-		'shoulders' => array('title' => __('Shoulders', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#70c7c7'),
-		'height' => array('title' => __('Height', WE_LS_SLUG), 'enabled' => true, 'user_preference' => true),
-        'buttocks' => array('title' => __('Buttocks', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#240d1d'),
-        'hips' => array('title' => __('Hips', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#35e364'),
-        'navel' => array('title' => __('Navel', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#a28c87'),
-		'neck' => array('title' => __('Neck', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#FA8072')
+		'left_forearm' => array('title' => __('Forearm - Left', WE_LS_SLUG), 'abv' => __('FL', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#f279ed'),
+        'right_forearm' => array('title' => __('Forearm - Right', WE_LS_SLUG), 'abv' => __('FR', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#a2039b'),
+        'left_bicep' => array('title' => __('Bicep - Left', WE_LS_SLUG), 'abv' => __('BL', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#b00125'),
+        'right_bicep' => array('title' => __('Bicep - Right', WE_LS_SLUG), 'abv' => __('BR', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#035e60'),
+		'left_calf' => array('title' => __('Calf - Left', WE_LS_SLUG), 'abv' => __('CL', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#ffc019'),
+        'right_calf' => array('title' => __('Calf - Right', WE_LS_SLUG), 'abv' => __('CR', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#ff7b9c'),
+		'left_thigh' => array('title' => __('Thigh - Left', WE_LS_SLUG), 'abv' => __('TL', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#eaec13'),
+        'right_thigh' => array('title' => __('Thigh - Right', WE_LS_SLUG), 'abv' => __('TR', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#0101DF'),
+    	'waist' => array('title' => __('Waist', WE_LS_SLUG), 'abv' => __('W', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#8b860b'),
+		'bust_chest' => array('title' => __('Bust / Chest', WE_LS_SLUG), 'abv' => __('BC', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#9600ff'),
+		'shoulders' => array('title' => __('Shoulders', WE_LS_SLUG), 'abv' => __('S', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#70c7c7'),
+		'height' => array('title' => __('Height', WE_LS_SLUG), 'abv' => __('H', WE_LS_SLUG), 'enabled' => true, 'user_preference' => true),
+        'buttocks' => array('title' => __('Buttocks', WE_LS_SLUG), 'abv' => __('B', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#240d1d'),
+        'hips' => array('title' => __('Hips', WE_LS_SLUG), 'abv' => __('HI', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#35e364'),
+        'navel' => array('title' => __('Navel', WE_LS_SLUG), 'abv' => __('NA', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#a28c87'),
+		'neck' => array('title' => __('Neck', WE_LS_SLUG), 'abv' => __('NE', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#FA8072')
     );
 
     $globals['WE_LS_MEASUREMENTS'] = json_encode($supported_measurements);
@@ -190,12 +191,6 @@
 	// -----------------------------------------------------------------------------------
 	if ('yes' == get_option('ws-ls-allow-stats')) {
 		$globals['WE_LS_ALLOW_STATS'] = true;
-	}
-	// -----------------------------------------------------------------------------------
-	// Disable stats cron job?
-	// -----------------------------------------------------------------------------------
-	if ('yes' == get_option('ws-ls-disable-stats-cron')) {
-		$globals['WE_LS_DISABLE_USER_STATS'] = true;
 	}
 	// -----------------------------------------------------------------------------------
 	// Define if target weights enabled

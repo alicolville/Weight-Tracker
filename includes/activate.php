@@ -3,18 +3,20 @@
 	defined('ABSPATH') or die("Jog on!");
 
 	// Code that should run when plugin is activated
-	function ws_ls_activate() {
+	function ws_ls_activate()
+    {
 
-		// Register user stats cron job
-		if (! wp_next_scheduled ( WE_LS_CRON_NAME )) {
-			wp_schedule_event(time(), 'hourly', WE_LS_CRON_NAME);
-		}
+        // Register user stats cron job
+        if (!wp_next_scheduled(WE_LS_CRON_NAME)) {
+            wp_schedule_event(time(), 'hourly', WE_LS_CRON_NAME);
+        }
 
-		// Register weekly comms to yeken stats cron job
-		if (! wp_next_scheduled ( WE_LS_CRON_NAME_YEKEN_COMMS )) {
-			wp_schedule_event(time(), WE_LS_CRON_SCHEDULE_WEEKLY, WE_LS_CRON_NAME_YEKEN_COMMS);
-		}
-	}
+        // Register weekly comms to yeken stats cron job
+        if (!wp_next_scheduled(WE_LS_CRON_NAME_YEKEN_COMMS)) {
+            wp_schedule_event(time(), WE_LS_CRON_SCHEDULE_WEEKLY, WE_LS_CRON_NAME_YEKEN_COMMS);
+        }
+
+    }
 
 	// Code that should run when plugin is deactivated
 	function ws_ls_deactivate() {
@@ -95,6 +97,8 @@
 				recent_weight float DEFAULT 0 NULL,
 				weight_difference float DEFAULT 0 NULL,
 				sum_of_weights float DEFAULT 0 NULL,
+				no_entries integer DEFAULT 0 NULL,
+				target_added integer DEFAULT 0 NULL,
 				last_update TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 				UNIQUE KEY user_id (user_id)
 		) $charset_collate;";
@@ -108,6 +112,7 @@
 		if(update_option('ws-ls-version-number', WE_LS_CURRENT_VERSION)) {
 			ws_ls_create_mysql_tables();
 			ws_ls_activate();
-		}
+            ws_ls_stats_clear_last_updated_date(); // This will force all stat entries to be recreated.
+ 		}
 	}
 	add_action('admin_init', 'ws_ls_upgrade');

@@ -238,7 +238,7 @@
 */
 function ws_ls_display_weight_form($target_form = false, $class_name = false, $user_id = false, $hide_titles = false,
                                         $form_number = false, $force_to_todays_date = false, $hide_login_message_if_needed = true,
-                                            $hide_measurements_form = false, $redirect_url = false)
+                                            $hide_measurements_form = false, $redirect_url = false, $existing_data = false)
 {
     global $save_response;
     $html_output  = '';
@@ -253,7 +253,7 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
         }
     }
 
-    if(false == $user_id){
+    if(true === empty($user_id)){
         $user_id = get_current_user_id();
     }
 
@@ -278,12 +278,17 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 								data-metric-unit="' . ws_ls_get_chosen_weight_unit_as_string() . '">
 		<input type="hidden" value="' . (($target_form) ? 'true' : 'false') . '" id="ws_ls_is_target" name="ws_ls_is_target" />
 		<input type="hidden" value="true" id="ws_ls_is_weight_form" name="ws_ls_is_weight_form" />
-		<input type="hidden" value="' . $user_id . '" id="ws_ls_user_id" name="ws_ls_user_id" />
+		<input type="hidden" value="' . esc_attr($user_id) . '" id="ws_ls_user_id" name="ws_ls_user_id" />
 		<input type="hidden" value="' . wp_hash($user_id) . '" id="ws_ls_security" name="ws_ls_security" />';
+
+		// Do we have data? If so, embed existing row ID
+		if(!empty($existing_data['db_row_id']) && is_numeric($existing_data['db_row_id'])) {
+			$html_output .= '<input type="hidden" value="' . esc_attr($existing_data['db_row_id']) . '" id="db_row_id" name="db_row_id" />';
+		}
 
 	    // Redirect form afterwards?
         if($redirect_url) {
-            $html_output .= '<input type="hidden" value="' . esc_html($redirect_url) . '" id="ws_redirect" name="ws_redirect" />';
+            $html_output .= '<input type="hidden" value="' . esc_url($redirect_url) . '" id="ws_redirect" name="ws_redirect" />';
         }
 
 		if($form_number){
@@ -301,8 +306,10 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 
 				$default_date = date("d/m/Y");
 
-				// Overide if US
-				if (ws_ls_get_config('WE_LS_US_DATE')) {
+				// Do we have an existing value?
+				if($existing_date = ws_ls_get_existing_value($existing_data, 'date-display')) {
+					$default_date = $existing_date;
+				} else if (ws_ls_get_config('WE_LS_US_DATE')) { // Overide if US
 					$default_date = date("m/d/Y");
 				}
 
@@ -325,15 +332,15 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 			if(ws_ls_get_config('WE_LS_IMPERIAL_WEIGHTS'))
 			{
 				if (ws_ls_get_config('WE_LS_DATA_UNITS') == 'stones_pounds') {
-					$html_output .= '<input  type="number"  tabindex="' . ws_ls_get_next_tab_index() . '" step="any" min="0" name="we-ls-weight-stones" id="we-ls-weight-stones" value="" placeholder="' . __('Stones', WE_LS_SLUG) . '" size="11" >';
-					$html_output .= '<input  type="number" tabindex="' . ws_ls_get_next_tab_index() . '" step="any" min="0" max="14" name="we-ls-weight-pounds" id="we-ls-weight-pounds" value="" placeholder="' . __('Pounds', WE_LS_SLUG) . '" size="11"  >';
+					$html_output .= '<input  type="number"  tabindex="' . ws_ls_get_next_tab_index() . '" step="any" min="0" name="we-ls-weight-stones" id="we-ls-weight-stones" value="' . ws_ls_get_existing_value($existing_data, 'stones') . '" placeholder="' . __('Stones', WE_LS_SLUG) . '" size="11" >';
+					$html_output .= '<input  type="number" tabindex="' . ws_ls_get_next_tab_index() . '" step="any" min="0" max="14" name="we-ls-weight-pounds" id="we-ls-weight-pounds" value="' . ws_ls_get_existing_value($existing_data, 'pounds') . '" placeholder="' . __('Pounds', WE_LS_SLUG) . '" size="11"  >';
 				}
 				else {
-					$html_output .= '<input  type="number" tabindex="' . ws_ls_get_next_tab_index() . '" step="any" min="1" name="we-ls-weight-pounds" id="we-ls-weight-pounds" value="" placeholder="' . __('Pounds', WE_LS_SLUG) . '" size="11"  >';
+					$html_output .= '<input  type="number" tabindex="' . ws_ls_get_next_tab_index() . '" step="any" min="1" name="we-ls-weight-pounds" id="we-ls-weight-pounds" value="' . ws_ls_get_existing_value($existing_data, 'only_pounds') . '" placeholder="' . __('Pounds', WE_LS_SLUG) . '" size="11"  >';
 				}
 			}
 			else {
-				$html_output .= '<input  type="number" tabindex="' . ws_ls_get_next_tab_index() . '" step="any" min="1" name="we-ls-weight-kg" id="we-ls-weight-kg" value="" placeholder="' . __('Weight', WE_LS_SLUG) . ' (' . __('Kg', WE_LS_SLUG) . ')" size="22" >';
+				$html_output .= '<input  type="number" tabindex="' . ws_ls_get_next_tab_index() . '" step="any" min="1" name="we-ls-weight-kg" id="we-ls-weight-kg" value="' . ws_ls_get_existing_value($existing_data, 'kg') . '" placeholder="' . __('Weight', WE_LS_SLUG) . ' (' . __('Kg', WE_LS_SLUG) . ')" size="22" >';
 			}
 
 		$html_output .= '</div>';
@@ -341,14 +348,14 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 		// Display notes section if not target form
 		if (!$target_form) {
 			$html_output .= '<div id="comment-textarea">
-												<textarea name="we-ls-notes" tabindex="' . ws_ls_get_next_tab_index() . '" id="we-ls-notes" cols="39" rows="4" tabindex="4" class="textarea-comment" placeholder="' . __('Notes', WE_LS_SLUG) . '"></textarea>
+												<textarea name="we-ls-notes" tabindex="' . ws_ls_get_next_tab_index() . '" id="we-ls-notes" cols="39" rows="4" tabindex="4" class="textarea-comment" placeholder="' . __('Notes', WE_LS_SLUG) . '">' . esc_textarea(ws_ls_get_existing_value($existing_data, 'notes', false)) . '</textarea>
 											</div>';
 		}
 
 	    // Include
 	    if(!$target_form && $measurements_form_enabled) {
 	        $html_output .= sprintf('<br /><h3 class="ws_ls_title">%s</h3>', __('Add measurements', WE_LS_SLUG));
-	        $html_output .= ws_ls_load_measurement_form();
+	        $html_output .= ws_ls_load_measurement_form($existing_data);
 	    }
 
 		$button_text = ($target_form) ?  __('Set Target', WE_LS_SLUG) :  __('Save Entry', WE_LS_SLUG);
@@ -372,6 +379,17 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 	return $html_output;
 
 }
+
+function ws_ls_get_existing_value($data, $key, $esc_attr = true) {
+
+	if(false === empty($data[$key])) {
+		return ($esc_attr) ? esc_attr($data[$key]) : $data[$key];
+	}
+
+	return '';
+}
+
+
 function ws_ls_convert_date_to_iso($date)
 {
 	if (ws_ls_get_config('WE_LS_US_DATE')) {
@@ -450,7 +468,10 @@ function ws_ls_capture_form_validate_and_save($user_id = false)
 			break;
 	}
 
-	$result = ws_ls_save_data($user_id, $weight_object, $is_target_form);
+	// Do we have a row ID embedded in the form (i.e. are we in admin and editing an entry)?
+	$existing_db_id = (false === empty($_POST['db_row_id'])) ? intval($_POST['db_row_id']) : false;
+
+	$result = ws_ls_save_data($user_id, $weight_object, $is_target_form, $existing_db_id);
 
     ws_ls_delete_cache_for_given_user($user_id);
 
@@ -509,7 +530,8 @@ function ws_ls_get_js_config()
 		'measurements-enabled' => (WE_LS_MEASUREMENTS_ENABLED) ? 'true' : 'false',
 		'measurements-unit' => ws_ls_get_config('WE_LS_MEASUREMENTS_UNIT'),
 		'validation-we-ls-measurements' => __('Please enter a valid measurement (' . WE_LS_MEASUREMENTS_UNIT . ') which is less that 1000.', WE_LS_SLUG),
-		'date-picker-locale' => ws_ls_get_js_datapicker_locale()
+		'date-picker-locale' => ws_ls_get_js_datapicker_locale(),
+		'in-admin' => (is_admin()) ? 'true' : 'false'
 	);
 }
 

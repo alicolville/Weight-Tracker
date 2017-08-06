@@ -25,3 +25,70 @@
 {
 	padding: 1px 1px 1px 3px !important;
 }
+.ws-ls-loading-table
+{
+    width: 100%;
+    height: 60px;
+    background-image: url(images/ajax-loader-large.gif);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+.ws-tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.ws-tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+
+    position: absolute;
+    z-index: 1;
+}
+
+.ws-tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+/* Hide column toggle for Footables */
+.form-group.footable-filtering-search .input-group-btn .dropdown-toggle {
+    display: none;
+}
+
+.ws-ls-notice-of-refresh {
+	display: none;
+}
+
+.ws_ls_display_form {
+	width: 100%;
+}
+.ws_ls_display_form label, .ws_ls_display_form input {
+	display: block;
+}
+.widefat th {
+    font-weight: bold;
+}
+.ws-ls-loss, .ws-ls-good, .ws-ls-healthy {
+    color: #008000;
+}
+.ws-ls-gain, .ws-ls-bad, .ws-ls-overweight {
+    color: #ffA500;
+}
+.ws-ls-heavilyoverweight {
+    color: #ff0000;
+}
+.ws-ls-user-preview {
+	width: 100%;
+	clear: both;
+}
+.ws-ls-user-preview img {
+	/*width: 48%;
+	float: left;*/
+	max-height: 100%;
+    max-width: 100%;
+}

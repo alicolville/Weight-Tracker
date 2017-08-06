@@ -167,7 +167,7 @@
 
 function ws_ls_start_tab($tab_name)	{
 	if (WE_LS_USE_TABS) {
-		return '<div' . (($tab_name) ? ' class="' . $tab_name . '"' : '') . '">';
+		return '<div' . (($tab_name) ? ' class="' . $tab_name . '"' : '') . '>';
 	}
 	return '';
 }
