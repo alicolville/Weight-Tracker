@@ -1,15 +1,24 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
+<<<<<<< HEAD
 "POT-Creation-Date: 2017-08-05 13:13+0100\n"
 "PO-Revision-Date: 2017-08-06 16:01+0100\n"
+=======
+"POT-Creation-Date: 2017-06-28 09:31+0100\n"
+"PO-Revision-Date: 2017-06-28 09:34+0100\n"
+>>>>>>> e4ff77f3b22b5f34121475a1d0521e620fa70c0d
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_GB\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+<<<<<<< HEAD
 "X-Generator: Poedit 2.0.1\n"
+=======
+"X-Generator: Poedit 1.8.11\n"
+>>>>>>> e4ff77f3b22b5f34121475a1d0521e620fa70c0d
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-KeywordsList: __;_e\n"
@@ -21,6 +30,7 @@ msgid "Weight Loss Tracker"
 msgstr ""
 
 #: includes/converters.php:67 includes/converters.php:79 includes/core.php:76
+<<<<<<< HEAD
 #: includes/functions.php:66 includes/functions.php:74
 #: includes/functions.php:83 includes/functions.php:89
 #: includes/functions.php:282 includes/functions.php:288
@@ -44,10 +54,37 @@ msgid "St"
 msgstr ""
 
 #: includes/core.php:13 pro-features/advanced-table.php:96
+=======
+#: includes/functions.php:65 includes/functions.php:73
+#: includes/functions.php:82 includes/functions.php:88
+#: includes/functions.php:278 includes/functions.php:284
+#: includes/functions.php:505 includes/shortcode-various.php:186
+#: includes/shortcode-various.php:194 pro-features/shortcode-stats.php:146
+msgid "lbs"
+msgstr ""
+
+#: includes/converters.php:70 includes/core.php:76 includes/core.php:336
+#: includes/functions.php:69 includes/functions.php:85
+#: includes/functions.php:281 includes/shortcode-various.php:199
+#: pages/page.settings.php:90 pro-features/shortcode-stats.php:153
+#: pro-features/user-preferences.php:32
+msgid "Kg"
+msgstr ""
+
+#: includes/converters.php:79 includes/functions.php:73
+#: includes/functions.php:88 includes/functions.php:284
+#: includes/functions.php:493
+msgid "St"
+msgstr ""
+
+#: includes/core.php:13 pro-features/advanced-table.php:97
+#: pro-features/user-data.php:71 pro-features/user-data.php:93
+>>>>>>> e4ff77f3b22b5f34121475a1d0521e620fa70c0d
 msgid "Date"
 msgstr ""
 
 #: includes/core.php:14 includes/core.php:83 includes/core.php:205
+<<<<<<< HEAD
 #: includes/core.php:343 pro-features/advanced-table.php:97
 msgid "Weight"
 msgstr ""
@@ -55,6 +92,16 @@ msgstr ""
 #: includes/core.php:15 includes/core.php:351
 #: pro-features/advanced-table.php:113 pro-features/emails.php:47
 #: pro-features/export.php:198
+=======
+#: includes/core.php:336 pro-features/advanced-table.php:98
+#: pro-features/user-data.php:72 pro-features/user-data.php:94
+msgid "Weight"
+msgstr ""
+
+#: includes/core.php:15 includes/core.php:344
+#: pro-features/advanced-table.php:114 pro-features/emails.php:47
+#: pro-features/user-data.php:73 pro-features/user-data.php:95
+>>>>>>> e4ff77f3b22b5f34121475a1d0521e620fa70c0d
 msgid "Notes"
 msgstr ""
 
@@ -68,6 +115,7 @@ msgstr ""
 msgid "Login now"
 msgstr ""
 
+<<<<<<< HEAD
 #: includes/core.php:77 pages/page.settings.php:376
 #: pro-features/footable.php:20 pro-features/functions.php:6
 #: pro-features/user-preferences.php:42
@@ -75,6 +123,14 @@ msgid "Inches"
 msgstr ""
 
 #: includes/core.php:77 pro-features/footable.php:20
+=======
+#: includes/core.php:77 pages/page.settings.php:392
+#: pro-features/user-data.php:36 pro-features/user-preferences.php:42
+msgid "Inches"
+msgstr ""
+
+#: includes/core.php:77
+>>>>>>> e4ff77f3b22b5f34121475a1d0521e620fa70c0d
 msgid "CM"
 msgstr ""
 
@@ -90,7 +146,11 @@ msgstr ""
 msgid "You have modified data. Please refresh page."
 msgstr ""
 
+<<<<<<< HEAD
 #: includes/core.php:265 pro-features/admin-pages/data-search-results.php:43
+=======
+#: includes/core.php:265
+>>>>>>> e4ff77f3b22b5f34121475a1d0521e620fa70c0d
 msgid "Target Weight"
 msgstr ""
 
@@ -98,6 +158,7 @@ msgstr ""
 msgid "Add a new weight"
 msgstr ""
 
+<<<<<<< HEAD
 #: includes/core.php:327
 msgid "Your target weight is"
 msgstr ""
@@ -107,10 +168,22 @@ msgid "Stones"
 msgstr ""
 
 #: includes/core.php:336 includes/core.php:339 pages/page.settings.php:86
+=======
+#: includes/core.php:320
+msgid "Your target weight is"
+msgstr ""
+
+#: includes/core.php:328
+msgid "Stones"
+msgstr ""
+
+#: includes/core.php:329 includes/core.php:332 pages/page.settings.php:92
+>>>>>>> e4ff77f3b22b5f34121475a1d0521e620fa70c0d
 #: pro-features/user-preferences.php:34
 msgid "Pounds"
 msgstr ""
 
+<<<<<<< HEAD
 #: includes/core.php:357
 msgid "Add measurements"
 msgstr ""
@@ -184,13 +257,89 @@ msgid "View Week"
 msgstr ""
 
 #: includes/functions.php:361
+=======
+#: includes/core.php:350
+msgid "Add measurements"
+msgstr ""
+
+#: includes/core.php:354
+msgid "Set Target"
+msgstr ""
+
+#: includes/core.php:354
+msgid "Save Entry"
+msgstr ""
+
+#: includes/core.php:363
+msgid "Clear Target"
+msgstr ""
+
+#: includes/core.php:488
+msgid "Please enter a between 0-14 for pounds"
+msgstr ""
+
+#: includes/core.php:488
+msgid "Please enter a valid figure for pounds"
+msgstr ""
+
+#: includes/core.php:495
+msgid "Are you sure you wish to clear your target weight?"
+msgstr ""
+
+#: includes/core.php:497
+msgid "Please enter a valid figure for Kg"
+msgstr ""
+
+#: includes/core.php:498
+msgid "Please enter a valid figure for Stones"
+msgstr ""
+
+#: includes/core.php:499
+msgid "Please enter a valid date"
+msgstr ""
+
+#: includes/core.php:500
+msgid "Please confirm you wish to delete ALL your weight history"
+msgstr ""
+
+#: includes/core.php:501
+msgid "Are you sure you wish to delete this entry? If so, press OK."
+msgstr ""
+
+#: includes/core.php:511
+msgid "Please enter a valid measurement ("
+msgstr ""
+
+#: includes/core.php:525
+msgid "Done"
+msgstr ""
+
+#: includes/core.php:526
+msgid "Today"
+msgstr ""
+
+#: includes/functions.php:195
+msgid "The following MySQL tables are missing for this plugin"
+msgstr ""
+
+#: includes/functions.php:343
+msgid "View all weeks"
+msgstr ""
+
+#: includes/functions.php:357
+msgid "View Week"
+msgstr ""
+
+#: includes/functions.php:357
+>>>>>>> e4ff77f3b22b5f34121475a1d0521e620fa70c0d
 msgid "to"
 msgstr ""
 
-#: includes/functions.php:474
+#: includes/functions.php:469
 msgid "The plugin supports the following measurements"
 msgstr ""
 
+<<<<<<< HEAD
 #: includes/globals.php:106
 msgid "Forearm - Left"
 msgstr ""
@@ -200,10 +349,18 @@ msgid "FL"
 msgstr ""
 
 #: includes/globals.php:107
+=======
+#: includes/globals.php:105
+msgid "Forearm - Left"
+msgstr ""
+
+#: includes/globals.php:106
+>>>>>>> e4ff77f3b22b5f34121475a1d0521e620fa70c0d
 msgid "Forearm - Right"
 msgstr ""
 
 #: includes/globals.php:107
+<<<<<<< HEAD
 msgid "FR"
 msgstr ""
 
@@ -216,98 +373,138 @@ msgid "BL"
 msgstr ""
 
 #: includes/globals.php:109
+=======
+msgid "Bicep - Left"
+msgstr ""
+
+#: includes/globals.php:108
+>>>>>>> e4ff77f3b22b5f34121475a1d0521e620fa70c0d
 msgid "Bicep - Right"
 msgstr ""
 
 #: includes/globals.php:109
+<<<<<<< HEAD
 msgid "BR"
 msgstr ""
 
 #: includes/globals.php:110
+=======
+>>>>>>> e4ff77f3b22b5f34121475a1d0521e620fa70c0d
 msgid "Calf - Left"
 msgstr ""
 
 #: includes/globals.php:110
+<<<<<<< HEAD
 msgid "CL"
 msgstr ""
 
 #: includes/globals.php:111
+=======
+>>>>>>> e4ff77f3b22b5f34121475a1d0521e620fa70c0d
 msgid "Calf - Right"
 msgstr ""
 
 #: includes/globals.php:111
+<<<<<<< HEAD
 msgid "CR"
 msgstr ""
 
 #: includes/globals.php:112
+=======
+>>>>>>> e4ff77f3b22b5f34121475a1d0521e620fa70c0d
 msgid "Thigh - Left"
 msgstr ""
 
 #: includes/globals.php:112
+<<<<<<< HEAD
 msgid "TL"
 msgstr ""
 
 #: includes/globals.php:113
+=======
+>>>>>>> e4ff77f3b22b5f34121475a1d0521e620fa70c0d
 msgid "Thigh - Right"
 msgstr ""
 
 #: includes/globals.php:113
+<<<<<<< HEAD
 msgid "TR"
 msgstr ""
 
 #: includes/globals.php:114
+=======
+>>>>>>> e4ff77f3b22b5f34121475a1d0521e620fa70c0d
 msgid "Waist"
 msgstr ""
 
 #: includes/globals.php:114
+<<<<<<< HEAD
 msgid "W"
 msgstr ""
 
 #: includes/globals.php:115
+=======
+>>>>>>> e4ff77f3b22b5f34121475a1d0521e620fa70c0d
 msgid "Bust / Chest"
 msgstr ""
 
 #: includes/globals.php:115
+<<<<<<< HEAD
 msgid "BC"
 msgstr ""
 
 #: includes/globals.php:116
+=======
+>>>>>>> e4ff77f3b22b5f34121475a1d0521e620fa70c0d
 msgid "Shoulders"
 msgstr ""
 
 #: includes/globals.php:116
+<<<<<<< HEAD
 msgid "S"
 msgstr ""
 
 #: includes/globals.php:117
+=======
+>>>>>>> e4ff77f3b22b5f34121475a1d0521e620fa70c0d
 msgid "Height"
 msgstr ""
 
 #: includes/globals.php:117
+<<<<<<< HEAD
 msgid "H"
 msgstr ""
 
 #: includes/globals.php:118
+=======
+>>>>>>> e4ff77f3b22b5f34121475a1d0521e620fa70c0d
 msgid "Buttocks"
 msgstr ""
 
 #: includes/globals.php:118
+<<<<<<< HEAD
 msgid "B"
 msgstr ""
 
 #: includes/globals.php:119
+=======
+>>>>>>> e4ff77f3b22b5f34121475a1d0521e620fa70c0d
 msgid "Hips"
 msgstr ""
 
 #: includes/globals.php:119
+<<<<<<< HEAD
 msgid "HI"
 msgstr ""
 
 #: includes/globals.php:120
+=======
+>>>>>>> e4ff77f3b22b5f34121475a1d0521e620fa70c0d
 msgid "Navel"
 msgstr ""
 
 #: includes/globals.php:120
+<<<<<<< HEAD
 msgid "NA"
 msgstr ""
 
@@ -318,6 +515,10 @@ msgstr ""
 #: includes/globals.php:121
 msgid "NE"
 msgstr ""
+=======
+msgid "Neck"
+msgstr ""
+>>>>>>> e4ff77f3b22b5f34121475a1d0521e620fa70c0d
 
 #: includes/hooks.php:8 includes/shortcode-weight-loss-tracker.php:71
 #: pro-features/user-preferences.php:6
@@ -356,7 +557,11 @@ msgstr ""
 msgid "No target weight has been set"
 msgstr ""
 
+<<<<<<< HEAD
 #: includes/shortcode-various.php:215
+=======
+#: includes/shortcode-various.php:194
+>>>>>>> e4ff77f3b22b5f34121475a1d0521e620fa70c0d
 msgid "st"
 msgstr ""
 
@@ -427,6 +632,10 @@ msgid ""
 msgstr ""
 
 #: pages/page.pro.advertise.php:10 pages/page.settings.php:8
+<<<<<<< HEAD
+=======
+#: pro-features/user-data.php:7
+>>>>>>> e4ff77f3b22b5f34121475a1d0521e620fa70c0d
 msgid "You do not have sufficient permissions to access this page."
 msgstr ""
 
@@ -490,6 +699,7 @@ msgstr ""
 msgid "Below is a list of the intended features of the Pro version:"
 msgstr ""
 
+<<<<<<< HEAD
 #: pages/page.settings.php:35
 msgid "Rebuild them now"
 msgstr ""
@@ -503,6 +713,21 @@ msgid "General"
 msgstr ""
 
 #: pages/page.settings.php:71
+=======
+#: pages/page.settings.php:41
+msgid "Rebuild them now"
+msgstr ""
+
+#: pages/page.settings.php:63
+msgid " Settings"
+msgstr ""
+
+#: pages/page.settings.php:77
+msgid "General"
+msgstr ""
+
+#: pages/page.settings.php:77
+>>>>>>> e4ff77f3b22b5f34121475a1d0521e620fa70c0d
 msgid "General settings"
 msgstr ""
 
@@ -514,11 +739,19 @@ msgstr ""
 msgid "Settings that effect the user's overall experience"
 msgstr ""
 
+<<<<<<< HEAD
 #: pages/page.settings.php:73 pro-features/admin-pages/data-user.php:28
 msgid "Chart"
 msgstr ""
 
 #: pages/page.settings.php:73
+=======
+#: pages/page.settings.php:79
+msgid "Chart"
+msgstr ""
+
+#: pages/page.settings.php:79
+>>>>>>> e4ff77f3b22b5f34121475a1d0521e620fa70c0d
 msgid "Chart styling and config"
 msgstr ""
 
@@ -530,7 +763,11 @@ msgstr ""
 msgid "Configure email notifications"
 msgstr ""
 
+<<<<<<< HEAD
 #: pages/page.settings.php:75
+=======
+#: pages/page.settings.php:81
+>>>>>>> e4ff77f3b22b5f34121475a1d0521e620fa70c0d
 msgid "Measurements"
 msgstr ""
 
@@ -538,6 +775,7 @@ msgstr ""
 msgid "Allow users to record their measurements"
 msgstr ""
 
+<<<<<<< HEAD
 #: pages/page.settings.php:81
 msgid "Weight Units"
 msgstr ""
@@ -547,6 +785,17 @@ msgid "Stones & Pounds"
 msgstr ""
 
 #: pages/page.settings.php:88
+=======
+#: pages/page.settings.php:87
+msgid "Weight Units"
+msgstr ""
+
+#: pages/page.settings.php:91 pro-features/user-preferences.php:33
+msgid "Stones & Pounds"
+msgstr ""
+
+#: pages/page.settings.php:94
+>>>>>>> e4ff77f3b22b5f34121475a1d0521e620fa70c0d
 msgid ""
 "You can specify whether to display weights in Kg, Stones & Pounds or just "
 "Pounds. Please note: The graph will be displayed in Pounds if \"Stones & "
@@ -569,6 +818,7 @@ msgstr ""
 msgid "Specify what format dates should be displayed in (i.e. UK or US format)"
 msgstr ""
 
+<<<<<<< HEAD
 #: pages/page.settings.php:103
 msgid "Disable plugin CSS?"
 msgstr ""
@@ -600,16 +850,72 @@ msgid "Yes"
 msgstr ""
 
 #: pages/page.settings.php:109
+=======
+#: pages/page.settings.php:109
+msgid "Disable plugin CSS?"
+msgstr ""
+
+#: pages/page.settings.php:112 pages/page.settings.php:122
+#: pages/page.settings.php:132 pages/page.settings.php:142
+#: pages/page.settings.php:157 pages/page.settings.php:167
+#: pages/page.settings.php:178 pages/page.settings.php:188
+#: pages/page.settings.php:198 pages/page.settings.php:224
+#: pages/page.settings.php:256 pages/page.settings.php:274
+#: pages/page.settings.php:292 pages/page.settings.php:331
+#: pages/page.settings.php:348 pages/page.settings.php:358
+#: pages/page.settings.php:368 pages/page.settings.php:381
+#: pages/page.settings.php:401 pro-features/widget-form.php:87
+msgid "No"
+msgstr ""
+
+#: pages/page.settings.php:113 pages/page.settings.php:123
+#: pages/page.settings.php:133 pages/page.settings.php:143
+#: pages/page.settings.php:156 pages/page.settings.php:166
+#: pages/page.settings.php:177 pages/page.settings.php:187
+#: pages/page.settings.php:197 pages/page.settings.php:223
+#: pages/page.settings.php:257 pages/page.settings.php:273
+#: pages/page.settings.php:291 pages/page.settings.php:332
+#: pages/page.settings.php:347 pages/page.settings.php:357
+#: pages/page.settings.php:367 pages/page.settings.php:382
+#: pages/page.settings.php:402 pro-features/widget-form.php:88
+msgid "Yes"
+msgstr ""
+
+#: pages/page.settings.php:115
+>>>>>>> e4ff77f3b22b5f34121475a1d0521e620fa70c0d
 msgid ""
 "If you wish to style the forms in your own way, you can use this option to "
 "disable WLT's style sheets."
 msgstr ""
 
+<<<<<<< HEAD
 #: pages/page.settings.php:113
 msgid "Send usage data to YeKen?"
 msgstr ""
 
 #: pages/page.settings.php:119
+=======
+#: pages/page.settings.php:119
+msgid "Disable user stats?"
+msgstr ""
+
+#: pages/page.settings.php:125
+msgid ""
+"User stats are maintained to help power shortcodes such as [weight-loss-"
+"tracker-league-table]. This involves a cron job being run every hour to "
+"refresh a user's stats such as first weight, recent weight and total lost. "
+"The figures are also re-produced on each weight entry modification and can "
+"then be used to generate a league table. This feature could <em>potentially</"
+"em> reduce performance on your site. If you are not using the leaderboard "
+"shortcodes it is advised to disable this."
+msgstr ""
+
+#: pages/page.settings.php:129
+msgid "Send usage data to YeKen?"
+msgstr ""
+
+#: pages/page.settings.php:135
+>>>>>>> e4ff77f3b22b5f34121475a1d0521e620fa70c0d
 msgid ""
 "We would love to see how our plugin is used. By consenting, you are allowing "
 "permission for the following data to be sent on a weekly basis to YeKen: "
@@ -617,67 +923,116 @@ msgid ""
 "user or admin data will ever be transmitted."
 msgstr ""
 
+<<<<<<< HEAD
 #: pages/page.settings.php:123
 msgid "Disable notifications from YeKen?"
 msgstr ""
 
 #: pages/page.settings.php:129
+=======
+#: pages/page.settings.php:139
+msgid "Disable notifications from YeKen?"
+msgstr ""
+
+#: pages/page.settings.php:145
+>>>>>>> e4ff77f3b22b5f34121475a1d0521e620fa70c0d
 msgid ""
 "Occasionally YeKen likes to display simple notifications within your "
 "WordPress dashboard. Use this setting if you wish to disable them."
 msgstr ""
 
+<<<<<<< HEAD
 #: pages/page.settings.php:137
 msgid "Allow target weights?"
 msgstr ""
 
 #: pages/page.settings.php:143
+=======
+#: pages/page.settings.php:153
+msgid "Allow target weights?"
+msgstr ""
+
+#: pages/page.settings.php:159
+>>>>>>> e4ff77f3b22b5f34121475a1d0521e620fa70c0d
 msgid ""
 "If enabled, a user is allowed to enter a target weight. This will be "
 "displayed as a horizontal bar on the line chart."
 msgstr ""
 
+<<<<<<< HEAD
 #: pages/page.settings.php:147
 msgid "Display BMI in tables?"
 msgstr ""
 
 #: pages/page.settings.php:154
+=======
+#: pages/page.settings.php:163
+msgid "Display BMI in tables?"
+msgstr ""
+
+#: pages/page.settings.php:170
+>>>>>>> e4ff77f3b22b5f34121475a1d0521e620fa70c0d
 msgid ""
 "If enabled, BMI values will be displayed alongside weight entries in data "
 "tables."
 msgstr ""
 
+<<<<<<< HEAD
 #: pages/page.settings.php:158
 msgid "Allow user settings"
 msgstr ""
 
 #: pages/page.settings.php:164
+=======
+#: pages/page.settings.php:174
+msgid "Allow user settings"
+msgstr ""
+
+#: pages/page.settings.php:180
+>>>>>>> e4ff77f3b22b5f34121475a1d0521e620fa70c0d
 msgid ""
 "Allow your users to select their own weight unit, date format and remove all "
 "their data."
 msgstr ""
 
+<<<<<<< HEAD
 #: pages/page.settings.php:168
 msgid "Advanced data tables?"
 msgstr ""
 
 #: pages/page.settings.php:174
+=======
+#: pages/page.settings.php:184
+msgid "Advanced data tables?"
+msgstr ""
+
+#: pages/page.settings.php:190
+>>>>>>> e4ff77f3b22b5f34121475a1d0521e620fa70c0d
 msgid ""
 "User's weight history is presented in responsive tables that allow sorting, "
 "paging, editing and deleting. Weight Index (i.e. percentage lost / gained to "
 "be displayed.)"
 msgstr ""
 
+<<<<<<< HEAD
 #: pages/page.settings.php:178
 msgid "Display data in tabs?"
 msgstr ""
 
 #: pages/page.settings.php:184
+=======
+#: pages/page.settings.php:194
+msgid "Display data in tabs?"
+msgstr ""
+
+#: pages/page.settings.php:200
+>>>>>>> e4ff77f3b22b5f34121475a1d0521e620fa70c0d
 msgid ""
 "If enabled, \"Weight History\" and \"Target Weight\" will be displayed on "
 "sepearate tabs when using the [weight-loss-tracker] shortcode."
 msgstr ""
 
+<<<<<<< HEAD
 #: pages/page.settings.php:192
 msgid "Default chart type"
 msgstr ""
@@ -695,12 +1050,32 @@ msgid "Bar Chart"
 msgstr ""
 
 #: pages/page.settings.php:199
+=======
+#: pages/page.settings.php:208
+msgid "Default chart type"
+msgstr ""
+
+#: pages/page.settings.php:211
+msgid "Line Chart"
+msgstr ""
+
+#: pages/page.settings.php:211
+msgid "Highly Recommended"
+msgstr ""
+
+#: pages/page.settings.php:212
+msgid "Bar Chart"
+msgstr ""
+
+#: pages/page.settings.php:215
+>>>>>>> e4ff77f3b22b5f34121475a1d0521e620fa70c0d
 msgid ""
 "If enabled, \"Allows points and labels to be displayed on graph. "
 "<strong>Note: If using measurements</strong>, graph type will be forced to "
 "Line."
 msgstr ""
 
+<<<<<<< HEAD
 #: pages/page.settings.php:204
 msgid "Display gridlines?"
 msgstr ""
@@ -722,21 +1097,53 @@ msgid "Weight colour?"
 msgstr ""
 
 #: pages/page.settings.php:233
+=======
+#: pages/page.settings.php:220
+msgid "Display gridlines?"
+msgstr ""
+
+#: pages/page.settings.php:227
+msgid "If enabled, gridlines will be displayed on the Graph canvas."
+msgstr ""
+
+#: pages/page.settings.php:232
+msgid "Maximum points per graph"
+msgstr ""
+
+#: pages/page.settings.php:241 pages/page.settings.php:295
+msgid "If enabled, \"Allows points and labels to be displayed on graph."
+msgstr ""
+
+#: pages/page.settings.php:246
+msgid "Weight colour?"
+msgstr ""
+
+#: pages/page.settings.php:249
+>>>>>>> e4ff77f3b22b5f34121475a1d0521e620fa70c0d
 msgid ""
 "If enabled, enter a HEX colour code to use for the Weight history line / bar "
 "border on graph."
 msgstr ""
 
+<<<<<<< HEAD
 #: pages/page.settings.php:237
 msgid "Should y Axes start at 0?"
 msgstr ""
 
 #: pages/page.settings.php:244
+=======
+#: pages/page.settings.php:253
+msgid "Should y Axes start at 0?"
+msgstr ""
+
+#: pages/page.settings.php:260
+>>>>>>> e4ff77f3b22b5f34121475a1d0521e620fa70c0d
 msgid ""
 "If enabled, y Axes shall start at 0. Otherwise, they are automatically "
 "calculated."
 msgstr ""
 
+<<<<<<< HEAD
 #: pages/page.settings.php:250
 msgid "Line Chart Options"
 msgstr ""
@@ -754,10 +1161,30 @@ msgid "Target line colour?"
 msgstr ""
 
 #: pages/page.settings.php:268
+=======
+#: pages/page.settings.php:266
+msgid "Line Chart Options"
+msgstr ""
+
+#: pages/page.settings.php:270
+msgid "Bezier Curve?"
+msgstr ""
+
+#: pages/page.settings.php:277
+msgid "If enabled, lines between points on a line graph will be curved"
+msgstr ""
+
+#: pages/page.settings.php:281
+msgid "Target line colour?"
+msgstr ""
+
+#: pages/page.settings.php:284
+>>>>>>> e4ff77f3b22b5f34121475a1d0521e620fa70c0d
 msgid ""
 "If enabled, enter a HEX colour code to use for the Target line on graph."
 msgstr ""
 
+<<<<<<< HEAD
 #: pages/page.settings.php:272
 msgid "Display points on graph?"
 msgstr ""
@@ -779,11 +1206,35 @@ msgid "Weight fill colour?"
 msgstr ""
 
 #: pages/page.settings.php:304
+=======
+#: pages/page.settings.php:288
+msgid "Display points on graph?"
+msgstr ""
+
+#: pages/page.settings.php:299
+msgid "Point thickness"
+msgstr ""
+
+#: pages/page.settings.php:308
+msgid "Specifies the point thickness on a line chart."
+msgstr ""
+
+#: pages/page.settings.php:313
+msgid "Bar Chart Options"
+msgstr ""
+
+#: pages/page.settings.php:317
+msgid "Weight fill colour?"
+msgstr ""
+
+#: pages/page.settings.php:320
+>>>>>>> e4ff77f3b22b5f34121475a1d0521e620fa70c0d
 msgid ""
 "If enabled, enter a HEX colour code to use for filling the Weight bars on "
 "the graph."
 msgstr ""
 
+<<<<<<< HEAD
 #: pages/page.settings.php:312
 msgid "Enable email notifications"
 msgstr ""
@@ -793,30 +1244,58 @@ msgid "Email addresses to notify"
 msgstr ""
 
 #: pages/page.settings.php:324
+=======
+#: pages/page.settings.php:328
+msgid "Enable email notifications"
+msgstr ""
+
+#: pages/page.settings.php:337
+msgid "Email addresses to notify"
+msgstr ""
+
+#: pages/page.settings.php:340
+>>>>>>> e4ff77f3b22b5f34121475a1d0521e620fa70c0d
 msgid ""
 "Specify one or more email addresses to be notified. Seperate multiple emails "
 "with a comma."
 msgstr ""
 
+<<<<<<< HEAD
 #: pages/page.settings.php:328
 msgid "New weight / measurement entries"
 msgstr ""
 
 #: pages/page.settings.php:334
+=======
+#: pages/page.settings.php:344
+msgid "New weight / measurement entries"
+msgstr ""
+
+#: pages/page.settings.php:350
+>>>>>>> e4ff77f3b22b5f34121475a1d0521e620fa70c0d
 msgid ""
 "Receive notifications when a member adds a new weight / measurement entry."
 msgstr ""
 
+<<<<<<< HEAD
 #: pages/page.settings.php:338
 msgid "Edited weight / measurement entries"
 msgstr ""
 
 #: pages/page.settings.php:344
+=======
+#: pages/page.settings.php:354
+msgid "Edited weight / measurement entries"
+msgstr ""
+
+#: pages/page.settings.php:360
+>>>>>>> e4ff77f3b22b5f34121475a1d0521e620fa70c0d
 msgid ""
 "Receive notifications when a member edits an existing weight / measurement "
 "entry."
 msgstr ""
 
+<<<<<<< HEAD
 #: pages/page.settings.php:348
 msgid "New / updated targets"
 msgstr ""
@@ -830,10 +1309,26 @@ msgid "Allow Measurements?"
 msgstr ""
 
 #: pages/page.settings.php:368
+=======
+#: pages/page.settings.php:364
+msgid "New / updated targets"
+msgstr ""
+
+#: pages/page.settings.php:370
+msgid "Receive notifications when a member adds / edits their target."
+msgstr ""
+
+#: pages/page.settings.php:378
+msgid "Allow Measurements?"
+msgstr ""
+
+#: pages/page.settings.php:384
+>>>>>>> e4ff77f3b22b5f34121475a1d0521e620fa70c0d
 msgid ""
 "If enabled, a user can also add body measurements along with their weights."
 msgstr ""
 
+<<<<<<< HEAD
 #: pages/page.settings.php:372
 msgid "Measurement Units"
 msgstr ""
@@ -1188,6 +1683,105 @@ msgid ":  activate to sort column ascending"
 msgstr ""
 
 #: pro-features/advanced-table.php:191
+=======
+#: pages/page.settings.php:388
+msgid "Measurement Units"
+msgstr ""
+
+#: pages/page.settings.php:391 pro-features/user-preferences.php:41
+msgid "Centimetres"
+msgstr ""
+
+#: pages/page.settings.php:394
+msgid "Default unit for recording measurements."
+msgstr ""
+
+#: pages/page.settings.php:398
+msgid "Measurements mandatory?"
+msgstr ""
+
+#: pages/page.settings.php:404
+msgid "If yes, a user will be forced to complete all measurement features."
+msgstr ""
+
+#: pages/page.settings.php:408
+msgid "Areas of measurements"
+msgstr ""
+
+#: pages/page.settings.php:430
+msgid "Enable"
+msgstr ""
+
+#: pages/page.settings.php:433
+msgid "Chart Colour"
+msgstr ""
+
+#: pro-features/advanced-table.php:103
+msgid "BMI"
+msgstr ""
+
+#: pro-features/advanced-table.php:115
+msgid "Options"
+msgstr ""
+
+#: pro-features/advanced-table.php:173
+msgid "No data available in table"
+msgstr ""
+
+#: pro-features/advanced-table.php:174
+msgid "Showing _START_ to _END_ of _TOTAL_ entries"
+msgstr ""
+
+#: pro-features/advanced-table.php:175
+msgid "Showing 0 to 0 of 0 entries"
+msgstr ""
+
+#: pro-features/advanced-table.php:176
+msgid "(filtered from _MAX_ total entries)"
+msgstr ""
+
+#: pro-features/advanced-table.php:179
+msgid "Show _MENU_ entries"
+msgstr ""
+
+#: pro-features/advanced-table.php:180
+msgid "Loading..."
+msgstr ""
+
+#: pro-features/advanced-table.php:181
+msgid "Processing..."
+msgstr ""
+
+#: pro-features/advanced-table.php:182
+msgid "Search: "
+msgstr ""
+
+#: pro-features/advanced-table.php:183
+msgid "No matching records found"
+msgstr ""
+
+#: pro-features/advanced-table.php:185
+msgid "First"
+msgstr ""
+
+#: pro-features/advanced-table.php:186
+msgid "Last"
+msgstr ""
+
+#: pro-features/advanced-table.php:187
+msgid "Next"
+msgstr ""
+
+#: pro-features/advanced-table.php:188
+msgid "Previous"
+msgstr ""
+
+#: pro-features/advanced-table.php:191
+msgid ":  activate to sort column ascending"
+msgstr ""
+
+#: pro-features/advanced-table.php:192
+>>>>>>> e4ff77f3b22b5f34121475a1d0521e620fa70c0d
 msgid ": activate to sort column descending"
 msgstr ""
 
@@ -1387,6 +1981,7 @@ msgid ""
 "plugin will be added e.g. number of plot points on graph, rows per page, etc."
 msgstr ""
 
+<<<<<<< HEAD
 #: pro-features/footable.php:71
 msgid "Gain"
 msgstr ""
@@ -1451,6 +2046,27 @@ msgstr ""
 #: pro-features/init.php:128
 msgid "View weight entries"
 msgstr ""
+=======
+#: pro-features/functions.php:14
+msgid "Add Height for BMI"
+msgstr ""
+
+#: pro-features/functions.php:40
+msgid "Underweight"
+msgstr ""
+
+#: pro-features/functions.php:42
+msgid "Healthy"
+msgstr ""
+
+#: pro-features/functions.php:45
+msgid "Overweight"
+msgstr ""
+
+#: pro-features/functions.php:47
+msgid "Heavily Overweight"
+msgstr ""
+>>>>>>> e4ff77f3b22b5f34121475a1d0521e620fa70c0d
 
 #: pro-features/shortcode-chart.php:57 pro-features/shortcode-table.php:25
 msgid "No weight data was found for the specified user."
@@ -1530,6 +2146,55 @@ msgstr ""
 
 #: pro-features/shortcode-various.php:14
 msgid "Height needed"
+<<<<<<< HEAD
+=======
+msgstr ""
+
+#: pro-features/user-data.php:36
+msgid "Cm"
+msgstr ""
+
+#: pro-features/user-data.php:55
+msgid " User Data"
+msgstr ""
+
+#: pro-features/user-data.php:61
+msgid "View / Edit"
+msgstr ""
+
+#: pro-features/user-data.php:61
+msgid "View and edit existing user data"
+msgstr ""
+
+#: pro-features/user-data.php:62
+msgid "Delete All"
+msgstr ""
+
+#: pro-features/user-data.php:62
+msgid "Delete all user data!"
+msgstr ""
+
+#: pro-features/user-data.php:70 pro-features/user-data.php:92
+msgid "User"
+msgstr ""
+
+#: pro-features/user-data.php:106
+msgid ""
+"You can use the following button to remove all user data currently stored by "
+"the plugin. <strong>All weight entries for every user will be lost!</strong>"
+msgstr ""
+
+#: pro-features/user-data.php:107
+msgid "Remove ALL user data"
+msgstr ""
+
+#: pro-features/user-data.php:136
+msgid "Are you sure you?"
+msgstr ""
+
+#: pro-features/user-data.php:137
+msgid "Are you sure you wish to remove all user data?"
+>>>>>>> e4ff77f3b22b5f34121475a1d0521e620fa70c0d
 msgstr ""
 
 #: pro-features/user-preferences.php:16
@@ -1559,6 +2224,10 @@ msgstr ""
 #: pro-features/user-preferences.php:62
 msgid ""
 "The button below allows you to clear your existing weight history. Confirm:"
+msgstr ""
+
+#: pro-features/user-preferences.php:65
+msgid "DELETE ALL DATA"
 msgstr ""
 
 #: pro-features/user-preferences.php:67
@@ -1697,3 +2366,51 @@ msgstr ""
 #: pro-features/widget-progress.php:123
 msgid "Text to be displayed under bar. Use {t} to display target weight."
 msgstr ""
+<<<<<<< HEAD
+=======
+
+#, fuzzy
+#~ msgid "Allow decimal places?"
+#~ msgstr "Tillat desimaler?"
+
+#, fuzzy
+#~ msgid ""
+#~ "If enabled, \"Weight History\" and \"Target Weight\" will be displayed on "
+#~ "sepearate tabs."
+#~ msgstr ""
+#~ "Hvis denne er aktiveret vises \"Vægt Historik\" og \"Målvægt\" på hver "
+#~ "sit faneblad."
+
+#, fuzzy
+#~ msgid "Weight ("
+#~ msgstr "Weight"
+
+#~ msgid " Instructions"
+#~ msgstr " Instructions"
+
+#, fuzzy
+#~ msgid ""
+#~ "Place the tag [weight-loss-tracker] on a given page and the user is "
+#~ "presented with a form to enter a date, weight and notes for that entry. "
+#~ "When the person saves their entry the data table and graph is refreshed."
+#~ msgstr ""
+#~ "Place the tag [weightlosstracker] on a given page and the user is "
+#~ "presented with a form to enter a date, weight and notes for that entry. "
+#~ "When the person saves their entry the data table and graph is refreshed."
+
+#~ msgid "Enable support for Avada theme?"
+#~ msgstr "Enable support for Avada theme?"
+
+#~ msgid ""
+#~ "Enables additional styling to support the <a href=\"http://theme-fusion."
+#~ "com/avada/\" target=\"_blank\">Avada theme</a>."
+#~ msgstr ""
+#~ "Enables additional styling to support the <a href=\"http://theme-fusion."
+#~ "com/avada/\" target=\"_blank\">Avada theme</a>."
+
+#~ msgid "Your current target is"
+#~ msgstr "Your current target is"
+
+#~ msgid "Currently, you haven't specified a target weight."
+#~ msgstr "Currently, you haven't specified a target weight."
+>>>>>>> e4ff77f3b22b5f34121475a1d0521e620fa70c0d
