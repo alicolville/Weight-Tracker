@@ -210,13 +210,18 @@ jQuery( document ).ready(function ($) {
 
         $post_data = {};
 
-        $(".ws-ls-user-pref-form select").each(function () {
-          $post_data[$(this).attr("id")] = $(this).val();
-        });
+		// This code is specifc to front end
+		$post_data["security"] = ws_ls_config["ajax-security-nonce"];
+		$post_data["user-id"] = ws_ls_config["user-id"];
 
-        $post_data["action"] = "ws_ls_save_preferences";
-        $post_data["security"] = ws_ls_config["ajax-security-nonce"];
-        $post_data["user-id"] = ws_ls_config["user-id"];
+    	// ------------------------------------------------------------------------
+		// The following code is common between public and admin user preferences
+		// ------------------------------------------------------------------------
+		$(".ws-ls-user-pref-form select").each(function () {
+		  post_data[$(this).attr("id")] = $(this).val();
+		});
+
+		post_data["action"] = "ws_ls_save_preferences";
 
         ws_ls_post_data($post_data, ws_ls_user_preference_callback);
     });

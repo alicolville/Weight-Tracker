@@ -94,6 +94,15 @@ function ws_ls_get_link_to_user_profile($id) {
 }
 
 /**
+ * Given a user ID, return a link to the user's settings page
+ * @param  int $id User ID
+ * @return string
+ */
+function ws_ls_get_link_to_user_settings($id) {
+	return is_numeric($id) ? esc_url(admin_url( 'admin.php?page=ws-ls-wlt-data-home&mode=user-settings&user-id=' . $id )) : '#';
+}
+
+/**
  * Given a user and entry ID, return a link to the edit entrant page
  * @param  int $id User ID
  * @param  int $entry_id Entry ID

@@ -62,9 +62,29 @@ function ws_ls_admin_page_data_summary() {
 						</div>
 					</div>
 					<div class="postbox">
-						<h2 class="hndle"><span><?php echo __('Last 100 entries', WE_LS_SLUG); ?></span></h2>
+						<?php
+
+							// Show 100 most recent entries? Or show all?
+							if(false === empty($_GET['show-all'])) {
+								$value = ('y' === $_GET['show-all']) ? true : false;
+								update_option('ws-ls-show-all', $value);
+							}
+
+							$show_all = get_option('ws-ls-show-all') ? true : false;
+
+						?>
+						<h2 class="hndle"><span><?php echo ($show_all) ? __('All entries', WE_LS_SLUG) : __('Last 100 entries', WE_LS_SLUG); ?></span></h2>
 						<div class="inside">
-							<?php ws_ls_data_table_placeholder(false, 100); ?>
+							<?php ws_ls_data_table_placeholder(false, ($show_all) ? false : 100); ?>
+							<?php
+
+								echo sprintf(
+												'<a class="btn button-secondary" href="%s">%s</a>',
+												admin_url( 'admin.php?page=ws-ls-wlt-data-home&show-all=') . ((false === $show_all) ? 'y' : 'n'),
+												(false === $show_all) ? __('Show all entries', WE_LS_SLUG) : __('Show 100 recent entries', WE_LS_SLUG)
+											);
+
+						 	?>
 						</div>
 					</div>
 				</div>

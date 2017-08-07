@@ -118,7 +118,14 @@
 			wp_enqueue_script('jquery-tabs',plugins_url( '../js/tabs.min.js', __FILE__ ), array('jquery'), WE_LS_CURRENT_VERSION);
 			wp_enqueue_style('wlt-tabs', plugins_url( '../css/tabs.min.css', __FILE__ ), array(), WE_LS_CURRENT_VERSION);
 			wp_enqueue_style('wlt-tabs-flat', plugins_url( '../css/tabs.flat.min.css', __FILE__ ), array(), WE_LS_CURRENT_VERSION);
-			wp_enqueue_script('ws-ls-admin', plugins_url( '../js/admin' . 	$minified . '.js', __FILE__ ), array('jquery'), WE_LS_CURRENT_VERSION);
+            wp_enqueue_script('ws-ls-admin', plugins_url( '../js/admin' .     $minified . '.js', __FILE__ ), array('jquery'), WE_LS_CURRENT_VERSION);
+		}
+
+
+        if(false === empty($_GET['page']) && 'ws-ls-wlt-data-home' == $_GET['page'] &&
+            false === empty($_GET['mode']) && 'user-settings' == $_GET['mode']) {
+			wp_enqueue_script('ws-ls-admin-user-pref', plugins_url( '../js/admin.user-preferences' . 	$minified . '.js', __FILE__ ), array('jquery'), WE_LS_CURRENT_VERSION);
+			wp_localize_script('ws-ls-admin-user-pref', 'ws_ls_user_pref_config', ws_ls_admin_config());
 		}
 
 		// User Data pages
@@ -162,6 +169,14 @@
 
 	function ws_ls_use_minified() {
 		return (defined('SCRIPT_DEBUG') && false == SCRIPT_DEBUG) ? '.min' : '';
+	}
+
+	function ws_ls_admin_config() {
+		return [
+				'ajax-security-nonce' => wp_create_nonce( 'ws-ls-nonce' ),
+				'preferences-save-ok' => __('The preferences for this user have been saved.', WE_LS_SLUG),
+				'preferences-saved-fail' => __('An error occurred while trying to save the user\'s preferences.', WE_LS_SLUG)
+				];
 	}
 
 	// Tidy up various things (cache etc) when user data is deleted.

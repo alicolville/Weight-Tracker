@@ -67,8 +67,11 @@
 .ws_ls_display_form {
 	width: 100%;
 }
-.ws_ls_display_form label, .ws_ls_display_form input {
+.ws_ls_display_form label, .ws_ls_display_form input, .ws-ls-user-pref-form label, .ws-ls-user-pref-form input, #we-ls-user-pref-submit {
 	display: block;
+}
+.ws-ls-user-pref-form input, .ws-ls-user-pref-form select {
+	margin-bottom: 20px;
 }
 .widefat th {
     font-weight: bold;
@@ -91,4 +94,7 @@
 	float: left;*/
 	max-height: 100%;
     max-width: 100%;
+}
+.ws-ls-hide {
+	display: none !important;
 }
