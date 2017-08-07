@@ -15,6 +15,9 @@ function ws_ls_admin_page_data_home() {
 		case 'user':
 			ws_ls_admin_page_data_user();
 			break;
+		case 'user-settings':
+			ws_ls_admin_page_settings_user();
+			break;
 		case 'entry':
 			ws_ls_admin_page_data_add_edit();
 			break;

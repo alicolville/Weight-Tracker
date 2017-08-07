@@ -33,6 +33,7 @@ if(defined('WS_LS_ABSPATH')){
 	include WS_LS_ABSPATH . 'pro-features/admin-pages/data-view-all.php';
 	include WS_LS_ABSPATH . 'pro-features/admin-pages/data-add-edit-entry.php';
 	include WS_LS_ABSPATH . 'pro-features/admin-pages/data-user.php';
+	include WS_LS_ABSPATH . 'pro-features/admin-pages/data-user-edit-settings.php';
     include WS_LS_ABSPATH . 'pro-features/admin-pages/data-search-results.php';
 
 	// Email notifications enabled?
