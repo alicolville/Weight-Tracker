@@ -37,10 +37,9 @@ jQuery( document ).ready(function ($) {
 			window.location.replace(ws_ls_user_pref_config["preferences-page"] + '&user-preference-saved=y');
 	  	} else {
 			$('#ws-ls-notice p').text(ws_ls_user_pref_config["preferences-save-fail"]);
+            $('#ws-ls-notice').removeClass('ws-ls-hide');
 			$('#ws-ls-notice').addClass('notice-error');
 	 	}
-
-		$('#ws-ls-notice').removeClass('ws-ls-hide');
 	}
 
 	function ws_ls_post_data(data, callback)
