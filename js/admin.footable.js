@@ -1,3 +1,6 @@
+//
+// To compress this script, use https://jscompress.com
+//
 jQuery( document ).ready(function ($) {
 
 	ws_ls_log('Processing user data tables..');
@@ -7,6 +10,7 @@ jQuery( document ).ready(function ($) {
 	   var table_id = $(this).attr("id");
 	   var user_id = $(this).data("user-id");
 	   var max_entries = $(this).data("max-entries");
+	   var small_width = $(this).data("small-width");
 
 	   ws_ls_log('Setting up table: ' + table_id);
 
@@ -15,6 +19,7 @@ jQuery( document ).ready(function ($) {
 	   var data = {};
 	   data['user_id'] = user_id;
 	   data['max_entries'] = max_entries;
+	   data['small_width'] = small_width;
 	   data['table_id'] = table_id;
 	   ws_ls_post_data_to_WP('table_data', data, ws_ls_callback_setup_table)
 

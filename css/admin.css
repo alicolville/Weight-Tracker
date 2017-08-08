@@ -59,11 +59,9 @@
 .form-group.footable-filtering-search .input-group-btn .dropdown-toggle {
     display: none;
 }
-
 .ws-ls-notice-of-refresh {
 	display: none;
 }
-
 .ws_ls_display_form {
 	width: 100%;
 }
@@ -90,8 +88,6 @@
 	clear: both;
 }
 .ws-ls-user-preview img {
-	/*width: 48%;
-	float: left;*/
 	max-height: 100%;
     max-width: 100%;
 }

@@ -13,6 +13,10 @@ function ws_ls_admin_page_data_user() {
 
     $user_data = get_userdata( $user_id );
 ?>
+<?php if(!empty($_GET['user-preference-saved'])) : ?>
+	<div class="notice notice-success"><p><?php echo __('The preferences for this user have been saved.', WE_LS_SLUG); ?></p></div>
+<?php endif; ?>
+
 <div class="wrap">
 	<h1><?php echo $user_data->user_nicename; ?>
 			<?php echo ws_ls_get_email_link($user_id, true); ?></h1>
@@ -41,7 +45,7 @@ function ws_ls_admin_page_data_user() {
 					<div class="postbox">
 						<h2 class="hndle"><span><?php echo __('Entries for this user', WE_LS_SLUG); ?></span></h2>
 						<div class="inside">
-							<?php ws_ls_data_table_placeholder($user_id); ?>
+							<?php ws_ls_data_table_placeholder($user_id, false, true); ?>
 						</div>
 					</div>
 				</div>

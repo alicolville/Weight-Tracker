@@ -12,7 +12,7 @@ function ws_ls_user_data($filters = false)
 
     $table_name = $wpdb->prefix . WE_LS_TABLENAME;
     $user_table_name = $wpdb->prefix . 'users';
-    $sql = 'SELECT ' . $table_name . '.id, weight_date, weight_weight, weight_stones, weight_pounds, weight_only_pounds, weight_notes, weight_user_id, user_nicename' . $measurement_columns_sql . ' FROM ' . $table_name
+    $sql = 'SELECT ' . $table_name . '.id, weight_date, weight_weight, weight_stones, weight_pounds, weight_only_pounds, weight_notes, weight_user_id, display_name as user_nicename' . $measurement_columns_sql . ' FROM ' . $table_name
                             . ' INNER JOIN ' . $user_table_name . ' on ' . $user_table_name . '.id = ' . $table_name . '.weight_user_id';
 
 	// Limit to a certain user?
@@ -267,7 +267,7 @@ function ws_ls_user_search($name) {
 		  			OR
 		  			( um.meta_key = 'last_name' AND um.meta_value LIKE '%%%s%%' )
 					OR
-					( user_login LIKE '%%%s%%' OR user_nicename LIKE '%%%s%%' OR user_email LIKE '%%%s%%')
+					( user_login LIKE '%%%s%%' OR user_nicename LIKE '%%%s%%' OR user_email LIKE '%%%s%%' )
 				)
 				ORDER BY user_login ASC";
 

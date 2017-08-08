@@ -15,10 +15,11 @@ function ws_ls_get_table_data()
 	$max_entries = ws_ls_get_numeric_post_value('max_entries');
 	$user_id = ws_ls_get_numeric_post_value('user_id');
 	$table_id = ws_ls_ajax_post_value('table_id');
+	$small_width = ('true' === ws_ls_ajax_post_value('small_width')) ? true : false;
 
 	$data = array(
-					'columns' => ws_ls_data_table_get_columns(),
-					'rows' => ws_ls_data_table_get_rows($user_id, $max_entries),
+					'columns' => ws_ls_data_table_get_columns($small_width),
+					'rows' => ws_ls_data_table_get_rows($user_id, $max_entries, $small_width),
 					'table_id' => $table_id
 				);
 

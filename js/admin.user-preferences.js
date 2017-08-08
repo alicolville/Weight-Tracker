@@ -34,8 +34,7 @@ jQuery( document ).ready(function ($) {
 	function ws_ls_user_preference_callback(data, response)	{
 
 		if (1 == response) {
-			$('#ws-ls-notice p').text(ws_ls_user_pref_config["preferences-save-ok"]);
-			$('#ws-ls-notice').addClass('notice-success');
+			window.location.replace(ws_ls_user_pref_config["preferences-page"] + '&user-preference-saved=y');
 	  	} else {
 			$('#ws-ls-notice p').text(ws_ls_user_pref_config["preferences-save-fail"]);
 			$('#ws-ls-notice').addClass('notice-error');

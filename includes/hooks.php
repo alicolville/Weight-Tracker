@@ -175,7 +175,8 @@
 		return [
 				'ajax-security-nonce' => wp_create_nonce( 'ws-ls-nonce' ),
 				'preferences-save-ok' => __('The preferences for this user have been saved.', WE_LS_SLUG),
-				'preferences-saved-fail' => __('An error occurred while trying to save the user\'s preferences.', WE_LS_SLUG)
+				'preferences-saved-fail' => __('An error occurred while trying to save the user\'s preferences.', WE_LS_SLUG),
+				'preferences-page' => ws_ls_get_link_to_user_profile((false === empty($_GET['user-id'])) ? esc_attr($_GET['user-id']) : '')
 				];
 	}
 

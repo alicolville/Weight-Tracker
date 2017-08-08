@@ -168,6 +168,7 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 	* Sortable and responsive tables.
 	* View league tables of most lost / gained.
 	* View user stats, weight lost, recent weight, start weight, BMI, etc.
+	* Edit a user's preferences / settings
 	* Export all or a particular user's data in CSV / JSON.
 * Bug fix: Fixed Edit and delete links when using is navigating their data.
 
