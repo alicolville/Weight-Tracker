@@ -82,8 +82,11 @@
 
 		 $sql = "CREATE TABLE $table_name (
 				 user_id integer NOT NULL,
+			     activity_level float DEFAULT 0 NULL,
 				 settings text not null,
                  height float DEFAULT 0 NULL,
+                 gender float DEFAULT 0 NULL,
+                 dob datetime DEFAULT '0000-00-00 00:00:00' NOT NULL
 				 UNIQUE KEY user_id (user_id)
 		 ) $charset_collate;";
 

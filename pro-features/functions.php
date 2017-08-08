@@ -166,3 +166,34 @@ function ws_ls_get_email_link($user_id, $include_brackets = false) {
 
 	return '';
 }
+
+/**
+ * Return an array of supported genders
+ *
+ * @return array
+ */
+function ws_ls_genders() {
+
+    return [
+        0 => '',
+        1 => __('Female', WE_LS_SLUG),
+        2 => __('Male', WE_LS_SLUG)
+    ];
+}
+
+/**
+ * Return an array of activity levels
+ *
+ * @return array
+ */
+function ws_ls_activity_levels() {
+
+    return [
+        '0' => '',
+        '1.2' => __('Little / No Exercise', WE_LS_SLUG),
+        '1.375' => __('Light Exercise', WE_LS_SLUG),
+        '1.55' => __('Moderate Exercise (3-5 days a week)', WE_LS_SLUG),
+        '1.725' => __('Very Active (6-7 days a week)', WE_LS_SLUG),
+        '1.9' => __('Extra Active (very active & physical job)', WE_LS_SLUG)
+    ];
+}

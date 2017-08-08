@@ -3,27 +3,36 @@ defined('ABSPATH') or die("Jog on!");
 
 function ws_ls_user_preferences_form($user_id = false)
 {
-	$html_output = ws_ls_title(__('Settings', WE_LS_SLUG));
+    $html_output = '';
 
 	// Decide which set of labels to render
 	$labels = [
+                'title-about' => __('About You:', WE_LS_SLUG),
 				'height' => __('Your height:', WE_LS_SLUG),
 				'weight' => __('Which unit would you like to record your weight in:', WE_LS_SLUG),
 				'measurements' => __('Which unit would you like to record your measurements in:', WE_LS_SLUG),
-				'date' => __('Display dates in the following formats:', WE_LS_SLUG)
+				'date' => __('Display dates in the following formats:', WE_LS_SLUG),
+                'gender' => __('Your Gender (needed for BMR):', WE_LS_SLUG),
+                'dob' => __('Your Date of Birth (needed for BMR):', WE_LS_SLUG),
+                'activitylevel' => __('Your Activity Level (needed for BMR):', WE_LS_SLUG)
 	];
 
 	// If admin, add notice and override labels
 	if(is_admin()) {
 		$html_output .= '<div class="notice ws-ls-hide" id="ws-ls-notice"><p></p></div>';
 
-		$labels = [
+		$labels = [ 'title-about' => __('About User:', WE_LS_SLUG),
 					'height' => __('Height:', WE_LS_SLUG),
 					'weight' => __('Weight unit:', WE_LS_SLUG),
 					'measurements' => __('Measurements unit:', WE_LS_SLUG),
-					'date' => __('Date format:', WE_LS_SLUG)
+					'date' => __('Date format:', WE_LS_SLUG),
+                    'gender' => __('Gender (needed for BMR):', WE_LS_SLUG),
+                    'dob' => __('Date of Birth (needed for BMR):', WE_LS_SLUG),
+                    'activitylevel' => __('Activity Level (needed for BMR):', WE_LS_SLUG)
 		];
 	}
+
+    $html_output = ws_ls_title($labels['title-about']);
 
 	$html_output .= '
 
@@ -48,6 +57,40 @@ function ws_ls_user_preferences_form($user_id = false)
 		$html_output .= '</select>';
 
 	}
+
+	//-------------------------------------------------------
+    // Gender
+    //-------------------------------------------------------
+    $html_output .= '
+		<label>' . $labels['gender'] . '</label>
+		<select id="we-ls-gender" name="we-ls-gender"  tabindex="' . ws_ls_get_next_tab_index() . '">';
+
+        $existing_gender = ws_ls_get_user_setting('gender', $user_id);
+        $existing_gender = (true === empty($existing_gender)) ? '0' : $existing_gender;
+
+        foreach (ws_ls_genders() as $key => $value) {
+            $html_output .= sprintf('<option value="%s" %s>%s</option>', $key, selected($key, $existing_gender, false), $value);
+        }
+
+    $html_output .= '</select>';
+
+    //-------------------------------------------------------
+    // Activity Level
+    //-------------------------------------------------------
+    $html_output .= '
+		<label>' . $labels['activitylevel'] . '</label>
+		<select id="we-ls-activity-level" name="we-ls-activity-level"  tabindex="' . ws_ls_get_next_tab_index() . '">';
+
+    $activity_level = ws_ls_get_user_setting('activity_level', $user_id);
+    $activity_level = (true === empty($activity_level)) ? '0' : $activity_level;
+
+    foreach (ws_ls_activity_levels() as $key => $value) {
+        $html_output .= sprintf('<option value="%s" %s>%s</option>', $key, selected($key, $activity_level, false), $value);
+    }
+
+    $html_output .= '</select>';
+
+    $html_output .= ws_ls_title(__('Preferences', WE_LS_SLUG));
 
   	$html_output .= '
 	<label>' . $labels['weight'] . '</label>
