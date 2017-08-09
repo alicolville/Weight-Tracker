@@ -181,6 +181,13 @@ function ws_ls_genders() {
     ];
 }
 
+//function ws_ls_user_gender($user_id) {
+//
+//    $dob = ws_ls_get_user_setting('gender', $user_id);
+//
+//    return '';
+//}
+
 /**
  * Return an array of activity levels
  *
@@ -196,4 +203,20 @@ function ws_ls_activity_levels() {
         '1.725' => __('Very Active (6-7 days a week)', WE_LS_SLUG),
         '1.9' => __('Extra Active (very active & physical job)', WE_LS_SLUG)
     ];
+}
+
+/**
+ * Simple function to convert a user's ISO DOB into pretty format
+ *
+ * @param $user_id
+ * @return bool|string
+ */
+function ws_ls_get_dob_for_display($user_id) {
+
+    if(false === empty($user_id)) {
+        $dob = ws_ls_get_user_setting('dob', $user_id);
+        return (true === empty($dob) || '0000-00-00 00:00:00' == $dob) ? '' : $dob;
+    }
+
+    return '';
 }

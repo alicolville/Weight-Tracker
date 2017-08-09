@@ -63,7 +63,7 @@ function ws_ls_user_preferences_form($user_id = false)
     //-------------------------------------------------------
     $html_output .= '
 		<label>' . $labels['gender'] . '</label>
-		<select id="we-ls-gender" name="we-ls-gender"  tabindex="' . ws_ls_get_next_tab_index() . '">';
+		<select id="ws-ls-gender" name="ws-ls-gender"  tabindex="' . ws_ls_get_next_tab_index() . '">';
 
         $existing_gender = ws_ls_get_user_setting('gender', $user_id);
         $existing_gender = (true === empty($existing_gender)) ? '0' : $existing_gender;
@@ -79,7 +79,7 @@ function ws_ls_user_preferences_form($user_id = false)
     //-------------------------------------------------------
     $html_output .= '
 		<label>' . $labels['activitylevel'] . '</label>
-		<select id="we-ls-activity-level" name="we-ls-activity-level"  tabindex="' . ws_ls_get_next_tab_index() . '">';
+		<select id="ws-ls-activity-level" name="ws-ls-activity-level"  tabindex="' . ws_ls_get_next_tab_index() . '">';
 
     $activity_level = ws_ls_get_user_setting('activity_level', $user_id);
     $activity_level = (true === empty($activity_level)) ? '0' : $activity_level;
@@ -89,6 +89,20 @@ function ws_ls_user_preferences_form($user_id = false)
     }
 
     $html_output .= '</select>';
+
+    //-------------------------------------------------------
+    // Date of Birth
+    //-------------------------------------------------------
+
+    $dob = ws_ls_get_dob_for_display($user_id);
+
+    $html_output .= '<label>' . $labels['dob'] . '</label>
+                    <input type="text" name="ws-ls-dob" tabindex="' . ws_ls_get_next_tab_index() . '" id="ws-ls-dob" value="' . ws_ls_iso_date_into_correct_format($dob) . '" size="22" class="we-ls-datepicker">
+                    ';
+
+    //-------------------------------------------------------
+    // Preferences
+    //-------------------------------------------------------
 
     $html_output .= ws_ls_title(__('Preferences', WE_LS_SLUG));
 

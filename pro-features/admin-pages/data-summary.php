@@ -106,19 +106,27 @@ function ws_ls_admin_page_data_summary() {
 
 								if(false === empty($entry_counts)) {
 
-									echo sprintf('
-													<h4>%s</h4>
-													<p>%s</p>
-													<h4>%s</h4>
-													<p>%s</p>
-													<h4>%s</h4>
-													<p>%s</p>
+									echo sprintf('<table class="ws-ls-sidebar-stats">
+                                                        <tr>
+                                                            <th>%s</th>
+                                                            <td>%s</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>%s</th>
+                                                            <td>%s</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>%s</th>
+                                                            <td>%s</td>
+                                                        </tr>
+                                                   </table>
+												
 													<p><small>(* %s %s)</small></p>',
-													__('Number of WordPress users', WE_LS_SLUG),
+													__('No. of WordPress users', WE_LS_SLUG),
 													$entry_counts['number-of-users'],
-													__('Number of weight entries', WE_LS_SLUG),
+													__('No. of Weight Entries', WE_LS_SLUG),
 													$entry_counts['number-of-entries'],
-													__('Number of targets entered', WE_LS_SLUG),
+													__('No. of Target Entries', WE_LS_SLUG),
 													$entry_counts['number-of-targets'],
 													__('refreshed every 15 minutes', WE_LS_SLUG),
                                                     '<a href="' . admin_url( 'admin.php?page=ws-ls-wlt-data-home&regenerate-stats=y' ) . '"><small>Regenerate these stats</small></a>'

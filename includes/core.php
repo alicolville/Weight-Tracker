@@ -276,10 +276,10 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 								data-measurements-all-required="' . (($measurements_form_enabled && WE_LS_MEASUREMENTS_MANDATORY) ? 'true' : 'false') . '"
 								data-is-target-form="' . (($target_form) ? 'true' : 'false') . '"
 								data-metric-unit="' . ws_ls_get_chosen_weight_unit_as_string() . '">
-		<input type="hidden" value="' . (($target_form) ? 'true' : 'false') . '" id="ws_ls_is_target" name="ws_ls_is_target" />
-		<input type="hidden" value="true" id="ws_ls_is_weight_form" name="ws_ls_is_weight_form" />
-		<input type="hidden" value="' . esc_attr($user_id) . '" id="ws_ls_user_id" name="ws_ls_user_id" />
-		<input type="hidden" value="' . wp_hash($user_id) . '" id="ws_ls_security" name="ws_ls_security" />';
+                                <input type="hidden" value="' . (($target_form) ? 'true' : 'false') . '" id="ws_ls_is_target" name="ws_ls_is_target" />
+                                <input type="hidden" value="true" id="ws_ls_is_weight_form" name="ws_ls_is_weight_form" />
+                                <input type="hidden" value="' . esc_attr($user_id) . '" id="ws_ls_user_id" name="ws_ls_user_id" />
+                                <input type="hidden" value="' . wp_hash($user_id) . '" id="ws_ls_security" name="ws_ls_security" />';
 
 		// Do we have data? If so, embed existing row ID
 		if(!empty($existing_data['db_row_id']) && is_numeric($existing_data['db_row_id'])) {
@@ -390,9 +390,9 @@ function ws_ls_get_existing_value($data, $key, $esc_attr = true) {
 }
 
 
-function ws_ls_convert_date_to_iso($date)
+function ws_ls_convert_date_to_iso($date, $user_id = false)
 {
-	if (ws_ls_get_config('WE_LS_US_DATE')) {
+	if (ws_ls_get_config('WE_LS_US_DATE', $user_id)) {
 		list($month,$day,$year) = sscanf($date, "%d/%d/%d");
 		$date = "$year-$month-$day";
 	} else {

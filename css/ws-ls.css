@@ -1,3 +1,5 @@
+/*TODO: Minify this file!*/
+
 .ws-ls-tabs
 {
 	margin:30px;
@@ -27,7 +29,7 @@ input.ws-ls-valid
 	border: 1px solid green !important;
 }
 .we-ls-weight-form input[type=number], .we-ls-weight-form input[type=text], .we-ls-weight-form textarea, .we-ls-weight-form select,
-.we-ls-datepicker, .ws-ls-select
+.we-ls-datepicker, .ws-ls-select, .ws-ls-user-pref-form input[type=text]
 {
 	width:98% !important;
 	border: solid 1px #c1c1c1;
@@ -42,17 +44,14 @@ input.ws-ls-valid
 .we-ls-weight-form input[type=number], .we-ls-weight-form input[type=text], .we-ls-weight-form select, .we-ls-weight-form .we-ls-datepicker,
 .we-ls-weight-form .ws-ls-select, .ws-ls-user-pref-form input, .ws-ls-user-pref-form select, .ws-ls-user-delete-all select
 {
-	height: 30px;
+	height: 20px;
 }
 .we-ls-weight-form input[type=number], .we-ls-weight-form input[type=text], .we-ls-weight-form select, .we-ls-weight-form .we-ls-datepicker, .we-ls-weight-form .ws-ls-select,
- .ws-ls-user-pref-form input, .ws-ls-user-pref-form select, .ws-ls-user-delete-all select
-{
+ .ws-ls-user-pref-form input, .ws-ls-user-pref-form select, .ws-ls-user-delete-all select {
 	height: 30px;
-
 }
-.ws-ls-user-pref-form select, .ws-ls-user-delete-all select
-{
-  width:100%;
+.ws-ls-user-pref-form select, .ws-ls-user-delete-all select {
+  	width:100%;
 	margin-bottom: 20px;
 }
  .ws-ls-user-pref-form form

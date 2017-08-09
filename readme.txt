@@ -160,6 +160,11 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 
 == Changelog ==
 
+= 5.1 =
+
+* New Feature: New settings fields for user Date of Birth, Gender and Activity Level
+* Improvement: Sidebar stats layout in admin area compressed.
+
 = 5.0 =
 
 * New Feature: New and improved admin interface for interacting with your user's data!

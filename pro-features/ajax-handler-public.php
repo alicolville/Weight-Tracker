@@ -41,10 +41,11 @@ function ws_ls_save_preferences_callback()
 	}
 
     // Save Activity Level, DoB and Gender
-    $gender = (!is_null(ws_ls_ajax_post_value('we-ls-gender'))) ? intval(ws_ls_ajax_post_value('we-ls-gender')) : 0;
-    $activity_level = (!is_null(ws_ls_ajax_post_value('we-ls-activity-level'))) ? floatval(ws_ls_ajax_post_value('we-ls-activity-level')) : 0;
+    $gender = (!is_null(ws_ls_ajax_post_value('ws-ls-gender'))) ? intval(ws_ls_ajax_post_value('ws-ls-gender')) : 0;
+    $activity_level = (!is_null(ws_ls_ajax_post_value('ws-ls-activity-level'))) ? floatval(ws_ls_ajax_post_value('ws-ls-activity-level')) : 0;
+    $dob = (!is_null(ws_ls_ajax_post_value('ws-ls-dob'))) ? ws_ls_ajax_post_value('ws-ls-dob') : false;
 
-  	if(true == ws_ls_set_user_preferences($user_preferences, ws_ls_ajax_post_value('user-id'), $height, $activity_level, $gender)){
+  	if(true == ws_ls_set_user_preferences($user_preferences, ws_ls_ajax_post_value('user-id'), $height, $activity_level, $gender, $dob)){
     	$ajax_response = 1;
   	}
   	echo $ajax_response;

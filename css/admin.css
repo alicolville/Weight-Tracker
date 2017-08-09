@@ -94,3 +94,19 @@
 .ws-ls-hide {
 	display: none !important;
 }
+.ws-ls-sidebar-stats {
+    width: 100%;
+    text-align: left;
+}
+.ws-ls-sidebar-stats th {
+    font-weight: 600;
+
+}
+.ws-ls-sidebar-stats th, .ws-ls-sidebar-stats td  {
+    border-bottom: 1px dotted #CCCCCC;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.ws-ls-sidebar-stats .last th, .ws-ls-sidebar-stats .last td {
+    border: none !important;
+}

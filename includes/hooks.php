@@ -132,7 +132,7 @@
 		if(false === empty($_GET['mode'])) {
 
 			// If on the add / edit entry page, then include relevant CSS / JS for form
-			if('entry' == $_GET['mode'] ) {
+			if(in_array($_GET['mode'], ['entry', 'user-settings'])) {
 				ws_ls_enqueue_form_dependencies();
 			} else if ('user' == $_GET['mode'] ) {
 				ws_ls_enqueue_chart_dependencies();

@@ -17,6 +17,7 @@ function ws_ls_admin_page_settings_user() {
 					<div class="postbox">
 						<h2 class="hndle"><span><?php echo __('Edit user settings', WE_LS_SLUG); ?></span></h2>
 						<div class="inside">
+                            <br />
 							<?php
 								echo ws_ls_user_preferences_form($user_id);
 							?>

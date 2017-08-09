@@ -98,7 +98,7 @@ function ws_ls_weight_difference_target($user_id = false){
 	}
 
 	if(empty($target_weight)) {
-		return __('No target weight has been set', WE_LS_SLUG);
+		return __('No target set', WE_LS_SLUG);
 	}
 
 	$difference = $recent_weight - $target_weight;

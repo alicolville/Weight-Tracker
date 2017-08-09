@@ -3,7 +3,7 @@
 //
 jQuery( document ).ready(function ($) {
 
-	$(".we-ls-datepicker").each(function() {
+	$(".we-ls-datepicker, .we-ls-datepicker-plain").each(function() {
 	  var options = {
 					  changeMonth: true,
 					  changeYear: true,
