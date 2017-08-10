@@ -1,5 +1,5 @@
 //
-// To compress this script, use https://jscompress.com  
+// To compress this script, use https://jscompress.com
 //
 jQuery( document ).ready(function ($) {
 
@@ -7,6 +7,7 @@ jQuery( document ).ready(function ($) {
         var options = {
             changeMonth: true,
             changeYear: true,
+            yearRange: "-100:+0",
             showButtonPanel: true,
             dateFormat: ws_ls_config["date-format"],
             showButtonPanel: true,

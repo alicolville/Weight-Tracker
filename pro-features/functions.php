@@ -291,3 +291,12 @@ function ws_ls_get_dob_for_display($user_id = false) {
 
 	return '';
 }
+
+/**
+ * Helper function to disable admin page if the user doesn't have the correct user role.
+ */
+function ws_ls_user_data_permission_check() {
+    if ( !current_user_can( WE_LS_VIEW_EDIT_USER_PERMISSION_LEVEL ) )  {
+        wp_die( __( 'You do not have sufficient permissions to access this page.' , WE_LS_SLUG) );
+    }
+}

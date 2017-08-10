@@ -4,6 +4,8 @@ defined('ABSPATH') or die('Naw ya dinnie!');
 
 function ws_ls_admin_page_view_all() {
 
+    ws_ls_user_data_permission_check();
+
 ?>
 <div class="wrap">
 	<h1><?php echo __('View All Data', WE_LS_SLUG); ?></h1>

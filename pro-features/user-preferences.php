@@ -5,7 +5,9 @@ function ws_ls_user_preferences_form($user_id = false)
 {
     $html_output = '';
 
-	// Decide which set of labels to render
+    $user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
+
+    // Decide which set of labels to render
 	$labels = [
                 'title-about' => __('About You:', WE_LS_SLUG),
 				'height' => __('Your height:', WE_LS_SLUG),
@@ -30,7 +32,10 @@ function ws_ls_user_preferences_form($user_id = false)
                     'dob' => __('Date of Birth (needed for BMR):', WE_LS_SLUG),
                     'activitylevel' => __('Activity Level (needed for BMR):', WE_LS_SLUG)
 		];
-	}
+	} else {
+	    // Enqueue front end scripts if needed (mainly for datepicker)
+        ws_ls_enqueue_files();
+    }
 
     $html_output = ws_ls_title($labels['title-about']);
 
@@ -51,7 +56,7 @@ function ws_ls_user_preferences_form($user_id = false)
 		$existing_height = ws_ls_get_user_height($user_id, false);
 
 		foreach ($heights as $key => $value) {
-			$html_output .= sprintf('<option value="%s" %s>%s</option>', $key, selected($key, $existing_height, false), $value);
+		    $html_output .= sprintf('<option value="%s" %s>%s</option>', $key, selected($key, $existing_height, false), $value);
 		}
 
 		$html_output .= '</select>';

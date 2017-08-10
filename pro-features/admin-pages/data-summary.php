@@ -4,6 +4,7 @@ defined('ABSPATH') or die('Naw ya dinnie!');
 
 function ws_ls_admin_page_data_summary() {
 
+    ws_ls_user_data_permission_check();
 
     // DELETE ALL DATA!! AHH!!
     if (is_admin() && isset($_GET['removedata']) && 'y' == $_GET['removedata']) {

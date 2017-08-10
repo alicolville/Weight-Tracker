@@ -470,9 +470,8 @@ function ws_ls_get_user_height($user_id = false, $use_cache = true) {
 
   global $wpdb;
 
-  if(false === $user_id){
-    $user_id = get_current_user_id();
-  }
+  $user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
+
 
   $table_name = $wpdb->prefix . WE_LS_USER_PREFERENCES_TABLENAME;
 

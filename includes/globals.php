@@ -39,7 +39,7 @@
 	define('WE_LS_CRON_NAME', 'weight_loss_tracker_hourly');
 	define('WE_LS_CRON_NAME_YEKEN_COMMS', 'weight_loss_tracker_yeken_comms');
 	define('WE_LS_CRON_SCHEDULE_WEEKLY', 'weight_loss_tracker_weekly');
-	define('WE_LS_PERMISSION_EXPORT', 'manage_options');
+
 	// -----------------------------------------------------------------------------------
 	// Hooks / Filters
 	// -----------------------------------------------------------------------------------

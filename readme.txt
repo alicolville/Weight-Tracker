@@ -172,6 +172,7 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 	* Export all or a particular user's data in CSV / JSON.
 	* Administrators can specify the minimum user role allowed to access / edit user data.
 * New Feature: New settings fields for user Date of Birth, Gender and Activity Level
+* Improvement: Tweaked jQuery datepicker to display a year range of -100 to now.
 * Bug fix: Fixed Edit and delete links when using is navigating their data.
 
 = 4.2.8 =

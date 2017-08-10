@@ -76,7 +76,7 @@ function ws_ls_weight_object($user_id, $kg, $pounds, $stones, $pounds_only, $not
         break;
   }
 
-  // Get Admin display value. Ignore what the user has seleced. (email notifications etc)
+  // Get Admin display value. Ignore what the user has selected. (email notifications etc)
   switch (WE_LS_DATA_UNITS) {
 	case 'pounds_only':
 	  $data = ws_ls_round_decimals($weight['only_pounds']);
