@@ -85,7 +85,8 @@
 		'WE_LS_EMAIL_NOTIFICATIONS_EDIT' => true,
 		'WE_LS_EMAIL_NOTIFICATIONS_NEW' => true,
 		'WE_LS_EMAIL_NOTIFICATIONS_TARGETS' => true,
-		'WE_LS_DISABLE_YEKEN_NOTIFICATIONS' => false
+		'WE_LS_DISABLE_YEKEN_NOTIFICATIONS' => false,
+		'WE_LS_VIEW_EDIT_USER_PERMISSION_LEVEL' => 'manage_options' // Default to admin only being allowed to edit / view user data
 	);
 
     // -----------------------------------------------------------------------------------
@@ -180,6 +181,15 @@
 	if (WS_LS_IS_PRO && ('yes' == get_option('ws-ls-allow-advanced-tables') || false == get_option('ws-ls-allow-advanced-tables')) ){
 		$globals['WS_LS_ADVANCED_TABLES'] = true;
 	}
+
+	// -----------------------------------------------------------------------------------
+	// Who can view / edit user data
+	// -----------------------------------------------------------------------------------
+	$permission_check = get_option('ws-ls-edit-permissions');
+	if (false === empty($permission_check) && in_array($permission_check, ['manage_options', 'read_private_posts', 'publish_posts']) ){
+		$globals['WE_LS_VIEW_EDIT_USER_PERMISSION_LEVEL'] = $permission_check;
+	}
+
 	// -----------------------------------------------------------------------------------
 	// y Axes start at zero
 	// -----------------------------------------------------------------------------------

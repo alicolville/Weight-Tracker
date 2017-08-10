@@ -1,5 +1,5 @@
 //
-// To compress this script, use https://jscompress.com //TODO
+// To compress this script, use https://jscompress.com 
 //
 
 $tabs_global = false;

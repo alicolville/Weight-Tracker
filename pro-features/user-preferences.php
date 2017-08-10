@@ -97,7 +97,7 @@ function ws_ls_user_preferences_form($user_id = false)
     $dob = ws_ls_get_dob_for_display($user_id);
 
     $html_output .= '<label>' . $labels['dob'] . '</label>
-                    <input type="text" name="ws-ls-dob" tabindex="' . ws_ls_get_next_tab_index() . '" id="ws-ls-dob" value="' . ws_ls_iso_date_into_correct_format($dob) . '" size="22" class="we-ls-datepicker">
+                    <input type="text" name="ws-ls-dob" tabindex="' . ws_ls_get_next_tab_index() . '" id="ws-ls-dob" value="' . ws_ls_get_dob_for_display() . '" size="22" class="we-ls-datepicker">
                     ';
 
     //-------------------------------------------------------

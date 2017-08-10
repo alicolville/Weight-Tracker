@@ -28,8 +28,8 @@ defined('ABSPATH') or die('Jog on!');
 */
 
 define('WS_LS_ABSPATH', plugin_dir_path( __FILE__ ));
-define('WE_LS_CURRENT_VERSION', '5.1');
-
+define('WE_LS_CURRENT_VERSION', '5.0');
+define('WE_LS_DB_VERSION', '5.0.0');
 
 // -----------------------------------------------------------------------------------------
 // AC: Activate / Deactivate / Uninstall Hooks

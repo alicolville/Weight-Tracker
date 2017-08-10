@@ -76,9 +76,25 @@ function ws_ls_user_side_bar($user_id) {
                             ?>
                         </td>
                     </tr>
-                    <tr class="last">
+                    <tr>
                         <th><?php echo __('Current BMI', WE_LS_SLUG); ?></th>
                         <td><?php echo ws_ls_get_user_bmi(['user-id' => $user_id, 'display' => 'both', 'no-height-text' => __('No height specified', WE_LS_SLUG)]); ?></td>
+                    </tr>
+					<tr>
+                        <th><?php echo __('Height', WE_LS_SLUG); ?></th>
+                        <td><?php echo ws_ls_display_user_setting($user_id, 'height'); ?></td>
+                    </tr>
+					<tr>
+                        <th><?php echo __('Gender', WE_LS_SLUG); ?></th>
+                        <td><?php echo ws_ls_display_user_setting($user_id, 'gender'); ?></td>
+                    </tr>
+					<tr>
+                        <th><?php echo __('Activity Level', WE_LS_SLUG); ?></th>
+                        <td><em><?php echo ws_ls_display_user_setting($user_id, 'activity_level'); ?></em></td>
+                    </tr>
+					<tr class="last">
+                        <th><?php echo __('Date of Birth', WE_LS_SLUG); ?></th>
+                        <td><?php echo ws_ls_get_dob_for_display($user_id); ?></td>
                     </tr>
                 </table>
 			</div>

@@ -181,13 +181,6 @@ function ws_ls_genders() {
     ];
 }
 
-//function ws_ls_user_gender($user_id) {
-//
-//    $dob = ws_ls_get_user_setting('gender', $user_id);
-//
-//    return '';
-//}
-
 /**
  * Return an array of activity levels
  *
@@ -206,17 +199,95 @@ function ws_ls_activity_levels() {
 }
 
 /**
+ * Return an array of heights
+ *
+ * @return array
+ */
+function ws_ls_heights() {
+	return array(
+		    0 => '',
+		    142 => '4\'8" - 142cm',
+		    145 => '4\'8" - 145cm',
+		    147 => '4\'9" - 147cm',
+		    150 => '4\'11" - 150cm',
+		  	152 => '5\'0" - 152cm',
+		  	155 => '5\'1" - 155cm',
+		    157 => '5\'2" - 157cm',
+		  	160 => '5\'3" - 160cm',
+		  	163 => '5\'4" - 163cm',
+		    165 => '5\'5" - 165cm',
+		  	168 => '5\'6" - 168cm',
+		  	170 => '5\'7" - 170cm',
+		    173 => '5\'8" - 173cm',
+		    175 => '5\'9" - 175cm',
+		    178 => '5\'10" - 178cm',
+		    180 => '5\'11" - 180cm',
+		    183 => '6\'0" - 183cm',
+		    185 => '6\'1" - 185cm',
+		    188 => '6\'2" - 188cm',
+		    191 => '6\'3" - 191cm',
+		    193 => '6\'4" - 193cm',
+		    195 => '6\'5" - 195cm',
+		    198 => '6\'6" - 198cm',
+		    201 => '6\'7" - 201cm'
+		);
+}
+
+/**
+ * Simple function display a given user preference field for the specified user
+ *
+ * @param $user_id - User ID
+ * @param $field - name of DB field
+ * @return bool|string
+ */
+function ws_ls_display_user_setting($user_id, $field = 'dob') {
+
+	$user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
+
+	$user_data = ws_ls_get_user_setting($field, $user_id);
+
+	switch ($field) {
+		case 'activity_level':
+			$field_data = ws_ls_activity_levels();
+			break;
+		case 'heights':
+			$field_data = ws_ls_heights();
+			break;
+		default:
+			$field_data = ws_ls_genders();
+			break;
+	}
+
+	return (false === empty($user_data) && isset($field_data[$user_data])) ? esc_html($field_data[$user_data]) : __('Not Specified', WE_LS_SLUG);
+}
+
+/**
+ * Fetch user's ISO DOB
+ *
+ * @param $user_id
+ * @return bool|string
+ */
+function ws_ls_get_dob($user_id) {
+
+	$user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
+
+    return ws_ls_get_user_setting('dob', $user_id);
+
+}
+
+/**
  * Simple function to convert a user's ISO DOB into pretty format
  *
  * @param $user_id
  * @return bool|string
  */
-function ws_ls_get_dob_for_display($user_id) {
+function ws_ls_get_dob_for_display($user_id = false) {
 
-    if(false === empty($user_id)) {
-        $dob = ws_ls_get_user_setting('dob', $user_id);
-        return (true === empty($dob) || '0000-00-00 00:00:00' == $dob) ? '' : $dob;
-    }
+	$dob = ws_ls_get_dob($user_id);
 
-    return '';
+    if (false === empty($dob) && '0000-00-00 00:00:00' !== $dob) {
+		return ws_ls_iso_date_into_correct_format($dob);
+	}
+
+	return '';
 }
