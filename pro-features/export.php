@@ -14,7 +14,7 @@ defined('ABSPATH') or die('Jog on.');
 function ws_ls_export_data() {
 
 	// Ensure the user has relevant permissions
-    ws_ls_user_data_permission_check();
+    ws_ls_export_permission_check();
 
 	// Do we have a user ID? If so limit data
 	$filters = (false === empty($_GET['user-id']) && is_numeric($_GET['user-id'])) ? ['user-id' => intval($_GET['user-id'])] : false;
@@ -259,4 +259,12 @@ function ws_ls_export_verify_type($content_type) {
 		return (	false === empty($content_type) &&
 					in_array($content_type, ['text/csv', 'application/json'])
 				) ? $content_type : 'text/csv';
+}
+/**
+ * Helper function to disable admin page if the user doesn't have the correct user role.
+ */
+function ws_ls_export_permission_check() {
+    if ( !current_user_can( WE_LS_VIEW_EDIT_USER_PERMISSION_LEVEL ) )  {
+        wp_die( __( 'You do not have sufficient permissions to access this page.' , WE_LS_SLUG) );
+    }
 }
