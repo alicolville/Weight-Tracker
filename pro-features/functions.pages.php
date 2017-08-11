@@ -29,12 +29,17 @@ function ws_ls_user_side_bar($user_id) {
 	}
 
 	?>
-
+		<div class="postbox">
+			<h2 class="hndle"><?php echo __('User Search', WE_LS_SLUG); ?></h2>
+			<div class="inside">
+				<?php ws_ls_box_user_search_form(); ?>
+			</div>
+		</div>
 		<div class="postbox">
 			<h2 class="hndle"><span><?php echo __('User Information', WE_LS_SLUG); ?></span></h2>
 			<div class="inside">
+    			<table class="ws-ls-sidebar-stats">
 
-                <table class="ws-ls-sidebar-stats">
                     <?php $stats = ws_ls_get_entry_counts($user_id); ?>
                     <tr>
                         <th><?php echo __('No. of Entries', WE_LS_SLUG); ?></th>
@@ -65,17 +70,6 @@ function ws_ls_user_side_bar($user_id) {
                         <th><?php echo __('Diff. from Target', WE_LS_SLUG); ?></th>
                         <td><?php echo ws_ls_weight_difference_target($user_id); ?></td>
                     </tr>
-                    <?php
-                        $height = ws_ls_get_user_height($user_id);
-                        $heights = (false === $height) ? false : ws_ls_heights();
-                    ?>
-                    <tr>
-                        <th><?php echo __('Current Height', WE_LS_SLUG); ?></th>
-                        <td><?php
-                            echo (false === empty($heights[$height])) ? $heights[$height] : __('No height specified', WE_LS_SLUG) ;
-                            ?>
-                        </td>
-                    </tr>
                     <tr>
                         <th><?php echo __('Current BMI', WE_LS_SLUG); ?></th>
                         <td><?php echo ws_ls_get_user_bmi(['user-id' => $user_id, 'display' => 'both', 'no-height-text' => __('No height specified', WE_LS_SLUG)]); ?></td>
@@ -90,11 +84,11 @@ function ws_ls_user_side_bar($user_id) {
                     </tr>
 					<tr>
                         <th><?php echo __('Activity Level', WE_LS_SLUG); ?></th>
-                        <td><em><?php echo ws_ls_display_user_setting($user_id, 'activity_level'); ?></em></td>
+                        <td><?php echo ws_ls_display_user_setting($user_id, 'activity_level', false, true); ?></td>
                     </tr>
 					<tr class="last">
                         <th><?php echo __('Date of Birth', WE_LS_SLUG); ?></th>
-                        <td><?php echo ws_ls_get_dob_for_display($user_id); ?></td>
+                        <td><?php echo ws_ls_get_dob_for_display($user_id, false); ?></td>
                     </tr>
                 </table>
 			</div>

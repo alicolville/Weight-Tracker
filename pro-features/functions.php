@@ -240,9 +240,11 @@ function ws_ls_heights() {
  * @param $field - name of DB field
  * @return bool|string
  */
-function ws_ls_display_user_setting($user_id, $field = 'dob') {
+function ws_ls_display_user_setting($user_id, $field = 'dob', $not_specified_text = false, $shorten = false) {
 
 	$user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
+
+	$not_specified_text = (false === $not_specified_text) ? __('Not Specified', WE_LS_SLUG) : esc_html($not_specified_text);
 
 	$user_data = ws_ls_get_user_setting($field, $user_id);
 
@@ -250,7 +252,7 @@ function ws_ls_display_user_setting($user_id, $field = 'dob') {
 		case 'activity_level':
 			$field_data = ws_ls_activity_levels();
 			break;
-		case 'heights':
+		case 'height':
 			$field_data = ws_ls_heights();
 			break;
 		default:
@@ -258,7 +260,23 @@ function ws_ls_display_user_setting($user_id, $field = 'dob') {
 			break;
 	}
 
-	return (false === empty($user_data) && isset($field_data[$user_data])) ? esc_html($field_data[$user_data]) : __('Not Specified', WE_LS_SLUG);
+	if (false === empty($user_data) && isset($field_data[$user_data])) {
+
+		// If a height setting and we want to shorten, look for a bracket and remove everything from there onwards
+		if($shorten && 'activity_level' == $field) {
+
+			$bracket_location = strpos($field_data[$user_data], '(');
+
+			if(false !== $bracket_location) {
+				$field_data[$user_data] = substr($field_data[$user_data], 0, $bracket_location);
+			}
+
+		}
+
+		return esc_html($field_data[$user_data]);
+	}
+
+	return $not_specified_text;
 }
 
 /**
@@ -281,15 +299,17 @@ function ws_ls_get_dob($user_id) {
  * @param $user_id
  * @return bool|string
  */
-function ws_ls_get_dob_for_display($user_id = false) {
+function ws_ls_get_dob_for_display($user_id = false, $not_specified_text = '') {
 
 	$dob = ws_ls_get_dob($user_id);
+
+	$not_specified_text = (false === $not_specified_text) ? __('Not Specified', WE_LS_SLUG) : esc_html($not_specified_text);
 
     if (false === empty($dob) && '0000-00-00 00:00:00' !== $dob) {
 		return ws_ls_iso_date_into_correct_format($dob);
 	}
 
-	return '';
+	return $not_specified_text;
 }
 
 /**

@@ -124,7 +124,10 @@ jQuery( document ).ready(function ($) {
 
 	function ws_ls_format_date(value) {
 
-		var date = new Date(value);
+		// Strip the timestamp off
+		var date = value.split(" ");
+		date = new Date(date[0])
+
 		var day = date.getDate();
 		var month = date.getMonth() + 1;
 		var year = date.getFullYear();
@@ -140,8 +143,6 @@ jQuery( document ).ready(function ($) {
 	}
 
 });
-
-
 
 
 function ws_ls_log(text) {
