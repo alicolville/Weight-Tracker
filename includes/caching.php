@@ -63,7 +63,10 @@ function ws_ls_delete_cache_for_given_user($user_id = false)
 							$user_id . '-' . WE_LS_CACHE_KEY_WEIGHT_EXTREME . '-asc-weight_only_pounds',
 	 						$user_id . '-' . WE_LS_CACHE_KEY_WEIGHT_EXTREME . '-desc-weight_only_pounds',
 							$user_id . '-' . WE_LS_CACHE_KEY_WEIGHT_EXTREME . '-asc-weight_weight',
-							$user_id . '-' . WE_LS_CACHE_KEY_WEIGHT_EXTREME . '-desc-weight_weight'
+							$user_id . '-' . WE_LS_CACHE_KEY_WEIGHT_EXTREME . '-desc-weight_weight',
+                            $user_id . '-' . WE_LS_CACHE_KEY_USER_PREFERENCE . '-gender',
+                            $user_id . '-' . WE_LS_CACHE_KEY_USER_PREFERENCE . '-activity_level',
+                            $user_id . '-' . WE_LS_CACHE_KEY_USER_PREFERENCE . '-dob'
 						);
 
 	foreach ($keys_to_clear as $key) {
@@ -92,3 +95,4 @@ function ws_ls_delete_all_cache()
 function ws_ls_generate_cache_key($key){
     return WE_LS_SLUG . $key;
 }
+

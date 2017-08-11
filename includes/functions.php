@@ -76,7 +76,7 @@ function ws_ls_weight_object($user_id, $kg, $pounds, $stones, $pounds_only, $not
         break;
   }
 
-  // Get Admin display value. Ignore what the user has seleced. (email notifications etc)
+  // Get Admin display value. Ignore what the user has selected. (email notifications etc)
   switch (WE_LS_DATA_UNITS) {
 	case 'pounds_only':
 	  $data = ws_ls_round_decimals($weight['only_pounds']);
@@ -544,4 +544,29 @@ function ws_ls_stats_clear_last_updated_date(){
     $wpdb->query('Update ' . $wpdb->prefix . WE_LS_USER_STATS_TABLENAME . ' set last_update = NULL');
     return;
 }
+
+/**
+ * Helper function to convert an ISO date into the relevant date format
+ *
+ * @param $date
+ * @param bool $return_formatted_date_only
+ * @return false|string
+ */
+function ws_ls_iso_date_into_correct_format($date, $return_formatted_date_only = true) {
+
+    // Build different date formats
+    if($date != false && !empty($date)) {
+        $time = strtotime($date);
+        $weight['date'] = $date;
+        $weight['date-uk'] = date('d/m/Y',$time);
+        $weight['date-us'] = date('m/d/Y',$time);
+        $weight['date-display'] = ws_ls_get_config('WE_LS_US_DATE') ? $weight['date-us'] : $weight['date-uk'];
+        $weight['date-graph'] = date('d M',$time);
+        return ($return_formatted_date_only) ? $weight['date-display'] : $weight;
+    }
+
+    return $date;
+}
+
+
 ?>

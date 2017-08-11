@@ -4,6 +4,8 @@ defined('ABSPATH') or die('Naw ya dinnie!');
 
 function ws_ls_admin_page_data_home() {
 
+    ws_ls_user_data_permission_check();
+
 	// Determine page to display
 	$page_to_display = (!empty($_GET['mode'])) ? $_GET['mode'] : 'summary';
 

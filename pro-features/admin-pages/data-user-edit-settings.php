@@ -4,6 +4,8 @@ defined('ABSPATH') or die('Naw ya dinnie!');
 
 function ws_ls_admin_page_settings_user() {
 
+    ws_ls_user_data_permission_check();
+
 	$user_id = ws_get_user_id_from_qs();
 
     $user_data = get_userdata( $user_id );
@@ -17,6 +19,7 @@ function ws_ls_admin_page_settings_user() {
 					<div class="postbox">
 						<h2 class="hndle"><span><?php echo __('Edit user settings', WE_LS_SLUG); ?></span></h2>
 						<div class="inside">
+                            <br />
 							<?php
 								echo ws_ls_user_preferences_form($user_id);
 							?>

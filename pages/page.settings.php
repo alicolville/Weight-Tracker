@@ -129,6 +129,17 @@ function ws_ls_settings_page() {
 															<p><?php echo __('Occasionally YeKen likes to display simple notifications within your WordPress dashboard. Use this setting if you wish to disable them.', WE_LS_SLUG)?></p>
 														</td>
 													</tr>
+													<tr class="<?php echo $disable_if_not_pro_class; ?>">
+														<th scope="row"><?php echo __( 'Who can view and modify user data?' , WE_LS_SLUG); ?></th>
+														<td>
+															<select id="ws-ls-edit-permissions" name="ws-ls-edit-permissions">
+																<option value="manage_options" <?php selected( get_option('ws-ls-edit-permissions'), 'manage_options' ); ?>><?php echo __('Administrators Only', WE_LS_SLUG)?></option>
+																<option value="read_private_posts" <?php selected( get_option('ws-ls-edit-permissions'), 'read_private_posts' ); ?>><?php echo __('Editors and above', WE_LS_SLUG)?></option>
+																<option value="publish_posts" <?php selected( get_option('ws-ls-edit-permissions'), 'publish_posts' ); ?>><?php echo __('Authors and above', WE_LS_SLUG)?></option>
+															</select>
+															<p><?php echo __('Specify the minimum level of user role that maybe view or edit user data.', WE_LS_SLUG)?></p>
+														</td>
+													</tr>
 											</table>
 										</div>
 										<div>
@@ -479,6 +490,7 @@ function ws_ls_register_settings()
 	register_setting( 'we-ls-options-group', 'ws-ls-axes-start-at-zero' );
 	register_setting( 'we-ls-options-group', 'ws-ls-allow-stats' );
 	register_setting( 'we-ls-options-group', 'ws-ls-disable-yeken-notifications' );
+	register_setting( 'we-ls-options-group', 'ws-ls-edit-permissions' );
 
     // Pro only open
     if(WS_LS_IS_PRO){

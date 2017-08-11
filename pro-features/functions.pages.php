@@ -29,49 +29,68 @@ function ws_ls_user_side_bar($user_id) {
 	}
 
 	?>
-
 		<div class="postbox">
-			<h2 class="hndle"><span><?php echo __('Quick Stats', WE_LS_SLUG); ?></span></h2>
+			<h2 class="hndle"><?php echo __('User Search', WE_LS_SLUG); ?></h2>
 			<div class="inside">
+				<?php ws_ls_box_user_search_form(); ?>
+			</div>
+		</div>
+		<div class="postbox">
+			<h2 class="hndle"><span><?php echo __('User Information', WE_LS_SLUG); ?></span></h2>
+			<div class="inside">
+    			<table class="ws-ls-sidebar-stats">
 
-				<?php $stats = ws_ls_get_entry_counts($user_id); ?>
-				<h4><?php echo __('No. of entries', WE_LS_SLUG); ?></h4>
-				<p><?php echo $stats['number-of-entries']; ?></p>
+                    <?php $stats = ws_ls_get_entry_counts($user_id); ?>
+                    <tr>
+                        <th><?php echo __('No. of Entries', WE_LS_SLUG); ?></th>
+                        <td><?php echo $stats['number-of-entries']; ?></td>
+                    </tr>
+                    <tr>
+                        <th><?php echo __('Start Weight', WE_LS_SLUG); ?></th>
+                        <td><?php echo ws_ls_weight_start($user_id); ?></td>
+                    </tr>
+                    <tr>
+                        <th><?php echo __('Latest Weight', WE_LS_SLUG); ?></th>
+                        <td><?php echo ws_ls_weight_recent($user_id); ?></td>
+                    </tr>
+                    <tr>
+                        <th><?php echo __('Diff. from Start', WE_LS_SLUG); ?></th>
+                        <td><?php echo ws_ls_weight_difference($user_id); ?></td>
+                    </tr>
+                    <tr>
+                        <th><?php echo __('Target Weight', WE_LS_SLUG); ?></th>
+                        <td><?php
 
-				<h4><?php echo __('Start weight', WE_LS_SLUG); ?></h4>
-				<p><?php echo ws_ls_weight_start($user_id); ?></p>
-
-				<h4><?php echo __('Latest weight', WE_LS_SLUG); ?></h4>
-				<p><?php echo ws_ls_weight_recent($user_id); ?></p>
-
-				<h4><?php echo __('Difference from start weight', WE_LS_SLUG); ?></h4>
-				<p><?php echo ws_ls_weight_difference($user_id); ?></p>
-
-				<h4><?php echo __('Target weight', WE_LS_SLUG); ?></h4>
-				<p><?php
-
-						$target = ws_ls_weight_target_weight($user_id, true);
-						echo (true === empty($target)) ? __('No target weight has been set', WE_LS_SLUG) : $target;
-					?>
-				</p>
-
-				<h4><?php echo __('Difference from target', WE_LS_SLUG); ?></h4>
-				<p><?php echo ws_ls_weight_difference_target($user_id); ?></p>
-
-				<?php
-					$height = ws_ls_get_user_height($user_id);
-					$heights = (false === $height) ? false : ws_ls_heights();
-				?>
-				<h4><?php echo __('Current Height', WE_LS_SLUG); ?></h4>
-				<p>
-					<?php
-						echo (false === empty($heights[$height])) ? $heights[$height] : __('No height specified', WE_LS_SLUG) ;
-					?>
-				</p>
-
-				<h4><?php echo __('Current BMI', WE_LS_SLUG); ?></h4>
-				<p><?php echo ws_ls_get_user_bmi(['user-id' => $user_id, 'display' => 'both', 'no-height-text' => __('No height specified', WE_LS_SLUG)]); ?></p>
-
+                            $target = ws_ls_weight_target_weight($user_id, true);
+                            echo (true === empty($target)) ? __('No target set', WE_LS_SLUG) : $target;
+                            ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><?php echo __('Diff. from Target', WE_LS_SLUG); ?></th>
+                        <td><?php echo ws_ls_weight_difference_target($user_id); ?></td>
+                    </tr>
+                    <tr>
+                        <th><?php echo __('Current BMI', WE_LS_SLUG); ?></th>
+                        <td><?php echo ws_ls_get_user_bmi(['user-id' => $user_id, 'display' => 'both', 'no-height-text' => __('No height specified', WE_LS_SLUG)]); ?></td>
+                    </tr>
+					<tr>
+                        <th><?php echo __('Height', WE_LS_SLUG); ?></th>
+                        <td><?php echo ws_ls_display_user_setting($user_id, 'height'); ?></td>
+                    </tr>
+					<tr>
+                        <th><?php echo __('Gender', WE_LS_SLUG); ?></th>
+                        <td><?php echo ws_ls_display_user_setting($user_id, 'gender'); ?></td>
+                    </tr>
+					<tr>
+                        <th><?php echo __('Activity Level', WE_LS_SLUG); ?></th>
+                        <td><?php echo ws_ls_display_user_setting($user_id, 'activity_level', false, true); ?></td>
+                    </tr>
+					<tr class="last">
+                        <th><?php echo __('Date of Birth', WE_LS_SLUG); ?></th>
+                        <td><?php echo ws_ls_get_dob_for_display($user_id, false); ?></td>
+                    </tr>
+                </table>
 			</div>
 		</div>
 		<div class="postbox">

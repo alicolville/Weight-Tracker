@@ -4,6 +4,8 @@ defined('ABSPATH') or die('Naw ya dinnie!');
 
 function ws_ls_admin_page_data_add_edit() {
 
+    ws_ls_user_data_permission_check();
+
 	$data = false;
 
 	// Determine user id / entry id

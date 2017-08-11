@@ -378,7 +378,8 @@ function ws_does_target_weight_exist($user_id)
 
   return false;
 }
-function ws_ls_set_user_preferences($settings, $user_id = false, $height = false)
+function ws_ls_set_user_preferences($settings, $user_id = false, $height = false,
+                                        $activity_level = false, $gender = false, $dob = false)
 {
   global $wpdb;
 
@@ -407,17 +408,20 @@ function ws_ls_set_user_preferences($settings, $user_id = false, $height = false
 	}
 
 
-  $db_fields['height'] = $height;
+    $db_fields['height'] = $height;
+	$db_fields['activity_level'] = $activity_level;
+    $db_fields['gender'] = $gender;
+    $db_fields['dob'] = (false === empty($dob)) ? ws_ls_convert_date_to_iso($dob) : '0000-00-00 00:00:00';
 
-  // Set data types
-  $db_field_types = array('%d','%s','%d');
+    // Set data types
+    $db_field_types = array('%d','%s','%d', '%f', '%d', '%s');
 
-  // Update or insert
-  $result = $wpdb->replace(
-                            $table_name,
-                            $db_fields,
-                            $db_field_types
-                          );
+      // Update or insert
+      $result = $wpdb->replace(
+                                $table_name,
+                                $db_fields,
+                                $db_field_types
+                              );
 
   $result = ($result === false) ? false : true;
 
@@ -466,9 +470,8 @@ function ws_ls_get_user_height($user_id = false, $use_cache = true) {
 
   global $wpdb;
 
-  if(false === $user_id){
-    $user_id = get_current_user_id();
-  }
+  $user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
+
 
   $table_name = $wpdb->prefix . WE_LS_USER_PREFERENCES_TABLENAME;
 
@@ -492,6 +495,36 @@ function ws_ls_get_user_height($user_id = false, $use_cache = true) {
 
   return $height;
 }
+
+function ws_ls_get_user_setting($field = 'gender', $user_id = false, $use_cache = true) {
+
+    global $wpdb;
+
+    // Default to logged in user if not user ID not specified.
+    $user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
+
+    // Validate field
+    $field = (in_array($field, ['activity_level', 'gender', 'height', 'dob'])) ? $field : 'gender';
+
+    $cache_key = $user_id . '-' . WE_LS_CACHE_KEY_USER_PREFERENCE . '-' . $field;
+
+    // Return cache if found!
+    $cache = ws_ls_get_cache($cache_key);
+    if (false === empty($cache) && true == $use_cache)   {
+        return $cache;
+    }
+
+    $sql =  $wpdb->prepare('SELECT ' . $field . ' FROM ' . $wpdb->prefix . WE_LS_USER_PREFERENCES_TABLENAME . ' WHERE user_id = %d', $user_id);
+    $row = $wpdb->get_row($sql, ARRAY_A);
+
+    if($row[$field]) {
+        ws_ls_set_cache($cache_key, $row[$field]);
+        return $row[$field];
+    }
+
+    return false;
+}
+
 
 function ws_ls_get_entry_counts($user_id = false, $use_cache = true) {
 

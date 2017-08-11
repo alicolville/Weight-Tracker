@@ -82,8 +82,11 @@
 
 		 $sql = "CREATE TABLE $table_name (
 				 user_id integer NOT NULL,
+			     activity_level float DEFAULT 0 NULL,
 				 settings text not null,
                  height float DEFAULT 0 NULL,
+                 gender float DEFAULT 0 NULL,
+                 dob datetime DEFAULT '0000-00-00 00:00:00' NOT NULL
 				 UNIQUE KEY user_id (user_id)
 		 ) $charset_collate;";
 
@@ -109,7 +112,7 @@
 
 	function ws_ls_upgrade() {
 
-		if(update_option('ws-ls-version-number', WE_LS_CURRENT_VERSION)) {
+		if(update_option('ws-ls-version-number', WE_LS_DB_VERSION)) {
 			ws_ls_create_mysql_tables();
 			ws_ls_activate();
             ws_ls_stats_clear_last_updated_date(); // This will force all stat entries to be recreated.

@@ -4,6 +4,8 @@ defined('ABSPATH') or die('Naw ya dinnie!');
 
 function ws_ls_admin_page_search_results() {
 
+    ws_ls_user_data_permission_check();
+
     ?>
     <div class="wrap">
     <h1><?php echo __('Search Results', WE_LS_SLUG); ?></h1>

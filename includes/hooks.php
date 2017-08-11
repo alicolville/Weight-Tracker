@@ -6,7 +6,9 @@
 	{
 		add_menu_page(WE_LS_TITLE, WE_LS_TITLE, 'manage_options', 'ws-ls-weight-loss-tracker-main-menu', 'ws_ls_settings_page', 'dashicons-chart-line');
 		add_submenu_page( 'ws-ls-weight-loss-tracker-main-menu', __('Settings', WE_LS_SLUG),  __('Settings', WE_LS_SLUG), 'manage_options', 'ws-ls-weight-loss-tracker-main-menu');
-        add_submenu_page( 'ws-ls-weight-loss-tracker-main-menu', __('Manage User Data', WE_LS_SLUG),  __('Manage User Data', WE_LS_SLUG), 'manage_options', 'ws-ls-wlt-data-home', 'ws_ls_admin_page_data_home');
+
+		// Display manage user screens to relevant roles.
+        add_submenu_page( 'ws-ls-weight-loss-tracker-main-menu', __('Manage User Data', WE_LS_SLUG),  __('Manage User Data', WE_LS_SLUG), WE_LS_VIEW_EDIT_USER_PERMISSION_LEVEL, 'ws-ls-wlt-data-home', 'ws_ls_admin_page_data_home');
 
         if(!WS_LS_IS_PRO) {
 			add_submenu_page( 'ws-ls-weight-loss-tracker-main-menu', __('Get Pro Version', WE_LS_SLUG),  __('Get Pro Version', WE_LS_SLUG), 'manage_options', 'ws-ls-weight-loss-tracker-pro', 'ws_ls_advertise_pro');
@@ -132,7 +134,7 @@
 		if(false === empty($_GET['mode'])) {
 
 			// If on the add / edit entry page, then include relevant CSS / JS for form
-			if('entry' == $_GET['mode'] ) {
+			if(in_array($_GET['mode'], ['entry', 'user-settings'])) {
 				ws_ls_enqueue_form_dependencies();
 			} else if ('user' == $_GET['mode'] ) {
 				ws_ls_enqueue_chart_dependencies();
