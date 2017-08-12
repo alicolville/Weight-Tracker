@@ -43,6 +43,13 @@ function ws_ls_get_user_bmi($user_defined_arguments) {
 	return '';
 }
 
+/**
+ *
+ * Shortcode to render the user's activity level
+ *
+ * @param $user_defined_arguments an array of arguments passed in via shortcode
+ * @return string - HTML to be sent to browser
+ */
 function ws_ls_shortcode_activity_level($user_defined_arguments) {
 
 	$arguments = shortcode_atts(array(	'not-specified-text' => __('Not Specified', WE_LS_SLUG),
@@ -55,6 +62,13 @@ function ws_ls_shortcode_activity_level($user_defined_arguments) {
 	return ws_ls_display_user_setting($arguments['user-id'], 'activity_level', $arguments['not-specified-text'], $arguments['shorten']);
 }
 
+/**
+ *
+ * Shortcode to render the user's gender
+ *
+ * @param $user_defined_arguments an array of arguments passed in via shortcode
+ * @return string - HTML to be sent to browser
+ */
 function ws_ls_shortcode_gender($user_defined_arguments) {
 
 	$arguments = shortcode_atts(array(	'not-specified-text' => __('Not Specified', WE_LS_SLUG),
@@ -64,6 +78,13 @@ function ws_ls_shortcode_gender($user_defined_arguments) {
 	return ws_ls_display_user_setting($arguments['user-id'], 'gender', $arguments['not-specified-text']);
 }
 
+/**
+ *
+ * Shortcode to render the user's Date of Birth
+ *
+ * @param $user_defined_arguments an array of arguments passed in via shortcode
+ * @return string - HTML to be sent to browser
+ */
 function ws_ls_shortcode_dob($user_defined_arguments) {
 
 	$arguments = shortcode_atts(array(	'not-specified-text' => __('Not Specified', WE_LS_SLUG),
