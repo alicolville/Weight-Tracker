@@ -42,3 +42,33 @@ function ws_ls_get_user_bmi($user_defined_arguments) {
 
 	return '';
 }
+
+function ws_ls_shortcode_activity_level($user_defined_arguments) {
+
+	$arguments = shortcode_atts(array(	'not-specified-text' => __('Not Specified', WE_LS_SLUG),
+										'user-id' => get_current_user_id(),
+									 	'shorten' => false),
+								$user_defined_arguments );
+
+	$arguments['shorten'] = ws_ls_force_bool_argument($arguments['shorten']);
+
+	return ws_ls_display_user_setting($arguments['user-id'], 'activity_level', $arguments['not-specified-text'], $arguments['shorten']);
+}
+
+function ws_ls_shortcode_gender($user_defined_arguments) {
+
+	$arguments = shortcode_atts(array(	'not-specified-text' => __('Not Specified', WE_LS_SLUG),
+										'user-id' => get_current_user_id() ),
+								$user_defined_arguments );
+
+	return ws_ls_display_user_setting($arguments['user-id'], 'gender', $arguments['not-specified-text']);
+}
+
+function ws_ls_shortcode_dob($user_defined_arguments) {
+
+	$arguments = shortcode_atts(array(	'not-specified-text' => __('Not Specified', WE_LS_SLUG),
+										'user-id' => get_current_user_id() ),
+								$user_defined_arguments );
+
+	return ws_ls_get_dob_for_display($arguments['user-id'], $arguments['not-specified-text']);
+}
