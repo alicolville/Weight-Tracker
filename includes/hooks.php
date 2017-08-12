@@ -115,15 +115,17 @@
 
 		wp_enqueue_style('ws-ls-admin-style', plugins_url( '../css/admin.css', __FILE__ ), array(), WE_LS_CURRENT_VERSION);
 
-		// Settings page
+        // Enqueue admin.js regardless (needed to dismiss notices)
+        wp_enqueue_script('ws-ls-admin', plugins_url( '../js/admin' .     $minified . '.js', __FILE__ ), array('jquery'), WE_LS_CURRENT_VERSION);
+
+       	// Settings page
 		if(false === empty($_GET['page']) && 'ws-ls-weight-loss-tracker-main-menu' == $_GET['page']) {
 			wp_enqueue_script('jquery-tabs',plugins_url( '../js/tabs.min.js', __FILE__ ), array('jquery'), WE_LS_CURRENT_VERSION);
 			wp_enqueue_style('wlt-tabs', plugins_url( '../css/tabs.min.css', __FILE__ ), array(), WE_LS_CURRENT_VERSION);
 			wp_enqueue_style('wlt-tabs-flat', plugins_url( '../css/tabs.flat.min.css', __FILE__ ), array(), WE_LS_CURRENT_VERSION);
-            wp_enqueue_script('ws-ls-admin', plugins_url( '../js/admin' .     $minified . '.js', __FILE__ ), array('jquery'), WE_LS_CURRENT_VERSION);
 		}
 
-
+		// Include relevant JS for admin "Manage User data" pages
         if(false === empty($_GET['page']) && 'ws-ls-wlt-data-home' == $_GET['page'] &&
             false === empty($_GET['mode']) && 'user-settings' == $_GET['mode']) {
 			wp_enqueue_script('ws-ls-admin-user-pref', plugins_url( '../js/admin.user-preferences' . 	$minified . '.js', __FILE__ ), array('jquery'), WE_LS_CURRENT_VERSION);
@@ -141,7 +143,6 @@
 				wp_localize_script('jquery-chart-ws-ls', 'ws_ls_config', ws_ls_get_js_config());
 			}
 		}
-
 	}
 	add_action( 'admin_enqueue_scripts', 'ws_ls_enqueue_admin_files');
 
