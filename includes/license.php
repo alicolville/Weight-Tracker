@@ -1,34 +1,58 @@
 <?php
-	defined('ABSPATH') or die('Jog on!');
 
-  /*
-  // ------------------------------------------------------------------------------------------------------------
-  Looking to bypass the license cost?
-  // ------------------------------------------------------------------------------------------------------------
+defined('ABSPATH') or die('Jog on!');
 
-  Please Read:
 
-  This file handles the license for the PRO version. Yes, I bundle all the Pro version code within the free plugin. So of course, all you need to do is hack this file to get Pro version for free.
-  My faith in human nature would love to think you wouldn't do that and pay the small price for the Pro version. That small fee keeps me developing this plugin.
+function ws_ls_has_a_valid_license() {
 
-  - To save you hacking my beautiful code about, simply change the variable below to true to get out of paying a penny (shame on you)
+	// Do we have an Pro Plus license?
+	if(ws_ls_has_a_valid_pro_plus_license()) {
+		return 'pro-plus';
+	}
 
-  */
+	// Do we have an Pro  license?
+	if(ws_ls_has_a_valid_pro_license()) {
+		return 'pro';
+	}
 
-  	define('WS_LS_I_DONT_WANT_TO_PAY_A_THING', false); // Don't be that person!
+    return false;
+}
 
-	define('WS_LS_DEV_NON_PRO', false);
+// ------------------------------------------------------------------------------------------------------------
+// New licensing
+// ------------------------------------------------------------------------------------------------------------
 
-  // ------------------------------------------------------------------------------------------------------------
-  // Leave below. Just break above!
-  // ------------------------------------------------------------------------------------------------------------
+function ws_ls_has_a_valid_pro_plus_license() {
 
-	define('WS_LS_LICENSE_SITE_HASH', 'ws-ls-license-site-hash');
-	define('WS_LS_LICENSE', 'ws-ls-license');
-	define('WS_LS_LICENSE_VALID', 'ws-ls-license-valid');
+	// TODO: Replace this in version 6.0
+	if( defined('WS_LS_PRO_PLUS') && true === WS_LS_PRO_PLUS ) {
+		return true;
+	}
 
-  function ws_ls_generate_site_hash()
-  {
+    return false;
+}
+
+// ------------------------------------------------------------------------------------------------------------
+// Old licensing
+// ------------------------------------------------------------------------------------------------------------
+
+define('WS_LS_LICENSE_SITE_HASH', 'ws-ls-license-site-hash');
+define('WS_LS_LICENSE', 'ws-ls-license');
+define('WS_LS_LICENSE_VALID', 'ws-ls-license-valid');
+
+function ws_ls_has_a_valid_pro_license() {
+
+	$valid_license = get_option(WS_LS_LICENSE_VALID);
+
+    if(true == $valid_license) {
+      return true;
+    }
+
+    return false;
+}
+
+function ws_ls_generate_site_hash() {
+
     $site_hash = get_option(WS_LS_LICENSE_SITE_HASH);
 
     // Generate a basic site key from URL and plugin slug
@@ -38,38 +62,16 @@
       update_option(WS_LS_LICENSE_SITE_HASH, $site_hash);
     }
     return $site_hash;
-  }
+}
 
-  function ws_ls_has_a_valid_license()
-  {
-    $valid_license = get_option(WS_LS_LICENSE_VALID);
 
-	// In Dev mode?
-	if (true == WS_LS_DEV_NON_PRO) {
-		return false;
-	}
+function ws_ls_generate_license($site_hash) {
+	return md5('yeken.co.uk' . $site_hash);
+}
 
-    // If we have a tight ass
-    if(true == WS_LS_I_DONT_WANT_TO_PAY_A_THING) {
-      return true;
-    }
+function ws_ls_is_validate_license($license_key_from_yeken) {
 
-    if(true == $valid_license) {
-      return true;
-    }
-
-    return false;
-  }
-
-  function ws_ls_generate_license($site_hash)
-  {
-    // I know, I know. Not secure. However I'm trusting you people not to rip it off for a few pounds!
-    return md5('yeken.co.uk' . $site_hash);
-  }
-
-  function ws_ls_is_validate_license($license_key_from_yeken)
-  {
-    $site_hash = ws_ls_generate_site_hash();
+	$site_hash = ws_ls_generate_site_hash();
     $comparison_license = ws_ls_generate_license($site_hash);
 
     if ($comparison_license == $license_key_from_yeken){
@@ -79,8 +81,8 @@
     }
 
     return false;
-  }
-function ws_ls_get_license()
-  {
-		return get_option(WS_LS_LICENSE);
-  }
+}
+
+function ws_ls_get_license() {
+	return get_option(WS_LS_LICENSE);
+}

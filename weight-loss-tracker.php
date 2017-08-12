@@ -44,10 +44,20 @@ register_deactivation_hook(__FILE__, 'ws_ls_deactivate');
 
 include WS_LS_ABSPATH . 'includes/license.php';
 
-if(ws_ls_has_a_valid_license()){
+$license_type = ws_ls_has_a_valid_license();
+
+// Standard Pro license?
+if(in_array($license_type, ['pro', 'pro-plus']) ){
  define('WS_LS_IS_PRO', true);
 } else {
  define('WS_LS_IS_PRO', false);
+}
+
+// Pro Plus license?
+if('pro-plus' === $license_type){
+ define('WS_LS_IS_PRO_PLUS', true);
+} else {
+ define('WS_LS_IS_PRO_PLUS', false);
 }
 
 // -----------------------------------------------------------------------------------------
