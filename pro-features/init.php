@@ -57,6 +57,10 @@ function ws_ls_register_pro_shortcodes(){
 		[wlt-progress-bar] - Show a progress bar indicating progress towards target weight.
 		[wlt-message] - Show a message if the user meets certain criteria (e.g. put weight on).
 		[wlt-user-settings] - Shows a form for user settings.
+        [wlt-gender] - display the user's gender
+        [wlt-dob] - display the user's Date of Birth
+        [wlt-activity-level] - display the user's Activity Level
+        [wlt-new-users] - display the number of new WP users in last x days
     */
 
     add_shortcode( 'weight-loss-tracker-chart', 'ws_ls_shortcode_chart' );
@@ -82,7 +86,7 @@ function ws_ls_register_pro_shortcodes(){
 	add_shortcode( 'wlt-gender', 'ws_ls_shortcode_gender' );
 	add_shortcode( 'wlt-dob', 'ws_ls_shortcode_dob' );
 	add_shortcode( 'wlt-activity-level', 'ws_ls_shortcode_activity_level' );
-
+    add_shortcode( 'wlt-new-users', 'ws_ls_shortcode_new_users' );
 }
 add_action( 'init', 'ws_ls_register_pro_shortcodes');
 

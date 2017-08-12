@@ -171,6 +171,9 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 	* [wlt-activity-level] 	not-specified-text
 							user-id
 							shorten
+    * [wlt-new-users]        "days" (number of days to look back)
+                             "count-all-roles" - by default false and only count user's with a role of Subscriber. Set to true to count everyone.
+
 
 = 5.0 =
 

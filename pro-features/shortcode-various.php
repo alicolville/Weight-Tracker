@@ -93,3 +93,48 @@ function ws_ls_shortcode_dob($user_defined_arguments) {
 
 	return ws_ls_get_dob_for_display($arguments['user-id'], $arguments['not-specified-text']);
 }
+
+/**
+ * Shortcode to render the number of WordPress users in last x days
+ *
+ * Args:    "days" (number of days to look back)
+ *          "count-all-roles" - by default false and only count user's with a role of Subscriber. Set to true to count everyone.
+ *
+ *
+ * @param $user_defined_arguments
+ * @return mixed
+ */
+function ws_ls_shortcode_new_users($user_defined_arguments) {
+
+    $arguments = shortcode_atts(['days' => 7, 'count-all-roles' => false], $user_defined_arguments );
+
+    $arguments['days'] = ws_ls_force_numeric_argument($arguments['days'], 7);
+    $arguments['count-all-roles'] = ws_ls_force_bool_argument($arguments['count-all-roles']);
+
+    // Ensure no. days greater than or equal to 1
+    $arguments['days'] = ($arguments['days'] < 1) ? 1 : $arguments['days'];
+
+    // Build from date
+    $from_date = strtotime ( "-{$arguments['days']} day" ,  time() ) ;
+    $from_date = date ( 'Y-m-d H:i:s' , $from_date );
+
+    $wp_search_query = array (
+        'date_query'    => array(
+            array(
+                'after'     => $from_date,
+                'inclusive' => true,
+            ),
+        ),
+    );
+
+    // Do we want to count all user roles within WordPress or subscribers (most likely) only
+    if (false === $arguments['count-all-roles']) {
+        $wp_search_query['role'] = 'subscriber';
+    }
+
+    $user_query = new WP_User_Query( $wp_search_query );
+
+    $count = (false === empty($user_query->results) ? count($user_query->results) : 0);
+
+    return esc_html($count);
+}
