@@ -10,6 +10,7 @@
 	define('WE_LS_SLUG', 'weight-loss-tracker');
 	define('WE_LS_DATA_URL', 'https://weight.yeken.uk/wlt/plugin-info.json');
 	define('WE_LS_STATS_URL', 'https://weight.yeken.uk/wlt/stats.php');
+    define('WE_LS_CDN_CHART_JS', 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js');
 	define('WE_LS_TABLENAME', 'WS_LS_DATA');
 	define('WE_LS_TARGETS_TABLENAME', 'WS_LS_DATA_TARGETS');
   	define('WE_LS_USER_PREFERENCES_TABLENAME', 'WS_LS_DATA_USER_PREFERENCES');

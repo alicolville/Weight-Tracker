@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight, loss, lose, helper, bmi, body, mass, index, graph, track, stones, kg, table, data, plot, target, history, pounds, responsive, chart, measurements, cm, centimeters, inches, hip, waist, bicep, thigh
 Requires at least: 4.4.0
 Tested up to: 4.8
-Stable tag: 5.0.1
+Stable tag: 5.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate Link: https://www.paypal.me/yeken
@@ -49,8 +49,8 @@ Also supports the following tags:
 
 Our Pro version has now been released! If you upgrade, you get the additional features:
 
-* **Admin can view, edit and delete user data. Various tools for viewing user's graphs, tables of entries, BMI, targets, weight lost / gained stats and much more.
-* **CSV and JSON exports for all data or a particular user.
+* **Admin can view, edit and delete user data.** Various tools for viewing user's graphs, tables of entries, BMI, targets, weight lost / gained stats and much more.
+* **CSV and JSON exports** for all data or a particular user.
 * **Measurements.** Support for recording measurements like Hip, Waist, Leg, Bicep, etc. Displayed on charts and tables.
 * **BMI.** Allows a user to specify their height. Once specified, their BMI is displayed next to each weight entry. There is also a shortcode to render the latest BMI.
 * **Email notifications.** Receive email notifications when a person updates their target or adds / edits a weight.
@@ -159,6 +159,10 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 5.0! Now view and interact with your user's data like never before.
 
 == Changelog ==
+
+= 5.0.2 =
+
+* Bug fix: Fixed an issue where JS enqueue order was causing some charts not to appear in IE.
 
 = 5.0.1 =
 
