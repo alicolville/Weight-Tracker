@@ -84,15 +84,17 @@
 		$minified = ws_ls_use_minified();
 
 		// JavaScript files
-		ws_ls_enqueue_chart_dependencies();
-		wp_enqueue_script('jquery-validate',plugins_url( '../js/jquery.validate.min.js', __FILE__ ), array('jquery'), WE_LS_CURRENT_VERSION);
+        wp_enqueue_script('jquery-validate',plugins_url( '../js/jquery.validate.min.js', __FILE__ ), array('jquery'), WE_LS_CURRENT_VERSION);
 		wp_enqueue_script('jquery-validate-additional',plugins_url( '../js/additional-methods.min.js', __FILE__ ), array('jquery', 'jquery-validate'), WE_LS_CURRENT_VERSION);
 
 		wp_enqueue_script('jquery-ui-datepicker');
 		wp_enqueue_script('wl-ls-js', plugins_url( '../js/ws-ls' . 	$minified . '.js', __FILE__ ), array(), WE_LS_CURRENT_VERSION, true);
 		wp_enqueue_script('wl-ls-js-form', plugins_url( '../js/ws-ls-entry-form.js', __FILE__ ), array(), WE_LS_CURRENT_VERSION, true);
 
-		// Add localization data for JS
+        wp_enqueue_script('chart-js', WE_LS_CDN_CHART_JS, array( 'jquery', 'wl-ls-js' ), WE_LS_CURRENT_VERSION);
+        wp_enqueue_script('jquery-chart-ws-ls', plugins_url( '../js/ws-ls-chart' . 	$minified . '.js', __FILE__ ), array('chart-js'), WE_LS_CURRENT_VERSION, true);
+
+        // Add localization data for JS
 		wp_localize_script('wl-ls-js', 'ws_ls_config', ws_ls_get_js_config());
 
 		// Tabs enabled?
@@ -139,7 +141,8 @@
 			if(in_array($_GET['mode'], ['entry', 'user-settings'])) {
 				ws_ls_enqueue_form_dependencies();
 			} else if ('user' == $_GET['mode'] ) {
-				ws_ls_enqueue_chart_dependencies();
+                wp_enqueue_script('chart-js', WE_LS_CDN_CHART_JS, array( 'jquery' ), WE_LS_CURRENT_VERSION);
+                wp_enqueue_script('jquery-chart-ws-ls', plugins_url( '../js/ws-ls-chart' . 	$minified . '.js', __FILE__ ), array('chart-js'), WE_LS_CURRENT_VERSION, true);
 				wp_localize_script('jquery-chart-ws-ls', 'ws_ls_config', ws_ls_get_js_config());
 			}
 		}
@@ -160,14 +163,6 @@
 		wp_enqueue_script('jquery-validate-additional',plugins_url( '../js/additional-methods.min.js', __FILE__ ), array('jquery', 'jquery-validate'), WE_LS_CURRENT_VERSION);
 		wp_enqueue_script('wl-ls-js', plugins_url( '../js/ws-ls-entry-form' . 	$minified . '.js', __FILE__ ), array(), WE_LS_CURRENT_VERSION, true);
 		wp_localize_script('wl-ls-js', 'ws_ls_config', ws_ls_get_js_config());
-	}
-
-	function ws_ls_enqueue_chart_dependencies() {
-
-		$minified = ws_ls_use_minified();
-
-		wp_enqueue_script('chart-js', 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js', array( 'jquery' ), WE_LS_CURRENT_VERSION);
-		wp_enqueue_script('jquery-chart-ws-ls', plugins_url( '../js/ws-ls-chart' . 	$minified . '.js', __FILE__ ), array('chart-js'), WE_LS_CURRENT_VERSION, true);
 	}
 
 	function ws_ls_use_minified() {
