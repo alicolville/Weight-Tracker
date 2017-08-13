@@ -162,7 +162,9 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 
 = 5.0.3 =
 
+* Bug fix: Fixed JS issue where charts were only being rendered for Pro users!
 * Bug fix: Missing semi colon in JS file.
+* Improvement: Updated all .PO language files.
 
 = 5.0.2 =
 
