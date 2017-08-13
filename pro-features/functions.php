@@ -290,7 +290,6 @@ function ws_ls_get_dob($user_id) {
 	$user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
 
     return ws_ls_get_user_setting('dob', $user_id);
-
 }
 
 /**
@@ -310,6 +309,30 @@ function ws_ls_get_dob_for_display($user_id = false, $not_specified_text = '') {
 	}
 
 	return $not_specified_text;
+}
+
+/**
+ * Used to calculate agre from the person's DOB
+ *
+ * @param bool $user_id
+ * @return bool|int
+ */
+function ws_ls_get_age_from_dob($user_id = false){
+
+    $user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
+
+    $dob = ws_ls_get_dob($user_id);
+
+    if(false === empty($dob) && '0000-00-00 00:00:00' !== $dob) {
+
+        $dob = new DateTime($dob);
+        $today   = new DateTime('today');
+        $age = $dob->diff($today)->y;
+
+        return $age;
+    }
+
+    return false;
 }
 
 /**

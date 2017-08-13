@@ -522,7 +522,7 @@ function ws_ls_get_user_setting($field = 'gender', $user_id = false, $use_cache 
         return $row[$field];
     }
 
-    return false;
+    return NULL;
 }
 
 

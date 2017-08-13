@@ -100,7 +100,6 @@ function ws_ls_shortcode_dob($user_defined_arguments) {
  * Args:    "days" (number of days to look back)
  *          "count-all-roles" - by default false and only count user's with a role of Subscriber. Set to true to count everyone.
  *
- *
  * @param $user_defined_arguments
  * @return mixed
  */

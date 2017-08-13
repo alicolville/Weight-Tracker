@@ -36,6 +36,11 @@ if(defined('WS_LS_ABSPATH')){
 	include WS_LS_ABSPATH . 'pro-features/admin-pages/data-user-edit-settings.php';
     include WS_LS_ABSPATH . 'pro-features/admin-pages/data-search-results.php';
 
+    // Include files for those that have a Pro Plus license
+    if(WS_LS_IS_PRO_PLUS) {
+        include WS_LS_ABSPATH . 'pro-features/plus/bmr.php';
+    }
+
 	// Email notifications enabled?
 	if(WE_LS_EMAIL_ENABLE) {
 		include WS_LS_ABSPATH . 'pro-features/emails.php';
