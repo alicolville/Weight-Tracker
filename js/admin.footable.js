@@ -126,7 +126,7 @@ jQuery( document ).ready(function ($) {
 
 		// Strip the timestamp off
 		var date = value.split(" ");
-		date = new Date(date[0])
+		date = new Date(date[0]);
 
 		var day = date.getDate();
 		var month = date.getMonth() + 1;
