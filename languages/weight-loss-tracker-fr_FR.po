@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2017-08-11 06:17+0100\n"
-"PO-Revision-Date: 2017-08-11 06:17+0100\n"
+"POT-Creation-Date: 2017-08-13 19:24+0100\n"
+"PO-Revision-Date: 2017-08-13 19:24+0100\n"
 "Last-Translator: Alex\n"
 "Language-Team: \n"
 "Language: en_GB\n"
@@ -92,7 +92,7 @@ msgid "You have modified data. Please refresh page."
 msgstr ""
 
 #: includes/core.php:265 pro-features/admin-pages/data-search-results.php:45
-#: pro-features/functions.pages.php:56
+#: pro-features/functions.pages.php:61
 #, fuzzy
 msgid "Target Weight"
 msgstr "Målvægt"
@@ -197,140 +197,140 @@ msgstr ""
 msgid "The plugin supports the following measurements"
 msgstr ""
 
-#: includes/globals.php:107
+#: includes/globals.php:108
 msgid "Forearm - Left"
 msgstr ""
 
-#: includes/globals.php:107
+#: includes/globals.php:108
 msgid "FL"
 msgstr ""
 
-#: includes/globals.php:108
+#: includes/globals.php:109
 msgid "Forearm - Right"
 msgstr ""
 
-#: includes/globals.php:108
+#: includes/globals.php:109
 msgid "FR"
 msgstr ""
 
-#: includes/globals.php:109
+#: includes/globals.php:110
 msgid "Bicep - Left"
 msgstr ""
 
-#: includes/globals.php:109
+#: includes/globals.php:110
 msgid "BL"
 msgstr ""
 
-#: includes/globals.php:110
+#: includes/globals.php:111
 msgid "Bicep - Right"
 msgstr ""
 
-#: includes/globals.php:110
+#: includes/globals.php:111
 msgid "BR"
 msgstr ""
 
-#: includes/globals.php:111
+#: includes/globals.php:112
 msgid "Calf - Left"
 msgstr ""
 
-#: includes/globals.php:111
+#: includes/globals.php:112
 msgid "CL"
 msgstr ""
 
-#: includes/globals.php:112
+#: includes/globals.php:113
 msgid "Calf - Right"
 msgstr ""
 
-#: includes/globals.php:112
+#: includes/globals.php:113
 msgid "CR"
 msgstr ""
 
-#: includes/globals.php:113
+#: includes/globals.php:114
 msgid "Thigh - Left"
 msgstr ""
 
-#: includes/globals.php:113
+#: includes/globals.php:114
 msgid "TL"
 msgstr ""
 
-#: includes/globals.php:114
+#: includes/globals.php:115
 msgid "Thigh - Right"
 msgstr ""
 
-#: includes/globals.php:114
+#: includes/globals.php:115
 msgid "TR"
 msgstr ""
 
-#: includes/globals.php:115
+#: includes/globals.php:116
 msgid "Waist"
 msgstr ""
 
-#: includes/globals.php:115
+#: includes/globals.php:116
 msgid "W"
 msgstr ""
 
-#: includes/globals.php:116
+#: includes/globals.php:117
 msgid "Bust / Chest"
 msgstr ""
 
-#: includes/globals.php:116
+#: includes/globals.php:117
 msgid "BC"
 msgstr ""
 
-#: includes/globals.php:117
+#: includes/globals.php:118
 msgid "Shoulders"
 msgstr ""
 
-#: includes/globals.php:117
+#: includes/globals.php:118
 #, fuzzy
 #| msgid "St"
 msgid "S"
 msgstr "St"
 
-#: includes/globals.php:118 pro-features/functions.pages.php:84
+#: includes/globals.php:119 pro-features/functions.pages.php:78
 #, fuzzy
 #| msgid "Weight"
 msgid "Height"
 msgstr "Poids"
 
-#: includes/globals.php:118
+#: includes/globals.php:119
 msgid "H"
 msgstr ""
 
-#: includes/globals.php:119
+#: includes/globals.php:120
 msgid "Buttocks"
 msgstr ""
 
-#: includes/globals.php:119
+#: includes/globals.php:120
 msgid "B"
 msgstr ""
 
-#: includes/globals.php:120
+#: includes/globals.php:121
 msgid "Hips"
 msgstr ""
 
-#: includes/globals.php:120
+#: includes/globals.php:121
 msgid "HI"
 msgstr ""
 
-#: includes/globals.php:121
+#: includes/globals.php:122
 msgid "Navel"
 msgstr ""
 
-#: includes/globals.php:121
+#: includes/globals.php:122
 msgid "NA"
 msgstr ""
 
-#: includes/globals.php:122
+#: includes/globals.php:123
 msgid "Neck"
 msgstr ""
 
-#: includes/globals.php:122
+#: includes/globals.php:123
 msgid "NE"
 msgstr ""
 
 #: includes/hooks.php:8 includes/shortcode-weight-loss-tracker.php:71
-#: pro-features/functions.pages.php:122
+#: pro-features/functions.pages.php:116
 #, fuzzy
 msgid "Settings"
 msgstr " Indstillinger"
@@ -347,11 +347,11 @@ msgstr ""
 msgid "Help"
 msgstr ""
 
-#: includes/hooks.php:179 pro-features/admin-pages/data-user.php:19
+#: includes/hooks.php:175 pro-features/admin-pages/data-user.php:19
 msgid "The preferences for this user have been saved."
 msgstr ""
 
-#: includes/hooks.php:180
+#: includes/hooks.php:176
 msgid "An error occurred while trying to save the user's preferences."
 msgstr ""
 
@@ -371,7 +371,7 @@ msgstr ""
 msgid "No user specified"
 msgstr ""
 
-#: includes/shortcode-various.php:101 pro-features/functions.pages.php:60
+#: includes/shortcode-various.php:101 pro-features/functions.pages.php:65
 #, fuzzy
 msgid "No target set"
 msgstr "Målvægt"
@@ -453,7 +453,7 @@ msgid ""
 msgstr ""
 
 #: pages/page.pro.advertise.php:10 pages/page.settings.php:8
-#: pro-features/functions.php:300
+#: pro-features/export.php:268 pro-features/functions.php:320
 msgid "You do not have sufficient permissions to access this page."
 msgstr ""
 
@@ -1003,12 +1003,12 @@ msgid "Email"
 msgstr ""
 
 #: pro-features/admin-pages/data-search-results.php:42
-#: pro-features/functions.pages.php:40
+#: pro-features/functions.pages.php:45
 msgid "No. of Entries"
 msgstr ""
 
 #: pro-features/admin-pages/data-search-results.php:43
-#: pro-features/functions.pages.php:44
+#: pro-features/functions.pages.php:49
 #, fuzzy
 msgid "Start Weight"
 msgstr "Målvægt"
@@ -1064,6 +1064,7 @@ msgid "Show 100 recent entries"
 msgstr ""
 
 #: pro-features/admin-pages/data-summary.php:96
+#: pro-features/functions.pages.php:33
 msgid "User Search"
 msgstr ""
 
@@ -1102,17 +1103,17 @@ msgid "Export all data"
 msgstr ""
 
 #: pro-features/admin-pages/data-summary.php:151
-#: pro-features/functions.pages.php:114
+#: pro-features/functions.pages.php:108
 msgid "To CSV"
 msgstr ""
 
 #: pro-features/admin-pages/data-summary.php:154
-#: pro-features/functions.pages.php:117
+#: pro-features/functions.pages.php:111
 msgid "To JSON"
 msgstr ""
 
 #: pro-features/admin-pages/data-summary.php:159
-#: pro-features/functions.pages.php:130
+#: pro-features/functions.pages.php:124
 msgid "Delete Data"
 msgstr ""
 
@@ -1453,73 +1454,68 @@ msgid ""
 "Enter a user's email address, display name or username and click Search."
 msgstr ""
 
-#: pro-features/functions.pages.php:34
+#: pro-features/functions.pages.php:39
 msgid "User Information"
 msgstr ""
 
-#: pro-features/functions.pages.php:48
+#: pro-features/functions.pages.php:53
 #, fuzzy
 msgid "Latest Weight"
 msgstr "Målvægt"
 
-#: pro-features/functions.pages.php:52
+#: pro-features/functions.pages.php:57
 msgid "Diff. from Start"
 msgstr ""
 
-#: pro-features/functions.pages.php:65
+#: pro-features/functions.pages.php:70
 msgid "Diff. from Target"
 msgstr ""
 
-#: pro-features/functions.pages.php:73
-#, fuzzy
-msgid "Current Height"
-msgstr "Målvægt"
-
-#: pro-features/functions.pages.php:75 pro-features/functions.pages.php:81
-msgid "No height specified"
-msgstr ""
-
-#: pro-features/functions.pages.php:80
+#: pro-features/functions.pages.php:74
 msgid "Current BMI"
 msgstr ""
 
-#: pro-features/functions.pages.php:88
+#: pro-features/functions.pages.php:75
+msgid "No height specified"
+msgstr ""
+
+#: pro-features/functions.pages.php:82
 msgid "Gender"
 msgstr ""
 
-#: pro-features/functions.pages.php:92
+#: pro-features/functions.pages.php:86
 msgid "Activity Level"
 msgstr ""
 
-#: pro-features/functions.pages.php:96
+#: pro-features/functions.pages.php:90
 msgid "Date of Birth"
 msgstr ""
 
-#: pro-features/functions.pages.php:103
+#: pro-features/functions.pages.php:97
 #, fuzzy
 #| msgid "Save Entry"
 msgid "Add Entry"
 msgstr "Enregistrer"
 
-#: pro-features/functions.pages.php:106
+#: pro-features/functions.pages.php:100
 #, fuzzy
 #| msgid "Add a new weight"
 msgid "Add a new entry"
 msgstr "Ajouter un nouveau poids"
 
-#: pro-features/functions.pages.php:111
+#: pro-features/functions.pages.php:105
 msgid "Export Data"
 msgstr ""
 
-#: pro-features/functions.pages.php:125
+#: pro-features/functions.pages.php:119
 msgid "Edit this user's settings"
 msgstr ""
 
-#: pro-features/functions.pages.php:133
+#: pro-features/functions.pages.php:127
 msgid "Delete ALL data for this user"
 msgstr ""
 
-#: pro-features/functions.pages.php:153
+#: pro-features/functions.pages.php:147
 msgid "Error: The User's ID was missing..."
 msgstr ""
 
@@ -1577,7 +1573,7 @@ msgstr ""
 msgid "Extra Active (very active & physical job)"
 msgstr ""
 
-#: pro-features/functions.php:261
+#: pro-features/functions.php:247 pro-features/functions.php:306
 msgid "Not Specified"
 msgstr ""
 
@@ -1895,3 +1891,7 @@ msgstr ""
 #: pro-features/widget-progress.php:123
 msgid "Text to be displayed under bar. Use {t} to display target weight."
 msgstr ""
+
+#, fuzzy
+#~ msgid "Current Height"
+#~ msgstr "Målvægt"
