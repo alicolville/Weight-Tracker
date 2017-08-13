@@ -2,8 +2,21 @@
 
     defined('ABSPATH') or die("Jog on!");
 
-    // http://www.diabetes.co.uk/bmr-calculator.html
+    /**
+     *
+     * Calculate a user's BMR for their given attributes (entered by user in preferences)
+     *
+     * Based upon documentation at:
+     * http://www.diabetes.co.uk/bmr-calculator.html
+     * http://www.bmi-calculator.net/bmr-calculator/metric-bmr-calculator.php#result
+     *
+     * @param bool $user_id
+     * @param bool $return_error
+     * @return float|null
+     */
     function ws_ls_calculate_bmr($user_id = false, $return_error = true) {
+
+        //TODO: Add caching
 
         $user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
 
@@ -37,22 +50,25 @@
 
         // Calculate BMR based on gender
         $bmr = NULL;
-        $gender = intval($gender);
 
-        if (1 === $gender) {
-
-            //BMR for Women = 655.1 + (9.6 * weight [kg]) + (1.8 * size [cm]) − (4.7 * age [years])
+        // Change formula depending on gender
+        if (1 === intval($gender)) {
+            // Female:  655.1 + (9.6 * weight [kg]) + (1.8 * size [cm]) − (4.7 * age [years])
             $bmr = 655.1 + (9.6 * $weight) + (1.8 * $height) - (4.7 * $age);
         } else {
-
-            // 66.47 + (13.7 * weight [kg]) + (5 * size [cm]) − (6.8 * age [years])
-            $bmr = 66.47 + (13.7 * $weight) + (5 * $height) - (6.8 * $age);
+            // Male:    66.47 + (13.7 * weight [kg]) + (5 * size [cm]) − (6.8 * age [years])
+            $bmr = 66 + (13.7 * $weight) + (5 * $height) - (6.8 * $age);
         }
 
-        return $bmr;
+        return round($bmr, 2);
     }
 
-
+    /**
+     * [wlt-bmr] - Shortcode to render a user's BMR
+     *
+     * @param $user_defined_arguments
+     * @return string
+     */
     function ws_ls_shortcode_bmr($user_defined_arguments) {
 
         if(false === WS_LS_IS_PRO_PLUS) {
@@ -69,7 +85,7 @@
 
         $bmr = ws_ls_calculate_bmr($arguments['user-id']);
 
-        return (false === is_numeric($bmr) && $arguments['suppress-errors']) ? '' : $bmr;
+        return (false === is_numeric($bmr) && $arguments['suppress-errors']) ? '' : esc_html($bmr);
     }
     add_shortcode( 'wlt-bmr', 'ws_ls_shortcode_bmr' );
 

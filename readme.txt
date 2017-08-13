@@ -174,6 +174,11 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
     * [wlt-new-users]        "days" (number of days to look back)
                              "count-all-roles" - by default false and only count user's with a role of Subscriber. Set to true to count everyone.
 
+    PRO PLUS;
+
+    * [wlt-bmr]     'suppress-errors' => false,      // If true, don't display errors from ws_ls_calculate_bmr()
+                    'user-id'
+
 = 5.0.2 =
 
 * Bug fix: Fixed an issue where JS enqueue order was causing some charts not to appear in IE.
