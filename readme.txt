@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight, loss, lose, helper, bmi, body, mass, index, graph, track, stones, kg, table, data, plot, target, history, pounds, responsive, chart, measurements, cm, centimeters, inches, hip, waist, bicep, thigh
 Requires at least: 4.4.0
 Tested up to: 4.8
-Stable tag: 5.0.3
+Stable tag: 5.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate Link: https://www.paypal.me/yeken
@@ -159,6 +159,10 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 5.0! Now view and interact with your user's data like never before.
 
 == Changelog ==
+
+= 5.0.4 =
+
+* Bug fix: Fixed missing charts doe to clashes with other plugins. JS enqueue issue where other plugins were using Chart.js (myCred in this example) with the same enqueue slug.
 
 = 5.0.3 =
 
