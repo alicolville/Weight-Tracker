@@ -179,6 +179,16 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
     * [wlt-bmr]     'suppress-errors' => false,      // If true, don't display errors from ws_ls_calculate_bmr()
                     'user-id'
 
+= 5.0.4 =
+
+* Bug fix: Fixed missing charts doe to clashes with other plugins. JS enqueue issue where other plugins were using Chart.js (myCred in this example) with the same enqueue slug.
+
+= 5.0.3 =
+
+* Bug fix: Fixed JS issue where charts were only being rendered for Pro users!
+* Bug fix: Missing semi colon in JS file.
+* Improvement: Updated all .PO language files.
+
 = 5.0.2 =
 
 * Bug fix: Fixed an issue where JS enqueue order was causing some charts not to appear in IE.
