@@ -16,42 +16,46 @@
      */
     function ws_ls_calculate_bmr($user_id = false, $return_error = true) {
 
-        //TODO: Add caching
-
         $user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
+
+		$cache_key = $user_id . '-' . WE_LS_CACHE_KEY_BMR;
+
+		// Do we have BMR cached?
+		if($cache = ws_ls_get_cache($cache_key)) {
+			return $cache;
+		}
 
         // First, we need to ensure the person has a gender.
         $gender = ws_ls_get_user_setting('gender', $user_id);
 
         if(true === empty($gender)) {
-            return ($return_error) ? __('No Gender Specified', WE_LS_SLUG) : NULL;
+            return ($return_error) ? __('No Gender specified', WE_LS_SLUG) : NULL;
         }
 
         // Check if user has DOB - calculate age
         $age = ws_ls_get_age_from_dob($user_id);
 
-        if(true === empty($age)) {
-            return ($return_error) ? __('No Date of Birth Specified', WE_LS_SLUG) : NULL;
+        if(true === empty($age) ) {
+            return ($return_error) ? __('No Date of Birth specified or too young', WE_LS_SLUG) : NULL;
         }
 
         //Get height
         $height = ws_ls_get_user_setting('height', $user_id);
 
         if(true === empty($height)) {
-            return ($return_error) ? __('No Height Specified', WE_LS_SLUG) : NULL;
+            return ($return_error) ? __('No Height specified', WE_LS_SLUG) : NULL;
         }
 
         // Recent weight?
         $weight = ws_ls_get_recent_weight_in_kg($user_id);
 
         if(true === empty($weight)) {
-            return ($return_error) ? __('No Weight Entered', WE_LS_SLUG) : NULL;
+            return ($return_error) ? __('No Weight entered', WE_LS_SLUG) : NULL;
         }
 
-        // Calculate BMR based on gender
         $bmr = NULL;
 
-        // Change formula depending on gender
+        // Calculate BMR based on gender
         if (1 === intval($gender)) {
             // Female:  655.1 + (9.6 * weight [kg]) + (1.8 * size [cm]) − (4.7 * age [years])
             $bmr = 655.1 + (9.6 * $weight) + (1.8 * $height) - (4.7 * $age);
@@ -59,6 +63,9 @@
             // Male:    66.47 + (13.7 * weight [kg]) + (5 * size [cm]) − (6.8 * age [years])
             $bmr = 66 + (13.7 * $weight) + (5 * $height) - (6.8 * $age);
         }
+
+		// Cache BMR
+		ws_ls_set_cache($cache_key, $bmr);
 
         return round($bmr, 2);
     }
@@ -88,4 +95,3 @@
         return (false === is_numeric($bmr) && $arguments['suppress-errors']) ? '' : esc_html($bmr);
     }
     add_shortcode( 'wlt-bmr', 'ws_ls_shortcode_bmr' );
-

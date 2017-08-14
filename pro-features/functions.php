@@ -332,7 +332,7 @@ function ws_ls_get_age_from_dob($user_id = false){
         return $age;
     }
 
-    return false;
+    return NULL;
 }
 
 /**

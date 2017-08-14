@@ -39,6 +39,7 @@ if(defined('WS_LS_ABSPATH')){
     // Include files for those that have a Pro Plus license
     if(WS_LS_IS_PRO_PLUS) {
         include WS_LS_ABSPATH . 'pro-features/plus/bmr.php';
+		include WS_LS_ABSPATH . 'pro-features/plus/harris.benedict.php';
     }
 
 	// Email notifications enabled?

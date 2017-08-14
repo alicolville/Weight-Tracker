@@ -32,6 +32,8 @@
 	define('WE_LS_CACHE_KEY_STATS_SUMMARY', 'user-stats-summary');
 	define('WE_LS_CACHE_KEY_WEIGHT_FOR_DAY', 'user-weight-for-day');
     define('WE_LS_CACHE_KEY_ENTRY_COUNTS', 'entry-counts');
+	define('WE_LS_CACHE_KEY_BMR', 'bmr');
+	define('WE_LS_CACHE_KEY_HARRIS_BENEDICT', 'bmr');
 	define('WE_LS_KEY_YEKEN_ADMIN_NOTIFICATION', 'yeken-admin-notification');
 	define('WE_LS_CACHE_ADMIN_USER_DATA', 'admin-user-data');
 	define('WE_LS_TABLE_MAX_WEEK_FILTERS', 150);
