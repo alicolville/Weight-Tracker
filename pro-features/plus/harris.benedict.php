@@ -31,9 +31,17 @@
 		// We have activity level and bmr, calculate daily calories.
 		$calorie_intake['maintain'] = ['total' => round($activity_level * $bmr, 2)];
 
-		//TODO: Add cap here to calorie level
+		$calories_to_lose = $calorie_intake['maintain']['total'] - 500;
+        $is_female = ws_ls_is_female($user_id);
 
-		$calorie_intake['lose'] = ['total' => $calorie_intake['maintain']['total'] - 500] ; // lose weight (1 to 2lbs per week)
+        // Female
+        if (true === $is_female && $calories_to_lose > WS_LS_CAL_CAP_FEMALE) {
+            $calories_to_lose = WS_LS_CAL_CAP_FEMALE;
+        } elseif (false === $is_female && $calories_to_lose > WS_LS_CAL_CAP_MALE) {
+            $calories_to_lose = WS_LS_CAL_CAP_MALE;
+        }
+
+		$calorie_intake['lose'] = ['total' => $calories_to_lose] ; // lose weight (1 to 2lbs per week)
 
 		// Breakdown calories into meal types
 		foreach ($calorie_intake as $key => $data) {
@@ -125,6 +133,8 @@
                     esc_html($calories['lose']['snacks'])
                 );
 
+            $html .= sprintf('<p><small>%s</small></p>', ws_ls_display_calorie_cap($user_id));
+
             return $html;
 
 		} else {
@@ -191,3 +201,25 @@
 		return ws_ls_harris_benedict_render_table($arguments['user-id'], $arguments['error-message']);
 	}
 	add_shortcode( 'wlt-calories-table', 'ws_ls_shortcode_harris_benedict_table' );
+
+    /**
+     *
+     * Depending on the user's gender, display the calorie cap information
+     *
+     * @param bool $user_id
+     */
+	function ws_ls_display_calorie_cap($user_id = false) {
+
+        $user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
+
+        $is_female = ws_ls_is_female($user_id);
+
+        return sprintf('%s %s %s. %s <a href="%s">%s</a>.',
+            ($is_female) ? __('Female', WE_LS_SLUG ) : __('Male', WE_LS_SLUG ),
+            __('calories for weight loss are capped at ', WE_LS_SLUG ),
+            ($is_female) ? number_format(WS_LS_CAL_CAP_FEMALE) : number_format(WS_LS_CAL_CAP_MALE),
+            __('This can be modified within ', WE_LS_SLUG ),
+            ws_ls_get_link_to_settings(),
+            __('settings', WE_LS_SLUG )
+        );
+    }

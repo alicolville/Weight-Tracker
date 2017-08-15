@@ -103,6 +103,15 @@ function ws_ls_get_link_to_user_settings($id) {
 }
 
 /**
+ * Get link to settings page
+ * @return string
+ */
+function ws_ls_get_link_to_settings() {
+    return admin_url( 'admin.php?page=ws-ls-weight-loss-tracker-main-menu' );
+}
+
+
+/**
  * Given a user and entry ID, return a link to the edit entrant page
  * @param  int $id User ID
  * @param  int $entry_id Entry ID
@@ -277,6 +286,21 @@ function ws_ls_display_user_setting($user_id, $field = 'dob', $not_specified_tex
 	}
 
 	return $not_specified_text;
+}
+
+/**
+ * Determine if user is a female
+ *
+ * @param $user_id
+ * @return bool
+ */
+function ws_ls_is_female($user_id) {
+
+    $user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
+
+    $gender = ws_ls_get_user_setting('gender', $user_id);
+
+    return (false === empty($gender) && 1 == intval($gender)) ? true : false;
 }
 
 /**

@@ -10,6 +10,14 @@
     width:100%;
     white-space: pre;
 }
+.ws-ls-disabled-pro-plus th::after {
+    content: "\A(Pro Plus version)";
+    color: #FFA500;
+    font-weight: bold;
+    clear: both;
+    width:100%;
+    white-space: pre;
+}
 .ws-ls-advanced-data-table
 {
 	table-layout: auto !important;

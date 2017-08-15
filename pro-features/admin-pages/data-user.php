@@ -54,10 +54,11 @@ function ws_ls_admin_page_data_user() {
 
 								} else {
 
-									echo sprintf('<p><a href="%s">%s</a> %s.</p>',
+									echo sprintf('<p><a href="%s">%s</a> %s. %s.</p>',
 													ws_ls_upgrade_link(),
 													__('Upgrade to Pro Plus', WE_LS_SLUG),
-													__('to view the user\'s daily calorie intake required to either maintain or lose weight (Harris Benedict formula)' , WE_LS_SLUG)
+													__('to view the user\'s daily calorie intake required to either maintain or lose weight (Harris Benedict formula)' , WE_LS_SLUG),
+                                                    ws_ls_calculations_link()
 												);
 								}
                             ?>

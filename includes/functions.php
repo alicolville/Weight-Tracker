@@ -576,4 +576,15 @@ function ws_ls_upgrade_link() {
     return esc_url('#'); //TODO
 }
 
+/**
+ * Return the link for calculations page
+ * @return string
+ */
+function ws_ls_calculations_link($link_only = false) {
+
+    $url = 'https://weight.yeken.uk/calculations/';
+
+    return (false === $link_only) ? sprintf('<a href="%s" target="blank">%s</a>', $url, __('Read more about calculations', WE_LS_SLUG)) : $url;
+}
+
 ?>

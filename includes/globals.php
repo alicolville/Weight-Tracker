@@ -89,7 +89,9 @@
 		'WE_LS_EMAIL_NOTIFICATIONS_NEW' => true,
 		'WE_LS_EMAIL_NOTIFICATIONS_TARGETS' => true,
 		'WE_LS_DISABLE_YEKEN_NOTIFICATIONS' => false,
-		'WE_LS_VIEW_EDIT_USER_PERMISSION_LEVEL' => 'manage_options' // Default to admin only being allowed to edit / view user data
+		'WE_LS_VIEW_EDIT_USER_PERMISSION_LEVEL' => 'manage_options', // Default to admin only being allowed to edit / view user data
+        'WS_LS_CAL_CAP_MALE' => 1900,
+        'WS_LS_CAL_CAP_FEMALE' => 1400
 	);
 
     // -----------------------------------------------------------------------------------
@@ -277,6 +279,26 @@
 			$globals['WE_LS_EMAIL_NOTIFICATIONS_TARGETS'] = false;
 		}
 	}
+
+    // -----------------------------------------------------------------------------------
+    // Pro Plus
+    // -----------------------------------------------------------------------------------
+
+    if (WS_LS_IS_PRO_PLUS) {
+
+	    $female_cal_cap = get_option('ws-ls-female-cal-cap');
+
+	    if(is_numeric($female_cal_cap)) {
+            $globals['WS_LS_CAL_CAP_FEMALE'] = intval($female_cal_cap);
+        }
+
+        $male_cal_cap = get_option('ws-ls-male-cal-cap');
+
+        if(is_numeric($male_cal_cap)) {
+            $globals['WS_LS_CAL_CAP_MALE'] = intval($male_cal_cap);
+        }
+    }
+
 	// -----------------------------------------------------------------------------------
 	// Loop through array and set defines!
 	// -----------------------------------------------------------------------------------
