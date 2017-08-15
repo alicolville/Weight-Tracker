@@ -54,6 +54,14 @@
 		return $calorie_intake;
 	}
 
+    /**
+     *
+     * Render a HTML table of the person's maintain / lose calories
+     *
+     * @param $user_id
+     * @param bool $missing_data_text
+     * @return string
+     */
 	function ws_ls_harris_benedict_render_table($user_id, $missing_data_text = false) {
 
 		$user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
@@ -63,41 +71,73 @@
 		$missing_data_text = (false === $missing_data_text) ? __('Please ensure all relevant data to calculate calorie intake has been entered i.e. Activity Level, Date of Birth, Current Weight, Gender and Height.', WE_LS_SLUG ) : $missing_data_text;
 
 		if(false === empty($calories)) {
-			?>
-			<table class="form-table">
-				<tr>
-					<th></th>
-					<th><?php echo __( 'Total', WE_LS_SLUG ); ?></th>
-					<th><?php echo __( 'Breakfast', WE_LS_SLUG ); ?> (20%)</th>
-					<th><?php echo __( 'Lunch', WE_LS_SLUG ); ?> (30%)</th>
-					<th><?php echo __( 'Dinner', WE_LS_SLUG ); ?> (30%)</th>
-					<th><?php echo __( 'Snacks', WE_LS_SLUG ); ?> (20%)</th>
-				</tr>
-				<tr valign="top">
-					<td><strong><?php echo __( 'Maintain', WE_LS_SLUG ); ?></strong></td>
-					<td><?php echo number_format($calories['maintain']['total']); ?></td>
-					<td><?php esc_html_e($calories['maintain']['breakfast']); ?></td>
-					<td><?php esc_html_e($calories['maintain']['lunch']); ?></td>
-					<td><?php esc_html_e($calories['maintain']['dinner']); ?></td>
-					<td><?php esc_html_e($calories['maintain']['snacks']); ?></td>
-				</tr>
-				<tr valign="top" class="alternate">
-					<td><strong><?php echo __( 'Lose', WE_LS_SLUG ); ?></strong></td>
-					<td><?php echo number_format($calories['lose']['total']); ?></td>
-					<td><?php esc_html_e($calories['lose']['breakfast']); ?></td>
-					<td><?php esc_html_e($calories['lose']['lunch']); ?></td>
-					<td><?php esc_html_e($calories['lose']['dinner']); ?></td>
-					<td><?php esc_html_e($calories['lose']['snacks']); ?></td>
-				</tr>
-			</table>
-			<?php
+
+		    // Table Header
+            $html = sprintf('<table class="form-table">
+                                <tr>
+                                    <th></th>
+                                    <th>%s</th>
+                                    <th>%s (20%%)</th>
+                                    <th>%s (30%%)</th>
+                                    <th>%s (30%%)</th>
+                                    <th>%s (20%%)</th>
+                                </tr>',
+                                __( 'Total', WE_LS_SLUG ),
+                                __( 'Breakfast', WE_LS_SLUG ),
+                                __( 'Lunch', WE_LS_SLUG ),
+                                __( 'Dinner', WE_LS_SLUG ),
+                                __( 'Snacks', WE_LS_SLUG )
+                    );
+
+
+                // Maintain
+                $html .= sprintf('<tr valign="top">
+                                    <td><strong>%s</strong></td>
+                                    <td>%s</td>
+                                    <td>%s</td>
+                                    <td>%s</td>
+                                    <td>%s</td>
+                                    <td>%s</td>
+                                </tr>',
+                                __( 'Maintain', WE_LS_SLUG ),
+                                number_format($calories['maintain']['total']),
+                                esc_html($calories['maintain']['breakfast']),
+                                esc_html($calories['maintain']['lunch']),
+                                esc_html($calories['maintain']['dinner']),
+                                esc_html($calories['maintain']['snacks'])
+                    );
+
+                // Lose
+                $html .= sprintf('<tr valign="top" class="alternate">
+                                                    <td><strong>%s</strong></td>
+                                                    <td>%s</td>
+                                                    <td>%s</td>
+                                                    <td>%s</td>
+                                                    <td>%s</td>
+                                                    <td>%s</td>
+                                                </tr>
+                                    </table>',
+                    __( 'Lose', WE_LS_SLUG ),
+                    number_format($calories['lose']['total']),
+                    esc_html($calories['lose']['breakfast']),
+                    esc_html($calories['lose']['lunch']),
+                    esc_html($calories['lose']['dinner']),
+                    esc_html($calories['lose']['snacks'])
+                );
+
+            return $html;
 
 		} else {
-			echo '<p>' . esc_html($missing_data_text) . '</p>';
+			return '<p>' . esc_html($missing_data_text) . '</p>';
 		}
 
 	}
 
+    /**
+     * Render the shortcode [wlt-calories]
+     *
+     * @param $user_defined_arguments
+     */
 	function ws_ls_shortcode_harris_benedict($user_defined_arguments) {
 
 		if(false === WS_LS_IS_PRO_PLUS) {
@@ -128,6 +168,13 @@
 	}
 	add_shortcode( 'wlt-calories', 'ws_ls_shortcode_harris_benedict' );
 
+    /**
+     * Renders the shortcode [wlt-calories-table]
+     *
+     * Basically displays the maintain / lose calorie table as shown on a user's record in admin
+     *
+     * @param $user_defined_arguments
+     */
 	function ws_ls_shortcode_harris_benedict_table($user_defined_arguments) {
 
 		if(false === WS_LS_IS_PRO_PLUS) {

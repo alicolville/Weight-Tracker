@@ -178,6 +178,10 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 
     * [wlt-bmr]     'suppress-errors' => false,      // If true, don't display errors from ws_ls_calculate_bmr()
                     'user-id'
+    * [wlt-calories] 'error-message' => __('Please ensure all relevant data to calculate calorie intake has been entered i.e. Activity Level, Date of Birth, Current Weight, Gender and Height.', WE_LS_SLUG ),
+                     'user-id' => false,
+                     'progress' => 'maintain',	// 'maintain', 'lose'
+                     'type' => 'lunch'			// 'breakfast', 'lunch', 'dinner', 'snack', 'total'
 
 = 5.0.4 =
 
