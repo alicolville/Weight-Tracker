@@ -2,7 +2,11 @@
 
 defined('ABSPATH') or die('Jog on!');
 
-
+/**
+ * Determines whether the user has a valid license (Pro or Pro plus)
+ *
+ * @return bool|string
+ */
 function ws_ls_has_a_valid_license() {
 
 	// Do we have an Pro Plus license?

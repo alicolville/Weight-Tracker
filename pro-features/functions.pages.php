@@ -94,8 +94,13 @@ function ws_ls_user_side_bar($user_id) {
                         <th><?php echo __('BMR', WE_LS_SLUG); ?></th>
                         <td>
 							<?php
-									$bmr = ws_ls_calculate_bmr($user_id, false);
-									echo (false === empty($bmr)) ? esc_html($bmr) : __('Missing data', WE_LS_SLUG);
+                                    if(ws_ls_has_a_valid_pro_plus_license()) {
+                                        $bmr = ws_ls_calculate_bmr($user_id, false);
+                                        echo (false === empty($bmr)) ? esc_html($bmr) : __('Missing data', WE_LS_SLUG);
+
+                                    } else {
+                                        echo sprintf('<a href="%s">Upgrade to Pro Plus</a>', ws_ls_upgrade_link());
+                                    }
 							?>
 						</td>
                     </tr>

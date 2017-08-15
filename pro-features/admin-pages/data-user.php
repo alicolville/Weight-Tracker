@@ -44,6 +44,24 @@ function ws_ls_admin_page_data_user() {
 							?>
 						</div>
 					</div>
+                    <div class="postbox">
+                        <h2 class="hndle"><span><?php echo __('Daily calorie needs', WE_LS_SLUG); ?></span></h2>
+                        <div class="inside">
+                            <?php
+
+                                if(ws_ls_has_a_valid_pro_plus_license()) {
+
+                                    $calories = ws_ls_harris_benedict_calculate_calories($user_id);
+                                    var_dump($calories);
+
+                                } else {
+
+                                    echo sprintf('<a href="%s">Upgrade to Pro Plus</a>', ws_ls_upgrade_link());
+
+                                }
+                            ?>
+                        </div>
+                    </div>
 					<div class="postbox">
 						<h2 class="hndle"><span><?php echo __('Entries for this user', WE_LS_SLUG); ?></span></h2>
 						<div class="inside">

@@ -568,5 +568,12 @@ function ws_ls_iso_date_into_correct_format($date, $return_formatted_date_only =
     return $date;
 }
 
+/**
+ * Return the link for upgrade page
+ * @return string
+ */
+function ws_ls_upgrade_link() {
+    return esc_url('#'); //TODO
+}
 
 ?>
