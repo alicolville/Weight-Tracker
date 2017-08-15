@@ -88,7 +88,7 @@ function ws_ls_user_side_bar($user_id) {
                     </tr>
 					<tr>
                         <th><?php echo __('Date of Birth', WE_LS_SLUG); ?></th>
-                        <td><?php echo ws_ls_get_dob_for_display($user_id, false); ?></td>
+                        <td><?php echo ws_ls_get_dob_for_display($user_id, false); ?> (<?php echo ws_ls_get_age_from_dob($user_id); ?>)</td>
                     </tr>
 					<tr class="last">
                         <th><?php echo __('BMR', WE_LS_SLUG); ?></th>
