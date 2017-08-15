@@ -88,7 +88,7 @@ function ws_ls_user_side_bar($user_id) {
                     </tr>
 					<tr>
                         <th><?php echo __('Date of Birth', WE_LS_SLUG); ?></th>
-                        <td><?php echo ws_ls_get_dob_for_display($user_id, false); ?> (<?php echo ws_ls_get_age_from_dob($user_id); ?>)</td>
+                        <td><?php echo ws_ls_get_dob_for_display($user_id, false, true); ?></td>
                     </tr>
 					<tr class="last">
                         <th><?php echo __('BMR', WE_LS_SLUG); ?></th>
@@ -96,8 +96,7 @@ function ws_ls_user_side_bar($user_id) {
 							<?php
                                     if(ws_ls_has_a_valid_pro_plus_license()) {
                                         $bmr = ws_ls_calculate_bmr($user_id, false);
-                                        echo (false === empty($bmr)) ? esc_html($bmr) : __('Missing data', WE_LS_SLUG);
-
+				                        echo (false === empty($bmr)) ? esc_html($bmr) : __('Missing data', WE_LS_SLUG);
                                     } else {
                                         echo sprintf('<a href="%s">Upgrade to Pro Plus</a>', ws_ls_upgrade_link());
                                     }

@@ -6,7 +6,7 @@
     // -----------------------------------------------------------------------------------
 	// Constants - highly recommended that you don't change these
 	// -----------------------------------------------------------------------------------
-	define('WE_LS_TITLE', 'Weight Loss Tracker');
+	define('WE_LS_TITLE', 'Weight Tracker');
 	define('WE_LS_SLUG', 'weight-loss-tracker');
 	define('WE_LS_DATA_URL', 'https://weight.yeken.uk/wlt/plugin-info.json');
 	define('WE_LS_STATS_URL', 'https://weight.yeken.uk/wlt/stats.php');
@@ -32,8 +32,8 @@
 	define('WE_LS_CACHE_KEY_STATS_SUMMARY', 'user-stats-summary');
 	define('WE_LS_CACHE_KEY_WEIGHT_FOR_DAY', 'user-weight-for-day');
     define('WE_LS_CACHE_KEY_ENTRY_COUNTS', 'entry-counts');
-	define('WE_LS_CACHE_KEY_BMR', 'bmr');
-	define('WE_LS_CACHE_KEY_HARRIS_BENEDICT', 'bmr');
+	define('WE_LS_CACHE_KEY_BMR', 'bmr-');
+	define('WE_LS_CACHE_KEY_HARRIS_BENEDICT', 'harris-benedict');
 	define('WE_LS_KEY_YEKEN_ADMIN_NOTIFICATION', 'yeken-admin-notification');
 	define('WE_LS_CACHE_ADMIN_USER_DATA', 'admin-user-data');
 	define('WE_LS_TABLE_MAX_WEEK_FILTERS', 150);

@@ -22,7 +22,7 @@
 
 		// Do we have BMR cached?
 		if($cache = ws_ls_get_cache($cache_key)) {
-			return $cache;
+			return ws_ls_round_bmr_harris($cache);
 		}
 
         // First, we need to ensure the person has a gender.
@@ -67,7 +67,7 @@
 		// Cache BMR
 		ws_ls_set_cache($cache_key, $bmr);
 
-        return round($bmr, 2);
+        return ws_ls_round_bmr_harris($bmr);
     }
 
     /**
@@ -95,3 +95,13 @@
         return (false === is_numeric($bmr) && $arguments['suppress-errors']) ? '' : esc_html($bmr);
     }
     add_shortcode( 'wlt-bmr', 'ws_ls_shortcode_bmr' );
+
+	/**
+	 * Round BMR / Harris Benedict
+	 *
+	 * @param $value
+	 * @return $value
+	 */
+	function ws_ls_round_bmr_harris($value) {
+		return (is_numeric($value)) ? round($value, 0) : $value;
+	}

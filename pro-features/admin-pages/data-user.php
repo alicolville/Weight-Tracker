@@ -48,17 +48,18 @@ function ws_ls_admin_page_data_user() {
                         <h2 class="hndle"><span><?php echo __('Daily calorie needs', WE_LS_SLUG); ?></span></h2>
                         <div class="inside">
                             <?php
+								if(ws_ls_has_a_valid_pro_plus_license()) {
 
-                                if(ws_ls_has_a_valid_pro_plus_license()) {
+									echo ws_ls_harris_benedict_render_table($user_id);
 
-                                    $calories = ws_ls_harris_benedict_calculate_calories($user_id);
-                                    var_dump($calories);
+								} else {
 
-                                } else {
-
-                                    echo sprintf('<a href="%s">Upgrade to Pro Plus</a>', ws_ls_upgrade_link());
-
-                                }
+									echo sprintf('<p><a href="%s">%s</a> %s.</p>',
+													ws_ls_upgrade_link(),
+													__('Upgrade to Pro Plus', WE_LS_SLUG),
+													__('to view the user\'s daily calorie intake required to either maintain or lose weight (Harris Benedict formula)' , WE_LS_SLUG)
+												);
+								}
                             ?>
                         </div>
                     </div>

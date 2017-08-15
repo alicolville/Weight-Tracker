@@ -298,14 +298,21 @@ function ws_ls_get_dob($user_id) {
  * @param $user_id
  * @return bool|string
  */
-function ws_ls_get_dob_for_display($user_id = false, $not_specified_text = '') {
+function ws_ls_get_dob_for_display($user_id = false, $not_specified_text = '', $include_age = false) {
 
 	$dob = ws_ls_get_dob($user_id);
 
 	$not_specified_text = (false === $not_specified_text) ? __('Not Specified', WE_LS_SLUG) : esc_html($not_specified_text);
 
     if (false === empty($dob) && '0000-00-00 00:00:00' !== $dob) {
-		return ws_ls_iso_date_into_correct_format($dob);
+		$html = ws_ls_iso_date_into_correct_format($dob);
+
+		// Include age?
+		if(true === $include_age) {
+			$html .= ' ('. ws_ls_get_age_from_dob($user_id) . ')';
+		}
+
+		return $html;
 	}
 
 	return $not_specified_text;
