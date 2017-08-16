@@ -28,6 +28,8 @@ function ws_ls_has_a_valid_license() {
 
 function ws_ls_has_a_valid_pro_plus_license() {
 
+    return true; //TODO: Add logic here to validate a pro license
+
 	// TODO: Replace this in version 6.0
 	if( defined('WS_LS_PRO_PLUS') && true === WS_LS_PRO_PLUS ) {
 		return true;

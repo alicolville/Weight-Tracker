@@ -8,7 +8,7 @@ function ws_ls_admin_page_data_edit_target() {
 
 	$data = false;
 
-	// Determine user id
+    // Determine user id
 	$user_id = ws_ls_querystring_value('user-id', true);
 
 	// We need to ensure we either have a user id (to add a new entry to) OR an existing entry ID so we can load / edit it.

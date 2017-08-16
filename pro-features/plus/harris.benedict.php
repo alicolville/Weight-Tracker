@@ -81,15 +81,16 @@
 		if(false === empty($calories)) {
 
 		    // Table Header
-            $html = sprintf('<table class="form-table">
+            $html = sprintf('<table class="%s">
                                 <tr>
-                                    <th></th>
+                                    <th class="ws-ls-empty-cell"></th>
                                     <th>%s</th>
                                     <th>%s (20%%)</th>
                                     <th>%s (30%%)</th>
                                     <th>%s (30%%)</th>
                                     <th>%s (20%%)</th>
                                 </tr>',
+                                false === is_admin() ? 'ws-ls-harris-benedict' : 'form-table',
                                 __( 'Total', WE_LS_SLUG ),
                                 __( 'Breakfast', WE_LS_SLUG ),
                                 __( 'Lunch', WE_LS_SLUG ),
@@ -133,7 +134,9 @@
                     esc_html($calories['lose']['snacks'])
                 );
 
-            $html .= sprintf('<p><small>%s</small></p>', ws_ls_display_calorie_cap($user_id));
+            if(true === is_admin()) {
+                $html .= sprintf('<p><small>%s</small></p>', ws_ls_display_calorie_cap($user_id));
+            }
 
             return $html;
 
