@@ -18,11 +18,8 @@ function ws_ls_admin_page_data_edit_target() {
 	}
 
 	//If we have a Redirect URL, base decode.
-	$redirect_url = ws_ls_querystring_value('redirect');
+	$redirect_url = ws_ls_get_link_to_user_profile($user_id);
 
-	if(false === empty($redirect_url)) {
-		$redirect_url = base64_decode($redirect_url);
-	}
 ?>
 	<div class="wrap">
 		<div id="poststuff">
@@ -33,7 +30,7 @@ function ws_ls_admin_page_data_edit_target() {
 						<div class="postbox">
 							<h2><span><?php echo __('Edit user\'s target', WE_LS_SLUG); ?></span></h2>
 							<div class="inside">
-
+                                <?php echo ws_ls_display_weight_form(true, false, $user_id, true, false, false, false, false, $redirect_url); ?>
 							</div>
 						</div>
 					</div>

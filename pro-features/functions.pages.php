@@ -58,11 +58,14 @@ function ws_ls_user_side_bar($user_id) {
                     </tr>
                     <tr>
                         <th><?php echo __('Target Weight', WE_LS_SLUG); ?></th>
-                        <td><?php
+                        <td>
+                            <a href="<?php echo ws_ls_get_link_to_edit_target($user_id); ?>">
+                                <?php
 
-                            $target = ws_ls_weight_target_weight($user_id, true);
-                            echo (true === empty($target)) ? __('No target set', WE_LS_SLUG) : $target;
-                            ?>
+                                $target = ws_ls_weight_target_weight($user_id, true);
+                                echo (true === empty($target)) ? __('No target set', WE_LS_SLUG) : $target;
+                                ?>
+                            </a>
                         </td>
                     </tr>
                     <tr>
