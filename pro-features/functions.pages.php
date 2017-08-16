@@ -13,7 +13,7 @@ function ws_ls_box_user_search_form() {
 			<input type="text" name="search" placeholder=""  />
             <input type="hidden" name="page" value="ws-ls-wlt-data-home"  />
             <input type="hidden" name="mode" value="search-results"  />
-			<input type="submit" value="Search" />
+			<input type="submit" class="button" value="Search" />
 		</form>
 	<?php
 }
@@ -39,7 +39,6 @@ function ws_ls_user_side_bar($user_id) {
 			<h2 class="hndle"><span><?php echo __('User Information', WE_LS_SLUG); ?></span></h2>
 			<div class="inside">
     			<table class="ws-ls-sidebar-stats">
-
                     <?php $stats = ws_ls_get_entry_counts($user_id); ?>
                     <tr>
                         <th><?php echo __('No. of Entries', WE_LS_SLUG); ?></th>
@@ -110,7 +109,12 @@ function ws_ls_user_side_bar($user_id) {
 			<h2 class="hndle"><span><?php echo __('Add Entry', WE_LS_SLUG); ?></span></h2>
 			<div class="inside">
 				<a class="button-primary" href="<?php echo ws_ls_get_link_to_edit_entry($user_id); ?>">
-					<?php echo __('Add a new entry', WE_LS_SLUG); ?>
+					<i class="fa fa-calendar-plus-o"></i>
+					<?php echo __('Add Entry', WE_LS_SLUG); ?>
+				</a>
+				<a class="button-secondary" href="<?php echo ws_ls_get_link_to_edit_target($user_id); ?>">
+					<i class="fa fa-bullseye"></i>
+					<?php echo __('Edit Target', WE_LS_SLUG); ?>
 				</a>
 			</div>
 		</div>
@@ -118,9 +122,11 @@ function ws_ls_user_side_bar($user_id) {
 			<h2 class="hndle"><span><?php echo __('Export Data', WE_LS_SLUG); ?></span></h2>
 			<div class="inside">
 				<a class="button-secondary" href="<?php echo ws_ls_get_link_to_export('csv', $user_id); ?>">
+					<i class="fa fa-file-excel-o"></i>
 					<?php echo __('To CSV', WE_LS_SLUG); ?>
 				</a>
 				<a class="button-secondary" href="<?php echo ws_ls_get_link_to_export('json', $user_id); ?>">
+					<i class="fa fa-file-code-o"></i>
 					<?php echo __('To JSON', WE_LS_SLUG); ?>
 				</a>
 			</div>
@@ -129,14 +135,17 @@ function ws_ls_user_side_bar($user_id) {
 			<h2 class="hndle"><span><?php echo __('Settings', WE_LS_SLUG); ?></span></h2>
 			<div class="inside">
 				<a class="button-secondary" href="<?php echo ws_ls_get_link_to_user_settings($user_id); ?>">
-					<?php echo __('Edit this user\'s settings', WE_LS_SLUG); ?>
+						<i class="fa fa-cog"></i>
+					<?php echo __('Preferences', WE_LS_SLUG); ?>
 				</a>
+				<a href="%s" class="button-secondary"><i class="fa fa-wordpress"></i> WordPress Record</a>
 			</div>
 		</div>
 		<div class="postbox">
 			<h2 class="hndle"><span><?php echo __('Delete Data', WE_LS_SLUG); ?></span></h2>
 			<div class="inside">
 				<a class="button-secondary delete-confirm" href="<?php echo esc_url(admin_url( 'admin.php?page=ws-ls-wlt-data-home&mode=user&removedata=y&user-id=' . $user_id )); ?>">
+					<i class="fa fa-trash-o"></i>
 					<?php echo __('Delete ALL data for this user', WE_LS_SLUG); ?>
 				</a>
 			</div>
@@ -145,6 +154,40 @@ function ws_ls_user_side_bar($user_id) {
 	<?php
 
 }
+
+function ws_ls_user_header($user_id, $previous_url = false) {
+
+	if(true === empty($user_id) && false === is_numeric($user_id)) {
+		return;
+	}
+
+	if( $user_data = get_userdata( $user_id ) ) {
+
+		$previous_url = (true === empty($previous_url)) ? ws_ls_get_link_to_user_data() : $previous_url;
+
+		echo sprintf('
+			<h3>%s %s</h3>
+			<div class="postbox">
+				<div class="inside">
+
+					<a href="%s" class="button-secondary"><i class="fa fa-arrow-left"></i> %s</a>
+						<a href="%s" class="button-secondary"><i class="fa fa-wordpress"></i> %s</a>
+						<a href="" class="button-secondary"><i class="fa fa-line-chart"></i> %s</a>
+				</div>
+			</div>',
+			$user_data->user_nicename,
+			ws_ls_get_email_link($user_id, true),
+			esc_url($previous_url),
+			__('Back', WE_LS_SLUG),
+			get_edit_user_link($user_id),
+			__('WordPress Record', WE_LS_SLUG),
+			__('Weight Tracker Record', WE_LS_SLUG),
+			ws_ls_get_link_to_user_profile($user_id)
+		);
+	}
+
+}
+
 
 // ------------------------------------------------------------------------------
 // Helper functions

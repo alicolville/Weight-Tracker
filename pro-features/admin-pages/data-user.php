@@ -20,9 +20,8 @@ function ws_ls_admin_page_data_user() {
 <?php endif; ?>
 
 <div class="wrap">
-	<h1><?php echo $user_data->user_nicename; ?>
-			<?php echo ws_ls_get_email_link($user_id, true); ?></h1>
 	<div id="poststuff">
+		<?php ws_ls_user_header($user_id); ?>
 		<div id="post-body" class="metabox-holder columns-2">
 			<div id="post-body-content">
 				<div class="meta-box-sortables ui-sortable">

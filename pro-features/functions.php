@@ -103,6 +103,15 @@ function ws_ls_get_link_to_user_settings($id) {
 }
 
 /**
+ * Given a user ID, return a link to edit a user's target
+ * @param  int $id User ID
+ * @return string
+ */
+function ws_ls_get_link_to_edit_target($id) {
+	return is_numeric($id) ? esc_url(admin_url( 'admin.php?page=ws-ls-wlt-data-home&mode=target&user-id=' . $id )) : '#';
+}
+
+/**
  * Get link to settings page
  * @return string
  */

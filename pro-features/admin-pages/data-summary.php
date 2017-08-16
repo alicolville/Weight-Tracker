@@ -50,11 +50,11 @@ function ws_ls_admin_page_data_summary() {
                                 echo ws_ls_shortcode_stats_league_total(['ignore_cache' => $ignore_cache, 'order' => (false === $show_gain) ? 'asc' : 'desc']);
 
                             ?>
-                            <a class="btn button-secondary" href="<?php echo admin_url( 'admin.php?page=ws-ls-wlt-data-home&regenerate-stats=y' ); ?>"><?php echo __('Regenerate these stats', WE_LS_SLUG); ?></a>
+                            <a class="btn button-secondary" href="<?php echo admin_url( 'admin.php?page=ws-ls-wlt-data-home&regenerate-stats=y' ); ?>"><i class="fa fa-refresh"></i> <?php echo __('Regenerate these stats', WE_LS_SLUG); ?></a>
 							<?php
 
 								echo sprintf(
-												'<a class="btn button-secondary" href="%s">%s</a>',
+												'<a class="btn button-secondary" href="%s"><i class="fa fa-arrows-v"></i> %s</a>',
 												admin_url( 'admin.php?page=ws-ls-wlt-data-home&show-gain=') . ((false === $show_gain) ? 'y' : 'n'),
 												(false === $show_gain) ? __('Show who has gained the most', WE_LS_SLUG) : __('Show who has lost the most', WE_LS_SLUG)
 											);
@@ -80,7 +80,7 @@ function ws_ls_admin_page_data_summary() {
 							<?php
 
 								echo sprintf(
-												'<a class="btn button-secondary" href="%s">%s</a>',
+												'<a class="btn button-secondary" href="%s"><i class="fa fa-book"></i> %s</a>',
 												admin_url( 'admin.php?page=ws-ls-wlt-data-home&show-all=') . ((false === $show_all) ? 'y' : 'n'),
 												(false === $show_all) ? __('Show all entries', WE_LS_SLUG) : __('Show 100 recent entries', WE_LS_SLUG)
 											);
@@ -121,7 +121,7 @@ function ws_ls_admin_page_data_summary() {
                                                             <td>%s</td>
                                                         </tr>
                                                    </table>
-												
+
 													<p><small>(* %s %s)</small></p>',
 													__('No. of WordPress users', WE_LS_SLUG),
 													$entry_counts['number-of-users'],
@@ -140,6 +140,7 @@ function ws_ls_admin_page_data_summary() {
 						<h2 class="hndle"><span><?php echo __('View all data', WE_LS_SLUG); ?></span></h2>
 						<div class="inside">
 							<a class="button-primary" href="<?php echo ws_ls_get_link_to_user_data() . '&amp;mode=all'; ?>">
+								<i class="fa fa-book"></i>
 								<?php echo __('View all entries', WE_LS_SLUG); ?>
 							</a>
 						</div>
@@ -148,9 +149,11 @@ function ws_ls_admin_page_data_summary() {
                         <h2 class="hndle"><span><?php echo __('Export all data', WE_LS_SLUG); ?></span></h2>
                         <div class="inside">
                             <a class="button-secondary" href="<?php echo ws_ls_get_link_to_export('csv'); ?>">
+								<i class="fa fa-file-excel-o"></i>
                                 <?php echo __('To CSV', WE_LS_SLUG); ?>
                             </a>
                             <a class="button-secondary" href="<?php echo ws_ls_get_link_to_export('json'); ?>">
+								<i class="fa fa-file-code-o"></i>
                                 <?php echo __('To JSON', WE_LS_SLUG); ?>
                             </a>
                         </div>
@@ -159,7 +162,8 @@ function ws_ls_admin_page_data_summary() {
                         <h2 class="hndle"><span><?php echo __('Delete Data', WE_LS_SLUG); ?></span></h2>
                         <div class="inside">
                             <a class="button-secondary delete-confirm" href="<?php echo admin_url( 'admin.php?page=ws-ls-wlt-data-home&removedata=y' ); ?>">
-                                <?php echo __('Delete data for ALL users', WE_LS_SLUG); ?>
+								<i class="fa fa-exclamation-circle"></i>
+								<?php echo __('Delete data for ALL users', WE_LS_SLUG); ?>
                             </a>
                         </div>
                     </div>

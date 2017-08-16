@@ -163,6 +163,10 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 = 5.1 =
 
 	* Various tweaks to the underlying code to support future versions.
+	* Improvement: Back button added when viewing user records.
+	* Improvement: Icons added to buttons when managing user data.
+	* Improvement: Show user side bar when managing user data in more relevant places.
+	* Bug Fix: Edit Settings was loading DoB for the wrong user.
 
 	* [wlt-gender] 	not-specified-text
 					user-id
@@ -176,12 +180,16 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 
     PRO PLUS;
 
+	* Added BMR
+	* Added Harris Benedict
+
     * [wlt-bmr]     'suppress-errors' => false,      // If true, don't display errors from ws_ls_calculate_bmr()
                     'user-id'
     * [wlt-calories] 'error-message' => __('Please ensure all relevant data to calculate calorie intake has been entered i.e. Activity Level, Date of Birth, Current Weight, Gender and Height.', WE_LS_SLUG ),
                      'user-id' => false,
                      'progress' => 'maintain',	// 'maintain', 'lose'
                      'type' => 'lunch'			// 'breakfast', 'lunch', 'dinner', 'snack', 'total'
+	* [wlt-calories-table]
 
 = 5.0.4 =
 

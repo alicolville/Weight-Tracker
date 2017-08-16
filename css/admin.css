@@ -118,3 +118,6 @@
 .ws-ls-sidebar-stats .last th, .ws-ls-sidebar-stats .last td {
     border: none !important;
 }
+.ws-ls-user-header-buttons {
+	float: right;
+}
