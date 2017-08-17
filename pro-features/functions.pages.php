@@ -28,6 +28,8 @@ function ws_ls_user_side_bar($user_id) {
 		return;
 	}
 
+	$settings_url = ws_ls_get_link_to_user_settings($user_id);
+
 	?>
 		<div class="postbox">
 			<h2 class="hndle"><?php echo __('User Search', WE_LS_SLUG); ?></h2>
@@ -82,15 +84,15 @@ function ws_ls_user_side_bar($user_id) {
                     </tr>
 					<tr>
                         <th><?php echo __('Gender', WE_LS_SLUG); ?></th>
-                        <td><?php echo ws_ls_display_user_setting($user_id, 'gender'); ?></td>
+                        <td><a href="<?php echo $settings_url; ?>"><?php echo ws_ls_display_user_setting($user_id, 'gender'); ?></a></td>
                     </tr>
 					<tr>
                         <th><?php echo __('Activity Level', WE_LS_SLUG); ?></th>
-                        <td><?php echo ws_ls_display_user_setting($user_id, 'activity_level', false, true); ?></td>
+                        <td><a href="<?php echo $settings_url; ?>"><?php echo ws_ls_display_user_setting($user_id, 'activity_level', false, true); ?></a></td>
                     </tr>
 					<tr>
                         <th><?php echo __('Date of Birth', WE_LS_SLUG); ?></th>
-                        <td><?php echo ws_ls_get_dob_for_display($user_id, false, true); ?></td>
+                        <td><a href="<?php echo $settings_url; ?>"><?php echo ws_ls_get_dob_for_display($user_id, false, true); ?></a></td>
                     </tr>
 					<tr class="last">
                         <th><?php echo __('BMR', WE_LS_SLUG); ?></th>
@@ -137,7 +139,7 @@ function ws_ls_user_side_bar($user_id) {
 		<div class="postbox ws-ls-user-data">
 			<h2 class="hndle"><span><?php echo __('Settings', WE_LS_SLUG); ?></span></h2>
 			<div class="inside">
-				<a class="button-secondary" href="<?php echo ws_ls_get_link_to_user_settings($user_id); ?>">
+				<a class="button-secondary" href="<?php echo $settings_url; ?>">
 						<i class="fa fa-cog"></i>
 					<?php echo __('Preferences', WE_LS_SLUG); ?>
 				</a>
