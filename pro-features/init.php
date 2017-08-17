@@ -41,6 +41,7 @@ if(defined('WS_LS_ABSPATH')){
     if(WS_LS_IS_PRO_PLUS) {
         include WS_LS_ABSPATH . 'pro-features/plus/bmr.php';
 		include WS_LS_ABSPATH . 'pro-features/plus/harris.benedict.php';
+        include WS_LS_ABSPATH . 'pro-features/plus/macronutrient.calculator.php';
     }
 
 	// Email notifications enabled?

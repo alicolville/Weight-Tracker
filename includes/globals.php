@@ -92,7 +92,10 @@
 		'WE_LS_VIEW_EDIT_USER_PERMISSION_LEVEL' => 'manage_options', // Default to admin only being allowed to edit / view user data
         'WS_LS_CAL_CAP_MALE' => 1900,
         'WS_LS_CAL_CAP_FEMALE' => 1400,
-        'WS_LS_CAL_TO_SUBTRACT' => 600
+        'WS_LS_CAL_TO_SUBTRACT' => 600,
+        'WS_LS_MACRO_PROTEINS' => 25,
+        'WS_LS_MACRO_CARBS' => 50,
+        'WS_LS_MACRO_FATS' => 25
 	);
 
     // -----------------------------------------------------------------------------------
@@ -305,6 +308,23 @@
             $globals['WS_LS_CAL_TO_SUBTRACT'] = intval($cal_to_subtract);
         }
 
+        $macro_value = get_option('ws-ls-macro-proteins');
+
+        if(is_numeric($macro_value) && $macro_value > 0 && $macro_value < 100) {
+            $globals['WS_LS_MACRO_PROTEINS'] = intval($macro_value);
+        }
+
+        $macro_value = get_option('ws-ls-macro-carbs');
+
+        if(is_numeric($macro_value) && $macro_value > 0 && $macro_value < 100) {
+            $globals['WS_LS_MACRO_CARBS'] = intval($macro_value);
+        }
+
+        $macro_value = get_option('ws-ls-macro-fats');
+
+        if(is_numeric($macro_value) && $macro_value > 0 && $macro_value < 100) {
+            $globals['WS_LS_MACRO_FATS'] = intval($macro_value);
+        }
 
     }
 
