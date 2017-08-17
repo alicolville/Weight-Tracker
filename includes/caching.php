@@ -68,7 +68,8 @@ function ws_ls_delete_cache_for_given_user($user_id = false)
                             $user_id . '-' . WE_LS_CACHE_KEY_USER_PREFERENCE . '-activity_level',
                             $user_id . '-' . WE_LS_CACHE_KEY_USER_PREFERENCE . '-dob',
 							$user_id . '-' . WE_LS_CACHE_KEY_BMR,
-							$user_id . '-' . WE_LS_CACHE_KEY_HARRIS_BENEDICT
+							$user_id . '-' . WE_LS_CACHE_KEY_HARRIS_BENEDICT,
+                            $user_id . '-' . WE_LS_CACHE_KEY_MACRO
 						);
 
 	foreach ($keys_to_clear as $key) {

@@ -77,9 +77,17 @@ function ws_ls_admin_page_data_user() {
                         <div class="inside">
                             <?php
                             if(ws_ls_has_a_valid_pro_plus_license()) {
+                                if(false === ws_ls_macro_validate_percentages()) {
+                                    echo printf( '%s <a href="%s">%s</a>%s',
+                                            __('Please ensure the values for Proteins, Carbohydrates and Fats (within ', WE_LS_SLUG),
+                                            ws_ls_get_link_to_settings(),
+                                            __('settings', WE_LS_SLUG),
+                                            __(') have been specified and total 100%.', WE_LS_SLUG)
+                                    );
 
-echo 'Coming soon';
-
+                                } else {
+                                   echo ws_ls_macro_render_table($user_id);
+                                }
                             } else {
 
                                 echo sprintf('<p><a href="%s">%s</a> %s. %s.</p>',

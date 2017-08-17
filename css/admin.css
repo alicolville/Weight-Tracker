@@ -121,6 +121,9 @@
 .ws-ls-user-header-buttons {
 	float: right;
 }
-.ws-ls-settings h3 {
-    color: #00a0d2;
+.ws-ls-macro {
+    margin-bottom: 10px;
+}
+.ws-ls-settings h3, .ws-ls-macro .row-title {
+    color: #00a0d2 !important;
 }

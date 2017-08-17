@@ -234,21 +234,21 @@ function ws_ls_settings_page() {
                                                 <tr class="<?php echo $disable_if_not_pro_plus_class; ?>">
                                                     <th scope="row"><?php echo __( 'Proteins' , WE_LS_SLUG); ?></th>
                                                     <td>
-                                                        <input  type="number"  step="any" min="0" max="100" name="ws-ls-macro-proteins" id="ws-ls-macro-proteins" class="ws-ls-macro" value="<?php esc_attr_e(WS_LS_MACRO_PROTEINS); ?>" size="3" />%
+                                                        <input  type="number"  step="any" min="0" max="100" name="ws-ls-macro-proteins" id="ws-ls-macro-proteins" class="ws-ls-macro" value="<?php esc_attr_e(WS_LS_MACRO_PROTEINS * 100); ?>" size="3" />%
                                                         <p><?php echo __('Percentage of Proteins to make up a moderate diet', WE_LS_SLUG);?>. <?php echo ws_ls_calculations_link(); ?>. <em><?php echo __( 'Please note, it may take up to 15 minutes for calorie calculations to change (due to caching).' , WE_LS_SLUG); ?></em></p>
                                                     </td>
                                                 </tr>
                                                 <tr class="<?php echo $disable_if_not_pro_plus_class; ?>">
                                                     <th scope="row"><?php echo __( 'Carbohydrates' , WE_LS_SLUG); ?></th>
                                                     <td>
-                                                        <input  type="number"  step="any" min="0" max="100" name="ws-ls-macro-carbs" id="ws-ls-macro-carbs" class="ws-ls-macro" value="<?php esc_attr_e(WS_LS_MACRO_CARBS); ?>" size="3" />%
+                                                        <input  type="number"  step="any" min="0" max="100" name="ws-ls-macro-carbs" id="ws-ls-macro-carbs" class="ws-ls-macro" value="<?php esc_attr_e(WS_LS_MACRO_CARBS * 100); ?>" size="3" />%
                                                         <p><?php echo __('Percentage of Carbohydrates to make up a moderate diet', WE_LS_SLUG);?>. <?php echo ws_ls_calculations_link(); ?>. <em><?php echo __( 'Please note, it may take up to 15 minutes for calculations to change (due to caching).' , WE_LS_SLUG); ?></em></p>
                                                     </td>
                                                 </tr>
                                                 <tr class="<?php echo $disable_if_not_pro_plus_class; ?>">
                                                     <th scope="row"><?php echo __( 'Fats' , WE_LS_SLUG); ?></th>
                                                     <td>
-                                                        <input  type="number"  step="any" min="0" max="100" name="ws-ls-macro-fats" id="ws-ls-macro-fats"  class="ws-ls-macro" value="<?php esc_attr_e(WS_LS_MACRO_FATS); ?>" size="3" />%
+                                                        <input  type="number"  step="any" min="0" max="100" name="ws-ls-macro-fats" id="ws-ls-macro-fats"  class="ws-ls-macro" value="<?php esc_attr_e(WS_LS_MACRO_FATS * 100); ?>" size="3" />%
                                                         <p><?php echo __('Percentage of Fats to make up a moderate diet', WE_LS_SLUG);?>. <?php echo ws_ls_calculations_link(); ?>. <em><?php echo __( 'Please note, it may take up to 15 minutes for calculations to change (due to caching).' , WE_LS_SLUG); ?></em></p>
                                                     </td>
                                                 </tr>

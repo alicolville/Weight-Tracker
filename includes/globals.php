@@ -32,8 +32,9 @@
 	define('WE_LS_CACHE_KEY_STATS_SUMMARY', 'user-stats-summary');
 	define('WE_LS_CACHE_KEY_WEIGHT_FOR_DAY', 'user-weight-for-day');
     define('WE_LS_CACHE_KEY_ENTRY_COUNTS', 'entry-counts');
-	define('WE_LS_CACHE_KEY_BMR', 'bmr-');
+	define('WE_LS_CACHE_KEY_BMR', 'bmr');
 	define('WE_LS_CACHE_KEY_HARRIS_BENEDICT', 'harris-benedict');
+    define('WE_LS_CACHE_KEY_MACRO', 'macro');
 	define('WE_LS_KEY_YEKEN_ADMIN_NOTIFICATION', 'yeken-admin-notification');
 	define('WE_LS_CACHE_ADMIN_USER_DATA', 'admin-user-data');
 	define('WE_LS_TABLE_MAX_WEEK_FILTERS', 150);
@@ -311,19 +312,19 @@
         $macro_value = get_option('ws-ls-macro-proteins');
 
         if(is_numeric($macro_value) && $macro_value > 0 && $macro_value < 100) {
-            $globals['WS_LS_MACRO_PROTEINS'] = intval($macro_value);
+            $globals['WS_LS_MACRO_PROTEINS'] = intval($macro_value) / 100;
         }
 
         $macro_value = get_option('ws-ls-macro-carbs');
 
         if(is_numeric($macro_value) && $macro_value > 0 && $macro_value < 100) {
-            $globals['WS_LS_MACRO_CARBS'] = intval($macro_value);
+            $globals['WS_LS_MACRO_CARBS'] = intval($macro_value) / 100;
         }
 
         $macro_value = get_option('ws-ls-macro-fats');
 
         if(is_numeric($macro_value) && $macro_value > 0 && $macro_value < 100) {
-            $globals['WS_LS_MACRO_FATS'] = intval($macro_value);
+            $globals['WS_LS_MACRO_FATS'] = intval($macro_value) / 100;
         }
 
     }

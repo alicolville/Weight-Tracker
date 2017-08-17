@@ -25,7 +25,6 @@ jQuery( document ).ready(function ($) {
 
      });
 
-
 	 function ws_ls_post_data_to_WP(action, data, callback) {
 
 	 	post_data = {};

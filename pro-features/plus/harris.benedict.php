@@ -83,14 +83,14 @@
 		    // Table Header
             $html = sprintf('<table class="%s">
                                 <tr>
-                                    <th class="ws-ls-empty-cell"></th>
+                                    <th class="ws-ls-empty-cell row-title"></th>
                                     <th>%s</th>
                                     <th>%s (20%%)</th>
                                     <th>%s (30%%)</th>
                                     <th>%s (30%%)</th>
                                     <th>%s (20%%)</th>
                                 </tr>',
-                                false === is_admin() ? 'ws-ls-harris-benedict' : 'form-table',
+                                false === is_admin() ? 'ws-ls-harris-benedict' : 'widefat',
                                 __( 'Total', WE_LS_SLUG ),
                                 __( 'Breakfast', WE_LS_SLUG ),
                                 __( 'Lunch', WE_LS_SLUG ),
