@@ -8,6 +8,9 @@ function ws_ls_admin_page_data_user() {
 
 	$user_id = ws_get_user_id_from_qs();
 
+    // Ensure this WP user ID exists!
+    ws_user_exist_check($user_id);
+
     // DELETE ALL DATA FOR THIS USER!! AHH!!
     if (is_admin() && isset($_GET['removedata']) && 'y' == $_GET['removedata']) {
         ws_ls_delete_data_for_user($user_id);
@@ -19,7 +22,13 @@ function ws_ls_admin_page_data_user() {
 	<div class="notice notice-success"><p><?php echo __('The preferences for this user have been saved.', WE_LS_SLUG); ?></p></div>
 <?php endif; ?>
 
-<div class="wrap">
+<?php if(!empty($_GET['deletecache'])) :
+        ws_ls_delete_cache_for_given_user($user_id);
+    ?>
+    <div class="notice notice-success"><p><?php echo __('The cache for this user has been deleted.', WE_LS_SLUG); ?></p></div>
+<?php endif; ?>
+
+<div class="wrap ws-ls-user-data">
 	<div id="poststuff">
 		<?php ws_ls_user_header($user_id); ?>
 		<div id="post-body" class="metabox-holder columns-2">
@@ -80,9 +89,5 @@ function ws_ls_admin_page_data_user() {
 		<br class="clear">
 	</div>
 <?php
-
-    echo ws_ls_create_dialog_jquery_code(__('Are you sure you?', WE_LS_SLUG),
-        __('Are you sure you wish to remove the data for this user?', WE_LS_SLUG) . '<br /><br />',
-        'delete-confirm');
 
 }

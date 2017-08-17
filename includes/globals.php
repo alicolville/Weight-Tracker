@@ -91,7 +91,8 @@
 		'WE_LS_DISABLE_YEKEN_NOTIFICATIONS' => false,
 		'WE_LS_VIEW_EDIT_USER_PERMISSION_LEVEL' => 'manage_options', // Default to admin only being allowed to edit / view user data
         'WS_LS_CAL_CAP_MALE' => 1900,
-        'WS_LS_CAL_CAP_FEMALE' => 1400
+        'WS_LS_CAL_CAP_FEMALE' => 1400,
+        'WS_LS_CAL_TO_SUBTRACT' => 600
 	);
 
     // -----------------------------------------------------------------------------------
@@ -297,6 +298,14 @@
         if(is_numeric($male_cal_cap)) {
             $globals['WS_LS_CAL_CAP_MALE'] = intval($male_cal_cap);
         }
+
+        $cal_to_subtract = get_option('ws-ls-cal-subtract');
+
+        if(is_numeric($cal_to_subtract) && $cal_to_subtract > 0) {
+            $globals['WS_LS_CAL_TO_SUBTRACT'] = intval($cal_to_subtract);
+        }
+
+
     }
 
 	// -----------------------------------------------------------------------------------

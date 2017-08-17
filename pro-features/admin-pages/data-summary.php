@@ -15,7 +15,7 @@ function ws_ls_admin_page_data_summary() {
     }
 
 ?>
-<div class="wrap">
+<div class="wrap ws-ls-user-data">
 	<h1><?php echo __('Summary', WE_LS_SLUG); ?></h1>
 	<div id="poststuff">
 		<div id="post-body" class="metabox-holder columns-2">

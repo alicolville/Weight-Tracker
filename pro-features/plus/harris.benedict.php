@@ -31,7 +31,7 @@
 		// We have activity level and bmr, calculate daily calories.
 		$calorie_intake['maintain'] = ['total' => round($activity_level * $bmr, 2)];
 
-		$calories_to_lose = $calorie_intake['maintain']['total'] - 500;
+		$calories_to_lose = ($calorie_intake['maintain']['total'] > WS_LS_CAL_TO_SUBTRACT) ? $calorie_intake['maintain']['total'] - WS_LS_CAL_TO_SUBTRACT : $calorie_intake['maintain']['total'];
         $is_female = ws_ls_is_female($user_id);
 
         // Female

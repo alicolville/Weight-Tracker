@@ -8,9 +8,10 @@ function ws_ls_admin_page_settings_user() {
 
 	$user_id = ws_get_user_id_from_qs();
 
-    $user_data = get_userdata( $user_id );
+    // Ensure this WP user ID exists!
+    ws_user_exist_check($user_id);
 ?>
-<div class="wrap">
+<div class="wrap ws-ls-user-data">
 	<div id="poststuff">
 		<?php ws_ls_user_header($user_id, ws_ls_get_link_to_user_profile($user_id)); ?>
 		<div id="post-body" class="metabox-holder columns-2">

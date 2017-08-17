@@ -45,7 +45,7 @@ function ws_ls_settings_page() {
 
 	<div id="poststuff">
 
-		<div id="post-body" class="metabox-holder columns-3">
+		<div id="post-body" class="metabox-holder columns-3 ws-ls-settings">
 
 			<!-- main content -->
 			<div id="post-body-content">
@@ -203,6 +203,8 @@ function ws_ls_settings_page() {
                                             <?php if (false === WS_LS_IS_PRO_PLUS): ?>
                                                 <a class="button-secondary" href="<?php echo ws_ls_upgrade_link(); ?>" target="_blank"><?php echo __( 'Upgrade now to Pro Plus' , WE_LS_SLUG); ?></a>
                                             <?php endif; ?>
+                                            <h3><?php echo __( 'Calculating daily calorie intake to lose weight' , WE_LS_SLUG); ?></h3>
+
                                             <table class="form-table">
                                                  <tr class="<?php echo $disable_if_not_pro_plus_class; ?>">
                                                     <th scope="row"><?php echo __( 'Female Calorie Cap' , WE_LS_SLUG); ?></th>
@@ -216,6 +218,13 @@ function ws_ls_settings_page() {
                                                     <td>
                                                         <input  type="number"  step="any" min="500" max="5000" name="ws-ls-male-cal-cap" id="ws-ls-male-cal-cap" value="<?php esc_attr_e(WS_LS_CAL_CAP_MALE); ?>" size="11" />
                                                         <p><?php echo __('Specify a maximum value for number of daily calories allowed to achieve weight loss. As per NHS guidelines, males are set to 1900kcal by default', WE_LS_SLUG);?>. <?php echo ws_ls_calculations_link(); ?>. <em><?php echo __( 'Please note, it may take up to 15 minutes for calorie calculations to change (due to caching).' , WE_LS_SLUG); ?></em></p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="<?php echo $disable_if_not_pro_plus_class; ?>">
+                                                    <th scope="row"><?php echo __( 'Calories to subtract' , WE_LS_SLUG); ?></th>
+                                                    <td>
+                                                        <input  type="number"  step="any" min="0" max="5000" name="ws-ls-cal-subtract" id="ws-ls-cal-subtract" value="<?php esc_attr_e(WS_LS_CAL_TO_SUBTRACT); ?>" size="11" />
+                                                        <p><?php echo __('Part of calculating the daily calorie intake to lose weight is to first calculate the calorie intake to maintain existing weight. Once we have this, we subtract the above figure to calculate the daily calorie intake to lose weight.', WE_LS_SLUG);?>. <?php echo ws_ls_calculations_link(); ?>. <em><?php echo __( 'Please note, it may take up to 15 minutes for calorie calculations to change (due to caching).' , WE_LS_SLUG); ?></em></p>
                                                     </td>
                                                 </tr>
                                             </table>
@@ -547,7 +556,7 @@ function ws_ls_register_settings()
 		// Pro Plus
         register_setting( 'we-ls-options-group', 'ws-ls-female-cal-cap' );
         register_setting( 'we-ls-options-group', 'ws-ls-male-cal-cap' );
-
+        register_setting( 'we-ls-options-group', 'ws-ls-cal-subtract' );
 
     }
 

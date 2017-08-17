@@ -90,7 +90,16 @@ function ws_ls_get_link_to_user_data() {
  * @return string
  */
 function ws_ls_get_link_to_user_profile($id) {
-	return is_numeric($id) ? esc_url(admin_url( 'admin.php?page=ws-ls-wlt-data-home&mode=user&user-id=' . $id )) : '#';
+    return is_numeric($id) ? esc_url(admin_url( 'admin.php?page=ws-ls-wlt-data-home&mode=user&user-id=' . $id )) : '#';
+}
+
+/**
+ * Given a user ID, return a link to delete a user's cache
+ * @param  int $id User ID
+ * @return string
+ */
+function ws_ls_get_link_to_delete_user_cache($id) {
+    return ws_ls_get_link_to_user_profile($id) . '&amp;deletecache=y';
 }
 
 /**
@@ -381,5 +390,33 @@ function ws_ls_get_age_from_dob($user_id = false){
 function ws_ls_user_data_permission_check() {
     if ( !current_user_can( WE_LS_VIEW_EDIT_USER_PERMISSION_LEVEL ) )  {
         wp_die( __( 'You do not have sufficient permissions to access this page.' , WE_LS_SLUG) );
+    }
+}
+
+/**
+ * Helper function to determine if the user exists in WP
+ *
+ * @param $user_id
+ * @return bool
+ */
+function ws_ls_user_exist($user_id) {
+
+    if(true === empty($user_id) || false === is_numeric($user_id)) {
+        return false;
+    }
+
+    return (false === get_userdata( $user_id )) ? false : true;
+}
+
+/**
+ * Helper function to check if user ID exists, if not throws wp_die()
+ *
+ * @param $user_id
+ * @return bool
+ */
+function ws_user_exist_check($user_id) {
+
+    if(false === ws_ls_user_exist($user_id)) {
+        wp_die(__( 'Error: The user does not appear to exist' , WE_LS_SLUG));
     }
 }

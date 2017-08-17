@@ -6,10 +6,11 @@ function ws_ls_admin_page_data_edit_target() {
 
     ws_ls_user_data_permission_check();
 
-	$data = false;
-
     // Determine user id
 	$user_id = ws_ls_querystring_value('user-id', true);
+
+    // Ensure this WP user ID exists!
+    ws_user_exist_check($user_id);
 
 	// We need to ensure we either have a user id (to add a new entry to) OR an existing entry ID so we can load / edit it.
 	if(empty($user_id) && empty($entry_id)) {
@@ -21,7 +22,7 @@ function ws_ls_admin_page_data_edit_target() {
 	$redirect_url = ws_ls_get_link_to_user_profile($user_id);
 
 ?>
-	<div class="wrap">
+	<div class="wrap ws-ls-user-data">
 		<div id="poststuff">
 			<?php ws_ls_user_header($user_id, ws_ls_get_link_to_user_profile($user_id)); ?>
 			<div id="post-body" class="metabox-holder columns-2">

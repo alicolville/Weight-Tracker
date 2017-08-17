@@ -18,6 +18,9 @@ function ws_ls_admin_page_data_add_edit() {
 		return;
 	}
 
+	// Ensure this WP user ID exists!
+    ws_user_exist_check($user_id);
+
 	// If we have an entry ID, then load data
 	if ($entry_id) {
 		$data = ws_ls_get_weight($user_id, $entry_id);
@@ -30,7 +33,7 @@ function ws_ls_admin_page_data_add_edit() {
 		$redirect_url = base64_decode($redirect_url);
 	}
 ?>
-	<div class="wrap">
+	<div class="wrap ws-ls-user-data">
 		<div id="poststuff">
 			<?php ws_ls_user_header($user_id, ws_ls_get_link_to_user_profile($user_id)); ?>
 			<div id="post-body" class="metabox-holder columns-2">
