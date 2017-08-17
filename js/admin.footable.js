@@ -5,7 +5,7 @@ jQuery( document ).ready(function ($) {
 
 	ws_ls_log('Processing user data tables..');
 
-	 $(".ws-ls-user-data").each(function () {
+	 $(".ws-ls-user-data-ajax").each(function () {
 
 	   var table_id = $(this).attr("id");
 	   var user_id = $(this).data("user-id");

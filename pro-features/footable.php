@@ -7,7 +7,7 @@ function ws_ls_data_table_placeholder($user_id = false, $max_entries = false, $s
 	ws_ls_data_table_enqueue_scripts();
 
 ?>
-	<table class="ws-ls-user-data table ws-ls-loading-table" id="<?php echo uniqid('ws-ls-'); ?>"
+	<table class="ws-ls-user-data-ajax table ws-ls-loading-table" id="<?php echo uniqid('ws-ls-'); ?>"
 		data-paging="true"
 		data-filtering="true"
 		data-sorting="true"
