@@ -127,3 +127,7 @@
 .ws-ls-settings h3, .ws-ls-macro .row-title {
     color: #00a0d2 !important;
 }
+.ws-ls-user-data .fa {
+	font-size: 13px !important;
+	color: #555 !important;
+}

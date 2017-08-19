@@ -312,19 +312,19 @@
         $macro_value = get_option('ws-ls-macro-proteins');
 
         if(is_numeric($macro_value) && $macro_value > 0 && $macro_value < 100) {
-            $globals['WS_LS_MACRO_PROTEINS'] = intval($macro_value) / 100;
+            $globals['WS_LS_MACRO_PROTEINS'] = intval($macro_value);
         }
 
         $macro_value = get_option('ws-ls-macro-carbs');
 
         if(is_numeric($macro_value) && $macro_value > 0 && $macro_value < 100) {
-            $globals['WS_LS_MACRO_CARBS'] = intval($macro_value) / 100;
+            $globals['WS_LS_MACRO_CARBS'] = intval($macro_value);
         }
 
         $macro_value = get_option('ws-ls-macro-fats');
 
         if(is_numeric($macro_value) && $macro_value > 0 && $macro_value < 100) {
-            $globals['WS_LS_MACRO_FATS'] = intval($macro_value) / 100;
+            $globals['WS_LS_MACRO_FATS'] = intval($macro_value);
         }
 
     }

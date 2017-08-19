@@ -84,7 +84,6 @@ function ws_ls_admin_page_data_user() {
                                             __('settings', WE_LS_SLUG),
                                             __(') have been specified and total 100%.', WE_LS_SLUG)
                                     );
-
                                 } else {
                                    echo ws_ls_macro_render_table($user_id);
                                 }

@@ -95,6 +95,22 @@ function ws_ls_shortcode_dob($user_defined_arguments) {
 }
 
 /**
+ *
+ * Shortcode to render the user's Height
+ *
+ * @param $user_defined_arguments an array of arguments passed in via shortcode
+ * @return string - HTML to be sent to browser
+ */
+function ws_ls_shortcode_height($user_defined_arguments) {
+
+	$arguments = shortcode_atts(array(	'not-specified-text' => __('Not Specified', WE_LS_SLUG),
+										'user-id' => get_current_user_id() ),
+								$user_defined_arguments );
+
+	return ws_ls_display_user_setting($arguments['user-id'], 'height', $arguments['not-specified-text']);
+}
+
+/**
  * Shortcode to render the number of WordPress users in last x days
  *
  * Args:    "days" (number of days to look back)

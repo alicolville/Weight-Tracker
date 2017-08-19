@@ -162,21 +162,17 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 
 = 5.1 =
 
+	* New feature: Shortcode to display the user's height [wlt-height] - Read more: https://weight.yeken.uk/shortcodes/
+	* New feature: Shortcode to display the user's gender [wlt-gender] - Read more: https://weight.yeken.uk/shortcodes/
+	* New feature: Shortcode to display the user's Date of Birth [wlt-dob] - Read more: https://weight.yeken.uk/shortcodes/
+	* New feature: Shortcode to display the user's activity level [wlt-activity-level] - Read more: https://weight.yeken.uk/shortcodes/
+	* New feature: Shortcode to display the number of newly registered users in last x days [wlt-new-users] - Read more: https://weight.yeken.uk/shortcodes/
 	* Various tweaks to the underlying code to support future versions.
 	* Improvement: Back button added when viewing user records.
 	* Improvement: Icons added to buttons when managing user data.
 	* Improvement: Show user side bar when managing user data in more relevant places.
 	* Bug Fix: Edit Settings was loading DoB for the wrong user.
 
-	* [wlt-gender] 	not-specified-text
-					user-id
-	* [wlt-dob] 	not-specified-text
-					user-id
-	* [wlt-activity-level] 	not-specified-text
-							user-id
-							shorten
-    * [wlt-new-users]        "days" (number of days to look back)
-                             "count-all-roles" - by default false and only count user's with a role of Subscriber. Set to true to count everyone.
 
     PRO PLUS;
 
@@ -189,8 +185,11 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
                      'user-id' => false,
                      'progress' => 'maintain',	// 'maintain', 'lose'
                      'type' => 'lunch'			// 'breakfast', 'lunch', 'dinner', 'snack', 'total'
-	* [wlt-calories-table]
-
+	* [wlt-calories-table]	'error-message' => __('Please ensure all relevant data to calculate calorie intake has been entered i.e. Activity Level, Date of Birth, Current Weight, Gender and Height.', WE_LS_SLUG ),
+							'user-id'
+	* [wlt-macronutrients-table]	'error-message' => __('Please ensure all relevant data to calculate calorie intake has been entered i.e. Activity Level, Date of Birth, Current Weight, Gender and Height.', WE_LS_SLUG ),
+									'user-id'
+	* [wlt-macronutrients progress="maintain" type="total" nutrient="protein"]
 = 5.0.4 =
 
 * Bug fix: Fixed missing charts doe to clashes with other plugins. JS enqueue issue where other plugins were using Chart.js (myCred in this example) with the same enqueue slug.

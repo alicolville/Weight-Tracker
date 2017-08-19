@@ -166,7 +166,7 @@
 
 		$arguments['user-id'] = ws_ls_force_numeric_argument($arguments['user-id']);
 		$progress = (false === in_array($arguments['progress'], ['maintain', 'lose'])) ? 'maintain' : $arguments['progress'];
-		$type = (false === in_array($arguments['type'], ['breakfast', 'lunch', 'dinner', 'snack', 'total'])) ? 'lunch' : $arguments['type'];
+		$type = (false === in_array($arguments['type'], ['breakfast', 'lunch', 'dinner', 'snacks', 'total'])) ? 'lunch' : $arguments['type'];
 
 		$calorie_intake = ws_ls_harris_benedict_calculate_calories($arguments['user-id']);
 
