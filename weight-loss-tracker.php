@@ -47,7 +47,7 @@ include WS_LS_ABSPATH . 'includes/license.php';
 $license_type = ws_ls_has_a_valid_license();
 
 // Standard Pro license?
-if(in_array($license_type, ['pro', 'pro-plus']) ){
+if(in_array($license_type, ['pro', 'pro-old', 'pro-plus']) ){
  define('WS_LS_IS_PRO', true);
 } else {
  define('WS_LS_IS_PRO', false);
@@ -100,3 +100,30 @@ function ws_ls_load_textdomain() {
   load_plugin_textdomain( WE_LS_SLUG, false, dirname( plugin_basename( __FILE__ )  ) . '/languages/' );
 }
 add_action( 'plugins_loaded', 'ws_ls_load_textdomain' );
+
+
+
+//TODO
+function test() {
+
+//	$hash = ws_ls_generate_site_hash();
+//	$license = ws_ls_license_generate('pro', $hash, '1');
+
+	// var_dump($hash, $license);
+
+// $license = 'J5LWRheXMiOjY2NSwic2l0ZS1oYXNoIjoiZWIwMDg3IiwiZXhwaXJ5LWRhdGUiOiIyMDE5LTA2LTE4IiwiaGFzaCI6IjU4NTc4MzU0NTM5YTQyYzNhZTVjNj';
+
+
+
+	//var_dump(ws_ls_license_apply($license));
+//	die;
+}
+add_action('init', 'test');
+
+/*
+Expired:
+eyJ0eXBlIjoicHJvIiwiZXhwaXJ5LWRheXMiOjIyNSwic2l0ZS1oYXNoIjoiZWIwMDg3IiwiZXhwaXJ5LWRhdGUiOiIyMDE3LTAxLTAxIiwiaGFzaCI6IjM0OGNhZmZhN2U5OTM1YmIwYjE3NWY5ZTcwYTQ4ZDU0In0=
+
+NEW:
+eyJ0eXBlIjoicHJvIiwiZXhwaXJ5LWRheXMiOjIyNSwic2l0ZS1oYXNoIjoiZWIwMDg3IiwiZXhwaXJ5LWRhdGUiOiIyMDE4LTA0LTA0IiwiaGFzaCI6ImJmMWU0YmY2YWM0MDBhOTJhZTk4ZGM2ZmY2YjcwNTBkIn0=
+*/

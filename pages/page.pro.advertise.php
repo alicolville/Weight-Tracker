@@ -74,7 +74,7 @@ function ws_ls_advertise_pro() {
 								elseif (isset($_GET['add-license']) && 'true' == $_GET['add-license'] && !empty($_POST['license-key'])){
 
 									$entered_license = $_POST['license-key'];
-									$valid_license = ws_ls_is_validate_license($entered_license);
+									$valid_license = ws_ls_is_validate_old_pro_license($entered_license);
 
 									if ($valid_license) {
 										$display_form = false;

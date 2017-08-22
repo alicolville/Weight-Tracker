@@ -10,53 +10,153 @@ defined('ABSPATH') or die('Jog on!');
 function ws_ls_has_a_valid_license() {
 
 	// Do we have an Pro Plus license?
-	if(ws_ls_has_a_valid_pro_plus_license()) {
-		return 'pro-plus';
+	$license_type = ws_ls_has_a_valid_subscription_license();
+
+	if(false !== $license_type) {
+		return $license_type;
 	}
 
-	// Do we have an Pro  license?
-	if(ws_ls_has_a_valid_pro_license()) {
-		return 'pro';
+	// Do we have a valid old Pro license?
+	if(ws_ls_has_a_valid_old_pro_license()) {
+		return 'pro-old';
 	}
 
     return false;
 }
 
 // ------------------------------------------------------------------------------------------------------------
-// New licensing
+// Current licensing
 // ------------------------------------------------------------------------------------------------------------
 
-function ws_ls_has_a_valid_pro_plus_license() {
+define('WS_LS_LICENSE_2', 'ws-ls-license-2');
+define('WS_LS_LICENSE_2_TYPE', 'ws-ls-license-2-type');
+define('WS_LS_LICENSE_2_VALID', 'ws-ls-license-2-valid');
 
-    return true; //TODO: Add logic here to validate a pro license
+/**
+* Do we have a valid subscription license?
+**/
+function ws_ls_has_a_valid_subscription_license() {
 
-	// TODO: Replace this in version 6.0
-	if( defined('WS_LS_PRO_PLUS') && true === WS_LS_PRO_PLUS ) {
+    $license_valid = get_option(WS_LS_LICENSE_2_VALID);
+
+	if(false === empty($license_valid) && 'y' == $license_valid) {
+		$license_type = get_option(WS_LS_LICENSE_2_TYPE);
+		return (true === in_array($license_type, ['pro', 'pro-plus']) ? $license_type : false);
+	}
+
+    return false;
+}
+
+/**
+*	Return stored license
+**/
+function ws_ls_license() {
+	return get_option(WS_LS_LICENSE_2);
+}
+
+/**
+*	Return stored license type
+**/
+function ws_ls_license_type() {
+	return get_option(WS_LS_LICENSE_2_TYPE);
+}
+
+/**
+* Validate and apply a license
+**/
+function ws_ls_license_apply($license) {
+
+	// Validate license
+	$license_result = ws_ls_license_validate($license);
+
+	if(true === $license_result) {
+
+		$license_decoded = ws_ls_license_decode($license);
+
+		update_option(WS_LS_LICENSE_2, $license);
+		update_option(WS_LS_LICENSE_2_TYPE, $license_decoded['type']);
+		update_option(WS_LS_LICENSE_2_VALID, 'y');
+
 		return true;
+	} else {
+
+		// Remove relevant options from WP
+		delete_option(WS_LS_LICENSE_2);
+		delete_option(WS_LS_LICENSE_2_TYPE);
+		delete_option(WS_LS_LICENSE_2_VALID);
 	}
 
-    return false;
+	return $license_result;
 }
 
-// ------------------------------------------------------------------------------------------------------------
-// Old licensing
-// ------------------------------------------------------------------------------------------------------------
+/**
+*	Check an existing license's hash is still valid
+**/
+function ws_ls_license_validate($license) {
 
-define('WS_LS_LICENSE_SITE_HASH', 'ws-ls-license-site-hash');
-define('WS_LS_LICENSE', 'ws-ls-license');
-define('WS_LS_LICENSE_VALID', 'ws-ls-license-valid');
+	if(true === empty($license)) {
+		return __('License missing', WE_LS_SLUG);
+	}
 
-function ws_ls_has_a_valid_pro_license() {
+	// Decode license
+	$license = ws_ls_license_decode($license);
 
-	$valid_license = get_option(WS_LS_LICENSE_VALID);
+	if (true === empty($license)) {
+		return __('Could not decode / verify license', WE_LS_SLUG);
+	}
 
-    if(true == $valid_license) {
-      return true;
-    }
+	// Does site hash in license meet this site's actual hash?
+	if ( true === empty($license['site-hash'])) {
+		return __('Invalid license hash', WE_LS_SLUG);
+	}
 
-    return false;
+	// Match this site hash?
+	if ( ws_ls_generate_site_hash() !== $license['site-hash']) {
+		return __('This license doesn\'t appear to be for this site (no match on site hash).', WE_LS_SLUG);
+	}
+
+	// Valid date?
+	$today_time = strtotime(date("Y-m-d"));
+	$expire_time = strtotime($license['expiry-date']);
+
+	if ($expire_time < $today_time) {
+		return __('This license has expired.', WE_LS_SLUG);
+	}
+
+	return true;
 }
 
+/**
+* Validate and decode a license
+**/
+function ws_ls_license_decode($license) {
+
+	if(true === empty($license)) {
+		return NULL;
+	}
+
+	// Base64 and JSON decode
+	$license = base64_decode($license);
+
+	if(false === $license) {
+		return NULL;
+	}
+
+	$license = json_decode($license, true);
+
+	if(true === empty($license)) {
+		return NULL;
+	}
+
+	// Validate hash!
+	$verify_hash = md5('yeken.uk' . $license['type'] . $license['expiry-days'] . $license['site-hash'] . $license['expiry-date']);
+
+	return ( $license['hash'] == $verify_hash && false === empty($license) ) ? $license : NULL;
+}
+
+/**
+*	Generate a site hash to identify this site.
+**/
 function ws_ls_generate_site_hash() {
 
     $site_hash = get_option(WS_LS_LICENSE_SITE_HASH);
@@ -70,25 +170,51 @@ function ws_ls_generate_site_hash() {
     return $site_hash;
 }
 
+// ------------------------------------------------------------------------------------------------------------
+// Old licensing
+// ------------------------------------------------------------------------------------------------------------
 
-function ws_ls_generate_license($site_hash) {
-	return md5('yeken.co.uk' . $site_hash);
-}
+define('WS_LS_LICENSE_SITE_HASH', 'ws-ls-license-site-hash');
+define('WS_LS_LICENSE', 'ws-ls-license');
+define('WS_LS_LICENSE_VALID', 'ws-ls-license-valid');
 
-function ws_ls_is_validate_license($license_key_from_yeken) {
+/**
+*	Check for old valid pro license
+**/
+function ws_ls_has_a_valid_old_pro_license() {
 
-	$site_hash = ws_ls_generate_site_hash();
-    $comparison_license = ws_ls_generate_license($site_hash);
+	$valid_license = get_option(WS_LS_LICENSE_VALID);
 
-    if ($comparison_license == $license_key_from_yeken){
-      update_option(WS_LS_LICENSE, $license_key_from_yeken);
-      update_option(WS_LS_LICENSE_VALID, true);
+    if(true == $valid_license) {
       return true;
     }
 
     return false;
 }
 
+/**
+*	Generate an old Pro license so it can be compared against one entered.
+**/
+function ws_ls_generate_old_pro_license($site_hash) {
+	return md5('yeken.co.uk' . $site_hash);
+}
+
+/**
+*	Validate and store an old Pro license
+**/
+function ws_ls_is_validate_old_pro_license($license_key_from_yeken) {
+
+	$site_hash = ws_ls_generate_site_hash();
+    $comparison_license = ws_ls_generate_old_pro_license($site_hash);
+
+//TODO: revert this funciton back so people can still add old licenses!
+
+    return ($comparison_license == $license_key_from_yeken);
+}
+
+/**
+* 	Fetch old PRO license from WP Options
+**/
 function ws_ls_get_license() {
 	return get_option(WS_LS_LICENSE);
 }
