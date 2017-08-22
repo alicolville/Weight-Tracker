@@ -73,7 +73,7 @@
 			$chart_config['type'] = 'line';
 		}
 
-		$y_axis_unit = (ws_ls_get_config('WE_LS_IMPERIAL_WEIGHTS')) ? __('lbs', WE_LS_SLUG) : __('Kg', WE_LS_SLUG) ;
+		$y_axis_unit = (ws_ls_get_config('WE_LS_IMPERIAL_WEIGHTS')) ? __('lbs', WE_LS_SLUG) : __('kg', WE_LS_SLUG) ;
 		$y_axis_measurement_unit = ('inches' == ws_ls_get_config('WE_LS_MEASUREMENTS_UNIT')) ? __('Inches', WE_LS_SLUG) : __('CM', WE_LS_SLUG) ;
 
 		$point_size = (WE_LS_ALLOW_POINTS && WE_LS_CHART_POINT_SIZE > 0) ? WE_LS_CHART_POINT_SIZE : 0;
@@ -340,7 +340,7 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 				}
 			}
 			else {
-				$html_output .= '<input  type="number" tabindex="' . ws_ls_get_next_tab_index() . '" step="any" min="1" name="we-ls-weight-kg" id="we-ls-weight-kg" value="' . ws_ls_get_existing_value($existing_data, 'kg') . '" placeholder="' . __('Weight', WE_LS_SLUG) . ' (' . __('Kg', WE_LS_SLUG) . ')" size="22" >';
+				$html_output .= '<input  type="number" tabindex="' . ws_ls_get_next_tab_index() . '" step="any" min="1" name="we-ls-weight-kg" id="we-ls-weight-kg" value="' . ws_ls_get_existing_value($existing_data, 'kg') . '" placeholder="' . __('Weight', WE_LS_SLUG) . ' (' . __('kg', WE_LS_SLUG) . ')" size="22" >';
 			}
 
 		$html_output .= '</div>';
