@@ -83,7 +83,7 @@ function ws_ls_settings_page() {
 														<th scope="row"><?php echo __( 'Weight Units' , WE_LS_SLUG); ?></th>
 														<td>
 															<select id="ws-ls-units" name="ws-ls-units">
-																<option value="kg" <?php selected( get_option('ws-ls-units'), 'kg' ); ?>><?php echo __('Kg', WE_LS_SLUG); ?></option>
+																<option value="kg" <?php selected( get_option('ws-ls-units'), 'kg' ); ?>><?php echo __('kg', WE_LS_SLUG); ?></option>
 																<option value="stones_pounds" <?php selected( get_option('ws-ls-units'), 'stones_pounds' ); ?>><?php echo __('Stones & Pounds', WE_LS_SLUG); ?></option>
 																<option value="pounds_only" <?php selected( get_option('ws-ls-units'), 'pounds_only' ); ?>><?php echo __('Pounds', WE_LS_SLUG); ?></option>
 															</select>

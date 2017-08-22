@@ -20,7 +20,7 @@ function ws_ls_data_table_placeholder($user_id = false, $max_entries = false, $s
 		data-small-width="<?php echo ($smaller_width) ? 'true' : 'false' ?>">
 	</table>
 	<?php if (WE_LS_MEASUREMENTS_ENABLED):  ?>
-		<p><em>Measurements are in <?php echo ('inches' == ws_ls_get_config('WE_LS_MEASUREMENTS_UNIT')) ? __('Inches', WE_LS_SLUG) : __('CM', WE_LS_SLUG); ?>.</em></p>
+		<p><em>Measurements are in <?php echo ('inches' == ws_ls_get_config('WE_LS_MEASUREMENTS_UNIT')) ? __('Inches', WE_LS_SLUG) : __('cm', WE_LS_SLUG); ?>.</em></p>
 	<?php endif;  ?>
 <?php
 }

@@ -1,4 +1,4 @@
-=== Weight Loss Tracker ===
+﻿=== Weight Loss Tracker ===
 Contributors: aliakro
 Tags: weight, loss, lose, helper, bmi, body, mass, index, graph, track, stones, kg, table, data, plot, target, history, pounds, responsive, chart, measurements, cm, centimeters, inches, hip, waist, bicep, thigh
 Requires at least: 4.4.0
@@ -190,6 +190,12 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 	* [wlt-macronutrients-table]	'error-message' => __('Please ensure all relevant data to calculate calorie intake has been entered i.e. Activity Level, Date of Birth, Current Weight, Gender and Height.', WE_LS_SLUG ),
 									'user-id'
 	* [wlt-macronutrients progress="maintain" type="total" nutrient="protein"]
+
+= 5.0.5 =
+
+* Improvement: Standardised unit display e.g. St is now consistently lowercase.
+* Bug fix: Fixed issue where Stones / Pounds was displaying 14 pounds instead of incrementing stones.
+
 = 5.0.4 =
 
 * Bug fix: Fixed missing charts doe to clashes with other plugins. JS enqueue issue where other plugins were using Chart.js (myCred in this example) with the same enqueue slug.

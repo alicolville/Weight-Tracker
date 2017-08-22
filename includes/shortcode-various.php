@@ -212,7 +212,18 @@ function we_ls_format_weight_into_correct_string_format($weight, $comparison = f
 			if ($comparison) {
 				return ws_ls_format_stones_pound_for_comparison_display($weight_data);
 			} else {
-				return $weight_data["stones"] . __("st", WE_LS_SLUG) . " " . (($weight_data["pounds"] < 0) ? abs($weight_data["pounds"]) : $weight_data["pounds"]) . __("lbs", WE_LS_SLUG);
+
+				if($weight_data["pounds"] < 0) {
+					$weight_data["pounds"] = abs($weight_data["pounds"]);
+				}
+
+				// If Lbs is 14, then set to 0 and increment stones!
+				if(14 == $weight_data["pounds"]) {
+					$weight_data["pounds"] = 0;
+					$weight_data["stones"]++;
+				}
+
+				return $weight_data["stones"] . __("st", WE_LS_SLUG) . " " . $weight_data["pounds"] . __("lbs", WE_LS_SLUG);
 			}
 		}
 	}
