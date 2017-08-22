@@ -55,6 +55,28 @@ function ws_ls_license() {
 }
 
 /**
+ * Get the current (activate) license
+ * @return string
+ */
+function ws_ls_license_get_old_or_new() {
+
+    $license = ws_ls_license();
+
+    if(false === empty($license)) {
+        return $license;
+    }
+
+    $license = ws_ls_get_license();
+
+    if(false === empty($license)) {
+        return $license;
+    }
+
+    return '';
+
+}
+
+/**
 *	Return stored license type
 **/
 function ws_ls_license_type() {
@@ -87,6 +109,52 @@ function ws_ls_license_apply($license) {
 	}
 
 	return $license_result;
+}
+
+/**
+ * Remove new and old licenses
+ */
+function ws_ls_license_remove($type = 'both') {
+
+    if(true === in_array($type, ['new', 'both'])) {
+        delete_option(WS_LS_LICENSE_2);
+        delete_option(WS_LS_LICENSE_2_TYPE);
+        delete_option(WS_LS_LICENSE_2_VALID);
+    } else {
+        delete_option(WS_LS_LICENSE);
+        delete_option(WS_LS_LICENSE_VALID);
+    }
+}
+
+/**
+* Generate a license key // TODO: Remove this from plugin
+**/
+function ws_ls_license_generate($type, $site_hash, $expire_in_days = 365) {
+
+	if(false === empty($site_hash)) {
+
+		$license = [
+			'type' => (false === in_array($type, ['pro', 'pro-plus'])) ? 'pro' : $type,
+			'expiry-days' => (true === empty($expire_in_days) || false === is_numeric($expire_in_days) || $expire_in_days < 1) ? 365 : intval($expire_in_days),
+			'site-hash' => $site_hash
+		];
+
+		// Generate license date
+		$license['expiry-date'] = date("Y-m-d", strtotime('+' . $license['expiry-days'] . ' day'));
+
+		// Create a hash of basic fields
+		$license['hash'] = md5('yeken.uk' . $license['type'] . $license['expiry-days'] . $license['site-hash'] . $license['expiry-date']);
+
+		// JSON encode and then base 64 encode
+		$license = json_encode($license);
+		$license = base64_encode($license);
+
+		// Ensure the license actually validates
+		return ( false === empty(ws_ls_license_decode($license)) ) ? $license : 'Error validating license';
+
+	}
+
+	return 'Error creating license.';
 }
 
 /**
@@ -170,6 +238,38 @@ function ws_ls_generate_site_hash() {
     return $site_hash;
 }
 
+/**
+ * Display a name for license slug
+ * @param bool $license
+ * @return mixed
+ */
+function ws_ls_license_display_name($license = false) {
+
+    $return_value = __('None', WE_LS_SLUG);
+
+    if( true === empty($license) ) {
+        $license = ws_ls_license();
+    }
+
+    if(false === empty($license)) {
+
+        switch ($license) {
+            case 'pro':
+                $return_value = __('Yearly Pro', WE_LS_SLUG);
+                break;
+            case 'pro-old':
+                $return_value = __('Legacy Pro', WE_LS_SLUG);
+                break;
+            case 'pro-plus':
+                $return_value = __('Pro Plus', WE_LS_SLUG);
+                break;
+        }
+
+    }
+
+    return $return_value;
+}
+
 // ------------------------------------------------------------------------------------------------------------
 // Old licensing
 // ------------------------------------------------------------------------------------------------------------
@@ -203,13 +303,14 @@ function ws_ls_generate_old_pro_license($site_hash) {
 *	Validate and store an old Pro license
 **/
 function ws_ls_is_validate_old_pro_license($license_key_from_yeken) {
-
-	$site_hash = ws_ls_generate_site_hash();
-    $comparison_license = ws_ls_generate_old_pro_license($site_hash);
-
-//TODO: revert this funciton back so people can still add old licenses!
-
-    return ($comparison_license == $license_key_from_yeken);
+    $site_hash = ws_ls_generate_site_hash();
+    $comparison_license = ws_ls_generate_license($site_hash);
+    if ($comparison_license == $license_key_from_yeken){
+        update_option(WS_LS_LICENSE, $license_key_from_yeken);
+        update_option(WS_LS_LICENSE_VALID, true);
+        return true;
+    }
+    return false;
 }
 
 /**

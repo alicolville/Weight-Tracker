@@ -105,17 +105,15 @@ add_action( 'plugins_loaded', 'ws_ls_load_textdomain' );
 
 //TODO
 function test() {
-
+//
 //	$hash = ws_ls_generate_site_hash();
 //	$license = ws_ls_license_generate('pro', $hash, '1');
-
-	// var_dump($hash, $license);
-
-// $license = 'J5LWRheXMiOjY2NSwic2l0ZS1oYXNoIjoiZWIwMDg3IiwiZXhwaXJ5LWRhdGUiOiIyMDE5LTA2LTE4IiwiaGFzaCI6IjU4NTc4MzU0NTM5YTQyYzNhZTVjNj';
-
-
-
-	//var_dump(ws_ls_license_apply($license));
+//
+//	 var_dump($hash, $license);
+//
+//
+//
+//	var_dump(ws_ls_license_apply($license));
 //	die;
 }
 add_action('init', 'test');

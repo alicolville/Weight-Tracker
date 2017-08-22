@@ -162,6 +162,7 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 
 = 5.1 =
 
+    * New feature: New licensing core to support new yearly subscriptions and communicate stats to Yeken.uk
 	* New feature: Shortcode to display the user's height [wlt-height] - Read more: https://weight.yeken.uk/shortcodes/
 	* New feature: Shortcode to display the user's gender [wlt-gender] - Read more: https://weight.yeken.uk/shortcodes/
 	* New feature: Shortcode to display the user's Date of Birth [wlt-dob] - Read more: https://weight.yeken.uk/shortcodes/

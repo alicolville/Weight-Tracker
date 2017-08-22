@@ -41,6 +41,8 @@ function ws_ls_get_data_from_yeken()
 
 function ws_ls_stats_send_license_activation_to_yeken() {
 
+    //TODO: Send data for license
+
 	// If not PRO then nothing to do
 	if(false == WS_LS_IS_PRO) {
 		return;
@@ -77,6 +79,9 @@ function ws_ls_stats_send_to_yeken() {
 	}
 
 	global $globals;
+
+	//TODO: Modify to send more data
+    // TODO: Change option key that fires this function
 
 	// Build payload to send to Yeken
 	$data = array();
