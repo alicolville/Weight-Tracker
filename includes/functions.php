@@ -67,11 +67,11 @@ function ws_ls_weight_object($user_id, $kg, $pounds, $stones, $pounds_only, $not
         $weight['graph_value'] = $data;
         break;
       case 'kg':
-        $weight['display'] = $weight['kg'] . __('Kg', WE_LS_SLUG);
+        $weight['display'] = $weight['kg'] . __('kg', WE_LS_SLUG);
         $weight['graph_value'] = $weight['kg'];
         break;
       default:
-        $weight['display'] = $weight['stones'] . __('St', WE_LS_SLUG) . " " . $weight['pounds'] . __('lbs', WE_LS_SLUG);
+        $weight['display'] = $weight['stones'] . __('st', WE_LS_SLUG) . " " . $weight['pounds'] . __('lbs', WE_LS_SLUG);
         $weight['graph_value'] = ($weight['stones'] * 14) + $weight['pounds'];
         break;
   }
@@ -83,10 +83,10 @@ function ws_ls_weight_object($user_id, $kg, $pounds, $stones, $pounds_only, $not
 	  $weight['display-admin'] = $data . __('lbs', WE_LS_SLUG);
 	  break;
 	case 'kg':
-	  $weight['display-admin'] = $weight['kg'] . __('Kg', WE_LS_SLUG);
+	  $weight['display-admin'] = $weight['kg'] . __('kg', WE_LS_SLUG);
 	  break;
 	default:
-	  $weight['display-admin'] = $weight['stones'] . __('St', WE_LS_SLUG) . " " . $weight['pounds'] . __('lbs', WE_LS_SLUG);
+	  $weight['display-admin'] = $weight['stones'] . __('st', WE_LS_SLUG) . " " . $weight['pounds'] . __('lbs', WE_LS_SLUG);
 	  break;
 	}
 
@@ -495,7 +495,7 @@ function ws_ls_format_stones_pound_for_comparison_display($weight) {
 		}
 
 		if ($show_stones) {
-			$text[] = $weight['stones'] . __('St', WE_LS_SLUG);
+			$text[] = $weight['stones'] . __('st', WE_LS_SLUG);
 		}
 
 		if (is_numeric($weight['pounds'])) {

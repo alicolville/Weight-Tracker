@@ -160,7 +160,7 @@ function ws_ls_shortcode_stats_display_value($stats, $arguments) {
 				$stats['display-value'] .= ws_ls_format_stones_pound_for_comparison_display($weight);
 				break;
 			default:
-				$stats['display-value'] .= ws_ls_round_decimals($difference)  . __('Kg', WE_LS_SLUG);
+				$stats['display-value'] .= ws_ls_round_decimals($difference)  . __('kg', WE_LS_SLUG);
 		}
 
 		// Allow theme developer to override stats message
