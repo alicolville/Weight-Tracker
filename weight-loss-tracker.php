@@ -78,7 +78,7 @@ include WS_LS_ABSPATH . 'includes/shortcode-weight-loss-tracker.php';
 include WS_LS_ABSPATH . 'includes/shortcode-various.php';
 include WS_LS_ABSPATH . 'includes/save-data.php';
 include WS_LS_ABSPATH . 'pages/page.settings.php';
-include WS_LS_ABSPATH . 'pages/page.pro.advertise.php';
+include WS_LS_ABSPATH . 'pages/page.license.php';
 include WS_LS_ABSPATH . 'pages/page.help.php';
 include WS_LS_ABSPATH . 'pro-features/feature-list.php';
 include WS_LS_ABSPATH . 'includes/comms-with-yeken.php';
@@ -100,28 +100,3 @@ function ws_ls_load_textdomain() {
   load_plugin_textdomain( WE_LS_SLUG, false, dirname( plugin_basename( __FILE__ )  ) . '/languages/' );
 }
 add_action( 'plugins_loaded', 'ws_ls_load_textdomain' );
-
-
-
-//TODO
-function test() {
-//
-//	$hash = ws_ls_generate_site_hash();
-//	$license = ws_ls_license_generate('pro', $hash, '1');
-//
-//	 var_dump($hash, $license);
-//
-//
-//
-//	var_dump(ws_ls_license_apply($license));
-//	die;
-}
-add_action('init', 'test');
-
-/*
-Expired:
-eyJ0eXBlIjoicHJvIiwiZXhwaXJ5LWRheXMiOjIyNSwic2l0ZS1oYXNoIjoiZWIwMDg3IiwiZXhwaXJ5LWRhdGUiOiIyMDE3LTAxLTAxIiwiaGFzaCI6IjM0OGNhZmZhN2U5OTM1YmIwYjE3NWY5ZTcwYTQ4ZDU0In0=
-
-NEW:
-eyJ0eXBlIjoicHJvIiwiZXhwaXJ5LWRheXMiOjIyNSwic2l0ZS1oYXNoIjoiZWIwMDg3IiwiZXhwaXJ5LWRhdGUiOiIyMDE4LTA0LTA0IiwiaGFzaCI6ImJmMWU0YmY2YWM0MDBhOTJhZTk4ZGM2ZmY2YjcwNTBkIn0=
-*/

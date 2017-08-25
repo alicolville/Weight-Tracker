@@ -8,8 +8,12 @@
 	// -----------------------------------------------------------------------------------
 	define('WE_LS_TITLE', 'Weight Tracker');
 	define('WE_LS_SLUG', 'weight-loss-tracker');
-	define('WE_LS_DATA_URL', 'https://weight.yeken.uk/wlt/plugin-info.json');
+	define('WE_LS_DATA_URL', 'https://weight.yeken.uk/wlt/plugin-info-new.json');
 	define('WE_LS_STATS_URL', 'https://weight.yeken.uk/wlt/stats.php');
+	define('WE_LS_LICENSE_TYPES_URL', 'https://weight.yeken.uk/features');
+	define('WE_LS_CALCULATIONS_URL', '	https://weight.yeken.uk/calculations/');
+	define('WE_LS_UPGRADE_TO_PRO_URL', 'https://weight.yeken.uk/get-pro/');
+	define('WE_LS_UPGRADE_TO_PRO_PLUS_URL', 'https://weight.yeken.uk/get-pro-plus/');
     define('WE_LS_CDN_CHART_JS', 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js');
 	define('WE_LS_TABLENAME', 'WS_LS_DATA');
 	define('WE_LS_TARGETS_TABLENAME', 'WS_LS_DATA_TARGETS');
@@ -28,7 +32,7 @@
 	define('WE_LS_CACHE_KEY_WEIGHT_EXTREME', 'weight-extreme-');
 	define('WE_LS_CACHE_KEY_USER_PREFERENCE', 'user-preference');
 	define('WE_LS_CACHE_KEY_USER_HEIGHT', 'user-height');
-	define('WE_LS_CACHE_KEY_YEKEN_JSON', 'yeken-json-lookup-wlt');
+	define('WE_LS_CACHE_KEY_YEKEN_JSON', 'yeken-json-lookup-wlt-latest');
 	define('WE_LS_CACHE_KEY_STATS_SUMMARY', 'user-stats-summary');
 	define('WE_LS_CACHE_KEY_WEIGHT_FOR_DAY', 'user-weight-for-day');
     define('WE_LS_CACHE_KEY_ENTRY_COUNTS', 'entry-counts');
@@ -38,7 +42,8 @@
 	define('WE_LS_KEY_YEKEN_ADMIN_NOTIFICATION', 'yeken-admin-notification');
 	define('WE_LS_CACHE_ADMIN_USER_DATA', 'admin-user-data');
 	define('WE_LS_TABLE_MAX_WEEK_FILTERS', 150);
-	define('WS_LS_PRO_PRICE', 25.00);
+	define('WS_LS_PRO_PRICE', 30.00);
+	define('WS_LS_PRO_PLUS_PRICE', 60.00);
 	define('WE_LS_USE_MINIFIED_SCRIPTS', true);
 	define('WE_LS_CRON_NAME', 'weight_loss_tracker_hourly');
 	define('WE_LS_CRON_NAME_YEKEN_COMMS', 'weight_loss_tracker_yeken_comms');

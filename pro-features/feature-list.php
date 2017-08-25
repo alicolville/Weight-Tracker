@@ -2,6 +2,15 @@
 
 defined('ABSPATH') or die('Jog on!');
 
+$pro_plus_features = array(
+    __('<strong>All of the features that come with a standard <a href="' . WE_LS_LICENSE_TYPES_URL . '" target="_blank">Pro license</a>.</strong>', WE_LS_SLUG),
+	__('<strong>Basal Metabolic Rate (BMR) calculations per user</strong>. Shortcodes and extended admin screens to display a user\'s BMR. For further information on BMR and how it is calculated visit <a href="' . WE_LS_CALCULATIONS_URL . '" target="_blank">our calculations page</a>.</strong>', WE_LS_SLUG),
+	__('<strong>Harris Benedict formula</strong>. Shortcodes and extended admin screens to a view a person\'s calorie intake required to maintain and lose weight. For further information on Harris Benedict Formula and how it is calculated visit <a href="' . WE_LS_CALCULATIONS_URL . '" target="_blank">our calculations page</a>.</strong>', WE_LS_SLUG),
+	__('<strong>Recommended calorie intake per meal time</strong>. Shortcodes and extended admin screens to recommend how a person should split their daily calorie intake across meals. For further information on how this is calculated please visit <a href="' . WE_LS_CALCULATIONS_URL . '" target="_blank">our calculations page</a>.</strong>', WE_LS_SLUG),
+	__('<strong>Macronutrients Calculator</strong>. Shortcodes and extended admin screens to recommend how their calorie consumption should be split into fats, carbohydrates and proteins. For further information on the Macronutrients Calculator and how these calculations are performed please visit <a href="' . WE_LS_CALCULATIONS_URL . '" target="_blank">our calculations page</a>.</strong>', WE_LS_SLUG),
+	__('<strong>Additional user preference fields</strong>. Additional user preference fields and shortcodes to display them: Activity Level, Date of Birth and Gender.', WE_LS_SLUG)
+);
+
 $pro_features = array(
 
     __('<strong>Access your user\'s data.</strong> Admin can view, edit and delete user data. Various tools for viewing user\'s graphs, tables of entries, BMI, targets, weight lost / gained stats and much more.', WE_LS_SLUG),

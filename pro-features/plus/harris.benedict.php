@@ -161,7 +161,7 @@
 										'error-message' => __('Please ensure all relevant data to calculate calorie intake has been entered i.e. Activity Level, Date of Birth, Current Weight, Gender and Height.', WE_LS_SLUG ),
 										'user-id' => false,
 										'progress' => 'maintain',	// 'maintain', 'lose'
-										'type' => 'lunch'			// 'breakfast', 'lunch', 'dinner', 'snack', 'total'
+										'type' => 'total'			// 'breakfast', 'lunch', 'dinner', 'snack', 'total'
 									], $user_defined_arguments );
 
 		$arguments['user-id'] = ws_ls_force_numeric_argument($arguments['user-id']);

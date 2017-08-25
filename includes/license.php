@@ -24,6 +24,13 @@ function ws_ls_has_a_valid_license() {
     return false;
 }
 
+/**
+* Returns true if the user has a proper Pro plus license
+**/
+function ws_ls_has_a_valid_pro_plus_license() {
+	return ('pro-plus' == ws_ls_has_a_valid_license());
+}
+
 // ------------------------------------------------------------------------------------------------------------
 // Current licensing
 // ------------------------------------------------------------------------------------------------------------
@@ -120,41 +127,12 @@ function ws_ls_license_remove($type = 'both') {
         delete_option(WS_LS_LICENSE_2);
         delete_option(WS_LS_LICENSE_2_TYPE);
         delete_option(WS_LS_LICENSE_2_VALID);
-    } else {
+	}
+
+	if(true === in_array($type, ['old', 'both'])) {
         delete_option(WS_LS_LICENSE);
         delete_option(WS_LS_LICENSE_VALID);
     }
-}
-
-/**
-* Generate a license key // TODO: Remove this from plugin
-**/
-function ws_ls_license_generate($type, $site_hash, $expire_in_days = 365) {
-
-	if(false === empty($site_hash)) {
-
-		$license = [
-			'type' => (false === in_array($type, ['pro', 'pro-plus'])) ? 'pro' : $type,
-			'expiry-days' => (true === empty($expire_in_days) || false === is_numeric($expire_in_days) || $expire_in_days < 1) ? 365 : intval($expire_in_days),
-			'site-hash' => $site_hash
-		];
-
-		// Generate license date
-		$license['expiry-date'] = date("Y-m-d", strtotime('+' . $license['expiry-days'] . ' day'));
-
-		// Create a hash of basic fields
-		$license['hash'] = md5('yeken.uk' . $license['type'] . $license['expiry-days'] . $license['site-hash'] . $license['expiry-date']);
-
-		// JSON encode and then base 64 encode
-		$license = json_encode($license);
-		$license = base64_encode($license);
-
-		// Ensure the license actually validates
-		return ( false === empty(ws_ls_license_decode($license)) ) ? $license : 'Error validating license';
-
-	}
-
-	return 'Error creating license.';
 }
 
 /**
@@ -304,7 +282,7 @@ function ws_ls_generate_old_pro_license($site_hash) {
 **/
 function ws_ls_is_validate_old_pro_license($license_key_from_yeken) {
     $site_hash = ws_ls_generate_site_hash();
-    $comparison_license = ws_ls_generate_license($site_hash);
+    $comparison_license = ws_ls_generate_old_pro_license($site_hash);
     if ($comparison_license == $license_key_from_yeken){
         update_option(WS_LS_LICENSE, $license_key_from_yeken);
         update_option(WS_LS_LICENSE_VALID, true);

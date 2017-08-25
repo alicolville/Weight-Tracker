@@ -8,46 +8,32 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate Link: https://www.paypal.me/yeken
 
-Allow registered users of your website to track their weight and relevant body measurements. History can be displayed in both tables & charts.
+Allow registered users of your website to track their weight and relevant body measurements. History can be displayed in both tables & charts. Support for BMI, BMR, Calorie Intake, Macronutrients and much more!
 
 == Description ==
 
 = Core Features =
 
-An easy to use plugin that allows registered users of your website to track their weight and relevant body measurements. Their history can be displayed in both tables, charts, widgets and various shortcodes. Simply place the tag [weight-loss-tracker] on a given page and the user is presented with a tabbed form to enter a date (UK or US), weight and notes for that entry. When the person saves their entry the data table and graph are refreshed. The plugin also allows users to specify their target weight which is drawn on the chart as a comparison. If data is entered for an existing date, then the previous entry is simply updated. The graph is shown when there are two or more entries.
+An easy to use plugin that allows your users to track their weight and relevant body measurements. Their entries can be seen in various ways, charts, tables, shortcodes and widgets. The user is able to set targets and modify their weight entries.
 
-The following weight formats are supported:
+The admin area features a rich user interface to allow site owners and personal trainers interact with their user base and help them achieve their goals.
 
-* Metric (Kg)
-* Imperial - Stones & Pounds
-* Imperial - Pounds only
+Support for US/UK date formats as well as Imperial and Metric measurements.
 
-Also supports the following tags:
-
- * [wlt] - main weight loss tracker tool
- * [wlt-weight-diff] - total weight lost by the logged in member
- * [wlt-weight-start] - start weight of the logged in member
- * [wlt-weight-most-recent] - end weight of the logged in member
- * [wlt-weight-diff-from-target] - difference from target
- * [wlt-target] - user's target weight (if specified)
-
-	Pro Shortcodes:
-
- * [wlt-chart] - Displays a chart
- * [wlt-form] - Displays a form
- * [wlt-table] - Displays a data table
- * [wlt-recent-bmi] - Displays the user's BMI for most recent weight
- * [wlt-total-lost] - Total lost / gained by the entire community.
- * [wlt-league-table] - Show a league table of weight loss users.
- * [wlt-progress-bar] - Show a progress bar indicating progress towards target weight.
- * [wlt-reminder] - This allows you to display reminder messages for users to add a target weight or weight / measurement entry for the day.
- * [wlt-message] - Allows you to display messages to users when they consecutively gain or lose weight.
+For further information read our documentation:
 
 [Weight Loss Tracker Website - Shortcode guide](https://weight.yeken.uk/shortcodes "Weight Loss Tracker Website - Shortcode guide")
 
-= Pro Version =
+= Pro Plus Version =
 
-Our Pro version has now been released! If you upgrade, you get the additional features:
+* All of the features that come with a standard Pro license.
+* **Basal Metabolic Rate (BMR) calculations per user**. Shortcodes and extended admin screens to display a user's BMR. For further information on BMR and how it is calculated visit our calculations page.
+* **Harris Benedict formula**. Shortcodes and extended admin screens to a view a person's calorie intake required to maintain and lose weight. For further information on Harris Benedict Formula and how it is calculated visit our calculations page.
+* **Recommended calorie intake per meal time**. Shortcodes and extended admin screens to recommend how a person should split their daily calorie intake across meals. For further information on how this is calculated please visit our calculations page.
+* **Macronutrients Calculator**. Shortcodes and extended admin screens to recommend how their calorie consumption should be split into fats, carbohydrates and proteins. For further information on the Macronutrients Calculator and how these calculations are performed please visit our calculations page.
+* **Additional user preference fields**. Additional user preference fields and shortcodes to display them: Activity Level, Date of Birth and Gender.
+
+= Pro Version =
 
 * **Admin can view, edit and delete user data.** Various tools for viewing user's graphs, tables of entries, BMI, targets, weight lost / gained stats and much more.
 * **CSV and JSON exports** for all data or a particular user.
@@ -102,11 +88,12 @@ Yes! Please visit our dedicated site [Weight Loss Tracker Website](https://weigh
 
 = Does it create any custom mySQL tables =
 
-Yes it creates three:
+Yes it creates four:
 
-- WP_WS_LS_DATA_TARGETS - Stores user target data
-- WP_WS_LS_DATA - Store weight and measurement information per user
-- WS_LS_DATA_USER_PREFERENCES - Stores user preferences
+- WP_WS_LS_DATA_TARGETS - Stores user target data.
+- WP_WS_LS_DATA - Store weight and measurement information per user.
+- WS_LS_DATA_USER_PREFERENCES - Stores user preferences.
+- WS_LS_DATA_USER_STATS - Stores user statistics data.
 
 = What date formats doe it support? =
 
@@ -116,25 +103,9 @@ Currently it supports both UK (dd/mm/yyy) and US (mm/dd/yyyy) date formats.
 
 Currently it supports both Centimetres (CM) and Inches.
 
-= How do I change the plugin settings? =
-
-In WordPress Admin goto Settings.
-
-= How do I switch it from Metric (Kg) to Imperial (Stones / Pounds)? =
-
-In WordPress Admin goto Settings > Weight Loss Tracker and change the setting "Weight Units" to the desired type.
-
-= How do I enable tabs? =
-
-Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setting "Display data in tabs?" to Yes.
-
 = Can I change measurement units while the site is live? =
 
 Yes. Only recommended if you first installed the plugin at version 1.6 or greater. Newer versions stores measurements in Kg and Pounds. Versions prior 1.6 didn't so you may find data isn't present for previous date entries.
-
-= How do I disable "Target weight" =
-
-Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setting "Allow targets?" to No.
 
 == Screenshots ==
 
@@ -156,12 +127,18 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 
 == Upgrade Notice ==
 
-5.0! Now view and interact with your user's data like never before.
+5.1! Now support for BMR, BMI, Calorie intake and Macronutrient Calculator.
 
 == Changelog ==
 
 = 5.1 =
 
+	* New feature: New Pro Plus license with more extended features.
+	* New Feature (Pro Plus): Shortcode to display a user's BMR [wlt-bmr] - Read more: https://weight.yeken.uk/shortcodes/
+	* New Feature (Pro Plus): Shortcode to display a user's recommended calorie intake in tabular form [wlt-calories-table] - Read more: https://weight.yeken.uk/shortcodes/
+	* New Feature (Pro Plus): Shortcode to display a specific calorie intake figure for a user [wlt-calories] - Read more: https://weight.yeken.uk/shortcodes/
+	* New Feature (Pro Plus): Shortcode to display a user's recommended macronutrient intake in tabular form [wlt-macronutrients-table] - Read more: https://weight.yeken.uk/shortcodes/
+	* New Feature (Pro Plus): Shortcode to display a specific macronutrient intake figure for a user [wlt-macronutrients] - Read more: https://weight.yeken.uk/shortcodes/
     * New feature: New licensing core to support new yearly subscriptions and communicate stats to Yeken.uk
 	* New feature: Shortcode to display the user's height [wlt-height] - Read more: https://weight.yeken.uk/shortcodes/
 	* New feature: Shortcode to display the user's gender [wlt-gender] - Read more: https://weight.yeken.uk/shortcodes/
@@ -173,24 +150,6 @@ Yes. In WordPress Admin goto Settings > Weight Loss Tracker and change the setti
 	* Improvement: Icons added to buttons when managing user data.
 	* Improvement: Show user side bar when managing user data in more relevant places.
 	* Bug Fix: Edit Settings was loading DoB for the wrong user.
-
-
-    PRO PLUS;
-
-	* Added BMR
-	* Added Harris Benedict
-
-    * [wlt-bmr]     'suppress-errors' => false,      // If true, don't display errors from ws_ls_calculate_bmr()
-                    'user-id'
-    * [wlt-calories] 'error-message' => __('Please ensure all relevant data to calculate calorie intake has been entered i.e. Activity Level, Date of Birth, Current Weight, Gender and Height.', WE_LS_SLUG ),
-                     'user-id' => false,
-                     'progress' => 'maintain',	// 'maintain', 'lose'
-                     'type' => 'lunch'			// 'breakfast', 'lunch', 'dinner', 'snack', 'total'
-	* [wlt-calories-table]	'error-message' => __('Please ensure all relevant data to calculate calorie intake has been entered i.e. Activity Level, Date of Birth, Current Weight, Gender and Height.', WE_LS_SLUG ),
-							'user-id'
-	* [wlt-macronutrients-table]	'error-message' => __('Please ensure all relevant data to calculate calorie intake has been entered i.e. Activity Level, Date of Birth, Current Weight, Gender and Height.', WE_LS_SLUG ),
-									'user-id'
-	* [wlt-macronutrients progress="maintain" type="total" nutrient="protein"]
 
 = 5.0.5 =
 
