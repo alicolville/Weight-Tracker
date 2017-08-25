@@ -54,27 +54,75 @@ function ws_ls_advertise_pro() {
 					</div>
 
 					<!-- sidebar -->
+                    <?php
+
+                        $license = '';
+
+                        $license_type = ws_ls_has_a_valid_license();
+
+                        $license_name = ws_ls_license_display_name($license_type);
+
+                        $license_decoded = false;
+
+                        if (true === in_array($license_type, ['pro', 'pro-plus'])) {
+                            $license = ws_ls_license();
+                            $license_decoded = ws_ls_license_decode($license);
+                        }
+
+                    ?>
 					<div id="postbox-container-1" class="postbox-container">
 
 						<div class="meta-box-sortables">
+                            <div class="postbox">
+                                <h3 class="hndle"><span><?php echo __('Your License Information', WE_LS_SLUG); ?></span></h3>
+                                <div class="inside">
+                                    <table class="ws-ls-sidebar-stats">
+                                        <tr>
+                                            <th><?php echo __('Site Hash', WE_LS_SLUG); ?></th>
+                                            <td><?php echo esc_html_e(ws_ls_generate_site_hash()); ?></td>
+                                        </tr>
+                                        <tr>
+                                            <th><?php echo __('Type', WE_LS_SLUG); ?></th>
+                                            <td><a href="https://weight.yeken.uk/license-types" target="_blank"><?php echo esc_html_e($license_name); ?></a></td>
+                                        </tr>
+                                        <tr class="last">
+                                            <th><?php echo __('Expires', WE_LS_SLUG); ?></th>
+                                            <td>
+                                                <?php
+
+                                                    if('pro-old' === $license_type) {
+                                                        echo __('Never', WE_LS_SLUG);
+                                                    } elseif (true === in_array($license_type, ['pro', 'pro-plus'])) {
+                                                        esc_html_e(ws_ls_iso_date_into_correct_format($license_decoded['expiry-date'], true));
+                                                    } else {
+                                                        echo __('n/a', WE_LS_SLUG);
+                                                    }
+
+                                                ?>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <?php $existing_license = ws_ls_license_get_old_or_new(); ?>
+
+                            <?php if(false === empty($existing_license)): ?>
+                                <div class="postbox">
+                                    <h3 class="hndle"><span><?php echo __('Your Existing license', WE_LS_SLUG); ?></span></h3>
+                                    <div class="inside">
+                                        <textarea rows="5" style="width:100%"><?php echo esc_textarea($existing_license); ?></textarea>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
 
 							<div class="postbox">
 
-								<div class="handlediv" title="Click to toggle"><br></div>
-								<!-- Toggle -->
-
-								<h3 class="hndle"><span><?php echo __('Enter License Key', WE_LS_SLUG); ?></span></h3>
+								<h3 class="hndle"><span><?php echo __('Add or Update License', WE_LS_SLUG); ?></span></h3>
 								<?php
-
-								$display_form = true;
-
-								if(ws_ls_has_a_valid_license()){
-									$display_form = false;
-								}
-								elseif (isset($_GET['add-license']) && 'true' == $_GET['add-license'] && !empty($_POST['license-key'])){
+                                if (isset($_GET['add-license']) && 'true' == $_GET['add-license'] && !empty($_POST['license-key'])){
 
 									$entered_license = $_POST['license-key'];
-									$valid_license = ws_ls_is_validate_license($entered_license);
+									$valid_license = ws_ls_is_validate_old_pro_license($entered_license);
 
 									if ($valid_license) {
 										$display_form = false;
@@ -84,17 +132,12 @@ function ws_ls_advertise_pro() {
 
 								?>
 								<div class="inside">
-									<?php if ($display_form): ?>
 									<form action="<?php echo admin_url('admin.php?page=ws-ls-weight-loss-tracker-pro&add-license=true'); ?>" method="post">
-										<p><?php echo __('Got an existing license key? If so, enter it below', WE_LS_SLUG); ?>. <?php echo __('In case you need, your <strong>Site Hash</strong>', WE_LS_SLUG); ?>: <?php echo ws_ls_generate_site_hash(); ?></p>
-										<input type="text" name="license-key" class="large-text" placeholder="<?php echo __('Enter license key', WE_LS_SLUG); ?>" />
-										<br /><br />
-										<input type="submit" class="button-primary large-text" value="<?php echo __('Add License', WE_LS_SLUG); ?>" />
+										<p><?php echo __('Copy and paste the license given to you by YeKen into this box and click "Add License"', WE_LS_SLUG); ?>.</p>
+										<textarea rows="5" style="width:100%"  name="license-key"></textarea>
+                                        <br /><br />
+										<input type="submit" class="button-secondary large-text" value="<?php echo __('Add License', WE_LS_SLUG); ?>" />
 									</form>
-								<?php else: ?>
-									<p><?php echo __( 'Thank you! Your license key for future reference is', WE_LS_SLUG); ?>: <br /><br /><strong><?php echo ws_ls_get_license(); ?></strong></p>
-
-								<?php endif; ?>
 								</div>
 								<!-- .inside -->
 
@@ -136,8 +179,10 @@ function ws_ls_advertise_pro() {
 									<div class="handlediv" title="Click to toggle"><br></div>
 									<!-- Toggle -->
 
-									<h3 class="hndle"><span><?php echo __('Features of Pro version', WE_LS_SLUG); ?></span></h3>
-									<div style="padding: 0px 15px 0px 15px">
+									<h3 class="hndle">
+                                        <img src="<?php echo plugin_dir_url( __FILE__ ); ?>/images/upgrade-pro-standard.png" />
+                                    </h3>
+                                   <div style="padding: 0px 15px 0px 15px">
 
 									<div class="inside">
 										<p><?php echo __('Below is a list of the intended features of the Pro version:', WE_LS_SLUG); ?></p>

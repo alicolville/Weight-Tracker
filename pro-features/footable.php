@@ -7,7 +7,7 @@ function ws_ls_data_table_placeholder($user_id = false, $max_entries = false, $s
 	ws_ls_data_table_enqueue_scripts();
 
 ?>
-	<table class="ws-ls-user-data table ws-ls-loading-table" id="<?php echo uniqid('ws-ls-'); ?>"
+	<table class="ws-ls-user-data-ajax table ws-ls-loading-table" id="<?php echo uniqid('ws-ls-'); ?>"
 		data-paging="true"
 		data-filtering="true"
 		data-sorting="true"
@@ -169,7 +169,6 @@ function ws_ls_data_table_enqueue_scripts() {
 	$minified = ws_ls_use_minified();
 
 	wp_enqueue_style('ws-ls-footables', plugins_url( '/css/footable.standalone.min.css', dirname(__FILE__)  ), array(), WE_LS_CURRENT_VERSION);
-	wp_enqueue_style('fontawesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', array(), WE_LS_CURRENT_VERSION);
 	wp_enqueue_script('ws-ls-footables-js', plugins_url( '/js/footable.min.js', dirname(__FILE__) ), array('jquery'), WE_LS_CURRENT_VERSION, true);
 	wp_enqueue_script('ws-ls-footables-admin', plugins_url( '/js/admin.footable' .     $minified . '.js', dirname(__FILE__) ), array('ws-ls-footables-js'), WE_LS_CURRENT_VERSION, true);
 	wp_localize_script('ws-ls-footables-admin', 'ws_user_table_config', ws_ls_data_js_config());

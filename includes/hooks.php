@@ -10,9 +10,9 @@
 		// Display manage user screens to relevant roles.
         add_submenu_page( 'ws-ls-weight-loss-tracker-main-menu', __('Manage User Data', WE_LS_SLUG),  __('Manage User Data', WE_LS_SLUG), WE_LS_VIEW_EDIT_USER_PERMISSION_LEVEL, 'ws-ls-wlt-data-home', 'ws_ls_admin_page_data_home');
 
-        if(!WS_LS_IS_PRO) {
-			add_submenu_page( 'ws-ls-weight-loss-tracker-main-menu', __('Get Pro Version', WE_LS_SLUG),  __('Get Pro Version', WE_LS_SLUG), 'manage_options', 'ws-ls-weight-loss-tracker-pro', 'ws_ls_advertise_pro');
-		}
+        $menu_text = (false === WS_LS_IS_PRO && false === WS_LS_IS_PRO_PLUS) ? __('Upgrade', WE_LS_SLUG) : __('Your License', WE_LS_SLUG);
+
+        add_submenu_page( 'ws-ls-weight-loss-tracker-main-menu', $menu_text,  $menu_text, 'manage_options', 'ws-ls-weight-loss-tracker-pro', 'ws_ls_advertise_pro');
 
 		add_submenu_page( 'ws-ls-weight-loss-tracker-main-menu', __('Help', WE_LS_SLUG),  __('Help', WE_LS_SLUG), 'manage_options', 'ws-ls-weight-loss-tracker-help', 'ws_ls_help_page');
 
@@ -125,6 +125,11 @@
 			wp_enqueue_script('jquery-tabs',plugins_url( '../js/tabs.min.js', __FILE__ ), array('jquery'), WE_LS_CURRENT_VERSION);
 			wp_enqueue_style('wlt-tabs', plugins_url( '../css/tabs.min.css', __FILE__ ), array(), WE_LS_CURRENT_VERSION);
 			wp_enqueue_style('wlt-tabs-flat', plugins_url( '../css/tabs.flat.min.css', __FILE__ ), array(), WE_LS_CURRENT_VERSION);
+		}
+
+		if(false === empty($_GET['page']) && 'ws-ls-wlt-data-home' == $_GET['page']) {
+			wp_enqueue_style('fontawesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', array(), WE_LS_CURRENT_VERSION);
+			
 		}
 
 		// Include relevant JS for admin "Manage User data" pages

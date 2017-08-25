@@ -568,5 +568,48 @@ function ws_ls_iso_date_into_correct_format($date, $return_formatted_date_only =
     return $date;
 }
 
+/**
+ * Return the link for upgrade page
+ * @return string
+ */
+function ws_ls_upgrade_link() {
+    return admin_url( 'admin.php?page=ws-ls-weight-loss-tracker-pro');
+}
 
+/**
+ * Return the link for calculations page
+ * @return string
+ */
+function ws_ls_calculations_link($link_only = false) {
+
+    $url = 'https://weight.yeken.uk/calculations/';
+
+    return (false === $link_only) ? sprintf('<a href="%s" target="blank">%s</a>', $url, __('Read more about calculations', WE_LS_SLUG)) : $url;
+}
+
+/**
+* Helper function to get URL for further info on license types.
+**/
+function ws_ls_url_license_types() {
+	return sprintf('For further information regarding the types of licenses available, <a href="%s" target="_blank">please visit our site, weight.yeken.uk</a>', esc_url(WE_LS_LICENSE_TYPES_URL));
+}
+
+/**
+* Helper function to display a WP notice (in Admin)
+**/
+function ws_ls_display_notice($text, $type = 'success') {
+
+	if(true === empty($text)) {
+		return;
+	}
+
+	$type = (false === empty($type) && false === in_array($type, ['success', 'error', 'warning', 'info'])) ? 'success' : $type;
+
+	echo sprintf('	<div class="notice notice-%s">
+						<p>%s</p>
+					</div>',
+					esc_html($type),
+					esc_html($text)
+				);
+}
 ?>

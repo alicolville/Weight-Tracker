@@ -8,16 +8,17 @@ function ws_ls_admin_page_settings_user() {
 
 	$user_id = ws_get_user_id_from_qs();
 
-    $user_data = get_userdata( $user_id );
+    // Ensure this WP user ID exists!
+    ws_user_exist_check($user_id);
 ?>
-<div class="wrap">
-	<h1><?php echo $user_data->user_nicename; ?><?php echo ws_ls_get_email_link($user_id, true); ?></h1>
+<div class="wrap ws-ls-user-data">
 	<div id="poststuff">
+		<?php ws_ls_user_header($user_id, ws_ls_get_link_to_user_profile($user_id)); ?>
 		<div id="post-body" class="metabox-holder columns-2">
 			<div id="post-body-content">
 				<div class="meta-box-sortables ui-sortable">
 					<div class="postbox">
-						<h2 class="hndle"><span><?php echo __('Edit user settings', WE_LS_SLUG); ?></span></h2>
+						<h2 class="hndle"><span><?php echo __('Edit user preferences', WE_LS_SLUG); ?></span></h2>
 						<div class="inside">
                             <br />
 							<?php

@@ -3,7 +3,7 @@
 //
 jQuery( document ).ready(function ($) {
 
-	// If we're on the settings tab setup zozoTabs
+    // If we're on the settings tab setup zozoTabs
     if ($.fn.zozoTabs) {
         $("#ws-ls-tabs").zozoTabs({
             rounded: false,
@@ -18,6 +18,25 @@ jQuery( document ).ready(function ($) {
             }
         });
     }
+
+    // 100% Validation for Macronutrients
+    $('.ws-ls-macro').focus(function() {
+        prev_val = $(this).val();
+    }).change(function() {
+
+        event.preventDefault();
+        var updated_id = this.id;
+
+        var sum = 0;
+        $('.ws-ls-macro').each(function(){
+            sum += parseInt(this.value);
+        });
+
+        if(sum > 100 || sum < 0) {
+            $(this).val(prev_val);
+            alert('Please ensure the total of these three fields is greater than 0% and less than 100%');
+        }
+    });
 
     // Disable all inputs for Pro rows
     $(".ws-ls-disabled input").prop('disabled', true);

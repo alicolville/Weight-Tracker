@@ -8,6 +8,9 @@ function ws_ls_admin_page_data_user() {
 
 	$user_id = ws_get_user_id_from_qs();
 
+    // Ensure this WP user ID exists!
+    ws_user_exist_check($user_id);
+
     // DELETE ALL DATA FOR THIS USER!! AHH!!
     if (is_admin() && isset($_GET['removedata']) && 'y' == $_GET['removedata']) {
         ws_ls_delete_data_for_user($user_id);
@@ -19,10 +22,15 @@ function ws_ls_admin_page_data_user() {
 	<div class="notice notice-success"><p><?php echo __('The preferences for this user have been saved.', WE_LS_SLUG); ?></p></div>
 <?php endif; ?>
 
-<div class="wrap">
-	<h1><?php echo $user_data->user_nicename; ?>
-			<?php echo ws_ls_get_email_link($user_id, true); ?></h1>
+<?php if(!empty($_GET['deletecache'])) :
+        ws_ls_delete_cache_for_given_user($user_id);
+    ?>
+    <div class="notice notice-success"><p><?php echo __('The cache for this user has been deleted.', WE_LS_SLUG); ?></p></div>
+<?php endif; ?>
+
+<div class="wrap ws-ls-user-data">
 	<div id="poststuff">
+		<?php ws_ls_user_header($user_id); ?>
 		<div id="post-body" class="metabox-holder columns-2">
 			<div id="post-body-content">
 				<div class="meta-box-sortables ui-sortable">
@@ -44,6 +52,53 @@ function ws_ls_admin_page_data_user() {
 							?>
 						</div>
 					</div>
+                    <div class="postbox">
+                        <h2 class="hndle"><span><?php echo __('Daily calorie needs', WE_LS_SLUG); ?></span></h2>
+                        <div class="inside">
+                            <?php
+								if(ws_ls_has_a_valid_pro_plus_license()) {
+
+									echo ws_ls_harris_benedict_render_table($user_id);
+
+								} else {
+
+									echo sprintf('<p><a href="%s">%s</a> %s. %s.</p>',
+													ws_ls_upgrade_link(),
+													__('Upgrade to Pro Plus', WE_LS_SLUG),
+													__('to view the user\'s daily calorie intake required to either maintain or lose weight (Harris Benedict formula)' , WE_LS_SLUG),
+                                                    ws_ls_calculations_link()
+												);
+								}
+                            ?>
+                        </div>
+                    </div>
+                    <div class="postbox">
+                        <h2 class="hndle"><span><?php echo __('Macronutrient Calculator', WE_LS_SLUG); ?></span></h2>
+                        <div class="inside">
+                            <?php
+                            if(ws_ls_has_a_valid_pro_plus_license()) {
+                                if(false === ws_ls_macro_validate_percentages()) {
+                                    echo printf( '%s <a href="%s">%s</a>%s',
+                                            __('Please ensure the values for Proteins, Carbohydrates and Fats (within ', WE_LS_SLUG),
+                                            ws_ls_get_link_to_settings(),
+                                            __('settings', WE_LS_SLUG),
+                                            __(') have been specified and total 100%.', WE_LS_SLUG)
+                                    );
+                                } else {
+                                   echo ws_ls_macro_render_table($user_id);
+                                }
+                            } else {
+
+                                echo sprintf('<p><a href="%s">%s</a> %s. %s.</p>',
+                                    ws_ls_upgrade_link(),
+                                    __('Upgrade to Pro Plus', WE_LS_SLUG),
+                                    __('to view the user\'s suggested Macronutrient intake based on their recommended calorie intake' , WE_LS_SLUG),
+                                    ws_ls_calculations_link()
+                                );
+                            }
+                            ?>
+                        </div>
+                    </div>
 					<div class="postbox">
 						<h2 class="hndle"><span><?php echo __('Entries for this user', WE_LS_SLUG); ?></span></h2>
 						<div class="inside">
@@ -61,9 +116,5 @@ function ws_ls_admin_page_data_user() {
 		<br class="clear">
 	</div>
 <?php
-
-    echo ws_ls_create_dialog_jquery_code(__('Are you sure you?', WE_LS_SLUG),
-        __('Are you sure you wish to remove the data for this user?', WE_LS_SLUG) . '<br /><br />',
-        'delete-confirm');
 
 }

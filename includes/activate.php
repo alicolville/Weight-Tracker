@@ -6,7 +6,7 @@
 	function ws_ls_activate()
     {
 
-        // Register user stats cron job
+        // Register user stats / license check cron job
         if (!wp_next_scheduled(WE_LS_CRON_NAME)) {
             wp_schedule_event(time(), 'hourly', WE_LS_CRON_NAME);
         }

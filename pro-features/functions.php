@@ -90,7 +90,16 @@ function ws_ls_get_link_to_user_data() {
  * @return string
  */
 function ws_ls_get_link_to_user_profile($id) {
-	return is_numeric($id) ? esc_url(admin_url( 'admin.php?page=ws-ls-wlt-data-home&mode=user&user-id=' . $id )) : '#';
+    return is_numeric($id) ? esc_url(admin_url( 'admin.php?page=ws-ls-wlt-data-home&mode=user&user-id=' . $id )) : '#';
+}
+
+/**
+ * Given a user ID, return a link to delete a user's cache
+ * @param  int $id User ID
+ * @return string
+ */
+function ws_ls_get_link_to_delete_user_cache($id) {
+    return ws_ls_get_link_to_user_profile($id) . '&amp;deletecache=y';
 }
 
 /**
@@ -101,6 +110,24 @@ function ws_ls_get_link_to_user_profile($id) {
 function ws_ls_get_link_to_user_settings($id) {
 	return is_numeric($id) ? esc_url(admin_url( 'admin.php?page=ws-ls-wlt-data-home&mode=user-settings&user-id=' . $id )) : '#';
 }
+
+/**
+ * Given a user ID, return a link to edit a user's target
+ * @param  int $id User ID
+ * @return string
+ */
+function ws_ls_get_link_to_edit_target($id) {
+	return is_numeric($id) ? esc_url(admin_url( 'admin.php?page=ws-ls-wlt-data-home&mode=target&user-id=' . $id )) : '#';
+}
+
+/**
+ * Get link to settings page
+ * @return string
+ */
+function ws_ls_get_link_to_settings() {
+    return admin_url( 'admin.php?page=ws-ls-weight-loss-tracker-main-menu' );
+}
+
 
 /**
  * Given a user and entry ID, return a link to the edit entrant page
@@ -280,6 +307,21 @@ function ws_ls_display_user_setting($user_id, $field = 'dob', $not_specified_tex
 }
 
 /**
+ * Determine if user is a female
+ *
+ * @param $user_id
+ * @return bool
+ */
+function ws_ls_is_female($user_id) {
+
+    $user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
+
+    $gender = ws_ls_get_user_setting('gender', $user_id);
+
+    return (false === empty($gender) && 1 == intval($gender)) ? true : false;
+}
+
+/**
  * Fetch user's ISO DOB
  *
  * @param $user_id
@@ -290,7 +332,6 @@ function ws_ls_get_dob($user_id) {
 	$user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
 
     return ws_ls_get_user_setting('dob', $user_id);
-
 }
 
 /**
@@ -299,17 +340,48 @@ function ws_ls_get_dob($user_id) {
  * @param $user_id
  * @return bool|string
  */
-function ws_ls_get_dob_for_display($user_id = false, $not_specified_text = '') {
+function ws_ls_get_dob_for_display($user_id = false, $not_specified_text = '', $include_age = false) {
 
 	$dob = ws_ls_get_dob($user_id);
 
 	$not_specified_text = (false === $not_specified_text) ? __('Not Specified', WE_LS_SLUG) : esc_html($not_specified_text);
 
     if (false === empty($dob) && '0000-00-00 00:00:00' !== $dob) {
-		return ws_ls_iso_date_into_correct_format($dob);
+		$html = ws_ls_iso_date_into_correct_format($dob);
+
+		// Include age?
+		if(true === $include_age) {
+			$html .= ' ('. ws_ls_get_age_from_dob($user_id) . ')';
+		}
+
+		return $html;
 	}
 
 	return $not_specified_text;
+}
+
+/**
+ * Used to calculate agre from the person's DOB
+ *
+ * @param bool $user_id
+ * @return bool|int
+ */
+function ws_ls_get_age_from_dob($user_id = false){
+
+    $user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
+
+    $dob = ws_ls_get_dob($user_id);
+
+    if(false === empty($dob) && '0000-00-00 00:00:00' !== $dob) {
+
+        $dob = new DateTime($dob);
+        $today   = new DateTime('today');
+        $age = $dob->diff($today)->y;
+
+        return $age;
+    }
+
+    return NULL;
 }
 
 /**
@@ -318,5 +390,33 @@ function ws_ls_get_dob_for_display($user_id = false, $not_specified_text = '') {
 function ws_ls_user_data_permission_check() {
     if ( !current_user_can( WE_LS_VIEW_EDIT_USER_PERMISSION_LEVEL ) )  {
         wp_die( __( 'You do not have sufficient permissions to access this page.' , WE_LS_SLUG) );
+    }
+}
+
+/**
+ * Helper function to determine if the user exists in WP
+ *
+ * @param $user_id
+ * @return bool
+ */
+function ws_ls_user_exist($user_id) {
+
+    if(true === empty($user_id) || false === is_numeric($user_id)) {
+        return false;
+    }
+
+    return (false === get_userdata( $user_id )) ? false : true;
+}
+
+/**
+ * Helper function to check if user ID exists, if not throws wp_die()
+ *
+ * @param $user_id
+ * @return bool
+ */
+function ws_user_exist_check($user_id) {
+
+    if(false === ws_ls_user_exist($user_id)) {
+        wp_die(__( 'Error: The user does not appear to exist' , WE_LS_SLUG));
     }
 }

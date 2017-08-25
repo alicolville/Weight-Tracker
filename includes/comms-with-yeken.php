@@ -15,13 +15,11 @@ defined('ABSPATH') or die('Jog on!');
 
 function ws_ls_get_data_from_yeken()
 {
-  // Look up date from Yeken.uk
-  $cache = ws_ls_get_cache(WE_LS_CACHE_KEY_YEKEN_JSON);
-
   // Return cache if found!
-  if ($cache)   {
+  if ($cache = ws_ls_get_cache(WE_LS_CACHE_KEY_YEKEN_JSON))   {
       return $cache;
   }
+
   $response = wp_remote_get(WE_LS_DATA_URL);
 
   if( is_array($response) ) {
@@ -46,7 +44,7 @@ function ws_ls_stats_send_license_activation_to_yeken() {
 		return;
 	}
 
-	$previously_sent_key = 'ws-ls-license-notify';
+	$previously_sent_key = 'ws-ls-license-notify-2017';
 
 	if(false == get_option($previously_sent_key)) {
 
@@ -56,7 +54,7 @@ function ws_ls_stats_send_license_activation_to_yeken() {
 		$data['url'] = get_site_url();
 		$data['valid-license'] = ws_ls_has_a_valid_license();
 		$data['site-hash'] = get_option(WS_LS_LICENSE_SITE_HASH);
-		$data['license'] = get_option(WS_LS_LICENSE);
+		$data['license'] = ws_ls_license_get_old_or_new();
 		$result = wp_remote_post(WE_LS_STATS_URL, array('body' => $data));
 	}
 
@@ -84,6 +82,7 @@ function ws_ls_stats_send_to_yeken() {
 	$data['reason']	= 'weekly-stats';
 	$data['is-pro'] = WS_LS_IS_PRO;
 	$data['valid-license'] = ws_ls_has_a_valid_license();
+	$data['license'] = ws_ls_license_get_old_or_new();
 	$data['site-hash'] = get_option(WS_LS_LICENSE_SITE_HASH);
 	$data['no-wp-users'] = ws_ls_do_counts();
 	$data['no-wl-users'] = ws_ls_do_counts('wlt');

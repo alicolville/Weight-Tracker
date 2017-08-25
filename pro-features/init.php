@@ -32,9 +32,17 @@ if(defined('WS_LS_ABSPATH')){
 	include WS_LS_ABSPATH . 'pro-features/admin-pages/data-summary.php';
 	include WS_LS_ABSPATH . 'pro-features/admin-pages/data-view-all.php';
 	include WS_LS_ABSPATH . 'pro-features/admin-pages/data-add-edit-entry.php';
+	include WS_LS_ABSPATH . 'pro-features/admin-pages/data-edit-target.php';
 	include WS_LS_ABSPATH . 'pro-features/admin-pages/data-user.php';
 	include WS_LS_ABSPATH . 'pro-features/admin-pages/data-user-edit-settings.php';
     include WS_LS_ABSPATH . 'pro-features/admin-pages/data-search-results.php';
+
+    // Include files for those that have a Pro Plus license
+    if(WS_LS_IS_PRO_PLUS) {
+        include WS_LS_ABSPATH . 'pro-features/plus/bmr.php';
+		include WS_LS_ABSPATH . 'pro-features/plus/harris.benedict.php';
+        include WS_LS_ABSPATH . 'pro-features/plus/macronutrient.calculator.php';
+    }
 
 	// Email notifications enabled?
 	if(WE_LS_EMAIL_ENABLE) {
@@ -57,6 +65,10 @@ function ws_ls_register_pro_shortcodes(){
 		[wlt-progress-bar] - Show a progress bar indicating progress towards target weight.
 		[wlt-message] - Show a message if the user meets certain criteria (e.g. put weight on).
 		[wlt-user-settings] - Shows a form for user settings.
+        [wlt-gender] - display the user's gender
+        [wlt-dob] - display the user's Date of Birth
+        [wlt-activity-level] - display the user's Activity Level
+        [wlt-new-users] - display the number of new WP users in last x days
     */
 
     add_shortcode( 'weight-loss-tracker-chart', 'ws_ls_shortcode_chart' );
@@ -79,6 +91,11 @@ function ws_ls_register_pro_shortcodes(){
 	add_shortcode( 'wlt-message', 'ws_ls_shortcode_message' );
 	add_shortcode( 'wlt-user-settings', 'ws_ls_user_preferences_form' );
 
+	add_shortcode( 'wlt-gender', 'ws_ls_shortcode_gender' );
+	add_shortcode( 'wlt-dob', 'ws_ls_shortcode_dob' );
+	add_shortcode( 'wlt-height', 'ws_ls_shortcode_height' );
+	add_shortcode( 'wlt-activity-level', 'ws_ls_shortcode_activity_level' );
+    add_shortcode( 'wlt-new-users', 'ws_ls_shortcode_new_users' );
 }
 add_action( 'init', 'ws_ls_register_pro_shortcodes');
 

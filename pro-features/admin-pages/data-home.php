@@ -23,6 +23,9 @@ function ws_ls_admin_page_data_home() {
 		case 'entry':
 			ws_ls_admin_page_data_add_edit();
 			break;
+		case 'target':
+			ws_ls_admin_page_data_edit_target();
+			break;
 		case 'all':
 			ws_ls_admin_page_view_all();
 			break;

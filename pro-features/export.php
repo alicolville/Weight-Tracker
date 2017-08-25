@@ -162,7 +162,7 @@ function ws_ls_csv_row_write($columns, $row, $delimiter = ',', $end_of_line_char
 		foreach ($columns as $key => $value) {
 			if(in_array($key, $measurement_keys)) {
 				$data[$key] = $row['measurements'][$key];
-			} else {
+			} elseif(isset($row[$key])) {
 				$data[$key] = $row[$key];
 			}
 		}

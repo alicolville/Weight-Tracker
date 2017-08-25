@@ -324,7 +324,10 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 				$target_weight = ws_ls_get_user_target($user_id);
 
 				if ($target_weight['display'] != '') {
-					$html_output .= '<p>' . __('Your target weight is', WE_LS_SLUG) . ' <strong>' . $target_weight['display'] . '</strong>.</p>';
+
+                    $pre_text = (false === is_admin()) ? __('Your target weight is', WE_LS_SLUG) : __('The user\'s target weight is currently', WE_LS_SLUG);
+
+					$html_output .= '<p>' . $pre_text . ' <strong>' . $target_weight['display'] . '</strong>.</p>';
 				}
 			}
 
@@ -363,11 +366,11 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 			$html_output .= '<div id="comment-submit-container">
 			<p>
 				<div>
-					<input name="submit_button" type="submit" id="we-ls-submit"  tabindex="' . ws_ls_get_next_tab_index() . '" value="' . $button_text . '" class="comment-submit btn btn-default button default small fusion-button button-small button-default button-round button-flat" />';
+					<input name="submit_button" type="submit" id="we-ls-submit"  tabindex="' . ws_ls_get_next_tab_index() . '" value="' . $button_text . '" class="comment-submit button" />';
 
                 //If a target form, display "Clear Target" button
-                if ($target_form){
-                    $html_output .= '&nbsp;<button name="ws-ls-clear-target" id="ws-ls-clear-target" type="button" tabindex="' . ws_ls_get_next_tab_index() . '" class="ws-ls-clear-target comment-submit btn btn-default button default small fusion-button button-small button-default button-round button-flat" >' . __('Clear Target', WE_LS_SLUG) . '</button>';
+                if ($target_form && false === is_admin()){
+                    $html_output .= '&nbsp;<button name="ws-ls-clear-target" id="ws-ls-clear-target" type="button" tabindex="' . ws_ls_get_next_tab_index() . '" class="ws-ls-clear-target comment-submit button" >' . __('Clear Target', WE_LS_SLUG) . '</button>';
                 }
 
                 $html_output .= '</div>
