@@ -5,6 +5,11 @@ function ws_ls_user_preferences_form($user_id = false)
 {
     $html_output = '';
 
+    // Have user preferences been allowed in Settings?
+    if (false === WE_LS_ALLOW_USER_PREFERENCES && false === is_admin()) {
+        return $html_output;
+    }
+
     $user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
 
     // Decide which set of labels to render
