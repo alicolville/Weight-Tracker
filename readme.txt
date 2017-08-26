@@ -134,6 +134,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 = 5.1.1 =
 
 Bug fix: When entering weights in Stones and Pounds, a user can no longer enter 14lbs. Instead, they need to up the stone measurement.
+Bug fix: When displaying a Stone / Pounds weight, if the pounds figure is 14lb, set it to 0 and increment Stones by one.
 
 = 5.1 =
 

@@ -76,6 +76,12 @@ function ws_ls_convert_kg_into_relevant_weight_String($kg, $comparison_value = f
 					return ws_ls_format_stones_pound_for_comparison_display($weight);
 				}
 
+				// If pounds at 14, then round up stones!
+                if(14 == $weight['pounds']) {
+                    $weight['pounds'] = 0;
+                    $weight['stones']++;
+                }
+
 				return $weight['stones'] . __("St", WE_LS_SLUG) . ' ' . $weight['pounds'] . __("lbs", WE_LS_SLUG);
 			break;
 		}

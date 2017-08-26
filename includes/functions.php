@@ -71,8 +71,15 @@ function ws_ls_weight_object($user_id, $kg, $pounds, $stones, $pounds_only, $not
         $weight['graph_value'] = $weight['kg'];
         break;
       default:
-        $weight['display'] = $weight['stones'] . __('st', WE_LS_SLUG) . " " . $weight['pounds'] . __('lbs', WE_LS_SLUG);
-        $weight['graph_value'] = ($weight['stones'] * 14) + $weight['pounds'];
+
+          // If pounds at 14, then round up stones!
+          if(14 == $weight['pounds']) {
+              $weight['pounds'] = 0;
+              $weight['stones']++;
+          }
+
+          $weight['display'] = $weight['stones'] . __('st', WE_LS_SLUG) . " " . $weight['pounds'] . __('lbs', WE_LS_SLUG);
+          $weight['graph_value'] = ($weight['stones'] * 14) + $weight['pounds'];
         break;
   }
 
