@@ -309,7 +309,7 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 				// Do we have an existing value?
 				if($existing_date = ws_ls_get_existing_value($existing_data, 'date-display')) {
 					$default_date = $existing_date;
-				} else if (ws_ls_get_config('WE_LS_US_DATE')) { // Overide if US
+				} else if (ws_ls_get_config('WE_LS_US_DATE')) { // Override if US
 					$default_date = date("m/d/Y");
 				}
 
