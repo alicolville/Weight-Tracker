@@ -399,14 +399,11 @@ function ws_ls_set_user_preferences($settings, $user_id = false, $height = false
 	$db_fields['settings'] = json_encode($settings);
 
 	// Save Height, if not specified look up.
-	if(WE_LS_DISPLAY_BMI_IN_TABLES) {
-		if (false !== $height) {
-			$height = ws_ls_validate_height($height);
-		} else {
-			$height = ws_ls_get_user_height($user_id, false);
-		}
+	if (false !== $height) {
+		$height = ws_ls_validate_height($height);
+	} else {
+		$height = ws_ls_get_user_height($user_id, false);
 	}
-
 
     $db_fields['height'] = $height;
 	$db_fields['activity_level'] = $activity_level;

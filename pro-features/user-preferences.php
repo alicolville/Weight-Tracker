@@ -61,22 +61,18 @@ function ws_ls_user_preferences_form($user_defined_arguments)
 	<input type="hidden" id="ws-ls-user-id" value="' . (($user_id) ? esc_attr($user_id) : '0')  . '" />
 	<input type="hidden" name="ws-ls-user-pref-redirect" value="' . get_the_ID() . '" />';
 
-	// If BMI enabled, record allow height to be specified
-	if(WE_LS_DISPLAY_BMI_IN_TABLES) {
+	$html_output .= '
+    <label>' . $labels['height'] . '</label>
+    <select id="we-ls-height" name="we-ls-height"  tabindex="' . ws_ls_get_next_tab_index() . '" class="ws-ls-aboutyou-field">';
+    $heights = ws_ls_heights();
+    $existing_height = ws_ls_get_user_height($user_id, false);
 
-		$html_output .= '
-		<label>' . $labels['height'] . '</label>
-		<select id="we-ls-height" name="we-ls-height"  tabindex="' . ws_ls_get_next_tab_index() . '" class="ws-ls-aboutyou-field">';
-		$heights = ws_ls_heights();
-		$existing_height = ws_ls_get_user_height($user_id, false);
+    foreach ($heights as $key => $value) {
+        $html_output .= sprintf('<option value="%s" %s>%s</option>', $key, selected($key, $existing_height, false), $value);
+    }
 
-		foreach ($heights as $key => $value) {
-		    $html_output .= sprintf('<option value="%s" %s>%s</option>', $key, selected($key, $existing_height, false), $value);
-		}
+    $html_output .= '</select>';
 
-		$html_output .= '</select>';
-
-	}
 
 	//-------------------------------------------------------
     // Gender

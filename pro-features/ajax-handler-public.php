@@ -33,11 +33,9 @@ function ws_ls_save_preferences_callback()
   	}
 
 	// Save Height?
-	if(WE_LS_DISPLAY_BMI_IN_TABLES) {
-		$height = false;
-		if(!is_null(ws_ls_ajax_post_value('we-ls-height'))) {
-			$height = intval(ws_ls_ajax_post_value('we-ls-height'));
-		}
+	$height = false;
+	if(!is_null(ws_ls_ajax_post_value('we-ls-height'))) {
+		$height = intval(ws_ls_ajax_post_value('we-ls-height'));
 	}
 
     // Save Activity Level, DoB and Gender
