@@ -19,7 +19,8 @@
                 'min-chart-points' => 2,					// Minimum number of data entries before chart is shown
 				'hide-first-target-form' => false,			// Hide first Target form
 				'hide-second-target-form' => false,			// Hide second Target form
-				'show-add-button' => false					// Display a "Add weight" button above the chart.
+				'show-add-button' => false,					// Display a "Add weight" button above the chart.
+                'allow-delete-data' => true
                ), $user_defined_arguments );
 
 			// Validate arguments
@@ -27,6 +28,7 @@
 			$shortcode_arguments['hide-second-target-form'] = ws_ls_force_bool_argument($shortcode_arguments['hide-second-target-form']);
 			$shortcode_arguments['show-add-button'] = ws_ls_force_bool_argument($shortcode_arguments['show-add-button']);
 			$shortcode_arguments['min-chart-points'] = ws_ls_force_numeric_argument($shortcode_arguments['min-chart-points'], 2);
+            $shortcode_arguments['allow-delete-data'] = ws_ls_force_bool_argument($shortcode_arguments['allow-delete-data']);
 
             $user_id = get_current_user_id();
 
@@ -154,7 +156,7 @@
 			// If enabled, have a third tab to allow users to manage their own settings!
 			if(WE_LS_ALLOW_USER_PREFERENCES){
 				$html_output .= ws_ls_start_tab('wlt-user-preferences');
-				$html_output .= ws_ls_user_preferences_form();
+				$html_output .= ws_ls_user_preferences_form(['user-id' => false,  'allow-delete-data' => $shortcode_arguments['allow-delete-data']]);
 				$html_output .= ws_ls_end_tab();
 			}
 

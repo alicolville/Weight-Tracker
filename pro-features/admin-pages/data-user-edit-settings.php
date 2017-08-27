@@ -22,7 +22,7 @@ function ws_ls_admin_page_settings_user() {
 						<div class="inside">
                             <br />
 							<?php
-								echo ws_ls_user_preferences_form($user_id);
+								echo ws_ls_user_preferences_form(['user-id' => $user_id,  'allow-delete-data' => false]);
 							?>
 						</div>
 					</div>

@@ -1,16 +1,22 @@
 <?php
 defined('ABSPATH') or die("Jog on!");
 
-function ws_ls_user_preferences_form($user_id = false)
+function ws_ls_user_preferences_form($user_defined_arguments)
 {
     $html_output = '';
+
+    $arguments = shortcode_atts(['user-id' => false, 'allow-delete-data' => true], $user_defined_arguments );
+
+    $arguments['allow-delete-data'] = ws_ls_force_bool_argument($arguments['allow-delete-data']);
+    $arguments['user-id'] = ws_ls_force_numeric_argument($arguments['user-id'], false);
 
     // Have user preferences been allowed in Settings?
     if (false === WE_LS_ALLOW_USER_PREFERENCES && false === is_admin()) {
         return $html_output;
     }
 
-    $user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
+    $arguments['user-id'] = (true === empty($arguments['user-id'])) ? get_current_user_id() : $arguments['user-id'];
+    $user_id  = $arguments['user-id'];
 
     // Decide which set of labels to render
 	$labels = [
@@ -37,6 +43,10 @@ function ws_ls_user_preferences_form($user_id = false)
                     'dob' => __('Date of Birth (needed for BMR):', WE_LS_SLUG),
                     'activitylevel' => __('Activity Level (needed for BMR):', WE_LS_SLUG)
 		];
+
+        // If we're in Admin screens, then hide "delete data"
+        $arguments['allow-delete-data'] = false;
+
 	} else {
 	    // Enqueue front end scripts if needed (mainly for datepicker)
         ws_ls_enqueue_files();
@@ -144,23 +154,23 @@ function ws_ls_user_preferences_form($user_id = false)
   <input name="submit_button" type="submit" id="we-ls-user-pref-submit"  tabindex="' . ws_ls_get_next_tab_index() . '" value="' .  __('Save Settings', WE_LS_SLUG) . '" class="comment-submit btn btn-default button default small fusion-button button-small button-default button-round button-flat">
 </form><br />';
 
-// Hide delete data form if on the admin screen
-if(false === is_admin()) {
+	// If enabled, show Delete data
+    if(true === $arguments['allow-delete-data']) {
 
-	$html_output .= ws_ls_title(__('Delete existing data', WE_LS_SLUG)) . '
-		<form action="' .  get_permalink() . '?user-delete-all=true" class="ws-ls-user-delete-all" method="post">
-		<div class="ws-ls-error-summary">
-			<ul></ul>
-		</div>
-			<input type="hidden" name="ws-ls-user-delete-all" value="true" />
-			<label for="ws-ls-delete-all">' . __('The button below allows you to clear your existing weight history. Confirm:', WE_LS_SLUG) . '</label>
-			<select id="ws-ls-delete-all" name="ws-ls-delete-all"  tabindex="' . ws_ls_get_next_tab_index() . '" required>
-				<option value=""></option>
-				<option value="true">' . __('DELETE ALL DATA', WE_LS_SLUG) . '</option>
-			</select>
-			<input name="submit_button" type="submit" tabindex="' . ws_ls_get_next_tab_index() . '" value="' .  __('Delete', WE_LS_SLUG) . '" class="comment-submit btn btn-default button default small fusion-button button-small button-default button-round button-flat">
-		</form>';
-}
+        $html_output .= ws_ls_title(__('Delete existing data', WE_LS_SLUG)) . '
+            <form action="' .  get_permalink() . '?user-delete-all=true" class="ws-ls-user-delete-all" method="post">
+            <div class="ws-ls-error-summary">
+                <ul></ul>
+            </div>
+                <input type="hidden" name="ws-ls-user-delete-all" value="true" />
+                <label for="ws-ls-delete-all">' . __('The button below allows you to clear your existing weight history. Confirm:', WE_LS_SLUG) . '</label>
+                <select id="ws-ls-delete-all" name="ws-ls-delete-all"  tabindex="' . ws_ls_get_next_tab_index() . '" required>
+                    <option value=""></option>
+                    <option value="true">' . __('DELETE ALL DATA', WE_LS_SLUG) . '</option>
+                </select>
+                <input name="submit_button" type="submit" tabindex="' . ws_ls_get_next_tab_index() . '" value="' .  __('Delete', WE_LS_SLUG) . '" class="comment-submit btn btn-default button default small fusion-button button-small button-default button-round button-flat">
+            </form>';
+    }
 
 	return $html_output;
 }
