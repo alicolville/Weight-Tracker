@@ -61,12 +61,12 @@ function ws_ls_user_preferences_form($user_defined_arguments)
 	<input type="hidden" id="ws-ls-user-id" value="' . (($user_id) ? esc_attr($user_id) : '0')  . '" />
 	<input type="hidden" name="ws-ls-user-pref-redirect" value="' . get_the_ID() . '" />';
 
-	// If BMI enabled, record allow height to be soecified
+	// If BMI enabled, record allow height to be specified
 	if(WE_LS_DISPLAY_BMI_IN_TABLES) {
 
 		$html_output .= '
 		<label>' . $labels['height'] . '</label>
-		<select id="we-ls-height" name="we-ls-height"  tabindex="' . ws_ls_get_next_tab_index() . '">';
+		<select id="we-ls-height" name="we-ls-height"  tabindex="' . ws_ls_get_next_tab_index() . '" class="ws-ls-aboutyou-field">';
 		$heights = ws_ls_heights();
 		$existing_height = ws_ls_get_user_height($user_id, false);
 
@@ -83,7 +83,7 @@ function ws_ls_user_preferences_form($user_defined_arguments)
     //-------------------------------------------------------
     $html_output .= '
 		<label>' . $labels['gender'] . '</label>
-		<select id="ws-ls-gender" name="ws-ls-gender"  tabindex="' . ws_ls_get_next_tab_index() . '">';
+		<select id="ws-ls-gender" name="ws-ls-gender"  tabindex="' . ws_ls_get_next_tab_index() . '" class="ws-ls-aboutyou-field">';
 
         $existing_gender = ws_ls_get_user_setting('gender', $user_id);
         $existing_gender = (true === empty($existing_gender)) ? '0' : $existing_gender;
@@ -99,7 +99,7 @@ function ws_ls_user_preferences_form($user_defined_arguments)
     //-------------------------------------------------------
     $html_output .= '
 		<label>' . $labels['activitylevel'] . '</label>
-		<select id="ws-ls-activity-level" name="ws-ls-activity-level"  tabindex="' . ws_ls_get_next_tab_index() . '">';
+		<select id="ws-ls-activity-level" name="ws-ls-activity-level"  tabindex="' . ws_ls_get_next_tab_index() . '" class="ws-ls-aboutyou-field">';
 
     $activity_level = ws_ls_get_user_setting('activity_level', $user_id);
     $activity_level = (true === empty($activity_level)) ? '0' : $activity_level;
@@ -117,7 +117,7 @@ function ws_ls_user_preferences_form($user_defined_arguments)
     $dob = ws_ls_get_dob_for_display($user_id);
 
     $html_output .= '<label>' . $labels['dob'] . '</label>
-                    <input type="text" name="ws-ls-dob" tabindex="' . ws_ls_get_next_tab_index() . '" id="ws-ls-dob" value="' . ws_ls_get_dob_for_display($user_id) . '" size="22" class="we-ls-datepicker">
+                    <input type="text" name="ws-ls-dob" tabindex="' . ws_ls_get_next_tab_index() . '" id="ws-ls-dob" value="' . ws_ls_get_dob_for_display($user_id) . '" size="22" class="we-ls-datepicker ws-ls-aboutyou-field">
                     ';
 
     //-------------------------------------------------------
