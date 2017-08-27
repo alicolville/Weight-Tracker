@@ -133,7 +133,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 = 5.1.1 =
 
-Improvement: Added 'allow-delete-data' attribute to shortcodes [wlt] and [wlt-user-settings]. If set to false (default is true), the section allowing users to delete their own data is hidden.
+Improvement: Added 'allow-delete-data' attribute to shortcodes [wlt] and [wlt-user-settings]. If set to false (default is true), the section allowing users to delete their own data is hidden. - Read more: https://weight.yeken.uk/shortcodes/
 Bug fix: If "Allow user settings" is set to "No" in settings then disable [wlt-user-settings].
 Bug fix: When entering weights in Stones and Pounds, a user can no longer enter 14lbs. Instead, they need to up the stone measurement.
 Bug fix: When displaying a Stone / Pounds weight, if the pounds figure is 14lb, set it to 0 and increment Stones by one.

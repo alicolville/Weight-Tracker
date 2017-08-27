@@ -201,7 +201,8 @@ function ws_ls_settings_page() {
 										</div>
                                         <div>
                                             <?php if (false === WS_LS_IS_PRO_PLUS): ?>
-                                                <a class="button-secondary" href="<?php echo ws_ls_upgrade_link(); ?>" target="_blank"><?php echo __( 'Upgrade now to Pro Plus' , WE_LS_SLUG); ?></a>
+                                                <a class="button-secondary" href="<?php echo ws_ls_upgrade_link(); ?>"><?php echo __( 'Upgrade now to Pro Plus' , WE_LS_SLUG); ?></a>
+                                                <hr />
                                             <?php endif; ?>
                                             <h3><?php echo __( 'Calculating daily calorie intake to lose weight' , WE_LS_SLUG); ?></h3>
 
