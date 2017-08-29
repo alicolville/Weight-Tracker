@@ -378,7 +378,7 @@ function ws_does_target_weight_exist($user_id)
 
   return false;
 }
-function ws_ls_set_user_preferences($settings, $user_id = false, $height = false,
+function ws_ls_set_user_preferences($in_admin_area, $settings, $user_id = false, $height = false,
                                         $activity_level = false, $gender = false, $dob = false)
 {
   global $wpdb;
@@ -399,19 +399,16 @@ function ws_ls_set_user_preferences($settings, $user_id = false, $height = false
 	$db_fields['settings'] = json_encode($settings);
 
 	// Save Height, if not specified look up.
-	if(WE_LS_DISPLAY_BMI_IN_TABLES) {
-		if (false !== $height) {
-			$height = ws_ls_validate_height($height);
-		} else {
-			$height = ws_ls_get_user_height($user_id, false);
-		}
+	if (false !== $height) {
+		$height = ws_ls_validate_height($height);
+	} else {
+		$height = ws_ls_get_user_height($user_id, false);
 	}
-
 
     $db_fields['height'] = $height;
 	$db_fields['activity_level'] = $activity_level;
     $db_fields['gender'] = $gender;
-    $db_fields['dob'] = (false === empty($dob)) ? ws_ls_convert_date_to_iso($dob) : '0000-00-00 00:00:00';
+    $db_fields['dob'] = (false === empty($dob)) ? ws_ls_convert_date_to_iso($dob, ($in_admin_area) ? false : $user_id) : '0000-00-00 00:00:00';
 
     // Set data types
     $db_field_types = array('%d','%s','%d', '%f', '%d', '%s');

@@ -80,7 +80,7 @@ function ws_ls_user_side_bar($user_id) {
                     </tr>
 					<tr>
                         <th><?php echo __('Height', WE_LS_SLUG); ?></th>
-                        <td><?php echo ws_ls_display_user_setting($user_id, 'height'); ?></td>
+                        <td><a href="<?php echo $settings_url; ?>"><?php echo ws_ls_display_user_setting($user_id, 'height'); ?></a></td>
                     </tr>
 					<tr>
                         <th><?php echo __('Gender', WE_LS_SLUG); ?></th>

@@ -6,7 +6,9 @@ function ws_ls_save_preferences_callback()
 {
   	$ajax_response = 0;
 
-	check_ajax_referer( 'ws-ls-nonce', 'security' ); 
+	check_ajax_referer( 'ws-ls-nonce', 'security' );
+
+    $in_admin_area = (false === empty(ws_ls_ajax_post_value('we-ls-in-admin'))) ? true : false;
 
   	// List of form fields / globals we want to store for the user
   	$keys_to_save = array('WE_LS_DATA_UNITS', 'WE_LS_US_DATE');
@@ -33,11 +35,9 @@ function ws_ls_save_preferences_callback()
   	}
 
 	// Save Height?
-	if(WE_LS_DISPLAY_BMI_IN_TABLES) {
-		$height = false;
-		if(!is_null(ws_ls_ajax_post_value('we-ls-height'))) {
-			$height = intval(ws_ls_ajax_post_value('we-ls-height'));
-		}
+	$height = false;
+	if(!is_null(ws_ls_ajax_post_value('we-ls-height'))) {
+		$height = intval(ws_ls_ajax_post_value('we-ls-height'));
 	}
 
     // Save Activity Level, DoB and Gender
@@ -45,7 +45,7 @@ function ws_ls_save_preferences_callback()
     $activity_level = (!is_null(ws_ls_ajax_post_value('ws-ls-activity-level'))) ? floatval(ws_ls_ajax_post_value('ws-ls-activity-level')) : 0;
     $dob = (!is_null(ws_ls_ajax_post_value('ws-ls-dob'))) ? ws_ls_ajax_post_value('ws-ls-dob') : false;
 
-  	if(true == ws_ls_set_user_preferences($user_preferences, ws_ls_ajax_post_value('user-id'), $height, $activity_level, $gender, $dob)){
+  	if(true == ws_ls_set_user_preferences($in_admin_area, $user_preferences, ws_ls_ajax_post_value('user-id'), $height, $activity_level, $gender, $dob)){
     	$ajax_response = 1;
   	}
   	echo $ajax_response;

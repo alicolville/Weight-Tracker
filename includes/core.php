@@ -309,7 +309,7 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 				// Do we have an existing value?
 				if($existing_date = ws_ls_get_existing_value($existing_data, 'date-display')) {
 					$default_date = $existing_date;
-				} else if (ws_ls_get_config('WE_LS_US_DATE')) { // Overide if US
+				} else if (ws_ls_get_config('WE_LS_US_DATE')) { // Override if US
 					$default_date = date("m/d/Y");
 				}
 
@@ -336,7 +336,7 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 			{
 				if (ws_ls_get_config('WE_LS_DATA_UNITS') == 'stones_pounds') {
 					$html_output .= '<input  type="number"  tabindex="' . ws_ls_get_next_tab_index() . '" step="any" min="0" name="we-ls-weight-stones" id="we-ls-weight-stones" value="' . ws_ls_get_existing_value($existing_data, 'stones') . '" placeholder="' . __('Stones', WE_LS_SLUG) . '" size="11" >';
-					$html_output .= '<input  type="number" tabindex="' . ws_ls_get_next_tab_index() . '" step="any" min="0" max="14" name="we-ls-weight-pounds" id="we-ls-weight-pounds" value="' . ws_ls_get_existing_value($existing_data, 'pounds') . '" placeholder="' . __('Pounds', WE_LS_SLUG) . '" size="11"  >';
+					$html_output .= '<input  type="number" tabindex="' . ws_ls_get_next_tab_index() . '" step="any" min="0" max="13" name="we-ls-weight-pounds" id="we-ls-weight-pounds" value="' . ws_ls_get_existing_value($existing_data, 'pounds') . '" placeholder="' . __('Pounds', WE_LS_SLUG) . '" size="11"  >';
 				}
 				else {
 					$html_output .= '<input  type="number" tabindex="' . ws_ls_get_next_tab_index() . '" step="any" min="1" name="we-ls-weight-pounds" id="we-ls-weight-pounds" value="' . ws_ls_get_existing_value($existing_data, 'only_pounds') . '" placeholder="' . __('Pounds', WE_LS_SLUG) . '" size="11"  >';
@@ -395,7 +395,7 @@ function ws_ls_get_existing_value($data, $key, $esc_attr = true) {
 
 function ws_ls_convert_date_to_iso($date, $user_id = false)
 {
-	if (ws_ls_get_config('WE_LS_US_DATE', $user_id)) {
+    if (ws_ls_get_config('WE_LS_US_DATE', $user_id)) {
 		list($month,$day,$year) = sscanf($date, "%d/%d/%d");
 		$date = "$year-$month-$day";
 	} else {
@@ -509,14 +509,15 @@ function ws_ls_get_chosen_weight_unit_as_string(){
 }
 function ws_ls_get_js_config()
 {
-	$message_for_pounds = (ws_ls_get_config('WE_LS_IMPERIAL_WEIGHTS') && 'stones_pounds' == ws_ls_get_config('WE_LS_DATA_UNITS')) ? __('Please enter a between 0-14 for pounds', WE_LS_SLUG) : __('Please enter a valid figure for pounds', WE_LS_SLUG);
+	$message_for_pounds = (ws_ls_get_config('WE_LS_IMPERIAL_WEIGHTS') && 'stones_pounds' == ws_ls_get_config('WE_LS_DATA_UNITS')) ? __('Please enter a value between 0-13 for pounds', WE_LS_SLUG) : __('Please enter a valid figure for pounds', WE_LS_SLUG);
 
 	$use_us_date = ws_ls_get_config('WE_LS_US_DATE');
 
-	return array (
+	$config = array (
 		'us-date' => ($use_us_date) ? 'true' : 'false',
 		'date-format' => ($use_us_date) ? 'mm/dd/yy' : 'dd/mm/yy',
     	'clear-target' => __('Are you sure you wish to clear your target weight?', WE_LS_SLUG),
+		'validation-about-you-mandatory' => (WE_LS_ABOUT_YOU_MANDATORY) ? 'true' : 'false',
 		'validation-we-ls-weight-pounds' => $message_for_pounds,
 		'validation-we-ls-weight-kg' => __('Please enter a valid figure for Kg', WE_LS_SLUG),
 		'validation-we-ls-weight-stones' => __('Please enter a valid figure for Stones', WE_LS_SLUG),
@@ -536,6 +537,16 @@ function ws_ls_get_js_config()
 		'date-picker-locale' => ws_ls_get_js_datapicker_locale(),
 		'in-admin' => (is_admin()) ? 'true' : 'false'
 	);
+
+	// If About You fields mandatory, add extra translations
+	if(WE_LS_ABOUT_YOU_MANDATORY) {
+		$config['validation-about-you-height'] = __('Please select or enter a value for height.', WE_LS_SLUG);
+		$config['validation-about-you-activity-level'] = __('Please select or enter a value for activity level.', WE_LS_SLUG);
+		$config['validation-about-you-gender'] = __('Please select or enter a value for gender.', WE_LS_SLUG);
+		$config['validation-about-you-dob'] = __('Please enter a valid date.', WE_LS_SLUG);
+	}
+
+	return $config;
 }
 
 /*
