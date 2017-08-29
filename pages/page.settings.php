@@ -174,7 +174,17 @@ function ws_ls_settings_page() {
 																<option value="yes" <?php selected( get_option('ws-ls-allow-user-preferences'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
 																<option value="no" <?php selected( get_option('ws-ls-allow-user-preferences'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
 															</select>
-															<p><?php echo __('Allow your users to select their own weight unit, date format and remove all their data.', WE_LS_SLUG)?></p>
+															<p><?php echo __('Allow your users to select their own data units, complete their "About You" fields and remove all their data.', WE_LS_SLUG)?></p>
+														</td>
+													</tr>
+													<tr class="<?php echo $disable_if_not_pro_class; ?>">
+														<th scope="row"><?php echo __( '"About You" fields mandatory?' , WE_LS_SLUG); ?></th>
+														<td>
+															<select id="ws-ls-about-you-mandatory" name="ws-ls-about-you-mandatory">
+																<option value="no" <?php selected( get_option('ws-ls-about-you-mandatory'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+																<option value="yes" <?php selected( get_option('ws-ls-about-you-mandatory'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+															</select>
+															<p><?php echo __('If User Settings is enabled, should all the "About You" (height, activity level, etc) be mandatory?', WE_LS_SLUG)?></p>
 														</td>
 													</tr>
 													<tr class="<?php echo $disable_if_not_pro_class; ?>">
@@ -552,6 +562,7 @@ function ws_ls_register_settings()
     // Pro only open
     if(WS_LS_IS_PRO){
         register_setting( 'we-ls-options-group', 'ws-ls-allow-user-preferences' );
+		register_setting( 'we-ls-options-group', 'ws-ls-about-you-mandatory' );
         register_setting( 'we-ls-options-group', 'ws-ls-chart-type' );
         register_setting( 'we-ls-options-group', 'ws-ls-allow-advanced-tables' );
         register_setting( 'we-ls-options-group', 'ws-ls-max-points' );

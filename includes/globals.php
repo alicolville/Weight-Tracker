@@ -91,6 +91,7 @@
 		'WE_LS_DISABLE_USER_STATS' => false,
 		'WE_LS_EMAIL_ENABLE' => false,
 		'WE_LS_EMAIL_ADDRESSES' => '',
+		'WE_LS_ABOUT_YOU_MANDATORY' => false,
 		'WE_LS_EMAIL_NOTIFICATIONS_EDIT' => true,
 		'WE_LS_EMAIL_NOTIFICATIONS_NEW' => true,
 		'WE_LS_EMAIL_NOTIFICATIONS_TARGETS' => true,
@@ -146,6 +147,12 @@
 		define('WE_LS_ALLOW_USER_PREFERENCES', true);
 	} else {
 		define('WE_LS_ALLOW_USER_PREFERENCES', false);
+	}
+	// -----------------------------------------------------------------------------------
+	// Define whether Imperial and Units
+	// -----------------------------------------------------------------------------------
+	if ('yes' == get_option('ws-ls-about-you-mandatory')){
+		$globals['WE_LS_ABOUT_YOU_MANDATORY'] = true;
 	}
 	// -----------------------------------------------------------------------------------
 	// Define whether Imperial and Units

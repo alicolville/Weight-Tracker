@@ -395,7 +395,7 @@ function ws_ls_get_existing_value($data, $key, $esc_attr = true) {
 
 function ws_ls_convert_date_to_iso($date, $user_id = false)
 {
-	if (ws_ls_get_config('WE_LS_US_DATE', $user_id)) {
+    if (ws_ls_get_config('WE_LS_US_DATE', $user_id)) {
 		list($month,$day,$year) = sscanf($date, "%d/%d/%d");
 		$date = "$year-$month-$day";
 	} else {
@@ -513,10 +513,11 @@ function ws_ls_get_js_config()
 
 	$use_us_date = ws_ls_get_config('WE_LS_US_DATE');
 
-	return array (
+	$config = array (
 		'us-date' => ($use_us_date) ? 'true' : 'false',
 		'date-format' => ($use_us_date) ? 'mm/dd/yy' : 'dd/mm/yy',
     	'clear-target' => __('Are you sure you wish to clear your target weight?', WE_LS_SLUG),
+		'validation-about-you-mandatory' => (WE_LS_ABOUT_YOU_MANDATORY) ? 'true' : 'false',
 		'validation-we-ls-weight-pounds' => $message_for_pounds,
 		'validation-we-ls-weight-kg' => __('Please enter a valid figure for Kg', WE_LS_SLUG),
 		'validation-we-ls-weight-stones' => __('Please enter a valid figure for Stones', WE_LS_SLUG),
@@ -536,6 +537,16 @@ function ws_ls_get_js_config()
 		'date-picker-locale' => ws_ls_get_js_datapicker_locale(),
 		'in-admin' => (is_admin()) ? 'true' : 'false'
 	);
+
+	// If About You fields mandatory, add extra translations
+	if(WE_LS_ABOUT_YOU_MANDATORY) {
+		$config['validation-about-you-height'] = __('Please select or enter a value for height.', WE_LS_SLUG);
+		$config['validation-about-you-activity-level'] = __('Please select or enter a value for activity level.', WE_LS_SLUG);
+		$config['validation-about-you-gender'] = __('Please select or enter a value for gender.', WE_LS_SLUG);
+		$config['validation-about-you-dob'] = __('Please enter a valid date.', WE_LS_SLUG);
+	}
+
+	return $config;
 }
 
 /*

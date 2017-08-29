@@ -1,5 +1,5 @@
 //
-// To compress this script, use https://jscompress.com 
+// To compress this script, use https://jscompress.com
 //
 
 $tabs_global = false;
@@ -203,10 +203,74 @@ jQuery( document ).ready(function ($) {
             }
         });
 
-
         $( ".ws-ls-user-pref-form" ).submit(function( event ) {
 
             event.preventDefault();
+
+            if ("true" != ws_ls_config['validation-about-you-mandatory']) {
+                ws_ls_submit_preference_form();
+            }
+
+        });
+
+		var form_preference_validation = false;
+
+		// // Do we want to force all About You fields in user preferences to be madatory?
+		if ("true" == ws_ls_config['validation-about-you-mandatory']) {
+
+			form_preference_validation = $( ".ws-ls-user-pref-form" ).validate({
+	            errorClass: "ws-ls-invalid",
+	            validClass: "ws-ls-valid",
+	            errorContainer: ".ws-ls-user-pref-form .ws-ls-error-summary",
+	            errorLabelContainer: ".ws-ls-user-pref-form .ws-ls-error-summary ul",
+	            wrapper: "li",
+				rules: {
+	                "ws-ls-gender": {
+						"required" : true,
+						min: 1
+					},
+					"we-ls-height": {
+						"required" : true,
+						min: 1
+					},
+					"ws-ls-activity-level": {
+						"required" : true,
+						min: 1
+					}
+	            },
+				messages: {
+					"ws-ls-gender" : ws_ls_config["validation-about-you-gender"],
+					"we-ls-height" : ws_ls_config["validation-about-you-height"],
+					"ws-ls-activity-level" : ws_ls_config["validation-about-you-activity-level"],
+					"we-ls-dob": ws_ls_config["validation-about-you-dob"]
+				},
+	            submitHandler: function(form) {
+                    ws_ls_submit_preference_form();
+	            }
+	        });
+
+			//If a datepicker is on this form
+            if ($(".ws-ls-user-pref-form .we-ls-datepicker").length) {
+                // Validate date
+                if ("true" == ws_ls_config["us-date"]) {
+                    $(".ws-ls-user-pref-form .we-ls-datepicker").rules( "add", {
+                        required: true,
+                        date: true
+                    });
+                }
+                else {
+                    $(".ws-ls-user-pref-form .we-ls-datepicker").rules( "add", {
+                        required: true,
+                        dateITA: true
+                    });
+                }
+            }
+		}
+
+		/**
+		* Post user preferences to AJAX handler
+		**/
+        function ws_ls_submit_preference_form() {
 
             var post_data = {};
 
@@ -225,8 +289,8 @@ jQuery( document ).ready(function ($) {
             post_data["action"] = "ws_ls_save_preferences";
 
             ws_ls_post_data(post_data, ws_ls_user_preference_callback);
-        });
 
+        }
 
     }
 

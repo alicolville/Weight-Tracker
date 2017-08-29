@@ -3,6 +3,11 @@ defined('ABSPATH') or die("Jog on!");
 
 function ws_ls_user_preferences_form($user_defined_arguments)
 {
+    // If not logged in then return no value
+    if (!is_user_logged_in())	{
+        return '<blockquote class="ws-ls-blockquote"><p>' .	__('You must be logged in to edit your settings.', WE_LS_SLUG) . ' <a href="' . wp_login_url(get_permalink()) . '">' . __('Login now', WE_LS_SLUG) . '</a>.</p></blockquote>';
+    }
+
     $html_output = '';
 
     $arguments = shortcode_atts(['user-id' => false, 'allow-delete-data' => true], $user_defined_arguments );
@@ -56,7 +61,10 @@ function ws_ls_user_preferences_form($user_defined_arguments)
 
 	$html_output .= '
 
-	<form action="' .  get_permalink() . '" class="ws-ls-user-pref-form" method="post">
+	<form class="ws-ls-user-pref-form" method="post">
+	<div class="ws-ls-error-summary">
+		<ul></ul>
+	</div>
   	<input type="hidden" name="ws-ls-user-pref" value="true" />
 	<input type="hidden" id="ws-ls-user-id" value="' . (($user_id) ? esc_attr($user_id) : '0')  . '" />
 	<input type="hidden" name="ws-ls-user-pref-redirect" value="' . get_the_ID() . '" />';
@@ -155,9 +163,9 @@ function ws_ls_user_preferences_form($user_defined_arguments)
 
         $html_output .= ws_ls_title(__('Delete existing data', WE_LS_SLUG)) . '
             <form action="' .  get_permalink() . '?user-delete-all=true" class="ws-ls-user-delete-all" method="post">
-            <div class="ws-ls-error-summary">
-                <ul></ul>
-            </div>
+	            <div class="ws-ls-error-summary">
+	                <ul></ul>
+	            </div>
                 <input type="hidden" name="ws-ls-user-delete-all" value="true" />
                 <label for="ws-ls-delete-all">' . __('The button below allows you to clear your existing weight history. Confirm:', WE_LS_SLUG) . '</label>
                 <select id="ws-ls-delete-all" name="ws-ls-delete-all"  tabindex="' . ws_ls_get_next_tab_index() . '" required>

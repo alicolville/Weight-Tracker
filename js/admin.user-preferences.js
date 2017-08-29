@@ -10,6 +10,7 @@ jQuery( document ).ready(function ($) {
 
         // This code is specifc to admin
         post_data["security"] = ws_ls_user_pref_config["ajax-security-nonce"];
+        post_data["we-ls-in-admin"] = true;
 
         // Get User ID from form
         post_data["user-id"] = $('#ws-ls-user-id').val();
