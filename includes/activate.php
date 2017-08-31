@@ -36,7 +36,7 @@
 
 		$sql = "CREATE TABLE $table_name (
 			id mediumint(9) NOT NULL AUTO_INCREMENT,
-			weight_date datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+			weight_date datetime NOT NULL,
 			weight_user_id integer NOT NULL,
 			weight_weight float NOT NULL,
 			weight_stones float NOT NULL,
@@ -86,7 +86,7 @@
 				 settings text not null,
                  height float DEFAULT 0 NULL,
                  gender float DEFAULT 0 NULL,
-                 dob datetime DEFAULT '0000-00-00 00:00:00' NOT NULL
+                 dob datetime NULL,
 				 UNIQUE KEY user_id (user_id)
 		 ) $charset_collate;";
 
