@@ -12,11 +12,17 @@ function ws_ls_get_user_bmi($user_defined_arguments) {
 	$arguments = shortcode_atts(array(
 						            'display' => 'index', // 'index' - Actual BMI value. 'label' - BMI label for given value. 'both' - Label and BMI value in brackets,
 									'no-height-text' => __('Height needed', WE_LS_SLUG),
+
 									'user-id' => get_current_user_id()
 						           ), $user_defined_arguments );
 
 	$kg = ws_ls_get_recent_weight_in_kg($arguments['user-id'], true);
 	$cm = ws_ls_get_user_height($arguments['user-id']);
+
+	// Don't attempt to calculate BMI if no weight entries!
+	if(true === empty($kg)) {
+		return __('Weight needed', WE_LS_SLUG);
+	}
 
 	// Do we have a height for user?
 	if($cm) {
