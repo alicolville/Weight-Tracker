@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight, loss, lose, helper, bmi, body, mass, index, graph, track, stones, kg, table, data, plot, target, history, pounds, responsive, chart, measurements, cm, centimeters, inches, hip, waist, bicep, thigh
 Requires at least: 4.4.0
 Tested up to: 4.8
-Stable tag: 5.1.2
+Stable tag: 5.1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate Link: https://www.paypal.me/yeken
@@ -130,6 +130,13 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 5.1! Now support for BMR, BMI, Calorie intake and Macronutrient Calculator.
 
 == Changelog ==
+
+= 5.1.3 =
+
+	* New Feature (Pro): Shortcode to add some simple conditional logic around WLT fields [wlt-if] - Read more: https://weight.yeken.uk/shortcodes/
+    * Bug fix: Fixed an issue with is_admin flag logic causing "Can't use function return value in write context" on some installs.
+ 	* Bug fix: If a user had no height, the "Add Entry" form would fail to save the user's weight / measurement entry.
+    * Bug fix: If the user has no weight entries, then don't attempt to calculate BMI!
 
 = 5.1.2 =
 

@@ -8,7 +8,8 @@ function ws_ls_save_preferences_callback()
 
 	check_ajax_referer( 'ws-ls-nonce', 'security' );
 
-    $in_admin_area = (false === empty(ws_ls_ajax_post_value('we-ls-in-admin'))) ? true : false;
+	$in_admin_area = ws_ls_ajax_post_value('we-ls-in-admin');
+    $in_admin_area = (false === empty($in_admin_area)) ? true : false;
 
   	// List of form fields / globals we want to store for the user
   	$keys_to_save = array('WE_LS_DATA_UNITS', 'WE_LS_US_DATE');
