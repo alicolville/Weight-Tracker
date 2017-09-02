@@ -349,7 +349,15 @@ function ws_ls_post_data(data, callback)
 function ws_ls_user_preference_callback(data, response)
 {
     if (response == 1) {
-        window.location.replace(ws_ls_config["current-url"] + "?user-preference-saved=true");
+
+        // Is there a redirect url specified on the form itself? If so, redirect to that URL.
+		var redirect_url = jQuery(".ws-ls-user-pref-form").data('redirect-url');
+
+		if(redirect_url) {
+			window.location.replace(redirect_url);
+        } else {
+			window.location.replace(ws_ls_config["current-url"] + "?user-preference-saved=true");
+        }
     }
     else
     {

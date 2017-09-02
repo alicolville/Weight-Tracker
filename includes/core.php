@@ -448,13 +448,14 @@ function ws_ls_capture_form_validate_and_save($user_id = false)
 	// Build measurement fields up and convert to CM if needed
 	if (WE_LS_MEASUREMENTS_ENABLED && is_array($weight_keys) && !empty($weight_keys) && !$is_target_form) {
 		foreach ($weight_keys as $key) {
-
-	 		// Convert to CM?
-		 	if('cm' != ws_ls_get_config('WE_LS_MEASUREMENTS_UNIT')) {
-	           $measurements[$key] = ws_ls_convert_to_cm(0, $form_values[$key]);
-		   } elseif (isset($form_values[$key])) {
-			   $measurements[$key] = round($form_values[$key], 2);
-		   	}
+			if(array_key_exists($key, $form_values)) {
+				// Convert to CM?
+				if('cm' != ws_ls_get_config('WE_LS_MEASUREMENTS_UNIT')) {
+					$measurements[$key] = ws_ls_convert_to_cm(0, $form_values[$key]);
+				} elseif (isset($form_values[$key])) {
+					$measurements[$key] = round($form_values[$key], 2);
+				}
+			}
 		}
 		unset($measurements['ws-ls-height']);	// Remove height key from this form save
 	}

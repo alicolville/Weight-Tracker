@@ -496,6 +496,15 @@ function ws_ls_format_stones_pound_for_comparison_display($weight) {
 
 		$show_stones = true;
 
+		// Round up figures that hit 14lb
+		if(14 == $weight["pounds"]) {
+			$weight["pounds"] = 0;
+			$weight["stones"]++;
+		} else if (-14 == $weight["pounds"]) {
+			$weight["pounds"] = 0;
+			$weight["stones"]--;
+		}
+
 		// Is stones equal to zero?
 		if(-0 == $weight['stones'] || 0 == $weight['stones']) {
 			$show_stones = false;

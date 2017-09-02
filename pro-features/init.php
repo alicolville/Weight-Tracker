@@ -16,6 +16,7 @@ if(defined('WS_LS_ABSPATH')){
 	include WS_LS_ABSPATH . 'pro-features/shortcode-reminders.php';
 	include WS_LS_ABSPATH . 'pro-features/shortcode-progress-bar.php';
 	include WS_LS_ABSPATH . 'pro-features/shortcode-messages.php';
+	include WS_LS_ABSPATH . 'pro-features/shortcode-if.php';
 	include WS_LS_ABSPATH . 'pro-features/advanced-table.php';
 	include WS_LS_ABSPATH . 'pro-features/widget-chart.php';
 	include WS_LS_ABSPATH . 'pro-features/widget-form.php';
@@ -69,6 +70,7 @@ function ws_ls_register_pro_shortcodes(){
         [wlt-dob] - display the user's Date of Birth
         [wlt-activity-level] - display the user's Activity Level
         [wlt-new-users] - display the number of new WP users in last x days
+    	[wlt-if] - display content conditionally
     */
 
     add_shortcode( 'weight-loss-tracker-chart', 'ws_ls_shortcode_chart' );
@@ -96,6 +98,7 @@ function ws_ls_register_pro_shortcodes(){
 	add_shortcode( 'wlt-height', 'ws_ls_shortcode_height' );
 	add_shortcode( 'wlt-activity-level', 'ws_ls_shortcode_activity_level' );
     add_shortcode( 'wlt-new-users', 'ws_ls_shortcode_new_users' );
+	add_shortcode( 'wlt-if', 'ws_ls_shortcode_if' );
 }
 add_action( 'init', 'ws_ls_register_pro_shortcodes');
 

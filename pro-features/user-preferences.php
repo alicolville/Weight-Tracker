@@ -10,10 +10,11 @@ function ws_ls_user_preferences_form($user_defined_arguments)
 
     $html_output = '';
 
-    $arguments = shortcode_atts(['user-id' => false, 'allow-delete-data' => true], $user_defined_arguments );
+    $arguments = shortcode_atts(['user-id' => false, 'allow-delete-data' => true, 'redirect-url' => ''], $user_defined_arguments );
 
     $arguments['allow-delete-data'] = ws_ls_force_bool_argument($arguments['allow-delete-data']);
     $arguments['user-id'] = ws_ls_force_numeric_argument($arguments['user-id'], false);
+	$arguments['redirect-url'] = (false === empty($arguments['redirect-url'])) ? esc_url($arguments['redirect-url']) : '';
 
     // Have user preferences been allowed in Settings?
     if (false === WE_LS_ALLOW_USER_PREFERENCES && false === is_admin()) {
@@ -61,13 +62,12 @@ function ws_ls_user_preferences_form($user_defined_arguments)
 
 	$html_output .= '
 
-	<form class="ws-ls-user-pref-form" method="post">
+	<form class="ws-ls-user-pref-form" method="post" data-redirect-url=' . $arguments['redirect-url'] . '>
 	<div class="ws-ls-error-summary">
 		<ul></ul>
 	</div>
   	<input type="hidden" name="ws-ls-user-pref" value="true" />
-	<input type="hidden" id="ws-ls-user-id" value="' . (($user_id) ? esc_attr($user_id) : '0')  . '" />
-	<input type="hidden" name="ws-ls-user-pref-redirect" value="' . get_the_ID() . '" />';
+	<input type="hidden" id="ws-ls-user-id" value="' . (($user_id) ? esc_attr($user_id) : '0')  . '" />';
 
 	$html_output .= '
     <label>' . $labels['height'] . '</label>
