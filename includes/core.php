@@ -357,7 +357,7 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 
 	    // Include
 	    if(!$target_form && $measurements_form_enabled) {
-	        $html_output .= sprintf('<br /><h3 class="ws_ls_title">%s</h3>', __('Add measurements', WE_LS_SLUG));
+	        $html_output .= sprintf('<br /><h3 class="ws_ls_title">%s (%s)</h3>', __('Add measurements', WE_LS_SLUG), (WE_LS_MEASUREMENTS_MANDATORY) ? __('Mandatory', WE_LS_SLUG) : __('Optional', WE_LS_SLUG));
 	        $html_output .= ws_ls_load_measurement_form($existing_data);
 	    }
 
