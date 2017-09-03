@@ -134,8 +134,9 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 = 5.1.5 =
 
 
-
+    * Improvement: Added additional text to display whether the measurements are optional or mandatory.
     * Improvement: Added a license check to be performed on software update.
+    * Bug fix: Fixed a typo in a Progress Bar error message.
 
 = 5.1.4 =
 

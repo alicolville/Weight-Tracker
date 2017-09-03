@@ -114,7 +114,7 @@ function ws_ls_shortcode_progress_bar($user_defined_arguments) {
 				return ws_ls_shortcode_progress_bar_render($arguments);
 
 			} else if ($display_errors) {
-				return __('Please enter add a weight entry to see your progress.', WE_LS_SLUG);
+				return __('Please add a weight entry to see your progress.', WE_LS_SLUG);
 			}
 
 		} else if ($display_errors) {
