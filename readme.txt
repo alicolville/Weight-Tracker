@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight, loss, lose, helper, bmi, body, mass, index, graph, track, stones, kg, table, data, plot, target, history, pounds, responsive, chart, measurements, cm, centimeters, inches, hip, waist, bicep, thigh
 Requires at least: 4.4.0
 Tested up to: 4.8
-Stable tag: 5.1.4
+Stable tag: 5.1.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate Link: https://www.paypal.me/yeken
@@ -130,6 +130,12 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 5.1! Now support for BMR, BMI, Calorie intake and Macronutrient Calculator.
 
 == Changelog ==
+
+= 5.1.5 =
+
+
+
+    * Improvement: Added a license check to be performed on software update.
 
 = 5.1.4 =
 
