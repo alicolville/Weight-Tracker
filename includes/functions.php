@@ -552,6 +552,10 @@ function ws_ls_querystring_value($key, $force_to_int = false, $default = false) 
 
 function ws_ls_get_url($base_64_encode = false) {
 	$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+
+	// Wee hack, replace removedata querystring value
+	$current_url = str_replace('removedata', 'removed', $current_url);
+
 	return (true === $base_64_encode) ? base64_encode($current_url) : $current_url;
 }
 

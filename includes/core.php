@@ -247,7 +247,10 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
     // Make sure they are logged in
     if (!is_user_logged_in())	{
         if ($hide_login_message_if_needed) {
-            return '<blockquote class="ws-ls-blockquote"><p>' .	__('You need to be logged in to record your weight.', WE_LS_SLUG) . ' <a href="' . wp_login_url(get_permalink()) . '">' . __('Login now', WE_LS_SLUG) . '</a>.</p></blockquote>';
+
+            $prompt = ( true === $target_form ) ? __('You need to be logged in to set your target.', WE_LS_SLUG) : __('You need to be logged in to record your weight.', WE_LS_SLUG);
+
+            return '<blockquote class="ws-ls-blockquote"><p>' .	$prompt . ' <a href="' . wp_login_url(get_permalink()) . '">' . __('Login now', WE_LS_SLUG) . '</a>.</p></blockquote>';
         } else {
             return;
         }
@@ -357,7 +360,7 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 
 	    // Include
 	    if(!$target_form && $measurements_form_enabled) {
-	        $html_output .= sprintf('<br /><h3 class="ws_ls_title">%s</h3>', __('Add measurements', WE_LS_SLUG));
+	        $html_output .= sprintf('<br /><h3 class="ws_ls_title">%s (%s)</h3>', __('Add measurements', WE_LS_SLUG), (WE_LS_MEASUREMENTS_MANDATORY) ? __('Mandatory', WE_LS_SLUG) : __('Optional', WE_LS_SLUG));
 	        $html_output .= ws_ls_load_measurement_form($existing_data);
 	    }
 
