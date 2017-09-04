@@ -131,6 +131,11 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 == Changelog ==
 
+= 5.1.6 =
+
+    * Improvement: Added .pot file
+    * Updated language files
+
 = 5.1.5 =
 
 	* Improvement: [wlt-if] can now be nested. You can nest [wlt-if] statements upto three levels deep. - Read more: https://weight.yeken.uk/shortcodes/
