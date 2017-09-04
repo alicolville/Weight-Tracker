@@ -133,6 +133,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 = 5.1.5 =
 
+    * Improvement: [wlt-if] field now supports one or more fields (creating an AND statement). Fields can be specified in a comma delimited list. - Read more: https://weight.yeken.uk/shortcodes/
     * Improvement: Prompt to login text when [wlt-form] is in target mode has been modified to remove reference to weight entry.
     * Improvement: Added additional text to display whether the measurements are optional or mandatory.
     * Improvement: Added a license check to be performed on software update.
