@@ -133,11 +133,14 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 = 5.1.5 =
 
+	* Improvement: [wlt-if] can now be nested. You can nest [wlt-if] statements upto three levels deep. - Read more: https://weight.yeken.uk/shortcodes/
     * Improvement: [wlt-if] field now supports one or more fields (creating an AND statement). Fields can be specified in a comma delimited list. - Read more: https://weight.yeken.uk/shortcodes/
     * Improvement: Prompt to login text when [wlt-form] is in target mode has been modified to remove reference to weight entry.
     * Improvement: Added additional text to display whether the measurements are optional or mandatory.
     * Improvement: Added a license check to be performed on software update.
+    * Improvement: Added [wlt-bmi] - a shorter name for [wlt-recent-bmi].- Read more: https://weight.yeken.uk/shortcodes/
     * Bug fix: Fixed a typo in a Progress Bar error message.
+	* Bug fix: Removed "Delete user data" command from redirect querystring if previously specified.
 
 = 5.1.4 =
 

@@ -7,9 +7,10 @@ defined('ABSPATH') or die("Jog on");
  *
  * @param $user_defined_arguments
  * @param null $content - content between WP tags
+ * @param $level - used to determine level of IF nesting
  * @return string
  */
-function ws_ls_shortcode_if($user_defined_arguments, $content = null) {
+function ws_ls_shortcode_if($user_defined_arguments, $content = null, $level = 0) {
 
 	// Check if we have content between opening and closing [wlt-if] tags, if we don't then nothing to render so why bother proceeding?
 	if(true === empty($content)) {
@@ -26,6 +27,7 @@ function ws_ls_shortcode_if($user_defined_arguments, $content = null) {
 	$arguments['user-id'] = ws_ls_force_numeric_argument($arguments['user-id'], get_current_user_id());
 	$arguments['operator'] = (true === in_array($arguments['operator'], ['exists', 'not-exists'])) ? $arguments['operator'] : 'exists';
 	$arguments['field'] = (true === empty($arguments['field'])) ? 'weight' : $arguments['field'];
+	$level = ws_ls_force_numeric_argument($level, '');
 
 	// Remove Pro Plus fields if they don't have a license
 	if( false === WS_LS_IS_PRO_PLUS && true === in_array($arguments['field'], ['bmr'])) {
@@ -34,12 +36,14 @@ function ws_ls_shortcode_if($user_defined_arguments, $content = null) {
 
 	$else_content = '';
 
+	$else_tag = ($level > 0) ? '[else-' . $level . ']' : '[else]';
+
 	// Is there an [else] within the content? If so, split the content into true condition and else.
-	$else_location = stripos($content, '[else]');
+	$else_location = stripos($content, $else_tag);
 
 	if(false !== $else_location) {
 
-		$else_content = substr($content, $else_location + 6);
+		$else_content = substr($content, $else_location + strlen($else_tag));
 
 		// Strip out [else] content from true condition
 		$content = substr($content, 0, $else_location);
@@ -132,3 +136,39 @@ function ws_ls_shortcode_if_value_exist($user_id, $fields) {
 function ws_ls_shortcode_if_valid_field_name($field) {
     return (true === in_array($field, ['weight', 'target', 'bmr', 'height', 'gender', 'activity_level', 'dob', 'is-logged-in']));
 }
+
+/**
+ * Shortcode to allow nesting of [wlt-if]. This is for [wlt-if-1]
+ *
+ * @param $user_defined_arguments
+ * @param null $content
+ * @return string
+ */
+function ws_ls_shortcode_if_level_one($user_defined_arguments, $content = null) {
+	return ws_ls_shortcode_if($user_defined_arguments, $content, 1);
+}
+add_shortcode( 'wlt-if-1', 'ws_ls_shortcode_if_level_one' );
+
+/**
+ * Shortcode to allow nesting of [wlt-if]. This is for [wlt-if-2]
+ *
+ * @param $user_defined_arguments
+ * @param null $content
+ * @return string
+ */
+function ws_ls_shortcode_if_level_two($user_defined_arguments, $content = null) {
+	return ws_ls_shortcode_if($user_defined_arguments, $content, 2);
+}
+add_shortcode( 'wlt-if-2', 'ws_ls_shortcode_if_level_two' );
+
+/**
+ * Shortcode to allow nesting of [wlt-if]. This is for [wlt-if-3]
+ *
+ * @param $user_defined_arguments
+ * @param null $content
+ * @return string
+ */
+function ws_ls_shortcode_if_level_three($user_defined_arguments, $content = null) {
+	return ws_ls_shortcode_if($user_defined_arguments, $content, 3);
+}
+add_shortcode( 'wlt-if-3', 'ws_ls_shortcode_if_level_three' );
