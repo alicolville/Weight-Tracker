@@ -135,6 +135,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
     * Improvement: Added .pot file
     * Updated language files
+    * Bug fix: Search results now shows user's that have no weight entries.
 
 = 5.1.5 =
 
