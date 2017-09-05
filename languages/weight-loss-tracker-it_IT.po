@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2017-08-29 08:35-0000\n"
-"PO-Revision-Date: 2017-08-29 08:35-0000\n"
+"POT-Creation-Date: 2017-09-05 14:20+0100\n"
+"PO-Revision-Date: 2017-09-05 14:20+0100\n"
 "Last-Translator: Salvo Mattina <admin@mabodigital.com>\n"
 "Language-Team: \n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.7.4\n"
+"X-Generator: Poedit 2.0.3\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-KeywordsList: __;_e\n"
@@ -24,13 +24,13 @@ msgstr "Tracker Perdita di peso - Modulo"
 #: includes/functions.php:66 includes/functions.php:81
 #: includes/functions.php:90 includes/functions.php:96
 #: includes/functions.php:289 includes/functions.php:295
-#: includes/functions.php:517 includes/shortcode-various.php:207
+#: includes/functions.php:526 includes/shortcode-various.php:207
 #: includes/shortcode-various.php:226 pro-features/export.php:194
 #: pro-features/shortcode-stats.php:156
 msgid "lbs"
 msgstr "lbs"
 
-#: includes/converters.php:70 includes/core.php:76 includes/core.php:346
+#: includes/converters.php:70 includes/core.php:76 includes/core.php:349
 #: includes/functions.php:70 includes/functions.php:93
 #: pages/page.settings.php:86 pro-features/export.php:191
 #: pro-features/shortcode-stats.php:163
@@ -46,22 +46,22 @@ msgid "Date"
 msgstr "Permette all'utente di specificare una data?"
 
 #: includes/core.php:14 includes/core.php:83 includes/core.php:205
-#: includes/core.php:346 pro-features/advanced-table.php:97
+#: includes/core.php:349 pro-features/advanced-table.php:97
 msgid "Weight"
 msgstr "Riempire  con il colore?"
 
-#: includes/core.php:15 includes/core.php:354
+#: includes/core.php:15 includes/core.php:357
 #: pro-features/advanced-table.php:113 pro-features/emails.php:47
 #: pro-features/export.php:198
 msgid "Notes"
 msgstr "Note"
 
-#: includes/core.php:63 includes/core.php:250
+#: includes/core.php:63 includes/core.php:251
 #: includes/shortcode-weight-loss-tracker.php:14
 msgid "You need to be logged in to record your weight."
 msgstr "Devi essere loggato per registrare il peso."
 
-#: includes/core.php:63 includes/core.php:250
+#: includes/core.php:63 includes/core.php:253
 #: includes/shortcode-weight-loss-tracker.php:14
 #: pro-features/user-preferences.php:8
 msgid "Login now"
@@ -89,116 +89,130 @@ msgstr "Misurazione"
 msgid "You have modified data. Please refresh page."
 msgstr "Hai modificato i dati. Si prega di aggiornare la pagina."
 
-#: includes/core.php:265 pro-features/admin-pages/data-search-results.php:45
+#: includes/core.php:251
+#, fuzzy
+#| msgid "You need to be logged in to record your weight."
+msgid "You need to be logged in to set your target."
+msgstr "Devi essere loggato per registrare il peso."
+
+#: includes/core.php:268 pro-features/admin-pages/data-search-results.php:45
 #: pro-features/functions.pages.php:62
 msgid "Target Weight"
 msgstr "Peso Target"
 
-#: includes/core.php:265
+#: includes/core.php:268
 msgid "Add a new weight"
 msgstr "Aggiungere un nuovo peso"
 
-#: includes/core.php:328
+#: includes/core.php:331
 msgid "Your target weight is"
 msgstr "Il tuo obbiettivo del peso è"
 
-#: includes/core.php:328
+#: includes/core.php:331
 #, fuzzy
 msgid "The user's target weight is currently"
 msgstr "Il tuo obbiettivo del peso è"
 
-#: includes/core.php:338
+#: includes/core.php:341
 msgid "Stones"
 msgstr "Stones"
 
-#: includes/core.php:339 includes/core.php:342 pages/page.settings.php:88
+#: includes/core.php:342 includes/core.php:345 pages/page.settings.php:88
 #: pro-features/user-preferences.php:138
 msgid "Pounds"
 msgstr "Pound"
 
-#: includes/core.php:360
+#: includes/core.php:363
 msgid "Add measurements"
 msgstr "Aggiungi misure"
 
-#: includes/core.php:364
+#: includes/core.php:363
+msgid "Mandatory"
+msgstr ""
+
+#: includes/core.php:363
+msgid "Optional"
+msgstr ""
+
+#: includes/core.php:367
 msgid "Set Target"
 msgstr "Imposta Target"
 
-#: includes/core.php:364
+#: includes/core.php:367
 msgid "Save Entry"
 msgstr "Salva"
 
-#: includes/core.php:373
+#: includes/core.php:376
 msgid "Clear Target"
 msgstr "Annulla Target"
 
-#: includes/core.php:512
+#: includes/core.php:516
 #, fuzzy
 msgid "Please enter a value between 0-13 for pounds"
 msgstr "Si prega di inserire un valore  tra 0-14"
 
-#: includes/core.php:512
+#: includes/core.php:516
 msgid "Please enter a valid figure for pounds"
 msgstr "Inserisci un valore valido"
 
-#: includes/core.php:519
+#: includes/core.php:523
 msgid "Are you sure you wish to clear your target weight?"
 msgstr "Sei sicuro di voler cancellare il target peso?"
 
-#: includes/core.php:522
+#: includes/core.php:526
 msgid "Please enter a valid figure for Kg"
 msgstr "Si prega di inserire una cifra valida per Stones"
 
-#: includes/core.php:523
+#: includes/core.php:527
 msgid "Please enter a valid figure for Stones"
 msgstr "Si prega di inserire una cifra valida per Stones"
 
-#: includes/core.php:524
+#: includes/core.php:528
 msgid "Please enter a valid date"
 msgstr "Si prega di inserire una data valida"
 
-#: includes/core.php:525
+#: includes/core.php:529
 msgid "Please confirm you wish to delete ALL your weight history"
 msgstr "Conferma che  vuoi cancellare tutta la tua storia peso"
 
-#: includes/core.php:526
+#: includes/core.php:530
 msgid "Are you sure you wish to delete this entry? If so, press OK."
 msgstr "Sei sicuro di voler eliminare questa voce? Se è così, premere OK."
 
-#: includes/core.php:536
+#: includes/core.php:540
 msgid "Please enter a valid measurement ("
 msgstr "Si prega di inserire una misura valida ("
 
-#: includes/core.php:543
+#: includes/core.php:547
 #, fuzzy
 msgid "Please select or enter a value for height."
 msgstr "Si prega di inserire una cifra valida per Stones"
 
-#: includes/core.php:544
+#: includes/core.php:548
 #, fuzzy
 msgid "Please select or enter a value for activity level."
 msgstr "Si prega di inserire una cifra valida per Stones"
 
-#: includes/core.php:545
+#: includes/core.php:549
 #, fuzzy
 msgid "Please select or enter a value for gender."
 msgstr "Si prega di inserire una cifra valida per Stones"
 
-#: includes/core.php:546
+#: includes/core.php:550
 #, fuzzy
 msgid "Please enter a valid date."
 msgstr "Si prega di inserire una data valida"
 
-#: includes/core.php:561
+#: includes/core.php:565
 msgid "Done"
 msgstr "Fatto"
 
-#: includes/core.php:562
+#: includes/core.php:566
 msgid "Today"
 msgstr "Oggi"
 
 #: includes/functions.php:81 includes/functions.php:96
-#: includes/functions.php:505 includes/shortcode-various.php:226
+#: includes/functions.php:514 includes/shortcode-various.php:226
 #: pro-features/export.php:193
 msgid "st"
 msgstr "st"
@@ -228,7 +242,7 @@ msgstr "a"
 msgid "The plugin supports the following measurements"
 msgstr "Il plugin supporta le seguenti misure"
 
-#: includes/functions.php:594
+#: includes/functions.php:607
 msgid "Read more about calculations"
 msgstr ""
 
@@ -2070,9 +2084,8 @@ msgid "Extra Active (very active & physical job)"
 msgstr ""
 
 #: pro-features/functions.php:274 pro-features/functions.php:347
-#: pro-features/shortcode-various.php:55 pro-features/shortcode-various.php:74
-#: pro-features/shortcode-various.php:90
-#: pro-features/shortcode-various.php:106
+#: pro-features/shortcode-various.php:61 pro-features/shortcode-various.php:80
+#: pro-features/shortcode-various.php:96 pro-features/shortcode-various.php:112
 #, fuzzy
 msgid "Not Specified"
 msgstr "Non è stato specificato un utente"
@@ -2081,7 +2094,7 @@ msgstr "Non è stato specificato un utente"
 msgid "Error: The user does not appear to exist"
 msgstr ""
 
-#: pro-features/init.php:146
+#: pro-features/init.php:150
 msgid "View weight entries"
 msgstr ""
 
@@ -2166,6 +2179,16 @@ msgstr ""
 msgid "No weight data was found for the specified user."
 msgstr "Nessun dato peso è stato trovato per l'utente specificato."
 
+#: pro-features/shortcode-if.php:17
+msgid ""
+"To use this shortcode, you must specify content between opening and closing "
+"tags<br /><br />e.g. [wlt-if]something to show if IF is true[/wlt-if]"
+msgstr ""
+
+#: pro-features/shortcode-if.php:34
+msgid "Unfortunately the field you specified is for Pro Plus licenses only."
+msgstr ""
+
 #: pro-features/shortcode-progress-bar.php:25
 #: pro-features/widget-progress.php:25
 msgid "towards your target of {t}."
@@ -2173,7 +2196,7 @@ msgstr ""
 
 #: pro-features/shortcode-progress-bar.php:117
 #, fuzzy
-msgid "Please enter add a weight entry to see your progress."
+msgid "Please add a weight entry to see your progress."
 msgstr "Inserisci un valore valido"
 
 #: pro-features/shortcode-progress-bar.php:121
@@ -2248,76 +2271,82 @@ msgstr "Guadagnato"
 msgid "Height needed"
 msgstr "Altezza richiesta"
 
+#: pro-features/shortcode-various.php:24
+#, fuzzy
+#| msgid "Height needed"
+msgid "Weight needed"
+msgstr "Altezza richiesta"
+
 #: pro-features/user-preferences.php:8
 #, fuzzy
 msgid "You must be logged in to edit your settings."
 msgstr "Devi essere loggato per registrare il peso."
 
-#: pro-features/user-preferences.php:28
+#: pro-features/user-preferences.php:29
 msgid "About You:"
 msgstr ""
 
-#: pro-features/user-preferences.php:29
+#: pro-features/user-preferences.php:30
 msgid "Your height:"
 msgstr "Altezza:"
 
-#: pro-features/user-preferences.php:30
+#: pro-features/user-preferences.php:31
 msgid "Which unit would you like to record your weight in:"
 msgstr "Con quale unità di misura vuoi registrare il tuo peso?"
 
-#: pro-features/user-preferences.php:31
+#: pro-features/user-preferences.php:32
 msgid "Which unit would you like to record your measurements in:"
 msgstr "Con quale unità di misura vuoi registrare le tue misurazioni?"
 
-#: pro-features/user-preferences.php:32
+#: pro-features/user-preferences.php:33
 msgid "Display dates in the following formats:"
 msgstr "Visualizza date nei seguenti formati:"
 
-#: pro-features/user-preferences.php:33
+#: pro-features/user-preferences.php:34
 msgid "Your Gender (needed for BMR):"
 msgstr ""
 
-#: pro-features/user-preferences.php:34
+#: pro-features/user-preferences.php:35
 msgid "Your Date of Birth (needed for BMR):"
 msgstr ""
 
-#: pro-features/user-preferences.php:35
+#: pro-features/user-preferences.php:36
 msgid "Your Activity Level (needed for BMR):"
 msgstr ""
 
-#: pro-features/user-preferences.php:42
+#: pro-features/user-preferences.php:43
 msgid "About User:"
 msgstr ""
 
-#: pro-features/user-preferences.php:43
+#: pro-features/user-preferences.php:44
 #, fuzzy
 msgid "Height:"
 msgstr "Altezza"
 
-#: pro-features/user-preferences.php:44
+#: pro-features/user-preferences.php:45
 #, fuzzy
 msgid "Weight unit:"
 msgstr "Unità di misura di peso"
 
-#: pro-features/user-preferences.php:45
+#: pro-features/user-preferences.php:46
 #, fuzzy
 msgid "Measurements unit:"
 msgstr "Unità di misura"
 
-#: pro-features/user-preferences.php:46
+#: pro-features/user-preferences.php:47
 #, fuzzy
 msgid "Date format:"
 msgstr "Regno Unito o degli Stati Uniti formato di data?"
 
-#: pro-features/user-preferences.php:47
+#: pro-features/user-preferences.php:48
 msgid "Gender (needed for BMR):"
 msgstr ""
 
-#: pro-features/user-preferences.php:48
+#: pro-features/user-preferences.php:49
 msgid "Date of Birth (needed for BMR):"
 msgstr ""
 
-#: pro-features/user-preferences.php:49
+#: pro-features/user-preferences.php:50
 msgid "Activity Level (needed for BMR):"
 msgstr ""
 
