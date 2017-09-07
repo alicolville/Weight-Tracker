@@ -12,58 +12,84 @@ defined('ABSPATH') or die("Jog on");
  */
 function ws_ls_shortcode_if($user_defined_arguments, $content = null, $level = 0) {
 
-	// Check if we have content between opening and closing [wlt-if] tags, if we don't then nothing to render so why bother proceeding?
-	if(true === empty($content)) {
-		return '<p>' . __('To use this shortcode, you must specify content between opening and closing tags<br /><br />e.g. [wlt-if]something to show if IF is true[/wlt-if]', WE_LS_SLUG) . '</p>';
-	}
+    // Check if we have content between opening and closing [wlt-if] tags, if we don't then nothing to render so why bother proceeding?
+    if(true === empty($content)) {
+        return '<p>' . __('To use this shortcode, you must specify content between opening and closing tags<br /><br />e.g. [wlt-if]something to show if IF is true[/wlt-if]', WE_LS_SLUG) . '</p>';
+    }
 
-	$arguments = shortcode_atts(array(
-		'user-id' => get_current_user_id(),
-		'operator' => 'exists',				// exists, not-exists
-		'field' => 'weight'					// weight, target, bmr, height, gender, activity-level, dob, is-logged-in
-	), $user_defined_arguments );
+    $arguments = shortcode_atts(array(
+        'user-id' => get_current_user_id(),
+        'operator' => 'exists',				// exists, not-exists
+        'field' => 'weight',					// weight, target, bmr, height, gender, activity-level, dob, is-logged-in
+        'strip-p-br' => false
+    ), $user_defined_arguments );
 
-	// Validate arguments
-	$arguments['user-id'] = ws_ls_force_numeric_argument($arguments['user-id'], get_current_user_id());
-	$arguments['operator'] = (true === in_array($arguments['operator'], ['exists', 'not-exists'])) ? $arguments['operator'] : 'exists';
-	$arguments['field'] = (true === empty($arguments['field'])) ? 'weight' : $arguments['field'];
-	$level = ws_ls_force_numeric_argument($level, '');
+    // Validate arguments
+    $arguments['user-id'] = ws_ls_force_numeric_argument($arguments['user-id'], get_current_user_id());
+    $arguments['operator'] = (true === in_array($arguments['operator'], ['exists', 'not-exists'])) ? $arguments['operator'] : 'exists';
+    $arguments['field'] = (true === empty($arguments['field'])) ? 'weight' : $arguments['field'];
+    $level = ws_ls_force_numeric_argument($level, '');
+    $arguments['strip-p-br'] = ws_ls_force_bool_argument($arguments['strip-p-br']);
 
-	// Remove Pro Plus fields if they don't have a license
-	if( false === WS_LS_IS_PRO_PLUS && true === in_array($arguments['field'], ['bmr'])) {
-		return '<p>' . __('Unfortunately the field you specified is for Pro Plus licenses only.', WE_LS_SLUG) . '</p>';
-	}
+    // Strip out BR / P tags?
+    if( true === $arguments['strip-p-br']) {
+        $content = ws_ls_shortcode_if_remove_p_br($content);
+    }
 
-	$else_content = '';
+    // Remove Pro Plus fields if they don't have a license
+    if( false === WS_LS_IS_PRO_PLUS && true === in_array($arguments['field'], ['bmr'])) {
+        return '<p>' . __('Unfortunately the field you specified is for Pro Plus licenses only.', WE_LS_SLUG) . '</p>';
+    }
 
-	$else_tag = ($level > 0) ? '[else-' . $level . ']' : '[else]';
+    $else_content = '';
 
-	// Is there an [else] within the content? If so, split the content into true condition and else.
-	$else_location = stripos($content, $else_tag);
+    $else_tag = ($level > 0) ? '[else-' . $level . ']' : '[else]';
 
-	if(false !== $else_location) {
+    // Is there an [else] within the content? If so, split the content into true condition and else.
+    $else_location = stripos($content, $else_tag);
 
-		$else_content = substr($content, $else_location + strlen($else_tag));
+    if(false !== $else_location) {
 
-		// Strip out [else] content from true condition
-		$content = substr($content, 0, $else_location);
-	}
+        $else_content = substr($content, $else_location + strlen($else_tag));
 
-	$does_all_values_exist = ws_ls_shortcode_if_value_exist($arguments['user-id'], $arguments['field']);
+        // Strip out [else] content from true condition
+        $content = substr($content, 0, $else_location);
+    }
 
-	$display_true_condition = 	(
-									(true === $does_all_values_exist && 'exists' === $arguments['operator']) ||		// True if field exists
-									(false === $does_all_values_exist && 'not-exists' === $arguments['operator'])	// True if field does not exist
-								) ? true : false;
+    $does_all_values_exist = ws_ls_shortcode_if_value_exist($arguments['user-id'], $arguments['field']);
 
-	// If we should display true content, then do so. IF not, and it was specified, display [else]
-	if($display_true_condition) {
-		return do_shortcode($content);
-	} else if (false === $display_true_condition && false === empty($else_content)) {
-		return do_shortcode($else_content);
-	}
+    $display_true_condition = 	(
+        (true === $does_all_values_exist && 'exists' === $arguments['operator']) ||		// True if field exists
+        (false === $does_all_values_exist && 'not-exists' === $arguments['operator'])	// True if field does not exist
+    ) ? true : false;
 
-	return '';
+    // If we should display true content, then do so. IF not, and it was specified, display [else]
+    if($display_true_condition) {
+        return do_shortcode($content);
+    } else if (false === $display_true_condition && false === empty($else_content)) {
+        return do_shortcode($else_content);
+    }
+
+    return '';
+}
+
+/**
+ * Remove <br> and <p> tags from text
+ * @param $text
+ * @return mixed
+ */
+function ws_ls_shortcode_if_remove_p_br($text) {
+
+    if(false === empty($text)) {
+
+        $find = ['<br>', '<br />', '<p>', '</p>'];
+
+        foreach ($find as $value) {
+            $text = str_ireplace($value, '', $text);
+        }
+    }
+
+    return $text;
 }
 
 /**
@@ -145,7 +171,7 @@ function ws_ls_shortcode_if_valid_field_name($field) {
  * @return string
  */
 function ws_ls_shortcode_if_level_one($user_defined_arguments, $content = null) {
-	return ws_ls_shortcode_if($user_defined_arguments, $content, 1);
+    return ws_ls_shortcode_if($user_defined_arguments, $content, 1);
 }
 add_shortcode( 'wlt-if-1', 'ws_ls_shortcode_if_level_one' );
 
@@ -157,7 +183,7 @@ add_shortcode( 'wlt-if-1', 'ws_ls_shortcode_if_level_one' );
  * @return string
  */
 function ws_ls_shortcode_if_level_two($user_defined_arguments, $content = null) {
-	return ws_ls_shortcode_if($user_defined_arguments, $content, 2);
+    return ws_ls_shortcode_if($user_defined_arguments, $content, 2);
 }
 add_shortcode( 'wlt-if-2', 'ws_ls_shortcode_if_level_two' );
 
@@ -169,6 +195,6 @@ add_shortcode( 'wlt-if-2', 'ws_ls_shortcode_if_level_two' );
  * @return string
  */
 function ws_ls_shortcode_if_level_three($user_defined_arguments, $content = null) {
-	return ws_ls_shortcode_if($user_defined_arguments, $content, 3);
+    return ws_ls_shortcode_if($user_defined_arguments, $content, 3);
 }
 add_shortcode( 'wlt-if-3', 'ws_ls_shortcode_if_level_three' );
