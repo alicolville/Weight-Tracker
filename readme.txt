@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight, loss, lose, helper, bmi, body, mass, index, graph, track, stones, kg, table, data, plot, target, history, pounds, responsive, chart, measurements, cm, centimeters, inches, hip, waist, bicep, thigh
 Requires at least: 4.4.0
 Tested up to: 4.8
-Stable tag: 5.1.6
+Stable tag: 5.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate Link: https://www.paypal.me/yeken
@@ -27,6 +27,7 @@ For further information read our documentation:
 = Pro Plus Version =
 
 * All of the features that come with a standard Pro license.
+* **Photo uploads** - TODO
 * **Basal Metabolic Rate (BMR) calculations per user**. Shortcodes and extended admin screens to display a user's BMR. For further information on BMR and how it is calculated visit our calculations page.
 * **Harris Benedict formula**. Shortcodes and extended admin screens to a view a person's calorie intake required to maintain and lose weight. For further information on Harris Benedict Formula and how it is calculated visit our calculations page.
 * **Recommended calorie intake per meal time**. Shortcodes and extended admin screens to recommend how a person should split their daily calorie intake across meals. For further information on how this is calculated please visit our calculations page.
@@ -127,9 +128,11 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 == Upgrade Notice ==
 
-5.1! Now support for BMR, BMI, Calorie intake and Macronutrient Calculator.
+5.2! TODO
 
 == Changelog ==
+
+= 5.2 =
 
 = 5.1.6 =
 
