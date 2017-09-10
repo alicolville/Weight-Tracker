@@ -1,7 +1,7 @@
 //
 // To compress this script, use https://jscompress.com
 //
-jQuery( document ).ready(function ($) {
+jQuery( document ).ready(function ($, undefined) {
 
 	ws_ls_log('Processing user data tables..');
 
@@ -21,6 +21,7 @@ jQuery( document ).ready(function ($) {
 	   data['max_entries'] = max_entries;
 	   data['small_width'] = small_width;
 	   data['table_id'] = table_id;
+	 //  data['front-end'] = ( undefined !== ws_user_table_config['front-end'] && 'true' == ws_user_table_config['front-end']) ? true : false;
 	   ws_ls_post_data_to_WP('table_data', data, ws_ls_callback_setup_table)
 
      });
@@ -34,7 +35,10 @@ jQuery( document ).ready(function ($) {
 		// var post_data = $.merge(post_data, data);
 		var post_data = obj3 = $.extend(post_data, data);
 
-	    $.post(ajaxurl, post_data, function(response, post_data) {
+        // If we're in the public facing site, set Ajax URL!
+        var post_url = ( 'undefined' === typeof(ajaxurl) && undefined !== ws_user_table_config["ajax-url"]) ? ws_user_table_config["ajax-url"] : ajaxurl;
+
+	    $.post(post_url, post_data, function(response, post_data) {
 	 	 // Fire back to given callback with response from server
 	 	 callback && callback(response, post_data);
 	    });

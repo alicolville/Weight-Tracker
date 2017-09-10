@@ -10,7 +10,8 @@ if(defined('WS_LS_ABSPATH')){
 	include WS_LS_ABSPATH . 'pro-features/ajax-handler-admin.php';
 	include WS_LS_ABSPATH . 'pro-features/shortcode-chart.php';
 	include WS_LS_ABSPATH . 'pro-features/shortcode-form.php';
-	include WS_LS_ABSPATH . 'pro-features/shortcode-table.php';
+	//include WS_LS_ABSPATH . 'pro-features/shortcode-table.php'; //TODO: Remove
+    include WS_LS_ABSPATH . 'pro-features/shortcode-footable.php';
 	include WS_LS_ABSPATH . 'pro-features/shortcode-various.php';
 	include WS_LS_ABSPATH . 'pro-features/shortcode-stats.php';
 	include WS_LS_ABSPATH . 'pro-features/shortcode-reminders.php';

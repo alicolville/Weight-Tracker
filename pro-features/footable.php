@@ -169,9 +169,11 @@ function ws_ls_data_table_enqueue_scripts() {
 	$minified = ws_ls_use_minified();
 
 	wp_enqueue_style('ws-ls-footables', plugins_url( '/css/footable.standalone.min.css', dirname(__FILE__)  ), array(), WE_LS_CURRENT_VERSION);
-	wp_enqueue_script('ws-ls-footables-js', plugins_url( '/js/footable.min.js', dirname(__FILE__) ), array('jquery'), WE_LS_CURRENT_VERSION, true);
-	wp_enqueue_script('ws-ls-footables-admin', plugins_url( '/js/admin.footable' .     $minified . '.js', dirname(__FILE__) ), array('ws-ls-footables-js'), WE_LS_CURRENT_VERSION, true);
+    wp_enqueue_style('ws-ls-footables-wlt', plugins_url( '/css/footable.css', dirname(__FILE__)  ), array('ws-ls-footables'), WE_LS_CURRENT_VERSION);
+    wp_enqueue_script('ws-ls-footables-js', plugins_url( '/js/footable.min.js', dirname(__FILE__) ), array('jquery'), WE_LS_CURRENT_VERSION, true);
+	wp_enqueue_script('ws-ls-footables-admin', plugins_url( '/js/data.footable' .     $minified . '.js', dirname(__FILE__) ), array('ws-ls-footables-js'), WE_LS_CURRENT_VERSION, true);
 	wp_localize_script('ws-ls-footables-admin', 'ws_user_table_config', ws_ls_data_js_config());
+    wp_enqueue_style('fontawesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', array(), WE_LS_CURRENT_VERSION);
 }
 
 /**
@@ -179,7 +181,7 @@ function ws_ls_data_table_enqueue_scripts() {
  * @return array of settings
  */
 function ws_ls_data_js_config() {
-	return array(
+	$config = array(
 					'security' => wp_create_nonce('ws-ls-user-tables'),
 					'us-date' => (WE_LS_US_DATE) ? 'true' : 'false',
 					'base-url' => ws_ls_get_link_to_user_data(),
@@ -187,4 +189,11 @@ function ws_ls_data_js_config() {
 					'label-confirm-delete' =>  __('Are you sure you want to delete the row?', WE_LS_SLUG),
 					'label-error-delete' =>  __('Unfortunately there was an error deleting the row.', WE_LS_SLUG)
 				);
+	// Add some extra config settings if not in admin
+    if ( false === is_admin() ) {
+        $config['front-end'] = 'true';
+        $config['ajax-url'] = admin_url('admin-ajax.php');
+    }
+
+	return $config;
 }

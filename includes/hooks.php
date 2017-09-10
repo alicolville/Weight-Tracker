@@ -129,8 +129,7 @@
 
 		if(false === empty($_GET['page']) && 'ws-ls-wlt-data-home' == $_GET['page']) {
 			wp_enqueue_style('fontawesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', array(), WE_LS_CURRENT_VERSION);
-			
-		}
+        }
 
 		// Include relevant JS for admin "Manage User data" pages
         if(false === empty($_GET['page']) && 'ws-ls-wlt-data-home' == $_GET['page'] &&
