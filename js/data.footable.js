@@ -21,7 +21,7 @@ jQuery( document ).ready(function ($, undefined) {
 	   data['max_entries'] = max_entries;
 	   data['small_width'] = small_width;
 	   data['table_id'] = table_id;
-	 //  data['front-end'] = ( undefined !== ws_user_table_config['front-end'] && 'true' == ws_user_table_config['front-end']) ? true : false;
+	   data['front-end'] = ( undefined !== ws_user_table_config['front-end'] && 'true' == ws_user_table_config['front-end']) ? true : false;
 	   ws_ls_post_data_to_WP('table_data', data, ws_ls_callback_setup_table)
 
      });
