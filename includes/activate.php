@@ -58,6 +58,7 @@
 			right_forearm float NULL,
 			shoulders float NULL,
 			neck float NULL,
+			photo_id int NULL,
 		  UNIQUE KEY id (id)
 		) $charset_collate;";
 
