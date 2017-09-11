@@ -632,4 +632,41 @@ function ws_ls_display_notice($text, $type = 'success') {
 					esc_html($text)
 				);
 }
+
+/**
+ * If QS value detected, display data saved message
+ */
+function ws_ls_display_data_saved_message() {
+
+	if(false === empty(ws_ls_querystring_value('ws-edit-saved'))) {
+		return ws_ls_display_blockquote(__('Your modifications have been saved', WE_LS_SLUG), 'ws-ls-success');
+	}
+
+	return '';
+}
+
+/**
+ * Helper function to use Blockquote
+ *
+ * @class ws-ls-success
+ * @text
+ *
+ * //TODO: Change all block quotes to use this.
+ */
+function ws_ls_display_blockquote($text, $class = '', $just_echo = false) {
+
+	$html_output = sprintf('<blockquote class="ws-ls-blockquote%s"><p>%s</p></blockquote>',
+									(false === empty($class)) ? ' ' . esc_html($class) : '',
+									esc_html($text));
+// TODO: Sort the styling so the text within blcok quote looks better
+	if (true === $just_echo) {
+		echo $html_output;
+	} else {
+		return $html_output;
+	}
+
+}
+
+
+
 ?>

@@ -104,7 +104,7 @@
 
 		// Enqueue Data
 		if(WS_LS_IS_PRO && WS_LS_ADVANCED_TABLES) {
-	  	  ws_ls_enqueue_datatable_scripts();
+	  	 // ws_ls_enqueue_datatable_scripts(); //TODO
 	    }
 
 		$ws_already_enqueued = true;

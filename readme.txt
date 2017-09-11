@@ -134,6 +134,13 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 = 5.2 =
 
+//TODO: mininmise data.footable.js and ws-ls.js
+
+    * Improvement: Removed DataTables.js and replaced with Footable.js for advanced data tables. This keeps the front end consitent with admin area.
+    * Improvement: [wlt-table] argument //TODO
+    * Improvement: Tweaked form headers to say "Edit" intead of "Add" when editing an entry.
+    * Improvement: Editing an entry is done using PHP and HTML. jQuery / Ajax has been removed so more reliable.
+
 = 5.1.6 =
 
     * Improvement: Added "strip-p-br" argument to [wlt-if] shortcode. - Read more: https://weight.yeken.uk/shortcodes/

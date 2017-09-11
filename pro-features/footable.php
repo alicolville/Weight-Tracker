@@ -2,33 +2,68 @@
 	defined('ABSPATH') or die('Jog on!');
 
 
-function ws_ls_data_table_placeholder($user_id = false, $max_entries = false, $smaller_width = false) {
+function ws_ls_data_table_placeholder($user_id = false, $max_entries = false, $smaller_width = false, $enable_add_edit = true) {
 
 	ws_ls_data_table_enqueue_scripts();
 
-?>
-	<table class="ws-ls-user-data-ajax table ws-ls-loading-table" id="<?php echo uniqid('ws-ls-'); ?>"
-		data-paging="true"
-		data-filtering="true"
-		data-sorting="true"
-		data-editing="true"
-		data-cascade="true"
-		data-toggle="true"
-	  	data-use-parent-width="true"
-		data-user-id="<?php echo (is_numeric($user_id) ? $user_id : 'false') ?>",
-		data-max-entries="<?php echo (is_numeric($max_entries) ? $max_entries : 'false') ?>"
-		data-small-width="<?php echo ($smaller_width) ? 'true' : 'false' ?>">
-	</table>
-	<?php if (WE_LS_MEASUREMENTS_ENABLED):  ?>
-		<p><em>Measurements are in <?php echo ('inches' == ws_ls_get_config('WE_LS_MEASUREMENTS_UNIT')) ? __('Inches', WE_LS_SLUG) : __('cm', WE_LS_SLUG); ?>.</em></p>
-	<?php endif;  ?>
-<?php
+	$html = '';
+	$entry_id = ws_ls_querystring_value('ws-edit-entry', true);
+
+	// Saved data?
+	if (false === is_admin()) {
+		$html = ws_ls_display_data_saved_message();
+	}
+
+	// Are we in front end and editing enabled, and of course we want to edit, then do so!
+	if( false === empty($entry_id) && false === is_admin()) {
+
+		if ($entry_id) {
+			$data = ws_ls_get_weight(get_current_user_id(), $entry_id);
+		}
+
+		//If we have a Redirect URL, base decode.
+		$redirect_url = ws_ls_querystring_value('redirect');
+
+		if(false === empty($redirect_url)) {
+			$redirect_url = base64_decode($redirect_url);
+		}
+
+		$html .= ws_ls_display_weight_form(false, false,	false, false, false, false,
+											false, false, $redirect_url, $data);
+
+	} else {
+
+		$html .= sprintf('<table class="ws-ls-user-data-ajax table ws-ls-loading-table" id="%s"
+				data-paging="true"
+				data-filtering="true"
+				data-sorting="true"
+				data-editing="%s"
+				data-cascade="true"
+				data-toggle="true"
+				data-use-parent-width="true"
+				data-user-id="%s",
+				data-max-entries="%s"
+				data-small-width="%s">
+			</table>',
+			uniqid('ws-ls-'),
+			true === $enable_add_edit ? 'true' : 'false',
+			is_numeric($user_id) ? $user_id : 'false',
+			is_numeric($max_entries) ? $max_entries : 'false',
+			$smaller_width ? 'true' : 'false'
+		);
+
+		if (WE_LS_MEASUREMENTS_ENABLED) {
+			$html .= '<p><em>Measurements are in ' . (('inches' == ws_ls_get_config('WE_LS_MEASUREMENTS_UNIT')) ? __('Inches', WE_LS_SLUG) : __('cm', WE_LS_SLUG)) . '</em></p>';
+		}
+	}
+
+	return $html;
 }
 
-function ws_ls_data_table_get_rows($user_id = false, $max_entries = false, $smaller_width = false) {
+function ws_ls_data_table_get_rows($user_id = false, $max_entries = false, $smaller_width = false, $front_end = false) {
 
 	// Fetch all columns that will be displayed in data table.
-	$columns = ws_ls_data_table_get_columns($smaller_width);
+	$columns = ws_ls_data_table_get_columns($smaller_width, $front_end);
 
 	// Build any filters
 	$filters = array();
@@ -127,16 +162,24 @@ function ws_ls_data_table_get_rows($user_id = false, $max_entries = false, $smal
  * Depending on settings, return relevant columns for data table
  * @return array - column definitions
  */
-function ws_ls_data_table_get_columns($smaller_width = false) {
+function ws_ls_data_table_get_columns($smaller_width = false, $front_end = false) {
 
 	$columns = array (
 		array('name' => 'db_row_id', 'title' => 'ID', 'visible'=> false, 'type' => 'number'),
-		array('name' => 'user_id', 'title' => 'USER ID', 'visible'=> false, 'type' => 'number'),
-		array('name' => 'user_nicename', 'title' => 'User', 'breakpoints'=> '', 'type' => 'text'),
-		array('name' => 'date', 'title' => 'Date', 'breakpoints'=> '', 'type' => 'date'),
-		array('name' => 'kg', 'title' => 'Weight', 'visible'=> true, 'type' => 'text'),
-		array('name' => 'gainloss', 'title' => ws_ls_tooltip('+/-', __('+', WE_LS_SLUG)), 'visible'=> true, 'type' => 'text')
+		array('name' => 'user_id', 'title' => 'USER ID', 'visible'=> false, 'type' => 'number')
 	);
+
+	// If not front end, add nice nice name
+	if (false == $front_end) {
+		$columns[] = array('name' => 'user_nicename', 'title' => 'User', 'breakpoints'=> '', 'type' => 'text');
+	} else {
+		// If in the front end, switch to smaller width (hide measurements etc)
+		$smaller_width = $front_end;
+	}
+
+	$columns[] = array('name' => 'date', 'title' => 'Date', 'breakpoints'=> '', 'type' => 'date');
+	$columns[] = array('name' => 'kg', 'title' => 'Weight', 'visible'=> true, 'type' => 'text');
+	$columns[] = array('name' => 'gainloss', 'title' => ws_ls_tooltip('+/-', __('Difference', WE_LS_SLUG)), 'visible'=> true, 'type' => 'text');
 
 	// Add BMI?
 	if(WE_LS_DISPLAY_BMI_IN_TABLES) {
@@ -183,9 +226,7 @@ function ws_ls_data_table_enqueue_scripts() {
 function ws_ls_data_js_config() {
 	$config = array(
 					'security' => wp_create_nonce('ws-ls-user-tables'),
-					'us-date' => (WE_LS_US_DATE) ? 'true' : 'false',
 					'base-url' => ws_ls_get_link_to_user_data(),
-					'current-url-base64' => ws_ls_get_url(true),
 					'label-confirm-delete' =>  __('Are you sure you want to delete the row?', WE_LS_SLUG),
 					'label-error-delete' =>  __('Unfortunately there was an error deleting the row.', WE_LS_SLUG)
 				);
@@ -193,7 +234,18 @@ function ws_ls_data_js_config() {
     if ( false === is_admin() ) {
         $config['front-end'] = 'true';
         $config['ajax-url'] = admin_url('admin-ajax.php');
-    }
+
+        $edit_link = ws_ls_get_url();
+		$config['edit-url'] = add_query_arg( 'ws-edit-entry', '{ws-id}', $edit_link );
+
+		$config['current-url-base64'] = add_query_arg( 'ws-edit-saved', 'true', $edit_link );
+		$config['current-url-base64'] = base64_encode($config['current-url-base64']);
+        $config['us-date'] = ( false === ws_ls_get_config('WE_LS_US_DATE', get_current_user_id()) ) ? 'false' : 'true';
+
+    } else {
+		$config['current-url-base64'] = ws_ls_get_url(true);
+        $config['us-date'] = (WE_LS_US_DATE) ? 'true' : 'false';
+	}
 
 	return $config;
 }

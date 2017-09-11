@@ -120,6 +120,7 @@ function ws_ls_get_weight($user_id, $row_id)
     global $wpdb;
     $table_name = $wpdb->prefix . WE_LS_TABLENAME;
     $sql =  $wpdb->prepare('SELECT * FROM ' . $table_name . ' where weight_user_id = %d and id = %d', $user_id, $row_id);
+
     $row = $wpdb->get_row( $sql );
 
     if (!is_null($row) ) {

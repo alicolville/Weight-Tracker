@@ -265,7 +265,16 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 
 	// Set title / validator
     if (!$hide_titles) {
-        $html_output .= '<h3 class="ws_ls_title">' . (($target_form) ? __('Target Weight', WE_LS_SLUG) : __('Add a new weight', WE_LS_SLUG)) . '</h3>';
+
+		$title = __('Add a new weight', WE_LS_SLUG);
+
+		if ($target_form) {
+			$title = __('Target Weight', WE_LS_SLUG);
+		} else if( false === empty($existing_data) ) {
+			$title = __('Edit weight', WE_LS_SLUG);
+		}
+
+        $html_output .= '<h3 class="ws_ls_title">' . $title . '</h3>';
     }
 
 	// If a form was previously submitted then display resulting message!
@@ -360,7 +369,9 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 
 	    // Include
 	    if(!$target_form && $measurements_form_enabled) {
-	        $html_output .= sprintf('<br /><h3 class="ws_ls_title">%s (%s)</h3>', __('Add measurements', WE_LS_SLUG), (WE_LS_MEASUREMENTS_MANDATORY) ? __('Mandatory', WE_LS_SLUG) : __('Optional', WE_LS_SLUG));
+	        $html_output .= sprintf('<br /><h3 class="ws_ls_title">%s (%s)</h3>',
+											( false === empty($existing_data) )	? __('Edit measurements', WE_LS_SLUG) : __('Add measurements', WE_LS_SLUG),
+									(WE_LS_MEASUREMENTS_MANDATORY) ? __('Mandatory', WE_LS_SLUG) : __('Optional', WE_LS_SLUG));
 	        $html_output .= ws_ls_load_measurement_form($existing_data);
 	    }
 

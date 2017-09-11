@@ -34,6 +34,10 @@
 
             $html_output = '';
 
+			if (false === is_admin()) {
+				$html_output = ws_ls_display_data_saved_message();
+			}
+
 			// If a form was previously submitted then display resulting message!
 			if (!empty($save_response) && $save_response['form_number'] == false){
 				$html_output .= $save_response['message'];
@@ -112,8 +116,32 @@
 				$html_output .= '<a name="add-weight"></a>';
 			}
 
-			// Display input form
-			$html_output .= ws_ls_display_weight_form(false, 'ws-ls-main-weight-form', false, false);
+
+			$entry_id = ws_ls_querystring_value('ws-edit-entry', true);
+
+			// Are we in front end and editing enabled, and of course we want to edit, then do so!
+			if( false === empty($entry_id)) {
+
+				if ($entry_id) {
+					$data = ws_ls_get_weight(get_current_user_id(), $entry_id);
+				}
+
+				//If we have a Redirect URL, base decode.
+				$redirect_url = ws_ls_querystring_value('redirect');
+
+				if (false === empty($redirect_url)) {
+					$redirect_url = base64_decode($redirect_url);
+				}
+
+				$html_output .= ws_ls_display_weight_form(false, false,	false, false, false, false,
+					false, false, $redirect_url, $data);
+			} else {
+
+				// Display input form in add mode
+				$html_output .= ws_ls_display_weight_form(false, 'ws-ls-main-weight-form', false, false);
+
+			}
+
 
 			// Close first tab
 			$html_output .= ws_ls_end_tab();
@@ -137,7 +165,7 @@
 					}
 
 					if (WS_LS_ADVANCED_TABLES && WS_LS_IS_PRO){
-						$html_output .= ws_ls_advanced_data_table($weight_data);
+						$html_output .=  ws_ls_data_table_placeholder($user_id, false, false, true);
 					} else {
 						$html_output .= ws_ls_display_table($weight_data);
 					}
