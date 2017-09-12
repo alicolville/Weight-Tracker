@@ -134,10 +134,12 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 = 5.2 =
 
-//TODO: mininmise data.footable.js and ws-ls.js
+//TODO: Footable locale
+//TODO: mininmise: data.footable.js / ws-ls.js / ws-ls.css
 
     * Improvement: Removed DataTables.js and replaced with Footable.js for advanced data tables. This keeps the front end consitent with admin area.
     * Improvement: [wlt-table] argument //TODO
+    * Improvement: [wlt-table] user's now have the option to edit their data with this shortcode (not just delete).
     * Improvement: Tweaked form headers to say "Edit" intead of "Add" when editing an entry.
     * Improvement: Editing an entry is done using PHP and HTML. jQuery / Ajax has been removed so more reliable.
 

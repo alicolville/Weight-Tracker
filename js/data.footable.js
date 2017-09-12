@@ -5,6 +5,24 @@ jQuery( document ).ready(function ($, undefined) {
 
 	ws_ls_log('Processing user data tables..');
 
+	$(".ws-ls-cancel-form").click(function( event ) {
+		event.preventDefault();
+
+		var button = $(this);
+		var form_id = button.data('form-id');
+
+		if ( undefined !== form_id ) {
+
+			var redirect_url = $('#' + form_id + ' #ws_redirect').val();
+
+			if ( undefined !== redirect_url ) {
+				window.location.href = redirect_url.replace('ws-edit-saved', 'ws-edit-cancel');
+			}
+
+		}
+
+	});
+
 	 $(".ws-ls-user-data-ajax").each(function () {
 
 	   var table_id = $(this).attr("id");
@@ -105,7 +123,7 @@ jQuery( document ).ready(function ($, undefined) {
 					// If we're in Admin, redirect to the relevant admin screen. Otherwise, toggle edit in front end
 					if(true === ws_ls_in_front_end()) {
 						var url = ws_user_table_config['edit-url'];
-						url = url.replace('{ws-id}', values.db_row_id);
+						url = url.replace('|ws-id|', values.db_row_id);
 
 						window.location.href = url + '&user-id=' + values.user_id + '&redirect=' + ws_user_table_config['current-url-base64'];
 					} else {

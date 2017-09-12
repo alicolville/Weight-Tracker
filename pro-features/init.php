@@ -10,15 +10,13 @@ if(defined('WS_LS_ABSPATH')){
 	include WS_LS_ABSPATH . 'pro-features/ajax-handler-admin.php';
 	include WS_LS_ABSPATH . 'pro-features/shortcode-chart.php';
 	include WS_LS_ABSPATH . 'pro-features/shortcode-form.php';
-	//include WS_LS_ABSPATH . 'pro-features/shortcode-table.php'; //TODO: Remove
-    include WS_LS_ABSPATH . 'pro-features/shortcode-footable.php';
+	include WS_LS_ABSPATH . 'pro-features/shortcode-footable.php';
 	include WS_LS_ABSPATH . 'pro-features/shortcode-various.php';
 	include WS_LS_ABSPATH . 'pro-features/shortcode-stats.php';
 	include WS_LS_ABSPATH . 'pro-features/shortcode-reminders.php';
 	include WS_LS_ABSPATH . 'pro-features/shortcode-progress-bar.php';
 	include WS_LS_ABSPATH . 'pro-features/shortcode-messages.php';
 	include WS_LS_ABSPATH . 'pro-features/shortcode-if.php';
-	include WS_LS_ABSPATH . 'pro-features/advanced-table.php';
 	include WS_LS_ABSPATH . 'pro-features/widget-chart.php';
 	include WS_LS_ABSPATH . 'pro-features/widget-form.php';
 	include WS_LS_ABSPATH . 'pro-features/widget-progress.php';
@@ -104,37 +102,8 @@ function ws_ls_register_pro_shortcodes(){
 }
 add_action( 'init', 'ws_ls_register_pro_shortcodes');
 
-function ws_ls_enqueue_datatable_scripts($admin = false) {
-
-    wp_enqueue_script('ws-ls-datatables', '//cdn.datatables.net/1.10.13/js/jquery.dataTables.js', array('jquery'), WE_LS_CURRENT_VERSION);
-	wp_enqueue_style('ws-ls-datatables', '//cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css', array(), WE_LS_CURRENT_VERSION);
-	wp_enqueue_script('ws-ls-datatables', '//cdn.datatables.net/1.10.13/js/jquery.dataTables.js', array('jquery'), WE_LS_CURRENT_VERSION);
-	wp_enqueue_script('ws-ls-datatables-responsive', '//cdn.datatables.net/responsive/2.1.0/js/dataTables.responsive.min.js', array('ws-ls-datatables'), WE_LS_CURRENT_VERSION);
-    wp_enqueue_style('ws-ls-datatables-responsive', '//cdn.datatables.net/responsive/2.1.0/css/responsive.bootstrap.min.css', array(), WE_LS_CURRENT_VERSION);
-    wp_enqueue_script('ws-ls-datatables-moment', '//cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js', array('jquery', 'ws-ls-datatables-responsive'), WE_LS_CURRENT_VERSION);
-    wp_enqueue_script('ws-ls-datatables-moment-date', '//cdn.datatables.net/plug-ins/1.10.11/sorting/datetime-moment.js', array('ws-ls-datatables-moment'), WE_LS_CURRENT_VERSION);
-
-	// Setup config for advanced table (e.g. columns etc)
-	if($admin) {
-		wp_localize_script('ws-ls-datatables-responsive', 'ws_ls_config_advanced_datatables', ws_ls_get_advanced_table_admin_config());
-	} else {
-		wp_localize_script('ws-ls-datatables-responsive', 'ws_ls_config_advanced_datatables', ws_ls_get_advanced_table_config());
-	}
-
-	wp_localize_script('ws-ls-datatables-responsive', 'ws_ls_table_locale', ws_ls_advanced_table_locale());
-
-}
-
 function ws_ls_admin_enqueue_pro_scripts(){
-
-	// Only add Datatable scripts to User preferences page
- 	$screen = get_current_screen();
-
 	wp_enqueue_style('ws-ls-admin-style', plugins_url( '/css/admin.css', dirname(__FILE__) ), array(), WE_LS_CURRENT_VERSION);
-
-    if ( 'weight-loss-tracker_page_ws-ls-weight-loss-tracker-pro' == $screen->id ){
-		ws_ls_enqueue_datatable_scripts(true);
-	}
 }
 add_action( 'admin_enqueue_scripts', 'ws_ls_admin_enqueue_pro_scripts');
 

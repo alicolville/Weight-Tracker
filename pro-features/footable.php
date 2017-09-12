@@ -29,7 +29,7 @@ function ws_ls_data_table_placeholder($user_id = false, $max_entries = false, $s
 		}
 
 		$html .= ws_ls_display_weight_form(false, false,	false, false, false, false,
-											false, false, $redirect_url, $data);
+											false, false, $redirect_url, $data, true);
 
 	} else {
 
@@ -89,6 +89,9 @@ function ws_ls_data_table_get_rows($user_id = false, $max_entries = false, $smal
 
 	$previous_user_weight = [];
 
+	// If in front end, load user's weight format
+	$convert_weight_format = ( true === $front_end ) ? intval($user_id) : false;
+
 	foreach ($user_data['weight_data'] as $data) {
 
 		// Build a row up for given columns
@@ -108,10 +111,10 @@ function ws_ls_data_table_get_rows($user_id = false, $max_entries = false, $smal
 
 					if ($data['kg'] > $previous_user_weight[$data['user_id']]) {
 						$gain_class = 'gain';
-						$gain_loss = ws_ls_convert_kg_into_relevant_weight_String($data['kg'] - $previous_user_weight[$data['user_id']]);
+						$gain_loss = ws_ls_convert_kg_into_relevant_weight_String($data['kg'] - $previous_user_weight[$data['user_id']], false, $convert_weight_format);
 					} elseif ($data['kg'] < $previous_user_weight[$data['user_id']]) {
 						$gain_class = 'loss';
-						$gain_loss = ws_ls_convert_kg_into_relevant_weight_String($data['kg'] - $previous_user_weight[$data['user_id']]);
+						$gain_loss = ws_ls_convert_kg_into_relevant_weight_String($data['kg'] - $previous_user_weight[$data['user_id']], false, $convert_weight_format);
 					} elseif ($data['kg'] == $previous_user_weight[$data['user_id']]) {
 						$gain_class = 'same';
 					}
@@ -125,7 +128,7 @@ function ws_ls_data_table_get_rows($user_id = false, $max_entries = false, $smal
 			// Is this a measurement field?
 			if(in_array($column_name, $measurement_fields) && !empty($data['measurements'][$column_name])) {
 				$row[$column_name]['options']['sortValue'] = $data['measurements'][$column_name];
-				$row[$column_name]['value'] = ws_ls_prep_measurement_for_display($data['measurements'][$column_name]);
+				$row[$column_name]['value'] = ws_ls_prep_measurement_for_display($data['measurements'][$column_name], $convert_weight_format);
 			} else if ('gainloss' === $column_name) {
 				$row[$column_name]['value'] = $gain_loss;
 				$row[$column_name]['options']['classes'] = 'ws-ls-' . $gain_class; // Can use this method for icons
@@ -136,7 +139,13 @@ function ws_ls_data_table_get_rows($user_id = false, $max_entries = false, $smal
 				switch ($column_name) {
 					case 'kg':
 						$row[$column_name]['options']['sortValue'] = $data['kg'];
-						$row[$column_name]['value'] = $data['display'];
+
+						if ( true === $front_end ) {
+							$row[$column_name]['value'] = ws_ls_convert_kg_into_relevant_weight_String($data['kg'] , false, $convert_weight_format);
+						} else {
+							$row[$column_name]['value'] = $data['display'];
+						}
+
 						break;
 					case 'user_nicename':
 						$row[$column_name]['options']['sortValue'] = $data['user_nicename'];
@@ -236,7 +245,14 @@ function ws_ls_data_js_config() {
         $config['ajax-url'] = admin_url('admin-ajax.php');
 
         $edit_link = ws_ls_get_url();
-		$config['edit-url'] = add_query_arg( 'ws-edit-entry', '{ws-id}', $edit_link );
+
+        // Strip old edit and cancel QS values
+		$remove_qs = ['ws-edit-entry', 'ws-edit-cancel', 'ws-edit-saved'];
+		foreach ($remove_qs as $qs) {
+			$edit_link = remove_query_arg($remove_qs, $edit_link);
+		}
+
+		$config['edit-url'] = esc_url(add_query_arg( 'ws-edit-entry', '|ws-id|', $edit_link ));
 
 		$config['current-url-base64'] = add_query_arg( 'ws-edit-saved', 'true', $edit_link );
 		$config['current-url-base64'] = base64_encode($config['current-url-base64']);

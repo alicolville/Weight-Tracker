@@ -238,7 +238,7 @@
 */
 function ws_ls_display_weight_form($target_form = false, $class_name = false, $user_id = false, $hide_titles = false,
                                         $form_number = false, $force_to_todays_date = false, $hide_login_message_if_needed = true,
-                                            $hide_measurements_form = false, $redirect_url = false, $existing_data = false)
+                                            $hide_measurements_form = false, $redirect_url = false, $existing_data = false, $cancel_button = false)
 {
     global $save_response;
     $html_output  = '';
@@ -261,7 +261,6 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
     }
 
     $form_id = 'ws_ls_form_' . rand(10,1000) . '_' . rand(10,1000);
-	$form_class = ' ws_ls_display_form';
 
 	// Set title / validator
     if (!$hide_titles) {
@@ -282,16 +281,44 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 		$html_output .= $save_response['message'];
 	}
 
-	$html_output .= '
-	<form action="' .  get_permalink() . '" method="post" class="we-ls-weight-form we-ls-weight-form-validate' . $form_class . (($class_name) ? ' ' . $class_name : '') . '" id="' . $form_id . '"
-								data-measurements-enabled="' . (($measurements_form_enabled) ? 'true' : 'false') . '"
-								data-measurements-all-required="' . (($measurements_form_enabled && WE_LS_MEASUREMENTS_MANDATORY) ? 'true' : 'false') . '"
-								data-is-target-form="' . (($target_form) ? 'true' : 'false') . '"
-								data-metric-unit="' . ws_ls_get_chosen_weight_unit_as_string() . '">
-                                <input type="hidden" value="' . (($target_form) ? 'true' : 'false') . '" id="ws_ls_is_target" name="ws_ls_is_target" />
+	//TODO
+//	$html_output .= '
+//	<form action="' .  get_permalink() . '" method="post" class="we-ls-weight-form we-ls-weight-form-validate' . $form_class . (($class_name) ? ' ' . $class_name : '') . '" id="' . $form_id . '"
+//								data-measurements-enabled="' . (($measurements_form_enabled) ? 'true' : 'false') . '"
+//								data-measurements-all-required="' . (($measurements_form_enabled && WE_LS_MEASUREMENTS_MANDATORY) ? 'true' : 'false') . '"
+//								data-is-target-form="' . (($target_form) ? 'true' : 'false') . '"
+//								data-metric-unit="' . ws_ls_get_chosen_weight_unit_as_string() . '">
+//
+//
+//                                <input type="hidden" value="' . (($target_form) ? 'true' : 'false') . '" id="ws_ls_is_target" name="ws_ls_is_target" />
+//                                <input type="hidden" value="true" id="ws_ls_is_weight_form" name="ws_ls_is_weight_form" />
+//                                <input type="hidden" value="' . esc_attr($user_id) . '" id="ws_ls_user_id" name="ws_ls_user_id" />
+//                                <input type="hidden" value="' . wp_hash($user_id) . '" id="ws_ls_security" name="ws_ls_security" />';
+
+		$html_output .= sprintf('
+								<form action="%1$s" method="post" class="we-ls-weight-form we-ls-weight-form-validate ws_ls_display_form%2%s" id="%3$s"
+								data-measurements-enabled="%4$s"
+								data-measurements-all-required="%5$s"
+								data-is-target-form="%6$s"
+								data-metric-unit="%7$s"
+								%11$s
+								>
+                             	<input type="hidden" value="%8$s" id="ws_ls_is_target" name="ws_ls_is_target" />
                                 <input type="hidden" value="true" id="ws_ls_is_weight_form" name="ws_ls_is_weight_form" />
-                                <input type="hidden" value="' . esc_attr($user_id) . '" id="ws_ls_user_id" name="ws_ls_user_id" />
-                                <input type="hidden" value="' . wp_hash($user_id) . '" id="ws_ls_security" name="ws_ls_security" />';
+                                <input type="hidden" value="%9$s" id="ws_ls_user_id" name="ws_ls_user_id" />
+                                <input type="hidden" value="%10$s" id="ws_ls_security" name="ws_ls_security" />',
+								get_permalink(),
+								(($class_name) ? ' ' . $class_name : ''),
+								$form_id,
+								(($measurements_form_enabled) ? 'true' : 'false'),
+								(($measurements_form_enabled && WE_LS_MEASUREMENTS_MANDATORY) ? 'true' : 'false'),
+								(($target_form) ? 'true' : 'false'),
+								ws_ls_get_chosen_weight_unit_as_string(),
+								(($target_form) ? 'true' : 'false'),
+								esc_attr($user_id),
+								wp_hash($user_id),
+								( false === $target_form && true === WE_LS_PHOTOS_ENABLED) ? ' enctype="multipart/form-data"' : ''
+		);
 
 		// Do we have data? If so, embed existing row ID
 		if(!empty($existing_data['db_row_id']) && is_numeric($existing_data['db_row_id'])) {
@@ -361,7 +388,14 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 		$html_output .= '</div>';
 
 		// Display notes section if not target form
-		if (!$target_form) {
+		if (false === $target_form) {
+
+			// Are photos enabled?
+			if ( true === WE_LS_PHOTOS_ENABLED ) {
+
+				$html_output .= '<input type="file" name="file1">';
+			}
+
 			$html_output .= '<div id="comment-textarea">
 												<textarea name="we-ls-notes" tabindex="' . ws_ls_get_next_tab_index() . '" id="we-ls-notes" cols="39" rows="4" tabindex="4" class="textarea-comment" placeholder="' . __('Notes', WE_LS_SLUG) . '">' . esc_textarea(ws_ls_get_existing_value($existing_data, 'notes', false)) . '</textarea>
 											</div>';
@@ -382,12 +416,17 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 				<div>
 					<input name="submit_button" type="submit" id="we-ls-submit"  tabindex="' . ws_ls_get_next_tab_index() . '" value="' . $button_text . '" class="comment-submit button" />';
 
-                //If a target form, display "Clear Target" button
-                if ($target_form && false === is_admin()){
-                    $html_output .= '&nbsp;<button name="ws-ls-clear-target" id="ws-ls-clear-target" type="button" tabindex="' . ws_ls_get_next_tab_index() . '" class="ws-ls-clear-target comment-submit button" >' . __('Clear Target', WE_LS_SLUG) . '</button>';
-                }
+					// If we want a cancel button then add one
+					if ( false === empty( $cancel_button ) && false === $target_form && false === empty( $redirect_url ) ) {
+						$html_output .= '&nbsp;<button class="ws-ls-cancel-form" type="button" tabindex="' . ws_ls_get_next_tab_index() . '" class="ws-ls-cancel-form button" data-form-id="' . esc_attr($form_id) . '" >' . __('Cancel', WE_LS_SLUG) . '</button>';
+					}
 
-                $html_output .= '</div>
+					//If a target form, display "Clear Target" button
+					if ($target_form && false === is_admin()){
+						$html_output .= '&nbsp;<button name="ws-ls-clear-target" id="ws-ls-clear-target" type="button" tabindex="' . ws_ls_get_next_tab_index() . '" class="ws-ls-clear-target button" >' . __('Clear Target', WE_LS_SLUG) . '</button>';
+					}
+
+               		$html_output .= '</div>
 			</p>
 		</div>
 	</form>';

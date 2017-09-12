@@ -87,20 +87,6 @@ input.ws-ls-valid
     color: green;
 }
 
-.dataTables_filter input
-{
-    width: 100px;
-    padding:0px;
-}
-.dataTables_length
-{
-    margin: 10px
-}
-.dataTables_filter
-{
-    margin: 10px
-}
-
 .ws-ls-table-options img, .ws-ls-edit-row, .ws-ls-delete-row
 {
     width: 15px;
@@ -216,21 +202,6 @@ input.ws-ls-valid
 {
     color: green;
 }
-
-.dataTables_filter input
-{
-    width: 100px;
-    padding:0px;
-}
-.dataTables_length
-{
-    margin: 10px
-}
-.dataTables_filter
-{
-    margin: 10px
-}
-
 .ws-ls-table-options img
 {
     width: 15px;
@@ -299,4 +270,17 @@ input.ws-ls-valid
 }
 .ws-ls-add-weight-button {
     margin: 10px 0px 20px 0px;
+}
+.ws-ls-loss, .ws-ls-good, .ws-ls-healthy {
+    color: #008000;
+}
+.ws-ls-gain, .ws-ls-bad, .ws-ls-heavilyoverweight {
+    color: #ffA500;
+}
+
+.ws-ls-user-data-ajax th, td {
+    font-size: 13px;
+}
+.ws-ls-blockquote p {
+    margin: 0px;
 }

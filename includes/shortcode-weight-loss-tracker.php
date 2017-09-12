@@ -34,10 +34,6 @@
 
             $html_output = '';
 
-			if (false === is_admin()) {
-				$html_output = ws_ls_display_data_saved_message();
-			}
-
 			// If a form was previously submitted then display resulting message!
 			if (!empty($save_response) && $save_response['form_number'] == false){
 				$html_output .= $save_response['message'];
@@ -134,7 +130,7 @@
 				}
 
 				$html_output .= ws_ls_display_weight_form(false, false,	false, false, false, false,
-					false, false, $redirect_url, $data);
+					false, false, $redirect_url, $data, true);
 			} else {
 
 				// Display input form in add mode
