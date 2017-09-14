@@ -136,6 +136,8 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 //TODO: Footable locale
 //TODO: mininmise: data.footable.js / ws-ls.js / ws-ls.css
+//TODO: Check widgets, etc that use the table shortcode to ensure edit buttons are hidden
+//TODO: When deleting a weight entry, check for a photo anre delete that
 
     * Improvement: Removed DataTables.js and replaced with Footable.js for advanced data tables. This keeps the front end consitent with admin area.
     * Improvement: [wlt-table] argument //TODO

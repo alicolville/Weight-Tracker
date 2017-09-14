@@ -281,159 +281,183 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 		$html_output .= $save_response['message'];
 	}
 
-	//TODO
-//	$html_output .= '
-//	<form action="' .  get_permalink() . '" method="post" class="we-ls-weight-form we-ls-weight-form-validate' . $form_class . (($class_name) ? ' ' . $class_name : '') . '" id="' . $form_id . '"
-//								data-measurements-enabled="' . (($measurements_form_enabled) ? 'true' : 'false') . '"
-//								data-measurements-all-required="' . (($measurements_form_enabled && WE_LS_MEASUREMENTS_MANDATORY) ? 'true' : 'false') . '"
-//								data-is-target-form="' . (($target_form) ? 'true' : 'false') . '"
-//								data-metric-unit="' . ws_ls_get_chosen_weight_unit_as_string() . '">
-//
-//
-//                                <input type="hidden" value="' . (($target_form) ? 'true' : 'false') . '" id="ws_ls_is_target" name="ws_ls_is_target" />
-//                                <input type="hidden" value="true" id="ws_ls_is_weight_form" name="ws_ls_is_weight_form" />
-//                                <input type="hidden" value="' . esc_attr($user_id) . '" id="ws_ls_user_id" name="ws_ls_user_id" />
-//                                <input type="hidden" value="' . wp_hash($user_id) . '" id="ws_ls_security" name="ws_ls_security" />';
+	$html_output .= sprintf('
+							<form action="%1$s" method="post" class="we-ls-weight-form we-ls-weight-form-validate ws_ls_display_form%2%s" id="%3$s"
+							data-measurements-enabled="%4$s"
+							data-measurements-all-required="%5$s"
+							data-is-target-form="%6$s"
+							data-metric-unit="%7$s"
+							%11$s
+							>
+							<input type="hidden" value="%8$s" id="ws_ls_is_target" name="ws_ls_is_target" />
+							<input type="hidden" value="true" id="ws_ls_is_weight_form" name="ws_ls_is_weight_form" />
+							<input type="hidden" value="%9$s" id="ws_ls_user_id" name="ws_ls_user_id" />
+							<input type="hidden" value="%10$s" id="ws_ls_security" name="ws_ls_security" />',
+							get_permalink(),
+							(($class_name) ? ' ' . $class_name : ''),
+							$form_id,
+							(($measurements_form_enabled) ? 'true' : 'false'),
+							(($measurements_form_enabled && WE_LS_MEASUREMENTS_MANDATORY) ? 'true' : 'false'),
+							(($target_form) ? 'true' : 'false'),
+							ws_ls_get_chosen_weight_unit_as_string(),
+							(($target_form) ? 'true' : 'false'),
+							esc_attr($user_id),
+							wp_hash($user_id),
+							( false === $target_form && true === WE_LS_PHOTOS_ENABLED) ? ' enctype="multipart/form-data"' : ''
+	);
 
-		$html_output .= sprintf('
-								<form action="%1$s" method="post" class="we-ls-weight-form we-ls-weight-form-validate ws_ls_display_form%2%s" id="%3$s"
-								data-measurements-enabled="%4$s"
-								data-measurements-all-required="%5$s"
-								data-is-target-form="%6$s"
-								data-metric-unit="%7$s"
-								%11$s
-								>
-                             	<input type="hidden" value="%8$s" id="ws_ls_is_target" name="ws_ls_is_target" />
-                                <input type="hidden" value="true" id="ws_ls_is_weight_form" name="ws_ls_is_weight_form" />
-                                <input type="hidden" value="%9$s" id="ws_ls_user_id" name="ws_ls_user_id" />
-                                <input type="hidden" value="%10$s" id="ws_ls_security" name="ws_ls_security" />',
-								get_permalink(),
-								(($class_name) ? ' ' . $class_name : ''),
-								$form_id,
-								(($measurements_form_enabled) ? 'true' : 'false'),
-								(($measurements_form_enabled && WE_LS_MEASUREMENTS_MANDATORY) ? 'true' : 'false'),
-								(($target_form) ? 'true' : 'false'),
-								ws_ls_get_chosen_weight_unit_as_string(),
-								(($target_form) ? 'true' : 'false'),
-								esc_attr($user_id),
-								wp_hash($user_id),
-								( false === $target_form && true === WE_LS_PHOTOS_ENABLED) ? ' enctype="multipart/form-data"' : ''
-		);
+	// Do we have data? If so, embed existing row ID
+	if(!empty($existing_data['db_row_id']) && is_numeric($existing_data['db_row_id'])) {
+		$html_output .= '<input type="hidden" value="' . esc_attr($existing_data['db_row_id']) . '" id="db_row_id" name="db_row_id" />';
+	}
 
-		// Do we have data? If so, embed existing row ID
-		if(!empty($existing_data['db_row_id']) && is_numeric($existing_data['db_row_id'])) {
-			$html_output .= '<input type="hidden" value="' . esc_attr($existing_data['db_row_id']) . '" id="db_row_id" name="db_row_id" />';
-		}
+	// Redirect form afterwards?
+	if($redirect_url) {
+		$html_output .= '<input type="hidden" value="' . esc_url($redirect_url) . '" id="ws_redirect" name="ws_redirect" />';
+	}
 
-	    // Redirect form afterwards?
-        if($redirect_url) {
-            $html_output .= '<input type="hidden" value="' . esc_url($redirect_url) . '" id="ws_redirect" name="ws_redirect" />';
-        }
+	if($form_number){
+			$html_output .= '	<input type="hidden" value="' . $form_number . '" id="ws_ls_form_number" name="ws_ls_form_number" />';
+	}
 
-		if($form_number){
-				$html_output .= '	<input type="hidden" value="' . $form_number . '" id="ws_ls_form_number" name="ws_ls_form_number" />';
-		}
-
-		$html_output .= '<div class="ws-ls-inner-form comment-input">
-			<div class="ws-ls-error-summary">
-				<ul></ul>
-			</div>
-		';
-
-			// If not a target form include date
-			if (!$target_form) {
-
-				$default_date = date("d/m/Y");
-
-				// Do we have an existing value?
-				if($existing_date = ws_ls_get_existing_value($existing_data, 'date-display')) {
-					$default_date = $existing_date;
-				} else if (ws_ls_get_config('WE_LS_US_DATE')) { // Override if US
-					$default_date = date("m/d/Y");
-				}
-
-				if(false == $force_to_todays_date){
-					$html_output .= '<input type="text" name="we-ls-date" tabindex="' . ws_ls_get_next_tab_index() . '" id="we-ls-date-' . $form_id . '" value="' . $default_date . '" placeholder="' . $default_date . '" size="22" class="we-ls-datepicker">';
-				} else {
-					$html_output .= '<input type="hidden" name="we-ls-date" value="' . $default_date . '">';
-				}
-
-			} else {
-
-				$target_weight = ws_ls_get_user_target($user_id);
-
-				if ($target_weight['display'] != '') {
-
-                    $pre_text = (false === is_admin()) ? __('Your target weight is', WE_LS_SLUG) : __('The user\'s target weight is currently', WE_LS_SLUG);
-
-					$html_output .= '<p>' . $pre_text . ' <strong>' . $target_weight['display'] . '</strong>.</p>';
-				}
-			}
-
-			// Display the relevant weight fields depending on weight unit selected
-			if(ws_ls_get_config('WE_LS_IMPERIAL_WEIGHTS'))
-			{
-				if (ws_ls_get_config('WE_LS_DATA_UNITS') == 'stones_pounds') {
-					$html_output .= '<input  type="number"  tabindex="' . ws_ls_get_next_tab_index() . '" step="any" min="0" name="we-ls-weight-stones" id="we-ls-weight-stones" value="' . ws_ls_get_existing_value($existing_data, 'stones') . '" placeholder="' . __('Stones', WE_LS_SLUG) . '" size="11" >';
-					$html_output .= '<input  type="number" tabindex="' . ws_ls_get_next_tab_index() . '" step="any" min="0" max="13" name="we-ls-weight-pounds" id="we-ls-weight-pounds" value="' . ws_ls_get_existing_value($existing_data, 'pounds') . '" placeholder="' . __('Pounds', WE_LS_SLUG) . '" size="11"  >';
-				}
-				else {
-					$html_output .= '<input  type="number" tabindex="' . ws_ls_get_next_tab_index() . '" step="any" min="1" name="we-ls-weight-pounds" id="we-ls-weight-pounds" value="' . ws_ls_get_existing_value($existing_data, 'only_pounds') . '" placeholder="' . __('Pounds', WE_LS_SLUG) . '" size="11"  >';
-				}
-			}
-			else {
-				$html_output .= '<input  type="number" tabindex="' . ws_ls_get_next_tab_index() . '" step="any" min="1" name="we-ls-weight-kg" id="we-ls-weight-kg" value="' . ws_ls_get_existing_value($existing_data, 'kg') . '" placeholder="' . __('Weight', WE_LS_SLUG) . ' (' . __('kg', WE_LS_SLUG) . ')" size="22" >';
-			}
-
-		$html_output .= '</div>';
-
-		// Display notes section if not target form
-		if (false === $target_form) {
-
-			// Are photos enabled?
-			if ( true === WE_LS_PHOTOS_ENABLED ) {
-
-				$html_output .= '<input type="file" name="file1">';
-			}
-
-			$html_output .= '<div id="comment-textarea">
-												<textarea name="we-ls-notes" tabindex="' . ws_ls_get_next_tab_index() . '" id="we-ls-notes" cols="39" rows="4" tabindex="4" class="textarea-comment" placeholder="' . __('Notes', WE_LS_SLUG) . '">' . esc_textarea(ws_ls_get_existing_value($existing_data, 'notes', false)) . '</textarea>
-											</div>';
-		}
-
-	    // Include
-	    if(!$target_form && $measurements_form_enabled) {
-	        $html_output .= sprintf('<br /><h3 class="ws_ls_title">%s (%s)</h3>',
-											( false === empty($existing_data) )	? __('Edit measurements', WE_LS_SLUG) : __('Add measurements', WE_LS_SLUG),
-									(WE_LS_MEASUREMENTS_MANDATORY) ? __('Mandatory', WE_LS_SLUG) : __('Optional', WE_LS_SLUG));
-	        $html_output .= ws_ls_load_measurement_form($existing_data);
-	    }
-
-		$button_text = ($target_form) ?  __('Set Target', WE_LS_SLUG) :  __('Save Entry', WE_LS_SLUG);
-
-			$html_output .= '<div id="comment-submit-container">
-			<p>
-				<div>
-					<input name="submit_button" type="submit" id="we-ls-submit"  tabindex="' . ws_ls_get_next_tab_index() . '" value="' . $button_text . '" class="comment-submit button" />';
-
-					// If we want a cancel button then add one
-					if ( false === empty( $cancel_button ) && false === $target_form && false === empty( $redirect_url ) ) {
-						$html_output .= '&nbsp;<button class="ws-ls-cancel-form" type="button" tabindex="' . ws_ls_get_next_tab_index() . '" class="ws-ls-cancel-form button" data-form-id="' . esc_attr($form_id) . '" >' . __('Cancel', WE_LS_SLUG) . '</button>';
-					}
-
-					//If a target form, display "Clear Target" button
-					if ($target_form && false === is_admin()){
-						$html_output .= '&nbsp;<button name="ws-ls-clear-target" id="ws-ls-clear-target" type="button" tabindex="' . ws_ls_get_next_tab_index() . '" class="ws-ls-clear-target button" >' . __('Clear Target', WE_LS_SLUG) . '</button>';
-					}
-
-               		$html_output .= '</div>
-			</p>
+	$html_output .= '<div class="ws-ls-inner-form comment-input">
+		<div class="ws-ls-error-summary">
+			<ul></ul>
 		</div>
+	';
+
+	// If not a target form include date
+	if (!$target_form) {
+
+		$default_date = date("d/m/Y");
+
+		// Do we have an existing value?
+		if($existing_date = ws_ls_get_existing_value($existing_data, 'date-display')) {
+			$default_date = $existing_date;
+		} else if (ws_ls_get_config('WE_LS_US_DATE')) { // Override if US
+			$default_date = date("m/d/Y");
+		}
+
+		if(false == $force_to_todays_date){
+			$html_output .= '<input type="text" name="we-ls-date" tabindex="' . ws_ls_get_next_tab_index() . '" id="we-ls-date-' . $form_id . '" value="' . $default_date . '" placeholder="' . $default_date . '" size="22" class="we-ls-datepicker">';
+		} else {
+			$html_output .= '<input type="hidden" name="we-ls-date" value="' . $default_date . '">';
+		}
+
+	} else {
+
+		$target_weight = ws_ls_get_user_target($user_id);
+
+		if ($target_weight['display'] != '') {
+
+			$pre_text = (false === is_admin()) ? __('Your target weight is', WE_LS_SLUG) : __('The user\'s target weight is currently', WE_LS_SLUG);
+
+			$html_output .= '<p>' . $pre_text . ' <strong>' . $target_weight['display'] . '</strong>.</p>';
+		}
+	}
+
+	// Display the relevant weight fields depending on weight unit selected
+	if(ws_ls_get_config('WE_LS_IMPERIAL_WEIGHTS'))
+	{
+		if (ws_ls_get_config('WE_LS_DATA_UNITS') == 'stones_pounds') {
+			$html_output .= '<input  type="number"  tabindex="' . ws_ls_get_next_tab_index() . '" step="any" min="0" name="we-ls-weight-stones" id="we-ls-weight-stones" value="' . ws_ls_get_existing_value($existing_data, 'stones') . '" placeholder="' . __('Stones', WE_LS_SLUG) . '" size="11" >';
+			$html_output .= '<input  type="number" tabindex="' . ws_ls_get_next_tab_index() . '" step="any" min="0" max="13" name="we-ls-weight-pounds" id="we-ls-weight-pounds" value="' . ws_ls_get_existing_value($existing_data, 'pounds') . '" placeholder="' . __('Pounds', WE_LS_SLUG) . '" size="11"  >';
+		}
+		else {
+			$html_output .= '<input  type="number" tabindex="' . ws_ls_get_next_tab_index() . '" step="any" min="1" name="we-ls-weight-pounds" id="we-ls-weight-pounds" value="' . ws_ls_get_existing_value($existing_data, 'only_pounds') . '" placeholder="' . __('Pounds', WE_LS_SLUG) . '" size="11"  >';
+		}
+	}
+	else {
+		$html_output .= '<input  type="number" tabindex="' . ws_ls_get_next_tab_index() . '" step="any" min="1" name="we-ls-weight-kg" id="we-ls-weight-kg" value="' . ws_ls_get_existing_value($existing_data, 'kg') . '" placeholder="' . __('Weight', WE_LS_SLUG) . ' (' . __('kg', WE_LS_SLUG) . ')" size="22" >';
+	}
+
+	$html_output .= '</div>';
+
+	// Display notes section if not target form
+	if (false === $target_form) {
+
+		$html_output .= '<div id="comment-textarea">
+							<textarea name="we-ls-notes" tabindex="' . ws_ls_get_next_tab_index() . '" id="we-ls-notes" cols="39" rows="4" tabindex="4" class="textarea-comment" placeholder="' . __('Notes', WE_LS_SLUG) . '">' . esc_textarea(ws_ls_get_existing_value($existing_data, 'notes', false)) . '</textarea>
+						</div>';
+
+		// Are photos enabled?
+		if ( true === WE_LS_PHOTOS_ENABLED ) {
+
+			// Do we have an existing photo?
+			if ( false === empty($existing_data['photo_id']) ) {
+
+				$attachment_id = intval($existing_data['photo_id']);
+
+				$thumbnail = wp_get_attachment_image_src($attachment_id, array('200'));
+				$full_url = wp_get_attachment_url($attachment_id);
+
+				if ( false === empty($thumbnail) ) {
+					$html_output .= sprintf('<div class="ws-ls-photo-current">
+												<h4>%8$s</h4>
+												<a href="%1$s" target="_blank"><img src="%2$s" alt="%3$s" width="%5$s" height="%6$s" /></a>
+												<input type="hidden" name="ws-ls-photo-previous" value="%4$s" />
+											</div>
+											<div class="ws-ls-clear-existing-photo">
+												<input type="checkbox" name="ws-ls-photo-delete" id="ws-ls-photo-delete" value="y" />
+												<label for="ws-ls-photo-delete">%7$s</label>
+											</div>',
+						esc_url($full_url),
+						esc_url($thumbnail[0]),
+						__('Existing photo for this date', WE_LS_SLUG),
+						intval($attachment_id),
+						intval($thumbnail[1]),
+						intval($thumbnail[2]),
+						__('Delete existing photo', WE_LS_SLUG),
+						__('Existing photo', WE_LS_SLUG)
+					);
+				}
+			}
+
+			// Show Add button
+			$html_output .= sprintf('<div class="ws-ls-photo-select">
+												<h4>%2$s</h4>
+												<input type="file" name="%1$s" id="%1$s" tabindex="%3$s" class="ws-ls-hide ws-ls-input-file" />
+												<label for="%1$s">
+													<svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/></svg> 
+													<span>%4$s</span>
+												</label>
+											</div>',
+				'ws-ls-photo',
+				(false === empty($thumbnail)) ? __('Replace photo', WE_LS_SLUG) : __('Add a photo', WE_LS_SLUG),
+				ws_ls_get_next_tab_index(),
+				__('Select a photo', WE_LS_SLUG)
+			);
+		}
+	}
+
+	// Include
+	if(!$target_form && $measurements_form_enabled) {
+		$html_output .= sprintf('<br /><h3 class="ws_ls_title">%s (%s)</h3>',
+										( false === empty($existing_data) )	? __('Edit measurements', WE_LS_SLUG) : __('Add measurements', WE_LS_SLUG),
+								(WE_LS_MEASUREMENTS_MANDATORY) ? __('Mandatory', WE_LS_SLUG) : __('Optional', WE_LS_SLUG));
+		$html_output .= ws_ls_load_measurement_form($existing_data);
+	}
+
+	$button_text = ($target_form) ?  __('Set Target', WE_LS_SLUG) :  __('Save Entry', WE_LS_SLUG);
+
+	$html_output .= '<div class="ws-ls-form-buttons">
+						<div>
+							<input name="submit_button" type="submit" id="we-ls-submit"  tabindex="' . ws_ls_get_next_tab_index() . '" value="' . $button_text . '" class="comment-submit button" />';
+
+							// If we want a cancel button then add one
+							if ( false === empty( $cancel_button ) && false === $target_form && false === empty( $redirect_url ) ) {
+								$html_output .= '&nbsp;<button class="ws-ls-cancel-form" type="button" tabindex="' . ws_ls_get_next_tab_index() . '" class="ws-ls-cancel-form button" data-form-id="' . esc_attr($form_id) . '" >' . __('Cancel', WE_LS_SLUG) . '</button>';
+							}
+
+							//If a target form, display "Clear Target" button
+							if ($target_form && false === is_admin()){
+								$html_output .= '&nbsp;<button name="ws-ls-clear-target" id="ws-ls-clear-target" type="button" tabindex="' . ws_ls_get_next_tab_index() . '" class="ws-ls-clear-target button" >' . __('Clear Target', WE_LS_SLUG) . '</button>';
+							}
+	$html_output .= '	</div>
+					</div>
 	</form>';
 
-
 	return $html_output;
-
 }
 
 function ws_ls_get_existing_value($data, $key, $esc_attr = true) {
@@ -467,7 +491,12 @@ function ws_ls_capture_form_validate_and_save($user_id = false)
     }
 
 	$allowed_post_keys = array('ws_ls_is_target', 'we-ls-date', 'we-ls-weight-pounds',
-															'we-ls-weight-stones', 'we-ls-weight-kg', 'we-ls-notes');
+								'we-ls-weight-stones', 'we-ls-weight-kg', 'we-ls-notes' );
+
+    // If enabled, look for other photo related fields
+    if ( WE_LS_PHOTOS_ENABLED ) {
+		$allowed_post_keys = array_merge($allowed_post_keys, ['ws-ls-photo', 'ws-ls-photo-previous', 'ws-ls-photo-delete']);
+	}
 
 	$weight_keys = false;
 
@@ -527,6 +556,85 @@ function ws_ls_capture_form_validate_and_save($user_id = false)
 
 	// Do we have a row ID embedded in the form (i.e. are we in admin and editing an entry)?
 	$existing_db_id = (false === empty($_POST['db_row_id'])) ? intval($_POST['db_row_id']) : false;
+
+	// ---------------------------------------------
+	// Process Photos
+	// ---------------------------------------------
+	if (true === WE_LS_PHOTOS_ENABLED ) {
+
+		$photo_id_to_delete = false;
+
+		// Got a previous photo to consider?
+		if (false === empty($form_values['ws-ls-photo-previous']) && true === is_numeric($form_values['ws-ls-photo-previous'])) {
+			// User check "Delete this photo" box?
+			if ( false === empty($form_values['ws-ls-photo-delete']) && 'y' === $form_values['ws-ls-photo-delete']) {
+				$photo_id_to_delete = intval($form_values['ws-ls-photo-previous']);
+				$weight_object['photo_id'] = NULL;
+			} else { // Keep track of an existing photo
+				$weight_object['photo_id'] = intval($form_values['ws-ls-photo-previous']);
+			}
+		}
+
+		// Uploads
+		if (false === empty($_FILES['ws-ls-photo']) &&
+			$_FILES['ws-ls-photo']['size'] > 0 ) {
+
+			if ( false === function_exists( 'wp_handle_upload' ) ) {
+				require_once( ABSPATH . 'wp-admin/includes/file.php' );
+			}
+
+			$photo_uploaded = $_FILES['ws-ls-photo'];
+
+			// Get the type of the uploaded file. This is returned as "type/extension"
+			$arr_file_type = wp_check_filetype(basename($photo_uploaded['name']));
+			$uploaded_file_type = $arr_file_type['type'];
+
+			// Set an array containing a list of acceptable formats
+			$allowed_file_types = array('image/jpg','image/jpeg','image/gif','image/png');
+
+			// If the uploaded file is the right format. If it is not, do nothing
+			if( true === in_array($uploaded_file_type, $allowed_file_types) ) {
+
+				// Handle the upload using WP's wp_handle_upload function. Takes the posted file and an options array
+				$uploaded_file = wp_handle_upload($photo_uploaded, ['test_form' => false]);
+
+				// If the wp_handle_upload call returned a local path for the image
+				if(isset($uploaded_file['file'])) {
+
+					// The wp_insert_attachment function needs the literal system path, which was passed back from wp_handle_upload
+					$file_name_and_location = $uploaded_file['file'];
+
+					$user_data = get_userdata( $user_id );
+
+					// Set up options array to add this file as an attachment
+					$attachment = array(
+						'post_mime_type' => $uploaded_file_type,
+						'post_title' => ( $user_data ) ? $user_data->user_nicename . ' (' . $weight_object['date-display'] . ')' : $weight_object['date-display'],
+						'post_content' => ( $user_data ) ? __('The user ', WE_LS_SLUG) . $user_data->user_nicename . ', ' . __('uploaded this photo of them for their entry on the', WE_LS_SLUG) . ' ' . $weight_object['date-display'] : '',
+						'post_status' => 'inherit'
+					);
+
+					// Run the wp_insert_attachment function. This adds the file to the media library and generates the thumbnails.
+					$attach_id = wp_insert_attachment( $attachment, $file_name_and_location );
+					require_once(ABSPATH . "wp-admin" . '/includes/image.php');
+					$attach_data = wp_generate_attachment_metadata( $attach_id, $file_name_and_location );
+					wp_update_attachment_metadata($attach_id,  $attach_data);
+
+					$weight_object['photo_id'] = $attach_id;
+
+					// If we have a previous attachment, then delete
+					if ( false === empty($form_values['ws-ls-photo-previous']) ) {
+						$photo_id_to_delete = intval($form_values['ws-ls-photo-previous']);
+					}
+				}
+			}
+		}
+	}
+
+	// Deletion file
+	if ( false === empty($photo_id_to_delete) && is_numeric($photo_id_to_delete) ) {
+		wp_delete_attachment($photo_id_to_delete);
+	}
 
 	$result = ws_ls_save_data($user_id, $weight_object, $is_target_form, $existing_db_id);
 

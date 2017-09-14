@@ -132,6 +132,22 @@ function ws_ls_data_table_get_rows($user_id = false, $max_entries = false, $smal
 			} else if ('gainloss' === $column_name) {
 				$row[$column_name]['value'] = $gain_loss;
 				$row[$column_name]['options']['classes'] = 'ws-ls-' . $gain_class; // Can use this method for icons
+			} else if (WE_LS_PHOTOS_ENABLED && 'photo' === $column_name) {
+				if ( false === empty($data['photo_id']) ) {
+
+					$thumbnail = wp_get_attachment_image_src($data['photo_id']);
+					$full_url = wp_get_attachment_url($data['photo_id']);
+
+					$row[$column_name] = sprintf('<a href="%1$s" target="_blank"><img src="%2$s" alt="" width="%3$s" height="%4$s" /></a>',
+						esc_url($full_url),
+						esc_url($thumbnail[0]),
+						intval($thumbnail[1]),
+						intval($thumbnail[2])
+					);
+
+				} else {
+					$row[$column_name] = '';
+				}
 			} else if ('bmi' === $column_name) {
                 $row[$column_name]['value'] =  ws_ls_get_bmi_for_table(ws_ls_get_user_height($data['user_id']), $data['kg'], __('No height', WE_LS_SLUG)) ;
                 $row[$column_name]['options']['classes'] = 'ws-ls-' . sanitize_key($row[$column_name]['value']); // Can use this method for icons
@@ -193,6 +209,11 @@ function ws_ls_data_table_get_columns($smaller_width = false, $front_end = false
 	// Add BMI?
 	if(WE_LS_DISPLAY_BMI_IN_TABLES) {
 		array_push($columns, array('name' => 'bmi', 'title' => ws_ls_tooltip('BMI', __('Body Mass Index', WE_LS_SLUG)), 'breakpoints'=> '', 'type' => 'text'));
+	}
+
+	// Display photos?
+	if (WE_LS_PHOTOS_ENABLED) {
+		array_push($columns, array('name' => 'photo', 'title' => __('Photo', WE_LS_SLUG), 'breakpoints'=> (($smaller_width) ? 'lg' : 'md'), 'type' => 'text'));
 	}
 
 	// Add measurements?

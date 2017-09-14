@@ -12,7 +12,7 @@ function ws_ls_user_data($filters = false)
 
     $table_name = $wpdb->prefix . WE_LS_TABLENAME;
     $user_table_name = $wpdb->prefix . 'users';
-    $sql = 'SELECT ' . $table_name . '.id, weight_date, weight_weight, weight_stones, weight_pounds, weight_only_pounds, weight_notes, weight_user_id, display_name as user_nicename' . $measurement_columns_sql . ' FROM ' . $table_name
+    $sql = 'SELECT ' . $table_name . '.id, weight_date, weight_weight, weight_stones, weight_pounds, weight_only_pounds, weight_notes, weight_user_id, display_name as user_nicename, photo_id' . $measurement_columns_sql . ' FROM ' . $table_name
                             . ' INNER JOIN ' . $user_table_name . ' on ' . $user_table_name . '.id = ' . $table_name . '.weight_user_id';
 
 	// Limit to a certain user?
@@ -52,17 +52,18 @@ function ws_ls_user_data($filters = false)
 			 }
 		 }
 
-        array_push($weight_data, ws_ls_weight_object($raw_weight_data->weight_user_id,
-                                                      $raw_weight_data->weight_weight,
-                                                      $raw_weight_data->weight_pounds,
-                                                      $raw_weight_data->weight_stones,
-                                                      $raw_weight_data->weight_only_pounds,
-                                                      $raw_weight_data->weight_notes,
-                                                      $raw_weight_data->weight_date,
-                                                      false,
-                                                      $raw_weight_data->id,
-                                                      $raw_weight_data->user_nicename,
-													  $measurements
+        array_push($weight_data, ws_ls_weight_object(	$raw_weight_data->weight_user_id,
+                                                      	$raw_weight_data->weight_weight,
+                                                      	$raw_weight_data->weight_pounds,
+                                                      	$raw_weight_data->weight_stones,
+                                                      	$raw_weight_data->weight_only_pounds,
+                                                      	$raw_weight_data->weight_notes,
+                                                      	$raw_weight_data->weight_date,
+                                                      	false,
+                                                      	$raw_weight_data->id,
+                                                      	$raw_weight_data->user_nicename,
+													  	$measurements,
+														$raw_weight_data->photo_id
                                                     ));
       }
 

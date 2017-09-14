@@ -146,7 +146,8 @@ function ws_ls_get_weight($user_id, $row_id)
                                     false,
                                     $row->id,
 									'',
-									$measurements
+									$measurements,
+									$row->photo_id
                                   );
     }
 
@@ -204,9 +205,10 @@ function ws_ls_save_data($user_id, $weight_object, $is_target_form = fals, $exis
 	$db_fields[$db_prefix . 'weight_pounds'] = $weight_object['pounds'];
 	$db_fields[$db_prefix . 'weight_only_pounds'] = $weight_object['only_pounds'];
 	$db_fields[$db_prefix . 'weight_weight'] = $weight_object['kg'];
+	$db_fields[$db_prefix . 'photo_id'] = $weight_object['photo_id'];
 
 	// Set data types
-	$db_field_types = array('%d','%f', '%f', '%f', '%f');
+	$db_field_types = array('%d','%f', '%f', '%f', '%f', '%d');
 
 	// If Measurements enabled then save measurements too.
 	if (WE_LS_MEASUREMENTS_ENABLED) {

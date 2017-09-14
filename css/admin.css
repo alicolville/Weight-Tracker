@@ -100,3 +100,10 @@
 	font-size:16px !important;
 	text-align:center;
 }
+.ws-ls-photo-current {
+	margin-top: 15px;
+}
+.ws-ls-photo-select {
+	margin-top: 25px;
+	clear: both;
+}
