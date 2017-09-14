@@ -670,5 +670,68 @@ function ws_ls_display_blockquote($text, $class = '', $just_echo = false) {
 }
 
 
+// Calculate max upload size (taken from Drupal)
+function ws_ls_file_upload_max_size() {
+    static $max_size = -1;
 
+    if ($max_size < 0) {
+        // Start with post_max_size.
+        $post_max_size = ws_ls_parse_size(ini_get('post_max_size'));
+        if ($post_max_size > 0) {
+            $max_size = $post_max_size;
+        }
+
+        // If upload_max_size is less, then reduce. Except if upload_max_size is
+        // zero, which indicates no limit.
+        $upload_max = ws_ls_parse_size(ini_get('upload_max_filesize'));
+        if ($upload_max > 0 && $upload_max < $max_size) {
+            $max_size = $upload_max;
+        }
+    }
+    return $max_size;
+}
+
+// Parse size from PHP ini into bytes (taken from Drupal)
+function ws_ls_parse_size($size) {
+    $unit = preg_replace('/[^bkmgtpezy]/i', '', $size); // Remove the non-unit characters from the size.
+    $size = preg_replace('/[^0-9\.]/', '', $size); // Remove the non-numeric characters from the size.
+    if ($unit) {
+        // Find the position of the unit in the ordered string which is the power of magnitude to multiply a kilobyte by.
+        return round($size * pow(1024, stripos('bkmgtpezy', $unit[0])));
+    }
+    else {
+        return round($size);
+    }
+}
+
+// Snippet from PHP Share: http://www.phpshare.org
+function ws_ls_format_bytes_into_readable($bytes) {
+    if ($bytes >= 1073741824) {
+        $bytes = number_format($bytes / 1073741824, 2) . 'Gb';
+    }
+    elseif ($bytes >= 1048576) {
+        $bytes = number_format($bytes / 1048576, 2) . 'Mb';
+    } elseif ($bytes >= 1024) {
+        $bytes = number_format($bytes / 1024, 2) . ' Kb';
+    } elseif ($bytes > 1) {
+        $bytes = $bytes . ' bytes';
+    } elseif ($bytes == 1) {
+        $bytes = $bytes . ' byte';
+    }  else {
+        $bytes = '0 bytes';
+    }
+
+    return $bytes;
+}
+
+/**
+ * Simple function to render max upload size
+ */
+function ws_ls_display_max_upload_size() {
+
+    $max_size = ws_ls_file_upload_max_size();
+
+    return ws_ls_format_bytes_into_readable($max_size);
+
+}
 ?>

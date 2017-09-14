@@ -291,12 +291,18 @@ input.ws-ls-valid
 .ws-ls-photo-current {
     margin-top: 15px;
 }
+.ws-ls-clear-existing-photo {
+    margin-top: 5px;
+}
 .ws-ls-clear-existing-photo label, .ws-ls-clear-existing-photo input{
     float: left;
 }
 .ws-ls-photo-select {
     margin-top: 15px;
     clear: both;
+}
+.ws-ls-photo-select p {
+    margin-bottom: 0px;
 }
 .ws-ls-form-buttons {
     margin-top: 15px;

@@ -134,12 +134,17 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 = 5.2 =
 
+// TODO: Add 50% discount for old members to upgrade to Pro Plus
+//TODO: Update feature lisst in plugin and online
 //TODO: Footable locale
 //TODO: mininmise: data.footable.js / ws-ls.js / ws-ls.css
 //TODO: Check widgets, etc that use the table shortcode to ensure edit buttons are hidden
 //TODO: When deleting a weight entry, check for a photo anre delete that
 
-    * Improvement: Removed DataTables.js and replaced with Footable.js for advanced data tables. This keeps the front end consitent with admin area.
+
+    * [wlt] shortcode has a new argument "hide-photos". If set to true, the photo section of the form will be hidden. Read more: https://weight.yeken.uk/shortcodes/ //TODO: Update docs
+
+    * Improvement: Removed DataTables.js and replaced with Footable.js for advanced data tables. This keeps the front end consistent with admin area.
     * Improvement: [wlt-table] argument //TODO
     * Improvement: [wlt-table] user's now have the option to edit their data with this shortcode (not just delete).
     * Improvement: Tweaked form headers to say "Edit" intead of "Add" when editing an entry.

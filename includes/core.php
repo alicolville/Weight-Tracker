@@ -47,7 +47,7 @@
 			'bezier' => WE_LS_CHART_BEZIER_CURVE,
             'hide_login_message_if_needed' => true,
 			'exclude-measurements' => false,
-			'ignore-login-status' => false
+            'ignore-login-status' => false
 		);
 
         // If we are PRO and the developer has specified options then override the default
@@ -57,7 +57,7 @@
 
 		$measurements_enabled = (false == $chart_config['exclude-measurements'] && WE_LS_MEASUREMENTS_ENABLED && ws_ls_any_active_measurement_fields()) ? true : false;
 
-		// Make sure they are logged in
+        // Make sure they are logged in
         if (false == $chart_config['ignore-login-status'] && !is_user_logged_in())	{
             if (false == $chart_config['hide_login_message_if_needed']) {
                 return '<blockquote class="ws-ls-blockquote"><p>' .	__('You need to be logged in to record your weight.', WE_LS_SLUG) . ' <a href="' . wp_login_url(get_permalink()) . '">' . __('Login now', WE_LS_SLUG) . '</a>.</p></blockquote>';
@@ -183,7 +183,6 @@
 
 		}
 
-
 		// Remove any empty measurements from graph
 		if($measurements_enabled) {
 			foreach ($active_measurment_field_keys as $key) {
@@ -238,11 +237,14 @@
 */
 function ws_ls_display_weight_form($target_form = false, $class_name = false, $user_id = false, $hide_titles = false,
                                         $form_number = false, $force_to_todays_date = false, $hide_login_message_if_needed = true,
-                                            $hide_measurements_form = false, $redirect_url = false, $existing_data = false, $cancel_button = false)
+                                            $hide_measurements_form = false, $redirect_url = false, $existing_data = false, $cancel_button = false,
+                                                $hide_photos_form = false)
 {
     global $save_response;
     $html_output  = '';
+
     $measurements_form_enabled = (WE_LS_MEASUREMENTS_ENABLED && ws_ls_any_active_measurement_fields() && false == $hide_measurements_form && !$target_form) ? true : false;
+    $photo_form_enabled = ( false === $hide_photos_form && true === WE_LS_PHOTOS_ENABLED && false === $target_form);
 
     // Make sure they are logged in
     if (!is_user_logged_in())	{
@@ -303,7 +305,7 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 							(($target_form) ? 'true' : 'false'),
 							esc_attr($user_id),
 							wp_hash($user_id),
-							( false === $target_form && true === WE_LS_PHOTOS_ENABLED) ? ' enctype="multipart/form-data"' : ''
+							( true === $photo_form_enabled) ? ' enctype="multipart/form-data"' : ''
 	);
 
 	// Do we have data? If so, embed existing row ID
@@ -381,15 +383,17 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 						</div>';
 
 		// Are photos enabled?
-		if ( true === WE_LS_PHOTOS_ENABLED ) {
+		if ( true === $photo_form_enabled ) {
+
+            $html_output .= '<h3>' . __('Photos', WE_LS_SLUG) . '</h3>';
 
 			// Do we have an existing photo?
 			if ( false === empty($existing_data['photo_id']) ) {
 
 				$attachment_id = intval($existing_data['photo_id']);
 
-				$thumbnail = wp_get_attachment_image_src($attachment_id, array('200'));
-				$full_url = wp_get_attachment_url($attachment_id);
+				$thumbnail = wp_get_attachment_image_src($attachment_id, array(200, 200));
+              	$full_url = wp_get_attachment_url($attachment_id);
 
 				if ( false === empty($thumbnail) ) {
 					$html_output .= sprintf('<div class="ws-ls-photo-current">
@@ -421,18 +425,20 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 													<svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/></svg> 
 													<span>%4$s</span>
 												</label>
+												<p><small>%5$s</small></p>
 											</div>',
 				'ws-ls-photo',
 				(false === empty($thumbnail)) ? __('Replace photo', WE_LS_SLUG) : __('Add a photo', WE_LS_SLUG),
 				ws_ls_get_next_tab_index(),
-				__('Select a photo', WE_LS_SLUG)
+				__('Select a photo', WE_LS_SLUG),
+                __('Photos must be under', WE_LS_SLUG) . ' ' . ws_ls_display_max_upload_size() . ' ' . __('or they will fail to upload.', WE_LS_SLUG)
 			);
 		}
 	}
 
 	// Include
 	if(!$target_form && $measurements_form_enabled) {
-		$html_output .= sprintf('<br /><h3 class="ws_ls_title">%s (%s)</h3>',
+		$html_output .= sprintf('<h3 class="ws_ls_title">%s (%s)</h3>',
 										( false === empty($existing_data) )	? __('Edit measurements', WE_LS_SLUG) : __('Add measurements', WE_LS_SLUG),
 								(WE_LS_MEASUREMENTS_MANDATORY) ? __('Mandatory', WE_LS_SLUG) : __('Optional', WE_LS_SLUG));
 		$html_output .= ws_ls_load_measurement_form($existing_data);

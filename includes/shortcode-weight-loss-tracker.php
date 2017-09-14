@@ -20,7 +20,8 @@
 				'hide-first-target-form' => false,			// Hide first Target form
 				'hide-second-target-form' => false,			// Hide second Target form
 				'show-add-button' => false,					// Display a "Add weight" button above the chart.
-                'allow-delete-data' => true
+                'allow-delete-data' => true,                // Show "Delete your data" section
+                'hide-photos' => false                      // Hide photos part of form
                ), $user_defined_arguments );
 
 			// Validate arguments
@@ -29,6 +30,7 @@
 			$shortcode_arguments['show-add-button'] = ws_ls_force_bool_argument($shortcode_arguments['show-add-button']);
 			$shortcode_arguments['min-chart-points'] = ws_ls_force_numeric_argument($shortcode_arguments['min-chart-points'], 2);
             $shortcode_arguments['allow-delete-data'] = ws_ls_force_bool_argument($shortcode_arguments['allow-delete-data']);
+            $shortcode_arguments['hide-photos'] = ws_ls_force_bool_argument($shortcode_arguments['hide-photos']);
 
             $user_id = get_current_user_id();
 
@@ -112,7 +114,6 @@
 				$html_output .= '<a name="add-weight"></a>';
 			}
 
-
 			$entry_id = ws_ls_querystring_value('ws-edit-entry', true);
 
 			// Are we in front end and editing enabled, and of course we want to edit, then do so!
@@ -130,14 +131,12 @@
 				}
 
 				$html_output .= ws_ls_display_weight_form(false, false,	false, false, false, false,
-					false, false, $redirect_url, $data, true);
+					false, false, $redirect_url, $data, true, $shortcode_arguments['hide-photos']);
 			} else {
 
 				// Display input form in add mode
-				$html_output .= ws_ls_display_weight_form(false, 'ws-ls-main-weight-form', false, false);
-
+				$html_output .= ws_ls_display_weight_form(false, 'ws-ls-main-weight-form', false, false, false, false, true, false, false, false, false, $shortcode_arguments['hide-photos']);
 			}
-
 
 			// Close first tab
 			$html_output .= ws_ls_end_tab();
