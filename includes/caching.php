@@ -3,6 +3,70 @@ defined('ABSPATH') or die("Jog on!");
 
 /* All caching related logic here! */
 
+/**
+ * User caching. From now on, store an array for each user in cache. Each caache key can then be stored in an array element.
+ * To remove all use cache, just need to delete the cache key.
+ *
+ * @param $user_id
+ * @param $key
+ * @return null
+ */
+function ws_ls_cache_user_get($user_id, $key) {
+
+	$user_cache = ws_ls_get_cache($user_id);
+
+	if ( true === is_array($user_cache) && true === isset($user_cache[$key]) ) {
+		return $user_cache[$key];
+	}
+
+	return NULL;
+}
+
+function ws_ls_cache_user_get_all($user_id) {
+
+	$user_cache = ws_ls_get_cache($user_id);
+
+	if ( true === is_array($user_cache)) {
+		return $user_cache;
+	}
+
+	return NULL;
+}
+
+function ws_ls_cache_user_set($user_id, $key, $value) {
+
+	$user_cache = ws_ls_get_cache($user_id);
+
+	// Empty cache? Create array
+	if ( false === is_array($user_cache)) {
+		$user_cache = [];
+	}
+
+	if ( false === empty($key) && true === is_numeric($user_id) ) {
+
+		$user_cache[$key] = $value;
+
+		ws_ls_set_cache($user_id, $user_cache);
+
+		return true;
+	}
+
+	return false;
+}
+
+function ws_ls_cache_user_delete($user_id) {
+
+	if( true === is_numeric($user_id) ) {
+		ws_ls_delete_cache($user_id);
+	}
+}
+
+
+// ----------------------------------------------------------------
+// Older caching (replace with above)
+// ----------------------------------------------------------------
+
+
 function ws_ls_get_cache($key) {
 
     if(WE_LS_CACHE_ENABLED) {
@@ -69,12 +133,16 @@ function ws_ls_delete_cache_for_given_user($user_id = false)
                             $user_id . '-' . WE_LS_CACHE_KEY_USER_PREFERENCE . '-dob',
 							$user_id . '-' . WE_LS_CACHE_KEY_BMR,
 							$user_id . '-' . WE_LS_CACHE_KEY_HARRIS_BENEDICT,
-                            $user_id . '-' . WE_LS_CACHE_KEY_MACRO
+                            $user_id . '-' . WE_LS_CACHE_KEY_MACRO,
+							$user_id . '-' . WE_LS_CACHE_KEY_PHOTOS . '-asc',
+							$user_id . '-' . WE_LS_CACHE_KEY_PHOTOS . '-desc'
 						);
 
 	foreach ($keys_to_clear as $key) {
 		ws_ls_delete_cache($key);
 	}
+
+	ws_ls_cache_user_delete($user_id);
 
   }
 }

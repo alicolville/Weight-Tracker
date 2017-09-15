@@ -30,6 +30,7 @@
 	define('WE_LS_CACHE_KEY_TARGET_WEIGHT', 'target-weight');
 	define('WE_LS_CACHE_KEY_START_WEIGHT', 'start-weight-index');
 	define('WE_LS_CACHE_KEY_WEIGHT_EXTREME', 'weight-extreme-');
+	define('WE_LS_CACHE_KEY_PHOTOS', 'photos-extreme-');
 	define('WE_LS_CACHE_KEY_USER_PREFERENCE', 'user-preference');
 	define('WE_LS_CACHE_KEY_USER_HEIGHT', 'user-height');
 	define('WE_LS_CACHE_KEY_YEKEN_JSON', 'yeken-json-lookup-wlt-2017');
@@ -57,6 +58,7 @@
 	define('WE_LS_HOOK_DATA_ADDED_EDITED', 'wlt-hook-data-added-edited');
 	define('WE_LS_HOOK_DATA_ALL_DELETED', 'wlt-hook-data-all-deleted');
 	define('WE_LS_HOOK_DATA_USER_DELETED', 'wlt-hook-data-user-deleted');
+    define('WE_LS_HOOK_DATA_ENTRY_DELETED', 'wlt-hook-data-entry-deleted');
 
 	define('WE_LS_FILTER_EMAIL_DATA', 'wlt-filter-email-data');
 	define('WE_LS_FILTER_STATS_SHORTCODE', 'wlt-filter-stats-shortcode');

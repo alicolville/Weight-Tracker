@@ -134,6 +134,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 = 5.2 =
 
+// TODO: Randomise photo filenames.
 // TODO: Add 50% discount for old members to upgrade to Pro Plus
 //TODO: Update feature lisst in plugin and online
 //TODO: Footable locale
@@ -141,14 +142,24 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 //TODO: Check widgets, etc that use the table shortcode to ensure edit buttons are hidden
 //TODO: When deleting a weight entry, check for a photo anre delete that
 
+* Photo Uploads!
+ * New field on attachments "Don't show to public" (set to true by default) to stop user photo's being rendered on standard attachment pages.
+ * New shortcode [wlt-photo-oldest] to display the user's oldest photo - Read more: https://weight.yeken.uk/shortcodes/
+ * New shortcode [wlt-photo-recent] to display the user's most recent photo - Read more: https://weight.yeken.uk/shortcodes/
 
-    * [wlt] shortcode has a new argument "hide-photos". If set to true, the photo section of the form will be hidden. Read more: https://weight.yeken.uk/shortcodes/ //TODO: Update docs
+//TODO: Args for above shortcodes
+		'error-message' => __('No recent photo found', WE_LS_SLUG ),
+		'user-id' => get_current_user_id(),
+		'width' => 200,
+		'height' => 200
 
-    * Improvement: Removed DataTables.js and replaced with Footable.js for advanced data tables. This keeps the front end consistent with admin area.
-    * Improvement: [wlt-table] argument //TODO
-    * Improvement: [wlt-table] user's now have the option to edit their data with this shortcode (not just delete).
-    * Improvement: Tweaked form headers to say "Edit" intead of "Add" when editing an entry.
-    * Improvement: Editing an entry is done using PHP and HTML. jQuery / Ajax has been removed so more reliable.
+* [wlt] shortcode has a new argument "hide-photos". If set to true, the photo section of the form will be hidden. Read more: https://weight.yeken.uk/shortcodes/ //TODO: Update docs
+* Improvement: New hook "wlt-hook-data-entry-deleted" created. Fired when an entry is deleted. //TODO:
+* Improvement: Removed DataTables.js and replaced with Footable.js for advanced data tables. This keeps the front end consistent with admin area.
+* Improvement: [wlt-table] argument //TODO
+* Improvement: [wlt-table] user's now have the option to edit their data with this shortcode (not just delete).
+* Improvement: Tweaked form headers to say "Edit" intead of "Add" when editing an entry.
+* Improvement: Editing an entry is done using PHP and HTML. jQuery / Ajax has been removed so more reliable.
 
 = 5.1.6 =
 

@@ -290,18 +290,27 @@ function ws_ls_delete_entry($user_id, $row_id)
   global $wpdb;
 
   if (is_numeric($user_id) && is_numeric($row_id)) {
-    $result = $wpdb->delete($wpdb->prefix . WE_LS_TABLENAME, array( 'id' => $row_id, 'weight_user_id' => $user_id));
 
-    if ($result !== false) {
-      $result = true;
-      // Tidy up cache
-      ws_ls_delete_cache_for_given_user($user_id);
+      // Fetch entry from DB before deleting. This will allow us to throw it for others to hook onto.
+      $weight_entry = ws_ls_get_weight($user_id, $row_id);
 
-	  // Update User stats table
-	  if (WS_LS_IS_PRO) {
-		  ws_ls_stats_update_for_user($user_id);
-	  }
-    }
+      $result = $wpdb->delete($wpdb->prefix . WE_LS_TABLENAME, array( 'id' => $row_id, 'weight_user_id' => $user_id));
+
+      if ($result !== false) {
+
+          $result = true;
+
+          // Tidy up cache
+          ws_ls_delete_cache_for_given_user($user_id);
+
+          // Update User stats table
+          if (WS_LS_IS_PRO) {
+              ws_ls_stats_update_for_user($user_id);
+          }
+
+          // Inform others of deletion!
+          do_action(WE_LS_HOOK_DATA_ENTRY_DELETED, $weight_entry);
+      }
   }
   return $result;
 }

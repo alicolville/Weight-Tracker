@@ -425,13 +425,14 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 													<svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/></svg> 
 													<span>%4$s</span>
 												</label>
-												<p><small>%5$s</small></p>
+												<p><small>%6$s%5$s</small></p>
 											</div>',
 				'ws-ls-photo',
 				(false === empty($thumbnail)) ? __('Replace photo', WE_LS_SLUG) : __('Add a photo', WE_LS_SLUG),
 				ws_ls_get_next_tab_index(),
 				__('Select a photo', WE_LS_SLUG),
-                __('Photos must be under', WE_LS_SLUG) . ' ' . ws_ls_display_max_upload_size() . ' ' . __('or they will fail to upload.', WE_LS_SLUG)
+                __('Photos must be under', WE_LS_SLUG) . ' ' . ws_ls_display_max_upload_size() . ' ' . __('or they will silently fail to upload.', WE_LS_SLUG),
+				__('Photos are only visible to you and administrators. ', WE_LS_SLUG)
 			);
 		}
 	}
@@ -602,7 +603,7 @@ function ws_ls_capture_form_validate_and_save($user_id = false)
 			if( true === in_array($uploaded_file_type, $allowed_file_types) ) {
 
 				// Handle the upload using WP's wp_handle_upload function. Takes the posted file and an options array
-				$uploaded_file = wp_handle_upload($photo_uploaded, ['test_form' => false]);
+				$uploaded_file = wp_handle_upload($photo_uploaded, ['test_form' => false, 'unique_filename_callback' => 'ws_ls_photo_generate_unique_name']);
 
 				// If the wp_handle_upload call returned a local path for the image
 				if(isset($uploaded_file['file'])) {
@@ -625,6 +626,9 @@ function ws_ls_capture_form_validate_and_save($user_id = false)
 					require_once(ABSPATH . "wp-admin" . '/includes/image.php');
 					$attach_data = wp_generate_attachment_metadata( $attach_id, $file_name_and_location );
 					wp_update_attachment_metadata($attach_id,  $attach_data);
+
+					// Set flag to hide image from attachment page
+					update_post_meta($attach_id, 'ws-ls-hide-image', '1');
 
 					$weight_object['photo_id'] = $attach_id;
 
