@@ -116,7 +116,7 @@ function test() {
 
 	// ws_ls_cache_user_delete($user_id);
 
-	var_dump(ws_ls_cache_user_get_all($user_id));
+	//var_dump(ws_ls_cache_user_get_all($user_id));
 	//die;
 
 }
