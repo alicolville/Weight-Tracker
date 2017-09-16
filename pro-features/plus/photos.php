@@ -15,25 +15,13 @@ defined('ABSPATH') or die("Jog on!");
  */
 function ws_ls_photos_shortcode_recent($user_defined_arguments) {
 
-	$arguments = shortcode_atts([
-		'error-message' => __('No recent photo found', WE_LS_SLUG ),
-		'user-id' => get_current_user_id(),
-		'width' => 200,
-		'height' => 200
-	], $user_defined_arguments );
+    if ( false === is_array($user_defined_arguments) ) {
+        $user_defined_arguments = [];
+    }
 
-	$arguments['user-id'] = ws_ls_force_numeric_argument($arguments['user-id'], get_current_user_id());
-	$arguments['width'] = ws_ls_force_numeric_argument($arguments['width'], 200);
-	$arguments['height'] = ws_ls_force_numeric_argument($arguments['height'], 200);
+    $user_defined_arguments['recent'] = true;
 
-	// Fetch photo
-	$photo = ws_ls_photos_db_get_recent_or_latest($arguments['user-id'], true, $arguments['width'], $arguments['height']);
-
-	if ( false === empty($photo) ) {
-		return ws_ls_photos_shortcode_render($photo, 'ws-ls-photo-recent');
-	} else {
-		return esc_html($arguments['error-message']);
-	}
+    return ws_ls_photos_shortcode_core($user_defined_arguments);
 
 }
 add_shortcode('wlt-photo-recent', 'ws_ls_photos_shortcode_recent');
@@ -46,28 +34,43 @@ add_shortcode('wlt-photo-recent', 'ws_ls_photos_shortcode_recent');
  */
 function ws_ls_photos_shortcode_oldest($user_defined_arguments) {
 
-	$arguments = shortcode_atts([
-		'error-message' => __('No recent photo found', WE_LS_SLUG ),
-		'user-id' => get_current_user_id(),
-		'width' => 200,
-		'height' => 200
-	], $user_defined_arguments );
+    if ( false === is_array($user_defined_arguments) ) {
+        $user_defined_arguments = [];
+    }
 
-	$arguments['user-id'] = ws_ls_force_numeric_argument($arguments['user-id'], get_current_user_id());
-	$arguments['width'] = ws_ls_force_numeric_argument($arguments['width'], 200);
-	$arguments['height'] = ws_ls_force_numeric_argument($arguments['height'], 200);
+    $user_defined_arguments['recent'] = false;
 
-	// Fetch photo
-	$photo = ws_ls_photos_db_get_recent_or_latest($arguments['user-id'], false, $arguments['width'], $arguments['height']);
-
-	if ( false === empty($photo) ) {
-		return ws_ls_photos_shortcode_render($photo, 'ws-ls-photo-oldest');
-	} else {
-		return esc_html($arguments['error-message']);
-	}
+	return ws_ls_photos_shortcode_core($user_defined_arguments);
 
 }
 add_shortcode('wlt-photo-oldest', 'ws_ls_photos_shortcode_oldest');
+
+
+function ws_ls_photos_shortcode_core($user_defined_arguments) {
+
+    $arguments = shortcode_atts([
+        'error-message' => __('No recent photo found', WE_LS_SLUG ),
+        'user-id' => get_current_user_id(),
+        'width' => 200,
+        'height' => 200,
+        'recent' => true
+    ], $user_defined_arguments );
+
+    $arguments['user-id'] = ws_ls_force_numeric_argument($arguments['user-id'], get_current_user_id());
+    $arguments['width'] = ws_ls_force_numeric_argument($arguments['width'], 200);
+    $arguments['height'] = ws_ls_force_numeric_argument($arguments['height'], 200);
+    $arguments['recent'] = ws_ls_force_bool_argument($arguments['recent']);
+
+    // Fetch photo
+    $photo = ws_ls_photos_db_get_recent_or_latest($arguments['user-id'], $arguments['recent'], $arguments['width'], $arguments['height']);
+
+    if ( false === empty($photo) ) {
+        return ws_ls_photos_shortcode_render($photo, 'ws-ls-photo-oldest');
+    } else {
+        return esc_html($arguments['error-message']);
+    }
+
+}
 
 /**
  * Create HTML to render image
