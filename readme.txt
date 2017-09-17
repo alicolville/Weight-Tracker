@@ -139,8 +139,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 //TODO: Update feature lisst in plugin and online
 //TODO: Footable locale
 //TODO: mininmise: data.footable.js / ws-ls.js / ws-ls.css
-//TODO: Check widgets, etc that use the table shortcode to ensure edit buttons are hidden
-//TODO: When deleting a weight entry, check for a photo anre delete that
+
 // TODO: Investigate if thumbs for photos are actually being resized.
 
 * Photo Uploads!
@@ -155,12 +154,12 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 		'height' => 200
 		hide-date
 
-
+* Improvement: Standard Pro Users can now upgrade to Pro Plus for 50% cheaper! //TODO: update: https://weight.yeken.uk/get-pro-plus-existing-license-holders/
 * Improvement: [wlt] shortcode has a new argument "hide-photos". If set to true, the photo section of the form will be hidden. Read more: https://weight.yeken.uk/shortcodes/ //TODO: Update docs
-* Improvement: Added field "photo" to [wlt-if] shortcode. Allows you to check if the user has uploaded a photo. //TODO:
-* Improvement: New hook "wlt-hook-data-entry-deleted" created. Fired when an entry is deleted. //TODO:
+* Improvement: Added field "photo" to [wlt-if] shortcode. Allows you to check if the user has uploaded a photo. //TODO: docs
+* Improvement: New hook "wlt-hook-data-entry-deleted" created. Fired when an entry is deleted. //TODO: docs
 * Improvement: Removed DataTables.js and replaced with Footable.js for advanced data tables. This keeps the front end consistent with admin area.
-* Improvement: [wlt-table] argument //TODO
+* Improvement: [wlt-table] argument //TODO docs
 * Improvement: [wlt-table] user's now have the option to edit their data with this shortcode (not just delete).
 * Improvement: Tweaked form headers to say "Edit" intead of "Add" when editing an entry.
 * Improvement: Editing an entry is done using PHP and HTML. jQuery / Ajax has been removed so more reliable.
