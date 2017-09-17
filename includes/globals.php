@@ -50,7 +50,6 @@
 	define('WE_LS_CRON_NAME', 'weight_loss_tracker_hourly');
 	define('WE_LS_CRON_NAME_YEKEN_COMMS', 'weight_loss_tracker_yeken_comms');
 	define('WE_LS_CRON_SCHEDULE_WEEKLY', 'weight_loss_tracker_weekly');
-	define('WE_LS_PHOTOS_ENABLED', true); //TODO
 
 	// -----------------------------------------------------------------------------------
 	// Hooks / Filters
@@ -106,7 +105,8 @@
         'WS_LS_CAL_TO_SUBTRACT' => 600,
         'WS_LS_MACRO_PROTEINS' => 25,
         'WS_LS_MACRO_CARBS' => 50,
-        'WS_LS_MACRO_FATS' => 25
+        'WS_LS_MACRO_FATS' => 25,
+        'WE_LS_PHOTOS_ENABLED' => false
 	);
 
     // -----------------------------------------------------------------------------------
@@ -307,6 +307,13 @@
 
     if (WS_LS_IS_PRO_PLUS) {
 
+	    // Photos
+        if ('yes' == get_option('ws-ls-photos-enable')) {
+            $globals['WE_LS_PHOTOS_ENABLED'] = true;
+        }
+
+	    // Calories
+
 	    $female_cal_cap = get_option('ws-ls-female-cal-cap');
 
 	    if(is_numeric($female_cal_cap)) {
@@ -324,6 +331,8 @@
         if(is_numeric($cal_to_subtract) && $cal_to_subtract > 0) {
             $globals['WS_LS_CAL_TO_SUBTRACT'] = intval($cal_to_subtract);
         }
+
+        // Macro N
 
         $macro_value = get_option('ws-ls-macro-proteins');
 
