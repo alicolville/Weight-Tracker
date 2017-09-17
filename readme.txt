@@ -159,7 +159,10 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 * Improvement: Added field "photo" to [wlt-if] shortcode. Allows you to check if the user has uploaded a photo. //TODO: docs
 * Improvement: New hook "wlt-hook-data-entry-deleted" created. Fired when an entry is deleted. //TODO: docs
 * Improvement: Removed DataTables.js and replaced with Footable.js for advanced data tables. This keeps the front end consistent with admin area.
-* Improvement: [wlt-table] argument //TODO docs
+* Improvement: [wlt-table] has a new argument to disable data being edited / deleted "enable-add-edit". Read more: https://weight.yeken.uk/shortcodes/  //TODO docs
+
+'user-id' => get_current_user_id(),         				'enable-add-edit'
+
 * Improvement: [wlt-table] user's now have the option to edit their data with this shortcode (not just delete).
 * Improvement: Tweaked form headers to say "Edit" intead of "Add" when editing an entry.
 * Improvement: Editing an entry is done using PHP and HTML. jQuery / Ajax has been removed so more reliable.
