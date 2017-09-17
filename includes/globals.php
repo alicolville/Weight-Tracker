@@ -31,6 +31,7 @@
 	define('WE_LS_CACHE_KEY_START_WEIGHT', 'start-weight-index');
 	define('WE_LS_CACHE_KEY_WEIGHT_EXTREME', 'weight-extreme-');
 	define('WE_LS_CACHE_KEY_PHOTOS', 'photos-extreme-');
+    define('WE_LS_CACHE_KEY_PHOTOS_ALL', 'photos-all-');
 	define('WE_LS_CACHE_KEY_USER_PREFERENCE', 'user-preference');
 	define('WE_LS_CACHE_KEY_USER_HEIGHT', 'user-height');
 	define('WE_LS_CACHE_KEY_YEKEN_JSON', 'yeken-json-lookup-wlt-2017');

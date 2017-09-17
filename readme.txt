@@ -141,6 +141,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 //TODO: mininmise: data.footable.js / ws-ls.js / ws-ls.css
 //TODO: Check widgets, etc that use the table shortcode to ensure edit buttons are hidden
 //TODO: When deleting a weight entry, check for a photo anre delete that
+// TODO: Investigate if thumbs for photos are actually being resized.
 
 * Photo Uploads!
  * New field on attachments "Don't show to public" (set to true by default) to stop user photo's being rendered on standard attachment pages.
@@ -152,8 +153,10 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 		'user-id' => get_current_user_id(),
 		'width' => 200,
 		'height' => 200
+		hide-date
 
-* [wlt] shortcode has a new argument "hide-photos". If set to true, the photo section of the form will be hidden. Read more: https://weight.yeken.uk/shortcodes/ //TODO: Update docs
+* Improvement: [wlt] shortcode has a new argument "hide-photos". If set to true, the photo section of the form will be hidden. Read more: https://weight.yeken.uk/shortcodes/ //TODO: Update docs
+* Improvement: Added field "photo" to [wlt-if] shortcode. Allows you to check if the user has uploaded a photo. //TODO:
 * Improvement: New hook "wlt-hook-data-entry-deleted" created. Fired when an entry is deleted. //TODO:
 * Improvement: Removed DataTables.js and replaced with Footable.js for advanced data tables. This keeps the front end consistent with admin area.
 * Improvement: [wlt-table] argument //TODO
