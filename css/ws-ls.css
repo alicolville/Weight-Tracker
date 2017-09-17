@@ -318,3 +318,12 @@ input.ws-ls-valid
 .ws-ls-input-file + label:hover {
      text-decoration: none;
 }
+.ws-ls-photo-frame {
+    display:inline-block;
+}
+.ws-ls-photo-date {
+    text-align: center;
+}
+.ws-ls-photo-date {
+    font-size: 0.7em;
+}

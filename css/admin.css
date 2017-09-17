@@ -1,3 +1,6 @@
+.ws-ls-hide {
+    display: none !important;
+}
 .ws-ls-disabled *, .ws-ls-disabled-pro-plus *
 {
   color: #CCCCCC !important;
@@ -102,4 +105,7 @@
 }
 .ws-ls-photo-select {
     margin-top: 35px !important;
+}
+.ws-ls-photo-date {
+    text-align: center;
 }
