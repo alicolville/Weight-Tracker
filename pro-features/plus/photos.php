@@ -53,19 +53,21 @@ function ws_ls_photos_shortcode_core($user_defined_arguments) {
         'user-id' => get_current_user_id(),
         'width' => 200,
         'height' => 200,
-        'recent' => true
+        'recent' => true,
+        'hide-date' => false
     ], $user_defined_arguments );
 
     $arguments['user-id'] = ws_ls_force_numeric_argument($arguments['user-id'], get_current_user_id());
     $arguments['width'] = ws_ls_force_numeric_argument($arguments['width'], 200);
     $arguments['height'] = ws_ls_force_numeric_argument($arguments['height'], 200);
     $arguments['recent'] = ws_ls_force_bool_argument($arguments['recent']);
+    $arguments['hide-date'] = ws_ls_force_bool_argument($arguments['hide-date']);
 
     // Fetch photo
     $photo = ws_ls_photos_db_get_recent_or_latest($arguments['user-id'], $arguments['recent'], $arguments['width'], $arguments['height']);
 
     if ( false === empty($photo) ) {
-        return ws_ls_photos_shortcode_render($photo, 'ws-ls-photo-oldest');
+        return ws_ls_photos_shortcode_render($photo, 'ws-ls-photo-' . ( true === $arguments['recent'] ? 'recent' : 'oldest' ), $arguments['hide-date']);
     } else {
         return esc_html($arguments['error-message']);
     }
@@ -76,19 +78,28 @@ function ws_ls_photos_shortcode_core($user_defined_arguments) {
  * Create HTML to render image
  * @param $image
  */
-function ws_ls_photos_shortcode_render($image, $css_class = '') {
+function ws_ls_photos_shortcode_render($image, $css_class = '', $hide_date = true) {
 
-	if ( isset( $image['id'], $image['thumb-src'], $image['thumb-width'], $image['thumb-height'], $image['full']) ) {
+	if ( isset( $image['photo_id'], $image['thumb-src'], $image['thumb-width'], $image['thumb-height'], $image['full']) ) {
 
-		return sprintf('	<a href="%1$s" target="_blank" class="ws-ls-progress-photo%6$s" data-id="%5$s">
-									<img src="%2$s" width="%3$s" height="%4$s" />
-								</a>',
+		return sprintf('	
+	                        <div class="ws-ls-photo-frame%6$s">
+	                            <div class="ws-ls-photo-embed">
+	                                <a href="%1$s" target="_blank" data-id="%5$s">
+                                        <img src="%2$s" width="%3$s" height="%4$s" />
+                                    </a>
+                                </div>
+                                <div class="ws-ls-photo-date%8$s">%7$s</div>
+							</div>
+							',
 			esc_url($image['full']),
 			esc_url($image['thumb-src']),
 			esc_attr($image['thumb-width']),
 			esc_attr($image['thumb-height']),
-			esc_attr($image['id']),
-			false === empty($css_class) ? ' ' . esc_attr($css_class) : ''
+			esc_attr($image['photo_id']),
+			false === empty($css_class) ? ' ' . esc_attr($css_class) : '',
+            esc_html($image['date']),
+            true === $hide_date ? ' ws-ls-hide' : ''
 		);
 	}
 	return '';
@@ -155,31 +166,97 @@ function ws_ls_photos_db_get_recent_or_latest($user_id = false, $recent = false,
 	}
 
 	$table_name = $wpdb->prefix . WE_LS_TABLENAME;
-	$sql = $wpdb->prepare("SELECT photo_id FROM $table_name where weight_user_id = %d order by weight_date " . $direction . " limit 0, 1", $user_id);
-	$photo_id = $wpdb->get_var($sql);
+	$sql = $wpdb->prepare("SELECT id as entry_id, weight_date, photo_id FROM $table_name where weight_user_id = %d and photo_id is not null order by weight_date " . $direction . " limit 0, 1", $user_id);
+	$photo = $wpdb->get_row($sql, ARRAY_A);
 
-	if ( false === empty($photo_id) ) {
+	if ( false === empty($photo) ) {
 
 		// We have a Photo ID, build an object to return with thumbnail and full url
-		$photo_id = intval($photo_id);
-
-
-		$thumbnail = wp_get_attachment_image_src($photo_id, array($width, $height));
+		$thumbnail = wp_get_attachment_image_src($photo['photo_id'], array($width, $height));
 
 		if ( false === empty($thumbnail) ) {
 
-			$image['id'] = $photo_id;
-			$image['thumb-src'] = $thumbnail[0];
-			$image['thumb-width'] = $thumbnail[1];
-			$image['thumb-height'] = $thumbnail[2];
-			$image['full'] = wp_get_attachment_url($photo_id);
+            $photo['thumb-src'] = $thumbnail[0];
+            $photo['thumb-width'] = $thumbnail[1];
+            $photo['thumb-height'] = $thumbnail[2];
+            $photo['full'] = wp_get_attachment_url($photo['photo_id']);
+            $photo['date'] = ws_ls_iso_date_into_correct_format($photo['weight_date']);
 
-			ws_ls_cache_user_set($user_id, $cache_key, $image);
-			return $image;
+			ws_ls_cache_user_set($user_id, $cache_key, $photo);
+			return $photo;
 		}
 	}
 
 	return false;
+}
+
+/**
+ *
+ * Fetch all photos for given user from the database
+ *
+ * @param bool $user_id
+ * @param bool $include_image_object
+ * @param string $direction
+ * @param int $width
+ * @param int $height
+ * @return array|bool|null
+ */
+function ws_ls_photos_db_get_all_photos($user_id = false, $include_image_object = false, $limit = false, $direction = 'asc', $width = 200, $height = 200) {
+
+    $user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
+
+    global $wpdb;
+
+    // Validate fields
+    $direction = (false === in_array($direction, ['asc', 'desc'])) ? 'desc' : 'asc';
+    $width = ws_ls_force_numeric_argument($width, 200);
+    $height = ws_ls_force_numeric_argument($height, 200);
+
+    $cache_key = WE_LS_CACHE_KEY_PHOTOS_ALL . '-' . $direction . $include_image_object . $limit . $width . $height;
+
+    // Return cache if found!
+    if ($cache = ws_ls_cache_user_get($user_id, $cache_key))   {
+      echo 'hit cache';
+        return $cache;
+    }
+
+    $limit = ( false === empty($limit) && is_numeric($limit) ) ? ' limit 0, ' . intval($limit) : '';
+
+    $table_name = $wpdb->prefix . WE_LS_TABLENAME;
+    $sql = $wpdb->prepare("SELECT id as entry_id, weight_date, photo_id 
+                  FROM $table_name where weight_user_id = %d and photo_id is not null order by weight_date " . $direction . $limit, $user_id);
+    $photos = $wpdb->get_results($sql, ARRAY_A);
+
+    $photos_to_return = [];
+
+    if ( false === empty($photos) ) {
+
+        foreach ($photos as $photo) {
+
+            $photo['date'] = ws_ls_iso_date_into_correct_format($photo['weight_date']);
+
+            // Embed image attachment data?
+            if ( true === $include_image_object ) {
+                // We have a Photo ID, build an object to return with thumbnail and full url
+                $thumbnail = wp_get_attachment_image_src($photo['photo_id'], array($width, $height));
+
+                if (false === empty($thumbnail)) {
+
+                    $photo['thumb-src'] = $thumbnail[0];
+                    $photo['thumb-width'] = $thumbnail[1];
+                    $photo['thumb-height'] = $thumbnail[2];
+                    $photo['full'] = wp_get_attachment_url($photo['photo_id']);
+                }
+            }
+
+            $photos_to_return[] = $photo;
+        }
+
+        ws_ls_cache_user_set($user_id, $cache_key, $photos_to_return);
+        return $photos_to_return;
+    }
+
+    return false;
 }
 
 // ------------------------------------------------------------------
