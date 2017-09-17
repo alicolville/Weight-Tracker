@@ -53,6 +53,26 @@ function ws_ls_admin_page_data_user() {
 						</div>
 					</div>
                     <div class="postbox">
+                        <h2 class="hndle"><span><?php echo __('Photos', WE_LS_SLUG); ?></span></h2>
+                        <div class="inside">
+                            <?php
+                            if(ws_ls_has_a_valid_pro_plus_license()) {
+
+                                //TODO:
+
+                            } else {
+
+                                echo sprintf('<p><a href="%s">%s</a> %s.</p>',
+                                    ws_ls_upgrade_link(),
+                                    __('Upgrade to Pro Plus', WE_LS_SLUG),
+                                    __('to allow a user to upload photos of their progress' , WE_LS_SLUG)
+                                );
+                            }
+                            ?>
+                        </div>
+                    </div>
+
+                    <div class="postbox">
                         <h2 class="hndle"><span><?php echo __('Daily calorie needs', WE_LS_SLUG); ?></span></h2>
                         <div class="inside">
                             <?php
