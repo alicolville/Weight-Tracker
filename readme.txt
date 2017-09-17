@@ -155,6 +155,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 		'height' => 200
 		hide-date
 
+
 * Improvement: [wlt] shortcode has a new argument "hide-photos". If set to true, the photo section of the form will be hidden. Read more: https://weight.yeken.uk/shortcodes/ //TODO: Update docs
 * Improvement: Added field "photo" to [wlt-if] shortcode. Allows you to check if the user has uploaded a photo. //TODO:
 * Improvement: New hook "wlt-hook-data-entry-deleted" created. Fired when an entry is deleted. //TODO:
@@ -163,6 +164,8 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 * Improvement: [wlt-table] user's now have the option to edit their data with this shortcode (not just delete).
 * Improvement: Tweaked form headers to say "Edit" intead of "Add" when editing an entry.
 * Improvement: Editing an entry is done using PHP and HTML. jQuery / Ajax has been removed so more reliable.
+* Bug fix: When display a user's weight entries on Search results, if there are no entries, display nothing instead of 0[weight unit]
+* Bug fix: Don't display "Difference form target" if there is no recent or target weights to calculate from.
 
 = 5.1.6 =
 

@@ -72,6 +72,11 @@ function ws_ls_weight_difference($user_id = false)
 		$recent_weight = ws_ls_get_weight_extreme($user_id, true);
 	}
 
+	// If no data, return empty string
+    if ( false === $recent_weight && false === $start_weight ) {
+	    return '';
+    }
+
 	$difference = $recent_weight - $start_weight;
 
 	$display_string = ($difference > 0) ? "+" : "";
@@ -199,8 +204,13 @@ function ws_ls_get_weight_target($user_id, $unit = "target_weight_weight")
 	return false;
 
 }
-function we_ls_format_weight_into_correct_string_format($weight, $comparison = false)
-{
+function we_ls_format_weight_into_correct_string_format($weight, $comparison = false) {
+
+    // Don't bother converting the value if there isn't one!
+    if ( false === $weight) {
+        return '';
+    }
+
 	if(ws_ls_get_config('WE_LS_IMPERIAL_WEIGHTS'))
 	{
 		if (ws_ls_get_config('WE_LS_DATA_UNITS') == "pounds_only")
