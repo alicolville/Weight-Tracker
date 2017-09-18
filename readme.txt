@@ -132,6 +132,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 == Changelog ==
 
+
 = 5.2 =
 
 // TODO: Randomise photo filenames.
@@ -168,6 +169,10 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 * Improvement: Editing an entry is done using PHP and HTML. jQuery / Ajax has been removed so more reliable.
 * Bug fix: When display a user's weight entries on Search results, if there are no entries, display nothing instead of 0[weight unit]
 * Bug fix: Don't display "Difference form target" if there is no recent or target weights to calculate from.
+
+= 5.1.7 =
+
+* Improvement: Updated French translations - thanks @Pierre
 
 = 5.1.6 =
 
