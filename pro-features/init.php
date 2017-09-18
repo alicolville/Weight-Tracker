@@ -46,6 +46,7 @@ if(defined('WS_LS_ABSPATH')){
 		// Photos enabled?
 		if(WE_LS_PHOTOS_ENABLED) {
 			include WS_LS_ABSPATH . 'pro-features/plus/photos.php';
+			include WS_LS_ABSPATH . 'pro-features/plus/photos.gallery.php';
 		}
     }
 

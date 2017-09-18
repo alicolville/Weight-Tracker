@@ -309,12 +309,13 @@
     if (WS_LS_IS_PRO_PLUS) {
 
 	    // Photos
-        if ('yes' == get_option('ws-ls-photos-enable')) {
-            $globals['WE_LS_PHOTOS_ENABLED'] = true;
-        }
+        if ('no' == get_option('ws-ls-photos-enable')) {
+            $globals['WE_LS_PHOTOS_ENABLED'] = false;
+        } else {
+			$globals['WE_LS_PHOTOS_ENABLED'] = true;
+		}
 
 	    // Calories
-
 	    $female_cal_cap = get_option('ws-ls-female-cal-cap');
 
 	    if(is_numeric($female_cal_cap)) {

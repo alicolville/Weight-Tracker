@@ -135,14 +135,11 @@ function ws_ls_data_table_get_rows($user_id = false, $max_entries = false, $smal
 			} else if (WE_LS_PHOTOS_ENABLED && 'photo' === $column_name) {
 				if ( false === empty($data['photo_id']) ) {
 
-					$thumbnail = wp_get_attachment_image_src($data['photo_id']);
-					$full_url = wp_get_attachment_url($data['photo_id']);
+					$photo = ws_ls_photo_get($data['photo_id'], 120, 120);
 
-					$row[$column_name] = sprintf('<a href="%1$s" target="_blank"><img src="%2$s" alt="" width="%3$s" height="%4$s" /></a>',
-						esc_url($full_url),
-						esc_url($thumbnail[0]),
-						intval($thumbnail[1]),
-						intval($thumbnail[2])
+					$row[$column_name] = sprintf('<a href="%1$s" target="_blank">%2$s</a>',
+						esc_url($photo['full']),
+						$photo['thumb']
 					);
 
 				} else {
