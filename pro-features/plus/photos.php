@@ -239,20 +239,13 @@ function ws_ls_photos_db_get_all_photos($user_id = false, $include_image_object 
 				$row->photo_id
 			);
 
-            $photo['date'] = ws_ls_iso_date_into_correct_format($photo['weight_date']);
-
             // Embed image attachment data?
             if ( true === $include_image_object ) {
-
 				$photo_src = ws_ls_photo_get($photo['photo_id'], $width, $height);
 
 				if ( false === empty($photo) ) {
-
 					$photo = array_merge($photo_src, $photo);
-					$photo['date'] = ws_ls_iso_date_into_correct_format($photo['weight_date']);
-
 				}
-
             }
 
             $photos_to_return[] = $photo;

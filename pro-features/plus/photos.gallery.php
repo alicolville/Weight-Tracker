@@ -15,26 +15,36 @@ function ws_ls_photos_gallery_js_css($mode = 'default') {
 
 
 
-function ws_ls_photos_shortcode_gallery($user_id) {
+function ws_ls_photos_shortcode_gallery($user_defined_arguments) {
 
-	$html = '';
+    $arguments = shortcode_atts([
+        'error-message' => __('It doesn\'t look you\'ve uploaded any photos.', WE_LS_SLUG ),
+        'user-id' => get_current_user_id(),
+        'mode' => 'default',                    // Gallery type: carousel, default or compact
+        'height' => 800,                        // Height of slider if compact or default theme
+    ], $user_defined_arguments );
 
-	$user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id; // TODO: move to shortcode arg
+    $arguments['height'] = ws_ls_force_numeric_argument($arguments['height'], 800);
+    $arguments['user-id'] = ws_ls_force_numeric_argument($arguments['user-id'], get_current_user_id());
+    $arguments['mode'] = ws_ls_photos_gallery_validate_mode($arguments['mode']);
 
-	$mode = ws_ls_photos_gallery_validate_mode('compact'); // TODO: move to shortcode arg
+    $html = $arguments['error-message'];
 
-	$photos = ws_ls_photos_db_get_all_photos($user_id, true, false, 'desc', 800, 800);
+  	$photos = ws_ls_photos_db_get_all_photos($arguments['user-id'], true, false, 'desc', 800, 800);
 
 	if ( false === empty($photos) ) {
 
-		ws_ls_photos_gallery_js_css($mode);
+		ws_ls_photos_gallery_js_css($arguments['mode']);
 
-		$html = '<div id="ws-ls-'. uniqid() . '" class="ws-ls-photos-' . $mode . '" style="display:none;">';
+        // If compact / default pass config settings to JS
+		wp_localize_script('ws-ls-pro-gallery', 'ws_ls_gallery_config', ['height' => $arguments['height']]);
+
+		$html = '<div id="ws-ls-'. uniqid() . '" class="ws-ls-photos-' . $arguments['mode'] . '" style="display:none;">';
 
 		foreach ($photos as $photo) {
 
 			$additional_data = sprintf(' alt="%s" data-image="%s" data-description="%s - %s"',
-												esc_html($photo['date-display']),
+												esc_html($photo['date-display'] . ' &middot; ' . $photo['display']),
 												esc_html($photo['full']),
 												esc_html($photo['date-display']),
 												esc_html($photo['display'])
@@ -49,12 +59,11 @@ function ws_ls_photos_shortcode_gallery($user_id) {
 		}
 
 		$html .= '</div>';
-
 	}
 
 	return $html;
 }
-add_shortcode('ws-ls-gallery', 'ws_ls_photos_shortcode_gallery');
+add_shortcode('wlt-gallery', 'ws_ls_photos_shortcode_gallery');
 
 function ws_ls_photos_gallery_validate_mode($mode) {
 	return ( false === in_array($mode, ['default', 'carousel', 'compact']) ) ? 'default' : $mode;
