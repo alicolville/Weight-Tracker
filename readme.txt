@@ -136,7 +136,6 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 = 5.2 =
 
-// TODO: Add 50% discount for old members to upgrade to Pro Plus
 //TODO: Update feature lisst in plugin and online
 //TODO: Footable locale
 //TODO: mininmise: data.footable.js / ws-ls.js / ws-ls.css
