@@ -125,6 +125,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 13. Admin - User search results
 14. Admin - Edit a user's data entry
 15. Admin - User's data card displayed on a tablet
+16. Admin - Displaying a another view of the user's data card
 
 == Upgrade Notice ==
 
@@ -135,13 +136,11 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 = 5.2 =
 
-// TODO: Randomise photo filenames.
 // TODO: Add 50% discount for old members to upgrade to Pro Plus
 //TODO: Update feature lisst in plugin and online
 //TODO: Footable locale
 //TODO: mininmise: data.footable.js / ws-ls.js / ws-ls.css
 
-// TODO: Investigate if thumbs for photos are actually being resized.
 
 * Photo Uploads!
  * New field on attachments "Don't show to public" (set to true by default) to stop user photo's being rendered on standard attachment pages.
