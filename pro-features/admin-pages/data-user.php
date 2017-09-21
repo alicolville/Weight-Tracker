@@ -59,9 +59,21 @@ function ws_ls_admin_page_data_user() {
                                 <?php
                                 if( WE_LS_PHOTOS_ENABLED ) {
 
-                                    echo ws_ls_photos_shortcode_gallery([   'error-message' => __('No photos could be found for this user.', WE_LS_SLUG),
-                                                                            'mode' => 'carousel',
-                                                                            'user-id' => $user_id]);
+                                    $photo_count = ws_ls_photos_db_count_photos($user_id);
+
+                                    echo sprintf('<p>%s <strong>%s %s</strong>. <a href="%s">%s</a>.</p>',
+                                            __('This user has uploaded ', WE_LS_SLUG),
+                                            $photo_count,
+                                            _n( 'photo', 'photos', $photo_count, WE_LS_SLUG ),
+                                            ws_ls_get_link_to_photos($user_id),
+                                            __('View all photos', WE_LS_SLUG)
+                                        );
+
+                                    if ($photo_count > 10) {
+                                        echo ws_ls_photos_shortcode_gallery([   'error-message' => __('No photos could be found for this user.', WE_LS_SLUG),
+                                            'mode' => 'carousel',
+                                            'user-id' => $user_id]);
+                                    }
 
                                 } else {
 

@@ -36,6 +36,7 @@ if(defined('WS_LS_ABSPATH')){
 	include WS_LS_ABSPATH . 'pro-features/admin-pages/data-user.php';
 	include WS_LS_ABSPATH . 'pro-features/admin-pages/data-user-edit-settings.php';
     include WS_LS_ABSPATH . 'pro-features/admin-pages/data-search-results.php';
+    include WS_LS_ABSPATH . 'pro-features/admin-pages/data-photos.php';
 
     // Include files for those that have a Pro Plus license
     if(WS_LS_IS_PRO_PLUS) {

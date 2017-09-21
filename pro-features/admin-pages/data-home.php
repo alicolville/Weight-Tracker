@@ -26,7 +26,10 @@ function ws_ls_admin_page_data_home() {
 		case 'target':
 			ws_ls_admin_page_data_edit_target();
 			break;
-		case 'all':
+        case 'photos':
+            ws_ls_admin_page_photos();
+            break;
+        case 'all':
 			ws_ls_admin_page_view_all();
 			break;
 		default:

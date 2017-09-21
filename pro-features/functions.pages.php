@@ -49,7 +49,16 @@ function ws_ls_user_side_bar($user_id) {
 						<?php
 
 							if(ws_ls_has_a_valid_pro_plus_license()) {
-								echo ws_ls_photos_shortcode_recent(['user-id' => $user_id, 'width' => 200, 'height' => 200]);
+								echo ws_ls_photos_shortcode_recent(['user-id' => $user_id, 'width' => 200, 'height' => 200, 'hide-date' => true]);
+
+                                $photo_count = ws_ls_photos_db_count_photos($user_id);
+
+                                echo sprintf('<p>%s <strong>%s</strong>. <a href="%s">%s</a></p>',
+                                    __('No. of photos: ', WE_LS_SLUG),
+                                    $photo_count,
+                                    ws_ls_get_link_to_photos($user_id),
+                                    __('View all', WE_LS_SLUG)
+                                );
 							} else {
 								echo sprintf('<a href="%s">Upgrade to Pro Plus</a>', ws_ls_upgrade_link());
 							}

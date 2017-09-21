@@ -31,24 +31,32 @@ function ws_ls_photos_shortcode_gallery($user_defined_arguments) {
         'user-id' => get_current_user_id(),
         'mode' => 'default',                    // Gallery type: carousel, default or compact
         'height' => 800,                        // Height of slider if compact or default theme
-		'css-class' => ''
-		// TODO: Add limit and direction
+		'css-class' => '',
+        'width' => false,           //TODO: doc
+        'limit' => false,           //TODO: doc
+        'direction' => 'desc'      //TODO: doc
     ], $user_defined_arguments );
 
+    $arguments['width'] = ws_ls_force_numeric_argument($arguments['width'], '100%');
     $arguments['height'] = ws_ls_force_numeric_argument($arguments['height'], 800);
     $arguments['user-id'] = ws_ls_force_numeric_argument($arguments['user-id'], get_current_user_id());
     $arguments['mode'] = ws_ls_photos_gallery_validate_mode($arguments['mode']);
+    $arguments['limit'] = ( false === empty($arguments['limit']) ) ? intval($arguments['limit']) : false;
+    $arguments['direction'] = ( false === in_array($arguments['direction'], ['asc', 'desc'])) ? 'desc' : $arguments['direction'];
 
     $html = $arguments['error-message'];
 
-  	$photos = ws_ls_photos_db_get_all_photos($arguments['user-id'], true, false, 'desc', 800, 800);
+
+//TODO: Dynamically link thumb height and width to size of gallery? consider width %
+
+  	$photos = ws_ls_photos_db_get_all_photos($arguments['user-id'], true,  $arguments['limit'], $arguments['direction'], 800, 800);
 
 	if ( false === empty($photos) ) {
 
 		ws_ls_photos_gallery_js_css($arguments['mode']);
 
         // If compact / default pass config settings to JS
-		wp_localize_script('ws-ls-pro-gallery', 'ws_ls_gallery_config', ['height' => $arguments['height']]);
+		wp_localize_script('ws-ls-pro-gallery', 'ws_ls_gallery_config', ['height' => $arguments['height'], 'width' => $arguments['width']]);
 
 		$html = '<div id="ws-ls-'. uniqid() . '" class="ws-ls-photos-' . $arguments['mode'] . ((false === empty($arguments['css-class'])) ? ' ' . esc_attr($arguments['css-class']) : '' ) . '" style="display:none;">';
 

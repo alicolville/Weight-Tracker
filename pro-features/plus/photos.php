@@ -259,6 +259,36 @@ function ws_ls_photos_db_get_all_photos($user_id = false, $include_image_object 
 }
 
 /**
+ * Count number of photos for given user
+ *
+ * @param bool $user_id
+ * @return array|null
+ *
+ */
+function ws_ls_photos_db_count_photos($user_id = false) {
+
+    $user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
+
+    global $wpdb;
+
+    $cache_key = WE_LS_CACHE_KEY_PHOTOS_COUNT ;
+
+    // Return cache if found!
+    if ($cache = ws_ls_cache_user_get($user_id, $cache_key))   {
+        return $cache;
+    }
+
+    $table_name = $wpdb->prefix . WE_LS_TABLENAME;
+
+    $count = $wpdb->get_var( $wpdb->prepare("SELECT count(id) FROM $table_name where weight_user_id = %d and photo_id is not null and photo_id <> 0", $user_id) );
+
+    $count = ( false === empty($count) ) ? intval($count) : 0;
+    
+    ws_ls_cache_user_set($user_id, $cache_key, $count);
+    return $count;
+}
+
+/**
  * Fetch HTML for given image
  *
  * @param $attachment_id

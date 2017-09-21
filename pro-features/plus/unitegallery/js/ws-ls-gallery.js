@@ -5,12 +5,16 @@ jQuery( document ).ready(function ($) {
 			slider_enable_zoom_panel:false,
 			gallery_autoplay:false,
 			slider_scale_mode: 'fit',
+            gallery_width: ws_ls_gallery_config['width'],
             gallery_height: ws_ls_gallery_config['height']
         });
 
 		$(".ws-ls-photos-carousel").unitegallery({
-			tile_width: 120,
-			tile_height: 120,
+			tile_width: 140,
+			tile_height: 140,
+            carousel_space_between_tiles:5,
+            tile_enable_image_effect:false,
+            tile_enable_overlay:false,
             gallery_width: "100%",
 			tile_enable_textpanel: true,
             tile_textpanel_title_text_align: "center",
