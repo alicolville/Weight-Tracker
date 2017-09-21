@@ -282,7 +282,7 @@ input.ws-ls-valid
     font-size: 13px;
 }
 .ws-ls-blockquote p {
-    margin: 0px;
+    margin: 0px 0px 0px 5px;
 }
 .ws-ls-photo-select {
     width: 100%;

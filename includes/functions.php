@@ -653,14 +653,15 @@ function ws_ls_display_data_saved_message() {
  * @class ws-ls-success
  * @text
  *
- * //TODO: Change all block quotes to use this.
  */
-function ws_ls_display_blockquote($text, $class = '', $just_echo = false) {
+function ws_ls_display_blockquote($text, $class = '', $just_echo = false, $include_log_link = false) {
 
-	$html_output = sprintf('<blockquote class="ws-ls-blockquote%s"><p>%s</p></blockquote>',
+	$html_output = sprintf('<blockquote class="ws-ls-blockquote%s"><p>%s</p>%s</blockquote>',
 									(false === empty($class)) ? ' ' . esc_html($class) : '',
-									esc_html($text));
-// TODO: Sort the styling so the text within blcok quote looks better
+									esc_html($text),
+									(true === $include_log_link) ? '<p><a href="' . esc_url(wp_login_url(get_permalink())) . '">' . __('Login now', WE_LS_SLUG) . '</a></p>' : ''
+						);
+
 	if (true === $just_echo) {
 		echo $html_output;
 	} else {

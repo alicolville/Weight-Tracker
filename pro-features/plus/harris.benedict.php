@@ -70,7 +70,7 @@
      * @param bool $missing_data_text
      * @return string
      */
-	function ws_ls_harris_benedict_render_table($user_id, $missing_data_text = false) {
+	function ws_ls_harris_benedict_render_table($user_id, $missing_data_text = false,  $additional_css_class = '') {
 
 		$user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
 
@@ -81,7 +81,7 @@
 		if(false === empty($calories)) {
 
 		    // Table Header
-            $html = sprintf('<table class="%s">
+            $html = sprintf('<table class="%s%s">
                                 <tr>
                                     <th class="ws-ls-empty-cell row-title"></th>
                                     <th>%s</th>
@@ -90,6 +90,7 @@
                                     <th>%s (30%%)</th>
                                     <th>%s (20%%)</th>
                                 </tr>',
+							(false === empty($additional_css_class)) ? esc_attr($additional_css_class) . ' ' : '',
                                 false === is_admin() ? 'ws-ls-harris-benedict' : 'widefat',
                                 __( 'Total', WE_LS_SLUG ),
                                 __( 'Breakfast', WE_LS_SLUG ),
@@ -108,7 +109,7 @@
                                     <td>%s</td>
                                     <td>%s</td>
                                 </tr>',
-                                __( 'Maintain', WE_LS_SLUG ),
+							    __( 'Maintain', WE_LS_SLUG ),
                                 number_format($calories['maintain']['total']),
                                 esc_html($calories['maintain']['breakfast']),
                                 esc_html($calories['maintain']['lunch']),
@@ -194,14 +195,14 @@
 			return;
 		}
 
-		$arguments = shortcode_atts([
+		$arguments = shortcode_atts([	'css-class' => '',
 										'error-message' => __('Please ensure all relevant data to calculate calorie intake has been entered i.e. Activity Level, Date of Birth, Current Weight, Gender and Height.', WE_LS_SLUG ),
 										'user-id' => false
 									], $user_defined_arguments );
 
 		$arguments['user-id'] = ws_ls_force_numeric_argument($arguments['user-id']);
 
-		return ws_ls_harris_benedict_render_table($arguments['user-id'], $arguments['error-message']);
+		return ws_ls_harris_benedict_render_table($arguments['user-id'], $arguments['error-message'], $arguments['css-class']);
 	}
 	add_shortcode( 'wlt-calories-table', 'ws_ls_shortcode_harris_benedict_table' );
 

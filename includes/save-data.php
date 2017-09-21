@@ -37,7 +37,7 @@ function ws_ls_capture_and_handle_form_post()
                     wp_safe_redirect($_POST['ws_redirect']);
                     exit;
                 }  elseif ($save_success) {
-					$html_output .= '<blockquote class="ws-ls-blockquote ws-ls-success"><p>' . __('Saved!', WE_LS_SLUG) . '</p></blockquote>';
+					$html_output .= ws_ls_display_blockquote( __('Saved!', WE_LS_SLUG) , 'ws-ls-success');
 				} else {
 					$error = __('An error occurred while saving your data!', WE_LS_SLUG);
 				}
@@ -49,7 +49,7 @@ function ws_ls_capture_and_handle_form_post()
 		}
 
 		if($error) {
-			$html_output .= '<blockquote class="ws-ls-blockquote ws-ls-error-text"><p>' . $error . '</p></blockquote>';
+			$html_output .=  ws_ls_display_blockquote( $error, 'ws-ls-error-text');
 		}
 
 		$save_response['message'] = $html_output;

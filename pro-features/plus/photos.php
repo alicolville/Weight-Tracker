@@ -38,6 +38,7 @@ function ws_ls_photos_shortcode_oldest($user_defined_arguments) {
         $user_defined_arguments = [];
     }
 
+	$user_defined_arguments['error-message'] = (true === empty($user_defined_arguments['error-message'])) ? __('No photos were found.', WE_LS_SLUG ) : $user_defined_arguments['error-message'];
     $user_defined_arguments['recent'] = false;
 
 	return ws_ls_photos_shortcode_core($user_defined_arguments);
@@ -49,12 +50,13 @@ add_shortcode('wlt-photo-oldest', 'ws_ls_photos_shortcode_oldest');
 function ws_ls_photos_shortcode_core($user_defined_arguments) {
 
     $arguments = shortcode_atts([
-        'error-message' => __('No recent photo found', WE_LS_SLUG ),
+		'css-class' => '',
+    	'error-message' => __('No recent photo found.', WE_LS_SLUG ),
+		'height' => 200,
+		'hide-date' => false,
         'user-id' => get_current_user_id(),
-        'width' => 200,
-        'height' => 200,
-        'recent' => true,
-        'hide-date' => false
+		'recent' => true,
+        'width' => 200
     ], $user_defined_arguments );
 
     $arguments['user-id'] = ws_ls_force_numeric_argument($arguments['user-id'], get_current_user_id());
@@ -62,16 +64,16 @@ function ws_ls_photos_shortcode_core($user_defined_arguments) {
     $arguments['height'] = ws_ls_force_numeric_argument($arguments['height'], 200);
     $arguments['recent'] = ws_ls_force_bool_argument($arguments['recent']);
     $arguments['hide-date'] = ws_ls_force_bool_argument($arguments['hide-date']);
+	$arguments['css-class'] = (false === empty($arguments['css-class'])) ? esc_attr($arguments['css-class']) . ' ' : '';
 
     // Fetch photo
     $photo = ws_ls_photos_db_get_recent_or_latest($arguments['user-id'], $arguments['recent'], $arguments['width'], $arguments['height']);
 
     if ( false === empty($photo) ) {
-        return ws_ls_photos_shortcode_render($photo, 'ws-ls-photo-' . ( true === $arguments['recent'] ? 'recent' : 'oldest' ), $arguments['hide-date']);
+        return ws_ls_photos_shortcode_render($photo, $arguments['css-class']. 'ws-ls-photo-' . ( true === $arguments['recent'] ? 'recent' : 'oldest' ), $arguments['hide-date']);
     } else {
         return esc_html($arguments['error-message']);
     }
-
 }
 
 /**
@@ -160,11 +162,11 @@ function ws_ls_photos_db_get_recent_or_latest($user_id = false, $recent = false,
 
 	// Return cache if found!
 	if ($cache = ws_ls_cache_user_get($user_id, $cache_key))   {
-		return $cache;
+//		return $cache;
 	}
 
 	$table_name = $wpdb->prefix . WE_LS_TABLENAME;
-	$sql = $wpdb->prepare("SELECT id as entry_id, weight_date, photo_id FROM $table_name where weight_user_id = %d and photo_id is not null order by weight_date " . $direction . " limit 0, 1", $user_id);
+	$sql = $wpdb->prepare("SELECT id as entry_id, weight_date, photo_id FROM $table_name where weight_user_id = %d and photo_id is not null and photo_id <> 0 order by weight_date " . $direction . " limit 0, 1", $user_id);
 	$photo = $wpdb->get_row($sql, ARRAY_A);
 
 	if ( false === empty($photo) ) {
@@ -210,13 +212,13 @@ function ws_ls_photos_db_get_all_photos($user_id = false, $include_image_object 
 
     // Return cache if found!
     if ($cache = ws_ls_cache_user_get($user_id, $cache_key))   {
-       // return $cache;
+    	return $cache;
     }
 
     $limit = ( false === empty($limit) && is_numeric($limit) ) ? ' limit 0, ' . intval($limit) : '';
 
     $table_name = $wpdb->prefix . WE_LS_TABLENAME;
-    $sql = $wpdb->prepare("SELECT * FROM $table_name where weight_user_id = %d and photo_id is not null order by weight_date " . $direction . $limit, $user_id);
+    $sql = $wpdb->prepare("SELECT * FROM $table_name where weight_user_id = %d and photo_id is not null and photo_id <> 0 order by weight_date " . $direction . $limit, $user_id);
     $photos = $wpdb->get_results($sql);
 
     $photos_to_return = [];
@@ -243,19 +245,17 @@ function ws_ls_photos_db_get_all_photos($user_id = false, $include_image_object 
             if ( true === $include_image_object ) {
 				$photo_src = ws_ls_photo_get($photo['photo_id'], $width, $height);
 
-				if ( false === empty($photo) ) {
+				if ( false === empty($photo_src) ) {
 					$photo = array_merge($photo_src, $photo);
 				}
             }
 
             $photos_to_return[] = $photo;
         }
-
-        ws_ls_cache_user_set($user_id, $cache_key, $photos_to_return);
-        return $photos_to_return;
     }
 
-    return false;
+	ws_ls_cache_user_set($user_id, $cache_key, $photos_to_return);
+	return $photos_to_return;
 }
 
 /**

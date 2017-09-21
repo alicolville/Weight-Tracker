@@ -11,7 +11,7 @@
 
 			// Display error if user not logged in
 			if (!is_user_logged_in())	{
-				return '<blockquote class="ws-ls-blockquote"><p>' .	__('You need to be logged in to record your weight.', WE_LS_SLUG) . ' <a href="' . wp_login_url(get_permalink()) . '">' . __('Login now', WE_LS_SLUG) . '</a>.</p></blockquote>';
+				return ws_ls_display_blockquote(__('You need to be logged in to record your weight.', WE_LS_SLUG) , '', false, true);
 			}
 
             $shortcode_arguments = shortcode_atts(
@@ -42,9 +42,9 @@
 			}
 
 			if(isset($_GET['user-preference-saved']) && 'true' == $_GET['user-preference-saved'])	{
-					$html_output .= '<blockquote class="ws-ls-blockquote"><p>' . __('Your settings have been saved!', WE_LS_SLUG) . '</p></blockquote>';
-			}elseif(WE_LS_ALLOW_USER_PREFERENCES && isset($_GET['user-delete-all']) && 'true' == $_GET['user-delete-all'])	{
-					$html_output .= '<blockquote class="ws-ls-blockquote"><p>' . __('Your weight history has been deleted!', WE_LS_SLUG) . '</p></blockquote>';
+				$html_output .= ws_ls_display_blockquote(__('Your settings have been saved!', WE_LS_SLUG), 'ws-ls-success');
+			} elseif(WE_LS_ALLOW_USER_PREFERENCES && isset($_GET['user-delete-all']) && 'true' == $_GET['user-delete-all'])	{
+				$html_output .= ws_ls_display_blockquote(__('Your weight history has been deleted!', WE_LS_SLUG), 'ws-ls-success');
 			}
 			// Has the user selected a particular week to look at?
 			$selected_week_number = -1;
@@ -101,7 +101,7 @@
 				$html_output .= ws_ls_display_chart($weight_data_for_graph);
 			}
 			else {
-				$html_output .= '<blockquote class="ws-ls-blockquote"><p>' . __('A graph will appear once several weights have been entered.', WE_LS_SLUG) . '</p></blockquote>';
+				$html_output .= ws_ls_display_blockquote( __('A graph will appear once several weights have been entered.', WE_LS_SLUG) );
 			}
 
 			// Include target form?

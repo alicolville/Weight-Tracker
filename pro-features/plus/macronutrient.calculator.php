@@ -70,7 +70,7 @@ function ws_ls_macro_calculate($user_id = false)
  * @param bool $missing_data_text
  * @return string
  */
-function ws_ls_macro_render_table($user_id, $missing_data_text = false)
+function ws_ls_macro_render_table($user_id, $missing_data_text = false, $additional_css_class = '')
 {
 
     $user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
@@ -81,7 +81,9 @@ function ws_ls_macro_render_table($user_id, $missing_data_text = false)
 
     if (false === empty($macros)) {
 
-        $html = sprintf('<table class="ws-ls-macro%s">', false === is_admin() ? '' : ' widefat');
+        $html = sprintf('<table class="%sws-ls-macro%s">',
+			(false === empty($additional_css_class)) ? esc_attr($additional_css_class) . ' ' : '',
+				false === is_admin() ? '' : ' widefat');
 
         foreach (['lose', 'maintain'] as $key) {
 
@@ -95,8 +97,8 @@ function ws_ls_macro_render_table($user_id, $missing_data_text = false)
                                     <th>%s</th>
                                     <th>%s</th>
                                 </tr>
-                             </thead>',
-                ('maintain' == $key) ? __('Maintain', WE_LS_SLUG) : __('Lose', WE_LS_SLUG),
+                            </thead>',
+				('maintain' == $key) ? __('Maintain', WE_LS_SLUG) : __('Lose', WE_LS_SLUG),
                 number_format($macros[$key]['calories']),
                 __('Total', WE_LS_SLUG),
                 __('Breakfast', WE_LS_SLUG),
@@ -216,14 +218,14 @@ function ws_ls_shortcode_macro_table($user_defined_arguments) {
 		return;
 	}
 
-	$arguments = shortcode_atts([
+	$arguments = shortcode_atts([	'css-class' => '',
 									'error-message' => __('Please ensure all relevant data to calculate calorie intake has been entered i.e. Activity Level, Date of Birth, Current Weight, Gender and Height.', WE_LS_SLUG ),
 									'user-id' => false
 								], $user_defined_arguments );
 
 	$arguments['user-id'] = ws_ls_force_numeric_argument($arguments['user-id']);
 
-	return ws_ls_macro_render_table($arguments['user-id'], $arguments['error-message']);
+	return ws_ls_macro_render_table($arguments['user-id'], $arguments['error-message'], $arguments['css-class']);
 }
 add_shortcode( 'wlt-macronutrients-table', 'ws_ls_shortcode_macro_table' );
 

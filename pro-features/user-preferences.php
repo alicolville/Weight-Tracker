@@ -5,7 +5,7 @@ function ws_ls_user_preferences_form($user_defined_arguments)
 {
     // If not logged in then return no value
     if (!is_user_logged_in())	{
-        return '<blockquote class="ws-ls-blockquote"><p>' .	__('You must be logged in to edit your settings.', WE_LS_SLUG) . ' <a href="' . wp_login_url(get_permalink()) . '">' . __('Login now', WE_LS_SLUG) . '</a>.</p></blockquote>';
+		return ws_ls_display_blockquote( __('You must be logged in to edit your settings.', WE_LS_SLUG) , '', false, true);
     }
 
     $html_output = '';

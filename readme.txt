@@ -12,6 +12,10 @@ Allow registered users of your website to track their weight and relevant body m
 
 == Description ==
 
+= Documentation =
+
+Use our free site for tracking your weight which shows of some of the plugin's feature: [TrackYourWeight.co.uk - Shortcode guide](https://www.trackyourweight.co.uk "TrackYourWeight.co.uk")
+
 = Core Features =
 
 An easy to use plugin that allows your users to track their weight and relevant body measurements. Their entries can be seen in various ways, charts, tables, shortcodes and widgets. The user is able to set targets and modify their weight entries.
@@ -27,7 +31,7 @@ For further information read our documentation:
 = Pro Plus Version =
 
 * All of the features that come with a standard Pro license.
-* **Photo uploads** - TODO
+* **Photo uploads**. Your users can now upload photos of their progress. Photos can be viewed, updated and removed by the end user and administrators. Handy shortcodes are provided for displaying galleries, most recent and oldest photo.
 * **Basal Metabolic Rate (BMR) calculations per user**. Shortcodes and extended admin screens to display a user's BMR. For further information on BMR and how it is calculated visit our calculations page.
 * **Harris Benedict formula**. Shortcodes and extended admin screens to a view a person's calorie intake required to maintain and lose weight. For further information on Harris Benedict Formula and how it is calculated visit our calculations page.
 * **Recommended calorie intake per meal time**. Shortcodes and extended admin screens to recommend how a person should split their daily calorie intake across meals. For further information on how this is calculated please visit our calculations page.
@@ -129,42 +133,38 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 == Upgrade Notice ==
 
-5.2! TODO
+5.2! Pro Plus now supports photo uploads from your members!
 
 == Changelog ==
 
-
 = 5.2 =
 
-//TODO: Update feature lisst in plugin and online
-//TODO: Footable locale
-//TODO: mininmise: data.footable.js / ws-ls.js / ws-ls.css
-
+// TODO: shortcode for number of photos
+// TODO: only show carosel when x number of photos? replace caorsel?
+//TODO: Add photo admin page.
+// TODO: user summary, show the last 5 photos for the user? Slider? Standard HTML? USE TILES GRID - No space with text panel.
+//TODO: Add BW Hover to unite thumbs?
 
 * Photo Uploads!
- * New field on attachments "Don't show to public" (set to true by default) to stop user photo's being rendered on standard attachment pages.
- * New shortcode [wlt-photo-oldest] to display the user's oldest photo - Read more: https://weight.yeken.uk/shortcodes/
- * New shortcode [wlt-photo-recent] to display the user's most recent photo - Read more: https://weight.yeken.uk/shortcodes/
-
-//TODO: Args for above shortcodes
-		'error-message' => __('No recent photo found', WE_LS_SLUG ),
-		'user-id' => get_current_user_id(),
-		'width' => 200,
-		'height' => 200
-		hide-date
-
-* Improvement: Standard Pro Users can now upgrade to Pro Plus for 50% cheaper! //TODO: update: https://weight.yeken.uk/get-pro-plus-existing-license-holders/
-* Improvement: [wlt] shortcode has a new argument "hide-photos". If set to true, the photo section of the form will be hidden. Read more: https://weight.yeken.uk/shortcodes/ //TODO: Update docs
-* Improvement: Added field "photo" to [wlt-if] shortcode. Allows you to check if the user has uploaded a photo. //TODO: docs
-* Improvement: New hook "wlt-hook-data-entry-deleted" created. Fired when an entry is deleted. //TODO: docs
+	* New field on attachments "Don't show to public" (set to true by default) to stop user photo's being rendered on standard attachment pages.
+	* Users can now upload / replace / remove a photo alongside their weight / measurement entries.
+	* Admin can view all photos uploaded by a user.
+	* Admin can upload / replace / remove a user's photo.
+ 	* New shortcode [wlt-photo-oldest] to display the user's oldest photo - Read more: https://weight.yeken.uk/shortcodes/
+ 	* New shortcode [wlt-photo-recent] to display the user's most recent photo - Read more: https://weight.yeken.uk/shortcodes/
+ 	* New shortcode [wlt-gallery] to display the user's most recent photo - Read more: https://weight.yeken.uk/shortcodes/
+* Improvement: Added "css-class" argument for [wlt-macronutrients-table] shortcode - Read more: https://weight.yeken.uk/shortcodes/
+* Improvement: Added "css-class" argument for [wlt-calories-table] shortcode - Read more: https://weight.yeken.uk/shortcodes/
+* Improvement: Standard Pro Users can now upgrade to Pro Plus for 50% cheaper!
+* Improvement: [wlt] shortcode has a new argument "hide-photos". If set to true, the photo section of the form will be hidden. Read more: https://weight.yeken.uk/shortcodes/
+* Improvement: Added field "photo" to [wlt-if] shortcode. Allows you to check if the user has uploaded a photo.
+* Improvement: New hook "wlt-hook-data-entry-deleted" created. Fired when an entry is deleted.
 * Improvement: Removed DataTables.js and replaced with Footable.js for advanced data tables. This keeps the front end consistent with admin area.
-* Improvement: [wlt-table] has a new argument to disable data being edited / deleted "enable-add-edit". Read more: https://weight.yeken.uk/shortcodes/  //TODO docs
-
-'user-id' => get_current_user_id(),         				'enable-add-edit'
-
+* Improvement: [wlt-table] has a new argument to disable data being edited / deleted "enable-add-edit". Read more: https://weight.yeken.uk/shortcodes/
 * Improvement: [wlt-table] user's now have the option to edit their data with this shortcode (not just delete).
 * Improvement: Tweaked form headers to say "Edit" intead of "Add" when editing an entry.
 * Improvement: Editing an entry is done using PHP and HTML. jQuery / Ajax has been removed so more reliable.
+* Improvement: Re-factored all <blockquotes> to use one function to keep things consistent.
 * Bug fix: When display a user's weight entries on Search results, if there are no entries, display nothing instead of 0[weight unit]
 * Bug fix: Don't display "Difference form target" if there is no recent or target weights to calculate from.
 

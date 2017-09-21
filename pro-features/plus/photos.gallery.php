@@ -2,6 +2,10 @@
 
 defined('ABSPATH') or die("Jog on!");
 
+/**
+ * Enqueue relevant JS / CSS for Photo / uniteGallery
+ * @param string $mode
+ */
 function ws_ls_photos_gallery_js_css($mode = 'default') {
 
 	$mode = ws_ls_photos_gallery_validate_mode($mode);
@@ -14,7 +18,12 @@ function ws_ls_photos_gallery_js_css($mode = 'default') {
 }
 
 
-
+/**
+ * [wlt-gallery] shortcode
+ *
+ * @param $user_defined_arguments
+ * @return string
+ */
 function ws_ls_photos_shortcode_gallery($user_defined_arguments) {
 
     $arguments = shortcode_atts([
@@ -22,6 +31,8 @@ function ws_ls_photos_shortcode_gallery($user_defined_arguments) {
         'user-id' => get_current_user_id(),
         'mode' => 'default',                    // Gallery type: carousel, default or compact
         'height' => 800,                        // Height of slider if compact or default theme
+		'css-class' => ''
+		// TODO: Add limit and direction
     ], $user_defined_arguments );
 
     $arguments['height'] = ws_ls_force_numeric_argument($arguments['height'], 800);
@@ -39,7 +50,7 @@ function ws_ls_photos_shortcode_gallery($user_defined_arguments) {
         // If compact / default pass config settings to JS
 		wp_localize_script('ws-ls-pro-gallery', 'ws_ls_gallery_config', ['height' => $arguments['height']]);
 
-		$html = '<div id="ws-ls-'. uniqid() . '" class="ws-ls-photos-' . $arguments['mode'] . '" style="display:none;">';
+		$html = '<div id="ws-ls-'. uniqid() . '" class="ws-ls-photos-' . $arguments['mode'] . ((false === empty($arguments['css-class'])) ? ' ' . esc_attr($arguments['css-class']) : '' ) . '" style="display:none;">';
 
 		foreach ($photos as $photo) {
 
@@ -65,6 +76,12 @@ function ws_ls_photos_shortcode_gallery($user_defined_arguments) {
 }
 add_shortcode('wlt-gallery', 'ws_ls_photos_shortcode_gallery');
 
+/**
+ * Used to validate the type of uniteGallery being used.
+ *
+ * @param $mode
+ * @return string
+ */
 function ws_ls_photos_gallery_validate_mode($mode) {
 	return ( false === in_array($mode, ['default', 'carousel', 'compact']) ) ? 'default' : $mode;
 }

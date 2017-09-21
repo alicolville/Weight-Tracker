@@ -60,8 +60,8 @@
         // Make sure they are logged in
         if (false == $chart_config['ignore-login-status'] && !is_user_logged_in())	{
             if (false == $chart_config['hide_login_message_if_needed']) {
-                return '<blockquote class="ws-ls-blockquote"><p>' .	__('You need to be logged in to record your weight.', WE_LS_SLUG) . ' <a href="' . wp_login_url(get_permalink()) . '">' . __('Login now', WE_LS_SLUG) . '</a>.</p></blockquote>';
-            } else {
+				return ws_ls_display_blockquote(__('You need to be logged in to record your weight.', WE_LS_SLUG) , '', false, true);
+			} else {
                 return;
             }
         }
@@ -252,7 +252,7 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 
             $prompt = ( true === $target_form ) ? __('You need to be logged in to set your target.', WE_LS_SLUG) : __('You need to be logged in to record your weight.', WE_LS_SLUG);
 
-            return '<blockquote class="ws-ls-blockquote"><p>' .	$prompt . ' <a href="' . wp_login_url(get_permalink()) . '">' . __('Login now', WE_LS_SLUG) . '</a>.</p></blockquote>';
+            return ws_ls_display_blockquote($prompt, '', false, true);
         } else {
             return;
         }
