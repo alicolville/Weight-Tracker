@@ -22,6 +22,9 @@ function ws_ls_box_user_search_form() {
 // User Side Bar
 // ------------------------------------------------------------------------------
 
+/**
+ * @param $user_id
+ */
 function ws_ls_user_side_bar($user_id) {
 
 	if(true === empty($user_id) )  {
@@ -37,6 +40,34 @@ function ws_ls_user_side_bar($user_id) {
 				<?php ws_ls_box_user_search_form(); ?>
 			</div>
 		</div>
+
+		<?php if (WE_LS_PHOTOS_ENABLED) : ?>
+			<div class="postbox">
+				<h2 class="hndle"><?php echo __('Most Recent Photo', WE_LS_SLUG); ?></h2>
+				<div class="inside">
+					<center>
+						<?php
+
+							if(ws_ls_has_a_valid_pro_plus_license()) {
+								echo ws_ls_photos_shortcode_recent(['user-id' => $user_id, 'width' => 200, 'height' => 200, 'hide-date' => true]);
+
+                                $photo_count = ws_ls_photos_db_count_photos($user_id);
+
+                                echo sprintf('<p>%s <strong>%s</strong>. <a href="%s">%s</a></p>',
+                                    __('No. of photos: ', WE_LS_SLUG),
+                                    $photo_count,
+                                    ws_ls_get_link_to_photos($user_id),
+                                    __('View all', WE_LS_SLUG)
+                                );
+							} else {
+								echo sprintf('<a href="%s">Upgrade to Pro Plus</a>', ws_ls_upgrade_link());
+							}
+					   ?>
+					</center>
+				</div>
+			</div>
+		<?php endif; ?>
+
 		<div class="postbox ws-ls-user-data">
 			<h2 class="hndle"><span><?php echo __('User Information', WE_LS_SLUG); ?></span></h2>
 			<div class="inside">

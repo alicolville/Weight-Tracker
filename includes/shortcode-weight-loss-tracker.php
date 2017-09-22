@@ -11,7 +11,7 @@
 
 			// Display error if user not logged in
 			if (!is_user_logged_in())	{
-				return '<blockquote class="ws-ls-blockquote"><p>' .	__('You need to be logged in to record your weight.', WE_LS_SLUG) . ' <a href="' . wp_login_url(get_permalink()) . '">' . __('Login now', WE_LS_SLUG) . '</a>.</p></blockquote>';
+				return ws_ls_display_blockquote(__('You need to be logged in to record your weight.', WE_LS_SLUG) , '', false, true);
 			}
 
             $shortcode_arguments = shortcode_atts(
@@ -20,7 +20,8 @@
 				'hide-first-target-form' => false,			// Hide first Target form
 				'hide-second-target-form' => false,			// Hide second Target form
 				'show-add-button' => false,					// Display a "Add weight" button above the chart.
-                'allow-delete-data' => true
+                'allow-delete-data' => true,                // Show "Delete your data" section
+                'hide-photos' => false                      // Hide photos part of form
                ), $user_defined_arguments );
 
 			// Validate arguments
@@ -29,6 +30,7 @@
 			$shortcode_arguments['show-add-button'] = ws_ls_force_bool_argument($shortcode_arguments['show-add-button']);
 			$shortcode_arguments['min-chart-points'] = ws_ls_force_numeric_argument($shortcode_arguments['min-chart-points'], 2);
             $shortcode_arguments['allow-delete-data'] = ws_ls_force_bool_argument($shortcode_arguments['allow-delete-data']);
+            $shortcode_arguments['hide-photos'] = ws_ls_force_bool_argument($shortcode_arguments['hide-photos']);
 
             $user_id = get_current_user_id();
 
@@ -40,9 +42,9 @@
 			}
 
 			if(isset($_GET['user-preference-saved']) && 'true' == $_GET['user-preference-saved'])	{
-					$html_output .= '<blockquote class="ws-ls-blockquote"><p>' . __('Your settings have been saved!', WE_LS_SLUG) . '</p></blockquote>';
-			}elseif(WE_LS_ALLOW_USER_PREFERENCES && isset($_GET['user-delete-all']) && 'true' == $_GET['user-delete-all'])	{
-					$html_output .= '<blockquote class="ws-ls-blockquote"><p>' . __('Your weight history has been deleted!', WE_LS_SLUG) . '</p></blockquote>';
+				$html_output .= ws_ls_display_blockquote(__('Your settings have been saved!', WE_LS_SLUG), 'ws-ls-success');
+			} elseif(WE_LS_ALLOW_USER_PREFERENCES && isset($_GET['user-delete-all']) && 'true' == $_GET['user-delete-all'])	{
+				$html_output .= ws_ls_display_blockquote(__('Your weight history has been deleted!', WE_LS_SLUG), 'ws-ls-success');
 			}
 			// Has the user selected a particular week to look at?
 			$selected_week_number = -1;
@@ -99,7 +101,7 @@
 				$html_output .= ws_ls_display_chart($weight_data_for_graph);
 			}
 			else {
-				$html_output .= '<blockquote class="ws-ls-blockquote"><p>' . __('A graph will appear once several weights have been entered.', WE_LS_SLUG) . '</p></blockquote>';
+				$html_output .= ws_ls_display_blockquote( __('A graph will appear once several weights have been entered.', WE_LS_SLUG) );
 			}
 
 			// Include target form?
@@ -112,8 +114,29 @@
 				$html_output .= '<a name="add-weight"></a>';
 			}
 
-			// Display input form
-			$html_output .= ws_ls_display_weight_form(false, 'ws-ls-main-weight-form', false, false);
+			$entry_id = ws_ls_querystring_value('ws-edit-entry', true);
+
+			// Are we in front end and editing enabled, and of course we want to edit, then do so!
+			if( false === empty($entry_id)) {
+
+				if ($entry_id) {
+					$data = ws_ls_get_weight(get_current_user_id(), $entry_id);
+				}
+
+				//If we have a Redirect URL, base decode.
+				$redirect_url = ws_ls_querystring_value('redirect');
+
+				if (false === empty($redirect_url)) {
+					$redirect_url = base64_decode($redirect_url);
+				}
+
+				$html_output .= ws_ls_display_weight_form(false, false,	false, false, false, false,
+					false, false, $redirect_url, $data, true, $shortcode_arguments['hide-photos']);
+			} else {
+
+				// Display input form in add mode
+				$html_output .= ws_ls_display_weight_form(false, 'ws-ls-main-weight-form', false, false, false, false, true, false, false, false, false, $shortcode_arguments['hide-photos']);
+			}
 
 			// Close first tab
 			$html_output .= ws_ls_end_tab();
@@ -137,7 +160,7 @@
 					}
 
 					if (WS_LS_ADVANCED_TABLES && WS_LS_IS_PRO){
-						$html_output .= ws_ls_advanced_data_table($weight_data);
+						$html_output .=  ws_ls_data_table_placeholder($user_id, false, false, true);
 					} else {
 						$html_output .= ws_ls_display_table($weight_data);
 					}

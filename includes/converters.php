@@ -58,11 +58,11 @@ function ws_ls_round_decimals($value)
   return $value;
 }
 
-function ws_ls_convert_kg_into_relevant_weight_String($kg, $comparison_value = false) {
+function ws_ls_convert_kg_into_relevant_weight_String($kg, $comparison_value = false, $user_id = false) {
 
 	if ($kg) {
 
-		switch (ws_ls_get_config('WE_LS_DATA_UNITS')) {
+		switch (ws_ls_get_config('WE_LS_DATA_UNITS', $user_id)) {
 			case 'pounds_only':
 				return ws_ls_to_lb($kg) . __('lbs', WE_LS_SLUG);
 			break;

@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight, loss, lose, helper, bmi, body, mass, index, graph, track, stones, kg, table, data, plot, target, history, pounds, responsive, chart, measurements, cm, centimeters, inches, hip, waist, bicep, thigh
 Requires at least: 4.4.0
 Tested up to: 4.8
-Stable tag: 5.1.7
+Stable tag: 5.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate Link: https://www.paypal.me/yeken
@@ -11,6 +11,10 @@ Donate Link: https://www.paypal.me/yeken
 Allow registered users of your website to track their weight and relevant body measurements. History can be displayed in both tables & charts. Support for BMI, BMR, Calorie Intake, Macronutrients and much more!
 
 == Description ==
+
+= Documentation =
+
+Use our free site for tracking your weight which shows of some of the plugin's feature: [TrackYourWeight.co.uk - Shortcode guide](https://www.trackyourweight.co.uk "TrackYourWeight.co.uk")
 
 = Core Features =
 
@@ -27,6 +31,7 @@ For further information read our documentation:
 = Pro Plus Version =
 
 * All of the features that come with a standard Pro license.
+* **Photo uploads**. Your users can now upload photos of their progress. Photos can be viewed, updated and removed by the end user and administrators. Handy shortcodes are provided for displaying galleries, most recent and oldest photo.
 * **Basal Metabolic Rate (BMR) calculations per user**. Shortcodes and extended admin screens to display a user's BMR. For further information on BMR and how it is calculated visit our calculations page.
 * **Harris Benedict formula**. Shortcodes and extended admin screens to a view a person's calorie intake required to maintain and lose weight. For further information on Harris Benedict Formula and how it is calculated visit our calculations page.
 * **Recommended calorie intake per meal time**. Shortcodes and extended admin screens to recommend how a person should split their daily calorie intake across meals. For further information on how this is calculated please visit our calculations page.
@@ -124,12 +129,43 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 13. Admin - User search results
 14. Admin - Edit a user's data entry
 15. Admin - User's data card displayed on a tablet
+16. Admin - Displaying a another view of the user's data card
 
 == Upgrade Notice ==
 
-5.1! Now support for BMR, BMI, Calorie intake and Macronutrient Calculator.
+5.2! Pro Plus now supports photo uploads from your members!
 
 == Changelog ==
+
+= 5.2 =
+
+* Photo Uploads!
+	* New field on attachments "Don't show to public" (set to true by default) to stop user photo's being rendered on standard attachment pages.
+	* Users can now upload / replace / remove a photo alongside their weight / measurement entries.
+	* Admin can view all photos uploaded by a user.
+	* Admin can upload / replace / remove a user's photo.
+	* New shortcode [wlt-photo-count] to display the number of photos uploaded by the user - Read more: https://weight.yeken.uk/shortcodes/
+ 	* New shortcode [wlt-photo-oldest] to display the user's oldest photo - Read more: https://weight.yeken.uk/shortcodes/
+ 	* New shortcode [wlt-photo-recent] to display the user's most recent photo - Read more: https://weight.yeken.uk/shortcodes/
+ 	* New shortcode [wlt-gallery] to display the user's most recent photo - Read more: https://weight.yeken.uk/shortcodes/
+* Improvement: Added "css-class" argument for [wlt-macronutrients-table] shortcode - Read more: https://weight.yeken.uk/shortcodes/
+* Improvement: Added "css-class" argument for [wlt-calories-table] shortcode - Read more: https://weight.yeken.uk/shortcodes/
+* Improvement: Standard Pro Users can now upgrade to Pro Plus for 50% cheaper!
+* Improvement: [wlt] shortcode has a new argument "hide-photos". If set to true, the photo section of the form will be hidden. Read more: https://weight.yeken.uk/shortcodes/
+* Improvement: Added field "photo" to [wlt-if] shortcode. Allows you to check if the user has uploaded a photo.
+* Improvement: New hook "wlt-hook-data-entry-deleted" created. Fired when an entry is deleted.
+* Improvement: Removed DataTables.js and replaced with Footable.js for advanced data tables. This keeps the front end consistent with admin area.
+* Improvement: [wlt-table] has a new argument to disable data being edited / deleted "enable-add-edit". Read more: https://weight.yeken.uk/shortcodes/
+* Improvement: [wlt-table] user's now have the option to edit their data with this shortcode (not just delete).
+* Improvement: Tweaked form headers to say "Edit" intead of "Add" when editing an entry.
+* Improvement: Editing an entry is done using PHP and HTML. jQuery / Ajax has been removed so more reliable.
+* Improvement: Re-factored all <blockquotes> to use one function to keep things consistent.
+* Improvement: Added French-speaking Canada (Québec), French-speaking Belgium and French-speaking Switzerland- thanks Pierre
+* Improvement: Updated French language - thanks Pierre
+* Bug fix: When display a user's weight entries on Search results, if there are no entries, display nothing instead of 0[weight unit]
+* Bug fix: Don't display "Difference form target" if there is no recent or target weights to calculate from.
+* Bug fix: Fixed locale issues in data tables.
+* Removed "(needed for BMR)" from setting fields.
 
 = 5.1.7 =
 

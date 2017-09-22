@@ -121,6 +121,15 @@ function ws_ls_get_link_to_edit_target($id) {
 }
 
 /**
+ * Given a user ID, return a link to view a user's photos
+ * @param  int $id User ID
+ * @return string
+ */
+function ws_ls_get_link_to_photos($id) {
+    return is_numeric($id) ? esc_url(admin_url( 'admin.php?page=ws-ls-wlt-data-home&mode=photos&user-id=' . $id )) : '#';
+}
+
+/**
  * Get link to settings page
  * @return string
  */

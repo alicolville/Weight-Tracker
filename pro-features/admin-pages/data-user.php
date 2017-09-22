@@ -52,6 +52,43 @@ function ws_ls_admin_page_data_user() {
 							?>
 						</div>
 					</div>
+                    <?php if ( WE_LS_PHOTOS_ENABLED || false === ws_ls_has_a_valid_pro_plus_license() ): ?>
+                        <div class="postbox">
+                            <h2 class="hndle"><span><?php echo __('Photos', WE_LS_SLUG); ?></span></h2>
+                            <div class="inside">
+                                <?php
+                                if( WE_LS_PHOTOS_ENABLED ) {
+
+                                    $photo_count = ws_ls_photos_db_count_photos($user_id);
+
+                                    echo sprintf('<p>%s <strong>%s %s</strong>. <a href="%s">%s</a>.</p>',
+                                            __('This user has uploaded ', WE_LS_SLUG),
+                                            $photo_count,
+                                            _n( 'photo', 'photos', $photo_count, WE_LS_SLUG ),
+                                            ws_ls_get_link_to_photos($user_id),
+                                            __('View all photos', WE_LS_SLUG)
+                                        );
+
+                                    if ($photo_count >= 1) {
+                                        echo ws_ls_photos_shortcode_gallery([   'error-message' => __('No photos could be found for this user.', WE_LS_SLUG),
+                                            'mode' => 'tilesgrid',
+                                            'limit' => 20,
+                                            'direction' => 'desc',
+                                            'user-id' => $user_id]);
+                                    }
+
+                                } else {
+
+                                    echo sprintf('<p><a href="%s">%s</a> %s.</p>',
+                                        ws_ls_upgrade_link(),
+                                        __('Upgrade to Pro Plus', WE_LS_SLUG),
+                                        __('to allow a user to upload photos of their progress' , WE_LS_SLUG)
+                                    );
+                                }
+                                ?>
+                            </div>
+                        </div>
+                    <?php endif; ?>
                     <div class="postbox">
                         <h2 class="hndle"><span><?php echo __('Daily calorie needs', WE_LS_SLUG); ?></span></h2>
                         <div class="inside">
@@ -102,7 +139,7 @@ function ws_ls_admin_page_data_user() {
 					<div class="postbox">
 						<h2 class="hndle"><span><?php echo __('Entries for this user', WE_LS_SLUG); ?></span></h2>
 						<div class="inside">
-							<?php ws_ls_data_table_placeholder($user_id, false, true); ?>
+							<?php echo ws_ls_data_table_placeholder($user_id, false, true); ?>
 						</div>
 					</div>
 				</div>

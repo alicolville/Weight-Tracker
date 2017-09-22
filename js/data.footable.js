@@ -1,9 +1,27 @@
 //
 // To compress this script, use https://jscompress.com
 //
-jQuery( document ).ready(function ($) {
+jQuery( document ).ready(function ($, undefined) {
 
 	ws_ls_log('Processing user data tables..');
+
+	$(".ws-ls-cancel-form").click(function( event ) {
+		event.preventDefault();
+
+		var button = $(this);
+		var form_id = button.data('form-id');
+
+		if ( undefined !== form_id ) {
+
+			var redirect_url = $('#' + form_id + ' #ws_redirect').val();
+
+			if ( undefined !== redirect_url ) {
+				window.location.href = redirect_url.replace('ws-edit-saved', 'ws-edit-cancel');
+			}
+
+		}
+
+	});
 
 	 $(".ws-ls-user-data-ajax").each(function () {
 
@@ -21,6 +39,7 @@ jQuery( document ).ready(function ($) {
 	   data['max_entries'] = max_entries;
 	   data['small_width'] = small_width;
 	   data['table_id'] = table_id;
+	   data['front-end'] = ws_ls_in_front_end();
 	   ws_ls_post_data_to_WP('table_data', data, ws_ls_callback_setup_table)
 
      });
@@ -34,7 +53,10 @@ jQuery( document ).ready(function ($) {
 		// var post_data = $.merge(post_data, data);
 		var post_data = obj3 = $.extend(post_data, data);
 
-	    $.post(ajaxurl, post_data, function(response, post_data) {
+        // If we're in the public facing site, set Ajax URL!
+        var post_url = ( 'undefined' === typeof(ajaxurl) && undefined !== ws_user_table_config["ajax-url"]) ? ws_user_table_config["ajax-url"] : ajaxurl;
+
+	    $.post(post_url, post_data, function(response, post_data) {
 	 	 // Fire back to given callback with response from server
 	 	 callback && callback(response, post_data);
 	    });
@@ -49,7 +71,9 @@ jQuery( document ).ready(function ($) {
 				return "<b>DATE: " + value + "</b>";
 		}
 
-		response.columns[3].formatter = formatters['date'];
+		var date_column = (ws_ls_in_front_end()) ? 2 : 3;
+
+		response.columns[date_column].formatter = formatters['date'];
 
 		// Apply formatters
 		var columns = ws_ls_apply_formatters(response.columns);
@@ -95,7 +119,16 @@ jQuery( document ).ready(function ($) {
 				},
 				editRow: function(row) {
 					var values = row.val();
-					window.location.href = ws_user_table_config['base-url'] + '&mode=entry&user-id=' + values.user_id + '&entry-id=' + values.db_row_id + '&redirect=' + ws_user_table_config['current-url-base64'];
+
+					// If we're in Admin, redirect to the relevant admin screen. Otherwise, toggle edit in front end
+					if(true === ws_ls_in_front_end()) {
+						var url = ws_user_table_config['edit-url'];
+						url = url.replace('|ws-id|', values.db_row_id);
+
+						window.location.href = url + '&user-id=' + values.user_id + '&redirect=' + ws_user_table_config['current-url-base64'];
+					} else {
+						window.location.href = ws_user_table_config['base-url'] + '&mode=entry&user-id=' + values.user_id + '&entry-id=' + values.db_row_id + '&redirect=' + ws_user_table_config['current-url-base64'];
+					}
 				}
 			}
 	 	});
@@ -141,9 +174,15 @@ jQuery( document ).ready(function ($) {
 		return value;
 	}
 
+	function ws_ls_in_front_end() {
+		return ( undefined !== ws_user_table_config['front-end'] && 'true' == ws_user_table_config['front-end']) ? true : false;
+	}
+
 });
 
 
 function ws_ls_log(text) {
-	console.log(text);
+	if (window.console) {
+		console.log(text);
+	}
 }

@@ -82,7 +82,7 @@ function ws_ls_advertise_pro() {
 									} elseif ('pro-old' === $license_type) {
 
 										echo sprintf('<h3>%s</h3><p>%s</p><h3>%s</h3><p>%s</p>',
-											__('Legacy License', WE_LS_SLUG),
+											__('Legacy Pro License', WE_LS_SLUG),
 											__('Our licensing has model has changed, Prior to September 2017 it used to be a one off payment that enabled the Pro features of the plugin. This is still the case and any old licenses will still be honoured.', WE_LS_SLUG),
 											__('Moving to a yearly license', WE_LS_SLUG),
 											__('There is no reason to move to a yearly license - Pro features will remain the same for legacy and new Pro subscriptions. However, if you were to move to a yearly subscription you will be supporting the development of the plugin (and I\'ll give you a big hug).', WE_LS_SLUG)
@@ -117,9 +117,27 @@ function ws_ls_advertise_pro() {
                                     <center>
                                         <h3><?php echo __('In case you need, your <strong>Site Hash</strong> is', WE_LS_SLUG); ?>: <?php echo ws_ls_generate_site_hash(); ?></h3>
 
-										<?php if ($display_pro_plus_marketing) : ?>
-											<a href="<?php echo WE_LS_UPGRADE_TO_PRO_PLUS_URL; ?>?hash=<?php echo ws_ls_generate_site_hash(); ?>" target="_blank" class="button-primary ws-ls-upgrade-button"><?php echo __('Upgrade to Pro Plus for', WE_LS_SLUG); ?> &pound;<?php echo $proprice; ?> <?php echo __('a year', WE_LS_SLUG); ?></a>
-										<?php endif; ?>
+										<?php if ($display_pro_plus_marketing)  {
+
+                                            $text = __('Upgrade to Pro Plus for', WE_LS_SLUG) . ' &pound;' . $proprice . ' ' . __('a year', WE_LS_SLUG);
+                                            $link = WE_LS_UPGRADE_TO_PRO_PLUS_URL;
+
+                                            // If an old Pro license, then offer them 50% off upgrading!
+                                            if ( true ===  in_array($license_type, ['pro', 'pro-old']) ) {
+                                                $proprice = $proprice / 2;
+                                                $text = __('Upgrade to Pro Plus for', WE_LS_SLUG) . ' &pound;' . $proprice . ' ' . __('a year', WE_LS_SLUG) . __(' (50% discount)', WE_LS_SLUG);
+                                                $link = WE_LS_UPGRADE_TO_PRO_PLUS_UPGRADE_URL;
+                                            }
+
+										    echo sprintf('<a href="%s?hash=%s&license=%s" target="_blank" class="button-primary ws-ls-upgrade-button">%s</a>',
+                                                $link,
+                                                ws_ls_generate_site_hash(),
+                                                ws_ls_license_get_old_or_new(),
+                                                $text
+                                            );
+
+                                        } ?>
+
 
 										<?php if ($display_pro_marketing) : ?>
 

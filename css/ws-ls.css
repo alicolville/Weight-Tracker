@@ -87,20 +87,6 @@ input.ws-ls-valid
     color: green;
 }
 
-.dataTables_filter input
-{
-    width: 100px;
-    padding:0px;
-}
-.dataTables_length
-{
-    margin: 10px
-}
-.dataTables_filter
-{
-    margin: 10px
-}
-
 .ws-ls-table-options img, .ws-ls-edit-row, .ws-ls-delete-row
 {
     width: 15px;
@@ -216,21 +202,6 @@ input.ws-ls-valid
 {
     color: green;
 }
-
-.dataTables_filter input
-{
-    width: 100px;
-    padding:0px;
-}
-.dataTables_length
-{
-    margin: 10px
-}
-.dataTables_filter
-{
-    margin: 10px
-}
-
 .ws-ls-table-options img
 {
     width: 15px;
@@ -299,4 +270,60 @@ input.ws-ls-valid
 }
 .ws-ls-add-weight-button {
     margin: 10px 0px 20px 0px;
+}
+.ws-ls-loss, .ws-ls-good, .ws-ls-healthy {
+    color: #008000;
+}
+.ws-ls-gain, .ws-ls-bad, .ws-ls-heavilyoverweight {
+    color: #ffA500;
+}
+
+.ws-ls-user-data-ajax th, td {
+    font-size: 13px;
+}
+.ws-ls-blockquote p {
+    margin: 0px 0px 0px 5px;
+}
+.ws-ls-photo-select {
+    width: 100%;
+    display: block;
+}
+.ws-ls-photo-current {
+    margin-top: 15px;
+}
+.ws-ls-clear-existing-photo {
+    margin-top: 5px;
+}
+.ws-ls-clear-existing-photo label, .ws-ls-clear-existing-photo input{
+    float: left;
+}
+.ws-ls-photo-select {
+    margin-top: 15px;
+    clear: both;
+}
+.ws-ls-photo-select p {
+    margin-bottom: 0px;
+}
+.ws-ls-form-buttons {
+    margin-top: 15px;
+    clear: both;
+}
+.ws-ls-input-file + label {
+    display: inline-block;
+    font-weight: normal;
+    text-decoration: underline;
+}
+
+.ws-ls-input-file:focus + label,
+.ws-ls-input-file + label:hover {
+     text-decoration: none;
+}
+.ws-ls-photo-frame {
+    display:inline-block;
+}
+.ws-ls-photo-date {
+    text-align: center;
+}
+.ws-ls-photo-date {
+    font-size: 0.7em;
 }

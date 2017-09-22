@@ -22,6 +22,7 @@ function ws_ls_admin_page_data_home() {
 						<div style="padding: 0px 15px 0px 15px">
 							<p><?php echo __( 'Upgrade to the Pro version of this plugin to view, edit and delete your user\'s weight entries', WE_LS_SLUG); ?></p>
 							<ul style="list-style: circle !important; margin-left: 20px;">
+								<li><?php echo __( 'Manage and view their photos.', WE_LS_SLUG); ?></li>
 								<li><?php echo __( 'View all user entries in tabular and chart format.', WE_LS_SLUG); ?></li>
 								<li><?php echo __( 'Add, edit and delete user entries.', WE_LS_SLUG); ?></li>
 								<li><?php echo __( 'Sortable and responsive tables.', WE_LS_SLUG); ?></li>

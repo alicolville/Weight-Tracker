@@ -76,7 +76,7 @@ function ws_ls_admin_page_data_summary() {
 						?>
 						<h2 class="hndle"><span><?php echo ($show_all) ? __('All entries', WE_LS_SLUG) : __('Last 100 entries', WE_LS_SLUG); ?></span></h2>
 						<div class="inside">
-							<?php ws_ls_data_table_placeholder(false, ($show_all) ? false : 100, true); ?>
+							<?php echo ws_ls_data_table_placeholder(false, ($show_all) ? false : 100, true); ?>
 							<?php
 
 								echo sprintf(

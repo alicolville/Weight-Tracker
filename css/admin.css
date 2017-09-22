@@ -1,3 +1,6 @@
+.ws-ls-hide {
+    display: none !important;
+}
 .ws-ls-disabled *, .ws-ls-disabled-pro-plus *
 {
   color: #CCCCCC !important;
@@ -33,40 +36,6 @@
 {
 	padding: 1px 1px 1px 3px !important;
 }
-.ws-ls-loading-table
-{
-    width: 100%;
-    height: 60px;
-    background-image: url(images/ajax-loader-large.gif);
-	background-repeat: no-repeat;
-	background-position: center;
-}
-.ws-tooltip {
-    position: relative;
-    display: inline-block;
-}
-
-.ws-tooltip .tooltiptext {
-    visibility: hidden;
-    width: 120px;
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    padding: 5px 0;
-    border-radius: 6px;
-
-    position: absolute;
-    z-index: 1;
-}
-
-.ws-tooltip:hover .tooltiptext {
-    visibility: visible;
-}
-
-/* Hide column toggle for Footables */
-.form-group.footable-filtering-search .input-group-btn .dropdown-toggle {
-    display: none;
-}
 .ws-ls-notice-of-refresh {
 	display: none;
 }
@@ -99,9 +68,7 @@
 	max-height: 100%;
     max-width: 100%;
 }
-.ws-ls-hide {
-	display: none !important;
-}
+
 .ws-ls-sidebar-stats {
     width: 100%;
     text-align: left;
@@ -132,7 +99,16 @@
 	color: #555 !important;
 }
 .ws-ls-upgrade-button {
-	width:40%;
 	font-size:16px !important;
 	text-align:center;
+	margin-bottom:10px !important;
+}
+.ws-ls-photo-select {
+    margin-top: 35px !important;
+}
+.ws-ls-photo-date {
+    text-align: center;
+}
+.ug-textpanel-title {
+    font-size: 10px !important;
 }

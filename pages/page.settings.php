@@ -214,6 +214,22 @@ function ws_ls_settings_page() {
                                                 <a class="button-secondary" href="<?php echo ws_ls_upgrade_link(); ?>"><?php echo __( 'Upgrade now to Pro Plus' , WE_LS_SLUG); ?></a>
                                                 <hr />
                                             <?php endif; ?>
+
+                                            <h3><?php echo __( 'Photos' , WE_LS_SLUG); ?></h3>
+
+                                            <table class="form-table">
+                                                <tr class="<?php echo $disable_if_not_pro_plus_class; ?>">
+                                                    <th scope="row"><?php echo __( 'Photos enabled?' , WE_LS_SLUG); ?></th>
+                                                    <td>
+                                                        <select id="ws-ls-photos-enable" name="ws-ls-photos-enable">
+                                                            <option value="yes" <?php selected( get_option('ws-ls-photos-enable'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+                                                            <option value="no" <?php selected( get_option('ws-ls-photos-enable'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+                                                        </select>
+                                                        <p><?php echo __('Allow your users to upload photos (jpg / png) of their progress alongside weight entries. These are only viewable by the person that uploaded the photo and administrators. All photos are stored in the media library with an additional setting to hide from the attachment page / template.' , WE_LS_SLUG); ?></em></p>
+                                                    </td>
+                                                </tr>
+                                            </table>
+
                                             <h3><?php echo __( 'Calculating daily calorie intake to lose weight' , WE_LS_SLUG); ?></h3>
 
                                             <table class="form-table">
@@ -588,14 +604,17 @@ function ws_ls_register_settings()
 		register_setting( 'we-ls-options-group', 'ws-ls-email-notifications-edit' );
 		register_setting( 'we-ls-options-group', 'ws-ls-email-notifications-new' );
 		register_setting( 'we-ls-options-group', 'ws-ls-email-notifications-targets' );
+    }
 
-		// Pro Plus
+    // Pro Plus
+    if (WS_LS_IS_PRO_PLUS) {
         register_setting( 'we-ls-options-group', 'ws-ls-female-cal-cap' );
         register_setting( 'we-ls-options-group', 'ws-ls-male-cal-cap' );
         register_setting( 'we-ls-options-group', 'ws-ls-cal-subtract' );
         register_setting( 'we-ls-options-group', 'ws-ls-macro-proteins' );
         register_setting( 'we-ls-options-group', 'ws-ls-macro-carbs' );
         register_setting( 'we-ls-options-group', 'ws-ls-macro-fats' );
+        register_setting( 'we-ls-options-group', 'ws-ls-photos-enable' );
     }
 
 }

@@ -10,7 +10,8 @@ function ws_ls_is_date_intervals_enabled()	{
 
 /* Get string representation of a weight  */
 function ws_ls_weight_object($user_id, $kg, $pounds, $stones, $pounds_only, $notes = '', $date = false,
-                              $detect_and_convert_missing_values = false, $database_row_id = false, $user_nicename = '', $measurements = false)
+                              $detect_and_convert_missing_values = false, $database_row_id = false, $user_nicename = '', $measurements = false,
+								$photo_id = false)
 {
     $weight['display'] = '';
     $weight['user_id'] = $user_id;
@@ -25,6 +26,7 @@ function ws_ls_weight_object($user_id, $kg, $pounds, $stones, $pounds_only, $not
     $weight['difference_from_unit'] = '';
     $weight['db_row_id'] = $database_row_id;
     $weight['measurements'] = $measurements;
+	$weight['photo_id'] = false === empty($photo_id) ? $photo_id : false;
 
     // Build different date formats
     if($date != false && !empty($date)) {
@@ -439,8 +441,7 @@ function ws_ls_string_to_bool($value)
 
   return $value;
 }
-function ws_ls_force_bool_argument($value)
-{
+function ws_ls_force_bool_argument($value) {
 
     if (strtolower($value) == 'true' || (is_bool($value) === true && $value == true)) {
         return true;
@@ -448,17 +449,44 @@ function ws_ls_force_bool_argument($value)
 
     return false;
 }
-function ws_ls_force_numeric_argument($value, $default = false)
-{
+function ws_ls_force_numeric_argument($value, $default = false) {
 	if (is_numeric($value)) {
 		return intval($value);
 	}
 
     return ($default) ? $default : 0;
 }
-function ws_ls_remove_non_numeric($text)
-{
-  if(!empty($text)){
+
+/**
+ * Used to validate a dimension - eg. except a number or a %
+ *
+ * @param $value
+ * @param bool $default
+ * @return bool|int
+ */
+function ws_ls_force_dimension_argument($value, $default = false) {
+
+	if ( false === empty($value) ) {
+
+		// Is this a percentage?
+		$is_percentage = (false !== stripos($value, '%') ) ? true: false;
+
+		// Strip % sign out if needed
+		$value = ( $is_percentage ) ? ws_ls_remove_non_numeric($value) : $value;
+
+		// If not numeric or below 0, apply default
+		if ( false === is_numeric($value) || $value < intval($value) ) {
+			$value = ( false === empty($default) ) ? $default : 0;
+		}
+
+		// Add % sign back on if needed
+		return ( $is_percentage ) ? $value . '%' : $value;
+	}
+
+	return ( false === empty($default) ) ? $default : 0;
+}
+function ws_ls_remove_non_numeric($text) {
+  if( false === empty($text) ){
     return preg_replace("/[^0-9]/", "", $text);
   }
   return $text;
@@ -631,5 +659,106 @@ function ws_ls_display_notice($text, $type = 'success') {
 					esc_html($type),
 					esc_html($text)
 				);
+}
+
+/**
+ * If QS value detected, display data saved message
+ */
+function ws_ls_display_data_saved_message() {
+
+	if(false === empty(ws_ls_querystring_value('ws-edit-saved'))) {
+		return ws_ls_display_blockquote(__('Your modifications have been saved', WE_LS_SLUG), 'ws-ls-success');
+	}
+
+	return '';
+}
+
+/**
+ * Helper function to use Blockquote
+ *
+ * @class ws-ls-success
+ * @text
+ *
+ */
+function ws_ls_display_blockquote($text, $class = '', $just_echo = false, $include_log_link = false) {
+
+	$html_output = sprintf('<blockquote class="ws-ls-blockquote%s"><p>%s</p>%s</blockquote>',
+									(false === empty($class)) ? ' ' . esc_html($class) : '',
+									esc_html($text),
+									(true === $include_log_link) ? '<p><a href="' . esc_url(wp_login_url(get_permalink())) . '">' . __('Login now', WE_LS_SLUG) . '</a></p>' : ''
+						);
+
+	if (true === $just_echo) {
+		echo $html_output;
+	} else {
+		return $html_output;
+	}
+
+}
+
+
+// Calculate max upload size (taken from Drupal)
+function ws_ls_file_upload_max_size() {
+    static $max_size = -1;
+
+    if ($max_size < 0) {
+        // Start with post_max_size.
+        $post_max_size = ws_ls_parse_size(ini_get('post_max_size'));
+        if ($post_max_size > 0) {
+            $max_size = $post_max_size;
+        }
+
+        // If upload_max_size is less, then reduce. Except if upload_max_size is
+        // zero, which indicates no limit.
+        $upload_max = ws_ls_parse_size(ini_get('upload_max_filesize'));
+        if ($upload_max > 0 && $upload_max < $max_size) {
+            $max_size = $upload_max;
+        }
+    }
+    return $max_size;
+}
+
+// Parse size from PHP ini into bytes (taken from Drupal)
+function ws_ls_parse_size($size) {
+    $unit = preg_replace('/[^bkmgtpezy]/i', '', $size); // Remove the non-unit characters from the size.
+    $size = preg_replace('/[^0-9\.]/', '', $size); // Remove the non-numeric characters from the size.
+    if ($unit) {
+        // Find the position of the unit in the ordered string which is the power of magnitude to multiply a kilobyte by.
+        return round($size * pow(1024, stripos('bkmgtpezy', $unit[0])));
+    }
+    else {
+        return round($size);
+    }
+}
+
+// Snippet from PHP Share: http://www.phpshare.org
+function ws_ls_format_bytes_into_readable($bytes) {
+    if ($bytes >= 1073741824) {
+        $bytes = number_format($bytes / 1073741824, 2) . 'Gb';
+    }
+    elseif ($bytes >= 1048576) {
+        $bytes = number_format($bytes / 1048576, 2) . 'Mb';
+    } elseif ($bytes >= 1024) {
+        $bytes = number_format($bytes / 1024, 2) . ' Kb';
+    } elseif ($bytes > 1) {
+        $bytes = $bytes . ' bytes';
+    } elseif ($bytes == 1) {
+        $bytes = $bytes . ' byte';
+    }  else {
+        $bytes = '0 bytes';
+    }
+
+    return $bytes;
+}
+
+/**
+ * Simple function to render max upload size
+ */
+function ws_ls_display_max_upload_size() {
+
+    $max_size = ws_ls_file_upload_max_size();
+
+    return ws_ls_format_bytes_into_readable($max_size);
+
 }
 ?>

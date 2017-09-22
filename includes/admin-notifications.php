@@ -16,7 +16,7 @@
 		// Get md5 of last dismissed message
 		$local_md5 = get_option(WE_LS_KEY_YEKEN_ADMIN_NOTIFICATION);
 
-		if($yeken_md5 != $local_md5) {
+		if($yeken_md5 != $local_md5 && true === isset($yeken_data->notice)) {
     ?>
 		    <div class="notice notice-info is-dismissible" id="ws-ls-admin-notice" data-wsmd5="<?php echo $yeken_md5; ?>">
 		        <p><strong><?php echo __( 'Weight Loss Tracker', WE_LS_SLUG); ?></strong> - <?php echo esc_html($yeken_data->notice) ?></p>

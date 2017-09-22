@@ -120,6 +120,7 @@ function ws_ls_get_weight($user_id, $row_id)
     global $wpdb;
     $table_name = $wpdb->prefix . WE_LS_TABLENAME;
     $sql =  $wpdb->prepare('SELECT * FROM ' . $table_name . ' where weight_user_id = %d and id = %d', $user_id, $row_id);
+
     $row = $wpdb->get_row( $sql );
 
     if (!is_null($row) ) {
@@ -145,7 +146,8 @@ function ws_ls_get_weight($user_id, $row_id)
                                     false,
                                     $row->id,
 									'',
-									$measurements
+									$measurements,
+									$row->photo_id
                                   );
     }
 
@@ -203,9 +205,10 @@ function ws_ls_save_data($user_id, $weight_object, $is_target_form = fals, $exis
 	$db_fields[$db_prefix . 'weight_pounds'] = $weight_object['pounds'];
 	$db_fields[$db_prefix . 'weight_only_pounds'] = $weight_object['only_pounds'];
 	$db_fields[$db_prefix . 'weight_weight'] = $weight_object['kg'];
+	$db_fields[$db_prefix . 'photo_id'] = $weight_object['photo_id'];
 
 	// Set data types
-	$db_field_types = array('%d','%f', '%f', '%f', '%f');
+	$db_field_types = array('%d','%f', '%f', '%f', '%f', '%d');
 
 	// If Measurements enabled then save measurements too.
 	if (WE_LS_MEASUREMENTS_ENABLED) {
@@ -287,18 +290,27 @@ function ws_ls_delete_entry($user_id, $row_id)
   global $wpdb;
 
   if (is_numeric($user_id) && is_numeric($row_id)) {
-    $result = $wpdb->delete($wpdb->prefix . WE_LS_TABLENAME, array( 'id' => $row_id, 'weight_user_id' => $user_id));
 
-    if ($result !== false) {
-      $result = true;
-      // Tidy up cache
-      ws_ls_delete_cache_for_given_user($user_id);
+      // Fetch entry from DB before deleting. This will allow us to throw it for others to hook onto.
+      $weight_entry = ws_ls_get_weight($user_id, $row_id);
 
-	  // Update User stats table
-	  if (WS_LS_IS_PRO) {
-		  ws_ls_stats_update_for_user($user_id);
-	  }
-    }
+      $result = $wpdb->delete($wpdb->prefix . WE_LS_TABLENAME, array( 'id' => $row_id, 'weight_user_id' => $user_id));
+
+      if ($result !== false) {
+
+          $result = true;
+
+          // Tidy up cache
+          ws_ls_delete_cache_for_given_user($user_id);
+
+          // Update User stats table
+          if (WS_LS_IS_PRO) {
+              ws_ls_stats_update_for_user($user_id);
+          }
+
+          // Inform others of deletion!
+          do_action(WE_LS_HOOK_DATA_ENTRY_DELETED, $weight_entry);
+      }
   }
   return $result;
 }

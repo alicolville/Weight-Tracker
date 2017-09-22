@@ -14,6 +14,7 @@
 	define('WE_LS_CALCULATIONS_URL', '	https://weight.yeken.uk/calculations/');
 	define('WE_LS_UPGRADE_TO_PRO_URL', 'https://weight.yeken.uk/get-pro/');
 	define('WE_LS_UPGRADE_TO_PRO_PLUS_URL', 'https://weight.yeken.uk/get-pro-plus/');
+    define('WE_LS_UPGRADE_TO_PRO_PLUS_UPGRADE_URL', 'https://weight.yeken.uk/get-pro-plus-existing-license-holders/');
     define('WE_LS_CDN_CHART_JS', 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js');
 	define('WE_LS_TABLENAME', 'WS_LS_DATA');
 	define('WE_LS_TARGETS_TABLENAME', 'WS_LS_DATA_TARGETS');
@@ -30,6 +31,9 @@
 	define('WE_LS_CACHE_KEY_TARGET_WEIGHT', 'target-weight');
 	define('WE_LS_CACHE_KEY_START_WEIGHT', 'start-weight-index');
 	define('WE_LS_CACHE_KEY_WEIGHT_EXTREME', 'weight-extreme-');
+	define('WE_LS_CACHE_KEY_PHOTOS', 'photos-extreme-');
+    define('WE_LS_CACHE_KEY_PHOTOS_ALL', 'photos-all-');
+    define('WE_LS_CACHE_KEY_PHOTOS_COUNT', 'photos-count-');
 	define('WE_LS_CACHE_KEY_USER_PREFERENCE', 'user-preference');
 	define('WE_LS_CACHE_KEY_USER_HEIGHT', 'user-height');
 	define('WE_LS_CACHE_KEY_YEKEN_JSON', 'yeken-json-lookup-wlt-2017');
@@ -56,6 +60,7 @@
 	define('WE_LS_HOOK_DATA_ADDED_EDITED', 'wlt-hook-data-added-edited');
 	define('WE_LS_HOOK_DATA_ALL_DELETED', 'wlt-hook-data-all-deleted');
 	define('WE_LS_HOOK_DATA_USER_DELETED', 'wlt-hook-data-user-deleted');
+    define('WE_LS_HOOK_DATA_ENTRY_DELETED', 'wlt-hook-data-entry-deleted');
 
 	define('WE_LS_FILTER_EMAIL_DATA', 'wlt-filter-email-data');
 	define('WE_LS_FILTER_STATS_SHORTCODE', 'wlt-filter-stats-shortcode');
@@ -102,7 +107,8 @@
         'WS_LS_CAL_TO_SUBTRACT' => 600,
         'WS_LS_MACRO_PROTEINS' => 25,
         'WS_LS_MACRO_CARBS' => 50,
-        'WS_LS_MACRO_FATS' => 25
+        'WS_LS_MACRO_FATS' => 25,
+        'WE_LS_PHOTOS_ENABLED' => false
 	);
 
     // -----------------------------------------------------------------------------------
@@ -119,11 +125,16 @@
     	$globals['WE_LS_MEASUREMENTS_ENABLED'] = true;
 	}
 
+	/*
+	 *
+	 *  IMPORTANT! These fields have been reproduced in footables.php for translations. Make any changes there too.
+	 *
+	 */
     $supported_measurements = array(
 		'left_forearm' => array('title' => __('Forearm - Left', WE_LS_SLUG), 'abv' => __('FL', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#f279ed'),
         'right_forearm' => array('title' => __('Forearm - Right', WE_LS_SLUG), 'abv' => __('FR', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#a2039b'),
-        'left_bicep' => array('title' => __('Bicep - Left', WE_LS_SLUG), 'abv' => __('BL', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#b00125'),
-        'right_bicep' => array('title' => __('Bicep - Right', WE_LS_SLUG), 'abv' => __('BR', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#035e60'),
+        'left_bicep' => array('title' => __('Biceps - Left', WE_LS_SLUG), 'abv' => __('BL', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#b00125'),
+        'right_bicep' => array('title' => __('Biceps - Right', WE_LS_SLUG), 'abv' => __('BR', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#035e60'),
 		'left_calf' => array('title' => __('Calf - Left', WE_LS_SLUG), 'abv' => __('CL', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#ffc019'),
         'right_calf' => array('title' => __('Calf - Right', WE_LS_SLUG), 'abv' => __('CR', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#ff7b9c'),
 		'left_thigh' => array('title' => __('Thigh - Left', WE_LS_SLUG), 'abv' => __('TL', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#eaec13'),
@@ -303,6 +314,14 @@
 
     if (WS_LS_IS_PRO_PLUS) {
 
+	    // Photos
+        if ('no' == get_option('ws-ls-photos-enable')) {
+            $globals['WE_LS_PHOTOS_ENABLED'] = false;
+        } else {
+			$globals['WE_LS_PHOTOS_ENABLED'] = true;
+		}
+
+	    // Calories
 	    $female_cal_cap = get_option('ws-ls-female-cal-cap');
 
 	    if(is_numeric($female_cal_cap)) {
@@ -320,6 +339,8 @@
         if(is_numeric($cal_to_subtract) && $cal_to_subtract > 0) {
             $globals['WS_LS_CAL_TO_SUBTRACT'] = intval($cal_to_subtract);
         }
+
+        // Macro N
 
         $macro_value = get_option('ws-ls-macro-proteins');
 

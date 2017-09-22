@@ -42,7 +42,7 @@ function ws_ls_admin_page_view_all() {
 										);
 									}
 								?>
-								<?php ws_ls_data_table_placeholder(); ?>
+								<?php echo ws_ls_data_table_placeholder(); ?>
 						</div>
 					</div>
 				</div>

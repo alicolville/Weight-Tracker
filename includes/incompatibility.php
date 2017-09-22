@@ -11,8 +11,6 @@
 		return (false === ws_ls_incompatibility_datatables_check()) ? true : false;
 
 	}
-
-
 	/*
 		Determine whether or not to include dataTables JS library
 

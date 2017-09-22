@@ -102,11 +102,6 @@
 			wp_enqueue_script('jquery-tabs',plugins_url( '../js/tabs.min.js', __FILE__ ), array('jquery'), WE_LS_CURRENT_VERSION, true);
 		}
 
-		// Enqueue Data
-		if(WS_LS_IS_PRO && WS_LS_ADVANCED_TABLES) {
-	  	  ws_ls_enqueue_datatable_scripts();
-	    }
-
 		$ws_already_enqueued = true;
 
 	}
@@ -129,8 +124,7 @@
 
 		if(false === empty($_GET['page']) && 'ws-ls-wlt-data-home' == $_GET['page']) {
 			wp_enqueue_style('fontawesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', array(), WE_LS_CURRENT_VERSION);
-			
-		}
+        }
 
 		// Include relevant JS for admin "Manage User data" pages
         if(false === empty($_GET['page']) && 'ws-ls-wlt-data-home' == $_GET['page'] &&

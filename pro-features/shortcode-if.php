@@ -125,6 +125,13 @@ function ws_ls_shortcode_if_value_exist($user_id, $fields) {
                 case 'is-logged-in':
                     $value = is_user_logged_in();
                     break;
+                case 'photo':
+
+                    if (false !== WS_LS_IS_PRO_PLUS) {
+                        $value = ws_ls_photos_db_get_recent_or_latest($user_id);
+                    }
+
+                    break;
                 case 'weight':
                     $value = ws_ls_get_recent_weight_in_kg($user_id);
                     break;
@@ -160,7 +167,7 @@ function ws_ls_shortcode_if_value_exist($user_id, $fields) {
  * @return bool
  */
 function ws_ls_shortcode_if_valid_field_name($field) {
-    return (true === in_array($field, ['weight', 'target', 'bmr', 'height', 'gender', 'activity_level', 'dob', 'is-logged-in']));
+    return (true === in_array($field, ['weight', 'target', 'bmr', 'height', 'gender', 'activity_level', 'dob', 'is-logged-in', 'photo']));
 }
 
 /**

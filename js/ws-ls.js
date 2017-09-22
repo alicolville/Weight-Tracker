@@ -5,81 +5,7 @@
 $tabs_global = false;
 
 jQuery( document ).ready(function ($) {
-    if ("true" == ws_ls_config["advanced-tables-enabled"]) {
 
-        if ("true" == ws_ls_config["us-date"]) {
-            $.fn.dataTable.moment( "MM/DD/YYYY" );
-        }
-        else {
-            $.fn.dataTable.moment( "DD/MM/YYYY" );
-        }
-
-        $(".ws-ls-advanced-data-table").DataTable( {
-            "responsive":true,
-            "order": [[ 1, "desc" ]],
-            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-            "columnDefs": ws_ls_config_advanced_datatables["columns"],
-            "language": ws_ls_table_locale
-        });
-
-    }
-
-    // Delete / Edit links on tables
-    $('.ws-ls-advanced-data-table').on('click', '.ws-ls-edit-row', function ( event ) {
-        event.preventDefault();
-
-        $post_data = {};
-
-        $post_data["action"] = "ws_ls_get_entry";
-        $post_data["security"] = ws_ls_config["ajax-security-nonce"];
-        $post_data["user-id"] = ws_ls_config["user-id"];
-        $post_data["row-id"] = $(this).data("row-id");
-        $post_data["form-id"] = $(".ws-ls-main-weight-form").attr("id");
-
-        ws_ls_post_data($post_data, ws_ls_edit_row_callback);
-    });
-
-    $('.ws-ls-advanced-data-table').on('click', '.ws-ls-delete-row', function ( event ) {
-        event.preventDefault();
-
-        if(!confirm(ws_ls_config["confirmation-delete"])){
-            return;
-        }
-
-        var tr = $(this).closest("tr");
-        var table = $(this).closest("table");
-
-        $post_data = {};
-
-        $post_data["action"] = "ws_ls_delete_weight_entry";
-        $post_data["security"] = ws_ls_config["ajax-security-nonce"];
-        $post_data["user-id"] = ws_ls_config["user-id"];
-        $post_data["table-row-id"] = tr.attr("id");
-        $post_data["table-id"] = table.attr("id");
-        $post_data["row-id"] = $(this).data("row-id");
-
-        ws_ls_post_data($post_data, ws_ls_delete_row_callback);
-    });
-
-    function ws_ls_delete_row_callback(data, response)
-    {
-        if (response == 1) {
-
-            var table = $("#" + data["table-id"]).DataTable();
-            var tr = $("#" + data["table-row-id"]);
-
-            table
-                .row(tr)
-                .remove()
-                .draw();
-
-            ws_ls_show_you_need_to_refresh_messages();
-        }
-        else
-        {
-            console.log("Error deleting entry :(", data, response);
-        }
-    }
     $(".ws-ls-clear-target").click(function( event ) {
         event.preventDefault();
 
@@ -106,63 +32,18 @@ jQuery( document ).ready(function ($) {
         }
     }
 
-    function ws_ls_edit_row_callback(data, response)
-    {
-        if (response != 0) {
-
-            if ("true" == ws_ls_config["us-date"]) {
-                $("#" + data["form-id"] + " .we-ls-datepicker").val(response["date-us"]);
-            }
-            else {
-                $("#" + data["form-id"] + " .we-ls-datepicker").val(response["date-uk"]);
-            }
-
-            $weight_unit = $("#" + data["form-id"]).data("metric-unit");
-
-            if("imperial-pounds" == $weight_unit) {
-                $("#" + data["form-id"] + " #we-ls-weight-pounds").val(response["only_pounds"]);
-            }
-            if("imperial-both" == $weight_unit)
-            {
-                $("#" + data["form-id"] + " #we-ls-weight-stones").val(response["stones"]);
-                $("#" + data["form-id"] + " #we-ls-weight-pounds").val(response["pounds"]);
-            }
-            if("metric" == $weight_unit)
-            {
-                $("#" + data["form-id"] + " #we-ls-weight-kg").val(response["kg"]);
-            }
-            $("#" + data["form-id"] + " #we-ls-notes").val(response["notes"]);
-
-            if ("true" == ws_ls_config["tabs-enabled"]) {
-                $tabs_global.data("zozoTabs").first();
-            }
-
-            // Measurements?
-            if(response["measurements"] != false) {
-                var measurements = response["measurements"];
-                for (var k in measurements) {
-                    if (measurements.hasOwnProperty(k)) {
-                        $("#" + data["form-id"] + " #ws-ls-" + k).val(measurements[k]);
-                    }
-                }
-            }
-
-            // Set focus on edit form
-            $(".ws-ls-main-weight-form input:visible:nth-child(3)").focus();
-        }
-        else
-        {
-            console.log("Error loading entry :(", data, response);
-        }
-    }
-
     function ws_ls_show_you_need_to_refresh_messages() {
         $(".ws-ls-notice-of-refresh").removeClass("ws-ls-hide");
     }
 
     if ("true" == ws_ls_config["tabs-enabled"]) {
 
-        $default_tab = "tab1";
+		var default_tab = "tab1";
+
+		// Just saved data or cancelled? If so, set default Tab to be "In Detail"
+		if(ws_ls_get_querystring_value('ws-edit-saved') || ws_ls_get_querystring_value('ws-edit-cancel')) {
+			default_tab = "tab2";
+		}
 
         var wsLSTabsReady = function(event, item) {
             $("#ws-ls-tabs-loading").addClass("ws-ls-hide");
@@ -180,7 +61,7 @@ jQuery( document ).ready(function ($) {
                 easing: "easeInOutCirc",
                 type: "jquery"
             },
-            defaultTab: $default_tab,
+            defaultTab: default_tab,
             ready: wsLSTabsReady
         });
 
@@ -289,17 +170,13 @@ jQuery( document ).ready(function ($) {
             post_data["action"] = "ws_ls_save_preferences";
 
             ws_ls_post_data(post_data, ws_ls_user_preference_callback);
-
         }
-
     }
-
 
     $(".ws-ls-reload-page-if-clicked").click(function( event ) {
         event.preventDefault();
         window.location.replace(ws_ls_config["current-url"]);
     });
-
 
     // Progress Bar Shortcodes
     $(".ws-ls-progress").each(function () {
@@ -333,6 +210,30 @@ jQuery( document ).ready(function ($) {
         progress_bar.animate(progress);
 
     });
+
+	// ------------------------------------------------------------------------
+	// User for file selector labels
+	// ------------------------------------------------------------------------
+	var inputs = document.querySelectorAll( '.ws-ls-input-file' );
+	Array.prototype.forEach.call( inputs, function( input )
+	{
+		var label	 = input.nextElementSibling,
+			labelVal = label.innerHTML;
+
+		input.addEventListener( 'change', function( e )
+		{
+			var fileName = e.target.value.split( '\\' ).pop();
+
+			if( fileName )
+				label.querySelector( 'span' ).innerHTML = fileName;
+			else
+				label.innerHTML = labelVal;
+		});
+
+		// Firefox bug fix
+		input.addEventListener( 'focus', function(){ input.classList.add( 'has-focus' ); });
+		input.addEventListener( 'blur', function(){ input.classList.remove( 'has-focus' ); });
+	});
 });
 
 function ws_ls_post_data(data, callback)
