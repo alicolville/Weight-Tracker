@@ -139,17 +139,16 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 = 5.2 =
 
-// TODO: shortcode for number of photos
-// TODO: only show carosel when x number of photos? replace caorsel?
-//TODO: Add photo admin page.
-// TODO: user summary, show the last 5 photos for the user? Slider? Standard HTML? USE TILES GRID - No space with text panel.
-//TODO: Add BW Hover to unite thumbs?
+//TODO: add slovenina
+
+//TODO: redo all lang files
 
 * Photo Uploads!
 	* New field on attachments "Don't show to public" (set to true by default) to stop user photo's being rendered on standard attachment pages.
 	* Users can now upload / replace / remove a photo alongside their weight / measurement entries.
 	* Admin can view all photos uploaded by a user.
 	* Admin can upload / replace / remove a user's photo.
+	* New shortcode [wlt-photo-count] to display the number of photos uploaded by the user - Read more: https://weight.yeken.uk/shortcodes/
  	* New shortcode [wlt-photo-oldest] to display the user's oldest photo - Read more: https://weight.yeken.uk/shortcodes/
  	* New shortcode [wlt-photo-recent] to display the user's most recent photo - Read more: https://weight.yeken.uk/shortcodes/
  	* New shortcode [wlt-gallery] to display the user's most recent photo - Read more: https://weight.yeken.uk/shortcodes/
@@ -165,8 +164,12 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 * Improvement: Tweaked form headers to say "Edit" intead of "Add" when editing an entry.
 * Improvement: Editing an entry is done using PHP and HTML. jQuery / Ajax has been removed so more reliable.
 * Improvement: Re-factored all <blockquotes> to use one function to keep things consistent.
+* Improvement: Added French-speaking Canada (Québec), French-speaking Belgium and French-speaking Switzerland- thanks Pierre
+* Improvement: Updated French language - thanks Pierre
 * Bug fix: When display a user's weight entries on Search results, if there are no entries, display nothing instead of 0[weight unit]
 * Bug fix: Don't display "Difference form target" if there is no recent or target weights to calculate from.
+* Bug fix: Fixed locale issues in data tables.
+* Removed "(needed for BMR)" from setting fields.
 
 = 5.1.7 =
 

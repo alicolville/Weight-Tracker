@@ -8,6 +8,25 @@ defined('ABSPATH') or die("Jog on!");
 // ------------------------------------------------------------------
 
 /**
+ * Display count for user
+ *
+ * @param $user_defined_arguments
+ * @return array|null
+ */
+function ws_ls_photos_shortcode_count($user_defined_arguments) {
+
+	$arguments = shortcode_atts([
+		'user-id' => false
+	], $user_defined_arguments );
+
+	$arguments['user-id'] = ws_ls_force_numeric_argument($arguments['user-id'], get_current_user_id());
+
+	return ws_ls_photos_db_count_photos($arguments['user-id']);
+
+}
+add_shortcode('wlt-photo-count', 'ws_ls_photos_shortcode_count');
+
+/**
  * Display recent photo
  *
  * @param $user_defined_arguments
@@ -162,7 +181,7 @@ function ws_ls_photos_db_get_recent_or_latest($user_id = false, $recent = false,
 
 	// Return cache if found!
 	if ($cache = ws_ls_cache_user_get($user_id, $cache_key))   {
-//		return $cache;
+		return $cache;
 	}
 
 	$table_name = $wpdb->prefix . WE_LS_TABLENAME;
@@ -204,7 +223,7 @@ function ws_ls_photos_db_get_all_photos($user_id = false, $include_image_object 
     global $wpdb;
 
     // Validate fields
-    $direction = (false === in_array($direction, ['asc', 'desc'])) ? 'desc' : 'asc';
+    $direction = (false === in_array($direction, ['asc', 'desc'])) ? 'desc' : $direction;
     $width = ws_ls_force_numeric_argument($width, 200);
     $height = ws_ls_force_numeric_argument($height, 200);
 
@@ -212,13 +231,14 @@ function ws_ls_photos_db_get_all_photos($user_id = false, $include_image_object 
 
     // Return cache if found!
     if ($cache = ws_ls_cache_user_get($user_id, $cache_key))   {
-    	return $cache;
+   		return $cache;
     }
 
     $limit = ( false === empty($limit) && is_numeric($limit) ) ? ' limit 0, ' . intval($limit) : '';
 
     $table_name = $wpdb->prefix . WE_LS_TABLENAME;
     $sql = $wpdb->prepare("SELECT * FROM $table_name where weight_user_id = %d and photo_id is not null and photo_id <> 0 order by weight_date " . $direction . $limit, $user_id);
+
     $photos = $wpdb->get_results($sql);
 
     $photos_to_return = [];

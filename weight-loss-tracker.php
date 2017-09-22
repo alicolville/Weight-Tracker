@@ -99,26 +99,4 @@ if(WS_LS_IS_PRO){
 function ws_ls_load_textdomain() {
   load_plugin_textdomain( WE_LS_SLUG, false, dirname( plugin_basename( __FILE__ )  ) . '/languages/' );
 }
-add_action( 'plugins_loaded', 'ws_ls_load_textdomain' );
-
-
-
-//TODO
-//function test() {
-//
-//	$user_id = 1;
-//
-//    var_dump(ws_ls_photos_db_get_all_photos($user_id, true, 'asc', 500));
-//   // die;
-////	ws_ls_cache_user_set($user_id, 'meme', '123');
-////	ws_ls_cache_user_set($user_id, 'abcd', '345');
-////	ws_ls_cache_user_set($user_id, 'eeee', '13323');
-////	ws_ls_cache_user_set($user_id, '2324', '1333333ghrgt23');
-//
-//	// ws_ls_cache_user_delete($user_id);
-//
-//	var_dump(ws_ls_cache_user_get_all($user_id));
-//	die;
-//
-//}
-//add_action('init', 'test');
+add_action('plugins_loaded', 'ws_ls_load_textdomain');

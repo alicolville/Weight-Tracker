@@ -17,7 +17,6 @@ function ws_ls_photos_gallery_js_css($mode = 'default') {
 	wp_enqueue_style('ws-ls-pro-gallery-css-theme', plugins_url( 'plus/unitegallery/skins/ug-theme-default.css', dirname(__FILE__)), array(), WE_LS_CURRENT_VERSION);
 }
 
-
 /**
  * [wlt-gallery] shortcode
  *
@@ -32,12 +31,12 @@ function ws_ls_photos_shortcode_gallery($user_defined_arguments) {
         'mode' => 'default',                    // Gallery type: carousel, default or compact
         'height' => 800,                        // Height of slider if compact or default theme
 		'css-class' => '',
-        'width' => false,           //TODO: doc
-        'limit' => false,           //TODO: doc
-        'direction' => 'desc'      //TODO: doc
+        'width' => false,
+        'limit' => 20,
+        'direction' => 'desc'
     ], $user_defined_arguments );
 
-    $arguments['width'] = ws_ls_force_numeric_argument($arguments['width'], '100%');
+	$arguments['width'] = ws_ls_force_dimension_argument($arguments['width'], 800);
     $arguments['height'] = ws_ls_force_numeric_argument($arguments['height'], 800);
     $arguments['user-id'] = ws_ls_force_numeric_argument($arguments['user-id'], get_current_user_id());
     $arguments['mode'] = ws_ls_photos_gallery_validate_mode($arguments['mode']);
@@ -46,10 +45,11 @@ function ws_ls_photos_shortcode_gallery($user_defined_arguments) {
 
     $html = $arguments['error-message'];
 
+	// Deal with 100%
+	$thumb_width = ($arguments['width'] === '100%') ? 1200 : intval($arguments['width']);
 
-//TODO: Dynamically link thumb height and width to size of gallery? consider width %
-
-  	$photos = ws_ls_photos_db_get_all_photos($arguments['user-id'], true,  $arguments['limit'], $arguments['direction'], 800, 800);
+  	$photos = ws_ls_photos_db_get_all_photos($arguments['user-id'], true,  $arguments['limit'],
+												$arguments['direction'], $thumb_width, $arguments['height']);
 
 	if ( false === empty($photos) ) {
 
@@ -71,10 +71,13 @@ function ws_ls_photos_shortcode_gallery($user_defined_arguments) {
 
 			$photo['thumb'] = str_replace('src', $additional_data . ' src', $photo['thumb']);
 
+			// $html .= '<a href="" target="_blank" class="ug-tile-icon ug-icon-link">';
+
 			$html .= sprintf('%s',
 				$photo['thumb']
 			);
 
+			//$html .= '</a>';
 		}
 
 		$html .= '</div>';
@@ -91,5 +94,5 @@ add_shortcode('wlt-gallery', 'ws_ls_photos_shortcode_gallery');
  * @return string
  */
 function ws_ls_photos_gallery_validate_mode($mode) {
-	return ( false === in_array($mode, ['default', 'carousel', 'compact']) ) ? 'default' : $mode;
+	return ( false === in_array($mode, ['default', 'carousel', 'compact', 'tilesgrid']) ) ? 'default' : $mode;
 }

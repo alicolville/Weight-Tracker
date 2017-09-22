@@ -69,9 +69,11 @@ function ws_ls_admin_page_data_user() {
                                             __('View all photos', WE_LS_SLUG)
                                         );
 
-                                    if ($photo_count > 10) {
+                                    if ($photo_count >= 1) {
                                         echo ws_ls_photos_shortcode_gallery([   'error-message' => __('No photos could be found for this user.', WE_LS_SLUG),
-                                            'mode' => 'carousel',
+                                            'mode' => 'tilesgrid',
+                                            'limit' => 20,
+                                            'direction' => 'desc',
                                             'user-id' => $user_id]);
                                     }
 

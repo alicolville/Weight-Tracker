@@ -2,21 +2,25 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Weight Loss Tracker\n"
 "POT-Creation-Date: 2017-09-04 19:11+0100\n"
-"PO-Revision-Date: 2017-09-22 09:16+0200\n"
-"Language-Team: Yeken - email@yeken.uk\n"
+"PO-Revision-Date: 2017-09-19 23:38+0200\n"
+"Last-Translator: Greg Vid <drobtinca@hotmail.com>\n"
+"Language-Team: \n"
+"Language: sl_SI\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.4\n"
+"X-Generator: Poedit 2.0.3\n"
 "X-Poedit-Basepath: ..\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Poedit-KeywordsList: __\n"
-"Last-Translator: \n"
-"Language: fr\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
+"%100==4 ? 2 : 3);\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: weight-loss-tracker.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
-"X-Poedit-SearchPathExcluded-0: js\n"
-"X-Poedit-SearchPathExcluded-1: .git\n"
-"X-Poedit-SearchPathExcluded-2: .idea\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
 
 #: includes/admin-notifications.php:22 pro-features/widget-chart.php:17
 msgid "Weight Loss Tracker"
@@ -45,35 +49,35 @@ msgstr "St"
 
 #: includes/core.php:13 pro-features/advanced-table.php:96
 msgid "Date"
-msgstr "Date"
+msgstr "Datum"
 
 #: includes/core.php:14 includes/core.php:83 includes/core.php:205
 #: includes/core.php:349 pro-features/advanced-table.php:97
 msgid "Weight"
-msgstr "Poids"
+msgstr "Teža"
 
 #: includes/core.php:15 includes/core.php:357
 #: pro-features/advanced-table.php:113 pro-features/emails.php:47
 #: pro-features/export.php:198
 msgid "Notes"
-msgstr "Remarques"
+msgstr "Opombe"
 
 #: includes/core.php:63 includes/core.php:251
 #: includes/shortcode-weight-loss-tracker.php:14
 msgid "You need to be logged in to record your weight."
-msgstr "Vous devez être connecté pour enregistrer votre poids."
+msgstr "Za vpis teže morate biti prijavljeni."
 
 #: includes/core.php:63 includes/core.php:253
 #: includes/shortcode-weight-loss-tracker.php:14
 #: pro-features/user-preferences.php:8
 msgid "Login now"
-msgstr "Connectez-vous maintenant"
+msgstr "Prijava"
 
 #: includes/core.php:77 pages/page.settings.php:454
 #: pro-features/footable.php:23 pro-features/functions.php:6
 #: pro-features/user-preferences.php:146
 msgid "Inches"
-msgstr "Pouces"
+msgstr "Palcev"
 
 #: includes/core.php:77
 msgid "CM"
@@ -81,36 +85,36 @@ msgstr "CM"
 
 #: includes/core.php:113
 msgid "Target"
-msgstr "Cible"
+msgstr "Cilj"
 
 #: includes/core.php:212
 msgid "Measurement"
-msgstr "Mesure"
+msgstr "Meritev"
 
 #: includes/core.php:230
 msgid "You have modified data. Please refresh page."
-msgstr "Vous avez modifié les données. Veuillez actualiser la page."
+msgstr "Spremenili ste podatke. Prosimo, osvežite stran."
 
 #: includes/core.php:251
 msgid "You need to be logged in to set your target."
-msgstr "Vous devez être connecté pour définir votre cible."
+msgstr "Za vpis teže morate biti prijavljeni."
 
 #: includes/core.php:268 pro-features/admin-pages/data-search-results.php:45
 #: pro-features/functions.pages.php:62
 msgid "Target Weight"
-msgstr "Poids ciblé"
+msgstr "Ciljna teža"
 
 #: includes/core.php:268
 msgid "Add a new weight"
-msgstr "Ajouter un nouveau poids"
+msgstr "Dodajte novo težo"
 
 #: includes/core.php:331
 msgid "Your target weight is"
-msgstr "Votre poids cible est"
+msgstr "Vaša ciljna teža je"
 
 #: includes/core.php:331
 msgid "The user's target weight is currently"
-msgstr "Le poids cible de l'utilisateur est actuellement"
+msgstr "Uporabnikova ciljna teža je"
 
 #: includes/core.php:341
 msgid "Stones"
@@ -119,95 +123,91 @@ msgstr "Stones"
 #: includes/core.php:342 includes/core.php:345 pages/page.settings.php:88
 #: pro-features/user-preferences.php:138
 msgid "Pounds"
-msgstr "Pounds"
+msgstr "Funti"
 
 #: includes/core.php:363
 msgid "Add measurements"
-msgstr "Ajouter des mesures"
+msgstr "Dodaj meritev"
 
 #: includes/core.php:363
 msgid "Mandatory"
-msgstr "Obligatoire"
+msgstr "Obvezno"
 
 #: includes/core.php:363
 msgid "Optional"
-msgstr "Optionnel"
+msgstr "Opcijsko"
 
 #: includes/core.php:367
 msgid "Set Target"
-msgstr "Déterminer Cible"
+msgstr "Shrani ciljno težo"
 
 #: includes/core.php:367
 msgid "Save Entry"
-msgstr "Enregistrer l'entrée"
+msgstr "Shrani vnos"
 
 #: includes/core.php:376
 msgid "Clear Target"
-msgstr "Effacer Cible"
+msgstr "Izbriši ciljno težo"
 
 #: includes/core.php:516
 msgid "Please enter a value between 0-13 for pounds"
-msgstr "S'il vous plaît, entrez une valeur entre 0-13 pour les pounds"
+msgstr "Prosimo, vnesite med 0 in 13"
 
 #: includes/core.php:516
 msgid "Please enter a valid figure for pounds"
-msgstr "S'il vous plaît, entrer un chiffre valable pour les pounds"
+msgstr "Prosimo, vnesite težo"
 
 #: includes/core.php:523
 msgid "Are you sure you wish to clear your target weight?"
-msgstr "Etes-vous sûr de vouloir effacer votre poids cible?"
+msgstr "Res želite izbrisati cilj?"
 
 #: includes/core.php:526
 msgid "Please enter a valid figure for Kg"
-msgstr "S'il vous plaît, entrez un chiffre valide pour Kg"
+msgstr "Prosimo, vnesite težo"
 
 #: includes/core.php:527
 msgid "Please enter a valid figure for Stones"
-msgstr "S'il vous plaît, entrez un chiffre valide pour Stones"
+msgstr "Prosimo, vnesite težo"
 
 #: includes/core.php:528
 msgid "Please enter a valid date"
-msgstr "S'il vous plaît, entrer une date valide"
+msgstr "Vnesite pravilen datum"
 
 #: includes/core.php:529
 msgid "Please confirm you wish to delete ALL your weight history"
-msgstr ""
-"S'il vous plaît, veuillez confirmer que vous souhaitez supprimer TOUT votre "
-"historique de poids"
+msgstr "Potrdite izbris vseh dosedanjih vnosov teže"
 
 #: includes/core.php:530
 msgid "Are you sure you wish to delete this entry? If so, press OK."
-msgstr ""
-"Êtes-vous sûr de vouloir supprimer cette entrée? Si oui, appuyez sur OK."
+msgstr "Res želite izbrisati vnos?"
 
 #: includes/core.php:540
 msgid "Please enter a valid measurement ("
-msgstr "S'il vous plaît, entrez une mesure valide ("
+msgstr "Vnesite pravilno meritev ("
 
 #: includes/core.php:547
 msgid "Please select or enter a value for height."
-msgstr "S'il vous plaît, sélectionnez ou entrez une valeur pour la hauteur."
+msgstr "Prosimo, vnesite višino."
 
 #: includes/core.php:548
 msgid "Please select or enter a value for activity level."
-msgstr ""
-"S'il vous plaît, sélectionnez ou entrez une valeur pour le niveau d'activité."
+msgstr "Prosimo, vnesite nivo aktivnosti."
 
 #: includes/core.php:549
 msgid "Please select or enter a value for gender."
-msgstr "S'il vous plaît, sélectionnez ou entrez une valeur pour le genre."
+msgstr "Prosimo, vnesite spol."
 
 #: includes/core.php:550
 msgid "Please enter a valid date."
-msgstr "S'il vous plaît, veuillez entrer une date valide."
+msgstr "Vnesite pravilen datum."
 
 #: includes/core.php:565
 msgid "Done"
-msgstr "Terminé"
+msgstr "Dokončano"
 
 #: includes/core.php:566
 msgid "Today"
-msgstr "Aujourd'hui"
+msgstr "Danes"
 
 #: includes/functions.php:81 includes/functions.php:96
 #: includes/functions.php:514 includes/shortcode-various.php:226
@@ -217,7 +217,7 @@ msgstr "st"
 
 #: includes/functions.php:206
 msgid "The following MySQL tables are missing for this plugin"
-msgstr "Les tables MySQL suivantes sont manquantes pour ce plugin"
+msgstr "Manjkajoče MySQL tabele tega vtičnika"
 
 #: includes/functions.php:292 includes/shortcode-various.php:231
 #: pro-features/user-preferences.php:136
@@ -226,217 +226,213 @@ msgstr "Kg"
 
 #: includes/functions.php:354
 msgid "View all weeks"
-msgstr "Afficher toutes les semaines"
+msgstr "Poglej vse tedne"
 
 #: includes/functions.php:368
 msgid "View Week"
-msgstr "Voir la semaine"
+msgstr "Poglej teden"
 
 #: includes/functions.php:368
 msgid "to"
-msgstr "à"
+msgstr "do"
 
 #: includes/functions.php:481
 msgid "The plugin supports the following measurements"
-msgstr "Le plugin prend en charge les mesures suivantes"
+msgstr "Vtičnik podpira naslednje meritve"
 
 #: includes/functions.php:607
 msgid "Read more about calculations"
-msgstr "En savoir plus sur les calculs"
+msgstr "Več informacij o izračunih"
 
 #: includes/globals.php:123
 msgid "Forearm - Left"
-msgstr "Avant-bras - Gauche"
+msgstr "Podlaket, levo"
 
 #: includes/globals.php:123
 msgid "FL"
-msgstr "FL"
+msgstr "PL"
 
 #: includes/globals.php:124
 msgid "Forearm - Right"
-msgstr "Avant-bras - Droite"
+msgstr "Podlaket, desno"
 
 #: includes/globals.php:124
 msgid "FR"
-msgstr "FR"
+msgstr "PD"
 
 #: includes/globals.php:125
 msgid "Bicep - Left"
-msgstr "Biceps - Gauche"
+msgstr "Nadlaket, levo"
 
 #: includes/globals.php:125
 msgid "BL"
-msgstr "BL"
+msgstr "NL"
 
 #: includes/globals.php:126
 msgid "Bicep - Right"
-msgstr "Biceps - Droite"
+msgstr "Nadlaket, desno"
 
 #: includes/globals.php:126
 msgid "BR"
-msgstr "BR"
+msgstr "ND"
 
 #: includes/globals.php:127
 msgid "Calf - Left"
-msgstr "Mollet - Gauche"
+msgstr "Meča, levo"
 
 #: includes/globals.php:127
 msgid "CL"
-msgstr "CL"
+msgstr "ML"
 
 #: includes/globals.php:128
 msgid "Calf - Right"
-msgstr "Mollet - Droite"
+msgstr "Meča, desno"
 
 #: includes/globals.php:128
 msgid "CR"
-msgstr "CR"
+msgstr "MD"
 
 #: includes/globals.php:129
 msgid "Thigh - Left"
-msgstr "Cuisse - Gauche"
+msgstr "Stegno, levo"
 
 #: includes/globals.php:129
 msgid "TL"
-msgstr "TL"
+msgstr "SL"
 
 #: includes/globals.php:130
 msgid "Thigh - Right"
-msgstr "Cuisse - Droite"
+msgstr "Stegno, desno"
 
 #: includes/globals.php:130
 msgid "TR"
-msgstr "TR"
+msgstr "SD"
 
 #: includes/globals.php:131
 msgid "Waist"
-msgstr "Circonférence abdominale"
+msgstr "Pas"
 
 #: includes/globals.php:131
 msgid "W"
-msgstr "W"
+msgstr "P"
 
 #: includes/globals.php:132
 msgid "Bust / Chest"
-msgstr "Buste / Cage thoracique"
+msgstr "Prsa"
 
 #: includes/globals.php:132
 msgid "BC"
-msgstr "BC"
+msgstr "Pr"
 
 #: includes/globals.php:133
 msgid "Shoulders"
-msgstr "Épaules"
+msgstr "Rame"
 
 #: includes/globals.php:133
 msgid "S"
-msgstr "S"
+msgstr "R"
 
 #: includes/globals.php:134 pro-features/functions.pages.php:82
 msgid "Height"
-msgstr "Taille"
+msgstr "Višina"
 
 #: includes/globals.php:134
 msgid "H"
-msgstr "H"
+msgstr "V"
 
 #: includes/globals.php:135
 msgid "Buttocks"
-msgstr "Fessiers"
+msgstr "Zadnjica"
 
 #: includes/globals.php:135
 msgid "B"
-msgstr "B"
+msgstr "Z"
 
 #: includes/globals.php:136
 msgid "Hips"
-msgstr "Hanches"
+msgstr "Boki"
 
 #: includes/globals.php:136
 msgid "HI"
-msgstr "HI"
+msgstr "B"
 
 #: includes/globals.php:137
 msgid "Navel"
-msgstr "Nombril"
+msgstr "Popek"
 
 #: includes/globals.php:137
 msgid "NA"
-msgstr "NA"
+msgstr "Po"
 
 #: includes/globals.php:138
 msgid "Neck"
-msgstr "Cou"
+msgstr "Vrat"
 
 #: includes/globals.php:138
 msgid "NE"
-msgstr "NE"
+msgstr "Vr"
 
 #: includes/hooks.php:8 includes/shortcode-weight-loss-tracker.php:73
 #: pro-features/functions.pages.php:140
 msgid "Settings"
-msgstr "Paramètres"
+msgstr "Nastavitve"
 
 #: includes/hooks.php:11
 msgid "Manage User Data"
-msgstr "Gérer les données utilisateur"
+msgstr "Upravljaj članske podatke"
 
 #: includes/hooks.php:13 pages/page.license.php:72
 msgid "Upgrade"
-msgstr "Surclassement"
+msgstr "Nadgradite"
 
 #: includes/hooks.php:13
 msgid "Your License"
-msgstr "Votre licence"
+msgstr "Vaša licenca"
 
 #: includes/hooks.php:17 pages/page.help.php:21
 msgid "Help"
-msgstr "Assistance"
+msgstr "Pomoč"
 
 #: includes/hooks.php:180 pro-features/admin-pages/data-user.php:22
 msgid "The preferences for this user have been saved."
-msgstr "Les préférences de cet utilisateur ont été enregistrées."
+msgstr "Preference tega uporabnika so bile shranjene."
 
 #: includes/hooks.php:181
 msgid "An error occurred while trying to save the user's preferences."
-msgstr ""
-"Une erreur s'est produite lors de l'enregistrement des préférences de "
-"l'utilisateur."
+msgstr "Med shranjevanjem uporabnikovih preferenc je prišlo do napake."
 
 #: includes/license.php:144
 msgid "License missing"
-msgstr "Licence manquante"
+msgstr "Ni licence"
 
 #: includes/license.php:151
 msgid "Could not decode / verify license"
-msgstr "Impossible décoder / vérifier la licence"
+msgstr "Ne morem verificirati licence"
 
 #: includes/license.php:156
 msgid "Invalid license hash"
-msgstr "Licence invalide hash"
+msgstr "Napačen hash licence"
 
 #: includes/license.php:161
 msgid ""
 "This license doesn't appear to be for this site (no match on site hash)."
-msgstr ""
-"Cette licence ne semble pas être pour ce site (aucune correspondance sur le "
-"site hash)."
+msgstr "Ta licenca ni za to stran (ni ujemanja za hash strani)."
 
 #: includes/license.php:169
 msgid "This license has expired."
-msgstr "Cette licence a expiré."
+msgstr "Licenca je potekla."
 
 #: includes/license.php:226
 msgid "None"
-msgstr "Aucun"
+msgstr ""
 
 #: includes/license.php:236
 msgid "Yearly Pro"
-msgstr "Annuel Pro"
+msgstr "Letno Pro"
 
 #: includes/license.php:239
 msgid "Legacy Pro"
-msgstr "Héritage Pro"
+msgstr ""
 
 #: includes/license.php:242 pages/page.settings.php:74
 msgid "Pro Plus"
@@ -444,115 +440,106 @@ msgstr "Pro Plus"
 
 #: includes/save-data.php:40
 msgid "Saved!"
-msgstr "Enregistré!"
+msgstr "Shranjeno!"
 
 #: includes/save-data.php:42
 msgid "An error occurred while saving your data!"
-msgstr "Une erreur s'est produite lors de l'enregistrement de vos données!"
+msgstr "Med shranjevanjem je prišlo do napake."
 
 #: includes/save-data.php:45
 msgid "No user specified (hash)"
-msgstr "Aucun utilisateur spécifié (hash)"
+msgstr "Uporabnik ni določen (hash)"
 
 #: includes/save-data.php:48
 msgid "No user specified"
-msgstr "Aucun utilisateur spécifié"
+msgstr "Uporabnik ni določen"
 
 #: includes/shortcode-various.php:101 pro-features/functions.pages.php:68
 msgid "No target set"
-msgstr "Pas de cible déterminée"
+msgstr "Cilj ni določen"
 
 #: includes/shortcode-weight-loss-tracker.php:43
 msgid "Your settings have been saved!"
-msgstr "Vos réglages ont été sauvegardés!"
+msgstr "Nastavitve so bile shranjene!"
 
 #: includes/shortcode-weight-loss-tracker.php:45
 msgid "Your weight history has been deleted!"
-msgstr "Votre historique de poids a été supprimé!"
+msgstr "Predhodnje meritve teže so bile izbrisane."
 
 #: includes/shortcode-weight-loss-tracker.php:68
 msgid "Overview"
-msgstr "Aperçu"
+msgstr "Pregled"
 
 #: includes/shortcode-weight-loss-tracker.php:68
 msgid "Chart / Add Weight"
-msgstr "Graphique / Ajouter Poids"
+msgstr "Graf / dodaj težo"
 
 #: includes/shortcode-weight-loss-tracker.php:69
 msgid "In Detail"
-msgstr "En détail"
+msgstr "Podrobno"
 
 #: includes/shortcode-weight-loss-tracker.php:69
 msgid "View all recorded weights"
-msgstr "View all recorded weights"
+msgstr "Vsi dosedanji vnosi"
 
 #: includes/shortcode-weight-loss-tracker.php:73
 msgid "Choose weight units, date format, etc"
-msgstr "Choisissez les unités de poids, le format de la date, etc"
+msgstr "Nastavite enote, obliko datuma itd."
 
 #: includes/shortcode-weight-loss-tracker.php:89
 msgid "Add a weight entry"
-msgstr "Ajoutez une entrée de poids"
+msgstr "Dodaj težo"
 
 #: includes/shortcode-weight-loss-tracker.php:94
 msgid "In a chart"
-msgstr "Dans un graphique"
+msgstr "Grafični prikaz"
 
 #: includes/shortcode-weight-loss-tracker.php:102
 msgid "A graph will appear once several weights have been entered."
-msgstr ""
-"Un graphique apparaîtra une fois que plusieurs mesures de poids ont été "
-"entrés."
+msgstr "Graf bo izrisan, ko boste vnesli nekaj podatkov."
 
 #: includes/shortcode-weight-loss-tracker.php:134
 msgid "Weight History"
-msgstr "Histoire du poids"
+msgstr "Zgodovina meritev teže"
 
 #: includes/shortcode-weight-loss-tracker.php:146
 msgid "There is no data for this week, please try selecting another:"
-msgstr ""
-"Il n'y a pas de données pour cette semaine, s'il vous plaît, essayez d'en "
-"sélectionner une autre:"
+msgstr "Za ta teden ni podatkov. Izberite drugo obdobje:"
 
 #: includes/shortcode-weight-loss-tracker.php:152
 msgid "You haven't entered any weight data yet."
-msgstr "Vous n'avez pas encore saisi de données de poids."
+msgstr "Vnesli niste še nobenega podatka."
 
 #: pages/page.help.php:23
 msgid "You can find detailed help with this plugin at our site:"
-msgstr "Vous pouvez trouver une aide détaillée avec ce plugin sur notre site:"
+msgstr "Podrobno pomoč lahko najdete na naši spletni strani:"
 
 #: pages/page.help.php:29
 msgid "Our road map"
-msgstr "Notre feuille de route"
+msgstr "Načrti za razvoj"
 
 #: pages/page.help.php:31
 msgid ""
 "Interested in the future development of this plugin? Then have a peek at our "
 "road map:"
-msgstr ""
-"Intéressé par le développement futur de ce plugin? Regardez notre feuille de "
-"route:"
+msgstr "Vas zanima prihodnost tega vtičnika? Poglejte naše načrte:"
 
 #: pages/page.license.php:11 pages/page.settings.php:8
 #: pro-features/export.php:268 pro-features/functions.php:392
 msgid "You do not have sufficient permissions to access this page."
-msgstr ""
-"Vous n'avez pas les autorisations suffisantes pour accéder à cette page."
+msgstr "Nimate dovoljenja za ogled te strani."
 
 #: pages/page.license.php:39
 msgid "Your license has been applied!"
-msgstr "Votre licence a été appliquée!"
+msgstr "Licenca je bila uporabljena!"
 
 #: pages/page.license.php:42
 msgid "An error occurred applying your license: "
-msgstr "Une erreur s'est produite lors de l'application de votre licence: "
+msgstr "Med shranjevanjem je prišlo do napake:"
 
 #: pages/page.license.php:77
 msgid "As you can see from the features listed below, the"
 msgstr ""
-"Comme vous pouvez le voir à partir des fonctionnalités indiquées ci-dessous, "
-"le"
 
 #: pages/page.license.php:79
 msgid ""
@@ -562,24 +549,16 @@ msgid ""
 "and is a must! Pro Plus extends Pro with features such as BMR, Calorie "
 "intake, Macronutrient Calculator, etc."
 msgstr ""
-"peut vous offrir à vous et à vos membres beaucoup plus de fonctionnalités et "
-"ainsi vous aider, les aider à gérer leur poids. Il existe deux types de "
-"licences que vous pouvez acheter, Pro et Pro Plus. Pro contient une "
-"fonctionnalité et une expérience utilisateur enrichie et est donc un must! "
-"Pro Plus prolonge Pro avec des fonctionnalités telles que le métabolisme de "
-"base (MB), Apport calorique, calculateur de macronutriments, etc."
 
 #: pages/page.license.php:80
 msgid ""
 "Of course, by purchasing a license, you are supporting the future of this "
 "plugin and it is gratefully appreciated."
 msgstr ""
-"Bien sûr, en achetant une licence, vous soutenez l'avenir de ce plugin et "
-"ceci est grandement apprécié."
 
 #: pages/page.license.php:85
 msgid "Legacy License"
-msgstr "License héritée"
+msgstr "Legacy License"
 
 #: pages/page.license.php:86
 msgid ""
@@ -587,13 +566,10 @@ msgid ""
 "one off payment that enabled the Pro features of the plugin. This is still "
 "the case and any old licenses will still be honoured."
 msgstr ""
-"Notre licence a changé de modèle. Avant septembre 2017, il s'agissait d'un "
-"seul paiement qui permettait de libérer les fonctionnalités Pro du plugin. "
-"C'est toujours le cas et toutes anciennes licences seront encore honorée."
 
 #: pages/page.license.php:87
 msgid "Moving to a yearly license"
-msgstr "Passage à une licence annuelle"
+msgstr ""
 
 #: pages/page.license.php:88
 msgid ""
@@ -602,23 +578,16 @@ msgid ""
 "to a yearly subscription you will be supporting the development of the "
 "plugin (and I'll give you a big hug)."
 msgstr ""
-"Il n'y a aucune raison de passer à une licence annuelle - Les "
-"fonctionnalités Pro resteront les mêmes pour les anciens et les nouveaux "
-"abonnements Pro. Toutefois, si vous souhaitez passer à un abonnement annuel, "
-"vous soutiendrez le développement du plugin (et je vous ferai un gros câlin)."
 
 #: pages/page.license.php:92
 msgid "Pro Plus License"
-msgstr "Licence Pro Plus"
+msgstr ""
 
 #: pages/page.license.php:93
 msgid ""
 "Of course, thank you for purchasing a Pro license - it is much appreciated. "
 "As you can see below, you can further expand the features of"
 msgstr ""
-"Bien sûr, merci d'avoir acheté une licence Pro - ceci est très apprécié. "
-"Comme vous pouvez le voir ci-dessous, vous pouvez développer davantage les "
-"fonctionnalités de"
 
 #: pages/page.license.php:95 pages/page.license.php:105
 msgid ""
@@ -626,10 +595,6 @@ msgid ""
 "such as BMR, Calorie intake, Macronutrient Calculator, etc. You can view the "
 "additional features that Pro Plus offers you below."
 msgstr ""
-"en étendant votre licence à Pro Plus. Pro Plus prolonge Pro avec des "
-"fonctionnalités telles que le MB, l'apport calorique, la Calculatrice "
-"Macronutrient, etc. Vous pouvez afficher les fonctionnalités supplémentaires "
-"que Pro Plus vous offre ci-dessous."
 
 #: pages/page.license.php:103
 msgid ""
@@ -637,79 +602,71 @@ msgid ""
 "much appreciated. As you can see below, you can further expand the features "
 "of"
 msgstr ""
-"Bien sûr, un grand merci d'acheter une licence Pro - ceci est très apprécié. "
-"Comme vous pouvez le voir ci-dessous, vous pouvez développer davantage les "
-"fonctionnalités de"
 
 #: pages/page.license.php:111
 msgid ""
 "Thank you kind soul, you have purchased a Pro Plus license. A huge thank you "
 "for supporting me and this plugin!"
 msgstr ""
-"Merci beaucoup, vous avez acheté une licence Pro Plus. Un grand merci de me "
-"soutenir et de soutenir ce plugin!"
 
 #: pages/page.license.php:118
 msgid "In case you need, your <strong>Site Hash</strong> is"
-msgstr ""
-"Dans le cas où vous avez besoin, votre <strong> Site Hash </strong> est"
+msgstr "Če ga potrebujete, <strong>hash vaše strani</strong> je"
 
 #: pages/page.license.php:121
 msgid "Upgrade to Pro Plus for"
-msgstr "Mettre à niveau vers Pro Plus pour"
+msgstr "Nadgradite na Pro Plus za"
 
 #: pages/page.license.php:121 pages/page.license.php:223
 #: pages/page.license.php:237
 msgid "a year"
-msgstr "une année"
+msgstr ""
 
 #: pages/page.license.php:127
 msgid "Switch to a yearly Pro license for "
-msgstr "Passer à une licence annuelle Pro pour "
+msgstr ""
 
 #: pages/page.license.php:127 pages/page.license.php:128
 msgid " a year"
-msgstr " une année"
+msgstr ""
 
 #: pages/page.license.php:128
 msgid "Upgrade to Pro for "
-msgstr "Mettre à niveau vers Pro pour "
+msgstr "Nadgradite na Pro verzijo za"
 
 #: pages/page.license.php:144
 msgid "Add or Update License"
-msgstr "Ajouter ou mettre à jour la Licence"
+msgstr "Dodaj ali posodobi licenco"
 
 #: pages/page.license.php:149
 msgid ""
 "Copy and paste the license given to you by YeKen into this box and click "
 "\"Apply License\""
-msgstr ""
-"Copiez et collez la licence qui vous a été donnée par YeKen dans cette boîte "
-"et cliquez sur \"Appliquer Licence\""
+msgstr "Skopirajte licenco in kliknite \"Uporabi licenco\""
 
 #: pages/page.license.php:152
 msgid "Apply License"
-msgstr "Appliquer Licence"
+msgstr "Uporabi licenco"
 
 #: pages/page.license.php:157
 msgid "Your License Information"
-msgstr "Vos Informations de Licence"
+msgstr "Informacije o vaši licenci"
 
 #: pages/page.license.php:161
 msgid "Site Hash"
-msgstr "Site Hash"
+msgstr "Hash strani"
 
 #: pages/page.license.php:165
 msgid "Type"
-msgstr "Type"
+msgstr "Vrsta"
 
 #: pages/page.license.php:169
 msgid "Expires"
-msgstr "Expire"
+msgstr "Poteče"
 
 #: pages/page.license.php:174
 msgid "Never"
-msgstr "Jamais"
+msgstr "Nikoli"
 
 #: pages/page.license.php:178
 msgid "n/a"
@@ -717,110 +674,103 @@ msgstr "n/a"
 
 #: pages/page.license.php:188
 msgid "Your Existing License"
-msgstr "Votre Licence Existante"
+msgstr "Vaša obstoječa licenca"
 
 #: pages/page.license.php:194
 msgid "Remove License"
-msgstr "Supprimer la Licence"
+msgstr "Odstrani licenco"
 
 #: pages/page.license.php:203
 msgid "Documentation"
-msgstr "Documentation"
+msgstr "Dokumentacija"
 
 #: pages/page.license.php:206
 msgid "Need further help or information, please visit our documentation site:"
 msgstr ""
-"Besoin d'aide supplémentaire ou d'informations, s'il vous plaît, visitez "
-"notre site de documentation:"
+"Če potrebujete dodatno pomoč ali informacije, obiščite našo spletno stran:"
 
 #: pages/page.license.php:223
 msgid "Below is a list of the intended features of the Pro Plus version"
-msgstr ""
-"Vous trouverez ci-dessous une liste des fonctionnalités prévues de la "
-"version Pro Plus"
+msgstr "Spodaj so načrtovane funkcije Pro Plus verzije"
 
 #: pages/page.license.php:223 pages/page.license.php:237
 msgid "You can upgrade for"
-msgstr "Vous pouvez mettre à niveau pour"
+msgstr "Nadgradite lahko za"
 
 #: pages/page.license.php:237
 msgid "Below is a list of the intended features of the Pro version"
-msgstr ""
-"Vous trouverez ci-dessous une liste des fonctionnalités prévues de la "
-"version Pro"
+msgstr "Spodaj so načrtovane funkcije Pro verzije"
 
 #: pages/page.license.php:251 pro-features/admin-pages/data-summary.php:177
 #: pro-features/functions.pages.php:169
 msgid "Are you sure you?"
-msgstr "Êtes-vous sûr de vous?"
+msgstr "Ste prepričani?"
 
 #: pages/page.license.php:252
 msgid ""
 "Are you sure you wish to remove the license for this site? Removing it may "
 "cause your user's to lose functionality."
-msgstr ""
-"Êtes-vous sûr de vouloir supprimer la licence de ce site? La supprimer peut "
-"entraîner une perte de fonctionnalité pour vos utilisateurs."
+msgstr "Res želite odstraniti licenco?"
 
 #: pages/page.settings.php:36
 msgid "Rebuild them now"
-msgstr "Les reconstruire maintenant"
+msgstr "Obnovite jih"
 
 #: pages/page.settings.php:58
 msgid " Settings"
-msgstr " Réglages"
+msgstr " Nastavitve"
 
 #: pages/page.settings.php:72
 msgid "General"
-msgstr "Général"
+msgstr "Splošno"
 
 #: pages/page.settings.php:72
 msgid "General settings"
-msgstr "Réglages généraux"
+msgstr "Splošne nastavitve"
 
 #: pages/page.settings.php:73
 msgid "User Experience"
-msgstr "Expérience Utilisateur"
+msgstr "Uporabniška izkušnja"
 
 #: pages/page.settings.php:73
 msgid "Settings that effect the user's overall experience"
-msgstr "Paramètres qui affectent l'expérience globale de l'utilisateur"
+msgstr "Nastavitve, ki vplivajo na uporabniško izkušnjo"
 
 #: pages/page.settings.php:74
 msgid "Adjust settings for your Pro Plus features"
-msgstr "Ajustez les paramètres pour vos fonctionnalités Pro Plus"
+msgstr "Prilagodite nastavitve za Pro Plus funkcije"
 
 #: pages/page.settings.php:75 pro-features/admin-pages/data-user.php:38
 msgid "Chart"
-msgstr "Graphique"
+msgstr "Graf"
 
 #: pages/page.settings.php:75
 msgid "Chart styling and config"
-msgstr "Composition graphique et configuration"
+msgstr "Oblika in konfiguracija grafa"
 
 #: pages/page.settings.php:76
 msgid "Notifications"
-msgstr "Notifications"
+msgstr "Obvestila"
 
 #: pages/page.settings.php:76
 msgid "Configure email notifications"
-msgstr "Configurez les notifications par email"
+msgstr "Konfigurirajte email obvestila"
 
 #: pages/page.settings.php:77
 msgid "Measurements"
-msgstr "Mesures"
+msgstr "Meritve"
 
 #: pages/page.settings.php:77
 msgid "Allow users to record their measurements"
-msgstr "Permettre aux utilisateurs d'enregistrer leurs mesures"
+msgstr "Dovolite uporabnikom shranjevanje meritev"
 
 #: pages/page.settings.php:83
 msgid "Weight Units"
-msgstr "Unités de poids"
+msgstr "Enote za težo"
 
 #: pages/page.settings.php:87 pro-features/user-preferences.php:137
 msgid "Stones & Pounds"
-msgstr "Stones & Pounds"
+msgstr "Stonei in funti"
 
 #: pages/page.settings.php:90
 msgid ""
@@ -828,29 +778,28 @@ msgid ""
 "Pounds. Please note: The graph will be displayed in Pounds if \"Stones & "
 "Pounds\" is selected."
 msgstr ""
-"Vous pouvez spécifier s'il faut afficher les mesures de poids en Kg, Stones "
-"& Pounds ou simplement Pounds. Remarque: Le graphique sera affiché en Pounds "
-"si \"Stones & Pounds\" est sélectionné."
+"Določite lahko, ali naj bo teža prikazana v kg, funtih ali stoneih in "
+"funtih. Če boste izbrali \"Stonei in funti\" bo graf prikazan v funtih."
 
 #: pages/page.settings.php:95
 msgid "UK or US Date format?"
-msgstr "Format de date?"
+msgstr "UK ali US format datuma?"
 
 #: pages/page.settings.php:98 pro-features/user-preferences.php:155
 msgid "UK (DD/MM/YYYY)"
-msgstr "(JJ/MM/AAAA)"
+msgstr "UK (DD/MM/YYYY)"
 
 #: pages/page.settings.php:99 pro-features/user-preferences.php:156
 msgid "US (MM/DD/YYYY)"
-msgstr "(MM/JJ/AAAA)"
+msgstr "US (MM/DD/YYYY)"
 
 #: pages/page.settings.php:101
 msgid "Specify what format dates should be displayed in (i.e. UK or US format)"
-msgstr "Indiquez les formats de dates à afficher"
+msgstr "Določite v katerem formatu naj bodo prikazani datumi"
 
 #: pages/page.settings.php:105
 msgid "Disable plugin CSS?"
-msgstr "Désactiver les CSS du plugin?"
+msgstr "Onemogoči CSS vtičnika?"
 
 #: pages/page.settings.php:108 pages/page.settings.php:118
 #: pages/page.settings.php:128 pages/page.settings.php:154
@@ -863,7 +812,7 @@ msgstr "Désactiver les CSS du plugin?"
 #: pages/page.settings.php:430 pages/page.settings.php:443
 #: pages/page.settings.php:463
 msgid "No"
-msgstr "Non"
+msgstr "Ne"
 
 #: pages/page.settings.php:109 pages/page.settings.php:119
 #: pages/page.settings.php:129 pages/page.settings.php:153
@@ -876,19 +825,17 @@ msgstr "Non"
 #: pages/page.settings.php:429 pages/page.settings.php:444
 #: pages/page.settings.php:464
 msgid "Yes"
-msgstr "Oui"
+msgstr "Da"
 
 #: pages/page.settings.php:111
 msgid ""
 "If you wish to style the forms in your own way, you can use this option to "
 "disable WLT's style sheets."
-msgstr ""
-"Si vous souhaitez personnaliser les formulaires, vous pouvez utiliser cette "
-"option pour désactiver les feuilles de styles de WLT."
+msgstr "To opcijo uporabite, če želite sami oblikovati prikaz vtičnika."
 
 #: pages/page.settings.php:115
 msgid "Send usage data to YeKen?"
-msgstr "Envoyer les données d'utilisation à YeKen?"
+msgstr "Pošlji podatke o uporabi YeKenu?"
 
 #: pages/page.settings.php:121
 msgid ""
@@ -897,98 +844,85 @@ msgid ""
 "URL, summary of settings, count of recorded weights and measurements. No "
 "user or admin data will ever be transmitted."
 msgstr ""
-"Nous aimerions voir comment notre plugin est utilisé. En consentant, vous "
-"permettez que les données suivantes soient envoyées chaque semaine à YeKen: "
-"URL, résumé des paramètres, nombre de poids enregistrés et mesures. Aucune "
-"donnée utilisateur ou admin ne sera jamais transmise."
 
 #: pages/page.settings.php:125
 msgid "Disable notifications from YeKen?"
-msgstr "Désactiver les notifications de YeKen?"
+msgstr "Onemogoči obvestila YeKena?"
 
 #: pages/page.settings.php:131
 msgid ""
 "Occasionally YeKen likes to display simple notifications within your "
 "WordPress dashboard. Use this setting if you wish to disable them."
 msgstr ""
-"Parfois, YeKen aime afficher des notifications simples dans votre tableau de "
-"bord WordPress. Utilisez ce paramètre si vous souhaitez les désactiver."
+"YeKen na vaši nadzorni plošči občasno prikaže enostavna in uporabna "
+"obvestila. To opcijo uporabite, če želite obvestila onemogočiti."
 
 #: pages/page.settings.php:135
 msgid "Who can view and modify user data?"
-msgstr "Qui peut afficher et modifier les données utilisateur?"
+msgstr "Kdo si lahko ogleda in spreminja podatke uporabnikov?"
 
 #: pages/page.settings.php:138
 msgid "Administrators Only"
-msgstr "Administrateurs seulement"
+msgstr "Samo administratorji"
 
 #: pages/page.settings.php:139
 msgid "Editors and above"
-msgstr "Rédacteurs en chef et au-dessus"
+msgstr "Uredniki in višji"
 
 #: pages/page.settings.php:140
 msgid "Authors and above"
-msgstr "Auteurs et au-dessus"
+msgstr "Avtorji in višji"
 
 #: pages/page.settings.php:142
 msgid ""
 "Specify the minimum level of user role that maybe view or edit user data."
 msgstr ""
-"Spécifiez le niveau minimum du rôle utilisateur qui peut voir ou modifier "
-"les données utilisateur."
+"Določite minimalni uporabniški nivo, ki lahko gleda in spreminja podatke "
+"uporabnikov."
 
 #: pages/page.settings.php:150
 msgid "Allow target weights?"
-msgstr "Autoriser les poids cibles?"
+msgstr "Dovolite ciljne teže?"
 
 #: pages/page.settings.php:156
 msgid ""
 "If enabled, a user is allowed to enter a target weight. This will be "
 "displayed as a horizontal bar on the line chart."
-msgstr ""
-"S'il est activé, un utilisateur est autorisé à entrer un poids cible. Cela "
-"sera affiché comme une barre horizontale sur le graphique de lignes."
+msgstr "Če dovolite, si bodo lahko uporabniki določali ciljne teže."
 
 #: pages/page.settings.php:160
 msgid "Display BMI in tables?"
-msgstr "Afficher l'IMC dans les tableaux?"
+msgstr "ITMI prikaži v tabelah?"
 
 #: pages/page.settings.php:167
 msgid ""
 "If enabled, BMI values will be displayed alongside weight entries in data "
 "tables."
-msgstr ""
-"Si activé, les valeurs d'IMC seront affichées aux côtés des entrées de poids "
-"dans les tableaux de données."
+msgstr "Če dovolite, bod ITM v tabelah prikazan poleg shranjenih tež."
 
 #: pages/page.settings.php:171
 msgid "Allow user settings"
-msgstr "Autoriser les paramètres utilisateur"
+msgstr "Dovolite uporabniške nastavitve"
 
 #: pages/page.settings.php:177
 msgid ""
 "Allow your users to select their own data units, complete their \"About You"
 "\" fields and remove all their data."
-msgstr ""
-"Permettre à vos utilisateurs de sélectionner leurs propres unités de "
-"données, compléter leurs champs \"À propos de vous\" et supprimer toutes "
-"leurs données."
+msgstr "Dovolite uporabnikom izbiro enot, oblike datuma in izbris podatkov."
 
 #: pages/page.settings.php:181
 msgid "\"About You\" fields mandatory?"
-msgstr "Les champs \"À propos de vous\" sont-ils obligatoires?"
+msgstr "So polja \"O vas\" obvezna?"
 
 #: pages/page.settings.php:187
 msgid ""
 "If User Settings is enabled, should all the \"About You\" (height, activity "
 "level, etc) be mandatory?"
 msgstr ""
-"Si les paramètres utilisateur sont activés, tous les \"À propos de vous"
-"\" (hauteur, niveau d'activité, etc.) sont-ils obligatoires?"
 
 #: pages/page.settings.php:191
 msgid "Advanced data tables?"
-msgstr "Tables de données avancées?"
+msgstr "Napredne tabele podatkov?"
 
 #: pages/page.settings.php:197
 msgid ""
@@ -996,42 +930,40 @@ msgid ""
 "paging, editing and deleting. Weight Index (i.e. percentage lost / gained to "
 "be displayed.)"
 msgstr ""
-"L'historique du poids de l'utilisateur est présenté dans des tableaux "
-"réactifs qui permettent le tri, la pagination, l'édition et la suppression. "
-"Indice de poids (c-à-d pourcentage perdu / prise de poids à afficher.)"
+"Uporabnikovi podatki so predstavljeni v tabelah, ki omogočajo sortiranje, "
+"paginacijo, spreminjanje in brisanje."
 
 #: pages/page.settings.php:201
 msgid "Display data in tabs?"
-msgstr "Afficher les données dans les onglets?"
+msgstr "Prikaži podatke v zavihkih?"
 
 #: pages/page.settings.php:207
 msgid ""
 "If enabled, \"Weight History\" and \"Target Weight\" will be displayed on "
 "sepearate tabs when using the [weight-loss-tracker] shortcode."
 msgstr ""
-"Si activé, \"Histoire du poids\" et \"Cible de poids\" seront affichés sur "
-"des onglets séparés lors de l'utilisation du shortcode [weight-loss-tracker]."
+"Pri uporabi [weight-loss-tracker] bodo podatki za zgodovino vnosov tež in "
+"ciljnih tež prikazani v ločenih zavihkih."
 
 #: pages/page.settings.php:214
 msgid "Upgrade now to Pro Plus"
-msgstr "Mettez à niveau maintenant vers Pro Plus"
+msgstr "Nadgradite na Pro Plus"
 
 #: pages/page.settings.php:217
 msgid "Calculating daily calorie intake to lose weight"
-msgstr "Calcul de l'apport calorique quotidien pour perdre du poids"
+msgstr "Izračunavam dnevne kalorije za hujšanje"
 
 #: pages/page.settings.php:221
 msgid "Female Calorie Cap"
-msgstr "Limite calorique féminine"
+msgstr "Zgornja meja kalorij za ženske"
 
 #: pages/page.settings.php:224
 msgid ""
 "Specify a maximum value for number of daily calories allowed to achieve "
 "weight loss. As per NHS guidelines, females are set to 1400kcal by default"
 msgstr ""
-"Spécifiez une valeur maximale pour le nombre de calories quotidiennes "
-"autorisées, ceci afin d'obtenir une perte de poids. Conformément aux "
-"directives NHS, pour les femmes ce nombre est fixées à 1400kcal par défaut"
+"Določite največje število kalorij, ki še omogočajo hujšanje. Po NHS "
+"smernicah je to 1400 kCal."
 
 #: pages/page.settings.php:224 pages/page.settings.php:231
 #: pages/page.settings.php:238 pages/page.settings.php:256
@@ -1039,26 +971,23 @@ msgstr ""
 msgid ""
 "Please note, it may take up to 15 minutes for calculations to change (due to "
 "caching)."
-msgstr ""
-"S'il vous plaît, notez que ceci peut prendre jusqu'à 15 minutes avant que "
-"les calculs ne changent (en raison de la mise en cache)."
+msgstr "Sprememba izračunov lahko traja do 15 min. (zaradi cachiranja)."
 
 #: pages/page.settings.php:228
 msgid "Male Calorie Cap"
-msgstr "Limite calorique masculine"
+msgstr "Zgornja meja kalorij za moške"
 
 #: pages/page.settings.php:231
 msgid ""
 "Specify a maximum value for number of daily calories allowed to achieve "
 "weight loss. As per NHS guidelines, males are set to 1900kcal by default"
 msgstr ""
-"Spécifiez une valeur maximale pour le nombre de calories quotidiennes "
-"autorisées, ceci afin d'obtenir une perte de poids. Conformément aux "
-"directives NHS, pour les hommes ce nombre est fixées à 1900kcal par défaut"
+"Določite največje število kalorij, ki še omogočajo hujšanje. Po NHS "
+"smernicah je to 1900 kCal."
 
 #: pages/page.settings.php:235
 msgid "Calories to subtract"
-msgstr "Calories à soustraire"
+msgstr "Kalorični deficit"
 
 #: pages/page.settings.php:238
 msgid ""
@@ -1067,65 +996,58 @@ msgid ""
 "we subtract the above figure to calculate the daily calorie intake to lose "
 "weight."
 msgstr ""
-"Une partie du calcul de l'apport quotidien en calories pour perdre du poids, "
-"consiste à calculer d'abord l'apport calorique pour maintenir le poids "
-"existant. Une fois que nous avons cela, nous soustrayons le chiffre ci-"
-"dessus, pour calculer l'apport quotidien en calories qui permet une perdre "
-"du poids."
 
 #: pages/page.settings.php:242 pro-features/admin-pages/data-user.php:76
 msgid "Macronutrient Calculator"
-msgstr "Calculatrice de macronutriments"
+msgstr "Kalkulator makrohranil"
 
 #: pages/page.settings.php:246
 #: pro-features/plus/macronutrient.calculator.php:118
 msgid "Proteins"
-msgstr "Protéines"
+msgstr "Beljakovine"
 
 #: pages/page.settings.php:249
 msgid "Percentage of Proteins to make up a moderate diet"
-msgstr "Pourcentage de protéines pour constituer un régime équilibré"
+msgstr "Delež beljakovin povprečne diete"
 
 #: pages/page.settings.php:249
 msgid ""
 "Please note, it may take up to 15 minutes for calorie calculations to change "
 "(due to caching)."
-msgstr ""
-"S'il vous plaît, notez que cela peut prendre jusqu'à 15 minutes pour que les "
-"calculs de calories changent (en raison de la mise en cache)."
+msgstr "Posodobitev izračunov lahko traja do 15 minut (zaradi cachiranja)."
 
 #: pages/page.settings.php:253
 msgid "Carbohydrates"
-msgstr "Glucides"
+msgstr "Ogljikovi hidrati"
 
 #: pages/page.settings.php:256
 msgid "Percentage of Carbohydrates to make up a moderate diet"
-msgstr "Pourcentage de glucides pour constituer un régime équilibré"
+msgstr "Delež OH povprečne diete"
 
 #: pages/page.settings.php:260
 #: pro-features/plus/macronutrient.calculator.php:152
 msgid "Fats"
-msgstr "Graisses"
+msgstr "Maščobe"
 
 #: pages/page.settings.php:263
 msgid "Percentage of Fats to make up a moderate diet"
-msgstr "Pourcentage de graisses pour constituer un régime équilibré"
+msgstr "Delež maščob povprečne diete"
 
 #: pages/page.settings.php:272
 msgid "Default chart type"
-msgstr "Type de graphique par défaut"
+msgstr "Privzeti tip grafov"
 
 #: pages/page.settings.php:275
 msgid "Line Chart"
-msgstr "Graphique en ligne"
+msgstr "Linijski graf"
 
 #: pages/page.settings.php:275
 msgid "Highly Recommended"
-msgstr "Hautement recommandé"
+msgstr "Priporočeno"
 
 #: pages/page.settings.php:276
 msgid "Bar Chart"
-msgstr "Graphique en barres"
+msgstr "Stolpčni graf"
 
 #: pages/page.settings.php:279
 msgid ""
@@ -1133,275 +1055,250 @@ msgid ""
 "<strong>Note: If using measurements</strong>, graph type will be forced to "
 "Line."
 msgstr ""
-"Si activé, \"Permet d'afficher les points et les étiquettes sur le "
-"graphique. <strong> Remarque: Si vous utilisez des mesures</strong>, le type "
-"de graphique sera forcé à Ligne."
 
 #: pages/page.settings.php:284
 msgid "Display gridlines?"
-msgstr "Afficher les lignes de quadrillage?"
+msgstr "Prikaži mrežne črte?"
 
 #: pages/page.settings.php:290
 msgid "If enabled, gridlines will be displayed on the Graph canvas."
-msgstr "Si activé, les quadrillages seront affichés sur le canevas Graphique."
+msgstr "Na grafu bodo prikazane mrežne črte."
 
 #: pages/page.settings.php:294
 msgid "Maximum points per graph"
-msgstr "Maximum de points par graphique"
+msgstr "Največje število točk na grafu"
 
 #: pages/page.settings.php:303 pages/page.settings.php:357
 msgid "If enabled, \"Allows points and labels to be displayed on graph."
 msgstr ""
-"Si activé, \"Permet d'afficher les points et les étiquettes sur le graphique."
 
 #: pages/page.settings.php:308
 msgid "Weight colour?"
-msgstr "Couleur Poids?"
+msgstr "Barva teže?"
 
 #: pages/page.settings.php:311
 msgid ""
 "If enabled, enter a HEX colour code to use for the Weight history line / bar "
 "border on graph."
 msgstr ""
-"Si activé, entrez un code de couleur HEX à utiliser pour la ligne Histoire "
-"du poids / bordure de la barre sur le graphique."
+"Vpišite HEX kodo barve linije oz. obrobe stolpcev zgodovine  teže za grafu."
 
 #: pages/page.settings.php:315
 msgid "Should y Axes start at 0?"
-msgstr "Les Axes des y devraient-ils commencer à 0?"
+msgstr "Naj se os Y začne pri 0?"
 
 #: pages/page.settings.php:322
 msgid ""
 "If enabled, y Axes shall start at 0. Otherwise, they are automatically "
 "calculated."
-msgstr ""
-"Si activé, les axes des y doivent commencer à 0. Sinon, ils sont "
-"automatiquement calculés."
+msgstr "Y os se bo začela pri nič, sicer pa bo začetek izračunan avtomatično."
 
 #: pages/page.settings.php:328
 msgid "Line Chart Options"
-msgstr "Options Graphique de lignes"
+msgstr "Možnosti linijskega grafa"
 
 #: pages/page.settings.php:332
 msgid "Bezier Curve?"
-msgstr "Courbe de Bezier?"
+msgstr "Bezier krivulja?"
 
 #: pages/page.settings.php:339
 msgid "If enabled, lines between points on a line graph will be curved"
-msgstr ""
-"Si activé, les lignes entre les points sur un graphe de ligne seront courbes"
+msgstr "Črte na grafu bodo ukrivljene"
 
 #: pages/page.settings.php:343
 msgid "Target line colour?"
-msgstr "Couleur de ligne de la cible?"
+msgstr "Barva cilja?"
 
 #: pages/page.settings.php:346
 msgid ""
 "If enabled, enter a HEX colour code to use for the Target line on graph."
-msgstr ""
-"Si activé, entrez un code de couleur HEX à utiliser pour la ligne de la "
-"cible sur le graphique."
+msgstr "Vpišite HEX kodo barve linije ciljne teže za grafu."
 
 #: pages/page.settings.php:350
 msgid "Display points on graph?"
-msgstr "Afficher les points sur le graphique?"
+msgstr "Na grafu prikaži točke?"
 
 #: pages/page.settings.php:361
 msgid "Point thickness"
-msgstr "Epaisseur du point"
+msgstr "Debelina točk"
 
 #: pages/page.settings.php:370
 msgid "Specifies the point thickness on a line chart."
-msgstr "Spécifie l'épaisseur du point sur un graphique en ligne."
+msgstr "Določi debelino točk na grafu."
 
 #: pages/page.settings.php:375
 msgid "Bar Chart Options"
-msgstr "Options du graphique en barres"
+msgstr "Možnosti stolpičnega grafa"
 
 #: pages/page.settings.php:379
 msgid "Weight fill colour?"
-msgstr "Couleur de remplissage du poids?"
+msgstr "Barva polnila teže?"
 
 #: pages/page.settings.php:382
 msgid ""
 "If enabled, enter a HEX colour code to use for filling the Weight bars on "
 "the graph."
-msgstr ""
-"Si activé, entrez un code de couleur HEX à utiliser pour remplir les barres "
-"de Poids sur le graphique."
+msgstr "Vpišite HEX kodo barve polnila stolpcev za težo."
 
 #: pages/page.settings.php:390
 msgid "Enable email notifications"
-msgstr "Activer les notifications par email"
+msgstr "Omogoči obveščanje pomemailu"
 
 #: pages/page.settings.php:399
 msgid "Email addresses to notify"
-msgstr "Adresse email à notifier"
+msgstr "Email naslov za obvestila"
 
 #: pages/page.settings.php:402
 msgid ""
 "Specify one or more email addresses to be notified. Seperate multiple emails "
 "with a comma."
 msgstr ""
-"Spécifiez une ou plusieurs adresses e-mail à notifier. Séparez plusieurs "
-"email avec une virgule."
+"Vpišite enega ali več emailov za obvestila. Emaili naj bodo ločeni z "
+"vejicami."
 
 #: pages/page.settings.php:406
 msgid "New weight / measurement entries"
-msgstr "Nouveaux poids / entrées de mesure"
+msgstr "Novi vnosi teže / meritev"
 
 #: pages/page.settings.php:412
 msgid ""
 "Receive notifications when a member adds a new weight / measurement entry."
-msgstr ""
-"Recevoir des notifications lorsqu'un membre ajoute un nouveau poids / entrée "
-"de mesure."
+msgstr "Prejmite obvestilo ko uporabnik vnese novo težo / meritev."
 
 #: pages/page.settings.php:416
 msgid "Edited weight / measurement entries"
-msgstr "Edité poids / entrée de mesure"
+msgstr "Spremenjena teža / meritve"
 
 #: pages/page.settings.php:422
 msgid ""
 "Receive notifications when a member edits an existing weight / measurement "
 "entry."
-msgstr ""
-"Recevoir des notifications lorsqu'un membre modifie un poids existant / "
-"entrée de mesure."
+msgstr "Prejmite obvestilo ko uporabnik spremeni obstoječo težo / meritev."
 
 #: pages/page.settings.php:426
 msgid "New / updated targets"
-msgstr "Nouveau / cibles mises à jour"
+msgstr "Nov / posodobljen cilj"
 
 #: pages/page.settings.php:432
 msgid "Receive notifications when a member adds / edits their target."
-msgstr "Recevoir des notifications lorsqu'un membre ajoute / modifie sa cible."
+msgstr "Prejmite obvestilo ko uporabnik vnese ali posodobi cilj."
 
 #: pages/page.settings.php:440
 msgid "Allow Measurements?"
-msgstr "Autoriser les mesures?"
+msgstr "Dovolite meritve?"
 
 #: pages/page.settings.php:446
 msgid ""
 "If enabled, a user can also add body measurements along with their weights."
-msgstr ""
-"Si activé, un utilisateur peut également ajouter des mesures corporelles "
-"avec leurs poids."
+msgstr "Uporabniki bodo lahko vnašali tudi druge antropometrične meritve."
 
 #: pages/page.settings.php:450
 msgid "Measurement Units"
-msgstr "Unités de mesure"
+msgstr "Merske enote"
 
 #: pages/page.settings.php:453 pro-features/user-preferences.php:145
 msgid "Centimetres"
-msgstr "Centimètres"
+msgstr "Centimetri"
 
 #: pages/page.settings.php:456
 msgid "Default unit for recording measurements."
-msgstr "Unité par défaut pour l'enregistrement des mesures."
+msgstr "Privzeta enota za meritve."
 
 #: pages/page.settings.php:460
 msgid "Measurements mandatory?"
-msgstr "Les mesures sont-elles obligatoires?"
+msgstr "So meritve obvezne?"
 
 #: pages/page.settings.php:466
 msgid "If yes, a user will be forced to complete all measurement features."
-msgstr ""
-"Si oui, un utilisateur sera obligé de compléter toutes les caractéristiques "
-"de mesure."
+msgstr "Če so, bo uporabnik moral vnesti vse mere."
 
 #: pages/page.settings.php:470
 msgid "Areas of measurements"
-msgstr "Domaines de mesures"
+msgstr "Lokacije meritev"
 
 #: pages/page.settings.php:492
 msgid "Enable"
-msgstr "Activer"
+msgstr "Omogoči"
 
 #: pages/page.settings.php:495
 msgid "Chart Colour"
-msgstr "Couleur sur graphique"
+msgstr "Barva grafa"
 
 #: pages/page.user.data.advertise.php:21
 msgid "Looking to view and manipulate your user's data?"
-msgstr ""
-"Vous cherchez à afficher et à manipuler les données de votre utilisateur?"
+msgstr "Bi želeli pregledovati in manipulirati podatke uporabnikov?"
 
 #: pages/page.user.data.advertise.php:23
 msgid ""
 "Upgrade to the Pro version of this plugin to view, edit and delete your "
 "user's weight entries"
 msgstr ""
-"Passez à la version Pro de ce plugin pour afficher, modifier et supprimer "
-"les entrées de poids de votre utilisateur"
+"Nadgradite na Pro verzijo za možnost ogleda, spreminjanja in brisanja vnosov "
+"uporabnikov"
 
 #: pages/page.user.data.advertise.php:25
 msgid "View all user entries in tabular and chart format."
-msgstr ""
-"Afficher toutes les entrées des utilisateurs au format tabulaire et "
-"graphique."
+msgstr "Ogled podatkov uporabnikov v zavihkih in tabelah."
 
 #: pages/page.user.data.advertise.php:26
 msgid "Add, edit and delete user entries."
-msgstr "Ajouter, éditer et supprimer des entrées utilisateur."
+msgstr "Dodajanje, spreminjanje in brisanje vnosov uporabnikov."
 
 #: pages/page.user.data.advertise.php:27
 msgid "Sortable and responsive tables."
-msgstr "Tableaux triables et réactifs."
+msgstr "Možnost sortiranja tabel."
 
 #: pages/page.user.data.advertise.php:28
 msgid "View league tables of most lost / gained."
-msgstr "Voir les tableaux de la ligue le plus perdu / prise de poids."
+msgstr "Ligaške tabele največje izgube / pridobitve teže."
 
 #: pages/page.user.data.advertise.php:29
 msgid "View user stats, weight lost, recent weight, start weight, BMI, etc."
 msgstr ""
-"Voir les statistiques des utilisateurs, le poids perdu, le poids récent, le "
-"poids au début, l'IMC, etc."
+"Ogled uporabniške statistike, izgubljene teže, nedavne teže, začetne teže, "
+"ITM itd."
 
 #: pages/page.user.data.advertise.php:30
 msgid "Export all or a particular user's data in CSV / JSON."
-msgstr "Exportez toutes ou partie les données d'un utilisateur en CSV / JSON."
+msgstr "Izvoz uporabniških podatkov v CSV in JSON."
 
 #: pages/page.user.data.advertise.php:32
 msgid "Upgrade to Pro Version"
-msgstr "Mettre à niveau vers la Version Pro"
+msgstr "Nadgradite na Pro verzijo"
 
 #: pages/page.user.data.advertise.php:37
 msgid "Example screenshots"
-msgstr "Exemple de capture d'écran"
+msgstr "Nekaj posnetkov zaslona"
 
 #: pages/page.user.data.advertise.php:39
 msgid "Below are a couple of screenshots from the user data screens"
-msgstr ""
-"Ci-dessous quelques captures d'écran fait à partir d'écrans de données "
-"utilisateur"
+msgstr "Spodaj je nekaj posnetkov zaslona z vidika uporabnika"
 
 #: pro-features/admin-pages/data-add-edit-entry.php:17
 #: pro-features/admin-pages/data-edit-target.php:17
 msgid "There was an issue loading this page"
-msgstr "Il y a eu un problème lors du chargement de cette page"
+msgstr "Prišlo je do težav z nalaganjem strani"
 
 #: pro-features/admin-pages/data-add-edit-entry.php:43
 msgid "Add / Edit an entry"
-msgstr "Ajouter / Modifier une entrée"
+msgstr "Dodaj / spremeni vnos"
 
 #: pro-features/admin-pages/data-edit-target.php:32
 msgid "Edit user's target"
-msgstr "Modifier la cible de l'utilisateur"
+msgstr "Spremeni uporabnikov cij"
 
 #: pro-features/admin-pages/data-search-results.php:11
 #: pro-features/admin-pages/data-search-results.php:18
 msgid "Search Results"
-msgstr "Résultats de la recherche"
+msgstr "Rezultati iskanja"
 
 #: pro-features/admin-pages/data-search-results.php:32
 msgid "results were found for:"
-msgstr "résultats ont été trouvés pour:"
+msgstr "rezultatov iskanja za:"
 
 #: pro-features/admin-pages/data-search-results.php:40
 msgid "Username"
-msgstr "Nom d'utilisateur"
+msgstr "Uporabniško ime"
 
 #: pro-features/admin-pages/data-search-results.php:41
 msgid "Email"
@@ -1410,301 +1307,292 @@ msgstr "Email"
 #: pro-features/admin-pages/data-search-results.php:42
 #: pro-features/functions.pages.php:46
 msgid "No. of Entries"
-msgstr "Nb. d'entrées"
+msgstr "Št. vnosov"
 
 #: pro-features/admin-pages/data-search-results.php:43
 #: pro-features/functions.pages.php:50
 msgid "Start Weight"
-msgstr "Poids Initial"
+msgstr "Začetna teža"
 
 #: pro-features/admin-pages/data-search-results.php:44
 msgid "Recent Weight"
-msgstr "Poids récent"
+msgstr "Zadnja teža"
 
 #: pro-features/admin-pages/data-search-results.php:58
 msgid "No users were found for the given search criteria:"
-msgstr ""
-"Aucun utilisateur n'a été trouvé pour les critères de recherche donnés:"
+msgstr "Za iskalni kriterij ni najdenih uporabnikov:"
 
 #: pro-features/admin-pages/data-search-results.php:63
 msgid "No search terms were specified"
-msgstr "Aucun des termes de recherche ont été spécifiés"
+msgstr "Iskalna fraza ni bila določena"
 
 #: pro-features/admin-pages/data-summary.php:19
 msgid "Summary"
-msgstr "Résumé"
+msgstr "Povzetek"
 
 #: pro-features/admin-pages/data-summary.php:37
 msgid "League table for those that have lost the most"
-msgstr "Tableau de la ligue de ceux qui ont perdu le plus"
+msgstr "Ligaška tabela za tiste, ki so največ izgubili"
 
 #: pro-features/admin-pages/data-summary.php:37
 msgid "League Table for those that have gained the most"
-msgstr "Tableau de la ligue de ceux qui ont pris le plus de poids"
+msgstr "Ligaška tabela za tiste, ki so največ pridobili"
 
 #: pro-features/admin-pages/data-summary.php:53
 msgid "Regenerate these stats"
-msgstr "Régénérer ces statistiques"
+msgstr "Regeneriraj statistiko"
 
 #: pro-features/admin-pages/data-summary.php:59
 msgid "Show who has gained the most"
-msgstr "Montre qui a pris le plus de poids"
+msgstr "Pokaži kdo je največ pridobil"
 
 #: pro-features/admin-pages/data-summary.php:59
 msgid "Show who has lost the most"
-msgstr "Montre qui a perdu le plus"
+msgstr "Pokaži kdo je izgubil največ"
 
 #: pro-features/admin-pages/data-summary.php:77
 msgid "All entries"
-msgstr "Toutes les entrées"
+msgstr "Vsi vnosi"
 
 #: pro-features/admin-pages/data-summary.php:77
 msgid "Last 100 entries"
-msgstr "Les 100 dernières entrées"
+msgstr "Zadnjih 100 vnosov"
 
 #: pro-features/admin-pages/data-summary.php:85
 msgid "Show all entries"
-msgstr "Afficher toutes les entrées"
+msgstr "Prikaži vse vnose"
 
 #: pro-features/admin-pages/data-summary.php:85
 msgid "Show 100 recent entries"
-msgstr "Afficher 100 entrées récentes"
+msgstr "Pokaži 100 nedavnih vnosov"
 
 #: pro-features/admin-pages/data-summary.php:96
 #: pro-features/functions.pages.php:35
 msgid "User Search"
-msgstr "Recherche d'utilisateur"
+msgstr "Poišči uporabnika"
 
 #: pro-features/admin-pages/data-summary.php:102
 msgid "Quick Stats"
-msgstr "Statistiques rapides"
+msgstr "Hitra statistika"
 
 #: pro-features/admin-pages/data-summary.php:126
 msgid "No. of WordPress users"
-msgstr "Nb d'utilisateurs WordPress"
+msgstr "Število WP uporabnikov"
 
 #: pro-features/admin-pages/data-summary.php:128
 msgid "No. of Weight Entries"
-msgstr "Nb. d'entrées de Poids"
+msgstr "Število vnosov teže"
 
 #: pro-features/admin-pages/data-summary.php:130
 msgid "No. of Target Entries"
-msgstr "Nb. d'entrées cibles"
+msgstr "Število vnosov ciljnih tež"
 
 #: pro-features/admin-pages/data-summary.php:132
 msgid "refreshed every 15 minutes"
-msgstr "rafraîchi toutes les 15 minutes"
+msgstr "osveženo vsakih 15 minut"
 
 #: pro-features/admin-pages/data-summary.php:140
 msgid "View all data"
-msgstr "Voir toutes les données"
+msgstr "Poglej vse podatke"
 
 #: pro-features/admin-pages/data-summary.php:144
 msgid "View all entries"
-msgstr "Voir toutes les entrées"
+msgstr "Poglej vse vnose"
 
 #: pro-features/admin-pages/data-summary.php:149
 msgid "Export all data"
-msgstr "Exporter toutes les données"
+msgstr "Izvozi vse podatke"
 
 #: pro-features/admin-pages/data-summary.php:153
 #: pro-features/functions.pages.php:131
 msgid "To CSV"
-msgstr "En CSV"
+msgstr "V CSV"
 
 #: pro-features/admin-pages/data-summary.php:157
 #: pro-features/functions.pages.php:135
 msgid "To JSON"
-msgstr "En JSON"
+msgstr "V JSON"
 
 #: pro-features/admin-pages/data-summary.php:162
 #: pro-features/functions.pages.php:159
 msgid "Delete Data"
-msgstr "Supprimer les données"
+msgstr "Izbriči podatke"
 
 #: pro-features/admin-pages/data-summary.php:166
 msgid "Delete data for ALL users"
-msgstr "Supprimer les données pour TOUS les utilisateurs"
+msgstr "Izbriši podatke vseh uporabnikov"
 
 #: pro-features/admin-pages/data-summary.php:178
 msgid "Are you sure you wish to remove all user data?"
-msgstr "Êtes-vous sûr de vouloir supprimer toutes les données utilisateur?"
+msgstr "Ste prepričani, da želite izbrisati vse podatke?"
 
 #: pro-features/admin-pages/data-user-edit-settings.php:21
 msgid "Edit user preferences"
-msgstr "Modifier les préférences de l'utilisateur"
+msgstr "Spremeni nastavitve uporabnika"
 
 #: pro-features/admin-pages/data-user.php:28
 msgid "The cache for this user has been deleted."
-msgstr "Le cache de cet utilisateur a été supprimé."
+msgstr "Cache tega uporabnika je bil izbrisan."
 
 #: pro-features/admin-pages/data-user.php:56
 msgid "Daily calorie needs"
-msgstr "Besoins quotidiens en calories"
+msgstr "Dnevne energetske potrebe"
 
 #: pro-features/admin-pages/data-user.php:67
 #: pro-features/admin-pages/data-user.php:94
 msgid "Upgrade to Pro Plus"
-msgstr "Mettre à niveau vers Pro Plus"
+msgstr "Nadgradite na Pro Plus"
 
 #: pro-features/admin-pages/data-user.php:68
 msgid ""
 "to view the user's daily calorie intake required to either maintain or lose "
 "weight (Harris Benedict formula)"
 msgstr ""
-"pour voir l'apport calorique quotidien nécessaire de l'utilisateur, à des "
-"fins de maintenir ou perdre du poids (formule Harris Benedict)"
 
 #: pro-features/admin-pages/data-user.php:82
 msgid "Please ensure the values for Proteins, Carbohydrates and Fats (within "
 msgstr ""
-"S'il vous plaît, assurez vous des valeurs de protéines, de glucides et de "
-"graisses (dans les "
 
 #: pro-features/admin-pages/data-user.php:84
 #: pro-features/plus/harris.benedict.php:226
 msgid "settings"
-msgstr "paramètres"
+msgstr "nastavitve"
 
 #: pro-features/admin-pages/data-user.php:85
 msgid ") have been specified and total 100%."
-msgstr ") ont été spécifiés et totalisent 100%."
+msgstr ""
 
 #: pro-features/admin-pages/data-user.php:95
 msgid ""
 "to view the user's suggested Macronutrient intake based on their recommended "
 "calorie intake"
 msgstr ""
-"pour voir l'apport suggéré aux utilisateurs de macronutriments, en fonction "
-"de leur consommation calorique recommandée"
 
 #: pro-features/admin-pages/data-user.php:103
 msgid "Entries for this user"
-msgstr "Entrées pour cet utilisateur"
+msgstr "Uporabnikovi vnosi"
 
 #: pro-features/admin-pages/data-view-all.php:11
 #: pro-features/admin-pages/data-view-all.php:18
 msgid "View All Data"
-msgstr "Afficher toutes les données"
+msgstr "Poglej vse podatke"
 
 #: pro-features/admin-pages/data-view-all.php:32
 msgid "Number of WordPress users"
-msgstr "Nombre d'utilisateurs WordPress"
+msgstr "Število WP uporabnikov"
 
 #: pro-features/admin-pages/data-view-all.php:34
 msgid "Number of weight entries"
-msgstr "Nombre d'entrées de poids"
+msgstr "Število vnosov teže"
 
 #: pro-features/admin-pages/data-view-all.php:36
 msgid "Number of targets entered"
-msgstr "Nombre de cibles entrées"
+msgstr "Število vnosov ciljnih tež"
 
 #: pro-features/admin-pages/data-view-all.php:39
 msgid "Export to CSV"
-msgstr "Exporter au format CSV"
+msgstr "Izvozi v CSV"
 
 #: pro-features/admin-pages/data-view-all.php:41
 msgid "Export to JSON"
-msgstr "Exporter au format JSON"
+msgstr "Izvozi v JSON"
 
 #: pro-features/advanced-table.php:102
 msgid "BMI"
-msgstr "IMC"
+msgstr "ITM"
 
 #: pro-features/advanced-table.php:114
 msgid "Options"
-msgstr "Options"
+msgstr "Izbire"
 
 #: pro-features/advanced-table.php:172
 msgid "No data available in table"
-msgstr "Aucune donnée disponible dans le tableau"
+msgstr "V tabeli ni podatkov"
 
 #: pro-features/advanced-table.php:173
 msgid "Showing _START_ to _END_ of _TOTAL_ entries"
-msgstr "Montrer _DEBUT_ à _FIN_ de _TOTAL_ entrées"
+msgstr "Prikazujem _START_ do _END_ od _TOTAL_ vnosov"
 
 #: pro-features/advanced-table.php:174
 msgid "Showing 0 to 0 of 0 entries"
-msgstr "Affichage de 0 à 0 de 0 entrées"
+msgstr "Prikazujem 0 do 0 od 0 vnosov"
 
 #: pro-features/advanced-table.php:175
 msgid "(filtered from _MAX_ total entries)"
-msgstr "(filtré de _MAX_ entrées totales)"
+msgstr "(filtrirano od _MAX_ vnosov)"
 
 #: pro-features/advanced-table.php:178
 msgid "Show _MENU_ entries"
-msgstr "Afficher les _MENU_entrées"
+msgstr "Prikaži _MENU_ vnosov"
 
 #: pro-features/advanced-table.php:179
 msgid "Loading..."
-msgstr "Chargement..."
+msgstr "Nalagam..."
 
 #: pro-features/advanced-table.php:180
 msgid "Processing..."
-msgstr "En traitement..."
+msgstr "Procesiram..."
 
 #: pro-features/advanced-table.php:181
 msgid "Search: "
-msgstr "Chercher: "
+msgstr "Išči: "
 
 #: pro-features/advanced-table.php:182
 msgid "No matching records found"
-msgstr "Aucun enregistrements correspondants trouvés"
+msgstr "Ni rezultatov iskanja"
 
 #: pro-features/advanced-table.php:184
 msgid "First"
-msgstr "Premier"
+msgstr "Prva"
 
 #: pro-features/advanced-table.php:185
 msgid "Last"
-msgstr "Dernier"
+msgstr "Zadnja"
 
 #: pro-features/advanced-table.php:186
 msgid "Next"
-msgstr "Prochain"
+msgstr "Naslednja"
 
 #: pro-features/advanced-table.php:187
 msgid "Previous"
-msgstr "Précédent"
+msgstr "Predhodnja"
 
 #: pro-features/advanced-table.php:190
 msgid ":  activate to sort column ascending"
-msgstr ": activer pour trier la colonne ascendante"
+msgstr ""
 
 #: pro-features/advanced-table.php:191
 msgid ": activate to sort column descending"
-msgstr ": activer pour trier la colonne descendante"
+msgstr ""
 
 #: pro-features/emails.php:39
 msgid "added"
-msgstr "ajoutée"
+msgstr ""
 
 #: pro-features/emails.php:39
 msgid "updated"
-msgstr "actualisé"
+msgstr ""
 
 #: pro-features/emails.php:40
 msgid "their weight / measurements for "
-msgstr "leur poids / mesures pour "
+msgstr ""
 
 #: pro-features/emails.php:40
 msgid "their target to"
-msgstr "leur cible à"
+msgstr ""
 
 #: pro-features/emails.php:58
 msgid "Weight Loss Tracker update for"
-msgstr "Weight Loss Tracker mise à jour pour"
+msgstr "Weight Loss Tracker posodobitev za"
 
 #: pro-features/emails.php:73
 msgid "Hello"
-msgstr "Bonjour"
+msgstr "Zdravo"
 
 #: pro-features/emails.php:74
 msgid ""
 "Just a quick email to let you know that \"{displayname}\" has {mode} {type}:"
-msgstr ""
-"Juste un email rapide pour vous informer que \"{displayname}\" a {mode} "
-"{type}:"
+msgstr "Hitro obvestilo: \"{displayname}\" ima {mode} {type}:"
 
 #: pro-features/emails.php:75
 msgid "{data}"
@@ -1712,28 +1600,27 @@ msgstr "{data}"
 
 #: pro-features/emails.php:76
 msgid "Thank you!"
-msgstr "Merci!"
+msgstr "Hvala!"
 
 #: pro-features/export.php:42
 msgid "No data was found for the given criteria."
-msgstr "Aucune donnée n'a été trouvée pour les critères donnés."
+msgstr "Za dane kriterije ni podatkov."
 
 #: pro-features/export.php:192
 msgid "lbs only"
-msgstr "lbs seulement"
+msgstr "Samo funti"
 
 #: pro-features/export.php:195
 msgid "Difference from start"
-msgstr "Différence par rapport au début"
+msgstr "Razlika od začetka"
 
 #: pro-features/export.php:251 pro-features/footable.php:98
 msgid "No height"
-msgstr "Pas de taille"
+msgstr "Ni višine"
 
 #: pro-features/feature-list.php:6
 msgid "<strong>All of the features that come with a standard <a href=\""
 msgstr ""
-"<strong>Toutes les fonctionnalités fournies avec un standard <a href =\""
 
 #: pro-features/feature-list.php:7
 msgid ""
@@ -1741,10 +1628,6 @@ msgid ""
 "Shortcodes and extended admin screens to display a user's BMR. For further "
 "information on BMR and how it is calculated visit <a href=\""
 msgstr ""
-"<strong>Calcul du taux métabolique de base (TMB) par utilisateur</strong>. "
-"Les shortcodes et écrans d'administration étendus, pour afficher le TMB d'un "
-"utilisateur. Pour plus d'informations sur le TMB et la façon dont il est "
-"calculé, visitez <a href =\""
 
 #: pro-features/feature-list.php:8
 msgid ""
@@ -1753,11 +1636,6 @@ msgid ""
 "weight. For further information on Harris Benedict Formula and how it is "
 "calculated visit <a href=\""
 msgstr ""
-"<strong>Formule Harris Benedict</strong>. Les shortcodes et les écrans "
-"d'administration étendus, permettent de voir l'apport calorique nécessaire "
-"d'une personne, pour maintenir et perdre du poids. Pour plus d'informations "
-"sur la Formule Harris Benedict et comment elle est calculée, visitez <a href "
-"=\""
 
 #: pro-features/feature-list.php:9
 msgid ""
@@ -1766,10 +1644,6 @@ msgid ""
 "calorie intake across meals. For further information on how this is "
 "calculated please visit <a href=\""
 msgstr ""
-"<strong>L'apport calorique recommandé par repas</strong>. Les shortcodes et "
-"les écrans d'administration étendus, recommandent comment une personne doit "
-"diviser son apport quotidien en calories au travers des repas. Pour plus "
-"d'informations sur la façon dont cela est calculé, visitez <a href =\""
 
 #: pro-features/feature-list.php:10
 msgid ""
@@ -1779,11 +1653,6 @@ msgid ""
 "Macronutrients Calculator and how these calculations are performed please "
 "visit <a href=\""
 msgstr ""
-"<strong>Calculatrice de macronutriments</strong>. Les shortcodes et les "
-"écrans d'administration étendus, recommandent comment leur consommation de "
-"calories doit être divisée en graisses, glucides et protéines. Pour plus "
-"d'informations sur la Calculatrice de macronutrients et sur la façon dont "
-"ces calculs sont effectués, visitez <a href =\""
 
 #: pro-features/feature-list.php:11
 msgid ""
@@ -1791,9 +1660,6 @@ msgid ""
 "preference fields and shortcodes to display them: Activity Level, Date of "
 "Birth and Gender."
 msgstr ""
-"<strong>Champs supplémentaires de préférences utilisateur</strong>. Autres "
-"champs de préférences utilisateur et shortcodes pour les afficher: Niveau "
-"d'activité, Date de naissance et sexe."
 
 #: pro-features/feature-list.php:16
 msgid ""
@@ -1801,28 +1667,18 @@ msgid ""
 "user data. Various tools for viewing user's graphs, tables of entries, BMI, "
 "targets, weight lost / gained stats and much more."
 msgstr ""
-"<strong>Accédez aux données de votre utilisateur.</strong> L'administrateur "
-"peut afficher, éditer et supprimer des données utilisateur. Divers outils "
-"pour visualiser les graphiques de l'utilisateur, les tableaux des entrées, "
-"l'IMC, les cibles, les statistiques de perte de poids / prise de poids et "
-"bien plus encore."
 
 #: pro-features/feature-list.php:17
 msgid ""
 "<strong>Measurements.</strong> Support for recording measurements like Hip, "
 "Waist, Leg, Bicep, etc. Displayed on charts and tables."
 msgstr ""
-"<strong>Mesures.</strong> Support pour enregistrer des mesures comme la "
-"Hanche, la Circonférence, la Jambe, le Biceps, etc. Affichés sur les "
-"graphiques et les tableaux."
 
 #: pro-features/feature-list.php:18
 msgid ""
 "<strong>Export all data or a particular user.</strong> Export in JSON or CSV "
 "format."
 msgstr ""
-"<strong>Exporter toutes les données ou un utilisateur particulier.</strong> "
-"Exporter au format JSON ou CSV."
 
 #: pro-features/feature-list.php:19
 msgid ""
@@ -1830,17 +1686,12 @@ msgid ""
 "their BMI is displayed next to each weight entry. There is also a shortcode "
 "to render the latest BMI."
 msgstr ""
-"<strong>IMC.</strong> Permet à un utilisateur de spécifier sa taille. Une "
-"fois spécifié, leur IMC s'affiche à côté de chaque entrée de poids. Il "
-"existe également un shortcode pour fournir le dernier IMC."
 
 #: pro-features/feature-list.php:20
 msgid ""
 "<strong>Email notifications.</strong> Receive email notifications when a "
 "person updates their target or adds / edits a weight."
 msgstr ""
-"<strong>Notifications par email.</strong> Recevez des notifications par "
-"email lorsqu'une personne modifie sa cible ou ajoute / modifie un poids."
 
 #: pro-features/feature-list.php:21
 msgid ""
@@ -1848,42 +1699,30 @@ msgid ""
 "the total lost / gained for the community and another to display a league "
 "table."
 msgstr ""
-"<strong>Statistiques globales des utilisateurs.</strong> Les shortcodes qui "
-"vous permettent d'afficher le total perdu / prise de poids pour la "
-"communauté et un autre pour afficher un tableau de la ligue."
 
 #: pro-features/feature-list.php:22
 msgid ""
 "<strong>Widgets.</strong> Widgets that allow you to display the graph and "
 "quick weight entry form within any widget area."
 msgstr ""
-"<strong>Widgets.</strong> Widgets qui vous permettent d'afficher le graphe "
-"et le formulaire d'entrée rapide dans n'importe quelle zone de widget."
 
 #: pro-features/feature-list.php:23
 msgid ""
 "<strong>Chart and form Shortcodes.</strong> That allow you to display the "
 "graph and quick weight entry form by placing a shortcode on any post or page."
 msgstr ""
-"<strong>Shortcodes de graphique et formulaire.</strong> Cela vous permet "
-"d'afficher le graphique et le formulaire de saisie rapide de poids, en "
-"plaçant un shortcode sur n'importe quelle publication ou page."
 
 #: pro-features/feature-list.php:24
 msgid ""
 "<strong>Progress Bar shortcode.</strong> A shortcode that visually displays "
 "the logged in user's progress towards their target"
 msgstr ""
-"<strong>Shortcode de la barre de progression.</strong> Un shortcode qui "
-"affiche visuellement le progrès de l'utilisateur connecté vers sa cible"
 
 #: pro-features/feature-list.php:25
 msgid ""
 "<strong>Reminder shortcode.</strong> A shortcode that can be used to remind "
 "the user to enter their target or weight for today."
 msgstr ""
-"<strong>Shortcode de rappel.</strong> Un shortcode qui peut être utilisé, "
-"pour rappeler à l'utilisateur d'entrer sa cible ou son poids du jour."
 
 #: pro-features/feature-list.php:26
 msgid ""
@@ -1892,43 +1731,30 @@ msgid ""
 "provides the opposite allowing you to provide encouragement when someone "
 "gains weight."
 msgstr ""
-"<strong> Shortcode de message</strong> Un shortcode qui vous permet de "
-"féliciter un utilisateur, lorsqu'il perd du poids x nombre de fois. Il "
-"fournit également le contraire, en vous permettant de vous encourager "
-"lorsque quelqu'un prend du poids."
 
 #: pro-features/feature-list.php:27
 msgid ""
 "<strong>Text Shortcodes.</strong> Additional shortcodes for earliest and "
 "most recent dates entered."
 msgstr ""
-"<strong>Shortcodes deText.</strong> Les shortcodes supplémentaires pour les "
-"dates les plus récentes sont entrés."
 
 #: pro-features/feature-list.php:28
 msgid ""
 "<strong>Progress Bar shortcode / widget.</strong> Display a user's progress "
 "towards their weight target."
 msgstr ""
-"<strong>Shortcode de Barre de progression / widget. </strong> Affiche le "
-"progrès d'un utilisateur en direction de sa cible de poids."
 
 #: pro-features/feature-list.php:29
 msgid ""
 "<strong>Reminder shortcode.</strong> Display a reminder to enter their "
 "weight for the given day or enter a target."
 msgstr ""
-"<strong>Shortcode de rappel.</strong> Affichez un rappel, pour entrer leur "
-"poids pour un jour donné ou une cible donnée."
 
 #: pro-features/feature-list.php:30
 msgid ""
 "<strong>Admin: View / Delete user data</strong>. Admin will be able to view "
 "and delete existing user data."
 msgstr ""
-"<strong>Administrateur: Afficher / Supprimer les données utilisateur</"
-"strong>. L'administrateur pourra afficher et supprimer les données "
-"utilisateur existantes."
 
 #: pro-features/feature-list.php:31
 msgid ""
@@ -1937,61 +1763,44 @@ msgid ""
 "They will also be able to specify date format and clear all their weight "
 "data."
 msgstr ""
-"<strong>Préférences utilisateur</strong>. Si cette option est activée, "
-"l'utilisateur pourra sélectionner l'unité avec laquelle ils souhaitent "
-"stocker leur poids, en métrique ou impériale. Ils pourront également "
-"spécifier le format de la date et effacer toutes leurs données de poids."
 
 #: pro-features/feature-list.php:32
 msgid ""
 "<strong>Bar Charts</strong>. Fancy something different to a line chart? The "
 "plugin will also support Bar Charts."
 msgstr ""
-"<strong>Graphiques de barres</strong>. Un graphique de lignes, souhaitez-"
-"vous quelque chose de différent ? Le plugin prend également en charge les "
-"graphiques à barres."
 
 #: pro-features/feature-list.php:33
 msgid ""
 "<strong>Decimals</strong>. Decimals will be allowed weight in Pounds only or "
 "Kg modes."
 msgstr ""
-"<strong>Décimales</strong>. Les décimales seront seulement autorisés pour le "
-"poids en Pounds ou en Kg."
 
 #: pro-features/feature-list.php:34
 msgid ""
 "<strong>Delete existing entry</strong>. A logged in user will be able to "
 "delete or edit an existing weight entry."
 msgstr ""
-"<strong>Supprimer l'entrée existante</strong>. Un utilisateur connecté "
-"pourra supprimer ou modifier une entrée de poids existante."
 
 #: pro-features/feature-list.php:35
 msgid ""
 "<strong>Better Tables.</strong>. Data tables in front end and admin will "
 "support paging and sorting."
 msgstr ""
-"<strong>Meilleures tableaux.</strong>. Les tableaux de données dans "
-"l'interface utilisateur et administrateur prendront en charge la pagination "
-"et le tri."
 
 #: pro-features/feature-list.php:36
 msgid ""
 "<strong>Admin: Extra Settings</strong>. Extra settings to customise the "
 "plugin will be added e.g. number of plot points on graph, rows per page, etc."
 msgstr ""
-"<strong>Administrateur: Paramètres supplémentaires</strong>. Des paramètres "
-"supplémentaires pour personnaliser le plugin seront ajoutés, p.ex le nombre "
-"de points de tracé sur le graphique, lignes par page, etc."
 
 #: pro-features/footable.php:23
 msgid "cm"
-msgstr "cm"
+msgstr ""
 
 #: pro-features/footable.php:84
 msgid "First entry"
-msgstr "Première entrée"
+msgstr "Prvi vnos"
 
 #: pro-features/footable.php:138
 msgid "+"
@@ -1999,114 +1808,113 @@ msgstr "+"
 
 #: pro-features/footable.php:143
 msgid "Body Mass Index"
-msgstr "Indice de masse corporelle"
+msgstr "Indeks telesne mase"
 
 #: pro-features/footable.php:187
 msgid "Are you sure you want to delete the row?"
-msgstr "Êtes-vous sûr de vouloir supprimer la ligne?"
+msgstr "Res želite izbrisati vrstico?"
 
 #: pro-features/footable.php:188
 msgid "Unfortunately there was an error deleting the row."
-msgstr "Malheureusement, il y a eu une erreur lors de la suppression la ligne."
+msgstr "Pri izbrisu vrstice je prišlo do napake."
 
 #: pro-features/functions.pages.php:11
 msgid ""
 "Enter a user's email address, display name or username and click Search."
 msgstr ""
-"Entrez l'adresse email d'un utilisateur, afficher le nom ou le nom "
-"utilisateur et cliquez sur Rechercher."
+"Vpišite uporabnikov email, prikazno ime ali uporabniško ime in kliknite Išči."
 
 #: pro-features/functions.pages.php:41
 msgid "User Information"
-msgstr "Informations de l'utilisateur"
+msgstr "Podatki uporabnika"
 
 #: pro-features/functions.pages.php:54
 msgid "Latest Weight"
-msgstr "Dernier Poids"
+msgstr "Zadnja teža"
 
 #: pro-features/functions.pages.php:58
 msgid "Diff. from Start"
-msgstr "Diff. à partir du début"
+msgstr "Razlika od začetka"
 
 #: pro-features/functions.pages.php:74
 msgid "Diff. from Target"
-msgstr "Diff. depuis la Cible"
+msgstr "Razlika do cilja"
 
 #: pro-features/functions.pages.php:78
 msgid "Current BMI"
-msgstr "IMC actuel"
+msgstr "Trenitni ITM"
 
 #: pro-features/functions.pages.php:79
 msgid "No height specified"
-msgstr "Pas de hauteur spécifiée"
+msgstr "Višina ni določena"
 
 #: pro-features/functions.pages.php:86
 msgid "Gender"
-msgstr "Genre"
+msgstr "Spol"
 
 #: pro-features/functions.pages.php:90
 msgid "Activity Level"
-msgstr "Niveau d'activité"
+msgstr "Stopnja aktivnosti"
 
 #: pro-features/functions.pages.php:94
 msgid "Date of Birth"
-msgstr "Date de naissance"
+msgstr "Datum rojstva"
 
 #: pro-features/functions.pages.php:98
 msgid "BMR"
-msgstr "TMB"
+msgstr "BMR"
 
 #: pro-features/functions.pages.php:103
 msgid "Missing data"
-msgstr "Données manquantes"
+msgstr "Manjkajoči podatki"
 
 #: pro-features/functions.pages.php:114 pro-features/functions.pages.php:118
 msgid "Add Entry"
-msgstr "Ajouter une entrée"
+msgstr "Dodaj vnos"
 
 #: pro-features/functions.pages.php:122
 msgid "Edit Target"
-msgstr "Modifier la cible"
+msgstr "Spremeni ciljno težo"
 
 #: pro-features/functions.pages.php:127
 msgid "Export Data"
-msgstr "Exporter des données"
+msgstr "Izvozi podatke"
 
 #: pro-features/functions.pages.php:144 pro-features/user-preferences.php:131
 msgid "Preferences"
-msgstr "Préférences"
+msgstr "Nastavitve"
 
 #: pro-features/functions.pages.php:150
 msgid "Delete Cache"
-msgstr "Supprimer le cache"
+msgstr "Izbriši cache"
 
 #: pro-features/functions.pages.php:154
 msgid "Delete Cache for this user"
-msgstr "Supprimer le cache pour cet utilisateur"
+msgstr "Izbriši cache tega uporabnika"
 
 #: pro-features/functions.pages.php:163
 msgid "Delete ALL data for this user"
-msgstr "Supprimez TOUTES les données pour cet utilisateur"
+msgstr "Izbriši VSE podatke tega uporabnika"
 
 #: pro-features/functions.pages.php:170
 msgid "Are you sure you wish to remove the data for this user?"
-msgstr "Êtes-vous sûr de vouloir supprimer les données pour cet utilisateur?"
+msgstr "Res želite izbrisati podatke tega uporabnika?"
 
 #: pro-features/functions.pages.php:204
 msgid "Back"
-msgstr "Retour"
+msgstr "Nazaj"
 
 #: pro-features/functions.pages.php:206
 msgid "WordPress Record"
-msgstr "WordPress Enregistrement"
+msgstr ""
 
 #: pro-features/functions.pages.php:207
 msgid "Weight Tracker Record"
-msgstr "Weight Tracker Enregistrement"
+msgstr ""
 
 #: pro-features/functions.pages.php:226
 msgid "Error: The User's ID was missing..."
-msgstr "Erreur: L'Identifiant de l'utilisateur manquait..."
+msgstr "Napaka: Manjkal je uporabnikov ID ..."
 
 #: pro-features/functions.php:6
 msgid "Cm"
@@ -2114,81 +1922,81 @@ msgstr "Cm"
 
 #: pro-features/functions.php:19
 msgid "Add Height for BMI"
-msgstr "Ajouter la hauteur pour l'IMC"
+msgstr "Vnesi višino za izračun ITM"
 
 #: pro-features/functions.php:47
 msgid "Underweight"
-msgstr "Insuffisance pondérale"
+msgstr "Prenizka teža"
 
 #: pro-features/functions.php:49
 msgid "Healthy"
-msgstr "En bonne santé"
+msgstr "Normalno / zdravo"
 
 #: pro-features/functions.php:52
 msgid "Overweight"
-msgstr "Surpoids"
+msgstr "Prekomerna teža"
 
 #: pro-features/functions.php:54
 msgid "Heavily Overweight"
-msgstr "Fortement en surpoids"
+msgstr "Močno prekomerna teža"
 
 #: pro-features/functions.php:206 pro-features/plus/harris.benedict.php:221
 msgid "Female"
-msgstr "Genre féminin"
+msgstr "Ženska"
 
 #: pro-features/functions.php:207 pro-features/plus/harris.benedict.php:221
 msgid "Male"
-msgstr "Genre masculin"
+msgstr "Moški"
 
 #: pro-features/functions.php:220
 msgid "Little / No Exercise"
-msgstr "Peu / Pas d'exercice"
+msgstr "Malo / nič telesne vadbe"
 
 #: pro-features/functions.php:221
 msgid "Light Exercise"
-msgstr "Exercice léger"
+msgstr "Lahka telesna vadba"
 
 #: pro-features/functions.php:222
 msgid "Moderate Exercise (3-5 days a week)"
-msgstr "Exercice modéré (3-5 jours par semaine)"
+msgstr "Zmerna aktivnost  (3 - 5 treningov tedensko)"
 
 #: pro-features/functions.php:223
 msgid "Very Active (6-7 days a week)"
-msgstr "Très actif (6-7 jours par semaine)"
+msgstr "Visoka aktivnost (6 - 7 treningov tedensko)"
 
 #: pro-features/functions.php:224
 msgid "Extra Active (very active & physical job)"
-msgstr "Extra Actif (très actif & travail physique)"
+msgstr "Zelo visoka aktivnost (dnevni treningi in aktivno delo)"
 
 #: pro-features/functions.php:274 pro-features/functions.php:347
 #: pro-features/shortcode-various.php:61 pro-features/shortcode-various.php:80
 #: pro-features/shortcode-various.php:96 pro-features/shortcode-various.php:112
 msgid "Not Specified"
-msgstr "Non précisé"
+msgstr "Ni določeno"
 
 #: pro-features/functions.php:420
 msgid "Error: The user does not appear to exist"
-msgstr "Erreur: L'utilisateur ne semble pas exister"
+msgstr "Napaka: Uporabnik ne obstaja"
 
 #: pro-features/init.php:150
 msgid "View weight entries"
-msgstr "Voir les entrées de poids"
+msgstr "Poglej vnose teže"
 
 #: pro-features/plus/bmr.php:32
 msgid "No Gender specified"
-msgstr "Pas de genre spécifié"
+msgstr "Spol ni določen"
 
 #: pro-features/plus/bmr.php:39
 msgid "No Date of Birth specified or too young"
-msgstr "Pas de Date de naissance spécifiée ou trop jeune"
+msgstr "Datum rojstva ni določen"
 
 #: pro-features/plus/bmr.php:46
 msgid "No Height specified"
-msgstr "Pas de Hauteur spécifiée"
+msgstr "Višina ni določena"
 
 #: pro-features/plus/bmr.php:53
 msgid "No Weight entered"
-msgstr "Pas de Poids entré"
+msgstr "Ni vnesene teže"
 
 #: pro-features/plus/harris.benedict.php:79
 #: pro-features/plus/harris.benedict.php:161
@@ -2200,296 +2008,437 @@ msgid ""
 "Please ensure all relevant data to calculate calorie intake has been entered "
 "i.e. Activity Level, Date of Birth, Current Weight, Gender and Height."
 msgstr ""
-"S'il vous plaît, assurez vous que toutes les données pertinentes pour "
-"calculer l'apport calorique a été entré, à savoir le Niveau d'activité, la "
-"Date de naissance, le Poids actuel, le genre et la hauteur."
+"Prosimo, vnesite vse podatke, ki so potrebni za izračun (stopnja aktivnosti, "
+"datum rojstva, spol, višina, trenutna teža)."
 
 #: pro-features/plus/harris.benedict.php:94
 #: pro-features/plus/macronutrient.calculator.php:101
 msgid "Total"
-msgstr "Total"
+msgstr "Skupaj"
 
 #: pro-features/plus/harris.benedict.php:95
 #: pro-features/plus/macronutrient.calculator.php:102
 msgid "Breakfast"
-msgstr "Petit déjeuner"
+msgstr "Zajtrk"
 
 #: pro-features/plus/harris.benedict.php:96
 #: pro-features/plus/macronutrient.calculator.php:103
 msgid "Lunch"
-msgstr "Déjeuner"
+msgstr "Kosilo"
 
 #: pro-features/plus/harris.benedict.php:97
 #: pro-features/plus/macronutrient.calculator.php:104
 msgid "Dinner"
-msgstr "Dîner"
+msgstr "Večerja"
 
 #: pro-features/plus/harris.benedict.php:98
 #: pro-features/plus/macronutrient.calculator.php:105
 msgid "Snacks"
-msgstr "Goûter"
+msgstr "Malice"
 
 #: pro-features/plus/harris.benedict.php:111
 #: pro-features/plus/macronutrient.calculator.php:99
 msgid "Maintain"
-msgstr "Maintenir"
+msgstr "Vzdrževanje"
 
 #: pro-features/plus/harris.benedict.php:129
 #: pro-features/plus/macronutrient.calculator.php:99
 msgid "Lose"
-msgstr "Perdre"
+msgstr "Hujšanje"
 
 #: pro-features/plus/harris.benedict.php:222
 msgid "calories for weight loss are capped at "
-msgstr "les calories pour la perte de poids sont limitées à "
+msgstr ""
 
 #: pro-features/plus/harris.benedict.php:224
 msgid "This can be modified within "
-msgstr "Cela peut être modifié dans "
+msgstr ""
 
 #: pro-features/plus/macronutrient.calculator.php:135
 msgid "Carbs"
-msgstr "Les glucides"
+msgstr "Ogljikovi hidrati"
 
 #: pro-features/shortcode-chart.php:57 pro-features/shortcode-table.php:25
 msgid "No weight data was found for the specified user."
-msgstr "Aucune donnée de poids n'a été trouvée pour l'utilisateur spécifié."
+msgstr "Za tega uporabnika ni podatkov o teži."
 
 #: pro-features/shortcode-if.php:17
 msgid ""
 "To use this shortcode, you must specify content between opening and closing "
 "tags<br /><br />e.g. [wlt-if]something to show if IF is true[/wlt-if]"
 msgstr ""
-"Pour utiliser ce shortcode, vous devez spécifier le contenu entre les "
-"crochets d'ouverture et de fermeture <br /><br /> par exemple [wlt-if] est "
-"quelque chose à montrer si IF est vrai [/ wlt-if]"
 
 #: pro-features/shortcode-if.php:34
 msgid "Unfortunately the field you specified is for Pro Plus licenses only."
 msgstr ""
-"Malheureusement, le champ que vous avez spécifié est uniquement pour les "
-"licences Pro Plus."
 
 #: pro-features/shortcode-progress-bar.php:25
 #: pro-features/widget-progress.php:25
 msgid "towards your target of {t}."
-msgstr "vers votre cible de {t}."
+msgstr "proti vaši teži  {t}."
 
 #: pro-features/shortcode-progress-bar.php:117
 msgid "Please add a weight entry to see your progress."
-msgstr "S'il vous plaît, ajouter une entrée de poids pour voir vos progrès."
+msgstr "Vnesite težo."
 
 #: pro-features/shortcode-progress-bar.php:121
 msgid "Please enter a target weight to see your progress."
-msgstr "S'il vous plaît, entrer un poids cible pour voir vos progrès."
+msgstr "Vnesite ciljno težo."
 
 #: pro-features/shortcode-progress-bar.php:125
 msgid ""
 "This shortcode can not be used as Target weights have been disabled in the "
 "plugin's settings."
 msgstr ""
-"Ce shortcode ne peut pas être utilisé, car les poids cible ont été "
-"désactivés dans les paramètres du plugin."
+"This shortcode can not be used as Target weights have been disabled in the "
+"plugin's settings."
 
 #: pro-features/shortcode-reminders.php:29
 msgid ""
 "Please remember to enter your weight and measurements for today as well as "
 "your target weight."
-msgstr ""
-"S'il vous plaît, n'oubliez pas d'entrer votre poids et vos mesures du jour "
-"ainsi que votre poids cible."
+msgstr "Ne pozabite na vnos današnje teže in meritev ter ciljne teže."
 
 #: pro-features/shortcode-reminders.php:29
 msgid ""
 "Please remember to enter your weight for today as well as your target weight."
-msgstr ""
-"S'il vous plaît, n'oubliez pas d'entrer votre poids du jour ainsi que votre "
-"poids cible."
+msgstr "Ne pozabite na vnos današnje teže in ciljne teže."
 
 #: pro-features/shortcode-reminders.php:32
 msgid "Please remember to enter your target weight."
-msgstr "S'il vous plaît, n'oubliez pas d'entrer votre poids cible."
+msgstr "Ne pozabite na vnos ciljne teže."
 
 #: pro-features/shortcode-reminders.php:35
 msgid "Please remember to enter your weight and measurements for today."
-msgstr ""
-"S'il vous plaît, n'oubliez pas de saisir votre poids et vos mesures du jour."
+msgstr "Ne pozabite na vnos današnje teže in meritev."
 
 #: pro-features/shortcode-reminders.php:35
 msgid "Please remember to enter your weight for today."
-msgstr "S'il vous plaît, n'oubliez pas d'entrer votre poids du jour."
+msgstr "Ne pozabite na vnos današnje teže."
 
 #: pro-features/shortcode-stats.php:8 pro-features/shortcode-stats.php:113
 msgid "Stats disabled"
-msgstr "Statistiques désactivées"
+msgstr "Statistika onemogočena"
 
 #: pro-features/shortcode-stats.php:34
 msgid "Name"
-msgstr "Prénom"
+msgstr "Ime"
 
 #: pro-features/shortcode-stats.php:35
 msgid "Weight Difference"
-msgstr "Différence de poids"
+msgstr "Razlika v teži"
 
 #: pro-features/shortcode-stats.php:41
 msgid "No of entries"
-msgstr "Nb de Entrées"
+msgstr "Ni vnosov"
 
 #: pro-features/shortcode-stats.php:106
 msgid ""
 "The league table has not been generated yet. This is a scheduled task so "
 "please check back in 15 minutes or try pressing the button below."
 msgstr ""
-"Le tableau de la ligue n'a pas encore été généré. Il s'agit d'une tâche "
-"planifiée, alors s'il vous plaît vérifiez encore dans 15 minutes ou essayez "
-"d'appuyer sur le bouton ci-dessous."
+"Ligaška tabela še ni bila generirana. To je načrtovano opravilo prevrite "
+"zopet čez 15 minut ali pritisnite spodnji gumb."
 
 #: pro-features/shortcode-stats.php:140
 msgid "Lost"
-msgstr "Perdu"
+msgstr "Izgubljeno"
 
 #: pro-features/shortcode-stats.php:140
 msgid "Gained"
-msgstr "Prise de poids"
+msgstr "Pridobljeno"
 
 #: pro-features/shortcode-various.php:14
 msgid "Height needed"
-msgstr "Hauteur nécessaire"
+msgstr "Potrebna je višina"
 
 #: pro-features/shortcode-various.php:24
 msgid "Weight needed"
-msgstr "Poids nécessaire"
+msgstr "Potrebna je teža"
 
 #: pro-features/user-preferences.php:8
 msgid "You must be logged in to edit your settings."
-msgstr "Vous devez être connecté pour modifier vos paramètres."
+msgstr "Za spreminjanje nastavitev morate biti prijavljeni."
 
 #: pro-features/user-preferences.php:29
 msgid "About You:"
-msgstr "Au propos de vous:"
+msgstr "O vas:"
 
 #: pro-features/user-preferences.php:30
 msgid "Your height:"
-msgstr "Votre taille:"
+msgstr "Vaša višina:"
 
 #: pro-features/user-preferences.php:31
 msgid "Which unit would you like to record your weight in:"
-msgstr "Dans quelle unité voudriez-vous enregistrer votre poids:"
+msgstr "V katerih enotah bi želeli beležiti težo:"
 
 #: pro-features/user-preferences.php:32
 msgid "Which unit would you like to record your measurements in:"
-msgstr "Dans quelle unité voudriez-vous enregistrer vos mesures:"
+msgstr "V katerih enotah bi želeli beležiti meritve:"
 
 #: pro-features/user-preferences.php:33
 msgid "Display dates in the following formats:"
-msgstr "Afficher les dates dans les formats suivants:"
+msgstr "Želena oblika datuma:"
 
 #: pro-features/user-preferences.php:34
 msgid "Your Gender (needed for BMR):"
-msgstr "Votre genre :"
+msgstr "Spol (za izračun ITM):"
 
 #: pro-features/user-preferences.php:35
 msgid "Your Date of Birth (needed for BMR):"
-msgstr "Votre date de naissance :"
+msgstr "Datum rojstva (za izračun ITM):"
 
 #: pro-features/user-preferences.php:36
 msgid "Your Activity Level (needed for BMR):"
-msgstr "Votre niveau d'activité :"
+msgstr "Stopnja aktivnosti (za izračun ITM):"
 
 #: pro-features/user-preferences.php:43
 msgid "About User:"
-msgstr "À propos de l'utilisateur:"
+msgstr "O uporabniku:"
 
 #: pro-features/user-preferences.php:44
 msgid "Height:"
-msgstr "Taille:"
+msgstr "Višina:"
 
 #: pro-features/user-preferences.php:45
 msgid "Weight unit:"
-msgstr "Unité de poids:"
+msgstr "Enota za težo:"
 
 #: pro-features/user-preferences.php:46
 msgid "Measurements unit:"
-msgstr "Unité de mesure:"
+msgstr "Enota za meritve:"
 
 #: pro-features/user-preferences.php:47
 msgid "Date format:"
-msgstr "Format de date:"
+msgstr "Oblika datuma:"
 
 #: pro-features/user-preferences.php:48
 msgid "Gender (needed for BMR):"
-msgstr "Genre (nécessaire pour TMB):"
+msgstr "Spol (za izračun ITM):"
 
 #: pro-features/user-preferences.php:49
 msgid "Date of Birth (needed for BMR):"
-msgstr "Date de naissance (nécessaire pour TMB):"
+msgstr "Datum rojstva (za izračun ITM):"
 
 #: pro-features/user-preferences.php:50
 msgid "Activity Level (needed for BMR):"
-msgstr "Niveau d'activité (nécessaire pour TMB):"
+msgstr "Stopnja aktivnosti (za izračun ITM):"
 
 #: pro-features/user-preferences.php:158
 msgid "Save Settings"
-msgstr "Enregistrer les paramètres"
+msgstr "Shrani nastavitve"
 
 #: pro-features/user-preferences.php:164
 msgid "Delete existing data"
-msgstr "Supprimer les données existantes"
+msgstr "Izbriši obstoječe podatke"
 
 #: pro-features/user-preferences.php:170
 msgid ""
 "The button below allows you to clear your existing weight history. Confirm:"
-msgstr ""
-"Le bouton ci-dessous vous permet d'effacer votre historique de poids "
-"existant. Confirmer:"
+msgstr "Spodnji gumb vam omogoča izbris vseh vnosov teže. Potrdite:"
 
 #: pro-features/user-preferences.php:173
 msgid "DELETE ALL DATA"
-msgstr "SUPPRIMER TOUTES LES DONNÉES"
+msgstr "IZBRIŠI VSE PODATKE"
 
 #: pro-features/user-preferences.php:175
 msgid "Delete"
-msgstr "Effacer"
+msgstr "Izbriši"
 
 #: pro-features/widget-chart.php:12
 msgid "Weight Loss Tracker - Chart"
-msgstr "Weight Loss Tracker - Graphique"
+msgstr "Weight Loss Tracker - Graf"
 
 #: pro-features/widget-chart.php:13
 msgid "Display a chart to see your current progress."
-msgstr "Affichez un graphique pour voir vos progrès en cours."
+msgstr ""
 
 #: pro-features/widget-chart.php:74
 msgid "A pretty graph shall appear once you have recorded several weights."
-msgstr ""
-"Un joli graphique doit apparaître une fois que vous avez enregistré "
-"plusieurs poids."
+msgstr "Graf bo prikazan, ko boste vnesli nekaj tež."
 
 #: pro-features/widget-form.php:12
 msgid "Weight Loss Tracker - Form"
-msgstr "Weight Loss Tracker - Formulaire"
+msgstr "Weight Loss Tracker - Obrazec"
 
 #: pro-features/widget-form.php:13
 msgid ""
 "Display a quick entry form for logged in users to record their weight for "
 "today."
-msgstr ""
-"Affichez un formulaire de saisie rapide pour les utilisateurs connectés, "
-"ceci afin d'enregistrer leur poids du jour."
+msgstr "Prijavljenim uporabnikom prikaži obrazec za hiter vnos trenutne teže."
 
 #: pro-features/widget-form.php:17
 msgid "Your weight today"
-msgstr "Votre poids du jour"
+msgstr "Vaša današnja teža"
 
 #: pro-features/widget-progress.php:12
 msgid "Weight Loss Tracker - Progress Bar"
-msgstr "Weight Loss Tracker - Barre de progression"
+msgstr "Weight Loss Tracker - Progress Bar"
 
 #: pro-features/widget-progress.php:13
 msgid "A progress bar to indicate weight loss towards target."
-msgstr ""
-"Une barre de progression pour indiquer la perte de poids vers la cible."
+msgstr "Grafični prikaz napredovanja proti cilji teži."
 
 #: pro-features/widget-progress.php:17
 msgid "Weight loss progress"
-msgstr "Progression de la perte de poids"
+msgstr "Napredovanje pri izgubi telesne teže"
+
+#~ msgid "Get Pro Version"
+#~ msgstr "Nadgradite na Pro verzijo"
+
+#~ msgid "Get "
+#~ msgstr "Kupite"
+
+#~ msgid "Get Weight Loss Tracker Pro for"
+#~ msgstr "Kupite Weight Loss Tracker Pro za"
+
+#~ msgid "Enter License Key"
+#~ msgstr "Vpišite licenčni ključ"
+
+#~ msgid "Got an existing license key? If so, enter it below"
+#~ msgstr "Že imate licenčni ključ? Vpišite ga spodaj"
+
+#~ msgid "In case you need, your <strong>Site Hash</strong>"
+#~ msgstr "Če ga potrebujete, <strong>hash vaše strani</strong>"
+
+#~ msgid "Enter license key"
+#~ msgstr "Vpišite licenčni ključ"
+
+#~ msgid "Thank you! Your license key for future reference is"
+#~ msgstr "Vaš licenčni ključ je"
+
+#~ msgid "Features of Pro version"
+#~ msgstr "Funkcije Pro verzije"
+
+#~ msgid "Lbs"
+#~ msgstr "Funti"
+
+#~ msgid "Current Height"
+#~ msgstr "Trenutna višina"
+
+#~ msgid "Add a new entry"
+#~ msgstr "Dodaj nove podatke"
+
+#~ msgid "Edit this user's settings"
+#~ msgstr "Spremeni nastavitve tega uporabnika"
+
+#~ msgid "Title"
+#~ msgstr "Naslov"
+
+#~ msgid "Maximum number of plot points on chart"
+#~ msgstr "Največje število točk na grafu"
+
+#~ msgid "Message to display if not logged in"
+#~ msgstr "Sporočilo za neprijavljenega uporabnika"
+
+#~ msgid ""
+#~ "By default the widget is hidden if the user is not logged in. If you "
+#~ "wish, you can display a message to the visitor instead."
+#~ msgstr ""
+#~ "Če uporabnik ni prijavljen, je gradnik skrit. Če želite, lahko "
+#~ "neprijavljenemu uporabniku prikažete sporočilo."
+
+#~ msgid "ID of user (leave blank to show chart for current user)"
+#~ msgstr ""
+#~ "ID uporabnika (pustite prazno za prikaz grafa trenutnega uporabnika)"
+
+#~ msgid ""
+#~ "Note: By default, the chart will be displayed in the weight unit chosen "
+#~ "by the logged in user. If not specfied the plugin default will be used."
+#~ msgstr ""
+#~ "Opomba: Na grafu bodo uporabljene enote, ki jih je določil uporabnik. Če "
+#~ "jih uporabnik ni določil, bodo uporabljene privzete enote."
+
+#~ msgid "Hide Measurements (Pro)?"
+#~ msgstr "Skrij meritve (Pro)?"
+
+#~ msgid "Allow user to specify a date?"
+#~ msgstr "Dovoli uporabnikom da določijo datum?"
+
+#~ msgid "No. Automatically set to today's date"
+#~ msgstr "Ne. Avtomatično vstavi  današnji datum"
+
+#~ msgid "Allow user to specify a date"
+#~ msgstr "Dovoli uporabniku da določi datum"
+
+#~ msgid "Hide measurements (Pro)?"
+#~ msgstr "Skrij meritve (Pro)?"
+
+#~ msgid "Redirect URL (Defaults to current page)"
+#~ msgstr "URL za preusmeritev (privzeta je domača stran)"
+
+#~ msgid ""
+#~ "Specify where the user should be redirected to after completing the form. "
+#~ "Note: The URL must be within the site domain."
+#~ msgstr ""
+#~ "Določite, kam naj bo uporabnik preusmerjen po vnosu obrazca. URL mora "
+#~ "biti znotraj domene."
+
+#~ msgid "Chart type"
+#~ msgstr "Vrsta grafa"
+
+#~ msgid "Stroke Width"
+#~ msgstr "Debelina obrobe"
+
+#~ msgid "Stroke Colour"
+#~ msgstr "Barva obrobe"
+
+#~ msgid "Trail Width"
+#~ msgstr "Debelina poti"
+
+#~ msgid "Trail Colour"
+#~ msgstr "Barva poti"
+
+#~ msgid "Text Colour"
+#~ msgstr "Barva teksta"
+
+#~ msgid "Animation Duration"
+#~ msgstr "Dolžina animacije"
+
+#~ msgid "Text to be displayed under bar. Use {t} to display target weight."
+#~ msgstr ""
+#~ "Tekst, ki naj bo prikazan pod stolpcem. Za prikaz ciljne teže uporabite "
+#~ "{t}."
+
+#~ msgid ""
+#~ "Allow registered users of your website to track their weight and relevant "
+#~ "body measurements. History can be displayed in both tables & charts."
+#~ msgstr ""
+#~ "Dovolite registriranim uporabnikom spremljanje teže in relevantnih "
+#~ "antropometričnih meritev. Podatki so lahko prikazani v tabelah in grafih."
+
+#~ msgid "YeKen"
+#~ msgstr "YeKen"
+
+#~ msgid "https://www.YeKen.uk"
+#~ msgstr "https://www.YeKen.uk"
+
+#, fuzzy
+#~ msgid "Allow decimal places?"
+#~ msgstr "Tillat desimaler?"
+
+#~ msgid " Instructions"
+#~ msgstr " Instructions"
+
+#, fuzzy
+#~ msgid ""
+#~ "Place the tag [weight-loss-tracker] on a given page and the user is "
+#~ "presented with a form to enter a date, weight and notes for that entry. "
+#~ "When the person saves their entry the data table and graph is refreshed."
+#~ msgstr ""
+#~ "Place the tag [weightlosstracker] on a given page and the user is "
+#~ "presented with a form to enter a date, weight and notes for that entry. "
+#~ "When the person saves their entry the data table and graph is refreshed."
+
+#~ msgid "Enable support for Avada theme?"
+#~ msgstr "Enable support for Avada theme?"
+
+#~ msgid ""
+#~ "Enables additional styling to support the <a href=\"http://theme-fusion."
+#~ "com/avada/\" target=\"_blank\">Avada theme</a>."
+#~ msgstr ""
+#~ "Enables additional styling to support the <a href=\"http://theme-fusion."
+#~ "com/avada/\" target=\"_blank\">Avada theme</a>."
+
+#~ msgid "Currently, you haven't specified a target weight."
+#~ msgstr "Currently, you haven't specified a target weight."

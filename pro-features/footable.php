@@ -193,14 +193,14 @@ function ws_ls_data_table_get_columns($smaller_width = false, $front_end = false
 
 	// If not front end, add nice nice name
 	if (false == $front_end) {
-		$columns[] = array('name' => 'user_nicename', 'title' => 'User', 'breakpoints'=> '', 'type' => 'text');
+		$columns[] = array('name' => 'user_nicename', 'title' => __('User', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text');
 	} else {
 		// If in the front end, switch to smaller width (hide measurements etc)
 		$smaller_width = $front_end;
 	}
 
-	$columns[] = array('name' => 'date', 'title' => 'Date', 'breakpoints'=> '', 'type' => 'date');
-	$columns[] = array('name' => 'kg', 'title' => 'Weight', 'visible'=> true, 'type' => 'text');
+	$columns[] = array('name' => 'date', 'title' => __('Date', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'date');
+	$columns[] = array('name' => 'kg', 'title' => __('Weight', WE_LS_SLUG), 'visible'=> true, 'type' => 'text');
 	$columns[] = array('name' => 'gainloss', 'title' => ws_ls_tooltip('+/-', __('Difference', WE_LS_SLUG)), 'visible'=> true, 'type' => 'text');
 
 	// Add BMI?
@@ -218,13 +218,33 @@ function ws_ls_data_table_get_columns($smaller_width = false, $front_end = false
 
 		$unit = ws_ls_admin_measurment_unit();
 
+		// Horrible hack, this is to fix translations which don't seem to be taking effect when pulled in from globals .php
+		$supported_measurements = array(
+			'left_forearm' => array('title' => __('Forearm - Left', WE_LS_SLUG), 'abv' => __('FL', WE_LS_SLUG)),
+			'right_forearm' => array('title' => __('Forearm - Right', WE_LS_SLUG), 'abv' => __('FR', WE_LS_SLUG)),
+			'left_bicep' => array('title' => __('Biceps - Left', WE_LS_SLUG), 'abv' => __('BL', WE_LS_SLUG)),
+			'right_bicep' => array('title' => __('Biceps - Right', WE_LS_SLUG), 'abv' => __('BR', WE_LS_SLUG)),
+			'left_calf' => array('title' => __('Calf - Left', WE_LS_SLUG), 'abv' => __('CL', WE_LS_SLUG)),
+			'right_calf' => array('title' => __('Calf - Right', WE_LS_SLUG), 'abv' => __('CR', WE_LS_SLUG)),
+			'left_thigh' => array('title' => __('Thigh - Left', WE_LS_SLUG), 'abv' => __('TL', WE_LS_SLUG)),
+			'right_thigh' => array('title' => __('Thigh - Right', WE_LS_SLUG), 'abv' => __('TR', WE_LS_SLUG)),
+			'waist' => array('title' => __('Waist', WE_LS_SLUG), 'abv' => __('W', WE_LS_SLUG)),
+			'bust_chest' => array('title' => __('Bust / Chest', WE_LS_SLUG), 'abv' => __('BC', WE_LS_SLUG)),
+			'shoulders' => array('title' => __('Shoulders', WE_LS_SLUG), 'abv' => __('S', WE_LS_SLUG)),
+			'height' => array('title' => __('Height', WE_LS_SLUG), 'abv' => __('H', WE_LS_SLUG)),
+			'buttocks' => array('title' => __('Buttocks', WE_LS_SLUG), 'abv' => __('B', WE_LS_SLUG)),
+			'hips' => array('title' => __('Hips', WE_LS_SLUG), 'abv' => __('HI', WE_LS_SLUG)),
+			'navel' => array('title' => __('Navel', WE_LS_SLUG), 'abv' => __('NA', WE_LS_SLUG)),
+			'neck' => array('title' => __('Neck', WE_LS_SLUG), 'abv' => __('NE', WE_LS_SLUG))
+		);
+
 		foreach (ws_ls_get_active_measurement_fields() as $key => $data) {
-			array_push($columns, array('name' => esc_attr($key), 'title' => ws_ls_tooltip($data['abv'], $data['title'] . ' (' . $unit . ')' ), 'breakpoints'=> (($smaller_width) ? 'lg' : 'md'), 'type' => 'text'));
+			array_push($columns, array('name' => esc_attr($key), 'title' => ws_ls_tooltip($supported_measurements[$key]['abv'], $supported_measurements[$key]['title'] . ' (' . $unit . ')' ), 'breakpoints'=> (($smaller_width) ? 'lg' : 'md'), 'type' => 'text'));
 		}
 	}
 
 	// Add notes;
-	array_push($columns, array('name' => 'notes', 'title' => 'Notes', 'breakpoints'=> 'lg', 'type' => 'text'));
+	array_push($columns, array('name' => 'notes', 'title' => __('Notes', WE_LS_SLUG), 'breakpoints'=> 'lg', 'type' => 'text'));
 
 	return $columns;
 }

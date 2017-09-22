@@ -441,8 +441,7 @@ function ws_ls_string_to_bool($value)
 
   return $value;
 }
-function ws_ls_force_bool_argument($value)
-{
+function ws_ls_force_bool_argument($value) {
 
     if (strtolower($value) == 'true' || (is_bool($value) === true && $value == true)) {
         return true;
@@ -450,17 +449,44 @@ function ws_ls_force_bool_argument($value)
 
     return false;
 }
-function ws_ls_force_numeric_argument($value, $default = false)
-{
+function ws_ls_force_numeric_argument($value, $default = false) {
 	if (is_numeric($value)) {
 		return intval($value);
 	}
 
     return ($default) ? $default : 0;
 }
-function ws_ls_remove_non_numeric($text)
-{
-  if(!empty($text)){
+
+/**
+ * Used to validate a dimension - eg. except a number or a %
+ *
+ * @param $value
+ * @param bool $default
+ * @return bool|int
+ */
+function ws_ls_force_dimension_argument($value, $default = false) {
+
+	if ( false === empty($value) ) {
+
+		// Is this a percentage?
+		$is_percentage = (false !== stripos($value, '%') ) ? true: false;
+
+		// Strip % sign out if needed
+		$value = ( $is_percentage ) ? ws_ls_remove_non_numeric($value) : $value;
+
+		// If not numeric or below 0, apply default
+		if ( false === is_numeric($value) || $value < intval($value) ) {
+			$value = ( false === empty($default) ) ? $default : 0;
+		}
+
+		// Add % sign back on if needed
+		return ( $is_percentage ) ? $value . '%' : $value;
+	}
+
+	return ( false === empty($default) ) ? $default : 0;
+}
+function ws_ls_remove_non_numeric($text) {
+  if( false === empty($text) ){
     return preg_replace("/[^0-9]/", "", $text);
   }
   return $text;
