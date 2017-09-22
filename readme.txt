@@ -139,10 +139,6 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 = 5.2 =
 
-//TODO: add slovenina
-
-//TODO: redo all lang files
-
 * Photo Uploads!
 	* New field on attachments "Don't show to public" (set to true by default) to stop user photo's being rendered on standard attachment pages.
 	* Users can now upload / replace / remove a photo alongside their weight / measurement entries.
