@@ -567,7 +567,7 @@ function ws_ls_capture_form_validate_and_save($user_id = false)
 	// ---------------------------------------------
 	// Process Photos
 	// ---------------------------------------------
-	if (true === WE_LS_PHOTOS_ENABLED ) {
+	if (true === WE_LS_PHOTOS_ENABLED && false == $is_target_form ) {
 
 		$photo_id_to_delete = false;
 
