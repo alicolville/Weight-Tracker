@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight, loss, lose, helper, bmi, body, mass, index, graph, track, stones, kg, table, data, plot, target, history, pounds, responsive, chart, measurements, cm, centimeters, inches, hip, waist, bicep, thigh
 Requires at least: 4.4.0
 Tested up to: 4.8
-Stable tag: 5.2
+Stable tag: 5.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate Link: https://www.paypal.me/yeken
@@ -14,7 +14,7 @@ Allow registered users of your website to track their weight and relevant body m
 
 = Documentation =
 
-Use our free site for tracking your weight which shows of some of the plugin's feature: [TrackYourWeight.co.uk - Shortcode guide](https://www.trackyourweight.co.uk "TrackYourWeight.co.uk")
+Use our free site for tracking your weight which shows of some of the plugin's feature: [TrackYourWeight.co.uk - Demo Site](https://www.trackyourweight.co.uk "TrackYourWeight.co.uk")
 
 = Core Features =
 
@@ -136,6 +136,10 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 5.2! Pro Plus now supports photo uploads from your members!
 
 == Changelog ==
+
+= 5.2.1 =
+
+* Bug fix: Fixed issue with target weight failing to save if photos enabled.
 
 = 5.2 =
 
