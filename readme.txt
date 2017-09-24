@@ -139,6 +139,11 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 = 5.2.2 =
 
+// todo: minify ws-ls.css
+// todo: update lang
+// tood: update docs for both tables "disable-jquery"
+
+* Improvement: Added footable.js to Macronutrient and Calorie tables (tables looks a lot better in responsive mode).
 * Bug fix: Fixed "Can't use return function in write context" appearing in older versions of PHP.
 * Bug fix: Ensured "Measurements are in" can be translated.
 * Bug fix: Ensured "Search" text on new data tables can be translated.

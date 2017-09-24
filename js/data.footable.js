@@ -5,6 +5,9 @@ jQuery( document ).ready(function ($, undefined) {
 
 	ws_ls_log('Processing user data tables..');
 
+	// Add Footables to Calories and MacroN tables
+    $('.ws-ls-footable').footable({});
+
 	$(".ws-ls-cancel-form").click(function( event ) {
 		event.preventDefault();
 

@@ -81,23 +81,23 @@ function ws_ls_macro_render_table($user_id, $missing_data_text = false, $additio
 
     if (false === empty($macros)) {
 
-        $html = sprintf('<table class="%sws-ls-macro%s">',
+        $html = sprintf('<table class="%sws-ls-macro%s"  >',
 			(false === empty($additional_css_class)) ? esc_attr($additional_css_class) . ' ' : '',
 				false === is_admin() ? '' : ' widefat');
 
         foreach (['lose', 'maintain'] as $key) {
 
             // Table Header
-            $html .= sprintf('<thead>
+            $html .= sprintf('
                                 <tr>
                                     <th class="row-title">%s (%skcal)</th>
                                     <th>%s</th>
-                                    <th>%s</th>
-                                    <th>%s</th>
-                                    <th>%s</th>
-                                    <th>%s</th>
+                                    <th data-breakpoints="xs sm">%s</th>
+                                    <th data-breakpoints="xs sm">%s</th>
+                                    <th data-breakpoints="xs sm">%s</th>
+                                    <th data-breakpoints="xs sm">%s</th>
                                 </tr>
-                            </thead>',
+                            ',
 				('maintain' == $key) ? __('Maintain', WE_LS_SLUG) : __('Lose', WE_LS_SLUG),
                 number_format($macros[$key]['calories']),
                 __('Total', WE_LS_SLUG),
@@ -107,10 +107,9 @@ function ws_ls_macro_render_table($user_id, $missing_data_text = false, $additio
                 __('Snacks', WE_LS_SLUG)
             );
 
-
             // Maintain
-            $html .= sprintf('      <tr valign="top">
-                                    <td><strong>%s</strong></td>
+            $html .= sprintf('  <tr valign="top">
+                                    <td class="ws-ls-col-header">%s</td>
                                     <td>%s</td>
                                     <td>%s</td>
                                     <td>%s</td>
@@ -126,8 +125,8 @@ function ws_ls_macro_render_table($user_id, $missing_data_text = false, $additio
             );
 
             // Maintain
-            $html .= sprintf('     <tr valign="top" class="alternate">
-                                    <td><strong>%s</strong></td>
+            $html .= sprintf('  <tr valign="top" >
+                                    <td class="ws-ls-col-header">%s</td>
                                     <td>%s</td>
                                     <td>%s</td>
                                     <td>%s</td>
@@ -143,8 +142,8 @@ function ws_ls_macro_render_table($user_id, $missing_data_text = false, $additio
             );
 
             // Fats
-            $html .= sprintf('     <tr valign="top">
-                                    <td><strong>%s</strong></td>
+            $html .= sprintf('  <tr valign="top">
+                                    <td class="ws-ls-col-header">%s</td>
                                     <td>%s</td>
                                     <td>%s</td>
                                     <td>%s</td>
@@ -220,10 +219,18 @@ function ws_ls_shortcode_macro_table($user_defined_arguments) {
 
 	$arguments = shortcode_atts([	'css-class' => '',
 									'error-message' => __('Please ensure all relevant data to calculate calorie intake has been entered i.e. Activity Level, Date of Birth, Current Weight, Gender and Height.', WE_LS_SLUG ),
-									'user-id' => false
+									'user-id' => false,
+                                    'disable-jquery' => false
 								], $user_defined_arguments );
 
 	$arguments['user-id'] = ws_ls_force_numeric_argument($arguments['user-id']);
+    $arguments['disable-jquery'] = ws_ls_force_numeric_argument($arguments['disable-jquery']);
+
+    // Include footable jQuery?
+    if ( true !== $arguments['disable-jquery'] ) {
+        ws_ls_data_table_enqueue_scripts();
+        $arguments['css-class'] .= ' ws-ls-footable';
+    }
 
 	return ws_ls_macro_render_table($arguments['user-id'], $arguments['error-message'], $arguments['css-class']);
 }

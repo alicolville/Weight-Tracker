@@ -85,10 +85,10 @@
                                 <tr>
                                     <th class="ws-ls-empty-cell row-title"></th>
                                     <th>%s</th>
-                                    <th>%s (20%%)</th>
-                                    <th>%s (30%%)</th>
-                                    <th>%s (30%%)</th>
-                                    <th>%s (20%%)</th>
+                                    <th data-breakpoints="xs sm">%s (20%%)</th>
+                                    <th data-breakpoints="xs sm">%s (30%%)</th>
+                                    <th data-breakpoints="xs sm">%s (30%%)</th>
+                                    <th data-breakpoints="xs sm">%s (20%%)</th>
                                 </tr>',
 							(false === empty($additional_css_class)) ? esc_attr($additional_css_class) . ' ' : '',
                                 false === is_admin() ? 'ws-ls-harris-benedict' : 'widefat',
@@ -102,7 +102,7 @@
 
                 // Maintain
                 $html .= sprintf('<tr valign="top">
-                                    <td><strong>%s</strong></td>
+                                    <td class="ws-ls-col-header">%s</td>
                                     <td>%s</td>
                                     <td>%s</td>
                                     <td>%s</td>
@@ -119,7 +119,7 @@
 
                 // Lose
                 $html .= sprintf('<tr valign="top" class="alternate">
-                                                    <td><strong>%s</strong></td>
+                                                    <td class="ws-ls-col-header">%s</td>
                                                     <td>%s</td>
                                                     <td>%s</td>
                                                     <td>%s</td>
@@ -197,10 +197,18 @@
 
 		$arguments = shortcode_atts([	'css-class' => '',
 										'error-message' => __('Please ensure all relevant data to calculate calorie intake has been entered i.e. Activity Level, Date of Birth, Current Weight, Gender and Height.', WE_LS_SLUG ),
-										'user-id' => false
+										'user-id' => false,
+                                        'disable-jquery' => false
 									], $user_defined_arguments );
 
 		$arguments['user-id'] = ws_ls_force_numeric_argument($arguments['user-id']);
+        $arguments['disable-jquery'] = ws_ls_force_numeric_argument($arguments['disable-jquery']);
+
+        // Include footable jQuery?
+        if ( true !== $arguments['disable-jquery'] ) {
+            ws_ls_data_table_enqueue_scripts();
+            $arguments['css-class'] .= ' ws-ls-footable';
+        }
 
 		return ws_ls_harris_benedict_render_table($arguments['user-id'], $arguments['error-message'], $arguments['css-class']);
 	}
