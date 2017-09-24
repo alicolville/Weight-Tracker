@@ -53,7 +53,7 @@ function ws_ls_data_table_placeholder($user_id = false, $max_entries = false, $s
 		);
 
 		if (WE_LS_MEASUREMENTS_ENABLED) {
-			$html .= '<p><em>Measurements are in ' . (('inches' == ws_ls_get_config('WE_LS_MEASUREMENTS_UNIT')) ? __('Inches', WE_LS_SLUG) : __('cm', WE_LS_SLUG)) . '</em></p>';
+			$html .= '<p><em>' . __('Measurements are in', WE_LS_SLUG) . ' ' . (('inches' == ws_ls_get_config('WE_LS_MEASUREMENTS_UNIT')) ? __('Inches', WE_LS_SLUG) : __('cm', WE_LS_SLUG)) . '</em></p>';
 		}
 	}
 
