@@ -202,10 +202,10 @@
 									], $user_defined_arguments );
 
 		$arguments['user-id'] = ws_ls_force_numeric_argument($arguments['user-id']);
-        $arguments['disable-jquery'] = ws_ls_force_numeric_argument($arguments['disable-jquery']);
+        $arguments['disable-jquery'] = ws_ls_force_bool_argument($arguments['disable-jquery']);
 
         // Include footable jQuery?
-        if ( true !== $arguments['disable-jquery'] ) {
+        if ( false === $arguments['disable-jquery'] ) {
             ws_ls_data_table_enqueue_scripts();
             $arguments['css-class'] .= ' ws-ls-footable';
         }
