@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2017-09-22 18:05+0100\n"
-"PO-Revision-Date: 2017-09-22 18:08+0100\n"
+"POT-Creation-Date: 2017-09-24 17:15+0100\n"
+"PO-Revision-Date: 2017-09-24 17:15+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt\n"
@@ -456,8 +456,7 @@ msgstr ""
 msgid "NE"
 msgstr ""
 
-#: includes/hooks.php:8 includes/shortcode-weight-loss-tracker.php:75
-#: pro-features/functions.pages.php:171
+#: includes/hooks.php:8 pro-features/functions.pages.php:171
 #, fuzzy
 msgid "Settings"
 msgstr "Configurações"
@@ -549,56 +548,73 @@ msgstr "Usuário não especificado"
 msgid "No target set"
 msgstr "O teu peso ideal é"
 
-#: includes/shortcode-weight-loss-tracker.php:45
+#: includes/shortcode-weight-loss-tracker.php:50
 msgid "Your settings have been saved!"
 msgstr "As suas informações foram salvas!"
 
-#: includes/shortcode-weight-loss-tracker.php:47
+#: includes/shortcode-weight-loss-tracker.php:52
 msgid "Your weight history has been deleted!"
 msgstr "O seu histórico de peso foi apagado!"
 
-#: includes/shortcode-weight-loss-tracker.php:70
+#: includes/shortcode-weight-loss-tracker.php:75
 msgid "Overview"
 msgstr "Vista geral"
 
-#: includes/shortcode-weight-loss-tracker.php:70
-msgid "Chart / Add Weight"
+#: includes/shortcode-weight-loss-tracker.php:75
+#, fuzzy
+#| msgid "Chart / Add Weight"
+msgid "Chart / Add entry"
 msgstr "Gráfico / Insere o peso"
 
-#: includes/shortcode-weight-loss-tracker.php:71
+#: includes/shortcode-weight-loss-tracker.php:76
 msgid "In Detail"
 msgstr "Em detalhe"
 
-#: includes/shortcode-weight-loss-tracker.php:71
-msgid "View all recorded weights"
-msgstr "Ver todos os pesos guardados"
+#: includes/shortcode-weight-loss-tracker.php:76
+#: pro-features/admin-pages/data-summary.php:144
+#, fuzzy
+msgid "View all entries"
+msgstr "Vê todas as semanas"
 
-#: includes/shortcode-weight-loss-tracker.php:75
-msgid "Choose weight units, date format, etc"
-msgstr "Escolhe a unidade de peso, format de data, etc"
+#: includes/shortcode-weight-loss-tracker.php:80
+msgid "Advanced"
+msgstr ""
 
-#: includes/shortcode-weight-loss-tracker.php:91
+#: includes/shortcode-weight-loss-tracker.php:80
+msgid "Useful data to reach"
+msgstr ""
+
+#: includes/shortcode-weight-loss-tracker.php:85
+#: pro-features/functions.pages.php:175 pro-features/user-preferences.php:131
+msgid "Preferences"
+msgstr ""
+
+#: includes/shortcode-weight-loss-tracker.php:85
+msgid "... and About You"
+msgstr ""
+
+#: includes/shortcode-weight-loss-tracker.php:101
 #, fuzzy
 msgid "Add a weight entry"
 msgstr "Gráfico / Adicionar Peso"
 
-#: includes/shortcode-weight-loss-tracker.php:96
+#: includes/shortcode-weight-loss-tracker.php:106
 msgid "In a chart"
 msgstr "Num gráfico"
 
-#: includes/shortcode-weight-loss-tracker.php:104
+#: includes/shortcode-weight-loss-tracker.php:114
 msgid "A graph will appear once several weights have been entered."
 msgstr "Um gráfico vai aparecer quando mais do que um peso estiver gravado"
 
-#: includes/shortcode-weight-loss-tracker.php:157
+#: includes/shortcode-weight-loss-tracker.php:167
 msgid "Weight History"
 msgstr "Histórico de peso"
 
-#: includes/shortcode-weight-loss-tracker.php:169
+#: includes/shortcode-weight-loss-tracker.php:179
 msgid "There is no data for this week, please try selecting another:"
 msgstr "Não há informações para esta semana, por favor selecione outra semana:"
 
-#: includes/shortcode-weight-loss-tracker.php:175
+#: includes/shortcode-weight-loss-tracker.php:185
 msgid "You haven't entered any weight data yet."
 msgstr "Ainda não inseriu nenhuma informação de peso"
 
@@ -1128,7 +1144,7 @@ msgid "Macronutrient Calculator"
 msgstr ""
 
 #: pages/page.settings.php:262
-#: pro-features/plus/macronutrient.calculator.php:120
+#: pro-features/plus/macronutrient.calculator.php:119
 msgid "Proteins"
 msgstr ""
 
@@ -1151,7 +1167,7 @@ msgid "Percentage of Carbohydrates to make up a moderate diet"
 msgstr ""
 
 #: pages/page.settings.php:276
-#: pro-features/plus/macronutrient.calculator.php:154
+#: pro-features/plus/macronutrient.calculator.php:153
 msgid "Fats"
 msgstr ""
 
@@ -1548,11 +1564,6 @@ msgstr ""
 msgid "View all data"
 msgstr "Vê todas as semanas"
 
-#: pro-features/admin-pages/data-summary.php:144
-#, fuzzy
-msgid "View all entries"
-msgstr "Vê todas as semanas"
-
 #: pro-features/admin-pages/data-summary.php:149
 msgid "Export all data"
 msgstr ""
@@ -1621,7 +1632,7 @@ msgid "Please ensure the values for Proteins, Carbohydrates and Fats (within "
 msgstr ""
 
 #: pro-features/admin-pages/data-user.php:121
-#: pro-features/plus/harris.benedict.php:227
+#: pro-features/plus/harris.benedict.php:235
 #, fuzzy
 msgid "settings"
 msgstr "Configurações"
@@ -1934,6 +1945,12 @@ msgstr ""
 "entre outros..."
 
 #: pro-features/footable.php:56
+#, fuzzy
+#| msgid "Measurements"
+msgid "Measurements are in"
+msgstr "Medidas"
+
+#: pro-features/footable.php:56
 msgid "cm"
 msgstr ""
 
@@ -1968,6 +1985,10 @@ msgstr "Tens a certeza que queres apagar esta entrada? Se"
 
 #: pro-features/footable.php:278
 msgid "Unfortunately there was an error deleting the row."
+msgstr ""
+
+#: pro-features/footable.php:279
+msgid "Search"
 msgstr ""
 
 #: pro-features/functions.pages.php:11
@@ -2048,10 +2069,6 @@ msgstr "Define o objetivo"
 msgid "Export Data"
 msgstr ""
 
-#: pro-features/functions.pages.php:175 pro-features/user-preferences.php:131
-msgid "Preferences"
-msgstr ""
-
 #: pro-features/functions.pages.php:181
 #, fuzzy
 msgid "Delete Cache"
@@ -2111,11 +2128,11 @@ msgstr "Acima do Peso"
 msgid "Heavily Overweight"
 msgstr "Obeso"
 
-#: pro-features/functions.php:215 pro-features/plus/harris.benedict.php:222
+#: pro-features/functions.php:215 pro-features/plus/harris.benedict.php:230
 msgid "Female"
 msgstr ""
 
-#: pro-features/functions.php:216 pro-features/plus/harris.benedict.php:222
+#: pro-features/functions.php:216 pro-features/plus/harris.benedict.php:230
 msgid "Male"
 msgstr ""
 
@@ -2176,8 +2193,8 @@ msgstr "Precisa inserir a idade"
 #: pro-features/plus/harris.benedict.php:162
 #: pro-features/plus/harris.benedict.php:199
 #: pro-features/plus/macronutrient.calculator.php:80
-#: pro-features/plus/macronutrient.calculator.php:183
-#: pro-features/plus/macronutrient.calculator.php:222
+#: pro-features/plus/macronutrient.calculator.php:182
+#: pro-features/plus/macronutrient.calculator.php:221
 msgid ""
 "Please ensure all relevant data to calculate calorie intake has been entered "
 "i.e. Activity Level, Date of Birth, Current Weight, Gender and Height."
@@ -2218,15 +2235,15 @@ msgstr ""
 msgid "Lose"
 msgstr ""
 
-#: pro-features/plus/harris.benedict.php:223
+#: pro-features/plus/harris.benedict.php:231
 msgid "calories for weight loss are capped at "
 msgstr ""
 
-#: pro-features/plus/harris.benedict.php:225
+#: pro-features/plus/harris.benedict.php:233
 msgid "This can be modified within "
 msgstr ""
 
-#: pro-features/plus/macronutrient.calculator.php:137
+#: pro-features/plus/macronutrient.calculator.php:136
 msgid "Carbs"
 msgstr ""
 
@@ -2605,6 +2622,12 @@ msgstr ""
 #: pro-features/widget-progress.php:123
 msgid "Text to be displayed under bar. Use {t} to display target weight."
 msgstr ""
+
+#~ msgid "View all recorded weights"
+#~ msgstr "Ver todos os pesos guardados"
+
+#~ msgid "Choose weight units, date format, etc"
+#~ msgstr "Escolhe a unidade de peso, format de data, etc"
 
 #~ msgid "Loading..."
 #~ msgstr "A carregar..."

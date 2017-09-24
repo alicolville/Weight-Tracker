@@ -327,3 +327,9 @@ input.ws-ls-valid
 .ws-ls-photo-date {
     font-size: 0.7em;
 }
+.ws-ls-col-header {
+    font-weight: bold;
+}
+.ws-ls-footable .row-title .footable-toggle {
+    display: none;
+}

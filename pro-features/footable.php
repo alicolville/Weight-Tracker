@@ -53,7 +53,7 @@ function ws_ls_data_table_placeholder($user_id = false, $max_entries = false, $s
 		);
 
 		if (WE_LS_MEASUREMENTS_ENABLED) {
-			$html .= '<p><em>Measurements are in ' . (('inches' == ws_ls_get_config('WE_LS_MEASUREMENTS_UNIT')) ? __('Inches', WE_LS_SLUG) : __('cm', WE_LS_SLUG)) . '</em></p>';
+			$html .= '<p><em>' . __('Measurements are in', WE_LS_SLUG) . ' ' . (('inches' == ws_ls_get_config('WE_LS_MEASUREMENTS_UNIT')) ? __('Inches', WE_LS_SLUG) : __('cm', WE_LS_SLUG)) . '</em></p>';
 		}
 	}
 
@@ -201,11 +201,11 @@ function ws_ls_data_table_get_columns($smaller_width = false, $front_end = false
 
 	$columns[] = array('name' => 'date', 'title' => __('Date', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'date');
 	$columns[] = array('name' => 'kg', 'title' => __('Weight', WE_LS_SLUG), 'visible'=> true, 'type' => 'text');
-	$columns[] = array('name' => 'gainloss', 'title' => ws_ls_tooltip('+/-', __('Difference', WE_LS_SLUG)), 'visible'=> true, 'type' => 'text');
+	$columns[] = array('name' => 'gainloss', 'title' => ws_ls_tooltip('+/-', __('Difference', WE_LS_SLUG)), 'visible'=> true, 'breakpoints'=> 'xs', 'type' => 'text');
 
 	// Add BMI?
 	if(WE_LS_DISPLAY_BMI_IN_TABLES) {
-		array_push($columns, array('name' => 'bmi', 'title' => ws_ls_tooltip('BMI', __('Body Mass Index', WE_LS_SLUG)), 'breakpoints'=> '', 'type' => 'text'));
+		array_push($columns, array('name' => 'bmi', 'title' => ws_ls_tooltip('BMI', __('Body Mass Index', WE_LS_SLUG)), 'breakpoints'=> 'xs', 'type' => 'text'));
 	}
 
 	// Display photos?
@@ -275,7 +275,8 @@ function ws_ls_data_js_config() {
 					'security' => wp_create_nonce('ws-ls-user-tables'),
 					'base-url' => ws_ls_get_link_to_user_data(),
 					'label-confirm-delete' =>  __('Are you sure you want to delete the row?', WE_LS_SLUG),
-					'label-error-delete' =>  __('Unfortunately there was an error deleting the row.', WE_LS_SLUG)
+					'label-error-delete' =>  __('Unfortunately there was an error deleting the row.', WE_LS_SLUG),
+                    'locale-search-text' =>  __('Search', WE_LS_SLUG),
 				);
 	// Add some extra config settings if not in admin
     if ( false === is_admin() ) {

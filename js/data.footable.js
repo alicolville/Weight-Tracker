@@ -5,6 +5,9 @@ jQuery( document ).ready(function ($, undefined) {
 
 	ws_ls_log('Processing user data tables..');
 
+	// Add Footables to Calories and MacroN tables
+    $('.ws-ls-footable').footable({});
+
 	$(".ws-ls-cancel-form").click(function( event ) {
 		event.preventDefault();
 
@@ -133,7 +136,9 @@ jQuery( document ).ready(function ($, undefined) {
 			}
 	 	});
 
-	 }
+        $(table_id + ' .footable-filtering-search .input-group .form-control').attr("placeholder", ws_user_table_config['locale-search-text']);
+
+    }
 
 	function ws_ls_apply_formatters(columns) {
 
