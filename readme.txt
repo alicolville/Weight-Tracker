@@ -139,7 +139,6 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 = 5.2.2 =
 
-// todo: minify ws-ls.css
 // todo: update lang
 // tood: update docs for both tables "disable-jquery"
 

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Weight Loss Tracker\n"
-"POT-Creation-Date: 2017-09-22 18:05+0100\n"
-"PO-Revision-Date: 2017-09-22 18:08+0100\n"
+"POT-Creation-Date: 2017-09-24 17:15+0100\n"
+"PO-Revision-Date: 2017-09-24 17:15+0100\n"
 "Last-Translator: Greg Vid <drobtinca@hotmail.com>\n"
 "Language-Team: \n"
 "Language: sl_SI\n"
@@ -448,8 +448,7 @@ msgstr "Vrat"
 msgid "NE"
 msgstr "Vr"
 
-#: includes/hooks.php:8 includes/shortcode-weight-loss-tracker.php:75
-#: pro-features/functions.pages.php:171
+#: includes/hooks.php:8 pro-features/functions.pages.php:171
 msgid "Settings"
 msgstr "Nastavitve"
 
@@ -534,55 +533,73 @@ msgstr "Uporabnik ni določen"
 msgid "No target set"
 msgstr "Cilj ni določen"
 
-#: includes/shortcode-weight-loss-tracker.php:45
+#: includes/shortcode-weight-loss-tracker.php:50
 msgid "Your settings have been saved!"
 msgstr "Nastavitve so bile shranjene!"
 
-#: includes/shortcode-weight-loss-tracker.php:47
+#: includes/shortcode-weight-loss-tracker.php:52
 msgid "Your weight history has been deleted!"
 msgstr "Predhodnje meritve teže so bile izbrisane."
 
-#: includes/shortcode-weight-loss-tracker.php:70
+#: includes/shortcode-weight-loss-tracker.php:75
 msgid "Overview"
 msgstr "Pregled"
 
-#: includes/shortcode-weight-loss-tracker.php:70
-msgid "Chart / Add Weight"
+#: includes/shortcode-weight-loss-tracker.php:75
+#, fuzzy
+#| msgid "Chart / Add Weight"
+msgid "Chart / Add entry"
 msgstr "Graf / dodaj težo"
 
-#: includes/shortcode-weight-loss-tracker.php:71
+#: includes/shortcode-weight-loss-tracker.php:76
 msgid "In Detail"
 msgstr "Podrobno"
 
-#: includes/shortcode-weight-loss-tracker.php:71
-msgid "View all recorded weights"
-msgstr "Vsi dosedanji vnosi"
+#: includes/shortcode-weight-loss-tracker.php:76
+#: pro-features/admin-pages/data-summary.php:144
+msgid "View all entries"
+msgstr "Poglej vse vnose"
 
-#: includes/shortcode-weight-loss-tracker.php:75
-msgid "Choose weight units, date format, etc"
-msgstr "Nastavite enote, obliko datuma itd."
+#: includes/shortcode-weight-loss-tracker.php:80
+msgid "Advanced"
+msgstr ""
 
-#: includes/shortcode-weight-loss-tracker.php:91
+#: includes/shortcode-weight-loss-tracker.php:80
+msgid "Useful data to reach"
+msgstr ""
+
+#: includes/shortcode-weight-loss-tracker.php:85
+#: pro-features/functions.pages.php:175 pro-features/user-preferences.php:131
+msgid "Preferences"
+msgstr "Nastavitve"
+
+#: includes/shortcode-weight-loss-tracker.php:85
+#, fuzzy
+#| msgid "About You:"
+msgid "... and About You"
+msgstr "O vas:"
+
+#: includes/shortcode-weight-loss-tracker.php:101
 msgid "Add a weight entry"
 msgstr "Dodaj težo"
 
-#: includes/shortcode-weight-loss-tracker.php:96
+#: includes/shortcode-weight-loss-tracker.php:106
 msgid "In a chart"
 msgstr "Grafični prikaz"
 
-#: includes/shortcode-weight-loss-tracker.php:104
+#: includes/shortcode-weight-loss-tracker.php:114
 msgid "A graph will appear once several weights have been entered."
 msgstr "Graf bo izrisan, ko boste vnesli nekaj podatkov."
 
-#: includes/shortcode-weight-loss-tracker.php:157
+#: includes/shortcode-weight-loss-tracker.php:167
 msgid "Weight History"
 msgstr "Zgodovina meritev teže"
 
-#: includes/shortcode-weight-loss-tracker.php:169
+#: includes/shortcode-weight-loss-tracker.php:179
 msgid "There is no data for this week, please try selecting another:"
 msgstr "Za ta teden ni podatkov. Izberite drugo obdobje:"
 
-#: includes/shortcode-weight-loss-tracker.php:175
+#: includes/shortcode-weight-loss-tracker.php:185
 msgid "You haven't entered any weight data yet."
 msgstr "Vnesli niste še nobenega podatka."
 
@@ -1099,7 +1116,7 @@ msgid "Macronutrient Calculator"
 msgstr "Kalkulator makrohranil"
 
 #: pages/page.settings.php:262
-#: pro-features/plus/macronutrient.calculator.php:120
+#: pro-features/plus/macronutrient.calculator.php:119
 msgid "Proteins"
 msgstr "Beljakovine"
 
@@ -1122,7 +1139,7 @@ msgid "Percentage of Carbohydrates to make up a moderate diet"
 msgstr "Delež OH povprečne diete"
 
 #: pages/page.settings.php:276
-#: pro-features/plus/macronutrient.calculator.php:154
+#: pro-features/plus/macronutrient.calculator.php:153
 msgid "Fats"
 msgstr "Maščobe"
 
@@ -1524,10 +1541,6 @@ msgstr "osveženo vsakih 15 minut"
 msgid "View all data"
 msgstr "Poglej vse podatke"
 
-#: pro-features/admin-pages/data-summary.php:144
-msgid "View all entries"
-msgstr "Poglej vse vnose"
-
 #: pro-features/admin-pages/data-summary.php:149
 msgid "Export all data"
 msgstr "Izvozi vse podatke"
@@ -1594,7 +1607,7 @@ msgid "Please ensure the values for Proteins, Carbohydrates and Fats (within "
 msgstr ""
 
 #: pro-features/admin-pages/data-user.php:121
-#: pro-features/plus/harris.benedict.php:227
+#: pro-features/plus/harris.benedict.php:235
 msgid "settings"
 msgstr "nastavitve"
 
@@ -1875,6 +1888,12 @@ msgid ""
 msgstr ""
 
 #: pro-features/footable.php:56
+#, fuzzy
+#| msgid "Measurements"
+msgid "Measurements are in"
+msgstr "Meritve"
+
+#: pro-features/footable.php:56
 msgid "cm"
 msgstr ""
 
@@ -1909,6 +1928,12 @@ msgstr "Res želite izbrisati vrstico?"
 #: pro-features/footable.php:278
 msgid "Unfortunately there was an error deleting the row."
 msgstr "Pri izbrisu vrstice je prišlo do napake."
+
+#: pro-features/footable.php:279
+#, fuzzy
+#| msgid "Search: "
+msgid "Search"
+msgstr "Išči: "
 
 #: pro-features/functions.pages.php:11
 msgid ""
@@ -1990,10 +2015,6 @@ msgstr "Spremeni ciljno težo"
 msgid "Export Data"
 msgstr "Izvozi podatke"
 
-#: pro-features/functions.pages.php:175 pro-features/user-preferences.php:131
-msgid "Preferences"
-msgstr "Nastavitve"
-
 #: pro-features/functions.pages.php:181
 msgid "Delete Cache"
 msgstr "Izbriši cache"
@@ -2050,11 +2071,11 @@ msgstr "Prekomerna teža"
 msgid "Heavily Overweight"
 msgstr "Močno prekomerna teža"
 
-#: pro-features/functions.php:215 pro-features/plus/harris.benedict.php:222
+#: pro-features/functions.php:215 pro-features/plus/harris.benedict.php:230
 msgid "Female"
 msgstr "Ženska"
 
-#: pro-features/functions.php:216 pro-features/plus/harris.benedict.php:222
+#: pro-features/functions.php:216 pro-features/plus/harris.benedict.php:230
 msgid "Male"
 msgstr "Moški"
 
@@ -2112,8 +2133,8 @@ msgstr "Ni vnesene teže"
 #: pro-features/plus/harris.benedict.php:162
 #: pro-features/plus/harris.benedict.php:199
 #: pro-features/plus/macronutrient.calculator.php:80
-#: pro-features/plus/macronutrient.calculator.php:183
-#: pro-features/plus/macronutrient.calculator.php:222
+#: pro-features/plus/macronutrient.calculator.php:182
+#: pro-features/plus/macronutrient.calculator.php:221
 msgid ""
 "Please ensure all relevant data to calculate calorie intake has been entered "
 "i.e. Activity Level, Date of Birth, Current Weight, Gender and Height."
@@ -2156,15 +2177,15 @@ msgstr "Vzdrževanje"
 msgid "Lose"
 msgstr "Hujšanje"
 
-#: pro-features/plus/harris.benedict.php:223
+#: pro-features/plus/harris.benedict.php:231
 msgid "calories for weight loss are capped at "
 msgstr ""
 
-#: pro-features/plus/harris.benedict.php:225
+#: pro-features/plus/harris.benedict.php:233
 msgid "This can be modified within "
 msgstr ""
 
-#: pro-features/plus/macronutrient.calculator.php:137
+#: pro-features/plus/macronutrient.calculator.php:136
 msgid "Carbs"
 msgstr "Ogljikovi hidrati"
 
@@ -2551,6 +2572,12 @@ msgstr "YeKen"
 msgid "https://www.YeKen.uk"
 msgstr "https://www.YeKen.uk"
 
+#~ msgid "View all recorded weights"
+#~ msgstr "Vsi dosedanji vnosi"
+
+#~ msgid "Choose weight units, date format, etc"
+#~ msgstr "Nastavite enote, obliko datuma itd."
+
 #~ msgid "BMI"
 #~ msgstr "ITM"
 
@@ -2577,9 +2604,6 @@ msgstr "https://www.YeKen.uk"
 
 #~ msgid "Processing..."
 #~ msgstr "Procesiram..."
-
-#~ msgid "Search: "
-#~ msgstr "Išči: "
 
 #~ msgid "No matching records found"
 #~ msgstr "Ni rezultatov iskanja"

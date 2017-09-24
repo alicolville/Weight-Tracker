@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2017-09-22 18:04+0100\n"
-"PO-Revision-Date: 2017-09-22 18:07+0100\n"
+"POT-Creation-Date: 2017-09-24 17:15+0100\n"
+"PO-Revision-Date: 2017-09-24 17:15+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi_FI\n"
@@ -446,8 +446,7 @@ msgstr ""
 msgid "NE"
 msgstr ""
 
-#: includes/hooks.php:8 includes/shortcode-weight-loss-tracker.php:75
-#: pro-features/functions.pages.php:171
+#: includes/hooks.php:8 pro-features/functions.pages.php:171
 msgid "Settings"
 msgstr "Asetukset"
 
@@ -536,57 +535,74 @@ msgstr "Ei käyttäjää määritetty"
 msgid "No target set"
 msgstr "Sinun tavoitteesi on"
 
-#: includes/shortcode-weight-loss-tracker.php:45
+#: includes/shortcode-weight-loss-tracker.php:50
 msgid "Your settings have been saved!"
 msgstr "Asetuksesi on tallennettu"
 
-#: includes/shortcode-weight-loss-tracker.php:47
+#: includes/shortcode-weight-loss-tracker.php:52
 msgid "Your weight history has been deleted!"
 msgstr "Painohistoriasi on poistettu!"
 
-#: includes/shortcode-weight-loss-tracker.php:70
+#: includes/shortcode-weight-loss-tracker.php:75
 msgid "Overview"
 msgstr "Yleisnäkymä"
 
-#: includes/shortcode-weight-loss-tracker.php:70
-msgid "Chart / Add Weight"
+#: includes/shortcode-weight-loss-tracker.php:75
+#, fuzzy
+#| msgid "Chart / Add Weight"
+msgid "Chart / Add entry"
 msgstr "TAulukko / Lisää paino"
 
-#: includes/shortcode-weight-loss-tracker.php:71
+#: includes/shortcode-weight-loss-tracker.php:76
 msgid "In Detail"
 msgstr "Yksityiskohdat"
 
-#: includes/shortcode-weight-loss-tracker.php:71
-msgid "View all recorded weights"
-msgstr "Näytä kaikki tallennetut painosi"
+#: includes/shortcode-weight-loss-tracker.php:76
+#: pro-features/admin-pages/data-summary.php:144
+#, fuzzy
+msgid "View all entries"
+msgstr "Näytä kaikki viikot"
 
-#: includes/shortcode-weight-loss-tracker.php:75
-msgid "Choose weight units, date format, etc"
-msgstr "Valitse painoyksiköt, päivä asetukset, jne"
+#: includes/shortcode-weight-loss-tracker.php:80
+msgid "Advanced"
+msgstr ""
 
-#: includes/shortcode-weight-loss-tracker.php:91
+#: includes/shortcode-weight-loss-tracker.php:80
+msgid "Useful data to reach"
+msgstr ""
+
+#: includes/shortcode-weight-loss-tracker.php:85
+#: pro-features/functions.pages.php:175 pro-features/user-preferences.php:131
+msgid "Preferences"
+msgstr ""
+
+#: includes/shortcode-weight-loss-tracker.php:85
+msgid "... and About You"
+msgstr ""
+
+#: includes/shortcode-weight-loss-tracker.php:101
 #, fuzzy
 msgid "Add a weight entry"
 msgstr "Lisää uusi paino"
 
-#: includes/shortcode-weight-loss-tracker.php:96
+#: includes/shortcode-weight-loss-tracker.php:106
 msgid "In a chart"
 msgstr "Painonseuranta taulukko"
 
-#: includes/shortcode-weight-loss-tracker.php:104
+#: includes/shortcode-weight-loss-tracker.php:114
 #, fuzzy
 msgid "A graph will appear once several weights have been entered."
 msgstr "Diagram ilmestyy muutaman tallennetun painon jälkeen"
 
-#: includes/shortcode-weight-loss-tracker.php:157
+#: includes/shortcode-weight-loss-tracker.php:167
 msgid "Weight History"
 msgstr "Paino historia"
 
-#: includes/shortcode-weight-loss-tracker.php:169
+#: includes/shortcode-weight-loss-tracker.php:179
 msgid "There is no data for this week, please try selecting another:"
 msgstr "Ei löydy tietoja tältä viikolta, Ole hyvä ja valitse toinen:"
 
-#: includes/shortcode-weight-loss-tracker.php:175
+#: includes/shortcode-weight-loss-tracker.php:185
 msgid "You haven't entered any weight data yet."
 msgstr "Et ole asettanut yhtään painoa vielä"
 
@@ -1120,7 +1136,7 @@ msgid "Macronutrient Calculator"
 msgstr ""
 
 #: pages/page.settings.php:262
-#: pro-features/plus/macronutrient.calculator.php:120
+#: pro-features/plus/macronutrient.calculator.php:119
 msgid "Proteins"
 msgstr ""
 
@@ -1143,7 +1159,7 @@ msgid "Percentage of Carbohydrates to make up a moderate diet"
 msgstr ""
 
 #: pages/page.settings.php:276
-#: pro-features/plus/macronutrient.calculator.php:154
+#: pro-features/plus/macronutrient.calculator.php:153
 msgid "Fats"
 msgstr ""
 
@@ -1547,11 +1563,6 @@ msgstr ""
 msgid "View all data"
 msgstr "Näytä kaikki viikot"
 
-#: pro-features/admin-pages/data-summary.php:144
-#, fuzzy
-msgid "View all entries"
-msgstr "Näytä kaikki viikot"
-
 #: pro-features/admin-pages/data-summary.php:149
 msgid "Export all data"
 msgstr ""
@@ -1621,7 +1632,7 @@ msgid "Please ensure the values for Proteins, Carbohydrates and Fats (within "
 msgstr ""
 
 #: pro-features/admin-pages/data-user.php:121
-#: pro-features/plus/harris.benedict.php:227
+#: pro-features/plus/harris.benedict.php:235
 #, fuzzy
 msgid "settings"
 msgstr "Asetukset"
@@ -1932,6 +1943,11 @@ msgstr ""
 "jne"
 
 #: pro-features/footable.php:56
+#, fuzzy
+msgid "Measurements are in"
+msgstr "Sallitko kohdepainon?"
+
+#: pro-features/footable.php:56
 msgid "cm"
 msgstr ""
 
@@ -1963,6 +1979,11 @@ msgstr "Oletko varma että halua poistaa tämän valinnan? Jos olet, paina OK."
 #: pro-features/footable.php:278
 msgid "Unfortunately there was an error deleting the row."
 msgstr ""
+
+#: pro-features/footable.php:279
+#, fuzzy
+msgid "Search"
+msgstr "Käyttäjäkokemus"
 
 #: pro-features/functions.pages.php:11
 msgid ""
@@ -2044,10 +2065,6 @@ msgstr "Aseta tavoitteesi"
 msgid "Export Data"
 msgstr ""
 
-#: pro-features/functions.pages.php:175 pro-features/user-preferences.php:131
-msgid "Preferences"
-msgstr ""
-
 #: pro-features/functions.pages.php:181
 #, fuzzy
 msgid "Delete Cache"
@@ -2108,11 +2125,11 @@ msgstr "Paino"
 msgid "Heavily Overweight"
 msgstr ""
 
-#: pro-features/functions.php:215 pro-features/plus/harris.benedict.php:222
+#: pro-features/functions.php:215 pro-features/plus/harris.benedict.php:230
 msgid "Female"
 msgstr ""
 
-#: pro-features/functions.php:216 pro-features/plus/harris.benedict.php:222
+#: pro-features/functions.php:216 pro-features/plus/harris.benedict.php:230
 msgid "Male"
 msgstr ""
 
@@ -2174,8 +2191,8 @@ msgstr "Painoyksikkö"
 #: pro-features/plus/harris.benedict.php:162
 #: pro-features/plus/harris.benedict.php:199
 #: pro-features/plus/macronutrient.calculator.php:80
-#: pro-features/plus/macronutrient.calculator.php:183
-#: pro-features/plus/macronutrient.calculator.php:222
+#: pro-features/plus/macronutrient.calculator.php:182
+#: pro-features/plus/macronutrient.calculator.php:221
 msgid ""
 "Please ensure all relevant data to calculate calorie intake has been entered "
 "i.e. Activity Level, Date of Birth, Current Weight, Gender and Height."
@@ -2216,15 +2233,15 @@ msgstr ""
 msgid "Lose"
 msgstr ""
 
-#: pro-features/plus/harris.benedict.php:223
+#: pro-features/plus/harris.benedict.php:231
 msgid "calories for weight loss are capped at "
 msgstr ""
 
-#: pro-features/plus/harris.benedict.php:225
+#: pro-features/plus/harris.benedict.php:233
 msgid "This can be modified within "
 msgstr ""
 
-#: pro-features/plus/macronutrient.calculator.php:137
+#: pro-features/plus/macronutrient.calculator.php:136
 msgid "Carbs"
 msgstr ""
 
@@ -2592,6 +2609,12 @@ msgstr ""
 #: pro-features/widget-progress.php:123
 msgid "Text to be displayed under bar. Use {t} to display target weight."
 msgstr ""
+
+#~ msgid "View all recorded weights"
+#~ msgstr "Näytä kaikki tallennetut painosi"
+
+#~ msgid "Choose weight units, date format, etc"
+#~ msgstr "Valitse painoyksiköt, päivä asetukset, jne"
 
 #~ msgid "Get Pro Version"
 #~ msgstr "Hanki Pro versio"
