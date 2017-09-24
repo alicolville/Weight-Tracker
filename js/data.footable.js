@@ -133,7 +133,9 @@ jQuery( document ).ready(function ($, undefined) {
 			}
 	 	});
 
-	 }
+        $(table_id + ' .footable-filtering-search .input-group .form-control').attr("placeholder", ws_user_table_config['locale-search-text']);
+
+    }
 
 	function ws_ls_apply_formatters(columns) {
 

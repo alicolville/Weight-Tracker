@@ -275,7 +275,8 @@ function ws_ls_data_js_config() {
 					'security' => wp_create_nonce('ws-ls-user-tables'),
 					'base-url' => ws_ls_get_link_to_user_data(),
 					'label-confirm-delete' =>  __('Are you sure you want to delete the row?', WE_LS_SLUG),
-					'label-error-delete' =>  __('Unfortunately there was an error deleting the row.', WE_LS_SLUG)
+					'label-error-delete' =>  __('Unfortunately there was an error deleting the row.', WE_LS_SLUG),
+                    'locale-search-text' =>  __('Search', WE_LS_SLUG),
 				);
 	// Add some extra config settings if not in admin
     if ( false === is_admin() ) {
