@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Weight Loss Tracker da_DK\n"
-"POT-Creation-Date: 2017-09-26 21:14+0100\n"
-"PO-Revision-Date: 2017-09-26 21:14+0100\n"
+"POT-Creation-Date: 2017-09-26 21:35+0100\n"
+"PO-Revision-Date: 2017-09-26 21:35+0100\n"
 "Last-Translator: Spaniole Olsen <spaniole@gmail.com>\n"
 "Language-Team: Team Denmark <spaniole@gmail.com>\n"
 "Language: da_DK\n"
@@ -123,8 +123,9 @@ msgstr "sten"
 msgid "Pounds"
 msgstr "pund"
 
-#: includes/core.php:388 pages/page.settings.php:218
-#: pro-features/admin-pages/data-user.php:57
+#: includes/core.php:388 includes/shortcode-weight-loss-tracker.php:85
+#: pages/page.settings.php:218 pro-features/admin-pages/data-user.php:57
+#: pro-features/plus/shortcode.wlt.php:23
 msgid "Photos"
 msgstr ""
 
@@ -456,8 +457,7 @@ msgstr ""
 msgid "NE"
 msgstr ""
 
-#: includes/hooks.php:8 includes/shortcode-weight-loss-tracker.php:75
-#: pro-features/functions.pages.php:171
+#: includes/hooks.php:8 pro-features/functions.pages.php:171
 msgid "Settings"
 msgstr "Indstillinger"
 
@@ -479,11 +479,11 @@ msgstr "Tilføj licens"
 msgid "Help"
 msgstr "Hjælp"
 
-#: includes/hooks.php:174 pro-features/admin-pages/data-user.php:22
+#: includes/hooks.php:175 pro-features/admin-pages/data-user.php:22
 msgid "The preferences for this user have been saved."
 msgstr ""
 
-#: includes/hooks.php:175
+#: includes/hooks.php:176
 #, fuzzy
 msgid "An error occurred while trying to save the user's preferences."
 msgstr "En fejl er opstået!"
@@ -546,59 +546,78 @@ msgstr "Ingen bruger specificeret"
 msgid "No target set"
 msgstr "Din målvægt er"
 
-#: includes/shortcode-weight-loss-tracker.php:45
+#: includes/shortcode-weight-loss-tracker.php:55
 msgid "Your settings have been saved!"
 msgstr "Instillingerne er blevet gemt!"
 
-#: includes/shortcode-weight-loss-tracker.php:47
+#: includes/shortcode-weight-loss-tracker.php:57
 msgid "Your weight history has been deleted!"
 msgstr "Din vægt historie er blevet slettet!"
 
-#: includes/shortcode-weight-loss-tracker.php:70
+#: includes/shortcode-weight-loss-tracker.php:80
 msgid "Overview"
 msgstr "Oversigt"
 
-#: includes/shortcode-weight-loss-tracker.php:70
+#: includes/shortcode-weight-loss-tracker.php:80
 #, fuzzy
-#| msgid "Chart / Add Weight"
-msgid "Chart / Add Weight"
-msgstr "Graf / tilføj vægt"
+#| msgid "Add a new weight"
+msgid "Chart and add a new entry"
+msgstr "Tilføj en ny vægt"
 
-#: includes/shortcode-weight-loss-tracker.php:71
+#: includes/shortcode-weight-loss-tracker.php:81
 #, fuzzy
-msgid "In Detail"
-msgstr "Detaljer"
+msgid "All Entries"
+msgstr "Vis _MENU_ målinger"
 
-#: includes/shortcode-weight-loss-tracker.php:71
-msgid "View all recorded weights"
-msgstr "Se alle målinger"
+#: includes/shortcode-weight-loss-tracker.php:81
+#, fuzzy
+msgid "View all of your entries"
+msgstr "Se alle uger"
 
-#: includes/shortcode-weight-loss-tracker.php:75
-msgid "Choose weight units, date format, etc"
-msgstr "Vælg vægtenheder, datoformat osv."
+#: includes/shortcode-weight-loss-tracker.php:85
+#, fuzzy
+msgid "View a gallery of your photos"
+msgstr "Se alle uger"
 
-#: includes/shortcode-weight-loss-tracker.php:91
+#: includes/shortcode-weight-loss-tracker.php:90
+msgid "Advanced"
+msgstr ""
+
+#: includes/shortcode-weight-loss-tracker.php:90
+msgid "View BMI, BMR and suggested Calorie and Macronutrient intake"
+msgstr ""
+
+#: includes/shortcode-weight-loss-tracker.php:95
+#: pro-features/functions.pages.php:175 pro-features/user-preferences.php:131
+msgid "Preferences"
+msgstr ""
+
+#: includes/shortcode-weight-loss-tracker.php:95
+msgid "Customise this tool and tell us a little more about you"
+msgstr ""
+
+#: includes/shortcode-weight-loss-tracker.php:111
 #, fuzzy
 msgid "Add a weight entry"
 msgstr "Tilføj en ny vægt"
 
-#: includes/shortcode-weight-loss-tracker.php:96
+#: includes/shortcode-weight-loss-tracker.php:116
 msgid "In a chart"
 msgstr "I et diagram"
 
-#: includes/shortcode-weight-loss-tracker.php:104
+#: includes/shortcode-weight-loss-tracker.php:124
 msgid "A graph will appear once several weights have been entered."
 msgstr "En graf vil blive vist her, når du har registreret mindst 2 målinger."
 
-#: includes/shortcode-weight-loss-tracker.php:157
+#: includes/shortcode-weight-loss-tracker.php:177
 msgid "Weight History"
 msgstr "Vægt historik"
 
-#: includes/shortcode-weight-loss-tracker.php:169
+#: includes/shortcode-weight-loss-tracker.php:189
 msgid "There is no data for this week, please try selecting another:"
 msgstr "Der er ingen data for denne uge, prøv venligst at vælge en anden uge:"
 
-#: includes/shortcode-weight-loss-tracker.php:175
+#: includes/shortcode-weight-loss-tracker.php:195
 msgid "You haven't entered any weight data yet."
 msgstr "Du har ikke indtastet nogle vægtdata endnu."
 
@@ -1155,7 +1174,7 @@ msgid ""
 "(due to caching)."
 msgstr ""
 
-#: pages/page.settings.php:269
+#: pages/page.settings.php:269 pro-features/plus/shortcode.wlt.php:147
 msgid "Carbohydrates"
 msgstr ""
 
@@ -2015,6 +2034,10 @@ msgstr ""
 msgid "Search"
 msgstr "Søg:"
 
+#: pro-features/footable.php:280
+msgid "No data found"
+msgstr ""
+
 #: pro-features/functions.pages.php:11
 msgid ""
 "Enter a user's email address, display name or username and click Search."
@@ -2093,10 +2116,6 @@ msgstr "Sæt målvægt"
 
 #: pro-features/functions.pages.php:158
 msgid "Export Data"
-msgstr ""
-
-#: pro-features/functions.pages.php:175 pro-features/user-preferences.php:131
-msgid "Preferences"
 msgstr ""
 
 #: pro-features/functions.pages.php:181
@@ -2197,7 +2216,7 @@ msgstr "Ingen bruger specificeret"
 msgid "Error: The user does not appear to exist"
 msgstr ""
 
-#: pro-features/init.php:127
+#: pro-features/init.php:128
 msgid "View weight entries"
 msgstr ""
 
@@ -2298,6 +2317,97 @@ msgstr ""
 msgid ""
 "If the user has uploaded this as part of their Weight Tracker progress, they "
 "probably don't want it viewable on a public attachment page!"
+msgstr ""
+
+#: pro-features/plus/shortcode.wlt.php:30
+msgid "Your have uploaded"
+msgstr ""
+
+#: pro-features/plus/shortcode.wlt.php:39
+msgid "It looks like you haven't uploaded any photos yet"
+msgstr ""
+
+#: pro-features/plus/shortcode.wlt.php:68
+msgid "BMI (Body Mass Index)"
+msgstr ""
+
+#: pro-features/plus/shortcode.wlt.php:73
+msgid ""
+"The BMI (Body Mass Index) is used by the medical profession to quickly "
+"determine a person’s weight in regard to their height. From a straight "
+"forward calculation the BMI factor can be gained and may be used to "
+"determine if a person is underweight, of normal weight, overweight or obese."
+msgstr ""
+
+#: pro-features/plus/shortcode.wlt.php:80
+#, fuzzy
+#| msgid "Your current target is"
+msgid "Your current BMI is"
+msgstr "Dit nuværende mål er"
+
+#: pro-features/plus/shortcode.wlt.php:86
+msgid ""
+"Before we can calculate your BMI, we need your current weight and height."
+msgstr ""
+
+#: pro-features/plus/shortcode.wlt.php:91
+msgid ""
+"To allow us to calculate this, we need your latest weight, date of birth, "
+"height and gender."
+msgstr ""
+
+#: pro-features/plus/shortcode.wlt.php:95
+msgid "BMR (Basal Metabolic Rate)"
+msgstr ""
+
+#: pro-features/plus/shortcode.wlt.php:99
+msgid ""
+"BMR is short for Basal Metabolic Rate. The Basal Metabolic Rate is the "
+"number of calories required to keep your body functioning at rest, also "
+"known as your metabolism. We calculate your BMR using formulas provided by "
+"www.diabetes.co.uk."
+msgstr ""
+
+#: pro-features/plus/shortcode.wlt.php:106
+#, fuzzy
+#| msgid "Your current target is"
+msgid "Your current BMR is"
+msgstr "Dit nuværende mål er"
+
+#: pro-features/plus/shortcode.wlt.php:117
+msgid "Suggested Calorie Intake"
+msgstr ""
+
+#: pro-features/plus/shortcode.wlt.php:122
+msgid ""
+"Once we know your BMR (the number of calories to keep you functioning at "
+"rest), we can go on to give you suggestions on how to spread your calorie "
+"intake across the day. Firstly we split the figures into daily calorie "
+"intake to maintain weight and daily calorie intake to lose weight. Daily "
+"calorie intake to lose weight is calculated based on NHS advice – they "
+"suggest to lose 1 – 2lbs a week you should subtract 600 calories from your "
+"BMR. The two daily figures can be further broken down by recommending how to "
+"split calorie intake across the day i.e. breakfast, lunch, dinner and snacks."
+msgstr ""
+
+#: pro-features/plus/shortcode.wlt.php:139
+#, fuzzy
+msgid "Macronutrients"
+msgstr "Målinger"
+
+#: pro-features/plus/shortcode.wlt.php:146
+msgid ""
+"With calories calculated, the we can recommend how those calories should be "
+"split into Fats, Carbohydrates and Proteins.  Based on 2010 Dietary "
+"Guidelines for Americans we have split it in the following manner:"
+msgstr ""
+
+#: pro-features/plus/shortcode.wlt.php:149
+msgid "of calories, Fat"
+msgstr ""
+
+#: pro-features/plus/shortcode.wlt.php:151
+msgid "and Protein"
 msgstr ""
 
 #: pro-features/shortcode-chart.php:57
@@ -2650,6 +2760,21 @@ msgstr ""
 msgid "Text to be displayed under bar. Use {t} to display target weight."
 msgstr ""
 
+#, fuzzy
+#~| msgid "Chart / Add Weight"
+#~ msgid "Chart / Add Weight"
+#~ msgstr "Graf / tilføj vægt"
+
+#, fuzzy
+#~ msgid "In Detail"
+#~ msgstr "Detaljer"
+
+#~ msgid "View all recorded weights"
+#~ msgstr "Se alle målinger"
+
+#~ msgid "Choose weight units, date format, etc"
+#~ msgstr "Vælg vægtenheder, datoformat osv."
+
 #~ msgid "No data available in table"
 #~ msgstr "Ingen data tilgængelig for visning."
 
@@ -2725,11 +2850,6 @@ msgstr ""
 #~| msgid "lbs"
 #~ msgid "Lbs"
 #~ msgstr "lbs"
-
-#, fuzzy
-#~| msgid "Add a new weight"
-#~ msgid "Add a new entry"
-#~ msgstr "Tilføj en ny vægt"
 
 #, fuzzy
 #~| msgid "Allow user settings"
@@ -2816,9 +2936,6 @@ msgstr ""
 #~ msgstr ""
 #~ "Aktiverer yderligere styling for at understøtte <a href=\"http://theme-"
 #~ "fusion.com/avada/\" target=\"_blank\">Avada temaet</a>."
-
-#~ msgid "Your current target is"
-#~ msgstr "Dit nuværende mål er"
 
 #~ msgid "Currently, you haven't specified a target weight."
 #~ msgstr "Du har i øjeblikket ikke intastet et vægtmål."
