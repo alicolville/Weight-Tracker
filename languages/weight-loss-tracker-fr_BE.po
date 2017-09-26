@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Weight Loss Tracker\n"
-"POT-Creation-Date: 2017-09-24 17:15+0100\n"
-"PO-Revision-Date: 2017-09-24 17:15+0100\n"
+"POT-Creation-Date: 2017-09-26 21:14+0100\n"
+"PO-Revision-Date: 2017-09-26 21:14+0100\n"
 "Last-Translator: \n"
 "Language-Team: Yeken - email@yeken.uk\n"
 "Language: fr\n"
@@ -447,7 +447,8 @@ msgstr "Cou"
 msgid "NE"
 msgstr "NE"
 
-#: includes/hooks.php:8 pro-features/functions.pages.php:171
+#: includes/hooks.php:8 includes/shortcode-weight-loss-tracker.php:75
+#: pro-features/functions.pages.php:171
 msgid "Settings"
 msgstr "Paramètres"
 
@@ -536,77 +537,61 @@ msgstr "Aucun utilisateur spécifié"
 msgid "No target set"
 msgstr "Pas de cible déterminée"
 
-#: includes/shortcode-weight-loss-tracker.php:50
+#: includes/shortcode-weight-loss-tracker.php:45
 msgid "Your settings have been saved!"
 msgstr "Vos réglages ont été sauvegardés!"
 
-#: includes/shortcode-weight-loss-tracker.php:52
+#: includes/shortcode-weight-loss-tracker.php:47
 msgid "Your weight history has been deleted!"
 msgstr "Votre historique de poids a été supprimé!"
 
-#: includes/shortcode-weight-loss-tracker.php:75
+#: includes/shortcode-weight-loss-tracker.php:70
 msgid "Overview"
 msgstr "Aperçu"
 
-#: includes/shortcode-weight-loss-tracker.php:75
+#: includes/shortcode-weight-loss-tracker.php:70
 #, fuzzy
 #| msgid "Chart / Add Weight"
-msgid "Chart / Add entry"
+msgid "Chart / Add Weight"
 msgstr "Graphique / Ajouter Poids"
 
-#: includes/shortcode-weight-loss-tracker.php:76
+#: includes/shortcode-weight-loss-tracker.php:71
 msgid "In Detail"
 msgstr "En détail"
 
-#: includes/shortcode-weight-loss-tracker.php:76
-#: pro-features/admin-pages/data-summary.php:144
-msgid "View all entries"
-msgstr "Voir toutes les entrées"
+#: includes/shortcode-weight-loss-tracker.php:71
+msgid "View all recorded weights"
+msgstr "View all recorded weights"
 
-#: includes/shortcode-weight-loss-tracker.php:80
-msgid "Advanced"
-msgstr ""
+#: includes/shortcode-weight-loss-tracker.php:75
+msgid "Choose weight units, date format, etc"
+msgstr "Choisissez les unités de poids, le format de la date, etc"
 
-#: includes/shortcode-weight-loss-tracker.php:80
-msgid "Useful data to reach"
-msgstr ""
-
-#: includes/shortcode-weight-loss-tracker.php:85
-#: pro-features/functions.pages.php:175 pro-features/user-preferences.php:131
-msgid "Preferences"
-msgstr "Préférences"
-
-#: includes/shortcode-weight-loss-tracker.php:85
-#, fuzzy
-#| msgid "About You:"
-msgid "... and About You"
-msgstr "Au propos de vous:"
-
-#: includes/shortcode-weight-loss-tracker.php:101
+#: includes/shortcode-weight-loss-tracker.php:91
 msgid "Add a weight entry"
 msgstr "Ajoutez une entrée de poids"
 
-#: includes/shortcode-weight-loss-tracker.php:106
+#: includes/shortcode-weight-loss-tracker.php:96
 msgid "In a chart"
 msgstr "Dans un graphique"
 
-#: includes/shortcode-weight-loss-tracker.php:114
+#: includes/shortcode-weight-loss-tracker.php:104
 msgid "A graph will appear once several weights have been entered."
 msgstr ""
 "Un graphique apparaîtra une fois que plusieurs mesures de poids ont été "
 "entrés."
 
-#: includes/shortcode-weight-loss-tracker.php:167
+#: includes/shortcode-weight-loss-tracker.php:157
 msgid "Weight History"
 msgstr "Histoire du poids"
 
-#: includes/shortcode-weight-loss-tracker.php:179
+#: includes/shortcode-weight-loss-tracker.php:169
 msgid "There is no data for this week, please try selecting another:"
 msgstr ""
 "Il n'y a pas de données pour cette semaine, s'il vous plaît, essayez d'en "
 "sélectionner une autre:"
 
-#: includes/shortcode-weight-loss-tracker.php:185
+#: includes/shortcode-weight-loss-tracker.php:175
 msgid "You haven't entered any weight data yet."
 msgstr "Vous n'avez pas encore saisi de données de poids."
 
@@ -1633,6 +1618,10 @@ msgstr "rafraîchi toutes les 15 minutes"
 msgid "View all data"
 msgstr "Voir toutes les données"
 
+#: pro-features/admin-pages/data-summary.php:144
+msgid "View all entries"
+msgstr "Voir toutes les entrées"
+
 #: pro-features/admin-pages/data-summary.php:149
 msgid "Export all data"
 msgstr "Exporter toutes les données"
@@ -2195,6 +2184,10 @@ msgstr "Modifier la cible"
 msgid "Export Data"
 msgstr "Exporter des données"
 
+#: pro-features/functions.pages.php:175 pro-features/user-preferences.php:131
+msgid "Preferences"
+msgstr "Préférences"
+
 #: pro-features/functions.pages.php:181
 msgid "Delete Cache"
 msgstr "Supprimer le cache"
@@ -2651,11 +2644,10 @@ msgstr ""
 msgid "Weight loss progress"
 msgstr "Progression de la perte de poids"
 
-#~ msgid "View all recorded weights"
-#~ msgstr "View all recorded weights"
-
-#~ msgid "Choose weight units, date format, etc"
-#~ msgstr "Choisissez les unités de poids, le format de la date, etc"
+#, fuzzy
+#~| msgid "About You:"
+#~ msgid "... and About You"
+#~ msgstr "Au propos de vous:"
 
 #~ msgid "BMI"
 #~ msgstr "IMC"

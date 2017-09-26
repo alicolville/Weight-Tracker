@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2017-09-24 17:15+0100\n"
-"PO-Revision-Date: 2017-09-24 17:15+0100\n"
+"POT-Creation-Date: 2017-09-26 21:14+0100\n"
+"PO-Revision-Date: 2017-09-26 21:14+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: hu_HU\n"
@@ -449,7 +449,8 @@ msgstr ""
 msgid "NE"
 msgstr ""
 
-#: includes/hooks.php:8 pro-features/functions.pages.php:171
+#: includes/hooks.php:8 includes/shortcode-weight-loss-tracker.php:75
+#: pro-features/functions.pages.php:171
 msgid "Settings"
 msgstr "Beállítások"
 
@@ -538,74 +539,59 @@ msgstr "Nincsenek felhasználók"
 msgid "No target set"
 msgstr "A cél súly"
 
-#: includes/shortcode-weight-loss-tracker.php:50
+#: includes/shortcode-weight-loss-tracker.php:45
 msgid "Your settings have been saved!"
 msgstr "A beállítások mentése megtörtént"
 
-#: includes/shortcode-weight-loss-tracker.php:52
+#: includes/shortcode-weight-loss-tracker.php:47
 msgid "Your weight history has been deleted!"
 msgstr "A tömeg történelem töröltük!"
 
-#: includes/shortcode-weight-loss-tracker.php:75
+#: includes/shortcode-weight-loss-tracker.php:70
 msgid "Overview"
 msgstr "Áttekintés"
 
-#: includes/shortcode-weight-loss-tracker.php:75
+#: includes/shortcode-weight-loss-tracker.php:70
 #, fuzzy
 #| msgid "Chart / Add Weight"
-msgid "Chart / Add entry"
+msgid "Chart / Add Weight"
 msgstr "Új súly hozzáadása"
 
-#: includes/shortcode-weight-loss-tracker.php:76
+#: includes/shortcode-weight-loss-tracker.php:71
 msgid "In Detail"
 msgstr "Részletesen"
 
-#: includes/shortcode-weight-loss-tracker.php:76
-#: pro-features/admin-pages/data-summary.php:144
-#, fuzzy
-msgid "View all entries"
-msgstr "View all weeks"
+#: includes/shortcode-weight-loss-tracker.php:71
+msgid "View all recorded weights"
+msgstr "Összes megtekintése"
 
-#: includes/shortcode-weight-loss-tracker.php:80
-msgid "Advanced"
-msgstr ""
+#: includes/shortcode-weight-loss-tracker.php:75
+msgid "Choose weight units, date format, etc"
+msgstr "Válasszon mértékegységet"
 
-#: includes/shortcode-weight-loss-tracker.php:80
-msgid "Useful data to reach"
-msgstr ""
-
-#: includes/shortcode-weight-loss-tracker.php:85
-#: pro-features/functions.pages.php:175 pro-features/user-preferences.php:131
-msgid "Preferences"
-msgstr ""
-
-#: includes/shortcode-weight-loss-tracker.php:85
-msgid "... and About You"
-msgstr ""
-
-#: includes/shortcode-weight-loss-tracker.php:101
+#: includes/shortcode-weight-loss-tracker.php:91
 #, fuzzy
 msgid "Add a weight entry"
 msgstr "Új süly hozzáadása"
 
-#: includes/shortcode-weight-loss-tracker.php:106
+#: includes/shortcode-weight-loss-tracker.php:96
 msgid "In a chart"
 msgstr "Diagram"
 
-#: includes/shortcode-weight-loss-tracker.php:114
+#: includes/shortcode-weight-loss-tracker.php:104
 #, fuzzy
 msgid "A graph will appear once several weights have been entered."
 msgstr "Grafikon jelenik meg amint lesz hozzáadott érték"
 
-#: includes/shortcode-weight-loss-tracker.php:167
+#: includes/shortcode-weight-loss-tracker.php:157
 msgid "Weight History"
 msgstr "Előzmény"
 
-#: includes/shortcode-weight-loss-tracker.php:179
+#: includes/shortcode-weight-loss-tracker.php:169
 msgid "There is no data for this week, please try selecting another:"
 msgstr "Nincs heti adat"
 
-#: includes/shortcode-weight-loss-tracker.php:185
+#: includes/shortcode-weight-loss-tracker.php:175
 msgid "You haven't entered any weight data yet."
 msgstr "Nem írt be értéket"
 
@@ -1552,6 +1538,11 @@ msgstr ""
 msgid "View all data"
 msgstr "View all weeks"
 
+#: pro-features/admin-pages/data-summary.php:144
+#, fuzzy
+msgid "View all entries"
+msgstr "View all weeks"
+
 #: pro-features/admin-pages/data-summary.php:149
 msgid "Export all data"
 msgstr ""
@@ -2031,6 +2022,10 @@ msgstr "Cél beállítása"
 
 #: pro-features/functions.pages.php:158
 msgid "Export Data"
+msgstr ""
+
+#: pro-features/functions.pages.php:175 pro-features/user-preferences.php:131
+msgid "Preferences"
 msgstr ""
 
 #: pro-features/functions.pages.php:181
@@ -2583,12 +2578,6 @@ msgstr ""
 #: pro-features/widget-progress.php:123
 msgid "Text to be displayed under bar. Use {t} to display target weight."
 msgstr ""
-
-#~ msgid "View all recorded weights"
-#~ msgstr "Összes megtekintése"
-
-#~ msgid "Choose weight units, date format, etc"
-#~ msgstr "Válasszon mértékegységet"
 
 #~ msgid "Loading..."
 #~ msgstr "Betöltés..."

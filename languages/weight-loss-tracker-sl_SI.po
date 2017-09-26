@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Weight Loss Tracker\n"
-"POT-Creation-Date: 2017-09-24 17:15+0100\n"
-"PO-Revision-Date: 2017-09-24 17:15+0100\n"
+"POT-Creation-Date: 2017-09-26 21:14+0100\n"
+"PO-Revision-Date: 2017-09-26 21:14+0100\n"
 "Last-Translator: Greg Vid <drobtinca@hotmail.com>\n"
 "Language-Team: \n"
 "Language: sl_SI\n"
@@ -448,7 +448,8 @@ msgstr "Vrat"
 msgid "NE"
 msgstr "Vr"
 
-#: includes/hooks.php:8 pro-features/functions.pages.php:171
+#: includes/hooks.php:8 includes/shortcode-weight-loss-tracker.php:75
+#: pro-features/functions.pages.php:171
 msgid "Settings"
 msgstr "Nastavitve"
 
@@ -533,73 +534,57 @@ msgstr "Uporabnik ni določen"
 msgid "No target set"
 msgstr "Cilj ni določen"
 
-#: includes/shortcode-weight-loss-tracker.php:50
+#: includes/shortcode-weight-loss-tracker.php:45
 msgid "Your settings have been saved!"
 msgstr "Nastavitve so bile shranjene!"
 
-#: includes/shortcode-weight-loss-tracker.php:52
+#: includes/shortcode-weight-loss-tracker.php:47
 msgid "Your weight history has been deleted!"
 msgstr "Predhodnje meritve teže so bile izbrisane."
 
-#: includes/shortcode-weight-loss-tracker.php:75
+#: includes/shortcode-weight-loss-tracker.php:70
 msgid "Overview"
 msgstr "Pregled"
 
-#: includes/shortcode-weight-loss-tracker.php:75
+#: includes/shortcode-weight-loss-tracker.php:70
 #, fuzzy
 #| msgid "Chart / Add Weight"
-msgid "Chart / Add entry"
+msgid "Chart / Add Weight"
 msgstr "Graf / dodaj težo"
 
-#: includes/shortcode-weight-loss-tracker.php:76
+#: includes/shortcode-weight-loss-tracker.php:71
 msgid "In Detail"
 msgstr "Podrobno"
 
-#: includes/shortcode-weight-loss-tracker.php:76
-#: pro-features/admin-pages/data-summary.php:144
-msgid "View all entries"
-msgstr "Poglej vse vnose"
+#: includes/shortcode-weight-loss-tracker.php:71
+msgid "View all recorded weights"
+msgstr "Vsi dosedanji vnosi"
 
-#: includes/shortcode-weight-loss-tracker.php:80
-msgid "Advanced"
-msgstr ""
+#: includes/shortcode-weight-loss-tracker.php:75
+msgid "Choose weight units, date format, etc"
+msgstr "Nastavite enote, obliko datuma itd."
 
-#: includes/shortcode-weight-loss-tracker.php:80
-msgid "Useful data to reach"
-msgstr ""
-
-#: includes/shortcode-weight-loss-tracker.php:85
-#: pro-features/functions.pages.php:175 pro-features/user-preferences.php:131
-msgid "Preferences"
-msgstr "Nastavitve"
-
-#: includes/shortcode-weight-loss-tracker.php:85
-#, fuzzy
-#| msgid "About You:"
-msgid "... and About You"
-msgstr "O vas:"
-
-#: includes/shortcode-weight-loss-tracker.php:101
+#: includes/shortcode-weight-loss-tracker.php:91
 msgid "Add a weight entry"
 msgstr "Dodaj težo"
 
-#: includes/shortcode-weight-loss-tracker.php:106
+#: includes/shortcode-weight-loss-tracker.php:96
 msgid "In a chart"
 msgstr "Grafični prikaz"
 
-#: includes/shortcode-weight-loss-tracker.php:114
+#: includes/shortcode-weight-loss-tracker.php:104
 msgid "A graph will appear once several weights have been entered."
 msgstr "Graf bo izrisan, ko boste vnesli nekaj podatkov."
 
-#: includes/shortcode-weight-loss-tracker.php:167
+#: includes/shortcode-weight-loss-tracker.php:157
 msgid "Weight History"
 msgstr "Zgodovina meritev teže"
 
-#: includes/shortcode-weight-loss-tracker.php:179
+#: includes/shortcode-weight-loss-tracker.php:169
 msgid "There is no data for this week, please try selecting another:"
 msgstr "Za ta teden ni podatkov. Izberite drugo obdobje:"
 
-#: includes/shortcode-weight-loss-tracker.php:185
+#: includes/shortcode-weight-loss-tracker.php:175
 msgid "You haven't entered any weight data yet."
 msgstr "Vnesli niste še nobenega podatka."
 
@@ -1541,6 +1526,10 @@ msgstr "osveženo vsakih 15 minut"
 msgid "View all data"
 msgstr "Poglej vse podatke"
 
+#: pro-features/admin-pages/data-summary.php:144
+msgid "View all entries"
+msgstr "Poglej vse vnose"
+
 #: pro-features/admin-pages/data-summary.php:149
 msgid "Export all data"
 msgstr "Izvozi vse podatke"
@@ -2014,6 +2003,10 @@ msgstr "Spremeni ciljno težo"
 #: pro-features/functions.pages.php:158
 msgid "Export Data"
 msgstr "Izvozi podatke"
+
+#: pro-features/functions.pages.php:175 pro-features/user-preferences.php:131
+msgid "Preferences"
+msgstr "Nastavitve"
 
 #: pro-features/functions.pages.php:181
 msgid "Delete Cache"
@@ -2572,11 +2565,10 @@ msgstr "YeKen"
 msgid "https://www.YeKen.uk"
 msgstr "https://www.YeKen.uk"
 
-#~ msgid "View all recorded weights"
-#~ msgstr "Vsi dosedanji vnosi"
-
-#~ msgid "Choose weight units, date format, etc"
-#~ msgstr "Nastavite enote, obliko datuma itd."
+#, fuzzy
+#~| msgid "About You:"
+#~ msgid "... and About You"
+#~ msgstr "O vas:"
 
 #~ msgid "BMI"
 #~ msgstr "ITM"

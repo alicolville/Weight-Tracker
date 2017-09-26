@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-24 17:15+0100\n"
-"PO-Revision-Date: 2017-09-24 17:15+0100\n"
+"POT-Creation-Date: 2017-09-26 21:14+0100\n"
+"PO-Revision-Date: 2017-09-26 21:14+0100\n"
 "Last-Translator: Gero <geroarias@gmail.com>\n"
 "Language-Team: Spanish (Mexico)\n"
 "Language: es_MX\n"
@@ -461,7 +461,8 @@ msgstr "Cuello"
 msgid "NE"
 msgstr ""
 
-#: includes/hooks.php:8 pro-features/functions.pages.php:171
+#: includes/hooks.php:8 includes/shortcode-weight-loss-tracker.php:75
+#: pro-features/functions.pages.php:171
 msgid "Settings"
 msgstr "Ajustes"
 
@@ -550,73 +551,57 @@ msgstr ""
 msgid "No target set"
 msgstr "Tu peso objetivo es"
 
-#: includes/shortcode-weight-loss-tracker.php:50
+#: includes/shortcode-weight-loss-tracker.php:45
 msgid "Your settings have been saved!"
 msgstr "¡Tu configuración ha sido guardada!"
 
-#: includes/shortcode-weight-loss-tracker.php:52
+#: includes/shortcode-weight-loss-tracker.php:47
 msgid "Your weight history has been deleted!"
 msgstr "¡Tu historial de peso ha sido eliminado!"
 
-#: includes/shortcode-weight-loss-tracker.php:75
+#: includes/shortcode-weight-loss-tracker.php:70
 msgid "Overview"
 msgstr "General"
 
-#: includes/shortcode-weight-loss-tracker.php:75
+#: includes/shortcode-weight-loss-tracker.php:70
 #, fuzzy
 #| msgid "Chart / Add Weight"
-msgid "Chart / Add entry"
+msgid "Chart / Add Weight"
 msgstr "Gráfico / Añadir Peso"
 
-#: includes/shortcode-weight-loss-tracker.php:76
+#: includes/shortcode-weight-loss-tracker.php:71
 msgid "In Detail"
 msgstr "En Detalle"
 
-#: includes/shortcode-weight-loss-tracker.php:76
-#: pro-features/admin-pages/data-summary.php:144
-#, fuzzy
-#| msgid "View all weeks"
-msgid "View all entries"
-msgstr "Ver todas las semanas"
+#: includes/shortcode-weight-loss-tracker.php:71
+msgid "View all recorded weights"
+msgstr "Ver todos los pesos registrados"
 
-#: includes/shortcode-weight-loss-tracker.php:80
-msgid "Advanced"
-msgstr ""
+#: includes/shortcode-weight-loss-tracker.php:75
+msgid "Choose weight units, date format, etc"
+msgstr "Elige unidades de peso, formato de fecha, etc"
 
-#: includes/shortcode-weight-loss-tracker.php:80
-msgid "Useful data to reach"
-msgstr ""
-
-#: includes/shortcode-weight-loss-tracker.php:85
-#: pro-features/functions.pages.php:175 pro-features/user-preferences.php:131
-msgid "Preferences"
-msgstr ""
-
-#: includes/shortcode-weight-loss-tracker.php:85
-msgid "... and About You"
-msgstr ""
-
-#: includes/shortcode-weight-loss-tracker.php:101
+#: includes/shortcode-weight-loss-tracker.php:91
 msgid "Add a weight entry"
 msgstr ""
 
-#: includes/shortcode-weight-loss-tracker.php:106
+#: includes/shortcode-weight-loss-tracker.php:96
 msgid "In a chart"
 msgstr "En el gráfico"
 
-#: includes/shortcode-weight-loss-tracker.php:114
+#: includes/shortcode-weight-loss-tracker.php:104
 msgid "A graph will appear once several weights have been entered."
 msgstr "Una gráfica aparecerá una vez que se hayan introducido varios pesos."
 
-#: includes/shortcode-weight-loss-tracker.php:167
+#: includes/shortcode-weight-loss-tracker.php:157
 msgid "Weight History"
 msgstr "Historial de Peso"
 
-#: includes/shortcode-weight-loss-tracker.php:179
+#: includes/shortcode-weight-loss-tracker.php:169
 msgid "There is no data for this week, please try selecting another:"
 msgstr ""
 
-#: includes/shortcode-weight-loss-tracker.php:185
+#: includes/shortcode-weight-loss-tracker.php:175
 msgid "You haven't entered any weight data yet."
 msgstr "Todavía no has introducido ningún peso."
 
@@ -1564,6 +1549,12 @@ msgstr ""
 msgid "View all data"
 msgstr "Ver todas las semanas"
 
+#: pro-features/admin-pages/data-summary.php:144
+#, fuzzy
+#| msgid "View all weeks"
+msgid "View all entries"
+msgstr "Ver todas las semanas"
+
 #: pro-features/admin-pages/data-summary.php:149
 msgid "Export all data"
 msgstr ""
@@ -2052,6 +2043,10 @@ msgstr "ACEPTAR"
 
 #: pro-features/functions.pages.php:158
 msgid "Export Data"
+msgstr ""
+
+#: pro-features/functions.pages.php:175 pro-features/user-preferences.php:131
+msgid "Preferences"
 msgstr ""
 
 #: pro-features/functions.pages.php:181
@@ -2596,12 +2591,6 @@ msgstr ""
 #: pro-features/widget-progress.php:123
 msgid "Text to be displayed under bar. Use {t} to display target weight."
 msgstr ""
-
-#~ msgid "View all recorded weights"
-#~ msgstr "Ver todos los pesos registrados"
-
-#~ msgid "Choose weight units, date format, etc"
-#~ msgstr "Elige unidades de peso, formato de fecha, etc"
 
 #~ msgid "BMI"
 #~ msgstr "IMC"

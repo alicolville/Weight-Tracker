@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Weight Loss Tracker da_DK\n"
-"POT-Creation-Date: 2017-09-24 17:14+0100\n"
-"PO-Revision-Date: 2017-09-24 17:14+0100\n"
+"POT-Creation-Date: 2017-09-26 21:14+0100\n"
+"PO-Revision-Date: 2017-09-26 21:14+0100\n"
 "Last-Translator: Spaniole Olsen <spaniole@gmail.com>\n"
 "Language-Team: Team Denmark <spaniole@gmail.com>\n"
 "Language: da_DK\n"
@@ -456,7 +456,8 @@ msgstr ""
 msgid "NE"
 msgstr ""
 
-#: includes/hooks.php:8 pro-features/functions.pages.php:171
+#: includes/hooks.php:8 includes/shortcode-weight-loss-tracker.php:75
+#: pro-features/functions.pages.php:171
 msgid "Settings"
 msgstr "Indstillinger"
 
@@ -545,74 +546,59 @@ msgstr "Ingen bruger specificeret"
 msgid "No target set"
 msgstr "Din målvægt er"
 
-#: includes/shortcode-weight-loss-tracker.php:50
+#: includes/shortcode-weight-loss-tracker.php:45
 msgid "Your settings have been saved!"
 msgstr "Instillingerne er blevet gemt!"
 
-#: includes/shortcode-weight-loss-tracker.php:52
+#: includes/shortcode-weight-loss-tracker.php:47
 msgid "Your weight history has been deleted!"
 msgstr "Din vægt historie er blevet slettet!"
 
-#: includes/shortcode-weight-loss-tracker.php:75
+#: includes/shortcode-weight-loss-tracker.php:70
 msgid "Overview"
 msgstr "Oversigt"
 
-#: includes/shortcode-weight-loss-tracker.php:75
+#: includes/shortcode-weight-loss-tracker.php:70
 #, fuzzy
 #| msgid "Chart / Add Weight"
-msgid "Chart / Add entry"
+msgid "Chart / Add Weight"
 msgstr "Graf / tilføj vægt"
 
-#: includes/shortcode-weight-loss-tracker.php:76
+#: includes/shortcode-weight-loss-tracker.php:71
 #, fuzzy
 msgid "In Detail"
 msgstr "Detaljer"
 
-#: includes/shortcode-weight-loss-tracker.php:76
-#: pro-features/admin-pages/data-summary.php:144
-#, fuzzy
-msgid "View all entries"
-msgstr "Se alle uger"
+#: includes/shortcode-weight-loss-tracker.php:71
+msgid "View all recorded weights"
+msgstr "Se alle målinger"
 
-#: includes/shortcode-weight-loss-tracker.php:80
-msgid "Advanced"
-msgstr ""
+#: includes/shortcode-weight-loss-tracker.php:75
+msgid "Choose weight units, date format, etc"
+msgstr "Vælg vægtenheder, datoformat osv."
 
-#: includes/shortcode-weight-loss-tracker.php:80
-msgid "Useful data to reach"
-msgstr ""
-
-#: includes/shortcode-weight-loss-tracker.php:85
-#: pro-features/functions.pages.php:175 pro-features/user-preferences.php:131
-msgid "Preferences"
-msgstr ""
-
-#: includes/shortcode-weight-loss-tracker.php:85
-msgid "... and About You"
-msgstr ""
-
-#: includes/shortcode-weight-loss-tracker.php:101
+#: includes/shortcode-weight-loss-tracker.php:91
 #, fuzzy
 msgid "Add a weight entry"
 msgstr "Tilføj en ny vægt"
 
-#: includes/shortcode-weight-loss-tracker.php:106
+#: includes/shortcode-weight-loss-tracker.php:96
 msgid "In a chart"
 msgstr "I et diagram"
 
-#: includes/shortcode-weight-loss-tracker.php:114
+#: includes/shortcode-weight-loss-tracker.php:104
 msgid "A graph will appear once several weights have been entered."
 msgstr "En graf vil blive vist her, når du har registreret mindst 2 målinger."
 
-#: includes/shortcode-weight-loss-tracker.php:167
+#: includes/shortcode-weight-loss-tracker.php:157
 msgid "Weight History"
 msgstr "Vægt historik"
 
-#: includes/shortcode-weight-loss-tracker.php:179
+#: includes/shortcode-weight-loss-tracker.php:169
 msgid "There is no data for this week, please try selecting another:"
 msgstr "Der er ingen data for denne uge, prøv venligst at vælge en anden uge:"
 
-#: includes/shortcode-weight-loss-tracker.php:185
+#: includes/shortcode-weight-loss-tracker.php:175
 msgid "You haven't entered any weight data yet."
 msgstr "Du har ikke indtastet nogle vægtdata endnu."
 
@@ -1590,6 +1576,11 @@ msgstr ""
 msgid "View all data"
 msgstr "Se alle uger"
 
+#: pro-features/admin-pages/data-summary.php:144
+#, fuzzy
+msgid "View all entries"
+msgstr "Se alle uger"
+
 #: pro-features/admin-pages/data-summary.php:149
 msgid "Export all data"
 msgstr ""
@@ -2102,6 +2093,10 @@ msgstr "Sæt målvægt"
 
 #: pro-features/functions.pages.php:158
 msgid "Export Data"
+msgstr ""
+
+#: pro-features/functions.pages.php:175 pro-features/user-preferences.php:131
+msgid "Preferences"
 msgstr ""
 
 #: pro-features/functions.pages.php:181
@@ -2654,12 +2649,6 @@ msgstr ""
 #: pro-features/widget-progress.php:123
 msgid "Text to be displayed under bar. Use {t} to display target weight."
 msgstr ""
-
-#~ msgid "View all recorded weights"
-#~ msgstr "Se alle målinger"
-
-#~ msgid "Choose weight units, date format, etc"
-#~ msgstr "Vælg vægtenheder, datoformat osv."
 
 #~ msgid "No data available in table"
 #~ msgstr "Ingen data tilgængelig for visning."
