@@ -108,7 +108,7 @@ function ws_ls_macro_render_table($user_id, $missing_data_text = false, $additio
             );
 
             // Maintain
-            $html .= sprintf('  <tr valign="top">
+            $html .= sprintf('  <tr valign="top" class="alternate">
                                     <td class="ws-ls-col-header">%s</td>
                                     <td>%s</td>
                                     <td>%s</td>
@@ -142,7 +142,7 @@ function ws_ls_macro_render_table($user_id, $missing_data_text = false, $additio
             );
 
             // Fats
-            $html .= sprintf('  <tr valign="top">
+            $html .= sprintf('  <tr valign="top" class="alternate">
                                     <td class="ws-ls-col-header">%s</td>
                                     <td>%s</td>
                                     <td>%s</td>

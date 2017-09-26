@@ -95,7 +95,7 @@ function ws_ls_admin_page_data_user() {
                             <?php
 								if(ws_ls_has_a_valid_pro_plus_license()) {
 
-									echo ws_ls_harris_benedict_render_table($user_id);
+									echo ws_ls_harris_benedict_render_table($user_id, false, 'ws-ls-footable');
 
 								} else {
 
@@ -122,7 +122,7 @@ function ws_ls_admin_page_data_user() {
                                             __(') have been specified and total 100%.', WE_LS_SLUG)
                                     );
                                 } else {
-                                   echo ws_ls_macro_render_table($user_id);
+                                   echo ws_ls_macro_render_table($user_id, false, 'ws-ls-footable');
                                 }
                             } else {
 

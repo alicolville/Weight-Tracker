@@ -115,3 +115,10 @@
 .ws-ls-col-header {
     font-weight: bold;
 }
+.footable-empty td {
+	font-size: 14px !important;
+	font-style: italic;
+}
+.ws-ls-footable .row-title .footable-toggle {
+    display: none;
+}
