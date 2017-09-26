@@ -21,8 +21,9 @@
 				'hide-second-target-form' => false,			// Hide second Target form
 				'show-add-button' => false,					// Display a "Add weight" button above the chart.
                 'allow-delete-data' => true,                // Show "Delete your data" section
-                'hide-tab-photos' => false,                     // Hide photos part of form
-                'hide-tab-advanced' => false,                   // Hide Advanced tab (macroN, calories, etc)
+                'hide-photos' => false,                     // Hide photos part of form
+                'hide-tab-photos' => false,                 // Hide Photos tab
+                'hide-tab-advanced' => false,               // Hide Advanced tab (macroN, calories, etc)
                 'hide-advanced-narrative' => false          // Hide text describing BMR, MarcoN, etc
                ), $user_defined_arguments );
 
@@ -32,6 +33,7 @@
 			$shortcode_arguments['show-add-button'] = ws_ls_force_bool_argument($shortcode_arguments['show-add-button']);
 			$shortcode_arguments['min-chart-points'] = ws_ls_force_numeric_argument($shortcode_arguments['min-chart-points'], 2);
             $shortcode_arguments['allow-delete-data'] = ws_ls_force_bool_argument($shortcode_arguments['allow-delete-data']);
+            $shortcode_arguments['hide-photos'] = ws_ls_force_bool_argument($shortcode_arguments['hide-photos']);
             $shortcode_arguments['hide-tab-photos'] = ws_ls_force_bool_argument($shortcode_arguments['hide-tab-photos']);
             $shortcode_arguments['hide-tab-advanced'] = ws_ls_force_bool_argument($shortcode_arguments['hide-tab-advanced']);
             $shortcode_arguments['hide-advanced-narrative'] = ws_ls_force_bool_argument($shortcode_arguments['hide-advanced-narrative']);

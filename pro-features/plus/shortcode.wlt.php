@@ -19,6 +19,9 @@
 
 		if ( $user_id ) {
 
+            $html .= sprintf('<h3>%s</h3>',
+                __('Photos', WE_LS_SLUG));
+
 			$photo_count = ws_ls_photos_db_count_photos($user_id);
 
 			if ( $photo_count > 0 ) {
