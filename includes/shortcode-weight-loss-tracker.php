@@ -21,7 +21,10 @@
 				'hide-second-target-form' => false,			// Hide second Target form
 				'show-add-button' => false,					// Display a "Add weight" button above the chart.
                 'allow-delete-data' => true,                // Show "Delete your data" section
-                'hide-photos' => false                      // Hide photos part of form
+                'hide-photos' => false,                     // Hide photos part of form
+                'hide-tab-photos' => false,                 // Hide Photos tab
+                'hide-tab-advanced' => false,               // Hide Advanced tab (macroN, calories, etc)
+                'hide-advanced-narrative' => false          // Hide text describing BMR, MarcoN, etc
                ), $user_defined_arguments );
 
 			// Validate arguments
@@ -31,8 +34,15 @@
 			$shortcode_arguments['min-chart-points'] = ws_ls_force_numeric_argument($shortcode_arguments['min-chart-points'], 2);
             $shortcode_arguments['allow-delete-data'] = ws_ls_force_bool_argument($shortcode_arguments['allow-delete-data']);
             $shortcode_arguments['hide-photos'] = ws_ls_force_bool_argument($shortcode_arguments['hide-photos']);
+            $shortcode_arguments['hide-tab-photos'] = ws_ls_force_bool_argument($shortcode_arguments['hide-tab-photos']);
+            $shortcode_arguments['hide-tab-advanced'] = ws_ls_force_bool_argument($shortcode_arguments['hide-tab-advanced']);
+            $shortcode_arguments['hide-advanced-narrative'] = ws_ls_force_bool_argument($shortcode_arguments['hide-advanced-narrative']);
 
             $user_id = get_current_user_id();
+
+            // Decide whether to show Macro N / Calories tab
+            $show_advanced_tab = (false === $shortcode_arguments['hide-tab-advanced'] && true === WS_LS_IS_PRO_PLUS);
+			$show_photos_tab = (false === $shortcode_arguments['hide-tab-photos'] && true === WE_LS_PHOTOS_ENABLED);
 
             $html_output = '';
 
@@ -67,12 +77,22 @@
                         <div id="ws-ls-tabs-loading" class="ws-ls-loading"></div>
 						<div id="ws-ls-tabs" style="display:none;">
 							<ul>
-									<li><a>' . __('Overview', WE_LS_SLUG) . '<span>' . __('Chart / Add Weight', WE_LS_SLUG) . '</span></a></li>
-									<li><a>' . __('In Detail', WE_LS_SLUG) . '<span>' . __('View all recorded weights', WE_LS_SLUG) . '</span></a></li>';
+									<li><a><i class="fa fa-line-chart" aria-hidden="true"></i>' . __('Overview', WE_LS_SLUG) . '<span>' . __('Chart and add a new entry', WE_LS_SLUG) . '</span></a></li>
+									<li><a><i class="fa fa-table" aria-hidden="true"></i>' . __('All Entries', WE_LS_SLUG) . '<span>' . __('View all of your entries', WE_LS_SLUG) . '</span></a></li>';
+
+									 // Show Advanced Tab?
+                                    if ( true === $show_photos_tab ) {
+										$html_output .= '<li><a><i class="fa fa-picture-o" aria-hidden="true"></i>' . __('Photos', WE_LS_SLUG) . '<span>' . __('View a gallery of your photos', WE_LS_SLUG) . '</span></a></li>';
+									}
+
+                                    // Show Advanced Tab?
+                                    if ( true === $show_advanced_tab ) {
+                                        $html_output .= '<li><a><i class="fa fa-university" aria-hidden="true"></i>' . __('Advanced', WE_LS_SLUG) . '<span>' . __('View BMI, BMR and suggested Calorie and Macronutrient intake', WE_LS_SLUG) . '</span></a></li>';
+                                    }
 
 									// If enabled, have a third tab to allow users to manage their own settings!
 									if(WE_LS_ALLOW_USER_PREFERENCES){
-										$html_output .= '<li><a>' . __('Settings', WE_LS_SLUG) . '<span>' . __('Choose weight units, date format, etc', WE_LS_SLUG) . '</span></a></li>';
+										$html_output .= '<li><a><i class="fa fa-cog" aria-hidden="true"></i>' . __('Preferences', WE_LS_SLUG) . '<span>' . __('Customise this tool and tell us a little more about you', WE_LS_SLUG) . '</span></a></li>';
 									}
 
 							$html_output .= '</ul>
@@ -175,6 +195,20 @@
 				$html_output .= __('You haven\'t entered any weight data yet.', WE_LS_SLUG);
 			}
 			$html_output .= ws_ls_end_tab();
+
+			// Advanced Data? MacroN etc?
+			if ( true === $show_photos_tab ){
+				$html_output .= ws_ls_start_tab('wlt-user-photod');
+				$html_output .= ws_ls_shortcode_wlt_display_photos_tab();
+				$html_output .= ws_ls_end_tab();
+			}
+
+            // Advanced Data? MacroN etc?
+            if ( true === $show_advanced_tab ){
+                $html_output .= ws_ls_start_tab('wlt-user-advanced');
+                $html_output .= ws_ls_shortcode_wlt_display_advanced_tab($shortcode_arguments);
+                $html_output .= ws_ls_end_tab();
+            }
 
 			// If enabled, have a third tab to allow users to manage their own settings!
 			if(WE_LS_ALLOW_USER_PREFERENCES){

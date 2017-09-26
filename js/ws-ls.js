@@ -54,8 +54,9 @@ jQuery( document ).ready(function ($) {
             rounded: false,
             multiline: true,
             theme: "silver",
-            size: "medium",
-            responsive: true,
+            size: "small",
+			minWindowWidth: 3000,				// Force tabs into browser
+			responsive: true,
             animation: {
                 effects: "slideH",
                 easing: "easeInOutCirc",

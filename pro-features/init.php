@@ -43,6 +43,7 @@ if(defined('WS_LS_ABSPATH')){
         include WS_LS_ABSPATH . 'pro-features/plus/bmr.php';
 		include WS_LS_ABSPATH . 'pro-features/plus/harris.benedict.php';
         include WS_LS_ABSPATH . 'pro-features/plus/macronutrient.calculator.php';
+        include WS_LS_ABSPATH . 'pro-features/plus/shortcode.wlt.php';
 
 		// Photos enabled?
 		if(WE_LS_PHOTOS_ENABLED) {

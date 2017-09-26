@@ -78,14 +78,16 @@ jQuery( document ).ready(function ($, undefined) {
 
 		response.columns[date_column].formatter = formatters['date'];
 
+
 		// Apply formatters
 		var columns = ws_ls_apply_formatters(response.columns);
+		var rows = response.rows;
 
 		$(table_id).removeClass('ws-ls-loading-table');
 
 		$(table_id).footable({
 	 		"columns": columns,
-	 		"rows": response.rows,
+	 		"rows": rows,
 			"state": {
 				"enabled" : true,
 				"key": "ws-ls-admin-footable"
@@ -138,6 +140,10 @@ jQuery( document ).ready(function ($, undefined) {
 
         $(table_id + ' .footable-filtering-search .input-group .form-control').attr("placeholder", ws_user_table_config['locale-search-text']);
 
+        // Replace "No results" string with locale version
+		if ( 0 === rows.length ) {
+			$(table_id + ' .footable-empty td').html(ws_user_table_config['locale-no-results']);
+		}
     }
 
 	function ws_ls_apply_formatters(columns) {
