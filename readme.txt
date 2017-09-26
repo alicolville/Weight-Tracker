@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight, loss, lose, helper, bmi, body, mass, index, graph, track, stones, kg, table, data, plot, target, history, pounds, responsive, chart, measurements, cm, centimeters, inches, hip, waist, bicep, thigh
 Requires at least: 4.4.0
 Tested up to: 4.8
-Stable tag: 5.2.3
+Stable tag: 5.2.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate Link: https://www.paypal.me/yeken
@@ -136,6 +136,15 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 5.2! Pro Plus now supports photo uploads from your members!
 
 == Changelog ==
+
+= 5.2.4 =
+
+* Improvement: Added an Advanced tab to [wlt] shortcode to display a BMI, BMR, Calories and Macronutrients. This tab can be hidden with the attribute "hide-tab-advanced" - Read more: https://weight.yeken.uk/shortcodes/
+* Improvement: Added a Photos tab to [wlt] shortcode to display a gallery. This tab can be hidden with the attribute "hide-tab-photos" - Read more: https://weight.yeken.uk/shortcodes/
+* Improvement: Added footable.js to Macronutrient and Calorie tables in Admin (tables looks a lot better in responsive mode).
+* Improvement: Added "alternate" class for Macronutrient table to make alternative rows stand out.
+* Bug fix: Ensured "No data found" can be translated on data tables.
+* Bug fix: Show hamburger menu icon on tabs.
 
 = 5.2.3 =
 
