@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2017-09-26 21:35+0100\n"
-"PO-Revision-Date: 2017-09-26 21:35+0100\n"
+"POT-Creation-Date: 2017-09-28 07:17+0100\n"
+"PO-Revision-Date: 2017-09-28 07:17+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: hu_HU\n"
@@ -263,11 +263,15 @@ msgstr "Kérjük adja meg a kg-ban"
 msgid "Please enter a valid date."
 msgstr "Kérjük adja meg az érvényes dátumot"
 
-#: includes/core.php:733
-msgid "Done"
+#: includes/core.php:719
+msgid "This field is required."
 msgstr ""
 
 #: includes/core.php:734
+msgid "Done"
+msgstr ""
+
+#: includes/core.php:735
 msgid "Today"
 msgstr ""
 

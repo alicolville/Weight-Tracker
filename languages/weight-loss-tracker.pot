@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Weight Loss Tracker\n"
-"POT-Creation-Date: 2017-09-26 21:35+0100\n"
+"POT-Creation-Date: 2017-09-28 07:06+0100\n"
 "PO-Revision-Date: 2017-09-04 19:10+0100\n"
 "Last-Translator: \n"
 "Language-Team: Yeken - email@yeken.uk\n"
@@ -253,11 +253,15 @@ msgstr ""
 msgid "Please enter a valid date."
 msgstr ""
 
-#: includes/core.php:733
-msgid "Done"
+#: includes/core.php:719
+msgid "This field is required."
 msgstr ""
 
 #: includes/core.php:734
+msgid "Done"
+msgstr ""
+
+#: includes/core.php:735
 msgid "Today"
 msgstr ""
 

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Weight Loss Tracker\n"
-"POT-Creation-Date: 2017-09-26 21:35+0100\n"
-"PO-Revision-Date: 2017-09-26 21:35+0100\n"
+"POT-Creation-Date: 2017-09-28 07:17+0100\n"
+"PO-Revision-Date: 2017-09-28 07:17+0100\n"
 "Last-Translator: \n"
 "Language-Team: Yeken - email@yeken.uk\n"
 "Language: fr\n"
@@ -262,11 +262,17 @@ msgstr "S'il vous plaît, sélectionnez ou entrez une valeur pour le genre."
 msgid "Please enter a valid date."
 msgstr "S'il vous plaît, veuillez entrer une date valide."
 
-#: includes/core.php:733
+#: includes/core.php:719
+#, fuzzy
+#| msgid "This license has expired."
+msgid "This field is required."
+msgstr "Cette licence a expiré."
+
+#: includes/core.php:734
 msgid "Done"
 msgstr "Terminé"
 
-#: includes/core.php:734
+#: includes/core.php:735
 msgid "Today"
 msgstr "Aujourd'hui"
 

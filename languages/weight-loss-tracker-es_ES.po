@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-26 21:35+0100\n"
-"PO-Revision-Date: 2017-09-26 21:35+0100\n"
+"POT-Creation-Date: 2017-09-28 07:17+0100\n"
+"PO-Revision-Date: 2017-09-28 07:17+0100\n"
 "Last-Translator: Gero <geroarias@gmail.com>\n"
 "Language-Team: Spanish (Mexico)\n"
 "Language: es\n"
@@ -274,11 +274,15 @@ msgstr "Introduce una figura válida para Kg"
 msgid "Please enter a valid date."
 msgstr "Por favor, introduce una fecha válida"
 
-#: includes/core.php:733
+#: includes/core.php:719
+msgid "This field is required."
+msgstr ""
+
+#: includes/core.php:734
 msgid "Done"
 msgstr "Listo"
 
-#: includes/core.php:734
+#: includes/core.php:735
 msgid "Today"
 msgstr "Hoy"
 

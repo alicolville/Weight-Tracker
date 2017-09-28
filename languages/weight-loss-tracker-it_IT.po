@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2017-09-26 21:35+0100\n"
-"PO-Revision-Date: 2017-09-26 21:35+0100\n"
+"POT-Creation-Date: 2017-09-28 07:17+0100\n"
+"PO-Revision-Date: 2017-09-28 07:17+0100\n"
 "Last-Translator: Salvo Mattina <admin@mabodigital.com>\n"
 "Language-Team: \n"
 "Language: it\n"
@@ -264,11 +264,15 @@ msgstr "Si prega di inserire una cifra valida per Stones"
 msgid "Please enter a valid date."
 msgstr "Si prega di inserire una data valida"
 
-#: includes/core.php:733
+#: includes/core.php:719
+msgid "This field is required."
+msgstr ""
+
+#: includes/core.php:734
 msgid "Done"
 msgstr "Fatto"
 
-#: includes/core.php:734
+#: includes/core.php:735
 msgid "Today"
 msgstr "Oggi"
 

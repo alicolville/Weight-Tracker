@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2017-09-26 21:35+0100\n"
-"PO-Revision-Date: 2017-09-26 21:35+0100\n"
+"POT-Creation-Date: 2017-09-28 07:17+0100\n"
+"PO-Revision-Date: 2017-09-28 07:17+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -267,11 +267,15 @@ msgstr "Bitte gib Sie einen gültigen Wert für Kg an"
 msgid "Please enter a valid date."
 msgstr "Bitte ein gültiges Datum eingeben"
 
-#: includes/core.php:733
+#: includes/core.php:719
+msgid "This field is required."
+msgstr ""
+
+#: includes/core.php:734
 msgid "Done"
 msgstr "Erledigt"
 
-#: includes/core.php:734
+#: includes/core.php:735
 msgid "Today"
 msgstr "Heute"
 
