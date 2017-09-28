@@ -2,10 +2,16 @@
 	defined('ABSPATH') or die('Jog on!');
 
 	$ws_ls_tab_index = 1;
+	$ws_ls_wlt_already_placed = false;
 
 	function ws_ls_shortcode($user_defined_arguments)
 	{
 			global $save_response;
+			global $ws_ls_wlt_already_placed;
+
+			if ( true === $ws_ls_wlt_already_placed ) {
+			   return '<p>' . __('This shortcode can only be placed once on a page / post.', WE_LS_SLUG) . '</p>';
+            }
 
 			ws_ls_enqueue_files();
 
@@ -219,6 +225,8 @@
 
 			$html_output .= ws_ls_end_tab();
 			$html_output .= ws_ls_end_tab();
+
+            $ws_ls_wlt_already_placed = true;
 
 			return $html_output;
 
