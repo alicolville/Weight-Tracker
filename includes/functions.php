@@ -791,11 +791,13 @@ function ws_ls_photo_max_upload_size() {
 /**
  * Simple function to render max upload size selected by user
  */
-function ws_ls_display_max_upload_size() {
+function ws_ls_photo_display_max_upload_size() {
 
     $max_size = ws_ls_photo_max_upload_size();
 
-    return ws_ls_photo_get_sizes($max_size);
+    $upload_size = ws_ls_photo_get_sizes($max_size);
+
+    return ( true == is_array($upload_size) ) ? ws_ls_display_max_server_upload_size() : $upload_size;
 }
 
 /**

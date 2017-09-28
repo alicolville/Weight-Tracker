@@ -433,7 +433,7 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 				(false === empty($thumbnail)) ? __('Replace photo', WE_LS_SLUG) : __('Add a photo', WE_LS_SLUG),
 				ws_ls_get_next_tab_index(),
 				__('Select a photo', WE_LS_SLUG),
-                __('Photos must be under', WE_LS_SLUG) . ' ' . ws_ls_display_max_upload_size() . ' ' . __('or they will silently fail to upload.', WE_LS_SLUG),
+                __('Photos must be under', WE_LS_SLUG) . ' ' . ws_ls_photo_display_max_upload_size() . ' ' . __('or they will silently fail to upload.', WE_LS_SLUG),
 				__('Photos are only visible to you and administrators. ', WE_LS_SLUG)
 			);
 		}
@@ -695,7 +695,7 @@ function ws_ls_get_js_config()
 		'validation-we-ls-weight-stones' => __('Please enter a valid figure for Stones', WE_LS_SLUG),
 		'validation-we-ls-date' => __('Please enter a valid date', WE_LS_SLUG),
 		'validation-we-ls-history' => __('Please confirm you wish to delete ALL your weight history', WE_LS_SLUG),
-		'validation-we-ls-photo' => __('Your photo must be less than ', WE_LS_SLUG) . ws_ls_display_max_upload_size(),
+		'validation-we-ls-photo' => __('Your photo must be less than ', WE_LS_SLUG) . ws_ls_photo_display_max_upload_size(),
     	'confirmation-delete' => __('Are you sure you wish to delete this entry? If so, press OK.', WE_LS_SLUG),
 		'tabs-enabled' => (WE_LS_USE_TABS) ? 'true' : 'false',
 		'advanced-tables-enabled' => (WS_LS_ADVANCED_TABLES && WS_LS_IS_PRO) ? 'true' : 'false',

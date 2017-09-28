@@ -25,13 +25,7 @@ jQuery( document ).ready(function ($) {
     });
 
 	$.validator.addMethod('filesize', function(value, element, param) {
-
-		console.log(value, element, param);
-
-		// param = size (en bytes)
-		// element = element to validate (<input>)
-		// value = value of the element (file name)
-		return this.optional(element) || (element.files[0].size <= param)
+    	return this.optional(element) || (element.files[0].size <= param)
 	});
 
     // Form Validation
@@ -84,16 +78,14 @@ jQuery( document ).ready(function ($) {
 
 			// Photos?
 			if ("true" == ws_ls_config["photos-enabled"] && true == $("#" + $form_id).data("photos-enabled")) {
-
     			$( "#" + $form_id + " #ws-ls-photo").rules( "add", {
 					extension: "png|jpeg|jpg",
-					filesize: 3048576,
+					filesize: ws_ls_config['max-photo-upload'],
 					messages: {
 					   filesize: ws_ls_config['validation-we-ls-photo']
 					}
 				});
 			}
-
 
 			// Measurement form
 			if ("true" == ws_ls_config["measurements-enabled"] && true == $("#" + $form_id).data("measurements-enabled")) {
