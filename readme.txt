@@ -137,10 +137,16 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 == Changelog ==
 
+= 5.2.8 =
+
+//todo: compress entry form js
+
+* Bug fix: Ensured the string "photo" can be translated on [wlt] shortcode.
+
 = 5.2.7 =
 
 * Improvement: Added 7 day trial button
-* Bug fix: Ensured the field "This field is required." can be translated.
+* Bug fix: Ensured the string "This field is required." can be translated.
 * Bug fix: Fixed issue with empty "dob" field when using [wlt-if] shortcode.
 
 = 5.2.6 =

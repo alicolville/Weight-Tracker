@@ -752,13 +752,59 @@ function ws_ls_format_bytes_into_readable($bytes) {
 }
 
 /**
- * Simple function to render max upload size
+ * Get Photos sizes in Mb
+ *
+ * @param bool $key
+ */
+function ws_ls_photo_get_sizes($key = false) {
+
+	$sizes = [
+				0 => __('Server Default', WE_LS_SLUG),
+				1000000 => '1Mb',
+				2000000 => '2Mb',
+				3000000 => '3Mb',
+				4000000 => '4Mb',
+				5000000 => '5Mb',
+				6000000 => '6Mb',
+				7000000 => '7Mb',
+				8000000 => '8Mb',
+				9000000 => '9Mb',
+				10000000 => '10Mb'
+	];
+
+	return ( false === empty($key) && array_key_exists($key, $sizes) ) ? $sizes[$key] : $sizes;
+}
+
+/**
+ * Return the max photo size allowed.
+ *
+ * @return float|int
+ */
+function ws_ls_photo_max_upload_size() {
+
+	$file_size = WE_LS_PHOTOS_MAX_SIZE;
+	$max_size = ws_ls_file_upload_max_size();
+
+	return ($file_size > $max_size || true === empty(WE_LS_PHOTOS_MAX_SIZE)) ? intval($max_size) : intval($file_size);
+}
+
+/**
+ * Simple function to render max upload size selected by user
  */
 function ws_ls_display_max_upload_size() {
 
-    $max_size = ws_ls_file_upload_max_size();
+    $max_size = ws_ls_photo_max_upload_size();
 
-    return ws_ls_format_bytes_into_readable($max_size);
+    return ws_ls_photo_get_sizes($max_size);
+}
 
+/**
+ * @return string Return server file upload limit
+ */
+function ws_ls_display_max_server_upload_size() {
+
+	$max_size = ws_ls_file_upload_max_size();
+
+	return ws_ls_format_bytes_into_readable($max_size);
 }
 ?>

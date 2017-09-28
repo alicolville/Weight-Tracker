@@ -288,7 +288,8 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 							data-measurements-enabled="%4$s"
 							data-measurements-all-required="%5$s"
 							data-is-target-form="%6$s"
-							data-metric-unit="%7$s"
+							data-metric-unit="%7$s",
+							data-photos-enabled="%12$s",
 							%11$s
 							>
 							<input type="hidden" value="%8$s" id="ws_ls_is_target" name="ws_ls_is_target" />
@@ -305,7 +306,8 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 							(($target_form) ? 'true' : 'false'),
 							esc_attr($user_id),
 							wp_hash($user_id),
-							( true === $photo_form_enabled) ? ' enctype="multipart/form-data"' : ''
+							( true === $photo_form_enabled) ? ' enctype="multipart/form-data"' : '',
+							(($photo_form_enabled) ? 'true' : 'false')
 	);
 
 	// Do we have data? If so, embed existing row ID
@@ -493,7 +495,7 @@ function ws_ls_convert_date_to_iso($date, $user_id = false)
 
 function ws_ls_capture_form_validate_and_save($user_id = false)
 {
-    if(false == $user_id){
+	if(false == $user_id){
         $user_id = get_current_user_id();
     }
 
@@ -584,7 +586,7 @@ function ws_ls_capture_form_validate_and_save($user_id = false)
 
 		// Uploads
 		if (false === empty($_FILES['ws-ls-photo']) &&
-			$_FILES['ws-ls-photo']['size'] > 0 ) {
+			$_FILES['ws-ls-photo']['size'] > 0 && $_FILES['ws-ls-photo']['size'] <= ws_ls_photo_max_upload_size() ) {
 
 			if ( false === function_exists( 'wp_handle_upload' ) ) {
 				require_once( ABSPATH . 'wp-admin/includes/file.php' );
@@ -648,8 +650,6 @@ function ws_ls_capture_form_validate_and_save($user_id = false)
 
 	$result = ws_ls_save_data($user_id, $weight_object, $is_target_form, $existing_db_id);
 
-    ws_ls_delete_cache_for_given_user($user_id);
-
     return $result;
 }
 
@@ -695,6 +695,7 @@ function ws_ls_get_js_config()
 		'validation-we-ls-weight-stones' => __('Please enter a valid figure for Stones', WE_LS_SLUG),
 		'validation-we-ls-date' => __('Please enter a valid date', WE_LS_SLUG),
 		'validation-we-ls-history' => __('Please confirm you wish to delete ALL your weight history', WE_LS_SLUG),
+		'validation-we-ls-photo' => __('Your photo must be less than ', WE_LS_SLUG) . ws_ls_display_max_upload_size(),
     	'confirmation-delete' => __('Are you sure you wish to delete this entry? If so, press OK.', WE_LS_SLUG),
 		'tabs-enabled' => (WE_LS_USE_TABS) ? 'true' : 'false',
 		'advanced-tables-enabled' => (WS_LS_ADVANCED_TABLES && WS_LS_IS_PRO) ? 'true' : 'false',
@@ -704,10 +705,12 @@ function ws_ls_get_js_config()
 		'user-id' => get_current_user_id(),
 		'current-url' => get_permalink(),
 		'measurements-enabled' => (WE_LS_MEASUREMENTS_ENABLED) ? 'true' : 'false',
+		'photos-enabled' => (WE_LS_PHOTOS_ENABLED) ? 'true' : 'false',
 		'measurements-unit' => ws_ls_get_config('WE_LS_MEASUREMENTS_UNIT'),
 		'validation-we-ls-measurements' => __('Please enter a valid measurement (' . WE_LS_MEASUREMENTS_UNIT . ') which is less that 1000.', WE_LS_SLUG),
 		'date-picker-locale' => ws_ls_get_js_datapicker_locale(),
-		'in-admin' => (is_admin()) ? 'true' : 'false'
+		'in-admin' => (is_admin()) ? 'true' : 'false',
+		'max-photo-upload' => ws_ls_photo_max_upload_size()
 	);
 
 	// If About You fields mandatory, add extra translations

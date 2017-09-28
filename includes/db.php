@@ -247,7 +247,6 @@ function ws_ls_save_data($user_id, $weight_object, $is_target_form = false, $exi
 	    $db_fields['weight_date'] = $weight_object['date'];
 	    array_push($db_field_types, '%s');
 	}
-	$result = false;
 
 	// Update or insert
 	if($db_is_update != false) {

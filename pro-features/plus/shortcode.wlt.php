@@ -29,7 +29,7 @@
 				$html .= sprintf('<p>%s <strong>%s</strong> %s:</p>',
 										__('Your have uploaded', WE_LS_SLUG),
 										$photo_count,
-										_n( 'photo', 'photos', $photo_count, WE_LS_SLUG )
+										$photo_count > 1 ? __('photos', WE_LS_SLUG) : __('photo', WE_LS_SLUG)
 
 				);
 
