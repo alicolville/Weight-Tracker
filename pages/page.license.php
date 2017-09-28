@@ -117,7 +117,19 @@ function ws_ls_advertise_pro() {
                                     <center>
                                         <h3><?php echo __('In case you need, your <strong>Site Hash</strong> is', WE_LS_SLUG); ?>: <?php echo ws_ls_generate_site_hash(); ?></h3>
 
-										<?php if ($display_pro_plus_marketing)  {
+
+                                        <?php if ($display_pro_plus_marketing || $display_pro_marketing)  {
+
+                                            echo sprintf('<a href="%s?hash=%s&license=%s" target="_blank" class="button-primary ws-ls-upgrade-button">%s</a>',
+                                                WE_LS_FREE_TRIAL_URL,
+                                                ws_ls_generate_site_hash(),
+                                                ws_ls_license_get_old_or_new(),
+                                                __('Get a free 7 day trial!', WE_LS_SLUG)
+                                            );
+
+                                            }
+
+										    if ($display_pro_plus_marketing)  {
 
                                             $text = __('Upgrade to Pro Plus for', WE_LS_SLUG) . ' &pound;' . $proprice . ' ' . __('a year', WE_LS_SLUG);
                                             $link = WE_LS_UPGRADE_TO_PRO_PLUS_URL;
@@ -140,8 +152,7 @@ function ws_ls_advertise_pro() {
 
 
 										<?php if ($display_pro_marketing) : ?>
-
-											<?php $button_text = ('pro-old' === $license_type) ?
+      											<?php $button_text = ('pro-old' === $license_type) ?
 												__('Switch to a yearly Pro license for ', WE_LS_SLUG) . '&pound;' . $price . __(' a year', WE_LS_SLUG) :
 												__('Upgrade to Pro for ', WE_LS_SLUG) . '&pound;' . $price . __(' a year', WE_LS_SLUG); ?>
 
