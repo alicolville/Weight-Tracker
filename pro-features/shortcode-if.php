@@ -147,6 +147,11 @@ function ws_ls_shortcode_if_value_exist($user_id, $fields) {
                 case 'activity_level':
                 case 'dob':
                     $value = ws_ls_get_user_setting($field, $user_id);
+
+                    if ( 'dob' === $field && '0000-00-00 00:00:00' === $value ) {
+                        $value = NULL;
+                    }
+
                     break;
             }
 
