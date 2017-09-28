@@ -141,6 +141,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 //todo: languages!
 
+* Improvement: Calorie caps can now be disabled by setting them to 0.
 * Improvement: jQuery validation added to prompt the user to upload a smaller image if above file size limit.
 * Improvement: New setting to limit the file size of images being uploaded.
 * Improvement: Added check to ensure [wlt] shortcode is only placed once on a page or post.
