@@ -92,18 +92,3 @@ function ws_ls_email_notification_addresses() {
 	$emails = explode(',',  WE_LS_EMAIL_ADDRESSES);
 	return (is_array($emails) && !empty($emails)) ? $emails : false;
 }
-
-
-// $globals['WE_LS_EMAIL_ENABLE'] = true;
-// }
-// if (!empty(get_option('ws-ls-email-addresses'))) {
-// $globals['WE_LS_EMAIL_ADDRESSES'] = get_option('ws-ls-email-addresses');
-// }
-// if ('no' == get_option('ws-ls-email-notifications-edit')) {
-// $globals['WE_LS_EMAIL_NOTIFICATIONS_EDIT'] = false;
-// }
-// if ('no' == get_option('ws-ls-email-notifications-new')) {
-// $globals['WE_LS_EMAIL_NOTIFICATIONS_NEW'] = false;
-// }
-// if ('no' == get_option('ws-ls-email-notifications-targets')) {
-// $globals['WE_LS_EMAIL_NOTIFICATIONS_TARGETS'] = false;

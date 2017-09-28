@@ -64,6 +64,27 @@ add_action(WE_LS_CRON_NAME_YEKEN_COMMS, 'ws_ls_stats_send_license_activation_to_
 add_action('admin_init', 'ws_ls_stats_send_license_activation_to_yeken');					// Instant notification
 
 // ---------------------------------------------------------------------------------
+// Record expired or removed license
+// ---------------------------------------------------------------------------------
+
+function ws_ls_stats_send_license_expire_to_yeken() {
+
+    // Delete flag to notify YeKen of another license activation!
+    delete_option('ws-ls-license-notify-2017');
+
+    // Build payload to send to Yeken
+    $data = array();
+    $data['reason']	= 'license-expire';
+    $data['url'] = get_site_url();
+    $data['valid-license'] = ws_ls_has_a_valid_license();
+    $data['site-hash'] = get_option(WS_LS_LICENSE_SITE_HASH);
+    $data['license'] = ws_ls_license_get_old_or_new();
+    $result = wp_remote_post(WE_LS_STATS_URL, array('body' => $data));
+
+}
+add_action(WE_LS_HOOK_LICENSE_EXPIRED, 'ws_ls_stats_send_license_expire_to_yeken');
+
+// ---------------------------------------------------------------------------------
 // Post Stats to YeKen on Weekly Cron job
 // ---------------------------------------------------------------------------------
 
