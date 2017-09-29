@@ -24,6 +24,10 @@ jQuery( document ).ready(function ($) {
         $(this).datepicker(options);
     });
 
+	$.validator.addMethod('filesize', function(value, element, param) {
+    	return this.optional(element) || (element.files[0].size <= param)
+	});
+
     // Form Validation
     $(".we-ls-weight-form-validate").each(function () {
 
@@ -38,6 +42,7 @@ jQuery( document ).ready(function ($) {
             errorContainer: "#" + $form_id + " .ws-ls-error-summary",
             errorLabelContainer: "#" + $form_id + " .ws-ls-error-summary ul",
             wrapper: "li",
+			ignore: [],
             errorClass: "ws-ls-invalid",
             validClass: "ws-ls-valid",
             messages: {
@@ -71,18 +76,29 @@ jQuery( document ).ready(function ($) {
                 }
             }
 
-        }
+			// Photos?
+			if ("true" == ws_ls_config["photos-enabled"] && true == $("#" + $form_id).data("photos-enabled")) {
+    			$( "#" + $form_id + " #ws-ls-photo").rules( "add", {
+					extension: "png|jpeg|jpg",
+					filesize: ws_ls_config['max-photo-upload'],
+					messages: {
+					   filesize: ws_ls_config['validation-we-ls-photo']
+					}
+				});
+			}
 
-        // Measurement form
-        if ("true" == ws_ls_config["measurements-enabled"] && true == $("#" + $form_id).data("measurements-enabled")) {
-            $( "#" + $form_id + " .ws-ls-measurement").rules( "add", {
-                number: true,
-                range: [1, 1000],
-                messages: {
-                    number: ws_ls_config["validation-we-ls-measurements"],
-                    range: ws_ls_config["validation-we-ls-measurements"]
-                }
-            });
+			// Measurement form
+			if ("true" == ws_ls_config["measurements-enabled"] && true == $("#" + $form_id).data("measurements-enabled")) {
+				$( "#" + $form_id + " .ws-ls-measurement").rules( "add", {
+					number: true,
+					range: [1, 1000],
+					messages: {
+						number: ws_ls_config["validation-we-ls-measurements"],
+						range: ws_ls_config["validation-we-ls-measurements"]
+					}
+				});
+			}
+
         }
 
         // Set up numeric fields to validate

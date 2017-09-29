@@ -235,6 +235,21 @@ function ws_ls_activity_levels() {
 }
 
 /**
+ * Return an array of aims
+ *
+ * @return array
+ */
+function ws_ls_aims() {
+
+    return [
+        0 => '',
+        1 => __('Maintain current weight', WE_LS_SLUG),
+        2 => __('Lose weight', WE_LS_SLUG),
+        3 => __('Gain weight', WE_LS_SLUG)
+    ];
+}
+
+/**
  * Return an array of heights
  *
  * @return array
@@ -291,6 +306,9 @@ function ws_ls_display_user_setting($user_id, $field = 'dob', $not_specified_tex
 		case 'height':
 			$field_data = ws_ls_heights();
 			break;
+        case 'aim':
+            $field_data = ws_ls_aims();
+            break;
 		default:
 			$field_data = ws_ls_genders();
 			break;

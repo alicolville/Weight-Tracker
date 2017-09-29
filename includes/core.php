@@ -39,8 +39,7 @@
 			'user-id' => get_current_user_id(),
 			'type' => WE_LS_CHART_TYPE,
 			'height' => WE_LS_CHART_HEIGHT,
-            'width' => 1,
-			'weight-line-color' => WE_LS_WEIGHT_LINE_COLOUR,
+            'weight-line-color' => WE_LS_WEIGHT_LINE_COLOUR,
 			'weight-fill-color' => WE_LS_WEIGHT_FILL_COLOUR,
 			'weight-target-color' => WE_LS_TARGET_LINE_COLOUR,
 			'show-gridlines' => WE_LS_CHART_SHOW_GRID_LINES,
@@ -77,6 +76,7 @@
 		$y_axis_measurement_unit = ('inches' == ws_ls_get_config('WE_LS_MEASUREMENTS_UNIT')) ? __('Inches', WE_LS_SLUG) : __('CM', WE_LS_SLUG) ;
 
 		$point_size = (WE_LS_ALLOW_POINTS && WE_LS_CHART_POINT_SIZE > 0) ? WE_LS_CHART_POINT_SIZE : 0;
+        $line_thickness = 2;
 
 		// Build graph data
 		$graph_data['labels'] = array();
@@ -90,6 +90,7 @@
 			//$graph_data['datasets'][0]['backgroundColor'] = $chart_config['weight-fill-color'];
 			$graph_data['datasets'][0]['lineTension'] = ($chart_config['bezier']) ? 0.4 : 0;
 			$graph_data['datasets'][0]['pointRadius'] = $point_size;
+            $graph_data['datasets'][0]['borderWidth'] = $line_thickness;
 		} else {
 			$graph_data['datasets'][0]['fill'] = true;
 			$graph_data['datasets'][0]['backgroundColor'] = $chart_config['weight-fill-color'];
@@ -112,7 +113,7 @@
 
 				$graph_data['datasets'][1] = array( 'label' =>  __('Target', WE_LS_SLUG),
 												    'borderColor' => $chart_config['weight-target-color'],
-													'borderWidth' => $chart_config['width'],
+													'borderWidth' => $line_thickness,
 													'pointRadius' => 0,
 													'borderDash' => array(5,5),
 													'fill' => false,
@@ -136,7 +137,7 @@
 
 				$graph_data['datasets'][$dataset_index] = array( 'label' =>  __( $data['title'], WE_LS_SLUG),
 													'borderColor' => $data['chart_colour'],
-													'borderWidth' => $chart_config['width'],
+													'borderWidth' => $line_thickness,
 													'pointRadius' => $point_size,
 													'fill' => false,
 													'spanGaps' => true,
@@ -225,7 +226,7 @@
 		// Embed JavaScript options object for this graph into page
 		wp_localize_script( 'jquery-chart-ws-ls', $chart_id . '_options', $graph_line_options );
 
-		$html = '<div><canvas id="' . $chart_id . '" class="ws-ls-chart" ' . (($chart_config['width']) ? 'width="'.  $chart_config['width'] . '" ' : '') . ' ' . (($chart_config['height']) ? 'height="'.  $chart_config['height'] . '" ' : '') . ' data-chart-type="' . $chart_config['type']  . '" data-target-weight="' . $target_weight['graph_value'] . '" data-target-colour="' . $chart_config['weight-target-color'] . '"></canvas>';
+		$html = '<div><canvas id="' . $chart_id . '" class="ws-ls-chart" ' . (($chart_config['height']) ? 'height="'.  esc_attr($chart_config['height']) . '" ' : '') . ' data-chart-type="' . esc_attr($chart_config['type'])  . '" data-target-weight="' . esc_attr($target_weight['graph_value']) . '" data-target-colour="' . esc_attr($chart_config['weight-target-color']) . '"></canvas>';
 		$html .= '<div class="ws-ls-notice-of-refresh ws-ls-reload-page-if-clicked ws-ls-hide"><a href="#">' . __('You have modified data. Please refresh page.', WE_LS_SLUG) . '</a></div>';
 		$html .= '</div>';
 		return $html;
@@ -288,7 +289,8 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 							data-measurements-enabled="%4$s"
 							data-measurements-all-required="%5$s"
 							data-is-target-form="%6$s"
-							data-metric-unit="%7$s"
+							data-metric-unit="%7$s",
+							data-photos-enabled="%12$s",
 							%11$s
 							>
 							<input type="hidden" value="%8$s" id="ws_ls_is_target" name="ws_ls_is_target" />
@@ -305,7 +307,8 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 							(($target_form) ? 'true' : 'false'),
 							esc_attr($user_id),
 							wp_hash($user_id),
-							( true === $photo_form_enabled) ? ' enctype="multipart/form-data"' : ''
+							( true === $photo_form_enabled) ? ' enctype="multipart/form-data"' : '',
+							(($photo_form_enabled) ? 'true' : 'false')
 	);
 
 	// Do we have data? If so, embed existing row ID
@@ -431,7 +434,7 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 				(false === empty($thumbnail)) ? __('Replace photo', WE_LS_SLUG) : __('Add a photo', WE_LS_SLUG),
 				ws_ls_get_next_tab_index(),
 				__('Select a photo', WE_LS_SLUG),
-                __('Photos must be under', WE_LS_SLUG) . ' ' . ws_ls_display_max_upload_size() . ' ' . __('or they will silently fail to upload.', WE_LS_SLUG),
+                __('Photos must be under', WE_LS_SLUG) . ' ' . ws_ls_photo_display_max_upload_size() . ' ' . __('or they will silently fail to upload.', WE_LS_SLUG),
 				__('Photos are only visible to you and administrators. ', WE_LS_SLUG)
 			);
 		}
@@ -493,7 +496,7 @@ function ws_ls_convert_date_to_iso($date, $user_id = false)
 
 function ws_ls_capture_form_validate_and_save($user_id = false)
 {
-    if(false == $user_id){
+	if(false == $user_id){
         $user_id = get_current_user_id();
     }
 
@@ -584,7 +587,7 @@ function ws_ls_capture_form_validate_and_save($user_id = false)
 
 		// Uploads
 		if (false === empty($_FILES['ws-ls-photo']) &&
-			$_FILES['ws-ls-photo']['size'] > 0 ) {
+			$_FILES['ws-ls-photo']['size'] > 0 && $_FILES['ws-ls-photo']['size'] <= ws_ls_photo_max_upload_size() ) {
 
 			if ( false === function_exists( 'wp_handle_upload' ) ) {
 				require_once( ABSPATH . 'wp-admin/includes/file.php' );
@@ -648,8 +651,6 @@ function ws_ls_capture_form_validate_and_save($user_id = false)
 
 	$result = ws_ls_save_data($user_id, $weight_object, $is_target_form, $existing_db_id);
 
-    ws_ls_delete_cache_for_given_user($user_id);
-
     return $result;
 }
 
@@ -695,19 +696,20 @@ function ws_ls_get_js_config()
 		'validation-we-ls-weight-stones' => __('Please enter a valid figure for Stones', WE_LS_SLUG),
 		'validation-we-ls-date' => __('Please enter a valid date', WE_LS_SLUG),
 		'validation-we-ls-history' => __('Please confirm you wish to delete ALL your weight history', WE_LS_SLUG),
+		'validation-we-ls-photo' => __('Your photo must be less than ', WE_LS_SLUG) . ws_ls_photo_display_max_upload_size(),
     	'confirmation-delete' => __('Are you sure you wish to delete this entry? If so, press OK.', WE_LS_SLUG),
-		'tabs-enabled' => (WE_LS_USE_TABS) ? 'true' : 'false',
-		'advanced-tables-enabled' => (WS_LS_ADVANCED_TABLES && WS_LS_IS_PRO) ? 'true' : 'false',
 		'ajax-url' => admin_url('admin-ajax.php'),
 		'ajax-security-nonce' => wp_create_nonce( 'ws-ls-nonce' ),
 		'is-pro' => (WS_LS_IS_PRO) ? 'true' : 'false',
 		'user-id' => get_current_user_id(),
 		'current-url' => get_permalink(),
 		'measurements-enabled' => (WE_LS_MEASUREMENTS_ENABLED) ? 'true' : 'false',
+		'photos-enabled' => (WE_LS_PHOTOS_ENABLED) ? 'true' : 'false',
 		'measurements-unit' => ws_ls_get_config('WE_LS_MEASUREMENTS_UNIT'),
 		'validation-we-ls-measurements' => __('Please enter a valid measurement (' . WE_LS_MEASUREMENTS_UNIT . ') which is less that 1000.', WE_LS_SLUG),
 		'date-picker-locale' => ws_ls_get_js_datapicker_locale(),
-		'in-admin' => (is_admin()) ? 'true' : 'false'
+		'in-admin' => (is_admin()) ? 'true' : 'false',
+		'max-photo-upload' => ws_ls_photo_max_upload_size()
 	);
 
 	// If About You fields mandatory, add extra translations
@@ -716,6 +718,7 @@ function ws_ls_get_js_config()
 		$config['validation-about-you-activity-level'] = __('Please select or enter a value for activity level.', WE_LS_SLUG);
 		$config['validation-about-you-gender'] = __('Please select or enter a value for gender.', WE_LS_SLUG);
 		$config['validation-about-you-dob'] = __('Please enter a valid date.', WE_LS_SLUG);
+        $config['validation-about-you-aim'] = __('Please select your aim.', WE_LS_SLUG);
         $config['validation-required'] = __('This field is required.', WE_LS_SLUG);
 	}
 

@@ -16,7 +16,7 @@
 	define('WE_LS_UPGRADE_TO_PRO_PLUS_URL', 'https://weight.yeken.uk/get-pro-plus/');
     define('WE_LS_FREE_TRIAL_URL', 'https://weight.yeken.uk/trial/');
     define('WE_LS_UPGRADE_TO_PRO_PLUS_UPGRADE_URL', 'https://weight.yeken.uk/get-pro-plus-existing-license-holders/');
-    define('WE_LS_CDN_CHART_JS', 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js');
+    define('WE_LS_CDN_CHART_JS', 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.min.js');
 	define('WE_LS_TABLENAME', 'WS_LS_DATA');
 	define('WE_LS_TARGETS_TABLENAME', 'WS_LS_DATA_TARGETS');
   	define('WE_LS_USER_PREFERENCES_TABLENAME', 'WS_LS_DATA_USER_PREFERENCES');
@@ -62,8 +62,9 @@
 	define('WE_LS_HOOK_DATA_ALL_DELETED', 'wlt-hook-data-all-deleted');
 	define('WE_LS_HOOK_DATA_USER_DELETED', 'wlt-hook-data-user-deleted');
     define('WE_LS_HOOK_DATA_ENTRY_DELETED', 'wlt-hook-data-entry-deleted');
+    define('WE_LS_HOOK_LICENSE_EXPIRED', 'wlt-hook-license-expired');
 
-	define('WE_LS_FILTER_EMAIL_DATA', 'wlt-filter-email-data');
+    define('WE_LS_FILTER_EMAIL_DATA', 'wlt-filter-email-data');
 	define('WE_LS_FILTER_STATS_SHORTCODE', 'wlt-filter-stats-shortcode');
 	define('WE_LS_FILTER_STATS_ROW', 'wlt-filter-stats-table-row');
 	define('WE_LS_FILTER_STATS_TABLE_HTML', 'wlt-filter-stats-table-html');
@@ -78,7 +79,6 @@
 		'WE_LS_IMPERIAL_WEIGHTS' => false,
 		'WE_LS_ALLOW_TARGET_WEIGHTS' => true,
 		'WE_LS_ALLOW_POINTS' => true,
-		'WE_LS_USE_TABS' => true,
 		'WE_LS_CSS_ENABLED' => true,
 		'WE_LS_TARGET_LINE_COLOUR' => '#76bada',
 		'WE_LS_WEIGHT_LINE_COLOUR' => '#aeaeae',
@@ -101,7 +101,7 @@
 		'WE_LS_EMAIL_NOTIFICATIONS_EDIT' => true,
 		'WE_LS_EMAIL_NOTIFICATIONS_NEW' => true,
 		'WE_LS_EMAIL_NOTIFICATIONS_TARGETS' => true,
-		'WE_LS_DISABLE_YEKEN_NOTIFICATIONS' => false,
+		'WE_LS_DISABLE_YEKEN_NOTIFICATIONS' => true,
 		'WE_LS_VIEW_EDIT_USER_PERMISSION_LEVEL' => 'manage_options', // Default to admin only being allowed to edit / view user data
         'WS_LS_CAL_CAP_MALE' => 1900,
         'WS_LS_CAL_CAP_FEMALE' => 1400,
@@ -109,7 +109,8 @@
         'WS_LS_MACRO_PROTEINS' => 25,
         'WS_LS_MACRO_CARBS' => 50,
         'WS_LS_MACRO_FATS' => 25,
-        'WE_LS_PHOTOS_ENABLED' => false
+        'WE_LS_PHOTOS_ENABLED' => false,
+		'WE_LS_PHOTOS_MAX_SIZE' => false
 	);
 
     // -----------------------------------------------------------------------------------
@@ -209,12 +210,6 @@
 	if (WS_LS_IS_PRO && in_array(get_option('ws-ls-chart-type'), array('bar', 'line'))){
 		$globals['WE_LS_CHART_TYPE'] = get_option('ws-ls-chart-type');
 	}
-	// -----------------------------------------------------------------------------------
-	// Advanced tables?
-	// -----------------------------------------------------------------------------------
-	if (WS_LS_IS_PRO && ('yes' == get_option('ws-ls-allow-advanced-tables') || false == get_option('ws-ls-allow-advanced-tables')) ){
-		$globals['WS_LS_ADVANCED_TABLES'] = true;
-	}
 
 	// -----------------------------------------------------------------------------------
 	// Who can view / edit user data
@@ -249,12 +244,6 @@
 		$globals['WE_LS_ALLOW_POINTS'] = false;
 	}
 	// -----------------------------------------------------------------------------------
-	// Define whether to use tabs
-	// -----------------------------------------------------------------------------------
-	if ('no' == get_option('ws-ls-use-tabs')) {
-		$globals['WE_LS_USE_TABS'] = false;
-	}
-	// -----------------------------------------------------------------------------------
 	// Disable plugin CSS
 	// -----------------------------------------------------------------------------------
 	if ('yes' == get_option('ws-ls-disable-css')) {
@@ -269,8 +258,8 @@
 	// -----------------------------------------------------------------------------------
 	// Disable admin notifications from YeKen
 	// -----------------------------------------------------------------------------------
-	if ('yes' == get_option('ws-ls-disable-yeken-notifications')) {
-		$globals['WE_LS_DISABLE_YEKEN_NOTIFICATIONS'] = true;
+	if ('no' == get_option('ws-ls-disable-yeken-notifications')) {
+		$globals['WE_LS_DISABLE_YEKEN_NOTIFICATIONS'] = false;
 	}
 	// -----------------------------------------------------------------------------------
 	// Line Colours
@@ -320,6 +309,12 @@
             $globals['WE_LS_PHOTOS_ENABLED'] = false;
         } else {
 			$globals['WE_LS_PHOTOS_ENABLED'] = true;
+		}
+
+		$photo_max_size = get_option('ws-ls-photos-max-size');
+
+		if(is_numeric($photo_max_size)) {
+			$globals['WE_LS_PHOTOS_MAX_SIZE'] = intval($photo_max_size);
 		}
 
 	    // Calories

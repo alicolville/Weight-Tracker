@@ -35,9 +35,9 @@
         $is_female = ws_ls_is_female($user_id);
 
         // Female
-        if (true === $is_female && $calories_to_lose > WS_LS_CAL_CAP_FEMALE) {
+        if (true === $is_female && 0 !== WS_LS_CAL_CAP_FEMALE && $calories_to_lose > WS_LS_CAL_CAP_FEMALE) {
             $calories_to_lose = WS_LS_CAL_CAP_FEMALE;
-        } elseif (false === $is_female && $calories_to_lose > WS_LS_CAL_CAP_MALE) {
+        } elseif (false === $is_female && 0 !== WS_LS_CAL_CAP_MALE && $calories_to_lose > WS_LS_CAL_CAP_MALE) {
             $calories_to_lose = WS_LS_CAL_CAP_MALE;
         }
 

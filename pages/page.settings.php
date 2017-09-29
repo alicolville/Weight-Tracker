@@ -70,7 +70,6 @@ function ws_ls_settings_page() {
 								<div id="ws-ls-tabs">
 									<ul>
                                         <li><a><?php echo __( 'General', WE_LS_SLUG); ?><span><?php echo __( 'General settings', WE_LS_SLUG); ?></span></a></li>
-                                        <li><a><?php echo __( 'User Experience', WE_LS_SLUG); ?><span><?php echo __( 'Settings that effect the user\'s overall experience', WE_LS_SLUG); ?></span></a></li>
                                         <li><a><?php echo __( 'Pro Plus', WE_LS_SLUG); ?><span><?php echo __( 'Adjust settings for your Pro Plus features', WE_LS_SLUG); ?></span></a></li>
                                         <li><a><?php echo __( 'Chart', WE_LS_SLUG); ?><span><?php echo __( 'Chart styling and config', WE_LS_SLUG); ?></span></a></li>
 										<li><a><?php echo __( 'Notifications', WE_LS_SLUG); ?><span><?php echo __( 'Configure email notifications', WE_LS_SLUG); ?></span></a></li>
@@ -78,6 +77,7 @@ function ws_ls_settings_page() {
                                     </ul>
 									<div>
 										<div>
+                                                <h3><?php echo __( 'Default units / formats to be used by plugin' , WE_LS_SLUG); ?></h3>
 												<table class="form-table">
 													<tr>
 														<th scope="row"><?php echo __( 'Weight Units' , WE_LS_SLUG); ?></th>
@@ -90,7 +90,6 @@ function ws_ls_settings_page() {
 															<p><?php echo __('You can specify whether to display weights in Kg, Stones & Pounds or just Pounds. Please note: The graph will be displayed in Pounds if "Stones & Pounds" is selected.', WE_LS_SLUG);?></p>
 														</td>
 													</tr>
-
 													<tr>
 														<th scope="row"><?php echo __( 'UK or US Date format?' , WE_LS_SLUG); ?></th>
 														<td>
@@ -101,115 +100,100 @@ function ws_ls_settings_page() {
 															<p><?php echo __('Specify what format dates should be displayed in (i.e. UK or US format)', WE_LS_SLUG); ?></p>
 														</td>
 													</tr>
+                                                </table>
+                                                <h3><?php echo __( 'User Experience' , WE_LS_SLUG); ?></h3>
+                                                <table class="form-table">
 													<tr>
-														<th scope="row"><?php echo __( 'Disable plugin CSS?' , WE_LS_SLUG); ?></th>
-														<td>
-															<select id="ws-ls-disable-css" name="ws-ls-disable-css">
-																<option value="no" <?php selected( get_option('ws-ls-disable-css'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
-																<option value="yes" <?php selected( get_option('ws-ls-disable-css'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
-															</select>
-															<p><?php echo __('If you wish to style the forms in your own way, you can use this option to disable WLT\'s style sheets.', WE_LS_SLUG)?></p>
-														</td>
-													</tr>
-													<tr>
-														<th scope="row"><?php echo __( 'Send usage data to YeKen?' , WE_LS_SLUG); ?></th>
-														<td>
-															<select id="ws-ls-allow-stats" name="ws-ls-allow-stats">
-																<option value="no" <?php selected( get_option('ws-ls-allow-stats'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
-																<option value="yes" <?php selected( get_option('ws-ls-allow-stats'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
-															</select>
-															<p><?php echo __('We would love to see how our plugin is used. By consenting, you are allowing permission for the following data to be sent on a weekly basis to YeKen: URL, summary of settings, count of recorded weights and measurements. No user or admin data will ever be transmitted.', WE_LS_SLUG)?></p>
-														</td>
-													</tr>
-													<tr>
-														<th scope="row"><?php echo __( 'Disable notifications from YeKen?' , WE_LS_SLUG); ?></th>
-														<td>
-															<select id="ws-ls-disable-yeken-notifications" name="ws-ls-disable-yeken-notifications">
-																<option value="no" <?php selected( get_option('ws-ls-disable-yeken-notifications'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
-																<option value="yes" <?php selected( get_option('ws-ls-disable-yeken-notifications'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
-															</select>
-															<p><?php echo __('Occasionally YeKen likes to display simple notifications within your WordPress dashboard. Use this setting if you wish to disable them.', WE_LS_SLUG)?></p>
-														</td>
-													</tr>
-													<tr class="<?php echo $disable_if_not_pro_class; ?>">
-														<th scope="row"><?php echo __( 'Who can view and modify user data?' , WE_LS_SLUG); ?></th>
-														<td>
-															<select id="ws-ls-edit-permissions" name="ws-ls-edit-permissions">
-																<option value="manage_options" <?php selected( get_option('ws-ls-edit-permissions'), 'manage_options' ); ?>><?php echo __('Administrators Only', WE_LS_SLUG)?></option>
-																<option value="read_private_posts" <?php selected( get_option('ws-ls-edit-permissions'), 'read_private_posts' ); ?>><?php echo __('Editors and above', WE_LS_SLUG)?></option>
-																<option value="publish_posts" <?php selected( get_option('ws-ls-edit-permissions'), 'publish_posts' ); ?>><?php echo __('Authors and above', WE_LS_SLUG)?></option>
-															</select>
-															<p><?php echo __('Specify the minimum level of user role that maybe view or edit user data.', WE_LS_SLUG)?></p>
-														</td>
-													</tr>
+                                                        <th scope="row"><?php echo __( 'Allow target weights?' , WE_LS_SLUG); ?></th>
+                                                        <td>
+                                                            <select id="ws-ls-allow-targets" name="ws-ls-allow-targets">
+                                                                <option value="yes" <?php selected( get_option('ws-ls-allow-targets'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG); ?></option>
+                                                                <option value="no" <?php selected( get_option('ws-ls-allow-targets'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG); ?></option>
+                                                            </select>
+                                                            <p><?php echo __('If enabled, a user is allowed to enter a target weight. This will be displayed as a horizontal bar on the line chart.', WE_LS_SLUG); ?></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="<?php echo $disable_if_not_pro_class; ?>">
+                                                        <th scope="row"><?php echo __( 'Display BMI in tables?' , WE_LS_SLUG); ?></th>
+                                                        <td>
+                                                            <select id="ws-ls-display-bmi-in-tables" name="ws-ls-display-bmi-in-tables">
+                                                                <option value="yes" <?php selected( get_option('ws-ls-display-bmi-in-tables'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+                                                                <option value="no" <?php selected( get_option('ws-ls-display-bmi-in-tables'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+
+                                                            </select>
+                                                            <p><?php echo __('If enabled, BMI values will be displayed alongside weight entries in data tables.', WE_LS_SLUG)?></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="<?php echo $disable_if_not_pro_class; ?>">
+                                                        <th scope="row"><?php echo __( 'Allow user settings' , WE_LS_SLUG); ?></th>
+                                                        <td>
+                                                            <select id="ws-ls-allow-user-preferences" name="ws-ls-allow-user-preferences">
+                                                                <option value="yes" <?php selected( get_option('ws-ls-allow-user-preferences'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+                                                                <option value="no" <?php selected( get_option('ws-ls-allow-user-preferences'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+                                                            </select>
+                                                            <p><?php echo __('Allow your users to select their own data units, complete their "About You" fields and remove all their data.', WE_LS_SLUG)?></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="<?php echo $disable_if_not_pro_class; ?>">
+                                                        <th scope="row"><?php echo __( '"About You" fields mandatory?' , WE_LS_SLUG); ?></th>
+                                                        <td>
+                                                            <select id="ws-ls-about-you-mandatory" name="ws-ls-about-you-mandatory">
+                                                                <option value="no" <?php selected( get_option('ws-ls-about-you-mandatory'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+                                                                <option value="yes" <?php selected( get_option('ws-ls-about-you-mandatory'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+                                                            </select>
+                                                            <p><?php echo __('If User Settings is enabled, should all the "About You" (height, activity level, etc) be mandatory?', WE_LS_SLUG)?></p>
+                                                        </td>
+                                                    </tr>
 											</table>
+                                            <h3><?php echo __( 'Permissions' , WE_LS_SLUG); ?></h3>
+                                            <table class="form-table">
+                                                <tr class="<?php echo $disable_if_not_pro_class; ?>">
+                                                    <th scope="row"><?php echo __( 'Who can view and modify user data?' , WE_LS_SLUG); ?></th>
+                                                    <td>
+                                                        <select id="ws-ls-edit-permissions" name="ws-ls-edit-permissions">
+                                                            <option value="manage_options" <?php selected( get_option('ws-ls-edit-permissions'), 'manage_options' ); ?>><?php echo __('Administrators Only', WE_LS_SLUG)?></option>
+                                                            <option value="read_private_posts" <?php selected( get_option('ws-ls-edit-permissions'), 'read_private_posts' ); ?>><?php echo __('Editors and above', WE_LS_SLUG)?></option>
+                                                            <option value="publish_posts" <?php selected( get_option('ws-ls-edit-permissions'), 'publish_posts' ); ?>><?php echo __('Authors and above', WE_LS_SLUG)?></option>
+                                                        </select>
+                                                        <p><?php echo __('Specify the minimum level of user role that maybe view or edit user data.', WE_LS_SLUG)?></p>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <h3><?php echo __( 'Advanced' , WE_LS_SLUG); ?></h3>
+                                            <table class="form-table">
+                                                <tr>
+                                                    <th scope="row"><?php echo __( 'Disable plugin CSS?' , WE_LS_SLUG); ?></th>
+                                                    <td>
+                                                        <select id="ws-ls-disable-css" name="ws-ls-disable-css">
+                                                            <option value="no" <?php selected( get_option('ws-ls-disable-css'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+                                                            <option value="yes" <?php selected( get_option('ws-ls-disable-css'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+                                                        </select>
+                                                        <p><?php echo __('If you wish to style the forms in your own way, you can use this option to disable WLT\'s style sheets.', WE_LS_SLUG)?></p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row"><?php echo __( 'Send usage data to YeKen?' , WE_LS_SLUG); ?></th>
+                                                    <td>
+                                                        <select id="ws-ls-allow-stats" name="ws-ls-allow-stats">
+                                                            <option value="no" <?php selected( get_option('ws-ls-allow-stats'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+                                                            <option value="yes" <?php selected( get_option('ws-ls-allow-stats'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+                                                        </select>
+                                                        <p><?php echo __('We would love to see how our plugin is used. By consenting, you are allowing permission for the following data to be sent on a weekly basis to YeKen: URL, summary of settings, count of recorded weights and measurements. No user or admin data will ever be transmitted.', WE_LS_SLUG)?></p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row"><?php echo __( 'Disable notifications from YeKen?' , WE_LS_SLUG); ?></th>
+                                                    <td>
+                                                        <select id="ws-ls-disable-yeken-notifications" name="ws-ls-disable-yeken-notifications">
+                                                            <option value="no" <?php selected( get_option('ws-ls-disable-yeken-notifications'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+                                                            <option value="yes" <?php selected( get_option('ws-ls-disable-yeken-notifications'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+                                                        </select>
+                                                        <p><?php echo __('Occasionally YeKen likes to display simple notifications within your WordPress dashboard. Use this setting if you wish to disable them.', WE_LS_SLUG)?></p>
+                                                    </td>
+                                                </tr>
+                                            </table>
 										</div>
 										<div>
-											<table class="form-table">
-												<tr>
-													<th scope="row"><?php echo __( 'Allow target weights?' , WE_LS_SLUG); ?></th>
-													<td>
-														<select id="ws-ls-allow-targets" name="ws-ls-allow-targets">
-															<option value="yes" <?php selected( get_option('ws-ls-allow-targets'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG); ?></option>
-															<option value="no" <?php selected( get_option('ws-ls-allow-targets'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG); ?></option>
-														</select>
-														<p><?php echo __('If enabled, a user is allowed to enter a target weight. This will be displayed as a horizontal bar on the line chart.', WE_LS_SLUG); ?></p>
-													</td>
-												</tr>
-												<tr class="<?php echo $disable_if_not_pro_class; ?>">
-													<th scope="row"><?php echo __( 'Display BMI in tables?' , WE_LS_SLUG); ?></th>
-													<td>
-														<select id="ws-ls-display-bmi-in-tables" name="ws-ls-display-bmi-in-tables">
-															<option value="yes" <?php selected( get_option('ws-ls-display-bmi-in-tables'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
-															<option value="no" <?php selected( get_option('ws-ls-display-bmi-in-tables'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
-
-														</select>
-														<p><?php echo __('If enabled, BMI values will be displayed alongside weight entries in data tables.', WE_LS_SLUG)?></p>
-													</td>
-												</tr>
-													<tr class="<?php echo $disable_if_not_pro_class; ?>">
-														<th scope="row"><?php echo __( 'Allow user settings' , WE_LS_SLUG); ?></th>
-														<td>
-															<select id="ws-ls-allow-user-preferences" name="ws-ls-allow-user-preferences">
-																<option value="yes" <?php selected( get_option('ws-ls-allow-user-preferences'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
-																<option value="no" <?php selected( get_option('ws-ls-allow-user-preferences'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
-															</select>
-															<p><?php echo __('Allow your users to select their own data units, complete their "About You" fields and remove all their data.', WE_LS_SLUG)?></p>
-														</td>
-													</tr>
-													<tr class="<?php echo $disable_if_not_pro_class; ?>">
-														<th scope="row"><?php echo __( '"About You" fields mandatory?' , WE_LS_SLUG); ?></th>
-														<td>
-															<select id="ws-ls-about-you-mandatory" name="ws-ls-about-you-mandatory">
-																<option value="no" <?php selected( get_option('ws-ls-about-you-mandatory'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
-																<option value="yes" <?php selected( get_option('ws-ls-about-you-mandatory'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
-															</select>
-															<p><?php echo __('If User Settings is enabled, should all the "About You" (height, activity level, etc) be mandatory?', WE_LS_SLUG)?></p>
-														</td>
-													</tr>
-													<tr class="<?php echo $disable_if_not_pro_class; ?>">
-															<th scope="row"><?php echo __( 'Advanced data tables?' , WE_LS_SLUG); ?></th>
-															<td>
-																<select id="ws-ls-allow-advanced-tables" name="ws-ls-allow-advanced-tables">
-																	<option value="yes" <?php selected( get_option('ws-ls-allow-advanced-tables'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
-																	<option value="no" <?php selected( get_option('ws-ls-allow-advanced-tables'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
-																</select>
-																<p><?php echo __("User's weight history is presented in responsive tables that allow sorting, paging, editing and deleting. Weight Index (i.e. percentage lost / gained to be displayed.)", WE_LS_SLUG)?></p>
-															</td>
-														</tr>
-													<tr>
-														<th scope="row"><?php echo __( 'Display data in tabs?' , WE_LS_SLUG); ?></th>
-														<td>
-															<select id="ws-ls-use-tabs" name="ws-ls-use-tabs">
-																<option value="yes" <?php selected( get_option('ws-ls-use-tabs'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
-																<option value="no" <?php selected( get_option('ws-ls-use-tabs'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
-															</select>
-															<p><?php echo __('If enabled, "Weight History" and "Target Weight" will be displayed on sepearate tabs when using the [weight-loss-tracker] shortcode.', WE_LS_SLUG)?></p>
-														</td>
-													</tr>
-											</table>
-										</div>
-                                        <div>
                                             <?php if (false === WS_LS_IS_PRO_PLUS): ?>
                                                 <a class="button-secondary" href="<?php echo ws_ls_upgrade_link(); ?>"><?php echo __( 'Upgrade now to Pro Plus' , WE_LS_SLUG); ?></a>
                                                 <hr />
@@ -228,6 +212,29 @@ function ws_ls_settings_page() {
                                                         <p><?php echo __('Allow your users to upload photos (jpg / png) of their progress alongside weight entries. These are only viewable by the person that uploaded the photo and administrators. All photos are stored in the media library with an additional setting to hide from the attachment page / template.' , WE_LS_SLUG); ?></em></p>
                                                     </td>
                                                 </tr>
+												<tr class="<?php echo $disable_if_not_pro_plus_class; ?>">
+													<th scope="row"><?php echo __( 'Max. Photo Size?' , WE_LS_SLUG); ?></th>
+													<td>
+														<select id="ws-ls-photos-max-size" name="ws-ls-photos-max-size">
+															<?php
+
+															$max_size = ws_ls_file_upload_max_size();
+
+															foreach (ws_ls_photo_get_sizes() as $size => $label) {
+
+																if ( $size < $max_size ) {
+																	printf('<option value="%s" %s>%s</option>',
+																		$size,
+																		selected($size, WE_LS_PHOTOS_MAX_SIZE),
+																		$label
+																	);
+																}
+															}
+															?>
+														</select>
+														<p><?php echo __('Maximum photo size (in MB) that is allowed to be uploaded. Your server currently supports up to ' , WE_LS_SLUG) . ' ' . ws_ls_display_max_server_upload_size(); ?></em></p>
+													</td>
+												</tr>
                                             </table>
 
                                             <h3><?php echo __( 'Calculating daily calorie intake to lose weight' , WE_LS_SLUG); ?></h3>
@@ -236,14 +243,14 @@ function ws_ls_settings_page() {
                                                  <tr class="<?php echo $disable_if_not_pro_plus_class; ?>">
                                                     <th scope="row"><?php echo __( 'Female Calorie Cap' , WE_LS_SLUG); ?></th>
                                                     <td>
-                                                        <input  type="number"  step="any" min="500" max="5000" name="ws-ls-female-cal-cap" id="ws-ls-female-cal-cap" value="<?php esc_attr_e(WS_LS_CAL_CAP_FEMALE); ?>" size="11" />
+                                                        <input  type="number"  step="any" min="0" max="5000" name="ws-ls-female-cal-cap" id="ws-ls-female-cal-cap" value="<?php esc_attr_e(WS_LS_CAL_CAP_FEMALE); ?>" size="11" />
                                                         <p><?php echo __('Specify a maximum value for number of daily calories allowed to achieve weight loss. As per NHS guidelines, females are set to 1400kcal by default', WE_LS_SLUG);?>. <?php echo ws_ls_calculations_link(); ?>. <em><?php echo __( 'Please note, it may take up to 15 minutes for calculations to change (due to caching).' , WE_LS_SLUG); ?></em></p>
                                                     </td>
                                                 </tr>
                                                 <tr class="<?php echo $disable_if_not_pro_plus_class; ?>">
                                                     <th scope="row"><?php echo __( 'Male Calorie Cap' , WE_LS_SLUG); ?></th>
                                                     <td>
-                                                        <input  type="number"  step="any" min="500" max="5000" name="ws-ls-male-cal-cap" id="ws-ls-male-cal-cap" value="<?php esc_attr_e(WS_LS_CAL_CAP_MALE); ?>" size="11" />
+                                                        <input  type="number"  step="any" min="0" max="5000" name="ws-ls-male-cal-cap" id="ws-ls-male-cal-cap" value="<?php esc_attr_e(WS_LS_CAL_CAP_MALE); ?>" size="11" />
                                                         <p><?php echo __('Specify a maximum value for number of daily calories allowed to achieve weight loss. As per NHS guidelines, males are set to 1900kcal by default', WE_LS_SLUG);?>. <?php echo ws_ls_calculations_link(); ?>. <em><?php echo __( 'Please note, it may take up to 15 minutes for calculations to change (due to caching).' , WE_LS_SLUG); ?></em></p>
                                                     </td>
                                                 </tr>
@@ -564,7 +571,6 @@ function ws_ls_register_settings()
     register_setting( 'we-ls-options-group', 'ws-ls-units' );
     register_setting( 'we-ls-options-group', 'ws-ls-allow-targets' );
     register_setting( 'we-ls-options-group', 'ws-ls-allow-points' );
-    register_setting( 'we-ls-options-group', 'ws-ls-use-tabs' );
     register_setting( 'we-ls-options-group', 'ws-ls-target-colour' );
     register_setting( 'we-ls-options-group', 'ws-ls-line-fill-colour' );
     register_setting( 'we-ls-options-group', 'ws-ls-line-colour' );
@@ -580,7 +586,6 @@ function ws_ls_register_settings()
         register_setting( 'we-ls-options-group', 'ws-ls-allow-user-preferences' );
 		register_setting( 'we-ls-options-group', 'ws-ls-about-you-mandatory' );
         register_setting( 'we-ls-options-group', 'ws-ls-chart-type' );
-        register_setting( 'we-ls-options-group', 'ws-ls-allow-advanced-tables' );
         register_setting( 'we-ls-options-group', 'ws-ls-max-points' );
         register_setting( 'we-ls-options-group', 'ws-ls-bezier-curve' );
         register_setting( 'we-ls-options-group', 'ws-ls-point-size' );
@@ -615,6 +620,7 @@ function ws_ls_register_settings()
         register_setting( 'we-ls-options-group', 'ws-ls-macro-carbs' );
         register_setting( 'we-ls-options-group', 'ws-ls-macro-fats' );
         register_setting( 'we-ls-options-group', 'ws-ls-photos-enable' );
+		register_setting( 'we-ls-options-group', 'ws-ls-photos-max-size' );
     }
 
 }

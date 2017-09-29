@@ -20,7 +20,7 @@ function ws_ls_shortcode_if($user_defined_arguments, $content = null, $level = 0
     $arguments = shortcode_atts(array(
         'user-id' => get_current_user_id(),
         'operator' => 'exists',				// exists, not-exists
-        'field' => 'weight',					// weight, target, bmr, height, gender, activity-level, dob, is-logged-in
+        'field' => 'weight',				// weight, target, bmr, height, gender, activity-level, dob, is-logged-in, aim
         'strip-p-br' => false
     ), $user_defined_arguments );
 
@@ -146,6 +146,7 @@ function ws_ls_shortcode_if_value_exist($user_id, $fields) {
                 case 'gender':
                 case 'activity_level':
                 case 'dob':
+                case 'aim':
                     $value = ws_ls_get_user_setting($field, $user_id);
 
                     if ( 'dob' === $field && '0000-00-00 00:00:00' === $value ) {
@@ -172,7 +173,7 @@ function ws_ls_shortcode_if_value_exist($user_id, $fields) {
  * @return bool
  */
 function ws_ls_shortcode_if_valid_field_name($field) {
-    return (true === in_array($field, ['weight', 'target', 'bmr', 'height', 'gender', 'activity_level', 'dob', 'is-logged-in', 'photo']));
+    return (true === in_array($field, ['weight', 'target', 'bmr', 'height', 'gender', 'activity_level', 'dob', 'is-logged-in', 'photo', 'aim']));
 }
 
 /**

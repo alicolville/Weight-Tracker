@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight, loss, lose, helper, bmi, body, mass, index, graph, track, stones, kg, table, data, plot, target, history, pounds, responsive, chart, measurements, cm, centimeters, inches, hip, waist, bicep, thigh
 Requires at least: 4.4.0
 Tested up to: 4.8
-Stable tag: 5.2.7
+Stable tag: 5.2.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate Link: https://www.paypal.me/yeken
@@ -137,10 +137,31 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 == Changelog ==
 
+= 5.2.8 =
+
+* Improvement: Added a new "About You" field called "Aim". This allows the user (or Admin) to specify their aim e.g. maintain, gain, or lose weight.
+* Improvement: Expanded [wlt-if] to include a new field of "aim". Read more: https://weight.yeken.uk/shortcodes/
+* Improvement: Calorie caps can now be disabled by setting them to 0.
+* Improvement: jQuery validation added to prompt the user to upload a smaller image if above file size limit.
+* Improvement: New setting to limit the file size of images being uploaded.
+* Improvement: Added check to ensure [wlt] shortcode is only placed once on a page or post.
+* Improvement: An email is set to the Admin email address when the license expires.
+* Improvement: License expire notifications are now sent to YeKen.
+* Improvement: New hook "wlt-hook-license-expired" is fired when a license expires.
+* Improvement: Removed setting "Advanced data tables?". This has been moved onto the shortcode themselves. See [wlt] argument "disable-advanced-tables". Read more: https://weight.yeken.uk/shortcodes/
+* Improvement: Removed setting "Display in tabs?". This has been moved onto the shortcode themselves. See [wlt] argument "disable-tabs". Read more: https://weight.yeken.uk/shortcodes/
+* Improvement: Merged and tidied up "User Experience" and "General" setting tabs.
+* Improvement: Updated Chart.js to 2.7.0. Read more: https://github.com/chartjs/Chart.js/releases/tag/v2.7.0
+* Bug fix: Ensured the string "photo" can be translated on [wlt] shortcode.
+* Bug fix: Fixed issue where the width of chart lines was being effected by the chart "width" attribute.
+* Removed "width" argument from [wlt-chart]. The attribute wasn't used.
+* Notifications from YeKen are on by default and disabled when
+* Updated Languages.
+
 = 5.2.7 =
 
 * Improvement: Added 7 day trial button
-* Bug fix: Ensured the field "This field is required." can be translated.
+* Bug fix: Ensured the string "This field is required." can be translated.
 * Bug fix: Fixed issue with empty "dob" field when using [wlt-if] shortcode.
 
 = 5.2.6 =
