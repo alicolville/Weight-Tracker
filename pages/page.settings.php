@@ -187,16 +187,6 @@ function ws_ls_settings_page() {
 															<p><?php echo __('If User Settings is enabled, should all the "About You" (height, activity level, etc) be mandatory?', WE_LS_SLUG)?></p>
 														</td>
 													</tr>
-													<tr>
-														<th scope="row"><?php echo __( 'Display data in tabs?' , WE_LS_SLUG); ?></th>
-														<td>
-															<select id="ws-ls-use-tabs" name="ws-ls-use-tabs">
-																<option value="yes" <?php selected( get_option('ws-ls-use-tabs'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
-																<option value="no" <?php selected( get_option('ws-ls-use-tabs'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
-															</select>
-															<p><?php echo __('If enabled, "Weight History" and "Target Weight" will be displayed on sepearate tabs when using the [weight-loss-tracker] shortcode.', WE_LS_SLUG)?></p>
-														</td>
-													</tr>
 											</table>
 										</div>
                                         <div>
@@ -577,7 +567,6 @@ function ws_ls_register_settings()
     register_setting( 'we-ls-options-group', 'ws-ls-units' );
     register_setting( 'we-ls-options-group', 'ws-ls-allow-targets' );
     register_setting( 'we-ls-options-group', 'ws-ls-allow-points' );
-    register_setting( 'we-ls-options-group', 'ws-ls-use-tabs' );
     register_setting( 'we-ls-options-group', 'ws-ls-target-colour' );
     register_setting( 'we-ls-options-group', 'ws-ls-line-fill-colour' );
     register_setting( 'we-ls-options-group', 'ws-ls-line-colour' );

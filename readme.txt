@@ -150,6 +150,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 * Improvement: License expire notifications are now sent to YeKen.
 * Improvement: New hook "wlt-hook-license-expired" is fired when a license expires.
 * Improvement: Removed setting "Advanced data tables?". This has been moved onto the shortcode themselves. See [wlt] argument "disable-advanced-tables". Read more: https://weight.yeken.uk/shortcodes/
+* Improvement: Removed setting "Display in tabs?". This has been moved onto the shortcode themselves. See [wlt] argument "disable-tabs". Read more: https://weight.yeken.uk/shortcodes/
 * Bug fix: Ensured the string "photo" can be translated on [wlt] shortcode.
 * Notifications from YeKen are on by default and disabled when
 

@@ -697,7 +697,6 @@ function ws_ls_get_js_config()
 		'validation-we-ls-history' => __('Please confirm you wish to delete ALL your weight history', WE_LS_SLUG),
 		'validation-we-ls-photo' => __('Your photo must be less than ', WE_LS_SLUG) . ws_ls_photo_display_max_upload_size(),
     	'confirmation-delete' => __('Are you sure you wish to delete this entry? If so, press OK.', WE_LS_SLUG),
-		'tabs-enabled' => (WE_LS_USE_TABS) ? 'true' : 'false',
 		'ajax-url' => admin_url('admin-ajax.php'),
 		'ajax-security-nonce' => wp_create_nonce( 'ws-ls-nonce' ),
 		'is-pro' => (WS_LS_IS_PRO) ? 'true' : 'false',

@@ -79,7 +79,6 @@
 		'WE_LS_IMPERIAL_WEIGHTS' => false,
 		'WE_LS_ALLOW_TARGET_WEIGHTS' => true,
 		'WE_LS_ALLOW_POINTS' => true,
-		'WE_LS_USE_TABS' => true,
 		'WE_LS_CSS_ENABLED' => true,
 		'WE_LS_TARGET_LINE_COLOUR' => '#76bada',
 		'WE_LS_WEIGHT_LINE_COLOUR' => '#aeaeae',
@@ -243,12 +242,6 @@
 	// -----------------------------------------------------------------------------------
 	if ('no' == get_option('ws-ls-allow-points')) {
 		$globals['WE_LS_ALLOW_POINTS'] = false;
-	}
-	// -----------------------------------------------------------------------------------
-	// Define whether to use tabs
-	// -----------------------------------------------------------------------------------
-	if ('no' == get_option('ws-ls-use-tabs')) {
-		$globals['WE_LS_USE_TABS'] = false;
 	}
 	// -----------------------------------------------------------------------------------
 	// Disable plugin CSS

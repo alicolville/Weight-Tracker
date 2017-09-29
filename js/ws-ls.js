@@ -36,37 +36,34 @@ jQuery( document ).ready(function ($) {
         $(".ws-ls-notice-of-refresh").removeClass("ws-ls-hide");
     }
 
-    if ("true" == ws_ls_config["tabs-enabled"]) {
+    var default_tab = "tab1";
 
-		var default_tab = "tab1";
-
-		// Just saved data or cancelled? If so, set default Tab to be "In Detail"
-		if(ws_ls_get_querystring_value('ws-edit-saved') || ws_ls_get_querystring_value('ws-edit-cancel')) {
-			default_tab = "tab2";
-		}
-
-        var wsLSTabsReady = function(event, item) {
-            $("#ws-ls-tabs-loading").addClass("ws-ls-hide");
-            $("#" + item.id).attr("style", "");
-        };
-
-        $tabs_global = $("#ws-ls-tabs").zozoTabs({
-            rounded: false,
-            multiline: true,
-            theme: "silver",
-            size: "small",
-			minWindowWidth: 3000,				// Force tabs into browser
-			responsive: true,
-            animation: {
-                effects: "slideH",
-                easing: "easeInOutCirc",
-                type: "jquery"
-            },
-            defaultTab: default_tab,
-            ready: wsLSTabsReady
-        });
-
+    // Just saved data or cancelled? If so, set default Tab to be "In Detail"
+    if(ws_ls_get_querystring_value('ws-edit-saved') || ws_ls_get_querystring_value('ws-edit-cancel')) {
+        default_tab = "tab2";
     }
+
+    var wsLSTabsReady = function(event, item) {
+        $("#ws-ls-tabs-loading").addClass("ws-ls-hide");
+        $("#" + item.id).attr("style", "");
+    };
+
+    $tabs_global = $("#ws-ls-tabs").zozoTabs({
+        rounded: false,
+        multiline: true,
+        theme: "silver",
+        size: "small",
+        minWindowWidth: 3000,				// Force tabs into browser
+        responsive: true,
+        animation: {
+            effects: "slideH",
+            easing: "easeInOutCirc",
+            type: "jquery"
+        },
+        defaultTab: default_tab,
+        ready: wsLSTabsReady
+    });
+
 
     // User preference form
     if ("true" == ws_ls_config["is-pro"]) {
