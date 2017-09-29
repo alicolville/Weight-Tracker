@@ -141,7 +141,6 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 //todo: languages!
 
-
 * Improvement: Calorie caps can now be disabled by setting them to 0.
 * Improvement: jQuery validation added to prompt the user to upload a smaller image if above file size limit.
 * Improvement: New setting to limit the file size of images being uploaded.
@@ -151,7 +150,11 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 * Improvement: New hook "wlt-hook-license-expired" is fired when a license expires.
 * Improvement: Removed setting "Advanced data tables?". This has been moved onto the shortcode themselves. See [wlt] argument "disable-advanced-tables". Read more: https://weight.yeken.uk/shortcodes/
 * Improvement: Removed setting "Display in tabs?". This has been moved onto the shortcode themselves. See [wlt] argument "disable-tabs". Read more: https://weight.yeken.uk/shortcodes/
+* Improvement: Merged and tidied up "User Experience" and "General" setting tabs.
+* Improvement: Updated Chart.js to 2.7.0. Read more: https://github.com/chartjs/Chart.js/releases/tag/v2.7.0
 * Bug fix: Ensured the string "photo" can be translated on [wlt] shortcode.
+* Bug fix: Fixed issue where the width of chart lines was being effected by the chart "width" attribute.
+* Removed "width" argument from [wlt-chart]. The attribute wasn't used.
 * Notifications from YeKen are on by default and disabled when
 
 = 5.2.7 =
