@@ -109,6 +109,10 @@ function ws_ls_user_side_bar($user_id) {
                         <th><?php echo __('Current BMI', WE_LS_SLUG); ?></th>
                         <td><?php echo ws_ls_get_user_bmi(['user-id' => $user_id, 'display' => 'both', 'no-height-text' => __('No height specified', WE_LS_SLUG)]); ?></td>
                     </tr>
+                    <tr>
+                        <th><?php echo __('Aim', WE_LS_SLUG); ?></th>
+                        <td><a href="<?php echo $settings_url; ?>"><?php echo ws_ls_display_user_setting($user_id, 'aim'); ?></a></td>
+                    </tr>
 					<tr>
                         <th><?php echo __('Height', WE_LS_SLUG); ?></th>
                         <td><a href="<?php echo $settings_url; ?>"><?php echo ws_ls_display_user_setting($user_id, 'height'); ?></a></td>

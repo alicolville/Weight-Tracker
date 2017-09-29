@@ -718,6 +718,7 @@ function ws_ls_get_js_config()
 		$config['validation-about-you-activity-level'] = __('Please select or enter a value for activity level.', WE_LS_SLUG);
 		$config['validation-about-you-gender'] = __('Please select or enter a value for gender.', WE_LS_SLUG);
 		$config['validation-about-you-dob'] = __('Please enter a valid date.', WE_LS_SLUG);
+        $config['validation-about-you-aim'] = __('Please select your aim.', WE_LS_SLUG);
         $config['validation-required'] = __('This field is required.', WE_LS_SLUG);
 	}
 

@@ -87,6 +87,7 @@
 				 settings text not null,
                  height float DEFAULT 0 NULL,
                  gender float DEFAULT 0 NULL,
+                 aim float DEFAULT 0 NULL,
                  dob datetime NULL,
 				 UNIQUE KEY user_id (user_id)
 		 ) $charset_collate;";

@@ -112,6 +112,10 @@ jQuery( document ).ready(function ($) {
 						"required" : true,
 						min: 1
 					},
+                    "ws-ls-aim": {
+                        "required" : true,
+                        min: 1
+                    },
 					"ws-ls-activity-level": {
 						"required" : true,
 						min: 1
@@ -120,6 +124,7 @@ jQuery( document ).ready(function ($) {
 				messages: {
 					"ws-ls-gender" : ws_ls_config["validation-about-you-gender"],
 					"we-ls-height" : ws_ls_config["validation-about-you-height"],
+                    "ws-ls-aim" : ws_ls_config["validation-about-you-aim"],
 					"ws-ls-activity-level" : ws_ls_config["validation-about-you-activity-level"],
 					"we-ls-dob": ws_ls_config["validation-about-you-dob"],
                 },

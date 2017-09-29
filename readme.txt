@@ -139,8 +139,8 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 = 5.2.8 =
 
-//todo: languages!
-
+* Improvement: Added a new "About You" field called "Aim". This allows the user (or Admin) to specify their aim e.g. maintain, gain, or lose weight.
+* Improvement: Expanded [wlt-if] to include a new field of "aim". Read more: https://weight.yeken.uk/shortcodes/
 * Improvement: Calorie caps can now be disabled by setting them to 0.
 * Improvement: jQuery validation added to prompt the user to upload a smaller image if above file size limit.
 * Improvement: New setting to limit the file size of images being uploaded.
@@ -156,6 +156,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 * Bug fix: Fixed issue where the width of chart lines was being effected by the chart "width" attribute.
 * Removed "width" argument from [wlt-chart]. The attribute wasn't used.
 * Notifications from YeKen are on by default and disabled when
+* Updated Languages.
 
 = 5.2.7 =
 

@@ -41,12 +41,14 @@ function ws_ls_save_preferences_callback()
 		$height = intval(ws_ls_ajax_post_value('we-ls-height'));
 	}
 
-    // Save Activity Level, DoB and Gender
+    // Save Activity Level, DoB, Aim and Gender
     $gender = (!is_null(ws_ls_ajax_post_value('ws-ls-gender'))) ? intval(ws_ls_ajax_post_value('ws-ls-gender')) : 0;
+    $aim = (!is_null(ws_ls_ajax_post_value('ws-ls-aim'))) ? intval(ws_ls_ajax_post_value('ws-ls-aim')) : 0;
     $activity_level = (!is_null(ws_ls_ajax_post_value('ws-ls-activity-level'))) ? floatval(ws_ls_ajax_post_value('ws-ls-activity-level')) : 0;
     $dob = (!is_null(ws_ls_ajax_post_value('ws-ls-dob'))) ? ws_ls_ajax_post_value('ws-ls-dob') : false;
 
-  	if(true == ws_ls_set_user_preferences($in_admin_area, $user_preferences, ws_ls_ajax_post_value('user-id'), $height, $activity_level, $gender, $dob)){
+
+  	if(true == ws_ls_set_user_preferences($in_admin_area, $user_preferences, ws_ls_ajax_post_value('user-id'), $height, $activity_level, $gender, $dob, $aim)){
     	$ajax_response = 1;
   	}
   	echo $ajax_response;

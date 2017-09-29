@@ -33,7 +33,8 @@ function ws_ls_user_preferences_form($user_defined_arguments)
 				'date' => __('Display dates in the following formats:', WE_LS_SLUG),
                 'gender' => __('Your Gender:', WE_LS_SLUG),
                 'dob' => __('Your Date of Birth:', WE_LS_SLUG),
-                'activitylevel' => __('Your Activity Level:', WE_LS_SLUG)
+                'activitylevel' => __('Your Activity Level:', WE_LS_SLUG),
+                'aim' => __('Your aim:', WE_LS_SLUG)
 	];
 
 	// If admin, add notice and override labels
@@ -47,7 +48,8 @@ function ws_ls_user_preferences_form($user_defined_arguments)
 					'date' => __('Date format:', WE_LS_SLUG),
                     'gender' => __('Gender:', WE_LS_SLUG),
                     'dob' => __('Date of Birth:', WE_LS_SLUG),
-                    'activitylevel' => __('Activity Level:', WE_LS_SLUG)
+                    'activitylevel' => __('Activity Level:', WE_LS_SLUG),
+                    'aim' => __('Aim:', WE_LS_SLUG)
 		];
 
         // If we're in Admin screens, then hide "delete data"
@@ -69,6 +71,27 @@ function ws_ls_user_preferences_form($user_defined_arguments)
   	<input type="hidden" name="ws-ls-user-pref" value="true" />
 	<input type="hidden" id="ws-ls-user-id" value="' . (($user_id) ? esc_attr($user_id) : '0')  . '" />';
 
+    //-------------------------------------------------------
+    // Aim
+    //-------------------------------------------------------
+
+    $html_output .= '
+		<label>' . $labels['aim'] . '</label>
+		<select id="ws-ls-aim" name="ws-ls-aim"  tabindex="' . ws_ls_get_next_tab_index() . '" class="ws-ls-aboutyou-field">';
+
+    $existing_aim = ws_ls_get_user_setting('aim', $user_id);
+    $existing_aim = (true === empty($existing_aim)) ? '0' : $existing_aim;
+
+    foreach (ws_ls_aims() as $key => $value) {
+        $html_output .= sprintf('<option value="%s" %s>%s</option>', $key, selected($key, $existing_aim, false), $value);
+    }
+
+    $html_output .= '</select>';
+
+    //-------------------------------------------------------
+    // Height
+    //-------------------------------------------------------
+
 	$html_output .= '
     <label>' . $labels['height'] . '</label>
     <select id="we-ls-height" name="we-ls-height"  tabindex="' . ws_ls_get_next_tab_index() . '" class="ws-ls-aboutyou-field">';
@@ -80,7 +103,6 @@ function ws_ls_user_preferences_form($user_defined_arguments)
     }
 
     $html_output .= '</select>';
-
 
 	//-------------------------------------------------------
     // Gender
