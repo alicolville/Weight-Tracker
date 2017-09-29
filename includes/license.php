@@ -113,8 +113,6 @@ function ws_ls_license_apply($license) {
 		delete_option(WS_LS_LICENSE_2);
 		delete_option(WS_LS_LICENSE_2_TYPE);
 		delete_option(WS_LS_LICENSE_2_VALID);
-
-		do_action(WE_LS_HOOK_LICENSE_EXPIRED);
 	}
 
 	return $license_result;
@@ -135,8 +133,6 @@ function ws_ls_license_remove($type = 'both') {
         delete_option(WS_LS_LICENSE);
         delete_option(WS_LS_LICENSE_VALID);
     }
-
-    do_action(WE_LS_HOOK_LICENSE_EXPIRED);
 }
 
 /**

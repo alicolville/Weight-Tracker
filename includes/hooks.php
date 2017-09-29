@@ -186,16 +186,16 @@
     /**
      * Send email to let the admin know the WLT has expired.
      */
-    function ws_ls_send_email_to_site_owner_on_license_expire() {
-
-        $admin_email = get_bloginfo('admin_email');
-
-        if ( false === empty($admin_email) ) {
-
-            $r = wp_mail($admin_email,
-                __( 'Weight Loss Tracker plugin has expired on your site!' , WE_LS_SLUG),
-                __( 'Please visit your Dashboard to renew your license (Weight Tracker > Upgrade) ' , WE_LS_SLUG));
-
-        }
-    }
-    add_action(WE_LS_HOOK_LICENSE_EXPIRED, 'ws_ls_send_email_to_site_owner_on_license_expire');
+//    function ws_ls_send_email_to_site_owner_on_license_expire() {
+//
+//        $admin_email = get_bloginfo('admin_email');
+//
+//        if ( false === empty($admin_email) ) {
+//
+//            $r = wp_mail($admin_email,
+//                __( 'Weight Loss Tracker plugin has expired on your site!' , WE_LS_SLUG),
+//                __( 'Please visit your Dashboard to renew your license (Weight Tracker > Upgrade) ' , WE_LS_SLUG));
+//
+//        }
+//    }
+    //add_action(WE_LS_HOOK_LICENSE_EXPIRED, 'ws_ls_send_email_to_site_owner_on_license_expire');
