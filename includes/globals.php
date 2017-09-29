@@ -102,7 +102,7 @@
 		'WE_LS_EMAIL_NOTIFICATIONS_EDIT' => true,
 		'WE_LS_EMAIL_NOTIFICATIONS_NEW' => true,
 		'WE_LS_EMAIL_NOTIFICATIONS_TARGETS' => true,
-		'WE_LS_DISABLE_YEKEN_NOTIFICATIONS' => false,
+		'WE_LS_DISABLE_YEKEN_NOTIFICATIONS' => true,
 		'WE_LS_VIEW_EDIT_USER_PERMISSION_LEVEL' => 'manage_options', // Default to admin only being allowed to edit / view user data
         'WS_LS_CAL_CAP_MALE' => 1900,
         'WS_LS_CAL_CAP_FEMALE' => 1400,
@@ -211,12 +211,6 @@
 	if (WS_LS_IS_PRO && in_array(get_option('ws-ls-chart-type'), array('bar', 'line'))){
 		$globals['WE_LS_CHART_TYPE'] = get_option('ws-ls-chart-type');
 	}
-	// -----------------------------------------------------------------------------------
-	// Advanced tables?
-	// -----------------------------------------------------------------------------------
-	if (WS_LS_IS_PRO && ('yes' == get_option('ws-ls-allow-advanced-tables') || false == get_option('ws-ls-allow-advanced-tables')) ){
-		$globals['WS_LS_ADVANCED_TABLES'] = true;
-	}
 
 	// -----------------------------------------------------------------------------------
 	// Who can view / edit user data
@@ -271,8 +265,8 @@
 	// -----------------------------------------------------------------------------------
 	// Disable admin notifications from YeKen
 	// -----------------------------------------------------------------------------------
-	if ('yes' == get_option('ws-ls-disable-yeken-notifications')) {
-		$globals['WE_LS_DISABLE_YEKEN_NOTIFICATIONS'] = true;
+	if ('no' == get_option('ws-ls-disable-yeken-notifications')) {
+		$globals['WE_LS_DISABLE_YEKEN_NOTIFICATIONS'] = false;
 	}
 	// -----------------------------------------------------------------------------------
 	// Line Colours

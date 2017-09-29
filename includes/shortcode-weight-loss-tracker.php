@@ -30,7 +30,8 @@
                 'hide-photos' => false,                     // Hide photos part of form
                 'hide-tab-photos' => false,                 // Hide Photos tab
                 'hide-tab-advanced' => false,               // Hide Advanced tab (macroN, calories, etc)
-                'hide-advanced-narrative' => false          // Hide text describing BMR, MarcoN, etc
+                'hide-advanced-narrative' => false,         // Hide text describing BMR, MarcoN, etc
+                'disable-advanced-tables' => false          // Disable advanced data tables.
                ), $user_defined_arguments );
 
 			// Validate arguments
@@ -43,6 +44,7 @@
             $shortcode_arguments['hide-tab-photos'] = ws_ls_force_bool_argument($shortcode_arguments['hide-tab-photos']);
             $shortcode_arguments['hide-tab-advanced'] = ws_ls_force_bool_argument($shortcode_arguments['hide-tab-advanced']);
             $shortcode_arguments['hide-advanced-narrative'] = ws_ls_force_bool_argument($shortcode_arguments['hide-advanced-narrative']);
+            $shortcode_arguments['disable-advanced-tables'] = ws_ls_force_bool_argument($shortcode_arguments['disable-advanced-tables']);
 
             $user_id = get_current_user_id();
 
@@ -185,7 +187,7 @@
 						$html_output .= ws_ls_display_week_filters($week_ranges, $selected_week_number);
 					}
 
-					if (WS_LS_ADVANCED_TABLES && WS_LS_IS_PRO){
+					if (WS_LS_IS_PRO && false === $shortcode_arguments['disable-advanced-tables']){
 						$html_output .=  ws_ls_data_table_placeholder($user_id, false, false, true);
 					} else {
 						$html_output .= ws_ls_display_table($weight_data);

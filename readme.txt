@@ -140,7 +140,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 = 5.2.8 =
 
 //todo: languages!
-// new hook: wlt-hook-license-expired
+
 
 * Improvement: Calorie caps can now be disabled by setting them to 0.
 * Improvement: jQuery validation added to prompt the user to upload a smaller image if above file size limit.
@@ -148,7 +148,10 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 * Improvement: Added check to ensure [wlt] shortcode is only placed once on a page or post.
 * Improvement: An email is set to the Admin email address when the license expires.
 * Improvement: License expire notifications are now sent to YeKen.
+* Improvement: New hook "wlt-hook-license-expired" is fired when a license expires.
+* Improvement: Removed setting "Advanced data tables?". This has been moved onto the shortcode themselves. See [wlt] argument "disable-advanced-tables". Read more: https://weight.yeken.uk/shortcodes/
 * Bug fix: Ensured the string "photo" can be translated on [wlt] shortcode.
+* Notifications from YeKen are on by default and disabled when
 
 = 5.2.7 =
 
