@@ -17,7 +17,6 @@ function ws_ls_shortcode_chart($user_defined_arguments)
             'max-data-points' => WE_LS_CHART_MAX_POINTS,
             'type' => WE_LS_CHART_TYPE,
             'height' => WE_LS_CHART_HEIGHT,
-            'width' => false,
             'weight-line-color' => WE_LS_WEIGHT_LINE_COLOUR,
             'weight-fill-color' => WE_LS_WEIGHT_FILL_COLOUR,
             'weight-target-color' => WE_LS_TARGET_LINE_COLOUR,

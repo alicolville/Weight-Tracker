@@ -39,8 +39,7 @@
 			'user-id' => get_current_user_id(),
 			'type' => WE_LS_CHART_TYPE,
 			'height' => WE_LS_CHART_HEIGHT,
-            'width' => 1,
-			'weight-line-color' => WE_LS_WEIGHT_LINE_COLOUR,
+            'weight-line-color' => WE_LS_WEIGHT_LINE_COLOUR,
 			'weight-fill-color' => WE_LS_WEIGHT_FILL_COLOUR,
 			'weight-target-color' => WE_LS_TARGET_LINE_COLOUR,
 			'show-gridlines' => WE_LS_CHART_SHOW_GRID_LINES,
@@ -77,6 +76,7 @@
 		$y_axis_measurement_unit = ('inches' == ws_ls_get_config('WE_LS_MEASUREMENTS_UNIT')) ? __('Inches', WE_LS_SLUG) : __('CM', WE_LS_SLUG) ;
 
 		$point_size = (WE_LS_ALLOW_POINTS && WE_LS_CHART_POINT_SIZE > 0) ? WE_LS_CHART_POINT_SIZE : 0;
+        $line_thickness = 2;
 
 		// Build graph data
 		$graph_data['labels'] = array();
@@ -90,6 +90,7 @@
 			//$graph_data['datasets'][0]['backgroundColor'] = $chart_config['weight-fill-color'];
 			$graph_data['datasets'][0]['lineTension'] = ($chart_config['bezier']) ? 0.4 : 0;
 			$graph_data['datasets'][0]['pointRadius'] = $point_size;
+            $graph_data['datasets'][0]['borderWidth'] = $line_thickness;
 		} else {
 			$graph_data['datasets'][0]['fill'] = true;
 			$graph_data['datasets'][0]['backgroundColor'] = $chart_config['weight-fill-color'];
@@ -112,7 +113,7 @@
 
 				$graph_data['datasets'][1] = array( 'label' =>  __('Target', WE_LS_SLUG),
 												    'borderColor' => $chart_config['weight-target-color'],
-													'borderWidth' => $chart_config['width'],
+													'borderWidth' => $line_thickness,
 													'pointRadius' => 0,
 													'borderDash' => array(5,5),
 													'fill' => false,
@@ -136,7 +137,7 @@
 
 				$graph_data['datasets'][$dataset_index] = array( 'label' =>  __( $data['title'], WE_LS_SLUG),
 													'borderColor' => $data['chart_colour'],
-													'borderWidth' => $chart_config['width'],
+													'borderWidth' => $line_thickness,
 													'pointRadius' => $point_size,
 													'fill' => false,
 													'spanGaps' => true,
@@ -225,7 +226,7 @@
 		// Embed JavaScript options object for this graph into page
 		wp_localize_script( 'jquery-chart-ws-ls', $chart_id . '_options', $graph_line_options );
 
-		$html = '<div><canvas id="' . $chart_id . '" class="ws-ls-chart" ' . (($chart_config['width']) ? 'width="'.  $chart_config['width'] . '" ' : '') . ' ' . (($chart_config['height']) ? 'height="'.  $chart_config['height'] . '" ' : '') . ' data-chart-type="' . $chart_config['type']  . '" data-target-weight="' . $target_weight['graph_value'] . '" data-target-colour="' . $chart_config['weight-target-color'] . '"></canvas>';
+		$html = '<div><canvas id="' . $chart_id . '" class="ws-ls-chart" ' . (($chart_config['height']) ? 'height="'.  esc_attr($chart_config['height']) . '" ' : '') . ' data-chart-type="' . esc_attr($chart_config['type'])  . '" data-target-weight="' . esc_attr($target_weight['graph_value']) . '" data-target-colour="' . esc_attr($chart_config['weight-target-color']) . '"></canvas>';
 		$html .= '<div class="ws-ls-notice-of-refresh ws-ls-reload-page-if-clicked ws-ls-hide"><a href="#">' . __('You have modified data. Please refresh page.', WE_LS_SLUG) . '</a></div>';
 		$html .= '</div>';
 		return $html;
