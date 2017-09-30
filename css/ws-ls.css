@@ -340,3 +340,6 @@ input.ws-ls-valid
 .ws-ls-tab-advanced-data span {
     font-weight: bold;
 }
+.ws-ls-force-show {
+    display: block !important;
+}

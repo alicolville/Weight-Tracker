@@ -86,7 +86,7 @@
 
 				$html_output .= '
                         <div id="ws-ls-tabs-loading" class="ws-ls-loading"></div>
-						<div id="ws-ls-tabs" style="display:none;">
+						<div id="ws-ls-tabs" class="ws-ls-hide">
 							<ul>
 									<li><a><i class="fa fa-line-chart" aria-hidden="true"></i>' . __('Overview', WE_LS_SLUG) . '<span>' . __('Chart and add a new entry', WE_LS_SLUG) . '</span></a></li>
 									<li><a><i class="fa fa-table" aria-hidden="true"></i>' . __('All Entries', WE_LS_SLUG) . '<span>' . __('View all of your entries', WE_LS_SLUG) . '</span></a></li>';

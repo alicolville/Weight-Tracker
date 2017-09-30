@@ -45,7 +45,8 @@ jQuery( document ).ready(function ($) {
 
     var wsLSTabsReady = function(event, item) {
         $("#ws-ls-tabs-loading").addClass("ws-ls-hide");
-        $("#" + item.id).attr("style", "");
+        $("#" + item.id).addClass("ws-ls-force-show");
+        $("#" + item.id).removeClass("ws-ls-hide");
     };
 
     $tabs_global = $("#ws-ls-tabs").zozoTabs({
