@@ -72,6 +72,8 @@
 	define('WE_LS_FILTER_ADMIN_USER_SIDEBAR_MIDDLE', 'wlt-filter-admin-user-sidebar-middle');
 	define('WE_LS_FILTER_ADMIN_USER_SIDEBAR_BOTTOM', 'wlt-filter-admin-user-sidebar-bottom');
 
+	define('WE_LS_FILTER_USER_SETTINGS_BELOW_AIM', 'wlt-filter-user-settings-below-aim');
+
     // -----------------------------------------------------------------------------------
 	// Dynamic Settings based upon user settings, etc
 	// -----------------------------------------------------------------------------------
