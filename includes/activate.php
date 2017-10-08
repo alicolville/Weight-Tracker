@@ -89,6 +89,7 @@
                  gender float DEFAULT 0 NULL,
                  aim float DEFAULT 0 NULL,
                  dob datetime NULL,
+                 body_type float DEFAULT 0 NULL,
 				 UNIQUE KEY user_id (user_id)
 		 ) $charset_collate;";
 
