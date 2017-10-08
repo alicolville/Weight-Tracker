@@ -92,7 +92,7 @@ function ws_ls_user_preferences_form($user_defined_arguments)
     // Additional Body attributes
     //-------------------------------------------------------
 
-    $html_output .= apply_filters(WE_LS_FILTER_USER_SETTINGS_BELOW_AIM, $html_output, $user_id);
+    $html_output .= apply_filters(WE_LS_FILTER_USER_SETTINGS_BELOW_AIM, '', $user_id);
 
     //-------------------------------------------------------
     // Height
