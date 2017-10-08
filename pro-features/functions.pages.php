@@ -72,6 +72,9 @@ function ws_ls_user_side_bar($user_id) {
 			<h2 class="hndle"><span><?php echo __('User Information', WE_LS_SLUG); ?></span></h2>
 			<div class="inside">
     			<table class="ws-ls-sidebar-stats">
+
+					<?php echo apply_filters(WE_LS_FILTER_ADMIN_USER_SIDEBAR_TOP, '', $user_id); ?>
+
                     <?php $stats = ws_ls_get_entry_counts($user_id); ?>
                     <tr>
                         <th><?php echo __('No. of Entries', WE_LS_SLUG); ?></th>
@@ -109,6 +112,9 @@ function ws_ls_user_side_bar($user_id) {
                         <th><?php echo __('Current BMI', WE_LS_SLUG); ?></th>
                         <td><?php echo ws_ls_get_user_bmi(['user-id' => $user_id, 'display' => 'both', 'no-height-text' => __('No height specified', WE_LS_SLUG)]); ?></td>
                     </tr>
+
+					<?php echo apply_filters(WE_LS_FILTER_ADMIN_USER_SIDEBAR_MIDDLE, '', $user_id); ?>
+
                     <tr>
                         <th><?php echo __('Aim', WE_LS_SLUG); ?></th>
                         <td><a href="<?php echo $settings_url; ?>"><?php echo ws_ls_display_user_setting($user_id, 'aim'); ?></a></td>
@@ -142,6 +148,9 @@ function ws_ls_user_side_bar($user_id) {
 							?>
 						</td>
                     </tr>
+
+					<?php echo apply_filters(WE_LS_FILTER_ADMIN_USER_SIDEBAR_BOTTOM, '', $user_id); ?>
+
                 </table>
 			</div>
 		</div>

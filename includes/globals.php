@@ -68,6 +68,9 @@
 	define('WE_LS_FILTER_STATS_SHORTCODE', 'wlt-filter-stats-shortcode');
 	define('WE_LS_FILTER_STATS_ROW', 'wlt-filter-stats-table-row');
 	define('WE_LS_FILTER_STATS_TABLE_HTML', 'wlt-filter-stats-table-html');
+	define('WE_LS_FILTER_ADMIN_USER_SIDEBAR_TOP', 'wlt-filter-admin-user-sidebar-top');
+	define('WE_LS_FILTER_ADMIN_USER_SIDEBAR_MIDDLE', 'wlt-filter-admin-user-sidebar-middle');
+	define('WE_LS_FILTER_ADMIN_USER_SIDEBAR_BOTTOM', 'wlt-filter-admin-user-sidebar-bottom');
 
     // -----------------------------------------------------------------------------------
 	// Dynamic Settings based upon user settings, etc

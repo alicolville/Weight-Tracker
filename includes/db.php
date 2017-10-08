@@ -518,25 +518,28 @@ function ws_ls_get_user_setting($field = 'gender', $user_id = false, $use_cache 
     $user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
 
     // Validate field
-    $field = (in_array($field, ['activity_level', 'gender', 'height', 'dob', 'aim'])) ? $field : 'gender';
+    $field = (in_array($field, ['activity_level', 'gender', 'height', 'dob', 'aim', 'body_type'])) ? $field : 'gender';
 
-    $cache_key = $user_id . '-' . WE_LS_CACHE_KEY_USER_PREFERENCE . '-' . $field;
+    $cache_key = WE_LS_CACHE_KEY_USER_PREFERENCE . '-' . $field;
 
     // Return cache if found!
-    $cache = ws_ls_get_cache($cache_key);
+    $cache = ws_ls_cache_user_get($user_id, $cache_key);
     if (false === empty($cache) && true == $use_cache)   {
-        return $cache;
+    	return $cache;
     }
 
     $sql =  $wpdb->prepare('SELECT ' . $field . ' FROM ' . $wpdb->prefix . WE_LS_USER_PREFERENCES_TABLENAME . ' WHERE user_id = %d', $user_id);
     $row = $wpdb->get_row($sql, ARRAY_A);
 
+    $result = NULL;
+
     if($row[$field]) {
-        ws_ls_set_cache($cache_key, $row[$field]);
-        return $row[$field];
+		$result = $row[$field];
     }
 
-    return NULL;
+	ws_ls_cache_user_set($user_id, $cache_key, $result);
+
+    return $result;
 }
 
 
