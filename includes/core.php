@@ -714,11 +714,23 @@ function ws_ls_get_js_config()
 
 	// If About You fields mandatory, add extra translations
 	if(WE_LS_ABOUT_YOU_MANDATORY) {
-		$config['validation-about-you-height'] = __('Please select or enter a value for height.', WE_LS_SLUG);
-		$config['validation-about-you-activity-level'] = __('Please select or enter a value for activity level.', WE_LS_SLUG);
-		$config['validation-about-you-gender'] = __('Please select or enter a value for gender.', WE_LS_SLUG);
-		$config['validation-about-you-dob'] = __('Please enter a valid date.', WE_LS_SLUG);
-        $config['validation-about-you-aim'] = __('Please select your aim.', WE_LS_SLUG);
+
+	    $config['validation-user-pref-messages'] = [
+            'we-ls-height' => __('Please select or enter a value for height.', WE_LS_SLUG),
+            'ws-ls-activity-level' => __('Please select or enter a value for activity level.', WE_LS_SLUG),
+            'ws-ls-gender' => __('Please select or enter a value for gender.', WE_LS_SLUG),
+            'we-ls-dob' => __('Please enter a valid date.', WE_LS_SLUG),
+            'ws-ls-aim' => __('Please select your aim.', WE_LS_SLUG)
+        ];
+
+
+        $config['validation-user-pref-rules'] = [
+            'ws-ls-gender' => ['required' => true, 'min' => 1],
+            'we-ls-height' => ['required' => true, 'min' => 1],
+            'ws-ls-aim' => ['required' => true, 'min' => 1],
+            'ws-ls-activity-level' => ['required' => true, 'min' => 1]
+        ];
+
         $config['validation-required'] = __('This field is required.', WE_LS_SLUG);
 	}
 
