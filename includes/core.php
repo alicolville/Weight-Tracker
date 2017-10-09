@@ -723,7 +723,6 @@ function ws_ls_get_js_config()
             'ws-ls-aim' => __('Please select your aim.', WE_LS_SLUG)
         ];
 
-
         $config['validation-user-pref-rules'] = [
             'ws-ls-gender' => ['required' => true, 'min' => 1],
             'we-ls-height' => ['required' => true, 'min' => 1],
@@ -733,6 +732,9 @@ function ws_ls_get_js_config()
 
         $config['validation-required'] = __('This field is required.', WE_LS_SLUG);
 	}
+
+	// Allow others to filter config object
+    $config = apply_filters(WE_LS_FILTER_JS_WS_LS_CONFIG, $config);
 
 	return $config;
 }

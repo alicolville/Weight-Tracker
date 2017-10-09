@@ -142,6 +142,8 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 //TODO: minify ws-ls.js
 
 * Improvement: Added new filters "wlt-filter-admin-user-sidebar-top", "wlt-filter-admin-user-sidebar-middle" and "wlt-filter-admin-user-sidebar-bottom" to allow developers to add HTML to user sidebar in "Manage Data".
+* Improvement: Added new filter "wlt-filter-js-ws-ls-config" to allow developers to filter JS config.
+* Improvement: Added new filter "wlt-filter-user-settings-below-aim" to allow developers to add to the User settings page.
 * Database schema changes for future releases.
 
 = 5.2.11 =
