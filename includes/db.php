@@ -394,54 +394,87 @@ function ws_does_target_weight_exist($user_id)
 
   return false;
 }
-function ws_ls_set_user_preferences($in_admin_area, $settings, $user_id = false, $height = false,
-                                        $activity_level = false, $gender = false, $dob = false, $aim = false)
+function ws_ls_set_user_preferences($in_admin_area, $fields = [])
 {
-  global $wpdb;
+    global $wpdb;
 
-	  if(false == $user_id){
-	    $user_id = get_current_user_id();
-	  }
+    // Defaults for user preference fields
+    $defaults = [
+        'user_id' => get_current_user_id(),
+        'settings' => [],
+        'height' => NULL,
+        'activity_level' => NULL,
+        'gender' => NULL,
+        'aim' => NULL,
+        'dob' => false,
+    ];
 
-	  // If not an array passed in blank Settings
-	  if(!is_array($settings)) {
-	    $settings = array();
-	  }
+    $db_fields = wp_parse_args($fields, $defaults);
 
-	$table_name = $wpdb->prefix . WE_LS_USER_PREFERENCES_TABLENAME;
+    // Validate arguments
+    if ( false === is_array($db_fields['settings']) ) {
+        $db_fields['settings'] = [];
+    }
 
-	// Build array of fields to pass to DB
-	$db_fields['user_id'] = $user_id;
-	$db_fields['settings'] = json_encode($settings);
+    $db_fields['settings'] = json_encode($db_fields['settings']);
 
-	// Save Height, if not specified look up.
-	if (false !== $height) {
-		$height = ws_ls_validate_height($height);
-	} else {
-		$height = ws_ls_get_user_height($user_id, false);
-	}
+    $db_fields['dob'] = (false === empty($db_fields['dob'])) ? ws_ls_convert_date_to_iso($db_fields['dob'], ($in_admin_area) ? false : $user_id) : '0000-00-00 00:00:00';
 
-    $db_fields['height'] = $height;
-	$db_fields['activity_level'] = $activity_level;
-    $db_fields['gender'] = $gender;
-    $db_fields['aim'] = $aim;
-    $db_fields['dob'] = (false === empty($dob)) ? ws_ls_convert_date_to_iso($dob, ($in_admin_area) ? false : $user_id) : '0000-00-00 00:00:00';
+    // Save Height, if not specified look up.
+    if (false !== $db_fields['height']) {
+        $db_fields['height'] = ws_ls_validate_height($db_fields['height']);
+    } else {
+        $db_fields['height'] = ws_ls_get_user_height($user_id, false);
+    }
 
     // Set data types
-    $db_field_types = array('%d','%s','%d', '%f', '%d', '%d', '%s');
+    $db_field_types = ws_ls_user_preferences_get_formats($db_fields);
+
+    $table_name = $wpdb->prefix . WE_LS_USER_PREFERENCES_TABLENAME;
 
       // Update or insert
-      $result = $wpdb->replace(
-                                $table_name,
-                                $db_fields,
-                                $db_field_types
-                              );
+    $result = $wpdb->replace(
+                            $table_name,
+                            $db_fields,
+                            $db_field_types
+                          );
 
-  $result = ($result === false) ? false : true;
+    $result = ($result === false) ? false : true;
 
-  // Tidy up cache
-  ws_ls_delete_cache_for_given_user($user_id);
-  return $result;
+    // Tidy up cache
+    ws_ls_delete_cache_for_given_user($user_id);
+    return $result;
+}
+
+/**
+ * Provide a list of formats for user pref database fields
+ *
+ * @param $db_fields
+ * @return array
+ */
+function ws_ls_user_preferences_get_formats( $db_fields ) {
+
+    $formats = [];
+
+    $lookup = [
+        'user_id' => '%d',
+        'settings' => '%s',
+        'height' => '%d',
+        'activity_level' => '%f',
+        'gender' => '%d',
+        'aim' => '%d',
+        'dob' => '%s'
+    ];
+
+    $lookup = apply_filters(WE_LS_FILTER_USER_SETTINGS_DB_FORMATS, $lookup);
+
+    foreach ($db_fields as $key) {
+        if( true === array_key_exists($key, $lookup)) {
+            $formats[] = $lookup[$key];
+        }
+    }
+
+    return $formats;
 }
 
 function ws_ls_get_user_preferences($user_id = false, $use_cache = true)
