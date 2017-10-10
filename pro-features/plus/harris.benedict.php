@@ -172,8 +172,8 @@
 		$calorie_intake = ws_ls_harris_benedict_calculate_calories($arguments['user-id']);
 
 		// No calorie data?
-		if(true === empty($calorie_intake) && false === $arguments['suppress-errors']) {
-			return esc_html('<p>' . $arguments['error-message'] . '</p>');
+        if(true === empty($calorie_intake) && false === empty($arguments['error-message'])) {
+			return '<p>' . esc_html( $arguments['error-message'] ) . '</p>';
 		}
 
 		$display_value = (false === empty($calorie_intake[$progress][$type])) ? number_format ($calorie_intake[$progress][$type]) : '' ;
