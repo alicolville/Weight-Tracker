@@ -56,6 +56,8 @@
 			$calorie_intake[$key] = array_map('ws_ls_round_bmr_harris', $calorie_intake[$key]);
 		}
 
+        $calorie_intake = apply_filters(WE_LS_FILTER_HARRIS, $calorie_intake, $user_id);
+
 		// Cache it!
 		ws_ls_set_cache($cache_key, $calorie_intake);
 
@@ -99,6 +101,7 @@
                                 __( 'Snacks', WE_LS_SLUG )
                     );
 
+                $html .= apply_filters(WE_LS_FILTER_HARRIS_TOP_OF_TABLE, '', $calories);
 
                 // Maintain
                 $html .= sprintf('<tr valign="top">
@@ -165,8 +168,10 @@
 										'type' => 'total'			// 'breakfast', 'lunch', 'dinner', 'snack', 'total'
 									], $user_defined_arguments );
 
+        $allowed_progress = apply_filters(WE_LS_FILTER_HARRIS_ALLOWED_PROGRESS, ['maintain', 'lose']);
+
 		$arguments['user-id'] = ws_ls_force_numeric_argument($arguments['user-id']);
-		$progress = (false === in_array($arguments['progress'], ['maintain', 'lose'])) ? 'maintain' : $arguments['progress'];
+		$progress = (false === in_array($arguments['progress'], $allowed_progress)) ? 'maintain' : $arguments['progress'];
 		$type = (false === in_array($arguments['type'], ['breakfast', 'lunch', 'dinner', 'snacks', 'total'])) ? 'lunch' : $arguments['type'];
 
 		$calorie_intake = ws_ls_harris_benedict_calculate_calories($arguments['user-id']);

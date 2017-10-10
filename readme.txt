@@ -139,12 +139,11 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 = 5.2.12 =
 
-//TODO: minify ws-ls.js
-
 * Improvement: Refactored User preferences code so it can be extended.
 * Improvement: Added new filters "wlt-filter-admin-user-sidebar-top", "wlt-filter-admin-user-sidebar-middle" and "wlt-filter-admin-user-sidebar-bottom" to allow developers to add HTML to user sidebar in "Manage Data".
 * Improvement: Added new filter "wlt-filter-js-ws-ls-config" to allow developers to filter JS config.
 * Improvement: Added new filter "wlt-filter-user-settings-below-aim" to allow developers to add to the User settings page.
+* Improvement: Added the filters 'wlt-filter-user-settings-db-formats' and 'wlt-filter-user-settings-save-fields' to allow a developer to save other user preference fields.
 * Bug fix: Stopped [wlt-calories] and [wlt-macronutrients] throwing an error when the user was logged out. Thanks @MARKONEX
 * Database schema changes for future releases.
 
