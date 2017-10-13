@@ -73,7 +73,7 @@ function ws_ls_user_side_bar($user_id) {
 			<div class="inside">
     			<table class="ws-ls-sidebar-stats">
 
-					<?php echo apply_filters(WE_LS_FILTER_ADMIN_USER_SIDEBAR_TOP, '', $user_id); ?>
+					<?php echo ws_ls_side_bar_render_rows( apply_filters(WE_LS_FILTER_ADMIN_USER_SIDEBAR_TOP, [], $user_id) ); ?>
 
                     <?php $stats = ws_ls_get_entry_counts($user_id); ?>
                     <tr>
@@ -113,7 +113,7 @@ function ws_ls_user_side_bar($user_id) {
                         <td><?php echo ws_ls_get_user_bmi(['user-id' => $user_id, 'display' => 'both', 'no-height-text' => __('No height specified', WE_LS_SLUG)]); ?></td>
                     </tr>
 
-					<?php echo apply_filters(WE_LS_FILTER_ADMIN_USER_SIDEBAR_MIDDLE, '', $user_id); ?>
+					<?php echo ws_ls_side_bar_render_rows( apply_filters(WE_LS_FILTER_ADMIN_USER_SIDEBAR_MIDDLE, [], $user_id) ); ?>
 
                     <tr>
                         <th><?php echo __('Aim', WE_LS_SLUG); ?></th>
@@ -149,7 +149,7 @@ function ws_ls_user_side_bar($user_id) {
 						</td>
                     </tr>
 
-					<?php echo apply_filters(WE_LS_FILTER_ADMIN_USER_SIDEBAR_BOTTOM, '', $user_id); ?>
+					<?php echo ws_ls_side_bar_render_rows( apply_filters(WE_LS_FILTER_ADMIN_USER_SIDEBAR_BOTTOM, [], $user_id) ); ?>
 
                 </table>
 			</div>
@@ -213,6 +213,45 @@ function ws_ls_user_side_bar($user_id) {
     echo ws_ls_create_dialog_jquery_code(__('Are you sure you?', WE_LS_SLUG),
         __('Are you sure you wish to remove the data for this user?', WE_LS_SLUG) . '<br /><br />',
         'delete-confirm');
+
+}
+
+/**
+ * Render a sidebar row.
+ *
+ * @param $row
+ */
+function ws_ls_side_bar_row($row) {
+
+	if (true === is_array($row) && 2 === count($row)) {
+
+		return sprintf('<tr>
+                        			<th>%s</th>
+									<td>%s</td>
+								</tr>',
+								$row['th'],
+								$row['td']
+		);
+
+	}
+
+	return '';
+}
+
+/**
+ * Render one or more sidebar rows.
+ *
+ * @param $rows
+ */
+function ws_ls_side_bar_render_rows($rows) {
+
+	$html = '';
+
+	foreach ($rows as $row) {
+		$html .= ws_ls_side_bar_row($row);
+	}
+
+	return $html;
 
 }
 
