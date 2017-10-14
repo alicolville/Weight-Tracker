@@ -469,7 +469,7 @@ function ws_ls_user_preferences_get_formats( $db_fields ) {
     $lookup = apply_filters(WE_LS_FILTER_USER_SETTINGS_DB_FORMATS, $lookup);
 
     foreach ($db_fields as $key) {
-        if( true === array_key_exists($key, $lookup)) {
+        if( false === empty($lookup[$key])) {
             $formats[] = $lookup[$key];
         }
     }
