@@ -145,6 +145,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 * Improvement: Added new filter "wlt-filter-user-settings-below-aim" to allow developers to add to the User settings page.
 * Improvement: Added the filters 'wlt-filter-user-settings-db-formats' and 'wlt-filter-user-settings-save-fields' to allow a developer to save other user preference fields.
 * Bug fix: Stopped [wlt-calories] and [wlt-macronutrients] throwing an error when the user was logged out. Thanks @MARKONEX
+* Big fix: Fixed a bug where "Your modifications have been saved" message was always being shown on [wlt-table] shortcode.
 * Database schema changes for future releases.
 
 = 5.2.11 =
