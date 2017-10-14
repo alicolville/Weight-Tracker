@@ -35,20 +35,26 @@ function ws_ls_save_preferences_callback()
     	$user_preferences['WE_LS_IMPERIAL_WEIGHTS'] = false;
   	}
 
+  	$fields = [];
+
+    $fields['settings'] = $user_preferences;
+
 	// Save Height?
-	$height = false;
+    $fields['height'] = false;
 	if(!is_null(ws_ls_ajax_post_value('we-ls-height'))) {
-		$height = intval(ws_ls_ajax_post_value('we-ls-height'));
+        $fields['height'] = intval(ws_ls_ajax_post_value('we-ls-height'));
 	}
 
     // Save Activity Level, DoB, Aim and Gender
-    $gender = (!is_null(ws_ls_ajax_post_value('ws-ls-gender'))) ? intval(ws_ls_ajax_post_value('ws-ls-gender')) : 0;
-    $aim = (!is_null(ws_ls_ajax_post_value('ws-ls-aim'))) ? intval(ws_ls_ajax_post_value('ws-ls-aim')) : 0;
-    $activity_level = (!is_null(ws_ls_ajax_post_value('ws-ls-activity-level'))) ? floatval(ws_ls_ajax_post_value('ws-ls-activity-level')) : 0;
-    $dob = (!is_null(ws_ls_ajax_post_value('ws-ls-dob'))) ? ws_ls_ajax_post_value('ws-ls-dob') : false;
+    $fields['gender'] = (!is_null(ws_ls_ajax_post_value('ws-ls-gender'))) ? intval(ws_ls_ajax_post_value('ws-ls-gender')) : 0;
+    $fields['aim'] = (!is_null(ws_ls_ajax_post_value('ws-ls-aim'))) ? intval(ws_ls_ajax_post_value('ws-ls-aim')) : 0;
+    $fields['activity_level'] = (!is_null(ws_ls_ajax_post_value('ws-ls-activity-level'))) ? floatval(ws_ls_ajax_post_value('ws-ls-activity-level')) : 0;
+    $fields['dob'] = (!is_null(ws_ls_ajax_post_value('ws-ls-dob'))) ? ws_ls_ajax_post_value('ws-ls-dob') : false;
 
+    // Add additional fields to be saved.
+    $fields = apply_filters(WE_LS_FILTER_USER_SETTINGS_SAVE_FIELDS, $fields);
 
-  	if(true == ws_ls_set_user_preferences($in_admin_area, $user_preferences, ws_ls_ajax_post_value('user-id'), $height, $activity_level, $gender, $dob, $aim)){
+  	if(true == ws_ls_set_user_preferences($in_admin_area, $fields)){
     	$ajax_response = 1;
   	}
   	echo $ajax_response;

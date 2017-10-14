@@ -538,7 +538,6 @@ function ws_ls_settings_page() {
 								<?php submit_button(); ?>
 
 
-
 							</form>
 						</div>
 						<!-- .inside -->

@@ -666,7 +666,7 @@ function ws_ls_display_notice($text, $type = 'success') {
  */
 function ws_ls_display_data_saved_message() {
 
-	if(false !== ws_ls_querystring_value('ws-edit-saved', false)) {
+	if('n' !== ws_ls_querystring_value('ws-edit-saved', false, 'n')) {
 		return ws_ls_display_blockquote(__('Your modifications have been saved', WE_LS_SLUG), 'ws-ls-success');
 	}
 

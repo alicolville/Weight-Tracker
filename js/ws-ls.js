@@ -104,32 +104,9 @@ jQuery( document ).ready(function ($) {
 	            errorContainer: ".ws-ls-user-pref-form .ws-ls-error-summary",
 	            errorLabelContainer: ".ws-ls-user-pref-form .ws-ls-error-summary ul",
 	            wrapper: "li",
-				rules: {
-	                "ws-ls-gender": {
-						"required" : true,
-						min: 1
-					},
-					"we-ls-height": {
-						"required" : true,
-						min: 1
-					},
-                    "ws-ls-aim": {
-                        "required" : true,
-                        min: 1
-                    },
-					"ws-ls-activity-level": {
-						"required" : true,
-						min: 1
-					}
-	            },
-				messages: {
-					"ws-ls-gender" : ws_ls_config["validation-about-you-gender"],
-					"we-ls-height" : ws_ls_config["validation-about-you-height"],
-                    "ws-ls-aim" : ws_ls_config["validation-about-you-aim"],
-					"ws-ls-activity-level" : ws_ls_config["validation-about-you-activity-level"],
-					"we-ls-dob": ws_ls_config["validation-about-you-dob"],
-                },
-	            submitHandler: function(form) {
+				rules: ws_ls_config['validation-user-pref-rules'],
+				messages: ws_ls_config["validation-user-pref-messages"],
+                submitHandler: function(form) {
                     ws_ls_submit_preference_form();
 	            }
 	        });

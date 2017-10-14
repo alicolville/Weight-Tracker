@@ -68,6 +68,19 @@
 	define('WE_LS_FILTER_STATS_SHORTCODE', 'wlt-filter-stats-shortcode');
 	define('WE_LS_FILTER_STATS_ROW', 'wlt-filter-stats-table-row');
 	define('WE_LS_FILTER_STATS_TABLE_HTML', 'wlt-filter-stats-table-html');
+	define('WE_LS_FILTER_ADMIN_USER_SIDEBAR_TOP', 'wlt-filter-admin-user-sidebar-top');
+	define('WE_LS_FILTER_ADMIN_USER_SIDEBAR_MIDDLE', 'wlt-filter-admin-user-sidebar-middle');
+	define('WE_LS_FILTER_ADMIN_USER_SIDEBAR_BOTTOM', 'wlt-filter-admin-user-sidebar-bottom');
+	define('WE_LS_FILTER_USER_SETTINGS_BELOW_AIM', 'wlt-filter-user-settings-below-aim');
+    define('WE_LS_FILTER_USER_SETTINGS_DB_FORMATS', 'wlt-filter-user-settings-db-formats');
+    define('WE_LS_FILTER_USER_SETTINGS_SAVE_FIELDS', 'wlt-filter-user-settings-save-fields');
+    define('WE_LS_FILTER_JS_WS_LS_CONFIG', 'wlt-filter-js-ws-ls-config');
+
+    define('WE_LS_FILTER_HARRIS', 'wlt-filter-harris-benedict');
+    define('WE_LS_FILTER_HARRIS_ALLOWED_PROGRESS', 'wlt-filter-harris-benedict-allowed-progresses');
+    define('WE_LS_FILTER_HARRIS_TOP_OF_TABLE', 'wlt-filter-harris-benedict-top-of-table');
+
+    define('WE_LS_FILTER_MACRO_ALLOWED_PROGRESS', 'wlt-filter-macro-nutrients-allowed-progresses');
 
     // -----------------------------------------------------------------------------------
 	// Dynamic Settings based upon user settings, etc

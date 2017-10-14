@@ -194,9 +194,9 @@ function ws_ls_shortcode_macro($user_defined_arguments) {
 	$macros = ws_ls_macro_calculate($arguments['user-id']);
 
 	// No macro data?
-	if(true === empty($macros) && false === $arguments['suppress-errors']) {
-		return esc_html('<p>' . $arguments['error-message'] . '</p>');
-	}
+    if(true === empty($macros) && false === empty($arguments['error-message'])) {
+        return '<p>' . esc_html( $arguments['error-message'] ) . '</p>';
+    }
 
 	$display_value = (false === empty($macros[$progress][$type][$nutrient])) ? number_format($macros[$progress][$type][$nutrient], 2) : '' ;
 
