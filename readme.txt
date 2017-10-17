@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight, loss, lose, helper, bmi, body, mass, index, graph, track, stones, kg, table, data, plot, target, history, pounds, responsive, chart, measurements, cm, centimeters, inches, hip, waist, bicep, thigh
 Requires at least: 4.4.0
 Tested up to: 4.8.2
-Stable tag: 5.2.12
+Stable tag: 5.2.13
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate Link: https://www.paypal.me/yeken
@@ -137,6 +137,10 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 == Changelog ==
 
+= 5.2.13 =
+
+* Bug fix: Sorted issue with user preferences not being saved correctly
+
 = 5.2.12 =
 
 * Improvement: Refactored User preferences code so it can be extended.
@@ -145,7 +149,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 * Improvement: Added new filter "wlt-filter-user-settings-below-aim" to allow developers to add to the User settings page.
 * Improvement: Added the filters 'wlt-filter-user-settings-db-formats' and 'wlt-filter-user-settings-save-fields' to allow a developer to save other user preference fields.
 * Bug fix: Stopped [wlt-calories] and [wlt-macronutrients] throwing an error when the user was logged out. Thanks @MARKONEX
-* Big fix: Fixed a bug where "Your modifications have been saved" message was always being shown on [wlt-table] shortcode.
+* Bug fix: Fixed a bug where "Your modifications have been saved" message was always being shown on [wlt-table] shortcode.
 * Database schema changes for future releases.
 
 = 5.2.11 =
