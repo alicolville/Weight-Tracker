@@ -418,13 +418,13 @@ function ws_ls_set_user_preferences($in_admin_area, $fields = [])
 
     $db_fields['settings'] = json_encode($db_fields['settings']);
 
-    $db_fields['dob'] = (false === empty($db_fields['dob'])) ? ws_ls_convert_date_to_iso($db_fields['dob'], ($in_admin_area) ? false : $user_id) : '0000-00-00 00:00:00';
+    $db_fields['dob'] = (false === empty($db_fields['dob'])) ? ws_ls_convert_date_to_iso($db_fields['dob'], ($in_admin_area) ? false : $db_fields['user_id']) : '0000-00-00 00:00:00';
 
     // Save Height, if not specified look up.
     if (false !== $db_fields['height']) {
         $db_fields['height'] = ws_ls_validate_height($db_fields['height']);
     } else {
-        $db_fields['height'] = ws_ls_get_user_height($user_id, false);
+        $db_fields['height'] = ws_ls_get_user_height($db_fields['user_id'], false);
     }
 
     // Set data types
@@ -442,7 +442,7 @@ function ws_ls_set_user_preferences($in_admin_area, $fields = [])
     $result = ($result === false) ? false : true;
 
     // Tidy up cache
-    ws_ls_delete_cache_for_given_user($user_id);
+    ws_ls_delete_cache_for_given_user($db_fields['user_id']);
     return $result;
 }
 
