@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Weight Loss Tracker\n"
-"POT-Creation-Date: 2017-09-29 15:56+0100\n"
-"PO-Revision-Date: 2017-09-29 15:56+0100\n"
+"POT-Creation-Date: 2017-10-22 14:49+0100\n"
+"PO-Revision-Date: 2017-10-22 14:49+0100\n"
 "Last-Translator: Greg Vid <drobtinca@hotmail.com>\n"
 "Language-Team: \n"
 "Language: sl_SI\n"
@@ -69,7 +69,7 @@ msgstr "Za vpis teže morate biti prijavljeni."
 
 #: includes/core.php:76 pages/page.settings.php:477
 #: pro-features/footable.php:56 pro-features/functions.php:6
-#: pro-features/user-preferences.php:168
+#: pro-features/user-preferences.php:174
 msgid "Inches"
 msgstr "Palcev"
 
@@ -98,7 +98,7 @@ msgid "Add a new weight"
 msgstr "Dodajte novo težo"
 
 #: includes/core.php:274 pro-features/admin-pages/data-search-results.php:45
-#: pro-features/functions.pages.php:93
+#: pro-features/functions.pages.php:96
 msgid "Target Weight"
 msgstr "Ciljna teža"
 
@@ -121,7 +121,7 @@ msgid "Stones"
 msgstr "Stones"
 
 #: includes/core.php:369 includes/core.php:372 pages/page.settings.php:88
-#: pro-features/user-preferences.php:160
+#: pro-features/user-preferences.php:166
 msgid "Pounds"
 msgstr "Funti"
 
@@ -251,39 +251,39 @@ msgstr "Res želite izbrisati vnos?"
 msgid "Please enter a valid measurement ("
 msgstr "Vnesite pravilno meritev ("
 
-#: includes/core.php:717
+#: includes/core.php:719
 msgid "Please select or enter a value for height."
 msgstr "Prosimo, vnesite višino."
 
-#: includes/core.php:718
+#: includes/core.php:720
 msgid "Please select or enter a value for activity level."
 msgstr "Prosimo, vnesite nivo aktivnosti."
 
-#: includes/core.php:719
+#: includes/core.php:721
 msgid "Please select or enter a value for gender."
 msgstr "Prosimo, vnesite spol."
 
-#: includes/core.php:720
+#: includes/core.php:722
 msgid "Please enter a valid date."
 msgstr "Vnesite pravilen datum."
 
-#: includes/core.php:721
+#: includes/core.php:723
 #, fuzzy
 #| msgid "Please select or enter a value for height."
 msgid "Please select your aim."
 msgstr "Prosimo, vnesite višino."
 
-#: includes/core.php:722
+#: includes/core.php:733
 #, fuzzy
 #| msgid "This license has expired."
 msgid "This field is required."
 msgstr "Licenca je potekla."
 
-#: includes/core.php:737
+#: includes/core.php:751
 msgid "Done"
 msgstr "Dokončano"
 
-#: includes/core.php:738
+#: includes/core.php:752
 msgid "Today"
 msgstr "Danes"
 
@@ -298,7 +298,7 @@ msgid "The following MySQL tables are missing for this plugin"
 msgstr "Manjkajoče MySQL tabele tega vtičnika"
 
 #: includes/functions.php:294 includes/shortcode-various.php:241
-#: pro-features/user-preferences.php:158
+#: pro-features/user-preferences.php:164
 msgid "Kg"
 msgstr "Kg"
 
@@ -336,140 +336,140 @@ msgstr "Prijava"
 msgid "Server Default"
 msgstr ""
 
-#: includes/globals.php:136 pro-features/footable.php:223
+#: includes/globals.php:149 pro-features/footable.php:223
 msgid "Forearm - Left"
 msgstr "Podlaket, levo"
 
-#: includes/globals.php:136 pro-features/footable.php:223
+#: includes/globals.php:149 pro-features/footable.php:223
 msgid "FL"
 msgstr "PL"
 
-#: includes/globals.php:137 pro-features/footable.php:224
+#: includes/globals.php:150 pro-features/footable.php:224
 msgid "Forearm - Right"
 msgstr "Podlaket, desno"
 
-#: includes/globals.php:137 pro-features/footable.php:224
+#: includes/globals.php:150 pro-features/footable.php:224
 msgid "FR"
 msgstr "PD"
 
-#: includes/globals.php:138 pro-features/footable.php:225
+#: includes/globals.php:151 pro-features/footable.php:225
 #, fuzzy
 #| msgid "Bicep - Left"
 msgid "Biceps - Left"
 msgstr "Nadlaket, levo"
 
-#: includes/globals.php:138 pro-features/footable.php:225
+#: includes/globals.php:151 pro-features/footable.php:225
 msgid "BL"
 msgstr "NL"
 
-#: includes/globals.php:139 pro-features/footable.php:226
+#: includes/globals.php:152 pro-features/footable.php:226
 #, fuzzy
 #| msgid "Bicep - Right"
 msgid "Biceps - Right"
 msgstr "Nadlaket, desno"
 
-#: includes/globals.php:139 pro-features/footable.php:226
+#: includes/globals.php:152 pro-features/footable.php:226
 msgid "BR"
 msgstr "ND"
 
-#: includes/globals.php:140 pro-features/footable.php:227
+#: includes/globals.php:153 pro-features/footable.php:227
 msgid "Calf - Left"
 msgstr "Meča, levo"
 
-#: includes/globals.php:140 pro-features/footable.php:227
+#: includes/globals.php:153 pro-features/footable.php:227
 msgid "CL"
 msgstr "ML"
 
-#: includes/globals.php:141 pro-features/footable.php:228
+#: includes/globals.php:154 pro-features/footable.php:228
 msgid "Calf - Right"
 msgstr "Meča, desno"
 
-#: includes/globals.php:141 pro-features/footable.php:228
+#: includes/globals.php:154 pro-features/footable.php:228
 msgid "CR"
 msgstr "MD"
 
-#: includes/globals.php:142 pro-features/footable.php:229
+#: includes/globals.php:155 pro-features/footable.php:229
 msgid "Thigh - Left"
 msgstr "Stegno, levo"
 
-#: includes/globals.php:142 pro-features/footable.php:229
+#: includes/globals.php:155 pro-features/footable.php:229
 msgid "TL"
 msgstr "SL"
 
-#: includes/globals.php:143 pro-features/footable.php:230
+#: includes/globals.php:156 pro-features/footable.php:230
 msgid "Thigh - Right"
 msgstr "Stegno, desno"
 
-#: includes/globals.php:143 pro-features/footable.php:230
+#: includes/globals.php:156 pro-features/footable.php:230
 msgid "TR"
 msgstr "SD"
 
-#: includes/globals.php:144 pro-features/footable.php:231
+#: includes/globals.php:157 pro-features/footable.php:231
 msgid "Waist"
 msgstr "Pas"
 
-#: includes/globals.php:144 pro-features/footable.php:231
+#: includes/globals.php:157 pro-features/footable.php:231
 msgid "W"
 msgstr "P"
 
-#: includes/globals.php:145 pro-features/footable.php:232
+#: includes/globals.php:158 pro-features/footable.php:232
 msgid "Bust / Chest"
 msgstr "Prsa"
 
-#: includes/globals.php:145 pro-features/footable.php:232
+#: includes/globals.php:158 pro-features/footable.php:232
 msgid "BC"
 msgstr "Pr"
 
-#: includes/globals.php:146 pro-features/footable.php:233
+#: includes/globals.php:159 pro-features/footable.php:233
 msgid "Shoulders"
 msgstr "Rame"
 
-#: includes/globals.php:146 pro-features/footable.php:233
+#: includes/globals.php:159 pro-features/footable.php:233
 msgid "S"
 msgstr "R"
 
-#: includes/globals.php:147 pro-features/footable.php:234
-#: pro-features/functions.pages.php:117
+#: includes/globals.php:160 pro-features/footable.php:234
+#: pro-features/functions.pages.php:123
 msgid "Height"
 msgstr "Višina"
 
-#: includes/globals.php:147 pro-features/footable.php:234
+#: includes/globals.php:160 pro-features/footable.php:234
 msgid "H"
 msgstr "V"
 
-#: includes/globals.php:148 pro-features/footable.php:235
+#: includes/globals.php:161 pro-features/footable.php:235
 msgid "Buttocks"
 msgstr "Zadnjica"
 
-#: includes/globals.php:148 pro-features/footable.php:235
+#: includes/globals.php:161 pro-features/footable.php:235
 msgid "B"
 msgstr "Z"
 
-#: includes/globals.php:149 pro-features/footable.php:236
+#: includes/globals.php:162 pro-features/footable.php:236
 msgid "Hips"
 msgstr "Boki"
 
-#: includes/globals.php:149 pro-features/footable.php:236
+#: includes/globals.php:162 pro-features/footable.php:236
 msgid "HI"
 msgstr "B"
 
-#: includes/globals.php:150 pro-features/footable.php:237
+#: includes/globals.php:163 pro-features/footable.php:237
 msgid "Navel"
 msgstr "Popek"
 
-#: includes/globals.php:150 pro-features/footable.php:237
+#: includes/globals.php:163 pro-features/footable.php:237
 msgid "NA"
 msgstr "Po"
 
-#: includes/globals.php:151 pro-features/footable.php:238
+#: includes/globals.php:164 pro-features/footable.php:238
 msgid "Neck"
 msgstr "Vrat"
 
-#: includes/globals.php:151 pro-features/footable.php:238
+#: includes/globals.php:164 pro-features/footable.php:238
 msgid "NE"
 msgstr "Vr"
 
-#: includes/hooks.php:8 pro-features/functions.pages.php:175
+#: includes/hooks.php:8 pro-features/functions.pages.php:184
 msgid "Settings"
 msgstr "Nastavitve"
 
@@ -497,51 +497,40 @@ msgstr "Preference tega uporabnika so bile shranjene."
 msgid "An error occurred while trying to save the user's preferences."
 msgstr "Med shranjevanjem uporabnikovih preferenc je prišlo do napake."
 
-#: includes/hooks.php:196
-#, fuzzy
-#| msgid "Weight Loss Tracker update for"
-msgid "Weight Loss Tracker plugin has expired on your site!"
-msgstr "Weight Loss Tracker posodobitev za"
-
-#: includes/hooks.php:197
-msgid ""
-"Please visit your Dashboard to renew your license (Weight Tracker > Upgrade) "
-msgstr ""
-
-#: includes/license.php:148
+#: includes/license.php:144
 msgid "License missing"
 msgstr "Ni licence"
 
-#: includes/license.php:155
+#: includes/license.php:151
 msgid "Could not decode / verify license"
 msgstr "Ne morem verificirati licence"
 
-#: includes/license.php:160
+#: includes/license.php:156
 msgid "Invalid license hash"
 msgstr "Napačen hash licence"
 
-#: includes/license.php:165
+#: includes/license.php:161
 msgid ""
 "This license doesn't appear to be for this site (no match on site hash)."
 msgstr "Ta licenca ni za to stran (ni ujemanja za hash strani)."
 
-#: includes/license.php:173
+#: includes/license.php:169
 msgid "This license has expired."
 msgstr "Licenca je potekla."
 
-#: includes/license.php:230
+#: includes/license.php:226
 msgid "None"
 msgstr ""
 
-#: includes/license.php:240
+#: includes/license.php:236
 msgid "Yearly Pro"
 msgstr "Letno Pro"
 
-#: includes/license.php:243
+#: includes/license.php:239
 msgid "Legacy Pro"
 msgstr ""
 
-#: includes/license.php:246 pages/page.settings.php:73
+#: includes/license.php:242 pages/page.settings.php:73
 msgid "Pro Plus"
 msgstr "Pro Plus"
 
@@ -561,7 +550,7 @@ msgstr "Uporabnik ni določen (hash)"
 msgid "No user specified"
 msgstr "Uporabnik ni določen"
 
-#: includes/shortcode-various.php:106 pro-features/functions.pages.php:99
+#: includes/shortcode-various.php:106 pro-features/functions.pages.php:102
 msgid "No target set"
 msgstr "Cilj ni določen"
 
@@ -614,7 +603,7 @@ msgid "View BMI, BMR and suggested Calorie and Macronutrient intake"
 msgstr ""
 
 #: includes/shortcode-weight-loss-tracker.php:106
-#: pro-features/functions.pages.php:179 pro-features/user-preferences.php:153
+#: pro-features/functions.pages.php:188 pro-features/user-preferences.php:159
 msgid "Preferences"
 msgstr "Nastavitve"
 
@@ -760,100 +749,100 @@ msgid "Upgrade to Pro Plus for"
 msgstr "Nadgradite na Pro Plus za"
 
 #: pages/page.license.php:134 pages/page.license.php:140
-#: pages/page.license.php:252 pages/page.license.php:266
+#: pages/page.license.php:254 pages/page.license.php:268
 msgid "a year"
 msgstr ""
 
-#: pages/page.license.php:140
-#, php-format
+#: pages/page.license.php:142
+#, no-php-format
 msgid " (50% discount)"
 msgstr ""
 
-#: pages/page.license.php:156
+#: pages/page.license.php:158
 msgid "Switch to a yearly Pro license for "
 msgstr ""
 
-#: pages/page.license.php:156 pages/page.license.php:157
+#: pages/page.license.php:158 pages/page.license.php:159
 msgid " a year"
 msgstr ""
 
-#: pages/page.license.php:157
+#: pages/page.license.php:159
 msgid "Upgrade to Pro for "
 msgstr "Nadgradite na Pro verzijo za"
 
-#: pages/page.license.php:173
+#: pages/page.license.php:175
 msgid "Add or Update License"
 msgstr "Dodaj ali posodobi licenco"
 
-#: pages/page.license.php:178
+#: pages/page.license.php:180
 msgid ""
 "Copy and paste the license given to you by YeKen into this box and click "
 "\"Apply License\""
 msgstr "Skopirajte licenco in kliknite \"Uporabi licenco\""
 
-#: pages/page.license.php:181
+#: pages/page.license.php:183
 msgid "Apply License"
 msgstr "Uporabi licenco"
 
-#: pages/page.license.php:186
+#: pages/page.license.php:188
 msgid "Your License Information"
 msgstr "Informacije o vaši licenci"
 
-#: pages/page.license.php:190
+#: pages/page.license.php:192
 msgid "Site Hash"
 msgstr "Hash strani"
 
-#: pages/page.license.php:194 pro-features/widget-chart.php:110
+#: pages/page.license.php:196 pro-features/widget-chart.php:110
 msgid "Type"
 msgstr "Vrsta"
 
-#: pages/page.license.php:198
+#: pages/page.license.php:200
 msgid "Expires"
 msgstr "Poteče"
 
-#: pages/page.license.php:203
+#: pages/page.license.php:205
 msgid "Never"
 msgstr "Nikoli"
 
-#: pages/page.license.php:207
+#: pages/page.license.php:209
 msgid "n/a"
 msgstr "n/a"
 
-#: pages/page.license.php:217
+#: pages/page.license.php:219
 msgid "Your Existing License"
 msgstr "Vaša obstoječa licenca"
 
-#: pages/page.license.php:223
+#: pages/page.license.php:225
 msgid "Remove License"
 msgstr "Odstrani licenco"
 
-#: pages/page.license.php:232
+#: pages/page.license.php:234
 msgid "Documentation"
 msgstr "Dokumentacija"
 
-#: pages/page.license.php:235
+#: pages/page.license.php:237
 msgid "Need further help or information, please visit our documentation site:"
 msgstr ""
 "Če potrebujete dodatno pomoč ali informacije, obiščite našo spletno stran:"
 
-#: pages/page.license.php:252
+#: pages/page.license.php:254
 msgid "Below is a list of the intended features of the Pro Plus version"
 msgstr "Spodaj so načrtovane funkcije Pro Plus verzije"
 
-#: pages/page.license.php:252 pages/page.license.php:266
+#: pages/page.license.php:254 pages/page.license.php:268
 msgid "You can upgrade for"
 msgstr "Nadgradite lahko za"
 
-#: pages/page.license.php:266
+#: pages/page.license.php:268
 msgid "Below is a list of the intended features of the Pro version"
 msgstr "Spodaj so načrtovane funkcije Pro verzije"
 
-#: pages/page.license.php:280 pro-features/admin-pages/data-summary.php:177
-#: pro-features/functions.pages.php:204
+#: pages/page.license.php:282 pro-features/admin-pages/data-summary.php:177
+#: pro-features/functions.pages.php:213
 msgid "Are you sure you?"
 msgstr "Ste prepričani?"
 
-#: pages/page.license.php:281
+#: pages/page.license.php:283
 msgid ""
 "Are you sure you wish to remove the license for this site? Removing it may "
 "cause your user's to lose functionality."
@@ -911,7 +900,7 @@ msgstr ""
 msgid "Weight Units"
 msgstr "Enote za težo"
 
-#: pages/page.settings.php:87 pro-features/user-preferences.php:159
+#: pages/page.settings.php:87 pro-features/user-preferences.php:165
 msgid "Stones & Pounds"
 msgstr "Stonei in funti"
 
@@ -928,11 +917,11 @@ msgstr ""
 msgid "UK or US Date format?"
 msgstr "UK ali US format datuma?"
 
-#: pages/page.settings.php:97 pro-features/user-preferences.php:177
+#: pages/page.settings.php:97 pro-features/user-preferences.php:183
 msgid "UK (DD/MM/YYYY)"
 msgstr "UK (DD/MM/YYYY)"
 
-#: pages/page.settings.php:98 pro-features/user-preferences.php:178
+#: pages/page.settings.php:98 pro-features/user-preferences.php:184
 msgid "US (MM/DD/YYYY)"
 msgstr "US (MM/DD/YYYY)"
 
@@ -1344,7 +1333,7 @@ msgstr "Uporabniki bodo lahko vnašali tudi druge antropometrične meritve."
 msgid "Measurement Units"
 msgstr "Merske enote"
 
-#: pages/page.settings.php:476 pro-features/user-preferences.php:167
+#: pages/page.settings.php:476 pro-features/user-preferences.php:173
 msgid "Centimetres"
 msgstr "Centimetri"
 
@@ -1486,12 +1475,12 @@ msgid "Email"
 msgstr "Email"
 
 #: pro-features/admin-pages/data-search-results.php:42
-#: pro-features/functions.pages.php:77
+#: pro-features/functions.pages.php:80
 msgid "No. of Entries"
 msgstr "Št. vnosov"
 
 #: pro-features/admin-pages/data-search-results.php:43
-#: pro-features/functions.pages.php:81
+#: pro-features/functions.pages.php:84
 msgid "Start Weight"
 msgstr "Začetna teža"
 
@@ -1585,17 +1574,17 @@ msgid "Export all data"
 msgstr "Izvozi vse podatke"
 
 #: pro-features/admin-pages/data-summary.php:153
-#: pro-features/functions.pages.php:166
+#: pro-features/functions.pages.php:175
 msgid "To CSV"
 msgstr "V CSV"
 
 #: pro-features/admin-pages/data-summary.php:157
-#: pro-features/functions.pages.php:170
+#: pro-features/functions.pages.php:179
 msgid "To JSON"
 msgstr "V JSON"
 
 #: pro-features/admin-pages/data-summary.php:162
-#: pro-features/functions.pages.php:194
+#: pro-features/functions.pages.php:203
 msgid "Delete Data"
 msgstr "Izbriči podatke"
 
@@ -1646,7 +1635,7 @@ msgid "Please ensure the values for Proteins, Carbohydrates and Fats (within "
 msgstr ""
 
 #: pro-features/admin-pages/data-user.php:121
-#: pro-features/plus/harris.benedict.php:235
+#: pro-features/plus/harris.benedict.php:240
 msgid "settings"
 msgstr "nastavitve"
 
@@ -2006,91 +1995,91 @@ msgstr "Poglej vse podatke"
 msgid "User Information"
 msgstr "Podatki uporabnika"
 
-#: pro-features/functions.pages.php:85
+#: pro-features/functions.pages.php:88
 msgid "Latest Weight"
 msgstr "Zadnja teža"
 
-#: pro-features/functions.pages.php:89
+#: pro-features/functions.pages.php:92
 msgid "Diff. from Start"
 msgstr "Razlika od začetka"
 
-#: pro-features/functions.pages.php:105
+#: pro-features/functions.pages.php:108
 msgid "Diff. from Target"
 msgstr "Razlika do cilja"
 
-#: pro-features/functions.pages.php:109
+#: pro-features/functions.pages.php:112
 msgid "Current BMI"
 msgstr "Trenitni ITM"
 
-#: pro-features/functions.pages.php:110
+#: pro-features/functions.pages.php:113
 msgid "No height specified"
 msgstr "Višina ni določena"
 
-#: pro-features/functions.pages.php:113
+#: pro-features/functions.pages.php:119
 msgid "Aim"
 msgstr ""
 
-#: pro-features/functions.pages.php:121
+#: pro-features/functions.pages.php:127
 msgid "Gender"
 msgstr "Spol"
 
-#: pro-features/functions.pages.php:125
+#: pro-features/functions.pages.php:131
 msgid "Activity Level"
 msgstr "Stopnja aktivnosti"
 
-#: pro-features/functions.pages.php:129
+#: pro-features/functions.pages.php:135
 msgid "Date of Birth"
 msgstr "Datum rojstva"
 
-#: pro-features/functions.pages.php:133
+#: pro-features/functions.pages.php:139
 msgid "BMR"
 msgstr "BMR"
 
-#: pro-features/functions.pages.php:138
+#: pro-features/functions.pages.php:144
 msgid "Missing data"
 msgstr "Manjkajoči podatki"
 
-#: pro-features/functions.pages.php:149 pro-features/functions.pages.php:153
+#: pro-features/functions.pages.php:158 pro-features/functions.pages.php:162
 msgid "Add Entry"
 msgstr "Dodaj vnos"
 
-#: pro-features/functions.pages.php:157
+#: pro-features/functions.pages.php:166
 msgid "Edit Target"
 msgstr "Spremeni ciljno težo"
 
-#: pro-features/functions.pages.php:162
+#: pro-features/functions.pages.php:171
 msgid "Export Data"
 msgstr "Izvozi podatke"
 
-#: pro-features/functions.pages.php:185
+#: pro-features/functions.pages.php:194
 msgid "Delete Cache"
 msgstr "Izbriši cache"
 
-#: pro-features/functions.pages.php:189
+#: pro-features/functions.pages.php:198
 msgid "Delete Cache for this user"
 msgstr "Izbriši cache tega uporabnika"
 
-#: pro-features/functions.pages.php:198
+#: pro-features/functions.pages.php:207
 msgid "Delete ALL data for this user"
 msgstr "Izbriši VSE podatke tega uporabnika"
 
-#: pro-features/functions.pages.php:205
+#: pro-features/functions.pages.php:214
 msgid "Are you sure you wish to remove the data for this user?"
 msgstr "Res želite izbrisati podatke tega uporabnika?"
 
-#: pro-features/functions.pages.php:239
+#: pro-features/functions.pages.php:287
 msgid "Back"
 msgstr "Nazaj"
 
-#: pro-features/functions.pages.php:241
+#: pro-features/functions.pages.php:289
 msgid "WordPress Record"
 msgstr ""
 
-#: pro-features/functions.pages.php:242
+#: pro-features/functions.pages.php:290
 msgid "Weight Tracker Record"
 msgstr ""
 
-#: pro-features/functions.pages.php:261
+#: pro-features/functions.pages.php:309
 msgid "Error: The User's ID was missing..."
 msgstr "Napaka: Manjkal je uporabnikov ID ..."
 
@@ -2118,11 +2107,11 @@ msgstr "Prekomerna teža"
 msgid "Heavily Overweight"
 msgstr "Močno prekomerna teža"
 
-#: pro-features/functions.php:215 pro-features/plus/harris.benedict.php:230
+#: pro-features/functions.php:215 pro-features/plus/harris.benedict.php:235
 msgid "Female"
 msgstr "Ženska"
 
-#: pro-features/functions.php:216 pro-features/plus/harris.benedict.php:230
+#: pro-features/functions.php:216 pro-features/plus/harris.benedict.php:235
 msgid "Male"
 msgstr "Moški"
 
@@ -2194,9 +2183,9 @@ msgstr "Višina ni določena"
 msgid "No Weight entered"
 msgstr "Ni vnesene teže"
 
-#: pro-features/plus/harris.benedict.php:79
-#: pro-features/plus/harris.benedict.php:162
-#: pro-features/plus/harris.benedict.php:199
+#: pro-features/plus/harris.benedict.php:81
+#: pro-features/plus/harris.benedict.php:165
+#: pro-features/plus/harris.benedict.php:204
 #: pro-features/plus/macronutrient.calculator.php:80
 #: pro-features/plus/macronutrient.calculator.php:182
 #: pro-features/plus/macronutrient.calculator.php:221
@@ -2207,46 +2196,46 @@ msgstr ""
 "Prosimo, vnesite vse podatke, ki so potrebni za izračun (stopnja aktivnosti, "
 "datum rojstva, spol, višina, trenutna teža)."
 
-#: pro-features/plus/harris.benedict.php:95
+#: pro-features/plus/harris.benedict.php:97
 #: pro-features/plus/macronutrient.calculator.php:103
 msgid "Total"
 msgstr "Skupaj"
 
-#: pro-features/plus/harris.benedict.php:96
+#: pro-features/plus/harris.benedict.php:98
 #: pro-features/plus/macronutrient.calculator.php:104
 msgid "Breakfast"
 msgstr "Zajtrk"
 
-#: pro-features/plus/harris.benedict.php:97
+#: pro-features/plus/harris.benedict.php:99
 #: pro-features/plus/macronutrient.calculator.php:105
 msgid "Lunch"
 msgstr "Kosilo"
 
-#: pro-features/plus/harris.benedict.php:98
+#: pro-features/plus/harris.benedict.php:100
 #: pro-features/plus/macronutrient.calculator.php:106
 msgid "Dinner"
 msgstr "Večerja"
 
-#: pro-features/plus/harris.benedict.php:99
+#: pro-features/plus/harris.benedict.php:101
 #: pro-features/plus/macronutrient.calculator.php:107
 msgid "Snacks"
 msgstr "Malice"
 
-#: pro-features/plus/harris.benedict.php:112
+#: pro-features/plus/harris.benedict.php:115
 #: pro-features/plus/macronutrient.calculator.php:101
 msgid "Maintain"
 msgstr "Vzdrževanje"
 
-#: pro-features/plus/harris.benedict.php:130
+#: pro-features/plus/harris.benedict.php:133
 #: pro-features/plus/macronutrient.calculator.php:101
 msgid "Lose"
 msgstr "Hujšanje"
 
-#: pro-features/plus/harris.benedict.php:231
+#: pro-features/plus/harris.benedict.php:236
 msgid "calories for weight loss are capped at "
 msgstr ""
 
-#: pro-features/plus/harris.benedict.php:233
+#: pro-features/plus/harris.benedict.php:238
 msgid "This can be modified within "
 msgstr ""
 
@@ -2570,24 +2559,24 @@ msgstr "Stopnja aktivnosti"
 msgid "Aim:"
 msgstr ""
 
-#: pro-features/user-preferences.php:180
+#: pro-features/user-preferences.php:186
 msgid "Save Settings"
 msgstr "Shrani nastavitve"
 
-#: pro-features/user-preferences.php:186
+#: pro-features/user-preferences.php:192
 msgid "Delete existing data"
 msgstr "Izbriši obstoječe podatke"
 
-#: pro-features/user-preferences.php:192
+#: pro-features/user-preferences.php:198
 msgid ""
 "The button below allows you to clear your existing weight history. Confirm:"
 msgstr "Spodnji gumb vam omogoča izbris vseh vnosov teže. Potrdite:"
 
-#: pro-features/user-preferences.php:195
+#: pro-features/user-preferences.php:201
 msgid "DELETE ALL DATA"
 msgstr "IZBRIŠI VSE PODATKE"
 
-#: pro-features/user-preferences.php:197
+#: pro-features/user-preferences.php:203
 msgid "Delete"
 msgstr "Izbriši"
 
@@ -2748,6 +2737,11 @@ msgstr "YeKen"
 #. Author URI of the plugin/theme
 msgid "https://www.YeKen.uk"
 msgstr "https://www.YeKen.uk"
+
+#, fuzzy
+#~| msgid "Weight Loss Tracker update for"
+#~ msgid "Weight Loss Tracker plugin has expired on your site!"
+#~ msgstr "Weight Loss Tracker posodobitev za"
 
 #~ msgid "Settings that effect the user's overall experience"
 #~ msgstr "Nastavitve, ki vplivajo na uporabniško izkušnjo"
