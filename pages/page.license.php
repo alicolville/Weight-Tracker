@@ -137,7 +137,9 @@ function ws_ls_advertise_pro() {
                                             // If an old Pro license, then offer them 50% off upgrading!
                                             if ( true ===  in_array($license_type, ['pro', 'pro-old']) ) {
                                                 $proprice = $proprice / 2;
-                                                $text = __('Upgrade to Pro Plus for', WE_LS_SLUG) . ' &pound;' . $proprice . ' ' . __('a year', WE_LS_SLUG) . __(' (50% discount)', WE_LS_SLUG);
+                                                $text = __('Upgrade to Pro Plus for', WE_LS_SLUG) . ' &pound;' . $proprice . ' ' . __('a year', WE_LS_SLUG) .
+                                                    /* xgettext:no-php-format */
+                                                    __(' (50% discount)', WE_LS_SLUG);
                                                 $link = WE_LS_UPGRADE_TO_PRO_PLUS_UPGRADE_URL;
                                             }
 

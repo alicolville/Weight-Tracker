@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2017-09-29 15:56+0100\n"
-"PO-Revision-Date: 2017-09-29 15:56+0100\n"
+"POT-Creation-Date: 2017-10-22 14:49+0100\n"
+"PO-Revision-Date: 2017-10-22 14:49+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: hu_HU\n"
@@ -62,7 +62,7 @@ msgstr "A bejegyzéshez be kell jelentkezni"
 
 #: includes/core.php:76 pages/page.settings.php:477
 #: pro-features/footable.php:56 pro-features/functions.php:6
-#: pro-features/user-preferences.php:168
+#: pro-features/user-preferences.php:174
 msgid "Inches"
 msgstr "Hüvelyk"
 
@@ -93,7 +93,7 @@ msgid "Add a new weight"
 msgstr "Új süly hozzáadása"
 
 #: includes/core.php:274 pro-features/admin-pages/data-search-results.php:45
-#: pro-features/functions.pages.php:93
+#: pro-features/functions.pages.php:96
 msgid "Target Weight"
 msgstr "Cél súly"
 
@@ -117,7 +117,7 @@ msgid "Stones"
 msgstr "Stones"
 
 #: includes/core.php:369 includes/core.php:372 pages/page.settings.php:88
-#: pro-features/user-preferences.php:160
+#: pro-features/user-preferences.php:166
 msgid "Pounds"
 msgstr "Font"
 
@@ -248,39 +248,39 @@ msgstr "Törölni szeretné? Ha igen nyomja meg az OK-t"
 msgid "Please enter a valid measurement ("
 msgstr "Írjon be érvényes adatot"
 
-#: includes/core.php:717
+#: includes/core.php:719
 #, fuzzy
 msgid "Please select or enter a value for height."
 msgstr "Kérjük adja meg a kg-ban"
 
-#: includes/core.php:718
+#: includes/core.php:720
 msgid "Please select or enter a value for activity level."
 msgstr ""
 
-#: includes/core.php:719
+#: includes/core.php:721
 #, fuzzy
 msgid "Please select or enter a value for gender."
 msgstr "Kérjük adja meg a kg-ban"
 
-#: includes/core.php:720
+#: includes/core.php:722
 #, fuzzy
 msgid "Please enter a valid date."
 msgstr "Kérjük adja meg az érvényes dátumot"
 
-#: includes/core.php:721
+#: includes/core.php:723
 #, fuzzy
 msgid "Please select your aim."
 msgstr "Kérjük adja meg a kg-ban"
 
-#: includes/core.php:722
+#: includes/core.php:733
 msgid "This field is required."
 msgstr ""
 
-#: includes/core.php:737
+#: includes/core.php:751
 msgid "Done"
 msgstr ""
 
-#: includes/core.php:738
+#: includes/core.php:752
 msgid "Today"
 msgstr ""
 
@@ -295,7 +295,7 @@ msgid "The following MySQL tables are missing for this plugin"
 msgstr "Az alábbi MySQL táblák hiányoznak a plugint"
 
 #: includes/functions.php:294 includes/shortcode-various.php:241
-#: pro-features/user-preferences.php:158
+#: pro-features/user-preferences.php:164
 msgid "Kg"
 msgstr "Kilogramm"
 
@@ -333,141 +333,141 @@ msgstr "Belépés"
 msgid "Server Default"
 msgstr ""
 
-#: includes/globals.php:136 pro-features/footable.php:223
+#: includes/globals.php:149 pro-features/footable.php:223
 msgid "Forearm - Left"
 msgstr "Alkar - Bal"
 
-#: includes/globals.php:136 pro-features/footable.php:223
+#: includes/globals.php:149 pro-features/footable.php:223
 msgid "FL"
 msgstr ""
 
-#: includes/globals.php:137 pro-features/footable.php:224
+#: includes/globals.php:150 pro-features/footable.php:224
 msgid "Forearm - Right"
 msgstr "Alkar - jobb"
 
-#: includes/globals.php:137 pro-features/footable.php:224
+#: includes/globals.php:150 pro-features/footable.php:224
 msgid "FR"
 msgstr ""
 
-#: includes/globals.php:138 pro-features/footable.php:225
+#: includes/globals.php:151 pro-features/footable.php:225
 #, fuzzy
 #| msgid "Bicep - Left"
 msgid "Biceps - Left"
 msgstr "Bicepsz - Bal"
 
-#: includes/globals.php:138 pro-features/footable.php:225
+#: includes/globals.php:151 pro-features/footable.php:225
 msgid "BL"
 msgstr ""
 
-#: includes/globals.php:139 pro-features/footable.php:226
+#: includes/globals.php:152 pro-features/footable.php:226
 #, fuzzy
 #| msgid "Bicep - Right"
 msgid "Biceps - Right"
 msgstr "Bicepsz - jobb"
 
-#: includes/globals.php:139 pro-features/footable.php:226
+#: includes/globals.php:152 pro-features/footable.php:226
 msgid "BR"
 msgstr ""
 
-#: includes/globals.php:140 pro-features/footable.php:227
+#: includes/globals.php:153 pro-features/footable.php:227
 msgid "Calf - Left"
 msgstr "Vádli bal"
 
-#: includes/globals.php:140 pro-features/footable.php:227
+#: includes/globals.php:153 pro-features/footable.php:227
 msgid "CL"
 msgstr ""
 
-#: includes/globals.php:141 pro-features/footable.php:228
+#: includes/globals.php:154 pro-features/footable.php:228
 msgid "Calf - Right"
 msgstr "Vádli jobb"
 
-#: includes/globals.php:141 pro-features/footable.php:228
+#: includes/globals.php:154 pro-features/footable.php:228
 msgid "CR"
 msgstr ""
 
-#: includes/globals.php:142 pro-features/footable.php:229
+#: includes/globals.php:155 pro-features/footable.php:229
 msgid "Thigh - Left"
 msgstr "Comb bal"
 
-#: includes/globals.php:142 pro-features/footable.php:229
+#: includes/globals.php:155 pro-features/footable.php:229
 msgid "TL"
 msgstr ""
 
-#: includes/globals.php:143 pro-features/footable.php:230
+#: includes/globals.php:156 pro-features/footable.php:230
 msgid "Thigh - Right"
 msgstr "Comb jobb"
 
-#: includes/globals.php:143 pro-features/footable.php:230
+#: includes/globals.php:156 pro-features/footable.php:230
 msgid "TR"
 msgstr ""
 
-#: includes/globals.php:144 pro-features/footable.php:231
+#: includes/globals.php:157 pro-features/footable.php:231
 msgid "Waist"
 msgstr "Derék"
 
-#: includes/globals.php:144 pro-features/footable.php:231
+#: includes/globals.php:157 pro-features/footable.php:231
 msgid "W"
 msgstr ""
 
-#: includes/globals.php:145 pro-features/footable.php:232
+#: includes/globals.php:158 pro-features/footable.php:232
 msgid "Bust / Chest"
 msgstr "Mell"
 
-#: includes/globals.php:145 pro-features/footable.php:232
+#: includes/globals.php:158 pro-features/footable.php:232
 msgid "BC"
 msgstr ""
 
-#: includes/globals.php:146 pro-features/footable.php:233
+#: includes/globals.php:159 pro-features/footable.php:233
 msgid "Shoulders"
 msgstr ""
 
-#: includes/globals.php:146 pro-features/footable.php:233
+#: includes/globals.php:159 pro-features/footable.php:233
 #, fuzzy
 msgid "S"
 msgstr "St"
 
-#: includes/globals.php:147 pro-features/footable.php:234
-#: pro-features/functions.pages.php:117
+#: includes/globals.php:160 pro-features/footable.php:234
+#: pro-features/functions.pages.php:123
 msgid "Height"
 msgstr "Magasság"
 
-#: includes/globals.php:147 pro-features/footable.php:234
+#: includes/globals.php:160 pro-features/footable.php:234
 msgid "H"
 msgstr ""
 
-#: includes/globals.php:148 pro-features/footable.php:235
+#: includes/globals.php:161 pro-features/footable.php:235
 msgid "Buttocks"
 msgstr "Fenék"
 
-#: includes/globals.php:148 pro-features/footable.php:235
+#: includes/globals.php:161 pro-features/footable.php:235
 msgid "B"
 msgstr ""
 
-#: includes/globals.php:149 pro-features/footable.php:236
+#: includes/globals.php:162 pro-features/footable.php:236
 msgid "Hips"
 msgstr "Csipő"
 
-#: includes/globals.php:149 pro-features/footable.php:236
+#: includes/globals.php:162 pro-features/footable.php:236
 msgid "HI"
 msgstr ""
 
-#: includes/globals.php:150 pro-features/footable.php:237
+#: includes/globals.php:163 pro-features/footable.php:237
 msgid "Navel"
 msgstr "Köldök"
 
-#: includes/globals.php:150 pro-features/footable.php:237
+#: includes/globals.php:163 pro-features/footable.php:237
 msgid "NA"
 msgstr ""
 
-#: includes/globals.php:151 pro-features/footable.php:238
+#: includes/globals.php:164 pro-features/footable.php:238
 msgid "Neck"
 msgstr ""
 
-#: includes/globals.php:151 pro-features/footable.php:238
+#: includes/globals.php:164 pro-features/footable.php:238
 msgid "NE"
 msgstr ""
 
-#: includes/hooks.php:8 pro-features/functions.pages.php:175
+#: includes/hooks.php:8 pro-features/functions.pages.php:184
 msgid "Settings"
 msgstr "Beállítások"
 
@@ -498,50 +498,40 @@ msgstr ""
 msgid "An error occurred while trying to save the user's preferences."
 msgstr "Hiba történt mentés közben"
 
-#: includes/hooks.php:196
-#, fuzzy
-msgid "Weight Loss Tracker plugin has expired on your site!"
-msgstr "Súly csökkenés napló"
-
-#: includes/hooks.php:197
-msgid ""
-"Please visit your Dashboard to renew your license (Weight Tracker > Upgrade) "
-msgstr ""
-
-#: includes/license.php:148
+#: includes/license.php:144
 msgid "License missing"
 msgstr ""
 
-#: includes/license.php:155
+#: includes/license.php:151
 msgid "Could not decode / verify license"
 msgstr ""
 
-#: includes/license.php:160
+#: includes/license.php:156
 msgid "Invalid license hash"
 msgstr ""
 
-#: includes/license.php:165
+#: includes/license.php:161
 msgid ""
 "This license doesn't appear to be for this site (no match on site hash)."
 msgstr ""
 
-#: includes/license.php:173
+#: includes/license.php:169
 msgid "This license has expired."
 msgstr ""
 
-#: includes/license.php:230
+#: includes/license.php:226
 msgid "None"
 msgstr ""
 
-#: includes/license.php:240
+#: includes/license.php:236
 msgid "Yearly Pro"
 msgstr ""
 
-#: includes/license.php:243
+#: includes/license.php:239
 msgid "Legacy Pro"
 msgstr ""
 
-#: includes/license.php:246 pages/page.settings.php:73
+#: includes/license.php:242 pages/page.settings.php:73
 msgid "Pro Plus"
 msgstr ""
 
@@ -561,7 +551,7 @@ msgstr "Nincs felhasználó által meghatározott (kivonat)"
 msgid "No user specified"
 msgstr "Nincsenek felhasználók"
 
-#: includes/shortcode-various.php:106 pro-features/functions.pages.php:99
+#: includes/shortcode-various.php:106 pro-features/functions.pages.php:102
 #, fuzzy
 msgid "No target set"
 msgstr "A cél súly"
@@ -612,7 +602,7 @@ msgid "View BMI, BMR and suggested Calorie and Macronutrient intake"
 msgstr ""
 
 #: includes/shortcode-weight-loss-tracker.php:106
-#: pro-features/functions.pages.php:179 pro-features/user-preferences.php:153
+#: pro-features/functions.pages.php:188 pro-features/user-preferences.php:159
 msgid "Preferences"
 msgstr ""
 
@@ -763,105 +753,105 @@ msgid "Upgrade to Pro Plus for"
 msgstr "Pro verzió megtekintése"
 
 #: pages/page.license.php:134 pages/page.license.php:140
-#: pages/page.license.php:252 pages/page.license.php:266
+#: pages/page.license.php:254 pages/page.license.php:268
 msgid "a year"
 msgstr ""
 
-#: pages/page.license.php:140
-#, php-format
+#: pages/page.license.php:142
+#, no-php-format
 msgid " (50% discount)"
 msgstr ""
 
-#: pages/page.license.php:156
+#: pages/page.license.php:158
 msgid "Switch to a yearly Pro license for "
 msgstr ""
 
-#: pages/page.license.php:156 pages/page.license.php:157
+#: pages/page.license.php:158 pages/page.license.php:159
 msgid " a year"
 msgstr ""
 
-#: pages/page.license.php:157
+#: pages/page.license.php:159
 #, fuzzy
 msgid "Upgrade to Pro for "
 msgstr "Pro verzió megtekintése"
 
-#: pages/page.license.php:173
+#: pages/page.license.php:175
 #, fuzzy
 msgid "Add or Update License"
 msgstr "Liszenc hozzáadása"
 
-#: pages/page.license.php:178
+#: pages/page.license.php:180
 msgid ""
 "Copy and paste the license given to you by YeKen into this box and click "
 "\"Apply License\""
 msgstr ""
 
-#: pages/page.license.php:181
+#: pages/page.license.php:183
 #, fuzzy
 msgid "Apply License"
 msgstr "Liszenc hozzáadása"
 
-#: pages/page.license.php:186
+#: pages/page.license.php:188
 msgid "Your License Information"
 msgstr ""
 
-#: pages/page.license.php:190
+#: pages/page.license.php:192
 msgid "Site Hash"
 msgstr ""
 
-#: pages/page.license.php:194 pro-features/widget-chart.php:110
+#: pages/page.license.php:196 pro-features/widget-chart.php:110
 msgid "Type"
 msgstr "Típus"
 
-#: pages/page.license.php:198
+#: pages/page.license.php:200
 msgid "Expires"
 msgstr ""
 
-#: pages/page.license.php:203
+#: pages/page.license.php:205
 msgid "Never"
 msgstr ""
 
-#: pages/page.license.php:207
+#: pages/page.license.php:209
 msgid "n/a"
 msgstr ""
 
-#: pages/page.license.php:217
+#: pages/page.license.php:219
 msgid "Your Existing License"
 msgstr ""
 
-#: pages/page.license.php:223
+#: pages/page.license.php:225
 #, fuzzy
 msgid "Remove License"
 msgstr "Liszenc hozzáadása"
 
-#: pages/page.license.php:232
+#: pages/page.license.php:234
 msgid "Documentation"
 msgstr ""
 
-#: pages/page.license.php:235
+#: pages/page.license.php:237
 msgid "Need further help or information, please visit our documentation site:"
 msgstr ""
 
-#: pages/page.license.php:252
+#: pages/page.license.php:254
 #, fuzzy
 msgid "Below is a list of the intended features of the Pro Plus version"
 msgstr "Lista a Pro verzió funkcióiról"
 
-#: pages/page.license.php:252 pages/page.license.php:266
+#: pages/page.license.php:254 pages/page.license.php:268
 msgid "You can upgrade for"
 msgstr ""
 
-#: pages/page.license.php:266
+#: pages/page.license.php:268
 #, fuzzy
 msgid "Below is a list of the intended features of the Pro version"
 msgstr "Lista a Pro verzió funkcióiról"
 
-#: pages/page.license.php:280 pro-features/admin-pages/data-summary.php:177
-#: pro-features/functions.pages.php:204
+#: pages/page.license.php:282 pro-features/admin-pages/data-summary.php:177
+#: pro-features/functions.pages.php:213
 msgid "Are you sure you?"
 msgstr "Biztos benne?"
 
-#: pages/page.license.php:281
+#: pages/page.license.php:283
 msgid ""
 "Are you sure you wish to remove the license for this site? Removing it may "
 "cause your user's to lose functionality."
@@ -919,7 +909,7 @@ msgstr ""
 msgid "Weight Units"
 msgstr "Válasszon mértékegységet"
 
-#: pages/page.settings.php:87 pro-features/user-preferences.php:159
+#: pages/page.settings.php:87 pro-features/user-preferences.php:165
 msgid "Stones & Pounds"
 msgstr "font"
 
@@ -934,11 +924,11 @@ msgstr "Választhat Kg és Font között."
 msgid "UK or US Date format?"
 msgstr "Angol, vagy amerikai dátumformátum?"
 
-#: pages/page.settings.php:97 pro-features/user-preferences.php:177
+#: pages/page.settings.php:97 pro-features/user-preferences.php:183
 msgid "UK (DD/MM/YYYY)"
 msgstr "NN/HH/ÉÉÉÉ"
 
-#: pages/page.settings.php:98 pro-features/user-preferences.php:178
+#: pages/page.settings.php:98 pro-features/user-preferences.php:184
 msgid "US (MM/DD/YYYY)"
 msgstr "HH/NN/ÉÉÉÉ"
 
@@ -1354,7 +1344,7 @@ msgstr ""
 msgid "Measurement Units"
 msgstr "Mértékegységek"
 
-#: pages/page.settings.php:476 pro-features/user-preferences.php:167
+#: pages/page.settings.php:476 pro-features/user-preferences.php:173
 msgid "Centimetres"
 msgstr "Centiméter"
 
@@ -1483,12 +1473,12 @@ msgid "Email"
 msgstr ""
 
 #: pro-features/admin-pages/data-search-results.php:42
-#: pro-features/functions.pages.php:77
+#: pro-features/functions.pages.php:80
 msgid "No. of Entries"
 msgstr ""
 
 #: pro-features/admin-pages/data-search-results.php:43
-#: pro-features/functions.pages.php:81
+#: pro-features/functions.pages.php:84
 #, fuzzy
 msgid "Start Weight"
 msgstr "Cél súly"
@@ -1590,17 +1580,17 @@ msgid "Export all data"
 msgstr ""
 
 #: pro-features/admin-pages/data-summary.php:153
-#: pro-features/functions.pages.php:166
+#: pro-features/functions.pages.php:175
 msgid "To CSV"
 msgstr ""
 
 #: pro-features/admin-pages/data-summary.php:157
-#: pro-features/functions.pages.php:170
+#: pro-features/functions.pages.php:179
 msgid "To JSON"
 msgstr ""
 
 #: pro-features/admin-pages/data-summary.php:162
-#: pro-features/functions.pages.php:194
+#: pro-features/functions.pages.php:203
 #, fuzzy
 msgid "Delete Data"
 msgstr "Törlés"
@@ -1654,7 +1644,7 @@ msgid "Please ensure the values for Proteins, Carbohydrates and Fats (within "
 msgstr ""
 
 #: pro-features/admin-pages/data-user.php:121
-#: pro-features/plus/harris.benedict.php:235
+#: pro-features/plus/harris.benedict.php:240
 #, fuzzy
 msgid "settings"
 msgstr "Beállítások"
@@ -2013,99 +2003,99 @@ msgstr "View all weeks"
 msgid "User Information"
 msgstr ""
 
-#: pro-features/functions.pages.php:85
+#: pro-features/functions.pages.php:88
 #, fuzzy
 msgid "Latest Weight"
 msgstr "Cél súly"
 
-#: pro-features/functions.pages.php:89
+#: pro-features/functions.pages.php:92
 msgid "Diff. from Start"
 msgstr ""
 
-#: pro-features/functions.pages.php:105
+#: pro-features/functions.pages.php:108
 msgid "Diff. from Target"
 msgstr ""
 
-#: pro-features/functions.pages.php:109
+#: pro-features/functions.pages.php:112
 msgid "Current BMI"
 msgstr ""
 
-#: pro-features/functions.pages.php:110
+#: pro-features/functions.pages.php:113
 #, fuzzy
 msgid "No height specified"
 msgstr "Nincsenek felhasználók"
 
-#: pro-features/functions.pages.php:113
+#: pro-features/functions.pages.php:119
 msgid "Aim"
 msgstr ""
 
-#: pro-features/functions.pages.php:121
+#: pro-features/functions.pages.php:127
 msgid "Gender"
 msgstr ""
 
-#: pro-features/functions.pages.php:125
+#: pro-features/functions.pages.php:131
 msgid "Activity Level"
 msgstr ""
 
-#: pro-features/functions.pages.php:129
+#: pro-features/functions.pages.php:135
 msgid "Date of Birth"
 msgstr ""
 
-#: pro-features/functions.pages.php:133
+#: pro-features/functions.pages.php:139
 msgid "BMR"
 msgstr ""
 
-#: pro-features/functions.pages.php:138
+#: pro-features/functions.pages.php:144
 #, fuzzy
 msgid "Missing data"
 msgstr "Meglévő adatok törlése"
 
-#: pro-features/functions.pages.php:149 pro-features/functions.pages.php:153
+#: pro-features/functions.pages.php:158 pro-features/functions.pages.php:162
 #, fuzzy
 msgid "Add Entry"
 msgstr "Mentés"
 
-#: pro-features/functions.pages.php:157
+#: pro-features/functions.pages.php:166
 #, fuzzy
 msgid "Edit Target"
 msgstr "Cél beállítása"
 
-#: pro-features/functions.pages.php:162
+#: pro-features/functions.pages.php:171
 msgid "Export Data"
 msgstr ""
 
-#: pro-features/functions.pages.php:185
+#: pro-features/functions.pages.php:194
 #, fuzzy
 msgid "Delete Cache"
 msgstr "Törlés"
 
-#: pro-features/functions.pages.php:189
+#: pro-features/functions.pages.php:198
 msgid "Delete Cache for this user"
 msgstr ""
 
-#: pro-features/functions.pages.php:198
+#: pro-features/functions.pages.php:207
 msgid "Delete ALL data for this user"
 msgstr ""
 
-#: pro-features/functions.pages.php:205
+#: pro-features/functions.pages.php:214
 #, fuzzy
 msgid "Are you sure you wish to remove the data for this user?"
 msgstr "Biztos törli?"
 
-#: pro-features/functions.pages.php:239
+#: pro-features/functions.pages.php:287
 msgid "Back"
 msgstr ""
 
-#: pro-features/functions.pages.php:241
+#: pro-features/functions.pages.php:289
 msgid "WordPress Record"
 msgstr ""
 
-#: pro-features/functions.pages.php:242
+#: pro-features/functions.pages.php:290
 #, fuzzy
 msgid "Weight Tracker Record"
 msgstr "Súly csökkenés napló"
 
-#: pro-features/functions.pages.php:261
+#: pro-features/functions.pages.php:309
 msgid "Error: The User's ID was missing..."
 msgstr ""
 
@@ -2133,11 +2123,11 @@ msgstr "túlsúlyos"
 msgid "Heavily Overweight"
 msgstr "Erősen túlsúlyos"
 
-#: pro-features/functions.php:215 pro-features/plus/harris.benedict.php:230
+#: pro-features/functions.php:215 pro-features/plus/harris.benedict.php:235
 msgid "Female"
 msgstr ""
 
-#: pro-features/functions.php:216 pro-features/plus/harris.benedict.php:230
+#: pro-features/functions.php:216 pro-features/plus/harris.benedict.php:235
 msgid "Male"
 msgstr ""
 
@@ -2210,9 +2200,9 @@ msgstr "Nincsenek felhasználók"
 msgid "No Weight entered"
 msgstr "Válasszon mértékegységet"
 
-#: pro-features/plus/harris.benedict.php:79
-#: pro-features/plus/harris.benedict.php:162
-#: pro-features/plus/harris.benedict.php:199
+#: pro-features/plus/harris.benedict.php:81
+#: pro-features/plus/harris.benedict.php:165
+#: pro-features/plus/harris.benedict.php:204
 #: pro-features/plus/macronutrient.calculator.php:80
 #: pro-features/plus/macronutrient.calculator.php:182
 #: pro-features/plus/macronutrient.calculator.php:221
@@ -2221,46 +2211,46 @@ msgid ""
 "i.e. Activity Level, Date of Birth, Current Weight, Gender and Height."
 msgstr ""
 
-#: pro-features/plus/harris.benedict.php:95
+#: pro-features/plus/harris.benedict.php:97
 #: pro-features/plus/macronutrient.calculator.php:103
 msgid "Total"
 msgstr ""
 
-#: pro-features/plus/harris.benedict.php:96
+#: pro-features/plus/harris.benedict.php:98
 #: pro-features/plus/macronutrient.calculator.php:104
 msgid "Breakfast"
 msgstr ""
 
-#: pro-features/plus/harris.benedict.php:97
+#: pro-features/plus/harris.benedict.php:99
 #: pro-features/plus/macronutrient.calculator.php:105
 msgid "Lunch"
 msgstr ""
 
-#: pro-features/plus/harris.benedict.php:98
+#: pro-features/plus/harris.benedict.php:100
 #: pro-features/plus/macronutrient.calculator.php:106
 msgid "Dinner"
 msgstr ""
 
-#: pro-features/plus/harris.benedict.php:99
+#: pro-features/plus/harris.benedict.php:101
 #: pro-features/plus/macronutrient.calculator.php:107
 msgid "Snacks"
 msgstr ""
 
-#: pro-features/plus/harris.benedict.php:112
+#: pro-features/plus/harris.benedict.php:115
 #: pro-features/plus/macronutrient.calculator.php:101
 msgid "Maintain"
 msgstr ""
 
-#: pro-features/plus/harris.benedict.php:130
+#: pro-features/plus/harris.benedict.php:133
 #: pro-features/plus/macronutrient.calculator.php:101
 msgid "Lose"
 msgstr ""
 
-#: pro-features/plus/harris.benedict.php:231
+#: pro-features/plus/harris.benedict.php:236
 msgid "calories for weight loss are capped at "
 msgstr ""
 
-#: pro-features/plus/harris.benedict.php:233
+#: pro-features/plus/harris.benedict.php:238
 msgid "This can be modified within "
 msgstr ""
 
@@ -2581,24 +2571,24 @@ msgstr ""
 msgid "Aim:"
 msgstr ""
 
-#: pro-features/user-preferences.php:180
+#: pro-features/user-preferences.php:186
 msgid "Save Settings"
 msgstr "Beállítások"
 
-#: pro-features/user-preferences.php:186
+#: pro-features/user-preferences.php:192
 msgid "Delete existing data"
 msgstr "Meglévő adatok törlése"
 
-#: pro-features/user-preferences.php:192
+#: pro-features/user-preferences.php:198
 msgid ""
 "The button below allows you to clear your existing weight history. Confirm:"
 msgstr "Az alábbi lehetőséggel törli az előzményeket: Megerősítés"
 
-#: pro-features/user-preferences.php:195
+#: pro-features/user-preferences.php:201
 msgid "DELETE ALL DATA"
 msgstr ""
 
-#: pro-features/user-preferences.php:197
+#: pro-features/user-preferences.php:203
 msgid "Delete"
 msgstr "Törlés"
 
@@ -2749,6 +2739,10 @@ msgstr ""
 #: pro-features/widget-progress.php:123
 msgid "Text to be displayed under bar. Use {t} to display target weight."
 msgstr ""
+
+#, fuzzy
+#~ msgid "Weight Loss Tracker plugin has expired on your site!"
+#~ msgstr "Súly csökkenés napló"
 
 #~ msgid "Settings that effect the user's overall experience"
 #~ msgstr "Ebben az értelemben a felhasználó átfogó tapasztalat beállítások"
