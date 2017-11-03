@@ -94,6 +94,21 @@ function ws_ls_shortcode_if_remove_p_br($text) {
 
 /**
  *
+ * Given a shortcode IF field, check it is populated (wrap around ws_ls_shortcode_if_value_exist() )
+ *
+ * @param $user_id
+ * @param $fields
+ * @return bool
+ */
+function ws_ls_if($fields, $user_id = false) {
+
+	$user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
+
+	return ws_ls_shortcode_if_value_exist($user_id, $fields);
+}
+
+/**
+ *
  * Given a shortcode IF field, check it is populated
  *
  * @param $user_id

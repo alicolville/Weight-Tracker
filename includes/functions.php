@@ -785,7 +785,7 @@ function ws_ls_photo_max_upload_size() {
 	$file_size = WE_LS_PHOTOS_MAX_SIZE;
 	$max_size = ws_ls_file_upload_max_size();
 
-	if (false === defined('WE_LS_PHOTOS_MAX_SIZE')) {
+	if (false === defined('WE_LS_PHOTOS_MAX_SIZE') || 0 === WE_LS_PHOTOS_MAX_SIZE) {
 		return intval($max_size);
 	}
 
