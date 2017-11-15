@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight, loss, lose, helper, bmi, body, mass, index, graph, track, stones, kg, table, data, plot, target, history, pounds, responsive, chart, measurements, cm, centimeters, inches, hip, waist, bicep, thigh
 Requires at least: 4.4.0
 Tested up to: 4.8.2
-Stable tag: 5.2.15
+Stable tag: 5.2.16
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate Link: https://www.paypal.me/yeken
@@ -14,7 +14,7 @@ Allow registered users of your website to track their weight and relevant body m
 
 = Documentation =
 
-Use our free site for tracking your weight which shows of some of the plugin's feature: [TrackYourWeight.co.uk - Demo Site](https://www.trackyourweight.co.uk "TrackYourWeight.co.uk")
+Use our free site for tracking your weight which shows off some of the plugin's feature: [TrackYourWeight.co.uk - Demo Site](https://www.trackyourweight.co.uk "TrackYourWeight.co.uk")
 
 = Core Features =
 
@@ -137,9 +137,15 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 == Changelog ==
 
+= 5.2.16 =
+
+* Improvement: Added additional argument for [wlt] shortcode that disables the check to see if [wlt] has already been placed on the page. Some users (and clashing plugins) were causing it to fail.
+* Bug fix: Allow decimal entries for pounds (when in stones and pounds).
+* Bug fix: When display comparison values, a rounding to one decimal place was causing the difference values to be slightly out. This has been changed to two decimals.
+
 = 5.2.15 =
 
-* Bug fix: When "Server Default" was selected it would not allow any photo uploads to happen. This has been fixed.
+* Bug fix: When "Server Default" was selected for Photo uploads it would not allow any photo uploads to happen. This has been fixed.
 * Added helper function ws_ls_if() for simplified IF checks.
 
 = 5.2.14 =

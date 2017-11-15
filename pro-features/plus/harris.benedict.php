@@ -218,7 +218,7 @@
 		return ws_ls_harris_benedict_render_table($arguments['user-id'], $arguments['error-message'], $arguments['css-class']);
 	}
 	add_shortcode( 'wlt-calories-table', 'ws_ls_shortcode_harris_benedict_table' );
-
+	
     /**
      *
      * Depending on the user's gender, display the calorie cap information
