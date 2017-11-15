@@ -9,17 +9,6 @@
 			global $save_response;
 			global $ws_ls_wlt_already_placed;
 
-			if ( true === $ws_ls_wlt_already_placed ) {
-			   return '<p>' . __('This shortcode can only be placed once on a page / post.', WE_LS_SLUG) . '</p>';
-            }
-
-			ws_ls_enqueue_files();
-
-			// Display error if user not logged in
-			if (!is_user_logged_in())	{
-				return ws_ls_display_blockquote(__('You need to be logged in to record your weight.', WE_LS_SLUG) , '', false, true);
-			}
-
             $shortcode_arguments = shortcode_atts(
             array(
                 'min-chart-points' => 2,					// Minimum number of data entries before chart is shown
@@ -32,7 +21,8 @@
                 'hide-tab-advanced' => false,               // Hide Advanced tab (macroN, calories, etc)
                 'hide-advanced-narrative' => false,         // Hide text describing BMR, MarcoN, etc
                 'disable-advanced-tables' => false,         // Disable advanced data tables.
-                'disable-tabs' => false                     // Disable using tabs.
+                'disable-tabs' => false,                    // Disable using tabs.
+				'disable-second-check' => false				// Disable check to see if [wlt] placed more than once
                ), $user_defined_arguments );
 
 			// Validate arguments
@@ -47,6 +37,18 @@
             $shortcode_arguments['hide-advanced-narrative'] = ws_ls_force_bool_argument($shortcode_arguments['hide-advanced-narrative']);
             $shortcode_arguments['disable-advanced-tables'] = ws_ls_force_bool_argument($shortcode_arguments['disable-advanced-tables']);
             $shortcode_arguments['disable-tabs'] = ws_ls_force_bool_argument($shortcode_arguments['disable-tabs']);
+			$shortcode_arguments['disable-second-check'] = ws_ls_force_bool_argument($shortcode_arguments['disable-second-check']);
+
+			if ( true === $ws_ls_wlt_already_placed && false === $shortcode_arguments['disable-second-check'] ) {
+				return '<p>' . __('This shortcode can only be placed once on a page / post.', WE_LS_SLUG) . '</p>';
+			}
+
+			ws_ls_enqueue_files();
+
+			// Display error if user not logged in
+			if (!is_user_logged_in())	{
+				return ws_ls_display_blockquote(__('You need to be logged in to record your weight.', WE_LS_SLUG) , '', false, true);
+			}
 
             $user_id = get_current_user_id();
             $use_tabs = (false === $shortcode_arguments['disable-tabs']);

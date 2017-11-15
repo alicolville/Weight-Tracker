@@ -111,10 +111,10 @@ function ws_ls_data_table_get_rows($user_id = false, $max_entries = false, $smal
 
 					if ($data['kg'] > $previous_user_weight[$data['user_id']]) {
 						$gain_class = 'gain';
-						$gain_loss = ws_ls_convert_kg_into_relevant_weight_String($data['kg'] - $previous_user_weight[$data['user_id']], false, $convert_weight_format);
+						$gain_loss = ws_ls_convert_kg_into_relevant_weight_String($data['kg'] - $previous_user_weight[$data['user_id']], true, $convert_weight_format);
 					} elseif ($data['kg'] < $previous_user_weight[$data['user_id']]) {
 						$gain_class = 'loss';
-						$gain_loss = ws_ls_convert_kg_into_relevant_weight_String($data['kg'] - $previous_user_weight[$data['user_id']], false, $convert_weight_format);
+						$gain_loss = ws_ls_convert_kg_into_relevant_weight_String($data['kg'] - $previous_user_weight[$data['user_id']], true, $convert_weight_format);
 					} elseif ($data['kg'] == $previous_user_weight[$data['user_id']]) {
 						$gain_class = 'same';
 					}
