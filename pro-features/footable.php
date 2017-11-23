@@ -109,6 +109,8 @@ function ws_ls_data_table_get_rows($user_id = false, $max_entries = false, $smal
 
 				if(false === empty($previous_user_weight[$data['user_id']])) {
 
+					$row['previous-weight'] = $previous_user_weight[$data['user_id']];
+
 					if ($data['kg'] > $previous_user_weight[$data['user_id']]) {
 						$gain_class = 'gain';
 						$gain_loss = ws_ls_convert_kg_into_relevant_weight_String($data['kg'] - $previous_user_weight[$data['user_id']], true, $convert_weight_format);
@@ -118,6 +120,9 @@ function ws_ls_data_table_get_rows($user_id = false, $max_entries = false, $smal
 					} elseif ($data['kg'] == $previous_user_weight[$data['user_id']]) {
 						$gain_class = 'same';
 					}
+
+					$row['previous-weight-diff'] = $data['kg'] - $previous_user_weight[$data['user_id']];
+
 				} else {
 					$gain_loss = __('First entry', WE_LS_SLUG);
 				}
@@ -152,13 +157,7 @@ function ws_ls_data_table_get_rows($user_id = false, $max_entries = false, $smal
 				switch ($column_name) {
 					case 'kg':
 						$row[$column_name]['options']['sortValue'] = $data['kg'];
-
-						if ( true === $front_end ) {
-							$row[$column_name]['value'] = ws_ls_convert_kg_into_relevant_weight_String($data['kg'] , false, $convert_weight_format);
-						} else {
-							$row[$column_name]['value'] = $data['display'];
-						}
-
+						$row[$column_name]['value'] = ws_ls_convert_kg_into_relevant_weight_String($data['kg'] , false, $convert_weight_format);
 						break;
 					case 'user_nicename':
 						$row[$column_name]['options']['sortValue'] = $data['user_nicename'];

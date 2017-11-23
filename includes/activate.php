@@ -120,6 +120,9 @@
 			ws_ls_activate();
             ws_ls_stats_clear_last_updated_date(); // This will force all stat entries to be recreated.
 
+			// Delete all cache for plugin
+			ws_ls_delete_all_cache();
+
             // Check the license is still valid
             ws_ls_licences_cron();
  		}

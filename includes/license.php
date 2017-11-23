@@ -123,6 +123,9 @@ function ws_ls_license_apply($license) {
  */
 function ws_ls_license_remove($type = 'both') {
 
+	// Fire comms to Yeken to record expire
+	do_action(WE_LS_HOOK_LICENSE_EXPIRED);
+
     if(true === in_array($type, ['new', 'both'])) {
         delete_option(WS_LS_LICENSE_2);
         delete_option(WS_LS_LICENSE_2_TYPE);
