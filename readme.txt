@@ -139,6 +139,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 = 5.2.18 =
 
+* Improvement: Added new options to allow admins to specify font family and colour for charts.
 * Updated Chart.js to 2.7.1
 
 = 5.2.17 =
