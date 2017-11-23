@@ -356,7 +356,7 @@ function ws_ls_settings_page() {
                                                     <th scope="row"><?php echo __( 'Font Family', WE_LS_SLUG ); ?></th>
                                                     <td>
                                                         <input id="ws-ls-font-family" name="ws-ls-font-family" type="text" maxlength="80" class="large-text" value="<?php esc_attr_e(WE_LS_FONT_FAMILY); ?>">
-                                                        <p><?php echo __('Specify one or more fonts that should be used when rendering text on the graph. Separate multiple emails with a comma. Leave blank to use the default.', WE_LS_SLUG); ?></p>
+                                                        <p><?php echo __('Specify one or more fonts that should be used when rendering text on the graph. Separate multiple fonts with a comma. Leave blank to use the default.', WE_LS_SLUG); ?></p>
                                                     </td>
                                                 </tr>
 												<tr>
