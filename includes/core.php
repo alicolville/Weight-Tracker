@@ -223,6 +223,10 @@
 		$graph_line_options['legend']['labels']['boxWidth'] = 10;
 		$graph_line_options['legend']['labels']['fontSize'] = 10;
 
+		// Font settings
+        $graph_line_options['fontColor'] = WE_LS_TEXT_COLOUR;
+        $graph_line_options['fontFamily'] = WE_LS_FONT_FAMILY;
+
 		// Embed JavaScript options object for this graph into page
 		wp_localize_script( 'jquery-chart-ws-ls', $chart_id . '_options', $graph_line_options );
 

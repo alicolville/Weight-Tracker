@@ -96,6 +96,8 @@
 		'WE_LS_TARGET_LINE_COLOUR' => '#76bada',
 		'WE_LS_WEIGHT_LINE_COLOUR' => '#aeaeae',
 		'WE_LS_WEIGHT_FILL_COLOUR' => '#f9f9f9',
+        'WE_LS_FONT_FAMILY' => '',
+        'WE_LS_TEXT_COLOUR' => '#AEAEAE',
 		'WE_LS_US_DATE' => false,
 		'WE_LS_CHART_TYPE' => 'line', //line, bar
 		'WS_LS_ADVANCED_TABLES' => true,
@@ -275,7 +277,7 @@
 		$globals['WE_LS_DISABLE_YEKEN_NOTIFICATIONS'] = false;
 	}
 	// -----------------------------------------------------------------------------------
-	// Line Colours
+	// Chart Colours
 	// -----------------------------------------------------------------------------------
 	if (get_option('ws-ls-target-colour')) {
 		$globals['WE_LS_TARGET_LINE_COLOUR'] = get_option('ws-ls-target-colour');
@@ -286,6 +288,13 @@
 	if (get_option('ws-ls-line-fill-colour')) {
 		$globals['WE_LS_WEIGHT_FILL_COLOUR'] = get_option('ws-ls-line-fill-colour');
 	}
+    if (get_option('ws-ls-text-colour')) {
+        $globals['WE_LS_TEXT_COLOUR'] = get_option('ws-ls-text-colour');
+    }
+    if (get_option('ws-ls-font-family')) {
+        $globals['WE_LS_FONT_FAMILY'] = get_option('ws-ls-font-family');
+    }
+
 	// -----------------------------------------------------------------------------------
 	// Email Notifications
 	// -----------------------------------------------------------------------------------

@@ -345,7 +345,20 @@ function ws_ls_settings_page() {
 														<p><?php echo __('If enabled, y Axes shall start at 0. Otherwise, they are automatically calculated.', WE_LS_SLUG); ?></p>
 													</td>
 												</tr>
-
+                                                <tr>
+                                                    <th scope="row"><?php echo __( 'Text colour', WE_LS_SLUG ); ?></th>
+                                                    <td>
+                                                        <input id="ws-ls-text-colour" name="ws-ls-text-colour" type="color" value="<?php echo WE_LS_TEXT_COLOUR; ?>">
+                                                        <p><?php echo __('Enter a HEX colour code to use for text displayed on the graph.', WE_LS_SLUG); ?></p>
+                                                    </td>
+                                                </tr>
+                                                <tr >
+                                                    <th scope="row"><?php echo __( 'Font Family', WE_LS_SLUG ); ?></th>
+                                                    <td>
+                                                        <input id="ws-ls-font-family" name="ws-ls-font-family" type="text" maxlength="80" class="large-text" value="<?php esc_attr_e(WE_LS_FONT_FAMILY); ?>">
+                                                        <p><?php echo __('Specify one or more fonts that should be used when rendering text on the graph. Separate multiple emails with a comma. Leave blank to use the default.', WE_LS_SLUG); ?></p>
+                                                    </td>
+                                                </tr>
 												<tr>
 													<th colspan="2">
 														<h3><?php echo __( 'Line Chart Options', WE_LS_SLUG ); ?></h3>
@@ -421,7 +434,7 @@ function ws_ls_settings_page() {
 													<tr class="<?php echo $disable_if_not_pro_class; ?>">
 														<th scope="row"><?php echo __( 'Email addresses to notify', WE_LS_SLUG ); ?></th>
 														<td>
-															<input id="ws-ls-email-addresses" name="ws-ls-email-addresses" type="text" maxlength="500" class="large-text" value="<?php echo WE_LS_EMAIL_ADDRESSES; ?>">
+															<input id="ws-ls-email-addresses" name="ws-ls-email-addresses" type="text" maxlength="500" class="large-text" value="<?php esc_attr_e(WE_LS_EMAIL_ADDRESSES); ?>">
 															<p><?php echo __('Specify one or more email addresses to be notified. Seperate multiple emails with a comma.', WE_LS_SLUG); ?></p>
 														</td>
 													</tr>
@@ -565,8 +578,8 @@ function ws_ls_settings_page() {
 
 }
 
-function ws_ls_register_settings()
-{
+function ws_ls_register_settings(){
+
     register_setting( 'we-ls-options-group', 'ws-ls-units' );
     register_setting( 'we-ls-options-group', 'ws-ls-allow-targets' );
     register_setting( 'we-ls-options-group', 'ws-ls-allow-points' );
@@ -579,6 +592,8 @@ function ws_ls_register_settings()
 	register_setting( 'we-ls-options-group', 'ws-ls-allow-stats' );
 	register_setting( 'we-ls-options-group', 'ws-ls-disable-yeken-notifications' );
 	register_setting( 'we-ls-options-group', 'ws-ls-edit-permissions' );
+    register_setting( 'we-ls-options-group', 'ws-ls-text-colour' );
+    register_setting( 'we-ls-options-group', 'ws-ls-font-family' );
 
     // Pro only open
     if(WS_LS_IS_PRO){
