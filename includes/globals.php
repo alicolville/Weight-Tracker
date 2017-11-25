@@ -16,7 +16,7 @@
 	define('WE_LS_UPGRADE_TO_PRO_PLUS_URL', 'https://weight.yeken.uk/get-pro-plus/');
     define('WE_LS_FREE_TRIAL_URL', 'https://weight.yeken.uk/trial/');
     define('WE_LS_UPGRADE_TO_PRO_PLUS_UPGRADE_URL', 'https://weight.yeken.uk/get-pro-plus-existing-license-holders/');
-    define('WE_LS_CDN_CHART_JS', 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.min.js');
+    define('WE_LS_CDN_CHART_JS', 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js');
 	define('WE_LS_TABLENAME', 'WS_LS_DATA');
 	define('WE_LS_TARGETS_TABLENAME', 'WS_LS_DATA_TARGETS');
   	define('WE_LS_USER_PREFERENCES_TABLENAME', 'WS_LS_DATA_USER_PREFERENCES');
@@ -96,6 +96,11 @@
 		'WE_LS_TARGET_LINE_COLOUR' => '#76bada',
 		'WE_LS_WEIGHT_LINE_COLOUR' => '#aeaeae',
 		'WE_LS_WEIGHT_FILL_COLOUR' => '#f9f9f9',
+		'WE_LS_WEIGHT_FILL_LINE_ENABLED' => false,
+		'WE_LS_WEIGHT_FILL_LINE_OPACITY' => '0.5',
+        'WE_LS_WEIGHT_FILL_LINE_COLOUR' => '#aeaeae',
+        'WE_LS_FONT_FAMILY' => '',
+        'WE_LS_TEXT_COLOUR' => '#AEAEAE',
 		'WE_LS_US_DATE' => false,
 		'WE_LS_CHART_TYPE' => 'line', //line, bar
 		'WS_LS_ADVANCED_TABLES' => true,
@@ -206,6 +211,29 @@
 		$globals['WE_LS_CHART_POINT_SIZE'] = get_option('ws-ls-point-size');
 	}
 	// -----------------------------------------------------------------------------------
+	// Weight Fill Colour
+	// -----------------------------------------------------------------------------------
+	if (WS_LS_IS_PRO) {
+
+		if ( 'yes' ==  get_option('ws-ls-fill-under-weight-line') ) {
+			$globals['WE_LS_WEIGHT_FILL_LINE_ENABLED'] = true;
+		}
+
+		$line_colour = get_option('ws-ls-fill-under-weight-line-colour');
+
+		if ( false === empty($line_colour) ) {
+			$globals['WE_LS_WEIGHT_FILL_LINE_COLOUR'] = $line_colour;
+		}
+
+		$opacity = get_option('ws-ls-fill-under-weight-line-opacity');
+
+		if ( false === empty($opacity) ) {
+			$globals['WE_LS_WEIGHT_FILL_LINE_OPACITY'] = $opacity;
+		}
+
+	}
+
+	// -----------------------------------------------------------------------------------
 	// Bezier Curve
 	// -----------------------------------------------------------------------------------
 	if (WS_LS_IS_PRO && 'no' == get_option('ws-ls-bezier-curve')){
@@ -275,7 +303,7 @@
 		$globals['WE_LS_DISABLE_YEKEN_NOTIFICATIONS'] = false;
 	}
 	// -----------------------------------------------------------------------------------
-	// Line Colours
+	// Chart Colours
 	// -----------------------------------------------------------------------------------
 	if (get_option('ws-ls-target-colour')) {
 		$globals['WE_LS_TARGET_LINE_COLOUR'] = get_option('ws-ls-target-colour');
@@ -286,6 +314,13 @@
 	if (get_option('ws-ls-line-fill-colour')) {
 		$globals['WE_LS_WEIGHT_FILL_COLOUR'] = get_option('ws-ls-line-fill-colour');
 	}
+    if (get_option('ws-ls-text-colour')) {
+        $globals['WE_LS_TEXT_COLOUR'] = get_option('ws-ls-text-colour');
+    }
+    if (get_option('ws-ls-font-family')) {
+        $globals['WE_LS_FONT_FAMILY'] = get_option('ws-ls-font-family');
+    }
+
 	// -----------------------------------------------------------------------------------
 	// Email Notifications
 	// -----------------------------------------------------------------------------------

@@ -1,7 +1,7 @@
 //
 // To compress this script, use https://jscompress.com
 //
-jQuery( document ).ready(function ($) {
+jQuery( document ).ready(function ($, undefined) {
 
 	// Render upon page
 	$(".ws-ls-chart").each(function () {
@@ -9,8 +9,8 @@ jQuery( document ).ready(function ($) {
 	  ws_ls_render_graph($chart_id);
 	});
 
-	function ws_ls_render_graph($chart_id)
-	{
+	function ws_ls_render_graph($chart_id) 	{
+
 		$chart_type = $("#" + $chart_id).data("chart-type");
 
 		// If not specified, default to line
@@ -20,16 +20,20 @@ jQuery( document ).ready(function ($) {
 
 		var ctx = $("#" + $chart_id).get(0).getContext("2d");
 
+        Chart.defaults.global.defaultFontColor = this[$chart_id + "_options"]["fontColor"];
+
+        if ( undefined !== this[$chart_id + "_options"]["fontFamily"] && '' !== this[$chart_id + "_options"]["fontFamily"] ) {
+	      Chart.defaults.global.defaultFontFamily = this[$chart_id + "_options"]["fontFamily"];
+		}
+
 		var width = $("#" + $chart_id).parent().width();
-		$("#" + $chart_id).attr("width",width-50);
+		$("#" + $chart_id).attr("width", width - 50);
 
 		if ("line" == $chart_type) {
 			new Chart(ctx, {type: "line", data: this[$chart_id + "_data"], options: this[$chart_id + "_options"]});
 		}
 		else if ("bar" == $chart_type) {
-
 			new Chart(ctx, {type: "bar", data: this[$chart_id + "_data"], options: this[$chart_id + "_options"]});
-
 		}
 	}
 
