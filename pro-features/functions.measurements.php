@@ -35,7 +35,7 @@ function ws_ls_get_measurement_settings()
 function ws_ls_any_active_measurement_fields(){
   $measurement_fields = ws_ls_get_measurement_settings();
   foreach($measurement_fields as $key => $data) {
-      if($data['enabled']) {
+      if( true === $data['enabled'] && false === $data['user_preference'] ) {
           return true;
       }
   }
