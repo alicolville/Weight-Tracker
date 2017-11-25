@@ -96,6 +96,9 @@
 		'WE_LS_TARGET_LINE_COLOUR' => '#76bada',
 		'WE_LS_WEIGHT_LINE_COLOUR' => '#aeaeae',
 		'WE_LS_WEIGHT_FILL_COLOUR' => '#f9f9f9',
+		'WE_LS_WEIGHT_FILL_LINE_ENABLED' => false,
+		'WE_LS_WEIGHT_FILL_LINE_OPACITY' => '0.5',
+        'WE_LS_WEIGHT_FILL_LINE_COLOUR' => '#aeaeae',
         'WE_LS_FONT_FAMILY' => '',
         'WE_LS_TEXT_COLOUR' => '#AEAEAE',
 		'WE_LS_US_DATE' => false,
@@ -207,6 +210,29 @@
 	if (WS_LS_IS_PRO && get_option('ws-ls-point-size')){
 		$globals['WE_LS_CHART_POINT_SIZE'] = get_option('ws-ls-point-size');
 	}
+	// -----------------------------------------------------------------------------------
+	// Weight Fill Colour
+	// -----------------------------------------------------------------------------------
+	if (WS_LS_IS_PRO) {
+
+		if ( 'yes' ==  get_option('ws-ls-fill-under-weight-line') ) {
+			$globals['WE_LS_WEIGHT_FILL_LINE_ENABLED'] = true;
+		}
+
+		$line_colour = get_option('ws-ls-fill-under-weight-line-colour');
+
+		if ( false === empty($line_colour) ) {
+			$globals['WE_LS_WEIGHT_FILL_LINE_COLOUR'] = $line_colour;
+		}
+
+		$opacity = get_option('ws-ls-fill-under-weight-line-opacity');
+
+		if ( false === empty($opacity) ) {
+			$globals['WE_LS_WEIGHT_FILL_LINE_OPACITY'] = $opacity;
+		}
+
+	}
+
 	// -----------------------------------------------------------------------------------
 	// Bezier Curve
 	// -----------------------------------------------------------------------------------

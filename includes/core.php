@@ -86,8 +86,15 @@
 
 		// Determine fill based on chart type
 		if ('line' == $chart_config['type']) {
-			$graph_data['datasets'][0]['fill'] = false;
-			//$graph_data['datasets'][0]['backgroundColor'] = $chart_config['weight-fill-color'];
+
+			// Add a fill colour under weight line?
+			if ( true === WE_LS_WEIGHT_FILL_LINE_ENABLED ) {
+				$graph_data['datasets'][0]['fill'] = true;
+				$graph_data['datasets'][0]['backgroundColor'] =  ws_ls_hex_to_rgb( WE_LS_WEIGHT_FILL_LINE_COLOUR, WE_LS_WEIGHT_FILL_LINE_OPACITY );
+			} else {
+				$graph_data['datasets'][0]['fill'] = false;
+			}
+
 			$graph_data['datasets'][0]['lineTension'] = ($chart_config['bezier']) ? 0.4 : 0;
 			$graph_data['datasets'][0]['pointRadius'] = $point_size;
             $graph_data['datasets'][0]['borderWidth'] = $line_thickness;

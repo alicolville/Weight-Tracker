@@ -26,20 +26,14 @@ jQuery( document ).ready(function ($, undefined) {
 	      Chart.defaults.global.defaultFontFamily = this[$chart_id + "_options"]["fontFamily"];
 		}
 
-       // Chart.defaults.global.defaultFontStyle = 'italic';
-
 		var width = $("#" + $chart_id).parent().width();
 		$("#" + $chart_id).attr("width", width - 50);
 
 		if ("line" == $chart_type) {
 			new Chart(ctx, {type: "line", data: this[$chart_id + "_data"], options: this[$chart_id + "_options"]});
-
-
 		}
 		else if ("bar" == $chart_type) {
-
 			new Chart(ctx, {type: "bar", data: this[$chart_id + "_data"], options: this[$chart_id + "_options"]});
-
 		}
 	}
 

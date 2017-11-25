@@ -406,6 +406,36 @@ function ws_ls_settings_page() {
 														<p><?php echo __('Specifies the point thickness on a line chart.', WE_LS_SLUG); ?></p>
 													</td>
 												</tr>
+												<tr  class="<?php echo $disable_if_not_pro_class; ?>">
+													<th scope="row"><?php echo __( 'Add a fill under weight line?', WE_LS_SLUG ); ?></th>
+													<td>
+														<select id="ws-ls-fill-under-weight-line" name="ws-ls-fill-under-weight-line">
+															<option value="no" <?php selected( get_option('ws-ls-fill-under-weight-line'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+															<option value="yes" <?php selected( get_option('ws-ls-fill-under-weight-line'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+														</select>
+														<p><?php echo __('If enabled, a fill colour will be added under the weight line.', WE_LS_SLUG); ?></p>
+													</td>
+												</tr>
+												<tr class="<?php echo $disable_if_not_pro_class; ?>">
+													<th scope="row"><?php echo __( 'Weight Fill Colour', WE_LS_SLUG ); ?></th>
+													<td>
+														<input id="ws-ls-fill-under-weight-line-colour" name="ws-ls-fill-under-weight-line-colour" type="color" value="<?php echo WE_LS_WEIGHT_FILL_LINE_COLOUR; ?>">
+														<p><?php echo __('If enabled, enter a HEX colour code to use for the fill colour under the weight line.', WE_LS_SLUG); ?></p>
+													</td>
+												</tr>
+												<tr  class="<?php echo $disable_if_not_pro_class; ?>">
+													<th scope="row" class="<?php echo $disable_if_not_pro_class; ?>"><?php echo __( 'Weight Fill Opacity', WE_LS_SLUG ); ?></th>
+													<td>
+														<?php $chart_options = array('0.1', '0.2', '0.3', '0.4', '0.5', '0.5', '0.6', '0.7', '0.8', '0.9', '1'); ?>
+														<select id="ws-ls-fill-under-weight-line-opacity" name="ws-ls-fill-under-weight-line-opacity">
+															<?php foreach ($chart_options as $option):?>
+																<option value="<?php echo $option; ?>" <?php selected( WE_LS_WEIGHT_FILL_LINE_OPACITY, $option ); ?>><?php echo $option; ?></option>
+															<?php endforeach; ?>
+
+														</select>
+														<p><?php echo __('Specifies the opacity of the fill colour under the weight line.', WE_LS_SLUG); ?></p>
+													</td>
+												</tr>
 												<tr>
 													<th colspan="2">
 														<h3><?php echo __( 'Bar Chart Options', WE_LS_SLUG ); ?></h3>
@@ -594,6 +624,9 @@ function ws_ls_register_settings(){
 	register_setting( 'we-ls-options-group', 'ws-ls-edit-permissions' );
     register_setting( 'we-ls-options-group', 'ws-ls-text-colour' );
     register_setting( 'we-ls-options-group', 'ws-ls-font-family' );
+	register_setting( 'we-ls-options-group', 'ws-ls-fill-under-weight-line' );
+    register_setting( 'we-ls-options-group', 'ws-ls-fill-under-weight-line-opacity' );
+    register_setting( 'we-ls-options-group', 'ws-ls-fill-under-weight-line-colour' );
 
     // Pro only open
     if(WS_LS_IS_PRO){
