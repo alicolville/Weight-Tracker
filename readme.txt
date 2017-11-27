@@ -140,6 +140,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 = 5.2.19 =
 
 * Bug fix: If measurements enabled, ensure one or measurement fields have been enabled before rendering form fields.
+* Added a hidden tool to fix the accuracy of Stones and Pounds to Kg.
 
 = 5.2.18 =
 
