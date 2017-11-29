@@ -19,7 +19,7 @@ function ws_ls_stones_pounds_to_pounds_only($stones, $pounds)
 function ws_ls_to_kg($stones, $pounds)
 {
 	$pounds += $stones * 14;
-	return round($pounds / 2.20462, 2);
+	return round($pounds / 2.20462, 3);
 }
 function ws_ls_pounds_to_kg($pounds)
 {
