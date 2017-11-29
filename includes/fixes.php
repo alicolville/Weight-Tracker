@@ -59,5 +59,6 @@ function ws_ls_fix_to_kg() {
     echo '<p>Target rows processed: ' . $count . '</p>';
 
     ws_ls_delete_all_cache();
+    ws_ls_stats_run_cron();
 
 }
