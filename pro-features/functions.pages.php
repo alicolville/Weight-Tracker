@@ -6,14 +6,20 @@ defined('ABSPATH') or die('Naw ya dinnie!');
 // User search Search box
 // ------------------------------------------------------------------------------
 
-function ws_ls_box_user_search_form() {
+function ws_ls_box_user_search_form( $ajax_mode = false ) {
 
 	?>	<p><?php echo __('Enter a user\'s email address, display name or username and click Search.', WE_LS_SLUG); ?></p>
-		<form method="get" action="<?php echo ws_ls_get_link_to_user_data(); ?>">
-			<input type="text" name="search" placeholder=""  />
+		<form id="wlt-user-search"
+				<?php if (false === $ajax_mode): ?>
+					method="get" action="<?php echo ws_ls_get_link_to_user_data(); ?>"
+				<?php else: ?>
+					class="wlt-user-search-ajax"
+				<?php endif; ?>
+		>
+			<input type="text" name="search" placeholder="" id="ws-ls-search-field" />
             <input type="hidden" name="page" value="ws-ls-wlt-data-home"  />
             <input type="hidden" name="mode" value="search-results"  />
-			<input type="submit" class="button" value="Search" />
+			<input type="submit" class="button" value="Search" id="ws-ls-search-button" />
 		</form>
 	<?php
 }
