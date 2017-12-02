@@ -140,6 +140,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 = 5.2.20 =
 
 * Added tweaks to Admin search for to support future AJAX lookups.
+* Added some core functions to to lookup a user's previous weight and difference between that and latest.
 
 = 5.2.19 =
 
