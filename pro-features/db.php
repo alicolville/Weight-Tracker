@@ -249,7 +249,7 @@ function ws_ls_stats_league_table_fetch($ignore_cache = false, $limit = 10, $los
 // -----------------------------------------------------------------
 
 
-function ws_ls_user_search($name) {
+function ws_ls_user_search($name, $limit = false) {
 
 	if(false === empty($name)) {
 
@@ -272,6 +272,10 @@ function ws_ls_user_search($name) {
 				)
 				ORDER BY user_login ASC";
 
+		if ( false === empty($limit) ) {
+		    $sql .= ' limit 0, ' . intval($limit);
+        }
+
 		$sql = $wpdb->prepare($sql, $name, $name, $name, $name, $name, $name, $name, $name);
 
 		return $wpdb->get_results($sql, ARRAY_A);
@@ -279,5 +283,36 @@ function ws_ls_user_search($name) {
 	}
 
 	return false;
+
+}
+
+// -----------------------------------------------------------------
+// Get Users
+// -----------------------------------------------------------------
+
+function ws_ls_user_get($id) {
+
+    if(false === empty($id) && true === is_numeric($id) ) {
+
+        global $wpdb;
+
+        $stats_table_name = $wpdb->prefix . WE_LS_USER_STATS_TABLENAME;
+        $data_table_name = $wpdb->prefix . WE_LS_TABLENAME;
+
+        $sql = "SELECT distinct {$wpdb->prefix}users.*, us.* FROM {$wpdb->prefix}users
+				LEFT JOIN {$data_table_name} as wd ON ( {$wpdb->prefix}users.ID = wd.weight_user_id )
+				LEFT JOIN {$stats_table_name} as us ON ( {$wpdb->prefix}users.ID = us.user_id )
+				LEFT JOIN {$wpdb->prefix}usermeta um ON ( {$wpdb->prefix}users.ID = um.user_id )
+				WHERE 1=1 AND {$wpdb->prefix}users.ID = %d";
+
+        $id = intval($id);
+
+         $sql = $wpdb->prepare($sql, $id);
+
+        return $wpdb->get_row($sql, ARRAY_A);
+
+    }
+
+    return false;
 
 }
