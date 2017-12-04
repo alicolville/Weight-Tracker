@@ -296,6 +296,12 @@ function ws_ls_user_get($id) {
 
         global $wpdb;
 
+        // Return cache if found!
+        $cache = ws_ls_cache_user_get($id, 'user-object');
+        if (false === empty($cache)) {
+            return $cache;
+        }
+
         $stats_table_name = $wpdb->prefix . WE_LS_USER_STATS_TABLENAME;
         $data_table_name = $wpdb->prefix . WE_LS_TABLENAME;
 
@@ -307,10 +313,13 @@ function ws_ls_user_get($id) {
 
         $id = intval($id);
 
-         $sql = $wpdb->prepare($sql, $id);
+        $sql = $wpdb->prepare($sql, $id);
 
-        return $wpdb->get_row($sql, ARRAY_A);
+        $user = $wpdb->get_row($sql, ARRAY_A);
 
+        ws_ls_cache_user_set($id, 'user-object', $user);
+
+        return $user;
     }
 
     return false;
