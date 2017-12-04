@@ -72,7 +72,7 @@
      * @param bool $missing_data_text
      * @return string
      */
-	function ws_ls_harris_benedict_render_table($user_id, $missing_data_text = false,  $additional_css_class = '') {
+	function ws_ls_harris_benedict_render_table($user_id, $missing_data_text = false,  $additional_css_class = '', $email = false) {
 
 		$user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
 
@@ -83,7 +83,7 @@
 		if(false === empty($calories)) {
 
 		    // Table Header
-            $html = sprintf('<table class="%s%s">
+            $html = sprintf('<table class="%s%s" %s>
                                 <tr>
                                     <th class="ws-ls-empty-cell row-title"></th>
                                     <th>%s</th>
@@ -94,6 +94,7 @@
                                 </tr>',
 							(false === empty($additional_css_class)) ? esc_attr($additional_css_class) . ' ' : '',
                                 false === is_admin() ? 'ws-ls-harris-benedict' : 'widefat',
+                                true === $email ? 'cellpadding="10" border="1"' : '',
                                 __( 'Total', WE_LS_SLUG ),
                                 __( 'Breakfast', WE_LS_SLUG ),
                                 __( 'Lunch', WE_LS_SLUG ),
@@ -138,7 +139,7 @@
                     esc_html($calories['lose']['snacks'])
                 );
 
-            if(true === is_admin()) {
+            if(true === is_admin() && false === $email) {
                 $html .= sprintf('<p><small>%s</small></p>', ws_ls_display_calorie_cap($user_id));
             }
 
