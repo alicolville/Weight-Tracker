@@ -241,7 +241,7 @@
 
 function ws_ls_start_tab($tab_name, $use_tabs)	{
 	if ($use_tabs) {
-		return '<div' . (($tab_name) ? ' class="' . $tab_name . '"' : '') . '>';
+		return '<div' . (($tab_name) ? ' class="' . esc_attr( $tab_name ) . '"' : '') . '>';
 	}
 	return '';
 }
@@ -253,5 +253,5 @@ function ws_ls_end_tab($use_tabs)	{
 }
 function ws_ls_title($title_text)
 {
-	return '<h3 class="ws_ls_title">' . $title_text . '</h3>';
+	return '<h3 class="ws_ls_title">' . esc_html( $title_text ) . '</h3>';
 }

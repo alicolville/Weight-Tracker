@@ -2,6 +2,9 @@
 
 	defined('ABSPATH') or die("Jog on!");
 
+	/**
+	 *  Display admin notification
+	 */
 	function ws_ls_display_admin_notice() {
 
 		if(WE_LS_DISABLE_YEKEN_NOTIFICATIONS) {
@@ -16,17 +19,19 @@
 		// Get md5 of last dismissed message
 		$local_md5 = get_option(WE_LS_KEY_YEKEN_ADMIN_NOTIFICATION);
 
-		if($yeken_md5 != $local_md5 && true === isset($yeken_data->notice)) {
+		if( $yeken_md5 != $local_md5 && true === isset($yeken_data->notice) ) {
     ?>
-		    <div class="notice notice-info is-dismissible" id="ws-ls-admin-notice" data-wsmd5="<?php echo $yeken_md5; ?>">
-		        <p><strong><?php echo __( 'Weight Loss Tracker', WE_LS_SLUG); ?></strong> - <?php echo esc_html($yeken_data->notice) ?></p>
+		    <div class="notice notice-info is-dismissible" id="ws-ls-admin-notice" data-wsmd5="<?php esc_html_e($yeken_md5); ?>">
+		        <p><strong><?php echo __( 'Weight Loss Tracker', WE_LS_SLUG); ?></strong> - <?php esc_html_e($yeken_data->notice) ?></p>
 		    </div>
 	    <?php
 		}
 	}
 	add_action( 'admin_notices', 'ws_ls_display_admin_notice' );
 
-
+	/**
+	 * 	Handle dismiss notification
+	 */
 	function ws_ls_dismiss_notice()
 	{
 		if(!empty($_POST['md5'])) {

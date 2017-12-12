@@ -10,7 +10,7 @@ function ws_ls_weight_target_weight($user_id = false, $admin_display = false) {
 
 	$user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
 
-	$target_weight  = ws_ls_get_user_target($user_id);
+	$target_weight = ws_ls_get_user_target($user_id);
 
 	if ($target_weight) {
 	    return (true === $admin_display) ? $target_weight['display-admin'] : $target_weight['display'];

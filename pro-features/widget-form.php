@@ -52,7 +52,7 @@ class ws_ls_widget_form extends WP_Widget {
         } elseif (isset($instance['not-logged-in-message']) && !empty($instance['not-logged-in-message'])) {
             echo $args['before_widget'];
             echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
-            echo '<p>' . $instance['not-logged-in-message'] . '</p>';
+            echo '<p>' . esc_html($instance['not-logged-in-message']) . '</p>';
             echo $args['after_widget'];
         }
 
