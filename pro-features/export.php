@@ -164,7 +164,10 @@ function ws_ls_csv_row_write($columns, $row, $delimiter = ',', $end_of_line_char
 				$data[$key] = $row['measurements'][$key];
 			} elseif(isset($row[$key])) {
 				$data[$key] = $row[$key];
-			}
+			} else {
+			    // If the column is not found, blank it so CSV ok.
+                $data[$key] = '';
+            }
 		}
 
 		// Escape cell contents and encapsulate in double quotes

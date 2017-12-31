@@ -139,6 +139,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 = 5.2.22 =
 
+* Bug fix: CSV export. If the column is missing in underlying data then add a dummy field.
 * Bug fix: Only display users on the stats table if they still exist in WP Users table.
 * Bug fix: Correct display Pro Plus license price from Yeken Data feed.
 * Bug fix: Only tell YeKen of license deactivation when one actually occurs.
