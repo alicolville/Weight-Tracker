@@ -276,7 +276,7 @@ function ws_ls_user_search($name, $limit = false) {
 		    $sql .= ' limit 0, ' . intval($limit);
         }
 
-		$sql = $wpdb->prepare($sql, $name, $name, $name, $name, $name, $name, $name, $name);
+		$sql = $wpdb->prepare($sql, $name, $name, $name, $name, $name);
 
 		return $wpdb->get_results($sql, ARRAY_A);
 

@@ -143,6 +143,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 * Bug fix: Only display users on the stats table if they still exist in WP Users table.
 * Bug fix: Correct display Pro Plus license price from Yeken Data feed.
 * Bug fix: Only tell YeKen of license deactivation when one actually occurs.
+* Bug fix: Fixed wpdb->prepare() errors thrown on user search.
 * Reviewed data santisation and where required called relevant WordPress functions to sanitise user data.
 * Removed redundant files.
 * Removed commented lines of code.
