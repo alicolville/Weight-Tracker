@@ -75,7 +75,6 @@ function ws_ls_get_cache($key) {
     }
 
     return false;
-
 }
 
 function ws_ls_set_cache($key, $data, $time_to_expire = WE_LS_CACHE_TIME) {
@@ -98,53 +97,56 @@ function ws_ls_delete_cache($key){
 }
 function ws_ls_delete_cache_for_given_user($user_id = false)
 {
-  global $wpdb;
+  	global $wpdb;
 
-  if (WE_LS_CACHE_ENABLED){
-    if (false == $user_id)  {
-      $user_id = get_current_user_id();
-    }
+  	if (WE_LS_CACHE_ENABLED){
 
-    if(false === is_numeric($user_id)) {
-        return;
-    }
+		if (false == $user_id)  {
+		  $user_id = get_current_user_id();
+		}
 
-    $sql = "Delete FROM  $wpdb->options
-            WHERE option_name LIKE '%transient_" . WE_LS_SLUG . $user_id ."%'";
+		if(false === is_numeric($user_id)) {
+			return;
+		}
 
-    $wpdb->query($sql);
+		$user_id = intval( $user_id );
 
-    $sql = "Delete FROM  $wpdb->options
-            WHERE option_name LIKE '%transient_timeout_" . WE_LS_SLUG . $user_id ."%'";
+		$sql = "Delete FROM  $wpdb->options
+				WHERE option_name LIKE '%transient_" . WE_LS_SLUG . $user_id ."%'";
 
-	$wpdb->query($sql);
+		$wpdb->query($sql);
 
-	$keys_to_clear = array(
-							$user_id . '-' . WE_LS_CACHE_KEY_START_WEIGHT,
-							$user_id . '-' . WE_LS_CACHE_KEY_WEIGHT_FOR_DAY,
-							$user_id . '-' . WE_LS_CACHE_KEY_TARGET_WEIGHT . 'target_weight_weight',
-							$user_id . '-' . WE_LS_CACHE_KEY_TARGET_WEIGHT . 'target_weight_only_pounds',
-							$user_id . '-' . WE_LS_CACHE_KEY_WEIGHT_EXTREME . '-asc-weight_only_pounds',
-	 						$user_id . '-' . WE_LS_CACHE_KEY_WEIGHT_EXTREME . '-desc-weight_only_pounds',
-							$user_id . '-' . WE_LS_CACHE_KEY_WEIGHT_EXTREME . '-asc-weight_weight',
-							$user_id . '-' . WE_LS_CACHE_KEY_WEIGHT_EXTREME . '-desc-weight_weight',
-                            $user_id . '-' . WE_LS_CACHE_KEY_USER_PREFERENCE . '-gender',
-                            $user_id . '-' . WE_LS_CACHE_KEY_USER_PREFERENCE . '-activity_level',
-                            $user_id . '-' . WE_LS_CACHE_KEY_USER_PREFERENCE . '-dob',
-							$user_id . '-' . WE_LS_CACHE_KEY_BMR,
-							$user_id . '-' . WE_LS_CACHE_KEY_HARRIS_BENEDICT,
-                            $user_id . '-' . WE_LS_CACHE_KEY_MACRO,
-							$user_id . '-' . WE_LS_CACHE_KEY_PHOTOS . '-asc',
-							$user_id . '-' . WE_LS_CACHE_KEY_PHOTOS . '-desc'
-						);
+		$sql = "Delete FROM  $wpdb->options
+				WHERE option_name LIKE '%transient_timeout_" . WE_LS_SLUG . $user_id ."%'";
 
-	foreach ($keys_to_clear as $key) {
-		ws_ls_delete_cache($key);
-	}
+		$wpdb->query($sql);
 
-	ws_ls_cache_user_delete($user_id);
+		$keys_to_clear = array(
+								$user_id . '-' . WE_LS_CACHE_KEY_START_WEIGHT,
+								$user_id . '-' . WE_LS_CACHE_KEY_WEIGHT_FOR_DAY,
+								$user_id . '-' . WE_LS_CACHE_KEY_TARGET_WEIGHT . 'target_weight_weight',
+								$user_id . '-' . WE_LS_CACHE_KEY_TARGET_WEIGHT . 'target_weight_only_pounds',
+								$user_id . '-' . WE_LS_CACHE_KEY_WEIGHT_EXTREME . '-asc-weight_only_pounds',
+								$user_id . '-' . WE_LS_CACHE_KEY_WEIGHT_EXTREME . '-desc-weight_only_pounds',
+								$user_id . '-' . WE_LS_CACHE_KEY_WEIGHT_EXTREME . '-asc-weight_weight',
+								$user_id . '-' . WE_LS_CACHE_KEY_WEIGHT_EXTREME . '-desc-weight_weight',
+								$user_id . '-' . WE_LS_CACHE_KEY_USER_PREFERENCE . '-gender',
+								$user_id . '-' . WE_LS_CACHE_KEY_USER_PREFERENCE . '-activity_level',
+								$user_id . '-' . WE_LS_CACHE_KEY_USER_PREFERENCE . '-dob',
+								$user_id . '-' . WE_LS_CACHE_KEY_BMR,
+								$user_id . '-' . WE_LS_CACHE_KEY_HARRIS_BENEDICT,
+								$user_id . '-' . WE_LS_CACHE_KEY_MACRO,
+								$user_id . '-' . WE_LS_CACHE_KEY_PHOTOS . '-asc',
+								$user_id . '-' . WE_LS_CACHE_KEY_PHOTOS . '-desc'
+							);
 
-  }
+		foreach ($keys_to_clear as $key) {
+			ws_ls_delete_cache($key);
+		}
+
+		ws_ls_cache_user_delete($user_id);
+
+  	}
 }
 function ws_ls_delete_all_cache()
 {

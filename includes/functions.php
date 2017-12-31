@@ -578,6 +578,18 @@ function ws_ls_querystring_value($key, $force_to_int = false, $default = false) 
     return $return_value;
 }
 
+function ws_ls_ajax_post_value($key, $json_decode = false)
+{
+	if(isset($_POST[$key]) && $json_decode) {
+		return json_decode($_POST[$key]);
+	}
+	elseif(isset($_POST[$key])) {
+		return $_POST[$key];
+	}
+
+	return NULL;
+}
+
 function ws_ls_get_url($base_64_encode = false) {
 	$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 

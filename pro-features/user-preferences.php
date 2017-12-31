@@ -137,7 +137,7 @@ function ws_ls_user_preferences_form($user_defined_arguments)
     $activity_level = (true === empty($activity_level)) ? '0' : $activity_level;
 
     foreach (ws_ls_activity_levels() as $key => $value) {
-        $html_output .= sprintf('<option value="%s" %s>%s</option>', $key, selected($key, $activity_level, false), $value);
+        $html_output .= sprintf('<option value="%s" %s>%s</option>', esc_attr($key), selected($key, $activity_level, false), esc_html($value));
     }
 
     $html_output .= '</select>';
@@ -149,7 +149,7 @@ function ws_ls_user_preferences_form($user_defined_arguments)
     $dob = ws_ls_get_dob_for_display($user_id);
 
     $html_output .= '<label>' . $labels['dob'] . '</label>
-                    <input type="text" name="ws-ls-dob" tabindex="' . ws_ls_get_next_tab_index() . '" id="ws-ls-dob" value="' . ws_ls_get_dob_for_display($user_id) . '" size="22" class="we-ls-datepicker ws-ls-aboutyou-field">
+                    <input type="text" name="ws-ls-dob" tabindex="' . ws_ls_get_next_tab_index() . '" id="ws-ls-dob" value="' . esc_attr(ws_ls_get_dob_for_display($user_id)) . '" size="22" class="we-ls-datepicker ws-ls-aboutyou-field">
                     ';
 
     //-------------------------------------------------------

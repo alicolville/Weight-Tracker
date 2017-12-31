@@ -3,8 +3,7 @@
 	defined('ABSPATH') or die("Jog on!");
 
 	// Code that should run when plugin is activated
-	function ws_ls_activate()
-    {
+	function ws_ls_activate() {
 
         // Register user stats / license check cron job
         if (!wp_next_scheduled(WE_LS_CRON_NAME)) {
@@ -15,7 +14,6 @@
         if (!wp_next_scheduled(WE_LS_CRON_NAME_YEKEN_COMMS)) {
             wp_schedule_event(time(), WE_LS_CRON_SCHEDULE_WEEKLY, WE_LS_CRON_NAME_YEKEN_COMMS);
         }
-
     }
 
 	// Code that should run when plugin is deactivated
@@ -26,8 +24,8 @@
 		wp_clear_scheduled_hook( WE_LS_CRON_NAME_YEKEN_COMMS );
 	}
 
-	function ws_ls_create_mysql_tables()
-	{
+	function ws_ls_create_mysql_tables() {
+
 		global $wpdb;
 
    		$table_name = $wpdb->prefix . WE_LS_TABLENAME;

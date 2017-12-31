@@ -1,37 +1,37 @@
 <?php
 	defined('ABSPATH') or die('Jog on!');
 
-  /* Display weight data in a HTML table */
-  function ws_ls_display_table($weight_data)
-  {
-    $html_output = '';
+	/* Display weight data in a HTML table */
+	function ws_ls_display_table($weight_data) {
 
-    $html_output .= '
-    <table width="100%" class="ws-ls-data-table">
-      <thead>
-      <tr>
-        <th width="25%">' . __('Date', WE_LS_SLUG) .'</th>
-        <th width="25%">' . __('Weight', WE_LS_SLUG) . ' (' . ws_ls_get_unit() . ')</th>
-        <th>' . __('Notes', WE_LS_SLUG) . '</th>
-      </tr>
-      </thead>
-    <tbody>';
+		$html_output = '';
 
-    foreach ($weight_data as $weight_object)
-    {
-        $html_output .= '<tr>
-                          <td>' . ws_ls_render_date($weight_object) . '</td>
-                          <td>' . $weight_object['display'] . '</td>
-                          <td>' . $weight_object['notes'] . '</td>
-                        </tr>';
-    }
+		$html_output .= '
+		<table width="100%" class="ws-ls-data-table">
+		  <thead>
+		  <tr>
+			<th width="25%">' . __('Date', WE_LS_SLUG) .'</th>
+			<th width="25%">' . __('Weight', WE_LS_SLUG) . ' (' . ws_ls_get_unit() . ')</th>
+			<th>' . __('Notes', WE_LS_SLUG) . '</th>
+		  </tr>
+		  </thead>
+		<tbody>';
 
-    $html_output .= '<tbody></table>';
+		foreach ($weight_data as $weight_object)
+		{
+			$html_output .= '<tr>
+							  <td>' . esc_html(ws_ls_render_date($weight_object)) . '</td>
+							  <td>' . esc_html($weight_object['display']) . '</td>
+							  <td>' . esc_html($weight_object['notes']) . '</td>
+							</tr>';
+		}
 
-    return $html_output;
-  }
+		$html_output .= '<tbody></table>';
 
-  /* Display Chart */
+		return $html_output;
+	}
+
+  	/* Display Chart */
 	function ws_ls_display_chart($weight_data, $options = false)
 	{
         // Build the default arguments for a chart. This can then be overrided by what is being passed in (i.e. to support shortcode arguments)
@@ -242,16 +242,14 @@
 		$html .= '</div>';
 		return $html;
 	}
+
 /*
-
 	Displays either a target or weight form
-
 */
 function ws_ls_display_weight_form($target_form = false, $class_name = false, $user_id = false, $hide_titles = false,
                                         $form_number = false, $force_to_todays_date = false, $hide_login_message_if_needed = true,
                                             $hide_measurements_form = false, $redirect_url = false, $existing_data = false, $cancel_button = false,
-                                                $hide_photos_form = false)
-{
+                                                $hide_photos_form = false) {
     global $save_response;
     $html_output  = '';
 
@@ -287,7 +285,7 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 			$title = __('Edit weight', WE_LS_SLUG);
 		}
 
-        $html_output .= '<h3 class="ws_ls_title">' . $title . '</h3>';
+        $html_output .= '<h3 class="ws_ls_title">' . esc_html($title) . '</h3>';
     }
 
 	// If a form was previously submitted then display resulting message!
@@ -308,16 +306,16 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 							<input type="hidden" value="true" id="ws_ls_is_weight_form" name="ws_ls_is_weight_form" />
 							<input type="hidden" value="%9$s" id="ws_ls_user_id" name="ws_ls_user_id" />
 							<input type="hidden" value="%10$s" id="ws_ls_security" name="ws_ls_security" />',
-							get_permalink(),
-							(($class_name) ? ' ' . $class_name : ''),
-							$form_id,
+							esc_attr( get_permalink() ),
+							(($class_name) ? ' ' . esc_attr( $class_name ) : ''),
+							esc_attr( $form_id ),
 							(($measurements_form_enabled) ? 'true' : 'false'),
 							(($measurements_form_enabled && WE_LS_MEASUREMENTS_MANDATORY) ? 'true' : 'false'),
 							(($target_form) ? 'true' : 'false'),
-							ws_ls_get_chosen_weight_unit_as_string(),
+							esc_attr (ws_ls_get_chosen_weight_unit_as_string() ),
 							(($target_form) ? 'true' : 'false'),
 							esc_attr($user_id),
-							wp_hash($user_id),
+							esc_attr( wp_hash($user_id) ),
 							( true === $photo_form_enabled) ? ' enctype="multipart/form-data"' : '',
 							(($photo_form_enabled) ? 'true' : 'false')
 	);
@@ -333,7 +331,7 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 	}
 
 	if($form_number){
-			$html_output .= '	<input type="hidden" value="' . $form_number . '" id="ws_ls_form_number" name="ws_ls_form_number" />';
+			$html_output .= '	<input type="hidden" value="' . esc_attr($form_number) . '" id="ws_ls_form_number" name="ws_ls_form_number" />';
 	}
 
 	$html_output .= '<div class="ws-ls-inner-form comment-input">
@@ -355,9 +353,9 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 		}
 
 		if(false == $force_to_todays_date){
-			$html_output .= '<input type="text" name="we-ls-date" tabindex="' . ws_ls_get_next_tab_index() . '" id="we-ls-date-' . $form_id . '" value="' . $default_date . '" placeholder="' . $default_date . '" size="22" class="we-ls-datepicker">';
+			$html_output .= '<input type="text" name="we-ls-date" tabindex="' . ws_ls_get_next_tab_index() . '" id="we-ls-date-' . esc_attr($form_id) . '" value="' . esc_attr($default_date) . '" placeholder="' . esc_attr($default_date) . '" size="22" class="we-ls-datepicker">';
 		} else {
-			$html_output .= '<input type="hidden" name="we-ls-date" value="' . $default_date . '">';
+			$html_output .= '<input type="hidden" name="we-ls-date" value="' . esc_attr($default_date) . '">';
 		}
 
 	} else {
@@ -368,7 +366,7 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 
 			$pre_text = (false === is_admin()) ? __('Your target weight is', WE_LS_SLUG) : __('The user\'s target weight is currently', WE_LS_SLUG);
 
-			$html_output .= '<p>' . $pre_text . ' <strong>' . $target_weight['display'] . '</strong>.</p>';
+			$html_output .= '<p>' . esc_html( $pre_text ) . ' <strong>' . esc_html( $target_weight['display'] ) . '</strong>.</p>';
 		}
 	}
 
