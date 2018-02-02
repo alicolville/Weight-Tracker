@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Weight Loss Tracker\n"
-"POT-Creation-Date: 2017-10-22 14:49+0100\n"
+"POT-Creation-Date: 2018-02-02 18:16+0000\n"
 "PO-Revision-Date: 2017-09-04 19:10+0100\n"
 "Last-Translator: \n"
 "Language-Team: Yeken - email@yeken.uk\n"
@@ -19,51 +19,51 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-1: .git\n"
 "X-Poedit-SearchPathExcluded-2: .idea\n"
 
-#: includes/admin-notifications.php:22 pro-features/widget-chart.php:17
+#: includes/admin-notifications.php:25 pro-features/widget-chart.php:17
 msgid "Weight Loss Tracker"
 msgstr ""
 
-#: includes/converters.php:67 includes/converters.php:85 includes/core.php:75
+#: includes/converters.php:53 includes/converters.php:71 includes/core.php:75
 #: includes/functions.php:68 includes/functions.php:83
 #: includes/functions.php:92 includes/functions.php:98
 #: includes/functions.php:291 includes/functions.php:297
-#: includes/functions.php:554 includes/shortcode-various.php:217
-#: includes/shortcode-various.php:236 pro-features/export.php:194
-#: pro-features/shortcode-stats.php:156
+#: includes/functions.php:554 includes/shortcode-various.php:261
+#: includes/shortcode-various.php:280 pro-features/export.php:197
+#: pro-features/shortcode-stats.php:162
 msgid "lbs"
 msgstr ""
 
-#: includes/converters.php:70 includes/core.php:75 includes/core.php:376
+#: includes/converters.php:56 includes/core.php:75 includes/core.php:385
 #: includes/functions.php:72 includes/functions.php:95
-#: pages/page.settings.php:86 pro-features/export.php:191
-#: pro-features/shortcode-stats.php:163
+#: pages/page.settings.php:86 pro-features/export.php:194
+#: pro-features/shortcode-stats.php:169
 msgid "kg"
 msgstr ""
 
-#: includes/converters.php:85 includes/functions.php:297
+#: includes/converters.php:71 includes/functions.php:297
 msgid "St"
 msgstr ""
 
-#: includes/core.php:13 pro-features/footable.php:202
+#: includes/core.php:13 pro-features/footable.php:201
 msgid "Date"
 msgstr ""
 
-#: includes/core.php:14 includes/core.php:83 includes/core.php:205
-#: includes/core.php:376 pro-features/footable.php:203
+#: includes/core.php:14 includes/core.php:83 includes/core.php:212
+#: includes/core.php:385 pro-features/footable.php:202
 msgid "Weight"
 msgstr ""
 
-#: includes/core.php:15 includes/core.php:385 pro-features/emails.php:47
-#: pro-features/export.php:198 pro-features/footable.php:247
+#: includes/core.php:15 includes/core.php:394 pro-features/emails.php:47
+#: pro-features/export.php:201 pro-features/footable.php:246
 msgid "Notes"
 msgstr ""
 
-#: includes/core.php:62 includes/core.php:254
-#: includes/shortcode-weight-loss-tracker.php:20
+#: includes/core.php:62 includes/core.php:263
+#: includes/shortcode-weight-loss-tracker.php:50
 msgid "You need to be logged in to record your weight."
 msgstr ""
 
-#: includes/core.php:76 pages/page.settings.php:477
+#: includes/core.php:76 pages/page.settings.php:520
 #: pro-features/footable.php:56 pro-features/functions.php:6
 #: pro-features/user-preferences.php:174
 msgid "Inches"
@@ -73,209 +73,209 @@ msgstr ""
 msgid "CM"
 msgstr ""
 
-#: includes/core.php:114
+#: includes/core.php:121
 msgid "Target"
 msgstr ""
 
-#: includes/core.php:212
+#: includes/core.php:219
 msgid "Measurement"
 msgstr ""
 
-#: includes/core.php:230
+#: includes/core.php:241
 msgid "You have modified data. Please refresh page."
 msgstr ""
 
-#: includes/core.php:254
+#: includes/core.php:263
 msgid "You need to be logged in to set your target."
 msgstr ""
 
-#: includes/core.php:271
+#: includes/core.php:280
 msgid "Add a new weight"
 msgstr ""
 
-#: includes/core.php:274 pro-features/admin-pages/data-search-results.php:45
-#: pro-features/functions.pages.php:96
+#: includes/core.php:283 pro-features/admin-pages/data-search-results.php:45
+#: pro-features/functions.pages.php:102
 msgid "Target Weight"
 msgstr ""
 
-#: includes/core.php:276
+#: includes/core.php:285
 msgid "Edit weight"
 msgstr ""
 
-#: includes/core.php:358
+#: includes/core.php:367
 msgid "Your target weight is"
 msgstr ""
 
-#: includes/core.php:358
+#: includes/core.php:367
 msgid "The user's target weight is currently"
 msgstr ""
 
-#: includes/core.php:368
+#: includes/core.php:377
 msgid "Stones"
 msgstr ""
 
-#: includes/core.php:369 includes/core.php:372 pages/page.settings.php:88
+#: includes/core.php:378 includes/core.php:381 pages/page.settings.php:88
 #: pro-features/user-preferences.php:166
 msgid "Pounds"
 msgstr ""
 
-#: includes/core.php:391 includes/shortcode-weight-loss-tracker.php:96
+#: includes/core.php:400 includes/shortcode-weight-loss-tracker.php:98
 #: pages/page.settings.php:202 pro-features/admin-pages/data-user.php:57
 #: pro-features/plus/shortcode.wlt.php:23
 msgid "Photos"
 msgstr ""
 
-#: includes/core.php:413
+#: includes/core.php:422
 msgid "Existing photo for this date"
 msgstr ""
 
-#: includes/core.php:417
+#: includes/core.php:426
 msgid "Delete existing photo"
 msgstr ""
 
-#: includes/core.php:418
+#: includes/core.php:427
 msgid "Existing photo"
 msgstr ""
 
-#: includes/core.php:434
+#: includes/core.php:443
 msgid "Replace photo"
 msgstr ""
 
-#: includes/core.php:434
+#: includes/core.php:443
 msgid "Add a photo"
 msgstr ""
 
-#: includes/core.php:436
+#: includes/core.php:445
 msgid "Select a photo"
 msgstr ""
 
-#: includes/core.php:437
+#: includes/core.php:446
 msgid "Photos must be under"
 msgstr ""
 
-#: includes/core.php:437
+#: includes/core.php:446
 msgid "or they will silently fail to upload."
 msgstr ""
 
-#: includes/core.php:438
+#: includes/core.php:447
 msgid "Photos are only visible to you and administrators. "
 msgstr ""
 
-#: includes/core.php:446
+#: includes/core.php:455
 msgid "Edit measurements"
 msgstr ""
 
-#: includes/core.php:446
+#: includes/core.php:455
 msgid "Add measurements"
 msgstr ""
 
-#: includes/core.php:447
+#: includes/core.php:456
 msgid "Mandatory"
 msgstr ""
 
-#: includes/core.php:447
+#: includes/core.php:456
 msgid "Optional"
 msgstr ""
 
-#: includes/core.php:451
+#: includes/core.php:460
 msgid "Set Target"
 msgstr ""
 
-#: includes/core.php:451
+#: includes/core.php:460
 msgid "Save Entry"
 msgstr ""
 
-#: includes/core.php:459
+#: includes/core.php:468
 msgid "Cancel"
 msgstr ""
 
-#: includes/core.php:464
+#: includes/core.php:473
 msgid "Clear Target"
 msgstr ""
 
-#: includes/core.php:623
+#: includes/core.php:632
 msgid "The user "
 msgstr ""
 
-#: includes/core.php:623
+#: includes/core.php:632
 msgid "uploaded this photo of them for their entry on the"
 msgstr ""
 
-#: includes/core.php:685
+#: includes/core.php:694
 msgid "Please enter a value between 0-13 for pounds"
 msgstr ""
 
-#: includes/core.php:685
+#: includes/core.php:694
 msgid "Please enter a valid figure for pounds"
 msgstr ""
 
-#: includes/core.php:692
+#: includes/core.php:701
 msgid "Are you sure you wish to clear your target weight?"
 msgstr ""
 
-#: includes/core.php:695
+#: includes/core.php:704
 msgid "Please enter a valid figure for Kg"
 msgstr ""
 
-#: includes/core.php:696
+#: includes/core.php:705
 msgid "Please enter a valid figure for Stones"
 msgstr ""
 
-#: includes/core.php:697
+#: includes/core.php:706
 msgid "Please enter a valid date"
 msgstr ""
 
-#: includes/core.php:698
+#: includes/core.php:707
 msgid "Please confirm you wish to delete ALL your weight history"
 msgstr ""
 
-#: includes/core.php:699
+#: includes/core.php:708
 msgid "Your photo must be less than "
 msgstr ""
 
-#: includes/core.php:700
+#: includes/core.php:709
 msgid "Are you sure you wish to delete this entry? If so, press OK."
 msgstr ""
 
-#: includes/core.php:709
+#: includes/core.php:718
 msgid "Please enter a valid measurement ("
 msgstr ""
 
-#: includes/core.php:719
+#: includes/core.php:728
 msgid "Please select or enter a value for height."
 msgstr ""
 
-#: includes/core.php:720
+#: includes/core.php:729
 msgid "Please select or enter a value for activity level."
 msgstr ""
 
-#: includes/core.php:721
+#: includes/core.php:730
 msgid "Please select or enter a value for gender."
 msgstr ""
 
-#: includes/core.php:722
+#: includes/core.php:731
 msgid "Please enter a valid date."
 msgstr ""
 
-#: includes/core.php:723
+#: includes/core.php:732
 msgid "Please select your aim."
 msgstr ""
 
-#: includes/core.php:733
+#: includes/core.php:742
 msgid "This field is required."
 msgstr ""
 
-#: includes/core.php:751
+#: includes/core.php:760
 msgid "Done"
 msgstr ""
 
-#: includes/core.php:752
+#: includes/core.php:761
 msgid "Today"
 msgstr ""
 
 #: includes/functions.php:83 includes/functions.php:98
-#: includes/functions.php:542 includes/shortcode-various.php:236
-#: pro-features/export.php:193
+#: includes/functions.php:542 includes/shortcode-various.php:280
+#: pro-features/export.php:196
 msgid "st"
 msgstr ""
 
@@ -283,7 +283,7 @@ msgstr ""
 msgid "The following MySQL tables are missing for this plugin"
 msgstr ""
 
-#: includes/functions.php:294 includes/shortcode-various.php:241
+#: includes/functions.php:294 includes/shortcode-various.php:285
 #: pro-features/user-preferences.php:164
 msgid "Kg"
 msgstr ""
@@ -304,152 +304,152 @@ msgstr ""
 msgid "The plugin supports the following measurements"
 msgstr ""
 
-#: includes/functions.php:635
+#: includes/functions.php:647
 msgid "Read more about calculations"
 msgstr ""
 
-#: includes/functions.php:670
+#: includes/functions.php:682
 msgid "Your modifications have been saved"
 msgstr ""
 
-#: includes/functions.php:688
+#: includes/functions.php:700
 msgid "Login now"
 msgstr ""
 
-#: includes/functions.php:762
+#: includes/functions.php:774
 msgid "Server Default"
 msgstr ""
 
-#: includes/globals.php:149 pro-features/footable.php:223
+#: includes/globals.php:155 pro-features/footable.php:222
 msgid "Forearm - Left"
 msgstr ""
 
-#: includes/globals.php:149 pro-features/footable.php:223
+#: includes/globals.php:155 pro-features/footable.php:222
 msgid "FL"
 msgstr ""
 
-#: includes/globals.php:150 pro-features/footable.php:224
+#: includes/globals.php:156 pro-features/footable.php:223
 msgid "Forearm - Right"
 msgstr ""
 
-#: includes/globals.php:150 pro-features/footable.php:224
+#: includes/globals.php:156 pro-features/footable.php:223
 msgid "FR"
 msgstr ""
 
-#: includes/globals.php:151 pro-features/footable.php:225
+#: includes/globals.php:157 pro-features/footable.php:224
 msgid "Biceps - Left"
 msgstr ""
 
-#: includes/globals.php:151 pro-features/footable.php:225
+#: includes/globals.php:157 pro-features/footable.php:224
 msgid "BL"
 msgstr ""
 
-#: includes/globals.php:152 pro-features/footable.php:226
+#: includes/globals.php:158 pro-features/footable.php:225
 msgid "Biceps - Right"
 msgstr ""
 
-#: includes/globals.php:152 pro-features/footable.php:226
+#: includes/globals.php:158 pro-features/footable.php:225
 msgid "BR"
 msgstr ""
 
-#: includes/globals.php:153 pro-features/footable.php:227
+#: includes/globals.php:159 pro-features/footable.php:226
 msgid "Calf - Left"
 msgstr ""
 
-#: includes/globals.php:153 pro-features/footable.php:227
+#: includes/globals.php:159 pro-features/footable.php:226
 msgid "CL"
 msgstr ""
 
-#: includes/globals.php:154 pro-features/footable.php:228
+#: includes/globals.php:160 pro-features/footable.php:227
 msgid "Calf - Right"
 msgstr ""
 
-#: includes/globals.php:154 pro-features/footable.php:228
+#: includes/globals.php:160 pro-features/footable.php:227
 msgid "CR"
 msgstr ""
 
-#: includes/globals.php:155 pro-features/footable.php:229
+#: includes/globals.php:161 pro-features/footable.php:228
 msgid "Thigh - Left"
 msgstr ""
 
-#: includes/globals.php:155 pro-features/footable.php:229
+#: includes/globals.php:161 pro-features/footable.php:228
 msgid "TL"
 msgstr ""
 
-#: includes/globals.php:156 pro-features/footable.php:230
+#: includes/globals.php:162 pro-features/footable.php:229
 msgid "Thigh - Right"
 msgstr ""
 
-#: includes/globals.php:156 pro-features/footable.php:230
+#: includes/globals.php:162 pro-features/footable.php:229
 msgid "TR"
 msgstr ""
 
-#: includes/globals.php:157 pro-features/footable.php:231
+#: includes/globals.php:163 pro-features/footable.php:230
 msgid "Waist"
 msgstr ""
 
-#: includes/globals.php:157 pro-features/footable.php:231
+#: includes/globals.php:163 pro-features/footable.php:230
 msgid "W"
 msgstr ""
 
-#: includes/globals.php:158 pro-features/footable.php:232
+#: includes/globals.php:164 pro-features/footable.php:231
 msgid "Bust / Chest"
 msgstr ""
 
-#: includes/globals.php:158 pro-features/footable.php:232
+#: includes/globals.php:164 pro-features/footable.php:231
 msgid "BC"
 msgstr ""
 
-#: includes/globals.php:159 pro-features/footable.php:233
+#: includes/globals.php:165 pro-features/footable.php:232
 msgid "Shoulders"
 msgstr ""
 
-#: includes/globals.php:159 pro-features/footable.php:233
+#: includes/globals.php:165 pro-features/footable.php:232
 msgid "S"
 msgstr ""
 
-#: includes/globals.php:160 pro-features/footable.php:234
-#: pro-features/functions.pages.php:123
+#: includes/globals.php:166 pro-features/footable.php:233
+#: pro-features/functions.pages.php:129
 msgid "Height"
 msgstr ""
 
-#: includes/globals.php:160 pro-features/footable.php:234
+#: includes/globals.php:166 pro-features/footable.php:233
 msgid "H"
 msgstr ""
 
-#: includes/globals.php:161 pro-features/footable.php:235
+#: includes/globals.php:167 pro-features/footable.php:234
 msgid "Buttocks"
 msgstr ""
 
-#: includes/globals.php:161 pro-features/footable.php:235
+#: includes/globals.php:167 pro-features/footable.php:234
 msgid "B"
 msgstr ""
 
-#: includes/globals.php:162 pro-features/footable.php:236
+#: includes/globals.php:168 pro-features/footable.php:235
 msgid "Hips"
 msgstr ""
 
-#: includes/globals.php:162 pro-features/footable.php:236
+#: includes/globals.php:168 pro-features/footable.php:235
 msgid "HI"
 msgstr ""
 
-#: includes/globals.php:163 pro-features/footable.php:237
+#: includes/globals.php:169 pro-features/footable.php:236
 msgid "Navel"
 msgstr ""
 
-#: includes/globals.php:163 pro-features/footable.php:237
+#: includes/globals.php:169 pro-features/footable.php:236
 msgid "NA"
 msgstr ""
 
-#: includes/globals.php:164 pro-features/footable.php:238
+#: includes/globals.php:170 pro-features/footable.php:237
 msgid "Neck"
 msgstr ""
 
-#: includes/globals.php:164 pro-features/footable.php:238
+#: includes/globals.php:170 pro-features/footable.php:237
 msgid "NE"
 msgstr ""
 
-#: includes/hooks.php:8 pro-features/functions.pages.php:184
+#: includes/hooks.php:8 pro-features/functions.pages.php:190
 msgid "Settings"
 msgstr ""
 
@@ -457,7 +457,7 @@ msgstr ""
 msgid "Manage User Data"
 msgstr ""
 
-#: includes/hooks.php:13 pages/page.license.php:72
+#: includes/hooks.php:13 pages/page.license.php:73
 msgid "Upgrade"
 msgstr ""
 
@@ -477,39 +477,39 @@ msgstr ""
 msgid "An error occurred while trying to save the user's preferences."
 msgstr ""
 
-#: includes/license.php:144
+#: includes/license.php:150
 msgid "License missing"
 msgstr ""
 
-#: includes/license.php:151
+#: includes/license.php:157
 msgid "Could not decode / verify license"
 msgstr ""
 
-#: includes/license.php:156
+#: includes/license.php:162
 msgid "Invalid license hash"
 msgstr ""
 
-#: includes/license.php:161
+#: includes/license.php:167
 msgid "This license doesn't appear to be for this site (no match on site hash)."
 msgstr ""
 
-#: includes/license.php:169
+#: includes/license.php:175
 msgid "This license has expired."
 msgstr ""
 
-#: includes/license.php:226
+#: includes/license.php:232
 msgid "None"
 msgstr ""
 
-#: includes/license.php:236
+#: includes/license.php:242
 msgid "Yearly Pro"
 msgstr ""
 
-#: includes/license.php:239
+#: includes/license.php:245
 msgid "Legacy Pro"
 msgstr ""
 
-#: includes/license.php:242 pages/page.settings.php:73
+#: includes/license.php:248 pages/page.settings.php:73
 msgid "Pro Plus"
 msgstr ""
 
@@ -529,80 +529,80 @@ msgstr ""
 msgid "No user specified"
 msgstr ""
 
-#: includes/shortcode-various.php:106 pro-features/functions.pages.php:102
+#: includes/shortcode-various.php:106 pro-features/functions.pages.php:108
 msgid "No target set"
 msgstr ""
 
-#: includes/shortcode-weight-loss-tracker.php:13
+#: includes/shortcode-weight-loss-tracker.php:43
 msgid "This shortcode can only be placed once on a page / post."
 msgstr ""
 
-#: includes/shortcode-weight-loss-tracker.php:66
+#: includes/shortcode-weight-loss-tracker.php:68
 msgid "Your settings have been saved!"
 msgstr ""
 
-#: includes/shortcode-weight-loss-tracker.php:68
+#: includes/shortcode-weight-loss-tracker.php:70
 msgid "Your weight history has been deleted!"
 msgstr ""
 
-#: includes/shortcode-weight-loss-tracker.php:91
+#: includes/shortcode-weight-loss-tracker.php:93
 msgid "Overview"
 msgstr ""
 
-#: includes/shortcode-weight-loss-tracker.php:91
+#: includes/shortcode-weight-loss-tracker.php:93
 msgid "Chart and add a new entry"
 msgstr ""
 
-#: includes/shortcode-weight-loss-tracker.php:92
+#: includes/shortcode-weight-loss-tracker.php:94
 msgid "All Entries"
 msgstr ""
 
-#: includes/shortcode-weight-loss-tracker.php:92
+#: includes/shortcode-weight-loss-tracker.php:94
 msgid "View all of your entries"
 msgstr ""
 
-#: includes/shortcode-weight-loss-tracker.php:96
+#: includes/shortcode-weight-loss-tracker.php:98
 msgid "View a gallery of your photos"
 msgstr ""
 
-#: includes/shortcode-weight-loss-tracker.php:101 pages/page.settings.php:162
+#: includes/shortcode-weight-loss-tracker.php:103 pages/page.settings.php:162
 msgid "Advanced"
 msgstr ""
 
-#: includes/shortcode-weight-loss-tracker.php:101
+#: includes/shortcode-weight-loss-tracker.php:103
 msgid "View BMI, BMR and suggested Calorie and Macronutrient intake"
 msgstr ""
 
-#: includes/shortcode-weight-loss-tracker.php:106
-#: pro-features/functions.pages.php:188 pro-features/user-preferences.php:159
+#: includes/shortcode-weight-loss-tracker.php:108
+#: pro-features/functions.pages.php:194 pro-features/user-preferences.php:159
 msgid "Preferences"
 msgstr ""
 
-#: includes/shortcode-weight-loss-tracker.php:106
+#: includes/shortcode-weight-loss-tracker.php:108
 msgid "Customise this tool and tell us a little more about you"
 msgstr ""
 
-#: includes/shortcode-weight-loss-tracker.php:122
+#: includes/shortcode-weight-loss-tracker.php:124
 msgid "Add a weight entry"
 msgstr ""
 
-#: includes/shortcode-weight-loss-tracker.php:127
+#: includes/shortcode-weight-loss-tracker.php:129
 msgid "In a chart"
 msgstr ""
 
-#: includes/shortcode-weight-loss-tracker.php:135
+#: includes/shortcode-weight-loss-tracker.php:137
 msgid "A graph will appear once several weights have been entered."
 msgstr ""
 
-#: includes/shortcode-weight-loss-tracker.php:188
+#: includes/shortcode-weight-loss-tracker.php:190
 msgid "Weight History"
 msgstr ""
 
-#: includes/shortcode-weight-loss-tracker.php:200
+#: includes/shortcode-weight-loss-tracker.php:202
 msgid "There is no data for this week, please try selecting another:"
 msgstr ""
 
-#: includes/shortcode-weight-loss-tracker.php:206
+#: includes/shortcode-weight-loss-tracker.php:208
 msgid "You haven't entered any weight data yet."
 msgstr ""
 
@@ -618,8 +618,16 @@ msgstr ""
 msgid "Interested in the future development of this plugin? Then have a peek at our road map:"
 msgstr ""
 
+#: pages/page.help.php:39
+msgid "Tools"
+msgstr ""
+
+#: pages/page.help.php:41
+msgid "Correct accuracy for measurements entered in Stones and Pounds (only run with the advice of YeKen)"
+msgstr ""
+
 #: pages/page.license.php:11 pages/page.settings.php:8
-#: pro-features/export.php:268 pro-features/functions.php:419
+#: pro-features/export.php:271 pro-features/functions.php:419
 msgid "You do not have sufficient permissions to access this page."
 msgstr ""
 
@@ -631,158 +639,158 @@ msgstr ""
 msgid "An error occurred applying your license: "
 msgstr ""
 
-#: pages/page.license.php:77
+#: pages/page.license.php:78
 msgid "As you can see from the features listed below, the"
 msgstr ""
 
-#: pages/page.license.php:79
+#: pages/page.license.php:80
 msgid "can offer you and your members a lot more features to help you and them manage their weight. There are two types of License that you can purchase, Pro and Pro Plus. Pro contains an enriched feature set and user experience and is a must! Pro Plus extends Pro with features such as BMR, Calorie intake, Macronutrient Calculator, etc."
 msgstr ""
 
-#: pages/page.license.php:80
+#: pages/page.license.php:81
 msgid "Of course, by purchasing a license, you are supporting the future of this plugin and it is gratefully appreciated."
 msgstr ""
 
-#: pages/page.license.php:85
+#: pages/page.license.php:86
 msgid "Legacy Pro License"
 msgstr ""
 
-#: pages/page.license.php:86
+#: pages/page.license.php:87
 msgid "Our licensing has model has changed, Prior to September 2017 it used to be a one off payment that enabled the Pro features of the plugin. This is still the case and any old licenses will still be honoured."
 msgstr ""
 
-#: pages/page.license.php:87
+#: pages/page.license.php:88
 msgid "Moving to a yearly license"
 msgstr ""
 
-#: pages/page.license.php:88
+#: pages/page.license.php:89
 msgid "There is no reason to move to a yearly license - Pro features will remain the same for legacy and new Pro subscriptions. However, if you were to move to a yearly subscription you will be supporting the development of the plugin (and I'll give you a big hug)."
 msgstr ""
 
-#: pages/page.license.php:92
+#: pages/page.license.php:93
 msgid "Pro Plus License"
 msgstr ""
 
-#: pages/page.license.php:93
+#: pages/page.license.php:94
 msgid "Of course, thank you for purchasing a Pro license - it is much appreciated. As you can see below, you can further expand the features of"
 msgstr ""
 
-#: pages/page.license.php:95 pages/page.license.php:105
+#: pages/page.license.php:96 pages/page.license.php:106
 msgid "by extending your license to Pro Plus. Pro Plus extends Pro with features such as BMR, Calorie intake, Macronutrient Calculator, etc. You can view the additional features that Pro Plus offers you below."
 msgstr ""
 
-#: pages/page.license.php:103
+#: pages/page.license.php:104
 msgid "Of course, a big thank you purchasing a Pro license at some point - it is much appreciated. As you can see below, you can further expand the features of"
 msgstr ""
 
-#: pages/page.license.php:111
+#: pages/page.license.php:112
 msgid "Thank you kind soul, you have purchased a Pro Plus license. A huge thank you for supporting me and this plugin!"
 msgstr ""
 
-#: pages/page.license.php:118
+#: pages/page.license.php:119
 msgid "In case you need, your <strong>Site Hash</strong> is"
 msgstr ""
 
-#: pages/page.license.php:127
+#: pages/page.license.php:128
 msgid "Get a free 7 day trial!"
 msgstr ""
 
-#: pages/page.license.php:134 pages/page.license.php:140
+#: pages/page.license.php:135 pages/page.license.php:141
 msgid "Upgrade to Pro Plus for"
 msgstr ""
 
-#: pages/page.license.php:134 pages/page.license.php:140
-#: pages/page.license.php:254 pages/page.license.php:268
+#: pages/page.license.php:135 pages/page.license.php:141
+#: pages/page.license.php:255 pages/page.license.php:269
 msgid "a year"
 msgstr ""
 
-#: pages/page.license.php:142
+#: pages/page.license.php:143
 #, no-php-format
 msgid " (50% discount)"
 msgstr ""
 
-#: pages/page.license.php:158
+#: pages/page.license.php:159
 msgid "Switch to a yearly Pro license for "
 msgstr ""
 
-#: pages/page.license.php:158 pages/page.license.php:159
+#: pages/page.license.php:159 pages/page.license.php:160
 msgid " a year"
 msgstr ""
 
-#: pages/page.license.php:159
+#: pages/page.license.php:160
 msgid "Upgrade to Pro for "
 msgstr ""
 
-#: pages/page.license.php:175
+#: pages/page.license.php:176
 msgid "Add or Update License"
 msgstr ""
 
-#: pages/page.license.php:180
+#: pages/page.license.php:181
 msgid "Copy and paste the license given to you by YeKen into this box and click \"Apply License\""
 msgstr ""
 
-#: pages/page.license.php:183
+#: pages/page.license.php:184
 msgid "Apply License"
 msgstr ""
 
-#: pages/page.license.php:188
+#: pages/page.license.php:189
 msgid "Your License Information"
 msgstr ""
 
-#: pages/page.license.php:192
+#: pages/page.license.php:193
 msgid "Site Hash"
 msgstr ""
 
-#: pages/page.license.php:196
+#: pages/page.license.php:197
 msgid "Type"
 msgstr ""
 
-#: pages/page.license.php:200
+#: pages/page.license.php:201
 msgid "Expires"
 msgstr ""
 
-#: pages/page.license.php:205
+#: pages/page.license.php:206
 msgid "Never"
 msgstr ""
 
-#: pages/page.license.php:209
+#: pages/page.license.php:210
 msgid "n/a"
 msgstr ""
 
-#: pages/page.license.php:219
+#: pages/page.license.php:220
 msgid "Your Existing License"
 msgstr ""
 
-#: pages/page.license.php:225
+#: pages/page.license.php:226
 msgid "Remove License"
 msgstr ""
 
-#: pages/page.license.php:234
+#: pages/page.license.php:235
 msgid "Documentation"
 msgstr ""
 
-#: pages/page.license.php:237
+#: pages/page.license.php:238
 msgid "Need further help or information, please visit our documentation site:"
 msgstr ""
 
-#: pages/page.license.php:254
+#: pages/page.license.php:255
 msgid "Below is a list of the intended features of the Pro Plus version"
 msgstr ""
 
-#: pages/page.license.php:254 pages/page.license.php:268
+#: pages/page.license.php:255 pages/page.license.php:269
 msgid "You can upgrade for"
 msgstr ""
 
-#: pages/page.license.php:268
+#: pages/page.license.php:269
 msgid "Below is a list of the intended features of the Pro version"
 msgstr ""
 
-#: pages/page.license.php:282 pro-features/admin-pages/data-summary.php:177
-#: pro-features/functions.pages.php:213
+#: pages/page.license.php:283 pro-features/admin-pages/data-summary.php:177
+#: pro-features/functions.pages.php:219
 msgid "Are you sure you?"
 msgstr ""
 
-#: pages/page.license.php:283
+#: pages/page.license.php:284
 msgid "Are you sure you wish to remove the license for this site? Removing it may cause your user's to lose functionality."
 msgstr ""
 
@@ -875,10 +883,11 @@ msgstr ""
 #: pages/page.settings.php:169 pages/page.settings.php:179
 #: pages/page.settings.php:189 pages/page.settings.php:209
 #: pages/page.settings.php:310 pages/page.settings.php:342
-#: pages/page.settings.php:358 pages/page.settings.php:376
-#: pages/page.settings.php:417 pages/page.settings.php:432
-#: pages/page.settings.php:442 pages/page.settings.php:452
-#: pages/page.settings.php:467 pages/page.settings.php:487
+#: pages/page.settings.php:371 pages/page.settings.php:389
+#: pages/page.settings.php:414 pages/page.settings.php:460
+#: pages/page.settings.php:475 pages/page.settings.php:485
+#: pages/page.settings.php:495 pages/page.settings.php:510
+#: pages/page.settings.php:530
 msgid "Yes"
 msgstr ""
 
@@ -887,10 +896,11 @@ msgstr ""
 #: pages/page.settings.php:168 pages/page.settings.php:178
 #: pages/page.settings.php:188 pages/page.settings.php:210
 #: pages/page.settings.php:311 pages/page.settings.php:341
-#: pages/page.settings.php:359 pages/page.settings.php:377
-#: pages/page.settings.php:416 pages/page.settings.php:433
-#: pages/page.settings.php:443 pages/page.settings.php:453
-#: pages/page.settings.php:466 pages/page.settings.php:486
+#: pages/page.settings.php:372 pages/page.settings.php:390
+#: pages/page.settings.php:413 pages/page.settings.php:459
+#: pages/page.settings.php:476 pages/page.settings.php:486
+#: pages/page.settings.php:496 pages/page.settings.php:509
+#: pages/page.settings.php:529
 msgid "No"
 msgstr ""
 
@@ -1090,7 +1100,7 @@ msgstr ""
 msgid "Maximum points per graph"
 msgstr ""
 
-#: pages/page.settings.php:326 pages/page.settings.php:380
+#: pages/page.settings.php:326 pages/page.settings.php:393
 msgid "If enabled, \"Allows points and labels to be displayed on graph."
 msgstr ""
 
@@ -1110,123 +1120,163 @@ msgstr ""
 msgid "If enabled, y Axes shall start at 0. Otherwise, they are automatically calculated."
 msgstr ""
 
-#: pages/page.settings.php:351
+#: pages/page.settings.php:349
+msgid "Text colour"
+msgstr ""
+
+#: pages/page.settings.php:352
+msgid "Enter a HEX colour code to use for text displayed on the graph."
+msgstr ""
+
+#: pages/page.settings.php:356
+msgid "Font Family"
+msgstr ""
+
+#: pages/page.settings.php:359
+msgid "Specify one or more fonts that should be used when rendering text on the graph. Separate multiple fonts with a comma. Leave blank to use the default."
+msgstr ""
+
+#: pages/page.settings.php:364
 msgid "Line Chart Options"
 msgstr ""
 
-#: pages/page.settings.php:355
+#: pages/page.settings.php:368
 msgid "Bezier Curve?"
 msgstr ""
 
-#: pages/page.settings.php:362
+#: pages/page.settings.php:375
 msgid "If enabled, lines between points on a line graph will be curved"
 msgstr ""
 
-#: pages/page.settings.php:366
+#: pages/page.settings.php:379
 msgid "Target line colour?"
 msgstr ""
 
-#: pages/page.settings.php:369
+#: pages/page.settings.php:382
 msgid "If enabled, enter a HEX colour code to use for the Target line on graph."
 msgstr ""
 
-#: pages/page.settings.php:373
+#: pages/page.settings.php:386
 msgid "Display points on graph?"
 msgstr ""
 
-#: pages/page.settings.php:384
+#: pages/page.settings.php:397
 msgid "Point thickness"
 msgstr ""
 
-#: pages/page.settings.php:393
+#: pages/page.settings.php:406
 msgid "Specifies the point thickness on a line chart."
 msgstr ""
 
-#: pages/page.settings.php:398
+#: pages/page.settings.php:410
+msgid "Add a fill under weight line?"
+msgstr ""
+
+#: pages/page.settings.php:416
+msgid "If enabled, a fill colour will be added under the weight line."
+msgstr ""
+
+#: pages/page.settings.php:420
+msgid "Weight Fill Colour"
+msgstr ""
+
+#: pages/page.settings.php:423
+msgid "If enabled, enter a HEX colour code to use for the fill colour under the weight line."
+msgstr ""
+
+#: pages/page.settings.php:427
+msgid "Weight Fill Opacity"
+msgstr ""
+
+#: pages/page.settings.php:436
+msgid "Specifies the opacity of the fill colour under the weight line."
+msgstr ""
+
+#: pages/page.settings.php:441
 msgid "Bar Chart Options"
 msgstr ""
 
-#: pages/page.settings.php:402
+#: pages/page.settings.php:445
 msgid "Weight fill colour?"
 msgstr ""
 
-#: pages/page.settings.php:405
+#: pages/page.settings.php:448
 msgid "If enabled, enter a HEX colour code to use for filling the Weight bars on the graph."
 msgstr ""
 
-#: pages/page.settings.php:413
+#: pages/page.settings.php:456
 msgid "Enable email notifications"
 msgstr ""
 
-#: pages/page.settings.php:422
+#: pages/page.settings.php:465
 msgid "Email addresses to notify"
 msgstr ""
 
-#: pages/page.settings.php:425
+#: pages/page.settings.php:468
 msgid "Specify one or more email addresses to be notified. Seperate multiple emails with a comma."
 msgstr ""
 
-#: pages/page.settings.php:429
+#: pages/page.settings.php:472
 msgid "New weight / measurement entries"
 msgstr ""
 
-#: pages/page.settings.php:435
+#: pages/page.settings.php:478
 msgid "Receive notifications when a member adds a new weight / measurement entry."
 msgstr ""
 
-#: pages/page.settings.php:439
+#: pages/page.settings.php:482
 msgid "Edited weight / measurement entries"
 msgstr ""
 
-#: pages/page.settings.php:445
+#: pages/page.settings.php:488
 msgid "Receive notifications when a member edits an existing weight / measurement entry."
 msgstr ""
 
-#: pages/page.settings.php:449
+#: pages/page.settings.php:492
 msgid "New / updated targets"
 msgstr ""
 
-#: pages/page.settings.php:455
+#: pages/page.settings.php:498
 msgid "Receive notifications when a member adds / edits their target."
 msgstr ""
 
-#: pages/page.settings.php:463
+#: pages/page.settings.php:506
 msgid "Allow Measurements?"
 msgstr ""
 
-#: pages/page.settings.php:469
+#: pages/page.settings.php:512
 msgid "If enabled, a user can also add body measurements along with their weights."
 msgstr ""
 
-#: pages/page.settings.php:473
+#: pages/page.settings.php:516
 msgid "Measurement Units"
 msgstr ""
 
-#: pages/page.settings.php:476 pro-features/user-preferences.php:173
+#: pages/page.settings.php:519 pro-features/user-preferences.php:173
 msgid "Centimetres"
 msgstr ""
 
-#: pages/page.settings.php:479
+#: pages/page.settings.php:522
 msgid "Default unit for recording measurements."
 msgstr ""
 
-#: pages/page.settings.php:483
+#: pages/page.settings.php:526
 msgid "Measurements mandatory?"
 msgstr ""
 
-#: pages/page.settings.php:489
+#: pages/page.settings.php:532
 msgid "If yes, a user will be forced to complete all measurement features."
 msgstr ""
 
-#: pages/page.settings.php:493
+#: pages/page.settings.php:536
 msgid "Areas of measurements"
 msgstr ""
 
-#: pages/page.settings.php:515
+#: pages/page.settings.php:558
 msgid "Enable"
 msgstr ""
 
-#: pages/page.settings.php:518
+#: pages/page.settings.php:561
 msgid "Chart Colour"
 msgstr ""
 
@@ -1324,12 +1374,12 @@ msgid "Email"
 msgstr ""
 
 #: pro-features/admin-pages/data-search-results.php:42
-#: pro-features/functions.pages.php:80
+#: pro-features/functions.pages.php:86
 msgid "No. of Entries"
 msgstr ""
 
 #: pro-features/admin-pages/data-search-results.php:43
-#: pro-features/functions.pages.php:84
+#: pro-features/functions.pages.php:90
 msgid "Start Weight"
 msgstr ""
 
@@ -1386,7 +1436,7 @@ msgid "Show 100 recent entries"
 msgstr ""
 
 #: pro-features/admin-pages/data-summary.php:96
-#: pro-features/functions.pages.php:38
+#: pro-features/functions.pages.php:44
 msgid "User Search"
 msgstr ""
 
@@ -1423,17 +1473,17 @@ msgid "Export all data"
 msgstr ""
 
 #: pro-features/admin-pages/data-summary.php:153
-#: pro-features/functions.pages.php:175
+#: pro-features/functions.pages.php:181
 msgid "To CSV"
 msgstr ""
 
 #: pro-features/admin-pages/data-summary.php:157
-#: pro-features/functions.pages.php:179
+#: pro-features/functions.pages.php:185
 msgid "To JSON"
 msgstr ""
 
 #: pro-features/admin-pages/data-summary.php:162
-#: pro-features/functions.pages.php:203
+#: pro-features/functions.pages.php:209
 msgid "Delete Data"
 msgstr ""
 
@@ -1480,7 +1530,7 @@ msgid "Please ensure the values for Proteins, Carbohydrates and Fats (within "
 msgstr ""
 
 #: pro-features/admin-pages/data-user.php:121
-#: pro-features/plus/harris.benedict.php:240
+#: pro-features/plus/harris.benedict.php:241
 msgid "settings"
 msgstr ""
 
@@ -1561,15 +1611,15 @@ msgstr ""
 msgid "No data was found for the given criteria."
 msgstr ""
 
-#: pro-features/export.php:192
+#: pro-features/export.php:195
 msgid "lbs only"
 msgstr ""
 
-#: pro-features/export.php:195
+#: pro-features/export.php:198
 msgid "Difference from start"
 msgstr ""
 
-#: pro-features/export.php:251 pro-features/footable.php:149
+#: pro-features/export.php:254 pro-features/footable.php:154
 msgid "No height"
 msgstr ""
 
@@ -1693,39 +1743,39 @@ msgstr ""
 msgid "cm"
 msgstr ""
 
-#: pro-features/footable.php:122
+#: pro-features/footable.php:127
 msgid "First entry"
 msgstr ""
 
-#: pro-features/footable.php:196
+#: pro-features/footable.php:195
 msgid "User"
 msgstr ""
 
-#: pro-features/footable.php:204
+#: pro-features/footable.php:203
 msgid "Difference"
 msgstr ""
 
-#: pro-features/footable.php:208
+#: pro-features/footable.php:207
 msgid "Body Mass Index"
 msgstr ""
 
-#: pro-features/footable.php:213
+#: pro-features/footable.php:212
 msgid "Photo"
 msgstr ""
 
-#: pro-features/footable.php:277
+#: pro-features/footable.php:276
 msgid "Are you sure you want to delete the row?"
 msgstr ""
 
-#: pro-features/footable.php:278
+#: pro-features/footable.php:277
 msgid "Unfortunately there was an error deleting the row."
 msgstr ""
 
-#: pro-features/footable.php:279
+#: pro-features/footable.php:278
 msgid "Search"
 msgstr ""
 
-#: pro-features/footable.php:280
+#: pro-features/footable.php:279
 msgid "No data found"
 msgstr ""
 
@@ -1733,107 +1783,107 @@ msgstr ""
 msgid "Enter a user's email address, display name or username and click Search."
 msgstr ""
 
-#: pro-features/functions.pages.php:46
+#: pro-features/functions.pages.php:52
 msgid "Most Recent Photo"
 msgstr ""
 
-#: pro-features/functions.pages.php:57
+#: pro-features/functions.pages.php:63
 msgid "No. of photos: "
 msgstr ""
 
-#: pro-features/functions.pages.php:60
+#: pro-features/functions.pages.php:66
 msgid "View all"
 msgstr ""
 
-#: pro-features/functions.pages.php:72
+#: pro-features/functions.pages.php:78
 msgid "User Information"
 msgstr ""
 
-#: pro-features/functions.pages.php:88
+#: pro-features/functions.pages.php:94
 msgid "Latest Weight"
 msgstr ""
 
-#: pro-features/functions.pages.php:92
+#: pro-features/functions.pages.php:98
 msgid "Diff. from Start"
 msgstr ""
 
-#: pro-features/functions.pages.php:108
+#: pro-features/functions.pages.php:114
 msgid "Diff. from Target"
 msgstr ""
 
-#: pro-features/functions.pages.php:112
+#: pro-features/functions.pages.php:118
 msgid "Current BMI"
 msgstr ""
 
-#: pro-features/functions.pages.php:113
+#: pro-features/functions.pages.php:119
 msgid "No height specified"
 msgstr ""
 
-#: pro-features/functions.pages.php:119
+#: pro-features/functions.pages.php:125
 msgid "Aim"
 msgstr ""
 
-#: pro-features/functions.pages.php:127
+#: pro-features/functions.pages.php:133
 msgid "Gender"
 msgstr ""
 
-#: pro-features/functions.pages.php:131
+#: pro-features/functions.pages.php:137
 msgid "Activity Level"
 msgstr ""
 
-#: pro-features/functions.pages.php:135
+#: pro-features/functions.pages.php:141
 msgid "Date of Birth"
 msgstr ""
 
-#: pro-features/functions.pages.php:139
+#: pro-features/functions.pages.php:145
 msgid "BMR"
 msgstr ""
 
-#: pro-features/functions.pages.php:144
+#: pro-features/functions.pages.php:150
 msgid "Missing data"
 msgstr ""
 
-#: pro-features/functions.pages.php:158 pro-features/functions.pages.php:162
+#: pro-features/functions.pages.php:164 pro-features/functions.pages.php:168
 msgid "Add Entry"
 msgstr ""
 
-#: pro-features/functions.pages.php:166
+#: pro-features/functions.pages.php:172
 msgid "Edit Target"
 msgstr ""
 
-#: pro-features/functions.pages.php:171
+#: pro-features/functions.pages.php:177
 msgid "Export Data"
 msgstr ""
 
-#: pro-features/functions.pages.php:194
+#: pro-features/functions.pages.php:200
 msgid "Delete Cache"
 msgstr ""
 
-#: pro-features/functions.pages.php:198
+#: pro-features/functions.pages.php:204
 msgid "Delete Cache for this user"
 msgstr ""
 
-#: pro-features/functions.pages.php:207
+#: pro-features/functions.pages.php:213
 msgid "Delete ALL data for this user"
 msgstr ""
 
-#: pro-features/functions.pages.php:214
+#: pro-features/functions.pages.php:220
 msgid "Are you sure you wish to remove the data for this user?"
 msgstr ""
 
-#: pro-features/functions.pages.php:287
+#: pro-features/functions.pages.php:293
 msgid "Back"
 msgstr ""
 
-#: pro-features/functions.pages.php:289
+#: pro-features/functions.pages.php:295
 msgid "WordPress Record"
 msgstr ""
 
-#: pro-features/functions.pages.php:290
+#: pro-features/functions.pages.php:296
 msgid "Weight Tracker Record"
 msgstr ""
 
-#: pro-features/functions.pages.php:309
+#: pro-features/functions.pages.php:315
 msgid "Error: The User's ID was missing..."
 msgstr ""
 
@@ -1861,11 +1911,11 @@ msgstr ""
 msgid "Heavily Overweight"
 msgstr ""
 
-#: pro-features/functions.php:215 pro-features/plus/harris.benedict.php:235
+#: pro-features/functions.php:215 pro-features/plus/harris.benedict.php:236
 msgid "Female"
 msgstr ""
 
-#: pro-features/functions.php:216 pro-features/plus/harris.benedict.php:235
+#: pro-features/functions.php:216 pro-features/plus/harris.benedict.php:236
 msgid "Male"
 msgstr ""
 
@@ -1932,54 +1982,54 @@ msgid "No Weight entered"
 msgstr ""
 
 #: pro-features/plus/harris.benedict.php:81
-#: pro-features/plus/harris.benedict.php:165
-#: pro-features/plus/harris.benedict.php:204
+#: pro-features/plus/harris.benedict.php:166
+#: pro-features/plus/harris.benedict.php:205
 #: pro-features/plus/macronutrient.calculator.php:80
 #: pro-features/plus/macronutrient.calculator.php:182
 #: pro-features/plus/macronutrient.calculator.php:221
 msgid "Please ensure all relevant data to calculate calorie intake has been entered i.e. Activity Level, Date of Birth, Current Weight, Gender and Height."
 msgstr ""
 
-#: pro-features/plus/harris.benedict.php:97
+#: pro-features/plus/harris.benedict.php:98
 #: pro-features/plus/macronutrient.calculator.php:103
 msgid "Total"
 msgstr ""
 
-#: pro-features/plus/harris.benedict.php:98
+#: pro-features/plus/harris.benedict.php:99
 #: pro-features/plus/macronutrient.calculator.php:104
 msgid "Breakfast"
 msgstr ""
 
-#: pro-features/plus/harris.benedict.php:99
+#: pro-features/plus/harris.benedict.php:100
 #: pro-features/plus/macronutrient.calculator.php:105
 msgid "Lunch"
 msgstr ""
 
-#: pro-features/plus/harris.benedict.php:100
+#: pro-features/plus/harris.benedict.php:101
 #: pro-features/plus/macronutrient.calculator.php:106
 msgid "Dinner"
 msgstr ""
 
-#: pro-features/plus/harris.benedict.php:101
+#: pro-features/plus/harris.benedict.php:102
 #: pro-features/plus/macronutrient.calculator.php:107
 msgid "Snacks"
 msgstr ""
 
-#: pro-features/plus/harris.benedict.php:115
+#: pro-features/plus/harris.benedict.php:116
 #: pro-features/plus/macronutrient.calculator.php:101
 msgid "Maintain"
 msgstr ""
 
-#: pro-features/plus/harris.benedict.php:133
+#: pro-features/plus/harris.benedict.php:134
 #: pro-features/plus/macronutrient.calculator.php:101
 msgid "Lose"
 msgstr ""
 
-#: pro-features/plus/harris.benedict.php:236
+#: pro-features/plus/harris.benedict.php:237
 msgid "calories for weight loss are capped at "
 msgstr ""
 
-#: pro-features/plus/harris.benedict.php:238
+#: pro-features/plus/harris.benedict.php:239
 msgid "This can be modified within "
 msgstr ""
 
@@ -2128,7 +2178,7 @@ msgstr ""
 msgid "Please remember to enter your weight for today."
 msgstr ""
 
-#: pro-features/shortcode-stats.php:8 pro-features/shortcode-stats.php:113
+#: pro-features/shortcode-stats.php:8 pro-features/shortcode-stats.php:119
 msgid "Stats disabled"
 msgstr ""
 
@@ -2144,15 +2194,15 @@ msgstr ""
 msgid "No of entries"
 msgstr ""
 
-#: pro-features/shortcode-stats.php:106
+#: pro-features/shortcode-stats.php:112
 msgid "The league table has not been generated yet. This is a scheduled task so please check back in 15 minutes or try pressing the button below."
 msgstr ""
 
-#: pro-features/shortcode-stats.php:140
+#: pro-features/shortcode-stats.php:146
 msgid "Lost"
 msgstr ""
 
-#: pro-features/shortcode-stats.php:140
+#: pro-features/shortcode-stats.php:146
 msgid "Gained"
 msgstr ""
 
