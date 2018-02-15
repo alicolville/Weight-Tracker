@@ -16,6 +16,11 @@
 		// Get md5 of latest message
 		$yeken_md5 = (isset($yeken_data->notice) && !empty($yeken_data->notice)) ? md5($yeken_data->notice) : false;
 
+		// Don't display empty notifications!!
+		if ( false === $yeken_md5 ) {
+		    return;
+        }
+
 		// Get md5 of last dismissed message
 		$local_md5 = get_option(WE_LS_KEY_YEKEN_ADMIN_NOTIFICATION);
 
