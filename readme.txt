@@ -144,6 +144,10 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 = 5.2.25 =
 
+* Bug fix: Don't display notification from YeKen if it's blank!
+
+= 5.2.24 =
+
 * Added additional German translations (thanks @Benjamin)
 
 = 5.2.23 =

@@ -11,7 +11,7 @@ defined('ABSPATH') or die('Jog on!');
  * License: GPL2
  * Text Domain: weight-loss-tracker
  */
-/*  Copyright 2017 YeKen.uk
+/*  Copyright 2018 YeKen.uk
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License, version 2, as
