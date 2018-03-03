@@ -37,7 +37,11 @@ function ws_ls_capture_and_handle_form_post()
                     wp_safe_redirect($_POST['ws_redirect']);
                     exit;
                 }  elseif ($save_success) {
-					$html_output .= ws_ls_display_blockquote( __('Saved!', WE_LS_SLUG) , 'ws-ls-success');
+
+                    // Allow others to override Saved message
+                    $save_message = apply_filters( 'wlt-filter-form-saved-message', __('Saved!', WE_LS_SLUG));
+
+					$html_output .= ws_ls_display_blockquote( $save_message, 'ws-ls-success');
 				} else {
 					$error = __('An error occurred while saving your data!', WE_LS_SLUG);
 				}
