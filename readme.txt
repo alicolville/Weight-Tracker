@@ -2,8 +2,8 @@
 Contributors: aliakro
 Tags: weight, loss, lose, helper, bmi, body, mass, index, graph, track, stones, kg, table, data, plot, target, history, pounds, responsive, chart, measurements, cm, centimeters, inches, hip, waist, bicep, thigh
 Requires at least: 4.4.0
-Tested up to: 4.9
-Stable tag: 5.2.26
+Tested up to: 4.9.5
+Stable tag: 5.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate Link: https://www.paypal.me/yeken
@@ -133,9 +133,17 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 == Upgrade Notice ==
 
-5.2! Pro Plus now supports photo uploads from your members!
 
 == Changelog ==
+
+= 5.3 =
+
+* Improvement: Added filter to allow Activity Levels to be overridden (wlt-filter-activity-levels)					                        //TODO: Document
+* Improvement: Added filter to allow BMR calculation to be overridden (wlt-filter-bmr-calculation)					                        //TODO: Document
+* Improvement: Added filter to allow Macro calculation per meal to be overridden (wlt-filter-macros-[key])			                        //TODO: Document
+* Improvement: Added filter to allow all Macro calculations to be overridden (wlt-filter-macros)					                        //TODO: Document
+* Improvement: Added filter to display an additional field below gender on user preferences form (wlt-filter-user-settings-below-gender)    //TODO: Document
+wlt-filter-macros-
 
 = 5.2.26 =
 

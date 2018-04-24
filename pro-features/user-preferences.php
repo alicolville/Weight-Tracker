@@ -127,6 +127,12 @@ function ws_ls_user_preferences_form($user_defined_arguments)
     $html_output .= '</select>';
 
     //-------------------------------------------------------
+    // Additional Body attributes
+    //-------------------------------------------------------
+
+    $html_output .= apply_filters(WE_LS_FILTER_USER_SETTINGS_BELOW_GENDER, '', $user_id);
+
+    //-------------------------------------------------------
     // Activity Level
     //-------------------------------------------------------
     $html_output .= '

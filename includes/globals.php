@@ -73,6 +73,7 @@
 	define('WE_LS_FILTER_ADMIN_USER_SIDEBAR_MIDDLE', 'wlt-filter-admin-user-sidebar-middle');
 	define('WE_LS_FILTER_ADMIN_USER_SIDEBAR_BOTTOM', 'wlt-filter-admin-user-sidebar-bottom');
 	define('WE_LS_FILTER_USER_SETTINGS_BELOW_AIM', 'wlt-filter-user-settings-below-aim');
+    define('WE_LS_FILTER_USER_SETTINGS_BELOW_GENDER', 'wlt-filter-user-settings-below-gender');
     define('WE_LS_FILTER_USER_SETTINGS_DB_FORMATS', 'wlt-filter-user-settings-db-formats');
     define('WE_LS_FILTER_USER_SETTINGS_SAVE_FIELDS', 'wlt-filter-user-settings-save-fields');
     define('WE_LS_FILTER_JS_WS_LS_CONFIG', 'wlt-filter-js-ws-ls-config');
