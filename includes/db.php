@@ -550,8 +550,10 @@ function ws_ls_get_user_setting($field = 'gender', $user_id = false, $use_cache 
     // Default to logged in user if not user ID not specified.
     $user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
 
+    $valid_settings = apply_filters( 'wlt-filter-setting-fields', ['activity_level', 'gender', 'height', 'dob', 'aim', 'body_type'] );
+
     // Validate field
-    $field = (in_array($field, ['activity_level', 'gender', 'height', 'dob', 'aim', 'body_type'])) ? $field : 'gender';
+    $field = ( in_array($field, $valid_settings) ) ? $field : 'gender';
 
     $cache_key = WE_LS_CACHE_KEY_USER_PREFERENCE . '-' . $field;
 

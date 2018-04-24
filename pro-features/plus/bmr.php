@@ -64,6 +64,8 @@
             $bmr = 66 + (13.7 * $weight) + (5 * $height) - (6.8 * $age);
         }
 
+        $bmr = apply_filters( 'wlt-filter-bmr-calculation', $bmr, $gender, $weight, $age );
+
 		// Cache BMR
 		ws_ls_set_cache($cache_key, $bmr);
 
