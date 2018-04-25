@@ -143,6 +143,9 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 * Improvement: Added filter to allow Macro calculation per meal to be overridden (wlt-filter-macros-[key])			                        //TODO: Document
 * Improvement: Added filter to allow all Macro calculations to be overridden (wlt-filter-macros)					                        //TODO: Document
 * Improvement: Added filter to display an additional field below gender on user preferences form (wlt-filter-user-settings-below-gender)    //TODO: Document
+* Improvement: Added filter to change a user's setting ('wlt-filter-user-setting-[key])														//TODO: Document
+
+
 wlt-filter-macros-
 
 = 5.2.26 =
