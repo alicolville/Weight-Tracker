@@ -569,7 +569,7 @@ function ws_ls_get_user_setting($field = 'gender', $user_id = false, $use_cache 
     $result = NULL;
 
     if($row[$field]) {
-		$result = $row[$field];
+		$result = apply_filters( 'wlt-filter-user-setting-' . $field, $row[$field], $user_id, $field );
     }
 
 	ws_ls_cache_user_set($user_id, $cache_key, $result);
