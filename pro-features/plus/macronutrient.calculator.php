@@ -15,7 +15,7 @@ function ws_ls_macro_calculate($user_id = false) {
 
     $calories = ws_ls_harris_benedict_calculate_calories($user_id);
 
-    $macros = apply_filters( 'wlt-filter-custom', [], $calories);
+    $macros = apply_filters( 'wlt-filter-macros-custom', [], $calories);
 
     // If a 3rd party plugin has specified macros then no point carrying on below!
     if ( false === empty( $macros ) ) {
@@ -36,6 +36,9 @@ function ws_ls_macro_calculate($user_id = false) {
             $macros[$key]['total']['protein'] = ($macros[$key]['calories'] * $protein_calc) / 4;
             $macros[$key]['total']['carbs'] = ($macros[$key]['calories'] * $carbs_calc) / 4;
             $macros[$key]['total']['fats'] = ($macros[$key]['calories'] * $fats_calc) / 9;
+
+            // Allow 3rd parties to filter macro nutrient totals
+            $macros[$key]['total'] = apply_filters( 'wlt-filter-macros-' . $key . '-total', $macros[$key]['total'], $key, $calories );
 
             // Breakfast
             $macros[$key]['breakfast']['protein'] = $macros[$key]['total']['protein'] * 0.2;
@@ -116,7 +119,7 @@ function ws_ls_macro_render_table($user_id, $missing_data_text = false, $additio
                 __('Snacks', WE_LS_SLUG)
             );
 
-            // Maintain
+            // Protein
             $html .= sprintf('  <tr valign="top" class="alternate">
                                     <td class="ws-ls-col-header">%s</td>
                                     <td>%s</td>
@@ -133,7 +136,7 @@ function ws_ls_macro_render_table($user_id, $missing_data_text = false, $additio
                 ws_ls_macro_round($macros[$key]['snacks']['protein'])
             );
 
-            // Maintain
+            // Carbs
             $html .= sprintf('  <tr valign="top" >
                                     <td class="ws-ls-col-header">%s</td>
                                     <td>%s</td>
