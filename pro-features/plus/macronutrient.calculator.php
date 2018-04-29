@@ -2,8 +2,7 @@
 
 defined('ABSPATH') or die("Jog on!");
 
-function ws_ls_macro_calculate($user_id = false)
-{
+function ws_ls_macro_calculate($user_id = false) {
 
     $user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
 
@@ -14,8 +13,14 @@ function ws_ls_macro_calculate($user_id = false)
        return $cache;
     }
 
-    $macros = [];
     $calories = ws_ls_harris_benedict_calculate_calories($user_id);
+
+    $macros = apply_filters( 'wlt-filter-custom', [], $calories);
+
+    // If a 3rd party plugin has specified macros then no point carrying on below!
+    if ( false === empty( $macros ) ) {
+        return $macros;
+    }
 
     if (true === isset($calories['lose']['total'], $calories['maintain']['total'])) {
 
