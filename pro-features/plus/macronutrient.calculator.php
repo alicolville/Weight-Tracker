@@ -52,7 +52,7 @@ function ws_ls_macro_calculate($user_id = false)
             $macros[$key]['snacks']['carbs'] = $macros[$key]['total']['carbs'] * 0.2;
             $macros[$key]['snacks']['fats'] = $macros[$key]['total']['fats'] * 0.2;
 
-			$macros = apply_filters( 'wlt-filter-macros-' . $key, $macros[$key], $calories );
+            $macros[$key] = apply_filters( 'wlt-filter-macros-' . $key, $macros[$key], $calories );
         }
 
     } else {
