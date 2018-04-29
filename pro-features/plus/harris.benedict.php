@@ -93,7 +93,7 @@ function ws_ls_harris_benedict_render_table($user_id, $missing_data_text = false
 	if(false === empty($calories)) {
 
 		// Table Header
-		$html = sprintf('<table class="%s%s" %s border="1">
+		$html = sprintf('<table class="%s%s" %s >
                                 <tr>
                                     <th class="ws-ls-empty-cell row-title"></th>
                                     <th>%s</th>
