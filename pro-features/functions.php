@@ -245,12 +245,16 @@ function ws_ls_activity_levels() {
  */
 function ws_ls_aims() {
 
-    return [
+    $aims = [
         0 => '',
         1 => __('Maintain current weight', WE_LS_SLUG),
         2 => __('Lose weight', WE_LS_SLUG),
         3 => __('Gain weight', WE_LS_SLUG)
     ];
+
+    $aims = apply_filters( 'wlt-filter-aims', $aims );
+
+    return $aims;
 }
 
 /**
