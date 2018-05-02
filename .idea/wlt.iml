@@ -15,6 +15,6 @@
       </library>
     </orderEntry>
     <orderEntry type="module" module-name="allan" />
-    <orderEntry type="module" module-name="wlt-dean" />
+    <orderEntry type="module" module-name="allan" />
   </component>
 </module>

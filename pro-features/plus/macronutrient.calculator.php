@@ -24,7 +24,9 @@ function ws_ls_macro_calculate($user_id = false) {
 
     if (true === isset($calories['lose']['total'], $calories['maintain']['total'])) {
 
-        foreach (['maintain', 'lose'] as $key) {
+        $macros_to_calculate = apply_filters( 'wlt-filter-macros-calculate', ['maintain', 'lose'], $calories);
+
+        foreach ( $macros_to_calculate as $key ) {
 
             $macros[$key]['calories'] = $calories[$key]['total'];
 
@@ -97,7 +99,9 @@ function ws_ls_macro_render_table($user_id, $missing_data_text = false, $additio
 			(false === empty($additional_css_class)) ? esc_attr($additional_css_class) . ' ' : '',
 				false === is_admin() ? '' : ' widefat');
 
-        foreach (['lose', 'maintain'] as $key) {
+        $macros_to_display = apply_filters( 'wlt-filter-macros-display', ['maintain', 'lose'], $macros);
+
+        foreach ( $macros_to_display as $key ) {
 
             // Table Header
             $html .= sprintf('
@@ -110,7 +114,7 @@ function ws_ls_macro_render_table($user_id, $missing_data_text = false, $additio
                                     <th data-breakpoints="xs sm">%s</th>
                                 </tr>
                             ',
-				('maintain' == $key) ? __('Maintain', WE_LS_SLUG) : __('Lose', WE_LS_SLUG),
+				ws_ls_get_macro_name( $key ),
                 number_format($macros[$key]['calories']),
                 __('Total', WE_LS_SLUG),
                 __('Breakfast', WE_LS_SLUG),
@@ -278,4 +282,23 @@ function ws_ls_macro_validate_percentages()
  */
 function ws_ls_macro_round($value) {
     return number_format($value, 2);
+}
+
+/**
+ * Return Label for a macro key
+ *
+ * @param $key
+ * @return mixed
+ */
+function ws_ls_get_macro_name( $key ) {
+
+    $lookup = [ 'maintain' => __('Maintain', WE_LS_SLUG), 'lose' => __('Lose', WE_LS_SLUG) ];
+
+    $lookup = apply_filters( 'wlt-filter-macros-labels', $lookup );
+
+    if ( true === array_key_exists( $key, $lookup ) ) {
+        return $lookup[ $key ];
+    }
+
+    return $key;
 }

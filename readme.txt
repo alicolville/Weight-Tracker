@@ -138,19 +138,21 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 = 5.3 =
 
-* Improvement: Added filter to allow Activity Levels to be overridden (wlt-filter-activity-levels)					                        //TODO: Document
-* Improvement: Added filter to allow Aims to be overridden (wlt-filter-aims)					                                             //TODO: Document
-* Improvement: Added filter to allow BMR calculation to be overridden (wlt-filter-bmr-calculation)					                        //TODO: Document
-* Improvement: Added filter to allow Macro calculation per meal to be overridden (wlt-filter-macros-[key])			                        //TODO: Document
-* Improvement: Added filter to allow Macro calculations per total to be overridden (wlt-filter-macros-[key]-total)	                        //TODO: Document
-* Improvement: Added filter to allow all Macro calculations to be overridden (wlt-filter-macros)					                        //TODO: Document
-* Improvement: Added filter to display an additional field below gender on user preferences form (wlt-filter-user-settings-below-gender)    //TODO: Document
-* Improvement: Added filter to change a user's setting ('wlt-filter-user-setting-[key])														//TODO: Document
-* Improvement: Added filter to allow calories to be overridden (wlt-filter-calories-lose)													//TODO: Document
-* Improvement: Added filter to allow calories to maintain weight to be overridden (wlt-filter-calories-maintain)							//TODO: Document
-* Improvement: Added filter to allow calories to lose weight to be overridden (wlt-filter-calories-lose)									//TODO: Document
-* Improvement: Added filter to allow table rows to be filtered in Harris Benedict tables (wlt-filter-harris-benedict-rows)					//TODO: Document
-* Improvement: Added filter to allow default macros to be specified and override WLT plugin. (wlt-filter-macros-custom)       				//TODO: Document
+* Improvement: Added filter to allow Activity Levels to be overridden (wlt-filter-activity-levels)
+* Improvement: Added filter to allow Aims to be overridden (wlt-filter-aims)
+* Improvement: Added filter to allow BMR calculation to be overridden (wlt-filter-bmr-calculation)
+* Improvement: Added filter to allow Macro calculation per meal to be overridden (wlt-filter-macros-[key])
+* Improvement: Added filter to allow Macro calculations per total to be overridden (wlt-filter-macros-[key]-total)
+* Improvement: Added filter to allow all Macro calculations to be overridden (wlt-filter-macros)
+* Improvement: Added filter to display an additional field below gender on user preferences form (wlt-filter-user-settings-below-gender)
+* Improvement: Added filter to change a user's setting ('wlt-filter-user-setting-[key])
+* Improvement: Added filter to allow calories to be overridden (wlt-filter-calories-lose)
+* Improvement: Added filter to allow calories to maintain weight to be overridden (wlt-filter-calories-maintain)
+* Improvement: Added filter to allow calories to lose weight to be overridden (wlt-filter-calories-lose)
+* Improvement: Added filter to allow table rows to be filtered in Harris Benedict tables (wlt-filter-harris-benedict-rows)
+* Improvement: Added filter to allow default macros to be specified and override WLT plugin. (wlt-filter-macros-custom)
+* Improvement: Added filter to allow specify what types of calories should be converted into macros. wlt-filter-macros-calculate)
+* Improvement: Added filter to allow specify what types of macros should be displayed. wlt-filter-macros-display)
 
 = 5.2.26 =
 
