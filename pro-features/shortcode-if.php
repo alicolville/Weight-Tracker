@@ -171,6 +171,9 @@ function ws_ls_shortcode_if_value_exist($user_id, $fields) {
                     break;
             }
 
+            // Allow other developers to insert
+            $value = apply_filters( 'wlt-filter-if-condition-' . $field, $value, $user_id );
+
             if (true === empty($value)) {
                 return false;
             }
@@ -188,7 +191,13 @@ function ws_ls_shortcode_if_value_exist($user_id, $fields) {
  * @return bool
  */
 function ws_ls_shortcode_if_valid_field_name($field) {
-    return (true === in_array($field, ['weight', 'target', 'bmr', 'height', 'gender', 'activity_level', 'dob', 'is-logged-in', 'photo', 'aim']));
+
+    $fields = ['weight', 'target', 'bmr', 'height', 'gender', 'activity_level', 'dob', 'is-logged-in', 'photo', 'aim'];
+
+    // Allow others to override accepted fields.
+    $fields = apply_filters( 'wlt-filter-if-allowed-fields', $fields );
+
+    return ( true === in_array( $field, $fields ) );
 }
 
 /**
