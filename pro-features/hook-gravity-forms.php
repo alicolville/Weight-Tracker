@@ -131,8 +131,6 @@ function ws_ls_gravity_forms_process( $entry, $form ) {
     // Add Measurements
     // --------------------------------------------------------------------------------
 
-	$measurements = false;
-
     if ( WE_LS_MEASUREMENTS_ENABLED ) {
 
         $weight_keys = ws_ls_gravity_forms_measurement_keys();
@@ -153,6 +151,20 @@ function ws_ls_gravity_forms_process( $entry, $form ) {
         if ( false === empty( $measurements ) ) {
             GFCommon::log_debug( 'Identified the following measurements to save: ' . print_r( $measurements, true ) );
             $weight[ 'measurements' ] = $measurements;
+        }
+
+    }
+
+    // --------------------------------------------------------------------------------
+    // Photo?
+    // --------------------------------------------------------------------------------
+
+    if ( false === empty( $matched_fields['wlt-photo'] ) ) {
+
+        $photo_id = attachment_url_to_postid( $matched_fields['wlt-photo'] );
+
+        if ( false === empty( $photo_id ) ) {
+            $weight['photo_id'] = $photo_id;
         }
 
     }
@@ -218,6 +230,7 @@ function ws_ls_gravity_forms_keys() {
     $keys = [];
     $keys[] = $prefix . 'date';
     $keys[] = $prefix . 'notes';
+    $keys[] = $prefix . 'photo';
 
     $keys = array_merge( $keys, ws_ls_gravity_forms_weight_keys() );
     $keys = array_merge( $keys, ws_ls_gravity_forms_measurement_keys() );
