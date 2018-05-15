@@ -26,6 +26,7 @@ defined('ABSPATH') or die("Jog on!");
         [17] => wlt-hips
         [18] => wlt-navel
         [19] => wlt-neck
+ *      [20] => wlt-bust-chest
  *
  * @param $entry
  * @param $form
@@ -164,6 +165,9 @@ function ws_ls_gravity_forms_process( $entry, $form ) {
         $photo_id = attachment_url_to_postid( $matched_fields['wlt-photo'] );
 
         if ( false === empty( $photo_id ) ) {
+
+            GFCommon::log_debug( sprintf('Adding photo %s ( %s ) to Weight Entry', $matched_fields['wlt-photo'], $photo_id ) );
+
             $weight['photo_id'] = $photo_id;
         }
 
