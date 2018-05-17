@@ -157,6 +157,26 @@ function ws_ls_gravity_forms_process( $entry, $form ) {
     }
 
     // --------------------------------------------------------------------------------
+    // Preferences
+    // --------------------------------------------------------------------------------
+
+    $preferences = ws_ls_gravity_forms_preferences_keys();
+
+    foreach ($preferences as $key) {
+
+        if( false === empty( $matched_fields[ $key ] ) ) {
+
+            $db_key = str_replace( $prefix, '', $key);
+            $db_key = str_replace( '-', '_', $db_key);
+
+            var_dump($db_key, $matched_fields[ $key ]);
+
+            ws_ls_set_user_preference( $db_key, $matched_fields[ $key ] );
+
+        }
+    }
+
+    // --------------------------------------------------------------------------------
     // Photo?
     // --------------------------------------------------------------------------------
 
@@ -238,6 +258,7 @@ function ws_ls_gravity_forms_keys() {
 
     $keys = array_merge( $keys, ws_ls_gravity_forms_weight_keys() );
     $keys = array_merge( $keys, ws_ls_gravity_forms_measurement_keys() );
+    $keys = array_merge( $keys, ws_ls_gravity_forms_preferences_keys() );
 
     return $keys;
 }
@@ -253,6 +274,8 @@ function ws_ls_gravity_forms_weight_keys() {
     $keys[] = $prefix . 'kg';
     $keys[] = $prefix . 'pounds';
     $keys[] = $prefix . 'stones';
+
+    $keys = apply_filters( 'wlt-filters-gf-weight-keys', $keys );
 
     return $keys;
 }
@@ -270,7 +293,26 @@ function ws_ls_gravity_forms_measurement_keys() {
 
         $keys = ws_ls_get_keys_for_active_measurement_fields( $prefix );
         $keys = array_map( 'ws_ls_gravity_forms_measurement_format', $keys );
+
+        $keys = apply_filters( 'wlt-filters-gf-measurement-keys', $keys );
+
     }
+
+    return $keys;
+}
+
+/**
+ * Preferences Keys
+ */
+function ws_ls_gravity_forms_preferences_keys() {
+
+    $prefix = ws_ls_gravity_forms_prefix();
+
+    $keys = [];
+
+    $keys[] = $prefix . 'body-type';
+
+    $keys = apply_filters( 'wlt-filters-gf-preferences-keys', $keys );
 
     return $keys;
 }
