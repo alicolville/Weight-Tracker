@@ -80,7 +80,7 @@ function ws_ls_gravity_forms_process( $entry, $form ) {
     }
 
 	// Do we an entry date?
-	if ( false === array_key_exists( $prefix . 'date', $matched_fields ) ) {
+	if ( false === array_key_exists( $prefix . 'date', $matched_fields ) || true === empty( $matched_fields[ $prefix . 'date' ] ) ) {
         GFCommon::log_debug( 'No Date was found for Weight Entry' );
 		return;
 	}
@@ -168,8 +168,6 @@ function ws_ls_gravity_forms_process( $entry, $form ) {
 
             $db_key = str_replace( $prefix, '', $key);
             $db_key = str_replace( '-', '_', $db_key);
-
-            var_dump($db_key, $matched_fields[ $key ]);
 
             ws_ls_set_user_preference( $db_key, $matched_fields[ $key ] );
 

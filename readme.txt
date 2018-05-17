@@ -138,9 +138,12 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 = 5.4 =
 
-* Improvem
+//TODO: rebuild languages
+
+* Improvement: Added support for Gravity Forms - read more: https://weight.yeken.uk/gravity-forms/
 * Improvement: Added filter to modify allowed wlt-if fields (wlt-filter-if-allowed-fields)
 * Improvement: Added filter to allow new wlt-if conditions to be added (wlt-filter-if-condition-[field name])
+* Bug fix: Ensured object is countable before trying to count() it.
 
 = 5.3 =
 

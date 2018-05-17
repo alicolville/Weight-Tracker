@@ -465,7 +465,7 @@ function ws_ls_set_user_preference( $field, $value ) {
     global $wpdb;
 
     // Defaults for user preference fields
-    $db_fields = [ $field => $value ];
+    $db_fields = [ $field => $value, 'user_id' => get_current_user_id() ];
 
     // Set data types
     $db_field_types = ws_ls_user_preferences_get_formats( $db_fields );
@@ -482,7 +482,7 @@ function ws_ls_set_user_preference( $field, $value ) {
     $result = ($result === false) ? false : true;
 
     // Tidy up cache
-    ws_ls_delete_cache_for_given_user( get_current_user_id() );
+    ws_ls_delete_cache_for_given_user( $db_fields['user_id'] );
 
     return $result;
 }

@@ -74,6 +74,7 @@ function ws_ls_settings_page() {
                                         <li><a><?php echo __( 'Chart', WE_LS_SLUG); ?><span><?php echo __( 'Chart styling and config', WE_LS_SLUG); ?></span></a></li>
 										<li><a><?php echo __( 'Notifications', WE_LS_SLUG); ?><span><?php echo __( 'Configure email notifications', WE_LS_SLUG); ?></span></a></li>
                                         <li><a><?php echo __( 'Measurements', WE_LS_SLUG); ?><span><?php echo __( 'Allow users to record their measurements', WE_LS_SLUG); ?></span></a></li>
+                                        <li><a><?php echo __( '3rd Party', WE_LS_SLUG); ?><span><?php echo __( '3rd Party Integrations', WE_LS_SLUG); ?></span></a></li>
                                     </ul>
 									<div>
 										<div>
@@ -575,6 +576,9 @@ function ws_ls_settings_page() {
 
                                             </table>
 
+                                        </div>
+                                        <div>
+                                            TEST
                                         </div>
 									</div>
 								</div>
