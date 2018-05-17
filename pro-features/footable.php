@@ -142,7 +142,7 @@ function ws_ls_data_table_get_rows($user_id = false, $max_entries = false, $smal
 
 					$photo = ws_ls_photo_get($data['photo_id'], 120, 120);
 
-					$row[$column_name] = sprintf('<a href="%1$s" target="_blank">%2$s</a>',
+					$row[$column_name] = sprintf('<a href="%1$s" rel="noopener noreferrer" target="_blank">%2$s</a>',
 						esc_url($photo['full']),
 						$photo['thumb']
 					);

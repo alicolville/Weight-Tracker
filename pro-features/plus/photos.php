@@ -106,7 +106,7 @@ function ws_ls_photos_shortcode_render($image, $css_class = '', $hide_date = tru
 		return sprintf('	
 	                        <div class="ws-ls-photo-frame%4$s">
 	                            <div class="ws-ls-photo-embed">
-	                                <a href="%1$s" target="_blank" data-id="%3$s">
+	                                <a href="%1$s" target="_blank" rel="noopener noreferrer" data-id="%3$s">
                                         %2$s
                                     </a>
                                 </div>

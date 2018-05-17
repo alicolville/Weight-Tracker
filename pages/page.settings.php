@@ -578,7 +578,21 @@ function ws_ls_settings_page() {
 
                                         </div>
                                         <div>
-                                            TEST
+                                            <table class="form-table">
+                                                <tr class="<?php echo $disable_if_not_pro_class; ?>">
+                                                    <th scope="row"><?php echo __( 'Enable Gravity Forms', WE_LS_SLUG ); ?></th>
+                                                    <td>
+                                                        <select id="ws-ls-gf-enable" name="ws-ls-gf-enable">
+                                                            <option value="no" <?php selected( get_option('ws-ls-gf-enable'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+                                                            <option value="yes" <?php selected( get_option('ws-ls-gf-enable'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+                                                        </select>
+                                                        <p>
+                                                            <?php echo __('Examine Gravity Form submissions for weight and measurement data. If found, create a Weight Entry for the user currently logged in.', WE_LS_SLUG); ?>
+                                                            <a href="https://weight.yeken.uk/gravity-forms/" target="_blank" rel="noopener noreferrer"><?php echo __('Read more at ', WE_LS_SLUG); ?>weight.yeken.uk/gravity-forms/</a>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                            </table>
                                         </div>
 									</div>
 								</div>
@@ -660,6 +674,10 @@ function ws_ls_register_settings(){
 		register_setting( 'we-ls-options-group', 'ws-ls-email-notifications-edit' );
 		register_setting( 'we-ls-options-group', 'ws-ls-email-notifications-new' );
 		register_setting( 'we-ls-options-group', 'ws-ls-email-notifications-targets' );
+
+		// Third Party
+        register_setting( 'we-ls-options-group', 'ws-ls-gf-enable' );
+
     }
 
     // Pro Plus

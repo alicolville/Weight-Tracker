@@ -410,7 +410,7 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 				if ( false === empty($thumbnail) ) {
 					$html_output .= sprintf('<div class="ws-ls-photo-current">
 												<h4>%8$s</h4>
-												<a href="%1$s" target="_blank"><img src="%2$s" alt="%3$s" width="%5$s" height="%6$s" /></a>
+												<a href="%1$s" target="_blank" rel="noopener noreferrer"><img src="%2$s" alt="%3$s" width="%5$s" height="%6$s" /></a>
 												<input type="hidden" name="ws-ls-photo-previous" value="%4$s" />
 											</div>
 											<div class="ws-ls-clear-existing-photo">

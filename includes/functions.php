@@ -651,7 +651,7 @@ function ws_ls_calculations_link($link_only = false) {
 * Helper function to get URL for further info on license types.
 **/
 function ws_ls_url_license_types() {
-	return sprintf('For further information regarding the types of licenses available, <a href="%s" target="_blank">please visit our site, weight.yeken.uk</a>', esc_url(WE_LS_LICENSE_TYPES_URL));
+	return sprintf('For further information regarding the types of licenses available, <a href="%s" rel="noopener noreferrer" target="_blank">please visit our site, weight.yeken.uk</a>', esc_url(WE_LS_LICENSE_TYPES_URL));
 }
 
 /**

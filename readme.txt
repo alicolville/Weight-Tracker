@@ -144,6 +144,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 * Improvement: Added filter to modify allowed wlt-if fields (wlt-filter-if-allowed-fields)
 * Improvement: Added filter to allow new wlt-if conditions to be added (wlt-filter-if-condition-[field name])
 * Bug fix: Ensured object is countable before trying to count() it.
+* Security fix: Added rel="noopener noreferrer" to all links that open in a new window ( i.e. target="_blank" )
 
 = 5.3 =
 
