@@ -40,6 +40,7 @@ For further information read our documentation:
 
 = Pro Version =
 
+* **Support for Gravity Forms.** Scan Gravity Form submissions for relevant Weight / Measurement fields and create a weight entry automatically. [Read more](https://weight.yeken.uk/gravity-forms/ "Read more")
 * **Admin can view, edit and delete user data.** Various tools for viewing user's graphs, tables of entries, BMI, targets, weight lost / gained stats and much more.
 * **CSV and JSON exports** for all data or a particular user.
 * **Measurements.** Support for recording measurements like Hip, Waist, Leg, Bicep, etc. Displayed on charts and tables.
@@ -137,8 +138,6 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 == Changelog ==
 
 = 5.4 =
-
-//TODO: rebuild languages
 
 * Improvement: Added support for Gravity Forms - read more: https://weight.yeken.uk/gravity-forms/
 * Improvement: Added filter to modify allowed wlt-if fields (wlt-filter-if-allowed-fields)
