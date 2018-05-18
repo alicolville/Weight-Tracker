@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight, loss, lose, helper, bmi, body, mass, index, graph, track, stones, kg, table, data, plot, target, history, pounds, responsive, chart, measurements, cm, centimeters, inches, hip, waist, bicep, thigh
 Requires at least: 4.4.0
 Tested up to: 4.9.5
-Stable tag: 5.3.1
+Stable tag: 5.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate Link: https://www.paypal.me/yeken
@@ -40,6 +40,7 @@ For further information read our documentation:
 
 = Pro Version =
 
+* **Support for Gravity Forms.** Scan Gravity Form submissions for relevant Weight / Measurement fields and create a weight entry automatically. [Read more](https://weight.yeken.uk/gravity-forms/ "Read more")
 * **Admin can view, edit and delete user data.** Various tools for viewing user's graphs, tables of entries, BMI, targets, weight lost / gained stats and much more.
 * **CSV and JSON exports** for all data or a particular user.
 * **Measurements.** Support for recording measurements like Hip, Waist, Leg, Bicep, etc. Displayed on charts and tables.
@@ -135,6 +136,14 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 
 == Changelog ==
+
+= 5.4 =
+
+* Improvement: Added support for Gravity Forms - read more: https://weight.yeken.uk/gravity-forms/
+* Improvement: Added filter to modify allowed wlt-if fields (wlt-filter-if-allowed-fields)
+* Improvement: Added filter to allow new wlt-if conditions to be added (wlt-filter-if-condition-[field name])
+* Bug fix: Ensured object is countable before trying to count() it.
+* Security fix: Added rel="noopener noreferrer" to all links that open in a new window ( i.e. target="_blank" )
 
 = 5.3.1 =
 

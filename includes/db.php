@@ -447,6 +447,47 @@ function ws_ls_set_user_preferences($in_admin_area, $fields = [])
 }
 
 /**
+ * This is a helper function that really needs to be refactored with ws_ls_set_user_preferences()
+ *
+ * Currently only used by Gravity Form Hook
+ *
+ * @param $field
+ * @param $value
+ * @return bool
+ */
+function ws_ls_set_user_preference( $field, $value ) {
+
+    // Ensure we have a value!
+    if ( true === empty( $field ) || true === empty( $value ) ) {
+        return false;
+    }
+
+    global $wpdb;
+
+    // Defaults for user preference fields
+    $db_fields = [ $field => $value, 'user_id' => get_current_user_id() ];
+
+    // Set data types
+    $db_field_types = ws_ls_user_preferences_get_formats( $db_fields );
+
+    $table_name = $wpdb->prefix . WE_LS_USER_PREFERENCES_TABLENAME;
+
+    // Update or insert
+    $result = $wpdb->replace(
+        $table_name,
+        $db_fields,
+        $db_field_types
+    );
+
+    $result = ($result === false) ? false : true;
+
+    // Tidy up cache
+    ws_ls_delete_cache_for_given_user( $db_fields['user_id'] );
+
+    return $result;
+}
+
+/**
  * Provide a list of formats for user pref database fields
  *
  * @param $db_fields

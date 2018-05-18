@@ -21,7 +21,7 @@ function ws_ls_help_page() {
 						<h3 class="hndle"><span><?php echo __( 'Help', WE_LS_SLUG); ?> </span></h3>
 						<div style="padding: 0px 15px 0px 15px">
 							<p><?php echo __( 'You can find detailed help with this plugin at our site:', WE_LS_SLUG ); ?></p>
-                            <p><a href="https://weight.yeken.uk" target="_blank">https://weight.yeken.uk</a></p>
+                            <p><a href="https://weight.yeken.uk" rel="noopener noreferrer" target="_blank">https://weight.yeken.uk</a></p>
 						</div>
 					</div>
 
@@ -29,7 +29,7 @@ function ws_ls_help_page() {
 						<h3 class="hndle"><span><?php echo __( 'Our road map', WE_LS_SLUG); ?> </span></h3>
 						<div style="padding: 0px 15px 0px 15px">
 							<p><?php echo __( 'Interested in the future development of this plugin? Then have a peek at our road map:', WE_LS_SLUG ); ?></p>
-                            <p><a href="https://weight.yeken.uk/road-map/" target="_blank">https://weight.yeken.uk/road-map/</a></p>
+                            <p><a href="https://weight.yeken.uk/road-map/" rel="noopener noreferrer" target="_blank">https://weight.yeken.uk/road-map/</a></p>
 						</div>
 					</div>
 

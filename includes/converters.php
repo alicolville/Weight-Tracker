@@ -15,7 +15,7 @@ function ws_ls_to_kg($stones, $pounds) {
 }
 
 function ws_ls_pounds_to_kg($pounds) {
-	return round($pounds / 2.20462, 2);
+	return round($pounds / 2.20462, 3);
 }
 
 function ws_ls_to_lb($kg) {
