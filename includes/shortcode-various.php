@@ -179,8 +179,9 @@ function ws_ls_get_weight_extreme($user_id, $recent = false, $unit = "weight_wei
 	$sql =  $wpdb->prepare("SELECT " . $unit . " as weight_value FROM $table_name where weight_user_id = %d order by weight_date " . $direction . " limit 0, %d", $user_id, 1);
 	$rows = $wpdb->get_row($sql);
 
-	if ( true === is_array( $rows ) && count($rows) > 0 ) {
-		ws_ls_set_cache($cache_key, $rows->weight_value);
+	if ( false === empty( $rows->weight_value ) ) {
+		ws_ls_set_cache($cache_key, $rows->weight_value );
+
 		return $rows->weight_value;
 	}
 	else
