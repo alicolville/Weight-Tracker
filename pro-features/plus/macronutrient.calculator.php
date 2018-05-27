@@ -202,8 +202,10 @@ function ws_ls_shortcode_macro($user_defined_arguments) {
 									'type' => 'lunch'			// 'breakfast', 'lunch', 'dinner', 'snack', 'total'
 								], $user_defined_arguments );
 
+    $allowed_progress = apply_filters(WE_LS_FILTER_MACRO_ALLOWED_PROGRESS, ['maintain', 'lose']);
+
 	$arguments['user-id'] = ws_ls_force_numeric_argument($arguments['user-id']);
-	$progress = (false === in_array($arguments['progress'], ['maintain', 'lose'])) ? 'maintain' : $arguments['progress'];
+    $progress = (false === in_array($arguments['progress'], $allowed_progress)) ? 'maintain' : $arguments['progress'];
 	$type = (false === in_array($arguments['type'], ['breakfast', 'lunch', 'dinner', 'snacks', 'total'])) ? 'lunch' : $arguments['type'];
 	$nutrient = (false === in_array($arguments['nutrient'], ['fats', 'protein', 'carbs'])) ? 'fats' : $arguments['nutrient'];
 
