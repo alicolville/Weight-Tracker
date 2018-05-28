@@ -179,7 +179,6 @@ function ws_ls_shortcode_harris_benedict($user_defined_arguments) {
 	// If "progress" set as "auto", then determine from the user's aim which progress type to display
     if ( 'auto' === $arguments['progress'] ) {
         $arguments['progress'] = ws_ls_get_progress_attribute_from_aim();
-        echo $arguments['progress'];
     }
 
 	$arguments['user-id'] = ws_ls_force_numeric_argument($arguments['user-id']);
