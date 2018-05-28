@@ -455,3 +455,20 @@ function ws_user_exist_check($user_id) {
         wp_die(__( 'Error: The user does not appear to exist' , WE_LS_SLUG));
     }
 }
+
+/**
+ * Used by the Calories and MacroN shortcodes to convert user's aim preference into a string for the progress attribute.
+ *
+ * @return string
+ */
+function ws_ls_get_progress_attribute_from_aim() {
+
+    $aim_int = intval( ws_ls_get_user_setting( 'aim' ) );
+
+    $aim_string = ( 2 === $aim_int ) ? 'lose' : 'maintain';
+
+    $aim_string = apply_filters('wlt-filter-aim-progress-attribute', $aim_string, $aim_int );
+
+    return $aim_string;
+}
+

@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight, loss, lose, helper, bmi, body, mass, index, graph, track, stones, kg, table, data, plot, target, history, pounds, responsive, chart, measurements, cm, centimeters, inches, hip, waist, bicep, thigh
 Requires at least: 4.4.0
 Tested up to: 4.9.5
-Stable tag: 5.4.2
+Stable tag: 5.4.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate Link: https://www.paypal.me/yeken
@@ -136,6 +136,11 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 
 == Changelog ==
+
+= 5.4.3 =
+
+* Improvement: Added new option "auto" for "progress" argument [wlt-calories progress="auto"] shortcode. It will display the calories for the aim specified by the user e.g. if they select Lose Weight it will show the calories required to lose.
+* Improvement: Added new option "auto" for "progress" argument wlt-macronutrients progress="auto"] shortcode. It will display the relevant macroN for the aim specified by the user e.g. if they select Lose Weight it will show the calories required to lose.
 
 = 5.4.2 =
 

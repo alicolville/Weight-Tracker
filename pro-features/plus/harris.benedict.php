@@ -170,11 +170,17 @@ function ws_ls_shortcode_harris_benedict($user_defined_arguments) {
 	$arguments = shortcode_atts([
 		'error-message' => __('Please ensure all relevant data to calculate calorie intake has been entered i.e. Activity Level, Date of Birth, Current Weight, Gender and Height.', WE_LS_SLUG ),
 		'user-id' => false,
-		'progress' => 'maintain',	// 'maintain', 'lose'
+		'progress' => 'maintain',	// 'maintain', 'lose', 'auto'
 		'type' => 'total'			// 'breakfast', 'lunch', 'dinner', 'snack', 'total'
 	], $user_defined_arguments );
 
-	$allowed_progress = apply_filters(WE_LS_FILTER_HARRIS_ALLOWED_PROGRESS, ['maintain', 'lose']);
+	$allowed_progress = apply_filters( WE_LS_FILTER_HARRIS_ALLOWED_PROGRESS, ['auto', 'maintain', 'lose']);
+
+	// If "progress" set as "auto", then determine from the user's aim which progress type to display
+    if ( 'auto' === $arguments['progress'] ) {
+        $arguments['progress'] = ws_ls_get_progress_attribute_from_aim();
+        echo $arguments['progress'];
+    }
 
 	$arguments['user-id'] = ws_ls_force_numeric_argument($arguments['user-id']);
 	$progress = (false === in_array($arguments['progress'], $allowed_progress)) ? 'maintain' : $arguments['progress'];
