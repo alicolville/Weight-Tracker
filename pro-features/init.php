@@ -62,7 +62,8 @@ if( defined('WS_LS_ABSPATH') ){
 
         // Enable meta fields?
         if ( true === WE_LS_META_FIELDS_ENABLED ) {
-            $files_to_include[] = 'plus/meta.fields.php';
+            $files_to_include[] = 'plus/meta-fields/activate.php';
+            $files_to_include[] = 'plus/meta-fields/db.php';
         }
 
     }
