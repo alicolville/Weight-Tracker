@@ -2,8 +2,8 @@
 Contributors: aliakro
 Tags: weight, loss, lose, helper, bmi, body, mass, index, graph, track, stones, kg, table, data, plot, target, history, pounds, responsive, chart, measurements, cm, centimeters, inches, hip, waist, bicep, thigh
 Requires at least: 4.4.0
-Tested up to: 4.9.5
-Stable tag: 5.4.3
+Tested up to: 4.9.6
+Stable tag: 6.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate Link: https://www.paypal.me/yeken
@@ -136,6 +136,10 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 
 == Changelog ==
+
+= 6.0 =
+
+* Improvement: Refactored Pro / Pro Plus features file include logic
 
 = 5.4.3 =
 
