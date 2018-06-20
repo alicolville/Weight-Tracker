@@ -26,7 +26,7 @@
 
         $sql = "CREATE TABLE $table_name (
                 id mediumint(9) NOT NULL AUTO_INCREMENT,
-                field_key varchar(10) NOT NULL,
+                field_key varchar(40) NOT NULL,
                 field_name varchar(40) NOT NULL,
                 abv varchar(4) NOT NULL,
                 display_on_chart BIT DEFAULT 0,
@@ -41,11 +41,10 @@
 
         $sql = "CREATE TABLE $table_name (
                 id mediumint(9) NOT NULL AUTO_INCREMENT,
-                field_key varchar(10) NOT NULL,
+                field_key varchar(40) NOT NULL,
                 field_name varchar(40) NOT NULL,
                 abv varchar(4) NOT NULL,
                 chartable BIT DEFAULT 0,
-                unit_id int NOT NULL,
                 UNIQUE KEY id (id)              
             ) $charset_collate;";
 
