@@ -29,7 +29,7 @@ defined('ABSPATH') or die('Jog on!');
 
 define('WS_LS_ABSPATH', plugin_dir_path( __FILE__ ));
 define('WE_LS_CURRENT_VERSION', '6.0');
-define('WE_LS_DB_VERSION', '6.0-beta12'); //TODO
+define('WE_LS_DB_VERSION', '6.0-bet5'); //TODO
 
 // -----------------------------------------------------------------------------------------
 // AC: Activate / Deactivate / Uninstall Hooks
@@ -80,6 +80,7 @@ include WS_LS_ABSPATH . 'includes/save-data.php';
 include WS_LS_ABSPATH . 'pages/page.settings.php';
 include WS_LS_ABSPATH . 'pages/page.license.php';
 include WS_LS_ABSPATH . 'pages/page.help.php';
+include WS_LS_ABSPATH . 'pages/page.meta.fields.php';
 include WS_LS_ABSPATH . 'pro-features/feature-list.php';
 include WS_LS_ABSPATH . 'includes/comms-with-yeken.php';
 include WS_LS_ABSPATH . 'includes/admin-notifications.php';

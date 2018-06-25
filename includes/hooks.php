@@ -7,7 +7,10 @@
 		add_menu_page(WE_LS_TITLE, WE_LS_TITLE, 'manage_options', 'ws-ls-weight-loss-tracker-main-menu', 'ws_ls_settings_page', 'dashicons-chart-line');
 		add_submenu_page( 'ws-ls-weight-loss-tracker-main-menu', __('Settings', WE_LS_SLUG),  __('Settings', WE_LS_SLUG), 'manage_options', 'ws-ls-weight-loss-tracker-main-menu');
 
-		// Display manage user screens to relevant roles.
+        add_submenu_page( 'ws-ls-weight-loss-tracker-main-menu', __('Meta Fields', WE_LS_SLUG),  __('Meta Fields', WE_LS_SLUG), 'manage_options', 'ws-ls-meta-fields', 'ws_ls_meta_fields_page');
+
+
+        // Display manage user screens to relevant roles.
         add_submenu_page( 'ws-ls-weight-loss-tracker-main-menu', __('Manage User Data', WE_LS_SLUG),  __('Manage User Data', WE_LS_SLUG), WE_LS_VIEW_EDIT_USER_PERMISSION_LEVEL, 'ws-ls-wlt-data-home', 'ws_ls_admin_page_data_home');
 
         $menu_text = (false === WS_LS_IS_PRO && false === WS_LS_IS_PRO_PLUS) ? __('Upgrade', WE_LS_SLUG) : __('Your License', WE_LS_SLUG);
