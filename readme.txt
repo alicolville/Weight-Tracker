@@ -1,4 +1,4 @@
-﻿=== Weight Loss Tracker ===
+﻿=== Weight Tracker ===
 Contributors: aliakro
 Tags: weight, loss, lose, helper, bmi, body, mass, index, graph, track, stones, kg, table, data, plot, target, history, pounds, responsive, chart, measurements, cm, centimeters, inches, hip, waist, bicep, thigh
 Requires at least: 4.4.0
@@ -26,7 +26,7 @@ Support for US/UK date formats as well as Imperial and Metric measurements.
 
 For further information read our documentation:
 
-[Weight Loss Tracker Website - Shortcode guide](https://weight.yeken.uk/shortcodes "Weight Loss Tracker Website - Shortcode guide")
+[Weight Tracker Website - Shortcode guide](https://weight.yeken.uk/shortcodes "Weight Tracker Website - Shortcode guide")
 
 = Pro Plus Version =
 
@@ -65,15 +65,15 @@ For further information read our documentation:
 
 The plugin is written in English (UK) but has support for other languages such as French, Spanish, Dutch, Italian, Norwegian, Portuguese-Brazil, etc. For a list of supported languages please visit:
 
-[Weight Loss Tracker Website - Supported Languages](https://weight.yeken.uk/weight-units-date-formats-languages/ "Weight Loss Tracker Website - Supported Languages")
+[Weight Tracker Website - Supported Languages](https://weight.yeken.uk/weight-units-date-formats-languages/ "Weight Tracker Website - Supported Languages")
 
-Need a translation? Please read the following guide: [Translating the Weight Loss Tracker plugin](https://weight.yeken.uk/translating-weight-loss-tracker-plugin/ "Translating the Weight Loss Tracker plugin")
+Need a translation? Please read the following guide: [Translating the Weight Tracker plugin](https://weight.yeken.uk/translating-weight-loss-tracker-plugin/ "Translating the Weight Tracker plugin")
 
 = Documentation =
 
 Need further help? Please visit the dedicated site:
 
-[Weight Loss Tracker Website](https://weight.yeken.uk "Weight Loss Tracker Website")
+[Weight Tracker Website](https://weight.yeken.uk "Weight Tracker Website")
 
 = Donate =
 
@@ -81,8 +81,8 @@ Paypal Donate: [www.paypal.me/yeken](https://www.paypal.me/yeken "www.paypal.me/
 
 == Installation ==
 
-1. Install "Weight Loss Tracker" via the "Plugins" page in WordPress Admin (or download zip and upload).
-2. Setup the plugin in WordPress Admin panel by goto to Settings > Weight Loss Tracker
+1. Install "Weight Tracker" via the "Plugins" page in WordPress Admin (or download zip and upload).
+2. Setup the plugin in WordPress Admin panel by goto to Settings > Weight Tracker
 3. Create a page that users will visit. Within the page content add the shortcode [wlt].
 4. Voila
 
@@ -90,7 +90,7 @@ Paypal Donate: [www.paypal.me/yeken](https://www.paypal.me/yeken "www.paypal.me/
 
 = Do you have any guides / documentation? =
 
-Yes! Please visit our dedicated site [Weight Loss Tracker Website](https://weight.yeken.uk "Weight Loss Tracker Website")
+Yes! Please visit our dedicated site [Weight Tracker Website](https://weight.yeken.uk "Weight Tracker Website")
 
 = Does it create any custom mySQL tables =
 
@@ -139,6 +139,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 = 6.0 =
 
+//TODO
 * Improvement: Refactored Pro / Pro Plus features file include logic
 
 = 5.4.5 =
