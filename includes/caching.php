@@ -3,6 +3,8 @@ defined('ABSPATH') or die("Jog on!");
 
 /* All caching related logic here! */
 
+//TODO Refactor these cache function names i.e. remove reference to use as used by meta fields too
+
 /**
  * User caching. From now on, store an array for each user in cache. Each caache key can then be stored in an array element.
  * To remove all use cache, just need to delete the cache key.
@@ -42,7 +44,7 @@ function ws_ls_cache_user_set($user_id, $key, $value) {
 		$user_cache = [];
 	}
 
-	if ( false === empty($key) && true === is_numeric($user_id) ) {
+	if ( false === empty($key) ) {
 
 		$user_cache[$key] = $value;
 
@@ -55,15 +57,12 @@ function ws_ls_cache_user_set($user_id, $key, $value) {
 }
 
 function ws_ls_cache_user_delete($user_id) {
-
-	if( true === is_numeric($user_id) ) {
-		ws_ls_delete_cache($user_id);
-	}
+	ws_ls_delete_cache($user_id);
 }
 
 
 // ----------------------------------------------------------------
-// Older caching (replace with above)
+// Generic caching (replace with above)
 // ----------------------------------------------------------------
 
 

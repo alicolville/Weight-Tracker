@@ -2,58 +2,116 @@
 
 defined('ABSPATH') or die("Jog on!");
 
+// TODO: Add debug?
+
+
 /**
  *
  * Return all meta fields for weight entry
  *
- * @param $weight_entry_id
+ * @param $entry_id
  * @return array
  */
-function ws_ls_meta( $weight_entry_id ) {
+function ws_ls_meta( $entry_id ) {
 
-    return [];
+	if ( $cache = ws_ls_cache_user_get( 'meta-fields-' . $entry_id , 'entries' ) ) {
+		return $cache;
+	}
+
+	global $wpdb;
+
+	$sql = $wpdb->prepare( 'Select * from ' . $wpdb->prefix . WE_LS_MYSQL_META_ENTRY . ' where entry_id = %d', $entry_id );
+
+	$data = $wpdb->get_results( $sql, ARRAY_A );
+
+	ws_ls_cache_user_set( 'meta-fields-' . $entry_id , 'entries' , $data );
+
+	return $data;
 }
 
 /**
  *
  * Add a meta value to a given weight entry
  *
- * @param $weight_entry_id
- * @param $meta_id
- * @param $value
+ * @param $data array:
+ * 						entry_id
+ * 						key
+ * 						value
+ *
  * @return bool
  */
-function ws_ls_meta_add_to_entry( $weight_entry_id, $meta_id, $value ) {
+function ws_ls_meta_add_to_entry( $data ) {
 
-    //TODO:
+	// Ensure we have the expected fields.
+	if ( false === ws_ls_meta_check_fields( $data, [ 'entry_id', 'key', 'value' ] ) ) {
+		return false;
+	}
 
-    return false;
+	// Ensure the meta key exists!
+	if ( false === ws_ls_meta_fields_key_exist( $data['key'] ) ) {
+		return false;
+	}
+
+	// Fetch information about the meta field
+	$meta_field = ws_ls_meta_fields_get( $data['key'] );
+
+	if ( true === empty( $meta_field ) ) {
+		return false;
+	}
+
+	// Remove any existing values for this weight entry / key
+	ws_ls_meta_delete( $data['entry_id'], $meta_field['id'] );
+
+	unset( $data['key'] );
+
+	$data['meta_field_id'] = $meta_field['id'];
+
+	global $wpdb;
+
+	$formats = ws_ls_meta_formats( $data );
+
+	$result = $wpdb->insert( $wpdb->prefix . WE_LS_MYSQL_META_ENTRY , $data, $formats );
+
+	ws_ls_cache_user_delete( 'meta-fields-' . $data['entry_id'] );
+
+	return ( false === $result ) ? false : $wpdb->insert_id;
+
 }
 
 /**
  * Delete given meta field value
  *
- * @param $id
+ * @param $entry_id
+ * @param meta_field_id
  * @return bool
  */
-function ws_ls_meta_delete( $id ) {
+function ws_ls_meta_delete( $entry_id, $meta_field_id ) {
 
-    // TODO
+	global $wpdb;
 
-    return false;
+	$result = $wpdb->delete( $wpdb->prefix . WE_LS_MYSQL_META_ENTRY, [ 'entry_id' => $entry_id, 'meta_field_id' => $meta_field_id ], [ '%d', '%d' ] );
+
+	ws_ls_cache_user_delete( 'meta-fields-' . $entry_id );
+
+	return ( 1 === $result );
 }
 
 /**
  * Delete all meta fields for given weight entry
  *
- * @param $weight_entry_id
+ * @param $entry_id
  * @return bool
  */
-function ws_ls_meta_delete_for_entry( $weight_entry_id ) {
+function ws_ls_meta_delete_for_entry( $entry_id ) {
 
-    // TODO
+	global $wpdb;
 
-    return false;
+	$result = $wpdb->delete( $wpdb->prefix . WE_LS_MYSQL_META_ENTRY, [ 'entry_id' => $entry_id ], [ '%d' ] );
+
+	ws_ls_cache_user_delete( 'meta-fields-' . $entry_id );
+
+	return ( 1 === $result );
+
 }
 
 /**
@@ -65,8 +123,15 @@ function ws_ls_meta_fields() {
 
     global $wpdb;
 
-    return $wpdb->get_results( 'Select * from ' . $wpdb->prefix . WE_LS_MYSQL_META_FIELDS . ' order by field_name asc', ARRAY_A );
+    if ( $cache = ws_ls_cache_user_get( 'meta-fields', 'fields' ) ) {
+    	return $cache;
+	}
 
+    $data = $wpdb->get_results( 'Select * from ' . $wpdb->prefix . WE_LS_MYSQL_META_FIELDS . ' order by field_name asc', ARRAY_A );
+
+	ws_ls_cache_user_set( 'meta-fields', 'fields' , $data );
+
+	return $data;
 }
 
 /**
@@ -102,6 +167,8 @@ function ws_ls_meta_fields_update( $field ) {
     $formats = ws_ls_meta_formats( $field );
 
     $result = $wpdb->update( $wpdb->prefix . WE_LS_MYSQL_META_FIELDS, $field, [ 'id' => $id ], $formats, [ '%d' ] );
+
+	ws_ls_cache_user_delete( 'meta-fields' );
 
     return ( 1 === $result );
 }
@@ -140,6 +207,8 @@ function ws_ls_meta_fields_add( $field ) {
 
     $result = $wpdb->insert( $wpdb->prefix . WE_LS_MYSQL_META_FIELDS , $field, $formats );
 
+	ws_ls_cache_user_delete( 'meta-fields' );
+
     return ( false === $result ) ? false : $wpdb->insert_id;
 }
 
@@ -155,6 +224,10 @@ function ws_ls_meta_fields_delete( $id ) {
 
     $result = $wpdb->delete( $wpdb->prefix . WE_LS_MYSQL_META_FIELDS, [ 'id' => $id ], [ '%d' ] );
 
+	// TODO: What do we do with data that associated with this unit?
+
+	ws_ls_cache_user_delete( 'meta-fields' );
+
     return ( 1 === $result );
 }
 
@@ -167,6 +240,8 @@ function ws_ls_meta_fields_key_exist( $key ) {
 
     global $wpdb;
 
+    //TODO: CACHE
+
     $sql = $wpdb->prepare('Select count(*) from ' . $wpdb->prefix . WE_LS_MYSQL_META_FIELDS . ' where field_key = %s', $key );
 
     $count = $wpdb->get_var( $sql );
@@ -174,6 +249,23 @@ function ws_ls_meta_fields_key_exist( $key ) {
     return ( 0 === intval( $count ) ) ? false : true;
 }
 
+/**
+ * Get details for fiven meta field
+ *
+ * @param $key
+ */
+function ws_ls_meta_fields_get( $key ) {
+
+	global $wpdb;
+
+	//TODO: CACHE
+
+	$sql = $wpdb->prepare('Select * from ' . $wpdb->prefix . WE_LS_MYSQL_META_FIELDS . ' where field_key = %s limit 0, 1', $key );
+
+	$meta_field = $wpdb->get_row( $sql, ARRAY_A );
+
+	return ( false === empty( $meta_field ) ) ? $meta_field : false;
+}
 
 /**
  * Fetch all units
@@ -271,6 +363,8 @@ function ws_ls_meta_unit_delete( $id ) {
 
     $result = $wpdb->delete( $wpdb->prefix . WE_LS_MYSQL_META_UNITS, [ 'id' => $id ], [ '%d' ] );
 
+    // TODO: What do we do with meta fields, data, etc that associated with this unit?
+
     return ( 1 === $result );
 }
 
@@ -305,8 +399,11 @@ function ws_ls_meta_formats( $data ) {
         'abv' => '%s',
         'chartable' => '%d',
         'display_on_chart' => '%d',
+		'entry_id' => '%d',
         'system' => '%d',
-        'unit_id' => '%d'
+        'unit_id' => '%d',
+		'meta_field_id' => '%d',
+		'value' => '%s'
     ];
 
     $return = [];
