@@ -84,7 +84,8 @@ function ws_ls_convert_kg_into_relevant_weight_String($kg, $comparison_value = f
 function ws_ls_convert_to_inches($inches = 0) {
 
 	if(is_numeric($inches) && $inches > 0) {
-		return $inches / 2.54;
+		$inches = $inches / 2.54;
+		return round($inches, 2);
 	}
 	return 0;
 }
