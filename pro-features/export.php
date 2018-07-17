@@ -68,7 +68,12 @@ function ws_ls_export_into_json($rows) {
 		foreach ($rows as $row) {
 			foreach ($output['columns'] as $key => $value) {
 				if(in_array($key, $measurement_keys)) {
-					$data[$key] = $row['measurements'][$key];
+
+					// Do we need to convert the measurement to inches?
+					$data[$key] = ( 'inches' === WE_LS_MEASUREMENTS_UNIT ) ?
+						ws_ls_convert_to_inches( $row['measurements'][$key] ) :
+						$row['measurements'][$key];
+
 				} else {
 					$data[$key] = $row[$key];
 				}
@@ -161,7 +166,12 @@ function ws_ls_csv_row_write($columns, $row, $delimiter = ',', $end_of_line_char
 
 		foreach ($columns as $key => $value) {
 			if(in_array($key, $measurement_keys)) {
-				$data[$key] = $row['measurements'][$key];
+
+				// Do we need to convert the measurement to inches?
+				$data[$key] = ( 'inches' === WE_LS_MEASUREMENTS_UNIT ) ?
+								ws_ls_convert_to_inches( $row['measurements'][$key] ) :
+									$row['measurements'][$key];
+
 			} elseif(isset($row[$key])) {
 				$data[$key] = $row[$key];
 			} else {

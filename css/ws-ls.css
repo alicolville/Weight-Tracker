@@ -343,3 +343,6 @@ input.ws-ls-valid
 .ws-ls-force-show {
     display: block !important;
 }
+.rtl .ws-ls-user-data-ajax th {
+    text-align: right !important;
+}

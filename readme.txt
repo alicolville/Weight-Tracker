@@ -141,6 +141,15 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 * Improvement: Refactored Pro / Pro Plus features file include logic
 
+= 5.4.5 =
+
+* Bug Fix: Measurements are now exported (via CSV / JSON) as inches where applicable.
+* Bug fix: Fixed text alignment in table headers for RTL languages.
+
+= 5.4.4 =
+
+* Improvement: Added Arabic for Saudi Arabia (front end only). Thanks @Saeed
+
 = 5.4.3 =
 
 * Improvement: Added new option "auto" for "progress" argument [wlt-calories progress="auto"] shortcode. It will display the calories for the aim specified by the user e.g. if they select Lose Weight it will show the calories required to lose.
