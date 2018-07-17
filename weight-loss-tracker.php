@@ -5,7 +5,7 @@ defined('ABSPATH') or die('Jog on!');
 /**
  * Plugin Name: Weight Loss Tracker
  * Description: Allow registered users of your website to track their weight and relevant body measurements. History can be displayed in both tables & charts.
- * Version: 5.4.4
+ * Version: 5.4.5
  * Author: YeKen
  * Author URI: https://www.YeKen.uk
  * License: GPL2
@@ -28,8 +28,8 @@ defined('ABSPATH') or die('Jog on!');
 */
 
 define('WS_LS_ABSPATH', plugin_dir_path( __FILE__ ));
-define('WE_LS_CURRENT_VERSION', '5.4.4');
-define('WE_LS_DB_VERSION', '5.4.4');
+define('WE_LS_CURRENT_VERSION', '5.4.5');
+define('WE_LS_DB_VERSION', '5.4.5');
 
 // -----------------------------------------------------------------------------------------
 // AC: Activate / Deactivate / Uninstall Hooks

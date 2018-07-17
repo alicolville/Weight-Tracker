@@ -31,6 +31,9 @@
 .ws-ls-advanced-data-table .dtr-title{
 	width: 20%;
 }
+.rtl .ws-ls-user-data-ajax th {
+	text-align: right !important;
+}
 
 .ws-ls-advanced-data-table th
 {
