@@ -97,7 +97,7 @@ function ws_ls_meta_delete( $entry_id, $meta_field_id ) {
 }
 
 /**
- * Delete all meta fields for given weight entry
+ * Delete all meta entries for given weight entry
  *
  * @param $entry_id
  * @return bool
@@ -109,6 +109,25 @@ function ws_ls_meta_delete_for_entry( $entry_id ) {
 	$result = $wpdb->delete( $wpdb->prefix . WE_LS_MYSQL_META_ENTRY, [ 'entry_id' => $entry_id ], [ '%d' ] );
 
 	ws_ls_cache_user_delete( 'meta-fields-' . $entry_id );
+
+	return ( 1 === $result );
+
+}
+
+/**
+ * Delete all entries for given meta field
+ *
+ * @param $meta_field_id
+ * @return bool
+ */
+function ws_ls_meta_delete_for_meta_field( $meta_field_id ) {
+
+	global $wpdb;
+
+	$result = $wpdb->delete( $wpdb->prefix . WE_LS_MYSQL_META_ENTRY, [ 'meta_field_id' => $meta_field_id ], [ '%d' ] );
+
+	//TODO: Need to clear all cache for entries?
+	// ws_ls_cache_user_delete( 'meta-fields-' . $entry_id );
 
 	return ( 1 === $result );
 
