@@ -169,7 +169,7 @@ function ws_ls_meta_fields() {
 function ws_ls_meta_fields_update( $field ) {
 
     // Ensure we have the expected fields.
-    if ( false === ws_ls_meta_check_fields( $field, [ 'id', 'abv', 'display_on_chart', 'field_key', 'field_name', 'unit_id', 'system' ] ) ) {
+    if ( false === ws_ls_meta_check_fields( $field, [ 'id', 'abv', 'display_on_chart', 'field_key', 'field_name', 'field_type', 'suffix', 'unit_id', 'system' ] ) ) {
         return false;
     }
 
@@ -208,17 +208,12 @@ function ws_ls_meta_fields_update( $field ) {
 function ws_ls_meta_fields_add( $field ) {
 
     // Ensure we have the expected fields.
-    if ( false === ws_ls_meta_check_fields( $field, [ 'abv', 'display_on_chart', 'field_key', 'field_name', 'unit_id', 'system' ] ) ) {
+    if ( false === ws_ls_meta_check_fields( $field, [ 'abv', 'display_on_chart', 'field_name', 'field_type', 'suffix', 'system' ] ) ) {
         return false;
     }
 
     // Sluggify key
-    $field['field_key'] = ws_ls_meta_fields_key_sanitise( $field['field_key'] );
-
-    // Ensure field_key doesn't already exist
-    if ( true === ws_ls_meta_fields_key_exist( $field['field_key'] ) ) {
-        return false;
-    }
+    $field['field_key'] = ws_ls_meta_fields_generate_field_key( $field['field_name'] );
 
     global $wpdb;
 
@@ -249,7 +244,7 @@ function ws_ls_meta_fields_delete( $id ) {
 
     return ( 1 === $result );
 }
-
+//TODO: Need key based stuff?
 /**
  * Does unit field_key already exist?
  *
@@ -267,9 +262,9 @@ function ws_ls_meta_fields_key_exist( $key ) {
 
     return ( 0 === intval( $count ) ) ? false : true;
 }
-
+//TODO: Need key based stuff?
 /**
- * Get details for fiven meta field
+ * Get details for given meta field
  *
  * @param $key
  */
@@ -287,17 +282,35 @@ function ws_ls_meta_fields_get( $key ) {
 }
 
 /**
+ * Get details for given meta field
+ *
+ * @param $key
+ */
+function ws_ls_meta_fields_get_by_id( $id ) {
+
+    global $wpdb;
+
+    //TODO: CACHE
+
+    $sql = $wpdb->prepare('Select * from ' . $wpdb->prefix . WE_LS_MYSQL_META_FIELDS . ' where id = %d limit 0, 1', $id );
+
+    $meta_field = $wpdb->get_row( $sql, ARRAY_A );
+
+    return ( false === empty( $meta_field ) ) ? $meta_field : false;
+}
+
+/**
  * Fetch all units
  *
  * @return array
  */
-function ws_ls_meta_units() {
-
-    global $wpdb;
-
-    return $wpdb->get_results( 'Select * from ' . $wpdb->prefix . WE_LS_MYSQL_META_UNITS . ' order by field_name asc', ARRAY_A );
-
-}
+//function ws_ls_meta_units() {
+//
+//    global $wpdb;
+//
+//    return $wpdb->get_results( 'Select * from ' . $wpdb->prefix . WE_LS_MYSQL_META_UNITS . ' order by field_name asc', ARRAY_A );
+//
+//}
 
 /**
  *
@@ -311,29 +324,29 @@ function ws_ls_meta_units() {
  *
  * @return bool     true if success
  */
-function ws_ls_meta_unit_update( $unit ) {
-
-    // Ensure we have the expected fields.
-    if ( false === ws_ls_meta_check_fields( $unit, [ 'abv', 'chartable', 'field_name', 'id' ] ) ) {
-        return false;
-    }
-
-    // May seem daft, but for now, do not allow field keys to be updated once inserted.
-    unset( $unit[ 'field_key' ] );
-
-    // Extract ID
-    $id = $unit[ 'id' ];
-
-    unset( $unit[ 'id' ] );
-
-    global $wpdb;
-
-    $formats = ws_ls_meta_formats( $unit );
-
-    $result = $wpdb->update( $wpdb->prefix . WE_LS_MYSQL_META_UNITS, $unit, [ 'id' => $id ], $formats, [ '%d' ] );
-
-    return ( 1 === $result );
-}
+//function ws_ls_meta_unit_update( $unit ) {
+//
+//    // Ensure we have the expected fields.
+//    if ( false === ws_ls_meta_check_fields( $unit, [ 'abv', 'chartable', 'field_name', 'id' ] ) ) {
+//        return false;
+//    }
+//
+//    // May seem daft, but for now, do not allow field keys to be updated once inserted.
+//    unset( $unit[ 'field_key' ] );
+//
+//    // Extract ID
+//    $id = $unit[ 'id' ];
+//
+//    unset( $unit[ 'id' ] );
+//
+//    global $wpdb;
+//
+//    $formats = ws_ls_meta_formats( $unit );
+//
+//    $result = $wpdb->update( $wpdb->prefix . WE_LS_MYSQL_META_UNITS, $unit, [ 'id' => $id ], $formats, [ '%d' ] );
+//
+//    return ( 1 === $result );
+//}
 
 /**
  *
@@ -346,62 +359,62 @@ function ws_ls_meta_unit_update( $unit ) {
  *
  * @return bool     true if success
  */
-function ws_ls_meta_unit_add( $unit ) {
+//function ws_ls_meta_unit_add( $unit ) {
+//
+//        // Ensure we have the expected fields.
+//        if ( false === ws_ls_meta_check_fields( $unit, [ 'abv', 'chartable', 'field_key', 'field_name' ] ) ) {
+//            return false;
+//        }
+//
+//        // Sluggify key
+//        $unit['field_key'] = ws_ls_meta_fields_key_sanitise( $unit['field_key'] );
+//
+//        // Ensure field_key doesn't already exist
+//        if ( true === ws_ls_meta_unit_key_exist( $unit['field_key'] ) ) {
+//            return false;
+//        }
+//
+//        global $wpdb;
+//
+//        $formats = ws_ls_meta_formats( $unit );
+//
+//        $result = $wpdb->insert( $wpdb->prefix . WE_LS_MYSQL_META_UNITS , $unit, $formats );
+//
+//        return ( false === $result ) ? false : $wpdb->insert_id;
+//}
 
-        // Ensure we have the expected fields.
-        if ( false === ws_ls_meta_check_fields( $unit, [ 'abv', 'chartable', 'field_key', 'field_name' ] ) ) {
-            return false;
-        }
-
-        // Sluggify key
-        $unit['field_key'] = ws_ls_meta_fields_key_sanitise( $unit['field_key'] );
-
-        // Ensure field_key doesn't already exist
-        if ( true === ws_ls_meta_unit_key_exist( $unit['field_key'] ) ) {
-            return false;
-        }
-
-        global $wpdb;
-
-        $formats = ws_ls_meta_formats( $unit );
-
-        $result = $wpdb->insert( $wpdb->prefix . WE_LS_MYSQL_META_UNITS , $unit, $formats );
-
-        return ( false === $result ) ? false : $wpdb->insert_id;
-}
-
-/**
- * Delete a Unit
- *
- * @param $id       unit ID to delete
- * @return bool     true if success
- */
-function ws_ls_meta_unit_delete( $id ) {
-
-    global $wpdb;
-
-    $result = $wpdb->delete( $wpdb->prefix . WE_LS_MYSQL_META_UNITS, [ 'id' => $id ], [ '%d' ] );
-
-    // TODO: What do we do with meta fields, data, etc that associated with this unit?
-
-    return ( 1 === $result );
-}
-
-/**
- * Does unit field_key already exist?
- *
- * @param $key
- */
-function ws_ls_meta_unit_key_exist( $key ) {
-
-    global $wpdb;
-
-    $sql = $wpdb->prepare('Select count(*) from ' . $wpdb->prefix . WE_LS_MYSQL_META_UNITS . ' where field_key = %s', $key );
-
-    $count = $wpdb->get_var( $sql );
-
-    return ( 0 === intval( $count ) ) ? false : true;
-}
+///**
+// * Delete a Unit
+// *
+// * @param $id       unit ID to delete
+// * @return bool     true if success
+// */
+//function ws_ls_meta_unit_delete( $id ) {
+//
+//    global $wpdb;
+//
+//    $result = $wpdb->delete( $wpdb->prefix . WE_LS_MYSQL_META_UNITS, [ 'id' => $id ], [ '%d' ] );
+//
+//    // TODO: What do we do with meta fields, data, etc that associated with this unit?
+//
+//    return ( 1 === $result );
+//}
+//
+///**
+// * Does unit field_key already exist?
+// *
+// * @param $key
+// */
+//function ws_ls_meta_unit_key_exist( $key ) {
+//
+//    global $wpdb;
+//
+//    $sql = $wpdb->prepare('Select count(*) from ' . $wpdb->prefix . WE_LS_MYSQL_META_UNITS . ' where field_key = %s', $key );
+//
+//    $count = $wpdb->get_var( $sql );
+//
+//    return ( 0 === intval( $count ) ) ? false : true;
+//}
 
 /**
  * Return data formats
@@ -422,7 +435,9 @@ function ws_ls_meta_formats( $data ) {
         'system' => '%d',
         'unit_id' => '%d',
 		'meta_field_id' => '%d',
-		'value' => '%s'
+		'value' => '%s',
+		'field_type' => '%d',
+		'suffix' => '%s'
     ];
 
     $return = [];
@@ -472,4 +487,23 @@ function ws_ls_meta_fields_key_sanitise( $key ) {
     }
 
     return $key;
+}
+
+
+/**
+ * Generate a unique meta field key
+ *
+ * @param $key
+ * @return string
+ */
+function ws_ls_meta_fields_generate_field_key( $original_key ) {
+
+	$key = ws_ls_meta_fields_key_sanitise( $original_key );
+
+	while ( true === ws_ls_meta_fields_key_exist( $key ) ) {
+		$key = $original_key . '-' . rand( 1, 10000 );
+		$key = ws_ls_meta_fields_key_sanitise( $key );
+	}
+
+	return $key;
 }

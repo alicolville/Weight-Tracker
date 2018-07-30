@@ -60,12 +60,6 @@ if( defined('WS_LS_ABSPATH') ){
             $files_to_include[] = 'plus/photos.gallery.php';
         }
 
-        // Enable meta fields?
-        if ( true === WE_LS_META_FIELDS_ENABLED ) {
-            $files_to_include[] = 'plus/meta-fields/activate.php';
-            $files_to_include[] = 'plus/meta-fields/db.php';
-        }
-
     }
 
     // Email notifications enabled?

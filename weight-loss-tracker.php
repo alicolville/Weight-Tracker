@@ -29,7 +29,7 @@ defined('ABSPATH') or die('Jog on!');
 
 define('WS_LS_ABSPATH', plugin_dir_path( __FILE__ ));
 define('WE_LS_CURRENT_VERSION', '6.0');
-define('WE_LS_DB_VERSION', '6.0-bet5'); //TODO
+define('WE_LS_DB_VERSION', '6.0-bet6'); //TODO
 
 // -----------------------------------------------------------------------------------------
 // AC: Activate / Deactivate / Uninstall Hooks
@@ -63,6 +63,9 @@ if('pro-plus' === $license_type){
 // -----------------------------------------------------------------------------------------
 // AC: Include all relevant PHP files
 // -----------------------------------------------------------------------------------------
+
+//TODO: Change this file to work like init.php (i.e. array of files that are included)
+
 include WS_LS_ABSPATH . 'includes/caching.php';
 include WS_LS_ABSPATH . 'includes/db.php';
 include WS_LS_ABSPATH . 'includes/globals.php';
@@ -80,7 +83,13 @@ include WS_LS_ABSPATH . 'includes/save-data.php';
 include WS_LS_ABSPATH . 'pages/page.settings.php';
 include WS_LS_ABSPATH . 'pages/page.license.php';
 include WS_LS_ABSPATH . 'pages/page.help.php';
-include WS_LS_ABSPATH . 'pages/page.meta.fields.php';
+include WS_LS_ABSPATH . 'pages/meta-fields/page-meta-fields.php';
+include WS_LS_ABSPATH . 'pages/meta-fields/page-meta-fields-add-update.php';
+//TODO: Right place for this still;?
+include WS_LS_ABSPATH . 'pro-features/plus/meta-fields/activate.php';
+include WS_LS_ABSPATH . 'pro-features/plus/meta-fields/db.php';
+include WS_LS_ABSPATH . 'pro-features/plus/meta-fields/hooks.php';
+
 include WS_LS_ABSPATH . 'pro-features/feature-list.php';
 include WS_LS_ABSPATH . 'includes/comms-with-yeken.php';
 include WS_LS_ABSPATH . 'includes/admin-notifications.php';

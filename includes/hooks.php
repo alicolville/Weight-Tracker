@@ -2,22 +2,18 @@
 
 	defined('ABSPATH') or die("Jog on!");
 
-	function ws_ls_build_admin_menu()
-	{
-		add_menu_page(WE_LS_TITLE, WE_LS_TITLE, 'manage_options', 'ws-ls-weight-loss-tracker-main-menu', 'ws_ls_settings_page', 'dashicons-chart-line');
-		add_submenu_page( 'ws-ls-weight-loss-tracker-main-menu', __('Settings', WE_LS_SLUG),  __('Settings', WE_LS_SLUG), 'manage_options', 'ws-ls-weight-loss-tracker-main-menu');
-
-        add_submenu_page( 'ws-ls-weight-loss-tracker-main-menu', __('Meta Fields', WE_LS_SLUG),  __('Meta Fields', WE_LS_SLUG), 'manage_options', 'ws-ls-meta-fields', 'ws_ls_meta_fields_page');
-
+	function ws_ls_build_admin_menu() {
+		add_menu_page(WE_LS_TITLE, WE_LS_TITLE, 'manage_options', 'ws-ls-data-home', 'ws_ls_admin_page_data_home', 'dashicons-chart-line');
 
         // Display manage user screens to relevant roles.
-        add_submenu_page( 'ws-ls-weight-loss-tracker-main-menu', __('Manage User Data', WE_LS_SLUG),  __('Manage User Data', WE_LS_SLUG), WE_LS_VIEW_EDIT_USER_PERMISSION_LEVEL, 'ws-ls-wlt-data-home', 'ws_ls_admin_page_data_home');
+        add_submenu_page( 'ws-ls-data-home', __('Manage User Data', WE_LS_SLUG),  __('Manage User Data', WE_LS_SLUG), WE_LS_VIEW_EDIT_USER_PERMISSION_LEVEL, 'ws-ls-data-home', 'ws_ls_admin_page_data_home');
+		add_submenu_page( 'ws-ls-data-home', __('Custom Fields', WE_LS_SLUG),  __('Custom Fields', WE_LS_SLUG), 'manage_options', 'ws-ls-meta-fields', 'ws_ls_meta_fields_page');
 
-        $menu_text = (false === WS_LS_IS_PRO && false === WS_LS_IS_PRO_PLUS) ? __('Upgrade', WE_LS_SLUG) : __('Your License', WE_LS_SLUG);
+		$menu_text = (false === WS_LS_IS_PRO && false === WS_LS_IS_PRO_PLUS) ? __('Upgrade', WE_LS_SLUG) : __('Your License', WE_LS_SLUG);
 
-        add_submenu_page( 'ws-ls-weight-loss-tracker-main-menu', $menu_text,  $menu_text, 'manage_options', 'ws-ls-weight-loss-tracker-pro', 'ws_ls_advertise_pro');
-
-		add_submenu_page( 'ws-ls-weight-loss-tracker-main-menu', __('Help', WE_LS_SLUG),  __('Help', WE_LS_SLUG), 'manage_options', 'ws-ls-weight-loss-tracker-help', 'ws_ls_help_page');
+        add_submenu_page( 'ws-ls-data-home', $menu_text,  $menu_text, 'manage_options', 'ws-ls-license', 'ws_ls_advertise_pro');
+		add_submenu_page( 'ws-ls-data-home', __('Settings', WE_LS_SLUG),  __('Settings', WE_LS_SLUG), 'manage_options', 'ws-ls-settings', 'ws_ls_settings_page');
+		add_submenu_page( 'ws-ls-data-home', __('Help', WE_LS_SLUG),  __('Help', WE_LS_SLUG), 'manage_options', 'ws-ls-help', 'ws_ls_help_page');
 
 	}
 	add_action( 'admin_menu', 'ws_ls_build_admin_menu' );
@@ -117,18 +113,18 @@
         wp_enqueue_script('ws-ls-admin', plugins_url( '../js/admin' .     $minified . '.js', __FILE__ ), array('jquery'), WE_LS_CURRENT_VERSION);
 
        	// Settings page
-		if(false === empty($_GET['page']) && 'ws-ls-weight-loss-tracker-main-menu' == $_GET['page']) {
+		if(false === empty($_GET['page']) && 'ws-ls-settings' == $_GET['page']) {
 			wp_enqueue_script('jquery-tabs',plugins_url( '../js/tabs.min.js', __FILE__ ), array('jquery'), WE_LS_CURRENT_VERSION);
 			wp_enqueue_style('wlt-tabs', plugins_url( '../css/tabs.min.css', __FILE__ ), array(), WE_LS_CURRENT_VERSION);
 			wp_enqueue_style('wlt-tabs-flat', plugins_url( '../css/tabs.flat.min.css', __FILE__ ), array(), WE_LS_CURRENT_VERSION);
 		}
 
-		if(false === empty($_GET['page']) && 'ws-ls-wlt-data-home' == $_GET['page']) {
+		if(false === empty($_GET['page']) && 'ws-ls-data-home' == $_GET['page']) {
 			wp_enqueue_style('fontawesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', array(), WE_LS_CURRENT_VERSION);
         }
 
 		// Include relevant JS for admin "Manage User data" pages
-        if(false === empty($_GET['page']) && 'ws-ls-wlt-data-home' == $_GET['page'] &&
+        if(false === empty($_GET['page']) && 'ws-ls-menu-data-home' == $_GET['page'] &&
             false === empty($_GET['mode']) && 'user-settings' == $_GET['mode']) {
 			wp_enqueue_script('ws-ls-admin-user-pref', plugins_url( '../js/admin.user-preferences' . 	$minified . '.js', __FILE__ ), array('jquery'), WE_LS_CURRENT_VERSION);
 			wp_localize_script('ws-ls-admin-user-pref', 'ws_ls_user_pref_config', ws_ls_admin_config());

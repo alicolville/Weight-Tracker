@@ -19,7 +19,21 @@
 //			'value' => '45'
 //		]);
 
-		var_dump(ws_ls_meta(6) );
+
+//		echo ws_ls_meta_fields_generate_field_key('measure-waist');
+
+//		$r = ws_ls_meta_fields_add([
+//			'abv' => 'W',
+//			'display_on_chart' => 0,
+//			'field_name' => 'Waist',
+//			'field_type' => 2,
+//			'suffix' => 'CM',
+//			'system' => 1
+//		]);
+//
+//		var_dump( $r );
+
+//		var_dump(ws_ls_meta(6) );
 
         // Only run this when the plugin version has changed
         if( false === update_option('ws-ls-meta-version-number', WE_LS_DB_VERSION )) {
@@ -39,23 +53,13 @@
                 field_key varchar(40) NOT NULL,
                 field_name varchar(40) NOT NULL,
                 abv varchar(4) NOT NULL,
+                suffix varchar(5) NOT NULL,
                 display_on_chart BIT DEFAULT 0,
-                system BIT DEFAULT 1,
-                unit_id int NOT NULL,
+                mandatory BIT DEFAULT 0,
+                enabled BIT DEFAULT 0,
+                system BIT DEFAULT 0,
+                field_type int NOT NULL,
                 UNIQUE KEY id (id)
-            ) $charset_collate;";
-
-        dbDelta( $sql );
-
-        $table_name = $wpdb->prefix . WE_LS_MYSQL_META_UNITS;
-
-        $sql = "CREATE TABLE $table_name (
-                id mediumint(9) NOT NULL AUTO_INCREMENT,
-                field_key varchar(40) NOT NULL,
-                field_name varchar(40) NOT NULL,
-                abv varchar(4) NOT NULL,
-                chartable BIT DEFAULT 0,
-                UNIQUE KEY id (id)              
             ) $charset_collate;";
 
         dbDelta( $sql );
@@ -73,47 +77,47 @@
         dbDelta( $sql );
 
 		// If no units exist (i.e. WE_LS_MYSQL_META_UNITS is empty) then add some defaults the once e.g. CM, inches, cups, feet, etc
-		if ( true === empty( ws_ls_meta_units() ) ) {
-			ws_ls_activate_meta_units_add_defaults();
-		}
+//		if ( true === empty( ws_ls_meta_units() ) ) {
+//			ws_ls_activate_meta_units_add_defaults();
+//		}
 
     }
     add_action( 'admin_init', 'ws_ls_activate_meta_create_mysql_tables' );
 
-	/**
-	 * 	Insert some default Units into WE_LS_MYSQL_META_UNITS
-	 */
-    function ws_ls_activate_meta_units_add_defaults() {
-
-    	// TODO: Add some more defaults?
-
-		ws_ls_meta_unit_add([
-			'abv' => 'CM',
-			'chartable' => 1,
-			'field_key' => 'cm',
-			'field_name' => 'Centimetres'
-		]);
-
-		ws_ls_meta_unit_add([
-			'abv' => 'Cups',
-			'chartable' => 1,
-			'field_key' => 'cups',
-			'field_name' => 'Cups'
-		]);
-
-		ws_ls_meta_unit_add([
-			'abv' => 'Feet',
-			'chartable' => 1,
-			'field_key' => 'feet',
-			'field_name' => 'Feet'
-		]);
-
-		ws_ls_meta_unit_add([
-			'abv' => 'I',
-			'chartable' => 1,
-			'field_key' => 'inches',
-			'field_name' => 'Inches'
-		]);
-
-	}
+//	/**
+//	 * 	Insert some default Units into WE_LS_MYSQL_META_UNITS
+//	 */
+//    function ws_ls_activate_meta_units_add_defaults() {
+//
+//    	// TODO: Add some more defaults?
+//
+//		ws_ls_meta_unit_add([
+//			'abv' => 'CM',
+//			'chartable' => 1,
+//			'field_key' => 'cm',
+//			'field_name' => 'Centimetres'
+//		]);
+//
+//		ws_ls_meta_unit_add([
+//			'abv' => 'Cups',
+//			'chartable' => 1,
+//			'field_key' => 'cups',
+//			'field_name' => 'Cups'
+//		]);
+//
+//		ws_ls_meta_unit_add([
+//			'abv' => 'Feet',
+//			'chartable' => 1,
+//			'field_key' => 'feet',
+//			'field_name' => 'Feet'
+//		]);
+//
+//		ws_ls_meta_unit_add([
+//			'abv' => 'I',
+//			'chartable' => 1,
+//			'field_key' => 'inches',
+//			'field_name' => 'Inches'
+//		]);
+//
+//	}
 

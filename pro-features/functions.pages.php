@@ -17,7 +17,7 @@ function ws_ls_box_user_search_form( $ajax_mode = false ) {
 				<?php endif; ?>
 		>
 			<input type="text" name="search" placeholder="" id="ws-ls-search-field" />
-            <input type="hidden" name="page" value="ws-ls-wlt-data-home"  />
+            <input type="hidden" name="page" value="ws-ls-data-home"  />
             <input type="hidden" name="mode" value="search-results"  />
 			<input type="submit" class="button" value="Search" id="ws-ls-search-button" />
 		</form>
@@ -208,7 +208,7 @@ function ws_ls_user_side_bar($user_id) {
 		<div class="postbox ws-ls-user-data">
 			<h2 class="hndle"><span><?php echo __('Delete Data', WE_LS_SLUG); ?></span></h2>
 			<div class="inside">
-				<a class="button-secondary delete-confirm" href="<?php echo esc_url(admin_url( 'admin.php?page=ws-ls-wlt-data-home&mode=user&removedata=y&user-id=' . $user_id )); ?>">
+				<a class="button-secondary delete-confirm" href="<?php echo esc_url(admin_url( 'admin.php?page=ws-ls-data-home&mode=user&removedata=y&user-id=' . $user_id )); ?>">
 					<i class="fa fa-trash-o"></i>
 					<?php echo __('Delete ALL data for this user', WE_LS_SLUG); ?>
 				</a>

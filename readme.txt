@@ -139,7 +139,9 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 = 6.0 =
 
-//TODO
+//todo: rename admin-pages folder
+//TODO: Tidy up folder / file structure... e.g. create folders called "shortcodes", "widgets", "core" etc and move files
+//TODO: Open up User Data (maybe rename menu item) so non pro can view some bit of it.
 * Improvement: Refactored Pro / Pro Plus features file include logic
 
 = 5.4.5 =

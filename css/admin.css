@@ -45,7 +45,9 @@
 .ws_ls_display_form {
 	width: 100%;
 }
-.ws_ls_display_form label, .ws_ls_display_form input, .ws-ls-user-pref-form label, .ws-ls-user-pref-form input, #we-ls-user-pref-submit {
+.ws_ls_display_form label, .ws_ls_display_form input,
+    .ws-ls-meta-fields-form label, .ws-ls-meta-fields-form input
+        #we-ls-user-pref-submit {
 	display: block;
 }
 .ws-ls-user-pref-form input, .ws-ls-user-pref-form select {
@@ -126,4 +128,39 @@
 .ws-ls-footable .row-title .footable-toggle {
     display: none;
 }
-.footable-empty td
+
+/*
+    Tables with div
+ */
+.ws-ls-table {
+    width: 100%;
+    display: table;
+}
+.ws-ls-row {
+    display: table-row;
+}
+.ws-ls-cell {
+    display: table-cell;
+}
+.ws-ls-label-col {
+    width: 10%;
+}
+/*
+    Custom Fields
+ */
+.ws-ls-meta-fields-form .ws-ls-table {
+    margin-top: 10px;
+}
+.ws-ls-meta-fields-form .ws-ls-row {
+    height: 40px;
+}
+.ws-ls-meta-fields-form .ws-ls-note, .ws-ls-mandatory, .ws-ls-info {
+    font-size: 10px;
+}
+.ws-ls-meta-fields-form .ws-ls-info {
+    font-style: italic;
+}
+.ws-ls-meta-fields-form .ws-ls-note, .ws-ls-mandatory {
+    color: red;
+}
+
