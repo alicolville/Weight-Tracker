@@ -825,4 +825,25 @@ function ws_ls_display_max_server_upload_size() {
 
 	return ws_ls_format_bytes_into_readable($max_size);
 }
-?>
+
+/**
+ * Either fetch data from the $_POST object or from the array passed in!
+ *
+ * @param $object
+ * @param $key
+ * @return string
+ */
+function ws_ls_get_value_from_post_or_obj( $object, $key ) {
+
+    if ( true === isset( $_POST[ $key ] ) ) {
+        echo 'here';
+        return $_POST[ $key ];
+    }
+
+    if ( true === isset( $object[ $key ] ) ) {
+        return $object[ $key ];
+    }
+
+    return '';
+}
+

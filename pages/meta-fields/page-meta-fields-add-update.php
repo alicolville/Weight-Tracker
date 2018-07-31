@@ -4,15 +4,25 @@
 
     function ws_ls_meta_fields_add_update_page() {
 
+        // Is this a save?
+        if ( false === empty( $_POST ) ) {
+
+
+        }
+
         $edit = false;
+        $id = 0;
         $meta_field =  ws_ls_querystring_value('id', true);
         $word = __('Add', WE_LS_SLUG);
 
         if ( false === empty( $meta_field ) && $meta_field = ws_ls_meta_fields_get_by_id( $meta_field ) ){
             $edit = true;
             $word = __('Edit', WE_LS_SLUG);
+            $id = intval( $meta_field['id'] );
         }
-var_dump($meta_field);
+
+       //todo var_dump($meta_field, $_POST );
+
         ?>
         <div class="wrap">
             <div id="icon-options-general" class="icon32"></div>
@@ -25,9 +35,9 @@ var_dump($meta_field);
                             <div class="postbox">
                                 <h3 class="hndle"><span><?php echo $word . ' ' . __('a field', WE_LS_SLUG); ?> </span></h3>
                                 <div style="padding: 0px 15px 0px 15px">
-                                    <form method="post" class="ws-ls-meta-fields-form">
+                                    <form <?php echo admin_url('admin.php?page=ws-ls-meta-fields&id=' . $id ); ?> method="post" class="ws-ls-meta-fields-form">
                                         <?php if ( $edit ) : ?>
-                                            <input type="hidden" name="ws-ls-update" value="<?php echo ( false === empty( $meta_field['id'] ) ) ? esc_attr( $meta_field['id'] ) : ''; ?>"/>
+                                            <input type="hidden" name="id" value="<?php echo $id; ?>"/>
                                         <?php endif; ?>
                                         <div class="ws-ls-table">
                                             <div class="ws-ls-row">
@@ -35,10 +45,17 @@ var_dump($meta_field);
                                                     <label for="field-type"><?php echo __('Field Type', WE_LS_SLUG); ?></label>
                                                 </div>
                                                 <div class="ws-ls-cell">
-                                                    <select>
-                                                        <option><?php echo __('Number', WE_LS_SLUG); ?></option>
-                                                        <option><?php echo __('Text', WE_LS_SLUG); ?></option>
-                                                        <option><?php echo __('Yes', WE_LS_SLUG); ?> / <?php echo __('No', WE_LS_SLUG); ?></option>
+                                                    <?php
+
+                                                        $value = ws_ls_get_value_from_post_or_obj( $meta_field, 'field_type' );
+                                                        var_dump($value);
+                                                        $checked = ( false === empty( $value ) ) ? intval( $value ) : 0;
+
+                                                    ?>
+                                                    <select name="field_type" id="field_type">
+                                                        <option value="1" <?php selected( $checked, 0 ); ?>><?php echo __('Number', WE_LS_SLUG); ?></option>
+                                                        <option value="2" <?php selected( $checked, 1 ); ?>><?php echo __('Text', WE_LS_SLUG); ?></option>
+                                                        <option value="3" <?php selected( $checked, 2 ); ?>><?php echo __('Yes', WE_LS_SLUG); ?> / <?php echo __('No', WE_LS_SLUG); ?></option>
                                                     </select>
                                                     <?php if ( $edit ) : ?>
                                                         <p class="ws-ls-note"><?php echo __('Note: Changing the field type will cause existing user data to be lost.', WE_LS_SLUG); ?></p>
