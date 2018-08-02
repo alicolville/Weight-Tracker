@@ -160,7 +160,9 @@
 .ws-ls-meta-fields-form .ws-ls-info {
     font-style: italic;
 }
-.ws-ls-meta-fields-form .ws-ls-note, .ws-ls-mandatory {
+.ws-ls-meta-fields-form .ws-ls-note, .ws-ls-validation-error, .ws-ls-mandatory, .ws-ls-mandatory-field, .ws-ls-not-enabled {
     color: red;
 }
-
+.ws-ls-mandatory-field {
+    border: 1px solid red !important;
+}

@@ -633,7 +633,7 @@ function ws_ls_iso_date_into_correct_format($date, $return_formatted_date_only =
  * @return string
  */
 function ws_ls_upgrade_link() {
-    return admin_url( 'admin.php?page=ws-ls-weight-loss-tracker-pro');
+    return admin_url( 'admin.php?page=ws-ls-license');
 }
 
 /**
@@ -836,7 +836,6 @@ function ws_ls_display_max_server_upload_size() {
 function ws_ls_get_value_from_post_or_obj( $object, $key ) {
 
     if ( true === isset( $_POST[ $key ] ) ) {
-        echo 'here';
         return $_POST[ $key ];
     }
 
@@ -847,3 +846,24 @@ function ws_ls_get_value_from_post_or_obj( $object, $key ) {
     return '';
 }
 
+/**
+ * Either fetch data from the $_POST object for the given object keys
+ *
+ * @param $meta_field
+ * @return string
+ */
+function ws_ls_get_values_from_post( $keys ) {
+
+    foreach ( $keys as $key ) {
+
+        if ( true === isset( $_POST[ $key ] ) ) {
+            $meta_field[ $key ] = $_POST[ $key ];
+        } else {
+            $meta_field[ $key ] = '';
+        }
+
+    }
+
+    return $meta_field;
+
+}

@@ -47,6 +47,19 @@ jQuery( document ).ready(function ($, undefined) {
 
      });
 
+    $(".ws-ls-meta-fields-list-ajax").each(function () {
+
+        var table_id = $(this).attr("id");
+
+        ws_ls_log('Setting up table: ' + table_id);
+
+        // OK we know whether or not we're looking for a user's data or everyones. Let's post back to WP admin
+        // for columns and data!
+        var data = {};
+        data['table_id'] = table_id;
+        ws_ls_post_data_to_WP('meta_fields_full_list', data, ws_ls_callback_meta_fields_list)
+    });
+
 	 function ws_ls_post_data_to_WP(action, data, callback) {
 
 	 	post_data = {};
@@ -65,7 +78,89 @@ jQuery( document ).ready(function ($, undefined) {
 	    });
 	 }
 
-	function ws_ls_callback_setup_table(response, data) {
+    function ws_ls_callback_meta_fields_list(response, data) {
+console.log(data);
+        // var table_id = '#' + response.table_id;
+        // var formatters = {};
+        //
+        // formatters['date'] = function(value){
+        //     return "<b>DATE: " + value + "</b>";
+        // }
+        //
+        // var date_column = (ws_ls_in_front_end()) ? 2 : 3;
+        //
+        // response.columns[date_column].formatter = formatters['date'];
+        //
+        //
+        // // Apply formatters
+        // var columns = ws_ls_apply_formatters(response.columns);
+        // var rows = response.rows;
+        //
+        // $(table_id).removeClass('ws-ls-loading-table');
+        //
+        // $(table_id).footable({
+        //     "columns": columns,
+        //     "rows": rows,
+        //     "state": {
+        //         "enabled" : true,
+        //         "key": "ws-ls-admin-footable"
+        //     },
+        //     editing: {
+        //         enabled: true,
+        //         alwaysShow: true, // Don't show "Edit Rows" button
+        //         allowAdd: false,
+        //         deleteRow: function(row){
+        //             if (confirm(ws_user_table_config['label-confirm-delete'])){
+        //
+        //                 var values = row.val();
+        //
+        //                 // Fetch the database record ID
+        //                 if ($.isNumeric(values.db_row_id) && $.isNumeric(values.user_id)) {
+        //
+        //                     // OK, we have a Row ID - send to Ajax handler to delete from DB
+        //                     var data = {};
+        //                     data['row_id'] = values.db_row_id;
+        //                     data['user_id'] = values.user_id;
+        //
+        //                     // To keep things looking fast (i.e. so no AJAX lag) delete row instantly from UI
+        //                     row.delete();
+        //
+        //                     // Post back to WP and delete from dB
+        //                     ws_ls_post_data_to_WP('delete_entry', data, function(response, data) {
+        //                         if(1 !== response) {
+        //                             alert(ws_user_table_config['label-error-delete']);
+        //                         }
+        //                     });
+        //                 }
+        //
+        //             }
+        //         },
+        //         editRow: function(row) {
+        //             var values = row.val();
+        //
+        //             // If we're in Admin, redirect to the relevant admin screen. Otherwise, toggle edit in front end
+        //             if(true === ws_ls_in_front_end()) {
+        //                 var url = ws_user_table_config['edit-url'];
+        //                 url = url.replace('|ws-id|', values.db_row_id);
+        //
+        //                 window.location.href = url + '&user-id=' + values.user_id + '&redirect=' + ws_user_table_config['current-url-base64'];
+        //             } else {
+        //                 window.location.href = ws_user_table_config['base-url'] + '&mode=entry&user-id=' + values.user_id + '&entry-id=' + values.db_row_id + '&redirect=' + ws_user_table_config['current-url-base64'];
+        //             }
+        //         }
+        //     }
+        // });
+        //
+        // $(table_id + ' .footable-filtering-search .input-group .form-control').attr("placeholder", ws_user_table_config['locale-search-text']);
+        //
+        // // Replace "No results" string with locale version
+        // if ( 0 === rows.length ) {
+        //     $(table_id + ' .footable-empty td').html(ws_user_table_config['locale-no-results']);
+        // }
+    }
+
+
+    function ws_ls_callback_setup_table(response, data) {
 
 		var table_id = '#' + response.table_id;
 		var formatters = {};

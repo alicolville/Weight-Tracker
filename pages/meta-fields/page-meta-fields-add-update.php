@@ -4,25 +4,41 @@
 
     function ws_ls_meta_fields_add_update_page() {
 
-        // Is this a save?
+        $id =  ws_ls_querystring_value('id', true);
+        $validation_fail = false;
+
+        // Data Posted? If so, replace the above from $_POST object
         if ( false === empty( $_POST ) ) {
 
+            $meta_field = ws_ls_get_values_from_post( [ 'id', 'field_name', 'abv', 'field_type', 'suffix', 'mandatory', 'enabled', 'suffix' ] );
 
+            // Ensure all mandatory fields have been completed!
+            foreach ( [ 'field_name', 'abv' ] as $key ) {
+                if ( true === empty( $meta_field[ $key ] ) ) {
+                    $validation_fail = true;
+                }
+            }
+
+            if ( false === $validation_fail ) {
+
+                // Add?
+                $result = ( true === empty( $meta_field['id'] ) ) ? ws_ls_meta_fields_add( $meta_field ) : ws_ls_meta_fields_update( $meta_field );
+
+                ws_ls_meta_fields_list_page();
+
+                return;
+
+            }
+
+            $id = ( false === empty( $meta_field['id'] ) ) ? $meta_field['id'] : 0 ;
+
+            // Load existing!
+        } elseif ( false === empty( $id ) && $meta_field = ws_ls_meta_fields_get_by_id( $id ) ){
+            $id = $meta_field['id'];
         }
 
-        $edit = false;
-        $id = 0;
-        $meta_field =  ws_ls_querystring_value('id', true);
-        $word = __('Add', WE_LS_SLUG);
 
-        if ( false === empty( $meta_field ) && $meta_field = ws_ls_meta_fields_get_by_id( $meta_field ) ){
-            $edit = true;
-            $word = __('Edit', WE_LS_SLUG);
-            $id = intval( $meta_field['id'] );
-        }
-
-       //todo var_dump($meta_field, $_POST );
-
+            $id = intval( $id );
         ?>
         <div class="wrap">
             <div id="icon-options-general" class="icon32"></div>
@@ -33,68 +49,67 @@
                         <div class="meta-box-sortables ui-sortable">
 
                             <div class="postbox">
-                                <h3 class="hndle"><span><?php echo $word . ' ' . __('a field', WE_LS_SLUG); ?> </span></h3>
+                                <h3 class="hndle"><span><?php echo __('Add / Edit a Custom Field', WE_LS_SLUG); ?> </span></h3>
                                 <div style="padding: 0px 15px 0px 15px">
-                                    <form <?php echo admin_url('admin.php?page=ws-ls-meta-fields&id=' . $id ); ?> method="post" class="ws-ls-meta-fields-form">
-                                        <?php if ( $edit ) : ?>
+                                    <form action="<?php echo esc_url( admin_url('admin.php?page=ws-ls-meta-fields&mode=add-edit' ) ); ?>" method="post" class="ws-ls-meta-fields-form">
+                                        <?php if ( $validation_fail ): ?>
+                                            <p class="ws-ls-validation-error">&middot; <?php echo __('Please complete all mandatory fields.', WE_LS_SLUG); ?></p>
+                                        <?php endif; ?>
+                                        <?php if ( false === empty( $id ) ) : ?>
                                             <input type="hidden" name="id" value="<?php echo $id; ?>"/>
                                         <?php endif; ?>
                                         <div class="ws-ls-table">
                                             <div class="ws-ls-row">
                                                 <div class="ws-ls-cell ws-ls-label-col">
-                                                    <label for="field-type"><?php echo __('Field Type', WE_LS_SLUG); ?></label>
+                                                    <label for="field_type"><?php echo __('Field Type', WE_LS_SLUG); ?></label>
                                                 </div>
                                                 <div class="ws-ls-cell">
                                                     <?php
-
-                                                        $value = ws_ls_get_value_from_post_or_obj( $meta_field, 'field_type' );
-                                                        var_dump($value);
-                                                        $checked = ( false === empty( $value ) ) ? intval( $value ) : 0;
-
+                                                        $checked = ( false === empty( $meta_field['field_type'] ) ) ? intval( $meta_field['field_type'] ) : 0;
                                                     ?>
                                                     <select name="field_type" id="field_type">
-                                                        <option value="1" <?php selected( $checked, 0 ); ?>><?php echo __('Number', WE_LS_SLUG); ?></option>
-                                                        <option value="2" <?php selected( $checked, 1 ); ?>><?php echo __('Text', WE_LS_SLUG); ?></option>
-                                                        <option value="3" <?php selected( $checked, 2 ); ?>><?php echo __('Yes', WE_LS_SLUG); ?> / <?php echo __('No', WE_LS_SLUG); ?></option>
+                                                        <option value="0" <?php selected( $checked, 0 ); ?>><?php echo __('Number', WE_LS_SLUG); ?></option>
+                                                        <option value="1" <?php selected( $checked, 1 ); ?>><?php echo __('Text', WE_LS_SLUG); ?></option>
+                                                        <option value="2" <?php selected( $checked, 2 ); ?>><?php echo __('Yes', WE_LS_SLUG); ?> / <?php echo __('No', WE_LS_SLUG); ?></option>
                                                     </select>
-                                                    <?php if ( $edit ) : ?>
+                                                    <?php if ( false === empty( $id ) ) : ?>
                                                         <p class="ws-ls-note"><?php echo __('Note: Changing the field type will cause existing user data to be lost.', WE_LS_SLUG); ?></p>
                                                     <?php endif; ?>
                                                 </div>
                                             </div>
                                             <div class="ws-ls-row">
                                                 <div class="ws-ls-cell">
-                                                    <label for="ws-ls-name"><?php echo __('Name', WE_LS_SLUG); ?></label>
+                                                    <label for="field_name"><?php echo __('Name', WE_LS_SLUG); ?></label>
                                                 </div>
                                                 <div class="ws-ls-cell">
-                                                    <input type="text" name="ws-ls-name" id="ws-ls-name" size="40" maxlength="40" value="<?php echo ( false === empty( $meta_field['field_name'] ) ) ? esc_attr( $meta_field['field_name'] ) : ''; ?>"/><span class="ws-ls-mandatory">*</span>
+                                                    <input type="text" name="field_name" id="field_name" class="<?php if ( true === $validation_fail && true === empty( $meta_field['field_name'] ) ) { echo 'ws-ls-mandatory-field'; } ?>"  size="40" maxlength="40" value="<?php echo ( false === empty( $meta_field['field_name'] ) ) ? esc_attr( $meta_field['field_name'] ) : ''; ?>"/><span class="ws-ls-mandatory">*</span>
                                                 </div>
                                             </div>
                                             <div class="ws-ls-row">
                                                 <div class="ws-ls-cell">
-                                                    <label for="ws-ls-abv"><?php echo __('Abbreviation', WE_LS_SLUG); ?></label>
+                                                    <label for="abv"><?php echo __('Abbreviation', WE_LS_SLUG); ?></label>
                                                 </div>
                                                 <div class="ws-ls-cell">
-                                                    <input type="text" name="ws-ls-abv" id="ws-ls-abv" size="40" maxlength="4" value="<?php echo ( false === empty( $meta_field['abv'] ) ) ? esc_attr( $meta_field['abv'] ) : ''; ?>"/><span class="ws-ls-mandatory">*</span>
+                                                    <input type="text" name="abv" id="abv" class="<?php if ( true === $validation_fail && true === empty( $meta_field['abv'] ) ) { echo 'ws-ls-mandatory-field'; } ?>" size="40" maxlength="5" value="<?php echo ( false === empty( $meta_field['abv'] ) ) ? esc_attr( $meta_field['abv'] ) : ''; ?>"/><span class="ws-ls-mandatory">*</span>
                                                     <p class="ws-ls-info"><?php echo __('Used when displaying the field data in smaller spaces e.g. table headers, charts, etc', WE_LS_SLUG ); ?></p>
                                                 </div>
                                             </div>
                                             <div class="ws-ls-row">
                                                 <div class="ws-ls-cell">
-                                                    <label for="ws-ls-suffix"><?php echo __('Suffix', WE_LS_SLUG); ?></label>
+                                                    <label for="suffix"><?php echo __('Suffix', WE_LS_SLUG); ?></label>
                                                 </div>
                                                 <div class="ws-ls-cell">
-                                                    <input type="text" name="ws-ls-suffix" id="ws-ls-suffix" size="40" maxlength="4" value="<?php echo ( false === empty( $meta_field['suffix'] ) ) ? esc_attr( $meta_field['suffix'] ) : ''; ?>"/>
+                                                    <input type="text" name="suffix" id="suffix" size="40" maxlength="5" value="<?php echo ( false === empty( $meta_field['suffix'] ) ) ? esc_attr( $meta_field['suffix'] ) : ''; ?>"/>
                                                     <p class="ws-ls-info"><?php echo __('Text display at to end of the entered value when displaying it to the user. e.g. CM would display in the following manner: 120 CM', WE_LS_SLUG ); ?></p>
                                                 </div>
                                             </div>
                                             <div class="ws-ls-row">
                                                 <div class="ws-ls-cell ws-ls-label-col">
-                                                    <label for="ws-ls-mandatory"><?php echo __('Mandatory', WE_LS_SLUG); ?></label>
+                                                    <label for="mandatory"><?php echo __('Mandatory', WE_LS_SLUG); ?></label>
                                                 </div>
                                                 <?php $checked = ( false === empty( $meta_field['mandatory'] ) && 1 === intval( $meta_field['mandatory'] ) ) ? 1 : 0; ?>
                                                 <div class="ws-ls-cell">
-                                                    <select name="ws-ls-mandatory" id="ws-ls-mandatory">
+                                                    <select name="mandatory" id="mandatory">
                                                         <option value="0" <?php selected( $checked, 0 ); ?>><?php echo __('No', WE_LS_SLUG); ?></option>
                                                         <option value="1" <?php selected( $checked, 1 ); ?>><?php echo __('Yes', WE_LS_SLUG); ?></option>
                                                     </select>
@@ -102,11 +117,11 @@
                                             </div>
                                             <div class="ws-ls-row">
                                                 <div class="ws-ls-cell ws-ls-label-col">
-                                                    <label for="ws-ls-enabled"><?php echo __('Enabled', WE_LS_SLUG); ?></label>
+                                                    <label for="enabled"><?php echo __('Enabled', WE_LS_SLUG); ?></label>
                                                 </div>
                                                 <?php $checked = ( false === empty( $meta_field['enabled'] ) && 1 === intval( $meta_field['enabled'] ) ) ? 1 : 0; ?>
                                                 <div class="ws-ls-cell">
-                                                    <select name="ws-ls-enabled" id="ws-ls-enabled">
+                                                    <select name="enabled" id="enabled">
                                                         <option value="0" <?php selected( $checked, 0 ); ?>><?php echo __('No', WE_LS_SLUG); ?></option>
                                                         <option value="1" <?php selected( $checked, 1 ); ?>><?php echo __('Yes', WE_LS_SLUG); ?></option>
                                                     </select>
@@ -114,7 +129,9 @@
                                             </div>
                                             <div class="ws-ls-row">
                                                 <div class="ws-ls-cell">
-                                                    <input name="submit_button" type="submit" id="we-ls-submit" tabindex="5" value="Save Field" class="comment-submit button">
+                                                    <a class="comment-submit button" href="<?php echo ws_ls_meta_fields_base_url(); ?>"><?php echo __('Cancel', WE_LS_SLUG); ?></a>
+                                                    &nbsp;
+                                                    <input name="submit_button" type="submit" value="<?php echo __('Save', WE_LS_SLUG); ?>" class="comment-submit button button-primary">
                                                 </div>
                                             </div>
                                         </div>

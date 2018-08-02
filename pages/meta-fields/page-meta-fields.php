@@ -9,10 +9,10 @@
 
         // Call relevant page function
         switch ($page_to_display) {
-//            case 'search-results':
-//                ws_ls_admin_page_search_results();
-//                break;
-//            case 'user':
+            case 'add-edit':
+                ws_ls_meta_fields_add_update_page();
+                break;
+//     todo       case 'user':
 //                ws_ls_admin_page_data_user();
 //                break;
 //            case 'user-settings':
@@ -31,7 +31,7 @@
 //                ws_ls_admin_page_view_all();
 //                break;
             default:
-                ws_ls_meta_fields_add_update_page();
+                ws_ls_meta_fields_list_page();
                 break;
         }
 

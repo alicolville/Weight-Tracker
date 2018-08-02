@@ -177,7 +177,7 @@ function ws_ls_advertise_pro() {
 
 								<div class="inside">
 
-									<form action="<?php echo admin_url('admin.php?page=ws-ls-weight-loss-tracker-pro&add-license=true'); ?>" method="post">
+									<form action="<?php echo admin_url('admin.php?page=ws-ls-license&add-license=true'); ?>" method="post">
 										<p><?php echo __('Copy and paste the license given to you by YeKen into this box and click "Apply License"', WE_LS_SLUG); ?>.</p>
 										<textarea rows="5" style="width:100%"  name="license-key"></textarea>
                                         <br /><br />
@@ -223,7 +223,7 @@ function ws_ls_advertise_pro() {
 												<td colspan="2"><textarea rows="5" style="width:100%"><?php echo esc_textarea($existing_license); ?></textarea></th>
 											</tr>
 											<tr class="last">
-												<td colspan="2"><a href="<?php echo admin_url('admin.php?page=ws-ls-weight-loss-tracker-pro&remove-license=true'); ?>" class="button-secondary delete-license"><?php echo __('Remove License', WE_LS_SLUG); ?></a></th>
+												<td colspan="2"><a href="<?php echo admin_url('admin.php?page=ws-ls-license&remove-license=true'); ?>" class="button-secondary delete-license"><?php echo __('Remove License', WE_LS_SLUG); ?></a></th>
 											</tr>
 
 										<?php endif; ?>

@@ -37,7 +37,7 @@
 
         // Only run this when the plugin version has changed
         if( false === update_option('ws-ls-meta-version-number', WE_LS_DB_VERSION )) {
-         	return;
+      //   	return;
         }
 
         global $wpdb;
@@ -52,7 +52,7 @@
                 id mediumint(9) NOT NULL AUTO_INCREMENT,
                 field_key varchar(40) NOT NULL,
                 field_name varchar(40) NOT NULL,
-                abv varchar(4) NOT NULL,
+                abv varchar(5) NOT NULL,
                 suffix varchar(5) NOT NULL,
                 display_on_chart BIT DEFAULT 0,
                 mandatory BIT DEFAULT 0,
@@ -84,40 +84,6 @@
     }
     add_action( 'admin_init', 'ws_ls_activate_meta_create_mysql_tables' );
 
-//	/**
-//	 * 	Insert some default Units into WE_LS_MYSQL_META_UNITS
-//	 */
-//    function ws_ls_activate_meta_units_add_defaults() {
-//
-//    	// TODO: Add some more defaults?
-//
-//		ws_ls_meta_unit_add([
-//			'abv' => 'CM',
-//			'chartable' => 1,
-//			'field_key' => 'cm',
-//			'field_name' => 'Centimetres'
-//		]);
-//
-//		ws_ls_meta_unit_add([
-//			'abv' => 'Cups',
-//			'chartable' => 1,
-//			'field_key' => 'cups',
-//			'field_name' => 'Cups'
-//		]);
-//
-//		ws_ls_meta_unit_add([
-//			'abv' => 'Feet',
-//			'chartable' => 1,
-//			'field_key' => 'feet',
-//			'field_name' => 'Feet'
-//		]);
-//
-//		ws_ls_meta_unit_add([
-//			'abv' => 'I',
-//			'chartable' => 1,
-//			'field_key' => 'inches',
-//			'field_name' => 'Inches'
-//		]);
-//
-//	}
 
+
+    //TODO: Add some example custom fields? Cups etc?

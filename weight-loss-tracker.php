@@ -85,10 +85,12 @@ include WS_LS_ABSPATH . 'pages/page.license.php';
 include WS_LS_ABSPATH . 'pages/page.help.php';
 include WS_LS_ABSPATH . 'pages/meta-fields/page-meta-fields.php';
 include WS_LS_ABSPATH . 'pages/meta-fields/page-meta-fields-add-update.php';
+include WS_LS_ABSPATH . 'pages/meta-fields/page-meta-fields-list.php';
 //TODO: Right place for this still;?
 include WS_LS_ABSPATH . 'pro-features/plus/meta-fields/activate.php';
 include WS_LS_ABSPATH . 'pro-features/plus/meta-fields/db.php';
 include WS_LS_ABSPATH . 'pro-features/plus/meta-fields/hooks.php';
+include WS_LS_ABSPATH . 'pro-features/plus/meta-fields/functions.php';
 
 include WS_LS_ABSPATH . 'pro-features/feature-list.php';
 include WS_LS_ABSPATH . 'includes/comms-with-yeken.php';

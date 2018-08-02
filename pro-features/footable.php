@@ -273,6 +273,8 @@ function ws_ls_data_js_config() {
 	$config = array(
 					'security' => wp_create_nonce('ws-ls-user-tables'),
 					'base-url' => ws_ls_get_link_to_user_data(),
+					'base-url-meta-fields' => ws_ls_meta_fields_base_url(),
+                    'label-meta-fields-add-button' =>  __('Add Custom Field', WE_LS_SLUG),
 					'label-confirm-delete' =>  __('Are you sure you want to delete the row?', WE_LS_SLUG),
 					'label-error-delete' =>  __('Unfortunately there was an error deleting the row.', WE_LS_SLUG),
                     'locale-search-text' =>  __('Search', WE_LS_SLUG),

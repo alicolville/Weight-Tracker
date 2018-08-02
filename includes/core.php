@@ -249,12 +249,14 @@
 function ws_ls_display_weight_form($target_form = false, $class_name = false, $user_id = false, $hide_titles = false,
                                         $form_number = false, $force_to_todays_date = false, $hide_login_message_if_needed = true,
                                             $hide_measurements_form = false, $redirect_url = false, $existing_data = false, $cancel_button = false,
-                                                $hide_photos_form = false) {
+                                                $hide_photos_form = false, $hide_meta_fields_form = false ) {
     global $save_response;
     $html_output  = '';
 
     $measurements_form_enabled = (WE_LS_MEASUREMENTS_ENABLED && ws_ls_any_active_measurement_fields() && false == $hide_measurements_form && !$target_form) ? true : false;
     $photo_form_enabled = ( false === $hide_photos_form && true === WE_LS_PHOTOS_ENABLED && false === $target_form);
+    $meta_field_form_enabled = ( false === $hide_meta_fields_form && true === ws_ls_meta_fields_is_enabled() && ws_ls_meta_fields_number_of_enabled() > 0 && false === $target_form);
+    $entry_id = NULL;
 
     // Make sure they are logged in
     if (!is_user_logged_in())	{
@@ -322,9 +324,10 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 
 	// Do we have data? If so, embed existing row ID
 	if(!empty($existing_data['db_row_id']) && is_numeric($existing_data['db_row_id'])) {
-		$html_output .= '<input type="hidden" value="' . esc_attr($existing_data['db_row_id']) . '" id="db_row_id" name="db_row_id" />';
+        $entry_id = intval( $existing_data['db_row_id'] );
+		$html_output .= '<input type="hidden" value="' . $entry_id . '" id="db_row_id" name="db_row_id" />';
 	}
-
+ 
 	// Redirect form afterwards?
 	if($redirect_url) {
 		$html_output .= '<input type="hidden" value="' . esc_url($redirect_url) . '" id="ws_redirect" name="ws_redirect" />';
@@ -450,12 +453,21 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 	}
 
 	// Include
-	if(!$target_form && $measurements_form_enabled) {
+	if( false === $target_form && $measurements_form_enabled) {
 		$html_output .= sprintf('<h3 class="ws_ls_title">%s (%s)</h3>',
 										( false === empty($existing_data) )	? __('Edit measurements', WE_LS_SLUG) : __('Add measurements', WE_LS_SLUG),
 								(WE_LS_MEASUREMENTS_MANDATORY) ? __('Mandatory', WE_LS_SLUG) : __('Optional', WE_LS_SLUG));
 		$html_output .= ws_ls_load_measurement_form($existing_data);
 	}
+
+	// Render Meta Fields
+    if ( false === $target_form && true === $meta_field_form_enabled ) {
+
+	    $html_output .= sprintf( '<h3 class="ws_ls_title">%s</h3>',
+                                __('Additional Information', WE_LS_SLUG) );
+
+	    $html_output .= ws_ls_meta_fields_form( $entry_id );
+    }
 
 	$button_text = ($target_form) ?  __('Set Target', WE_LS_SLUG) :  __('Save Entry', WE_LS_SLUG);
 
@@ -509,6 +521,8 @@ function ws_ls_capture_form_validate_and_save($user_id = false)
         $user_id = get_current_user_id();
     }
 
+    $meta_fields_enabled = ( true === ws_ls_meta_fields_is_enabled() && ws_ls_meta_fields_number_of_enabled() > 0 );
+
 	$allowed_post_keys = array('ws_ls_is_target', 'we-ls-date', 'we-ls-weight-pounds',
 								'we-ls-weight-stones', 'we-ls-weight-kg', 'we-ls-notes' );
 
@@ -516,6 +530,10 @@ function ws_ls_capture_form_validate_and_save($user_id = false)
     if ( WE_LS_PHOTOS_ENABLED ) {
 		$allowed_post_keys = array_merge($allowed_post_keys, ['ws-ls-photo', 'ws-ls-photo-previous', 'ws-ls-photo-delete']);
 	}
+
+	if ( true === $meta_fields_enabled ) {
+        $allowed_post_keys = array_merge( $allowed_post_keys, ws_ls_meta_fields_form_field_ids() );
+    }
 
 	$weight_keys = false;
 
@@ -658,6 +676,26 @@ function ws_ls_capture_form_validate_and_save($user_id = false)
 		wp_delete_attachment($photo_id_to_delete);
 	}
 
+    // ---------------------------------------------
+    // Process Meta Fields
+    // ---------------------------------------------
+
+    if ( true === ws_ls_meta_fields_is_enabled() && ws_ls_meta_fields_number_of_enabled() > 0 ) {
+        print_r($form_values);
+	    // Loop through each enabled meta field. If the field exists in the $_POST object then update the database.
+        foreach ( ws_ls_meta_fields_enabled() as $field ) {
+
+            $field_key = ws_ls_meta_fields_form_field_generate_id( $field['id'] );
+
+            if ( true === isset( $form_values[  $field_key ] ) ) {
+                $weight_object[ 'meta-keys' ][ $field['id']] = $form_values[ $field_key ];
+            }
+
+        }
+
+    }
+print_r($weight_object);
+	die;
 	$result = ws_ls_save_data($user_id, $weight_object, $is_target_form, $existing_db_id);
 
     return $result;
