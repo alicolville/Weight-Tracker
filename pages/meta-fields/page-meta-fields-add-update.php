@@ -10,7 +10,7 @@
         // Data Posted? If so, replace the above from $_POST object
         if ( false === empty( $_POST ) ) {
 
-            $meta_field = ws_ls_get_values_from_post( [ 'id', 'field_name', 'abv', 'field_type', 'suffix', 'mandatory', 'enabled', 'suffix' ] );
+            $meta_field = ws_ls_get_values_from_post( [ 'id', 'field_name', 'abv', 'field_type', 'suffix', 'mandatory', 'enabled', 'suffix', 'sort' ] );
 
             // Ensure all mandatory fields have been completed!
             foreach ( [ 'field_name', 'abv' ] as $key ) {
@@ -21,7 +21,7 @@
 
             if ( false === $validation_fail ) {
 
-                // Add?
+                // Add / Update
                 $result = ( true === empty( $meta_field['id'] ) ) ? ws_ls_meta_fields_add( $meta_field ) : ws_ls_meta_fields_update( $meta_field );
 
                 ws_ls_meta_fields_list_page();
@@ -105,13 +105,29 @@
                                             </div>
                                             <div class="ws-ls-row">
                                                 <div class="ws-ls-cell ws-ls-label-col">
+                                                    <label for="sort"><?php echo __('Display Order', WE_LS_SLUG); ?></label>
+                                                </div>
+                                                <div class="ws-ls-cell">
+                                                    <?php
+                                                    $checked = ( false === empty( $meta_field['sort'] ) ) ? intval( $meta_field['sort'] ) : 100;
+                                                    ?>
+                                                    <select name="sort" id="sort">
+                                                        <?php for ( $i = 0; $i <= 200; $i = $i + 10 ): ?>
+                                                            <option value="<?php echo $i; ?>" <?php selected( $checked, $i ); ?>><?php echo $i; ?></option>
+                                                        <?php endfor; ?>
+                                                    </select>
+                                                    <p class="ws-ls-info"><?php echo __('Used to specify the order of custom fields. Lower numbers are displayed higher up the form.', WE_LS_SLUG); ?></p>
+                                                </div>
+                                            </div>
+                                            <div class="ws-ls-row">
+                                                <div class="ws-ls-cell ws-ls-label-col">
                                                     <label for="mandatory"><?php echo __('Mandatory', WE_LS_SLUG); ?></label>
                                                 </div>
                                                 <?php $checked = ( false === empty( $meta_field['mandatory'] ) && 1 === intval( $meta_field['mandatory'] ) ) ? 1 : 0; ?>
                                                 <div class="ws-ls-cell">
                                                     <select name="mandatory" id="mandatory">
-                                                        <option value="0" <?php selected( $checked, 0 ); ?>><?php echo __('No', WE_LS_SLUG); ?></option>
-                                                        <option value="1" <?php selected( $checked, 1 ); ?>><?php echo __('Yes', WE_LS_SLUG); ?></option>
+                                                        <option value="1" <?php selected( $checked, 1 ); ?>><?php echo __('No', WE_LS_SLUG); ?></option>
+                                                        <option value="2" <?php selected( $checked, 2 ); ?>><?php echo __('Yes', WE_LS_SLUG); ?></option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -122,8 +138,8 @@
                                                 <?php $checked = ( false === empty( $meta_field['enabled'] ) && 1 === intval( $meta_field['enabled'] ) ) ? 1 : 0; ?>
                                                 <div class="ws-ls-cell">
                                                     <select name="enabled" id="enabled">
-                                                        <option value="0" <?php selected( $checked, 0 ); ?>><?php echo __('No', WE_LS_SLUG); ?></option>
-                                                        <option value="1" <?php selected( $checked, 1 ); ?>><?php echo __('Yes', WE_LS_SLUG); ?></option>
+                                                        <option value="1" <?php selected( $checked, 1 ); ?>><?php echo __('No', WE_LS_SLUG); ?></option>
+                                                        <option value="2" <?php selected( $checked, 2 ); ?>><?php echo __('Yes', WE_LS_SLUG); ?></option>
                                                     </select>
                                                 </div>
                                             </div>

@@ -248,25 +248,47 @@ function ws_ls_save_data($user_id, $weight_object, $is_target_form = false, $exi
 	    array_push($db_field_types, '%s');
 	}
 
+	$entry_id = NULL;
+
 	// Update or insert
-	if($db_is_update != false) {
-		$result = $wpdb->update(
-	    	$table_name,
-	    	$db_fields,
-	    	array( 'id' => $db_is_update ),
-	    	$db_field_types,
-	    	array( '%d' )
+	if( false !== $db_is_update ) {
+
+	    $result = $wpdb->update(
+                                    $table_name,
+                                    $db_fields,
+                                    array( 'id' => $db_is_update ),
+                                    $db_field_types,
+                                    array( '%d' )
 		);
-	}
-	else {
+
+	} else {
+
 	    $result = $wpdb->insert(
-	    	$table_name,
-	      $db_fields,
-	    	$db_field_types
+	    	                        $table_name,
+	                                $db_fields,
+	    	                        $db_field_types
 	    );
+
+        $db_is_update = ( false !== $result ) ? $wpdb->insert_id : false;
 	 }
 
 	$result = ($result === false) ? false : true;
+
+    // Save Meta Fields?
+    if ( true === ws_ls_meta_fields_is_enabled() && false === empty( $weight_object[ 'meta-keys' ] ) ) {
+
+        foreach ( $weight_object[ 'meta-keys' ] as $id => $value ) {
+
+                ws_ls_meta_add_to_entry([
+                                            'entry_id' => $db_is_update,
+                                            'key' => $id,
+                                            'value' => $value
+                    ]
+                );
+
+        }
+
+    }
 
 	// Tidy up cache
 	ws_ls_delete_cache_for_given_user($user_id);

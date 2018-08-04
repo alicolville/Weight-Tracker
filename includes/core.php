@@ -681,7 +681,7 @@ function ws_ls_capture_form_validate_and_save($user_id = false)
     // ---------------------------------------------
 
     if ( true === ws_ls_meta_fields_is_enabled() && ws_ls_meta_fields_number_of_enabled() > 0 ) {
-        print_r($form_values);
+
 	    // Loop through each enabled meta field. If the field exists in the $_POST object then update the database.
         foreach ( ws_ls_meta_fields_enabled() as $field ) {
 
@@ -694,8 +694,7 @@ function ws_ls_capture_form_validate_and_save($user_id = false)
         }
 
     }
-print_r($weight_object);
-	die;
+
 	$result = ws_ls_save_data($user_id, $weight_object, $is_target_form, $existing_db_id);
 
     return $result;

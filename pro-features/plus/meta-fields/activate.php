@@ -12,32 +12,9 @@
      */
     function ws_ls_activate_meta_create_mysql_tables() {
 
-    	//TODO
-//		$r = ws_ls_meta_add_to_entry([
-//			'entry_id' => 6,
-//			'key' => 'leg-left',
-//			'value' => '45'
-//		]);
-
-
-//		echo ws_ls_meta_fields_generate_field_key('measure-waist');
-
-//		$r = ws_ls_meta_fields_add([
-//			'abv' => 'W',
-//			'display_on_chart' => 0,
-//			'field_name' => 'Waist',
-//			'field_type' => 2,
-//			'suffix' => 'CM',
-//			'system' => 1
-//		]);
-//
-//		var_dump( $r );
-
-//		var_dump(ws_ls_meta(6) );
-
         // Only run this when the plugin version has changed
         if( false === update_option('ws-ls-meta-version-number', WE_LS_DB_VERSION )) {
-      //   	return;
+      // todo  	return;
         }
 
         global $wpdb;
@@ -55,10 +32,11 @@
                 abv varchar(5) NOT NULL,
                 suffix varchar(5) NOT NULL,
                 display_on_chart BIT DEFAULT 0,
-                mandatory BIT DEFAULT 0,
-                enabled BIT DEFAULT 0,
+                mandatory int DEFAULT 1,
+                enabled int DEFAULT 1,
                 system BIT DEFAULT 0,
                 field_type int NOT NULL,
+                sort int DEFAULT 100,
                 UNIQUE KEY id (id)
             ) $charset_collate;";
 

@@ -41,17 +41,24 @@ function ws_ls_meta_add_to_entry( $data ) {
 		return false;
 	}
 
-	// Ensure the meta key exists!
-	if ( false === ws_ls_meta_fields_key_exist( $data['key'] ) ) {
-		return false;
-	}
+	// todo Ensure the meta key exists!
+//	if ( false === ws_ls_meta_fields_key_exist( $data['key'] ) ) {
+//		return false;
+//	}
 
-	// Fetch information about the meta field
-	$meta_field = ws_ls_meta_fields_get( $data['key'] );
+	// Get Meta Field ID
+    if ( true === is_numeric( $data['key'] ) ) {
 
-	if ( true === empty( $meta_field ) ) {
-		return false;
-	}
+        $meta_field['id'] = intval( $data['key'] );
+
+    } else {
+        // Fetch information about the meta field
+        $meta_field = ws_ls_meta_fields_get( $data['key'] );
+
+        if ( true === empty( $meta_field ) ) {
+            return false;
+        }
+    }
 
 	// Remove any existing values for this weight entry / key
 	ws_ls_meta_delete( $data['entry_id'], $meta_field['id'] );
@@ -131,7 +138,7 @@ function ws_ls_meta_fields_enabled() {
 
         // Remove any disabled fields!
         $fields = array_filter( $fields, function( $value ) {
-            return ( false === empty( $value['enabled'] ) && 1 === intval( $value['enabled'] ) );
+            return ( false === empty( $value['enabled'] ) && 2 === intval( $value['enabled'] ) );
         });
 
         return $fields;
@@ -161,8 +168,8 @@ function ws_ls_meta_fields( $exclude_system = true ) {
     if ( true === $exclude_system ) {
         $sql .= ' Where system = 0';
     }
-//TODO: Add Order column
-    $sql .= ' order by field_name asc';
+
+    $sql .= ' order by sort, field_name asc';
 
     $data = $wpdb->get_results( $sql , ARRAY_A );
 
@@ -348,6 +355,7 @@ function ws_ls_meta_formats( $data ) {
 		'field_type' => '%d',
 		'suffix' => '%s',
         'enabled' => '%d',
+        'sort' => '%d',
         'mandatory' => '%d'
     ];
 
