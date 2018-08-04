@@ -121,6 +121,75 @@
     }
 
     /**
+     *
+     * Get Meta Fields for entry (used in table display)
+     *
+     * @param $entry_id
+     * @return array
+     */
+    function ws_ls_meta_fields_for_entry_display( $entry_id ) {
+
+        $return = [];
+
+        $data = ws_ls_meta( $entry_id );
+
+        foreach ( $data as $field ) {
+            $return[ $field['meta_field_id'] ] = $field;
+        }
+
+        return $return;
+
+    }
+
+    /**
+     * Format meta data for display
+     *
+     * @param $value
+     * @param int $type
+     * @return int
+     */
+    function ws_ls_fields_display_field_value( $value, $meta_field_id ) {
+
+        $meta_field = ws_ls_meta_fields_get_by_id( $meta_field_id );
+
+        if ( false === empty( $meta_field['field_type'] ) ) {
+
+            $meta_field['field_type'] = intval( $meta_field['field_type'] );
+
+            // Yes / No
+            if ( 2 === $meta_field['field_type'] ) {
+                return ws_ls_fields_display_field_value_yes_no( $value);
+            }
+
+        }
+
+        return $value;
+
+    }
+
+    /**
+     * Render Yes / No field
+     *
+     * @param $value
+     * @return string
+     *
+     */
+    function ws_ls_fields_display_field_value_yes_no( $value ) {
+
+        switch ( intval( $value ) ) {
+            case 1:
+                return __('No', WE_LS_SLUG);
+                break;
+            case 2:
+                return __('Yes', WE_LS_SLUG);
+                break;
+            default:
+                return '';
+
+        }
+    }
+
+    /**
      * Render Meta Fields form
      *
      * @param null $entry_id
@@ -165,7 +234,7 @@
                         <input type="text" id="%1$s" name="%1$s" %3$s tabindex="%4$s" maxlength="200" value="%5$s" class="ws-ls-meta-field" />',
             ws_ls_meta_fields_form_field_generate_id( $field['id'] ),
             esc_attr($field['field_name']),
-            1 === intval($field['mandatory']) ? ' required' : '',
+            2 === intval($field['mandatory']) ? ' required' : '',
             ws_ls_get_next_tab_index(),
             ( false === empty( $value ) ) ? esc_attr( $value ) : ''
         );
@@ -185,7 +254,7 @@
                             <input type="number" id="%1$s" name="%1$s" %3$s step="any" tabindex="%4$s" maxlength="200" value="%5$s" class="ws-ls-meta-field" />',
             ws_ls_meta_fields_form_field_generate_id( $field['id'] ),
             esc_attr($field['field_name']),
-            1 === intval($field['mandatory']) ? ' required' : '',
+            2 === intval($field['mandatory']) ? ' required' : '',
             ws_ls_get_next_tab_index(),
             ( false === empty( $value ) ) ? esc_attr( $value ) : ''
         );

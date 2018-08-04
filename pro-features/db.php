@@ -52,6 +52,8 @@ function ws_ls_user_data($filters = false)
 			 }
 		 }
 
+		$meta_field_data = ( true === ws_ls_meta_fields_is_enabled() ) ? ws_ls_meta_fields_for_entry_display( $raw_weight_data->id ) : false;
+
         array_push($weight_data, ws_ls_weight_object(	$raw_weight_data->weight_user_id,
                                                       	$raw_weight_data->weight_weight,
                                                       	$raw_weight_data->weight_pounds,
@@ -63,7 +65,8 @@ function ws_ls_user_data($filters = false)
                                                       	$raw_weight_data->id,
                                                       	$raw_weight_data->user_nicename,
 													  	$measurements,
-														$raw_weight_data->photo_id
+														$raw_weight_data->photo_id,
+                                                        $meta_field_data
                                                     ));
       }
 

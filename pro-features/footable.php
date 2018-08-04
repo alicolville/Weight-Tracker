@@ -167,7 +167,22 @@ function ws_ls_data_table_get_rows($user_id = false, $max_entries = false, $smal
 						$row[$column_name] = esc_html($data[$column_name]);
 						break;
 				}
-			}
+			} else if ( false !== strpos( $column_name , 'meta-' ) ) {
+
+			    $field_id = str_replace( 'meta-', '', $column_name );
+
+                $row[ $column_name ] = '';
+
+                if ( false === empty( $data['meta-fields'][ (int)$field_id ]['value'] ) ) {
+
+                    $field = $data['meta-fields'][ (int)$field_id ];
+
+                    $row[ $column_name ] = ws_ls_fields_display_field_value( $field['value'], $field['meta_field_id'] );
+
+                }
+
+            }
+
 		}
 		array_push($rows, $row);
 	}
@@ -241,6 +256,14 @@ function ws_ls_data_table_get_columns($smaller_width = false, $front_end = false
 			array_push($columns, array('name' => esc_attr($key), 'title' => ws_ls_tooltip($supported_measurements[$key]['abv'], $supported_measurements[$key]['title'] . ' (' . $unit . ')' ), 'breakpoints'=> (($smaller_width) ? 'lg' : 'md'), 'type' => 'text'));
 		}
 	}
+
+    if ( true === ws_ls_meta_fields_is_enabled() ) {
+
+        foreach ( ws_ls_meta_fields_enabled() as $field ) {
+            array_push($columns, array('name' => 'meta-' . $field['id'], 'title' => $field['field_name'], 'breakpoints'=> (($smaller_width) ? 'lg' : 'md'), 'type' => 'text'));
+        }
+
+    }
 
 	// Add notes;
 	array_push($columns, array('name' => 'notes', 'title' => __('Notes', WE_LS_SLUG), 'breakpoints'=> 'lg', 'type' => 'text'));

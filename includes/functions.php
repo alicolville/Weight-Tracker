@@ -11,7 +11,7 @@ function ws_ls_is_date_intervals_enabled()	{
 /* Get string representation of a weight  */
 function ws_ls_weight_object($user_id, $kg, $pounds, $stones, $pounds_only, $notes = '', $date = false,
                               $detect_and_convert_missing_values = false, $database_row_id = false, $user_nicename = '', $measurements = false,
-								$photo_id = false)
+								$photo_id = false, $meta_fields = false )
 {
     $weight['display'] = '';
     $weight['user_id'] = $user_id;
@@ -27,6 +27,7 @@ function ws_ls_weight_object($user_id, $kg, $pounds, $stones, $pounds_only, $not
     $weight['db_row_id'] = $database_row_id;
     $weight['measurements'] = $measurements;
 	$weight['photo_id'] = false === empty($photo_id) ? $photo_id : false;
+    $weight['meta-fields'] = $meta_fields;
 
     // Build different date formats
     if($date != false && !empty($date)) {
