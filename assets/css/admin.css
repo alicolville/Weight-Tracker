@@ -128,7 +128,22 @@
 .ws-ls-footable .row-title .footable-toggle {
     display: none;
 }
-
+.ws-ls-advertise {
+    border: 2px solid #080ffd;
+}
+.ws-ls-advertise .hndle {
+    border-bottom: 2px solid #080ffd;
+}
+.ws-ls-blur {
+    filter:url(#wherearemyglasses);
+    /* ^ for Firefox */
+    -webkit-filter: blur(2px);
+    /* ^ Webkit browsers */
+    filter: blur(2px);
+}
+.ws-ls-blur th {
+    display: inline-block;
+}
 /*
     Tables with div
  */

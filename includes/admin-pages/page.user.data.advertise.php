@@ -1,5 +1,7 @@
 <?php
 
+//todo delete this page
+
 defined('ABSPATH') or die('Naw ya dinnie!');
 
 function ws_ls_admin_page_data_home() {

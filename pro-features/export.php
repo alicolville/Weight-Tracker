@@ -31,10 +31,10 @@ function ws_ls_export_data() {
 
 		switch ($file_type) {
 			case 'text/csv':
-				$output = ws_ls_csv_from_array($export_data['weight_data']);
+				$output = ws_ls_csv_from_array( $export_data['weight_data'] );
 				break;
 			default:
-				$output = ws_ls_export_into_json($export_data['weight_data']);
+				$output = ws_ls_export_into_json( $export_data['weight_data'] );
 				break;
 		}
 
@@ -65,23 +65,32 @@ function ws_ls_export_into_json($rows) {
 		$data = [];
 		$measurement_keys = ws_ls_get_keys_for_active_measurement_fields();
 
-		foreach ($rows as $row) {
-			foreach ($output['columns'] as $key => $value) {
-				if(in_array($key, $measurement_keys)) {
+        // Only render body of report if Pro!
+        if ( true !== WS_LS_IS_PRO ) {
 
-					// Do we need to convert the measurement to inches?
-					$data[$key] = ( 'inches' === WE_LS_MEASUREMENTS_UNIT ) ?
-						ws_ls_convert_to_inches( $row['measurements'][$key] ) :
-						$row['measurements'][$key];
+            $output['rows'] =  __('You must have a Pro License to export user data into JSON format.', WE_LS_SLUG);
 
-				} else {
-					$data[$key] = $row[$key];
-				}
-			}
-			$row = ws_ls_export_add_bmi($row);
+        } else {
 
-			$output['rows'][] = $data;
-		}
+            foreach ($rows as $row) {
+                foreach ($output['columns'] as $key => $value) {
+                    if(in_array($key, $measurement_keys)) {
+
+                        // Do we need to convert the measurement to inches?
+                        $data[$key] = ( 'inches' === WE_LS_MEASUREMENTS_UNIT ) ?
+                            ws_ls_convert_to_inches( $row['measurements'][$key] ) :
+                            $row['measurements'][$key];
+
+                    } else {
+                        $data[$key] = $row[$key];
+                    }
+                }
+                $row = ws_ls_export_add_bmi($row);
+
+                $output['rows'][] = $data;
+            }
+
+        }
 
 		return json_encode($output);
 	}
@@ -107,16 +116,25 @@ function ws_ls_csv_from_array($data, $show_column_headers = true, $delimiter = '
 
 		$columns = ws_ls_column_names();
 
-		// Include header row with column names?
-		if($show_column_headers) {
-			$csv_output .= ws_ls_csv_row_header($columns);
-		}
+        // Include header row with column names?
+        if($show_column_headers) {
+            $csv_output .= ws_ls_csv_row_header($columns);
+        }
 
-		// Build body of CSV
-		foreach ($data as $row) {
-			$row = ws_ls_export_add_bmi($row);
-			$csv_output .= ws_ls_csv_row_write($columns, $row, $delimiter, $end_of_line_char);
-		}
+        // Only render body of report if Pro!
+        if ( true !== WS_LS_IS_PRO ) {
+
+            $csv_output .=  __('You must have a Pro License to export user data into CSV format.', WE_LS_SLUG);
+
+        } else {
+
+           // Build body of CSV
+            foreach ($data as $row) {
+                $row = ws_ls_export_add_bmi($row);
+                $csv_output .= ws_ls_csv_row_write($columns, $row, $delimiter, $end_of_line_char);
+            }
+
+        }
 
 		return $csv_output;
 	}
@@ -177,8 +195,8 @@ function ws_ls_csv_row_write($columns, $row, $delimiter = ',', $end_of_line_char
 			} else {
 			    // If the column is not found, blank it so CSV ok.
                 $data[$key] = '';
-            }
-		}
+           }
+        }
 
 		// Escape cell contents and encapsulate in double quotes
 		$data = array_map('ws_ls_csv_cell_escape', $data);

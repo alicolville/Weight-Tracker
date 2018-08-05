@@ -139,6 +139,8 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 = 6.0 =
 
+//todo: check license prices
+//todo: add new logo
 //todo: update chart.js and footables.js
 //todo: minify data.footabe.js
 //todo: check all form post URLs now since page slugs changed... admin.php?page=

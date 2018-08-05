@@ -428,3 +428,4 @@
     foreach($globals as $key => $value) {
 		define($key, $value);
 	}
+

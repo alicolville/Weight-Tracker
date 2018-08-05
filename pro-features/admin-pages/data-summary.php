@@ -21,11 +21,16 @@ function ws_ls_admin_page_data_summary() {
 		<div id="post-body" class="metabox-holder columns-2">
 			<div id="post-body-content">
 				<div class="meta-box-sortables ui-sortable">
+                    <?php
+                        if ( true !== WS_LS_IS_PRO ) {
+                            ws_ls_display_pro_upgrade_notice_user_data();
+                        }
+                    ?>
 					<div class="postbox">
 						<?php
 
 							// If changing gain / loss set options
-							if(false === empty($_GET['show-gain'])) {
+							if( false === empty($_GET['show-gain'])) {
 
 								$value = ('y' === $_GET['show-gain']) ? true : false;
 								update_option('ws-ls-show-gains', $value);
@@ -40,7 +45,7 @@ function ws_ls_admin_page_data_summary() {
 								$ignore_cache = false;
 
                                 // Run stats if plugin version number has changed!
-                                if(update_option('ws-ls-version-number-stats', WE_LS_CURRENT_VERSION) || (false === empty($_GET['regenerate-stats']) && 'y' == $_GET['regenerate-stats'])) {
+                                if( true === WS_LS_IS_PRO && update_option('ws-ls-version-number-stats', WE_LS_CURRENT_VERSION) || (false === empty($_GET['regenerate-stats']) && 'y' == $_GET['regenerate-stats'])) {
                                     ws_ls_stats_clear_last_updated_date();
                                     ws_ls_stats_run_cron();
                                     ws_ls_tidy_cache_on_delete();
@@ -109,28 +114,29 @@ function ws_ls_admin_page_data_summary() {
 
 									echo sprintf('<table class="ws-ls-sidebar-stats">
                                                         <tr>
-                                                            <th>%s</th>
-                                                            <td>%s</td>
+                                                            <th>%1$s</th>
+                                                            <td>%2$s</td>
                                                         </tr>
                                                         <tr>
-                                                            <th>%s</th>
-                                                            <td>%s</td>
+                                                            <th>%3$s</th>
+                                                            <td class="%9$s">%4$s</td>
                                                         </tr>
                                                         <tr>
-                                                            <th>%s</th>
-                                                            <td>%s</td>
+                                                            <th>%5$s</th>
+                                                            <td class="%9$s">%6$s</td>
                                                         </tr>
                                                    </table>
 
-													<p><small>(* %s %s)</small></p>',
+													<p><small>(* %7$s %8$s)</small></p>',
 													__('No. of WordPress users', WE_LS_SLUG),
 													$entry_counts['number-of-users'],
 													__('No. of Weight Entries', WE_LS_SLUG),
-													$entry_counts['number-of-entries'],
+                                                    ws_ls_blur_text( $entry_counts['number-of-entries'] ),
 													__('No. of Target Entries', WE_LS_SLUG),
-													$entry_counts['number-of-targets'],
+                                                    ws_ls_blur_text( $entry_counts['number-of-targets'] ),
 													__('refreshed every 15 minutes', WE_LS_SLUG),
-                                                    '<a href="' . admin_url( 'admin.php?page=ws-ls-data-home&regenerate-stats=y' ) . '"><small>Regenerate these stats</small></a>'
+                                                    '<a href="' . admin_url( 'admin.php?page=ws-ls-data-home&regenerate-stats=y' ) . '"><small>Regenerate these stats</small></a>',
+                                                    ws_ls_blur( false, false )
 									);
 								}
 							?>
