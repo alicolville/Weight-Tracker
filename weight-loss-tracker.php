@@ -80,18 +80,16 @@ include WS_LS_ABSPATH . 'includes/ajax-handler.php';
 include WS_LS_ABSPATH . 'includes/shortcode-weight-loss-tracker.php';
 include WS_LS_ABSPATH . 'includes/shortcode-various.php';
 include WS_LS_ABSPATH . 'includes/save-data.php';
-include WS_LS_ABSPATH . 'pages/page.settings.php';
-include WS_LS_ABSPATH . 'pages/page.license.php';
-include WS_LS_ABSPATH . 'pages/page.help.php';
-include WS_LS_ABSPATH . 'pages/meta-fields/page-meta-fields.php';
-include WS_LS_ABSPATH . 'pages/meta-fields/page-meta-fields-add-update.php';
-include WS_LS_ABSPATH . 'pages/meta-fields/page-meta-fields-list.php';
-//TODO: Right place for this still;?
+include WS_LS_ABSPATH . 'includes/admin-pages/page.settings.php';
+include WS_LS_ABSPATH . 'includes/admin-pages/page.license.php';
+include WS_LS_ABSPATH . 'includes/admin-pages/page.help.php';
+include WS_LS_ABSPATH . 'includes/admin-pages/meta-fields/page-meta-fields.php';
+include WS_LS_ABSPATH . 'includes/admin-pages/meta-fields/page-meta-fields-add-update.php';
+include WS_LS_ABSPATH . 'includes/admin-pages/meta-fields/page-meta-fields-list.php';
 include WS_LS_ABSPATH . 'pro-features/plus/meta-fields/activate.php';
 include WS_LS_ABSPATH . 'pro-features/plus/meta-fields/db.php';
 include WS_LS_ABSPATH . 'pro-features/plus/meta-fields/hooks.php';
 include WS_LS_ABSPATH . 'pro-features/plus/meta-fields/functions.php';
-
 include WS_LS_ABSPATH . 'pro-features/feature-list.php';
 include WS_LS_ABSPATH . 'includes/comms-with-yeken.php';
 include WS_LS_ABSPATH . 'includes/admin-notifications.php';
@@ -109,6 +107,6 @@ if(WS_LS_IS_PRO){
 // -----------------------------------------------------------------------------------------
 
 function ws_ls_load_textdomain() {
-  load_plugin_textdomain( WE_LS_SLUG, false, dirname( plugin_basename( __FILE__ )  ) . '/languages/' );
+  load_plugin_textdomain( WE_LS_SLUG, false, dirname( plugin_basename( __FILE__ )  ) . '/includes/languages/' );
 }
 add_action('plugins_loaded', 'ws_ls_load_textdomain');

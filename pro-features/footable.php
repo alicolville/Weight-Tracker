@@ -281,10 +281,10 @@ function ws_ls_data_table_enqueue_scripts() {
 
 	$minified = ws_ls_use_minified();
 
-	wp_enqueue_style('ws-ls-footables', plugins_url( '/css/footable.standalone.min.css', dirname(__FILE__)  ), array(), WE_LS_CURRENT_VERSION);
-    wp_enqueue_style('ws-ls-footables-wlt', plugins_url( '/css/footable.css', dirname(__FILE__)  ), array('ws-ls-footables'), WE_LS_CURRENT_VERSION);
-    wp_enqueue_script('ws-ls-footables-js', plugins_url( '/js/footable.min.js', dirname(__FILE__) ), array('jquery'), WE_LS_CURRENT_VERSION, true);
-	wp_enqueue_script('ws-ls-footables-admin', plugins_url( '/js/data.footable' .     $minified . '.js', dirname(__FILE__) ), array('ws-ls-footables-js'), WE_LS_CURRENT_VERSION, true);
+	wp_enqueue_style('ws-ls-footables', plugins_url( '/assets/css/footable.standalone.min.css', dirname(__FILE__)  ), array(), WE_LS_CURRENT_VERSION);
+    wp_enqueue_style('ws-ls-footables-wlt', plugins_url( '/assets/css/footable.css', dirname(__FILE__)  ), array('ws-ls-footables'), WE_LS_CURRENT_VERSION);
+    wp_enqueue_script('ws-ls-footables-js', plugins_url( '/assets/js/footable.min.js', dirname(__FILE__) ), array('jquery'), WE_LS_CURRENT_VERSION, true);
+	wp_enqueue_script('ws-ls-footables-admin', plugins_url( '/assets/js/data.footable' .     $minified . '.js', dirname(__FILE__) ), array('ws-ls-footables-js'), WE_LS_CURRENT_VERSION, true);
 	wp_localize_script('ws-ls-footables-admin', 'ws_user_table_config', ws_ls_data_js_config());
     wp_enqueue_style('fontawesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', array(), WE_LS_CURRENT_VERSION);
 }

@@ -124,13 +124,7 @@ function ws_ls_register_pro_shortcodes(){
 }
 add_action( 'init', 'ws_ls_register_pro_shortcodes');
 
-function ws_ls_admin_enqueue_pro_scripts(){
-    wp_enqueue_style('ws-ls-admin-style', plugins_url( '/css/admin.css', dirname(__FILE__) ), array(), WE_LS_CURRENT_VERSION);
-}
-add_action( 'admin_enqueue_scripts', 'ws_ls_admin_enqueue_pro_scripts');
-
-function we_ls_register_widgets()
-{
+function we_ls_register_widgets() {
     register_widget( 'ws_ls_widget_chart' );
     register_widget( 'ws_ls_widget_form' );
     register_widget( 'ws_ls_widget_progress_bar' );

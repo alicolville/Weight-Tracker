@@ -13,8 +13,10 @@ function ws_ls_settings_page() {
 
   	$clear_cache = (isset($_GET['settings-updated']) && 'true' == $_GET['settings-updated']) ? true : false;
 
-	if (is_admin() && isset($_GET['recreatetables']) && 'y' == $_GET['recreatetables']) {
-		ws_ls_create_mysql_tables();
+	if ( true === is_admin() && false === empty( $_GET['recreatetables'] ) ) {
+
+		do_action('ws-ls-rebuild-database-tables');
+
 		$clear_cache = true;
 	}
 
@@ -33,7 +35,7 @@ function ws_ls_settings_page() {
 	if ($mysql_table_check != false): ?>
 		<div class="error">
 			<p><?php echo $mysql_table_check; ?></p>
- 			<p><a href="<?php echo get_permalink() . '?page=ws-ls-weight-loss-tracker-main-menu';  ?>&amp;recreatetables=y"><?php echo __('Rebuild them now', WE_LS_SLUG); ?></a></p>
+ 			<p><a href="<?php echo get_permalink() . '?page=ws-ls-settings';  ?>&amp;recreatetables=y"><?php echo __('Rebuild them now', WE_LS_SLUG); ?></a></p>
 		</div>
 	<?php
 	endif;

@@ -3,19 +3,12 @@
     defined('ABSPATH') or die("Jog on!");
 
     define( 'WE_LS_MYSQL_META_FIELDS', 'WS_LS_META_FIELDS' );
-    define( 'WE_LS_MYSQL_META_UNITS', 'WS_LS_META_UNITS' );
     define( 'WE_LS_MYSQL_META_ENTRY', 'WS_LS_META_ENTRY' );
-
 
     /**
      * Create the relevant database tables required to support meta fields
      */
-    function ws_ls_activate_meta_create_mysql_tables() {
-
-        // Only run this when the plugin version has changed
-        if( false === update_option('ws-ls-meta-version-number', WE_LS_DB_VERSION )) {
-           return;
-        }
+    function ws_ls_meta_fields_create_mysql_tables() {
 
         global $wpdb;
 
@@ -54,13 +47,29 @@
 
         dbDelta( $sql );
 
-		// If no meta fields exist, then add some examples
-		if ( true === empty( ws_ls_meta_fields( true, true ) ) ) {
-            ws_ls_meta_fields_load_examples();
-		}
+
 
     }
-    add_action( 'admin_init', 'ws_ls_activate_meta_create_mysql_tables' );
+    add_action('ws-ls-rebuild-database-tables', 'ws_ls_meta_fields_create_mysql_tables');
+
+    /**
+     *  Activate Meta Fields feature
+     */
+    function ws_ls_activate_meta_fields_activate() {
+
+        // Only run this when the plugin version has changed
+        if( false === update_option('ws-ls-meta-version-number', WE_LS_DB_VERSION )) {
+            return;
+        }
+
+        // If no meta fields exist, then add some examples
+        if ( true === empty( ws_ls_meta_fields( true, true ) ) ) {
+            ws_ls_meta_fields_load_examples();
+        }
+
+    }
+
+    add_action( 'admin_init', 'ws_ls_activate_meta_fields_activate' );
 
     /**
      * Simple function to load some example

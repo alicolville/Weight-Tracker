@@ -110,6 +110,7 @@
 	   dbDelta( $sql );
 
 	}
+    add_action('ws-ls-rebuild-database-tables', 'ws_ls_create_mysql_tables');
 
 	function ws_ls_upgrade() {
 

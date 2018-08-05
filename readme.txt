@@ -147,6 +147,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 //TODO: Open up User Data (maybe rename menu item) so non pro can view some bit of it.
 //todo: Regenerate language files
 * Improvement: Refactored Pro / Pro Plus features file include logic
+* Bug Fix: Fixed PHP errors causing the log entry "PHP Warning:  count(): Parameter must be an array or an object that implements Countable"
 
 = 5.4.5 =
 

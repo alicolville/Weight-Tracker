@@ -192,15 +192,18 @@ function ws_ls_admin_check_mysql_tables_exist()
     $tables_to_check = array(
                             $wpdb->prefix . WE_LS_TARGETS_TABLENAME,
                             $wpdb->prefix . WE_LS_TABLENAME,
-                            $wpdb->prefix . WE_LS_USER_PREFERENCES_TABLENAME
+                            $wpdb->prefix . WE_LS_USER_PREFERENCES_TABLENAME,
+                            $wpdb->prefix . WE_LS_MYSQL_META_FIELDS,
+                            $wpdb->prefix . WE_LS_MYSQL_META_ENTRY
                         );
 
     // Check each table exists!
     foreach($tables_to_check as $table_name) {
 
         $rows = $wpdb->get_row('Show columns in ' . $table_name);
-        if (0 == count($rows)) {
-            $error_text .= '<li>' . $table_name . '</li>';
+
+        if ( true === empty( $rows ) ) {
+            $error_text .= sprintf( '<li>%s</li>', $table_name );
         }
     }
 
@@ -348,7 +351,7 @@ function ws_ls_display_week_filters($week_ranges, $selected_week_number)
   $output = '';
 
   // If we have valid options for week dropdown, start building it
-  if ($week_ranges != false && count($week_ranges > 1))	{
+  if ( false === empty( $week_ranges ) && true === is_array( $week_ranges ) )	{
 
     $output .= '<form action="' .  get_permalink() . '#wlt-weight-history" method="post">
                   <input type="hidden" value="true" name="week_filter">
