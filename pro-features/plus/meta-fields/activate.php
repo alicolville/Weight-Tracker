@@ -14,7 +14,7 @@
 
         // Only run this when the plugin version has changed
         if( false === update_option('ws-ls-meta-version-number', WE_LS_DB_VERSION )) {
-      // todo  	return;
+           return;
         }
 
         global $wpdb;
@@ -54,14 +54,52 @@
 
         dbDelta( $sql );
 
-		// If no units exist (i.e. WE_LS_MYSQL_META_UNITS is empty) then add some defaults the once e.g. CM, inches, cups, feet, etc
-//		if ( true === empty( ws_ls_meta_units() ) ) {
-//			ws_ls_activate_meta_units_add_defaults();
-//		}
+		// If no meta fields exist, then add some examples
+		if ( true === empty( ws_ls_meta_fields( true, true ) ) ) {
+            ws_ls_meta_fields_load_examples();
+		}
 
     }
     add_action( 'admin_init', 'ws_ls_activate_meta_create_mysql_tables' );
 
+    /**
+     * Simple function to load some example
+     */
+    function ws_ls_meta_fields_load_examples() {
 
+        // Number
+        ws_ls_meta_fields_add([
+            'field_name' => __('Cups of water drunk today?', WE_LS_SLUG),
+            'abv' => __('Water', WE_LS_SLUG),
+            'field_type' => 0,
+            'suffix' => __('Cups', WE_LS_SLUG),
+            'mandatory' => 2,
+            'enabled' => 1,
+            'sort' => 100
+        ]);
 
-    //TODO: Add some example custom fields? Cups etc?
+        // Text
+        ws_ls_meta_fields_add([
+            'field_name' => __('How did you feel today?', WE_LS_SLUG),
+            'abv' => __('Feel', WE_LS_SLUG),
+            'field_type' => 1,
+            'suffix' => '',
+            'mandatory' => 2,
+            'enabled' => 1,
+            'sort' => 120
+        ]);
+
+        // Yes / No
+        ws_ls_meta_fields_add([
+            'field_name' => __('Did you stick to your diet?', WE_LS_SLUG),
+            'abv' => __('Diet', WE_LS_SLUG),
+            'field_type' => 2,
+            'suffix' => '',
+            'mandatory' => 1,
+            'enabled' => 1,
+            'sort' => 130
+        ]);
+
+        ws_ls_cache_user_delete( 'meta-fields' );
+
+    }

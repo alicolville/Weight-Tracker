@@ -35,7 +35,7 @@ function ws_ls_cache_user_get_all($user_id) {
 	return NULL;
 }
 
-function ws_ls_cache_user_set($user_id, $key, $value) {
+function ws_ls_cache_user_set($user_id, $key, $value, $time_to_expire = WE_LS_CACHE_TIME ) {
 
 	$user_cache = ws_ls_get_cache($user_id);
 
@@ -48,7 +48,7 @@ function ws_ls_cache_user_set($user_id, $key, $value) {
 
 		$user_cache[$key] = $value;
 
-		ws_ls_set_cache($user_id, $user_cache);
+		ws_ls_set_cache( $user_id, $user_cache, $time_to_expire );
 
 		return true;
 	}

@@ -8,7 +8,7 @@
         $validation_fail = false;
 
         // Data Posted? If so, replace the above from $_POST object
-        if ( false === empty( $_POST ) ) {
+        if ( false === empty( $_POST ) && true === ws_ls_meta_fields_is_enabled() ) {
 
             $meta_field = ws_ls_get_values_from_post( [ 'id', 'field_name', 'abv', 'field_type', 'suffix', 'mandatory', 'enabled', 'suffix', 'sort' ] );
 
@@ -37,8 +37,8 @@
             $id = $meta_field['id'];
         }
 
+        $id = intval( $id );
 
-            $id = intval( $id );
         ?>
         <div class="wrap">
             <div id="icon-options-general" class="icon32"></div>
@@ -123,7 +123,7 @@
                                                 <div class="ws-ls-cell ws-ls-label-col">
                                                     <label for="mandatory"><?php echo __('Mandatory', WE_LS_SLUG); ?></label>
                                                 </div>
-                                                <?php $checked = ( false === empty( $meta_field['mandatory'] ) && 1 === intval( $meta_field['mandatory'] ) ) ? 1 : 0; ?>
+                                                <?php $checked = ( false === empty( $meta_field['mandatory'] ) && 2 === intval( $meta_field['mandatory'] ) ) ? 2 : 0; ?>
                                                 <div class="ws-ls-cell">
                                                     <select name="mandatory" id="mandatory">
                                                         <option value="1" <?php selected( $checked, 1 ); ?>><?php echo __('No', WE_LS_SLUG); ?></option>
@@ -135,7 +135,7 @@
                                                 <div class="ws-ls-cell ws-ls-label-col">
                                                     <label for="enabled"><?php echo __('Enabled', WE_LS_SLUG); ?></label>
                                                 </div>
-                                                <?php $checked = ( false === empty( $meta_field['enabled'] ) && 1 === intval( $meta_field['enabled'] ) ) ? 1 : 0; ?>
+                                                <?php $checked = ( false === empty( $meta_field['enabled'] ) && 2 === intval( $meta_field['enabled'] ) ) ? 2 : 1; ?>
                                                 <div class="ws-ls-cell">
                                                     <select name="enabled" id="enabled">
                                                         <option value="1" <?php selected( $checked, 1 ); ?>><?php echo __('No', WE_LS_SLUG); ?></option>
@@ -146,8 +146,12 @@
                                             <div class="ws-ls-row">
                                                 <div class="ws-ls-cell">
                                                     <a class="comment-submit button" href="<?php echo ws_ls_meta_fields_base_url(); ?>"><?php echo __('Cancel', WE_LS_SLUG); ?></a>
-                                                    &nbsp;
-                                                    <input name="submit_button" type="submit" value="<?php echo __('Save', WE_LS_SLUG); ?>" class="comment-submit button button-primary">
+
+                                                    <?php if ( true === ws_ls_meta_fields_is_enabled() ): ?>
+                                                        <input name="submit_button" type="submit" value="<?php echo __('Save', WE_LS_SLUG); ?>" class="comment-submit button button-primary">
+                                                    <?php else: ?>
+                                                        <a class="comment-submit button button-primary"><?php echo __('Save (Pro Plus only)', WE_LS_SLUG); ?></a>
+                                                    <?php endif; ?>
                                                 </div>
                                             </div>
                                         </div>

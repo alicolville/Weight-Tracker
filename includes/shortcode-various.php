@@ -241,7 +241,7 @@ function ws_ls_get_weight_target($user_id, $unit = "target_weight_weight")
 	$sql =  $wpdb->prepare("SELECT " . $unit . " as weight_value FROM $table_name where weight_user_id = %d", $user_id);
 	$rows = $wpdb->get_row($sql);
 
-	if (count($rows) > 0) {
+	if ( false === empty( $rows ) && count( $rows ) > 0) {
 		ws_ls_set_cache($cache_key, $rows->weight_value);
 		return $rows->weight_value;
 	}

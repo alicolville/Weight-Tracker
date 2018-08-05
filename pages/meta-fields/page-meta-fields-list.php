@@ -18,8 +18,14 @@
                         <div class="postbox">
                             <h3 class="hndle"><span><?php echo __('Custom Fields', WE_LS_SLUG); ?> </span></h3>
                             <div style="padding: 0px 15px 0px 15px">
+                                <?php if ( false === ws_ls_meta_fields_is_enabled() ): ?>
+                                 <?php endif; ?>
 
-                                <p>TODO: ADD TEXT describing custom fields</p>
+                                <p><?php echo __('Custom Fields allows you to ask your user\'s additional questions when adding a weight entry. 
+                                                        For example, you may wish to ask them how many cups of water they drank today or perhaps how they are feeling. 
+                                                            You can use the following screen to add as many questions as you wish.', WE_LS_SLUG); ?></p>
+
+
                                 <table class="ws-ls-meta-fields-list-ajax table" id="meta-fields-list"
                                        data-paging="true"
                                        data-filtering="true"

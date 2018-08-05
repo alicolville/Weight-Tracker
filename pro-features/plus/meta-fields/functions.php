@@ -1,5 +1,6 @@
 <?php
 
+    defined('ABSPATH') or die('Jog on!');
 
     /**
      * Returns true if Meta Fields fully enabled (i.e. not trial mode)
@@ -7,7 +8,7 @@
      * @return bool
      */
     function ws_ls_meta_fields_is_enabled() {
-        return true; //TODO: This needs to be based upn pro license?
+        return true; //TODO: This needs to be based upn pro license? yeah, aim to be pro plus
     }
 
     /**

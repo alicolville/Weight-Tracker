@@ -2,9 +2,6 @@
 
 defined('ABSPATH') or die("Jog on!");
 
-// TODO: Add debug?
-
-
 /**
  *
  * Return all meta fields for weight entry
@@ -15,10 +12,18 @@ defined('ABSPATH') or die("Jog on!");
 function ws_ls_meta( $entry_id ) {
 
 	global $wpdb;
-//TODO: Cache for 10 seconds
+
+    $cache_key = 'entry-id-data-' . $entry_id;
+
+    if ( $cache = ws_ls_cache_user_get( 'meta-fields', $cache_key ) ) {
+        return $cache;
+    }
+
 	$sql = $wpdb->prepare( 'Select * from ' . $wpdb->prefix . WE_LS_MYSQL_META_ENTRY . ' where entry_id = %d', $entry_id );
 
 	$data = $wpdb->get_results( $sql, ARRAY_A );
+
+    ws_ls_cache_user_set( 'meta-fields', $cache_key , $data, 30 );
 
 	return $data;
 }
@@ -40,11 +45,6 @@ function ws_ls_meta_add_to_entry( $data ) {
 	if ( false === ws_ls_meta_check_fields( $data, [ 'entry_id', 'key', 'value' ] ) ) {
 		return false;
 	}
-
-	// todo Ensure the meta key exists!
-//	if ( false === ws_ls_meta_fields_key_exist( $data['key'] ) ) {
-//		return false;
-//	}
 
 	// Get Meta Field ID
     if ( true === is_numeric( $data['key'] ) ) {
@@ -153,13 +153,13 @@ function ws_ls_meta_fields_enabled() {
  *
  * @return array
  */
-function ws_ls_meta_fields( $exclude_system = true ) {
+function ws_ls_meta_fields( $exclude_system = true, $ignore_cache = false ) {
 
     global $wpdb;
 
     $cache_key = 'fields-' . $exclude_system;
 
-    if ( $cache = ws_ls_cache_user_get( 'meta-fields', $cache_key ) ) {
+    if ( false === $ignore_cache && $cache = ws_ls_cache_user_get( 'meta-fields', $cache_key ) ) {
     	return $cache;
 	}
 
