@@ -154,7 +154,9 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 //todo: check all form post URLs now since page slugs changed... admin.php?page=
 //todo: Regenerate language files
 
-* Improvement: Added Custom Fields. Allow admin specified questions to be asked on weight entry forms.
+* New Feature: Added Custom Fields. Allow admin specified questions to be asked on weight entry forms.
+* New Feature: Added Russian translations.
+* Improvement: Updated Finnish translations.
 * Improvement: Refactored Pro / Pro Plus features file include logic.
 * Improvement: Upgraded Chart.js to 2.7.2
 * Bug Fix: Fixed PHP errors causing the log entry "PHP Warning:  count(): Parameter must be an array or an object that implements Countable"

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2018-05-17 22:16+0100\n"
-"PO-Revision-Date: 2018-05-17 22:16+0100\n"
+"POT-Creation-Date: 2018-08-07 23:28+0100\n"
+"PO-Revision-Date: 2018-08-07 23:28+0100\n"
 "Last-Translator: Yvon <yvon@yvonkruger.nl>\n"
 "Language-Team: \n"
 "Language: nl_NL\n"
@@ -17,649 +17,201 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: js\n"
 "X-Poedit-SearchPathExcluded-1: development\n"
 
-#: includes/admin-notifications.php:30 pro-features/widget-chart.php:17
+#: admin-notifications.php:30
 msgid "Weight Loss Tracker"
 msgstr "Weight Loss Tracker"
 
-#: includes/converters.php:53 includes/converters.php:71 includes/core.php:75
-#: includes/functions.php:68 includes/functions.php:83
-#: includes/functions.php:92 includes/functions.php:98
-#: includes/functions.php:291 includes/functions.php:297
-#: includes/functions.php:554 includes/shortcode-various.php:261
-#: includes/shortcode-various.php:280 pro-features/export.php:197
-#: pro-features/shortcode-stats.php:162
-msgid "lbs"
-msgstr "lbs"
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:56
+#, fuzzy
+#| msgid "Add / Edit an entry"
+msgid "Add / Edit a Custom Field"
+msgstr "Toevoegen / aanpassen van invoer"
 
-#: includes/converters.php:56 includes/core.php:75 includes/core.php:385
-#: includes/functions.php:72 includes/functions.php:95
-#: pages/page.settings.php:87 pro-features/export.php:194
-#: pro-features/shortcode-stats.php:169
-msgid "kg"
-msgstr "kg"
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:60
+#, fuzzy
+#| msgid "Please enter a valid date."
+msgid "Please complete all mandatory fields."
+msgstr "Voer alstublieft een geldige datum in"
 
-#: includes/converters.php:71 includes/functions.php:297
-msgid "St"
-msgstr "St"
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:68
+msgid "Field Type"
+msgstr ""
 
-#: includes/core.php:13 pro-features/footable.php:201
-msgid "Date"
-msgstr "Datum"
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:75
+msgid "Number"
+msgstr ""
 
-#: includes/core.php:14 includes/core.php:83 includes/core.php:212
-#: includes/core.php:385 pro-features/footable.php:202
-msgid "Weight"
-msgstr "Gewicht"
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:76
+msgid "Text"
+msgstr ""
 
-#: includes/core.php:15 includes/core.php:394 pro-features/emails.php:47
-#: pro-features/export.php:201 pro-features/footable.php:246
-msgid "Notes"
-msgstr "Notities"
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:77
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:134
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:146
+#: admin-pages/page.settings.php:118 admin-pages/page.settings.php:128
+#: admin-pages/page.settings.php:139 admin-pages/page.settings.php:150
+#: admin-pages/page.settings.php:177 admin-pages/page.settings.php:187
+#: admin-pages/page.settings.php:197 admin-pages/page.settings.php:218
+#: admin-pages/page.settings.php:325 admin-pages/page.settings.php:357
+#: admin-pages/page.settings.php:386 admin-pages/page.settings.php:404
+#: admin-pages/page.settings.php:429 admin-pages/page.settings.php:480
+#: admin-pages/page.settings.php:495 admin-pages/page.settings.php:505
+#: admin-pages/page.settings.php:515 admin-pages/page.settings.php:535
+#: admin-pages/page.settings.php:555 admin-pages/page.settings.php:616
+msgid "Yes"
+msgstr "Ja"
 
-#: includes/core.php:62 includes/core.php:263
-#: includes/shortcode-weight-loss-tracker.php:50
-msgid "You need to be logged in to record your weight."
-msgstr "Je moet ingelogd zijn om je gewicht op te slaan."
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:77
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:133
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:145
+#: admin-pages/page.settings.php:119 admin-pages/page.settings.php:129
+#: admin-pages/page.settings.php:140 admin-pages/page.settings.php:149
+#: admin-pages/page.settings.php:176 admin-pages/page.settings.php:186
+#: admin-pages/page.settings.php:196 admin-pages/page.settings.php:219
+#: admin-pages/page.settings.php:326 admin-pages/page.settings.php:356
+#: admin-pages/page.settings.php:387 admin-pages/page.settings.php:405
+#: admin-pages/page.settings.php:428 admin-pages/page.settings.php:479
+#: admin-pages/page.settings.php:496 admin-pages/page.settings.php:506
+#: admin-pages/page.settings.php:516 admin-pages/page.settings.php:534
+#: admin-pages/page.settings.php:554 admin-pages/page.settings.php:615
+msgid "No"
+msgstr "Nee"
 
-#: includes/core.php:76 pages/page.settings.php:521
-#: pro-features/footable.php:56 pro-features/functions.php:6
-#: pro-features/user-preferences.php:180
-msgid "Inches"
-msgstr "Inches"
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:80
+msgid "Note: Changing the field type will cause existing user data to be lost."
+msgstr ""
 
-#: includes/core.php:76
-msgid "CM"
-msgstr "Centimeters"
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:86
+msgid "Name"
+msgstr "Naam"
 
-#: includes/core.php:121
-msgid "Target"
-msgstr "Streefgewicht"
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:94
+msgid "Abbreviation"
+msgstr ""
 
-#: includes/core.php:219
-msgid "Measurement"
-msgstr "Meting"
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:98
+msgid ""
+"Used when displaying the field data in smaller spaces e.g. table headers, "
+"charts, etc"
+msgstr ""
 
-#: includes/core.php:241
-msgid "You have modified data. Please refresh page."
-msgstr "Je hebt je data veranderd, klik hier om de pagina te verversen. "
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:103
+msgid "Suffix"
+msgstr ""
 
-#: includes/core.php:263
-msgid "You need to be logged in to set your target."
-msgstr "Je moet ingelogd zijn om je doel op te kunnen slaan."
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:107
+msgid ""
+"Text display at to end of the entered value when displaying it to the user. "
+"e.g. CM would display in the following manner: 120 CM"
+msgstr ""
 
-#: includes/core.php:280
-msgid "Add a new weight"
-msgstr "Voeg een nieuw gewicht toe"
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:112
+#, fuzzy
+#| msgid "Display gridlines?"
+msgid "Display Order"
+msgstr "weergave rasterlijnen?"
 
-#: includes/core.php:283 pro-features/admin-pages/data-search-results.php:45
-#: pro-features/functions.pages.php:102
-msgid "Target Weight"
-msgstr "Streefgewicht"
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:123
+msgid ""
+"Used to specify the order of custom fields. Lower numbers are displayed "
+"higher up the form."
+msgstr ""
 
-#: includes/core.php:285
-msgid "Edit weight"
-msgstr "Aanpassen gewicht"
-
-#: includes/core.php:367
-msgid "Your target weight is"
-msgstr "Je streefgewicht is"
-
-#: includes/core.php:367
-msgid "The user's target weight is currently"
-msgstr "De cliënt zijn huidige streefgewicht is"
-
-#: includes/core.php:377
-msgid "Stones"
-msgstr "Stenen"
-
-#: includes/core.php:378 includes/core.php:381 pages/page.settings.php:89
-#: pro-features/user-preferences.php:172
-msgid "Pounds"
-msgstr "Ponden"
-
-#: includes/core.php:400 includes/shortcode-weight-loss-tracker.php:98
-#: pages/page.settings.php:203 pro-features/admin-pages/data-user.php:57
-#: pro-features/plus/shortcode.wlt.php:23
-msgid "Photos"
-msgstr "Foto's"
-
-#: includes/core.php:422
-msgid "Existing photo for this date"
-msgstr "Bestaande foto voor deze datum"
-
-#: includes/core.php:426
-msgid "Delete existing photo"
-msgstr "Verwijder bestaande data"
-
-#: includes/core.php:427
-msgid "Existing photo"
-msgstr "Bestaande foto"
-
-#: includes/core.php:443
-msgid "Replace photo"
-msgstr "Vervang foto"
-
-#: includes/core.php:443
-msgid "Add a photo"
-msgstr "Voeg een foto toe"
-
-#: includes/core.php:445
-msgid "Select a photo"
-msgstr "Selecteer een foto"
-
-#: includes/core.php:446
-msgid "Photos must be under"
-msgstr "Foto's moeten minder zijn dan"
-
-#: includes/core.php:446
-msgid "or they will silently fail to upload."
-msgstr "anders zullen ze niet worden geüpload,"
-
-#: includes/core.php:447
-msgid "Photos are only visible to you and administrators. "
-msgstr "Foto's zijn alleen zichtbaar voor jou en de admin."
-
-#: includes/core.php:455
-msgid "Edit measurements"
-msgstr "Aanpassen van metingen"
-
-#: includes/core.php:455
-msgid "Add measurements"
-msgstr "Voeg metingen toe"
-
-#: includes/core.php:456
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:128 core.php:459
 msgid "Mandatory"
 msgstr "Verplicht"
 
-#: includes/core.php:456
-msgid "Optional"
-msgstr "Optioneel"
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:140
+#, fuzzy
+#| msgid "Enable"
+msgid "Enabled"
+msgstr "Inschakelen"
 
-#: includes/core.php:460
-msgid "Set Target"
-msgstr "Streefgewicht opslaan"
-
-#: includes/core.php:460
-msgid "Save Entry"
-msgstr "Invoer opslaan"
-
-#: includes/core.php:468
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:152 core.php:480
 msgid "Cancel"
 msgstr "Annuleren"
 
-#: includes/core.php:473
-msgid "Clear Target"
-msgstr "Wis je streefgewicht"
-
-#: includes/core.php:632
-msgid "The user "
-msgstr "De gebruiker"
-
-#: includes/core.php:632
-msgid "uploaded this photo of them for their entry on the"
-msgstr "heeft deze foto geüpload voor hem voor de meting op de "
-
-#: includes/core.php:694
-msgid "Please enter a value between 0-13 for pounds"
-msgstr "Voer een getal in tussen de 1-13 pond."
-
-#: includes/core.php:694
-msgid "Please enter a valid figure for pounds"
-msgstr "Voer een geldig getal voor ponden in"
-
-#: includes/core.php:701
-msgid "Are you sure you wish to clear your target weight?"
-msgstr "Weet je zeker dat je je streefgewicht wilt wissen?"
-
-#: includes/core.php:704
-msgid "Please enter a valid figure for Kg"
-msgstr ""
-"Voer een geldig getal voor Kg in (gebruik alleen cijfers en eventueel een "
-"komma)"
-
-#: includes/core.php:705
-msgid "Please enter a valid figure for Stones"
-msgstr "Voer een geldig getal voor Stones in"
-
-#: includes/core.php:706
-msgid "Please enter a valid date"
-msgstr "Voer een geldige datum in"
-
-#: includes/core.php:707
-msgid "Please confirm you wish to delete ALL your weight history"
-msgstr "Weet je het zeker dat je AL je gewicht gegevens wilt wissen"
-
-#: includes/core.php:708
-msgid "Your photo must be less than "
-msgstr "Je foto moet kleiner zijn dan"
-
-#: includes/core.php:709
-msgid "Are you sure you wish to delete this entry? If so, press OK."
-msgstr ""
-"Weet je zeker dat je deze gegevens wilt verwijderen? Zo ja, klik op OK."
-
-#: includes/core.php:718
-msgid "Please enter a valid measurement ("
-msgstr ""
-"Voer een geldige meting in, gebruik alleen cijfers en eventueel een komma ("
-
-#: includes/core.php:728
-msgid "Please select or enter a value for height."
-msgstr "Voer een geldig getal in voor lengte."
-
-#: includes/core.php:729
-msgid "Please select or enter a value for activity level."
-msgstr "Voer een geldige waarde in voor activiteiten niveau"
-
-#: includes/core.php:730
-msgid "Please select or enter a value for gender."
-msgstr "Voer een geldige invoer voor geslacht in."
-
-#: includes/core.php:731
-msgid "Please enter a valid date."
-msgstr "Voer alstublieft een geldige datum in"
-
-#: includes/core.php:732
-msgid "Please select your aim."
-msgstr "Selecteer alstublieft uw doel."
-
-#: includes/core.php:742
-msgid "This field is required."
-msgstr "Dit veld is verplicht"
-
-#: includes/core.php:760
-msgid "Done"
-msgstr "Klaar"
-
-#: includes/core.php:761
-msgid "Today"
-msgstr "Vandaag"
-
-#: includes/functions.php:83 includes/functions.php:98
-#: includes/functions.php:542 includes/shortcode-various.php:280
-#: pro-features/export.php:196
-msgid "st"
-msgstr "st"
-
-#: includes/functions.php:208
-msgid "The following MySQL tables are missing for this plugin"
-msgstr "De volgende MySql tabellen ontbreken voor deze plugin"
-
-#: includes/functions.php:294 includes/shortcode-various.php:285
-#: pro-features/user-preferences.php:170
-msgid "Kg"
-msgstr "Kg"
-
-#: includes/functions.php:356
-msgid "View all weeks"
-msgstr "Bekijk alle weken"
-
-#: includes/functions.php:370
-msgid "View Week"
-msgstr "Bekijk week"
-
-#: includes/functions.php:370
-msgid "to"
-msgstr "naar"
-
-#: includes/functions.php:509
-msgid "The plugin supports the following measurements"
-msgstr "Deze plugin ondersteunt de volgende metingen"
-
-#: includes/functions.php:647
-msgid "Read more about calculations"
-msgstr "Lees hier meer over de berekeningen"
-
-#: includes/functions.php:682
-msgid "Your modifications have been saved"
-msgstr "Je aanpassing is opgeslagen"
-
-#: includes/functions.php:700
-msgid "Login now"
-msgstr "Nu inloggen"
-
-#: includes/functions.php:774
-msgid "Server Default"
-msgstr "Standaard server instelling"
-
-#: includes/globals.php:157 pro-features/footable.php:222
-msgid "Forearm - Left"
-msgstr "Onderarm - Links"
-
-#: includes/globals.php:157 pro-features/footable.php:222
-msgid "FL"
-msgstr "O-L"
-
-#: includes/globals.php:158 pro-features/footable.php:223
-msgid "Forearm - Right"
-msgstr "Onderarm - Rechts"
-
-#: includes/globals.php:158 pro-features/footable.php:223
-msgid "FR"
-msgstr "O-R"
-
-#: includes/globals.php:159 pro-features/footable.php:224
-msgid "Biceps - Left"
-msgstr "Biceps - Links"
-
-#: includes/globals.php:159 pro-features/footable.php:224
-msgid "BL"
-msgstr "B-L"
-
-#: includes/globals.php:160 pro-features/footable.php:225
-msgid "Biceps - Right"
-msgstr "Biceps - Rechts"
-
-#: includes/globals.php:160 pro-features/footable.php:225
-msgid "BR"
-msgstr "B-R"
-
-#: includes/globals.php:161 pro-features/footable.php:226
-msgid "Calf - Left"
-msgstr "Kuit - Links"
-
-#: includes/globals.php:161 pro-features/footable.php:226
-msgid "CL"
-msgstr "K-L"
-
-#: includes/globals.php:162 pro-features/footable.php:227
-msgid "Calf - Right"
-msgstr "Kuit - Rechts"
-
-#: includes/globals.php:162 pro-features/footable.php:227
-msgid "CR"
-msgstr "K-R"
-
-#: includes/globals.php:163 pro-features/footable.php:228
-msgid "Thigh - Left"
-msgstr "Dijbeen - Links"
-
-#: includes/globals.php:163 pro-features/footable.php:228
-msgid "TL"
-msgstr "D-L"
-
-#: includes/globals.php:164 pro-features/footable.php:229
-msgid "Thigh - Right"
-msgstr "Dijbeen - Rechts"
-
-#: includes/globals.php:164 pro-features/footable.php:229
-msgid "TR"
-msgstr "D-R"
-
-#: includes/globals.php:165 pro-features/footable.php:230
-msgid "Waist"
-msgstr "Taille"
-
-#: includes/globals.php:165 pro-features/footable.php:230
-msgid "W"
-msgstr "T"
-
-#: includes/globals.php:166 pro-features/footable.php:231
-msgid "Bust / Chest"
-msgstr "Borst"
-
-#: includes/globals.php:166 pro-features/footable.php:231
-msgid "BC"
-msgstr "B"
-
-#: includes/globals.php:167 pro-features/footable.php:232
-msgid "Shoulders"
-msgstr "Schouders"
-
-#: includes/globals.php:167 pro-features/footable.php:232
-msgid "S"
-msgstr "SC"
-
-#: includes/globals.php:168 pro-features/footable.php:233
-#: pro-features/functions.pages.php:129
-msgid "Height"
-msgstr "Lengte"
-
-#: includes/globals.php:168 pro-features/footable.php:233
-msgid "H"
-msgstr "LE"
-
-#: includes/globals.php:169 pro-features/footable.php:234
-msgid "Buttocks"
-msgstr "Billen"
-
-#: includes/globals.php:169 pro-features/footable.php:234
-msgid "B"
-msgstr "BIL"
-
-#: includes/globals.php:170 pro-features/footable.php:235
-msgid "Hips"
-msgstr "Heupen"
-
-#: includes/globals.php:170 pro-features/footable.php:235
-msgid "HI"
-msgstr "HEU"
-
-#: includes/globals.php:171 pro-features/footable.php:236
-msgid "Navel"
-msgstr "Navel"
-
-#: includes/globals.php:171 pro-features/footable.php:236
-msgid "NA"
-msgstr "NAV"
-
-#: includes/globals.php:172 pro-features/footable.php:237
-msgid "Neck"
-msgstr "Nek"
-
-#: includes/globals.php:172 pro-features/footable.php:237
-msgid "NE"
-msgstr "NEK"
-
-#: includes/hooks.php:8 pro-features/functions.pages.php:190
-msgid "Settings"
-msgstr "Intstellingen"
-
-#: includes/hooks.php:11
-msgid "Manage User Data"
-msgstr "Beheer gebruikers data"
-
-#: includes/hooks.php:13 pages/page.license.php:73
-msgid "Upgrade"
-msgstr "Upgrade"
-
-#: includes/hooks.php:13
-msgid "Your License"
-msgstr "Jouw licentie"
-
-#: includes/hooks.php:17 pages/page.help.php:21
-msgid "Help"
-msgstr "Help"
-
-#: includes/hooks.php:172 pro-features/admin-pages/data-user.php:22
-msgid "The preferences for this user have been saved."
-msgstr "De voorkeuren voor deze gebruiker zijn opgeslagen"
-
-#: includes/hooks.php:173
-msgid "An error occurred while trying to save the user's preferences."
-msgstr ""
-"Er is een fout opgetreden tijdens het opslaan van de voorkeuren van de "
-"gebruiker."
-
-#: includes/license.php:150
-msgid "License missing"
-msgstr "Licentie ontbreekt"
-
-#: includes/license.php:157
-msgid "Could not decode / verify license"
-msgstr "Kan de licentie niet decoderen / verifiëren"
-
-#: includes/license.php:162
-msgid "Invalid license hash"
-msgstr "Ongeldige licentie hash"
-
-#: includes/license.php:167
-msgid ""
-"This license doesn't appear to be for this site (no match on site hash)."
-msgstr ""
-"Deze licentie lijkt niet te zijn voor deze site (geen match op site hash)."
-
-#: includes/license.php:175
-msgid "This license has expired."
-msgstr "Deze licentie is verlopen."
-
-#: includes/license.php:232
-msgid "None"
-msgstr "Geen"
-
-#: includes/license.php:242
-msgid "Yearly Pro"
-msgstr "Jaarlijks Pro"
-
-#: includes/license.php:245
-msgid "Legacy Pro"
-msgstr "Legacy Pro"
-
-#: includes/license.php:248 pages/page.settings.php:73
-msgid "Pro Plus"
-msgstr "Pro Plus"
-
-#: includes/save-data.php:42
-msgid "Saved!"
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:155
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:157
+#, fuzzy
+#| msgid "Saved!"
+msgid "Save"
 msgstr "Opgeslagen!"
 
-#: includes/save-data.php:46
-msgid "An error occurred while saving your data!"
+#: admin-pages/meta-fields/page-meta-fields-list.php:23 hooks.php:10
+msgid "Custom Fields"
 msgstr ""
-"Er is iets fout gegaan bij het opslaan van je gegevens. Probeer het nogmaals."
 
-#: includes/save-data.php:49
-msgid "No user specified (hash)"
-msgstr "Geen gebruiker opgegeven (hash)"
+#: admin-pages/meta-fields/page-meta-fields-list.php:26
+msgid ""
+"Custom Fields allows you to ask your user's additional questions when adding "
+"a weight entry. \n"
+"                                                        For example, you may "
+"wish to ask them how many cups of water they drank today or perhaps how they "
+"are feeling. \n"
+"                                                            You can use the "
+"following screen to add as many questions as you wish."
+msgstr ""
 
-#: includes/save-data.php:52
-msgid "No user specified"
-msgstr "Geen gebruiker opgegeven"
+#: admin-pages/page.help.php:21
+msgid "Custom modifications / web development"
+msgstr ""
 
-#: includes/shortcode-various.php:106 pro-features/functions.pages.php:108
-msgid "No target set"
-msgstr "Er is geen streefgewicht ingesteld"
+#: admin-pages/page.help.php:23
+msgid ""
+"If require plugin modifications to Weight Tracker, or need a new plugin "
+"built, or perhaps you need a developer to help you with your website then "
+"please don't hesitiate get in touch!"
+msgstr ""
 
-#: includes/shortcode-weight-loss-tracker.php:43
-msgid "This shortcode can only be placed once on a page / post."
-msgstr "Deze kan maar eenmalig worden geplaats op een pagina of in een bericht"
+#: admin-pages/page.help.php:24
+msgid "We provide fix priced quotes."
+msgstr ""
 
-#: includes/shortcode-weight-loss-tracker.php:68
-msgid "Your settings have been saved!"
-msgstr "Je gewicht is opgeslagen!"
+#: admin-pages/page.help.php:33 admin-pages/page.license.php:235
+msgid "Documentation"
+msgstr "Documentatie"
 
-#: includes/shortcode-weight-loss-tracker.php:70
-msgid "Your weight history has been deleted!"
-msgstr "Je gewicht-geschiedenis is verwijderd!"
-
-#: includes/shortcode-weight-loss-tracker.php:93
-msgid "Overview"
-msgstr "Overzicht"
-
-#: includes/shortcode-weight-loss-tracker.php:93
-msgid "Chart and add a new entry"
-msgstr "Grafiek en voeg een nieuwe vermelding toe"
-
-#: includes/shortcode-weight-loss-tracker.php:94
-msgid "All Entries"
-msgstr "Alle invoer"
-
-#: includes/shortcode-weight-loss-tracker.php:94
-msgid "View all of your entries"
-msgstr "Bekijk alle invoer"
-
-#: includes/shortcode-weight-loss-tracker.php:98
-msgid "View a gallery of your photos"
-msgstr "Bekijk een galerij van al jouw foto's"
-
-#: includes/shortcode-weight-loss-tracker.php:103 pages/page.settings.php:163
-msgid "Advanced"
-msgstr "Geavanceerd"
-
-#: includes/shortcode-weight-loss-tracker.php:103
-msgid "View BMI, BMR and suggested Calorie and Macronutrient intake"
-msgstr "Bekijk BMI, BMR en voorgesteld Calorie en Macronutriënten inname"
-
-#: includes/shortcode-weight-loss-tracker.php:108
-#: pro-features/functions.pages.php:194 pro-features/user-preferences.php:165
-msgid "Preferences"
-msgstr "Voorkeuren"
-
-#: includes/shortcode-weight-loss-tracker.php:108
-msgid "Customise this tool and tell us a little more about you"
-msgstr "Pas deze plugin aan en vertel ons wat meer over uzelf"
-
-#: includes/shortcode-weight-loss-tracker.php:124
-msgid "Add a weight entry"
-msgstr "Voeg invoer voor een gewicht toe"
-
-#: includes/shortcode-weight-loss-tracker.php:129
-msgid "In a chart"
-msgstr "In een grafiek"
-
-#: includes/shortcode-weight-loss-tracker.php:137
-msgid "A graph will appear once several weights have been entered."
-msgstr "De grafiek verschijnt zodra er meerdere metingen zijn ingevuld."
-
-#: includes/shortcode-weight-loss-tracker.php:190
-msgid "Weight History"
-msgstr "Gewicht geschiedenis"
-
-#: includes/shortcode-weight-loss-tracker.php:202
-msgid "There is no data for this week, please try selecting another:"
-msgstr " Er is voor deze week geen data, probeer een andere week"
-
-#: includes/shortcode-weight-loss-tracker.php:208
-msgid "You haven't entered any weight data yet."
-msgstr "Je heb nog geen gewicht ingevuld"
-
-#: pages/page.help.php:23
-msgid "You can find detailed help with this plugin at our site:"
+#: admin-pages/page.help.php:35
+#, fuzzy
+#| msgid "You can find detailed help with this plugin at our site:"
+msgid "You can find detailed documentation for this plugin at our site:"
 msgstr ""
 "Je kunt gedetailleerde ondersteuning van deze plugin vinden van onze site:"
 
-#: pages/page.help.php:29
-msgid "Our road map"
-msgstr "Onze roadmap"
-
-#: pages/page.help.php:31
-msgid ""
-"Interested in the future development of this plugin? Then have a peek at our "
-"road map:"
-msgstr ""
-"Geïnteresseerd in het verder ontwikkelen van deze plugin? Neem dan een "
-"kijkje op onze road map:"
-
-#: pages/page.help.php:39
+#: admin-pages/page.help.php:43
 msgid "Tools"
 msgstr ""
 
-#: pages/page.help.php:41
+#: admin-pages/page.help.php:45
 msgid ""
 "Correct accuracy for measurements entered in Stones and Pounds (only run "
 "with the advice of YeKen)"
 msgstr ""
 
-#: pages/page.license.php:11 pages/page.settings.php:8
-#: pro-features/export.php:271 pro-features/functions.php:427
+#: admin-pages/page.license.php:11 admin-pages/page.settings.php:8
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Je hebt geen toestemming voor deze pagina"
 
-#: pages/page.license.php:39
+#: admin-pages/page.license.php:39
 msgid "Your license has been applied!"
 msgstr "Uw licentie is toegepast!"
 
-#: pages/page.license.php:42
+#: admin-pages/page.license.php:42
 msgid "An error occurred applying your license: "
 msgstr "Er is een fout opgetreden bij het toepassen van uw licentie:"
 
-#: pages/page.license.php:78
+#: admin-pages/page.license.php:73 hooks.php:12
+msgid "Upgrade"
+msgstr "Upgrade"
+
+#: admin-pages/page.license.php:78
 msgid "As you can see from the features listed below, the"
 msgstr ""
 "Zoals je kunt zien krijg je de volgende functies zoals in de lijst hieronder "
 "staat beschreven."
 
-#: pages/page.license.php:80
+#: admin-pages/page.license.php:80
 msgid ""
 "can offer you and your members a lot more features to help you and them "
 "manage their weight. There are two types of License that you can purchase, "
@@ -673,7 +225,7 @@ msgstr ""
 "een must! Pro Plus breidt Pro uit met functies zoals BMR, Calorie-inname, "
 "Macronutrient Calculator, en foto's toevoegen enz."
 
-#: pages/page.license.php:81
+#: admin-pages/page.license.php:81
 msgid ""
 "Of course, by purchasing a license, you are supporting the future of this "
 "plugin and it is gratefully appreciated."
@@ -681,11 +233,11 @@ msgstr ""
 "Natuurlijk, door het kopen van een licentie ondersteunt u de toekomst van "
 "deze plugin en wordt het uitermate gewaardeerd."
 
-#: pages/page.license.php:86
+#: admin-pages/page.license.php:86
 msgid "Legacy Pro License"
 msgstr "Legacy Pro licentie"
 
-#: pages/page.license.php:87
+#: admin-pages/page.license.php:87
 msgid ""
 "Our licensing has model has changed, Prior to September 2017 it used to be a "
 "one off payment that enabled the Pro features of the plugin. This is still "
@@ -695,11 +247,11 @@ msgstr ""
 "betaling die de Pro-eigenschappen van de plugin inschakelde. Dit is nog "
 "steeds het geval en er zullen nog oude licenties worden gehonoreerd."
 
-#: pages/page.license.php:88
+#: admin-pages/page.license.php:88
 msgid "Moving to a yearly license"
 msgstr "Verhuizen naar een jaarlijkse licentie"
 
-#: pages/page.license.php:89
+#: admin-pages/page.license.php:89
 msgid ""
 "There is no reason to move to a yearly license - Pro features will remain "
 "the same for legacy and new Pro subscriptions. However, if you were to move "
@@ -711,11 +263,11 @@ msgstr ""
 "naar een jaarlijks abonnement zou gaan, zou je de ontwikkeling van de plugin "
 "ondersteunen (en ik geef je een grote knuffel)."
 
-#: pages/page.license.php:93
+#: admin-pages/page.license.php:93
 msgid "Pro Plus License"
 msgstr "Pro Plus licentie"
 
-#: pages/page.license.php:94
+#: admin-pages/page.license.php:94
 msgid ""
 "Of course, thank you for purchasing a Pro license - it is much appreciated. "
 "As you can see below, you can further expand the features of"
@@ -724,7 +276,7 @@ msgstr ""
 "zeer gewaardeerd. Zoals u hieronder kunt zien, kunt u de kenmerken van "
 "verder uitbreiden van"
 
-#: pages/page.license.php:96 pages/page.license.php:106
+#: admin-pages/page.license.php:96 admin-pages/page.license.php:106
 msgid ""
 "by extending your license to Pro Plus. Pro Plus extends Pro with features "
 "such as BMR, Calorie intake, Macronutrient Calculator, etc. You can view the "
@@ -734,7 +286,7 @@ msgstr ""
 "functies zoals BMR, Calorie-inname, Macronutrienten Calculator, enz. U kunt "
 "de extra functies die Pro Plus hieronder biedt, bekijken."
 
-#: pages/page.license.php:104
+#: admin-pages/page.license.php:104
 msgid ""
 "Of course, a big thank you purchasing a Pro license at some point - it is "
 "much appreciated. As you can see below, you can further expand the features "
@@ -744,7 +296,7 @@ msgstr ""
 "koopt - het wordt zeer gewaardeerd. Zoals u hieronder kunt zien, kunt u de "
 "kenmerken van uitbreiden van"
 
-#: pages/page.license.php:112
+#: admin-pages/page.license.php:112
 msgid ""
 "Thank you kind soul, you have purchased a Pro Plus license. A huge thank you "
 "for supporting me and this plugin!"
@@ -752,46 +304,46 @@ msgstr ""
 "Bedankt vriendelijke ziel, u hebt een Pro Plus licentie gekocht. Een grote "
 "dank voor het ondersteunen van mij en deze plugin!"
 
-#: pages/page.license.php:119
+#: admin-pages/page.license.php:119
 msgid "In case you need, your <strong>Site Hash</strong> is"
 msgstr ""
 "Voor het geval je het nodig heb, staat hier je <strong>Site Hash</strong>"
 
-#: pages/page.license.php:128
+#: admin-pages/page.license.php:128
 msgid "Get a free 7 day trial!"
 msgstr "Krijg een gratis 7 dagen trial!"
 
-#: pages/page.license.php:135 pages/page.license.php:141
+#: admin-pages/page.license.php:135 admin-pages/page.license.php:141
 msgid "Upgrade to Pro Plus for"
 msgstr "Upgrade naar Pro Plus voor"
 
-#: pages/page.license.php:135 pages/page.license.php:141
-#: pages/page.license.php:255 pages/page.license.php:269
+#: admin-pages/page.license.php:135 admin-pages/page.license.php:141
+#: admin-pages/page.license.php:255 admin-pages/page.license.php:269
 msgid "a year"
 msgstr "per jaar"
 
-#: pages/page.license.php:143
+#: admin-pages/page.license.php:143
 #, no-php-format
 msgid " (50% discount)"
 msgstr "(50% korting)"
 
-#: pages/page.license.php:159
+#: admin-pages/page.license.php:159
 msgid "Switch to a yearly Pro license for "
 msgstr "Wissel over naar een jaarlijkse Pro licentie voor"
 
-#: pages/page.license.php:159 pages/page.license.php:160
+#: admin-pages/page.license.php:159 admin-pages/page.license.php:160
 msgid " a year"
 msgstr "per jaar"
 
-#: pages/page.license.php:160
+#: admin-pages/page.license.php:160
 msgid "Upgrade to Pro for "
 msgstr "Upgrade naar de Pro versie voor"
 
-#: pages/page.license.php:176
+#: admin-pages/page.license.php:176
 msgid "Add or Update License"
 msgstr "Licentie toevoegen of updaten"
 
-#: pages/page.license.php:181
+#: admin-pages/page.license.php:181
 msgid ""
 "Copy and paste the license given to you by YeKen into this box and click "
 "\"Apply License\""
@@ -799,69 +351,76 @@ msgstr ""
 "Kopieer en plak de licentie die YeKen aan u heeft gegeven in dit vak en klik "
 "op \"Licentie toepassen\""
 
-#: pages/page.license.php:184
+#: admin-pages/page.license.php:184
 msgid "Apply License"
 msgstr "Licentie toepassen"
 
-#: pages/page.license.php:189
+#: admin-pages/page.license.php:189
 msgid "Your License Information"
 msgstr "Uw licentie informatie"
 
-#: pages/page.license.php:193
+#: admin-pages/page.license.php:193
 msgid "Site Hash"
 msgstr "Site hash"
 
-#: pages/page.license.php:197 pro-features/widget-chart.php:110
+#: admin-pages/page.license.php:197
 msgid "Type"
 msgstr "Type"
 
-#: pages/page.license.php:201
+#: admin-pages/page.license.php:201
 msgid "Expires"
 msgstr "Vervalt"
 
-#: pages/page.license.php:206
+#: admin-pages/page.license.php:206
 msgid "Never"
 msgstr "Nooit"
 
-#: pages/page.license.php:210
+#: admin-pages/page.license.php:210
 msgid "n/a"
 msgstr "Niet van toepassing"
 
-#: pages/page.license.php:220
+#: admin-pages/page.license.php:220
 msgid "Your Existing License"
 msgstr "Uw huidige licentie"
 
-#: pages/page.license.php:226
+#: admin-pages/page.license.php:226
 msgid "Remove License"
 msgstr "Verwijderen van licentie"
 
-#: pages/page.license.php:235
-msgid "Documentation"
-msgstr "Documentatie"
-
-#: pages/page.license.php:238
+#: admin-pages/page.license.php:238
 msgid "Need further help or information, please visit our documentation site:"
 msgstr ""
 "Heb je meer hulp nodig of informatie, bekijk dan onze documentatie site:"
 
-#: pages/page.license.php:255
+#: admin-pages/page.license.php:251
+#, fuzzy
+#| msgid "Pro Plus License"
+msgid "Pro Plus Features"
+msgstr "Pro Plus licentie"
+
+#: admin-pages/page.license.php:255
 msgid "Below is a list of the intended features of the Pro Plus version"
 msgstr "Hieronder is een lijst met de functies van de Pro versie"
 
-#: pages/page.license.php:255 pages/page.license.php:269
+#: admin-pages/page.license.php:255 admin-pages/page.license.php:269
 msgid "You can upgrade for"
 msgstr "Je kunt een upgrade doen voor"
 
-#: pages/page.license.php:269
+#: admin-pages/page.license.php:264
+#, fuzzy
+#| msgid "Pro Plus"
+msgid "Pro Features"
+msgstr "Pro Plus"
+
+#: admin-pages/page.license.php:269
 msgid "Below is a list of the intended features of the Pro version"
 msgstr "Hieronder is een lijst met functies van de Pro versie"
 
-#: pages/page.license.php:283 pro-features/admin-pages/data-summary.php:177
-#: pro-features/functions.pages.php:219
+#: admin-pages/page.license.php:283 admin-pages/user-data/data-summary.php:183
 msgid "Are you sure you?"
 msgstr "Weet je het zeker?"
 
-#: pages/page.license.php:284
+#: admin-pages/page.license.php:284
 msgid ""
 "Are you sure you wish to remove the license for this site? Removing it may "
 "cause your user's to lose functionality."
@@ -869,71 +428,84 @@ msgstr ""
 "Weet u zeker dat u de licentie voor deze site wilt verwijderen? Als u het "
 "verwijdert, kan de gebruiker de functionaliteiten verliezen."
 
-#: pages/page.settings.php:36
+#: admin-pages/page.settings.php:38
 msgid "Rebuild them now"
 msgstr "Bouw ze nu opnieuw op"
 
-#: pages/page.settings.php:58
+#: admin-pages/page.settings.php:60
 msgid " Settings"
 msgstr "Instellingen"
 
-#: pages/page.settings.php:72
+#: admin-pages/page.settings.php:74
 msgid "General"
 msgstr "Algemeen"
 
-#: pages/page.settings.php:72
+#: admin-pages/page.settings.php:74
 msgid "General settings"
 msgstr "Algemene instellingen"
 
-#: pages/page.settings.php:73
+#: admin-pages/page.settings.php:75 license.php:248
+msgid "Pro Plus"
+msgstr "Pro Plus"
+
+#: admin-pages/page.settings.php:75
 msgid "Adjust settings for your Pro Plus features"
 msgstr "Pas de instellingen aan voor uw Pro Plus-functies"
 
-#: pages/page.settings.php:74 pro-features/admin-pages/data-user.php:38
+#: admin-pages/page.settings.php:76 admin-pages/user-data/data-user.php:43
 msgid "Chart"
 msgstr "Tabel"
 
-#: pages/page.settings.php:74
+#: admin-pages/page.settings.php:76
 msgid "Chart styling and config"
 msgstr "Tabel styling en configuratie"
 
-#: pages/page.settings.php:75
+#: admin-pages/page.settings.php:77
 msgid "Notifications"
 msgstr "Berichten"
 
-#: pages/page.settings.php:75
+#: admin-pages/page.settings.php:77
 msgid "Configure email notifications"
 msgstr "Instellen van email notificaties"
 
-#: pages/page.settings.php:76
+#: admin-pages/page.settings.php:78
 msgid "Measurements"
 msgstr "Metingen"
 
-#: pages/page.settings.php:76
+#: admin-pages/page.settings.php:78
 msgid "Allow users to record their measurements"
 msgstr "Sta toe dat gebruikers hun eigen metingen invoeren"
 
-#: pages/page.settings.php:77
+#: admin-pages/page.settings.php:79
 msgid "3rd Party"
 msgstr ""
 
-#: pages/page.settings.php:77
+#: admin-pages/page.settings.php:79
 msgid "3rd Party Integrations"
 msgstr ""
 
-#: pages/page.settings.php:81
+#: admin-pages/page.settings.php:88
 msgid "Default units / formats to be used by plugin"
 msgstr "Standaard eenheid / formaat die gebruikt word in de plugin"
 
-#: pages/page.settings.php:84
+#: admin-pages/page.settings.php:91
 msgid "Weight Units"
 msgstr "Gewichtseenheden"
 
-#: pages/page.settings.php:88 pro-features/user-preferences.php:171
+#: admin-pages/page.settings.php:94 converters.php:56 core.php:75 core.php:388
+#: functions.php:73 functions.php:96
+msgid "kg"
+msgstr "kg"
+
+#: admin-pages/page.settings.php:95
 msgid "Stones & Pounds"
 msgstr "Stenen & ponden"
 
-#: pages/page.settings.php:91
+#: admin-pages/page.settings.php:96 core.php:381 core.php:384
+msgid "Pounds"
+msgstr "Ponden"
+
+#: admin-pages/page.settings.php:98
 msgid ""
 "You can specify whether to display weights in Kg, Stones & Pounds or just "
 "Pounds. Please note: The graph will be displayed in Pounds if \"Stones & "
@@ -943,61 +515,33 @@ msgstr ""
 "wilt. Houd met het volgende rekening : De tabel word aangeven in Ponden als "
 "je \"Stones & Ponden\" hebt geselecteerd"
 
-#: pages/page.settings.php:95
+#: admin-pages/page.settings.php:102
 msgid "UK or US Date format?"
 msgstr "NL of US datum standaardnotatie?"
 
-#: pages/page.settings.php:98 pro-features/user-preferences.php:189
+#: admin-pages/page.settings.php:105
 msgid "UK (DD/MM/YYYY)"
 msgstr "NL (DD/MM/JJJJ)"
 
-#: pages/page.settings.php:99 pro-features/user-preferences.php:190
+#: admin-pages/page.settings.php:106
 msgid "US (MM/DD/YYYY)"
 msgstr "US (MM/DD/JJJJ)"
 
-#: pages/page.settings.php:101
+#: admin-pages/page.settings.php:108
 msgid "Specify what format dates should be displayed in (i.e. UK or US format)"
 msgstr ""
 "Specificeer volgens welke standaard de datum getoond moet worden (o.a NL of "
 "US standaard)"
 
-#: pages/page.settings.php:105
+#: admin-pages/page.settings.php:112
 msgid "User Experience"
 msgstr "Gebruikerservaring"
 
-#: pages/page.settings.php:108
+#: admin-pages/page.settings.php:115
 msgid "Allow target weights?"
 msgstr "Streefgewicht toestaan?"
 
-#: pages/page.settings.php:111 pages/page.settings.php:121
-#: pages/page.settings.php:132 pages/page.settings.php:143
-#: pages/page.settings.php:170 pages/page.settings.php:180
-#: pages/page.settings.php:190 pages/page.settings.php:210
-#: pages/page.settings.php:311 pages/page.settings.php:343
-#: pages/page.settings.php:372 pages/page.settings.php:390
-#: pages/page.settings.php:415 pages/page.settings.php:461
-#: pages/page.settings.php:476 pages/page.settings.php:486
-#: pages/page.settings.php:496 pages/page.settings.php:511
-#: pages/page.settings.php:531 pages/page.settings.php:587
-#: pro-features/widget-form.php:92 pro-features/widget-form.php:99
-msgid "Yes"
-msgstr "Ja"
-
-#: pages/page.settings.php:112 pages/page.settings.php:122
-#: pages/page.settings.php:133 pages/page.settings.php:142
-#: pages/page.settings.php:169 pages/page.settings.php:179
-#: pages/page.settings.php:189 pages/page.settings.php:211
-#: pages/page.settings.php:312 pages/page.settings.php:342
-#: pages/page.settings.php:373 pages/page.settings.php:391
-#: pages/page.settings.php:414 pages/page.settings.php:460
-#: pages/page.settings.php:477 pages/page.settings.php:487
-#: pages/page.settings.php:497 pages/page.settings.php:510
-#: pages/page.settings.php:530 pages/page.settings.php:586
-#: pro-features/widget-form.php:91 pro-features/widget-form.php:98
-msgid "No"
-msgstr "Nee"
-
-#: pages/page.settings.php:114
+#: admin-pages/page.settings.php:121
 msgid ""
 "If enabled, a user is allowed to enter a target weight. This will be "
 "displayed as a horizontal bar on the line chart."
@@ -1005,11 +549,11 @@ msgstr ""
 "Toestemming geven om je streefgewicht in te voeren. Dit wordt getoond op de "
 "horizontale lijn in de tabel"
 
-#: pages/page.settings.php:118
+#: admin-pages/page.settings.php:125
 msgid "Display BMI in tables?"
 msgstr "Weergeven van BMI in tabellen?"
 
-#: pages/page.settings.php:125
+#: admin-pages/page.settings.php:132
 msgid ""
 "If enabled, BMI values will be displayed alongside weight entries in data "
 "tables."
@@ -1017,11 +561,11 @@ msgstr ""
 "Indien aangezet, worden de BMI waarden getoond naast de gewichtsmetingen in "
 "de data tabellen."
 
-#: pages/page.settings.php:129
+#: admin-pages/page.settings.php:136
 msgid "Allow user settings"
 msgstr "Gebruikers instellingen toestaan"
 
-#: pages/page.settings.php:135
+#: admin-pages/page.settings.php:142
 msgid ""
 "Allow your users to select their own data units, complete their \"About You"
 "\" fields and remove all their data."
@@ -1029,11 +573,11 @@ msgstr ""
 "Toestemming geven om je gebruikers zelf te laten selecteren : gewicht, datum "
 "formaat en verwijderen van data."
 
-#: pages/page.settings.php:139
+#: admin-pages/page.settings.php:146
 msgid "\"About You\" fields mandatory?"
 msgstr "\"Over jou\" velden verplicht?"
 
-#: pages/page.settings.php:145
+#: admin-pages/page.settings.php:152
 msgid ""
 "If User Settings is enabled, should all the \"About You\" (height, activity "
 "level, etc) be mandatory?"
@@ -1041,38 +585,42 @@ msgstr ""
 "Als gebruikersinstellingen zijn ingeschakeld, moeten alle \"over u"
 "\" (lengte, activiteit niveau, enz.) verplicht zijn?"
 
-#: pages/page.settings.php:149
+#: admin-pages/page.settings.php:156
 msgid "Permissions"
 msgstr "Toestemmingen"
 
-#: pages/page.settings.php:152
+#: admin-pages/page.settings.php:159
 msgid "Who can view and modify user data?"
 msgstr "Wie kan gebruikers data bekijken en bewerken?"
 
-#: pages/page.settings.php:155
+#: admin-pages/page.settings.php:162
 msgid "Administrators Only"
 msgstr "Alleen voor de Admin"
 
-#: pages/page.settings.php:156
+#: admin-pages/page.settings.php:163
 msgid "Editors and above"
 msgstr "Editor en bovenstaande"
 
-#: pages/page.settings.php:157
+#: admin-pages/page.settings.php:164
 msgid "Authors and above"
 msgstr "Auteurs en bovenstaande"
 
-#: pages/page.settings.php:159
+#: admin-pages/page.settings.php:166
 msgid ""
 "Specify the minimum level of user role that maybe view or edit user data."
 msgstr ""
 "Geef het minimumniveau van de gebruikersrol op die de gebruikersgegevens "
 "kunnen bekijken of bewerken."
 
-#: pages/page.settings.php:166
+#: admin-pages/page.settings.php:170 shortcode-weight-loss-tracker.php:103
+msgid "Advanced"
+msgstr "Geavanceerd"
+
+#: admin-pages/page.settings.php:173
 msgid "Disable plugin CSS?"
 msgstr "Toon plugin CSS"
 
-#: pages/page.settings.php:172
+#: admin-pages/page.settings.php:179
 msgid ""
 "If you wish to style the forms in your own way, you can use this option to "
 "disable WLT's style sheets."
@@ -1080,11 +628,11 @@ msgstr ""
 "Als je je eigen style wilt gebruiken van je eigen CSS, kan je deze optie "
 "gebruiken om WLT's uit te zetten."
 
-#: pages/page.settings.php:176
+#: admin-pages/page.settings.php:183
 msgid "Send usage data to YeKen?"
 msgstr "Gebruikers data sturen naar YeKen?"
 
-#: pages/page.settings.php:182
+#: admin-pages/page.settings.php:189
 msgid ""
 "We would love to see how our plugin is used. By consenting, you are allowing "
 "permission for the following data to be sent on a weekly basis to YeKen: "
@@ -1096,11 +644,11 @@ msgstr ""
 "gestuurd naar YeKen: URL, samenvatting van instellingen, aantal ingevoerde "
 "gewichten en metingen. Er zal nooit gebruikers of admin data worden gestuurd."
 
-#: pages/page.settings.php:186
+#: admin-pages/page.settings.php:193
 msgid "Disable notifications from YeKen?"
 msgstr "Uitzetten van berichten van YeKen?"
 
-#: pages/page.settings.php:192
+#: admin-pages/page.settings.php:199
 msgid ""
 "Occasionally YeKen likes to display simple notifications within your "
 "WordPress dashboard. Use this setting if you wish to disable them."
@@ -1108,15 +656,16 @@ msgstr ""
 "Soms laat YeKen simpele notificaties zien in je WordPress dashboard. Gebruik "
 "deze instelling als u ze wilt uitschakelen."
 
-#: pages/page.settings.php:199
-msgid "Upgrade now to Pro Plus"
-msgstr "Upgrade nu naar Pro Plus"
+#: admin-pages/page.settings.php:211 admin-pages/user-data/data-user.php:72
+#: core.php:403 shortcode-weight-loss-tracker.php:98
+msgid "Photos"
+msgstr "Foto's"
 
-#: pages/page.settings.php:207
+#: admin-pages/page.settings.php:215
 msgid "Photos enabled?"
 msgstr "Foto's ingeschakeld?"
 
-#: pages/page.settings.php:213
+#: admin-pages/page.settings.php:221
 msgid ""
 "Allow your users to upload photos (jpg / png) of their progress alongside "
 "weight entries. These are only viewable by the person that uploaded the "
@@ -1129,11 +678,11 @@ msgstr ""
 "mediabibliotheek met een extra instelling om te verbergen van de "
 "bijlagepagina / sjabloon."
 
-#: pages/page.settings.php:217
+#: admin-pages/page.settings.php:225
 msgid "Max. Photo Size?"
 msgstr "Max. foto formaat?"
 
-#: pages/page.settings.php:236
+#: admin-pages/page.settings.php:244
 msgid ""
 "Maximum photo size (in MB) that is allowed to be uploaded. Your server "
 "currently supports up to "
@@ -1141,15 +690,15 @@ msgstr ""
 "Maximum foto grootte (in MB) die mag worden geüpload. Uw server ondersteunt "
 "momenteel tot en met"
 
-#: pages/page.settings.php:241
+#: admin-pages/page.settings.php:250
 msgid "Calculating daily calorie intake to lose weight"
 msgstr "Bereken de dagelijkse calorie-inname om gewicht te verliezen"
 
-#: pages/page.settings.php:245
+#: admin-pages/page.settings.php:254
 msgid "Female Calorie Cap"
 msgstr "Vrouwelijke calorieën capaciteit"
 
-#: pages/page.settings.php:248
+#: admin-pages/page.settings.php:257
 msgid ""
 "Specify a maximum value for number of daily calories allowed to achieve "
 "weight loss. As per NHS guidelines, females are set to 1400kcal by default"
@@ -1158,9 +707,9 @@ msgstr ""
 "toegestaan zijn om gewichtsverlies te bereiken. Volgens de NHS-richtlijnen "
 "is de vrouwelijke standaard ingesteld op 1400kcal"
 
-#: pages/page.settings.php:248 pages/page.settings.php:255
-#: pages/page.settings.php:262 pages/page.settings.php:280
-#: pages/page.settings.php:287
+#: admin-pages/page.settings.php:257 admin-pages/page.settings.php:264
+#: admin-pages/page.settings.php:271 admin-pages/page.settings.php:289
+#: admin-pages/page.settings.php:296
 msgid ""
 "Please note, it may take up to 15 minutes for calculations to change (due to "
 "caching)."
@@ -1168,11 +717,11 @@ msgstr ""
 "Let op, het kan tot wel 15 minuten duren voordat berekeningen kunnen "
 "veranderen (door caching)."
 
-#: pages/page.settings.php:252
+#: admin-pages/page.settings.php:261
 msgid "Male Calorie Cap"
 msgstr "Mannelijke calorieën capaciteit"
 
-#: pages/page.settings.php:255
+#: admin-pages/page.settings.php:264
 msgid ""
 "Specify a maximum value for number of daily calories allowed to achieve "
 "weight loss. As per NHS guidelines, males are set to 1900kcal by default"
@@ -1181,11 +730,11 @@ msgstr ""
 "toegestaan zijn om gewichtsverlies te bereiken. Volgens de NHS-richtlijnen "
 "worden mannen op standaard ingesteld op 1900kcal"
 
-#: pages/page.settings.php:259
+#: admin-pages/page.settings.php:268
 msgid "Calories to subtract"
 msgstr "Calorieën af te trekken"
 
-#: pages/page.settings.php:262
+#: admin-pages/page.settings.php:271
 msgid ""
 "Part of calculating the daily calorie intake to lose weight is to first "
 "calculate the calorie intake to maintain existing weight. Once we have this, "
@@ -1197,20 +746,19 @@ msgstr ""
 "gewicht te behouden. Zodra we dit hebben, trekken we het bovenstaande cijfer "
 "af om de dagelijkse calorie-inname te berekenen om gewicht te verliezen."
 
-#: pages/page.settings.php:266 pro-features/admin-pages/data-user.php:113
+#: admin-pages/page.settings.php:275 admin-pages/user-data/data-user.php:128
 msgid "Macronutrient Calculator"
 msgstr "Macronutrient Calculator"
 
-#: pages/page.settings.php:270
-#: pro-features/plus/macronutrient.calculator.php:135
+#: admin-pages/page.settings.php:279
 msgid "Proteins"
 msgstr "Proteïnen"
 
-#: pages/page.settings.php:273
+#: admin-pages/page.settings.php:282
 msgid "Percentage of Proteins to make up a moderate diet"
 msgstr "Proteïnepercentage om een gemiddeld dieet te vormen"
 
-#: pages/page.settings.php:273
+#: admin-pages/page.settings.php:282
 msgid ""
 "Please note, it may take up to 15 minutes for calorie calculations to change "
 "(due to caching)."
@@ -1218,40 +766,39 @@ msgstr ""
 "Let op, het kan tot 15 minuten duren voordat de calorieberekeningen worden "
 "gewijzigd (door caching)."
 
-#: pages/page.settings.php:277 pro-features/plus/shortcode.wlt.php:147
+#: admin-pages/page.settings.php:286
 msgid "Carbohydrates"
 msgstr "Koolhydraten"
 
-#: pages/page.settings.php:280
+#: admin-pages/page.settings.php:289
 msgid "Percentage of Carbohydrates to make up a moderate diet"
 msgstr "Koolhydraatpercentage om een gemiddeld dieet te vormen"
 
-#: pages/page.settings.php:284
-#: pro-features/plus/macronutrient.calculator.php:169
+#: admin-pages/page.settings.php:293
 msgid "Fats"
 msgstr "Vetten"
 
-#: pages/page.settings.php:287
+#: admin-pages/page.settings.php:296
 msgid "Percentage of Fats to make up a moderate diet"
 msgstr "Vetpercentage om een gemiddeld dieet te vormen"
 
-#: pages/page.settings.php:296
+#: admin-pages/page.settings.php:310
 msgid "Default chart type"
 msgstr "Default tabel type"
 
-#: pages/page.settings.php:299
+#: admin-pages/page.settings.php:313
 msgid "Line Chart"
 msgstr "Lijn van de tabel"
 
-#: pages/page.settings.php:299
+#: admin-pages/page.settings.php:313
 msgid "Highly Recommended"
 msgstr "Sterk aanbevolen"
 
-#: pages/page.settings.php:300
+#: admin-pages/page.settings.php:314
 msgid "Bar Chart"
 msgstr "Staafdiagram"
 
-#: pages/page.settings.php:303
+#: admin-pages/page.settings.php:317
 msgid ""
 "If enabled, \"Allows points and labels to be displayed on graph. "
 "<strong>Note: If using measurements</strong>, graph type will be forced to "
@@ -1261,29 +808,29 @@ msgstr ""
 "op de grafiek. <strong>Opmerking: Als u metingen gebruikt </ strong>, zal "
 "het type grafiek worden aangepast naar een Lijn."
 
-#: pages/page.settings.php:308
+#: admin-pages/page.settings.php:322
 msgid "Display gridlines?"
 msgstr "weergave rasterlijnen?"
 
-#: pages/page.settings.php:314
+#: admin-pages/page.settings.php:328
 msgid "If enabled, gridlines will be displayed on the Graph canvas."
 msgstr "Indien ingeschakeld, zijn de rasterlijnen zichtbaar op het diagram"
 
-#: pages/page.settings.php:318
+#: admin-pages/page.settings.php:332
 msgid "Maximum points per graph"
 msgstr "Maximum aantal punten per diagram"
 
-#: pages/page.settings.php:327 pages/page.settings.php:394
+#: admin-pages/page.settings.php:341 admin-pages/page.settings.php:408
 msgid "If enabled, \"Allows points and labels to be displayed on graph."
 msgstr ""
 "Wanneer geselecteerd \"Sta je punten en labels toe in de tabel wanneer het "
 "diagram wordt getoond \""
 
-#: pages/page.settings.php:332
+#: admin-pages/page.settings.php:346
 msgid "Weight colour?"
 msgstr "Gewicht kleur"
 
-#: pages/page.settings.php:335
+#: admin-pages/page.settings.php:349
 msgid ""
 "If enabled, enter a HEX colour code to use for the Weight history line / bar "
 "border on graph."
@@ -1291,11 +838,11 @@ msgstr ""
 "Indien ingeschakeld, voert u een HEX kleurcode in om te gebruiken voor de "
 "gewicht geschiedenis lijn / staaf grens op grafiek."
 
-#: pages/page.settings.php:339
+#: admin-pages/page.settings.php:353
 msgid "Should y Axes start at 0?"
 msgstr "Moeten Y assen starten op 0?"
 
-#: pages/page.settings.php:346
+#: admin-pages/page.settings.php:360
 msgid ""
 "If enabled, y Axes shall start at 0. Otherwise, they are automatically "
 "calculated."
@@ -1303,71 +850,71 @@ msgstr ""
 "Indien ingeschakeld, zullen de y assen bij 0 beginnen. Anders, worden ze "
 "automatisch berekend."
 
-#: pages/page.settings.php:350
+#: admin-pages/page.settings.php:364
 #, fuzzy
 #| msgid "Text Colour"
 msgid "Text colour"
 msgstr "Tekst kleur"
 
-#: pages/page.settings.php:353
+#: admin-pages/page.settings.php:367
 #, fuzzy
 #| msgid ""
 #| "If enabled, enter a HEX colour code to use for the Target line on graph."
 msgid "Enter a HEX colour code to use for text displayed on the graph."
 msgstr "Voer hier de HEX kleur code in van je streefgewicht in het diagram."
 
-#: pages/page.settings.php:357
+#: admin-pages/page.settings.php:371
 msgid "Font Family"
 msgstr ""
 
-#: pages/page.settings.php:360
+#: admin-pages/page.settings.php:374
 msgid ""
 "Specify one or more fonts that should be used when rendering text on the "
 "graph. Separate multiple fonts with a comma. Leave blank to use the default."
 msgstr ""
 
-#: pages/page.settings.php:365
+#: admin-pages/page.settings.php:379
 msgid "Line Chart Options"
 msgstr "Lijndiagram opties"
 
-#: pages/page.settings.php:369
+#: admin-pages/page.settings.php:383
 msgid "Bezier Curve?"
 msgstr "Bezier Curve?"
 
-#: pages/page.settings.php:376
+#: admin-pages/page.settings.php:390
 msgid "If enabled, lines between points on a line graph will be curved"
 msgstr ""
 "Indien dit is ingeschakeld, zal je zien dat de lijn tussen de punten een "
 "kromme lijn is (ipv strakke lijnen)"
 
-#: pages/page.settings.php:380
+#: admin-pages/page.settings.php:394
 msgid "Target line colour?"
 msgstr "Kleur van lijn voor streefgewicht?"
 
-#: pages/page.settings.php:383
+#: admin-pages/page.settings.php:397
 msgid ""
 "If enabled, enter a HEX colour code to use for the Target line on graph."
 msgstr "Voer hier de HEX kleur code in van je streefgewicht in het diagram."
 
-#: pages/page.settings.php:387
+#: admin-pages/page.settings.php:401
 msgid "Display points on graph?"
 msgstr "Meetpunten laten zien in de diagram"
 
-#: pages/page.settings.php:398
+#: admin-pages/page.settings.php:412
 msgid "Point thickness"
 msgstr "Dikte van de punten"
 
-#: pages/page.settings.php:407
+#: admin-pages/page.settings.php:421
 msgid "Specifies the point thickness on a line chart."
 msgstr "Specificeer de dikte van de punten op de lijngrafiek."
 
-#: pages/page.settings.php:411
+#: admin-pages/page.settings.php:425
 #, fuzzy
 #| msgid "Add a new weight"
 msgid "Add a fill under weight line?"
 msgstr "Voeg een nieuw gewicht toe"
 
-#: pages/page.settings.php:417
+#: admin-pages/page.settings.php:431
 #, fuzzy
 #| msgid ""
 #| "If enabled, enter a HEX colour code to use for the Weight history line on "
@@ -1375,13 +922,13 @@ msgstr "Voeg een nieuw gewicht toe"
 msgid "If enabled, a fill colour will be added under the weight line."
 msgstr "Voer hier een HEX kleur code in van de lijn op het diagram"
 
-#: pages/page.settings.php:421
+#: admin-pages/page.settings.php:435
 #, fuzzy
 #| msgid "Weight fill colour?"
 msgid "Weight Fill Colour"
 msgstr "Gewicht opvul kleur"
 
-#: pages/page.settings.php:424
+#: admin-pages/page.settings.php:438
 #, fuzzy
 #| msgid ""
 #| "If enabled, enter a HEX colour code to use for filling the Weight bars on "
@@ -1393,25 +940,25 @@ msgstr ""
 "Indien ingeschakeld, voert u een HEX kleurcode in om te gebruiken voor het "
 "vullen van de gewicht stafen op de grafiek."
 
-#: pages/page.settings.php:428
+#: admin-pages/page.settings.php:442
 #, fuzzy
 #| msgid "Weight fill colour?"
 msgid "Weight Fill Opacity"
 msgstr "Gewicht opvul kleur"
 
-#: pages/page.settings.php:437
+#: admin-pages/page.settings.php:451
 msgid "Specifies the opacity of the fill colour under the weight line."
 msgstr ""
 
-#: pages/page.settings.php:442
+#: admin-pages/page.settings.php:456
 msgid "Bar Chart Options"
 msgstr "Staafdiagram opties"
 
-#: pages/page.settings.php:446
+#: admin-pages/page.settings.php:460
 msgid "Weight fill colour?"
 msgstr "Gewicht opvul kleur"
 
-#: pages/page.settings.php:449
+#: admin-pages/page.settings.php:463
 msgid ""
 "If enabled, enter a HEX colour code to use for filling the Weight bars on "
 "the graph."
@@ -1419,15 +966,15 @@ msgstr ""
 "Indien ingeschakeld, voert u een HEX kleurcode in om te gebruiken voor het "
 "vullen van de gewicht stafen op de grafiek."
 
-#: pages/page.settings.php:457
+#: admin-pages/page.settings.php:476
 msgid "Enable email notifications"
 msgstr "Aanzetten van email notificaties"
 
-#: pages/page.settings.php:466
+#: admin-pages/page.settings.php:485
 msgid "Email addresses to notify"
 msgstr "Verstuur naar email adres(sen)"
 
-#: pages/page.settings.php:469
+#: admin-pages/page.settings.php:488
 msgid ""
 "Specify one or more email addresses to be notified. Seperate multiple emails "
 "with a comma."
@@ -1435,344 +982,314 @@ msgstr ""
 "Specificeer één of meerdere email adressen voor notificaties. Indien "
 "meerdere emailadressen zijn ingevoerd, scheidt deze dan met een komma."
 
-#: pages/page.settings.php:473
+#: admin-pages/page.settings.php:492
 msgid "New weight / measurement entries"
 msgstr "Nieuwe invoer gewicht / meting "
 
-#: pages/page.settings.php:479
+#: admin-pages/page.settings.php:498
 msgid ""
 "Receive notifications when a member adds a new weight / measurement entry."
 msgstr ""
 "Ontvang notificaties wanneer een cliënt een gewicht / meting toevoegt. "
 
-#: pages/page.settings.php:483
+#: admin-pages/page.settings.php:502
 msgid "Edited weight / measurement entries"
 msgstr "Aangepast invoer gewicht / meting "
 
-#: pages/page.settings.php:489
+#: admin-pages/page.settings.php:508
 msgid ""
 "Receive notifications when a member edits an existing weight / measurement "
 "entry."
 msgstr "Ontvang notificaties wanneer een cliënt een gewicht / meting aanpast. "
 
-#: pages/page.settings.php:493
+#: admin-pages/page.settings.php:512
 msgid "New / updated targets"
 msgstr "Nieuw / aangepast doel"
 
-#: pages/page.settings.php:499
+#: admin-pages/page.settings.php:518
 msgid "Receive notifications when a member adds / edits their target."
 msgstr "Ontvang notificaties wanneer een cliënt zijn doel toevoegd / aanpast. "
 
-#: pages/page.settings.php:507
+#: admin-pages/page.settings.php:531
 msgid "Allow Measurements?"
 msgstr "Gebruikers instellingen toestaan?"
 
-#: pages/page.settings.php:513
+#: admin-pages/page.settings.php:537
 msgid ""
 "If enabled, a user can also add body measurements along with their weights."
 msgstr ""
 "Indien ingeschakeld, kan een gebruiker ook lichaams metingen toe voegen "
 "samen met hun gewicht."
 
-#: pages/page.settings.php:517
+#: admin-pages/page.settings.php:541
 msgid "Measurement Units"
 msgstr "Meeteenheden"
 
-#: pages/page.settings.php:520 pro-features/user-preferences.php:179
+#: admin-pages/page.settings.php:544
 msgid "Centimetres"
 msgstr "Centimeters"
 
-#: pages/page.settings.php:523
+#: admin-pages/page.settings.php:545 core.php:76
+msgid "Inches"
+msgstr "Inches"
+
+#: admin-pages/page.settings.php:547
 msgid "Default unit for recording measurements."
 msgstr "Standaard eenheid voor het opnemen van metingen"
 
-#: pages/page.settings.php:527
+#: admin-pages/page.settings.php:551
 msgid "Measurements mandatory?"
 msgstr "Metingen verplicht?"
 
-#: pages/page.settings.php:533
+#: admin-pages/page.settings.php:557
 msgid "If yes, a user will be forced to complete all measurement features."
 msgstr "Indien ja, dan zal de gebruiker alle metingen moeten invoeren"
 
-#: pages/page.settings.php:537
+#: admin-pages/page.settings.php:561
 msgid "Areas of measurements"
 msgstr "Meet gebieden"
 
-#: pages/page.settings.php:559
+#: admin-pages/page.settings.php:583
 msgid "Enable"
 msgstr "Inschakelen"
 
-#: pages/page.settings.php:562
+#: admin-pages/page.settings.php:586
 msgid "Chart Colour"
 msgstr "Kleur van de grafiek"
 
-#: pages/page.settings.php:583
+#: admin-pages/page.settings.php:612
 msgid "Enable Gravity Forms"
 msgstr ""
 
-#: pages/page.settings.php:590
+#: admin-pages/page.settings.php:619
 msgid ""
 "Examine Gravity Form submissions for weight and measurement data. If found, "
 "create a Weight Entry for the user currently logged in."
 msgstr ""
 
-#: pages/page.settings.php:591
+#: admin-pages/page.settings.php:620
 #, fuzzy
 #| msgid "Read more about calculations"
 msgid "Read more at "
 msgstr "Lees hier meer over de berekeningen"
 
-#: pages/page.user.data.advertise.php:21
-msgid "Looking to view and manipulate your user's data?"
-msgstr "Wil je de gegevens van je gebruiker bekijken en manipuleren?"
-
-#: pages/page.user.data.advertise.php:23
-msgid ""
-"Upgrade to the Pro version of this plugin to view, edit and delete your "
-"user's weight entries"
-msgstr ""
-"Ge-upgrade naar de Pro-versie van deze plugin om uw invoer van de cliënten "
-"invoer te bekijken, te bewerken en te verwijderen"
-
-#: pages/page.user.data.advertise.php:25
-msgid "Manage and view their photos."
-msgstr "Beheer en bekijk hun foto's."
-
-#: pages/page.user.data.advertise.php:26
-msgid "View all user entries in tabular and chart format."
-msgstr "Bekijk alle gebruikersinvoer in tabel- en grafiekformaat."
-
-#: pages/page.user.data.advertise.php:27
-msgid "Add, edit and delete user entries."
-msgstr "Voeg gebruikersgegevens toe, verander en verwijder ze."
-
-#: pages/page.user.data.advertise.php:28
-msgid "Sortable and responsive tables."
-msgstr "Sorteerbare en responsive tabellen."
-
-#: pages/page.user.data.advertise.php:29
-msgid "View league tables of most lost / gained."
-msgstr "Bekijk competitie tabellen van de meeste verloren / aangekomen."
-
-#: pages/page.user.data.advertise.php:30
-msgid "View user stats, weight lost, recent weight, start weight, BMI, etc."
-msgstr ""
-"Bekijk gebruikersstatistieken, gewichtsverlies, recent gewicht, "
-"startgewicht, BMI, enz."
-
-#: pages/page.user.data.advertise.php:31
-msgid "Export all or a particular user's data in CSV / JSON."
-msgstr ""
-"Exporteer alle of de gegevens van een bepaalde gebruiker naar CSV / JSON."
-
-#: pages/page.user.data.advertise.php:33
-msgid "Upgrade to Pro Version"
-msgstr "Upgraden naar de Pro versie"
-
-#: pages/page.user.data.advertise.php:38
-msgid "Example screenshots"
-msgstr "Voorbeeld screenshots"
-
-#: pages/page.user.data.advertise.php:40
-msgid "Below are a couple of screenshots from the user data screens"
-msgstr "Hieronder vindt u een aantal screenshots van de gebruikersgegevens"
-
-#: pro-features/admin-pages/data-add-edit-entry.php:17
-#: pro-features/admin-pages/data-edit-target.php:17
-#: pro-features/admin-pages/data-photos.php:17
+#: admin-pages/user-data/data-add-edit-entry.php:17
+#: admin-pages/user-data/data-edit-target.php:17
+#: admin-pages/user-data/data-photos.php:17
 msgid "There was an issue loading this page"
 msgstr "Er was een probleem met het laden van deze pagina"
 
-#: pro-features/admin-pages/data-add-edit-entry.php:43
+#: admin-pages/user-data/data-add-edit-entry.php:48
 msgid "Add / Edit an entry"
 msgstr "Toevoegen / aanpassen van invoer"
 
-#: pro-features/admin-pages/data-edit-target.php:32
+#: admin-pages/user-data/data-edit-target.php:37
 msgid "Edit user's target"
 msgstr "Aanpassen van doel cliënt"
 
-#: pro-features/admin-pages/data-photos.php:29
+#: admin-pages/user-data/data-photos.php:29
 msgid "User's photos"
 msgstr "Foto's van cliënt"
 
-#: pro-features/admin-pages/data-photos.php:35
-#: pro-features/admin-pages/data-user.php:65
+#: admin-pages/user-data/data-photos.php:35
+#: admin-pages/user-data/data-user.php:80
 msgid "This user has uploaded "
 msgstr "Deze gebruiker heeft geupload"
 
-#: pro-features/admin-pages/data-photos.php:40
-#: pro-features/admin-pages/data-user.php:73
+#: admin-pages/user-data/data-photos.php:40
+#: admin-pages/user-data/data-user.php:88
 msgid "No photos could be found for this user."
 msgstr "Er zijn geen foto's gevonden voor deze gebruiker."
 
-#: pro-features/admin-pages/data-search-results.php:11
-#: pro-features/admin-pages/data-search-results.php:18
+#: admin-pages/user-data/data-search-results.php:11
+#: admin-pages/user-data/data-search-results.php:18
 msgid "Search Results"
 msgstr "Zoekresultaten"
 
-#: pro-features/admin-pages/data-search-results.php:32
-msgid "results were found for:"
+#: admin-pages/user-data/data-search-results.php:35
+#, fuzzy
+#| msgid "results were found for:"
+msgid "results were found for"
 msgstr "resultaten werden gevonden voor:"
 
-#: pro-features/admin-pages/data-search-results.php:40
+#: admin-pages/user-data/data-search-results.php:43
 msgid "Username"
 msgstr "Gebruikersnaam"
 
-#: pro-features/admin-pages/data-search-results.php:41
+#: admin-pages/user-data/data-search-results.php:44
 msgid "Email"
 msgstr "email"
 
-#: pro-features/admin-pages/data-search-results.php:42
-#: pro-features/functions.pages.php:86
+#: admin-pages/user-data/data-search-results.php:45
 msgid "No. of Entries"
 msgstr "Aantal van invoer "
 
-#: pro-features/admin-pages/data-search-results.php:43
-#: pro-features/functions.pages.php:90
+#: admin-pages/user-data/data-search-results.php:46
 msgid "Start Weight"
 msgstr "Start gewicht"
 
-#: pro-features/admin-pages/data-search-results.php:44
+#: admin-pages/user-data/data-search-results.php:47
 msgid "Recent Weight"
 msgstr "Recent gewicht"
 
-#: pro-features/admin-pages/data-search-results.php:58
+#: admin-pages/user-data/data-search-results.php:48 core.php:285
+msgid "Target Weight"
+msgstr "Streefgewicht"
+
+#: admin-pages/user-data/data-search-results.php:61
 msgid "No users were found for the given search criteria:"
 msgstr "Er werden geen gebruikers gevonden voor de opgegeven zoekcriteria:"
 
-#: pro-features/admin-pages/data-search-results.php:63
+#: admin-pages/user-data/data-search-results.php:66
 msgid "No search terms were specified"
 msgstr "Er zijn geen zoektermen opgegeven"
 
-#: pro-features/admin-pages/data-summary.php:19
+#: admin-pages/user-data/data-summary.php:19
 msgid "Summary"
 msgstr "Samenvatting"
 
-#: pro-features/admin-pages/data-summary.php:37
+#: admin-pages/user-data/data-summary.php:42
 msgid "League table for those that have lost the most"
 msgstr "League tabel voor degenen die het meest hebben verloren"
 
-#: pro-features/admin-pages/data-summary.php:37
+#: admin-pages/user-data/data-summary.php:42
 msgid "League Table for those that have gained the most"
 msgstr "League tabel voor degenen die het meeste zijn aangekomen"
 
-#: pro-features/admin-pages/data-summary.php:53
+#: admin-pages/user-data/data-summary.php:58
 msgid "Regenerate these stats"
 msgstr "Opnieuw deze statistieken berekenen"
 
-#: pro-features/admin-pages/data-summary.php:59
+#: admin-pages/user-data/data-summary.php:64
 msgid "Show who has gained the most"
 msgstr "Toon wie het meeste is aangekomen"
 
-#: pro-features/admin-pages/data-summary.php:59
+#: admin-pages/user-data/data-summary.php:64
 msgid "Show who has lost the most"
 msgstr "Toon wie het meeste is afgevallen"
 
-#: pro-features/admin-pages/data-summary.php:77
+#: admin-pages/user-data/data-summary.php:82
 msgid "All entries"
 msgstr "Aantal invoeringen"
 
-#: pro-features/admin-pages/data-summary.php:77
+#: admin-pages/user-data/data-summary.php:82
 msgid "Last 100 entries"
 msgstr "Laatste 100 toevoegingen"
 
-#: pro-features/admin-pages/data-summary.php:85
+#: admin-pages/user-data/data-summary.php:90
 msgid "Show all entries"
 msgstr "Laat alle invoer inzien"
 
-#: pro-features/admin-pages/data-summary.php:85
+#: admin-pages/user-data/data-summary.php:90
 msgid "Show 100 recent entries"
 msgstr "Laat de laatste 100 invoeren zien"
 
-#: pro-features/admin-pages/data-summary.php:96
-#: pro-features/functions.pages.php:44
+#: admin-pages/user-data/data-summary.php:101
 msgid "User Search"
 msgstr "Zoek gebruiker"
 
-#: pro-features/admin-pages/data-summary.php:102
+#: admin-pages/user-data/data-summary.php:107
 msgid "Quick Stats"
 msgstr "Snelle statistieken"
 
-#: pro-features/admin-pages/data-summary.php:126
+#: admin-pages/user-data/data-summary.php:131
 msgid "No. of WordPress users"
 msgstr "Aantal WordPress gebruikers"
 
-#: pro-features/admin-pages/data-summary.php:128
+#: admin-pages/user-data/data-summary.php:133
 msgid "No. of Weight Entries"
 msgstr "Aantal gewichten ingevoerd"
 
-#: pro-features/admin-pages/data-summary.php:130
+#: admin-pages/user-data/data-summary.php:135
 msgid "No. of Target Entries"
 msgstr "Aantal doelen ingevoerd"
 
-#: pro-features/admin-pages/data-summary.php:132
+#: admin-pages/user-data/data-summary.php:137
 msgid "refreshed every 15 minutes"
 msgstr "ververst elke 15 minuten"
 
-#: pro-features/admin-pages/data-summary.php:140
+#: admin-pages/user-data/data-summary.php:146
 msgid "View all data"
 msgstr "Bekijk alle data"
 
-#: pro-features/admin-pages/data-summary.php:144
+#: admin-pages/user-data/data-summary.php:150
 msgid "View all entries"
 msgstr "Bekijk alle invoer"
 
-#: pro-features/admin-pages/data-summary.php:149
+#: admin-pages/user-data/data-summary.php:155
 msgid "Export all data"
 msgstr "Exporteer alle data"
 
-#: pro-features/admin-pages/data-summary.php:153
-#: pro-features/functions.pages.php:181
+#: admin-pages/user-data/data-summary.php:159
 msgid "To CSV"
 msgstr "Naar CSV betand"
 
-#: pro-features/admin-pages/data-summary.php:157
-#: pro-features/functions.pages.php:185
+#: admin-pages/user-data/data-summary.php:163
 msgid "To JSON"
 msgstr "Naar JSON bestand"
 
-#: pro-features/admin-pages/data-summary.php:162
-#: pro-features/functions.pages.php:209
+#: admin-pages/user-data/data-summary.php:168
 msgid "Delete Data"
 msgstr "Verwijder data"
 
-#: pro-features/admin-pages/data-summary.php:166
+#: admin-pages/user-data/data-summary.php:172
 msgid "Delete data for ALL users"
 msgstr "Verwijder alle data voor ALLE GEBRUIKERS"
 
-#: pro-features/admin-pages/data-summary.php:178
+#: admin-pages/user-data/data-summary.php:184
 msgid "Are you sure you wish to remove all user data?"
 msgstr "Weet je het zeker dat je alle gebruikergegevens wilt wissen?"
 
-#: pro-features/admin-pages/data-user-edit-settings.php:21
+#: admin-pages/user-data/data-user-edit-settings.php:26
 msgid "Edit user preferences"
 msgstr "Aanpassen van gebruikers instellingen"
 
-#: pro-features/admin-pages/data-user.php:28
+#: admin-pages/user-data/data-user-edit-settings.php:38
+#: admin-pages/user-data/data-user.php:59
+#, fuzzy
+#| msgid "Upgrade to Pro for "
+msgid "Upgrade to Pro"
+msgstr "Upgrade naar de Pro versie voor"
+
+#: admin-pages/user-data/data-user-edit-settings.php:39
+#, fuzzy
+#| msgid "Allow user settings"
+msgid "to save changes to your user's settings"
+msgstr "Gebruikers instellingen toestaan"
+
+#: admin-pages/user-data/data-user.php:22 hooks.php:172
+msgid "The preferences for this user have been saved."
+msgstr "De voorkeuren voor deze gebruiker zijn opgeslagen"
+
+#: admin-pages/user-data/data-user.php:28
 msgid "The cache for this user has been deleted."
 msgstr "De cache voor deze gebruiker is verwijderd"
 
-#: pro-features/admin-pages/data-user.php:69
+#: admin-pages/user-data/data-user.php:60
+msgid "to view the a chart of the user's weight entries."
+msgstr ""
+
+#: admin-pages/user-data/data-user.php:84
 msgid "View all photos"
 msgstr "Bekijk alle foto's"
 
-#: pro-features/admin-pages/data-user.php:84
-#: pro-features/admin-pages/data-user.php:104
-#: pro-features/admin-pages/data-user.php:131
+#: admin-pages/user-data/data-user.php:99
+#: admin-pages/user-data/data-user.php:119
+#: admin-pages/user-data/data-user.php:146
 msgid "Upgrade to Pro Plus"
 msgstr "Upgrade naar de Pro Plus versie"
 
-#: pro-features/admin-pages/data-user.php:85
+#: admin-pages/user-data/data-user.php:100
 msgid "to allow a user to upload photos of their progress"
 msgstr ""
 "om een gebruiker toestemming te geven voor het uploaden van foto's van hun "
 "voortgang"
 
-#: pro-features/admin-pages/data-user.php:93
+#: admin-pages/user-data/data-user.php:108
 msgid "Daily calorie needs"
 msgstr "Dagelijkse behoeften aan calorieën "
 
-#: pro-features/admin-pages/data-user.php:105
+#: admin-pages/user-data/data-user.php:120
 msgid ""
 "to view the user's daily calorie intake required to either maintain or lose "
 "weight (Harris Benedict formula)"
@@ -1780,21 +1297,20 @@ msgstr ""
 "om de dagelijkse calorie-inname van de gebruiker te zien die nodig is om te "
 "handhaven of te verliezen (Harris Benedict formule)"
 
-#: pro-features/admin-pages/data-user.php:119
+#: admin-pages/user-data/data-user.php:134
 msgid "Please ensure the values for Proteins, Carbohydrates and Fats (within "
 msgstr ""
 "Zorg ervoor dat de waarden voor eiwitten, koolhydraten en vetten (binnen"
 
-#: pro-features/admin-pages/data-user.php:121
-#: pro-features/plus/harris.benedict.php:246
+#: admin-pages/user-data/data-user.php:136
 msgid "settings"
 msgstr "Instellingen"
 
-#: pro-features/admin-pages/data-user.php:122
+#: admin-pages/user-data/data-user.php:137
 msgid ") have been specified and total 100%."
 msgstr ") zijn gespecificeerd en totaal 100%. zijn."
 
-#: pro-features/admin-pages/data-user.php:132
+#: admin-pages/user-data/data-user.php:147
 msgid ""
 "to view the user's suggested Macronutrient intake based on their recommended "
 "calorie intake"
@@ -1802,1156 +1318,1546 @@ msgstr ""
 "om de door de gebruiker voorgestelde Macronutriënten-inname te bekijken op "
 "basis van hun aanbevolen calorie-inname"
 
-#: pro-features/admin-pages/data-user.php:140
+#: admin-pages/user-data/data-user.php:155
 msgid "Entries for this user"
 msgstr "Inschrijvingen voor deze gebruiker"
 
-#: pro-features/admin-pages/data-view-all.php:11
-#: pro-features/admin-pages/data-view-all.php:18
+#: admin-pages/user-data/data-view-all.php:11
+#: admin-pages/user-data/data-view-all.php:23
 msgid "View All Data"
 msgstr "Bekijk alle data"
 
-#: pro-features/admin-pages/data-view-all.php:32
+#: admin-pages/user-data/data-view-all.php:37
 msgid "Number of WordPress users"
 msgstr "Aantal WordPress gebruikers"
 
-#: pro-features/admin-pages/data-view-all.php:34
+#: admin-pages/user-data/data-view-all.php:39
 msgid "Number of weight entries"
 msgstr "Aantal gewichten ingevoerd"
 
-#: pro-features/admin-pages/data-view-all.php:36
+#: admin-pages/user-data/data-view-all.php:41
 msgid "Number of targets entered"
 msgstr "Aantal doelen ingevoerd"
 
-#: pro-features/admin-pages/data-view-all.php:39
+#: admin-pages/user-data/data-view-all.php:44
 msgid "Export to CSV"
 msgstr "Exporteer naar CSV"
 
-#: pro-features/admin-pages/data-view-all.php:41
+#: admin-pages/user-data/data-view-all.php:46
 msgid "Export to JSON"
 msgstr "Exporteer naar JSON"
 
-#: pro-features/emails.php:39
-msgid "added"
-msgstr "toegevoegd"
-
-#: pro-features/emails.php:39
-msgid "updated"
-msgstr "Aangepast"
-
-#: pro-features/emails.php:40
-msgid "their weight / measurements for "
-msgstr "hun gewicht / meting voor"
-
-#: pro-features/emails.php:40
-msgid "their target to"
-msgstr "hun gewicht om"
-
-#: pro-features/emails.php:58
-msgid "Weight Loss Tracker update for"
-msgstr "Weight Loss Tracker update voor"
-
-#: pro-features/emails.php:73
-msgid "Hello"
-msgstr "Hallo"
-
-#: pro-features/emails.php:74
-msgid ""
-"Just a quick email to let you know that \"{displayname}\" has {mode} {type}:"
-msgstr ""
-"Even een kort email om te laten weten dat \"{displayname}\" heeft {mode} "
-"{type}: "
-
-#: pro-features/emails.php:75
-msgid "{data}"
-msgstr "(data)"
-
-#: pro-features/emails.php:76
-msgid "Thank you!"
-msgstr "Bedankt!"
-
-#: pro-features/export.php:42
-msgid "No data was found for the given criteria."
-msgstr "Geen data gevonden voor de gegeven criteria."
-
-#: pro-features/export.php:195
-msgid "lbs only"
-msgstr "alleen lbs"
-
-#: pro-features/export.php:198
-msgid "Difference from start"
-msgstr "Verschil vanaf het startpunt"
-
-#: pro-features/export.php:254 pro-features/footable.php:154
-msgid "No height"
-msgstr "Geen lengte"
-
-#: pro-features/feature-list.php:6
-msgid "<strong>All of the features that come with a standard <a href=\""
-msgstr "<strong> Alle functies die standaard zijn <a href = \""
-
-#: pro-features/feature-list.php:7
-msgid ""
-"<strong>Photo Uploads</strong>. Your users can now upload photos of their "
-"progress. Photos can be viewed, updated and removed by the end user and "
-"administrators. Handy shortcodes are provided for displaying galleries, most "
-"recent and oldest photo."
-msgstr ""
-"<strong> Foto uploads </ strong>. Uw gebruikers kunnen nu foto's uploaden "
-"van hun voortgang. Foto's kunnen worden bekeken, bijgewerkt en verwijderd "
-"door de eindgebruiker en beheerders. Handige shortcodes zijn beschikbaar "
-"voor het weergeven van galerijen, meest recente en oudste foto's."
-
-#: pro-features/feature-list.php:8
-msgid ""
-"<strong>Basal Metabolic Rate (BMR) calculations per user</strong>. "
-"Shortcodes and extended admin screens to display a user's BMR. For further "
-"information on BMR and how it is calculated visit <a href=\""
-msgstr ""
-"<strong> Basal Metabolic Rate (BMR) berekeningen per gebruiker </ strong>. "
-"Shortcodes en uitgebreide admin-schermen om de BMR van een gebruiker weer te "
-"geven. Voor nadere informatie over BMR en hoe het wordt berekend, bezoek <a "
-"href = \""
-
-#: pro-features/feature-list.php:9
-msgid ""
-"<strong>Harris Benedict formula</strong>. Shortcodes and extended admin "
-"screens to a view a person's calorie intake required to maintain and lose "
-"weight. For further information on Harris Benedict Formula and how it is "
-"calculated visit <a href=\""
-msgstr ""
-"<strong> Harris Benedict formule </ strong>. Shortcodes en uitgebreide "
-"administratieschermen naar een zicht op de calorie-inname van een persoon "
-"die nodig is om te handhaven en te verliezen. Voor nadere informatie over "
-"Harris Benedict Formula en hoe het wordt berekend, bezoek <a href = \""
-
-#: pro-features/feature-list.php:10
-msgid ""
-"<strong>Recommended calorie intake per meal time</strong>. Shortcodes and "
-"extended admin screens to recommend how a person should split their daily "
-"calorie intake across meals. For further information on how this is "
-"calculated please visit <a href=\""
-msgstr ""
-"<strong> Aanbevolen calorie-inname per maaltijd </ strong>. Shortcodes en "
-"uitgebreide admin-schermen om aan te bevelen hoe een persoon hun dagelijkse "
-"calorie-inname over maaltijden moet verdelen. Voor meer informatie over hoe "
-"dit wordt berekend, bezoek dan <a href = \""
-
-#: pro-features/feature-list.php:11
-msgid ""
-"<strong>Macronutrients Calculator</strong>. Shortcodes and extended admin "
-"screens to recommend how their calorie consumption should be split into "
-"fats, carbohydrates and proteins. For further information on the "
-"Macronutrients Calculator and how these calculations are performed please "
-"visit <a href=\""
-msgstr ""
-"<strong> Macronutriënten Calculator </ strong>. Shortcodes en uitgebreide "
-"admin-schermen om aan te bevelen hoe hun calorieverbruik moet worden "
-"verdeeld in vetten, koolhydraten en eiwitten. Voor meer informatie over de "
-"Macronutriënten Calculator en hoe deze berekeningen worden uitgevoerd, "
-"bezoek dan <a href = \""
-
-#: pro-features/feature-list.php:12
-msgid ""
-"<strong>Additional user preference fields</strong>. Additional user "
-"preference fields and shortcodes to display them: Activity Level, Date of "
-"Birth and Gender."
-msgstr ""
-"<strong> Extra gebruikers voorkeur velden </ strong>. Extra gebruikers "
-"voorkeur velden en shortcodes om ze te tonen: Activiteitsniveau, "
-"Geboortedatum en Geslacht."
-
-#: pro-features/feature-list.php:17
-msgid ""
-"<strong>Access your user's data.</strong> Admin can view, edit and delete "
-"user data. Various tools for viewing user's graphs, tables of entries, BMI, "
-"targets, weight lost / gained stats and much more."
-msgstr ""
-"<strong> Toegang tot de gegevens van uw cliënt. </ strong> Admin kan "
-"gebruikersgegevens bekijken, bewerken en verwijderen. Diverse instrumenten "
-"voor het bekijken van de grafieken van de cliënt, tabellen van inzendingen, "
-"BMI, doelen, gewichtsverlies / winststatistieken en nog veel meer."
-
-#: pro-features/feature-list.php:18
-msgid ""
-"<strong>Measurements.</strong> Support for recording measurements like Hip, "
-"Waist, Leg, Bicep, etc. Displayed on charts and tables."
-msgstr ""
-"<Strong> Metingen. </ Strong> Ondersteuning voor het opnemen van metingen, "
-"zoals de heupen, taille, benen, Biceps, etc. weergegeven op grafieken en "
-"tabellen."
-
-#: pro-features/feature-list.php:19
-msgid ""
-"<strong>Export all data or a particular user.</strong> Export in JSON or CSV "
-"format."
-msgstr ""
-"<strong> Exporteer alle gegevens of een bepaalde gebruiker. </ strong> "
-"Exporteer naar JSON of CSV-formaat."
-
-#: pro-features/feature-list.php:20
-msgid ""
-"<strong>BMI.</strong> Allows a user to specify their height. Once specified, "
-"their BMI is displayed next to each weight entry. There is also a shortcode "
-"to render the latest BMI."
-msgstr ""
-"<Strong>BMI.</ Strong>Toestaan dat een gebruiker zijn eigen lengte invoert. "
-"Eenmaal opgegeven, wordt hun BMI naast elk gewicht invoer weergegeven. Er is "
-"ook een shortcode de laatste BMI weer te geven."
-
-#: pro-features/feature-list.php:21
-msgid ""
-"<strong>Email notifications.</strong> Receive email notifications when a "
-"person updates their target or adds / edits a weight."
-msgstr ""
-"<strong>Email notificaties.</strong> Ontvang email notificaties wanneer een "
-"client zijn doel gewicht aanpast of bij het toevoegen / aanpassen van "
-"gewicht."
-
-#: pro-features/feature-list.php:22
-msgid ""
-"<strong>Overall user stats.</strong> Shortcodes that allow you to display "
-"the total lost / gained for the community and another to display a league "
-"table."
-msgstr ""
-"<Strong>Algehele gebruiker statistieken.</ Strong> Shortcodes die toelaten "
-"om de totale verloren / aangekomen voor de gemeenschap en een ander in een "
-"ranglijst weer te geven."
-
-#: pro-features/feature-list.php:23
-msgid ""
-"<strong>Widgets.</strong> Widgets that allow you to display the graph and "
-"quick weight entry form within any widget area."
-msgstr ""
-"<strong>Widgets.</strong> Met deze widgets zie je snel en makkelijk het "
-"gewicht in de widget area."
-
-#: pro-features/feature-list.php:24
-msgid ""
-"<strong>Chart and form Shortcodes.</strong> That allow you to display the "
-"graph and quick weight entry form by placing a shortcode on any post or page."
-msgstr ""
-"<strong>Grafieken en vormen codes.</strong> Dit geeft je toestemming om de "
-"grafiek en het gewicht wat je hebt ingevult te plaatsen op elke post pagina."
-
-#: pro-features/feature-list.php:25
-msgid ""
-"<strong>Progress Bar shortcode.</strong> A shortcode that visually displays "
-"the logged in user's progress towards their target"
-msgstr ""
-"<strong>Voortgangs diagram shortcode.</strong> Een shortcode die visueel "
-"weergeeft wat de voortgang is naar hun doelgewicht"
-
-#: pro-features/feature-list.php:26
-msgid ""
-"<strong>Reminder shortcode.</strong> A shortcode that can be used to remind "
-"the user to enter their target or weight for today."
-msgstr ""
-"<strong>Herinnering shortcode.</strong> Een shortcode die gebruikt kan "
-"worden om cliënten een herinnering te geven dat ze hun doelgewicht of het "
-"gewicht van die dag nog moeten invoeren."
-
-#: pro-features/feature-list.php:27
-msgid ""
-"<strong>Message shortcode</strong> A shortcode that allows you to "
-"congratulate a user when they lose weight x number of times. It also "
-"provides the opposite allowing you to provide encouragement when someone "
-"gains weight."
-msgstr ""
-"<strong>Bericht shortcode</strong> Een shortcode die ervoor zorgt dat je een "
-"client feliciteerd wanneer ze een x aantal keer gewicht zijn verloren. Het "
-"geeft ook de mogelijk voor het tegenovergestelde, het aanmoedigen wanneer "
-"iemand is aangekomen qua gewicht."
-
-#: pro-features/feature-list.php:28
-msgid ""
-"<strong>Text Shortcodes.</strong> Additional shortcodes for earliest and "
-"most recent dates entered."
-msgstr ""
-"<strong>Tekst codes.</strong> Extra shortcodes voor de meest recente data "
-"wat je hebt ingevult."
-
-#: pro-features/feature-list.php:29
-msgid ""
-"<strong>Progress Bar shortcode / widget.</strong> Display a user's progress "
-"towards their weight target."
-msgstr ""
-"<strong>Voortgangs diagram shortcode / widget.</strong> Laat de voortgang "
-"van een cliënt zijn doelgewicht zien."
-
-#: pro-features/feature-list.php:30
-msgid ""
-"<strong>Reminder shortcode.</strong> Display a reminder to enter their "
-"weight for the given day or enter a target."
-msgstr ""
-"<strong>Herinnering shortcode.</strong> Laat een herinnering zien voor het "
-"toevoegen van gewicht voor de dag of voeg een doel toe."
-
-#: pro-features/feature-list.php:31
-msgid ""
-"<strong>Admin: View / Delete user data</strong>. Admin will be able to view "
-"and delete existing user data."
-msgstr ""
-"<strong>Admin: Bekijk / bewerk gebruikers data</strong>.Je kan als admin "
-"gebruikers data bekijken, veranderen en verwijderen"
-
-#: pro-features/feature-list.php:32
-msgid ""
-"<strong>User preferences</strong>. If enabled, the user will be able to "
-"select which unit they wish to store their weight in Metric or Imperial. "
-"They will also be able to specify date format and clear all their weight "
-"data."
-msgstr ""
-"<strong>Gebruikers voorkeueren</strong> wanneer geselecteerd, kies je voor "
-"het opslaan van je gewicht in Meteric of Imerial. Je kan bepaalde datums en "
-"bepaald gewicht verwijderen."
-
-#: pro-features/feature-list.php:33
-msgid ""
-"<strong>Bar Charts</strong>. Fancy something different to a line chart? The "
-"plugin will also support Bar Charts."
-msgstr ""
-"<strong>Staafdiagram</strong>. Iets anders dan een lijn diagram? Met deze "
-"plugin kan je kiezen voor een staafdiagram."
-
-#: pro-features/feature-list.php:34
-msgid ""
-"<strong>Decimals</strong>. Decimals will be allowed weight in Pounds only or "
-"Kg modes."
-msgstr ""
-"<strong>Decimalen</strong>. Decimalen zijn alleen te zien in de Ponden of Kg "
-"modes."
-
-#: pro-features/feature-list.php:35
-msgid ""
-"<strong>Delete existing entry</strong>. A logged in user will be able to "
-"delete or edit an existing weight entry."
-msgstr ""
-"<Strong> Verwijderen bestaande invoer </ strong>. Een ingelogde gebruiker "
-"zal in staat zijn om bestaande invoer van gewicht te bewerken of verwijderen."
-
-#: pro-features/feature-list.php:36
-msgid ""
-"<strong>Better Tables.</strong>. Data tables in front end and admin will "
-"support paging and sorting."
-msgstr ""
-"<strong>Betere tabellen.</strong>. De data in de tabellen in front & and "
-"admin zullen alles ondersteunen"
-
-#: pro-features/feature-list.php:37
-msgid ""
-"<strong>Admin: Extra Settings</strong>. Extra settings to customise the "
-"plugin will be added e.g. number of plot points on graph, rows per page, etc."
-msgstr ""
-"<strong>Admin: Extra Instellingen</strong> Extra instellingen om deze plugin "
-"aan te passen o.a. aantal nummers in de grafies, rijen per pagina, ect."
-
-#: pro-features/footable.php:56
-msgid "Measurements are in"
-msgstr "Metingen zijn in"
-
-#: pro-features/footable.php:56
-msgid "cm"
-msgstr "cm"
-
-#: pro-features/footable.php:127
-msgid "First entry"
-msgstr "Eerste invoer"
-
-#: pro-features/footable.php:195
-msgid "User"
-msgstr "Gebruiker"
-
-#: pro-features/footable.php:203
-msgid "Difference"
-msgstr "Verschil"
-
-#: pro-features/footable.php:207
-msgid "Body Mass Index"
-msgstr "Body Mass Index"
-
-#: pro-features/footable.php:212
-msgid "Photo"
-msgstr "Foto"
-
-#: pro-features/footable.php:276
-msgid "Are you sure you want to delete the row?"
-msgstr "Weet je zeker dat je deze rij  wilt verwijderen?"
-
-#: pro-features/footable.php:277
-msgid "Unfortunately there was an error deleting the row."
-msgstr "Helaas is er een fout opgetreden bij het verwijderen van de rij."
-
-#: pro-features/footable.php:278
-msgid "Search"
-msgstr "Zoeken"
-
-#: pro-features/footable.php:279
-msgid "No data found"
-msgstr "Geen data gevonden"
-
-#: pro-features/functions.pages.php:11
-msgid ""
-"Enter a user's email address, display name or username and click Search."
-msgstr ""
-"Voer een e-mailadres,  weergave naam of gebruikersnaam in van een gebruiker "
-"en klik op Zoeken."
-
-#: pro-features/functions.pages.php:52
-msgid "Most Recent Photo"
-msgstr "Meest recente foto"
-
-#: pro-features/functions.pages.php:63
-msgid "No. of photos: "
-msgstr "Aantal foto's:"
-
-#: pro-features/functions.pages.php:66
-msgid "View all"
-msgstr "Bekijk alles"
-
-#: pro-features/functions.pages.php:78
-msgid "User Information"
-msgstr "Gebruikersinformatie"
-
-#: pro-features/functions.pages.php:94
-msgid "Latest Weight"
-msgstr "Laatste gewicht"
-
-#: pro-features/functions.pages.php:98
-msgid "Diff. from Start"
-msgstr "Verschil vanaf start"
-
-#: pro-features/functions.pages.php:114
-msgid "Diff. from Target"
-msgstr "Verschil vanaf doel"
-
-#: pro-features/functions.pages.php:118
-msgid "Current BMI"
-msgstr "Huidige BMI"
-
-#: pro-features/functions.pages.php:119
-msgid "No height specified"
-msgstr "Geen lengte opgegeven"
-
-#: pro-features/functions.pages.php:125
-msgid "Aim"
-msgstr "Doel"
-
-#: pro-features/functions.pages.php:133
-msgid "Gender"
-msgstr "Geslacht"
-
-#: pro-features/functions.pages.php:137
-msgid "Activity Level"
-msgstr "Activiteiten niveau"
-
-#: pro-features/functions.pages.php:141
-msgid "Date of Birth"
-msgstr "Geboortedatum"
-
-#: pro-features/functions.pages.php:145
-msgid "BMR"
-msgstr "BMR"
-
-#: pro-features/functions.pages.php:150
-msgid "Missing data"
-msgstr "Verloren data"
-
-#: pro-features/functions.pages.php:164 pro-features/functions.pages.php:168
-msgid "Add Entry"
-msgstr "Toevoegen invoer"
-
-#: pro-features/functions.pages.php:172
-msgid "Edit Target"
-msgstr "Bewerk doel"
-
-#: pro-features/functions.pages.php:177
-msgid "Export Data"
-msgstr "Exporteer data"
-
-#: pro-features/functions.pages.php:200
-msgid "Delete Cache"
-msgstr "Verwijder Cache"
-
-#: pro-features/functions.pages.php:204
-msgid "Delete Cache for this user"
-msgstr "Verwijder alle cache voor de cliënt"
-
-#: pro-features/functions.pages.php:213
-msgid "Delete ALL data for this user"
-msgstr "Verwijder ALLE DATA voor deze cliënt"
-
-#: pro-features/functions.pages.php:220
-msgid "Are you sure you wish to remove the data for this user?"
-msgstr ""
-"Weet je het zeker dat je alle gebruikergegevens wilt wissen voor deze cliënt?"
-
-#: pro-features/functions.pages.php:293
-msgid "Back"
-msgstr "Terug"
-
-#: pro-features/functions.pages.php:295
-msgid "WordPress Record"
-msgstr "WordPress gegevens"
-
-#: pro-features/functions.pages.php:296
-msgid "Weight Tracker Record"
-msgstr "Weight Loss Tracker - gegevens"
-
-#: pro-features/functions.pages.php:315
-msgid "Error: The User's ID was missing..."
-msgstr "Fout: de gebruikers ID ontbreekt ..."
-
-#: pro-features/functions.php:6
-msgid "Cm"
-msgstr "Centimeter"
-
-#: pro-features/functions.php:19
-msgid "Add Height for BMI"
-msgstr "Voeg lengte toe voor weergeven van BMI"
-
-#: pro-features/functions.php:47
-msgid "Underweight"
-msgstr "Ondergewicht"
-
-#: pro-features/functions.php:49
-msgid "Healthy"
-msgstr "Gezond"
-
-#: pro-features/functions.php:52
-msgid "Overweight"
-msgstr "Overgewicht"
-
-#: pro-features/functions.php:54
-msgid "Heavily Overweight"
-msgstr "Zwaar overgewicht"
-
-#: pro-features/functions.php:215 pro-features/plus/harris.benedict.php:241
-msgid "Female"
-msgstr "Vrouw"
-
-#: pro-features/functions.php:216 pro-features/plus/harris.benedict.php:241
-msgid "Male"
-msgstr "Man"
-
-#: pro-features/functions.php:229
-msgid "Little / No Exercise"
-msgstr "Weinig tot geen beweging"
-
-#: pro-features/functions.php:230
-msgid "Light Exercise"
-msgstr "Lichte oefeningen"
-
-#: pro-features/functions.php:231
-msgid "Moderate Exercise (3-5 days a week)"
-msgstr "Gemiddelde oefeningen (3-5 dagen per week)"
-
-#: pro-features/functions.php:232
-msgid "Very Active (6-7 days a week)"
-msgstr "Zeer Actief (6-7 dagen per week)"
-
-#: pro-features/functions.php:233
-msgid "Extra Active (very active & physical job)"
-msgstr "Extra Actief (erg actief en fysiek werk)"
-
-#: pro-features/functions.php:250
-msgid "Maintain current weight"
-msgstr "Huidige gewicht behouden"
-
-#: pro-features/functions.php:251
-msgid "Lose weight"
-msgstr "Afvallen"
-
-#: pro-features/functions.php:252
-msgid "Gain weight"
-msgstr "Aankomen "
-
-#: pro-features/functions.php:306 pro-features/functions.php:382
-#: pro-features/shortcode-various.php:61 pro-features/shortcode-various.php:80
-#: pro-features/shortcode-various.php:96 pro-features/shortcode-various.php:112
-msgid "Not Specified"
-msgstr "Niet opgegeven"
-
-#: pro-features/functions.php:455
-msgid "Error: The user does not appear to exist"
-msgstr "Error: De cliënt lijkt niet te bestaan"
-
-#: pro-features/init.php:133
-msgid "View weight entries"
-msgstr "Bekijk ingevoerde gewicht"
-
-#: pro-features/plus/bmr.php:32
-msgid "No Gender specified"
-msgstr "Geen geslacht opgegeven"
-
-#: pro-features/plus/bmr.php:39
-msgid "No Date of Birth specified or too young"
-msgstr "Geen geboortedatum opgegeven of te jong"
-
-#: pro-features/plus/bmr.php:46
-msgid "No Height specified"
-msgstr "Geen lengte opgegeven"
-
-#: pro-features/plus/bmr.php:53
-msgid "No Weight entered"
-msgstr "Geen gewicht ingevoerd"
-
-#: pro-features/plus/harris.benedict.php:32
-#: pro-features/plus/macronutrient.calculator.php:295
-msgid "Maintain"
-msgstr "Behouden"
-
-#: pro-features/plus/harris.benedict.php:48
-#: pro-features/plus/macronutrient.calculator.php:295
-msgid "Lose"
-msgstr "Verliezen"
-
-#: pro-features/plus/harris.benedict.php:91
-#: pro-features/plus/harris.benedict.php:171
-#: pro-features/plus/harris.benedict.php:210
-#: pro-features/plus/macronutrient.calculator.php:94
-#: pro-features/plus/macronutrient.calculator.php:198
-#: pro-features/plus/macronutrient.calculator.php:237
-msgid ""
-"Please ensure all relevant data to calculate calorie intake has been entered "
-"i.e. Activity Level, Date of Birth, Current Weight, Gender and Height."
-msgstr ""
-"Zorg ervoor dat alle relevante gegevens voor het berekenen van de calorie-"
-"inname zijn ingevoerd, bijv. Activiteitsniveau, Geboortedatum, Huidig "
-"Gewicht, Geslacht en Hoogte."
-
-#: pro-features/plus/harris.benedict.php:108
-#: pro-features/plus/macronutrient.calculator.php:119
-msgid "Total"
-msgstr "Totaal"
-
-#: pro-features/plus/harris.benedict.php:109
-#: pro-features/plus/macronutrient.calculator.php:120
-msgid "Breakfast"
-msgstr "Ontbijt"
-
-#: pro-features/plus/harris.benedict.php:110
-#: pro-features/plus/macronutrient.calculator.php:121
-msgid "Lunch"
-msgstr "Lunch"
-
-#: pro-features/plus/harris.benedict.php:111
-#: pro-features/plus/macronutrient.calculator.php:122
-msgid "Dinner"
-msgstr "Avondeten"
-
-#: pro-features/plus/harris.benedict.php:112
-#: pro-features/plus/macronutrient.calculator.php:123
-msgid "Snacks"
-msgstr "Snacks"
-
-#: pro-features/plus/harris.benedict.php:242
-msgid "calories for weight loss are capped at "
-msgstr "calorieën voor gewichtsverlies staan maximaal op "
-
-#: pro-features/plus/harris.benedict.php:244
-msgid "This can be modified within "
-msgstr "Dit kan worden aangepast binnen"
-
-#: pro-features/plus/macronutrient.calculator.php:152
-msgid "Carbs"
-msgstr "Koolhydraten"
-
-#: pro-features/plus/photos.gallery.php:29
-msgid "It doesn't look you've uploaded any photos."
-msgstr "Het lijkt erop dat je geen foto's nog hebt geüpload"
-
-#: pro-features/plus/photos.php:60
-msgid "No photos were found."
-msgstr "Er zijn geen foto's gevonden"
-
-#: pro-features/plus/photos.php:73
-msgid "No recent photo found."
-msgstr "Geen recente foto gevonden"
-
-#: pro-features/plus/photos.php:350
-msgid "Don't show to public?"
-msgstr "Niet openbaar maken?"
-
-#: pro-features/plus/photos.php:353
-msgid ""
-"If the user has uploaded this as part of their Weight Tracker progress, they "
-"probably don't want it viewable on a public attachment page!"
-msgstr ""
-"Als de gebruiker dit heeft geüpload als onderdeel van hun Weight Tracker-"
-"voortgang, willen ze dat waarschijnlijk niet op een openbare bijlage pagina!"
-
-#: pro-features/plus/shortcode.wlt.php:30
-msgid "Your have uploaded"
-msgstr "Je hebt geupload"
-
-#: pro-features/plus/shortcode.wlt.php:32
-msgid "photos"
-msgstr "foto's"
-
-#: pro-features/plus/shortcode.wlt.php:32
-msgid "photo"
-msgstr "foto"
-
-#: pro-features/plus/shortcode.wlt.php:39
-msgid "It looks like you haven't uploaded any photos yet"
-msgstr "Het lijkt erop dat je nog geen foto's hebt geupload"
-
-#: pro-features/plus/shortcode.wlt.php:68
-msgid "BMI (Body Mass Index)"
-msgstr "BMI (Body Mass Index)"
-
-#: pro-features/plus/shortcode.wlt.php:73
-msgid ""
-"The BMI (Body Mass Index) is used by the medical profession to quickly "
-"determine a person’s weight in regard to their height. From a straight "
-"forward calculation the BMI factor can be gained and may be used to "
-"determine if a person is underweight, of normal weight, overweight or obese."
-msgstr ""
-"De BMI (Body Mass Index) wordt door medisch personeel gebruikt om snel het "
-"gewicht van een persoon te bepalen met betrekking tot hun lengte. Uit een "
-"rechtstreekse berekening kan de BMI-factor worden verkregen en kan worden "
-"gebruikt om te bepalen of een persoon ondergewicht is, van normaal gewicht, "
-"overgewicht of zwaarlijvig is."
-
-#: pro-features/plus/shortcode.wlt.php:80
-msgid "Your current BMI is"
-msgstr "Uw huidige BMI is"
-
-#: pro-features/plus/shortcode.wlt.php:86
-msgid ""
-"Before we can calculate your BMI, we need your current weight and height."
-msgstr ""
-"Voordat we uw BMI kunnen berekenen, hebben we uw huidige gewicht en lengte "
-"nodig."
-
-#: pro-features/plus/shortcode.wlt.php:91
-msgid ""
-"To allow us to calculate this, we need your latest weight, date of birth, "
-"height and gender."
-msgstr ""
-"Om dit te kunnen berekenen, hebben we uw laatst gemeten gewicht, "
-"geboortedatum, lengte en geslacht nodig."
-
-#: pro-features/plus/shortcode.wlt.php:95
-msgid "BMR (Basal Metabolic Rate)"
-msgstr "BMR (basale metabolische snelheid)"
-
-#: pro-features/plus/shortcode.wlt.php:99
-msgid ""
-"BMR is short for Basal Metabolic Rate. The Basal Metabolic Rate is the "
-"number of calories required to keep your body functioning at rest, also "
-"known as your metabolism. We calculate your BMR using formulas provided by "
-"www.diabetes.co.uk."
-msgstr ""
-"BMR is een afkorting voor basale metabolische snelheid. De basale "
-"metabolische snelheid is het aantal calorieën dat nodig is om uw lichaam in "
-"rust te houden, ook bekend als uw stofwisseling. Wij berekenen uw BMR met "
-"behulp van formules van www.diabetes.co.uk."
-
-#: pro-features/plus/shortcode.wlt.php:106
-msgid "Your current BMR is"
-msgstr "Uw huidige BMR is"
-
-#: pro-features/plus/shortcode.wlt.php:117
-msgid "Suggested Calorie Intake"
-msgstr "Voorgestelde Calorie-inname"
-
-#: pro-features/plus/shortcode.wlt.php:122
-msgid ""
-"Once we know your BMR (the number of calories to keep you functioning at "
-"rest), we can go on to give you suggestions on how to spread your calorie "
-"intake across the day. Firstly we split the figures into daily calorie "
-"intake to maintain weight and daily calorie intake to lose weight. Daily "
-"calorie intake to lose weight is calculated based on NHS advice – they "
-"suggest to lose 1 – 2lbs a week you should subtract 600 calories from your "
-"BMR. The two daily figures can be further broken down by recommending how to "
-"split calorie intake across the day i.e. breakfast, lunch, dinner and snacks."
-msgstr ""
-"Zodra we uw BMR weten (het aantal calorieën om u in rust te houden), kunnen "
-"wij u verder suggesties geven over hoe u uw calorie-inname door de dag "
-"verspreidt. Ten eerste verdelen we de cijfers in de dagelijkse calorie-"
-"inname om het gewicht en de dagelijkse calorie-inname te behouden om gewicht "
-"te verliezen. De dagelijkse calorie-inname om gewicht te verliezen wordt "
-"berekend op basis van NHS-advies - zij suggereren dat u 1 tot 2 kg per week "
-"kwijt bent, u moet 600 calorieën van uw BMR aftrekken. De twee dagelijkse "
-"cijfers kunnen verder worden afgebroken door aan te bevelen hoe u de calorie-"
-"inname door de dag kunt splitsen, zoals ontbijt, lunch, diner en snacks."
-
-#: pro-features/plus/shortcode.wlt.php:139
-msgid "Macronutrients"
-msgstr "macronutriënten"
-
-#: pro-features/plus/shortcode.wlt.php:146
-msgid ""
-"With calories calculated, the we can recommend how those calories should be "
-"split into Fats, Carbohydrates and Proteins.  Based on 2010 Dietary "
-"Guidelines for Americans we have split it in the following manner:"
-msgstr ""
-"Met calorieën berekend, kunnen we aanraden hoe deze calorieën verdeeld "
-"moeten worden in vetten, koolhydraten en eiwitten. Op basis van de "
-"voedingsrichtsnoeren voor Amerikanen in 2010 hebben we het op de volgende "
-"manier gesplitst:"
-
-#: pro-features/plus/shortcode.wlt.php:149
-msgid "of calories, Fat"
-msgstr "van calorieën, vet"
-
-#: pro-features/plus/shortcode.wlt.php:151
-msgid "and Protein"
-msgstr "en Proteïnen"
-
-#: pro-features/shortcode-chart.php:56
-msgid "No weight data was found for the specified user."
-msgstr "Geen data gevonden voor deze gebruiker"
-
-#: pro-features/shortcode-if.php:17
-msgid ""
-"To use this shortcode, you must specify content between opening and closing "
-"tags<br /><br />e.g. [wlt-if]something to show if IF is true[/wlt-if]"
-msgstr ""
-"Om deze shortcode te gebruiken, moet u de inhoud tussen openings- en "
-"sluitingsnamen opgeven <br /> <br /> b.v. [wlt-if] iets om te laten zien of "
-"IF waar is [/ wlt-if]"
-
-#: pro-features/shortcode-if.php:41
-msgid "Unfortunately the field you specified is for Pro Plus licenses only."
-msgstr "Unfortunately the field you specified is for Pro Plus licenses only."
-
-#: pro-features/shortcode-progress-bar.php:25
-#: pro-features/widget-progress.php:25
-msgid "towards your target of {t}."
-msgstr "naar jou streven toe van {t}."
-
-#: pro-features/shortcode-progress-bar.php:117
-msgid "Please add a weight entry to see your progress."
-msgstr ""
-"Voer alsjeblieft een nieuwe gewichtsmeting in om je voortgaan te kunnen zien."
-
-#: pro-features/shortcode-progress-bar.php:121
-msgid "Please enter a target weight to see your progress."
-msgstr "Voeg een streefgewicht toe om je voortgang te kunnen zien."
-
-#: pro-features/shortcode-progress-bar.php:125
-msgid ""
-"This shortcode can not be used as Target weights have been disabled in the "
-"plugin's settings."
-msgstr ""
-"Dit shortcode kan niet worden gebruikt als streefgewichten zijn "
-"uitgeschakeld in de instellingen van de plugin."
-
-#: pro-features/shortcode-reminders.php:29
-msgid ""
-"Please remember to enter your weight and measurements for today as well as "
-"your target weight."
-msgstr ""
-"Vergeet niet om je gewicht en metingen vandaag in voeren en ook je "
-"doelgewicht."
-
-#: pro-features/shortcode-reminders.php:29
-msgid ""
-"Please remember to enter your weight for today as well as your target weight."
-msgstr "Vergeet niet om je gewicht vandaag in voeren en ook je doelgewicht."
-
-#: pro-features/shortcode-reminders.php:32
-msgid "Please remember to enter your target weight."
-msgstr "Vergeet niet om je streefgewicht in te voeren."
-
-#: pro-features/shortcode-reminders.php:35
-msgid "Please remember to enter your weight and measurements for today."
-msgstr "Vergeet niet je gewicht en meting in te voeren van vandaag."
-
-#: pro-features/shortcode-reminders.php:35
-msgid "Please remember to enter your weight for today."
-msgstr "Vergeet niet om je gewicht van vandaag in te voeren."
-
-#: pro-features/shortcode-stats.php:8 pro-features/shortcode-stats.php:119
-msgid "Stats disabled"
-msgstr "Statistieken uitgezet"
-
-#: pro-features/shortcode-stats.php:34
-msgid "Name"
-msgstr "Naam"
-
-#: pro-features/shortcode-stats.php:35
-msgid "Weight Difference"
-msgstr "Verschil in gewicht"
-
-#: pro-features/shortcode-stats.php:41
-msgid "No of entries"
-msgstr "Aantal invoeringen"
-
-#: pro-features/shortcode-stats.php:112
-msgid ""
-"The league table has not been generated yet. This is a scheduled task so "
-"please check back in 15 minutes or try pressing the button below."
-msgstr ""
-"De competitietabel is nog niet gegenereerd. Dit is een geplande taak, "
-"controleer alstublieft over 15 minuten nogmaals of probeer op de "
-"onderstaande knop te drukken."
-
-#: pro-features/shortcode-stats.php:146
-msgid "Lost"
-msgstr "Verloren"
-
-#: pro-features/shortcode-stats.php:146
-msgid "Gained"
-msgstr "Bijgekomen"
-
-#: pro-features/shortcode-various.php:14
-msgid "Height needed"
-msgstr "Lengte nodig"
-
-#: pro-features/shortcode-various.php:24
-msgid "Weight needed"
-msgstr "Gewicht nodig"
-
-#: pro-features/user-preferences.php:8
-msgid "You must be logged in to edit your settings."
-msgstr "Je moet ingelogd zijn om je gegevens aan te passen."
-
-#: pro-features/user-preferences.php:29
-msgid "About You:"
-msgstr "Over jou:"
-
-#: pro-features/user-preferences.php:30
-msgid "Your height:"
-msgstr "Jouw lengte:"
-
-#: pro-features/user-preferences.php:31
-msgid "In which unit would you like to record your weight:"
-msgstr "In welke eenheid wil je je gewicht invoeren:"
-
-#: pro-features/user-preferences.php:32
-msgid "In which unit would you like to record your measurements:"
-msgstr "In welke eenheid wil je je metingen invoeren:"
-
-#: pro-features/user-preferences.php:33
-msgid "Display dates in the following formats:"
-msgstr "Laat datum zien in de volgende formaten:"
-
-#: pro-features/user-preferences.php:34
-msgid "Your Gender:"
-msgstr "Je geslacht:"
-
-#: pro-features/user-preferences.php:35
-msgid "Your Date of Birth:"
-msgstr "Jouw geboortedatum"
-
-#: pro-features/user-preferences.php:36
-msgid "Your Activity Level:"
-msgstr "Jouw activiteiten niveau:"
-
-#: pro-features/user-preferences.php:37
-msgid "Your aim:"
-msgstr "Jouw doel:"
-
-#: pro-features/user-preferences.php:44
-msgid "About User:"
-msgstr "Over de client"
-
-#: pro-features/user-preferences.php:45
-msgid "Height:"
-msgstr "Lengte"
-
-#: pro-features/user-preferences.php:46
-msgid "Weight unit:"
-msgstr "Gewichts eenheid"
-
-#: pro-features/user-preferences.php:47
-msgid "Measurements unit:"
-msgstr "Meet eenheid:"
-
-#: pro-features/user-preferences.php:48
-msgid "Date format:"
-msgstr "Datum format:"
-
-#: pro-features/user-preferences.php:49
-msgid "Gender:"
-msgstr "Geslacht:"
-
-#: pro-features/user-preferences.php:50
-msgid "Date of Birth:"
-msgstr "Geboortedatum: 01/01/1980"
-
-#: pro-features/user-preferences.php:51
-msgid "Activity Level:"
-msgstr "Activiteiten niveau:"
-
-#: pro-features/user-preferences.php:52
-msgid "Aim:"
-msgstr "Doel:"
-
-#: pro-features/user-preferences.php:192
-msgid "Save Settings"
-msgstr "Instellingen opslaan"
-
-#: pro-features/user-preferences.php:198
-msgid "Delete existing data"
-msgstr "Verwijder betaande data"
-
-#: pro-features/user-preferences.php:204
-msgid ""
-"The button below allows you to clear your existing weight history. Confirm:"
-msgstr ""
-"De knop hieronder is er voor om al je data te verwijderen. Weet je het zeker:"
-
-#: pro-features/user-preferences.php:207
-msgid "DELETE ALL DATA"
-msgstr "VERWIJDEREN VAN ALLE DATA?"
-
-#: pro-features/user-preferences.php:209
-msgid "Delete"
-msgstr "Verwijder"
-
-#: pro-features/widget-chart.php:12
-msgid "Weight Loss Tracker - Chart"
-msgstr "Weight Loss Tracker - Tabel"
-
-#: pro-features/widget-chart.php:13
-msgid "Display a chart to see your current progress."
-msgstr "Een tabel tonen voor je huidige voortgang."
-
-#: pro-features/widget-chart.php:74
-msgid "A pretty graph shall appear once you have recorded several weights."
-msgstr ""
-"Een grafiek zal verschijnen zodra je je gewicht op meerdere dagen hebt "
-"ingevuld."
-
-#: pro-features/widget-chart.php:106 pro-features/widget-form.php:78
-#: pro-features/widget-progress.php:76
-msgid "Title"
-msgstr "Titel"
-
-#: pro-features/widget-chart.php:117
-msgid "Maximum number of plot points on chart"
-msgstr "Maximum aantal punten in de tabel"
-
-#: pro-features/widget-chart.php:126 pro-features/widget-form.php:104
-msgid "Message to display if not logged in"
-msgstr "Bericht om te laten zien als je niet bent ingelogd"
-
-#: pro-features/widget-chart.php:128 pro-features/widget-form.php:106
-msgid ""
-"By default the widget is hidden if the user is not logged in. If you wish, "
-"you can display a message to the visitor instead."
-msgstr ""
-"Standaard is de widget is verborgen als de gebruiker niet is aangemeld. Als "
-"u wilt, kunt u hiervoor inde plaats een bericht weergeven aan de bezoeker."
-
-#: pro-features/widget-chart.php:134
-msgid "ID of user (leave blank to show chart for current user)"
-msgstr "ID of gebruiker (Laat leeg voor huidige gebruiker)"
-
-#: pro-features/widget-chart.php:137
-msgid ""
-"Note: By default, the chart will be displayed in the weight unit chosen by "
-"the logged in user. If not specfied the plugin default will be used."
-msgstr ""
-"Le op: Standaard wordt de tabel getoond met de gekozen eenheid die je hebt "
-"gekozen bij het inloggen. Wanneer niets is geslecteerd zal automatisch de "
-"default van de plugin worden toegepast."
-
-#: pro-features/widget-chart.php:140
-msgid "Hide Measurements (Pro)?"
-msgstr "Verberg Metingen (pro)?"
-
-#: pro-features/widget-form.php:12
-msgid "Weight Loss Tracker - Form"
-msgstr "Weight Loss Tracker - Formulier"
-
-#: pro-features/widget-form.php:13
-msgid ""
-"Display a quick entry form for logged in users to record their weight for "
-"today."
-msgstr ""
-"Toon een snel formulier voor ingelogde gebruikers om hun gewicht van de dag "
-"in te vullen."
-
-#: pro-features/widget-form.php:17
-msgid "Your weight today"
-msgstr "Gewicht van vandaag"
-
-#: pro-features/widget-form.php:82
-msgid "Allow user to specify a date?"
-msgstr "Gebruikers toestaan een datum te selecteren?"
-
-#: pro-features/widget-form.php:84
-msgid "No. Automatically set to today's date"
-msgstr "Nee. Automatisch de datum van vandaag."
-
-#: pro-features/widget-form.php:85
-msgid "Allow user to specify a date"
-msgstr "Gebruikers toestaan een datum te selecteren"
-
-#: pro-features/widget-form.php:89
-msgid "Hide measurements (Pro)?"
-msgstr "Verbergen van metingen (Pro)?"
-
-#: pro-features/widget-form.php:96
-msgid "Hide Photos (Pro Plus)?"
-msgstr "Verbergen foto's (Pro Plus)?"
-
-#: pro-features/widget-form.php:108
-msgid "Redirect URL (Defaults to current page)"
-msgstr "Redirect URL (Standaard naar huidige pagina)"
-
-#: pro-features/widget-form.php:110
-msgid ""
-"Specify where the user should be redirected to after completing the form. "
-"Note: The URL must be within the site domain."
-msgstr ""
-"Specificeer waar naartoe de gebruiker moet worden doorgestuurd na het "
-"invullen van het formulier. Opmerking: de URL moet binnen het site domein "
-"zijn."
-
-#: pro-features/widget-progress.php:12
-msgid "Weight Loss Tracker - Progress Bar"
-msgstr "Weight Loss Tracker - voortgang balk"
-
-#: pro-features/widget-progress.php:13
-msgid "A progress bar to indicate weight loss towards target."
-msgstr ""
-"Een voortgangsbalk om het gewichtsverlies ten op zichte van het doel te "
-"laten zien"
-
-#: pro-features/widget-progress.php:17
-msgid "Weight loss progress"
-msgstr "Voortgang gewichtsverlies"
-
-#: pro-features/widget-progress.php:80
-msgid "Chart type"
-msgstr "Tabel type"
-
-#: pro-features/widget-progress.php:87
-msgid "Stroke Width"
-msgstr "Lijn dikte"
-
-#: pro-features/widget-progress.php:95
-msgid "Stroke Colour"
-msgstr "Lijn kleur"
-
-#: pro-features/widget-progress.php:99
-msgid "Trail Width"
-msgstr "Spoor dikte"
-
-#: pro-features/widget-progress.php:107
-msgid "Trail Colour"
-msgstr "Spoor kleur"
-
-#: pro-features/widget-progress.php:111
-msgid "Text Colour"
-msgstr "Tekst kleur"
-
-#: pro-features/widget-progress.php:115
-msgid "Animation Duration"
+#: converters.php:53 converters.php:71 core.php:75 functions.php:69
+#: functions.php:84 functions.php:93 functions.php:99 functions.php:295
+#: functions.php:301 functions.php:558 shortcode-various.php:262
+#: shortcode-various.php:281
+msgid "lbs"
+msgstr "lbs"
+
+#: converters.php:71 functions.php:301
+msgid "St"
+msgstr "St"
+
+#: core.php:13
+msgid "Date"
+msgstr "Datum"
+
+#: core.php:14 core.php:83 core.php:212 core.php:388
+msgid "Weight"
+msgstr "Gewicht"
+
+#: core.php:15 core.php:397
+msgid "Notes"
+msgstr "Notities"
+
+#: core.php:62 core.php:265 shortcode-weight-loss-tracker.php:50
+msgid "You need to be logged in to record your weight."
+msgstr "Je moet ingelogd zijn om je gewicht op te slaan."
+
+#: core.php:76
+msgid "CM"
+msgstr "Centimeters"
+
+#: core.php:121
+msgid "Target"
+msgstr "Streefgewicht"
+
+#: core.php:219
+msgid "Measurement"
+msgstr "Meting"
+
+#: core.php:241
+msgid "You have modified data. Please refresh page."
+msgstr "Je hebt je data veranderd, klik hier om de pagina te verversen. "
+
+#: core.php:265
+msgid "You need to be logged in to set your target."
+msgstr "Je moet ingelogd zijn om je doel op te kunnen slaan."
+
+#: core.php:282
+msgid "Add a new weight"
+msgstr "Voeg een nieuw gewicht toe"
+
+#: core.php:287
+msgid "Edit weight"
+msgstr "Aanpassen gewicht"
+
+#: core.php:370
+msgid "Your target weight is"
+msgstr "Je streefgewicht is"
+
+#: core.php:370
+msgid "The user's target weight is currently"
+msgstr "De cliënt zijn huidige streefgewicht is"
+
+#: core.php:380
+msgid "Stones"
+msgstr "Stenen"
+
+#: core.php:425
+msgid "Existing photo for this date"
+msgstr "Bestaande foto voor deze datum"
+
+#: core.php:429
+msgid "Delete existing photo"
+msgstr "Verwijder bestaande data"
+
+#: core.php:430
+msgid "Existing photo"
+msgstr "Bestaande foto"
+
+#: core.php:446
+msgid "Replace photo"
+msgstr "Vervang foto"
+
+#: core.php:446
+msgid "Add a photo"
+msgstr "Voeg een foto toe"
+
+#: core.php:448
+msgid "Select a photo"
+msgstr "Selecteer een foto"
+
+#: core.php:449
+msgid "Photos must be under"
+msgstr "Foto's moeten minder zijn dan"
+
+#: core.php:449
+msgid "or they will silently fail to upload."
+msgstr "anders zullen ze niet worden geüpload,"
+
+#: core.php:450
+msgid "Photos are only visible to you and administrators. "
+msgstr "Foto's zijn alleen zichtbaar voor jou en de admin."
+
+#: core.php:458
+msgid "Edit measurements"
+msgstr "Aanpassen van metingen"
+
+#: core.php:458
+msgid "Add measurements"
+msgstr "Voeg metingen toe"
+
+#: core.php:459
+msgid "Optional"
+msgstr "Optioneel"
+
+#: core.php:467
+#, fuzzy
+#| msgid "Animation Duration"
+msgid "Additional Information"
 msgstr "Duur van animatie"
 
-#: pro-features/widget-progress.php:123
-msgid "Text to be displayed under bar. Use {t} to display target weight."
+#: core.php:472
+msgid "Set Target"
+msgstr "Streefgewicht opslaan"
+
+#: core.php:472
+msgid "Save Entry"
+msgstr "Invoer opslaan"
+
+#: core.php:485
+msgid "Clear Target"
+msgstr "Wis je streefgewicht"
+
+#: core.php:650
+msgid "The user "
+msgstr "De gebruiker"
+
+#: core.php:650
+msgid "uploaded this photo of them for their entry on the"
+msgstr "heeft deze foto geüpload voor hem voor de meting op de "
+
+#: core.php:731
+msgid "Please enter a value between 0-13 for pounds"
+msgstr "Voer een getal in tussen de 1-13 pond."
+
+#: core.php:731
+msgid "Please enter a valid figure for pounds"
+msgstr "Voer een geldig getal voor ponden in"
+
+#: core.php:738
+msgid "Are you sure you wish to clear your target weight?"
+msgstr "Weet je zeker dat je je streefgewicht wilt wissen?"
+
+#: core.php:741
+msgid "Please enter a valid figure for Kg"
 msgstr ""
-"De tekst die onder de balk moet worden weergegeven. Gebruik {t} om het "
-"streefgewicht weer te geven."
+"Voer een geldig getal voor Kg in (gebruik alleen cijfers en eventueel een "
+"komma)"
+
+#: core.php:742
+msgid "Please enter a valid figure for Stones"
+msgstr "Voer een geldig getal voor Stones in"
+
+#: core.php:743
+msgid "Please enter a valid date"
+msgstr "Voer een geldige datum in"
+
+#: core.php:744
+msgid "Please confirm you wish to delete ALL your weight history"
+msgstr "Weet je het zeker dat je AL je gewicht gegevens wilt wissen"
+
+#: core.php:745
+msgid "Your photo must be less than "
+msgstr "Je foto moet kleiner zijn dan"
+
+#: core.php:746
+msgid "Are you sure you wish to delete this entry? If so, press OK."
+msgstr ""
+"Weet je zeker dat je deze gegevens wilt verwijderen? Zo ja, klik op OK."
+
+#: core.php:755
+msgid "Please enter a valid measurement ("
+msgstr ""
+"Voer een geldige meting in, gebruik alleen cijfers en eventueel een komma ("
+
+#: core.php:765
+msgid "Please select or enter a value for height."
+msgstr "Voer een geldig getal in voor lengte."
+
+#: core.php:766
+msgid "Please select or enter a value for activity level."
+msgstr "Voer een geldige waarde in voor activiteiten niveau"
+
+#: core.php:767
+msgid "Please select or enter a value for gender."
+msgstr "Voer een geldige invoer voor geslacht in."
+
+#: core.php:768
+msgid "Please enter a valid date."
+msgstr "Voer alstublieft een geldige datum in"
+
+#: core.php:769
+msgid "Please select your aim."
+msgstr "Selecteer alstublieft uw doel."
+
+#: core.php:779
+msgid "This field is required."
+msgstr "Dit veld is verplicht"
+
+#: core.php:797
+msgid "Done"
+msgstr "Klaar"
+
+#: core.php:798
+msgid "Today"
+msgstr "Vandaag"
+
+#: functions.php:84 functions.php:99 functions.php:546
+#: shortcode-various.php:281
+msgid "st"
+msgstr "st"
+
+#: functions.php:212
+msgid "The following MySQL tables are missing for this plugin"
+msgstr "De volgende MySql tabellen ontbreken voor deze plugin"
+
+#: functions.php:298 shortcode-various.php:286
+msgid "Kg"
+msgstr "Kg"
+
+#: functions.php:360
+msgid "View all weeks"
+msgstr "Bekijk alle weken"
+
+#: functions.php:374
+msgid "View Week"
+msgstr "Bekijk week"
+
+#: functions.php:374
+msgid "to"
+msgstr "naar"
+
+#: functions.php:513
+msgid "The plugin supports the following measurements"
+msgstr "Deze plugin ondersteunt de volgende metingen"
+
+#: functions.php:651
+msgid "Read more about calculations"
+msgstr "Lees hier meer over de berekeningen"
+
+#: functions.php:686
+msgid "Your modifications have been saved"
+msgstr "Je aanpassing is opgeslagen"
+
+#: functions.php:704
+msgid "Login now"
+msgstr "Nu inloggen"
+
+#: functions.php:778
+msgid "Server Default"
+msgstr "Standaard server instelling"
+
+#: functions.php:884
+msgid "Upgrade Weight Tracker and get more features!"
+msgstr ""
+
+#: functions.php:886
+msgid ""
+"Upgrade to the latest Pro or Pro Plus version of this plugin to manipulate "
+"your user's data, add custom fields, BMR, Macro Nutrients and much more!"
+msgstr ""
+
+#: functions.php:887
+#, fuzzy
+#| msgid "Upgrade to Pro Version"
+msgid "Read more and Upgrade to Pro / Pro Plus Version"
+msgstr "Upgraden naar de Pro versie"
+
+#: globals.php:157
+msgid "Forearm - Left"
+msgstr "Onderarm - Links"
+
+#: globals.php:157
+msgid "FL"
+msgstr "O-L"
+
+#: globals.php:158
+msgid "Forearm - Right"
+msgstr "Onderarm - Rechts"
+
+#: globals.php:158
+msgid "FR"
+msgstr "O-R"
+
+#: globals.php:159
+msgid "Biceps - Left"
+msgstr "Biceps - Links"
+
+#: globals.php:159
+msgid "BL"
+msgstr "B-L"
+
+#: globals.php:160
+msgid "Biceps - Right"
+msgstr "Biceps - Rechts"
+
+#: globals.php:160
+msgid "BR"
+msgstr "B-R"
+
+#: globals.php:161
+msgid "Calf - Left"
+msgstr "Kuit - Links"
+
+#: globals.php:161
+msgid "CL"
+msgstr "K-L"
+
+#: globals.php:162
+msgid "Calf - Right"
+msgstr "Kuit - Rechts"
+
+#: globals.php:162
+msgid "CR"
+msgstr "K-R"
+
+#: globals.php:163
+msgid "Thigh - Left"
+msgstr "Dijbeen - Links"
+
+#: globals.php:163
+msgid "TL"
+msgstr "D-L"
+
+#: globals.php:164
+msgid "Thigh - Right"
+msgstr "Dijbeen - Rechts"
+
+#: globals.php:164
+msgid "TR"
+msgstr "D-R"
+
+#: globals.php:165
+msgid "Waist"
+msgstr "Taille"
+
+#: globals.php:165
+msgid "W"
+msgstr "T"
+
+#: globals.php:166
+msgid "Bust / Chest"
+msgstr "Borst"
+
+#: globals.php:166
+msgid "BC"
+msgstr "B"
+
+#: globals.php:167
+msgid "Shoulders"
+msgstr "Schouders"
+
+#: globals.php:167
+msgid "S"
+msgstr "SC"
+
+#: globals.php:168
+msgid "Height"
+msgstr "Lengte"
+
+#: globals.php:168
+msgid "H"
+msgstr "LE"
+
+#: globals.php:169
+msgid "Buttocks"
+msgstr "Billen"
+
+#: globals.php:169
+msgid "B"
+msgstr "BIL"
+
+#: globals.php:170
+msgid "Hips"
+msgstr "Heupen"
+
+#: globals.php:170
+msgid "HI"
+msgstr "HEU"
+
+#: globals.php:171
+msgid "Navel"
+msgstr "Navel"
+
+#: globals.php:171
+msgid "NA"
+msgstr "NAV"
+
+#: globals.php:172
+msgid "Neck"
+msgstr "Nek"
+
+#: globals.php:172
+msgid "NE"
+msgstr "NEK"
+
+#: hooks.php:9
+msgid "Manage User Data"
+msgstr "Beheer gebruikers data"
+
+#: hooks.php:12
+msgid "Your License"
+msgstr "Jouw licentie"
+
+#: hooks.php:15
+msgid "Settings"
+msgstr "Intstellingen"
+
+#: hooks.php:16
+msgid "Help"
+msgstr "Help"
+
+#: hooks.php:173
+msgid "An error occurred while trying to save the user's preferences."
+msgstr ""
+"Er is een fout opgetreden tijdens het opslaan van de voorkeuren van de "
+"gebruiker."
+
+#: license.php:150
+msgid "License missing"
+msgstr "Licentie ontbreekt"
+
+#: license.php:157
+msgid "Could not decode / verify license"
+msgstr "Kan de licentie niet decoderen / verifiëren"
+
+#: license.php:162
+msgid "Invalid license hash"
+msgstr "Ongeldige licentie hash"
+
+#: license.php:167
+msgid ""
+"This license doesn't appear to be for this site (no match on site hash)."
+msgstr ""
+"Deze licentie lijkt niet te zijn voor deze site (geen match op site hash)."
+
+#: license.php:175
+msgid "This license has expired."
+msgstr "Deze licentie is verlopen."
+
+#: license.php:232
+msgid "None"
+msgstr "Geen"
+
+#: license.php:242
+msgid "Yearly Pro"
+msgstr "Jaarlijks Pro"
+
+#: license.php:245
+msgid "Legacy Pro"
+msgstr "Legacy Pro"
+
+#: save-data.php:42
+msgid "Saved!"
+msgstr "Opgeslagen!"
+
+#: save-data.php:46
+msgid "An error occurred while saving your data!"
+msgstr ""
+"Er is iets fout gegaan bij het opslaan van je gegevens. Probeer het nogmaals."
+
+#: save-data.php:49
+msgid "No user specified (hash)"
+msgstr "Geen gebruiker opgegeven (hash)"
+
+#: save-data.php:52
+msgid "No user specified"
+msgstr "Geen gebruiker opgegeven"
+
+#: shortcode-various.php:106
+msgid "No target set"
+msgstr "Er is geen streefgewicht ingesteld"
+
+#: shortcode-weight-loss-tracker.php:43
+msgid "This shortcode can only be placed once on a page / post."
+msgstr "Deze kan maar eenmalig worden geplaats op een pagina of in een bericht"
+
+#: shortcode-weight-loss-tracker.php:68
+msgid "Your settings have been saved!"
+msgstr "Je gewicht is opgeslagen!"
+
+#: shortcode-weight-loss-tracker.php:70
+msgid "Your weight history has been deleted!"
+msgstr "Je gewicht-geschiedenis is verwijderd!"
+
+#: shortcode-weight-loss-tracker.php:93
+msgid "Overview"
+msgstr "Overzicht"
+
+#: shortcode-weight-loss-tracker.php:93
+msgid "Chart and add a new entry"
+msgstr "Grafiek en voeg een nieuwe vermelding toe"
+
+#: shortcode-weight-loss-tracker.php:94
+msgid "All Entries"
+msgstr "Alle invoer"
+
+#: shortcode-weight-loss-tracker.php:94
+msgid "View all of your entries"
+msgstr "Bekijk alle invoer"
+
+#: shortcode-weight-loss-tracker.php:98
+msgid "View a gallery of your photos"
+msgstr "Bekijk een galerij van al jouw foto's"
+
+#: shortcode-weight-loss-tracker.php:103
+msgid "View BMI, BMR and suggested Calorie and Macronutrient intake"
+msgstr "Bekijk BMI, BMR en voorgesteld Calorie en Macronutriënten inname"
+
+#: shortcode-weight-loss-tracker.php:108
+msgid "Preferences"
+msgstr "Voorkeuren"
+
+#: shortcode-weight-loss-tracker.php:108
+msgid "Customise this tool and tell us a little more about you"
+msgstr "Pas deze plugin aan en vertel ons wat meer over uzelf"
+
+#: shortcode-weight-loss-tracker.php:124
+msgid "Add a weight entry"
+msgstr "Voeg invoer voor een gewicht toe"
+
+#: shortcode-weight-loss-tracker.php:129
+msgid "In a chart"
+msgstr "In een grafiek"
+
+#: shortcode-weight-loss-tracker.php:137
+msgid "A graph will appear once several weights have been entered."
+msgstr "De grafiek verschijnt zodra er meerdere metingen zijn ingevuld."
+
+#: shortcode-weight-loss-tracker.php:190
+msgid "Weight History"
+msgstr "Gewicht geschiedenis"
+
+#: shortcode-weight-loss-tracker.php:202
+msgid "There is no data for this week, please try selecting another:"
+msgstr " Er is voor deze week geen data, probeer een andere week"
+
+#: shortcode-weight-loss-tracker.php:208
+msgid "You haven't entered any weight data yet."
+msgstr "Je heb nog geen gewicht ingevuld"
+
+#~ msgid "Our road map"
+#~ msgstr "Onze roadmap"
+
+#~ msgid ""
+#~ "Interested in the future development of this plugin? Then have a peek at "
+#~ "our road map:"
+#~ msgstr ""
+#~ "Geïnteresseerd in het verder ontwikkelen van deze plugin? Neem dan een "
+#~ "kijkje op onze road map:"
+
+#~ msgid "Upgrade now to Pro Plus"
+#~ msgstr "Upgrade nu naar Pro Plus"
+
+#~ msgid "Looking to view and manipulate your user's data?"
+#~ msgstr "Wil je de gegevens van je gebruiker bekijken en manipuleren?"
+
+#~ msgid ""
+#~ "Upgrade to the Pro version of this plugin to view, edit and delete your "
+#~ "user's weight entries"
+#~ msgstr ""
+#~ "Ge-upgrade naar de Pro-versie van deze plugin om uw invoer van de "
+#~ "cliënten invoer te bekijken, te bewerken en te verwijderen"
+
+#~ msgid "Manage and view their photos."
+#~ msgstr "Beheer en bekijk hun foto's."
+
+#~ msgid "View all user entries in tabular and chart format."
+#~ msgstr "Bekijk alle gebruikersinvoer in tabel- en grafiekformaat."
+
+#~ msgid "Add, edit and delete user entries."
+#~ msgstr "Voeg gebruikersgegevens toe, verander en verwijder ze."
+
+#~ msgid "Sortable and responsive tables."
+#~ msgstr "Sorteerbare en responsive tabellen."
+
+#~ msgid "View league tables of most lost / gained."
+#~ msgstr "Bekijk competitie tabellen van de meeste verloren / aangekomen."
+
+#~ msgid "View user stats, weight lost, recent weight, start weight, BMI, etc."
+#~ msgstr ""
+#~ "Bekijk gebruikersstatistieken, gewichtsverlies, recent gewicht, "
+#~ "startgewicht, BMI, enz."
+
+#~ msgid "Export all or a particular user's data in CSV / JSON."
+#~ msgstr ""
+#~ "Exporteer alle of de gegevens van een bepaalde gebruiker naar CSV / JSON."
+
+#~ msgid "Example screenshots"
+#~ msgstr "Voorbeeld screenshots"
+
+#~ msgid "Below are a couple of screenshots from the user data screens"
+#~ msgstr "Hieronder vindt u een aantal screenshots van de gebruikersgegevens"
+
+#~ msgid "added"
+#~ msgstr "toegevoegd"
+
+#~ msgid "updated"
+#~ msgstr "Aangepast"
+
+#~ msgid "their weight / measurements for "
+#~ msgstr "hun gewicht / meting voor"
+
+#~ msgid "their target to"
+#~ msgstr "hun gewicht om"
+
+#~ msgid "Weight Loss Tracker update for"
+#~ msgstr "Weight Loss Tracker update voor"
+
+#~ msgid "Hello"
+#~ msgstr "Hallo"
+
+#~ msgid ""
+#~ "Just a quick email to let you know that \"{displayname}\" has {mode} "
+#~ "{type}:"
+#~ msgstr ""
+#~ "Even een kort email om te laten weten dat \"{displayname}\" heeft {mode} "
+#~ "{type}: "
+
+#~ msgid "{data}"
+#~ msgstr "(data)"
+
+#~ msgid "Thank you!"
+#~ msgstr "Bedankt!"
+
+#~ msgid "No data was found for the given criteria."
+#~ msgstr "Geen data gevonden voor de gegeven criteria."
+
+#~ msgid "lbs only"
+#~ msgstr "alleen lbs"
+
+#~ msgid "Difference from start"
+#~ msgstr "Verschil vanaf het startpunt"
+
+#~ msgid "No height"
+#~ msgstr "Geen lengte"
+
+#~ msgid "<strong>All of the features that come with a standard <a href=\""
+#~ msgstr "<strong> Alle functies die standaard zijn <a href = \""
+
+#~ msgid ""
+#~ "<strong>Photo Uploads</strong>. Your users can now upload photos of their "
+#~ "progress. Photos can be viewed, updated and removed by the end user and "
+#~ "administrators. Handy shortcodes are provided for displaying galleries, "
+#~ "most recent and oldest photo."
+#~ msgstr ""
+#~ "<strong> Foto uploads </ strong>. Uw gebruikers kunnen nu foto's uploaden "
+#~ "van hun voortgang. Foto's kunnen worden bekeken, bijgewerkt en verwijderd "
+#~ "door de eindgebruiker en beheerders. Handige shortcodes zijn beschikbaar "
+#~ "voor het weergeven van galerijen, meest recente en oudste foto's."
+
+#~ msgid ""
+#~ "<strong>Basal Metabolic Rate (BMR) calculations per user</strong>. "
+#~ "Shortcodes and extended admin screens to display a user's BMR. For "
+#~ "further information on BMR and how it is calculated visit <a href=\""
+#~ msgstr ""
+#~ "<strong> Basal Metabolic Rate (BMR) berekeningen per gebruiker </ "
+#~ "strong>. Shortcodes en uitgebreide admin-schermen om de BMR van een "
+#~ "gebruiker weer te geven. Voor nadere informatie over BMR en hoe het wordt "
+#~ "berekend, bezoek <a href = \""
+
+#~ msgid ""
+#~ "<strong>Harris Benedict formula</strong>. Shortcodes and extended admin "
+#~ "screens to a view a person's calorie intake required to maintain and lose "
+#~ "weight. For further information on Harris Benedict Formula and how it is "
+#~ "calculated visit <a href=\""
+#~ msgstr ""
+#~ "<strong> Harris Benedict formule </ strong>. Shortcodes en uitgebreide "
+#~ "administratieschermen naar een zicht op de calorie-inname van een persoon "
+#~ "die nodig is om te handhaven en te verliezen. Voor nadere informatie over "
+#~ "Harris Benedict Formula en hoe het wordt berekend, bezoek <a href = \""
+
+#~ msgid ""
+#~ "<strong>Recommended calorie intake per meal time</strong>. Shortcodes and "
+#~ "extended admin screens to recommend how a person should split their daily "
+#~ "calorie intake across meals. For further information on how this is "
+#~ "calculated please visit <a href=\""
+#~ msgstr ""
+#~ "<strong> Aanbevolen calorie-inname per maaltijd </ strong>. Shortcodes en "
+#~ "uitgebreide admin-schermen om aan te bevelen hoe een persoon hun "
+#~ "dagelijkse calorie-inname over maaltijden moet verdelen. Voor meer "
+#~ "informatie over hoe dit wordt berekend, bezoek dan <a href = \""
+
+#~ msgid ""
+#~ "<strong>Macronutrients Calculator</strong>. Shortcodes and extended admin "
+#~ "screens to recommend how their calorie consumption should be split into "
+#~ "fats, carbohydrates and proteins. For further information on the "
+#~ "Macronutrients Calculator and how these calculations are performed please "
+#~ "visit <a href=\""
+#~ msgstr ""
+#~ "<strong> Macronutriënten Calculator </ strong>. Shortcodes en uitgebreide "
+#~ "admin-schermen om aan te bevelen hoe hun calorieverbruik moet worden "
+#~ "verdeeld in vetten, koolhydraten en eiwitten. Voor meer informatie over "
+#~ "de Macronutriënten Calculator en hoe deze berekeningen worden uitgevoerd, "
+#~ "bezoek dan <a href = \""
+
+#~ msgid ""
+#~ "<strong>Additional user preference fields</strong>. Additional user "
+#~ "preference fields and shortcodes to display them: Activity Level, Date of "
+#~ "Birth and Gender."
+#~ msgstr ""
+#~ "<strong> Extra gebruikers voorkeur velden </ strong>. Extra gebruikers "
+#~ "voorkeur velden en shortcodes om ze te tonen: Activiteitsniveau, "
+#~ "Geboortedatum en Geslacht."
+
+#~ msgid ""
+#~ "<strong>Access your user's data.</strong> Admin can view, edit and delete "
+#~ "user data. Various tools for viewing user's graphs, tables of entries, "
+#~ "BMI, targets, weight lost / gained stats and much more."
+#~ msgstr ""
+#~ "<strong> Toegang tot de gegevens van uw cliënt. </ strong> Admin kan "
+#~ "gebruikersgegevens bekijken, bewerken en verwijderen. Diverse "
+#~ "instrumenten voor het bekijken van de grafieken van de cliënt, tabellen "
+#~ "van inzendingen, BMI, doelen, gewichtsverlies / winststatistieken en nog "
+#~ "veel meer."
+
+#~ msgid ""
+#~ "<strong>Measurements.</strong> Support for recording measurements like "
+#~ "Hip, Waist, Leg, Bicep, etc. Displayed on charts and tables."
+#~ msgstr ""
+#~ "<Strong> Metingen. </ Strong> Ondersteuning voor het opnemen van "
+#~ "metingen, zoals de heupen, taille, benen, Biceps, etc. weergegeven op "
+#~ "grafieken en tabellen."
+
+#~ msgid ""
+#~ "<strong>Export all data or a particular user.</strong> Export in JSON or "
+#~ "CSV format."
+#~ msgstr ""
+#~ "<strong> Exporteer alle gegevens of een bepaalde gebruiker. </ strong> "
+#~ "Exporteer naar JSON of CSV-formaat."
+
+#~ msgid ""
+#~ "<strong>BMI.</strong> Allows a user to specify their height. Once "
+#~ "specified, their BMI is displayed next to each weight entry. There is "
+#~ "also a shortcode to render the latest BMI."
+#~ msgstr ""
+#~ "<Strong>BMI.</ Strong>Toestaan dat een gebruiker zijn eigen lengte "
+#~ "invoert. Eenmaal opgegeven, wordt hun BMI naast elk gewicht invoer "
+#~ "weergegeven. Er is ook een shortcode de laatste BMI weer te geven."
+
+#~ msgid ""
+#~ "<strong>Email notifications.</strong> Receive email notifications when a "
+#~ "person updates their target or adds / edits a weight."
+#~ msgstr ""
+#~ "<strong>Email notificaties.</strong> Ontvang email notificaties wanneer "
+#~ "een client zijn doel gewicht aanpast of bij het toevoegen / aanpassen van "
+#~ "gewicht."
+
+#~ msgid ""
+#~ "<strong>Overall user stats.</strong> Shortcodes that allow you to display "
+#~ "the total lost / gained for the community and another to display a league "
+#~ "table."
+#~ msgstr ""
+#~ "<Strong>Algehele gebruiker statistieken.</ Strong> Shortcodes die "
+#~ "toelaten om de totale verloren / aangekomen voor de gemeenschap en een "
+#~ "ander in een ranglijst weer te geven."
+
+#~ msgid ""
+#~ "<strong>Widgets.</strong> Widgets that allow you to display the graph and "
+#~ "quick weight entry form within any widget area."
+#~ msgstr ""
+#~ "<strong>Widgets.</strong> Met deze widgets zie je snel en makkelijk het "
+#~ "gewicht in de widget area."
+
+#~ msgid ""
+#~ "<strong>Chart and form Shortcodes.</strong> That allow you to display the "
+#~ "graph and quick weight entry form by placing a shortcode on any post or "
+#~ "page."
+#~ msgstr ""
+#~ "<strong>Grafieken en vormen codes.</strong> Dit geeft je toestemming om "
+#~ "de grafiek en het gewicht wat je hebt ingevult te plaatsen op elke post "
+#~ "pagina."
+
+#~ msgid ""
+#~ "<strong>Progress Bar shortcode.</strong> A shortcode that visually "
+#~ "displays the logged in user's progress towards their target"
+#~ msgstr ""
+#~ "<strong>Voortgangs diagram shortcode.</strong> Een shortcode die visueel "
+#~ "weergeeft wat de voortgang is naar hun doelgewicht"
+
+#~ msgid ""
+#~ "<strong>Reminder shortcode.</strong> A shortcode that can be used to "
+#~ "remind the user to enter their target or weight for today."
+#~ msgstr ""
+#~ "<strong>Herinnering shortcode.</strong> Een shortcode die gebruikt kan "
+#~ "worden om cliënten een herinnering te geven dat ze hun doelgewicht of het "
+#~ "gewicht van die dag nog moeten invoeren."
+
+#~ msgid ""
+#~ "<strong>Message shortcode</strong> A shortcode that allows you to "
+#~ "congratulate a user when they lose weight x number of times. It also "
+#~ "provides the opposite allowing you to provide encouragement when someone "
+#~ "gains weight."
+#~ msgstr ""
+#~ "<strong>Bericht shortcode</strong> Een shortcode die ervoor zorgt dat je "
+#~ "een client feliciteerd wanneer ze een x aantal keer gewicht zijn "
+#~ "verloren. Het geeft ook de mogelijk voor het tegenovergestelde, het "
+#~ "aanmoedigen wanneer iemand is aangekomen qua gewicht."
+
+#~ msgid ""
+#~ "<strong>Text Shortcodes.</strong> Additional shortcodes for earliest and "
+#~ "most recent dates entered."
+#~ msgstr ""
+#~ "<strong>Tekst codes.</strong> Extra shortcodes voor de meest recente data "
+#~ "wat je hebt ingevult."
+
+#~ msgid ""
+#~ "<strong>Progress Bar shortcode / widget.</strong> Display a user's "
+#~ "progress towards their weight target."
+#~ msgstr ""
+#~ "<strong>Voortgangs diagram shortcode / widget.</strong> Laat de voortgang "
+#~ "van een cliënt zijn doelgewicht zien."
+
+#~ msgid ""
+#~ "<strong>Reminder shortcode.</strong> Display a reminder to enter their "
+#~ "weight for the given day or enter a target."
+#~ msgstr ""
+#~ "<strong>Herinnering shortcode.</strong> Laat een herinnering zien voor "
+#~ "het toevoegen van gewicht voor de dag of voeg een doel toe."
+
+#~ msgid ""
+#~ "<strong>Admin: View / Delete user data</strong>. Admin will be able to "
+#~ "view and delete existing user data."
+#~ msgstr ""
+#~ "<strong>Admin: Bekijk / bewerk gebruikers data</strong>.Je kan als admin "
+#~ "gebruikers data bekijken, veranderen en verwijderen"
+
+#~ msgid ""
+#~ "<strong>User preferences</strong>. If enabled, the user will be able to "
+#~ "select which unit they wish to store their weight in Metric or Imperial. "
+#~ "They will also be able to specify date format and clear all their weight "
+#~ "data."
+#~ msgstr ""
+#~ "<strong>Gebruikers voorkeueren</strong> wanneer geselecteerd, kies je "
+#~ "voor het opslaan van je gewicht in Meteric of Imerial. Je kan bepaalde "
+#~ "datums en bepaald gewicht verwijderen."
+
+#~ msgid ""
+#~ "<strong>Bar Charts</strong>. Fancy something different to a line chart? "
+#~ "The plugin will also support Bar Charts."
+#~ msgstr ""
+#~ "<strong>Staafdiagram</strong>. Iets anders dan een lijn diagram? Met deze "
+#~ "plugin kan je kiezen voor een staafdiagram."
+
+#~ msgid ""
+#~ "<strong>Decimals</strong>. Decimals will be allowed weight in Pounds only "
+#~ "or Kg modes."
+#~ msgstr ""
+#~ "<strong>Decimalen</strong>. Decimalen zijn alleen te zien in de Ponden of "
+#~ "Kg modes."
+
+#~ msgid ""
+#~ "<strong>Delete existing entry</strong>. A logged in user will be able to "
+#~ "delete or edit an existing weight entry."
+#~ msgstr ""
+#~ "<Strong> Verwijderen bestaande invoer </ strong>. Een ingelogde gebruiker "
+#~ "zal in staat zijn om bestaande invoer van gewicht te bewerken of "
+#~ "verwijderen."
+
+#~ msgid ""
+#~ "<strong>Better Tables.</strong>. Data tables in front end and admin will "
+#~ "support paging and sorting."
+#~ msgstr ""
+#~ "<strong>Betere tabellen.</strong>. De data in de tabellen in front & and "
+#~ "admin zullen alles ondersteunen"
+
+#~ msgid ""
+#~ "<strong>Admin: Extra Settings</strong>. Extra settings to customise the "
+#~ "plugin will be added e.g. number of plot points on graph, rows per page, "
+#~ "etc."
+#~ msgstr ""
+#~ "<strong>Admin: Extra Instellingen</strong> Extra instellingen om deze "
+#~ "plugin aan te passen o.a. aantal nummers in de grafies, rijen per pagina, "
+#~ "ect."
+
+#~ msgid "Measurements are in"
+#~ msgstr "Metingen zijn in"
+
+#~ msgid "cm"
+#~ msgstr "cm"
+
+#~ msgid "First entry"
+#~ msgstr "Eerste invoer"
+
+#~ msgid "User"
+#~ msgstr "Gebruiker"
+
+#~ msgid "Difference"
+#~ msgstr "Verschil"
+
+#~ msgid "Body Mass Index"
+#~ msgstr "Body Mass Index"
+
+#~ msgid "Photo"
+#~ msgstr "Foto"
+
+#~ msgid "Are you sure you want to delete the row?"
+#~ msgstr "Weet je zeker dat je deze rij  wilt verwijderen?"
+
+#~ msgid "Unfortunately there was an error deleting the row."
+#~ msgstr "Helaas is er een fout opgetreden bij het verwijderen van de rij."
+
+#~ msgid "Search"
+#~ msgstr "Zoeken"
+
+#~ msgid "No data found"
+#~ msgstr "Geen data gevonden"
+
+#~ msgid ""
+#~ "Enter a user's email address, display name or username and click Search."
+#~ msgstr ""
+#~ "Voer een e-mailadres,  weergave naam of gebruikersnaam in van een "
+#~ "gebruiker en klik op Zoeken."
+
+#~ msgid "Most Recent Photo"
+#~ msgstr "Meest recente foto"
+
+#~ msgid "No. of photos: "
+#~ msgstr "Aantal foto's:"
+
+#~ msgid "View all"
+#~ msgstr "Bekijk alles"
+
+#~ msgid "User Information"
+#~ msgstr "Gebruikersinformatie"
+
+#~ msgid "Latest Weight"
+#~ msgstr "Laatste gewicht"
+
+#~ msgid "Diff. from Start"
+#~ msgstr "Verschil vanaf start"
+
+#~ msgid "Diff. from Target"
+#~ msgstr "Verschil vanaf doel"
+
+#~ msgid "Current BMI"
+#~ msgstr "Huidige BMI"
+
+#~ msgid "No height specified"
+#~ msgstr "Geen lengte opgegeven"
+
+#~ msgid "Aim"
+#~ msgstr "Doel"
+
+#~ msgid "Gender"
+#~ msgstr "Geslacht"
+
+#~ msgid "Activity Level"
+#~ msgstr "Activiteiten niveau"
+
+#~ msgid "Date of Birth"
+#~ msgstr "Geboortedatum"
+
+#~ msgid "BMR"
+#~ msgstr "BMR"
+
+#~ msgid "Missing data"
+#~ msgstr "Verloren data"
+
+#~ msgid "Add Entry"
+#~ msgstr "Toevoegen invoer"
+
+#~ msgid "Edit Target"
+#~ msgstr "Bewerk doel"
+
+#~ msgid "Export Data"
+#~ msgstr "Exporteer data"
+
+#~ msgid "Delete Cache"
+#~ msgstr "Verwijder Cache"
+
+#~ msgid "Delete Cache for this user"
+#~ msgstr "Verwijder alle cache voor de cliënt"
+
+#~ msgid "Delete ALL data for this user"
+#~ msgstr "Verwijder ALLE DATA voor deze cliënt"
+
+#~ msgid "Are you sure you wish to remove the data for this user?"
+#~ msgstr ""
+#~ "Weet je het zeker dat je alle gebruikergegevens wilt wissen voor deze "
+#~ "cliënt?"
+
+#~ msgid "Back"
+#~ msgstr "Terug"
+
+#~ msgid "WordPress Record"
+#~ msgstr "WordPress gegevens"
+
+#~ msgid "Weight Tracker Record"
+#~ msgstr "Weight Loss Tracker - gegevens"
+
+#~ msgid "Error: The User's ID was missing..."
+#~ msgstr "Fout: de gebruikers ID ontbreekt ..."
+
+#~ msgid "Cm"
+#~ msgstr "Centimeter"
+
+#~ msgid "Add Height for BMI"
+#~ msgstr "Voeg lengte toe voor weergeven van BMI"
+
+#~ msgid "Underweight"
+#~ msgstr "Ondergewicht"
+
+#~ msgid "Healthy"
+#~ msgstr "Gezond"
+
+#~ msgid "Overweight"
+#~ msgstr "Overgewicht"
+
+#~ msgid "Heavily Overweight"
+#~ msgstr "Zwaar overgewicht"
+
+#~ msgid "Female"
+#~ msgstr "Vrouw"
+
+#~ msgid "Male"
+#~ msgstr "Man"
+
+#~ msgid "Little / No Exercise"
+#~ msgstr "Weinig tot geen beweging"
+
+#~ msgid "Light Exercise"
+#~ msgstr "Lichte oefeningen"
+
+#~ msgid "Moderate Exercise (3-5 days a week)"
+#~ msgstr "Gemiddelde oefeningen (3-5 dagen per week)"
+
+#~ msgid "Very Active (6-7 days a week)"
+#~ msgstr "Zeer Actief (6-7 dagen per week)"
+
+#~ msgid "Extra Active (very active & physical job)"
+#~ msgstr "Extra Actief (erg actief en fysiek werk)"
+
+#~ msgid "Maintain current weight"
+#~ msgstr "Huidige gewicht behouden"
+
+#~ msgid "Lose weight"
+#~ msgstr "Afvallen"
+
+#~ msgid "Gain weight"
+#~ msgstr "Aankomen "
+
+#~ msgid "Not Specified"
+#~ msgstr "Niet opgegeven"
+
+#~ msgid "Error: The user does not appear to exist"
+#~ msgstr "Error: De cliënt lijkt niet te bestaan"
+
+#~ msgid "View weight entries"
+#~ msgstr "Bekijk ingevoerde gewicht"
+
+#~ msgid "No Gender specified"
+#~ msgstr "Geen geslacht opgegeven"
+
+#~ msgid "No Date of Birth specified or too young"
+#~ msgstr "Geen geboortedatum opgegeven of te jong"
+
+#~ msgid "No Height specified"
+#~ msgstr "Geen lengte opgegeven"
+
+#~ msgid "No Weight entered"
+#~ msgstr "Geen gewicht ingevoerd"
+
+#~ msgid "Maintain"
+#~ msgstr "Behouden"
+
+#~ msgid "Lose"
+#~ msgstr "Verliezen"
+
+#~ msgid ""
+#~ "Please ensure all relevant data to calculate calorie intake has been "
+#~ "entered i.e. Activity Level, Date of Birth, Current Weight, Gender and "
+#~ "Height."
+#~ msgstr ""
+#~ "Zorg ervoor dat alle relevante gegevens voor het berekenen van de calorie-"
+#~ "inname zijn ingevoerd, bijv. Activiteitsniveau, Geboortedatum, Huidig "
+#~ "Gewicht, Geslacht en Hoogte."
+
+#~ msgid "Total"
+#~ msgstr "Totaal"
+
+#~ msgid "Breakfast"
+#~ msgstr "Ontbijt"
+
+#~ msgid "Lunch"
+#~ msgstr "Lunch"
+
+#~ msgid "Dinner"
+#~ msgstr "Avondeten"
+
+#~ msgid "Snacks"
+#~ msgstr "Snacks"
+
+#~ msgid "calories for weight loss are capped at "
+#~ msgstr "calorieën voor gewichtsverlies staan maximaal op "
+
+#~ msgid "This can be modified within "
+#~ msgstr "Dit kan worden aangepast binnen"
+
+#~ msgid "Carbs"
+#~ msgstr "Koolhydraten"
+
+#~ msgid "It doesn't look you've uploaded any photos."
+#~ msgstr "Het lijkt erop dat je geen foto's nog hebt geüpload"
+
+#~ msgid "No photos were found."
+#~ msgstr "Er zijn geen foto's gevonden"
+
+#~ msgid "No recent photo found."
+#~ msgstr "Geen recente foto gevonden"
+
+#~ msgid "Don't show to public?"
+#~ msgstr "Niet openbaar maken?"
+
+#~ msgid ""
+#~ "If the user has uploaded this as part of their Weight Tracker progress, "
+#~ "they probably don't want it viewable on a public attachment page!"
+#~ msgstr ""
+#~ "Als de gebruiker dit heeft geüpload als onderdeel van hun Weight Tracker-"
+#~ "voortgang, willen ze dat waarschijnlijk niet op een openbare bijlage "
+#~ "pagina!"
+
+#~ msgid "Your have uploaded"
+#~ msgstr "Je hebt geupload"
+
+#~ msgid "photos"
+#~ msgstr "foto's"
+
+#~ msgid "photo"
+#~ msgstr "foto"
+
+#~ msgid "It looks like you haven't uploaded any photos yet"
+#~ msgstr "Het lijkt erop dat je nog geen foto's hebt geupload"
+
+#~ msgid "BMI (Body Mass Index)"
+#~ msgstr "BMI (Body Mass Index)"
+
+#~ msgid ""
+#~ "The BMI (Body Mass Index) is used by the medical profession to quickly "
+#~ "determine a person’s weight in regard to their height. From a straight "
+#~ "forward calculation the BMI factor can be gained and may be used to "
+#~ "determine if a person is underweight, of normal weight, overweight or "
+#~ "obese."
+#~ msgstr ""
+#~ "De BMI (Body Mass Index) wordt door medisch personeel gebruikt om snel "
+#~ "het gewicht van een persoon te bepalen met betrekking tot hun lengte. Uit "
+#~ "een rechtstreekse berekening kan de BMI-factor worden verkregen en kan "
+#~ "worden gebruikt om te bepalen of een persoon ondergewicht is, van normaal "
+#~ "gewicht, overgewicht of zwaarlijvig is."
+
+#~ msgid "Your current BMI is"
+#~ msgstr "Uw huidige BMI is"
+
+#~ msgid ""
+#~ "Before we can calculate your BMI, we need your current weight and height."
+#~ msgstr ""
+#~ "Voordat we uw BMI kunnen berekenen, hebben we uw huidige gewicht en "
+#~ "lengte nodig."
+
+#~ msgid ""
+#~ "To allow us to calculate this, we need your latest weight, date of birth, "
+#~ "height and gender."
+#~ msgstr ""
+#~ "Om dit te kunnen berekenen, hebben we uw laatst gemeten gewicht, "
+#~ "geboortedatum, lengte en geslacht nodig."
+
+#~ msgid "BMR (Basal Metabolic Rate)"
+#~ msgstr "BMR (basale metabolische snelheid)"
+
+#~ msgid ""
+#~ "BMR is short for Basal Metabolic Rate. The Basal Metabolic Rate is the "
+#~ "number of calories required to keep your body functioning at rest, also "
+#~ "known as your metabolism. We calculate your BMR using formulas provided "
+#~ "by www.diabetes.co.uk."
+#~ msgstr ""
+#~ "BMR is een afkorting voor basale metabolische snelheid. De basale "
+#~ "metabolische snelheid is het aantal calorieën dat nodig is om uw lichaam "
+#~ "in rust te houden, ook bekend als uw stofwisseling. Wij berekenen uw BMR "
+#~ "met behulp van formules van www.diabetes.co.uk."
+
+#~ msgid "Your current BMR is"
+#~ msgstr "Uw huidige BMR is"
+
+#~ msgid "Suggested Calorie Intake"
+#~ msgstr "Voorgestelde Calorie-inname"
+
+#~ msgid ""
+#~ "Once we know your BMR (the number of calories to keep you functioning at "
+#~ "rest), we can go on to give you suggestions on how to spread your calorie "
+#~ "intake across the day. Firstly we split the figures into daily calorie "
+#~ "intake to maintain weight and daily calorie intake to lose weight. Daily "
+#~ "calorie intake to lose weight is calculated based on NHS advice – they "
+#~ "suggest to lose 1 – 2lbs a week you should subtract 600 calories from "
+#~ "your BMR. The two daily figures can be further broken down by "
+#~ "recommending how to split calorie intake across the day i.e. breakfast, "
+#~ "lunch, dinner and snacks."
+#~ msgstr ""
+#~ "Zodra we uw BMR weten (het aantal calorieën om u in rust te houden), "
+#~ "kunnen wij u verder suggesties geven over hoe u uw calorie-inname door de "
+#~ "dag verspreidt. Ten eerste verdelen we de cijfers in de dagelijkse "
+#~ "calorie-inname om het gewicht en de dagelijkse calorie-inname te behouden "
+#~ "om gewicht te verliezen. De dagelijkse calorie-inname om gewicht te "
+#~ "verliezen wordt berekend op basis van NHS-advies - zij suggereren dat u 1 "
+#~ "tot 2 kg per week kwijt bent, u moet 600 calorieën van uw BMR aftrekken. "
+#~ "De twee dagelijkse cijfers kunnen verder worden afgebroken door aan te "
+#~ "bevelen hoe u de calorie-inname door de dag kunt splitsen, zoals ontbijt, "
+#~ "lunch, diner en snacks."
+
+#~ msgid "Macronutrients"
+#~ msgstr "macronutriënten"
+
+#~ msgid ""
+#~ "With calories calculated, the we can recommend how those calories should "
+#~ "be split into Fats, Carbohydrates and Proteins.  Based on 2010 Dietary "
+#~ "Guidelines for Americans we have split it in the following manner:"
+#~ msgstr ""
+#~ "Met calorieën berekend, kunnen we aanraden hoe deze calorieën verdeeld "
+#~ "moeten worden in vetten, koolhydraten en eiwitten. Op basis van de "
+#~ "voedingsrichtsnoeren voor Amerikanen in 2010 hebben we het op de volgende "
+#~ "manier gesplitst:"
+
+#~ msgid "of calories, Fat"
+#~ msgstr "van calorieën, vet"
+
+#~ msgid "and Protein"
+#~ msgstr "en Proteïnen"
+
+#~ msgid "No weight data was found for the specified user."
+#~ msgstr "Geen data gevonden voor deze gebruiker"
+
+#~ msgid ""
+#~ "To use this shortcode, you must specify content between opening and "
+#~ "closing tags<br /><br />e.g. [wlt-if]something to show if IF is true[/wlt-"
+#~ "if]"
+#~ msgstr ""
+#~ "Om deze shortcode te gebruiken, moet u de inhoud tussen openings- en "
+#~ "sluitingsnamen opgeven <br /> <br /> b.v. [wlt-if] iets om te laten zien "
+#~ "of IF waar is [/ wlt-if]"
+
+#~ msgid "Unfortunately the field you specified is for Pro Plus licenses only."
+#~ msgstr ""
+#~ "Unfortunately the field you specified is for Pro Plus licenses only."
+
+#~ msgid "towards your target of {t}."
+#~ msgstr "naar jou streven toe van {t}."
+
+#~ msgid "Please add a weight entry to see your progress."
+#~ msgstr ""
+#~ "Voer alsjeblieft een nieuwe gewichtsmeting in om je voortgaan te kunnen "
+#~ "zien."
+
+#~ msgid "Please enter a target weight to see your progress."
+#~ msgstr "Voeg een streefgewicht toe om je voortgang te kunnen zien."
+
+#~ msgid ""
+#~ "This shortcode can not be used as Target weights have been disabled in "
+#~ "the plugin's settings."
+#~ msgstr ""
+#~ "Dit shortcode kan niet worden gebruikt als streefgewichten zijn "
+#~ "uitgeschakeld in de instellingen van de plugin."
+
+#~ msgid ""
+#~ "Please remember to enter your weight and measurements for today as well "
+#~ "as your target weight."
+#~ msgstr ""
+#~ "Vergeet niet om je gewicht en metingen vandaag in voeren en ook je "
+#~ "doelgewicht."
+
+#~ msgid ""
+#~ "Please remember to enter your weight for today as well as your target "
+#~ "weight."
+#~ msgstr "Vergeet niet om je gewicht vandaag in voeren en ook je doelgewicht."
+
+#~ msgid "Please remember to enter your target weight."
+#~ msgstr "Vergeet niet om je streefgewicht in te voeren."
+
+#~ msgid "Please remember to enter your weight and measurements for today."
+#~ msgstr "Vergeet niet je gewicht en meting in te voeren van vandaag."
+
+#~ msgid "Please remember to enter your weight for today."
+#~ msgstr "Vergeet niet om je gewicht van vandaag in te voeren."
+
+#~ msgid "Stats disabled"
+#~ msgstr "Statistieken uitgezet"
+
+#~ msgid "Weight Difference"
+#~ msgstr "Verschil in gewicht"
+
+#~ msgid "No of entries"
+#~ msgstr "Aantal invoeringen"
+
+#~ msgid ""
+#~ "The league table has not been generated yet. This is a scheduled task so "
+#~ "please check back in 15 minutes or try pressing the button below."
+#~ msgstr ""
+#~ "De competitietabel is nog niet gegenereerd. Dit is een geplande taak, "
+#~ "controleer alstublieft over 15 minuten nogmaals of probeer op de "
+#~ "onderstaande knop te drukken."
+
+#~ msgid "Lost"
+#~ msgstr "Verloren"
+
+#~ msgid "Gained"
+#~ msgstr "Bijgekomen"
+
+#~ msgid "Height needed"
+#~ msgstr "Lengte nodig"
+
+#~ msgid "Weight needed"
+#~ msgstr "Gewicht nodig"
+
+#~ msgid "You must be logged in to edit your settings."
+#~ msgstr "Je moet ingelogd zijn om je gegevens aan te passen."
+
+#~ msgid "About You:"
+#~ msgstr "Over jou:"
+
+#~ msgid "Your height:"
+#~ msgstr "Jouw lengte:"
+
+#~ msgid "In which unit would you like to record your weight:"
+#~ msgstr "In welke eenheid wil je je gewicht invoeren:"
+
+#~ msgid "In which unit would you like to record your measurements:"
+#~ msgstr "In welke eenheid wil je je metingen invoeren:"
+
+#~ msgid "Display dates in the following formats:"
+#~ msgstr "Laat datum zien in de volgende formaten:"
+
+#~ msgid "Your Gender:"
+#~ msgstr "Je geslacht:"
+
+#~ msgid "Your Date of Birth:"
+#~ msgstr "Jouw geboortedatum"
+
+#~ msgid "Your Activity Level:"
+#~ msgstr "Jouw activiteiten niveau:"
+
+#~ msgid "Your aim:"
+#~ msgstr "Jouw doel:"
+
+#~ msgid "About User:"
+#~ msgstr "Over de client"
+
+#~ msgid "Height:"
+#~ msgstr "Lengte"
+
+#~ msgid "Weight unit:"
+#~ msgstr "Gewichts eenheid"
+
+#~ msgid "Measurements unit:"
+#~ msgstr "Meet eenheid:"
+
+#~ msgid "Date format:"
+#~ msgstr "Datum format:"
+
+#~ msgid "Gender:"
+#~ msgstr "Geslacht:"
+
+#~ msgid "Date of Birth:"
+#~ msgstr "Geboortedatum: 01/01/1980"
+
+#~ msgid "Activity Level:"
+#~ msgstr "Activiteiten niveau:"
+
+#~ msgid "Aim:"
+#~ msgstr "Doel:"
+
+#~ msgid "Save Settings"
+#~ msgstr "Instellingen opslaan"
+
+#~ msgid "Delete existing data"
+#~ msgstr "Verwijder betaande data"
+
+#~ msgid ""
+#~ "The button below allows you to clear your existing weight history. "
+#~ "Confirm:"
+#~ msgstr ""
+#~ "De knop hieronder is er voor om al je data te verwijderen. Weet je het "
+#~ "zeker:"
+
+#~ msgid "DELETE ALL DATA"
+#~ msgstr "VERWIJDEREN VAN ALLE DATA?"
+
+#~ msgid "Delete"
+#~ msgstr "Verwijder"
+
+#~ msgid "Weight Loss Tracker - Chart"
+#~ msgstr "Weight Loss Tracker - Tabel"
+
+#~ msgid "Display a chart to see your current progress."
+#~ msgstr "Een tabel tonen voor je huidige voortgang."
+
+#~ msgid "A pretty graph shall appear once you have recorded several weights."
+#~ msgstr ""
+#~ "Een grafiek zal verschijnen zodra je je gewicht op meerdere dagen hebt "
+#~ "ingevuld."
+
+#~ msgid "Title"
+#~ msgstr "Titel"
+
+#~ msgid "Maximum number of plot points on chart"
+#~ msgstr "Maximum aantal punten in de tabel"
+
+#~ msgid "Message to display if not logged in"
+#~ msgstr "Bericht om te laten zien als je niet bent ingelogd"
+
+#~ msgid ""
+#~ "By default the widget is hidden if the user is not logged in. If you "
+#~ "wish, you can display a message to the visitor instead."
+#~ msgstr ""
+#~ "Standaard is de widget is verborgen als de gebruiker niet is aangemeld. "
+#~ "Als u wilt, kunt u hiervoor inde plaats een bericht weergeven aan de "
+#~ "bezoeker."
+
+#~ msgid "ID of user (leave blank to show chart for current user)"
+#~ msgstr "ID of gebruiker (Laat leeg voor huidige gebruiker)"
+
+#~ msgid ""
+#~ "Note: By default, the chart will be displayed in the weight unit chosen "
+#~ "by the logged in user. If not specfied the plugin default will be used."
+#~ msgstr ""
+#~ "Le op: Standaard wordt de tabel getoond met de gekozen eenheid die je "
+#~ "hebt gekozen bij het inloggen. Wanneer niets is geslecteerd zal "
+#~ "automatisch de default van de plugin worden toegepast."
+
+#~ msgid "Hide Measurements (Pro)?"
+#~ msgstr "Verberg Metingen (pro)?"
+
+#~ msgid "Weight Loss Tracker - Form"
+#~ msgstr "Weight Loss Tracker - Formulier"
+
+#~ msgid ""
+#~ "Display a quick entry form for logged in users to record their weight for "
+#~ "today."
+#~ msgstr ""
+#~ "Toon een snel formulier voor ingelogde gebruikers om hun gewicht van de "
+#~ "dag in te vullen."
+
+#~ msgid "Your weight today"
+#~ msgstr "Gewicht van vandaag"
+
+#~ msgid "Allow user to specify a date?"
+#~ msgstr "Gebruikers toestaan een datum te selecteren?"
+
+#~ msgid "No. Automatically set to today's date"
+#~ msgstr "Nee. Automatisch de datum van vandaag."
+
+#~ msgid "Allow user to specify a date"
+#~ msgstr "Gebruikers toestaan een datum te selecteren"
+
+#~ msgid "Hide measurements (Pro)?"
+#~ msgstr "Verbergen van metingen (Pro)?"
+
+#~ msgid "Hide Photos (Pro Plus)?"
+#~ msgstr "Verbergen foto's (Pro Plus)?"
+
+#~ msgid "Redirect URL (Defaults to current page)"
+#~ msgstr "Redirect URL (Standaard naar huidige pagina)"
+
+#~ msgid ""
+#~ "Specify where the user should be redirected to after completing the form. "
+#~ "Note: The URL must be within the site domain."
+#~ msgstr ""
+#~ "Specificeer waar naartoe de gebruiker moet worden doorgestuurd na het "
+#~ "invullen van het formulier. Opmerking: de URL moet binnen het site domein "
+#~ "zijn."
+
+#~ msgid "Weight Loss Tracker - Progress Bar"
+#~ msgstr "Weight Loss Tracker - voortgang balk"
+
+#~ msgid "A progress bar to indicate weight loss towards target."
+#~ msgstr ""
+#~ "Een voortgangsbalk om het gewichtsverlies ten op zichte van het doel te "
+#~ "laten zien"
+
+#~ msgid "Weight loss progress"
+#~ msgstr "Voortgang gewichtsverlies"
+
+#~ msgid "Chart type"
+#~ msgstr "Tabel type"
+
+#~ msgid "Stroke Width"
+#~ msgstr "Lijn dikte"
+
+#~ msgid "Stroke Colour"
+#~ msgstr "Lijn kleur"
+
+#~ msgid "Trail Width"
+#~ msgstr "Spoor dikte"
+
+#~ msgid "Trail Colour"
+#~ msgstr "Spoor kleur"
+
+#~ msgid "Text Colour"
+#~ msgstr "Tekst kleur"
+
+#~ msgid "Text to be displayed under bar. Use {t} to display target weight."
+#~ msgstr ""
+#~ "De tekst die onder de balk moet worden weergegeven. Gebruik {t} om het "
+#~ "streefgewicht weer te geven."
 
 #~ msgid "Weight Loss Tracker plugin has expired on your site!"
 #~ msgstr "Weight Loss Tracker plugin is verlopen op uw site!"
@@ -3077,11 +2983,6 @@ msgstr ""
 #~| msgid "lbs"
 #~ msgid "Lbs"
 #~ msgstr "lbs"
-
-#, fuzzy
-#~| msgid "Allow user settings"
-#~ msgid "Edit this user's settings"
-#~ msgstr "Gebruikers instellingen toestaan"
 
 #~ msgid "No target weight has been set"
 #~ msgstr "Er is geen doelgewicht ingesteld"
