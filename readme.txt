@@ -149,10 +149,6 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 = 6.0 =
 
-
-//todo: check all form post URLs now since page slugs changed... admin.php?page=
-
-
 * New Feature: Added Custom Fields. Allow admin specified questions to be asked on weight entry forms.
 * New Feature: Added Russian translations.
 * Improvement: Updated Finnish translations.
