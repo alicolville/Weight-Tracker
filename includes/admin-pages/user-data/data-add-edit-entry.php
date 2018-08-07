@@ -33,12 +33,17 @@ function ws_ls_admin_page_data_add_edit() {
 		$redirect_url = base64_decode($redirect_url);
 	}
 ?>
-	<div class="wrap ws-ls-user-data">
+	<div class="wrap ws-ls-user-data ws-ls-admin-page">
 		<div id="poststuff">
 			<?php ws_ls_user_header($user_id, ws_ls_get_link_to_user_profile($user_id)); ?>
 			<div id="post-body" class="metabox-holder columns-2">
 				<div id="post-body-content">
 					<div class="meta-box-sortables ui-sortable">
+                        <?php
+                        if ( true !== WS_LS_IS_PRO ) {
+                            ws_ls_display_pro_upgrade_notice();
+                        }
+                        ?>
 						<div class="postbox">
 							<h2><span><?php echo __('Add / Edit an entry', WE_LS_SLUG); ?></span></h2>
 							<div class="inside">

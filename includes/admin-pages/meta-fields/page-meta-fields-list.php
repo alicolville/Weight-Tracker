@@ -14,12 +14,14 @@
                 <div id="post-body-content">
 
                     <div class="meta-box-sortables ui-sortable">
-
+                        <?php
+                            if ( false === ws_ls_meta_fields_is_enabled() ) {
+                                ws_ls_display_pro_upgrade_notice();
+                            }
+                        ?>
                         <div class="postbox">
                             <h3 class="hndle"><span><?php echo __('Custom Fields', WE_LS_SLUG); ?> </span></h3>
                             <div style="padding: 0px 15px 0px 15px">
-                                <?php if ( false === ws_ls_meta_fields_is_enabled() ): ?>
-                                 <?php endif; ?>
 
                                 <p><?php echo __('Custom Fields allows you to ask your user\'s additional questions when adding a weight entry. 
                                                         For example, you may wish to ask them how many cups of water they drank today or perhaps how they are feeling. 

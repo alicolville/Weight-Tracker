@@ -20,7 +20,7 @@ function ws_ls_advertise_pro() {
 
 		?>
 
-		<div class="wrap">
+		<div class="wrap ws-ls-admin-page">
 			<?php
 				if (isset($_GET['add-license']) && 'true' == $_GET['add-license'] && !empty($_POST['license-key'])){
 
@@ -121,7 +121,7 @@ function ws_ls_advertise_pro() {
 
                                         <?php if ($display_pro_plus_marketing || $display_pro_marketing)  {
 
-                                            echo sprintf('<a href="%s?hash=%s&license=%s" rel="noopener noreferrer" target="_blank" class="button-primary ws-ls-upgrade-button">%s</a>',
+                                            echo sprintf('<a href="%s?hash=%s&license=%s" rel="noopener noreferrer" target="_blank" class="button-primary ws-ls-upgrade-button"><i class="fa fa-angellist"></i> %s</a>',
                                                 WE_LS_FREE_TRIAL_URL,
                                                 ws_ls_generate_site_hash(),
                                                 ws_ls_license_get_old_or_new(),
@@ -144,7 +144,7 @@ function ws_ls_advertise_pro() {
                                                 $link = WE_LS_UPGRADE_TO_PRO_PLUS_UPGRADE_URL;
                                             }
 
-										    echo sprintf('<a href="%s?hash=%s&license=%s" rel="noopener noreferrer" target="_blank" class="button-primary ws-ls-upgrade-button">%s</a>',
+										    echo sprintf('<a href="%s?hash=%s&license=%s" rel="noopener noreferrer" target="_blank" class="button-primary ws-ls-upgrade-button"><i class="fa fa-plus"></i> <i class="fa fa-plus"></i> %s</a>',
                                                 $link,
                                                 ws_ls_generate_site_hash(),
                                                 ws_ls_license_get_old_or_new(),
@@ -159,7 +159,7 @@ function ws_ls_advertise_pro() {
 												__('Switch to a yearly Pro license for ', WE_LS_SLUG) . '&pound;' . $price . __(' a year', WE_LS_SLUG) :
 												__('Upgrade to Pro for ', WE_LS_SLUG) . '&pound;' . $price . __(' a year', WE_LS_SLUG); ?>
 
-											<a href="<?php echo WE_LS_UPGRADE_TO_PRO_URL; ?>?hash=<?php echo ws_ls_generate_site_hash(); ?>" target="_blank" rel="noopener noreferrer" class="button-primary ws-ls-upgrade-button"><?php echo $button_text; ?></a>
+											<a href="<?php echo WE_LS_UPGRADE_TO_PRO_URL; ?>?hash=<?php echo ws_ls_generate_site_hash(); ?>" target="_blank" rel="noopener noreferrer" class="button-primary ws-ls-upgrade-button"><i class="fa fa-plus"></i> <?php echo $button_text; ?></a>
 										<?php endif; ?>
 									</center>
 								</div>
@@ -181,7 +181,7 @@ function ws_ls_advertise_pro() {
 										<p><?php echo __('Copy and paste the license given to you by YeKen into this box and click "Apply License"', WE_LS_SLUG); ?>.</p>
 										<textarea rows="5" style="width:100%"  name="license-key"></textarea>
                                         <br /><br />
-										<input type="submit" class="button-secondary large-text" value="<?php echo __('Apply License', WE_LS_SLUG); ?>" />
+                                        <input type="submit" class="button-secondary large-text" value="<?php echo __('Apply License', WE_LS_SLUG); ?>" />
 									</form>
 								</div>
 							</div>
@@ -195,7 +195,7 @@ function ws_ls_advertise_pro() {
                                         </tr>
                                         <tr>
                                             <th><?php echo __('Type', WE_LS_SLUG); ?></th>
-                                            <td><a href="<?php echo esc_url(WE_LS_LICENSE_TYPES_URL); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html_e($license_name); ?></a></td>
+                                            <td><a href="<?php echo esc_url(WE_LS_LICENSE_TYPES_URL); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html( $license_name ); ?></a></td>
                                         </tr>
                                         <tr>
                                             <th><?php echo __('Expires', WE_LS_SLUG); ?></th>
@@ -247,8 +247,8 @@ function ws_ls_advertise_pro() {
 							<div class="meta-box-sortables ui-sortable">
 								<?php if ($display_pro_plus_marketing): ?>
 									<div class="postbox">
-										<h3 class="hndle">
-	                                        <img src="<?php echo plugin_dir_url( __FILE__ ); ?>/images/upgrade-pro-plus.png" />
+										<h3 class="hndle highlight-title">
+                                            <?php echo __('Pro Plus Features', WE_LS_SLUG); ?>
 	                                    </h3>
 	                                   <div style="padding: 0px 15px 0px 15px">
 											<div class="inside">
@@ -260,8 +260,8 @@ function ws_ls_advertise_pro() {
 								<?php endif; ?>
 								<?php if ($display_pro_marketing): ?>
 									<div class="postbox">
-										<h3 class="hndle">
-	                                        <img src="<?php echo plugin_dir_url( __FILE__ ); ?>/images/upgrade-pro-standard.png" />
+										<h3 class="hndle highlight-title">
+                                            <?php echo __('Pro Features', WE_LS_SLUG); ?>
 	                                    </h3>
 	                                   <div style="padding: 0px 15px 0px 15px">
 

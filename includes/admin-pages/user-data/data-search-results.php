@@ -7,7 +7,7 @@ function ws_ls_admin_page_search_results() {
     ws_ls_user_data_permission_check();
 
     ?>
-    <div class="wrap ws-ls-user-data">
+    <div class="wrap ws-ls-user-data ws-ls-admin-page">
     <h1><?php echo __('Search Results', WE_LS_SLUG); ?></h1>
     <div id="poststuff">
         <div id="post-body" class="metabox-holder">
@@ -18,18 +18,21 @@ function ws_ls_admin_page_search_results() {
                         <h2 class="hndle"><span><?php echo __('Search Results', WE_LS_SLUG); ?></span></h2>
 
                         <div class="inside">
-                            <?php
+                         <?php
+                            if ( true !== WS_LS_IS_PRO ) {
+                                ws_ls_display_pro_upgrade_notice();
+                            }
 
                                 $search_term = (false === empty($_GET['search'])) ? $_GET['search'] : false ;
 
-                                if($search_term) {
+                                if( true === WS_LS_IS_PRO && false === empty( $search_term ) ) {
 
                                     $results = ws_ls_user_search($search_term);
 
                                     if(false === empty($results)) {
                                         echo sprintf('<p>%s %s: <em>"%s"</em></p>',
                                             count($results),
-                                            __('results were found for:', WE_LS_SLUG),
+                                            __('results were found for', WE_LS_SLUG),
                                             esc_html($search_term)
                                         );
 

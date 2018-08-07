@@ -46,9 +46,6 @@
             ) $charset_collate;";
 
         dbDelta( $sql );
-
-
-
     }
     add_action('ws-ls-rebuild-database-tables', 'ws_ls_meta_fields_create_mysql_tables');
 
@@ -59,7 +56,7 @@
 
         // Only run this when the plugin version has changed
         if( false === update_option('ws-ls-meta-version-number', WE_LS_DB_VERSION )) {
-            return;
+            ws_ls_meta_fields_create_mysql_tables();
         }
 
         // If no meta fields exist, then add some examples

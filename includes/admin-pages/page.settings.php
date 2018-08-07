@@ -26,7 +26,7 @@ function ws_ls_settings_page() {
 
 
 		?>
-	<div class="wrap">
+	<div class="wrap ws-ls-admin-page">
 
 <?php
 
@@ -80,6 +80,11 @@ function ws_ls_settings_page() {
                                     </ul>
 									<div>
 										<div>
+                                                <?php
+                                                    if ( false === WS_LS_IS_PRO ) {
+                                                        ws_ls_display_pro_upgrade_notice();
+                                                    }
+                                                ?>
                                                 <h3><?php echo __( 'Default units / formats to be used by plugin' , WE_LS_SLUG); ?></h3>
 												<table class="form-table">
 													<tr>
@@ -197,10 +202,11 @@ function ws_ls_settings_page() {
                                             </table>
 										</div>
 										<div>
-                                            <?php if (false === WS_LS_IS_PRO_PLUS): ?>
-                                                <a class="button-secondary" href="<?php echo ws_ls_upgrade_link(); ?>"><?php echo __( 'Upgrade now to Pro Plus' , WE_LS_SLUG); ?></a>
-                                                <hr />
-                                            <?php endif; ?>
+                                            <?php
+                                                if ( false === WS_LS_IS_PRO_PLUS ) {
+                                                    ws_ls_display_pro_upgrade_notice();
+                                                }
+                                            ?>
 
                                             <h3><?php echo __( 'Photos' , WE_LS_SLUG); ?></h3>
 
@@ -239,6 +245,7 @@ function ws_ls_settings_page() {
 													</td>
 												</tr>
                                             </table>
+
 
                                             <h3><?php echo __( 'Calculating daily calorie intake to lose weight' , WE_LS_SLUG); ?></h3>
 
@@ -293,6 +300,11 @@ function ws_ls_settings_page() {
                                             </table>
                                         </div>
 										<div>
+                                            <?php
+                                            if ( false === WS_LS_IS_PRO ) {
+                                                ws_ls_display_pro_upgrade_notice();
+                                            }
+                                            ?>
 											<table class="form-table">
 												<tr  class="<?php echo $disable_if_not_pro_class; ?>">
 													<th scope="row"><?php echo __( 'Default chart type', WE_LS_SLUG ); ?></th>
@@ -454,6 +466,11 @@ function ws_ls_settings_page() {
 											</table>
 										</div>
 											<div>
+                                                <?php
+                                                if ( false === WS_LS_IS_PRO ) {
+                                                    ws_ls_display_pro_upgrade_notice();
+                                                }
+                                                ?>
 												<table class="form-table">
 													<tr class="<?php echo $disable_if_not_pro_class; ?>">
 														<th scope="row"><?php echo __( 'Enable email notifications', WE_LS_SLUG ); ?></th>
@@ -504,6 +521,11 @@ function ws_ls_settings_page() {
 												</table>
 											</div>
                                         <div>
+                                            <?php
+                                            if ( false === WS_LS_IS_PRO ) {
+                                                ws_ls_display_pro_upgrade_notice();
+                                            }
+                                            ?>
                                            <table class="form-table">
                                                 <tr class="<?php echo $disable_if_not_pro_class; ?>">
                                                 	<th scope="row"><?php echo __( 'Allow Measurements?' , WE_LS_SLUG); ?></th>
@@ -580,6 +602,11 @@ function ws_ls_settings_page() {
 
                                         </div>
                                         <div>
+                                            <?php
+                                            if ( false === WS_LS_IS_PRO ) {
+                                                ws_ls_display_pro_upgrade_notice();
+                                            }
+                                            ?>
                                             <table class="form-table">
                                                 <tr class="<?php echo $disable_if_not_pro_class; ?>">
                                                     <th scope="row"><?php echo __( 'Enable Gravity Forms', WE_LS_SLUG ); ?></th>

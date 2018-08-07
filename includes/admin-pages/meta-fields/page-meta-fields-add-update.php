@@ -47,7 +47,11 @@
                     <div id="post-body-content">
 
                         <div class="meta-box-sortables ui-sortable">
-
+                            <?php
+                            if ( false === ws_ls_meta_fields_is_enabled() ) {
+                                ws_ls_display_pro_upgrade_notice();
+                            }
+                            ?>
                             <div class="postbox">
                                 <h3 class="hndle"><span><?php echo __('Add / Edit a Custom Field', WE_LS_SLUG); ?> </span></h3>
                                 <div style="padding: 0px 15px 0px 15px">
@@ -150,7 +154,7 @@
                                                     <?php if ( true === ws_ls_meta_fields_is_enabled() ): ?>
                                                         <input name="submit_button" type="submit" value="<?php echo __('Save', WE_LS_SLUG); ?>" class="comment-submit button button-primary">
                                                     <?php else: ?>
-                                                        <a class="comment-submit button button-primary"><?php echo __('Save (Pro Plus only)', WE_LS_SLUG); ?></a>
+                                                        <a class="comment-submit button button-primary" href="<?php echo esc_url( admin_url('admin.php?page=ws-ls-license') ); ?>"><?php echo __('Save', WE_LS_SLUG); ?></a>
                                                     <?php endif; ?>
                                                 </div>
                                             </div>

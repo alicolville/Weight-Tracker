@@ -877,24 +877,14 @@ function ws_ls_get_values_from_post( $keys ) {
  *
  * @param bool $pro_plus
  */
-function ws_ls_display_pro_upgrade_notice_user_data( ) {
+function ws_ls_display_pro_upgrade_notice( ) {
 ?>
 
     <div class="postbox ws-ls-advertise">
-        <h3 class="hndle"><span><?php echo __( 'Looking to view and manipulate your user\'s data?', WE_LS_SLUG); ?> </span></h3>
+        <h3 class="hndle"><span><?php echo __( 'Upgrade Weight Tracker and get more features!', WE_LS_SLUG); ?> </span></h3>
         <div style="padding: 0px 15px 0px 15px">
-            <p><?php echo __( 'Upgrade to the Pro version of this plugin to view, edit and delete your user\'s weight entries', WE_LS_SLUG); ?></p>
-            <ul style="list-style: circle !important; margin-left: 20px;">
-                <li><?php echo __( 'Manage and view their photos.', WE_LS_SLUG); ?></li>
-                <li><?php echo __( 'View all user entries in tabular and chart format.', WE_LS_SLUG); ?></li>
-                <li><?php echo __( 'Add, edit and delete user entries.', WE_LS_SLUG); ?></li>
-                <li><?php echo __( 'Sortable and responsive tables.', WE_LS_SLUG); ?></li>
-                <li><?php echo __( 'View league tables of most lost / gained.', WE_LS_SLUG); ?></li>
-                <li><?php echo __( 'View user stats, weight lost, recent weight, start weight, BMI, etc.', WE_LS_SLUG); ?></li>
-                <li><?php echo __( 'Export all or a particular user\'s data in CSV / JSON.', WE_LS_SLUG); ?></li>
-                <li><?php echo __( 'View and Edit Custom Fields data for each user entry.', WE_LS_SLUG); ?></li>
-            </ul>
-            <p><a href="<?php echo admin_url('admin.php?page=ws-ls-license'); ?>" class="button-primary"><?php echo __( 'Upgrade to Pro Version', WE_LS_SLUG); ?></a></p>
+            <p><?php echo __( 'Upgrade to the latest Pro or Pro Plus version of this plugin to manipulate your user\'s data, add custom fields, BMR, Macro Nutrients and much more!', WE_LS_SLUG); ?></p>
+            <p><a href="<?php echo esc_url( admin_url('admin.php?page=ws-ls-license') ); ?>" class="button-primary"><?php echo __( 'Read more and Upgrade to Pro / Pro Plus Version', WE_LS_SLUG); ?></a></p>
         </div>
     </div>
 
@@ -931,16 +921,20 @@ function ws_ls_blur( $pro_plus = false, $space_before = true ) {
  */
 function ws_ls_blur_text( $text, $pro_plus = false ) {
 
-    $blur = false;
+    if ( false === empty( $text ) ) {
 
-    if ( false === $pro_plus && false === WS_LS_IS_PRO ) {
-        $blur = true;
-    } elseif ( true === $pro_plus && false === WS_LS_IS_PRO_PLUS ) {
-        $blur = true;
-    }
+        $blur = false;
 
-    if ( true === $blur ) {
-        $text = str_repeat( '0', strlen( $text ) + 1 );
+        if ( false === $pro_plus && false === WS_LS_IS_PRO ) {
+            $blur = true;
+        } elseif ( true === $pro_plus && false === WS_LS_IS_PRO_PLUS ) {
+            $blur = true;
+        }
+
+        if ( true === $blur ) {
+            $text = str_repeat( '0', strlen( $text ) + 1 );
+        }
+
     }
 
     return $text;

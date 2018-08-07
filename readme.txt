@@ -139,6 +139,10 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 = 6.0 =
 
+//todo: upgrade pro to £40 and pro plus to £85
+//todo: screen shots of meta fields
+//todo: update features list in plugin / read me / doc website
+//todo: mention custom web development in help page?
 //todo: check license prices
 //todo: add new logo
 //todo: update chart.js and footables.js

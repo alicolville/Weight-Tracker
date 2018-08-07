@@ -28,12 +28,17 @@ function ws_ls_admin_page_data_user() {
     <div class="notice notice-success"><p><?php echo __('The cache for this user has been deleted.', WE_LS_SLUG); ?></p></div>
 <?php endif; ?>
 
-<div class="wrap ws-ls-user-data">
+<div class="wrap ws-ls-user-data ws-ls-admin-page">
 	<div id="poststuff">
 		<?php ws_ls_user_header($user_id); ?>
 		<div id="post-body" class="metabox-holder columns-2">
 			<div id="post-body-content">
 				<div class="meta-box-sortables ui-sortable">
+                    <?php
+                        if ( true !== WS_LS_IS_PRO ) {
+                            ws_ls_display_pro_upgrade_notice();
+                        }
+                    ?>
 					<div class="postbox">
 						<h2 class="hndle"><span><?php echo __('Chart', WE_LS_SLUG); ?></span></h2>
 						<div class="inside">
@@ -47,7 +52,17 @@ function ws_ls_admin_page_data_user() {
                                     $weight_data = array_reverse($weight_data);
                                 }
 
-								echo ws_ls_display_chart($weight_data, ['type' => 'line', 'max-points' => 25, 'user-id' => $user_id]);
+                                if ( true !== WS_LS_IS_PRO ) {
+
+                                    echo sprintf('<p><a href="%s">%s</a> %s.</p>',
+                                        ws_ls_upgrade_link(),
+                                        __('Upgrade to Pro', WE_LS_SLUG),
+                                        __('to view the a chart of the user\'s weight entries.' , WE_LS_SLUG)
+                                    );
+
+                                } else {
+                                    echo ws_ls_display_chart($weight_data, ['type' => 'line', 'max-points' => 25, 'user-id' => $user_id]);
+                                }
 
 							?>
 						</div>

@@ -88,58 +88,58 @@ function ws_ls_user_side_bar($user_id) {
                     </tr>
                     <tr>
                         <th><?php echo __('Start Weight', WE_LS_SLUG); ?></th>
-                        <td><?php echo ws_ls_weight_start($user_id); ?></td>
+                        <td class="<?php echo ws_ls_blur(); ?>"><?php echo ws_ls_blur_text( ws_ls_weight_start($user_id) ); ?></td>
                     </tr>
                     <tr>
                         <th><?php echo __('Latest Weight', WE_LS_SLUG); ?></th>
-                        <td><?php echo ws_ls_weight_recent($user_id); ?></td>
+                        <td class="<?php echo ws_ls_blur(); ?>"><?php echo ws_ls_blur_text( ws_ls_weight_recent($user_id) ); ?></td>
                     </tr>
                     <tr>
                         <th><?php echo __('Diff. from Start', WE_LS_SLUG); ?></th>
-                        <td><?php echo ws_ls_weight_difference($user_id); ?></td>
+                        <td class="<?php echo ws_ls_blur(); ?>"><?php echo ws_ls_blur_text( ws_ls_weight_difference($user_id) ); ?></td>
                     </tr>
                     <tr>
                         <th><?php echo __('Target Weight', WE_LS_SLUG); ?></th>
-                        <td>
+                        <td class="<?php echo ws_ls_blur(); ?>">
                             <a href="<?php echo ws_ls_get_link_to_edit_target($user_id); ?>">
                                 <?php
 
                                 $target = ws_ls_weight_target_weight($user_id, true);
-                                echo (true === empty($target)) ? __('No target set', WE_LS_SLUG) : $target;
+                                echo (true === empty($target)) ? __('No target set', WE_LS_SLUG) : ws_ls_blur_text( $target );
                                 ?>
                             </a>
                         </td>
                     </tr>
                     <tr>
                         <th><?php echo __('Diff. from Target', WE_LS_SLUG); ?></th>
-                        <td><?php echo ws_ls_weight_difference_target($user_id); ?></td>
+                        <td class="<?php echo ws_ls_blur(); ?>"><?php echo ws_ls_blur_text( ws_ls_weight_difference_target($user_id) ); ?></td>
                     </tr>
                     <tr>
                         <th><?php echo __('Current BMI', WE_LS_SLUG); ?></th>
-                        <td><?php echo ws_ls_get_user_bmi(['user-id' => $user_id, 'display' => 'both', 'no-height-text' => __('No height specified', WE_LS_SLUG)]); ?></td>
+                        <td class="<?php echo ws_ls_blur(); ?>"><?php echo ws_ls_get_user_bmi(['user-id' => $user_id, 'display' => 'both', 'no-height-text' => __('No height specified', WE_LS_SLUG)]); ?></td>
                     </tr>
 
 					<?php echo ws_ls_side_bar_render_rows( apply_filters(WE_LS_FILTER_ADMIN_USER_SIDEBAR_MIDDLE, [], $user_id) ); ?>
 
                     <tr>
                         <th><?php echo __('Aim', WE_LS_SLUG); ?></th>
-                        <td><a href="<?php echo $settings_url; ?>"><?php echo ws_ls_display_user_setting($user_id, 'aim'); ?></a></td>
+                        <td class="<?php echo ws_ls_blur(); ?>"><a href="<?php echo $settings_url; ?>"><?php echo ws_ls_blur_text( ws_ls_display_user_setting($user_id, 'aim') ); ?></a></td>
                     </tr>
 					<tr>
                         <th><?php echo __('Height', WE_LS_SLUG); ?></th>
-                        <td><a href="<?php echo $settings_url; ?>"><?php echo ws_ls_display_user_setting($user_id, 'height'); ?></a></td>
+                        <td class="<?php echo ws_ls_blur(); ?>"><a href="<?php echo $settings_url; ?>"><?php echo ws_ls_blur_text ( ws_ls_display_user_setting($user_id, 'height') ); ?></a></td>
                     </tr>
 					<tr>
                         <th><?php echo __('Gender', WE_LS_SLUG); ?></th>
-                        <td><a href="<?php echo $settings_url; ?>"><?php echo ws_ls_display_user_setting($user_id, 'gender'); ?></a></td>
+                        <td class="<?php echo ws_ls_blur(); ?>"><a href="<?php echo $settings_url; ?>"><?php echo ws_ls_blur_text( ws_ls_display_user_setting($user_id, 'gender') ); ?></a></td>
                     </tr>
 					<tr>
                         <th><?php echo __('Activity Level', WE_LS_SLUG); ?></th>
-                        <td><a href="<?php echo $settings_url; ?>"><?php echo ws_ls_display_user_setting($user_id, 'activity_level', false, true); ?></a></td>
+                        <td class="<?php echo ws_ls_blur(); ?>"><a href="<?php echo $settings_url; ?>"><?php echo ws_ls_blur_text( ws_ls_display_user_setting($user_id, 'activity_level', false, true) ); ?></a></td>
                     </tr>
 					<tr>
                         <th><?php echo __('Date of Birth', WE_LS_SLUG); ?></th>
-                        <td><a href="<?php echo $settings_url; ?>"><?php echo ws_ls_get_dob_for_display($user_id, false, true); ?></a></td>
+                        <td class="<?php echo ws_ls_blur(); ?>"><a href="<?php echo $settings_url; ?>"><?php echo ws_ls_blur_text( ws_ls_get_dob_for_display($user_id, false, true) ); ?></a></td>
                     </tr>
 					<tr class="last">
                         <th><?php echo __('BMR', WE_LS_SLUG); ?></th>

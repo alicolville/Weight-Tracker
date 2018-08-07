@@ -29,7 +29,7 @@ defined('ABSPATH') or die('Jog on!');
 
     define('WS_LS_ABSPATH', plugin_dir_path( __FILE__ ));
     define('WE_LS_CURRENT_VERSION', '6.0');
-    define('WE_LS_DB_VERSION', '6.0-bet6'); //TODO
+    define('WE_LS_DB_VERSION', '6.0-bet7'); //TODO
 
 // -----------------------------------------------------------------------------------------
 // AC: Activate / Deactivate / Uninstall Hooks
@@ -96,21 +96,18 @@ defined('ABSPATH') or die('Jog on!');
         'includes/admin-notifications.php',
         'pro-features/functions.php',
         'pro-features/functions.pages.php',
-        'pro-features/admin-pages/data-home.php',
-        'pro-features/admin-pages/data-summary.php',
-        'pro-features/admin-pages/data-view-all.php',
-        'pro-features/admin-pages/data-add-edit-entry.php',
-        'pro-features/admin-pages/data-edit-target.php',
-        'pro-features/admin-pages/data-user.php',
-        'pro-features/admin-pages/data-user-edit-settings.php',
-        'pro-features/admin-pages/data-search-results.php',
-        'pro-features/admin-pages/data-photos.php'
+        'includes/admin-pages/user-data/data-home.php',
+        'includes/admin-pages/user-data/data-summary.php',
+        'includes/admin-pages/user-data/data-view-all.php',
+        'includes/admin-pages/user-data/data-add-edit-entry.php',
+        'includes/admin-pages/user-data/data-edit-target.php',
+        'includes/admin-pages/user-data/data-user.php',
+        'includes/admin-pages/user-data/data-user-edit-settings.php',
+        'includes/admin-pages/user-data/data-search-results.php',
+        'includes/admin-pages/user-data/data-photos.php'
     ];
 
-
-    // todo profiles
     $pro_files = [
-        //   'functions.php',
         'pro-features/user-preferences.php',
         'pro-features/ajax-handler-public.php',
         'pro-features/ajax-handler-admin.php',
@@ -131,60 +128,43 @@ defined('ABSPATH') or die('Jog on!');
         'pro-features/functions.measurements.php',
         'pro-features/functions.stats.php',
         'pro-features/export.php',
-        //     'functions.pages.php',
-    //  todo      'admin-pages/data-home.php',  todo
-    //        'admin-pages/data-summary.php',
-    //        'admin-pages/data-view-all.php',
-    //        'admin-pages/data-add-edit-entry.php',
-    //        'admin-pages/data-edit-target.php',
-    //        'admin-pages/data-user.php',
-    //        'admin-pages/data-user-edit-settings.php',
-    //        'admin-pages/data-search-results.php',
-    //        'admin-pages/data-photos.php'
+        'pro-features/init.php'
     ];
 
     $files_to_include = array_merge( $files_to_include, $pro_files );
 
     // Gravity Forms
     if ( true === WE_LS_THIRD_PARTY_GF_ENABLE ) {
-        $files_to_include[] = 'hook-gravity-forms.php';
+        $files_to_include[] = 'pro-features/hook-gravity-forms.php';
     }
 
     // Include files for those that have a Pro Plus license
     if( true === WS_LS_IS_PRO_PLUS ) {
 
         $files_to_include = array_merge( $files_to_include,[
-            'plus/bmr.php',
-            'plus/harris.benedict.php',
-            'plus/macronutrient.calculator.php',
-            'plus/shortcode.wlt.php'
+            'pro-features/plus/bmr.php',
+            'pro-features/plus/harris.benedict.php',
+            'pro-features/plus/macronutrient.calculator.php',
+            'pro-features/plus/shortcode.wlt.php'
         ]);
 
         // Photos enabled?
         if( true === WE_LS_PHOTOS_ENABLED ) {
-            $files_to_include[] = 'plus/photos.php';
-            $files_to_include[] = 'plus/photos.gallery.php';
+            $files_to_include[] = 'pro-features/plus/photos.php';
+            $files_to_include[] = 'pro-features/plus/photos.gallery.php';
         }
 
     }
 
     // Email notifications enabled?
     if( true === WE_LS_EMAIL_ENABLE ) {
-        $files_to_include[] = 'emails.php';
+        $files_to_include[] = 'pro-features/emails.php';
     }
 
     foreach ( $files_to_include as $file ) {
         require_once( WS_LS_ABSPATH . $file );
     }
 
-// -----------------------------------------------------------------------------------------
-// AC: Include Pro files
-// --------------------------------------------------------------------------------------
-    if(WS_LS_IS_PRO){
-        include WS_LS_ABSPATH . 'pro-features/init.php';
-    } else {
-       // include WS_LS_ABSPATH . 'includes/admin-pages/page.user.data.advertise.php'; todo
-    }
 // -----------------------------------------------------------------------------------------
 // AC: Load relevant language files (https://wpcentral.io/internationalization/)
 // -----------------------------------------------------------------------------------------

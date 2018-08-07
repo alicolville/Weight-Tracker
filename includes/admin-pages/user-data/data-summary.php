@@ -15,7 +15,7 @@ function ws_ls_admin_page_data_summary() {
     }
 
 ?>
-<div class="wrap ws-ls-user-data">
+<div class="wrap ws-ls-user-data ws-ls-admin-page">
 	<h1><?php echo __('Summary', WE_LS_SLUG); ?></h1>
 	<div id="poststuff">
 		<div id="post-body" class="metabox-holder columns-2">
@@ -23,7 +23,7 @@ function ws_ls_admin_page_data_summary() {
 				<div class="meta-box-sortables ui-sortable">
                     <?php
                         if ( true !== WS_LS_IS_PRO ) {
-                            ws_ls_display_pro_upgrade_notice_user_data();
+                            ws_ls_display_pro_upgrade_notice();
                         }
                     ?>
 					<div class="postbox">

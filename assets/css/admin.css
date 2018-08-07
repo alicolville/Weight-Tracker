@@ -1,3 +1,12 @@
+/*
+Color Pallete
+HEX: #92a8d1
+HEX: #034f84
+HEX: #f7cac9
+HEX: #f7786b
+
+ */
+
 .ws-ls-hide {
     display: none !important;
 }
@@ -7,7 +16,7 @@
 }
 .ws-ls-disabled th::after {
     content: "\A(Pro version)";
-    color: red;
+    color: #f7cac9;
     font-weight: bold;
     clear: both;
     width:100%;
@@ -15,7 +24,7 @@
 }
 .ws-ls-disabled-pro-plus th::after {
     content: "\A(Pro Plus version)";
-    color: #FFA500;
+    color: #f7786b;
     font-weight: bold;
     clear: both;
     width:100%;
@@ -97,7 +106,11 @@
     margin-bottom: 10px;
 }
 .ws-ls-settings h3, .ws-ls-macro .row-title {
-    color: #00a0d2 !important;
+    color: #034f84 !important;
+    font-size: 15px;
+}
+.ws-ls-settings th {
+    font-weight: 300;
 }
 .ws-ls-user-data .fa {
 	font-size: 13px !important;
@@ -129,10 +142,14 @@
     display: none;
 }
 .ws-ls-advertise {
-    border: 2px solid #080ffd;
+    border: 2px solid #034f84;
+    background-color: #92a8d1;
+    color: #ffffff;
 }
 .ws-ls-advertise .hndle {
-    border-bottom: 2px solid #080ffd;
+    border-bottom: 2px solid #034f84;
+    background-color: #034f84;
+    color: #ffffff !important;
 }
 .ws-ls-blur {
     filter:url(#wherearemyglasses);
@@ -143,6 +160,12 @@
 }
 .ws-ls-blur th {
     display: inline-block;
+}
+.highlight-title  {
+    font-size: 18px !important;
+}
+.ws-ls-admin-page .hndle {
+    color: #034f84;
 }
 /*
     Tables with div
