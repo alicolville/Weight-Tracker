@@ -167,6 +167,15 @@ HEX: #f7786b
 .ws-ls-admin-page .hndle {
     color: #034f84;
 }
+
+.ws-ls-advertise-pro-plus .hndle {
+    background-color: #f7786b;
+    color: #FFFFFF;
+}
+.ws-ls-advertise-pro .hndle {
+    background-color: #f7cac9;
+    color: #FFFFFF;
+}
 /*
     Tables with div
  */

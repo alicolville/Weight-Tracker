@@ -246,7 +246,7 @@ function ws_ls_advertise_pro() {
 						<div id="post-body-content">
 							<div class="meta-box-sortables ui-sortable">
 								<?php if ($display_pro_plus_marketing): ?>
-									<div class="postbox">
+									<div class="postbox ws-ls-advertise-pro-plus">
 										<h3 class="hndle highlight-title">
                                             <?php echo __('Pro Plus Features', WE_LS_SLUG); ?>
 	                                    </h3>
@@ -259,7 +259,7 @@ function ws_ls_advertise_pro() {
 									</div>
 								<?php endif; ?>
 								<?php if ($display_pro_marketing): ?>
-									<div class="postbox">
+									<div class="postbox ws-ls-advertise-pro">
 										<h3 class="hndle highlight-title">
                                             <?php echo __('Pro Features', WE_LS_SLUG); ?>
 	                                    </h3>
