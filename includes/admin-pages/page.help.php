@@ -43,7 +43,7 @@ function ws_ls_help_page() {
 							<h3 class="hndle"><span><?php echo __( 'Tools', WE_LS_SLUG); ?> </span></h3>
 							<div style="padding: 0px 15px 0px 15px">
 								<p><?php echo __( 'Correct accuracy for measurements entered in Stones and Pounds (only run with the advice of YeKen)', WE_LS_SLUG ); ?></p>
-								<p><a href="<?php echo esc_url( admin_url( 'admin.php?page=ws-ls-weight-loss-tracker-help&yeken=y&run=y') ); ?>" >Run</a></p>
+								<p><a href="<?php echo esc_url( admin_url( 'admin.php?page=ws-ls-help&yeken=y&run=y') ); ?>" >Run</a></p>
 
 								<?php
 

@@ -134,7 +134,7 @@ function ws_ls_get_link_to_photos($id) {
  * @return string
  */
 function ws_ls_get_link_to_settings() {
-    return admin_url( 'admin.php?page=ws-ls-weight-loss-tracker-main-menu' );
+    return admin_url( 'admin.php?page=ws-ls-settings' );
 }
 
 
