@@ -2,23 +2,27 @@
 Contributors: aliakro
 Tags: weight, loss, lose, helper, bmi, body, mass, index, graph, track, stones, kg, table, data, plot, target, history, pounds, responsive, chart, measurements, cm, centimeters, inches, hip, waist, bicep, thigh
 Requires at least: 4.4.0
-Tested up to: 4.9.6
+Tested up to: 4.9.8
 Stable tag: 6.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate Link: https://www.paypal.me/yeken
 
-Allow registered users of your website to track their weight and relevant body measurements. History can be displayed in both tables & charts. Support for BMI, BMR, Calorie Intake, Macronutrients and much more!
+Allow registered users of your website to track their weight, measurements, custom fields and much more! History can be displayed in both tables & charts. Support for BMI, BMR, Calorie Intake, Macronutrients and much more!
 
 == Description ==
 
-= Documentation =
+= Demo =
 
 Use our free site for tracking your weight which shows off some of the plugin's feature: [TrackYourWeight.co.uk - Demo Site](https://www.trackyourweight.co.uk "TrackYourWeight.co.uk")
 
+= Documentation =
+
+[Weight Tracker Website](https://weight.yeken.uk/ "Weight Tracker Website")
+
 = Core Features =
 
-An easy to use plugin that allows your users to track their weight and relevant body measurements. Their entries can be seen in various ways, charts, tables, shortcodes and widgets. The user is able to set targets and modify their weight entries.
+An easy to use plugin that allows your users to track their weight, body measurements and any custom fields you define. Their entries can be seen in various ways, charts, tables, shortcodes and widgets. The user is able to set targets and modify their entries.
 
 The admin area features a rich user interface to allow site owners and personal trainers interact with their user base and help them achieve their goals.
 
@@ -44,6 +48,7 @@ For further information read our documentation:
 * **Admin can view, edit and delete user data.** Various tools for viewing user's graphs, tables of entries, BMI, targets, weight lost / gained stats and much more.
 * **CSV and JSON exports** for all data or a particular user.
 * **Measurements.** Support for recording measurements like Hip, Waist, Leg, Bicep, etc. Displayed on charts and tables.
+* **Custom Fields.** Define and ask your user's custom questions on weight entry forms.
 * **BMI.** Allows a user to specify their height. Once specified, their BMI is displayed next to each weight entry. There is also a shortcode to render the latest BMI.
 * **Email notifications.** Receive email notifications when a person updates their target or adds / edits a weight.
 * **Overall user stats.** Shortcodes that allow you to display the total lost / gained for the community and another to display a league table.
@@ -94,12 +99,14 @@ Yes! Please visit our dedicated site [Weight Tracker Website](https://weight.yek
 
 = Does it create any custom mySQL tables =
 
-Yes it creates four:
+Yes it creates six:
 
 - WP_WS_LS_DATA_TARGETS - Stores user target data.
 - WP_WS_LS_DATA - Store weight and measurement information per user.
 - WS_LS_DATA_USER_PREFERENCES - Stores user preferences.
 - WS_LS_DATA_USER_STATS - Stores user statistics data.
+- WS_LS_META_FIELDS - Defines the Custom Fields that can be asked on weight entry forms.
+- WS_LS_META_ENTRY - Stores the answers for Custom Fields.
 
 = What date formats doe it support? =
 
@@ -131,28 +138,25 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 14. Admin - Edit a user's data entry
 15. Admin - User's data card displayed on a tablet
 16. Admin - Displaying a another view of the user's data card
+17. Admin - Displaying all Custom Fields
+18. Admin - Add / Edit custom field
 
 == Upgrade Notice ==
 
+6.0 - New Custom Fields! Add your own questions to weight entry forms!
 
 == Changelog ==
 
 = 6.0 =
 
-//todo: upgrade pro to £40 and pro plus to £85
-//todo: screen shots of meta fields
-//todo: update features list in plugin / read me / doc website
-//todo: mention custom web development in help page?
-//todo: check license prices
-//todo: add new logo
-//todo: update chart.js and footables.js
-//todo: minify data.footabe.js
+//todo: add russian and Finish languages
+//todo: update plugin descrtipion and tags!
 //todo: check all form post URLs now since page slugs changed... admin.php?page=
-//todo: rename admin-pages folder
-//TODO: Tidy up folder / file structure... e.g. create folders called "shortcodes", "widgets", "core" etc and move files. Move CSS/ JS into assets folder
-//TODO: Open up User Data (maybe rename menu item) so non pro can view some bit of it.
 //todo: Regenerate language files
-* Improvement: Refactored Pro / Pro Plus features file include logic
+
+* Improvement: Added Custom Fields. Allow admin specified questions to be asked on weight entry forms.
+* Improvement: Refactored Pro / Pro Plus features file include logic.
+* Improvement: Upgraded Chart.js to 2.7.2
 * Bug Fix: Fixed PHP errors causing the log entry "PHP Warning:  count(): Parameter must be an array or an object that implements Countable"
 
 = 5.4.5 =

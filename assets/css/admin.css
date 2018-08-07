@@ -2,7 +2,7 @@
 Color Pallete
 HEX: #92a8d1
 HEX: #034f84
-HEX: #f7cac9
+HEX: #ef8988
 HEX: #f7786b
 
  */
@@ -16,7 +16,7 @@ HEX: #f7786b
 }
 .ws-ls-disabled th::after {
     content: "\A(Pro version)";
-    color: #f7cac9;
+    color: #ef8988;
     font-weight: bold;
     clear: both;
     width:100%;
@@ -173,7 +173,7 @@ HEX: #f7786b
     color: #FFFFFF;
 }
 .ws-ls-advertise-pro .hndle {
-    background-color: #f7cac9;
+    background-color: #ef8988;
     color: #FFFFFF;
 }
 /*

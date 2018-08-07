@@ -16,7 +16,7 @@
 	define('WE_LS_UPGRADE_TO_PRO_PLUS_URL', 'https://weight.yeken.uk/get-pro-plus/');
     define('WE_LS_FREE_TRIAL_URL', 'https://weight.yeken.uk/trial/');
     define('WE_LS_UPGRADE_TO_PRO_PLUS_UPGRADE_URL', 'https://weight.yeken.uk/get-pro-plus-existing-license-holders/');
-    define('WE_LS_CDN_CHART_JS', 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js');
+    define('WE_LS_CDN_CHART_JS', 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js');
 	define('WE_LS_TABLENAME', 'WS_LS_DATA');
 	define('WE_LS_TARGETS_TABLENAME', 'WS_LS_DATA_TARGETS');
   	define('WE_LS_USER_PREFERENCES_TABLENAME', 'WS_LS_DATA_USER_PREFERENCES');
@@ -131,8 +131,7 @@
         'WS_LS_MACRO_FATS' => 25,
         'WE_LS_PHOTOS_ENABLED' => false,
 		'WE_LS_PHOTOS_MAX_SIZE' => false,
-        'WE_LS_THIRD_PARTY_GF_ENABLE' => false,
-        'WE_LS_META_FIELDS_ENABLED' => true        //TODO:
+        'WE_LS_THIRD_PARTY_GF_ENABLE' => false
 	);
 
     // -----------------------------------------------------------------------------------
