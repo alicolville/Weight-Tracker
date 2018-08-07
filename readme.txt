@@ -149,10 +149,9 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 = 6.0 =
 
-//todo: add russian and Finish languages
-//todo: update plugin descrtipion and tags!
+
 //todo: check all form post URLs now since page slugs changed... admin.php?page=
-//todo: Regenerate language files
+
 
 * New Feature: Added Custom Fields. Allow admin specified questions to be asked on weight entry forms.
 * New Feature: Added Russian translations.
