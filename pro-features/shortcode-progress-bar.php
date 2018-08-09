@@ -134,7 +134,7 @@ function ws_ls_shortcode_progress_bar_render($arguments = array()) {
 		ws_ls_enqueue_files();
 
 		// Enqueue Progress library
-		wp_enqueue_script('ws-ls-progress-bar',plugins_url( '../js/progress-bar.js', __FILE__ ), array('jquery'), WE_LS_CURRENT_VERSION);
+		wp_enqueue_script('ws-ls-progress-bar',plugins_url( '../assets/js/progress-bar.js', __FILE__ ), array('jquery'), WE_LS_CURRENT_VERSION);
 
 		// Create a unique ID
 		$shortcode_id = 'ws_ls_progress_bar_' . rand(10,1000) . '_' . rand(10,1000);

@@ -154,8 +154,14 @@ function ws_ls_shortcode_if_value_exist($user_id, $fields) {
                     $value = ws_ls_get_target_weight_in_kg($user_id);
                     break;
                 case 'bmr':
-                    $value = ws_ls_calculate_bmr($user_id);
-                    $value = (false === is_numeric($value)) ? '' : $value;
+
+                    if ( true === WS_LS_IS_PRO_PLUS ) {
+                        $value = ws_ls_calculate_bmr($user_id);
+                        $value = (false === is_numeric($value)) ? '' : $value;
+                    } else {
+                        $value = 'IGNORE';
+                    }
+
                     break;
                 case 'height':
                 case 'gender':
