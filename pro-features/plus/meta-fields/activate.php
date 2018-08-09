@@ -56,12 +56,13 @@
 
         // Only run this when the plugin version has changed
         if( false === update_option('ws-ls-meta-version-number', WE_LS_DB_VERSION )) {
-            ws_ls_meta_fields_create_mysql_tables();
-        }
 
-        // If no meta fields exist, then add some examples
-        if ( true === empty( ws_ls_meta_fields( true, true ) ) ) {
-            ws_ls_meta_fields_load_examples();
+            ws_ls_meta_fields_create_mysql_tables();
+
+	        // If no meta fields exist, then add some examples
+	        if ( true === empty( ws_ls_meta_fields( true, true ) ) ) {
+		        ws_ls_meta_fields_load_examples();
+	        }
         }
 
     }

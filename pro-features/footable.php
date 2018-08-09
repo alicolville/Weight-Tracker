@@ -167,8 +167,7 @@ function ws_ls_data_table_get_rows($user_id = false, $max_entries = false, $smal
                             $row[$column_name]['value'] = sprintf('<a href="%s">%s</a>', ws_ls_get_link_to_user_profile($data['user_id']), $data['user_nicename'] );
                             break;
                         default:
-                            $row[$column_name]['options']['classes'] = ws_ls_blur();
-                            $row[$column_name] = ws_ls_blur_text( $data[$column_name] );
+                            $row[$column_name] = $data[$column_name];
                             $row[$column_name] = esc_html($data[$column_name]);
                             break;
                     }

@@ -148,6 +148,7 @@
                                                 </div>
                                             </div>
                                             <div class="ws-ls-row">
+                                                <div class="ws-ls-cell"></div>
                                                 <div class="ws-ls-cell">
                                                     <a class="comment-submit button" href="<?php echo ws_ls_meta_fields_base_url(); ?>"><?php echo __('Cancel', WE_LS_SLUG); ?></a>
 

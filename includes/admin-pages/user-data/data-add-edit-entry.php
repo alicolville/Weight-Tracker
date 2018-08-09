@@ -47,7 +47,13 @@ function ws_ls_admin_page_data_add_edit() {
 						<div class="postbox">
 							<h2><span><?php echo __('Add / Edit an entry', WE_LS_SLUG); ?></span></h2>
 							<div class="inside">
-								<?php echo ws_ls_display_weight_form(false, false, $user_id, false, false, false, false, false, $redirect_url, $data); ?>
+								<?php
+	                                if ( true === WS_LS_IS_PRO ) {
+		                                echo ws_ls_display_weight_form( false, false, $user_id, false, false, false, false, false, $redirect_url, $data );
+	                                } else {
+	                                    echo sprintf( '<p>%s</p>', __('A Pro license is required to add / edit a weight entry.', WE_LS_SLUG) );
+                                    }
+                                ?>
 							</div>
 						</div>
 					</div>

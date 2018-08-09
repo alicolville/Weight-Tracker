@@ -36,7 +36,13 @@ function ws_ls_admin_page_data_edit_target() {
 						<div class="postbox">
 							<h2><span><?php echo __('Edit user\'s target', WE_LS_SLUG); ?></span></h2>
 							<div class="inside">
-                                <?php echo ws_ls_display_weight_form(true, false, $user_id, true, false, false, false, false, $redirect_url); ?>
+                                <?php
+                                    if ( true === WS_LS_IS_PRO ) {
+	                                    echo ws_ls_display_weight_form(true, false, $user_id, true, false, false, false, false, $redirect_url);
+                                    } else {
+                                        echo sprintf( '<p>%s</p>', __('A Pro license is required to set a user\'s target weight.', WE_LS_SLUG) );
+                                    }
+                                ?>
 							</div>
 						</div>
 					</div>

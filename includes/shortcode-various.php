@@ -232,16 +232,16 @@ function ws_ls_get_weight_target($user_id, $unit = "target_weight_weight")
 	$cache_key = $user_id . '-' . WE_LS_CACHE_KEY_TARGET_WEIGHT . $unit;
   	$cache = ws_ls_get_cache($cache_key);
 
-	  // Return cache if found!
-	  if ($cache)   {
-		 return  $cache;
-	  }
+      // Return cache if found!
+      if ($cache)   {
+         return  $cache;
+      }
 
 	$table_name = $wpdb->prefix . WE_LS_TARGETS_TABLENAME;
 	$sql =  $wpdb->prepare("SELECT " . $unit . " as weight_value FROM $table_name where weight_user_id = %d", $user_id);
 	$rows = $wpdb->get_row($sql);
 
-	if ( true === is_array( $rows ) && count( $rows ) > 0) {
+	if ( false === empty( $rows->weight_value ) ) {
 		ws_ls_set_cache($cache_key, $rows->weight_value);
 		return $rows->weight_value;
 	}

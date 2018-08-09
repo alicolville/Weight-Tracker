@@ -22,6 +22,11 @@ function ws_ls_export_data() {
 	// Fetch all relevant weight entries that we're interested in
 	$export_data = ws_ls_user_data($filters);
 
+	// If meta fields are enabled and we have some, then add to row for easy matching to columns
+    if ( true === ws_ls_meta_fields_is_enabled() ) {
+        $export_data = ws_ls_export_process_meta_fields( $export_data );
+    }
+
 	// Fetch whether CSV or JSON
 	$file_type = (false === empty($_GET['file-type'])) ? ws_ls_export_verify_type($_GET['file-type']) : 'text/csv';
 
@@ -48,6 +53,36 @@ function ws_ls_export_data() {
 	die();
 }
 add_action( 'admin_post_export_data', 'ws_ls_export_data' );
+
+
+/**
+ * Manipulate data rows so Meta fields at same level as others.
+ *
+ * @param $rows
+ * @return mixed
+ */
+function ws_ls_export_process_meta_fields( $rows ) {
+
+    if ( false === empty( $rows['weight_data'] ) ) {
+
+        // Loop through each CSV row
+        for( $i = 0; $i < count( $rows['weight_data'] ); $i++ ) {
+
+            // If the row has meta fields, then process.
+            if ( false === empty( $rows['weight_data'][ $i ][ 'meta-fields'] )) {
+
+                foreach( $rows['weight_data'][ $i ][ 'meta-fields'] as $meta_Field ) {
+
+                    $rows['weight_data'][ $i ]['meta-' . $meta_Field['meta_field_id'] ] = ws_ls_fields_display_field_value( $meta_Field['value'], $meta_Field['meta_field_id'] );
+
+                }
+            }
+        }
+    }
+
+    return $rows;
+}
+
 
 /**
  * Export into JSON
@@ -233,6 +268,13 @@ function ws_ls_column_names() {
 		foreach (ws_ls_get_active_measurement_fields() as $key => $measurement) {
 			$names[$key] = $measurement['title'];
 		}
+
+		// Add meta fields
+        if ( true === ws_ls_meta_fields_is_enabled() ) {
+            foreach ( ws_ls_meta_fields_enabled() as $meta_field ) {
+                $names[ 'meta-' . $meta_field['id'] ] = $meta_field['field_name'];
+            }
+        }
 
 	return $names;
 }

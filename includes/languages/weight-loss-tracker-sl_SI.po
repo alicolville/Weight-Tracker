@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Weight Loss Tracker\n"
-"POT-Creation-Date: 2018-08-07 23:28+0100\n"
-"PO-Revision-Date: 2018-08-07 23:28+0100\n"
+"POT-Creation-Date: 2018-08-09 19:53+0100\n"
+"PO-Revision-Date: 2018-08-09 19:53+0100\n"
 "Last-Translator: Greg Vid <drobtinca@hotmail.com>\n"
 "Language-Team: \n"
 "Language: sl_SI\n"
@@ -132,12 +132,12 @@ msgstr "Obvezno"
 msgid "Enabled"
 msgstr "Omogoči"
 
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:152 core.php:480
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:153 core.php:480
 msgid "Cancel"
 msgstr ""
 
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:155
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:157
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:156
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:158
 #, fuzzy
 #| msgid "Saved!"
 msgid "Save"
@@ -1005,9 +1005,19 @@ msgstr "Prišlo je do težav z nalaganjem strani"
 msgid "Add / Edit an entry"
 msgstr "Dodaj / spremeni vnos"
 
+#: admin-pages/user-data/data-add-edit-entry.php:54
+msgid "A Pro license is required to add / edit a weight entry."
+msgstr ""
+
 #: admin-pages/user-data/data-edit-target.php:37
 msgid "Edit user's target"
 msgstr "Spremeni uporabnikov cij"
+
+#: admin-pages/user-data/data-edit-target.php:43
+#, fuzzy
+#| msgid "Please remember to enter your target weight."
+msgid "A Pro license is required to set a user's target weight."
+msgstr "Ne pozabite na vnos ciljne teže."
 
 #: admin-pages/user-data/data-photos.php:29
 msgid "User's photos"
@@ -2198,9 +2208,6 @@ msgstr "Vnesli niste še nobenega podatka."
 #~ "Please remember to enter your weight for today as well as your target "
 #~ "weight."
 #~ msgstr "Ne pozabite na vnos današnje teže in ciljne teže."
-
-#~ msgid "Please remember to enter your target weight."
-#~ msgstr "Ne pozabite na vnos ciljne teže."
 
 #~ msgid "Please remember to enter your weight and measurements for today."
 #~ msgstr "Ne pozabite na vnos današnje teže in meritev."

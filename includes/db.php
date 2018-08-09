@@ -288,6 +288,8 @@ function ws_ls_save_data($user_id, $weight_object, $is_target_form = false, $exi
 
         }
 
+        ws_ls_cache_user_delete( 'meta-fields', 'entry-id-data-' . $db_is_update );
+
     }
 
 	// Tidy up cache
