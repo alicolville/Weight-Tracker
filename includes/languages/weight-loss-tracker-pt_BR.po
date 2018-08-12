@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2018-08-09 19:58+0100\n"
-"PO-Revision-Date: 2018-08-09 19:58+0100\n"
+"POT-Creation-Date: 2018-08-12 12:16+0100\n"
+"PO-Revision-Date: 2018-08-12 12:16+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -147,37 +147,47 @@ msgid ""
 "following screen to add as many questions as you wish."
 msgstr ""
 
-#: admin-pages/page.help.php:21
+#: admin-pages/page.help.php:24
 msgid "Custom modifications / web development"
 msgstr ""
 
-#: admin-pages/page.help.php:23
+#: admin-pages/page.help.php:26
 msgid ""
 "If require plugin modifications to Weight Tracker, or need a new plugin "
 "built, or perhaps you need a developer to help you with your website then "
 "please don't hesitiate get in touch!"
 msgstr ""
 
-#: admin-pages/page.help.php:24
-msgid "We provide fix priced quotes."
+#: admin-pages/page.help.php:27
+msgid "We provide fixed priced quotes."
 msgstr ""
 
-#: admin-pages/page.help.php:33 admin-pages/page.license.php:235
+#: admin-pages/page.help.php:36 admin-pages/page.license.php:235
 msgid "Documentation"
 msgstr ""
 
-#: admin-pages/page.help.php:35
+#: admin-pages/page.help.php:38
 msgid "You can find detailed documentation for this plugin at our site:"
 msgstr ""
 
-#: admin-pages/page.help.php:43
+#: admin-pages/page.help.php:46
 msgid "Tools"
 msgstr ""
 
-#: admin-pages/page.help.php:45
+#: admin-pages/page.help.php:48
 msgid ""
 "Correct accuracy for measurements entered in Stones and Pounds (only run "
 "with the advice of YeKen)"
+msgstr ""
+
+#: admin-pages/page.help.php:63
+msgid "Error Log"
+msgstr ""
+
+#: admin-pages/page.help.php:66
+msgid ""
+"Below is a list of the errors logged by the Weight Tracker plugin over the "
+"last 31 days."
 msgstr ""
 
 #: admin-pages/page.license.php:11 admin-pages/page.settings.php:8
@@ -1601,133 +1611,133 @@ msgstr ""
 msgid "Read more and Upgrade to Pro / Pro Plus Version"
 msgstr "Versão Pro"
 
-#: globals.php:157
+#: globals.php:163
 msgid "Forearm - Left"
 msgstr ""
 
-#: globals.php:157
+#: globals.php:163
 msgid "FL"
 msgstr ""
 
-#: globals.php:158
+#: globals.php:164
 msgid "Forearm - Right"
 msgstr ""
 
-#: globals.php:158
+#: globals.php:164
 msgid "FR"
 msgstr ""
 
-#: globals.php:159
+#: globals.php:165
 msgid "Biceps - Left"
 msgstr ""
 
-#: globals.php:159
+#: globals.php:165
 msgid "BL"
 msgstr ""
 
-#: globals.php:160
+#: globals.php:166
 msgid "Biceps - Right"
 msgstr ""
 
-#: globals.php:160
+#: globals.php:166
 msgid "BR"
 msgstr ""
 
-#: globals.php:161
+#: globals.php:167
 msgid "Calf - Left"
 msgstr ""
 
-#: globals.php:161
+#: globals.php:167
 msgid "CL"
 msgstr ""
 
-#: globals.php:162
+#: globals.php:168
 msgid "Calf - Right"
 msgstr ""
 
-#: globals.php:162
+#: globals.php:168
 msgid "CR"
 msgstr ""
 
-#: globals.php:163
+#: globals.php:169
 msgid "Thigh - Left"
 msgstr ""
 
-#: globals.php:163
+#: globals.php:169
 msgid "TL"
 msgstr ""
 
-#: globals.php:164
+#: globals.php:170
 msgid "Thigh - Right"
 msgstr ""
 
-#: globals.php:164
+#: globals.php:170
 msgid "TR"
 msgstr ""
 
-#: globals.php:165
+#: globals.php:171
 msgid "Waist"
 msgstr ""
 
-#: globals.php:165
+#: globals.php:171
 msgid "W"
 msgstr ""
 
-#: globals.php:166
+#: globals.php:172
 msgid "Bust / Chest"
 msgstr ""
 
-#: globals.php:166
+#: globals.php:172
 msgid "BC"
 msgstr ""
 
-#: globals.php:167
+#: globals.php:173
 msgid "Shoulders"
 msgstr ""
 
-#: globals.php:167
+#: globals.php:173
 #, fuzzy
 msgid "S"
 msgstr "St"
 
-#: globals.php:168
+#: globals.php:174
 #, fuzzy
 msgid "Height"
 msgstr "Peso"
 
-#: globals.php:168
+#: globals.php:174
 msgid "H"
 msgstr ""
 
-#: globals.php:169
+#: globals.php:175
 msgid "Buttocks"
 msgstr ""
 
-#: globals.php:169
+#: globals.php:175
 msgid "B"
 msgstr ""
 
-#: globals.php:170
+#: globals.php:176
 msgid "Hips"
 msgstr ""
 
-#: globals.php:170
+#: globals.php:176
 msgid "HI"
 msgstr ""
 
-#: globals.php:171
+#: globals.php:177
 msgid "Navel"
 msgstr ""
 
-#: globals.php:171
+#: globals.php:177
 msgid "NA"
 msgstr ""
 
-#: globals.php:172
+#: globals.php:178
 msgid "Neck"
 msgstr ""
 
-#: globals.php:172
+#: globals.php:178
 msgid "NE"
 msgstr ""
 

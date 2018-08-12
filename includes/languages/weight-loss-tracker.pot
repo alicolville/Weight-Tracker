@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Weight Loss Tracker\n"
-"POT-Creation-Date: 2018-08-09 19:58+0100\n"
+"POT-Creation-Date: 2018-08-12 12:16+0100\n"
 "PO-Revision-Date: 2017-09-04 19:10+0100\n"
 "Last-Translator: \n"
 "Language-Team: Yeken - email@yeken.uk\n"
@@ -173,33 +173,41 @@ msgid ""
 "                                                            You can use the following screen to add as many questions as you wish."
 msgstr ""
 
-#: includes/admin-pages/page.help.php:21
+#: includes/admin-pages/page.help.php:24
 msgid "Custom modifications / web development"
 msgstr ""
 
-#: includes/admin-pages/page.help.php:23
+#: includes/admin-pages/page.help.php:26
 msgid "If require plugin modifications to Weight Tracker, or need a new plugin built, or perhaps you need a developer to help you with your website then please don't hesitiate get in touch!"
 msgstr ""
 
-#: includes/admin-pages/page.help.php:24
-msgid "We provide fix priced quotes."
+#: includes/admin-pages/page.help.php:27
+msgid "We provide fixed priced quotes."
 msgstr ""
 
-#: includes/admin-pages/page.help.php:33
+#: includes/admin-pages/page.help.php:36
 #: includes/admin-pages/page.license.php:235
 msgid "Documentation"
 msgstr ""
 
-#: includes/admin-pages/page.help.php:35
+#: includes/admin-pages/page.help.php:38
 msgid "You can find detailed documentation for this plugin at our site:"
 msgstr ""
 
-#: includes/admin-pages/page.help.php:43
+#: includes/admin-pages/page.help.php:46
 msgid "Tools"
 msgstr ""
 
-#: includes/admin-pages/page.help.php:45
+#: includes/admin-pages/page.help.php:48
 msgid "Correct accuracy for measurements entered in Stones and Pounds (only run with the advice of YeKen)"
+msgstr ""
+
+#: includes/admin-pages/page.help.php:63
+msgid "Error Log"
+msgstr ""
+
+#: includes/admin-pages/page.help.php:66
+msgid "Below is a list of the errors logged by the Weight Tracker plugin over the last 31 days."
 msgstr ""
 
 #: includes/admin-pages/page.license.php:11
@@ -1194,7 +1202,8 @@ msgstr ""
 msgid "St"
 msgstr ""
 
-#: includes/core.php:13 pro-features/footable.php:222
+#: includes/core.php:13 pro-features/ajax-handler-admin.php:59
+#: pro-features/footable.php:222
 msgid "Date"
 msgstr ""
 
@@ -1456,132 +1465,132 @@ msgstr ""
 msgid "Read more and Upgrade to Pro / Pro Plus Version"
 msgstr ""
 
-#: includes/globals.php:157 pro-features/footable.php:243
+#: includes/globals.php:163 pro-features/footable.php:243
 msgid "Forearm - Left"
 msgstr ""
 
-#: includes/globals.php:157 pro-features/footable.php:243
+#: includes/globals.php:163 pro-features/footable.php:243
 msgid "FL"
 msgstr ""
 
-#: includes/globals.php:158 pro-features/footable.php:244
+#: includes/globals.php:164 pro-features/footable.php:244
 msgid "Forearm - Right"
 msgstr ""
 
-#: includes/globals.php:158 pro-features/footable.php:244
+#: includes/globals.php:164 pro-features/footable.php:244
 msgid "FR"
 msgstr ""
 
-#: includes/globals.php:159 pro-features/footable.php:245
+#: includes/globals.php:165 pro-features/footable.php:245
 msgid "Biceps - Left"
 msgstr ""
 
-#: includes/globals.php:159 pro-features/footable.php:245
+#: includes/globals.php:165 pro-features/footable.php:245
 msgid "BL"
 msgstr ""
 
-#: includes/globals.php:160 pro-features/footable.php:246
+#: includes/globals.php:166 pro-features/footable.php:246
 msgid "Biceps - Right"
 msgstr ""
 
-#: includes/globals.php:160 pro-features/footable.php:246
+#: includes/globals.php:166 pro-features/footable.php:246
 msgid "BR"
 msgstr ""
 
-#: includes/globals.php:161 pro-features/footable.php:247
+#: includes/globals.php:167 pro-features/footable.php:247
 msgid "Calf - Left"
 msgstr ""
 
-#: includes/globals.php:161 pro-features/footable.php:247
+#: includes/globals.php:167 pro-features/footable.php:247
 msgid "CL"
 msgstr ""
 
-#: includes/globals.php:162 pro-features/footable.php:248
+#: includes/globals.php:168 pro-features/footable.php:248
 msgid "Calf - Right"
 msgstr ""
 
-#: includes/globals.php:162 pro-features/footable.php:248
+#: includes/globals.php:168 pro-features/footable.php:248
 msgid "CR"
 msgstr ""
 
-#: includes/globals.php:163 pro-features/footable.php:249
+#: includes/globals.php:169 pro-features/footable.php:249
 msgid "Thigh - Left"
 msgstr ""
 
-#: includes/globals.php:163 pro-features/footable.php:249
+#: includes/globals.php:169 pro-features/footable.php:249
 msgid "TL"
 msgstr ""
 
-#: includes/globals.php:164 pro-features/footable.php:250
+#: includes/globals.php:170 pro-features/footable.php:250
 msgid "Thigh - Right"
 msgstr ""
 
-#: includes/globals.php:164 pro-features/footable.php:250
+#: includes/globals.php:170 pro-features/footable.php:250
 msgid "TR"
 msgstr ""
 
-#: includes/globals.php:165 pro-features/footable.php:251
+#: includes/globals.php:171 pro-features/footable.php:251
 msgid "Waist"
 msgstr ""
 
-#: includes/globals.php:165 pro-features/footable.php:251
+#: includes/globals.php:171 pro-features/footable.php:251
 msgid "W"
 msgstr ""
 
-#: includes/globals.php:166 pro-features/footable.php:252
+#: includes/globals.php:172 pro-features/footable.php:252
 msgid "Bust / Chest"
 msgstr ""
 
-#: includes/globals.php:166 pro-features/footable.php:252
+#: includes/globals.php:172 pro-features/footable.php:252
 msgid "BC"
 msgstr ""
 
-#: includes/globals.php:167 pro-features/footable.php:253
+#: includes/globals.php:173 pro-features/footable.php:253
 msgid "Shoulders"
 msgstr ""
 
-#: includes/globals.php:167 pro-features/footable.php:253
+#: includes/globals.php:173 pro-features/footable.php:253
 msgid "S"
 msgstr ""
 
-#: includes/globals.php:168 pro-features/footable.php:254
+#: includes/globals.php:174 pro-features/footable.php:254
 #: pro-features/functions.pages.php:129
 msgid "Height"
 msgstr ""
 
-#: includes/globals.php:168 pro-features/footable.php:254
+#: includes/globals.php:174 pro-features/footable.php:254
 msgid "H"
 msgstr ""
 
-#: includes/globals.php:169 pro-features/footable.php:255
+#: includes/globals.php:175 pro-features/footable.php:255
 msgid "Buttocks"
 msgstr ""
 
-#: includes/globals.php:169 pro-features/footable.php:255
+#: includes/globals.php:175 pro-features/footable.php:255
 msgid "B"
 msgstr ""
 
-#: includes/globals.php:170 pro-features/footable.php:256
+#: includes/globals.php:176 pro-features/footable.php:256
 msgid "Hips"
 msgstr ""
 
-#: includes/globals.php:170 pro-features/footable.php:256
+#: includes/globals.php:176 pro-features/footable.php:256
 msgid "HI"
 msgstr ""
 
-#: includes/globals.php:171 pro-features/footable.php:257
+#: includes/globals.php:177 pro-features/footable.php:257
 msgid "Navel"
 msgstr ""
 
-#: includes/globals.php:171 pro-features/footable.php:257
+#: includes/globals.php:177 pro-features/footable.php:257
 msgid "NA"
 msgstr ""
 
-#: includes/globals.php:172 pro-features/footable.php:258
+#: includes/globals.php:178 pro-features/footable.php:258
 msgid "Neck"
 msgstr ""
 
-#: includes/globals.php:172 pro-features/footable.php:258
+#: includes/globals.php:178 pro-features/footable.php:258
 msgid "NE"
 msgstr ""
 
@@ -1724,6 +1733,14 @@ msgstr ""
 
 #: includes/shortcode-weight-loss-tracker.php:208
 msgid "You haven't entered any weight data yet."
+msgstr ""
+
+#: pro-features/ajax-handler-admin.php:60
+msgid "Module"
+msgstr ""
+
+#: pro-features/ajax-handler-admin.php:61
+msgid "Message"
 msgstr ""
 
 #: pro-features/emails.php:39

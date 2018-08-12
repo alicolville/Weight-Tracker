@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Weight Loss Tracker\n"
-"POT-Creation-Date: 2018-08-09 19:58+0100\n"
-"PO-Revision-Date: 2018-08-09 19:58+0100\n"
+"POT-Creation-Date: 2018-08-12 12:16+0100\n"
+"PO-Revision-Date: 2018-08-12 12:16+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sk_SK\n"
@@ -157,39 +157,49 @@ msgid ""
 "following screen to add as many questions as you wish."
 msgstr ""
 
-#: admin-pages/page.help.php:21
+#: admin-pages/page.help.php:24
 msgid "Custom modifications / web development"
 msgstr ""
 
-#: admin-pages/page.help.php:23
+#: admin-pages/page.help.php:26
 msgid ""
 "If require plugin modifications to Weight Tracker, or need a new plugin "
 "built, or perhaps you need a developer to help you with your website then "
 "please don't hesitiate get in touch!"
 msgstr ""
 
-#: admin-pages/page.help.php:24
-msgid "We provide fix priced quotes."
+#: admin-pages/page.help.php:27
+msgid "We provide fixed priced quotes."
 msgstr ""
 
-#: admin-pages/page.help.php:33 admin-pages/page.license.php:235
+#: admin-pages/page.help.php:36 admin-pages/page.license.php:235
 msgid "Documentation"
 msgstr "Dokumentácia"
 
-#: admin-pages/page.help.php:35
+#: admin-pages/page.help.php:38
 #, fuzzy
 #| msgid "You can find detailed help with this plugin at our site:"
 msgid "You can find detailed documentation for this plugin at our site:"
 msgstr "Podrobnú pomoc s týmto pluginom nájdete na našich stránkach:"
 
-#: admin-pages/page.help.php:43
+#: admin-pages/page.help.php:46
 msgid "Tools"
 msgstr ""
 
-#: admin-pages/page.help.php:45
+#: admin-pages/page.help.php:48
 msgid ""
 "Correct accuracy for measurements entered in Stones and Pounds (only run "
 "with the advice of YeKen)"
+msgstr ""
+
+#: admin-pages/page.help.php:63
+msgid "Error Log"
+msgstr ""
+
+#: admin-pages/page.help.php:66
+msgid ""
+"Below is a list of the errors logged by the Weight Tracker plugin over the "
+"last 31 days."
 msgstr ""
 
 #: admin-pages/page.license.php:11 admin-pages/page.settings.php:8
@@ -1644,135 +1654,135 @@ msgstr ""
 msgid "Read more and Upgrade to Pro / Pro Plus Version"
 msgstr "Inovujte na verziu Pro"
 
-#: globals.php:157
+#: globals.php:163
 msgid "Forearm - Left"
 msgstr "Ľavé predlaktie"
 
-#: globals.php:157
+#: globals.php:163
 msgid "FL"
 msgstr "ĽP"
 
-#: globals.php:158
+#: globals.php:164
 msgid "Forearm - Right"
 msgstr "Pravé predlaktie"
 
-#: globals.php:158
+#: globals.php:164
 msgid "FR"
 msgstr "PP"
 
-#: globals.php:159
+#: globals.php:165
 #, fuzzy
 #| msgid "Bicep - Left"
 msgid "Biceps - Left"
 msgstr "Ľavý biceps"
 
-#: globals.php:159
+#: globals.php:165
 msgid "BL"
 msgstr "ĽB"
 
-#: globals.php:160
+#: globals.php:166
 #, fuzzy
 #| msgid "Bicep - Right"
 msgid "Biceps - Right"
 msgstr "Pravý biceps"
 
-#: globals.php:160
+#: globals.php:166
 msgid "BR"
 msgstr "PB"
 
-#: globals.php:161
+#: globals.php:167
 msgid "Calf - Left"
 msgstr "Ľavé lýtko"
 
-#: globals.php:161
+#: globals.php:167
 msgid "CL"
 msgstr "ĽL"
 
-#: globals.php:162
+#: globals.php:168
 msgid "Calf - Right"
 msgstr "Pravé lýtko"
 
-#: globals.php:162
+#: globals.php:168
 msgid "CR"
 msgstr "PL"
 
-#: globals.php:163
+#: globals.php:169
 msgid "Thigh - Left"
 msgstr "Ľavé stehno"
 
-#: globals.php:163
+#: globals.php:169
 msgid "TL"
 msgstr "ĽS"
 
-#: globals.php:164
+#: globals.php:170
 msgid "Thigh - Right"
 msgstr "Pravé stehno"
 
-#: globals.php:164
+#: globals.php:170
 msgid "TR"
 msgstr "PS"
 
-#: globals.php:165
+#: globals.php:171
 msgid "Waist"
 msgstr "Pás"
 
-#: globals.php:165
+#: globals.php:171
 msgid "W"
 msgstr "P"
 
-#: globals.php:166
+#: globals.php:172
 msgid "Bust / Chest"
 msgstr "Prsia/Hrudník"
 
-#: globals.php:166
+#: globals.php:172
 msgid "BC"
 msgstr "PH"
 
-#: globals.php:167
+#: globals.php:173
 msgid "Shoulders"
 msgstr "Ramená"
 
-#: globals.php:167
+#: globals.php:173
 msgid "S"
 msgstr "R"
 
-#: globals.php:168
+#: globals.php:174
 msgid "Height"
 msgstr "Výška"
 
-#: globals.php:168
+#: globals.php:174
 msgid "H"
 msgstr "V"
 
-#: globals.php:169
+#: globals.php:175
 msgid "Buttocks"
 msgstr "Zadok"
 
-#: globals.php:169
+#: globals.php:175
 msgid "B"
 msgstr "Z"
 
-#: globals.php:170
+#: globals.php:176
 msgid "Hips"
 msgstr "Boky"
 
-#: globals.php:170
+#: globals.php:176
 msgid "HI"
 msgstr "BO"
 
-#: globals.php:171
+#: globals.php:177
 msgid "Navel"
 msgstr "Pupok"
 
-#: globals.php:171
+#: globals.php:177
 msgid "NA"
 msgstr "PU"
 
-#: globals.php:172
+#: globals.php:178
 msgid "Neck"
 msgstr "Krk"
 
-#: globals.php:172
+#: globals.php:178
 msgid "NE"
 msgstr "K"
 
