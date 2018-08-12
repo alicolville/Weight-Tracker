@@ -59,23 +59,27 @@ function ws_ls_help_page() {
 						</div>
 					<?php endif; ?>
 
-                    <div class="postbox">
-                        <h3 class="hndle"><span><?php echo __('Error Log', WE_LS_SLUG); ?> </span></h3>
-                        <div style="padding: 0px 15px 0px 15px">
+                    <?php if ( false === empty( ws_ls_log_all() ) ): ?>
 
-                            <p><?php echo __('Below is a list of the errors logged by the Weight Tracker plugin over the last 31 days.', WE_LS_SLUG); ?></p>
+                        <div class="postbox">
+                            <h3 class="hndle"><span><?php echo __('Error Log', WE_LS_SLUG); ?> </span></h3>
+                            <div style="padding: 0px 15px 0px 15px">
 
-                            <table class="ws-ls-errors-list-ajax table" id="errors-list"
-                                   data-paging="true"
-                                   data-filtering="true"
-                                   data-sorting="true"
-                                   data-editing="false"
-                                   data-cascade="true"
-                                   data-toggle="true"
-                                   data-use-parent-width="true">
-                            </table>
+                                <p><?php echo __('Below is a list of the errors logged by the Weight Tracker plugin over the last 31 days.', WE_LS_SLUG); ?></p>
+
+                                <table class="ws-ls-errors-list-ajax table" id="errors-list"
+                                       data-paging="true"
+                                       data-filtering="true"
+                                       data-sorting="true"
+                                       data-editing="false"
+                                       data-cascade="true"
+                                       data-toggle="true"
+                                       data-use-parent-width="true">
+                                </table>
+                            </div>
                         </div>
-                    </div>
+
+                    <?php endif; ?>
 
 				</div>
 				<!-- .meta-box-sortables .ui-sortable -->
