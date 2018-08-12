@@ -60,6 +60,19 @@ jQuery( document ).ready(function ($, undefined) {
         ws_ls_post_data_to_WP('meta_fields_full_list', data, ws_ls_callback_meta_fields_list)
     });
 
+    $(".ws-ls-errors-list-ajax").each(function () {
+
+        var table_id = $(this).attr("id");
+
+        ws_ls_log('Setting up meta fields table: ' + table_id);
+
+        // OK we know whether or not we're looking for a user's data or everyones. Let's post back to WP admin
+        // for columns and data!
+        var data = {};
+        data['table_id'] = table_id;
+        ws_ls_post_data_to_WP('get_errors', data, ws_ls_callback_errors_list)
+    });
+
     function ws_ls_post_data_to_WP(action, data, callback) {
 
         post_data = {};
@@ -76,6 +89,35 @@ jQuery( document ).ready(function ($, undefined) {
             // Fire back to given callback with response from server
             callback && callback(response, post_data);
         });
+    }
+
+    function ws_ls_callback_errors_list( response, data ){
+
+        var table_id = '#errors-list';
+        var formatters = {};
+        console.log(response);
+        // Apply formatters
+        var columns = ws_ls_apply_formatters(response.columns);
+        var rows = response.rows;
+
+        $(table_id).removeClass('ws-ls-loading-table');
+
+        $(table_id).footable({
+            "columns": columns,
+            "rows": rows,
+            "state": {
+                "enabled" : true,
+                "key": "ws-ls-admin-footable"
+            }
+        });
+
+        $(table_id + ' .footable-filtering-search .input-group .form-control').attr("placeholder", ws_user_table_config['locale-search-text']);
+
+        // Replace "No results" string with locale version
+        if ( 0 === rows.length ) {
+            $(table_id + ' .footable-empty td').html(ws_user_table_config['locale-no-results']);
+        }
+
     }
 
     function ws_ls_callback_meta_fields_list(response, data) {

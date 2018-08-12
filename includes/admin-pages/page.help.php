@@ -3,7 +3,10 @@
 defined('ABSPATH') or die('Jog on!');
 
 function ws_ls_help_page() {
-		?>
+
+	ws_ls_data_table_enqueue_scripts();
+
+    ?>
 		<div class="wrap ws-ls-admin-page">
 
 	<div id="icon-options-general" class="icon32"></div>
@@ -55,6 +58,25 @@ function ws_ls_help_page() {
 							</div>
 						</div>
 					<?php endif; ?>
+
+                    <div class="postbox">
+                        <h3 class="hndle"><span><?php echo __('Errors', WE_LS_SLUG); ?> </span></h3>
+                        <div style="padding: 0px 15px 0px 15px">
+
+                            <p><?php echo __('Below is a list of errors logged by the Weight Tracker plugin.', WE_LS_SLUG); ?></p>
+
+
+                            <table class="ws-ls-errors-list-ajax table" id="errors-list"
+                                   data-paging="true"
+                                   data-filtering="true"
+                                   data-sorting="true"
+                                   data-editing="false"
+                                   data-cascade="true"
+                                   data-toggle="true"
+                                   data-use-parent-width="true">
+                            </table>
+                        </div>
+                    </div>
 
 				</div>
 				<!-- .meta-box-sortables .ui-sortable -->

@@ -710,3 +710,48 @@ function ws_ls_set_user_height($height, $user_id = false)
   ws_ls_delete_cache_for_given_user($user_id);
   return $result;
 }
+
+
+/**
+ * Insert error message into database table
+ *
+ * @param $module
+ * @param $message
+ */
+function ws_ls_log_add( $module, $message) {
+
+	if ( false === empty( $module ) && false === empty( $message ) ) {
+
+		global $wpdb;
+
+		$wpdb->insert(
+						$wpdb->prefix . WE_LS_LOG_TABLENAME,
+						[ 'module' => $module, 'message' => $message ],
+						[ '%s', '%s' ]
+		);
+
+	}
+}
+
+/**
+ * Return all error logs
+ *
+ * @return mixed
+ */
+function ws_ls_log_all() {
+
+	global $wpdb;
+
+	return $wpdb->get_results('Select timestamp, module, message from ' . $wpdb->prefix . WE_LS_LOG_TABLENAME . ' order by id desc', ARRAY_A);
+}
+
+/**
+ * Delete all log entries older than x days
+ *
+ * @return mixed
+ */
+function ws_ls_log_delete_old() {
+
+    global $wpdb;
+    return $wpdb->query( 'DELETE FROM ' . $wpdb->prefix . WE_LS_LOG_TABLENAME . ' WHERE (`timestamp` < DATE_SUB(now(), INTERVAL 31 DAY));' );
+}
