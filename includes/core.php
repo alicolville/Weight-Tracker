@@ -396,62 +396,7 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 		$html_output .= '<div id="comment-textarea">
 							<textarea name="we-ls-notes" tabindex="' . ws_ls_get_next_tab_index() . '" id="we-ls-notes" cols="39" rows="4" tabindex="4" class="textarea-comment" placeholder="' . __('Notes', WE_LS_SLUG) . '">' . esc_textarea(ws_ls_get_existing_value($existing_data, 'notes', false)) . '</textarea>
 						</div>';
-
-		//TODO remove
-		// Are photos enabled?
-	//	if ( true === $photo_form_enabled ) {
-
-         //   $html_output .= '<h3>' . __('Photos', WE_LS_SLUG) . '</h3>';
-
-//			// Do we have an existing photo?
-//			if ( false === empty($existing_data['photo_id']) ) {
-//
-//				$attachment_id = intval($existing_data['photo_id']);
-//
-//				$thumbnail = wp_get_attachment_image_src($attachment_id, array(200, 200));
-//              	$full_url = wp_get_attachment_url($attachment_id);
-//
-//				if ( false === empty($thumbnail) ) {
-//					$html_output .= sprintf('<div class="ws-ls-photo-current">
-//												<h4>%8$s</h4>
-//												<a href="%1$s" target="_blank" rel="noopener noreferrer"><img src="%2$s" alt="%3$s" width="%5$s" height="%6$s" /></a>
-//												<input type="hidden" name="ws-ls-photo-previous" value="%4$s" />
-//											</div>
-//											<div class="ws-ls-clear-existing-photo">
-//												<input type="checkbox" name="ws-ls-photo-delete" id="ws-ls-photo-delete" value="y" />
-//												<label for="ws-ls-photo-delete">%7$s</label>
-//											</div>',
-//						esc_url($full_url),
-//						esc_url($thumbnail[0]),
-//						__('Existing photo for this date', WE_LS_SLUG),
-//						intval($attachment_id),
-//						intval($thumbnail[1]),
-//						intval($thumbnail[2]),
-//						__('Delete existing photo', WE_LS_SLUG),
-//						__('Existing photo', WE_LS_SLUG)
-//					);
-//				}
-//			}
-//
-//			// Show Add button
-//			$html_output .= sprintf('<div class="ws-ls-photo-select">
-//												<h4>%2$s</h4>
-//												<input type="file" name="%1$s" id="%1$s" tabindex="%3$s" class="ws-ls-hide ws-ls-input-file" />
-//												<label for="%1$s">
-//													<svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/></svg>
-//													<span>%4$s</span>
-//												</label>
-//												<p><small>%6$s%5$s</small></p>
-//											</div>',
-//				'ws-ls-photo',
-//				(false === empty($thumbnail)) ? __('Replace photo', WE_LS_SLUG) : __('Add a photo', WE_LS_SLUG),
-//				ws_ls_get_next_tab_index(),
-//				__('Select a photo', WE_LS_SLUG),
-//                __('Photos must be under', WE_LS_SLUG) . ' ' . ws_ls_photo_display_max_upload_size() . ' ' . __('or they will silently fail to upload.', WE_LS_SLUG),
-//				__('Photos are only visible to you and administrators. ', WE_LS_SLUG)
-//			);
-//		}
-	//}
+	}
 
 	// Include
 	if( false === $target_form && $measurements_form_enabled) {
@@ -515,7 +460,6 @@ function ws_ls_convert_date_to_iso($date, $user_id = false)
 	return $date;
 }
 
-
 function ws_ls_capture_form_validate_and_save($user_id = false)
 {
 	if(false == $user_id){
@@ -527,10 +471,10 @@ function ws_ls_capture_form_validate_and_save($user_id = false)
 	$allowed_post_keys = array('ws_ls_is_target', 'we-ls-date', 'we-ls-weight-pounds',
 								'we-ls-weight-stones', 'we-ls-weight-kg', 'we-ls-notes' );
 
-    // If enabled, look for other photo related fields
-    if ( WE_LS_PHOTOS_ENABLED ) {
-		$allowed_post_keys = array_merge($allowed_post_keys, ['ws-ls-photo', 'ws-ls-photo-previous', 'ws-ls-photo-delete']);
-	}
+    // If enabled, look for other photo related fields todo
+//    if ( WE_LS_PHOTOS_ENABLED ) {
+//		$allowed_post_keys = array_merge($allowed_post_keys, ['ws-ls-photo', 'ws-ls-photo-previous', 'ws-ls-photo-delete']);
+//	}
 
 	if ( true === $meta_fields_enabled ) {
         $allowed_post_keys = array_merge( $allowed_post_keys, ws_ls_meta_fields_form_field_ids() );
@@ -596,7 +540,7 @@ function ws_ls_capture_form_validate_and_save($user_id = false)
 	$existing_db_id = (false === empty($_POST['db_row_id'])) ? intval($_POST['db_row_id']) : false;
 
 	// ---------------------------------------------
-	// Process Photos
+	// Process Photos todo
 	// ---------------------------------------------
 
 //	$weight_object['photo_id'] = ws_ls_meta_fields_photos_process_upload( 'ws-ls-photo' );
@@ -613,10 +557,20 @@ function ws_ls_capture_form_validate_and_save($user_id = false)
 
             $field_key = ws_ls_meta_fields_form_field_generate_id( $field['id'] );
 
-            if ( true === isset( $form_values[  $field_key ] ) ) {
-                $weight_object[ 'meta-keys' ][ $field['id']] = $form_values[ $field_key ];
-            }
+            // If photo, we need to process the upload
+            if ( 3 === intval( $field[ 'field_type' ] ) ) {
 
+                $photo_upload = ws_ls_meta_fields_photos_process_upload( $field_key );
+
+                if ( false === empty( $photo_upload ) ) {
+                    $weight_object[ 'meta-keys' ][ $field['id'] ] = $photo_upload;
+                }
+
+            } else if ( true === isset( $form_values[  $field_key ] ) ) {
+
+                $weight_object[ 'meta-keys' ][ $field['id'] ] = $form_values[ $field_key ];
+
+            }
         }
 
     }
@@ -626,8 +580,7 @@ function ws_ls_capture_form_validate_and_save($user_id = false)
     return $result;
 }
 
-function ws_ls_validate_weight_data($weight_object, $is_target_form = false)
-{
+function ws_ls_validate_weight_data($weight_object, $is_target_form = false) {
     if(is_numeric($weight_object['only_pounds']) &&
         is_numeric($weight_object['kg']) &&
           is_numeric($weight_object['stones']) &&
@@ -638,22 +591,21 @@ function ws_ls_validate_weight_data($weight_object, $is_target_form = false)
 		return false;
 }
 
-function ws_ls_get_chosen_weight_unit_as_string(){
+function ws_ls_get_chosen_weight_unit_as_string() {
 
 	$use_imperial_weights = ws_ls_get_config('WE_LS_IMPERIAL_WEIGHTS');
 
 	if($use_imperial_weights && 'stones_pounds' == ws_ls_get_config('WE_LS_DATA_UNITS'))	{
 		return 'imperial-both';
-	}
-	elseif($use_imperial_weights && 'pounds_only' == ws_ls_get_config('WE_LS_DATA_UNITS'))	{
+	} elseif ($use_imperial_weights && 'pounds_only' == ws_ls_get_config('WE_LS_DATA_UNITS'))	{
 		return 'imperial-pounds';
-	}
-	else	{
+	} else {
 		 return 'metric';
 	}
 }
-function ws_ls_get_js_config()
-{
+
+function ws_ls_get_js_config() {
+
 	$message_for_pounds = (ws_ls_get_config('WE_LS_IMPERIAL_WEIGHTS') && 'stones_pounds' == ws_ls_get_config('WE_LS_DATA_UNITS')) ? __('Please enter a value between 0-13 for pounds', WE_LS_SLUG) : __('Please enter a valid figure for pounds', WE_LS_SLUG);
 
 	$use_us_date = ws_ls_get_config('WE_LS_US_DATE');
@@ -685,7 +637,7 @@ function ws_ls_get_js_config()
 	);
 
 	// If About You fields mandatory, add extra translations
-	if(WE_LS_ABOUT_YOU_MANDATORY) {
+	if( WE_LS_ABOUT_YOU_MANDATORY ) {
 
 	    $config['validation-user-pref-messages'] = [
             'we-ls-height' => __('Please select or enter a value for height.', WE_LS_SLUG),
@@ -706,9 +658,8 @@ function ws_ls_get_js_config()
 	}
 
 	// Allow others to filter config object
-    $config = apply_filters(WE_LS_FILTER_JS_WS_LS_CONFIG, $config);
+    return apply_filters(WE_LS_FILTER_JS_WS_LS_CONFIG, $config);
 
-	return $config;
 }
 
 /*
@@ -747,5 +698,4 @@ function ws_ls_get_next_tab_index() {
 	$ws_ls_tab_index++;
 
 	return $current_index;
-
 }
