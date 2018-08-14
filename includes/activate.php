@@ -115,7 +115,7 @@
 				id mediumint(9) NOT NULL AUTO_INCREMENT,
 				timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 				module varchar(20) NOT NULL,
-				message varchar(400) NOT NULL,
+				message text NOT NULL,
 				UNIQUE KEY id (id)
 		) $charset_collate;";
 

@@ -91,6 +91,7 @@ defined('ABSPATH') or die('Jog on!');
         'pro-features/plus/meta-fields/db.php',
         'pro-features/plus/meta-fields/hooks.php',
         'pro-features/plus/meta-fields/functions.php',
+	    'pro-features/plus/meta-fields/functions.photos.php',
         'pro-features/feature-list.php',
         'includes/comms-with-yeken.php',
         'includes/admin-notifications.php',

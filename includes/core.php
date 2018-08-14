@@ -397,60 +397,61 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 							<textarea name="we-ls-notes" tabindex="' . ws_ls_get_next_tab_index() . '" id="we-ls-notes" cols="39" rows="4" tabindex="4" class="textarea-comment" placeholder="' . __('Notes', WE_LS_SLUG) . '">' . esc_textarea(ws_ls_get_existing_value($existing_data, 'notes', false)) . '</textarea>
 						</div>';
 
+		//TODO remove
 		// Are photos enabled?
-		if ( true === $photo_form_enabled ) {
+	//	if ( true === $photo_form_enabled ) {
 
-            $html_output .= '<h3>' . __('Photos', WE_LS_SLUG) . '</h3>';
+         //   $html_output .= '<h3>' . __('Photos', WE_LS_SLUG) . '</h3>';
 
-			// Do we have an existing photo?
-			if ( false === empty($existing_data['photo_id']) ) {
-
-				$attachment_id = intval($existing_data['photo_id']);
-
-				$thumbnail = wp_get_attachment_image_src($attachment_id, array(200, 200));
-              	$full_url = wp_get_attachment_url($attachment_id);
-
-				if ( false === empty($thumbnail) ) {
-					$html_output .= sprintf('<div class="ws-ls-photo-current">
-												<h4>%8$s</h4>
-												<a href="%1$s" target="_blank" rel="noopener noreferrer"><img src="%2$s" alt="%3$s" width="%5$s" height="%6$s" /></a>
-												<input type="hidden" name="ws-ls-photo-previous" value="%4$s" />
-											</div>
-											<div class="ws-ls-clear-existing-photo">
-												<input type="checkbox" name="ws-ls-photo-delete" id="ws-ls-photo-delete" value="y" />
-												<label for="ws-ls-photo-delete">%7$s</label>
-											</div>',
-						esc_url($full_url),
-						esc_url($thumbnail[0]),
-						__('Existing photo for this date', WE_LS_SLUG),
-						intval($attachment_id),
-						intval($thumbnail[1]),
-						intval($thumbnail[2]),
-						__('Delete existing photo', WE_LS_SLUG),
-						__('Existing photo', WE_LS_SLUG)
-					);
-				}
-			}
-
-			// Show Add button
-			$html_output .= sprintf('<div class="ws-ls-photo-select">
-												<h4>%2$s</h4>
-												<input type="file" name="%1$s" id="%1$s" tabindex="%3$s" class="ws-ls-hide ws-ls-input-file" />
-												<label for="%1$s">
-													<svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/></svg> 
-													<span>%4$s</span>
-												</label>
-												<p><small>%6$s%5$s</small></p>
-											</div>',
-				'ws-ls-photo',
-				(false === empty($thumbnail)) ? __('Replace photo', WE_LS_SLUG) : __('Add a photo', WE_LS_SLUG),
-				ws_ls_get_next_tab_index(),
-				__('Select a photo', WE_LS_SLUG),
-                __('Photos must be under', WE_LS_SLUG) . ' ' . ws_ls_photo_display_max_upload_size() . ' ' . __('or they will silently fail to upload.', WE_LS_SLUG),
-				__('Photos are only visible to you and administrators. ', WE_LS_SLUG)
-			);
-		}
-	}
+//			// Do we have an existing photo?
+//			if ( false === empty($existing_data['photo_id']) ) {
+//
+//				$attachment_id = intval($existing_data['photo_id']);
+//
+//				$thumbnail = wp_get_attachment_image_src($attachment_id, array(200, 200));
+//              	$full_url = wp_get_attachment_url($attachment_id);
+//
+//				if ( false === empty($thumbnail) ) {
+//					$html_output .= sprintf('<div class="ws-ls-photo-current">
+//												<h4>%8$s</h4>
+//												<a href="%1$s" target="_blank" rel="noopener noreferrer"><img src="%2$s" alt="%3$s" width="%5$s" height="%6$s" /></a>
+//												<input type="hidden" name="ws-ls-photo-previous" value="%4$s" />
+//											</div>
+//											<div class="ws-ls-clear-existing-photo">
+//												<input type="checkbox" name="ws-ls-photo-delete" id="ws-ls-photo-delete" value="y" />
+//												<label for="ws-ls-photo-delete">%7$s</label>
+//											</div>',
+//						esc_url($full_url),
+//						esc_url($thumbnail[0]),
+//						__('Existing photo for this date', WE_LS_SLUG),
+//						intval($attachment_id),
+//						intval($thumbnail[1]),
+//						intval($thumbnail[2]),
+//						__('Delete existing photo', WE_LS_SLUG),
+//						__('Existing photo', WE_LS_SLUG)
+//					);
+//				}
+//			}
+//
+//			// Show Add button
+//			$html_output .= sprintf('<div class="ws-ls-photo-select">
+//												<h4>%2$s</h4>
+//												<input type="file" name="%1$s" id="%1$s" tabindex="%3$s" class="ws-ls-hide ws-ls-input-file" />
+//												<label for="%1$s">
+//													<svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/></svg>
+//													<span>%4$s</span>
+//												</label>
+//												<p><small>%6$s%5$s</small></p>
+//											</div>',
+//				'ws-ls-photo',
+//				(false === empty($thumbnail)) ? __('Replace photo', WE_LS_SLUG) : __('Add a photo', WE_LS_SLUG),
+//				ws_ls_get_next_tab_index(),
+//				__('Select a photo', WE_LS_SLUG),
+//                __('Photos must be under', WE_LS_SLUG) . ' ' . ws_ls_photo_display_max_upload_size() . ' ' . __('or they will silently fail to upload.', WE_LS_SLUG),
+//				__('Photos are only visible to you and administrators. ', WE_LS_SLUG)
+//			);
+//		}
+	//}
 
 	// Include
 	if( false === $target_form && $measurements_form_enabled) {
@@ -518,8 +519,8 @@ function ws_ls_convert_date_to_iso($date, $user_id = false)
 function ws_ls_capture_form_validate_and_save($user_id = false)
 {
 	if(false == $user_id){
-        $user_id = get_current_user_id();
-    }
+		$user_id = get_current_user_id();
+	}
 
     $meta_fields_enabled = ( true === ws_ls_meta_fields_is_enabled() && ws_ls_meta_fields_number_of_enabled() > 0 );
 
@@ -597,84 +598,9 @@ function ws_ls_capture_form_validate_and_save($user_id = false)
 	// ---------------------------------------------
 	// Process Photos
 	// ---------------------------------------------
-	if (true === WE_LS_PHOTOS_ENABLED && false == $is_target_form ) {
 
-		$photo_id_to_delete = false;
+//	$weight_object['photo_id'] = ws_ls_meta_fields_photos_process_upload( 'ws-ls-photo' );
 
-		// Got a previous photo to consider?
-		if (false === empty($form_values['ws-ls-photo-previous']) && true === is_numeric($form_values['ws-ls-photo-previous'])) {
-			// User check "Delete this photo" box?
-			if ( false === empty($form_values['ws-ls-photo-delete']) && 'y' === $form_values['ws-ls-photo-delete']) {
-				$photo_id_to_delete = intval($form_values['ws-ls-photo-previous']);
-				$weight_object['photo_id'] = NULL;
-			} else { // Keep track of an existing photo
-				$weight_object['photo_id'] = intval($form_values['ws-ls-photo-previous']);
-			}
-		}
-
-		// Uploads
-		if (false === empty($_FILES['ws-ls-photo']) &&
-			$_FILES['ws-ls-photo']['size'] > 0 && $_FILES['ws-ls-photo']['size'] <= ws_ls_photo_max_upload_size() ) {
-
-			if ( false === function_exists( 'wp_handle_upload' ) ) {
-				require_once( ABSPATH . 'wp-admin/includes/file.php' );
-			}
-
-			$photo_uploaded = $_FILES['ws-ls-photo'];
-
-			// Get the type of the uploaded file. This is returned as "type/extension"
-			$arr_file_type = wp_check_filetype(basename($photo_uploaded['name']));
-			$uploaded_file_type = $arr_file_type['type'];
-
-			// Set an array containing a list of acceptable formats
-			$allowed_file_types = array('image/jpg','image/jpeg','image/gif','image/png');
-
-			// If the uploaded file is the right format. If it is not, do nothing
-			if( true === in_array($uploaded_file_type, $allowed_file_types) ) {
-
-				// Handle the upload using WP's wp_handle_upload function. Takes the posted file and an options array
-				$uploaded_file = wp_handle_upload($photo_uploaded, ['test_form' => false, 'unique_filename_callback' => 'ws_ls_photo_generate_unique_name']);
-
-				// If the wp_handle_upload call returned a local path for the image
-				if(isset($uploaded_file['file'])) {
-
-					// The wp_insert_attachment function needs the literal system path, which was passed back from wp_handle_upload
-					$file_name_and_location = $uploaded_file['file'];
-
-					$user_data = get_userdata( $user_id );
-
-					// Set up options array to add this file as an attachment
-					$attachment = array(
-						'post_mime_type' => $uploaded_file_type,
-						'post_title' => ( $user_data ) ? $user_data->user_nicename . ' (' . $weight_object['date-display'] . ')' : $weight_object['date-display'],
-						'post_content' => ( $user_data ) ? __('The user ', WE_LS_SLUG) . $user_data->user_nicename . ', ' . __('uploaded this photo of them for their entry on the', WE_LS_SLUG) . ' ' . $weight_object['date-display'] : '',
-						'post_status' => 'inherit'
-					);
-
-					// Run the wp_insert_attachment function. This adds the file to the media library and generates the thumbnails.
-					$attach_id = wp_insert_attachment( $attachment, $file_name_and_location );
-					require_once(ABSPATH . "wp-admin" . '/includes/image.php');
-					$attach_data = wp_generate_attachment_metadata( $attach_id, $file_name_and_location );
-					wp_update_attachment_metadata($attach_id,  $attach_data);
-
-					// Set flag to hide image from attachment page
-					update_post_meta($attach_id, 'ws-ls-hide-image', '1');
-
-					$weight_object['photo_id'] = $attach_id;
-
-					// If we have a previous attachment, then delete
-					if ( false === empty($form_values['ws-ls-photo-previous']) ) {
-						$photo_id_to_delete = intval($form_values['ws-ls-photo-previous']);
-					}
-				}
-			}
-		}
-	}
-
-	// Deletion file
-	if ( false === empty($photo_id_to_delete) && is_numeric($photo_id_to_delete) ) {
-		wp_delete_attachment($photo_id_to_delete);
-	}
 
     // ---------------------------------------------
     // Process Meta Fields
@@ -814,8 +740,7 @@ function ws_ls_strip_array_indices( $ArrayToStrip ) {
     return( $NewArray );
 }
 
-function ws_ls_get_next_tab_index()
-{
+function ws_ls_get_next_tab_index() {
 	global $ws_ls_tab_index;
 
 	$current_index = $ws_ls_tab_index;

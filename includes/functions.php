@@ -712,7 +712,7 @@ function ws_ls_display_blockquote($text, $class = '', $just_echo = false, $inclu
 
 }
 
-
+//todo: review this
 // Calculate max upload size (taken from Drupal)
 function ws_ls_file_upload_max_size() {
     static $max_size = -1;
@@ -796,6 +796,7 @@ function ws_ls_photo_get_sizes($key = false) {
  *
  * @return float|int
  */
+//todo: review this function
 function ws_ls_photo_max_upload_size() {
 
 	$file_size = WE_LS_PHOTOS_MAX_SIZE;

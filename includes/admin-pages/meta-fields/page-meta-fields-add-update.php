@@ -75,6 +75,7 @@
                                                         <option value="0" <?php selected( $checked, 0 ); ?>><?php echo __('Number', WE_LS_SLUG); ?></option>
                                                         <option value="1" <?php selected( $checked, 1 ); ?>><?php echo __('Text', WE_LS_SLUG); ?></option>
                                                         <option value="2" <?php selected( $checked, 2 ); ?>><?php echo __('Yes', WE_LS_SLUG); ?> / <?php echo __('No', WE_LS_SLUG); ?></option>
+                                                        <option value="3" <?php selected( $checked, 3 ); ?>><?php echo __('Photo', WE_LS_SLUG); ?></option>
                                                     </select>
                                                     <?php if ( false === empty( $id ) ) : ?>
                                                         <p class="ws-ls-note"><?php echo __('Note: Changing the field type will cause existing user data to be lost.', WE_LS_SLUG); ?></p>

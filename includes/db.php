@@ -210,10 +210,10 @@ function ws_ls_save_data($user_id, $weight_object, $is_target_form = false, $exi
 	$db_field_types = array('%d','%f', '%f', '%f', '%f');
 
 	// If photos enabled and not a target form, add relevant DB fields to support photos.
-    if ( true === WE_LS_PHOTOS_ENABLED && false === $is_target_form ) {
+   // if ( true === WE_LS_PHOTOS_ENABLED && false === $is_target_form ) { //todo
         $db_fields[$db_prefix . 'photo_id'] = $weight_object['photo_id'];
         $db_field_types[] = '%d';
-    }
+    //}
 
 	// If Measurements enabled then save measurements too.
 	if (WE_LS_MEASUREMENTS_ENABLED) {
