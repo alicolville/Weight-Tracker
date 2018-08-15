@@ -131,3 +131,35 @@
 
 		 return false;
 	}
+
+    /**
+     * Return all enabled Photo fields
+     *
+     * @param bool $hide_from_shortcodes
+     * @return array
+     */
+	function ws_ls_meta_fields_photos_all( $hide_from_shortcodes = false ) {
+
+	    $fields = ws_ls_meta_fields_enabled();
+
+	    $return = [];
+
+	    foreach ( $fields as $field ) {
+
+            if ( 3 !== intval( $field['field_type'] ) ) {
+                continue;
+            }
+
+            if ( true === $hide_from_shortcodes && 2 === intval( $field['hide_from_shortcodes'] ) ) {
+                continue;
+            }
+
+            $return[] = $field;
+        }
+
+
+        var_dump($return);
+
+	    return $return;
+
+    }
