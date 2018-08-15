@@ -471,12 +471,7 @@ function ws_ls_capture_form_validate_and_save($user_id = false)
 	$allowed_post_keys = array('ws_ls_is_target', 'we-ls-date', 'we-ls-weight-pounds',
 								'we-ls-weight-stones', 'we-ls-weight-kg', 'we-ls-notes' );
 
-    // If enabled, look for other photo related fields todo
-//    if ( WE_LS_PHOTOS_ENABLED ) {
-//		$allowed_post_keys = array_merge($allowed_post_keys, ['ws-ls-photo', 'ws-ls-photo-previous', 'ws-ls-photo-delete']);
-//	}
-
-	if ( true === $meta_fields_enabled ) {
+ 	if ( true === $meta_fields_enabled ) {
         $allowed_post_keys = array_merge( $allowed_post_keys, ws_ls_meta_fields_form_field_ids() );
     }
 
@@ -532,19 +527,12 @@ function ws_ls_capture_form_validate_and_save($user_id = false)
 				$weight_object = ws_ls_weight_object($user_id, $form_values['we-ls-weight-kg'], 0, 0, 0, $weight_notes,	$weight_date, true, false, '', $measurements);
 			break;
 		default:
-				$weight_object = ws_ls_weight_object($user_id, 0, $form_values['we-ls-weight-pounds'], $form_values['we-ls-weight-stones'], 0, $weight_notes,	$weight_date, true, false, '', $measurements);
+				$weight_object = ws_ls_weight_object($user_id, 0, $form_values['we-ls-weight-pounds'], $form_values['we-ls-weight-stones'], 0, $weight_notes, $weight_date, true, false, '', $measurements);
 			break;
 	}
 
 	// Do we have a row ID embedded in the form (i.e. are we in admin and editing an entry)?
 	$existing_db_id = (false === empty($_POST['db_row_id'])) ? intval($_POST['db_row_id']) : false;
-
-	// ---------------------------------------------
-	// Process Photos todo
-	// ---------------------------------------------
-
-//	$weight_object['photo_id'] = ws_ls_meta_fields_photos_process_upload( 'ws-ls-photo' );
-
 
     // ---------------------------------------------
     // Process Meta Fields
@@ -560,7 +548,7 @@ function ws_ls_capture_form_validate_and_save($user_id = false)
             // If photo, we need to process the upload
             if ( 3 === intval( $field[ 'field_type' ] ) ) {
 
-                $photo_upload = ws_ls_meta_fields_photos_process_upload( $field_key );
+                $photo_upload = ws_ls_meta_fields_photos_process_upload( $field_key, $weight_object[ 'date-display' ] , $user_id );
 
                 if ( false === empty( $photo_upload ) ) {
                     $weight_object[ 'meta-keys' ][ $field['id'] ] = $photo_upload;

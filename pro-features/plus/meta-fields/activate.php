@@ -27,6 +27,7 @@
                 display_on_chart BIT DEFAULT 0,
                 mandatory int DEFAULT 1,
                 enabled int DEFAULT 1,
+                hide_from_shortcodes int DEFAULT 1,
                 system BIT DEFAULT 0,
                 field_type int NOT NULL,
                 sort int DEFAULT 100,
@@ -74,6 +75,8 @@
      */
     function ws_ls_meta_fields_load_examples() {
 
+    	//todo: Add examples for photos
+
         // Number
         ws_ls_meta_fields_add([
             'field_name' => __('Cups of water drunk today?', WE_LS_SLUG),
@@ -83,17 +86,6 @@
             'mandatory' => 2,
             'enabled' => 1,
             'sort' => 100
-        ]);
-
-        // Text
-        ws_ls_meta_fields_add([
-            'field_name' => __('How did you feel today?', WE_LS_SLUG),
-            'abv' => __('Feel', WE_LS_SLUG),
-            'field_type' => 1,
-            'suffix' => '',
-            'mandatory' => 2,
-            'enabled' => 1,
-            'sort' => 120
         ]);
 
         // Yes / No

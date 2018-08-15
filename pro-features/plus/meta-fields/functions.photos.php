@@ -2,6 +2,15 @@
 
 	defined('ABSPATH') or die('Jog on!');
 
+	/**
+	 * Process a photo upload / deletion
+	 *
+	 * @param $field_name
+	 * @param null $date_text
+	 * @param null $user_id
+	 *
+	 * @return bool|int
+	 */
 	function ws_ls_meta_fields_photos_process_upload( $field_name, $date_text = NULL, $user_id = NULL ) {
 
 		if ( false === ws_ls_meta_fields_is_enabled() || false === WE_LS_PHOTOS_ENABLED ) {
@@ -18,7 +27,8 @@
 
 		if ( false === empty( $_POST[ $field_key_previous ] ) &&
 		        true === is_numeric( $_POST[ $field_key_previous ] ) &&
-		            false === empty( $_POST[ $field_key_delete ] ) ) {
+		            true === empty( $_POST[ $field_key_delete ] ) &&
+		                true === empty( $_FILES[ $field_name ] ) ) {
 			return intval( $_POST[ $field_key_previous ] );
 		}
 
@@ -26,8 +36,10 @@
 		// Delete Existing?
 		//--------------------------------------------------------------------------------
 
-		// Got a previous photo to delete?
-		if ( false === empty( $_POST[ $field_key_delete ] ) && true === is_numeric( $_POST[ $field_key_previous ] ) ) {
+		// 1) Has the delete checkbox been checked?
+		// 2) Has a new image been uploaded for that meta field key? If so, delete
+		if ( ( false === empty( $_POST[ $field_key_delete ] ) && 'y' == $_POST[ $field_key_delete ] && true === is_numeric( $_POST[ $field_key_previous ] ) ) ||
+		        ( false === empty( $_POST[ $field_key_previous ] ) && false === empty( $_FILES[ $field_name ]['name'] ) ) ) {
 
 			$previous_photo = $_POST[ $field_key_previous ];
 
@@ -84,7 +96,7 @@
 
 			$user_data = get_userdata( $user_id );
 
-			$date_text = ( false === empty( $date_text ) ) ?: '';
+			$date_text = ( false === empty( $date_text ) ) ? $date_text : '';
 
 			// Set up options array to add this file as an attachment
 			$attachment = array(

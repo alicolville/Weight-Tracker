@@ -83,4 +83,14 @@ jQuery( document ).ready(function ($) {
 		input.addEventListener( 'focus', function(){ input.classList.add( 'has-focus' ); });
 		input.addEventListener( 'blur', function(){ input.classList.remove( 'has-focus' ); });
 	});
+
+
+	function ws_ls_meta_fields_show_additional() {
+
+	    var value = $('#field_type').val();
+        alert(value);
+
+    }
+
+    ws_ls_meta_fields_show_additional();
 });

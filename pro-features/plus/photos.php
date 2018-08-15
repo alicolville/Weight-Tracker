@@ -3,6 +3,9 @@
 defined('ABSPATH') or die("Jog on!");
 
 
+//todo: Change this whole file!
+
+
 // ------------------------------------------------------------------
 // Shortcodes
 // ------------------------------------------------------------------
@@ -132,6 +135,9 @@ function ws_ls_photos_shortcode_render($image, $css_class = '', $hide_date = tru
  * If an entry is deleted, check for a photo ID. If it exists, delete attachment from media library
  */
 function ws_ls_photos_tidy_up_after_entry_deleted($entry) {
+
+	// TODO: Search for meta data
+
     if ( false === empty($entry['photo_id']) && true === is_numeric($entry['photo_id'])) {
         wp_delete_attachment(intval($entry['photo_id']) ,true);
         ws_ls_delete_cache_for_given_user($entry['user_id']);
@@ -144,6 +150,9 @@ add_action(WE_LS_HOOK_DATA_ENTRY_DELETED, 'ws_ls_photos_tidy_up_after_entry_dele
  * @param $attachment_id
  */
 function ws_ls_photos_tidy_up_after_attachment_deleted($attachment_id) {
+
+	//todo: Get all photo fields and delete entries where the ID matches entry value
+
     if ( false === empty($attachment_id) && true === is_numeric($attachment_id)) {
         global $wpdb;
         $sql = $wpdb->prepare('Update ' . $wpdb->prefix . WE_LS_TABLENAME . ' SET photo_id = null where photo_id = %d', $attachment_id);
