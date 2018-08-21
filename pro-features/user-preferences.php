@@ -1,7 +1,7 @@
 <?php
 defined('ABSPATH') or die("Jog on!");
 
-function ws_ls_user_preferences_form($user_defined_arguments)
+function ws_ls_user_preferences_form( $user_defined_arguments )
 {
     // If not logged in then return no value
     if (!is_user_logged_in())	{
@@ -10,7 +10,7 @@ function ws_ls_user_preferences_form($user_defined_arguments)
 
     $html_output = '';
 
-    $arguments = shortcode_atts(['user-id' => false, 'allow-delete-data' => true, 'redirect-url' => ''], $user_defined_arguments );
+    $arguments = shortcode_atts(['user-id' => false, 'allow-delete-data' => true, 'redirect-url' => '', 'disable-save' => false ], $user_defined_arguments );
 
     $arguments['allow-delete-data'] = ws_ls_force_bool_argument($arguments['allow-delete-data']);
     $arguments['user-id'] = ws_ls_force_numeric_argument($arguments['user-id'], false);
@@ -188,9 +188,13 @@ function ws_ls_user_preferences_form($user_defined_arguments)
     <select id="WE_LS_US_DATE" name="WE_LS_US_DATE"  tabindex="' . ws_ls_get_next_tab_index() . '">
       <option value="false" ' . selected( ws_ls_get_config('WE_LS_US_DATE', $user_id), false, false ) . '>' . __('UK (DD/MM/YYYY)', WE_LS_SLUG) . '</option>
       <option value="true" ' . selected( ws_ls_get_config('WE_LS_US_DATE', $user_id), true, false ) . '>' . __('US (MM/DD/YYYY)', WE_LS_SLUG) . '</option>
-    </select>
-  <input name="submit_button" type="submit" id="we-ls-user-pref-submit"  tabindex="' . ws_ls_get_next_tab_index() . '" value="' .  __('Save Settings', WE_LS_SLUG) . '" class="comment-submit btn btn-default button default small fusion-button button-small button-default button-round button-flat">
-</form><br />';
+    </select>';
+
+    if ( true !== $arguments['disable-save'] ) {
+        $html_output .= '<input name="submit_button" type="submit" id="we-ls-user-pref-submit"  tabindex="' . ws_ls_get_next_tab_index() . '" value="' .  __('Save Settings', WE_LS_SLUG) . '" class="comment-submit btn btn-default button default small fusion-button button-small button-default button-round button-flat">';
+    }
+
+    $html_output .= '</form><br />';
 
 	// If enabled, show Delete data
     if(true === $arguments['allow-delete-data']) {

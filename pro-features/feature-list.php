@@ -16,6 +16,7 @@ $pro_features = array(
 
     __('<strong>Access your user\'s data.</strong> Admin can view, edit and delete user data. Various tools for viewing user\'s graphs, tables of entries, BMI, targets, weight lost / gained stats and much more.', WE_LS_SLUG),
 	__('<strong>Measurements.</strong> Support for recording measurements like Hip, Waist, Leg, Bicep, etc. Displayed on charts and tables.', WE_LS_SLUG),
+    __('<strong>Custom Fields.</strong> Create and add your own questions to weight entry forms to gather additional information.', WE_LS_SLUG),
     __('<strong>Export all data or a particular user.</strong> Export in JSON or CSV format.', WE_LS_SLUG),
     __('<strong>BMI.</strong> Allows a user to specify their height. Once specified, their BMI is displayed next to each weight entry. There is also a shortcode to render the latest BMI.', WE_LS_SLUG),
 	__('<strong>Email notifications.</strong> Receive email notifications when a person updates their target or adds / edits a weight.', WE_LS_SLUG),

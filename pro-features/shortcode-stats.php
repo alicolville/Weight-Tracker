@@ -4,7 +4,7 @@ defined('ABSPATH') or die("Jog on!");
 
 function ws_ls_shortcode_stats_league_total($user_defined_arguments)
 {
-    if(!WS_LS_IS_PRO || WE_LS_DISABLE_USER_STATS) {
+    if ( true === WE_LS_DISABLE_USER_STATS ) {
        return  __('Stats disabled', WE_LS_SLUG);
     }
 
@@ -80,20 +80,20 @@ function ws_ls_shortcode_stats_league_total($user_defined_arguments)
 
 				// Add HTML!
 				$html .= sprintf(
-					'<tr class="ws-rank-%s%s">
-					<td class="ws-col-rank" ' . $table_cell . '>%s</td>
-					<td ' . $table_cell . '>%s</td>
-					<td ' . $table_cell . '>%s</td>
-					%s
-					<td ' . $table_cell . '>%s</td>
+					'<tr class="ws-rank-%1$s%2$s">
+					<td class="ws-col-rank" ' . $table_cell . '>%1$s</td>
+					<td ' . $table_cell . '>%4$s</td>
+					<td ' . $table_cell . ' class="%3$s">%5$s</td>
+					%6$s
+					<td ' . $table_cell . ' class="%3$s">%7$s</td>
 				</tr>',
 					$rank,
 					(('asc' == $arguments['order'] && $row['weight_difference'] < 0) || 'desc' == $arguments['order'] && $row['weight_difference'] > 0) ? ' ws-ls-good' : ' ws-ls-bad',
-					$rank,
-					$display_name,
-					$stats['display-value'],
-					(true == $arguments['show_percentage']) ? '<td ' . $table_cell . '>' . $percentage . '</td>' : '',
-					$row['no_entries']
+                    ws_ls_blur(),
+                    $display_name,
+                    ws_ls_blur_text( $stats['display-value'] ),
+					(true == $arguments['show_percentage']) ? '<td ' . $table_cell . ' class="' . ws_ls_blur() . '">' . ws_ls_blur_text( $percentage ) . '</td>' : '',
+                    ws_ls_blur_text( $row['no_entries'] )
 				);
 
 				$rank++;

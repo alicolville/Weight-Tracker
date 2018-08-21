@@ -1,4 +1,5 @@
 <?php
+
 	defined('ABSPATH') or die('Jog on!');
 
 
@@ -92,85 +93,105 @@ function ws_ls_data_table_get_rows($user_id = false, $max_entries = false, $smal
 	// If in front end, load user's weight format
 	$convert_weight_format = ( true === $front_end ) ? intval($user_id) : false;
 
-	foreach ($user_data['weight_data'] as $data) {
+	if ( false === empty( $user_data['weight_data'] ) ) {
+        foreach ( $user_data['weight_data'] as $data) {
 
-		// Build a row up for given columns
-		$row = array();
+            // Build a row up for given columns
+            $row = array();
 
-		foreach ($columns as $column) {
+            foreach ($columns as $column) {
 
-			$column_name = $column['name'];
+                $column_name = $column['name'];
 
-			if('gainloss' == $column_name) {
+                if('gainloss' == $column_name) {
 
-				// Compare to previous weight and determine if a gain / loss in weight
-				$gain_loss = '';
-				$gain_class = '';
+                    // Compare to previous weight and determine if a gain / loss in weight
+                    $gain_loss = '';
+                    $gain_class = '';
 
-				if(false === empty($previous_user_weight[$data['user_id']])) {
+                    if(false === empty($previous_user_weight[$data['user_id']])) {
 
-					$row['previous-weight'] = $previous_user_weight[$data['user_id']];
+                        $row['previous-weight'] = $previous_user_weight[$data['user_id']];
 
-					if ($data['kg'] > $previous_user_weight[$data['user_id']]) {
-						$gain_class = 'gain';
-						$gain_loss = ws_ls_convert_kg_into_relevant_weight_String($data['kg'] - $previous_user_weight[$data['user_id']], true, $convert_weight_format);
-					} elseif ($data['kg'] < $previous_user_weight[$data['user_id']]) {
-						$gain_class = 'loss';
-						$gain_loss = ws_ls_convert_kg_into_relevant_weight_String($data['kg'] - $previous_user_weight[$data['user_id']], true, $convert_weight_format);
-					} elseif ($data['kg'] == $previous_user_weight[$data['user_id']]) {
-						$gain_class = 'same';
-					}
+                        if ($data['kg'] > $previous_user_weight[$data['user_id']]) {
+                            $gain_class = 'gain';
+                            $gain_loss = ws_ls_convert_kg_into_relevant_weight_String($data['kg'] - $previous_user_weight[$data['user_id']], true, $convert_weight_format);
+                        } elseif ($data['kg'] < $previous_user_weight[$data['user_id']]) {
+                            $gain_class = 'loss';
+                            $gain_loss = ws_ls_convert_kg_into_relevant_weight_String($data['kg'] - $previous_user_weight[$data['user_id']], true, $convert_weight_format);
+                        } elseif ($data['kg'] == $previous_user_weight[$data['user_id']]) {
+                            $gain_class = 'same';
+                        }
 
-					$row['previous-weight-diff'] = $data['kg'] - $previous_user_weight[$data['user_id']];
+                        $row['previous-weight-diff'] = $data['kg'] - $previous_user_weight[$data['user_id']];
 
-				} else {
-					$gain_loss = __('First entry', WE_LS_SLUG);
-				}
+                    } else {
+                        $gain_loss = __('First entry', WE_LS_SLUG);
+                    }
 
-				$previous_user_weight[$data['user_id']] = $data['kg'];
-			}
+                    $previous_user_weight[$data['user_id']] = $data['kg'];
+                }
 
-			// Is this a measurement field?
-			if(in_array($column_name, $measurement_fields) && !empty($data['measurements'][$column_name])) {
-				$row[$column_name]['options']['sortValue'] = $data['measurements'][$column_name];
-				$row[$column_name]['value'] = ws_ls_prep_measurement_for_display($data['measurements'][$column_name], $convert_weight_format);
-			} else if ('gainloss' === $column_name) {
-				$row[$column_name]['value'] = $gain_loss;
-				$row[$column_name]['options']['classes'] = 'ws-ls-' . $gain_class; // Can use this method for icons
-			} else if (WE_LS_PHOTOS_ENABLED && 'photo' === $column_name) {
-				if ( false === empty($data['photo_id']) ) {
+                // Is this a measurement field?
+                if(in_array($column_name, $measurement_fields) && !empty($data['measurements'][$column_name])) {
+                    $row[$column_name]['options']['sortValue'] = $data['measurements'][$column_name];
+                    $row[$column_name]['value'] = ws_ls_prep_measurement_for_display($data['measurements'][$column_name], $convert_weight_format);
+                } else if ('gainloss' === $column_name) {
+                    $row[$column_name]['value'] = ws_ls_blur_text( $gain_loss );
+                    $row[$column_name]['options']['classes'] = 'ws-ls-' . $gain_class .  ws_ls_blur(); // Can use this method for icons
+                } else if (WE_LS_PHOTOS_ENABLED && 'photo' === $column_name) {
+                    if ( false === empty($data['photo_id']) ) {
 
-					$photo = ws_ls_photo_get($data['photo_id'], 120, 120);
+                        $photo = ws_ls_photo_get($data['photo_id'], 120, 120);
 
-					$row[$column_name] = sprintf('<a href="%1$s" rel="noopener noreferrer" target="_blank">%2$s</a>',
-						esc_url($photo['full']),
-						$photo['thumb']
-					);
+                        $row[$column_name] = sprintf('<a href="%1$s" rel="noopener noreferrer" target="_blank">%2$s</a>',
+                            esc_url($photo['full']),
+                            $photo['thumb']
+                        );
 
-				} else {
-					$row[$column_name] = '';
-				}
-			} else if ('bmi' === $column_name) {
-                $row[$column_name]['value'] =  ws_ls_get_bmi_for_table(ws_ls_get_user_height($data['user_id']), $data['kg'], __('No height', WE_LS_SLUG)) ;
-                $row[$column_name]['options']['classes'] = 'ws-ls-' . sanitize_key($row[$column_name]['value']); // Can use this method for icons
-            } else if (!empty($data[$column_name])) {
-				switch ($column_name) {
-					case 'kg':
-						$row[$column_name]['options']['sortValue'] = $data['kg'];
-						$row[$column_name]['value'] = ws_ls_convert_kg_into_relevant_weight_String($data['kg'] , false, $convert_weight_format);
-						break;
-					case 'user_nicename':
-						$row[$column_name]['options']['sortValue'] = $data['user_nicename'];
-						$row[$column_name]['value'] = sprintf('<a href="%s">%s</a>', ws_ls_get_link_to_user_profile($data['user_id']), $data['user_nicename']);
-						break;
-					default:
-						$row[$column_name] = esc_html($data[$column_name]);
-						break;
-				}
-			}
-		}
-		array_push($rows, $row);
-	}
+                    } else {
+                        $row[$column_name] = '';
+                    }
+                } else if ('bmi' === $column_name) {
+                    $row[$column_name]['value'] =  ws_ls_get_bmi_for_table(ws_ls_get_user_height($data['user_id']), $data['kg'], __('No height', WE_LS_SLUG)) ;
+                    $row[$column_name]['options']['classes'] = 'ws-ls-' . sanitize_key($row[$column_name]['value']) . ws_ls_blur(); // Can use this method for icons
+                } else if (!empty($data[$column_name])) {
+                    switch ($column_name) {
+                        case 'kg':
+                            $row[$column_name]['options']['sortValue'] = $data['kg'];
+                            $row[$column_name]['options']['classes'] = ws_ls_blur();
+                            $row[$column_name]['value'] = ws_ls_blur_text(  ws_ls_convert_kg_into_relevant_weight_String($data['kg'] , false, $convert_weight_format) );
+                            break;
+                        case 'user_nicename':
+                            $row[$column_name]['options']['sortValue'] = $data['user_nicename'];
+                            $row[$column_name]['value'] = sprintf('<a href="%s">%s</a>', ws_ls_get_link_to_user_profile($data['user_id']), $data['user_nicename'] );
+                            break;
+                        default:
+                            $row[$column_name] = $data[$column_name];
+                            $row[$column_name] = esc_html($data[$column_name]);
+                            break;
+                    }
+                } else if ( false !== strpos( $column_name , 'meta-' ) ) {
+
+                    $field_id = str_replace( 'meta-', '', $column_name );
+
+                    $row[ $column_name ] = [];
+
+                    if ( false === empty( $data['meta-fields'][ (int)$field_id ]['value'] ) ) {
+
+                        $field = $data['meta-fields'][ (int)$field_id ];
+
+                        $row[ $column_name ]['value'] = ws_ls_fields_display_field_value( $field['value'], $field['meta_field_id'] );
+                        $row[ $column_name ]['value'] = ws_ls_blur_text( $row[ $column_name ]['value'] );
+                        $row[ $column_name ]['options']['classes'] = ws_ls_blur();
+                    }
+
+                }
+
+            }
+            array_push($rows, $row);
+        }
+    }
 
     // Reverse the array so most recent entries are shown first (as default)
     $rows = array_reverse($rows);
@@ -242,6 +263,14 @@ function ws_ls_data_table_get_columns($smaller_width = false, $front_end = false
 		}
 	}
 
+    if ( true === ws_ls_meta_fields_is_enabled() ) {
+
+        foreach ( ws_ls_meta_fields_enabled() as $field ) {
+            array_push($columns, array('name' => 'meta-' . $field['id'], 'title' => $field['field_name'], 'breakpoints'=> (($smaller_width) ? 'lg' : 'md'), 'type' => 'text'));
+        }
+
+    }
+
 	// Add notes;
 	array_push($columns, array('name' => 'notes', 'title' => __('Notes', WE_LS_SLUG), 'breakpoints'=> 'lg', 'type' => 'text'));
 
@@ -257,10 +286,10 @@ function ws_ls_data_table_enqueue_scripts() {
 
 	$minified = ws_ls_use_minified();
 
-	wp_enqueue_style('ws-ls-footables', plugins_url( '/css/footable.standalone.min.css', dirname(__FILE__)  ), array(), WE_LS_CURRENT_VERSION);
-    wp_enqueue_style('ws-ls-footables-wlt', plugins_url( '/css/footable.css', dirname(__FILE__)  ), array('ws-ls-footables'), WE_LS_CURRENT_VERSION);
-    wp_enqueue_script('ws-ls-footables-js', plugins_url( '/js/footable.min.js', dirname(__FILE__) ), array('jquery'), WE_LS_CURRENT_VERSION, true);
-	wp_enqueue_script('ws-ls-footables-admin', plugins_url( '/js/data.footable' .     $minified . '.js', dirname(__FILE__) ), array('ws-ls-footables-js'), WE_LS_CURRENT_VERSION, true);
+	wp_enqueue_style('ws-ls-footables', plugins_url( '/assets/css/footable.standalone.min.css', dirname(__FILE__)  ), array(), WE_LS_CURRENT_VERSION);
+    wp_enqueue_style('ws-ls-footables-wlt', plugins_url( '/assets/css/footable.css', dirname(__FILE__)  ), array('ws-ls-footables'), WE_LS_CURRENT_VERSION);
+    wp_enqueue_script('ws-ls-footables-js', plugins_url( '/assets/js/footable.min.js', dirname(__FILE__) ), array('jquery'), WE_LS_CURRENT_VERSION, true);
+	wp_enqueue_script('ws-ls-footables-admin', plugins_url( '/assets/js/data.footable' .     $minified . '.js', dirname(__FILE__) ), array('ws-ls-footables-js'), WE_LS_CURRENT_VERSION, true);
 	wp_localize_script('ws-ls-footables-admin', 'ws_user_table_config', ws_ls_data_js_config());
     wp_enqueue_style('fontawesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', array(), WE_LS_CURRENT_VERSION);
 }
@@ -273,6 +302,8 @@ function ws_ls_data_js_config() {
 	$config = array(
 					'security' => wp_create_nonce('ws-ls-user-tables'),
 					'base-url' => ws_ls_get_link_to_user_data(),
+					'base-url-meta-fields' => ws_ls_meta_fields_base_url(),
+                    'label-meta-fields-add-button' =>  __('Add Custom Field', WE_LS_SLUG),
 					'label-confirm-delete' =>  __('Are you sure you want to delete the row?', WE_LS_SLUG),
 					'label-error-delete' =>  __('Unfortunately there was an error deleting the row.', WE_LS_SLUG),
                     'locale-search-text' =>  __('Search', WE_LS_SLUG),

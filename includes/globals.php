@@ -16,15 +16,9 @@
 	define('WE_LS_UPGRADE_TO_PRO_PLUS_URL', 'https://weight.yeken.uk/get-pro-plus/');
     define('WE_LS_FREE_TRIAL_URL', 'https://weight.yeken.uk/trial/');
     define('WE_LS_UPGRADE_TO_PRO_PLUS_UPGRADE_URL', 'https://weight.yeken.uk/get-pro-plus-existing-license-holders/');
-    define('WE_LS_CDN_CHART_JS', 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js');
-	define('WE_LS_TABLENAME', 'WS_LS_DATA');
-	define('WE_LS_TARGETS_TABLENAME', 'WS_LS_DATA_TARGETS');
-  	define('WE_LS_USER_PREFERENCES_TABLENAME', 'WS_LS_DATA_USER_PREFERENCES');
-	define('WE_LS_USER_STATS_TABLENAME', 'WS_LS_DATA_USER_STATS');
+    define('WE_LS_CDN_CHART_JS', 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js');
 	define('WE_LS_CACHE_ENABLED', true);
 	define('WE_LS_CACHE_TIME', 15 * MINUTE_IN_SECONDS);
-	define('WE_LS_CACHE_COMMS_KEY', 'comm-with-yeken');
-	define('WE_LS_CACHE_COMMS_KEY_TIME', 4 * WEEK_IN_SECONDS);
 	define('WE_LS_CACHE_STATS_TABLE', 'stats-table-html');
 	define('WE_LS_CACHE_KEY_TARGET', 'target-data');
 	define('WE_LS_CACHE_KEY_DATA', 'weight-data');
@@ -54,6 +48,18 @@
 	define('WE_LS_CRON_NAME', 'weight_loss_tracker_hourly');
 	define('WE_LS_CRON_NAME_YEKEN_COMMS', 'weight_loss_tracker_yeken_comms');
 	define('WE_LS_CRON_SCHEDULE_WEEKLY', 'weight_loss_tracker_weekly');
+
+
+	// -----------------------------------------------------------------------------------
+	// Database tables
+	// -----------------------------------------------------------------------------------
+
+	//Todo: refactor these contant names
+	define('WE_LS_TABLENAME', 'WS_LS_DATA');
+	define('WE_LS_TARGETS_TABLENAME', 'WS_LS_DATA_TARGETS');
+	define('WE_LS_USER_PREFERENCES_TABLENAME', 'WS_LS_DATA_USER_PREFERENCES');
+	define('WE_LS_USER_STATS_TABLENAME', 'WS_LS_DATA_USER_STATS');
+	define('WE_LS_LOG_TABLENAME', 'WS_LS_ERROR_LOG');
 
 	// -----------------------------------------------------------------------------------
 	// Hooks / Filters
@@ -427,3 +433,4 @@
     foreach($globals as $key => $value) {
 		define($key, $value);
 	}
+

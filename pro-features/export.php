@@ -22,6 +22,11 @@ function ws_ls_export_data() {
 	// Fetch all relevant weight entries that we're interested in
 	$export_data = ws_ls_user_data($filters);
 
+	// If meta fields are enabled and we have some, then add to row for easy matching to columns
+    if ( true === ws_ls_meta_fields_is_enabled() ) {
+        $export_data = ws_ls_export_process_meta_fields( $export_data );
+    }
+
 	// Fetch whether CSV or JSON
 	$file_type = (false === empty($_GET['file-type'])) ? ws_ls_export_verify_type($_GET['file-type']) : 'text/csv';
 
@@ -31,10 +36,10 @@ function ws_ls_export_data() {
 
 		switch ($file_type) {
 			case 'text/csv':
-				$output = ws_ls_csv_from_array($export_data['weight_data']);
+				$output = ws_ls_csv_from_array( $export_data['weight_data'] );
 				break;
 			default:
-				$output = ws_ls_export_into_json($export_data['weight_data']);
+				$output = ws_ls_export_into_json( $export_data['weight_data'] );
 				break;
 		}
 
@@ -48,6 +53,36 @@ function ws_ls_export_data() {
 	die();
 }
 add_action( 'admin_post_export_data', 'ws_ls_export_data' );
+
+
+/**
+ * Manipulate data rows so Meta fields at same level as others.
+ *
+ * @param $rows
+ * @return mixed
+ */
+function ws_ls_export_process_meta_fields( $rows ) {
+
+    if ( false === empty( $rows['weight_data'] ) ) {
+
+        // Loop through each CSV row
+        for( $i = 0; $i < count( $rows['weight_data'] ); $i++ ) {
+
+            // If the row has meta fields, then process.
+            if ( false === empty( $rows['weight_data'][ $i ][ 'meta-fields'] )) {
+
+                foreach( $rows['weight_data'][ $i ][ 'meta-fields'] as $meta_Field ) {
+
+                    $rows['weight_data'][ $i ]['meta-' . $meta_Field['meta_field_id'] ] = ws_ls_fields_display_field_value( $meta_Field['value'], $meta_Field['meta_field_id'] );
+
+                }
+            }
+        }
+    }
+
+    return $rows;
+}
+
 
 /**
  * Export into JSON
@@ -65,23 +100,32 @@ function ws_ls_export_into_json($rows) {
 		$data = [];
 		$measurement_keys = ws_ls_get_keys_for_active_measurement_fields();
 
-		foreach ($rows as $row) {
-			foreach ($output['columns'] as $key => $value) {
-				if(in_array($key, $measurement_keys)) {
+        // Only render body of report if Pro!
+        if ( true !== WS_LS_IS_PRO ) {
 
-					// Do we need to convert the measurement to inches?
-					$data[$key] = ( 'inches' === WE_LS_MEASUREMENTS_UNIT ) ?
-						ws_ls_convert_to_inches( $row['measurements'][$key] ) :
-						$row['measurements'][$key];
+            $output['rows'] =  __('You must have a Pro License to export user data into JSON format.', WE_LS_SLUG);
 
-				} else {
-					$data[$key] = $row[$key];
-				}
-			}
-			$row = ws_ls_export_add_bmi($row);
+        } else {
 
-			$output['rows'][] = $data;
-		}
+            foreach ($rows as $row) {
+                foreach ($output['columns'] as $key => $value) {
+                    if(in_array($key, $measurement_keys)) {
+
+                        // Do we need to convert the measurement to inches?
+                        $data[$key] = ( 'inches' === WE_LS_MEASUREMENTS_UNIT ) ?
+                            ws_ls_convert_to_inches( $row['measurements'][$key] ) :
+                            $row['measurements'][$key];
+
+                    } else {
+                        $data[$key] = $row[$key];
+                    }
+                }
+                $row = ws_ls_export_add_bmi($row);
+
+                $output['rows'][] = $data;
+            }
+
+        }
 
 		return json_encode($output);
 	}
@@ -107,16 +151,25 @@ function ws_ls_csv_from_array($data, $show_column_headers = true, $delimiter = '
 
 		$columns = ws_ls_column_names();
 
-		// Include header row with column names?
-		if($show_column_headers) {
-			$csv_output .= ws_ls_csv_row_header($columns);
-		}
+        // Include header row with column names?
+        if($show_column_headers) {
+            $csv_output .= ws_ls_csv_row_header($columns);
+        }
 
-		// Build body of CSV
-		foreach ($data as $row) {
-			$row = ws_ls_export_add_bmi($row);
-			$csv_output .= ws_ls_csv_row_write($columns, $row, $delimiter, $end_of_line_char);
-		}
+        // Only render body of report if Pro!
+        if ( true !== WS_LS_IS_PRO ) {
+
+            $csv_output .=  __('You must have a Pro License to export user data into CSV format.', WE_LS_SLUG);
+
+        } else {
+
+           // Build body of CSV
+            foreach ($data as $row) {
+                $row = ws_ls_export_add_bmi($row);
+                $csv_output .= ws_ls_csv_row_write($columns, $row, $delimiter, $end_of_line_char);
+            }
+
+        }
 
 		return $csv_output;
 	}
@@ -177,8 +230,8 @@ function ws_ls_csv_row_write($columns, $row, $delimiter = ',', $end_of_line_char
 			} else {
 			    // If the column is not found, blank it so CSV ok.
                 $data[$key] = '';
-            }
-		}
+           }
+        }
 
 		// Escape cell contents and encapsulate in double quotes
 		$data = array_map('ws_ls_csv_cell_escape', $data);
@@ -215,6 +268,13 @@ function ws_ls_column_names() {
 		foreach (ws_ls_get_active_measurement_fields() as $key => $measurement) {
 			$names[$key] = $measurement['title'];
 		}
+
+		// Add meta fields
+        if ( true === ws_ls_meta_fields_is_enabled() ) {
+            foreach ( ws_ls_meta_fields_enabled() as $meta_field ) {
+                $names[ 'meta-' . $meta_field['id'] ] = $meta_field['field_name'];
+            }
+        }
 
 	return $names;
 }

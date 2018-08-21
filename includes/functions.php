@@ -11,7 +11,7 @@ function ws_ls_is_date_intervals_enabled()	{
 /* Get string representation of a weight  */
 function ws_ls_weight_object($user_id, $kg, $pounds, $stones, $pounds_only, $notes = '', $date = false,
                               $detect_and_convert_missing_values = false, $database_row_id = false, $user_nicename = '', $measurements = false,
-								$photo_id = false)
+								$photo_id = false, $meta_fields = false )
 {
     $weight['display'] = '';
     $weight['user_id'] = $user_id;
@@ -27,6 +27,7 @@ function ws_ls_weight_object($user_id, $kg, $pounds, $stones, $pounds_only, $not
     $weight['db_row_id'] = $database_row_id;
     $weight['measurements'] = $measurements;
 	$weight['photo_id'] = false === empty($photo_id) ? $photo_id : false;
+    $weight['meta-fields'] = $meta_fields;
 
     // Build different date formats
     if($date != false && !empty($date)) {
@@ -191,15 +192,18 @@ function ws_ls_admin_check_mysql_tables_exist()
     $tables_to_check = array(
                             $wpdb->prefix . WE_LS_TARGETS_TABLENAME,
                             $wpdb->prefix . WE_LS_TABLENAME,
-                            $wpdb->prefix . WE_LS_USER_PREFERENCES_TABLENAME
+                            $wpdb->prefix . WE_LS_USER_PREFERENCES_TABLENAME,
+                            $wpdb->prefix . WE_LS_MYSQL_META_FIELDS,
+                            $wpdb->prefix . WE_LS_MYSQL_META_ENTRY
                         );
 
     // Check each table exists!
     foreach($tables_to_check as $table_name) {
 
         $rows = $wpdb->get_row('Show columns in ' . $table_name);
-        if (0 == count($rows)) {
-            $error_text .= '<li>' . $table_name . '</li>';
+
+        if ( true === empty( $rows ) ) {
+            $error_text .= sprintf( '<li>%s</li>', $table_name );
         }
     }
 
@@ -347,7 +351,7 @@ function ws_ls_display_week_filters($week_ranges, $selected_week_number)
   $output = '';
 
   // If we have valid options for week dropdown, start building it
-  if ($week_ranges != false && count($week_ranges > 1))	{
+  if ( false === empty( $week_ranges ) && true === is_array( $week_ranges ) )	{
 
     $output .= '<form action="' .  get_permalink() . '#wlt-weight-history" method="post">
                   <input type="hidden" value="true" name="week_filter">
@@ -633,7 +637,7 @@ function ws_ls_iso_date_into_correct_format($date, $return_formatted_date_only =
  * @return string
  */
 function ws_ls_upgrade_link() {
-    return admin_url( 'admin.php?page=ws-ls-weight-loss-tracker-pro');
+    return admin_url( 'admin.php?page=ws-ls-license');
 }
 
 /**
@@ -825,4 +829,113 @@ function ws_ls_display_max_server_upload_size() {
 
 	return ws_ls_format_bytes_into_readable($max_size);
 }
+
+/**
+ * Either fetch data from the $_POST object or from the array passed in!
+ *
+ * @param $object
+ * @param $key
+ * @return string
+ */
+function ws_ls_get_value_from_post_or_obj( $object, $key ) {
+
+    if ( true === isset( $_POST[ $key ] ) ) {
+        return $_POST[ $key ];
+    }
+
+    if ( true === isset( $object[ $key ] ) ) {
+        return $object[ $key ];
+    }
+
+    return '';
+}
+
+/**
+ * Either fetch data from the $_POST object for the given object keys
+ *
+ * @param $meta_field
+ * @return string
+ */
+function ws_ls_get_values_from_post( $keys ) {
+
+    foreach ( $keys as $key ) {
+
+        if ( true === isset( $_POST[ $key ] ) ) {
+            $meta_field[ $key ] = $_POST[ $key ];
+        } else {
+            $meta_field[ $key ] = '';
+        }
+
+    }
+
+    return $meta_field;
+
+}
+
+/**
+ * Display upgrade notice
+ *
+ * @param bool $pro_plus
+ */
+function ws_ls_display_pro_upgrade_notice( ) {
 ?>
+
+    <div class="postbox ws-ls-advertise">
+        <h3 class="hndle"><span><?php echo __( 'Upgrade Weight Tracker and get more features!', WE_LS_SLUG); ?> </span></h3>
+        <div style="padding: 0px 15px 0px 15px">
+            <p><?php echo __( 'Upgrade to the latest Pro or Pro Plus version of this plugin to manipulate your user\'s data, add custom fields, BMR, Macro Nutrients and much more!', WE_LS_SLUG); ?></p>
+            <p><a href="<?php echo esc_url( admin_url('admin.php?page=ws-ls-license') ); ?>" class="button-primary"><?php echo __( 'Read more and Upgrade to Pro / Pro Plus Version', WE_LS_SLUG); ?></a></p>
+        </div>
+    </div>
+
+<?php
+}
+
+/**
+ * Return a Blur CSS class if not valid license
+ *
+ * @param bool $pro_plus
+ * @return string
+ */
+function ws_ls_blur( $pro_plus = false, $space_before = true ) {
+
+    $class = 'ws-ls-blur';
+
+    if ( true === $space_before ) {
+        $class = ' ' . $class;
+    }
+
+    if ( false === $pro_plus && false === WS_LS_IS_PRO ) {
+        return $class;
+    } elseif ( true === $pro_plus && false === WS_LS_IS_PRO_PLUS ) {
+        return $class;
+    }
+
+    return '';
+}
+
+/**
+ * Blur string if incorrect license
+ *
+ * @param $text
+ */
+function ws_ls_blur_text( $text, $pro_plus = false ) {
+
+    if ( false === empty( $text ) ) {
+
+        $blur = false;
+
+        if ( false === $pro_plus && false === WS_LS_IS_PRO ) {
+            $blur = true;
+        } elseif ( true === $pro_plus && false === WS_LS_IS_PRO_PLUS ) {
+            $blur = true;
+        }
+
+        if ( true === $blur ) {
+            $text = str_repeat( '0', strlen( $text ) + 1 );
+        }
+
+    }
+
+    return $text;
+}

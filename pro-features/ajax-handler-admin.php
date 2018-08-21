@@ -46,6 +46,32 @@ function ws_ls_footable_delete_entry() {
 }
 add_action( 'wp_ajax_delete_entry', 'ws_ls_footable_delete_entry' );
 
+/**
+	Fetch Errors
+ **/
+function ws_ls_ajax_get_errors(){
+
+	check_ajax_referer( 'ws-ls-user-tables', 'security' );
+
+	$table_id = ws_ls_ajax_post_value('table_id');
+
+	$columns = [
+		[ 'name' => 'timestamp', 'title' => __('Date', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'date' ],
+		[ 'name' => 'module', 'title' => __('Module', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ],
+		[ 'name' => 'message', 'title' => __('Message', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ]
+	];
+
+	$data = [
+				'columns' => $columns,
+				'rows' => ws_ls_log_all(),
+				'table_id' => $table_id
+	];
+
+	wp_send_json($data);
+
+}
+add_action( 'wp_ajax_get_errors', 'ws_ls_ajax_get_errors' );
+
 function ws_ls_get_numeric_post_value($key, $default = false) {
 	return (isset($_POST[$key]) && is_numeric($_POST[$key])) ? $_POST[$key] : $default;
 }

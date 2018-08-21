@@ -18,6 +18,7 @@ class ws_ls_widget_form extends WP_Widget {
 										'force_todays_date' => 'yes',
 				                        'not-logged-in-message' => '',
 										'exclude-measurements' => 'no',
+                                        'exclude-meta-fields' => 'yes',
 										'exclude-photos' => 'no',
 										'redirect-url' => ''
         );
@@ -43,11 +44,12 @@ class ws_ls_widget_form extends WP_Widget {
 			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
 			$force_to_todays_date = ('yes' == $instance['force_todays_date']) ? true : false;
 			$exclude_measurements = (!empty($instance['exclude-measurements']) && 'yes' == $instance['exclude-measurements']) ? true : false;
+            $exclude_meta_fields = ( true === empty($instance['exclude-meta-fields']) || 'yes' == $instance['exclude-meta-fields'] ) ? true : false;
 			$exclude_photos = (!empty($instance['exclude-photos']) && 'yes' == $instance['exclude-photos']) ? true : false;
 
 			$redirect_url = (!empty($instance['redirect-url'])) ? $instance['redirect-url']  : '';
 			echo ws_ls_display_weight_form(false, false, false, true, ws_ls_remove_non_numeric($args['widget_id']) + 10000,
-												$force_to_todays_date, true, $exclude_measurements, $redirect_url, false, false, $exclude_photos);
+												$force_to_todays_date, true, $exclude_measurements, $redirect_url, false, false, $exclude_photos, $exclude_meta_fields);
             echo $args['after_widget'];
         } elseif (isset($instance['not-logged-in-message']) && !empty($instance['not-logged-in-message'])) {
             echo $args['before_widget'];
@@ -99,7 +101,13 @@ class ws_ls_widget_form extends WP_Widget {
 				<option value="yes" <?php selected( $field_values['exclude-photos'], 'yes'); ?>><?php _e('Yes', WE_LS_SLUG); ?></option>
 			</select>
 		</p>
-			
+        <p>
+            <label for="<?php echo $this->get_field_id( 'exclude-meta-fields' ); ?>"><?php _e('Hide Meta Fields (Pro Plus)?', WE_LS_SLUG); ?></label>
+            <select class="widefat" name="<?php echo $this->get_field_name( 'exclude-meta-fields' ); ?>" id="<?php echo $this->get_field_id( 'exclude-meta-fields' ); ?>">
+                <option value="no" <?php selected( $field_values['exclude-meta-fields'], 'no'); ?>><?php _e('No', WE_LS_SLUG); ?></option>
+                <option value="yes" <?php selected( $field_values['exclude-meta-fields'], 'yes'); ?>><?php _e('Yes', WE_LS_SLUG); ?></option>
+            </select>
+        </p>
         <p>
 			<label for="<?php echo $this->get_field_id( 'not-logged-in-message' ); ?>"><?php _e('Message to display if not logged in', WE_LS_SLUG); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id( 'not-logged-in-message' ); ?>" name="<?php echo $this->get_field_name( 'not-logged-in-message' ); ?>" type="text" value="<?php echo esc_attr( $field_values['not-logged-in-message'] ); ?>">

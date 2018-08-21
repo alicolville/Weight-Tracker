@@ -27,6 +27,7 @@ defined('ABSPATH') or die("Jog on!");
         [18] => wlt-navel
         [19] => wlt-neck
  *      [20] => wlt-bust-chest
+ *      [*] => wlt-meta-[meta key]
  *
  * @param $entry
  * @param $form
@@ -191,6 +192,30 @@ function ws_ls_gravity_forms_process( $entry, $form ) {
 
     }
 
+	// --------------------------------------------------------------------------------
+	// Meta Fields
+	// --------------------------------------------------------------------------------
+
+    $weight[ 'meta-keys' ] = [];
+
+    if ( true === ws_ls_meta_fields_is_enabled() ) {
+
+        foreach ( ws_ls_meta_fields_enabled() as $meta_field ) {
+
+            $gf_field_key = ws_ls_gravity_forms_meta_fields_key_prefix( $meta_field['field_key'] );
+
+            if ( false === empty( $matched_fields[ $gf_field_key ] ) ) {
+
+                $weight[ 'meta-keys' ][ $meta_field['id'] ] = $matched_fields[ $gf_field_key ];
+
+                GFCommon::log_debug( sprintf('Found meta field %s', $gf_field_key ) );
+
+            } else {
+                GFCommon::log_debug( sprintf('Could not find meta field %s', $gf_field_key ) );
+            }
+        }
+    }
+
     // --------------------------------------------------------------------------------
     // Add additional fields
     // --------------------------------------------------------------------------------
@@ -257,6 +282,7 @@ function ws_ls_gravity_forms_keys() {
     $keys = array_merge( $keys, ws_ls_gravity_forms_weight_keys() );
     $keys = array_merge( $keys, ws_ls_gravity_forms_measurement_keys() );
     $keys = array_merge( $keys, ws_ls_gravity_forms_preferences_keys() );
+    $keys = array_merge( $keys, ws_ls_gravity_forms_meta_fields_keys() );
 
     return $keys;
 }
@@ -313,6 +339,32 @@ function ws_ls_gravity_forms_preferences_keys() {
     $keys = apply_filters( 'wlt-filters-gf-preferences-keys', $keys );
 
     return $keys;
+}
+
+/**
+ * Build meta field keys
+ *
+ * @return array
+ */
+function ws_ls_gravity_forms_meta_fields_keys() {
+
+    $keys = [];
+
+    if ( true === ws_ls_meta_fields_is_enabled() ) {
+
+        $meta_fields = ws_ls_meta_fields_enabled();
+
+        if ( false === empty( $meta_fields ) ) {
+            $keys = wp_list_pluck( $meta_fields, 'field_key');
+            $keys = array_map( 'ws_ls_gravity_forms_meta_fields_key_prefix', $keys );
+        }
+    }
+
+    return $keys;
+}
+
+function ws_ls_gravity_forms_meta_fields_key_prefix( $key ) {
+    return 'wlt-meta-' . $key;
 }
 
 /**

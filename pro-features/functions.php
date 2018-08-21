@@ -81,7 +81,7 @@ function ws_ls_tooltip($text, $tooltip) {
  * @return string
  */
 function ws_ls_get_link_to_user_data() {
-	return admin_url( 'admin.php?page=ws-ls-wlt-data-home');
+	return admin_url( 'admin.php?page=ws-ls-data-home');
 }
 
 /**
@@ -90,7 +90,7 @@ function ws_ls_get_link_to_user_data() {
  * @return string
  */
 function ws_ls_get_link_to_user_profile($id) {
-    return is_numeric($id) ? esc_url(admin_url( 'admin.php?page=ws-ls-wlt-data-home&mode=user&user-id=' . $id )) : '#';
+    return is_numeric($id) ? esc_url(admin_url( 'admin.php?page=ws-ls-data-home&mode=user&user-id=' . $id )) : '#';
 }
 
 /**
@@ -108,7 +108,7 @@ function ws_ls_get_link_to_delete_user_cache($id) {
  * @return string
  */
 function ws_ls_get_link_to_user_settings($id) {
-	return is_numeric($id) ? esc_url(admin_url( 'admin.php?page=ws-ls-wlt-data-home&mode=user-settings&user-id=' . $id )) : '#';
+	return is_numeric($id) ? esc_url(admin_url( 'admin.php?page=ws-ls-data-home&mode=user-settings&user-id=' . $id )) : '#';
 }
 
 /**
@@ -117,7 +117,7 @@ function ws_ls_get_link_to_user_settings($id) {
  * @return string
  */
 function ws_ls_get_link_to_edit_target($id) {
-	return is_numeric($id) ? esc_url(admin_url( 'admin.php?page=ws-ls-wlt-data-home&mode=target&user-id=' . $id )) : '#';
+	return is_numeric($id) ? esc_url(admin_url( 'admin.php?page=ws-ls-data-home&mode=target&user-id=' . $id )) : '#';
 }
 
 /**
@@ -126,7 +126,7 @@ function ws_ls_get_link_to_edit_target($id) {
  * @return string
  */
 function ws_ls_get_link_to_photos($id) {
-    return is_numeric($id) ? esc_url(admin_url( 'admin.php?page=ws-ls-wlt-data-home&mode=photos&user-id=' . $id )) : '#';
+    return is_numeric($id) ? esc_url(admin_url( 'admin.php?page=ws-ls-data-home&mode=photos&user-id=' . $id )) : '#';
 }
 
 /**
@@ -134,7 +134,7 @@ function ws_ls_get_link_to_photos($id) {
  * @return string
  */
 function ws_ls_get_link_to_settings() {
-    return admin_url( 'admin.php?page=ws-ls-weight-loss-tracker-main-menu' );
+    return admin_url( 'admin.php?page=ws-ls-settings' );
 }
 
 
@@ -146,7 +146,7 @@ function ws_ls_get_link_to_settings() {
  */
 function ws_ls_get_link_to_edit_entry($user_id, $entry_id = false, $redirect = true) {
 
-	$base_url = admin_url( 'admin.php?page=ws-ls-wlt-data-home&mode=entry&user-id=' . $user_id );
+	$base_url = admin_url( 'admin.php?page=ws-ls-data-home&mode=entry&user-id=' . $user_id );
 
 	if(is_numeric($entry_id)) {
 		$base_url .= '&entry-id=' . $entry_id;

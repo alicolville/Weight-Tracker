@@ -248,25 +248,49 @@ function ws_ls_save_data($user_id, $weight_object, $is_target_form = false, $exi
 	    array_push($db_field_types, '%s');
 	}
 
+	$entry_id = NULL;
+
 	// Update or insert
-	if($db_is_update != false) {
-		$result = $wpdb->update(
-	    	$table_name,
-	    	$db_fields,
-	    	array( 'id' => $db_is_update ),
-	    	$db_field_types,
-	    	array( '%d' )
+	if( false !== $db_is_update ) {
+
+	    $result = $wpdb->update(
+                                    $table_name,
+                                    $db_fields,
+                                    array( 'id' => $db_is_update ),
+                                    $db_field_types,
+                                    array( '%d' )
 		);
-	}
-	else {
+
+	} else {
+
 	    $result = $wpdb->insert(
-	    	$table_name,
-	      $db_fields,
-	    	$db_field_types
+	    	                        $table_name,
+	                                $db_fields,
+	    	                        $db_field_types
 	    );
+
+        $db_is_update = ( false !== $result ) ? $wpdb->insert_id : false;
 	 }
 
 	$result = ($result === false) ? false : true;
+
+    // Save Meta Fields?
+    if ( true === ws_ls_meta_fields_is_enabled() && false === empty( $weight_object[ 'meta-keys' ] ) ) {
+
+        foreach ( $weight_object[ 'meta-keys' ] as $id => $value ) {
+
+                ws_ls_meta_add_to_entry([
+                                            'entry_id' => $db_is_update,
+                                            'key' => $id,
+                                            'value' => $value
+                    ]
+                );
+
+        }
+
+        ws_ls_cache_user_delete( 'meta-fields', 'entry-id-data-' . $db_is_update );
+
+    }
 
 	// Tidy up cache
 	ws_ls_delete_cache_for_given_user($user_id);
@@ -685,4 +709,49 @@ function ws_ls_set_user_height($height, $user_id = false)
   // Tidy up cache
   ws_ls_delete_cache_for_given_user($user_id);
   return $result;
+}
+
+
+/**
+ * Insert error message into database table
+ *
+ * @param $module
+ * @param $message
+ */
+function ws_ls_log_add( $module, $message) {
+
+	if ( false === empty( $module ) && false === empty( $message ) ) {
+
+		global $wpdb;
+
+		$wpdb->insert(
+						$wpdb->prefix . WE_LS_LOG_TABLENAME,
+						[ 'module' => $module, 'message' => $message ],
+						[ '%s', '%s' ]
+		);
+
+	}
+}
+
+/**
+ * Return all error logs
+ *
+ * @return mixed
+ */
+function ws_ls_log_all() {
+
+	global $wpdb;
+
+	return $wpdb->get_results('Select timestamp, module, message from ' . $wpdb->prefix . WE_LS_LOG_TABLENAME . ' order by id desc', ARRAY_A);
+}
+
+/**
+ * Delete all log entries older than x days
+ *
+ * @return mixed
+ */
+function ws_ls_log_delete_old() {
+
+    global $wpdb;
+    return $wpdb->query( 'DELETE FROM ' . $wpdb->prefix . WE_LS_LOG_TABLENAME . ' WHERE (`timestamp` < DATE_SUB(now(), INTERVAL 31 DAY));' );
 }
