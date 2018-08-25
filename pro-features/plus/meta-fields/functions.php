@@ -26,13 +26,17 @@
      */
     function ws_ls_meta_fields_types() {
 
-        return [
+        $fields = [
             0 => __('Number', WE_LS_SLUG),
             1 => __('Text', WE_LS_SLUG),
-            2 => __('Yes', WE_LS_SLUG) . ' / ' . __('No', WE_LS_SLUG),
-	        3 => __('Photo', WE_LS_SLUG)
+            2 => __('Yes', WE_LS_SLUG) . ' / ' . __('No', WE_LS_SLUG)
         ];
 
+	    if ( true === WS_LS_IS_PRO_PLUS ) {
+		    $fields[ 3 ] = __('Photo', WE_LS_SLUG);
+	    }
+
+	    return $fields;
     }
 
     /**
@@ -161,13 +165,38 @@
             // Yes / No
             if ( 2 === $meta_field['field_type'] ) {
                 return ws_ls_fields_display_field_value_yes_no( $value);
-            }
+            } else if ( 3 === $meta_field['field_type'] ) {
+		        return ws_ls_fields_display_field_value_photo( $value);
+	        }
 
         }
 
         return $value;
 
     }
+
+	/**
+	 * Render Photo Field
+	 *
+	 * @param $value
+	 * @return string
+	 *
+	 */
+	function ws_ls_fields_display_field_value_photo( $value ) {
+
+		if ( false === empty( $value ) ) {
+
+			$photo = ws_ls_photo_get( $value , 120, 120);
+
+			return sprintf('<a href="%1$s" rel="noopener noreferrer" target="_blank">%2$s</a>',
+				esc_url($photo['full']),
+				$photo['thumb']
+			);
+
+		}
+
+		return '';
+	}
 
     /**
      * Render Yes / No field
@@ -304,6 +333,10 @@
 	 * @return string
 	 */
 	function ws_ls_meta_fields_form_field_photo( $field, $value ) {
+
+		if ( false === WS_LS_IS_PRO_PLUS ) {
+			return '';
+		}
 
 		$html = '';
 

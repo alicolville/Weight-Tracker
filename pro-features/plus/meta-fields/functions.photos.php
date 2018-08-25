@@ -2,6 +2,15 @@
 
 	defined('ABSPATH') or die('Jog on!');
 
+	/**
+	 * Process a photo upload / deletion
+	 *
+	 * @param $field_name
+	 * @param null $date_text
+	 * @param null $user_id
+	 *
+	 * @return bool|int
+	 */
 	function ws_ls_meta_fields_photos_process_upload( $field_name, $date_text = NULL, $user_id = NULL ) {
 
 		if ( false === ws_ls_meta_fields_is_enabled() || false === WE_LS_PHOTOS_ENABLED ) {
@@ -18,7 +27,8 @@
 
 		if ( false === empty( $_POST[ $field_key_previous ] ) &&
 		        true === is_numeric( $_POST[ $field_key_previous ] ) &&
-		            false === empty( $_POST[ $field_key_delete ] ) ) {
+		            true === empty( $_POST[ $field_key_delete ] ) &&
+		                true === empty( $_FILES[ $field_name ] ) ) {
 			return intval( $_POST[ $field_key_previous ] );
 		}
 
@@ -26,8 +36,10 @@
 		// Delete Existing?
 		//--------------------------------------------------------------------------------
 
-		// Got a previous photo to delete?
-		if ( false === empty( $_POST[ $field_key_delete ] ) && true === is_numeric( $_POST[ $field_key_previous ] ) ) {
+		// 1) Has the delete checkbox been checked?
+		// 2) Has a new image been uploaded for that meta field key? If so, delete
+		if ( ( false === empty( $_POST[ $field_key_delete ] ) && 'y' == $_POST[ $field_key_delete ] && true === is_numeric( $_POST[ $field_key_previous ] ) ) ||
+		        ( false === empty( $_POST[ $field_key_previous ] ) && false === empty( $_FILES[ $field_name ]['name'] ) ) ) {
 
 			$previous_photo = $_POST[ $field_key_previous ];
 
@@ -84,7 +96,7 @@
 
 			$user_data = get_userdata( $user_id );
 
-			$date_text = ( false === empty( $date_text ) ) ?: '';
+			$date_text = ( false === empty( $date_text ) ) ? $date_text : '';
 
 			// Set up options array to add this file as an attachment
 			$attachment = array(
@@ -119,3 +131,109 @@
 
 		 return false;
 	}
+
+    /**
+     * Return all enabled Photo fields
+     *
+     * @param bool $hide_from_shortcodes
+     * @return array
+     */
+	function ws_ls_meta_fields_photos_all( $hide_from_shortcodes = false, $ids_only = true ) {
+
+	    $fields = ws_ls_meta_fields_enabled();
+
+	    $return = [];
+
+	    foreach ( $fields as $field ) {
+
+	    	// Remove non photos
+            if ( 3 !== intval( $field['field_type'] ) ) {
+                continue;
+            }
+
+		    if ( false === $field['enabled'] ) {
+			    continue;
+		    }
+
+			// If admin has stated to not show in shortcode then strip them out
+            if ( true === $hide_from_shortcodes && 2 === intval( $field['hide_from_shortcodes'] ) ) {
+                continue;
+            }
+
+            $return[] = $field;
+        }
+
+	    return ( true === $ids_only && false === empty( $return ) ) ? wp_list_pluck( $return, 'id' ) : $return;
+    }
+
+	/**
+	 *
+	 * Take an array or comma delimited string of meta field keys and translate them into meta field IDs
+	 *
+	 * @param $keys
+	 *
+	 * @return array
+	 */
+    function ws_ls_meta_fields_photos_keys_to_ids( $keys, $ids_only = true, $hide_from_shortcodes = false ) {
+
+	    $return = [];
+
+		if ( false === empty( $keys ) ) {
+
+			if ( false === is_array( $keys ) ) {
+				$keys = explode( ',', $keys );
+			}
+
+			if ( false === empty( $keys ) ) {
+
+				$photo_fields = ws_ls_meta_fields_photos_all( $hide_from_shortcodes, false );
+
+				foreach ( $keys as $key ) {
+
+					foreach ( $photo_fields as $photo_field ) {
+
+						if ( $photo_field['field_key'] === trim( $key ) ) {
+							$return[ $photo_field['id'] ] = $photo_field['field_key'];
+							break;
+						}
+					}
+				}
+			}
+
+		}
+
+		if ( true === $ids_only && false === empty( $return ) ) {
+			$return = array_keys( $return );
+		}
+
+		return $return;
+    }
+
+	/**
+	 * Determine what
+	 *
+	 * @param $meta_fields_to_use
+	 *
+	 * @return array
+	 */
+    function ws_ls_meta_fields_photos_ids_to_use( $meta_fields_to_use, $hide_from_shortcodes = false ) {
+
+	    // Identify which photo fields to use
+	    if ( false === empty( $meta_fields_to_use ) ) {
+		    $photo_fields = ws_ls_meta_fields_photos_keys_to_ids( $meta_fields_to_use, true, $hide_from_shortcodes );
+	    } else {
+		    $photo_fields = ws_ls_meta_fields_photos_all( $hide_from_shortcodes );
+	    }
+
+	    // If no active photo fields, then we don't have any photos.
+	    return ( true === empty( $photo_fields ) ) ? [] : $photo_fields;
+
+    }
+
+//TODO:
+//    function t() {
+//	    $t = ws_ls_meta_fields_photos_keys_to_ids(['photo-back', 'test']);
+//	    var_dump($t);
+//	    die;
+//    }
+//    add_action('admin_init', 't');

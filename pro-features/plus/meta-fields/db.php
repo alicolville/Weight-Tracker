@@ -119,6 +119,8 @@ function ws_ls_meta_delete_for_meta_field( $meta_field_id ) {
 
 	global $wpdb;
 
+	//todo: delete all attachments for a given meta id if needed
+
 	$result = $wpdb->delete( $wpdb->prefix . WE_LS_MYSQL_META_ENTRY, [ 'meta_field_id' => $meta_field_id ], [ '%d' ] );
 
 	return ( 1 === $result );
@@ -356,7 +358,8 @@ function ws_ls_meta_formats( $data ) {
 		'suffix' => '%s',
         'enabled' => '%d',
         'sort' => '%d',
-        'mandatory' => '%d'
+        'mandatory' => '%d',
+        'hide_from_shortcodes' => '%d'
     ];
 
     $return = [];

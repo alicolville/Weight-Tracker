@@ -10,7 +10,7 @@
         // Data Posted? If so, replace the above from $_POST object
         if ( false === empty( $_POST ) && true === ws_ls_meta_fields_is_enabled() ) {
 
-            $meta_field = ws_ls_get_values_from_post( [ 'id', 'field_name', 'abv', 'field_type', 'suffix', 'mandatory', 'enabled', 'suffix', 'sort' ] );
+            $meta_field = ws_ls_get_values_from_post( [ 'id', 'field_name', 'abv', 'field_type', 'suffix', 'mandatory', 'enabled', 'suffix', 'sort', 'hide_from_shortcodes' ] );
 
             // Ensure all mandatory fields have been completed!
             foreach ( [ 'field_name', 'abv' ] as $key ) {
@@ -51,6 +51,8 @@
                             if ( false === ws_ls_meta_fields_is_enabled() ) {
                                 ws_ls_display_pro_upgrade_notice();
                             }
+
+                            //TODO: Add an upgrade box saying Pro Plus will give you Photos etc...
                             ?>
                             <div class="postbox">
                                 <h3 class="hndle"><span><?php echo __('Add / Edit a Custom Field', WE_LS_SLUG); ?> </span></h3>
@@ -75,11 +77,27 @@
                                                         <option value="0" <?php selected( $checked, 0 ); ?>><?php echo __('Number', WE_LS_SLUG); ?></option>
                                                         <option value="1" <?php selected( $checked, 1 ); ?>><?php echo __('Text', WE_LS_SLUG); ?></option>
                                                         <option value="2" <?php selected( $checked, 2 ); ?>><?php echo __('Yes', WE_LS_SLUG); ?> / <?php echo __('No', WE_LS_SLUG); ?></option>
-                                                        <option value="3" <?php selected( $checked, 3 ); ?>><?php echo __('Photo', WE_LS_SLUG); ?></option>
+
+                                                        <?php if ( true === WS_LS_IS_PRO_PLUS): ?>
+                                                            <option value="3" <?php selected( $checked, 3 ); ?>><?php echo __('Photo', WE_LS_SLUG); ?></option>
+                                                        <?php endif; ?>
                                                     </select>
                                                     <?php if ( false === empty( $id ) ) : ?>
                                                         <p class="ws-ls-note"><?php echo __('Note: Changing the field type will cause existing user data to be lost.', WE_LS_SLUG); ?></p>
                                                     <?php endif; ?>
+                                                </div>
+                                            </div>
+                                            <div class="ws-ls-row ws-ls-hide" id="ws-ls-meta-fields-additional-3">
+                                                <div class="ws-ls-cell">
+                                                    <label for="hide_from_shortcodes"><?php echo __('Hide from shortcodes', WE_LS_SLUG); ?></label>
+                                                </div>
+	                                            <?php $checked = ( false === empty( $meta_field['hide_from_shortcodes'] ) && 2 === intval( $meta_field['hide_from_shortcodes'] ) ) ? 2 : 0; ?>
+                                                <div class="ws-ls-cell">
+                                                    <select name="hide_from_shortcodes" id="hide_from_shortcodes">
+                                                        <option value="1" <?php selected( $checked, 1 ); ?>><?php echo __('No', WE_LS_SLUG); ?></option>
+                                                        <option value="2" <?php selected( $checked, 2 ); ?>><?php echo __('Yes', WE_LS_SLUG); ?></option>
+                                                    </select>
+                                                    <p class="ws-ls-info"><?php echo __('Note: If set to Yes, photos uploaded into this custom field cannot be used in shortcodes i.e. the photos will only be visible to admin.', WE_LS_SLUG); ?></p>
                                                 </div>
                                             </div>
                                             <div class="ws-ls-row">

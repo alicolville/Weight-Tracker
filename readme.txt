@@ -147,6 +147,15 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 == Changelog ==
 
+= 6.1 =
+
+//TODO: Add link to meta field documentation
+//TODO: Check add / edit / upload photos via admin add / edit entry. Seems to have a few bugs
+//TODO: Add tool to migrate existing photo_id over
+
+* New Feature: Added a new Meta Field type of "Photos". This will allow site administrators to add one or more photo field per entry form.
+* Improvement: Removed old photo upload and migrated to to new meta fields.
+
 = 6.0 =
 
 * New Feature: Added Custom Fields. Allow admin specified questions to be asked on weight entry forms.

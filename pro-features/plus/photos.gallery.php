@@ -33,7 +33,8 @@ function ws_ls_photos_shortcode_gallery($user_defined_arguments) {
 		'css-class' => '',
         'width' => false,
         'limit' => 20,
-        'direction' => 'desc'
+        'direction' => 'desc',
+        'meta-fields-to-use' => ''  //TODO: Document
     ], $user_defined_arguments );
 
 	$arguments['width'] = ws_ls_force_dimension_argument($arguments['width'], 800);
@@ -49,11 +50,11 @@ function ws_ls_photos_shortcode_gallery($user_defined_arguments) {
 	$thumb_width = ($arguments['width'] === '100%') ? 1200 : intval($arguments['width']);
 
   	$photos = ws_ls_photos_db_get_all_photos($arguments['user-id'], true,  $arguments['limit'],
-												$arguments['direction'], $thumb_width, $arguments['height']);
+												$arguments['direction'], $thumb_width, $arguments['height'], $arguments['meta-fields-to-use'], true );
 
 	if ( false === empty($photos) ) {
 
-		ws_ls_photos_gallery_js_css($arguments['mode']);
+		ws_ls_photos_gallery_js_css($argume/nts['mode']);
 
         // If compact / default pass config settings to JS
 		wp_localize_script('ws-ls-pro-gallery', 'ws_ls_gallery_config', ['height' => $arguments['height'], 'width' => $arguments['width']]);
@@ -62,11 +63,9 @@ function ws_ls_photos_shortcode_gallery($user_defined_arguments) {
 
 		foreach ($photos as $photo) {
 
-			$additional_data = sprintf(' alt="%s" data-image="%s" data-description="%s - %s"',
-												esc_html($photo['date-display'] . ' &middot; ' . $photo['display']),
-												esc_html($photo['full']),
-												esc_html($photo['date-display']),
-												esc_html($photo['display'])
+			$additional_data = sprintf(' alt="%1$s" data-image="%2$s" data-description="%1$s"',
+												esc_html($photo['date-display'] . ' &middot; ' . $photo['field-name'] . ' &middot; ' . $photo['display']),
+												esc_html($photo['full'])
 									);
 
 			$photo['thumb'] = str_replace('src', $additional_data . ' src', $photo['thumb']);

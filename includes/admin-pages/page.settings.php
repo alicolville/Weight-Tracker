@@ -209,7 +209,7 @@ function ws_ls_settings_page() {
                                             ?>
 
                                             <h3><?php echo __( 'Photos' , WE_LS_SLUG); ?></h3>
-
+<!-- //TODO explain relationship with meta fields -->
                                             <table class="form-table">
                                                 <tr class="<?php echo $disable_if_not_pro_plus_class; ?>">
                                                     <th scope="row"><?php echo __( 'Photos enabled?' , WE_LS_SLUG); ?></th>
