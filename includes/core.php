@@ -544,11 +544,7 @@ function ws_ls_capture_form_validate_and_save($user_id = false)
             // If photo, we need to process the upload
             if ( true === WS_LS_IS_PRO_PLUS && 3 === intval( $field[ 'field_type' ] ) ) {
 
-<<<<<<< HEAD
             	$photo_upload = ws_ls_meta_fields_photos_process_upload( $field_key, $weight_object[ 'date-display' ] , $user_id );
-=======
-                $photo_upload = ws_ls_meta_fields_photos_process_upload( $field_key, $weight_object[ 'date-display' ] , $user_id );
->>>>>>> f159f8c0aa07bbd50a780e98a8b60bf770c74f27
 
                 if ( false === empty( $photo_upload ) ) {
                     $weight_object[ 'meta-keys' ][ $field['id'] ] = $photo_upload;

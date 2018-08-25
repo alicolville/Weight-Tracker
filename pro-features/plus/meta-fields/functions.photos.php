@@ -138,11 +138,7 @@
      * @param bool $hide_from_shortcodes
      * @return array
      */
-<<<<<<< HEAD
 	function ws_ls_meta_fields_photos_all( $hide_from_shortcodes = false, $ids_only = true ) {
-=======
-	function ws_ls_meta_fields_photos_all( $hide_from_shortcodes = false ) {
->>>>>>> f159f8c0aa07bbd50a780e98a8b60bf770c74f27
 
 	    $fields = ws_ls_meta_fields_enabled();
 
@@ -150,22 +146,16 @@
 
 	    foreach ( $fields as $field ) {
 
-<<<<<<< HEAD
 	    	// Remove non photos
-=======
->>>>>>> f159f8c0aa07bbd50a780e98a8b60bf770c74f27
             if ( 3 !== intval( $field['field_type'] ) ) {
                 continue;
             }
 
-<<<<<<< HEAD
 		    if ( false === $field['enabled'] ) {
 			    continue;
 		    }
 
 			// If admin has stated to not show in shortcode then strip them out
-=======
->>>>>>> f159f8c0aa07bbd50a780e98a8b60bf770c74f27
             if ( true === $hide_from_shortcodes && 2 === intval( $field['hide_from_shortcodes'] ) ) {
                 continue;
             }
@@ -173,7 +163,6 @@
             $return[] = $field;
         }
 
-<<<<<<< HEAD
 	    return ( true === $ids_only && false === empty( $return ) ) ? wp_list_pluck( $return, 'id' ) : $return;
     }
 
@@ -248,11 +237,3 @@
 //	    die;
 //    }
 //    add_action('admin_init', 't');
-=======
-
-        var_dump($return);
-
-	    return $return;
-
-    }
->>>>>>> f159f8c0aa07bbd50a780e98a8b60bf770c74f27

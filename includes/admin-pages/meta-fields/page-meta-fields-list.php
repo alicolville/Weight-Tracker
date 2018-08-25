@@ -5,6 +5,7 @@
     function ws_ls_meta_fields_list_page() {
 
         ws_ls_data_table_enqueue_scripts();
+
     ?>
         <div class="wrap">
         <div id="icon-options-general" class="icon32"></div>
