@@ -74,6 +74,12 @@
     }
     add_action( 'wp_ajax_meta_fields_delete', 'ws_ls_meta_fields_ajax_delete' );
 
+    //todo: hook on to delete hooks in meta fields DB - clear user cache for current logged in uer
+
+    //todo:
+// Hook onto do_action( 'wlt-meta-fields-deleted', $meta_field_id ); and delete all attachements if a photo field
+
+
     /**
      * Listens to the delete entry hook and deletes any photos / meta entries
      *
@@ -84,6 +90,9 @@
         // Fetch all meta entries for entry ID ($entry['db_row_id']_
 
         // Get all Photo fields (enabled or disabled)
+
+
+
 
         // Delete all attachment ids for photo vidoes
 

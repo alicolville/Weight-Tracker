@@ -140,7 +140,7 @@
      * @param bool $hide_from_shortcodes
      * @return array
      */
-	function ws_ls_meta_fields_photos_all( $hide_from_shortcodes = false, $ids_only = true ) {
+	function ws_ls_meta_fields_photos_all( $hide_from_shortcodes = false, $ids_only = true, $ignore_enabled = false ) {
 
 	    $fields = ws_ls_meta_fields_enabled();
 
@@ -153,7 +153,7 @@
                 continue;
             }
 
-		    if ( false === $field['enabled'] ) {
+		    if ( false === $ignore_enabled && false === $field['enabled'] ) {
 			    continue;
 		    }
 

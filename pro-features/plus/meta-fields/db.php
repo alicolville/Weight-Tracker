@@ -90,6 +90,8 @@ function ws_ls_meta_delete( $entry_id, $meta_field_id ) {
 
 	$result = $wpdb->delete( $wpdb->prefix . WE_LS_MYSQL_META_ENTRY, [ 'entry_id' => $entry_id, 'meta_field_id' => $meta_field_id ], [ '%d', '%d' ] );
 
+    do_action( 'wlt-meta-delete', $entry_id );
+
 	return ( 1 === $result );
 }
 
@@ -105,6 +107,8 @@ function ws_ls_meta_delete_for_entry( $entry_id ) {
 
 	$result = $wpdb->delete( $wpdb->prefix . WE_LS_MYSQL_META_ENTRY, [ 'entry_id' => $entry_id ], [ '%d' ] );
 
+    do_action( 'wlt-meta-entries-delete', $entry_id );
+
 	return ( 1 === $result );
 
 }
@@ -119,9 +123,9 @@ function ws_ls_meta_delete_for_meta_field( $meta_field_id ) {
 
 	global $wpdb;
 
-	//todo: delete all attachments for a given meta id if needed
-
 	$result = $wpdb->delete( $wpdb->prefix . WE_LS_MYSQL_META_ENTRY, [ 'meta_field_id' => $meta_field_id ], [ '%d' ] );
+
+	do_action( 'wlt-meta-fields-deleted', $meta_field_id );
 
 	return ( 1 === $result );
 
