@@ -11,7 +11,8 @@
 	 *
 	 * @return bool|int
 	 */
-	function ws_ls_meta_fields_photos_process_upload( $field_name, $date_text = NULL, $user_id = NULL ) {
+	function ws_ls_meta_fields_photos_process_upload( $field_name, $date_text = NULL, $user_id = NULL,
+                                                            $entry_id = NULL, $meta_field_id = null ) {
 
 		if ( false === ws_ls_meta_fields_is_enabled() || false === WE_LS_PHOTOS_ENABLED ) {
 			ws_ls_log_add('photo-upload', 'Looking for a photo field but Photos disabled?' );
@@ -43,17 +44,18 @@
 
 			$previous_photo = $_POST[ $field_key_previous ];
 
-			// User check "Delete this photo" box?
-			if ( false === empty( $previous_photo ) && true === is_numeric( $previous_photo ) ) {
-				wp_delete_attachment( intval( $previous_photo ) );
-			}
+			wp_delete_attachment( intval( $previous_photo ) );
+
+            if ( false === empty( $entry_id ) && false === empty( $meta_field_id ) ) {
+               ws_ls_meta_delete( (int) $entry_id, (int) $meta_field_id );
+            }
 		}
 
 		//--------------------------------------------------------------------------------
 		// Handle a new upload
 		//--------------------------------------------------------------------------------
 
-		if ( false === empty( $_FILES[ $field_name ] ) ) {
+		if ( false === empty( $_FILES[ $field_name ]['type'] ) ) {
 
 			$max_field_size = ws_ls_photo_max_upload_size();
 
@@ -222,7 +224,7 @@
 	    if ( false === empty( $meta_fields_to_use ) ) {
 		    $photo_fields = ws_ls_meta_fields_photos_keys_to_ids( $meta_fields_to_use, true, $hide_from_shortcodes );
 	    } else {
-		    $photo_fields = ws_ls_meta_fields_photos_all( $hide_from_shortcodes );
+		    $photo_fields = ws_ls_meta_fields_photos_all( !is_admin() );
 	    }
 
 	    // If no active photo fields, then we don't have any photos.

@@ -89,7 +89,9 @@ function ws_ls_admin_page_data_user() {
                                             'mode' => 'tilesgrid',
                                             'limit' => 20,
                                             'direction' => 'desc',
-                                            'user-id' => $user_id]);
+                                            'user-id' => $user_id,
+                                            'hide-from-shortcodes' => false
+                                        ]);
                                     }
 
                                 } else {

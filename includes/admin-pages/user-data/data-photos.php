@@ -41,8 +41,9 @@ function ws_ls_admin_page_photos() {
                                         'user-id' => $user_id,
 										'width' => '1200',
 										'direction' => 'desc',
-										'limit' => 50
-										]);
+										'limit' => 50,
+                                        'hide-from-shortcodes' => false
+                                    ]);
                                 ?>
                             </div>
                         </div>

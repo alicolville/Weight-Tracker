@@ -79,8 +79,8 @@ function ws_ls_photos_shortcode_core($user_defined_arguments) {
         'user-id' => get_current_user_id(),
 		'recent' => true,
         'width' => 200,
-	    'meta-fields-to-use' => '',   //TODO: Document
-	    'number-to-display' => 1      //TODO: Document
+	    'custom-fields-to-use' => '',   //TODO: Document
+	    'maximum' => 1                     //TODO: Document
     ], $user_defined_arguments );
 
     $arguments['user-id'] = ws_ls_force_numeric_argument($arguments['user-id'], get_current_user_id());
@@ -89,11 +89,11 @@ function ws_ls_photos_shortcode_core($user_defined_arguments) {
     $arguments['recent'] = ws_ls_force_bool_argument($arguments['recent']);
     $arguments['hide-date'] = ws_ls_force_bool_argument($arguments['hide-date']);
 	$arguments['css-class'] = (false === empty($arguments['css-class'])) ? esc_attr($arguments['css-class']) . ' ' : '';
-	$arguments['number-to-display'] = ws_ls_force_numeric_argument($arguments['number-to-display'], 1 );
+	$arguments['maximum'] = ws_ls_force_numeric_argument($arguments['maximum'], 1 );
 
     // Fetch photo
     $photos = ws_ls_photos_db_get_recent_or_latest( $arguments['user-id'], $arguments['recent'], $arguments['width'],
-	                                                    $arguments['height'], $arguments['meta-fields-to-use'], true );
+	                                                    $arguments['height'], $arguments['custom-fields-to-use'], true );
 
     if ( false === empty( $photos ) ) {
 
@@ -105,7 +105,7 @@ function ws_ls_photos_shortcode_core($user_defined_arguments) {
 
 		    $number_displayed++;
 
-		    if ( $number_displayed >= $arguments['number-to-display'] ) {
+		    if ( $number_displayed >= $arguments['maximum'] ) {
 		    	break;
 		    }
     	}
@@ -145,40 +145,6 @@ function ws_ls_photos_shortcode_render( $image, $css_class = '', $hide_date = tr
 	}
 	return '';
 }
-
-// ------------------------------------------------------------------
-// Hooks
-// ------------------------------------------------------------------
-
-/**
- * If an entry is deleted, check for a photo ID. If it exists, delete attachment from media library
- */
-function ws_ls_photos_tidy_up_after_entry_deleted($entry) {
-
-	// TODO: Search for meta data
-
-    if ( false === empty($entry['photo_id']) && true === is_numeric($entry['photo_id'])) {
-        wp_delete_attachment(intval($entry['photo_id']) ,true);
-        ws_ls_delete_cache_for_given_user($entry['user_id']);
-    }
-}
-add_action(WE_LS_HOOK_DATA_ENTRY_DELETED, 'ws_ls_photos_tidy_up_after_entry_deleted');
-
-/**
- * If admin deletes a user's photo from the media library, ensure there is no foreign key to it in DB
- * @param $attachment_id
- */
-function ws_ls_photos_tidy_up_after_attachment_deleted($attachment_id) {
-
-	//todo: Get all photo fields and delete entries where the ID matches entry value
-
-    if ( false === empty($attachment_id) && true === is_numeric($attachment_id)) {
-        global $wpdb;
-        $sql = $wpdb->prepare('Update ' . $wpdb->prefix . WE_LS_TABLENAME . ' SET photo_id = null where photo_id = %d', $attachment_id);
-        $wpdb->query($sql);
-    }
-}
-add_action('delete_attachment', 'ws_ls_photos_tidy_up_after_attachment_deleted');
 
 // ------------------------------------------------------------------
 // DB
@@ -227,7 +193,8 @@ function ws_ls_photos_db_get_recent_or_latest( $user_id = false,
 	$sql = 'Select d.id as entry_id, d.weight_date, e.value as photo_id, f.sort from ' . $wpdb->prefix . WE_LS_MYSQL_META_ENTRY . ' e ' .
 	       ' inner join ' . $wpdb->prefix . WE_LS_TABLENAME . ' d on e.entry_id = d.id 
 	         inner join ' . $wpdb->prefix . WE_LS_MYSQL_META_FIELDS . ' f on f.id = e.meta_field_id    
-	       where weight_user_id = %d and meta_field_id in (' . implode( ',', $photo_fields) . ') order by weight_date ' . $direction . ', f.sort asc';
+	         where weight_user_id = %d and meta_field_id in (' . implode( ',', $photo_fields) . ') and e.value <> ""
+ 	         order by weight_date ' . $direction . ', f.sort asc';
 
 	$sql = $wpdb->prepare( $sql, $user_id );
 
@@ -308,18 +275,13 @@ function ws_ls_photos_db_get_all_photos(    $user_id = false,
    		// return $cache;  //todo
     }
 
-    //TODO: This needs to be changed to consider number of records per day?
     $limit = ( false === empty($limit) && is_numeric($limit) ) ? ' limit 0, ' . intval($limit) : '';
-
-    //TODO
-//    $table_name = $wpdb->prefix . WE_LS_TABLENAME;
-//    $sql = $wpdb->prepare("SELECT * FROM $table_name where weight_user_id = %d and photo_id is not null and photo_id <> 0 order by weight_date " . $direction . $limit, $user_id);
 
 	$sql = 'Select d.id, d.weight_weight, d.weight_pounds, d.weight_stones, d.weight_only_pounds, d.weight_notes, d.weight_date, e.value as photo_id, f.field_name, f.sort 
 			from ' . $wpdb->prefix . WE_LS_MYSQL_META_ENTRY . ' e 
 	        inner join ' . $wpdb->prefix . WE_LS_TABLENAME . ' d on e.entry_id = d.id 
 	        inner join ' . $wpdb->prefix . WE_LS_MYSQL_META_FIELDS . ' f on f.id = e.meta_field_id    
-	        where weight_user_id = %d and meta_field_id in (' . implode( ',', $photo_fields) . ') order by weight_date ' . $direction . ', f.sort asc ' . $limit;
+	        where weight_user_id = %d and e.value <> "" and meta_field_id in (' . implode( ',', $photo_fields) . ') order by weight_date ' . $direction . ', f.sort asc ' . $limit;
 
 	$sql = $wpdb->prepare( $sql, $user_id );
 
@@ -381,7 +343,7 @@ function ws_ls_photos_db_count_photos( $user_id = false, $hide_from_shortcodes =
 
     // Return cache if found!
     if ($cache = ws_ls_cache_user_get($user_id, $cache_key))   {
-        return $cache;
+      //  return $cache; //TODO
     }
 
 	$photo_fields = ws_ls_meta_fields_photos_all( $hide_from_shortcodes );
@@ -392,7 +354,8 @@ function ws_ls_photos_db_count_photos( $user_id = false, $hide_from_shortcodes =
 	}
 
 	$sql = 'Select count(*) from ' . $wpdb->prefix . WE_LS_MYSQL_META_ENTRY . ' e ' .
-	       ' inner join ' . $wpdb->prefix . WE_LS_TABLENAME . ' d on e.entry_id = d.id where weight_user_id = %d and meta_field_id in (' . implode( ',', $photo_fields) . ')';
+	       ' inner join ' . $wpdb->prefix . WE_LS_TABLENAME . ' d on e.entry_id = d.id where weight_user_id = %d 
+	        and e.value <> "" and meta_field_id in (' . implode( ',', $photo_fields) . ')';
 
 	$count = $wpdb->get_var( $wpdb->prepare( $sql, $user_id) );
 
