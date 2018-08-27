@@ -4,7 +4,7 @@ defined('ABSPATH') or die("Jog on!");
 
 /**
  *
- * Return all meta fields for weight entry
+ * Return all meta enties for weight entry
  *
  * @param $entry_id
  * @return array
@@ -26,6 +26,24 @@ function ws_ls_meta( $entry_id ) {
     ws_ls_cache_user_set( 'meta-fields', $cache_key , $data, 30 );
 
 	return $data;
+}
+
+/**
+ *
+ * Return all meta entries for meta field
+ *
+ * @param $meta_field_id
+ * @return array
+ */
+function ws_ls_meta_for_given_meta_field( $meta_field_id ) {
+
+    global $wpdb;
+
+    $sql = $wpdb->prepare( 'Select * from ' . $wpdb->prefix . WE_LS_MYSQL_META_ENTRY . ' where meta_field_id = %d', $meta_field_id );
+
+    $data = $wpdb->get_results( $sql, ARRAY_A );
+
+    return $data;
 }
 
 /**
@@ -105,9 +123,9 @@ function ws_ls_meta_delete_for_entry( $entry_id ) {
 
 	global $wpdb;
 
-	$result = $wpdb->delete( $wpdb->prefix . WE_LS_MYSQL_META_ENTRY, [ 'entry_id' => $entry_id ], [ '%d' ] );
-
     do_action( 'wlt-meta-entries-delete', $entry_id );
+
+	$result = $wpdb->delete( $wpdb->prefix . WE_LS_MYSQL_META_ENTRY, [ 'entry_id' => $entry_id ], [ '%d' ] );
 
 	return ( 1 === $result );
 
@@ -124,8 +142,6 @@ function ws_ls_meta_delete_for_meta_field( $meta_field_id ) {
 	global $wpdb;
 
 	$result = $wpdb->delete( $wpdb->prefix . WE_LS_MYSQL_META_ENTRY, [ 'meta_field_id' => $meta_field_id ], [ '%d' ] );
-
-	do_action( 'wlt-meta-fields-deleted', $meta_field_id );
 
 	return ( 1 === $result );
 
@@ -281,6 +297,8 @@ function ws_ls_meta_fields_delete( $id ) {
 
     global $wpdb;
 
+    do_action( 'wlt-meta-fields-deleting-meta-field', $id );
+
     $result = $wpdb->delete( $wpdb->prefix . WE_LS_MYSQL_META_FIELDS, [ 'id' => $id ], [ '%d' ] );
 
 	ws_ls_meta_delete_for_meta_field( $id );
@@ -336,6 +354,27 @@ function ws_ls_meta_fields_get_by_id( $id ) {
     $meta_field = $wpdb->get_row( $sql, ARRAY_A );
 
     return ( false === empty( $meta_field ) ) ? $meta_field : false;
+}
+
+/**
+ * Fetch all user IDs that have a reference to this field (allows us to clear cache)
+ *
+ * @param $meta_field_id
+ */
+function ws_ls_meta_fields_get_user_ids_for_this_meta_field( $meta_field_id ) {
+
+    global $wpdb;
+
+    $sql = 'Select distinct weight_user_id from ' . $wpdb->prefix . WE_LS_MYSQL_META_ENTRY . ' e ' .
+        ' inner join ' . $wpdb->prefix . WE_LS_TABLENAME . ' d on e.entry_id = d.id 
+	         inner join ' . $wpdb->prefix . WE_LS_MYSQL_META_FIELDS . ' f on f.id = e.meta_field_id    
+	         where meta_field_id = %d';
+
+    $sql = $wpdb->prepare( $sql, $meta_field_id );
+
+    $results = $wpdb->get_results($sql, ARRAY_A );
+
+    return ( false === empty( $results ) ) ? wp_list_pluck( $results, 'weight_user_id' ) : $results;
 }
 
 /**

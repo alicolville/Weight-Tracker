@@ -66,7 +66,6 @@
             if ( true === $result ) {
                 wp_send_json( 1 );
             }
-
         }
 
         wp_send_json( 0 );
@@ -74,10 +73,27 @@
     }
     add_action( 'wp_ajax_meta_fields_delete', 'ws_ls_meta_fields_ajax_delete' );
 
-    //todo: hook on to delete hooks in meta fields DB - clear user cache for current logged in uer
+    /**
+     * Check if a the deleted meta field was a photo field. If so, delete all attachments.
+     *
+     * @param $meta_field_id
+     */
+    function ws_ls_meta_fields_hook_delete_photos_for_deleted_meta_field( $meta_field_id ) {
 
-    //todo:
-// Hook onto do_action( 'wlt-meta-fields-deleted', $meta_field_id ); and delete all attachements if a photo field
+        // Check we actually have a meta field!
+        if ( false === ws_ls_meta_fields_photos_is_photo_field( $meta_field_id ) ) {
+            return;
+        }
+
+        ws_ls_meta_fields_photos_delete_all_photos_for_meta_field( $meta_field_id );
+
+        // Clear cache for all users that have entry for this meta field
+        $user_ids = ws_ls_meta_fields_get_user_ids_for_this_meta_field( $meta_field_id );
+
+        ws_ls_delete_cache_for_given_users( $user_ids );
+
+    }
+    add_action( 'wlt-meta-fields-deleting-meta-field', 'ws_ls_meta_fields_hook_delete_photos_for_deleted_meta_field' );
 
 
     /**
@@ -87,10 +103,10 @@
      */
     function ws_ls_meta_fields_tidy_entries_and_attachments( $entry ) {
 
+
         // Fetch all meta entries for entry ID ($entry['db_row_id']_
 
         // Get all Photo fields (enabled or disabled)
-
 
 
 
@@ -99,7 +115,7 @@
         // Delete all meta entries for this field
 
     }
-   // add_action();
+    add_action( WE_LS_HOOK_DATA_ENTRY_DELETED, $weight_entry );
 
 
     //TODO:
@@ -137,10 +153,10 @@ function ws_ls_photos_tidy_up_after_attachment_deleted($attachment_id) {
 
     //todo: Get all photo fields and delete entries where the ID matches entry value
 
-    if ( false === empty($attachment_id) && true === is_numeric($attachment_id)) {
-        global $wpdb;
-        $sql = $wpdb->prepare('Update ' . $wpdb->prefix . WE_LS_TABLENAME . ' SET photo_id = null where photo_id = %d', $attachment_id);
-        $wpdb->query($sql);
-    }
+//    if ( false === empty($attachment_id) && true === is_numeric($attachment_id)) {
+//        global $wpdb;
+//        $sql = $wpdb->prepare('Update ' . $wpdb->prefix . WE_LS_TABLENAME . ' SET photo_id = null where photo_id = %d', $attachment_id);
+//        $wpdb->query($sql);
+//    }
 }
 add_action('delete_attachment', 'ws_ls_photos_tidy_up_after_attachment_deleted');

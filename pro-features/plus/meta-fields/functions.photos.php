@@ -211,6 +211,20 @@
 		return $return;
     }
 
+    /**
+     * Is this meta field a photo field?
+     *
+     * @param $meta_field_id
+     * @return bool
+     */
+    function ws_ls_meta_fields_photos_is_photo_field( $meta_field_id ) {
+
+        $photo_fields = ws_ls_meta_fields_photos_all( false, true, true );
+        ws_ls_log_add('photo-deletes', json_encode($photo_fields) );
+
+        return ( true === is_array( $photo_fields ) && in_array( intval( $meta_field_id ), $photo_fields ) );
+    }
+
 	/**
 	 * Determine what
 	 *
@@ -232,10 +246,46 @@
 
     }
 
+    /**
+     * Delete all attachments for a given photo meta field
+     *
+     * @param $meta_field_id
+     */
+    function ws_ls_meta_fields_photos_delete_all_photos_for_meta_field( $meta_field_id ) {
+
+        if ( false === is_admin() ) {
+            return;
+        }
+
+        if ( false === ws_ls_meta_fields_photos_is_photo_field( $meta_field_id ) ) {
+            return;
+        }
+
+        // Fetch all attachment IDs
+        $photos = ws_ls_meta_for_given_meta_field( $meta_field_id );
+
+        $count = 0;
+
+        foreach ( $photos as $photo ) {
+            if ( false === empty( $photo['value'] ) ) {
+                wp_delete_attachment( intval( $photo['value'] ) , true );
+                $count++;
+            }
+        }
+
+        return $count;
+    }
+
 //TODO:
-//    function t() {
-//	    $t = ws_ls_meta_fields_photos_keys_to_ids(['photo-back', 'test']);
-//	    var_dump($t);
+    function t() {
+
+//$r = ws_ls_meta_fields_get_user_ids_for_this_meta_field( 1 );
+//
+//        ws_ls_delete_cache_for_given_users($r);
+
+//        $r = ws_ls_meta_for_given_meta_field( 8 );
+//        var_dump($r);
+//
 //	    die;
-//    }
-//    add_action('admin_init', 't');
+    }
+    add_action('admin_init', 't');
