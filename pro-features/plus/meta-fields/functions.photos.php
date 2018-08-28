@@ -143,7 +143,7 @@
 	 * @return bool
 	 */
 	function ws_ls_meta_fields_photo_any_enabled( $hide_from_shortcodes = false ) {
-		return ! empty( ws_ls_meta_fields_photos_all( $hide_from_shortcodes , true ) );
+		return true === WS_LS_IS_PRO_PLUS && ! empty( ws_ls_meta_fields_photos_all( $hide_from_shortcodes , true ) );
 	}
 
     /**
