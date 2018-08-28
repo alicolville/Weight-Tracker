@@ -72,6 +72,7 @@ function ws_ls_admin_page_data_user() {
                             <h2 class="hndle"><span><?php echo __('Photos', WE_LS_SLUG); ?></span></h2>
                             <div class="inside">
                                 <?php
+<<<<<<< HEAD
                                 if( ws_ls_meta_fields_photo_any_enabled() ) {
 
 	                                $photo_count = ws_ls_photos_db_count_photos( $user_id );
@@ -101,6 +102,29 @@ function ws_ls_admin_page_data_user() {
 		                                __('Add and enable a Photo Custom Field', WE_LS_SLUG),
 		                                __('to allow a users to upload photos of their progress' , WE_LS_SLUG)
 	                                );
+=======
+                                if( WE_LS_PHOTOS_ENABLED ) {
+
+                                    $photo_count = ws_ls_photos_db_count_photos($user_id);
+
+                                    echo sprintf('<p>%s <strong>%s %s</strong>. <a href="%s">%s</a>.</p>',
+                                            __('This user has uploaded ', WE_LS_SLUG),
+                                            $photo_count,
+                                            _n( 'photo', 'photos', $photo_count, WE_LS_SLUG ),
+                                            ws_ls_get_link_to_photos($user_id),
+                                            __('View all photos', WE_LS_SLUG)
+                                        );
+
+                                    if ($photo_count >= 1) {
+                                        echo ws_ls_photos_shortcode_gallery([   'error-message' => __('No photos could be found for this user.', WE_LS_SLUG),
+                                            'mode' => 'tilesgrid',
+                                            'limit' => 20,
+                                            'direction' => 'desc',
+                                            'user-id' => $user_id,
+                                            'hide-from-shortcodes' => false
+                                        ]);
+                                    }
+>>>>>>> fcf888916b237ec6ed760dc7b34cd10801a3b883
 
                                 } else {
 
