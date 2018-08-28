@@ -180,7 +180,7 @@ function ws_ls_photos_db_get_recent_or_latest( $user_id = false,
 
 	// Return cache if found!
 	if ($cache = ws_ls_cache_user_get($user_id, $cache_key))   {
-	//	return $cache; //TODO
+		return $cache;
 	}
 
 	$photo_fields = ws_ls_meta_fields_photos_ids_to_use( $meta_fields_to_use, $hide_from_shortcodes );
@@ -190,16 +190,6 @@ function ws_ls_photos_db_get_recent_or_latest( $user_id = false,
 		return false;
 	}
 
-<<<<<<< HEAD
-	$photo_fields = ws_ls_meta_fields_photos_ids_to_use( $meta_fields_to_use, $hide_from_shortcodes );
-
-	// If no photo fields to consider then return false
-	if ( true === empty( $photo_fields ) ) {
-		return false;
-	}
-
-=======
->>>>>>> fcf888916b237ec6ed760dc7b34cd10801a3b883
 	$sql = 'Select d.id as entry_id, d.weight_date, e.value as photo_id, f.sort from ' . $wpdb->prefix . WE_LS_MYSQL_META_ENTRY . ' e ' .
 	       ' inner join ' . $wpdb->prefix . WE_LS_TABLENAME . ' d on e.entry_id = d.id 
 	         inner join ' . $wpdb->prefix . WE_LS_MYSQL_META_FIELDS . ' f on f.id = e.meta_field_id    
@@ -207,7 +197,6 @@ function ws_ls_photos_db_get_recent_or_latest( $user_id = false,
  	         order by weight_date ' . $direction . ', f.sort asc';
 
 	$sql = $wpdb->prepare( $sql, $user_id );
-<<<<<<< HEAD
 
 	$photos = $wpdb->get_results($sql, ARRAY_A);
 
@@ -227,27 +216,6 @@ function ws_ls_photos_db_get_recent_or_latest( $user_id = false,
 
 			if ( false === empty( $photo_src ) ) {
 
-=======
-
-	$photos = $wpdb->get_results($sql, ARRAY_A);
-
-	if ( false === empty( $photos ) ) {
-
-		$first_date = $photos[0]['weight_date'];
-		$return = [];
-
-		foreach ( $photos as $photo ) {
-
-			// Only consider photos with the same date.
-			if ( $photo['weight_date'] !== $first_date ) {
-				break;
-			}
-
-			$photo_src = ws_ls_photo_get( $photo['photo_id'], $width, $height );
-
-			if ( false === empty( $photo_src ) ) {
-
->>>>>>> fcf888916b237ec6ed760dc7b34cd10801a3b883
 				$photo = array_merge($photo_src, $photo);
 				$photo['date'] = ws_ls_iso_date_into_correct_format($photo['weight_date']);
 
@@ -355,7 +323,7 @@ function ws_ls_photos_db_get_all_photos(    $user_id = false,
 
     // Return cache if found!
     if ($cache = ws_ls_cache_user_get($user_id, $cache_key))   {
-   		// return $cache;  //todo
+   		return $cache;
     }
 
     $limit = ( false === empty($limit) && is_numeric($limit) ) ? ' limit 0, ' . intval($limit) : '';
@@ -365,15 +333,9 @@ function ws_ls_photos_db_get_all_photos(    $user_id = false,
 	        inner join ' . $wpdb->prefix . WE_LS_TABLENAME . ' d on e.entry_id = d.id 
 	        inner join ' . $wpdb->prefix . WE_LS_MYSQL_META_FIELDS . ' f on f.id = e.meta_field_id    
 	        where weight_user_id = %d and e.value <> "" and meta_field_id in (' . implode( ',', $photo_fields) . ') order by weight_date ' . $direction . ', f.sort asc ' . $limit;
-<<<<<<< HEAD
 
 	$sql = $wpdb->prepare( $sql, $user_id );
 
-=======
-
-	$sql = $wpdb->prepare( $sql, $user_id );
-
->>>>>>> fcf888916b237ec6ed760dc7b34cd10801a3b883
     $photos = $wpdb->get_results( $sql );
 
     $photos_to_return = [];
@@ -432,11 +394,7 @@ function ws_ls_photos_db_count_photos( $user_id = false, $hide_from_shortcodes =
 
     // Return cache if found!
     if ($cache = ws_ls_cache_user_get($user_id, $cache_key))   {
-<<<<<<< HEAD
     	return $cache;
-=======
-      //  return $cache; //TODO
->>>>>>> fcf888916b237ec6ed760dc7b34cd10801a3b883
     }
 
 	$photo_fields = ws_ls_meta_fields_photos_all( $hide_from_shortcodes );

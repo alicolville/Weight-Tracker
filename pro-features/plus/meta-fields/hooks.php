@@ -80,13 +80,10 @@
      */
     function ws_ls_meta_fields_hook_delete_photos_for_deleted_meta_field( $meta_field_id ) {
 
-<<<<<<< HEAD
 	    if ( false === ws_ls_meta_fields_is_enabled() ) {
 		    return;
 	    }
 
-=======
->>>>>>> fcf888916b237ec6ed760dc7b34cd10801a3b883
         // Check we actually have a meta field!
         if ( false === ws_ls_meta_fields_photos_is_photo_field( $meta_field_id ) ) {
             return;
@@ -106,7 +103,6 @@
     /**
      * Listens to the delete entry hook and deletes any photos / meta entries
      *
-<<<<<<< HEAD
      * @param $entry
      */
     function ws_ls_meta_fields_tidy_entries_and_attachments( $entry ) {
@@ -148,66 +144,3 @@
 	add_action('delete_attachment', 'ws_ls_photos_tidy_up_after_attachment_deleted');
 
 
-=======
-     * @param $entry_id
-     */
-    function ws_ls_meta_fields_tidy_entries_and_attachments( $entry ) {
-
-
-        // Fetch all meta entries for entry ID ($entry['db_row_id']_
-
-        // Get all Photo fields (enabled or disabled)
-
-
-
-        // Delete all attachment ids for photo vidoes
-
-        // Delete all meta entries for this field
-
-    }
-    add_action( WE_LS_HOOK_DATA_ENTRY_DELETED, $weight_entry );
-
-
-    //TODO:
-    /*
-     * Hook onto do_action(WE_LS_HOOK_DATA_ENTRY_DELETED, $weight_entry);
-     *
-     * 1) Delete all photos from media library for given attachment /ID stored in Photo meta fields!
-     * 2) Delete all meta entries for this ID
-     */
-
-
-// ------------------------------------------------------------------
-// Hooks
-// ------------------------------------------------------------------
-
-///**
-// * If an entry is deleted, check for a photo ID. If it exists, delete attachment from media library
-// */
-//function ws_ls_photos_tidy_up_after_entry_deleted( $entry ) {
-//
-//    // TODO: Search for meta data
-//
-//    if ( false === empty( $entry['photo_id'] ) && true === is_numeric( $entry['photo_id'] ) ) {
-//        wp_delete_attachment( intval( $entry['photo_id']) , true );
-//        ws_ls_delete_cache_for_given_user( $entry['user_id'] );
-//    }
-//}
-//add_action(WE_LS_HOOK_DATA_ENTRY_DELETED, 'ws_ls_photos_tidy_up_after_entry_deleted');
-
-/**
- * If admin deletes a user's photo from the media library, ensure there is no foreign key to it in DB
- * @param $attachment_id
- */
-function ws_ls_photos_tidy_up_after_attachment_deleted($attachment_id) {
-
-    //todo: Get all photo fields and delete entries where the ID matches entry value
-
-//    if ( false === empty($attachment_id) && true === is_numeric($attachment_id)) {
-//        global $wpdb;
-//        $sql = $wpdb->prepare('Update ' . $wpdb->prefix . WE_LS_TABLENAME . ' SET photo_id = null where photo_id = %d', $attachment_id);
-//        $wpdb->query($sql);
-//    }
-}
-add_action('delete_attachment', 'ws_ls_photos_tidy_up_after_attachment_deleted');
->>>>>>> fcf888916b237ec6ed760dc7b34cd10801a3b883

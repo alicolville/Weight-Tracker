@@ -37,7 +37,6 @@ function ws_ls_meta( $entry_id ) {
  */
 function ws_ls_meta_for_given_meta_field( $meta_field_id ) {
 
-<<<<<<< HEAD
 	global $wpdb;
 
 	$sql = $wpdb->prepare( 'Select * from ' . $wpdb->prefix . WE_LS_MYSQL_META_ENTRY . ' where meta_field_id = %d', $meta_field_id );
@@ -45,15 +44,6 @@ function ws_ls_meta_for_given_meta_field( $meta_field_id ) {
 	$data = $wpdb->get_results( $sql, ARRAY_A );
 
 	return $data;
-=======
-    global $wpdb;
-
-    $sql = $wpdb->prepare( 'Select * from ' . $wpdb->prefix . WE_LS_MYSQL_META_ENTRY . ' where meta_field_id = %d', $meta_field_id );
-
-    $data = $wpdb->get_results( $sql, ARRAY_A );
-
-    return $data;
->>>>>>> fcf888916b237ec6ed760dc7b34cd10801a3b883
 }
 
 /**

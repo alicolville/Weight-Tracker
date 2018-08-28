@@ -29,7 +29,6 @@ function ws_ls_admin_page_photos() {
                             <h2><span><?php echo __('User\'s photos', WE_LS_SLUG); ?></span></h2>
                             <div class="inside">
                                 <?php
-<<<<<<< HEAD
 
                                     if( ws_ls_meta_fields_photo_any_enabled() ) {
 
@@ -65,23 +64,6 @@ function ws_ls_admin_page_photos() {
                                             __('to allow a user to upload photos of their progress' , WE_LS_SLUG)
                                         );
                                     }
-=======
-									$photo_count = ws_ls_photos_db_count_photos($user_id);
-
-									echo sprintf('<p>%s <strong>%s %s</strong>.</p>',
-										__('This user has uploaded ', WE_LS_SLUG),
-										$photo_count,
-										_n( 'photo', 'photos', $photo_count, WE_LS_SLUG )
-									);
-
-                                    echo ws_ls_photos_shortcode_gallery([   'error-message' => __('No photos could be found for this user.', WE_LS_SLUG),
-                                        'user-id' => $user_id,
-										'width' => '1200',
-										'direction' => 'desc',
-										'limit' => 50,
-                                        'hide-from-shortcodes' => false
-                                    ]);
->>>>>>> fcf888916b237ec6ed760dc7b34cd10801a3b883
                                 ?>
                             </div>
                         </div>
