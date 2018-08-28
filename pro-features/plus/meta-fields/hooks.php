@@ -66,11 +66,81 @@
             if ( true === $result ) {
                 wp_send_json( 1 );
             }
-
         }
 
         wp_send_json( 0 );
 
     }
     add_action( 'wp_ajax_meta_fields_delete', 'ws_ls_meta_fields_ajax_delete' );
+
+    /**
+     * Check if a the deleted meta field was a photo field. If so, delete all attachments.
+     *
+     * @param $meta_field_id
+     */
+    function ws_ls_meta_fields_hook_delete_photos_for_deleted_meta_field( $meta_field_id ) {
+
+	    if ( false === ws_ls_meta_fields_is_enabled() ) {
+		    return;
+	    }
+
+        // Check we actually have a meta field!
+        if ( false === ws_ls_meta_fields_photos_is_photo_field( $meta_field_id ) ) {
+            return;
+        }
+
+        ws_ls_meta_fields_photos_delete_all_photos_for_meta_field( $meta_field_id );
+
+        // Clear cache for all users that have entry for this meta field
+        $user_ids = ws_ls_meta_fields_get_user_ids_for_this_meta_field( $meta_field_id );
+
+        ws_ls_delete_cache_for_given_users( $user_ids );
+
+    }
+    add_action( 'wlt-meta-fields-deleting-meta-field', 'ws_ls_meta_fields_hook_delete_photos_for_deleted_meta_field' );
+
+
+    /**
+     * Listens to the delete entry hook and deletes any photos / meta entries
+     *
+     * @param $entry
+     */
+    function ws_ls_meta_fields_tidy_entries_and_attachments( $entry ) {
+
+	    if ( false === ws_ls_meta_fields_is_enabled() ) {
+		    return;
+	    }
+
+	    $photos = ws_ls_meta_fields_photos_for_given_entry_id( $entry['db_row_id'] );
+
+	    foreach ( $photos as $photo ) {
+		    if ( false === empty( $photo['value'] ) ) {
+			    wp_delete_attachment( intval( $photo['value'] ) , true );
+		    }
+	    }
+
+	    ws_ls_meta_delete_for_entry( $entry['db_row_id'] );
+
+	    ws_ls_delete_cache_for_given_user( $entry['user_id'] );
+
+    }
+    add_action( WE_LS_HOOK_DATA_ENTRY_DELETED, 'ws_ls_meta_fields_tidy_entries_and_attachments' );
+
+
+	/**
+	 * Delete all meta entries for a deleted attachment id
+	 *
+	 * @param $attachment_id
+	 */
+	function ws_ls_photos_tidy_up_after_attachment_deleted( $attachment_id ) {
+
+		if ( false === ws_ls_meta_fields_is_enabled() ) {
+			return;
+		}
+
+		ws_ls_meta_fields_photos_delete_entry( $attachment_id );
+
+	}
+	add_action('delete_attachment', 'ws_ls_photos_tidy_up_after_attachment_deleted');
+
 

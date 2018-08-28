@@ -26,13 +26,17 @@
      */
     function ws_ls_meta_fields_types() {
 
-        return [
+        $fields = [
             0 => __('Number', WE_LS_SLUG),
             1 => __('Text', WE_LS_SLUG),
-            2 => __('Yes', WE_LS_SLUG) . ' / ' . __('No', WE_LS_SLUG),
-	        3 => __('Photo', WE_LS_SLUG)
+            2 => __('Yes', WE_LS_SLUG) . ' / ' . __('No', WE_LS_SLUG)
         ];
 
+	    if ( true === WS_LS_IS_PRO_PLUS ) {
+		    $fields[ 3 ] = __('Photo', WE_LS_SLUG);
+	    }
+
+	    return $fields;
     }
 
     /**
@@ -329,6 +333,10 @@
 	 * @return string
 	 */
 	function ws_ls_meta_fields_form_field_photo( $field, $value ) {
+
+		if ( false === WS_LS_IS_PRO_PLUS ) {
+			return '';
+		}
 
 		$html = '';
 

@@ -76,7 +76,7 @@ jQuery( document ).ready(function ($) {
                 }
             }
 
-            // Photos? todo
+            // Photos?
             if ("true" == ws_ls_config["photos-enabled"] && true == $("#" + $form_id).data("photos-enabled")) {
                 $( "#" + $form_id + " .ws-ls-meta-fields-photo").rules( "add", {
                     extension: "png|jpeg|jpg",

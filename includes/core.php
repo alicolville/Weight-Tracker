@@ -254,7 +254,7 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
     $html_output  = '';
 
     $measurements_form_enabled = (WE_LS_MEASUREMENTS_ENABLED && ws_ls_any_active_measurement_fields() && false == $hide_measurements_form && !$target_form) ? true : false;
-    $photo_form_enabled = ( false === $hide_photos_form && true === WE_LS_PHOTOS_ENABLED && false === $target_form);
+    $photo_form_enabled = ( false === $hide_photos_form && true === ws_ls_meta_fields_photo_any_enabled( true ) && false === $target_form);
     $meta_field_form_enabled = ( false === $hide_meta_fields_form && true === ws_ls_meta_fields_is_enabled() && ws_ls_meta_fields_number_of_enabled() > 0 && false === $target_form);
     $entry_id = NULL;
 
@@ -408,10 +408,6 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 
 	// Render Meta Fields
     if ( false === $target_form && true === $meta_field_form_enabled ) {
-
-	    $html_output .= sprintf( '<h3 class="ws_ls_title">%s</h3>',
-                                __('Additional Information', WE_LS_SLUG) );
-
 	    $html_output .= ws_ls_meta_fields_form( $entry_id );
     }
 
@@ -546,9 +542,9 @@ function ws_ls_capture_form_validate_and_save($user_id = false)
             $field_key = ws_ls_meta_fields_form_field_generate_id( $field['id'] );
 
             // If photo, we need to process the upload
-            if ( 3 === intval( $field[ 'field_type' ] ) ) {
+            if ( true === WS_LS_IS_PRO_PLUS && 3 === intval( $field[ 'field_type' ] ) ) {
 
-                $photo_upload = ws_ls_meta_fields_photos_process_upload( $field_key, $weight_object[ 'date-display' ] , $user_id );
+            	$photo_upload = ws_ls_meta_fields_photos_process_upload( $field_key, $weight_object[ 'date-display' ] , $user_id, $existing_db_id, $field['id'] );
 
                 if ( false === empty( $photo_upload ) ) {
                     $weight_object[ 'meta-keys' ][ $field['id'] ] = $photo_upload;
@@ -616,7 +612,7 @@ function ws_ls_get_js_config() {
 		'user-id' => get_current_user_id(),
 		'current-url' => get_permalink(),
 		'measurements-enabled' => ( WE_LS_MEASUREMENTS_ENABLED && true === ws_ls_any_active_measurement_fields() ) ? 'true' : 'false',
-		'photos-enabled' => (WE_LS_PHOTOS_ENABLED) ? 'true' : 'false',
+		'photos-enabled' => ( ws_ls_meta_fields_photo_any_enabled( true ) ) ? 'true' : 'false',
 		'measurements-unit' => ws_ls_get_config('WE_LS_MEASUREMENTS_UNIT'),
 		'validation-we-ls-measurements' => __('Please enter a valid measurement (' . WE_LS_MEASUREMENTS_UNIT . ') which is less that 1000.', WE_LS_SLUG),
 		'date-picker-locale' => ws_ls_get_js_datapicker_locale(),

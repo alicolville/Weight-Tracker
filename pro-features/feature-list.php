@@ -2,6 +2,8 @@
 
 defined('ABSPATH') or die('Jog on!');
 
+//TODO: Reword photo bit so it relates to custom felds
+
 $pro_plus_features = array(
     __('<strong>All of the features that come with a standard <a href="' . WE_LS_LICENSE_TYPES_URL . '" target="_blank">Pro license</a>.</strong>', WE_LS_SLUG),
 	__('<strong>Photo Uploads</strong>. Your users can now upload photos of their progress. Photos can be viewed, updated and removed by the end user and administrators. Handy shortcodes are provided for displaying galleries, most recent and oldest photo.', WE_LS_SLUG),

@@ -146,14 +146,10 @@ defined('ABSPATH') or die('Jog on!');
             'pro-features/plus/bmr.php',
             'pro-features/plus/harris.benedict.php',
             'pro-features/plus/macronutrient.calculator.php',
-            'pro-features/plus/shortcode.wlt.php'
+            'pro-features/plus/shortcode.wlt.php',
+	        'pro-features/plus/photos.php',
+	        'pro-features/plus/photos.gallery.php'
         ]);
-
-        // Photos enabled?
-        if( true === WE_LS_PHOTOS_ENABLED ) {
-            $files_to_include[] = 'pro-features/plus/photos.php';
-            $files_to_include[] = 'pro-features/plus/photos.gallery.php';
-        }
 
     }
 

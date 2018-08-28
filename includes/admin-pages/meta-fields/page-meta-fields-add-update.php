@@ -51,6 +51,8 @@
                             if ( false === ws_ls_meta_fields_is_enabled() ) {
                                 ws_ls_display_pro_upgrade_notice();
                             }
+
+                            //TODO: Add an upgrade box saying Pro Plus will give you Photos etc...
                             ?>
                             <div class="postbox">
                                 <h3 class="hndle"><span><?php echo __('Add / Edit a Custom Field', WE_LS_SLUG); ?> </span></h3>
@@ -75,7 +77,10 @@
                                                         <option value="0" <?php selected( $checked, 0 ); ?>><?php echo __('Number', WE_LS_SLUG); ?></option>
                                                         <option value="1" <?php selected( $checked, 1 ); ?>><?php echo __('Text', WE_LS_SLUG); ?></option>
                                                         <option value="2" <?php selected( $checked, 2 ); ?>><?php echo __('Yes', WE_LS_SLUG); ?> / <?php echo __('No', WE_LS_SLUG); ?></option>
-                                                        <option value="3" <?php selected( $checked, 3 ); ?>><?php echo __('Photo', WE_LS_SLUG); ?></option>
+
+                                                        <?php if ( true === WS_LS_IS_PRO_PLUS): ?>
+                                                            <option value="3" <?php selected( $checked, 3 ); ?>><?php echo __('Photo', WE_LS_SLUG); ?></option>
+                                                        <?php endif; ?>
                                                     </select>
                                                     <?php if ( false === empty( $id ) ) : ?>
                                                         <p class="ws-ls-note"><?php echo __('Note: Changing the field type will cause existing user data to be lost.', WE_LS_SLUG); ?></p>
@@ -92,6 +97,7 @@
                                                         <option value="1" <?php selected( $checked, 1 ); ?>><?php echo __('No', WE_LS_SLUG); ?></option>
                                                         <option value="2" <?php selected( $checked, 2 ); ?>><?php echo __('Yes', WE_LS_SLUG); ?></option>
                                                     </select>
+                                                    <p class="ws-ls-info"><?php echo __('Note: If set to Yes, photos uploaded into this custom field cannot be used in shortcodes i.e. the photos will only be visible to admin.', WE_LS_SLUG); ?></p>
                                                 </div>
                                             </div>
                                             <div class="ws-ls-row">

@@ -22,7 +22,7 @@
             $html .= sprintf('<h3>%s</h3>',
                 __('Photos', WE_LS_SLUG));
 
-			$photo_count = ws_ls_photos_db_count_photos($user_id);
+			$photo_count = ws_ls_photos_db_count_photos( $user_id, true );
 
 			if ( $photo_count > 0 ) {
 
@@ -33,7 +33,7 @@
 
 				);
 
-				$html .= ws_ls_photos_shortcode_gallery(['user-id' => $user_id]);
+				$html .= ws_ls_photos_shortcode_gallery( ['user-id' => $user_id] );
 
 			} else {
 				$html .= '<p>' . __('It looks like you haven\'t uploaded any photos yet', WE_LS_SLUG) . '.</p>';

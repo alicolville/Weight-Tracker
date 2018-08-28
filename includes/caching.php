@@ -94,6 +94,22 @@ function ws_ls_delete_cache($key){
     }
     return false;
 }
+
+/**
+ * Delete the user cache for each user id within the array
+ *
+ * @param $user_ids
+ */
+function ws_ls_delete_cache_for_given_users( $user_ids ) {
+
+    if ( true === is_array( $user_ids ) and false === empty( $user_ids ) ) {
+        foreach ( $user_ids as $id ) {
+            ws_ls_delete_cache_for_given_user( $id );
+        }
+    }
+
+}
+
 function ws_ls_delete_cache_for_given_user($user_id = false)
 {
   	global $wpdb;

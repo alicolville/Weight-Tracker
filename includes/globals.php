@@ -135,7 +135,6 @@
         'WS_LS_MACRO_PROTEINS' => 25,
         'WS_LS_MACRO_CARBS' => 50,
         'WS_LS_MACRO_FATS' => 25,
-        'WE_LS_PHOTOS_ENABLED' => false,
 		'WE_LS_PHOTOS_MAX_SIZE' => false,
         'WE_LS_THIRD_PARTY_GF_ENABLE' => false
 	);
@@ -372,13 +371,6 @@
     // -----------------------------------------------------------------------------------
 
     if (WS_LS_IS_PRO_PLUS) {
-
-	    // Photos
-        if ('no' == get_option('ws-ls-photos-enable')) {
-            $globals['WE_LS_PHOTOS_ENABLED'] = false;
-        } else {
-			$globals['WE_LS_PHOTOS_ENABLED'] = true;
-		}
 
 		$photo_max_size = get_option('ws-ls-photos-max-size');
 

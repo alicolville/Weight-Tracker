@@ -153,6 +153,38 @@ function ws_ls_settings_page() {
                                                         </td>
                                                     </tr>
 											</table>
+
+                                            <h3><?php echo __( 'Photos' , WE_LS_SLUG); ?></h3>
+                                            <table class="form-table">
+                                                <tr class="<?php echo $disable_if_not_pro_plus_class; ?>">
+                                                    <th scope="row"><?php echo __( 'Max. Photo Size?' , WE_LS_SLUG); ?></th>
+                                                    <td>
+                                                        <select id="ws-ls-photos-max-size" name="ws-ls-photos-max-size">
+															<?php
+
+															$max_size = ws_ls_file_upload_max_size();
+
+															foreach (ws_ls_photo_get_sizes() as $size => $label) {
+
+																if ( $size < $max_size ) {
+																	printf('<option value="%s" %s>%s</option>',
+																		$size,
+																		selected($size, WE_LS_PHOTOS_MAX_SIZE),
+																		$label
+																	);
+																}
+															}
+															?>
+                                                        </select>
+                                                        <p><?php echo sprintf( '%s %s <a href="%s">%s</a>' ,
+                                                                                        __('Maximum photo size (in MB) that is allowed to be uploaded. Your server currently supports up to ' , WE_LS_SLUG) . ' ' . ws_ls_display_max_server_upload_size(),
+                                                                                        __('This is used as part of Custom Fields.' , WE_LS_SLUG),
+		                                                                                ws_ls_meta_fields_base_url(),
+		                                                                                __('View Custom Fields' , WE_LS_SLUG)
+                                                            ); ?></em></p>
+                                                    </td>
+                                                </tr>
+                                            </table>
                                             <h3><?php echo __( 'Permissions' , WE_LS_SLUG); ?></h3>
                                             <table class="form-table">
                                                 <tr class="<?php echo $disable_if_not_pro_class; ?>">
@@ -207,45 +239,6 @@ function ws_ls_settings_page() {
                                                     ws_ls_display_pro_upgrade_notice();
                                                 }
                                             ?>
-
-                                            <h3><?php echo __( 'Photos' , WE_LS_SLUG); ?></h3>
-
-                                            <table class="form-table">
-                                                <tr class="<?php echo $disable_if_not_pro_plus_class; ?>">
-                                                    <th scope="row"><?php echo __( 'Photos enabled?' , WE_LS_SLUG); ?></th>
-                                                    <td>
-                                                        <select id="ws-ls-photos-enable" name="ws-ls-photos-enable">
-                                                            <option value="yes" <?php selected( get_option('ws-ls-photos-enable'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
-                                                            <option value="no" <?php selected( get_option('ws-ls-photos-enable'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
-                                                        </select>
-                                                        <p><?php echo __('Allow your users to upload photos (jpg / png) of their progress alongside weight entries. These are only viewable by the person that uploaded the photo and administrators. All photos are stored in the media library with an additional setting to hide from the attachment page / template.' , WE_LS_SLUG); ?></em></p>
-                                                    </td>
-                                                </tr>
-												<tr class="<?php echo $disable_if_not_pro_plus_class; ?>">
-													<th scope="row"><?php echo __( 'Max. Photo Size?' , WE_LS_SLUG); ?></th>
-													<td>
-														<select id="ws-ls-photos-max-size" name="ws-ls-photos-max-size">
-															<?php
-
-															$max_size = ws_ls_file_upload_max_size();
-
-															foreach (ws_ls_photo_get_sizes() as $size => $label) {
-
-																if ( $size < $max_size ) {
-																	printf('<option value="%s" %s>%s</option>',
-																		$size,
-																		selected($size, WE_LS_PHOTOS_MAX_SIZE),
-																		$label
-																	);
-																}
-															}
-															?>
-														</select>
-														<p><?php echo __('Maximum photo size (in MB) that is allowed to be uploaded. Your server currently supports up to ' , WE_LS_SLUG) . ' ' . ws_ls_display_max_server_upload_size(); ?></em></p>
-													</td>
-												</tr>
-                                            </table>
-
 
                                             <h3><?php echo __( 'Calculating daily calorie intake to lose weight' , WE_LS_SLUG); ?></h3>
 
@@ -717,7 +710,6 @@ function ws_ls_register_settings(){
         register_setting( 'we-ls-options-group', 'ws-ls-macro-proteins' );
         register_setting( 'we-ls-options-group', 'ws-ls-macro-carbs' );
         register_setting( 'we-ls-options-group', 'ws-ls-macro-fats' );
-        register_setting( 'we-ls-options-group', 'ws-ls-photos-enable' );
 		register_setting( 'we-ls-options-group', 'ws-ls-photos-max-size' );
     }
 

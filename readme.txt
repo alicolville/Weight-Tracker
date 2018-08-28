@@ -147,6 +147,25 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 == Changelog ==
 
+= 6.1 =
+
+//todo: make photos pro plus
+// TODO: check gallery shortcode on WLT form
+//TODO: -If the question is to long and i press save, the question won't get saved.. But there ist no info why. So no error-Info...
+// TODO: Update email notifications to include custom fields
+//TODO: Add link to meta field documentation
+//TODO: Check add / edit / upload photos via admin add / edit entry. Seems to have a few bugs
+//TODO: Add tool to migrate existing photo_id over
+//todo: search for any refernce to photo_id or relevent globals and deal
+//todo: look at photo fields in form
+//todo: If we update / delete a meta field, can we hook on and clear the cache for all users that use it?
+
+* New Feature: Added a new Meta Field type of "Photos". This will allow site administrators to add one or more photo field per entry form.
+* Improvement: Removed old photo upload and migrated to to new meta fields.
+
+//TODO: mention tody up of attachments
+//todo: mention migration of photos
+
 = 6.0 =
 
 * New Feature: Added Custom Fields. Allow admin specified questions to be asked on weight entry forms.
