@@ -64,7 +64,23 @@
 	        if ( true === empty( ws_ls_meta_fields( true, true ) ) ) {
 		        ws_ls_meta_fields_load_examples();
 	        }
+
+
+	        //TODO: If photo field doesn't exist, then add it!
+//            ws_ls_meta_fields_add([
+//                'field_name' => __('Cups of water drunk today?', WE_LS_SLUG),
+//                'abv' => __('Water', WE_LS_SLUG),
+//                'field_type' => 0,
+//                'suffix' => __('Cups', WE_LS_SLUG),
+//                'mandatory' => 2,
+//                'enabled' => 1,
+//                'sort' => 100
+//            ]);
         }
+
+        // todo: Migrate old photos to new. Setup new PHoto field too!
+
+         //todo: ws_ls_meta_fields_photos_do_we_need_to_migrate()
 
     }
 

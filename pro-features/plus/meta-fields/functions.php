@@ -34,7 +34,9 @@
 
 	    if ( true === WS_LS_IS_PRO_PLUS ) {
 		    $fields[ 3 ] = __('Photo', WE_LS_SLUG);
-	    }
+	    } else {
+            $fields[ 3 ] = __('Photo (Pro Plus Only)', WE_LS_SLUG);
+        }
 
 	    return $fields;
     }

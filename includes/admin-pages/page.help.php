@@ -62,10 +62,10 @@ function ws_ls_help_page() {
                     <?php if ( false === empty( ws_ls_log_all() ) ): ?>
 
                         <div class="postbox">
-                            <h3 class="hndle"><span><?php echo __('Error Log', WE_LS_SLUG); ?> </span></h3>
+                            <h3 class="hndle"><span><?php echo __('Weight Tracker Debug Log', WE_LS_SLUG); ?> </span></h3>
                             <div style="padding: 0px 15px 0px 15px">
 
-                                <p><?php echo __('Below is a list of the errors logged by the Weight Tracker plugin over the last 31 days.', WE_LS_SLUG); ?></p>
+                                <p><?php echo __('Below is a list of the debug information logged by the Weight Tracker plugin over the last 31 days.', WE_LS_SLUG); ?></p>
 
                                 <table class="ws-ls-errors-list-ajax table" id="errors-list"
                                        data-paging="true"

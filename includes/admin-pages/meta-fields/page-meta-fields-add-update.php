@@ -19,6 +19,11 @@
                 }
             }
 
+            // If the user has selected a Photo Field, but isn't pro plus, then redirect!
+            if ( false === WS_LS_IS_PRO_PLUS && 3 === (int) $meta_field['field_type'] ) {
+                $validation_fail = true;
+            }
+
             if ( false === $validation_fail ) {
 
                 // Add / Update
@@ -80,6 +85,8 @@
 
                                                         <?php if ( true === WS_LS_IS_PRO_PLUS): ?>
                                                             <option value="3" <?php selected( $checked, 3 ); ?>><?php echo __('Photo', WE_LS_SLUG); ?></option>
+                                                        <?php else: ?>
+                                                            <option value="0"><?php echo __('Photo (Pro Plus only)', WE_LS_SLUG); ?></option>
                                                         <?php endif; ?>
                                                     </select>
                                                     <?php if ( false === empty( $id ) ) : ?>

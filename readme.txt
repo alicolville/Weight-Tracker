@@ -149,7 +149,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 = 6.1 =
 
-
+//todo: Add standard photo field for migration
 //TODO: -If the question is to long and i press save, the question won't get saved.. But there ist no info why. So no error-Info...
 // TODO: Update email notifications to include custom fields
 //TODO: Add link to meta field documentation
@@ -164,6 +164,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 //TODO: mention tody up of attachments
 //todo: mention migration of photos
+//todo: test emails on wegiht.yeken
 
 = 6.0 =
 
