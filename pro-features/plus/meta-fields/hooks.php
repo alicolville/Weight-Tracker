@@ -12,18 +12,12 @@
 
         $columns = [
                         [ 'name' => 'id', 'title' => 'ID', 'visible'=> false, 'type' => 'number' ],
-                        [ 'name' => 'field_name', 'title' => __('Name', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
+                        [ 'name' => 'field_name', 'title' => __('Field / Question', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
                         [ 'name' => 'field_key', 'title' => __('Key', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
                         [ 'name' => 'field_type', 'title' => __('Type', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
                         [ 'name' => 'sort', 'title' => __('Display Order', WE_LS_SLUG), 'visible'=> true, 'type' => 'number' ],
                         [ 'name' => 'mandatory', 'title' => __('Mandatory', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
                         [ 'name' => 'enabled', 'title' => __('Enabled', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ]
-        ];
-
-        $rows = [
-            [ 'id' => 12, 'field_name' => 'NAME'],
-            [ 'id' => 113, 'field_name' => 'ALI']
-
         ];
 
         $meta_fields = ws_ls_meta_fields();
@@ -143,4 +137,17 @@
 	}
 	add_action('delete_attachment', 'ws_ls_photos_tidy_up_after_attachment_deleted');
 
+	/**
+	 * Clear cache for users that use the meta field that is being updated or deleted.
+	 *
+	 * @param $meta_field_id
+	 */
+	function ws_ls_meta_fields_clear_cache_for_users_using_this_field( $meta_field_id ) {
 
+		$user_ids = ws_ls_meta_fields_get_user_ids_for_this_meta_field( $meta_field_id );
+
+		ws_ls_delete_cache_for_given_users( $user_ids );
+
+	}
+	add_action('wlt-meta-fields-deleting-meta-field', 'ws_ls_meta_fields_clear_cache_for_users_using_this_field');
+	add_action('wlt-meta-fields-updating-meta-field', 'ws_ls_meta_fields_clear_cache_for_users_using_this_field');

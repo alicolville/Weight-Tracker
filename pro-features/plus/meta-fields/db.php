@@ -238,6 +238,8 @@ function ws_ls_meta_fields_update( $field ) {
 
 	ws_ls_cache_user_delete( 'meta-fields' );
 
+	do_action( 'wlt-meta-fields-updating-meta-field', $id );
+
     if ( 1 === $result ) {
 
         // If the field type has changed in this update then delete existing data entries (as they won't relate to the new field type).
@@ -247,6 +249,8 @@ function ws_ls_meta_fields_update( $field ) {
 
         return true;
     }
+
+
 
     return false;
 }

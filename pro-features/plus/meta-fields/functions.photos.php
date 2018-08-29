@@ -3,6 +3,18 @@
 	defined('ABSPATH') or die('Jog on!');
 
 	/**
+	 *
+	 * Do we have any photo fields enabled?
+	 *
+	 * @param bool $hide_from_shortcodes
+	 *
+	 * @return bool
+	 */
+	function ws_ls_meta_fields_photo_any_enabled( $hide_from_shortcodes = false ) {
+		return true === WS_LS_IS_PRO_PLUS && ! empty( ws_ls_meta_fields_photos_all( $hide_from_shortcodes , true ) );
+	}
+
+	/**
 	 * Process a photo upload / deletion
 	 *
 	 * @param $field_name
@@ -132,18 +144,6 @@
 		}
 
 		 return false;
-	}
-
-	/**
-	 *
-	 * Do we have any photo fields enabled?
-	 *
-	 * @param bool $hide_from_shortcodes
-	 *
-	 * @return bool
-	 */
-	function ws_ls_meta_fields_photo_any_enabled( $hide_from_shortcodes = false ) {
-		return true === WS_LS_IS_PRO_PLUS && ! empty( ws_ls_meta_fields_photos_all( $hide_from_shortcodes , true ) );
 	}
 
     /**

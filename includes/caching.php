@@ -104,7 +104,7 @@ function ws_ls_delete_cache_for_given_users( $user_ids ) {
 
     if ( true === is_array( $user_ids ) and false === empty( $user_ids ) ) {
         foreach ( $user_ids as $id ) {
-            ws_ls_delete_cache_for_given_user( $id );
+        	ws_ls_delete_cache_for_given_user( $id );
         }
     }
 

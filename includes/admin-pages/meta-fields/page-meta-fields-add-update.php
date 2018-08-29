@@ -102,7 +102,7 @@
                                             </div>
                                             <div class="ws-ls-row">
                                                 <div class="ws-ls-cell">
-                                                    <label for="field_name"><?php echo __('Name', WE_LS_SLUG); ?></label>
+                                                    <label for="field_name"><?php echo __('Field / Question', WE_LS_SLUG); ?></label>
                                                 </div>
                                                 <div class="ws-ls-cell">
                                                     <input type="text" name="field_name" id="field_name" class="<?php if ( true === $validation_fail && true === empty( $meta_field['field_name'] ) ) { echo 'ws-ls-mandatory-field'; } ?>"  size="40" maxlength="40" value="<?php echo ( false === empty( $meta_field['field_name'] ) ) ? esc_attr( $meta_field['field_name'] ) : ''; ?>"/><span class="ws-ls-mandatory">*</span>
