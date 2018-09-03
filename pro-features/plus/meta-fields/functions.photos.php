@@ -406,3 +406,15 @@
         }
 
 	}
+
+    /**
+     * Display info about photo uploads
+     */
+	function ws_ls_meta_fields_photos_form_display_info() {
+
+        return sprintf( '<p><small><strong>%3$s</strong>: %1$s%2$s</small></p>',
+            __('Photos are only visible to you and administrators. ', WE_LS_SLUG),
+            __('Photos must be under', WE_LS_SLUG) . ' ' . ws_ls_photo_display_max_upload_size() . ' ' . __('or they will silently fail to upload.', WE_LS_SLUG),
+            __('A note about photos', WE_LS_SLUG)
+        );
+    }
