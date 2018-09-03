@@ -3,7 +3,7 @@
 //
 jQuery( document ).ready(function ($) {
 
-    // If we're on the settings tab setup zozoTabs
+
     if ($.fn.zozoTabs) {
         $("#ws-ls-tabs").zozoTabs({
             rounded: false,
@@ -60,37 +60,53 @@ jQuery( document ).ready(function ($) {
 
     });
 
-	// ------------------------------------------------------------------------
-	// User for file selector labels
-	// ------------------------------------------------------------------------
-	var inputs = document.querySelectorAll( '.ws-ls-input-file' );
-	Array.prototype.forEach.call( inputs, function( input )
-	{
-		var label	 = input.nextElementSibling,
-			labelVal = label.innerHTML;
+    // ------------------------------------------------------------------------
+    // User for file selector labels
+    // ------------------------------------------------------------------------
+    var inputs = document.querySelectorAll( '.ws-ls-input-file' );
+    Array.prototype.forEach.call( inputs, function( input )
+    {
+        var label	 = input.nextElementSibling,
+            labelVal = label.innerHTML;
 
-		input.addEventListener( 'change', function( e )
-		{
-			var fileName = e.target.value.split( '\\' ).pop();
+        input.addEventListener( 'change', function( e )
+        {
+            var fileName = e.target.value.split( '\\' ).pop();
 
-			if( fileName )
-				label.querySelector( 'span' ).innerHTML = fileName;
-			else
-				label.innerHTML = labelVal;
-		});
+            if( fileName )
+                label.querySelector( 'span' ).innerHTML = fileName;
+            else
+                label.innerHTML = labelVal;
+        });
 
-		// Firefox bug fix
-		input.addEventListener( 'focus', function(){ input.classList.add( 'has-focus' ); });
-		input.addEventListener( 'blur', function(){ input.classList.remove( 'has-focus' ); });
-	});
+        // Firefox bug fix
+        input.addEventListener( 'focus', function(){ input.classList.add( 'has-focus' ); });
+        input.addEventListener( 'blur', function(){ input.classList.remove( 'has-focus' ); });
+    });
 
 
-	function ws_ls_meta_fields_show_additional() {
+    // Show / hide additional fields on meta fields add / update
+    function ws_ls_meta_fields_show_additional() {
 
-	    var value = $('#field_type').val();
-        alert(value);
+        var meta_field_ids = [ 1, 2, 3, 4 ];
+
+        var value = $('#field_type').val();
+
+        for ( $i = 0; $i < meta_field_ids.length; $i++ ) {
+
+            if ( value == meta_field_ids[ $i ] ) {
+                $('#ws-ls-meta-fields-additional-' + meta_field_ids[ $i ] ).removeClass( 'ws-ls-hide' );
+            } else {
+                $('#ws-ls-meta-fields-additional-' + meta_field_ids[ $i ] ).addClass( 'ws-ls-hide' );
+            }
+
+        }
 
     }
+
+    $( "#field_type" ).change(function() {
+        ws_ls_meta_fields_show_additional();
+    });
 
     ws_ls_meta_fields_show_additional();
 });

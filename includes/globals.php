@@ -54,7 +54,6 @@
 	// Database tables
 	// -----------------------------------------------------------------------------------
 
-	//Todo: refactor these contant names
 	define('WE_LS_TABLENAME', 'WS_LS_DATA');
 	define('WE_LS_TARGETS_TABLENAME', 'WS_LS_DATA_TARGETS');
 	define('WE_LS_USER_PREFERENCES_TABLENAME', 'WS_LS_DATA_USER_PREFERENCES');

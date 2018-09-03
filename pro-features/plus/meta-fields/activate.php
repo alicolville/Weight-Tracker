@@ -27,7 +27,7 @@
                 display_on_chart BIT DEFAULT 0,
                 mandatory int DEFAULT 1,
                 enabled int DEFAULT 1,
-                hide_from_shortcodes int DEFAULT 1,
+                hide_from_shortcodes int DEFAULT 0,
                 system BIT DEFAULT 0,
                 field_type int NOT NULL,
                 sort int DEFAULT 100,
@@ -43,6 +43,7 @@
                 entry_id int NOT NULL,
                 meta_field_id int NOT NULL,
                 value varchar(800) NOT NULL,
+                migrate BIT DEFAULT 0,
                 UNIQUE KEY id (id)              
             ) $charset_collate;";
 
@@ -65,22 +66,18 @@
 		        ws_ls_meta_fields_load_examples();
 	        }
 
+	        // If example Photo meta field doesn't exist, then add it!
+	        ws_ls_meta_fields_photos_create_example_field();
 
-	        //TODO: If photo field doesn't exist, then add it!
-//            ws_ls_meta_fields_add([
-//                'field_name' => __('Cups of water drunk today?', WE_LS_SLUG),
-//                'abv' => __('Water', WE_LS_SLUG),
-//                'field_type' => 0,
-//                'suffix' => __('Cups', WE_LS_SLUG),
-//                'mandatory' => 2,
-//                'enabled' => 1,
-//                'sort' => 100
-//            ]);
+			// Do we have Photos to migrate from the old photo system to new?
+	        if ( ws_ls_meta_fields_photos_do_we_need_to_migrate() ) {
+
+		        ws_ls_log_add('photo-migrate', 'Photos have been identified for migrating from old photo system to new!' );
+
+		        ws_ls_meta_fields_photos_migrate_old();
+	        }
+
         }
-
-        // todo: Migrate old photos to new. Setup new PHoto field too!
-
-         //todo: ws_ls_meta_fields_photos_do_we_need_to_migrate()
 
     }
 
@@ -91,9 +88,9 @@
      */
     function ws_ls_meta_fields_load_examples() {
 
-    	//todo: Add examples for photos
+	    ws_ls_log_add('meta-field-setup', 'Adding some example custom fields' );
 
-        // Number
+    	// Number
         ws_ls_meta_fields_add([
             'field_name' => __('Cups of water drunk today?', WE_LS_SLUG),
             'abv' => __('Water', WE_LS_SLUG),
@@ -101,7 +98,8 @@
             'suffix' => __('Cups', WE_LS_SLUG),
             'mandatory' => 2,
             'enabled' => 1,
-            'sort' => 100
+            'sort' => 100,
+            'hide_from_shortcodes' => 0
         ]);
 
         // Yes / No
@@ -112,7 +110,8 @@
             'suffix' => '',
             'mandatory' => 1,
             'enabled' => 1,
-            'sort' => 130
+            'sort' => 130,
+	        'hide_from_shortcodes' => 0
         ]);
 
         ws_ls_cache_user_delete( 'meta-fields' );

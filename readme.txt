@@ -149,22 +149,20 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 = 6.1 =
 
-//todo: Add standard photo field for migration
-//TODO: -If the question is to long and i press save, the question won't get saved.. But there ist no info why. So no error-Info...
-// TODO: Update email notifications to include custom fields
-//TODO: Add link to meta field documentation
-//TODO: Add tool to migrate existing photo_id over
+
+// review all caching and is_admin() checks in meta fields db.php
+
+
 //todo: look at photo fields in form
 //todo: test in all license modes
 // Check logic to ensure photos are PRO plus only!
+//todo: test emails on wegiht.yeken
 
 * New Feature: Added a new Meta Field type of "Photos" (Pro Plus only). This will allow site administrators to add one or more photo field per entry form.
+* New Feature: Build in tool to migrate photos from old system to new.
 * Improvement: Removed old photo upload and migrated to to new meta fields.
 * Improvement: Added custom field data to email notifications.
-
-//TODO: mention tody up of attachments
-//todo: mention migration of photos
-//todo: test emails on wegiht.yeken
+* Improvement: Added additional logic to remove photos from media library when no longer used by Weight Tracker (e.g. user has deleted them)
 
 = 6.0 =
 
