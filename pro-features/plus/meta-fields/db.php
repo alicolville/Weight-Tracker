@@ -114,12 +114,34 @@ function ws_ls_meta_delete( $entry_id, $meta_field_id ) {
 }
 
 /**
+ * Delete previous migrated values
+ *
+ * @return bool
+ */
+function ws_ls_meta_delete_migrated() {
+
+	if ( false === is_admin() ) {
+		return;
+	}
+
+	global $wpdb;
+
+	$result = $wpdb->delete( $wpdb->prefix . WE_LS_MYSQL_META_ENTRY, [ 'migrate' => 1 ], [ '%d' ] );
+
+	return ( 1 === $result );
+}
+
+/**
  * Delete all meta entries for given weight entry
  *
  * @param $entry_id
  * @return bool
  */
 function ws_ls_meta_delete_for_entry( $entry_id ) {
+
+	if ( false === is_admin() ) {
+		return;
+	}
 
 	global $wpdb;
 
@@ -138,6 +160,10 @@ function ws_ls_meta_delete_for_entry( $entry_id ) {
  * @return bool
  */
 function ws_ls_meta_delete_for_meta_field( $meta_field_id ) {
+
+	if ( false === is_admin() ) {
+		return;
+	}
 
 	global $wpdb;
 
@@ -215,6 +241,10 @@ function ws_ls_meta_fields( $exclude_system = true, $ignore_cache = false ) {
  */
 function ws_ls_meta_fields_update( $field ) {
 
+	if ( false === is_admin() ) {
+		return;
+	}
+
     // Ensure we have the expected fields.
     if ( false === ws_ls_meta_check_fields( $field, [ 'id', 'abv', 'field_name', 'field_type', 'suffix', 'mandatory', 'enabled' ] ) ) {
         return false;
@@ -238,6 +268,8 @@ function ws_ls_meta_fields_update( $field ) {
 
 	ws_ls_cache_user_delete( 'meta-fields' );
 
+	do_action( 'wlt-meta-fields-updating-meta-field', $id );
+
     if ( 1 === $result ) {
 
         // If the field type has changed in this update then delete existing data entries (as they won't relate to the new field type).
@@ -247,6 +279,8 @@ function ws_ls_meta_fields_update( $field ) {
 
         return true;
     }
+
+
 
     return false;
 }
@@ -265,6 +299,10 @@ function ws_ls_meta_fields_update( $field ) {
  * @return bool     true if success
  */
 function ws_ls_meta_fields_add( $field ) {
+
+	if ( false === is_admin() ) {
+		return;
+	}
 
     // Ensure we have the expected fields.
     if ( false === ws_ls_meta_check_fields( $field, [ 'abv', 'field_name', 'field_type', 'suffix', 'mandatory', 'enabled' ] ) ) {
@@ -294,6 +332,10 @@ function ws_ls_meta_fields_add( $field ) {
  * @return bool     true if success
  */
 function ws_ls_meta_fields_delete( $id ) {
+
+	if ( false === is_admin() ) {
+		return;
+	}
 
     global $wpdb;
 

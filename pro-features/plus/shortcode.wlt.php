@@ -10,7 +10,7 @@
 	 */
     function ws_ls_shortcode_wlt_display_photos_tab() {
 
-		if(false === WS_LS_IS_PRO_PLUS) {
+		if(false === WS_LS_IS_PRO) {
 			return '';
 		}
 

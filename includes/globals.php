@@ -54,7 +54,6 @@
 	// Database tables
 	// -----------------------------------------------------------------------------------
 
-	//Todo: refactor these contant names
 	define('WE_LS_TABLENAME', 'WS_LS_DATA');
 	define('WE_LS_TARGETS_TABLENAME', 'WS_LS_DATA_TARGETS');
 	define('WE_LS_USER_PREFERENCES_TABLENAME', 'WS_LS_DATA_USER_PREFERENCES');
@@ -355,7 +354,7 @@
 	}
 
     // -----------------------------------------------------------------------------------
-    // Third Party
+    // Pro
     // -----------------------------------------------------------------------------------
 
     if (WS_LS_IS_PRO) {
@@ -364,6 +363,12 @@
             $globals['WE_LS_THIRD_PARTY_GF_ENABLE'] = true;
         }
 
+	    $photo_max_size = get_option('ws-ls-photos-max-size');
+
+	    if(is_numeric($photo_max_size)) {
+		    $globals['WE_LS_PHOTOS_MAX_SIZE'] = intval($photo_max_size);
+	    }
+
     }
 
     // -----------------------------------------------------------------------------------
@@ -371,12 +376,6 @@
     // -----------------------------------------------------------------------------------
 
     if (WS_LS_IS_PRO_PLUS) {
-
-		$photo_max_size = get_option('ws-ls-photos-max-size');
-
-		if(is_numeric($photo_max_size)) {
-			$globals['WE_LS_PHOTOS_MAX_SIZE'] = intval($photo_max_size);
-		}
 
 	    // Calories
 	    $female_cal_cap = get_option('ws-ls-female-cal-cap');

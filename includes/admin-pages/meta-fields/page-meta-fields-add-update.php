@@ -19,6 +19,11 @@
                 }
             }
 
+            // If the user has selected a Photo Field, but isn't pro plus, then redirect!
+            if ( false === WS_LS_IS_PRO_PLUS && 3 === (int) $meta_field['field_type'] ) {
+                $validation_fail = true;
+            }
+
             if ( false === $validation_fail ) {
 
                 // Add / Update
@@ -80,6 +85,8 @@
 
                                                         <?php if ( true === WS_LS_IS_PRO_PLUS): ?>
                                                             <option value="3" <?php selected( $checked, 3 ); ?>><?php echo __('Photo', WE_LS_SLUG); ?></option>
+                                                        <?php else: ?>
+                                                            <option value="0"><?php echo __('Photo (Pro Plus only)', WE_LS_SLUG); ?></option>
                                                         <?php endif; ?>
                                                     </select>
                                                     <?php if ( false === empty( $id ) ) : ?>
@@ -102,7 +109,7 @@
                                             </div>
                                             <div class="ws-ls-row">
                                                 <div class="ws-ls-cell">
-                                                    <label for="field_name"><?php echo __('Name', WE_LS_SLUG); ?></label>
+                                                    <label for="field_name"><?php echo __('Field / Question', WE_LS_SLUG); ?></label>
                                                 </div>
                                                 <div class="ws-ls-cell">
                                                     <input type="text" name="field_name" id="field_name" class="<?php if ( true === $validation_fail && true === empty( $meta_field['field_name'] ) ) { echo 'ws-ls-mandatory-field'; } ?>"  size="40" maxlength="40" value="<?php echo ( false === empty( $meta_field['field_name'] ) ) ? esc_attr( $meta_field['field_name'] ) : ''; ?>"/><span class="ws-ls-mandatory">*</span>

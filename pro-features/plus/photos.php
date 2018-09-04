@@ -2,10 +2,6 @@
 
 defined('ABSPATH') or die("Jog on!");
 
-
-//todo: Change this whole file!
-//todo: Allow user to specify which meta field to use for shortcodes?
-
 // ------------------------------------------------------------------
 // Shortcodes
 // ------------------------------------------------------------------

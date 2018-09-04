@@ -3,6 +3,18 @@
 	defined('ABSPATH') or die('Jog on!');
 
 	/**
+	 *
+	 * Do we have any photo fields enabled?
+	 *
+	 * @param bool $hide_from_shortcodes
+	 *
+	 * @return bool
+	 */
+	function ws_ls_meta_fields_photo_any_enabled( $hide_from_shortcodes = false ) {
+		return true === WS_LS_IS_PRO && ! empty( ws_ls_meta_fields_photos_all( $hide_from_shortcodes , true ) );
+	}
+
+	/**
 	 * Process a photo upload / deletion
 	 *
 	 * @param $field_name
@@ -132,18 +144,6 @@
 		}
 
 		 return false;
-	}
-
-	/**
-	 *
-	 * Do we have any photo fields enabled?
-	 *
-	 * @param bool $hide_from_shortcodes
-	 *
-	 * @return bool
-	 */
-	function ws_ls_meta_fields_photo_any_enabled( $hide_from_shortcodes = false ) {
-		return true === WS_LS_IS_PRO_PLUS && ! empty( ws_ls_meta_fields_photos_all( $hide_from_shortcodes , true ) );
 	}
 
     /**
@@ -287,14 +287,134 @@
         return $count;
     }
 
-//TODO:
-    function t() {
+    /**
+     * Do we need to migrate old photos over?
+     *
+     * @return bool
+     */
+    function ws_ls_meta_fields_photos_do_we_need_to_migrate( $ignore_previous_run = false ) {
 
-//$r = ws_ls_meta_fields_photos_delete_entry( 66 );
-//
-//
-//        var_dump($r);
-//
-//	    die;
+        if ( false === WS_LS_IS_PRO ) {
+            return false;
+        }
+
+        // Don't run if we have already performed this!
+        if ( false === $ignore_previous_run && false === empty( get_option('ws-ls-meta-fields-photo-migrate-done', false ) ) ) {
+            return false;
+        }
+
+        // Do we have any photos?
+        if ( true === empty( ws_ls_meta_fields_photos_get_old_ids() )) {
+            return false;
+        }
+
+        return true;
     }
-    add_action('admin_init', 't');
+
+    /**
+     * Fetch all entry id / photo id for old photo system
+     *
+     * @return mixed
+     */
+    function ws_ls_meta_fields_photos_get_old_ids() {
+
+        global $wpdb;
+        return $wpdb->get_results( 'Select id, photo_id from ' . $wpdb->prefix . WE_LS_TABLENAME . ' where photo_id is not null and photo_id <> "" and photo_id <> 0', ARRAY_A);
+        
+    }
+
+    /**
+     * Migrate old photos to new meta fields!
+     */
+    function ws_ls_meta_fields_photos_migrate_old( $ignore_previous_run = false ) {
+
+        if ( true === ws_ls_meta_fields_photos_do_we_need_to_migrate( $ignore_previous_run ) ) {
+
+            $photos_to_migrate = ws_ls_meta_fields_photos_get_old_ids();
+
+            ws_ls_log_add('photo-migrate', sprintf( 'There are %d photos that are going to be migrated to the new Meta Fields', count( $photos_to_migrate ) ) );
+
+            // Get Photo Meta field
+            $meta_field = ws_ls_meta_fields_get( 'photo' );
+
+            if ( true === empty( $meta_field['id'] ) ){
+                ws_ls_log_add('photo-migrate-fail', 'Could not find meta field to migrate to!' );
+                return;
+            } else {
+                ws_ls_log_add('photo-migrate', sprintf( 'Found meta field to map to: %d', $meta_field['id'] ) );
+            }
+
+            $migrated = 0;
+
+            foreach ( $photos_to_migrate as $photo ) {
+
+                // Only migrate images that still exist in media library
+                if ( true === wp_attachment_is_image( $photo['photo_id'] ) ) {
+
+                    $data = [
+                        'entry_id' => $photo['id'],
+                        'meta_field_id' => $meta_field['id'],
+                        'value' => $photo['photo_id'],
+	                    'migrate' => 1
+                    ];
+
+                    global $wpdb;
+
+                    $result = $wpdb->insert( $wpdb->prefix . WE_LS_MYSQL_META_ENTRY , $data, [ '%d', '%d', '%s', '%d' ] );
+
+                    if ( false === $result ) {
+                        ws_ls_log_add('migrate-invalid', sprintf( 'Could not add meta entry for photo: %d', $photo['photo_id'] ) );
+                    } else {
+                        ws_ls_log_add('migrate-valid', sprintf( 'Migrated photo: %d! New entry id: %d', $photo['photo_id'], $wpdb->insert_id ) );
+                        $migrated ++;
+                    }
+
+                } else {
+                    ws_ls_log_add('migrate-invalid', sprintf( 'Invalid image or doesn\'t exist - Attachment ID %d', $photo['photo_id'] ) );
+                }
+
+            }
+
+            ws_ls_log_add('migrate-completed', sprintf( 'Completed photo migration! Migrated %d photos', $migrated ) );
+
+            update_option('ws-ls-meta-fields-photo-migrate-done', true );
+
+        }
+
+    }
+
+	/**
+	 * Create example Photo custom field if needed
+	 */
+    function ws_ls_meta_fields_photos_create_example_field() {
+
+        if ( false === ws_ls_meta_fields_key_exist( 'photo' ) ) {
+
+	        ws_ls_log_add('meta-field-setup', 'Adding photo field.' );
+
+	        ws_ls_meta_fields_add([
+		        'field_name' => __('Photo', WE_LS_SLUG),
+		        'abv' => __('Photo', WE_LS_SLUG),
+		        'field_type' => 3,
+		        'suffix' => '',
+		        'mandatory' => 1,
+		        'enabled' => ( true === WS_LS_IS_PRO && 'no' !== get_option('ws-ls-photos-enable', 'no') ),
+		        'sort' => 160,
+		        'hide_from_shortcodes' => 0
+	        ]);
+
+        }
+
+	}
+
+    /**
+     * Display info about photo uploads
+     */
+	function ws_ls_meta_fields_photos_form_display_info() {
+
+        return sprintf( '<p><small><strong>%3$s</strong>: %1$s%2$s</small></p>',
+            __('Photos are only visible to you and administrators. ', WE_LS_SLUG),
+            __('Photos must be under', WE_LS_SLUG) . ' ' . ws_ls_photo_display_max_upload_size() . ' ' . __('or they will silently fail to upload.', WE_LS_SLUG),
+            __('A note about photos', WE_LS_SLUG)
+        );
+    }

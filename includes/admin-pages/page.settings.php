@@ -156,7 +156,7 @@ function ws_ls_settings_page() {
 
                                             <h3><?php echo __( 'Photos' , WE_LS_SLUG); ?></h3>
                                             <table class="form-table">
-                                                <tr class="<?php echo $disable_if_not_pro_plus_class; ?>">
+                                                <tr class="<?php echo $disable_if_not_pro_class; ?>">
                                                     <th scope="row"><?php echo __( 'Max. Photo Size?' , WE_LS_SLUG); ?></th>
                                                     <td>
                                                         <select id="ws-ls-photos-max-size" name="ws-ls-photos-max-size">
@@ -177,7 +177,7 @@ function ws_ls_settings_page() {
 															?>
                                                         </select>
                                                         <p><?php echo sprintf( '%s %s <a href="%s">%s</a>' ,
-                                                                                        __('Maximum photo size (in MB) that is allowed to be uploaded. Your server currently supports up to ' , WE_LS_SLUG) . ' ' . ws_ls_display_max_server_upload_size(),
+                                                                                        __('Maximum photo size (in MB) that is allowed to be uploaded. ' , WE_LS_SLUG),
                                                                                         __('This is used as part of Custom Fields.' , WE_LS_SLUG),
 		                                                                                ws_ls_meta_fields_base_url(),
 		                                                                                __('View Custom Fields' , WE_LS_SLUG)
@@ -700,6 +700,8 @@ function ws_ls_register_settings(){
 		// Third Party
         register_setting( 'we-ls-options-group', 'ws-ls-gf-enable' );
 
+        // Photos
+	    register_setting( 'we-ls-options-group', 'ws-ls-photos-max-size' );
     }
 
     // Pro Plus
@@ -710,7 +712,7 @@ function ws_ls_register_settings(){
         register_setting( 'we-ls-options-group', 'ws-ls-macro-proteins' );
         register_setting( 'we-ls-options-group', 'ws-ls-macro-carbs' );
         register_setting( 'we-ls-options-group', 'ws-ls-macro-fats' );
-		register_setting( 'we-ls-options-group', 'ws-ls-photos-max-size' );
+
     }
 
 }

@@ -149,21 +149,20 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 = 6.1 =
 
-// TODO: check gallery shortcode on WLT form
-//TODO: -If the question is to long and i press save, the question won't get saved.. But there ist no info why. So no error-Info...
-// TODO: Update email notifications to include custom fields
-//TODO: Add link to meta field documentation
-//TODO: Check add / edit / upload photos via admin add / edit entry. Seems to have a few bugs
-//TODO: Add tool to migrate existing photo_id over
-//todo: search for any refernce to photo_id or relevent globals and deal
-//todo: look at photo fields in form
-//todo: If we update / delete a meta field, can we hook on and clear the cache for all users that use it?
 
-* New Feature: Added a new Meta Field type of "Photos". This will allow site administrators to add one or more photo field per entry form.
+// review all caching and is_admin() checks in meta fields db.php
+//todo: Update readme and doc site to state that photos is now Pro - not Pro Plus
+//test with minmified scrtips
+//todo: photos enabled check isn't working when creating a enw meta field. It should be set to true if photos were enabled at time of migratng.
+//todo: test in all license modes
+// Check logic to ensure photos are PRO plus only!
+//todo: test emails on wegiht.yeken
+
+* New Feature: Added a new Meta Field type of "Photos" (Pro Plus only). This will allow site administrators to add one or more photo field per entry form.
+* New Feature: Build in tool to migrate photos from old system to new.
 * Improvement: Removed old photo upload and migrated to to new meta fields.
-
-//TODO: mention tody up of attachments
-//todo: mention migration of photos
+* Improvement: Added custom field data to email notifications.
+* Improvement: Added additional logic to remove photos from media library when no longer used by Weight Tracker (e.g. user has deleted them)
 
 = 6.0 =
 

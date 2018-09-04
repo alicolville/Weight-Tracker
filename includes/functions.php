@@ -775,7 +775,6 @@ function ws_ls_format_bytes_into_readable($bytes) {
 function ws_ls_photo_get_sizes($key = false) {
 
 	$sizes = [
-				0 => __('Server Default', WE_LS_SLUG),
 				1000000 => '1Mb',
 				2000000 => '2Mb',
 				3000000 => '3Mb',
@@ -796,18 +795,20 @@ function ws_ls_photo_get_sizes($key = false) {
  *
  * @return float|int
  */
-//todo: review this function
+
 function ws_ls_photo_max_upload_size() {
 
 	$file_size = WE_LS_PHOTOS_MAX_SIZE;
 	$max_size = ws_ls_file_upload_max_size();
 
-	if (false === defined('WE_LS_PHOTOS_MAX_SIZE') || 0 === WE_LS_PHOTOS_MAX_SIZE) {
-		return intval($max_size);
+	// If no photo size specified, default to 2Mb
+	if ( false === defined('WE_LS_PHOTOS_MAX_SIZE') || 0 === $file_size ) {
+		return 2000000;
 	}
 
-	return ($file_size > $max_size) ? intval($max_size) : intval($file_size);
+	return ( $file_size > $max_size ) ? intval( $max_size ) : intval( $file_size) ;
 }
+
 
 /**
  * Simple function to render max upload size selected by user

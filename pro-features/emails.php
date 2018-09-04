@@ -48,6 +48,22 @@ function ws_ls_email_notification($type, $weight_data) {
 			$email_data['data'] .= PHP_EOL . esc_html($weight_data['notes']) . PHP_EOL . '-----------------------' . PHP_EOL;
 		}
 
+		// Meta Fields
+		if ( true === ws_ls_meta_fields_is_enabled() && false === empty( $weight_data['meta-keys'] ) ) {
+
+			$meta_fields = ws_ls_meta_fields_enabled();
+
+			$email_data['data'] .= PHP_EOL . __( 'Custom Fields' , WE_LS_SLUG) . ':' . PHP_EOL . '-----------------------' . PHP_EOL;
+
+			foreach ( $meta_fields as $field ) {
+
+				if ( false === empty( $weight_data['meta-keys'][ $field['id'] ] ) ) {
+					$email_data['data'] .= $field['field_name'] . PHP_EOL . ws_ls_fields_display_field_value( $weight_data['meta-keys'][ $field['id'] ], $field['id'] ) . PHP_EOL;
+				}
+			}
+
+		}
+
 		// Allow others to filter data
 		$email_data = apply_filters(WE_LS_FILTER_EMAIL_DATA, $email_data, $type, $weight_data);
 
