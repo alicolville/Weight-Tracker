@@ -164,12 +164,14 @@ function ws_ls_settings_page() {
 
 															$max_size = ws_ls_file_upload_max_size();
 
-															foreach (ws_ls_photo_get_sizes() as $size => $label) {
+															$current_size = ws_ls_photo_max_upload_size();
+
+															foreach ( ws_ls_photo_get_sizes() as $size => $label ) {
 
 																if ( $size < $max_size ) {
 																	printf('<option value="%s" %s>%s</option>',
 																		$size,
-																		selected($size, WE_LS_PHOTOS_MAX_SIZE),
+																		selected( $size, $current_size ),
 																		$label
 																	);
 																}

@@ -152,8 +152,6 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 // review all caching and is_admin() checks in meta fields db.php
 //todo: Update readme and doc site to state that photos is now Pro - not Pro Plus
-//test with minmified scrtips
-//todo: photos enabled check isn't working when creating a enw meta field. It should be set to true if photos were enabled at time of migratng.
 //todo: test in all license modes
 // Check logic to ensure photos are PRO plus only!
 //todo: test emails on wegiht.yeken

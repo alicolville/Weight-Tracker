@@ -398,7 +398,7 @@
 		        'field_type' => 3,
 		        'suffix' => '',
 		        'mandatory' => 1,
-		        'enabled' => ( true === WS_LS_IS_PRO && 'no' !== get_option('ws-ls-photos-enable', 'no') ),
+		        'enabled' => ( 'no' !== get_option('ws-ls-photos-enable', 'no') ) ? 1 : 0 ,
 		        'sort' => 160,
 		        'hide_from_shortcodes' => 0
 	        ]);
