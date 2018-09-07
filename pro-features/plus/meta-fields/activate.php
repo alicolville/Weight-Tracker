@@ -56,27 +56,23 @@
      */
     function ws_ls_activate_meta_fields_activate() {
 
-        ws_ls_cache_user_delete( 'meta-fields' );
-
-        if ( true === empty( ws_ls_meta_fields( true, true ) ) ) {
-            ws_ls_meta_fields_load_examples();
-        }
-
         // Only run this when the plugin version has changed
         if( false === update_option('ws-ls-meta-version-number', WE_LS_DB_VERSION )) {
 
             ws_ls_meta_fields_create_mysql_tables();
+
+            ws_ls_cache_user_delete( 'meta-fields' );
 
 	        // If no meta fields exist, then add some examples
 	        if ( true === empty( ws_ls_meta_fields( true, true ) ) ) {
 		        ws_ls_meta_fields_load_examples();
 	        }
 
-	        // If example Photo meta field doesn't exist, then add it!
-	        ws_ls_meta_fields_photos_create_example_field();
-
 			// Do we have Photos to migrate from the old photo system to new?
 	        if ( ws_ls_meta_fields_photos_do_we_need_to_migrate() ) {
+
+                // If example Photo meta field doesn't exist, then add it!
+                ws_ls_meta_fields_photos_create_example_field();
 
 		        ws_ls_log_add('photo-migrate', 'Photos have been identified for migrating from old photo system to new!' );
 

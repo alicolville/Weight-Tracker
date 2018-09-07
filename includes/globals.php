@@ -42,8 +42,8 @@
 	define('WE_LS_KEY_YEKEN_ADMIN_NOTIFICATION', 'yeken-admin-notification');
 	define('WE_LS_CACHE_ADMIN_USER_DATA', 'admin-user-data');
 	define('WE_LS_TABLE_MAX_WEEK_FILTERS', 150);
-	define('WS_LS_PRO_PRICE', 40.00);
-	define('WS_LS_PRO_PLUS_PRICE', 100.00);
+	define('WS_LS_PRO_PRICE', 30.00);
+	define('WS_LS_PRO_PLUS_PRICE', 75.00);
 	define('WE_LS_USE_MINIFIED_SCRIPTS', true);
 	define('WE_LS_CRON_NAME', 'weight_loss_tracker_hourly');
 	define('WE_LS_CRON_NAME_YEKEN_COMMS', 'weight_loss_tracker_yeken_comms');
