@@ -275,8 +275,10 @@
      */
     function ws_ls_meta_fields_form_field_text( $field, $value ) {
 
-        return sprintf('<label for="%1$s">%2$s:</label>
-                        <input type="text" id="%1$s" name="%1$s" %3$s tabindex="%4$s" maxlength="200" value="%5$s" class="ws-ls-meta-field" />',
+        return sprintf('<div class="ws-ls-meta-field">
+                            <label for="%1$s" class="ws-ls-meta-field-title" >%2$s:</label>
+                            <input type="text" id="%1$s" name="%1$s" %3$s tabindex="%4$s" maxlength="200" value="%5$s" class="ws-ls-meta-field" />
+                        </div>',
             ws_ls_meta_fields_form_field_generate_id( $field['id'] ),
             esc_attr($field['field_name']),
             2 === intval($field['mandatory']) ? ' required' : '',
@@ -295,8 +297,10 @@
      */
     function ws_ls_meta_fields_form_field_number( $field, $value ) {
 
-        return sprintf('<label for="%1$s">%2$s:</label>
-                            <input type="number" id="%1$s" name="%1$s" %3$s step="any" tabindex="%4$s" maxlength="200" value="%5$s" class="ws-ls-meta-field" />',
+        return sprintf('<div class="ws-ls-meta-field">
+                            <label for="%1$s" class="ws-ls-meta-field-title">%2$s:</label>
+                            <input type="number" id="%1$s" name="%1$s" %3$s step="any" tabindex="%4$s" maxlength="200" value="%5$s" class="ws-ls-meta-field" />
+                        </div>',
             ws_ls_meta_fields_form_field_generate_id( $field['id'] ),
             esc_attr($field['field_name']),
             2 === intval($field['mandatory']) ? ' required' : '',
@@ -315,8 +319,10 @@
      */
     function ws_ls_meta_fields_form_field_yes_no( $field, $value ) {
 
-        $html = sprintf( '  <label for="%1$s">%2$s:</label>
-                            <select name="%1$s" id="%1$s" tabindex="%3$s">',
+        $html = sprintf( '<div class="ws-ls-meta-field">  
+                            <label for="%1$s" class="ws-ls-meta-field-title">%2$s:</label>
+                            <select name="%1$s" id="%1$s" tabindex="%3$s">
+                            ',
                             ws_ls_meta_fields_form_field_generate_id( $field['id'] ),
                             esc_attr( $field['field_name'] ),
                             ws_ls_get_next_tab_index()
@@ -331,7 +337,7 @@
         $html .= sprintf( '<option value="1" %1$s>%2$s</option>', selected( $value, 1, false ), __('No', WE_LS_SLUG) );
         $html .= sprintf( '<option value="2" %1$s>%2$s</option>', selected( $value, 2, false ), __('Yes', WE_LS_SLUG) );
 
-        $html .= '</select>';
+        $html .= '</select></div>';
 
         return $html;
 
@@ -350,54 +356,71 @@
 			return '';
 		}
 
-		$html = '';
+		$html = sprintf('<div class="ws-ls-meta-field ws-ls-meta-field-photo">
+                            <label for="%1$s" class="ws-ls-meta-field-title">%2$s</label>',
+                            ws_ls_meta_fields_form_field_generate_id( $field['id'] ),
+                            esc_attr( $field['field_name'] )
+                        );
+
+        $attachment_id = NULL;
+
+        $html .= '<div class="ws-ls-table ws-ls-photo-current">
+                       <div class="ws-ls-row">';
+
+        // Show Add button
+        $html .= sprintf('<div class="ws-ls-cell ws-ls-photo-select">
+                            <input type="file" name="%1$s" id="%1$s" tabindex="%2$s" class="ws-ls-hide ws-ls-input-file ws-ls-meta-fields-photo"  %5$s data-required="%4$s" />
+                            <label for="%1$s" class="button">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/></svg> 
+                                <span>%3$s</span>
+                            </label>
+                        </div>',
+            ws_ls_meta_fields_form_field_generate_id( $field['id'] ),
+            ws_ls_get_next_tab_index(),
+            __('Select a photo', WE_LS_SLUG),
+            2 === intval($field['mandatory']) ? 'y' : 'n',
+            true === empty( $attachment_id ) && 2 === intval($field['mandatory']) ? 'required' : ''
+        );
 
 		// Do we have an existing photo?
 		if ( false === empty( $value ) ) {
 
 			$attachment_id = intval( $value );
 
-			$thumbnail = wp_get_attachment_image_src($attachment_id, array(200, 200));
-			$full_url = wp_get_attachment_url($attachment_id);
+			$thumbnail = wp_get_attachment_image_src( $attachment_id );
+			$full_url = wp_get_attachment_url( $attachment_id );
 
 			if ( false === empty($thumbnail) ) {
-				$html .= sprintf('<div class="ws-ls-photo-current">
-                                                <h4>%8$s</h4>
-												<a href="%1$s" target="_blank" rel="noopener noreferrer"><img src="%2$s" alt="%3$s" width="%5$s" height="%6$s" /></a>
-												<input type="hidden" name="%9$s-previous" value="%4$s" />
-											</div>
-											<div class="ws-ls-clear-existing-photo">
-												<input type="checkbox" name="%9$s-delete" id="%9$s-delete" value="y" />
-												<label for="%9$s-delete">%7$s</label>
-											</div>',
-					esc_url($full_url),
-					esc_url($thumbnail[0]),
+            $html .= sprintf('      
+                                            <div class="ws-ls-cell ws-ls-photo-current">
+                                                <p>%8$s:</p>
+                                                <a href="%1$s" target="_blank" rel="noopener noreferrer">
+                                                    <img src="%2$s" alt="%3$s" width="%5$s" height="%6$s" />
+                                                </a> 
+                                                <div class="ws-ls-photo-delete-existing">
+                                                    <input type="checkbox" name="%9$s-delete" id="%9$s-delete" data-required="%10$s" data-field-id="%9$s" class="ws-ls-photo-field-delete" value="y" /> 
+                                                    <label for="%9$s-delete">%7$s</label>
+                                                </div>
+                                            </div>        
+                                               
+                                     
+                                     <input type="hidden" name="%9$s-previous" value="%4$s" />
+									 ',
+					esc_url( $full_url ),
+					esc_url( $thumbnail[0] ),
 					__('Existing photo for this date', WE_LS_SLUG),
-					intval($attachment_id),
-					intval($thumbnail[1]),
-					intval($thumbnail[2]),
-					__('Delete existing photo', WE_LS_SLUG),
-					__('Existing photo', WE_LS_SLUG),
-                    ws_ls_meta_fields_form_field_generate_id( $field['id'] )
+					intval( $attachment_id),
+					intval( $thumbnail[1] ),
+					intval( $thumbnail[2] ),
+					__( 'Delete existing photo', WE_LS_SLUG ),
+					__( 'Existing photo', WE_LS_SLUG ),
+                    ws_ls_meta_fields_form_field_generate_id( $field['id'] ),
+                    2 === intval( $field['mandatory'] ) ? 'y' : 'n'
 				);
 			}
 		}
 
-		// Show Add button
-		$html .= sprintf('<div class="ws-ls-photo-select">
-                                                <h4>%2$s</h4>
-												<input type="file" name="%1$s" id="%1$s" tabindex="%3$s" class="ws-ls-hide ws-ls-input-file ws-ls-meta-fields-photo" />
-												<label for="%1$s">
-													<svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/></svg> 
-													<span>%4$s</span>
-												</label>
-											</div>',
-            ws_ls_meta_fields_form_field_generate_id( $field['id'] ),
-            esc_attr( $field['field_name'] ),
-			ws_ls_get_next_tab_index(),
-			__('Select a photo', WE_LS_SLUG)
-        );
-
+        $html .= '</div></div></div>';
 
 		return $html;
 

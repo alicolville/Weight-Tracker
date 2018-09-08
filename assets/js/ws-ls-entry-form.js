@@ -28,6 +28,23 @@ jQuery( document ).ready(function ($) {
         return this.optional(element) || (element.files[0].size <= param)
     });
 
+    $( '.ws-ls-photo-field-delete' ).change( function() {
+
+        // If deleting the existing photo, and we have a required field, then add the "required" field
+        // back onto the input select field
+        if ( 'y' === $( this ).data('required') ) {
+
+            var field_id = '#' + $( this ).data('field-id');
+
+            if ( true === $( this ).is(':checked') ) {
+                $( field_id ).attr('required', 'required');
+            } else {
+                $( field_id ).removeAttr('required');
+                $( field_id ).removeClass('ws-ls-invalid');
+            }
+        }
+    });
+
     // Form Validation
     $(".we-ls-weight-form-validate").each(function () {
 

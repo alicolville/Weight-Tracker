@@ -26,6 +26,9 @@ input.ws-ls-valid
 {
     border: 1px solid green !important;
 }
+.ws-ls-photo-select .ws-ls-invalid + label {
+    color: red !important;
+}
 .we-ls-weight-form input[type=number], .we-ls-weight-form input[type=text], .we-ls-weight-form textarea, .we-ls-weight-form select,
 .we-ls-datepicker, .ws-ls-select, .ws-ls-user-pref-form input[type=text]
 {
@@ -316,7 +319,7 @@ input.ws-ls-valid
 
 .ws-ls-input-file:focus + label,
 .ws-ls-input-file + label:hover {
-     text-decoration: none;
+    text-decoration: none;
 }
 .ws-ls-photo-frame {
     display:inline-block;

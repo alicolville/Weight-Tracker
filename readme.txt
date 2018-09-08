@@ -154,7 +154,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 //todo: Update readme and doc site to state that photos is now Pro - not Pro Plus
 //todo: test in all license modes
 //todo: test emails on wegiht.yeken
-// minify css
+// minify css and entry form js
 
 * New Feature: Added a new Meta Field type of "Photos" (Pro Plus only). This will allow site administrators to add one or more photo field per entry form.
 * New Feature: Build in tool to migrate photos from old system to new.
