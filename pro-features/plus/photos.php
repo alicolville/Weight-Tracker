@@ -319,7 +319,7 @@ function ws_ls_photos_db_get_all_photos(    $user_id = false,
 
     // Return cache if found!
     if ($cache = ws_ls_cache_user_get($user_id, $cache_key))   {
-   		return $cache;
+        return $cache;
     }
 
     $limit = ( false === empty($limit) && is_numeric($limit) ) ? ' limit 0, ' . intval($limit) : '';

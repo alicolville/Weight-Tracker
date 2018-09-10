@@ -277,13 +277,14 @@
 
         return sprintf('<div class="ws-ls-meta-field">
                             <label for="%1$s" class="ws-ls-meta-field-title" >%2$s:</label>
-                            <input type="text" id="%1$s" name="%1$s" %3$s tabindex="%4$s" maxlength="200" value="%5$s" class="ws-ls-meta-field" />
+                            <input type="text" id="%1$s" name="%1$s" %3$s tabindex="%4$s" maxlength="200" value="%5$s" class="ws-ls-meta-field" data-msg="%6$s \'%2$s\'." />
                         </div>',
             ws_ls_meta_fields_form_field_generate_id( $field['id'] ),
-            esc_attr($field['field_name']),
+            esc_attr( $field['field_name'] ),
             2 === intval($field['mandatory']) ? ' required' : '',
             ws_ls_get_next_tab_index(),
-            ( false === empty( $value ) ) ? esc_attr( $value ) : ''
+            ( false === empty( $value ) ) ? esc_attr( $value ) : '',
+            __('Please enter a value for', WE_LS_SLUG)
         );
 
     }
@@ -299,13 +300,14 @@
 
         return sprintf('<div class="ws-ls-meta-field">
                             <label for="%1$s" class="ws-ls-meta-field-title">%2$s:</label>
-                            <input type="number" id="%1$s" name="%1$s" %3$s step="any" tabindex="%4$s" maxlength="200" value="%5$s" class="ws-ls-meta-field" />
+                            <input type="number" id="%1$s" name="%1$s" %3$s step="any" tabindex="%4$s" maxlength="200" value="%5$s" class="ws-ls-meta-field" data-msg="%6$s \'%2$s\'." />
                         </div>',
             ws_ls_meta_fields_form_field_generate_id( $field['id'] ),
-            esc_attr($field['field_name']),
-            2 === intval($field['mandatory']) ? ' required' : '',
+            esc_attr( $field['field_name'] ),
+            2 === intval( $field['mandatory'] ) ? ' required' : '',
             ws_ls_get_next_tab_index(),
-            ( false === empty( $value ) ) ? esc_attr( $value ) : ''
+            ( false === empty( $value ) ) ? esc_attr( $value ) : '',
+            __('Please enter a number for', WE_LS_SLUG)
         );
 
     }
@@ -369,17 +371,20 @@
 
         // Show Add button
         $html .= sprintf('<div class="ws-ls-cell ws-ls-photo-select">
-                            <input type="file" name="%1$s" id="%1$s" tabindex="%2$s" class="ws-ls-hide ws-ls-input-file ws-ls-meta-fields-photo"  %5$s data-required="%4$s" />
-                            <label for="%1$s" class="button">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/></svg> 
-                                <span>%3$s</span>
-                            </label>
-                        </div>',
+                                <input type="file" data-msg="%6$s \'%7$s\'." name="%1$s" id="%1$s" tabindex="%2$s" class="ws-ls-hide ws-ls-input-file ws-ls-meta-fields-photo"  %5$s data-required="%4$s" />
+                                <label for="%1$s" class="ws-ls-button">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/></svg> 
+                                    <span>%3$s</span>
+                                </label>
+                            
+                        ',
             ws_ls_meta_fields_form_field_generate_id( $field['id'] ),
             ws_ls_get_next_tab_index(),
-            __('Select a photo', WE_LS_SLUG),
+            ( false === empty( $value ) ) ? __('Replace photo', WE_LS_SLUG) : __('Select photo', WE_LS_SLUG),
             2 === intval($field['mandatory']) ? 'y' : 'n',
-            true === empty( $attachment_id ) && 2 === intval($field['mandatory']) ? 'required' : ''
+            true === empty( $value ) && 2 === intval( $field['mandatory'] ) ? 'required' : '',
+            __('Please select a photo for', WE_LS_SLUG),
+            esc_attr( $field['field_name'] )
         );
 
 		// Do we have an existing photo?
@@ -392,7 +397,7 @@
 
 			if ( false === empty($thumbnail) ) {
             $html .= sprintf('      
-                                            <div class="ws-ls-cell ws-ls-photo-current">
+                                            
                                                 <p>%8$s:</p>
                                                 <a href="%1$s" target="_blank" rel="noopener noreferrer">
                                                     <img src="%2$s" alt="%3$s" width="%5$s" height="%6$s" />
@@ -401,10 +406,8 @@
                                                     <input type="checkbox" name="%9$s-delete" id="%9$s-delete" data-required="%10$s" data-field-id="%9$s" class="ws-ls-photo-field-delete" value="y" /> 
                                                     <label for="%9$s-delete">%7$s</label>
                                                 </div>
-                                            </div>        
-                                               
-                                     
-                                     <input type="hidden" name="%9$s-previous" value="%4$s" />
+                                                    
+                                            <input type="hidden" name="%9$s-previous" value="%4$s" />
 									 ',
 					esc_url( $full_url ),
 					esc_url( $thumbnail[0] ),
@@ -420,7 +423,7 @@
 			}
 		}
 
-        $html .= '</div></div></div>';
+        $html .= '</div></div></div></div>';
 
 		return $html;
 

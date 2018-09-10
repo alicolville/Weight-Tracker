@@ -338,9 +338,7 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 	}
 
 	$html_output .= '<div class="ws-ls-inner-form comment-input">
-		<div class="ws-ls-error-summary">
-			<ul></ul>
-		</div>
+		
 	';
 
 	// If not a target form include date
@@ -415,11 +413,15 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 
 	$html_output .= '<div class="ws-ls-form-buttons">
 						<div>
+						    <div class="ws-ls-error-summary">
+						        <p>' . __('Please correct the following:', WE_LS_SLUG) . '</p>
+                                <ul></ul>
+                            </div>
 							<input name="submit_button" type="submit" id="we-ls-submit"  tabindex="' . ws_ls_get_next_tab_index() . '" value="' . $button_text . '" class="comment-submit button" />';
 
 							// If we want a cancel button then add one
 							if ( false === empty( $cancel_button ) && false === $target_form && false === empty( $redirect_url ) ) {
-								$html_output .= '&nbsp;<button class="ws-ls-cancel-form" type="button" tabindex="' . ws_ls_get_next_tab_index() . '" class="ws-ls-cancel-form button" data-form-id="' . esc_attr($form_id) . '" >' . __('Cancel', WE_LS_SLUG) . '</button>';
+								$html_output .= '&nbsp;<button class="ws-ls-cancel-form" id="ws-ls-cancel" type="button" tabindex="' . ws_ls_get_next_tab_index() . '" class="ws-ls-cancel-form button" data-form-id="' . esc_attr($form_id) . '" >' . __('Cancel', WE_LS_SLUG) . '</button>';
 							}
 
 							//If a target form, display "Clear Target" button
@@ -617,7 +619,9 @@ function ws_ls_get_js_config() {
 		'validation-we-ls-measurements' => __('Please enter a valid measurement (' . WE_LS_MEASUREMENTS_UNIT . ') which is less that 1000.', WE_LS_SLUG),
 		'date-picker-locale' => ws_ls_get_js_datapicker_locale(),
 		'in-admin' => (is_admin()) ? 'true' : 'false',
-		'max-photo-upload' => ws_ls_photo_max_upload_size()
+		'max-photo-upload' => ws_ls_photo_max_upload_size(),
+
+
 	);
 
 	// If About You fields mandatory, add extra translations

@@ -154,6 +154,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 //todo: Update readme and doc site to state that photos is now Pro - not Pro Plus
 //todo: test in all license modes
 //todo: test emails on wegiht.yeken
+// check antry form in admin... loading symbol etc
 // minify css and entry form js
 
 * New Feature: Added a new Meta Field type of "Photos" (Pro Plus only). This will allow site administrators to add one or more photo field per entry form.
@@ -161,6 +162,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 * Improvement: Removed old photo upload and migrated to to new meta fields.
 * Improvement: Added custom field data to email notifications.
 * Improvement: Added additional logic to remove photos from media library when no longer used by Weight Tracker (e.g. user has deleted them)
+* Improvement: Various minor tweaks to meta fields and validation.
 
 = 6.0 =
 
