@@ -70,6 +70,8 @@ jQuery( document ).ready(function ($) {
                 "we-ls-measurements": ws_ls_config["validation-we-ls-measurements"]
             },
             submitHandler: function(form) {
+                $( '.ws-ls-remove-on-submit' ).remove();
+                $( '.ws-ls-form-processing-throbber' ).removeClass('ws-ls-hide');
                 form.submit();
             }
         });
@@ -149,5 +151,4 @@ jQuery( document ).ready(function ($) {
             });
         }
     });
-
 });

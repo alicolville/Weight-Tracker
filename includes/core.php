@@ -417,16 +417,17 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 						        <p>' . __('Please correct the following:', WE_LS_SLUG) . '</p>
                                 <ul></ul>
                             </div>
-							<input name="submit_button" type="submit" id="we-ls-submit"  tabindex="' . ws_ls_get_next_tab_index() . '" value="' . $button_text . '" class="comment-submit button" />';
+                            <div class="ws-ls-form-processing-throbber ws-ls-loading ws-ls-hide"></div>
+							<input name="submit_button" type="submit" id="we-ls-submit"  tabindex="' . ws_ls_get_next_tab_index() . '" value="' . $button_text . '" class="comment-submit button ws-ls-remove-on-submit" />';
 
 							// If we want a cancel button then add one
 							if ( false === empty( $cancel_button ) && false === $target_form && false === empty( $redirect_url ) ) {
-								$html_output .= '&nbsp;<button class="ws-ls-cancel-form" id="ws-ls-cancel" type="button" tabindex="' . ws_ls_get_next_tab_index() . '" class="ws-ls-cancel-form button" data-form-id="' . esc_attr($form_id) . '" >' . __('Cancel', WE_LS_SLUG) . '</button>';
+								$html_output .= '&nbsp;<button id="ws-ls-cancel" type="button" tabindex="' . ws_ls_get_next_tab_index() . '" class="ws-ls-cancel-form button ws-ls-remove-on-submit" data-form-id="' . esc_attr($form_id) . '" >' . __('Cancel', WE_LS_SLUG) . '</button>';
 							}
 
 							//If a target form, display "Clear Target" button
 							if ($target_form && false === is_admin()){
-								$html_output .= '&nbsp;<button name="ws-ls-clear-target" id="ws-ls-clear-target" type="button" tabindex="' . ws_ls_get_next_tab_index() . '" class="ws-ls-clear-target button" >' . __('Clear Target', WE_LS_SLUG) . '</button>';
+								$html_output .= '&nbsp;<button name="ws-ls-clear-target" id="ws-ls-clear-target" type="button" tabindex="' . ws_ls_get_next_tab_index() . '" class="ws-ls-clear-target button ws-ls-remove-on-submit" >' . __('Clear Target', WE_LS_SLUG) . '</button>';
 							}
 	$html_output .= '	</div>
 					</div>
