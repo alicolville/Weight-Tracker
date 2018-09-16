@@ -149,14 +149,12 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 = 6.1 =
 
-// review all caching and is_admin() checks in meta fields db.php
+// rewview hide photos on widget
 //todo: Update readme and doc site to state that photos is now Pro - not Pro Plus
 //todo: test in all license modes
 //todo: test emails on wegiht.yeken
-// check antry form in admin... loading symbol etc
-// minify css and entry form js
 
-* New Feature: Added a new Meta Field type of "Photos" (Pro Plus only). This will allow site administrators to add one or more photo field per entry form.
+* New Feature: Added a new Meta Field type of "Photos" (Pro only). This will allow site administrators to add one or more photo field per entry form.
 * New Feature: Build in tool to migrate photos from old system to new.
 * Improvement: Removed old photo upload and migrated to to new meta fields.
 * Improvement: Added custom field data to email notifications.
