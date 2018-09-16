@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight, loss, lose, helper, bmi, body, mass, index, graph, track, stones, kg, table, data, plot, target, history, pounds, responsive, chart, measurements, cm, centimeters, inches, hip, waist, bicep, thigh
 Requires at least: 4.4.0
 Tested up to: 4.9.8
-Stable tag: 6.0
+Stable tag: 6.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate Link: https://www.paypal.me/yeken
@@ -149,7 +149,6 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 = 6.1 =
 
-
 // review all caching and is_admin() checks in meta fields db.php
 //todo: Update readme and doc site to state that photos is now Pro - not Pro Plus
 //todo: test in all license modes
@@ -163,6 +162,10 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 * Improvement: Added custom field data to email notifications.
 * Improvement: Added additional logic to remove photos from media library when no longer used by Weight Tracker (e.g. user has deleted them)
 * Improvement: Various minor tweaks to meta fields and validation.
+
+= 6.0.1 =
+
+* Bug fix: Removed error log count that check which was causing the plugin not to activate.
 
 = 6.0 =
 

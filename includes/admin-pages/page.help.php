@@ -58,6 +58,9 @@ function ws_ls_help_page() {
 							</div>
 						</div>
 					<?php endif; ?>
+                     <div class="postbox">
+                        <h3 class="hndle"><span><?php echo __('Error Log', WE_LS_SLUG); ?> </span></h3>
+                        <div style="padding: 0px 15px 0px 15px">
 
 					<?php if ( true === current_user_can( 'manage_options' ) && 'y' === ws_ls_querystring_value('yeken') ) : ?>
 
@@ -96,8 +99,6 @@ function ws_ls_help_page() {
                         </div>
 					<?php endif; ?>
 
-                    <?php if ( false === empty( ws_ls_log_all() ) ): ?>
-
                         <div class="postbox">
                             <h3 class="hndle"><span><?php echo __('Weight Tracker Debug Log', WE_LS_SLUG); ?> </span></h3>
                             <div style="padding: 0px 15px 0px 15px">
@@ -116,10 +117,9 @@ function ws_ls_help_page() {
 
                                 <!-- // TODO: Export to CSV -->
                             </div>
+
                         </div>
-
-                    <?php endif; ?>
-
+                    </div>
 				</div>
 				<!-- .meta-box-sortables .ui-sortable -->
 
