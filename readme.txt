@@ -161,6 +161,12 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 * Improvement: Added additional logic to remove photos from media library when no longer used by Weight Tracker (e.g. user has deleted them)
 * Improvement: Various minor tweaks to meta fields and validation.
 
+= 6.0.2 =
+
+* Improvement: Added Hebrew.
+* Bug fix: Removed error log count that check which was causing the custom fields to be added.
+* Bug fix: Fixed issue where it would attempt the Custom Field default check on every admin page load!
+
 = 6.0.1 =
 
 * Bug fix: Removed error log count that check which was causing the plugin not to activate.

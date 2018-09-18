@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Weight Loss Tracker\n"
-"POT-Creation-Date: 2018-08-12 12:16+0100\n"
+"POT-Creation-Date: 2018-09-18 15:49+0100\n"
 "PO-Revision-Date: 2017-09-04 19:10+0100\n"
 "Last-Translator: \n"
 "Language-Team: Yeken - email@yeken.uk\n"
@@ -202,11 +202,11 @@ msgstr ""
 msgid "Correct accuracy for measurements entered in Stones and Pounds (only run with the advice of YeKen)"
 msgstr ""
 
-#: includes/admin-pages/page.help.php:63
+#: includes/admin-pages/page.help.php:62
 msgid "Error Log"
 msgstr ""
 
-#: includes/admin-pages/page.help.php:66
+#: includes/admin-pages/page.help.php:65
 msgid "Below is a list of the errors logged by the Weight Tracker plugin over the last 31 days."
 msgstr ""
 
@@ -2225,31 +2225,31 @@ msgstr ""
 msgid "Carbs"
 msgstr ""
 
-#: pro-features/plus/meta-fields/activate.php:79
+#: pro-features/plus/meta-fields/activate.php:81
 msgid "Cups of water drunk today?"
 msgstr ""
 
-#: pro-features/plus/meta-fields/activate.php:80
+#: pro-features/plus/meta-fields/activate.php:82
 msgid "Water"
 msgstr ""
 
-#: pro-features/plus/meta-fields/activate.php:82
+#: pro-features/plus/meta-fields/activate.php:84
 msgid "Cups"
 msgstr ""
 
-#: pro-features/plus/meta-fields/activate.php:90
+#: pro-features/plus/meta-fields/activate.php:92
 msgid "How did you feel today?"
 msgstr ""
 
-#: pro-features/plus/meta-fields/activate.php:91
+#: pro-features/plus/meta-fields/activate.php:93
 msgid "Feel"
 msgstr ""
 
-#: pro-features/plus/meta-fields/activate.php:101
+#: pro-features/plus/meta-fields/activate.php:103
 msgid "Did you stick to your diet?"
 msgstr ""
 
-#: pro-features/plus/meta-fields/activate.php:102
+#: pro-features/plus/meta-fields/activate.php:104
 msgid "Diet"
 msgstr ""
 
