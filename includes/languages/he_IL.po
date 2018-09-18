@@ -1,0 +1,1864 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Weight Loss Tracker\n"
+"POT-Creation-Date: 2018-08-07 23:28+0100\n"
+"PO-Revision-Date: 2018-09-18 15:48+0100\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.7\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==2 ? 1 : n>10 && n%10==0 ? "
+"2 : 3);\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: weight-loss-tracker.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"Last-Translator: \n"
+"Language: he_IL\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: admin-notifications.php:30
+msgid "Weight Loss Tracker"
+msgstr "מנהל מעקב אחר ירידה במשקל"
+
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:56
+msgid "Add / Edit a Custom Field"
+msgstr "הוספה/עריכה של שדה מותאם אישית"
+
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:60
+msgid "Please complete all mandatory fields."
+msgstr "נא השלם את כל השדות ההכרחיים."
+
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:68
+msgid "Field Type"
+msgstr "סוג שדה"
+
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:75
+msgid "Number"
+msgstr "מספר"
+
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:76
+msgid "Text"
+msgstr "טקסט"
+
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:77
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:134
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:146
+#: admin-pages/page.settings.php:118 admin-pages/page.settings.php:128
+#: admin-pages/page.settings.php:139 admin-pages/page.settings.php:150
+#: admin-pages/page.settings.php:177 admin-pages/page.settings.php:187
+#: admin-pages/page.settings.php:197 admin-pages/page.settings.php:218
+#: admin-pages/page.settings.php:325 admin-pages/page.settings.php:357
+#: admin-pages/page.settings.php:386 admin-pages/page.settings.php:404
+#: admin-pages/page.settings.php:429 admin-pages/page.settings.php:480
+#: admin-pages/page.settings.php:495 admin-pages/page.settings.php:505
+#: admin-pages/page.settings.php:515 admin-pages/page.settings.php:535
+#: admin-pages/page.settings.php:555 admin-pages/page.settings.php:616
+msgid "Yes"
+msgstr "כן"
+
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:77
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:133
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:145
+#: admin-pages/page.settings.php:119 admin-pages/page.settings.php:129
+#: admin-pages/page.settings.php:140 admin-pages/page.settings.php:149
+#: admin-pages/page.settings.php:176 admin-pages/page.settings.php:186
+#: admin-pages/page.settings.php:196 admin-pages/page.settings.php:219
+#: admin-pages/page.settings.php:326 admin-pages/page.settings.php:356
+#: admin-pages/page.settings.php:387 admin-pages/page.settings.php:405
+#: admin-pages/page.settings.php:428 admin-pages/page.settings.php:479
+#: admin-pages/page.settings.php:496 admin-pages/page.settings.php:506
+#: admin-pages/page.settings.php:516 admin-pages/page.settings.php:534
+#: admin-pages/page.settings.php:554 admin-pages/page.settings.php:615
+msgid "No"
+msgstr "לא"
+
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:80
+msgid "Note: Changing the field type will cause existing user data to be lost."
+msgstr "הערה: שינוי סוג השדה יגרום לאבדן נתוני משתמש קיימים."
+
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:86
+msgid "Name"
+msgstr "שם"
+
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:94
+msgid "Abbreviation"
+msgstr "קיצור"
+
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:98
+msgid ""
+"Used when displaying the field data in smaller spaces e.g. table headers, "
+"charts, etc"
+msgstr ""
+"משמש בעת הצגת נתוני השדה בחללים קטנים יותר, לדוגמה: כותרות טבלה, תרשימים "
+"וכו'."
+
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:103
+msgid "Suffix"
+msgstr "סיומת"
+
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:107
+msgid ""
+"Text display at to end of the entered value when displaying it to the user. "
+"e.g. CM would display in the following manner: 120 CM"
+msgstr ""
+"טקסט מוצג בסוף הערך המוזן, בעת הצגתו למשתמש. לדוגמה, ס\"מ יוצג באופן הבא: "
+"120 ס\"מ."
+
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:112
+msgid "Display Order"
+msgstr "סדר הצגה"
+
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:123
+msgid ""
+"Used to specify the order of custom fields. Lower numbers are displayed "
+"higher up the form."
+msgstr ""
+"משמש לציון סדר השדות המותאמים אישית. מספרים נמוכים יותר מוצגים בתחילת הטופס."
+
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:128 core.php:459
+msgid "Mandatory"
+msgstr "חובה"
+
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:140
+msgid "Enabled"
+msgstr "מופעל"
+
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:152 core.php:480
+msgid "Cancel"
+msgstr "בטל"
+
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:155
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:157
+msgid "Save"
+msgstr "שמור"
+
+#: admin-pages/meta-fields/page-meta-fields-list.php:23 hooks.php:10
+msgid "Custom Fields"
+msgstr "שדות מותאמים אישית"
+
+#: admin-pages/meta-fields/page-meta-fields-list.php:26
+msgid ""
+"Custom Fields allows you to ask your user's additional questions when adding "
+"a weight entry. \n"
+"                                                        For example, you may "
+"wish to ask them how many cups of water they drank today or perhaps how they "
+"are feeling. \n"
+"                                                            You can use the "
+"following screen to add as many questions as you wish."
+msgstr ""
+"שדות מותאמים אישית מאפשרים לך לשאול את המשתמשים שלך שאלות נוספות בעת הוספת "
+"ערך משקל. לדוגמה, ייתכן שתרצה לשאול כמה כוסות מים שתיתי היום, או אולי מה "
+"הרגשתי."
+
+#: admin-pages/page.help.php:21
+msgid "Custom modifications / web development"
+msgstr "שינויים מותאמים אישית / פיתוח אתרים"
+
+#: admin-pages/page.help.php:23
+msgid ""
+"If require plugin modifications to Weight Tracker, or need a new plugin "
+"built, or perhaps you need a developer to help you with your website then "
+"please don't hesitiate get in touch!"
+msgstr ""
+"אם נדרש שינויים בתוסף מעקב משקל, או צריך תוסף חדש בנוי, או אולי אתה צריך "
+"מפתח כדי לעזור לך עם אתר האינטרנט שלך אז בבקשה אל תהסס להיות איתנו בקשר!"
+
+#: admin-pages/page.help.php:24
+msgid "We provide fix priced quotes."
+msgstr "הנו מספקים הצעות מחיר קבועות מראש."
+
+#: admin-pages/page.help.php:33 admin-pages/page.license.php:235
+msgid "Documentation"
+msgstr "תיעוד"
+
+#: admin-pages/page.help.php:35
+msgid "You can find detailed documentation for this plugin at our site:"
+msgstr "ניתן למוא תיעוד מפורט עבור פלאגין זה האתר שלנו:"
+
+#: admin-pages/page.help.php:43
+msgid "Tools"
+msgstr "כלים"
+
+#: admin-pages/page.help.php:45
+msgid ""
+"Correct accuracy for measurements entered in Stones and Pounds (only run "
+"with the advice of YeKen)"
+msgstr "דיוק נכון למדידות שהוזנו באבנים ובקילוגרמים (הפעלה רק בעצת YeKen)."
+
+#: admin-pages/page.license.php:11 admin-pages/page.settings.php:8
+msgid "You do not have sufficient permissions to access this page."
+msgstr "אין לך הרשאות לגשת לעמוד זה."
+
+#: admin-pages/page.license.php:39
+msgid "Your license has been applied!"
+msgstr "הרישיון שלך התקבל!"
+
+#: admin-pages/page.license.php:42
+msgid "An error occurred applying your license: "
+msgstr "שגיאה התרחשה בעת הגשת הרישיון שלך:"
+
+#: admin-pages/page.license.php:73 hooks.php:12
+msgid "Upgrade"
+msgstr "שידרוג"
+
+#: admin-pages/page.license.php:78
+msgid "As you can see from the features listed below, the"
+msgstr "ביכולתך לראות מתוך האפשרויות המוצגות למטה, ש:"
+
+#: admin-pages/page.license.php:80
+msgid ""
+"can offer you and your members a lot more features to help you and them "
+"manage their weight. There are two types of License that you can purchase, "
+"Pro and Pro Plus. Pro contains an enriched feature set and user experience "
+"and is a must! Pro Plus extends Pro with features such as BMR, Calorie "
+"intake, Macronutrient Calculator, etc."
+msgstr ""
+"יכול להציע לך ולחברים שלך הרבה יותר תכונות כדי לעזור לך ולנהל את משקלם. ישנם "
+"שני סוגים של רישיון שאתה יכול לרכוש, Pro ו Pro פלוס. Pro מכיל תכונה המעשירה "
+"את חוויית המשתמש באופן משמעותי! Pro Plus מרחיב Pro עם תכונות כגון BMR, צריכת "
+"קלוריות, מחשבון Macronutrients, וכו'."
+
+#: admin-pages/page.license.php:81
+msgid ""
+"Of course, by purchasing a license, you are supporting the future of this "
+"plugin and it is gratefully appreciated."
+msgstr ""
+"כמובן, על ידי רכישת רישיון, אתה תומך בעתיד של תוסף זה, ואנו מעריכים ומוקירים "
+"תודה על כך."
+
+#: admin-pages/page.license.php:86
+msgid "Legacy Pro License"
+msgstr "רישיון Pro מורשה"
+
+#: admin-pages/page.license.php:87
+msgid ""
+"Our licensing has model has changed, Prior to September 2017 it used to be a "
+"one off payment that enabled the Pro features of the plugin. This is still "
+"the case and any old licenses will still be honoured."
+msgstr ""
+"מודל הרישיונות שלנו השתנה, מאז ספטמבר 2017. זה היה תשלום אחד שאיפשר את "
+"תכונות ה-Pro של הפלאגין. אנו ממשיכים לכבד את כל הרישיונות שהוענקו לפני כן."
+
+#: admin-pages/page.license.php:88
+msgid "Moving to a yearly license"
+msgstr "מעבר לרישיון שנתי"
+
+#: admin-pages/page.license.php:89
+msgid ""
+"There is no reason to move to a yearly license - Pro features will remain "
+"the same for legacy and new Pro subscriptions. However, if you were to move "
+"to a yearly subscription you will be supporting the development of the "
+"plugin (and I'll give you a big hug)."
+msgstr ""
+"אין סיבה לעבור לרישיון שנתי - תכונות Pro יישארו זהות עבור מנויים מהדור הקודם "
+"והחדש. עם זאת, אם תעבור למנוי שנתי, תתמוך בפיתו הפלאגין (ואני אתן לך חיבוק "
+"גדול)."
+
+#: admin-pages/page.license.php:93
+msgid "Pro Plus License"
+msgstr "רישיון פרו +"
+
+#: admin-pages/page.license.php:94
+msgid ""
+"Of course, thank you for purchasing a Pro license - it is much appreciated. "
+"As you can see below, you can further expand the features of"
+msgstr ""
+"כמובן, תודה על רכישת רישיון Pro - זה מוערך מאוד. כפי שניתן לראות למטה, תוכל "
+"להרחיב עוד יותר את התכונות של"
+
+#: admin-pages/page.license.php:96 admin-pages/page.license.php:106
+msgid ""
+"by extending your license to Pro Plus. Pro Plus extends Pro with features "
+"such as BMR, Calorie intake, Macronutrient Calculator, etc. You can view the "
+"additional features that Pro Plus offers you below."
+msgstr ""
+"על ידי הרחבת הרישיון שלך ל Pro Plus. ב-Pro Plus יש תכונות נוספות כגון חישוב "
+"BMR, צריכת קלוריות, מחשבון מקרונוטריינטים, וכו'. ניתן לקרוא מהן התכונות "
+"הנוספות של Pro Plus למטה."
+
+#: admin-pages/page.license.php:104
+msgid ""
+"Of course, a big thank you purchasing a Pro license at some point - it is "
+"much appreciated. As you can see below, you can further expand the features "
+"of"
+msgstr ""
+"כמובן, תודה רבה של רכישת רישיון Pro בשלב כלשהו - אנו מעריכים זאת מאוד. .כפי "
+"שניתן לראות למטה, תוכל להרחיב עוד את התכונות של"
+
+#: admin-pages/page.license.php:112
+msgid ""
+"Thank you kind soul, you have purchased a Pro Plus license. A huge thank you "
+"for supporting me and this plugin!"
+msgstr ""
+"תודה לך, נשמה טובה, רכשת רישיון ל Pro Plusץ תודה רבה על התמיכה בי ובפלאגין "
+"הזה!"
+
+#: admin-pages/page.license.php:119
+msgid "In case you need, your <strong>Site Hash</strong> is"
+msgstr "במקרה שאתה צריך, <strong>Site Hash</strong> שלך הוא"
+
+#: admin-pages/page.license.php:128
+msgid "Get a free 7 day trial!"
+msgstr "קבל 7 ימים של התנסות בחינם!"
+
+#: admin-pages/page.license.php:135 admin-pages/page.license.php:141
+msgid "Upgrade to Pro Plus for"
+msgstr "שדרג ל Pro Plus עבור"
+
+#: admin-pages/page.license.php:135 admin-pages/page.license.php:141
+#: admin-pages/page.license.php:255 admin-pages/page.license.php:269
+msgid "a year"
+msgstr "לשנה"
+
+#: admin-pages/page.license.php:143
+#, no-php-format
+msgid " (50% discount)"
+msgstr "(50% הנחה)"
+
+#: admin-pages/page.license.php:159
+msgid "Switch to a yearly Pro license for "
+msgstr "עבור לרישיון Pro שנתי עבור"
+
+#: admin-pages/page.license.php:159 admin-pages/page.license.php:160
+msgid " a year"
+msgstr "לשנה"
+
+#: admin-pages/page.license.php:160
+msgid "Upgrade to Pro for "
+msgstr "שדרג ל Pro עבור"
+
+#: admin-pages/page.license.php:176
+msgid "Add or Update License"
+msgstr "הרחבה או עדכון רישיון"
+
+#: admin-pages/page.license.php:181
+msgid ""
+"Copy and paste the license given to you by YeKen into this box and click "
+"\"Apply License\""
+msgstr ""
+"העתק והדבק את הרישיון שניתן לך על ידי YeKen לתוך תיבת זה ולחץ על \"החלת "
+"רישיון\""
+
+#: admin-pages/page.license.php:184
+msgid "Apply License"
+msgstr "הרחבה או עדכון רישיון"
+
+#: admin-pages/page.license.php:189
+msgid "Your License Information"
+msgstr "נתוני הרישיון שלך"
+
+#: admin-pages/page.license.php:193
+msgid "Site Hash"
+msgstr "Site Hash"
+
+#: admin-pages/page.license.php:197
+msgid "Type"
+msgstr "סוג"
+
+#: admin-pages/page.license.php:201
+msgid "Expires"
+msgstr "פג תוקף"
+
+#: admin-pages/page.license.php:206
+msgid "Never"
+msgstr "לעולם"
+
+#: admin-pages/page.license.php:210
+msgid "n/a"
+msgstr "לא זמין"
+
+#: admin-pages/page.license.php:220
+msgid "Your Existing License"
+msgstr "הרישיון הנוכחי שלך"
+
+#: admin-pages/page.license.php:226
+msgid "Remove License"
+msgstr "הסר רישיון"
+
+#: admin-pages/page.license.php:238
+msgid "Need further help or information, please visit our documentation site:"
+msgstr "אם ברצונך בעזרה או מידע נוספים, בבקשה כנס לאתר התיעוד שלנו:"
+
+#: admin-pages/page.license.php:251
+msgid "Pro Plus Features"
+msgstr "תכונות Pro Plus"
+
+#: admin-pages/page.license.php:255
+msgid "Below is a list of the intended features of the Pro Plus version"
+msgstr "למטה יש רשימה של התוספות הצפויות של גרסת פרו פלוס"
+
+#: admin-pages/page.license.php:255 admin-pages/page.license.php:269
+msgid "You can upgrade for"
+msgstr "שדרג עבור"
+
+#: admin-pages/page.license.php:264
+msgid "Pro Features"
+msgstr "תכונות Pro"
+
+#: admin-pages/page.license.php:269
+msgid "Below is a list of the intended features of the Pro version"
+msgstr "למטה יש רשימה של התוספות הצפויות של גרסת פרו פלוס"
+
+#: admin-pages/page.license.php:283 admin-pages/user-data/data-summary.php:183
+msgid "Are you sure you?"
+msgstr "האם הינך בטוח?"
+
+#: admin-pages/page.license.php:284
+msgid ""
+"Are you sure you wish to remove the license for this site? Removing it may "
+"cause your user's to lose functionality."
+msgstr ""
+"האם אתה בטוח שברצונך להסיר את הרישיון עבור אתר זה? ההסרה יכולה לגרום "
+"למשתמשים שלך לאבד את הפונקציונליות של הפלאגין"
+
+#: admin-pages/page.settings.php:38
+msgid "Rebuild them now"
+msgstr "בנה אותם מחדש עכשיו"
+
+#: admin-pages/page.settings.php:60
+msgid " Settings"
+msgstr "הגדרות"
+
+#: admin-pages/page.settings.php:74
+msgid "General"
+msgstr "כללי"
+
+#: admin-pages/page.settings.php:74
+msgid "General settings"
+msgstr "הגדרות כלליות"
+
+#: admin-pages/page.settings.php:75 license.php:248
+msgid "Pro Plus"
+msgstr "פרו פלוס"
+
+#: admin-pages/page.settings.php:75
+msgid "Adjust settings for your Pro Plus features"
+msgstr "כוון את הגדרות רישיון הפרו פלוס שלך"
+
+#: admin-pages/page.settings.php:76 admin-pages/user-data/data-user.php:43
+msgid "Chart"
+msgstr "טבלה"
+
+#: admin-pages/page.settings.php:76
+msgid "Chart styling and config"
+msgstr "עיצוב והגדרת תכונות טבלה"
+
+#: admin-pages/page.settings.php:77
+msgid "Notifications"
+msgstr "התראות"
+
+#: admin-pages/page.settings.php:77
+msgid "Configure email notifications"
+msgstr "הגדר דואר אלקטרוני והתראות"
+
+#: admin-pages/page.settings.php:78
+msgid "Measurements"
+msgstr "מדידות"
+
+#: admin-pages/page.settings.php:78
+msgid "Allow users to record their measurements"
+msgstr "אפשר למשתמשים לתעד את המדידות שלהם"
+
+#: admin-pages/page.settings.php:79
+msgid "3rd Party"
+msgstr "צד שלישי"
+
+#: admin-pages/page.settings.php:79
+msgid "3rd Party Integrations"
+msgstr "אינטגרציות של צד שלישי"
+
+#: admin-pages/page.settings.php:88
+msgid "Default units / formats to be used by plugin"
+msgstr "ברירית מחדל של יחידות / פורמטים שניתן להשתמש בהם בפלאגין"
+
+#: admin-pages/page.settings.php:91
+msgid "Weight Units"
+msgstr "יחידות משקל"
+
+#: admin-pages/page.settings.php:94 converters.php:56 core.php:75 core.php:388
+#: functions.php:73 functions.php:96
+msgid "kg"
+msgstr "קג"
+
+#: admin-pages/page.settings.php:95
+msgid "Stones & Pounds"
+msgstr "אבנים ופאונד"
+
+#: admin-pages/page.settings.php:96 core.php:381 core.php:384
+msgid "Pounds"
+msgstr "פאונד"
+
+#: admin-pages/page.settings.php:98
+msgid ""
+"You can specify whether to display weights in Kg, Stones & Pounds or just "
+"Pounds. Please note: The graph will be displayed in Pounds if \"Stones & "
+"Pounds\" is selected."
+msgstr ""
+"ביכולתך לציין האם ברצונך להציג משקלים בקילוגרם או בפאונד ואבנים, או רק "
+"בפאונד. הגרף יוצג בפאונד גם אם \"פאונד ואבנים\" נבחר."
+
+#: admin-pages/page.settings.php:102
+msgid "UK or US Date format?"
+msgstr "פורמט התאריך על פי UK או US?"
+
+#: admin-pages/page.settings.php:105
+msgid "UK (DD/MM/YYYY)"
+msgstr "UK (DD/MM/YYYY)"
+
+#: admin-pages/page.settings.php:106
+msgid "US (MM/DD/YYYY)"
+msgstr "US (MM/DD/YYYY)"
+
+#: admin-pages/page.settings.php:108
+msgid "Specify what format dates should be displayed in (i.e. UK or US format)"
+msgstr "ציין איזה פורמט של תאריך יוצג (UK או US)"
+
+#: admin-pages/page.settings.php:112
+msgid "User Experience"
+msgstr "חווית משתמש"
+
+#: admin-pages/page.settings.php:115
+msgid "Allow target weights?"
+msgstr "לאפשר משקל יעד?"
+
+#: admin-pages/page.settings.php:121
+msgid ""
+"If enabled, a user is allowed to enter a target weight. This will be "
+"displayed as a horizontal bar on the line chart."
+msgstr ""
+"במידה ומופעל, משתמש יכול להגדיר משקל יעד. משקל זה יוצג כ-בר אופקי על גרף הקו."
+
+#: admin-pages/page.settings.php:125
+msgid "Display BMI in tables?"
+msgstr "האם להציג BMI בטבלאות?"
+
+#: admin-pages/page.settings.php:132
+msgid ""
+"If enabled, BMI values will be displayed alongside weight entries in data "
+"tables."
+msgstr "אם מופעל, ערכי BMI יוצגו ליד ערכי המשקל שהוכנסו בטבלאות המידע"
+
+#: admin-pages/page.settings.php:136
+msgid "Allow user settings"
+msgstr "אפשר הגדרות משתמש"
+
+#: admin-pages/page.settings.php:142
+msgid ""
+"Allow your users to select their own data units, complete their \"About You"
+"\" fields and remove all their data."
+msgstr ""
+"הרשה למשתמשים שלך לבחור את יחידות הנתונים בעצמם, להשלים את שדות \"עליך\", "
+"ולמחוק את כל המידע אודותיהם."
+
+#: admin-pages/page.settings.php:146
+msgid "\"About You\" fields mandatory?"
+msgstr "האם שדות \"עליך\" הינם חובה?"
+
+#: admin-pages/page.settings.php:152
+msgid ""
+"If User Settings is enabled, should all the \"About You\" (height, activity "
+"level, etc) be mandatory?"
+msgstr ""
+"אם הגדרות המשתמשים פועלות, האם על כל שדות \"עליך\" (גובה, רמת פעילות, וכו') "
+"להיות חובה?"
+
+#: admin-pages/page.settings.php:156
+msgid "Permissions"
+msgstr "הרשאות"
+
+#: admin-pages/page.settings.php:159
+msgid "Who can view and modify user data?"
+msgstr "מי יכול לצפות במידע של המשתמשים ולערוך אותו?"
+
+#: admin-pages/page.settings.php:162
+msgid "Administrators Only"
+msgstr "מנהלי מערכת בלבד"
+
+#: admin-pages/page.settings.php:163
+msgid "Editors and above"
+msgstr "עורכים ודרגות מעליהם"
+
+#: admin-pages/page.settings.php:164
+msgid "Authors and above"
+msgstr "כותבים ודרגות מעליהם"
+
+#: admin-pages/page.settings.php:166
+msgid ""
+"Specify the minimum level of user role that maybe view or edit user data."
+msgstr ""
+"פרט את הדרגה המינימלית של המשתמשים, היכולים לצפות או לערוך את מידע המשתמש."
+
+#: admin-pages/page.settings.php:170 shortcode-weight-loss-tracker.php:103
+msgid "Advanced"
+msgstr "מתקדם"
+
+#: admin-pages/page.settings.php:173
+msgid "Disable plugin CSS?"
+msgstr "האם לנטרל CSS עבור הפלאגין?"
+
+#: admin-pages/page.settings.php:179
+msgid ""
+"If you wish to style the forms in your own way, you can use this option to "
+"disable WLT's style sheets."
+msgstr ""
+"האם ברצונך לעצב את הטפסים בעצמך, ביכולתך להשתמש באפשרות זו כדי לנטרל את "
+"עיצוב WLT."
+
+#: admin-pages/page.settings.php:183
+msgid "Send usage data to YeKen?"
+msgstr "לשלוח מידע על השימוש ל-YeKen?"
+
+#: admin-pages/page.settings.php:189
+msgid ""
+"We would love to see how our plugin is used. By consenting, you are allowing "
+"permission for the following data to be sent on a weekly basis to YeKen: "
+"URL, summary of settings, count of recorded weights and measurements. No "
+"user or admin data will ever be transmitted."
+msgstr ""
+"נשמח לראות את השימוש בפלגין שלנו. בהכמתך, אתה מאפשר ומסכים לשליחת המידע הבא "
+"מדי שבוע ל YeKen:\vURL, סיכום ההגדרות, מספר המשקלים והמדידות שעודכנו. מידע "
+"של משתמשים ומנהלי מערכת לא יועבר לעולם."
+
+#: admin-pages/page.settings.php:193
+msgid "Disable notifications from YeKen?"
+msgstr "האם לנטרל התראות והודעות מ YeKen?"
+
+#: admin-pages/page.settings.php:199
+msgid ""
+"Occasionally YeKen likes to display simple notifications within your "
+"WordPress dashboard. Use this setting if you wish to disable them."
+msgstr ""
+"לעיתים YeKen שולח הודעות פשוטות ללוח הבקרה של אתר הוורדפרס שלך. הפעל הגדרה "
+"זו אם ברצונך להימנע מלקבל אותן."
+
+#: admin-pages/page.settings.php:211 admin-pages/user-data/data-user.php:72
+#: core.php:403 shortcode-weight-loss-tracker.php:98
+msgid "Photos"
+msgstr "תמונות"
+
+#: admin-pages/page.settings.php:215
+msgid "Photos enabled?"
+msgstr "התמונות מופעלות?"
+
+#: admin-pages/page.settings.php:221
+msgid ""
+"Allow your users to upload photos (jpg / png) of their progress alongside "
+"weight entries. These are only viewable by the person that uploaded the "
+"photo and administrators. All photos are stored in the media library with an "
+"additional setting to hide from the attachment page / template."
+msgstr ""
+"אפשר למשתמשים שלך להעלות תמונות (jpg/png) של ההתקדמות שלהם לצד ערכי משקל. "
+"אלה ניתנים להצגה רק על-ידי המשתמש שהעלה את התמונה, ומנהלי המערכת. כל התמונות "
+"מאוחסנות בספריית המדיה עם הגדרה נוספת להסתרה מהעמוד/התבנית של הקובץ המצורף."
+
+#: admin-pages/page.settings.php:225
+msgid "Max. Photo Size?"
+msgstr "גודל תמונה מירבי?"
+
+#: admin-pages/page.settings.php:244
+msgid ""
+"Maximum photo size (in MB) that is allowed to be uploaded. Your server "
+"currently supports up to "
+msgstr "גודל מרבי של תמונה (במגה-בייט) המותר להעלאה. השרת שלך תומך כעת ב"
+
+#: admin-pages/page.settings.php:250
+msgid "Calculating daily calorie intake to lose weight"
+msgstr "חישוב צריכת קלוריות יומית, הנדרשת כדי לרזות"
+
+#: admin-pages/page.settings.php:254
+msgid "Female Calorie Cap"
+msgstr "מכסת קלוריות לנשים"
+
+#: admin-pages/page.settings.php:257
+msgid ""
+"Specify a maximum value for number of daily calories allowed to achieve "
+"weight loss. As per NHS guidelines, females are set to 1400kcal by default"
+msgstr ""
+"ציין ערך מרבי עבור צריכת הקלוריות היומיות, אשר מוביל לירידה במשקל. על פי "
+"הנחיות ה-NHS, ברירת המחדל לנשים הינה 1400 קלוריות."
+
+#: admin-pages/page.settings.php:257 admin-pages/page.settings.php:264
+#: admin-pages/page.settings.php:271 admin-pages/page.settings.php:289
+#: admin-pages/page.settings.php:296
+msgid ""
+"Please note, it may take up to 15 minutes for calculations to change (due to "
+"caching)."
+msgstr ""
+"שים לב, ייתכן שיימשך עד 15 דקות כדי שהחישובים ישתנו (עקב אחסון במטמון הדפדפן "
+"שלך)."
+
+#: admin-pages/page.settings.php:261
+msgid "Male Calorie Cap"
+msgstr "מכסת קלוריות לגברים"
+
+#: admin-pages/page.settings.php:264
+msgid ""
+"Specify a maximum value for number of daily calories allowed to achieve "
+"weight loss. As per NHS guidelines, males are set to 1900kcal by default"
+msgstr ""
+"ציין ערך מרבי עבור צריכת הקלוריות היומיות, אשר מוביל לירידה במשקל. על פי "
+"הנחיות ה-NHS, ברירת המחדל לגברים הינה 1900 קלוריות."
+
+#: admin-pages/page.settings.php:268
+msgid "Calories to subtract"
+msgstr "קלוריות לחיסור"
+
+#: admin-pages/page.settings.php:271
+msgid ""
+"Part of calculating the daily calorie intake to lose weight is to first "
+"calculate the calorie intake to maintain existing weight. Once we have this, "
+"we subtract the above figure to calculate the daily calorie intake to lose "
+"weight."
+msgstr ""
+"חלק מחישוב צריכת הקלוריות היומית הנדרשת כדי לרזות, היא לחשב תחילה את צריכת "
+"הקלוריות, הנדרשת כדי לשמור על המשקל הקיים. ברגע שיש לנו את זה, אנו מפחיתים "
+"את המספר לעיל כדי לחשב את צריכת הקלוריות היומית הנדרשת כדי לרזות."
+
+#: admin-pages/page.settings.php:275 admin-pages/user-data/data-user.php:128
+msgid "Macronutrient Calculator"
+msgstr "מחשבון מקרו-נוטריינטים"
+
+#: admin-pages/page.settings.php:279
+msgid "Proteins"
+msgstr "חלבונים"
+
+#: admin-pages/page.settings.php:282
+msgid "Percentage of Proteins to make up a moderate diet"
+msgstr "אחוז החלבונים הנדרש בתזונה מתונה"
+
+#: admin-pages/page.settings.php:282
+msgid ""
+"Please note, it may take up to 15 minutes for calorie calculations to change "
+"(due to caching)."
+msgstr ""
+"שים לב, ייתכן שיימשך עד 15 דקות כדי שהחישובים ישתנו (עקב אחסון במטמון הדפדפן "
+"שלך)."
+
+#: admin-pages/page.settings.php:286
+msgid "Carbohydrates"
+msgstr "פחמימות"
+
+#: admin-pages/page.settings.php:289
+msgid "Percentage of Carbohydrates to make up a moderate diet"
+msgstr "אחוז הפחמימות הנדרש בתזונה מתונה"
+
+#: admin-pages/page.settings.php:293
+msgid "Fats"
+msgstr "שומנים"
+
+#: admin-pages/page.settings.php:296
+msgid "Percentage of Fats to make up a moderate diet"
+msgstr "אחוז השומנים הנדרש בתזונה מתונה"
+
+#: admin-pages/page.settings.php:310
+msgid "Default chart type"
+msgstr "סוג התרשים המוגדר כברירת מחדל"
+
+#: admin-pages/page.settings.php:313
+msgid "Line Chart"
+msgstr "גרף-קו"
+
+#: admin-pages/page.settings.php:313
+msgid "Highly Recommended"
+msgstr "מאוד מומלץ"
+
+#: admin-pages/page.settings.php:314
+msgid "Bar Chart"
+msgstr "גרף עמודות"
+
+#: admin-pages/page.settings.php:317
+msgid ""
+"If enabled, \"Allows points and labels to be displayed on graph. "
+"<strong>Note: If using measurements</strong>, graph type will be forced to "
+"Line."
+msgstr ""
+"אם אפשרות זו זמינה, \"מתאפשר להציג נקודות ותוויות בגרף. <strong> הערה: אם "
+"נעשה שימוש במידות </strong>, סוג הגרף יאלץ להיות בשורה."
+
+#: admin-pages/page.settings.php:322
+msgid "Display gridlines?"
+msgstr "האם להציג קווי רשת?"
+
+#: admin-pages/page.settings.php:328
+msgid "If enabled, gridlines will be displayed on the Graph canvas."
+msgstr "אם מופעל, קווי רשת יוצגו ברקע הגרף."
+
+#: admin-pages/page.settings.php:332
+msgid "Maximum points per graph"
+msgstr "נקודות מרביות לכל גרף"
+
+#: admin-pages/page.settings.php:341 admin-pages/page.settings.php:408
+msgid "If enabled, \"Allows points and labels to be displayed on graph."
+msgstr "אם אפשרות זו זמינה, \"מתאפשר להציג נקודות ותוויות בגרף. "
+
+#: admin-pages/page.settings.php:346
+msgid "Weight colour?"
+msgstr "צבע למשקל?"
+
+#: admin-pages/page.settings.php:349
+msgid ""
+"If enabled, enter a HEX colour code to use for the Weight history line / bar "
+"border on graph."
+msgstr ""
+"אם אפשרות זו זמינה, הזינו קוד צבע הקסדצימאלי (HEX) שישמש לגבול קו/שורת המידה "
+"של היסטוריית המשקל בגרף."
+
+#: admin-pages/page.settings.php:353
+msgid "Should y Axes start at 0?"
+msgstr "האם על הצירים להתחיל ב-0?"
+
+#: admin-pages/page.settings.php:360
+msgid ""
+"If enabled, y Axes shall start at 0. Otherwise, they are automatically "
+"calculated."
+msgstr "אם אפשרות זו זמינה, צירי y יתחילו ב-0. אחרת, הן מחושבות באופן אוטומטי."
+
+#: admin-pages/page.settings.php:364
+msgid "Text colour"
+msgstr "צבע הטקסט"
+
+#: admin-pages/page.settings.php:367
+msgid "Enter a HEX colour code to use for text displayed on the graph."
+msgstr "הזינו קוד צבע הקסדצימאלי לשימוש במלל המוצג בגרף."
+
+#: admin-pages/page.settings.php:371
+msgid "Font Family"
+msgstr "סוג הגופנים (פונטים)"
+
+#: admin-pages/page.settings.php:374
+msgid ""
+"Specify one or more fonts that should be used when rendering text on the "
+"graph. Separate multiple fonts with a comma. Leave blank to use the default."
+msgstr ""
+"ציין גופן אחד או יותר שיש להשתמש בו בעת עיבוד טקסט בגרף. הפרד גופנים מרובים "
+"באמצעות פסיק. השאר ריק כדי להשתמש בברירת המחדל."
+
+#: admin-pages/page.settings.php:379
+msgid "Line Chart Options"
+msgstr "אפשרויות תרשים קו"
+
+#: admin-pages/page.settings.php:383
+msgid "Bezier Curve?"
+msgstr "עקומת בזיר?"
+
+#: admin-pages/page.settings.php:390
+msgid "If enabled, lines between points on a line graph will be curved"
+msgstr "אם אפשרות זו זמינה, שורות בין נקודות בגרף קו יהיו מעוקלות"
+
+#: admin-pages/page.settings.php:394
+msgid "Target line colour?"
+msgstr "צבע למשקל היעד?"
+
+#: admin-pages/page.settings.php:397
+msgid ""
+"If enabled, enter a HEX colour code to use for the Target line on graph."
+msgstr "אם אפשרות זו מופעלת, הזינו קוד צבע הקסדצימאלי לשימוש בקו היעד בגרף."
+
+#: admin-pages/page.settings.php:401
+msgid "Display points on graph?"
+msgstr "האם להציג נקודות על הגרף?"
+
+#: admin-pages/page.settings.php:412
+msgid "Point thickness"
+msgstr "רוחב נקודה"
+
+#: admin-pages/page.settings.php:421
+msgid "Specifies the point thickness on a line chart."
+msgstr "מציין את רוחב הנקודה בתרשים קו."
+
+#: admin-pages/page.settings.php:425
+msgid "Add a fill under weight line?"
+msgstr "האם להוסיף מילוי תחת קו משקל?"
+
+#: admin-pages/page.settings.php:431
+msgid "If enabled, a fill colour will be added under the weight line."
+msgstr "אם אפשרות זו מופעלת, יופיע צבע מילוי מתחת לקו המשקל."
+
+#: admin-pages/page.settings.php:435
+msgid "Weight Fill Colour"
+msgstr "צבע מילוי משקל"
+
+#: admin-pages/page.settings.php:438
+msgid ""
+"If enabled, enter a HEX colour code to use for the fill colour under the "
+"weight line."
+msgstr ""
+"אם אפשרות זו מופעלת, הזינו קוד צבע הקסדצימאלי HEX, שישמש לצבע המילוי מתחת "
+"לקו המשקל."
+
+#: admin-pages/page.settings.php:442
+msgid "Weight Fill Opacity"
+msgstr "אטימות של צבע מילוי המשקל"
+
+#: admin-pages/page.settings.php:451
+msgid "Specifies the opacity of the fill colour under the weight line."
+msgstr "מציין את האטימות של צבע המילוי מתחת לקו המשקל."
+
+#: admin-pages/page.settings.php:456
+msgid "Bar Chart Options"
+msgstr "אפשרויות תרשים עמודות"
+
+#: admin-pages/page.settings.php:460
+msgid "Weight fill colour?"
+msgstr "צבע מילוי משקל?"
+
+#: admin-pages/page.settings.php:463
+msgid ""
+"If enabled, enter a HEX colour code to use for filling the Weight bars on "
+"the graph."
+msgstr ""
+"אם אפשרות זו מופעלת, הזינו קוד צבע הקסדצימאלי HEX, למילוי עמודות המשקל בגרף."
+
+#: admin-pages/page.settings.php:476
+msgid "Enable email notifications"
+msgstr "הפעל הודעות דוא\"ל"
+
+#: admin-pages/page.settings.php:485
+msgid "Email addresses to notify"
+msgstr "כתובת הדוא\"ל לקבלת הודעות"
+
+#: admin-pages/page.settings.php:488
+msgid ""
+"Specify one or more email addresses to be notified. Seperate multiple emails "
+"with a comma."
+msgstr ""
+"ציין כתובת דואר אלקטרוני אחת או יותר לקבלת הודעה. במידה ויש מספר כתובות, נא "
+"להפרידן עם פסיק."
+
+#: admin-pages/page.settings.php:492
+msgid "New weight / measurement entries"
+msgstr "משקל/ערכי מדידה חדשים"
+
+#: admin-pages/page.settings.php:498
+msgid ""
+"Receive notifications when a member adds a new weight / measurement entry."
+msgstr "קבל הודעות כאשר חבר מוסיף ערך משקל/מדידה חדש."
+
+#: admin-pages/page.settings.php:502
+msgid "Edited weight / measurement entries"
+msgstr "ערכי משקל/מדידה שנערכו"
+
+#: admin-pages/page.settings.php:508
+msgid ""
+"Receive notifications when a member edits an existing weight / measurement "
+"entry."
+msgstr "קבל הודעות כאשר חבר עורך ערך קיים של משקל/מדידה."
+
+#: admin-pages/page.settings.php:512
+msgid "New / updated targets"
+msgstr "יעדים חדשים/מעודכנים"
+
+#: admin-pages/page.settings.php:518
+msgid "Receive notifications when a member adds / edits their target."
+msgstr "קבל הודעות כאשר חבר מוסיף/עורך את היעד שלהם."
+
+#: admin-pages/page.settings.php:531
+msgid "Allow Measurements?"
+msgstr "אפשר למשתמשים לתעד את המדידות שלהם"
+
+#: admin-pages/page.settings.php:537
+msgid ""
+"If enabled, a user can also add body measurements along with their weights."
+msgstr "אם מופעל, משתמש יכול גם להוסיף מדידות גוף יחד עם מדידות המשקל שלהם."
+
+#: admin-pages/page.settings.php:541
+msgid "Measurement Units"
+msgstr "יחידות מידה"
+
+#: admin-pages/page.settings.php:544
+msgid "Centimetres"
+msgstr "סנטימטרים"
+
+#: admin-pages/page.settings.php:545 core.php:76
+msgid "Inches"
+msgstr "אינץ'"
+
+#: admin-pages/page.settings.php:547
+msgid "Default unit for recording measurements."
+msgstr "יחידת ברירת מחדל לתיעוד מדידות."
+
+#: admin-pages/page.settings.php:551
+msgid "Measurements mandatory?"
+msgstr "האם להגדיר את תיעוד המדידות כחובה?"
+
+#: admin-pages/page.settings.php:557
+msgid "If yes, a user will be forced to complete all measurement features."
+msgstr "אם כן, על המשתמש יהיה להשלים את כל סוגי המדידה."
+
+#: admin-pages/page.settings.php:561
+msgid "Areas of measurements"
+msgstr "תחומי מדידות"
+
+#: admin-pages/page.settings.php:583
+msgid "Enable"
+msgstr "הפעל"
+
+#: admin-pages/page.settings.php:586
+msgid "Chart Colour"
+msgstr "צבע תרשים"
+
+#: admin-pages/page.settings.php:612
+msgid "Enable Gravity Forms"
+msgstr "הפעל Gravity Forms"
+
+#: admin-pages/page.settings.php:619
+msgid ""
+"Examine Gravity Form submissions for weight and measurement data. If found, "
+"create a Weight Entry for the user currently logged in."
+msgstr ""
+"בדוק הגשות של טפסי Gravity Forms עבור נתוני משקל ומדידות נוספות. אם יימצאו, "
+"צור ערך משקל עבור המשתמש המחובר כעת."
+
+#: admin-pages/page.settings.php:620
+msgid "Read more at "
+msgstr "קרא עוד ב"
+
+#: admin-pages/user-data/data-add-edit-entry.php:17
+#: admin-pages/user-data/data-edit-target.php:17
+#: admin-pages/user-data/data-photos.php:17
+msgid "There was an issue loading this page"
+msgstr "היתה בעיה בטעינת דף זה"
+
+#: admin-pages/user-data/data-add-edit-entry.php:48
+msgid "Add / Edit an entry"
+msgstr "הוסף/ערוך ערך"
+
+#: admin-pages/user-data/data-edit-target.php:37
+msgid "Edit user's target"
+msgstr "ערוך את היעד של המשתמש"
+
+#: admin-pages/user-data/data-photos.php:29
+msgid "User's photos"
+msgstr "תמונות של משתמש"
+
+#: admin-pages/user-data/data-photos.php:35
+#: admin-pages/user-data/data-user.php:80
+msgid "This user has uploaded "
+msgstr "משתמש זה העלה"
+
+#: admin-pages/user-data/data-photos.php:37
+#: admin-pages/user-data/data-user.php:82
+msgid "photo"
+msgid_plural "photos"
+msgstr[0] "תמונה"
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: admin-pages/user-data/data-photos.php:40
+#: admin-pages/user-data/data-user.php:88
+msgid "No photos could be found for this user."
+msgstr "לא נמצאו תמונות עבור משתמש זה."
+
+#: admin-pages/user-data/data-search-results.php:11
+#: admin-pages/user-data/data-search-results.php:18
+msgid "Search Results"
+msgstr "תוצאות חיפוש"
+
+#: admin-pages/user-data/data-search-results.php:35
+msgid "results were found for"
+msgstr "תוצאות נמצאו עבור"
+
+#: admin-pages/user-data/data-search-results.php:43
+msgid "Username"
+msgstr "שם משתמש"
+
+#: admin-pages/user-data/data-search-results.php:44
+msgid "Email"
+msgstr "דואר אלקטרוני"
+
+#: admin-pages/user-data/data-search-results.php:45
+msgid "No. of Entries"
+msgstr "מספר ערכי משקל/מדידה שתועדו"
+
+#: admin-pages/user-data/data-search-results.php:46
+msgid "Start Weight"
+msgstr "משקל התחלה"
+
+#: admin-pages/user-data/data-search-results.php:47
+msgid "Recent Weight"
+msgstr "משקל אחרון"
+
+#: admin-pages/user-data/data-search-results.php:48 core.php:285
+msgid "Target Weight"
+msgstr "משקל היעד"
+
+#: admin-pages/user-data/data-search-results.php:61
+msgid "No users were found for the given search criteria:"
+msgstr "לא נמצאו משתמשים עבור הקריטריונים של החיפוש שהוגדרו:"
+
+#: admin-pages/user-data/data-search-results.php:66
+msgid "No search terms were specified"
+msgstr "לא צוינו מונחי חיפוש"
+
+#: admin-pages/user-data/data-summary.php:19
+msgid "Summary"
+msgstr "סיכום"
+
+#: admin-pages/user-data/data-summary.php:42
+msgid "League table for those that have lost the most"
+msgstr "טבלה של החברים אשר ירדו הכי הרבה"
+
+#: admin-pages/user-data/data-summary.php:42
+msgid "League Table for those that have gained the most"
+msgstr "טבלה של החברים אשר ירדו הכי הרבה"
+
+#: admin-pages/user-data/data-summary.php:58
+msgid "Regenerate these stats"
+msgstr "צור מחדש סטטיסטיקות אלה"
+
+#: admin-pages/user-data/data-summary.php:64
+msgid "Show who has gained the most"
+msgstr "הראה מי החברים אשר עלו הכי הרבה"
+
+#: admin-pages/user-data/data-summary.php:64
+msgid "Show who has lost the most"
+msgstr "הראה מי החברים אשר ירדו הכי הרבה"
+
+#: admin-pages/user-data/data-summary.php:82
+msgid "All entries"
+msgstr "כל ערכי משקל/מדידה שתועדו"
+
+#: admin-pages/user-data/data-summary.php:82
+msgid "Last 100 entries"
+msgstr "100 ערכי משקל/מדידה האחרונים שתועדו"
+
+#: admin-pages/user-data/data-summary.php:90
+msgid "Show all entries"
+msgstr "הצג את כל ערכי משקל/מדידה האחרונים שתועדו"
+
+#: admin-pages/user-data/data-summary.php:90
+msgid "Show 100 recent entries"
+msgstr "הצג את 100 ערכי משקל/מדידה האחרונים שתועדו"
+
+#: admin-pages/user-data/data-summary.php:101
+msgid "User Search"
+msgstr "חיפוש משתמש"
+
+#: admin-pages/user-data/data-summary.php:107
+msgid "Quick Stats"
+msgstr "סטטיסטיקות מהירות"
+
+#: admin-pages/user-data/data-summary.php:131
+msgid "No. of WordPress users"
+msgstr "משפר משתמשי וורדפרס"
+
+#: admin-pages/user-data/data-summary.php:133
+msgid "No. of Weight Entries"
+msgstr "מספר ערכי משקל שתועדו"
+
+#: admin-pages/user-data/data-summary.php:135
+msgid "No. of Target Entries"
+msgstr "מספר ערכי יעד שתועדו"
+
+#: admin-pages/user-data/data-summary.php:137
+msgid "refreshed every 15 minutes"
+msgstr "רענון כל 15 דקות"
+
+#: admin-pages/user-data/data-summary.php:146
+msgid "View all data"
+msgstr "הצג את כל הנתונים"
+
+#: admin-pages/user-data/data-summary.php:150
+msgid "View all entries"
+msgstr "הצג את כל ערכי משקל/מדידה שתועדו"
+
+#: admin-pages/user-data/data-summary.php:155
+msgid "Export all data"
+msgstr "ייצוא כל הנתונים"
+
+#: admin-pages/user-data/data-summary.php:159
+msgid "To CSV"
+msgstr "ל-CSV"
+
+#: admin-pages/user-data/data-summary.php:163
+msgid "To JSON"
+msgstr "ל-JSON"
+
+#: admin-pages/user-data/data-summary.php:168
+msgid "Delete Data"
+msgstr "מחק נתונים"
+
+#: admin-pages/user-data/data-summary.php:172
+msgid "Delete data for ALL users"
+msgstr "מחק נתונים עבור כל המשתמשים"
+
+#: admin-pages/user-data/data-summary.php:184
+msgid "Are you sure you wish to remove all user data?"
+msgstr "האם אתה בטוח שברצונך להסיר את כל נתוני המשתמש/ים?"
+
+#: admin-pages/user-data/data-user-edit-settings.php:26
+msgid "Edit user preferences"
+msgstr "עריכת העדפות משתמש"
+
+#: admin-pages/user-data/data-user-edit-settings.php:38
+#: admin-pages/user-data/data-user.php:59
+msgid "Upgrade to Pro"
+msgstr "שדרג ל-Pro"
+
+#: admin-pages/user-data/data-user-edit-settings.php:39
+msgid "to save changes to your user's settings"
+msgstr "כדי לשמור שינויים בהגדרות המשתמש שלך"
+
+#: admin-pages/user-data/data-user.php:22 hooks.php:172
+msgid "The preferences for this user have been saved."
+msgstr "ההעדפות עבור משתמש זה נשמרו."
+
+#: admin-pages/user-data/data-user.php:28
+msgid "The cache for this user has been deleted."
+msgstr "זיכרון המטמון עבור משתמש זה נמחק."
+
+#: admin-pages/user-data/data-user.php:60
+msgid "to view the a chart of the user's weight entries."
+msgstr "כדי להציג את התרשים של ערכי המשקל של המשתמש."
+
+#: admin-pages/user-data/data-user.php:84
+msgid "View all photos"
+msgstr "הצג את כל התמונות"
+
+#: admin-pages/user-data/data-user.php:99
+#: admin-pages/user-data/data-user.php:119
+#: admin-pages/user-data/data-user.php:146
+msgid "Upgrade to Pro Plus"
+msgstr "שדרג ל Pro Plus "
+
+#: admin-pages/user-data/data-user.php:100
+msgid "to allow a user to upload photos of their progress"
+msgstr "כדי לאפשר למשתמש להעלות תמונות מההתקדמות שלו"
+
+#: admin-pages/user-data/data-user.php:108
+msgid "Daily calorie needs"
+msgstr "הצורך היומי בקלוריות"
+
+#: admin-pages/user-data/data-user.php:120
+msgid ""
+"to view the user's daily calorie intake required to either maintain or lose "
+"weight (Harris Benedict formula)"
+msgstr ""
+"כדי להציג את צריכת הקלוריות היומית של המשתמש, הנדרשת על מנת לשמור על המשקל "
+"הקיים או לרזות (על פי פורמולת האריס בנדיקט)"
+
+#: admin-pages/user-data/data-user.php:134
+msgid "Please ensure the values for Proteins, Carbohydrates and Fats (within "
+msgstr "נא לוודא את הערכים עבור חלבונים, פחמימות ושומנים (בתוך"
+
+#: admin-pages/user-data/data-user.php:136
+msgid "settings"
+msgstr "הגדרות"
+
+#: admin-pages/user-data/data-user.php:137
+msgid ") have been specified and total 100%."
+msgstr ") צוינו, והסה\"כ הינו 100%."
+
+#: admin-pages/user-data/data-user.php:147
+msgid ""
+"to view the user's suggested Macronutrient intake based on their recommended "
+"calorie intake"
+msgstr ""
+"כדי לצפות בצריכת המקרונוטריינטים המוצעת למשתמש, בהתבסס על צריכת הקלוריות "
+"המומלצת שלו"
+
+#: admin-pages/user-data/data-user.php:155
+msgid "Entries for this user"
+msgstr "ערכי משקל/מדידה שתועדו ע\"י משתמש זה"
+
+#: admin-pages/user-data/data-view-all.php:11
+#: admin-pages/user-data/data-view-all.php:23
+msgid "View All Data"
+msgstr "הצג את כל הנתונים"
+
+#: admin-pages/user-data/data-view-all.php:37
+msgid "Number of WordPress users"
+msgstr "מספר משתמשי וורדפרס"
+
+#: admin-pages/user-data/data-view-all.php:39
+msgid "Number of weight entries"
+msgstr "מספר ערכי משקל שתועדו"
+
+#: admin-pages/user-data/data-view-all.php:41
+msgid "Number of targets entered"
+msgstr "מספר היעדים שהוזנו"
+
+#: admin-pages/user-data/data-view-all.php:44
+msgid "Export to CSV"
+msgstr "ייצא ל-CSV"
+
+#: admin-pages/user-data/data-view-all.php:46
+msgid "Export to JSON"
+msgstr "ייצוא ל-JSON"
+
+#: converters.php:53 converters.php:71 core.php:75 functions.php:69
+#: functions.php:84 functions.php:93 functions.php:99 functions.php:295
+#: functions.php:301 functions.php:558 shortcode-various.php:262
+#: shortcode-various.php:281
+msgid "lbs"
+msgstr "פאונד"
+
+#: converters.php:71 functions.php:301
+msgid "St"
+msgstr "סנט"
+
+#: core.php:13
+msgid "Date"
+msgstr "תאריך"
+
+#: core.php:14 core.php:83 core.php:212 core.php:388
+msgid "Weight"
+msgstr "משקל"
+
+#: core.php:15 core.php:397
+msgid "Notes"
+msgstr "הערות"
+
+#: core.php:62 core.php:265 shortcode-weight-loss-tracker.php:50
+msgid "You need to be logged in to record your weight."
+msgstr "עליך להיות מחובר (login) למערכת כדי לתעד את משקלך."
+
+#: core.php:76
+msgid "CM"
+msgstr "ס\"מ"
+
+#: core.php:121
+msgid "Target"
+msgstr "יעד"
+
+#: core.php:219
+msgid "Measurement"
+msgstr "מדידה"
+
+#: core.php:241
+msgid "You have modified data. Please refresh page."
+msgstr "ערכת נתונים. נא רענן דף."
+
+#: core.php:265
+msgid "You need to be logged in to set your target."
+msgstr "אתה צריך להיות מחובר למערכת, כדי להגדיר את היעד שלך."
+
+#: core.php:282
+msgid "Add a new weight"
+msgstr "יש להוסיף מדידת משקל חדשה"
+
+#: core.php:287
+msgid "Edit weight"
+msgstr "ערוך משקל"
+
+#: core.php:370
+msgid "Your target weight is"
+msgstr "משקל היעד שלך הוא"
+
+#: core.php:370
+msgid "The user's target weight is currently"
+msgstr "משקל היעד של המשתמש הוא כעת"
+
+#: core.php:380
+msgid "Stones"
+msgstr "אבנים"
+
+#: core.php:425
+msgid "Existing photo for this date"
+msgstr "תמונה קיימת עבור תאריך זה"
+
+#: core.php:429
+msgid "Delete existing photo"
+msgstr "מחק תמונה קיימת"
+
+#: core.php:430
+msgid "Existing photo"
+msgstr "תמונה קיימת"
+
+#: core.php:446
+msgid "Replace photo"
+msgstr "החלפת תמונה"
+
+#: core.php:446
+msgid "Add a photo"
+msgstr "הוספת תמונה"
+
+#: core.php:448
+msgid "Select a photo"
+msgstr "בחירת תמונה"
+
+#: core.php:449
+msgid "Photos must be under"
+msgstr "על התמונות להיות מתחת ל"
+
+#: core.php:449
+msgid "or they will silently fail to upload."
+msgstr "או שלא ניתן יהיה להעלותן."
+
+#: core.php:450
+msgid "Photos are only visible to you and administrators. "
+msgstr "תמונות גלויות רק לך ולמנהלי המערכת."
+
+#: core.php:458
+msgid "Edit measurements"
+msgstr "עריכת מדידות"
+
+#: core.php:458
+msgid "Add measurements"
+msgstr "הוספת מדידות"
+
+#: core.php:459
+msgid "Optional"
+msgstr "אופציונלי"
+
+#: core.php:467
+msgid "Additional Information"
+msgstr "מידע נוסף"
+
+#: core.php:472
+msgid "Set Target"
+msgstr "הגדרת יעד"
+
+#: core.php:472
+msgid "Save Entry"
+msgstr "שמירת ערך"
+
+#: core.php:485
+msgid "Clear Target"
+msgstr "מחיקת יעד"
+
+#: core.php:650
+msgid "The user "
+msgstr "המשתמש/ת"
+
+#: core.php:650
+msgid "uploaded this photo of them for their entry on the"
+msgstr "הועלתה תמונה שלהם בשביל הכניסה שלהם ב"
+
+#: core.php:731
+msgid "Please enter a value between 0-13 for pounds"
+msgstr "לגבי פאונד - נא להזין ערך בין 0-13"
+
+#: core.php:731
+msgid "Please enter a valid figure for pounds"
+msgstr "לגבי פאונד - נא להזין ערך חוקי"
+
+#: core.php:738
+msgid "Are you sure you wish to clear your target weight?"
+msgstr "האם בטוח שברצונך למחוק את משקל היעד?"
+
+#: core.php:741
+msgid "Please enter a valid figure for Kg"
+msgstr "לגבי קילו - נא להזין ערך חוקי"
+
+#: core.php:742
+msgid "Please enter a valid figure for Stones"
+msgstr "לגבי אבנים - נא להזין ערך חוקי"
+
+#: core.php:743
+msgid "Please enter a valid date"
+msgstr "נא הזן תאריך חוקי"
+
+#: core.php:744
+msgid "Please confirm you wish to delete ALL your weight history"
+msgstr "אנא אשר שברצונך למחוק את כל היסטוריית המשקל שלך"
+
+#: core.php:745
+msgid "Your photo must be less than "
+msgstr "על תמונתך להיות קטנה מ"
+
+#: core.php:746
+msgid "Are you sure you wish to delete this entry? If so, press OK."
+msgstr "האם אתה בטוח שברצונך למחוק ערך זה? אם כן, לחץ על אישור."
+
+#: core.php:755
+msgid "Please enter a valid measurement ("
+msgstr "נא להזין מדידה חוקית ("
+
+#: core.php:765
+msgid "Please select or enter a value for height."
+msgstr "נא לבחור או להזין ערך עבור הגובה."
+
+#: core.php:766
+msgid "Please select or enter a value for activity level."
+msgstr "נא לבחור או להזין ערך עבור רמת פעילות."
+
+#: core.php:767
+msgid "Please select or enter a value for gender."
+msgstr "נא לבחור או להזין ערך למגדר."
+
+#: core.php:768
+msgid "Please enter a valid date."
+msgstr "נא הזן תאריך חוקי."
+
+#: core.php:769
+msgid "Please select your aim."
+msgstr "אנא בחר את המטרה שלך."
+
+#: core.php:779
+msgid "This field is required."
+msgstr "זהו שדה חובה."
+
+#: core.php:797
+msgid "Done"
+msgstr "בוצע"
+
+#: core.php:798
+msgid "Today"
+msgstr "היום"
+
+#: functions.php:84 functions.php:99 functions.php:546
+#: shortcode-various.php:281
+msgid "st"
+msgstr "סנטימטר"
+
+#: functions.php:212
+msgid "The following MySQL tables are missing for this plugin"
+msgstr "טבלאות MySQL הבאות חסרות עבור תוסף זה"
+
+#: functions.php:298 shortcode-various.php:286
+msgid "Kg"
+msgstr "ק\"ג"
+
+#: functions.php:360
+msgid "View all weeks"
+msgstr "צפייה בכל השבועות"
+
+#: functions.php:374
+msgid "View Week"
+msgstr "צפייה בשבוע"
+
+#: functions.php:374
+msgid "to"
+msgstr "ל"
+
+#: functions.php:513
+msgid "The plugin supports the following measurements"
+msgstr "התוסף תומך במדידות הבאות"
+
+#: functions.php:651
+msgid "Read more about calculations"
+msgstr "קריאה נוספת אודות חישובים"
+
+#: functions.php:686
+msgid "Your modifications have been saved"
+msgstr "השינויים שלך נשמרו"
+
+#: functions.php:704
+msgid "Login now"
+msgstr "יש להתחבר כעת"
+
+#: functions.php:778
+msgid "Server Default"
+msgstr "ברירת מחדל של שרת"
+
+#: functions.php:884
+msgid "Upgrade Weight Tracker and get more features!"
+msgstr "שדרוג מנהל מעקב אחר משקל, כדי לקבל תכונות נוספות!"
+
+#: functions.php:886
+msgid ""
+"Upgrade to the latest Pro or Pro Plus version of this plugin to manipulate "
+"your user's data, add custom fields, BMR, Macro Nutrients and much more!"
+msgstr ""
+"שדרג לגרסה העדכנית ביותר של Pro או Pro Plus של תוסף זה, כדי לטפל בנתונים של "
+"המשתמש שלך, להוסיף שדות מותאמים אישית, BMR, חומרים מזינים מאקרונוטריינטים "
+"ועוד הרבה יותר!"
+
+#: functions.php:887
+msgid "Read more and Upgrade to Pro / Pro Plus Version"
+msgstr "קריאת פרטים נוספים, ושדרוג לגרסה Pro או Pro Plus"
+
+#: globals.php:157
+msgid "Forearm - Left"
+msgstr "אמה שמאלית"
+
+#: globals.php:157
+msgid "FL"
+msgstr "א\"ש"
+
+#: globals.php:158
+msgid "Forearm - Right"
+msgstr "אמה ימנית"
+
+#: globals.php:158
+msgid "FR"
+msgstr "א\"י"
+
+#: globals.php:159
+msgid "Biceps - Left"
+msgstr "זרוע שמאלית"
+
+#: globals.php:159
+msgid "BL"
+msgstr "ז\"ש"
+
+#: globals.php:160
+msgid "Biceps - Right"
+msgstr "זרוע ימנית"
+
+#: globals.php:160
+msgid "BR"
+msgstr "ז\"י"
+
+#: globals.php:161
+msgid "Calf - Left"
+msgstr "שריר התאומים השמאלי"
+
+#: globals.php:161
+msgid "CL"
+msgstr "שת\"ש"
+
+#: globals.php:162
+msgid "Calf - Right"
+msgstr "שריר התאומים הימני"
+
+#: globals.php:162
+msgid "CR"
+msgstr "שת\"י"
+
+#: globals.php:163
+msgid "Thigh - Left"
+msgstr "ירך שמאלית"
+
+#: globals.php:163
+msgid "TL"
+msgstr "י\"ש"
+
+#: globals.php:164
+msgid "Thigh - Right"
+msgstr "ירך ימנית"
+
+#: globals.php:164
+msgid "TR"
+msgstr "י\"י"
+
+#: globals.php:165
+msgid "Waist"
+msgstr "מותניים"
+
+#: globals.php:165
+msgid "W"
+msgstr "מ"
+
+#: globals.php:166
+msgid "Bust / Chest"
+msgstr "חזה"
+
+#: globals.php:166
+msgid "BC"
+msgstr "ח"
+
+#: globals.php:167
+msgid "Shoulders"
+msgstr "כתפיים"
+
+#: globals.php:167
+msgid "S"
+msgstr "כ"
+
+#: globals.php:168
+msgid "Height"
+msgstr "גובה"
+
+#: globals.php:168
+msgid "H"
+msgstr "ג"
+
+#: globals.php:169
+msgid "Buttocks"
+msgstr "ישבן"
+
+#: globals.php:169
+msgid "B"
+msgstr "יש"
+
+#: globals.php:170
+msgid "Hips"
+msgstr "ירכיים"
+
+#: globals.php:170
+msgid "HI"
+msgstr "יר"
+
+#: globals.php:171
+msgid "Navel"
+msgstr "טבור"
+
+#: globals.php:171
+msgid "NA"
+msgstr "לא זמין"
+
+#: globals.php:172
+msgid "Neck"
+msgstr "צוואר"
+
+#: globals.php:172
+msgid "NE"
+msgstr "צ"
+
+#: hooks.php:9
+msgid "Manage User Data"
+msgstr "ניהול נתוני משתמש"
+
+#: hooks.php:12
+msgid "Your License"
+msgstr "הרישיון שלך"
+
+#: hooks.php:15
+msgid "Settings"
+msgstr "הגדרות"
+
+#: hooks.php:16
+msgid "Help"
+msgstr "עזרה"
+
+#: hooks.php:173
+msgid "An error occurred while trying to save the user's preferences."
+msgstr "אירעה שגיאה בעת ניסיון לשמור את העדפות המשתמש."
+
+#: license.php:150
+msgid "License missing"
+msgstr "רשיון חסר"
+
+#: license.php:157
+msgid "Could not decode / verify license"
+msgstr "לא היתה אפשרות לפענח/לוודא רישיון"
+
+#: license.php:162
+msgid "Invalid license hash"
+msgstr "קוד hash לא חוקי של רשיון"
+
+#: license.php:167
+msgid ""
+"This license doesn't appear to be for this site (no match on site hash)."
+msgstr "לא נראה שרשיון זה מיועד לאתר זה (אין התאמה בקוד hash של האתר)."
+
+#: license.php:175
+msgid "This license has expired."
+msgstr "רשיון זה פג."
+
+#: license.php:232
+msgid "None"
+msgstr "אין"
+
+#: license.php:242
+msgid "Yearly Pro"
+msgstr "שנתי Pro"
+
+#: license.php:245
+msgid "Legacy Pro"
+msgstr "Legacy Pro"
+
+#: save-data.php:42
+msgid "Saved!"
+msgstr "נשמר!"
+
+#: save-data.php:46
+msgid "An error occurred while saving your data!"
+msgstr "אירעה שגיאה בעת שמירת הנתונים!"
+
+#: save-data.php:49
+msgid "No user specified (hash)"
+msgstr "לא צוין משתמש (hash)"
+
+#: save-data.php:52
+msgid "No user specified"
+msgstr "לא צוין משתמש"
+
+#: shortcode-various.php:106
+msgid "No target set"
+msgstr "לא הוגדר יעד"
+
+#: shortcode-weight-loss-tracker.php:43
+msgid "This shortcode can only be placed once on a page / post."
+msgstr "שורטקוד זה יכול להיות ממוקם רק פעם אחת על עמוד או פוסט."
+
+#: shortcode-weight-loss-tracker.php:68
+msgid "Your settings have been saved!"
+msgstr "ההגדרות שלך נשמרו!"
+
+#: shortcode-weight-loss-tracker.php:70
+msgid "Your weight history has been deleted!"
+msgstr "היסטוריית המשקל שלך נמחקה!"
+
+#: shortcode-weight-loss-tracker.php:93
+msgid "Overview"
+msgstr "סקירה כללית"
+
+#: shortcode-weight-loss-tracker.php:93
+msgid "Chart and add a new entry"
+msgstr "לתרשים ולהוספת משקל חדש"
+
+#: shortcode-weight-loss-tracker.php:94
+msgid "All Entries"
+msgstr "כל ערכי משקל/מדידה שתועדו"
+
+#: shortcode-weight-loss-tracker.php:94
+msgid "View all of your entries"
+msgstr "הצג את כל ערכי משקל/מדידה שתועדו"
+
+#: shortcode-weight-loss-tracker.php:98
+msgid "View a gallery of your photos"
+msgstr "צפייה בגלריית התמונות שלך"
+
+#: shortcode-weight-loss-tracker.php:103
+msgid "View BMI, BMR and suggested Calorie and Macronutrient intake"
+msgstr "הצגת BMI, BMR, צריכת קלוריות מוצעת, ומאקרונוטריינטים"
+
+#: shortcode-weight-loss-tracker.php:108
+msgid "Preferences"
+msgstr "העדפות"
+
+#: shortcode-weight-loss-tracker.php:108
+msgid "Customise this tool and tell us a little more about you"
+msgstr "התאם/י כלי זה לעצמך באופן אישי, וספר/י לנו קצת יותר עליך"
+
+#: shortcode-weight-loss-tracker.php:124
+msgid "Add a weight entry"
+msgstr "הוספת ערך משקל"
+
+#: shortcode-weight-loss-tracker.php:129
+msgid "In a chart"
+msgstr "בתרשים"
+
+#: shortcode-weight-loss-tracker.php:137
+msgid "A graph will appear once several weights have been entered."
+msgstr "לאחר הזנת מספר מדידות משקל יופיע גרף."
+
+#: shortcode-weight-loss-tracker.php:190
+msgid "Weight History"
+msgstr "היסטוריית משקל"
+
+#: shortcode-weight-loss-tracker.php:202
+msgid "There is no data for this week, please try selecting another:"
+msgstr "אין נתונים לשבוע זה, אנא נסה לבחור באפשרות אחרת:"
+
+#: shortcode-weight-loss-tracker.php:208
+msgid "You haven't entered any weight data yet."
+msgstr "עדיין לא הזנת נתוני משקל."
+
+msgid "Allow decimal places?"
+msgstr "האם לאפשר ספרות אחרי הנקודה?"
+
+msgid " Instructions"
+msgstr " הנחיות"
+
+msgid ""
+"Place the tag [weight-loss-tracker] on a given page and the user is "
+"presented with a form to enter a date, weight and notes for that entry. When "
+"the person saves their entry the data table and graph is refreshed."
+msgstr ""
+"הצב את התג [weight-loss-tracker] בדף, ולמשתמש יופיע טופס להזנת תאריך, משקל "
+"והערות עבור ערך זה. כאשר האדם ישמור את הערך שהכניס, טבלת הנתונים והגרף "
+"יעודכן."
+
+msgid "Enable support for Avada theme?"
+msgstr "האם לאפשר תמיכה עבור ערכת נושא Avada?"
+
+msgid ""
+"Enables additional styling to support the <a href=\"http://theme-fusion.com/"
+"avada/\" target=\"_blank\">Avada theme</a>."
+msgstr ""
+"מאפשר עיצוב נוסף לתמיכה ב <a href=\"http://theme-fusion.com/avada/\" target="
+"\"_blank\">Avada theme</a>."
+
+msgid "Currently, you haven't specified a target weight."
+msgstr "עד כה לא ציינת משקל יעד."
