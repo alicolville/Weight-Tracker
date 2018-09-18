@@ -149,6 +149,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 = 6.0.2 =
 
+* Improvement: Added Hebrew.
 * Bug fix: Removed error log count that check which was causing the custom fields to be added.
 * Bug fix: Fixed issue where it would attempt the Custom Field default check on every admin page load!
 
