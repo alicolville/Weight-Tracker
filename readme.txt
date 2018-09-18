@@ -149,7 +149,6 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 = 6.1 =
 
-// rewview hide photos on widget
 //todo: Update readme and doc site to state that photos is now Pro - not Pro Plus
 //todo: test in all license modes
 //todo: test emails on wegiht.yeken
