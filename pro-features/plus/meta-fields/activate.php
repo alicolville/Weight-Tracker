@@ -69,7 +69,6 @@
         }
 
     }
-
     add_action( 'admin_init', 'ws_ls_activate_meta_fields_activate' );
 
     /**
