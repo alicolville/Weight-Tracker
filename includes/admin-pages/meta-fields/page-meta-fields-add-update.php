@@ -57,7 +57,6 @@
                                 ws_ls_display_pro_upgrade_notice();
                             }
 
-                            //TODO: Add an upgrade box saying Pro Plus will give you Photos etc...
                             ?>
                             <div class="postbox">
                                 <h3 class="hndle"><span><?php echo __('Add / Edit a Custom Field', WE_LS_SLUG); ?> </span></h3>

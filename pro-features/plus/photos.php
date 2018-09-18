@@ -75,8 +75,8 @@ function ws_ls_photos_shortcode_core($user_defined_arguments) {
         'user-id' => get_current_user_id(),
 		'recent' => true,
         'width' => 200,
-	    'custom-fields-to-use' => '',   //TODO: Document
-	    'maximum' => 1                     //TODO: Document
+	    'custom-fields-to-use' => '',
+	    'maximum' => 1
     ], $user_defined_arguments );
 
     $arguments['user-id'] = ws_ls_force_numeric_argument($arguments['user-id'], get_current_user_id());

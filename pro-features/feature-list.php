@@ -2,8 +2,6 @@
 
 defined('ABSPATH') or die('Jog on!');
 
-//TODO: Reword photo bit so it relates to custom felds
-
 $pro_plus_features = array(
     __('<strong>All of the features that come with a standard <a href="' . WE_LS_LICENSE_TYPES_URL . '" target="_blank">Pro license</a>.</strong>', WE_LS_SLUG),
 	__('<strong>Basal Metabolic Rate (BMR) calculations per user</strong>. Shortcodes and extended admin screens to display a user\'s BMR. For further information on BMR and how it is calculated visit <a href="' . WE_LS_CALCULATIONS_URL . '" rel="noopener noreferrer" target="_blank">our calculations page</a>.</strong>', WE_LS_SLUG),

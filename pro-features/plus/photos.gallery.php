@@ -34,11 +34,11 @@ function ws_ls_photos_shortcode_gallery($user_defined_arguments) {
         'width' => false,
         'limit' => 20,
         'direction' => 'desc',
-        'meta-fields-to-use' => '',  //TODO: Document
-        'hide-from-shortcodes' => true  //TODO: Document
+        'custom-fields-to-use' => '',
+        'custom-fields-hide-from-shortcodes' => true
     ], $user_defined_arguments );
 
-    $arguments['hide-from-shortcodes'] = ws_ls_force_bool_argument($arguments['hide-from-shortcodes']);
+    $arguments['custom-fields-hide-from-shortcodes'] = ws_ls_force_bool_argument($arguments['custom-fields-hide-from-shortcodes']);
 	$arguments['width'] = ws_ls_force_dimension_argument($arguments['width'], 800);
     $arguments['height'] = ws_ls_force_numeric_argument($arguments['height'], 800);
     $arguments['user-id'] = ws_ls_force_numeric_argument($arguments['user-id'], get_current_user_id());
@@ -52,7 +52,7 @@ function ws_ls_photos_shortcode_gallery($user_defined_arguments) {
 	$thumb_width = ($arguments['width'] === '100%') ? 1200 : intval($arguments['width']);
 
   	$photos = ws_ls_photos_db_get_all_photos($arguments['user-id'], true,  $arguments['limit'],
-												$arguments['direction'], $thumb_width, $arguments['height'], $arguments['meta-fields-to-use'], $arguments['hide-from-shortcodes'] );
+												$arguments['direction'], $thumb_width, $arguments['height'], $arguments['custom-fields-to-use'], $arguments['custom-fields-hide-from-shortcodes'] );
 
 	if ( false === empty($photos) ) {
 
@@ -71,8 +71,6 @@ function ws_ls_photos_shortcode_gallery($user_defined_arguments) {
 									);
 
 			$photo['thumb'] = str_replace('src', $additional_data . ' src', $photo['thumb']);
-
-			// $html .= '<a href="" target="_blank" class="ug-tile-icon ug-icon-link">';
 
 			$html .= sprintf('%s',
 				$photo['thumb']
