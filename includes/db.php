@@ -300,7 +300,7 @@ function ws_ls_save_data($user_id, $weight_object, $is_target_form = false, $exi
 			'mode' => ($db_is_update) ? 'update' : 'add'
 		);
 
-		do_action(WE_LS_HOOK_DATA_ADDED_EDITED, $type, $weight_object);
+		do_action( WE_LS_HOOK_DATA_ADDED_EDITED, $type, $weight_object );
 	}
 
 	return $result;
