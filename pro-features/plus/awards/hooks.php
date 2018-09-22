@@ -20,13 +20,26 @@
             $losing_weight = ( $weight_object['difference_from_start_kg'] < 0 );
 
 			$awards = ws_ls_awards_to_give( NULL, $info['mode'], $losing_weight );    // Mode: update or add
-print_r($awards);
-			if ( false === empty( $awards ) ) {
 
+			if ( false === empty( $awards ) ) {
+               // print_r($awards);
 				// Do we have any weight awards to consider?
 				if ( false === empty( $awards['counts']['weight'] ) ) {
 
-                    foreach ( $awards['weight'] as $weight_award ) {
+                    $weight_difference_from_start = absint( $weight_object['difference_from_start_kg'] );
+echo $weight_difference_from_start . PHP_EOL;
+                    foreach ( $awards['awards']['weight'] as $weight_award ) {
+var_Dump( false === $losing_weight , 'gain' === $weight_award['gain-loss'], (int) $weight_award['value'],  $weight_difference_from_start ); echo '<br><Br><Br>';
+                        if ( true === $losing_weight && 'loss' === $weight_award['gain-loss'] && (int) $weight_award['value'] <= $weight_difference_from_start ) {
+
+                            // ISSUE Award for loss!?
+                            echo $weight_award['title'];
+
+                        } elseif ( false === $losing_weight && 'gain' === $weight_award['gain-loss'] && (int) $weight_award['value'] <= $weight_difference_from_start ) {
+
+                            // ISSUE Award for Gain!?
+                            echo $weight_award['title'];
+                        }
 
                         //TODO: Determine if issuing award for weight gain or loss!
 
@@ -50,8 +63,8 @@ print_r($awards);
 
 
 
-
-
+//
+//
 //	function test() {
 //
 //	    $a = ws_ls_awards_to_give(1, 'add');

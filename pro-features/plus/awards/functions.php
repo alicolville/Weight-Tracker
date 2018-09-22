@@ -68,6 +68,34 @@
                     'apply-to-add' => 1
                 ],
                 [
+                    'id' => 322,
+                    'title' => 'Gained 5 Kg!',
+                    'category' => 'weight',
+                    'gain-loss' => 'gain',
+                    'value' => '5',
+                    'badge' => NULL,        // media Library ID
+                    'custom-message' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
+                    'max-awards' => 1,
+                    'enabled' => 1,
+                    'send-email' => 1,
+                    'apply-to-update' => 1,
+                    'apply-to-add' => 1
+                ],
+                [
+                    'id' => 3333,
+                    'title' => 'Gained 10 Kg!',
+                    'category' => 'weight',
+                    'gain-loss' => 'gain',
+                    'value' => '10',
+                    'badge' => NULL,        // media Library ID
+                    'custom-message' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
+                    'max-awards' => 1,
+                    'enabled' => 1,
+                    'send-email' => 1,
+                    'apply-to-update' => 1,
+                    'apply-to-add' => 1
+                ],
+                [
                     'id' => 333,
                     'title' => 'Gained 20 Kg!',
                     'category' => 'weight',
