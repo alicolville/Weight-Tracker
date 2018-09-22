@@ -132,7 +132,8 @@ defined('ABSPATH') or die('Jog on!');
 	    'pro-features/functions.measurements.php',
         'pro-features/functions.stats.php',
         'pro-features/export.php',
-        'pro-features/init.php'
+        'pro-features/init.php',
+        'pro-features/plus/awards/hooks.php',
     ];
 
     $files_to_include = array_merge( $files_to_include, $pro_files );
