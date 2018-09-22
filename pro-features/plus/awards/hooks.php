@@ -20,14 +20,18 @@
             $losing_weight = ( $weight_object['difference_from_start_kg'] < 0 );
 
 			$awards = ws_ls_awards_to_give( NULL, $info['mode'], $losing_weight );    // Mode: update or add
-
+print_r($awards);
 			if ( false === empty( $awards ) ) {
 
 				// Do we have any weight awards to consider?
 				if ( false === empty( $awards['counts']['weight'] ) ) {
 
-					// Get weight difference
-					var_dump($weight_object['difference_from_start_kg']);
+                    foreach ( $awards['weight'] as $weight_award ) {
+
+                        //TODO: Determine if issuing award for weight gain or loss!
+
+                        //				    if ( true === $losing_weight && $weight_object['difference_from_start_kg'] )
+				    }
 
 				}
 
