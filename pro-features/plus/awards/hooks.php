@@ -27,41 +27,40 @@
 				if ( false === empty( $awards['counts']['weight'] ) ) {
 
                     $weight_difference_from_start = absint( $weight_object['difference_from_start_kg'] );
-echo $weight_difference_from_start . PHP_EOL;
+
                     foreach ( $awards['awards']['weight'] as $weight_award ) {
-var_Dump( false === $losing_weight , 'gain' === $weight_award['gain-loss'], (int) $weight_award['value'],  $weight_difference_from_start ); echo '<br><Br><Br>';
-                        if ( true === $losing_weight && 'loss' === $weight_award['gain-loss'] && (int) $weight_award['value'] <= $weight_difference_from_start ) {
 
-                            // ISSUE Award for loss!?
-                            echo $weight_award['title'];
-
-                        } elseif ( false === $losing_weight && 'gain' === $weight_award['gain-loss'] && (int) $weight_award['value'] <= $weight_difference_from_start ) {
-
-                            // ISSUE Award for Gain!?
-                            echo $weight_award['title'];
+                        if ( (int) $weight_award['value'] > $weight_difference_from_start ) {
+                            continue;
                         }
 
-                        //TODO: Determine if issuing award for weight gain or loss!
+                        if ( ( true === $losing_weight && 'loss' === $weight_award['gain-loss'] ) || ( false === $losing_weight && 'gain' === $weight_award['gain-loss'] )  ) {
 
-                        //				    if ( true === $losing_weight && $weight_object['difference_from_start_kg'] )
+                            // Throw hook out so other's can process award e.g. send emails. Log etc.
+                            do_action( 'wlt-award-given', $weight_object, $weight_award, $info );
+
+                        }
 				    }
-
 				}
-
-
-				// Check this award hasn't already been issue to the user
-
 			}
-
-			//var_dump( $awards );
-			die;
-
 		}
 
 	}
 	add_action( WE_LS_HOOK_DATA_ADDED_EDITED, 'ws_ls_awards_listen', 10, 2 );
 
+    /**
+     * Log award
+     *
+     * @param $weight_object
+     * @param $weight_award
+     * @param $info
+     */
+    function ws_ls_awards_log_award(  $weight_object, $weight_award, $info ) {
 
+        //TODO
+
+    }
+	add_action( 'wlt-award-given', 'ws_ls_awards_log_award', 10, 3 );
 
 //
 //
