@@ -22,9 +22,12 @@
 			$awards = ws_ls_awards_to_give( NULL, $info['mode'], $losing_weight );    // Mode: update or add
 
 			if ( false === empty( $awards ) ) {
-               //print_r($awards);
-				// Do we have any weight awards to consider?
-				if ( false === empty( $awards['counts']['weight'] ) ) {
+
+			    // ---------------------------------------------------------------
+			    // Weight Awards
+                // ---------------------------------------------------------------
+
+                if ( false === empty( $awards['counts']['weight'] ) ) {
 
                     $weight_difference_from_start = absint( $weight_object['difference_from_start_kg'] );
 
@@ -34,7 +37,6 @@
                             continue;
                         }
 
-                        //var_dump(( true === $losing_weight && 'loss' === $weight_award['gain_loss'] ), ( false === $losing_weight && 'gain' === $weight_award['gain_loss'] ));
                         if ( ( true === $losing_weight && 'loss' === $weight_award['gain_loss'] ) || ( false === $losing_weight && 'gain' === $weight_award['gain_loss'] )  ) {
 
                             ws_ls_awards_db_given_add( $info['user-id'], $weight_award['id'] );
@@ -45,6 +47,10 @@
                         }
 				    }
 				}
+
+                // ---------------------------------------------------------------
+                // XXX
+                // ---------------------------------------------------------------
 			}
 		}
 
@@ -58,7 +64,7 @@
      * @param $weight_award
      * @param $info
      */
-    function ws_ls_awards_log_award(  $weight_object, $weight_award, $info ) {
+    function ws_ls_awards_log_award( $weight_object, $weight_award, $info ) {
 
         if ( false === empty( $info['user-id'] ) && false === empty( $weight_award['title'] ) ) {
             ws_ls_log_add('awards-added', sprintf('User: %s / %s', $info['user-id'], $weight_award['title'] ) );
