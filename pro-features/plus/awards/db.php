@@ -3,24 +3,45 @@
     defined('ABSPATH') or die("Jog on!");
 
     /**
-     * Fetch all the award IDs previous given to this user.
-     * @param null $user_id
+     * Fetch all awards for the given user
      *
+     * @param $user_id
+     * @return array
      */
-    function ws_ls_awards_db_previous_awards_get( $user_id = NULL ) {
+    function ws_ls_awards_db_given_get( $user_id ) {
 
-        $user_id = $user_id ?: get_current_user_id();
+        $cache = ws_ls_cache_user_get( $user_id, 'awards-given' );
 
-        // TODO: Fetch all previous award IDs issued to the current user ID.
-        return [
-//            1,
-//            1,
-//            10,
-//            2,
-//            2,
-//            2,
-//            5,
-//            33
-        ];
+        if ( true === is_array( $cache ) ) {
+            return $cache;
+        }
 
+        global $wpdb;
+
+        $sql = $wpdb->prepare('Select * from ' . $wpdb->prefix . WE_LS_MYSQL_AWARDS_GIVEN . ' where user_id = %d', $user_id);
+
+        $results = $wpdb->get_results( $sql, ARRAY_A );
+
+        ws_ls_cache_user_set( $user_id, 'awards-given', $results );
+
+        return $results;
     }
+
+    /**
+     * Add an award to a user
+     *
+     * @param $user_id
+     * @param $award_id
+     * @return bool
+     */
+    function ws_ls_awards_db_given_add( $user_id, $award_id ) {
+
+        global $wpdb;
+
+        $result = $wpdb->insert( $wpdb->prefix . WE_LS_MYSQL_AWARDS_GIVEN , [ 'user_id' => $user_id , 'award_id' => $award_id ], [ '%d', '%d' ] );
+
+        ws_ls_cache_user_delete( $user_id );
+
+        return ( false === $result ) ? false : $wpdb->insert_id;
+    }
+

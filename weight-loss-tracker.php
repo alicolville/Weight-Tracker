@@ -133,6 +133,7 @@ defined('ABSPATH') or die('Jog on!');
         'pro-features/functions.stats.php',
         'pro-features/export.php',
         'pro-features/init.php',
+        'pro-features/plus/awards/activate.php',
         'pro-features/plus/awards/functions.php',
         'pro-features/plus/awards/db.php',
         'pro-features/plus/awards/hooks.php',
