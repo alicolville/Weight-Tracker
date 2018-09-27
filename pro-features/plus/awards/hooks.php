@@ -23,6 +23,8 @@
 
 			if ( false === empty( $awards ) ) {
 
+			    $start_weight = ws_ls_get_weight_extreme( $info['user-id'] );
+
 			    // ---------------------------------------------------------------
 			    // Weight Awards
                 // ---------------------------------------------------------------
@@ -49,8 +51,49 @@
 				}
 
                 // ---------------------------------------------------------------
-                // XXX
+                // BMI Change
                 // ---------------------------------------------------------------
+
+                if ( false === empty( $awards['counts']['bmi'] ) && false === empty( $start_weight ) ) {
+
+                    $user_height = ws_ls_get_user_height( $info['user-id'] );
+
+                    if ( false === empty( $user_height ) ) {
+
+                        $starting_bmi =  ws_ls_calculate_bmi( $user_height, $start_weight );
+                        $current_bmi = ws_ls_calculate_bmi( $user_height, $weight_object['kg'] );
+
+                        // We're only interested in changes of BMI
+                        if ( $starting_bmi !== $current_bmi ) {
+
+                            $starting_label = ws_ls_calculate_bmi_label( $starting_bmi );
+                            $current_label = ws_ls_calculate_bmi_label( $current_bmi );
+
+                            // Do we actually have a change in BMI label? If not, no need to process any awards
+                            if ( $starting_label !== $current_label ) {
+
+                                $increase_in_bmi = ( $current_bmi > $starting_bmi );
+
+                                foreach ( $awards['awards']['bmi'] as $bmi_award ) {
+
+                                    if ( ( false === $increase_in_bmi && 'loss' === $bmi_award['gain_loss'] ) || ( true === $increase_in_bmi && 'gain' === $bmi_award['gain_loss'] ) ) {
+
+                                        ws_ls_awards_db_given_add( $info['user-id'], $bmi_award['id'] );
+
+                                        // Throw hook out so other's can process award e.g. send emails. Log etc.
+                                        do_action( 'wlt-award-given', $weight_object, $bmi_award, $info );
+
+                                    }
+                                }
+
+                            }
+
+                        }
+
+                    }
+
+                }
+
 			}
 		}
 
