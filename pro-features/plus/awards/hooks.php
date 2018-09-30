@@ -99,21 +99,16 @@
                     $percentage_difference = ws_ls_calculate_percentage_difference( $start_weight, $weight_object['kg'] );
 
                     if ( false === is_null( $percentage_difference ) ) {
-                        var_dump( $percentage_difference );
 
                         foreach ( $awards['awards']['weight-percentage'] as $percentage_award ) {
 
                             if ( 'gain' === $percentage_award['gain_loss'] && true === $percentage_difference['increase'] &&
                                     (int) $percentage_award['value'] > $percentage_difference['percentage'] ) {
-                                echo 'increase percentage not above ' . $percentage_award['value'];
-
-                                continue;
+                               continue;
                             }
 
                             if ( 'loss' === $percentage_award['gain_loss'] && false === $percentage_difference['increase'] &&
                                 (int) $percentage_award['value'] > $percentage_difference['percentage'] ) {
-                                echo 'decrease percentage not above ' . $percentage_award['value'];
-
                                 continue;
                             }
 
@@ -145,24 +140,3 @@
 
     }
 	add_action( 'wlt-award-given', 'ws_ls_awards_log_award', 10, 3 );
-
-
-
-//	function test() {
-//
-//    $a = ws_ls_awards_to_give(1, 'add');
-//        print_r($a);
-//////		$t= ws_ls_awards_user_times_awarded(1,33);
-//////		print_r($t);
-//		die;
-//
-//
-//        //ws_ls_awards_db_given_add(1,222);
-//
-//        $t = ws_ls_awards_previous_awards_get_ids();
-//        print_r($t);
-//
-//        die;
-//
-//	}
-//	add_action('init' , 'test');
