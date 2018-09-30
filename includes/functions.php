@@ -941,3 +941,33 @@ function ws_ls_blur_text( $text, $pro_plus = false ) {
 
     return $text;
 }
+
+/**
+ * Calculate the percentage difference between two numbers
+ *
+ * @param $previous_weight
+ * @param $current_weight
+ * @return array|null
+ */
+function ws_ls_calculate_percentage_difference( $previous_weight, $current_weight ) {
+
+    if ( false === isset( $previous_weight ) || false === isset( $current_weight ) || $previous_weight === $current_weight ) {
+        return NULL;
+    }
+
+    $difference = [ 'current' => $current_weight, 'increase' => ( $current_weight > $previous_weight ), 'previous' => $previous_weight ];
+
+    if ( true === $difference['increase'] ) {
+
+        $increase = $current_weight - $previous_weight;
+        $difference['percentage'] = $increase / $previous_weight * 100;
+
+    } else {
+
+        $decrease = $previous_weight - $current_weight;
+        $difference['percentage'] = $decrease /$previous_weight * 100;
+
+    }
+
+    return $difference;
+}

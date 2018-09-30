@@ -85,20 +85,45 @@
 
                                     }
                                 }
-
                             }
-
                         }
-
                     }
-
                 }
 
                 // ---------------------------------------------------------------
                 // Percentage of body weight lost
                 // ---------------------------------------------------------------
 
+                if ( false === empty( $awards['counts']['weight-percentage'] ) && false === empty( $weight_object['difference_from_start_kg'] ) ) {
 
+                    $percentage_difference = ws_ls_calculate_percentage_difference( $start_weight, $weight_object['kg'] );
+
+                    if ( false === is_null( $percentage_difference ) ) {
+                        var_dump( $percentage_difference );
+
+                        foreach ( $awards['awards']['weight-percentage'] as $percentage_award ) {
+
+                            if ( 'gain' === $percentage_award['gain_loss'] && true === $percentage_difference['increase'] &&
+                                    (int) $percentage_award['value'] > $percentage_difference['percentage'] ) {
+                                echo 'increase percentage not above ' . $percentage_award['value'];
+
+                                continue;
+                            }
+
+                            if ( 'loss' === $percentage_award['gain_loss'] && false === $percentage_difference['increase'] &&
+                                (int) $percentage_award['value'] > $percentage_difference['percentage'] ) {
+                                echo 'decrease percentage not above ' . $percentage_award['value'];
+
+                                continue;
+                            }
+
+                            ws_ls_awards_db_given_add( $info['user-id'], $percentage_award['id'] );
+
+                            do_action( 'wlt-award-given', $weight_object, $percentage_award, $info );
+
+                        }
+                    }
+                }
             }
 		}
 

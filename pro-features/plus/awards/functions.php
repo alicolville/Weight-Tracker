@@ -38,11 +38,11 @@
         $awards = [];
 
         $from_db = [
-            'weight' =>     [
+            'weight-percentage' =>     [
                 [
-                    'id' => 1,
-                    'title' => 'Lost 10 Kg!',
-                    'category' => 'weight',
+                    'id' => 881,
+                    'title' => 'Lost 10% Body Weight!',
+                    'category' => 'weight-percentage',
                     'gain_loss' => 'loss',
                     'value' => '10',
                     'badge' => NULL,        // media Library ID
@@ -54,9 +54,9 @@
                     'apply_to_add' => 1
                 ],
                 [
-                    'id' => 22,
-                    'title' => 'Lost 20 Kg!',
-                    'category' => 'weight',
+                    'id' => 882,
+                    'title' => 'Lost 20% Body Weight!',
+                    'category' => 'weight-percentage',
                     'gain_loss' => 'loss',
                     'value' => '20',
                     'badge' => NULL,        // media Library ID
@@ -68,9 +68,9 @@
                     'apply_to_add' => 1
                 ],
                 [
-                    'id' => 322,
-                    'title' => 'Gained 5 Kg!',
-                    'category' => 'weight',
+                    'id' => 883,
+                    'title' => 'Gained 5% Body Weight!',
+                    'category' => 'weight-percentage',
                     'gain_loss' => 'gain',
                     'value' => '5',
                     'badge' => NULL,        // media Library ID
@@ -82,56 +82,11 @@
                     'apply_to_add' => 1
                 ],
                 [
-                    'id' => 3333,
-                    'title' => 'Gained 10 Kg!',
-                    'category' => 'weight',
+                    'id' => 8855,
+                    'title' => 'Gained 100% Body Weight!',
+                    'category' => 'weight-percentage',
                     'gain_loss' => 'gain',
-                    'value' => '10',
-                    'badge' => NULL,        // media Library ID
-                    'custom_message' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
-                    'max_awards' => 1,
-                    'enabled' => 1,
-                    'send_email' => 1,
-                    'apply_to_update' => 1,
-                    'apply_to_add' => 1
-                ],
-                [
-                    'id' => 333,
-                    'title' => 'Gained 20 Kg!',
-                    'category' => 'weight',
-                    'gain_loss' => 'gain',
-                    'value' => '20',
-                    'badge' => NULL,        // media Library ID
-                    'custom_message' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
-                    'max_awards' => 1,
-                    'enabled' => 1,
-                    'send_email' => 1,
-                    'apply_to_update' => 1,
-                    'apply_to_add' => 1
-                ],
-            ],
-            'bmi' => [
-                //BMI
-                [
-                    'id' => 343,
-                    'title' => 'Increased BMI!',
-                    'category' => 'bmi',
-                    'gain_loss' => 'gain',
-                    'value' => '1',         // Irrelebant for BMI. Just consider gain / loss
-                    'badge' => NULL,        // media Library ID
-                    'custom_message' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
-                    'max_awards' => 1,
-                    'enabled' => 1,
-                    'send_email' => 1,
-                    'apply_to_update' => 1,
-                    'apply_to_add' => 1
-                ],
-                [
-                    'id' => 4654,
-                    'title' => 'Decreased BMI!',
-                    'category' => 'bmi',
-                    'gain_loss' => 'loss',  // BASED difference between current and start weight
-                    'value' => '1',         // Irrelebant for BMI. Just consider gain / loss
+                    'value' => '100',
                     'badge' => NULL,        // media Library ID
                     'custom_message' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
                     'max_awards' => 1,
@@ -140,7 +95,110 @@
                     'apply_to_update' => 1,
                     'apply_to_add' => 1
                 ]
-            ]
+            ]    ,
+//            'weight' =>     [
+//                [
+//                    'id' => 1,
+//                    'title' => 'Lost 10 Kg!',
+//                    'category' => 'weight',
+//                    'gain_loss' => 'loss',
+//                    'value' => '10',
+//                    'badge' => NULL,        // media Library ID
+//                    'custom_message' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
+//                    'max_awards' => 3,
+//                    'enabled' => 1,
+//                    'send_email' => 1,
+//                    'apply_to_update' => 1,
+//                    'apply_to_add' => 1
+//                ],
+//                [
+//                    'id' => 22,
+//                    'title' => 'Lost 20 Kg!',
+//                    'category' => 'weight',
+//                    'gain_loss' => 'loss',
+//                    'value' => '20',
+//                    'badge' => NULL,        // media Library ID
+//                    'custom_message' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
+//                    'max_awards' => 1,
+//                    'enabled' => 1,
+//                    'send_email' => 1,
+//                    'apply_to_update' => 1,
+//                    'apply_to_add' => 1
+//                ],
+//                [
+//                    'id' => 322,
+//                    'title' => 'Gained 5 Kg!',
+//                    'category' => 'weight',
+//                    'gain_loss' => 'gain',
+//                    'value' => '5',
+//                    'badge' => NULL,        // media Library ID
+//                    'custom_message' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
+//                    'max_awards' => 1,
+//                    'enabled' => 1,
+//                    'send_email' => 1,
+//                    'apply_to_update' => 1,
+//                    'apply_to_add' => 1
+//                ],
+//                [
+//                    'id' => 3333,
+//                    'title' => 'Gained 10 Kg!',
+//                    'category' => 'weight',
+//                    'gain_loss' => 'gain',
+//                    'value' => '10',
+//                    'badge' => NULL,        // media Library ID
+//                    'custom_message' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
+//                    'max_awards' => 1,
+//                    'enabled' => 1,
+//                    'send_email' => 1,
+//                    'apply_to_update' => 1,
+//                    'apply_to_add' => 1
+//                ],
+//                [
+//                    'id' => 333,
+//                    'title' => 'Gained 20 Kg!',
+//                    'category' => 'weight',
+//                    'gain_loss' => 'gain',
+//                    'value' => '20',
+//                    'badge' => NULL,        // media Library ID
+//                    'custom_message' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
+//                    'max_awards' => 1,
+//                    'enabled' => 1,
+//                    'send_email' => 1,
+//                    'apply_to_update' => 1,
+//                    'apply_to_add' => 1
+//                ],
+//            ],
+//            'bmi' => [
+//                //BMI
+//                [
+//                    'id' => 343,
+//                    'title' => 'Increased BMI!',
+//                    'category' => 'bmi',
+//                    'gain_loss' => 'gain',
+//                    'value' => '1',         // Irrelebant for BMI. Just consider gain / loss
+//                    'badge' => NULL,        // media Library ID
+//                    'custom_message' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
+//                    'max_awards' => 1,
+//                    'enabled' => 1,
+//                    'send_email' => 1,
+//                    'apply_to_update' => 1,
+//                    'apply_to_add' => 1
+//                ],
+//                [
+//                    'id' => 4654,
+//                    'title' => 'Decreased BMI!',
+//                    'category' => 'bmi',
+//                    'gain_loss' => 'loss',  // BASED difference between current and start weight
+//                    'value' => '1',         // Irrelebant for BMI. Just consider gain / loss
+//                    'badge' => NULL,        // media Library ID
+//                    'custom_message' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
+//                    'max_awards' => 1,
+//                    'enabled' => 1,
+//                    'send_email' => 1,
+//                    'apply_to_update' => 1,
+//                    'apply_to_add' => 1
+//                ]
+//            ]
         ];
 
         // Loop through each award in DB, count it's type and decide whether to consider issuing it.

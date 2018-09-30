@@ -58,16 +58,13 @@ function ws_ls_help_page() {
 							</div>
 						</div>
 					<?php endif; ?>
-                     <div class="postbox">
-                        <h3 class="hndle"><span><?php echo __('Error Log', WE_LS_SLUG); ?> </span></h3>
-                        <div style="padding: 0px 15px 0px 15px">
 
 					<?php if ( true === current_user_can( 'manage_options' ) && 'y' === ws_ls_querystring_value('yeken') ) : ?>
 
                         <div class="postbox">
                             <h3 class="hndle"><span><?php echo __( 'Custom Fields: Migrate photos from old system to Custom Fields', WE_LS_SLUG); ?> </span></h3>
                             <div style="padding: 0px 15px 0px 15px">
-                                <p><?php echo __( 'This will migrate photos from the old system to the new custom fields. It will create a custom field with the key "photo". Note! It will remove an existing migrated photos before re-adding them.', WE_LS_SLUG ); ?></p>
+                                <p><?php echo __( 'This will migrate photos from the old system to the new custom fields. It will create a custom field with the key "photo". Note! It will remove any existing migrated photos before re-adding them.', WE_LS_SLUG ); ?></p>
                                     <p><a href="<?php echo esc_url( admin_url( 'admin.php?page=ws-ls-help&yeken=y&photomigrate=y') ); ?>" >Run</a></p>
 
 								<?php
