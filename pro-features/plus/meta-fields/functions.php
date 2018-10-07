@@ -29,14 +29,9 @@
         $fields = [
             0 => __('Number', WE_LS_SLUG),
             1 => __('Text', WE_LS_SLUG),
-            2 => __('Yes', WE_LS_SLUG) . ' / ' . __('No', WE_LS_SLUG)
+            2 => __('Yes', WE_LS_SLUG) . ' / ' . __('No', WE_LS_SLUG),
+            3 => __('Photo', WE_LS_SLUG)
         ];
-
-	    if ( true === WS_LS_IS_PRO_PLUS ) {
-		    $fields[ 3 ] = __('Photo', WE_LS_SLUG);
-	    } else {
-            $fields[ 3 ] = __('Photo (Pro Plus Only)', WE_LS_SLUG);
-        }
 
 	    return $fields;
     }
@@ -383,7 +378,7 @@
             ( false === empty( $value ) ) ? __('Replace photo', WE_LS_SLUG) : __('Select photo', WE_LS_SLUG),
             2 === intval($field['mandatory']) ? 'y' : 'n',
             true === empty( $value ) && 2 === intval( $field['mandatory'] ) ? 'required' : '',
-            __('Please select a photo for', WE_LS_SLUG),
+            __('Please select a photo (png or jpg) for', WE_LS_SLUG),
             esc_attr( $field['field_name'] )
         );
 

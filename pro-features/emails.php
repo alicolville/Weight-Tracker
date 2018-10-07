@@ -39,13 +39,13 @@ function ws_ls_email_notification($type, $weight_data) {
 		$email_data['mode'] = ('add' == $type['mode']) ? __( 'added' , WE_LS_SLUG) : __( 'updated' , WE_LS_SLUG);
 		$email_data['type'] = ('weight-measurements' == $type['type']) ? __( 'their weight / measurements for ' , WE_LS_SLUG) . ws_ls_render_date($weight_data, true) : __( 'their target to' , WE_LS_SLUG);
 
-		$email_data['data'] = PHP_EOL . $weight_data['display-admin'] . PHP_EOL;
+		$email_data['data'] = $weight_data['display-admin'] . '<br />';
 
 		// Weight data
 		if('weight-measurements' == $type['type'] && !empty($weight_data['notes'])) {
 			// Do we have notes?
-			$email_data['data'] .= PHP_EOL . __( 'Notes' , WE_LS_SLUG) . ':' . PHP_EOL . '-----------------------' . PHP_EOL;
-			$email_data['data'] .= PHP_EOL . esc_html($weight_data['notes']) . PHP_EOL . '-----------------------' . PHP_EOL;
+			$email_data['data'] .= '<br />' . __( 'Notes' , WE_LS_SLUG) . ':' . '<br />' . '-----------------------' . '<br />';
+			$email_data['data'] .= '<br /><strong>' . esc_html($weight_data['notes']) . '</strong><br />' . '-----------------------' . '<br />';
 		}
 
 		// Meta Fields
@@ -53,12 +53,12 @@ function ws_ls_email_notification($type, $weight_data) {
 
 			$meta_fields = ws_ls_meta_fields_enabled();
 
-			$email_data['data'] .= PHP_EOL . __( 'Custom Fields' , WE_LS_SLUG) . ':' . PHP_EOL . '-----------------------' . PHP_EOL;
+			$email_data['data'] .= '<br /><strong>' . __( 'Custom Fields' , WE_LS_SLUG) . ':</strong>' . '<br />' . '-----------------------' . '<br />';
 
 			foreach ( $meta_fields as $field ) {
 
 				if ( false === empty( $weight_data['meta-keys'][ $field['id'] ] ) ) {
-					$email_data['data'] .= $field['field_name'] . PHP_EOL . ws_ls_fields_display_field_value( $weight_data['meta-keys'][ $field['id'] ], $field['id'] ) . PHP_EOL;
+					$email_data['data'] .= '<br /><em>' . $field['field_name'] . '</em><br />' . ws_ls_fields_display_field_value( $weight_data['meta-keys'][ $field['id'] ], $field['id'] ) . '<br />';
 				}
 			}
 
@@ -72,7 +72,9 @@ function ws_ls_email_notification($type, $weight_data) {
 		// Send email
 		wp_mail($email_addresses,
 		 		__( 'Weight Loss Tracker update for' , WE_LS_SLUG) . $weight_data['user']['display-name'],
-				$email);
+				$email,
+                [ 'Content-Type: text/html; charset=UTF-8' ]
+        );
 
 	}
 
@@ -86,10 +88,10 @@ add_action(WE_LS_HOOK_DATA_ADDED_EDITED, 'ws_ls_email_notification', 10, 2);
 */
 function ws_ls_email_notifications_template($placeholders = array()) {
 
-	$email = __( 'Hello' , WE_LS_SLUG) . ',' . PHP_EOL . PHP_EOL;
-	$email .= __( 'Just a quick email to let you know that "{displayname}" has {mode} {type}:' , WE_LS_SLUG) . PHP_EOL . PHP_EOL;
+	$email = sprintf( '<p>%s,</p>', __( 'Hello' , WE_LS_SLUG) );
+    $email .= __( '<p>Just a quick email to let you know that "{displayname}" has {mode} {type}:</p>' , WE_LS_SLUG);
 	$email .= __( '{data}' , WE_LS_SLUG) . PHP_EOL . PHP_EOL;
-	$email .= __( 'Thank you!' , WE_LS_SLUG) . PHP_EOL;
+	$email .= sprintf( '<p>%s</p>', __( 'Thank you!' , WE_LS_SLUG) );
 
 	if(!empty($placeholders)) {
 		foreach ($placeholders as $key => $value) {

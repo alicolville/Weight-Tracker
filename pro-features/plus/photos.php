@@ -14,7 +14,7 @@ defined('ABSPATH') or die("Jog on!");
  */
 function ws_ls_photos_shortcode_count( $user_defined_arguments ) {
 
-	$arguments = shortcode_atts([
+   $arguments = shortcode_atts([
 		'user-id' => false
 	], $user_defined_arguments );
 
@@ -66,6 +66,10 @@ add_shortcode('wlt-photo-oldest', 'ws_ls_photos_shortcode_oldest');
 
 
 function ws_ls_photos_shortcode_core($user_defined_arguments) {
+
+    if( false === WS_LS_IS_PRO ) {
+        return '';
+    }
 
     $arguments = shortcode_atts([
 		'css-class' => '',
