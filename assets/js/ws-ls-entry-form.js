@@ -95,17 +95,6 @@ jQuery( document ).ready(function ($) {
                 }
             }
 
-            // Photos?
-            if ("true" == ws_ls_config["photos-enabled"] && true == $("#" + $form_id).data("photos-enabled")) {
-                $( "#" + $form_id + " .ws-ls-meta-fields-photo").rules( "add", {
-                    extension: "png|jpeg|jpg",
-                    filesize: ws_ls_config['max-photo-upload'],
-                    messages: {
-                        filesize: ws_ls_config['validation-we-ls-photo']
-                    }
-                });
-            }
-
             // Measurement form
             if ("true" == ws_ls_config["measurements-enabled"] && true == $("#" + $form_id).data("measurements-enabled")) {
                 $( "#" + $form_id + " .ws-ls-measurement").rules( "add", {
