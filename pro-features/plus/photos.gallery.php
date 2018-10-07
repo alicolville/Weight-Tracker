@@ -25,6 +25,10 @@ function ws_ls_photos_gallery_js_css($mode = 'default') {
  */
 function ws_ls_photos_shortcode_gallery($user_defined_arguments) {
 
+    if( false === WS_LS_IS_PRO ) {
+        return '';
+    }
+
     $arguments = shortcode_atts([
         'error-message' => __('It doesn\'t look you\'ve uploaded any photos.', WE_LS_SLUG ),
         'user-id' => get_current_user_id(),
@@ -33,9 +37,12 @@ function ws_ls_photos_shortcode_gallery($user_defined_arguments) {
 		'css-class' => '',
         'width' => false,
         'limit' => 20,
-        'direction' => 'desc'
+        'direction' => 'desc',
+        'custom-fields-to-use' => '',
+        'custom-fields-hide-from-shortcodes' => true
     ], $user_defined_arguments );
 
+    $arguments['custom-fields-hide-from-shortcodes'] = ws_ls_force_bool_argument($arguments['custom-fields-hide-from-shortcodes']);
 	$arguments['width'] = ws_ls_force_dimension_argument($arguments['width'], 800);
     $arguments['height'] = ws_ls_force_numeric_argument($arguments['height'], 800);
     $arguments['user-id'] = ws_ls_force_numeric_argument($arguments['user-id'], get_current_user_id());
@@ -49,7 +56,7 @@ function ws_ls_photos_shortcode_gallery($user_defined_arguments) {
 	$thumb_width = ($arguments['width'] === '100%') ? 1200 : intval($arguments['width']);
 
   	$photos = ws_ls_photos_db_get_all_photos($arguments['user-id'], true,  $arguments['limit'],
-												$arguments['direction'], $thumb_width, $arguments['height']);
+												$arguments['direction'], $thumb_width, $arguments['height'], $arguments['custom-fields-to-use'], $arguments['custom-fields-hide-from-shortcodes'] );
 
 	if ( false === empty($photos) ) {
 
@@ -62,16 +69,12 @@ function ws_ls_photos_shortcode_gallery($user_defined_arguments) {
 
 		foreach ($photos as $photo) {
 
-			$additional_data = sprintf(' alt="%s" data-image="%s" data-description="%s - %s"',
-												esc_html($photo['date-display'] . ' &middot; ' . $photo['display']),
-												esc_html($photo['full']),
-												esc_html($photo['date-display']),
-												esc_html($photo['display'])
+			$additional_data = sprintf(' alt="%1$s" data-image="%2$s" data-description="%1$s"',
+												esc_html($photo['date-display'] . ' &middot; ' . $photo['field-name'] . ' &middot; ' . $photo['display']),
+												esc_html($photo['full'])
 									);
 
 			$photo['thumb'] = str_replace('src', $additional_data . ' src', $photo['thumb']);
-
-			// $html .= '<a href="" target="_blank" class="ug-tile-icon ug-icon-link">';
 
 			$html .= sprintf('%s',
 				$photo['thumb']

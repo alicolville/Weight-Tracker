@@ -53,9 +53,9 @@
             $user_id = get_current_user_id();
             $use_tabs = (false === $shortcode_arguments['disable-tabs']);
 
-            // Decide whether to show Macro N / Calories tab
+	        // Decide whether to show Macro N / Calories tab
             $show_advanced_tab = (false === $shortcode_arguments['hide-tab-advanced'] && true === WS_LS_IS_PRO_PLUS);
-			$show_photos_tab = (false === $shortcode_arguments['hide-tab-photos'] && true === WE_LS_PHOTOS_ENABLED);
+			$show_photos_tab = ( false === $shortcode_arguments['hide-tab-photos'] && true === ws_ls_meta_fields_photo_any_enabled( true ) );
 
             $html_output = '';
 

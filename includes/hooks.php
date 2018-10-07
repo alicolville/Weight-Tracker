@@ -87,7 +87,7 @@
 
 		wp_enqueue_script('jquery-ui-datepicker');
 		wp_enqueue_script('ws-ls-js', plugins_url( '../assets/js/ws-ls' . 	$minified . '.js', __FILE__ ), array(), WE_LS_CURRENT_VERSION, true);
-		wp_enqueue_script('ws-ls-js-form', plugins_url( '../assets/js/ws-ls-entry-form.js', __FILE__ ), array(), WE_LS_CURRENT_VERSION, true);
+		wp_enqueue_script('ws-ls-js-form', plugins_url( '../assets/js/ws-ls-entry-form' . 	$minified . '.js', __FILE__ ), array(), WE_LS_CURRENT_VERSION, true);
 
         wp_enqueue_script('ws-ls-chart-js', WE_LS_CDN_CHART_JS, array( 'jquery', 'ws-ls-js' ), WE_LS_CURRENT_VERSION);
         wp_enqueue_script('jquery-chart-ws-ls', plugins_url( '../assets/js/ws-ls-chart' . 	$minified . '.js', __FILE__ ), array('ws-ls-chart-js'), WE_LS_CURRENT_VERSION, true);
@@ -153,12 +153,12 @@
 		// CSS
 		wp_enqueue_style('wlt-style', plugins_url( '../assets/css/ws-ls' . 	$minified . '.css', __FILE__ ), array(), WE_LS_CURRENT_VERSION);
 		wp_enqueue_style('jquery-style', plugins_url( '../assets/css/jquery-ui.min.css', __FILE__ ), array(), WE_LS_CURRENT_VERSION);
-
+;
 		// JavaScript
 		wp_enqueue_script('jquery-ui-datepicker');
 		wp_enqueue_script('jquery-validate',plugins_url( '../assets/js/jquery.validate.min.js', __FILE__ ), array('jquery'), WE_LS_CURRENT_VERSION);
 		wp_enqueue_script('jquery-validate-additional',plugins_url( '../assets/js/additional-methods.min.js', __FILE__ ), array('jquery', 'jquery-validate'), WE_LS_CURRENT_VERSION);
-		wp_enqueue_script('ws-ls-js', plugins_url( '../assets/js/ws-ls-entry-form' . 	$minified . '.js', __FILE__ ), array(), WE_LS_CURRENT_VERSION, true);
+		wp_enqueue_script('ws-ls-js', plugins_url( '../assets/js/ws-ls-entry-form' . $minified . '.js', __FILE__ ), array(), WE_LS_CURRENT_VERSION, true);
 		wp_localize_script('ws-ls-js', 'ws_ls_config', ws_ls_get_js_config());
 	}
 

@@ -140,9 +140,9 @@ function ws_ls_shortcode_if_value_exist($user_id, $fields) {
                 case 'is-logged-in':
                     $value = is_user_logged_in();
                     break;
-                case 'photo':
+	            case 'photo':
 
-                    if (false !== WS_LS_IS_PRO_PLUS) {
+                    if (false !== WS_LS_IS_PRO ) {
                         $value = ws_ls_photos_db_get_recent_or_latest($user_id);
                     }
 

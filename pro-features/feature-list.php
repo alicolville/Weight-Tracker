@@ -4,7 +4,6 @@ defined('ABSPATH') or die('Jog on!');
 
 $pro_plus_features = array(
     __('<strong>All of the features that come with a standard <a href="' . WE_LS_LICENSE_TYPES_URL . '" target="_blank">Pro license</a>.</strong>', WE_LS_SLUG),
-	__('<strong>Photo Uploads</strong>. Your users can now upload photos of their progress. Photos can be viewed, updated and removed by the end user and administrators. Handy shortcodes are provided for displaying galleries, most recent and oldest photo.', WE_LS_SLUG),
 	__('<strong>Basal Metabolic Rate (BMR) calculations per user</strong>. Shortcodes and extended admin screens to display a user\'s BMR. For further information on BMR and how it is calculated visit <a href="' . WE_LS_CALCULATIONS_URL . '" rel="noopener noreferrer" target="_blank">our calculations page</a>.</strong>', WE_LS_SLUG),
 	__('<strong>Harris Benedict formula</strong>. Shortcodes and extended admin screens to a view a person\'s calorie intake required to maintain and lose weight. For further information on Harris Benedict Formula and how it is calculated visit <a href="' . WE_LS_CALCULATIONS_URL . '" rel="noopener noreferrer" target="_blank">our calculations page</a>.</strong>', WE_LS_SLUG),
 	__('<strong>Recommended calorie intake per meal time</strong>. Shortcodes and extended admin screens to recommend how a person should split their daily calorie intake across meals. For further information on how this is calculated please visit <a href="' . WE_LS_CALCULATIONS_URL . '" rel="noopener noreferrer" target="_blank">our calculations page</a>.</strong>', WE_LS_SLUG),
@@ -17,6 +16,7 @@ $pro_features = array(
     __('<strong>Access your user\'s data.</strong> Admin can view, edit and delete user data. Various tools for viewing user\'s graphs, tables of entries, BMI, targets, weight lost / gained stats and much more.', WE_LS_SLUG),
 	__('<strong>Measurements.</strong> Support for recording measurements like Hip, Waist, Leg, Bicep, etc. Displayed on charts and tables.', WE_LS_SLUG),
     __('<strong>Custom Fields.</strong> Create and add your own questions to weight entry forms to gather additional information.', WE_LS_SLUG),
+    __('<strong>Photo Custom Fields</strong>. Add one or more photo fields to your weight entry forms and allow your users to upload photos of their progress. Photos can be viewed, updated and removed by the end user and administrators. Handy shortcodes are provided for displaying galleries, most recent and oldest photo.', WE_LS_SLUG),
     __('<strong>Export all data or a particular user.</strong> Export in JSON or CSV format.', WE_LS_SLUG),
     __('<strong>BMI.</strong> Allows a user to specify their height. Once specified, their BMI is displayed next to each weight entry. There is also a shortcode to render the latest BMI.', WE_LS_SLUG),
 	__('<strong>Email notifications.</strong> Receive email notifications when a person updates their target or adds / edits a weight.', WE_LS_SLUG),

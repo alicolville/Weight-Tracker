@@ -5,7 +5,7 @@ defined('ABSPATH') or die('Jog on!');
 /**
  * Plugin Name: Weight Loss Tracker
  * Description: Allow registered users of your website to track their weight and relevant body measurements. History can be displayed in both tables & charts.
- * Version: 6.0.3
+ * Version: 6.1
  * Author: YeKen
  * Author URI: https://www.YeKen.uk
  * License: GPL2
@@ -28,8 +28,8 @@ defined('ABSPATH') or die('Jog on!');
 */
 
     define('WS_LS_ABSPATH', plugin_dir_path( __FILE__ ));
-    define('WE_LS_CURRENT_VERSION', '6.0.3');
-    define('WE_LS_DB_VERSION', '6.0.3');
+    define('WE_LS_CURRENT_VERSION', '6.1');
+    define('WE_LS_DB_VERSION', '6.1');
 
 // -----------------------------------------------------------------------------------------
 // AC: Activate / Deactivate / Uninstall Hooks
@@ -91,6 +91,7 @@ defined('ABSPATH') or die('Jog on!');
         'pro-features/plus/meta-fields/db.php',
         'pro-features/plus/meta-fields/hooks.php',
         'pro-features/plus/meta-fields/functions.php',
+	    'pro-features/plus/meta-fields/functions.photos.php',
         'pro-features/feature-list.php',
         'includes/comms-with-yeken.php',
         'includes/admin-notifications.php',
@@ -120,12 +121,15 @@ defined('ABSPATH') or die('Jog on!');
         'pro-features/shortcode-progress-bar.php',
         'pro-features/shortcode-messages.php',
         'pro-features/shortcode-if.php',
-        'pro-features/widget-chart.php',
+	    'pro-features/plus/shortcode.wlt.php',
+	    'pro-features/plus/photos.php',
+	    'pro-features/plus/photos.gallery.php',
+	    'pro-features/widget-chart.php',
         'pro-features/widget-form.php',
         'pro-features/widget-progress.php',
         'pro-features/footable.php',
         'pro-features/db.php',
-        'pro-features/functions.measurements.php',
+	    'pro-features/functions.measurements.php',
         'pro-features/functions.stats.php',
         'pro-features/export.php',
         'pro-features/init.php'
@@ -144,15 +148,8 @@ defined('ABSPATH') or die('Jog on!');
         $files_to_include = array_merge( $files_to_include,[
             'pro-features/plus/bmr.php',
             'pro-features/plus/harris.benedict.php',
-            'pro-features/plus/macronutrient.calculator.php',
-            'pro-features/plus/shortcode.wlt.php'
+            'pro-features/plus/macronutrient.calculator.php'
         ]);
-
-        // Photos enabled?
-        if( true === WE_LS_PHOTOS_ENABLED ) {
-            $files_to_include[] = 'pro-features/plus/photos.php';
-            $files_to_include[] = 'pro-features/plus/photos.gallery.php';
-        }
 
     }
 
@@ -173,3 +170,4 @@ defined('ABSPATH') or die('Jog on!');
       load_plugin_textdomain( WE_LS_SLUG, false, dirname( plugin_basename( __FILE__ )  ) . '/includes/languages/' );
     }
     add_action('plugins_loaded', 'ws_ls_load_textdomain');
+    

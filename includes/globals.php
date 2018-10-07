@@ -42,8 +42,8 @@
 	define('WE_LS_KEY_YEKEN_ADMIN_NOTIFICATION', 'yeken-admin-notification');
 	define('WE_LS_CACHE_ADMIN_USER_DATA', 'admin-user-data');
 	define('WE_LS_TABLE_MAX_WEEK_FILTERS', 150);
-	define('WS_LS_PRO_PRICE', 40.00);
-	define('WS_LS_PRO_PLUS_PRICE', 100.00);
+	define('WS_LS_PRO_PRICE', 30.00);
+	define('WS_LS_PRO_PLUS_PRICE', 75.00);
 	define('WE_LS_USE_MINIFIED_SCRIPTS', true);
 	define('WE_LS_CRON_NAME', 'weight_loss_tracker_hourly');
 	define('WE_LS_CRON_NAME_YEKEN_COMMS', 'weight_loss_tracker_yeken_comms');
@@ -54,7 +54,6 @@
 	// Database tables
 	// -----------------------------------------------------------------------------------
 
-	//Todo: refactor these contant names
 	define('WE_LS_TABLENAME', 'WS_LS_DATA');
 	define('WE_LS_TARGETS_TABLENAME', 'WS_LS_DATA_TARGETS');
 	define('WE_LS_USER_PREFERENCES_TABLENAME', 'WS_LS_DATA_USER_PREFERENCES');
@@ -135,7 +134,6 @@
         'WS_LS_MACRO_PROTEINS' => 25,
         'WS_LS_MACRO_CARBS' => 50,
         'WS_LS_MACRO_FATS' => 25,
-        'WE_LS_PHOTOS_ENABLED' => false,
 		'WE_LS_PHOTOS_MAX_SIZE' => false,
         'WE_LS_THIRD_PARTY_GF_ENABLE' => false
 	);
@@ -356,7 +354,7 @@
 	}
 
     // -----------------------------------------------------------------------------------
-    // Third Party
+    // Pro
     // -----------------------------------------------------------------------------------
 
     if (WS_LS_IS_PRO) {
@@ -365,6 +363,12 @@
             $globals['WE_LS_THIRD_PARTY_GF_ENABLE'] = true;
         }
 
+	    $photo_max_size = get_option('ws-ls-photos-max-size');
+
+	    if(is_numeric($photo_max_size)) {
+		    $globals['WE_LS_PHOTOS_MAX_SIZE'] = intval($photo_max_size);
+	    }
+
     }
 
     // -----------------------------------------------------------------------------------
@@ -372,19 +376,6 @@
     // -----------------------------------------------------------------------------------
 
     if (WS_LS_IS_PRO_PLUS) {
-
-	    // Photos
-        if ('no' == get_option('ws-ls-photos-enable')) {
-            $globals['WE_LS_PHOTOS_ENABLED'] = false;
-        } else {
-			$globals['WE_LS_PHOTOS_ENABLED'] = true;
-		}
-
-		$photo_max_size = get_option('ws-ls-photos-max-size');
-
-		if(is_numeric($photo_max_size)) {
-			$globals['WE_LS_PHOTOS_MAX_SIZE'] = intval($photo_max_size);
-		}
 
 	    // Calories
 	    $female_cal_cap = get_option('ws-ls-female-cal-cap');

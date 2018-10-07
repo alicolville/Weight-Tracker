@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight, loss, lose, helper, bmi, body, mass, index, graph, track, stones, kg, table, data, plot, target, history, pounds, responsive, chart, measurements, cm, centimeters, inches, hip, waist, bicep, thigh
 Requires at least: 4.4.0
 Tested up to: 4.9.8
-Stable tag: 6.0.3
+Stable tag: 6.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate Link: https://www.paypal.me/yeken
@@ -35,7 +35,6 @@ For further information read our documentation:
 = Pro Plus Version =
 
 * All of the features that come with a standard Pro license.
-* **Photo uploads**. Your users can now upload photos of their progress. Photos can be viewed, updated and removed by the end user and administrators. Handy shortcodes are provided for displaying galleries, most recent and oldest photo.
 * **Basal Metabolic Rate (BMR) calculations per user**. Shortcodes and extended admin screens to display a user's BMR. For further information on BMR and how it is calculated visit our calculations page.
 * **Harris Benedict formula**. Shortcodes and extended admin screens to a view a person's calorie intake required to maintain and lose weight. For further information on Harris Benedict Formula and how it is calculated visit our calculations page.
 * **Recommended calorie intake per meal time**. Shortcodes and extended admin screens to recommend how a person should split their daily calorie intake across meals. For further information on how this is calculated please visit our calculations page.
@@ -49,6 +48,7 @@ For further information read our documentation:
 * **CSV and JSON exports** for all data or a particular user.
 * **Measurements.** Support for recording measurements like Hip, Waist, Leg, Bicep, etc. Displayed on charts and tables.
 * **Custom Fields.** Define and ask your user's custom questions on weight entry forms.
+* **Photo Custom Fields**. Add one or more photo fields to your weight entry forms and allow your users to upload photos of their progress. Photos can be viewed, updated and removed by the end user and administrators. Handy shortcodes are provided for displaying galleries, most recent and oldest photo.
 * **BMI.** Allows a user to specify their height. Once specified, their BMI is displayed next to each weight entry. There is also a shortcode to render the latest BMI.
 * **Email notifications.** Receive email notifications when a person updates their target or adds / edits a weight.
 * **Overall user stats.** Shortcodes that allow you to display the total lost / gained for the community and another to display a league table.
@@ -143,9 +143,20 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 == Upgrade Notice ==
 
-6.0 - New Custom Fields! Add your own questions to weight entry forms!
+6.1 - New Photo Custom Fields! Pro users can now add one or more photo fields to weight entry forms!
 
 == Changelog ==
+
+= 6.1 =
+
+* New Feature: Added a new Meta Field type of "Photos" (Pro only). This will allow site administrators to add one or more photo field per entry form.
+* New Feature: Build in tool to migrate photos from old system to new.
+* Improvement: Removed old photo upload and migrated to to new meta fields.
+* Improvement: Added custom field data to email notifications.
+* Improvement: Added additional logic to remove photos from media library when no longer used by Weight Tracker (e.g. user has deleted them)
+* Improvement: Various minor tweaks to meta fields and validation.
+* Improvement: Changed email format to HTML.
+* Bug fix: Class name not being correctly added to forms.
 
 = 6.0.3 =
 

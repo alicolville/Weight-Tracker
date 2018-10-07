@@ -47,7 +47,7 @@ function ws_ls_user_side_bar($user_id) {
 			</div>
 		</div>
 
-		<?php if (WE_LS_PHOTOS_ENABLED) : ?>
+		<?php if ( true === ws_ls_meta_fields_photo_any_enabled() ) : ?>
 			<div class="postbox">
 				<h2 class="hndle"><?php echo __('Most Recent Photo', WE_LS_SLUG); ?></h2>
 				<div class="inside">

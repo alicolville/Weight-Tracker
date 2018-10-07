@@ -27,6 +27,7 @@
                 display_on_chart BIT DEFAULT 0,
                 mandatory int DEFAULT 1,
                 enabled int DEFAULT 1,
+                hide_from_shortcodes int DEFAULT 0,
                 system BIT DEFAULT 0,
                 field_type int NOT NULL,
                 sort int DEFAULT 100,
@@ -42,6 +43,7 @@
                 entry_id int NOT NULL,
                 meta_field_id int NOT NULL,
                 value varchar(800) NOT NULL,
+                migrate BIT DEFAULT 0,
                 UNIQUE KEY id (id)              
             ) $charset_collate;";
 
@@ -59,13 +61,26 @@
 
             ws_ls_meta_fields_create_mysql_tables();
 
+            ws_ls_cache_user_delete( 'meta-fields' );
+
             $existing_meta_fields = ws_ls_meta_fields( true, true );
 
 	        // If no meta fields exist, then add some examples
 	        if ( true === empty( $existing_meta_fields ) ) {
-	            var_Dump('added');
-		        ws_ls_meta_fields_load_examples();
+	            ws_ls_meta_fields_load_examples();
 	        }
+
+			// Do we have Photos to migrate from the old photo system to new?
+	        if ( ws_ls_meta_fields_photos_do_we_need_to_migrate() ) {
+
+                // If example Photo meta field doesn't exist, then add it!
+                ws_ls_meta_fields_photos_create_example_field();
+
+		        ws_ls_log_add('photo-migrate', 'Photos have been identified for migrating from old photo system to new!' );
+
+		        ws_ls_meta_fields_photos_migrate_old();
+	        }
+
         }
 
     }
@@ -76,38 +91,36 @@
      */
     function ws_ls_meta_fields_load_examples() {
 
-        // Number
-        ws_ls_meta_fields_add([
-            'field_name' => __('Cups of water drunk today?', WE_LS_SLUG),
-            'abv' => __('Water', WE_LS_SLUG),
-            'field_type' => 0,
-            'suffix' => __('Cups', WE_LS_SLUG),
-            'mandatory' => 2,
-            'enabled' => 1,
-            'sort' => 100
-        ]);
+	    ws_ls_log_add('meta-field-setup', 'Adding some example custom fields' );
 
-        // Text
-        ws_ls_meta_fields_add([
-            'field_name' => __('How did you feel today?', WE_LS_SLUG),
-            'abv' => __('Feel', WE_LS_SLUG),
-            'field_type' => 1,
-            'suffix' => '',
-            'mandatory' => 2,
-            'enabled' => 1,
-            'sort' => 120
-        ]);
+	    if ( false === ws_ls_meta_fields_key_exist( 'cups-of-water-drunk-today' ) ) {
+            // Number
+            ws_ls_meta_fields_add([
+                'field_name' => __('Cups of water drunk today?', WE_LS_SLUG),
+                'abv' => __('Water', WE_LS_SLUG),
+                'field_type' => 0,
+                'suffix' => __('Cups', WE_LS_SLUG),
+                'mandatory' => 2,
+                'enabled' => 1,
+                'sort' => 100,
+                'hide_from_shortcodes' => 0
+            ]);
 
-        // Yes / No
-        ws_ls_meta_fields_add([
-            'field_name' => __('Did you stick to your diet?', WE_LS_SLUG),
-            'abv' => __('Diet', WE_LS_SLUG),
-            'field_type' => 2,
-            'suffix' => '',
-            'mandatory' => 1,
-            'enabled' => 1,
-            'sort' => 130
-        ]);
+        }
+
+        if ( false === ws_ls_meta_fields_key_exist( 'did-you-stick-to-your-diet' ) ) {
+            // Yes / No
+            ws_ls_meta_fields_add([
+                'field_name' => __('Did you stick to your diet?', WE_LS_SLUG),
+                'abv' => __('Diet', WE_LS_SLUG),
+                'field_type' => 2,
+                'suffix' => '',
+                'mandatory' => 1,
+                'enabled' => 1,
+                'sort' => 130,
+                'hide_from_shortcodes' => 0
+            ]);
+        }
 
         ws_ls_cache_user_delete( 'meta-fields' );
 
