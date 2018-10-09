@@ -84,6 +84,9 @@ jQuery( document ).ready(function ($) {
         input.addEventListener( 'blur', function(){ input.classList.remove( 'has-focus' ); });
     });
 
+    // ------------------------------------------------------------
+    // Meta Fields
+    // ------------------------------------------------------------
 
     // Show / hide additional fields on meta fields add / update
     function ws_ls_meta_fields_show_additional() {
@@ -109,4 +112,34 @@ jQuery( document ).ready(function ($) {
     });
 
     ws_ls_meta_fields_show_additional();
+
+    // ------------------------------------------------------------
+    // Awards
+    // ------------------------------------------------------------
+
+    // Show / hide additional fields on meta fields add / update
+    function ws_ls_awards_show_additional() {
+
+        var meta_field_ids = [ 1, 2, 3, 4 ];
+
+        var value = $('#field_type').val();
+
+        for ( $i = 0; $i < meta_field_ids.length; $i++ ) {
+
+            if ( value == meta_field_ids[ $i ] ) {
+                $('#ws-ls-meta-fields-additional-' + meta_field_ids[ $i ] ).removeClass( 'ws-ls-hide' );
+            } else {
+                $('#ws-ls-meta-fields-additional-' + meta_field_ids[ $i ] ).addClass( 'ws-ls-hide' );
+            }
+
+        }
+
+    }
+
+    $( "#field_type" ).change(function() {
+        ws_ls_awards_show_additional();
+    });
+
+    ws_ls_awards_show_additional();
+
 });

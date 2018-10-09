@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight, loss, lose, helper, bmi, body, mass, index, graph, track, stones, kg, table, data, plot, target, history, pounds, responsive, chart, measurements, cm, centimeters, inches, hip, waist, bicep, thigh
 Requires at least: 4.4.0
 Tested up to: 4.9.8
-Stable tag: 6.1
+Stable tag: 7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate Link: https://www.paypal.me/yeken
@@ -143,9 +143,20 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 == Upgrade Notice ==
 
-6.1 - New Photo Custom Fields! Pro users can now add one or more photo fields to weight entry forms!
+7.0 - Awards and Badges! Create awards that your user's can achieve for meeting certain targets!
 
 == Changelog ==
+
+//todo: Happy awards is for pro? or should it be PRo plus?
+// todo: update features / documentations
+// todo: allow disable of all emails
+// todo: minify admin.js
+
+= 7.0 =
+
+* New Feature: Awards and Badges!
+* Set awards for: Change in BMI, Weight Gain / Loss from start and Percentage of weight lost from start.
+
 
 = 6.1 =
 

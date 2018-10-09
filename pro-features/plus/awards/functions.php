@@ -3,6 +3,31 @@
     defined('ABSPATH') or die("Jog on!");
 
     /**
+     * Returns true if Awards enabled
+     *
+     * @return bool
+     */
+    function ws_ls_awards_is_enabled() {
+        return WS_LS_IS_PRO;
+    }
+
+    /**
+     * Return an array of Award Types
+     *
+     * @return array
+     */
+    function ws_ls_awards_categories() {
+
+        $fields = [
+            'weight' => __('Weight change in units', WE_LS_SLUG),
+            'weight-percentage' => __('Weight change as a percentage', WE_LS_SLUG),
+            'bmi' => __('Change in BMI Label', WE_LS_SLUG),
+        ];
+
+        return $fields;
+    }
+
+    /**
      * Has the user previously been given this award?
      *
      * @param null $user_id
