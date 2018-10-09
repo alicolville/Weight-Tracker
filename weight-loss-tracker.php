@@ -88,6 +88,7 @@ defined('ABSPATH') or die('Jog on!');
         'includes/admin-pages/meta-fields/page-meta-fields-add-update.php',
         'includes/admin-pages/meta-fields/page-meta-fields-list.php',
         'includes/admin-pages/awards/page-awards.php',
+        'includes/admin-pages/awards/page-awards-list.php',
         'includes/admin-pages/awards/page-awards-add-update.php',
         'pro-features/plus/meta-fields/activate.php',
         'pro-features/plus/meta-fields/db.php',

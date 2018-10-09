@@ -150,7 +150,8 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 //todo: Happy awards is for pro? or should it be PRo plus?
 // todo: update features / documentations
 // todo: allow disable of all emails
-// todo: minify admin.js
+// todo: minify admin.js and admin.css
+// test not broker custom photo fields
 
 = 7.0 =
 

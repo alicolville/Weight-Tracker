@@ -176,6 +176,9 @@ HEX: #f7786b
     background-color: #ef8988;
     color: #FFFFFF;
 }
+.ws-ls-label-top {
+    vertical-align: top;
+}
 /*
     Tables with div
  */

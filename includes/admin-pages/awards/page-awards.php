@@ -13,7 +13,7 @@ function ws_ls_awards_page() {
             ws_ls_awards_add_update_page();
             break;
         default:
-           // ws_ls_meta_fields_list_page();
+            ws_ls_awards_list_page();
             break;
     }
 

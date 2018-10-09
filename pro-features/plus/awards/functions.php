@@ -10,6 +10,13 @@
     function ws_ls_awards_is_enabled() {
         return WS_LS_IS_PRO;
     }
+    /*
+    * Return base URL for meta fields
+    * @return string
+    */
+    function ws_ls_awards_base_url() {
+        return admin_url( 'admin.php?page=ws-ls-awards');
+    }
 
     /**
      * Return an array of Award Types

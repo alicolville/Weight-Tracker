@@ -24,9 +24,10 @@
 	 * @return bool|int
 	 */
 	function ws_ls_meta_fields_photos_process_upload( $field_name, $date_text = NULL, $user_id = NULL,
-                                                            $entry_id = NULL, $meta_field_id = null ) {
+                                                            $entry_id = NULL, $meta_field_id = null, $module = 'photo-upload' ) {
 
-		if ( false === ws_ls_meta_fields_is_enabled() || false === ws_ls_meta_fields_photo_any_enabled() ) {
+		if ( ( false === ws_ls_meta_fields_is_enabled() || false === ws_ls_meta_fields_photo_any_enabled() ) &&
+                'award-badge-yeken' === $field_name && true === ws_ls_awards_is_enabled() ) {
 			ws_ls_log_add('photo-upload', 'Looking for a photo field but Photos disabled?' );
 			return false;
 		}
@@ -75,7 +76,7 @@
 
 			// Within max file size?
 			if ( intval( $photo_uploaded['size'] ) < 0 || intval( $photo_uploaded['size'] ) > $max_field_size ) {
-				ws_ls_log_add('photo-upload', sprintf( 'Photo too big: %s. Details: %s / Max Size: %s', $field_name, json_encode( $photo_uploaded ), $max_field_size ) );
+				ws_ls_log_add( $module, sprintf( 'Photo too big: %s. Details: %s / Max Size: %s', $field_name, json_encode( $photo_uploaded ), $max_field_size ) );
 				return false;
 			}
 
@@ -88,7 +89,7 @@
 
 			// Check file Mime type
 			if ( false === in_array( $mime_type['type'], [ 'image/jpg','image/jpeg','image/gif','image/png' ] ) ) {
-				ws_ls_log_add('photo-upload', sprintf( 'Photo of wrong type: %s', json_encode( $photo_uploaded ) ) );
+				ws_ls_log_add( $module, sprintf( 'Photo of wrong type: %s', json_encode( $photo_uploaded ) ) );
 				return false;
 			}
 
@@ -97,7 +98,7 @@
 
 			// Error uploading file
 			if ( true === empty( $uploaded_file ) || true === isset( $uploaded_file['error'] ) ) {
-				ws_ls_log_add('photo-upload', sprintf( 'Error handing upload: %s Detail: %s', json_encode( $uploaded_file ), json_encode( $photo_uploaded ) ) );
+				ws_ls_log_add( $module, sprintf( 'Error handing upload: %s Detail: %s', json_encode( $uploaded_file ), json_encode( $photo_uploaded ) ) );
 				return false;
 			}
 
@@ -120,11 +121,16 @@
 				'post_status' => 'inherit'
 			);
 
+			// If this wasn't uploaded via a Photo Meta field (e.g. an Award then blank additional data)
+            if ( 'photo-upload' !== $module ) {
+                unset( $attachment['post_title'], $attachment['post_content'] );
+            }
+
 			// Run the wp_insert_attachment function. This adds the file to the media library and generates the thumbnails.
 			$attach_id = wp_insert_attachment( $attachment, $file_name_and_location );
 
 			if ( true === empty( $attach_id ) ) {
-				ws_ls_log_add('photo-upload', sprintf( 'Failed to add photo to Media Library: %s', json_encode( $photo_uploaded ) ) );
+				ws_ls_log_add( $module, sprintf( 'Failed to add photo to Media Library: %s', json_encode( $photo_uploaded ) ) );
 				return false;
 			}
 

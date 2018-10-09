@@ -347,15 +347,17 @@
 	 * @param $value
 	 * @return string
 	 */
-	function ws_ls_meta_fields_form_field_photo( $field, $value ) {
+	function ws_ls_meta_fields_form_field_photo( $field, $value, $field_id = NULL ) {
 
 		if ( false === WS_LS_IS_PRO ) {
 			return '';
 		}
 
+		$field_id = $field_id ?: ws_ls_meta_fields_form_field_generate_id( $field['id'] );
+
 		$html = sprintf('<div class="ws-ls-meta-field ws-ls-meta-field-photo">
                             <label for="%1$s" class="ws-ls-meta-field-title">%2$s</label>',
-                            ws_ls_meta_fields_form_field_generate_id( $field['id'] ),
+                            esc_attr( $field_id ),
                             esc_attr( $field['field_name'] )
                         );
 
@@ -373,7 +375,7 @@
                                 </label>
                             
                         ',
-            ws_ls_meta_fields_form_field_generate_id( $field['id'] ),
+            esc_attr( $field_id ),
             ws_ls_get_next_tab_index(),
             ( false === empty( $value ) ) ? __('Replace photo', WE_LS_SLUG) : __('Select photo', WE_LS_SLUG),
             2 === intval($field['mandatory']) ? 'y' : 'n',
@@ -412,7 +414,7 @@
 					intval( $thumbnail[2] ),
 					__( 'Delete existing photo', WE_LS_SLUG ),
 					__( 'Existing photo', WE_LS_SLUG ),
-                    ws_ls_meta_fields_form_field_generate_id( $field['id'] ),
+                    esc_attr( $field_id ),
                     2 === intval( $field['mandatory'] ) ? 'y' : 'n'
 				);
 			}
