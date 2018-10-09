@@ -296,7 +296,7 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 	}
 
 	$html_output .= sprintf('
-							<form action="%1$s" method="post" class="we-ls-weight-form we-ls-weight-form-validate ws_ls_display_form%2%s" id="%3$s"
+							<form action="%1$s" method="post" class="we-ls-weight-form we-ls-weight-form-validate ws_ls_display_form%2$s" id="%3$s"
 							data-measurements-enabled="%4$s"
 							data-measurements-all-required="%5$s"
 							data-is-target-form="%6$s"

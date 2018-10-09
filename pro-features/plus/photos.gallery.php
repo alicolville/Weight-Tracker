@@ -25,6 +25,10 @@ function ws_ls_photos_gallery_js_css($mode = 'default') {
  */
 function ws_ls_photos_shortcode_gallery($user_defined_arguments) {
 
+    if( false === WS_LS_IS_PRO ) {
+        return '';
+    }
+
     $arguments = shortcode_atts([
         'error-message' => __('It doesn\'t look you\'ve uploaded any photos.', WE_LS_SLUG ),
         'user-id' => get_current_user_id(),
