@@ -10,24 +10,46 @@ function ws_ls_awards_add_update_page() {
     // Data Posted? If so, replace the above from $_POST object
     if ( false === empty( $_POST ) && true === ws_ls_awards_is_enabled() ) {
 
-        $t = ws_ls_meta_fields_photos_process_upload( 'award-badge-yeken', NULL, NULL, NULL, NULL, 'award-upload' );
-
-            var_dump($t);
+//        $t = ws_ls_meta_fields_photos_process_upload( 'award-badge-yeken', NULL, NULL, NULL, NULL, 'award-upload' );
+//
+//            var_dump($t);
 
 
             $award = ws_ls_get_values_from_post( [ 'id', 'title', 'category', 'gain_loss', 'stones',
-                                                     'pounds', 'kg', 'weight_percentage', 'custom_message', 'max_awards', 'send_email', 'enabled' ] );
+                                                     'pounds', 'value', 'weight_percentage', 'custom_message', 'max_awards', 'send_email', 'enabled' ] );
 
-            var_dump($award);
+            $value = NULL;
 
             $mandatory_fields = [ 'title', 'max_awards' ];
 
-            //TODO: depending on category expand mandatory list
+            //------------------------------------------------------------------------------
+            // Add mandatory units to list for validation
+            //------------------------------------------------------------------------------
+            if ( 'weight-percentage' === $award['category'] ) {
+                $mandatory_fields = array_merge( $mandatory_fields, [ 'weight_percentage' ] );
+            } else if ( 'weight' === $award['category'] ) {
+                if( ws_ls_get_config('WE_LS_IMPERIAL_WEIGHTS') ) {
+                    if ( 'stones_pounds' === ws_ls_get_config('WE_LS_DATA_UNITS') ) {
+                        $mandatory_fields = array_merge( $mandatory_fields, [ 'stones', 'pounds' ] );
+                        $award['value'] = ws_ls_to_kg( $award['stones'], $award['pounds'] );
+                    } else {
+                        $mandatory_fields = array_merge( $mandatory_fields, [ 'pounds' ] );
+                        $award['value'] = ws_ls_pounds_to_kg( $award['pounds'] );
+                    }
+                } else {
+                    $mandatory_fields = array_merge( $mandatory_fields, [ 'kg' ] );
+                }
+            }
+print_r($mandatory_fields);
+        print_r($award);
+
+            $failed_validation = [];
 
             // Ensure all mandatory fields have been completed!
             foreach ( $mandatory_fields as $key ) {
                 if ( true === empty( $award[ $key ] ) ) {
                     $validation_fail = true;
+                    $failed_validation[] = $key;
                 }
             }
 //
@@ -48,7 +70,7 @@ function ws_ls_awards_add_update_page() {
 //        }
 //
 //        $id = ( false === empty( $award['id'] ) ) ? $award['id'] : 0 ;
-
+        $award['id'] = 23;
         // Load existing!
     } elseif ( false === empty( $id ) && $award = ws_ls_meta_fields_get_by_id( $id ) ){
        // $id = $award['id'];
@@ -56,7 +78,7 @@ function ws_ls_awards_add_update_page() {
 
     //$id = intval( $id );
 
-    $award = NULL;
+   // $award = NULL;
 
     ?>
     <div class="wrap">
@@ -75,7 +97,7 @@ function ws_ls_awards_add_update_page() {
                         <div class="postbox">
                             <h3 class="hndle"><span><?php echo __('Add / Edit an Award', WE_LS_SLUG); ?> </span></h3>
                             <div style="padding: 0px 15px 0px 15px">
-                                <form action="<?php echo esc_url( admin_url('admin.php?page=ws-ls-awards&mode=add-edit' ) ); ?>" enctype="multipart/form-data" method="post" id="ws-ls-awards-form" class="ws-ls-meta-fields-form">
+                                <form action="<?php echo esc_url( admin_url('admin.php?page=ws-ls-awards&mode=add-edit' ) ); ?>" novalidate enctype="multipart/form-data" method="post" id="ws-ls-awards-form" class="ws-ls-meta-fields-form">
                                     <?php if ( $validation_fail ): ?>
                                         <p class="ws-ls-validation-error">&middot; <?php echo __('Please complete all mandatory fields.', WE_LS_SLUG); ?></p>
                                     <?php endif; ?>
@@ -97,17 +119,19 @@ function ws_ls_awards_add_update_page() {
                                                 <label for="category"><?php echo __('Award Type', WE_LS_SLUG); ?></label>
                                             </div>
                                             <div class="ws-ls-cell">
-                                                TODO: Disable changing when editing
-                                                <?php
-                                                $checked = ( false === empty( $award['category'] ) ) ? intval( $award['category'] ) : 'weight';
-                                                ?>
-                                                <select name="category" id="category">
                                                     <?php
-                                                        foreach ( ws_ls_awards_categories() as $key => $label ) {
-                                                                printf( '<option value="%s" %s>%s</option>', $key, selected( $checked, $key ), $label );
-                                                        }
+                                                        $checked = ( false === empty( $award['category'] ) ) ? $award['category'] : 'weight';
                                                     ?>
-                                                </select>
+                                                    <select name="category" id="category" <?php echo ( false === empty( $award['id'] ) ) ? 'disabled' : ''; ?>>
+                                                        <?php
+                                                            foreach ( ws_ls_awards_categories() as $key => $label ) {
+                                                                    printf( '<option value="%s" %s>%s</option>', $key, selected( $checked, $key ), $label );
+                                                            }
+                                                        ?>
+                                                    </select>
+                                                    <?php if ( false === empty( $award['id'] ) ) : ?>
+                                                        <input type="hidden" name="category" value="<?php echo $checked; ?>" />
+                                                    <?php endif; ?>
                                              </div>
                                         </div>
                                         <div class="ws-ls-row">
@@ -125,10 +149,11 @@ function ws_ls_awards_add_update_page() {
                                         </div>
                                         <div class="ws-ls-row ws-ls-hide" id="ws-ls-awards-additional-weight">
                                             <div class="ws-ls-cell">
-                                                <label for="weight_percentage"><?php echo __('Weight difference', WE_LS_SLUG); ?></label>
+                                                <label><?php echo __('Weight difference', WE_LS_SLUG); ?></label>
                                             </div>
                                             <div class="ws-ls-cell">
                                                 <?php
+
                                                     $weight = [ 'stones' => '', 'pounds' => '' ];
 
                                                     if( ws_ls_get_config('WE_LS_IMPERIAL_WEIGHTS') ) {
@@ -143,8 +168,10 @@ function ws_ls_awards_add_update_page() {
                                                                $weight['pounds'] = $conversion['pounds'];
                                                            }
 
-                                                           printf( '<input  type="number" step="any" min="0" name="stones" id="stones" value="%s" placeholder="%s" size="11" >', $weight['stones'], __('Stones', WE_LS_SLUG) );
-                                                           printf( '<input  type="number" step="any" min="0" max="13.99" name="pounds" id="pounds" value="%s" placeholder="%s" size="11"  >',  $weight['pounds'], __('Pounds', WE_LS_SLUG) );
+                                                           printf( '<input novalidate type="number" step="any" min="0" name="stones" id="stones" value="%s" placeholder="%s" size="11" class="%s">', esc_attr( $weight['stones'] ), __('Stones', WE_LS_SLUG),
+                                                               ( true === $validation_fail && in_array( 'stones', $failed_validation ) ) ? 'ws-ls-mandatory-field' : '');
+                                                           printf( '<input novalidate type="number" step="any" min="0" max="13.99" name="pounds" id="pounds" value="%s" placeholder="%s" size="11"  class="%s">',  esc_attr( $weight['pounds'] ), __('Pounds', WE_LS_SLUG),
+                                                               ( true === $validation_fail && in_array( 'pounds', $failed_validation ) ) ? 'ws-ls-mandatory-field' : '' );
                                                        }
                                                        else {
 
@@ -152,31 +179,24 @@ function ws_ls_awards_add_update_page() {
                                                                $weight['pounds'] = ws_ls_to_lb( $award['value'] );
                                                            }
 
-                                                           printf( '<input  type="number" step="any" min="1" name="pounds" id="pounds" value="%s" placeholder="%s" size="11"  >', $weight['pounds'], __('Pounds', WE_LS_SLUG) );
+                                                           printf( '<input novalidate type="number" step="any" min="1" name="pounds" id="pounds" value="%s" placeholder="%s" size="11" class="%s" >', esc_attr( $weight['pounds'] ), __('Pounds', WE_LS_SLUG),
+                                                               ( true === $validation_fail && in_array( 'pounds', $failed_validation ) ) ? 'ws-ls-mandatory-field' : '');
                                                        }
 
                                                     } else {
-                                                       printf( '<input  type="number" step="any" min="1" name="kg" id="kg" value="%d" placeholder="%s" size="11" > %s', intval( $award['value'] ), __('Weight', WE_LS_SLUG) . ' (' . __('kg', WE_LS_SLUG) . ')', __('kg', WE_LS_SLUG)  );
+                                                        printf( '<input novalidate type="number" step="any" min="1" name="value" id="value" value="%s" placeholder="%s" size="11" class="%s"> %s', esc_attr( $award['value'] ), __('Weight', WE_LS_SLUG) . ' (' . __('kg', WE_LS_SLUG) . ')',
+                                                           ( true === $validation_fail && in_array( 'kg', $failed_validation ) ) ? 'ws-ls-mandatory-field' : '' , __('kg', WE_LS_SLUG)  );
                                                     }
                                                 ?>
                                                 <p class="ws-ls-info"><?php echo __('The difference in weight from the starting weight.', WE_LS_SLUG); ?></p>
                                             </div>
                                         </div>
-<!--                                        <div class="ws-ls-row ws-ls-hide" id="ws-ls-awards-additional-weight-percentage">-->
-<!--                                            <div class="ws-ls-cell">-->
-<!--                                                <label for="weight_percentage">--><?php //echo __('% from starting weight', WE_LS_SLUG); ?><!--</label>-->
-<!--                                            </div>-->
-<!--                                            <div class="ws-ls-cell">-->
-<!--                                                <input type="number" min="0" max="1000" id="weight_percentage" name="weight_percentage" value="--><?php //intval( $award['value'] ) ?><!--" />-->
-<!--                                                <p class="ws-ls-info">--><?php //echo __('Specify the percentage difference from the starting weight.', WE_LS_SLUG); ?><!--</p>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
                                         <div class="ws-ls-row ws-ls-hide" id="ws-ls-awards-additional-weight-percentage">
                                             <div class="ws-ls-cell">
                                                 <label for="weight_percentage"><?php echo __('% from starting weight', WE_LS_SLUG); ?></label>
                                             </div>
                                             <div class="ws-ls-cell">
-                                                <input type="number" min="0" max="1000" id="weight_percentage" name="weight_percentage" value="<?php intval( $award['value'] ) ?>" />
+                                                <input type="number" min="0" novalidate max="1000" id="weight_percentage" name="weight_percentage" class="<?php if ( true === $validation_fail && in_array( 'weight_percentage', $failed_validation ) ) { echo 'ws-ls-mandatory-field'; } ?>" value="<?php echo esc_attr( $award['value'] ) ?>" />
                                                 <p class="ws-ls-info"><?php echo __('Specify the percentage difference from the starting weight.', WE_LS_SLUG); ?></p>
                                             </div>
                                         </div>

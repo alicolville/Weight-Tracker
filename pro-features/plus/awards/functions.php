@@ -35,6 +35,19 @@
     }
 
     /**
+     * Return the text value of a custom field
+     *
+     * @param $id
+     * @return mixed|string
+     */
+    function ws_ls_custom_fields_get_string( $slug ) {
+
+        $types = ws_ls_awards_categories();
+
+        return ( false === empty( $types[ $slug ] ) ) ? $types[ $slug ] : '';
+    }
+
+    /**
      * Has the user previously been given this award?
      *
      * @param null $user_id
