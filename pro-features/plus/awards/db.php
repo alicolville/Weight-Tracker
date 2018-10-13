@@ -45,3 +45,28 @@
         return ( false === $result ) ? false : $wpdb->insert_id;
     }
 
+    /**
+     * Fetch all Awards
+     *
+     * @return array
+     */
+    function ws_ls_awards( $ignore_cache = false ) {
+
+        global $wpdb;
+
+        if ( false === $ignore_cache && $cache = ws_ls_cache_user_get( 'awards', 'all' ) ) {
+           return $cache;
+        }
+
+        $sql = 'Select * from ' . $wpdb->prefix . WE_LS_MYSQL_AWARDS;
+
+
+        $sql .= ' order by title asc';
+
+        $data = $wpdb->get_results( $sql , ARRAY_A );
+
+        ws_ls_cache_user_set( 'awards', 'all' , $data );
+
+        return $data;
+    }
+    

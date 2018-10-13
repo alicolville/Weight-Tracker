@@ -147,11 +147,15 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 == Changelog ==
 
+//todo: Add fields for add to update and add to add
 //todo: Happy awards is for pro? or should it be PRo plus?
 // todo: update features / documentations
 // todo: allow disable of all emails
 // todo: minify admin.js and admin.css
-// test not broker custom photo fields
+// test not broken custom photo fields
+// add awards mysql tables to missing table checker tool
+// create a "clear all awards given" on help page?
+// quick review with wp_debug on
 
 = 7.0 =
 

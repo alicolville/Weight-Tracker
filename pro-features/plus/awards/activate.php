@@ -26,11 +26,10 @@ function ws_ls_awards_create_mysql_tables() {
                 badge int NULL DEFAULT 0,
                 custom_message varchar(200) NULL,
                 max_awards int NOT NULL DEFAULT 1,
-                enabled int DEFAULT 1,
+                enabled int DEFAULT 0,
                 send_email BIT DEFAULT 1,
                 apply_to_update BIT DEFAULT 1,
-                apply_to_add int NOT NULL,
-                sort int DEFAULT 100,
+                apply_to_add BIT DEFAULT 1,
                 UNIQUE KEY id (id)
             ) $charset_collate;";
 

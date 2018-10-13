@@ -147,7 +147,7 @@ print_r($mandatory_fields);
                                                 <p class="ws-ls-info"><?php echo __('For example, if you wish to award someone for losing 10Kg, you would select "Decrease in value".', WE_LS_SLUG); ?></p>
                                             </div>
                                         </div>
-                                        <div class="ws-ls-row ws-ls-hide" id="ws-ls-awards-additional-weight">
+                                        <div class="ws-ls-row" id="ws-ls-awards-additional-weight">
                                             <div class="ws-ls-cell">
                                                 <label><?php echo __('Weight difference', WE_LS_SLUG); ?></label>
                                             </div>
@@ -191,7 +191,7 @@ print_r($mandatory_fields);
                                                 <p class="ws-ls-info"><?php echo __('The difference in weight from the starting weight.', WE_LS_SLUG); ?></p>
                                             </div>
                                         </div>
-                                        <div class="ws-ls-row ws-ls-hide" id="ws-ls-awards-additional-weight-percentage">
+                                        <div class="ws-ls-row" id="ws-ls-awards-additional-weight-percentage">
                                             <div class="ws-ls-cell">
                                                 <label for="weight_percentage"><?php echo __('% from starting weight', WE_LS_SLUG); ?></label>
                                             </div>
