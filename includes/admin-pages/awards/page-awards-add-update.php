@@ -10,11 +10,6 @@ function ws_ls_awards_add_update_page() {
     // Data Posted? If so, replace the above from $_POST object
     if ( false === empty( $_POST ) && true === ws_ls_awards_is_enabled() ) {
 
-//        $t = ws_ls_meta_fields_photos_process_upload( 'award-badge-yeken', NULL, NULL, NULL, NULL, 'award-upload' );
-//
-//            var_dump($t);
-
-
             $award = ws_ls_get_values_from_post( [ 'id', 'title', 'category', 'gain_loss', 'stones',
                                                      'pounds', 'value', 'weight_percentage', 'custom_message', 'max_awards', 'send_email', 'enabled' ] );
 
@@ -40,8 +35,6 @@ function ws_ls_awards_add_update_page() {
                     $mandatory_fields = array_merge( $mandatory_fields, [ 'kg' ] );
                 }
             }
-print_r($mandatory_fields);
-        print_r($award);
 
             $failed_validation = [];
 
@@ -52,25 +45,31 @@ print_r($mandatory_fields);
                     $failed_validation[] = $key;
                 }
             }
-//
-//        // If the user has selected a Photo Field, but isn't pro plus, then redirect!
-//        if ( false === WS_LS_IS_PRO && 3 === (int) $award['field_type'] ) {
-//            $validation_fail = true;
-//        }
-//
-//        if ( false === $validation_fail ) {
-//
-//            // Add / Update
-//            $result = ( true === empty( $award['id'] ) ) ? ws_ls_meta_fields_add( $award ) : ws_ls_meta_fields_update( $award );
-//
-//            ws_ls_meta_fields_list_page();
-//
-//            return;
-//
-//        }
-//
-//        $id = ( false === empty( $award['id'] ) ) ? $award['id'] : 0 ;
-        $award['id'] = 23;
+
+
+        if ( false === $validation_fail ) {
+
+            unset( $award['stones'], $award['pounds'], $award['weight_percentage'] );
+
+            // Handle photo upload
+            $photo_uploaded = ws_ls_meta_fields_photos_process_upload( 'award-badge-yeken', NULL, NULL, NULL, NULL, 'award-upload' );
+
+            //TODO:
+            $award['apply_to_update'] = 1;
+            $award['apply_to_add'] = 1;
+            $award['badge'] = ( false === empty( $photo_uploaded ) ) ? $photo_uploaded : 0;
+
+            // Add / Update
+            $result = ( true === empty( $award['id'] ) ) ? ws_ls_awards_add( $award ) : ws_ls_awards_update( $award );
+
+           // ws_ls_meta_fields_list_page();
+
+            return;
+
+        }
+
+        $id = ( false === empty( $award['id'] ) ) ? $award['id'] : 0 ;
+
         // Load existing!
     } elseif ( false === empty( $id ) && $award = ws_ls_meta_fields_get_by_id( $id ) ){
        // $id = $award['id'];
@@ -205,7 +204,7 @@ print_r($mandatory_fields);
                                                 <label for="award-badge-yeken"><?php echo __('Award Badge', WE_LS_SLUG); ?></label>
                                             </div>
                                             <div class="ws-ls-cell">
-                                                <?php echo ws_ls_meta_fields_form_field_photo([ 'field_name' => '', 'mandatory' => 1], 170, 'award-badge-yeken' ); ?>
+                                                <?php echo ws_ls_meta_fields_form_field_photo([ 'field_name' => '', 'mandatory' => 1], $award['badge'], 'award-badge-yeken' ); ?>
                                             </div>
                                         </div>
                                         <div class="ws-ls-row">

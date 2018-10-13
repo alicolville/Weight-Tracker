@@ -60,7 +60,7 @@ function ws_ls_meta_for_given_meta_field( $meta_field_id ) {
 function ws_ls_meta_add_to_entry( $data ) {
 
 	// Ensure we have the expected fields.
-	if ( false === ws_ls_meta_check_fields( $data, [ 'entry_id', 'key', 'value' ] ) ) {
+	if ( false === ws_ls_array_check_fields( $data, [ 'entry_id', 'key', 'value' ] ) ) {
 		return false;
 	}
 
@@ -246,7 +246,7 @@ function ws_ls_meta_fields_update( $field ) {
 	}
 
     // Ensure we have the expected fields.
-    if ( false === ws_ls_meta_check_fields( $field, [ 'id', 'abv', 'field_name', 'field_type', 'suffix', 'mandatory', 'enabled' ] ) ) {
+    if ( false === ws_ls_array_check_fields( $field, [ 'id', 'abv', 'field_name', 'field_type', 'suffix', 'mandatory', 'enabled' ] ) ) {
         return false;
     }
 
@@ -280,8 +280,6 @@ function ws_ls_meta_fields_update( $field ) {
         return true;
     }
 
-
-
     return false;
 }
 
@@ -305,7 +303,7 @@ function ws_ls_meta_fields_add( $field ) {
 	}
 
     // Ensure we have the expected fields.
-    if ( false === ws_ls_meta_check_fields( $field, [ 'abv', 'field_name', 'field_type', 'suffix', 'mandatory', 'enabled' ] ) ) {
+    if ( false === ws_ls_array_check_fields( $field, [ 'abv', 'field_name', 'field_type', 'suffix', 'mandatory', 'enabled' ] ) ) {
         return false;
     }
 
@@ -456,24 +454,6 @@ function ws_ls_meta_formats( $data ) {
     }
 
     return $return;
-}
-
-/**
- * Helper function to ensure all fields have expected keys
- *
- * @param $data
- * @param $expected_fields
- * @return bool
- */
-function ws_ls_meta_check_fields( $data, $expected_fields ) {
-
-    foreach ( $expected_fields as $field ) {
-        if ( false === isset( $data[ $field ] ) ) {
-            return false;
-        }
-    }
-
-    return true;
 }
 
 /**

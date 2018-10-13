@@ -69,3 +69,159 @@
 
         return $data;
     }
+
+    /**
+     *
+     * Add an award
+     *
+     * @param $award
+     *
+     * @return bool     true if success
+     */
+    function ws_ls_awards_add( $award ) {
+
+        if ( false === is_admin() ) {
+            return;
+        }
+
+        // Ensure we have the expected fields.
+        if ( false === ws_ls_array_check_fields( $award, [ 'title', 'category', 'gain_loss', 'value',
+                                                            'badge', 'custom_message', 'max_awards', 'enabled', 'send_email', 'apply_to_update', 'apply_to_add' ] ) ) {
+            return false;
+        }
+
+        unset( $award[ 'id' ] );
+
+        global $wpdb;
+
+        $formats = ws_ls_awards_formats( $award );
+
+        $result = $wpdb->insert( $wpdb->prefix . WE_LS_MYSQL_AWARDS , $award, $formats );
+
+        ws_ls_cache_user_delete( 'awards' );
+
+        return ( false === $result ) ? false : $wpdb->insert_id;
+    }
+
+    /**
+     *
+     * Update an award
+     *
+     * @param $award
+     *
+     * @return bool     true if success
+     */
+    function ws_ls_awards_update( $award ) {
+
+        if ( false === is_admin() ) {
+            return;
+        }
+
+        // Ensure we have the expected fields.
+        if ( false === ws_ls_array_check_fields( $award, [ 'id' ] ) ) {
+            return false;
+        }
+
+        // Extract ID
+        $id = $award[ 'id' ];
+
+        unset( $award[ 'id' ] );
+
+        global $wpdb;
+
+        $formats = ws_ls_awards_formats( $award );
+
+        $result = $wpdb->update( $wpdb->prefix . WE_LS_MYSQL_AWARDS, $award, [ 'id' => $id ], $formats, [ '%d' ] );
+
+        ws_ls_cache_user_delete( 'awards' );
+
+        ws_ls_log_add( 'awards', sprintf( 'Award updated: %s', $id ) );
+
+        do_action( 'wlt-awards-updated', $id );
+
+        return ( false !== $result );
+    }
+
+    /**
+     * Delete an award
+     *
+     * @param $id       award ID to delete
+     * @return bool     true if success
+     */
+    function ws_ls_awards_delete( $id ) {
+
+        if ( false === is_admin() ) {
+            return;
+        }
+
+        global $wpdb;
+
+        ws_ls_log_add( 'awards', sprintf( 'Deleting award: %d', $id ) );
+
+        do_action( 'wlt-awards-deleting', $id );
+
+        $result = $wpdb->delete( $wpdb->prefix . WE_LS_MYSQL_AWARDS, [ 'id' => $id ], [ '%d' ] );
+
+        ws_ls_awards_delete_all_given( $id );
+
+        ws_ls_cache_user_delete( 'awards' );
+
+        return ( 1 === $result );
+    }
+
+    /**
+     * Delete all entries for award
+     *
+     * @param $meta_field_id
+     * @return bool
+     */
+    function ws_ls_awards_delete_all_given( $award_id ) {
+
+        if ( false === is_admin() ) {
+            return;
+        }
+
+        global $wpdb;
+
+        ws_ls_log_add( 'awards', sprintf( 'Deleting awards given for: %d', $award_id ) );
+
+        $result = $wpdb->delete( $wpdb->prefix . WE_LS_MYSQL_AWARDS_GIVEN, [ 'award_id' => $award_id ], [ '%d' ] );
+
+        return ( 1 === $result );
+
+    }
+    do_action( 'wlt-awards-deleting', 'ws_ls_awards_delete_all_given' );
+
+    /**
+     * Return data formats
+     *
+     * @param $data
+     * @return array
+     */
+    function ws_ls_awards_formats( $data ) {
+
+        $formats = [
+            'id' => '%d',
+            'title' => '%s',
+            'category' => '%s',
+            'gain_loss' => '%s',
+            'badge' => '%d',
+            'custom_message' => '%s',
+            'max_awards' => '%d',
+            'enabled' => '%d',
+            'send_email' => '%d',
+            'apply_to_update' => '%d',
+            'apply_to_add' => '%d',
+            'value' => '%s'
+        ];
+
+        $return = [];
+
+        foreach ( $data as $key => $value) {
+            if ( false === empty( $formats[ $key ] ) ) {
+                $return[] = $formats[ $key ];
+            }
+        }
+
+        return $return;
+    }

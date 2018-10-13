@@ -316,3 +316,31 @@
         return $awards;
 
     }
+
+
+// TODO
+//
+//    function t() {
+//
+//        $award = [
+//            'id' => 2,
+//            'title' => 'Lost 100% Body Weight!',
+////            'category' => 'weight-percentage',
+////            'gain_loss' => 'gain',
+////            'value' => '100',
+////            'badge' => 0,        // media Library ID
+////            'custom_message' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed dm',
+////            'max_awards' => 1,
+////            'enabled' => 1,
+////            'send_email' => 1,
+////            'apply_to_update' => 1,
+////            'apply_to_add' => 1
+//        ];
+//
+//        //var_Dump( ws_ls_awards_add($award) );
+//
+//        var_Dump( ws_ls_awards_update($award) );
+//
+//        die;
+//    }
+//    add_action('init' , 't');
