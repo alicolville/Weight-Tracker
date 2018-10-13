@@ -156,6 +156,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 // add awards mysql tables to missing table checker tool
 // create a "clear all awards given" on help page?
 // quick review with wp_debug on
+// check the missing translatable strings
 
 = 7.0 =
 
