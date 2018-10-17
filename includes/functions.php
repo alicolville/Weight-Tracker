@@ -860,17 +860,19 @@ function ws_ls_get_value_from_post_or_obj( $object, $key ) {
  */
 function ws_ls_get_values_from_post( $keys ) {
 
+    $data = [];
+
     foreach ( $keys as $key ) {
 
         if ( true === isset( $_POST[ $key ] ) ) {
-            $meta_field[ $key ] = $_POST[ $key ];
+            $data[ $key ] = $_POST[ $key ];
         } else {
-            $meta_field[ $key ] = '';
+            $data[ $key ] = '';
         }
 
     }
 
-    return $meta_field;
+    return $data;
 
 }
 

@@ -42,7 +42,8 @@
 		if ( false === empty( $_POST[ $field_key_previous ] ) &&
 		        true === is_numeric( $_POST[ $field_key_previous ] ) &&
 		            true === empty( $_POST[ $field_key_delete ] ) &&
-		                true === empty( $_FILES[ $field_name ] ) ) {
+		                true === empty( $_FILES[ $field_name ]['size'] ) ) {
+
 			return intval( $_POST[ $field_key_previous ] );
 		}
 
