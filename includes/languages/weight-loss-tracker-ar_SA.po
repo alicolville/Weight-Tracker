@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Weight Loss Tracker\n"
-"POT-Creation-Date: 2018-10-17 19:21+0100\n"
-"PO-Revision-Date: 2018-10-17 19:21+0100\n"
+"POT-Creation-Date: 2018-10-17 21:22+0100\n"
+"PO-Revision-Date: 2018-10-17 21:24+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ar_SA\n"
@@ -122,8 +122,8 @@ msgstr ""
 
 #: admin-pages/meta-fields/page-meta-fields-add-update.php:127
 msgid ""
-"Text display at to end of the entered value when displaying it to the user. e."
-"g. CM would display in the following manner: 120 CM"
+"Text display at to end of the entered value when displaying it to the user. e.g. "
+"CM would display in the following manner: 120 CM"
 msgstr ""
 
 #: admin-pages/meta-fields/page-meta-fields-add-update.php:132
@@ -164,8 +164,8 @@ msgid ""
 "Custom Fields allows you to ask your user's additional questions when adding a "
 "weight entry. \n"
 "                                                        For example, you may "
-"wish to ask them how many cups of water they drank today or perhaps how they "
-"are feeling. \n"
+"wish to ask them how many cups of water they drank today or perhaps how they are "
+"feeling. \n"
 "                                                            You can use the "
 "following screen to add as many questions as you wish."
 msgstr ""
@@ -273,8 +273,8 @@ msgstr ""
 
 #: admin-pages/page.license.php:81
 msgid ""
-"Of course, by purchasing a license, you are supporting the future of this "
-"plugin and it is gratefully appreciated."
+"Of course, by purchasing a license, you are supporting the future of this plugin "
+"and it is gratefully appreciated."
 msgstr ""
 
 #: admin-pages/page.license.php:86
@@ -283,9 +283,9 @@ msgstr ""
 
 #: admin-pages/page.license.php:87
 msgid ""
-"Our licensing has model has changed, Prior to September 2017 it used to be a "
-"one off payment that enabled the Pro features of the plugin. This is still the "
-"case and any old licenses will still be honoured."
+"Our licensing has model has changed, Prior to September 2017 it used to be a one "
+"off payment that enabled the Pro features of the plugin. This is still the case "
+"and any old licenses will still be honoured."
 msgstr ""
 
 #: admin-pages/page.license.php:88
@@ -325,8 +325,8 @@ msgstr ""
 
 #: admin-pages/page.license.php:112
 msgid ""
-"Thank you kind soul, you have purchased a Pro Plus license. A huge thank you "
-"for supporting me and this plugin!"
+"Thank you kind soul, you have purchased a Pro Plus license. A huge thank you for "
+"supporting me and this plugin!"
 msgstr ""
 
 #: admin-pages/page.license.php:119
@@ -369,8 +369,8 @@ msgstr ""
 
 #: admin-pages/page.license.php:181
 msgid ""
-"Copy and paste the license given to you by YeKen into this box and click "
-"\"Apply License\""
+"Copy and paste the license given to you by YeKen into this box and click \"Apply "
+"License\""
 msgstr ""
 
 #: admin-pages/page.license.php:184
@@ -439,8 +439,8 @@ msgstr "هل أنت متأكد؟"
 
 #: admin-pages/page.license.php:284
 msgid ""
-"Are you sure you wish to remove the license for this site? Removing it may "
-"cause your user's to lose functionality."
+"Are you sure you wish to remove the license for this site? Removing it may cause "
+"your user's to lose functionality."
 msgstr ""
 
 #: admin-pages/page.settings.php:38
@@ -526,8 +526,8 @@ msgid ""
 "Pounds. Please note: The graph will be displayed in Pounds if \"Stones & Pounds"
 "\" is selected."
 msgstr ""
-"يمكنك تحديد ما إذا كنت تريد عرض الأوزان بالكيلوجرام أو بالرطل. يرجى ملاحظة: "
-"سيتم عرض الرسم البياني بالرطل إذا تم تحديد الرطل."
+"يمكنك تحديد ما إذا كنت تريد عرض الأوزان بالكيلوجرام أو بالرطل. يرجى ملاحظة: سيتم "
+"عرض الرسم البياني بالرطل إذا تم تحديد الرطل."
 
 #: admin-pages/page.settings.php:102
 msgid "UK or US Date format?"
@@ -567,8 +567,7 @@ msgstr ""
 
 #: admin-pages/page.settings.php:132
 msgid ""
-"If enabled, BMI values will be displayed alongside weight entries in data "
-"tables."
+"If enabled, BMI values will be displayed alongside weight entries in data tables."
 msgstr ""
 
 #: admin-pages/page.settings.php:136
@@ -929,8 +928,7 @@ msgstr "تعديل الوزن / القياسات"
 
 #: admin-pages/page.settings.php:503
 msgid ""
-"Receive notifications when a member edits an existing weight / measurement "
-"entry."
+"Receive notifications when a member edits an existing weight / measurement entry."
 msgstr ""
 
 #: admin-pages/page.settings.php:507
@@ -946,8 +944,7 @@ msgid "Allow Measurements?"
 msgstr ""
 
 #: admin-pages/page.settings.php:532
-msgid ""
-"If enabled, a user can also add body measurements along with their weights."
+msgid "If enabled, a user can also add body measurements along with their weights."
 msgstr ""
 
 #: admin-pages/page.settings.php:536
@@ -1048,15 +1045,13 @@ msgstr[5] "رقم 100, 101, 102, 200…"
 msgid "No photos could be found for this user."
 msgstr ""
 
-#: admin-pages/user-data/data-photos.php:55
-#: admin-pages/user-data/data-user.php:101
+#: admin-pages/user-data/data-photos.php:55 admin-pages/user-data/data-user.php:101
 #, fuzzy
 #| msgid "Add / Edit an entry"
 msgid "Add and enable a Photo Custom Field"
 msgstr "إضافة / تعديل ادخال"
 
-#: admin-pages/user-data/data-photos.php:56
-#: admin-pages/user-data/data-user.php:102
+#: admin-pages/user-data/data-photos.php:56 admin-pages/user-data/data-user.php:102
 msgid "to allow a users to upload photos of their progress"
 msgstr ""
 
@@ -1068,8 +1063,7 @@ msgstr ""
 msgid "Upgrade to Pro"
 msgstr "ترقية"
 
-#: admin-pages/user-data/data-photos.php:64
-#: admin-pages/user-data/data-user.php:110
+#: admin-pages/user-data/data-photos.php:64 admin-pages/user-data/data-user.php:110
 msgid "to allow a user to upload photos of their progress"
 msgstr ""
 
@@ -1248,8 +1242,7 @@ msgstr ""
 msgid ""
 "to view the user's daily calorie intake required to either maintain or lose "
 "weight (Harris Benedict formula)"
-msgstr ""
-"لعرض السعرات الحرارية اليومية للمستخدم المطلوبة للحفاظ على الوزن أو إنقاصه"
+msgstr "لعرض السعرات الحرارية اليومية للمستخدم المطلوبة للحفاظ على الوزن أو إنقاصه"
 
 #: admin-pages/user-data/data-user.php:143
 msgid "Please ensure the values for Proteins, Carbohydrates and Fats (within "
@@ -1901,11 +1894,10 @@ msgstr "لم تدخل أي بيانات للوزن حتى الآن."
 #~ msgid "No data found"
 #~ msgstr "لاتوجد بيانات"
 
-#~ msgid ""
-#~ "Enter a user's email address, display name or username and click Search."
+#~ msgid "Enter a user's email address, display name or username and click Search."
 #~ msgstr ""
-#~ "أدخل عنوان البريد الإلكتروني للمستخدم أو اسم المفضل أو اسم المستخدم وانقر "
-#~ "فوق بحث."
+#~ "أدخل عنوان البريد الإلكتروني للمستخدم أو اسم المفضل أو اسم المستخدم وانقر فوق "
+#~ "بحث."
 
 #~ msgid "Most Recent Photo"
 #~ msgstr "أحدث الصور"
@@ -2085,13 +2077,12 @@ msgstr "لم تدخل أي بيانات للوزن حتى الآن."
 #~ msgid ""
 #~ "The BMI (Body Mass Index) is used by the medical profession to quickly "
 #~ "determine a person’s weight in regard to their height. From a straight "
-#~ "forward calculation the BMI factor can be gained and may be used to "
-#~ "determine if a person is underweight, of normal weight, overweight or obese."
+#~ "forward calculation the BMI factor can be gained and may be used to determine "
+#~ "if a person is underweight, of normal weight, overweight or obese."
 #~ msgstr ""
-#~ "يتم استخدام مؤشر كتلة الجسم (BMI) من قبل اخصائي التغذية لتحديد وزن الشخص "
-#~ "فيما يتعلق بطولهم. يمكن الحصول على موشر كتلة الجسم ويمكن استخدامه لتحديد ما "
-#~ "إذا كان الشخص يعاني من نقص الوزن أو في الوزن الطبيعي أو زيادة الوزن أو "
-#~ "السمنة."
+#~ "يتم استخدام مؤشر كتلة الجسم (BMI) من قبل اخصائي التغذية لتحديد وزن الشخص فيما "
+#~ "يتعلق بطولهم. يمكن الحصول على موشر كتلة الجسم ويمكن استخدامه لتحديد ما إذا "
+#~ "كان الشخص يعاني من نقص الوزن أو في الوزن الطبيعي أو زيادة الوزن أو السمنة."
 
 #~ msgid "Your current BMI is"
 #~ msgstr "مؤشر كتلة الجسم الحالي لديك هو"
@@ -2104,17 +2095,16 @@ msgstr "لم تدخل أي بيانات للوزن حتى الآن."
 #~ msgid ""
 #~ "To allow us to calculate this, we need your latest weight, date of birth, "
 #~ "height and gender."
-#~ msgstr ""
-#~ "للسماح لنا بحساب ذلك، نحتاج إلى قياس وزنك وتاريخ الميلاد والطول والجنس."
+#~ msgstr "للسماح لنا بحساب ذلك، نحتاج إلى قياس وزنك وتاريخ الميلاد والطول والجنس."
 
 #~ msgid "BMR (Basal Metabolic Rate)"
 #~ msgstr "معدل الأيض الأساسي"
 
 #~ msgid ""
-#~ "BMR is short for Basal Metabolic Rate. The Basal Metabolic Rate is the "
-#~ "number of calories required to keep your body functioning at rest, also "
-#~ "known as your metabolism. We calculate your BMR using formulas provided by "
-#~ "www.diabetes.co.uk."
+#~ "BMR is short for Basal Metabolic Rate. The Basal Metabolic Rate is the number "
+#~ "of calories required to keep your body functioning at rest, also known as "
+#~ "your metabolism. We calculate your BMR using formulas provided by www."
+#~ "diabetes.co.uk."
 #~ msgstr ""
 #~ "معدل الأيض الأساسي (‏‫‏‫BMR) هو عدد السعرات الحرارية المطلوبة للحفاظ على عمل "
 #~ "الجسم في حالة الراحة، والتي تعرف أيضا باسم الأيض."
@@ -2128,20 +2118,19 @@ msgstr "لم تدخل أي بيانات للوزن حتى الآن."
 #~ msgid ""
 #~ "Once we know your BMR (the number of calories to keep you functioning at "
 #~ "rest), we can go on to give you suggestions on how to spread your calorie "
-#~ "intake across the day. Firstly we split the figures into daily calorie "
-#~ "intake to maintain weight and daily calorie intake to lose weight. Daily "
-#~ "calorie intake to lose weight is calculated based on NHS advice – they "
-#~ "suggest to lose 1 – 2lbs a week you should subtract 600 calories from your "
-#~ "BMR. The two daily figures can be further broken down by recommending how to "
-#~ "split calorie intake across the day i.e. breakfast, lunch, dinner and snacks."
+#~ "intake across the day. Firstly we split the figures into daily calorie intake "
+#~ "to maintain weight and daily calorie intake to lose weight. Daily calorie "
+#~ "intake to lose weight is calculated based on NHS advice – they suggest to "
+#~ "lose 1 – 2lbs a week you should subtract 600 calories from your BMR. The two "
+#~ "daily figures can be further broken down by recommending how to split calorie "
+#~ "intake across the day i.e. breakfast, lunch, dinner and snacks."
 #~ msgstr ""
-#~ "عندما نعرف BMR (معدل الأيض الأساسي) ، يمكننا أن نقدم اقتراحات حول كيفية "
-#~ "توزيع السعرات الحرارية على مدار اليوم. أولاً نقوم بتقسيم الأرقام إلى كميات "
-#~ "يومية من السعرات الحرارية للحفاظ على الوزن ومقدار السعرات الحرارية اليومية "
-#~ "لإنقاص الوزن. يتم احتساب السعرات الحرارية اليومية لانقاص الوزن على أساس "
-#~ "قياسات عالمية. يمكن تقسيم الأرقام اليومية بشكل أكبر من خلال التوصية بكيفية "
-#~ "تقسيم السعرات الحرارية على مدار اليوم مثل الإفطار والغداء والعشاء والوجبات "
-#~ "الخفيفة."
+#~ "عندما نعرف BMR (معدل الأيض الأساسي) ، يمكننا أن نقدم اقتراحات حول كيفية توزيع "
+#~ "السعرات الحرارية على مدار اليوم. أولاً نقوم بتقسيم الأرقام إلى كميات يومية من "
+#~ "السعرات الحرارية للحفاظ على الوزن ومقدار السعرات الحرارية اليومية لإنقاص "
+#~ "الوزن. يتم احتساب السعرات الحرارية اليومية لانقاص الوزن على أساس قياسات "
+#~ "عالمية. يمكن تقسيم الأرقام اليومية بشكل أكبر من خلال التوصية بكيفية تقسيم "
+#~ "السعرات الحرارية على مدار اليوم مثل الإفطار والغداء والعشاء والوجبات الخفيفة."
 
 #~ msgid "Macronutrients"
 #~ msgstr "العناصر الغذائية"
@@ -2325,13 +2314,13 @@ msgstr "لم تدخل أي بيانات للوزن حتى الآن."
 
 #, fuzzy
 #~ msgid ""
-#~ "Place the tag [weight-loss-tracker] on a given page and the user is "
-#~ "presented with a form to enter a date, weight and notes for that entry. When "
-#~ "the person saves their entry the data table and graph is refreshed."
+#~ "Place the tag [weight-loss-tracker] on a given page and the user is presented "
+#~ "with a form to enter a date, weight and notes for that entry. When the person "
+#~ "saves their entry the data table and graph is refreshed."
 #~ msgstr ""
 #~ "Place the tag [weightlosstracker] on a given page and the user is presented "
-#~ "with a form to enter a date, weight and notes for that entry. When the "
-#~ "person saves their entry the data table and graph is refreshed."
+#~ "with a form to enter a date, weight and notes for that entry. When the person "
+#~ "saves their entry the data table and graph is refreshed."
 
 #~ msgid "Enable support for Avada theme?"
 #~ msgstr "Enable support for Avada theme?"

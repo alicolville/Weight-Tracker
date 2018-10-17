@@ -149,6 +149,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 = 6.1.1 =
 
+* Improvement: Updated German translations. Thanks Benjamin.
 * Bug fix: Typo fix.
 
 = 6.1 =

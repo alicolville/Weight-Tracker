@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Weight Loss Tracker da_DK\n"
-"POT-Creation-Date: 2018-10-17 19:21+0100\n"
-"PO-Revision-Date: 2018-10-17 19:21+0100\n"
+"POT-Creation-Date: 2018-10-17 21:22+0100\n"
+"PO-Revision-Date: 2018-10-17 21:25+0100\n"
 "Last-Translator: Spaniole Olsen <spaniole@gmail.com>\n"
 "Language-Team: Team Denmark <spaniole@gmail.com>\n"
 "Language: da_DK\n"
@@ -634,7 +634,6 @@ msgid "Permissions"
 msgstr ""
 
 #: admin-pages/page.settings.php:193
-#, fuzzy
 msgid "Who can view and modify user data?"
 msgstr "Slet eksisterende data"
 
@@ -917,10 +916,8 @@ msgstr ""
 "mål linje på grafen."
 
 #: admin-pages/page.settings.php:430
-#, fuzzy
-#| msgid "Weight fill colour?"
 msgid "Weight Fill Colour"
-msgstr "Vægt fyldfarve?"
+msgstr "Vægt fyldfarve"
 
 #: admin-pages/page.settings.php:433
 #, fuzzy
@@ -935,10 +932,8 @@ msgstr ""
 "at fylde vægtsøjlerne på grafen."
 
 #: admin-pages/page.settings.php:437
-#, fuzzy
-#| msgid "Weight fill colour?"
 msgid "Weight Fill Opacity"
-msgstr "Vægt fyldfarve?"
+msgstr "Vægt fyldfarve"
 
 #: admin-pages/page.settings.php:446
 msgid "Specifies the opacity of the fill colour under the weight line."
@@ -1293,7 +1288,6 @@ msgid "The preferences for this user have been saved."
 msgstr ""
 
 #: admin-pages/user-data/data-user.php:28
-#, fuzzy
 msgid "The cache for this user has been deleted."
 msgstr "Din vægt historie er blevet slettet!"
 
@@ -1514,19 +1508,16 @@ msgid "Please enter a valid measurement ("
 msgstr "Indtast venligst en gyldig målenhed ("
 
 #: core.php:632
-#, fuzzy
 msgid "Please select or enter a value for height."
-msgstr "Indsæt et korrekt format for kg"
+msgstr "Indsæt et korrekt format for kg."
 
 #: core.php:633
-#, fuzzy
 msgid "Please select or enter a value for activity level."
-msgstr "Angiv et gyldigt tal for sten"
+msgstr "Angiv et gyldigt tal for sten."
 
 #: core.php:634
-#, fuzzy
 msgid "Please select or enter a value for gender."
-msgstr "Indsæt et korrekt format for kg"
+msgstr "Indsæt et korrekt format for kg."
 
 #: core.php:635
 #, fuzzy
