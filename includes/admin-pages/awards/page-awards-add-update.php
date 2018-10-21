@@ -32,7 +32,7 @@ function ws_ls_awards_add_update_page() {
                     $award['value'] = ws_ls_pounds_to_kg( $award['pounds'] );
                 }
             } else {
-                $mandatory_fields = array_merge( $mandatory_fields, [ 'kg' ] );
+                $mandatory_fields = array_merge( $mandatory_fields, [ 'value' ] );
             }
         }
 
@@ -46,12 +46,8 @@ function ws_ls_awards_add_update_page() {
             }
         }
 
-        //todo: Fixed post back and maintaing previous value
-
         // Handle photo upload
         $award['badge'] = ws_ls_meta_fields_photos_process_upload( 'award-badge-yeken', NULL, NULL, NULL, NULL, 'award-upload' );
-        //$award['badge'] = ( false === empty( $photo_uploaded ) ) ? $photo_uploaded : 0;
-
 
         if ( false === $validation_fail ) {
 
@@ -64,7 +60,7 @@ function ws_ls_awards_add_update_page() {
             // Add / Update
             $result = ( true === empty( $award['id'] ) ) ? ws_ls_awards_add( $award ) : ws_ls_awards_update( $award );
 
-           // ws_ls_meta_fields_list_page();
+            ws_ls_awards_list_page();
 
             return;
 
@@ -73,15 +69,9 @@ function ws_ls_awards_add_update_page() {
         $id = ( false === empty( $award['id'] ) ) ? $award['id'] : 0 ;
 
         // Load existing!
-    } elseif ( false === empty( $id ) && $award = ws_ls_meta_fields_get_by_id( $id ) ){
-       // $id = $award['id'];
+    } elseif ( false === empty( $id ) && $award = ws_ls_award_get( $id ) ){
+       $id = $award['id'];
     }
-
-    //$id = intval( $id );
-
-   // $award = NULL;
-
-    print_r($award);
 
     ?>
     <div class="wrap">
@@ -114,7 +104,7 @@ function ws_ls_awards_add_update_page() {
                                             </div>
                                             <div class="ws-ls-cell">
                                                 <input type="text" name="title" id="title"  size="40" maxlength="40" class="<?php if ( true === $validation_fail && true === empty( $award['title'] ) ) { echo 'ws-ls-mandatory-field'; } ?>" value="<?php echo ( false === empty( $award['title'] ) ) ? esc_attr( $award['title'] ) : ''; ?>"/><span class="ws-ls-mandatory">*</span>
-                                                <p class="ws-ls-info"><?php echo __('Add a custom message to be inserted into the email. Replaces the {custom_message} within the email template.', WE_LS_SLUG); ?></p>
+
                                             </div>
                                         </div>
                                         <div class="ws-ls-row">
@@ -132,6 +122,7 @@ function ws_ls_awards_add_update_page() {
                                                             }
                                                         ?>
                                                     </select>
+                                                    <p class="ws-ls-info"><?php echo __('Awards are decided by comparing the difference between the user\'s latest weight and their starting weight.', WE_LS_SLUG); ?></p>
                                                     <?php if ( false === empty( $award['id'] ) ) : ?>
                                                         <input type="hidden" name="category" value="<?php echo $checked; ?>" />
                                                     <?php endif; ?>
@@ -192,7 +183,7 @@ function ws_ls_awards_add_update_page() {
 
                                                     } else {
                                                         printf( '<input novalidate type="number" step="any" min="1" name="value" id="value" value="%s" placeholder="%s" size="11" class="%s"> %s', esc_attr( $award['value'] ), __('Weight', WE_LS_SLUG) . ' (' . __('kg', WE_LS_SLUG) . ')',
-                                                           ( true === $validation_fail && in_array( 'kg', $failed_validation ) ) ? 'ws-ls-mandatory-field' : '' , __('kg', WE_LS_SLUG)  );
+                                                           ( true === $validation_fail && in_array( 'value', $failed_validation ) ) ? 'ws-ls-mandatory-field' : '' , __('kg', WE_LS_SLUG)  );
                                                     }
                                                 ?>
                                                 <p class="ws-ls-info"><?php echo __('The difference in weight from the starting weight.', WE_LS_SLUG); ?></p>
@@ -245,11 +236,11 @@ function ws_ls_awards_add_update_page() {
                                             <div class="ws-ls-cell ws-ls-label-col">
                                                 <label for="enabled"><?php echo __('Send Email', WE_LS_SLUG); ?></label>
                                             </div>
-                                            <?php $checked = ( false === empty( $award['send_email'] ) && 1 === intval( $award['send_email'] ) ) ? 1 : 0; ?>
+                                            <?php $checked = ( false === empty( $award['send_email'] ) && 2 === intval( $award['send_email'] ) ) ? 2 : 0; ?>
                                             <div class="ws-ls-cell">
                                                 <select name="send_email" id="send_email">
-                                                    <option value="0" <?php selected( $checked, 1 ); ?>><?php echo __('No', WE_LS_SLUG); ?></option>
-                                                    <option value="1" <?php selected( $checked, 2 ); ?>><?php echo __('Yes', WE_LS_SLUG); ?></option>
+                                                    <option value="1" <?php selected( $checked, 1 ); ?>><?php echo __('No', WE_LS_SLUG); ?></option>
+                                                    <option value="2" <?php selected( $checked, 2 ); ?>><?php echo __('Yes', WE_LS_SLUG); ?></option>
                                                 </select>
                                             </div>
                                         </div>
@@ -257,11 +248,11 @@ function ws_ls_awards_add_update_page() {
                                             <div class="ws-ls-cell ws-ls-label-col">
                                                 <label for="enabled"><?php echo __('Enabled', WE_LS_SLUG); ?></label>
                                             </div>
-                                            <?php $checked = ( false === empty( $award['enabled'] ) && 2 === intval( $award['enabled'] ) ) ? 1 : 0; ?>
+                                            <?php $checked = ( false === empty( $award['enabled'] ) && 2 === intval( $award['enabled'] ) ) ? 2 : 0; ?>
                                             <div class="ws-ls-cell">
                                                 <select name="enabled" id="enabled">
-                                                    <option value="0" <?php selected( $checked, 0 ); ?>><?php echo __('No', WE_LS_SLUG); ?></option>
-                                                    <option value="1" <?php selected( $checked, 1 ); ?>><?php echo __('Yes', WE_LS_SLUG); ?></option>
+                                                    <option value="1" <?php selected( $checked, 1 ); ?>><?php echo __('No', WE_LS_SLUG); ?></option>
+                                                    <option value="2" <?php selected( $checked, 2 ); ?>><?php echo __('Yes', WE_LS_SLUG); ?></option>
                                                 </select>
                                             </div>
                                         </div>

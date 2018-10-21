@@ -26,8 +26,8 @@
         for ( $i = 0 ; $i < count( $meta_fields ) ; $i++ ) {
 
             $meta_fields[ $i ][ 'field_type' ] = ws_ls_meta_fields_types_get_string( $meta_fields[ $i ][ 'field_type' ] );
-            $meta_fields[ $i ][ 'enabled' ] = ws_ls_meta_fields_enabled_get_string( $meta_fields[ $i ][ 'enabled' ] );
-            $meta_fields[ $i ][ 'mandatory' ] = ws_ls_meta_fields_enabled_get_string( $meta_fields[ $i ][ 'mandatory' ] );
+            $meta_fields[ $i ][ 'enabled' ] = ws_ls_boolean_as_yes_no_string( $meta_fields[ $i ][ 'enabled' ] );
+            $meta_fields[ $i ][ 'mandatory' ] = ws_ls_boolean_as_yes_no_string( $meta_fields[ $i ][ 'mandatory' ] );
         }
 
         $data = [

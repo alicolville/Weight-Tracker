@@ -55,7 +55,7 @@
         global $wpdb;
 
         if ( false === $ignore_cache && $cache = ws_ls_cache_user_get( 'awards', 'all' ) ) {
-           return $cache;
+          return $cache;
         }
 
         $sql = 'Select * from ' . $wpdb->prefix . WE_LS_MYSQL_AWARDS;
@@ -191,6 +191,22 @@
 
     }
     do_action( 'wlt-awards-deleting', 'ws_ls_awards_delete_all_given' );
+
+	/**
+	 * Get details for an award
+	 *
+	 * @param $key
+	 */
+	function ws_ls_award_get( $id ) {
+
+		global $wpdb;
+
+		$sql = $wpdb->prepare('Select * from ' . $wpdb->prefix . WE_LS_MYSQL_AWARDS . ' where id = %s limit 0, 1', $id );
+
+		$award = $wpdb->get_row( $sql, ARRAY_A );
+
+		return ( false === empty( $award ) ) ? $award : false;
+	}
 
     /**
      * Return data formats

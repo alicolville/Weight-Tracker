@@ -50,17 +50,6 @@
     }
 
     /**
-     * Return the text value of enabled value
-     *
-     * @param $value
-     * @return mixed|string
-     */
-    function ws_ls_meta_fields_enabled_get_string( $value ) {
-
-        return ( 2 == $value ) ? __('Yes', WE_LS_SLUG) : __('No', WE_LS_SLUG);
-    }
-
-    /**
      * Return a count of enabled meta fields
      *
      * @return int

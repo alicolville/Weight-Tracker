@@ -135,8 +135,87 @@
     function ws_ls_awards_log_award( $weight_object, $weight_award, $info ) {
 
         if ( false === empty( $info['user-id'] ) && false === empty( $weight_award['title'] ) ) {
-            ws_ls_log_add('awards-added', sprintf('User: %s / %s', $info['user-id'], $weight_award['title'] ) );
+
+	        $user_info = get_userdata(  $info['user-id'] );
+
+	        $details = sprintf('%s (%s)', $user_info->user_nicename, $user_info->user_email );
+
+            ws_ls_log_add('awards-added', sprintf('User: %s / %s', $details, $weight_award['title'] ) );
         }
 
     }
 	add_action( 'wlt-award-given', 'ws_ls_awards_log_award', 10, 3 );
+
+	/**
+		AJAX: Fetch all awards for main list
+	 **/
+	function ws_ls_awards_ajax_list() {
+
+
+		check_ajax_referer( 'ws-ls-user-tables', 'security' );
+
+		$columns = [
+			[ 'name' => 'id', 'title' => 'ID', 'visible'=> false, 'type' => 'number' ],
+			[ 'name' => 'title', 'title' => __('Title', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
+			[ 'name' => 'category', 'title' => __('Category', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
+			[ 'name' => 'gain_loss', 'title' => __('Gain / Loss', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
+			[ 'name' => 'value', 'title' => __('Value', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
+			[ 'name' => 'max_awards', 'title' => __('Max. Awards', WE_LS_SLUG), 'visible'=> true, 'type' => 'number' ],
+			[ 'name' => 'send_email', 'title' => __('Email', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
+			[ 'name' => 'enabled', 'title' => __('Enabled', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
+		];
+
+		$awards = ws_ls_awards();
+
+		if ( false === empty( $awards ) ) {
+
+			$categories = ws_ls_awards_categories( true );
+
+			// Format Row data
+			for ( $i = 0 ; $i < count( $awards ) ; $i++ ) {
+
+				$awards[ $i ][ 'category' ] = ( false === empty( $categories[ $awards[ $i ][ 'category' ] ] ) ) ? $categories[ $awards[ $i ][ 'category' ] ] : '';
+				$awards[ $i ][ 'gain_loss' ] = ws_ls_awards_gain_loss_display( $awards[ $i ][ 'gain_loss' ] );
+				$awards[ $i ][ 'value' ] = ws_ls_convert_kg_into_relevant_weight_String( $awards[ $i ][ 'value' ] );
+				$awards[ $i ][ 'enabled' ] = ws_ls_boolean_as_yes_no_string( $awards[ $i ][ 'enabled' ] );
+				$awards[ $i ][ 'send_email' ] = ws_ls_boolean_as_yes_no_string( $awards[ $i ][ 'send_email' ] );
+			}
+
+		}
+
+		$data = [
+			'columns' => $columns,
+			'rows' => $awards
+		];
+
+		wp_send_json($data);
+
+	}
+	add_action( 'wp_ajax_awards_full_list', 'ws_ls_awards_ajax_list' );
+
+	/**
+	 * AJAX: Delete given award ID
+	 */
+	function ws_ls_award_ajax_delete() {
+
+		if ( false === ws_ls_awards_is_enabled() ) {
+			return;
+		}
+
+		check_ajax_referer( 'ws-ls-user-tables', 'security' );
+
+		$id = ws_ls_get_numeric_post_value('id');
+
+		if ( false === empty( $id ) ) {
+
+			$result = ws_ls_awards_delete( $id );
+
+			if ( true === $result ) {
+				wp_send_json( 1 );
+			}
+		}
+
+		wp_send_json( 0 );
+
+	}
+	add_action( 'wp_ajax_awards_delete', 'ws_ls_award_ajax_delete' );
