@@ -174,9 +174,14 @@
 			// Format Row data
 			for ( $i = 0 ; $i < count( $awards ) ; $i++ ) {
 
+				if ( 'weight' === $awards[ $i ][ 'category' ] ) {
+					$awards[ $i ][ 'value' ] = ws_ls_convert_kg_into_relevant_weight_String( $awards[ $i ][ 'value' ] );
+				} else if ( 'weight-percentage' === $awards[ $i ][ 'category' ]  ) {
+					$awards[ $i ][ 'value' ] = $awards[ $i ][ 'value' ] . '%';
+				}
+
 				$awards[ $i ][ 'category' ] = ( false === empty( $categories[ $awards[ $i ][ 'category' ] ] ) ) ? $categories[ $awards[ $i ][ 'category' ] ] : '';
 				$awards[ $i ][ 'gain_loss' ] = ws_ls_awards_gain_loss_display( $awards[ $i ][ 'gain_loss' ] );
-				$awards[ $i ][ 'value' ] = ws_ls_convert_kg_into_relevant_weight_String( $awards[ $i ][ 'value' ] );
 				$awards[ $i ][ 'enabled' ] = ws_ls_boolean_as_yes_no_string( $awards[ $i ][ 'enabled' ] );
 				$awards[ $i ][ 'send_email' ] = ws_ls_boolean_as_yes_no_string( $awards[ $i ][ 'send_email' ] );
 			}

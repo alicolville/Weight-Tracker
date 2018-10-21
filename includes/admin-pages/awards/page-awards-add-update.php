@@ -13,8 +13,6 @@ function ws_ls_awards_add_update_page() {
         $award = ws_ls_get_values_from_post( [ 'id', 'title', 'category', 'gain_loss', 'stones',
                                                  'pounds', 'value', 'weight_percentage', 'custom_message', 'max_awards', 'send_email', 'enabled' ] );
 
-        $value = NULL;
-
         $mandatory_fields = [ 'title', 'max_awards' ];
 
         //------------------------------------------------------------------------------
@@ -50,6 +48,11 @@ function ws_ls_awards_add_update_page() {
         $award['badge'] = ws_ls_meta_fields_photos_process_upload( 'award-badge-yeken', NULL, NULL, NULL, NULL, 'award-upload' );
 
         if ( false === $validation_fail ) {
+
+	        // If weight percentage, switch the values.
+	        if ( 'weight-percentage' === $award['category'] ) {
+		        $award['value'] = $award['weight_percentage'] ;
+	        }
 
             unset( $award['stones'], $award['pounds'], $award['weight_percentage'] );
 
