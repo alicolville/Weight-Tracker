@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-10-17 21:22+0100\n"
-"PO-Revision-Date: 2018-10-17 21:22+0100\n"
+"PO-Revision-Date: 2018-10-22 20:28+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: hu_HU\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.1.1\n"
+"X-Generator: Poedit 2.2\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-KeywordsList: __;_e\n"
@@ -25,7 +25,6 @@ msgid "Add / Edit a Custom Field"
 msgstr ""
 
 #: admin-pages/meta-fields/page-meta-fields-add-update.php:66
-#, fuzzy
 msgid "Please complete all mandatory fields."
 msgstr "Kérjük adja meg az érvényes dátumot"
 
@@ -118,7 +117,6 @@ msgid ""
 msgstr ""
 
 #: admin-pages/meta-fields/page-meta-fields-add-update.php:132
-#, fuzzy
 msgid "Display Order"
 msgstr "Display data in tabs?"
 
@@ -133,8 +131,6 @@ msgid "Mandatory"
 msgstr ""
 
 #: admin-pages/meta-fields/page-meta-fields-add-update.php:160
-#, fuzzy
-#| msgid "Enable"
 msgid "Enabled"
 msgstr "Engedélyezés"
 
@@ -144,8 +140,6 @@ msgstr ""
 
 #: admin-pages/meta-fields/page-meta-fields-add-update.php:176
 #: admin-pages/meta-fields/page-meta-fields-add-update.php:178
-#, fuzzy
-#| msgid "Saved!"
 msgid "Save"
 msgstr "Mentve!"
 
@@ -192,8 +186,6 @@ msgid "You can find detailed documentation for this plugin at our site:"
 msgstr ""
 
 #: admin-pages/page.help.php:46
-#, fuzzy
-#| msgid "Stones & Pounds"
 msgid "Fix: Stones & Pounds accuracy"
 msgstr "font"
 
@@ -223,7 +215,6 @@ msgid "Done. View Log below for further information."
 msgstr ""
 
 #: admin-pages/page.help.php:103
-#, fuzzy
 msgid "Weight Tracker Debug Log"
 msgstr "Súly csökkenés napló"
 
@@ -238,22 +229,18 @@ msgid "You do not have sufficient permissions to access this page."
 msgstr "Nem rendelkezik megfelelő engedéllyel az oldal eléréséhez."
 
 #: admin-pages/page.license.php:39
-#, fuzzy
 msgid "Your license has been applied!"
 msgstr "A beállítások mentése megtörtént"
 
 #: admin-pages/page.license.php:42
-#, fuzzy
 msgid "An error occurred applying your license: "
 msgstr "Hiba történt mentés közben"
 
 #: admin-pages/page.license.php:73 hooks.php:12
-#, fuzzy
 msgid "Upgrade"
 msgstr "Most!"
 
 #: admin-pages/page.license.php:78
-#, fuzzy
 msgid "As you can see from the features listed below, the"
 msgstr "használja az alábbi funkciókat"
 
@@ -273,7 +260,6 @@ msgid ""
 msgstr ""
 
 #: admin-pages/page.license.php:86
-#, fuzzy
 msgid "Legacy Pro License"
 msgstr "Liszenc hozzáadása"
 
@@ -335,7 +321,6 @@ msgid "Get a free 7 day trial!"
 msgstr ""
 
 #: admin-pages/page.license.php:135 admin-pages/page.license.php:141
-#, fuzzy
 msgid "Upgrade to Pro Plus for"
 msgstr "Pro verzió megtekintése"
 
@@ -358,12 +343,10 @@ msgid " a year"
 msgstr ""
 
 #: admin-pages/page.license.php:160
-#, fuzzy
 msgid "Upgrade to Pro for "
 msgstr "Pro verzió megtekintése"
 
 #: admin-pages/page.license.php:176
-#, fuzzy
 msgid "Add or Update License"
 msgstr "Liszenc hozzáadása"
 
@@ -374,7 +357,6 @@ msgid ""
 msgstr ""
 
 #: admin-pages/page.license.php:184
-#, fuzzy
 msgid "Apply License"
 msgstr "Liszenc hozzáadása"
 
@@ -407,7 +389,6 @@ msgid "Your Existing License"
 msgstr ""
 
 #: admin-pages/page.license.php:226
-#, fuzzy
 msgid "Remove License"
 msgstr "Liszenc hozzáadása"
 
@@ -420,7 +401,6 @@ msgid "Pro Plus Features"
 msgstr ""
 
 #: admin-pages/page.license.php:255
-#, fuzzy
 msgid "Below is a list of the intended features of the Pro Plus version"
 msgstr "Lista a Pro verzió funkcióiról"
 
@@ -433,7 +413,6 @@ msgid "Pro Features"
 msgstr ""
 
 #: admin-pages/page.license.php:269
-#, fuzzy
 msgid "Below is a list of the intended features of the Pro version"
 msgstr "Lista a Pro verzió funkcióiról"
 
@@ -621,7 +600,6 @@ msgid "Permissions"
 msgstr ""
 
 #: admin-pages/page.settings.php:193
-#, fuzzy
 msgid "Who can view and modify user data?"
 msgstr "Megtekintheti és szerkesztheti a meglévő felhasználói adatokat"
 
@@ -761,7 +739,6 @@ msgid "Default chart type"
 msgstr ""
 
 #: admin-pages/page.settings.php:308
-#, fuzzy
 msgid "Line Chart"
 msgstr "In a chart"
 
@@ -770,12 +747,10 @@ msgid "Highly Recommended"
 msgstr "Erősen ajánlott"
 
 #: admin-pages/page.settings.php:309
-#, fuzzy
 msgid "Bar Chart"
 msgstr "In a chart"
 
 #: admin-pages/page.settings.php:312
-#, fuzzy
 msgid ""
 "If enabled, \"Allows points and labels to be displayed on graph. "
 "<strong>Note: If using measurements</strong>, graph type will be forced to "
@@ -783,17 +758,14 @@ msgid ""
 msgstr "If enabled, \"Allows points and labels to be displayed on graph."
 
 #: admin-pages/page.settings.php:317
-#, fuzzy
 msgid "Display gridlines?"
 msgstr "Display data in tabs?"
 
 #: admin-pages/page.settings.php:323
-#, fuzzy
 msgid "If enabled, gridlines will be displayed on the Graph canvas."
 msgstr "If enabled, \"Allows points and labels to be displayed on graph."
 
 #: admin-pages/page.settings.php:327
-#, fuzzy
 msgid "Maximum points per graph"
 msgstr "Display points on graph?"
 
@@ -802,7 +774,6 @@ msgid "If enabled, \"Allows points and labels to be displayed on graph."
 msgstr "If enabled, \"Allows points and labels to be displayed on graph."
 
 #: admin-pages/page.settings.php:341
-#, fuzzy
 msgid "Weight colour?"
 msgstr "Weight History"
 
@@ -823,7 +794,6 @@ msgid ""
 msgstr ""
 
 #: admin-pages/page.settings.php:359
-#, fuzzy
 msgid "Text colour"
 msgstr "Színes diagram"
 
@@ -875,18 +845,14 @@ msgid "Specifies the point thickness on a line chart."
 msgstr ""
 
 #: admin-pages/page.settings.php:420
-#, fuzzy
-#| msgid "Add a new weight"
 msgid "Add a fill under weight line?"
 msgstr "Új süly hozzáadása"
 
 #: admin-pages/page.settings.php:426
-#, fuzzy
 msgid "If enabled, a fill colour will be added under the weight line."
 msgstr "If enabled, \"Allows points and labels to be displayed on graph."
 
 #: admin-pages/page.settings.php:430
-#, fuzzy
 msgid "Weight Fill Colour"
 msgstr "Weight History"
 
@@ -897,7 +863,6 @@ msgid ""
 msgstr ""
 
 #: admin-pages/page.settings.php:437
-#, fuzzy
 msgid "Weight Fill Opacity"
 msgstr "Weight History"
 
@@ -910,7 +875,6 @@ msgid "Bar Chart Options"
 msgstr ""
 
 #: admin-pages/page.settings.php:455
-#, fuzzy
 msgid "Weight fill colour?"
 msgstr "Weight History"
 
@@ -962,7 +926,6 @@ msgid "Receive notifications when a member adds / edits their target."
 msgstr ""
 
 #: admin-pages/page.settings.php:526
-#, fuzzy
 msgid "Allow Measurements?"
 msgstr "Allow target weights?"
 
@@ -1036,12 +999,10 @@ msgid "A Pro license is required to add / edit a weight entry."
 msgstr ""
 
 #: admin-pages/user-data/data-edit-target.php:37
-#, fuzzy
 msgid "Edit user's target"
 msgstr "Felhasználó beállításainak engedélyezése"
 
 #: admin-pages/user-data/data-edit-target.php:43
-#, fuzzy
 msgid "A Pro license is required to set a user's target weight."
 msgstr "Biztos szeretné módosítani a célját?"
 
@@ -1056,8 +1017,6 @@ msgstr ""
 
 #: admin-pages/user-data/data-photos.php:43
 #: admin-pages/user-data/data-user.php:89
-#, fuzzy
-#| msgid "No weight data was found for the specified user."
 msgid "No photos could be found for this user."
 msgstr "Súly adatok nem található a megadott felhasználó."
 
@@ -1075,7 +1034,6 @@ msgstr ""
 #: admin-pages/user-data/data-user-edit-settings.php:38
 #: admin-pages/user-data/data-user.php:59
 #: admin-pages/user-data/data-user.php:109
-#, fuzzy
 msgid "Upgrade to Pro"
 msgstr "Pro verzió megtekintése"
 
@@ -1086,7 +1044,6 @@ msgstr ""
 
 #: admin-pages/user-data/data-search-results.php:11
 #: admin-pages/user-data/data-search-results.php:18
-#, fuzzy
 msgid "Search Results"
 msgstr "Keresés:"
 
@@ -1107,12 +1064,10 @@ msgid "No. of Entries"
 msgstr ""
 
 #: admin-pages/user-data/data-search-results.php:46
-#, fuzzy
 msgid "Start Weight"
 msgstr "Cél súly"
 
 #: admin-pages/user-data/data-search-results.php:47
-#, fuzzy
 msgid "Recent Weight"
 msgstr "Cél súly"
 
@@ -1125,7 +1080,6 @@ msgid "No users were found for the given search criteria:"
 msgstr ""
 
 #: admin-pages/user-data/data-search-results.php:66
-#, fuzzy
 msgid "No search terms were specified"
 msgstr "Nincsenek felhasználók"
 
@@ -1162,7 +1116,6 @@ msgid "Last 100 entries"
 msgstr ""
 
 #: admin-pages/user-data/data-summary.php:90
-#, fuzzy
 msgid "Show all entries"
 msgstr "View all weeks"
 
@@ -1171,7 +1124,6 @@ msgid "Show 100 recent entries"
 msgstr ""
 
 #: admin-pages/user-data/data-summary.php:101
-#, fuzzy
 msgid "User Search"
 msgstr "Keresés:"
 
@@ -1184,7 +1136,6 @@ msgid "No. of WordPress users"
 msgstr ""
 
 #: admin-pages/user-data/data-summary.php:133
-#, fuzzy
 msgid "No. of Weight Entries"
 msgstr "Válasszon mértékegységet"
 
@@ -1197,12 +1148,10 @@ msgid "refreshed every 15 minutes"
 msgstr ""
 
 #: admin-pages/user-data/data-summary.php:146
-#, fuzzy
 msgid "View all data"
 msgstr "View all weeks"
 
 #: admin-pages/user-data/data-summary.php:150
-#, fuzzy
 msgid "View all entries"
 msgstr "View all weeks"
 
@@ -1219,7 +1168,6 @@ msgid "To JSON"
 msgstr ""
 
 #: admin-pages/user-data/data-summary.php:168
-#, fuzzy
 msgid "Delete Data"
 msgstr "Törlés"
 
@@ -1232,13 +1180,10 @@ msgid "Are you sure you wish to remove all user data?"
 msgstr "Biztos törli?"
 
 #: admin-pages/user-data/data-user-edit-settings.php:26
-#, fuzzy
 msgid "Edit user preferences"
 msgstr "Felhasználó beállításainak engedélyezése"
 
 #: admin-pages/user-data/data-user-edit-settings.php:39
-#, fuzzy
-#| msgid "Allow user settings"
 msgid "to save changes to your user's settings"
 msgstr "Felhasználó beállításainak engedélyezése"
 
@@ -1247,7 +1192,6 @@ msgid "The preferences for this user have been saved."
 msgstr ""
 
 #: admin-pages/user-data/data-user.php:28
-#, fuzzy
 msgid "The cache for this user has been deleted."
 msgstr "A tömeg történelem töröltük!"
 
@@ -1256,7 +1200,6 @@ msgid "to view the a chart of the user's weight entries."
 msgstr ""
 
 #: admin-pages/user-data/data-user.php:84
-#, fuzzy
 msgid "View all photos"
 msgstr "View all weeks"
 
@@ -1266,7 +1209,6 @@ msgstr ""
 
 #: admin-pages/user-data/data-user.php:128
 #: admin-pages/user-data/data-user.php:155
-#, fuzzy
 msgid "Upgrade to Pro Plus"
 msgstr "Pro verzió megtekintése"
 
@@ -1281,7 +1223,6 @@ msgid "Please ensure the values for Proteins, Carbohydrates and Fats (within "
 msgstr ""
 
 #: admin-pages/user-data/data-user.php:145
-#, fuzzy
 msgid "settings"
 msgstr "Beállítások"
 
@@ -1368,8 +1309,6 @@ msgid "You have modified data. Please refresh page."
 msgstr "Módosított adat. Kérjük, frissítse a lapot."
 
 #: core.php:265
-#, fuzzy
-#| msgid "You need to be logged in to record your weight."
 msgid "You need to be logged in to set your target."
 msgstr "A bejegyzéshez be kell jelentkezni"
 
@@ -1378,8 +1317,6 @@ msgid "Add a new weight"
 msgstr "Új süly hozzáadása"
 
 #: core.php:287
-#, fuzzy
-#| msgid "Underweight"
 msgid "Edit weight"
 msgstr "sovány"
 
@@ -1388,7 +1325,6 @@ msgid "Your target weight is"
 msgstr "A cél súly"
 
 #: core.php:368
-#, fuzzy
 msgid "The user's target weight is currently"
 msgstr "A cél súly"
 
@@ -1397,8 +1333,6 @@ msgid "Stones"
 msgstr "Stones"
 
 #: core.php:402
-#, fuzzy
-#| msgid "Add measurements"
 msgid "Edit measurements"
 msgstr "Új mérés hozzáadása"
 
@@ -1427,7 +1361,6 @@ msgid "Clear Target"
 msgstr "Cél törlése"
 
 #: core.php:596
-#, fuzzy
 msgid "Please enter a value between 0-13 for pounds"
 msgstr "Kérjük, adja meg 0-14 font között"
 
@@ -1468,7 +1401,6 @@ msgid "Please enter a valid measurement ("
 msgstr "Írjon be érvényes adatot"
 
 #: core.php:632
-#, fuzzy
 msgid "Please select or enter a value for height."
 msgstr "Kérjük adja meg a kg-ban"
 
@@ -1477,17 +1409,14 @@ msgid "Please select or enter a value for activity level."
 msgstr ""
 
 #: core.php:634
-#, fuzzy
 msgid "Please select or enter a value for gender."
 msgstr "Kérjük adja meg a kg-ban"
 
 #: core.php:635
-#, fuzzy
 msgid "Please enter a valid date."
 msgstr "Kérjük adja meg az érvényes dátumot"
 
 #: core.php:636
-#, fuzzy
 msgid "Please select your aim."
 msgstr "Kérjük adja meg a kg-ban"
 
@@ -1537,8 +1466,6 @@ msgid "Read more about calculations"
 msgstr ""
 
 #: functions.php:686
-#, fuzzy
-#| msgid "Your settings have been saved!"
 msgid "Your modifications have been saved"
 msgstr "A beállítások mentése megtörtént"
 
@@ -1557,7 +1484,6 @@ msgid ""
 msgstr ""
 
 #: functions.php:889
-#, fuzzy
 msgid "Read more and Upgrade to Pro / Pro Plus Version"
 msgstr "Pro verzió megtekintése"
 
@@ -1578,8 +1504,6 @@ msgid "FR"
 msgstr ""
 
 #: globals.php:163
-#, fuzzy
-#| msgid "Bicep - Left"
 msgid "Biceps - Left"
 msgstr "Bicepsz - Bal"
 
@@ -1588,8 +1512,6 @@ msgid "BL"
 msgstr ""
 
 #: globals.php:164
-#, fuzzy
-#| msgid "Bicep - Right"
 msgid "Biceps - Right"
 msgstr "Bicepsz - jobb"
 
@@ -1650,7 +1572,6 @@ msgid "Shoulders"
 msgstr ""
 
 #: globals.php:171
-#, fuzzy
 msgid "S"
 msgstr "St"
 
@@ -1699,7 +1620,6 @@ msgid "Manage User Data"
 msgstr "Felhasználói adatok kezelése"
 
 #: hooks.php:12
-#, fuzzy
 msgid "Your License"
 msgstr "Liszenc hozzáadása"
 
@@ -1712,7 +1632,6 @@ msgid "Help"
 msgstr "Súgó"
 
 #: hooks.php:173
-#, fuzzy
 msgid "An error occurred while trying to save the user's preferences."
 msgstr "Hiba történt mentés közben"
 
@@ -1766,7 +1685,6 @@ msgid "No user specified"
 msgstr "Nincsenek felhasználók"
 
 #: shortcode-various.php:106
-#, fuzzy
 msgid "No target set"
 msgstr "A cél súly"
 
@@ -1787,23 +1705,18 @@ msgid "Overview"
 msgstr "Áttekintés"
 
 #: shortcode-weight-loss-tracker.php:93
-#, fuzzy
-#| msgid "Add a new weight"
 msgid "Chart and add a new entry"
 msgstr "Új süly hozzáadása"
 
 #: shortcode-weight-loss-tracker.php:94
-#, fuzzy
 msgid "All Entries"
 msgstr "View all weeks"
 
 #: shortcode-weight-loss-tracker.php:94
-#, fuzzy
 msgid "View all of your entries"
 msgstr "View all weeks"
 
 #: shortcode-weight-loss-tracker.php:98
-#, fuzzy
 msgid "View a gallery of your photos"
 msgstr "View all weeks"
 
@@ -1820,7 +1733,6 @@ msgid "Customise this tool and tell us a little more about you"
 msgstr ""
 
 #: shortcode-weight-loss-tracker.php:124
-#, fuzzy
 msgid "Add a weight entry"
 msgstr "Új süly hozzáadása"
 
@@ -1829,7 +1741,6 @@ msgid "In a chart"
 msgstr "Diagram"
 
 #: shortcode-weight-loss-tracker.php:137
-#, fuzzy
 msgid "A graph will appear once several weights have been entered."
 msgstr "Grafikon jelenik meg amint lesz hozzáadott érték"
 

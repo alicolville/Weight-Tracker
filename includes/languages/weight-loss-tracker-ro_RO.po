@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-10-17 21:22+0100\n"
-"PO-Revision-Date: 2018-10-17 21:22+0100\n"
+"PO-Revision-Date: 2018-10-22 20:35+0100\n"
 "Last-Translator: Alex\n"
 "Language-Team: \n"
 "Language: en_GB\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.1.1\n"
+"X-Generator: Poedit 2.2\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-KeywordsList: __;_e\n"
@@ -25,8 +25,6 @@ msgid "Add / Edit a Custom Field"
 msgstr ""
 
 #: admin-pages/meta-fields/page-meta-fields-add-update.php:66
-#, fuzzy
-#| msgid "Please enter a valid date"
 msgid "Please complete all mandatory fields."
 msgstr "Introdu o data valida"
 
@@ -142,8 +140,6 @@ msgstr ""
 
 #: admin-pages/meta-fields/page-meta-fields-add-update.php:176
 #: admin-pages/meta-fields/page-meta-fields-add-update.php:178
-#, fuzzy
-#| msgid "Saved!"
 msgid "Save"
 msgstr "Salvat!"
 
@@ -190,8 +186,6 @@ msgid "You can find detailed documentation for this plugin at our site:"
 msgstr ""
 
 #: admin-pages/page.help.php:46
-#, fuzzy
-#| msgid "Stones & Pounds"
 msgid "Fix: Stones & Pounds accuracy"
 msgstr "Livre si Stone"
 
@@ -239,8 +233,6 @@ msgid "Your license has been applied!"
 msgstr ""
 
 #: admin-pages/page.license.php:42
-#, fuzzy
-#| msgid "An error occurred while saving your data!"
 msgid "An error occurred applying your license: "
 msgstr "A aparut o eroare la salvarea datelor!"
 
@@ -329,8 +321,6 @@ msgid "Get a free 7 day trial!"
 msgstr ""
 
 #: admin-pages/page.license.php:135 admin-pages/page.license.php:141
-#, fuzzy
-#| msgid "Get Pro Version"
 msgid "Upgrade to Pro Plus for"
 msgstr "Obtine versiunea PRO"
 
@@ -353,8 +343,6 @@ msgid " a year"
 msgstr ""
 
 #: admin-pages/page.license.php:160
-#, fuzzy
-#| msgid "Get Pro Version"
 msgid "Upgrade to Pro for "
 msgstr "Obtine versiunea PRO"
 
@@ -413,8 +401,6 @@ msgid "Pro Plus Features"
 msgstr ""
 
 #: admin-pages/page.license.php:255
-#, fuzzy
-#| msgid "Below is a list of the intended features of the Pro version:"
 msgid "Below is a list of the intended features of the Pro Plus version"
 msgstr "Aceasta este lista cu caracteristici ale versiunii PRO"
 
@@ -427,8 +413,6 @@ msgid "Pro Features"
 msgstr ""
 
 #: admin-pages/page.license.php:269
-#, fuzzy
-#| msgid "Below is a list of the intended features of the Pro version:"
 msgid "Below is a list of the intended features of the Pro version"
 msgstr "Aceasta este lista cu caracteristici ale versiunii PRO"
 
@@ -818,9 +802,6 @@ msgid "Text colour"
 msgstr ""
 
 #: admin-pages/page.settings.php:362
-#, fuzzy
-#| msgid ""
-#| "If enabled, enter a HEX colour code to use for the Target line on graph."
 msgid "Enter a HEX colour code to use for text displayed on the graph."
 msgstr ""
 "La activare introdu un cod HEX pentru culoarea liniei greutatii ideale."
@@ -870,31 +851,20 @@ msgid "Specifies the point thickness on a line chart."
 msgstr ""
 
 #: admin-pages/page.settings.php:420
-#, fuzzy
-#| msgid "Add a new weight"
 msgid "Add a fill under weight line?"
 msgstr "Adaugă greutate"
 
 #: admin-pages/page.settings.php:426
-#, fuzzy
-#| msgid ""
-#| "If enabled, enter a HEX colour code to use for the Weight history line on "
-#| "graph."
 msgid "If enabled, a fill colour will be added under the weight line."
 msgstr ""
 "La activare introdu un cod HEX pentru culoarea liniei istoricului greutatii "
 "pe grafic."
 
 #: admin-pages/page.settings.php:430
-#, fuzzy
-#| msgid "Graph: Weight fill colour?"
 msgid "Weight Fill Colour"
 msgstr "Grafic: cloarea suprafetei?"
 
 #: admin-pages/page.settings.php:433
-#, fuzzy
-#| msgid ""
-#| "If enabled, enter a HEX colour code to use for the Target line on graph."
 msgid ""
 "If enabled, enter a HEX colour code to use for the fill colour under the "
 "weight line."
@@ -902,8 +872,6 @@ msgstr ""
 "La activare introdu un cod HEX pentru culoarea liniei greutatii ideale."
 
 #: admin-pages/page.settings.php:437
-#, fuzzy
-#| msgid "Weight History"
 msgid "Weight Fill Opacity"
 msgstr "Istoricul Greutătii"
 
@@ -1075,8 +1043,6 @@ msgstr ""
 #: admin-pages/user-data/data-user-edit-settings.php:38
 #: admin-pages/user-data/data-user.php:59
 #: admin-pages/user-data/data-user.php:109
-#, fuzzy
-#| msgid "Get Pro Version"
 msgid "Upgrade to Pro"
 msgstr "Obtine versiunea PRO"
 
@@ -1107,14 +1073,10 @@ msgid "No. of Entries"
 msgstr ""
 
 #: admin-pages/user-data/data-search-results.php:46
-#, fuzzy
-#| msgid "Target Weight"
 msgid "Start Weight"
 msgstr "Greutatea ideala"
 
 #: admin-pages/user-data/data-search-results.php:47
-#, fuzzy
-#| msgid "Target Weight"
 msgid "Recent Weight"
 msgstr "Greutatea ideala"
 
@@ -1163,8 +1125,6 @@ msgid "Last 100 entries"
 msgstr ""
 
 #: admin-pages/user-data/data-summary.php:90
-#, fuzzy
-#| msgid "View all weeks"
 msgid "Show all entries"
 msgstr "Vezi toate saptamanile"
 
@@ -1185,8 +1145,6 @@ msgid "No. of WordPress users"
 msgstr ""
 
 #: admin-pages/user-data/data-summary.php:133
-#, fuzzy
-#| msgid "Weight Units"
 msgid "No. of Weight Entries"
 msgstr "Unitati de greutate"
 
@@ -1199,14 +1157,10 @@ msgid "refreshed every 15 minutes"
 msgstr ""
 
 #: admin-pages/user-data/data-summary.php:146
-#, fuzzy
-#| msgid "View all weeks"
 msgid "View all data"
 msgstr "Vezi toate saptamanile"
 
 #: admin-pages/user-data/data-summary.php:150
-#, fuzzy
-#| msgid "View all weeks"
 msgid "View all entries"
 msgstr "Vezi toate saptamanile"
 
@@ -1223,8 +1177,6 @@ msgid "To JSON"
 msgstr ""
 
 #: admin-pages/user-data/data-summary.php:168
-#, fuzzy
-#| msgid "Delete existing data"
 msgid "Delete Data"
 msgstr "Sterge inregistrarile existente"
 
@@ -1257,8 +1209,6 @@ msgid "to view the a chart of the user's weight entries."
 msgstr ""
 
 #: admin-pages/user-data/data-user.php:84
-#, fuzzy
-#| msgid "View all weeks"
 msgid "View all photos"
 msgstr "Vezi toate saptamanile"
 
@@ -1268,8 +1218,6 @@ msgstr ""
 
 #: admin-pages/user-data/data-user.php:128
 #: admin-pages/user-data/data-user.php:155
-#, fuzzy
-#| msgid "Get Pro Version"
 msgid "Upgrade to Pro Plus"
 msgstr "Obtine versiunea PRO"
 
@@ -1284,8 +1232,6 @@ msgid "Please ensure the values for Proteins, Carbohydrates and Fats (within "
 msgstr ""
 
 #: admin-pages/user-data/data-user.php:145
-#, fuzzy
-#| msgid "Settings"
 msgid "settings"
 msgstr "Setari"
 
@@ -1372,8 +1318,6 @@ msgid "You have modified data. Please refresh page."
 msgstr ""
 
 #: core.php:265
-#, fuzzy
-#| msgid "You need to be logged in to record your weight."
 msgid "You need to be logged in to set your target."
 msgstr "Trebuie să fii autentificat ca să îți inregistrezi greutatea."
 
@@ -1382,8 +1326,6 @@ msgid "Add a new weight"
 msgstr "Adaugă greutate"
 
 #: core.php:287
-#, fuzzy
-#| msgid "Set Target"
 msgid "Edit weight"
 msgstr "Actualizeaza greutatea ideala"
 
@@ -1392,8 +1334,6 @@ msgid "Your target weight is"
 msgstr "Greutata ta ideala este"
 
 #: core.php:368
-#, fuzzy
-#| msgid "Your target weight is"
 msgid "The user's target weight is currently"
 msgstr "Greutata ta ideala este"
 
@@ -1402,8 +1342,6 @@ msgid "Stones"
 msgstr "Stone"
 
 #: core.php:402
-#, fuzzy
-#| msgid "Set Target"
 msgid "Edit measurements"
 msgstr "Actualizeaza greutatea ideala"
 
@@ -1432,8 +1370,6 @@ msgid "Clear Target"
 msgstr ""
 
 #: core.php:596
-#, fuzzy
-#| msgid "Please enter a between 1-14 for pounds"
 msgid "Please enter a value between 0-13 for pounds"
 msgstr "Introdu intre 1 si 14 livre"
 
@@ -1474,32 +1410,22 @@ msgid "Please enter a valid measurement ("
 msgstr ""
 
 #: core.php:632
-#, fuzzy
-#| msgid "Please enter a valid figure for Kg"
 msgid "Please select or enter a value for height."
 msgstr "Introdu o valoare corecta pentru Kg"
 
 #: core.php:633
-#, fuzzy
-#| msgid "Please enter a valid figure for Stones"
 msgid "Please select or enter a value for activity level."
 msgstr "Introdu o valoare corecta pentru Stones"
 
 #: core.php:634
-#, fuzzy
-#| msgid "Please enter a valid figure for Kg"
 msgid "Please select or enter a value for gender."
 msgstr "Introdu o valoare corecta pentru Kg"
 
 #: core.php:635
-#, fuzzy
-#| msgid "Please enter a valid date"
 msgid "Please enter a valid date."
 msgstr "Introdu o data valida"
 
 #: core.php:636
-#, fuzzy
-#| msgid "Please enter a valid figure for Kg"
 msgid "Please select your aim."
 msgstr "Introdu o valoare corecta pentru Kg"
 
@@ -1567,8 +1493,6 @@ msgid ""
 msgstr ""
 
 #: functions.php:889
-#, fuzzy
-#| msgid "Get Pro Version"
 msgid "Read more and Upgrade to Pro / Pro Plus Version"
 msgstr "Obtine versiunea PRO"
 
@@ -1657,8 +1581,6 @@ msgid "Shoulders"
 msgstr ""
 
 #: globals.php:171
-#, fuzzy
-#| msgid "St"
 msgid "S"
 msgstr "St"
 
@@ -1719,8 +1641,6 @@ msgid "Help"
 msgstr ""
 
 #: hooks.php:173
-#, fuzzy
-#| msgid "An error occurred while saving your data!"
 msgid "An error occurred while trying to save the user's preferences."
 msgstr "A aparut o eroare la salvarea datelor!"
 
@@ -1774,8 +1694,6 @@ msgid "No user specified"
 msgstr ""
 
 #: shortcode-various.php:106
-#, fuzzy
-#| msgid "Your target weight is"
 msgid "No target set"
 msgstr "Greutata ta ideala este"
 
@@ -1796,26 +1714,18 @@ msgid "Overview"
 msgstr "Prezentare generala"
 
 #: shortcode-weight-loss-tracker.php:93
-#, fuzzy
-#| msgid "Add a new weight"
 msgid "Chart and add a new entry"
 msgstr "Adaugă greutate"
 
 #: shortcode-weight-loss-tracker.php:94
-#, fuzzy
-#| msgid "View all weeks"
 msgid "All Entries"
 msgstr "Vezi toate saptamanile"
 
 #: shortcode-weight-loss-tracker.php:94
-#, fuzzy
-#| msgid "View all weeks"
 msgid "View all of your entries"
 msgstr "Vezi toate saptamanile"
 
 #: shortcode-weight-loss-tracker.php:98
-#, fuzzy
-#| msgid "View all weeks"
 msgid "View a gallery of your photos"
 msgstr "Vezi toate saptamanile"
 
@@ -1832,8 +1742,6 @@ msgid "Customise this tool and tell us a little more about you"
 msgstr ""
 
 #: shortcode-weight-loss-tracker.php:124
-#, fuzzy
-#| msgid "Add a new weight"
 msgid "Add a weight entry"
 msgstr "Adaugă greutate"
 
@@ -1842,8 +1750,6 @@ msgid "In a chart"
 msgstr "Graficul greutatii tale:"
 
 #: shortcode-weight-loss-tracker.php:137
-#, fuzzy
-#| msgid "A pretty graph shall appear once you have recorded several weights."
 msgid "A graph will appear once several weights have been entered."
 msgstr "Un grafic drăguț va apărea aici după ce introduci câteva înregistrari."
 

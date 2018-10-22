@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-10-17 21:22+0100\n"
-"PO-Revision-Date: 2018-10-17 21:22+0100\n"
+"PO-Revision-Date: 2018-10-22 20:29+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nb\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.1.1\n"
+"X-Generator: Poedit 2.2\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-KeywordsList: __;_e\n"
@@ -25,7 +25,6 @@ msgid "Add / Edit a Custom Field"
 msgstr ""
 
 #: admin-pages/meta-fields/page-meta-fields-add-update.php:66
-#, fuzzy
 msgid "Please complete all mandatory fields."
 msgstr "Tast inn korrekt datoformat"
 
@@ -132,8 +131,6 @@ msgid "Mandatory"
 msgstr ""
 
 #: admin-pages/meta-fields/page-meta-fields-add-update.php:160
-#, fuzzy
-#| msgid "Enable"
 msgid "Enabled"
 msgstr "Aktiver"
 
@@ -143,8 +140,6 @@ msgstr ""
 
 #: admin-pages/meta-fields/page-meta-fields-add-update.php:176
 #: admin-pages/meta-fields/page-meta-fields-add-update.php:178
-#, fuzzy
-#| msgid "Saved!"
 msgid "Save"
 msgstr "Lagret!"
 
@@ -191,7 +186,6 @@ msgid "You can find detailed documentation for this plugin at our site:"
 msgstr ""
 
 #: admin-pages/page.help.php:46
-#, fuzzy
 msgid "Fix: Stones & Pounds accuracy"
 msgstr "Stones & Pounds"
 
@@ -221,7 +215,6 @@ msgid "Done. View Log below for further information."
 msgstr ""
 
 #: admin-pages/page.help.php:103
-#, fuzzy
 msgid "Weight Tracker Debug Log"
 msgstr "Weight Loss Tracker"
 
@@ -237,12 +230,10 @@ msgstr ""
 "Du har ikke tilstrekkelige tillatelser for å få tilgang til denne siden."
 
 #: admin-pages/page.license.php:39
-#, fuzzy
 msgid "Your license has been applied!"
 msgstr "Instillinger lagret!"
 
 #: admin-pages/page.license.php:42
-#, fuzzy
 msgid "An error occurred applying your license: "
 msgstr "En feil har oppstått!"
 
@@ -270,7 +261,6 @@ msgid ""
 msgstr ""
 
 #: admin-pages/page.license.php:86
-#, fuzzy
 msgid "Legacy Pro License"
 msgstr "Din høyde:"
 
@@ -372,7 +362,6 @@ msgid "Apply License"
 msgstr ""
 
 #: admin-pages/page.license.php:189
-#, fuzzy
 msgid "Your License Information"
 msgstr "Målvekt"
 
@@ -397,7 +386,6 @@ msgid "n/a"
 msgstr ""
 
 #: admin-pages/page.license.php:220
-#, fuzzy
 msgid "Your Existing License"
 msgstr "Målvekt"
 
@@ -505,12 +493,10 @@ msgstr "Vektenheter"
 
 #: admin-pages/page.settings.php:94 converters.php:56 core.php:75 core.php:386
 #: functions.php:73 functions.php:96
-#, fuzzy
 msgid "kg"
 msgstr "Kg"
 
 #: admin-pages/page.settings.php:95
-#, fuzzy
 msgid "Stones & Pounds"
 msgstr "Stones & Pounds"
 
@@ -519,7 +505,6 @@ msgid "Pounds"
 msgstr "Pounds"
 
 #: admin-pages/page.settings.php:98
-#, fuzzy
 msgid ""
 "You can specify whether to display weights in Kg, Stones & Pounds or just "
 "Pounds. Please note: The graph will be displayed in Pounds if \"Stones & "
@@ -554,7 +539,6 @@ msgid "Allow target weights?"
 msgstr "Tillatt målvekt?"
 
 #: admin-pages/page.settings.php:121
-#, fuzzy
 msgid ""
 "If enabled, a user is allowed to enter a target weight. This will be "
 "displayed as a horizontal bar on the line chart."
@@ -784,12 +768,10 @@ msgid "If enabled, gridlines will be displayed on the Graph canvas."
 msgstr ""
 
 #: admin-pages/page.settings.php:327
-#, fuzzy
 msgid "Maximum points per graph"
 msgstr "Display points on graph?"
 
 #: admin-pages/page.settings.php:336 admin-pages/page.settings.php:403
-#, fuzzy
 msgid "If enabled, \"Allows points and labels to be displayed on graph."
 msgstr "If enabled, \"Allows points and labels to be displayed on graph."
 
@@ -814,7 +796,6 @@ msgid ""
 msgstr ""
 
 #: admin-pages/page.settings.php:359
-#, fuzzy
 msgid "Text colour"
 msgstr "Vekt farge?"
 
@@ -845,7 +826,6 @@ msgid "If enabled, lines between points on a line graph will be curved"
 msgstr ""
 
 #: admin-pages/page.settings.php:389
-#, fuzzy
 msgid "Target line colour?"
 msgstr "Målvekt"
 
@@ -855,7 +835,6 @@ msgid ""
 msgstr ""
 
 #: admin-pages/page.settings.php:396
-#, fuzzy
 msgid "Display points on graph?"
 msgstr "Display points on graph?"
 
@@ -868,8 +847,6 @@ msgid "Specifies the point thickness on a line chart."
 msgstr ""
 
 #: admin-pages/page.settings.php:420
-#, fuzzy
-#| msgid "Add a new weight"
 msgid "Add a fill under weight line?"
 msgstr "Tillføy ny vektmåling"
 
@@ -878,8 +855,6 @@ msgid "If enabled, a fill colour will be added under the weight line."
 msgstr ""
 
 #: admin-pages/page.settings.php:430
-#, fuzzy
-#| msgid "Weight colour?"
 msgid "Weight Fill Colour"
 msgstr "Vekt farge?"
 
@@ -890,8 +865,6 @@ msgid ""
 msgstr ""
 
 #: admin-pages/page.settings.php:437
-#, fuzzy
-#| msgid "Weight History"
 msgid "Weight Fill Opacity"
 msgstr "Vekt Historikk"
 
@@ -1028,12 +1001,10 @@ msgid "A Pro license is required to add / edit a weight entry."
 msgstr ""
 
 #: admin-pages/user-data/data-edit-target.php:37
-#, fuzzy
 msgid "Edit user's target"
 msgstr "Tillat Innstillinger for bruker"
 
 #: admin-pages/user-data/data-edit-target.php:43
-#, fuzzy
 msgid "A Pro license is required to set a user's target weight."
 msgstr "Er du sikker på at du vil nullstille?"
 
@@ -1075,7 +1046,6 @@ msgstr ""
 
 #: admin-pages/user-data/data-search-results.php:11
 #: admin-pages/user-data/data-search-results.php:18
-#, fuzzy
 msgid "Search Results"
 msgstr "Søk:"
 
@@ -1092,17 +1062,14 @@ msgid "Email"
 msgstr ""
 
 #: admin-pages/user-data/data-search-results.php:45
-#, fuzzy
 msgid "No. of Entries"
 msgstr "Viser fra _START_ til _END_ av _TOTAL_ oppføringer"
 
 #: admin-pages/user-data/data-search-results.php:46
-#, fuzzy
 msgid "Start Weight"
 msgstr "Målvekt"
 
 #: admin-pages/user-data/data-search-results.php:47
-#, fuzzy
 msgid "Recent Weight"
 msgstr "Målvekt"
 
@@ -1151,17 +1118,14 @@ msgid "Last 100 entries"
 msgstr ""
 
 #: admin-pages/user-data/data-summary.php:90
-#, fuzzy
 msgid "Show all entries"
 msgstr "Vis _MENU_ oppføringer"
 
 #: admin-pages/user-data/data-summary.php:90
-#, fuzzy
 msgid "Show 100 recent entries"
 msgstr "Viser fra 0 til 0 av 0 oppføringer"
 
 #: admin-pages/user-data/data-summary.php:101
-#, fuzzy
 msgid "User Search"
 msgstr "Søk:"
 
@@ -1174,12 +1138,10 @@ msgid "No. of WordPress users"
 msgstr ""
 
 #: admin-pages/user-data/data-summary.php:133
-#, fuzzy
 msgid "No. of Weight Entries"
 msgstr "Vektenheter"
 
 #: admin-pages/user-data/data-summary.php:135
-#, fuzzy
 msgid "No. of Target Entries"
 msgstr "Vis _MENU_ oppføringer"
 
@@ -1188,17 +1150,14 @@ msgid "refreshed every 15 minutes"
 msgstr ""
 
 #: admin-pages/user-data/data-summary.php:146
-#, fuzzy
 msgid "View all data"
 msgstr "Se alle uker"
 
 #: admin-pages/user-data/data-summary.php:150
-#, fuzzy
 msgid "View all entries"
 msgstr "Se alle uker"
 
 #: admin-pages/user-data/data-summary.php:155
-#, fuzzy
 msgid "Export all data"
 msgstr " Buker Data"
 
@@ -1211,7 +1170,6 @@ msgid "To JSON"
 msgstr ""
 
 #: admin-pages/user-data/data-summary.php:168
-#, fuzzy
 msgid "Delete Data"
 msgstr "Slett"
 
@@ -1224,13 +1182,10 @@ msgid "Are you sure you wish to remove all user data?"
 msgstr ""
 
 #: admin-pages/user-data/data-user-edit-settings.php:26
-#, fuzzy
 msgid "Edit user preferences"
 msgstr "Tillat Innstillinger for bruker"
 
 #: admin-pages/user-data/data-user-edit-settings.php:39
-#, fuzzy
-#| msgid "Allow user settings"
 msgid "to save changes to your user's settings"
 msgstr "Tillat Innstillinger for bruker"
 
@@ -1247,7 +1202,6 @@ msgid "to view the a chart of the user's weight entries."
 msgstr ""
 
 #: admin-pages/user-data/data-user.php:84
-#, fuzzy
 msgid "View all photos"
 msgstr "Se alle uker"
 
@@ -1271,7 +1225,6 @@ msgid "Please ensure the values for Proteins, Carbohydrates and Fats (within "
 msgstr ""
 
 #: admin-pages/user-data/data-user.php:145
-#, fuzzy
 msgid "settings"
 msgstr "Instillinger"
 
@@ -1299,7 +1252,6 @@ msgid "Number of WordPress users"
 msgstr ""
 
 #: admin-pages/user-data/data-view-all.php:39
-#, fuzzy
 msgid "Number of weight entries"
 msgstr "Viser fra _START_ til _END_ av _TOTAL_ oppføringer"
 
@@ -1359,8 +1311,6 @@ msgid "You have modified data. Please refresh page."
 msgstr "Data har blitt endret. Vennligst oppdater siden."
 
 #: core.php:265
-#, fuzzy
-#| msgid "You need to be logged in to record your weight."
 msgid "You need to be logged in to set your target."
 msgstr "Du må være logget inn for å registrere din egen vekt"
 
@@ -1369,8 +1319,6 @@ msgid "Add a new weight"
 msgstr "Tillføy ny vektmåling"
 
 #: core.php:287
-#, fuzzy
-#| msgid "Underweight"
 msgid "Edit weight"
 msgstr "Undervektig"
 
@@ -1379,7 +1327,6 @@ msgid "Your target weight is"
 msgstr "Målvekt"
 
 #: core.php:368
-#, fuzzy
 msgid "The user's target weight is currently"
 msgstr "Målvekt"
 
@@ -1388,8 +1335,6 @@ msgid "Stones"
 msgstr "Stones"
 
 #: core.php:402
-#, fuzzy
-#| msgid "Add measurements"
 msgid "Edit measurements"
 msgstr "Registrer ny måling"
 
@@ -1418,7 +1363,6 @@ msgid "Clear Target"
 msgstr "Nullstill felt"
 
 #: core.php:596
-#, fuzzy
 msgid "Please enter a value between 0-13 for pounds"
 msgstr "Sett inn korrekt format for Kg"
 
@@ -1459,7 +1403,6 @@ msgid "Please enter a valid measurement ("
 msgstr "Tast inn en gyldig måleenhet ("
 
 #: core.php:632
-#, fuzzy
 msgid "Please select or enter a value for height."
 msgstr "Sett inn korrekt format for Kg"
 
@@ -1468,17 +1411,14 @@ msgid "Please select or enter a value for activity level."
 msgstr ""
 
 #: core.php:634
-#, fuzzy
 msgid "Please select or enter a value for gender."
 msgstr "Sett inn korrekt format for Kg"
 
 #: core.php:635
-#, fuzzy
 msgid "Please enter a valid date."
 msgstr "Tast inn korrekt datoformat"
 
 #: core.php:636
-#, fuzzy
 msgid "Please select your aim."
 msgstr "Sett inn korrekt format for Kg"
 
@@ -1528,8 +1468,6 @@ msgid "Read more about calculations"
 msgstr ""
 
 #: functions.php:686
-#, fuzzy
-#| msgid "Your settings have been saved!"
 msgid "Your modifications have been saved"
 msgstr "Instillinger lagret!"
 
@@ -1568,8 +1506,6 @@ msgid "FR"
 msgstr ""
 
 #: globals.php:163
-#, fuzzy
-#| msgid "Bicep - Left"
 msgid "Biceps - Left"
 msgstr "Biceps"
 
@@ -1578,8 +1514,6 @@ msgid "BL"
 msgstr ""
 
 #: globals.php:164
-#, fuzzy
-#| msgid "Bicep - Right"
 msgid "Biceps - Right"
 msgstr "Bicep H"
 
@@ -1640,7 +1574,6 @@ msgid "Shoulders"
 msgstr "Skulder"
 
 #: globals.php:171
-#, fuzzy
 msgid "S"
 msgstr "."
 
@@ -1689,7 +1622,6 @@ msgid "Manage User Data"
 msgstr ""
 
 #: hooks.php:12
-#, fuzzy
 msgid "Your License"
 msgstr "Din høyde:"
 
@@ -1702,7 +1634,6 @@ msgid "Help"
 msgstr ""
 
 #: hooks.php:173
-#, fuzzy
 msgid "An error occurred while trying to save the user's preferences."
 msgstr "En feil har oppstått!"
 
@@ -1748,7 +1679,6 @@ msgid "An error occurred while saving your data!"
 msgstr "En feil har oppstått!"
 
 #: save-data.php:49
-#, fuzzy
 msgid "No user specified (hash)"
 msgstr "Tillat Innstillinger for bruker"
 
@@ -1757,7 +1687,6 @@ msgid "No user specified"
 msgstr ""
 
 #: shortcode-various.php:106
-#, fuzzy
 msgid "No target set"
 msgstr "Målvekt"
 
@@ -1778,23 +1707,18 @@ msgid "Overview"
 msgstr "Oversikt"
 
 #: shortcode-weight-loss-tracker.php:93
-#, fuzzy
-#| msgid "Add a new weight"
 msgid "Chart and add a new entry"
 msgstr "Tillføy ny vektmåling"
 
 #: shortcode-weight-loss-tracker.php:94
-#, fuzzy
 msgid "All Entries"
 msgstr "Vis _MENU_ oppføringer"
 
 #: shortcode-weight-loss-tracker.php:94
-#, fuzzy
 msgid "View all of your entries"
 msgstr "Se alle uker"
 
 #: shortcode-weight-loss-tracker.php:98
-#, fuzzy
 msgid "View a gallery of your photos"
 msgstr "Se alle uker"
 
@@ -1811,7 +1735,6 @@ msgid "Customise this tool and tell us a little more about you"
 msgstr ""
 
 #: shortcode-weight-loss-tracker.php:124
-#, fuzzy
 msgid "Add a weight entry"
 msgstr "Graf / Legg til vekt"
 
@@ -1820,7 +1743,6 @@ msgid "In a chart"
 msgstr "I et diagram"
 
 #: shortcode-weight-loss-tracker.php:137
-#, fuzzy
 msgid "A graph will appear once several weights have been entered."
 msgstr "En graf vil bli vist her når du har registrert minst 2 oppføringer."
 

@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-10-17 21:22+0100\n"
-"PO-Revision-Date: 2018-10-17 21:22+0100\n"
+"PO-Revision-Date: 2018-10-22 20:34+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.1.1\n"
+"X-Generator: Poedit 2.2\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-KeywordsList: __;_e\n"
@@ -25,7 +25,6 @@ msgid "Add / Edit a Custom Field"
 msgstr ""
 
 #: admin-pages/meta-fields/page-meta-fields-add-update.php:66
-#, fuzzy
 msgid "Please complete all mandatory fields."
 msgstr "Por favor digite uma data válida"
 
@@ -141,8 +140,6 @@ msgstr ""
 
 #: admin-pages/meta-fields/page-meta-fields-add-update.php:176
 #: admin-pages/meta-fields/page-meta-fields-add-update.php:178
-#, fuzzy
-#| msgid "Saved!"
 msgid "Save"
 msgstr "Gravado!"
 
@@ -189,7 +186,6 @@ msgid "You can find detailed documentation for this plugin at our site:"
 msgstr ""
 
 #: admin-pages/page.help.php:46
-#, fuzzy
 msgid "Fix: Stones & Pounds accuracy"
 msgstr "Stones & Libras"
 
@@ -219,7 +215,6 @@ msgid "Done. View Log below for further information."
 msgstr ""
 
 #: admin-pages/page.help.php:103
-#, fuzzy
 msgid "Weight Tracker Debug Log"
 msgstr "Diário de emagrecimento"
 
@@ -230,17 +225,14 @@ msgid ""
 msgstr ""
 
 #: admin-pages/page.license.php:11 admin-pages/page.settings.php:8
-#, fuzzy
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Você não tem permissão suficiente para acessar esta página."
 
 #: admin-pages/page.license.php:39
-#, fuzzy
 msgid "Your license has been applied!"
 msgstr "As suas informações foram salvas!"
 
 #: admin-pages/page.license.php:42
-#, fuzzy
 msgid "An error occurred applying your license: "
 msgstr "Um erro ocorreu ao salvar seus dados!"
 
@@ -321,7 +313,6 @@ msgid ""
 msgstr ""
 
 #: admin-pages/page.license.php:119
-#, fuzzy
 msgid "In case you need, your <strong>Site Hash</strong> is"
 msgstr "Em caso de necessidade, seu <strong>Site Hash</strong>"
 
@@ -422,7 +413,6 @@ msgid "Pro Features"
 msgstr ""
 
 #: admin-pages/page.license.php:269
-#, fuzzy
 msgid "Below is a list of the intended features of the Pro version"
 msgstr "Abaixo está a lista das características pretendidas para a versão Pro:"
 
@@ -437,22 +427,18 @@ msgid ""
 msgstr ""
 
 #: admin-pages/page.settings.php:38
-#, fuzzy
 msgid "Rebuild them now"
 msgstr "Reconstruis agora"
 
 #: admin-pages/page.settings.php:60
-#, fuzzy
 msgid " Settings"
 msgstr " Configurações"
 
 #: admin-pages/page.settings.php:74
-#, fuzzy
 msgid "General"
 msgstr "Geral"
 
 #: admin-pages/page.settings.php:74
-#, fuzzy
 msgid "General settings"
 msgstr "Configurações gerais"
 
@@ -469,7 +455,6 @@ msgid "Chart"
 msgstr "Gráfico"
 
 #: admin-pages/page.settings.php:76
-#, fuzzy
 msgid "Chart styling and config"
 msgstr "Estilo do gráfico e configuração"
 
@@ -502,28 +487,23 @@ msgid "Default units / formats to be used by plugin"
 msgstr ""
 
 #: admin-pages/page.settings.php:91
-#, fuzzy
 msgid "Weight Units"
 msgstr "Unidades de Peso"
 
 #: admin-pages/page.settings.php:94 converters.php:56 core.php:75 core.php:386
 #: functions.php:73 functions.php:96
-#, fuzzy
 msgid "kg"
 msgstr "Kg"
 
 #: admin-pages/page.settings.php:95
-#, fuzzy
 msgid "Stones & Pounds"
 msgstr "Stones & Libras"
 
 #: admin-pages/page.settings.php:96 core.php:379 core.php:382
-#, fuzzy
 msgid "Pounds"
 msgstr "Libras"
 
 #: admin-pages/page.settings.php:98
-#, fuzzy
 msgid ""
 "You can specify whether to display weights in Kg, Stones & Pounds or just "
 "Pounds. Please note: The graph will be displayed in Pounds if \"Stones & "
@@ -534,22 +514,18 @@ msgstr ""
 "\" for selecionado."
 
 #: admin-pages/page.settings.php:102
-#, fuzzy
 msgid "UK or US Date format?"
 msgstr "Formato da Data BR ou US?"
 
 #: admin-pages/page.settings.php:105
-#, fuzzy
 msgid "UK (DD/MM/YYYY)"
 msgstr "BR (DD/MM/YYYY)"
 
 #: admin-pages/page.settings.php:106
-#, fuzzy
 msgid "US (MM/DD/YYYY)"
 msgstr "US (MM/DD/YYYY)"
 
 #: admin-pages/page.settings.php:108
-#, fuzzy
 msgid "Specify what format dates should be displayed in (i.e. UK or US format)"
 msgstr "Especificar qual o formato da data deve ser exibido (BR ou US)"
 
@@ -558,12 +534,10 @@ msgid "User Experience"
 msgstr ""
 
 #: admin-pages/page.settings.php:115
-#, fuzzy
 msgid "Allow target weights?"
 msgstr "Habilitar peso alvo?"
 
 #: admin-pages/page.settings.php:121
-#, fuzzy
 msgid ""
 "If enabled, a user is allowed to enter a target weight. This will be "
 "displayed as a horizontal bar on the line chart."
@@ -582,7 +556,6 @@ msgid ""
 msgstr ""
 
 #: admin-pages/page.settings.php:136
-#, fuzzy
 msgid "Allow user settings"
 msgstr "Habilitar configuração do usuário"
 
@@ -653,12 +626,10 @@ msgid "Advanced"
 msgstr ""
 
 #: admin-pages/page.settings.php:207
-#, fuzzy
 msgid "Disable plugin CSS?"
 msgstr "Desabilitar CSS do plugin?"
 
 #: admin-pages/page.settings.php:213
-#, fuzzy
 msgid ""
 "If you wish to style the forms in your own way, you can use this option to "
 "disable WLT's style sheets."
@@ -771,7 +742,6 @@ msgid "Default chart type"
 msgstr "Tipo de gráfico"
 
 #: admin-pages/page.settings.php:308
-#, fuzzy
 msgid "Line Chart"
 msgstr "Gráfico em Linha"
 
@@ -780,7 +750,6 @@ msgid "Highly Recommended"
 msgstr ""
 
 #: admin-pages/page.settings.php:309
-#, fuzzy
 msgid "Bar Chart"
 msgstr "Gráfico em Barra"
 
@@ -804,7 +773,6 @@ msgid "Maximum points per graph"
 msgstr ""
 
 #: admin-pages/page.settings.php:336 admin-pages/page.settings.php:403
-#, fuzzy
 msgid "If enabled, \"Allows points and labels to be displayed on graph."
 msgstr ""
 "Se habilitado \"Permite que os pontos e detalhes sejam mostrados no gráfico."
@@ -834,7 +802,6 @@ msgid "Text colour"
 msgstr ""
 
 #: admin-pages/page.settings.php:362
-#, fuzzy
 msgid "Enter a HEX colour code to use for text displayed on the graph."
 msgstr ""
 "Se habilitado, insica o código da cor HEX para o usuário ver a linha do seu "
@@ -867,7 +834,6 @@ msgid "Target line colour?"
 msgstr ""
 
 #: admin-pages/page.settings.php:392
-#, fuzzy
 msgid ""
 "If enabled, enter a HEX colour code to use for the Target line on graph."
 msgstr ""
@@ -875,7 +841,6 @@ msgstr ""
 "objetivo de peso no gráfico."
 
 #: admin-pages/page.settings.php:396
-#, fuzzy
 msgid "Display points on graph?"
 msgstr "Mostrar pontos no gráfico?"
 
@@ -888,26 +853,20 @@ msgid "Specifies the point thickness on a line chart."
 msgstr ""
 
 #: admin-pages/page.settings.php:420
-#, fuzzy
-#| msgid "Add a new weight"
 msgid "Add a fill under weight line?"
 msgstr "Coloca o novo peso"
 
 #: admin-pages/page.settings.php:426
-#, fuzzy
 msgid "If enabled, a fill colour will be added under the weight line."
 msgstr ""
 "Se habilitado, insica o código da cor HEX para o usuário ver a linha do seu "
 "objetivo de peso no gráfico."
 
 #: admin-pages/page.settings.php:430
-#, fuzzy
-#| msgid "Weight History"
 msgid "Weight Fill Colour"
 msgstr "Histórico de peso"
 
 #: admin-pages/page.settings.php:433
-#, fuzzy
 msgid ""
 "If enabled, enter a HEX colour code to use for the fill colour under the "
 "weight line."
@@ -916,8 +875,6 @@ msgstr ""
 "objetivo de peso no gráfico."
 
 #: admin-pages/page.settings.php:437
-#, fuzzy
-#| msgid "Weight History"
 msgid "Weight Fill Opacity"
 msgstr "Histórico de peso"
 
@@ -981,7 +938,6 @@ msgid "Receive notifications when a member adds / edits their target."
 msgstr ""
 
 #: admin-pages/page.settings.php:526
-#, fuzzy
 msgid "Allow Measurements?"
 msgstr "Habilitar configuração do usuário"
 
@@ -1059,7 +1015,6 @@ msgid "Edit user's target"
 msgstr ""
 
 #: admin-pages/user-data/data-edit-target.php:43
-#, fuzzy
 msgid "A Pro license is required to set a user's target weight."
 msgstr "Tens a certeza que queres eliminar o teu peso ideal?"
 
@@ -1074,7 +1029,6 @@ msgstr ""
 
 #: admin-pages/user-data/data-photos.php:43
 #: admin-pages/user-data/data-user.php:89
-#, fuzzy
 msgid "No photos could be found for this user."
 msgstr "Não foi encontrado dados de peso para o usuário especificado."
 
@@ -1110,7 +1064,6 @@ msgid "results were found for"
 msgstr ""
 
 #: admin-pages/user-data/data-search-results.php:43
-#, fuzzy
 msgid "Username"
 msgstr "Utilizador"
 
@@ -1123,12 +1076,10 @@ msgid "No. of Entries"
 msgstr ""
 
 #: admin-pages/user-data/data-search-results.php:46
-#, fuzzy
 msgid "Start Weight"
 msgstr "Peso ideal"
 
 #: admin-pages/user-data/data-search-results.php:47
-#, fuzzy
 msgid "Recent Weight"
 msgstr "Peso ideal"
 
@@ -1177,7 +1128,6 @@ msgid "Last 100 entries"
 msgstr ""
 
 #: admin-pages/user-data/data-summary.php:90
-#, fuzzy
 msgid "Show all entries"
 msgstr "Vê todas as semanas"
 
@@ -1210,12 +1160,10 @@ msgid "refreshed every 15 minutes"
 msgstr ""
 
 #: admin-pages/user-data/data-summary.php:146
-#, fuzzy
 msgid "View all data"
 msgstr "Vê todas as semanas"
 
 #: admin-pages/user-data/data-summary.php:150
-#, fuzzy
 msgid "View all entries"
 msgstr "Vê todas as semanas"
 
@@ -1232,7 +1180,6 @@ msgid "To JSON"
 msgstr ""
 
 #: admin-pages/user-data/data-summary.php:168
-#, fuzzy
 msgid "Delete Data"
 msgstr "Apaga"
 
@@ -1241,7 +1188,6 @@ msgid "Delete data for ALL users"
 msgstr ""
 
 #: admin-pages/user-data/data-summary.php:184
-#, fuzzy
 msgid "Are you sure you wish to remove all user data?"
 msgstr "Você tem certeza que deseja remover todos os dados dos usuários?"
 
@@ -1258,7 +1204,6 @@ msgid "The preferences for this user have been saved."
 msgstr ""
 
 #: admin-pages/user-data/data-user.php:28
-#, fuzzy
 msgid "The cache for this user has been deleted."
 msgstr "O seu histórico de peso foi apagado!"
 
@@ -1267,7 +1212,6 @@ msgid "to view the a chart of the user's weight entries."
 msgstr ""
 
 #: admin-pages/user-data/data-user.php:84
-#, fuzzy
 msgid "View all photos"
 msgstr "Vê todas as semanas"
 
@@ -1291,7 +1235,6 @@ msgid "Please ensure the values for Proteins, Carbohydrates and Fats (within "
 msgstr ""
 
 #: admin-pages/user-data/data-user.php:145
-#, fuzzy
 msgid "settings"
 msgstr "Configurações"
 
@@ -1338,12 +1281,10 @@ msgstr ""
 #: functions.php:84 functions.php:93 functions.php:99 functions.php:295
 #: functions.php:301 functions.php:558 shortcode-various.php:262
 #: shortcode-various.php:281
-#, fuzzy
 msgid "lbs"
 msgstr "lbs"
 
 #: converters.php:71 functions.php:301
-#, fuzzy
 msgid "St"
 msgstr "St"
 
@@ -1380,8 +1321,6 @@ msgid "You have modified data. Please refresh page."
 msgstr "Tens novos dados. Entra de novo na pagina para veres."
 
 #: core.php:265
-#, fuzzy
-#| msgid "You need to be logged in to record your weight."
 msgid "You need to be logged in to set your target."
 msgstr "Tens que estar registado para colocares o teu peso"
 
@@ -1390,8 +1329,6 @@ msgid "Add a new weight"
 msgstr "Coloca o novo peso"
 
 #: core.php:287
-#, fuzzy
-#| msgid "Underweight"
 msgid "Edit weight"
 msgstr "Abaixo do peso"
 
@@ -1400,18 +1337,14 @@ msgid "Your target weight is"
 msgstr "O teu peso ideal é"
 
 #: core.php:368
-#, fuzzy
 msgid "The user's target weight is currently"
 msgstr "O teu peso ideal é"
 
 #: core.php:378
-#, fuzzy
 msgid "Stones"
 msgstr "Stones"
 
 #: core.php:402
-#, fuzzy
-#| msgid "Add measurements"
 msgid "Edit measurements"
 msgstr "Coloca as tuas medidas"
 
@@ -1440,12 +1373,10 @@ msgid "Clear Target"
 msgstr "Elimina os dados"
 
 #: core.php:596
-#, fuzzy
 msgid "Please enter a value between 0-13 for pounds"
 msgstr "Por favor, insere um peso valido em kilos"
 
 #: core.php:596
-#, fuzzy
 msgid "Please enter a valid figure for pounds"
 msgstr "Por favor, insira um número válido para libras"
 
@@ -1458,7 +1389,6 @@ msgid "Please enter a valid figure for Kg"
 msgstr "Por favor, insere um peso valido em kilos"
 
 #: core.php:607
-#, fuzzy
 msgid "Please enter a valid figure for Stones"
 msgstr "Por favor, insira um número válido para stones"
 
@@ -1483,7 +1413,6 @@ msgid "Please enter a valid measurement ("
 msgstr "Por favor insere uma medida válida"
 
 #: core.php:632
-#, fuzzy
 msgid "Please select or enter a value for height."
 msgstr "Por favor, insere um peso valido em kilos"
 
@@ -1492,17 +1421,14 @@ msgid "Please select or enter a value for activity level."
 msgstr ""
 
 #: core.php:634
-#, fuzzy
 msgid "Please select or enter a value for gender."
 msgstr "Por favor, insere um peso valido em kilos"
 
 #: core.php:635
-#, fuzzy
 msgid "Please enter a valid date."
 msgstr "Por favor digite uma data válida"
 
 #: core.php:636
-#, fuzzy
 msgid "Please select your aim."
 msgstr "Por favor, insere um peso valido em kilos"
 
@@ -1520,12 +1446,10 @@ msgstr "Hoje"
 
 #: functions.php:84 functions.php:99 functions.php:546
 #: shortcode-various.php:281
-#, fuzzy
 msgid "st"
 msgstr "st"
 
 #: functions.php:212
-#, fuzzy
 msgid "The following MySQL tables are missing for this plugin"
 msgstr "A seguintes tabelas do MySQL estão faltando para este plugin"
 
@@ -1554,8 +1478,6 @@ msgid "Read more about calculations"
 msgstr ""
 
 #: functions.php:686
-#, fuzzy
-#| msgid "Your settings have been saved!"
 msgid "Your modifications have been saved"
 msgstr "As suas informações foram salvas!"
 
@@ -1594,8 +1516,6 @@ msgid "FR"
 msgstr ""
 
 #: globals.php:163
-#, fuzzy
-#| msgid "Bicep - Left"
 msgid "Biceps - Left"
 msgstr "Braço - esquerdo"
 
@@ -1604,8 +1524,6 @@ msgid "BL"
 msgstr ""
 
 #: globals.php:164
-#, fuzzy
-#| msgid "Bicep - Right"
 msgid "Biceps - Right"
 msgstr "Braço - direito"
 
@@ -1710,7 +1628,6 @@ msgid "NE"
 msgstr ""
 
 #: hooks.php:9
-#, fuzzy
 msgid "Manage User Data"
 msgstr "Gerenciar Dados dos Usuários"
 
@@ -1719,17 +1636,14 @@ msgid "Your License"
 msgstr ""
 
 #: hooks.php:15
-#, fuzzy
 msgid "Settings"
 msgstr "Configurações"
 
 #: hooks.php:16
-#, fuzzy
 msgid "Help"
 msgstr "Ajuda"
 
 #: hooks.php:173
-#, fuzzy
 msgid "An error occurred while trying to save the user's preferences."
 msgstr "Ocorreu um erro ao graver as suas informações!"
 
@@ -1775,17 +1689,14 @@ msgid "An error occurred while saving your data!"
 msgstr "Ocorreu um erro ao graver as suas informações!"
 
 #: save-data.php:49
-#, fuzzy
 msgid "No user specified (hash)"
 msgstr "Usuário não especificado (hash)"
 
 #: save-data.php:52
-#, fuzzy
 msgid "No user specified"
 msgstr "Usuário não especificado"
 
 #: shortcode-various.php:106
-#, fuzzy
 msgid "No target set"
 msgstr "O teu peso ideal é"
 
@@ -1806,23 +1717,18 @@ msgid "Overview"
 msgstr "Vista geral"
 
 #: shortcode-weight-loss-tracker.php:93
-#, fuzzy
-#| msgid "Add a new weight"
 msgid "Chart and add a new entry"
 msgstr "Coloca o novo peso"
 
 #: shortcode-weight-loss-tracker.php:94
-#, fuzzy
 msgid "All Entries"
 msgstr "Vê todas as semanas"
 
 #: shortcode-weight-loss-tracker.php:94
-#, fuzzy
 msgid "View all of your entries"
 msgstr "Vê todas as semanas"
 
 #: shortcode-weight-loss-tracker.php:98
-#, fuzzy
 msgid "View a gallery of your photos"
 msgstr "Vê todas as semanas"
 
@@ -1839,7 +1745,6 @@ msgid "Customise this tool and tell us a little more about you"
 msgstr ""
 
 #: shortcode-weight-loss-tracker.php:124
-#, fuzzy
 msgid "Add a weight entry"
 msgstr "Gráfico / Adicionar Peso"
 

@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-10-17 21:25+0100\n"
-"PO-Revision-Date: 2018-10-17 21:25+0100\n"
+"PO-Revision-Date: 2018-10-22 20:22+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.1.1\n"
+"X-Generator: Poedit 2.2\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-KeywordsList: __;_e\n"
@@ -75,8 +75,6 @@ msgid "No"
 msgstr "Nein"
 
 #: admin-pages/meta-fields/page-meta-fields-add-update.php:84
-#, fuzzy
-#| msgid "Photos"
 msgid "Photo"
 msgstr "Fotos"
 
@@ -170,8 +168,6 @@ msgstr ""
 "folgenden Bildschirm können Sie beliebig viele Fragen hinzufügen."
 
 #: admin-pages/meta-fields/page-meta-fields-list.php:29
-#, fuzzy
-#| msgid "Add / Edit a Custom Field"
 msgid "Read more about Custom Fields"
 msgstr "Hinzufügen / Bearbeiten eines benutzerdefinierten Feldes"
 
@@ -205,7 +201,6 @@ msgstr ""
 "Seite:"
 
 #: admin-pages/page.help.php:46
-#, fuzzy
 msgid "Fix: Stones & Pounds accuracy"
 msgstr "Stones & Pfund"
 
@@ -239,10 +234,6 @@ msgid "Weight Tracker Debug Log"
 msgstr ""
 
 #: admin-pages/page.help.php:106
-#, fuzzy
-#| msgid ""
-#| "Below is a list of the errors logged by the Weight Tracker plugin over "
-#| "the last 31 days."
 msgid ""
 "Below is a list of the debug information logged by the Weight Tracker plugin "
 "over the last 31 days."
@@ -294,7 +285,6 @@ msgstr ""
 "Plugins und es wird dankbar begrüßt."
 
 #: admin-pages/page.license.php:86
-#, fuzzy
 msgid "Legacy Pro License"
 msgstr "Lizenzschlüssel eingeben"
 
@@ -540,12 +530,10 @@ msgstr "Gewichtseinheiten"
 
 #: admin-pages/page.settings.php:94 converters.php:56 core.php:75 core.php:386
 #: functions.php:73 functions.php:96
-#, fuzzy
 msgid "kg"
 msgstr "Kg"
 
 #: admin-pages/page.settings.php:95
-#, fuzzy
 msgid "Stones & Pounds"
 msgstr "Stones & Pfund"
 
@@ -612,7 +600,6 @@ msgid "Allow user settings"
 msgstr "User Settings erlauben"
 
 #: admin-pages/page.settings.php:142
-#, fuzzy
 msgid ""
 "Allow your users to select their own data units, complete their \"About You"
 "\" fields and remove all their data."
@@ -640,10 +627,6 @@ msgid "Max. Photo Size?"
 msgstr "Max. Foto Größe?"
 
 #: admin-pages/page.settings.php:182
-#, fuzzy
-#| msgid ""
-#| "Maximum photo size (in MB) that is allowed to be uploaded. Your server "
-#| "currently supports up to "
 msgid "Maximum photo size (in MB) that is allowed to be uploaded. "
 msgstr ""
 "Maximale Fotogröße (in MB), die hochgeladen werden darf. Ihr Server "
@@ -654,8 +637,6 @@ msgid "This is used as part of Custom Fields."
 msgstr ""
 
 #: admin-pages/page.settings.php:185
-#, fuzzy
-#| msgid "Add / Edit a Custom Field"
 msgid "View Custom Fields"
 msgstr "Hinzufügen / Bearbeiten eines benutzerdefinierten Feldes"
 
@@ -705,7 +686,6 @@ msgid "Send usage data to YeKen?"
 msgstr ""
 
 #: admin-pages/page.settings.php:223
-#, fuzzy
 msgid ""
 "We would love to see how our plugin is used. By consenting, you are allowing "
 "permission for the following data to be sent on a weekly basis to YeKen: "
@@ -1145,15 +1125,11 @@ msgstr "Es konnten keine Fotos für diesen Benutzer gefunden werden."
 
 #: admin-pages/user-data/data-photos.php:55
 #: admin-pages/user-data/data-user.php:101
-#, fuzzy
-#| msgid "Add / Edit a Custom Field"
 msgid "Add and enable a Photo Custom Field"
 msgstr "Hinzufügen / Bearbeiten eines benutzerdefinierten Feldes"
 
 #: admin-pages/user-data/data-photos.php:56
 #: admin-pages/user-data/data-user.php:102
-#, fuzzy
-#| msgid "to allow a user to upload photos of their progress"
 msgid "to allow a users to upload photos of their progress"
 msgstr ""
 "um einem Benutzer zu erlauben, Fotos von seinem Fortschritt hochzuladen"
@@ -1352,7 +1328,6 @@ msgid "Please ensure the values for Proteins, Carbohydrates and Fats (within "
 msgstr ""
 
 #: admin-pages/user-data/data-user.php:145
-#, fuzzy
 msgid "settings"
 msgstr "Einstellungen"
 
@@ -1403,7 +1378,6 @@ msgid "lbs"
 msgstr "Pfund"
 
 #: converters.php:71 functions.php:301
-#, fuzzy
 msgid "St"
 msgstr "St"
 
@@ -1460,7 +1434,6 @@ msgid "The user's target weight is currently"
 msgstr "Das Sollgewicht des Benutzers ist derzeit"
 
 #: core.php:378
-#, fuzzy
 msgid "Stones"
 msgstr "Stones"
 
@@ -1509,7 +1482,6 @@ msgid "Please enter a valid figure for Kg"
 msgstr "Bitte gib Sie einen gültigen Wert für Kg an"
 
 #: core.php:607
-#, fuzzy
 msgid "Please enter a valid figure for Stones"
 msgstr "Bitte einen gültigen Wert eingeben für Stones"
 
@@ -1569,12 +1541,10 @@ msgstr "Heute"
 
 #: functions.php:84 functions.php:99 functions.php:546
 #: shortcode-various.php:281
-#, fuzzy
 msgid "st"
 msgstr "st"
 
 #: functions.php:212
-#, fuzzy
 msgid "The following MySQL tables are missing for this plugin"
 msgstr "Die folgenden MySQL Tabellen fehlen für dieses Plugin"
 
@@ -1621,7 +1591,6 @@ msgid ""
 msgstr ""
 
 #: functions.php:889
-#, fuzzy
 msgid "Read more and Upgrade to Pro / Pro Plus Version"
 msgstr "Pro-Version kaufen"
 
@@ -1642,8 +1611,6 @@ msgid "FR"
 msgstr "UR"
 
 #: globals.php:163
-#, fuzzy
-#| msgid "Bicep - Left"
 msgid "Biceps - Left"
 msgstr "Bizeps - links"
 
@@ -1652,8 +1619,6 @@ msgid "BL"
 msgstr ""
 
 #: globals.php:164
-#, fuzzy
-#| msgid "Bicep - Right"
 msgid "Biceps - Right"
 msgstr "Bizeps - rechts"
 

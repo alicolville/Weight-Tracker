@@ -3,14 +3,14 @@ msgstr ""
 "Project-Id-Version: Weight Loss Tracker\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-10-17 21:22+0100\n"
-"PO-Revision-Date: 2018-10-17 21:22+0100\n"
+"PO-Revision-Date: 2018-10-22 20:35+0100\n"
 "Last-Translator: Роман <yanshevroman@yandex.ru>\n"
 "Language-Team: Русский\n"
 "Language: ru_RU\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.1.1\n"
+"X-Generator: Poedit 2.2\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10 >= 2 && n"
 "%10<=4 &&(n%100<10||n%100 >= 20)? 1 : 2);\n"
@@ -25,14 +25,10 @@ msgid "Weight Loss Tracker"
 msgstr "Weight Loss Tracker"
 
 #: admin-pages/meta-fields/page-meta-fields-add-update.php:62
-#, fuzzy
-#| msgid "Add / Edit an entry"
 msgid "Add / Edit a Custom Field"
 msgstr "Добавить / Изменить данные"
 
 #: admin-pages/meta-fields/page-meta-fields-add-update.php:66
-#, fuzzy
-#| msgid "Please enter a valid date."
 msgid "Please complete all mandatory fields."
 msgstr "Пожалуйста, введите корректную дату."
 
@@ -125,8 +121,6 @@ msgid ""
 msgstr ""
 
 #: admin-pages/meta-fields/page-meta-fields-add-update.php:132
-#, fuzzy
-#| msgid "Display gridlines?"
 msgid "Display Order"
 msgstr "Отображать сетку?"
 
@@ -141,8 +135,6 @@ msgid "Mandatory"
 msgstr "Обязательно"
 
 #: admin-pages/meta-fields/page-meta-fields-add-update.php:160
-#, fuzzy
-#| msgid "Enable"
 msgid "Enabled"
 msgstr "Включить"
 
@@ -152,8 +144,6 @@ msgstr "Отмена"
 
 #: admin-pages/meta-fields/page-meta-fields-add-update.php:176
 #: admin-pages/meta-fields/page-meta-fields-add-update.php:178
-#, fuzzy
-#| msgid "Saved!"
 msgid "Save"
 msgstr "Сохранено!"
 
@@ -173,8 +163,6 @@ msgid ""
 msgstr ""
 
 #: admin-pages/meta-fields/page-meta-fields-list.php:29
-#, fuzzy
-#| msgid "Read more about calculations"
 msgid "Read more about Custom Fields"
 msgstr "Подробнее о рассчетах"
 
@@ -198,14 +186,10 @@ msgid "Documentation"
 msgstr "Документация"
 
 #: admin-pages/page.help.php:38
-#, fuzzy
-#| msgid "You can find detailed help with this plugin at our site:"
 msgid "You can find detailed documentation for this plugin at our site:"
 msgstr "Подробную справку об этом плагине вы можете найти на нашем сайте:"
 
 #: admin-pages/page.help.php:46
-#, fuzzy
-#| msgid "Stones & Pounds"
 msgid "Fix: Stones & Pounds accuracy"
 msgstr "Стоуны и фунты"
 
@@ -237,8 +221,6 @@ msgid "Done. View Log below for further information."
 msgstr ""
 
 #: admin-pages/page.help.php:103
-#, fuzzy
-#| msgid "Weight Tracker Record"
 msgid "Weight Tracker Debug Log"
 msgstr "Weight Tracker Рекорд"
 
@@ -448,8 +430,6 @@ msgstr ""
 "ознакомьтесь с документацией:"
 
 #: admin-pages/page.license.php:251
-#, fuzzy
-#| msgid "Pro Plus License"
 msgid "Pro Plus Features"
 msgstr "Pro Plus лицензия"
 
@@ -462,8 +442,6 @@ msgid "You can upgrade for"
 msgstr "Вы можете обновить до"
 
 #: admin-pages/page.license.php:264
-#, fuzzy
-#| msgid "Pro Plus"
 msgid "Pro Features"
 msgstr "Pro Plus"
 
@@ -650,10 +628,6 @@ msgid "Max. Photo Size?"
 msgstr "Максимальный размер фотографии?"
 
 #: admin-pages/page.settings.php:182
-#, fuzzy
-#| msgid ""
-#| "Maximum photo size (in MB) that is allowed to be uploaded. Your server "
-#| "currently supports up to "
 msgid "Maximum photo size (in MB) that is allowed to be uploaded. "
 msgstr ""
 "Максимальный размер фотографии (в МБ), который разрешен для загрузки. В "
@@ -664,8 +638,6 @@ msgid "This is used as part of Custom Fields."
 msgstr ""
 
 #: admin-pages/page.settings.php:185
-#, fuzzy
-#| msgid "Add / Edit an entry"
 msgid "View Custom Fields"
 msgstr "Добавить / Изменить данные"
 
@@ -1130,8 +1102,6 @@ msgid "Edit user's target"
 msgstr "Изменить цель пользователя"
 
 #: admin-pages/user-data/data-edit-target.php:43
-#, fuzzy
-#| msgid "Please remember to enter your target weight."
 msgid "A Pro license is required to set a user's target weight."
 msgstr "Не забудьте ввести свой желаемый вес"
 
@@ -1151,15 +1121,11 @@ msgstr "Фотографии этого пользователя не найде
 
 #: admin-pages/user-data/data-photos.php:55
 #: admin-pages/user-data/data-user.php:101
-#, fuzzy
-#| msgid "Add / Edit an entry"
 msgid "Add and enable a Photo Custom Field"
 msgstr "Добавить / Изменить данные"
 
 #: admin-pages/user-data/data-photos.php:56
 #: admin-pages/user-data/data-user.php:102
-#, fuzzy
-#| msgid "to allow a user to upload photos of their progress"
 msgid "to allow a users to upload photos of their progress"
 msgstr "чтобы пользователь мог загружать фотографии своего прогресса"
 
@@ -1167,8 +1133,6 @@ msgstr "чтобы пользователь мог загружать фотог
 #: admin-pages/user-data/data-user-edit-settings.php:38
 #: admin-pages/user-data/data-user.php:59
 #: admin-pages/user-data/data-user.php:109
-#, fuzzy
-#| msgid "Upgrade to Pro for "
 msgid "Upgrade to Pro"
 msgstr "Обновить до Pro для"
 
@@ -1183,8 +1147,6 @@ msgid "Search Results"
 msgstr "Результаты поиска"
 
 #: admin-pages/user-data/data-search-results.php:35
-#, fuzzy
-#| msgid "results were found for:"
 msgid "results were found for"
 msgstr "Результаты не найдены для:"
 
@@ -1627,8 +1589,6 @@ msgid ""
 msgstr ""
 
 #: functions.php:889
-#, fuzzy
-#| msgid "Upgrade to Pro Version"
 msgid "Read more and Upgrade to Pro / Pro Plus Version"
 msgstr "Обновить до Pro версии"
 

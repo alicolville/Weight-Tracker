@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2018-10-17 21:22+0100\n"
-"PO-Revision-Date: 2018-10-17 21:22+0100\n"
+"POT-Creation-Date: 2018-10-22 20:31+0100\n"
+"PO-Revision-Date: 2018-10-22 20:33+0100\n"
 "Last-Translator: Yvon <yvon@yvonkruger.nl>\n"
 "Language-Team: \n"
 "Language: nl_NL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.1.1\n"
+"X-Generator: Poedit 2.2\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-KeywordsList: __;_e\n"
@@ -22,14 +22,10 @@ msgid "Weight Loss Tracker"
 msgstr "Weight Loss Tracker"
 
 #: admin-pages/meta-fields/page-meta-fields-add-update.php:62
-#, fuzzy
-#| msgid "Add / Edit an entry"
 msgid "Add / Edit a Custom Field"
 msgstr "Toevoegen / aanpassen van invoer"
 
 #: admin-pages/meta-fields/page-meta-fields-add-update.php:66
-#, fuzzy
-#| msgid "Please enter a valid date."
 msgid "Please complete all mandatory fields."
 msgstr "Voer alstublieft een geldige datum in"
 
@@ -122,8 +118,6 @@ msgid ""
 msgstr ""
 
 #: admin-pages/meta-fields/page-meta-fields-add-update.php:132
-#, fuzzy
-#| msgid "Display gridlines?"
 msgid "Display Order"
 msgstr "weergave rasterlijnen?"
 
@@ -138,8 +132,6 @@ msgid "Mandatory"
 msgstr "Verplicht"
 
 #: admin-pages/meta-fields/page-meta-fields-add-update.php:160
-#, fuzzy
-#| msgid "Enable"
 msgid "Enabled"
 msgstr "Inschakelen"
 
@@ -149,8 +141,6 @@ msgstr "Annuleren"
 
 #: admin-pages/meta-fields/page-meta-fields-add-update.php:176
 #: admin-pages/meta-fields/page-meta-fields-add-update.php:178
-#, fuzzy
-#| msgid "Saved!"
 msgid "Save"
 msgstr "Opgeslagen!"
 
@@ -170,8 +160,6 @@ msgid ""
 msgstr ""
 
 #: admin-pages/meta-fields/page-meta-fields-list.php:29
-#, fuzzy
-#| msgid "Read more about calculations"
 msgid "Read more about Custom Fields"
 msgstr "Lees hier meer over de berekeningen"
 
@@ -195,15 +183,11 @@ msgid "Documentation"
 msgstr "Documentatie"
 
 #: admin-pages/page.help.php:38
-#, fuzzy
-#| msgid "You can find detailed help with this plugin at our site:"
 msgid "You can find detailed documentation for this plugin at our site:"
 msgstr ""
 "Je kunt gedetailleerde ondersteuning van deze plugin vinden van onze site:"
 
 #: admin-pages/page.help.php:46
-#, fuzzy
-#| msgid "Stones & Pounds"
 msgid "Fix: Stones & Pounds accuracy"
 msgstr "Stenen & ponden"
 
@@ -233,8 +217,6 @@ msgid "Done. View Log below for further information."
 msgstr ""
 
 #: admin-pages/page.help.php:103
-#, fuzzy
-#| msgid "Weight Tracker Record"
 msgid "Weight Tracker Debug Log"
 msgstr "Weight Loss Tracker - gegevens"
 
@@ -448,8 +430,6 @@ msgstr ""
 "Heb je meer hulp nodig of informatie, bekijk dan onze documentatie site:"
 
 #: admin-pages/page.license.php:251
-#, fuzzy
-#| msgid "Pro Plus License"
 msgid "Pro Plus Features"
 msgstr "Pro Plus licentie"
 
@@ -462,8 +442,6 @@ msgid "You can upgrade for"
 msgstr "Je kunt een upgrade doen voor"
 
 #: admin-pages/page.license.php:264
-#, fuzzy
-#| msgid "Pro Plus"
 msgid "Pro Features"
 msgstr "Pro Plus"
 
@@ -650,10 +628,6 @@ msgid "Max. Photo Size?"
 msgstr "Max. foto formaat?"
 
 #: admin-pages/page.settings.php:182
-#, fuzzy
-#| msgid ""
-#| "Maximum photo size (in MB) that is allowed to be uploaded. Your server "
-#| "currently supports up to "
 msgid "Maximum photo size (in MB) that is allowed to be uploaded. "
 msgstr ""
 "Maximum foto grootte (in MB) die mag worden geüpload. Uw server ondersteunt "
@@ -664,8 +638,6 @@ msgid "This is used as part of Custom Fields."
 msgstr ""
 
 #: admin-pages/page.settings.php:185
-#, fuzzy
-#| msgid "Add / Edit an entry"
 msgid "View Custom Fields"
 msgstr "Toevoegen / aanpassen van invoer"
 
@@ -901,15 +873,10 @@ msgstr ""
 "automatisch berekend."
 
 #: admin-pages/page.settings.php:359
-#, fuzzy
-#| msgid "Text Colour"
 msgid "Text colour"
 msgstr "Tekst kleur"
 
 #: admin-pages/page.settings.php:362
-#, fuzzy
-#| msgid ""
-#| "If enabled, enter a HEX colour code to use for the Target line on graph."
 msgid "Enter a HEX colour code to use for text displayed on the graph."
 msgstr "Voer hier de HEX kleur code in van je streefgewicht in het diagram."
 
@@ -959,30 +926,18 @@ msgid "Specifies the point thickness on a line chart."
 msgstr "Specificeer de dikte van de punten op de lijngrafiek."
 
 #: admin-pages/page.settings.php:420
-#, fuzzy
-#| msgid "Add a new weight"
 msgid "Add a fill under weight line?"
 msgstr "Voeg een nieuw gewicht toe"
 
 #: admin-pages/page.settings.php:426
-#, fuzzy
-#| msgid ""
-#| "If enabled, enter a HEX colour code to use for the Weight history line on "
-#| "graph."
 msgid "If enabled, a fill colour will be added under the weight line."
 msgstr "Voer hier een HEX kleur code in van de lijn op het diagram"
 
 #: admin-pages/page.settings.php:430
-#, fuzzy
-#| msgid "Weight fill colour?"
 msgid "Weight Fill Colour"
 msgstr "Gewicht opvul kleur"
 
 #: admin-pages/page.settings.php:433
-#, fuzzy
-#| msgid ""
-#| "If enabled, enter a HEX colour code to use for filling the Weight bars on "
-#| "the graph."
 msgid ""
 "If enabled, enter a HEX colour code to use for the fill colour under the "
 "weight line."
@@ -991,8 +946,6 @@ msgstr ""
 "vullen van de gewicht stafen op de grafiek."
 
 #: admin-pages/page.settings.php:437
-#, fuzzy
-#| msgid "Weight fill colour?"
 msgid "Weight Fill Opacity"
 msgstr "Gewicht opvul kleur"
 
@@ -1118,8 +1071,6 @@ msgid ""
 msgstr ""
 
 #: admin-pages/page.settings.php:615
-#, fuzzy
-#| msgid "Read more about calculations"
 msgid "Read more at "
 msgstr "Lees hier meer over de berekeningen"
 
@@ -1142,8 +1093,6 @@ msgid "Edit user's target"
 msgstr "Aanpassen van doel cliënt"
 
 #: admin-pages/user-data/data-edit-target.php:43
-#, fuzzy
-#| msgid "Please remember to enter your target weight."
 msgid "A Pro license is required to set a user's target weight."
 msgstr "Vergeet niet om je streefgewicht in te voeren."
 
@@ -1170,8 +1119,6 @@ msgstr "Toevoegen / aanpassen van invoer"
 
 #: admin-pages/user-data/data-photos.php:56
 #: admin-pages/user-data/data-user.php:102
-#, fuzzy
-#| msgid "to allow a user to upload photos of their progress"
 msgid "to allow a users to upload photos of their progress"
 msgstr ""
 "om een gebruiker toestemming te geven voor het uploaden van foto's van hun "
@@ -1181,8 +1128,6 @@ msgstr ""
 #: admin-pages/user-data/data-user-edit-settings.php:38
 #: admin-pages/user-data/data-user.php:59
 #: admin-pages/user-data/data-user.php:109
-#, fuzzy
-#| msgid "Upgrade to Pro for "
 msgid "Upgrade to Pro"
 msgstr "Upgrade naar de Pro versie voor"
 
@@ -1199,8 +1144,6 @@ msgid "Search Results"
 msgstr "Zoekresultaten"
 
 #: admin-pages/user-data/data-search-results.php:35
-#, fuzzy
-#| msgid "results were found for:"
 msgid "results were found for"
 msgstr "resultaten werden gevonden voor:"
 
@@ -1337,8 +1280,6 @@ msgid "Edit user preferences"
 msgstr "Aanpassen van gebruikers instellingen"
 
 #: admin-pages/user-data/data-user-edit-settings.php:39
-#, fuzzy
-#| msgid "Allow user settings"
 msgid "to save changes to your user's settings"
 msgstr "Gebruikers instellingen toestaan"
 
@@ -1648,8 +1589,6 @@ msgid ""
 msgstr ""
 
 #: functions.php:889
-#, fuzzy
-#| msgid "Upgrade to Pro Version"
 msgid "Read more and Upgrade to Pro / Pro Plus Version"
 msgstr "Upgraden naar de Pro versie"
 

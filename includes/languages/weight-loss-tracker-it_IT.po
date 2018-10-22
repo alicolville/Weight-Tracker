@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-10-17 21:22+0100\n"
-"PO-Revision-Date: 2018-10-17 21:22+0100\n"
+"PO-Revision-Date: 2018-10-22 20:33+0100\n"
 "Last-Translator: Salvo Mattina <admin@mabodigital.com>\n"
 "Language-Team: \n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.1.1\n"
+"X-Generator: Poedit 2.2\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-KeywordsList: __;_e\n"
@@ -25,7 +25,6 @@ msgid "Add / Edit a Custom Field"
 msgstr ""
 
 #: admin-pages/meta-fields/page-meta-fields-add-update.php:66
-#, fuzzy
 msgid "Please complete all mandatory fields."
 msgstr "Si prega di inserire una data valida"
 
@@ -118,8 +117,6 @@ msgid ""
 msgstr ""
 
 #: admin-pages/meta-fields/page-meta-fields-add-update.php:132
-#, fuzzy
-#| msgid "Display gridlines?"
 msgid "Display Order"
 msgstr "Visualizzare griglia?"
 
@@ -134,8 +131,6 @@ msgid "Mandatory"
 msgstr ""
 
 #: admin-pages/meta-fields/page-meta-fields-add-update.php:160
-#, fuzzy
-#| msgid "Enable"
 msgid "Enabled"
 msgstr "Abilita"
 
@@ -145,8 +140,6 @@ msgstr ""
 
 #: admin-pages/meta-fields/page-meta-fields-add-update.php:176
 #: admin-pages/meta-fields/page-meta-fields-add-update.php:178
-#, fuzzy
-#| msgid "Saved!"
 msgid "Save"
 msgstr "Salvato!"
 
@@ -189,15 +182,12 @@ msgid "Documentation"
 msgstr ""
 
 #: admin-pages/page.help.php:38
-#, fuzzy
 msgid "You can find detailed documentation for this plugin at our site:"
 msgstr ""
 "È possibile trovare un aiuto dettagliato con questo plugin nel nostro Github "
 "Wiki:"
 
 #: admin-pages/page.help.php:46
-#, fuzzy
-#| msgid "Stones & Pounds"
 msgid "Fix: Stones & Pounds accuracy"
 msgstr "Pietre e Sterline"
 
@@ -227,7 +217,6 @@ msgid "Done. View Log below for further information."
 msgstr ""
 
 #: admin-pages/page.help.php:103
-#, fuzzy
 msgid "Weight Tracker Debug Log"
 msgstr "Tracker Perdita di peso - Modulo"
 
@@ -242,22 +231,18 @@ msgid "You do not have sufficient permissions to access this page."
 msgstr "Non hai permessi sufficienti per accedere alla pagina."
 
 #: admin-pages/page.license.php:39
-#, fuzzy
 msgid "Your license has been applied!"
 msgstr "Le impostazioni sono state salvate"
 
 #: admin-pages/page.license.php:42
-#, fuzzy
 msgid "An error occurred applying your license: "
 msgstr "Errore durante il salvataggio."
 
 #: admin-pages/page.license.php:73 hooks.php:12
-#, fuzzy
 msgid "Upgrade"
 msgstr "Effettua ora l’upgrade"
 
 #: admin-pages/page.license.php:78
-#, fuzzy
 msgid "As you can see from the features listed below, the"
 msgstr "e hanno le seguenti caratteristiche elencate di seguito."
 
@@ -277,7 +262,6 @@ msgid ""
 msgstr ""
 
 #: admin-pages/page.license.php:86
-#, fuzzy
 msgid "Legacy Pro License"
 msgstr "Aggiungi licenza"
 
@@ -340,7 +324,6 @@ msgid "Get a free 7 day trial!"
 msgstr ""
 
 #: admin-pages/page.license.php:135 admin-pages/page.license.php:141
-#, fuzzy
 msgid "Upgrade to Pro Plus for"
 msgstr "Versione Pro"
 
@@ -363,12 +346,10 @@ msgid " a year"
 msgstr ""
 
 #: admin-pages/page.license.php:160
-#, fuzzy
 msgid "Upgrade to Pro for "
 msgstr "Versione Pro"
 
 #: admin-pages/page.license.php:176
-#, fuzzy
 msgid "Add or Update License"
 msgstr "Aggiungi licenza"
 
@@ -379,7 +360,6 @@ msgid ""
 msgstr ""
 
 #: admin-pages/page.license.php:184
-#, fuzzy
 msgid "Apply License"
 msgstr "Aggiungi licenza"
 
@@ -412,7 +392,6 @@ msgid "Your Existing License"
 msgstr ""
 
 #: admin-pages/page.license.php:226
-#, fuzzy
 msgid "Remove License"
 msgstr "Aggiungi licenza"
 
@@ -425,7 +404,6 @@ msgid "Pro Plus Features"
 msgstr ""
 
 #: admin-pages/page.license.php:255
-#, fuzzy
 msgid "Below is a list of the intended features of the Pro Plus version"
 msgstr ""
 "Di seguito è riportato un elenco delle caratteristiche previste della "
@@ -440,7 +418,6 @@ msgid "Pro Features"
 msgstr ""
 
 #: admin-pages/page.license.php:269
-#, fuzzy
 msgid "Below is a list of the intended features of the Pro version"
 msgstr ""
 "Di seguito è riportato un elenco delle caratteristiche previste della "
@@ -594,7 +571,6 @@ msgid "Allow user settings"
 msgstr "Permetti impostazioni utente"
 
 #: admin-pages/page.settings.php:142
-#, fuzzy
 msgid ""
 "Allow your users to select their own data units, complete their \"About You"
 "\" fields and remove all their data."
@@ -638,7 +614,6 @@ msgid "Permissions"
 msgstr ""
 
 #: admin-pages/page.settings.php:193
-#, fuzzy
 msgid "Who can view and modify user data?"
 msgstr "Visualizzare e modificare i dati degli utenti esistenti"
 
@@ -680,7 +655,6 @@ msgid "Send usage data to YeKen?"
 msgstr "Invia i dati di utilizzo di YeKen?"
 
 #: admin-pages/page.settings.php:223
-#, fuzzy
 msgid ""
 "We would love to see how our plugin is used. By consenting, you are allowing "
 "permission for the following data to be sent on a weekly basis to YeKen: "
@@ -848,14 +822,10 @@ msgstr ""
 "calcolati automaticamente."
 
 #: admin-pages/page.settings.php:359
-#, fuzzy
 msgid "Text colour"
 msgstr "Colore Grafico"
 
 #: admin-pages/page.settings.php:362
-#, fuzzy
-#| msgid ""
-#| "If enabled, enter a HEX colour code to use for the Target line on graph."
 msgid "Enter a HEX colour code to use for text displayed on the graph."
 msgstr ""
 "Se abilitato, inserire un codice esadecimale del colore da utilizzare per la "
@@ -908,31 +878,20 @@ msgid "Specifies the point thickness on a line chart."
 msgstr "Specifica lo spessore del punto su un grafico a linee."
 
 #: admin-pages/page.settings.php:420
-#, fuzzy
-#| msgid "Add a new weight"
 msgid "Add a fill under weight line?"
 msgstr "Aggiungere un nuovo peso"
 
 #: admin-pages/page.settings.php:426
-#, fuzzy
-#| msgid ""
-#| "If enabled, enter a HEX colour code to use for the Target line on graph."
 msgid "If enabled, a fill colour will be added under the weight line."
 msgstr ""
 "Se abilitato, inserire un codice esadecimale del colore da utilizzare per la "
 "linea di destinazione sul grafico."
 
 #: admin-pages/page.settings.php:430
-#, fuzzy
-#| msgid "Weight fill colour?"
 msgid "Weight Fill Colour"
 msgstr "Riempire  con il colore?"
 
 #: admin-pages/page.settings.php:433
-#, fuzzy
-#| msgid ""
-#| "If enabled, enter a HEX colour code to use for filling the Weight bars on "
-#| "the graph."
 msgid ""
 "If enabled, enter a HEX colour code to use for the fill colour under the "
 "weight line."
@@ -941,8 +900,6 @@ msgstr ""
 "riempimento delle barre di peso sul grafico."
 
 #: admin-pages/page.settings.php:437
-#, fuzzy
-#| msgid "Weight fill colour?"
 msgid "Weight Fill Opacity"
 msgstr "Riempire  con il colore?"
 
@@ -1085,12 +1042,10 @@ msgid "A Pro license is required to add / edit a weight entry."
 msgstr ""
 
 #: admin-pages/user-data/data-edit-target.php:37
-#, fuzzy
 msgid "Edit user's target"
 msgstr "Permetti impostazioni utente"
 
 #: admin-pages/user-data/data-edit-target.php:43
-#, fuzzy
 msgid "A Pro license is required to set a user's target weight."
 msgstr "Sei sicuro di voler cancellare il target peso?"
 
@@ -1105,8 +1060,6 @@ msgstr ""
 
 #: admin-pages/user-data/data-photos.php:43
 #: admin-pages/user-data/data-user.php:89
-#, fuzzy
-#| msgid "No weight data was found for the specified user."
 msgid "No photos could be found for this user."
 msgstr "Nessun dato peso è stato trovato per l'utente specificato."
 
@@ -1124,7 +1077,6 @@ msgstr ""
 #: admin-pages/user-data/data-user-edit-settings.php:38
 #: admin-pages/user-data/data-user.php:59
 #: admin-pages/user-data/data-user.php:109
-#, fuzzy
 msgid "Upgrade to Pro"
 msgstr "Versione Pro"
 
@@ -1135,7 +1087,6 @@ msgstr ""
 
 #: admin-pages/user-data/data-search-results.php:11
 #: admin-pages/user-data/data-search-results.php:18
-#, fuzzy
 msgid "Search Results"
 msgstr "Cerca:"
 
@@ -1144,7 +1095,6 @@ msgid "results were found for"
 msgstr ""
 
 #: admin-pages/user-data/data-search-results.php:43
-#, fuzzy
 msgid "Username"
 msgstr "Utente"
 
@@ -1157,12 +1107,10 @@ msgid "No. of Entries"
 msgstr ""
 
 #: admin-pages/user-data/data-search-results.php:46
-#, fuzzy
 msgid "Start Weight"
 msgstr "Peso Target"
 
 #: admin-pages/user-data/data-search-results.php:47
-#, fuzzy
 msgid "Recent Weight"
 msgstr "Peso Target"
 
@@ -1175,7 +1123,6 @@ msgid "No users were found for the given search criteria:"
 msgstr ""
 
 #: admin-pages/user-data/data-search-results.php:66
-#, fuzzy
 msgid "No search terms were specified"
 msgstr "Non è stato specificato un utente"
 
@@ -1212,17 +1159,14 @@ msgid "Last 100 entries"
 msgstr ""
 
 #: admin-pages/user-data/data-summary.php:90
-#, fuzzy
 msgid "Show all entries"
 msgstr "Mostra voci _MENU_"
 
 #: admin-pages/user-data/data-summary.php:90
-#, fuzzy
 msgid "Show 100 recent entries"
 msgstr "Visualizza da 0 a 0 di 0 voci"
 
 #: admin-pages/user-data/data-summary.php:101
-#, fuzzy
 msgid "User Search"
 msgstr "Cerca:"
 
@@ -1235,7 +1179,6 @@ msgid "No. of WordPress users"
 msgstr ""
 
 #: admin-pages/user-data/data-summary.php:133
-#, fuzzy
 msgid "No. of Weight Entries"
 msgstr "Unità di misura di peso"
 
@@ -1248,12 +1191,10 @@ msgid "refreshed every 15 minutes"
 msgstr ""
 
 #: admin-pages/user-data/data-summary.php:146
-#, fuzzy
 msgid "View all data"
 msgstr "Visualizza tutte le settimane"
 
 #: admin-pages/user-data/data-summary.php:150
-#, fuzzy
 msgid "View all entries"
 msgstr "Visualizza tutte le settimane"
 
@@ -1270,7 +1211,6 @@ msgid "To JSON"
 msgstr ""
 
 #: admin-pages/user-data/data-summary.php:168
-#, fuzzy
 msgid "Delete Data"
 msgstr "Elimina"
 
@@ -1283,13 +1223,10 @@ msgid "Are you sure you wish to remove all user data?"
 msgstr "Sei sicuro di voler rimuovere tutti i dati utente?"
 
 #: admin-pages/user-data/data-user-edit-settings.php:26
-#, fuzzy
 msgid "Edit user preferences"
 msgstr "Permetti impostazioni utente"
 
 #: admin-pages/user-data/data-user-edit-settings.php:39
-#, fuzzy
-#| msgid "Allow user settings"
 msgid "to save changes to your user's settings"
 msgstr "Permetti impostazioni utente"
 
@@ -1298,7 +1235,6 @@ msgid "The preferences for this user have been saved."
 msgstr ""
 
 #: admin-pages/user-data/data-user.php:28
-#, fuzzy
 msgid "The cache for this user has been deleted."
 msgstr "Il tuo storico peso è stato cancellato!"
 
@@ -1307,7 +1243,6 @@ msgid "to view the a chart of the user's weight entries."
 msgstr ""
 
 #: admin-pages/user-data/data-user.php:84
-#, fuzzy
 msgid "View all photos"
 msgstr "Visualizza tutte le settimane"
 
@@ -1317,7 +1252,6 @@ msgstr ""
 
 #: admin-pages/user-data/data-user.php:128
 #: admin-pages/user-data/data-user.php:155
-#, fuzzy
 msgid "Upgrade to Pro Plus"
 msgstr "Versione Pro"
 
@@ -1332,7 +1266,6 @@ msgid "Please ensure the values for Proteins, Carbohydrates and Fats (within "
 msgstr ""
 
 #: admin-pages/user-data/data-user.php:145
-#, fuzzy
 msgid "settings"
 msgstr "Impostazioni"
 
@@ -1419,8 +1352,6 @@ msgid "You have modified data. Please refresh page."
 msgstr "Hai modificato i dati. Si prega di aggiornare la pagina."
 
 #: core.php:265
-#, fuzzy
-#| msgid "You need to be logged in to record your weight."
 msgid "You need to be logged in to set your target."
 msgstr "Devi essere loggato per registrare il peso."
 
@@ -1429,8 +1360,6 @@ msgid "Add a new weight"
 msgstr "Aggiungere un nuovo peso"
 
 #: core.php:287
-#, fuzzy
-#| msgid "Underweight"
 msgid "Edit weight"
 msgstr "Sottopeso"
 
@@ -1439,7 +1368,6 @@ msgid "Your target weight is"
 msgstr "Il tuo obbiettivo del peso è"
 
 #: core.php:368
-#, fuzzy
 msgid "The user's target weight is currently"
 msgstr "Il tuo obbiettivo del peso è"
 
@@ -1448,8 +1376,6 @@ msgid "Stones"
 msgstr "Stones"
 
 #: core.php:402
-#, fuzzy
-#| msgid "Add measurements"
 msgid "Edit measurements"
 msgstr "Aggiungi misure"
 
@@ -1478,7 +1404,6 @@ msgid "Clear Target"
 msgstr "Annulla Target"
 
 #: core.php:596
-#, fuzzy
 msgid "Please enter a value between 0-13 for pounds"
 msgstr "Si prega di inserire un valore  tra 0-14"
 
@@ -1519,27 +1444,22 @@ msgid "Please enter a valid measurement ("
 msgstr "Si prega di inserire una misura valida ("
 
 #: core.php:632
-#, fuzzy
 msgid "Please select or enter a value for height."
 msgstr "Si prega di inserire una cifra valida per Stones"
 
 #: core.php:633
-#, fuzzy
 msgid "Please select or enter a value for activity level."
 msgstr "Si prega di inserire una cifra valida per Stones"
 
 #: core.php:634
-#, fuzzy
 msgid "Please select or enter a value for gender."
 msgstr "Si prega di inserire una cifra valida per Stones"
 
 #: core.php:635
-#, fuzzy
 msgid "Please enter a valid date."
 msgstr "Si prega di inserire una data valida"
 
 #: core.php:636
-#, fuzzy
 msgid "Please select your aim."
 msgstr "Si prega di inserire una cifra valida per Stones"
 
@@ -1589,8 +1509,6 @@ msgid "Read more about calculations"
 msgstr ""
 
 #: functions.php:686
-#, fuzzy
-#| msgid "Your settings have been saved!"
 msgid "Your modifications have been saved"
 msgstr "Le impostazioni sono state salvate"
 
@@ -1609,7 +1527,6 @@ msgid ""
 msgstr ""
 
 #: functions.php:889
-#, fuzzy
 msgid "Read more and Upgrade to Pro / Pro Plus Version"
 msgstr "Versione Pro"
 
@@ -1630,8 +1547,6 @@ msgid "FR"
 msgstr ""
 
 #: globals.php:163
-#, fuzzy
-#| msgid "Bicep - Left"
 msgid "Biceps - Left"
 msgstr "Bicipite - Sinistra"
 
@@ -1640,8 +1555,6 @@ msgid "BL"
 msgstr ""
 
 #: globals.php:164
-#, fuzzy
-#| msgid "Bicep - Right"
 msgid "Biceps - Right"
 msgstr "Bicipite - Destra"
 
@@ -1702,7 +1615,6 @@ msgid "Shoulders"
 msgstr "Spalle"
 
 #: globals.php:171
-#, fuzzy
 msgid "S"
 msgstr "st"
 
@@ -1751,7 +1663,6 @@ msgid "Manage User Data"
 msgstr "Gestisci dati utente"
 
 #: hooks.php:12
-#, fuzzy
 msgid "Your License"
 msgstr "Aggiungi licenza"
 
@@ -1764,7 +1675,6 @@ msgid "Help"
 msgstr "Aiuto"
 
 #: hooks.php:173
-#, fuzzy
 msgid "An error occurred while trying to save the user's preferences."
 msgstr "Errore durante il salvataggio."
 
@@ -1818,7 +1728,6 @@ msgid "No user specified"
 msgstr "Non è stato specificato un utente"
 
 #: shortcode-various.php:106
-#, fuzzy
 msgid "No target set"
 msgstr "Il tuo obbiettivo del peso è"
 
@@ -1839,23 +1748,18 @@ msgid "Overview"
 msgstr "Panoramica"
 
 #: shortcode-weight-loss-tracker.php:93
-#, fuzzy
-#| msgid "Add a new weight"
 msgid "Chart and add a new entry"
 msgstr "Aggiungere un nuovo peso"
 
 #: shortcode-weight-loss-tracker.php:94
-#, fuzzy
 msgid "All Entries"
 msgstr "Mostra voci _MENU_"
 
 #: shortcode-weight-loss-tracker.php:94
-#, fuzzy
 msgid "View all of your entries"
 msgstr "Visualizza tutte le settimane"
 
 #: shortcode-weight-loss-tracker.php:98
-#, fuzzy
 msgid "View a gallery of your photos"
 msgstr "Visualizza tutte le settimane"
 
@@ -1872,7 +1776,6 @@ msgid "Customise this tool and tell us a little more about you"
 msgstr ""
 
 #: shortcode-weight-loss-tracker.php:124
-#, fuzzy
 msgid "Add a weight entry"
 msgstr "Aggiungere un nuovo peso"
 
