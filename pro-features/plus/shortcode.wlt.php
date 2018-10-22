@@ -27,7 +27,7 @@
 			if ( $photo_count > 0 ) {
 
 				$html .= sprintf('<p>%s <strong>%s</strong> %s:</p>',
-										__('Your have uploaded', WE_LS_SLUG),
+										__('You have uploaded', WE_LS_SLUG),
 										$photo_count,
 										$photo_count > 1 ? __('photos', WE_LS_SLUG) : __('photo', WE_LS_SLUG)
 
