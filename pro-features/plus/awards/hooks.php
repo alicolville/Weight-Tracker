@@ -100,6 +100,8 @@
 
                     if ( false === is_null( $percentage_difference ) ) {
 
+                        $percentage_difference['percentage'] = round( $percentage_difference['percentage'], 2 );
+
                         foreach ( $awards['awards']['weight-percentage'] as $percentage_award ) {
 
                             if ( 'gain' === $percentage_award['gain_loss'] && true === $percentage_difference['increase'] &&
@@ -160,7 +162,7 @@
 			[ 'name' => 'category', 'title' => __('Category', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
 			[ 'name' => 'gain_loss', 'title' => __('Gain / Loss', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
 			[ 'name' => 'value', 'title' => __('Value', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
-			[ 'name' => 'max_awards', 'title' => __('Max. Awards', WE_LS_SLUG), 'visible'=> true, 'type' => 'number' ],
+			//[ 'name' => 'max_awards', 'title' => __('Max. Awards', WE_LS_SLUG), 'visible'=> true, 'type' => 'number' ],
 			[ 'name' => 'send_email', 'title' => __('Email', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
 			[ 'name' => 'enabled', 'title' => __('Enabled', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
 		];

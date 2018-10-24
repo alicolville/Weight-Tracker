@@ -222,6 +222,7 @@
             'category' => '%s',
             'gain_loss' => '%s',
             'badge' => '%d',
+            'compare' => '%s',
             'custom_message' => '%s',
             'max_awards' => '%d',
             'enabled' => '%d',

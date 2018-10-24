@@ -167,7 +167,7 @@
                     }
 
                     // Is this award available for the type of update i.e. update / add
-                    if ( true === isset( $award['apply_to_' . $change_type ] ) && 0 === $award['apply_to_' . $change_type ] ) {
+                    if ( true === isset( $award['apply_to_' . $change_type ] ) && 0 === (int) $award['apply_to_' . $change_type ] ) {
                         continue;
                     }
 
@@ -181,9 +181,7 @@
                     $counts[ $category ] ++;
                     $awards[ $category ][ $award['id'] ] = $award;
                 }
-
             }
-
         }
 
         return [

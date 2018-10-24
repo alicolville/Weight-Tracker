@@ -10,10 +10,10 @@ function ws_ls_awards_add_update_page() {
     // Data Posted? If so, replace the above from $_POST object
     if ( false === empty( $_POST ) && true === ws_ls_awards_is_enabled() ) {
 
-        $award = ws_ls_get_values_from_post( [ 'id', 'title', 'category', 'gain_loss', 'stones',
+        $award = ws_ls_get_values_from_post( [ 'id', 'title', 'category', 'gain_loss', 'stones', 'apply_to_update', 'apply_to_add',
                                                  'pounds', 'value', 'weight_percentage', 'custom_message', 'max_awards', 'send_email', 'enabled' ] );
 
-        $mandatory_fields = [ 'title', 'max_awards' ];
+        $mandatory_fields = [ 'title' ];
 
         //------------------------------------------------------------------------------
         // Add mandatory units to list for validation
@@ -56,9 +56,7 @@ function ws_ls_awards_add_update_page() {
 
             unset( $award['stones'], $award['pounds'], $award['weight_percentage'] );
 
-            //TODO:
-            $award['apply_to_update'] = 1;
-            $award['apply_to_add'] = 1;
+            $award['max_awards'] = 1;
 
             // Add / Update
             $result = ( true === empty( $award['id'] ) ) ? ws_ls_awards_add( $award ) : ws_ls_awards_update( $award );
@@ -222,17 +220,29 @@ function ws_ls_awards_add_update_page() {
                                             </div>
                                         </div>
                                         <div class="ws-ls-row">
-                                            <div class="ws-ls-cell">
-                                                <label for="max_awards"><?php echo __('Max. times to award', WE_LS_SLUG); ?></label>
+                                            <div class="ws-ls-cell ws-ls-label-col">
+                                                <label for="apply_to_add"><?php echo __('Apply to new entries?', WE_LS_SLUG); ?></label>
                                             </div>
-                                            <?php
-
-                                                $max_awards = ( false === empty( $award['max_awards'] ) ) ? intval( $award['max_awards'] ) : 1;
-
-                                            ?>
+                                            <?php $checked = ( false === empty( $award['apply_to_add'] ) && 1 === intval( $award['apply_to_add'] ) ) ? 1 : 0; ?>
                                             <div class="ws-ls-cell">
-                                                <input type="number" min="0" max="1000" id="max_awards" class="<?php if ( true === $validation_fail && true === empty( $award['max_awards'] ) ) { echo 'ws-ls-mandatory-field'; } ?>" name="max_awards" value="<?php echo $max_awards; ?>" />
-                                                <p class="ws-ls-info"><?php echo __('Specify the maximum number of times this award can be given to a user.', WE_LS_SLUG); ?></p>
+                                                <select name="apply_to_add" id="apply_to_add">
+                                                    <option value="1" <?php selected( $checked, 1 ); ?>><?php echo __('Yes', WE_LS_SLUG); ?></option>
+                                                    <option value="0" <?php selected( $checked, 0 ); ?>><?php echo __('No', WE_LS_SLUG); ?></option>
+                                                </select>
+                                                <p class="ws-ls-info"><?php echo __('Can the award be given when a user adds a new weight entry?.', WE_LS_SLUG); ?></p>
+                                            </div>
+                                        </div>
+                                        <div class="ws-ls-row">
+                                            <div class="ws-ls-cell ws-ls-label-col">
+                                                <label for="apply_to_update"><?php echo __('Apply to updated entries?', WE_LS_SLUG); ?></label>
+                                            </div>
+                                            <?php $checked = ( false === empty( $award['apply_to_update'] ) && 1 === intval( $award['apply_to_update'] ) ) ? 1 : 0; ?>
+                                            <div class="ws-ls-cell">
+                                                <select name="apply_to_update" id="apply_to_update">
+                                                    <option value="1" <?php selected( $checked, 1 ); ?>><?php echo __('Yes', WE_LS_SLUG); ?></option>
+                                                    <option value="0" <?php selected( $checked, 0 ); ?>><?php echo __('No', WE_LS_SLUG); ?></option>
+                                                </select>
+                                                <p class="ws-ls-info"><?php echo __('Can the award be given when a user updates an existing weight entry?.', WE_LS_SLUG); ?></p>
                                             </div>
                                         </div>
                                         <div class="ws-ls-row">
@@ -242,8 +252,8 @@ function ws_ls_awards_add_update_page() {
                                             <?php $checked = ( false === empty( $award['send_email'] ) && 2 === intval( $award['send_email'] ) ) ? 2 : 0; ?>
                                             <div class="ws-ls-cell">
                                                 <select name="send_email" id="send_email">
-                                                    <option value="1" <?php selected( $checked, 1 ); ?>><?php echo __('No', WE_LS_SLUG); ?></option>
                                                     <option value="2" <?php selected( $checked, 2 ); ?>><?php echo __('Yes', WE_LS_SLUG); ?></option>
+                                                    <option value="1" <?php selected( $checked, 1 ); ?>><?php echo __('No', WE_LS_SLUG); ?></option>
                                                 </select>
                                             </div>
                                         </div>

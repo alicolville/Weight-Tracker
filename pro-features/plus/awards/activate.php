@@ -23,6 +23,7 @@ function ws_ls_awards_create_mysql_tables() {
                 title varchar(40) NOT NULL,
                 category varchar(20) NOT NULL,
                 gain_loss varchar(5) NULL DEFAULT NULL,
+                compare varchar(10) NULL DEFAULT NULL,
                 value varchar(20) NULL DEFAULT NULL,
                 badge int NULL DEFAULT 0,
                 custom_message varchar(200) NULL,

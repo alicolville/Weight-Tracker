@@ -26,11 +26,14 @@
 	function ws_ls_meta_fields_photos_process_upload( $field_name, $date_text = NULL, $user_id = NULL,
                                                             $entry_id = NULL, $meta_field_id = null, $module = 'photo-upload' ) {
 
-		if ( ( false === ws_ls_meta_fields_is_enabled() || false === ws_ls_meta_fields_photo_any_enabled() ) &&
-                'award-badge-yeken' === $field_name && true === ws_ls_awards_is_enabled() ) {
-			ws_ls_log_add('photo-upload', 'Looking for a photo field but Photos disabled?' );
-			return false;
-		}
+	    if ( 'award-badge-yeken' === $field_name && false === ws_ls_awards_is_enabled() ) {
+            ws_ls_log_add( $module, 'Awards disabled so not going to try and upload image.' );
+        }
+
+        if ( 'award-badge-yeken' !== $field_name && ( false === ws_ls_meta_fields_is_enabled() || false === ws_ls_meta_fields_photo_any_enabled() ) ) {
+            ws_ls_log_add('photo-upload', 'Looking for a photo field but Photos disabled?' );
+            return false;
+        }
 
 		//--------------------------------------------------------------------------------
 		// Existing Image? Do nothing? Do we have an existing image we're happy to keep?

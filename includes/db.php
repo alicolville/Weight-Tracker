@@ -193,6 +193,7 @@ function ws_ls_save_data($user_id, $weight_object, $is_target_form = false, $exi
 	$db_prefix = ($is_target_form) ? 'target_' : '';
 	$db_is_update = false;
 	$table_name = $wpdb->prefix . WE_LS_TABLENAME;
+	$mode = NULL;
 
 	// Ensure each weight field has been populated!
 	if(!ws_ls_validate_weight_data($weight_object)) {
@@ -255,6 +256,8 @@ function ws_ls_save_data($user_id, $weight_object, $is_target_form = false, $exi
                                     array( '%d' )
 		);
 
+        $mode = 'update';
+
 	} else {
 
 	    $result = $wpdb->insert(
@@ -262,6 +265,8 @@ function ws_ls_save_data($user_id, $weight_object, $is_target_form = false, $exi
 	                                $db_fields,
 	    	                        $db_field_types
 	    );
+
+        $mode = 'add';
 
         $db_is_update = ( false !== $result ) ? $wpdb->insert_id : false;
 	 }
@@ -297,7 +302,7 @@ function ws_ls_save_data($user_id, $weight_object, $is_target_form = false, $exi
 		$type = array (
 			'user-id' => $user_id,
 			'type' => ($is_target_form) ? 'target' : 'weight-measurements',
-			'mode' => ($db_is_update) ? 'update' : 'add'
+			'mode' => $mode
 		);
 
 		do_action( WE_LS_HOOK_DATA_ADDED_EDITED, $type, $weight_object );
