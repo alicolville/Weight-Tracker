@@ -3,7 +3,11 @@ Contributors: aliakro
 Tags: weight, loss, lose, helper, bmi, body, mass, index, graph, track, stones, kg, table, data, plot, target, history, pounds, responsive, chart, measurements, cm, centimeters, inches, hip, waist, bicep, thigh
 Requires at least: 4.4.0
 Tested up to: 4.9.8
+<<<<<<< HEAD
 Stable tag: 7.0
+=======
+Stable tag: 6.1.1
+>>>>>>> 34d7db919b301f1e52c703a42685662f9167bc69
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate Link: https://www.paypal.me/yeken
@@ -147,6 +151,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 == Changelog ==
 
+<<<<<<< HEAD
 //todo: Add fields for add to update and add to add
 //todo: Happy awards is for pro? or should it be PRo plus?
 // todo: update features / documentations
@@ -164,6 +169,10 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 * New Feature: Awards and Badges!
 * Set awards for: Change in BMI, Weight Gain / Loss from start and Percentage of weight lost from start.
 
+= 6.1.1 =
+
+* Improvement: Updated German translations. Thanks Benjamin.
+* Bug fix: Typo fix.
 
 = 6.1 =
 
