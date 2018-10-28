@@ -216,3 +216,16 @@ HEX: #f7786b
 .ws-ls-mandatory-field {
     border: 1px solid red !important;
 }
+
+.ws-ls-badge-collection {
+    width: 100%;
+    display: table;
+}
+.ws-ls-badge-collection div {
+    display: table-cell;
+
+}
+.ws-ls-badge-collection span {
+    clear: left;
+    font-size: 12px;
+}

@@ -254,13 +254,26 @@
 		], $user_defined_arguments );
 
 		$awards = ws_ls_awards_previous_awards( $arguments[ 'user-id' ] );
-print_r($arguments);
-		if ( false === empty( $awards ) ) {
-	//echo print_r($awards, true);
 
+		if ( false === empty( $awards ) ) {
+
+		    $html .= '<div class="ws-ls-badge-collection">';
+
+	//echo print_r($awards, true);
 			foreach ( $awards as $award ) {
-				$html .= sprintf('<p>%s</p>', $award['title']);
+
+			    $image = ws_ls_photo_get( $award['badge'], 100 );
+
+				$html .= sprintf('<div>
+                                    %s
+                                    <span>%s</span>
+                                  </div>',
+                                    ( false === empty( $image['thumb'] ) ) ? $image['thumb'] : '',
+                                    $award['title']
+                );
 			}
+
+            $html .= '</div>';
 
 		} else {
 			$html = esc_html( $arguments[ 'error-message' ] . '.' );
