@@ -30,15 +30,17 @@
 		    return [
 			    'weight' => __('Weight', WE_LS_SLUG),
 			    'weight-percentage' => __('Weight %', WE_LS_SLUG),
-			    'bmi' => __('BMI', WE_LS_SLUG),
+			    'bmi' => __('BMI: Change', WE_LS_SLUG),
+			    'bmi-equals' => __('BMI: Equals', WE_LS_SLUG),
 		    ];
 
 	    }
 
         $fields = [
+	        'bmi' => __('BMI: Change', WE_LS_SLUG),
+	        'bmi-equals' => __('BMI: Equals', WE_LS_SLUG),
             'weight' => __('Weight change in units', WE_LS_SLUG),
-            'weight-percentage' => __('Weight change as a percentage', WE_LS_SLUG),
-            'bmi' => __('Change in BMI Label', WE_LS_SLUG),
+            'weight-percentage' => __('Weight change as a percentage', WE_LS_SLUG)
         ];
 
         return $fields;
@@ -156,15 +158,19 @@
                 // Only consider giving enabled awards and ones that haven't been already issued to this user.
                 if ( 2 === (int) $award[ 'enabled' ] ) {
 
-                    // If specified, strip out the gain or loss awards. For example, if the user has gained since start weight then we can assume they will not be winning
-                    // any "loss" awards.
-                    if ( true === $losing_weight_only && 'loss' !== $award['gain_loss'] ) {
-                        continue;
-                    }
+                	// Consider whether gaining or losing weight
+                	if ( false === in_array( $category, [ 'bmi-equals' ] ) ) {
 
-                    if ( false === $losing_weight_only && 'gain' !== $award['gain_loss'] ) {
-                       continue;
-                    }
+		                // If specified, strip out the gain or loss awards. For example, if the user has gained since start weight then we can assume they will not be winning
+		                // any "loss" awards.
+		                if ( true === $losing_weight_only && 'loss' !== $award['gain_loss'] ) {
+			                continue;
+		                }
+
+		                if ( false === $losing_weight_only && 'gain' !== $award['gain_loss'] ) {
+			                continue;
+		                }
+	                }
 
                     // Is this award available for the type of update i.e. update / add
                     if ( true === isset( $award['apply_to_' . $change_type ] ) && 0 === (int) $award['apply_to_' . $change_type ] ) {
@@ -210,15 +216,70 @@
         return $awards;
 
     }
+
+	/**
+	 * Fetch all the awards given to this user (add relevant image data too)
+	 * @param null $user_id
+	 *
+	 */
+	function ws_ls_awards_previous_awards( $user_id = NULL ) {
+
+		$user_id = $user_id ?: get_current_user_id();
+
+		$cache = ws_ls_cache_user_get( $user_id, 'awards-given-formatted' );
+
+		if ( true === is_array( $cache ) ) {
+			return $cache;
+		}
+
+		$awards = ws_ls_awards_db_given_get( $user_id );
+
+		ws_ls_cache_user_set( $user_id, 'awards-given-formatted', $awards );
+
+		return $awards;
+
+	}
+
+	function ws_ls_awards_render_badges( $user_defined_arguments ) {
+
+		if( false === WS_LS_IS_PRO_PLUS ) {
+			return '';
+		}
+
+		$html = '';
+
+		$arguments = shortcode_atts([
+			'error-message' => ( is_admin() ) ? __('The user has no awards', WE_LS_SLUG ) : __('You have no awards yet', WE_LS_SLUG ),
+			'user-id' => get_current_user_id(),
+		], $user_defined_arguments );
+
+		$awards = ws_ls_awards_previous_awards( $arguments[ 'user-id' ] );
+print_r($arguments);
+		if ( false === empty( $awards ) ) {
+	//echo print_r($awards, true);
+
+			foreach ( $awards as $award ) {
+				$html .= sprintf('<p>%s</p>', $award['title']);
+			}
+
+		} else {
+			$html = esc_html( $arguments[ 'error-message' ] . '.' );
+		}
+
+		return $html;
+
+	}
+
+
 //
 //
 //    function t() {
 //
 //    	if ( is_admin() ) {
-//    		return;
+//    	//	return;
 //	    }
 //
-//print_r(ws_ls_awards_get_enabled());
+//print_r( ws_ls_awards_to_give( 1, 'add') );
 //
 //        die;
 //    }

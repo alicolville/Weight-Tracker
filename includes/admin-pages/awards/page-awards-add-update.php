@@ -10,7 +10,7 @@ function ws_ls_awards_add_update_page() {
     // Data Posted? If so, replace the above from $_POST object
     if ( false === empty( $_POST ) && true === ws_ls_awards_is_enabled() ) {
 
-        $award = ws_ls_get_values_from_post( [ 'id', 'title', 'category', 'gain_loss', 'stones', 'apply_to_update', 'apply_to_add',
+        $award = ws_ls_get_values_from_post( [ 'id', 'title', 'category', 'gain_loss', 'stones', 'apply_to_update', 'apply_to_add', 'bmi_equals',
                                                  'pounds', 'value', 'weight_percentage', 'custom_message', 'max_awards', 'send_email', 'enabled' ] );
 
         $mandatory_fields = [ 'title' ];
@@ -52,6 +52,11 @@ function ws_ls_awards_add_update_page() {
 	        // If weight percentage, switch the values.
 	        if ( 'weight-percentage' === $award['category'] ) {
 		        $award['value'] = $award['weight_percentage'] ;
+	        }
+
+	        // If weight percentage, switch the values.
+	        if ( 'bmi-equals' === $award['category'] ) {
+		        unset( $award['gain_loss'] );
 	        }
 
             unset( $award['stones'], $award['pounds'], $award['weight_percentage'] );
@@ -129,7 +134,7 @@ function ws_ls_awards_add_update_page() {
                                                     <?php endif; ?>
                                              </div>
                                         </div>
-                                        <div class="ws-ls-row">
+                                        <div class="ws-ls-row hide-bmi-equals">
                                             <div class="ws-ls-cell">
                                                 <label for="gain_loss"><?php echo __('Gain or Loss', WE_LS_SLUG); ?></label>
                                             </div>
@@ -188,6 +193,24 @@ function ws_ls_awards_add_update_page() {
                                                     }
                                                 ?>
                                                 <p class="ws-ls-info"><?php echo __('The difference in weight from the starting weight.', WE_LS_SLUG); ?></p>
+                                            </div>
+                                        </div>
+                                        <div class="ws-ls-row" id="ws-ls-awards-additional-bmi-equals">
+                                            <div class="ws-ls-cell ws-ls-label-col">
+                                                <label for="bmi_equals"><?php echo __('BMI Equals', WE_LS_SLUG); ?></label>
+                                            </div>
+                                            <div class="ws-ls-cell">
+			                                    <?php
+			                                    $checked = ( false === empty( $award['bmi_equals'] ) ) ? $award['bmi_equals'] : '0';
+			                                    ?>
+                                                <select name="bmi_equals" id="bmi_equals">
+				                                    <?php
+				                                    foreach ( ws_ls_bmi_all_labels() as $key => $label ) {
+					                                    printf( '<option value="%s" %s>%s</option>', $key, selected( $checked, $key ), $label );
+				                                    }
+				                                    ?>
+                                                </select>
+
                                             </div>
                                         </div>
                                         <div class="ws-ls-row" id="ws-ls-awards-additional-weight-percentage">

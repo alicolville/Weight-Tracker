@@ -980,7 +980,7 @@ function ws_ls_calculate_percentage_difference( $previous_weight, $current_weigh
  * @param $value
  * @return mixed|string
  */
-function ws_ls_boolean_as_yes_no_string( $value ) {
+function ws_ls_boolean_as_yes_no_string( $value, $true_value = 2 ) {
 
-	return ( 2 == (int) $value ) ? __('Yes', WE_LS_SLUG) : __('No', WE_LS_SLUG);
+	return ( (int) $true_value == (int) $value ) ? __('Yes', WE_LS_SLUG) : __('No', WE_LS_SLUG);
 }

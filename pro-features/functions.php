@@ -41,16 +41,16 @@ function ws_ls_calculate_bmi($cm, $kg) {
 // $label = ws_ls_calculate_bmi_label($bmi);
 function ws_ls_calculate_bmi_label($bmi) {
 
-	if(is_numeric($bmi)) {
+	if( is_numeric($bmi) ) {
 
-		if($bmi < 18.5) {
+		if( $bmi < 18.5 ) {
 			return __('Underweight', WE_LS_SLUG);
-		} else if ($bmi >= 18.5 && $bmi <= 24.9) {
+		} else if ( $bmi >= 18.5 && $bmi <= 24.9 ) {
 			return __('Healthy', WE_LS_SLUG);
 		}
-		else if ($bmi >= 25 && $bmi <= 29.9) {
+		else if ( $bmi >= 25 && $bmi <= 29.9 ) {
 			return __('Overweight', WE_LS_SLUG);
-		} else if ($bmi >= 30) {
+		} else if ( $bmi >= 30 ) {
 			return __('Heavily Overweight', WE_LS_SLUG);
 		}
 		// } else if ($bmi >= 30 && $bmi <= 39.9) {
@@ -62,6 +62,21 @@ function ws_ls_calculate_bmi_label($bmi) {
 	}
 
 	return 'Err';
+}
+
+
+/**
+ * Return an array of all possible BMI labels
+ *
+ * @return array
+ */
+function ws_ls_bmi_all_labels() {
+	return [
+		0 => __('Underweight', WE_LS_SLUG),
+		1 => __('Healthy', WE_LS_SLUG),
+		2 => __('Overweight', WE_LS_SLUG),
+		3 => __('Heavily Overweight', WE_LS_SLUG)
+	];
 }
 
 function ws_ls_tooltip($text, $tooltip) {

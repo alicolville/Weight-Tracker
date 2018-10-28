@@ -50,6 +50,47 @@
 				    }
 				}
 
+				// ---------------------------------------------------------------
+				// BMI Equals
+				// ---------------------------------------------------------------
+
+				if ( false === empty( $awards['counts']['bmi-equals'] ) && false === empty( $start_weight ) ) {
+
+					$user_height = ws_ls_get_user_height( $info['user-id'] );
+
+					if ( false === empty( $user_height ) ) {
+
+						$starting_bmi =  ws_ls_calculate_bmi( $user_height, $start_weight );
+						$current_bmi = ws_ls_calculate_bmi( $user_height, $weight_object['kg'] );
+
+						// We're only interested in changes of BMI
+						if ( $starting_bmi !== $current_bmi ) {
+
+							$starting_label = ws_ls_calculate_bmi_label( $starting_bmi );
+							$current_label = ws_ls_calculate_bmi_label( $current_bmi );
+
+							// Do we actually have a change in BMI label? If not, no need to process any awards
+							if ( $starting_label !== $current_label ) {
+
+								foreach ( $awards['awards']['bmi-equals'] as $bmi_award ) {
+
+									$bmi_labels = ws_ls_bmi_all_labels();
+
+									$award_label = $bmi_labels[ (int) $bmi_award['bmi_equals'] ];
+
+									if ( $current_label === $award_label ) {
+
+										ws_ls_awards_db_given_add( $info['user-id'], $bmi_award['id'] );
+
+										// Throw hook out so other's can process award e.g. send emails. Log etc.
+										do_action( 'wlt-award-given', $weight_object, $bmi_award, $info );
+									}
+								}
+							}
+						}
+					}
+				}
+
                 // ---------------------------------------------------------------
                 // BMI Change
                 // ---------------------------------------------------------------
@@ -163,6 +204,8 @@
 			[ 'name' => 'gain_loss', 'title' => __('Gain / Loss', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
 			[ 'name' => 'value', 'title' => __('Value', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
 			//[ 'name' => 'max_awards', 'title' => __('Max. Awards', WE_LS_SLUG), 'visible'=> true, 'type' => 'number' ],
+			[ 'name' => 'apply_to_add', 'title' => __('Add', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
+			[ 'name' => 'apply_to_update', 'title' => __('Update', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
 			[ 'name' => 'send_email', 'title' => __('Email', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
 			[ 'name' => 'enabled', 'title' => __('Enabled', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
 		];
@@ -180,12 +223,20 @@
 					$awards[ $i ][ 'value' ] = ws_ls_convert_kg_into_relevant_weight_String( $awards[ $i ][ 'value' ] );
 				} else if ( 'weight-percentage' === $awards[ $i ][ 'category' ]  ) {
 					$awards[ $i ][ 'value' ] = $awards[ $i ][ 'value' ] . '%';
+				} else if ( 'bmi-equals' === $awards[ $i ][ 'category' ]  ) {
+
+					$labels = ws_ls_bmi_all_labels();
+
+					$awards[ $i ][ 'value' ] = $labels [ (int) $awards[ $i ][ 'bmi_equals' ] ];
 				}
 
 				$awards[ $i ][ 'category' ] = ( false === empty( $categories[ $awards[ $i ][ 'category' ] ] ) ) ? $categories[ $awards[ $i ][ 'category' ] ] : '';
 				$awards[ $i ][ 'gain_loss' ] = ws_ls_awards_gain_loss_display( $awards[ $i ][ 'gain_loss' ] );
-				$awards[ $i ][ 'enabled' ] = ws_ls_boolean_as_yes_no_string( $awards[ $i ][ 'enabled' ] );
+				$awards[ $i ][ 'apply_to_add' ] = ws_ls_boolean_as_yes_no_string( $awards[ $i ][ 'apply_to_add' ], 1 );
+				$awards[ $i ][ 'apply_to_update' ] = ws_ls_boolean_as_yes_no_string( $awards[ $i ][ 'apply_to_update' ], 1 );
 				$awards[ $i ][ 'send_email' ] = ws_ls_boolean_as_yes_no_string( $awards[ $i ][ 'send_email' ] );
+				$awards[ $i ][ 'enabled' ] = ws_ls_boolean_as_yes_no_string( $awards[ $i ][ 'enabled' ] );
+
 			}
 
 		}

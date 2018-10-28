@@ -18,7 +18,8 @@
 
         global $wpdb;
 
-        $sql = $wpdb->prepare('Select * from ' . $wpdb->prefix . WE_LS_MYSQL_AWARDS_GIVEN . ' where user_id = %d', $user_id);
+        $sql = $wpdb->prepare('Select * from ' . $wpdb->prefix . WE_LS_MYSQL_AWARDS_GIVEN . ' g INNER JOIN 
+                                ' . $wpdb->prefix . WE_LS_MYSQL_AWARDS . ' a on g.award_id = a.id where user_id = %d', $user_id);
 
         $results = $wpdb->get_results( $sql, ARRAY_A );
 
@@ -85,7 +86,7 @@
         }
 
         // Ensure we have the expected fields.
-        if ( false === ws_ls_array_check_fields( $award, [ 'title', 'category', 'gain_loss', 'value',
+        if ( false === ws_ls_array_check_fields( $award, [ 'title', 'category', 'value',
                                                             'badge', 'custom_message', 'max_awards', 'enabled', 'send_email', 'apply_to_update', 'apply_to_add' ] ) ) {
             return false;
         }
@@ -222,6 +223,7 @@
             'category' => '%s',
             'gain_loss' => '%s',
             'badge' => '%d',
+	        'bmi_equals' => '%d',
             'compare' => '%s',
             'custom_message' => '%s',
             'max_awards' => '%d',

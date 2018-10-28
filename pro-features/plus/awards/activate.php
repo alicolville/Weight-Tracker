@@ -25,6 +25,7 @@ function ws_ls_awards_create_mysql_tables() {
                 gain_loss varchar(5) NULL DEFAULT NULL,
                 compare varchar(10) NULL DEFAULT NULL,
                 value varchar(20) NULL DEFAULT NULL,
+                bmi_equals int NULL DEFAULT 0,
                 badge int NULL DEFAULT 0,
                 custom_message varchar(200) NULL,
                 max_awards int NOT NULL DEFAULT 1,
