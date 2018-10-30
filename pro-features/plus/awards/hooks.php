@@ -189,6 +189,19 @@
     }
 	add_action( 'wlt-award-given', 'ws_ls_awards_log_award', 10, 3 );
 
+    function ws_ls_awards_send_email( $weight_object, $award, $info ) {
+
+        // Email not to be sent!
+        if ( 2 !== (int) $award['send_email'] ) {
+            return;
+        }
+
+wp_mail('ali@ali.com', 'test', json_encode($award));
+
+
+    }
+    add_action( 'wlt-award-given', 'ws_ls_awards_log_award', 10, 3 );
+
 	/**
 		AJAX: Fetch all awards for main list
 	 **/
