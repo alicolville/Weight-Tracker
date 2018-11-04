@@ -223,9 +223,11 @@ HEX: #f7786b
 }
 .ws-ls-badge-collection div {
     display: table-cell;
-
+    display: inline-block;
+    text-align: center;
 }
-.ws-ls-badge-collection span {
+.ws-ls-badge-collection p {
     clear: left;
     font-size: 12px;
+    margin-top: 0px;
 }

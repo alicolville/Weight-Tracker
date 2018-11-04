@@ -240,6 +240,13 @@
 
 	}
 
+	/**
+	 * Render badges for awards issued to the user
+	 *
+	 * @param $user_defined_arguments
+	 *
+	 * @return string
+	 */
 	function ws_ls_awards_render_badges( $user_defined_arguments ) {
 
 		if( false === WS_LS_IS_PRO_PLUS ) {
@@ -259,17 +266,17 @@
 
 		    $html .= '<div class="ws-ls-badge-collection">';
 
-	//echo print_r($awards, true);
 			foreach ( $awards as $award ) {
 
 			    $image = ws_ls_photo_get( $award['badge'], 100 );
 
 				$html .= sprintf('<div>
+									<p>%s</p>
                                     %s
-                                    <span>%s</span>
                                   </div>',
-                                    ( false === empty( $image['thumb'] ) ) ? $image['thumb'] : '',
-                                    $award['title']
+									$award['title'],
+                                    ( false === empty( $image['thumb'] ) ) ? $image['thumb'] : ''
+
                 );
 			}
 
@@ -282,18 +289,3 @@
 		return $html;
 
 	}
-
-
-//
-//
-//    function t() {
-//
-//    	if ( is_admin() ) {
-//    	//	return;
-//	    }
-//
-//print_r( ws_ls_awards_to_give( 1, 'add') );
-//
-//        die;
-//    }
-//    add_action('init' , 't');
