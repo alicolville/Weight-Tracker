@@ -268,7 +268,7 @@
 
 			foreach ( $awards as $award ) {
 
-			    $image = ws_ls_photo_get( $award['badge'], 100 );
+			    $image = ws_ls_photo_get( $award['badge'], 100, 100 );
 
 				$html .= sprintf('<div>
 									<p>%s</p>

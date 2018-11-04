@@ -225,6 +225,7 @@ HEX: #f7786b
     display: table-cell;
     display: inline-block;
     text-align: center;
+    margin-right: 20px;
 }
 .ws-ls-badge-collection p {
     clear: left;
