@@ -14,6 +14,13 @@
 	        return;
         }
 
+        // Ensure the user has more than one weight entry! No point doing any comparisons!
+        $user_stats = ws_ls_get_entry_counts(  $info['user-id'] );
+
+	    if ( (int) $user_stats[ 'number-of-entries' ] <= 1 ) {
+	    	return;
+	    }
+
 		if ( false === empty( $info['type'] ) && $info['type'] === 'weight-measurements' ) {
 
             // Is user gaining or losing weight?
@@ -177,6 +184,10 @@
      */
     function ws_ls_awards_log_award( $weight_object, $weight_award, $info ) {
 
+	    if ( false === WS_LS_IS_PRO_PLUS ) {
+		    return;
+	    }
+
         if ( false === empty( $info['user-id'] ) && false === empty( $weight_award['title'] ) ) {
 
 	        $user_info = get_userdata(  $info['user-id'] );
@@ -189,18 +200,64 @@
     }
 	add_action( 'wlt-award-given', 'ws_ls_awards_log_award', 10, 3 );
 
+	/**
+	 * If applicable, send an email for the award!
+	 *
+	 * @param $weight_object
+	 * @param $award
+	 * @param $info
+	 */
     function ws_ls_awards_send_email( $weight_object, $award, $info ) {
+
+	    if ( false === WS_LS_IS_PRO_PLUS ) {
+		    return;
+	    }
+
+    	// Email notifications enabled for awards?
+	    if ( false === ws_ls_awards_email_notifications_enabled() ) {
+	    	return;
+	    }
 
         // Email not to be sent!
         if ( 2 !== (int) $award['send_email'] ) {
             return;
         }
 
-wp_mail('ali@ali.com', 'test', json_encode($award));
+	    $email_template = ws_ls_emailer_get( 'award ');
 
+        if ( false === empty( $email_template ) ) {
 
+	        $badge = ( false === empty( $award['badge'] ) ) ? ws_ls_photo_get( $award['badge'], 300 ) : NULL;
+
+	        if ( false === empty( $badge['thumb'] ) ) {
+
+		        $award['badge'] = '<table border="0" cellpadding="0" cellspacing="0" width="100%">
+						                  <tbody>
+						                    <tr>
+						                      <td align="left">
+						                        <table border="0" cellpadding="0" cellspacing="0">
+						                          <tbody>
+						                            <tr>
+						                              <td align="center">' . $badge['thumb'] . '</td>
+						                            </tr>
+						                          </tbody>
+						                        </table>
+						                      </td>
+						                    </tr>
+						                  </tbody>
+						                </table>';
+	        } else {
+		        $award['badge'] = '';
+	        }
+
+	        $current_user = get_userdata( $info['user-id'] );
+
+	        if ( false === empty( $current_user->user_email ) ) {
+		        ws_ls_emailer_send( $current_user->user_email,  $email_template['subject'],  $email_template['email'], $award );
+	        }
+        }
     }
-    add_action( 'wlt-award-given', 'ws_ls_awards_log_award', 10, 3 );
+
 
 	/**
 		AJAX: Fetch all awards for main list

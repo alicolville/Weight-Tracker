@@ -23,14 +23,51 @@
                             <h3 class="hndle"><span><?php echo __('Awards', WE_LS_SLUG); ?></span></h3>
                             <div style="padding: 0px 15px 0px 15px">
 
-                                <p><?php echo __('TODO', WE_LS_SLUG); ?>
-                                                        <a href="https://weight.yeken.uk/awards/" target="_blank" rel="noopener"><?php echo __('Read more about Awards', WE_LS_SLUG); ?></a>
-                                                        </p>
+                                <div class="ws-ls-table">
+                                    <div class="ws-ls-row">
+                                        <div class="ws-ls-cell">
+                                            <p><?php echo __('Issue awards to your user\'s for meeting certain goals.' , WE_LS_SLUG); ?>
+                                                <a href="https://weight.yeken.uk/awards/" target="_blank" rel="noopener"><?php echo __('Read more about Awards', WE_LS_SLUG); ?></a>
+                                            </p>
+                                        </div>
+                                        <div class="ws-ls-cell" style="text-align: right">
+                                            <?php
 
+                                                // Save email notification preferences
+                                                update_option( 'ws-ls-awards-email-notifications', ( false === empty( $_GET['email-notifications'] ) && 'y' === $_GET['email-notifications'] ) ? 'y' : 'n' );
+
+                                                $emails_enabled = ws_ls_awards_email_notifications_enabled();
+
+                                                $url = admin_url('admin.php?page=ws-ls-awards' );
+
+                                                if ( true === $emails_enabled ) {
+                                                    $qs_value = 'n';
+                                                    $button_text = 'Disable Email Notifications';
+                                                } else {
+                                                    $qs_value = 'y';
+                                                    $button_text = 'Enable Email Notifications';
+                                                }
+
+                                                $url = add_query_arg( 'email-notifications', $qs_value, $url);
+
+                                                printf('<p>
+                                                            <a class="button-secondary" href="%1$s">
+                                                                <i class="fa fa-envelope"></i>
+                                                                %2$s
+                                                            </a>
+                                                        </p>',
+                                                        esc_url( $url ),
+                                                        $button_text
+                                                );
+
+                                            ?>
+                                        </div>
+                                    </div>
+                                </div>
 
                                 <table class="table ws-ls-awards-list-ajax" id="awards-list"
                                        data-paging="true"
-                                       data-filtering="true"
+                                       data-filtering="false"
                                        data-sorting="true"
                                        data-editing="true"
                                        data-cascade="true"

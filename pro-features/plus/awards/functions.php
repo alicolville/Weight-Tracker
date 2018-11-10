@@ -222,11 +222,13 @@
 	 * @param null $user_id
 	 *
 	 */
-	function ws_ls_awards_previous_awards( $user_id = NULL ) {
+	function ws_ls_awards_previous_awards( $user_id = NULL, $width = 200, $height = 200 ) {
 
 		$user_id = $user_id ?: get_current_user_id();
 
-		$cache = ws_ls_cache_user_get( $user_id, 'awards-given-formatted' );
+		$cache_key = 'awards-given-formatted-' . md5( $width . $height );
+
+		$cache = ws_ls_cache_user_get( $user_id, $cache_key );
 
 		if ( true === is_array( $cache ) ) {
 			return $cache;
@@ -234,12 +236,37 @@
 
 		$awards = ws_ls_awards_db_given_get( $user_id );
 
-		ws_ls_cache_user_set( $user_id, 'awards-given-formatted', $awards );
+		foreach ( $awards as &$award ) {
+
+			$photo_src = ws_ls_photo_get( $award['badge'], $width, $height);
+
+			if ( false === empty( $photo_src ) ) {
+				$award = array_merge( $photo_src, $award);
+			} else {
+
+				// If no badge, use a dummy placeholder
+				$placeholder = plugins_url( '../../assets/img/badge-placeholder.png', dirname(__FILE__) );
+				$award['thumb'] = sprintf( '<img src="%s" />', $placeholder );
+				$award['full'] = $placeholder;
+				$award['no-badge'] = true;
+			}
+
+			$award['display-text'] = $award['title'];
+		}
+
+		ws_ls_cache_user_set( $user_id, $cache_key, $awards );
 
 		return $awards;
 
 	}
 
+	/**
+	 * Render badges for awards issued to the user
+	 *
+	 * @param $user_defined_arguments
+	 *
+	 * @return string
+	 */
 	function ws_ls_awards_render_badges( $user_defined_arguments ) {
 
 		if( false === WS_LS_IS_PRO_PLUS ) {
@@ -259,17 +286,19 @@
 
 		    $html .= '<div class="ws-ls-badge-collection">';
 
-	//echo print_r($awards, true);
+			$placeholder = plugins_url( '../../assets/img/badge-placeholder-transparent.png', dirname(__FILE__) );
+
 			foreach ( $awards as $award ) {
 
-			    $image = ws_ls_photo_get( $award['badge'], 100 );
+			    $image = ws_ls_photo_get( $award['badge'], 100, 100 );
 
 				$html .= sprintf('<div>
+									<p>%s</p>
                                     %s
-                                    <span>%s</span>
                                   </div>',
-                                    ( false === empty( $image['thumb'] ) ) ? $image['thumb'] : '',
-                                    $award['title']
+									$award['title'],
+                                    ( false === empty( $image['thumb'] ) ) ? $image['thumb'] : '<img src="' . esc_url( $placeholder ) . '" width="100" height="100" />'
+
                 );
 			}
 
@@ -283,17 +312,68 @@
 
 	}
 
+	/**
+	 * Render a tile grid of all awards
+	 *
+	 * @param $user_defined_arguments
+	 *
+	 * @return string
+	 */
+	function ws_ls_awards_shortcode_gallery( $user_defined_arguments ) {
 
-//
-//
-//    function t() {
-//
-//    	if ( is_admin() ) {
-//    	//	return;
-//	    }
-//
-//print_r( ws_ls_awards_to_give( 1, 'add') );
-//
-//        die;
-//    }
-//    add_action('init' , 't');
+		if( false === WS_LS_IS_PRO_PLUS ) {
+			return '';
+		}
+
+		if ( false === is_array( $user_defined_arguments ) ) {
+			$user_defined_arguments = [];
+		}
+
+		$user_defined_arguments[ 'source' ] = 'awards';
+		$user_defined_arguments[ 'mode' ] = 'tilesgrid';
+
+		return ws_ls_photos_shortcode_gallery( $user_defined_arguments );
+	}
+	add_shortcode('wlt-awards', 'ws_ls_awards_shortcode_gallery');
+
+	/**
+	 * Display latest award image
+	 *
+	 * @param $user_defined_arguments
+	 *
+	 * @return string
+	 */
+	function ws_ls_awards_shortcode_latest( $user_defined_arguments ) {
+
+		if( false === WS_LS_IS_PRO_PLUS ) {
+			return '';
+		}
+
+		$arguments = shortcode_atts([
+			'message' => '',
+			'user-id' => get_current_user_id(),
+			'height' => 200,
+			'width' => 200,
+		], $user_defined_arguments );
+
+		$awards = ws_ls_awards_previous_awards( $arguments['user-id'], $arguments['width'], $arguments['height'] );
+
+		if ( false === empty( $awards[0]['thumb'] ) ) {
+			return sprintf('<div class="ws-ls-award-latest-img">%s</div>', $awards[0]['thumb'] ) ;
+		} elseif ( false === empty( $awards[0]['title'] ) ) {
+			return sprintf('<div class="ws-ls-award-latest-text">%s</div>', esc_html( $awards[0]['title'] ) ) ;
+		}
+
+		return ( false === empty( $arguments['message'] ) ) ? esc_html( $arguments['message'] ) : '';
+
+	}
+	add_shortcode('wlt-award-latest', 'ws_ls_awards_shortcode_latest');
+
+/**
+	 * Are email notifications enabled for rewards?
+	 *
+	 * @return bool
+	 */
+	function ws_ls_awards_email_notifications_enabled() {
+		return 'y' === get_option('ws-ls-awards-email-notifications', false ) ? true : false;
+	}

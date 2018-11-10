@@ -153,11 +153,11 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 <<<<<<< HEAD
 //todo: Add fields for add to update and add to add
-//todo: Happy awards is for pro? or should it be PRo plus?
+
 // todo: update features / documentations
 // todo: allow disable of all emails
 // todo: minify admin.js and admin.css
-// test not broken custom photo fields
+
 // add awards mysql tables to missing table checker tool
 // create a "clear all awards given" on help page?
 // quick review with wp_debug on
@@ -166,8 +166,9 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 = 7.0 =
 
-* New Feature: Awards and Badges!
-* Set awards for: Change in BMI, Weight Gain / Loss from start and Percentage of weight lost from start.
+* New Feature: Pro Plus: Awards and Badges! Set awards for: BMI Change, BMI Equals, Weight Gain / Loss from start and Percentage of weight lost from start.
+* Improvement: Caching can now be disabled in Settings.
+* Improvement: Cache now cleared with each release (based upon version number).
 
 = 6.1.1 =
 

@@ -230,7 +230,12 @@ function ws_ls_awards_add_update_page() {
                                                 <label for="award-badge-yeken"><?php echo __('Award Badge', WE_LS_SLUG); ?></label>
                                             </div>
                                             <div class="ws-ls-cell">
-                                                <?php echo ws_ls_meta_fields_form_field_photo([ 'field_name' => '', 'mandatory' => 1], $award['badge'], 'award-badge-yeken' ); ?>
+                                                <?php
+                                                    $value = ( false === empty( $award['badge'] ) ) ? $award['badge'] : NULL;
+
+                                                    echo ws_ls_meta_fields_form_field_photo([ 'field_name' => '', 'mandatory' => 1], $value, 'award-badge-yeken' );
+
+                                                ?>
                                             </div>
                                         </div>
                                         <div class="ws-ls-row">
