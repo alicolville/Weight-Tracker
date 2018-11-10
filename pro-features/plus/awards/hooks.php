@@ -184,6 +184,10 @@
      */
     function ws_ls_awards_log_award( $weight_object, $weight_award, $info ) {
 
+	    if ( false === WS_LS_IS_PRO_PLUS ) {
+		    return;
+	    }
+
         if ( false === empty( $info['user-id'] ) && false === empty( $weight_award['title'] ) ) {
 
 	        $user_info = get_userdata(  $info['user-id'] );
@@ -204,6 +208,15 @@
 	 * @param $info
 	 */
     function ws_ls_awards_send_email( $weight_object, $award, $info ) {
+
+	    if ( false === WS_LS_IS_PRO_PLUS ) {
+		    return;
+	    }
+
+    	// Email notifications enabled for awards?
+	    if ( false === ws_ls_awards_email_notifications_enabled() ) {
+	    	return;
+	    }
 
         // Email not to be sent!
         if ( 2 !== (int) $award['send_email'] ) {
@@ -244,7 +257,7 @@
 	        }
         }
     }
-    add_action( 'wlt-award-given', 'ws_ls_awards_send_email', 10, 3 );
+
 
 	/**
 		AJAX: Fetch all awards for main list
