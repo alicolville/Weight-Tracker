@@ -85,20 +85,6 @@ function ws_ls_settings_page() {
                                                         ws_ls_display_pro_upgrade_notice();
                                                     }
                                                 ?>
-
-                                                <h3><?php echo __( 'Caching' , WE_LS_SLUG); ?></h3>
-                                                <table class="form-table">
-                                                    <tr>
-                                                        <th scope="row"><?php echo __( 'Enable Caching?' , WE_LS_SLUG); ?></th>
-                                                        <td>
-                                                            <select id="ws-ls-caching" name="ws-ls-caching">
-                                                                <option value="yes" <?php selected( get_option('ws-ls-caching'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG); ?></option>
-                                                                <option value="no" <?php selected( get_option('ws-ls-caching'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG); ?></option>
-                                                            </select>
-                                                            <p><?php echo __('If enabled, additional caching will be performed to reduce database queries. It is highly recommended that this remains enabled and only disabled for testing or to enable other caching mechanisms.', WE_LS_SLUG); ?></p>
-                                                        </td>
-                                                    </tr>
-                                                </table>
                                                 <h3><?php echo __( 'Default units / formats to be used by plugin' , WE_LS_SLUG); ?></h3>
 												<table class="form-table">
 													<tr>
@@ -668,8 +654,7 @@ function ws_ls_register_settings(){
 
     register_setting( 'we-ls-options-group', 'ws-ls-units' );
     register_setting( 'we-ls-options-group', 'ws-ls-allow-targets' );
-	register_setting( 'we-ls-options-group', 'ws-ls-caching' );
-	register_setting( 'we-ls-options-group', 'ws-ls-allow-points' );
+    register_setting( 'we-ls-options-group', 'ws-ls-allow-points' );
     register_setting( 'we-ls-options-group', 'ws-ls-target-colour' );
     register_setting( 'we-ls-options-group', 'ws-ls-line-fill-colour' );
     register_setting( 'we-ls-options-group', 'ws-ls-line-colour' );

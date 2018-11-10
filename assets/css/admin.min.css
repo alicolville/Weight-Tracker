@@ -179,7 +179,6 @@ HEX: #f7786b
 .ws-ls-label-top {
     vertical-align: top;
 }
-
 /*
     Tables with div
  */
@@ -224,12 +223,9 @@ HEX: #f7786b
 }
 .ws-ls-badge-collection div {
     display: table-cell;
-    display: inline-block;
-    text-align: center;
-    margin-right: 20px;
+
 }
-.ws-ls-badge-collection p {
+.ws-ls-badge-collection span {
     clear: left;
     font-size: 12px;
-    margin-top: 0px;
 }

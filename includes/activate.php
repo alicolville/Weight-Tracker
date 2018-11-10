@@ -121,18 +121,6 @@
 
 		dbDelta( $sql );
 
-		$table_name = $wpdb->prefix . WE_LS_EMAIL_TABLENAME;
-
-		$sql = "CREATE TABLE $table_name (
-				id mediumint(9) NOT NULL AUTO_INCREMENT,
-				slug varchar(10) NOT NULL,
-				subject varchar(40) NOT NULL,
-				email text NOT NULL,
-				UNIQUE KEY id (id)
-		) $charset_collate;";
-
-		dbDelta( $sql );
-
 	}
     add_action('ws-ls-rebuild-database-tables', 'ws_ls_create_mysql_tables');
 

@@ -60,20 +60,6 @@ function ws_ls_awards_activate() {
     // Only run this when the plugin version has changed
     if( true === update_option('ws-ls-awards-db-number', WE_LS_DB_VERSION )) {
         ws_ls_awards_create_mysql_tables();
-
-        // Insert the Award email template
-        if ( false === ws_ls_emailer_get('award') ) {
-
-        	ws_ls_emailer_add( 'award', 'You\'ve received an award!', '<center>
-												<h1>Well Done!</h1>
-												<p>You have just won an award for your hard work: <strong>{title}</strong></p>
-											</center>
-											{badge}
-											{custom_message}'
-	        );
-
-        }
-
     }
 }
 add_action( 'admin_init', 'ws_ls_awards_activate' );
