@@ -23,7 +23,7 @@
                             <h3 class="hndle"><span><?php echo __('Awards', WE_LS_SLUG); ?></span></h3>
                             <div style="padding: 0px 15px 0px 15px">
 
-                                <p><?php echo __('TODO', WE_LS_SLUG); ?>
+                                <p><?php echo __('Issue awards to your user\'s for meeting certain goals.' , WE_LS_SLUG); ?>
                                                         <a href="https://weight.yeken.uk/awards/" target="_blank" rel="noopener"><?php echo __('Read more about Awards', WE_LS_SLUG); ?></a>
                                                         </p>
 

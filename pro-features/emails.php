@@ -2,6 +2,12 @@
 
 defined('ABSPATH') or die("Jog on!");
 
+/*
+ *
+ * TODO: Refactor this file to use new email manager code
+ *
+ */
+
 function ws_ls_email_notification($type, $weight_data) {
 
 	if(!WE_LS_EMAIL_ENABLE) {

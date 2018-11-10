@@ -96,6 +96,38 @@ function ws_ls_help_page() {
                         </div>
 					<?php endif; ?>
 
+                    <div class="postbox">
+                        <h3 class="hndle"><span><?php echo __( 'Admin Tools', WE_LS_SLUG); ?> </span></h3>
+                        <div style="padding: 0px 15px 0px 15px">
+                            <p>
+                                <?php
+
+                                if ( true === ws_ls_awards_is_enabled() ) {
+
+                                   if ( true === isset( $_GET['deleteallawards'] )) {
+
+                                       ws_ls_awards_delete_all_previously_given();
+
+                                       echo '<p> - ' . __('Deleted all previously issued awards', WE_LS_SLUG ) . '.</p>';
+                                   }
+
+                                   printf('<a class="button awards-confirm" href="%1$s" >%2$s</a></p>',
+                                       esc_url( admin_url( 'admin.php?page=ws-ls-help&deleteallawards=y') ),
+                                       __('Delete all issued awards', WE_LS_SLUG)
+                                   );
+
+                                }
+
+                                ?>
+
+                            <?php
+
+
+
+                            ?>
+                        </div>
+                    </div>
+
                         <div class="postbox">
                             <h3 class="hndle"><span><?php echo __('Weight Tracker Debug Log', WE_LS_SLUG); ?> </span></h3>
                             <div style="padding: 0px 15px 0px 15px">
@@ -131,5 +163,13 @@ function ws_ls_help_page() {
 
 </div> <!-- .wrap -->
 <?php
+
+    echo ws_ls_create_dialog_jquery_code(__('Are you sure?', WE_LS_SLUG),
+        __('Are you sure you wish to remove all issued awards?', WE_LS_SLUG) . '<br /><br />',
+        'awards-confirm');
+
 }
+
+
+
 ?>

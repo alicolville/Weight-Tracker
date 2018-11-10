@@ -210,6 +210,23 @@
 	}
 
     /**
+     * Delete all existing given awards
+     *
+     * @return bool     true if success
+     */
+    function ws_ls_awards_delete_all_previously_given( ) {
+
+        if ( false === is_admin() ) {
+            return;
+        }
+
+        global $wpdb;
+
+        $wpdb->query( 'TRUNCATE TABLE ' . $wpdb->prefix . WE_LS_MYSQL_AWARDS_GIVEN );
+
+    }
+
+    /**
      * Return data formats
      *
      * @param $data
