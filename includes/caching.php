@@ -76,9 +76,8 @@ function ws_ls_cache_user_delete($user_id) {
 function ws_ls_get_cache($key) {
 
     if( true === ws_ls_cache_is_enabled() ) {
-    	echo 'loading from cache';
-      $key = ws_ls_generate_cache_key($key);
-      return get_transient($key);
+        $key = ws_ls_generate_cache_key($key);
+        return get_transient($key);
     }
 
     return false;
@@ -135,12 +134,12 @@ function ws_ls_delete_cache_for_given_user($user_id = false)
 		$user_id = intval( $user_id );
 
 		$sql = "Delete FROM  $wpdb->options
-				WHERE option_name LIKE '%transient_" . WE_LS_SLUG . $user_id ."%'";
+				WHERE option_name LIKE '%transient_" . WE_LS_SLUG . WE_LS_CURRENT_VERSION . $user_id ."%'";
 
 		$wpdb->query($sql);
 
 		$sql = "Delete FROM  $wpdb->options
-				WHERE option_name LIKE '%transient_timeout_" . WE_LS_SLUG . $user_id ."%'";
+				WHERE option_name LIKE '%transient_timeout_" . WE_LS_SLUG . $user_id . WE_LS_CURRENT_VERSION . "%'";
 
 		$wpdb->query($sql);
 

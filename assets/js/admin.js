@@ -120,23 +120,24 @@ jQuery( document ).ready(function ($) {
     // Show / hide additional fields on meta fields add / update
     function ws_ls_awards_show_additional() {
 
-        var meta_field_ids = [ 1, 2, 3, 4 ];
+        var award_ids = [ 'bmi', 'bmi-equals', 'weight', 'weight-percentage' ];
 
-        var value = $('#field_type').val();
+        var value = $('#category').val();
 
-        for ( $i = 0; $i < meta_field_ids.length; $i++ ) {
+        for ( $i = 0; $i < award_ids.length; $i++ ) {
 
-            if ( value == meta_field_ids[ $i ] ) {
-                $('#ws-ls-meta-fields-additional-' + meta_field_ids[ $i ] ).removeClass( 'ws-ls-hide' );
+            if ( value == award_ids[ $i ] ) {
+                $('#ws-ls-awards-additional-' + award_ids[ $i ] ).removeClass( 'ws-ls-hide' );
+                $('.hide-' + award_ids[ $i ] ).addClass( 'ws-ls-hide' );
             } else {
-                $('#ws-ls-meta-fields-additional-' + meta_field_ids[ $i ] ).addClass( 'ws-ls-hide' );
+                $('#ws-ls-awards-additional-' + award_ids[ $i ] ).addClass( 'ws-ls-hide' );
+                $('.hide-' + award_ids[ $i ] ).removeClass( 'ws-ls-hide' );
             }
 
         }
-
     }
 
-    $( "#field_type" ).change(function() {
+    $( "#ws-ls-awards-form #category" ).change(function() {
         ws_ls_awards_show_additional();
     });
 

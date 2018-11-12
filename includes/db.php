@@ -745,6 +745,23 @@ function ws_ls_log_all() {
 }
 
 /**
+ * Delete all log entries
+ *
+ * @return bool     true if success
+ */
+function ws_ls_log_delete_all( ) {
+
+    if ( false === is_admin() ) {
+        return;
+    }
+
+    global $wpdb;
+
+    $wpdb->query( 'TRUNCATE TABLE ' . $wpdb->prefix . WE_LS_LOG_TABLENAME );
+
+}
+
+/**
  * Delete all log entries older than x days
  *
  * @return mixed

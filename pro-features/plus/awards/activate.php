@@ -59,6 +59,7 @@ function ws_ls_awards_activate() {
 
     // Only run this when the plugin version has changed
     if( true === update_option('ws-ls-awards-db-number', WE_LS_DB_VERSION )) {
+
         ws_ls_awards_create_mysql_tables();
 
         // Insert the Award email template

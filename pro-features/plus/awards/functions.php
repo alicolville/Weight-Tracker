@@ -369,7 +369,7 @@
 	}
 	add_shortcode('wlt-award-latest', 'ws_ls_awards_shortcode_latest');
 
-/**
+    /**
 	 * Are email notifications enabled for rewards?
 	 *
 	 * @return bool

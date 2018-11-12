@@ -11,7 +11,7 @@ function ws_ls_settings_page() {
 	$disable_if_not_pro_class = (WS_LS_IS_PRO) ? '' : 'ws-ls-disabled';
     $disable_if_not_pro_plus_class = (WS_LS_IS_PRO_PLUS) ? '' : 'ws-ls-disabled-pro-plus';
 
-  	$clear_cache = (isset($_GET['settings-updated']) && 'true' == $_GET['settings-updated']) ? true : false;
+  	$clear_cache = ( isset($_GET['settings-updated']) && 'true' == $_GET['settings-updated'] ) ? true : false;
 
 	if ( true === is_admin() && false === empty( $_GET['recreatetables'] ) ) {
 

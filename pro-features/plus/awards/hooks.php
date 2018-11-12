@@ -218,12 +218,13 @@
 	    	return;
 	    }
 
+
         // Email not to be sent!
         if ( 2 !== (int) $award['send_email'] ) {
             return;
         }
 
-	    $email_template = ws_ls_emailer_get( 'award ');
+   	    $email_template = ws_ls_emailer_get( 'award ');
 
         if ( false === empty( $email_template ) ) {
 
@@ -257,7 +258,7 @@
 	        }
         }
     }
-
+    add_action( 'wlt-award-given', 'ws_ls_awards_send_email', 10, 3 );
 
 	/**
 		AJAX: Fetch all awards for main list

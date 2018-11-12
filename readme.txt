@@ -151,19 +151,6 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 == Changelog ==
 
-<<<<<<< HEAD
-//todo: Add fields for add to update and add to add
-
-// todo: update features / documentations
-// todo: allow disable of all emails
-// todo: minify admin.js and admin.css
-
-// add awards mysql tables to missing table checker tool
-// create a "clear all awards given" on help page?
-// quick review with wp_debug on
-// check the missing translatable strings
-// minifiy data.footable
-
 = 7.0 =
 
 * New Feature: Pro Plus: Awards and Badges! Set awards for: BMI Change, BMI Equals, Weight Gain / Loss from start and Percentage of weight lost from start.

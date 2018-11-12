@@ -184,18 +184,19 @@ function ws_ls_delete_data_for_user($user_id = false) {
 }
 
 /* Admin tool to check the relevant tables exist for this plugin */
-function ws_ls_admin_check_mysql_tables_exist()
-{
+function ws_ls_admin_check_mysql_tables_exist() {
+
     $error_text = '';
     global $wpdb;
 
-    $tables_to_check = array(
-                            $wpdb->prefix . WE_LS_TARGETS_TABLENAME,
+    $tables_to_check = [    $wpdb->prefix . WE_LS_TARGETS_TABLENAME,
                             $wpdb->prefix . WE_LS_TABLENAME,
                             $wpdb->prefix . WE_LS_USER_PREFERENCES_TABLENAME,
                             $wpdb->prefix . WE_LS_MYSQL_META_FIELDS,
-                            $wpdb->prefix . WE_LS_MYSQL_META_ENTRY
-                        );
+                            $wpdb->prefix . WE_LS_MYSQL_META_ENTRY,
+                            $wpdb->prefix . WE_LS_MYSQL_AWARDS,
+                            $wpdb->prefix . WE_LS_MYSQL_AWARDS_GIVEN
+                       ];
 
     // Check each table exists!
     foreach($tables_to_check as $table_name) {
