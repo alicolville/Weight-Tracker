@@ -18,6 +18,14 @@
                             if ( false === ws_ls_awards_is_enabled() ) {
                                 ws_ls_display_pro_upgrade_notice();
                             }
+
+                        // Save email notification preferences
+                        update_option( 'ws-ls-awards-email-notifications', ( false === empty( $_GET['email-notifications'] ) && 'y' === $_GET['email-notifications'] ) ? 'y' : 'n' );
+
+                        $emails_enabled = ws_ls_awards_email_notifications_enabled();
+
+                        $url = admin_url('admin.php?page=ws-ls-awards' );
+
                         ?>
                         <div class="postbox">
                             <h3 class="hndle"><span><?php echo __('Awards', WE_LS_SLUG); ?></span></h3>
@@ -29,16 +37,12 @@
                                             <p><?php echo __('Issue awards to your user\'s for meeting certain goals.' , WE_LS_SLUG); ?>
                                                 <a href="https://weight.yeken.uk/awards/" target="_blank" rel="noopener"><?php echo __('Read more about Awards', WE_LS_SLUG); ?></a>
                                             </p>
+                                            <?php if ( false === $emails_enabled ): ?>
+                                                <p class="ws-ls-validation-error"><strong><?php echo __('Emails Disabled', WE_LS_SLUG); ?></strong>: <?php echo __('Emails will not be sent for email enabled awards. This allows you to test awards without emails being sent. Use the button to the right enable them', WE_LS_SLUG); ?>.</p>
+                                            <?php endif; ?>
                                         </div>
                                         <div class="ws-ls-cell" style="text-align: right">
                                             <?php
-
-                                                // Save email notification preferences
-                                                update_option( 'ws-ls-awards-email-notifications', ( false === empty( $_GET['email-notifications'] ) && 'y' === $_GET['email-notifications'] ) ? 'y' : 'n' );
-
-                                                $emails_enabled = ws_ls_awards_email_notifications_enabled();
-
-                                                $url = admin_url('admin.php?page=ws-ls-awards' );
 
                                                 if ( true === $emails_enabled ) {
                                                     $qs_value = 'n';
@@ -51,13 +55,14 @@
                                                 $url = add_query_arg( 'email-notifications', $qs_value, $url);
 
                                                 printf('<p>
-                                                            <a class="button-secondary" href="%1$s">
+                                                            <a class="button-secondary" href="%1$s" %3$s>
                                                                 <i class="fa fa-envelope"></i>
                                                                 %2$s
                                                             </a>
                                                         </p>',
                                                         esc_url( $url ),
-                                                        $button_text
+                                                        $button_text,
+                                                        ( false === $emails_enabled ) ? 'style="color:red"' : ''
                                                 );
 
                                             ?>
