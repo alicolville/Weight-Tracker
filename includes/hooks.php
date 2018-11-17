@@ -127,7 +127,7 @@
 		// Include relevant JS for admin "Manage User data" pages
         if(false === empty($_GET['page']) && 'ws-ls-data-home' == $_GET['page'] &&
             false === empty($_GET['mode']) && 'user-settings' == $_GET['mode']) {
-		    var_dump('die');
+
 			wp_enqueue_script('ws-ls-admin-user-pref', plugins_url( '../assets/js/admin.user-preferences' . 	$minified . '.js', __FILE__ ), array('jquery'), WE_LS_CURRENT_VERSION);
 			wp_localize_script('ws-ls-admin-user-pref', 'ws_ls_user_pref_config', ws_ls_admin_config());
 		}
@@ -154,7 +154,7 @@
 		// CSS
 		wp_enqueue_style('wlt-style', plugins_url( '../assets/css/ws-ls' . 	$minified . '.css', __FILE__ ), array(), WE_LS_CURRENT_VERSION);
 		wp_enqueue_style('jquery-style', plugins_url( '../assets/css/jquery-ui.min.css', __FILE__ ), array(), WE_LS_CURRENT_VERSION);
-;
+
 		// JavaScript
 		wp_enqueue_script('jquery-ui-datepicker');
 		wp_enqueue_script('jquery-validate',plugins_url( '../assets/js/jquery.validate.min.js', __FILE__ ), array('jquery'), WE_LS_CURRENT_VERSION);

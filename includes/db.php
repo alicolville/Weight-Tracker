@@ -476,19 +476,22 @@ function ws_ls_set_user_preferences($in_admin_area, $fields = [])
  *
  * @param $field
  * @param $value
+ * @param $user_id
  * @return bool
  */
-function ws_ls_set_user_preference( $field, $value ) {
+function ws_ls_set_user_preference( $field, $value, $user_id = NULL ) {
 
     // Ensure we have a value!
     if ( true === empty( $field ) || true === empty( $value ) ) {
         return false;
     }
 
+	$user_id = $user_id ?: get_current_user_id();
+
     global $wpdb;
 
     // Defaults for user preference fields
-    $db_fields = [ $field => $value, 'user_id' => get_current_user_id() ];
+    $db_fields = [ $field => $value, 'user_id' => $user_id ];
 
     // Set data types
     $db_field_types = ws_ls_user_preferences_get_formats( $db_fields );
@@ -521,18 +524,19 @@ function ws_ls_user_preferences_get_formats( $db_fields ) {
     $formats = [];
 
     $lookup = [
-        'user_id' => '%d',
-        'settings' => '%s',
-        'height' => '%d',
-        'activity_level' => '%f',
-        'gender' => '%d',
-        'aim' => '%d',
-        'dob' => '%s'
+			    'activity_level' => '%f',
+			    'aim' => '%d',
+			    'dob' => '%s',
+			    'gender' => '%d',
+			    'height' => '%d',
+		        'settings' => '%s',
+			    'user_group' => '%d',
+			    'user_id' => '%d'
     ];
 
-    $lookup = apply_filters(WE_LS_FILTER_USER_SETTINGS_DB_FORMATS, $lookup);
+    $lookup = apply_filters( WE_LS_FILTER_USER_SETTINGS_DB_FORMATS, $lookup );
 
-    foreach ($db_fields as $key) {
+    foreach ( $db_fields as $key ) {
         if( false === empty($lookup[$key])) {
             $formats[] = $lookup[$key];
         }

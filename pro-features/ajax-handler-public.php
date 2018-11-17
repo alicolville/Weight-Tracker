@@ -53,9 +53,11 @@ function ws_ls_save_preferences_callback()
     $fields['user_id'] = ws_ls_ajax_post_value('user-id');
 
     // Add additional fields to be saved.
-    $fields = apply_filters(WE_LS_FILTER_USER_SETTINGS_SAVE_FIELDS, $fields);
+    $fields = apply_filters( WE_LS_FILTER_USER_SETTINGS_SAVE_FIELDS, $fields );
 
-  	if(true == ws_ls_set_user_preferences($in_admin_area, $fields)){
+    do_action( 'ws-ls-hook-user-preference-save', (int) $fields['user_id'], $in_admin_area, $fields );
+
+  	if( true == ws_ls_set_user_preferences( $in_admin_area, $fields ) ){
     	$ajax_response = 1;
   	}
   	echo $ajax_response;

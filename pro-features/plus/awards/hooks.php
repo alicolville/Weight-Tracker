@@ -218,7 +218,6 @@
 	    	return;
 	    }
 
-
         // Email not to be sent!
         if ( 2 !== (int) $award['send_email'] ) {
             return;

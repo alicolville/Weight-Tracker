@@ -238,7 +238,6 @@ function ws_ls_side_bar_row($row) {
 								$row['th'],
 								$row['td']
 		);
-
 	}
 
 	return '';

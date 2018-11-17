@@ -286,6 +286,7 @@ function ws_ls_data_js_config() {
 					'base-url' => ws_ls_get_link_to_user_data(),
 					'base-url-meta-fields' => ws_ls_meta_fields_base_url(),
 					'base-url-awards' => ws_ls_awards_base_url(),
+					'label-add' =>  __('Add', WE_LS_SLUG),
                     'label-meta-fields-add-button' =>  __('Add Custom Field', WE_LS_SLUG),
 					'label-awards-add-button' =>  __('Add Award', WE_LS_SLUG),
 					'label-confirm-delete' =>  __('Are you sure you want to delete the row?', WE_LS_SLUG),

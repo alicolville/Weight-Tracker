@@ -82,7 +82,9 @@ defined('ABSPATH') or die('Jog on!');
         'includes/shortcode-various.php',
         'includes/save-data.php',
 	    'includes/email-manager.php',
-        'includes/admin-pages/page.settings.php',
+	    'includes/admin-pages/settings/page-settings.php',
+	    'includes/admin-pages/settings/page-settings-generic.php',
+	    'includes/admin-pages/settings/page-settings-groups.php',
         'includes/admin-pages/page.license.php',
         'includes/admin-pages/page.help.php',
         'includes/admin-pages/meta-fields/page-meta-fields.php',
@@ -113,6 +115,7 @@ defined('ABSPATH') or die('Jog on!');
     ];
 
     $pro_files = [
+	    'pro-features/user-groups.php',
         'pro-features/user-preferences.php',
         'pro-features/ajax-handler-public.php',
         'pro-features/ajax-handler-admin.php',

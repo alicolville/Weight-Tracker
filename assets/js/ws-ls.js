@@ -170,7 +170,7 @@ jQuery( document ).ready(function ($) {
             post_data['ws-ls-dob'] = $('#ws-ls-dob').val();
             post_data["action"] = "ws_ls_save_preferences";
 
-            ws_ls_post_data(post_data, ws_ls_user_preference_callback);
+            ws_ls_post_data( post_data, ws_ls_user_preference_callback );
         }
     }
 
