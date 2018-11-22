@@ -42,7 +42,7 @@
 	 */
 	function ws_ls_groups_create_mysql_tables() {
 
-		if( false === update_option('ws-ls-group-version-number', WE_LS_DB_VERSION ) ) {
+		if( false === update_option('ws-ls-grwdwjoup-version-number', WE_LS_DB_VERSION ) ) {
 			return;
 		}
 
@@ -57,7 +57,7 @@
 		$sql = "CREATE TABLE $table_name (
 	                id mediumint(9) NOT NULL AUTO_INCREMENT,
 	                name varchar(40) NOT NULL,
-	                weight_difference float DEFAULT 0 NULL
+	                weight_difference float DEFAULT 0 NULL,
 	                UNIQUE KEY id (id)
 	            ) $charset_collate;";
 
@@ -73,7 +73,6 @@
 	            ) $charset_collate;";
 
 		dbDelta( $sql );
-
 	}
 	add_action('ws-ls-rebuild-database-tables', 'ws_ls_groups_create_mysql_tables');
 	add_action( 'admin_init', 'ws_ls_groups_create_mysql_tables' );
@@ -145,7 +144,7 @@
 				$html .= '</select>';
 
 			} else {
-				$html .= __('None', WE_LS_SLUG ); //todo: add link to area to add groups
+				$html .= __('None', WE_LS_SLUG );
 			}
 
 		}
@@ -498,3 +497,23 @@
 		return __('Group ID not found', WE_LS_SLUG);
 	}
 	add_shortcode( 'wlt-group-weight-difference', 'ws_ls_groups_shortcode' );
+
+    /**
+     * Shortcode to display the user's current group
+     *
+     * @param $user_defined_arguments
+     * @return mixed
+     */
+	function ws_ls_groups_current( $user_defined_arguments ) {
+
+        $arguments = shortcode_atts( [ 'user-id' => 0, 'no-group-text' => __('No Group', WE_LS_SLUG) ], $user_defined_arguments );
+
+        $arguments[ 'user-id'] = ws_ls_force_numeric_argument( $arguments[ 'user-id'], NULL );
+
+        $groups = ws_ls_groups_user( $arguments[ 'user-id'] );
+
+        $group_text = ( false === empty( $groups ) ) ? $groups[ 0 ][ 'name' ] : $arguments[ 'no-group-text' ];
+
+        return esc_html( $group_text );
+    }
+    add_shortcode( 'wlt-group', 'ws_ls_groups_current' );

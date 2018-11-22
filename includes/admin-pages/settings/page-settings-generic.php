@@ -32,7 +32,7 @@ function ws_ls_settings_page_generic() {
 
 	$mysql_table_check = ws_ls_admin_check_mysql_tables_exist();
 
-	if ($mysql_table_check != false): ?>
+	if ( false !== $mysql_table_check ): ?>
 		<div class="error">
 			<p><?php echo $mysql_table_check; ?></p>
  			<p><a href="<?php echo get_permalink() . '?page=ws-ls-settings';  ?>&amp;recreatetables=y"><?php echo __('Rebuild them now', WE_LS_SLUG); ?></a></p>

@@ -195,11 +195,13 @@ function ws_ls_admin_check_mysql_tables_exist() {
                             $wpdb->prefix . WE_LS_MYSQL_META_FIELDS,
                             $wpdb->prefix . WE_LS_MYSQL_META_ENTRY,
                             $wpdb->prefix . WE_LS_MYSQL_AWARDS,
-                            $wpdb->prefix . WE_LS_MYSQL_AWARDS_GIVEN
+                            $wpdb->prefix . WE_LS_MYSQL_AWARDS_GIVEN,
+                            $wpdb->prefix . WE_LS_MYSQL_GROUPS,
+                            $wpdb->prefix . WE_LS_MYSQL_GROUPS_USER
                        ];
 
     // Check each table exists!
-    foreach($tables_to_check as $table_name) {
+    foreach( $tables_to_check as $table_name ) {
 
         $rows = $wpdb->get_row('Show columns in ' . $table_name);
 

@@ -116,6 +116,7 @@ defined('ABSPATH') or die('Jog on!');
 
     $pro_files = [
 	    'pro-features/user-groups.php',
+        'pro-features/user-birthdays.php',
         'pro-features/user-preferences.php',
         'pro-features/ajax-handler-public.php',
         'pro-features/ajax-handler-admin.php',

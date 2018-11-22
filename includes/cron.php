@@ -6,7 +6,7 @@
 
 		$schedules[ WE_LS_CRON_SCHEDULE_WEEKLY ] = array(
 			'interval' => 604800,					// Every Week
-			'display' => 'Weight Loss Tracker Weekly'
+			'display' => 'Weight Tracker Weekly'
 		);
 
 		return $schedules;
@@ -22,7 +22,7 @@
 
 		$existing_license = ws_ls_license();
 
-		ws_ls_license_apply($existing_license);
+		ws_ls_license_apply( $existing_license );
 	}
 	add_action( WE_LS_CRON_NAME, 'ws_ls_licences_cron' );
 
