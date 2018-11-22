@@ -8,7 +8,8 @@ $pro_plus_features = array(
 	__('<strong>Harris Benedict formula</strong>. Shortcodes and extended admin screens to a view a person\'s calorie intake required to maintain and lose weight. For further information on Harris Benedict Formula and how it is calculated visit <a href="' . WE_LS_CALCULATIONS_URL . '" rel="noopener noreferrer" target="_blank">our calculations page</a>.</strong>', WE_LS_SLUG),
 	__('<strong>Recommended calorie intake per meal time</strong>. Shortcodes and extended admin screens to recommend how a person should split their daily calorie intake across meals. For further information on how this is calculated please visit <a href="' . WE_LS_CALCULATIONS_URL . '" rel="noopener noreferrer" target="_blank">our calculations page</a>.</strong>', WE_LS_SLUG),
 	__('<strong>Macronutrients Calculator</strong>. Shortcodes and extended admin screens to recommend how their calorie consumption should be split into fats, carbohydrates and proteins. For further information on the Macronutrients Calculator and how these calculations are performed please visit <a href="' . WE_LS_CALCULATIONS_URL . '" rel="noopener noreferrer" target="_blank">our calculations page</a>.</strong>', WE_LS_SLUG),
-	__('<strong>Additional user preference fields</strong>. Additional user preference fields and shortcodes to display them: Activity Level, Date of Birth and Gender.', WE_LS_SLUG)
+	__('<strong>Additional user preference fields</strong>. Additional user preference fields and shortcodes to display them: Activity Level, Date of Birth and Gender.', WE_LS_SLUG),
+	__('<strong>Awards</strong>. Awards and Badges! Set awards for: BMI Change, BMI Equals, Weight Gain / Loss from start and Percentage of weight lost from start.', WE_LS_SLUG)
 );
 
 $pro_features = array(

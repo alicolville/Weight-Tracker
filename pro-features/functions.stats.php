@@ -22,6 +22,8 @@ function ws_ls_stats_run_cron() {
 		}
 	}
 
+	do_action( 'wlt-hook-stats-running' );
+
 	ws_ls_stats_refresh_summary_stats();
 }
 add_action( WE_LS_CRON_NAME , 'ws_ls_stats_run_cron');

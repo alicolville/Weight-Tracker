@@ -70,7 +70,7 @@
                                     </div>
                                 </div>
 
-                                <table class="table ws-ls-awards-list-ajax" id="awards-list"
+                                <table class="table ws-ls-awards-list-ajax ws-ls-loading-table" id="awards-list"
                                        data-paging="true"
                                        data-filtering="false"
                                        data-sorting="true"

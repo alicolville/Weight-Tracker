@@ -40,6 +40,7 @@ For further information read our documentation:
 * **Recommended calorie intake per meal time**. Shortcodes and extended admin screens to recommend how a person should split their daily calorie intake across meals. For further information on how this is calculated please visit our calculations page.
 * **Macronutrients Calculator**. Shortcodes and extended admin screens to recommend how their calorie consumption should be split into fats, carbohydrates and proteins. For further information on the Macronutrients Calculator and how these calculations are performed please visit our calculations page.
 * **Additional user preference fields**. Additional user preference fields and shortcodes to display them: Activity Level, Date of Birth and Gender.
+* **Awards**. Awards and Badges! Set awards for: BMI Change, BMI Equals, Weight Gain / Loss from start and Percentage of weight lost from start.
 
 = Pro Version =
 
@@ -147,9 +148,12 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 == Changelog ==
 
+// TODO: Document awards and group shortcodes
+
 = 7.0 =
 
 * New Feature: Pro Plus: Awards and Badges! Set awards for: BMI Change, BMI Equals, Weight Gain / Loss from start and Percentage of weight lost from start.
+* New Feature: Pro: Added Groups. You can now group your members.
 * Improvement: Caching can now be disabled in Settings.
 * Improvement: Cache now cleared with each release (based upon version number).
 

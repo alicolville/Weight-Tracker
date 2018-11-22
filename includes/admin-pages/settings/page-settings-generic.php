@@ -225,6 +225,7 @@ function ws_ls_settings_page_generic() {
                                                             <option value="no" <?php selected( get_option('ws-ls-enable-groups'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
                                                         </select>
                                                         <p><?php echo __('Add the ability to place your user\'s into groups.', WE_LS_SLUG)?></p>
+                                                        <br /><p><a href="<?php echo ws_ls_groups_link(); ?>" class="button"><?php echo __( 'Manage User Groups' , WE_LS_SLUG); ?></a></p>
                                                     </td>
                                                 </tr>
                                             </table>

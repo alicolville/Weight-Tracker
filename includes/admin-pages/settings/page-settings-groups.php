@@ -41,7 +41,7 @@
                                 </form>
 
                                 <h4><?php echo __('Existing groups', WE_LS_SLUG); ?></h4>
-                                <table class="ws-ls-settings-groups-list-ajax table" id="groups-list"
+                                <table class="ws-ls-settings-groups-list-ajax table ws-ls-loading-table" id="groups-list"
                                        data-paging="true"
                                        data-filtering="false"
                                        data-sorting="true"

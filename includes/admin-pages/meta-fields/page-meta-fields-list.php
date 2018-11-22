@@ -30,7 +30,7 @@
                                                         </p>
 
 
-                                <table class="ws-ls-meta-fields-list-ajax table" id="meta-fields-list"
+                                <table class="ws-ls-meta-fields-list-ajax table ws-ls-loading-table" id="meta-fields-list"
                                        data-paging="true"
                                        data-filtering="true"
                                        data-sorting="true"

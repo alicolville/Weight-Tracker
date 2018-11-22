@@ -642,6 +642,14 @@ function ws_ls_upgrade_link() {
 }
 
 /**
+ * Return the link for managing Groups page
+ * @return string
+ */
+function ws_ls_groups_link() {
+	return admin_url( 'admin.php?page=ws-ls-settings&mode=groups');
+}
+
+/**
  * Return the link for calculations page
  * @return string
  */
