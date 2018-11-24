@@ -8,8 +8,12 @@
         // Register user stats / license check cron job
         if ( !wp_next_scheduled( WE_LS_CRON_NAME ) ) {
             wp_schedule_event( time(), 'hourly', WE_LS_CRON_NAME );
-            wp_schedule_event( time(), 'daily', 'weight_loss_tracker_daily' );
+
         }
+
+		if ( !wp_next_scheduled( 'weight_loss_tracker_daily' ) ) {
+			wp_schedule_event( time(), 'daily', 'weight_loss_tracker_daily' );
+		}
 
         // Register weekly comms to yeken stats cron job
         if (!wp_next_scheduled(WE_LS_CRON_NAME_YEKEN_COMMS)) {

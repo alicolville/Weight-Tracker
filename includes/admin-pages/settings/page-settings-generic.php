@@ -229,6 +229,20 @@ function ws_ls_settings_page_generic() {
                                                     </td>
                                                 </tr>
                                             </table>
+                                            <h3><?php echo __( 'Birthday Emails' , WE_LS_SLUG); ?></h3>
+                                            <table class="form-table">
+                                                <tr class="<?php echo $disable_if_not_pro_class; ?>">
+                                                    <th scope="row"><?php echo __( 'Enable?' , WE_LS_SLUG); ?></th>
+                                                    <td>
+                                                        <select id="ws-ls-enable-birthdays" name="ws-ls-enable-birthdays">
+                                                            <option value="no" <?php selected( get_option('ws-ls-enable-birthdays'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+                                                            <option value="yes" <?php selected( get_option('ws-ls-enable-birthdays'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+                                                        </select>
+                                                        <p><?php echo __('If enabled, a Happy Birthday email shall be sent to users on their birthday.', WE_LS_SLUG)?></p>
+
+                                                    </td>
+                                                </tr>
+                                            </table>
                                             <h3><?php echo __( 'Advanced' , WE_LS_SLUG); ?></h3>
                                             <table class="form-table">
                                                 <tr>
@@ -700,7 +714,8 @@ function ws_ls_register_settings(){
     register_setting( 'we-ls-options-group', 'ws-ls-fill-under-weight-line-colour' );
 
     // Pro only open
-    if(WS_LS_IS_PRO){
+    if( WS_LS_IS_PRO ){
+
         register_setting( 'we-ls-options-group', 'ws-ls-allow-user-preferences' );
 		register_setting( 'we-ls-options-group', 'ws-ls-about-you-mandatory' );
         register_setting( 'we-ls-options-group', 'ws-ls-chart-type' );
@@ -708,7 +723,12 @@ function ws_ls_register_settings(){
         register_setting( 'we-ls-options-group', 'ws-ls-bezier-curve' );
         register_setting( 'we-ls-options-group', 'ws-ls-point-size' );
         register_setting( 'we-ls-options-group', 'ws-ls-grid-lines' );
+
+	    // Groups
 	    register_setting( 'we-ls-options-group', 'ws-ls-enable-groups' );
+
+	    // Birthdays
+	    register_setting( 'we-ls-options-group', 'ws-ls-enable-birthdays' );
 
         // Measurements
         register_setting( 'we-ls-options-group', 'ws-ls-allow-measurements' );
@@ -737,7 +757,7 @@ function ws_ls_register_settings(){
     }
 
     // Pro Plus
-    if (WS_LS_IS_PRO_PLUS) {
+    if ( WS_LS_IS_PRO_PLUS ) {
         register_setting( 'we-ls-options-group', 'ws-ls-female-cal-cap' );
         register_setting( 'we-ls-options-group', 'ws-ls-male-cal-cap' );
         register_setting( 'we-ls-options-group', 'ws-ls-cal-subtract' );

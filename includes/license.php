@@ -93,14 +93,16 @@ function ws_ls_license_type() {
 /**
 * Validate and apply a license
 **/
-function ws_ls_license_apply($license) {
+function ws_ls_license_apply( $license ) {
 
 	// Validate license
 	$license_result = ws_ls_license_validate($license);
 
 	if(true === $license_result) {
 
-		$license_decoded = ws_ls_license_decode($license);
+		$license_decoded = ws_ls_license_decode( $license );
+
+		ws_ls_log_add( 'license', sprintf( 'Valid License added: %s', $license ) );
 
 		update_option(WS_LS_LICENSE_2, $license);
 		update_option(WS_LS_LICENSE_2_TYPE, $license_decoded['type']);
@@ -108,6 +110,8 @@ function ws_ls_license_apply($license) {
 
 		return true;
 	} else {
+
+		ws_ls_log_add( 'license', sprintf( 'Removed invalid / expired license: %s', $license ) );
 
 		// Remove relevant options from WP
 		delete_option(WS_LS_LICENSE_2);
@@ -121,7 +125,9 @@ function ws_ls_license_apply($license) {
 /**
  * Remove new and old licenses
  */
-function ws_ls_license_remove($type = 'both') {
+function ws_ls_license_remove( $type = 'both' ) {
+
+	ws_ls_log_add( 'license', sprintf( 'License removed: %s', $type ) );
 
     if(true === in_array($type, ['new', 'both'])) {
         delete_option(WS_LS_LICENSE_2);

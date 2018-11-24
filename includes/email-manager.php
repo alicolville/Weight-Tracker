@@ -497,9 +497,12 @@
 
 			$message = ws_ls_emailer_replace_placeholders( $email_template, $placeholders );
 
-			wp_mail( $to,  $subject,  $message, [ 'Content-Type: text/html; charset=UTF-8' ] );
+			$result = wp_mail( $to,  $subject,  $message, [ 'Content-Type: text/html; charset=UTF-8' ] );
 
 			ws_ls_log_add('email-sent', sprintf('To: %s / Subject: %s', $to, $subject ) );
 
+			return $result;
 		}
+
+		return false;
 	}

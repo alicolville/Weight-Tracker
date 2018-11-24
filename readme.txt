@@ -149,6 +149,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 == Changelog ==
 
 // TODO: Document awards and group shortcodes
+// ensure old settings page not on disk
 
 = 7.0 =
 
