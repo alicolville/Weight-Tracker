@@ -117,6 +117,10 @@
 	 */
 	function ws_ls_groups_hooks_user_preferences_form( $html, $user_id ) {
 
+		if ( false === is_admin() ) {
+			return;
+		}
+
 		if ( true === ws_ls_groups_enabled() ) {
 
 			$groups = ws_ls_groups();
