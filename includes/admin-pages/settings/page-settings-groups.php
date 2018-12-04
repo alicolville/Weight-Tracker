@@ -23,7 +23,9 @@
                             <h3 class="hndle"><span><?php echo __('Manage Groups', WE_LS_SLUG); ?></span></h3>
                             <div style="padding: 0px 15px 0px 15px">
 
-                                <p><?php echo __('Add or remove Groups that users can be assigned to.', WE_LS_SLUG); ?></p>
+                                <p><?php echo __('Add or remove Groups that users can be assigned to.', WE_LS_SLUG); ?>
+                                    <a href="https://weight.yeken.uk/groups/" target="_blank" rel="noopener"><?php echo __('Read more about Groups', WE_LS_SLUG); ?></a>
+                                </p>
 
                                 <h4><?php echo __('Add a new group', WE_LS_SLUG); ?></h4>
                                 <?php
@@ -41,6 +43,7 @@
                                 </form>
 
                                 <h4><?php echo __('Existing groups', WE_LS_SLUG); ?></h4>
+
                                 <table class="ws-ls-settings-groups-list-ajax table ws-ls-loading-table" id="groups-list"
                                        data-paging="true"
                                        data-filtering="false"

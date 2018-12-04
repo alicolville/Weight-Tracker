@@ -14,13 +14,16 @@
                 <div id="post-body-content">
 
                     <div class="meta-box-sortables ui-sortable">
-                        <?php
-                            if ( false === ws_ls_awards_is_enabled() ) {
-                                ws_ls_display_pro_upgrade_notice();
-                            }
+                    <?php
+
+                        if ( false === ws_ls_awards_is_enabled() ) {
+                            ws_ls_display_pro_upgrade_notice();
+                        }
 
                         // Save email notification preferences
-                        update_option( 'ws-ls-awards-email-notifications', ( false === empty( $_GET['email-notifications'] ) && 'y' === $_GET['email-notifications'] ) ? 'y' : 'n' );
+                        if ( false === empty( $_GET['email-notifications'] ) )     {
+                            update_option( 'ws-ls-awards-email-notifications',  ( 'y' === $_GET['email-notifications'] ) ? 'y' : 'n' );
+                        }
 
                         $emails_enabled = ws_ls_awards_email_notifications_enabled();
 

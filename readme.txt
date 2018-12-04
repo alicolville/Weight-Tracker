@@ -2,7 +2,7 @@
 Contributors: aliakro
 Tags: weight, loss, lose, helper, bmi, body, mass, index, graph, track, stones, kg, table, data, plot, target, history, pounds, responsive, chart, measurements, cm, centimeters, inches, hip, waist, bicep, thigh
 Requires at least: 4.4.0
-Tested up to: 4.9.8
+Tested up to: 5.0.0
 Stable tag: 7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -42,6 +42,8 @@ For further information read our documentation:
 * **Additional user preference fields**. Additional user preference fields and shortcodes to display them: Activity Level, Date of Birth and Gender.
 * **Awards**. Awards and Badges! Set awards for: BMI Change, BMI Equals, Weight Gain / Loss from start and Percentage of weight lost from start.
 
+[Read more about features](https://weight.yeken.uk/features/ "Read more about features")
+
 = Pro Version =
 
 * **Support for Gravity Forms.** Scan Gravity Form submissions for relevant Weight / Measurement fields and create a weight entry automatically. [Read more](https://weight.yeken.uk/gravity-forms/ "Read more")
@@ -50,8 +52,10 @@ For further information read our documentation:
 * **Measurements.** Support for recording measurements like Hip, Waist, Leg, Bicep, etc. Displayed on charts and tables.
 * **Custom Fields.** Define and ask your user's custom questions on weight entry forms.
 * **Photo Custom Fields**. Add one or more photo fields to your weight entry forms and allow your users to upload photos of their progress. Photos can be viewed, updated and removed by the end user and administrators. Handy shortcodes are provided for displaying galleries, most recent and oldest photo.
+* **Groups**. Define user groups and assign your user's to them. View Weight Difference statistics for the group as a whole.
 * **BMI.** Allows a user to specify their height. Once specified, their BMI is displayed next to each weight entry. There is also a shortcode to render the latest BMI.
 * **Email notifications.** Receive email notifications when a person updates their target or adds / edits a weight.
+* **Birthday Emails**. Automatically send your user's a birthday email (when they have entered a date of birth).
 * **Overall user stats.** Shortcodes that allow you to display the total lost / gained for the community and another to display a league table.
 * **Widgets.** Widgets that allow you to display the graph and quick weight entry form within any widget area.
 * **Chart and form Shortcodes.** That allow you to display the graph and quick weight entry form by placing a shortcode on any post or page.
@@ -66,6 +70,8 @@ For further information read our documentation:
 * **Delete existing entry**. A logged in user will be able to delete or edit an existing weight entry.
 * **Better Tables.**. Data tables in front end and admin will support paging and sorting.
 * **Admin: Extra Settings**. Extra settings to customise the plugin will be added e.g. number of plot points on graph, rows per page, etc.', WE_LS_SLUG)
+
+[Read more about features](https://weight.yeken.uk/features/ "Read more about features")
 
 = Languages support =
 
@@ -148,13 +154,12 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 == Changelog ==
 
-// TODO: Document awards and group shortcodes
-// ensure old settings page not on disk
-
 = 7.0 =
 
-* New Feature: Pro Plus: Awards and Badges! Set awards for: BMI Change, BMI Equals, Weight Gain / Loss from start and Percentage of weight lost from start.
-* New Feature: Pro: Added Groups. You can now group your members.
+* New Feature: Pro Plus: Awards and Badges! Set awards for: BMI Change, BMI Equals, Weight Gain / Loss from start and Percentage of weight lost from start. Read more: https://weight.yeken.uk/awards
+* New Feature: Pro: Added Groups. You can now group your members. https://weight.yeken.uk/groups
+* New Feature: Pro: Birthday Emails. If enabled, automatically send a birthday email to applicable users.
+* Improvement: Ability to clear log with "Clear log" button.
 * Improvement: Caching can now be disabled in Settings.
 * Improvement: Cache now cleared with each release (based upon version number).
 

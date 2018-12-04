@@ -343,7 +343,7 @@
 	 *
 	 * @return string
 	 */
-	function ws_ls_awards_shortcode_latest( $user_defined_arguments ) {
+	function ws_ls_awards_shortcode_recent( $user_defined_arguments ) {
 
 		if( false === WS_LS_IS_PRO_PLUS ) {
 			return '';
@@ -367,7 +367,7 @@
 		return ( false === empty( $arguments['message'] ) ) ? esc_html( $arguments['message'] ) : '';
 
 	}
-	add_shortcode('wlt-award-latest', 'ws_ls_awards_shortcode_latest');
+	add_shortcode('wlt-awards-recent', 'ws_ls_awards_shortcode_recent');
 
     /**
 	 * Are email notifications enabled for rewards?

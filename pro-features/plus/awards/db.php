@@ -19,7 +19,7 @@
         global $wpdb;
 
         $sql = $wpdb->prepare('Select * from ' . $wpdb->prefix . WE_LS_MYSQL_AWARDS_GIVEN . ' g INNER JOIN 
-                                ' . $wpdb->prefix . WE_LS_MYSQL_AWARDS . ' a on g.award_id = a.id where user_id = %d', $user_id);
+                                ' . $wpdb->prefix . WE_LS_MYSQL_AWARDS . ' a on g.award_id = a.id where user_id = %d order by a.category, CAST( a.value as DECIMAL( 10, 5 ) )', $user_id);
 
         $results = $wpdb->get_results( $sql, ARRAY_A );
 
