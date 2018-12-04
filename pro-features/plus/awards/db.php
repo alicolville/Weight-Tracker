@@ -8,9 +8,11 @@
      * @param $user_id
      * @return array
      */
-    function ws_ls_awards_db_given_get( $user_id ) {
+    function ws_ls_awards_db_given_get( $user_id, $order_by = 'value' ) {
 
-        $cache = ws_ls_cache_user_get( $user_id, 'awards-given' );
+        $cache_key = 'awards-given-' . $order_by;
+
+        $cache = ws_ls_cache_user_get( $user_id, $cache_key );
 
         if ( true === is_array( $cache ) ) {
             return $cache;
@@ -19,11 +21,13 @@
         global $wpdb;
 
         $sql = $wpdb->prepare('Select * from ' . $wpdb->prefix . WE_LS_MYSQL_AWARDS_GIVEN . ' g INNER JOIN 
-                                ' . $wpdb->prefix . WE_LS_MYSQL_AWARDS . ' a on g.award_id = a.id where user_id = %d order by a.category, CAST( a.value as DECIMAL( 10, 5 ) )', $user_id);
+                                ' . $wpdb->prefix . WE_LS_MYSQL_AWARDS . ' a on g.award_id = a.id where user_id = %d', $user_id);
+
+        $sql .= ( 'value' === $order_by ) ? ' order by a.category, CAST( a.value as DECIMAL( 10, 5 ) )' : ' order by g.timestamp desc' ;
 
         $results = $wpdb->get_results( $sql, ARRAY_A );
 
-        ws_ls_cache_user_set( $user_id, 'awards-given', $results );
+        ws_ls_cache_user_set( $user_id, $cache_key, $results );
 
         return $results;
     }

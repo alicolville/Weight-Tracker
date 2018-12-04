@@ -222,11 +222,11 @@
 	 * @param null $user_id
 	 *
 	 */
-	function ws_ls_awards_previous_awards( $user_id = NULL, $width = 200, $height = 200 ) {
+	function ws_ls_awards_previous_awards( $user_id = NULL, $width = 200, $height = 200, $order_by = 'value' ) {
 
 		$user_id = $user_id ?: get_current_user_id();
 
-		$cache_key = 'awards-given-formatted-' . md5( $width . $height );
+		$cache_key = 'awards-given-formatted-' . md5( $width . $height . $order_by );
 
 		$cache = ws_ls_cache_user_get( $user_id, $cache_key );
 
@@ -234,7 +234,7 @@
 			return $cache;
 		}
 
-		$awards = ws_ls_awards_db_given_get( $user_id );
+		$awards = ws_ls_awards_db_given_get( $user_id, $order_by );
 
 		foreach ( $awards as &$award ) {
 
@@ -356,7 +356,7 @@
 			'width' => 200,
 		], $user_defined_arguments );
 
-		$awards = ws_ls_awards_previous_awards( $arguments['user-id'], $arguments['width'], $arguments['height'] );
+		$awards = ws_ls_awards_previous_awards( $arguments['user-id'], $arguments['width'], $arguments['height'], 'timestamp' );
 
 		if ( false === empty( $awards[0]['thumb'] ) ) {
 			return sprintf('<div class="ws-ls-award-latest-img">%s</div>', $awards[0]['thumb'] ) ;
