@@ -26,7 +26,7 @@
             // Is user gaining or losing weight?
             $losing_weight = ( $weight_object['difference_from_start_kg'] < 0 );
 
-			$awards = ws_ls_awards_to_give( NULL, $info['mode'], $losing_weight );    // Mode: update or add
+			$awards = ws_ls_awards_to_give( $info['user-id'], $info['mode'], $losing_weight );    // Mode: update or add
 
 			if ( false === empty( $awards ) ) {
 
@@ -40,10 +40,10 @@
 
                     $weight_difference_from_start = absint( $weight_object['difference_from_start_kg'] );
 
-                    foreach ( $awards['awards']['weight'] as $weight_award ) {
+	                foreach ( $awards['awards']['weight'] as $weight_award ) {
 
-                        if ( (int) $weight_award['value'] > $weight_difference_from_start ) {
-                            continue;
+						if ( (int) $weight_award['value'] > $weight_difference_from_start ) {
+	                        continue;
                         }
 
                         if ( ( true === $losing_weight && 'loss' === $weight_award['gain_loss'] ) || ( false === $losing_weight && 'gain' === $weight_award['gain_loss'] )  ) {
@@ -347,3 +347,121 @@
 
 	}
 	add_action( 'wp_ajax_awards_delete', 'ws_ls_award_ajax_delete' );
+
+	/**
+	 * Render a photo gallery of all awards
+	 *
+	 * @param $user_defined_arguments
+	 *
+	 * @return string
+	 */
+	function ws_ls_awards_shortcode_gallery( $user_defined_arguments ) {
+
+		if( false === WS_LS_IS_PRO_PLUS ) {
+			return '';
+		}
+
+		if ( false === is_array( $user_defined_arguments ) ) {
+			$user_defined_arguments = [];
+		}
+
+		$user_defined_arguments[ 'source' ] = 'awards';
+		$user_defined_arguments[ 'mode' ] = 'tilesgrid';
+
+		return ws_ls_photos_shortcode_gallery( $user_defined_arguments );
+	}
+	add_shortcode('wlt-awards', 'ws_ls_awards_shortcode_gallery');
+
+	/**
+	 * Render a grid of all awards
+	 *
+	 * @param $user_defined_arguments
+	 *
+	 * @return string
+	 */
+	function ws_ls_awards_shortcode_grid( $user_defined_arguments ) {
+
+		if( false === WS_LS_IS_PRO_PLUS ) {
+			return '';
+		}
+
+		$arguments = shortcode_atts([
+			'message' => __('No awards', WE_LS_SLUG),
+			'css-class' => '',
+			'user-id' => get_current_user_id(),
+			'thumb-width' => false,
+			'thumb-height' => false,
+			'display-title' => false,
+			'display-badge' => true
+		], $user_defined_arguments );
+
+		$arguments['thumb-width'] = ws_ls_force_dimension_argument( $arguments['thumb-width'] , 150);
+		$arguments['user-id'] = ws_ls_force_numeric_argument( $arguments['user-id'], get_current_user_id() );
+		$arguments['display-badge'] = ws_ls_force_bool_argument( $arguments['display-badge'] );
+		$arguments['display-title'] = ws_ls_force_bool_argument( $arguments['display-title'] );
+
+		// Ensure something is getting displayed!
+		$arguments['display-title'] = ( false === $arguments['display-badge'] && false === $arguments['display-title'] ) ? true : $arguments['display-title'];
+
+		$awards = ws_ls_awards_previous_awards( $arguments['user-id'], $arguments['thumb-width'], $arguments['thumb-height'] );
+
+		if  ( false === empty( $awards ) ) {
+
+			$html = '<div class="ws-ls-grid">';
+
+			foreach ( $awards as $award ) {
+
+				$html .= '<div class="ws-ls-module">';
+
+				if ( true === $arguments['display-badge'] && false === empty( $award['thumb'] ) ) {
+					$html .= sprintf( '%1$s', $award['thumb'] );
+				}
+
+				if ( true === $arguments['display-title'] ) {
+					$html .= sprintf( '<p>%1$s</p>', $award['title'] );
+				}
+
+				$html .= '</div>';
+			}
+
+			$html .= '</div>';
+
+			return $html;
+		}
+
+		return esc_html( $arguments['message'] );
+	}
+	add_shortcode('wlt-awards-grid', 'ws_ls_awards_shortcode_grid');
+
+	/**
+	 * Display latest award image
+	 *
+	 * @param $user_defined_arguments
+	 *
+	 * @return string
+	 */
+	function ws_ls_awards_shortcode_recent( $user_defined_arguments ) {
+
+		if( false === WS_LS_IS_PRO_PLUS ) {
+			return '';
+		}
+
+		$arguments = shortcode_atts([
+			'message' => '',
+			'user-id' => get_current_user_id(),
+			'height' => 200,
+			'width' => 200,
+		], $user_defined_arguments );
+
+		$awards = ws_ls_awards_previous_awards( $arguments['user-id'], $arguments['width'], $arguments['height'], 'timestamp' );
+
+		if ( false === empty( $awards[0]['thumb'] ) ) {
+			return sprintf('<div class="ws-ls-award-latest-img">%s</div>', $awards[0]['thumb'] ) ;
+		} elseif ( false === empty( $awards[0]['title'] ) ) {
+			return sprintf('<div class="ws-ls-award-latest-text">%s</div>', esc_html( $awards[0]['title'] ) ) ;
+		}
+
+		return ( false === empty( $arguments['message'] ) ) ? esc_html( $arguments['message'] ) : '';
+
+	}
+	add_shortcode('wlt-awards-recent', 'ws_ls_awards_shortcode_recent');

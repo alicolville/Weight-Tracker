@@ -180,7 +180,7 @@
                     // Has this award already been awarded more that is allowed for this user?
                     $previous_no_awards = ws_ls_awards_user_times_awarded( $user_id, $award['id'] );
 
-                    if ( $previous_no_awards >= $award['max_awards'] ) {
+                	if ( $previous_no_awards >= $award['max_awards'] ) {
                         continue;
                     }
 
@@ -311,63 +311,6 @@
 		return $html;
 
 	}
-
-	/**
-	 * Render a tile grid of all awards
-	 *
-	 * @param $user_defined_arguments
-	 *
-	 * @return string
-	 */
-	function ws_ls_awards_shortcode_gallery( $user_defined_arguments ) {
-
-		if( false === WS_LS_IS_PRO_PLUS ) {
-			return '';
-		}
-
-		if ( false === is_array( $user_defined_arguments ) ) {
-			$user_defined_arguments = [];
-		}
-
-		$user_defined_arguments[ 'source' ] = 'awards';
-		$user_defined_arguments[ 'mode' ] = 'tilesgrid';
-
-		return ws_ls_photos_shortcode_gallery( $user_defined_arguments );
-	}
-	add_shortcode('wlt-awards', 'ws_ls_awards_shortcode_gallery');
-
-	/**
-	 * Display latest award image
-	 *
-	 * @param $user_defined_arguments
-	 *
-	 * @return string
-	 */
-	function ws_ls_awards_shortcode_recent( $user_defined_arguments ) {
-
-		if( false === WS_LS_IS_PRO_PLUS ) {
-			return '';
-		}
-
-		$arguments = shortcode_atts([
-			'message' => '',
-			'user-id' => get_current_user_id(),
-			'height' => 200,
-			'width' => 200,
-		], $user_defined_arguments );
-
-		$awards = ws_ls_awards_previous_awards( $arguments['user-id'], $arguments['width'], $arguments['height'], 'timestamp' );
-
-		if ( false === empty( $awards[0]['thumb'] ) ) {
-			return sprintf('<div class="ws-ls-award-latest-img">%s</div>', $awards[0]['thumb'] ) ;
-		} elseif ( false === empty( $awards[0]['title'] ) ) {
-			return sprintf('<div class="ws-ls-award-latest-text">%s</div>', esc_html( $awards[0]['title'] ) ) ;
-		}
-
-		return ( false === empty( $arguments['message'] ) ) ? esc_html( $arguments['message'] ) : '';
-
-	}
-	add_shortcode('wlt-awards-recent', 'ws_ls_awards_shortcode_recent');
 
     /**
 	 * Are email notifications enabled for rewards?

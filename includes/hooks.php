@@ -57,8 +57,9 @@
 		$minified = ws_ls_use_minified();
 
 		// CSS
-		if (WE_LS_CSS_ENABLED) {
+		if ( WE_LS_CSS_ENABLED ) {
 			wp_enqueue_style('wlt-style', plugins_url( '../assets/css/ws-ls' . 	$minified . '.css', __FILE__ ), array(), WE_LS_CURRENT_VERSION);
+			wp_enqueue_style('wlt-style-both', plugins_url( '../assets/css/admin-and-public' . 	$minified . '.css', __FILE__ ), array(), WE_LS_CURRENT_VERSION);
 		}
 
 		wp_enqueue_style('jquery-style', plugins_url( '../assets/css/jquery-ui.min.css', __FILE__ ), array(), WE_LS_CURRENT_VERSION);

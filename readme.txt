@@ -162,6 +162,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 * Improvement: Ability to clear log with "Clear log" button.
 * Improvement: Caching can now be disabled in Settings.
 * Improvement: Cache now cleared with each release (based upon version number).
+* Bug fix: Fixed an issue during conversions when a non numeric value was passed.
 
 = 6.1.1 =
 
