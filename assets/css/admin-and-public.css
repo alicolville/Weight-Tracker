@@ -14,8 +14,6 @@
 }
 
 .ws-ls-module {
-    /* Demo-Specific Styles */
-    background: #eaeaea;
     display: flex;
     align-items: center;
     justify-content: center;

@@ -245,8 +245,12 @@
 			} else {
 
 				// If no badge, use a dummy placeholder
-				$placeholder = plugins_url( '../../assets/img/badge-placeholder.png', dirname(__FILE__) );
-				$award['thumb'] = sprintf( '<img src="%s" />', $placeholder );
+				$placeholder = plugins_url( '../../assets/img/badge-placeholder-transparent.png', dirname(__FILE__) );
+				$award['thumb'] = sprintf( '<img src="%s" width="%d" height="%d" />',
+                    esc_url( $placeholder ),
+                    (int) $width,
+                    (int) $height
+                );
 				$award['full'] = $placeholder;
 				$award['no-badge'] = true;
 			}

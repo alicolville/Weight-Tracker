@@ -389,19 +389,13 @@
 			'message' => __('No awards', WE_LS_SLUG),
 			'css-class' => '',
 			'user-id' => get_current_user_id(),
-			'thumb-width' => false,
-			'thumb-height' => false,
-			'display-title' => false,
-			'display-badge' => true
+			'thumb-width' => 150,
+			'thumb-height' => 150
 		], $user_defined_arguments );
 
-		$arguments['thumb-width'] = ws_ls_force_dimension_argument( $arguments['thumb-width'] , 150);
+		$arguments['thumb-width'] = ws_ls_force_dimension_argument( $arguments['thumb-width'] , 150 );
+        $arguments['thumb-height'] = ws_ls_force_dimension_argument( $arguments['thumb-width'] , 150 );
 		$arguments['user-id'] = ws_ls_force_numeric_argument( $arguments['user-id'], get_current_user_id() );
-		$arguments['display-badge'] = ws_ls_force_bool_argument( $arguments['display-badge'] );
-		$arguments['display-title'] = ws_ls_force_bool_argument( $arguments['display-title'] );
-
-		// Ensure something is getting displayed!
-		$arguments['display-title'] = ( false === $arguments['display-badge'] && false === $arguments['display-title'] ) ? true : $arguments['display-title'];
 
 		$awards = ws_ls_awards_previous_awards( $arguments['user-id'], $arguments['thumb-width'], $arguments['thumb-height'] );
 
@@ -410,18 +404,9 @@
 			$html = '<div class="ws-ls-grid">';
 
 			foreach ( $awards as $award ) {
-
-				$html .= '<div class="ws-ls-module">';
-
-				if ( true === $arguments['display-badge'] && false === empty( $award['thumb'] ) ) {
-					$html .= sprintf( '%1$s', $award['thumb'] );
-				}
-
-				if ( true === $arguments['display-title'] ) {
-					$html .= sprintf( '<p>%1$s</p>', $award['title'] );
-				}
-
-				$html .= '</div>';
+				if ( false === empty( $award['badge'] ) ) {
+				    $html .= sprintf( '<div class="ws-ls-module">%1$s</div>', $award['thumb'] );
+                }
 			}
 
 			$html .= '</div>';

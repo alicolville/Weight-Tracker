@@ -426,11 +426,11 @@ function ws_ls_photos_db_count_photos( $user_id = false, $hide_from_shortcodes =
  * @param $height
  * @return bool
  */
-function ws_ls_photo_get($attachment_id, $width = 200, $height = 200, $include_full_url = true) {
+function ws_ls_photo_get( $attachment_id, $width = 200, $height = 200, $include_full_url = true ) {
 
 	$photo['thumb'] = wp_get_attachment_image( $attachment_id, array( $width, $height) );
 
-	if ( false === empty($photo['thumb'])) {
+	if ( false === empty( $photo['thumb'] )) {
 
 		if(true === $include_full_url) {
 			$photo['full'] = wp_get_attachment_url($attachment_id);
