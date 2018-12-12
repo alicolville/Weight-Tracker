@@ -27,7 +27,7 @@
 		if( $yeken_md5 != $local_md5 && true === isset($yeken_data->notice) ) {
     ?>
 		    <div class="notice notice-info is-dismissible" id="ws-ls-admin-notice" data-wsmd5="<?php esc_html_e($yeken_md5); ?>">
-		        <p><strong><?php echo __( 'Weight Loss Tracker', WE_LS_SLUG); ?></strong> - <?php esc_html_e($yeken_data->notice) ?></p>
+		        <p><strong><?php echo __( 'Weight Tracker', WE_LS_SLUG); ?></strong> - <?php esc_html_e($yeken_data->notice) ?></p>
 		    </div>
 	    <?php
 		}

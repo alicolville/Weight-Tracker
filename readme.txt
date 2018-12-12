@@ -30,7 +30,7 @@ Support for US/UK date formats as well as Imperial and Metric measurements.
 
 For further information read our documentation:
 
-[Weight Tracker Website - Shortcode guide](https://weight.yeken.uk/shortcodes "Weight Tracker Website - Shortcode guide")
+[Weight Tracker - Documentation](https://weight.yeken.uk/shortcodes "Weight Tracker - Documentation")
 
 = Pro Plus Version =
 
