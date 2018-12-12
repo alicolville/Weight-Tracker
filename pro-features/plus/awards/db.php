@@ -86,7 +86,7 @@
     function ws_ls_awards_add( $award ) {
 
         if ( false === is_admin() ) {
-            return;
+            return false;
         }
 
         // Ensure we have the expected fields.
@@ -119,7 +119,7 @@
     function ws_ls_awards_update( $award ) {
 
         if ( false === is_admin() ) {
-            return;
+            return false;
         }
 
         // Ensure we have the expected fields.
@@ -156,7 +156,7 @@
     function ws_ls_awards_delete( $id ) {
 
         if ( false === is_admin() ) {
-            return;
+            return false;
         }
 
         global $wpdb;
@@ -183,7 +183,7 @@
     function ws_ls_awards_delete_all_given( $award_id ) {
 
         if ( false === is_admin() ) {
-            return;
+            return false;
         }
 
         global $wpdb;
@@ -221,7 +221,7 @@
     function ws_ls_awards_delete_all_previously_given( ) {
 
         if ( false === is_admin() ) {
-            return;
+            return false;
         }
 
         global $wpdb;

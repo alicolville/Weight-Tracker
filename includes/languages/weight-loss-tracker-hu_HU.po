@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2018-10-17 21:22+0100\n"
-"PO-Revision-Date: 2018-10-22 20:28+0100\n"
+"POT-Creation-Date: 2018-12-12 09:30+0000\n"
+"PO-Revision-Date: 2018-12-12 09:30+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: hu_HU\n"
@@ -20,13 +20,239 @@ msgstr ""
 msgid "Weight Loss Tracker"
 msgstr "Súly csökkenés napló"
 
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:62
-msgid "Add / Edit a Custom Field"
+#: admin-pages/awards/page-awards-add-update.php:97
+msgid "Add / Edit an Award"
 msgstr ""
 
+#: admin-pages/awards/page-awards-add-update.php:101
 #: admin-pages/meta-fields/page-meta-fields-add-update.php:66
 msgid "Please complete all mandatory fields."
 msgstr "Kérjük adja meg az érvényes dátumot"
+
+#: admin-pages/awards/page-awards-add-update.php:109
+msgid "Title"
+msgstr "Cím"
+
+#: admin-pages/awards/page-awards-add-update.php:118
+msgid "Award Type"
+msgstr ""
+
+#: admin-pages/awards/page-awards-add-update.php:131
+msgid ""
+"Awards are decided by comparing the difference between the user's latest "
+"weight and their starting weight."
+msgstr ""
+
+#: admin-pages/awards/page-awards-add-update.php:139
+msgid "Gain or Loss"
+msgstr ""
+
+#: admin-pages/awards/page-awards-add-update.php:144
+msgid "Increase in value"
+msgstr ""
+
+#: admin-pages/awards/page-awards-add-update.php:145
+msgid "Decrease in value"
+msgstr ""
+
+#: admin-pages/awards/page-awards-add-update.php:147
+msgid ""
+"For example, if you wish to award someone for losing 10Kg, you would select "
+"\"Decrease in value\"."
+msgstr ""
+
+#: admin-pages/awards/page-awards-add-update.php:152
+#, fuzzy
+msgid "Weight difference"
+msgstr "Magasság szükséges"
+
+#: admin-pages/awards/page-awards-add-update.php:173 core.php:378
+msgid "Stones"
+msgstr "Stones"
+
+#: admin-pages/awards/page-awards-add-update.php:175
+#: admin-pages/awards/page-awards-add-update.php:186
+#: admin-pages/settings/page-settings-generic.php:110 core.php:379 core.php:382
+msgid "Pounds"
+msgstr "Font"
+
+#: admin-pages/awards/page-awards-add-update.php:191 core.php:14 core.php:83
+#: core.php:212 core.php:386
+msgid "Weight"
+msgstr "Testsúly"
+
+#: admin-pages/awards/page-awards-add-update.php:191
+#: admin-pages/awards/page-awards-add-update.php:192
+#: admin-pages/settings/page-settings-generic.php:108 converters.php:56
+#: core.php:75 core.php:386 functions.php:73 functions.php:96
+msgid "kg"
+msgstr ""
+
+#: admin-pages/awards/page-awards-add-update.php:195
+msgid "The difference in weight from the starting weight."
+msgstr ""
+
+#: admin-pages/awards/page-awards-add-update.php:200
+msgid "BMI Equals"
+msgstr ""
+
+#: admin-pages/awards/page-awards-add-update.php:218
+#, fuzzy, php-format
+#| msgid "Underweight"
+msgid "% from starting weight"
+msgstr "sovány"
+
+#: admin-pages/awards/page-awards-add-update.php:225
+msgid "Specify the percentage difference from the starting weight."
+msgstr ""
+
+#: admin-pages/awards/page-awards-add-update.php:230
+msgid "Award Badge"
+msgstr ""
+
+#: admin-pages/awards/page-awards-add-update.php:243
+msgid "Custom Message"
+msgstr ""
+
+#: admin-pages/awards/page-awards-add-update.php:247
+msgid ""
+"Add a custom message to be inserted into the email. Replaces the "
+"{custom_message} within the email template."
+msgstr ""
+
+#: admin-pages/awards/page-awards-add-update.php:252
+msgid "Apply to new entries?"
+msgstr ""
+
+#: admin-pages/awards/page-awards-add-update.php:257
+#: admin-pages/awards/page-awards-add-update.php:270
+#: admin-pages/awards/page-awards-add-update.php:283
+#: admin-pages/awards/page-awards-add-update.php:296
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:83
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:99
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:154
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:166
+#: admin-pages/settings/page-settings-generic.php:95
+#: admin-pages/settings/page-settings-generic.php:132
+#: admin-pages/settings/page-settings-generic.php:142
+#: admin-pages/settings/page-settings-generic.php:153
+#: admin-pages/settings/page-settings-generic.php:164
+#: admin-pages/settings/page-settings-generic.php:224
+#: admin-pages/settings/page-settings-generic.php:239
+#: admin-pages/settings/page-settings-generic.php:253
+#: admin-pages/settings/page-settings-generic.php:263
+#: admin-pages/settings/page-settings-generic.php:273
+#: admin-pages/settings/page-settings-generic.php:362
+#: admin-pages/settings/page-settings-generic.php:394
+#: admin-pages/settings/page-settings-generic.php:423
+#: admin-pages/settings/page-settings-generic.php:441
+#: admin-pages/settings/page-settings-generic.php:466
+#: admin-pages/settings/page-settings-generic.php:517
+#: admin-pages/settings/page-settings-generic.php:532
+#: admin-pages/settings/page-settings-generic.php:542
+#: admin-pages/settings/page-settings-generic.php:552
+#: admin-pages/settings/page-settings-generic.php:572
+#: admin-pages/settings/page-settings-generic.php:592
+#: admin-pages/settings/page-settings-generic.php:653 functions.php:996
+msgid "Yes"
+msgstr "Igen"
+
+#: admin-pages/awards/page-awards-add-update.php:258
+#: admin-pages/awards/page-awards-add-update.php:271
+#: admin-pages/awards/page-awards-add-update.php:284
+#: admin-pages/awards/page-awards-add-update.php:295
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:83
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:98
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:153
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:165
+#: admin-pages/settings/page-settings-generic.php:96
+#: admin-pages/settings/page-settings-generic.php:133
+#: admin-pages/settings/page-settings-generic.php:143
+#: admin-pages/settings/page-settings-generic.php:154
+#: admin-pages/settings/page-settings-generic.php:163
+#: admin-pages/settings/page-settings-generic.php:225
+#: admin-pages/settings/page-settings-generic.php:238
+#: admin-pages/settings/page-settings-generic.php:252
+#: admin-pages/settings/page-settings-generic.php:262
+#: admin-pages/settings/page-settings-generic.php:272
+#: admin-pages/settings/page-settings-generic.php:363
+#: admin-pages/settings/page-settings-generic.php:393
+#: admin-pages/settings/page-settings-generic.php:424
+#: admin-pages/settings/page-settings-generic.php:442
+#: admin-pages/settings/page-settings-generic.php:465
+#: admin-pages/settings/page-settings-generic.php:516
+#: admin-pages/settings/page-settings-generic.php:533
+#: admin-pages/settings/page-settings-generic.php:543
+#: admin-pages/settings/page-settings-generic.php:553
+#: admin-pages/settings/page-settings-generic.php:571
+#: admin-pages/settings/page-settings-generic.php:591
+#: admin-pages/settings/page-settings-generic.php:652 functions.php:996
+msgid "No"
+msgstr "Nem"
+
+#: admin-pages/awards/page-awards-add-update.php:260
+msgid "Can the award be given when a user adds a new weight entry?."
+msgstr ""
+
+#: admin-pages/awards/page-awards-add-update.php:265
+msgid "Apply to updated entries?"
+msgstr ""
+
+#: admin-pages/awards/page-awards-add-update.php:273
+msgid "Can the award be given when a user updates an existing weight entry?."
+msgstr ""
+
+#: admin-pages/awards/page-awards-add-update.php:278
+msgid "Send Email"
+msgstr ""
+
+#: admin-pages/awards/page-awards-add-update.php:290
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:160
+msgid "Enabled"
+msgstr "Engedélyezés"
+
+#: admin-pages/awards/page-awards-add-update.php:303
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:173 core.php:425
+msgid "Cancel"
+msgstr ""
+
+#: admin-pages/awards/page-awards-add-update.php:306
+#: admin-pages/awards/page-awards-add-update.php:308
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:176
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:178
+msgid "Save"
+msgstr "Mentve!"
+
+#: admin-pages/awards/page-awards-list.php:34
+#: admin-pages/user-data/data-user.php:122
+#: admin-pages/user-data/data-user.php:155
+#: admin-pages/user-data/data-user.php:175 hooks.php:11
+msgid "Awards"
+msgstr ""
+
+#: admin-pages/awards/page-awards-list.php:40
+#, fuzzy
+#| msgid "to save changes to your user's settings"
+msgid "Issue awards to your user's for meeting certain goals."
+msgstr "Felhasználó beállításainak engedélyezése"
+
+#: admin-pages/awards/page-awards-list.php:41
+msgid "Read more about Awards"
+msgstr ""
+
+#: admin-pages/awards/page-awards-list.php:44
+msgid "Emails Disabled"
+msgstr ""
+
+#: admin-pages/awards/page-awards-list.php:44
+msgid ""
+"Emails will not be sent for email enabled awards. This allows you to test "
+"awards without emails being sent. Use the button to the right enable them"
+msgstr ""
+
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:62
+msgid "Add / Edit a Custom Field"
+msgstr ""
 
 #: admin-pages/meta-fields/page-meta-fields-add-update.php:74
 msgid "Field Type"
@@ -39,40 +265,6 @@ msgstr ""
 #: admin-pages/meta-fields/page-meta-fields-add-update.php:82
 msgid "Text"
 msgstr ""
-
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:83
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:99
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:154
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:166
-#: admin-pages/page.settings.php:118 admin-pages/page.settings.php:128
-#: admin-pages/page.settings.php:139 admin-pages/page.settings.php:150
-#: admin-pages/page.settings.php:211 admin-pages/page.settings.php:221
-#: admin-pages/page.settings.php:231 admin-pages/page.settings.php:320
-#: admin-pages/page.settings.php:352 admin-pages/page.settings.php:381
-#: admin-pages/page.settings.php:399 admin-pages/page.settings.php:424
-#: admin-pages/page.settings.php:475 admin-pages/page.settings.php:490
-#: admin-pages/page.settings.php:500 admin-pages/page.settings.php:510
-#: admin-pages/page.settings.php:530 admin-pages/page.settings.php:550
-#: admin-pages/page.settings.php:611
-msgid "Yes"
-msgstr "Igen"
-
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:83
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:98
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:153
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:165
-#: admin-pages/page.settings.php:119 admin-pages/page.settings.php:129
-#: admin-pages/page.settings.php:140 admin-pages/page.settings.php:149
-#: admin-pages/page.settings.php:210 admin-pages/page.settings.php:220
-#: admin-pages/page.settings.php:230 admin-pages/page.settings.php:321
-#: admin-pages/page.settings.php:351 admin-pages/page.settings.php:382
-#: admin-pages/page.settings.php:400 admin-pages/page.settings.php:423
-#: admin-pages/page.settings.php:474 admin-pages/page.settings.php:491
-#: admin-pages/page.settings.php:501 admin-pages/page.settings.php:511
-#: admin-pages/page.settings.php:529 admin-pages/page.settings.php:549
-#: admin-pages/page.settings.php:610
-msgid "No"
-msgstr "Nem"
 
 #: admin-pages/meta-fields/page-meta-fields-add-update.php:84
 msgid "Photo"
@@ -130,19 +322,6 @@ msgstr ""
 msgid "Mandatory"
 msgstr ""
 
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:160
-msgid "Enabled"
-msgstr "Engedélyezés"
-
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:173 core.php:425
-msgid "Cancel"
-msgstr ""
-
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:176
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:178
-msgid "Save"
-msgstr "Mentve!"
-
 #: admin-pages/meta-fields/page-meta-fields-list.php:23 hooks.php:10
 msgid "Custom Fields"
 msgstr ""
@@ -195,36 +374,71 @@ msgid ""
 "with the advice of YeKen)"
 msgstr ""
 
-#: admin-pages/page.help.php:62
-msgid "Error Log"
-msgstr ""
-
-#: admin-pages/page.help.php:68
+#: admin-pages/page.help.php:65
 msgid "Custom Fields: Migrate photos from old system to Custom Fields"
 msgstr ""
 
-#: admin-pages/page.help.php:70
+#: admin-pages/page.help.php:67
 msgid ""
 "This will migrate photos from the old system to the new custom fields. It "
-"will create a custom field with the key \"photo\". Note! It will remove an "
+"will create a custom field with the key \"photo\". Note! It will remove any "
 "existing migrated photos before re-adding them."
 msgstr ""
 
-#: admin-pages/page.help.php:93
+#: admin-pages/page.help.php:90
 msgid "Done. View Log below for further information."
 msgstr ""
 
-#: admin-pages/page.help.php:103
+#: admin-pages/page.help.php:100
+msgid "Admin Tools"
+msgstr ""
+
+#: admin-pages/page.help.php:111 admin-pages/page.help.php:125 core.php:663
+msgid "Done"
+msgstr ""
+
+#: admin-pages/page.help.php:116
+#, fuzzy
+#| msgid "Delete all user data!"
+msgid "Delete all issued awards"
+msgstr "Összes adat törlése"
+
+#: admin-pages/page.help.php:130
+#, fuzzy
+#| msgid "View all entries"
+msgid "Delete all log entries"
+msgstr "View all weeks"
+
+#: admin-pages/page.help.php:139
 msgid "Weight Tracker Debug Log"
 msgstr "Súly csökkenés napló"
 
-#: admin-pages/page.help.php:106
+#: admin-pages/page.help.php:142
 msgid ""
 "Below is a list of the debug information logged by the Weight Tracker plugin "
 "over the last 31 days."
 msgstr ""
 
-#: admin-pages/page.license.php:11 admin-pages/page.settings.php:8
+#: admin-pages/page.help.php:174 admin-pages/page.help.php:178
+#, fuzzy
+#| msgid "Are you sure you?"
+msgid "Are you sure?"
+msgstr "Biztos benne?"
+
+#: admin-pages/page.help.php:175
+#, fuzzy
+#| msgid "Are you sure you wish to remove all user data?"
+msgid "Are you sure you wish to remove all issued awards?"
+msgstr "Biztos törli?"
+
+#: admin-pages/page.help.php:179
+#, fuzzy
+#| msgid "Are you sure you wish to clear your target weight?"
+msgid "Are you sure you wish to clear all log entries?"
+msgstr "Biztos szeretné módosítani a célját?"
+
+#: admin-pages/page.license.php:11
+#: admin-pages/settings/page-settings-generic.php:8
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Nem rendelkezik megfelelő engedéllyel az oldal eléréséhez."
 
@@ -236,7 +450,7 @@ msgstr "A beállítások mentése megtörtént"
 msgid "An error occurred applying your license: "
 msgstr "Hiba történt mentés közben"
 
-#: admin-pages/page.license.php:73 hooks.php:12
+#: admin-pages/page.license.php:73 hooks.php:13
 msgid "Upgrade"
 msgstr "Most!"
 
@@ -416,7 +630,7 @@ msgstr ""
 msgid "Below is a list of the intended features of the Pro version"
 msgstr "Lista a Pro verzió funkcióiról"
 
-#: admin-pages/page.license.php:283 admin-pages/user-data/data-summary.php:183
+#: admin-pages/page.license.php:283 admin-pages/user-data/data-summary.php:203
 msgid "Are you sure you?"
 msgstr "Biztos benne?"
 
@@ -426,115 +640,122 @@ msgid ""
 "cause your user's to lose functionality."
 msgstr ""
 
-#: admin-pages/page.settings.php:38
+#: admin-pages/settings/page-settings-generic.php:38
 msgid "Rebuild them now"
 msgstr "Újraépítés"
 
-#: admin-pages/page.settings.php:60
+#: admin-pages/settings/page-settings-generic.php:60
 msgid " Settings"
 msgstr "Beállítások"
 
-#: admin-pages/page.settings.php:74
+#: admin-pages/settings/page-settings-generic.php:74
 msgid "General"
 msgstr "Általános"
 
-#: admin-pages/page.settings.php:74
+#: admin-pages/settings/page-settings-generic.php:74
 msgid "General settings"
 msgstr "Általános beállítások"
 
-#: admin-pages/page.settings.php:75 license.php:248
+#: admin-pages/settings/page-settings-generic.php:75 license.php:254
 msgid "Pro Plus"
 msgstr ""
 
-#: admin-pages/page.settings.php:75
+#: admin-pages/settings/page-settings-generic.php:75
 msgid "Adjust settings for your Pro Plus features"
 msgstr ""
 
-#: admin-pages/page.settings.php:76 admin-pages/user-data/data-user.php:43
+#: admin-pages/settings/page-settings-generic.php:76
+#: admin-pages/user-data/data-user.php:43
 msgid "Chart"
 msgstr "Diagram"
 
-#: admin-pages/page.settings.php:76
+#: admin-pages/settings/page-settings-generic.php:76
 msgid "Chart styling and config"
 msgstr "Diagram stílus és a config"
 
-#: admin-pages/page.settings.php:77
+#: admin-pages/settings/page-settings-generic.php:77
 msgid "Notifications"
 msgstr ""
 
-#: admin-pages/page.settings.php:77
+#: admin-pages/settings/page-settings-generic.php:77
 msgid "Configure email notifications"
 msgstr ""
 
-#: admin-pages/page.settings.php:78
+#: admin-pages/settings/page-settings-generic.php:78
 msgid "Measurements"
 msgstr "Mérések"
 
-#: admin-pages/page.settings.php:78
+#: admin-pages/settings/page-settings-generic.php:78
 msgid "Allow users to record their measurements"
 msgstr "Lehetővé teszik a használók-hoz feljegyzés a mérés"
 
-#: admin-pages/page.settings.php:79
+#: admin-pages/settings/page-settings-generic.php:79
 msgid "3rd Party"
 msgstr ""
 
-#: admin-pages/page.settings.php:79
+#: admin-pages/settings/page-settings-generic.php:79
 msgid "3rd Party Integrations"
 msgstr ""
 
-#: admin-pages/page.settings.php:88
+#: admin-pages/settings/page-settings-generic.php:89
+msgid "Caching"
+msgstr ""
+
+#: admin-pages/settings/page-settings-generic.php:92
+msgid "Enable Caching?"
+msgstr ""
+
+#: admin-pages/settings/page-settings-generic.php:98
+msgid ""
+"If enabled, additional caching will be performed to reduce database queries. "
+"It is highly recommended that this remains enabled and only disabled for "
+"testing or to enable other caching mechanisms."
+msgstr ""
+
+#: admin-pages/settings/page-settings-generic.php:102
 msgid "Default units / formats to be used by plugin"
 msgstr ""
 
-#: admin-pages/page.settings.php:91
+#: admin-pages/settings/page-settings-generic.php:105
 msgid "Weight Units"
 msgstr "Válasszon mértékegységet"
 
-#: admin-pages/page.settings.php:94 converters.php:56 core.php:75 core.php:386
-#: functions.php:73 functions.php:96
-msgid "kg"
-msgstr ""
-
-#: admin-pages/page.settings.php:95
+#: admin-pages/settings/page-settings-generic.php:109
 msgid "Stones & Pounds"
 msgstr "font"
 
-#: admin-pages/page.settings.php:96 core.php:379 core.php:382
-msgid "Pounds"
-msgstr "Font"
-
-#: admin-pages/page.settings.php:98
+#: admin-pages/settings/page-settings-generic.php:112
 msgid ""
 "You can specify whether to display weights in Kg, Stones & Pounds or just "
 "Pounds. Please note: The graph will be displayed in Pounds if \"Stones & "
 "Pounds\" is selected."
 msgstr "Választhat Kg és Font között."
 
-#: admin-pages/page.settings.php:102
+#: admin-pages/settings/page-settings-generic.php:116
 msgid "UK or US Date format?"
 msgstr "Angol, vagy amerikai dátumformátum?"
 
-#: admin-pages/page.settings.php:105
+#: admin-pages/settings/page-settings-generic.php:119
 msgid "UK (DD/MM/YYYY)"
 msgstr "NN/HH/ÉÉÉÉ"
 
-#: admin-pages/page.settings.php:106
+#: admin-pages/settings/page-settings-generic.php:120
 msgid "US (MM/DD/YYYY)"
 msgstr "HH/NN/ÉÉÉÉ"
 
-#: admin-pages/page.settings.php:108
+#: admin-pages/settings/page-settings-generic.php:122
 msgid "Specify what format dates should be displayed in (i.e. UK or US format)"
 msgstr "Döntse el melyik formátumot használja!"
 
-#: admin-pages/page.settings.php:112
+#: admin-pages/settings/page-settings-generic.php:126
 msgid "User Experience"
 msgstr "Felhasználói élmény"
 
-#: admin-pages/page.settings.php:115
+#: admin-pages/settings/page-settings-generic.php:129
 msgid "Allow target weights?"
 msgstr "Cél súly engedélyezése?"
 
-#: admin-pages/page.settings.php:121
+#: admin-pages/settings/page-settings-generic.php:135
 msgid ""
 "If enabled, a user is allowed to enter a target weight. This will be "
 "displayed as a horizontal bar on the line chart."
@@ -542,11 +763,11 @@ msgstr ""
 "If enabled, a user is allowed to enter a target weight. This will be "
 "displayed as a horizontal bar on the line chart."
 
-#: admin-pages/page.settings.php:125
+#: admin-pages/settings/page-settings-generic.php:139
 msgid "Display BMI in tables?"
 msgstr "BMI megjelenítés táblázatban?"
 
-#: admin-pages/page.settings.php:132
+#: admin-pages/settings/page-settings-generic.php:146
 msgid ""
 "If enabled, BMI values will be displayed alongside weight entries in data "
 "tables."
@@ -554,91 +775,127 @@ msgstr ""
 "Ha engedélyezve van, akkor BMI értékek tömeg tételek adattáblák mellett "
 "jelenik meg."
 
-#: admin-pages/page.settings.php:136
+#: admin-pages/settings/page-settings-generic.php:150
 msgid "Allow user settings"
 msgstr "Felhasználó beállításainak engedélyezése"
 
-#: admin-pages/page.settings.php:142
+#: admin-pages/settings/page-settings-generic.php:156
 msgid ""
 "Allow your users to select their own data units, complete their \"About You"
 "\" fields and remove all their data."
 msgstr ""
 
-#: admin-pages/page.settings.php:146
+#: admin-pages/settings/page-settings-generic.php:160
 msgid "\"About You\" fields mandatory?"
 msgstr ""
 
-#: admin-pages/page.settings.php:152
+#: admin-pages/settings/page-settings-generic.php:166
 msgid ""
 "If User Settings is enabled, should all the \"About You\" (height, activity "
 "level, etc) be mandatory?"
 msgstr ""
 
-#: admin-pages/page.settings.php:157 admin-pages/user-data/data-user.php:72
-#: shortcode-weight-loss-tracker.php:98
+#: admin-pages/settings/page-settings-generic.php:171
+#: admin-pages/user-data/data-user.php:71 shortcode-weight-loss-tracker.php:98
 msgid "Photos"
 msgstr ""
 
-#: admin-pages/page.settings.php:160
+#: admin-pages/settings/page-settings-generic.php:174
 msgid "Max. Photo Size?"
 msgstr ""
 
-#: admin-pages/page.settings.php:182
+#: admin-pages/settings/page-settings-generic.php:196
 msgid "Maximum photo size (in MB) that is allowed to be uploaded. "
 msgstr ""
 
-#: admin-pages/page.settings.php:183
+#: admin-pages/settings/page-settings-generic.php:197
 msgid "This is used as part of Custom Fields."
 msgstr ""
 
-#: admin-pages/page.settings.php:185
+#: admin-pages/settings/page-settings-generic.php:199
 msgid "View Custom Fields"
 msgstr ""
 
-#: admin-pages/page.settings.php:190
+#: admin-pages/settings/page-settings-generic.php:204
 msgid "Permissions"
 msgstr ""
 
-#: admin-pages/page.settings.php:193
+#: admin-pages/settings/page-settings-generic.php:207
 msgid "Who can view and modify user data?"
 msgstr "Megtekintheti és szerkesztheti a meglévő felhasználói adatokat"
 
-#: admin-pages/page.settings.php:196
+#: admin-pages/settings/page-settings-generic.php:210
 msgid "Administrators Only"
 msgstr ""
 
-#: admin-pages/page.settings.php:197
+#: admin-pages/settings/page-settings-generic.php:211
 msgid "Editors and above"
 msgstr ""
 
-#: admin-pages/page.settings.php:198
+#: admin-pages/settings/page-settings-generic.php:212
 msgid "Authors and above"
 msgstr ""
 
-#: admin-pages/page.settings.php:200
+#: admin-pages/settings/page-settings-generic.php:214
 msgid ""
 "Specify the minimum level of user role that maybe view or edit user data."
 msgstr ""
 
-#: admin-pages/page.settings.php:204 shortcode-weight-loss-tracker.php:103
+#: admin-pages/settings/page-settings-generic.php:218
+msgid "Groups"
+msgstr ""
+
+#: admin-pages/settings/page-settings-generic.php:221
+#, fuzzy
+#| msgid "Enable"
+msgid "Enable Groups?"
+msgstr "Engedélyezés"
+
+#: admin-pages/settings/page-settings-generic.php:227
+msgid "Add the ability to place your user's into groups."
+msgstr ""
+
+#: admin-pages/settings/page-settings-generic.php:228
+#, fuzzy
+#| msgid "Manage User Data"
+msgid "Manage User Groups"
+msgstr "Felhasználói adatok kezelése"
+
+#: admin-pages/settings/page-settings-generic.php:232
+msgid "Birthday Emails"
+msgstr ""
+
+#: admin-pages/settings/page-settings-generic.php:235
+#, fuzzy
+#| msgid "Enable"
+msgid "Enable?"
+msgstr "Engedélyezés"
+
+#: admin-pages/settings/page-settings-generic.php:241
+msgid ""
+"If enabled, a Happy Birthday email shall be sent to users on their birthday."
+msgstr ""
+
+#: admin-pages/settings/page-settings-generic.php:246
+#: shortcode-weight-loss-tracker.php:103
 msgid "Advanced"
 msgstr ""
 
-#: admin-pages/page.settings.php:207
+#: admin-pages/settings/page-settings-generic.php:249
 msgid "Disable plugin CSS?"
 msgstr ""
 
-#: admin-pages/page.settings.php:213
+#: admin-pages/settings/page-settings-generic.php:255
 msgid ""
 "If you wish to style the forms in your own way, you can use this option to "
 "disable WLT's style sheets."
 msgstr ""
 
-#: admin-pages/page.settings.php:217
+#: admin-pages/settings/page-settings-generic.php:259
 msgid "Send usage data to YeKen?"
 msgstr ""
 
-#: admin-pages/page.settings.php:223
+#: admin-pages/settings/page-settings-generic.php:265
 msgid ""
 "We would love to see how our plugin is used. By consenting, you are allowing "
 "permission for the following data to be sent on a weekly basis to YeKen: "
@@ -646,53 +903,55 @@ msgid ""
 "user or admin data will ever be transmitted."
 msgstr ""
 
-#: admin-pages/page.settings.php:227
+#: admin-pages/settings/page-settings-generic.php:269
 msgid "Disable notifications from YeKen?"
 msgstr ""
 
-#: admin-pages/page.settings.php:233
+#: admin-pages/settings/page-settings-generic.php:275
 msgid ""
 "Occasionally YeKen likes to display simple notifications within your "
 "WordPress dashboard. Use this setting if you wish to disable them."
 msgstr ""
 
-#: admin-pages/page.settings.php:245
+#: admin-pages/settings/page-settings-generic.php:287
 msgid "Calculating daily calorie intake to lose weight"
 msgstr ""
 
-#: admin-pages/page.settings.php:249
+#: admin-pages/settings/page-settings-generic.php:291
 msgid "Female Calorie Cap"
 msgstr ""
 
-#: admin-pages/page.settings.php:252
+#: admin-pages/settings/page-settings-generic.php:294
 msgid ""
 "Specify a maximum value for number of daily calories allowed to achieve "
 "weight loss. As per NHS guidelines, females are set to 1400kcal by default"
 msgstr ""
 
-#: admin-pages/page.settings.php:252 admin-pages/page.settings.php:259
-#: admin-pages/page.settings.php:266 admin-pages/page.settings.php:284
-#: admin-pages/page.settings.php:291
+#: admin-pages/settings/page-settings-generic.php:294
+#: admin-pages/settings/page-settings-generic.php:301
+#: admin-pages/settings/page-settings-generic.php:308
+#: admin-pages/settings/page-settings-generic.php:326
+#: admin-pages/settings/page-settings-generic.php:333
 msgid ""
 "Please note, it may take up to 15 minutes for calculations to change (due to "
 "caching)."
 msgstr ""
 
-#: admin-pages/page.settings.php:256
+#: admin-pages/settings/page-settings-generic.php:298
 msgid "Male Calorie Cap"
 msgstr ""
 
-#: admin-pages/page.settings.php:259
+#: admin-pages/settings/page-settings-generic.php:301
 msgid ""
 "Specify a maximum value for number of daily calories allowed to achieve "
 "weight loss. As per NHS guidelines, males are set to 1900kcal by default"
 msgstr ""
 
-#: admin-pages/page.settings.php:263
+#: admin-pages/settings/page-settings-generic.php:305
 msgid "Calories to subtract"
 msgstr ""
 
-#: admin-pages/page.settings.php:266
+#: admin-pages/settings/page-settings-generic.php:308
 msgid ""
 "Part of calculating the daily calorie intake to lose weight is to first "
 "calculate the calorie intake to maintain existing weight. Once we have this, "
@@ -700,288 +959,314 @@ msgid ""
 "weight."
 msgstr ""
 
-#: admin-pages/page.settings.php:270 admin-pages/user-data/data-user.php:137
+#: admin-pages/settings/page-settings-generic.php:312
+#: admin-pages/user-data/data-user.php:135
+#: admin-pages/user-data/data-user.php:155
+#: admin-pages/user-data/data-user.php:169
 msgid "Macronutrient Calculator"
 msgstr ""
 
-#: admin-pages/page.settings.php:274
+#: admin-pages/settings/page-settings-generic.php:316
 msgid "Proteins"
 msgstr ""
 
-#: admin-pages/page.settings.php:277
+#: admin-pages/settings/page-settings-generic.php:319
 msgid "Percentage of Proteins to make up a moderate diet"
 msgstr ""
 
-#: admin-pages/page.settings.php:277
+#: admin-pages/settings/page-settings-generic.php:319
 msgid ""
 "Please note, it may take up to 15 minutes for calorie calculations to change "
 "(due to caching)."
 msgstr ""
 
-#: admin-pages/page.settings.php:281
+#: admin-pages/settings/page-settings-generic.php:323
 msgid "Carbohydrates"
 msgstr ""
 
-#: admin-pages/page.settings.php:284
+#: admin-pages/settings/page-settings-generic.php:326
 msgid "Percentage of Carbohydrates to make up a moderate diet"
 msgstr ""
 
-#: admin-pages/page.settings.php:288
+#: admin-pages/settings/page-settings-generic.php:330
 msgid "Fats"
 msgstr ""
 
-#: admin-pages/page.settings.php:291
+#: admin-pages/settings/page-settings-generic.php:333
 msgid "Percentage of Fats to make up a moderate diet"
 msgstr ""
 
-#: admin-pages/page.settings.php:305
+#: admin-pages/settings/page-settings-generic.php:347
 msgid "Default chart type"
 msgstr ""
 
-#: admin-pages/page.settings.php:308
+#: admin-pages/settings/page-settings-generic.php:350
 msgid "Line Chart"
 msgstr "In a chart"
 
-#: admin-pages/page.settings.php:308
+#: admin-pages/settings/page-settings-generic.php:350
 msgid "Highly Recommended"
 msgstr "Erősen ajánlott"
 
-#: admin-pages/page.settings.php:309
+#: admin-pages/settings/page-settings-generic.php:351
 msgid "Bar Chart"
 msgstr "In a chart"
 
-#: admin-pages/page.settings.php:312
+#: admin-pages/settings/page-settings-generic.php:354
 msgid ""
 "If enabled, \"Allows points and labels to be displayed on graph. "
 "<strong>Note: If using measurements</strong>, graph type will be forced to "
 "Line."
 msgstr "If enabled, \"Allows points and labels to be displayed on graph."
 
-#: admin-pages/page.settings.php:317
+#: admin-pages/settings/page-settings-generic.php:359
 msgid "Display gridlines?"
 msgstr "Display data in tabs?"
 
-#: admin-pages/page.settings.php:323
+#: admin-pages/settings/page-settings-generic.php:365
 msgid "If enabled, gridlines will be displayed on the Graph canvas."
 msgstr "If enabled, \"Allows points and labels to be displayed on graph."
 
-#: admin-pages/page.settings.php:327
+#: admin-pages/settings/page-settings-generic.php:369
 msgid "Maximum points per graph"
 msgstr "Display points on graph?"
 
-#: admin-pages/page.settings.php:336 admin-pages/page.settings.php:403
+#: admin-pages/settings/page-settings-generic.php:378
+#: admin-pages/settings/page-settings-generic.php:445
 msgid "If enabled, \"Allows points and labels to be displayed on graph."
 msgstr "If enabled, \"Allows points and labels to be displayed on graph."
 
-#: admin-pages/page.settings.php:341
+#: admin-pages/settings/page-settings-generic.php:383
 msgid "Weight colour?"
 msgstr "Weight History"
 
-#: admin-pages/page.settings.php:344
+#: admin-pages/settings/page-settings-generic.php:386
 msgid ""
 "If enabled, enter a HEX colour code to use for the Weight history line / bar "
 "border on graph."
 msgstr ""
 
-#: admin-pages/page.settings.php:348
+#: admin-pages/settings/page-settings-generic.php:390
 msgid "Should y Axes start at 0?"
 msgstr ""
 
-#: admin-pages/page.settings.php:355
+#: admin-pages/settings/page-settings-generic.php:397
 msgid ""
 "If enabled, y Axes shall start at 0. Otherwise, they are automatically "
 "calculated."
 msgstr ""
 
-#: admin-pages/page.settings.php:359
+#: admin-pages/settings/page-settings-generic.php:401
 msgid "Text colour"
 msgstr "Színes diagram"
 
-#: admin-pages/page.settings.php:362
+#: admin-pages/settings/page-settings-generic.php:404
 msgid "Enter a HEX colour code to use for text displayed on the graph."
 msgstr ""
 
-#: admin-pages/page.settings.php:366
+#: admin-pages/settings/page-settings-generic.php:408
 msgid "Font Family"
 msgstr ""
 
-#: admin-pages/page.settings.php:369
+#: admin-pages/settings/page-settings-generic.php:411
 msgid ""
 "Specify one or more fonts that should be used when rendering text on the "
 "graph. Separate multiple fonts with a comma. Leave blank to use the default."
 msgstr ""
 
-#: admin-pages/page.settings.php:374
+#: admin-pages/settings/page-settings-generic.php:416
 msgid "Line Chart Options"
 msgstr ""
 
-#: admin-pages/page.settings.php:378
+#: admin-pages/settings/page-settings-generic.php:420
 msgid "Bezier Curve?"
 msgstr ""
 
-#: admin-pages/page.settings.php:385
+#: admin-pages/settings/page-settings-generic.php:427
 msgid "If enabled, lines between points on a line graph will be curved"
 msgstr ""
 
-#: admin-pages/page.settings.php:389
+#: admin-pages/settings/page-settings-generic.php:431
 msgid "Target line colour?"
 msgstr ""
 
-#: admin-pages/page.settings.php:392
+#: admin-pages/settings/page-settings-generic.php:434
 msgid ""
 "If enabled, enter a HEX colour code to use for the Target line on graph."
 msgstr ""
 
-#: admin-pages/page.settings.php:396
+#: admin-pages/settings/page-settings-generic.php:438
 msgid "Display points on graph?"
 msgstr "Display points on graph?"
 
-#: admin-pages/page.settings.php:407
+#: admin-pages/settings/page-settings-generic.php:449
 msgid "Point thickness"
 msgstr ""
 
-#: admin-pages/page.settings.php:416
+#: admin-pages/settings/page-settings-generic.php:458
 msgid "Specifies the point thickness on a line chart."
 msgstr ""
 
-#: admin-pages/page.settings.php:420
+#: admin-pages/settings/page-settings-generic.php:462
 msgid "Add a fill under weight line?"
 msgstr "Új süly hozzáadása"
 
-#: admin-pages/page.settings.php:426
+#: admin-pages/settings/page-settings-generic.php:468
 msgid "If enabled, a fill colour will be added under the weight line."
 msgstr "If enabled, \"Allows points and labels to be displayed on graph."
 
-#: admin-pages/page.settings.php:430
+#: admin-pages/settings/page-settings-generic.php:472
 msgid "Weight Fill Colour"
 msgstr "Weight History"
 
-#: admin-pages/page.settings.php:433
+#: admin-pages/settings/page-settings-generic.php:475
 msgid ""
 "If enabled, enter a HEX colour code to use for the fill colour under the "
 "weight line."
 msgstr ""
 
-#: admin-pages/page.settings.php:437
+#: admin-pages/settings/page-settings-generic.php:479
 msgid "Weight Fill Opacity"
 msgstr "Weight History"
 
-#: admin-pages/page.settings.php:446
+#: admin-pages/settings/page-settings-generic.php:488
 msgid "Specifies the opacity of the fill colour under the weight line."
 msgstr ""
 
-#: admin-pages/page.settings.php:451
+#: admin-pages/settings/page-settings-generic.php:493
 msgid "Bar Chart Options"
 msgstr ""
 
-#: admin-pages/page.settings.php:455
+#: admin-pages/settings/page-settings-generic.php:497
 msgid "Weight fill colour?"
 msgstr "Weight History"
 
-#: admin-pages/page.settings.php:458
+#: admin-pages/settings/page-settings-generic.php:500
 msgid ""
 "If enabled, enter a HEX colour code to use for filling the Weight bars on "
 "the graph."
 msgstr ""
 
-#: admin-pages/page.settings.php:471
+#: admin-pages/settings/page-settings-generic.php:513
 msgid "Enable email notifications"
 msgstr ""
 
-#: admin-pages/page.settings.php:480
+#: admin-pages/settings/page-settings-generic.php:522
 msgid "Email addresses to notify"
 msgstr ""
 
-#: admin-pages/page.settings.php:483
+#: admin-pages/settings/page-settings-generic.php:525
 msgid ""
 "Specify one or more email addresses to be notified. Seperate multiple emails "
 "with a comma."
 msgstr ""
 
-#: admin-pages/page.settings.php:487
+#: admin-pages/settings/page-settings-generic.php:529
 msgid "New weight / measurement entries"
 msgstr ""
 
-#: admin-pages/page.settings.php:493
+#: admin-pages/settings/page-settings-generic.php:535
 msgid ""
 "Receive notifications when a member adds a new weight / measurement entry."
 msgstr ""
 
-#: admin-pages/page.settings.php:497
+#: admin-pages/settings/page-settings-generic.php:539
 msgid "Edited weight / measurement entries"
 msgstr ""
 
-#: admin-pages/page.settings.php:503
+#: admin-pages/settings/page-settings-generic.php:545
 msgid ""
 "Receive notifications when a member edits an existing weight / measurement "
 "entry."
 msgstr ""
 
-#: admin-pages/page.settings.php:507
+#: admin-pages/settings/page-settings-generic.php:549
 msgid "New / updated targets"
 msgstr ""
 
-#: admin-pages/page.settings.php:513
+#: admin-pages/settings/page-settings-generic.php:555
 msgid "Receive notifications when a member adds / edits their target."
 msgstr ""
 
-#: admin-pages/page.settings.php:526
+#: admin-pages/settings/page-settings-generic.php:568
 msgid "Allow Measurements?"
 msgstr "Allow target weights?"
 
-#: admin-pages/page.settings.php:532
+#: admin-pages/settings/page-settings-generic.php:574
 msgid ""
 "If enabled, a user can also add body measurements along with their weights."
 msgstr ""
 
-#: admin-pages/page.settings.php:536
+#: admin-pages/settings/page-settings-generic.php:578
 msgid "Measurement Units"
 msgstr "Mértékegységek"
 
-#: admin-pages/page.settings.php:539
+#: admin-pages/settings/page-settings-generic.php:581
 msgid "Centimetres"
 msgstr "Centiméter"
 
-#: admin-pages/page.settings.php:540 core.php:76
+#: admin-pages/settings/page-settings-generic.php:582 core.php:76
 msgid "Inches"
 msgstr "Hüvelyk"
 
-#: admin-pages/page.settings.php:542
+#: admin-pages/settings/page-settings-generic.php:584
 msgid "Default unit for recording measurements."
 msgstr ""
 
-#: admin-pages/page.settings.php:546
+#: admin-pages/settings/page-settings-generic.php:588
 msgid "Measurements mandatory?"
 msgstr "Mérések kötelező?"
 
-#: admin-pages/page.settings.php:552
+#: admin-pages/settings/page-settings-generic.php:594
 msgid "If yes, a user will be forced to complete all measurement features."
 msgstr ""
 
-#: admin-pages/page.settings.php:556
+#: admin-pages/settings/page-settings-generic.php:598
 msgid "Areas of measurements"
 msgstr "Mérések területei"
 
-#: admin-pages/page.settings.php:578
+#: admin-pages/settings/page-settings-generic.php:620
 msgid "Enable"
 msgstr "Engedélyezés"
 
-#: admin-pages/page.settings.php:581
+#: admin-pages/settings/page-settings-generic.php:623
 msgid "Chart Colour"
 msgstr "Színes diagram"
 
-#: admin-pages/page.settings.php:607
+#: admin-pages/settings/page-settings-generic.php:649
 msgid "Enable Gravity Forms"
 msgstr ""
 
-#: admin-pages/page.settings.php:614
+#: admin-pages/settings/page-settings-generic.php:656
 msgid ""
 "Examine Gravity Form submissions for weight and measurement data. If found, "
 "create a Weight Entry for the user currently logged in."
 msgstr ""
 
-#: admin-pages/page.settings.php:615
+#: admin-pages/settings/page-settings-generic.php:657
 msgid "Read more at "
+msgstr ""
+
+#: admin-pages/settings/page-settings-groups.php:23
+msgid "Manage Groups"
+msgstr ""
+
+#: admin-pages/settings/page-settings-groups.php:26
+msgid "Add or remove Groups that users can be assigned to."
+msgstr ""
+
+#: admin-pages/settings/page-settings-groups.php:27
+msgid "Read more about Groups"
+msgstr ""
+
+#: admin-pages/settings/page-settings-groups.php:30
+#, fuzzy
+#| msgid "Add a new weight"
+msgid "Add a new group"
+msgstr "Új süly hozzáadása"
+
+#: admin-pages/settings/page-settings-groups.php:45
+msgid "Existing groups"
 msgstr ""
 
 #: admin-pages/user-data/data-add-edit-entry.php:17
@@ -1011,34 +1296,34 @@ msgid "User's photos"
 msgstr ""
 
 #: admin-pages/user-data/data-photos.php:38
-#: admin-pages/user-data/data-user.php:80
+#: admin-pages/user-data/data-user.php:79
 msgid "This user has uploaded "
 msgstr ""
 
 #: admin-pages/user-data/data-photos.php:43
-#: admin-pages/user-data/data-user.php:89
+#: admin-pages/user-data/data-user.php:88
 msgid "No photos could be found for this user."
 msgstr "Súly adatok nem található a megadott felhasználó."
 
 #: admin-pages/user-data/data-photos.php:55
-#: admin-pages/user-data/data-user.php:101
+#: admin-pages/user-data/data-user.php:100
 msgid "Add and enable a Photo Custom Field"
 msgstr ""
 
 #: admin-pages/user-data/data-photos.php:56
-#: admin-pages/user-data/data-user.php:102
+#: admin-pages/user-data/data-user.php:101
 msgid "to allow a users to upload photos of their progress"
 msgstr ""
 
 #: admin-pages/user-data/data-photos.php:63
 #: admin-pages/user-data/data-user-edit-settings.php:38
 #: admin-pages/user-data/data-user.php:59
-#: admin-pages/user-data/data-user.php:109
+#: admin-pages/user-data/data-user.php:108
 msgid "Upgrade to Pro"
 msgstr "Pro verzió megtekintése"
 
 #: admin-pages/user-data/data-photos.php:64
-#: admin-pages/user-data/data-user.php:110
+#: admin-pages/user-data/data-user.php:109
 msgid "to allow a user to upload photos of their progress"
 msgstr ""
 
@@ -1096,6 +1381,7 @@ msgid "League Table for those that have gained the most"
 msgstr ""
 
 #: admin-pages/user-data/data-summary.php:58
+#: admin-pages/user-data/data-summary.php:85
 msgid "Regenerate these stats"
 msgstr ""
 
@@ -1107,75 +1393,79 @@ msgstr ""
 msgid "Show who has lost the most"
 msgstr ""
 
-#: admin-pages/user-data/data-summary.php:82
+#: admin-pages/user-data/data-summary.php:72
+msgid "Weight change by group"
+msgstr ""
+
+#: admin-pages/user-data/data-summary.php:102
 msgid "All entries"
 msgstr ""
 
-#: admin-pages/user-data/data-summary.php:82
+#: admin-pages/user-data/data-summary.php:102
 msgid "Last 100 entries"
 msgstr ""
 
-#: admin-pages/user-data/data-summary.php:90
+#: admin-pages/user-data/data-summary.php:110
 msgid "Show all entries"
 msgstr "View all weeks"
 
-#: admin-pages/user-data/data-summary.php:90
+#: admin-pages/user-data/data-summary.php:110
 msgid "Show 100 recent entries"
 msgstr ""
 
-#: admin-pages/user-data/data-summary.php:101
+#: admin-pages/user-data/data-summary.php:121
 msgid "User Search"
 msgstr "Keresés:"
 
-#: admin-pages/user-data/data-summary.php:107
+#: admin-pages/user-data/data-summary.php:127
 msgid "Quick Stats"
 msgstr ""
 
-#: admin-pages/user-data/data-summary.php:131
+#: admin-pages/user-data/data-summary.php:151
 msgid "No. of WordPress users"
 msgstr ""
 
-#: admin-pages/user-data/data-summary.php:133
+#: admin-pages/user-data/data-summary.php:153
 msgid "No. of Weight Entries"
 msgstr "Válasszon mértékegységet"
 
-#: admin-pages/user-data/data-summary.php:135
+#: admin-pages/user-data/data-summary.php:155
 msgid "No. of Target Entries"
 msgstr ""
 
-#: admin-pages/user-data/data-summary.php:137
+#: admin-pages/user-data/data-summary.php:157
 msgid "refreshed every 15 minutes"
 msgstr ""
 
-#: admin-pages/user-data/data-summary.php:146
+#: admin-pages/user-data/data-summary.php:166
 msgid "View all data"
 msgstr "View all weeks"
 
-#: admin-pages/user-data/data-summary.php:150
+#: admin-pages/user-data/data-summary.php:170
 msgid "View all entries"
 msgstr "View all weeks"
 
-#: admin-pages/user-data/data-summary.php:155
+#: admin-pages/user-data/data-summary.php:175
 msgid "Export all data"
 msgstr ""
 
-#: admin-pages/user-data/data-summary.php:159
+#: admin-pages/user-data/data-summary.php:179
 msgid "To CSV"
 msgstr ""
 
-#: admin-pages/user-data/data-summary.php:163
+#: admin-pages/user-data/data-summary.php:183
 msgid "To JSON"
 msgstr ""
 
-#: admin-pages/user-data/data-summary.php:168
+#: admin-pages/user-data/data-summary.php:188
 msgid "Delete Data"
 msgstr "Törlés"
 
-#: admin-pages/user-data/data-summary.php:172
+#: admin-pages/user-data/data-summary.php:192
 msgid "Delete data for ALL users"
 msgstr ""
 
-#: admin-pages/user-data/data-summary.php:184
+#: admin-pages/user-data/data-summary.php:204
 msgid "Are you sure you wish to remove all user data?"
 msgstr "Biztos törli?"
 
@@ -1187,7 +1477,7 @@ msgstr "Felhasználó beállításainak engedélyezése"
 msgid "to save changes to your user's settings"
 msgstr "Felhasználó beállításainak engedélyezése"
 
-#: admin-pages/user-data/data-user.php:22 hooks.php:172
+#: admin-pages/user-data/data-user.php:22 hooks.php:174
 msgid "The preferences for this user have been saved."
 msgstr ""
 
@@ -1199,44 +1489,59 @@ msgstr "A tömeg történelem töröltük!"
 msgid "to view the a chart of the user's weight entries."
 msgstr ""
 
-#: admin-pages/user-data/data-user.php:84
+#: admin-pages/user-data/data-user.php:83
 msgid "View all photos"
 msgstr "View all weeks"
 
-#: admin-pages/user-data/data-user.php:117
+#: admin-pages/user-data/data-user.php:129
+#: admin-pages/user-data/data-user.php:155
+#: admin-pages/user-data/data-user.php:172
 msgid "Daily calorie needs"
 msgstr ""
 
-#: admin-pages/user-data/data-user.php:128
-#: admin-pages/user-data/data-user.php:155
-msgid "Upgrade to Pro Plus"
-msgstr "Pro verzió megtekintése"
-
-#: admin-pages/user-data/data-user.php:129
-msgid ""
-"to view the user's daily calorie intake required to either maintain or lose "
-"weight (Harris Benedict formula)"
-msgstr ""
-
-#: admin-pages/user-data/data-user.php:143
+#: admin-pages/user-data/data-user.php:141
 msgid "Please ensure the values for Proteins, Carbohydrates and Fats (within "
 msgstr ""
 
-#: admin-pages/user-data/data-user.php:145
+#: admin-pages/user-data/data-user.php:143
 msgid "settings"
 msgstr "Beállítások"
 
-#: admin-pages/user-data/data-user.php:146
+#: admin-pages/user-data/data-user.php:144
 msgid ") have been specified and total 100%."
 msgstr ""
 
-#: admin-pages/user-data/data-user.php:156
+#: admin-pages/user-data/data-user.php:155
+#, fuzzy
+#| msgid "Get "
+msgid "Get More"
+msgstr "Lekérés"
+
+#: admin-pages/user-data/data-user.php:167
+msgid "Upgrade to Pro Plus"
+msgstr "Pro verzió megtekintése"
+
+#: admin-pages/user-data/data-user.php:168
+msgid "and get the following"
+msgstr ""
+
+#: admin-pages/user-data/data-user.php:170
 msgid ""
-"to view the user's suggested Macronutrient intake based on their recommended "
+"view the user's suggested Macronutrient intake based on their recommended "
 "calorie intake"
 msgstr ""
 
-#: admin-pages/user-data/data-user.php:164
+#: admin-pages/user-data/data-user.php:173
+msgid ""
+"view the user's daily calorie intake required to either maintain or lose "
+"weight (Harris Benedict formula)"
+msgstr ""
+
+#: admin-pages/user-data/data-user.php:176
+msgid "view and issue awards based upon users meeting your certain goals"
+msgstr ""
+
+#: admin-pages/user-data/data-user.php:184
 msgid "Entries for this user"
 msgstr ""
 
@@ -1266,23 +1571,19 @@ msgid "Export to JSON"
 msgstr ""
 
 #: converters.php:53 converters.php:71 core.php:75 functions.php:69
-#: functions.php:84 functions.php:93 functions.php:99 functions.php:295
-#: functions.php:301 functions.php:558 shortcode-various.php:262
+#: functions.php:84 functions.php:93 functions.php:99 functions.php:298
+#: functions.php:304 functions.php:561 shortcode-various.php:262
 #: shortcode-various.php:281
 msgid "lbs"
 msgstr "font"
 
-#: converters.php:71 functions.php:301
+#: converters.php:71 functions.php:304
 msgid "St"
 msgstr "St"
 
 #: core.php:13
 msgid "Date"
 msgstr "Dátum"
-
-#: core.php:14 core.php:83 core.php:212 core.php:386
-msgid "Weight"
-msgstr "Testsúly"
 
 #: core.php:15 core.php:395
 msgid "Notes"
@@ -1327,10 +1628,6 @@ msgstr "A cél súly"
 #: core.php:368
 msgid "The user's target weight is currently"
 msgstr "A cél súly"
-
-#: core.php:378
-msgid "Stones"
-msgstr "Stones"
 
 #: core.php:402
 msgid "Edit measurements"
@@ -1424,66 +1721,62 @@ msgstr "Kérjük adja meg a kg-ban"
 msgid "This field is required."
 msgstr ""
 
-#: core.php:663
-msgid "Done"
-msgstr ""
-
 #: core.php:664
 msgid "Today"
 msgstr ""
 
-#: functions.php:84 functions.php:99 functions.php:546
+#: functions.php:84 functions.php:99 functions.php:549
 #: shortcode-various.php:281
 msgid "st"
 msgstr "st"
 
-#: functions.php:212
+#: functions.php:215
 msgid "The following MySQL tables are missing for this plugin"
 msgstr "Az alábbi MySQL táblák hiányoznak a plugint"
 
-#: functions.php:298 shortcode-various.php:286
+#: functions.php:301 shortcode-various.php:286
 msgid "Kg"
 msgstr "Kilogramm"
 
-#: functions.php:360
+#: functions.php:363
 msgid "View all weeks"
 msgstr "View all weeks"
 
-#: functions.php:374
+#: functions.php:377
 msgid "View Week"
 msgstr "View Week"
 
-#: functions.php:374
+#: functions.php:377
 msgid "to"
 msgstr "to"
 
-#: functions.php:513
+#: functions.php:516
 msgid "The plugin supports the following measurements"
 msgstr "A plugin támogatja a következő méréseket"
 
-#: functions.php:651
+#: functions.php:662
 msgid "Read more about calculations"
 msgstr ""
 
-#: functions.php:686
+#: functions.php:697
 msgid "Your modifications have been saved"
 msgstr "A beállítások mentése megtörtént"
 
-#: functions.php:704
+#: functions.php:715
 msgid "Login now"
 msgstr "Belépés"
 
-#: functions.php:886
+#: functions.php:899
 msgid "Upgrade Weight Tracker and get more features!"
 msgstr ""
 
-#: functions.php:888
+#: functions.php:901
 msgid ""
 "Upgrade to the latest Pro or Pro Plus version of this plugin to manipulate "
 "your user's data, add custom fields, BMR, Macro Nutrients and much more!"
 msgstr ""
 
-#: functions.php:889
+#: functions.php:902
 msgid "Read more and Upgrade to Pro / Pro Plus Version"
 msgstr "Pro verzió megtekintése"
 
@@ -1619,52 +1912,52 @@ msgstr ""
 msgid "Manage User Data"
 msgstr "Felhasználói adatok kezelése"
 
-#: hooks.php:12
+#: hooks.php:13
 msgid "Your License"
 msgstr "Liszenc hozzáadása"
 
-#: hooks.php:15
+#: hooks.php:16
 msgid "Settings"
 msgstr "Beállítások"
 
-#: hooks.php:16
-msgid "Help"
-msgstr "Súgó"
+#: hooks.php:17
+msgid "Help & Log"
+msgstr ""
 
-#: hooks.php:173
+#: hooks.php:175
 msgid "An error occurred while trying to save the user's preferences."
 msgstr "Hiba történt mentés közben"
 
-#: license.php:150
+#: license.php:156
 msgid "License missing"
 msgstr ""
 
-#: license.php:157
+#: license.php:163
 msgid "Could not decode / verify license"
 msgstr ""
 
-#: license.php:162
+#: license.php:168
 msgid "Invalid license hash"
 msgstr ""
 
-#: license.php:167
+#: license.php:173
 msgid ""
 "This license doesn't appear to be for this site (no match on site hash)."
 msgstr ""
 
-#: license.php:175
+#: license.php:181
 msgid "This license has expired."
 msgstr ""
 
-#: license.php:232
+#: license.php:238
 msgid "None"
 msgstr ""
 
-#: license.php:242
+#: license.php:248
 msgid "Yearly Pro"
 msgstr ""
 
-#: license.php:245
+#: license.php:251
 msgid "Legacy Pro"
 msgstr ""
 
@@ -1755,6 +2048,9 @@ msgstr "Nincs heti adat"
 #: shortcode-weight-loss-tracker.php:208
 msgid "You haven't entered any weight data yet."
 msgstr "Nem írt be értéket"
+
+#~ msgid "Help"
+#~ msgstr "Súgó"
 
 #, fuzzy
 #~| msgid "Delete existing data"
@@ -1865,11 +2161,6 @@ msgstr "Nem írt be értéket"
 #~ msgstr "Magasság:"
 
 #, fuzzy
-#~| msgid "Underweight"
-#~ msgid "Gain weight"
-#~ msgstr "sovány"
-
-#, fuzzy
 #~ msgid "Not Specified"
 #~ msgstr "Nincsenek felhasználók"
 
@@ -1920,10 +2211,6 @@ msgstr "Nem írt be értéket"
 #, fuzzy
 #~ msgid "Please remember to enter your weight for today."
 #~ msgstr "Eősítsme meg ,hogy törli az összes előzményt"
-
-#, fuzzy
-#~ msgid "Weight Difference"
-#~ msgstr "Magasság szükséges"
 
 #~ msgid "Height needed"
 #~ msgstr "Magasság szükséges"
@@ -2004,9 +2291,6 @@ msgstr "Nem írt be értéket"
 
 #~ msgid "A pretty graph shall appear once you have recorded several weights."
 #~ msgstr "Grafikon jelenik meg amint lesz hozzáadott érték"
-
-#~ msgid "Title"
-#~ msgstr "Cím"
 
 #, fuzzy
 #~| msgid "Measurement ("
@@ -2119,9 +2403,6 @@ msgstr "Nem írt be értéket"
 #~ msgid "Get Pro Version"
 #~ msgstr "Pro verzió megtekintése"
 
-#~ msgid "Get "
-#~ msgstr "Lekérés"
-
 #~ msgid "Get Weight Loss Tracker Pro for"
 #~ msgstr "Súly csökkenés napló"
 
@@ -2160,9 +2441,6 @@ msgstr "Nem írt be értéket"
 
 #~ msgid "Delete All"
 #~ msgstr "Összes törlése"
-
-#~ msgid "Delete all user data!"
-#~ msgstr "Összes adat törlése"
 
 #~ msgid ""
 #~ "You can use the following button to remove all user data currently stored "

@@ -52,7 +52,6 @@ function ws_ls_register_pro_shortcodes(){
     add_shortcode( 'wlt-dob', 'ws_ls_shortcode_dob' );
     add_shortcode( 'wlt-height', 'ws_ls_shortcode_height' );
     add_shortcode( 'wlt-activity-level', 'ws_ls_shortcode_activity_level' );
-    add_shortcode( 'wlt-new-users', 'ws_ls_shortcode_new_users' );
     add_shortcode( 'wlt-if', 'ws_ls_shortcode_if' );
 }
 add_action( 'init', 'ws_ls_register_pro_shortcodes');

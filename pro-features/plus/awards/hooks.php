@@ -387,7 +387,6 @@
 
 		$arguments = shortcode_atts([
 			'message' => __('No awards', WE_LS_SLUG),
-			'css-class' => '',
 			'user-id' => get_current_user_id(),
 			'thumb-width' => 150,
 			'thumb-height' => 150

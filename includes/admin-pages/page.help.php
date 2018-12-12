@@ -171,11 +171,11 @@ function ws_ls_help_page() {
 </div> <!-- .wrap -->
 <?php
 
-    echo ws_ls_create_dialog_jquery_code(__('Are you sure?', WE_LS_SLUG),
+    ws_ls_create_dialog_jquery_code(__('Are you sure?', WE_LS_SLUG),
         __('Are you sure you wish to remove all issued awards?', WE_LS_SLUG) . '<br /><br />',
         'awards-confirm');
 
-    echo ws_ls_create_dialog_jquery_code(__('Are you sure?', WE_LS_SLUG),
+    ws_ls_create_dialog_jquery_code(__('Are you sure?', WE_LS_SLUG),
         __('Are you sure you wish to clear all log entries?', WE_LS_SLUG) . '<br /><br />',
         'logs-confirm');
 

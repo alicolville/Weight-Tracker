@@ -300,7 +300,7 @@ function ws_ls_csv_cell_escape($data) {
  * Take string and stream it to browser as CSV or JSON
  * @param  string $data             Data
  * @param  string $file_name        File name
- * @return none
+ * @return void
  */
 function ws_ls_export_to_browser($data, $file_name = 'weight-loss-tracker.csv', $content_type = 'text/csv') {
 
@@ -308,7 +308,7 @@ function ws_ls_export_to_browser($data, $file_name = 'weight-loss-tracker.csv', 
 
 	$content_type = ws_ls_export_verify_type($content_type);
 
-	if($data) {
+	if ( $data ) {
 		header("Content-type: " . esc_html($content_type));
 		header("Content-Disposition: attachment; filename=" . esc_html($file_name));
 		header("Pragma: no-cache");
@@ -317,6 +317,7 @@ function ws_ls_export_to_browser($data, $file_name = 'weight-loss-tracker.csv', 
 	    exit;
 	}
 
+	return;
 }
 
 function ws_ls_export_add_bmi($row) {

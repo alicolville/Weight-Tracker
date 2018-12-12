@@ -9,7 +9,7 @@ function ws_ls_admin_page_data_user() {
 	$user_id = ws_get_user_id_from_qs();
 
     // Ensure this WP user ID exists!
-    ws_user_exist_check($user_id);
+    ws_user_exist_check( $user_id );
 
     // DELETE ALL DATA FOR THIS USER!! AHH!!
     if (is_admin() && isset($_GET['removedata']) && 'y' == $_GET['removedata']) {
@@ -190,7 +190,7 @@ function ws_ls_admin_page_data_user() {
 			</div>
 			<div id="postbox-container-1" class="postbox-container">
 				<div class="meta-box-sortables">
-					<?php echo ws_ls_user_side_bar($user_id); ?>
+					<?php ws_ls_user_side_bar( $user_id ); ?>
 				</div>
 			</div>
 		</div>

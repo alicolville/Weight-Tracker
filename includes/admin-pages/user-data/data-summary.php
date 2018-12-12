@@ -200,7 +200,7 @@ function ws_ls_admin_page_data_summary() {
 	</div>
 <?php
 
-    echo ws_ls_create_dialog_jquery_code(__('Are you sure you?', WE_LS_SLUG),
+    ws_ls_create_dialog_jquery_code(__('Are you sure you?', WE_LS_SLUG),
         __('Are you sure you wish to remove all user data?', WE_LS_SLUG) . '<br /><br />',
         'delete-confirm');
 }

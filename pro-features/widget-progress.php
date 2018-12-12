@@ -9,12 +9,12 @@ class ws_ls_widget_progress_bar extends WP_Widget {
 	function __construct() {
 		parent::__construct(
 			'ws_ls_widget_progress_bar',
-			__('Weight Loss Tracker - Progress Bar', WE_LS_SLUG),
+			__('Weight Tracker - Progress Bar', WE_LS_SLUG),
 			array( 'description' => __('A progress bar to indicate weight loss towards target.', WE_LS_SLUG) ) // Args
 		);
 
         $this->field_values = array(
-            'title' => __('Weight loss progress', WE_LS_SLUG),
+            'title' => __('Weight Progress', WE_LS_SLUG),
 			'type' => 'line',
 			'stroke-width' => 3,
 			'stroke-colour' => '#FFEA82',

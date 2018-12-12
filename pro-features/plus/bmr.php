@@ -81,7 +81,7 @@
     function ws_ls_shortcode_bmr($user_defined_arguments) {
 
         if(false === WS_LS_IS_PRO_PLUS) {
-            return;
+            return '';
         }
 
         $arguments = shortcode_atts([

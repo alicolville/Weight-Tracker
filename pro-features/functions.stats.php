@@ -50,7 +50,7 @@ add_action('admin_init', 'ws_ls_stats_run_cron_for_first_time');
 function ws_ls_stats_get_summary_stats() {
 
 	// If disabled, don't bother
-	if(WE_LS_DISABLE_USER_STATS) {
+	if( WE_LS_DISABLE_USER_STATS ) {
 		return;
 	}
 

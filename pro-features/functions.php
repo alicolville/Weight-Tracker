@@ -159,7 +159,7 @@ function ws_ls_get_link_to_settings() {
  * @param  int $entry_id Entry ID
  * @return string
  */
-function ws_ls_get_link_to_edit_entry($user_id, $entry_id = false, $redirect = true) {
+function ws_ls_get_link_to_edit_entry( $user_id, $entry_id = false ) {
 
 	$base_url = admin_url( 'admin.php?page=ws-ls-data-home&mode=entry&user-id=' . $user_id );
 

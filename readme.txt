@@ -178,6 +178,8 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 * Improvement: Added additional logic to remove photos from media library when no longer used by Weight Tracker (e.g. user has deleted them)
 * Improvement: Various minor tweaks to meta fields and validation.
 * Improvement: Changed email format to HTML.
+* Improvement: Optimised [wlt-new-users] to reduce size of data returned by query.
+* Improvement: General PHP code tweaks to improve performance and maintainability ( based on PHPStorms recommendations).
 * Bug fix: Class name not being correctly added to forms.
 
 = 6.0.3 =

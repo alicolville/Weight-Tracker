@@ -125,9 +125,9 @@ function ws_ls_weight_object($user_id, $kg, $pounds, $stones, $pounds_only, $not
   }
 
 
-  if (WE_LS_MEASUREMENTS_ENABLED && is_array($weight['measurements']) && !empty($weight['measurements'])) {
+  if ( WE_LS_MEASUREMENTS_ENABLED && is_array($weight['measurements']) && !empty($weight['measurements'])) {
 
-	  foreach ($weight['measurements'] as $key => $value) {
+	  foreach ( $weight['measurements'] as $key => $value) {
 
 		  // Prep field!
 		  $weight['measurements'][$key] = ws_ls_prep_measurement($weight['measurements'][$key]);
@@ -270,10 +270,6 @@ function ws_ls_create_dialog_jquery_code($title, $message, $class_used_to_prompt
             });
 
         });
-
-
-
-
       </script>
 
   <?php
@@ -693,8 +689,8 @@ function ws_ls_display_notice($text, $type = 'success') {
  */
 function ws_ls_display_data_saved_message() {
 
-	if('n' !== ws_ls_querystring_value('ws-edit-saved', false, 'n')) {
-		return ws_ls_display_blockquote(__('Your modifications have been saved', WE_LS_SLUG), 'ws-ls-success');
+	if( 'n' !== ws_ls_querystring_value( 'ws-edit-saved', false, 'n' ) ) {
+		return ws_ls_display_blockquote( __('Your modifications have been saved', WE_LS_SLUG ), 'ws-ls-success' );
 	}
 
 	return '';
@@ -707,7 +703,7 @@ function ws_ls_display_data_saved_message() {
  * @text
  *
  */
-function ws_ls_display_blockquote($text, $class = '', $just_echo = false, $include_log_link = false) {
+function ws_ls_display_blockquote( $text, $class = '', $just_echo = false, $include_log_link = false ) {
 
 	$html_output = sprintf('<blockquote class="ws-ls-blockquote%s"><p>%s</p>%s</blockquote>',
 									(false === empty($class)) ? ' ' . esc_html($class) : '',
@@ -721,6 +717,7 @@ function ws_ls_display_blockquote($text, $class = '', $just_echo = false, $inclu
 		return $html_output;
 	}
 
+	return '';
 }
 
 //todo: review this

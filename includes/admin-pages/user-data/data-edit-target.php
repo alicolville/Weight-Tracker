@@ -49,7 +49,7 @@ function ws_ls_admin_page_data_edit_target() {
 				</div>
 				<div id="postbox-container-1" class="postbox-container">
 					<div class="meta-box-sortables">
-						<?php echo ws_ls_user_side_bar($user_id); ?>
+						<?php ws_ls_user_side_bar($user_id); ?>
 					</div>
 				</div>
 			</div>

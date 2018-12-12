@@ -456,12 +456,12 @@
 	 * @param $slug
 	 * @param $email
 	 *
-	 * @return bool|void
+	 * @return bool|int
 	 */
 	function ws_ls_emailer_add( $slug, $subject, $email ) {
 
 		if ( false === is_admin() ) {
-			return;
+			return false;
 		}
 
 		global $wpdb;

@@ -158,7 +158,7 @@ function ws_ls_photos_shortcode_render( $image, $css_class = '', $hide_date = tr
  * @param bool $recent
  * @param int $width
  * @param int $height
- * @return bool|null
+ * @return array|bool|null
  */
 function ws_ls_photos_db_get_recent_or_latest( $user_id = false,
 													$recent = false,

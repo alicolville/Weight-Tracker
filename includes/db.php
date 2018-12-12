@@ -756,13 +756,14 @@ function ws_ls_log_all() {
 function ws_ls_log_delete_all( ) {
 
     if ( false === is_admin() ) {
-        return;
+        return false;
     }
 
     global $wpdb;
 
     $wpdb->query( 'TRUNCATE TABLE ' . $wpdb->prefix . WE_LS_LOG_TABLENAME );
 
+    return true;
 }
 
 /**

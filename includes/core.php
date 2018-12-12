@@ -61,7 +61,7 @@
             if (false == $chart_config['hide_login_message_if_needed']) {
 				return ws_ls_display_blockquote(__('You need to be logged in to record your weight.', WE_LS_SLUG) , '', false, true);
 			} else {
-                return;
+                return '';
             }
         }
 
@@ -205,8 +205,6 @@
 		// Embed JavaScript data object for this graph into page
 		wp_localize_script( 'jquery-chart-ws-ls', $chart_id . '_data', $graph_data );
 
-		$graph_line_options = array();
-
 		// Set initial y axis for weight
 		$graph_line_options = array(
 			'scales' => array('yAxes' => array(array('scaleLabel' => array('display' => true, 'labelString' => __('Weight', WE_LS_SLUG) . ' (' . __($y_axis_unit, WE_LS_SLUG) . ')'), 'type' => "linear", 'ticks' => array('beginAtZero' => WE_LS_AXES_START_AT_ZERO), "display" => "true", "position" => "left", "id" => "y-axis-weight", '' , 'gridLines' => array('display' => $chart_config['show-gridlines']))))
@@ -266,7 +264,7 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 
             return ws_ls_display_blockquote($prompt, '', false, true);
         } else {
-            return;
+            return '';
         }
     }
 
@@ -567,7 +565,7 @@ function ws_ls_capture_form_validate_and_save($user_id = false)
     return $result;
 }
 
-function ws_ls_validate_weight_data($weight_object, $is_target_form = false) {
+function ws_ls_validate_weight_data( $weight_object ) {
     if(is_numeric($weight_object['only_pounds']) &&
         is_numeric($weight_object['kg']) &&
           is_numeric($weight_object['stones']) &&

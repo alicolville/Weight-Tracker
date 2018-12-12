@@ -11,7 +11,10 @@
 	 * @return bool
 	 */
 	function ws_ls_meta_fields_photo_any_enabled( $hide_from_shortcodes = false ) {
-		return true === WS_LS_IS_PRO && ! empty( ws_ls_meta_fields_photos_all( $hide_from_shortcodes , true ) );
+
+		$photo_fields = ws_ls_meta_fields_photos_all( $hide_from_shortcodes , true );
+
+		return true === WS_LS_IS_PRO && ! empty( $photo_fields );
 	}
 
 	/**
@@ -275,11 +278,11 @@
     function ws_ls_meta_fields_photos_delete_all_photos_for_meta_field( $meta_field_id ) {
 
         if ( false === is_admin() ) {
-            return;
+            return false;
         }
 
         if ( false === ws_ls_meta_fields_photos_is_photo_field( $meta_field_id ) ) {
-            return;
+            return false;
         }
 
         // Fetch all attachment IDs

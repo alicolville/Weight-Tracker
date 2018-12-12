@@ -9,12 +9,12 @@ class ws_ls_widget_chart extends WP_Widget {
 	function __construct() {
 		parent::__construct(
 			'ws_ls_widget_chart',
-			__('Weight Loss Tracker - Chart', WE_LS_SLUG),
+			__('Weight Tracker - Chart', WE_LS_SLUG),
 			array( 'description' => __('Display a chart to see your current progress.', WE_LS_SLUG) ) // Args
 		);
 
         $this->field_values = array(
-            'title' => __('Weight Loss Tracker', WE_LS_SLUG),
+            'title' => __('Weight Tracker', WE_LS_SLUG),
             'max-points' => 5,
             'user-id' => '',
             'type' => 'line',
@@ -125,12 +125,9 @@ class ws_ls_widget_chart extends WP_Widget {
         <p>
 			<label for="<?php echo $this->get_field_id( 'not-logged-in-message' ); ?>"><?php _e('Message to display if not logged in', WE_LS_SLUG); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id( 'not-logged-in-message' ); ?>" name="<?php echo $this->get_field_name( 'not-logged-in-message' ); ?>" type="text" value="<?php echo esc_attr( $field_values['not-logged-in-message'] ); ?>">
-		   <p><small><?php _e('By default the widget is hidden if the user is not logged in. If you wish, you can display a message to the visitor instead.', WE_LS_SLUG); ?></small></p>
-
-        </p>
-
-
-	   <p>
+		</p>
+        <p><small><?php _e('By default the widget is hidden if the user is not logged in. If you wish, you can display a message to the visitor instead.', WE_LS_SLUG); ?></small></p>
+        <p>
 			<label for="<?php echo $this->get_field_id( 'user-id' ); ?>"><?php _e('ID of user (leave blank to show chart for current user)', WE_LS_SLUG); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id( 'user-id' ); ?>" name="<?php echo $this->get_field_name( 'user-id' ); ?>" type="text" value="<?php echo esc_attr( $field_values['user-id'] ); ?>">
 		</p>

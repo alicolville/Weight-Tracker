@@ -124,7 +124,7 @@ function ws_ls_allowed_sort_orders()
 /*
 	Fetch records that haven't been updated in the last hour
 */
-function ws_ls_stats_fetch_those_that_need_update($max = 100) {
+function ws_ls_stats_fetch_those_that_need_update() {
 
 	global $wpdb;
 	$table_name = $wpdb->prefix . WE_LS_USER_STATS_TABLENAME;

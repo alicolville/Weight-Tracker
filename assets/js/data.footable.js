@@ -349,7 +349,7 @@ jQuery( document ).ready(function ($, undefined) {
 
         formatters['date'] = function(value){
             return "<b>DATE: " + value + "</b>";
-        }
+        };
 
         var date_column = (ws_ls_in_front_end()) ? 2 : 3;
 
@@ -455,11 +455,10 @@ jQuery( document ).ready(function ($, undefined) {
         // US or UK format?
         if ('false' == ws_user_table_config['us-date']) {
             return day + '/' + month + '/' + year;
-        } else {
-            return month + '/' + day + '/' + year;
         }
 
-        return value;
+        return month + '/' + day + '/' + year;
+
     }
 
     function ws_ls_in_front_end() {
