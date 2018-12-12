@@ -2,6 +2,12 @@
 
 defined('ABSPATH') or die("Jog on!");
 
+/*
+ *
+ * TODO: Refactor this file to use new email manager code
+ *
+ */
+
 function ws_ls_email_notification($type, $weight_data) {
 
 	if(!WE_LS_EMAIL_ENABLE) {
@@ -21,7 +27,7 @@ function ws_ls_email_notification($type, $weight_data) {
 		&& !empty($type['type']) && in_array($type['type'], $allowed_types)
 		 && !empty($type['mode']) && in_array($type['mode'], $allowed_modes)) {
 
-		// Email notifictions enable for this type?
+		// Email notifications enable for this type?
 		if (('target' == $type['type'] && false == WE_LS_EMAIL_NOTIFICATIONS_TARGETS) ||
 			('weight-measurements' == $type['type'] && 'add' == $type['mode'] && false == WE_LS_EMAIL_NOTIFICATIONS_NEW) ||
 			('weight-measurements' == $type['type'] && 'update' == $type['mode'] && false == WE_LS_EMAIL_NOTIFICATIONS_EDIT)) {
@@ -71,7 +77,7 @@ function ws_ls_email_notification($type, $weight_data) {
 
 		// Send email
 		wp_mail($email_addresses,
-		 		__( 'Weight Loss Tracker update for' , WE_LS_SLUG) . $weight_data['user']['display-name'],
+		 		__( 'Weight Tracker update for' , WE_LS_SLUG) . $weight_data['user']['display-name'],
 				$email,
                 [ 'Content-Type: text/html; charset=UTF-8' ]
         );

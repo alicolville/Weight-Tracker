@@ -84,6 +84,9 @@ jQuery( document ).ready(function ($) {
         input.addEventListener( 'blur', function(){ input.classList.remove( 'has-focus' ); });
     });
 
+    // ------------------------------------------------------------
+    // Meta Fields
+    // ------------------------------------------------------------
 
     // Show / hide additional fields on meta fields add / update
     function ws_ls_meta_fields_show_additional() {
@@ -109,4 +112,35 @@ jQuery( document ).ready(function ($) {
     });
 
     ws_ls_meta_fields_show_additional();
+
+    // ------------------------------------------------------------
+    // Awards
+    // ------------------------------------------------------------
+
+    // Show / hide additional fields on meta fields add / update
+    function ws_ls_awards_show_additional() {
+
+        var award_ids = [ 'bmi', 'bmi-equals', 'weight', 'weight-percentage' ];
+
+        var value = $('#category').val();
+
+        for ( $i = 0; $i < award_ids.length; $i++ ) {
+
+            if ( value == award_ids[ $i ] ) {
+                $('#ws-ls-awards-additional-' + award_ids[ $i ] ).removeClass( 'ws-ls-hide' );
+                $('.hide-' + award_ids[ $i ] ).addClass( 'ws-ls-hide' );
+            } else {
+                $('#ws-ls-awards-additional-' + award_ids[ $i ] ).addClass( 'ws-ls-hide' );
+                $('.hide-' + award_ids[ $i ] ).removeClass( 'ws-ls-hide' );
+            }
+
+        }
+    }
+
+    $( "#ws-ls-awards-form #category" ).change(function() {
+        ws_ls_awards_show_additional();
+    });
+
+    ws_ls_awards_show_additional();
+
 });

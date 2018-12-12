@@ -256,7 +256,7 @@ function we_ls_format_weight_into_correct_string_format($weight, $comparison = f
         return '';
     }
 
-	if(ws_ls_get_config('WE_LS_IMPERIAL_WEIGHTS'))
+	if( ws_ls_get_config('WE_LS_IMPERIAL_WEIGHTS') )
 	{
 		if (ws_ls_get_config('WE_LS_DATA_UNITS') == "pounds_only")
 			return $weight . __("lbs", WE_LS_SLUG);
@@ -285,7 +285,4 @@ function we_ls_format_weight_into_correct_string_format($weight, $comparison = f
 	else {
 		return $weight . __("Kg", WE_LS_SLUG);
 	}
-
-	return '';
-
 }

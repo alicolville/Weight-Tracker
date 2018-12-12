@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2017-08-29 08:32-0000\n"
-"PO-Revision-Date: 2018-10-22 20:43+0100\n"
+"POT-Creation-Date: 2018-12-12 09:28+0000\n"
+"PO-Revision-Date: 2018-12-12 09:28+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi_FI\n"
@@ -16,517 +16,461 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: includes/admin-notifications.php:22 pro-features/widget-chart.php:17
+#: admin-notifications.php:30
 msgid "Weight Loss Tracker"
 msgstr "Weight Loss Tracker"
 
-#: includes/converters.php:67 includes/converters.php:85 includes/core.php:76
-#: includes/functions.php:66 includes/functions.php:81
-#: includes/functions.php:90 includes/functions.php:96
-#: includes/functions.php:289 includes/functions.php:295
-#: includes/functions.php:517 includes/shortcode-various.php:207
-#: includes/shortcode-various.php:226 pro-features/export.php:194
-#: pro-features/shortcode-stats.php:156
-msgid "lbs"
-msgstr "Pauna"
-
-#: includes/converters.php:70 includes/core.php:76 includes/core.php:346
-#: includes/functions.php:70 includes/functions.php:93
-#: pages/page.settings.php:86 pro-features/export.php:191
-#: pro-features/shortcode-stats.php:163
-msgid "kg"
+#: admin-pages/awards/page-awards-add-update.php:97
+msgid "Add / Edit an Award"
 msgstr ""
 
-#: includes/converters.php:85 includes/functions.php:295
-msgid "St"
-msgstr "St"
+#: admin-pages/awards/page-awards-add-update.php:101
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:66
+#, fuzzy
+#| msgid "Please enter a valid date."
+msgid "Please complete all mandatory fields."
+msgstr "Anna kelvollinen päiväys"
 
-#: includes/core.php:13 pro-features/advanced-table.php:96
-msgid "Date"
-msgstr "Päivä"
+#: admin-pages/awards/page-awards-add-update.php:109
+msgid "Title"
+msgstr "Otsikko"
 
-#: includes/core.php:14 includes/core.php:83 includes/core.php:205
-#: includes/core.php:346 pro-features/advanced-table.php:97
-msgid "Weight"
-msgstr "Paino"
-
-#: includes/core.php:15 includes/core.php:354
-#: pro-features/advanced-table.php:113 pro-features/emails.php:47
-#: pro-features/export.php:198
-msgid "Notes"
-msgstr "Huomautus"
-
-#: includes/core.php:63 includes/core.php:250
-#: includes/shortcode-weight-loss-tracker.php:14
-msgid "You need to be logged in to record your weight."
-msgstr "Sinun pitää kirjautua tallentaaksesi painon"
-
-#: includes/core.php:63 includes/core.php:250
-#: includes/shortcode-weight-loss-tracker.php:14
-#: pro-features/user-preferences.php:8
-msgid "Login now"
-msgstr "Kirjaudy nyt"
-
-#: includes/core.php:77 pages/page.settings.php:454
-#: pro-features/footable.php:23 pro-features/functions.php:6
-#: pro-features/user-preferences.php:146
-msgid "Inches"
+#: admin-pages/awards/page-awards-add-update.php:118
+msgid "Award Type"
 msgstr ""
 
-#: includes/core.php:77
-msgid "CM"
+#: admin-pages/awards/page-awards-add-update.php:131
+msgid ""
+"Awards are decided by comparing the difference between the user's latest "
+"weight and their starting weight."
 msgstr ""
 
-#: includes/core.php:113
-msgid "Target"
-msgstr "Kohde"
-
-#: includes/core.php:212
-msgid "Measurement"
+#: admin-pages/awards/page-awards-add-update.php:139
+msgid "Gain or Loss"
 msgstr ""
 
-#: includes/core.php:230
-msgid "You have modified data. Please refresh page."
-msgstr "Olet päivittänyt tietoja. Olehyvä ja päivitä sivu."
+#: admin-pages/awards/page-awards-add-update.php:144
+msgid "Increase in value"
+msgstr ""
 
-#: includes/core.php:265 pro-features/admin-pages/data-search-results.php:45
-#: pro-features/functions.pages.php:62
-msgid "Target Weight"
-msgstr "Tavoitepaino"
+#: admin-pages/awards/page-awards-add-update.php:145
+msgid "Decrease in value"
+msgstr ""
 
-#: includes/core.php:265
-msgid "Add a new weight"
-msgstr "Lisää uusi paino"
+#: admin-pages/awards/page-awards-add-update.php:147
+msgid ""
+"For example, if you wish to award someone for losing 10Kg, you would select "
+"\"Decrease in value\"."
+msgstr ""
 
-#: includes/core.php:328
-msgid "Your target weight is"
-msgstr "Sinun tavoitteesi on"
+#: admin-pages/awards/page-awards-add-update.php:152
+msgid "Weight difference"
+msgstr ""
 
-#: includes/core.php:328
-msgid "The user's target weight is currently"
-msgstr "Sinun tavoitteesi on"
-
-#: includes/core.php:338
+#: admin-pages/awards/page-awards-add-update.php:173 core.php:378
 msgid "Stones"
 msgstr "Stone"
 
-#: includes/core.php:339 includes/core.php:342 pages/page.settings.php:88
-#: pro-features/user-preferences.php:138
+#: admin-pages/awards/page-awards-add-update.php:175
+#: admin-pages/awards/page-awards-add-update.php:186
+#: admin-pages/settings/page-settings-generic.php:110 core.php:379 core.php:382
 msgid "Pounds"
 msgstr "Pauna"
 
-#: includes/core.php:360
-msgid "Add measurements"
-msgstr ""
-
-#: includes/core.php:364
-msgid "Set Target"
-msgstr "Aseta tavoitteesi"
-
-#: includes/core.php:364
-msgid "Save Entry"
-msgstr "Tallenna toiminto"
-
-#: includes/core.php:373
-msgid "Clear Target"
-msgstr "Posta tavoitteesi"
-
-#: includes/core.php:512
-msgid "Please enter a value between 0-13 for pounds"
-msgstr "Olehyvä ja aseta 0-14 paunaa"
-
-#: includes/core.php:512
-msgid "Please enter a valid figure for pounds"
-msgstr "Annan kelvollinen luku paunoina"
-
-#: includes/core.php:519
-msgid "Are you sure you wish to clear your target weight?"
-msgstr "Oletko varma että haluat poistaa tavoitepainosi"
-
-#: includes/core.php:522
-msgid "Please enter a valid figure for Kg"
-msgstr "Anna kelvollinen luku kiloina"
-
-#: includes/core.php:523
-msgid "Please enter a valid figure for Stones"
-msgstr "Anna kelvollinen luku paunoina"
-
-#: includes/core.php:524
-msgid "Please enter a valid date"
-msgstr "Anna kelvollinen päiväys"
-
-#: includes/core.php:525
-msgid "Please confirm you wish to delete ALL your weight history"
-msgstr "Oletko varma että haluat poistaa KAIKKI sinun painohistoriasi"
-
-#: includes/core.php:526
-msgid "Are you sure you wish to delete this entry? If so, press OK."
-msgstr "Oletko varma että halua poistaa tämän valinnan? Jos olet, paina OK."
-
-#: includes/core.php:536
-msgid "Please enter a valid measurement ("
-msgstr "Anna kelvollinen päiväys"
-
-#: includes/core.php:543
-msgid "Please select or enter a value for height."
-msgstr "Anna kelvollinen luku kiloina"
-
-#: includes/core.php:544
-msgid "Please select or enter a value for activity level."
-msgstr "Anna kelvollinen luku paunoina"
-
-#: includes/core.php:545
-msgid "Please select or enter a value for gender."
-msgstr "Anna kelvollinen luku kiloina"
-
-#: includes/core.php:546
-msgid "Please enter a valid date."
-msgstr "Anna kelvollinen päiväys"
-
-#: includes/core.php:561
-msgid "Done"
-msgstr ""
-
-#: includes/core.php:562
-msgid "Today"
-msgstr ""
-
-#: includes/functions.php:81 includes/functions.php:96
-#: includes/functions.php:505 includes/shortcode-various.php:226
-#: pro-features/export.php:193
-msgid "st"
-msgstr ""
-
-#: includes/functions.php:206
-msgid "The following MySQL tables are missing for this plugin"
-msgstr "Seuraavat MySQL taulokot puuttuvat tästä pluginista"
-
-#: includes/functions.php:292 includes/shortcode-various.php:231
-#: pro-features/user-preferences.php:136
-msgid "Kg"
-msgstr "Kg"
-
-#: includes/functions.php:354
-msgid "View all weeks"
-msgstr "Näytä kaikki viikot"
-
-#: includes/functions.php:368
-msgid "View Week"
-msgstr "Näytä viikko"
-
-#: includes/functions.php:368
-msgid "to"
-msgstr "to"
-
-#: includes/functions.php:481
-msgid "The plugin supports the following measurements"
-msgstr ""
-
-#: includes/functions.php:594
-msgid "Read more about calculations"
-msgstr ""
-
-#: includes/globals.php:123
-msgid "Forearm - Left"
-msgstr ""
-
-#: includes/globals.php:123
-msgid "FL"
-msgstr ""
-
-#: includes/globals.php:124
-msgid "Forearm - Right"
-msgstr ""
-
-#: includes/globals.php:124
-msgid "FR"
-msgstr ""
-
-#: includes/globals.php:125
-msgid "Bicep - Left"
-msgstr ""
-
-#: includes/globals.php:125
-msgid "BL"
-msgstr ""
-
-#: includes/globals.php:126
-msgid "Bicep - Right"
-msgstr ""
-
-#: includes/globals.php:126
-msgid "BR"
-msgstr ""
-
-#: includes/globals.php:127
-msgid "Calf - Left"
-msgstr ""
-
-#: includes/globals.php:127
-msgid "CL"
-msgstr ""
-
-#: includes/globals.php:128
-msgid "Calf - Right"
-msgstr ""
-
-#: includes/globals.php:128
-msgid "CR"
-msgstr ""
-
-#: includes/globals.php:129
-msgid "Thigh - Left"
-msgstr ""
-
-#: includes/globals.php:129
-msgid "TL"
-msgstr ""
-
-#: includes/globals.php:130
-msgid "Thigh - Right"
-msgstr ""
-
-#: includes/globals.php:130
-msgid "TR"
-msgstr ""
-
-#: includes/globals.php:131
-msgid "Waist"
-msgstr ""
-
-#: includes/globals.php:131
-msgid "W"
-msgstr ""
-
-#: includes/globals.php:132
-msgid "Bust / Chest"
-msgstr ""
-
-#: includes/globals.php:132
-msgid "BC"
-msgstr ""
-
-#: includes/globals.php:133
-msgid "Shoulders"
-msgstr ""
-
-#: includes/globals.php:133
-msgid "S"
-msgstr "St"
-
-#: includes/globals.php:134 pro-features/functions.pages.php:82
-msgid "Height"
+#: admin-pages/awards/page-awards-add-update.php:191 core.php:14 core.php:83
+#: core.php:212 core.php:386
+msgid "Weight"
 msgstr "Paino"
 
-#: includes/globals.php:134
-msgid "H"
+#: admin-pages/awards/page-awards-add-update.php:191
+#: admin-pages/awards/page-awards-add-update.php:192
+#: admin-pages/settings/page-settings-generic.php:108 converters.php:56
+#: core.php:75 core.php:386 functions.php:73 functions.php:96
+msgid "kg"
 msgstr ""
 
-#: includes/globals.php:135
-msgid "Buttocks"
+#: admin-pages/awards/page-awards-add-update.php:195
+msgid "The difference in weight from the starting weight."
 msgstr ""
 
-#: includes/globals.php:135
-msgid "B"
+#: admin-pages/awards/page-awards-add-update.php:200
+msgid "BMI Equals"
 msgstr ""
 
-#: includes/globals.php:136
-msgid "Hips"
-msgstr ""
-
-#: includes/globals.php:136
-msgid "HI"
-msgstr ""
-
-#: includes/globals.php:137
-msgid "Navel"
-msgstr ""
-
-#: includes/globals.php:137
-msgid "NA"
-msgstr ""
-
-#: includes/globals.php:138
-msgid "Neck"
-msgstr ""
-
-#: includes/globals.php:138
-msgid "NE"
-msgstr ""
-
-#: includes/hooks.php:8 includes/shortcode-weight-loss-tracker.php:73
-#: pro-features/functions.pages.php:140
-msgid "Settings"
-msgstr "Asetukset"
-
-#: includes/hooks.php:11
-msgid "Manage User Data"
-msgstr "Hallitse käyttäjätietoja"
-
-#: includes/hooks.php:13 pages/page.license.php:72
-msgid "Upgrade"
-msgstr "Päivitä nyt"
-
-#: includes/hooks.php:13
-msgid "Your License"
-msgstr "Lisää lisenssi"
-
-#: includes/hooks.php:17 pages/page.help.php:21
-msgid "Help"
-msgstr "Apua"
-
-#: includes/hooks.php:180 pro-features/admin-pages/data-user.php:22
-msgid "The preferences for this user have been saved."
-msgstr ""
-
-#: includes/hooks.php:181
-msgid "An error occurred while trying to save the user's preferences."
-msgstr "Sattui virhe tallennettaessa tietoja!"
-
-#: includes/license.php:144
-msgid "License missing"
-msgstr ""
-
-#: includes/license.php:151
-msgid "Could not decode / verify license"
-msgstr ""
-
-#: includes/license.php:156
-msgid "Invalid license hash"
-msgstr ""
-
-#: includes/license.php:161
-msgid ""
-"This license doesn't appear to be for this site (no match on site hash)."
-msgstr ""
-
-#: includes/license.php:169
-msgid "This license has expired."
-msgstr ""
-
-#: includes/license.php:226
-msgid "None"
-msgstr ""
-
-#: includes/license.php:236
-msgid "Yearly Pro"
-msgstr ""
-
-#: includes/license.php:239
-msgid "Legacy Pro"
-msgstr ""
-
-#: includes/license.php:242 pages/page.settings.php:74
-msgid "Pro Plus"
-msgstr ""
-
-#: includes/save-data.php:40
-msgid "Saved!"
-msgstr "Tallennettu"
-
-#: includes/save-data.php:42
-msgid "An error occurred while saving your data!"
-msgstr "Sattui virhe tallennettaessa tietoja!"
-
-#: includes/save-data.php:45
-msgid "No user specified (hash)"
-msgstr "Ei käyttäjää määritetty (hash)"
-
-#: includes/save-data.php:48
-msgid "No user specified"
-msgstr "Ei käyttäjää määritetty"
-
-#: includes/shortcode-various.php:101 pro-features/functions.pages.php:68
-msgid "No target set"
+#: admin-pages/awards/page-awards-add-update.php:218
+#, fuzzy, php-format
+#| msgid "Your target weight is"
+msgid "% from starting weight"
 msgstr "Sinun tavoitteesi on"
 
-#: includes/shortcode-weight-loss-tracker.php:43
-msgid "Your settings have been saved!"
-msgstr "Asetuksesi on tallennettu"
+#: admin-pages/awards/page-awards-add-update.php:225
+msgid "Specify the percentage difference from the starting weight."
+msgstr ""
 
-#: includes/shortcode-weight-loss-tracker.php:45
-msgid "Your weight history has been deleted!"
-msgstr "Painohistoriasi on poistettu!"
+#: admin-pages/awards/page-awards-add-update.php:230
+msgid "Award Badge"
+msgstr ""
 
-#: includes/shortcode-weight-loss-tracker.php:68
-msgid "Overview"
-msgstr "Yleisnäkymä"
+#: admin-pages/awards/page-awards-add-update.php:243
+msgid "Custom Message"
+msgstr ""
 
-#: includes/shortcode-weight-loss-tracker.php:68
-msgid "Chart / Add Weight"
-msgstr "TAulukko / Lisää paino"
+#: admin-pages/awards/page-awards-add-update.php:247
+msgid ""
+"Add a custom message to be inserted into the email. Replaces the "
+"{custom_message} within the email template."
+msgstr ""
 
-#: includes/shortcode-weight-loss-tracker.php:69
-msgid "In Detail"
-msgstr "Yksityiskohdat"
-
-#: includes/shortcode-weight-loss-tracker.php:69
-msgid "View all recorded weights"
-msgstr "Näytä kaikki tallennetut painosi"
-
-#: includes/shortcode-weight-loss-tracker.php:73
-msgid "Choose weight units, date format, etc"
-msgstr "Valitse painoyksiköt, päivä asetukset, jne"
-
-#: includes/shortcode-weight-loss-tracker.php:89
-msgid "Add a weight entry"
+#: admin-pages/awards/page-awards-add-update.php:252
+#, fuzzy
+#| msgid "Add a new weight"
+msgid "Apply to new entries?"
 msgstr "Lisää uusi paino"
 
-#: includes/shortcode-weight-loss-tracker.php:94
-msgid "In a chart"
-msgstr "Painonseuranta taulukko"
+#: admin-pages/awards/page-awards-add-update.php:257
+#: admin-pages/awards/page-awards-add-update.php:270
+#: admin-pages/awards/page-awards-add-update.php:283
+#: admin-pages/awards/page-awards-add-update.php:296
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:83
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:99
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:154
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:166
+#: admin-pages/settings/page-settings-generic.php:95
+#: admin-pages/settings/page-settings-generic.php:132
+#: admin-pages/settings/page-settings-generic.php:142
+#: admin-pages/settings/page-settings-generic.php:153
+#: admin-pages/settings/page-settings-generic.php:164
+#: admin-pages/settings/page-settings-generic.php:224
+#: admin-pages/settings/page-settings-generic.php:239
+#: admin-pages/settings/page-settings-generic.php:253
+#: admin-pages/settings/page-settings-generic.php:263
+#: admin-pages/settings/page-settings-generic.php:273
+#: admin-pages/settings/page-settings-generic.php:362
+#: admin-pages/settings/page-settings-generic.php:394
+#: admin-pages/settings/page-settings-generic.php:423
+#: admin-pages/settings/page-settings-generic.php:441
+#: admin-pages/settings/page-settings-generic.php:466
+#: admin-pages/settings/page-settings-generic.php:517
+#: admin-pages/settings/page-settings-generic.php:532
+#: admin-pages/settings/page-settings-generic.php:542
+#: admin-pages/settings/page-settings-generic.php:552
+#: admin-pages/settings/page-settings-generic.php:572
+#: admin-pages/settings/page-settings-generic.php:592
+#: admin-pages/settings/page-settings-generic.php:653 functions.php:996
+msgid "Yes"
+msgstr "Kyllä"
 
-#: includes/shortcode-weight-loss-tracker.php:102
-msgid "A graph will appear once several weights have been entered."
-msgstr "Diagram ilmestyy muutaman tallennetun painon jälkeen"
+#: admin-pages/awards/page-awards-add-update.php:258
+#: admin-pages/awards/page-awards-add-update.php:271
+#: admin-pages/awards/page-awards-add-update.php:284
+#: admin-pages/awards/page-awards-add-update.php:295
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:83
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:98
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:153
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:165
+#: admin-pages/settings/page-settings-generic.php:96
+#: admin-pages/settings/page-settings-generic.php:133
+#: admin-pages/settings/page-settings-generic.php:143
+#: admin-pages/settings/page-settings-generic.php:154
+#: admin-pages/settings/page-settings-generic.php:163
+#: admin-pages/settings/page-settings-generic.php:225
+#: admin-pages/settings/page-settings-generic.php:238
+#: admin-pages/settings/page-settings-generic.php:252
+#: admin-pages/settings/page-settings-generic.php:262
+#: admin-pages/settings/page-settings-generic.php:272
+#: admin-pages/settings/page-settings-generic.php:363
+#: admin-pages/settings/page-settings-generic.php:393
+#: admin-pages/settings/page-settings-generic.php:424
+#: admin-pages/settings/page-settings-generic.php:442
+#: admin-pages/settings/page-settings-generic.php:465
+#: admin-pages/settings/page-settings-generic.php:516
+#: admin-pages/settings/page-settings-generic.php:533
+#: admin-pages/settings/page-settings-generic.php:543
+#: admin-pages/settings/page-settings-generic.php:553
+#: admin-pages/settings/page-settings-generic.php:571
+#: admin-pages/settings/page-settings-generic.php:591
+#: admin-pages/settings/page-settings-generic.php:652 functions.php:996
+msgid "No"
+msgstr "Ei"
 
-#: includes/shortcode-weight-loss-tracker.php:134
-msgid "Weight History"
-msgstr "Paino historia"
+#: admin-pages/awards/page-awards-add-update.php:260
+msgid "Can the award be given when a user adds a new weight entry?."
+msgstr ""
 
-#: includes/shortcode-weight-loss-tracker.php:146
-msgid "There is no data for this week, please try selecting another:"
-msgstr "Ei löydy tietoja tältä viikolta, Ole hyvä ja valitse toinen:"
+#: admin-pages/awards/page-awards-add-update.php:265
+msgid "Apply to updated entries?"
+msgstr ""
 
-#: includes/shortcode-weight-loss-tracker.php:152
-msgid "You haven't entered any weight data yet."
-msgstr "Et ole asettanut yhtään painoa vielä"
+#: admin-pages/awards/page-awards-add-update.php:273
+msgid "Can the award be given when a user updates an existing weight entry?."
+msgstr ""
 
-#: pages/page.help.php:23
-msgid "You can find detailed help with this plugin at our site:"
+#: admin-pages/awards/page-awards-add-update.php:278
+msgid "Send Email"
+msgstr ""
+
+#: admin-pages/awards/page-awards-add-update.php:290
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:160
+msgid "Enabled"
+msgstr ""
+
+#: admin-pages/awards/page-awards-add-update.php:303
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:173 core.php:425
+msgid "Cancel"
+msgstr ""
+
+#: admin-pages/awards/page-awards-add-update.php:306
+#: admin-pages/awards/page-awards-add-update.php:308
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:176
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:178
+#, fuzzy
+#| msgid "Saved!"
+msgid "Save"
+msgstr "Tallennettu"
+
+#: admin-pages/awards/page-awards-list.php:34
+#: admin-pages/user-data/data-user.php:122
+#: admin-pages/user-data/data-user.php:155
+#: admin-pages/user-data/data-user.php:175 hooks.php:11
+msgid "Awards"
+msgstr ""
+
+#: admin-pages/awards/page-awards-list.php:40
+msgid "Issue awards to your user's for meeting certain goals."
+msgstr ""
+
+#: admin-pages/awards/page-awards-list.php:41
+msgid "Read more about Awards"
+msgstr ""
+
+#: admin-pages/awards/page-awards-list.php:44
+msgid "Emails Disabled"
+msgstr ""
+
+#: admin-pages/awards/page-awards-list.php:44
+msgid ""
+"Emails will not be sent for email enabled awards. This allows you to test "
+"awards without emails being sent. Use the button to the right enable them"
+msgstr ""
+
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:62
+msgid "Add / Edit a Custom Field"
+msgstr ""
+
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:74
+msgid "Field Type"
+msgstr ""
+
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:81
+msgid "Number"
+msgstr ""
+
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:82
+msgid "Text"
+msgstr ""
+
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:84
+msgid "Photo"
+msgstr ""
+
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:87
+msgid "Note: Changing the field type will cause existing user data to be lost."
+msgstr ""
+
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:93
+msgid "Hide from shortcodes"
+msgstr ""
+
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:101
+msgid ""
+"Note: If set to Yes, photos uploaded into this custom field cannot be used "
+"in shortcodes i.e. the photos will only be visible to admin."
+msgstr ""
+
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:106
+msgid "Field / Question"
+msgstr ""
+
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:114
+msgid "Abbreviation"
+msgstr ""
+
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:118
+msgid ""
+"Used when displaying the field data in smaller spaces e.g. table headers, "
+"charts, etc"
+msgstr ""
+
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:123
+msgid "Suffix"
+msgstr ""
+
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:127
+msgid ""
+"Text display at to end of the entered value when displaying it to the user. "
+"e.g. CM would display in the following manner: 120 CM"
+msgstr ""
+
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:132
+#, fuzzy
+#| msgid "Display gridlines?"
+msgid "Display Order"
+msgstr "Näyttö ruudukon?"
+
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:143
+msgid ""
+"Used to specify the order of custom fields. Lower numbers are displayed "
+"higher up the form."
+msgstr ""
+
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:148 core.php:403
+msgid "Mandatory"
+msgstr ""
+
+#: admin-pages/meta-fields/page-meta-fields-list.php:23 hooks.php:10
+msgid "Custom Fields"
+msgstr ""
+
+#: admin-pages/meta-fields/page-meta-fields-list.php:26
+msgid ""
+"Custom Fields allows you to ask your user's additional questions when adding "
+"a weight entry. \n"
+"                                                        For example, you may "
+"wish to ask them how many cups of water they drank today or perhaps how they "
+"are feeling. \n"
+"                                                            You can use the "
+"following screen to add as many questions as you wish."
+msgstr ""
+
+#: admin-pages/meta-fields/page-meta-fields-list.php:29
+msgid "Read more about Custom Fields"
+msgstr ""
+
+#: admin-pages/page.help.php:24
+msgid "Custom modifications / web development"
+msgstr ""
+
+#: admin-pages/page.help.php:26
+msgid ""
+"If require plugin modifications to Weight Tracker, or need a new plugin "
+"built, or perhaps you need a developer to help you with your website then "
+"please don't hesitiate get in touch!"
+msgstr ""
+
+#: admin-pages/page.help.php:27
+msgid "We provide fixed priced quotes."
+msgstr ""
+
+#: admin-pages/page.help.php:36 admin-pages/page.license.php:235
+msgid "Documentation"
+msgstr ""
+
+#: admin-pages/page.help.php:38
+#, fuzzy
+#| msgid "You can find detailed help with this plugin at our site:"
+msgid "You can find detailed documentation for this plugin at our site:"
 msgstr ""
 "Löydät yksityiskohtaista apua tähän laajennuksen meidän Github Wiki:stä"
 
-#: pages/page.help.php:29
-msgid "Our road map"
-msgstr ""
+#: admin-pages/page.help.php:46
+#, fuzzy
+#| msgid "Stones & Pounds"
+msgid "Fix: Stones & Pounds accuracy"
+msgstr "Stone & Pauna"
 
-#: pages/page.help.php:31
+#: admin-pages/page.help.php:48
 msgid ""
-"Interested in the future development of this plugin? Then have a peek at our "
-"road map:"
+"Correct accuracy for measurements entered in Stones and Pounds (only run "
+"with the advice of YeKen)"
 msgstr ""
-"Kiinnostunut meidän pluginin yksityiskohtaisesta suuntelmasta? Kurkista "
-"meidän road mappia:"
 
-#: pages/page.license.php:11 pages/page.settings.php:8
-#: pro-features/export.php:268 pro-features/functions.php:392
+#: admin-pages/page.help.php:65
+msgid "Custom Fields: Migrate photos from old system to Custom Fields"
+msgstr ""
+
+#: admin-pages/page.help.php:67
+msgid ""
+"This will migrate photos from the old system to the new custom fields. It "
+"will create a custom field with the key \"photo\". Note! It will remove any "
+"existing migrated photos before re-adding them."
+msgstr ""
+
+#: admin-pages/page.help.php:90
+msgid "Done. View Log below for further information."
+msgstr ""
+
+#: admin-pages/page.help.php:100
+msgid "Admin Tools"
+msgstr ""
+
+#: admin-pages/page.help.php:111 admin-pages/page.help.php:125 core.php:663
+msgid "Done"
+msgstr ""
+
+#: admin-pages/page.help.php:116
+#, fuzzy
+#| msgid "Delete all user data!"
+msgid "Delete all issued awards"
+msgstr "Poista kaikki käyttäjätiedot"
+
+#: admin-pages/page.help.php:130
+#, fuzzy
+#| msgid "View all entries"
+msgid "Delete all log entries"
+msgstr "Näytä kaikki viikot"
+
+#: admin-pages/page.help.php:139
+#, fuzzy
+#| msgid "Weight Tracker Record"
+msgid "Weight Tracker Debug Log"
+msgstr "Weight Loss Tracker - Lomake"
+
+#: admin-pages/page.help.php:142
+msgid ""
+"Below is a list of the debug information logged by the Weight Tracker plugin "
+"over the last 31 days."
+msgstr ""
+
+#: admin-pages/page.help.php:174 admin-pages/page.help.php:178
+#, fuzzy
+#| msgid "Are you sure you?"
+msgid "Are you sure?"
+msgstr "Oletko varma?"
+
+#: admin-pages/page.help.php:175
+#, fuzzy
+#| msgid "Are you sure you wish to remove all user data?"
+msgid "Are you sure you wish to remove all issued awards?"
+msgstr "Haluatko että kaikki käyttäjätiedot poistetaan?"
+
+#: admin-pages/page.help.php:179
+#, fuzzy
+#| msgid "Are you sure you wish to clear your target weight?"
+msgid "Are you sure you wish to clear all log entries?"
+msgstr "Oletko varma että haluat poistaa tavoitepainosi"
+
+#: admin-pages/page.license.php:11
+#: admin-pages/settings/page-settings-generic.php:8
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Sinulla ei ole tarvittavia oikeuksia tälle sivulle."
 
-#: pages/page.license.php:39
+#: admin-pages/page.license.php:39
 msgid "Your license has been applied!"
 msgstr "Asetuksesi on tallennettu"
 
-#: pages/page.license.php:42
+#: admin-pages/page.license.php:42
 msgid "An error occurred applying your license: "
 msgstr "Sattui virhe tallennettaessa tietoja!"
 
-#: pages/page.license.php:77
+#: admin-pages/page.license.php:73 hooks.php:13
+msgid "Upgrade"
+msgstr "Päivitä nyt"
+
+#: admin-pages/page.license.php:78
 msgid "As you can see from the features listed below, the"
 msgstr "ja seuraavat ominaisuudet listattuna alla."
 
-#: pages/page.license.php:79
+#: admin-pages/page.license.php:80
 msgid ""
 "can offer you and your members a lot more features to help you and them "
 "manage their weight. There are two types of License that you can purchase, "
@@ -535,28 +479,30 @@ msgid ""
 "intake, Macronutrient Calculator, etc."
 msgstr ""
 
-#: pages/page.license.php:80
+#: admin-pages/page.license.php:81
 msgid ""
 "Of course, by purchasing a license, you are supporting the future of this "
 "plugin and it is gratefully appreciated."
 msgstr ""
 
-#: pages/page.license.php:85
-msgid "Legacy License"
+#: admin-pages/page.license.php:86
+#, fuzzy
+#| msgid "Legacy License"
+msgid "Legacy Pro License"
 msgstr "Lisää lisenssi"
 
-#: pages/page.license.php:86
+#: admin-pages/page.license.php:87
 msgid ""
 "Our licensing has model has changed, Prior to September 2017 it used to be a "
 "one off payment that enabled the Pro features of the plugin. This is still "
 "the case and any old licenses will still be honoured."
 msgstr ""
 
-#: pages/page.license.php:87
+#: admin-pages/page.license.php:88
 msgid "Moving to a yearly license"
 msgstr ""
 
-#: pages/page.license.php:88
+#: admin-pages/page.license.php:89
 msgid ""
 "There is no reason to move to a yearly license - Pro features will remain "
 "the same for legacy and new Pro subscriptions. However, if you were to move "
@@ -564,199 +510,235 @@ msgid ""
 "plugin (and I'll give you a big hug)."
 msgstr ""
 
-#: pages/page.license.php:92
+#: admin-pages/page.license.php:93
 msgid "Pro Plus License"
 msgstr ""
 
-#: pages/page.license.php:93
+#: admin-pages/page.license.php:94
 msgid ""
 "Of course, thank you for purchasing a Pro license - it is much appreciated. "
 "As you can see below, you can further expand the features of"
 msgstr ""
 
-#: pages/page.license.php:95 pages/page.license.php:105
+#: admin-pages/page.license.php:96 admin-pages/page.license.php:106
 msgid ""
 "by extending your license to Pro Plus. Pro Plus extends Pro with features "
 "such as BMR, Calorie intake, Macronutrient Calculator, etc. You can view the "
 "additional features that Pro Plus offers you below."
 msgstr ""
 
-#: pages/page.license.php:103
+#: admin-pages/page.license.php:104
 msgid ""
 "Of course, a big thank you purchasing a Pro license at some point - it is "
 "much appreciated. As you can see below, you can further expand the features "
 "of"
 msgstr ""
 
-#: pages/page.license.php:111
+#: admin-pages/page.license.php:112
 msgid ""
 "Thank you kind soul, you have purchased a Pro Plus license. A huge thank you "
 "for supporting me and this plugin!"
 msgstr ""
 
-#: pages/page.license.php:118
+#: admin-pages/page.license.php:119
 msgid "In case you need, your <strong>Site Hash</strong> is"
 msgstr "Sinä tarvitset, <strong>Site Hash</strong> "
 
-#: pages/page.license.php:121
+#: admin-pages/page.license.php:128
+msgid "Get a free 7 day trial!"
+msgstr ""
+
+#: admin-pages/page.license.php:135 admin-pages/page.license.php:141
 msgid "Upgrade to Pro Plus for"
 msgstr "Hanki Pro versio"
 
-#: pages/page.license.php:121 pages/page.license.php:223
-#: pages/page.license.php:237
+#: admin-pages/page.license.php:135 admin-pages/page.license.php:141
+#: admin-pages/page.license.php:255 admin-pages/page.license.php:269
 msgid "a year"
 msgstr ""
 
-#: pages/page.license.php:127
+#: admin-pages/page.license.php:143
+#, no-php-format
+msgid " (50% discount)"
+msgstr ""
+
+#: admin-pages/page.license.php:159
 msgid "Switch to a yearly Pro license for "
 msgstr ""
 
-#: pages/page.license.php:127 pages/page.license.php:128
+#: admin-pages/page.license.php:159 admin-pages/page.license.php:160
 msgid " a year"
 msgstr ""
 
-#: pages/page.license.php:128
+#: admin-pages/page.license.php:160
 msgid "Upgrade to Pro for "
 msgstr "Hanki Pro versio"
 
-#: pages/page.license.php:144
+#: admin-pages/page.license.php:176
 msgid "Add or Update License"
 msgstr "Lisää lisenssi"
 
-#: pages/page.license.php:149
+#: admin-pages/page.license.php:181
 msgid ""
 "Copy and paste the license given to you by YeKen into this box and click "
 "\"Apply License\""
 msgstr ""
 
-#: pages/page.license.php:152
+#: admin-pages/page.license.php:184
 msgid "Apply License"
 msgstr "Lisää lisenssi"
 
-#: pages/page.license.php:157
+#: admin-pages/page.license.php:189
 msgid "Your License Information"
 msgstr ""
 
-#: pages/page.license.php:161
+#: admin-pages/page.license.php:193
 msgid "Site Hash"
 msgstr ""
 
-#: pages/page.license.php:165 pro-features/widget-chart.php:110
+#: admin-pages/page.license.php:197
 msgid "Type"
 msgstr "Tyyppi"
 
-#: pages/page.license.php:169
+#: admin-pages/page.license.php:201
 msgid "Expires"
 msgstr ""
 
-#: pages/page.license.php:174
+#: admin-pages/page.license.php:206
 msgid "Never"
 msgstr ""
 
-#: pages/page.license.php:178
+#: admin-pages/page.license.php:210
 msgid "n/a"
 msgstr ""
 
-#: pages/page.license.php:188
+#: admin-pages/page.license.php:220
 msgid "Your Existing License"
 msgstr ""
 
-#: pages/page.license.php:194
+#: admin-pages/page.license.php:226
 msgid "Remove License"
 msgstr "Lisää lisenssi"
 
-#: pages/page.license.php:203
-msgid "Documentation"
-msgstr ""
-
-#: pages/page.license.php:206
+#: admin-pages/page.license.php:238
 msgid "Need further help or information, please visit our documentation site:"
 msgstr ""
 
-#: pages/page.license.php:223
+#: admin-pages/page.license.php:251
+msgid "Pro Plus Features"
+msgstr ""
+
+#: admin-pages/page.license.php:255
 msgid "Below is a list of the intended features of the Pro Plus version"
 msgstr "Alla on listattuna Pro version ominaisuudet"
 
-#: pages/page.license.php:223 pages/page.license.php:237
+#: admin-pages/page.license.php:255 admin-pages/page.license.php:269
 msgid "You can upgrade for"
 msgstr ""
 
-#: pages/page.license.php:237
+#: admin-pages/page.license.php:264
+msgid "Pro Features"
+msgstr ""
+
+#: admin-pages/page.license.php:269
 msgid "Below is a list of the intended features of the Pro version"
 msgstr "Alla on listattuna Pro version ominaisuudet"
 
-#: pages/page.license.php:251 pro-features/admin-pages/data-summary.php:177
-#: pro-features/functions.pages.php:169
+#: admin-pages/page.license.php:283 admin-pages/user-data/data-summary.php:203
 msgid "Are you sure you?"
 msgstr "Oletko varma?"
 
-#: pages/page.license.php:252
+#: admin-pages/page.license.php:284
 msgid ""
 "Are you sure you wish to remove the license for this site? Removing it may "
 "cause your user's to lose functionality."
 msgstr ""
 
-#: pages/page.settings.php:36
+#: admin-pages/settings/page-settings-generic.php:38
 msgid "Rebuild them now"
 msgstr "uudelleenrakenna ne nyt"
 
-#: pages/page.settings.php:58
+#: admin-pages/settings/page-settings-generic.php:60
 msgid " Settings"
 msgstr "Asetukset"
 
-#: pages/page.settings.php:72
+#: admin-pages/settings/page-settings-generic.php:74
 msgid "General"
 msgstr "Yleinen"
 
-#: pages/page.settings.php:72
+#: admin-pages/settings/page-settings-generic.php:74
 msgid "General settings"
 msgstr "Yleiset asetukset"
 
-#: pages/page.settings.php:73
-msgid "User Experience"
-msgstr "Käyttäjäkokemus"
+#: admin-pages/settings/page-settings-generic.php:75 license.php:254
+msgid "Pro Plus"
+msgstr ""
 
-#: pages/page.settings.php:73
-msgid "Settings that effect the user's overall experience"
-msgstr "Asetukset, jotka vaikuttavat käyttäjän kokemukseen"
-
-#: pages/page.settings.php:74
+#: admin-pages/settings/page-settings-generic.php:75
 msgid "Adjust settings for your Pro Plus features"
 msgstr ""
 
-#: pages/page.settings.php:75 pro-features/admin-pages/data-user.php:38
+#: admin-pages/settings/page-settings-generic.php:76
+#: admin-pages/user-data/data-user.php:43
 msgid "Chart"
 msgstr "Taulukko"
 
-#: pages/page.settings.php:75
+#: admin-pages/settings/page-settings-generic.php:76
 msgid "Chart styling and config"
 msgstr "Taulukon tyyli ja asetukset"
 
-#: pages/page.settings.php:76
+#: admin-pages/settings/page-settings-generic.php:77
 msgid "Notifications"
 msgstr ""
 
-#: pages/page.settings.php:76
+#: admin-pages/settings/page-settings-generic.php:77
 msgid "Configure email notifications"
 msgstr ""
 
-#: pages/page.settings.php:77
+#: admin-pages/settings/page-settings-generic.php:78
 msgid "Measurements"
 msgstr ""
 
-#: pages/page.settings.php:77
+#: admin-pages/settings/page-settings-generic.php:78
 msgid "Allow users to record their measurements"
 msgstr ""
 
-#: pages/page.settings.php:83
+#: admin-pages/settings/page-settings-generic.php:79
+msgid "3rd Party"
+msgstr ""
+
+#: admin-pages/settings/page-settings-generic.php:79
+msgid "3rd Party Integrations"
+msgstr ""
+
+#: admin-pages/settings/page-settings-generic.php:89
+msgid "Caching"
+msgstr ""
+
+#: admin-pages/settings/page-settings-generic.php:92
+msgid "Enable Caching?"
+msgstr ""
+
+#: admin-pages/settings/page-settings-generic.php:98
+msgid ""
+"If enabled, additional caching will be performed to reduce database queries. "
+"It is highly recommended that this remains enabled and only disabled for "
+"testing or to enable other caching mechanisms."
+msgstr ""
+
+#: admin-pages/settings/page-settings-generic.php:102
+msgid "Default units / formats to be used by plugin"
+msgstr ""
+
+#: admin-pages/settings/page-settings-generic.php:105
 msgid "Weight Units"
 msgstr "Painoyksikkö"
 
-#: pages/page.settings.php:87 pro-features/user-preferences.php:137
+#: admin-pages/settings/page-settings-generic.php:109
 msgid "Stones & Pounds"
 msgstr "Stone & Pauna"
 
-#: pages/page.settings.php:90
+#: admin-pages/settings/page-settings-generic.php:112
 msgid ""
 "You can specify whether to display weights in Kg, Stones & Pounds or just "
 "Pounds. Please note: The graph will be displayed in Pounds if \"Stones & "
@@ -765,108 +747,31 @@ msgstr ""
 "Voit määrittää, näytetäänkö painot kg, Stone ja Paunat tai vain Paunat. "
 "Huomaa: kuvaaja näytetään punnissa jos \"Stone ja Paunat\" on valittu."
 
-#: pages/page.settings.php:95
+#: admin-pages/settings/page-settings-generic.php:116
 msgid "UK or US Date format?"
 msgstr "UK or US Päivä formaatti?"
 
-#: pages/page.settings.php:98 pro-features/user-preferences.php:155
+#: admin-pages/settings/page-settings-generic.php:119
 msgid "UK (DD/MM/YYYY)"
 msgstr "UK (Päivä/Kuukausi/Vuosi)"
 
-#: pages/page.settings.php:99 pro-features/user-preferences.php:156
+#: admin-pages/settings/page-settings-generic.php:120
 msgid "US (MM/DD/YYYY)"
 msgstr "US (Kuukausi/Päivä/Vuosi)"
 
-#: pages/page.settings.php:101
+#: admin-pages/settings/page-settings-generic.php:122
 msgid "Specify what format dates should be displayed in (i.e. UK or US format)"
 msgstr "Valitse minä muotona päivät pitäisi näyttää (esim. UK vai US)"
 
-#: pages/page.settings.php:105
-msgid "Disable plugin CSS?"
-msgstr "Disabloi plugin CSS"
+#: admin-pages/settings/page-settings-generic.php:126
+msgid "User Experience"
+msgstr "Käyttäjäkokemus"
 
-#: pages/page.settings.php:108 pages/page.settings.php:118
-#: pages/page.settings.php:128 pages/page.settings.php:154
-#: pages/page.settings.php:164 pages/page.settings.php:175
-#: pages/page.settings.php:184 pages/page.settings.php:195
-#: pages/page.settings.php:205 pages/page.settings.php:288
-#: pages/page.settings.php:318 pages/page.settings.php:336
-#: pages/page.settings.php:354 pages/page.settings.php:393
-#: pages/page.settings.php:410 pages/page.settings.php:420
-#: pages/page.settings.php:430 pages/page.settings.php:443
-#: pages/page.settings.php:463 pro-features/widget-form.php:87
-msgid "No"
-msgstr "Ei"
-
-#: pages/page.settings.php:109 pages/page.settings.php:119
-#: pages/page.settings.php:129 pages/page.settings.php:153
-#: pages/page.settings.php:163 pages/page.settings.php:174
-#: pages/page.settings.php:185 pages/page.settings.php:194
-#: pages/page.settings.php:204 pages/page.settings.php:287
-#: pages/page.settings.php:319 pages/page.settings.php:335
-#: pages/page.settings.php:353 pages/page.settings.php:394
-#: pages/page.settings.php:409 pages/page.settings.php:419
-#: pages/page.settings.php:429 pages/page.settings.php:444
-#: pages/page.settings.php:464 pro-features/widget-form.php:88
-msgid "Yes"
-msgstr "Kyllä"
-
-#: pages/page.settings.php:111
-msgid ""
-"If you wish to style the forms in your own way, you can use this option to "
-"disable WLT's style sheets."
-msgstr ""
-"Jos haluat käyttää omaa tyyliä tässä formissa, voit valita option poista WLT "
-"tyylitaulukko"
-
-#: pages/page.settings.php:115
-msgid "Send usage data to YeKen?"
-msgstr ""
-
-#: pages/page.settings.php:121
-msgid ""
-"We would love to see how our plugin is used. By consenting, you are allowing "
-"permission for the following data to be sent on a weekly basis to YeKen: "
-"URL, summary of settings, count of recorded weights and measurements. No "
-"user or admin data will ever be transmitted."
-msgstr ""
-
-#: pages/page.settings.php:125
-msgid "Disable notifications from YeKen?"
-msgstr ""
-
-#: pages/page.settings.php:131
-msgid ""
-"Occasionally YeKen likes to display simple notifications within your "
-"WordPress dashboard. Use this setting if you wish to disable them."
-msgstr ""
-
-#: pages/page.settings.php:135
-msgid "Who can view and modify user data?"
-msgstr "Näytä ja muokkaa jo olemassa olevan käyttäjätietoja"
-
-#: pages/page.settings.php:138
-msgid "Administrators Only"
-msgstr ""
-
-#: pages/page.settings.php:139
-msgid "Editors and above"
-msgstr ""
-
-#: pages/page.settings.php:140
-msgid "Authors and above"
-msgstr ""
-
-#: pages/page.settings.php:142
-msgid ""
-"Specify the minimum level of user role that maybe view or edit user data."
-msgstr ""
-
-#: pages/page.settings.php:150
+#: admin-pages/settings/page-settings-generic.php:129
 msgid "Allow target weights?"
 msgstr "Sallitko kohdepainon?"
 
-#: pages/page.settings.php:156
+#: admin-pages/settings/page-settings-generic.php:135
 msgid ""
 "If enabled, a user is allowed to enter a target weight. This will be "
 "displayed as a horizontal bar on the line chart."
@@ -874,21 +779,21 @@ msgstr ""
 "Jos sallittu, käyttäjä voi asettaa kohdepainon. Tämä näkyy vaakapalkkina "
 "taulukossa"
 
-#: pages/page.settings.php:160
+#: admin-pages/settings/page-settings-generic.php:139
 msgid "Display BMI in tables?"
 msgstr "Näytä datataulukko"
 
-#: pages/page.settings.php:167
+#: admin-pages/settings/page-settings-generic.php:146
 msgid ""
 "If enabled, BMI values will be displayed alongside weight entries in data "
 "tables."
 msgstr "Jos käytössä, ruudukon viivat näkyy Graph canvas muodossa."
 
-#: pages/page.settings.php:171
+#: admin-pages/settings/page-settings-generic.php:150
 msgid "Allow user settings"
 msgstr "Salli käyttäjäasetukset"
 
-#: pages/page.settings.php:177
+#: admin-pages/settings/page-settings-generic.php:156
 msgid ""
 "Allow your users to select their own data units, complete their \"About You"
 "\" fields and remove all their data."
@@ -896,83 +801,171 @@ msgstr ""
 "Salli käyttäjän valita heidän painoyksikkö, päiväysmuoto ja poistaa kaikki "
 "heidän data"
 
-#: pages/page.settings.php:181
+#: admin-pages/settings/page-settings-generic.php:160
 msgid "\"About You\" fields mandatory?"
 msgstr ""
 
-#: pages/page.settings.php:187
+#: admin-pages/settings/page-settings-generic.php:166
 msgid ""
 "If User Settings is enabled, should all the \"About You\" (height, activity "
 "level, etc) be mandatory?"
 msgstr ""
 
-#: pages/page.settings.php:191
-msgid "Advanced data tables?"
-msgstr "Edistynyt data taulukko"
-
-#: pages/page.settings.php:197
-msgid ""
-"User's weight history is presented in responsive tables that allow sorting, "
-"paging, editing and deleting. Weight Index (i.e. percentage lost / gained to "
-"be displayed.)"
+#: admin-pages/settings/page-settings-generic.php:171
+#: admin-pages/user-data/data-user.php:71 shortcode-weight-loss-tracker.php:98
+msgid "Photos"
 msgstr ""
-"Käyttäjän paino historia esitetään myötämielisenä taulukoita, jotka "
-"mahdollistavat lajittelu, henkilöhaku, muokata ja poistaa. Paino Index (eli "
-"prosentuaalinen kadonnut / saadut näytetään.)"
 
-#: pages/page.settings.php:201
-msgid "Display data in tabs?"
-msgstr "Näytä datataulukko"
-
-#: pages/page.settings.php:207
-msgid ""
-"If enabled, \"Weight History\" and \"Target Weight\" will be displayed on "
-"sepearate tabs when using the [weight-loss-tracker] shortcode."
+#: admin-pages/settings/page-settings-generic.php:174
+msgid "Max. Photo Size?"
 msgstr ""
-"Jos enabloitu \"painohistoria\" ja \"kohdepaino\" näytetään erillisenä "
-"taulukkona"
 
-#: pages/page.settings.php:214
-msgid "Upgrade now to Pro Plus"
-msgstr "Päivitä nyt"
+#: admin-pages/settings/page-settings-generic.php:196
+msgid "Maximum photo size (in MB) that is allowed to be uploaded. "
+msgstr ""
 
-#: pages/page.settings.php:217
+#: admin-pages/settings/page-settings-generic.php:197
+msgid "This is used as part of Custom Fields."
+msgstr ""
+
+#: admin-pages/settings/page-settings-generic.php:199
+msgid "View Custom Fields"
+msgstr ""
+
+#: admin-pages/settings/page-settings-generic.php:204
+msgid "Permissions"
+msgstr ""
+
+#: admin-pages/settings/page-settings-generic.php:207
+msgid "Who can view and modify user data?"
+msgstr "Näytä ja muokkaa jo olemassa olevan käyttäjätietoja"
+
+#: admin-pages/settings/page-settings-generic.php:210
+msgid "Administrators Only"
+msgstr ""
+
+#: admin-pages/settings/page-settings-generic.php:211
+msgid "Editors and above"
+msgstr ""
+
+#: admin-pages/settings/page-settings-generic.php:212
+msgid "Authors and above"
+msgstr ""
+
+#: admin-pages/settings/page-settings-generic.php:214
+msgid ""
+"Specify the minimum level of user role that maybe view or edit user data."
+msgstr ""
+
+#: admin-pages/settings/page-settings-generic.php:218
+msgid "Groups"
+msgstr ""
+
+#: admin-pages/settings/page-settings-generic.php:221
+msgid "Enable Groups?"
+msgstr ""
+
+#: admin-pages/settings/page-settings-generic.php:227
+msgid "Add the ability to place your user's into groups."
+msgstr ""
+
+#: admin-pages/settings/page-settings-generic.php:228
+#, fuzzy
+#| msgid "Manage User Data"
+msgid "Manage User Groups"
+msgstr "Hallitse käyttäjätietoja"
+
+#: admin-pages/settings/page-settings-generic.php:232
+msgid "Birthday Emails"
+msgstr ""
+
+#: admin-pages/settings/page-settings-generic.php:235
+msgid "Enable?"
+msgstr ""
+
+#: admin-pages/settings/page-settings-generic.php:241
+msgid ""
+"If enabled, a Happy Birthday email shall be sent to users on their birthday."
+msgstr ""
+
+#: admin-pages/settings/page-settings-generic.php:246
+#: shortcode-weight-loss-tracker.php:103
+msgid "Advanced"
+msgstr ""
+
+#: admin-pages/settings/page-settings-generic.php:249
+msgid "Disable plugin CSS?"
+msgstr "Disabloi plugin CSS"
+
+#: admin-pages/settings/page-settings-generic.php:255
+msgid ""
+"If you wish to style the forms in your own way, you can use this option to "
+"disable WLT's style sheets."
+msgstr ""
+"Jos haluat käyttää omaa tyyliä tässä formissa, voit valita option poista WLT "
+"tyylitaulukko"
+
+#: admin-pages/settings/page-settings-generic.php:259
+msgid "Send usage data to YeKen?"
+msgstr ""
+
+#: admin-pages/settings/page-settings-generic.php:265
+msgid ""
+"We would love to see how our plugin is used. By consenting, you are allowing "
+"permission for the following data to be sent on a weekly basis to YeKen: "
+"URL, summary of settings, count of recorded weights and measurements. No "
+"user or admin data will ever be transmitted."
+msgstr ""
+
+#: admin-pages/settings/page-settings-generic.php:269
+msgid "Disable notifications from YeKen?"
+msgstr ""
+
+#: admin-pages/settings/page-settings-generic.php:275
+msgid ""
+"Occasionally YeKen likes to display simple notifications within your "
+"WordPress dashboard. Use this setting if you wish to disable them."
+msgstr ""
+
+#: admin-pages/settings/page-settings-generic.php:287
 msgid "Calculating daily calorie intake to lose weight"
 msgstr ""
 
-#: pages/page.settings.php:221
+#: admin-pages/settings/page-settings-generic.php:291
 msgid "Female Calorie Cap"
 msgstr ""
 
-#: pages/page.settings.php:224
+#: admin-pages/settings/page-settings-generic.php:294
 msgid ""
 "Specify a maximum value for number of daily calories allowed to achieve "
 "weight loss. As per NHS guidelines, females are set to 1400kcal by default"
 msgstr ""
 
-#: pages/page.settings.php:224 pages/page.settings.php:231
-#: pages/page.settings.php:238 pages/page.settings.php:256
-#: pages/page.settings.php:263
+#: admin-pages/settings/page-settings-generic.php:294
+#: admin-pages/settings/page-settings-generic.php:301
+#: admin-pages/settings/page-settings-generic.php:308
+#: admin-pages/settings/page-settings-generic.php:326
+#: admin-pages/settings/page-settings-generic.php:333
 msgid ""
 "Please note, it may take up to 15 minutes for calculations to change (due to "
 "caching)."
 msgstr ""
 
-#: pages/page.settings.php:228
+#: admin-pages/settings/page-settings-generic.php:298
 msgid "Male Calorie Cap"
 msgstr ""
 
-#: pages/page.settings.php:231
+#: admin-pages/settings/page-settings-generic.php:301
 msgid ""
 "Specify a maximum value for number of daily calories allowed to achieve "
 "weight loss. As per NHS guidelines, males are set to 1900kcal by default"
 msgstr ""
 
-#: pages/page.settings.php:235
+#: admin-pages/settings/page-settings-generic.php:305
 msgid "Calories to subtract"
 msgstr ""
 
-#: pages/page.settings.php:238
+#: admin-pages/settings/page-settings-generic.php:308
 msgid ""
 "Part of calculating the daily calorie intake to lose weight is to first "
 "calculate the calorie intake to maintain existing weight. Once we have this, "
@@ -980,1393 +973,1443 @@ msgid ""
 "weight."
 msgstr ""
 
-#: pages/page.settings.php:242 pro-features/admin-pages/data-user.php:76
+#: admin-pages/settings/page-settings-generic.php:312
+#: admin-pages/user-data/data-user.php:135
+#: admin-pages/user-data/data-user.php:155
+#: admin-pages/user-data/data-user.php:169
 msgid "Macronutrient Calculator"
 msgstr ""
 
-#: pages/page.settings.php:246
-#: pro-features/plus/macronutrient.calculator.php:118
+#: admin-pages/settings/page-settings-generic.php:316
 msgid "Proteins"
 msgstr ""
 
-#: pages/page.settings.php:249
+#: admin-pages/settings/page-settings-generic.php:319
 msgid "Percentage of Proteins to make up a moderate diet"
 msgstr ""
 
-#: pages/page.settings.php:249
+#: admin-pages/settings/page-settings-generic.php:319
 msgid ""
 "Please note, it may take up to 15 minutes for calorie calculations to change "
 "(due to caching)."
 msgstr ""
 
-#: pages/page.settings.php:253
+#: admin-pages/settings/page-settings-generic.php:323
 msgid "Carbohydrates"
 msgstr ""
 
-#: pages/page.settings.php:256
+#: admin-pages/settings/page-settings-generic.php:326
 msgid "Percentage of Carbohydrates to make up a moderate diet"
 msgstr ""
 
-#: pages/page.settings.php:260
-#: pro-features/plus/macronutrient.calculator.php:152
+#: admin-pages/settings/page-settings-generic.php:330
 msgid "Fats"
 msgstr ""
 
-#: pages/page.settings.php:263
+#: admin-pages/settings/page-settings-generic.php:333
 msgid "Percentage of Fats to make up a moderate diet"
 msgstr ""
 
-#: pages/page.settings.php:272
+#: admin-pages/settings/page-settings-generic.php:347
 msgid "Default chart type"
 msgstr "Oletusarvoinen taulukkotyyppi"
 
-#: pages/page.settings.php:275
+#: admin-pages/settings/page-settings-generic.php:350
 msgid "Line Chart"
 msgstr "Linja taulukko"
 
-#: pages/page.settings.php:275
+#: admin-pages/settings/page-settings-generic.php:350
 msgid "Highly Recommended"
 msgstr ""
 
-#: pages/page.settings.php:276
+#: admin-pages/settings/page-settings-generic.php:351
 msgid "Bar Chart"
 msgstr "Pylvästaulukko"
 
-#: pages/page.settings.php:279
+#: admin-pages/settings/page-settings-generic.php:354
 msgid ""
 "If enabled, \"Allows points and labels to be displayed on graph. "
 "<strong>Note: If using measurements</strong>, graph type will be forced to "
 "Line."
 msgstr "Jos käytössä, \"Mahdollistaa pisteet ja etiketit näytetään kaaviossa."
 
-#: pages/page.settings.php:284
+#: admin-pages/settings/page-settings-generic.php:359
 msgid "Display gridlines?"
 msgstr "Näyttö ruudukon?"
 
-#: pages/page.settings.php:290
+#: admin-pages/settings/page-settings-generic.php:365
 msgid "If enabled, gridlines will be displayed on the Graph canvas."
 msgstr "Jos käytössä, ruudukon viivat näkyy Graph canvas muodossa."
 
-#: pages/page.settings.php:294
+#: admin-pages/settings/page-settings-generic.php:369
 msgid "Maximum points per graph"
 msgstr "Maksimipisteet kaaviossa"
 
-#: pages/page.settings.php:303 pages/page.settings.php:357
+#: admin-pages/settings/page-settings-generic.php:378
+#: admin-pages/settings/page-settings-generic.php:445
 msgid "If enabled, \"Allows points and labels to be displayed on graph."
 msgstr "Jos käytössä, \"Mahdollistaa pisteet ja etiketit näytetään kaaviossa."
 
-#: pages/page.settings.php:308
+#: admin-pages/settings/page-settings-generic.php:383
 msgid "Weight colour?"
 msgstr "Painon väri?"
 
-#: pages/page.settings.php:311
+#: admin-pages/settings/page-settings-generic.php:386
 msgid ""
 "If enabled, enter a HEX colour code to use for the Weight history line / bar "
 "border on graph."
 msgstr ""
 "Jos käytössä, kirjoita HEX värikoodi käyttää Weight historian linja käyrää."
 
-#: pages/page.settings.php:315
+#: admin-pages/settings/page-settings-generic.php:390
 msgid "Should y Axes start at 0?"
 msgstr ""
 
-#: pages/page.settings.php:322
+#: admin-pages/settings/page-settings-generic.php:397
 msgid ""
 "If enabled, y Axes shall start at 0. Otherwise, they are automatically "
 "calculated."
 msgstr ""
 
-#: pages/page.settings.php:328
+#: admin-pages/settings/page-settings-generic.php:401
+#, fuzzy
+#| msgid "Text Colour"
+msgid "Text colour"
+msgstr "Painon väri?"
+
+#: admin-pages/settings/page-settings-generic.php:404
+#, fuzzy
+#| msgid ""
+#| "If enabled, enter a HEX colour code to use for the Target line on graph."
+msgid "Enter a HEX colour code to use for text displayed on the graph."
+msgstr "Jos käytössä, kirjoita HEX värikoodi käyttää Kohdelinja käyrää."
+
+#: admin-pages/settings/page-settings-generic.php:408
+msgid "Font Family"
+msgstr ""
+
+#: admin-pages/settings/page-settings-generic.php:411
+msgid ""
+"Specify one or more fonts that should be used when rendering text on the "
+"graph. Separate multiple fonts with a comma. Leave blank to use the default."
+msgstr ""
+
+#: admin-pages/settings/page-settings-generic.php:416
 msgid "Line Chart Options"
 msgstr "Linja taulukko"
 
-#: pages/page.settings.php:332
+#: admin-pages/settings/page-settings-generic.php:420
 msgid "Bezier Curve?"
 msgstr "Bezier Käyrä (Ainoastaan viiva)?"
 
-#: pages/page.settings.php:339
+#: admin-pages/settings/page-settings-generic.php:427
 msgid "If enabled, lines between points on a line graph will be curved"
 msgstr "Jos käytössä, linjoihin pisteiden välissä viivakuvaaja kaareutuu"
 
-#: pages/page.settings.php:343
+#: admin-pages/settings/page-settings-generic.php:431
 msgid "Target line colour?"
 msgstr "Kohdelinjäväri?"
 
-#: pages/page.settings.php:346
+#: admin-pages/settings/page-settings-generic.php:434
 msgid ""
 "If enabled, enter a HEX colour code to use for the Target line on graph."
 msgstr "Jos käytössä, kirjoita HEX värikoodi käyttää Kohdelinja käyrää."
 
-#: pages/page.settings.php:350
+#: admin-pages/settings/page-settings-generic.php:438
 msgid "Display points on graph?"
 msgstr "Näytä pisteet kaaviossa"
 
-#: pages/page.settings.php:361
+#: admin-pages/settings/page-settings-generic.php:449
 msgid "Point thickness"
 msgstr "Viivan paksuus (ainostaan linjassa)"
 
-#: pages/page.settings.php:370
+#: admin-pages/settings/page-settings-generic.php:458
 msgid "Specifies the point thickness on a line chart."
 msgstr "Määrittää pisteen paksuus viivakaaviossa."
 
-#: pages/page.settings.php:375
+#: admin-pages/settings/page-settings-generic.php:462
+#, fuzzy
+#| msgid "Add a new weight"
+msgid "Add a fill under weight line?"
+msgstr "Lisää uusi paino"
+
+#: admin-pages/settings/page-settings-generic.php:468
+#, fuzzy
+#| msgid ""
+#| "If enabled, enter a HEX colour code to use for the Target line on graph."
+msgid "If enabled, a fill colour will be added under the weight line."
+msgstr "Jos käytössä, kirjoita HEX värikoodi käyttää Kohdelinja käyrää."
+
+#: admin-pages/settings/page-settings-generic.php:472
+#, fuzzy
+#| msgid "Weight fill colour?"
+msgid "Weight Fill Colour"
+msgstr "Painoviivan täyttöväri?"
+
+#: admin-pages/settings/page-settings-generic.php:475
+#, fuzzy
+#| msgid ""
+#| "If enabled, enter a HEX colour code to use for filling the Weight bars on "
+#| "the graph."
+msgid ""
+"If enabled, enter a HEX colour code to use for the fill colour under the "
+"weight line."
+msgstr ""
+"Jos käytössä, kirjoita HEX värikoodi käyttää Weight historian linja käyrää."
+
+#: admin-pages/settings/page-settings-generic.php:479
+#, fuzzy
+#| msgid "Weight fill colour?"
+msgid "Weight Fill Opacity"
+msgstr "Painoviivan täyttöväri?"
+
+#: admin-pages/settings/page-settings-generic.php:488
+msgid "Specifies the opacity of the fill colour under the weight line."
+msgstr ""
+
+#: admin-pages/settings/page-settings-generic.php:493
 msgid "Bar Chart Options"
 msgstr "Pylvästaulukko"
 
-#: pages/page.settings.php:379
+#: admin-pages/settings/page-settings-generic.php:497
 msgid "Weight fill colour?"
 msgstr "Painoviivan täyttöväri?"
 
-#: pages/page.settings.php:382
+#: admin-pages/settings/page-settings-generic.php:500
 msgid ""
 "If enabled, enter a HEX colour code to use for filling the Weight bars on "
 "the graph."
 msgstr ""
 "Jos käytössä, kirjoita HEX värikoodi käyttää Weight historian linja käyrää."
 
-#: pages/page.settings.php:390
+#: admin-pages/settings/page-settings-generic.php:513
 msgid "Enable email notifications"
 msgstr ""
 
-#: pages/page.settings.php:399
+#: admin-pages/settings/page-settings-generic.php:522
 msgid "Email addresses to notify"
 msgstr ""
 
-#: pages/page.settings.php:402
+#: admin-pages/settings/page-settings-generic.php:525
 msgid ""
 "Specify one or more email addresses to be notified. Seperate multiple emails "
 "with a comma."
 msgstr ""
 
-#: pages/page.settings.php:406
+#: admin-pages/settings/page-settings-generic.php:529
 msgid "New weight / measurement entries"
 msgstr ""
 
-#: pages/page.settings.php:412
+#: admin-pages/settings/page-settings-generic.php:535
 msgid ""
 "Receive notifications when a member adds a new weight / measurement entry."
 msgstr ""
 
-#: pages/page.settings.php:416
+#: admin-pages/settings/page-settings-generic.php:539
 msgid "Edited weight / measurement entries"
 msgstr ""
 
-#: pages/page.settings.php:422
+#: admin-pages/settings/page-settings-generic.php:545
 msgid ""
 "Receive notifications when a member edits an existing weight / measurement "
 "entry."
 msgstr ""
 
-#: pages/page.settings.php:426
+#: admin-pages/settings/page-settings-generic.php:549
 msgid "New / updated targets"
 msgstr ""
 
-#: pages/page.settings.php:432
+#: admin-pages/settings/page-settings-generic.php:555
 msgid "Receive notifications when a member adds / edits their target."
 msgstr ""
 
-#: pages/page.settings.php:440
+#: admin-pages/settings/page-settings-generic.php:568
 msgid "Allow Measurements?"
 msgstr "Sallitko kohdepainon?"
 
-#: pages/page.settings.php:446
+#: admin-pages/settings/page-settings-generic.php:574
 msgid ""
 "If enabled, a user can also add body measurements along with their weights."
 msgstr ""
 
-#: pages/page.settings.php:450
+#: admin-pages/settings/page-settings-generic.php:578
 msgid "Measurement Units"
 msgstr ""
 
-#: pages/page.settings.php:453 pro-features/user-preferences.php:145
+#: admin-pages/settings/page-settings-generic.php:581
 msgid "Centimetres"
 msgstr ""
 
-#: pages/page.settings.php:456
+#: admin-pages/settings/page-settings-generic.php:582 core.php:76
+msgid "Inches"
+msgstr ""
+
+#: admin-pages/settings/page-settings-generic.php:584
 msgid "Default unit for recording measurements."
 msgstr ""
 
-#: pages/page.settings.php:460
+#: admin-pages/settings/page-settings-generic.php:588
 msgid "Measurements mandatory?"
 msgstr ""
 
-#: pages/page.settings.php:466
+#: admin-pages/settings/page-settings-generic.php:594
 msgid "If yes, a user will be forced to complete all measurement features."
 msgstr ""
 
-#: pages/page.settings.php:470
+#: admin-pages/settings/page-settings-generic.php:598
 msgid "Areas of measurements"
 msgstr ""
 
-#: pages/page.settings.php:492
+#: admin-pages/settings/page-settings-generic.php:620
 msgid "Enable"
 msgstr ""
 
-#: pages/page.settings.php:495
+#: admin-pages/settings/page-settings-generic.php:623
 msgid "Chart Colour"
 msgstr "Painon väri?"
 
-#: pages/page.user.data.advertise.php:21
-msgid "Looking to view and manipulate your user's data?"
+#: admin-pages/settings/page-settings-generic.php:649
+msgid "Enable Gravity Forms"
 msgstr ""
 
-#: pages/page.user.data.advertise.php:23
+#: admin-pages/settings/page-settings-generic.php:656
 msgid ""
-"Upgrade to the Pro version of this plugin to view, edit and delete your "
-"user's weight entries"
+"Examine Gravity Form submissions for weight and measurement data. If found, "
+"create a Weight Entry for the user currently logged in."
 msgstr ""
 
-#: pages/page.user.data.advertise.php:25
-msgid "View all user entries in tabular and chart format."
+#: admin-pages/settings/page-settings-generic.php:657
+msgid "Read more at "
 msgstr ""
 
-#: pages/page.user.data.advertise.php:26
-msgid "Add, edit and delete user entries."
+#: admin-pages/settings/page-settings-groups.php:23
+msgid "Manage Groups"
 msgstr ""
 
-#: pages/page.user.data.advertise.php:27
-msgid "Sortable and responsive tables."
+#: admin-pages/settings/page-settings-groups.php:26
+msgid "Add or remove Groups that users can be assigned to."
 msgstr ""
 
-#: pages/page.user.data.advertise.php:28
-msgid "View league tables of most lost / gained."
+#: admin-pages/settings/page-settings-groups.php:27
+msgid "Read more about Groups"
 msgstr ""
 
-#: pages/page.user.data.advertise.php:29
-msgid "View user stats, weight lost, recent weight, start weight, BMI, etc."
+#: admin-pages/settings/page-settings-groups.php:30
+#, fuzzy
+#| msgid "Add a new weight"
+msgid "Add a new group"
+msgstr "Lisää uusi paino"
+
+#: admin-pages/settings/page-settings-groups.php:45
+msgid "Existing groups"
 msgstr ""
 
-#: pages/page.user.data.advertise.php:30
-msgid "Export all or a particular user's data in CSV / JSON."
-msgstr ""
-
-#: pages/page.user.data.advertise.php:32
-msgid "Upgrade to Pro Version"
-msgstr "Hanki Pro versio"
-
-#: pages/page.user.data.advertise.php:37
-msgid "Example screenshots"
-msgstr ""
-
-#: pages/page.user.data.advertise.php:39
-msgid "Below are a couple of screenshots from the user data screens"
-msgstr ""
-
-#: pro-features/admin-pages/data-add-edit-entry.php:17
-#: pro-features/admin-pages/data-edit-target.php:17
+#: admin-pages/user-data/data-add-edit-entry.php:17
+#: admin-pages/user-data/data-edit-target.php:17
+#: admin-pages/user-data/data-photos.php:17
 msgid "There was an issue loading this page"
 msgstr ""
 
-#: pro-features/admin-pages/data-add-edit-entry.php:43
+#: admin-pages/user-data/data-add-edit-entry.php:48
 msgid "Add / Edit an entry"
 msgstr ""
 
-#: pro-features/admin-pages/data-edit-target.php:32
+#: admin-pages/user-data/data-add-edit-entry.php:54
+msgid "A Pro license is required to add / edit a weight entry."
+msgstr ""
+
+#: admin-pages/user-data/data-edit-target.php:37
 msgid "Edit user's target"
 msgstr "Salli käyttäjäasetukset"
 
-#: pro-features/admin-pages/data-search-results.php:11
-#: pro-features/admin-pages/data-search-results.php:18
+#: admin-pages/user-data/data-edit-target.php:43
+#, fuzzy
+#| msgid "Please remember to enter your target weight."
+msgid "A Pro license is required to set a user's target weight."
+msgstr "Oletko varma että haluat poistaa tavoitepainosi"
+
+#: admin-pages/user-data/data-photos.php:29
+msgid "User's photos"
+msgstr ""
+
+#: admin-pages/user-data/data-photos.php:38
+#: admin-pages/user-data/data-user.php:79
+msgid "This user has uploaded "
+msgstr ""
+
+#: admin-pages/user-data/data-photos.php:43
+#: admin-pages/user-data/data-user.php:88
+#, fuzzy
+#| msgid "No weight data was found for the specified user."
+msgid "No photos could be found for this user."
+msgstr "Painotietoja ei löytynyt määritetylle käyttäjälle."
+
+#: admin-pages/user-data/data-photos.php:55
+#: admin-pages/user-data/data-user.php:100
+msgid "Add and enable a Photo Custom Field"
+msgstr ""
+
+#: admin-pages/user-data/data-photos.php:56
+#: admin-pages/user-data/data-user.php:101
+msgid "to allow a users to upload photos of their progress"
+msgstr ""
+
+#: admin-pages/user-data/data-photos.php:63
+#: admin-pages/user-data/data-user-edit-settings.php:38
+#: admin-pages/user-data/data-user.php:59
+#: admin-pages/user-data/data-user.php:108
+#, fuzzy
+#| msgid "Upgrade to Pro for "
+msgid "Upgrade to Pro"
+msgstr "Hanki Pro versio"
+
+#: admin-pages/user-data/data-photos.php:64
+#: admin-pages/user-data/data-user.php:109
+msgid "to allow a user to upload photos of their progress"
+msgstr ""
+
+#: admin-pages/user-data/data-search-results.php:11
+#: admin-pages/user-data/data-search-results.php:18
 msgid "Search Results"
 msgstr ""
 
-#: pro-features/admin-pages/data-search-results.php:32
-msgid "results were found for:"
+#: admin-pages/user-data/data-search-results.php:35
+msgid "results were found for"
 msgstr ""
 
-#: pro-features/admin-pages/data-search-results.php:40
+#: admin-pages/user-data/data-search-results.php:43
 msgid "Username"
 msgstr ""
 
-#: pro-features/admin-pages/data-search-results.php:41
+#: admin-pages/user-data/data-search-results.php:44
 msgid "Email"
 msgstr ""
 
-#: pro-features/admin-pages/data-search-results.php:42
-#: pro-features/functions.pages.php:46
+#: admin-pages/user-data/data-search-results.php:45
 msgid "No. of Entries"
 msgstr ""
 
-#: pro-features/admin-pages/data-search-results.php:43
-#: pro-features/functions.pages.php:50
+#: admin-pages/user-data/data-search-results.php:46
 msgid "Start Weight"
 msgstr "Tavoitepaino"
 
-#: pro-features/admin-pages/data-search-results.php:44
+#: admin-pages/user-data/data-search-results.php:47
 msgid "Recent Weight"
 msgstr "Tavoitepaino"
 
-#: pro-features/admin-pages/data-search-results.php:58
+#: admin-pages/user-data/data-search-results.php:48 core.php:285
+msgid "Target Weight"
+msgstr "Tavoitepaino"
+
+#: admin-pages/user-data/data-search-results.php:61
 msgid "No users were found for the given search criteria:"
 msgstr ""
 
-#: pro-features/admin-pages/data-search-results.php:63
+#: admin-pages/user-data/data-search-results.php:66
 msgid "No search terms were specified"
 msgstr "Ei käyttäjää määritetty"
 
-#: pro-features/admin-pages/data-summary.php:19
+#: admin-pages/user-data/data-summary.php:19
 msgid "Summary"
 msgstr ""
 
-#: pro-features/admin-pages/data-summary.php:37
+#: admin-pages/user-data/data-summary.php:42
 msgid "League table for those that have lost the most"
 msgstr ""
 
-#: pro-features/admin-pages/data-summary.php:37
+#: admin-pages/user-data/data-summary.php:42
 msgid "League Table for those that have gained the most"
 msgstr ""
 
-#: pro-features/admin-pages/data-summary.php:53
+#: admin-pages/user-data/data-summary.php:58
+#: admin-pages/user-data/data-summary.php:85
 msgid "Regenerate these stats"
 msgstr ""
 
-#: pro-features/admin-pages/data-summary.php:59
+#: admin-pages/user-data/data-summary.php:64
 msgid "Show who has gained the most"
 msgstr ""
 
-#: pro-features/admin-pages/data-summary.php:59
+#: admin-pages/user-data/data-summary.php:64
 msgid "Show who has lost the most"
 msgstr ""
 
-#: pro-features/admin-pages/data-summary.php:77
+#: admin-pages/user-data/data-summary.php:72
+msgid "Weight change by group"
+msgstr ""
+
+#: admin-pages/user-data/data-summary.php:102
 msgid "All entries"
 msgstr ""
 
-#: pro-features/admin-pages/data-summary.php:77
+#: admin-pages/user-data/data-summary.php:102
 msgid "Last 100 entries"
 msgstr ""
 
-#: pro-features/admin-pages/data-summary.php:85
+#: admin-pages/user-data/data-summary.php:110
 msgid "Show all entries"
 msgstr "Näytä kaikki viikot"
 
-#: pro-features/admin-pages/data-summary.php:85
+#: admin-pages/user-data/data-summary.php:110
 msgid "Show 100 recent entries"
 msgstr ""
 
-#: pro-features/admin-pages/data-summary.php:96
-#: pro-features/functions.pages.php:35
+#: admin-pages/user-data/data-summary.php:121
 msgid "User Search"
 msgstr "Käyttäjäkokemus"
 
-#: pro-features/admin-pages/data-summary.php:102
+#: admin-pages/user-data/data-summary.php:127
 msgid "Quick Stats"
 msgstr ""
 
-#: pro-features/admin-pages/data-summary.php:126
+#: admin-pages/user-data/data-summary.php:151
 msgid "No. of WordPress users"
 msgstr ""
 
-#: pro-features/admin-pages/data-summary.php:128
+#: admin-pages/user-data/data-summary.php:153
 msgid "No. of Weight Entries"
 msgstr "Painoyksikkö"
 
-#: pro-features/admin-pages/data-summary.php:130
+#: admin-pages/user-data/data-summary.php:155
 msgid "No. of Target Entries"
 msgstr ""
 
-#: pro-features/admin-pages/data-summary.php:132
+#: admin-pages/user-data/data-summary.php:157
 msgid "refreshed every 15 minutes"
 msgstr ""
 
-#: pro-features/admin-pages/data-summary.php:140
+#: admin-pages/user-data/data-summary.php:166
 msgid "View all data"
 msgstr "Näytä kaikki viikot"
 
-#: pro-features/admin-pages/data-summary.php:144
+#: admin-pages/user-data/data-summary.php:170
 msgid "View all entries"
 msgstr "Näytä kaikki viikot"
 
-#: pro-features/admin-pages/data-summary.php:149
+#: admin-pages/user-data/data-summary.php:175
 msgid "Export all data"
 msgstr ""
 
-#: pro-features/admin-pages/data-summary.php:153
-#: pro-features/functions.pages.php:131
+#: admin-pages/user-data/data-summary.php:179
 msgid "To CSV"
 msgstr ""
 
-#: pro-features/admin-pages/data-summary.php:157
-#: pro-features/functions.pages.php:135
+#: admin-pages/user-data/data-summary.php:183
 msgid "To JSON"
 msgstr ""
 
-#: pro-features/admin-pages/data-summary.php:162
-#: pro-features/functions.pages.php:159
+#: admin-pages/user-data/data-summary.php:188
 msgid "Delete Data"
 msgstr "Poista"
 
-#: pro-features/admin-pages/data-summary.php:166
+#: admin-pages/user-data/data-summary.php:192
 msgid "Delete data for ALL users"
 msgstr ""
 
-#: pro-features/admin-pages/data-summary.php:178
+#: admin-pages/user-data/data-summary.php:204
 msgid "Are you sure you wish to remove all user data?"
 msgstr "Haluatko että kaikki käyttäjätiedot poistetaan?"
 
-#: pro-features/admin-pages/data-user-edit-settings.php:21
+#: admin-pages/user-data/data-user-edit-settings.php:26
 msgid "Edit user preferences"
 msgstr "Salli käyttäjäasetukset"
 
-#: pro-features/admin-pages/data-user.php:28
+#: admin-pages/user-data/data-user-edit-settings.php:39
+#, fuzzy
+#| msgid "Allow user settings"
+msgid "to save changes to your user's settings"
+msgstr "Salli käyttäjäasetukset"
+
+#: admin-pages/user-data/data-user.php:22 hooks.php:174
+msgid "The preferences for this user have been saved."
+msgstr ""
+
+#: admin-pages/user-data/data-user.php:28
 msgid "The cache for this user has been deleted."
 msgstr "Painohistoriasi on poistettu!"
 
-#: pro-features/admin-pages/data-user.php:56
+#: admin-pages/user-data/data-user.php:60
+msgid "to view the a chart of the user's weight entries."
+msgstr ""
+
+#: admin-pages/user-data/data-user.php:83
+#, fuzzy
+#| msgid "View all data"
+msgid "View all photos"
+msgstr "Näytä kaikki viikot"
+
+#: admin-pages/user-data/data-user.php:129
+#: admin-pages/user-data/data-user.php:155
+#: admin-pages/user-data/data-user.php:172
 msgid "Daily calorie needs"
 msgstr ""
 
-#: pro-features/admin-pages/data-user.php:67
-#: pro-features/admin-pages/data-user.php:94
-msgid "Upgrade to Pro Plus"
-msgstr "Hanki Pro versio"
-
-#: pro-features/admin-pages/data-user.php:68
-msgid ""
-"to view the user's daily calorie intake required to either maintain or lose "
-"weight (Harris Benedict formula)"
-msgstr ""
-
-#: pro-features/admin-pages/data-user.php:82
+#: admin-pages/user-data/data-user.php:141
 msgid "Please ensure the values for Proteins, Carbohydrates and Fats (within "
 msgstr ""
 
-#: pro-features/admin-pages/data-user.php:84
-#: pro-features/plus/harris.benedict.php:226
+#: admin-pages/user-data/data-user.php:143
 msgid "settings"
 msgstr "Asetukset"
 
-#: pro-features/admin-pages/data-user.php:85
+#: admin-pages/user-data/data-user.php:144
 msgid ") have been specified and total 100%."
 msgstr ""
 
-#: pro-features/admin-pages/data-user.php:95
+#: admin-pages/user-data/data-user.php:155
+#, fuzzy
+#| msgid "Get "
+msgid "Get More"
+msgstr "Hanki"
+
+#: admin-pages/user-data/data-user.php:167
+msgid "Upgrade to Pro Plus"
+msgstr "Hanki Pro versio"
+
+#: admin-pages/user-data/data-user.php:168
+msgid "and get the following"
+msgstr ""
+
+#: admin-pages/user-data/data-user.php:170
 msgid ""
-"to view the user's suggested Macronutrient intake based on their recommended "
+"view the user's suggested Macronutrient intake based on their recommended "
 "calorie intake"
 msgstr ""
 
-#: pro-features/admin-pages/data-user.php:103
+#: admin-pages/user-data/data-user.php:173
+msgid ""
+"view the user's daily calorie intake required to either maintain or lose "
+"weight (Harris Benedict formula)"
+msgstr ""
+
+#: admin-pages/user-data/data-user.php:176
+msgid "view and issue awards based upon users meeting your certain goals"
+msgstr ""
+
+#: admin-pages/user-data/data-user.php:184
 msgid "Entries for this user"
 msgstr ""
 
-#: pro-features/admin-pages/data-view-all.php:11
-#: pro-features/admin-pages/data-view-all.php:18
+#: admin-pages/user-data/data-view-all.php:11
+#: admin-pages/user-data/data-view-all.php:23
 msgid "View All Data"
 msgstr ""
 
-#: pro-features/admin-pages/data-view-all.php:32
+#: admin-pages/user-data/data-view-all.php:37
 msgid "Number of WordPress users"
 msgstr ""
 
-#: pro-features/admin-pages/data-view-all.php:34
+#: admin-pages/user-data/data-view-all.php:39
 msgid "Number of weight entries"
 msgstr ""
 
-#: pro-features/admin-pages/data-view-all.php:36
+#: admin-pages/user-data/data-view-all.php:41
 msgid "Number of targets entered"
 msgstr ""
 
-#: pro-features/admin-pages/data-view-all.php:39
+#: admin-pages/user-data/data-view-all.php:44
 msgid "Export to CSV"
 msgstr ""
 
-#: pro-features/admin-pages/data-view-all.php:41
+#: admin-pages/user-data/data-view-all.php:46
 msgid "Export to JSON"
 msgstr ""
 
-#: pro-features/advanced-table.php:102
-msgid "BMI"
-msgstr ""
-
-#: pro-features/advanced-table.php:114
-msgid "Options"
-msgstr ""
-
-#: pro-features/advanced-table.php:172
-msgid "No data available in table"
-msgstr ""
-
-#: pro-features/advanced-table.php:173
-msgid "Showing _START_ to _END_ of _TOTAL_ entries"
-msgstr ""
-
-#: pro-features/advanced-table.php:174
-msgid "Showing 0 to 0 of 0 entries"
-msgstr ""
-
-#: pro-features/advanced-table.php:175
-msgid "(filtered from _MAX_ total entries)"
-msgstr ""
-
-#: pro-features/advanced-table.php:178
-msgid "Show _MENU_ entries"
-msgstr ""
-
-#: pro-features/advanced-table.php:179
-msgid "Loading..."
-msgstr ""
-
-#: pro-features/advanced-table.php:180
-msgid "Processing..."
-msgstr ""
-
-#: pro-features/advanced-table.php:181
-msgid "Search: "
-msgstr ""
-
-#: pro-features/advanced-table.php:182
-msgid "No matching records found"
-msgstr ""
-
-#: pro-features/advanced-table.php:184
-msgid "First"
-msgstr ""
-
-#: pro-features/advanced-table.php:185
-msgid "Last"
-msgstr ""
-
-#: pro-features/advanced-table.php:186
-msgid "Next"
-msgstr ""
-
-#: pro-features/advanced-table.php:187
-msgid "Previous"
-msgstr ""
-
-#: pro-features/advanced-table.php:190
-msgid ":  activate to sort column ascending"
-msgstr ""
-
-#: pro-features/advanced-table.php:191
-msgid ": activate to sort column descending"
-msgstr ""
-
-#: pro-features/emails.php:39
-msgid "added"
-msgstr ""
-
-#: pro-features/emails.php:39
-msgid "updated"
-msgstr ""
-
-#: pro-features/emails.php:40
-msgid "their weight / measurements for "
-msgstr ""
-
-#: pro-features/emails.php:40
-msgid "their target to"
-msgstr ""
-
-#: pro-features/emails.php:58
-msgid "Weight Loss Tracker update for"
-msgstr "Weight Loss Tracker - Lomake"
-
-#: pro-features/emails.php:73
-msgid "Hello"
-msgstr ""
-
-#: pro-features/emails.php:74
-msgid ""
-"Just a quick email to let you know that \"{displayname}\" has {mode} {type}:"
-msgstr ""
-
-#: pro-features/emails.php:75
-msgid "{data}"
-msgstr ""
-
-#: pro-features/emails.php:76
-msgid "Thank you!"
-msgstr ""
-
-#: pro-features/export.php:42
-msgid "No data was found for the given criteria."
-msgstr "Painotietoja ei löytynyt määritetylle käyttäjälle."
-
-#: pro-features/export.php:192
-msgid "lbs only"
-msgstr ""
-
-#: pro-features/export.php:195
-msgid "Difference from start"
-msgstr ""
-
-#: pro-features/export.php:251 pro-features/footable.php:98
-msgid "No height"
-msgstr "Paino"
-
-#: pro-features/feature-list.php:6
-msgid "<strong>All of the features that come with a standard <a href=\""
-msgstr ""
-
-#: pro-features/feature-list.php:7
-msgid ""
-"<strong>Basal Metabolic Rate (BMR) calculations per user</strong>. "
-"Shortcodes and extended admin screens to display a user's BMR. For further "
-"information on BMR and how it is calculated visit <a href=\""
-msgstr ""
-
-#: pro-features/feature-list.php:8
-msgid ""
-"<strong>Harris Benedict formula</strong>. Shortcodes and extended admin "
-"screens to a view a person's calorie intake required to maintain and lose "
-"weight. For further information on Harris Benedict Formula and how it is "
-"calculated visit <a href=\""
-msgstr ""
-
-#: pro-features/feature-list.php:9
-msgid ""
-"<strong>Recommended calorie intake per meal time</strong>. Shortcodes and "
-"extended admin screens to recommend how a person should split their daily "
-"calorie intake across meals. For further information on how this is "
-"calculated please visit <a href=\""
-msgstr ""
-
-#: pro-features/feature-list.php:10
-msgid ""
-"<strong>Macronutrients Calculator</strong>. Shortcodes and extended admin "
-"screens to recommend how their calorie consumption should be split into "
-"fats, carbohydrates and proteins. For further information on the "
-"Macronutrients Calculator and how these calculations are performed please "
-"visit <a href=\""
-msgstr ""
-
-#: pro-features/feature-list.php:11
-msgid ""
-"<strong>Additional user preference fields</strong>. Additional user "
-"preference fields and shortcodes to display them: Activity Level, Date of "
-"Birth and Gender."
-msgstr ""
-
-#: pro-features/feature-list.php:16
-msgid ""
-"<strong>Access your user's data.</strong> Admin can view, edit and delete "
-"user data. Various tools for viewing user's graphs, tables of entries, BMI, "
-"targets, weight lost / gained stats and much more."
-msgstr ""
-
-#: pro-features/feature-list.php:17
-msgid ""
-"<strong>Measurements.</strong> Support for recording measurements like Hip, "
-"Waist, Leg, Bicep, etc. Displayed on charts and tables."
-msgstr ""
-
-#: pro-features/feature-list.php:18
-msgid ""
-"<strong>Export all data or a particular user.</strong> Export in JSON or CSV "
-"format."
-msgstr ""
-
-#: pro-features/feature-list.php:19
-msgid ""
-"<strong>BMI.</strong> Allows a user to specify their height. Once specified, "
-"their BMI is displayed next to each weight entry. There is also a shortcode "
-"to render the latest BMI."
-msgstr ""
-
-#: pro-features/feature-list.php:20
-msgid ""
-"<strong>Email notifications.</strong> Receive email notifications when a "
-"person updates their target or adds / edits a weight."
-msgstr ""
-
-#: pro-features/feature-list.php:21
-msgid ""
-"<strong>Overall user stats.</strong> Shortcodes that allow you to display "
-"the total lost / gained for the community and another to display a league "
-"table."
-msgstr ""
-"<Strong> Widgetit. </ Strong> Widgetit, joiden avulla voit näyttää kuvaajan "
-"ja nopea painon osuuksina minkä tahansa widget-alueella."
-
-#: pro-features/feature-list.php:22
-msgid ""
-"<strong>Widgets.</strong> Widgets that allow you to display the graph and "
-"quick weight entry form within any widget area."
-msgstr ""
-"<Strong> Widgetit. </ Strong> Widgetit, joiden avulla voit näyttää kuvaajan "
-"ja nopea painon osuuksina minkä tahansa widget-alueella."
-
-#: pro-features/feature-list.php:23
-msgid ""
-"<strong>Chart and form Shortcodes.</strong> That allow you to display the "
-"graph and quick weight entry form by placing a shortcode on any post or page."
-msgstr ""
-"<Strong> Kartta ja muoto Lyhytkoodit. </ Strong> Tämän avulla voit näyttää "
-"kuvaajan ja nopea painon ilmoittautumislomake asettamalla lyhytkoodi mihin "
-"tahansa post tai sivun .."
-
-#: pro-features/feature-list.php:24
-msgid ""
-"<strong>Progress Bar shortcode.</strong> A shortcode that visually displays "
-"the logged in user's progress towards their target"
-msgstr ""
-
-#: pro-features/feature-list.php:25
-msgid ""
-"<strong>Reminder shortcode.</strong> A shortcode that can be used to remind "
-"the user to enter their target or weight for today."
-msgstr ""
-
-#: pro-features/feature-list.php:26
-msgid ""
-"<strong>Message shortcode</strong> A shortcode that allows you to "
-"congratulate a user when they lose weight x number of times. It also "
-"provides the opposite allowing you to provide encouragement when someone "
-"gains weight."
-msgstr ""
-
-#: pro-features/feature-list.php:27
-msgid ""
-"<strong>Text Shortcodes.</strong> Additional shortcodes for earliest and "
-"most recent dates entered."
-msgstr ""
-"<Strong> Text Lyhytkoodit. </ Strong> Muita lyhytkoodit varten varhaisin ja "
-"viimeisimmän päivämääriä tuli."
-
-#: pro-features/feature-list.php:28
-msgid ""
-"<strong>Progress Bar shortcode / widget.</strong> Display a user's progress "
-"towards their weight target."
-msgstr ""
-
-#: pro-features/feature-list.php:29
-msgid ""
-"<strong>Reminder shortcode.</strong> Display a reminder to enter their "
-"weight for the given day or enter a target."
-msgstr ""
-
-#: pro-features/feature-list.php:30
-msgid ""
-"<strong>Admin: View / Delete user data</strong>. Admin will be able to view "
-"and delete existing user data."
-msgstr ""
-"<Strong> Järjestelmänvalvoja: Näytä / poista käyttäjätietoja </ strong>. "
-"Admin voi tarkastella ja poistaa olemassa olevan käyttäjän tietoja."
-
-#: pro-features/feature-list.php:31
-msgid ""
-"<strong>User preferences</strong>. If enabled, the user will be able to "
-"select which unit they wish to store their weight in Metric or Imperial. "
-"They will also be able to specify date format and clear all their weight "
-"data."
-msgstr ""
-"<Strong> Omat asetukset </ strong>. Jos käytössä, käyttäjä voi valita, minä "
-"yksikkönä he voivat tallentaa niiden painon Metric tai Imperial. Voivat myös "
-"määritellä päivämäärän muoto ja poistaa kaikki heidän painotiedot."
-
-#: pro-features/feature-list.php:32
-msgid ""
-"<strong>Bar Charts</strong>. Fancy something different to a line chart? The "
-"plugin will also support Bar Charts."
-msgstr ""
-"<Strong> pylväskaaviot </ strong>. Mieltymys jotain erilaista viivakaaviota? "
-"Laajennus tukee myös pylväsdiagrammin."
-
-#: pro-features/feature-list.php:33
-msgid ""
-"<strong>Decimals</strong>. Decimals will be allowed weight in Pounds only or "
-"Kg modes."
-msgstr ""
-"<Strong> Desimaalia </ strong>. Desimaalit sallitaan paino Punnissa "
-"ainoastaan tai Kg tiloissa."
-
-#: pro-features/feature-list.php:34
-msgid ""
-"<strong>Delete existing entry</strong>. A logged in user will be able to "
-"delete or edit an existing weight entry."
-msgstr ""
-"<Strong> Poista olemassa olevaa merkintä </ strong>. Kirjautunut käyttäjä "
-"voi poistaa tai muokata olemassa olevaa paino merkintöjä."
-
-#: pro-features/feature-list.php:35
-msgid ""
-"<strong>Better Tables.</strong>. Data tables in front end and admin will "
-"support paging and sorting."
-msgstr ""
-"<Strong> Parempi Taulukot. </ Strong>. Arvotaulukoiden front end ja admin "
-"tukee haku- ja lajittelun."
-
-#: pro-features/feature-list.php:36
-msgid ""
-"<strong>Admin: Extra Settings</strong>. Extra settings to customise the "
-"plugin will be added e.g. number of plot points on graph, rows per page, etc."
-msgstr ""
-"<Strong> Järjestelmänvalvoja: Extra asetukset </ strong>. Extra asetuksia "
-"muokatessa plugin lisätään esim. määrä tontti pisteiden kuvaaja, riviä sivu "
-"jne"
-
-#: pro-features/footable.php:23
-msgid "cm"
-msgstr ""
-
-#: pro-features/footable.php:84
-msgid "First entry"
-msgstr ""
-
-#: pro-features/footable.php:138
-msgid "+"
-msgstr ""
-
-#: pro-features/footable.php:143
-msgid "Body Mass Index"
-msgstr ""
-
-#: pro-features/footable.php:187
-msgid "Are you sure you want to delete the row?"
-msgstr "Oletko varma että halua poistaa tämän valinnan? Jos olet, paina OK."
-
-#: pro-features/footable.php:188
-msgid "Unfortunately there was an error deleting the row."
-msgstr ""
-
-#: pro-features/functions.pages.php:11
-msgid ""
-"Enter a user's email address, display name or username and click Search."
-msgstr ""
-
-#: pro-features/functions.pages.php:41
-msgid "User Information"
-msgstr ""
-
-#: pro-features/functions.pages.php:54
-msgid "Latest Weight"
-msgstr "Tavoitepaino"
-
-#: pro-features/functions.pages.php:58
-msgid "Diff. from Start"
-msgstr ""
-
-#: pro-features/functions.pages.php:74
-msgid "Diff. from Target"
-msgstr ""
-
-#: pro-features/functions.pages.php:78
-msgid "Current BMI"
-msgstr ""
-
-#: pro-features/functions.pages.php:79
-msgid "No height specified"
-msgstr "Ei käyttäjää määritetty"
-
-#: pro-features/functions.pages.php:86
-msgid "Gender"
-msgstr ""
-
-#: pro-features/functions.pages.php:90
-msgid "Activity Level"
-msgstr ""
-
-#: pro-features/functions.pages.php:94
-msgid "Date of Birth"
-msgstr ""
-
-#: pro-features/functions.pages.php:98
-msgid "BMR"
-msgstr ""
-
-#: pro-features/functions.pages.php:103
-msgid "Missing data"
-msgstr "Poista tieto"
-
-#: pro-features/functions.pages.php:114 pro-features/functions.pages.php:118
-msgid "Add Entry"
-msgstr "Tallenna toiminto"
-
-#: pro-features/functions.pages.php:122
-msgid "Edit Target"
+#: converters.php:53 converters.php:71 core.php:75 functions.php:69
+#: functions.php:84 functions.php:93 functions.php:99 functions.php:298
+#: functions.php:304 functions.php:561 shortcode-various.php:262
+#: shortcode-various.php:281
+msgid "lbs"
+msgstr "Pauna"
+
+#: converters.php:71 functions.php:304
+msgid "St"
+msgstr "St"
+
+#: core.php:13
+msgid "Date"
+msgstr "Päivä"
+
+#: core.php:15 core.php:395
+msgid "Notes"
+msgstr "Huomautus"
+
+#: core.php:62 core.php:265 shortcode-weight-loss-tracker.php:50
+msgid "You need to be logged in to record your weight."
+msgstr "Sinun pitää kirjautua tallentaaksesi painon"
+
+#: core.php:76
+msgid "CM"
+msgstr ""
+
+#: core.php:121
+msgid "Target"
+msgstr "Kohde"
+
+#: core.php:219
+msgid "Measurement"
+msgstr ""
+
+#: core.php:241
+msgid "You have modified data. Please refresh page."
+msgstr "Olet päivittänyt tietoja. Olehyvä ja päivitä sivu."
+
+#: core.php:265
+#, fuzzy
+#| msgid "You need to be logged in to record your weight."
+msgid "You need to be logged in to set your target."
+msgstr "Sinun pitää kirjautua tallentaaksesi painon"
+
+#: core.php:282
+msgid "Add a new weight"
+msgstr "Lisää uusi paino"
+
+#: core.php:287
+#, fuzzy
+#| msgid "Edit Target"
+msgid "Edit weight"
 msgstr "Aseta tavoitteesi"
 
-#: pro-features/functions.pages.php:127
-msgid "Export Data"
+#: core.php:368
+msgid "Your target weight is"
+msgstr "Sinun tavoitteesi on"
+
+#: core.php:368
+msgid "The user's target weight is currently"
+msgstr "Sinun tavoitteesi on"
+
+#: core.php:402
+#, fuzzy
+#| msgid "Allow Measurements?"
+msgid "Edit measurements"
+msgstr "Sallitko kohdepainon?"
+
+#: core.php:402
+msgid "Add measurements"
 msgstr ""
 
-#: pro-features/functions.pages.php:144 pro-features/user-preferences.php:131
+#: core.php:403
+msgid "Optional"
+msgstr ""
+
+#: core.php:412
+msgid "Set Target"
+msgstr "Aseta tavoitteesi"
+
+#: core.php:412
+msgid "Save Entry"
+msgstr "Tallenna toiminto"
+
+#: core.php:417
+msgid "Please correct the following:"
+msgstr ""
+
+#: core.php:430
+msgid "Clear Target"
+msgstr "Posta tavoitteesi"
+
+#: core.php:596
+msgid "Please enter a value between 0-13 for pounds"
+msgstr "Olehyvä ja aseta 0-14 paunaa"
+
+#: core.php:596
+msgid "Please enter a valid figure for pounds"
+msgstr "Annan kelvollinen luku paunoina"
+
+#: core.php:603
+msgid "Are you sure you wish to clear your target weight?"
+msgstr "Oletko varma että haluat poistaa tavoitepainosi"
+
+#: core.php:606
+msgid "Please enter a valid figure for Kg"
+msgstr "Anna kelvollinen luku kiloina"
+
+#: core.php:607
+msgid "Please enter a valid figure for Stones"
+msgstr "Anna kelvollinen luku paunoina"
+
+#: core.php:608
+msgid "Please enter a valid date"
+msgstr "Anna kelvollinen päiväys"
+
+#: core.php:609
+msgid "Please confirm you wish to delete ALL your weight history"
+msgstr "Oletko varma että haluat poistaa KAIKKI sinun painohistoriasi"
+
+#: core.php:610
+msgid "Your photo must be less than "
+msgstr ""
+
+#: core.php:611
+msgid "Are you sure you wish to delete this entry? If so, press OK."
+msgstr "Oletko varma että halua poistaa tämän valinnan? Jos olet, paina OK."
+
+#: core.php:620
+msgid "Please enter a valid measurement ("
+msgstr "Anna kelvollinen päiväys"
+
+#: core.php:632
+msgid "Please select or enter a value for height."
+msgstr "Anna kelvollinen luku kiloina"
+
+#: core.php:633
+msgid "Please select or enter a value for activity level."
+msgstr "Anna kelvollinen luku paunoina"
+
+#: core.php:634
+msgid "Please select or enter a value for gender."
+msgstr "Anna kelvollinen luku kiloina"
+
+#: core.php:635
+msgid "Please enter a valid date."
+msgstr "Anna kelvollinen päiväys"
+
+#: core.php:636
+#, fuzzy
+#| msgid "Please select or enter a value for height."
+msgid "Please select your aim."
+msgstr "Anna kelvollinen luku kiloina"
+
+#: core.php:646
+msgid "This field is required."
+msgstr ""
+
+#: core.php:664
+msgid "Today"
+msgstr ""
+
+#: functions.php:84 functions.php:99 functions.php:549
+#: shortcode-various.php:281
+msgid "st"
+msgstr ""
+
+#: functions.php:215
+msgid "The following MySQL tables are missing for this plugin"
+msgstr "Seuraavat MySQL taulokot puuttuvat tästä pluginista"
+
+#: functions.php:301 shortcode-various.php:286
+msgid "Kg"
+msgstr "Kg"
+
+#: functions.php:363
+msgid "View all weeks"
+msgstr "Näytä kaikki viikot"
+
+#: functions.php:377
+msgid "View Week"
+msgstr "Näytä viikko"
+
+#: functions.php:377
+msgid "to"
+msgstr "to"
+
+#: functions.php:516
+msgid "The plugin supports the following measurements"
+msgstr ""
+
+#: functions.php:662
+msgid "Read more about calculations"
+msgstr ""
+
+#: functions.php:697
+#, fuzzy
+#| msgid "Your settings have been saved!"
+msgid "Your modifications have been saved"
+msgstr "Asetuksesi on tallennettu"
+
+#: functions.php:715
+msgid "Login now"
+msgstr "Kirjaudy nyt"
+
+#: functions.php:899
+msgid "Upgrade Weight Tracker and get more features!"
+msgstr ""
+
+#: functions.php:901
+msgid ""
+"Upgrade to the latest Pro or Pro Plus version of this plugin to manipulate "
+"your user's data, add custom fields, BMR, Macro Nutrients and much more!"
+msgstr ""
+
+#: functions.php:902
+#, fuzzy
+#| msgid "Upgrade to Pro Version"
+msgid "Read more and Upgrade to Pro / Pro Plus Version"
+msgstr "Hanki Pro versio"
+
+#: globals.php:161
+msgid "Forearm - Left"
+msgstr ""
+
+#: globals.php:161
+msgid "FL"
+msgstr ""
+
+#: globals.php:162
+msgid "Forearm - Right"
+msgstr ""
+
+#: globals.php:162
+msgid "FR"
+msgstr ""
+
+#: globals.php:163
+msgid "Biceps - Left"
+msgstr ""
+
+#: globals.php:163
+msgid "BL"
+msgstr ""
+
+#: globals.php:164
+msgid "Biceps - Right"
+msgstr ""
+
+#: globals.php:164
+msgid "BR"
+msgstr ""
+
+#: globals.php:165
+msgid "Calf - Left"
+msgstr ""
+
+#: globals.php:165
+msgid "CL"
+msgstr ""
+
+#: globals.php:166
+msgid "Calf - Right"
+msgstr ""
+
+#: globals.php:166
+msgid "CR"
+msgstr ""
+
+#: globals.php:167
+msgid "Thigh - Left"
+msgstr ""
+
+#: globals.php:167
+msgid "TL"
+msgstr ""
+
+#: globals.php:168
+msgid "Thigh - Right"
+msgstr ""
+
+#: globals.php:168
+msgid "TR"
+msgstr ""
+
+#: globals.php:169
+msgid "Waist"
+msgstr ""
+
+#: globals.php:169
+msgid "W"
+msgstr ""
+
+#: globals.php:170
+msgid "Bust / Chest"
+msgstr ""
+
+#: globals.php:170
+msgid "BC"
+msgstr ""
+
+#: globals.php:171
+msgid "Shoulders"
+msgstr ""
+
+#: globals.php:171
+msgid "S"
+msgstr "St"
+
+#: globals.php:172
+msgid "Height"
+msgstr "Paino"
+
+#: globals.php:172
+msgid "H"
+msgstr ""
+
+#: globals.php:173
+msgid "Buttocks"
+msgstr ""
+
+#: globals.php:173
+msgid "B"
+msgstr ""
+
+#: globals.php:174
+msgid "Hips"
+msgstr ""
+
+#: globals.php:174
+msgid "HI"
+msgstr ""
+
+#: globals.php:175
+msgid "Navel"
+msgstr ""
+
+#: globals.php:175
+msgid "NA"
+msgstr ""
+
+#: globals.php:176
+msgid "Neck"
+msgstr ""
+
+#: globals.php:176
+msgid "NE"
+msgstr ""
+
+#: hooks.php:9
+msgid "Manage User Data"
+msgstr "Hallitse käyttäjätietoja"
+
+#: hooks.php:13
+msgid "Your License"
+msgstr "Lisää lisenssi"
+
+#: hooks.php:16
+msgid "Settings"
+msgstr "Asetukset"
+
+#: hooks.php:17
+msgid "Help & Log"
+msgstr ""
+
+#: hooks.php:175
+msgid "An error occurred while trying to save the user's preferences."
+msgstr "Sattui virhe tallennettaessa tietoja!"
+
+#: license.php:156
+msgid "License missing"
+msgstr ""
+
+#: license.php:163
+msgid "Could not decode / verify license"
+msgstr ""
+
+#: license.php:168
+msgid "Invalid license hash"
+msgstr ""
+
+#: license.php:173
+msgid ""
+"This license doesn't appear to be for this site (no match on site hash)."
+msgstr ""
+
+#: license.php:181
+msgid "This license has expired."
+msgstr ""
+
+#: license.php:238
+msgid "None"
+msgstr ""
+
+#: license.php:248
+msgid "Yearly Pro"
+msgstr ""
+
+#: license.php:251
+msgid "Legacy Pro"
+msgstr ""
+
+#: save-data.php:42
+msgid "Saved!"
+msgstr "Tallennettu"
+
+#: save-data.php:46
+msgid "An error occurred while saving your data!"
+msgstr "Sattui virhe tallennettaessa tietoja!"
+
+#: save-data.php:49
+msgid "No user specified (hash)"
+msgstr "Ei käyttäjää määritetty (hash)"
+
+#: save-data.php:52
+msgid "No user specified"
+msgstr "Ei käyttäjää määritetty"
+
+#: shortcode-various.php:106
+msgid "No target set"
+msgstr "Sinun tavoitteesi on"
+
+#: shortcode-weight-loss-tracker.php:43
+msgid "This shortcode can only be placed once on a page / post."
+msgstr ""
+
+#: shortcode-weight-loss-tracker.php:68
+msgid "Your settings have been saved!"
+msgstr "Asetuksesi on tallennettu"
+
+#: shortcode-weight-loss-tracker.php:70
+msgid "Your weight history has been deleted!"
+msgstr "Painohistoriasi on poistettu!"
+
+#: shortcode-weight-loss-tracker.php:93
+msgid "Overview"
+msgstr "Yleisnäkymä"
+
+#: shortcode-weight-loss-tracker.php:93
+#, fuzzy
+#| msgid "Add a new weight"
+msgid "Chart and add a new entry"
+msgstr "Lisää uusi paino"
+
+#: shortcode-weight-loss-tracker.php:94
+#, fuzzy
+#| msgid "Show all entries"
+msgid "All Entries"
+msgstr "Näytä kaikki viikot"
+
+#: shortcode-weight-loss-tracker.php:94
+#, fuzzy
+#| msgid "View all entries"
+msgid "View all of your entries"
+msgstr "Näytä kaikki viikot"
+
+#: shortcode-weight-loss-tracker.php:98
+msgid "View a gallery of your photos"
+msgstr ""
+
+#: shortcode-weight-loss-tracker.php:103
+msgid "View BMI, BMR and suggested Calorie and Macronutrient intake"
+msgstr ""
+
+#: shortcode-weight-loss-tracker.php:108
 msgid "Preferences"
 msgstr ""
 
-#: pro-features/functions.pages.php:150
-msgid "Delete Cache"
-msgstr "Poista"
-
-#: pro-features/functions.pages.php:154
-msgid "Delete Cache for this user"
+#: shortcode-weight-loss-tracker.php:108
+msgid "Customise this tool and tell us a little more about you"
 msgstr ""
 
-#: pro-features/functions.pages.php:163
-msgid "Delete ALL data for this user"
-msgstr ""
-
-#: pro-features/functions.pages.php:170
-msgid "Are you sure you wish to remove the data for this user?"
-msgstr "Haluatko että kaikki käyttäjätiedot poistetaan?"
-
-#: pro-features/functions.pages.php:204
-msgid "Back"
-msgstr ""
-
-#: pro-features/functions.pages.php:206
-msgid "WordPress Record"
-msgstr ""
-
-#: pro-features/functions.pages.php:207
-msgid "Weight Tracker Record"
-msgstr "Weight Loss Tracker - Lomake"
-
-#: pro-features/functions.pages.php:226
-msgid "Error: The User's ID was missing..."
-msgstr ""
-
-#: pro-features/functions.php:6
-msgid "Cm"
-msgstr ""
-
-#: pro-features/functions.php:19
-msgid "Add Height for BMI"
-msgstr ""
-
-#: pro-features/functions.php:47
-msgid "Underweight"
-msgstr ""
-
-#: pro-features/functions.php:49
-msgid "Healthy"
-msgstr ""
-
-#: pro-features/functions.php:52
-msgid "Overweight"
-msgstr "Paino"
-
-#: pro-features/functions.php:54
-msgid "Heavily Overweight"
-msgstr ""
-
-#: pro-features/functions.php:206 pro-features/plus/harris.benedict.php:221
-msgid "Female"
-msgstr ""
-
-#: pro-features/functions.php:207 pro-features/plus/harris.benedict.php:221
-msgid "Male"
-msgstr ""
-
-#: pro-features/functions.php:220
-msgid "Little / No Exercise"
-msgstr ""
-
-#: pro-features/functions.php:221
-msgid "Light Exercise"
-msgstr ""
-
-#: pro-features/functions.php:222
-msgid "Moderate Exercise (3-5 days a week)"
-msgstr ""
-
-#: pro-features/functions.php:223
-msgid "Very Active (6-7 days a week)"
-msgstr ""
-
-#: pro-features/functions.php:224
-msgid "Extra Active (very active & physical job)"
-msgstr ""
-
-#: pro-features/functions.php:274 pro-features/functions.php:347
-#: pro-features/shortcode-various.php:55 pro-features/shortcode-various.php:74
-#: pro-features/shortcode-various.php:90 pro-features/shortcode-various.php:106
-msgid "Not Specified"
-msgstr "Ei käyttäjää määritetty"
-
-#: pro-features/functions.php:420
-msgid "Error: The user does not appear to exist"
-msgstr ""
-
-#: pro-features/init.php:146
-msgid "View weight entries"
-msgstr ""
-
-#: pro-features/plus/bmr.php:32
-msgid "No Gender specified"
-msgstr "Ei käyttäjää määritetty"
-
-#: pro-features/plus/bmr.php:39
-msgid "No Date of Birth specified or too young"
-msgstr ""
-
-#: pro-features/plus/bmr.php:46
-msgid "No Height specified"
-msgstr "Ei käyttäjää määritetty"
-
-#: pro-features/plus/bmr.php:53
-msgid "No Weight entered"
-msgstr "Painoyksikkö"
-
-#: pro-features/plus/harris.benedict.php:79
-#: pro-features/plus/harris.benedict.php:161
-#: pro-features/plus/harris.benedict.php:198
-#: pro-features/plus/macronutrient.calculator.php:80
-#: pro-features/plus/macronutrient.calculator.php:181
-#: pro-features/plus/macronutrient.calculator.php:220
-msgid ""
-"Please ensure all relevant data to calculate calorie intake has been entered "
-"i.e. Activity Level, Date of Birth, Current Weight, Gender and Height."
-msgstr ""
-
-#: pro-features/plus/harris.benedict.php:94
-#: pro-features/plus/macronutrient.calculator.php:101
-msgid "Total"
-msgstr ""
-
-#: pro-features/plus/harris.benedict.php:95
-#: pro-features/plus/macronutrient.calculator.php:102
-msgid "Breakfast"
-msgstr ""
-
-#: pro-features/plus/harris.benedict.php:96
-#: pro-features/plus/macronutrient.calculator.php:103
-msgid "Lunch"
-msgstr ""
-
-#: pro-features/plus/harris.benedict.php:97
-#: pro-features/plus/macronutrient.calculator.php:104
-msgid "Dinner"
-msgstr ""
-
-#: pro-features/plus/harris.benedict.php:98
-#: pro-features/plus/macronutrient.calculator.php:105
-msgid "Snacks"
-msgstr ""
-
-#: pro-features/plus/harris.benedict.php:111
-#: pro-features/plus/macronutrient.calculator.php:99
-msgid "Maintain"
-msgstr ""
-
-#: pro-features/plus/harris.benedict.php:129
-#: pro-features/plus/macronutrient.calculator.php:99
-msgid "Lose"
-msgstr ""
-
-#: pro-features/plus/harris.benedict.php:222
-msgid "calories for weight loss are capped at "
-msgstr ""
-
-#: pro-features/plus/harris.benedict.php:224
-msgid "This can be modified within "
-msgstr ""
-
-#: pro-features/plus/macronutrient.calculator.php:135
-msgid "Carbs"
-msgstr ""
-
-#: pro-features/shortcode-chart.php:57 pro-features/shortcode-table.php:25
-msgid "No weight data was found for the specified user."
-msgstr "Painotietoja ei löytynyt määritetylle käyttäjälle."
-
-#: pro-features/shortcode-progress-bar.php:25
-#: pro-features/widget-progress.php:25
-msgid "towards your target of {t}."
-msgstr ""
-
-#: pro-features/shortcode-progress-bar.php:117
-msgid "Please enter add a weight entry to see your progress."
-msgstr "Annan kelvollinen luku paunoina"
-
-#: pro-features/shortcode-progress-bar.php:121
-msgid "Please enter a target weight to see your progress."
-msgstr "Näytä kaavio nähdäksesi nykyisen edistymisen."
-
-#: pro-features/shortcode-progress-bar.php:125
-msgid ""
-"This shortcode can not be used as Target weights have been disabled in the "
-"plugin's settings."
-msgstr ""
-
-#: pro-features/shortcode-reminders.php:29
-msgid ""
-"Please remember to enter your weight and measurements for today as well as "
-"your target weight."
-msgstr ""
-
-#: pro-features/shortcode-reminders.php:29
-msgid ""
-"Please remember to enter your weight for today as well as your target weight."
-msgstr "Oletko varma että haluat poistaa tavoitepainosi"
-
-#: pro-features/shortcode-reminders.php:32
-msgid "Please remember to enter your target weight."
-msgstr "Oletko varma että haluat poistaa tavoitepainosi"
-
-#: pro-features/shortcode-reminders.php:35
-msgid "Please remember to enter your weight and measurements for today."
-msgstr ""
-
-#: pro-features/shortcode-reminders.php:35
-msgid "Please remember to enter your weight for today."
-msgstr "Oletko varma että haluat poistaa KAIKKI sinun painohistoriasi"
-
-#: pro-features/shortcode-stats.php:8 pro-features/shortcode-stats.php:113
-msgid "Stats disabled"
-msgstr ""
-
-#: pro-features/shortcode-stats.php:34
-msgid "Name"
-msgstr ""
-
-#: pro-features/shortcode-stats.php:35
-msgid "Weight Difference"
-msgstr ""
-
-#: pro-features/shortcode-stats.php:41
-msgid "No of entries"
-msgstr ""
-
-#: pro-features/shortcode-stats.php:106
-msgid ""
-"The league table has not been generated yet. This is a scheduled task so "
-"please check back in 15 minutes or try pressing the button below."
-msgstr ""
-
-#: pro-features/shortcode-stats.php:140
-msgid "Lost"
-msgstr ""
-
-#: pro-features/shortcode-stats.php:140
-msgid "Gained"
-msgstr ""
-
-#: pro-features/shortcode-various.php:14
-msgid "Height needed"
-msgstr ""
-
-#: pro-features/user-preferences.php:8
-msgid "You must be logged in to edit your settings."
-msgstr "Sinun pitää kirjautua tallentaaksesi painon"
-
-#: pro-features/user-preferences.php:28
-msgid "About You:"
-msgstr ""
-
-#: pro-features/user-preferences.php:29
-msgid "Your height:"
-msgstr "Sinun painosi tänään"
-
-#: pro-features/user-preferences.php:30
-msgid "Which unit would you like to record your weight in:"
-msgstr "Minä yksiköinä haluat tallentavan painosi:"
-
-#: pro-features/user-preferences.php:31
-msgid "Which unit would you like to record your measurements in:"
-msgstr "Minä yksiköinä haluat tallentavan painosi:"
-
-#: pro-features/user-preferences.php:32
-msgid "Display dates in the following formats:"
-msgstr "Näytä päiväys ikkunassa:"
-
-#: pro-features/user-preferences.php:33
-msgid "Your Gender (needed for BMR):"
-msgstr ""
-
-#: pro-features/user-preferences.php:34
-msgid "Your Date of Birth (needed for BMR):"
-msgstr ""
-
-#: pro-features/user-preferences.php:35
-msgid "Your Activity Level (needed for BMR):"
-msgstr ""
-
-#: pro-features/user-preferences.php:42
-msgid "About User:"
-msgstr ""
-
-#: pro-features/user-preferences.php:43
-msgid "Height:"
-msgstr "Paino"
-
-#: pro-features/user-preferences.php:44
-msgid "Weight unit:"
-msgstr "Painoyksikkö"
-
-#: pro-features/user-preferences.php:45
-msgid "Measurements unit:"
-msgstr ""
-
-#: pro-features/user-preferences.php:46
-msgid "Date format:"
-msgstr "UK or US Päivä formaatti?"
-
-#: pro-features/user-preferences.php:47
-msgid "Gender (needed for BMR):"
-msgstr ""
-
-#: pro-features/user-preferences.php:48
-msgid "Date of Birth (needed for BMR):"
-msgstr ""
-
-#: pro-features/user-preferences.php:49
-msgid "Activity Level (needed for BMR):"
-msgstr ""
-
-#: pro-features/user-preferences.php:158
-msgid "Save Settings"
-msgstr "Tallenna asetukset"
-
-#: pro-features/user-preferences.php:164
-msgid "Delete existing data"
-msgstr "Poista tieto"
-
-#: pro-features/user-preferences.php:170
-msgid ""
-"The button below allows you to clear your existing weight history. Confirm:"
-msgstr "painike tyhjentää olemassa olevat painohistorian. Vahvista:"
-
-#: pro-features/user-preferences.php:173
-msgid "DELETE ALL DATA"
-msgstr ""
-
-#: pro-features/user-preferences.php:175
-msgid "Delete"
-msgstr "Poista"
-
-#: pro-features/widget-chart.php:12
-msgid "Weight Loss Tracker - Chart"
-msgstr "Weight Loss Tracker - Taulukko"
-
-#: pro-features/widget-chart.php:13
-msgid "Display a chart to see your current progress."
-msgstr "Näytä kaavio nähdäksesi nykyisen edistymisen."
-
-#: pro-features/widget-chart.php:74
-msgid "A pretty graph shall appear once you have recorded several weights."
+#: shortcode-weight-loss-tracker.php:124
+msgid "Add a weight entry"
+msgstr "Lisää uusi paino"
+
+#: shortcode-weight-loss-tracker.php:129
+msgid "In a chart"
+msgstr "Painonseuranta taulukko"
+
+#: shortcode-weight-loss-tracker.php:137
+msgid "A graph will appear once several weights have been entered."
 msgstr "Diagram ilmestyy muutaman tallennetun painon jälkeen"
 
-#: pro-features/widget-chart.php:106 pro-features/widget-form.php:74
-#: pro-features/widget-progress.php:76
-msgid "Title"
-msgstr "Otsikko"
+#: shortcode-weight-loss-tracker.php:190
+msgid "Weight History"
+msgstr "Paino historia"
 
-#: pro-features/widget-chart.php:117
-msgid "Maximum number of plot points on chart"
-msgstr "Enimmäismäärä pisteitä kaaviossa"
+#: shortcode-weight-loss-tracker.php:202
+msgid "There is no data for this week, please try selecting another:"
+msgstr "Ei löydy tietoja tältä viikolta, Ole hyvä ja valitse toinen:"
 
-#: pro-features/widget-chart.php:126 pro-features/widget-form.php:92
-msgid "Message to display if not logged in"
-msgstr "Viesti näyttää, jos ei kirjautunut"
+#: shortcode-weight-loss-tracker.php:208
+msgid "You haven't entered any weight data yet."
+msgstr "Et ole asettanut yhtään painoa vielä"
 
-#: pro-features/widget-chart.php:128 pro-features/widget-form.php:94
-msgid ""
-"By default the widget is hidden if the user is not logged in. If you wish, "
-"you can display a message to the visitor instead."
-msgstr ""
-"Oletuksena widget on piilotettu, jos käyttäjä ei ole kirjautunut sisään. Jos "
-"haluat, voit näyttää viestin vierailija sijaan."
+#~ msgid "Help"
+#~ msgstr "Apua"
 
-#: pro-features/widget-chart.php:134
-msgid "ID of user (leave blank to show chart for current user)"
-msgstr "Käyttäjä ID (jätä tyhjäksi näyttääksesi käyttäjän taulukon)"
+#~ msgid "Chart / Add Weight"
+#~ msgstr "TAulukko / Lisää paino"
 
-#: pro-features/widget-chart.php:137
-msgid ""
-"Note: By default, the chart will be displayed in the weight unit chosen by "
-"the logged in user. If not specfied the plugin default will be used."
-msgstr ""
-"Huomaa: Oletuksena kaaviossa näkyy painoyksikköä valitsemana kirjautunut "
-"käyttäjä. Jos ei ole määritelty plugin oletusarvoisesti käytetään."
+#~ msgid "In Detail"
+#~ msgstr "Yksityiskohdat"
 
-#: pro-features/widget-chart.php:140
-msgid "Hide Measurements (Pro)?"
-msgstr ""
+#~ msgid "View all recorded weights"
+#~ msgstr "Näytä kaikki tallennetut painosi"
 
-#: pro-features/widget-form.php:12
-msgid "Weight Loss Tracker - Form"
-msgstr "Weight Loss Tracker - Lomake"
+#~ msgid "Choose weight units, date format, etc"
+#~ msgstr "Valitse painoyksiköt, päivä asetukset, jne"
 
-#: pro-features/widget-form.php:13
-msgid ""
-"Display a quick entry form for logged in users to record their weight for "
-"today."
-msgstr ""
-"Näytä nopea ilmoittautumislomake kirjautuneille käyttäjille tallentaaksesi "
-"heidän paino tänään."
+#~ msgid ""
+#~ "Interested in the future development of this plugin? Then have a peek at "
+#~ "our road map:"
+#~ msgstr ""
+#~ "Kiinnostunut meidän pluginin yksityiskohtaisesta suuntelmasta? Kurkista "
+#~ "meidän road mappia:"
 
-#: pro-features/widget-form.php:17
-msgid "Your weight today"
-msgstr "Sinun painosi tänään"
+#~ msgid "Settings that effect the user's overall experience"
+#~ msgstr "Asetukset, jotka vaikuttavat käyttäjän kokemukseen"
 
-#: pro-features/widget-form.php:78
-msgid "Allow user to specify a date?"
-msgstr "Sallitko käyttäjien valita päiväys?"
+#~ msgid "Advanced data tables?"
+#~ msgstr "Edistynyt data taulukko"
 
-#: pro-features/widget-form.php:80
-msgid "No. Automatically set to today's date"
-msgstr "Ei. Automaattisesti aseta tämä päivä."
+#~ msgid ""
+#~ "User's weight history is presented in responsive tables that allow "
+#~ "sorting, paging, editing and deleting. Weight Index (i.e. percentage "
+#~ "lost / gained to be displayed.)"
+#~ msgstr ""
+#~ "Käyttäjän paino historia esitetään myötämielisenä taulukoita, jotka "
+#~ "mahdollistavat lajittelu, henkilöhaku, muokata ja poistaa. Paino Index "
+#~ "(eli prosentuaalinen kadonnut / saadut näytetään.)"
 
-#: pro-features/widget-form.php:81
-msgid "Allow user to specify a date"
-msgstr "Salli käyttäjien valita päivä"
+#~ msgid "Display data in tabs?"
+#~ msgstr "Näytä datataulukko"
 
-#: pro-features/widget-form.php:85
-msgid "Hide measurements (Pro)?"
-msgstr ""
+#~ msgid ""
+#~ "If enabled, \"Weight History\" and \"Target Weight\" will be displayed on "
+#~ "sepearate tabs when using the [weight-loss-tracker] shortcode."
+#~ msgstr ""
+#~ "Jos enabloitu \"painohistoria\" ja \"kohdepaino\" näytetään erillisenä "
+#~ "taulukkona"
 
-#: pro-features/widget-form.php:96
-msgid "Redirect URL (Defaults to current page)"
-msgstr ""
+#~ msgid "Upgrade now to Pro Plus"
+#~ msgstr "Päivitä nyt"
 
-#: pro-features/widget-form.php:98
-msgid ""
-"Specify where the user should be redirected to after completing the form. "
-"Note: The URL must be within the site domain."
-msgstr ""
+#~ msgid "Weight Loss Tracker update for"
+#~ msgstr "Weight Loss Tracker - Lomake"
 
-#: pro-features/widget-progress.php:12
-msgid "Weight Loss Tracker - Progress Bar"
-msgstr "Weight Loss Tracker - Lomake"
+#~ msgid "No data was found for the given criteria."
+#~ msgstr "Painotietoja ei löytynyt määritetylle käyttäjälle."
 
-#: pro-features/widget-progress.php:13
-msgid "A progress bar to indicate weight loss towards target."
-msgstr ""
+#~ msgid "No height"
+#~ msgstr "Paino"
 
-#: pro-features/widget-progress.php:17
-msgid "Weight loss progress"
-msgstr "Weight Loss Tracker"
+#~ msgid ""
+#~ "<strong>Overall user stats.</strong> Shortcodes that allow you to display "
+#~ "the total lost / gained for the community and another to display a league "
+#~ "table."
+#~ msgstr ""
+#~ "<Strong> Widgetit. </ Strong> Widgetit, joiden avulla voit näyttää "
+#~ "kuvaajan ja nopea painon osuuksina minkä tahansa widget-alueella."
 
-#: pro-features/widget-progress.php:80
-msgid "Chart type"
-msgstr "Taulukko"
+#~ msgid ""
+#~ "<strong>Widgets.</strong> Widgets that allow you to display the graph and "
+#~ "quick weight entry form within any widget area."
+#~ msgstr ""
+#~ "<Strong> Widgetit. </ Strong> Widgetit, joiden avulla voit näyttää "
+#~ "kuvaajan ja nopea painon osuuksina minkä tahansa widget-alueella."
 
-#: pro-features/widget-progress.php:87
-msgid "Stroke Width"
-msgstr ""
+#~ msgid ""
+#~ "<strong>Chart and form Shortcodes.</strong> That allow you to display the "
+#~ "graph and quick weight entry form by placing a shortcode on any post or "
+#~ "page."
+#~ msgstr ""
+#~ "<Strong> Kartta ja muoto Lyhytkoodit. </ Strong> Tämän avulla voit "
+#~ "näyttää kuvaajan ja nopea painon ilmoittautumislomake asettamalla "
+#~ "lyhytkoodi mihin tahansa post tai sivun .."
 
-#: pro-features/widget-progress.php:95
-msgid "Stroke Colour"
-msgstr ""
+#~ msgid ""
+#~ "<strong>Text Shortcodes.</strong> Additional shortcodes for earliest and "
+#~ "most recent dates entered."
+#~ msgstr ""
+#~ "<Strong> Text Lyhytkoodit. </ Strong> Muita lyhytkoodit varten varhaisin "
+#~ "ja viimeisimmän päivämääriä tuli."
 
-#: pro-features/widget-progress.php:99
-msgid "Trail Width"
-msgstr ""
+#~ msgid ""
+#~ "<strong>Admin: View / Delete user data</strong>. Admin will be able to "
+#~ "view and delete existing user data."
+#~ msgstr ""
+#~ "<Strong> Järjestelmänvalvoja: Näytä / poista käyttäjätietoja </ strong>. "
+#~ "Admin voi tarkastella ja poistaa olemassa olevan käyttäjän tietoja."
 
-#: pro-features/widget-progress.php:107
-msgid "Trail Colour"
-msgstr ""
+#~ msgid ""
+#~ "<strong>User preferences</strong>. If enabled, the user will be able to "
+#~ "select which unit they wish to store their weight in Metric or Imperial. "
+#~ "They will also be able to specify date format and clear all their weight "
+#~ "data."
+#~ msgstr ""
+#~ "<Strong> Omat asetukset </ strong>. Jos käytössä, käyttäjä voi valita, "
+#~ "minä yksikkönä he voivat tallentaa niiden painon Metric tai Imperial. "
+#~ "Voivat myös määritellä päivämäärän muoto ja poistaa kaikki heidän "
+#~ "painotiedot."
 
-#: pro-features/widget-progress.php:111
-msgid "Text Colour"
-msgstr "Painon väri?"
+#~ msgid ""
+#~ "<strong>Bar Charts</strong>. Fancy something different to a line chart? "
+#~ "The plugin will also support Bar Charts."
+#~ msgstr ""
+#~ "<Strong> pylväskaaviot </ strong>. Mieltymys jotain erilaista "
+#~ "viivakaaviota? Laajennus tukee myös pylväsdiagrammin."
 
-#: pro-features/widget-progress.php:115
-msgid "Animation Duration"
-msgstr ""
+#~ msgid ""
+#~ "<strong>Decimals</strong>. Decimals will be allowed weight in Pounds only "
+#~ "or Kg modes."
+#~ msgstr ""
+#~ "<Strong> Desimaalia </ strong>. Desimaalit sallitaan paino Punnissa "
+#~ "ainoastaan tai Kg tiloissa."
 
-#: pro-features/widget-progress.php:123
-msgid "Text to be displayed under bar. Use {t} to display target weight."
-msgstr ""
+#~ msgid ""
+#~ "<strong>Delete existing entry</strong>. A logged in user will be able to "
+#~ "delete or edit an existing weight entry."
+#~ msgstr ""
+#~ "<Strong> Poista olemassa olevaa merkintä </ strong>. Kirjautunut käyttäjä "
+#~ "voi poistaa tai muokata olemassa olevaa paino merkintöjä."
+
+#~ msgid ""
+#~ "<strong>Better Tables.</strong>. Data tables in front end and admin will "
+#~ "support paging and sorting."
+#~ msgstr ""
+#~ "<Strong> Parempi Taulukot. </ Strong>. Arvotaulukoiden front end ja admin "
+#~ "tukee haku- ja lajittelun."
+
+#~ msgid ""
+#~ "<strong>Admin: Extra Settings</strong>. Extra settings to customise the "
+#~ "plugin will be added e.g. number of plot points on graph, rows per page, "
+#~ "etc."
+#~ msgstr ""
+#~ "<Strong> Järjestelmänvalvoja: Extra asetukset </ strong>. Extra asetuksia "
+#~ "muokatessa plugin lisätään esim. määrä tontti pisteiden kuvaaja, riviä "
+#~ "sivu jne"
+
+#~ msgid "Are you sure you want to delete the row?"
+#~ msgstr "Oletko varma että halua poistaa tämän valinnan? Jos olet, paina OK."
+
+#~ msgid "Latest Weight"
+#~ msgstr "Tavoitepaino"
+
+#~ msgid "No height specified"
+#~ msgstr "Ei käyttäjää määritetty"
+
+#~ msgid "Missing data"
+#~ msgstr "Poista tieto"
+
+#~ msgid "Add Entry"
+#~ msgstr "Tallenna toiminto"
+
+#~ msgid "Delete Cache"
+#~ msgstr "Poista"
+
+#~ msgid "Are you sure you wish to remove the data for this user?"
+#~ msgstr "Haluatko että kaikki käyttäjätiedot poistetaan?"
+
+#~ msgid "Overweight"
+#~ msgstr "Paino"
+
+#~ msgid "Not Specified"
+#~ msgstr "Ei käyttäjää määritetty"
+
+#~ msgid "No Gender specified"
+#~ msgstr "Ei käyttäjää määritetty"
+
+#~ msgid "No Height specified"
+#~ msgstr "Ei käyttäjää määritetty"
+
+#~ msgid "No Weight entered"
+#~ msgstr "Painoyksikkö"
+
+#~ msgid "Please enter add a weight entry to see your progress."
+#~ msgstr "Annan kelvollinen luku paunoina"
+
+#~ msgid "Please enter a target weight to see your progress."
+#~ msgstr "Näytä kaavio nähdäksesi nykyisen edistymisen."
+
+#~ msgid ""
+#~ "Please remember to enter your weight for today as well as your target "
+#~ "weight."
+#~ msgstr "Oletko varma että haluat poistaa tavoitepainosi"
+
+#~ msgid "Please remember to enter your weight for today."
+#~ msgstr "Oletko varma että haluat poistaa KAIKKI sinun painohistoriasi"
+
+#~ msgid "You must be logged in to edit your settings."
+#~ msgstr "Sinun pitää kirjautua tallentaaksesi painon"
+
+#~ msgid "Your height:"
+#~ msgstr "Sinun painosi tänään"
+
+#~ msgid "Which unit would you like to record your weight in:"
+#~ msgstr "Minä yksiköinä haluat tallentavan painosi:"
+
+#~ msgid "Which unit would you like to record your measurements in:"
+#~ msgstr "Minä yksiköinä haluat tallentavan painosi:"
+
+#~ msgid "Display dates in the following formats:"
+#~ msgstr "Näytä päiväys ikkunassa:"
+
+#~ msgid "Height:"
+#~ msgstr "Paino"
+
+#~ msgid "Weight unit:"
+#~ msgstr "Painoyksikkö"
+
+#~ msgid "Date format:"
+#~ msgstr "UK or US Päivä formaatti?"
+
+#~ msgid "Save Settings"
+#~ msgstr "Tallenna asetukset"
+
+#~ msgid "Delete existing data"
+#~ msgstr "Poista tieto"
+
+#~ msgid ""
+#~ "The button below allows you to clear your existing weight history. "
+#~ "Confirm:"
+#~ msgstr "painike tyhjentää olemassa olevat painohistorian. Vahvista:"
+
+#~ msgid "Delete"
+#~ msgstr "Poista"
+
+#~ msgid "Weight Loss Tracker - Chart"
+#~ msgstr "Weight Loss Tracker - Taulukko"
+
+#~ msgid "Display a chart to see your current progress."
+#~ msgstr "Näytä kaavio nähdäksesi nykyisen edistymisen."
+
+#~ msgid "A pretty graph shall appear once you have recorded several weights."
+#~ msgstr "Diagram ilmestyy muutaman tallennetun painon jälkeen"
+
+#~ msgid "Maximum number of plot points on chart"
+#~ msgstr "Enimmäismäärä pisteitä kaaviossa"
+
+#~ msgid "Message to display if not logged in"
+#~ msgstr "Viesti näyttää, jos ei kirjautunut"
+
+#~ msgid ""
+#~ "By default the widget is hidden if the user is not logged in. If you "
+#~ "wish, you can display a message to the visitor instead."
+#~ msgstr ""
+#~ "Oletuksena widget on piilotettu, jos käyttäjä ei ole kirjautunut sisään. "
+#~ "Jos haluat, voit näyttää viestin vierailija sijaan."
+
+#~ msgid "ID of user (leave blank to show chart for current user)"
+#~ msgstr "Käyttäjä ID (jätä tyhjäksi näyttääksesi käyttäjän taulukon)"
+
+#~ msgid ""
+#~ "Note: By default, the chart will be displayed in the weight unit chosen "
+#~ "by the logged in user. If not specfied the plugin default will be used."
+#~ msgstr ""
+#~ "Huomaa: Oletuksena kaaviossa näkyy painoyksikköä valitsemana kirjautunut "
+#~ "käyttäjä. Jos ei ole määritelty plugin oletusarvoisesti käytetään."
+
+#~ msgid "Weight Loss Tracker - Form"
+#~ msgstr "Weight Loss Tracker - Lomake"
+
+#~ msgid ""
+#~ "Display a quick entry form for logged in users to record their weight for "
+#~ "today."
+#~ msgstr ""
+#~ "Näytä nopea ilmoittautumislomake kirjautuneille käyttäjille "
+#~ "tallentaaksesi heidän paino tänään."
+
+#~ msgid "Your weight today"
+#~ msgstr "Sinun painosi tänään"
+
+#~ msgid "Allow user to specify a date?"
+#~ msgstr "Sallitko käyttäjien valita päiväys?"
+
+#~ msgid "No. Automatically set to today's date"
+#~ msgstr "Ei. Automaattisesti aseta tämä päivä."
+
+#~ msgid "Allow user to specify a date"
+#~ msgstr "Salli käyttäjien valita päivä"
+
+#~ msgid "Weight Loss Tracker - Progress Bar"
+#~ msgstr "Weight Loss Tracker - Lomake"
+
+#~ msgid "Weight loss progress"
+#~ msgstr "Weight Loss Tracker"
+
+#~ msgid "Chart type"
+#~ msgstr "Taulukko"
 
 #~ msgid "Get Pro Version"
 #~ msgstr "Hanki Pro versio"
-
-#~ msgid "Get "
-#~ msgstr "Hanki"
 
 #~ msgid "Get Weight Loss Tracker Pro for"
 #~ msgstr "Hanki Weight Loss Tracker Pro"
@@ -2392,16 +2435,6 @@ msgstr ""
 #~ msgid "Lbs"
 #~ msgstr "Pauna"
 
-#, fuzzy
-#~| msgid "Add a new weight"
-#~ msgid "Add a new entry"
-#~ msgstr "Lisää uusi paino"
-
-#, fuzzy
-#~| msgid "Allow user settings"
-#~ msgid "Edit this user's settings"
-#~ msgstr "Salli käyttäjäasetukset"
-
 #~ msgid "Allow decimal places?"
 #~ msgstr "Salli desimaalimerkki"
 
@@ -2424,9 +2457,6 @@ msgstr ""
 
 #~ msgid "Delete All"
 #~ msgstr "Poista KAIKKI"
-
-#~ msgid "Delete all user data!"
-#~ msgstr "Poista kaikki käyttäjätiedot"
 
 #~ msgid ""
 #~ "You can use the following button to remove all user data currently stored "

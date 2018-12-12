@@ -193,6 +193,7 @@ function ws_ls_save_data($user_id, $weight_object, $is_target_form = false, $exi
 	$db_prefix = ($is_target_form) ? 'target_' : '';
 	$db_is_update = false;
 	$table_name = $wpdb->prefix . WE_LS_TABLENAME;
+	$mode = NULL;
 
 	// Ensure each weight field has been populated!
 	if(!ws_ls_validate_weight_data($weight_object)) {
@@ -255,6 +256,8 @@ function ws_ls_save_data($user_id, $weight_object, $is_target_form = false, $exi
                                     array( '%d' )
 		);
 
+        $mode = 'update';
+
 	} else {
 
 	    $result = $wpdb->insert(
@@ -262,6 +265,8 @@ function ws_ls_save_data($user_id, $weight_object, $is_target_form = false, $exi
 	                                $db_fields,
 	    	                        $db_field_types
 	    );
+
+        $mode = 'add';
 
         $db_is_update = ( false !== $result ) ? $wpdb->insert_id : false;
 	 }
@@ -297,10 +302,10 @@ function ws_ls_save_data($user_id, $weight_object, $is_target_form = false, $exi
 		$type = array (
 			'user-id' => $user_id,
 			'type' => ($is_target_form) ? 'target' : 'weight-measurements',
-			'mode' => ($db_is_update) ? 'update' : 'add'
+			'mode' => $mode
 		);
 
-		do_action(WE_LS_HOOK_DATA_ADDED_EDITED, $type, $weight_object);
+		do_action( WE_LS_HOOK_DATA_ADDED_EDITED, $type, $weight_object );
 	}
 
 	return $result;
@@ -471,19 +476,22 @@ function ws_ls_set_user_preferences($in_admin_area, $fields = [])
  *
  * @param $field
  * @param $value
+ * @param $user_id
  * @return bool
  */
-function ws_ls_set_user_preference( $field, $value ) {
+function ws_ls_set_user_preference( $field, $value, $user_id = NULL ) {
 
     // Ensure we have a value!
     if ( true === empty( $field ) || true === empty( $value ) ) {
         return false;
     }
 
+	$user_id = $user_id ?: get_current_user_id();
+
     global $wpdb;
 
     // Defaults for user preference fields
-    $db_fields = [ $field => $value, 'user_id' => get_current_user_id() ];
+    $db_fields = [ $field => $value, 'user_id' => $user_id ];
 
     // Set data types
     $db_field_types = ws_ls_user_preferences_get_formats( $db_fields );
@@ -516,18 +524,19 @@ function ws_ls_user_preferences_get_formats( $db_fields ) {
     $formats = [];
 
     $lookup = [
-        'user_id' => '%d',
-        'settings' => '%s',
-        'height' => '%d',
-        'activity_level' => '%f',
-        'gender' => '%d',
-        'aim' => '%d',
-        'dob' => '%s'
+			    'activity_level' => '%f',
+			    'aim' => '%d',
+			    'dob' => '%s',
+			    'gender' => '%d',
+			    'height' => '%d',
+		        'settings' => '%s',
+			    'user_group' => '%d',
+			    'user_id' => '%d'
     ];
 
-    $lookup = apply_filters(WE_LS_FILTER_USER_SETTINGS_DB_FORMATS, $lookup);
+    $lookup = apply_filters( WE_LS_FILTER_USER_SETTINGS_DB_FORMATS, $lookup );
 
-    foreach ($db_fields as $key) {
+    foreach ( $db_fields as $key ) {
         if( false === empty($lookup[$key])) {
             $formats[] = $lookup[$key];
         }
@@ -737,6 +746,24 @@ function ws_ls_log_all() {
 	global $wpdb;
 
 	return $wpdb->get_results('Select timestamp, module, message from ' . $wpdb->prefix . WE_LS_LOG_TABLENAME . ' order by id desc', ARRAY_A);
+}
+
+/**
+ * Delete all log entries
+ *
+ * @return bool     true if success
+ */
+function ws_ls_log_delete_all( ) {
+
+    if ( false === is_admin() ) {
+        return false;
+    }
+
+    global $wpdb;
+
+    $wpdb->query( 'TRUNCATE TABLE ' . $wpdb->prefix . WE_LS_LOG_TABLENAME );
+
+    return true;
 }
 
 /**

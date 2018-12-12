@@ -33,7 +33,7 @@ function ws_ls_box_user_search_form( $ajax_mode = false ) {
  */
 function ws_ls_user_side_bar($user_id) {
 
-	if(true === empty($user_id) )  {
+	if( true === empty($user_id ) )  {
 		return;
 	}
 
@@ -216,9 +216,9 @@ function ws_ls_user_side_bar($user_id) {
 		</div>
 
 	<?php
-    echo ws_ls_create_dialog_jquery_code(__('Are you sure you?', WE_LS_SLUG),
-        __('Are you sure you wish to remove the data for this user?', WE_LS_SLUG) . '<br /><br />',
-        'delete-confirm');
+        ws_ls_create_dialog_jquery_code(__('Are you sure you?', WE_LS_SLUG),
+            __('Are you sure you wish to remove the data for this user?', WE_LS_SLUG) . '<br /><br />',
+            'delete-confirm');
 
 }
 
@@ -238,7 +238,6 @@ function ws_ls_side_bar_row($row) {
 								$row['th'],
 								$row['td']
 		);
-
 	}
 
 	return '';
@@ -306,11 +305,10 @@ function ws_ls_user_header($user_id, $previous_url = false) {
 // ------------------------------------------------------------------------------
 
 /**
-	Fetch the user's ID from the querystring key user-id
-**/
+ * Fetch the user's ID from the querystring key user-id
+ *
+ * @return int
+ */
 function ws_get_user_id_from_qs(){
-
-	$user_id = ws_ls_querystring_value('user-id', true);
-
-	return (false === empty($user_id) ) ? $user_id : wp_die(__('Error: The User\'s ID was missing...', WE_LS_SLUG)) ;
+	return (int) ws_ls_querystring_value( 'user-id', true );
 }

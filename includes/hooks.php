@@ -8,12 +8,13 @@
         // Display manage user screens to relevant roles.
         add_submenu_page( 'ws-ls-data-home', __('Manage User Data', WE_LS_SLUG),  __('Manage User Data', WE_LS_SLUG), WE_LS_VIEW_EDIT_USER_PERMISSION_LEVEL, 'ws-ls-data-home', 'ws_ls_admin_page_data_home');
 		add_submenu_page( 'ws-ls-data-home', __('Custom Fields', WE_LS_SLUG),  __('Custom Fields', WE_LS_SLUG), 'manage_options', 'ws-ls-meta-fields', 'ws_ls_meta_fields_page');
+        add_submenu_page( 'ws-ls-data-home', __('Awards', WE_LS_SLUG),  __('Awards', WE_LS_SLUG), 'manage_options', 'ws-ls-awards', 'ws_ls_awards_page');
 
 		$menu_text = (false === WS_LS_IS_PRO && false === WS_LS_IS_PRO_PLUS) ? __('Upgrade', WE_LS_SLUG) : __('Your License', WE_LS_SLUG);
 
         add_submenu_page( 'ws-ls-data-home', $menu_text,  $menu_text, 'manage_options', 'ws-ls-license', 'ws_ls_advertise_pro');
 		add_submenu_page( 'ws-ls-data-home', __('Settings', WE_LS_SLUG),  __('Settings', WE_LS_SLUG), 'manage_options', 'ws-ls-settings', 'ws_ls_settings_page');
-		add_submenu_page( 'ws-ls-data-home', __('Help', WE_LS_SLUG),  __('Help', WE_LS_SLUG), 'manage_options', 'ws-ls-help', 'ws_ls_help_page');
+		add_submenu_page( 'ws-ls-data-home', __('Help & Log', WE_LS_SLUG),  __('Help & Log', WE_LS_SLUG), 'manage_options', 'ws-ls-help', 'ws_ls_help_page');
 
 	}
 	add_action( 'admin_menu', 'ws_ls_build_admin_menu' );
@@ -56,8 +57,9 @@
 		$minified = ws_ls_use_minified();
 
 		// CSS
-		if (WE_LS_CSS_ENABLED) {
+		if ( WE_LS_CSS_ENABLED ) {
 			wp_enqueue_style('wlt-style', plugins_url( '../assets/css/ws-ls' . 	$minified . '.css', __FILE__ ), array(), WE_LS_CURRENT_VERSION);
+			wp_enqueue_style('wlt-style-both', plugins_url( '../assets/css/admin-and-public' . 	$minified . '.css', __FILE__ ), array(), WE_LS_CURRENT_VERSION);
 		}
 
 		wp_enqueue_style('jquery-style', plugins_url( '../assets/css/jquery-ui.min.css', __FILE__ ), array(), WE_LS_CURRENT_VERSION);
@@ -126,7 +128,7 @@
 		// Include relevant JS for admin "Manage User data" pages
         if(false === empty($_GET['page']) && 'ws-ls-data-home' == $_GET['page'] &&
             false === empty($_GET['mode']) && 'user-settings' == $_GET['mode']) {
-		    var_dump('die');
+
 			wp_enqueue_script('ws-ls-admin-user-pref', plugins_url( '../assets/js/admin.user-preferences' . 	$minified . '.js', __FILE__ ), array('jquery'), WE_LS_CURRENT_VERSION);
 			wp_localize_script('ws-ls-admin-user-pref', 'ws_ls_user_pref_config', ws_ls_admin_config());
 		}
@@ -153,7 +155,7 @@
 		// CSS
 		wp_enqueue_style('wlt-style', plugins_url( '../assets/css/ws-ls' . 	$minified . '.css', __FILE__ ), array(), WE_LS_CURRENT_VERSION);
 		wp_enqueue_style('jquery-style', plugins_url( '../assets/css/jquery-ui.min.css', __FILE__ ), array(), WE_LS_CURRENT_VERSION);
-;
+
 		// JavaScript
 		wp_enqueue_script('jquery-ui-datepicker');
 		wp_enqueue_script('jquery-validate',plugins_url( '../assets/js/jquery.validate.min.js', __FILE__ ), array('jquery'), WE_LS_CURRENT_VERSION);

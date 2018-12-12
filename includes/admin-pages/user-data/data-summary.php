@@ -67,6 +67,26 @@ function ws_ls_admin_page_data_summary() {
 						 	?>
 						</div>
 					</div>
+                    <?php if ( true === ws_ls_groups_do_we_have_any() ): ?>
+                        <div class="postbox">
+                            <h2 class="hndle"><span><?php echo __('Weight change by group', WE_LS_SLUG); ?></span></h2>
+                            <div class="inside">
+                                <table class="ws-ls-settings-groups-list-ajax table ws-ls-loading-table" id="groups-list-stats"
+                                       data-paging="true"
+                                       data-filtering="false"
+                                       data-sorting="true"
+                                       data-editing-allow-add="false"
+                                       data-editing-allow-delete="false"
+                                       data-editing-allow-edit="false"
+                                       data-cascade="true"
+                                       data-toggle="true"
+                                       data-use-parent-width="true">
+                                </table>
+                                <a class="btn button-secondary" href="<?php echo admin_url( 'admin.php?page=ws-ls-data-home&regenerate-stats=y' ); ?>"><i class="fa fa-refresh"></i> <?php echo __('Regenerate these stats', WE_LS_SLUG); ?></a>
+
+                            </div>
+                        </div>
+                    <?php endif; ?>
 					<div class="postbox">
 						<?php
 
@@ -180,7 +200,7 @@ function ws_ls_admin_page_data_summary() {
 	</div>
 <?php
 
-    echo ws_ls_create_dialog_jquery_code(__('Are you sure you?', WE_LS_SLUG),
+    ws_ls_create_dialog_jquery_code(__('Are you sure you?', WE_LS_SLUG),
         __('Are you sure you wish to remove all user data?', WE_LS_SLUG) . '<br /><br />',
         'delete-confirm');
 }

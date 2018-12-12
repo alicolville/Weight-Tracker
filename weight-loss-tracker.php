@@ -5,7 +5,7 @@ defined('ABSPATH') or die('Jog on!');
 /**
  * Plugin Name: Weight Loss Tracker
  * Description: Allow registered users of your website to track their weight and relevant body measurements. History can be displayed in both tables & charts.
- * Version: 6.1.1
+ * Version: 7.0
  * Author: YeKen
  * Author URI: https://www.YeKen.uk
  * License: GPL2
@@ -28,8 +28,8 @@ defined('ABSPATH') or die('Jog on!');
 */
 
     define('WS_LS_ABSPATH', plugin_dir_path( __FILE__ ));
-    define('WE_LS_CURRENT_VERSION', '6.1.1');
-    define('WE_LS_DB_VERSION', '6.1');
+    define('WE_LS_CURRENT_VERSION', '7.0beta-7');
+    define('WE_LS_DB_VERSION', '7.0beta-7');
 
 // -----------------------------------------------------------------------------------------
 // AC: Activate / Deactivate / Uninstall Hooks
@@ -81,12 +81,18 @@ defined('ABSPATH') or die('Jog on!');
         'includes/shortcode-weight-loss-tracker.php',
         'includes/shortcode-various.php',
         'includes/save-data.php',
-        'includes/admin-pages/page.settings.php',
+	    'includes/email-manager.php',
+	    'includes/admin-pages/settings/page-settings.php',
+	    'includes/admin-pages/settings/page-settings-generic.php',
+	    'includes/admin-pages/settings/page-settings-groups.php',
         'includes/admin-pages/page.license.php',
         'includes/admin-pages/page.help.php',
         'includes/admin-pages/meta-fields/page-meta-fields.php',
         'includes/admin-pages/meta-fields/page-meta-fields-add-update.php',
         'includes/admin-pages/meta-fields/page-meta-fields-list.php',
+        'includes/admin-pages/awards/page-awards.php',
+        'includes/admin-pages/awards/page-awards-list.php',
+        'includes/admin-pages/awards/page-awards-add-update.php',
         'pro-features/plus/meta-fields/activate.php',
         'pro-features/plus/meta-fields/db.php',
         'pro-features/plus/meta-fields/hooks.php',
@@ -109,6 +115,8 @@ defined('ABSPATH') or die('Jog on!');
     ];
 
     $pro_files = [
+	    'pro-features/user-groups.php',
+        'pro-features/user-birthdays.php',
         'pro-features/user-preferences.php',
         'pro-features/ajax-handler-public.php',
         'pro-features/ajax-handler-admin.php',
@@ -132,7 +140,11 @@ defined('ABSPATH') or die('Jog on!');
 	    'pro-features/functions.measurements.php',
         'pro-features/functions.stats.php',
         'pro-features/export.php',
-        'pro-features/init.php'
+        'pro-features/init.php',
+        'pro-features/plus/awards/activate.php',
+        'pro-features/plus/awards/functions.php',
+        'pro-features/plus/awards/db.php',
+        'pro-features/plus/awards/hooks.php',
     ];
 
     $files_to_include = array_merge( $files_to_include, $pro_files );

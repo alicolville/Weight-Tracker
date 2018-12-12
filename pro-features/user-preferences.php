@@ -4,7 +4,7 @@ defined('ABSPATH') or die("Jog on!");
 function ws_ls_user_preferences_form( $user_defined_arguments )
 {
     // If not logged in then return no value
-    if (!is_user_logged_in())	{
+    if ( !is_user_logged_in() )	{
 		return ws_ls_display_blockquote( __('You must be logged in to edit your settings.', WE_LS_SLUG) , '', false, true);
     }
 
@@ -38,8 +38,7 @@ function ws_ls_user_preferences_form( $user_defined_arguments )
 	];
 
 	// If admin, add notice and override labels
-	if(is_admin()) {
-		$html_output .= '<div class="notice ws-ls-hide" id="ws-ls-notice"><p></p></div>';
+	if( is_admin() ) {
 
 		$labels = [ 'title-about' => __('About User:', WE_LS_SLUG),
 					'height' => __('Height:', WE_LS_SLUG),
@@ -152,11 +151,17 @@ function ws_ls_user_preferences_form( $user_defined_arguments )
     // Date of Birth
     //-------------------------------------------------------
 
-    $dob = ws_ls_get_dob_for_display($user_id);
+    $dob = ws_ls_get_dob_for_display( $user_id );
 
     $html_output .= '<label>' . $labels['dob'] . '</label>
-                    <input type="text" name="ws-ls-dob" tabindex="' . ws_ls_get_next_tab_index() . '" id="ws-ls-dob" value="' . esc_attr(ws_ls_get_dob_for_display($user_id)) . '" size="22" class="we-ls-datepicker ws-ls-aboutyou-field">
+                    <input type="text" name="ws-ls-dob" tabindex="' . ws_ls_get_next_tab_index() . '" id="ws-ls-dob" value="' . esc_attr( $dob ) . '" size="22" class="we-ls-datepicker ws-ls-aboutyou-field">
                     ';
+
+	//-------------------------------------------------------
+	// Extra
+	//-------------------------------------------------------
+
+	$html_output .= apply_filters( 'wlt-filter-user-settings-below-dob', '', $user_id);
 
     //-------------------------------------------------------
     // Preferences

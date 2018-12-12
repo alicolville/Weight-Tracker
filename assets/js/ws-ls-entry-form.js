@@ -8,7 +8,6 @@ jQuery( document ).ready(function ($) {
             changeMonth: true,
             changeYear: true,
             yearRange: "-100:+0",
-            showButtonPanel: true,
             dateFormat: ws_ls_config["date-format"],
             showButtonPanel: true,
             closeText: ws_ls_config["date-picker-locale"]["closeText"],

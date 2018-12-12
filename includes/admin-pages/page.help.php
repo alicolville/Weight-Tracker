@@ -58,16 +58,13 @@ function ws_ls_help_page() {
 							</div>
 						</div>
 					<?php endif; ?>
-                     <div class="postbox">
-                        <h3 class="hndle"><span><?php echo __('Error Log', WE_LS_SLUG); ?> </span></h3>
-                        <div style="padding: 0px 15px 0px 15px">
 
 					<?php if ( true === current_user_can( 'manage_options' ) && 'y' === ws_ls_querystring_value('yeken') ) : ?>
 
                         <div class="postbox">
                             <h3 class="hndle"><span><?php echo __( 'Custom Fields: Migrate photos from old system to Custom Fields', WE_LS_SLUG); ?> </span></h3>
                             <div style="padding: 0px 15px 0px 15px">
-                                <p><?php echo __( 'This will migrate photos from the old system to the new custom fields. It will create a custom field with the key "photo". Note! It will remove an existing migrated photos before re-adding them.', WE_LS_SLUG ); ?></p>
+                                <p><?php echo __( 'This will migrate photos from the old system to the new custom fields. It will create a custom field with the key "photo". Note! It will remove any existing migrated photos before re-adding them.', WE_LS_SLUG ); ?></p>
                                     <p><a href="<?php echo esc_url( admin_url( 'admin.php?page=ws-ls-help&yeken=y&photomigrate=y') ); ?>" >Run</a></p>
 
 								<?php
@@ -99,6 +96,45 @@ function ws_ls_help_page() {
                         </div>
 					<?php endif; ?>
 
+                    <div class="postbox">
+                        <h3 class="hndle"><span><?php echo __( 'Admin Tools', WE_LS_SLUG); ?> </span></h3>
+                        <div class="ws-ls-help-admin" style="padding: 0px 15px 0px 15px">
+                            <p>
+                                <?php
+
+                                    if ( true === ws_ls_awards_is_enabled() ) {
+
+                                       if ( true === isset( $_GET['deleteallawards'] )) {
+
+                                           ws_ls_awards_delete_all_previously_given();
+
+                                           echo sprintf( '<span>%s!</span>', __('Done', WE_LS_SLUG ) ) ;
+                                       }
+
+                                       printf('<a class="button awards-confirm" href="%1$s" >%2$s</a>',
+                                           esc_url( admin_url( 'admin.php?page=ws-ls-help&deleteallawards=y') ),
+                                           __('Delete all issued awards', WE_LS_SLUG)
+                                       );
+
+                                    }
+
+                                    if ( true === isset( $_GET['deletelog'] )) {
+
+                                        ws_ls_log_delete_all();
+
+                                        echo sprintf( '<span>%s!</span>', __('Done', WE_LS_SLUG ) ) ;
+                                    }
+
+                                    printf('<a class="button logs-confirm" href="%1$s" >%2$s</a>',
+                                        esc_url( admin_url( 'admin.php?page=ws-ls-help&deletelog=y') ),
+                                        __('Delete all log entries', WE_LS_SLUG)
+                                    );
+
+                                ?>
+                            </p>
+                        </div>
+                    </div>
+
                         <div class="postbox">
                             <h3 class="hndle"><span><?php echo __('Weight Tracker Debug Log', WE_LS_SLUG); ?> </span></h3>
                             <div style="padding: 0px 15px 0px 15px">
@@ -115,7 +151,6 @@ function ws_ls_help_page() {
                                        data-use-parent-width="true">
                                 </table>
 
-                                <!-- // TODO: Export to CSV -->
                             </div>
 
                         </div>
@@ -135,5 +170,17 @@ function ws_ls_help_page() {
 
 </div> <!-- .wrap -->
 <?php
+
+    ws_ls_create_dialog_jquery_code(__('Are you sure?', WE_LS_SLUG),
+        __('Are you sure you wish to remove all issued awards?', WE_LS_SLUG) . '<br /><br />',
+        'awards-confirm');
+
+    ws_ls_create_dialog_jquery_code(__('Are you sure?', WE_LS_SLUG),
+        __('Are you sure you wish to clear all log entries?', WE_LS_SLUG) . '<br /><br />',
+        'logs-confirm');
+
 }
+
+
+
 ?>

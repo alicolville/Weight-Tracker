@@ -8,7 +8,8 @@ $pro_plus_features = array(
 	__('<strong>Harris Benedict formula</strong>. Shortcodes and extended admin screens to a view a person\'s calorie intake required to maintain and lose weight. For further information on Harris Benedict Formula and how it is calculated visit <a href="' . WE_LS_CALCULATIONS_URL . '" rel="noopener noreferrer" target="_blank">our calculations page</a>.</strong>', WE_LS_SLUG),
 	__('<strong>Recommended calorie intake per meal time</strong>. Shortcodes and extended admin screens to recommend how a person should split their daily calorie intake across meals. For further information on how this is calculated please visit <a href="' . WE_LS_CALCULATIONS_URL . '" rel="noopener noreferrer" target="_blank">our calculations page</a>.</strong>', WE_LS_SLUG),
 	__('<strong>Macronutrients Calculator</strong>. Shortcodes and extended admin screens to recommend how their calorie consumption should be split into fats, carbohydrates and proteins. For further information on the Macronutrients Calculator and how these calculations are performed please visit <a href="' . WE_LS_CALCULATIONS_URL . '" rel="noopener noreferrer" target="_blank">our calculations page</a>.</strong>', WE_LS_SLUG),
-	__('<strong>Additional user preference fields</strong>. Additional user preference fields and shortcodes to display them: Activity Level, Date of Birth and Gender.', WE_LS_SLUG)
+	__('<strong>Additional user preference fields</strong>. Additional user preference fields and shortcodes to display them: Activity Level, Date of Birth and Gender.', WE_LS_SLUG),
+	__('<strong>Awards</strong>. Awards and Badges! Set awards for: BMI Change, BMI Equals, Weight Gain / Loss from start and Percentage of weight lost from start.', WE_LS_SLUG)
 );
 
 $pro_features = array(
@@ -18,8 +19,10 @@ $pro_features = array(
     __('<strong>Custom Fields.</strong> Create and add your own questions to weight entry forms to gather additional information.', WE_LS_SLUG),
     __('<strong>Photo Custom Fields</strong>. Add one or more photo fields to your weight entry forms and allow your users to upload photos of their progress. Photos can be viewed, updated and removed by the end user and administrators. Handy shortcodes are provided for displaying galleries, most recent and oldest photo.', WE_LS_SLUG),
     __('<strong>Export all data or a particular user.</strong> Export in JSON or CSV format.', WE_LS_SLUG),
-    __('<strong>BMI.</strong> Allows a user to specify their height. Once specified, their BMI is displayed next to each weight entry. There is also a shortcode to render the latest BMI.', WE_LS_SLUG),
+	__('<strong>Groups</strong>. Define user groups and assign your user\'s to them. View Weight Difference statistics for the group as a whole.', WE_LS_SLUG),
+	__('<strong>BMI.</strong> Allows a user to specify their height. Once specified, their BMI is displayed next to each weight entry. There is also a shortcode to render the latest BMI.', WE_LS_SLUG),
 	__('<strong>Email notifications.</strong> Receive email notifications when a person updates their target or adds / edits a weight.', WE_LS_SLUG),
+	__('<strong>Birthday Emails.</strong> Automatically send your user\'s a birthday email (when they have entered a date of birth)', WE_LS_SLUG),
 	__('<strong>Overall user stats.</strong> Shortcodes that allow you to display the total lost / gained for the community and another to display a league table.', WE_LS_SLUG),
 	__('<strong>Widgets.</strong> Widgets that allow you to display the graph and quick weight entry form within any widget area.', WE_LS_SLUG),
 	__('<strong>Chart and form Shortcodes.</strong> That allow you to display the graph and quick weight entry form by placing a shortcode on any post or page.', WE_LS_SLUG),

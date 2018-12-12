@@ -2,7 +2,7 @@
 
 defined('ABSPATH') or die('Jog on!');
 
-function ws_ls_settings_page() {
+function ws_ls_settings_page_generic() {
 
 	if ( !current_user_can( 'manage_options' ) )  {
 		wp_die( __( 'You do not have sufficient permissions to access this page.' , WE_LS_SLUG) );
@@ -11,7 +11,7 @@ function ws_ls_settings_page() {
 	$disable_if_not_pro_class = (WS_LS_IS_PRO) ? '' : 'ws-ls-disabled';
     $disable_if_not_pro_plus_class = (WS_LS_IS_PRO_PLUS) ? '' : 'ws-ls-disabled-pro-plus';
 
-  	$clear_cache = (isset($_GET['settings-updated']) && 'true' == $_GET['settings-updated']) ? true : false;
+  	$clear_cache = ( isset($_GET['settings-updated']) && 'true' == $_GET['settings-updated'] ) ? true : false;
 
 	if ( true === is_admin() && false === empty( $_GET['recreatetables'] ) ) {
 
@@ -32,7 +32,7 @@ function ws_ls_settings_page() {
 
 	$mysql_table_check = ws_ls_admin_check_mysql_tables_exist();
 
-	if ($mysql_table_check != false): ?>
+	if ( false !== $mysql_table_check ): ?>
 		<div class="error">
 			<p><?php echo $mysql_table_check; ?></p>
  			<p><a href="<?php echo get_permalink() . '?page=ws-ls-settings';  ?>&amp;recreatetables=y"><?php echo __('Rebuild them now', WE_LS_SLUG); ?></a></p>
@@ -85,6 +85,20 @@ function ws_ls_settings_page() {
                                                         ws_ls_display_pro_upgrade_notice();
                                                     }
                                                 ?>
+
+                                                <h3><?php echo __( 'Caching' , WE_LS_SLUG); ?></h3>
+                                                <table class="form-table">
+                                                    <tr>
+                                                        <th scope="row"><?php echo __( 'Enable Caching?' , WE_LS_SLUG); ?></th>
+                                                        <td>
+                                                            <select id="ws-ls-caching" name="ws-ls-caching">
+                                                                <option value="yes" <?php selected( get_option('ws-ls-caching'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG); ?></option>
+                                                                <option value="no" <?php selected( get_option('ws-ls-caching'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG); ?></option>
+                                                            </select>
+                                                            <p><?php echo __('If enabled, additional caching will be performed to reduce database queries. It is highly recommended that this remains enabled and only disabled for testing or to enable other caching mechanisms.', WE_LS_SLUG); ?></p>
+                                                        </td>
+                                                    </tr>
+                                                </table>
                                                 <h3><?php echo __( 'Default units / formats to be used by plugin' , WE_LS_SLUG); ?></h3>
 												<table class="form-table">
 													<tr>
@@ -198,6 +212,34 @@ function ws_ls_settings_page() {
                                                             <option value="publish_posts" <?php selected( get_option('ws-ls-edit-permissions'), 'publish_posts' ); ?>><?php echo __('Authors and above', WE_LS_SLUG)?></option>
                                                         </select>
                                                         <p><?php echo __('Specify the minimum level of user role that maybe view or edit user data.', WE_LS_SLUG)?></p>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <h3><?php echo __( 'Groups' , WE_LS_SLUG); ?></h3>
+                                            <table class="form-table">
+                                                <tr class="<?php echo $disable_if_not_pro_class; ?>">
+                                                    <th scope="row"><?php echo __( 'Enable Groups?' , WE_LS_SLUG); ?></th>
+                                                    <td>
+                                                        <select id="ws-ls-enable-groups" name="ws-ls-enable-groups">
+                                                            <option value="yes" <?php selected( get_option('ws-ls-enable-groups'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+                                                            <option value="no" <?php selected( get_option('ws-ls-enable-groups'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+                                                        </select>
+                                                        <p><?php echo __('Add the ability to place your user\'s into groups.', WE_LS_SLUG)?></p>
+                                                        <br /><p><a href="<?php echo ws_ls_groups_link(); ?>" class="button"><?php echo __( 'Manage User Groups' , WE_LS_SLUG); ?></a></p>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <h3><?php echo __( 'Birthday Emails' , WE_LS_SLUG); ?></h3>
+                                            <table class="form-table">
+                                                <tr class="<?php echo $disable_if_not_pro_class; ?>">
+                                                    <th scope="row"><?php echo __( 'Enable?' , WE_LS_SLUG); ?></th>
+                                                    <td>
+                                                        <select id="ws-ls-enable-birthdays" name="ws-ls-enable-birthdays">
+                                                            <option value="no" <?php selected( get_option('ws-ls-enable-birthdays'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+                                                            <option value="yes" <?php selected( get_option('ws-ls-enable-birthdays'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+                                                        </select>
+                                                        <p><?php echo __('If enabled, a Happy Birthday email shall be sent to users on their birthday.', WE_LS_SLUG)?></p>
+
                                                     </td>
                                                 </tr>
                                             </table>
@@ -654,7 +696,8 @@ function ws_ls_register_settings(){
 
     register_setting( 'we-ls-options-group', 'ws-ls-units' );
     register_setting( 'we-ls-options-group', 'ws-ls-allow-targets' );
-    register_setting( 'we-ls-options-group', 'ws-ls-allow-points' );
+	register_setting( 'we-ls-options-group', 'ws-ls-caching' );
+	register_setting( 'we-ls-options-group', 'ws-ls-allow-points' );
     register_setting( 'we-ls-options-group', 'ws-ls-target-colour' );
     register_setting( 'we-ls-options-group', 'ws-ls-line-fill-colour' );
     register_setting( 'we-ls-options-group', 'ws-ls-line-colour' );
@@ -671,7 +714,8 @@ function ws_ls_register_settings(){
     register_setting( 'we-ls-options-group', 'ws-ls-fill-under-weight-line-colour' );
 
     // Pro only open
-    if(WS_LS_IS_PRO){
+    if( WS_LS_IS_PRO ){
+
         register_setting( 'we-ls-options-group', 'ws-ls-allow-user-preferences' );
 		register_setting( 'we-ls-options-group', 'ws-ls-about-you-mandatory' );
         register_setting( 'we-ls-options-group', 'ws-ls-chart-type' );
@@ -679,6 +723,12 @@ function ws_ls_register_settings(){
         register_setting( 'we-ls-options-group', 'ws-ls-bezier-curve' );
         register_setting( 'we-ls-options-group', 'ws-ls-point-size' );
         register_setting( 'we-ls-options-group', 'ws-ls-grid-lines' );
+
+	    // Groups
+	    register_setting( 'we-ls-options-group', 'ws-ls-enable-groups' );
+
+	    // Birthdays
+	    register_setting( 'we-ls-options-group', 'ws-ls-enable-birthdays' );
 
         // Measurements
         register_setting( 'we-ls-options-group', 'ws-ls-allow-measurements' );
@@ -707,7 +757,7 @@ function ws_ls_register_settings(){
     }
 
     // Pro Plus
-    if (WS_LS_IS_PRO_PLUS) {
+    if ( WS_LS_IS_PRO_PLUS ) {
         register_setting( 'we-ls-options-group', 'ws-ls-female-cal-cap' );
         register_setting( 'we-ls-options-group', 'ws-ls-male-cal-cap' );
         register_setting( 'we-ls-options-group', 'ws-ls-cal-subtract' );

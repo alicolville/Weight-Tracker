@@ -12,7 +12,7 @@ HEX: #f7786b
 }
 .ws-ls-disabled *, .ws-ls-disabled-pro-plus *
 {
-  color: #CCCCCC !important;
+    color: #CCCCCC !important;
 }
 .ws-ls-disabled th::after {
     content: "\A(Pro version)";
@@ -32,35 +32,35 @@ HEX: #f7786b
 }
 .ws-ls-advanced-data-table
 {
-	table-layout: auto !important;
+    table-layout: auto !important;
 }
 .ws-ls-advanced-data-table .child ul{
-	width: 100%;
+    width: 100%;
 }
 .ws-ls-advanced-data-table .dtr-title{
-	width: 20%;
+    width: 20%;
 }
 .rtl .ws-ls-user-data-ajax th {
-	text-align: right !important;
+    text-align: right !important;
 }
 
 .ws-ls-advanced-data-table th
 {
-	padding: 1px 1px 1px 3px !important;
+    padding: 1px 1px 1px 3px !important;
 }
 .ws-ls-notice-of-refresh {
-	display: none;
+    display: none;
 }
 .ws_ls_display_form {
-	width: 100%;
+    width: 100%;
 }
 .ws_ls_display_form label, .ws_ls_display_form input,
-    .ws-ls-meta-fields-form label, .ws-ls-meta-fields-form input
-        #we-ls-user-pref-submit {
-	display: block;
+.ws-ls-meta-fields-form label, .ws-ls-meta-fields-form input
+#we-ls-user-pref-submit {
+    display: block;
 }
 .ws-ls-user-pref-form input, .ws-ls-user-pref-form select {
-	margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 .widefat th {
     font-weight: bold;
@@ -75,11 +75,11 @@ HEX: #f7786b
     color: #ff0000;
 }
 .ws-ls-user-preview {
-	width: 100%;
-	clear: both;
+    width: 100%;
+    clear: both;
 }
 .ws-ls-user-preview img {
-	max-height: 100%;
+    max-height: 100%;
     max-width: 100%;
 }
 
@@ -100,7 +100,7 @@ HEX: #f7786b
     border: none !important;
 }
 .ws-ls-user-header-buttons {
-	float: right;
+    float: right;
 }
 .ws-ls-macro {
     margin-bottom: 10px;
@@ -113,13 +113,13 @@ HEX: #f7786b
     font-weight: 300;
 }
 .ws-ls-user-data .fa {
-	font-size: 13px !important;
-	color: #555 !important;
+    font-size: 13px !important;
+    color: #555 !important;
 }
 .ws-ls-upgrade-button {
-	font-size:16px !important;
-	text-align:center;
-	margin-bottom:10px !important;
+    font-size:16px !important;
+    text-align:center;
+    margin-bottom:10px !important;
     margin-right: 10px !important;
 }
 .ws-ls-photo-select {
@@ -135,8 +135,8 @@ HEX: #f7786b
     font-weight: bold;
 }
 .footable-empty td {
-	font-size: 14px !important;
-	font-style: italic;
+    font-size: 14px !important;
+    font-style: italic;
 }
 .ws-ls-footable .row-title .footable-toggle {
     display: none;
@@ -176,6 +176,10 @@ HEX: #f7786b
     background-color: #ef8988;
     color: #FFFFFF;
 }
+.ws-ls-label-top {
+    vertical-align: top;
+}
+
 /*
     Tables with div
  */
@@ -212,4 +216,27 @@ HEX: #f7786b
 }
 .ws-ls-mandatory-field {
     border: 1px solid red !important;
+}
+
+.ws-ls-badge-collection {
+    width: 100%;
+    display: table;
+}
+.ws-ls-badge-collection div {
+    display: table-cell;
+    display: inline-block;
+    text-align: center;
+    margin-right: 20px;
+}
+.ws-ls-badge-collection p {
+    clear: left;
+    font-size: 12px;
+    margin-top: 0px;
+}
+.ws-ls-help-admin .button {
+    margin-right: 10px;
+}
+.ws-ls-help-admin span {
+    color: #1e69de;
+    margin: 0px 10px 0px 0px;
 }

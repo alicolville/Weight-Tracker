@@ -11,7 +11,10 @@
 	 * @return bool
 	 */
 	function ws_ls_meta_fields_photo_any_enabled( $hide_from_shortcodes = false ) {
-		return true === WS_LS_IS_PRO && ! empty( ws_ls_meta_fields_photos_all( $hide_from_shortcodes , true ) );
+
+		$photo_fields = ws_ls_meta_fields_photos_all( $hide_from_shortcodes , true );
+
+		return true === WS_LS_IS_PRO && ! empty( $photo_fields );
 	}
 
 	/**
@@ -24,12 +27,16 @@
 	 * @return bool|int
 	 */
 	function ws_ls_meta_fields_photos_process_upload( $field_name, $date_text = NULL, $user_id = NULL,
-                                                            $entry_id = NULL, $meta_field_id = null ) {
+                                                            $entry_id = NULL, $meta_field_id = null, $module = 'photo-upload' ) {
 
-		if ( false === ws_ls_meta_fields_is_enabled() || false === ws_ls_meta_fields_photo_any_enabled() ) {
-			ws_ls_log_add('photo-upload', 'Looking for a photo field but Photos disabled?' );
-			return false;
-		}
+	    if ( 'award-badge-yeken' === $field_name && false === ws_ls_awards_is_enabled() ) {
+            ws_ls_log_add( $module, 'Awards disabled so not going to try and upload image.' );
+        }
+
+        if ( 'award-badge-yeken' !== $field_name && ( false === ws_ls_meta_fields_is_enabled() || false === ws_ls_meta_fields_photo_any_enabled() ) ) {
+            ws_ls_log_add('photo-upload', 'Looking for a photo field but Photos disabled?' );
+            return false;
+        }
 
 		//--------------------------------------------------------------------------------
 		// Existing Image? Do nothing? Do we have an existing image we're happy to keep?
@@ -41,7 +48,8 @@
 		if ( false === empty( $_POST[ $field_key_previous ] ) &&
 		        true === is_numeric( $_POST[ $field_key_previous ] ) &&
 		            true === empty( $_POST[ $field_key_delete ] ) &&
-		                true === empty( $_FILES[ $field_name ] ) ) {
+		                true === empty( $_FILES[ $field_name ]['size'] ) ) {
+
 			return intval( $_POST[ $field_key_previous ] );
 		}
 
@@ -75,7 +83,7 @@
 
 			// Within max file size?
 			if ( intval( $photo_uploaded['size'] ) < 0 || intval( $photo_uploaded['size'] ) > $max_field_size ) {
-				ws_ls_log_add('photo-upload', sprintf( 'Photo too big: %s. Details: %s / Max Size: %s', $field_name, json_encode( $photo_uploaded ), $max_field_size ) );
+				ws_ls_log_add( $module, sprintf( 'Photo too big: %s. Details: %s / Max Size: %s', $field_name, json_encode( $photo_uploaded ), $max_field_size ) );
 				return false;
 			}
 
@@ -88,7 +96,7 @@
 
 			// Check file Mime type
 			if ( false === in_array( $mime_type['type'], [ 'image/jpg','image/jpeg','image/gif','image/png' ] ) ) {
-				ws_ls_log_add('photo-upload', sprintf( 'Photo of wrong type: %s', json_encode( $photo_uploaded ) ) );
+				ws_ls_log_add( $module, sprintf( 'Photo of wrong type: %s', json_encode( $photo_uploaded ) ) );
 				return false;
 			}
 
@@ -97,7 +105,7 @@
 
 			// Error uploading file
 			if ( true === empty( $uploaded_file ) || true === isset( $uploaded_file['error'] ) ) {
-				ws_ls_log_add('photo-upload', sprintf( 'Error handing upload: %s Detail: %s', json_encode( $uploaded_file ), json_encode( $photo_uploaded ) ) );
+				ws_ls_log_add( $module, sprintf( 'Error handing upload: %s Detail: %s', json_encode( $uploaded_file ), json_encode( $photo_uploaded ) ) );
 				return false;
 			}
 
@@ -120,11 +128,16 @@
 				'post_status' => 'inherit'
 			);
 
+			// If this wasn't uploaded via a Photo Meta field (e.g. an Award then blank additional data)
+            if ( 'photo-upload' !== $module ) {
+                unset( $attachment['post_title'], $attachment['post_content'] );
+            }
+
 			// Run the wp_insert_attachment function. This adds the file to the media library and generates the thumbnails.
 			$attach_id = wp_insert_attachment( $attachment, $file_name_and_location );
 
 			if ( true === empty( $attach_id ) ) {
-				ws_ls_log_add('photo-upload', sprintf( 'Failed to add photo to Media Library: %s', json_encode( $photo_uploaded ) ) );
+				ws_ls_log_add( $module, sprintf( 'Failed to add photo to Media Library: %s', json_encode( $photo_uploaded ) ) );
 				return false;
 			}
 
@@ -265,11 +278,11 @@
     function ws_ls_meta_fields_photos_delete_all_photos_for_meta_field( $meta_field_id ) {
 
         if ( false === is_admin() ) {
-            return;
+            return false;
         }
 
         if ( false === ws_ls_meta_fields_photos_is_photo_field( $meta_field_id ) ) {
-            return;
+            return false;
         }
 
         // Fetch all attachment IDs

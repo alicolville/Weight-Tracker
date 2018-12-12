@@ -125,9 +125,9 @@ function ws_ls_weight_object($user_id, $kg, $pounds, $stones, $pounds_only, $not
   }
 
 
-  if (WE_LS_MEASUREMENTS_ENABLED && is_array($weight['measurements']) && !empty($weight['measurements'])) {
+  if ( WE_LS_MEASUREMENTS_ENABLED && is_array($weight['measurements']) && !empty($weight['measurements'])) {
 
-	  foreach ($weight['measurements'] as $key => $value) {
+	  foreach ( $weight['measurements'] as $key => $value) {
 
 		  // Prep field!
 		  $weight['measurements'][$key] = ws_ls_prep_measurement($weight['measurements'][$key]);
@@ -184,21 +184,24 @@ function ws_ls_delete_data_for_user($user_id = false) {
 }
 
 /* Admin tool to check the relevant tables exist for this plugin */
-function ws_ls_admin_check_mysql_tables_exist()
-{
+function ws_ls_admin_check_mysql_tables_exist() {
+
     $error_text = '';
     global $wpdb;
 
-    $tables_to_check = array(
-                            $wpdb->prefix . WE_LS_TARGETS_TABLENAME,
+    $tables_to_check = [    $wpdb->prefix . WE_LS_TARGETS_TABLENAME,
                             $wpdb->prefix . WE_LS_TABLENAME,
                             $wpdb->prefix . WE_LS_USER_PREFERENCES_TABLENAME,
                             $wpdb->prefix . WE_LS_MYSQL_META_FIELDS,
-                            $wpdb->prefix . WE_LS_MYSQL_META_ENTRY
-                        );
+                            $wpdb->prefix . WE_LS_MYSQL_META_ENTRY,
+                            $wpdb->prefix . WE_LS_MYSQL_AWARDS,
+                            $wpdb->prefix . WE_LS_MYSQL_AWARDS_GIVEN,
+                            $wpdb->prefix . WE_LS_MYSQL_GROUPS,
+                            $wpdb->prefix . WE_LS_MYSQL_GROUPS_USER
+                       ];
 
     // Check each table exists!
-    foreach($tables_to_check as $table_name) {
+    foreach( $tables_to_check as $table_name ) {
 
         $rows = $wpdb->get_row('Show columns in ' . $table_name);
 
@@ -267,10 +270,6 @@ function ws_ls_create_dialog_jquery_code($title, $message, $class_used_to_prompt
             });
 
         });
-
-
-
-
       </script>
 
   <?php
@@ -641,6 +640,14 @@ function ws_ls_upgrade_link() {
 }
 
 /**
+ * Return the link for managing Groups page
+ * @return string
+ */
+function ws_ls_groups_link() {
+	return admin_url( 'admin.php?page=ws-ls-settings&mode=groups');
+}
+
+/**
  * Return the link for calculations page
  * @return string
  */
@@ -682,8 +689,8 @@ function ws_ls_display_notice($text, $type = 'success') {
  */
 function ws_ls_display_data_saved_message() {
 
-	if('n' !== ws_ls_querystring_value('ws-edit-saved', false, 'n')) {
-		return ws_ls_display_blockquote(__('Your modifications have been saved', WE_LS_SLUG), 'ws-ls-success');
+	if( 'n' !== ws_ls_querystring_value( 'ws-edit-saved', false, 'n' ) ) {
+		return ws_ls_display_blockquote( __('Your modifications have been saved', WE_LS_SLUG ), 'ws-ls-success' );
 	}
 
 	return '';
@@ -696,7 +703,7 @@ function ws_ls_display_data_saved_message() {
  * @text
  *
  */
-function ws_ls_display_blockquote($text, $class = '', $just_echo = false, $include_log_link = false) {
+function ws_ls_display_blockquote( $text, $class = '', $just_echo = false, $include_log_link = false ) {
 
 	$html_output = sprintf('<blockquote class="ws-ls-blockquote%s"><p>%s</p>%s</blockquote>',
 									(false === empty($class)) ? ' ' . esc_html($class) : '',
@@ -710,6 +717,7 @@ function ws_ls_display_blockquote($text, $class = '', $just_echo = false, $inclu
 		return $html_output;
 	}
 
+	return '';
 }
 
 //todo: review this
@@ -860,17 +868,19 @@ function ws_ls_get_value_from_post_or_obj( $object, $key ) {
  */
 function ws_ls_get_values_from_post( $keys ) {
 
+    $data = [];
+
     foreach ( $keys as $key ) {
 
         if ( true === isset( $_POST[ $key ] ) ) {
-            $meta_field[ $key ] = $_POST[ $key ];
+            $data[ $key ] = $_POST[ $key ];
         } else {
-            $meta_field[ $key ] = '';
+            $data[ $key ] = '';
         }
 
     }
 
-    return $meta_field;
+    return $data;
 
 }
 
@@ -940,4 +950,45 @@ function ws_ls_blur_text( $text, $pro_plus = false ) {
     }
 
     return $text;
+}
+
+/**
+ * Calculate the percentage difference between two numbers
+ *
+ * @param $previous_weight
+ * @param $current_weight
+ * @return array|null
+ */
+function ws_ls_calculate_percentage_difference( $previous_weight, $current_weight ) {
+
+    if ( false === isset( $previous_weight ) || false === isset( $current_weight ) || $previous_weight === $current_weight ) {
+        return NULL;
+    }
+
+    $difference = [ 'current' => $current_weight, 'increase' => ( $current_weight > $previous_weight ), 'previous' => $previous_weight ];
+
+    if ( true === $difference['increase'] ) {
+
+        $increase = $current_weight - $previous_weight;
+        $difference['percentage'] = $increase / $previous_weight * 100;
+
+    } else {
+
+        $decrease = $previous_weight - $current_weight;
+        $difference['percentage'] = $decrease /$previous_weight * 100;
+
+    }
+
+    return $difference;
+}
+
+/**
+ * Return the text value of enabled value
+ *
+ * @param $value
+ * @return mixed|string
+ */
+function ws_ls_boolean_as_yes_no_string( $value, $true_value = 2 ) {
+
+	return ( (int) $true_value == (int) $value ) ? __('Yes', WE_LS_SLUG) : __('No', WE_LS_SLUG);
 }

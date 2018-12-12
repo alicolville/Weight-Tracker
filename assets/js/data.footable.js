@@ -60,6 +60,19 @@ jQuery( document ).ready(function ($, undefined) {
         ws_ls_post_data_to_WP('meta_fields_full_list', data, ws_ls_callback_meta_fields_list)
     });
 
+    $(".ws-ls-awards-list-ajax").each(function () {
+
+        var table_id = $(this).attr("id");
+
+        ws_ls_log('Setting up awards table: ' + table_id);
+
+        // OK we know whether or not we're looking for a user's data or everyones. Let's post back to WP admin
+        // for columns and data!
+        var data = {};
+        data['table_id'] = table_id;
+        ws_ls_post_data_to_WP('awards_full_list', data, ws_ls_callback_awards_list)
+    });
+
     $(".ws-ls-errors-list-ajax").each(function () {
 
         var table_id = $(this).attr("id");
@@ -71,6 +84,19 @@ jQuery( document ).ready(function ($, undefined) {
         var data = {};
         data['table_id'] = table_id;
         ws_ls_post_data_to_WP('get_errors', data, ws_ls_callback_errors_list)
+    });
+
+    $(".ws-ls-settings-groups-list-ajax").each(function () {
+
+        var table_id = $(this).attr("id");
+
+        ws_ls_log('Setting up groups table: ' + table_id);
+
+        // OK we know whether or not we're looking for a user's data or everyones. Let's post back to WP admin
+        // for columns and data!
+        var data = {};
+        data['table_id'] = table_id;
+        ws_ls_post_data_to_WP('get_groups', data, ws_ls_callback_groups)
     });
 
     function ws_ls_post_data_to_WP(action, data, callback) {
@@ -108,6 +134,65 @@ jQuery( document ).ready(function ($, undefined) {
             "state": {
                 "enabled" : true,
                 "key": "ws-ls-admin-footable"
+            }
+        });
+
+        $(table_id + ' .footable-filtering-search .input-group .form-control').attr("placeholder", ws_user_table_config['locale-search-text']);
+
+        // Replace "No results" string with locale version
+        if ( 0 === rows.length ) {
+            $(table_id + ' .footable-empty td').html(ws_user_table_config['locale-no-results']);
+        }
+
+    }
+
+    function ws_ls_callback_groups( response, data ){
+
+        var table_id = '#' + response.table_id;
+        var formatters = {};
+
+        // Apply formatters
+        var columns = ws_ls_apply_formatters(response.columns);
+        var rows = response.rows;
+
+        $(table_id).removeClass('ws-ls-loading-table');
+
+        $(table_id).footable({
+            "columns": columns,
+            "rows": rows,
+            "state": {
+                "enabled" : true,
+                "key": "ws-ls-admin-footable"
+            },
+            "editing" : {
+                enabled: true,
+                allowAdd: true,
+                alwaysShow: true,
+                addText: ws_user_table_config['label-add'],
+                deleteRow: function(row){
+                    if ( confirm(ws_user_table_config['label-confirm-delete']) ){
+
+                        var values = row.val();
+
+                        // Fetch the database record ID
+                        if ($.isNumeric( values.id ) ) {
+
+                            // OK, we have a Row ID - send to Ajax handler to delete from DB
+                            var data = {};
+                            data['id'] = values.id;
+
+                            // To keep things looking fast (i.e. so no AJAX lag) delete row instantly from UI
+                            row.delete();
+
+                            // Post back to WP and delete from dB
+                            ws_ls_post_data_to_WP('groups_delete', data, function(response, data) {
+                                if(1 !== response) {
+                                    alert(ws_user_table_config['label-error-delete']);
+                                }
+                            });
+                        }
+                    }
+                },
             }
         });
 
@@ -165,7 +250,6 @@ jQuery( document ).ready(function ($, undefined) {
                                 }
                             });
                         }
-
                     }
                 },
                 editRow: function(row) {
@@ -189,6 +273,74 @@ jQuery( document ).ready(function ($, undefined) {
         }
     }
 
+    function ws_ls_callback_awards_list(response, data) {
+
+        var table_id = '#awards-list';
+        var formatters = {};
+
+        // Apply formatters
+        var columns = ws_ls_apply_formatters(response.columns);
+        var rows = response.rows;
+
+        $(table_id).removeClass('ws-ls-loading-table');
+
+        $(table_id).footable({
+            "columns": columns,
+            "rows": rows,
+            "state": {
+                "enabled" : true,
+                "key": "ws-ls-admin-footable"
+            },
+            editing: {
+                enabled: true,
+                alwaysShow: true, // Don't show "Edit Rows" button
+                allowAdd: true,
+                addText: ws_user_table_config['label-awards-add-button'],
+                deleteRow: function(row){
+                    if (confirm(ws_user_table_config['label-confirm-delete'])){
+
+                        var values = row.val();
+
+                        // Fetch the database record ID
+                        if ($.isNumeric(values.id) ) {
+
+                            // OK, we have a Row ID - send to Ajax handler to delete from DB
+                            var data = {};
+                            data['id'] = values.id;
+
+                            // To keep things looking fast (i.e. so no AJAX lag) delete row instantly from UI
+                            row.delete();
+
+                            // Post back to WP and delete from dB
+                            ws_ls_post_data_to_WP('awards_delete', data, function(response, data) {
+                                if(1 !== response) {
+                                    alert(ws_user_table_config['label-error-delete']);
+                                }
+                            });
+                        }
+
+                    }
+                },
+                editRow: function(row) {
+                    var values = row.val();
+
+                    window.location.href = ws_user_table_config['base-url-awards'] + '&mode=add-edit&id=' + values.id;
+
+                },
+                addRow: function() {
+                    window.location.href = ws_user_table_config['base-url-awards'] + '&mode=add-edit';
+
+                }
+            }
+        });
+
+        $(table_id + ' .footable-filtering-search .input-group .form-control').attr("placeholder", ws_user_table_config['locale-search-text']);
+
+        // Replace "No results" string with locale version
+        if ( 0 === rows.length ) {
+            $(table_id + ' .footable-empty td').html(ws_user_table_config['locale-no-results']);
+        }
+    }
 
     function ws_ls_callback_setup_table(response, data) {
 
@@ -197,7 +349,7 @@ jQuery( document ).ready(function ($, undefined) {
 
         formatters['date'] = function(value){
             return "<b>DATE: " + value + "</b>";
-        }
+        };
 
         var date_column = (ws_ls_in_front_end()) ? 2 : 3;
 
@@ -303,11 +455,10 @@ jQuery( document ).ready(function ($, undefined) {
         // US or UK format?
         if ('false' == ws_user_table_config['us-date']) {
             return day + '/' + month + '/' + year;
-        } else {
-            return month + '/' + day + '/' + year;
         }
 
-        return value;
+        return month + '/' + day + '/' + year;
+
     }
 
     function ws_ls_in_front_end() {

@@ -6,9 +6,14 @@
 	function ws_ls_activate() {
 
         // Register user stats / license check cron job
-        if (!wp_next_scheduled(WE_LS_CRON_NAME)) {
-            wp_schedule_event(time(), 'hourly', WE_LS_CRON_NAME);
+        if ( !wp_next_scheduled( WE_LS_CRON_NAME ) ) {
+            wp_schedule_event( time(), 'hourly', WE_LS_CRON_NAME );
+
         }
+
+		if ( !wp_next_scheduled( 'weight_loss_tracker_daily' ) ) {
+			wp_schedule_event( time(), 'daily', 'weight_loss_tracker_daily' );
+		}
 
         // Register weekly comms to yeken stats cron job
         if (!wp_next_scheduled(WE_LS_CRON_NAME_YEKEN_COMMS)) {
@@ -21,6 +26,7 @@
 
 		// Remove cron jobs
 		wp_clear_scheduled_hook( WE_LS_CRON_NAME );
+        wp_clear_scheduled_hook( 'weight_loss_tracker_daily' );
 		wp_clear_scheduled_hook( WE_LS_CRON_NAME_YEKEN_COMMS );
 	}
 
@@ -121,18 +127,30 @@
 
 		dbDelta( $sql );
 
+		$table_name = $wpdb->prefix . WE_LS_EMAIL_TABLENAME;
+
+		$sql = "CREATE TABLE $table_name (
+				id mediumint(9) NOT NULL AUTO_INCREMENT,
+				slug varchar(10) NOT NULL,
+				subject varchar(40) NOT NULL,
+				email text NOT NULL,
+				UNIQUE KEY id (id)
+		) $charset_collate;";
+
+		dbDelta( $sql );
+
 	}
     add_action('ws-ls-rebuild-database-tables', 'ws_ls_create_mysql_tables');
 
 	function ws_ls_upgrade() {
 
-		if(update_option('ws-ls-version-number', WE_LS_DB_VERSION)) {
+		if( update_option('ws-ls-version-number', WE_LS_DB_VERSION ) ) {
+
 			ws_ls_create_mysql_tables();
 			ws_ls_activate();
-            ws_ls_stats_clear_last_updated_date(); // This will force all stat entries to be recreated.
 
-			// Delete all cache for plugin
-			ws_ls_delete_all_cache();
+			// This will force all stat entries to be recreated.
+            ws_ls_stats_clear_last_updated_date();
 
             // Check the license is still valid
             ws_ls_licences_cron();

@@ -83,14 +83,19 @@ function ws_ls_convert_kg_into_relevant_weight_String($kg, $comparison_value = f
 
 function ws_ls_convert_to_inches($inches = 0) {
 
-	if(is_numeric($inches) && $inches > 0) {
+	if( is_numeric($inches) && $inches > 0 ) {
 		$inches = $inches / 2.54;
 		return round($inches, 2);
 	}
 	return 0;
 }
-function ws_ls_convert_to_cm($feet, $inches = 0) {
+function ws_ls_convert_to_cm( $feet, $inches = 0 ) {
+
+	$inches = (float) $inches;
+	$feet = (float) $feet;
+
 	$inches = ($feet * 12) + $inches;
+
 	return round($inches / 0.393701, 2);
 }
 

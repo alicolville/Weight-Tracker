@@ -4,6 +4,15 @@ defined('ABSPATH') or die("Jog on!");
 /* All caching related logic here! */
 
 /**
+ * Caching enabled?
+ *
+ * @return bool
+ */
+function ws_ls_cache_is_enabled() {
+	return ! ( 'no' === get_option( 'ws-ls-caching' ) );
+}
+
+/**
  * User caching. From now on, store an array for each user in cache. Each caache key can then be stored in an array element.
  * To remove all use cache, just need to delete the cache key.
  *
@@ -66,9 +75,9 @@ function ws_ls_cache_user_delete($user_id) {
 
 function ws_ls_get_cache($key) {
 
-    if(WE_LS_CACHE_ENABLED) {
-      $key = ws_ls_generate_cache_key($key);
-      return get_transient($key);
+    if( true === ws_ls_cache_is_enabled() ) {
+        $key = ws_ls_generate_cache_key($key);
+        return get_transient($key);
     }
 
     return false;
@@ -76,7 +85,7 @@ function ws_ls_get_cache($key) {
 
 function ws_ls_set_cache($key, $data, $time_to_expire = WE_LS_CACHE_TIME) {
 
-    if(WE_LS_CACHE_ENABLED) {
+    if( true === ws_ls_cache_is_enabled() ) {
       $key = ws_ls_generate_cache_key($key);
       set_transient($key, $data, $time_to_expire);
     }
@@ -86,7 +95,7 @@ function ws_ls_set_cache($key, $data, $time_to_expire = WE_LS_CACHE_TIME) {
 
 function ws_ls_delete_cache($key){
 
-    if(WE_LS_CACHE_ENABLED) {
+    if( true === ws_ls_cache_is_enabled() ) {
       $key = ws_ls_generate_cache_key($key);
       return delete_transient($key);
     }
@@ -112,7 +121,7 @@ function ws_ls_delete_cache_for_given_user($user_id = false)
 {
   	global $wpdb;
 
-  	if (WE_LS_CACHE_ENABLED){
+  	if ( true === ws_ls_cache_is_enabled() ){
 
 		if (false == $user_id)  {
 		  $user_id = get_current_user_id();
@@ -125,12 +134,12 @@ function ws_ls_delete_cache_for_given_user($user_id = false)
 		$user_id = intval( $user_id );
 
 		$sql = "Delete FROM  $wpdb->options
-				WHERE option_name LIKE '%transient_" . WE_LS_SLUG . $user_id ."%'";
+				WHERE option_name LIKE '%transient_" . WE_LS_SLUG . WE_LS_CURRENT_VERSION . $user_id ."%'";
 
 		$wpdb->query($sql);
 
 		$sql = "Delete FROM  $wpdb->options
-				WHERE option_name LIKE '%transient_timeout_" . WE_LS_SLUG . $user_id ."%'";
+				WHERE option_name LIKE '%transient_timeout_" . WE_LS_SLUG . $user_id . WE_LS_CURRENT_VERSION . "%'";
 
 		$wpdb->query($sql);
 
@@ -165,7 +174,7 @@ function ws_ls_delete_all_cache()
 {
   global $wpdb;
 
-  if (WE_LS_CACHE_ENABLED){
+  if ( true === ws_ls_cache_is_enabled() ){
 
     $sql = "Delete FROM  $wpdb->options
             WHERE option_name LIKE '%transient_" . WE_LS_SLUG ."%'";
@@ -179,5 +188,5 @@ function ws_ls_delete_all_cache()
   }
 }
 function ws_ls_generate_cache_key($key){
-    return WE_LS_SLUG . $key;
+    return WE_LS_SLUG . WE_LS_CURRENT_VERSION . $key;
 }

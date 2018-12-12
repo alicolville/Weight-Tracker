@@ -9,7 +9,7 @@ class ws_ls_widget_form extends WP_Widget {
 	function __construct() {
 		parent::__construct(
 			'ws_ls_widget_form',
-			__('Weight Loss Tracker - Form', WE_LS_SLUG),
+			__('Weight Tracker - Form', WE_LS_SLUG),
 			array( 'description' => __('Display a quick entry form for logged in users to record their weight for today.', WE_LS_SLUG) ) // Args
 		);
 
@@ -101,12 +101,13 @@ class ws_ls_widget_form extends WP_Widget {
         <p>
 			<label for="<?php echo $this->get_field_id( 'not-logged-in-message' ); ?>"><?php _e('Message to display if not logged in', WE_LS_SLUG); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id( 'not-logged-in-message' ); ?>" name="<?php echo $this->get_field_name( 'not-logged-in-message' ); ?>" type="text" value="<?php echo esc_attr( $field_values['not-logged-in-message'] ); ?>">
-		   <p><small><?php _e('By default the widget is hidden if the user is not logged in. If you wish, you can display a message to the visitor instead.', WE_LS_SLUG); ?></small></p>
+        </p>
+        <p><small><?php _e('By default the widget is hidden if the user is not logged in. If you wish, you can display a message to the visitor instead.', WE_LS_SLUG); ?></small></p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'redirect-url' ); ?>"><?php _e('Redirect URL (Defaults to current page)', WE_LS_SLUG); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id( 'redirect-url' ); ?>" name="<?php echo $this->get_field_name( 'redirect-url' ); ?>" type="text" value="<?php echo esc_attr( $field_values['redirect-url'] ); ?>">
-			<p><small><?php _e('Specify where the user should be redirected to after completing the form. Note: The URL must be within the site domain.', WE_LS_SLUG); ?></small></p>
 		</p>
+        <p><small><?php _e('Specify where the user should be redirected to after completing the form. Note: The URL must be within the site domain.', WE_LS_SLUG); ?></small></p>
 
 		<?php
 	}

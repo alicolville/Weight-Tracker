@@ -2,8 +2,8 @@
 Contributors: aliakro
 Tags: weight, loss, lose, helper, bmi, body, mass, index, graph, track, stones, kg, table, data, plot, target, history, pounds, responsive, chart, measurements, cm, centimeters, inches, hip, waist, bicep, thigh
 Requires at least: 4.4.0
-Tested up to: 4.9.8
-Stable tag: 6.1.1
+Tested up to: 5.0.0
+Stable tag: 7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate Link: https://www.paypal.me/yeken
@@ -40,6 +40,9 @@ For further information read our documentation:
 * **Recommended calorie intake per meal time**. Shortcodes and extended admin screens to recommend how a person should split their daily calorie intake across meals. For further information on how this is calculated please visit our calculations page.
 * **Macronutrients Calculator**. Shortcodes and extended admin screens to recommend how their calorie consumption should be split into fats, carbohydrates and proteins. For further information on the Macronutrients Calculator and how these calculations are performed please visit our calculations page.
 * **Additional user preference fields**. Additional user preference fields and shortcodes to display them: Activity Level, Date of Birth and Gender.
+* **Awards**. Awards and Badges! Set awards for: BMI Change, BMI Equals, Weight Gain / Loss from start and Percentage of weight lost from start.
+
+[Read more about features](https://weight.yeken.uk/features/ "Read more about features")
 
 = Pro Version =
 
@@ -49,8 +52,10 @@ For further information read our documentation:
 * **Measurements.** Support for recording measurements like Hip, Waist, Leg, Bicep, etc. Displayed on charts and tables.
 * **Custom Fields.** Define and ask your user's custom questions on weight entry forms.
 * **Photo Custom Fields**. Add one or more photo fields to your weight entry forms and allow your users to upload photos of their progress. Photos can be viewed, updated and removed by the end user and administrators. Handy shortcodes are provided for displaying galleries, most recent and oldest photo.
+* **Groups**. Define user groups and assign your user's to them. View Weight Difference statistics for the group as a whole.
 * **BMI.** Allows a user to specify their height. Once specified, their BMI is displayed next to each weight entry. There is also a shortcode to render the latest BMI.
 * **Email notifications.** Receive email notifications when a person updates their target or adds / edits a weight.
+* **Birthday Emails**. Automatically send your user's a birthday email (when they have entered a date of birth).
 * **Overall user stats.** Shortcodes that allow you to display the total lost / gained for the community and another to display a league table.
 * **Widgets.** Widgets that allow you to display the graph and quick weight entry form within any widget area.
 * **Chart and form Shortcodes.** That allow you to display the graph and quick weight entry form by placing a shortcode on any post or page.
@@ -65,6 +70,8 @@ For further information read our documentation:
 * **Delete existing entry**. A logged in user will be able to delete or edit an existing weight entry.
 * **Better Tables.**. Data tables in front end and admin will support paging and sorting.
 * **Admin: Extra Settings**. Extra settings to customise the plugin will be added e.g. number of plot points on graph, rows per page, etc.', WE_LS_SLUG)
+
+[Read more about features](https://weight.yeken.uk/features/ "Read more about features")
 
 = Languages support =
 
@@ -143,9 +150,19 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 == Upgrade Notice ==
 
-6.1 - New Photo Custom Fields! Pro users can now add one or more photo fields to weight entry forms!
+7.0 - Awards and Badges! Create awards that your user's can achieve for meeting certain targets!
 
 == Changelog ==
+
+= 7.0 =
+
+* New Feature: Pro Plus: Awards and Badges! Set awards for: BMI Change, BMI Equals, Weight Gain / Loss from start and Percentage of weight lost from start. Read more: https://weight.yeken.uk/awards
+* New Feature: Pro: Added Groups. You can now group your members. https://weight.yeken.uk/groups
+* New Feature: Pro: Birthday Emails. If enabled, automatically send a birthday email to applicable users.
+* Improvement: Ability to clear log with "Clear log" button.
+* Improvement: Caching can now be disabled in Settings.
+* Improvement: Cache now cleared with each release (based upon version number).
+* Bug fix: Fixed an issue during conversions when a non numeric value was passed.
 
 = 6.1.1 =
 
@@ -161,6 +178,8 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 * Improvement: Added additional logic to remove photos from media library when no longer used by Weight Tracker (e.g. user has deleted them)
 * Improvement: Various minor tweaks to meta fields and validation.
 * Improvement: Changed email format to HTML.
+* Improvement: Optimised [wlt-new-users] to reduce size of data returned by query.
+* Improvement: General PHP code tweaks to improve performance and maintainability ( based on PHPStorms recommendations).
 * Bug fix: Class name not being correctly added to forms.
 
 = 6.0.3 =

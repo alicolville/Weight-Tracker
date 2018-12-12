@@ -274,6 +274,7 @@ function ws_ls_data_table_enqueue_scripts() {
 	wp_enqueue_script('ws-ls-footables-admin', plugins_url( '/assets/js/data.footable' .     $minified . '.js', dirname(__FILE__) ), array('ws-ls-footables-js'), WE_LS_CURRENT_VERSION, true);
 	wp_localize_script('ws-ls-footables-admin', 'ws_user_table_config', ws_ls_data_js_config());
     wp_enqueue_style('fontawesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', array(), WE_LS_CURRENT_VERSION);
+
 }
 
 /**
@@ -285,7 +286,10 @@ function ws_ls_data_js_config() {
 					'security' => wp_create_nonce('ws-ls-user-tables'),
 					'base-url' => ws_ls_get_link_to_user_data(),
 					'base-url-meta-fields' => ws_ls_meta_fields_base_url(),
+					'base-url-awards' => ws_ls_awards_base_url(),
+					'label-add' =>  __('Add', WE_LS_SLUG),
                     'label-meta-fields-add-button' =>  __('Add Custom Field', WE_LS_SLUG),
+					'label-awards-add-button' =>  __('Add Award', WE_LS_SLUG),
 					'label-confirm-delete' =>  __('Are you sure you want to delete the row?', WE_LS_SLUG),
 					'label-error-delete' =>  __('Unfortunately there was an error deleting the row.', WE_LS_SLUG),
                     'locale-search-text' =>  __('Search', WE_LS_SLUG),
@@ -299,12 +303,9 @@ function ws_ls_data_js_config() {
         $edit_link = ws_ls_get_url();
 
         // Strip old edit and cancel QS values
-		$remove_qs = ['ws-edit-entry', 'ws-edit-cancel', 'ws-edit-saved'];
-		foreach ($remove_qs as $qs) {
-			$edit_link = remove_query_arg($remove_qs, $edit_link);
-		}
+		$edit_link = remove_query_arg( ['ws-edit-entry', 'ws-edit-cancel', 'ws-edit-saved'], $edit_link );
 
-		$config['edit-url'] = esc_url(add_query_arg( 'ws-edit-entry', '|ws-id|', $edit_link ));
+		$config['edit-url'] = esc_url( add_query_arg( 'ws-edit-entry', '|ws-id|', $edit_link ) );
 
 		$config['current-url-base64'] = add_query_arg( 'ws-edit-saved', 'true', $edit_link );
 		$config['current-url-base64'] = base64_encode($config['current-url-base64']);

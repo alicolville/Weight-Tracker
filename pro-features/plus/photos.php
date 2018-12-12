@@ -158,7 +158,7 @@ function ws_ls_photos_shortcode_render( $image, $css_class = '', $hide_date = tr
  * @param bool $recent
  * @param int $width
  * @param int $height
- * @return bool|null
+ * @return array|bool|null
  */
 function ws_ls_photos_db_get_recent_or_latest( $user_id = false,
 													$recent = false,
@@ -295,15 +295,15 @@ function ws_ls_meta_fields_photos_delete_entry( $attachment_id ) {
  * @return array|bool|null
  */
 function ws_ls_photos_db_get_all_photos(    $user_id = false,
-											$include_image_object = false,
-											$limit = false,
-											$direction = 'asc',
-											$width = 200,
-											$height = 200,
-											$meta_fields_to_use = '',
-											$hide_from_shortcodes = false) {
+	$include_image_object = false,
+	$limit = false,
+	$direction = 'asc',
+	$width = 200,
+	$height = 200,
+	$meta_fields_to_use = '',
+	$hide_from_shortcodes = false) {
 
-    $user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
+	$user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
 
 	$photo_fields = ws_ls_meta_fields_photos_ids_to_use( $meta_fields_to_use, $hide_from_shortcodes );
 
@@ -312,21 +312,21 @@ function ws_ls_photos_db_get_all_photos(    $user_id = false,
 		return [];
 	}
 
-    global $wpdb;
+	global $wpdb;
 
-    // Validate fields
-    $direction = (false === in_array($direction, ['asc', 'desc'])) ? 'desc' : $direction;
-    $width = ws_ls_force_numeric_argument($width, 200);
-    $height = ws_ls_force_numeric_argument($height, 200);
+	// Validate fields
+	$direction = (false === in_array($direction, ['asc', 'desc'])) ? 'desc' : $direction;
+	$width = ws_ls_force_numeric_argument($width, 200);
+	$height = ws_ls_force_numeric_argument($height, 200);
 
-    $cache_key = WE_LS_CACHE_KEY_PHOTOS_ALL . '-' . $direction . $include_image_object . $limit . $width . $height;
+	$cache_key = WE_LS_CACHE_KEY_PHOTOS_ALL . '-' . $direction . $include_image_object . $limit . $width . $height;
 
-    // Return cache if found!
-    if ($cache = ws_ls_cache_user_get($user_id, $cache_key))   {
-        return $cache;
-    }
+	// Return cache if found!
+	if ($cache = ws_ls_cache_user_get($user_id, $cache_key))   {
+		return $cache;
+	}
 
-    $limit = ( false === empty($limit) && is_numeric($limit) ) ? ' limit 0, ' . intval($limit) : '';
+	$limit = ( false === empty($limit) && is_numeric($limit) ) ? ' limit 0, ' . intval($limit) : '';
 
 	$sql = 'Select d.id, d.weight_weight, d.weight_pounds, d.weight_stones, d.weight_only_pounds, d.weight_notes, d.weight_date, e.value as photo_id, f.field_name, f.sort 
 			from ' . $wpdb->prefix . WE_LS_MYSQL_META_ENTRY . ' e 
@@ -336,13 +336,13 @@ function ws_ls_photos_db_get_all_photos(    $user_id = false,
 
 	$sql = $wpdb->prepare( $sql, $user_id );
 
-    $photos = $wpdb->get_results( $sql );
+	$photos = $wpdb->get_results( $sql );
 
-    $photos_to_return = [];
+	$photos_to_return = [];
 
-    if ( false === empty($photos) ) {
+	if ( false === empty($photos) ) {
 
-        foreach ( $photos as $row ) {
+		foreach ( $photos as $row ) {
 
 			$photo = ws_ls_weight_object($user_id,
 				$row->weight_weight,
@@ -358,20 +358,22 @@ function ws_ls_photos_db_get_all_photos(    $user_id = false,
 				$row->photo_id
 			);
 
-	        $photo['field-name'] = $row->field_name;
+			$photo['field-name'] = $row->field_name;
 
-            // Embed image attachment data?
-            if ( true === $include_image_object ) {
+			// Embed image attachment data?
+			if ( true === $include_image_object ) {
 				$photo_src = ws_ls_photo_get( $photo['photo_id'], $width, $height);
 
 				if ( false === empty($photo_src) ) {
 					$photo = array_merge( $photo_src, $photo);
 				}
-            }
+			}
 
-            $photos_to_return[] = $photo;
-        }
-    }
+			$photo['display-text'] = $photo['date-display'] . ' &middot; ' . $photo['field-name'] . ' &middot; ' . $photo['display'];
+
+			$photos_to_return[] = $photo;
+		}
+	}
 
 	ws_ls_cache_user_set($user_id, $cache_key, $photos_to_return);
 	return $photos_to_return;
@@ -424,11 +426,11 @@ function ws_ls_photos_db_count_photos( $user_id = false, $hide_from_shortcodes =
  * @param $height
  * @return bool
  */
-function ws_ls_photo_get($attachment_id, $width = 200, $height = 200, $include_full_url = true) {
+function ws_ls_photo_get( $attachment_id, $width = 200, $height = 200, $include_full_url = true ) {
 
 	$photo['thumb'] = wp_get_attachment_image( $attachment_id, array( $width, $height) );
 
-	if ( false === empty($photo['thumb'])) {
+	if ( false === empty( $photo['thumb'] )) {
 
 		if(true === $include_full_url) {
 			$photo['full'] = wp_get_attachment_url($attachment_id);

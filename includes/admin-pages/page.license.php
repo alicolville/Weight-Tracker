@@ -191,7 +191,7 @@ function ws_ls_advertise_pro() {
                                     <table class="ws-ls-sidebar-stats">
                                         <tr>
                                             <th><?php echo __('Site Hash', WE_LS_SLUG); ?></th>
-                                            <td><?php echo esc_html_e(ws_ls_generate_site_hash()); ?></td>
+                                            <td><?php echo esc_html( ws_ls_generate_site_hash() ); ?></td>
                                         </tr>
                                         <tr>
                                             <th><?php echo __('Type', WE_LS_SLUG); ?></th>
@@ -220,10 +220,10 @@ function ws_ls_advertise_pro() {
 	                                            <th colspan="2"><?php echo __('Your Existing License', WE_LS_SLUG); ?></th>
 											</tr>
 											<tr class="last">
-												<td colspan="2"><textarea rows="5" style="width:100%"><?php echo esc_textarea($existing_license); ?></textarea></th>
+												<td colspan="2"><textarea rows="5" style="width:100%"><?php echo esc_textarea($existing_license); ?></textarea></td>
 											</tr>
 											<tr class="last">
-												<td colspan="2"><a href="<?php echo admin_url('admin.php?page=ws-ls-license&remove-license=true'); ?>" class="button-secondary delete-license"><?php echo __('Remove License', WE_LS_SLUG); ?></a></th>
+												<td colspan="2"><a href="<?php echo admin_url('admin.php?page=ws-ls-license&remove-license=true'); ?>" class="button-secondary delete-license"><?php echo __('Remove License', WE_LS_SLUG); ?></a></td>
 											</tr>
 
 										<?php endif; ?>
@@ -280,7 +280,7 @@ function ws_ls_advertise_pro() {
 
 <?php
 
-	echo ws_ls_create_dialog_jquery_code(__('Are you sure you?', WE_LS_SLUG),
+	ws_ls_create_dialog_jquery_code(__('Are you sure you?', WE_LS_SLUG),
         __('Are you sure you wish to remove the license for this site? Removing it may cause your user\'s to lose functionality.', WE_LS_SLUG) . '<br /><br />',
         'delete-license');
 
