@@ -156,6 +156,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 = 7.1 =
 
+* Improvement: Increased granularity of height values.
 * Improvement: Updated plugin title and description. Removed references to "loss" from "Weight Loss Tracker".
 
 = 7.0 =
