@@ -215,7 +215,7 @@ function ws_ls_awards_add_update_page() {
                                         </div>
                                         <div class="ws-ls-row" id="ws-ls-awards-additional-weight-percentage">
                                             <div class="ws-ls-cell">
-                                                <label for="weight_percentage"><?php echo __('% from starting weight', WE_LS_SLUG); ?></label>
+                                                <label for="weight_percentage"><?php echo __('Percentage from starting weight', WE_LS_SLUG); ?></label>
                                             </div>
                                             <?php
                                                 $value = ( true === $validation_fail && false === empty( $award['weight_percentage'] ) ) ? $award['weight_percentage'] : $award['value'];
