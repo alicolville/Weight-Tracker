@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-12 09:27+0000\n"
-"PO-Revision-Date: 2018-12-12 09:27+0000\n"
+"POT-Creation-Date: 2018-12-15 15:45+0000\n"
+"PO-Revision-Date: 2018-12-15 15:45+0000\n"
 "Last-Translator: Gero <geroarias@gmail.com>\n"
 "Language-Team: Spanish (Mexico)\n"
 "Language: es\n"
@@ -18,7 +18,9 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
 #: admin-notifications.php:30
-msgid "Weight Loss Tracker"
+#, fuzzy
+#| msgid "Weight Loss Tracker"
+msgid "Weight Tracker"
 msgstr "Diario de pérdida de peso"
 
 #: admin-pages/awards/page-awards-add-update.php:97
@@ -68,25 +70,25 @@ msgstr ""
 msgid "Weight difference"
 msgstr "Unidades Peso"
 
-#: admin-pages/awards/page-awards-add-update.php:173 core.php:378
+#: admin-pages/awards/page-awards-add-update.php:173 core.php:376
 msgid "Stones"
 msgstr "Piedras"
 
 #: admin-pages/awards/page-awards-add-update.php:175
 #: admin-pages/awards/page-awards-add-update.php:186
-#: admin-pages/settings/page-settings-generic.php:110 core.php:379 core.php:382
+#: admin-pages/settings/page-settings-generic.php:110 core.php:377 core.php:380
 msgid "Pounds"
 msgstr "Libras"
 
 #: admin-pages/awards/page-awards-add-update.php:191 core.php:14 core.php:83
-#: core.php:212 core.php:386
+#: core.php:210 core.php:384
 msgid "Weight"
 msgstr "Peso"
 
 #: admin-pages/awards/page-awards-add-update.php:191
 #: admin-pages/awards/page-awards-add-update.php:192
 #: admin-pages/settings/page-settings-generic.php:108 converters.php:56
-#: core.php:75 core.php:386 functions.php:73 functions.php:96
+#: core.php:75 core.php:384 functions.php:73 functions.php:96
 msgid "kg"
 msgstr ""
 
@@ -99,9 +101,9 @@ msgid "BMI Equals"
 msgstr ""
 
 #: admin-pages/awards/page-awards-add-update.php:218
-#, fuzzy, php-format
+#, fuzzy
 #| msgid "Underweight"
-msgid "% from starting weight"
+msgid "Percentage from starting weight"
 msgstr "Bajo de peso"
 
 #: admin-pages/awards/page-awards-add-update.php:225
@@ -155,7 +157,7 @@ msgstr ""
 #: admin-pages/settings/page-settings-generic.php:552
 #: admin-pages/settings/page-settings-generic.php:572
 #: admin-pages/settings/page-settings-generic.php:592
-#: admin-pages/settings/page-settings-generic.php:653 functions.php:996
+#: admin-pages/settings/page-settings-generic.php:653 functions.php:993
 msgid "Yes"
 msgstr "Si"
 
@@ -188,7 +190,7 @@ msgstr "Si"
 #: admin-pages/settings/page-settings-generic.php:553
 #: admin-pages/settings/page-settings-generic.php:571
 #: admin-pages/settings/page-settings-generic.php:591
-#: admin-pages/settings/page-settings-generic.php:652 functions.php:996
+#: admin-pages/settings/page-settings-generic.php:652 functions.php:993
 msgid "No"
 msgstr "No"
 
@@ -214,7 +216,7 @@ msgid "Enabled"
 msgstr ""
 
 #: admin-pages/awards/page-awards-add-update.php:303
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:173 core.php:425
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:173 core.php:423
 msgid "Cancel"
 msgstr ""
 
@@ -318,7 +320,7 @@ msgid ""
 "higher up the form."
 msgstr ""
 
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:148 core.php:403
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:148 core.php:401
 msgid "Mandatory"
 msgstr ""
 
@@ -393,7 +395,7 @@ msgstr ""
 msgid "Admin Tools"
 msgstr ""
 
-#: admin-pages/page.help.php:111 admin-pages/page.help.php:125 core.php:663
+#: admin-pages/page.help.php:111 admin-pages/page.help.php:125 core.php:661
 msgid "Done"
 msgstr "Listo"
 
@@ -1359,7 +1361,7 @@ msgstr "PESO OBJETIVO"
 msgid "Recent Weight"
 msgstr "PESO OBJETIVO"
 
-#: admin-pages/user-data/data-search-results.php:48 core.php:285
+#: admin-pages/user-data/data-search-results.php:48 core.php:283
 msgid "Target Weight"
 msgstr "PESO OBJETIVO"
 
@@ -1572,13 +1574,13 @@ msgid "Export to JSON"
 msgstr ""
 
 #: converters.php:53 converters.php:71 core.php:75 functions.php:69
-#: functions.php:84 functions.php:93 functions.php:99 functions.php:298
-#: functions.php:304 functions.php:561 shortcode-various.php:262
+#: functions.php:84 functions.php:93 functions.php:99 functions.php:294
+#: functions.php:300 functions.php:557 shortcode-various.php:262
 #: shortcode-various.php:281
 msgid "lbs"
 msgstr "lbs"
 
-#: converters.php:71 functions.php:304
+#: converters.php:71 functions.php:300
 msgid "St"
 msgstr "St"
 
@@ -1586,11 +1588,11 @@ msgstr "St"
 msgid "Date"
 msgstr "Fecha"
 
-#: core.php:15 core.php:395
+#: core.php:15 core.php:393
 msgid "Notes"
 msgstr "Notas"
 
-#: core.php:62 core.php:265 shortcode-weight-loss-tracker.php:50
+#: core.php:62 core.php:263 shortcode-weight-loss-tracker.php:50
 msgid "You need to be logged in to record your weight."
 msgstr "Tienes que estar conectado para registrar tu peso."
 
@@ -1602,132 +1604,132 @@ msgstr "CM"
 msgid "Target"
 msgstr "Objetivo"
 
-#: core.php:219
+#: core.php:217
 msgid "Measurement"
 msgstr "Medidas"
 
-#: core.php:241
+#: core.php:239
 msgid "You have modified data. Please refresh page."
 msgstr "Tu has modificado la información. Por favor refresca la página."
 
-#: core.php:265
+#: core.php:263
 msgid "You need to be logged in to set your target."
 msgstr "Tienes que estar conectado para registrar tu peso."
 
-#: core.php:282
+#: core.php:280
 msgid "Add a new weight"
 msgstr "Añadir un nuevo peso"
 
-#: core.php:287
+#: core.php:285
 msgid "Edit weight"
 msgstr "Bajo de peso"
 
-#: core.php:368
+#: core.php:366
 msgid "Your target weight is"
 msgstr "Tu peso objetivo es"
 
-#: core.php:368
+#: core.php:366
 msgid "The user's target weight is currently"
 msgstr "Tu peso objetivo es"
 
-#: core.php:402
+#: core.php:400
 msgid "Edit measurements"
 msgstr "Añadir medidas"
 
-#: core.php:402
+#: core.php:400
 msgid "Add measurements"
 msgstr "Añadir medidas"
 
-#: core.php:403
+#: core.php:401
 msgid "Optional"
 msgstr "Opciones"
 
-#: core.php:412
+#: core.php:410
 msgid "Set Target"
 msgstr "ACEPTAR"
 
-#: core.php:412
+#: core.php:410
 msgid "Save Entry"
 msgstr "Guardar registro"
 
-#: core.php:417
+#: core.php:415
 msgid "Please correct the following:"
 msgstr ""
 
-#: core.php:430
+#: core.php:428
 msgid "Clear Target"
 msgstr "BORRAR"
 
-#: core.php:596
+#: core.php:594
 msgid "Please enter a value between 0-13 for pounds"
 msgstr "Introduce una entre 0-14 libras"
 
-#: core.php:596
+#: core.php:594
 msgid "Please enter a valid figure for pounds"
 msgstr "Introduce una figura válida para libras"
 
-#: core.php:603
+#: core.php:601
 msgid "Are you sure you wish to clear your target weight?"
 msgstr "¿Está seguro que deseas borrar tu peso objetivo?"
 
-#: core.php:606
+#: core.php:604
 msgid "Please enter a valid figure for Kg"
 msgstr "Introduce una figura válida para Kg"
 
-#: core.php:607
+#: core.php:605
 msgid "Please enter a valid figure for Stones"
 msgstr "Por favor, introduce una figura válida para piedras."
 
-#: core.php:608
+#: core.php:606
 msgid "Please enter a valid date"
 msgstr "Por favor, introduce una fecha válida"
 
-#: core.php:609
+#: core.php:607
 msgid "Please confirm you wish to delete ALL your weight history"
 msgstr "Por favor, confirma que deseas eliminar todo tu historial de pesos."
 
-#: core.php:610
+#: core.php:608
 msgid "Your photo must be less than "
 msgstr ""
 
-#: core.php:611
+#: core.php:609
 msgid "Are you sure you wish to delete this entry? If so, press OK."
 msgstr ""
 "¿Estás seguro/a que deseas eliminar este entrada? Si es así, presiona OK"
 
-#: core.php:620
+#: core.php:618
 msgid "Please enter a valid measurement ("
 msgstr "Por favor, introduce una medida válida ("
 
-#: core.php:632
+#: core.php:630
 msgid "Please select or enter a value for height."
 msgstr "Introduce una figura válida para Kg"
 
-#: core.php:633
+#: core.php:631
 msgid "Please select or enter a value for activity level."
 msgstr "Por favor, introduce una figura válida para piedras."
 
-#: core.php:634
+#: core.php:632
 msgid "Please select or enter a value for gender."
 msgstr "Introduce una figura válida para Kg"
 
-#: core.php:635
+#: core.php:633
 msgid "Please enter a valid date."
 msgstr "Por favor, introduce una fecha válida"
 
-#: core.php:636
+#: core.php:634
 msgid "Please select your aim."
 msgstr "Introduce una figura válida para Kg"
 
-#: core.php:646
+#: core.php:644
 msgid "This field is required."
 msgstr ""
 
-#: core.php:664
+#: core.php:662
 msgid "Today"
 msgstr "Hoy"
 
-#: functions.php:84 functions.php:99 functions.php:549
+#: functions.php:84 functions.php:99 functions.php:545
 #: shortcode-various.php:281
 msgid "st"
 msgstr "st"
@@ -1736,49 +1738,49 @@ msgstr "st"
 msgid "The following MySQL tables are missing for this plugin"
 msgstr "Las siguientes tablas de MySQL no están disponibles para este plugin"
 
-#: functions.php:301 shortcode-various.php:286
+#: functions.php:297 shortcode-various.php:286
 msgid "Kg"
 msgstr "Kg"
 
-#: functions.php:363
+#: functions.php:359
 msgid "View all weeks"
 msgstr "Ver todas las semanas"
 
-#: functions.php:377
+#: functions.php:373
 msgid "View Week"
 msgstr "Ver Semanas"
 
-#: functions.php:377
+#: functions.php:373
 msgid "to"
 msgstr "para"
 
-#: functions.php:516
+#: functions.php:512
 msgid "The plugin supports the following measurements"
 msgstr "El plugin es compatible con las siguientes medidas"
 
-#: functions.php:662
+#: functions.php:658
 msgid "Read more about calculations"
 msgstr ""
 
-#: functions.php:697
+#: functions.php:693
 msgid "Your modifications have been saved"
 msgstr "¡Tu configuración ha sido guardada!"
 
-#: functions.php:715
+#: functions.php:711
 msgid "Login now"
 msgstr "Inicia Sesión ahora"
 
-#: functions.php:899
+#: functions.php:896
 msgid "Upgrade Weight Tracker and get more features!"
 msgstr ""
 
-#: functions.php:901
+#: functions.php:898
 msgid ""
 "Upgrade to the latest Pro or Pro Plus version of this plugin to manipulate "
 "your user's data, add custom fields, BMR, Macro Nutrients and much more!"
 msgstr ""
 
-#: functions.php:902
+#: functions.php:899
 msgid "Read more and Upgrade to Pro / Pro Plus Version"
 msgstr "Obtén la versión Pro"
 
