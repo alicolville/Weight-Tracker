@@ -159,6 +159,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 * Improvement: Added Dutch Formal (copied from Dutch).
 * Improvement: Increased granularity of height values.
 * Improvement: Updated plugin title and description. Removed references to "loss" from "Weight Loss Tracker".
+* Improvement: When a target is cleared, redirect back to current page so UI refreshes.
 
 = 7.0 =
 
