@@ -352,11 +352,13 @@ function ws_ls_delete_target( $user_id ) {
 
   global $wpdb;
 
-  if ( true === is_numeric( $user_id ) ) {
+  $user_id = (int) $user_id;
 
-    $result = $wpdb->delete($wpdb->prefix . WE_LS_TARGETS_TABLENAME, array( 'weight_user_id' => $user_id));
+  if ( false === empty( $user_id ) ) {
 
-    if ( true === $result ) {
+    $result = $wpdb->delete($wpdb->prefix . WE_LS_TARGETS_TABLENAME, [ 'weight_user_id' => $user_id ], [ '%d' ] );
+
+    if ( false === empty( $result ) ) {
 
       // Tidy up cache
       ws_ls_delete_cache_for_given_user( $user_id );

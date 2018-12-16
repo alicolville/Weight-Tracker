@@ -583,7 +583,7 @@ function ws_ls_querystring_value($key, $force_to_int = false, $default = false) 
 
 function ws_ls_ajax_post_value($key, $json_decode = false)
 {
-	if(isset($_POST[$key]) && $json_decode) {
+	if( isset($_POST[$key]) && $json_decode) {
 		return json_decode($_POST[$key]);
 	}
 	elseif(isset($_POST[$key])) {
