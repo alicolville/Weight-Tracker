@@ -7,7 +7,7 @@ HEX: #f7786b
 
  */
 
-.ws-ls-hide {
+.ws-ls-hide, .ws-ls-hide-if-admin {
     display: none !important;
 }
 .ws-ls-disabled *, .ws-ls-disabled-pro-plus *
