@@ -146,49 +146,53 @@
         // Fetch all enabled awards from db
         $from_db = ws_ls_awards_get_enabled();
 
-        // Loop through each award in DB, count it's type and decide whether to consider issuing it.
-        foreach ( $from_db as $category => $from_db_awards ) {
+        if ( false === empty( $from_db ) ) {
 
-            foreach ( $from_db_awards as $award ) {
+        	foreach ( $from_db as $category => $from_db_awards ) {
 
-                if ( true === empty( $counts[ $category ] ) ) {
-                    $counts[ $category ] = 0;
-                }
+		        foreach ( $from_db_awards as $award ) {
 
-                // Only consider giving enabled awards and ones that haven't been already issued to this user.
-                if ( 2 === (int) $award[ 'enabled' ] ) {
+			        if ( true === empty( $counts[ $category ] ) ) {
+				        $counts[ $category ] = 0;
+			        }
 
-                	// Consider whether gaining or losing weight
-                	if ( false === in_array( $category, [ 'bmi-equals' ] ) ) {
+			        // Only consider giving enabled awards and ones that haven't been already issued to this user.
+			        if ( 2 === (int) $award[ 'enabled' ] ) {
 
-		                // If specified, strip out the gain or loss awards. For example, if the user has gained since start weight then we can assume they will not be winning
-		                // any "loss" awards.
-		                if ( true === $losing_weight_only && 'loss' !== $award['gain_loss'] ) {
-			                continue;
-		                }
+				        // Consider whether gaining or losing weight
+				        if ( false === in_array( $category, [ 'bmi-equals' ] ) ) {
 
-		                if ( false === $losing_weight_only && 'gain' !== $award['gain_loss'] ) {
-			                continue;
-		                }
-	                }
+					        // If specified, strip out the gain or loss awards. For example, if the user has gained since start weight then we can assume they will not be winning
+					        // any "loss" awards.
+					        if ( true === $losing_weight_only && 'loss' !== $award['gain_loss'] ) {
+						        continue;
+					        }
 
-                    // Is this award available for the type of update i.e. update / add
-                    if ( true === isset( $award['apply_to_' . $change_type ] ) && 0 === (int) $award['apply_to_' . $change_type ] ) {
-                        continue;
-                    }
+					        if ( false === $losing_weight_only && 'gain' !== $award['gain_loss'] ) {
+						        continue;
+					        }
+				        }
 
-                    // Has this award already been awarded more that is allowed for this user?
-                    $previous_no_awards = ws_ls_awards_user_times_awarded( $user_id, $award['id'] );
+				        // Is this award available for the type of update i.e. update / add
+				        if ( true === isset( $award['apply_to_' . $change_type ] ) && 0 === (int) $award['apply_to_' . $change_type ] ) {
+					        continue;
+				        }
 
-                	if ( $previous_no_awards >= $award['max_awards'] ) {
-                        continue;
-                    }
+				        // Has this award already been awarded more that is allowed for this user?
+				        $previous_no_awards = ws_ls_awards_user_times_awarded( $user_id, $award['id'] );
 
-                    $counts[ $category ] ++;
-                    $awards[ $category ][ $award['id'] ] = $award;
-                }
-            }
+				        if ( $previous_no_awards >= $award['max_awards'] ) {
+					        continue;
+				        }
+
+				        $counts[ $category ] ++;
+				        $awards[ $category ][ $award['id'] ] = $award;
+			        }
+		        }
+	        }
         }
+
+        // Loop through each award in DB, count it's type and decide whether to consider issuing it.
 
         return [
             'any' => ( count( $awards ) > 0 ) ? true : false,
