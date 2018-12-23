@@ -156,6 +156,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 = 7.0.1 =
 
+* Improvement: Added filter to allow a custom section to be inserted into user record.
 * Bug fix: Fixed issue with "Warning: Invalid argument supplied for foreach()" in Awards
 
 = 7.0 =
