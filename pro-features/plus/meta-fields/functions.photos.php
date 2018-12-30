@@ -318,8 +318,10 @@
             return false;
         }
 
+        $old_ids = ws_ls_meta_fields_photos_get_old_ids();
+
         // Do we have any photos?
-        if ( true === empty( ws_ls_meta_fields_photos_get_old_ids() )) {
+        if ( true === empty( $old_ids ) ) {
             return false;
         }
 
