@@ -311,8 +311,10 @@
             return false;
         }
 
+        $migration_already_done = get_option('ws-ls-meta-fields-photo-migrate-done', false );
+
         // Don't run if we have already performed this!
-        if ( false === $ignore_previous_run && false === empty( get_option('ws-ls-meta-fields-photo-migrate-done', false ) ) ) {
+        if ( false === $ignore_previous_run && false === empty( $migration_already_done ) ) {
             return false;
         }
 
