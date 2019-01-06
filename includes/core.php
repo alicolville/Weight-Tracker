@@ -411,7 +411,7 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 
 	$html_output .= '<div class="ws-ls-form-buttons">
 						<div>
-						    <div class="ws-ls-error-summary">
+						    <div class="ws-ls-error-summary ws-ls-hide-if-admin">
 						        <p>' . __('Please correct the following:', WE_LS_SLUG) . '</p>
                                 <ul></ul>
                             </div>
@@ -560,7 +560,12 @@ function ws_ls_capture_form_validate_and_save($user_id = false)
 
     }
 
-	$result = ws_ls_save_data($user_id, $weight_object, $is_target_form, $existing_db_id);
+    // If nothing was entered for a target weight, then delete existing.
+    if ( true === $is_target_form && true === empty( $weight_object['kg'] ) ) {
+        ws_ls_delete_target( $user_id );
+    }
+
+	$result = ws_ls_save_data( $user_id, $weight_object, $is_target_form, $existing_db_id );
 
     return $result;
 }

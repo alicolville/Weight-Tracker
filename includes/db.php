@@ -342,22 +342,31 @@ function ws_ls_delete_entry($user_id, $row_id)
   return $result;
 }
 
-function ws_ls_delete_target($user_id)
-{
-  $result = false;
+/**
+ * Delete a user's target
+ *
+ * @param $user_id
+ * @return bool
+ */
+function ws_ls_delete_target( $user_id ) {
+
   global $wpdb;
 
-  if (is_numeric($user_id)) {
+  $user_id = (int) $user_id;
 
-    $result = $wpdb->delete($wpdb->prefix . WE_LS_TARGETS_TABLENAME, array( 'weight_user_id' => $user_id));
+  if ( false === empty( $user_id ) ) {
 
-    if ($result !== false) {
-      $result = true;
+    $result = $wpdb->delete($wpdb->prefix . WE_LS_TARGETS_TABLENAME, [ 'weight_user_id' => $user_id ], [ '%d' ] );
+
+    if ( false === empty( $result ) ) {
+
       // Tidy up cache
-      ws_ls_delete_cache_for_given_user($user_id);
+      ws_ls_delete_cache_for_given_user( $user_id );
+
+      return true;
     }
   }
-  return $result;
+  return false;
 }
 
 function ws_ls_get_min_max_dates($user_id)
@@ -673,7 +682,7 @@ function ws_ls_get_entry_counts($user_id = false, $use_cache = true) {
 
 function ws_ls_validate_height($height) {
 	 // If not a valid height clear value
-	 if(!is_numeric($height) || $height < 142 || $height > 201) {
+	 if(!is_numeric($height) || $height < 122 || $height > 201) {
 	   $height = 0;
 	 }
 	 return $height;

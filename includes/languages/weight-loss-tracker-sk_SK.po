@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Weight Loss Tracker\n"
-"POT-Creation-Date: 2018-10-17 21:22+0100\n"
-"PO-Revision-Date: 2018-12-12 09:32+0000\n"
+"POT-Creation-Date: 2018-12-15 15:45+0000\n"
+"PO-Revision-Date: 2018-12-15 15:45+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sk_SK\n"
@@ -22,138 +22,368 @@ msgstr ""
 "X-Poedit-SearchPath-1: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: admin-notifications.php:30
-msgid "Weight Loss Tracker"
+#. Plugin Name of the plugin/theme
+#: includes/admin-notifications.php:30 pro-features/widget-chart.php:17
+#, fuzzy
+#| msgid "Weight Loss Tracker"
+msgid "Weight Tracker"
 msgstr "Sledovanie úbytku hmotnosti"
 
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:62
-msgid "Add / Edit a Custom Field"
+#: includes/admin-pages/awards/page-awards-add-update.php:97
+#, fuzzy
+#| msgid "Add / Edit an entry"
+msgid "Add / Edit an Award"
 msgstr "Pridať / Upraviť záznam"
 
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:66
+#: includes/admin-pages/awards/page-awards-add-update.php:101
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:66
 msgid "Please complete all mandatory fields."
 msgstr "Prosím zadajte platný dátum."
 
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:74
-msgid "Field Type"
+#: includes/admin-pages/awards/page-awards-add-update.php:109
+#: pro-features/plus/awards/hooks.php:272 pro-features/widget-chart.php:106
+#: pro-features/widget-form.php:77 pro-features/widget-progress.php:76
+msgid "Title"
+msgstr "Názov"
+
+#: includes/admin-pages/awards/page-awards-add-update.php:118
+msgid "Award Type"
 msgstr ""
 
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:81
-msgid "Number"
+#: includes/admin-pages/awards/page-awards-add-update.php:131
+msgid ""
+"Awards are decided by comparing the difference between the user's latest "
+"weight and their starting weight."
 msgstr ""
 
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:82
-msgid "Text"
+#: includes/admin-pages/awards/page-awards-add-update.php:139
+msgid "Gain or Loss"
 msgstr ""
 
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:83
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:99
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:154
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:166
-#: admin-pages/page.settings.php:118 admin-pages/page.settings.php:128
-#: admin-pages/page.settings.php:139 admin-pages/page.settings.php:150
-#: admin-pages/page.settings.php:211 admin-pages/page.settings.php:221
-#: admin-pages/page.settings.php:231 admin-pages/page.settings.php:320
-#: admin-pages/page.settings.php:352 admin-pages/page.settings.php:381
-#: admin-pages/page.settings.php:399 admin-pages/page.settings.php:424
-#: admin-pages/page.settings.php:475 admin-pages/page.settings.php:490
-#: admin-pages/page.settings.php:500 admin-pages/page.settings.php:510
-#: admin-pages/page.settings.php:530 admin-pages/page.settings.php:550
-#: admin-pages/page.settings.php:611
+#: includes/admin-pages/awards/page-awards-add-update.php:144
+msgid "Increase in value"
+msgstr ""
+
+#: includes/admin-pages/awards/page-awards-add-update.php:145
+msgid "Decrease in value"
+msgstr ""
+
+#: includes/admin-pages/awards/page-awards-add-update.php:147
+msgid ""
+"For example, if you wish to award someone for losing 10Kg, you would select "
+"\"Decrease in value\"."
+msgstr ""
+
+#: includes/admin-pages/awards/page-awards-add-update.php:152
+#, fuzzy
+#| msgid "Weight Difference"
+msgid "Weight difference"
+msgstr "Rozdiel hmotnosti"
+
+#: includes/admin-pages/awards/page-awards-add-update.php:173
+#: includes/core.php:376
+msgid "Stones"
+msgstr "Stones"
+
+#: includes/admin-pages/awards/page-awards-add-update.php:175
+#: includes/admin-pages/awards/page-awards-add-update.php:186
+#: includes/admin-pages/settings/page-settings-generic.php:110
+#: includes/core.php:377 includes/core.php:380
+#: pro-features/user-preferences.php:177
+msgid "Pounds"
+msgstr "Pounds"
+
+#: includes/admin-pages/awards/page-awards-add-update.php:191
+#: includes/core.php:14 includes/core.php:83 includes/core.php:210
+#: includes/core.php:384 pro-features/footable.php:210
+#: pro-features/plus/awards/functions.php:31
+msgid "Weight"
+msgstr "Váha"
+
+#: includes/admin-pages/awards/page-awards-add-update.php:191
+#: includes/admin-pages/awards/page-awards-add-update.php:192
+#: includes/admin-pages/settings/page-settings-generic.php:108
+#: includes/converters.php:56 includes/core.php:75 includes/core.php:384
+#: includes/functions.php:73 includes/functions.php:96
+#: pro-features/export.php:257 pro-features/shortcode-stats.php:169
+msgid "kg"
+msgstr "kg"
+
+#: includes/admin-pages/awards/page-awards-add-update.php:195
+msgid "The difference in weight from the starting weight."
+msgstr ""
+
+#: includes/admin-pages/awards/page-awards-add-update.php:200
+msgid "BMI Equals"
+msgstr ""
+
+#: includes/admin-pages/awards/page-awards-add-update.php:218
+#, fuzzy
+#| msgid "Difference from start"
+msgid "Percentage from starting weight"
+msgstr "Rozdiel od začiatku"
+
+#: includes/admin-pages/awards/page-awards-add-update.php:225
+msgid "Specify the percentage difference from the starting weight."
+msgstr ""
+
+#: includes/admin-pages/awards/page-awards-add-update.php:230
+msgid "Award Badge"
+msgstr ""
+
+#: includes/admin-pages/awards/page-awards-add-update.php:243
+msgid "Custom Message"
+msgstr ""
+
+#: includes/admin-pages/awards/page-awards-add-update.php:247
+msgid ""
+"Add a custom message to be inserted into the email. Replaces the "
+"{custom_message} within the email template."
+msgstr ""
+
+#: includes/admin-pages/awards/page-awards-add-update.php:252
+#, fuzzy
+#| msgid "All entries"
+msgid "Apply to new entries?"
+msgstr "Všetky záznamy"
+
+#: includes/admin-pages/awards/page-awards-add-update.php:257
+#: includes/admin-pages/awards/page-awards-add-update.php:270
+#: includes/admin-pages/awards/page-awards-add-update.php:283
+#: includes/admin-pages/awards/page-awards-add-update.php:296
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:83
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:99
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:154
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:166
+#: includes/admin-pages/settings/page-settings-generic.php:95
+#: includes/admin-pages/settings/page-settings-generic.php:132
+#: includes/admin-pages/settings/page-settings-generic.php:142
+#: includes/admin-pages/settings/page-settings-generic.php:153
+#: includes/admin-pages/settings/page-settings-generic.php:164
+#: includes/admin-pages/settings/page-settings-generic.php:224
+#: includes/admin-pages/settings/page-settings-generic.php:239
+#: includes/admin-pages/settings/page-settings-generic.php:253
+#: includes/admin-pages/settings/page-settings-generic.php:263
+#: includes/admin-pages/settings/page-settings-generic.php:273
+#: includes/admin-pages/settings/page-settings-generic.php:362
+#: includes/admin-pages/settings/page-settings-generic.php:394
+#: includes/admin-pages/settings/page-settings-generic.php:423
+#: includes/admin-pages/settings/page-settings-generic.php:441
+#: includes/admin-pages/settings/page-settings-generic.php:466
+#: includes/admin-pages/settings/page-settings-generic.php:517
+#: includes/admin-pages/settings/page-settings-generic.php:532
+#: includes/admin-pages/settings/page-settings-generic.php:542
+#: includes/admin-pages/settings/page-settings-generic.php:552
+#: includes/admin-pages/settings/page-settings-generic.php:572
+#: includes/admin-pages/settings/page-settings-generic.php:592
+#: includes/admin-pages/settings/page-settings-generic.php:653
+#: includes/functions.php:993 pro-features/plus/meta-fields/functions.php:32
+#: pro-features/plus/meta-fields/functions.php:201
+#: pro-features/plus/meta-fields/functions.php:324
+#: pro-features/widget-form.php:91 pro-features/widget-form.php:98
 msgid "Yes"
 msgstr "Áno"
 
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:83
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:98
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:153
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:165
-#: admin-pages/page.settings.php:119 admin-pages/page.settings.php:129
-#: admin-pages/page.settings.php:140 admin-pages/page.settings.php:149
-#: admin-pages/page.settings.php:210 admin-pages/page.settings.php:220
-#: admin-pages/page.settings.php:230 admin-pages/page.settings.php:321
-#: admin-pages/page.settings.php:351 admin-pages/page.settings.php:382
-#: admin-pages/page.settings.php:400 admin-pages/page.settings.php:423
-#: admin-pages/page.settings.php:474 admin-pages/page.settings.php:491
-#: admin-pages/page.settings.php:501 admin-pages/page.settings.php:511
-#: admin-pages/page.settings.php:529 admin-pages/page.settings.php:549
-#: admin-pages/page.settings.php:610
+#: includes/admin-pages/awards/page-awards-add-update.php:258
+#: includes/admin-pages/awards/page-awards-add-update.php:271
+#: includes/admin-pages/awards/page-awards-add-update.php:284
+#: includes/admin-pages/awards/page-awards-add-update.php:295
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:83
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:98
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:153
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:165
+#: includes/admin-pages/settings/page-settings-generic.php:96
+#: includes/admin-pages/settings/page-settings-generic.php:133
+#: includes/admin-pages/settings/page-settings-generic.php:143
+#: includes/admin-pages/settings/page-settings-generic.php:154
+#: includes/admin-pages/settings/page-settings-generic.php:163
+#: includes/admin-pages/settings/page-settings-generic.php:225
+#: includes/admin-pages/settings/page-settings-generic.php:238
+#: includes/admin-pages/settings/page-settings-generic.php:252
+#: includes/admin-pages/settings/page-settings-generic.php:262
+#: includes/admin-pages/settings/page-settings-generic.php:272
+#: includes/admin-pages/settings/page-settings-generic.php:363
+#: includes/admin-pages/settings/page-settings-generic.php:393
+#: includes/admin-pages/settings/page-settings-generic.php:424
+#: includes/admin-pages/settings/page-settings-generic.php:442
+#: includes/admin-pages/settings/page-settings-generic.php:465
+#: includes/admin-pages/settings/page-settings-generic.php:516
+#: includes/admin-pages/settings/page-settings-generic.php:533
+#: includes/admin-pages/settings/page-settings-generic.php:543
+#: includes/admin-pages/settings/page-settings-generic.php:553
+#: includes/admin-pages/settings/page-settings-generic.php:571
+#: includes/admin-pages/settings/page-settings-generic.php:591
+#: includes/admin-pages/settings/page-settings-generic.php:652
+#: includes/functions.php:993 pro-features/plus/meta-fields/functions.php:32
+#: pro-features/plus/meta-fields/functions.php:198
+#: pro-features/plus/meta-fields/functions.php:323
+#: pro-features/widget-form.php:90 pro-features/widget-form.php:97
 msgid "No"
 msgstr "Nie"
 
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:84
+#: includes/admin-pages/awards/page-awards-add-update.php:260
+#, fuzzy
+#| msgid ""
+#| "Receive notifications when a member adds a new weight / measurement entry."
+msgid "Can the award be given when a user adds a new weight entry?."
+msgstr "Prijímať upozornenia, keď člen pridá nový záznam váhy / merania."
+
+#: includes/admin-pages/awards/page-awards-add-update.php:265
+#, fuzzy
+#| msgid "New / updated targets"
+msgid "Apply to updated entries?"
+msgstr "Nové / aktualizované ciele"
+
+#: includes/admin-pages/awards/page-awards-add-update.php:273
+#, fuzzy
+#| msgid ""
+#| "Receive notifications when a member edits an existing weight / "
+#| "measurement entry."
+msgid "Can the award be given when a user updates an existing weight entry?."
+msgstr ""
+"Prijímať upozornenia, keď člen upraví existujúcu položku váhy / merania."
+
+#: includes/admin-pages/awards/page-awards-add-update.php:278
+#, fuzzy
+#| msgid "Email"
+msgid "Send Email"
+msgstr "E-mail"
+
+#: includes/admin-pages/awards/page-awards-add-update.php:290
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:160
+#: pro-features/plus/awards/hooks.php:280
+#: pro-features/plus/meta-fields/hooks.php:20
+msgid "Enabled"
+msgstr "Povoliť"
+
+#: includes/admin-pages/awards/page-awards-add-update.php:303
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:173
+#: includes/core.php:423
+msgid "Cancel"
+msgstr ""
+
+#: includes/admin-pages/awards/page-awards-add-update.php:306
+#: includes/admin-pages/awards/page-awards-add-update.php:308
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:176
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:178
+msgid "Save"
+msgstr "Uložené!"
+
+#: includes/admin-pages/awards/page-awards-list.php:34
+#: includes/admin-pages/user-data/data-user.php:122
+#: includes/admin-pages/user-data/data-user.php:155
+#: includes/admin-pages/user-data/data-user.php:175 includes/hooks.php:11
+msgid "Awards"
+msgstr ""
+
+#: includes/admin-pages/awards/page-awards-list.php:40
+msgid "Issue awards to your user's for meeting certain goals."
+msgstr ""
+
+#: includes/admin-pages/awards/page-awards-list.php:41
+#, fuzzy
+#| msgid "Read more at "
+msgid "Read more about Awards"
+msgstr "Prečítajte si viac o výpočtoch"
+
+#: includes/admin-pages/awards/page-awards-list.php:44
+#, fuzzy
+#| msgid "Stats disabled"
+msgid "Emails Disabled"
+msgstr "Štatistiky zakázané"
+
+#: includes/admin-pages/awards/page-awards-list.php:44
+msgid ""
+"Emails will not be sent for email enabled awards. This allows you to test "
+"awards without emails being sent. Use the button to the right enable them"
+msgstr ""
+
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:62
+msgid "Add / Edit a Custom Field"
+msgstr "Pridať / Upraviť záznam"
+
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:74
+msgid "Field Type"
+msgstr ""
+
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:81
+#: pro-features/plus/meta-fields/functions.php:30
+msgid "Number"
+msgstr ""
+
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:82
+#: pro-features/plus/meta-fields/functions.php:31
+msgid "Text"
+msgstr ""
+
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:84
+#: pro-features/plus/meta-fields/functions.photos.php:409
+#: pro-features/plus/meta-fields/functions.photos.php:410
+#: pro-features/plus/meta-fields/functions.php:33
 msgid "Photo"
 msgstr ""
 
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:87
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:87
 msgid "Note: Changing the field type will cause existing user data to be lost."
 msgstr ""
 
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:93
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:93
 msgid "Hide from shortcodes"
 msgstr ""
 
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:101
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:101
 msgid ""
 "Note: If set to Yes, photos uploaded into this custom field cannot be used "
 "in shortcodes i.e. the photos will only be visible to admin."
 msgstr ""
 
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:106
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:106
+#: pro-features/plus/meta-fields/hooks.php:15
 msgid "Field / Question"
 msgstr ""
 
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:114
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:114
 msgid "Abbreviation"
 msgstr ""
 
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:118
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:118
 msgid ""
 "Used when displaying the field data in smaller spaces e.g. table headers, "
 "charts, etc"
 msgstr ""
 
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:123
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:123
 msgid "Suffix"
 msgstr ""
 
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:127
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:127
 msgid ""
 "Text display at to end of the entered value when displaying it to the user. "
 "e.g. CM would display in the following manner: 120 CM"
 msgstr ""
 
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:132
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:132
+#: pro-features/plus/meta-fields/hooks.php:18
 msgid "Display Order"
 msgstr "Zobraziť mriežky?"
 
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:143
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:143
 msgid ""
 "Used to specify the order of custom fields. Lower numbers are displayed "
 "higher up the form."
 msgstr ""
 
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:148 core.php:403
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:148
+#: includes/core.php:401 pro-features/plus/meta-fields/hooks.php:19
 msgid "Mandatory"
 msgstr "Povinné"
 
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:160
-msgid "Enabled"
-msgstr "Povoliť"
-
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:173 core.php:425
-msgid "Cancel"
-msgstr ""
-
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:176
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:178
-msgid "Save"
-msgstr "Uložené!"
-
-#: admin-pages/meta-fields/page-meta-fields-list.php:23 hooks.php:10
+#: includes/admin-pages/meta-fields/page-meta-fields-list.php:23
+#: includes/hooks.php:10 pro-features/emails.php:62
 msgid "Custom Fields"
 msgstr ""
 
-#: admin-pages/meta-fields/page-meta-fields-list.php:26
+#: includes/admin-pages/meta-fields/page-meta-fields-list.php:26
 msgid ""
 "Custom Fields allows you to ask your user's additional questions when adding "
 "a weight entry. \n"
@@ -164,93 +394,130 @@ msgid ""
 "following screen to add as many questions as you wish."
 msgstr ""
 
-#: admin-pages/meta-fields/page-meta-fields-list.php:29
+#: includes/admin-pages/meta-fields/page-meta-fields-list.php:29
 msgid "Read more about Custom Fields"
 msgstr "Prečítajte si viac o výpočtoch"
 
-#: admin-pages/page.help.php:24
+#: includes/admin-pages/page.help.php:24
 msgid "Custom modifications / web development"
 msgstr ""
 
-#: admin-pages/page.help.php:26
+#: includes/admin-pages/page.help.php:26
 msgid ""
 "If require plugin modifications to Weight Tracker, or need a new plugin "
 "built, or perhaps you need a developer to help you with your website then "
 "please don't hesitiate get in touch!"
 msgstr ""
 
-#: admin-pages/page.help.php:27
+#: includes/admin-pages/page.help.php:27
 msgid "We provide fixed priced quotes."
 msgstr ""
 
-#: admin-pages/page.help.php:36 admin-pages/page.license.php:235
+#: includes/admin-pages/page.help.php:36
+#: includes/admin-pages/page.license.php:235
 msgid "Documentation"
 msgstr "Dokumentácia"
 
-#: admin-pages/page.help.php:38
+#: includes/admin-pages/page.help.php:38
 msgid "You can find detailed documentation for this plugin at our site:"
 msgstr "Podrobnú pomoc s týmto pluginom nájdete na našich stránkach:"
 
-#: admin-pages/page.help.php:46
+#: includes/admin-pages/page.help.php:46
 msgid "Fix: Stones & Pounds accuracy"
 msgstr "Stones & Pounds"
 
-#: admin-pages/page.help.php:48
+#: includes/admin-pages/page.help.php:48
 msgid ""
 "Correct accuracy for measurements entered in Stones and Pounds (only run "
 "with the advice of YeKen)"
 msgstr ""
 
-#: admin-pages/page.help.php:62
-msgid "Error Log"
-msgstr ""
-
-#: admin-pages/page.help.php:68
+#: includes/admin-pages/page.help.php:65
 msgid "Custom Fields: Migrate photos from old system to Custom Fields"
 msgstr ""
 
-#: admin-pages/page.help.php:70
+#: includes/admin-pages/page.help.php:67
 msgid ""
 "This will migrate photos from the old system to the new custom fields. It "
-"will create a custom field with the key \"photo\". Note! It will remove an "
+"will create a custom field with the key \"photo\". Note! It will remove any "
 "existing migrated photos before re-adding them."
 msgstr ""
 
-#: admin-pages/page.help.php:93
+#: includes/admin-pages/page.help.php:90
 msgid "Done. View Log below for further information."
 msgstr ""
 
-#: admin-pages/page.help.php:103
+#: includes/admin-pages/page.help.php:100
+msgid "Admin Tools"
+msgstr ""
+
+#: includes/admin-pages/page.help.php:111
+#: includes/admin-pages/page.help.php:125 includes/core.php:661
+msgid "Done"
+msgstr "Hotovo!"
+
+#: includes/admin-pages/page.help.php:116
+msgid "Delete all issued awards"
+msgstr ""
+
+#: includes/admin-pages/page.help.php:130
+#, fuzzy
+#| msgid "View all entries"
+msgid "Delete all log entries"
+msgstr "Zobraziť všetky záznamy"
+
+#: includes/admin-pages/page.help.php:139
 msgid "Weight Tracker Debug Log"
 msgstr "Weight Tracker Záznam"
 
-#: admin-pages/page.help.php:106
+#: includes/admin-pages/page.help.php:142
 msgid ""
 "Below is a list of the debug information logged by the Weight Tracker plugin "
 "over the last 31 days."
 msgstr ""
 
-#: admin-pages/page.license.php:11 admin-pages/page.settings.php:8
+#: includes/admin-pages/page.help.php:174
+#: includes/admin-pages/page.help.php:178
+#, fuzzy
+#| msgid "Are you sure you?"
+msgid "Are you sure?"
+msgstr "Ste si istý?"
+
+#: includes/admin-pages/page.help.php:175
+#, fuzzy
+#| msgid "Are you sure you wish to remove all user data?"
+msgid "Are you sure you wish to remove all issued awards?"
+msgstr "Naozaj chcete odstrániť všetky používateľské údaje?"
+
+#: includes/admin-pages/page.help.php:179
+#, fuzzy
+#| msgid "Are you sure you wish to clear your target weight?"
+msgid "Are you sure you wish to clear all log entries?"
+msgstr "Naozaj chcete vymazať cieľovú váhu?"
+
+#: includes/admin-pages/page.license.php:11
+#: includes/admin-pages/settings/page-settings-generic.php:8
+#: pro-features/export.php:342 pro-features/functions.php:527
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Nemáte dostatočné oprávnenie k prístupu na tuto stránku."
 
-#: admin-pages/page.license.php:39
+#: includes/admin-pages/page.license.php:39
 msgid "Your license has been applied!"
 msgstr "Váš licenčný kľúč bol aplikovaný!"
 
-#: admin-pages/page.license.php:42
+#: includes/admin-pages/page.license.php:42
 msgid "An error occurred applying your license: "
 msgstr "Pri použití vašej licencie sa vyskytla chyba:"
 
-#: admin-pages/page.license.php:73 hooks.php:12
+#: includes/admin-pages/page.license.php:73 includes/hooks.php:13
 msgid "Upgrade"
 msgstr "Upgrade"
 
-#: admin-pages/page.license.php:78
+#: includes/admin-pages/page.license.php:78
 msgid "As you can see from the features listed below, the"
 msgstr "Ako vidíte z nižšie uvedených funkcií"
 
-#: admin-pages/page.license.php:80
+#: includes/admin-pages/page.license.php:80
 msgid ""
 "can offer you and your members a lot more features to help you and them "
 "manage their weight. There are two types of License that you can purchase, "
@@ -264,7 +531,7 @@ msgstr ""
 "je nevyhnutná! Pro Plus rozširuje Pro s funkciami, ako je BMR, príjem "
 "kalórií, kalkulačka Macronutrient, atď."
 
-#: admin-pages/page.license.php:81
+#: includes/admin-pages/page.license.php:81
 msgid ""
 "Of course, by purchasing a license, you are supporting the future of this "
 "plugin and it is gratefully appreciated."
@@ -272,11 +539,11 @@ msgstr ""
 "Samozrejme, že zakúpením licencie podporujete budúcnosť tohto pluginu a sme "
 "za to vďační"
 
-#: admin-pages/page.license.php:86
+#: includes/admin-pages/page.license.php:86
 msgid "Legacy Pro License"
 msgstr "Licencia"
 
-#: admin-pages/page.license.php:87
+#: includes/admin-pages/page.license.php:87
 msgid ""
 "Our licensing has model has changed, Prior to September 2017 it used to be a "
 "one off payment that enabled the Pro features of the plugin. This is still "
@@ -286,11 +553,11 @@ msgstr ""
 "ktorá odomkla Pro funkcie tohto pluginu. Všetky licencie zakúpené pred týmto "
 "dátumom ostávajú v platnosti"
 
-#: admin-pages/page.license.php:88
+#: includes/admin-pages/page.license.php:88
 msgid "Moving to a yearly license"
 msgstr "Prechod na ročnú licenciu"
 
-#: admin-pages/page.license.php:89
+#: includes/admin-pages/page.license.php:89
 msgid ""
 "There is no reason to move to a yearly license - Pro features will remain "
 "the same for legacy and new Pro subscriptions. However, if you were to move "
@@ -302,11 +569,11 @@ msgstr ""
 "ročnému odberu, budete podporovať vývoj doplnku (a ja vám darujem veľké "
 "objatie)."
 
-#: admin-pages/page.license.php:93
+#: includes/admin-pages/page.license.php:93
 msgid "Pro Plus License"
 msgstr "Pro Plus Licencia"
 
-#: admin-pages/page.license.php:94
+#: includes/admin-pages/page.license.php:94
 msgid ""
 "Of course, thank you for purchasing a Pro license - it is much appreciated. "
 "As you can see below, you can further expand the features of"
@@ -314,7 +581,8 @@ msgstr ""
 "Samozrejme, ďakujem za zakúpenie licencie Pro - veľmi si to cením. Ako "
 "vidíte nižšie, môžete ďalej rozširovať funkcie"
 
-#: admin-pages/page.license.php:96 admin-pages/page.license.php:106
+#: includes/admin-pages/page.license.php:96
+#: includes/admin-pages/page.license.php:106
 msgid ""
 "by extending your license to Pro Plus. Pro Plus extends Pro with features "
 "such as BMR, Calorie intake, Macronutrient Calculator, etc. You can view the "
@@ -324,7 +592,7 @@ msgstr ""
 "BMR, príjem kalórií, kalkulačka Macronutrient atď. Môžete si pozrieť ďalšie "
 "funkcie, ktoré Pro Plus ponúka, nižšie."
 
-#: admin-pages/page.license.php:104
+#: includes/admin-pages/page.license.php:104
 msgid ""
 "Of course, a big thank you purchasing a Pro license at some point - it is "
 "much appreciated. As you can see below, you can further expand the features "
@@ -333,7 +601,7 @@ msgstr ""
 "Samozrejme, ďakujem za zakúpenie licencie Pro - veľmi si to cením. Ako "
 "vidíte nižšie, môžete ďalej rozširovať funkcie"
 
-#: admin-pages/page.license.php:112
+#: includes/admin-pages/page.license.php:112
 msgid ""
 "Thank you kind soul, you have purchased a Pro Plus license. A huge thank you "
 "for supporting me and this plugin!"
@@ -341,45 +609,49 @@ msgstr ""
 "Ďakujem ti dobrá duša za zakúpenie Pro Plus licencie. Obrovská ďakujem za "
 "podporu pre mňa a tento plugin!"
 
-#: admin-pages/page.license.php:119
+#: includes/admin-pages/page.license.php:119
 msgid "In case you need, your <strong>Site Hash</strong> is"
 msgstr "V prípade, že ho budete potrebovať, váš <strong>Hash</strong> je"
 
-#: admin-pages/page.license.php:128
+#: includes/admin-pages/page.license.php:128
 msgid "Get a free 7 day trial!"
 msgstr ""
 
-#: admin-pages/page.license.php:135 admin-pages/page.license.php:141
+#: includes/admin-pages/page.license.php:135
+#: includes/admin-pages/page.license.php:141
 msgid "Upgrade to Pro Plus for"
 msgstr "Upgrade na Pro Plus za"
 
-#: admin-pages/page.license.php:135 admin-pages/page.license.php:141
-#: admin-pages/page.license.php:255 admin-pages/page.license.php:269
+#: includes/admin-pages/page.license.php:135
+#: includes/admin-pages/page.license.php:141
+#: includes/admin-pages/page.license.php:255
+#: includes/admin-pages/page.license.php:269
 msgid "a year"
 msgstr "ročne"
 
-#: admin-pages/page.license.php:143
+#: includes/admin-pages/page.license.php:143
 #, no-php-format
 msgid " (50% discount)"
 msgstr ""
 
-#: admin-pages/page.license.php:159
+#: includes/admin-pages/page.license.php:159
 msgid "Switch to a yearly Pro license for "
 msgstr "Prechod na ročnú licenciu"
 
-#: admin-pages/page.license.php:159 admin-pages/page.license.php:160
+#: includes/admin-pages/page.license.php:159
+#: includes/admin-pages/page.license.php:160
 msgid " a year"
 msgstr "ročne"
 
-#: admin-pages/page.license.php:160
+#: includes/admin-pages/page.license.php:160
 msgid "Upgrade to Pro for "
 msgstr "Upgrade na Pro za"
 
-#: admin-pages/page.license.php:176
+#: includes/admin-pages/page.license.php:176
 msgid "Add or Update License"
 msgstr "Pridať alebo aktualizovať licenciu"
 
-#: admin-pages/page.license.php:181
+#: includes/admin-pages/page.license.php:181
 msgid ""
 "Copy and paste the license given to you by YeKen into this box and click "
 "\"Apply License\""
@@ -387,73 +659,77 @@ msgstr ""
 "Skopírujte a prilepte licenciu, ktorá vám bola poskytnutá od YeKen, do tohto "
 "poľa a kliknite na tlačidlo \"Aplikovať licenciu\""
 
-#: admin-pages/page.license.php:184
+#: includes/admin-pages/page.license.php:184
 msgid "Apply License"
 msgstr "Aplikovať licenciu"
 
-#: admin-pages/page.license.php:189
+#: includes/admin-pages/page.license.php:189
 msgid "Your License Information"
 msgstr "Vaša licencia"
 
-#: admin-pages/page.license.php:193
+#: includes/admin-pages/page.license.php:193
 msgid "Site Hash"
 msgstr "Hash stránky"
 
-#: admin-pages/page.license.php:197
+#: includes/admin-pages/page.license.php:197
+#: pro-features/plus/meta-fields/hooks.php:17 pro-features/widget-chart.php:110
 msgid "Type"
 msgstr "Typ"
 
-#: admin-pages/page.license.php:201
+#: includes/admin-pages/page.license.php:201
 msgid "Expires"
 msgstr "Expiruje"
 
-#: admin-pages/page.license.php:206
+#: includes/admin-pages/page.license.php:206
 msgid "Never"
 msgstr "Nikdy"
 
-#: admin-pages/page.license.php:210
+#: includes/admin-pages/page.license.php:210
 msgid "n/a"
 msgstr "-"
 
-#: admin-pages/page.license.php:220
+#: includes/admin-pages/page.license.php:220
 msgid "Your Existing License"
 msgstr "Vaša licencia"
 
-#: admin-pages/page.license.php:226
+#: includes/admin-pages/page.license.php:226
 msgid "Remove License"
 msgstr "Odstrániť Licenciu"
 
-#: admin-pages/page.license.php:238
+#: includes/admin-pages/page.license.php:238
 msgid "Need further help or information, please visit our documentation site:"
 msgstr ""
 "Potrebujete ďalšiu pomoc alebo informácie? Navštívte našu stránku s "
 "dokumentáciou:"
 
-#: admin-pages/page.license.php:251
+#: includes/admin-pages/page.license.php:251
 msgid "Pro Plus Features"
 msgstr "Pro Plus Licencia"
 
-#: admin-pages/page.license.php:255
+#: includes/admin-pages/page.license.php:255
 msgid "Below is a list of the intended features of the Pro Plus version"
 msgstr "Nižšie je uvedený zoznam zamýšľaných funkcií verzie Pro Plus"
 
-#: admin-pages/page.license.php:255 admin-pages/page.license.php:269
+#: includes/admin-pages/page.license.php:255
+#: includes/admin-pages/page.license.php:269
 msgid "You can upgrade for"
 msgstr "Môžete upgrade za"
 
-#: admin-pages/page.license.php:264
+#: includes/admin-pages/page.license.php:264
 msgid "Pro Features"
 msgstr "Pro Plus"
 
-#: admin-pages/page.license.php:269
+#: includes/admin-pages/page.license.php:269
 msgid "Below is a list of the intended features of the Pro version"
 msgstr "Nižšie je uvedený zoznam zamýšľaných funkcií verzie Pro"
 
-#: admin-pages/page.license.php:283 admin-pages/user-data/data-summary.php:183
+#: includes/admin-pages/page.license.php:283
+#: includes/admin-pages/user-data/data-summary.php:203
+#: pro-features/functions.pages.php:219
 msgid "Are you sure you?"
 msgstr "Ste si istý?"
 
-#: admin-pages/page.license.php:284
+#: includes/admin-pages/page.license.php:284
 msgid ""
 "Are you sure you wish to remove the license for this site? Removing it may "
 "cause your user's to lose functionality."
@@ -461,84 +737,93 @@ msgstr ""
 "Naozaj chcete odstrániť licenciu pre túto stránku? Odstránením môže dôjsť k "
 "strate funkčnosti."
 
-#: admin-pages/page.settings.php:38
+#: includes/admin-pages/settings/page-settings-generic.php:38
 msgid "Rebuild them now"
 msgstr "Znovu ich vytvorte"
 
-#: admin-pages/page.settings.php:60
+#: includes/admin-pages/settings/page-settings-generic.php:60
 msgid " Settings"
 msgstr "Nastavenia"
 
-#: admin-pages/page.settings.php:74
+#: includes/admin-pages/settings/page-settings-generic.php:74
 msgid "General"
 msgstr "Všeobecné"
 
-#: admin-pages/page.settings.php:74
+#: includes/admin-pages/settings/page-settings-generic.php:74
 msgid "General settings"
 msgstr "Všeobecné nastavenia"
 
-#: admin-pages/page.settings.php:75 license.php:248
+#: includes/admin-pages/settings/page-settings-generic.php:75
+#: includes/license.php:254
 msgid "Pro Plus"
 msgstr "Pro Plus"
 
-#: admin-pages/page.settings.php:75
+#: includes/admin-pages/settings/page-settings-generic.php:75
 msgid "Adjust settings for your Pro Plus features"
 msgstr "Upravte nastavenia pre funkcie Pro Plus"
 
-#: admin-pages/page.settings.php:76 admin-pages/user-data/data-user.php:43
+#: includes/admin-pages/settings/page-settings-generic.php:76
+#: includes/admin-pages/user-data/data-user.php:43
 msgid "Chart"
 msgstr "Graf"
 
-#: admin-pages/page.settings.php:76
+#: includes/admin-pages/settings/page-settings-generic.php:76
 msgid "Chart styling and config"
 msgstr "Štýlovanie grafu a konfigurácia"
 
-#: admin-pages/page.settings.php:77
+#: includes/admin-pages/settings/page-settings-generic.php:77
 msgid "Notifications"
 msgstr "Upozornenia"
 
-#: admin-pages/page.settings.php:77
+#: includes/admin-pages/settings/page-settings-generic.php:77
 msgid "Configure email notifications"
 msgstr "E-mailové notifikácie"
 
-#: admin-pages/page.settings.php:78
+#: includes/admin-pages/settings/page-settings-generic.php:78
 msgid "Measurements"
 msgstr "Rozmery"
 
-#: admin-pages/page.settings.php:78
+#: includes/admin-pages/settings/page-settings-generic.php:78
 msgid "Allow users to record their measurements"
 msgstr "Umožnite používateľom zaznamenávať svoje merania"
 
-#: admin-pages/page.settings.php:79
+#: includes/admin-pages/settings/page-settings-generic.php:79
 msgid "3rd Party"
 msgstr ""
 
-#: admin-pages/page.settings.php:79
+#: includes/admin-pages/settings/page-settings-generic.php:79
 msgid "3rd Party Integrations"
 msgstr ""
 
-#: admin-pages/page.settings.php:88
+#: includes/admin-pages/settings/page-settings-generic.php:89
+msgid "Caching"
+msgstr ""
+
+#: includes/admin-pages/settings/page-settings-generic.php:92
+msgid "Enable Caching?"
+msgstr ""
+
+#: includes/admin-pages/settings/page-settings-generic.php:98
+msgid ""
+"If enabled, additional caching will be performed to reduce database queries. "
+"It is highly recommended that this remains enabled and only disabled for "
+"testing or to enable other caching mechanisms."
+msgstr ""
+
+#: includes/admin-pages/settings/page-settings-generic.php:102
 msgid "Default units / formats to be used by plugin"
 msgstr ""
 
-#: admin-pages/page.settings.php:91
+#: includes/admin-pages/settings/page-settings-generic.php:105
 msgid "Weight Units"
 msgstr "Hmotnostné jednotky"
 
-#: admin-pages/page.settings.php:94 converters.php:56 core.php:75 core.php:386
-#: functions.php:73 functions.php:96
-msgid "kg"
-msgstr "kg"
-
-#: admin-pages/page.settings.php:95
+#: includes/admin-pages/settings/page-settings-generic.php:109
+#: pro-features/user-preferences.php:176
 msgid "Stones & Pounds"
 msgstr "Stones & Pounds"
 
-#: admin-pages/page.settings.php:96 core.php:379 core.php:382
-msgid "Pounds"
-msgstr "Pounds"
-
-#: admin-pages/page.settings.php:98
+#: includes/admin-pages/settings/page-settings-generic.php:112
 msgid ""
 "You can specify whether to display weights in Kg, Stones & Pounds or just "
 "Pounds. Please note: The graph will be displayed in Pounds if \"Stones & "
@@ -548,33 +833,35 @@ msgstr ""
 "librách alebo len v librách. Upozornenie: Graf sa zobrazí v librách, ak je "
 "vybratá možnosť \"Stones & Pounds\"."
 
-#: admin-pages/page.settings.php:102
+#: includes/admin-pages/settings/page-settings-generic.php:116
 msgid "UK or US Date format?"
 msgstr "Britský alebo Americký formát dátumu?"
 
-#: admin-pages/page.settings.php:105
+#: includes/admin-pages/settings/page-settings-generic.php:119
+#: pro-features/user-preferences.php:194
 msgid "UK (DD/MM/YYYY)"
 msgstr "UK (DD/MM/YYYY)"
 
-#: admin-pages/page.settings.php:106
+#: includes/admin-pages/settings/page-settings-generic.php:120
+#: pro-features/user-preferences.php:195
 msgid "US (MM/DD/YYYY)"
 msgstr "US (MM/DD/YYYY)"
 
-#: admin-pages/page.settings.php:108
+#: includes/admin-pages/settings/page-settings-generic.php:122
 msgid "Specify what format dates should be displayed in (i.e. UK or US format)"
 msgstr ""
 "Určte, aký formát dátumu by sa mal zobrazovať (napríklad v britskom alebo "
 "americkom formáte)"
 
-#: admin-pages/page.settings.php:112
+#: includes/admin-pages/settings/page-settings-generic.php:126
 msgid "User Experience"
 msgstr "User Experience"
 
-#: admin-pages/page.settings.php:115
+#: includes/admin-pages/settings/page-settings-generic.php:129
 msgid "Allow target weights?"
 msgstr "Povoliť cieľovú váhu?"
 
-#: admin-pages/page.settings.php:121
+#: includes/admin-pages/settings/page-settings-generic.php:135
 msgid ""
 "If enabled, a user is allowed to enter a target weight. This will be "
 "displayed as a horizontal bar on the line chart."
@@ -582,11 +869,11 @@ msgstr ""
 "Ak je povolené, užívateľ môže zadať cieľovú váhu. Toto sa bude zobrazovať "
 "ako vodorovná lišta v riadku grafu."
 
-#: admin-pages/page.settings.php:125
+#: includes/admin-pages/settings/page-settings-generic.php:139
 msgid "Display BMI in tables?"
 msgstr "Zobrazenie BMI v tabuľkách?"
 
-#: admin-pages/page.settings.php:132
+#: includes/admin-pages/settings/page-settings-generic.php:146
 msgid ""
 "If enabled, BMI values will be displayed alongside weight entries in data "
 "tables."
@@ -594,11 +881,11 @@ msgstr ""
 "Ak je táto možnosť zapnutá, hodnoty BMI sa zobrazia vedľa záznamov o "
 "hmotnosti v tabuľkách s údajmi."
 
-#: admin-pages/page.settings.php:136
+#: includes/admin-pages/settings/page-settings-generic.php:150
 msgid "Allow user settings"
 msgstr "Povoliť používateľské nastavenia"
 
-#: admin-pages/page.settings.php:142
+#: includes/admin-pages/settings/page-settings-generic.php:156
 msgid ""
 "Allow your users to select their own data units, complete their \"About You"
 "\" fields and remove all their data."
@@ -606,11 +893,11 @@ msgstr ""
 "Umožnite svojim používateľom vybrať si vlastné jednotky, vyplniť polia \"O "
 "vás\" a odstrániť všetky ich údaje."
 
-#: admin-pages/page.settings.php:146
+#: includes/admin-pages/settings/page-settings-generic.php:160
 msgid "\"About You\" fields mandatory?"
 msgstr "Polia \"O vás\" povinné?"
 
-#: admin-pages/page.settings.php:152
+#: includes/admin-pages/settings/page-settings-generic.php:166
 msgid ""
 "If User Settings is enabled, should all the \"About You\" (height, activity "
 "level, etc) be mandatory?"
@@ -618,63 +905,101 @@ msgstr ""
 "Ak je povolené používateľské nastavenie, mali by byť všetky \"O vás"
 "\" (výška, úroveň aktivity atď.) Povinné?"
 
-#: admin-pages/page.settings.php:157 admin-pages/user-data/data-user.php:72
-#: shortcode-weight-loss-tracker.php:98
+#: includes/admin-pages/settings/page-settings-generic.php:171
+#: includes/admin-pages/user-data/data-user.php:71
+#: includes/shortcode-weight-loss-tracker.php:98
+#: pro-features/plus/shortcode.wlt.php:23
 msgid "Photos"
 msgstr ""
 
-#: admin-pages/page.settings.php:160
+#: includes/admin-pages/settings/page-settings-generic.php:174
 msgid "Max. Photo Size?"
 msgstr ""
 
-#: admin-pages/page.settings.php:182
+#: includes/admin-pages/settings/page-settings-generic.php:196
 msgid "Maximum photo size (in MB) that is allowed to be uploaded. "
 msgstr ""
 
-#: admin-pages/page.settings.php:183
+#: includes/admin-pages/settings/page-settings-generic.php:197
 msgid "This is used as part of Custom Fields."
 msgstr ""
 
-#: admin-pages/page.settings.php:185
+#: includes/admin-pages/settings/page-settings-generic.php:199
 msgid "View Custom Fields"
 msgstr "Pridať / Upraviť záznam"
 
-#: admin-pages/page.settings.php:190
+#: includes/admin-pages/settings/page-settings-generic.php:204
 msgid "Permissions"
 msgstr ""
 
-#: admin-pages/page.settings.php:193
+#: includes/admin-pages/settings/page-settings-generic.php:207
 msgid "Who can view and modify user data?"
 msgstr "Kto môže prezerať a upravovať používateľské údaje?"
 
-#: admin-pages/page.settings.php:196
+#: includes/admin-pages/settings/page-settings-generic.php:210
 msgid "Administrators Only"
 msgstr "Len administrátori"
 
-#: admin-pages/page.settings.php:197
+#: includes/admin-pages/settings/page-settings-generic.php:211
 msgid "Editors and above"
 msgstr "Editory a vyššie"
 
-#: admin-pages/page.settings.php:198
+#: includes/admin-pages/settings/page-settings-generic.php:212
 msgid "Authors and above"
 msgstr "Autori a vyššie"
 
-#: admin-pages/page.settings.php:200
+#: includes/admin-pages/settings/page-settings-generic.php:214
 msgid ""
 "Specify the minimum level of user role that maybe view or edit user data."
 msgstr ""
 "Zadajte minimálnu úroveň používateľa, ktorý môže zobraziť alebo upraviť "
 "používateľské údaje."
 
-#: admin-pages/page.settings.php:204 shortcode-weight-loss-tracker.php:103
+#: includes/admin-pages/settings/page-settings-generic.php:218
+msgid "Groups"
+msgstr ""
+
+#: includes/admin-pages/settings/page-settings-generic.php:221
+#, fuzzy
+#| msgid "Enable"
+msgid "Enable Groups?"
+msgstr "Povoliť"
+
+#: includes/admin-pages/settings/page-settings-generic.php:227
+msgid "Add the ability to place your user's into groups."
+msgstr ""
+
+#: includes/admin-pages/settings/page-settings-generic.php:228
+#, fuzzy
+#| msgid "Manage User Data"
+msgid "Manage User Groups"
+msgstr "Správa používateľských údajov"
+
+#: includes/admin-pages/settings/page-settings-generic.php:232
+msgid "Birthday Emails"
+msgstr ""
+
+#: includes/admin-pages/settings/page-settings-generic.php:235
+#, fuzzy
+#| msgid "Enable"
+msgid "Enable?"
+msgstr "Povoliť"
+
+#: includes/admin-pages/settings/page-settings-generic.php:241
+msgid ""
+"If enabled, a Happy Birthday email shall be sent to users on their birthday."
+msgstr ""
+
+#: includes/admin-pages/settings/page-settings-generic.php:246
+#: includes/shortcode-weight-loss-tracker.php:103
 msgid "Advanced"
 msgstr ""
 
-#: admin-pages/page.settings.php:207
+#: includes/admin-pages/settings/page-settings-generic.php:249
 msgid "Disable plugin CSS?"
 msgstr "Zakázať css pluginu?"
 
-#: admin-pages/page.settings.php:213
+#: includes/admin-pages/settings/page-settings-generic.php:255
 msgid ""
 "If you wish to style the forms in your own way, you can use this option to "
 "disable WLT's style sheets."
@@ -682,11 +1007,11 @@ msgstr ""
 "Ak chcete formuláre formulovať vlastným spôsobom, môžete túto možnosť použiť "
 "na vypnutie štýlov WLT."
 
-#: admin-pages/page.settings.php:217
+#: includes/admin-pages/settings/page-settings-generic.php:259
 msgid "Send usage data to YeKen?"
 msgstr "Posielať údaje o používaní YeKen?"
 
-#: admin-pages/page.settings.php:223
+#: includes/admin-pages/settings/page-settings-generic.php:265
 msgid ""
 "We would love to see how our plugin is used. By consenting, you are allowing "
 "permission for the following data to be sent on a weekly basis to YeKen: "
@@ -698,11 +1023,11 @@ msgstr ""
 "súhrn nastavení, počet zaznamenaných hmotností a merania. Žiadne "
 "používateľské alebo administrátorské údaje nebudú nikdy prenášané."
 
-#: admin-pages/page.settings.php:227
+#: includes/admin-pages/settings/page-settings-generic.php:269
 msgid "Disable notifications from YeKen?"
 msgstr "Zakázať upozornenia od YeKen?"
 
-#: admin-pages/page.settings.php:233
+#: includes/admin-pages/settings/page-settings-generic.php:275
 msgid ""
 "Occasionally YeKen likes to display simple notifications within your "
 "WordPress dashboard. Use this setting if you wish to disable them."
@@ -710,15 +1035,15 @@ msgstr ""
 "Príležitostne YeKen zobrazuje jednoduché upozornenia vo vašom informačnom "
 "paneli WordPress. Toto nastavenie použite, ak ich chcete deaktivovať."
 
-#: admin-pages/page.settings.php:245
+#: includes/admin-pages/settings/page-settings-generic.php:287
 msgid "Calculating daily calorie intake to lose weight"
 msgstr "Výpočet denného príjmu kalórií na zníženie hmotnosti"
 
-#: admin-pages/page.settings.php:249
+#: includes/admin-pages/settings/page-settings-generic.php:291
 msgid "Female Calorie Cap"
 msgstr "Ženské Calorie cap"
 
-#: admin-pages/page.settings.php:252
+#: includes/admin-pages/settings/page-settings-generic.php:294
 msgid ""
 "Specify a maximum value for number of daily calories allowed to achieve "
 "weight loss. As per NHS guidelines, females are set to 1400kcal by default"
@@ -727,9 +1052,11 @@ msgstr ""
 "dosiahnuť úbytok hmotnosti. Podľa pokynov NHS sú predvolene hodnoty pre ženy "
 "nastavené na 1400 kcal"
 
-#: admin-pages/page.settings.php:252 admin-pages/page.settings.php:259
-#: admin-pages/page.settings.php:266 admin-pages/page.settings.php:284
-#: admin-pages/page.settings.php:291
+#: includes/admin-pages/settings/page-settings-generic.php:294
+#: includes/admin-pages/settings/page-settings-generic.php:301
+#: includes/admin-pages/settings/page-settings-generic.php:308
+#: includes/admin-pages/settings/page-settings-generic.php:326
+#: includes/admin-pages/settings/page-settings-generic.php:333
 msgid ""
 "Please note, it may take up to 15 minutes for calculations to change (due to "
 "caching)."
@@ -737,11 +1064,11 @@ msgstr ""
 "Upozorňujeme, že výpočty sa môžu prejaviť až do 15 minút (kvôli ukladaniu do "
 "vyrovnávacej pamäte)."
 
-#: admin-pages/page.settings.php:256
+#: includes/admin-pages/settings/page-settings-generic.php:298
 msgid "Male Calorie Cap"
 msgstr "Mužské Calorie Cap"
 
-#: admin-pages/page.settings.php:259
+#: includes/admin-pages/settings/page-settings-generic.php:301
 msgid ""
 "Specify a maximum value for number of daily calories allowed to achieve "
 "weight loss. As per NHS guidelines, males are set to 1900kcal by default"
@@ -750,11 +1077,11 @@ msgstr ""
 "dosiahnuť úbytok hmotnosti. Podľa pokynov NHS sú predvolene hodnoty pre "
 "mužov nastavené na 1900 kcal"
 
-#: admin-pages/page.settings.php:263
+#: includes/admin-pages/settings/page-settings-generic.php:305
 msgid "Calories to subtract"
 msgstr "Kalórie na odčítanie"
 
-#: admin-pages/page.settings.php:266
+#: includes/admin-pages/settings/page-settings-generic.php:308
 msgid ""
 "Part of calculating the daily calorie intake to lose weight is to first "
 "calculate the calorie intake to maintain existing weight. Once we have this, "
@@ -766,19 +1093,23 @@ msgstr ""
 "máme, odčítame vyššie uvedené číslo na výpočet denného príjmu kalórií, aby "
 "sme schudli."
 
-#: admin-pages/page.settings.php:270 admin-pages/user-data/data-user.php:137
+#: includes/admin-pages/settings/page-settings-generic.php:312
+#: includes/admin-pages/user-data/data-user.php:135
+#: includes/admin-pages/user-data/data-user.php:155
+#: includes/admin-pages/user-data/data-user.php:169
 msgid "Macronutrient Calculator"
 msgstr "Macronutrient Kalkulačka"
 
-#: admin-pages/page.settings.php:274
+#: includes/admin-pages/settings/page-settings-generic.php:316
+#: pro-features/plus/macronutrient.calculator.php:135
 msgid "Proteins"
 msgstr "Proteíny"
 
-#: admin-pages/page.settings.php:277
+#: includes/admin-pages/settings/page-settings-generic.php:319
 msgid "Percentage of Proteins to make up a moderate diet"
 msgstr "Percento bielkovín na vytvorenie miernej diety"
 
-#: admin-pages/page.settings.php:277
+#: includes/admin-pages/settings/page-settings-generic.php:319
 msgid ""
 "Please note, it may take up to 15 minutes for calorie calculations to change "
 "(due to caching)."
@@ -786,39 +1117,41 @@ msgstr ""
 "Upozorňujeme, že výpočty kalórií sa môžu prejaviť až do 15 minút (kvôli "
 "ukladaniu do vyrovnávacej pamäte)."
 
-#: admin-pages/page.settings.php:281
+#: includes/admin-pages/settings/page-settings-generic.php:323
+#: pro-features/plus/shortcode.wlt.php:147
 msgid "Carbohydrates"
 msgstr "Sacharidy"
 
-#: admin-pages/page.settings.php:284
+#: includes/admin-pages/settings/page-settings-generic.php:326
 msgid "Percentage of Carbohydrates to make up a moderate diet"
 msgstr "Percento sacharidov na vytvorenie miernej diety"
 
-#: admin-pages/page.settings.php:288
+#: includes/admin-pages/settings/page-settings-generic.php:330
+#: pro-features/plus/macronutrient.calculator.php:169
 msgid "Fats"
 msgstr "Tuky"
 
-#: admin-pages/page.settings.php:291
+#: includes/admin-pages/settings/page-settings-generic.php:333
 msgid "Percentage of Fats to make up a moderate diet"
 msgstr "Percento tukov na vytvorenie miernej diety"
 
-#: admin-pages/page.settings.php:305
+#: includes/admin-pages/settings/page-settings-generic.php:347
 msgid "Default chart type"
 msgstr "Predvolený typ grafu"
 
-#: admin-pages/page.settings.php:308
+#: includes/admin-pages/settings/page-settings-generic.php:350
 msgid "Line Chart"
 msgstr "Line graf"
 
-#: admin-pages/page.settings.php:308
+#: includes/admin-pages/settings/page-settings-generic.php:350
 msgid "Highly Recommended"
 msgstr "Vysoko odporúčaný"
 
-#: admin-pages/page.settings.php:309
+#: includes/admin-pages/settings/page-settings-generic.php:351
 msgid "Bar Chart"
 msgstr "Stĺpcový graf"
 
-#: admin-pages/page.settings.php:312
+#: includes/admin-pages/settings/page-settings-generic.php:354
 msgid ""
 "If enabled, \"Allows points and labels to be displayed on graph. "
 "<strong>Note: If using measurements</strong>, graph type will be forced to "
@@ -827,27 +1160,28 @@ msgstr ""
 "Ak je povolené, \"Umožňuje zobrazenie bodov a štítkov na grafe. <Strong> "
 "Poznámka: ak použijete merania </ strong>, typ grafu bude nastavený na Line"
 
-#: admin-pages/page.settings.php:317
+#: includes/admin-pages/settings/page-settings-generic.php:359
 msgid "Display gridlines?"
 msgstr "Zobraziť mriežky?"
 
-#: admin-pages/page.settings.php:323
+#: includes/admin-pages/settings/page-settings-generic.php:365
 msgid "If enabled, gridlines will be displayed on the Graph canvas."
 msgstr "Ak je táto voľba povolená, na grafe sa zobrazia mriežky."
 
-#: admin-pages/page.settings.php:327
+#: includes/admin-pages/settings/page-settings-generic.php:369
 msgid "Maximum points per graph"
 msgstr "Maximálny počet bodov na grafe"
 
-#: admin-pages/page.settings.php:336 admin-pages/page.settings.php:403
+#: includes/admin-pages/settings/page-settings-generic.php:378
+#: includes/admin-pages/settings/page-settings-generic.php:445
 msgid "If enabled, \"Allows points and labels to be displayed on graph."
 msgstr "Ak je povolené, \"Umožňuje zobraziť body a menovky v grafe."
 
-#: admin-pages/page.settings.php:341
+#: includes/admin-pages/settings/page-settings-generic.php:383
 msgid "Weight colour?"
 msgstr "Farba hmotnosti?"
 
-#: admin-pages/page.settings.php:344
+#: includes/admin-pages/settings/page-settings-generic.php:386
 msgid ""
 "If enabled, enter a HEX colour code to use for the Weight history line / bar "
 "border on graph."
@@ -855,11 +1189,11 @@ msgstr ""
 "Ak je táto funkcia povolená, zadajte kód farby HEX, ktorý sa má používať pre "
 "grafiku  histórie hmotnosti"
 
-#: admin-pages/page.settings.php:348
+#: includes/admin-pages/settings/page-settings-generic.php:390
 msgid "Should y Axes start at 0?"
 msgstr "Má os Y začínať na 0?"
 
-#: admin-pages/page.settings.php:355
+#: includes/admin-pages/settings/page-settings-generic.php:397
 msgid ""
 "If enabled, y Axes shall start at 0. Otherwise, they are automatically "
 "calculated."
@@ -867,115 +1201,115 @@ msgstr ""
 "Ak je táto možnosť zapnutá, os Y začína na 0. V opačnom prípade sa "
 "automaticky vypočíta"
 
-#: admin-pages/page.settings.php:359
+#: includes/admin-pages/settings/page-settings-generic.php:401
 msgid "Text colour"
 msgstr "Farba textu"
 
-#: admin-pages/page.settings.php:362
+#: includes/admin-pages/settings/page-settings-generic.php:404
 msgid "Enter a HEX colour code to use for text displayed on the graph."
 msgstr ""
 "Ak je táto voľba povolená, zadajte kód farby HEX, ktorý sa použije pre čiaru "
 "cieľovej hmotnosti v grafe."
 
-#: admin-pages/page.settings.php:366
+#: includes/admin-pages/settings/page-settings-generic.php:408
 msgid "Font Family"
 msgstr ""
 
-#: admin-pages/page.settings.php:369
+#: includes/admin-pages/settings/page-settings-generic.php:411
 msgid ""
 "Specify one or more fonts that should be used when rendering text on the "
 "graph. Separate multiple fonts with a comma. Leave blank to use the default."
 msgstr ""
 
-#: admin-pages/page.settings.php:374
+#: includes/admin-pages/settings/page-settings-generic.php:416
 msgid "Line Chart Options"
 msgstr "Možnosti Line grafu"
 
-#: admin-pages/page.settings.php:378
+#: includes/admin-pages/settings/page-settings-generic.php:420
 msgid "Bezier Curve?"
 msgstr "Bezierova krivka?"
 
-#: admin-pages/page.settings.php:385
+#: includes/admin-pages/settings/page-settings-generic.php:427
 msgid "If enabled, lines between points on a line graph will be curved"
 msgstr ""
 "Ak je táto možnosť povolená, krivky medzi bodmi na riadku grafu budú zaoblené"
 
-#: admin-pages/page.settings.php:389
+#: includes/admin-pages/settings/page-settings-generic.php:431
 msgid "Target line colour?"
 msgstr "Farba čiary cieľovej hmotnosti?"
 
-#: admin-pages/page.settings.php:392
+#: includes/admin-pages/settings/page-settings-generic.php:434
 msgid ""
 "If enabled, enter a HEX colour code to use for the Target line on graph."
 msgstr ""
 "Ak je táto voľba povolená, zadajte kód farby HEX, ktorý sa použije pre čiaru "
 "cieľovej hmotnosti v grafe."
 
-#: admin-pages/page.settings.php:396
+#: includes/admin-pages/settings/page-settings-generic.php:438
 msgid "Display points on graph?"
 msgstr "Zobraziť body na grafe?"
 
-#: admin-pages/page.settings.php:407
+#: includes/admin-pages/settings/page-settings-generic.php:449
 msgid "Point thickness"
 msgstr "Hrúbka bodov"
 
-#: admin-pages/page.settings.php:416
+#: includes/admin-pages/settings/page-settings-generic.php:458
 msgid "Specifies the point thickness on a line chart."
 msgstr "Určuje hrúbku bodu v riadku grafe."
 
-#: admin-pages/page.settings.php:420
+#: includes/admin-pages/settings/page-settings-generic.php:462
 msgid "Add a fill under weight line?"
 msgstr "Pridať novú váhu"
 
-#: admin-pages/page.settings.php:426
+#: includes/admin-pages/settings/page-settings-generic.php:468
 msgid "If enabled, a fill colour will be added under the weight line."
 msgstr ""
 "Ak je táto voľba povolená, zadajte kód farby HEX, ktorý sa použije pre čiaru "
 "cieľovej hmotnosti v grafe."
 
-#: admin-pages/page.settings.php:430
+#: includes/admin-pages/settings/page-settings-generic.php:472
 msgid "Weight Fill Colour"
 msgstr "Farba výplne?"
 
-#: admin-pages/page.settings.php:433
+#: includes/admin-pages/settings/page-settings-generic.php:475
 msgid ""
 "If enabled, enter a HEX colour code to use for the fill colour under the "
 "weight line."
 msgstr ""
 "Ak je táto voľba povolená, zadajte kód farby HEX, ktorý sa použije pre výplň"
 
-#: admin-pages/page.settings.php:437
+#: includes/admin-pages/settings/page-settings-generic.php:479
 msgid "Weight Fill Opacity"
 msgstr "Farba výplne?"
 
-#: admin-pages/page.settings.php:446
+#: includes/admin-pages/settings/page-settings-generic.php:488
 msgid "Specifies the opacity of the fill colour under the weight line."
 msgstr ""
 
-#: admin-pages/page.settings.php:451
+#: includes/admin-pages/settings/page-settings-generic.php:493
 msgid "Bar Chart Options"
 msgstr "Možnosti stĺpcového grafu"
 
-#: admin-pages/page.settings.php:455
+#: includes/admin-pages/settings/page-settings-generic.php:497
 msgid "Weight fill colour?"
 msgstr "Farba výplne?"
 
-#: admin-pages/page.settings.php:458
+#: includes/admin-pages/settings/page-settings-generic.php:500
 msgid ""
 "If enabled, enter a HEX colour code to use for filling the Weight bars on "
 "the graph."
 msgstr ""
 "Ak je táto voľba povolená, zadajte kód farby HEX, ktorý sa použije pre výplň"
 
-#: admin-pages/page.settings.php:471
+#: includes/admin-pages/settings/page-settings-generic.php:513
 msgid "Enable email notifications"
 msgstr "Povoliť E-mailové notifikácie"
 
-#: admin-pages/page.settings.php:480
+#: includes/admin-pages/settings/page-settings-generic.php:522
 msgid "Email addresses to notify"
 msgstr "Emailová adresa pre notifikácie"
 
-#: admin-pages/page.settings.php:483
+#: includes/admin-pages/settings/page-settings-generic.php:525
 msgid ""
 "Specify one or more email addresses to be notified. Seperate multiple emails "
 "with a comma."
@@ -983,892 +1317,2343 @@ msgstr ""
 "Zadajte jednu alebo viac e-mailových adries pre upozornenia. Oddeľte viaceré "
 "e-maily čiarkou."
 
-#: admin-pages/page.settings.php:487
+#: includes/admin-pages/settings/page-settings-generic.php:529
 msgid "New weight / measurement entries"
 msgstr "Nové položky hmotnosti / merania"
 
-#: admin-pages/page.settings.php:493
+#: includes/admin-pages/settings/page-settings-generic.php:535
 msgid ""
 "Receive notifications when a member adds a new weight / measurement entry."
 msgstr "Prijímať upozornenia, keď člen pridá nový záznam váhy / merania."
 
-#: admin-pages/page.settings.php:497
+#: includes/admin-pages/settings/page-settings-generic.php:539
 msgid "Edited weight / measurement entries"
 msgstr "Upravené položky hmotnosti / merania"
 
-#: admin-pages/page.settings.php:503
+#: includes/admin-pages/settings/page-settings-generic.php:545
 msgid ""
 "Receive notifications when a member edits an existing weight / measurement "
 "entry."
 msgstr ""
 "Prijímať upozornenia, keď člen upraví existujúcu položku váhy / merania."
 
-#: admin-pages/page.settings.php:507
+#: includes/admin-pages/settings/page-settings-generic.php:549
 msgid "New / updated targets"
 msgstr "Nové / aktualizované ciele"
 
-#: admin-pages/page.settings.php:513
+#: includes/admin-pages/settings/page-settings-generic.php:555
 msgid "Receive notifications when a member adds / edits their target."
 msgstr "Prijímať upozornenia, keď člen pridá alebo upraví svoj cieľ."
 
-#: admin-pages/page.settings.php:526
+#: includes/admin-pages/settings/page-settings-generic.php:568
 msgid "Allow Measurements?"
 msgstr "Povoliť merania?"
 
-#: admin-pages/page.settings.php:532
+#: includes/admin-pages/settings/page-settings-generic.php:574
 msgid ""
 "If enabled, a user can also add body measurements along with their weights."
 msgstr ""
 "Ak je táto funkcia povolená, používateľ môže tiež pridať ďasie merania tela "
 "spolu s hmotnosťou."
 
-#: admin-pages/page.settings.php:536
+#: includes/admin-pages/settings/page-settings-generic.php:578
 msgid "Measurement Units"
 msgstr "Meracie jednotky"
 
-#: admin-pages/page.settings.php:539
+#: includes/admin-pages/settings/page-settings-generic.php:581
+#: pro-features/user-preferences.php:184
 msgid "Centimetres"
 msgstr "Centimetre"
 
-#: admin-pages/page.settings.php:540 core.php:76
+#: includes/admin-pages/settings/page-settings-generic.php:582
+#: includes/core.php:76 pro-features/footable.php:57
+#: pro-features/functions.php:6 pro-features/user-preferences.php:185
 msgid "Inches"
 msgstr "Palce"
 
-#: admin-pages/page.settings.php:542
+#: includes/admin-pages/settings/page-settings-generic.php:584
 msgid "Default unit for recording measurements."
 msgstr "Predvolená jednotka na zaznamenávanie meraní."
 
-#: admin-pages/page.settings.php:546
+#: includes/admin-pages/settings/page-settings-generic.php:588
 msgid "Measurements mandatory?"
 msgstr "Merania povinné?"
 
-#: admin-pages/page.settings.php:552
+#: includes/admin-pages/settings/page-settings-generic.php:594
 msgid "If yes, a user will be forced to complete all measurement features."
 msgstr "Ak áno, používateľ bude nútený dokončiť všetky meracie funkcie."
 
-#: admin-pages/page.settings.php:556
+#: includes/admin-pages/settings/page-settings-generic.php:598
 msgid "Areas of measurements"
 msgstr "Oblasti merania"
 
-#: admin-pages/page.settings.php:578
+#: includes/admin-pages/settings/page-settings-generic.php:620
 msgid "Enable"
 msgstr "Povoliť"
 
-#: admin-pages/page.settings.php:581
+#: includes/admin-pages/settings/page-settings-generic.php:623
 msgid "Chart Colour"
 msgstr "Farba grafu"
 
-#: admin-pages/page.settings.php:607
+#: includes/admin-pages/settings/page-settings-generic.php:649
 msgid "Enable Gravity Forms"
 msgstr ""
 
-#: admin-pages/page.settings.php:614
+#: includes/admin-pages/settings/page-settings-generic.php:656
 msgid ""
 "Examine Gravity Form submissions for weight and measurement data. If found, "
 "create a Weight Entry for the user currently logged in."
 msgstr ""
 
-#: admin-pages/page.settings.php:615
+#: includes/admin-pages/settings/page-settings-generic.php:657
 msgid "Read more at "
 msgstr "Prečítajte si viac o výpočtoch"
 
-#: admin-pages/user-data/data-add-edit-entry.php:17
-#: admin-pages/user-data/data-edit-target.php:17
-#: admin-pages/user-data/data-photos.php:17
+#: includes/admin-pages/settings/page-settings-groups.php:23
+msgid "Manage Groups"
+msgstr ""
+
+#: includes/admin-pages/settings/page-settings-groups.php:26
+msgid "Add or remove Groups that users can be assigned to."
+msgstr ""
+
+#: includes/admin-pages/settings/page-settings-groups.php:27
+#, fuzzy
+#| msgid "Read more at "
+msgid "Read more about Groups"
+msgstr "Prečítajte si viac o výpočtoch"
+
+#: includes/admin-pages/settings/page-settings-groups.php:30
+#, fuzzy
+#| msgid "Add a new weight"
+msgid "Add a new group"
+msgstr "Pridať novú váhu"
+
+#: includes/admin-pages/settings/page-settings-groups.php:45
+msgid "Existing groups"
+msgstr ""
+
+#: includes/admin-pages/user-data/data-add-edit-entry.php:17
+#: includes/admin-pages/user-data/data-edit-target.php:17
+#: includes/admin-pages/user-data/data-photos.php:17
 msgid "There was an issue loading this page"
 msgstr "Pri načítavaní tejto stránky sa vyskytol problém"
 
-#: admin-pages/user-data/data-add-edit-entry.php:48
+#: includes/admin-pages/user-data/data-add-edit-entry.php:48
 msgid "Add / Edit an entry"
 msgstr "Pridať / Upraviť záznam"
 
-#: admin-pages/user-data/data-add-edit-entry.php:54
+#: includes/admin-pages/user-data/data-add-edit-entry.php:54
 msgid "A Pro license is required to add / edit a weight entry."
 msgstr ""
 
-#: admin-pages/user-data/data-edit-target.php:37
+#: includes/admin-pages/user-data/data-edit-target.php:37
 msgid "Edit user's target"
 msgstr "Upraviť cieľ používateľa"
 
-#: admin-pages/user-data/data-edit-target.php:43
+#: includes/admin-pages/user-data/data-edit-target.php:43
 msgid "A Pro license is required to set a user's target weight."
 msgstr "Nezabudnite zadať cieľovú váhu."
 
-#: admin-pages/user-data/data-photos.php:29
+#: includes/admin-pages/user-data/data-photos.php:29
 msgid "User's photos"
 msgstr ""
 
-#: admin-pages/user-data/data-photos.php:38
-#: admin-pages/user-data/data-user.php:80
+#: includes/admin-pages/user-data/data-photos.php:38
+#: includes/admin-pages/user-data/data-user.php:79
 msgid "This user has uploaded "
 msgstr "Platnosť tejto licencie uplynula."
 
-#: admin-pages/user-data/data-photos.php:40
-#: admin-pages/user-data/data-user.php:82
+#: includes/admin-pages/user-data/data-photos.php:40
+#: includes/admin-pages/user-data/data-user.php:81
+#: pro-features/plus/shortcode.wlt.php:32
 msgid "photo"
 msgid_plural "photos"
 msgstr[0] ""
 msgstr[1] ""
 
-#: admin-pages/user-data/data-photos.php:43
-#: admin-pages/user-data/data-user.php:89
+#: includes/admin-pages/user-data/data-photos.php:43
+#: includes/admin-pages/user-data/data-user.php:88
 msgid "No photos could be found for this user."
 msgstr "Pre zadaného používateľa neboli nájdené žiadne údaje o hmotnosti."
 
-#: admin-pages/user-data/data-photos.php:55
-#: admin-pages/user-data/data-user.php:101
+#: includes/admin-pages/user-data/data-photos.php:55
+#: includes/admin-pages/user-data/data-user.php:100
 msgid "Add and enable a Photo Custom Field"
 msgstr "Pridať / Upraviť záznam"
 
-#: admin-pages/user-data/data-photos.php:56
-#: admin-pages/user-data/data-user.php:102
+#: includes/admin-pages/user-data/data-photos.php:56
+#: includes/admin-pages/user-data/data-user.php:101
 msgid "to allow a users to upload photos of their progress"
 msgstr ""
 
-#: admin-pages/user-data/data-photos.php:63
-#: admin-pages/user-data/data-user-edit-settings.php:38
-#: admin-pages/user-data/data-user.php:59
-#: admin-pages/user-data/data-user.php:109
+#: includes/admin-pages/user-data/data-photos.php:63
+#: includes/admin-pages/user-data/data-user-edit-settings.php:38
+#: includes/admin-pages/user-data/data-user.php:59
+#: includes/admin-pages/user-data/data-user.php:108
 msgid "Upgrade to Pro"
 msgstr "Upgrade na Pro za"
 
-#: admin-pages/user-data/data-photos.php:64
-#: admin-pages/user-data/data-user.php:110
+#: includes/admin-pages/user-data/data-photos.php:64
+#: includes/admin-pages/user-data/data-user.php:109
 msgid "to allow a user to upload photos of their progress"
 msgstr ""
 
-#: admin-pages/user-data/data-search-results.php:11
-#: admin-pages/user-data/data-search-results.php:18
+#: includes/admin-pages/user-data/data-search-results.php:11
+#: includes/admin-pages/user-data/data-search-results.php:18
 msgid "Search Results"
 msgstr "Výsledky vyhľadávania"
 
-#: admin-pages/user-data/data-search-results.php:35
+#: includes/admin-pages/user-data/data-search-results.php:35
 msgid "results were found for"
 msgstr "výsledky boli nájdené pre:"
 
-#: admin-pages/user-data/data-search-results.php:43
+#: includes/admin-pages/user-data/data-search-results.php:43
 msgid "Username"
 msgstr "Meno užívateľa"
 
-#: admin-pages/user-data/data-search-results.php:44
+#: includes/admin-pages/user-data/data-search-results.php:44
+#: pro-features/plus/awards/hooks.php:279
 msgid "Email"
 msgstr "E-mail"
 
-#: admin-pages/user-data/data-search-results.php:45
+#: includes/admin-pages/user-data/data-search-results.php:45
+#: pro-features/functions.pages.php:86
 msgid "No. of Entries"
 msgstr "Počet záznamov"
 
-#: admin-pages/user-data/data-search-results.php:46
+#: includes/admin-pages/user-data/data-search-results.php:46
+#: pro-features/functions.pages.php:90
 msgid "Start Weight"
 msgstr "Počiatočná váha"
 
-#: admin-pages/user-data/data-search-results.php:47
+#: includes/admin-pages/user-data/data-search-results.php:47
 msgid "Recent Weight"
 msgstr "Nedávna váha"
 
-#: admin-pages/user-data/data-search-results.php:48 core.php:285
+#: includes/admin-pages/user-data/data-search-results.php:48
+#: includes/core.php:283 pro-features/functions.pages.php:102
 msgid "Target Weight"
 msgstr "Cieľová Váha"
 
-#: admin-pages/user-data/data-search-results.php:61
+#: includes/admin-pages/user-data/data-search-results.php:61
 msgid "No users were found for the given search criteria:"
 msgstr "Pre dané kritériá vyhľadávania neboli nájdení žiadni používatelia:"
 
-#: admin-pages/user-data/data-search-results.php:66
+#: includes/admin-pages/user-data/data-search-results.php:66
 msgid "No search terms were specified"
 msgstr "Neboli zadané žiadne hľadané výrazy"
 
-#: admin-pages/user-data/data-summary.php:19
+#: includes/admin-pages/user-data/data-summary.php:19
 msgid "Summary"
 msgstr "Zhrnutie"
 
-#: admin-pages/user-data/data-summary.php:42
+#: includes/admin-pages/user-data/data-summary.php:42
 msgid "League table for those that have lost the most"
 msgstr "Celková tabuľka pre tých, ktorí schudli najviac"
 
-#: admin-pages/user-data/data-summary.php:42
+#: includes/admin-pages/user-data/data-summary.php:42
 msgid "League Table for those that have gained the most"
 msgstr "Celková tabuľka pre tých, ktorí nabrali najviac"
 
-#: admin-pages/user-data/data-summary.php:58
+#: includes/admin-pages/user-data/data-summary.php:58
+#: includes/admin-pages/user-data/data-summary.php:85
 msgid "Regenerate these stats"
 msgstr "Znovu vygenerovať tieto štatistiky"
 
-#: admin-pages/user-data/data-summary.php:64
+#: includes/admin-pages/user-data/data-summary.php:64
 msgid "Show who has gained the most"
 msgstr "Ukáž kto nabral najviac"
 
-#: admin-pages/user-data/data-summary.php:64
+#: includes/admin-pages/user-data/data-summary.php:64
 msgid "Show who has lost the most"
 msgstr "Ukáž kto zhodil najviac"
 
-#: admin-pages/user-data/data-summary.php:82
+#: includes/admin-pages/user-data/data-summary.php:72
+msgid "Weight change by group"
+msgstr ""
+
+#: includes/admin-pages/user-data/data-summary.php:102
 msgid "All entries"
 msgstr "Všetky záznamy"
 
-#: admin-pages/user-data/data-summary.php:82
+#: includes/admin-pages/user-data/data-summary.php:102
 msgid "Last 100 entries"
 msgstr "Posledných 100 záznamov"
 
-#: admin-pages/user-data/data-summary.php:90
+#: includes/admin-pages/user-data/data-summary.php:110
 msgid "Show all entries"
 msgstr "Zobraziť všetky záznamy"
 
-#: admin-pages/user-data/data-summary.php:90
+#: includes/admin-pages/user-data/data-summary.php:110
 msgid "Show 100 recent entries"
 msgstr "Zobraziť posledných 100 záznamov"
 
-#: admin-pages/user-data/data-summary.php:101
+#: includes/admin-pages/user-data/data-summary.php:121
+#: pro-features/functions.pages.php:44
 msgid "User Search"
 msgstr "Vyhľadávanie"
 
-#: admin-pages/user-data/data-summary.php:107
+#: includes/admin-pages/user-data/data-summary.php:127
 msgid "Quick Stats"
 msgstr "Rýchle štatistiky"
 
-#: admin-pages/user-data/data-summary.php:131
+#: includes/admin-pages/user-data/data-summary.php:151
 msgid "No. of WordPress users"
 msgstr "Počet WordPress používateľov"
 
-#: admin-pages/user-data/data-summary.php:133
+#: includes/admin-pages/user-data/data-summary.php:153
 msgid "No. of Weight Entries"
 msgstr "Počet záznamov hmotnosti"
 
-#: admin-pages/user-data/data-summary.php:135
+#: includes/admin-pages/user-data/data-summary.php:155
 msgid "No. of Target Entries"
 msgstr "Počet cieľových hmotnosti"
 
-#: admin-pages/user-data/data-summary.php:137
+#: includes/admin-pages/user-data/data-summary.php:157
 msgid "refreshed every 15 minutes"
 msgstr "obnovuje sa každých 15 minút"
 
-#: admin-pages/user-data/data-summary.php:146
+#: includes/admin-pages/user-data/data-summary.php:166
 msgid "View all data"
 msgstr "Zobraziť všetky dáta"
 
-#: admin-pages/user-data/data-summary.php:150
+#: includes/admin-pages/user-data/data-summary.php:170
 msgid "View all entries"
 msgstr "Zobraziť všetky záznamy"
 
-#: admin-pages/user-data/data-summary.php:155
+#: includes/admin-pages/user-data/data-summary.php:175
 msgid "Export all data"
 msgstr "Exportovať všetky dáta"
 
-#: admin-pages/user-data/data-summary.php:159
+#: includes/admin-pages/user-data/data-summary.php:179
+#: pro-features/functions.pages.php:181
 msgid "To CSV"
 msgstr "ako CSV"
 
-#: admin-pages/user-data/data-summary.php:163
+#: includes/admin-pages/user-data/data-summary.php:183
+#: pro-features/functions.pages.php:185
 msgid "To JSON"
 msgstr "ako JSON"
 
-#: admin-pages/user-data/data-summary.php:168
+#: includes/admin-pages/user-data/data-summary.php:188
+#: pro-features/functions.pages.php:209
 msgid "Delete Data"
 msgstr "Vymazať dáta"
 
-#: admin-pages/user-data/data-summary.php:172
+#: includes/admin-pages/user-data/data-summary.php:192
 msgid "Delete data for ALL users"
 msgstr "Vymazať všetky dáta používateľov"
 
-#: admin-pages/user-data/data-summary.php:184
+#: includes/admin-pages/user-data/data-summary.php:204
 msgid "Are you sure you wish to remove all user data?"
 msgstr "Naozaj chcete odstrániť všetky používateľské údaje?"
 
-#: admin-pages/user-data/data-user-edit-settings.php:26
+#: includes/admin-pages/user-data/data-user-edit-settings.php:26
 msgid "Edit user preferences"
 msgstr "Upraviť predvoľby používateľa"
 
-#: admin-pages/user-data/data-user-edit-settings.php:39
+#: includes/admin-pages/user-data/data-user-edit-settings.php:39
 msgid "to save changes to your user's settings"
 msgstr ""
 
-#: admin-pages/user-data/data-user.php:22 hooks.php:172
+#: includes/admin-pages/user-data/data-user.php:22 includes/hooks.php:174
 msgid "The preferences for this user have been saved."
 msgstr "Nastavenia tohto používateľa boli uložené."
 
-#: admin-pages/user-data/data-user.php:28
+#: includes/admin-pages/user-data/data-user.php:28
 msgid "The cache for this user has been deleted."
 msgstr "Vyrovnávacia pamäť pre tohto používateľa bola odstránená."
 
-#: admin-pages/user-data/data-user.php:60
+#: includes/admin-pages/user-data/data-user.php:60
 msgid "to view the a chart of the user's weight entries."
 msgstr ""
 
-#: admin-pages/user-data/data-user.php:84
+#: includes/admin-pages/user-data/data-user.php:83
 msgid "View all photos"
 msgstr "Zobraziť všetky dáta"
 
-#: admin-pages/user-data/data-user.php:117
+#: includes/admin-pages/user-data/data-user.php:129
+#: includes/admin-pages/user-data/data-user.php:155
+#: includes/admin-pages/user-data/data-user.php:172
 msgid "Daily calorie needs"
 msgstr "Denná potreba kalórií"
 
-#: admin-pages/user-data/data-user.php:128
-#: admin-pages/user-data/data-user.php:155
-msgid "Upgrade to Pro Plus"
-msgstr "Upgrade na Pro Plus"
-
-#: admin-pages/user-data/data-user.php:129
-msgid ""
-"to view the user's daily calorie intake required to either maintain or lose "
-"weight (Harris Benedict formula)"
-msgstr ""
-"na zobrazenie denného príjmu kalórií užívateľa potrebného na udržanie alebo "
-"stratu váhy (Harris Benedictov vzorec)"
-
-#: admin-pages/user-data/data-user.php:143
+#: includes/admin-pages/user-data/data-user.php:141
 msgid "Please ensure the values for Proteins, Carbohydrates and Fats (within "
 msgstr "Uistite sa, prosím, hodnoty pre bielkoviny, sacharidy a tuky (v rámci"
 
-#: admin-pages/user-data/data-user.php:145
+#: includes/admin-pages/user-data/data-user.php:143
+#: pro-features/plus/harris.benedict.php:251
 msgid "settings"
 msgstr "nastavenia"
 
-#: admin-pages/user-data/data-user.php:146
+#: includes/admin-pages/user-data/data-user.php:144
 msgid ") have been specified and total 100%."
 msgstr "boli nastavené na celkovo 100%"
 
-#: admin-pages/user-data/data-user.php:156
+#: includes/admin-pages/user-data/data-user.php:155
+msgid "Get More"
+msgstr ""
+
+#: includes/admin-pages/user-data/data-user.php:167
+msgid "Upgrade to Pro Plus"
+msgstr "Upgrade na Pro Plus"
+
+#: includes/admin-pages/user-data/data-user.php:168
+msgid "and get the following"
+msgstr ""
+
+#: includes/admin-pages/user-data/data-user.php:170
+#, fuzzy
+#| msgid ""
+#| "to view the user's suggested Macronutrient intake based on their "
+#| "recommended calorie intake"
 msgid ""
-"to view the user's suggested Macronutrient intake based on their recommended "
+"view the user's suggested Macronutrient intake based on their recommended "
 "calorie intake"
 msgstr ""
 "na zobrazenie odporúčaného užívania Macronutrientu na základe odporúčaného "
 "kalorického príjmu"
 
-#: admin-pages/user-data/data-user.php:164
+#: includes/admin-pages/user-data/data-user.php:173
+#, fuzzy
+#| msgid ""
+#| "to view the user's daily calorie intake required to either maintain or "
+#| "lose weight (Harris Benedict formula)"
+msgid ""
+"view the user's daily calorie intake required to either maintain or lose "
+"weight (Harris Benedict formula)"
+msgstr ""
+"na zobrazenie denného príjmu kalórií užívateľa potrebného na udržanie alebo "
+"stratu váhy (Harris Benedictov vzorec)"
+
+#: includes/admin-pages/user-data/data-user.php:176
+msgid "view and issue awards based upon users meeting your certain goals"
+msgstr ""
+
+#: includes/admin-pages/user-data/data-user.php:184
 msgid "Entries for this user"
 msgstr "Záznamy tohto užívateľa"
 
-#: admin-pages/user-data/data-view-all.php:11
-#: admin-pages/user-data/data-view-all.php:23
+#: includes/admin-pages/user-data/data-view-all.php:11
+#: includes/admin-pages/user-data/data-view-all.php:23
 msgid "View All Data"
 msgstr "Zobraziť všetky dáta"
 
-#: admin-pages/user-data/data-view-all.php:37
+#: includes/admin-pages/user-data/data-view-all.php:37
 msgid "Number of WordPress users"
 msgstr "Počet WordPress používateľov"
 
-#: admin-pages/user-data/data-view-all.php:39
+#: includes/admin-pages/user-data/data-view-all.php:39
 msgid "Number of weight entries"
 msgstr "Počet záznamov hmotnosti"
 
-#: admin-pages/user-data/data-view-all.php:41
+#: includes/admin-pages/user-data/data-view-all.php:41
 msgid "Number of targets entered"
 msgstr "Počet určených cieľov"
 
-#: admin-pages/user-data/data-view-all.php:44
+#: includes/admin-pages/user-data/data-view-all.php:44
 msgid "Export to CSV"
 msgstr "Export CSV"
 
-#: admin-pages/user-data/data-view-all.php:46
+#: includes/admin-pages/user-data/data-view-all.php:46
 msgid "Export to JSON"
 msgstr "Export ako JSON"
 
-#: converters.php:53 converters.php:71 core.php:75 functions.php:69
-#: functions.php:84 functions.php:93 functions.php:99 functions.php:295
-#: functions.php:301 functions.php:558 shortcode-various.php:262
-#: shortcode-various.php:281
+#: includes/converters.php:53 includes/converters.php:71 includes/core.php:75
+#: includes/functions.php:69 includes/functions.php:84
+#: includes/functions.php:93 includes/functions.php:99
+#: includes/functions.php:294 includes/functions.php:300
+#: includes/functions.php:557 includes/shortcode-various.php:262
+#: includes/shortcode-various.php:281 pro-features/export.php:260
+#: pro-features/shortcode-stats.php:162
 msgid "lbs"
 msgstr "lbs"
 
-#: converters.php:71 functions.php:301
+#: includes/converters.php:71 includes/functions.php:300
 msgid "St"
 msgstr "st"
 
-#: core.php:13
+#: includes/core.php:13 pro-features/ajax-handler-admin.php:59
+#: pro-features/footable.php:209
 msgid "Date"
 msgstr "Dátum"
 
-#: core.php:14 core.php:83 core.php:212 core.php:386
-msgid "Weight"
-msgstr "Váha"
-
-#: core.php:15 core.php:395
+#: includes/core.php:15 includes/core.php:393 pro-features/emails.php:53
+#: pro-features/export.php:264 pro-features/footable.php:257
 msgid "Notes"
 msgstr "Poznámky"
 
-#: core.php:62 core.php:265 shortcode-weight-loss-tracker.php:50
+#: includes/core.php:62 includes/core.php:263
+#: includes/shortcode-weight-loss-tracker.php:50
 msgid "You need to be logged in to record your weight."
 msgstr "Pre zaznamenanie vašej váhy musíte byť prihlásený"
 
-#: core.php:76
+#: includes/core.php:76
 msgid "CM"
 msgstr "cm"
 
-#: core.php:121
+#: includes/core.php:121
 msgid "Target"
 msgstr "Cieľ"
 
-#: core.php:219
+#: includes/core.php:217
 msgid "Measurement"
 msgstr "Meranie"
 
-#: core.php:241
+#: includes/core.php:239
 msgid "You have modified data. Please refresh page."
 msgstr "Upravili ste dáta, prosím obnovte stránku"
 
-#: core.php:265
+#: includes/core.php:263
 msgid "You need to be logged in to set your target."
 msgstr "Pre zaznamenanie vášho cieľa, musíte byť prihlásený"
 
-#: core.php:282
+#: includes/core.php:280
 msgid "Add a new weight"
 msgstr "Pridať novú váhu"
 
-#: core.php:287
+#: includes/core.php:285
 msgid "Edit weight"
 msgstr "Podváha"
 
-#: core.php:368
+#: includes/core.php:366
 msgid "Your target weight is"
 msgstr "Vaša cieľová váha je"
 
-#: core.php:368
+#: includes/core.php:366
 msgid "The user's target weight is currently"
 msgstr "Cieľová váha užívateľa je aktuálne"
 
-#: core.php:378
-msgid "Stones"
-msgstr "Stones"
-
-#: core.php:402
+#: includes/core.php:400
 msgid "Edit measurements"
 msgstr "Pridajte hodnoty"
 
-#: core.php:402
+#: includes/core.php:400
 msgid "Add measurements"
 msgstr "Pridajte hodnoty"
 
-#: core.php:403
+#: includes/core.php:401
 msgid "Optional"
 msgstr "Voliteľné"
 
-#: core.php:412
+#: includes/core.php:410
 msgid "Set Target"
 msgstr "Zadať cieľ"
 
-#: core.php:412
+#: includes/core.php:410
 msgid "Save Entry"
 msgstr "Uložiť vstup"
 
-#: core.php:417
+#: includes/core.php:415
 msgid "Please correct the following:"
 msgstr ""
 
-#: core.php:430
+#: includes/core.php:428
 msgid "Clear Target"
 msgstr "Vymazať cieľ"
 
-#: core.php:596
+#: includes/core.php:594
 msgid "Please enter a value between 0-13 for pounds"
 msgstr "Prosím zadajte hodnotu medzi 0-13 pre libry"
 
-#: core.php:596
+#: includes/core.php:594
 msgid "Please enter a valid figure for pounds"
 msgstr "Zadajte platnú hodnotu pre libry"
 
-#: core.php:603
+#: includes/core.php:601
 msgid "Are you sure you wish to clear your target weight?"
 msgstr "Naozaj chcete vymazať cieľovú váhu?"
 
-#: core.php:606
+#: includes/core.php:604
 msgid "Please enter a valid figure for Kg"
 msgstr "Prosím zadajte platnú hodnotu pre kilogramy"
 
-#: core.php:607
+#: includes/core.php:605
 msgid "Please enter a valid figure for Stones"
 msgstr "Prosím zadajte platnú hodnotu pre Stones"
 
-#: core.php:608
+#: includes/core.php:606
 msgid "Please enter a valid date"
 msgstr "Prosím zadajte platný dátum"
 
-#: core.php:609
+#: includes/core.php:607
 msgid "Please confirm you wish to delete ALL your weight history"
 msgstr "Potvrďte, že chcete odstrániť VŠETKU vašu históriu hmotnosti"
 
-#: core.php:610
+#: includes/core.php:608
 msgid "Your photo must be less than "
 msgstr ""
 
-#: core.php:611
+#: includes/core.php:609
 msgid "Are you sure you wish to delete this entry? If so, press OK."
 msgstr "Naozaj chcete odstrániť túto položku? Ak áno, stlačte tlačidlo OK."
 
-#: core.php:620
+#: includes/core.php:618
 msgid "Please enter a valid measurement ("
 msgstr "Prosím zadajte platné meranie ("
 
-#: core.php:632
+#: includes/core.php:630
 msgid "Please select or enter a value for height."
 msgstr "Vyberte alebo zadajte hodnotu pre výšku."
 
-#: core.php:633
+#: includes/core.php:631
 msgid "Please select or enter a value for activity level."
 msgstr "Vyberte prosím alebo zadajte hodnotu pre úroveň aktivity."
 
-#: core.php:634
+#: includes/core.php:632
 msgid "Please select or enter a value for gender."
 msgstr "Prosím zadajte alebo vyberte pohlavie"
 
-#: core.php:635
+#: includes/core.php:633
 msgid "Please enter a valid date."
 msgstr "Prosím zadajte platný dátum."
 
-#: core.php:636
+#: includes/core.php:634
 msgid "Please select your aim."
 msgstr "Vyberte alebo zadajte hodnotu pre výšku."
 
-#: core.php:646
+#: includes/core.php:644
 msgid "This field is required."
 msgstr "Platnosť tejto licencie uplynula."
 
-#: core.php:663
-msgid "Done"
-msgstr "Hotovo!"
-
-#: core.php:664
+#: includes/core.php:662
 msgid "Today"
 msgstr "Dnes"
 
-#: functions.php:84 functions.php:99 functions.php:546
-#: shortcode-various.php:281
+#: includes/functions.php:84 includes/functions.php:99
+#: includes/functions.php:545 includes/shortcode-various.php:281
+#: pro-features/export.php:259
 msgid "st"
 msgstr "st"
 
-#: functions.php:212
+#: includes/functions.php:215
 msgid "The following MySQL tables are missing for this plugin"
 msgstr "Nasledujúce MySQL tabuľky chýbajú pre fungovanie pluginu"
 
-#: functions.php:298 shortcode-various.php:286
+#: includes/functions.php:297 includes/shortcode-various.php:286
+#: pro-features/user-preferences.php:175
 msgid "Kg"
 msgstr "kg"
 
-#: functions.php:360
+#: includes/functions.php:359
 msgid "View all weeks"
 msgstr "Zobraziť všetky týždne"
 
-#: functions.php:374
+#: includes/functions.php:373
 msgid "View Week"
 msgstr "Zobraziť týždeň"
 
-#: functions.php:374
+#: includes/functions.php:373
 msgid "to"
 msgstr "od"
 
-#: functions.php:513
+#: includes/functions.php:512
 msgid "The plugin supports the following measurements"
 msgstr "Plugin podporuje nasledujúce merania"
 
-#: functions.php:651
+#: includes/functions.php:658
 msgid "Read more about calculations"
 msgstr "Prečítajte si viac o výpočtoch"
 
-#: functions.php:686
+#: includes/functions.php:693
 msgid "Your modifications have been saved"
 msgstr "Vaše nastavenia boli uložené."
 
-#: functions.php:704
+#: includes/functions.php:711
 msgid "Login now"
 msgstr "Prihlásiť"
 
-#: functions.php:886
+#: includes/functions.php:896
 msgid "Upgrade Weight Tracker and get more features!"
 msgstr ""
 
-#: functions.php:888
+#: includes/functions.php:898
 msgid ""
 "Upgrade to the latest Pro or Pro Plus version of this plugin to manipulate "
 "your user's data, add custom fields, BMR, Macro Nutrients and much more!"
 msgstr ""
 
-#: functions.php:889
+#: includes/functions.php:899
 msgid "Read more and Upgrade to Pro / Pro Plus Version"
 msgstr "Inovujte na verziu Pro"
 
-#: globals.php:161
+#: includes/globals.php:161 pro-features/footable.php:225
 msgid "Forearm - Left"
 msgstr "Ľavé predlaktie"
 
-#: globals.php:161
+#: includes/globals.php:161 pro-features/footable.php:225
 msgid "FL"
 msgstr "ĽP"
 
-#: globals.php:162
+#: includes/globals.php:162 pro-features/footable.php:226
 msgid "Forearm - Right"
 msgstr "Pravé predlaktie"
 
-#: globals.php:162
+#: includes/globals.php:162 pro-features/footable.php:226
 msgid "FR"
 msgstr "PP"
 
-#: globals.php:163
+#: includes/globals.php:163 pro-features/footable.php:227
 msgid "Biceps - Left"
 msgstr "Ľavý biceps"
 
-#: globals.php:163
+#: includes/globals.php:163 pro-features/footable.php:227
 msgid "BL"
 msgstr "ĽB"
 
-#: globals.php:164
+#: includes/globals.php:164 pro-features/footable.php:228
 msgid "Biceps - Right"
 msgstr "Pravý biceps"
 
-#: globals.php:164
+#: includes/globals.php:164 pro-features/footable.php:228
 msgid "BR"
 msgstr "PB"
 
-#: globals.php:165
+#: includes/globals.php:165 pro-features/footable.php:229
 msgid "Calf - Left"
 msgstr "Ľavé lýtko"
 
-#: globals.php:165
+#: includes/globals.php:165 pro-features/footable.php:229
 msgid "CL"
 msgstr "ĽL"
 
-#: globals.php:166
+#: includes/globals.php:166 pro-features/footable.php:230
 msgid "Calf - Right"
 msgstr "Pravé lýtko"
 
-#: globals.php:166
+#: includes/globals.php:166 pro-features/footable.php:230
 msgid "CR"
 msgstr "PL"
 
-#: globals.php:167
+#: includes/globals.php:167 pro-features/footable.php:231
 msgid "Thigh - Left"
 msgstr "Ľavé stehno"
 
-#: globals.php:167
+#: includes/globals.php:167 pro-features/footable.php:231
 msgid "TL"
 msgstr "ĽS"
 
-#: globals.php:168
+#: includes/globals.php:168 pro-features/footable.php:232
 msgid "Thigh - Right"
 msgstr "Pravé stehno"
 
-#: globals.php:168
+#: includes/globals.php:168 pro-features/footable.php:232
 msgid "TR"
 msgstr "PS"
 
-#: globals.php:169
+#: includes/globals.php:169 pro-features/footable.php:233
 msgid "Waist"
 msgstr "Pás"
 
-#: globals.php:169
+#: includes/globals.php:169 pro-features/footable.php:233
 msgid "W"
 msgstr "P"
 
-#: globals.php:170
+#: includes/globals.php:170 pro-features/footable.php:234
 msgid "Bust / Chest"
 msgstr "Prsia/Hrudník"
 
-#: globals.php:170
+#: includes/globals.php:170 pro-features/footable.php:234
 msgid "BC"
 msgstr "PH"
 
-#: globals.php:171
+#: includes/globals.php:171 pro-features/footable.php:235
 msgid "Shoulders"
 msgstr "Ramená"
 
-#: globals.php:171
+#: includes/globals.php:171 pro-features/footable.php:235
 msgid "S"
 msgstr "R"
 
-#: globals.php:172
+#: includes/globals.php:172 pro-features/footable.php:236
+#: pro-features/functions.pages.php:129
 msgid "Height"
 msgstr "Výška"
 
-#: globals.php:172
+#: includes/globals.php:172 pro-features/footable.php:236
 msgid "H"
 msgstr "V"
 
-#: globals.php:173
+#: includes/globals.php:173 pro-features/footable.php:237
 msgid "Buttocks"
 msgstr "Zadok"
 
-#: globals.php:173
+#: includes/globals.php:173 pro-features/footable.php:237
 msgid "B"
 msgstr "Z"
 
-#: globals.php:174
+#: includes/globals.php:174 pro-features/footable.php:238
 msgid "Hips"
 msgstr "Boky"
 
-#: globals.php:174
+#: includes/globals.php:174 pro-features/footable.php:238
 msgid "HI"
 msgstr "BO"
 
-#: globals.php:175
+#: includes/globals.php:175 pro-features/footable.php:239
 msgid "Navel"
 msgstr "Pupok"
 
-#: globals.php:175
+#: includes/globals.php:175 pro-features/footable.php:239
 msgid "NA"
 msgstr "PU"
 
-#: globals.php:176
+#: includes/globals.php:176 pro-features/footable.php:240
 msgid "Neck"
 msgstr "Krk"
 
-#: globals.php:176
+#: includes/globals.php:176 pro-features/footable.php:240
 msgid "NE"
 msgstr "K"
 
-#: hooks.php:9
+#: includes/hooks.php:9
 msgid "Manage User Data"
 msgstr "Správa používateľských údajov"
 
-#: hooks.php:12
+#: includes/hooks.php:13
 msgid "Your License"
 msgstr "Vaša licencia"
 
-#: hooks.php:15
+#: includes/hooks.php:16 pro-features/functions.pages.php:190
 msgid "Settings"
 msgstr "Nastavenia"
 
-#: hooks.php:16
-msgid "Help"
-msgstr "Pomoc"
+#: includes/hooks.php:17
+msgid "Help & Log"
+msgstr ""
 
-#: hooks.php:173
+#: includes/hooks.php:175
 msgid "An error occurred while trying to save the user's preferences."
 msgstr "Pri pokuse o uloženie predvolieb používateľa sa vyskytla chyba."
 
-#: license.php:150
+#: includes/license.php:156
 msgid "License missing"
 msgstr "Chýba licencia"
 
-#: license.php:157
+#: includes/license.php:163
 msgid "Could not decode / verify license"
 msgstr "Nie je možné dekódovať / overiť licenciu"
 
-#: license.php:162
+#: includes/license.php:168
 msgid "Invalid license hash"
 msgstr "Neplatný hash licencie"
 
-#: license.php:167
+#: includes/license.php:173
 msgid ""
 "This license doesn't appear to be for this site (no match on site hash)."
 msgstr ""
 "Táto licencia sa nezdá byť pre túto stránku (žiadna zhoda na hash stránok)."
 
-#: license.php:175
+#: includes/license.php:181
 msgid "This license has expired."
 msgstr "Platnosť tejto licencie uplynula."
 
-#: license.php:232
+#: includes/license.php:238 pro-features/user-groups.php:98
+#: pro-features/user-groups.php:151 pro-features/user-groups.php:334
 msgid "None"
 msgstr "žiadne"
 
-#: license.php:242
+#: includes/license.php:248
 msgid "Yearly Pro"
 msgstr "Ročné PRO"
 
-#: license.php:245
+#: includes/license.php:251
 msgid "Legacy Pro"
 msgstr "Legacy Pro"
 
-#: save-data.php:42
+#: includes/save-data.php:42
 msgid "Saved!"
 msgstr "Uložené!"
 
-#: save-data.php:46
+#: includes/save-data.php:46
 msgid "An error occurred while saving your data!"
 msgstr "Počas ukladania údajov sa vyskytla chyba!"
 
-#: save-data.php:49
+#: includes/save-data.php:49
 msgid "No user specified (hash)"
 msgstr "Nie je zadaný (hash)"
 
-#: save-data.php:52
+#: includes/save-data.php:52
 msgid "No user specified"
 msgstr "Nie je zadaný používateľ"
 
-#: shortcode-various.php:106
+#: includes/shortcode-various.php:106 pro-features/functions.pages.php:108
 msgid "No target set"
 msgstr "Žiadny cieľ nenastavený"
 
-#: shortcode-weight-loss-tracker.php:43
+#: includes/shortcode-weight-loss-tracker.php:43
 msgid "This shortcode can only be placed once on a page / post."
 msgstr ""
 
-#: shortcode-weight-loss-tracker.php:68
+#: includes/shortcode-weight-loss-tracker.php:68
 msgid "Your settings have been saved!"
 msgstr "Vaše nastavenia boli uložené."
 
-#: shortcode-weight-loss-tracker.php:70
+#: includes/shortcode-weight-loss-tracker.php:70
 msgid "Your weight history has been deleted!"
 msgstr "Vaša história hmotnosti bola vymazaná!"
 
-#: shortcode-weight-loss-tracker.php:93
+#: includes/shortcode-weight-loss-tracker.php:93
 msgid "Overview"
 msgstr "Prehľad"
 
-#: shortcode-weight-loss-tracker.php:93
+#: includes/shortcode-weight-loss-tracker.php:93
 msgid "Chart and add a new entry"
 msgstr ""
 
-#: shortcode-weight-loss-tracker.php:94
+#: includes/shortcode-weight-loss-tracker.php:94
 msgid "All Entries"
 msgstr "Všetky záznamy"
 
-#: shortcode-weight-loss-tracker.php:94
+#: includes/shortcode-weight-loss-tracker.php:94
 msgid "View all of your entries"
 msgstr "Zobraziť všetky záznamy"
 
-#: shortcode-weight-loss-tracker.php:98
+#: includes/shortcode-weight-loss-tracker.php:98
 msgid "View a gallery of your photos"
 msgstr ""
 
-#: shortcode-weight-loss-tracker.php:103
+#: includes/shortcode-weight-loss-tracker.php:103
 msgid "View BMI, BMR and suggested Calorie and Macronutrient intake"
 msgstr ""
 
-#: shortcode-weight-loss-tracker.php:108
+#: includes/shortcode-weight-loss-tracker.php:108
+#: pro-features/functions.pages.php:194 pro-features/user-preferences.php:170
 msgid "Preferences"
 msgstr "Nastavenia"
 
-#: shortcode-weight-loss-tracker.php:108
+#: includes/shortcode-weight-loss-tracker.php:108
 msgid "Customise this tool and tell us a little more about you"
 msgstr ""
 
-#: shortcode-weight-loss-tracker.php:124
+#: includes/shortcode-weight-loss-tracker.php:124
 msgid "Add a weight entry"
 msgstr "Pridajte záznam o hmotnosti"
 
-#: shortcode-weight-loss-tracker.php:129
+#: includes/shortcode-weight-loss-tracker.php:129
 msgid "In a chart"
 msgstr "V grafe"
 
-#: shortcode-weight-loss-tracker.php:137
+#: includes/shortcode-weight-loss-tracker.php:137
 msgid "A graph will appear once several weights have been entered."
 msgstr "Graf sa zobrazí po vložení viacerých váh."
 
-#: shortcode-weight-loss-tracker.php:190
+#: includes/shortcode-weight-loss-tracker.php:190
 msgid "Weight History"
 msgstr "História váh"
 
-#: shortcode-weight-loss-tracker.php:202
+#: includes/shortcode-weight-loss-tracker.php:202
 msgid "There is no data for this week, please try selecting another:"
 msgstr ""
 "Tento týždeň nie sú k dispozícii žiadne údaje, skúste prosím vybrať iný:"
 
-#: shortcode-weight-loss-tracker.php:208
+#: includes/shortcode-weight-loss-tracker.php:208
 msgid "You haven't entered any weight data yet."
 msgstr "Zatiaľ ste nezadali údaje o váhe."
 
-#~ msgid "Name"
-#~ msgstr "Meno"
+#: pro-features/ajax-handler-admin.php:60
+msgid "Module"
+msgstr ""
 
-#, fuzzy
-#~| msgid "Delete existing data"
-#~ msgid "Delete existing photo"
-#~ msgstr "Vymazať existujúce dáta"
+#: pro-features/ajax-handler-admin.php:61
+msgid "Message"
+msgstr ""
 
+#: pro-features/emails.php:45
+msgid "added"
+msgstr "Pridané"
+
+#: pro-features/emails.php:45
+msgid "updated"
+msgstr "aktualizované"
+
+#: pro-features/emails.php:46
+msgid "their weight / measurements for "
+msgstr "ich hmotnosť / merania pre"
+
+#: pro-features/emails.php:46
+msgid "their target to"
+msgstr "k ich cieľu"
+
+#: pro-features/emails.php:80
 #, fuzzy
-#~| msgid "Animation Duration"
-#~ msgid "Additional Information"
-#~ msgstr "Trvanie animácie"
+#| msgid "Weight Loss Tracker update for"
+msgid "Weight Tracker update for"
+msgstr "Aktualizácia sledovania úbytku hmotnosti pre"
+
+#: pro-features/emails.php:97
+msgid "Hello"
+msgstr "Ahoj"
+
+#: pro-features/emails.php:98
+#, fuzzy
+#| msgid ""
+#| "Just a quick email to let you know that \"{displayname}\" has {mode} "
+#| "{type}:"
+msgid ""
+"<p>Just a quick email to let you know that \"{displayname}\" has {mode} "
+"{type}:</p>"
+msgstr "Len rýchly email že \"{displayname}\" má {mode} {type}:"
+
+#: pro-features/emails.php:99
+msgid "{data}"
+msgstr "{data}"
+
+#: pro-features/emails.php:100
+msgid "Thank you!"
+msgstr "Ďakujem!"
+
+#: pro-features/export.php:47
+msgid "No data was found for the given criteria."
+msgstr "Pre dané kritériá neboli zistené žiadne údaje."
+
+#: pro-features/export.php:106
+msgid "You must have a Pro License to export user data into JSON format."
+msgstr ""
+
+#: pro-features/export.php:162
+msgid "You must have a Pro License to export user data into CSV format."
+msgstr ""
+
+#: pro-features/export.php:258
+msgid "lbs only"
+msgstr "len libry"
+
+#: pro-features/export.php:261
+msgid "Difference from start"
+msgstr "Rozdiel od začiatku"
+
+#: pro-features/export.php:325 pro-features/footable.php:143
+msgid "No height"
+msgstr "Žiadna výška"
+
+#: pro-features/feature-list.php:6
+msgid "<strong>All of the features that come with a standard <a href=\""
+msgstr "<strong>Všetky funkcie, ktoré prichádzajú so štandardným <a href = \""
+
+#: pro-features/feature-list.php:7
+msgid ""
+"<strong>Basal Metabolic Rate (BMR) calculations per user</strong>. "
+"Shortcodes and extended admin screens to display a user's BMR. For further "
+"information on BMR and how it is calculated visit <a href=\""
+msgstr ""
+"<strong> Výpočty bazálnej metabolickej rýchlosti (BMR) na používateľa </ "
+"strong>. Shortcodes a rozšírené administrátroské pohľady na zobrazenie BMR "
+"používateľa. Ďalšie informácie o BMR a ako sa vypočítava, navštívte <a href "
+"= \""
+
+#: pro-features/feature-list.php:8
+msgid ""
+"<strong>Harris Benedict formula</strong>. Shortcodes and extended admin "
+"screens to a view a person's calorie intake required to maintain and lose "
+"weight. For further information on Harris Benedict Formula and how it is "
+"calculated visit <a href=\""
+msgstr ""
+"<strong> Vzorec Harris Benedict </ strong>. Shortcodes a rozšírené "
+"administrátroské pohľady na zobrazenie osobného príjmu kalórií potrebného na "
+"udržanie a stratu hmotnosti. Pre ďalšie informácie o zložení Harris Benedict "
+"a ako sa vypočítava, navštívte <a href = \""
+
+#: pro-features/feature-list.php:9
+msgid ""
+"<strong>Recommended calorie intake per meal time</strong>. Shortcodes and "
+"extended admin screens to recommend how a person should split their daily "
+"calorie intake across meals. For further information on how this is "
+"calculated please visit <a href=\""
+msgstr ""
+"<strong> Odporúčaný príjem kalórií pre jedlo </strong>. Shortcodes a "
+"rozšírené administrátroské pohľady odporúčajú, ako by mal človek rozdeliť "
+"denný príjem kalórií na jedlo. Ďalšie informácie o tom, ako sa to vypočíta, "
+"nájdete na stránke <a href = \""
+
+#: pro-features/feature-list.php:10
+msgid ""
+"<strong>Macronutrients Calculator</strong>. Shortcodes and extended admin "
+"screens to recommend how their calorie consumption should be split into "
+"fats, carbohydrates and proteins. For further information on the "
+"Macronutrients Calculator and how these calculations are performed please "
+"visit <a href=\""
+msgstr ""
+"<strong> Kalkulačka makroživín </strong>. Shortcodes a rozšírené "
+"administrátroské pohľady, ktoré odporúčajú, aby sa ich spotreba kalórií "
+"rozdelila na tuky, sacharidy a bielkoviny. Ďalšie informácie o kalkulačke "
+"Macronutrients ao tom, ako sa tieto výpočty vykonávajú, nájdete na stránke "
+"<a href = \""
+
+#: pro-features/feature-list.php:11
+msgid ""
+"<strong>Additional user preference fields</strong>. Additional user "
+"preference fields and shortcodes to display them: Activity Level, Date of "
+"Birth and Gender."
+msgstr ""
+"<strong> Ďalšie polia predvolieb používateľov </strong>. Ďalšie polia "
+"predvolieb používateľov a shortcodes na ich zobrazenie: úroveň aktivity, "
+"dátum narodenia a pohlavie."
+
+#: pro-features/feature-list.php:12
+msgid ""
+"<strong>Awards</strong>. Awards and Badges! Set awards for: BMI Change, BMI "
+"Equals, Weight Gain / Loss from start and Percentage of weight lost from "
+"start."
+msgstr ""
+
+#: pro-features/feature-list.php:17
+msgid ""
+"<strong>Access your user's data.</strong> Admin can view, edit and delete "
+"user data. Various tools for viewing user's graphs, tables of entries, BMI, "
+"targets, weight lost / gained stats and much more."
+msgstr ""
+"<strong> Prístup k údajom používateľa. </strong> Správca môže zobrazovať, "
+"upravovať a odstraňovať údaje používateľa. Rôzne nástroje na prezeranie "
+"užívateľských grafov, tabuľky záznamov, BMI, ciele, stratené / získané "
+"štatistiky a mnoho ďalších."
+
+#: pro-features/feature-list.php:18
+msgid ""
+"<strong>Measurements.</strong> Support for recording measurements like Hip, "
+"Waist, Leg, Bicep, etc. Displayed on charts and tables."
+msgstr ""
+"<strong> Merania. </ strong> Podpora nahrávania meraní, ako sú bedrá, pás, "
+"nohy, biceps atď. Zobrazené na grafoch a tabuľkách."
+
+#: pro-features/feature-list.php:19
+msgid ""
+"<strong>Custom Fields.</strong> Create and add your own questions to weight "
+"entry forms to gather additional information."
+msgstr ""
+
+#: pro-features/feature-list.php:20
+msgid ""
+"<strong>Photo Custom Fields</strong>. Add one or more photo fields to your "
+"weight entry forms and allow your users to upload photos of their progress. "
+"Photos can be viewed, updated and removed by the end user and "
+"administrators. Handy shortcodes are provided for displaying galleries, most "
+"recent and oldest photo."
+msgstr ""
+
+#: pro-features/feature-list.php:21
+msgid ""
+"<strong>Export all data or a particular user.</strong> Export in JSON or CSV "
+"format."
+msgstr ""
+"<strong> Exportovať všetky údaje alebo určitého používateľa. </strong> "
+"Exportovať vo formáte JSON alebo CSV."
+
+#: pro-features/feature-list.php:22
+msgid ""
+"<strong>Groups</strong>. Define user groups and assign your user's to them. "
+"View Weight Difference statistics for the group as a whole."
+msgstr ""
+
+#: pro-features/feature-list.php:23
+msgid ""
+"<strong>BMI.</strong> Allows a user to specify their height. Once specified, "
+"their BMI is displayed next to each weight entry. There is also a shortcode "
+"to render the latest BMI."
+msgstr ""
+"<strong> BMI. </strong> Umožňuje užívateľovi určiť výšku. Po zadaní sa ich "
+"BMI zobrazí vedľa každej položky váhy. K dispozícii je tiež krátky kód na "
+"vykreslenie najnovšieho BMI."
+
+#: pro-features/feature-list.php:24
+msgid ""
+"<strong>Email notifications.</strong> Receive email notifications when a "
+"person updates their target or adds / edits a weight."
+msgstr ""
+"<strong> E-mailové upozornenia. </strong> Prijímať upozornenia e-mailom, keď "
+"osoba aktualizuje svoj cieľ alebo pridáva / upravuje váhu."
+
+#: pro-features/feature-list.php:25
+msgid ""
+"<strong>Birthday Emails.</strong> Automatically send your user's a birthday "
+"email (when they have entered a date of birth)"
+msgstr ""
+
+#: pro-features/feature-list.php:26
+msgid ""
+"<strong>Overall user stats.</strong> Shortcodes that allow you to display "
+"the total lost / gained for the community and another to display a league "
+"table."
+msgstr ""
+"<strong> Celkové štatistiky používateľa. </strong> Krátke kódy, ktoré vám "
+"umožňujú zobraziť celkovú stratu / získanie pre komunitu a druhú pre "
+"zobrazenie tabuľky ligy."
+
+#: pro-features/feature-list.php:27
+msgid ""
+"<strong>Widgets.</strong> Widgets that allow you to display the graph and "
+"quick weight entry form within any widget area."
+msgstr ""
+"<strong> Widgety. </ strong> Widgety, ktoré vám umožnia zobraziť graf a "
+"formulár rýchleho vkladu v ktorejkoľvek oblasti miniaplikácií."
+
+#: pro-features/feature-list.php:28
+msgid ""
+"<strong>Chart and form Shortcodes.</strong> That allow you to display the "
+"graph and quick weight entry form by placing a shortcode on any post or page."
+msgstr ""
+"<strong> Graf a formuláre Shortcodes. </strong> Umožňuje zobraziť graf a "
+"formulár rýchleho zadávania váhy umiestnením krátkeho kódu na akýkoľvek "
+"príspevok alebo stránku."
+
+#: pro-features/feature-list.php:29
+msgid ""
+"<strong>Progress Bar shortcode.</strong> A shortcode that visually displays "
+"the logged in user's progress towards their target"
+msgstr ""
+"<strong> Shortcode pre zobrazenie progressu </strong> Krátky kód, ktorý "
+"vizuálne zobrazuje pokrok prihláseného používateľa smerom k cieľu"
+
+#: pro-features/feature-list.php:30
+msgid ""
+"<strong>Reminder shortcode.</strong> A shortcode that can be used to remind "
+"the user to enter their target or weight for today."
+msgstr ""
+"<strong> Shortcode s pripomienkami </strong> Skrátený kód, ktorý možno "
+"použiť na pripomenutie používateľa na zadanie cieľa alebo váhy pre dnešok."
+
+#: pro-features/feature-list.php:31
+msgid ""
+"<strong>Message shortcode</strong> A shortcode that allows you to "
+"congratulate a user when they lose weight x number of times. It also "
+"provides the opposite allowing you to provide encouragement when someone "
+"gains weight."
+msgstr ""
+"<strong>Shortcode pre správy </strong> Skrátený kód, ktorý vám umožní "
+"zablahoželať používateľovi, keď zhodí x počet krát. Poskytuje aj opačnú "
+"možnosť, ktorá vám umožňuje poskytnúť povzbudenie, keď niekto naberie na váhe"
+
+#: pro-features/feature-list.php:32
+msgid ""
+"<strong>Text Shortcodes.</strong> Additional shortcodes for earliest and "
+"most recent dates entered."
+msgstr ""
+"<strong> Textové shortcodes </ strong> Zadali ste ďalšie krátke kódy pre "
+"najskoršie a posledné dátumy."
+
+#: pro-features/feature-list.php:33
+msgid ""
+"<strong>Progress Bar shortcode / widget.</strong> Display a user's progress "
+"towards their weight target."
+msgstr ""
+"<strong> Shortcode pre zobrazenie progressu </strong> Krátky kód, ktorý "
+"vizuálne zobrazuje pokrok prihláseného používateľa smerom k cieľu"
+
+#: pro-features/feature-list.php:34
+msgid ""
+"<strong>Reminder shortcode.</strong> Display a reminder to enter their "
+"weight for the given day or enter a target."
+msgstr ""
+"<strong> Shortcode s pripomienkami </strong> Skrátený kód, ktorý možno "
+"použiť na pripomenutie používateľa na zadanie cieľa alebo váhy pre dnešok."
+
+#: pro-features/feature-list.php:35
+msgid ""
+"<strong>Admin: View / Delete user data</strong>. Admin will be able to view "
+"and delete existing user data."
+msgstr ""
+"<strong>Admin: Zobraziť / Vymazať používateľské data</strong>. Admin  bude "
+"môcť zobraziť a odstrániť existujúce používateľské údaje."
+
+#: pro-features/feature-list.php:36
+msgid ""
+"<strong>User preferences</strong>. If enabled, the user will be able to "
+"select which unit they wish to store their weight in Metric or Imperial. "
+"They will also be able to specify date format and clear all their weight "
+"data."
+msgstr ""
+"<strong> Predvoľby používateľa </ strong>. Ak je táto možnosť povolená, "
+"používateľ si bude môcť vybrať, akú jednotku si praje ukladať svoju váhu v "
+"Metric alebo Imperial. Budú tiež schopní určiť formát dátumu a vymazať "
+"všetky údaje o hmotnosti."
+
+#: pro-features/feature-list.php:37
+msgid ""
+"<strong>Bar Charts</strong>. Fancy something different to a line chart? The "
+"plugin will also support Bar Charts."
+msgstr ""
+"<strong> Bar  grafy </strong>. Niečo iné ako priamka? Plugin bude tiež "
+"podporovať grafy."
+
+#: pro-features/feature-list.php:38
+msgid ""
+"<strong>Decimals</strong>. Decimals will be allowed weight in Pounds only or "
+"Kg modes."
+msgstr ""
+"<Strong>  Desatinné miesta </strong>. Desatinné miesta budú mať povolenú "
+"hmotnosť iba v Pounds alebo v kilogramoch."
+
+#: pro-features/feature-list.php:39
+msgid ""
+"<strong>Delete existing entry</strong>. A logged in user will be able to "
+"delete or edit an existing weight entry."
+msgstr ""
+"<strong> Odstrániť existujúci záznam </strong>. Prihlásený používateľ bude "
+"môcť odstrániť alebo upraviť existujúci záznam o hmotnosti."
+
+#: pro-features/feature-list.php:40
+msgid ""
+"<strong>Better Tables.</strong>. Data tables in front end and admin will "
+"support paging and sorting."
+msgstr ""
+"<strong> Lepšie tabuľky. </strong>. Tabuľky údajov budú podporovať "
+"stránkovanie a triedenie."
+
+#: pro-features/feature-list.php:41
+msgid ""
+"<strong>Admin: Extra Settings</strong>. Extra settings to customise the "
+"plugin will be added e.g. number of plot points on graph, rows per page, etc."
+msgstr ""
+"<strong>Admin: Extra Nastavenia</strong>. Budú pridané ďalšie nastavenia pre "
+"prispôsobenie doplnku, napr. počet krivkových bodov na grafe, riadkov na "
+"stránku atď."
+
+#: pro-features/footable.php:57
+#, fuzzy
+#| msgid "Measurements"
+msgid "Measurements are in"
+msgstr "Rozmery"
+
+#: pro-features/footable.php:57 pro-features/functions.php:392
+msgid "cm"
+msgstr "cm"
+
+#: pro-features/footable.php:129
+msgid "First entry"
+msgstr "Prvý záznam"
+
+#: pro-features/footable.php:203
+#, fuzzy
+#| msgid "Username"
+msgid "User"
+msgstr "Meno užívateľa"
+
+#: pro-features/footable.php:211
+#, fuzzy
+#| msgid "Weight Difference"
+msgid "Difference"
+msgstr "Rozdiel hmotnosti"
+
+#: pro-features/footable.php:215
+msgid "Body Mass Index"
+msgstr "Body Mass Index"
+
+#: pro-features/footable.php:290 pro-features/plus/awards/hooks.php:277
+msgid "Add"
+msgstr ""
+
+#: pro-features/footable.php:291
+#, fuzzy
+#| msgid "Add / Edit a Custom Field"
+msgid "Add Custom Field"
+msgstr "Pridať / Upraviť záznam"
+
+#: pro-features/footable.php:292
+msgid "Add Award"
+msgstr ""
+
+#: pro-features/footable.php:293
+msgid "Are you sure you want to delete the row?"
+msgstr "Ste si istý, že chcete vymazať tento riadok?"
+
+#: pro-features/footable.php:294
+msgid "Unfortunately there was an error deleting the row."
+msgstr "Bohužiaľ sa vyskytla chyba pri mazaní riadka."
+
+#: pro-features/footable.php:295
+#, fuzzy
+#| msgid "Search: "
+msgid "Search"
+msgstr "Hľadanie"
+
+#: pro-features/footable.php:296
+msgid "No data found"
+msgstr ""
+
+#: pro-features/functions.pages.php:11
+msgid ""
+"Enter a user's email address, display name or username and click Search."
+msgstr ""
+"Zadajte e-mailovú adresu používateľa, zobrazované meno alebo používateľské "
+"meno a kliknite na tlačidlo Hľadať."
+
+#: pro-features/functions.pages.php:52
+#, fuzzy
+#| msgid "Recent Weight"
+msgid "Most Recent Photo"
+msgstr "Nedávna váha"
+
+#: pro-features/functions.pages.php:63
+#, fuzzy
+#| msgid "No. of Entries"
+msgid "No. of photos: "
+msgstr "Počet záznamov"
+
+#: pro-features/functions.pages.php:66
+#, fuzzy
+#| msgid "View all data"
+msgid "View all"
+msgstr "Zobraziť všetky dáta"
+
+#: pro-features/functions.pages.php:78
+msgid "User Information"
+msgstr "Informácie o používateľovi"
+
+#: pro-features/functions.pages.php:94
+msgid "Latest Weight"
+msgstr "Posledná váha"
+
+#: pro-features/functions.pages.php:98
+msgid "Diff. from Start"
+msgstr "Rozdiel od začiatku"
+
+#: pro-features/functions.pages.php:114
+msgid "Diff. from Target"
+msgstr "Rozdiel od cieľa"
+
+#: pro-features/functions.pages.php:118
+msgid "Current BMI"
+msgstr "Aktuálny BMI"
+
+#: pro-features/functions.pages.php:119
+msgid "No height specified"
+msgstr "Nebola zadaná výška"
+
+#: pro-features/functions.pages.php:125
+msgid "Aim"
+msgstr ""
+
+#: pro-features/functions.pages.php:133
+msgid "Gender"
+msgstr "Pohlavie"
+
+#: pro-features/functions.pages.php:137
+msgid "Activity Level"
+msgstr "Úroveň aktivity"
+
+#: pro-features/functions.pages.php:141
+msgid "Date of Birth"
+msgstr "Dátum narodenia"
+
+#: pro-features/functions.pages.php:145
+msgid "BMR"
+msgstr "BMR"
+
+#: pro-features/functions.pages.php:150
+msgid "Missing data"
+msgstr "Chýbajúce dáta"
+
+#: pro-features/functions.pages.php:164 pro-features/functions.pages.php:168
+msgid "Add Entry"
+msgstr "Pridajte záznam"
+
+#: pro-features/functions.pages.php:172
+msgid "Edit Target"
+msgstr "Upraviť cieľ"
+
+#: pro-features/functions.pages.php:177
+msgid "Export Data"
+msgstr "Exportovať dáta"
+
+#: pro-features/functions.pages.php:200
+msgid "Delete Cache"
+msgstr "Vymazať Cache"
+
+#: pro-features/functions.pages.php:204
+msgid "Delete Cache for this user"
+msgstr "Vymazať vyrovnávaciu pamäť pre tohto používateľa"
+
+#: pro-features/functions.pages.php:213
+msgid "Delete ALL data for this user"
+msgstr "Vymazať všetky dáta tohto používateľa"
+
+#: pro-features/functions.pages.php:220
+msgid "Are you sure you wish to remove the data for this user?"
+msgstr "Naozaj chcete odstrániť všetky údaje tohto používateľa?"
+
+#: pro-features/functions.pages.php:292
+msgid "Back"
+msgstr "Späť"
+
+#: pro-features/functions.pages.php:294
+msgid "WordPress Record"
+msgstr "WordPress záznam"
+
+#: pro-features/functions.pages.php:295
+#, fuzzy
+#| msgid "Weight Tracker Debug Log"
+msgid "Weight Tracker Record"
+msgstr "Weight Tracker Záznam"
+
+#: pro-features/functions.php:6
+msgid "Cm"
+msgstr "cm"
+
+#: pro-features/functions.php:19
+msgid "Add Height for BMI"
+msgstr "Pridajte výšku pre BMI"
+
+#: pro-features/functions.php:47 pro-features/functions.php:75
+msgid "Underweight"
+msgstr "Podváha"
+
+#: pro-features/functions.php:49 pro-features/functions.php:76
+msgid "Healthy"
+msgstr "Zdravý"
+
+#: pro-features/functions.php:52 pro-features/functions.php:77
+msgid "Overweight"
+msgstr "Nadváha"
+
+#: pro-features/functions.php:54 pro-features/functions.php:78
+msgid "Heavily Overweight"
+msgstr "Veľmi veľká nadváha"
+
+#: pro-features/functions.php:230 pro-features/plus/harris.benedict.php:246
+msgid "Female"
+msgstr "Žena"
+
+#: pro-features/functions.php:231 pro-features/plus/harris.benedict.php:246
+msgid "Male"
+msgstr "Muž"
+
+#: pro-features/functions.php:244
+msgid "Little / No Exercise"
+msgstr "Málo / Žiadne cvičenie"
+
+#: pro-features/functions.php:245
+msgid "Light Exercise"
+msgstr "Ľahké cvičenie"
+
+#: pro-features/functions.php:246
+msgid "Moderate Exercise (3-5 days a week)"
+msgstr "Mierne cvičenie (3-5 dní v týždni)"
+
+#: pro-features/functions.php:247
+msgid "Very Active (6-7 days a week)"
+msgstr "Veľmi aktívny (6-7 dní v týždni)"
+
+#: pro-features/functions.php:248
+msgid "Extra Active (very active & physical job)"
+msgstr "Extra aktívny (veľmi aktívna a fyzická práca)"
+
+#: pro-features/functions.php:265
+msgid "Maintain current weight"
+msgstr ""
+
+#: pro-features/functions.php:266
+#, fuzzy
+#| msgid "No height"
+msgid "Lose weight"
+msgstr "Žiadna výška"
+
+#: pro-features/functions.php:267
+#, fuzzy
+#| msgid "Add a new weight"
+msgid "Gain weight"
+msgstr "Pridať novú váhu"
+
+#: pro-features/functions.php:406 pro-features/functions.php:482
+#: pro-features/shortcode-various.php:61 pro-features/shortcode-various.php:80
+#: pro-features/shortcode-various.php:96 pro-features/shortcode-various.php:112
+msgid "Not Specified"
+msgstr "Nešpecifikované"
+
+#: pro-features/functions.php:555
+msgid "Error: The user does not appear to exist"
+msgstr "Chyba: Používateľ sa nezdá, že existuje"
+
+#: pro-features/init.php:73
+msgid "View weight entries"
+msgstr "Zobrazenie záznamov hmotnosti"
+
+#: pro-features/plus/awards/functions.php:32
+#, fuzzy
+#| msgid "Weight"
+msgid "Weight %"
+msgstr "Váha"
+
+#: pro-features/plus/awards/functions.php:33
+#: pro-features/plus/awards/functions.php:40
+msgid "BMI: Change"
+msgstr ""
+
+#: pro-features/plus/awards/functions.php:34
+#: pro-features/plus/awards/functions.php:41
+msgid "BMI: Equals"
+msgstr ""
+
+#: pro-features/plus/awards/functions.php:42
+#, fuzzy
+#| msgid "Weight unit:"
+msgid "Weight change in units"
+msgstr "Jednotka hmotnosti:"
+
+#: pro-features/plus/awards/functions.php:43
+msgid "Weight change as a percentage"
+msgstr ""
+
+#: pro-features/plus/awards/functions.php:60
+#, fuzzy
+#| msgid "Gained"
+msgid "Gain"
+msgstr "Nabraté"
+
+#: pro-features/plus/awards/functions.php:63
+msgid "Loss"
+msgstr ""
+
+#: pro-features/plus/awards/functions.php:283
+#, fuzzy
+#| msgid "This user has uploaded "
+msgid "The user has no awards"
+msgstr "Platnosť tejto licencie uplynula."
+
+#: pro-features/plus/awards/functions.php:283
+msgid "You have no awards yet"
+msgstr ""
+
+#: pro-features/plus/awards/hooks.php:273
+msgid "Category"
+msgstr ""
+
+#: pro-features/plus/awards/hooks.php:274
+msgid "Gain / Loss"
+msgstr ""
+
+#: pro-features/plus/awards/hooks.php:275
+msgid "Value"
+msgstr ""
+
+#: pro-features/plus/awards/hooks.php:278
+#, fuzzy
+#| msgid "updated"
+msgid "Update"
+msgstr "aktualizované"
+
+#: pro-features/plus/awards/hooks.php:389
+msgid "No awards"
+msgstr ""
+
+#: pro-features/plus/bmr.php:32
+msgid "No Gender specified"
+msgstr "Nešpecifikované pohlavie"
+
+#: pro-features/plus/bmr.php:39
+msgid "No Date of Birth specified or too young"
+msgstr "Dátum narodenia nie je špecifikovaný alebo je príliš mladý"
+
+#: pro-features/plus/bmr.php:46
+msgid "No Height specified"
+msgstr "Nebola zadaná výška"
+
+#: pro-features/plus/bmr.php:53
+msgid "No Weight entered"
+msgstr "Nebola zadaná váha"
+
+#: pro-features/plus/harris.benedict.php:32
+#: pro-features/plus/macronutrient.calculator.php:302
+msgid "Maintain"
+msgstr "Zachovávať"
+
+#: pro-features/plus/harris.benedict.php:48
+#: pro-features/plus/macronutrient.calculator.php:302
+msgid "Lose"
+msgstr "Stratiť"
+
+#: pro-features/plus/harris.benedict.php:91
+#: pro-features/plus/harris.benedict.php:171
+#: pro-features/plus/harris.benedict.php:215
+#: pro-features/plus/macronutrient.calculator.php:94
+#: pro-features/plus/macronutrient.calculator.php:198
+#: pro-features/plus/macronutrient.calculator.php:244
+msgid ""
+"Please ensure all relevant data to calculate calorie intake has been entered "
+"i.e. Activity Level, Date of Birth, Current Weight, Gender and Height."
+msgstr ""
+"Uistite sa, že ste zadali všetky relevantné údaje na výpočet príjmu kalórií, "
+"t.j. Úroveň aktivity, dátum narodenia, aktuálna hmotnosť, pohlavie a výška."
+
+#: pro-features/plus/harris.benedict.php:108
+#: pro-features/plus/macronutrient.calculator.php:119
+msgid "Total"
+msgstr "Celkom"
+
+#: pro-features/plus/harris.benedict.php:109
+#: pro-features/plus/macronutrient.calculator.php:120
+msgid "Breakfast"
+msgstr "Raňajky"
+
+#: pro-features/plus/harris.benedict.php:110
+#: pro-features/plus/macronutrient.calculator.php:121
+msgid "Lunch"
+msgstr "Obed"
+
+#: pro-features/plus/harris.benedict.php:111
+#: pro-features/plus/macronutrient.calculator.php:122
+msgid "Dinner"
+msgstr "Večera"
+
+#: pro-features/plus/harris.benedict.php:112
+#: pro-features/plus/macronutrient.calculator.php:123
+msgid "Snacks"
+msgstr "Niečo na zahryznutie"
+
+#: pro-features/plus/harris.benedict.php:247
+msgid "calories for weight loss are capped at "
+msgstr "kalórie pre zníženie hmotnosti sú obmedzené na"
+
+#: pro-features/plus/harris.benedict.php:249
+msgid "This can be modified within "
+msgstr "Toto môže byť zmenené v rámci"
+
+#: pro-features/plus/macronutrient.calculator.php:152
+msgid "Carbs"
+msgstr "Sacharidy"
+
+#: pro-features/plus/meta-fields/activate.php:99
+msgid "Cups of water drunk today?"
+msgstr ""
+
+#: pro-features/plus/meta-fields/activate.php:100
+msgid "Water"
+msgstr ""
+
+#: pro-features/plus/meta-fields/activate.php:102
+msgid "Cups"
+msgstr ""
+
+#: pro-features/plus/meta-fields/activate.php:114
+msgid "Did you stick to your diet?"
+msgstr ""
+
+#: pro-features/plus/meta-fields/activate.php:115
+msgid "Diet"
+msgstr ""
+
+#: pro-features/plus/meta-fields/functions.photos.php:127
+msgid "The user "
+msgstr ""
+
+#: pro-features/plus/meta-fields/functions.photos.php:127
+msgid "uploaded this photo of them for their entry on the"
+msgstr ""
+
+#: pro-features/plus/meta-fields/functions.photos.php:429
+msgid "Photos are only visible to you and administrators. "
+msgstr ""
+
+#: pro-features/plus/meta-fields/functions.photos.php:430
+msgid "Photos must be under"
+msgstr ""
+
+#: pro-features/plus/meta-fields/functions.photos.php:430
+msgid "or they will silently fail to upload."
+msgstr ""
+
+#: pro-features/plus/meta-fields/functions.photos.php:431
+msgid "A note about photos"
+msgstr ""
+
+#: pro-features/plus/meta-fields/functions.php:271
+#, fuzzy
+#| msgid "Please enter a valid figure for Kg"
+msgid "Please enter a value for"
+msgstr "Prosím zadajte platnú hodnotu pre kilogramy"
+
+#: pro-features/plus/meta-fields/functions.php:294
+#, fuzzy
+#| msgid "Please enter a valid figure for Kg"
+msgid "Please enter a number for"
+msgstr "Prosím zadajte platnú hodnotu pre kilogramy"
+
+#: pro-features/plus/meta-fields/functions.php:369
+#, fuzzy
+#| msgid "Recent Weight"
+msgid "Replace photo"
+msgstr "Nedávna váha"
+
+#: pro-features/plus/meta-fields/functions.php:369
+#, fuzzy
+#| msgid "Delete existing data"
+msgid "Select photo"
+msgstr "Vymazať existujúce dáta"
+
+#: pro-features/plus/meta-fields/functions.php:372
+msgid "Please select a photo (png or jpg) for"
+msgstr ""
+
+#: pro-features/plus/meta-fields/functions.php:400
+msgid "Existing photo for this date"
+msgstr ""
+
+#: pro-features/plus/meta-fields/functions.php:404
+#, fuzzy
+#| msgid "Delete existing data"
+msgid "Delete existing photo"
+msgstr "Vymazať existujúce dáta"
+
+#: pro-features/plus/meta-fields/functions.php:405
+#, fuzzy
+#| msgid "Delete existing data"
+msgid "Existing photo"
+msgstr "Vymazať existujúce dáta"
+
+#: pro-features/plus/meta-fields/hooks.php:16
+msgid "Key"
+msgstr ""
+
+#: pro-features/plus/photos.gallery.php:36
+msgid "No awards."
+msgstr ""
+
+#: pro-features/plus/photos.gallery.php:36
+msgid "It doesn't look you've uploaded any photos."
+msgstr ""
+
+#: pro-features/plus/photos.php:59
+#, fuzzy
+#| msgid "results were found for"
+msgid "No photos were found."
+msgstr "výsledky boli nájdené pre:"
+
+#: pro-features/plus/photos.php:76
+#, fuzzy
+#| msgid "Recent Weight"
+msgid "No recent photo found."
+msgstr "Nedávna váha"
+
+#: pro-features/plus/photos.php:460
+msgid "Don't show to public?"
+msgstr ""
+
+#: pro-features/plus/photos.php:463
+msgid ""
+"If the user has uploaded this as part of their Weight Tracker progress, they "
+"probably don't want it viewable on a public attachment page!"
+msgstr ""
+
+#: pro-features/plus/shortcode.wlt.php:30
+#, fuzzy
+#| msgid "This user has uploaded "
+msgid "You have uploaded"
+msgstr "Platnosť tejto licencie uplynula."
+
+#: pro-features/plus/shortcode.wlt.php:32
+msgid "photos"
+msgstr ""
+
+#: pro-features/plus/shortcode.wlt.php:39
+msgid "It looks like you haven't uploaded any photos yet"
+msgstr ""
+
+#: pro-features/plus/shortcode.wlt.php:68
+#, fuzzy
+#| msgid "Body Mass Index"
+msgid "BMI (Body Mass Index)"
+msgstr "Body Mass Index"
+
+#: pro-features/plus/shortcode.wlt.php:73
+msgid ""
+"The BMI (Body Mass Index) is used by the medical profession to quickly "
+"determine a person’s weight in regard to their height. From a straight "
+"forward calculation the BMI factor can be gained and may be used to "
+"determine if a person is underweight, of normal weight, overweight or obese."
+msgstr ""
+
+#: pro-features/plus/shortcode.wlt.php:80
+#, fuzzy
+#| msgid "Current BMI"
+msgid "Your current BMI is"
+msgstr "Aktuálny BMI"
+
+#: pro-features/plus/shortcode.wlt.php:86
+msgid ""
+"Before we can calculate your BMI, we need your current weight and height."
+msgstr ""
+
+#: pro-features/plus/shortcode.wlt.php:91
+msgid ""
+"To allow us to calculate this, we need your latest weight, date of birth, "
+"height and gender."
+msgstr ""
+
+#: pro-features/plus/shortcode.wlt.php:95
+msgid "BMR (Basal Metabolic Rate)"
+msgstr ""
+
+#: pro-features/plus/shortcode.wlt.php:99
+msgid ""
+"BMR is short for Basal Metabolic Rate. The Basal Metabolic Rate is the "
+"number of calories required to keep your body functioning at rest, also "
+"known as your metabolism. We calculate your BMR using formulas provided by "
+"www.diabetes.co.uk."
+msgstr ""
+
+#: pro-features/plus/shortcode.wlt.php:106
+#, fuzzy
+#| msgid "Current BMI"
+msgid "Your current BMR is"
+msgstr "Aktuálny BMI"
+
+#: pro-features/plus/shortcode.wlt.php:117
+msgid "Suggested Calorie Intake"
+msgstr ""
+
+#: pro-features/plus/shortcode.wlt.php:122
+msgid ""
+"Once we know your BMR (the number of calories to keep you functioning at "
+"rest), we can go on to give you suggestions on how to spread your calorie "
+"intake across the day. Firstly we split the figures into daily calorie "
+"intake to maintain weight and daily calorie intake to lose weight. Daily "
+"calorie intake to lose weight is calculated based on NHS advice – they "
+"suggest to lose 1 – 2lbs a week you should subtract 600 calories from your "
+"BMR. The two daily figures can be further broken down by recommending how to "
+"split calorie intake across the day i.e. breakfast, lunch, dinner and snacks."
+msgstr ""
+
+#: pro-features/plus/shortcode.wlt.php:139
+#, fuzzy
+#| msgid "Macronutrient Calculator"
+msgid "Macronutrients"
+msgstr "Macronutrient Kalkulačka"
+
+#: pro-features/plus/shortcode.wlt.php:146
+msgid ""
+"With calories calculated, the we can recommend how those calories should be "
+"split into Fats, Carbohydrates and Proteins.  Based on 2010 Dietary "
+"Guidelines for Americans we have split it in the following manner:"
+msgstr ""
+
+#: pro-features/plus/shortcode.wlt.php:149
+msgid "of calories, Fat"
+msgstr ""
+
+#: pro-features/plus/shortcode.wlt.php:151
+#, fuzzy
+#| msgid "Proteins"
+msgid "and Protein"
+msgstr "Proteíny"
+
+#: pro-features/shortcode-chart.php:56
+msgid "No weight data was found for the specified user."
+msgstr "Pre zadaného používateľa neboli nájdené žiadne údaje o hmotnosti."
+
+#: pro-features/shortcode-if.php:17
+msgid ""
+"To use this shortcode, you must specify content between opening and closing "
+"tags<br /><br />e.g. [wlt-if]something to show if IF is true[/wlt-if]"
+msgstr ""
+"Ak chcete použiť tento shorcode, musíte zadať obsah medzi otváracou a "
+"záverečnou značkou <br /> <br /> napr. [wlt-if] niečo, čo sa ukáže, ak je "
+"pravda IF [/ wlt-if]"
+
+#: pro-features/shortcode-if.php:41
+msgid "Unfortunately the field you specified is for Pro Plus licenses only."
+msgstr "Bohužiaľ zadané pole je len pre licencie Pro Plus."
+
+#: pro-features/shortcode-progress-bar.php:25
+#: pro-features/widget-progress.php:25
+msgid "towards your target of {t}."
+msgstr "smerom k cieľu {t}."
+
+#: pro-features/shortcode-progress-bar.php:117
+msgid "Please add a weight entry to see your progress."
+msgstr "Pridajte záznam o hmotnosti, aby ste videli pokrok."
+
+#: pro-features/shortcode-progress-bar.php:121
+msgid "Please enter a target weight to see your progress."
+msgstr "Zadajte cieľovú váhu, aby ste videli pokrok."
+
+#: pro-features/shortcode-progress-bar.php:125
+msgid ""
+"This shortcode can not be used as Target weights have been disabled in the "
+"plugin's settings."
+msgstr ""
+"Tento krátky kód nemožno použiť, pretože v nastaveniach doplnkov boli "
+"zablokované ciele."
+
+#: pro-features/shortcode-reminders.php:29
+msgid ""
+"Please remember to enter your weight and measurements for today as well as "
+"your target weight."
+msgstr "Nezabudnite uviesť váhu a merania pre dnešok, ako aj cieľovú váhu."
+
+#: pro-features/shortcode-reminders.php:29
+msgid ""
+"Please remember to enter your weight for today as well as your target weight."
+msgstr "Nezabudnite uviesť váhu pre dnešok, ako aj cieľovú váhu."
+
+#: pro-features/shortcode-reminders.php:32
+#, fuzzy
+#| msgid "Please remember to enter your weight for today."
+msgid "Please remember to enter your target weight."
+msgstr "Nezabudnite uviesť váhu pre dnešok."
+
+#: pro-features/shortcode-reminders.php:35
+msgid "Please remember to enter your weight and measurements for today."
+msgstr "Nezabudnite uviesť váhu a merania pre dnešok."
+
+#: pro-features/shortcode-reminders.php:35
+msgid "Please remember to enter your weight for today."
+msgstr "Nezabudnite uviesť váhu pre dnešok."
+
+#: pro-features/shortcode-stats.php:8 pro-features/shortcode-stats.php:119
+msgid "Stats disabled"
+msgstr "Štatistiky zakázané"
+
+#: pro-features/shortcode-stats.php:34 pro-features/user-groups.php:429
+msgid "Name"
+msgstr "Meno"
+
+#: pro-features/shortcode-stats.php:35
+msgid "Weight Difference"
+msgstr "Rozdiel hmotnosti"
+
+#: pro-features/shortcode-stats.php:41
+msgid "No of entries"
+msgstr "Počet záznamov"
+
+#: pro-features/shortcode-stats.php:112
+msgid ""
+"The league table has not been generated yet. This is a scheduled task so "
+"please check back in 15 minutes or try pressing the button below."
+msgstr ""
+"Ligová tabuľka ešte nebola vygenerovaná. Toto je naplánovaná úloha, preto "
+"skontrolujte o 15 minút alebo skúste stlačiť tlačidlo nižšie."
+
+#: pro-features/shortcode-stats.php:146
+msgid "Lost"
+msgstr "Zhodené"
+
+#: pro-features/shortcode-stats.php:146
+msgid "Gained"
+msgstr "Nabraté"
+
+#: pro-features/shortcode-various.php:14
+msgid "Height needed"
+msgstr "Potrebná výška"
+
+#: pro-features/shortcode-various.php:24
+msgid "Weight needed"
+msgstr "Potrebná váha"
+
+#: pro-features/user-groups.php:101 pro-features/user-groups.php:130
+msgid "Group"
+msgstr ""
+
+#: pro-features/user-groups.php:136
+msgid "Add / remove Groups"
+msgstr ""
+
+#: pro-features/user-groups.php:428
+msgid "ID"
+msgstr ""
+
+#: pro-features/user-groups.php:437
+#, fuzzy
+#| msgid "Weight Difference"
+msgid "Total Weight Difference"
+msgstr "Rozdiel hmotnosti"
+
+#: pro-features/user-groups.php:501
+msgid "Group ID not found"
+msgstr ""
+
+#: pro-features/user-groups.php:513
+msgid "No Group"
+msgstr ""
+
+#: pro-features/user-preferences.php:8
+msgid "You must be logged in to edit your settings."
+msgstr "Ak chcete upraviť nastavenia, musíte byť prihlásení."
+
+#: pro-features/user-preferences.php:29
+msgid "About You:"
+msgstr "O vás:"
+
+#: pro-features/user-preferences.php:30
+msgid "Your height:"
+msgstr "Vaša výška:"
+
+#: pro-features/user-preferences.php:31
+#, fuzzy
+#| msgid "Which unit would you like to record your weight in:"
+msgid "In which unit would you like to record your weight:"
+msgstr "V akej jednotke chcete zaznamenať svoju váhu:"
+
+#: pro-features/user-preferences.php:32
+#, fuzzy
+#| msgid "Which unit would you like to record your measurements in:"
+msgid "In which unit would you like to record your measurements:"
+msgstr "V akej jednotke chcete zaznamenať svoje merania"
+
+#: pro-features/user-preferences.php:33
+msgid "Display dates in the following formats:"
+msgstr "Zobrazenie dátumov v nasledujúcich formátoch:"
+
+#: pro-features/user-preferences.php:34
+#, fuzzy
+#| msgid "Gender"
+msgid "Your Gender:"
+msgstr "Pohlavie"
+
+#: pro-features/user-preferences.php:35
+#, fuzzy
+#| msgid "Date of Birth"
+msgid "Your Date of Birth:"
+msgstr "Dátum narodenia"
+
+#: pro-features/user-preferences.php:36
+#, fuzzy
+#| msgid "Activity Level"
+msgid "Your Activity Level:"
+msgstr "Úroveň aktivity"
+
+#: pro-features/user-preferences.php:37
+#, fuzzy
+#| msgid "Your height:"
+msgid "Your aim:"
+msgstr "Vaša výška:"
+
+#: pro-features/user-preferences.php:43
+msgid "About User:"
+msgstr "O používateľovi"
+
+#: pro-features/user-preferences.php:44
+msgid "Height:"
+msgstr "Výška:"
+
+#: pro-features/user-preferences.php:45
+msgid "Weight unit:"
+msgstr "Jednotka hmotnosti:"
+
+#: pro-features/user-preferences.php:46
+msgid "Measurements unit:"
+msgstr "Jednotka meraní:"
+
+#: pro-features/user-preferences.php:47
+msgid "Date format:"
+msgstr "Formát dátumu:"
+
+#: pro-features/user-preferences.php:48
+#, fuzzy
+#| msgid "Gender"
+msgid "Gender:"
+msgstr "Pohlavie"
+
+#: pro-features/user-preferences.php:49
+#, fuzzy
+#| msgid "Date of Birth"
+msgid "Date of Birth:"
+msgstr "Dátum narodenia"
+
+#: pro-features/user-preferences.php:50
+#, fuzzy
+#| msgid "Activity Level"
+msgid "Activity Level:"
+msgstr "Úroveň aktivity"
+
+#: pro-features/user-preferences.php:51
+msgid "Aim:"
+msgstr ""
+
+#: pro-features/user-preferences.php:199
+msgid "Save Settings"
+msgstr "Uložiť nastavenia"
+
+#: pro-features/user-preferences.php:207
+msgid "Delete existing data"
+msgstr "Vymazať existujúce dáta"
+
+#: pro-features/user-preferences.php:213
+msgid ""
+"The button below allows you to clear your existing weight history. Confirm:"
+msgstr ""
+"Tlačidlo nižšie vám umožňuje vymazať existujúcu históriu hmotnosti. "
+"potvrdenie:"
+
+#: pro-features/user-preferences.php:216
+msgid "DELETE ALL DATA"
+msgstr "VYMAZAŤ VŠETKY DÁTA"
+
+#: pro-features/user-preferences.php:218
+msgid "Delete"
+msgstr "Vymazať"
+
+#: pro-features/widget-chart.php:12
+#, fuzzy
+#| msgid "Weight Loss Tracker - Chart"
+msgid "Weight Tracker - Chart"
+msgstr "Sledovanie úbytku hmotnosti - graf"
+
+#: pro-features/widget-chart.php:13
+msgid "Display a chart to see your current progress."
+msgstr "Zobrazte graf zobrazujúci aktuálny pokrok."
+
+#: pro-features/widget-chart.php:74
+msgid "A pretty graph shall appear once you have recorded several weights."
+msgstr "Po nahratí niekoľkých váh sa zobrazí pekný graf."
+
+#: pro-features/widget-chart.php:117
+msgid "Maximum number of plot points on chart"
+msgstr "Maximálny počet bodov na grafe"
+
+#: pro-features/widget-chart.php:126 pro-features/widget-form.php:102
+msgid "Message to display if not logged in"
+msgstr "Správa na zobrazenie, ak nie ste prihlásení"
+
+#: pro-features/widget-chart.php:129 pro-features/widget-form.php:105
+msgid ""
+"By default the widget is hidden if the user is not logged in. If you wish, "
+"you can display a message to the visitor instead."
+msgstr ""
+"V predvolenom nastavení je widget skrytý, ak nie je používateľ prihlásený. "
+"Ak chcete, môžete namiesto toho zobraziť správu návštevníkovi."
+
+#: pro-features/widget-chart.php:131
+msgid "ID of user (leave blank to show chart for current user)"
+msgstr ""
+"ID užívateľa (nechajte prázdne zobrazenie grafu pre aktuálneho používateľa)"
+
+#: pro-features/widget-chart.php:134
+msgid ""
+"Note: By default, the chart will be displayed in the weight unit chosen by "
+"the logged in user. If not specfied the plugin default will be used."
+msgstr ""
+"Poznámka: V predvolenom nastavení sa graf zobrazí v jednotke hmotnosti "
+"vybranej prihláseným užívateľom. Ak nie je špecifikované, použije sa "
+"predvolená hodnota"
+
+#: pro-features/widget-chart.php:137
+msgid "Hide Measurements (Pro)?"
+msgstr "Skryť merania(Pro)?"
+
+#: pro-features/widget-form.php:12
+#, fuzzy
+#| msgid "Weight Loss Tracker - Form"
+msgid "Weight Tracker - Form"
+msgstr "Sledovanie úbytku hmotnosti - formulár"
+
+#: pro-features/widget-form.php:13
+msgid ""
+"Display a quick entry form for logged in users to record their weight for "
+"today."
+msgstr ""
+"Zobrazte formulár pre prihlásených používateľov, aby ste ich zaznamenali "
+"dnes."
+
+#: pro-features/widget-form.php:17
+msgid "Your weight today"
+msgstr "Vaša dnešná váha"
+
+#: pro-features/widget-form.php:81
+msgid "Allow user to specify a date?"
+msgstr "Povoliť užívateľovi zadať dátum?"
+
+#: pro-features/widget-form.php:83
+msgid "No. Automatically set to today's date"
+msgstr "Nie. Automaticky nastaviť dnešný dátum"
+
+#: pro-features/widget-form.php:84
+msgid "Allow user to specify a date"
+msgstr "Povoliť užívateľovi zadať dátum?"
+
+#: pro-features/widget-form.php:88
+msgid "Hide measurements (Pro)?"
+msgstr "Skryť merania (Pro)?"
+
+#: pro-features/widget-form.php:95
+#, fuzzy
+#| msgid "Hide Measurements (Pro)?"
+msgid "Hide Meta Fields (Pro)?"
+msgstr "Skryť merania(Pro)?"
+
+#: pro-features/widget-form.php:107
+msgid "Redirect URL (Defaults to current page)"
+msgstr "Adresa URL presmerovania (predvolené na aktuálnu stránku)"
+
+#: pro-features/widget-form.php:110
+msgid ""
+"Specify where the user should be redirected to after completing the form. "
+"Note: The URL must be within the site domain."
+msgstr ""
+"Zadajte, kam by mal byť používateľ po vyplnení formulára presmerovaný. "
+"Poznámka: Adresa URL musí byť v doméne lokality."
+
+#: pro-features/widget-progress.php:12
+#, fuzzy
+#| msgid "Weight Loss Tracker - Progress Bar"
+msgid "Weight Tracker - Progress Bar"
+msgstr "Sledovanie úbytku hmotnosti"
+
+#: pro-features/widget-progress.php:13
+msgid "A progress bar to indicate weight loss towards target."
+msgstr "Zobrazenie progresu k cieľu"
+
+#: pro-features/widget-progress.php:17
+#, fuzzy
+#| msgid "Weight loss progress"
+msgid "Weight Progress"
+msgstr "Progres úbytku hmotnosti"
+
+#: pro-features/widget-progress.php:80
+msgid "Chart type"
+msgstr "Typ grafu"
+
+#: pro-features/widget-progress.php:87
+msgid "Stroke Width"
+msgstr "Hrúbka čiary"
+
+#: pro-features/widget-progress.php:95
+msgid "Stroke Colour"
+msgstr "Farba čiary"
+
+#: pro-features/widget-progress.php:99
+msgid "Trail Width"
+msgstr "Šírka trasy"
+
+#: pro-features/widget-progress.php:107
+msgid "Trail Colour"
+msgstr "Farba trasy"
+
+#: pro-features/widget-progress.php:111
+msgid "Text Colour"
+msgstr "Farba textu"
+
+#: pro-features/widget-progress.php:115
+#, fuzzy
+#| msgid "Animation Duration"
+msgid "Animation Duration"
+msgstr "Trvanie animácie"
+
+#: pro-features/widget-progress.php:123
+msgid "Text to be displayed under bar. Use {t} to display target weight."
+msgstr ""
+"Text, ktorý sa má zobraziť pod čiarou. Použite {t} na zobrazenie cieľovej "
+"hmotnosti."
+
+#. Description of the plugin/theme
+msgid ""
+"Allow your users to track their weight, measurements and other pieces of "
+"custom data. Display in charts, tables, shortcodes and widgets. Manage their "
+"data, issue awards, email notifications, etc! Provide advanced data on Body "
+"Mass Index (BMI), Basal Metabolic Rate (BMR), Calorie intake, Harris "
+"Benedict Formula, Macronutrients Calculator and more."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "YeKen"
+msgstr "YeKen"
+
+#. Author URI of the plugin/theme
+msgid "https://www.YeKen.uk"
+msgstr "https://www.YeKen.uk"
+
+#~ msgid "Help"
+#~ msgstr "Pomoc"
 
 #~ msgid "Our road map"
 #~ msgstr "Naša road mapa"
@@ -1921,802 +3706,13 @@ msgstr "Zatiaľ ste nezadali údaje o váhe."
 #~ msgstr ""
 #~ "Nižšie je niekoľko snímok obrazovky z obrazoviek používateľských údajov"
 
-#~ msgid "added"
-#~ msgstr "Pridané"
-
-#~ msgid "updated"
-#~ msgstr "aktualizované"
-
-#~ msgid "their weight / measurements for "
-#~ msgstr "ich hmotnosť / merania pre"
-
-#~ msgid "their target to"
-#~ msgstr "k ich cieľu"
-
-#~ msgid "Weight Loss Tracker update for"
-#~ msgstr "Aktualizácia sledovania úbytku hmotnosti pre"
-
-#~ msgid "Hello"
-#~ msgstr "Ahoj"
-
-#~ msgid ""
-#~ "Just a quick email to let you know that \"{displayname}\" has {mode} "
-#~ "{type}:"
-#~ msgstr "Len rýchly email že \"{displayname}\" má {mode} {type}:"
-
-#~ msgid "{data}"
-#~ msgstr "{data}"
-
-#~ msgid "Thank you!"
-#~ msgstr "Ďakujem!"
-
-#~ msgid "No data was found for the given criteria."
-#~ msgstr "Pre dané kritériá neboli zistené žiadne údaje."
-
-#~ msgid "lbs only"
-#~ msgstr "len libry"
-
-#~ msgid "Difference from start"
-#~ msgstr "Rozdiel od začiatku"
-
-#~ msgid "No height"
-#~ msgstr "Žiadna výška"
-
-#~ msgid "<strong>All of the features that come with a standard <a href=\""
-#~ msgstr ""
-#~ "<strong>Všetky funkcie, ktoré prichádzajú so štandardným <a href = \""
-
-#~ msgid ""
-#~ "<strong>Basal Metabolic Rate (BMR) calculations per user</strong>. "
-#~ "Shortcodes and extended admin screens to display a user's BMR. For "
-#~ "further information on BMR and how it is calculated visit <a href=\""
-#~ msgstr ""
-#~ "<strong> Výpočty bazálnej metabolickej rýchlosti (BMR) na používateľa </ "
-#~ "strong>. Shortcodes a rozšírené administrátroské pohľady na zobrazenie "
-#~ "BMR používateľa. Ďalšie informácie o BMR a ako sa vypočítava, navštívte "
-#~ "<a href = \""
-
-#~ msgid ""
-#~ "<strong>Harris Benedict formula</strong>. Shortcodes and extended admin "
-#~ "screens to a view a person's calorie intake required to maintain and lose "
-#~ "weight. For further information on Harris Benedict Formula and how it is "
-#~ "calculated visit <a href=\""
-#~ msgstr ""
-#~ "<strong> Vzorec Harris Benedict </ strong>. Shortcodes a rozšírené "
-#~ "administrátroské pohľady na zobrazenie osobného príjmu kalórií potrebného "
-#~ "na udržanie a stratu hmotnosti. Pre ďalšie informácie o zložení Harris "
-#~ "Benedict a ako sa vypočítava, navštívte <a href = \""
-
-#~ msgid ""
-#~ "<strong>Recommended calorie intake per meal time</strong>. Shortcodes and "
-#~ "extended admin screens to recommend how a person should split their daily "
-#~ "calorie intake across meals. For further information on how this is "
-#~ "calculated please visit <a href=\""
-#~ msgstr ""
-#~ "<strong> Odporúčaný príjem kalórií pre jedlo </strong>. Shortcodes a "
-#~ "rozšírené administrátroské pohľady odporúčajú, ako by mal človek rozdeliť "
-#~ "denný príjem kalórií na jedlo. Ďalšie informácie o tom, ako sa to "
-#~ "vypočíta, nájdete na stránke <a href = \""
-
-#~ msgid ""
-#~ "<strong>Macronutrients Calculator</strong>. Shortcodes and extended admin "
-#~ "screens to recommend how their calorie consumption should be split into "
-#~ "fats, carbohydrates and proteins. For further information on the "
-#~ "Macronutrients Calculator and how these calculations are performed please "
-#~ "visit <a href=\""
-#~ msgstr ""
-#~ "<strong> Kalkulačka makroživín </strong>. Shortcodes a rozšírené "
-#~ "administrátroské pohľady, ktoré odporúčajú, aby sa ich spotreba kalórií "
-#~ "rozdelila na tuky, sacharidy a bielkoviny. Ďalšie informácie o kalkulačke "
-#~ "Macronutrients ao tom, ako sa tieto výpočty vykonávajú, nájdete na "
-#~ "stránke <a href = \""
-
-#~ msgid ""
-#~ "<strong>Additional user preference fields</strong>. Additional user "
-#~ "preference fields and shortcodes to display them: Activity Level, Date of "
-#~ "Birth and Gender."
-#~ msgstr ""
-#~ "<strong> Ďalšie polia predvolieb používateľov </strong>. Ďalšie polia "
-#~ "predvolieb používateľov a shortcodes na ich zobrazenie: úroveň aktivity, "
-#~ "dátum narodenia a pohlavie."
-
-#~ msgid ""
-#~ "<strong>Access your user's data.</strong> Admin can view, edit and delete "
-#~ "user data. Various tools for viewing user's graphs, tables of entries, "
-#~ "BMI, targets, weight lost / gained stats and much more."
-#~ msgstr ""
-#~ "<strong> Prístup k údajom používateľa. </strong> Správca môže zobrazovať, "
-#~ "upravovať a odstraňovať údaje používateľa. Rôzne nástroje na prezeranie "
-#~ "užívateľských grafov, tabuľky záznamov, BMI, ciele, stratené / získané "
-#~ "štatistiky a mnoho ďalších."
-
-#~ msgid ""
-#~ "<strong>Measurements.</strong> Support for recording measurements like "
-#~ "Hip, Waist, Leg, Bicep, etc. Displayed on charts and tables."
-#~ msgstr ""
-#~ "<strong> Merania. </ strong> Podpora nahrávania meraní, ako sú bedrá, "
-#~ "pás, nohy, biceps atď. Zobrazené na grafoch a tabuľkách."
-
-#~ msgid ""
-#~ "<strong>Export all data or a particular user.</strong> Export in JSON or "
-#~ "CSV format."
-#~ msgstr ""
-#~ "<strong> Exportovať všetky údaje alebo určitého používateľa. </strong> "
-#~ "Exportovať vo formáte JSON alebo CSV."
-
-#~ msgid ""
-#~ "<strong>BMI.</strong> Allows a user to specify their height. Once "
-#~ "specified, their BMI is displayed next to each weight entry. There is "
-#~ "also a shortcode to render the latest BMI."
-#~ msgstr ""
-#~ "<strong> BMI. </strong> Umožňuje užívateľovi určiť výšku. Po zadaní sa "
-#~ "ich BMI zobrazí vedľa každej položky váhy. K dispozícii je tiež krátky "
-#~ "kód na vykreslenie najnovšieho BMI."
-
-#~ msgid ""
-#~ "<strong>Email notifications.</strong> Receive email notifications when a "
-#~ "person updates their target or adds / edits a weight."
-#~ msgstr ""
-#~ "<strong> E-mailové upozornenia. </strong> Prijímať upozornenia e-mailom, "
-#~ "keď osoba aktualizuje svoj cieľ alebo pridáva / upravuje váhu."
-
-#~ msgid ""
-#~ "<strong>Overall user stats.</strong> Shortcodes that allow you to display "
-#~ "the total lost / gained for the community and another to display a league "
-#~ "table."
-#~ msgstr ""
-#~ "<strong> Celkové štatistiky používateľa. </strong> Krátke kódy, ktoré vám "
-#~ "umožňujú zobraziť celkovú stratu / získanie pre komunitu a druhú pre "
-#~ "zobrazenie tabuľky ligy."
-
-#~ msgid ""
-#~ "<strong>Widgets.</strong> Widgets that allow you to display the graph and "
-#~ "quick weight entry form within any widget area."
-#~ msgstr ""
-#~ "<strong> Widgety. </ strong> Widgety, ktoré vám umožnia zobraziť graf a "
-#~ "formulár rýchleho vkladu v ktorejkoľvek oblasti miniaplikácií."
-
-#~ msgid ""
-#~ "<strong>Chart and form Shortcodes.</strong> That allow you to display the "
-#~ "graph and quick weight entry form by placing a shortcode on any post or "
-#~ "page."
-#~ msgstr ""
-#~ "<strong> Graf a formuláre Shortcodes. </strong> Umožňuje zobraziť graf a "
-#~ "formulár rýchleho zadávania váhy umiestnením krátkeho kódu na akýkoľvek "
-#~ "príspevok alebo stránku."
-
-#~ msgid ""
-#~ "<strong>Progress Bar shortcode.</strong> A shortcode that visually "
-#~ "displays the logged in user's progress towards their target"
-#~ msgstr ""
-#~ "<strong> Shortcode pre zobrazenie progressu </strong> Krátky kód, ktorý "
-#~ "vizuálne zobrazuje pokrok prihláseného používateľa smerom k cieľu"
-
-#~ msgid ""
-#~ "<strong>Reminder shortcode.</strong> A shortcode that can be used to "
-#~ "remind the user to enter their target or weight for today."
-#~ msgstr ""
-#~ "<strong> Shortcode s pripomienkami </strong> Skrátený kód, ktorý možno "
-#~ "použiť na pripomenutie používateľa na zadanie cieľa alebo váhy pre dnešok."
-
-#~ msgid ""
-#~ "<strong>Message shortcode</strong> A shortcode that allows you to "
-#~ "congratulate a user when they lose weight x number of times. It also "
-#~ "provides the opposite allowing you to provide encouragement when someone "
-#~ "gains weight."
-#~ msgstr ""
-#~ "<strong>Shortcode pre správy </strong> Skrátený kód, ktorý vám umožní "
-#~ "zablahoželať používateľovi, keď zhodí x počet krát. Poskytuje aj opačnú "
-#~ "možnosť, ktorá vám umožňuje poskytnúť povzbudenie, keď niekto naberie na "
-#~ "váhe"
-
-#~ msgid ""
-#~ "<strong>Text Shortcodes.</strong> Additional shortcodes for earliest and "
-#~ "most recent dates entered."
-#~ msgstr ""
-#~ "<strong> Textové shortcodes </ strong> Zadali ste ďalšie krátke kódy pre "
-#~ "najskoršie a posledné dátumy."
-
-#~ msgid ""
-#~ "<strong>Progress Bar shortcode / widget.</strong> Display a user's "
-#~ "progress towards their weight target."
-#~ msgstr ""
-#~ "<strong> Shortcode pre zobrazenie progressu </strong> Krátky kód, ktorý "
-#~ "vizuálne zobrazuje pokrok prihláseného používateľa smerom k cieľu"
-
-#~ msgid ""
-#~ "<strong>Reminder shortcode.</strong> Display a reminder to enter their "
-#~ "weight for the given day or enter a target."
-#~ msgstr ""
-#~ "<strong> Shortcode s pripomienkami </strong> Skrátený kód, ktorý možno "
-#~ "použiť na pripomenutie používateľa na zadanie cieľa alebo váhy pre dnešok."
-
-#~ msgid ""
-#~ "<strong>Admin: View / Delete user data</strong>. Admin will be able to "
-#~ "view and delete existing user data."
-#~ msgstr ""
-#~ "<strong>Admin: Zobraziť / Vymazať používateľské data</strong>. Admin  "
-#~ "bude môcť zobraziť a odstrániť existujúce používateľské údaje."
-
-#~ msgid ""
-#~ "<strong>User preferences</strong>. If enabled, the user will be able to "
-#~ "select which unit they wish to store their weight in Metric or Imperial. "
-#~ "They will also be able to specify date format and clear all their weight "
-#~ "data."
-#~ msgstr ""
-#~ "<strong> Predvoľby používateľa </ strong>. Ak je táto možnosť povolená, "
-#~ "používateľ si bude môcť vybrať, akú jednotku si praje ukladať svoju váhu "
-#~ "v Metric alebo Imperial. Budú tiež schopní určiť formát dátumu a vymazať "
-#~ "všetky údaje o hmotnosti."
-
-#~ msgid ""
-#~ "<strong>Bar Charts</strong>. Fancy something different to a line chart? "
-#~ "The plugin will also support Bar Charts."
-#~ msgstr ""
-#~ "<strong> Bar  grafy </strong>. Niečo iné ako priamka? Plugin bude tiež "
-#~ "podporovať grafy."
-
-#~ msgid ""
-#~ "<strong>Decimals</strong>. Decimals will be allowed weight in Pounds only "
-#~ "or Kg modes."
-#~ msgstr ""
-#~ "<Strong>  Desatinné miesta </strong>. Desatinné miesta budú mať povolenú "
-#~ "hmotnosť iba v Pounds alebo v kilogramoch."
-
-#~ msgid ""
-#~ "<strong>Delete existing entry</strong>. A logged in user will be able to "
-#~ "delete or edit an existing weight entry."
-#~ msgstr ""
-#~ "<strong> Odstrániť existujúci záznam </strong>. Prihlásený používateľ "
-#~ "bude môcť odstrániť alebo upraviť existujúci záznam o hmotnosti."
-
-#~ msgid ""
-#~ "<strong>Better Tables.</strong>. Data tables in front end and admin will "
-#~ "support paging and sorting."
-#~ msgstr ""
-#~ "<strong> Lepšie tabuľky. </strong>. Tabuľky údajov budú podporovať "
-#~ "stránkovanie a triedenie."
-
-#~ msgid ""
-#~ "<strong>Admin: Extra Settings</strong>. Extra settings to customise the "
-#~ "plugin will be added e.g. number of plot points on graph, rows per page, "
-#~ "etc."
-#~ msgstr ""
-#~ "<strong>Admin: Extra Nastavenia</strong>. Budú pridané ďalšie nastavenia "
-#~ "pre prispôsobenie doplnku, napr. počet krivkových bodov na grafe, riadkov "
-#~ "na stránku atď."
-
-#, fuzzy
-#~| msgid "Measurements"
-#~ msgid "Measurements are in"
-#~ msgstr "Rozmery"
-
-#~ msgid "cm"
-#~ msgstr "cm"
-
-#~ msgid "First entry"
-#~ msgstr "Prvý záznam"
-
-#, fuzzy
-#~| msgid "Username"
-#~ msgid "User"
-#~ msgstr "Meno užívateľa"
-
-#, fuzzy
-#~| msgid "Weight Difference"
-#~ msgid "Difference"
-#~ msgstr "Rozdiel hmotnosti"
-
-#~ msgid "Body Mass Index"
-#~ msgstr "Body Mass Index"
-
-#~ msgid "Are you sure you want to delete the row?"
-#~ msgstr "Ste si istý, že chcete vymazať tento riadok?"
-
-#~ msgid "Unfortunately there was an error deleting the row."
-#~ msgstr "Bohužiaľ sa vyskytla chyba pri mazaní riadka."
-
-#, fuzzy
-#~| msgid "Search: "
-#~ msgid "Search"
-#~ msgstr "Hľadanie"
-
-#~ msgid ""
-#~ "Enter a user's email address, display name or username and click Search."
-#~ msgstr ""
-#~ "Zadajte e-mailovú adresu používateľa, zobrazované meno alebo "
-#~ "používateľské meno a kliknite na tlačidlo Hľadať."
-
-#, fuzzy
-#~| msgid "Recent Weight"
-#~ msgid "Most Recent Photo"
-#~ msgstr "Nedávna váha"
-
-#, fuzzy
-#~| msgid "No. of Entries"
-#~ msgid "No. of photos: "
-#~ msgstr "Počet záznamov"
-
-#, fuzzy
-#~| msgid "View all data"
-#~ msgid "View all"
-#~ msgstr "Zobraziť všetky dáta"
-
-#~ msgid "User Information"
-#~ msgstr "Informácie o používateľovi"
-
-#~ msgid "Latest Weight"
-#~ msgstr "Posledná váha"
-
-#~ msgid "Diff. from Start"
-#~ msgstr "Rozdiel od začiatku"
-
-#~ msgid "Diff. from Target"
-#~ msgstr "Rozdiel od cieľa"
-
-#~ msgid "Current BMI"
-#~ msgstr "Aktuálny BMI"
-
-#~ msgid "No height specified"
-#~ msgstr "Nebola zadaná výška"
-
-#~ msgid "Gender"
-#~ msgstr "Pohlavie"
-
-#~ msgid "Activity Level"
-#~ msgstr "Úroveň aktivity"
-
-#~ msgid "Date of Birth"
-#~ msgstr "Dátum narodenia"
-
-#~ msgid "BMR"
-#~ msgstr "BMR"
-
-#~ msgid "Missing data"
-#~ msgstr "Chýbajúce dáta"
-
-#~ msgid "Add Entry"
-#~ msgstr "Pridajte záznam"
-
-#~ msgid "Edit Target"
-#~ msgstr "Upraviť cieľ"
-
-#~ msgid "Export Data"
-#~ msgstr "Exportovať dáta"
-
-#~ msgid "Delete Cache"
-#~ msgstr "Vymazať Cache"
-
-#~ msgid "Delete Cache for this user"
-#~ msgstr "Vymazať vyrovnávaciu pamäť pre tohto používateľa"
-
-#~ msgid "Delete ALL data for this user"
-#~ msgstr "Vymazať všetky dáta tohto používateľa"
-
-#~ msgid "Are you sure you wish to remove the data for this user?"
-#~ msgstr "Naozaj chcete odstrániť všetky údaje tohto používateľa?"
-
-#~ msgid "Back"
-#~ msgstr "Späť"
-
-#~ msgid "WordPress Record"
-#~ msgstr "WordPress záznam"
-
 #~ msgid "Error: The User's ID was missing..."
 #~ msgstr "Chyba: Chýba ID používateľa ..."
-
-#~ msgid "Cm"
-#~ msgstr "cm"
-
-#~ msgid "Add Height for BMI"
-#~ msgstr "Pridajte výšku pre BMI"
-
-#~ msgid "Underweight"
-#~ msgstr "Podváha"
-
-#~ msgid "Healthy"
-#~ msgstr "Zdravý"
-
-#~ msgid "Overweight"
-#~ msgstr "Nadváha"
-
-#~ msgid "Heavily Overweight"
-#~ msgstr "Veľmi veľká nadváha"
-
-#~ msgid "Female"
-#~ msgstr "Žena"
-
-#~ msgid "Male"
-#~ msgstr "Muž"
-
-#~ msgid "Little / No Exercise"
-#~ msgstr "Málo / Žiadne cvičenie"
-
-#~ msgid "Light Exercise"
-#~ msgstr "Ľahké cvičenie"
-
-#~ msgid "Moderate Exercise (3-5 days a week)"
-#~ msgstr "Mierne cvičenie (3-5 dní v týždni)"
-
-#~ msgid "Very Active (6-7 days a week)"
-#~ msgstr "Veľmi aktívny (6-7 dní v týždni)"
-
-#~ msgid "Extra Active (very active & physical job)"
-#~ msgstr "Extra aktívny (veľmi aktívna a fyzická práca)"
-
-#, fuzzy
-#~| msgid "No height"
-#~ msgid "Lose weight"
-#~ msgstr "Žiadna výška"
-
-#, fuzzy
-#~| msgid "Add a new weight"
-#~ msgid "Gain weight"
-#~ msgstr "Pridať novú váhu"
-
-#~ msgid "Not Specified"
-#~ msgstr "Nešpecifikované"
-
-#~ msgid "Error: The user does not appear to exist"
-#~ msgstr "Chyba: Používateľ sa nezdá, že existuje"
-
-#~ msgid "View weight entries"
-#~ msgstr "Zobrazenie záznamov hmotnosti"
-
-#~ msgid "No Gender specified"
-#~ msgstr "Nešpecifikované pohlavie"
-
-#~ msgid "No Date of Birth specified or too young"
-#~ msgstr "Dátum narodenia nie je špecifikovaný alebo je príliš mladý"
-
-#~ msgid "No Height specified"
-#~ msgstr "Nebola zadaná výška"
-
-#~ msgid "No Weight entered"
-#~ msgstr "Nebola zadaná váha"
-
-#~ msgid "Maintain"
-#~ msgstr "Zachovávať"
-
-#~ msgid "Lose"
-#~ msgstr "Stratiť"
-
-#~ msgid ""
-#~ "Please ensure all relevant data to calculate calorie intake has been "
-#~ "entered i.e. Activity Level, Date of Birth, Current Weight, Gender and "
-#~ "Height."
-#~ msgstr ""
-#~ "Uistite sa, že ste zadali všetky relevantné údaje na výpočet príjmu "
-#~ "kalórií, t.j. Úroveň aktivity, dátum narodenia, aktuálna hmotnosť, "
-#~ "pohlavie a výška."
-
-#~ msgid "Total"
-#~ msgstr "Celkom"
-
-#~ msgid "Breakfast"
-#~ msgstr "Raňajky"
-
-#~ msgid "Lunch"
-#~ msgstr "Obed"
-
-#~ msgid "Dinner"
-#~ msgstr "Večera"
-
-#~ msgid "Snacks"
-#~ msgstr "Niečo na zahryznutie"
-
-#~ msgid "calories for weight loss are capped at "
-#~ msgstr "kalórie pre zníženie hmotnosti sú obmedzené na"
-
-#~ msgid "This can be modified within "
-#~ msgstr "Toto môže byť zmenené v rámci"
-
-#~ msgid "Carbs"
-#~ msgstr "Sacharidy"
-
-#, fuzzy
-#~| msgid "Body Mass Index"
-#~ msgid "BMI (Body Mass Index)"
-#~ msgstr "Body Mass Index"
-
-#, fuzzy
-#~| msgid "Current BMI"
-#~ msgid "Your current BMI is"
-#~ msgstr "Aktuálny BMI"
-
-#, fuzzy
-#~| msgid "Current BMI"
-#~ msgid "Your current BMR is"
-#~ msgstr "Aktuálny BMI"
-
-#, fuzzy
-#~| msgid "Macronutrient Calculator"
-#~ msgid "Macronutrients"
-#~ msgstr "Macronutrient Kalkulačka"
-
-#, fuzzy
-#~| msgid "Proteins"
-#~ msgid "and Protein"
-#~ msgstr "Proteíny"
-
-#~ msgid "No weight data was found for the specified user."
-#~ msgstr "Pre zadaného používateľa neboli nájdené žiadne údaje o hmotnosti."
-
-#~ msgid ""
-#~ "To use this shortcode, you must specify content between opening and "
-#~ "closing tags<br /><br />e.g. [wlt-if]something to show if IF is true[/wlt-"
-#~ "if]"
-#~ msgstr ""
-#~ "Ak chcete použiť tento shorcode, musíte zadať obsah medzi otváracou a "
-#~ "záverečnou značkou <br /> <br /> napr. [wlt-if] niečo, čo sa ukáže, ak je "
-#~ "pravda IF [/ wlt-if]"
-
-#~ msgid "Unfortunately the field you specified is for Pro Plus licenses only."
-#~ msgstr "Bohužiaľ zadané pole je len pre licencie Pro Plus."
-
-#~ msgid "towards your target of {t}."
-#~ msgstr "smerom k cieľu {t}."
-
-#~ msgid "Please add a weight entry to see your progress."
-#~ msgstr "Pridajte záznam o hmotnosti, aby ste videli pokrok."
-
-#~ msgid "Please enter a target weight to see your progress."
-#~ msgstr "Zadajte cieľovú váhu, aby ste videli pokrok."
-
-#~ msgid ""
-#~ "This shortcode can not be used as Target weights have been disabled in "
-#~ "the plugin's settings."
-#~ msgstr ""
-#~ "Tento krátky kód nemožno použiť, pretože v nastaveniach doplnkov boli "
-#~ "zablokované ciele."
-
-#~ msgid ""
-#~ "Please remember to enter your weight and measurements for today as well "
-#~ "as your target weight."
-#~ msgstr "Nezabudnite uviesť váhu a merania pre dnešok, ako aj cieľovú váhu."
-
-#~ msgid ""
-#~ "Please remember to enter your weight for today as well as your target "
-#~ "weight."
-#~ msgstr "Nezabudnite uviesť váhu pre dnešok, ako aj cieľovú váhu."
-
-#~ msgid "Please remember to enter your weight and measurements for today."
-#~ msgstr "Nezabudnite uviesť váhu a merania pre dnešok."
-
-#~ msgid "Please remember to enter your weight for today."
-#~ msgstr "Nezabudnite uviesť váhu pre dnešok."
-
-#~ msgid "Stats disabled"
-#~ msgstr "Štatistiky zakázané"
-
-#~ msgid "Weight Difference"
-#~ msgstr "Rozdiel hmotnosti"
-
-#~ msgid "No of entries"
-#~ msgstr "Počet záznamov"
-
-#~ msgid ""
-#~ "The league table has not been generated yet. This is a scheduled task so "
-#~ "please check back in 15 minutes or try pressing the button below."
-#~ msgstr ""
-#~ "Ligová tabuľka ešte nebola vygenerovaná. Toto je naplánovaná úloha, preto "
-#~ "skontrolujte o 15 minút alebo skúste stlačiť tlačidlo nižšie."
-
-#~ msgid "Lost"
-#~ msgstr "Zhodené"
-
-#~ msgid "Gained"
-#~ msgstr "Nabraté"
-
-#~ msgid "Height needed"
-#~ msgstr "Potrebná výška"
-
-#~ msgid "Weight needed"
-#~ msgstr "Potrebná váha"
-
-#~ msgid "You must be logged in to edit your settings."
-#~ msgstr "Ak chcete upraviť nastavenia, musíte byť prihlásení."
-
-#~ msgid "About You:"
-#~ msgstr "O vás:"
-
-#~ msgid "Your height:"
-#~ msgstr "Vaša výška:"
-
-#, fuzzy
-#~| msgid "Which unit would you like to record your weight in:"
-#~ msgid "In which unit would you like to record your weight:"
-#~ msgstr "V akej jednotke chcete zaznamenať svoju váhu:"
-
-#, fuzzy
-#~| msgid "Which unit would you like to record your measurements in:"
-#~ msgid "In which unit would you like to record your measurements:"
-#~ msgstr "V akej jednotke chcete zaznamenať svoje merania"
-
-#~ msgid "Display dates in the following formats:"
-#~ msgstr "Zobrazenie dátumov v nasledujúcich formátoch:"
-
-#, fuzzy
-#~| msgid "Gender"
-#~ msgid "Your Gender:"
-#~ msgstr "Pohlavie"
-
-#, fuzzy
-#~| msgid "Date of Birth"
-#~ msgid "Your Date of Birth:"
-#~ msgstr "Dátum narodenia"
-
-#, fuzzy
-#~| msgid "Activity Level"
-#~ msgid "Your Activity Level:"
-#~ msgstr "Úroveň aktivity"
-
-#, fuzzy
-#~| msgid "Your height:"
-#~ msgid "Your aim:"
-#~ msgstr "Vaša výška:"
-
-#~ msgid "About User:"
-#~ msgstr "O používateľovi"
-
-#~ msgid "Height:"
-#~ msgstr "Výška:"
-
-#~ msgid "Weight unit:"
-#~ msgstr "Jednotka hmotnosti:"
-
-#~ msgid "Measurements unit:"
-#~ msgstr "Jednotka meraní:"
-
-#~ msgid "Date format:"
-#~ msgstr "Formát dátumu:"
-
-#, fuzzy
-#~| msgid "Gender"
-#~ msgid "Gender:"
-#~ msgstr "Pohlavie"
-
-#, fuzzy
-#~| msgid "Date of Birth"
-#~ msgid "Date of Birth:"
-#~ msgstr "Dátum narodenia"
-
-#, fuzzy
-#~| msgid "Activity Level"
-#~ msgid "Activity Level:"
-#~ msgstr "Úroveň aktivity"
-
-#~ msgid "Save Settings"
-#~ msgstr "Uložiť nastavenia"
-
-#~ msgid "Delete existing data"
-#~ msgstr "Vymazať existujúce dáta"
-
-#~ msgid ""
-#~ "The button below allows you to clear your existing weight history. "
-#~ "Confirm:"
-#~ msgstr ""
-#~ "Tlačidlo nižšie vám umožňuje vymazať existujúcu históriu hmotnosti. "
-#~ "potvrdenie:"
-
-#~ msgid "DELETE ALL DATA"
-#~ msgstr "VYMAZAŤ VŠETKY DÁTA"
-
-#~ msgid "Delete"
-#~ msgstr "Vymazať"
-
-#~ msgid "Weight Loss Tracker - Chart"
-#~ msgstr "Sledovanie úbytku hmotnosti - graf"
-
-#~ msgid "Display a chart to see your current progress."
-#~ msgstr "Zobrazte graf zobrazujúci aktuálny pokrok."
-
-#~ msgid "A pretty graph shall appear once you have recorded several weights."
-#~ msgstr "Po nahratí niekoľkých váh sa zobrazí pekný graf."
-
-#~ msgid "Title"
-#~ msgstr "Názov"
-
-#~ msgid "Maximum number of plot points on chart"
-#~ msgstr "Maximálny počet bodov na grafe"
-
-#~ msgid "Message to display if not logged in"
-#~ msgstr "Správa na zobrazenie, ak nie ste prihlásení"
-
-#~ msgid ""
-#~ "By default the widget is hidden if the user is not logged in. If you "
-#~ "wish, you can display a message to the visitor instead."
-#~ msgstr ""
-#~ "V predvolenom nastavení je widget skrytý, ak nie je používateľ "
-#~ "prihlásený. Ak chcete, môžete namiesto toho zobraziť správu návštevníkovi."
-
-#~ msgid "ID of user (leave blank to show chart for current user)"
-#~ msgstr ""
-#~ "ID užívateľa (nechajte prázdne zobrazenie grafu pre aktuálneho "
-#~ "používateľa)"
-
-#~ msgid ""
-#~ "Note: By default, the chart will be displayed in the weight unit chosen "
-#~ "by the logged in user. If not specfied the plugin default will be used."
-#~ msgstr ""
-#~ "Poznámka: V predvolenom nastavení sa graf zobrazí v jednotke hmotnosti "
-#~ "vybranej prihláseným užívateľom. Ak nie je špecifikované, použije sa "
-#~ "predvolená hodnota"
-
-#~ msgid "Hide Measurements (Pro)?"
-#~ msgstr "Skryť merania(Pro)?"
-
-#~ msgid "Weight Loss Tracker - Form"
-#~ msgstr "Sledovanie úbytku hmotnosti - formulár"
-
-#~ msgid ""
-#~ "Display a quick entry form for logged in users to record their weight for "
-#~ "today."
-#~ msgstr ""
-#~ "Zobrazte formulár pre prihlásených používateľov, aby ste ich zaznamenali "
-#~ "dnes."
-
-#~ msgid "Your weight today"
-#~ msgstr "Vaša dnešná váha"
-
-#~ msgid "Allow user to specify a date?"
-#~ msgstr "Povoliť užívateľovi zadať dátum?"
-
-#~ msgid "No. Automatically set to today's date"
-#~ msgstr "Nie. Automaticky nastaviť dnešný dátum"
-
-#~ msgid "Allow user to specify a date"
-#~ msgstr "Povoliť užívateľovi zadať dátum?"
-
-#~ msgid "Hide measurements (Pro)?"
-#~ msgstr "Skryť merania (Pro)?"
 
 #, fuzzy
 #~| msgid "Upgrade to Pro Plus"
 #~ msgid "Hide Photos (Pro Plus)?"
 #~ msgstr "Upgrade na Pro Plus"
-
-#~ msgid "Redirect URL (Defaults to current page)"
-#~ msgstr "Adresa URL presmerovania (predvolené na aktuálnu stránku)"
-
-#~ msgid ""
-#~ "Specify where the user should be redirected to after completing the form. "
-#~ "Note: The URL must be within the site domain."
-#~ msgstr ""
-#~ "Zadajte, kam by mal byť používateľ po vyplnení formulára presmerovaný. "
-#~ "Poznámka: Adresa URL musí byť v doméne lokality."
-
-#~ msgid "Weight Loss Tracker - Progress Bar"
-#~ msgstr "Sledovanie úbytku hmotnosti"
-
-#~ msgid "A progress bar to indicate weight loss towards target."
-#~ msgstr "Zobrazenie progresu k cieľu"
-
-#~ msgid "Weight loss progress"
-#~ msgstr "Progres úbytku hmotnosti"
-
-#~ msgid "Chart type"
-#~ msgstr "Typ grafu"
-
-#~ msgid "Stroke Width"
-#~ msgstr "Hrúbka čiary"
-
-#~ msgid "Stroke Colour"
-#~ msgstr "Farba čiary"
-
-#~ msgid "Trail Width"
-#~ msgstr "Šírka trasy"
-
-#~ msgid "Trail Colour"
-#~ msgstr "Farba trasy"
-
-#~ msgid "Text Colour"
-#~ msgstr "Farba textu"
-
-#~ msgid "Text to be displayed under bar. Use {t} to display target weight."
-#~ msgstr ""
-#~ "Text, ktorý sa má zobraziť pod čiarou. Použite {t} na zobrazenie cieľovej "
-#~ "hmotnosti."
 
 #~ msgid ""
 #~ "Allow registered users of your website to track their weight and relevant "
@@ -2725,12 +3721,6 @@ msgstr "Zatiaľ ste nezadali údaje o váhe."
 #~ "Umožnite registrovaným používateľom vášho webu sledovať svoju hmotnosť a "
 #~ "príslušné merania telesnej hmotnosti. História sa môže zobraziť v oboch "
 #~ "tabuľkách a grafoch."
-
-#~ msgid "YeKen"
-#~ msgstr "YeKen"
-
-#~ msgid "https://www.YeKen.uk"
-#~ msgstr "https://www.YeKen.uk"
 
 #~ msgid "Chart / Add Weight"
 #~ msgstr "Graf / Pridať hmotnosť"

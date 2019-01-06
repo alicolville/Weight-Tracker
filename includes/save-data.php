@@ -24,8 +24,9 @@ function ws_ls_capture_and_handle_form_post()
 		$save_response['form_number'] = $form_number;
 
 		// Got an ID?
-		if($user_id){
-			$user_hash = (isset($_POST['ws_ls_security'])) ? $_POST['ws_ls_security'] : '';
+		if( $user_id ){
+
+		    $user_hash = (isset($_POST['ws_ls_security'])) ? $_POST['ws_ls_security'] : '';
 
 			// If a valid hash, carry on
 			if($user_hash == wp_hash($user_id)){
