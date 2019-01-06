@@ -311,13 +311,17 @@
             return false;
         }
 
+        $migration_already_done = get_option('ws-ls-meta-fields-photo-migrate-done', false );
+
         // Don't run if we have already performed this!
-        if ( false === $ignore_previous_run && false === empty( get_option('ws-ls-meta-fields-photo-migrate-done', false ) ) ) {
+        if ( false === $ignore_previous_run && false === empty( $migration_already_done ) ) {
             return false;
         }
 
+        $old_ids = ws_ls_meta_fields_photos_get_old_ids();
+
         // Do we have any photos?
-        if ( true === empty( ws_ls_meta_fields_photos_get_old_ids() )) {
+        if ( true === empty( $old_ids ) ) {
             return false;
         }
 

@@ -3,7 +3,8 @@ Contributors: aliakro
 Tags: weight, loss, lose, helper, bmi, body, mass, index, graph, track, stones, kg, table, data, plot, target, history, pounds, responsive, chart, measurements, cm, centimeters, inches, hip, waist, bicep, thigh
 Requires at least: 4.4.0
 Tested up to: 5.0.0
-Stable tag: 7.1
+Stable tag: 7.0.4
+
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate Link: https://www.paypal.me/yeken
@@ -154,12 +155,27 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 == Changelog ==
 
-= 7.1 =
+
+= 7.0.4 =
 
 * Improvement: Added Dutch Formal (copied from Dutch).
 * Improvement: Increased granularity of height values.
 * Improvement: Updated plugin title and description. Removed references to "loss" from "Weight Loss Tracker".
 * Improvement: When a target is cleared, redirect back to current page so UI refreshes.
+
+= 7.0.3 =
+
+* Bug fix: Addressed another "Can't use function return value in write context" error in photos.
+
+= 7.0.2 =
+
+* Bug fix: Addressed a "Can't use function return value in write context" error in photos.
+
+= 7.0.1 =
+
+* Improvement: Added filter to allow a custom section to be inserted into user record.
+* Bug fix: Fixed issue with "Warning: Invalid argument supplied for foreach()" in Awards
+>>>>>>> 57201f86141a0d7960be32db763daec0ac3d7ce3
 
 = 7.0 =
 
