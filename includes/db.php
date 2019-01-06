@@ -682,7 +682,7 @@ function ws_ls_get_entry_counts($user_id = false, $use_cache = true) {
 
 function ws_ls_validate_height($height) {
 	 // If not a valid height clear value
-	 if(!is_numeric($height) || $height < 142 || $height > 201) {
+	 if(!is_numeric($height) || $height < 122 || $height > 201) {
 	   $height = 0;
 	 }
 	 return $height;
