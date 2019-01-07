@@ -158,6 +158,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 = 7.0.6 =
 
 * Improvement: Added shortcode for user's previous weight [wlt-weight-previous]
+* Improvement: Issue 179. Optimised deletion of redundant stats entries.
 
 = 7.0.5 =
 
