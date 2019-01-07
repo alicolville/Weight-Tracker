@@ -11,7 +11,7 @@ defined('ABSPATH') or die('Jog on!');
  * License: GPL2
  * Text Domain: weight-loss-tracker
  */
-/*  Copyright 2018 YeKen.uk
+/*  Copyright 2019 YeKen.uk
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License, version 2, as
@@ -28,8 +28,8 @@ defined('ABSPATH') or die('Jog on!');
 */
 
     define('WS_LS_ABSPATH', plugin_dir_path( __FILE__ ));
-    define('WE_LS_CURRENT_VERSION', '7.0.5');
-    define('WE_LS_DB_VERSION', '7.0.5');
+    define('WE_LS_CURRENT_VERSION', '7.0.6');
+    define('WE_LS_DB_VERSION', '7.0.6');
 
 // -----------------------------------------------------------------------------------------
 // AC: Activate / Deactivate / Uninstall Hooks

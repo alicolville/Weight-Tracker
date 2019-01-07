@@ -114,7 +114,7 @@ function ws_ls_weight_difference_target($user_id = false){
 
 	return $display_string;
 }
-function ws_ls_weight_difference_previous($user_id = false){
+function ws_ls_weight_difference_previous( $user_id = false ){
 	// If not logged in then return no value
 	if(!is_user_logged_in()) {
 		return '';
@@ -188,31 +188,55 @@ function ws_ls_get_weight_extreme($user_id, $recent = false, $unit = "weight_wei
 		return false;
 
 }
-function ws_ls_get_weight_previous($user_id) {
+
+
+function ws_ls_get_weight_previous( $user_id ) {
+
+    $user_id = $user_id ?: get_current_user_id();
+
 	global $wpdb;
 
-	$cache_key = $user_id . '-' . WE_LS_CACHE_KEY_WEIGHT_PREVIOUS;
-
 	// Return cache if found!
-	if ($cache = ws_ls_get_cache($cache_key))   {
+	if ( $cache = ws_ls_cache_user_get( $user_id, WE_LS_CACHE_KEY_WEIGHT_PREVIOUS ) )   {
 		return $cache;
 	}
 
 	$table_name = $wpdb->prefix . WE_LS_TABLENAME;
-	$sql = $wpdb->prepare("SELECT weight_weight FROM $table_name where weight_user_id = %d order by weight_date desc limit 1, 1", $user_id);
+	$sql = $wpdb->prepare( "SELECT weight_weight FROM $table_name where weight_user_id = %d order by weight_date desc limit 1, 1", $user_id );
 
-	$result = $wpdb->get_var($sql);
+	$result = $wpdb->get_var( $sql );
 
 	if ( false === empty( $result ) ) {
 
-		$result = floatval($result);
+		$result = floatval( $result );
 
-		ws_ls_set_cache($cache_key, $result);
+        ws_ls_cache_user_set( $user_id, WE_LS_CACHE_KEY_WEIGHT_PREVIOUS, $result );
+
 		return $result;
 	}
 
 	return NULL;
 }
+
+/**
+ *
+ * Render the shortcode for previos weight [wlt-weight-previous]
+ *
+ * @return string
+ *
+ */
+function ws_ls_shortcode_previous_weight() {
+
+    if ( false === WS_LS_IS_PRO ) {
+        return '';
+    }
+
+    $kg = ws_ls_get_weight_previous( NULL );
+
+    return ( false === empty( $kg ) ) ? we_ls_format_weight_into_correct_string_format( $kg ) : __( 'No previous weight', WE_LS_SLUG );
+}
+add_shortcode('wlt-weight-previous', 'ws_ls_shortcode_previous_weight');
+
 function ws_ls_get_target_weight_in_kg($user_id = false){
 
 	$user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
