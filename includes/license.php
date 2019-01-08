@@ -66,6 +66,10 @@ function ws_ls_how_many_days_until_license_expires() {
  */
 function ws_ls_display_license_expiry_warning() {
 
+    if ( false === ws_ls_has_a_valid_license() ) {
+        return;
+    }
+
     $days_until_expiry = ws_ls_how_many_days_until_license_expires();
 
     if ( true === empty( $days_until_expiry ) ) {
