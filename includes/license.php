@@ -66,6 +66,16 @@ function ws_ls_how_many_days_until_license_expires() {
  */
 function ws_ls_display_license_expiry_warning() {
 
+    $days_until_expiry = ws_ls_how_many_days_until_license_expires();
+
+    if ( true === empty( $days_until_expiry ) ) {
+        return;
+    }
+
+    if ( $days_until_expiry > 14 ) {
+        return;
+    }
+
     printf('<div class="notice notice-warning" id="ws-ls-admin-notice" data-wsmd5="">
                 <p><strong>%s</strong>: %s. <a href="%s?hash=%s" rel="noopener noreferrer" target="_blank" >Renew your license now</a></p>
             </div>',
