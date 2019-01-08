@@ -159,6 +159,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 * Improvement: Added shortcode for user's previous weight [wlt-weight-previous]
 * Improvement: Issue 179. Optimised deletion of redundant stats entries.
+* Improvement: Issue 195. Increased award title length to 200 characters.
 
 = 7.0.5 =
 

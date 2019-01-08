@@ -109,7 +109,7 @@ function ws_ls_awards_add_update_page() {
                                                 <label for="title"><?php echo __('Title', WE_LS_SLUG); ?></label>
                                             </div>
                                             <div class="ws-ls-cell">
-                                                <input type="text" name="title" id="title"  size="40" maxlength="40" class="<?php if ( true === $validation_fail && true === empty( $award['title'] ) ) { echo 'ws-ls-mandatory-field'; } ?>" value="<?php echo ( false === empty( $award['title'] ) ) ? esc_attr( $award['title'] ) : ''; ?>"/><span class="ws-ls-mandatory">*</span>
+                                                <input type="text" name="title" id="title"  size="40" maxlength="200" class="<?php if ( true === $validation_fail && true === empty( $award['title'] ) ) { echo 'ws-ls-mandatory-field'; } ?>" value="<?php echo ( false === empty( $award['title'] ) ) ? esc_attr( $award['title'] ) : ''; ?>"/><span class="ws-ls-mandatory">*</span>
 
                                             </div>
                                         </div>
