@@ -31,6 +31,36 @@ function ws_ls_has_a_valid_pro_plus_license() {
 	return ('pro-plus' == ws_ls_has_a_valid_license());
 }
 
+/**
+ * Return the number of days until the license expires
+ *
+ * @return int|null
+ */
+function ws_ls_how_many_days_until_license_expires() {
+
+    $license_type = ws_ls_has_a_valid_license();
+
+    // Only Pro or Pro plus licenses can expire
+    if ( true === in_array( $license_type, ['pro', 'pro-plus'] ) ) {
+
+        $license = ws_ls_license();
+
+        $license_decoded = ws_ls_license_decode( $license );
+
+        if ( false === empty( $license_decoded ) ) {
+
+            $expiry_date = new DateTime( $license_decoded['expiry-date'] );
+            $todays_date = new DateTime();
+
+            $difference = $todays_date->diff( $expiry_date );
+
+            return ( true === isset( $difference->days ) ) ? (int) $difference->days : NULL;
+
+        }
+    }
+    return NULL;
+}
+
 // ------------------------------------------------------------------------------------------------------------
 // Current licensing
 // ------------------------------------------------------------------------------------------------------------
