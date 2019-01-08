@@ -66,7 +66,7 @@ function ws_ls_how_many_days_until_license_expires() {
  */
 function ws_ls_display_license_expiry_warning() {
 
-    printf('<div class="notice notice-warning is-dismissible" id="ws-ls-admin-notice" data-wsmd5="">
+    printf('<div class="notice notice-warning" id="ws-ls-admin-notice" data-wsmd5="">
                 <p><strong>%s</strong>: %s. <a href="%s?hash=%s" rel="noopener noreferrer" target="_blank" >Renew your license now</a></p>
             </div>',
                 __('Weight Tracker License', WE_LS_SLUG ),
