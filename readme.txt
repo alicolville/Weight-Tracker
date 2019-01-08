@@ -160,6 +160,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 * Improvement: Added shortcode for user's previous weight [wlt-weight-previous]
 * Improvement: Issue 179. Optimised deletion of redundant stats entries.
 * Improvement: Issue 195. Increased award title length to 200 characters.
+* Improvement: Issue 188. Display an admin warning if the Weight Tracker license expires within 14 days!
 
 = 7.0.5 =
 
