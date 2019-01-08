@@ -679,11 +679,10 @@ function ws_ls_display_notice($text, $type = 'success') {
 	echo sprintf('	<div class="notice notice-%s">
 						<p>%s</p>
 					</div>',
-					esc_html($type),
-					esc_html($text)
+                    wp_kses_post( $type ),
+                    wp_kses_post( $text )
 				);
 }
-
 /**
  * If QS value detected, display data saved message
  */
