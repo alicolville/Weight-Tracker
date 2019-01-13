@@ -124,7 +124,7 @@ function ws_ls_awards_add_update_page() {
                                                     <select name="category" id="category" <?php echo ( false === empty( $award['id'] ) ) ? 'disabled' : ''; ?>>
                                                         <?php
                                                             foreach ( ws_ls_awards_categories() as $key => $label ) {
-                                                                    printf( '<option value="%s" %s>%s</option>', $key, selected( $checked, $key ), $label );
+                                                                    printf( '<option value="%s" %s>%s</option>', $key, selected( $checked, $key, false ), $label );
                                                             }
                                                         ?>
                                                     </select>
@@ -206,7 +206,7 @@ function ws_ls_awards_add_update_page() {
                                                 <select name="bmi_equals" id="bmi_equals">
 				                                    <?php
 				                                    foreach ( ws_ls_bmi_all_labels() as $key => $label ) {
-					                                    printf( '<option value="%s" %s>%s</option>', $key, selected( $checked, $key ), $label );
+					                                    printf( '<option value="%s" %s>%s</option>', $key, selected( $checked, $key, false ), $label );
 				                                    }
 				                                    ?>
                                                 </select>

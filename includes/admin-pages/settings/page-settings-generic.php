@@ -185,7 +185,7 @@ function ws_ls_settings_page_generic() {
 																if ( $size < $max_size ) {
 																	printf('<option value="%s" %s>%s</option>',
 																		$size,
-																		selected( $size, $current_size ),
+																		selected( $size, $current_size, false ),
 																		$label
 																	);
 																}

@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight, loss, lose, helper, bmi, body, mass, index, graph, track, stones, kg, table, data, plot, target, history, pounds, responsive, chart, measurements, cm, centimeters, inches, hip, waist, bicep, thigh
 Requires at least: 4.4.0
 Tested up to: 5.0.2
-Stable tag: 7.0.6
+Stable tag: 7.0.7
 
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -155,6 +155,11 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 == Changelog ==
 
+= 7.0.7 =
+
+* Bug Fix: Fixed issues with selected="selected" randomly appearing.
+* Bug fix: Removed duplicate chart opacity setting.
+
 = 7.0.6 =
 
 * Improvement: Added shortcode for user's previous weight [wlt-weight-previous]
@@ -186,7 +191,6 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 * Improvement: Added filter to allow a custom section to be inserted into user record.
 * Bug fix: Fixed issue with "Warning: Invalid argument supplied for foreach()" in Awards
->>>>>>> 57201f86141a0d7960be32db763daec0ac3d7ce3
 
 = 7.0 =
 
