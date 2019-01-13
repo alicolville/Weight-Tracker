@@ -478,7 +478,7 @@ function ws_ls_settings_page_generic() {
 												<tr  class="<?php echo $disable_if_not_pro_class; ?>">
 													<th scope="row" class="<?php echo $disable_if_not_pro_class; ?>"><?php echo __( 'Weight Fill Opacity', WE_LS_SLUG ); ?></th>
 													<td>
-														<?php $chart_options = array('0.1', '0.2', '0.3', '0.4', '0.5', '0.5', '0.6', '0.7', '0.8', '0.9', '1'); ?>
+														<?php $chart_options = array('0.1', '0.2', '0.3', '0.4', '0.5', '0.6', '0.7', '0.8', '0.9', '1'); ?>
 														<select id="ws-ls-fill-under-weight-line-opacity" name="ws-ls-fill-under-weight-line-opacity">
 															<?php foreach ($chart_options as $option):?>
 																<option value="<?php echo $option; ?>" <?php selected( WE_LS_WEIGHT_FILL_LINE_OPACITY, $option ); ?>><?php echo $option; ?></option>
