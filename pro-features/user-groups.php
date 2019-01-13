@@ -140,7 +140,7 @@
 				foreach ( $groups as $group ) {
 					$html .= sprintf( '<option value="%s" %s>%s</option>',
 										(int) $group['id'],
-										selected( $current_selection, $group['id'] ),
+										selected( $current_selection, $group['id'], false ),
 										esc_html( $group['name'] )
 					);
 				}
