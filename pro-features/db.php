@@ -186,11 +186,14 @@ function ws_ls_stats_insert_missing_user_ids_into_stats() {
 function ws_ls_stats_remove_deleted_user_ids_from_stats() {
 
 	global $wpdb;
-	$stats_table_name = $wpdb->prefix . WE_LS_USER_STATS_TABLENAME;
-	$data_table_name = $wpdb->prefix . WE_LS_TABLENAME;
-	$sql = "Delete from $stats_table_name Where user_id not in (Select distinct weight_user_id from $data_table_name)";
 
-	$wpdb->query($sql);
+	$stats_table_name = $wpdb->prefix . WE_LS_USER_STATS_TABLENAME;
+	$data_table_name = $wpdb->prefix . 'users';
+
+	$sql = "Delete from $stats_table_name Where user_id not in ( Select ID from $data_table_name )";
+
+	$wpdb->query( $sql );
+
 	return;
 }
 
