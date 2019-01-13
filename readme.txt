@@ -157,6 +157,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 = 7.0.7 =
 
+* Improvement: On user summary page, changed "Show All Entries" to "Show 500 most recent". On large sites, fetching all data was cuasing performace issues.
 * Bug Fix: Fixed issues with selected="selected" randomly appearing.
 * Bug fix: Removed duplicate chart opacity setting.
 
