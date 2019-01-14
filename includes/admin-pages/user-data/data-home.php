@@ -32,6 +32,9 @@ function ws_ls_admin_page_data_home() {
         case 'all':
 			ws_ls_admin_page_view_all();
 			break;
+        case 'groups':
+            ws_ls_admin_page_group_view();
+            break;
 		default:
 			ws_ls_admin_page_data_summary();
 			break;

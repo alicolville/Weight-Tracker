@@ -85,6 +85,7 @@ defined('ABSPATH') or die('Jog on!');
 	    'includes/admin-pages/settings/page-settings.php',
 	    'includes/admin-pages/settings/page-settings-generic.php',
 	    'includes/admin-pages/settings/page-settings-groups.php',
+        'includes/admin-pages/user-data/data-groups.php',
         'includes/admin-pages/page.license.php',
         'includes/admin-pages/page.help.php',
         'includes/admin-pages/meta-fields/page-meta-fields.php',
