@@ -83,7 +83,7 @@ function ws_ls_admin_page_data_summary() {
                                        data-use-parent-width="true">
                                 </table>
                                 <a class="btn button-secondary" href="<?php echo admin_url( 'admin.php?page=ws-ls-data-home&regenerate-stats=y' ); ?>"><i class="fa fa-refresh"></i> <?php echo __('Regenerate these stats', WE_LS_SLUG); ?></a>
-
+                                <a class="btn button-secondary" href="<?php echo admin_url( 'admin.php?page=ws-ls-settings&mode=groups' ); ?>"><i class="fa fa-eye"></i> <?php echo __('View / Edit', WE_LS_SLUG); ?></a>
                             </div>
                         </div>
                     <?php endif; ?>
