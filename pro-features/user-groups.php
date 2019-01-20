@@ -176,6 +176,7 @@
 			$group_id =  ws_ls_ajax_post_value('ws-ls-group');
 
 			ws_ls_groups_add_to_user( (int) $group_id, (int) $user_id );
+			ws_ls_cache_user_delete( 'groups-user-for-given' );
 		}
 	}
 	add_action( 'ws-ls-hook-user-preference-save',  'ws_ls_groups_hooks_user_preferences_save', 10, 3 );
@@ -235,6 +236,7 @@
 		$award = ( false === empty( $award ) ) ? $award : false;
 
 		ws_ls_cache_user_set( 'groups', $id , $award );
+		ws_ls_cache_user_delete( 'groups-user-for-given' );
 
 		return $award;
 	}
@@ -263,6 +265,7 @@
 		$result = $wpdb->insert( $wpdb->prefix . WE_LS_MYSQL_GROUPS , [ 'name' => $name ], [ '%s' ] );
 
 		ws_ls_cache_user_delete( 'groups' );
+		ws_ls_cache_user_delete( 'groups-user-for-given' );
 
 		return ( false === $result ) ? false : $wpdb->insert_id;
 	}
@@ -288,6 +291,7 @@
 		$result = $wpdb->delete( $wpdb->prefix . WE_LS_MYSQL_GROUPS, [ 'id' => $id ], [ '%d' ] );
 
 		ws_ls_cache_user_delete( 'groups' );
+		ws_ls_cache_user_delete( 'groups-user-for-given' );
 
 		return ( 1 === $result );
 	}
@@ -408,6 +412,37 @@
 	}
 
 	/**
+	 * Fetch all user ids for given group
+	 *
+	 * @param $group_id
+	 *
+	 * @return array|null|object
+	 */
+	function ws_ls_groups_users_for_given_group( $group_id ) {
+
+		if ( false === is_numeric( $group_id ) ) {
+			return NULL;
+		}
+
+		global $wpdb;
+
+		if ( false === is_admin() && $cache = ws_ls_cache_user_get( 'groups-user-for-given', $group_id ) ) {
+			return $cache;
+		}
+
+		$sql = 'Select user_id, display_name from ' . $wpdb->prefix . WE_LS_MYSQL_GROUPS_USER . ' u 
+				inner join ' . $wpdb->prefix . 'users wpu on wpu.id = u.user_id where g.id = %d order by wpu.display_name';
+
+		$sql = $wpdb->prepare( $sql, $group_id );
+
+		$data = $wpdb->get_results( $sql , ARRAY_A );
+
+		ws_ls_cache_user_set( 'groups-user-for-given', $group_id, $data );
+
+		return $data;
+	}
+
+	/**
 		Get Groups
 	 **/
 	function ws_ls_ajax_groups_get(){
@@ -449,10 +484,64 @@
 
 		ws_ls_cache_user_set( 'groups', $table_id, $data );
 
-		wp_send_json($data);
+		wp_send_json( $data );
 
 	}
 	add_action( 'wp_ajax_get_groups', 'ws_ls_ajax_groups_get' );
+
+	/**
+		Get users for given group
+	 **/
+	function ws_ls_ajax_groups_users_get(){
+
+		if ( false === WS_LS_IS_PRO ) {
+			return;
+		}
+
+		check_ajax_referer( 'ws-ls-user-tables', 'security' );
+
+		$table_id = ws_ls_ajax_post_value( 'table_id' );
+		$group_id = ws_ls_ajax_post_value( 'group_id' );
+
+		if ( $cache = ws_ls_cache_user_get( 'groups-user-for-given', 'ajax-' . $group_id ) ) {
+			wp_send_json( $cache );
+		}
+
+		$columns = [
+			[ 'name' => 'id', 'title' => __('ID', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'number', 'visible' => true ],
+			[ 'name' => 'name', 'title' => __('Display Name', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ],
+		];
+
+		$rows = ws_ls_groups_users_for_given_group( false );
+
+		// Is this the group stats table? If so , add weight difference column
+//		if ( 'groups-list-stats' === $table_id ) {
+//			$columns[] = [ 'name' => 'weight_difference', 'title' => '', 'breakpoints'=> '', 'type' => 'number', 'visible' => false ];
+//			$columns[] = [ 'name' => 'weight_display', 'title' => __('Total Weight Difference', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ];
+//
+//			foreach ( $rows as &$row ) {
+//				$row[ 'weight_display' ] = ws_ls_convert_kg_into_relevant_weight_String( $row[ 'weight_difference' ], true );
+//			}
+//		}
+
+
+		foreach ( $rows as &$row ) {
+				$row[ 'id' ] = '1';
+				$row[ 'name' ] = 'test';
+		}
+
+		$data = [
+			'columns' => $columns,
+			'rows' => $rows,
+			'table_id' => $table_id
+		];
+
+		ws_ls_cache_user_set( 'groups', 'ajax-' . $group_id, $data );
+
+		wp_send_json( $data );
+
+	}
+	add_action( 'wp_ajax_get_groups_users', 'ws_ls_ajax_groups_users_get' );
 
 
 	/**

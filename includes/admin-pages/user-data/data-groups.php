@@ -17,12 +17,26 @@ function ws_ls_admin_page_group_view() {
                     if ( true !== WS_LS_IS_PRO ) {
                         ws_ls_display_pro_upgrade_notice();
                     }
+
+                    //TODO:
+                    $group_id = 1;
+
                     ?>
                     <div class="postbox">
                         <h2 class="hndle"><span>TITLE</span></h2>
                         <div class="inside">
 
-                            TODO
+                            <table class="ws-ls-settings-groups-users-list-ajax table ws-ls-loading-table" id="groups-users-list"
+                                   data-group-id="<?php echo (int) $group_id; ?>"
+                                   data-paging="true"
+                                   data-filtering="false"
+                                   data-sorting="true"
+                                   data-editing-allow-add="false"
+                                   data-editing-allow-edit="true"
+                                   data-cascade="true"
+                                   data-toggle="true"
+                                   data-use-parent-width="true">
+                            </table>
 
                         </div>
                     </div>
