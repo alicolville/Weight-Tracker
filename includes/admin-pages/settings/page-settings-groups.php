@@ -49,7 +49,7 @@
                                        data-filtering="false"
                                        data-sorting="true"
                                        data-editing-allow-add="false"
-                                       data-editing-allow-edit="false"
+                                       data-editing-allow-edit="true"
                                        data-cascade="true"
                                        data-toggle="true"
                                        data-use-parent-width="true">
