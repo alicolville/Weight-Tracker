@@ -565,20 +565,14 @@ function ws_ls_format_stones_pound_for_comparison_display($weight) {
 
 function ws_ls_querystring_value($key, $force_to_int = false, $default = false) {
 
-		$return_value = NULL;
+    $return_value = NULL;
 
-	    if(isset($_GET[$key]) && $force_to_int) {
-	        return intval($_GET[$key]);
-	    }
-	    elseif(isset($_GET[$key])) {
-	    	return $_GET[$key];
-	    }
+    if ( true === isset( $_GET[$key] ) ) {
+        return ( true === $force_to_int ) ? (int) $_GET[$key] : $_GET[$key];
+    }
 
-		// Use default if aval
-		if ($default && is_null($return_value)) {
-			$return_value = $default;
-		}
-    return $return_value;
+    // Use default if available
+    return ( false !== $default && true === is_null( $return_value ) ) ? $default : $return_value;
 }
 
 function ws_ls_ajax_post_value($key, $json_decode = false)
