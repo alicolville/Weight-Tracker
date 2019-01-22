@@ -296,6 +296,32 @@
 		return ( 1 === $result );
 	}
 
+    /**
+     * Delete a user / group association
+     *
+     * @param $id       relationship ID to delete
+     * @return bool     true if success
+     */
+    function ws_ls_groups_users_delete( $id ) {
+
+        if ( false === is_admin() ) {
+            return;
+        }
+
+        global $wpdb;
+
+        ws_ls_log_add( 'group-user', sprintf( 'Deleting: %d', $id ) );
+
+        do_action( 'wlt-groupiuser-deleting', $id );
+
+        $result = $wpdb->delete( $wpdb->prefix . WE_LS_MYSQL_GROUPS_USER, [ 'id' => $id ], [ '%d' ] );
+
+        ws_ls_cache_user_delete( 'groups' );
+        ws_ls_cache_user_delete( 'groups-user-for-given' );
+
+        return ( 1 === $result );
+    }
+
 	/**
 	 * When a group is deleted, tidy up
 	 *
@@ -430,8 +456,8 @@
 			return $cache;
 		}
 
-		$sql = 'Select user_id, display_name from ' . $wpdb->prefix . WE_LS_MYSQL_GROUPS_USER . ' u 
-				inner join ' . $wpdb->prefix . 'users wpu on wpu.id = u.user_id where g.id = %d order by wpu.display_name';
+		$sql = 'Select u.id, user_id, display_name from ' . $wpdb->prefix . WE_LS_MYSQL_GROUPS_USER . ' u
+		        inner join ' . $wpdb->prefix . 'users wpu on wpu.id = u.user_id where u.group_id = %d order by wpu.display_name';
 
 		$sql = $wpdb->prepare( $sql, $group_id );
 
@@ -460,7 +486,7 @@
 		}
 
 		$columns = [
-			[ 'name' => 'id', 'title' => __('ID', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'number', 'visible' => true ],
+			[ 'name' => 'id', 'title' => __('Group ID', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'number', 'visible' => true ],
 			[ 'name' => 'name', 'title' => __('Name', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ],
 		];
 
@@ -508,27 +534,30 @@
 		}
 
 		$columns = [
-			[ 'name' => 'id', 'title' => __('ID', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'number', 'visible' => true ],
-			[ 'name' => 'name', 'title' => __('Display Name', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ],
+			[ 'name' => 'id', 'title' => __('ID', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'number', 'visible' => false ],
+			[ 'name' => 'display_name', 'title' => __('User', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ],
+            [ 'name' => 'number-of-entries', 'title' => __('No. Entries', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'number' ],
+            [ 'name' => 'start-weight', 'title' => __('Start Weight', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ],
+            [ 'name' => 'latest-weight', 'title' => __('Latest Weight', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ],
+            [ 'name' => 'diff-weight', 'title' => __('Difference', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ],
+            [ 'name' => 'target', 'title' => __('Target', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ],
 		];
 
-		$rows = ws_ls_groups_users_for_given_group( false );
-
-		// Is this the group stats table? If so , add weight difference column
-//		if ( 'groups-list-stats' === $table_id ) {
-//			$columns[] = [ 'name' => 'weight_difference', 'title' => '', 'breakpoints'=> '', 'type' => 'number', 'visible' => false ];
-//			$columns[] = [ 'name' => 'weight_display', 'title' => __('Total Weight Difference', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ];
-//
-//			foreach ( $rows as &$row ) {
-//				$row[ 'weight_display' ] = ws_ls_convert_kg_into_relevant_weight_String( $row[ 'weight_difference' ], true );
-//			}
-//		}
-
+		$rows = ws_ls_groups_users_for_given_group( $group_id );
 
 		foreach ( $rows as &$row ) {
-				$row[ 'id' ] = '1';
-				$row[ 'name' ] = 'test';
-		}
+
+            $stats = ws_ls_get_entry_counts( $row[ 'user_id' ] );
+
+            if ( false === empty( $stats ) ) {
+
+                $row[ 'number-of-entries' ] = $stats['number-of-entries'];
+                $row[ 'start-weight' ] = ws_ls_weight_start( $row[ 'user_id' ] );
+                $row[ 'latest-weight' ] = ws_ls_weight_recent( $row[ 'user_id' ] );
+                $row[ 'diff-weight' ] = ws_ls_weight_difference( $row[ 'user_id' ] );
+                $row[ 'target' ] = ws_ls_weight_target_weight( $row[ 'user_id' ], true );
+            }
+        }
 
 		$data = [
 			'columns' => $columns,
@@ -542,7 +571,6 @@
 
 	}
 	add_action( 'wp_ajax_get_groups_users', 'ws_ls_ajax_groups_users_get' );
-
 
 	/**
 	 * AJAX: Delete given group
@@ -570,6 +598,33 @@
 
 	}
 	add_action( 'wp_ajax_groups_delete', 'ws_ls_ajax_groups_delete' );
+
+    /**
+     * AJAX: Delete given group
+     */
+    function ws_ls_ajax_groups_users_delete() {
+
+        if ( false === ws_ls_groups_enabled() ) {
+            return;
+        }
+
+        check_ajax_referer( 'ws-ls-user-tables', 'security' );
+
+        $id = ws_ls_get_numeric_post_value('id');
+
+        if ( false === empty( $id ) ) {
+
+            $result = ws_ls_groups_users_delete( $id );
+
+            if ( true === $result ) {
+                wp_send_json( 1 );
+            }
+        }
+
+        wp_send_json( 0 );
+
+    }
+    add_action( 'wp_ajax_groups_users_delete', 'ws_ls_ajax_groups_users_delete' );
 
 	/**
 	 * Sortcode to display total weight difference for group
