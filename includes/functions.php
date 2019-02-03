@@ -807,7 +807,7 @@ function ws_ls_photo_max_upload_size() {
 		return 2000000;
 	}
 
-	return ( $file_size > $max_size ) ? intval( $max_size ) : intval( $file_size) ;
+	return ( $file_size > $max_size ) ? (int) $max_size : (int) $file_size;
 }
 
 
