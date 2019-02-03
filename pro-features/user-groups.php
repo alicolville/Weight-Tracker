@@ -20,6 +20,20 @@
 	}
 
 	/**
+	 * Are Groups enabled?
+	 *
+	 * @return bool
+	 */
+	function ws_ls_groups_can_users_edit() {
+
+		if ( false === WS_LS_IS_PRO ) {
+			return false;
+		}
+
+		return 'yes' === get_option('ws-ls-enable-groups-user-edit', false ) ? true : false;
+	}
+
+	/**
 	 * Are groups enabled and do we have any setup?
 	 */
 	function ws_ls_groups_do_we_have_any() {
@@ -117,7 +131,7 @@
 	 */
 	function ws_ls_groups_hooks_user_preferences_form( $html, $user_id ) {
 
-		if ( false === is_admin() ) {
+		if ( false === is_admin() && false === ws_ls_groups_can_users_edit() ) {
 			return;
 		}
 
@@ -133,7 +147,9 @@
 
 				$current_selection = ( false === empty( $current_selection[0]['id'] ) ) ? (int) $current_selection[0]['id'] : 0;
 
-				$html .= sprintf( '<p><a href="%s">%s</a></p>', ws_ls_groups_link(), __('Add / remove Groups', WE_LS_SLUG) );
+				if ( true === is_admin() ) {
+					$html .= sprintf( '<p><a href="%s">%s</a></p>', ws_ls_groups_link(), __('Add / remove Groups', WE_LS_SLUG) );
+				}
 
 				$html .= sprintf( '<select name="ws-ls-group" id="ws-ls-group" tabindex="%d">', ws_ls_get_next_tab_index() );
 
@@ -171,7 +187,7 @@
 		}
 
 		// Update user group?
-		if ( true === $is_admin ) {
+		if ( true === $is_admin || true === ws_ls_groups_can_users_edit() ) {
 
 			$group_id =  ws_ls_ajax_post_value('ws-ls-group');
 

@@ -20,12 +20,11 @@ function ws_ls_settings_page_generic() {
 		$clear_cache = true;
 	}
 
-	if($clear_cache) {
+	if( $clear_cache ) {
 		ws_ls_delete_all_cache();
 	}
 
-
-		?>
+	?>
 	<div class="wrap ws-ls-admin-page">
 
 <?php
