@@ -28,7 +28,11 @@ function ws_ls_admin_page_group_view() {
                             $group = ws_ls_groups_get( $group_id );
                         ?>
                         <div class="postbox">
-                            <h3 class="hndle"><span><?php echo __('View Group', WE_LS_SLUG); ?><?php printf('%s', false === empty( $group['name'] ) ? ': ' . esc_html($group['name']) : '' ); ?></span></h3>
+                            <h3 class="hndle">
+                                    <span><?php echo __('View Group', WE_LS_SLUG); ?>
+                                    <?php printf('%s', false === empty( $group['name'] ) ? ': ' . esc_html( $group['name']) : '' ); ?></span>
+                                    <?php printf(' ( %d %s )', ws_ls_groups_count( $group_id ), __('user(s)', WE_LS_SLUG) ); ?>
+                            </h3>
                             <div style="padding: 0px 15px 0px 15px">
 
                                 <?php if ( false === empty( $group ) ) : ?>
@@ -48,7 +52,7 @@ function ws_ls_admin_page_group_view() {
                                     <p>
                                         <a class="button-secondary" href="<?php echo admin_url( 'admin.php?page=ws-ls-settings&mode=groups' ); ?>">
                                             <i class="fa fa-arrow-left"></i>
-                                            <?php echo __('Back', WE_LS_SLUG); ?>
+                                            <?php echo __('All Groups', WE_LS_SLUG); ?>
                                         </a>
                                     </p>
 

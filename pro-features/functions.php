@@ -101,11 +101,28 @@ function ws_ls_get_link_to_user_data() {
 
 /**
  * Given a user ID, return a link to the user's profile
- * @param  int $id User ID
+ * @param  int $user_id User ID
  * @return string
  */
-function ws_ls_get_link_to_user_profile($id) {
-    return is_numeric($id) ? esc_url(admin_url( 'admin.php?page=ws-ls-data-home&mode=user&user-id=' . $id )) : '#';
+function ws_ls_get_link_to_user_profile( $user_id, $display_text = NULL ) {
+
+	$profile_url = admin_url( 'admin.php?page=ws-ls-data-home&mode=user&user-id=' . (int) $user_id );
+
+	$profile_url = esc_url( $profile_url );
+
+	return ( NULL !== $display_text ) ?
+			ws_ls_render_link( $profile_url, $display_text ) :
+			$profile_url;
+}
+
+/**
+ * @param $link
+ * @param $label
+ *
+ * @return string
+ */
+function ws_ls_render_link( $link, $label ) {
+	return sprintf( '<a href="%s">%s</a>', esc_url( $link ), esc_html( $label ) );
 }
 
 /**

@@ -242,6 +242,32 @@
 	}
 
 	/**
+	 * Fetch count of number of users in a group
+	 *
+	 * @param $id
+	 *
+	 * @return int
+	 */
+	function ws_ls_groups_count( $id ) {
+
+		global $wpdb;
+
+		if ( $cache = ws_ls_cache_user_get( 'groups', 'count-' . $id ) ) {
+			return $cache;
+		}
+
+		$sql = $wpdb->prepare('Select count( user_id ) from ' . $wpdb->prefix . WE_LS_MYSQL_GROUPS_USER . ' where group_id = %d', $id );
+
+		$count = $wpdb->get_var( $sql );
+
+		$count = (int) $count;
+
+		ws_ls_cache_user_set( 'groups', 'count-' .$id , $count );
+
+		return $count;
+	}
+
+	/**
 	 * Add a group
 	 *
 	 * @param $name
@@ -488,18 +514,17 @@
 		$columns = [
 			[ 'name' => 'id', 'title' => __('Group ID', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'number', 'visible' => true ],
 			[ 'name' => 'name', 'title' => __('Name', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ],
+			[ 'name' => 'count', 'title' => __('No. Users', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'number' ],
+			[ 'name' => 'weight_difference', 'title' => '', 'breakpoints'=> '', 'type' => 'number', 'visible' => false ],
+			[ 'name' => 'weight_display', 'title' => __('Total Weight Difference', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ]
 		];
 
 		$rows = ws_ls_groups( false );
 
-		// Is this the group stats table? If so , add weight difference column
-		if ( 'groups-list-stats' === $table_id ) {
-			$columns[] = [ 'name' => 'weight_difference', 'title' => '', 'breakpoints'=> '', 'type' => 'number', 'visible' => false ];
-			$columns[] = [ 'name' => 'weight_display', 'title' => __('Total Weight Difference', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ];
-
-			foreach ( $rows as &$row ) {
-				$row[ 'weight_display' ] = ws_ls_convert_kg_into_relevant_weight_String( $row[ 'weight_difference' ], true );
-			}
+		foreach ( $rows as &$row ) {
+			$row[ 'name' ] = ws_ls_render_link( ws_ls_groups_link_to_page( $row[ 'id' ] ) , $row[ 'name' ] );
+			$row[ 'weight_display' ] = ws_ls_convert_kg_into_relevant_weight_String( $row[ 'weight_difference' ], true );
+			$row[ 'count' ] = ws_ls_groups_count( $row[ 'id' ] );
 		}
 
 		$data = [
@@ -546,6 +571,8 @@
 		$rows = ws_ls_groups_users_for_given_group( $group_id );
 
 		foreach ( $rows as &$row ) {
+
+			$row[ 'display_name' ] = ws_ls_get_link_to_user_profile( $row[ 'user_id' ], $row[ 'display_name' ] );
 
             $stats = ws_ls_get_entry_counts( $row[ 'user_id' ] );
 
@@ -665,3 +692,16 @@
         return esc_html( $group_text );
     }
     add_shortcode( 'wlt-group', 'ws_ls_groups_current' );
+
+
+	/**
+	 * Given a group ID, return a link to the group page
+	 * @param  int $group_id
+	 * @return string
+	 */
+	function ws_ls_groups_link_to_page( $group_id ) {
+
+		$url = admin_url( 'admin.php?page=ws-ls-data-home&mode=groups&id=' . (int) $group_id );
+
+		return esc_url( $url );
+	}
