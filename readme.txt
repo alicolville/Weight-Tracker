@@ -159,6 +159,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 * Improvement: Added screens to view user's for a given group (also able to remove).
 * Improvement: Added a setting enable user's to edit their group.
+* Bug Fix: Fixed Latest 100 / 500 entries on user data summary to fetch latest entries instead of oldest.
 
 = 7.0.7 =
 
