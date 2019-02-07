@@ -157,13 +157,8 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 = 7.0.8 =
 
-// added group page to view users within a group
-// Improved group tables to display number of users
-
-// TODO: Compress data.footable.js
-// TODO: If groups have been setup, shall we add it to the main menu? Or have a setting to enable disable?
-// TODO: Add an option to allow the user to edit their group?
-// TODO: Fix the "latest 500" issue from Spanish guy.
+* Improvement: Added screens to view user's for a given group (also able to remove).
+* Improvement: Added a setting enable user's to edit their group.
 
 = 7.0.7 =
 
