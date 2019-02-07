@@ -20,12 +20,11 @@ function ws_ls_settings_page_generic() {
 		$clear_cache = true;
 	}
 
-	if($clear_cache) {
+	if( $clear_cache ) {
 		ws_ls_delete_all_cache();
 	}
 
-
-		?>
+	?>
 	<div class="wrap ws-ls-admin-page">
 
 <?php
@@ -141,7 +140,6 @@ function ws_ls_settings_page_generic() {
                                                             <select id="ws-ls-display-bmi-in-tables" name="ws-ls-display-bmi-in-tables">
                                                                 <option value="yes" <?php selected( get_option('ws-ls-display-bmi-in-tables'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
                                                                 <option value="no" <?php selected( get_option('ws-ls-display-bmi-in-tables'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
-
                                                             </select>
                                                             <p><?php echo __('If enabled, BMI values will be displayed alongside weight entries in data tables.', WE_LS_SLUG)?></p>
                                                         </td>
@@ -226,6 +224,15 @@ function ws_ls_settings_page_generic() {
                                                         </select>
                                                         <p><?php echo __('Add the ability to place your user\'s into groups.', WE_LS_SLUG)?></p>
                                                         <br /><p><a href="<?php echo ws_ls_groups_link(); ?>" class="button"><?php echo __( 'Manage User Groups' , WE_LS_SLUG); ?></a></p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="<?php echo $disable_if_not_pro_class; ?>">
+                                                    <th scope="row"><?php echo __( 'Allow user\'s to edit their own group?' , WE_LS_SLUG); ?></th>
+                                                    <td>
+                                                        <select id="ws-ls-enable-groups-user-edit" name="ws-ls-enable-groups-user-edit">
+                                                            <option value="no" <?php selected( get_option('ws-ls-enable-groups-user-edit'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+                                                            <option value="yes" <?php selected( get_option('ws-ls-enable-groups-user-edit'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+                                                        </select>
                                                     </td>
                                                 </tr>
                                             </table>
@@ -726,6 +733,7 @@ function ws_ls_register_settings(){
 
 	    // Groups
 	    register_setting( 'we-ls-options-group', 'ws-ls-enable-groups' );
+	    register_setting( 'we-ls-options-group', 'ws-ls-enable-groups-user-edit' );
 
 	    // Birthdays
 	    register_setting( 'we-ls-options-group', 'ws-ls-enable-birthdays' );

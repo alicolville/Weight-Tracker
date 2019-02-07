@@ -15,10 +15,11 @@ function ws_ls_get_table_data()
 	$table_id = ws_ls_ajax_post_value('table_id');
 	$small_width = ('true' === ws_ls_ajax_post_value('small_width')) ? true : false;
 	$front_end = ('true' === ws_ls_ajax_post_value('front-end')) ? true : false;
+    $order_direction = ws_ls_ajax_post_value( 'order-direction' );
 
 	$data = array(
-					'columns' => ws_ls_data_table_get_columns($small_width, $front_end),
-					'rows' => ws_ls_data_table_get_rows($user_id, $max_entries, $small_width, $front_end),
+					'columns' => ws_ls_data_table_get_columns( $small_width, $front_end ),
+					'rows' => ws_ls_data_table_get_rows( $user_id, $max_entries, $small_width, $front_end, $order_direction),
 					'table_id' => $table_id
 				);
 
