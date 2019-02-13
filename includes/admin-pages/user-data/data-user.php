@@ -150,7 +150,7 @@ function ws_ls_admin_page_data_user() {
                                 <div class="inside">
                                     <?php
 
-                                        if(false === ws_ls_macro_validate_percentages()) {
+                                        if( false === ws_ls_macro_validate_percentages() ) {
                                             echo printf( '%s <a href="%s">%s</a>%s',
                                                     __('Please ensure the values for Proteins, Carbohydrates and Fats (within ', WE_LS_SLUG),
                                                     ws_ls_get_link_to_settings(),

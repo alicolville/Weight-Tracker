@@ -1,9 +1,9 @@
 ﻿=== Weight Tracker ===
 Contributors: aliakro
 Tags: weight, loss, lose, helper, bmi, body, mass, index, graph, track, stones, kg, table, data, plot, target, history, pounds, responsive, chart, measurements, cm, centimeters, inches, hip, waist, bicep, thigh
-Requires at least: 4.4.0
-Tested up to: 5.0.2
-Stable tag: 7.0.8
+Requires at least: 4.4.9
+Tested up to: 5.0.3
+Stable tag: 7.0.9
 
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -151,9 +151,15 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 == Upgrade Notice ==
 
-7.0 - Awards and Badges! Create awards that your user's can achieve for meeting certain targets!
+7.0.9 - Now add calorie values for gaining weight.
 
 == Changelog ==
+
+= 7.0.9 =
+
+* Improvement: Added a new setting to specify the calories required to gain weight.
+* Improvement: Added the option to show and hide Gain or Loss calculations for MacroN and Calories.
+* Improvement: Shortcodes now support "gain" figures.
 
 = 7.0.8 =
 
