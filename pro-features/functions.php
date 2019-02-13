@@ -464,13 +464,13 @@ function ws_ls_display_user_setting($user_id, $field = 'dob', $not_specified_tex
  * @param $user_id
  * @return bool
  */
-function ws_ls_is_female($user_id) {
+function ws_ls_is_female( $user_id ) {
 
-    $user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
+    $user_id = ( true === empty( $user_id ) ) ? get_current_user_id() : $user_id;
 
-    $gender = ws_ls_get_user_setting('gender', $user_id);
+    $gender = ws_ls_get_user_setting( 'gender', $user_id );
 
-    return (false === empty($gender) && 1 == intval($gender)) ? true : false;
+    return ( false === empty( $gender ) && 1 == (int) $gender ) ? true : false;
 }
 
 /**
@@ -580,9 +580,18 @@ function ws_user_exist_check($user_id) {
  */
 function ws_ls_get_progress_attribute_from_aim() {
 
-    $aim_int = intval( ws_ls_get_user_setting( 'aim' ) );
+    $aim_int = (int) ws_ls_get_user_setting( 'aim' );
 
-    $aim_string = ( 2 === $aim_int ) ? 'lose' : 'maintain';
+    switch ( $aim_int ) {
+	    case 1:
+		    $aim_string = 'maintain';
+		    break;
+	    case 3:
+	    	$aim_string = 'gain';
+	    	break;
+	    default:
+		    $aim_string = 'lose';
+    }
 
     $aim_string = apply_filters('wlt-filter-aim-progress-attribute', $aim_string, $aim_int );
 

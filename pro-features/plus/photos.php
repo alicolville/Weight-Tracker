@@ -326,7 +326,7 @@ function ws_ls_photos_db_get_all_photos(    $user_id = false,
 		return $cache;
 	}
 
-	$limit = ( false === empty($limit) && is_numeric($limit) ) ? ' limit 0, ' . intval($limit) : '';
+	$limit = ( false === empty($limit) && is_numeric($limit) ) ? ' limit 0, ' . (int) $limit : '';
 
 	$sql = 'Select d.id, d.weight_weight, d.weight_pounds, d.weight_stones, d.weight_only_pounds, d.weight_notes, d.weight_date, e.value as photo_id, f.field_name, f.sort 
 			from ' . $wpdb->prefix . WE_LS_MYSQL_META_ENTRY . ' e 
@@ -412,7 +412,7 @@ function ws_ls_photos_db_count_photos( $user_id = false, $hide_from_shortcodes =
 
 	$count = $wpdb->get_var( $wpdb->prepare( $sql, $user_id) );
 
-    $count = ( false === empty($count) ) ? intval($count) : 0;
+    $count = ( false === empty($count) ) ? (int) $count : 0;
     
     ws_ls_cache_user_set( $user_id, $cache_key, $count );
     return $count;

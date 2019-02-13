@@ -109,7 +109,7 @@
 
 	    foreach ( $photos as $photo ) {
 		    if ( false === empty( $photo['value'] ) ) {
-			    wp_delete_attachment( intval( $photo['value'] ) , true );
+			    wp_delete_attachment( (int) $photo['value'] , true );
 		    }
 	    }
 

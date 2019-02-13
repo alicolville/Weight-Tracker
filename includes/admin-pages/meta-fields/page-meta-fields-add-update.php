@@ -42,7 +42,7 @@
             $id = $meta_field['id'];
         }
 
-        $id = intval( $id );
+        $id = (int) $id;
 
         ?>
         <div class="wrap">
@@ -75,7 +75,7 @@
                                                 </div>
                                                 <div class="ws-ls-cell">
                                                     <?php
-                                                        $checked = ( false === empty( $meta_field['field_type'] ) ) ? intval( $meta_field['field_type'] ) : 0;
+                                                        $checked = ( false === empty( $meta_field['field_type'] ) ) ? (int) $meta_field['field_type'] : 0;
                                                     ?>
                                                     <select name="field_type" id="field_type">
                                                         <option value="0" <?php selected( $checked, 0 ); ?>><?php echo __('Number', WE_LS_SLUG); ?></option>
@@ -92,7 +92,7 @@
                                                 <div class="ws-ls-cell">
                                                     <label for="hide_from_shortcodes"><?php echo __('Hide from shortcodes', WE_LS_SLUG); ?></label>
                                                 </div>
-	                                            <?php $checked = ( false === empty( $meta_field['hide_from_shortcodes'] ) && 2 === intval( $meta_field['hide_from_shortcodes'] ) ) ? 2 : 0; ?>
+	                                            <?php $checked = ( false === empty( $meta_field['hide_from_shortcodes'] ) && 2 === (int) $meta_field['hide_from_shortcodes'] ) ? 2 : 0; ?>
                                                 <div class="ws-ls-cell">
                                                     <select name="hide_from_shortcodes" id="hide_from_shortcodes">
                                                         <option value="1" <?php selected( $checked, 1 ); ?>><?php echo __('No', WE_LS_SLUG); ?></option>
@@ -133,7 +133,7 @@
                                                 </div>
                                                 <div class="ws-ls-cell">
                                                     <?php
-                                                    $checked = ( false === empty( $meta_field['sort'] ) ) ? intval( $meta_field['sort'] ) : 100;
+                                                    $checked = ( false === empty( $meta_field['sort'] ) ) ? (int) $meta_field['sort'] : 100;
                                                     ?>
                                                     <select name="sort" id="sort">
                                                         <?php for ( $i = 0; $i <= 200; $i = $i + 10 ): ?>
@@ -147,7 +147,7 @@
                                                 <div class="ws-ls-cell ws-ls-label-col">
                                                     <label for="mandatory"><?php echo __('Mandatory', WE_LS_SLUG); ?></label>
                                                 </div>
-                                                <?php $checked = ( false === empty( $meta_field['mandatory'] ) && 2 === intval( $meta_field['mandatory'] ) ) ? 2 : 0; ?>
+                                                <?php $checked = ( false === empty( $meta_field['mandatory'] ) && 2 === (int) $meta_field['mandatory'] ) ? 2 : 0; ?>
                                                 <div class="ws-ls-cell">
                                                     <select name="mandatory" id="mandatory">
                                                         <option value="1" <?php selected( $checked, 1 ); ?>><?php echo __('No', WE_LS_SLUG); ?></option>
@@ -159,7 +159,7 @@
                                                 <div class="ws-ls-cell ws-ls-label-col">
                                                     <label for="enabled"><?php echo __('Enabled', WE_LS_SLUG); ?></label>
                                                 </div>
-                                                <?php $checked = ( false === empty( $meta_field['enabled'] ) && 2 === intval( $meta_field['enabled'] ) ) ? 2 : 1; ?>
+                                                <?php $checked = ( false === empty( $meta_field['enabled'] ) && 2 === (int) $meta_field['enabled'] ) ? 2 : 1; ?>
                                                 <div class="ws-ls-cell">
                                                     <select name="enabled" id="enabled">
                                                         <option value="1" <?php selected( $checked, 1 ); ?>><?php echo __('No', WE_LS_SLUG); ?></option>

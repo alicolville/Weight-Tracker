@@ -50,6 +50,22 @@
         return ( false === $result ) ? false : $wpdb->insert_id;
     }
 
+	/**
+	 * Delete awards to a user
+	 *
+	 * @param $user_id
+	 * @return bool
+	 */
+	function ws_ls_awards_db_delete_awards_for_user( $user_id ) {
+
+		global $wpdb;
+
+		$result = $wpdb->delete( $wpdb->prefix . WE_LS_MYSQL_AWARDS_GIVEN , [ 'user_id' => $user_id ], [ '%d' ] );
+
+		ws_ls_cache_user_delete( $user_id );
+
+	}
+
     /**
      * Fetch all Awards
      *

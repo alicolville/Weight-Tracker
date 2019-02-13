@@ -130,8 +130,7 @@
 		'WE_LS_VIEW_EDIT_USER_PERMISSION_LEVEL' => 'manage_options', // Default to admin only being allowed to edit / view user data
         'WS_LS_CAL_CAP_MALE' => 1900,
         'WS_LS_CAL_CAP_FEMALE' => 1400,
-        'WS_LS_CAL_TO_SUBTRACT' => 600,
-        'WS_LS_MACRO_PROTEINS' => 25,
+		'WS_LS_MACRO_PROTEINS' => 25,
         'WS_LS_MACRO_CARBS' => 50,
         'WS_LS_MACRO_FATS' => 25,
 		'WE_LS_PHOTOS_MAX_SIZE' => false,
@@ -366,7 +365,7 @@
 	    $photo_max_size = get_option('ws-ls-photos-max-size');
 
 	    if(is_numeric($photo_max_size)) {
-		    $globals['WE_LS_PHOTOS_MAX_SIZE'] = intval($photo_max_size);
+		    $globals['WE_LS_PHOTOS_MAX_SIZE'] = (int) $photo_max_size;
 	    }
 
     }
@@ -381,39 +380,33 @@
 	    $female_cal_cap = get_option('ws-ls-female-cal-cap');
 
 	    if(is_numeric($female_cal_cap)) {
-            $globals['WS_LS_CAL_CAP_FEMALE'] = intval($female_cal_cap);
+            $globals['WS_LS_CAL_CAP_FEMALE'] =  (int) $female_cal_cap;
         }
 
         $male_cal_cap = get_option('ws-ls-male-cal-cap');
 
         if(is_numeric($male_cal_cap)) {
-            $globals['WS_LS_CAL_CAP_MALE'] = intval($male_cal_cap);
+            $globals['WS_LS_CAL_CAP_MALE'] =  (int) $male_cal_cap;
         }
 
-        $cal_to_subtract = get_option('ws-ls-cal-subtract');
-
-        if(is_numeric($cal_to_subtract) && $cal_to_subtract > 0) {
-            $globals['WS_LS_CAL_TO_SUBTRACT'] = intval($cal_to_subtract);
-        }
-
-        // Macro N
+	    // Macro N
 
         $macro_value = get_option('ws-ls-macro-proteins');
 
         if(is_numeric($macro_value) && $macro_value > 0 && $macro_value < 100) {
-            $globals['WS_LS_MACRO_PROTEINS'] = intval($macro_value);
+            $globals['WS_LS_MACRO_PROTEINS'] = (int) $macro_value;
         }
 
         $macro_value = get_option('ws-ls-macro-carbs');
 
         if(is_numeric($macro_value) && $macro_value > 0 && $macro_value < 100) {
-            $globals['WS_LS_MACRO_CARBS'] = intval($macro_value);
+            $globals['WS_LS_MACRO_CARBS'] = (int) $macro_value;
         }
 
         $macro_value = get_option('ws-ls-macro-fats');
 
         if(is_numeric($macro_value) && $macro_value > 0 && $macro_value < 100) {
-            $globals['WS_LS_MACRO_FATS'] = intval($macro_value);
+            $globals['WS_LS_MACRO_FATS'] = (int) $macro_value;
         }
 
     }

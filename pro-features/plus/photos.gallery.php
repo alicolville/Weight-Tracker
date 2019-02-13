@@ -53,7 +53,7 @@ function ws_ls_photos_shortcode_gallery($user_defined_arguments) {
 	$arguments['height'] = ws_ls_force_numeric_argument($arguments['height'], 800);
 	$arguments['user-id'] = ws_ls_force_numeric_argument($arguments['user-id'], get_current_user_id());
 	$arguments['mode'] = ws_ls_photos_gallery_validate_mode($arguments['mode']);
-	$arguments['limit'] = ( false === empty($arguments['limit']) ) ? intval($arguments['limit']) : false;
+	$arguments['limit'] = ( false === empty($arguments['limit']) ) ? (int) $arguments['limit'] : false;
 	$arguments['direction'] = ( false === in_array($arguments['direction'], ['asc', 'desc'])) ? 'desc' : $arguments['direction'];
 
 	// Only allow this to render awards if in pro mode
@@ -64,7 +64,7 @@ function ws_ls_photos_shortcode_gallery($user_defined_arguments) {
 	$html = $arguments['error-message'];
 
 	// Deal with 100%
-	$thumb_width = ( $arguments['width'] === '100%') ? 1200 : intval( $arguments['width'] );
+	$thumb_width = ( $arguments['width'] === '100%') ? 1200 : (int) $arguments['width'];
 
 	if ( 'awards' === $arguments['source'] ) {
 

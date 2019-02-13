@@ -42,13 +42,13 @@ function ws_ls_save_preferences_callback()
 	// Save Height?
     $fields['height'] = false;
 	if(!is_null(ws_ls_ajax_post_value('we-ls-height'))) {
-        $fields['height'] = intval(ws_ls_ajax_post_value('we-ls-height'));
+        $fields['height'] = (int) ws_ls_ajax_post_value('we-ls-height');
 	}
 
     // Save Activity Level, DoB, Aim and Gender
-    $fields['gender'] = (!is_null(ws_ls_ajax_post_value('ws-ls-gender'))) ? intval(ws_ls_ajax_post_value('ws-ls-gender')) : 0;
-    $fields['aim'] = (!is_null(ws_ls_ajax_post_value('ws-ls-aim'))) ? intval(ws_ls_ajax_post_value('ws-ls-aim')) : 0;
-    $fields['activity_level'] = (!is_null(ws_ls_ajax_post_value('ws-ls-activity-level'))) ? floatval(ws_ls_ajax_post_value('ws-ls-activity-level')) : 0;
+    $fields['gender'] = (!is_null(ws_ls_ajax_post_value('ws-ls-gender'))) ? (int) ws_ls_ajax_post_value('ws-ls-gender') : 0;
+    $fields['aim'] = (!is_null(ws_ls_ajax_post_value('ws-ls-aim'))) ? (int) ws_ls_ajax_post_value('ws-ls-aim') : 0;
+    $fields['activity_level'] = (!is_null(ws_ls_ajax_post_value('ws-ls-activity-level'))) ? (float) ws_ls_ajax_post_value('ws-ls-activity-level') : 0;
     $fields['dob'] = (!is_null(ws_ls_ajax_post_value('ws-ls-dob'))) ? ws_ls_ajax_post_value('ws-ls-dob') : false;
     $fields['user_id'] = ws_ls_ajax_post_value('user-id');
 
