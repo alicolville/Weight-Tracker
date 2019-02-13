@@ -134,6 +134,25 @@ function ws_ls_weight_difference_previous( $user_id = false ){
 	return $display_string;
 }
 
+/**
+ *
+ * Render the shortcode for difference between current and previous weight [wlt-weight-difference-previous]
+ *
+ * @return string
+ *
+ */
+function ws_ls_shortcode_difference_between_recent_previous_weight() {
+
+	if ( false === WS_LS_IS_PRO ) {
+		return '';
+	}
+
+	return ws_ls_weight_difference_previous( NULL );
+
+}
+add_shortcode('wlt-weight-difference-previous', 'ws_ls_shortcode_difference_between_recent_previous_weight');
+
+
 function ws_ls_get_start_weight_in_kg($user_id = false){
 
 	$user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;

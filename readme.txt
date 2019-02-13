@@ -157,6 +157,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 = 7.0.9 =
 
+* New Feature: Added new shortcode to show difference between current weight and previous [wlt-weight-difference-previous]
 * Improvement: Added a new setting to specify the calories required to gain weight.
 * Improvement: Added the option to show and hide Gain or Loss calculations for MacroN and Calories.
 * Improvement: Shortcodes now support "gain" figures.
