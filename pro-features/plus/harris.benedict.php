@@ -304,7 +304,7 @@ function ws_ls_harris_benedict_show_gain_figures() {
 		return false;
 	}
 
-	return 'no' === get_option('ws-ls-cal-show-gain', true ) ? false : true;
+	return 'yes' === get_option('ws-ls-cal-show-gain', false ) ? true : false;
 }
 
 /**
