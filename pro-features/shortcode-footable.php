@@ -18,7 +18,7 @@
 		$arguments['enable-add-edit'] = ws_ls_force_bool_argument($arguments['enable-add-edit']);
 
 		// Check, that the person logged in is the person that is wanting to do the editing.
-		if( get_current_user_id() !== intval($arguments['user-id']) && true === $arguments['enable-add-edit']) {
+		if( get_current_user_id() !== (int) $arguments['user-id'] && true === $arguments['enable-add-edit']) {
 			$arguments['enable-add-edit'] = false;
 		}
 

@@ -452,12 +452,12 @@ function ws_ls_force_bool_argument($value) {
 
     return false;
 }
-function ws_ls_force_numeric_argument($value, $default = false) {
-	if (is_numeric($value)) {
-		return intval($value);
+function ws_ls_force_numeric_argument( $value, $default = false ) {
+	if ( is_numeric( $value ) ) {
+		return (int) $value;
 	}
 
-    return ($default) ? $default : 0;
+    return ( $default ) ? $default : 0;
 }
 
 /**
@@ -478,7 +478,7 @@ function ws_ls_force_dimension_argument($value, $default = false) {
 		$value = ( $is_percentage ) ? ws_ls_remove_non_numeric($value) : $value;
 
 		// If not numeric or below 0, apply default
-		if ( false === is_numeric($value) || $value < intval($value) ) {
+		if ( false === is_numeric($value) || $value < (int) $value ) {
 			$value = ( false === empty($default) ) ? $default : 0;
 		}
 

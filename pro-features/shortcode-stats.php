@@ -70,7 +70,7 @@ function ws_ls_shortcode_stats_league_total($user_defined_arguments)
 				$percentage = '';
 
 				// Calculate %
-				if(true == $arguments['show_percentage'] && 0 !== intval($row['start_weight'])) {
+				if(true == $arguments['show_percentage'] && 0 !== (int) $row['start_weight'] ) {
 					$percentage = (($row['recent_weight'] - $row['start_weight']) / $row['start_weight']) * 100;
 					$percentage = (false === ws_ls_force_bool_argument($arguments['invert'])) ? $percentage : -$percentage ;
 					$percentage = round($percentage) . '%';
@@ -88,7 +88,7 @@ function ws_ls_shortcode_stats_league_total($user_defined_arguments)
 					<td ' . $table_cell . ' class="%3$s">%7$s</td>
 				</tr>',
 					$rank,
-					(('asc' == $arguments['order'] && $row['weight_difference'] < 0) || 'desc' == $arguments['order'] && $row['weight_difference'] > 0) ? ' ws-ls-good' : ' ws-ls-bad',
+					( ('asc' == $arguments['order'] && $row['weight_difference'] < 0 ) || ( 'desc' == $arguments['order'] && $row['weight_difference'] > 0 ) ) ? ' ws-ls-good' : ' ws-ls-bad',
                     ws_ls_blur(),
                     $display_name,
                     ws_ls_blur_text( $stats['display-value'] ),

@@ -161,6 +161,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 * Improvement: Added the option to show and hide Gain or Loss calculations for MacroN and Calories.
 * Improvement: Shortcodes now support "gain" figures.
 * Improvement: New button to delete all awards for a user.
+* Improvement: Replaced all intval() with (int).
 
 = 7.0.8 =
 

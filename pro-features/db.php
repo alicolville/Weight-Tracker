@@ -237,7 +237,7 @@ function ws_ls_stats_league_table_fetch($ignore_cache = false, $limit = 10, $los
 	// -------------------------------------------------
 	$sql .= $wpdb->prepare(
 							' limit 0, %d',
-							(empty($limit) || !is_numeric($limit)) ? 10 : intval($limit)
+							(empty($limit) || !is_numeric($limit)) ? 10 : (int) $limit
 						);
 
 	$results = $wpdb->get_results( $sql, ARRAY_A );
@@ -279,7 +279,7 @@ function ws_ls_user_search($name, $limit = false) {
 				ORDER BY user_login ASC";
 
 		if ( false === empty($limit) ) {
-		    $sql .= ' limit 0, ' . intval($limit);
+		    $sql .= ' limit 0, ' . (int) $limit;
         }
 
 		$sql = $wpdb->prepare($sql, $name, $name, $name, $name, $name);
@@ -317,7 +317,7 @@ function ws_ls_user_get($id) {
 				LEFT JOIN {$wpdb->prefix}usermeta um ON ( {$wpdb->prefix}users.ID = um.user_id )
 				WHERE 1=1 AND {$wpdb->prefix}users.ID = %d";
 
-        $id = intval($id);
+        $id = (int) $id;
 
         $sql = $wpdb->prepare($sql, $id);
 

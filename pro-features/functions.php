@@ -464,13 +464,13 @@ function ws_ls_display_user_setting($user_id, $field = 'dob', $not_specified_tex
  * @param $user_id
  * @return bool
  */
-function ws_ls_is_female($user_id) {
+function ws_ls_is_female( $user_id ) {
 
-    $user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
+    $user_id = ( true === empty( $user_id ) ) ? get_current_user_id() : $user_id;
 
-    $gender = ws_ls_get_user_setting('gender', $user_id);
+    $gender = ws_ls_get_user_setting( 'gender', $user_id );
 
-    return (false === empty($gender) && 1 == intval($gender)) ? true : false;
+    return ( false === empty( $gender ) && 1 == (int) $gender ) ? true : false;
 }
 
 /**

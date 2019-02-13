@@ -97,7 +97,7 @@ function ws_ls_data_table_get_rows($user_id = false, $max_entries = false,
 	$previous_user_weight = [];
 
 	// If in front end, load user's weight format
-	$convert_weight_format = ( true === $front_end ) ? intval($user_id) : false;
+	$convert_weight_format = ( true === $front_end ) ? (int) $user_id : false;
 
 	if ( false === empty( $user_data['weight_data'] ) ) {
         foreach ( $user_data['weight_data'] as $data) {

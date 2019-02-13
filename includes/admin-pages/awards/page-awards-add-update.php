@@ -251,7 +251,7 @@ function ws_ls_awards_add_update_page() {
                                             <div class="ws-ls-cell ws-ls-label-col">
                                                 <label for="apply_to_add"><?php echo __('Apply to new entries?', WE_LS_SLUG); ?></label>
                                             </div>
-                                            <?php $checked = ( false === empty( $award['apply_to_add'] ) && 1 === intval( $award['apply_to_add'] ) ) ? 1 : 0; ?>
+                                            <?php $checked = ( false === empty( $award['apply_to_add'] ) && 1 === (int) $award['apply_to_add'] ) ? 1 : 0; ?>
                                             <div class="ws-ls-cell">
                                                 <select name="apply_to_add" id="apply_to_add">
                                                     <option value="1" <?php selected( $checked, 1 ); ?>><?php echo __('Yes', WE_LS_SLUG); ?></option>
@@ -264,7 +264,7 @@ function ws_ls_awards_add_update_page() {
                                             <div class="ws-ls-cell ws-ls-label-col">
                                                 <label for="apply_to_update"><?php echo __('Apply to updated entries?', WE_LS_SLUG); ?></label>
                                             </div>
-                                            <?php $checked = ( false === empty( $award['apply_to_update'] ) && 1 === intval( $award['apply_to_update'] ) ) ? 1 : 0; ?>
+                                            <?php $checked = ( false === empty( $award['apply_to_update'] ) && 1 === (int) $award['apply_to_update'] ) ? 1 : 0; ?>
                                             <div class="ws-ls-cell">
                                                 <select name="apply_to_update" id="apply_to_update">
                                                     <option value="1" <?php selected( $checked, 1 ); ?>><?php echo __('Yes', WE_LS_SLUG); ?></option>
@@ -277,7 +277,7 @@ function ws_ls_awards_add_update_page() {
                                             <div class="ws-ls-cell ws-ls-label-col">
                                                 <label for="enabled"><?php echo __('Send Email', WE_LS_SLUG); ?></label>
                                             </div>
-                                            <?php $checked = ( false === empty( $award['send_email'] ) && 2 === intval( $award['send_email'] ) ) ? 2 : 0; ?>
+                                            <?php $checked = ( false === empty( $award['send_email'] ) && 2 === (int) $award['send_email'] ) ? 2 : 0; ?>
                                             <div class="ws-ls-cell">
                                                 <select name="send_email" id="send_email">
                                                     <option value="2" <?php selected( $checked, 2 ); ?>><?php echo __('Yes', WE_LS_SLUG); ?></option>
@@ -289,7 +289,7 @@ function ws_ls_awards_add_update_page() {
                                             <div class="ws-ls-cell ws-ls-label-col">
                                                 <label for="enabled"><?php echo __('Enabled', WE_LS_SLUG); ?></label>
                                             </div>
-                                            <?php $checked = ( false === empty( $award['enabled'] ) && 2 === intval( $award['enabled'] ) ) ? 2 : 0; ?>
+                                            <?php $checked = ( false === empty( $award['enabled'] ) && 2 === (int) $award['enabled'] ) ? 2 : 0; ?>
                                             <div class="ws-ls-cell">
                                                 <select name="enabled" id="enabled">
                                                     <option value="1" <?php selected( $checked, 1 ); ?>><?php echo __('No', WE_LS_SLUG); ?></option>

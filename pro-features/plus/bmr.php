@@ -56,7 +56,7 @@
         $bmr = NULL;
 
         // Calculate BMR based on gender
-        if (1 === intval($gender)) {
+        if (1 === (int) $gender ) {
             // Female:  655.1 + (9.6 * weight [kg]) + (1.8 * size [cm]) − (4.7 * age [years])
             $bmr = 655.1 + (9.6 * $weight) + (1.8 * $height) - (4.7 * $age);
         } else {

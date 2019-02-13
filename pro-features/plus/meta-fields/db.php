@@ -67,7 +67,7 @@ function ws_ls_meta_add_to_entry( $data ) {
 	// Get Meta Field ID
     if ( true === is_numeric( $data['key'] ) ) {
 
-        $meta_field['id'] = intval( $data['key'] );
+        $meta_field['id'] = (int) $data['key'];
 
     } else {
         // Fetch information about the meta field
@@ -186,7 +186,7 @@ function ws_ls_meta_fields_enabled() {
 
         // Remove any disabled fields!
         $fields = array_filter( $fields, function( $value ) {
-            return ( false === empty( $value['enabled'] ) && 2 === intval( $value['enabled'] ) );
+            return ( false === empty( $value['enabled'] ) && 2 === (int) $value['enabled'] );
         });
 
         return $fields;
@@ -273,7 +273,7 @@ function ws_ls_meta_fields_update( $field ) {
     if ( 1 === $result ) {
 
         // If the field type has changed in this update then delete existing data entries (as they won't relate to the new field type).
-        if( intval( $previous_values['field_type'] ) !== intval( $field['field_type'] ) ) {
+        if( (int) $previous_values['field_type'] !== (int) $field['field_type'] ) {
             ws_ls_meta_delete_for_meta_field( $id );
         }
 
@@ -361,7 +361,7 @@ function ws_ls_meta_fields_key_exist( $key ) {
 
     $count = $wpdb->get_var( $sql );
 
-    return ( 0 === intval( $count ) ) ? false : true;
+    return ( 0 === (int) $count ) ? false : true;
 }
 
 /**

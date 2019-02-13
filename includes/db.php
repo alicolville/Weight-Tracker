@@ -669,7 +669,7 @@ function ws_ls_get_entry_counts($user_id = false, $use_cache = true) {
 
     $stats = ['number-of-users' => false, 'number-of-entries' => false, 'number-of-targets' => false];
 
-    $where = (false === empty($user_id) && true === is_numeric($user_id)) ? intval($user_id) : false;
+    $where = (false === empty($user_id) && true === is_numeric($user_id)) ? (int) $user_id : false;
 
     $stats['number-of-entries'] = $wpdb->get_var('SELECT count(id) FROM ' . $wpdb->prefix . WE_LS_TABLENAME . (($where) ? ' where weight_user_id = ' . $where : ''));
     $stats['number-of-users'] = $wpdb->get_var('SELECT count(ID) FROM ' . $wpdb->prefix . 'users');

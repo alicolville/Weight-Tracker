@@ -365,7 +365,7 @@
 	    $photo_max_size = get_option('ws-ls-photos-max-size');
 
 	    if(is_numeric($photo_max_size)) {
-		    $globals['WE_LS_PHOTOS_MAX_SIZE'] = intval($photo_max_size);
+		    $globals['WE_LS_PHOTOS_MAX_SIZE'] = (int) $photo_max_size;
 	    }
 
     }

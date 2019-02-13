@@ -131,7 +131,7 @@ function ws_ls_delete_cache_for_given_user($user_id = false)
 			return;
 		}
 
-		$user_id = intval( $user_id );
+		$user_id = (int) $user_id;
 
 		$sql = "Delete FROM  $wpdb->options
 				WHERE option_name LIKE '%transient_" . WE_LS_SLUG . WE_LS_CURRENT_VERSION . $user_id ."%'";
