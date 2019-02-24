@@ -42,7 +42,7 @@
 
 	                foreach ( $awards['awards']['weight'] as $weight_award ) {
 
-						if ( (int) $weight_award['value'] > $weight_difference_from_start ) {
+						if ( (float) $weight_award['value'] > $weight_difference_from_start ) {
 	                        continue;
                         }
 
