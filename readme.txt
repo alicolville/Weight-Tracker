@@ -4,7 +4,6 @@ Tags: weight, loss, lose, helper, bmi, body, mass, index, graph, track, stones, 
 Requires at least: 4.4.9
 Tested up to: 5.0.3
 Stable tag: 7.0.10
-
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate Link: https://www.paypal.me/yeken
@@ -210,6 +209,9 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 = 7.0.1 =
 
 * Improvement: Added filter to allow a custom section to be inserted into user record.
+
+= 7.0.1 =
+
 * Bug fix: Fixed issue with "Warning: Invalid argument supplied for foreach()" in Awards
 
 = 7.0 =
