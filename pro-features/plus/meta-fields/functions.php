@@ -74,7 +74,7 @@
 
             foreach ( $data_for_entry as $entry ) {
 
-                if ( intval( $meta_field_id ) === intval( $entry[ 'meta_field_id' ] ) ) {
+                if ( (int) $meta_field_id === (int) $entry[ 'meta_field_id' ] ) {
                     return $entry[ 'value' ];
                 }
 
@@ -109,7 +109,7 @@
      * @return string
      */
     function ws_ls_meta_fields_form_field_generate_id( $id ) {
-        return ( false === empty( $id ) ) ? 'ws-ls-meta-field-' . intval( $id ) : '';
+        return ( false === empty( $id ) ) ? 'ws-ls-meta-field-' . (int) $id: '';
     }
 
     /**
@@ -146,7 +146,7 @@
 
         if ( false === empty( $meta_field['field_type'] ) ) {
 
-            $meta_field['field_type'] = intval( $meta_field['field_type'] );
+            $meta_field['field_type'] = (int) $meta_field['field_type'];
 
             // Yes / No
             if ( 2 === $meta_field['field_type'] ) {
@@ -193,7 +193,7 @@
      */
     function ws_ls_fields_display_field_value_yes_no( $value ) {
 
-        switch ( intval( $value ) ) {
+        switch ( (int) $value ) {
             case 1:
                 return __('No', WE_LS_SLUG);
                 break;
@@ -222,7 +222,7 @@
 
             $value = ws_ls_meta_fields_get_value_for_entry( $entry_id, $field[ 'id' ] );
 
-            switch ( intval( $field[ 'field_type' ] ) ) {
+            switch ( (int) $field[ 'field_type' ] ) {
 
                 case 1:
                     $html .= ws_ls_meta_fields_form_field_text( $field, $value );
@@ -265,7 +265,7 @@
                         </div>',
             ws_ls_meta_fields_form_field_generate_id( $field['id'] ),
             esc_attr( $field['field_name'] ),
-            2 === intval($field['mandatory']) ? ' required' : '',
+            2 === (int) $field['mandatory'] ? ' required' : '',
             ws_ls_get_next_tab_index(),
             ( false === empty( $value ) ) ? esc_attr( $value ) : '',
             __('Please enter a value for', WE_LS_SLUG)
@@ -288,7 +288,7 @@
                         </div>',
             ws_ls_meta_fields_form_field_generate_id( $field['id'] ),
             esc_attr( $field['field_name'] ),
-            2 === intval( $field['mandatory'] ) ? ' required' : '',
+            2 === (int)  $field['mandatory'] ? ' required' : '',
             ws_ls_get_next_tab_index(),
             ( false === empty( $value ) ) ? esc_attr( $value ) : '',
             __('Please enter a number for', WE_LS_SLUG)
@@ -314,9 +314,9 @@
                             ws_ls_get_next_tab_index()
         );
 
-        $value = intval( $value );
+        $value = (int) $value;
 
-        if ( 2 !== intval($field['mandatory']) ) {
+        if ( 2 !== (int) $field['mandatory'] ) {
             $html .= sprintf( '<option value="0" %1$s ></option>', selected( $value, 0, false ) );
         }
 
@@ -367,8 +367,8 @@
             esc_attr( $field_id ),
             ws_ls_get_next_tab_index(),
             ( false === empty( $value ) ) ? __('Replace photo', WE_LS_SLUG) : __('Select photo', WE_LS_SLUG),
-            2 === intval($field['mandatory']) ? 'y' : 'n',
-            true === empty( $value ) && 2 === intval( $field['mandatory'] ) ? 'required' : '',
+            2 === (int) $field['mandatory'] ? 'y' : 'n',
+            true === empty( $value ) && 2 === (int) $field['mandatory'] ? 'required' : '',
             __('Please select a photo (png or jpg) for', WE_LS_SLUG),
             esc_attr( $field['field_name'] )
         );
@@ -376,7 +376,7 @@
 		// Do we have an existing photo?
 		if ( false === empty( $value ) ) {
 
-			$attachment_id = intval( $value );
+			$attachment_id = (int) $value;
 
 			$thumbnail = wp_get_attachment_image_src( $attachment_id );
 			$full_url = wp_get_attachment_url( $attachment_id );
@@ -398,13 +398,13 @@
 					esc_url( $full_url ),
 					esc_url( $thumbnail[0] ),
 					__('Existing photo for this date', WE_LS_SLUG),
-					intval( $attachment_id),
-					intval( $thumbnail[1] ),
-					intval( $thumbnail[2] ),
+	                (int) $attachment_id,
+	                (int) $thumbnail[1],
+	                (int) $thumbnail[2],
 					__( 'Delete existing photo', WE_LS_SLUG ),
 					__( 'Existing photo', WE_LS_SLUG ),
                     esc_attr( $field_id ),
-                    2 === intval( $field['mandatory'] ) ? 'y' : 'n'
+                    2 === (int) $field['mandatory'] ? 'y' : 'n'
 				);
 			}
 		}

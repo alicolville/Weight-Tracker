@@ -21,13 +21,17 @@ jQuery( document ).ready(function ($) {
         ws_ls_post_data($post_data, ws_ls_clear_target_callback);
     });
 
-    function ws_ls_clear_target_callback(data, response)
-    {
+    function ws_ls_clear_target_callback( data, response ) {
+
         if (response == 1) {
+
             ws_ls_show_you_need_to_refresh_messages();
-        }
-        else
-        {
+
+            if( ws_ls_config["current-url"] ) {
+                window.location.replace( ws_ls_config["current-url"] + "?target-cleared=true");
+            }
+
+        } else {
             console.log("Error clearing target :(", data, response);
         }
     }
@@ -93,23 +97,23 @@ jQuery( document ).ready(function ($) {
 
         });
 
-		var form_preference_validation = false;
+        var form_preference_validation = false;
 
-		// // Do we want to force all About You fields in user preferences to be madatory?
-		if ("true" == ws_ls_config['validation-about-you-mandatory']) {
+        // // Do we want to force all About You fields in user preferences to be madatory?
+        if ("true" == ws_ls_config['validation-about-you-mandatory']) {
 
-			form_preference_validation = $( ".ws-ls-user-pref-form" ).validate({
-	            errorClass: "ws-ls-invalid",
-	            validClass: "ws-ls-valid",
-	            errorContainer: ".ws-ls-user-pref-form .ws-ls-error-summary",
-	            errorLabelContainer: ".ws-ls-user-pref-form .ws-ls-error-summary ul",
-	            wrapper: "li",
-				rules: ws_ls_config['validation-user-pref-rules'],
-				messages: ws_ls_config["validation-user-pref-messages"],
+            form_preference_validation = $( ".ws-ls-user-pref-form" ).validate({
+                errorClass: "ws-ls-invalid",
+                validClass: "ws-ls-valid",
+                errorContainer: ".ws-ls-user-pref-form .ws-ls-error-summary",
+                errorLabelContainer: ".ws-ls-user-pref-form .ws-ls-error-summary ul",
+                wrapper: "li",
+                rules: ws_ls_config['validation-user-pref-rules'],
+                messages: ws_ls_config["validation-user-pref-messages"],
                 submitHandler: function(form) {
                     ws_ls_submit_preference_form();
-	            }
-	        });
+                }
+            });
 
             $.extend(jQuery.validator.messages, {
                 required: ws_ls_config["validation-required"],
@@ -131,7 +135,7 @@ jQuery( document ).ready(function ($) {
                 //min: jQuery.validator.format("Please enter a value greater than or equal to {0}.")
             });
 
-			//If a datepicker is on this form
+            //If a datepicker is on this form
             if ($(".ws-ls-user-pref-form .we-ls-datepicker").length) {
                 // Validate date
                 if ("true" == ws_ls_config["us-date"]) {
@@ -147,11 +151,11 @@ jQuery( document ).ready(function ($) {
                     });
                 }
             }
-		}
+        }
 
-		/**
-		* Post user preferences to AJAX handler
-		**/
+        /**
+         * Post user preferences to AJAX handler
+         **/
         function ws_ls_submit_preference_form() {
 
             var post_data = {};
@@ -212,29 +216,29 @@ jQuery( document ).ready(function ($) {
 
     });
 
-	// ------------------------------------------------------------------------
-	// User for file selector labels
-	// ------------------------------------------------------------------------
-	var inputs = document.querySelectorAll( '.ws-ls-input-file' );
-	Array.prototype.forEach.call( inputs, function( input )
-	{
-		var label	 = input.nextElementSibling,
-			labelVal = label.innerHTML;
+    // ------------------------------------------------------------------------
+    // User for file selector labels
+    // ------------------------------------------------------------------------
+    var inputs = document.querySelectorAll( '.ws-ls-input-file' );
+    Array.prototype.forEach.call( inputs, function( input )
+    {
+        var label	 = input.nextElementSibling,
+            labelVal = label.innerHTML;
 
-		input.addEventListener( 'change', function( e )
-		{
-			var fileName = e.target.value.split( '\\' ).pop();
+        input.addEventListener( 'change', function( e )
+        {
+            var fileName = e.target.value.split( '\\' ).pop();
 
-			if( fileName )
-				label.querySelector( 'span' ).innerHTML = fileName;
-			else
-				label.innerHTML = labelVal;
-		});
+            if( fileName )
+                label.querySelector( 'span' ).innerHTML = fileName;
+            else
+                label.innerHTML = labelVal;
+        });
 
-		// Firefox bug fix
-		input.addEventListener( 'focus', function(){ input.classList.add( 'has-focus' ); });
-		input.addEventListener( 'blur', function(){ input.classList.remove( 'has-focus' ); });
-	});
+        // Firefox bug fix
+        input.addEventListener( 'focus', function(){ input.classList.add( 'has-focus' ); });
+        input.addEventListener( 'blur', function(){ input.classList.remove( 'has-focus' ); });
+    });
 });
 
 function ws_ls_post_data(data, callback)
@@ -253,12 +257,12 @@ function ws_ls_user_preference_callback(data, response)
     if (response == 1) {
 
         // Is there a redirect url specified on the form itself? If so, redirect to that URL.
-		var redirect_url = jQuery(".ws-ls-user-pref-form").data('redirect-url');
+        var redirect_url = jQuery(".ws-ls-user-pref-form").data('redirect-url');
 
-		if(redirect_url) {
-			window.location.replace(redirect_url);
+        if(redirect_url) {
+            window.location.replace(redirect_url);
         } else {
-			window.location.replace(ws_ls_config["current-url"] + "?user-preference-saved=true");
+            window.location.replace(ws_ls_config["current-url"] + "?user-preference-saved=true");
         }
     }
     else

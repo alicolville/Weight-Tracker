@@ -38,15 +38,19 @@
 
                 if ( false === empty( $awards['counts']['weight'] ) ) {
 
-                    $weight_difference_from_start = absint( $weight_object['difference_from_start_kg'] );
+	                $weight_difference_from_start = abs( $weight_object['difference_from_start_kg'] );
+
+	                $weight_difference_from_start = round( $weight_difference_from_start, 2 );
 
 	                foreach ( $awards['awards']['weight'] as $weight_award ) {
 
-						if ( (int) $weight_award['value'] > $weight_difference_from_start ) {
+		                $weight_award['value'] = round( $weight_award['value'], 2 );
+
+		                if ( $weight_award['value'] > $weight_difference_from_start ) {
 	                        continue;
                         }
-
-                        if ( ( true === $losing_weight && 'loss' === $weight_award['gain_loss'] ) || ( false === $losing_weight && 'gain' === $weight_award['gain_loss'] )  ) {
+                        if ( ( true === $losing_weight && 'loss' === $weight_award['gain_loss'] ) ||
+                                ( false === $losing_weight && 'gain' === $weight_award['gain_loss'] )  ) {
 
                             ws_ls_awards_db_given_add( $info['user-id'], $weight_award['id'] );
 

@@ -322,7 +322,7 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 
 	// Do we have data? If so, embed existing row ID
 	if(!empty($existing_data['db_row_id']) && is_numeric($existing_data['db_row_id'])) {
-        $entry_id = intval( $existing_data['db_row_id'] );
+        $entry_id = (int) $existing_data['db_row_id'];
 		$html_output .= '<input type="hidden" value="' . $entry_id . '" id="db_row_id" name="db_row_id" />';
 	}
  
@@ -411,7 +411,7 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 
 	$html_output .= '<div class="ws-ls-form-buttons">
 						<div>
-						    <div class="ws-ls-error-summary">
+						    <div class="ws-ls-error-summary ws-ls-hide-if-admin">
 						        <p>' . __('Please correct the following:', WE_LS_SLUG) . '</p>
                                 <ul></ul>
                             </div>
@@ -529,7 +529,7 @@ function ws_ls_capture_form_validate_and_save($user_id = false)
 	}
 
 	// Do we have a row ID embedded in the form (i.e. are we in admin and editing an entry)?
-	$existing_db_id = (false === empty($_POST['db_row_id'])) ? intval($_POST['db_row_id']) : false;
+	$existing_db_id = (false === empty($_POST['db_row_id'])) ? (int) $_POST['db_row_id'] : false;
 
     // ---------------------------------------------
     // Process Meta Fields
@@ -543,7 +543,7 @@ function ws_ls_capture_form_validate_and_save($user_id = false)
             $field_key = ws_ls_meta_fields_form_field_generate_id( $field['id'] );
 
             // If photo, we need to process the upload
-            if ( true === WS_LS_IS_PRO && 3 === intval( $field[ 'field_type' ] ) ) {
+            if ( true === WS_LS_IS_PRO && 3 === (int) $field[ 'field_type' ] ) {
 
             	$photo_upload = ws_ls_meta_fields_photos_process_upload( $field_key, $weight_object[ 'date-display' ] , $user_id, $existing_db_id, $field['id'] );
 
@@ -560,7 +560,12 @@ function ws_ls_capture_form_validate_and_save($user_id = false)
 
     }
 
-	$result = ws_ls_save_data($user_id, $weight_object, $is_target_form, $existing_db_id);
+    // If nothing was entered for a target weight, then delete existing.
+    if ( true === $is_target_form && true === empty( $weight_object['kg'] ) ) {
+        ws_ls_delete_target( $user_id );
+    }
+
+	$result = ws_ls_save_data( $user_id, $weight_object, $is_target_form, $existing_db_id );
 
     return $result;
 }

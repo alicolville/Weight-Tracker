@@ -452,12 +452,12 @@ function ws_ls_force_bool_argument($value) {
 
     return false;
 }
-function ws_ls_force_numeric_argument($value, $default = false) {
-	if (is_numeric($value)) {
-		return intval($value);
+function ws_ls_force_numeric_argument( $value, $default = false ) {
+	if ( is_numeric( $value ) ) {
+		return (int) $value;
 	}
 
-    return ($default) ? $default : 0;
+    return ( $default ) ? $default : 0;
 }
 
 /**
@@ -478,7 +478,7 @@ function ws_ls_force_dimension_argument($value, $default = false) {
 		$value = ( $is_percentage ) ? ws_ls_remove_non_numeric($value) : $value;
 
 		// If not numeric or below 0, apply default
-		if ( false === is_numeric($value) || $value < intval($value) ) {
+		if ( false === is_numeric($value) || $value < (int) $value ) {
 			$value = ( false === empty($default) ) ? $default : 0;
 		}
 
@@ -565,25 +565,19 @@ function ws_ls_format_stones_pound_for_comparison_display($weight) {
 
 function ws_ls_querystring_value($key, $force_to_int = false, $default = false) {
 
-		$return_value = NULL;
+    $return_value = NULL;
 
-	    if(isset($_GET[$key]) && $force_to_int) {
-	        return intval($_GET[$key]);
-	    }
-	    elseif(isset($_GET[$key])) {
-	    	return $_GET[$key];
-	    }
+    if ( true === isset( $_GET[$key] ) ) {
+        return ( true === $force_to_int ) ? (int) $_GET[$key] : $_GET[$key];
+    }
 
-		// Use default if aval
-		if ($default && is_null($return_value)) {
-			$return_value = $default;
-		}
-    return $return_value;
+    // Use default if available
+    return ( false !== $default && true === is_null( $return_value ) ) ? $default : $return_value;
 }
 
 function ws_ls_ajax_post_value($key, $json_decode = false)
 {
-	if(isset($_POST[$key]) && $json_decode) {
+	if( isset($_POST[$key]) && $json_decode) {
 		return json_decode($_POST[$key]);
 	}
 	elseif(isset($_POST[$key])) {
@@ -679,11 +673,10 @@ function ws_ls_display_notice($text, $type = 'success') {
 	echo sprintf('	<div class="notice notice-%s">
 						<p>%s</p>
 					</div>',
-					esc_html($type),
-					esc_html($text)
+                    wp_kses_post( $type ),
+                    wp_kses_post( $text )
 				);
 }
-
 /**
  * If QS value detected, display data saved message
  */
@@ -814,7 +807,7 @@ function ws_ls_photo_max_upload_size() {
 		return 2000000;
 	}
 
-	return ( $file_size > $max_size ) ? intval( $max_size ) : intval( $file_size) ;
+	return ( $file_size > $max_size ) ? (int) $max_size : (int) $file_size;
 }
 
 

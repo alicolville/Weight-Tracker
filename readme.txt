@@ -1,9 +1,9 @@
 ﻿=== Weight Tracker ===
 Contributors: aliakro
 Tags: weight, loss, lose, helper, bmi, body, mass, index, graph, track, stones, kg, table, data, plot, target, history, pounds, responsive, chart, measurements, cm, centimeters, inches, hip, waist, bicep, thigh
-Requires at least: 4.4.0
-Tested up to: 5.0.0
-Stable tag: 7.0.1
+Requires at least: 4.4.9
+Tested up to: 5.0.3
+Stable tag: 7.0.10
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate Link: https://www.paypal.me/yeken
@@ -30,7 +30,7 @@ Support for US/UK date formats as well as Imperial and Metric measurements.
 
 For further information read our documentation:
 
-[Weight Tracker Website - Shortcode guide](https://weight.yeken.uk/shortcodes "Weight Tracker Website - Shortcode guide")
+[Weight Tracker - Documentation](https://weight.yeken.uk/shortcodes "Weight Tracker - Documentation")
 
 = Pro Plus Version =
 
@@ -150,9 +150,65 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 == Upgrade Notice ==
 
-7.0 - Awards and Badges! Create awards that your user's can achieve for meeting certain targets!
+7.0.10 - Fixed rounding issues that caused some weight loss awards not to be issued.
 
 == Changelog ==
+
+= 7.0.10 =
+
+* Bug Fix: Fixed rounding issues that caused some weight loss awards not to be issued.
+
+= 7.0.9 =
+
+* New Feature: Added new shortcode to show difference between current weight and previous [wlt-weight-difference-previous]
+* Improvement: Added a new setting to specify the calories required to gain weight.
+* Improvement: Added the option to show and hide Gain or Loss calculations for MacroN and Calories.
+* Improvement: Shortcodes now support "gain" figures.
+* Improvement: New button to delete all awards for a user.
+* Improvement: Replaced all intval() with (int).
+
+= 7.0.8 =
+
+* Improvement: Added screens to view user's for a given group (also able to remove).
+* Improvement: Added a setting enable user's to edit their group.
+* Bug Fix: Fixed Latest 100 / 500 entries on user data summary to fetch latest entries instead of oldest.
+
+= 7.0.7 =
+
+* Improvement: On user summary page, changed "Show All Entries" to "Show 500 most recent". On large sites, fetching all data was causing performance issues.
+* Bug Fix: Fixed issues with selected="selected" randomly appearing.
+* Bug fix: Removed duplicate chart opacity setting.
+
+= 7.0.6 =
+
+* Improvement: Added shortcode for user's previous weight [wlt-weight-previous]
+* Improvement: Issue 179. Optimised deletion of redundant stats entries.
+* Improvement: Issue 195. Increased award title length to 200 characters.
+* Improvement: Issue 188. Display an admin warning if the Weight Tracker license expires within 14 days!
+* Improvement: Issue 177. Updated Chart.js library.
+
+= 7.0.5 =
+
+* Improvement: Added additional Dutch translations.
+
+= 7.0.4 =
+
+* Improvement: Added Dutch Formal (copied from Dutch).
+* Improvement: Increased granularity of height values.
+* Improvement: Updated plugin title and description. Removed references to "loss" from "Weight Loss Tracker".
+* Improvement: When a target is cleared, redirect back to current page so UI refreshes.
+
+= 7.0.3 =
+
+* Bug fix: Addressed another "Can't use function return value in write context" error in photos.
+
+= 7.0.2 =
+
+* Bug fix: Addressed a "Can't use function return value in write context" error in photos.
+
+= 7.0.1 =
+
+* Improvement: Added filter to allow a custom section to be inserted into user record.
 
 = 7.0.1 =
 

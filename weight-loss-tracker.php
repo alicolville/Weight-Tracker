@@ -3,15 +3,15 @@
 defined('ABSPATH') or die('Jog on!');
 
 /**
- * Plugin Name: Weight Loss Tracker
- * Description: Allow registered users of your website to track their weight and relevant body measurements. History can be displayed in both tables & charts.
- * Version: 7.0.1
+ * Plugin Name: Weight Tracker
+ * Description: Allow your users to track their weight, measurements and other pieces of custom data. Display in charts, tables, shortcodes and widgets. Manage their data, issue awards, email notifications, etc! Provide advanced data on Body Mass Index (BMI), Basal Metabolic Rate (BMR), Calorie intake, Harris Benedict Formula, Macronutrients Calculator and more.
+ * Version: 7.0.10
  * Author: YeKen
  * Author URI: https://www.YeKen.uk
  * License: GPL2
  * Text Domain: weight-loss-tracker
  */
-/*  Copyright 2018 YeKen.uk
+/*  Copyright 2019 YeKen.uk
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License, version 2, as
@@ -28,8 +28,8 @@ defined('ABSPATH') or die('Jog on!');
 */
 
     define('WS_LS_ABSPATH', plugin_dir_path( __FILE__ ));
-    define('WE_LS_CURRENT_VERSION', '7.0.1');
-    define('WE_LS_DB_VERSION', '7.0.1');
+    define('WE_LS_CURRENT_VERSION', '7.0.10');
+    define('WE_LS_DB_VERSION', '7.0.10');
 
 // -----------------------------------------------------------------------------------------
 // AC: Activate / Deactivate / Uninstall Hooks
@@ -85,6 +85,7 @@ defined('ABSPATH') or die('Jog on!');
 	    'includes/admin-pages/settings/page-settings.php',
 	    'includes/admin-pages/settings/page-settings-generic.php',
 	    'includes/admin-pages/settings/page-settings-groups.php',
+        'includes/admin-pages/user-data/data-groups.php',
         'includes/admin-pages/page.license.php',
         'includes/admin-pages/page.help.php',
         'includes/admin-pages/meta-fields/page-meta-fields.php',

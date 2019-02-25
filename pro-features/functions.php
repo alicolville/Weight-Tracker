@@ -101,11 +101,28 @@ function ws_ls_get_link_to_user_data() {
 
 /**
  * Given a user ID, return a link to the user's profile
- * @param  int $id User ID
+ * @param  int $user_id User ID
  * @return string
  */
-function ws_ls_get_link_to_user_profile($id) {
-    return is_numeric($id) ? esc_url(admin_url( 'admin.php?page=ws-ls-data-home&mode=user&user-id=' . $id )) : '#';
+function ws_ls_get_link_to_user_profile( $user_id, $display_text = NULL ) {
+
+	$profile_url = admin_url( 'admin.php?page=ws-ls-data-home&mode=user&user-id=' . (int) $user_id );
+
+	$profile_url = esc_url( $profile_url );
+
+	return ( NULL !== $display_text ) ?
+			ws_ls_render_link( $profile_url, $display_text ) :
+			$profile_url;
+}
+
+/**
+ * @param $link
+ * @param $label
+ *
+ * @return string
+ */
+function ws_ls_render_link( $link, $label ) {
+	return sprintf( '<a href="%s">%s</a>', esc_url( $link ), esc_html( $label ) );
 }
 
 /**
@@ -272,39 +289,124 @@ function ws_ls_aims() {
     return $aims;
 }
 
+
+
 /**
  * Return an array of heights
  *
  * @return array
  */
 function ws_ls_heights() {
-	return array(
-		    0 => '',
-		    142 => '4\'8" - 142cm',
-		    145 => '4\'8" - 145cm',
-		    147 => '4\'9" - 147cm',
-		    150 => '4\'11" - 150cm',
-		  	152 => '5\'0" - 152cm',
-		  	155 => '5\'1" - 155cm',
-		    157 => '5\'2" - 157cm',
-		  	160 => '5\'3" - 160cm',
-		  	163 => '5\'4" - 163cm',
-		    165 => '5\'5" - 165cm',
-		  	168 => '5\'6" - 168cm',
-		  	170 => '5\'7" - 170cm',
-		    173 => '5\'8" - 173cm',
-		    175 => '5\'9" - 175cm',
-		    178 => '5\'10" - 178cm',
-		    180 => '5\'11" - 180cm',
-		    183 => '6\'0" - 183cm',
-		    185 => '6\'1" - 185cm',
-		    188 => '6\'2" - 188cm',
-		    191 => '6\'3" - 191cm',
-		    193 => '6\'4" - 193cm',
-		    195 => '6\'5" - 195cm',
-		    198 => '6\'6" - 198cm',
-		    201 => '6\'7" - 201cm'
-		);
+
+    $all_heights = ws_ls_heights_metric_to_imperial();
+
+    array_walk( $all_heights, 'ws_ls_heights_formatter' );
+
+    return $all_heights;
+}
+
+/**
+ * Return metric to imperial conversions for height.
+ *
+ * @param null $cm
+ * @return array|mixed
+ */
+function ws_ls_heights_metric_to_imperial( $cm = NULL ) {
+
+    $cm_to_metric = [
+                        122 => [ 'feet' => 4, 'inches' => 0 ],
+                        123 => [ 'feet' => 4, 'inches' => 0.4 ],
+                        124 => [ 'feet' => 4, 'inches' => 0.8 ],
+                        125 => [ 'feet' => 4, 'inches' => 1.2 ],
+                        126 => [ 'feet' => 4, 'inches' => 1.6 ],
+                        127 => [ 'feet' => 4, 'inches' => 2 ],
+                        128 => [ 'feet' => 4, 'inches' => 2.4 ],
+                        129 => [ 'feet' => 4, 'inches' => 2.8 ],
+                        130 => [ 'feet' => 4, 'inches' => 3.2 ],
+                        131 => [ 'feet' => 4, 'inches' => 3.6 ],
+                        132 => [ 'feet' => 4, 'inches' => 4 ],
+                        133 => [ 'feet' => 4, 'inches' => 4.4 ],
+                        134 => [ 'feet' => 4, 'inches' => 4.8 ],
+                        135 => [ 'feet' => 4, 'inches' => 5.1 ],
+                        136 => [ 'feet' => 4, 'inches' => 5.5 ],
+                        137 => [ 'feet' => 4, 'inches' => 5.9 ],
+                        138 => [ 'feet' => 4, 'inches' => 6.3 ],
+                        139 => [ 'feet' => 4, 'inches' => 6.7 ],
+                        140 => [ 'feet' => 4, 'inches' => 7.1 ],
+                        141 => [ 'feet' => 4, 'inches' => 7.5 ],
+                        142 => [ 'feet' => 4, 'inches' => 7.9 ],
+                        143 => [ 'feet' => 4, 'inches' => 8.3 ],
+                        144 => [ 'feet' => 4, 'inches' => 8.7 ],
+                        145 => [ 'feet' => 4, 'inches' => 9.1 ],
+                        146 => [ 'feet' => 4, 'inches' => 9.5 ],
+                        147 => [ 'feet' => 4, 'inches' => 9.9 ],
+                        148 => [ 'feet' => 4, 'inches' => 10.3 ],
+                        149 => [ 'feet' => 4, 'inches' => 10.7 ],
+                        150 => [ 'feet' => 4, 'inches' => 11.1 ],
+                        151 => [ 'feet' => 4, 'inches' => 11.4 ],
+                        152 => [ 'feet' => 4, 'inches' => 11.8 ],
+                        153 => [ 'feet' => 5, 'inches' => 0.2 ],
+                        154 => [ 'feet' => 5, 'inches' => 0.6 ],
+                        155 => [ 'feet' => 5, 'inches' => 1 ],
+                        156 => [ 'feet' => 5, 'inches' => 1.4 ],
+                        157 => [ 'feet' => 5, 'inches' => 1.8 ],
+                        158 => [ 'feet' => 5, 'inches' => 2.2 ],
+                        159 => [ 'feet' => 5, 'inches' => 2.6 ],
+                        160 => [ 'feet' => 5, 'inches' => 3 ],
+                        161 => [ 'feet' => 5, 'inches' => 3.4 ],
+                        162 => [ 'feet' => 5, 'inches' => 3.8 ],
+                        163 => [ 'feet' => 5, 'inches' => 4.2 ],
+                        164 => [ 'feet' => 5, 'inches' => 4.6 ],
+                        165 => [ 'feet' => 5, 'inches' => 5 ],
+                        166 => [ 'feet' => 5, 'inches' => 5.4 ],
+                        167 => [ 'feet' => 5, 'inches' => 5.7 ],
+                        168 => [ 'feet' => 5, 'inches' => 6.1 ],
+                        169 => [ 'feet' => 5, 'inches' => 6.5 ],
+                        170 => [ 'feet' => 5, 'inches' => 6.9 ],
+                        171 => [ 'feet' => 5, 'inches' => 7.3 ],
+                        172 => [ 'feet' => 5, 'inches' => 7.7 ],
+                        173 => [ 'feet' => 5, 'inches' => 8.1 ],
+                        174 => [ 'feet' => 5, 'inches' => 8.5 ],
+                        175 => [ 'feet' => 5, 'inches' => 8.9 ],
+                        176 => [ 'feet' => 5, 'inches' => 9.3 ],
+                        177 => [ 'feet' => 5, 'inches' => 9.7 ],
+                        178 => [ 'feet' => 5, 'inches' => 10.1 ],
+                        179 => [ 'feet' => 5, 'inches' => 10.5 ],
+                        180 => [ 'feet' => 5, 'inches' => 10.9 ],
+                        181 => [ 'feet' => 5, 'inches' => 11.3 ],
+                        182 => [ 'feet' => 5, 'inches' => 11.7 ],
+                        183 => [ 'feet' => 6, 'inches' => 0 ],
+                        184 => [ 'feet' => 6, 'inches' => 0.4 ],
+                        185 => [ 'feet' => 6, 'inches' => 0.8 ],
+                        186 => [ 'feet' => 6, 'inches' => 1.2 ],
+                        187 => [ 'feet' => 6, 'inches' => 1.6 ],
+                        188 => [ 'feet' => 6, 'inches' => 2 ],
+                        189 => [ 'feet' => 6, 'inches' => 2.4 ],
+                        190 => [ 'feet' => 6, 'inches' => 2.8 ],
+                        191 => [ 'feet' => 6, 'inches' => 3.2 ],
+                        192 => [ 'feet' => 6, 'inches' => 3.6 ],
+                        193 => [ 'feet' => 6, 'inches' => 4 ],
+                        194 => [ 'feet' => 6, 'inches' => 4.4 ],
+                        195 => [ 'feet' => 6, 'inches' => 4.8 ],
+                        196 => [ 'feet' => 6, 'inches' => 5.2 ],
+                        197 => [ 'feet' => 6, 'inches' => 5.6 ],
+                        198 => [ 'feet' => 6, 'inches' => 6 ],
+                        199 => [ 'feet' => 6, 'inches' => 6.3 ],
+                        200 => [ 'feet' => 6, 'inches' => 6.7 ],
+                        201 => [ 'feet' => 6, 'inches' => 7.1 ]
+    ];
+
+    return ( false === empty( $cm_to_metric[ $cm ] ) ) ? $cm_to_metric[ $cm ] : $cm_to_metric;
+}
+
+/**
+ * Used by array_walk to format height options (for <select>)
+ *
+ * @param $height
+ * @param $key
+ */
+function ws_ls_heights_formatter( &$height, $key ) {
+    $height = sprintf( '%3$d%4$s - %1$d\' %2$s"', $height['feet'], $height['inches'],  $key, __('cm', WE_LS_SLUG) );
 }
 
 /**
@@ -362,13 +464,13 @@ function ws_ls_display_user_setting($user_id, $field = 'dob', $not_specified_tex
  * @param $user_id
  * @return bool
  */
-function ws_ls_is_female($user_id) {
+function ws_ls_is_female( $user_id ) {
 
-    $user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
+    $user_id = ( true === empty( $user_id ) ) ? get_current_user_id() : $user_id;
 
-    $gender = ws_ls_get_user_setting('gender', $user_id);
+    $gender = ws_ls_get_user_setting( 'gender', $user_id );
 
-    return (false === empty($gender) && 1 == intval($gender)) ? true : false;
+    return ( false === empty( $gender ) && 1 == (int) $gender ) ? true : false;
 }
 
 /**
@@ -478,9 +580,18 @@ function ws_user_exist_check($user_id) {
  */
 function ws_ls_get_progress_attribute_from_aim() {
 
-    $aim_int = intval( ws_ls_get_user_setting( 'aim' ) );
+    $aim_int = (int) ws_ls_get_user_setting( 'aim' );
 
-    $aim_string = ( 2 === $aim_int ) ? 'lose' : 'maintain';
+    switch ( $aim_int ) {
+	    case 1:
+		    $aim_string = 'maintain';
+		    break;
+	    case 3:
+	    	$aim_string = 'gain';
+	    	break;
+	    default:
+		    $aim_string = 'lose';
+    }
 
     $aim_string = apply_filters('wlt-filter-aim-progress-attribute', $aim_string, $aim_int );
 

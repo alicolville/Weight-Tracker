@@ -20,12 +20,11 @@ function ws_ls_settings_page_generic() {
 		$clear_cache = true;
 	}
 
-	if($clear_cache) {
+	if( $clear_cache ) {
 		ws_ls_delete_all_cache();
 	}
 
-
-		?>
+	?>
 	<div class="wrap ws-ls-admin-page">
 
 <?php
@@ -141,7 +140,6 @@ function ws_ls_settings_page_generic() {
                                                             <select id="ws-ls-display-bmi-in-tables" name="ws-ls-display-bmi-in-tables">
                                                                 <option value="yes" <?php selected( get_option('ws-ls-display-bmi-in-tables'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
                                                                 <option value="no" <?php selected( get_option('ws-ls-display-bmi-in-tables'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
-
                                                             </select>
                                                             <p><?php echo __('If enabled, BMI values will be displayed alongside weight entries in data tables.', WE_LS_SLUG)?></p>
                                                         </td>
@@ -185,7 +183,7 @@ function ws_ls_settings_page_generic() {
 																if ( $size < $max_size ) {
 																	printf('<option value="%s" %s>%s</option>',
 																		$size,
-																		selected( $size, $current_size ),
+																		selected( $size, $current_size, false ),
 																		$label
 																	);
 																}
@@ -226,6 +224,15 @@ function ws_ls_settings_page_generic() {
                                                         </select>
                                                         <p><?php echo __('Add the ability to place your user\'s into groups.', WE_LS_SLUG)?></p>
                                                         <br /><p><a href="<?php echo ws_ls_groups_link(); ?>" class="button"><?php echo __( 'Manage User Groups' , WE_LS_SLUG); ?></a></p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="<?php echo $disable_if_not_pro_class; ?>">
+                                                    <th scope="row"><?php echo __( 'Allow user\'s to edit their own group?' , WE_LS_SLUG); ?></th>
+                                                    <td>
+                                                        <select id="ws-ls-enable-groups-user-edit" name="ws-ls-enable-groups-user-edit">
+                                                            <option value="no" <?php selected( get_option('ws-ls-enable-groups-user-edit'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+                                                            <option value="yes" <?php selected( get_option('ws-ls-enable-groups-user-edit'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+                                                        </select>
                                                     </td>
                                                 </tr>
                                             </table>
@@ -287,6 +294,16 @@ function ws_ls_settings_page_generic() {
                                             <h3><?php echo __( 'Calculating daily calorie intake to lose weight' , WE_LS_SLUG); ?></h3>
 
                                             <table class="form-table">
+                                                <tr>
+                                                    <th scope="row"><?php echo __( 'Show Loss figures?' , WE_LS_SLUG); ?></th>
+                                                    <td>
+                                                        <select id="ws-ls-cal-show-loss" name="ws-ls-cal-show-loss">
+                                                            <option value="yes" <?php selected( get_option('ws-ls-cal-show-loss'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+                                                            <option value="no" <?php selected( get_option('ws-ls-cal-show-loss'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+                                                        </select>
+                                                        <p><?php echo __('Show loss figures to your users? For example, if your site is aimed at muscle building, you may wish not to.', WE_LS_SLUG)?></p>
+                                                    </td>
+                                                </tr>
                                                  <tr class="<?php echo $disable_if_not_pro_plus_class; ?>">
                                                     <th scope="row"><?php echo __( 'Female Calorie Cap' , WE_LS_SLUG); ?></th>
                                                     <td>
@@ -304,11 +321,34 @@ function ws_ls_settings_page_generic() {
                                                 <tr class="<?php echo $disable_if_not_pro_plus_class; ?>">
                                                     <th scope="row"><?php echo __( 'Calories to subtract' , WE_LS_SLUG); ?></th>
                                                     <td>
-                                                        <input  type="number"  step="any" min="0" max="5000" name="ws-ls-cal-subtract" id="ws-ls-cal-subtract" value="<?php esc_attr_e(WS_LS_CAL_TO_SUBTRACT); ?>" size="11" />
+                                                        <input  type="number"  step="any" min="0" max="5000" name="ws-ls-cal-subtract" id="ws-ls-cal-subtract" value="<?php printf( '%d', ws_ls_harris_benedict_filter_calories_to_lose() ); ?>" size="11" />
                                                         <p><?php echo __('Part of calculating the daily calorie intake to lose weight is to first calculate the calorie intake to maintain existing weight. Once we have this, we subtract the above figure to calculate the daily calorie intake to lose weight.', WE_LS_SLUG);?>. <?php echo ws_ls_calculations_link(); ?>. <em><?php echo __( 'Please note, it may take up to 15 minutes for calculations to change (due to caching).' , WE_LS_SLUG); ?></em></p>
                                                     </td>
                                                 </tr>
                                             </table>
+
+                                            <h3><?php echo __( 'Calculating daily calorie intake to gain weight' , WE_LS_SLUG); ?></h3>
+
+                                            <table class="form-table">
+                                                <tr>
+                                                    <th scope="row"><?php echo __( 'Show Gain figures?' , WE_LS_SLUG); ?></th>
+                                                    <td>
+                                                        <select id="ws-ls-cal-show-gain" name="ws-ls-cal-show-gain">
+                                                            <option value="no" <?php selected( get_option('ws-ls-cal-show-gain'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+                                                            <option value="yes" <?php selected( get_option('ws-ls-cal-show-gain'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+                                                        </select>
+                                                        <p><?php echo __('Show gain figures to your users? For example, if your site is aimed at weight loss only, you may wish not to.', WE_LS_SLUG)?></p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="<?php echo $disable_if_not_pro_plus_class; ?>">
+                                                    <th scope="row"><?php echo __( 'Calories to add' , WE_LS_SLUG); ?></th>
+                                                    <td>
+                                                        <input  type="number"  step="any" min="0" max="5000" name="ws-ls-cal-add" id="ws-ls-cal-add" value="<?php printf( '%d', ws_ls_harris_benedict_filter_calories_to_add() ); ?>" size="11" />
+                                                        <p><?php echo __('Part of calculating the daily calorie intake to gain weight is to first calculate the calorie intake to maintain existing weight. Once we have this, we add the above figure to calculate the daily calorie intake to gain weight.', WE_LS_SLUG);?>. <?php echo ws_ls_calculations_link(); ?>. <em><?php echo __( 'Please note, it may take up to 15 minutes for calculations to change (due to caching).' , WE_LS_SLUG); ?></em></p>
+                                                    </td>
+                                                </tr>
+                                            </table>
+
                                             <h3><?php echo __( 'Macronutrient Calculator' , WE_LS_SLUG); ?></h3>
 
                                             <table class="form-table">
@@ -478,7 +518,7 @@ function ws_ls_settings_page_generic() {
 												<tr  class="<?php echo $disable_if_not_pro_class; ?>">
 													<th scope="row" class="<?php echo $disable_if_not_pro_class; ?>"><?php echo __( 'Weight Fill Opacity', WE_LS_SLUG ); ?></th>
 													<td>
-														<?php $chart_options = array('0.1', '0.2', '0.3', '0.4', '0.5', '0.5', '0.6', '0.7', '0.8', '0.9', '1'); ?>
+														<?php $chart_options = array('0.1', '0.2', '0.3', '0.4', '0.5', '0.6', '0.7', '0.8', '0.9', '1'); ?>
 														<select id="ws-ls-fill-under-weight-line-opacity" name="ws-ls-fill-under-weight-line-opacity">
 															<?php foreach ($chart_options as $option):?>
 																<option value="<?php echo $option; ?>" <?php selected( WE_LS_WEIGHT_FILL_LINE_OPACITY, $option ); ?>><?php echo $option; ?></option>
@@ -726,6 +766,7 @@ function ws_ls_register_settings(){
 
 	    // Groups
 	    register_setting( 'we-ls-options-group', 'ws-ls-enable-groups' );
+	    register_setting( 'we-ls-options-group', 'ws-ls-enable-groups-user-edit' );
 
 	    // Birthdays
 	    register_setting( 'we-ls-options-group', 'ws-ls-enable-birthdays' );
@@ -761,6 +802,9 @@ function ws_ls_register_settings(){
         register_setting( 'we-ls-options-group', 'ws-ls-female-cal-cap' );
         register_setting( 'we-ls-options-group', 'ws-ls-male-cal-cap' );
         register_setting( 'we-ls-options-group', 'ws-ls-cal-subtract' );
+	    register_setting( 'we-ls-options-group', 'ws-ls-cal-add' );
+	    register_setting( 'we-ls-options-group', 'ws-ls-cal-show-loss' );
+	    register_setting( 'we-ls-options-group', 'ws-ls-cal-show-gain' );
         register_setting( 'we-ls-options-group', 'ws-ls-macro-proteins' );
         register_setting( 'we-ls-options-group', 'ws-ls-macro-carbs' );
         register_setting( 'we-ls-options-group', 'ws-ls-macro-fats' );

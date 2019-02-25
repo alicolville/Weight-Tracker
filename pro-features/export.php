@@ -17,7 +17,7 @@ function ws_ls_export_data() {
     ws_ls_export_permission_check();
 
 	// Do we have a user ID? If so limit data
-	$filters = (false === empty($_GET['user-id']) && is_numeric($_GET['user-id'])) ? ['user-id' => intval($_GET['user-id'])] : false;
+	$filters = (false === empty($_GET['user-id']) && is_numeric($_GET['user-id'])) ? ['user-id' => (int) $_GET['user-id'] ] : false;
 
 	// Fetch all relevant weight entries that we're interested in
 	$export_data = ws_ls_user_data($filters);

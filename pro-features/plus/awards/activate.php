@@ -20,7 +20,7 @@ function ws_ls_awards_create_mysql_tables() {
 
     $sql = "CREATE TABLE $table_name (
                 id mediumint(9) NOT NULL AUTO_INCREMENT,
-                title varchar(40) NOT NULL,
+                title varchar(200) NOT NULL,
                 category varchar(20) NOT NULL,
                 gain_loss varchar(5) NULL DEFAULT NULL,
                 compare varchar(10) NULL DEFAULT NULL,

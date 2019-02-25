@@ -50,7 +50,7 @@
 		            true === empty( $_POST[ $field_key_delete ] ) &&
 		                true === empty( $_FILES[ $field_name ]['size'] ) ) {
 
-			return intval( $_POST[ $field_key_previous ] );
+			return (int) $_POST[ $field_key_previous ];
 		}
 
 		//--------------------------------------------------------------------------------
@@ -64,7 +64,7 @@
 
 			$previous_photo = $_POST[ $field_key_previous ];
 
-			wp_delete_attachment( intval( $previous_photo ) );
+			wp_delete_attachment( (int) $previous_photo );
 
             if ( false === empty( $entry_id ) && false === empty( $meta_field_id ) ) {
                ws_ls_meta_delete( (int) $entry_id, (int) $meta_field_id );
@@ -82,7 +82,7 @@
 			$photo_uploaded = $_FILES[ $field_name ];
 
 			// Within max file size?
-			if ( intval( $photo_uploaded['size'] ) < 0 || intval( $photo_uploaded['size'] ) > $max_field_size ) {
+			if ( (int) $photo_uploaded['size'] < 0 || (int) $photo_uploaded['size'] > $max_field_size ) {
 				ws_ls_log_add( $module, sprintf( 'Photo too big: %s. Details: %s / Max Size: %s', $field_name, json_encode( $photo_uploaded ), $max_field_size ) );
 				return false;
 			}
@@ -174,7 +174,7 @@
 	    foreach ( $fields as $field ) {
 
 	    	// Remove non photos
-            if ( 3 !== intval( $field['field_type'] ) ) {
+            if ( 3 !== (int) $field['field_type'] ) {
                 continue;
             }
 
@@ -183,7 +183,7 @@
 		    }
 
 			// If admin has stated to not show in shortcode then strip them out
-            if ( true === $hide_from_shortcodes && 2 === intval( $field['hide_from_shortcodes'] ) ) {
+            if ( true === $hide_from_shortcodes && 2 === (int) $field['hide_from_shortcodes'] ) {
                 continue;
             }
 
@@ -246,7 +246,7 @@
 
         $photo_fields = ws_ls_meta_fields_photos_all( false, true, true );
 
-        return ( true === is_array( $photo_fields ) && in_array( intval( $meta_field_id ), $photo_fields ) );
+        return ( true === is_array( $photo_fields ) && in_array( (int) $meta_field_id, $photo_fields ) );
     }
 
 	/**
@@ -292,7 +292,7 @@
 
         foreach ( $photos as $photo ) {
             if ( false === empty( $photo['value'] ) ) {
-                wp_delete_attachment( intval( $photo['value'] ) , true );
+                wp_delete_attachment( (int) $photo['value'] , true );
                 $count++;
             }
         }
@@ -311,13 +311,17 @@
             return false;
         }
 
+        $migration_already_done = get_option('ws-ls-meta-fields-photo-migrate-done', false );
+
         // Don't run if we have already performed this!
-        if ( false === $ignore_previous_run && false === empty( get_option('ws-ls-meta-fields-photo-migrate-done', false ) ) ) {
+        if ( false === $ignore_previous_run && false === empty( $migration_already_done ) ) {
             return false;
         }
 
+        $old_ids = ws_ls_meta_fields_photos_get_old_ids();
+
         // Do we have any photos?
-        if ( true === empty( ws_ls_meta_fields_photos_get_old_ids() )) {
+        if ( true === empty( $old_ids ) ) {
             return false;
         }
 

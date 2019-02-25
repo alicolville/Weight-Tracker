@@ -10,23 +10,27 @@ function ws_ls_harris_benedict_calculate_calories($user_id = false) {
 	$cache_key = $user_id . '-' . WE_LS_CACHE_KEY_HARRIS_BENEDICT;
 
 	// Do we have BMR cached?
-	if($cache = ws_ls_get_cache($cache_key)) {
+	if ( $cache = ws_ls_get_cache( $cache_key ) ) {
 		return $cache;
 	}
 
 	// First fetch the user's current BMR.
 	$bmr = ws_ls_calculate_bmr($user_id, false);
 
-	if(true === empty($bmr)) {
+	if( true === empty( $bmr ) ) {
 		return NULL;
 	}
 
 	// Fetch the user's activity level
 	$activity_level = ws_ls_get_user_setting('activity_level', $user_id);
 
-	if(true === empty($activity_level)) {
+	if( true === empty( $activity_level ) ) {
 		return NULL;
 	}
+
+	// --------------------------------------------------
+	// Total
+	// --------------------------------------------------
 
 	// We have activity level and bmr, calculate daily calories.
 	$calorie_intake['maintain'] = ['total' => round($activity_level * $bmr, 2), 'label' => __( 'Maintain', WE_LS_SLUG )];
@@ -34,24 +38,45 @@ function ws_ls_harris_benedict_calculate_calories($user_id = false) {
 	// Filter total
 	$calorie_intake['maintain']['total'] = apply_filters( 'wlt-filter-calories-maintain', $calorie_intake['maintain']['total'], $bmr, $activity_level );
 
-	$calories_to_lose = ($calorie_intake['maintain']['total'] > WS_LS_CAL_TO_SUBTRACT) ? $calorie_intake['maintain']['total'] - WS_LS_CAL_TO_SUBTRACT : $calorie_intake['maintain']['total'];
+	// --------------------------------------------------
+	// Lose
+	// --------------------------------------------------
 
-	$is_female = ws_ls_is_female($user_id);
+	$calories_to_lose = ws_ls_harris_benedict_filter_calories_to_lose();
+
+	$calories_to_lose = ( $calorie_intake['maintain']['total'] > $calories_to_lose ) ? $calorie_intake['maintain']['total'] - $calories_to_lose : $calorie_intake['maintain']['total'];
+
+	$is_female = ws_ls_is_female( $user_id );
 
 	// Female
-	if (true === $is_female && 0 !== WS_LS_CAL_CAP_FEMALE && $calories_to_lose > WS_LS_CAL_CAP_FEMALE) {
+	if ( true === $is_female && 0 !== WS_LS_CAL_CAP_FEMALE && $calories_to_lose > WS_LS_CAL_CAP_FEMALE ) {
 		$calories_to_lose = WS_LS_CAL_CAP_FEMALE;
-	} elseif (false === $is_female && 0 !== WS_LS_CAL_CAP_MALE && $calories_to_lose > WS_LS_CAL_CAP_MALE) {
+	} elseif ( false === $is_female && 0 !== WS_LS_CAL_CAP_MALE && $calories_to_lose > WS_LS_CAL_CAP_MALE ) {
 		$calories_to_lose = WS_LS_CAL_CAP_MALE;
 	}
 
 	$calorie_intake['lose'] = ['total' => $calories_to_lose, 'label' => __( 'Lose', WE_LS_SLUG ) ] ; // lose weight (1 to 2lbs per week)
 
-	// Filter total
+	// Filter lose total
 	$calorie_intake['lose']['total'] = apply_filters( 'wlt-filter-calories-lose', $calorie_intake['lose']['total'], $bmr, $activity_level, $calories_to_lose );
 
+	// --------------------------------------------------
+	// Gain
+	// --------------------------------------------------
+
+	$calories_to_gain = $calorie_intake['maintain']['total'] + ws_ls_harris_benedict_filter_calories_to_add();
+
+	$calorie_intake['gain'] = [ 'total' => $calories_to_gain, 'label' => __( 'Gain', WE_LS_SLUG ) ] ;
+
+	// Filter lose total
+	$calorie_intake['gain']['total'] = apply_filters( 'wlt-filter-calories-gain', $calorie_intake['gain']['total'], $bmr, $activity_level, $calories_to_gain );
+
+	// --------------------------------------------------
+	// Breakdown
+	// --------------------------------------------------
+
 	// Allow all calorie totals to be replaced or add additional rows.
-	$calorie_intake = apply_filters( 'wlt-filter-calories-pre', $calorie_intake, $bmr, $activity_level, $calories_to_lose );
+	$calorie_intake = apply_filters( 'wlt-filter-calories-pre', $calorie_intake, $bmr, $activity_level, $calories_to_lose, $calories_to_gain );
 
 	// Breakdown calories into meal types
 	foreach ($calorie_intake as $key => $data) {
@@ -114,11 +139,15 @@ function ws_ls_harris_benedict_render_table($user_id, $missing_data_text = false
 
 		$html .= apply_filters(WE_LS_FILTER_HARRIS_TOP_OF_TABLE, '', $calories);
 
-		$rows_to_display = apply_filters( 'wlt-filter-harris-benedict-rows', ['maintain', 'lose'] );
+		$rows_to_display = apply_filters( 'wlt-filter-harris-benedict-rows', [ 'maintain', 'lose', 'gain' ] );
 
 		$css_class = '';
 
 		foreach ( $rows_to_display as $row_name ) {
+
+			if ( false === isset( $calories[ $row_name ] ) ) {
+				continue;
+			}
 
 			$css_class = ( true === empty( $css_class ) ) ? 'alternate' : '';
 
@@ -138,8 +167,6 @@ function ws_ls_harris_benedict_render_table($user_id, $missing_data_text = false
 				esc_html($calories[$row_name]['dinner']),
 				esc_html($calories[$row_name]['snacks'])
 			);
-
-
 		}
 
 		$html .= '</table>';
@@ -170,11 +197,11 @@ function ws_ls_shortcode_harris_benedict($user_defined_arguments) {
 	$arguments = shortcode_atts([
 		'error-message' => __('Please ensure all relevant data to calculate calorie intake has been entered i.e. Activity Level, Date of Birth, Current Weight, Gender and Height.', WE_LS_SLUG ),
 		'user-id' => false,
-		'progress' => 'maintain',	// 'maintain', 'lose', 'auto'
+		'progress' => 'maintain',	// 'maintain', 'lose', 'gain', 'auto'
 		'type' => 'total'			// 'breakfast', 'lunch', 'dinner', 'snack', 'total'
 	], $user_defined_arguments );
 
-	$allowed_progress = apply_filters( WE_LS_FILTER_HARRIS_ALLOWED_PROGRESS, ['auto', 'maintain', 'lose']);
+	$allowed_progress = apply_filters( WE_LS_FILTER_HARRIS_ALLOWED_PROGRESS, [ 'auto', 'maintain', 'lose', 'gain' ]);
 
 	// If "progress" set as "auto", then determine from the user's aim which progress type to display
     if ( 'auto' === $arguments['progress'] ) {
@@ -251,3 +278,87 @@ function ws_ls_display_calorie_cap($user_id = false) {
 		__('settings', WE_LS_SLUG )
 	);
 }
+
+/**
+ * Show loss figures to users?
+ *
+ * @return bool
+ */
+function ws_ls_harris_benedict_show_lose_figures() {
+
+	if ( false === WS_LS_IS_PRO_PLUS ) {
+		return false;
+	}
+
+	return 'no' === get_option('ws-ls-cal-show-loss', true ) ? false : true;
+}
+
+/**
+ * Show gain figures to users?
+ *
+ * @return bool
+ */
+function ws_ls_harris_benedict_show_gain_figures() {
+
+	if ( false === WS_LS_IS_PRO_PLUS ) {
+		return false;
+	}
+
+	return 'yes' === get_option('ws-ls-cal-show-gain', false ) ? true : false;
+}
+
+/**
+ *
+ * Show / Hide gain or loss figures for MacroN or Harris Benedict tables
+ *
+ * @param $calorie_intake
+ *
+ * @return mixed
+ */
+function ws_ls_harris_benedict_filter_show_hide_gains_loss( $calorie_intake ) {
+
+	// Hide gains?
+	if ( true !== ws_ls_harris_benedict_show_gain_figures() ) {
+		unset( $calorie_intake['gain'] );
+	}
+
+	// Hide loss?
+	if ( true !== ws_ls_harris_benedict_show_lose_figures() ) {
+		unset( $calorie_intake['lose'] );
+	}
+
+	return $calorie_intake;
+}
+add_filter( 'wlt-filter-calories-pre', 'ws_ls_harris_benedict_filter_show_hide_gains_loss', 10, 1 );
+
+/**
+ * Return the setting for calories to gain weight
+ *
+ * @return int
+ */
+function ws_ls_harris_benedict_filter_calories_to_add() {
+
+	$cal_to_add = get_option('ws-ls-cal-add');
+
+	$cal_to_add = apply_filters( 'wlt-filter-calories-add-raw', $cal_to_add );
+
+	return ( is_numeric( $cal_to_add ) && $cal_to_add > 0) ? (int) $cal_to_add : 500;
+
+}
+
+/**
+ * Return the setting for calories to lose weight
+ *
+ * @return int
+ */
+function ws_ls_harris_benedict_filter_calories_to_lose() {
+
+	$cal_to_subtract = get_option('ws-ls-cal-subtract');
+
+	$cal_to_subtract = apply_filters( 'wlt-filter-calories-lose-raw', $cal_to_subtract );
+
+	return ( is_numeric( $cal_to_subtract ) && $cal_to_subtract > 0) ? (int) $cal_to_subtract : 600;
+
+}
+
+

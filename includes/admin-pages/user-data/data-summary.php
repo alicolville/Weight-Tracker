@@ -83,14 +83,14 @@ function ws_ls_admin_page_data_summary() {
                                        data-use-parent-width="true">
                                 </table>
                                 <a class="btn button-secondary" href="<?php echo admin_url( 'admin.php?page=ws-ls-data-home&regenerate-stats=y' ); ?>"><i class="fa fa-refresh"></i> <?php echo __('Regenerate these stats', WE_LS_SLUG); ?></a>
-
+                                <a class="btn button-secondary" href="<?php echo admin_url( 'admin.php?page=ws-ls-settings&mode=groups' ); ?>"><i class="fa fa-eye"></i> <?php echo __('View / Edit', WE_LS_SLUG); ?></a>
                             </div>
                         </div>
                     <?php endif; ?>
 					<div class="postbox">
 						<?php
 
-							// Show 100 most recent entries? Or show all?
+							// Show 100 most recent entries? Or show 500?
 							if(false === empty($_GET['show-all'])) {
 								$value = ('y' === $_GET['show-all']) ? true : false;
 								update_option('ws-ls-show-all', $value);
@@ -99,15 +99,18 @@ function ws_ls_admin_page_data_summary() {
 							$show_all = get_option('ws-ls-show-all') ? true : false;
 
 						?>
-						<h2 class="hndle"><span><?php echo ($show_all) ? __('All entries', WE_LS_SLUG) : __('Last 100 entries', WE_LS_SLUG); ?></span></h2>
+						<h2 class="hndle"><span><?php echo ($show_all) ? __('Last 500 entries', WE_LS_SLUG) : __('Last 100 entries', WE_LS_SLUG); ?></span></h2>
 						<div class="inside">
-							<?php echo ws_ls_data_table_placeholder(false, ($show_all) ? false : 100, true); ?>
-							<?php
-
+							<?php echo ws_ls_data_table_placeholder(    false,
+                                                                        ( $show_all ) ? 500 : 100,
+                                                                        true,
+                                                                        true,
+                                                                        'desc'
+                                );
 								echo sprintf(
 												'<a class="btn button-secondary" href="%s"><i class="fa fa-book"></i> %s</a>',
 												admin_url( 'admin.php?page=ws-ls-data-home&show-all=') . ((false === $show_all) ? 'y' : 'n'),
-												(false === $show_all) ? __('Show all entries', WE_LS_SLUG) : __('Show 100 recent entries', WE_LS_SLUG)
+												(false === $show_all) ? __('Show 500 recent entries', WE_LS_SLUG) : __('Show 100 recent entries', WE_LS_SLUG)
 											);
 
 						 	?>

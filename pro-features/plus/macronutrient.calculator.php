@@ -13,20 +13,25 @@ function ws_ls_macro_calculate($user_id = false) {
        return $cache;
     }
 
-    $calories = ws_ls_harris_benedict_calculate_calories($user_id);
+    $calories = ws_ls_harris_benedict_calculate_calories( $user_id );
 
-    $macros = apply_filters( 'wlt-filter-macros-custom', [], $calories);
+    $macros = apply_filters( 'wlt-filter-macros-custom', [], $calories );
 
     // If a 3rd party plugin has specified macros then no point carrying on below!
     if ( false === empty( $macros ) ) {
         return $macros;
     }
 
-    if (true === isset($calories['lose']['total'], $calories['maintain']['total'])) {
+    if ( true === isset( $calories['maintain']['total'] ) ) {
 
-        $macros_to_calculate = apply_filters( 'wlt-filter-macros-calculate', ['maintain', 'lose'], $calories);
+        $macros_to_calculate = apply_filters( 'wlt-filter-macros-calculate', ['maintain', 'lose', 'gain' ], $calories);
 
         foreach ( $macros_to_calculate as $key ) {
+
+        	// If the data doesn't exist then skip over!
+        	if ( false === isset( $calories[ $key ] ) ) {
+        		continue;
+	        }
 
             $macros[$key]['calories'] = $calories[$key]['total'];
 
@@ -89,19 +94,23 @@ function ws_ls_macro_render_table($user_id, $missing_data_text = false, $additio
 
     $user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
 
-    $macros = ws_ls_macro_calculate($user_id);
+    $macros = ws_ls_macro_calculate( $user_id );
 
-    $missing_data_text = (false === $missing_data_text) ? __('Please ensure all relevant data to calculate calorie intake has been entered i.e. Activity Level, Date of Birth, Current Weight, Gender and Height.', WE_LS_SLUG) : $missing_data_text;
+    $missing_data_text = ( false === $missing_data_text ) ? __('Please ensure all relevant data to calculate calorie intake has been entered i.e. Activity Level, Date of Birth, Current Weight, Gender and Height.', WE_LS_SLUG) : $missing_data_text;
 
-    if (false === empty($macros)) {
+    if ( false === empty( $macros ) ) {
 
         $html = sprintf('<table class="%sws-ls-macro%s"  >',
 			(false === empty($additional_css_class)) ? esc_attr($additional_css_class) . ' ' : '',
 				false === is_admin() ? '' : ' widefat');
 
-        $macros_to_display = apply_filters( 'wlt-filter-macros-display', ['maintain', 'lose'], $macros);
+        $macros_to_display = apply_filters( 'wlt-filter-macros-display', [ 'maintain', 'lose', 'gain' ], $macros);
 
         foreach ( $macros_to_display as $key ) {
+
+        	if ( false === isset( $macros[$key] ) ) {
+        		continue;
+        	}
 
             // Table Header
             $html .= sprintf('
@@ -197,12 +206,12 @@ function ws_ls_shortcode_macro($user_defined_arguments) {
 	$arguments = shortcode_atts([
 									'error-message' => __('Please ensure all relevant data to calculate calorie intake has been entered i.e. Activity Level, Date of Birth, Current Weight, Gender and Height.', WE_LS_SLUG ),
 									'user-id' => false,
-									'progress' => 'maintain',	// 'maintain', 'lose'
+									'progress' => 'maintain',	// 'maintain', 'lose', 'gain', 'auto'
 									'nutrient' => 'fats', 		// 'fats', 'protein', 'carbs'
 									'type' => 'lunch'			// 'breakfast', 'lunch', 'dinner', 'snack', 'total'
 								], $user_defined_arguments );
 
-    $allowed_progress = apply_filters(WE_LS_FILTER_MACRO_ALLOWED_PROGRESS, [ 'maintain', 'lose', 'auto' ]);
+    $allowed_progress = apply_filters(WE_LS_FILTER_MACRO_ALLOWED_PROGRESS, [ 'maintain', 'lose', 'gain', 'auto' ]);
 
     // If "progress" set as "auto", then determine from the user's aim which progress type to display
     if ( 'auto' === $arguments['progress'] ) {
@@ -277,7 +286,7 @@ function ws_ls_macro_validate_percentages()
     }
 
     // Is their sum 100 (i.e. 100%)
-    return (100 == (WS_LS_MACRO_PROTEINS + WS_LS_MACRO_CARBS + WS_LS_MACRO_FATS)) ? true : false;
+    return ( 100 == ( WS_LS_MACRO_PROTEINS + WS_LS_MACRO_CARBS + WS_LS_MACRO_FATS ) ) ? true : false;
 }
 
 /**
@@ -299,7 +308,7 @@ function ws_ls_macro_round($value) {
  */
 function ws_ls_get_macro_name( $key ) {
 
-    $lookup = [ 'maintain' => __('Maintain', WE_LS_SLUG), 'lose' => __('Lose', WE_LS_SLUG) ];
+    $lookup = [ 'maintain' => __('Maintain', WE_LS_SLUG), 'lose' => __('Lose', WE_LS_SLUG), 'gain' => __('Gain', WE_LS_SLUG) ];
 
     $lookup = apply_filters( 'wlt-filter-macros-labels', $lookup );
 

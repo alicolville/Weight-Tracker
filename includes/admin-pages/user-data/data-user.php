@@ -12,9 +12,16 @@ function ws_ls_admin_page_data_user() {
     ws_user_exist_check( $user_id );
 
     // DELETE ALL DATA FOR THIS USER!! AHH!!
-    if (is_admin() && isset($_GET['removedata']) && 'y' == $_GET['removedata']) {
+    if ( true === isset( $_GET['removedata'] ) && 'y' == $_GET['removedata'] ) {
         ws_ls_delete_data_for_user($user_id);
     }
+
+    // Delete all awards for this user
+	if ( true === isset( $_GET['remove-awards'] ) && 'y' == $_GET['remove-awards'] ) {
+		ws_ls_awards_db_delete_awards_for_user( $user_id );
+	}
+
+
 
     $user_data = get_userdata( $user_id );
 ?>
@@ -67,53 +74,67 @@ function ws_ls_admin_page_data_user() {
 							?>
 						</div>
 					</div>
-                    <div class="postbox">
-                        <h2 class="hndle"><span><?php echo __('Photos', WE_LS_SLUG); ?></span></h2>
-                        <div class="inside">
-                            <?php
-                            if( ws_ls_meta_fields_photo_any_enabled() ) {
+                    <?php
 
-                                $photo_count = ws_ls_photos_db_count_photos( $user_id );
+                    // Allow an additional admin section to be added in
+                    $customised_section = apply_filters( 'wlt-filters-admin-custom-section', '' );
 
-                                echo sprintf( '<p>%s <strong>%s %s</strong>. <a href="%s">%s</a>.</p>',
-                                    __( 'This user has uploaded ', WE_LS_SLUG ),
-                                    $photo_count,
-                                    _n( 'photo', 'photos', $photo_count, WE_LS_SLUG ),
-                                    ws_ls_get_link_to_photos( $user_id ),
-                                    __( 'View all photos', WE_LS_SLUG )
-                                );
+                    if ( false === empty( $customised_section ) ) {
+                        echo wp_kses_post( $customised_section  );
+                    }
 
-                                if ( $photo_count >= 1 ) {
-                                    echo ws_ls_photos_shortcode_gallery( [
-                                        'error-message'        => __( 'No photos could be found for this user.', WE_LS_SLUG ),
-                                        'mode'                 => 'tilesgrid',
-                                        'limit'                => 20,
-                                        'direction'            => 'desc',
-                                        'user-id'              => $user_id,
-                                        'hide-from-shortcodes' => false
-                                    ] );
+                    $show_standard_photos = (bool) apply_filters( 'wlt-filters-admin-show-standard-photos', true );
+
+                    if ( true === $show_standard_photos ) :
+                    ?>
+                        <div class="postbox">
+                            <h2 class="hndle"><span><?php echo __('Photos', WE_LS_SLUG); ?></span></h2>
+                            <div class="inside">
+                                <?php
+                                if( ws_ls_meta_fields_photo_any_enabled() ) {
+
+                                    $photo_count = ws_ls_photos_db_count_photos( $user_id );
+
+                                    echo sprintf( '<p>%s <strong>%s %s</strong>. <a href="%s">%s</a>.</p>',
+                                        __( 'This user has uploaded ', WE_LS_SLUG ),
+                                        $photo_count,
+                                        _n( 'photo', 'photos', $photo_count, WE_LS_SLUG ),
+                                        ws_ls_get_link_to_photos( $user_id ),
+                                        __( 'View all photos', WE_LS_SLUG )
+                                    );
+
+                                    if ( $photo_count >= 1 ) {
+                                        echo ws_ls_photos_shortcode_gallery( [
+                                            'error-message'        => __( 'No photos could be found for this user.', WE_LS_SLUG ),
+                                            'mode'                 => 'tilesgrid',
+                                            'limit'                => 20,
+                                            'direction'            => 'desc',
+                                            'user-id'              => $user_id,
+                                            'hide-from-shortcodes' => false
+                                        ] );
+                                    }
+                                } else if ( true === WS_LS_IS_PRO ) {
+
+                                    echo sprintf('<p><a href="%s">%s</a> %s.</p>',
+                                        ws_ls_meta_fields_base_url(),
+                                        __('Add and enable a Photo Custom Field', WE_LS_SLUG),
+                                        __('to allow a users to upload photos of their progress' , WE_LS_SLUG)
+                                    );
+
+                                } else {
+
+                                    echo sprintf('<p><a href="%s">%s</a> %s.</p>',
+                                        ws_ls_upgrade_link(),
+                                        __('Upgrade to Pro', WE_LS_SLUG),
+                                        __('to allow a user to upload photos of their progress' , WE_LS_SLUG)
+                                    );
                                 }
-                            } else if ( true === WS_LS_IS_PRO ) {
-
-                                echo sprintf('<p><a href="%s">%s</a> %s.</p>',
-                                    ws_ls_meta_fields_base_url(),
-                                    __('Add and enable a Photo Custom Field', WE_LS_SLUG),
-                                    __('to allow a users to upload photos of their progress' , WE_LS_SLUG)
-                                );
-
-                            } else {
-
-                                echo sprintf('<p><a href="%s">%s</a> %s.</p>',
-                                    ws_ls_upgrade_link(),
-                                    __('Upgrade to Pro', WE_LS_SLUG),
-                                    __('to allow a user to upload photos of their progress' , WE_LS_SLUG)
-                                );
-                            }
-                            ?>
+                                ?>
+                            </div>
                         </div>
-                    </div>
-                      <?php	if( ws_ls_has_a_valid_pro_plus_license()) : ?>
-	                      <?php
+                    <?php endif; ?>
+
+                    <?php	if( ws_ls_has_a_valid_pro_plus_license()) :
 
                             $awards = ws_ls_awards_previous_awards( $user_id );
 
@@ -122,6 +143,10 @@ function ws_ls_admin_page_data_user() {
                                       <h2 class="hndle"><span><?php echo __('Awards', WE_LS_SLUG); ?></span></h2>
                                       <div class="inside">
                                           <?php echo ws_ls_awards_render_badges( [ 'user-id' => $user_id ] ); ?>
+                                          <a class="button-secondary delete-awards-confirm" href="<?php echo esc_url( admin_url( 'admin.php?page=ws-ls-data-home&mode=user&remove-awards=y&user-id=' . (int) $user_id ) ); ?>">
+                                              <i class="fa fa-exclamation-circle"></i>
+		                                      <?php echo __('Delete ALL existing awards', WE_LS_SLUG); ?>
+                                          </a>
                                       </div>
                                   </div>
                             <?php endif; ?>
@@ -136,7 +161,7 @@ function ws_ls_admin_page_data_user() {
                                 <div class="inside">
                                     <?php
 
-                                        if(false === ws_ls_macro_validate_percentages()) {
+                                        if( false === ws_ls_macro_validate_percentages() ) {
                                             echo printf( '%s <a href="%s">%s</a>%s',
                                                     __('Please ensure the values for Proteins, Carbohydrates and Fats (within ', WE_LS_SLUG),
                                                     ws_ls_get_link_to_settings(),
@@ -198,4 +223,8 @@ function ws_ls_admin_page_data_user() {
 	</div>
 <?php
 
+
+	ws_ls_create_dialog_jquery_code(__('Are you sure you?', WE_LS_SLUG),
+		__('Are you sure you wish to remove all awards for this user? Note, when the user next enters a weight the awards will be re-calculated.', WE_LS_SLUG) . '<br /><br />',
+		'delete-awards-confirm');
 }

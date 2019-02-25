@@ -20,6 +20,20 @@
 	}
 
 	/**
+	 * Are Groups enabled?
+	 *
+	 * @return bool
+	 */
+	function ws_ls_groups_can_users_edit() {
+
+		if ( false === WS_LS_IS_PRO ) {
+			return false;
+		}
+
+		return 'yes' === get_option('ws-ls-enable-groups-user-edit', false ) ? true : false;
+	}
+
+	/**
 	 * Are groups enabled and do we have any setup?
 	 */
 	function ws_ls_groups_do_we_have_any() {
@@ -42,7 +56,7 @@
 	 */
 	function ws_ls_groups_create_mysql_tables() {
 
-		if( false === update_option('ws-ls-grwdwjoup-version-number', WE_LS_DB_VERSION ) ) {
+		if( false === update_option('ws-ls-group-version-number', WE_LS_DB_VERSION ) ) {
 			return;
 		}
 
@@ -117,7 +131,7 @@
 	 */
 	function ws_ls_groups_hooks_user_preferences_form( $html, $user_id ) {
 
-		if ( false === is_admin() ) {
+		if ( false === is_admin() && false === ws_ls_groups_can_users_edit() ) {
 			return;
 		}
 
@@ -133,14 +147,16 @@
 
 				$current_selection = ( false === empty( $current_selection[0]['id'] ) ) ? (int) $current_selection[0]['id'] : 0;
 
-				$html .= sprintf( '<p><a href="%s">%s</a></p>', ws_ls_groups_link(), __('Add / remove Groups', WE_LS_SLUG) );
+				if ( true === is_admin() ) {
+					$html .= sprintf( '<p><a href="%s">%s</a></p>', ws_ls_groups_link(), __('Add / remove Groups', WE_LS_SLUG) );
+				}
 
 				$html .= sprintf( '<select name="ws-ls-group" id="ws-ls-group" tabindex="%d">', ws_ls_get_next_tab_index() );
 
 				foreach ( $groups as $group ) {
 					$html .= sprintf( '<option value="%s" %s>%s</option>',
 										(int) $group['id'],
-										selected( $current_selection, $group['id'] ),
+										selected( $current_selection, $group['id'], false ),
 										esc_html( $group['name'] )
 					);
 				}
@@ -171,11 +187,12 @@
 		}
 
 		// Update user group?
-		if ( true === $is_admin ) {
+		if ( true === $is_admin || true === ws_ls_groups_can_users_edit() ) {
 
 			$group_id =  ws_ls_ajax_post_value('ws-ls-group');
 
 			ws_ls_groups_add_to_user( (int) $group_id, (int) $user_id );
+			ws_ls_cache_user_delete( 'groups-user-for-given' );
 		}
 	}
 	add_action( 'ws-ls-hook-user-preference-save',  'ws_ls_groups_hooks_user_preferences_save', 10, 3 );
@@ -235,8 +252,35 @@
 		$award = ( false === empty( $award ) ) ? $award : false;
 
 		ws_ls_cache_user_set( 'groups', $id , $award );
+		ws_ls_cache_user_delete( 'groups-user-for-given' );
 
 		return $award;
+	}
+
+	/**
+	 * Fetch count of number of users in a group
+	 *
+	 * @param $id
+	 *
+	 * @return int
+	 */
+	function ws_ls_groups_count( $id ) {
+
+		global $wpdb;
+
+		if ( $cache = ws_ls_cache_user_get( 'groups', 'count-' . $id ) ) {
+			return $cache;
+		}
+
+		$sql = $wpdb->prepare('Select count( user_id ) from ' . $wpdb->prefix . WE_LS_MYSQL_GROUPS_USER . ' where group_id = %d', $id );
+
+		$count = $wpdb->get_var( $sql );
+
+		$count = (int) $count;
+
+		ws_ls_cache_user_set( 'groups', 'count-' .$id , $count );
+
+		return $count;
 	}
 
 	/**
@@ -263,6 +307,7 @@
 		$result = $wpdb->insert( $wpdb->prefix . WE_LS_MYSQL_GROUPS , [ 'name' => $name ], [ '%s' ] );
 
 		ws_ls_cache_user_delete( 'groups' );
+		ws_ls_cache_user_delete( 'groups-user-for-given' );
 
 		return ( false === $result ) ? false : $wpdb->insert_id;
 	}
@@ -288,9 +333,36 @@
 		$result = $wpdb->delete( $wpdb->prefix . WE_LS_MYSQL_GROUPS, [ 'id' => $id ], [ '%d' ] );
 
 		ws_ls_cache_user_delete( 'groups' );
+		ws_ls_cache_user_delete( 'groups-user-for-given' );
 
 		return ( 1 === $result );
 	}
+
+    /**
+     * Delete a user / group association
+     *
+     * @param $id       relationship ID to delete
+     * @return bool     true if success
+     */
+    function ws_ls_groups_users_delete( $id ) {
+
+        if ( false === is_admin() ) {
+            return;
+        }
+
+        global $wpdb;
+
+        ws_ls_log_add( 'group-user', sprintf( 'Deleting: %d', $id ) );
+
+        do_action( 'wlt-groupiuser-deleting', $id );
+
+        $result = $wpdb->delete( $wpdb->prefix . WE_LS_MYSQL_GROUPS_USER, [ 'id' => $id ], [ '%d' ] );
+
+        ws_ls_cache_user_delete( 'groups' );
+        ws_ls_cache_user_delete( 'groups-user-for-given' );
+
+        return ( 1 === $result );
+    }
 
 	/**
 	 * When a group is deleted, tidy up
@@ -408,6 +480,37 @@
 	}
 
 	/**
+	 * Fetch all user ids for given group
+	 *
+	 * @param $group_id
+	 *
+	 * @return array|null|object
+	 */
+	function ws_ls_groups_users_for_given_group( $group_id ) {
+
+		if ( false === is_numeric( $group_id ) ) {
+			return NULL;
+		}
+
+		global $wpdb;
+
+		if ( false === is_admin() && $cache = ws_ls_cache_user_get( 'groups-user-for-given', $group_id ) ) {
+			return $cache;
+		}
+
+		$sql = 'Select u.id, user_id, display_name from ' . $wpdb->prefix . WE_LS_MYSQL_GROUPS_USER . ' u
+		        inner join ' . $wpdb->prefix . 'users wpu on wpu.id = u.user_id where u.group_id = %d order by wpu.display_name';
+
+		$sql = $wpdb->prepare( $sql, $group_id );
+
+		$data = $wpdb->get_results( $sql , ARRAY_A );
+
+		ws_ls_cache_user_set( 'groups-user-for-given', $group_id, $data );
+
+		return $data;
+	}
+
+	/**
 		Get Groups
 	 **/
 	function ws_ls_ajax_groups_get(){
@@ -425,20 +528,19 @@
 		}
 
 		$columns = [
-			[ 'name' => 'id', 'title' => __('ID', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'number', 'visible' => true ],
+			[ 'name' => 'id', 'title' => __('Group ID', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'number', 'visible' => true ],
 			[ 'name' => 'name', 'title' => __('Name', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ],
+			[ 'name' => 'count', 'title' => __('No. Users', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'number' ],
+			[ 'name' => 'weight_difference', 'title' => '', 'breakpoints'=> '', 'type' => 'number', 'visible' => false ],
+			[ 'name' => 'weight_display', 'title' => __('Total Weight Difference', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ]
 		];
 
 		$rows = ws_ls_groups( false );
 
-		// Is this the group stats table? If so , add weight difference column
-		if ( 'groups-list-stats' === $table_id ) {
-			$columns[] = [ 'name' => 'weight_difference', 'title' => '', 'breakpoints'=> '', 'type' => 'number', 'visible' => false ];
-			$columns[] = [ 'name' => 'weight_display', 'title' => __('Total Weight Difference', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ];
-
-			foreach ( $rows as &$row ) {
-				$row[ 'weight_display' ] = ws_ls_convert_kg_into_relevant_weight_String( $row[ 'weight_difference' ], true );
-			}
+		foreach ( $rows as &$row ) {
+			$row[ 'name' ] = ws_ls_render_link( ws_ls_groups_link_to_page( $row[ 'id' ] ) , $row[ 'name' ] );
+			$row[ 'weight_display' ] = ws_ls_convert_kg_into_relevant_weight_String( $row[ 'weight_difference' ], true );
+			$row[ 'count' ] = ws_ls_groups_count( $row[ 'id' ] );
 		}
 
 		$data = [
@@ -449,11 +551,69 @@
 
 		ws_ls_cache_user_set( 'groups', $table_id, $data );
 
-		wp_send_json($data);
+		wp_send_json( $data );
 
 	}
 	add_action( 'wp_ajax_get_groups', 'ws_ls_ajax_groups_get' );
 
+	/**
+		Get users for given group
+	 **/
+	function ws_ls_ajax_groups_users_get(){
+
+		if ( false === WS_LS_IS_PRO ) {
+			return;
+		}
+
+		check_ajax_referer( 'ws-ls-user-tables', 'security' );
+
+		$table_id = ws_ls_ajax_post_value( 'table_id' );
+		$group_id = ws_ls_ajax_post_value( 'group_id' );
+
+		if ( $cache = ws_ls_cache_user_get( 'groups-user-for-given', 'ajax-' . $group_id ) ) {
+			wp_send_json( $cache );
+		}
+
+		$columns = [
+			[ 'name' => 'id', 'title' => __('ID', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'number', 'visible' => false ],
+			[ 'name' => 'display_name', 'title' => __('User', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ],
+            [ 'name' => 'number-of-entries', 'title' => __('No. Entries', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'number' ],
+            [ 'name' => 'start-weight', 'title' => __('Start Weight', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ],
+            [ 'name' => 'latest-weight', 'title' => __('Latest Weight', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ],
+            [ 'name' => 'diff-weight', 'title' => __('Difference', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ],
+            [ 'name' => 'target', 'title' => __('Target', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ],
+		];
+
+		$rows = ws_ls_groups_users_for_given_group( $group_id );
+
+		foreach ( $rows as &$row ) {
+
+			$row[ 'display_name' ] = ws_ls_get_link_to_user_profile( $row[ 'user_id' ], $row[ 'display_name' ] );
+
+            $stats = ws_ls_get_entry_counts( $row[ 'user_id' ] );
+
+            if ( false === empty( $stats ) ) {
+
+                $row[ 'number-of-entries' ] = $stats['number-of-entries'];
+                $row[ 'start-weight' ] = ws_ls_weight_start( $row[ 'user_id' ] );
+                $row[ 'latest-weight' ] = ws_ls_weight_recent( $row[ 'user_id' ] );
+                $row[ 'diff-weight' ] = ws_ls_weight_difference( $row[ 'user_id' ] );
+                $row[ 'target' ] = ws_ls_weight_target_weight( $row[ 'user_id' ], true );
+            }
+        }
+
+		$data = [
+			'columns' => $columns,
+			'rows' => $rows,
+			'table_id' => $table_id
+		];
+
+		ws_ls_cache_user_set( 'groups', 'ajax-' . $group_id, $data );
+
+		wp_send_json( $data );
+
+	}
+	add_action( 'wp_ajax_get_groups_users', 'ws_ls_ajax_groups_users_get' );
 
 	/**
 	 * AJAX: Delete given group
@@ -481,6 +641,33 @@
 
 	}
 	add_action( 'wp_ajax_groups_delete', 'ws_ls_ajax_groups_delete' );
+
+    /**
+     * AJAX: Delete given group
+     */
+    function ws_ls_ajax_groups_users_delete() {
+
+        if ( false === ws_ls_groups_enabled() ) {
+            return;
+        }
+
+        check_ajax_referer( 'ws-ls-user-tables', 'security' );
+
+        $id = ws_ls_get_numeric_post_value('id');
+
+        if ( false === empty( $id ) ) {
+
+            $result = ws_ls_groups_users_delete( $id );
+
+            if ( true === $result ) {
+                wp_send_json( 1 );
+            }
+        }
+
+        wp_send_json( 0 );
+
+    }
+    add_action( 'wp_ajax_groups_users_delete', 'ws_ls_ajax_groups_users_delete' );
 
 	/**
 	 * Sortcode to display total weight difference for group
@@ -521,3 +708,16 @@
         return esc_html( $group_text );
     }
     add_shortcode( 'wlt-group', 'ws_ls_groups_current' );
+
+
+	/**
+	 * Given a group ID, return a link to the group page
+	 * @param  int $group_id
+	 * @return string
+	 */
+	function ws_ls_groups_link_to_page( $group_id ) {
+
+		$url = admin_url( 'admin.php?page=ws-ls-data-home&mode=groups&id=' . (int) $group_id );
+
+		return esc_url( $url );
+	}

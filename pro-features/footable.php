@@ -3,7 +3,9 @@
 	defined('ABSPATH') or die('Jog on!');
 
 
-function ws_ls_data_table_placeholder($user_id = false, $max_entries = false, $smaller_width = false, $enable_add_edit = true) {
+function ws_ls_data_table_placeholder( $user_id = false, $max_entries = false,
+                                        $smaller_width = false, $enable_add_edit = true,
+                                            $order_direction = 'asc' ) {
 
 	ws_ls_data_table_enqueue_scripts();
 
@@ -29,7 +31,7 @@ function ws_ls_data_table_placeholder($user_id = false, $max_entries = false, $s
 			$redirect_url = base64_decode($redirect_url);
 		}
 
-		$html .= ws_ls_display_weight_form(false, false,	false, false, false, false,
+		$html .= ws_ls_display_weight_form(false, false, false, false, false, false,
 											false, false, $redirect_url, $data, true);
 
 	} else {
@@ -44,13 +46,15 @@ function ws_ls_data_table_placeholder($user_id = false, $max_entries = false, $s
 				data-use-parent-width="true"
 				data-user-id="%s",
 				data-max-entries="%s"
-				data-small-width="%s">
+				data-small-width="%s"
+				data-order-direction="%s">
 			</table>',
 			uniqid('ws-ls-'),
 			true === $enable_add_edit ? 'true' : 'false',
 			is_numeric($user_id) ? $user_id : 'false',
 			is_numeric($max_entries) ? $max_entries : 'false',
-			$smaller_width ? 'true' : 'false'
+			$smaller_width ? 'true' : 'false',
+            $order_direction
 		);
 
 		if (WE_LS_MEASUREMENTS_ENABLED) {
@@ -61,7 +65,9 @@ function ws_ls_data_table_placeholder($user_id = false, $max_entries = false, $s
 	return $html;
 }
 
-function ws_ls_data_table_get_rows($user_id = false, $max_entries = false, $smaller_width = false, $front_end = false) {
+function ws_ls_data_table_get_rows($user_id = false, $max_entries = false,
+                                    $smaller_width = false, $front_end = false,
+                                    $order_direction = 'asc' ) {
 
 	// Fetch all columns that will be displayed in data table.
 	$columns = ws_ls_data_table_get_columns($smaller_width, $front_end);
@@ -77,10 +83,10 @@ function ws_ls_data_table_get_rows($user_id = false, $max_entries = false, $smal
 	}
 
 	$filters['sort-column'] = 'weight_date';
-    $filters['sort-order'] = 'asc';
+    $filters['sort-order'] = $order_direction;
 
 	// Fetch all relevant weight entries that we're interested in
-	$user_data = ws_ls_user_data($filters);
+	$user_data = ws_ls_user_data( $filters );
 
     // get a list of active measurment fields (needed later)
 	$measurement_fields = ws_ls_get_keys_for_active_measurement_fields();
@@ -91,7 +97,7 @@ function ws_ls_data_table_get_rows($user_id = false, $max_entries = false, $smal
 	$previous_user_weight = [];
 
 	// If in front end, load user's weight format
-	$convert_weight_format = ( true === $front_end ) ? intval($user_id) : false;
+	$convert_weight_format = ( true === $front_end ) ? (int) $user_id : false;
 
 	if ( false === empty( $user_data['weight_data'] ) ) {
         foreach ( $user_data['weight_data'] as $data) {
