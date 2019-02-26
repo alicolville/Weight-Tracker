@@ -261,6 +261,7 @@
             'gain_loss' => '%s',
             'badge' => '%d',
 	        'bmi_equals' => '%d',
+            'url' => '%s',
             'compare' => '%s',
             'custom_message' => '%s',
             'max_awards' => '%d',
