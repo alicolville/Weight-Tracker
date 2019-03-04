@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight, loss, lose, helper, bmi, body, mass, index, graph, track, stones, kg, table, data, plot, target, history, pounds, responsive, chart, measurements, cm, centimeters, inches, hip, waist, bicep, thigh
 Requires at least: 4.4.9
 Tested up to: 5.0.3
-Stable tag: 7.0.10
+Stable tag: 7.0.11
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate Link: https://www.paypal.me/yeken
@@ -150,9 +150,13 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 == Upgrade Notice ==
 
-7.0.10 - Fixed rounding issues that caused some weight loss awards not to be issued.
+7.0.11 - Bug fixes.
 
 == Changelog ==
+
+= 7.0.11 =
+
+= Bug Fix: Fixed an issue when looking for the functions ws_ls_harris_benedict_filter_calories_to_lose() and ws_ls_harris_benedict_filter_calories_to_add() when relevant files not included.
 
 = 7.0.10 =
 

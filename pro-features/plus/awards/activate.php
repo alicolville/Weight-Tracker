@@ -28,6 +28,7 @@ function ws_ls_awards_create_mysql_tables() {
                 bmi_equals int NULL DEFAULT 0,
                 badge int NULL DEFAULT 0,
                 custom_message varchar(200) NULL,
+                url varchar(200) NULL,
                 max_awards int NOT NULL DEFAULT 1,
                 enabled int DEFAULT 1,
                 send_email int DEFAULT 1,
