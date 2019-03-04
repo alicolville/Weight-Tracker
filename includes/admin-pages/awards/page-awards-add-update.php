@@ -11,7 +11,7 @@ function ws_ls_awards_add_update_page() {
     if ( false === empty( $_POST ) && true === ws_ls_awards_is_enabled() ) {
 
         $award = ws_ls_get_values_from_post( [ 'id', 'title', 'category', 'gain_loss', 'stones', 'apply_to_update', 'apply_to_add', 'bmi_equals',
-                                                 'pounds', 'value', 'weight_percentage', 'custom_message', 'max_awards', 'send_email', 'enabled', 'url' ] );
+                                                 'pounds', 'value', 'weight_percentage', 'custom_message', 'max_awards', 'send_email', 'enabled' ] );
 
         $mandatory_fields = [ 'title' ];
 
@@ -247,7 +247,7 @@ function ws_ls_awards_add_update_page() {
                                                 <p class="ws-ls-info"><?php echo __('Add a custom message to be inserted into the email. Replaces the {custom_message} within the email template.', WE_LS_SLUG); ?></p>
                                             </div>
                                         </div>
-                                        <div class="ws-ls-row">
+                                      <!--  <div class="ws-ls-row">
                                             <div class="ws-ls-cell ws-ls-label-top">
                                                 <label for="max_awards"><?php echo __('URL', WE_LS_SLUG); ?></label>
                                             </div>
@@ -255,7 +255,7 @@ function ws_ls_awards_add_update_page() {
                                                 <input type="text" name="url" id="url"  size="70" maxlength="200" value="<?php echo ( false === empty( $award['url'] ) ) ? esc_attr( $award['url'] ) : ''; ?>"/>
                                                 <p class="ws-ls-info"><?php echo __('If specified, badges and award title will click through to the given URL.', WE_LS_SLUG); ?></p>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <div class="ws-ls-row">
                                             <div class="ws-ls-cell ws-ls-label-col">
                                                 <label for="apply_to_add"><?php echo __('Apply to new entries?', WE_LS_SLUG); ?></label>
