@@ -320,8 +320,13 @@ function ws_ls_settings_page_generic() {
                                                 </tr>
                                                 <tr class="<?php echo $disable_if_not_pro_plus_class; ?>">
                                                     <th scope="row"><?php echo __( 'Calories to subtract' , WE_LS_SLUG); ?></th>
+                                                    <?php
+
+                                                        $hb_calories_to_lose = ( true === function_exists('ws_ls_harris_benedict_filter_calories_to_lose') ) ? ws_ls_harris_benedict_filter_calories_to_lose() : 500;
+
+                                                    ?>
                                                     <td>
-                                                        <input  type="number"  step="any" min="0" max="5000" name="ws-ls-cal-subtract" id="ws-ls-cal-subtract" value="<?php printf( '%d', ws_ls_harris_benedict_filter_calories_to_lose() ); ?>" size="11" />
+                                                        <input  type="number"  step="any" min="0" max="5000" name="ws-ls-cal-subtract" id="ws-ls-cal-subtract" value="<?php printf( '%d', $hb_calories_to_lose ); ?>" size="11" />
                                                         <p><?php echo __('Part of calculating the daily calorie intake to lose weight is to first calculate the calorie intake to maintain existing weight. Once we have this, we subtract the above figure to calculate the daily calorie intake to lose weight.', WE_LS_SLUG);?>. <?php echo ws_ls_calculations_link(); ?>. <em><?php echo __( 'Please note, it may take up to 15 minutes for calculations to change (due to caching).' , WE_LS_SLUG); ?></em></p>
                                                     </td>
                                                 </tr>
@@ -342,8 +347,13 @@ function ws_ls_settings_page_generic() {
                                                 </tr>
                                                 <tr class="<?php echo $disable_if_not_pro_plus_class; ?>">
                                                     <th scope="row"><?php echo __( 'Calories to add' , WE_LS_SLUG); ?></th>
+                                                    <?php
+
+                                                        $hb_calories_to_add = ( true === function_exists('ws_ls_harris_benedict_filter_calories_to_add') ) ? ws_ls_harris_benedict_filter_calories_to_add() : 600;
+
+                                                    ?>
                                                     <td>
-                                                        <input  type="number"  step="any" min="0" max="5000" name="ws-ls-cal-add" id="ws-ls-cal-add" value="<?php printf( '%d', ws_ls_harris_benedict_filter_calories_to_add() ); ?>" size="11" />
+                                                        <input  type="number"  step="any" min="0" max="5000" name="ws-ls-cal-add" id="ws-ls-cal-add" value="<?php printf( '%d', $hb_calories_to_add ); ?>" size="11" />
                                                         <p><?php echo __('Part of calculating the daily calorie intake to gain weight is to first calculate the calorie intake to maintain existing weight. Once we have this, we add the above figure to calculate the daily calorie intake to gain weight.', WE_LS_SLUG);?>. <?php echo ws_ls_calculations_link(); ?>. <em><?php echo __( 'Please note, it may take up to 15 minutes for calculations to change (due to caching).' , WE_LS_SLUG); ?></em></p>
                                                     </td>
                                                 </tr>

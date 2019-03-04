@@ -150,9 +150,13 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 == Upgrade Notice ==
 
-7.0.10 - Fixed rounding issues that caused some weight loss awards not to be issued.
+7.0.11 - Bug fixes.
 
 == Changelog ==
+
+= 7.0.11 =
+
+= Bug Fix: Fixed an issue when looking for the functions ws_ls_harris_benedict_filter_calories_to_lose() and ws_ls_harris_benedict_filter_calories_to_add() when relevant files not included.
 
 = 7.0.10 =
 
