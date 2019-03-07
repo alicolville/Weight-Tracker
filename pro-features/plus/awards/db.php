@@ -15,7 +15,7 @@
         $cache = ws_ls_cache_user_get( $user_id, $cache_key );
 
         if ( true === is_array( $cache ) ) {
-            return $cache;
+           return $cache;
         }
 
         global $wpdb;

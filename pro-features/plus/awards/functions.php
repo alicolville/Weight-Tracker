@@ -244,6 +244,8 @@
 
 			$photo_src = ws_ls_photo_get( $award['badge'], $width, $height);
 
+			$award['no-badge'] = false;
+
 			if ( false === empty( $photo_src ) ) {
 				$award = array_merge( $photo_src, $award);
 			} else {
@@ -260,6 +262,10 @@
 			}
 
 			$award['display-text'] = $award['title'];
+
+			// Do we have a URL?
+			$award['thumb-with-url'] = ( false === empty( $award['url']  ) ) ? sprintf( '<a href="%s" target="_blank" rel="noopener" >%s</a>', esc_url(  $award['url'] ), $award['thumb'] ) : NULL;
+
 		}
 
 		ws_ls_cache_user_set( $user_id, $cache_key, $awards );
@@ -288,7 +294,7 @@
 			'user-id' => get_current_user_id(),
 		], $user_defined_arguments );
 
-		$awards = ws_ls_awards_previous_awards( $arguments[ 'user-id' ] );
+		$awards = ws_ls_awards_previous_awards( $arguments[ 'user-id' ], 100, 100 );
 
 		if ( false === empty( $awards ) ) {
 
@@ -298,14 +304,26 @@
 
 			foreach ( $awards as $award ) {
 
-			    $image = ws_ls_photo_get( $award['badge'], 100, 100 );
+			    if ( false === empty( $award['thumb-with-url'] ) ) {
+				    $thumbnail = $award['thumb-with-url'];
+			    } else if ( false === empty( $award['thumb'] ) ) {
+				    $thumbnail = $award['thumb'];
+			    } else {
+				    $thumbnail = '<img src="' . esc_url( $placeholder ) . '" width="100" height="100" />';
+			    }
+
+			    if ( false === empty( $award['url'] ) ) {
+				    $award['title'] = sprintf( '<a href="%s" target="_blank" rel="noopener">%s</a>', esc_url( $award['url'] ), esc_html( $award['title'] ) );
+			    } else {
+				    $award['title'] = esc_html( $award['title'] );
+			    }
 
 				$html .= sprintf('<div>
 									<p>%s</p>
                                     %s
                                   </div>',
 									$award['title'],
-                                    ( false === empty( $image['thumb'] ) ) ? $image['thumb'] : '<img src="' . esc_url( $placeholder ) . '" width="100" height="100" />'
+                                    $thumbnail
 
                 );
 			}

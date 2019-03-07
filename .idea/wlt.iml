@@ -6,5 +6,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="wlt-studio-nifty" />
     <orderEntry type="module" module-name="src" />
+    <orderEntry type="module" module-name="shortcode-variables" />
+    <orderEntry type="module" module-name="wlt-studio-nifty" />
   </component>
 </module>
