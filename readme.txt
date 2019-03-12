@@ -157,6 +157,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 = 7.0.12 =
 
 * Improvement: Added URL field to awards.
+* Bug fix: Fixed issue when no user side bar rows caused an error to be logged.
 
 = 7.0.11 =
 
