@@ -235,6 +235,11 @@
 
 	        if ( false === empty( $badge['thumb'] ) ) {
 
+	        	// Does this award have a URL?
+		        if ( false === empty( $award['url' ] ) ) {
+			        $badge['thumb'] = sprintf('<a href="%s" target="_blank" rel="noopener">%s</a>', esc_url( $award['url' ] ), $badge['thumb'] );
+		        }
+
 		        $award['badge'] = '<table border="0" cellpadding="0" cellspacing="0" width="100%">
 						                  <tbody>
 						                    <tr>

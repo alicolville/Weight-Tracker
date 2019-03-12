@@ -3,7 +3,7 @@
 	defined('ABSPATH') or die("Jog on!");
 
 	function ws_ls_build_admin_menu() {
-		add_menu_page(WE_LS_TITLE, WE_LS_TITLE, 'manage_options', 'ws-ls-data-home', 'ws_ls_admin_page_data_home', 'dashicons-chart-line');
+		add_menu_page( WE_LS_TITLE, WE_LS_TITLE, 'manage_options', 'ws-ls-data-home', 'ws_ls_admin_page_data_home', 'dashicons-chart-line');
 
         // Display manage user screens to relevant roles.
         add_submenu_page( 'ws-ls-data-home', __('Manage User Data', WE_LS_SLUG),  __('Manage User Data', WE_LS_SLUG), WE_LS_VIEW_EDIT_USER_PERMISSION_LEVEL, 'ws-ls-data-home', 'ws_ls_admin_page_data_home');
