@@ -261,6 +261,12 @@
 
 	        $current_user = get_userdata( $info['user-id'] );
 
+	        // Does this award have a URL?
+	        if ( false === empty( $award['url' ] ) ) {
+		        $award['url-link'] = sprintf('<h2><a href="%s" target="_blank" rel="noopener">%s</a></h2>',
+			            esc_url( $award['url' ] ), __('View Award', WE_LS_SLUG) );
+	        }
+
 	        if ( false === empty( $current_user->user_email ) ) {
 		        ws_ls_emailer_send( $current_user->user_email,  $email_template['subject'],  $email_template['email'], $award );
 	        }
