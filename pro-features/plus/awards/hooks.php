@@ -265,6 +265,8 @@
 	        if ( false === empty( $award['url' ] ) ) {
 		        $award['url-link'] = sprintf('<h2><a href="%s" target="_blank" rel="noopener">%s</a></h2>',
 			            esc_url( $award['url' ] ), __('View Award', WE_LS_SLUG) );
+	        } else {
+		        $award['url-link'] = '';
 	        }
 
 	        if ( false === empty( $current_user->user_email ) ) {
