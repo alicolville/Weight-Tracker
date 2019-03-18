@@ -235,6 +235,11 @@
 
 	        if ( false === empty( $badge['thumb'] ) ) {
 
+	        	// Does this award have a URL?
+		        if ( false === empty( $award['url' ] ) ) {
+			        $badge['thumb'] = sprintf('<a href="%s" target="_blank" rel="noopener">%s</a>', esc_url( $award['url' ] ), $badge['thumb'] );
+		        }
+
 		        $award['badge'] = '<table border="0" cellpadding="0" cellspacing="0" width="100%">
 						                  <tbody>
 						                    <tr>
@@ -255,6 +260,14 @@
 	        }
 
 	        $current_user = get_userdata( $info['user-id'] );
+
+	        // Does this award have a URL?
+	        if ( false === empty( $award['url' ] ) ) {
+		        $award['url-link'] = sprintf('<h2><a href="%s" target="_blank" rel="noopener">%s</a></h2>',
+			            esc_url( $award['url' ] ), __('View Award', WE_LS_SLUG) );
+	        } else {
+		        $award['url-link'] = '';
+	        }
 
 	        if ( false === empty( $current_user->user_email ) ) {
 		        ws_ls_emailer_send( $current_user->user_email,  $email_template['subject'],  $email_template['email'], $award );
@@ -312,7 +325,6 @@
 				$awards[ $i ][ 'enabled' ] = ws_ls_boolean_as_yes_no_string( $awards[ $i ][ 'enabled' ] );
 
 			}
-
 		}
 
 		$data = [
@@ -408,7 +420,7 @@
 
 			foreach ( $awards as $award ) {
 				if ( false === empty( $award['badge'] ) ) {
-				    $html .= sprintf( '<div class="ws-ls-module">%1$s</div>', $award['thumb'] );
+				    $html .= sprintf( '<div class="ws-ls-module">%1$s</div>', ( false === empty( $award['thumb-with-url'] ) ) ? $award['thumb-with-url'] : $award['thumb'] );
                 }
 			}
 
@@ -443,10 +455,30 @@
 
 		$awards = ws_ls_awards_previous_awards( $arguments['user-id'], $arguments['width'], $arguments['height'], 'timestamp' );
 
-		if ( false === empty( $awards[0]['thumb'] ) ) {
-			return sprintf('<div class="ws-ls-award-latest-img">%s</div>', $awards[0]['thumb'] ) ;
-		} elseif ( false === empty( $awards[0]['title'] ) ) {
-			return sprintf('<div class="ws-ls-award-latest-text">%s</div>', esc_html( $awards[0]['title'] ) ) ;
+		if ( false === empty( $awards[0] ) ) {
+
+			$award = $awards[0];
+
+			$thumbnail = NULL;
+
+			if ( false === empty( $award['thumb-with-url'] ) ) {
+				$thumbnail = $award['thumb-with-url'];
+			} else if ( false === empty( $award['thumb'] ) ) {
+				$thumbnail = $award['thumb'];
+			}
+
+			if ( false === empty( $award['url'] ) ) {
+				$award['title'] = sprintf( '<a href="%s" target="_blank" rel="noopener">%s</a>', esc_url( $award['url'] ), esc_html( $award['title'] ) );
+			} else {
+				$award['title'] = esc_html( $award['title'] );
+			}
+
+			if ( false === empty( $thumbnail ) && false === $award['no-badge'] ) {
+				return sprintf('<div class="ws-ls-award-latest-img">%s</div>', $thumbnail ) ;
+			} elseif ( false === empty( $award['title'] ) ) {
+
+				return sprintf('<div class="ws-ls-award-latest-text">%s</div>', $award['title'] ) ;
+			}
 		}
 
 		return ( false === empty( $arguments['message'] ) ) ? esc_html( $arguments['message'] ) : '';

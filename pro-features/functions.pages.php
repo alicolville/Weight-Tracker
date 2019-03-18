@@ -248,12 +248,16 @@ function ws_ls_side_bar_row($row) {
  *
  * @param $rows
  */
-function ws_ls_side_bar_render_rows($rows) {
+function ws_ls_side_bar_render_rows( $rows ) {
+
+	if ( true === empty( $rows ) ) {
+	    return '';
+    }
 
 	$html = '';
 
-	foreach ($rows as $row) {
-		$html .= ws_ls_side_bar_row($row);
+	foreach ( $rows as $row ) {
+		$html .= ws_ls_side_bar_row( $row );
 	}
 
 	return $html;

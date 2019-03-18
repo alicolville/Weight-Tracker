@@ -2,8 +2,8 @@
 Contributors: aliakro
 Tags: weight, loss, lose, helper, bmi, body, mass, index, graph, track, stones, kg, table, data, plot, target, history, pounds, responsive, chart, measurements, cm, centimeters, inches, hip, waist, bicep, thigh
 Requires at least: 4.4.9
-Tested up to: 5.0.3
-Stable tag: 7.0.11
+Tested up to: 5.3
+Stable tag: 7.0.12
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate Link: https://www.paypal.me/yeken
@@ -150,9 +150,15 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 == Upgrade Notice ==
 
-7.0.11 - Bug fixes.
+7.0.12 - Added URL to Awards and minor bug fixes.
 
 == Changelog ==
+
+= 7.0.12 =
+
+* Improvement: Added URL field to awards.
+* Bug fix: Fixed issue when no user side bar rows caused an error to be logged.
+* Bug fix: Fixed issue with font awesome CSS not being enqueued properly.
 
 = 7.0.11 =
 

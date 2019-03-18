@@ -71,6 +71,7 @@ function ws_ls_awards_activate() {
 												<p>You have just won an award for your hard work: <strong>{title}</strong></p>
 											</center>
 											{badge}
+											{url-link}
 											{custom_message}'
 	        );
 

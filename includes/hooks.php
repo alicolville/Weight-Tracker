@@ -3,7 +3,7 @@
 	defined('ABSPATH') or die("Jog on!");
 
 	function ws_ls_build_admin_menu() {
-		add_menu_page(WE_LS_TITLE, WE_LS_TITLE, 'manage_options', 'ws-ls-data-home', 'ws_ls_admin_page_data_home', 'dashicons-chart-line');
+		add_menu_page( WE_LS_TITLE, WE_LS_TITLE, 'manage_options', 'ws-ls-data-home', 'ws_ls_admin_page_data_home', 'dashicons-chart-line');
 
         // Display manage user screens to relevant roles.
         add_submenu_page( 'ws-ls-data-home', __('Manage User Data', WE_LS_SLUG),  __('Manage User Data', WE_LS_SLUG), WE_LS_VIEW_EDIT_USER_PERMISSION_LEVEL, 'ws-ls-data-home', 'ws_ls_admin_page_data_home');
@@ -98,7 +98,7 @@
 		wp_localize_script('ws-ls-js', 'ws_ls_config', ws_ls_get_js_config());
 
 		// Tabs enabled?
-		wp_enqueue_style('fontawesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', array(), WE_LS_CURRENT_VERSION);
+		wp_enqueue_style('wlt-font-awesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', array(), WE_LS_CURRENT_VERSION);
 		wp_enqueue_script('jquery-tabs',plugins_url( '../assets/js/tabs.min.js', __FILE__ ), array('jquery'), WE_LS_CURRENT_VERSION, true);
 
 		$ws_already_enqueued = true;
@@ -121,8 +121,9 @@
 			wp_enqueue_style('wlt-tabs-flat', plugins_url( '../assets/css/tabs.flat.min.css', __FILE__ ), array(), WE_LS_CURRENT_VERSION);
 		}
 
-		if(false === empty($_GET['page']) && in_array( $_GET['page'], ['ws-ls-data-home', 'ws-ls-license' ]) ) {
-			wp_enqueue_style('fontawesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', array(), WE_LS_CURRENT_VERSION);
+		if( false === empty( $_GET['page'] ) && true === in_array( $_GET['page'], ['ws-ls-data-home', 'ws-ls-license' ] ) ) {
+
+			wp_enqueue_style('wlt-font-awesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', array(), WE_LS_CURRENT_VERSION);
         }
 
 		// Include relevant JS for admin "Manage User data" pages
