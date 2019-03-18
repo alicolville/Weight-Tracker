@@ -150,7 +150,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 == Upgrade Notice ==
 
-7.0.12 - Added URL to Awards.
+7.0.12 - Added URL to Awards and minor bug fixes.
 
 == Changelog ==
 
@@ -158,6 +158,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 * Improvement: Added URL field to awards.
 * Bug fix: Fixed issue when no user side bar rows caused an error to be logged.
+* Bug fix: Fixed issue with font awesome CSS not being enqueued properly.
 
 = 7.0.11 =
 
