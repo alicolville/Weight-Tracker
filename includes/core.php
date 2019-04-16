@@ -293,6 +293,8 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 		$html_output .= $save_response['message'];
 	}
 
+	$post_url = apply_filters( 'wlt_form_url', get_permalink() );
+
 	$html_output .= sprintf('
 							<form action="%1$s" method="post" class="we-ls-weight-form we-ls-weight-form-validate ws_ls_display_form%2$s" id="%3$s"
 							data-measurements-enabled="%4$s"
@@ -306,7 +308,7 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 							<input type="hidden" value="true" id="ws_ls_is_weight_form" name="ws_ls_is_weight_form" />
 							<input type="hidden" value="%9$s" id="ws_ls_user_id" name="ws_ls_user_id" />
 							<input type="hidden" value="%10$s" id="ws_ls_security" name="ws_ls_security" />',
-							esc_attr( get_permalink() ),
+							esc_url( $post_url ),
 							(($class_name) ? ' ' . esc_attr( $class_name ) : ''),
 							esc_attr( $form_id ),
 							(($measurements_form_enabled) ? 'true' : 'false'),

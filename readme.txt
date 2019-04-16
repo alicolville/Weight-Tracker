@@ -156,7 +156,8 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 = 7.0.13 =
 
-Bug fix: Changed footable dates to use UTC methods
+* Bug fix: Changed footable dates to use UTC methods.
+* Improvement: Allow filtering of Post URL for Weight Entry forms.
 
 = 7.0.12 =
 
