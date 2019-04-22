@@ -525,6 +525,10 @@ jQuery( document ).ready(function ($, undefined) {
 
     function ws_ls_format_date(value) {
 
+        if ( value instanceof moment ) {
+            value = value._i;
+        }
+
         // Strip the timestamp off
         var date = value.split(" ");
         date = new Date(date[0]);
