@@ -525,7 +525,7 @@ jQuery( document ).ready(function ($, undefined) {
 
     function ws_ls_format_date(value) {
 
-        if ( value instanceof moment ) {
+        if ( typeof moment !== 'undefined' && value instanceof moment ) {
             value = value._i;
         }
 
