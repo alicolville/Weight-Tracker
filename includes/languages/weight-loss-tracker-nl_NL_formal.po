@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2019-01-07 21:06+0000\n"
-"PO-Revision-Date: 2019-01-07 21:15+0000\n"
+"PO-Revision-Date: 2019-04-22 15:06+0100\n"
 "Last-Translator: Yvon <yvon@yvonkruger.nl>\n"
 "Language-Team: \n"
 "Language: nl_NL@formal\n"
@@ -966,8 +966,6 @@ msgid "Groups"
 msgstr ""
 
 #: includes/admin-pages/settings/page-settings-generic.php:221
-#, fuzzy
-#| msgid "Enable"
 msgid "Enable Groups?"
 msgstr "Inschakelen"
 
@@ -986,8 +984,6 @@ msgid "Birthday Emails"
 msgstr ""
 
 #: includes/admin-pages/settings/page-settings-generic.php:235
-#, fuzzy
-#| msgid "Enable"
 msgid "Enable?"
 msgstr "Inschakelen"
 

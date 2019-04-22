@@ -138,7 +138,7 @@ jQuery( document ).ready(function ($, undefined) {
 
         var table_id = '#errors-list';
         var formatters = {};
-        console.log(response);
+
         // Apply formatters
         var columns = ws_ls_apply_formatters(response.columns);
         var rows = response.rows;
@@ -254,8 +254,6 @@ jQuery( document ).ready(function ($, undefined) {
                     if ( confirm(ws_user_table_config['label-confirm-delete']) ){
 
                         var values = row.val();
-
-                        console.log( values.id );
 
                         // Fetch the database record ID
                         if ($.isNumeric( values.id ) ) {
@@ -527,13 +525,17 @@ jQuery( document ).ready(function ($, undefined) {
 
     function ws_ls_format_date(value) {
 
+        if ( typeof moment !== 'undefined' && value instanceof moment ) {
+            value = value._i;
+        }
+
         // Strip the timestamp off
         var date = value.split(" ");
         date = new Date(date[0]);
 
-        var day = date.getDate();
-        var month = date.getMonth() + 1;
-        var year = date.getFullYear();
+        var day = date.getUTCDate();
+        var month = date.getUTCMonth() + 1;
+        var year = date.getUTCFullYear();
 
         // US or UK format?
         if ('false' == ws_user_table_config['us-date']) {
