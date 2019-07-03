@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight, loss, lose, helper, bmi, body, mass, index, graph, track, stones, kg, table, data, plot, target, history, pounds, responsive, chart, measurements, cm, centimeters, inches, hip, waist, bicep, thigh
 Requires at least: 4.4.9
 Tested up to: 5.1
-Stable tag: 7.0.13
+Stable tag: 7.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate Link: https://www.paypal.me/yeken
@@ -150,9 +150,16 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 == Upgrade Notice ==
 
-7.0.13
+7.1 - Added a setup wizard
 
 == Changelog ==
+
+= 7.1 =
+
+//todo: Update plugin keywords
+- minify admin.js
+- update chart.js
+- revert ws_ls_use_minified
 
 = 7.0.13 =
 

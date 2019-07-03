@@ -102,6 +102,14 @@ function ws_ls_help_page() {
                             <p>
                                 <?php
 
+                                    if ( false === ws_ls_setup_wizard_show_notice() ) {
+
+                                        printf('<a class="button" href="%1$s" >%2$s</a>',
+                                            esc_url( admin_url( 'admin.php?page=ws-ls-help&show-setup-wizard-links=y') ),
+                                            __('Show Setup Wizard link', WE_LS_SLUG)
+                                        );
+                                    }
+
                                     if ( true === ws_ls_awards_is_enabled() ) {
 
                                        if ( true === isset( $_GET['deleteallawards'] )) {
