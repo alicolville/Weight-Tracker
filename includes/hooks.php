@@ -14,6 +14,11 @@
 
         add_submenu_page( 'ws-ls-data-home', $menu_text,  $menu_text, 'manage_options', 'ws-ls-license', 'ws_ls_advertise_pro');
 		add_submenu_page( 'ws-ls-data-home', __('Settings', WE_LS_SLUG),  __('Settings', WE_LS_SLUG), 'manage_options', 'ws-ls-settings', 'ws_ls_settings_page');
+
+        if ( true === ws_ls_setup_wizard_show_notice() ) {
+            add_submenu_page( 'ws-ls-data-home', __('Setup Wizard', WE_LS_SLUG),  __('Setup Wizard', WE_LS_SLUG), 'manage_options', 'ws-ls-data-setup-wizard', 'ws_ls_meta_fields_page');
+        }
+
 		add_submenu_page( 'ws-ls-data-home', __('Help & Log', WE_LS_SLUG),  __('Help & Log', WE_LS_SLUG), 'manage_options', 'ws-ls-help', 'ws_ls_help_page');
 
 	}
@@ -166,7 +171,7 @@
 	}
 
 	function ws_ls_use_minified() {
-		return (defined('SCRIPT_DEBUG') && false == SCRIPT_DEBUG) ? '.min' : '';
+        return (defined('SCRIPT_DEBUG') && false == SCRIPT_DEBUG) ? '.min' : '';
 	}
 
 	function ws_ls_admin_config() {
