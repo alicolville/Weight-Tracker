@@ -1,4 +1,4 @@
-# Weight-Loss-Tracker
+# Weight Tracker
 
 For further information regarding this plugin, please use the following links:
 
