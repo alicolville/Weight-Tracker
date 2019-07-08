@@ -10,10 +10,10 @@ function ws_ls_admin_page_data_edit_target() {
 	$user_id = ws_ls_querystring_value('user-id', true);
 
     // Ensure this WP user ID exists!
-    ws_user_exist_check($user_id);
+    ws_user_exist_check( $user_id) ;
 
 	// We need to ensure we either have a user id (to add a new entry to) OR an existing entry ID so we can load / edit it.
-	if(empty($user_id) && empty($entry_id)) {
+	if( empty( $user_id ) ) {
 		echo __('There was an issue loading this page', WE_LS_SLUG);
 		return;
 	}

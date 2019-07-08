@@ -16,7 +16,7 @@
 		add_submenu_page( 'ws-ls-data-home', __('Settings', WE_LS_SLUG),  __('Settings', WE_LS_SLUG), 'manage_options', 'ws-ls-settings', 'ws_ls_settings_page');
 
         if ( true === ws_ls_setup_wizard_show_notice() ) {
-            add_submenu_page( 'ws-ls-data-home', __('Setup Wizard', WE_LS_SLUG),  __('Setup Wizard', WE_LS_SLUG), 'manage_options', 'ws-ls-data-setup-wizard', 'ws_ls_meta_fields_page');
+            add_submenu_page( 'ws-ls-data-home', __('Setup Wizard', WE_LS_SLUG),  __('Setup Wizard', WE_LS_SLUG), 'manage_options', 'ws-ls-data-setup-wizard', 'ws_ls_setup_wizard_page');
         }
 
 		add_submenu_page( 'ws-ls-data-home', __('Help & Log', WE_LS_SLUG),  __('Help & Log', WE_LS_SLUG), 'manage_options', 'ws-ls-help', 'ws_ls_help_page');
@@ -120,13 +120,13 @@
         wp_enqueue_script('ws-ls-admin', plugins_url( '../assets/js/admin' .     $minified . '.js', __FILE__ ), array('jquery'), WE_LS_CURRENT_VERSION);
 
        	// Settings page
-		if(false === empty($_GET['page']) && 'ws-ls-settings' == $_GET['page']) {
+		if( false === empty( $_GET['page'] ) && true === in_array( $_GET['page'], [ 'ws-ls-settings', 'ws-ls-data-setup-wizard' ] ) ) {
 			wp_enqueue_script('jquery-tabs',plugins_url( '../assets/js/tabs.min.js', __FILE__ ), array('jquery'), WE_LS_CURRENT_VERSION);
 			wp_enqueue_style('wlt-tabs', plugins_url( '../assets/css/tabs.min.css', __FILE__ ), array(), WE_LS_CURRENT_VERSION);
 			wp_enqueue_style('wlt-tabs-flat', plugins_url( '../assets/css/tabs.flat.min.css', __FILE__ ), array(), WE_LS_CURRENT_VERSION);
 		}
 
-		if( false === empty( $_GET['page'] ) && true === in_array( $_GET['page'], ['ws-ls-data-home', 'ws-ls-license' ] ) ) {
+		if( false === empty( $_GET['page'] ) && true === in_array( $_GET['page'], ['ws-ls-data-home', 'ws-ls-license', 'ws-ls-data-setup-wizard' ] ) ) {
 
 			wp_enqueue_style('wlt-font-awesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', array(), WE_LS_CURRENT_VERSION);
         }

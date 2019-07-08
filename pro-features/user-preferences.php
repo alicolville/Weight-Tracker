@@ -13,7 +13,7 @@ function ws_ls_user_preferences_form( $user_defined_arguments )
     $arguments = shortcode_atts(['user-id' => false, 'allow-delete-data' => true, 'redirect-url' => '', 'disable-save' => false ], $user_defined_arguments );
 
     $arguments['allow-delete-data'] = ws_ls_force_bool_argument($arguments['allow-delete-data']);
-    $arguments['user-id'] = ws_ls_force_numeric_argument($arguments['user-id'], false);
+    $arguments['user-id'] = ws_ls_force_numeric_argument( $arguments['user-id'] );
 	$arguments['redirect-url'] = (false === empty($arguments['redirect-url'])) ? esc_url($arguments['redirect-url']) : '';
 
     // Have user preferences been allowed in Settings?

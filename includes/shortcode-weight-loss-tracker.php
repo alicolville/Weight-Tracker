@@ -139,7 +139,7 @@
 
 			// Include target form?
 			if (WE_LS_ALLOW_TARGET_WEIGHTS && false == $shortcode_arguments['hide-first-target-form']) {
-				$html_output .= ws_ls_display_weight_form(true, 'ws-ls-target-form', false, false);
+				$html_output .= ws_ls_display_weight_form( true, 'ws-ls-target-form' );
 			}
 
 			// Display "Add Weight" anchor?
@@ -180,22 +180,22 @@
 			}
 
             //If we have data, display data table
-			if ($weight_data && (count($weight_data) > 0 || $selected_week_number != -1))	{
+			if ( $weight_data && ( count( $weight_data ) > 0 || $selected_week_number != -1 ) )	{
 
-					if (WE_LS_ALLOW_TARGET_WEIGHTS && $use_tabs && false == $shortcode_arguments['hide-second-target-form']) {
-						$html_output .= ws_ls_display_weight_form(true, 'ws-ls-target-form', false, false);
+					if ( WE_LS_ALLOW_TARGET_WEIGHTS && $use_tabs && false == $shortcode_arguments['hide-second-target-form'] ) {
+						$html_output .= ws_ls_display_weight_form( true, 'ws-ls-target-form' );
 					}
 
 					// Display week filters and data tab
-					$html_output .= ws_ls_title(__('Weight History', WE_LS_SLUG));
-					if(count($week_ranges) <= WE_LS_TABLE_MAX_WEEK_FILTERS) {
-						$html_output .= ws_ls_display_week_filters($week_ranges, $selected_week_number);
+					$html_output .= ws_ls_title( __('Weight History', WE_LS_SLUG ) );
+					if( count($week_ranges) <= WE_LS_TABLE_MAX_WEEK_FILTERS ) {
+						$html_output .= ws_ls_display_week_filters( $week_ranges, $selected_week_number );
 					}
 
-					if (WS_LS_IS_PRO && false === $shortcode_arguments['disable-advanced-tables']){
-						$html_output .=  ws_ls_data_table_placeholder($user_id, false, false, true);
+					if ( WS_LS_IS_PRO && false === $shortcode_arguments['disable-advanced-tables'] ){
+						$html_output .=  ws_ls_data_table_placeholder( $user_id );
 					} else {
-						$html_output .= ws_ls_display_table($weight_data);
+						$html_output .= ws_ls_display_table( $weight_data );
 					}
 			}
             elseif ($use_tabs && $selected_week_number != -1) {

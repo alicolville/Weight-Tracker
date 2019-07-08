@@ -104,6 +104,6 @@
 	 * @param $value
 	 * @return $value
 	 */
-	function ws_ls_round_bmr_harris($value) {
-		return (is_numeric($value)) ? round($value, 0) : $value;
+	function ws_ls_round_bmr_harris( $value ) {
+		return ( true === is_numeric( $value ) ) ? round( $value ) : $value;
 	}

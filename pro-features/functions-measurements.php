@@ -4,7 +4,7 @@
 
 function ws_ls_get_measurement_settings()
 {
-    if(defined('WE_LS_MEASUREMENTS_ENABLED') && WE_LS_MEASUREMENTS_ENABLED && defined('WE_LS_MEASUREMENTS') || is_admin()) {
+    if( defined('WE_LS_MEASUREMENTS_ENABLED') && WE_LS_MEASUREMENTS_ENABLED && defined('WE_LS_MEASUREMENTS') || is_admin() ) {
 
         $settings = json_decode(WE_LS_MEASUREMENTS, true);
 
@@ -80,8 +80,8 @@ function ws_ls_load_measurement_form($existing_data = false)
         if($data['enabled'] && false == $data['user_preference']) {
 
 			// Do we have an existing value
-			if(false === empty($existing_data['measurements']) && is_array($existing_data['measurements'])); {
-				$value = ws_ls_get_existing_value($existing_data['measurements'], $key, false);
+			if( false === empty( $existing_data['measurements'] ) && true === is_array( $existing_data['measurements'] ) ) {
+				$value = ws_ls_get_existing_value( $existing_data['measurements'], $key, false );
 			}
 
             $public_html .= ws_ls_measurement_field($key, __($data['title'], WE_LS_SLUG) . ' (' . ws_ls_get_config('WE_LS_MEASUREMENTS_UNIT') . ')', $value);
@@ -93,7 +93,7 @@ function ws_ls_load_measurement_form($existing_data = false)
 
 function ws_ls_measurement_field($field_id, $display_text, $value = false)
 {
-	$value = ($value) ? $value : '';
+	$value = ( $value ) ?: '';
 	$field_id = 'ws-ls-' . $field_id;
 
     $html_output = '<label for="' . esc_attr($field_id) . '">' . esc_html($display_text) . ':</label>';

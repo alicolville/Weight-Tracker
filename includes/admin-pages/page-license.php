@@ -195,7 +195,7 @@ function ws_ls_advertise_pro() {
                                         </tr>
                                         <tr>
                                             <th><?php echo __('Type', WE_LS_SLUG); ?></th>
-                                            <td><a href="<?php echo esc_url(WE_LS_LICENSE_TYPES_URL); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html( $license_name ); ?></a></td>
+                                            <td><a href="<?php echo esc_url( WE_LS_LICENSE_TYPES_URL ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html( $license_name ); ?></a></td>
                                         </tr>
                                         <tr>
                                             <th><?php echo __('Expires', WE_LS_SLUG); ?></th>
@@ -205,7 +205,7 @@ function ws_ls_advertise_pro() {
                                                     if('pro-old' === $license_type) {
                                                         echo __('Never', WE_LS_SLUG);
                                                     } elseif (true === in_array($license_type, ['pro', 'pro-plus'])) {
-                                                        esc_html_e(ws_ls_iso_date_into_correct_format($license_decoded['expiry-date'], true));
+                                                        echo esc_html( ws_ls_iso_date_into_correct_format( $license_decoded['expiry-date'] ) );
                                                     } else {
                                                         echo __('n/a', WE_LS_SLUG);
                                                     }
@@ -237,7 +237,7 @@ function ws_ls_advertise_pro() {
                                 <div class="inside">
                                     <p><?php echo __('Need further help or information, please visit our documentation site:', WE_LS_SLUG); ?></p>
                                     <p><strong><a href="https://weight.yeken.uk" target="_blank" rel="noopener noreferrer">weight.yeken.uk</a></strong></p>
-                                    <a href="https://weight.yeken.uk" target="_blank" rel="noopener noreferrer"><img class="widefat" src="<?php echo plugins_url( 'images/weight.yeken.uk.jpg', __FILE__ ); ?>" /></a>
+                                    <a href="https://weight.yeken.uk" target="_blank" rel="noopener noreferrer"><img class="widefat" src="<?php echo plugins_url( 'assets/images/weight.yeken.uk.jpg', __FILE__ ); ?>" /></a>
                                 </div>
                             </div>
 						</div>

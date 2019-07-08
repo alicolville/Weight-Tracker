@@ -4,7 +4,7 @@
 
 class ws_ls_widget_chart extends WP_Widget {
 
-    private $field_values = array();
+    private $field_values;
 
 	function __construct() {
 		parent::__construct(

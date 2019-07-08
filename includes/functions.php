@@ -453,11 +453,12 @@ function ws_ls_force_bool_argument($value) {
     return false;
 }
 function ws_ls_force_numeric_argument( $value, $default = false ) {
-	if ( is_numeric( $value ) ) {
+
+    if ( is_numeric( $value ) ) {
 		return (int) $value;
 	}
 
-    return ( $default ) ? $default : 0;
+    return $default ?: 0;
 }
 
 /**

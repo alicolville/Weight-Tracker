@@ -6,6 +6,7 @@
     // -----------------------------------------------------------------------------------
 	// Constants - highly recommended that you don't change these
 	// -----------------------------------------------------------------------------------
+
 	define('WE_LS_TITLE', 'Weight Tracker');
 	define('WE_LS_SLUG', 'weight-loss-tracker');
 	define('WE_LS_DATA_URL', 'https://weight.yeken.uk/wlt/plugin-info-new.json');
@@ -16,49 +17,11 @@
 	define('WE_LS_UPGRADE_TO_PRO_PLUS_URL', 'https://weight.yeken.uk/get-pro-plus/');
     define('WE_LS_FREE_TRIAL_URL', 'https://weight.yeken.uk/trial/');
     define('WE_LS_UPGRADE_TO_PRO_PLUS_UPGRADE_URL', 'https://weight.yeken.uk/get-pro-plus-existing-license-holders/');
-    define('WE_LS_CDN_CHART_JS', 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js');
-	define('WE_LS_CACHE_TIME', 15 * MINUTE_IN_SECONDS);
-	define('WE_LS_CACHE_STATS_TABLE', 'stats-table-html');
-	define('WE_LS_CACHE_KEY_TARGET', 'target-data');
-	define('WE_LS_CACHE_KEY_DATA', 'weight-data');
-	define('WE_LS_CACHE_KEY_MIN_MAX_DATES', 'min-max-dates');
-	define('WE_LS_CACHE_KEY_TARGET_WEIGHT', 'target-weight');
-	define('WE_LS_CACHE_KEY_START_WEIGHT', 'start-weight-index');
-	define('WE_LS_CACHE_KEY_WEIGHT_EXTREME', 'weight-extreme-');
-	define('WE_LS_CACHE_KEY_PHOTOS', 'photos-extreme-');
-    define('WE_LS_CACHE_KEY_PHOTOS_ALL', 'photos-all-');
-    define('WE_LS_CACHE_KEY_PHOTOS_COUNT', 'photos-count-');
-	define('WE_LS_CACHE_KEY_USER_PREFERENCE', 'user-preference');
-	define('WE_LS_CACHE_KEY_USER_HEIGHT', 'user-height');
-	define('WE_LS_CACHE_KEY_YEKEN_JSON', 'yeken-json-lookup-wlt-2017');
-	define('WE_LS_CACHE_KEY_STATS_SUMMARY', 'user-stats-summary');
-	define('WE_LS_CACHE_KEY_WEIGHT_FOR_DAY', 'user-weight-for-day');
-    define('WE_LS_CACHE_KEY_ENTRY_COUNTS', 'entry-counts');
-	define('WE_LS_CACHE_KEY_BMR', 'bmr');
-	define('WE_LS_CACHE_KEY_HARRIS_BENEDICT', 'harris-benedict');
-    define('WE_LS_CACHE_KEY_MACRO', 'macro');
-	define('WE_LS_CACHE_KEY_WEIGHT_PREVIOUS', 'previous-weight');
+    define('WE_LS_CDN_CHART_JS', 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js');
 	define('WE_LS_KEY_YEKEN_ADMIN_NOTIFICATION', 'yeken-admin-notification');
-	define('WE_LS_CACHE_ADMIN_USER_DATA', 'admin-user-data');
 	define('WE_LS_TABLE_MAX_WEEK_FILTERS', 150);
-	define('WS_LS_PRO_PRICE', 30.00);
-	define('WS_LS_PRO_PLUS_PRICE', 75.00);
-	define('WE_LS_USE_MINIFIED_SCRIPTS', true);
-	define('WE_LS_CRON_NAME', 'weight_loss_tracker_hourly');
-	define('WE_LS_CRON_NAME_YEKEN_COMMS', 'weight_loss_tracker_yeken_comms');
-	define('WE_LS_CRON_SCHEDULE_WEEKLY', 'weight_loss_tracker_weekly');
-
-
-	// -----------------------------------------------------------------------------------
-	// Database tables
-	// -----------------------------------------------------------------------------------
-
-	define('WE_LS_TABLENAME', 'WS_LS_DATA');
-	define('WE_LS_TARGETS_TABLENAME', 'WS_LS_DATA_TARGETS');
-	define('WE_LS_USER_PREFERENCES_TABLENAME', 'WS_LS_DATA_USER_PREFERENCES');
-	define('WE_LS_USER_STATS_TABLENAME', 'WS_LS_DATA_USER_STATS');
-	define('WE_LS_LOG_TABLENAME', 'WS_LS_ERROR_LOG');
-	define('WE_LS_EMAIL_TABLENAME', 'WS_LS_EMAIL_TEMPLATES');
+	define('WS_LS_PRO_PRICE', 40.00);
+	define('WS_LS_PRO_PLUS_PRICE', 80.00);
 
 	// -----------------------------------------------------------------------------------
 	// Hooks / Filters
@@ -82,11 +45,9 @@
     define('WE_LS_FILTER_USER_SETTINGS_DB_FORMATS', 'wlt-filter-user-settings-db-formats');
     define('WE_LS_FILTER_USER_SETTINGS_SAVE_FIELDS', 'wlt-filter-user-settings-save-fields');
     define('WE_LS_FILTER_JS_WS_LS_CONFIG', 'wlt-filter-js-ws-ls-config');
-
     define('WE_LS_FILTER_HARRIS', 'wlt-filter-harris-benedict');
     define('WE_LS_FILTER_HARRIS_ALLOWED_PROGRESS', 'wlt-filter-harris-benedict-allowed-progresses');
     define('WE_LS_FILTER_HARRIS_TOP_OF_TABLE', 'wlt-filter-harris-benedict-top-of-table');
-
     define('WE_LS_FILTER_MACRO_ALLOWED_PROGRESS', 'wlt-filter-macro-nutrients-allowed-progresses');
 
     // -----------------------------------------------------------------------------------
@@ -174,6 +135,8 @@
         'navel' => array('title' => __('Navel', WE_LS_SLUG), 'abv' => __('NA', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#a28c87'),
 		'neck' => array('title' => __('Neck', WE_LS_SLUG), 'abv' => __('NE', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#FA8072')
     );
+
+	$supported_measurements = apply_filters( 'wlt-measurements', $supported_measurements );
 
     $globals['WE_LS_MEASUREMENTS'] = json_encode($supported_measurements);
 
@@ -272,12 +235,7 @@
 	if ('yes' == get_option('ws-ls-axes-start-at-zero')) {
 		$globals['WE_LS_AXES_START_AT_ZERO'] = true;
 	}
-	// -----------------------------------------------------------------------------------
-	// Allow stats to be sent to YeKEn
-	// -----------------------------------------------------------------------------------
-	if ('yes' == get_option('ws-ls-allow-stats')) {
-		$globals['WE_LS_ALLOW_STATS'] = true;
-	}
+
 	// -----------------------------------------------------------------------------------
 	// Define if target weights enabled
 	// -----------------------------------------------------------------------------------

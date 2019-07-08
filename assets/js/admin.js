@@ -147,7 +147,7 @@ jQuery( document ).ready(function ($) {
     // Setup Wizard
     // ------------------------------------------------------------
 
-    $( '.setup-wizard-dismiss' ).on('click', '.notice-dismiss', function ( event ) {
+    $( '.setup-wizard-dismiss' ).on('click', '.notice-dismiss, .dismiss-wizard', function ( event ) {
 
         event.preventDefault();
 

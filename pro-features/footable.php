@@ -160,8 +160,7 @@ function ws_ls_data_table_get_rows($user_id = false, $max_entries = false,
                             $row[$column_name]['value'] = sprintf('<a href="%s">%s</a>', ws_ls_get_link_to_user_profile($data['user_id']), $data['user_nicename'] );
                             break;
                         default:
-                            $row[$column_name] = $data[$column_name];
-                            $row[$column_name] = esc_html($data[$column_name]);
+                            $row[$column_name] = esc_html( $data[$column_name] );
                             break;
                     }
                 } else if ( false !== strpos( $column_name , 'meta-' ) ) {
@@ -274,12 +273,12 @@ function ws_ls_data_table_enqueue_scripts() {
 
 	$minified = ws_ls_use_minified();
 
-	wp_enqueue_style('ws-ls-footables', plugins_url( '/assets/css/footable.standalone.min.css', dirname(__FILE__)  ), array(), WE_LS_CURRENT_VERSION);
-    wp_enqueue_style('ws-ls-footables-wlt', plugins_url( '/assets/css/footable.css', dirname(__FILE__)  ), array('ws-ls-footables'), WE_LS_CURRENT_VERSION);
-    wp_enqueue_script('ws-ls-footables-js', plugins_url( '/assets/js/footable.min.js', dirname(__FILE__) ), array('jquery'), WE_LS_CURRENT_VERSION, true);
-	wp_enqueue_script('ws-ls-footables-admin', plugins_url( '/assets/js/data.footable' .     $minified . '.js', dirname(__FILE__) ), array('ws-ls-footables-js'), WE_LS_CURRENT_VERSION, true);
-	wp_localize_script('ws-ls-footables-admin', 'ws_user_table_config', ws_ls_data_js_config());
-    wp_enqueue_style('fontawesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', array(), WE_LS_CURRENT_VERSION);
+	wp_enqueue_style('ws-ls-footables', plugins_url( '/assets/css/footable.standalone.min.css', __DIR__  ), [], WE_LS_CURRENT_VERSION);
+    wp_enqueue_style('ws-ls-footables-wlt', plugins_url( '/assets/css/footable.css', __DIR__ ), [ 'ws-ls-footables' ], WE_LS_CURRENT_VERSION);
+    wp_enqueue_script('ws-ls-footables-js', plugins_url( '/assets/js/footable.min.js', __DIR__ ), [ 'jquery' ], WE_LS_CURRENT_VERSION, true);
+	wp_enqueue_script('ws-ls-footables-admin', plugins_url( '/assets/js/data.footable' .     $minified . '.js', __DIR__ ), [ 'ws-ls-footables-js' ], WE_LS_CURRENT_VERSION, true);
+	wp_localize_script('ws-ls-footables-admin', 'ws_user_table_config', ws_ls_data_js_config() );
+    wp_enqueue_style('fontawesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', [], WE_LS_CURRENT_VERSION);
 
 }
 
