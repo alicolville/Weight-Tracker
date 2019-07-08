@@ -103,8 +103,6 @@
 
 		if ( true === ws_ls_groups_enabled() ) {
 
-			$text = '';
-
 			$settings_url = ws_ls_get_link_to_user_settings( $user_id );
 
 			$groups = ws_ls_groups_user( $user_id );
@@ -377,7 +375,7 @@
 
 			global $wpdb;
 
-			$result = $wpdb->delete( $wpdb->prefix . WE_LS_MYSQL_GROUPS_USER, [ 'group_id' => $group_id ], [ '%d' ] );
+			$wpdb->delete( $wpdb->prefix . WE_LS_MYSQL_GROUPS_USER, [ 'group_id' => $group_id ], [ '%d' ] );
 
 		}
 	}

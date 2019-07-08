@@ -278,7 +278,7 @@ function ws_ls_user_header($user_id, $previous_url = false) {
 
 	if( $user_data = get_userdata( $user_id ) ) {
 
-		$previous_url = (true === empty($previous_url)) ? ws_ls_get_link_to_user_data() : $previous_url;
+		$previous_url = ( true === empty( $previous_url ) ) ? ws_ls_get_link_to_user_data() : $previous_url;
 
 		echo sprintf('
 			<h3>%s %s</h3>
@@ -287,17 +287,17 @@ function ws_ls_user_header($user_id, $previous_url = false) {
 
 					<a href="%s" class="button-secondary"><i class="fa fa-arrow-left"></i> %s</a>
 						<a href="%s" class="button-secondary"><i class="fa fa-wordpress"></i> %s</a>
-						<a href="" class="button-secondary"><i class="fa fa-line-chart"></i> %s</a>
+						<a href="%s" class="button-secondary"><i class="fa fa-line-chart"></i> %s</a>
 				</div>
 			</div>',
 			$user_data->user_nicename,
-			ws_ls_get_email_link($user_id, true),
-			esc_url($previous_url),
-			__('Back', WE_LS_SLUG),
-			get_edit_user_link($user_id),
-			__('WordPress Record', WE_LS_SLUG),
-			__('Weight Tracker Record', WE_LS_SLUG),
-			ws_ls_get_link_to_user_profile($user_id)
+			ws_ls_get_email_link( $user_id, true ),
+			esc_url( $previous_url ),
+			__( 'Back', WE_LS_SLUG ),
+			get_edit_user_link( $user_id ),
+			__('WordPress Record', WE_LS_SLUG ),
+			ws_ls_get_link_to_user_profile( $user_id ),
+			__('Weight Tracker Record', WE_LS_SLUG )
 		);
 	}
 

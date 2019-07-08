@@ -1,7 +1,28 @@
 <?php
 defined('ABSPATH') or die("Jog on!");
 
-/* All caching related logic here! */
+define('WE_LS_CACHE_TIME', 15 * MINUTE_IN_SECONDS);
+define('WE_LS_CACHE_STATS_TABLE', 'stats-table-html');
+define('WE_LS_CACHE_KEY_TARGET', 'target-data');
+define('WE_LS_CACHE_KEY_DATA', 'weight-data');
+define('WE_LS_CACHE_KEY_MIN_MAX_DATES', 'min-max-dates');
+define('WE_LS_CACHE_KEY_TARGET_WEIGHT', 'target-weight');
+define('WE_LS_CACHE_KEY_START_WEIGHT', 'start-weight-index');
+define('WE_LS_CACHE_KEY_WEIGHT_EXTREME', 'weight-extreme-');
+define('WE_LS_CACHE_KEY_PHOTOS', 'photos-extreme-');
+define('WE_LS_CACHE_KEY_PHOTOS_ALL', 'photos-all-');
+define('WE_LS_CACHE_KEY_PHOTOS_COUNT', 'photos-count-');
+define('WE_LS_CACHE_KEY_USER_PREFERENCE', 'user-preference');
+define('WE_LS_CACHE_KEY_USER_HEIGHT', 'user-height');
+define('WE_LS_CACHE_KEY_YEKEN_JSON', 'yeken-json-lookup-wlt-2017');
+define('WE_LS_CACHE_KEY_STATS_SUMMARY', 'user-stats-summary');
+define('WE_LS_CACHE_KEY_WEIGHT_FOR_DAY', 'user-weight-for-day');
+define('WE_LS_CACHE_KEY_ENTRY_COUNTS', 'entry-counts');
+define('WE_LS_CACHE_KEY_BMR', 'bmr');
+define('WE_LS_CACHE_KEY_HARRIS_BENEDICT', 'harris-benedict');
+define('WE_LS_CACHE_KEY_MACRO', 'macro');
+define('WE_LS_CACHE_KEY_WEIGHT_PREVIOUS', 'previous-weight');
+define('WE_LS_CACHE_ADMIN_USER_DATA', 'admin-user-data');
 
 /**
  * Caching enabled?

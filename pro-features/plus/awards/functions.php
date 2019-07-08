@@ -251,7 +251,7 @@
 			} else {
 
 				// If no badge, use a dummy placeholder
-				$placeholder = plugins_url( '../../assets/img/badge-placeholder-transparent.png', dirname(__FILE__) );
+				$placeholder = plugins_url( '../../assets/img/badge-placeholder-transparent.png', __DIR__ );
 				$award['thumb'] = sprintf( '<img src="%s" width="%d" height="%d" />',
                     esc_url( $placeholder ),
                     (int) $width,
@@ -300,7 +300,7 @@
 
 		    $html .= '<div class="ws-ls-badge-collection">';
 
-			$placeholder = plugins_url( '../../assets/img/badge-placeholder-transparent.png', dirname(__FILE__) );
+			$placeholder = plugins_url( '../../assets/img/badge-placeholder-transparent.png', __DIR__ );
 
 			foreach ( $awards as $award ) {
 

@@ -263,16 +263,6 @@ function ws_ls_settings_page_generic() {
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <th scope="row"><?php echo __( 'Send usage data to YeKen?' , WE_LS_SLUG); ?></th>
-                                                    <td>
-                                                        <select id="ws-ls-allow-stats" name="ws-ls-allow-stats">
-                                                            <option value="no" <?php selected( get_option('ws-ls-allow-stats'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
-                                                            <option value="yes" <?php selected( get_option('ws-ls-allow-stats'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
-                                                        </select>
-                                                        <p><?php echo __('We would love to see how our plugin is used. By consenting, you are allowing permission for the following data to be sent on a weekly basis to YeKen: URL, summary of settings, count of recorded weights and measurements. No user or admin data will ever be transmitted.', WE_LS_SLUG)?></p>
-                                                    </td>
-                                                </tr>
-                                                <tr>
                                                     <th scope="row"><?php echo __( 'Disable notifications from YeKen?' , WE_LS_SLUG); ?></th>
                                                     <td>
                                                         <select id="ws-ls-disable-yeken-notifications" name="ws-ls-disable-yeken-notifications">
@@ -667,7 +657,7 @@ function ws_ls_settings_page_generic() {
 	                                                                </tr>
 	                                                                <tr>
 	                                                                    <td>
-	                                                                        <?php echo __( 'Enable' , WE_LS_SLUG); ?>: <input type="checkbox" id="ws-ls-<?php echo $key; ?>" name="ws-ls-measurement[enabled][<?php echo $key; ?>]" value="on" <?php checked($body_part['enabled'], true); ?> />
+	                                                                        <?php echo __( 'Enable' , WE_LS_SLUG); ?>: <input type="checkbox" id="ws-ls-<?php echo $key; ?>" name="ws-ls-measurement[enabled][<?php echo $key; ?>]" value="on" <?php checked( $body_part['enabled'] ); ?> />
 	                                                                    </td>
 	                                                                    <td>
 	                                                                        <?php echo __( 'Chart Colour' , WE_LS_SLUG); ?>: <input name="ws-ls-measurement[colors][<?php echo $key; ?>]" type="color" value="<?php echo $body_part['chart_colour']; ?>">
@@ -754,7 +744,6 @@ function ws_ls_register_settings(){
     register_setting( 'we-ls-options-group', 'ws-ls-use-us-dates' );
     register_setting( 'we-ls-options-group', 'ws-ls-disable-css' );
 	register_setting( 'we-ls-options-group', 'ws-ls-axes-start-at-zero' );
-	register_setting( 'we-ls-options-group', 'ws-ls-allow-stats' );
 	register_setting( 'we-ls-options-group', 'ws-ls-disable-yeken-notifications' );
 	register_setting( 'we-ls-options-group', 'ws-ls-edit-permissions' );
     register_setting( 'we-ls-options-group', 'ws-ls-text-colour' );

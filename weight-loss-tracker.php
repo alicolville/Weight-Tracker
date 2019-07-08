@@ -5,7 +5,7 @@ defined('ABSPATH') or die('Jog on!');
 /**
  * Plugin Name: Weight Tracker
  * Description: Allow your users to track their weight, measurements and other pieces of custom data. Display in charts, tables, shortcodes and widgets. Manage their data, issue awards, email notifications, etc! Provide advanced data on Body Mass Index (BMI), Basal Metabolic Rate (BMR), Calorie intake, Harris Benedict Formula, Macronutrients Calculator and more.
- * Version: 7.0.13
+ * Version: 7.1
  * Author: YeKen
  * Author URI: https://www.YeKen.uk
  * License: GPL2
@@ -28,8 +28,8 @@ defined('ABSPATH') or die('Jog on!');
 */
 
     define('WS_LS_ABSPATH', plugin_dir_path( __FILE__ ));
-    define('WE_LS_CURRENT_VERSION', '7.0.13');
-    define('WE_LS_DB_VERSION', '7.0.13');
+    define('WE_LS_CURRENT_VERSION', '7.1');
+    define('WE_LS_DB_VERSION', '7.1');
 
 // -----------------------------------------------------------------------------------------
 // AC: Activate / Deactivate / Uninstall Hooks
@@ -78,6 +78,7 @@ defined('ABSPATH') or die('Jog on!');
         'includes/converters.php',
         'includes/core.php',
         'includes/ajax-handler.php',
+        'includes/setup-wizard.php',
         'includes/shortcode-weight-loss-tracker.php',
         'includes/shortcode-various.php',
         'includes/save-data.php',
@@ -86,8 +87,9 @@ defined('ABSPATH') or die('Jog on!');
 	    'includes/admin-pages/settings/page-settings-generic.php',
 	    'includes/admin-pages/settings/page-settings-groups.php',
         'includes/admin-pages/user-data/data-groups.php',
-        'includes/admin-pages/page.license.php',
-        'includes/admin-pages/page.help.php',
+        'includes/admin-pages/page-help.php',
+	    'includes/admin-pages/page-license.php',
+	    'includes/admin-pages/page-setup-wizard.php',
         'includes/admin-pages/meta-fields/page-meta-fields.php',
         'includes/admin-pages/meta-fields/page-meta-fields-add-update.php',
         'includes/admin-pages/meta-fields/page-meta-fields-list.php',
@@ -98,12 +100,12 @@ defined('ABSPATH') or die('Jog on!');
         'pro-features/plus/meta-fields/db.php',
         'pro-features/plus/meta-fields/hooks.php',
         'pro-features/plus/meta-fields/functions.php',
-	    'pro-features/plus/meta-fields/functions.photos.php',
+	    'pro-features/plus/meta-fields/functions-photos.php',
         'pro-features/feature-list.php',
         'includes/comms-with-yeken.php',
         'includes/admin-notifications.php',
         'pro-features/functions.php',
-        'pro-features/functions.pages.php',
+        'pro-features/functions-pages.php',
         'includes/admin-pages/user-data/data-home.php',
         'includes/admin-pages/user-data/data-summary.php',
         'includes/admin-pages/user-data/data-view-all.php',
@@ -132,14 +134,14 @@ defined('ABSPATH') or die('Jog on!');
         'pro-features/shortcode-if.php',
 	    'pro-features/plus/shortcode.wlt.php',
 	    'pro-features/plus/photos.php',
-	    'pro-features/plus/photos.gallery.php',
+	    'pro-features/plus/photos-gallery.php',
 	    'pro-features/widget-chart.php',
         'pro-features/widget-form.php',
         'pro-features/widget-progress.php',
         'pro-features/footable.php',
         'pro-features/db.php',
-	    'pro-features/functions.measurements.php',
-        'pro-features/functions.stats.php',
+	    'pro-features/functions-measurements.php',
+        'pro-features/functions-stats.php',
         'pro-features/export.php',
         'pro-features/init.php',
         'pro-features/plus/awards/activate.php',
@@ -160,8 +162,8 @@ defined('ABSPATH') or die('Jog on!');
 
         $files_to_include = array_merge( $files_to_include,[
             'pro-features/plus/bmr.php',
-            'pro-features/plus/harris.benedict.php',
-            'pro-features/plus/macronutrient.calculator.php'
+            'pro-features/plus/harris-benedict.php',
+            'pro-features/plus/macronutrient-calculator.php'
         ]);
 
     }

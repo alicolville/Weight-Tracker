@@ -143,4 +143,18 @@ jQuery( document ).ready(function ($) {
 
     ws_ls_awards_show_additional();
 
+    // ------------------------------------------------------------
+    // Setup Wizard
+    // ------------------------------------------------------------
+
+    $( '.setup-wizard-dismiss' ).on('click', '.notice-dismiss, .dismiss-wizard', function ( event ) {
+
+        event.preventDefault();
+
+        $.post( ajaxurl, {
+            action: 'ws_ls_setup_wizard_dismiss',
+            url: ajaxurl
+        });
+    });
+
 });

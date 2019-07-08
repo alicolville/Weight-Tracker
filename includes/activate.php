@@ -2,6 +2,13 @@
 
 	defined('ABSPATH') or die("Jog on!");
 
+	define('WE_LS_TABLENAME', 'WS_LS_DATA');
+	define('WE_LS_TARGETS_TABLENAME', 'WS_LS_DATA_TARGETS');
+	define('WE_LS_USER_PREFERENCES_TABLENAME', 'WS_LS_DATA_USER_PREFERENCES');
+	define('WE_LS_USER_STATS_TABLENAME', 'WS_LS_DATA_USER_STATS');
+	define('WE_LS_LOG_TABLENAME', 'WS_LS_ERROR_LOG');
+	define('WE_LS_EMAIL_TABLENAME', 'WS_LS_EMAIL_TEMPLATES');
+
 	// Code that should run when plugin is activated
 	function ws_ls_activate() {
 

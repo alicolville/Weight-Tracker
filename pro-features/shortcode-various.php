@@ -140,7 +140,7 @@ function ws_ls_shortcode_new_users( $user_defined_arguments ) {
     $arguments['days'] = ($arguments['days'] < 1) ? 1 : $arguments['days'];
 
     // Build from date
-    $from_date = strtotime ( "-{$arguments['days']} day" ,  time() ) ;
+    $from_date = strtotime ( "-{$arguments['days']} day" ) ;
     $from_date = date ( 'Y-m-d H:i:s' , $from_date );
 
     $wp_search_query = [
