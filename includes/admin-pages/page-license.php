@@ -62,9 +62,8 @@ function ws_ls_advertise_pro() {
 				<div id="post-body" class="metabox-holder columns-2">
 					<div id="post-body-content">
 						<?php
-//todo: here
-							$price = ($yeken_data && isset($yeken_data->price)) ? (int) $yeken_data->price : WS_LS_PRO_PRICE;
-							$proprice = ($yeken_data && isset($yeken_data->plusprice)) ? (int) $yeken_data->plusprice : WS_LS_PRO_PLUS_PRICE;
+                       		$price = ws_ls_license_pro_price();
+							$proprice = ws_ls_license_pro_plus_price();
 						?>
 						<div class="meta-box-sortables ui-sortable">
 							<div class="postbox">

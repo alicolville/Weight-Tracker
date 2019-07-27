@@ -398,10 +398,6 @@ function ws_ls_license_pro_plus_price() {
 
 if ( false === function_exists( 'yeken_license_api_fetch_licenses' ) ) {
 
-    function yeken_api_licenses() {
-        // Holder function - need to rename the above for all users of this
-    }
-
     /**
      * Call out to YeKen API for license prices
      */
