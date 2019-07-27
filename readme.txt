@@ -157,6 +157,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 = 7.1.1 =
 
 * Improvement: Fetch license price from YeKen API
+* Improvement: Removed redundant admin notifications code.
 
 = 7.1 =
 

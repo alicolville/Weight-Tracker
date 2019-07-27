@@ -103,7 +103,6 @@ defined('ABSPATH') or die('Jog on!');
 	    'pro-features/plus/meta-fields/functions-photos.php',
         'pro-features/feature-list.php',
         'includes/comms-with-yeken.php',
-        'includes/admin-notifications.php',
         'pro-features/functions.php',
         'pro-features/functions-pages.php',
         'includes/admin-pages/user-data/data-home.php',
