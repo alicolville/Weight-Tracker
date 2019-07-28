@@ -5,7 +5,7 @@ defined('ABSPATH') or die('Jog on!');
 /**
  * Plugin Name: Weight Tracker
  * Description: Allow your users to track their weight, measurements and other pieces of custom data. Display in charts, tables, shortcodes and widgets. Manage their data, issue awards, email notifications, etc! Provide advanced data on Body Mass Index (BMI), Basal Metabolic Rate (BMR), Calorie intake, Harris Benedict Formula, Macronutrients Calculator and more.
- * Version: 7.1
+ * Version: 7.1.1
  * Author: YeKen
  * Author URI: https://www.YeKen.uk
  * License: GPL2
@@ -28,8 +28,8 @@ defined('ABSPATH') or die('Jog on!');
 */
 
     define('WS_LS_ABSPATH', plugin_dir_path( __FILE__ ));
-    define('WE_LS_CURRENT_VERSION', '7.1');
-    define('WE_LS_DB_VERSION', '7.1');
+    define('WE_LS_CURRENT_VERSION', '7.1.1');
+    define('WE_LS_DB_VERSION', '7.1.1');
 
 // -----------------------------------------------------------------------------------------
 // AC: Activate / Deactivate / Uninstall Hooks
@@ -103,7 +103,6 @@ defined('ABSPATH') or die('Jog on!');
 	    'pro-features/plus/meta-fields/functions-photos.php',
         'pro-features/feature-list.php',
         'includes/comms-with-yeken.php',
-        'includes/admin-notifications.php',
         'pro-features/functions.php',
         'pro-features/functions-pages.php',
         'includes/admin-pages/user-data/data-home.php',
@@ -178,7 +177,7 @@ defined('ABSPATH') or die('Jog on!');
     }
 
 // -----------------------------------------------------------------------------------------
-// AC: Load relevant language files (https://wpcentral.io/internationalization/)
+// AC: Load relevant language files (https://wpallinfo.com/complete-list-of-wordpress-locale-codes/)
 // -----------------------------------------------------------------------------------------
 
     function ws_ls_load_textdomain() {

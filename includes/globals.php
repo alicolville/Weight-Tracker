@@ -87,7 +87,6 @@
 		'WE_LS_EMAIL_NOTIFICATIONS_EDIT' => true,
 		'WE_LS_EMAIL_NOTIFICATIONS_NEW' => true,
 		'WE_LS_EMAIL_NOTIFICATIONS_TARGETS' => true,
-		'WE_LS_DISABLE_YEKEN_NOTIFICATIONS' => true,
 		'WE_LS_VIEW_EDIT_USER_PERMISSION_LEVEL' => 'manage_options', // Default to admin only being allowed to edit / view user data
         'WS_LS_CAL_CAP_MALE' => 1900,
         'WS_LS_CAL_CAP_FEMALE' => 1400,
@@ -259,12 +258,6 @@
 	// -----------------------------------------------------------------------------------
 	if (WS_LS_IS_PRO && ('yes' == get_option('ws-ls-display-bmi-in-tables') || false == get_option('ws-ls-display-bmi-in-tables'))) {
 		$globals['WE_LS_DISPLAY_BMI_IN_TABLES'] = true;
-	}
-	// -----------------------------------------------------------------------------------
-	// Disable admin notifications from YeKen
-	// -----------------------------------------------------------------------------------
-	if ('no' == get_option('ws-ls-disable-yeken-notifications')) {
-		$globals['WE_LS_DISABLE_YEKEN_NOTIFICATIONS'] = false;
 	}
 	// -----------------------------------------------------------------------------------
 	// Chart Colours

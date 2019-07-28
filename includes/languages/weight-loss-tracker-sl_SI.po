@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Weight Loss Tracker\n"
-"POT-Creation-Date: 2018-12-15 15:45+0000\n"
-"PO-Revision-Date: 2018-12-15 15:45+0000\n"
+"POT-Creation-Date: 2019-07-28 11:08+0100\n"
+"PO-Revision-Date: 2019-07-28 11:08+0100\n"
 "Last-Translator: Greg Vid <drobtinca@hotmail.com>\n"
 "Language-Team: \n"
 "Language: sl_SI\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2\n"
+"X-Generator: Poedit 2.2.3\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
 "%100==4 ? 2 : 3);\n"
@@ -21,12 +21,6 @@ msgstr ""
 "_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
-
-#: admin-notifications.php:30
-#, fuzzy
-#| msgid "Weight Loss Tracker"
-msgid "Weight Tracker"
-msgstr "Weight Loss Tracker"
 
 #: admin-pages/awards/page-awards-add-update.php:97
 #, fuzzy
@@ -77,25 +71,25 @@ msgstr ""
 msgid "Weight difference"
 msgstr "Razlika v teži"
 
-#: admin-pages/awards/page-awards-add-update.php:173 core.php:376
+#: admin-pages/awards/page-awards-add-update.php:173 core.php:378
 msgid "Stones"
 msgstr "Stones"
 
 #: admin-pages/awards/page-awards-add-update.php:175
 #: admin-pages/awards/page-awards-add-update.php:186
-#: admin-pages/settings/page-settings-generic.php:110 core.php:377 core.php:380
+#: admin-pages/settings/page-settings-generic.php:109 core.php:379 core.php:382
 msgid "Pounds"
 msgstr "Funti"
 
 #: admin-pages/awards/page-awards-add-update.php:191 core.php:14 core.php:83
-#: core.php:210 core.php:384
+#: core.php:210 core.php:386
 msgid "Weight"
 msgstr "Teža"
 
 #: admin-pages/awards/page-awards-add-update.php:191
 #: admin-pages/awards/page-awards-add-update.php:192
-#: admin-pages/settings/page-settings-generic.php:108 converters.php:56
-#: core.php:75 core.php:384 functions.php:73 functions.php:96
+#: admin-pages/settings/page-settings-generic.php:107 converters.php:56
+#: core.php:75 core.php:386 functions.php:73 functions.php:96
 msgid "kg"
 msgstr "kg"
 
@@ -132,91 +126,104 @@ msgid ""
 msgstr ""
 
 #: admin-pages/awards/page-awards-add-update.php:252
+msgid "URL"
+msgstr ""
+
+#: admin-pages/awards/page-awards-add-update.php:256
+msgid ""
+"If specified, badges and award title will click through to the given URL."
+msgstr ""
+
+#: admin-pages/awards/page-awards-add-update.php:261
 #, fuzzy
 #| msgid "All entries"
 msgid "Apply to new entries?"
 msgstr "Vsi vnosi"
 
-#: admin-pages/awards/page-awards-add-update.php:257
-#: admin-pages/awards/page-awards-add-update.php:270
-#: admin-pages/awards/page-awards-add-update.php:283
-#: admin-pages/awards/page-awards-add-update.php:296
+#: admin-pages/awards/page-awards-add-update.php:266
+#: admin-pages/awards/page-awards-add-update.php:279
+#: admin-pages/awards/page-awards-add-update.php:292
+#: admin-pages/awards/page-awards-add-update.php:305
 #: admin-pages/meta-fields/page-meta-fields-add-update.php:83
 #: admin-pages/meta-fields/page-meta-fields-add-update.php:99
 #: admin-pages/meta-fields/page-meta-fields-add-update.php:154
 #: admin-pages/meta-fields/page-meta-fields-add-update.php:166
-#: admin-pages/settings/page-settings-generic.php:95
-#: admin-pages/settings/page-settings-generic.php:132
-#: admin-pages/settings/page-settings-generic.php:142
-#: admin-pages/settings/page-settings-generic.php:153
-#: admin-pages/settings/page-settings-generic.php:164
-#: admin-pages/settings/page-settings-generic.php:224
-#: admin-pages/settings/page-settings-generic.php:239
-#: admin-pages/settings/page-settings-generic.php:253
-#: admin-pages/settings/page-settings-generic.php:263
-#: admin-pages/settings/page-settings-generic.php:273
-#: admin-pages/settings/page-settings-generic.php:362
-#: admin-pages/settings/page-settings-generic.php:394
-#: admin-pages/settings/page-settings-generic.php:423
-#: admin-pages/settings/page-settings-generic.php:441
-#: admin-pages/settings/page-settings-generic.php:466
-#: admin-pages/settings/page-settings-generic.php:517
-#: admin-pages/settings/page-settings-generic.php:532
-#: admin-pages/settings/page-settings-generic.php:542
-#: admin-pages/settings/page-settings-generic.php:552
+#: admin-pages/settings/page-settings-generic.php:94
+#: admin-pages/settings/page-settings-generic.php:131
+#: admin-pages/settings/page-settings-generic.php:141
+#: admin-pages/settings/page-settings-generic.php:151
+#: admin-pages/settings/page-settings-generic.php:162
+#: admin-pages/settings/page-settings-generic.php:222
+#: admin-pages/settings/page-settings-generic.php:234
+#: admin-pages/settings/page-settings-generic.php:246
+#: admin-pages/settings/page-settings-generic.php:260
+#: admin-pages/settings/page-settings-generic.php:270
+#: admin-pages/settings/page-settings-generic.php:291
+#: admin-pages/settings/page-settings-generic.php:333
+#: admin-pages/settings/page-settings-generic.php:402
+#: admin-pages/settings/page-settings-generic.php:434
+#: admin-pages/settings/page-settings-generic.php:463
+#: admin-pages/settings/page-settings-generic.php:481
+#: admin-pages/settings/page-settings-generic.php:506
+#: admin-pages/settings/page-settings-generic.php:557
 #: admin-pages/settings/page-settings-generic.php:572
+#: admin-pages/settings/page-settings-generic.php:582
 #: admin-pages/settings/page-settings-generic.php:592
-#: admin-pages/settings/page-settings-generic.php:653 functions.php:993
+#: admin-pages/settings/page-settings-generic.php:612
+#: admin-pages/settings/page-settings-generic.php:632
+#: admin-pages/settings/page-settings-generic.php:693 functions.php:987
 msgid "Yes"
 msgstr "Da"
 
-#: admin-pages/awards/page-awards-add-update.php:258
-#: admin-pages/awards/page-awards-add-update.php:271
-#: admin-pages/awards/page-awards-add-update.php:284
-#: admin-pages/awards/page-awards-add-update.php:295
+#: admin-pages/awards/page-awards-add-update.php:267
+#: admin-pages/awards/page-awards-add-update.php:280
+#: admin-pages/awards/page-awards-add-update.php:293
+#: admin-pages/awards/page-awards-add-update.php:304
 #: admin-pages/meta-fields/page-meta-fields-add-update.php:83
 #: admin-pages/meta-fields/page-meta-fields-add-update.php:98
 #: admin-pages/meta-fields/page-meta-fields-add-update.php:153
 #: admin-pages/meta-fields/page-meta-fields-add-update.php:165
-#: admin-pages/settings/page-settings-generic.php:96
-#: admin-pages/settings/page-settings-generic.php:133
-#: admin-pages/settings/page-settings-generic.php:143
-#: admin-pages/settings/page-settings-generic.php:154
-#: admin-pages/settings/page-settings-generic.php:163
-#: admin-pages/settings/page-settings-generic.php:225
-#: admin-pages/settings/page-settings-generic.php:238
-#: admin-pages/settings/page-settings-generic.php:252
-#: admin-pages/settings/page-settings-generic.php:262
-#: admin-pages/settings/page-settings-generic.php:272
-#: admin-pages/settings/page-settings-generic.php:363
-#: admin-pages/settings/page-settings-generic.php:393
-#: admin-pages/settings/page-settings-generic.php:424
-#: admin-pages/settings/page-settings-generic.php:442
-#: admin-pages/settings/page-settings-generic.php:465
-#: admin-pages/settings/page-settings-generic.php:516
-#: admin-pages/settings/page-settings-generic.php:533
-#: admin-pages/settings/page-settings-generic.php:543
-#: admin-pages/settings/page-settings-generic.php:553
-#: admin-pages/settings/page-settings-generic.php:571
-#: admin-pages/settings/page-settings-generic.php:591
-#: admin-pages/settings/page-settings-generic.php:652 functions.php:993
+#: admin-pages/settings/page-settings-generic.php:95
+#: admin-pages/settings/page-settings-generic.php:132
+#: admin-pages/settings/page-settings-generic.php:142
+#: admin-pages/settings/page-settings-generic.php:152
+#: admin-pages/settings/page-settings-generic.php:161
+#: admin-pages/settings/page-settings-generic.php:223
+#: admin-pages/settings/page-settings-generic.php:233
+#: admin-pages/settings/page-settings-generic.php:245
+#: admin-pages/settings/page-settings-generic.php:259
+#: admin-pages/settings/page-settings-generic.php:269
+#: admin-pages/settings/page-settings-generic.php:292
+#: admin-pages/settings/page-settings-generic.php:332
+#: admin-pages/settings/page-settings-generic.php:403
+#: admin-pages/settings/page-settings-generic.php:433
+#: admin-pages/settings/page-settings-generic.php:464
+#: admin-pages/settings/page-settings-generic.php:482
+#: admin-pages/settings/page-settings-generic.php:505
+#: admin-pages/settings/page-settings-generic.php:556
+#: admin-pages/settings/page-settings-generic.php:573
+#: admin-pages/settings/page-settings-generic.php:583
+#: admin-pages/settings/page-settings-generic.php:593
+#: admin-pages/settings/page-settings-generic.php:611
+#: admin-pages/settings/page-settings-generic.php:631
+#: admin-pages/settings/page-settings-generic.php:692 functions.php:987
 msgid "No"
 msgstr "Ne"
 
-#: admin-pages/awards/page-awards-add-update.php:260
+#: admin-pages/awards/page-awards-add-update.php:269
 #, fuzzy
 #| msgid ""
 #| "Receive notifications when a member adds a new weight / measurement entry."
 msgid "Can the award be given when a user adds a new weight entry?."
 msgstr "Prejmite obvestilo ko uporabnik vnese novo težo / meritev."
 
-#: admin-pages/awards/page-awards-add-update.php:265
+#: admin-pages/awards/page-awards-add-update.php:274
 #, fuzzy
 #| msgid "New / updated targets"
 msgid "Apply to updated entries?"
 msgstr "Nov / posodobljen cilj"
 
-#: admin-pages/awards/page-awards-add-update.php:273
+#: admin-pages/awards/page-awards-add-update.php:282
 #, fuzzy
 #| msgid ""
 #| "Receive notifications when a member edits an existing weight / "
@@ -224,33 +231,33 @@ msgstr "Nov / posodobljen cilj"
 msgid "Can the award be given when a user updates an existing weight entry?."
 msgstr "Prejmite obvestilo ko uporabnik spremeni obstoječo težo / meritev."
 
-#: admin-pages/awards/page-awards-add-update.php:278
+#: admin-pages/awards/page-awards-add-update.php:287
 #, fuzzy
 #| msgid "Email"
 msgid "Send Email"
 msgstr "Email"
 
-#: admin-pages/awards/page-awards-add-update.php:290
+#: admin-pages/awards/page-awards-add-update.php:299
 #: admin-pages/meta-fields/page-meta-fields-add-update.php:160
 msgid "Enabled"
 msgstr "Omogoči"
 
-#: admin-pages/awards/page-awards-add-update.php:303
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:173 core.php:423
+#: admin-pages/awards/page-awards-add-update.php:312
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:173 core.php:425
 msgid "Cancel"
 msgstr ""
 
-#: admin-pages/awards/page-awards-add-update.php:306
-#: admin-pages/awards/page-awards-add-update.php:308
+#: admin-pages/awards/page-awards-add-update.php:315
+#: admin-pages/awards/page-awards-add-update.php:317
 #: admin-pages/meta-fields/page-meta-fields-add-update.php:176
 #: admin-pages/meta-fields/page-meta-fields-add-update.php:178
 msgid "Save"
 msgstr "Shranjeno!"
 
 #: admin-pages/awards/page-awards-list.php:34
-#: admin-pages/user-data/data-user.php:122
-#: admin-pages/user-data/data-user.php:155
-#: admin-pages/user-data/data-user.php:175 hooks.php:11
+#: admin-pages/user-data/data-user.php:143
+#: admin-pages/user-data/data-user.php:180
+#: admin-pages/user-data/data-user.php:200 hooks.php:11
 msgid "Awards"
 msgstr ""
 
@@ -346,7 +353,7 @@ msgid ""
 "higher up the form."
 msgstr ""
 
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:148 core.php:401
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:148 core.php:403
 msgid "Mandatory"
 msgstr "Obvezno"
 
@@ -369,122 +376,115 @@ msgstr ""
 msgid "Read more about Custom Fields"
 msgstr "Več informacij o izračunih"
 
-#: admin-pages/page.help.php:24
+#: admin-pages/page-help.php:24
 msgid "Custom modifications / web development"
 msgstr ""
 
-#: admin-pages/page.help.php:26
-msgid ""
-"If require plugin modifications to Weight Tracker, or need a new plugin "
-"built, or perhaps you need a developer to help you with your website then "
-"please don't hesitiate get in touch!"
-msgstr ""
-
-#: admin-pages/page.help.php:27
-msgid "We provide fixed priced quotes."
-msgstr ""
-
-#: admin-pages/page.help.php:36 admin-pages/page.license.php:235
+#: admin-pages/page-help.php:31 admin-pages/page-license.php:232
 msgid "Documentation"
 msgstr "Dokumentacija"
 
-#: admin-pages/page.help.php:38
+#: admin-pages/page-help.php:33
 msgid "You can find detailed documentation for this plugin at our site:"
 msgstr "Podrobno pomoč lahko najdete na naši spletni strani:"
 
-#: admin-pages/page.help.php:46
+#: admin-pages/page-help.php:41
 msgid "Fix: Stones & Pounds accuracy"
 msgstr "Stonei in funti"
 
-#: admin-pages/page.help.php:48
+#: admin-pages/page-help.php:43
 msgid ""
 "Correct accuracy for measurements entered in Stones and Pounds (only run "
 "with the advice of YeKen)"
 msgstr ""
 
-#: admin-pages/page.help.php:65
+#: admin-pages/page-help.php:60
 msgid "Custom Fields: Migrate photos from old system to Custom Fields"
 msgstr ""
 
-#: admin-pages/page.help.php:67
+#: admin-pages/page-help.php:62
 msgid ""
 "This will migrate photos from the old system to the new custom fields. It "
 "will create a custom field with the key \"photo\". Note! It will remove any "
 "existing migrated photos before re-adding them."
 msgstr ""
 
-#: admin-pages/page.help.php:90
+#: admin-pages/page-help.php:85
 msgid "Done. View Log below for further information."
 msgstr ""
 
-#: admin-pages/page.help.php:100
+#: admin-pages/page-help.php:95
 msgid "Admin Tools"
 msgstr ""
 
-#: admin-pages/page.help.php:111 admin-pages/page.help.php:125 core.php:661
+#: admin-pages/page-help.php:104
+msgid "Show Setup Wizard link"
+msgstr ""
+
+#: admin-pages/page-help.php:114 admin-pages/page-help.php:128 core.php:668
 msgid "Done"
 msgstr "Dokončano"
 
-#: admin-pages/page.help.php:116
+#: admin-pages/page-help.php:119
 msgid "Delete all issued awards"
 msgstr ""
 
-#: admin-pages/page.help.php:130
+#: admin-pages/page-help.php:133
 #, fuzzy
 #| msgid "View all entries"
 msgid "Delete all log entries"
 msgstr "Poglej vse vnose"
 
-#: admin-pages/page.help.php:139
+#: admin-pages/page-help.php:142
 msgid "Weight Tracker Debug Log"
 msgstr "Weight Loss Tracker - Obrazec"
 
-#: admin-pages/page.help.php:142
+#: admin-pages/page-help.php:145
 msgid ""
 "Below is a list of the debug information logged by the Weight Tracker plugin "
 "over the last 31 days."
 msgstr ""
 
-#: admin-pages/page.help.php:174 admin-pages/page.help.php:178
+#: admin-pages/page-help.php:177 admin-pages/page-help.php:181
 #, fuzzy
 #| msgid "Are you sure you?"
 msgid "Are you sure?"
 msgstr "Ste prepričani?"
 
-#: admin-pages/page.help.php:175
+#: admin-pages/page-help.php:178
 #, fuzzy
 #| msgid "Are you sure you wish to remove all user data?"
 msgid "Are you sure you wish to remove all issued awards?"
 msgstr "Ste prepričani, da želite izbrisati vse podatke?"
 
-#: admin-pages/page.help.php:179
+#: admin-pages/page-help.php:182
 #, fuzzy
 #| msgid "Are you sure you wish to clear your target weight?"
 msgid "Are you sure you wish to clear all log entries?"
 msgstr "Res želite izbrisati cilj?"
 
-#: admin-pages/page.license.php:11
+#: admin-pages/page-license.php:11
 #: admin-pages/settings/page-settings-generic.php:8
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Nimate dovoljenja za ogled te strani."
 
-#: admin-pages/page.license.php:39
+#: admin-pages/page-license.php:37
 msgid "Your license has been applied!"
 msgstr "Licenca je bila uporabljena!"
 
-#: admin-pages/page.license.php:42
+#: admin-pages/page-license.php:40
 msgid "An error occurred applying your license: "
 msgstr "Med shranjevanjem je prišlo do napake:"
 
-#: admin-pages/page.license.php:73 hooks.php:13
+#: admin-pages/page-license.php:70 hooks.php:13
 msgid "Upgrade"
 msgstr "Nadgradite"
 
-#: admin-pages/page.license.php:78
+#: admin-pages/page-license.php:75
 msgid "As you can see from the features listed below, the"
 msgstr ""
 
-#: admin-pages/page.license.php:80
+#: admin-pages/page-license.php:77
 msgid ""
 "can offer you and your members a lot more features to help you and them "
 "manage their weight. There are two types of License that you can purchase, "
@@ -493,28 +493,28 @@ msgid ""
 "intake, Macronutrient Calculator, etc."
 msgstr ""
 
-#: admin-pages/page.license.php:81
+#: admin-pages/page-license.php:78
 msgid ""
 "Of course, by purchasing a license, you are supporting the future of this "
 "plugin and it is gratefully appreciated."
 msgstr ""
 
-#: admin-pages/page.license.php:86
+#: admin-pages/page-license.php:83
 msgid "Legacy Pro License"
 msgstr "Legacy License"
 
-#: admin-pages/page.license.php:87
+#: admin-pages/page-license.php:84
 msgid ""
 "Our licensing has model has changed, Prior to September 2017 it used to be a "
 "one off payment that enabled the Pro features of the plugin. This is still "
 "the case and any old licenses will still be honoured."
 msgstr ""
 
-#: admin-pages/page.license.php:88
+#: admin-pages/page-license.php:85
 msgid "Moving to a yearly license"
 msgstr ""
 
-#: admin-pages/page.license.php:89
+#: admin-pages/page-license.php:86
 msgid ""
 "There is no reason to move to a yearly license - Pro features will remain "
 "the same for legacy and new Pro subscriptions. However, if you were to move "
@@ -522,236 +522,285 @@ msgid ""
 "plugin (and I'll give you a big hug)."
 msgstr ""
 
-#: admin-pages/page.license.php:93
+#: admin-pages/page-license.php:90
 msgid "Pro Plus License"
 msgstr ""
 
-#: admin-pages/page.license.php:94
+#: admin-pages/page-license.php:91
 msgid ""
 "Of course, thank you for purchasing a Pro license - it is much appreciated. "
 "As you can see below, you can further expand the features of"
 msgstr ""
 
-#: admin-pages/page.license.php:96 admin-pages/page.license.php:106
+#: admin-pages/page-license.php:93 admin-pages/page-license.php:103
 msgid ""
 "by extending your license to Pro Plus. Pro Plus extends Pro with features "
 "such as BMR, Calorie intake, Macronutrient Calculator, etc. You can view the "
 "additional features that Pro Plus offers you below."
 msgstr ""
 
-#: admin-pages/page.license.php:104
+#: admin-pages/page-license.php:101
 msgid ""
 "Of course, a big thank you purchasing a Pro license at some point - it is "
 "much appreciated. As you can see below, you can further expand the features "
 "of"
 msgstr ""
 
-#: admin-pages/page.license.php:112
+#: admin-pages/page-license.php:109
 msgid ""
 "Thank you kind soul, you have purchased a Pro Plus license. A huge thank you "
 "for supporting me and this plugin!"
 msgstr ""
 
-#: admin-pages/page.license.php:119
+#: admin-pages/page-license.php:116
 msgid "In case you need, your <strong>Site Hash</strong> is"
 msgstr "Če ga potrebujete, <strong>hash vaše strani</strong> je"
 
-#: admin-pages/page.license.php:128
+#: admin-pages/page-license.php:125
 msgid "Get a free 7 day trial!"
 msgstr ""
 
-#: admin-pages/page.license.php:135 admin-pages/page.license.php:141
+#: admin-pages/page-license.php:132 admin-pages/page-license.php:138
 msgid "Upgrade to Pro Plus for"
 msgstr "Nadgradite na Pro Plus za"
 
-#: admin-pages/page.license.php:135 admin-pages/page.license.php:141
-#: admin-pages/page.license.php:255 admin-pages/page.license.php:269
+#: admin-pages/page-license.php:132 admin-pages/page-license.php:138
+#: admin-pages/page-license.php:252 admin-pages/page-license.php:266
 msgid "a year"
 msgstr ""
 
-#: admin-pages/page.license.php:143
+#: admin-pages/page-license.php:140
 #, no-php-format
 msgid " (50% discount)"
 msgstr ""
 
-#: admin-pages/page.license.php:159
+#: admin-pages/page-license.php:156
 msgid "Switch to a yearly Pro license for "
 msgstr ""
 
-#: admin-pages/page.license.php:159 admin-pages/page.license.php:160
+#: admin-pages/page-license.php:156 admin-pages/page-license.php:157
 msgid " a year"
 msgstr ""
 
-#: admin-pages/page.license.php:160
+#: admin-pages/page-license.php:157
 msgid "Upgrade to Pro for "
 msgstr "Nadgradite na Pro verzijo za"
 
-#: admin-pages/page.license.php:176
+#: admin-pages/page-license.php:173
 msgid "Add or Update License"
 msgstr "Dodaj ali posodobi licenco"
 
-#: admin-pages/page.license.php:181
+#: admin-pages/page-license.php:178
 msgid ""
 "Copy and paste the license given to you by YeKen into this box and click "
 "\"Apply License\""
 msgstr "Skopirajte licenco in kliknite \"Uporabi licenco\""
 
-#: admin-pages/page.license.php:184
+#: admin-pages/page-license.php:181
 msgid "Apply License"
 msgstr "Uporabi licenco"
 
-#: admin-pages/page.license.php:189
+#: admin-pages/page-license.php:186
 msgid "Your License Information"
 msgstr "Informacije o vaši licenci"
 
-#: admin-pages/page.license.php:193
+#: admin-pages/page-license.php:190
 msgid "Site Hash"
 msgstr "Hash strani"
 
-#: admin-pages/page.license.php:197
+#: admin-pages/page-license.php:194
 msgid "Type"
 msgstr "Vrsta"
 
-#: admin-pages/page.license.php:201
+#: admin-pages/page-license.php:198
 msgid "Expires"
 msgstr "Poteče"
 
-#: admin-pages/page.license.php:206
+#: admin-pages/page-license.php:203
 msgid "Never"
 msgstr "Nikoli"
 
-#: admin-pages/page.license.php:210
+#: admin-pages/page-license.php:207
 msgid "n/a"
 msgstr "n/a"
 
-#: admin-pages/page.license.php:220
+#: admin-pages/page-license.php:217
 msgid "Your Existing License"
 msgstr "Vaša obstoječa licenca"
 
-#: admin-pages/page.license.php:226
+#: admin-pages/page-license.php:223
 msgid "Remove License"
 msgstr "Odstrani licenco"
 
-#: admin-pages/page.license.php:238
+#: admin-pages/page-license.php:235
 msgid "Need further help or information, please visit our documentation site:"
 msgstr ""
 "Če potrebujete dodatno pomoč ali informacije, obiščite našo spletno stran:"
 
-#: admin-pages/page.license.php:251
+#: admin-pages/page-license.php:248
 msgid "Pro Plus Features"
 msgstr "Pro Plus"
 
-#: admin-pages/page.license.php:255
+#: admin-pages/page-license.php:252
 msgid "Below is a list of the intended features of the Pro Plus version"
 msgstr "Spodaj so načrtovane funkcije Pro Plus verzije"
 
-#: admin-pages/page.license.php:255 admin-pages/page.license.php:269
+#: admin-pages/page-license.php:252 admin-pages/page-license.php:266
 msgid "You can upgrade for"
 msgstr "Nadgradite lahko za"
 
-#: admin-pages/page.license.php:264
+#: admin-pages/page-license.php:261
 msgid "Pro Features"
 msgstr "Pro Plus"
 
-#: admin-pages/page.license.php:269
+#: admin-pages/page-license.php:266
 msgid "Below is a list of the intended features of the Pro version"
 msgstr "Spodaj so načrtovane funkcije Pro verzije"
 
-#: admin-pages/page.license.php:283 admin-pages/user-data/data-summary.php:203
+#: admin-pages/page-license.php:280 admin-pages/user-data/data-summary.php:206
+#: admin-pages/user-data/data-user.php:227
 msgid "Are you sure you?"
 msgstr "Ste prepričani?"
 
-#: admin-pages/page.license.php:284
+#: admin-pages/page-license.php:281
 msgid ""
 "Are you sure you wish to remove the license for this site? Removing it may "
 "cause your user's to lose functionality."
 msgstr "Res želite odstraniti licenco?"
 
-#: admin-pages/settings/page-settings-generic.php:38
+#: admin-pages/page-setup-wizard.php:22 hooks.php:19
+msgid "Setup Wizard"
+msgstr ""
+
+#: admin-pages/page-setup-wizard.php:26
+#, fuzzy
+#| msgid " Instructions"
+msgid "Introduction"
+msgstr " Instructions"
+
+#: admin-pages/page-setup-wizard.php:26
+msgid "Thank you for using Weight Tracker"
+msgstr ""
+
+#: admin-pages/page-setup-wizard.php:27
+msgid "Setup"
+msgstr ""
+
+#: admin-pages/page-setup-wizard.php:27
+msgid "How to use Shortcodes and Widgets"
+msgstr ""
+
+#: admin-pages/page-setup-wizard.php:28
+msgid "Admin Interface"
+msgstr ""
+
+#: admin-pages/page-setup-wizard.php:28
+#, fuzzy
+#| msgid "Looking to view and manipulate your user's data?"
+msgid "Viewing and interacting with your user's data"
+msgstr "Bi želeli pregledovati in manipulirati podatke uporabnikov?"
+
+#: admin-pages/page-setup-wizard.php:29
+msgid "Features and Guides"
+msgstr ""
+
+#: admin-pages/page-setup-wizard.php:29
+msgid "Useful features and guides"
+msgstr ""
+
+#: admin-pages/page-setup-wizard.php:30
+msgid "Customisations"
+msgstr ""
+
+#: admin-pages/page-setup-wizard.php:30
+msgid "Custom modifications to Weight Tracker"
+msgstr ""
+
+#: admin-pages/settings/page-settings-generic.php:37
 msgid "Rebuild them now"
 msgstr "Obnovite jih"
 
-#: admin-pages/settings/page-settings-generic.php:60
+#: admin-pages/settings/page-settings-generic.php:59
 msgid " Settings"
 msgstr " Nastavitve"
 
-#: admin-pages/settings/page-settings-generic.php:74
+#: admin-pages/settings/page-settings-generic.php:73
 msgid "General"
 msgstr "Splošno"
 
-#: admin-pages/settings/page-settings-generic.php:74
+#: admin-pages/settings/page-settings-generic.php:73
 msgid "General settings"
 msgstr "Splošne nastavitve"
 
-#: admin-pages/settings/page-settings-generic.php:75 license.php:254
+#: admin-pages/settings/page-settings-generic.php:74 license.php:316
 msgid "Pro Plus"
 msgstr "Pro Plus"
 
-#: admin-pages/settings/page-settings-generic.php:75
+#: admin-pages/settings/page-settings-generic.php:74
 msgid "Adjust settings for your Pro Plus features"
 msgstr "Prilagodite nastavitve za Pro Plus funkcije"
 
-#: admin-pages/settings/page-settings-generic.php:76
-#: admin-pages/user-data/data-user.php:43
+#: admin-pages/settings/page-settings-generic.php:75
+#: admin-pages/user-data/data-user.php:50
 msgid "Chart"
 msgstr "Graf"
 
-#: admin-pages/settings/page-settings-generic.php:76
+#: admin-pages/settings/page-settings-generic.php:75
 msgid "Chart styling and config"
 msgstr "Oblika in konfiguracija grafa"
 
-#: admin-pages/settings/page-settings-generic.php:77
+#: admin-pages/settings/page-settings-generic.php:76
 msgid "Notifications"
 msgstr "Obvestila"
 
-#: admin-pages/settings/page-settings-generic.php:77
+#: admin-pages/settings/page-settings-generic.php:76
 msgid "Configure email notifications"
 msgstr "Konfigurirajte email obvestila"
 
-#: admin-pages/settings/page-settings-generic.php:78
+#: admin-pages/settings/page-settings-generic.php:77
 msgid "Measurements"
 msgstr "Meritve"
 
-#: admin-pages/settings/page-settings-generic.php:78
+#: admin-pages/settings/page-settings-generic.php:77
 msgid "Allow users to record their measurements"
 msgstr "Dovolite uporabnikom shranjevanje meritev"
 
-#: admin-pages/settings/page-settings-generic.php:79
+#: admin-pages/settings/page-settings-generic.php:78
 msgid "3rd Party"
 msgstr ""
 
-#: admin-pages/settings/page-settings-generic.php:79
+#: admin-pages/settings/page-settings-generic.php:78
 msgid "3rd Party Integrations"
 msgstr ""
 
-#: admin-pages/settings/page-settings-generic.php:89
+#: admin-pages/settings/page-settings-generic.php:88
 msgid "Caching"
 msgstr ""
 
-#: admin-pages/settings/page-settings-generic.php:92
+#: admin-pages/settings/page-settings-generic.php:91
 msgid "Enable Caching?"
 msgstr ""
 
-#: admin-pages/settings/page-settings-generic.php:98
+#: admin-pages/settings/page-settings-generic.php:97
 msgid ""
 "If enabled, additional caching will be performed to reduce database queries. "
 "It is highly recommended that this remains enabled and only disabled for "
 "testing or to enable other caching mechanisms."
 msgstr ""
 
-#: admin-pages/settings/page-settings-generic.php:102
+#: admin-pages/settings/page-settings-generic.php:101
 msgid "Default units / formats to be used by plugin"
 msgstr ""
 
-#: admin-pages/settings/page-settings-generic.php:105
+#: admin-pages/settings/page-settings-generic.php:104
 msgid "Weight Units"
 msgstr "Enote za težo"
 
-#: admin-pages/settings/page-settings-generic.php:109
+#: admin-pages/settings/page-settings-generic.php:108
 msgid "Stones & Pounds"
 msgstr "Stonei in funti"
 
-#: admin-pages/settings/page-settings-generic.php:112
+#: admin-pages/settings/page-settings-generic.php:111
 msgid ""
 "You can specify whether to display weights in Kg, Stones & Pounds or just "
 "Pounds. Please note: The graph will be displayed in Pounds if \"Stones & "
@@ -760,181 +809,175 @@ msgstr ""
 "Določite lahko, ali naj bo teža prikazana v kg, funtih ali stoneih in "
 "funtih. Če boste izbrali \"Stonei in funti\" bo graf prikazan v funtih."
 
-#: admin-pages/settings/page-settings-generic.php:116
+#: admin-pages/settings/page-settings-generic.php:115
 msgid "UK or US Date format?"
 msgstr "UK ali US format datuma?"
 
-#: admin-pages/settings/page-settings-generic.php:119
+#: admin-pages/settings/page-settings-generic.php:118
 msgid "UK (DD/MM/YYYY)"
 msgstr "UK (DD/MM/YYYY)"
 
-#: admin-pages/settings/page-settings-generic.php:120
+#: admin-pages/settings/page-settings-generic.php:119
 msgid "US (MM/DD/YYYY)"
 msgstr "US (MM/DD/YYYY)"
 
-#: admin-pages/settings/page-settings-generic.php:122
+#: admin-pages/settings/page-settings-generic.php:121
 msgid "Specify what format dates should be displayed in (i.e. UK or US format)"
 msgstr "Določite v katerem formatu naj bodo prikazani datumi"
 
-#: admin-pages/settings/page-settings-generic.php:126
+#: admin-pages/settings/page-settings-generic.php:125
 msgid "User Experience"
 msgstr "Uporabniška izkušnja"
 
-#: admin-pages/settings/page-settings-generic.php:129
+#: admin-pages/settings/page-settings-generic.php:128
 msgid "Allow target weights?"
 msgstr "Dovolite ciljne teže?"
 
-#: admin-pages/settings/page-settings-generic.php:135
+#: admin-pages/settings/page-settings-generic.php:134
 msgid ""
 "If enabled, a user is allowed to enter a target weight. This will be "
 "displayed as a horizontal bar on the line chart."
 msgstr "Če dovolite, si bodo lahko uporabniki določali ciljne teže."
 
-#: admin-pages/settings/page-settings-generic.php:139
+#: admin-pages/settings/page-settings-generic.php:138
 msgid "Display BMI in tables?"
 msgstr "ITMI prikaži v tabelah?"
 
-#: admin-pages/settings/page-settings-generic.php:146
+#: admin-pages/settings/page-settings-generic.php:144
 msgid ""
 "If enabled, BMI values will be displayed alongside weight entries in data "
 "tables."
 msgstr "Če dovolite, bod ITM v tabelah prikazan poleg shranjenih tež."
 
-#: admin-pages/settings/page-settings-generic.php:150
+#: admin-pages/settings/page-settings-generic.php:148
 msgid "Allow user settings"
 msgstr "Dovolite uporabniške nastavitve"
 
-#: admin-pages/settings/page-settings-generic.php:156
+#: admin-pages/settings/page-settings-generic.php:154
 msgid ""
 "Allow your users to select their own data units, complete their \"About You"
 "\" fields and remove all their data."
 msgstr "Dovolite uporabnikom izbiro enot, oblike datuma in izbris podatkov."
 
-#: admin-pages/settings/page-settings-generic.php:160
+#: admin-pages/settings/page-settings-generic.php:158
 msgid "\"About You\" fields mandatory?"
 msgstr "So polja \"O vas\" obvezna?"
 
-#: admin-pages/settings/page-settings-generic.php:166
+#: admin-pages/settings/page-settings-generic.php:164
 msgid ""
 "If User Settings is enabled, should all the \"About You\" (height, activity "
 "level, etc) be mandatory?"
 msgstr ""
 
-#: admin-pages/settings/page-settings-generic.php:171
-#: admin-pages/user-data/data-user.php:71 shortcode-weight-loss-tracker.php:98
+#: admin-pages/settings/page-settings-generic.php:169
+#: admin-pages/user-data/data-user.php:91 shortcode-weight-loss-tracker.php:98
 msgid "Photos"
 msgstr ""
 
-#: admin-pages/settings/page-settings-generic.php:174
+#: admin-pages/settings/page-settings-generic.php:172
 msgid "Max. Photo Size?"
 msgstr ""
 
-#: admin-pages/settings/page-settings-generic.php:196
+#: admin-pages/settings/page-settings-generic.php:194
 msgid "Maximum photo size (in MB) that is allowed to be uploaded. "
 msgstr ""
 
-#: admin-pages/settings/page-settings-generic.php:197
+#: admin-pages/settings/page-settings-generic.php:195
 msgid "This is used as part of Custom Fields."
 msgstr ""
 
-#: admin-pages/settings/page-settings-generic.php:199
+#: admin-pages/settings/page-settings-generic.php:197
 msgid "View Custom Fields"
 msgstr "Dodaj / spremeni vnos"
 
-#: admin-pages/settings/page-settings-generic.php:204
+#: admin-pages/settings/page-settings-generic.php:202
 msgid "Permissions"
 msgstr ""
 
-#: admin-pages/settings/page-settings-generic.php:207
+#: admin-pages/settings/page-settings-generic.php:205
 msgid "Who can view and modify user data?"
 msgstr "Kdo si lahko ogleda in spreminja podatke uporabnikov?"
 
-#: admin-pages/settings/page-settings-generic.php:210
+#: admin-pages/settings/page-settings-generic.php:208
 msgid "Administrators Only"
 msgstr "Samo administratorji"
 
-#: admin-pages/settings/page-settings-generic.php:211
+#: admin-pages/settings/page-settings-generic.php:209
 msgid "Editors and above"
 msgstr "Uredniki in višji"
 
-#: admin-pages/settings/page-settings-generic.php:212
+#: admin-pages/settings/page-settings-generic.php:210
 msgid "Authors and above"
 msgstr "Avtorji in višji"
 
-#: admin-pages/settings/page-settings-generic.php:214
+#: admin-pages/settings/page-settings-generic.php:212
 msgid ""
 "Specify the minimum level of user role that maybe view or edit user data."
 msgstr ""
 "Določite minimalni uporabniški nivo, ki lahko gleda in spreminja podatke "
 "uporabnikov."
 
-#: admin-pages/settings/page-settings-generic.php:218
+#: admin-pages/settings/page-settings-generic.php:216
 msgid "Groups"
 msgstr ""
 
-#: admin-pages/settings/page-settings-generic.php:221
+#: admin-pages/settings/page-settings-generic.php:219
 #, fuzzy
 #| msgid "Enable"
 msgid "Enable Groups?"
 msgstr "Omogoči"
 
-#: admin-pages/settings/page-settings-generic.php:227
+#: admin-pages/settings/page-settings-generic.php:225
 msgid "Add the ability to place your user's into groups."
 msgstr ""
 
-#: admin-pages/settings/page-settings-generic.php:228
+#: admin-pages/settings/page-settings-generic.php:226
 #, fuzzy
 #| msgid "Manage User Data"
 msgid "Manage User Groups"
 msgstr "Upravljaj članske podatke"
 
-#: admin-pages/settings/page-settings-generic.php:232
+#: admin-pages/settings/page-settings-generic.php:230
+#, fuzzy
+#| msgid "Allow users to record their measurements"
+msgid "Allow user's to edit their own group?"
+msgstr "Dovolite uporabnikom shranjevanje meritev"
+
+#: admin-pages/settings/page-settings-generic.php:239
 msgid "Birthday Emails"
 msgstr ""
 
-#: admin-pages/settings/page-settings-generic.php:235
+#: admin-pages/settings/page-settings-generic.php:242
 #, fuzzy
 #| msgid "Enable"
 msgid "Enable?"
 msgstr "Omogoči"
 
-#: admin-pages/settings/page-settings-generic.php:241
+#: admin-pages/settings/page-settings-generic.php:248
 msgid ""
 "If enabled, a Happy Birthday email shall be sent to users on their birthday."
 msgstr ""
 
-#: admin-pages/settings/page-settings-generic.php:246
+#: admin-pages/settings/page-settings-generic.php:253
 #: shortcode-weight-loss-tracker.php:103
 msgid "Advanced"
 msgstr ""
 
-#: admin-pages/settings/page-settings-generic.php:249
+#: admin-pages/settings/page-settings-generic.php:256
 msgid "Disable plugin CSS?"
 msgstr "Onemogoči CSS vtičnika?"
 
-#: admin-pages/settings/page-settings-generic.php:255
+#: admin-pages/settings/page-settings-generic.php:262
 msgid ""
 "If you wish to style the forms in your own way, you can use this option to "
 "disable WLT's style sheets."
 msgstr "To opcijo uporabite, če želite sami oblikovati prikaz vtičnika."
 
-#: admin-pages/settings/page-settings-generic.php:259
-msgid "Send usage data to YeKen?"
-msgstr "Pošlji podatke o uporabi YeKenu?"
-
-#: admin-pages/settings/page-settings-generic.php:265
-msgid ""
-"We would love to see how our plugin is used. By consenting, you are allowing "
-"permission for the following data to be sent on a weekly basis to YeKen: "
-"URL, summary of settings, count of recorded weights and measurements. No "
-"user or admin data will ever be transmitted."
-msgstr ""
-
-#: admin-pages/settings/page-settings-generic.php:269
+#: admin-pages/settings/page-settings-generic.php:266
 msgid "Disable notifications from YeKen?"
 msgstr "Onemogoči obvestila YeKena?"
 
-#: admin-pages/settings/page-settings-generic.php:275
+#: admin-pages/settings/page-settings-generic.php:272
 msgid ""
 "Occasionally YeKen likes to display simple notifications within your "
 "WordPress dashboard. Use this setting if you wish to disable them."
@@ -942,15 +985,25 @@ msgstr ""
 "YeKen na vaši nadzorni plošči občasno prikaže enostavna in uporabna "
 "obvestila. To opcijo uporabite, če želite obvestila onemogočiti."
 
-#: admin-pages/settings/page-settings-generic.php:287
+#: admin-pages/settings/page-settings-generic.php:284
 msgid "Calculating daily calorie intake to lose weight"
 msgstr "Izračunavam dnevne kalorije za hujšanje"
 
-#: admin-pages/settings/page-settings-generic.php:291
+#: admin-pages/settings/page-settings-generic.php:288
+msgid "Show Loss figures?"
+msgstr ""
+
+#: admin-pages/settings/page-settings-generic.php:294
+msgid ""
+"Show loss figures to your users? For example, if your site is aimed at "
+"muscle building, you may wish not to."
+msgstr ""
+
+#: admin-pages/settings/page-settings-generic.php:298
 msgid "Female Calorie Cap"
 msgstr "Zgornja meja kalorij za ženske"
 
-#: admin-pages/settings/page-settings-generic.php:294
+#: admin-pages/settings/page-settings-generic.php:301
 msgid ""
 "Specify a maximum value for number of daily calories allowed to achieve "
 "weight loss. As per NHS guidelines, females are set to 1400kcal by default"
@@ -958,21 +1011,22 @@ msgstr ""
 "Določite največje število kalorij, ki še omogočajo hujšanje. Po NHS "
 "smernicah je to 1400 kCal."
 
-#: admin-pages/settings/page-settings-generic.php:294
 #: admin-pages/settings/page-settings-generic.php:301
 #: admin-pages/settings/page-settings-generic.php:308
-#: admin-pages/settings/page-settings-generic.php:326
-#: admin-pages/settings/page-settings-generic.php:333
+#: admin-pages/settings/page-settings-generic.php:320
+#: admin-pages/settings/page-settings-generic.php:347
+#: admin-pages/settings/page-settings-generic.php:366
+#: admin-pages/settings/page-settings-generic.php:373
 msgid ""
 "Please note, it may take up to 15 minutes for calculations to change (due to "
 "caching)."
 msgstr "Sprememba izračunov lahko traja do 15 min. (zaradi cachiranja)."
 
-#: admin-pages/settings/page-settings-generic.php:298
+#: admin-pages/settings/page-settings-generic.php:305
 msgid "Male Calorie Cap"
 msgstr "Zgornja meja kalorij za moške"
 
-#: admin-pages/settings/page-settings-generic.php:301
+#: admin-pages/settings/page-settings-generic.php:308
 msgid ""
 "Specify a maximum value for number of daily calories allowed to achieve "
 "weight loss. As per NHS guidelines, males are set to 1900kcal by default"
@@ -980,11 +1034,11 @@ msgstr ""
 "Določite največje število kalorij, ki še omogočajo hujšanje. Po NHS "
 "smernicah je to 1900 kCal."
 
-#: admin-pages/settings/page-settings-generic.php:305
+#: admin-pages/settings/page-settings-generic.php:312
 msgid "Calories to subtract"
 msgstr "Kalorični deficit"
 
-#: admin-pages/settings/page-settings-generic.php:308
+#: admin-pages/settings/page-settings-generic.php:320
 msgid ""
 "Part of calculating the daily calorie intake to lose weight is to first "
 "calculate the calorie intake to maintain existing weight. Once we have this, "
@@ -992,204 +1046,233 @@ msgid ""
 "weight."
 msgstr ""
 
-#: admin-pages/settings/page-settings-generic.php:312
-#: admin-pages/user-data/data-user.php:135
-#: admin-pages/user-data/data-user.php:155
-#: admin-pages/user-data/data-user.php:169
+#: admin-pages/settings/page-settings-generic.php:325
+#, fuzzy
+#| msgid "Calculating daily calorie intake to lose weight"
+msgid "Calculating daily calorie intake to gain weight"
+msgstr "Izračunavam dnevne kalorije za hujšanje"
+
+#: admin-pages/settings/page-settings-generic.php:329
+msgid "Show Gain figures?"
+msgstr ""
+
+#: admin-pages/settings/page-settings-generic.php:335
+msgid ""
+"Show gain figures to your users? For example, if your site is aimed at "
+"weight loss only, you may wish not to."
+msgstr ""
+
+#: admin-pages/settings/page-settings-generic.php:339
+#, fuzzy
+#| msgid "Calories to subtract"
+msgid "Calories to add"
+msgstr "Kalorični deficit"
+
+#: admin-pages/settings/page-settings-generic.php:347
+msgid ""
+"Part of calculating the daily calorie intake to gain weight is to first "
+"calculate the calorie intake to maintain existing weight. Once we have this, "
+"we add the above figure to calculate the daily calorie intake to gain weight."
+msgstr ""
+
+#: admin-pages/settings/page-settings-generic.php:352
+#: admin-pages/user-data/data-user.php:160
+#: admin-pages/user-data/data-user.php:180
+#: admin-pages/user-data/data-user.php:194
 msgid "Macronutrient Calculator"
 msgstr "Kalkulator makrohranil"
 
-#: admin-pages/settings/page-settings-generic.php:316
+#: admin-pages/settings/page-settings-generic.php:356
 msgid "Proteins"
 msgstr "Beljakovine"
 
-#: admin-pages/settings/page-settings-generic.php:319
+#: admin-pages/settings/page-settings-generic.php:359
 msgid "Percentage of Proteins to make up a moderate diet"
 msgstr "Delež beljakovin povprečne diete"
 
-#: admin-pages/settings/page-settings-generic.php:319
+#: admin-pages/settings/page-settings-generic.php:359
 msgid ""
 "Please note, it may take up to 15 minutes for calorie calculations to change "
 "(due to caching)."
 msgstr "Posodobitev izračunov lahko traja do 15 minut (zaradi cachiranja)."
 
-#: admin-pages/settings/page-settings-generic.php:323
+#: admin-pages/settings/page-settings-generic.php:363
 msgid "Carbohydrates"
 msgstr "Ogljikovi hidrati"
 
-#: admin-pages/settings/page-settings-generic.php:326
+#: admin-pages/settings/page-settings-generic.php:366
 msgid "Percentage of Carbohydrates to make up a moderate diet"
 msgstr "Delež OH povprečne diete"
 
-#: admin-pages/settings/page-settings-generic.php:330
+#: admin-pages/settings/page-settings-generic.php:370
 msgid "Fats"
 msgstr "Maščobe"
 
-#: admin-pages/settings/page-settings-generic.php:333
+#: admin-pages/settings/page-settings-generic.php:373
 msgid "Percentage of Fats to make up a moderate diet"
 msgstr "Delež maščob povprečne diete"
 
-#: admin-pages/settings/page-settings-generic.php:347
+#: admin-pages/settings/page-settings-generic.php:387
 msgid "Default chart type"
 msgstr "Privzeti tip grafov"
 
-#: admin-pages/settings/page-settings-generic.php:350
+#: admin-pages/settings/page-settings-generic.php:390
 msgid "Line Chart"
 msgstr "Linijski graf"
 
-#: admin-pages/settings/page-settings-generic.php:350
+#: admin-pages/settings/page-settings-generic.php:390
 msgid "Highly Recommended"
 msgstr "Priporočeno"
 
-#: admin-pages/settings/page-settings-generic.php:351
+#: admin-pages/settings/page-settings-generic.php:391
 msgid "Bar Chart"
 msgstr "Stolpčni graf"
 
-#: admin-pages/settings/page-settings-generic.php:354
+#: admin-pages/settings/page-settings-generic.php:394
 msgid ""
 "If enabled, \"Allows points and labels to be displayed on graph. "
 "<strong>Note: If using measurements</strong>, graph type will be forced to "
 "Line."
 msgstr ""
 
-#: admin-pages/settings/page-settings-generic.php:359
+#: admin-pages/settings/page-settings-generic.php:399
 msgid "Display gridlines?"
 msgstr "Prikaži mrežne črte?"
 
-#: admin-pages/settings/page-settings-generic.php:365
+#: admin-pages/settings/page-settings-generic.php:405
 msgid "If enabled, gridlines will be displayed on the Graph canvas."
 msgstr "Na grafu bodo prikazane mrežne črte."
 
-#: admin-pages/settings/page-settings-generic.php:369
+#: admin-pages/settings/page-settings-generic.php:409
 msgid "Maximum points per graph"
 msgstr "Največje število točk na grafu"
 
-#: admin-pages/settings/page-settings-generic.php:378
-#: admin-pages/settings/page-settings-generic.php:445
+#: admin-pages/settings/page-settings-generic.php:418
+#: admin-pages/settings/page-settings-generic.php:485
 msgid "If enabled, \"Allows points and labels to be displayed on graph."
 msgstr ""
 
-#: admin-pages/settings/page-settings-generic.php:383
+#: admin-pages/settings/page-settings-generic.php:423
 msgid "Weight colour?"
 msgstr "Barva teže?"
 
-#: admin-pages/settings/page-settings-generic.php:386
+#: admin-pages/settings/page-settings-generic.php:426
 msgid ""
 "If enabled, enter a HEX colour code to use for the Weight history line / bar "
 "border on graph."
 msgstr ""
 "Vpišite HEX kodo barve linije oz. obrobe stolpcev zgodovine  teže za grafu."
 
-#: admin-pages/settings/page-settings-generic.php:390
+#: admin-pages/settings/page-settings-generic.php:430
 msgid "Should y Axes start at 0?"
 msgstr "Naj se os Y začne pri 0?"
 
-#: admin-pages/settings/page-settings-generic.php:397
+#: admin-pages/settings/page-settings-generic.php:437
 msgid ""
 "If enabled, y Axes shall start at 0. Otherwise, they are automatically "
 "calculated."
 msgstr "Y os se bo začela pri nič, sicer pa bo začetek izračunan avtomatično."
 
-#: admin-pages/settings/page-settings-generic.php:401
+#: admin-pages/settings/page-settings-generic.php:441
 msgid "Text colour"
 msgstr "Barva teksta"
 
-#: admin-pages/settings/page-settings-generic.php:404
+#: admin-pages/settings/page-settings-generic.php:444
 msgid "Enter a HEX colour code to use for text displayed on the graph."
 msgstr "Vpišite HEX kodo barve linije ciljne teže za grafu."
 
-#: admin-pages/settings/page-settings-generic.php:408
+#: admin-pages/settings/page-settings-generic.php:448
 msgid "Font Family"
 msgstr ""
 
-#: admin-pages/settings/page-settings-generic.php:411
+#: admin-pages/settings/page-settings-generic.php:451
 msgid ""
 "Specify one or more fonts that should be used when rendering text on the "
 "graph. Separate multiple fonts with a comma. Leave blank to use the default."
 msgstr ""
 
-#: admin-pages/settings/page-settings-generic.php:416
+#: admin-pages/settings/page-settings-generic.php:456
 msgid "Line Chart Options"
 msgstr "Možnosti linijskega grafa"
 
-#: admin-pages/settings/page-settings-generic.php:420
+#: admin-pages/settings/page-settings-generic.php:460
 msgid "Bezier Curve?"
 msgstr "Bezier krivulja?"
 
-#: admin-pages/settings/page-settings-generic.php:427
+#: admin-pages/settings/page-settings-generic.php:467
 msgid "If enabled, lines between points on a line graph will be curved"
 msgstr "Črte na grafu bodo ukrivljene"
 
-#: admin-pages/settings/page-settings-generic.php:431
+#: admin-pages/settings/page-settings-generic.php:471
 msgid "Target line colour?"
 msgstr "Barva cilja?"
 
-#: admin-pages/settings/page-settings-generic.php:434
+#: admin-pages/settings/page-settings-generic.php:474
 msgid ""
 "If enabled, enter a HEX colour code to use for the Target line on graph."
 msgstr "Vpišite HEX kodo barve linije ciljne teže za grafu."
 
-#: admin-pages/settings/page-settings-generic.php:438
+#: admin-pages/settings/page-settings-generic.php:478
 msgid "Display points on graph?"
 msgstr "Na grafu prikaži točke?"
 
-#: admin-pages/settings/page-settings-generic.php:449
+#: admin-pages/settings/page-settings-generic.php:489
 msgid "Point thickness"
 msgstr "Debelina točk"
 
-#: admin-pages/settings/page-settings-generic.php:458
+#: admin-pages/settings/page-settings-generic.php:498
 msgid "Specifies the point thickness on a line chart."
 msgstr "Določi debelino točk na grafu."
 
-#: admin-pages/settings/page-settings-generic.php:462
+#: admin-pages/settings/page-settings-generic.php:502
 msgid "Add a fill under weight line?"
 msgstr "Dodajte novo težo"
 
-#: admin-pages/settings/page-settings-generic.php:468
+#: admin-pages/settings/page-settings-generic.php:508
 msgid "If enabled, a fill colour will be added under the weight line."
 msgstr "Vpišite HEX kodo barve linije ciljne teže za grafu."
 
-#: admin-pages/settings/page-settings-generic.php:472
+#: admin-pages/settings/page-settings-generic.php:512
 msgid "Weight Fill Colour"
 msgstr "Barva polnila teže?"
 
-#: admin-pages/settings/page-settings-generic.php:475
+#: admin-pages/settings/page-settings-generic.php:515
 msgid ""
 "If enabled, enter a HEX colour code to use for the fill colour under the "
 "weight line."
 msgstr "Vpišite HEX kodo barve polnila stolpcev za težo."
 
-#: admin-pages/settings/page-settings-generic.php:479
+#: admin-pages/settings/page-settings-generic.php:519
 msgid "Weight Fill Opacity"
 msgstr "Barva polnila teže?"
 
-#: admin-pages/settings/page-settings-generic.php:488
+#: admin-pages/settings/page-settings-generic.php:528
 msgid "Specifies the opacity of the fill colour under the weight line."
 msgstr ""
 
-#: admin-pages/settings/page-settings-generic.php:493
+#: admin-pages/settings/page-settings-generic.php:533
 msgid "Bar Chart Options"
 msgstr "Možnosti stolpičnega grafa"
 
-#: admin-pages/settings/page-settings-generic.php:497
+#: admin-pages/settings/page-settings-generic.php:537
 msgid "Weight fill colour?"
 msgstr "Barva polnila teže?"
 
-#: admin-pages/settings/page-settings-generic.php:500
+#: admin-pages/settings/page-settings-generic.php:540
 msgid ""
 "If enabled, enter a HEX colour code to use for filling the Weight bars on "
 "the graph."
 msgstr "Vpišite HEX kodo barve polnila stolpcev za težo."
 
-#: admin-pages/settings/page-settings-generic.php:513
+#: admin-pages/settings/page-settings-generic.php:553
 msgid "Enable email notifications"
 msgstr "Omogoči obveščanje pomemailu"
 
-#: admin-pages/settings/page-settings-generic.php:522
+#: admin-pages/settings/page-settings-generic.php:562
 msgid "Email addresses to notify"
 msgstr "Email naslov za obvestila"
 
-#: admin-pages/settings/page-settings-generic.php:525
+#: admin-pages/settings/page-settings-generic.php:565
 msgid ""
 "Specify one or more email addresses to be notified. Seperate multiple emails "
 "with a comma."
@@ -1197,89 +1280,89 @@ msgstr ""
 "Vpišite enega ali več emailov za obvestila. Emaili naj bodo ločeni z "
 "vejicami."
 
-#: admin-pages/settings/page-settings-generic.php:529
+#: admin-pages/settings/page-settings-generic.php:569
 msgid "New weight / measurement entries"
 msgstr "Novi vnosi teže / meritev"
 
-#: admin-pages/settings/page-settings-generic.php:535
+#: admin-pages/settings/page-settings-generic.php:575
 msgid ""
 "Receive notifications when a member adds a new weight / measurement entry."
 msgstr "Prejmite obvestilo ko uporabnik vnese novo težo / meritev."
 
-#: admin-pages/settings/page-settings-generic.php:539
+#: admin-pages/settings/page-settings-generic.php:579
 msgid "Edited weight / measurement entries"
 msgstr "Spremenjena teža / meritve"
 
-#: admin-pages/settings/page-settings-generic.php:545
+#: admin-pages/settings/page-settings-generic.php:585
 msgid ""
 "Receive notifications when a member edits an existing weight / measurement "
 "entry."
 msgstr "Prejmite obvestilo ko uporabnik spremeni obstoječo težo / meritev."
 
-#: admin-pages/settings/page-settings-generic.php:549
+#: admin-pages/settings/page-settings-generic.php:589
 msgid "New / updated targets"
 msgstr "Nov / posodobljen cilj"
 
-#: admin-pages/settings/page-settings-generic.php:555
+#: admin-pages/settings/page-settings-generic.php:595
 msgid "Receive notifications when a member adds / edits their target."
 msgstr "Prejmite obvestilo ko uporabnik vnese ali posodobi cilj."
 
-#: admin-pages/settings/page-settings-generic.php:568
+#: admin-pages/settings/page-settings-generic.php:608
 msgid "Allow Measurements?"
 msgstr "Dovolite meritve?"
 
-#: admin-pages/settings/page-settings-generic.php:574
+#: admin-pages/settings/page-settings-generic.php:614
 msgid ""
 "If enabled, a user can also add body measurements along with their weights."
 msgstr "Uporabniki bodo lahko vnašali tudi druge antropometrične meritve."
 
-#: admin-pages/settings/page-settings-generic.php:578
+#: admin-pages/settings/page-settings-generic.php:618
 msgid "Measurement Units"
 msgstr "Merske enote"
 
-#: admin-pages/settings/page-settings-generic.php:581
+#: admin-pages/settings/page-settings-generic.php:621
 msgid "Centimetres"
 msgstr "Centimetri"
 
-#: admin-pages/settings/page-settings-generic.php:582 core.php:76
+#: admin-pages/settings/page-settings-generic.php:622 core.php:76
 msgid "Inches"
 msgstr "Palcev"
 
-#: admin-pages/settings/page-settings-generic.php:584
+#: admin-pages/settings/page-settings-generic.php:624
 msgid "Default unit for recording measurements."
 msgstr "Privzeta enota za meritve."
 
-#: admin-pages/settings/page-settings-generic.php:588
+#: admin-pages/settings/page-settings-generic.php:628
 msgid "Measurements mandatory?"
 msgstr "So meritve obvezne?"
 
-#: admin-pages/settings/page-settings-generic.php:594
+#: admin-pages/settings/page-settings-generic.php:634
 msgid "If yes, a user will be forced to complete all measurement features."
 msgstr "Če so, bo uporabnik moral vnesti vse mere."
 
-#: admin-pages/settings/page-settings-generic.php:598
+#: admin-pages/settings/page-settings-generic.php:638
 msgid "Areas of measurements"
 msgstr "Lokacije meritev"
 
-#: admin-pages/settings/page-settings-generic.php:620
+#: admin-pages/settings/page-settings-generic.php:660
 msgid "Enable"
 msgstr "Omogoči"
 
-#: admin-pages/settings/page-settings-generic.php:623
+#: admin-pages/settings/page-settings-generic.php:663
 msgid "Chart Colour"
 msgstr "Barva grafa"
 
-#: admin-pages/settings/page-settings-generic.php:649
+#: admin-pages/settings/page-settings-generic.php:689
 msgid "Enable Gravity Forms"
 msgstr ""
 
-#: admin-pages/settings/page-settings-generic.php:656
+#: admin-pages/settings/page-settings-generic.php:696
 msgid ""
 "Examine Gravity Form submissions for weight and measurement data. If found, "
 "create a Weight Entry for the user currently logged in."
 msgstr ""
 
-#: admin-pages/settings/page-settings-generic.php:657
+#: admin-pages/settings/page-settings-generic.php:697
 msgid "Read more at "
 msgstr "Več informacij o izračunih"
 
@@ -1329,17 +1412,35 @@ msgstr "Spremeni uporabnikov cij"
 msgid "A Pro license is required to set a user's target weight."
 msgstr "Ne pozabite na vnos ciljne teže."
 
+#: admin-pages/user-data/data-groups.php:32
+msgid "View Group"
+msgstr ""
+
+#: admin-pages/user-data/data-groups.php:34
+msgid "user(s)"
+msgstr ""
+
+#: admin-pages/user-data/data-groups.php:55
+#, fuzzy
+#| msgid "Enable"
+msgid "All Groups"
+msgstr "Omogoči"
+
+#: admin-pages/user-data/data-groups.php:61
+msgid "The group could not be found"
+msgstr ""
+
 #: admin-pages/user-data/data-photos.php:29
 msgid "User's photos"
 msgstr ""
 
 #: admin-pages/user-data/data-photos.php:38
-#: admin-pages/user-data/data-user.php:79
+#: admin-pages/user-data/data-user.php:99
 msgid "This user has uploaded "
 msgstr "Licenca je potekla."
 
 #: admin-pages/user-data/data-photos.php:40
-#: admin-pages/user-data/data-user.php:81
+#: admin-pages/user-data/data-user.php:101
 msgid "photo"
 msgid_plural "photos"
 msgstr[0] ""
@@ -1348,29 +1449,29 @@ msgstr[2] ""
 msgstr[3] ""
 
 #: admin-pages/user-data/data-photos.php:43
-#: admin-pages/user-data/data-user.php:88
+#: admin-pages/user-data/data-user.php:108
 msgid "No photos could be found for this user."
 msgstr "Za tega uporabnika ni podatkov o teži."
 
 #: admin-pages/user-data/data-photos.php:55
-#: admin-pages/user-data/data-user.php:100
+#: admin-pages/user-data/data-user.php:120
 msgid "Add and enable a Photo Custom Field"
 msgstr "Dodaj / spremeni vnos"
 
 #: admin-pages/user-data/data-photos.php:56
-#: admin-pages/user-data/data-user.php:101
+#: admin-pages/user-data/data-user.php:121
 msgid "to allow a users to upload photos of their progress"
 msgstr ""
 
 #: admin-pages/user-data/data-photos.php:63
 #: admin-pages/user-data/data-user-edit-settings.php:38
-#: admin-pages/user-data/data-user.php:59
-#: admin-pages/user-data/data-user.php:108
+#: admin-pages/user-data/data-user.php:66
+#: admin-pages/user-data/data-user.php:128
 msgid "Upgrade to Pro"
 msgstr "Nadgradite na Pro verzijo za"
 
 #: admin-pages/user-data/data-photos.php:64
-#: admin-pages/user-data/data-user.php:109
+#: admin-pages/user-data/data-user.php:129
 msgid "to allow a user to upload photos of their progress"
 msgstr ""
 
@@ -1444,75 +1545,85 @@ msgstr "Pokaži kdo je izgubil največ"
 msgid "Weight change by group"
 msgstr ""
 
+#: admin-pages/user-data/data-summary.php:86
+#, fuzzy
+#| msgid "View all data"
+msgid "View / Edit"
+msgstr "Poglej vse podatke"
+
 #: admin-pages/user-data/data-summary.php:102
-msgid "All entries"
-msgstr "Vsi vnosi"
+#, fuzzy
+#| msgid "Last 100 entries"
+msgid "Last 500 entries"
+msgstr "Zadnjih 100 vnosov"
 
 #: admin-pages/user-data/data-summary.php:102
 msgid "Last 100 entries"
 msgstr "Zadnjih 100 vnosov"
 
-#: admin-pages/user-data/data-summary.php:110
-msgid "Show all entries"
-msgstr "Prikaži vse vnose"
+#: admin-pages/user-data/data-summary.php:113
+#, fuzzy
+#| msgid "Show 100 recent entries"
+msgid "Show 500 recent entries"
+msgstr "Pokaži 100 nedavnih vnosov"
 
-#: admin-pages/user-data/data-summary.php:110
+#: admin-pages/user-data/data-summary.php:113
 msgid "Show 100 recent entries"
 msgstr "Pokaži 100 nedavnih vnosov"
 
-#: admin-pages/user-data/data-summary.php:121
+#: admin-pages/user-data/data-summary.php:124
 msgid "User Search"
 msgstr "Poišči uporabnika"
 
-#: admin-pages/user-data/data-summary.php:127
+#: admin-pages/user-data/data-summary.php:130
 msgid "Quick Stats"
 msgstr "Hitra statistika"
 
-#: admin-pages/user-data/data-summary.php:151
+#: admin-pages/user-data/data-summary.php:154
 msgid "No. of WordPress users"
 msgstr "Število WP uporabnikov"
 
-#: admin-pages/user-data/data-summary.php:153
+#: admin-pages/user-data/data-summary.php:156
 msgid "No. of Weight Entries"
 msgstr "Število vnosov teže"
 
-#: admin-pages/user-data/data-summary.php:155
+#: admin-pages/user-data/data-summary.php:158
 msgid "No. of Target Entries"
 msgstr "Število vnosov ciljnih tež"
 
-#: admin-pages/user-data/data-summary.php:157
+#: admin-pages/user-data/data-summary.php:160
 msgid "refreshed every 15 minutes"
 msgstr "osveženo vsakih 15 minut"
 
-#: admin-pages/user-data/data-summary.php:166
+#: admin-pages/user-data/data-summary.php:169
 msgid "View all data"
 msgstr "Poglej vse podatke"
 
-#: admin-pages/user-data/data-summary.php:170
+#: admin-pages/user-data/data-summary.php:173
 msgid "View all entries"
 msgstr "Poglej vse vnose"
 
-#: admin-pages/user-data/data-summary.php:175
+#: admin-pages/user-data/data-summary.php:178
 msgid "Export all data"
 msgstr "Izvozi vse podatke"
 
-#: admin-pages/user-data/data-summary.php:179
+#: admin-pages/user-data/data-summary.php:182
 msgid "To CSV"
 msgstr "V CSV"
 
-#: admin-pages/user-data/data-summary.php:183
+#: admin-pages/user-data/data-summary.php:186
 msgid "To JSON"
 msgstr "V JSON"
 
-#: admin-pages/user-data/data-summary.php:188
+#: admin-pages/user-data/data-summary.php:191
 msgid "Delete Data"
 msgstr "Izbriči podatke"
 
-#: admin-pages/user-data/data-summary.php:192
+#: admin-pages/user-data/data-summary.php:195
 msgid "Delete data for ALL users"
 msgstr "Izbriši podatke vseh uporabnikov"
 
-#: admin-pages/user-data/data-summary.php:204
+#: admin-pages/user-data/data-summary.php:207
 msgid "Are you sure you wish to remove all user data?"
 msgstr "Ste prepričani, da želite izbrisati vse podatke?"
 
@@ -1524,73 +1635,85 @@ msgstr "Spremeni nastavitve uporabnika"
 msgid "to save changes to your user's settings"
 msgstr "Spremeni nastavitve tega uporabnika"
 
-#: admin-pages/user-data/data-user.php:22 hooks.php:174
+#: admin-pages/user-data/data-user.php:29 hooks.php:180
 msgid "The preferences for this user have been saved."
 msgstr "Preference tega uporabnika so bile shranjene."
 
-#: admin-pages/user-data/data-user.php:28
+#: admin-pages/user-data/data-user.php:35
 msgid "The cache for this user has been deleted."
 msgstr "Cache tega uporabnika je bil izbrisan."
 
-#: admin-pages/user-data/data-user.php:60
+#: admin-pages/user-data/data-user.php:67
 msgid "to view the a chart of the user's weight entries."
 msgstr ""
 
-#: admin-pages/user-data/data-user.php:83
+#: admin-pages/user-data/data-user.php:103
 msgid "View all photos"
 msgstr "Poglej vse podatke"
 
-#: admin-pages/user-data/data-user.php:129
-#: admin-pages/user-data/data-user.php:155
-#: admin-pages/user-data/data-user.php:172
+#: admin-pages/user-data/data-user.php:148
+#, fuzzy
+#| msgid "Delete existing data"
+msgid "Delete ALL existing awards"
+msgstr "Izbriši obstoječe podatke"
+
+#: admin-pages/user-data/data-user.php:154
+#: admin-pages/user-data/data-user.php:180
+#: admin-pages/user-data/data-user.php:197
 msgid "Daily calorie needs"
 msgstr "Dnevne energetske potrebe"
 
-#: admin-pages/user-data/data-user.php:141
+#: admin-pages/user-data/data-user.php:166
 msgid "Please ensure the values for Proteins, Carbohydrates and Fats (within "
 msgstr ""
 
-#: admin-pages/user-data/data-user.php:143
+#: admin-pages/user-data/data-user.php:168
 msgid "settings"
 msgstr "nastavitve"
 
-#: admin-pages/user-data/data-user.php:144
+#: admin-pages/user-data/data-user.php:169
 msgid ") have been specified and total 100%."
 msgstr ""
 
-#: admin-pages/user-data/data-user.php:155
+#: admin-pages/user-data/data-user.php:180
 #, fuzzy
 #| msgid "Get "
 msgid "Get More"
 msgstr "Kupite"
 
-#: admin-pages/user-data/data-user.php:167
+#: admin-pages/user-data/data-user.php:192
 msgid "Upgrade to Pro Plus"
 msgstr "Nadgradite na Pro Plus"
 
-#: admin-pages/user-data/data-user.php:168
+#: admin-pages/user-data/data-user.php:193
 msgid "and get the following"
 msgstr ""
 
-#: admin-pages/user-data/data-user.php:170
+#: admin-pages/user-data/data-user.php:195
 msgid ""
 "view the user's suggested Macronutrient intake based on their recommended "
 "calorie intake"
 msgstr ""
 
-#: admin-pages/user-data/data-user.php:173
+#: admin-pages/user-data/data-user.php:198
 msgid ""
 "view the user's daily calorie intake required to either maintain or lose "
 "weight (Harris Benedict formula)"
 msgstr ""
 
-#: admin-pages/user-data/data-user.php:176
+#: admin-pages/user-data/data-user.php:201
 msgid "view and issue awards based upon users meeting your certain goals"
 msgstr ""
 
-#: admin-pages/user-data/data-user.php:184
+#: admin-pages/user-data/data-user.php:209
 msgid "Entries for this user"
 msgstr "Uporabnikovi vnosi"
+
+#: admin-pages/user-data/data-user.php:228
+msgid ""
+"Are you sure you wish to remove all awards for this user? Note, when the "
+"user next enters a weight the awards will be re-calculated."
+msgstr ""
 
 #: admin-pages/user-data/data-view-all.php:11
 #: admin-pages/user-data/data-view-all.php:23
@@ -1619,8 +1742,8 @@ msgstr "Izvozi v JSON"
 
 #: converters.php:53 converters.php:71 core.php:75 functions.php:69
 #: functions.php:84 functions.php:93 functions.php:99 functions.php:294
-#: functions.php:300 functions.php:557 shortcode-various.php:262
-#: shortcode-various.php:281
+#: functions.php:300 functions.php:558 shortcode-various.php:305
+#: shortcode-various.php:324
 msgid "lbs"
 msgstr "lbs"
 
@@ -1632,7 +1755,7 @@ msgstr "St"
 msgid "Date"
 msgstr "Datum"
 
-#: core.php:15 core.php:393
+#: core.php:15 core.php:395
 msgid "Notes"
 msgstr "Opombe"
 
@@ -1668,112 +1791,112 @@ msgstr "Dodajte novo težo"
 msgid "Edit weight"
 msgstr "Prenizka teža"
 
-#: core.php:366
+#: core.php:368
 msgid "Your target weight is"
 msgstr "Vaša ciljna teža je"
 
-#: core.php:366
+#: core.php:368
 msgid "The user's target weight is currently"
 msgstr "Uporabnikova ciljna teža je"
 
-#: core.php:400
+#: core.php:402
 msgid "Edit measurements"
 msgstr "Dodaj meritev"
 
-#: core.php:400
+#: core.php:402
 msgid "Add measurements"
 msgstr "Dodaj meritev"
 
-#: core.php:401
+#: core.php:403
 msgid "Optional"
 msgstr "Opcijsko"
 
-#: core.php:410
+#: core.php:412
 msgid "Set Target"
 msgstr "Shrani ciljno težo"
 
-#: core.php:410
+#: core.php:412
 msgid "Save Entry"
 msgstr "Shrani vnos"
 
-#: core.php:415
+#: core.php:417
 msgid "Please correct the following:"
 msgstr ""
 
-#: core.php:428
+#: core.php:430
 msgid "Clear Target"
 msgstr "Izbriši ciljno težo"
 
-#: core.php:594
+#: core.php:601
 msgid "Please enter a value between 0-13 for pounds"
 msgstr "Prosimo, vnesite med 0 in 13"
 
-#: core.php:594
+#: core.php:601
 msgid "Please enter a valid figure for pounds"
 msgstr "Prosimo, vnesite težo"
 
-#: core.php:601
+#: core.php:608
 msgid "Are you sure you wish to clear your target weight?"
 msgstr "Res želite izbrisati cilj?"
 
-#: core.php:604
+#: core.php:611
 msgid "Please enter a valid figure for Kg"
 msgstr "Prosimo, vnesite težo"
 
-#: core.php:605
+#: core.php:612
 msgid "Please enter a valid figure for Stones"
 msgstr "Prosimo, vnesite težo"
 
-#: core.php:606
+#: core.php:613
 msgid "Please enter a valid date"
 msgstr "Vnesite pravilen datum"
 
-#: core.php:607
+#: core.php:614
 msgid "Please confirm you wish to delete ALL your weight history"
 msgstr "Potrdite izbris vseh dosedanjih vnosov teže"
 
-#: core.php:608
+#: core.php:615
 msgid "Your photo must be less than "
 msgstr ""
 
-#: core.php:609
+#: core.php:616
 msgid "Are you sure you wish to delete this entry? If so, press OK."
 msgstr "Res želite izbrisati vnos?"
 
-#: core.php:618
+#: core.php:625
 msgid "Please enter a valid measurement ("
 msgstr "Vnesite pravilno meritev ("
 
-#: core.php:630
+#: core.php:637
 msgid "Please select or enter a value for height."
 msgstr "Prosimo, vnesite višino."
 
-#: core.php:631
+#: core.php:638
 msgid "Please select or enter a value for activity level."
 msgstr "Prosimo, vnesite nivo aktivnosti."
 
-#: core.php:632
+#: core.php:639
 msgid "Please select or enter a value for gender."
 msgstr "Prosimo, vnesite spol."
 
-#: core.php:633
+#: core.php:640
 msgid "Please enter a valid date."
 msgstr "Vnesite pravilen datum."
 
-#: core.php:634
+#: core.php:641
 msgid "Please select your aim."
 msgstr "Prosimo, vnesite višino."
 
-#: core.php:644
+#: core.php:651
 msgid "This field is required."
 msgstr "Licenca je potekla."
 
-#: core.php:662
+#: core.php:669
 msgid "Today"
 msgstr "Danes"
 
-#: functions.php:84 functions.php:99 functions.php:545
-#: shortcode-various.php:281
+#: functions.php:84 functions.php:99 functions.php:546
+#: shortcode-various.php:324
 msgid "st"
 msgstr "st"
 
@@ -1781,7 +1904,7 @@ msgstr "st"
 msgid "The following MySQL tables are missing for this plugin"
 msgstr "Manjkajoče MySQL tabele tega vtičnika"
 
-#: functions.php:297 shortcode-various.php:286
+#: functions.php:297 shortcode-various.php:329
 msgid "Kg"
 msgstr "Kg"
 
@@ -1797,161 +1920,161 @@ msgstr "Poglej teden"
 msgid "to"
 msgstr "do"
 
-#: functions.php:512
+#: functions.php:513
 msgid "The plugin supports the following measurements"
 msgstr "Vtičnik podpira naslednje meritve"
 
-#: functions.php:658
+#: functions.php:653
 msgid "Read more about calculations"
 msgstr "Več informacij o izračunih"
 
-#: functions.php:693
+#: functions.php:687
 msgid "Your modifications have been saved"
 msgstr "Nastavitve so bile shranjene!"
 
-#: functions.php:711
+#: functions.php:705
 msgid "Login now"
 msgstr "Prijava"
 
-#: functions.php:896
+#: functions.php:890
 msgid "Upgrade Weight Tracker and get more features!"
 msgstr ""
 
-#: functions.php:898
+#: functions.php:892
 msgid ""
 "Upgrade to the latest Pro or Pro Plus version of this plugin to manipulate "
 "your user's data, add custom fields, BMR, Macro Nutrients and much more!"
 msgstr ""
 
-#: functions.php:899
+#: functions.php:893
 msgid "Read more and Upgrade to Pro / Pro Plus Version"
 msgstr "Nadgradite na Pro verzijo"
 
-#: globals.php:161
+#: globals.php:120
 msgid "Forearm - Left"
 msgstr "Podlaket, levo"
 
-#: globals.php:161
+#: globals.php:120
 msgid "FL"
 msgstr "PL"
 
-#: globals.php:162
+#: globals.php:121
 msgid "Forearm - Right"
 msgstr "Podlaket, desno"
 
-#: globals.php:162
+#: globals.php:121
 msgid "FR"
 msgstr "PD"
 
-#: globals.php:163
+#: globals.php:122
 msgid "Biceps - Left"
 msgstr "Nadlaket, levo"
 
-#: globals.php:163
+#: globals.php:122
 msgid "BL"
 msgstr "NL"
 
-#: globals.php:164
+#: globals.php:123
 msgid "Biceps - Right"
 msgstr "Nadlaket, desno"
 
-#: globals.php:164
+#: globals.php:123
 msgid "BR"
 msgstr "ND"
 
-#: globals.php:165
+#: globals.php:124
 msgid "Calf - Left"
 msgstr "Meča, levo"
 
-#: globals.php:165
+#: globals.php:124
 msgid "CL"
 msgstr "ML"
 
-#: globals.php:166
+#: globals.php:125
 msgid "Calf - Right"
 msgstr "Meča, desno"
 
-#: globals.php:166
+#: globals.php:125
 msgid "CR"
 msgstr "MD"
 
-#: globals.php:167
+#: globals.php:126
 msgid "Thigh - Left"
 msgstr "Stegno, levo"
 
-#: globals.php:167
+#: globals.php:126
 msgid "TL"
 msgstr "SL"
 
-#: globals.php:168
+#: globals.php:127
 msgid "Thigh - Right"
 msgstr "Stegno, desno"
 
-#: globals.php:168
+#: globals.php:127
 msgid "TR"
 msgstr "SD"
 
-#: globals.php:169
+#: globals.php:128
 msgid "Waist"
 msgstr "Pas"
 
-#: globals.php:169
+#: globals.php:128
 msgid "W"
 msgstr "P"
 
-#: globals.php:170
+#: globals.php:129
 msgid "Bust / Chest"
 msgstr "Prsa"
 
-#: globals.php:170
+#: globals.php:129
 msgid "BC"
 msgstr "Pr"
 
-#: globals.php:171
+#: globals.php:130
 msgid "Shoulders"
 msgstr "Rame"
 
-#: globals.php:171
+#: globals.php:130
 msgid "S"
 msgstr "R"
 
-#: globals.php:172
+#: globals.php:131
 msgid "Height"
 msgstr "Višina"
 
-#: globals.php:172
+#: globals.php:131
 msgid "H"
 msgstr "V"
 
-#: globals.php:173
+#: globals.php:132
 msgid "Buttocks"
 msgstr "Zadnjica"
 
-#: globals.php:173
+#: globals.php:132
 msgid "B"
 msgstr "Z"
 
-#: globals.php:174
+#: globals.php:133
 msgid "Hips"
 msgstr "Boki"
 
-#: globals.php:174
+#: globals.php:133
 msgid "HI"
 msgstr "B"
 
-#: globals.php:175
+#: globals.php:134
 msgid "Navel"
 msgstr "Popek"
 
-#: globals.php:175
+#: globals.php:134
 msgid "NA"
 msgstr "Po"
 
-#: globals.php:176
+#: globals.php:135
 msgid "Neck"
 msgstr "Vrat"
 
-#: globals.php:176
+#: globals.php:135
 msgid "NE"
 msgstr "Vr"
 
@@ -1967,66 +2090,103 @@ msgstr "Vaša licenca"
 msgid "Settings"
 msgstr "Nastavitve"
 
-#: hooks.php:17
+#: hooks.php:22
 msgid "Help & Log"
 msgstr ""
 
-#: hooks.php:175
+#: hooks.php:181
 msgid "An error occurred while trying to save the user's preferences."
 msgstr "Med shranjevanjem uporabnikovih preferenc je prišlo do napake."
 
-#: license.php:156
+#: license.php:86
+#, fuzzy
+#| msgid "Weight Loss Tracker"
+msgid "Weight Tracker License"
+msgstr "Weight Loss Tracker"
+
+#: license.php:87
+msgid ""
+"Your license expires in less than 14 days. Please renew your license as soon "
+"as possible"
+msgstr ""
+
+#: license.php:218
 msgid "License missing"
 msgstr "Ni licence"
 
-#: license.php:163
+#: license.php:225
 msgid "Could not decode / verify license"
 msgstr "Ne morem verificirati licence"
 
-#: license.php:168
+#: license.php:230
 msgid "Invalid license hash"
 msgstr "Napačen hash licence"
 
-#: license.php:173
+#: license.php:235
 msgid ""
 "This license doesn't appear to be for this site (no match on site hash)."
 msgstr "Ta licenca ni za to stran (ni ujemanja za hash strani)."
 
-#: license.php:181
+#: license.php:243
 msgid "This license has expired."
 msgstr "Licenca je potekla."
 
-#: license.php:238
+#: license.php:300
 msgid "None"
 msgstr ""
 
-#: license.php:248
+#: license.php:310
 msgid "Yearly Pro"
 msgstr "Letno Pro"
 
-#: license.php:251
+#: license.php:313
 msgid "Legacy Pro"
 msgstr ""
 
-#: save-data.php:42
+#: save-data.php:43
 msgid "Saved!"
 msgstr "Shranjeno!"
 
-#: save-data.php:46
+#: save-data.php:47
 msgid "An error occurred while saving your data!"
 msgstr "Med shranjevanjem je prišlo do napake."
 
-#: save-data.php:49
+#: save-data.php:50
 msgid "No user specified (hash)"
 msgstr "Uporabnik ni določen (hash)"
 
-#: save-data.php:52
+#: save-data.php:53
 msgid "No user specified"
 msgstr "Uporabnik ni določen"
+
+#: setup-wizard.php:16
+msgid "Welcome to"
+msgstr ""
+
+#: setup-wizard.php:18
+msgid "You're almost there, but a wizard might help you setup the plugin"
+msgstr ""
+
+#: setup-wizard.php:86
+msgid ""
+"If require plugin modifications to Weight Tracker, or need a new plugin "
+"built, or perhaps you need a developer to help you with your website then "
+"please don't hesitiate get in touch!"
+msgstr ""
+
+#: setup-wizard.php:87
+msgid "We provide fixed priced quotes."
+msgstr ""
 
 #: shortcode-various.php:106
 msgid "No target set"
 msgstr "Cilj ni določen"
+
+#: shortcode-various.php:255
+#, fuzzy
+#| msgid "No height"
+msgid "No previous weight"
+msgstr "Ni višine"
 
 #: shortcode-weight-loss-tracker.php:43
 msgid "This shortcode can only be placed once on a page / post."
@@ -2096,6 +2256,15 @@ msgstr "Za ta teden ni podatkov. Izberite drugo obdobje:"
 msgid "You haven't entered any weight data yet."
 msgstr "Vnesli niste še nobenega podatka."
 
+#~ msgid "Send usage data to YeKen?"
+#~ msgstr "Pošlji podatke o uporabi YeKenu?"
+
+#~ msgid "All entries"
+#~ msgstr "Vsi vnosi"
+
+#~ msgid "Show all entries"
+#~ msgstr "Prikaži vse vnose"
+
 #~ msgid "Help"
 #~ msgstr "Pomoč"
 
@@ -2122,9 +2291,6 @@ msgstr "Vnesli niste še nobenega podatka."
 
 #~ msgid "Upgrade now to Pro Plus"
 #~ msgstr "Nadgradite na Pro Plus"
-
-#~ msgid "Looking to view and manipulate your user's data?"
-#~ msgstr "Bi želeli pregledovati in manipulirati podatke uporabnikov?"
 
 #~ msgid ""
 #~ "Upgrade to the Pro version of this plugin to view, edit and delete your "
@@ -2341,11 +2507,6 @@ msgstr "Vnesli niste še nobenega podatka."
 #~| msgid "Current Height"
 #~ msgid "Maintain current weight"
 #~ msgstr "Trenutna višina"
-
-#, fuzzy
-#~| msgid "No height"
-#~ msgid "Lose weight"
-#~ msgstr "Ni višine"
 
 #, fuzzy
 #~| msgid "Underweight"
@@ -2566,9 +2727,6 @@ msgstr "Vnesli niste še nobenega podatka."
 
 #~ msgid "Save Settings"
 #~ msgstr "Shrani nastavitve"
-
-#~ msgid "Delete existing data"
-#~ msgstr "Izbriši obstoječe podatke"
 
 #~ msgid ""
 #~ "The button below allows you to clear your existing weight history. "
@@ -2836,9 +2994,6 @@ msgstr "Vnesli niste še nobenega podatka."
 #, fuzzy
 #~ msgid "Allow decimal places?"
 #~ msgstr "Tillat desimaler?"
-
-#~ msgid " Instructions"
-#~ msgstr " Instructions"
 
 #, fuzzy
 #~ msgid ""
