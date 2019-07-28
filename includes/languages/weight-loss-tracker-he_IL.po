@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Weight Loss Tracker\n"
-"POT-Creation-Date: 2019-04-22 14:21+0100\n"
-"PO-Revision-Date: 2019-04-22 14:22+0100\n"
+"POT-Creation-Date: 2019-07-28 11:08+0100\n"
+"PO-Revision-Date: 2019-07-28 11:08+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: he_IL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2\n"
+"X-Generator: Poedit 2.2.3\n"
 "X-Poedit-Basepath: ../..\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==2 ? 1 : n>10 && n%10==0 ? "
 "2 : 3);\n"
@@ -22,11 +22,6 @@ msgstr ""
 "X-Poedit-SearchPath-0: includes\n"
 "X-Poedit-SearchPath-1: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
-
-#. Plugin Name of the plugin/theme
-#: includes/admin-notifications.php:30 pro-features/widget-chart.php:17
-msgid "Weight Tracker"
-msgstr "מנהל מעקב משקל"
 
 #: includes/admin-pages/awards/page-awards-add-update.php:97
 msgid "Add / Edit an Award"
@@ -94,7 +89,7 @@ msgstr "פאונד"
 
 #: includes/admin-pages/awards/page-awards-add-update.php:191
 #: includes/core.php:14 includes/core.php:83 includes/core.php:210
-#: includes/core.php:386 pro-features/footable.php:216
+#: includes/core.php:386 pro-features/footable.php:215
 #: pro-features/plus/awards/functions.php:31
 msgid "Weight"
 msgstr "משקל"
@@ -171,22 +166,21 @@ msgstr "האם להחיל על ערכים חדשים?"
 #: includes/admin-pages/settings/page-settings-generic.php:246
 #: includes/admin-pages/settings/page-settings-generic.php:260
 #: includes/admin-pages/settings/page-settings-generic.php:270
-#: includes/admin-pages/settings/page-settings-generic.php:280
-#: includes/admin-pages/settings/page-settings-generic.php:301
-#: includes/admin-pages/settings/page-settings-generic.php:343
-#: includes/admin-pages/settings/page-settings-generic.php:412
-#: includes/admin-pages/settings/page-settings-generic.php:444
-#: includes/admin-pages/settings/page-settings-generic.php:473
-#: includes/admin-pages/settings/page-settings-generic.php:491
-#: includes/admin-pages/settings/page-settings-generic.php:516
-#: includes/admin-pages/settings/page-settings-generic.php:567
+#: includes/admin-pages/settings/page-settings-generic.php:291
+#: includes/admin-pages/settings/page-settings-generic.php:333
+#: includes/admin-pages/settings/page-settings-generic.php:402
+#: includes/admin-pages/settings/page-settings-generic.php:434
+#: includes/admin-pages/settings/page-settings-generic.php:463
+#: includes/admin-pages/settings/page-settings-generic.php:481
+#: includes/admin-pages/settings/page-settings-generic.php:506
+#: includes/admin-pages/settings/page-settings-generic.php:557
+#: includes/admin-pages/settings/page-settings-generic.php:572
 #: includes/admin-pages/settings/page-settings-generic.php:582
 #: includes/admin-pages/settings/page-settings-generic.php:592
-#: includes/admin-pages/settings/page-settings-generic.php:602
-#: includes/admin-pages/settings/page-settings-generic.php:622
-#: includes/admin-pages/settings/page-settings-generic.php:642
-#: includes/admin-pages/settings/page-settings-generic.php:703
-#: includes/functions.php:986 pro-features/plus/meta-fields/functions.php:32
+#: includes/admin-pages/settings/page-settings-generic.php:612
+#: includes/admin-pages/settings/page-settings-generic.php:632
+#: includes/admin-pages/settings/page-settings-generic.php:693
+#: includes/functions.php:987 pro-features/plus/meta-fields/functions.php:32
 #: pro-features/plus/meta-fields/functions.php:201
 #: pro-features/plus/meta-fields/functions.php:324
 #: pro-features/widget-form.php:91 pro-features/widget-form.php:98
@@ -211,22 +205,21 @@ msgstr "כן"
 #: includes/admin-pages/settings/page-settings-generic.php:245
 #: includes/admin-pages/settings/page-settings-generic.php:259
 #: includes/admin-pages/settings/page-settings-generic.php:269
-#: includes/admin-pages/settings/page-settings-generic.php:279
-#: includes/admin-pages/settings/page-settings-generic.php:302
-#: includes/admin-pages/settings/page-settings-generic.php:342
-#: includes/admin-pages/settings/page-settings-generic.php:413
-#: includes/admin-pages/settings/page-settings-generic.php:443
-#: includes/admin-pages/settings/page-settings-generic.php:474
-#: includes/admin-pages/settings/page-settings-generic.php:492
-#: includes/admin-pages/settings/page-settings-generic.php:515
-#: includes/admin-pages/settings/page-settings-generic.php:566
+#: includes/admin-pages/settings/page-settings-generic.php:292
+#: includes/admin-pages/settings/page-settings-generic.php:332
+#: includes/admin-pages/settings/page-settings-generic.php:403
+#: includes/admin-pages/settings/page-settings-generic.php:433
+#: includes/admin-pages/settings/page-settings-generic.php:464
+#: includes/admin-pages/settings/page-settings-generic.php:482
+#: includes/admin-pages/settings/page-settings-generic.php:505
+#: includes/admin-pages/settings/page-settings-generic.php:556
+#: includes/admin-pages/settings/page-settings-generic.php:573
 #: includes/admin-pages/settings/page-settings-generic.php:583
 #: includes/admin-pages/settings/page-settings-generic.php:593
-#: includes/admin-pages/settings/page-settings-generic.php:603
-#: includes/admin-pages/settings/page-settings-generic.php:621
-#: includes/admin-pages/settings/page-settings-generic.php:641
-#: includes/admin-pages/settings/page-settings-generic.php:702
-#: includes/functions.php:986 pro-features/plus/meta-fields/functions.php:32
+#: includes/admin-pages/settings/page-settings-generic.php:611
+#: includes/admin-pages/settings/page-settings-generic.php:631
+#: includes/admin-pages/settings/page-settings-generic.php:692
+#: includes/functions.php:987 pro-features/plus/meta-fields/functions.php:32
 #: pro-features/plus/meta-fields/functions.php:198
 #: pro-features/plus/meta-fields/functions.php:323
 #: pro-features/widget-form.php:90 pro-features/widget-form.php:97
@@ -315,8 +308,8 @@ msgid "Text"
 msgstr "טקסט"
 
 #: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:84
-#: pro-features/plus/meta-fields/functions.photos.php:413
-#: pro-features/plus/meta-fields/functions.photos.php:414
+#: pro-features/plus/meta-fields/functions-photos.php:413
+#: pro-features/plus/meta-fields/functions-photos.php:414
 #: pro-features/plus/meta-fields/functions.php:33
 msgid "Photo"
 msgstr "תמונה"
@@ -405,47 +398,34 @@ msgstr ""
 msgid "Read more about Custom Fields"
 msgstr "לקריאה נוספת אודות שדות מותאמים אישית"
 
-#: includes/admin-pages/page.help.php:24
+#: includes/admin-pages/page-help.php:24
 msgid "Custom modifications / web development"
 msgstr "שינויים מותאמים אישית / פיתוח אתרים"
 
-#: includes/admin-pages/page.help.php:26
-msgid ""
-"If require plugin modifications to Weight Tracker, or need a new plugin "
-"built, or perhaps you need a developer to help you with your website then "
-"please don't hesitiate get in touch!"
-msgstr ""
-"אם נדרש שינויים בתוסף מעקב משקל, או צריך תוסף חדש בנוי, או אולי אתה צריך "
-"מפתח כדי לעזור לך עם אתר האינטרנט שלך אז בבקשה אל תהסס להיות איתנו בקשר!"
-
-#: includes/admin-pages/page.help.php:27
-msgid "We provide fixed priced quotes."
-msgstr "אנו מספקים ציטוטים במחיר קבוע."
-
-#: includes/admin-pages/page.help.php:36
-#: includes/admin-pages/page.license.php:235
+#: includes/admin-pages/page-help.php:31
+#: includes/admin-pages/page-license.php:232
 msgid "Documentation"
 msgstr "תיעוד"
 
-#: includes/admin-pages/page.help.php:38
+#: includes/admin-pages/page-help.php:33
 msgid "You can find detailed documentation for this plugin at our site:"
 msgstr "ניתן למוא תיעוד מפורט עבור פלאגין זה האתר שלנו:"
 
-#: includes/admin-pages/page.help.php:46
+#: includes/admin-pages/page-help.php:41
 msgid "Fix: Stones & Pounds accuracy"
 msgstr "תיקון: דיוק של פאונדס ואבנים"
 
-#: includes/admin-pages/page.help.php:48
+#: includes/admin-pages/page-help.php:43
 msgid ""
 "Correct accuracy for measurements entered in Stones and Pounds (only run "
 "with the advice of YeKen)"
 msgstr "דיוק נכון למדידות שהוזנו באבנים ובקילוגרמים (הפעלה רק בעצת YeKen)."
 
-#: includes/admin-pages/page.help.php:65
+#: includes/admin-pages/page-help.php:60
 msgid "Custom Fields: Migrate photos from old system to Custom Fields"
 msgstr "שדות מותאמים אישית: העברת תמונות ממערכת ישנה לשדות מותאמים אישית"
 
-#: includes/admin-pages/page.help.php:67
+#: includes/admin-pages/page-help.php:62
 msgid ""
 "This will migrate photos from the old system to the new custom fields. It "
 "will create a custom field with the key \"photo\". Note! It will remove any "
@@ -455,32 +435,36 @@ msgstr ""
 "שדה מותאם אישית עם המפתח \"תמונה\". הערה! כל התמונות המועברות הקיימות יוסרו "
 "לפני הוספתן מחדש."
 
-#: includes/admin-pages/page.help.php:90
+#: includes/admin-pages/page-help.php:85
 msgid "Done. View Log below for further information."
 msgstr "בוצע. ניתן לצפות ביומן להלן במידע נוסף."
 
-#: includes/admin-pages/page.help.php:100
+#: includes/admin-pages/page-help.php:95
 msgid "Admin Tools"
 msgstr "כלי ניהול"
 
-#: includes/admin-pages/page.help.php:111
-#: includes/admin-pages/page.help.php:125 includes/core.php:668
+#: includes/admin-pages/page-help.php:104
+msgid "Show Setup Wizard link"
+msgstr ""
+
+#: includes/admin-pages/page-help.php:114
+#: includes/admin-pages/page-help.php:128 includes/core.php:668
 msgid "Done"
 msgstr "בוצע"
 
-#: includes/admin-pages/page.help.php:116
+#: includes/admin-pages/page-help.php:119
 msgid "Delete all issued awards"
 msgstr "מחק את כל הפרסים שהוענקו"
 
-#: includes/admin-pages/page.help.php:130
+#: includes/admin-pages/page-help.php:133
 msgid "Delete all log entries"
 msgstr "מחק את כל ערכי יומן הרישום"
 
-#: includes/admin-pages/page.help.php:139
+#: includes/admin-pages/page-help.php:142
 msgid "Weight Tracker Debug Log"
 msgstr "יומן איתור באגים של מנהל מעקב משקל"
 
-#: includes/admin-pages/page.help.php:142
+#: includes/admin-pages/page-help.php:145
 msgid ""
 "Below is a list of the debug information logged by the Weight Tracker plugin "
 "over the last 31 days."
@@ -488,42 +472,42 @@ msgstr ""
 "להלן רשימה של מידע איתור הבאגים, שנרשם על-ידי תוסף מעקב המשקל במהלך 31 הימים "
 "האחרונים."
 
-#: includes/admin-pages/page.help.php:174
-#: includes/admin-pages/page.help.php:178
+#: includes/admin-pages/page-help.php:177
+#: includes/admin-pages/page-help.php:181
 msgid "Are you sure?"
 msgstr "בטוח שזה מה שברצונך?"
 
-#: includes/admin-pages/page.help.php:175
+#: includes/admin-pages/page-help.php:178
 msgid "Are you sure you wish to remove all issued awards?"
 msgstr "האם בטוח שברצונך להסיר את כל הפרסים שהוענקו?"
 
-#: includes/admin-pages/page.help.php:179
+#: includes/admin-pages/page-help.php:182
 msgid "Are you sure you wish to clear all log entries?"
 msgstr "האם בטוח שברצונך לנקות את כל פריטי יומן הרישום?"
 
-#: includes/admin-pages/page.license.php:11
+#: includes/admin-pages/page-license.php:11
 #: includes/admin-pages/settings/page-settings-generic.php:8
 #: pro-features/export.php:342 pro-features/functions.php:544
 msgid "You do not have sufficient permissions to access this page."
 msgstr "אין לך הרשאות לגשת לעמוד זה."
 
-#: includes/admin-pages/page.license.php:39
+#: includes/admin-pages/page-license.php:37
 msgid "Your license has been applied!"
 msgstr "הרישיון שלך התקבל!"
 
-#: includes/admin-pages/page.license.php:42
+#: includes/admin-pages/page-license.php:40
 msgid "An error occurred applying your license: "
 msgstr "שגיאה התרחשה בעת הגשת הרישיון שלך: "
 
-#: includes/admin-pages/page.license.php:73 includes/hooks.php:13
+#: includes/admin-pages/page-license.php:70 includes/hooks.php:13
 msgid "Upgrade"
 msgstr "שידרוג"
 
-#: includes/admin-pages/page.license.php:78
+#: includes/admin-pages/page-license.php:75
 msgid "As you can see from the features listed below, the"
 msgstr "ביכולתך לראות מתוך האפשרויות המוצגות למטה, ש"
 
-#: includes/admin-pages/page.license.php:80
+#: includes/admin-pages/page-license.php:77
 msgid ""
 "can offer you and your members a lot more features to help you and them "
 "manage their weight. There are two types of License that you can purchase, "
@@ -536,7 +520,7 @@ msgstr ""
 "את חוויית המשתמש באופן משמעותי! Pro Plus מרחיב Pro עם תכונות כגון BMR, צריכת "
 "קלוריות, מחשבון Macronutrients, וכו'."
 
-#: includes/admin-pages/page.license.php:81
+#: includes/admin-pages/page-license.php:78
 msgid ""
 "Of course, by purchasing a license, you are supporting the future of this "
 "plugin and it is gratefully appreciated."
@@ -544,11 +528,11 @@ msgstr ""
 "כמובן, על ידי רכישת רישיון, אתה תומך בעתיד של תוסף זה, ואנו מעריכים ומוקירים "
 "תודה על כך."
 
-#: includes/admin-pages/page.license.php:86
+#: includes/admin-pages/page-license.php:83
 msgid "Legacy Pro License"
 msgstr "רישיון Pro מורשה"
 
-#: includes/admin-pages/page.license.php:87
+#: includes/admin-pages/page-license.php:84
 msgid ""
 "Our licensing has model has changed, Prior to September 2017 it used to be a "
 "one off payment that enabled the Pro features of the plugin. This is still "
@@ -557,11 +541,11 @@ msgstr ""
 "מודל הרישיונות שלנו השתנה, מאז ספטמבר 2017. זה היה תשלום אחד שאיפשר את "
 "תכונות ה-Pro של הפלאגין. אנו ממשיכים לכבד את כל הרישיונות שהוענקו לפני כן."
 
-#: includes/admin-pages/page.license.php:88
+#: includes/admin-pages/page-license.php:85
 msgid "Moving to a yearly license"
 msgstr "מעבר לרישיון שנתי"
 
-#: includes/admin-pages/page.license.php:89
+#: includes/admin-pages/page-license.php:86
 msgid ""
 "There is no reason to move to a yearly license - Pro features will remain "
 "the same for legacy and new Pro subscriptions. However, if you were to move "
@@ -572,11 +556,11 @@ msgstr ""
 "והחדש. עם זאת, אם תעבור למנוי שנתי, תתמוך בפיתו הפלאגין (ואני אתן לך חיבוק "
 "גדול)."
 
-#: includes/admin-pages/page.license.php:93
+#: includes/admin-pages/page-license.php:90
 msgid "Pro Plus License"
 msgstr "רישיון פרו +"
 
-#: includes/admin-pages/page.license.php:94
+#: includes/admin-pages/page-license.php:91
 msgid ""
 "Of course, thank you for purchasing a Pro license - it is much appreciated. "
 "As you can see below, you can further expand the features of"
@@ -584,8 +568,8 @@ msgstr ""
 "כמובן, תודה על רכישת רישיון Pro - זה מוערך מאוד. כפי שניתן לראות למטה, תוכל "
 "להרחיב עוד יותר את התכונות של"
 
-#: includes/admin-pages/page.license.php:96
-#: includes/admin-pages/page.license.php:106
+#: includes/admin-pages/page-license.php:93
+#: includes/admin-pages/page-license.php:103
 msgid ""
 "by extending your license to Pro Plus. Pro Plus extends Pro with features "
 "such as BMR, Calorie intake, Macronutrient Calculator, etc. You can view the "
@@ -595,7 +579,7 @@ msgstr ""
 "BMR, צריכת קלוריות, מחשבון מקרונוטריינטים, וכו'. ניתן לקרוא מהן התכונות "
 "הנוספות של Pro Plus למטה."
 
-#: includes/admin-pages/page.license.php:104
+#: includes/admin-pages/page-license.php:101
 msgid ""
 "Of course, a big thank you purchasing a Pro license at some point - it is "
 "much appreciated. As you can see below, you can further expand the features "
@@ -604,7 +588,7 @@ msgstr ""
 "כמובן, תודה רבה של רכישת רישיון Pro בשלב כלשהו - אנו מעריכים זאת מאוד. .כפי "
 "שניתן לראות למטה, תוכל להרחיב עוד את התכונות של"
 
-#: includes/admin-pages/page.license.php:112
+#: includes/admin-pages/page-license.php:109
 msgid ""
 "Thank you kind soul, you have purchased a Pro Plus license. A huge thank you "
 "for supporting me and this plugin!"
@@ -612,49 +596,49 @@ msgstr ""
 "תודה לך, נשמה טובה, רכשת רישיון ל Pro Plusץ תודה רבה על התמיכה בי ובפלאגין "
 "הזה!"
 
-#: includes/admin-pages/page.license.php:119
+#: includes/admin-pages/page-license.php:116
 msgid "In case you need, your <strong>Site Hash</strong> is"
 msgstr "במקרה שאתה צריך, <strong>Site Hash</strong> שלך הוא"
 
-#: includes/admin-pages/page.license.php:128
+#: includes/admin-pages/page-license.php:125
 msgid "Get a free 7 day trial!"
 msgstr "קבל 7 ימים של התנסות בחינם!"
 
-#: includes/admin-pages/page.license.php:135
-#: includes/admin-pages/page.license.php:141
+#: includes/admin-pages/page-license.php:132
+#: includes/admin-pages/page-license.php:138
 msgid "Upgrade to Pro Plus for"
 msgstr "שדרג ל Pro Plus עבור"
 
-#: includes/admin-pages/page.license.php:135
-#: includes/admin-pages/page.license.php:141
-#: includes/admin-pages/page.license.php:255
-#: includes/admin-pages/page.license.php:269
+#: includes/admin-pages/page-license.php:132
+#: includes/admin-pages/page-license.php:138
+#: includes/admin-pages/page-license.php:252
+#: includes/admin-pages/page-license.php:266
 msgid "a year"
 msgstr "לשנה"
 
-#: includes/admin-pages/page.license.php:143
+#: includes/admin-pages/page-license.php:140
 #, no-php-format
 msgid " (50% discount)"
 msgstr " (50% הנחה)"
 
-#: includes/admin-pages/page.license.php:159
+#: includes/admin-pages/page-license.php:156
 msgid "Switch to a yearly Pro license for "
 msgstr "עבור לרישיון Pro שנתי עבור "
 
-#: includes/admin-pages/page.license.php:159
-#: includes/admin-pages/page.license.php:160
+#: includes/admin-pages/page-license.php:156
+#: includes/admin-pages/page-license.php:157
 msgid " a year"
 msgstr " לשנה"
 
-#: includes/admin-pages/page.license.php:160
+#: includes/admin-pages/page-license.php:157
 msgid "Upgrade to Pro for "
 msgstr "שדרג ל Pro עבור "
 
-#: includes/admin-pages/page.license.php:176
+#: includes/admin-pages/page-license.php:173
 msgid "Add or Update License"
 msgstr "הרחבה או עדכון רישיון"
 
-#: includes/admin-pages/page.license.php:181
+#: includes/admin-pages/page-license.php:178
 msgid ""
 "Copy and paste the license given to you by YeKen into this box and click "
 "\"Apply License\""
@@ -662,82 +646,130 @@ msgstr ""
 "העתק והדבק את הרישיון שניתן לך על ידי YeKen לתוך תיבת זה ולחץ על \"החלת "
 "רישיון\""
 
-#: includes/admin-pages/page.license.php:184
+#: includes/admin-pages/page-license.php:181
 msgid "Apply License"
 msgstr "הרחבה או עדכון רישיון"
 
-#: includes/admin-pages/page.license.php:189
+#: includes/admin-pages/page-license.php:186
 msgid "Your License Information"
 msgstr "נתוני הרישיון שלך"
 
-#: includes/admin-pages/page.license.php:193
+#: includes/admin-pages/page-license.php:190
 msgid "Site Hash"
 msgstr "Site Hash"
 
-#: includes/admin-pages/page.license.php:197
+#: includes/admin-pages/page-license.php:194
 #: pro-features/plus/meta-fields/hooks.php:17 pro-features/widget-chart.php:110
 msgid "Type"
 msgstr "סוג"
 
-#: includes/admin-pages/page.license.php:201
+#: includes/admin-pages/page-license.php:198
 msgid "Expires"
 msgstr "פג תוקף"
 
-#: includes/admin-pages/page.license.php:206
+#: includes/admin-pages/page-license.php:203
 msgid "Never"
 msgstr "לעולם"
 
-#: includes/admin-pages/page.license.php:210
+#: includes/admin-pages/page-license.php:207
 msgid "n/a"
 msgstr "לא זמין"
 
-#: includes/admin-pages/page.license.php:220
+#: includes/admin-pages/page-license.php:217
 msgid "Your Existing License"
 msgstr "הרישיון הנוכחי שלך"
 
-#: includes/admin-pages/page.license.php:226
+#: includes/admin-pages/page-license.php:223
 msgid "Remove License"
 msgstr "הסר רישיון"
 
-#: includes/admin-pages/page.license.php:238
+#: includes/admin-pages/page-license.php:235
 msgid "Need further help or information, please visit our documentation site:"
 msgstr "אם ברצונך בעזרה או מידע נוספים, בבקשה כנס לאתר התיעוד שלנו:"
 
-#: includes/admin-pages/page.license.php:251
+#: includes/admin-pages/page-license.php:248
 msgid "Pro Plus Features"
 msgstr "תכונות Pro Plus"
 
-#: includes/admin-pages/page.license.php:255
+#: includes/admin-pages/page-license.php:252
 msgid "Below is a list of the intended features of the Pro Plus version"
 msgstr "למטה יש רשימה של התוספות הצפויות של גרסת פרו פלוס"
 
-#: includes/admin-pages/page.license.php:255
-#: includes/admin-pages/page.license.php:269
+#: includes/admin-pages/page-license.php:252
+#: includes/admin-pages/page-license.php:266
 msgid "You can upgrade for"
 msgstr "שדרג עבור"
 
-#: includes/admin-pages/page.license.php:264
+#: includes/admin-pages/page-license.php:261
 msgid "Pro Features"
 msgstr "תכונות Pro"
 
-#: includes/admin-pages/page.license.php:269
+#: includes/admin-pages/page-license.php:266
 msgid "Below is a list of the intended features of the Pro version"
 msgstr "למטה יש רשימה של התוספות הצפויות של גרסת פרו פלוס"
 
-#: includes/admin-pages/page.license.php:283
+#: includes/admin-pages/page-license.php:280
 #: includes/admin-pages/user-data/data-summary.php:206
 #: includes/admin-pages/user-data/data-user.php:227
-#: pro-features/functions.pages.php:219
+#: pro-features/functions-pages.php:219
 msgid "Are you sure you?"
 msgstr "האם הינך בטוח?"
 
-#: includes/admin-pages/page.license.php:284
+#: includes/admin-pages/page-license.php:281
 msgid ""
 "Are you sure you wish to remove the license for this site? Removing it may "
 "cause your user's to lose functionality."
 msgstr ""
 "האם אתה בטוח שברצונך להסיר את הרישיון עבור אתר זה? ההסרה יכולה לגרום "
 "למשתמשים שלך לאבד את הפונקציונליות של הפלאגין."
+
+#: includes/admin-pages/page-setup-wizard.php:22 includes/hooks.php:19
+msgid "Setup Wizard"
+msgstr ""
+
+#: includes/admin-pages/page-setup-wizard.php:26
+#, fuzzy
+#| msgid " Instructions"
+msgid "Introduction"
+msgstr " Instructions"
+
+#: includes/admin-pages/page-setup-wizard.php:26
+msgid "Thank you for using Weight Tracker"
+msgstr ""
+
+#: includes/admin-pages/page-setup-wizard.php:27
+msgid "Setup"
+msgstr ""
+
+#: includes/admin-pages/page-setup-wizard.php:27
+msgid "How to use Shortcodes and Widgets"
+msgstr ""
+
+#: includes/admin-pages/page-setup-wizard.php:28
+msgid "Admin Interface"
+msgstr ""
+
+#: includes/admin-pages/page-setup-wizard.php:28
+msgid "Viewing and interacting with your user's data"
+msgstr ""
+
+#: includes/admin-pages/page-setup-wizard.php:29
+msgid "Features and Guides"
+msgstr ""
+
+#: includes/admin-pages/page-setup-wizard.php:29
+msgid "Useful features and guides"
+msgstr ""
+
+#: includes/admin-pages/page-setup-wizard.php:30
+msgid "Customisations"
+msgstr ""
+
+#: includes/admin-pages/page-setup-wizard.php:30
+#, fuzzy
+#| msgid "Custom modifications / web development"
+msgid "Custom modifications to Weight Tracker"
+msgstr "שינויים מותאמים אישית / פיתוח אתרים"
 
 #: includes/admin-pages/settings/page-settings-generic.php:37
 msgid "Rebuild them now"
@@ -1009,25 +1041,10 @@ msgstr ""
 "עיצוב WLT."
 
 #: includes/admin-pages/settings/page-settings-generic.php:266
-msgid "Send usage data to YeKen?"
-msgstr "לשלוח מידע על השימוש ל-YeKen?"
-
-#: includes/admin-pages/settings/page-settings-generic.php:272
-msgid ""
-"We would love to see how our plugin is used. By consenting, you are allowing "
-"permission for the following data to be sent on a weekly basis to YeKen: "
-"URL, summary of settings, count of recorded weights and measurements. No "
-"user or admin data will ever be transmitted."
-msgstr ""
-"נשמח לראות את השימוש בפלגין שלנו. בהכמתך, אתה מאפשר ומסכים לשליחת המידע הבא "
-"מדי שבוע ל YeKen:\vURL, סיכום ההגדרות, מספר המשקלים והמדידות שעודכנו. מידע "
-"של משתמשים ומנהלי מערכת לא יועבר לעולם."
-
-#: includes/admin-pages/settings/page-settings-generic.php:276
 msgid "Disable notifications from YeKen?"
 msgstr "האם לנטרל התראות והודעות מ YeKen?"
 
-#: includes/admin-pages/settings/page-settings-generic.php:282
+#: includes/admin-pages/settings/page-settings-generic.php:272
 msgid ""
 "Occasionally YeKen likes to display simple notifications within your "
 "WordPress dashboard. Use this setting if you wish to disable them."
@@ -1035,25 +1052,25 @@ msgstr ""
 "לעיתים YeKen שולח הודעות פשוטות ללוח הבקרה של אתר הוורדפרס שלך. הפעל הגדרה "
 "זו אם ברצונך להימנע מלקבל אותן."
 
-#: includes/admin-pages/settings/page-settings-generic.php:294
+#: includes/admin-pages/settings/page-settings-generic.php:284
 msgid "Calculating daily calorie intake to lose weight"
 msgstr "חישוב צריכת קלוריות יומית, הנדרשת כדי לרזות"
 
-#: includes/admin-pages/settings/page-settings-generic.php:298
+#: includes/admin-pages/settings/page-settings-generic.php:288
 msgid "Show Loss figures?"
 msgstr ""
 
-#: includes/admin-pages/settings/page-settings-generic.php:304
+#: includes/admin-pages/settings/page-settings-generic.php:294
 msgid ""
 "Show loss figures to your users? For example, if your site is aimed at "
 "muscle building, you may wish not to."
 msgstr ""
 
-#: includes/admin-pages/settings/page-settings-generic.php:308
+#: includes/admin-pages/settings/page-settings-generic.php:298
 msgid "Female Calorie Cap"
 msgstr "מכסת קלוריות לנשים"
 
-#: includes/admin-pages/settings/page-settings-generic.php:311
+#: includes/admin-pages/settings/page-settings-generic.php:301
 msgid ""
 "Specify a maximum value for number of daily calories allowed to achieve "
 "weight loss. As per NHS guidelines, females are set to 1400kcal by default"
@@ -1061,12 +1078,12 @@ msgstr ""
 "ציין ערך מרבי עבור צריכת הקלוריות היומיות, אשר מוביל לירידה במשקל. על פי "
 "הנחיות ה-NHS, ברירת המחדל לנשים הינה 1400 קלוריות"
 
-#: includes/admin-pages/settings/page-settings-generic.php:311
-#: includes/admin-pages/settings/page-settings-generic.php:318
-#: includes/admin-pages/settings/page-settings-generic.php:330
-#: includes/admin-pages/settings/page-settings-generic.php:357
-#: includes/admin-pages/settings/page-settings-generic.php:376
-#: includes/admin-pages/settings/page-settings-generic.php:383
+#: includes/admin-pages/settings/page-settings-generic.php:301
+#: includes/admin-pages/settings/page-settings-generic.php:308
+#: includes/admin-pages/settings/page-settings-generic.php:320
+#: includes/admin-pages/settings/page-settings-generic.php:347
+#: includes/admin-pages/settings/page-settings-generic.php:366
+#: includes/admin-pages/settings/page-settings-generic.php:373
 msgid ""
 "Please note, it may take up to 15 minutes for calculations to change (due to "
 "caching)."
@@ -1074,11 +1091,11 @@ msgstr ""
 "שים לב, ייתכן שיימשך עד 15 דקות כדי שהחישובים ישתנו (עקב אחסון במטמון הדפדפן "
 "שלך)."
 
-#: includes/admin-pages/settings/page-settings-generic.php:315
+#: includes/admin-pages/settings/page-settings-generic.php:305
 msgid "Male Calorie Cap"
 msgstr "מכסת קלוריות לגברים"
 
-#: includes/admin-pages/settings/page-settings-generic.php:318
+#: includes/admin-pages/settings/page-settings-generic.php:308
 msgid ""
 "Specify a maximum value for number of daily calories allowed to achieve "
 "weight loss. As per NHS guidelines, males are set to 1900kcal by default"
@@ -1086,11 +1103,11 @@ msgstr ""
 "ציין ערך מרבי עבור צריכת הקלוריות היומיות, אשר מוביל לירידה במשקל. על פי "
 "הנחיות ה-NHS, ברירת המחדל לגברים הינה 1900 קלוריות"
 
-#: includes/admin-pages/settings/page-settings-generic.php:322
+#: includes/admin-pages/settings/page-settings-generic.php:312
 msgid "Calories to subtract"
 msgstr "קלוריות לחיסור"
 
-#: includes/admin-pages/settings/page-settings-generic.php:330
+#: includes/admin-pages/settings/page-settings-generic.php:320
 msgid ""
 "Part of calculating the daily calorie intake to lose weight is to first "
 "calculate the calorie intake to maintain existing weight. Once we have this, "
@@ -1101,29 +1118,29 @@ msgstr ""
 "הקלוריות, הנדרשת כדי לשמור על המשקל הקיים. ברגע שיש לנו את זה, אנו מפחיתים "
 "את המספר לעיל כדי לחשב את צריכת הקלוריות היומית הנדרשת כדי לרזות."
 
-#: includes/admin-pages/settings/page-settings-generic.php:335
+#: includes/admin-pages/settings/page-settings-generic.php:325
 #, fuzzy
 #| msgid "Calculating daily calorie intake to lose weight"
 msgid "Calculating daily calorie intake to gain weight"
 msgstr "חישוב צריכת קלוריות יומית, הנדרשת כדי לרזות"
 
-#: includes/admin-pages/settings/page-settings-generic.php:339
+#: includes/admin-pages/settings/page-settings-generic.php:329
 msgid "Show Gain figures?"
 msgstr ""
 
-#: includes/admin-pages/settings/page-settings-generic.php:345
+#: includes/admin-pages/settings/page-settings-generic.php:335
 msgid ""
 "Show gain figures to your users? For example, if your site is aimed at "
 "weight loss only, you may wish not to."
 msgstr ""
 
-#: includes/admin-pages/settings/page-settings-generic.php:349
+#: includes/admin-pages/settings/page-settings-generic.php:339
 #, fuzzy
 #| msgid "Calories to subtract"
 msgid "Calories to add"
 msgstr "קלוריות לחיסור"
 
-#: includes/admin-pages/settings/page-settings-generic.php:357
+#: includes/admin-pages/settings/page-settings-generic.php:347
 #, fuzzy
 #| msgid ""
 #| "Part of calculating the daily calorie intake to lose weight is to first "
@@ -1139,23 +1156,23 @@ msgstr ""
 "הקלוריות, הנדרשת כדי לשמור על המשקל הקיים. ברגע שיש לנו את זה, אנו מפחיתים "
 "את המספר לעיל כדי לחשב את צריכת הקלוריות היומית הנדרשת כדי לרזות."
 
-#: includes/admin-pages/settings/page-settings-generic.php:362
+#: includes/admin-pages/settings/page-settings-generic.php:352
 #: includes/admin-pages/user-data/data-user.php:160
 #: includes/admin-pages/user-data/data-user.php:180
 #: includes/admin-pages/user-data/data-user.php:194
 msgid "Macronutrient Calculator"
 msgstr "מחשבון מקרו-נוטריינטים"
 
-#: includes/admin-pages/settings/page-settings-generic.php:366
-#: pro-features/plus/macronutrient.calculator.php:144
+#: includes/admin-pages/settings/page-settings-generic.php:356
+#: pro-features/plus/macronutrient-calculator.php:144
 msgid "Proteins"
 msgstr "חלבונים"
 
-#: includes/admin-pages/settings/page-settings-generic.php:369
+#: includes/admin-pages/settings/page-settings-generic.php:359
 msgid "Percentage of Proteins to make up a moderate diet"
 msgstr "אחוז החלבונים הנדרש בתזונה מתונה"
 
-#: includes/admin-pages/settings/page-settings-generic.php:369
+#: includes/admin-pages/settings/page-settings-generic.php:359
 msgid ""
 "Please note, it may take up to 15 minutes for calorie calculations to change "
 "(due to caching)."
@@ -1163,41 +1180,41 @@ msgstr ""
 "שים לב, ייתכן שיימשך עד 15 דקות כדי שהחישובים ישתנו (עקב אחסון במטמון הדפדפן "
 "שלך)."
 
-#: includes/admin-pages/settings/page-settings-generic.php:373
+#: includes/admin-pages/settings/page-settings-generic.php:363
 #: pro-features/plus/shortcode.wlt.php:147
 msgid "Carbohydrates"
 msgstr "פחמימות"
 
-#: includes/admin-pages/settings/page-settings-generic.php:376
+#: includes/admin-pages/settings/page-settings-generic.php:366
 msgid "Percentage of Carbohydrates to make up a moderate diet"
 msgstr "אחוז הפחמימות הנדרש בתזונה מתונה"
 
-#: includes/admin-pages/settings/page-settings-generic.php:380
-#: pro-features/plus/macronutrient.calculator.php:178
+#: includes/admin-pages/settings/page-settings-generic.php:370
+#: pro-features/plus/macronutrient-calculator.php:178
 msgid "Fats"
 msgstr "שומנים"
 
-#: includes/admin-pages/settings/page-settings-generic.php:383
+#: includes/admin-pages/settings/page-settings-generic.php:373
 msgid "Percentage of Fats to make up a moderate diet"
 msgstr "אחוז השומנים הנדרש בתזונה מתונה"
 
-#: includes/admin-pages/settings/page-settings-generic.php:397
+#: includes/admin-pages/settings/page-settings-generic.php:387
 msgid "Default chart type"
 msgstr "סוג התרשים המוגדר כברירת מחדל"
 
-#: includes/admin-pages/settings/page-settings-generic.php:400
+#: includes/admin-pages/settings/page-settings-generic.php:390
 msgid "Line Chart"
 msgstr "תרשים קו"
 
-#: includes/admin-pages/settings/page-settings-generic.php:400
+#: includes/admin-pages/settings/page-settings-generic.php:390
 msgid "Highly Recommended"
 msgstr "מאוד מומלץ"
 
-#: includes/admin-pages/settings/page-settings-generic.php:401
+#: includes/admin-pages/settings/page-settings-generic.php:391
 msgid "Bar Chart"
 msgstr "תרשים עמודות"
 
-#: includes/admin-pages/settings/page-settings-generic.php:404
+#: includes/admin-pages/settings/page-settings-generic.php:394
 msgid ""
 "If enabled, \"Allows points and labels to be displayed on graph. "
 "<strong>Note: If using measurements</strong>, graph type will be forced to "
@@ -1206,28 +1223,28 @@ msgstr ""
 "אם אפשרות זו זמינה, \"מתאפשר להציג נקודות ותוויות בגרף. <strong> הערה: אם "
 "נעשה שימוש במידות </strong>, סוג הגרף יאלץ להיות בשורה."
 
-#: includes/admin-pages/settings/page-settings-generic.php:409
+#: includes/admin-pages/settings/page-settings-generic.php:399
 msgid "Display gridlines?"
 msgstr "האם להציג קווי רשת?"
 
-#: includes/admin-pages/settings/page-settings-generic.php:415
+#: includes/admin-pages/settings/page-settings-generic.php:405
 msgid "If enabled, gridlines will be displayed on the Graph canvas."
 msgstr "אם מופעל, קווי רשת יוצגו ברקע הגרף."
 
-#: includes/admin-pages/settings/page-settings-generic.php:419
+#: includes/admin-pages/settings/page-settings-generic.php:409
 msgid "Maximum points per graph"
 msgstr "נקודות מרביות לכל גרף"
 
-#: includes/admin-pages/settings/page-settings-generic.php:428
-#: includes/admin-pages/settings/page-settings-generic.php:495
+#: includes/admin-pages/settings/page-settings-generic.php:418
+#: includes/admin-pages/settings/page-settings-generic.php:485
 msgid "If enabled, \"Allows points and labels to be displayed on graph."
 msgstr "אם אפשרות זו זמינה, \"מתאפשר להציג נקודות ותוויות בגרף."
 
-#: includes/admin-pages/settings/page-settings-generic.php:433
+#: includes/admin-pages/settings/page-settings-generic.php:423
 msgid "Weight colour?"
 msgstr "צבע למשקל?"
 
-#: includes/admin-pages/settings/page-settings-generic.php:436
+#: includes/admin-pages/settings/page-settings-generic.php:426
 msgid ""
 "If enabled, enter a HEX colour code to use for the Weight history line / bar "
 "border on graph."
@@ -1235,29 +1252,29 @@ msgstr ""
 "אם אפשרות זו זמינה, הזינו קוד צבע הקסדצימאלי (HEX) שישמש לגבול קו/שורת המידה "
 "של היסטוריית המשקל בגרף."
 
-#: includes/admin-pages/settings/page-settings-generic.php:440
+#: includes/admin-pages/settings/page-settings-generic.php:430
 msgid "Should y Axes start at 0?"
 msgstr "האם על הצירים להתחיל ב-0?"
 
-#: includes/admin-pages/settings/page-settings-generic.php:447
+#: includes/admin-pages/settings/page-settings-generic.php:437
 msgid ""
 "If enabled, y Axes shall start at 0. Otherwise, they are automatically "
 "calculated."
 msgstr "אם אפשרות זו זמינה, צירי y יתחילו ב-0. אחרת, הן מחושבות באופן אוטומטי."
 
-#: includes/admin-pages/settings/page-settings-generic.php:451
+#: includes/admin-pages/settings/page-settings-generic.php:441
 msgid "Text colour"
 msgstr "צבע הטקסט"
 
-#: includes/admin-pages/settings/page-settings-generic.php:454
+#: includes/admin-pages/settings/page-settings-generic.php:444
 msgid "Enter a HEX colour code to use for text displayed on the graph."
 msgstr "הזינו קוד צבע הקסדצימאלי לשימוש במלל המוצג בגרף."
 
-#: includes/admin-pages/settings/page-settings-generic.php:458
+#: includes/admin-pages/settings/page-settings-generic.php:448
 msgid "Font Family"
 msgstr "סוג הגופנים (פונטים)"
 
-#: includes/admin-pages/settings/page-settings-generic.php:461
+#: includes/admin-pages/settings/page-settings-generic.php:451
 msgid ""
 "Specify one or more fonts that should be used when rendering text on the "
 "graph. Separate multiple fonts with a comma. Leave blank to use the default."
@@ -1265,52 +1282,52 @@ msgstr ""
 "ציין גופן אחד או יותר שיש להשתמש בו בעת עיבוד טקסט בגרף. הפרד גופנים מרובים "
 "באמצעות פסיק. השאר ריק כדי להשתמש בברירת המחדל."
 
-#: includes/admin-pages/settings/page-settings-generic.php:466
+#: includes/admin-pages/settings/page-settings-generic.php:456
 msgid "Line Chart Options"
 msgstr "אפשרויות תרשים קו"
 
-#: includes/admin-pages/settings/page-settings-generic.php:470
+#: includes/admin-pages/settings/page-settings-generic.php:460
 msgid "Bezier Curve?"
 msgstr "עקומת בזיר?"
 
-#: includes/admin-pages/settings/page-settings-generic.php:477
+#: includes/admin-pages/settings/page-settings-generic.php:467
 msgid "If enabled, lines between points on a line graph will be curved"
 msgstr "אם אפשרות זו זמינה, שורות בין נקודות בגרף קו יהיו מעוקלות"
 
-#: includes/admin-pages/settings/page-settings-generic.php:481
+#: includes/admin-pages/settings/page-settings-generic.php:471
 msgid "Target line colour?"
 msgstr "צבע למשקל היעד?"
 
-#: includes/admin-pages/settings/page-settings-generic.php:484
+#: includes/admin-pages/settings/page-settings-generic.php:474
 msgid ""
 "If enabled, enter a HEX colour code to use for the Target line on graph."
 msgstr "אם אפשרות זו מופעלת, הזינו קוד צבע הקסדצימאלי לשימוש בקו היעד בגרף."
 
-#: includes/admin-pages/settings/page-settings-generic.php:488
+#: includes/admin-pages/settings/page-settings-generic.php:478
 msgid "Display points on graph?"
 msgstr "האם להציג נקודות על הגרף?"
 
-#: includes/admin-pages/settings/page-settings-generic.php:499
+#: includes/admin-pages/settings/page-settings-generic.php:489
 msgid "Point thickness"
 msgstr "רוחב נקודה"
 
-#: includes/admin-pages/settings/page-settings-generic.php:508
+#: includes/admin-pages/settings/page-settings-generic.php:498
 msgid "Specifies the point thickness on a line chart."
 msgstr "מציין את רוחב הנקודה בתרשים קו."
 
-#: includes/admin-pages/settings/page-settings-generic.php:512
+#: includes/admin-pages/settings/page-settings-generic.php:502
 msgid "Add a fill under weight line?"
 msgstr "האם להוסיף מילוי תחת קו משקל?"
 
-#: includes/admin-pages/settings/page-settings-generic.php:518
+#: includes/admin-pages/settings/page-settings-generic.php:508
 msgid "If enabled, a fill colour will be added under the weight line."
 msgstr "אם אפשרות זו מופעלת, יופיע צבע מילוי מתחת לקו המשקל."
 
-#: includes/admin-pages/settings/page-settings-generic.php:522
+#: includes/admin-pages/settings/page-settings-generic.php:512
 msgid "Weight Fill Colour"
 msgstr "צבע מילוי משקל"
 
-#: includes/admin-pages/settings/page-settings-generic.php:525
+#: includes/admin-pages/settings/page-settings-generic.php:515
 msgid ""
 "If enabled, enter a HEX colour code to use for the fill colour under the "
 "weight line."
@@ -1318,38 +1335,38 @@ msgstr ""
 "אם אפשרות זו מופעלת, הזינו קוד צבע הקסדצימאלי HEX, שישמש לצבע המילוי מתחת "
 "לקו המשקל."
 
-#: includes/admin-pages/settings/page-settings-generic.php:529
+#: includes/admin-pages/settings/page-settings-generic.php:519
 msgid "Weight Fill Opacity"
 msgstr "אטימות של צבע מילוי המשקל"
 
-#: includes/admin-pages/settings/page-settings-generic.php:538
+#: includes/admin-pages/settings/page-settings-generic.php:528
 msgid "Specifies the opacity of the fill colour under the weight line."
 msgstr "מציין את האטימות של צבע המילוי מתחת לקו המשקל."
 
-#: includes/admin-pages/settings/page-settings-generic.php:543
+#: includes/admin-pages/settings/page-settings-generic.php:533
 msgid "Bar Chart Options"
 msgstr "אפשרויות תרשים עמודות"
 
-#: includes/admin-pages/settings/page-settings-generic.php:547
+#: includes/admin-pages/settings/page-settings-generic.php:537
 msgid "Weight fill colour?"
 msgstr "צבע מילוי משקל?"
 
-#: includes/admin-pages/settings/page-settings-generic.php:550
+#: includes/admin-pages/settings/page-settings-generic.php:540
 msgid ""
 "If enabled, enter a HEX colour code to use for filling the Weight bars on "
 "the graph."
 msgstr ""
 "אם אפשרות זו מופעלת, הזינו קוד צבע הקסדצימאלי HEX, למילוי עמודות המשקל בגרף."
 
-#: includes/admin-pages/settings/page-settings-generic.php:563
+#: includes/admin-pages/settings/page-settings-generic.php:553
 msgid "Enable email notifications"
 msgstr "הפעל הודעות דוא\"ל"
 
-#: includes/admin-pages/settings/page-settings-generic.php:572
+#: includes/admin-pages/settings/page-settings-generic.php:562
 msgid "Email addresses to notify"
 msgstr "כתובת הדוא\"ל לקבלת הודעות"
 
-#: includes/admin-pages/settings/page-settings-generic.php:575
+#: includes/admin-pages/settings/page-settings-generic.php:565
 msgid ""
 "Specify one or more email addresses to be notified. Seperate multiple emails "
 "with a comma."
@@ -1357,86 +1374,86 @@ msgstr ""
 "ציין כתובת דואר אלקטרוני אחת או יותר לקבלת הודעה. במידה ויש מספר כתובות, נא "
 "להפרידן עם פסיק."
 
-#: includes/admin-pages/settings/page-settings-generic.php:579
+#: includes/admin-pages/settings/page-settings-generic.php:569
 msgid "New weight / measurement entries"
 msgstr "משקל/ערכי מדידה חדשים"
 
-#: includes/admin-pages/settings/page-settings-generic.php:585
+#: includes/admin-pages/settings/page-settings-generic.php:575
 msgid ""
 "Receive notifications when a member adds a new weight / measurement entry."
 msgstr "קבל הודעות כאשר חבר מוסיף ערך משקל/מדידה חדש."
 
-#: includes/admin-pages/settings/page-settings-generic.php:589
+#: includes/admin-pages/settings/page-settings-generic.php:579
 msgid "Edited weight / measurement entries"
 msgstr "ערכי משקל/מדידה שנערכו"
 
-#: includes/admin-pages/settings/page-settings-generic.php:595
+#: includes/admin-pages/settings/page-settings-generic.php:585
 msgid ""
 "Receive notifications when a member edits an existing weight / measurement "
 "entry."
 msgstr "קבל הודעות כאשר חבר עורך ערך קיים של משקל/מדידה."
 
-#: includes/admin-pages/settings/page-settings-generic.php:599
+#: includes/admin-pages/settings/page-settings-generic.php:589
 msgid "New / updated targets"
 msgstr "יעדים חדשים/מעודכנים"
 
-#: includes/admin-pages/settings/page-settings-generic.php:605
+#: includes/admin-pages/settings/page-settings-generic.php:595
 msgid "Receive notifications when a member adds / edits their target."
 msgstr "קבל הודעות כאשר חבר מוסיף/עורך את היעד שלהם."
 
-#: includes/admin-pages/settings/page-settings-generic.php:618
+#: includes/admin-pages/settings/page-settings-generic.php:608
 msgid "Allow Measurements?"
 msgstr "אפשר למשתמשים לתעד את המדידות שלהם?"
 
-#: includes/admin-pages/settings/page-settings-generic.php:624
+#: includes/admin-pages/settings/page-settings-generic.php:614
 msgid ""
 "If enabled, a user can also add body measurements along with their weights."
 msgstr "אם מופעל, משתמש יכול גם להוסיף מדידות גוף יחד עם מדידות המשקל שלהם."
 
-#: includes/admin-pages/settings/page-settings-generic.php:628
+#: includes/admin-pages/settings/page-settings-generic.php:618
 msgid "Measurement Units"
 msgstr "יחידות מידה"
 
-#: includes/admin-pages/settings/page-settings-generic.php:631
+#: includes/admin-pages/settings/page-settings-generic.php:621
 #: pro-features/user-preferences.php:184
 msgid "Centimetres"
 msgstr "סנטימטרים"
 
-#: includes/admin-pages/settings/page-settings-generic.php:632
+#: includes/admin-pages/settings/page-settings-generic.php:622
 #: includes/core.php:76 pro-features/footable.php:61
 #: pro-features/functions.php:6 pro-features/user-preferences.php:185
 msgid "Inches"
 msgstr "אינץ'"
 
-#: includes/admin-pages/settings/page-settings-generic.php:634
+#: includes/admin-pages/settings/page-settings-generic.php:624
 msgid "Default unit for recording measurements."
 msgstr "יחידת ברירת מחדל לתיעוד מדידות."
 
-#: includes/admin-pages/settings/page-settings-generic.php:638
+#: includes/admin-pages/settings/page-settings-generic.php:628
 msgid "Measurements mandatory?"
 msgstr "האם להגדיר את תיעוד המדידות כחובה?"
 
-#: includes/admin-pages/settings/page-settings-generic.php:644
+#: includes/admin-pages/settings/page-settings-generic.php:634
 msgid "If yes, a user will be forced to complete all measurement features."
 msgstr "אם כן, על המשתמש יהיה להשלים את כל סוגי המדידה."
 
-#: includes/admin-pages/settings/page-settings-generic.php:648
+#: includes/admin-pages/settings/page-settings-generic.php:638
 msgid "Areas of measurements"
 msgstr "תחומי מדידות"
 
-#: includes/admin-pages/settings/page-settings-generic.php:670
+#: includes/admin-pages/settings/page-settings-generic.php:660
 msgid "Enable"
 msgstr "הפעל"
 
-#: includes/admin-pages/settings/page-settings-generic.php:673
+#: includes/admin-pages/settings/page-settings-generic.php:663
 msgid "Chart Colour"
 msgstr "צבע תרשים"
 
-#: includes/admin-pages/settings/page-settings-generic.php:699
+#: includes/admin-pages/settings/page-settings-generic.php:689
 msgid "Enable Gravity Forms"
 msgstr "הפעל Gravity Forms"
 
-#: includes/admin-pages/settings/page-settings-generic.php:706
+#: includes/admin-pages/settings/page-settings-generic.php:696
 msgid ""
 "Examine Gravity Form submissions for weight and measurement data. If found, "
 "create a Weight Entry for the user currently logged in."
@@ -1444,7 +1461,7 @@ msgstr ""
 "בדוק הגשות של טפסי Gravity Forms עבור נתוני משקל ומדידות נוספות. אם יימצאו, "
 "צור ערך משקל עבור המשתמש המחובר כעת."
 
-#: includes/admin-pages/settings/page-settings-generic.php:707
+#: includes/admin-pages/settings/page-settings-generic.php:697
 msgid "Read more at "
 msgstr "קרא עוד ב "
 
@@ -1577,12 +1594,12 @@ msgid "Email"
 msgstr "דואר אלקטרוני"
 
 #: includes/admin-pages/user-data/data-search-results.php:45
-#: pro-features/functions.pages.php:86
+#: pro-features/functions-pages.php:86
 msgid "No. of Entries"
 msgstr "מספר ערכי משקל/מדידה שתועדו"
 
 #: includes/admin-pages/user-data/data-search-results.php:46
-#: pro-features/functions.pages.php:90 pro-features/user-groups.php:581
+#: pro-features/functions-pages.php:90 pro-features/user-groups.php:579
 msgid "Start Weight"
 msgstr "משקל התחלה"
 
@@ -1591,7 +1608,7 @@ msgid "Recent Weight"
 msgstr "משקל אחרון"
 
 #: includes/admin-pages/user-data/data-search-results.php:48
-#: includes/core.php:283 pro-features/functions.pages.php:102
+#: includes/core.php:283 pro-features/functions-pages.php:102
 msgid "Target Weight"
 msgstr "משקל היעד"
 
@@ -1659,7 +1676,7 @@ msgid "Show 100 recent entries"
 msgstr "הצג את 100 ערכי משקל/מדידה האחרונים שתועדו"
 
 #: includes/admin-pages/user-data/data-summary.php:124
-#: pro-features/functions.pages.php:44
+#: pro-features/functions-pages.php:44
 msgid "User Search"
 msgstr "חיפוש משתמש"
 
@@ -1696,17 +1713,17 @@ msgid "Export all data"
 msgstr "ייצוא כל הנתונים"
 
 #: includes/admin-pages/user-data/data-summary.php:182
-#: pro-features/functions.pages.php:181
+#: pro-features/functions-pages.php:181
 msgid "To CSV"
 msgstr "ל-CSV"
 
 #: includes/admin-pages/user-data/data-summary.php:186
-#: pro-features/functions.pages.php:185
+#: pro-features/functions-pages.php:185
 msgid "To JSON"
 msgstr "ל-JSON"
 
 #: includes/admin-pages/user-data/data-summary.php:191
-#: pro-features/functions.pages.php:209
+#: pro-features/functions-pages.php:209
 msgid "Delete Data"
 msgstr "מחק נתונים"
 
@@ -1726,7 +1743,7 @@ msgstr "עריכת העדפות משתמש"
 msgid "to save changes to your user's settings"
 msgstr "כדי לשמור שינויים בהגדרות המשתמש שלך"
 
-#: includes/admin-pages/user-data/data-user.php:29 includes/hooks.php:175
+#: includes/admin-pages/user-data/data-user.php:29 includes/hooks.php:180
 msgid "The preferences for this user have been saved."
 msgstr "ההעדפות עבור משתמש זה נשמרו."
 
@@ -1759,7 +1776,7 @@ msgid "Please ensure the values for Proteins, Carbohydrates and Fats (within "
 msgstr "נא לוודא את הערכים עבור חלבונים, פחמימות ושומנים (בתוך "
 
 #: includes/admin-pages/user-data/data-user.php:168
-#: pro-features/plus/harris.benedict.php:278
+#: pro-features/plus/harris-benedict.php:278
 msgid "settings"
 msgstr "הגדרות"
 
@@ -1838,7 +1855,7 @@ msgstr "ייצוא ל-JSON"
 #: includes/functions.php:69 includes/functions.php:84
 #: includes/functions.php:93 includes/functions.php:99
 #: includes/functions.php:294 includes/functions.php:300
-#: includes/functions.php:557 includes/shortcode-various.php:305
+#: includes/functions.php:558 includes/shortcode-various.php:305
 #: includes/shortcode-various.php:324 pro-features/export.php:260
 #: pro-features/shortcode-stats.php:162
 msgid "lbs"
@@ -1849,12 +1866,12 @@ msgid "St"
 msgstr "סנט"
 
 #: includes/core.php:13 pro-features/ajax-handler-admin.php:60
-#: pro-features/footable.php:215
+#: pro-features/footable.php:214
 msgid "Date"
 msgstr "תאריך"
 
 #: includes/core.php:15 includes/core.php:395 pro-features/emails.php:53
-#: pro-features/export.php:264 pro-features/footable.php:263
+#: pro-features/export.php:264 pro-features/footable.php:262
 msgid "Notes"
 msgstr "הערות"
 
@@ -1867,7 +1884,7 @@ msgstr "עליך להיות מחובר (login) למערכת כדי לתעד את
 msgid "CM"
 msgstr "ס\"מ"
 
-#: includes/core.php:121 pro-features/user-groups.php:584
+#: includes/core.php:121 pro-features/user-groups.php:582
 msgid "Target"
 msgstr "יעד"
 
@@ -1996,7 +2013,7 @@ msgid "Today"
 msgstr "היום"
 
 #: includes/functions.php:84 includes/functions.php:99
-#: includes/functions.php:545 includes/shortcode-various.php:324
+#: includes/functions.php:546 includes/shortcode-various.php:324
 #: pro-features/export.php:259
 msgid "st"
 msgstr "סנטימטר"
@@ -2022,27 +2039,27 @@ msgstr "צפייה בשבוע"
 msgid "to"
 msgstr "עד"
 
-#: includes/functions.php:512
+#: includes/functions.php:513
 msgid "The plugin supports the following measurements"
 msgstr "התוסף תומך במדידות הבאות"
 
-#: includes/functions.php:652
+#: includes/functions.php:653
 msgid "Read more about calculations"
 msgstr "קריאה נוספת אודות חישובים"
 
-#: includes/functions.php:686
+#: includes/functions.php:687
 msgid "Your modifications have been saved"
 msgstr "השינויים שלך נשמרו"
 
-#: includes/functions.php:704
+#: includes/functions.php:705
 msgid "Login now"
 msgstr "יש להתחבר כעת"
 
-#: includes/functions.php:889
+#: includes/functions.php:890
 msgid "Upgrade Weight Tracker and get more features!"
 msgstr "שדרוג מנהל מעקב אחר משקל, כדי לקבל תכונות נוספות!"
 
-#: includes/functions.php:891
+#: includes/functions.php:892
 msgid ""
 "Upgrade to the latest Pro or Pro Plus version of this plugin to manipulate "
 "your user's data, add custom fields, BMR, Macro Nutrients and much more!"
@@ -2051,136 +2068,136 @@ msgstr ""
 "המשתמש שלך, להוסיף שדות מותאמים אישית, BMR, חומרים מזינים מאקרונוטריינטים "
 "ועוד הרבה יותר!"
 
-#: includes/functions.php:892
+#: includes/functions.php:893
 msgid "Read more and Upgrade to Pro / Pro Plus Version"
 msgstr "קריאת פרטים נוספים, ושדרוג לגרסה Pro או Pro Plus"
 
-#: includes/globals.php:160 pro-features/footable.php:231
+#: includes/globals.php:120 pro-features/footable.php:230
 msgid "Forearm - Left"
 msgstr "אמה שמאלית"
 
-#: includes/globals.php:160 pro-features/footable.php:231
+#: includes/globals.php:120 pro-features/footable.php:230
 msgid "FL"
 msgstr "א\"ש"
 
-#: includes/globals.php:161 pro-features/footable.php:232
+#: includes/globals.php:121 pro-features/footable.php:231
 msgid "Forearm - Right"
 msgstr "אמה ימנית"
 
-#: includes/globals.php:161 pro-features/footable.php:232
+#: includes/globals.php:121 pro-features/footable.php:231
 msgid "FR"
 msgstr "א\"י"
 
-#: includes/globals.php:162 pro-features/footable.php:233
+#: includes/globals.php:122 pro-features/footable.php:232
 msgid "Biceps - Left"
 msgstr "זרוע שמאלית"
 
-#: includes/globals.php:162 pro-features/footable.php:233
+#: includes/globals.php:122 pro-features/footable.php:232
 msgid "BL"
 msgstr "ז\"ש"
 
-#: includes/globals.php:163 pro-features/footable.php:234
+#: includes/globals.php:123 pro-features/footable.php:233
 msgid "Biceps - Right"
 msgstr "זרוע ימנית"
 
-#: includes/globals.php:163 pro-features/footable.php:234
+#: includes/globals.php:123 pro-features/footable.php:233
 msgid "BR"
 msgstr "ז\"י"
 
-#: includes/globals.php:164 pro-features/footable.php:235
+#: includes/globals.php:124 pro-features/footable.php:234
 msgid "Calf - Left"
 msgstr "שריר התאומים השמאלי"
 
-#: includes/globals.php:164 pro-features/footable.php:235
+#: includes/globals.php:124 pro-features/footable.php:234
 msgid "CL"
 msgstr "שת\"ש"
 
-#: includes/globals.php:165 pro-features/footable.php:236
+#: includes/globals.php:125 pro-features/footable.php:235
 msgid "Calf - Right"
 msgstr "שריר התאומים הימני"
 
-#: includes/globals.php:165 pro-features/footable.php:236
+#: includes/globals.php:125 pro-features/footable.php:235
 msgid "CR"
 msgstr "שת\"י"
 
-#: includes/globals.php:166 pro-features/footable.php:237
+#: includes/globals.php:126 pro-features/footable.php:236
 msgid "Thigh - Left"
 msgstr "ירך שמאלית"
 
-#: includes/globals.php:166 pro-features/footable.php:237
+#: includes/globals.php:126 pro-features/footable.php:236
 msgid "TL"
 msgstr "י\"ש"
 
-#: includes/globals.php:167 pro-features/footable.php:238
+#: includes/globals.php:127 pro-features/footable.php:237
 msgid "Thigh - Right"
 msgstr "ירך ימנית"
 
-#: includes/globals.php:167 pro-features/footable.php:238
+#: includes/globals.php:127 pro-features/footable.php:237
 msgid "TR"
 msgstr "י\"י"
 
-#: includes/globals.php:168 pro-features/footable.php:239
+#: includes/globals.php:128 pro-features/footable.php:238
 msgid "Waist"
 msgstr "מותניים"
 
-#: includes/globals.php:168 pro-features/footable.php:239
+#: includes/globals.php:128 pro-features/footable.php:238
 msgid "W"
 msgstr "מ"
 
-#: includes/globals.php:169 pro-features/footable.php:240
+#: includes/globals.php:129 pro-features/footable.php:239
 msgid "Bust / Chest"
 msgstr "חזה"
 
-#: includes/globals.php:169 pro-features/footable.php:240
+#: includes/globals.php:129 pro-features/footable.php:239
 msgid "BC"
 msgstr "ח"
 
-#: includes/globals.php:170 pro-features/footable.php:241
+#: includes/globals.php:130 pro-features/footable.php:240
 msgid "Shoulders"
 msgstr "כתפיים"
 
-#: includes/globals.php:170 pro-features/footable.php:241
+#: includes/globals.php:130 pro-features/footable.php:240
 msgid "S"
 msgstr "כ"
 
-#: includes/globals.php:171 pro-features/footable.php:242
-#: pro-features/functions.pages.php:129
+#: includes/globals.php:131 pro-features/footable.php:241
+#: pro-features/functions-pages.php:129
 msgid "Height"
 msgstr "גובה"
 
-#: includes/globals.php:171 pro-features/footable.php:242
+#: includes/globals.php:131 pro-features/footable.php:241
 msgid "H"
 msgstr "ג"
 
-#: includes/globals.php:172 pro-features/footable.php:243
+#: includes/globals.php:132 pro-features/footable.php:242
 msgid "Buttocks"
 msgstr "ישבן"
 
-#: includes/globals.php:172 pro-features/footable.php:243
+#: includes/globals.php:132 pro-features/footable.php:242
 msgid "B"
 msgstr "יש"
 
-#: includes/globals.php:173 pro-features/footable.php:244
+#: includes/globals.php:133 pro-features/footable.php:243
 msgid "Hips"
 msgstr "ירכיים"
 
-#: includes/globals.php:173 pro-features/footable.php:244
+#: includes/globals.php:133 pro-features/footable.php:243
 msgid "HI"
 msgstr "יר"
 
-#: includes/globals.php:174 pro-features/footable.php:245
+#: includes/globals.php:134 pro-features/footable.php:244
 msgid "Navel"
 msgstr "טבור"
 
-#: includes/globals.php:174 pro-features/footable.php:245
+#: includes/globals.php:134 pro-features/footable.php:244
 msgid "NA"
 msgstr "לא זמין"
 
-#: includes/globals.php:175 pro-features/footable.php:246
+#: includes/globals.php:135 pro-features/footable.php:245
 msgid "Neck"
 msgstr "צוואר"
 
-#: includes/globals.php:175 pro-features/footable.php:246
+#: includes/globals.php:135 pro-features/footable.php:245
 msgid "NE"
 msgstr "צ"
 
@@ -2192,15 +2209,15 @@ msgstr "ניהול נתוני משתמש"
 msgid "Your License"
 msgstr "הרישיון שלך"
 
-#: includes/hooks.php:16 pro-features/functions.pages.php:190
+#: includes/hooks.php:16 pro-features/functions-pages.php:190
 msgid "Settings"
 msgstr "הגדרות"
 
-#: includes/hooks.php:17
+#: includes/hooks.php:22
 msgid "Help & Log"
 msgstr "עזרה ותיעוד"
 
-#: includes/hooks.php:176
+#: includes/hooks.php:181
 msgid "An error occurred while trying to save the user's preferences."
 msgstr "אירעה שגיאה בעת ניסיון לשמור את העדפות המשתמש."
 
@@ -2237,8 +2254,8 @@ msgstr "לא נראה שרשיון זה מיועד לאתר זה (אין התא�
 msgid "This license has expired."
 msgstr "רשיון זה פג."
 
-#: includes/license.php:300 pro-features/user-groups.php:112
-#: pro-features/user-groups.php:167 pro-features/user-groups.php:406
+#: includes/license.php:300 pro-features/user-groups.php:110
+#: pro-features/user-groups.php:165 pro-features/user-groups.php:404
 msgid "None"
 msgstr "אין"
 
@@ -2266,7 +2283,28 @@ msgstr "לא צוין משתמש (hash)"
 msgid "No user specified"
 msgstr "לא צוין משתמש"
 
-#: includes/shortcode-various.php:106 pro-features/functions.pages.php:108
+#: includes/setup-wizard.php:16
+msgid "Welcome to"
+msgstr ""
+
+#: includes/setup-wizard.php:18
+msgid "You're almost there, but a wizard might help you setup the plugin"
+msgstr ""
+
+#: includes/setup-wizard.php:86
+msgid ""
+"If require plugin modifications to Weight Tracker, or need a new plugin "
+"built, or perhaps you need a developer to help you with your website then "
+"please don't hesitiate get in touch!"
+msgstr ""
+"אם נדרש שינויים בתוסף מעקב משקל, או צריך תוסף חדש בנוי, או אולי אתה צריך "
+"מפתח כדי לעזור לך עם אתר האינטרנט שלך אז בבקשה אל תהסס להיות איתנו בקשר!"
+
+#: includes/setup-wizard.php:87
+msgid "We provide fixed priced quotes."
+msgstr "אנו מספקים ציטוטים במחיר קבוע."
+
+#: includes/shortcode-various.php:106 pro-features/functions-pages.php:108
 msgid "No target set"
 msgstr "לא הוגדר יעד"
 
@@ -2313,7 +2351,7 @@ msgid "View BMI, BMR and suggested Calorie and Macronutrient intake"
 msgstr "הצגת BMI, BMR, צריכת קלוריות מוצעת, ומאקרונוטריינטים"
 
 #: includes/shortcode-weight-loss-tracker.php:108
-#: pro-features/functions.pages.php:194 pro-features/user-preferences.php:170
+#: pro-features/functions-pages.php:194 pro-features/user-preferences.php:170
 msgid "Preferences"
 msgstr "העדפות"
 
@@ -2710,150 +2748,150 @@ msgstr "ס\"מ"
 msgid "First entry"
 msgstr "ערך ראשון"
 
-#: pro-features/footable.php:209 pro-features/user-groups.php:579
+#: pro-features/footable.php:208 pro-features/user-groups.php:577
 msgid "User"
 msgstr "משתמש"
 
-#: pro-features/footable.php:217 pro-features/user-groups.php:583
+#: pro-features/footable.php:216 pro-features/user-groups.php:581
 msgid "Difference"
 msgstr "הבדל"
 
-#: pro-features/footable.php:221
+#: pro-features/footable.php:220
 msgid "Body Mass Index"
 msgstr "מדד מסת הגוף (BMI)"
 
-#: pro-features/footable.php:296 pro-features/plus/awards/hooks.php:294
+#: pro-features/footable.php:295 pro-features/plus/awards/hooks.php:294
 msgid "Add"
 msgstr "הוספה"
 
-#: pro-features/footable.php:297
+#: pro-features/footable.php:296
 msgid "Add Custom Field"
 msgstr "מיפוי שדות מותאמים אישית"
 
-#: pro-features/footable.php:298
+#: pro-features/footable.php:297
 msgid "Add Award"
 msgstr "הוסף פרס"
 
-#: pro-features/footable.php:299
+#: pro-features/footable.php:298
 msgid "Are you sure you want to delete the row?"
 msgstr "האם בטוח שברצונך למחוק את השורה?"
 
-#: pro-features/footable.php:300
+#: pro-features/footable.php:299
 msgid "Unfortunately there was an error deleting the row."
 msgstr "למרבה הצער, אירעה שגיאה במחיקת השורה."
 
-#: pro-features/footable.php:301
+#: pro-features/footable.php:300
 msgid "Search"
 msgstr "חיפוש"
 
-#: pro-features/footable.php:302
+#: pro-features/footable.php:301
 msgid "No data found"
 msgstr "לא נמצאו נתונים"
 
-#: pro-features/functions.pages.php:11
+#: pro-features/functions-pages.php:11
 msgid ""
 "Enter a user's email address, display name or username and click Search."
 msgstr ""
 "הזן את כתובת הדואר האלקטרוני של המשתמש, שם התצוגה או שם המשתמש ולחץ על "
 "Search (חיפוש)."
 
-#: pro-features/functions.pages.php:52
+#: pro-features/functions-pages.php:52
 msgid "Most Recent Photo"
 msgstr "התמונה העדכנית ביותר"
 
-#: pro-features/functions.pages.php:63
+#: pro-features/functions-pages.php:63
 msgid "No. of photos: "
 msgstr "מספר התמונות: "
 
-#: pro-features/functions.pages.php:66
+#: pro-features/functions-pages.php:66
 msgid "View all"
 msgstr "הצג הכל"
 
-#: pro-features/functions.pages.php:78
+#: pro-features/functions-pages.php:78
 msgid "User Information"
 msgstr "פרטי משתמש"
 
-#: pro-features/functions.pages.php:94 pro-features/user-groups.php:582
+#: pro-features/functions-pages.php:94 pro-features/user-groups.php:580
 msgid "Latest Weight"
 msgstr "המשקל העדכני ביותר"
 
-#: pro-features/functions.pages.php:98
+#: pro-features/functions-pages.php:98
 msgid "Diff. from Start"
 msgstr "הפרש מההתחלה"
 
-#: pro-features/functions.pages.php:114
+#: pro-features/functions-pages.php:114
 msgid "Diff. from Target"
 msgstr "נשאר עד ליעד"
 
-#: pro-features/functions.pages.php:118
+#: pro-features/functions-pages.php:118
 msgid "Current BMI"
 msgstr "ה-BMI הנוכחי"
 
-#: pro-features/functions.pages.php:119
+#: pro-features/functions-pages.php:119
 msgid "No height specified"
 msgstr "לא צוין גובה"
 
-#: pro-features/functions.pages.php:125
+#: pro-features/functions-pages.php:125
 msgid "Aim"
 msgstr "מטרה"
 
-#: pro-features/functions.pages.php:133
+#: pro-features/functions-pages.php:133
 msgid "Gender"
 msgstr "מין"
 
-#: pro-features/functions.pages.php:137
+#: pro-features/functions-pages.php:137
 msgid "Activity Level"
 msgstr "רמת פעילות"
 
-#: pro-features/functions.pages.php:141
+#: pro-features/functions-pages.php:141
 msgid "Date of Birth"
 msgstr "תאריך לידה"
 
-#: pro-features/functions.pages.php:145
+#: pro-features/functions-pages.php:145
 msgid "BMR"
 msgstr "BMR (קצב מטבולי בזאלי)"
 
-#: pro-features/functions.pages.php:150
+#: pro-features/functions-pages.php:150
 msgid "Missing data"
 msgstr "נתונים חסרים"
 
-#: pro-features/functions.pages.php:164 pro-features/functions.pages.php:168
+#: pro-features/functions-pages.php:164 pro-features/functions-pages.php:168
 msgid "Add Entry"
 msgstr "הוסף רשומה"
 
-#: pro-features/functions.pages.php:172
+#: pro-features/functions-pages.php:172
 msgid "Edit Target"
 msgstr "עריכת יעד"
 
-#: pro-features/functions.pages.php:177
+#: pro-features/functions-pages.php:177
 msgid "Export Data"
 msgstr "ייבוא מידע"
 
-#: pro-features/functions.pages.php:200
+#: pro-features/functions-pages.php:200
 msgid "Delete Cache"
 msgstr "מחיקת מטמון"
 
-#: pro-features/functions.pages.php:204
+#: pro-features/functions-pages.php:204
 msgid "Delete Cache for this user"
 msgstr "מחיקת מטמון עבור משתמש זה"
 
-#: pro-features/functions.pages.php:213
+#: pro-features/functions-pages.php:213
 msgid "Delete ALL data for this user"
 msgstr "מחיקת כל הנתונים עבור משתמש זה"
 
-#: pro-features/functions.pages.php:220
+#: pro-features/functions-pages.php:220
 msgid "Are you sure you wish to remove the data for this user?"
 msgstr "האם בטוח שברצונך להסיר את הנתונים עבור משתמש זה?"
 
-#: pro-features/functions.pages.php:296
+#: pro-features/functions-pages.php:296
 msgid "Back"
 msgstr "חזור"
 
-#: pro-features/functions.pages.php:298
+#: pro-features/functions-pages.php:298
 msgid "WordPress Record"
 msgstr "הקלטת וורדפרס"
 
-#: pro-features/functions.pages.php:299
+#: pro-features/functions-pages.php:300
 msgid "Weight Tracker Record"
 msgstr "רשומת מנהל מעקב אחר משקל"
 
@@ -2881,11 +2919,11 @@ msgstr "עודף משקל"
 msgid "Heavily Overweight"
 msgstr "השמנת יתר"
 
-#: pro-features/functions.php:247 pro-features/plus/harris.benedict.php:273
+#: pro-features/functions.php:247 pro-features/plus/harris-benedict.php:273
 msgid "Female"
 msgstr "נקבה"
 
-#: pro-features/functions.php:248 pro-features/plus/harris.benedict.php:273
+#: pro-features/functions.php:248 pro-features/plus/harris-benedict.php:273
 msgid "Male"
 msgstr "זכר"
 
@@ -2958,8 +2996,8 @@ msgid "Weight change as a percentage"
 msgstr "שינוי משקל באחוזים"
 
 #: pro-features/plus/awards/functions.php:60
-#: pro-features/plus/harris.benedict.php:69
-#: pro-features/plus/macronutrient.calculator.php:311
+#: pro-features/plus/harris-benedict.php:69
+#: pro-features/plus/macronutrient-calculator.php:311
 msgid "Gain"
 msgstr "עלייה"
 
@@ -3017,22 +3055,22 @@ msgstr "לא צוין גובה"
 msgid "No Weight entered"
 msgstr "לא הוזן משקל"
 
-#: pro-features/plus/harris.benedict.php:36
-#: pro-features/plus/macronutrient.calculator.php:311
+#: pro-features/plus/harris-benedict.php:36
+#: pro-features/plus/macronutrient-calculator.php:311
 msgid "Maintain"
 msgstr "לשמור"
 
-#: pro-features/plus/harris.benedict.php:58
-#: pro-features/plus/macronutrient.calculator.php:311
+#: pro-features/plus/harris-benedict.php:58
+#: pro-features/plus/macronutrient-calculator.php:311
 msgid "Lose"
 msgstr "להוריד"
 
-#: pro-features/plus/harris.benedict.php:116
-#: pro-features/plus/harris.benedict.php:198
-#: pro-features/plus/harris.benedict.php:242
-#: pro-features/plus/macronutrient.calculator.php:99
-#: pro-features/plus/macronutrient.calculator.php:207
-#: pro-features/plus/macronutrient.calculator.php:253
+#: pro-features/plus/harris-benedict.php:116
+#: pro-features/plus/harris-benedict.php:198
+#: pro-features/plus/harris-benedict.php:242
+#: pro-features/plus/macronutrient-calculator.php:99
+#: pro-features/plus/macronutrient-calculator.php:207
+#: pro-features/plus/macronutrient-calculator.php:253
 msgid ""
 "Please ensure all relevant data to calculate calorie intake has been entered "
 "i.e. Activity Level, Date of Birth, Current Weight, Gender and Height."
@@ -3040,40 +3078,40 @@ msgstr ""
 "אנא ודא שהוזנו כל הנתונים הרלבנטיים לחישוב צריכת הקלוריות, כלומר רמת פעילות, "
 "תאריך לידה, משקל נוכחי, מגדר וגובה."
 
-#: pro-features/plus/harris.benedict.php:133
-#: pro-features/plus/macronutrient.calculator.php:128
+#: pro-features/plus/harris-benedict.php:133
+#: pro-features/plus/macronutrient-calculator.php:128
 msgid "Total"
 msgstr "סה\"כ"
 
-#: pro-features/plus/harris.benedict.php:134
-#: pro-features/plus/macronutrient.calculator.php:129
+#: pro-features/plus/harris-benedict.php:134
+#: pro-features/plus/macronutrient-calculator.php:129
 msgid "Breakfast"
 msgstr "ארוחת בוקר"
 
-#: pro-features/plus/harris.benedict.php:135
-#: pro-features/plus/macronutrient.calculator.php:130
+#: pro-features/plus/harris-benedict.php:135
+#: pro-features/plus/macronutrient-calculator.php:130
 msgid "Lunch"
 msgstr "ארוחת צהריים"
 
-#: pro-features/plus/harris.benedict.php:136
-#: pro-features/plus/macronutrient.calculator.php:131
+#: pro-features/plus/harris-benedict.php:136
+#: pro-features/plus/macronutrient-calculator.php:131
 msgid "Dinner"
 msgstr "ארוחת ערב"
 
-#: pro-features/plus/harris.benedict.php:137
-#: pro-features/plus/macronutrient.calculator.php:132
+#: pro-features/plus/harris-benedict.php:137
+#: pro-features/plus/macronutrient-calculator.php:132
 msgid "Snacks"
 msgstr "חטיפים"
 
-#: pro-features/plus/harris.benedict.php:274
+#: pro-features/plus/harris-benedict.php:274
 msgid "calories for weight loss are capped at "
 msgstr "קלוריות לשם ירידה במשקל יהיו "
 
-#: pro-features/plus/harris.benedict.php:276
+#: pro-features/plus/harris-benedict.php:276
 msgid "This can be modified within "
 msgstr "ניתן לשנות זאת תוך "
 
-#: pro-features/plus/macronutrient.calculator.php:161
+#: pro-features/plus/macronutrient-calculator.php:161
 msgid "Carbs"
 msgstr "פחמימות"
 
@@ -3097,27 +3135,27 @@ msgstr "האם הקפדת היום על התוכנית התזונתית שלך?"
 msgid "Diet"
 msgstr "דיאטה"
 
-#: pro-features/plus/meta-fields/functions.photos.php:127
+#: pro-features/plus/meta-fields/functions-photos.php:127
 msgid "The user "
 msgstr "המשתמש/ת "
 
-#: pro-features/plus/meta-fields/functions.photos.php:127
+#: pro-features/plus/meta-fields/functions-photos.php:127
 msgid "uploaded this photo of them for their entry on the"
 msgstr "הועלתה תמונה שלהם בשביל הכניסה שלהם ב"
 
-#: pro-features/plus/meta-fields/functions.photos.php:433
+#: pro-features/plus/meta-fields/functions-photos.php:433
 msgid "Photos are only visible to you and administrators. "
 msgstr "תמונות גלויות רק לך ולמנהלי המערכת "
 
-#: pro-features/plus/meta-fields/functions.photos.php:434
+#: pro-features/plus/meta-fields/functions-photos.php:434
 msgid "Photos must be under"
 msgstr "על התמונות להיות מתחת ל"
 
-#: pro-features/plus/meta-fields/functions.photos.php:434
+#: pro-features/plus/meta-fields/functions-photos.php:434
 msgid "or they will silently fail to upload."
 msgstr "או שלא ניתן יהיה להעלותן."
 
-#: pro-features/plus/meta-fields/functions.photos.php:435
+#: pro-features/plus/meta-fields/functions-photos.php:435
 msgid "A note about photos"
 msgstr "הערה על תמונות"
 
@@ -3157,11 +3195,11 @@ msgstr "תמונה קיימת"
 msgid "Key"
 msgstr "מפתח"
 
-#: pro-features/plus/photos.gallery.php:36
+#: pro-features/plus/photos-gallery.php:36
 msgid "No awards."
 msgstr "אין פרסים."
 
-#: pro-features/plus/photos.gallery.php:36
+#: pro-features/plus/photos-gallery.php:36
 msgid "It doesn't look you've uploaded any photos."
 msgstr "נראה שלא העלת תמונות."
 
@@ -3357,7 +3395,7 @@ msgstr "יש לזכור להכניס את משקלך להיום."
 msgid "Stats disabled"
 msgstr "סטטיסטיקות כובו"
 
-#: pro-features/shortcode-stats.php:34 pro-features/user-groups.php:532
+#: pro-features/shortcode-stats.php:34 pro-features/user-groups.php:530
 msgid "Name"
 msgstr "שם"
 
@@ -3393,45 +3431,45 @@ msgstr "נדרש גובה"
 msgid "Weight needed"
 msgstr "נדרש משקל"
 
-#: pro-features/user-groups.php:115 pro-features/user-groups.php:144
+#: pro-features/user-groups.php:113 pro-features/user-groups.php:142
 msgid "Group"
 msgstr "קבוצה"
 
-#: pro-features/user-groups.php:151
+#: pro-features/user-groups.php:149
 msgid "Add / remove Groups"
 msgstr "הוסף/הסר קבוצות"
 
-#: pro-features/user-groups.php:531
+#: pro-features/user-groups.php:529
 #, fuzzy
 #| msgid "Group"
 msgid "Group ID"
 msgstr "קבוצה"
 
-#: pro-features/user-groups.php:533
+#: pro-features/user-groups.php:531
 #, fuzzy
 #| msgid "User"
 msgid "No. Users"
 msgstr "משתמש"
 
-#: pro-features/user-groups.php:535
+#: pro-features/user-groups.php:533
 msgid "Total Weight Difference"
 msgstr "הפרש משקל כולל"
 
-#: pro-features/user-groups.php:578
+#: pro-features/user-groups.php:576
 msgid "ID"
 msgstr "מזהה"
 
-#: pro-features/user-groups.php:580
+#: pro-features/user-groups.php:578
 #, fuzzy
 #| msgid "No. of Entries"
 msgid "No. Entries"
 msgstr "מספר ערכי משקל/מדידה שתועדו"
 
-#: pro-features/user-groups.php:688
+#: pro-features/user-groups.php:686
 msgid "Group ID not found"
 msgstr "מזהה קבוצה (ID) לא נמצא"
 
-#: pro-features/user-groups.php:700
+#: pro-features/user-groups.php:698
 msgid "No Group"
 msgstr "ללא קבוצה"
 
@@ -3539,6 +3577,11 @@ msgstr "מנהל מעקב משקל - תרשים"
 #: pro-features/widget-chart.php:13
 msgid "Display a chart to see your current progress."
 msgstr "הצג תרשים כדי לראות את ההתקדמות הנוכחית שלך."
+
+#. Plugin Name of the plugin/theme
+#: pro-features/widget-chart.php:17
+msgid "Weight Tracker"
+msgstr "מנהל מעקב משקל"
 
 #: pro-features/widget-chart.php:74
 msgid "A pretty graph shall appear once you have recorded several weights."
@@ -3688,6 +3731,19 @@ msgstr "YeKen"
 msgid "https://www.YeKen.uk"
 msgstr "https://www.YeKen.uk"
 
+#~ msgid "Send usage data to YeKen?"
+#~ msgstr "לשלוח מידע על השימוש ל-YeKen?"
+
+#~ msgid ""
+#~ "We would love to see how our plugin is used. By consenting, you are "
+#~ "allowing permission for the following data to be sent on a weekly basis "
+#~ "to YeKen: URL, summary of settings, count of recorded weights and "
+#~ "measurements. No user or admin data will ever be transmitted."
+#~ msgstr ""
+#~ "נשמח לראות את השימוש בפלגין שלנו. בהכמתך, אתה מאפשר ומסכים לשליחת המידע "
+#~ "הבא מדי שבוע ל YeKen:\vURL, סיכום ההגדרות, מספר המשקלים והמדידות שעודכנו. "
+#~ "מידע של משתמשים ומנהלי מערכת לא יועבר לעולם."
+
 #~ msgid "All entries"
 #~ msgstr "כל ערכי משקל/מדידה שתועדו"
 
@@ -3697,9 +3753,6 @@ msgstr "https://www.YeKen.uk"
 #, fuzzy
 #~ msgid "Allow decimal places?"
 #~ msgstr "Tillat desimaler?"
-
-#~ msgid " Instructions"
-#~ msgstr " Instructions"
 
 #, fuzzy
 #~ msgid ""

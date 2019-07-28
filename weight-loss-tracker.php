@@ -177,7 +177,7 @@ defined('ABSPATH') or die('Jog on!');
     }
 
 // -----------------------------------------------------------------------------------------
-// AC: Load relevant language files (https://wpcentral.io/internationalization/)
+// AC: Load relevant language files (https://wpallinfo.com/complete-list-of-wordpress-locale-codes/)
 // -----------------------------------------------------------------------------------------
 
     function ws_ls_load_textdomain() {
