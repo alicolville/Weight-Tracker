@@ -158,6 +158,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 * Improvement: Fetch license prices from YeKen API
 * Improvement: Removed redundant admin notifications code.
+* Improvement: Added Polish translations - thanks Adam!
 
 = 7.1 =
 
