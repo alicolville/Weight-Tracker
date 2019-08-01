@@ -154,7 +154,9 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 == Changelog ==
 
-= 7.1.1 =
+= 7.1.2 =
+
+* Changed purchase links to link through to https://shop.yeken.uk
 
 = 7.1.1 =
 
