@@ -26,7 +26,7 @@ function ws_ls_advertise_pro() {
 					$entered_license = $_POST['license-key'];
 
 					// First try validating and applying a new subscription license
-					$valid_new_license = ws_ls_license_apply($entered_license);
+					$valid_new_license = ws_ls_license_apply( $entered_license, false);
 
 					// If not a new license, see if an old legacy license
 					if (true !== $valid_new_license) {

@@ -157,6 +157,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 = 7.1.2 =
 
 * Changed purchase links to link through to https://shop.yeken.uk
+* Bug fix: Don't flood help logs with license checks.
 
 = 7.1.1 =
 
