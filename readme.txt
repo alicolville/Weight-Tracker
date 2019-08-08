@@ -158,6 +158,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 * Changed purchase links to link through to https://shop.yeken.uk
 * Bug fix: Don't flood help logs with license checks.
+* Bug fix: Changed filter for measurements out of globals.php
 
 = 7.1.1 =
 

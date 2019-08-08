@@ -134,8 +134,6 @@
 		'neck' => array('title' => __('Neck', WE_LS_SLUG), 'abv' => __('NE', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#FA8072')
     );
 
-	$supported_measurements = apply_filters( 'wlt-measurements', $supported_measurements );
-
     $globals['WE_LS_MEASUREMENTS'] = json_encode($supported_measurements);
 
 	// -----------------------------------------------------------------------------------

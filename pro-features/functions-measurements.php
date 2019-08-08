@@ -8,6 +8,8 @@ function ws_ls_get_measurement_settings()
 
         $settings = json_decode(WE_LS_MEASUREMENTS, true);
 
+        $settings = apply_filters( 'wlt-measurements', $settings );
+
         // Settings specified in admin?
         if (get_option('ws-ls-measurement') != false) {
 
