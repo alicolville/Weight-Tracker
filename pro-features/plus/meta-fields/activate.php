@@ -28,7 +28,7 @@
                 mandatory int DEFAULT 1,
                 enabled int DEFAULT 1,
                 hide_from_shortcodes int DEFAULT 0,
-                system BIT DEFAULT 0,
+                `system` BIT DEFAULT 0,
                 field_type int NOT NULL,
                 sort int DEFAULT 100,
                 UNIQUE KEY id (id)
