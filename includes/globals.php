@@ -9,12 +9,11 @@
 
 	define('WE_LS_TITLE', 'Weight Tracker');
 	define('WE_LS_SLUG', 'weight-loss-tracker');
-	define('WE_LS_DATA_URL', 'https://weight.yeken.uk/wlt/plugin-info-new.json');
 	define('WE_LS_STATS_URL', 'https://weight.yeken.uk/wlt/stats.php');
 	define('WE_LS_LICENSE_TYPES_URL', 'https://weight.yeken.uk/features');
 	define('WE_LS_CALCULATIONS_URL', '	https://weight.yeken.uk/calculations/');
-	define('WE_LS_UPGRADE_TO_PRO_URL', 'https://weight.yeken.uk/get-pro/');
-	define('WE_LS_UPGRADE_TO_PRO_PLUS_URL', 'https://weight.yeken.uk/get-pro-plus/');
+	define('WE_LS_UPGRADE_TO_PRO_URL', 'https://shop.yeken.uk/product/weight-tracker-pro/');
+	define('WE_LS_UPGRADE_TO_PRO_PLUS_URL', 'https://shop.yeken.uk/product/weight-tracker-pro-plus/');
     define('WE_LS_FREE_TRIAL_URL', 'https://weight.yeken.uk/trial/');
     define('WE_LS_UPGRADE_TO_PRO_PLUS_UPGRADE_URL', 'https://weight.yeken.uk/get-pro-plus-existing-license-holders/');
     define('WE_LS_CDN_CHART_JS', 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js');
@@ -87,7 +86,6 @@
 		'WE_LS_EMAIL_NOTIFICATIONS_EDIT' => true,
 		'WE_LS_EMAIL_NOTIFICATIONS_NEW' => true,
 		'WE_LS_EMAIL_NOTIFICATIONS_TARGETS' => true,
-		'WE_LS_DISABLE_YEKEN_NOTIFICATIONS' => true,
 		'WE_LS_VIEW_EDIT_USER_PERMISSION_LEVEL' => 'manage_options', // Default to admin only being allowed to edit / view user data
         'WS_LS_CAL_CAP_MALE' => 1900,
         'WS_LS_CAL_CAP_FEMALE' => 1400,
@@ -135,8 +133,6 @@
         'navel' => array('title' => __('Navel', WE_LS_SLUG), 'abv' => __('NA', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#a28c87'),
 		'neck' => array('title' => __('Neck', WE_LS_SLUG), 'abv' => __('NE', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#FA8072')
     );
-
-	$supported_measurements = apply_filters( 'wlt-measurements', $supported_measurements );
 
     $globals['WE_LS_MEASUREMENTS'] = json_encode($supported_measurements);
 
@@ -259,12 +255,6 @@
 	// -----------------------------------------------------------------------------------
 	if (WS_LS_IS_PRO && ('yes' == get_option('ws-ls-display-bmi-in-tables') || false == get_option('ws-ls-display-bmi-in-tables'))) {
 		$globals['WE_LS_DISPLAY_BMI_IN_TABLES'] = true;
-	}
-	// -----------------------------------------------------------------------------------
-	// Disable admin notifications from YeKen
-	// -----------------------------------------------------------------------------------
-	if ('no' == get_option('ws-ls-disable-yeken-notifications')) {
-		$globals['WE_LS_DISABLE_YEKEN_NOTIFICATIONS'] = false;
 	}
 	// -----------------------------------------------------------------------------------
 	// Chart Colours

@@ -214,7 +214,7 @@ function ws_ls_meta_fields( $exclude_system = true, $ignore_cache = false ) {
 	$sql = 'Select * from ' . $wpdb->prefix . WE_LS_MYSQL_META_FIELDS;
 
     if ( true === $exclude_system ) {
-        $sql .= ' Where system = 0';
+        $sql .= ' Where `system` = 0';
     }
 
     $sql .= ' order by sort, field_name asc';

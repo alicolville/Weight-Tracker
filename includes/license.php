@@ -155,7 +155,7 @@ function ws_ls_license_type() {
 /**
 * Validate and apply a license
 **/
-function ws_ls_license_apply( $license ) {
+function ws_ls_license_apply( $license, $is_cron = true ) {
 
 	// Validate license
 	$license_result = ws_ls_license_validate($license);
@@ -164,7 +164,9 @@ function ws_ls_license_apply( $license ) {
 
 		$license_decoded = ws_ls_license_decode( $license );
 
-		ws_ls_log_add( 'license', sprintf( 'Valid License added: %s', $license ) );
+		if ( false === $is_cron ) {
+            ws_ls_log_add( 'license', sprintf( 'Valid License added: %s', $license ) );
+        }
 
 		update_option(WS_LS_LICENSE_2, $license);
 		update_option(WS_LS_LICENSE_2_TYPE, $license_decoded['type']);
@@ -173,7 +175,9 @@ function ws_ls_license_apply( $license ) {
 		return true;
 	} else {
 
-		ws_ls_log_add( 'license', sprintf( 'Removed invalid / expired license: %s', $license ) );
+        if ( false === $is_cron ) {
+            ws_ls_log_add('license', sprintf('Removed invalid / expired license: %s', $license));
+        }
 
 		// Remove relevant options from WP
 		delete_option(WS_LS_LICENSE_2);
@@ -370,4 +374,92 @@ function ws_ls_is_validate_old_pro_license($license_key_from_yeken) {
 **/
 function ws_ls_get_license() {
 	return get_option(WS_LS_LICENSE);
+}
+
+/**
+ * Fetch Pro license price
+ *
+ * @return float|null
+ */
+function ws_ls_license_pro_price() {
+
+    $price = yeken_license_price( 'pro' );
+
+    return ( false === empty( $price ) ) ? $price : WS_LS_PRO_PRICE;
+}
+
+/**
+ * Fetch Pro plus license price
+ *
+ * @return float|null
+ */
+function ws_ls_license_pro_plus_price() {
+
+    $price = yeken_license_price( 'pro-plus' );
+
+    return ( false === empty( $price ) ) ? $price : WS_LS_PRO_PLUS_PRICE;
+}
+
+if ( false === function_exists( 'yeken_license_api_fetch_licenses' ) ) {
+
+    /**
+     * Call out to YeKen API for license prices
+     */
+    function yeken_license_api_fetch_licenses() {
+
+        if ( $cache = get_transient( 'yeken_api_prices' ) ) {
+            return $cache;
+        }
+
+        $response = wp_remote_get( 'https://shop.yeken.uk/wp-json/yeken/v1/license-prices/' );
+
+        // All ok?
+        if ( 200 === wp_remote_retrieve_response_code( $response ) ) {
+
+            $body = wp_remote_retrieve_body( $response );
+
+            if ( false === empty( $body ) ) {
+
+                $body = json_decode( $body, true );
+                set_transient( 'yeken_api_prices', $body, 216000 ); // Cache for 6 hours
+
+                return $body;
+            }
+        }
+
+        return NULL;
+    }
+
+    /**
+     * Fetch a certain product price
+     * @param $sku
+     * @param string $type
+     */
+    function yeken_license_price( $sku, $type = 'yearly' ) {
+
+        $licenses = yeken_license_api_fetch_licenses();
+
+        return ( false === empty( $licenses[ $sku ][ $type ] ) ) ? $licenses[ $sku ][ $type ] : NULL;
+    }
+
+    /**
+     * Render out license prices
+     *
+     * @param $args
+     * @return mixed|string
+     */
+    function yeken_license_shortcode( $args ) {
+
+        $args = wp_parse_args( $args, [ 'sku' => 'sv-premium', 'type' => 'yearly', 'prefix' => '&pound;' ] );
+
+        $price = yeken_license_price( $args[ 'sku' ], $args[ 'type' ] );
+
+        if ( false === empty( $price ) ) {
+            return sprintf( '%s%d', esc_html(  $args[ 'prefix' ] ), $price );
+        }
+
+        return '';
+    }
+    add_shortcode( 'yeken-license-price', 'yeken_license_shortcode' );
+
 }

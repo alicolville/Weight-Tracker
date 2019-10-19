@@ -159,6 +159,22 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 * Improvement: Added Czech translations (thanks @Petr)
 * Improvement: Added hook "ws-ls-hook-user-preference-saved" for user preferences being saved.
 
+= 7.1.3 =
+
+* Bug Fix: Tweaked the SQL for building Meta fields table
+
+= 7.1.2 =
+
+* Changed purchase links to link through to https://shop.yeken.uk
+* Bug fix: Don't flood help logs with license checks.
+* Bug fix: Changed filter for measurements out of globals.php
+
+= 7.1.1 =
+
+* Improvement: Fetch license prices from YeKen API
+* Improvement: Removed redundant admin notifications code.
+* Improvement: Added Polish translations - thanks Adam!
+
 = 7.1 =
 
 * Improvement: Added setup wizard.
