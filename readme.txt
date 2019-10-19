@@ -150,7 +150,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 == Upgrade Notice ==
 
-7.1 - Added a setup wizard
+7.2 - Added Czech translations
 
 == Changelog ==
 
