@@ -59,6 +59,8 @@ function ws_ls_save_preferences_callback()
 
   	if( true == ws_ls_set_user_preferences( $in_admin_area, $fields ) ){
     	$ajax_response = 1;
+
+    	do_action( 'ws-ls-hook-user-preference-saved' );
   	}
   	echo $ajax_response;
 	wp_die();

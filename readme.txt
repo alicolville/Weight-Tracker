@@ -157,6 +157,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 = 7.2 =
 
 * Added Czech translations (thanks @Petr)
+* Added hook "ws-ls-hook-user-preference-saved" for user preferences being saved.
 
 = 7.1 =
 
