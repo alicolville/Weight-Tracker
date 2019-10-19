@@ -2,8 +2,8 @@
 Contributors: aliakro
 Tags: weight, loss, lose, tracker, bmi, bmr, macronutrient, graph, track, stones, kg, table, calories, awards, email, custom, fields, history, pounds, responsive, chart, measurements, cm, centimeters, inches, photos
 Requires at least: 4.4.9
-Tested up to: 5.1
-Stable tag: 7.1.3
+Tested up to: 5.2.2
+Stable tag: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate Link: https://www.paypal.me/yeken
@@ -150,9 +150,14 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 == Upgrade Notice ==
 
-7.1 - Added a setup wizard
+7.2 - Added Czech translations
 
 == Changelog ==
+
+= 7.2 =
+
+* Improvement: Added Czech translations (thanks @Petr)
+* Improvement: Added hook "ws-ls-hook-user-preference-saved" for user preferences being saved.
 
 = 7.1.3 =
 
