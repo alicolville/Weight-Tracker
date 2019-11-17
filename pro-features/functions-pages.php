@@ -280,14 +280,16 @@ function ws_ls_user_header($user_id, $previous_url = false) {
 
 		$previous_url = ( true === empty( $previous_url ) ) ? ws_ls_get_link_to_user_data() : $previous_url;
 
+        $additional_links = apply_filters( 'wt_ls_user_profile_header_links', '' );
+
 		echo sprintf('
 			<h3>%s %s</h3>
 			<div class="postbox ws-ls-user-data">
 				<div class="inside">
-
-					<a href="%s" class="button-secondary"><i class="fa fa-arrow-left"></i> %s</a>
-						<a href="%s" class="button-secondary"><i class="fa fa-wordpress"></i> %s</a>
-						<a href="%s" class="button-secondary"><i class="fa fa-line-chart"></i> %s</a>
+        			<a href="%s" class="button-secondary"><i class="fa fa-arrow-left"></i> %s</a>
+					<a href="%s" class="button-secondary"><i class="fa fa-wordpress"></i> %s</a>
+					<a href="%s" class="button-secondary"><i class="fa fa-line-chart"></i> %s</a>
+					%s
 				</div>
 			</div>',
 			$user_data->user_nicename,
@@ -297,7 +299,8 @@ function ws_ls_user_header($user_id, $previous_url = false) {
 			get_edit_user_link( $user_id ),
 			__('WordPress Record', WE_LS_SLUG ),
 			ws_ls_get_link_to_user_profile( $user_id ),
-			__('Weight Tracker Record', WE_LS_SLUG )
+			__('Weight Tracker Record', WE_LS_SLUG ),
+            wp_kses_post( $additional_links )
 		);
 	}
 

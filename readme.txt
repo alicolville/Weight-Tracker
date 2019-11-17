@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight, loss, lose, tracker, bmi, bmr, macronutrient, graph, track, stones, kg, table, calories, awards, email, custom, fields, history, pounds, responsive, chart, measurements, cm, centimeters, inches, photos
 Requires at least: 4.4.9
 Tested up to: 5.2.2
-Stable tag: 7.2
+Stable tag: 7.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate Link: https://www.paypal.me/yeken
@@ -150,9 +150,13 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 == Upgrade Notice ==
 
-7.2 - Added Czech translations
+7.2 - Added support for the new YeKen plugin: Meal Tracker
 
 == Changelog ==
+
+= 7.3 =
+
+* Improvement: Added a filter ( 'wt_ls_user_profile_header_links' ) to allow a user header record to be manipulated by other plugins.
 
 = 7.2 =
 
