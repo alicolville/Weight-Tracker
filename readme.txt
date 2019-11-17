@@ -157,6 +157,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 = 7.3 =
 
 * Improvement: Added a filter ( 'wt_ls_user_profile_header_links' ) to allow a user header record to be manipulated by other plugins.
+* Improvement: Hook into Meal Tracker to add a view "Weight Tracker Record" to user profile.
 
 = 7.2 =
 

@@ -83,6 +83,7 @@ defined('ABSPATH') or die('Jog on!');
         'includes/shortcode-various.php',
         'includes/save-data.php',
 	    'includes/email-manager.php',
+        'includes/meal-tracker.php',
 	    'includes/admin-pages/settings/page-settings.php',
 	    'includes/admin-pages/settings/page-settings-generic.php',
 	    'includes/admin-pages/settings/page-settings-groups.php',
