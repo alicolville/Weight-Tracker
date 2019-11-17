@@ -190,3 +190,20 @@
     }
     add_action(WE_LS_HOOK_DATA_ALL_DELETED, 'ws_ls_tidy_cache_on_delete');
     add_action(WE_LS_HOOK_DATA_USER_DELETED, 'ws_ls_tidy_cache_on_delete');
+
+
+/**
+ * Add view link alongside WP action links
+ * @param $actions
+ * @param $user_object
+ * @return mixed
+ */
+function wlt_user_action_links( $actions, $user_object ) {
+    $actions[ 'weight-tracker' ] = sprintf(  '<a href="%s">%s</a>',
+        ws_ls_get_link_to_user_profile( $user_object->ID ),
+        __( 'Weight entries', WE_LS_SLUG )
+    );
+
+    return $actions;
+}
+add_filter( 'user_row_actions', 'wlt_user_action_links', 10, 2 );

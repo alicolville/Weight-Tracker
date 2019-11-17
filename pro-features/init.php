@@ -67,10 +67,3 @@ function we_ls_register_widgets() {
     register_widget( 'ws_ls_widget_progress_bar' );
 }
 add_action( 'after_setup_theme', 'we_ls_register_widgets', 20 );
-
-
-function wlt_user_action_links($actions, $user_object) {
-    $actions['edit_badges'] = "<a href='" . ws_ls_get_link_to_user_profile($user_object->ID) . "'>" . __( 'View weight entries', WE_LS_SLUG ) . "</a>";
-    return $actions;
-}
-add_filter('user_row_actions', 'wlt_user_action_links', 10, 2);
