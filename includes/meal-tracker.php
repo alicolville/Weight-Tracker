@@ -21,7 +21,7 @@ function wlt_user_profile_add_header_link( $links ) {
         return $links;
     }
 
-    $links .= sprintf( '<a href="%1$s" class="button-secondary"><i class="fa fa-line-chart"></i> %2$s</a>',
+    $links .= sprintf( '<a href="%1$s" class="button-secondary"><i class="fa fa-line-chart"></i> <span>%2$s</span></a>',
     ws_ls_get_link_to_user_profile( get_current_user_id() ),
     __('Weight Tracker Record', WE_LS_SLUG )
     );
