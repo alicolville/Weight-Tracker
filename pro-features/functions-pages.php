@@ -280,7 +280,7 @@ function ws_ls_user_header($user_id, $previous_url = false) {
 
 		$previous_url = ( true === empty( $previous_url ) ) ? ws_ls_get_link_to_user_data() : $previous_url;
 
-        $additional_links = apply_filters( 'wt_ls_user_profile_header_links', '' );
+        $additional_links = apply_filters( 'wt_ls_user_profile_header_links', '', $user_id );
 
 		echo sprintf('
 			<h3>%s %s</h3>
