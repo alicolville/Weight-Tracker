@@ -2,8 +2,9 @@
 Contributors: aliakro
 Tags: weight, loss, lose, tracker, bmi, bmr, macronutrient, graph, track, stones, kg, table, calories, awards, email, custom, fields, history, pounds, responsive, chart, measurements, cm, centimeters, inches, photos
 Requires at least: 4.4.9
-Tested up to: 5.2.2
+Tested up to: 5.3
 Stable tag: 7.3
+Requires PHP: 7.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate Link: https://www.paypal.me/yeken
