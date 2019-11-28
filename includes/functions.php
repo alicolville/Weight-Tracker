@@ -217,63 +217,67 @@ function ws_ls_admin_check_mysql_tables_exist() {
     return false;
 }
 
-/*
-  Used to display a jQuery dialog box in the admin panel
-*/
-function ws_ls_create_dialog_jquery_code($title, $message, $class_used_to_prompt_confirmation, $js_call = false)
-{
-  	global $wp_scripts;
-  	$queryui = $wp_scripts->query('jquery-ui-core');
-  	$url = "//ajax.googleapis.com/ajax/libs/jqueryui/".$queryui->ver."/themes/smoothness/jquery-ui.css";
-  	wp_enqueue_script( 'jquery-ui-dialog' );
-  	wp_enqueue_style('jquery-ui-smoothness', $url, false, null);
-    $id_hash = md5($title . $message . $class_used_to_prompt_confirmation);
 
-    ?>
-    <div id='<?php echo $id_hash; ?>' title='<?php echo $title; ?>'>
-      <p><?php echo $message; ?></p>
-    </div>
-     <script>
-          jQuery(function($) {
-            var $info = $('#<?php echo $id_hash; ?>');
-            $info.dialog({
-                'dialogClass'   : 'wp-dialog',
-                'modal'         : true,
-                'autoOpen'      : false
-            });
-            $('.<?php echo $class_used_to_prompt_confirmation; ?>').click(function(event) {
-                event.preventDefault();
-                target_url = $(this).attr('href');
-                var $info = $('#<?php echo $id_hash; ?>');
-                $info.dialog({
-                    'dialogClass'   : 'wp-dialog',
-                    'modal'         : true,
-                    'autoOpen'      : false,
-                    'closeOnEscape' : true,
-                    'buttons'       : {
-                        'Yes': function() {
+/**
+Used to display a jQuery dialog box in the admin panel
+ */
+function ws_ls_create_dialog_jquery_code( $title, $message, $class_used_to_prompt_confirmation, $js_call = false ) {
 
-                            <?php if ($js_call != false): ?>
-                                <?php echo $js_call; ?>
+    global $wp_scripts;
 
-                                $(this).dialog('close');
-                            <?php else: ?>
-                                window.location.href = target_url;
-                            <?php endif; ?>
-                        },
-                         'No': function() {
-                            $(this).dialog('close');
-                        }
-                    }
-                });
-                $info.dialog('open');
-            });
+    $queryui = $wp_scripts->query('jquery-ui-core');
 
-        });
-      </script>
+    $url = sprintf( '//ajax.googleapis.com/ajax/libs/jqueryui/%s/themes/smoothness/jquery-ui.css', $queryui->ver );
 
-  <?php
+    wp_enqueue_script( 'jquery-ui-dialog' );
+    wp_enqueue_style('jquery-ui-smoothness', $url, false, null);
+
+    $id_hash = md5($title . $message . $class_used_to_prompt_confirmation );
+
+    printf('<div id="%1$s" title="%2$s">
+                        <p>%3$s</p>
+                    </div>
+                    <script>
+                        jQuery( function( $ ) {
+                            let $info = $( "#%1$s" );
+                            $info.dialog({
+                                "dialogClass"   : "wp-dialog",
+                                "modal"         : true,
+                                "autoOpen"      : false
+                            });
+                            
+                            $( ".%4$s" ).click( function( event ) {
+                                event.preventDefault();
+                                target_url = $( this ).attr( "href" );
+                                let  $info = $( "#%1$s" );
+                                $info.dialog({
+                                    "dialogClass"   : "wp-dialog",
+                                    "modal"         : true,
+                                    "autoOpen"      : false,
+                                    "closeOnEscape" : true,
+                                    "buttons"       : {
+                                        "Yes": function() {
+                                            %5$s
+                                        },
+                                        "No": function() {
+                                            $(this).dialog( "close" );
+                                        }
+                                    }
+                                });
+                                $info.dialog("open");
+                            });
+
+                        });
+                    </script>',
+        $id_hash,
+        esc_attr( $title ),
+        wp_kses_post( $message ),
+        esc_attr( $class_used_to_prompt_confirmation ),
+        ( true === $js_call ) ? $js_call : 'window.location.href = target_url;'
+    );
+
 }
+
 function ws_ls_render_date($weight_object, $use_admin_setting = false)
 {
 	$config_setting = ($use_admin_setting) ? WE_LS_US_DATE : ws_ls_get_config('WE_LS_US_DATE');
