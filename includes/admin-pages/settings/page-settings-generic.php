@@ -373,7 +373,30 @@ function ws_ls_settings_page_generic() {
                                                         <p><?php echo __('Percentage of Fats to make up a moderate diet', WE_LS_SLUG);?>. <?php echo ws_ls_calculations_link(); ?>. <em><?php echo __( 'Please note, it may take up to 15 minutes for calculations to change (due to caching).' , WE_LS_SLUG); ?></em></p>
                                                     </td>
                                                 </tr>
+                                            </table>
+                                            <h3><?php echo __( 'Macronutrient Calculator: Meals' , WE_LS_SLUG); ?></h3>
+                                            <table class="form-table">
+                                                <?
+                                                    foreach ( ws_ls_harris_benedict_meal_ratio_defaults() as $key => $default ) {
 
+                                                        printf( '<tr class="%1$s">
+                                                                                        <th scope="row">%2$s</th>
+                                                                                        <td>
+                                                                                            <input  type="number" step="any" min="0" max="100" name="ws-ls-meal-ratio-%3$s" id="ws-ls-meal-ratio-%3$s"  class="ws-ls-macro-meals" value="%4$d" size="3" />%%
+                                                                                            <p>%5$s %2$s. %6$s. <em>%7$s</em></p>
+                                                                                        </td>
+                                                                                    </tr>
+                                                        ',
+                                                            $disable_if_not_pro_plus_class,
+                                                            esc_html( ucfirst( $key ) ),
+                                                            $key,
+                                                            ws_ls_harris_benedict_meal_ratio_get( $key ),
+                                                            __( 'Percentage of calories to split into ', WE_LS_SLUG ),
+                                                            ws_ls_calculations_link(),
+                                                            __( 'Please note, it may take up to 15 minutes for calculations to change (due to caching).' , WE_LS_SLUG )
+                                                        );
+                                                    }
+                                                ?>
                                             </table>
                                         </div>
 										<div>
@@ -798,6 +821,7 @@ function ws_ls_register_settings(){
 
     // Pro Plus
     if ( WS_LS_IS_PRO_PLUS ) {
+
         register_setting( 'we-ls-options-group', 'ws-ls-female-cal-cap' );
         register_setting( 'we-ls-options-group', 'ws-ls-male-cal-cap' );
         register_setting( 'we-ls-options-group', 'ws-ls-cal-subtract' );
@@ -807,6 +831,10 @@ function ws_ls_register_settings(){
         register_setting( 'we-ls-options-group', 'ws-ls-macro-proteins' );
         register_setting( 'we-ls-options-group', 'ws-ls-macro-carbs' );
         register_setting( 'we-ls-options-group', 'ws-ls-macro-fats' );
+
+        foreach ( ws_ls_harris_benedict_meal_ratio_defaults() as $key => $default ) {
+            register_setting( 'we-ls-options-group', sprintf( ' ws-ls-meal-ratio-%s', $key ) );
+        }
 
     }
 
