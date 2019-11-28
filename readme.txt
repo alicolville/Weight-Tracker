@@ -151,7 +151,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 == Upgrade Notice ==
 
-7.2 - Added support for the new YeKen plugin: Meal Tracker
+7.3 - Added support for the new YeKen plugin: Meal Tracker
 
 == Changelog ==
 
@@ -160,6 +160,8 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 * Improvement: Added a filter ( 'wt_ls_user_profile_header_links' ) to allow a user header record to be manipulated by other plugins.
 * Improvement: Hook into Meal Tracker to add a view "Weight Tracker Record" to user profile.
 * Improvement: refactored function wlt_user_action_links().
+* Improvement: Some general tweaks and refactoring.
+* Bug fix: Ensure users can't enter a date that causes an age of 0.
 
 = 7.2 =
 
