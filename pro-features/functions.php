@@ -217,22 +217,21 @@ function ws_ls_get_link_to_export( $type = 'csv', $user_id = false ) {
  * @param bool $include_brackets
  * @return string
  */
-function ws_ls_get_email_link($user_id, $include_brackets = false) {
+function ws_ls_get_email_link( $user_id, $include_brackets = false ) {
 
-	if(true === is_numeric($user_id)) {
+    $user_id = ( NULL === $user_id ) ? get_current_user_id() : $user_id;
 
-		$user_data = get_userdata( $user_id );
+    $user_data = get_userdata( $user_id );
 
-		if($user_data && false === empty($user_data->user_email)) {
+    if ( true === empty($user_data->user_email) ) {
+        return '';
+    }
 
-			$html = ($include_brackets) ? '(' : '';
-			$html .= sprintf('<a href="mailto:%s">%s</a>', esc_attr($user_data->user_email), esc_html($user_data->user_email));
-			$html .= ($include_brackets) ? ')' : '';
-			return $html;
-		}
-	}
-
-	return '';
+    return sprintf('  %1$s<a href="mailto:%2$s">%2$s</a>%3$s',
+        ( $include_brackets ) ? '(' : '',
+        esc_attr( $user_data->user_email ),
+        ( $include_brackets ) ? ')' : ''
+    );
 }
 
 /**

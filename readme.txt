@@ -162,6 +162,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 * Improvement: refactored function wlt_user_action_links().
 * Improvement: Refactored dialog function.
 * Improvement: Some general tweaks and refactoring.
+* Improvement: Refactored function yk_mt_link_email_for_user();
 * Bug fix: Ensure users can't enter a date that causes an age of 0.
 
 = 7.2 =
