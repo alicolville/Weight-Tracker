@@ -1,26 +1,38 @@
 //
 // To compress this script, use https://jscompress.com
 //
-jQuery( document ).ready(function ($) {
+jQuery( document ).ready( function ( $ ) {
 
-    $(".we-ls-datepicker, .we-ls-datepicker-plain").each(function() {
-        var options = {
-            changeMonth: true,
-            changeYear: true,
-            yearRange: "-100:+0",
-            dateFormat: ws_ls_config["date-format"],
-            showButtonPanel: true,
-            closeText: ws_ls_config["date-picker-locale"]["closeText"],
-            currentText: ws_ls_config["date-picker-locale"]["currentText"],
-            monthNames: ws_ls_config["date-picker-locale"]["monthNames"],
-            monthNamesShort: ws_ls_config["date-picker-locale"]["monthNamesShort"],
-            dayNames: ws_ls_config["date-picker-locale"]["dayNames"],
-            dayNamesShort: ws_ls_config["date-picker-locale"]["dayNamesShort"],
-            dayNamesMin: ws_ls_config["date-picker-locale"]["dayNamesMin"],
-            firstDay: ws_ls_config["date-picker-locale"]["firstDay"]
+    /**
+     * Initiate Date pickers
+     */
+    $( '.we-ls-datepicker, .we-ls-datepicker-plain' ).each( function() {
+
+        let is_dob_field    = $( this ).hasClass( 'ws-ls-dob-field' );
+        let year_range      = ( true === is_dob_field ) ? '-100:-1' : '-100:+0';
+
+        let options = {
+            changeMonth         : true,
+            changeYear          : true,
+            yearRange           : year_range,
+            dateFormat          : ws_ls_config[ 'date-format' ],
+            showButtonPanel     : true,
+            closeText           : ws_ls_config[ 'date-picker-locale' ][ 'closeText' ],
+            currentText         : ws_ls_config[ 'date-picker-locale' ][ 'currentText' ],
+            monthNames          : ws_ls_config[ 'date-picker-locale' ][ 'monthNames' ],
+            monthNamesShort     : ws_ls_config[ 'date-picker-locale' ][ 'monthNamesShort' ],
+            dayNames            : ws_ls_config[ 'date-picker-locale' ][ 'dayNames' ],
+            dayNamesShort       : ws_ls_config[ 'date-picker-locale' ][ 'dayNamesShort' ],
+            dayNamesMin         : ws_ls_config[ 'date-picker-locale' ][ 'dayNamesMin' ],
+            firstDay            : ws_ls_config[ 'date-picker-locale' ][ 'firstDay' ]
         };
 
-        $(this).datepicker(options);
+        // Default the date to something that isn't this year for DoB
+        if( true === is_dob_field ) {
+            options[ 'defaultDate' ] = new Date( 90, 0, 1 );
+        }
+
+        $( this ).datepicker( options );
     });
 
     $.validator.addMethod('filesize', function(value, element, param) {
