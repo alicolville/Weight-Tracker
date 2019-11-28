@@ -153,9 +153,12 @@ function ws_ls_user_preferences_form( $user_defined_arguments )
 
     $dob = ws_ls_get_dob_for_display( $user_id );
 
-    $html_output .= '<label>' . $labels['dob'] . '</label>
-                    <input type="text" name="ws-ls-dob" tabindex="' . ws_ls_get_next_tab_index() . '" id="ws-ls-dob" value="' . esc_attr( $dob ) . '" size="22" class="we-ls-datepicker ws-ls-aboutyou-field">
-                    ';
+    $html_output .= sprintf( '  <label>%1$s</label>
+                                        <input type="text" id="ws-ls-dob"  name="ws-ls-dob" tabindex="%2$d" value="%3$s" size="22" class="we-ls-datepicker ws-ls-dob-field ws-ls-aboutyou-field">',
+                                        esc_html( $labels['dob'] ),
+                                        ws_ls_get_next_tab_index(),
+                                        esc_attr( $dob )
+    );
 
 	//-------------------------------------------------------
 	// Extra
