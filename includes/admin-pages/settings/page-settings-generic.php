@@ -376,7 +376,7 @@ function ws_ls_settings_page_generic() {
                                             </table>
                                             <h3><?php echo __( 'Macronutrient Calculator: Meals' , WE_LS_SLUG); ?></h3>
                                             <table class="form-table">
-                                                <?
+                                                <?php
                                                     foreach ( ws_ls_harris_benedict_meal_ratio_defaults() as $key => $default ) {
 
                                                         printf( '<tr class="%1$s">
