@@ -19,22 +19,44 @@ jQuery( document ).ready(function ($) {
         });
     }
 
-    // 100% Validation for Macronutrients
+    /*
+        Ensure the ratio for MacroN equals 100%
+     */
     $('.ws-ls-macro').focus(function() {
-        prev_val = $(this).val();
+        prev_val = $( this ).val();
     }).change(function() {
 
         event.preventDefault();
-        var updated_id = this.id;
 
         var sum = 0;
-        $('.ws-ls-macro').each(function(){
-            sum += parseInt(this.value);
+        $( '.ws-ls-macro' ).each( function(){
+            sum += parseInt( this.value );
         });
 
         if(sum > 100 || sum < 0) {
-            $(this).val(prev_val);
-            alert('Please ensure the total of these three fields is greater than 0% and less than 100%');
+            $( this ).val( prev_val );
+            alert( 'Please ensure the total of the Macronutrient fields is greater than 0% and less than 100% ');
+        }
+    });
+
+    /*
+        Ensure the ratio of meals for MacroN equals 100%
+     */
+    $( '.ws-ls-macro-meals' ).focus(function() {
+        prev_val = $( this ).val();
+    }).change(function() {
+
+        event.preventDefault();
+
+        var sum = 0;
+
+        $( '.ws-ls-macro-meals' ).each( function(){
+            sum += parseInt( this.value );
+        });
+
+        if( sum > 100 || sum < 0 ) {
+            $( this ).val( prev_val );
+            alert( 'Please ensure the total of the Macronutrient Meals fields is greater than 0% and less than 100% ');
         }
     });
 

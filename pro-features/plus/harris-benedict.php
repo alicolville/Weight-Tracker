@@ -78,25 +78,64 @@ function ws_ls_harris_benedict_calculate_calories($user_id = false) {
 	// Allow all calorie totals to be replaced or add additional rows.
 	$calorie_intake = apply_filters( 'wlt-filter-calories-pre', $calorie_intake, $bmr, $activity_level, $calories_to_lose, $calories_to_gain );
 
+    $meal_ratios = ws_ls_harris_benedict_meal_ratio_defaults();
+
 	// Breakdown calories into meal types
 	foreach ($calorie_intake as $key => $data) {
 
-		$calc_figure = $calorie_intake[$key]['total'] / 100;
+		$calc_figure = $calorie_intake[ $key ][ 'total' ] / 100;
 
-		$calorie_intake[$key]['breakfast'] = $calc_figure * 20;
-		$calorie_intake[$key]['lunch'] = $calc_figure * 30;
-		$calorie_intake[$key]['dinner'] = $calc_figure * 30;
-		$calorie_intake[$key]['snacks'] = $calc_figure * 20;
+        foreach ( $meal_ratios as $meal => $default ) {
+            $calorie_intake[ $key ][ $meal ]  = $calc_figure * ws_ls_harris_benedict_meal_ratio_get( $meal );
+		}
 
-		$calorie_intake[$key] = array_map('ws_ls_round_bmr_harris', $calorie_intake[$key]);
+		$calorie_intake[ $key ] = array_map('ws_ls_round_bmr_harris', $calorie_intake[$key]);
 	}
 
-	$calorie_intake = apply_filters(WE_LS_FILTER_HARRIS, $calorie_intake, $user_id);
+	$calorie_intake = apply_filters( WE_LS_FILTER_HARRIS, $calorie_intake, $user_id );
 
 	// Cache it!
 	ws_ls_set_cache($cache_key, $calorie_intake);
 
 	return $calorie_intake;
+
+}
+
+/**
+ * Fetch a meal ratio from site options. If it doesn't exist, apply the default.
+ * @param $meal
+ * @return int
+ */
+function ws_ls_harris_benedict_meal_ratio_get( $meal ) {
+
+    $meal_ratios = ws_ls_harris_benedict_meal_ratio_defaults();
+
+    // Does this meal type exist?
+    if ( true === array_key_exists( $meal, $meal_ratios ) ) {
+
+        // See if we have a saved value, if not, apply default
+        $default = (int) $meal_ratios[ $meal ];
+
+        return get_option( 'ws-ls-meal-ratio-' . $meal, $default );
+    }
+
+    return 0;   // This is ERROR.
+}
+
+/**
+ * Return default rations for meals
+ * @return mixed
+ */
+function ws_ls_harris_benedict_meal_ratio_defaults() {
+
+    $defaults = [
+                    'breakfast' => 20,
+                    'lunch'     => 30,
+                    'dinner'    => 30,
+                    'snacks'    => 20
+    ];
+
+    return apply_filters( 'wlt-filter-harris-benedict-meal-ratio-defaults', $defaults );
 }
 
 /**
@@ -118,14 +157,14 @@ function ws_ls_harris_benedict_render_table($user_id, $missing_data_text = false
 	if(false === empty($calories)) {
 
 		// Table Header
-		$html = sprintf('<table class="%s%s" %s >
+		$html = sprintf('<table class="%1$s%2$s" %3$s >
                                 <tr>
                                     <th class="ws-ls-empty-cell row-title"></th>
-                                    <th>%s</th>
-                                    <th data-breakpoints="xs sm">%s (20%%)</th>
-                                    <th data-breakpoints="xs sm">%s (30%%)</th>
-                                    <th data-breakpoints="xs sm">%s (30%%)</th>
-                                    <th data-breakpoints="xs sm">%s (20%%)</th>
+                                    <th>%4$s</th>
+                                    <th data-breakpoints="xs sm">%5$s (%9$s%%)</th>
+                                    <th data-breakpoints="xs sm">%6$s (%10$s%%)</th>
+                                    <th data-breakpoints="xs sm">%7$s (%11$s%%)</th>
+                                    <th data-breakpoints="xs sm">%8$s (%12$s%%)</th>
                                 </tr>',
 			(false === empty($additional_css_class)) ? esc_attr($additional_css_class) . ' ' : '',
 			false === is_admin() ? 'ws-ls-harris-benedict' : 'widefat',
@@ -134,7 +173,11 @@ function ws_ls_harris_benedict_render_table($user_id, $missing_data_text = false
 			__( 'Breakfast', WE_LS_SLUG ),
 			__( 'Lunch', WE_LS_SLUG ),
 			__( 'Dinner', WE_LS_SLUG ),
-			__( 'Snacks', WE_LS_SLUG )
+			__( 'Snacks', WE_LS_SLUG ),
+            ws_ls_harris_benedict_meal_ratio_get( 'breakfast' ),
+            ws_ls_harris_benedict_meal_ratio_get( 'lunch' ),
+            ws_ls_harris_benedict_meal_ratio_get( 'dinner' ),
+            ws_ls_harris_benedict_meal_ratio_get( 'snacks' )
 		);
 
 		$html .= apply_filters(WE_LS_FILTER_HARRIS_TOP_OF_TABLE, '', $calories);
@@ -160,12 +203,12 @@ function ws_ls_harris_benedict_render_table($user_id, $missing_data_text = false
 										<td>%s</td>
 									</tr>',
 				esc_attr( $css_class ),
-				esc_html($calories[$row_name]['label']),
-				number_format($calories[$row_name]['total']),
-				esc_html($calories[$row_name]['breakfast']),
-				esc_html($calories[$row_name]['lunch']),
-				esc_html($calories[$row_name]['dinner']),
-				esc_html($calories[$row_name]['snacks'])
+				esc_html( $calories[$row_name]['label'] ),
+				number_format( $calories[$row_name]['total'] ),
+				esc_html( $calories[$row_name]['breakfast'] ),
+				esc_html( $calories[$row_name]['lunch'] ),
+				esc_html( $calories[$row_name]['dinner'] ),
+				esc_html( $calories[$row_name]['snacks'] )
 			);
 		}
 
