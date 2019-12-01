@@ -34,6 +34,7 @@ function ws_ls_challenges_create_mysql_tables() {
     $sql = "CREATE TABLE $table_name (
                 id mediumint(9) NOT NULL AUTO_INCREMENT,
                 user_id int NOT NULL,
+                challenge_id int NOT NULL,
                 count_wt_entries int NOT NULL,
                 count_mt_entries int NOT NULL,
                 weight_start float NOT NULL,
