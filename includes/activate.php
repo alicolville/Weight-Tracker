@@ -70,6 +70,7 @@
 			shoulders float NULL,
 			neck float NULL,
 			photo_id int NULL,
+			inserted TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 		  UNIQUE KEY id (id)
 		) $charset_collate;";
 
