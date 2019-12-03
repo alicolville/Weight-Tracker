@@ -3,6 +3,36 @@
 defined('ABSPATH') or die("Jog on!");
 
 /**
+ * Insert a new challenge
+ * @param $challenge_id
+ * @param null $start_date
+ * @param null $end_date
+ * @return bool
+ */
+function ws_ls_challenges_add( $challenge_id, $start_date = NULL, $end_date = NULL ) {
+
+    if ( true === empty( $challenge_id ) ) {
+        return false;
+    }
+
+    $data       = [ 'id' => (int) $challenge_id ];
+    $formats    = [ '%d' ];
+
+    if ( false === empty( $start_date ) && false === empty( $end_date ) ) {
+        $data[ 'start_date' ]   = $start_date;
+        $formats[]              = '%s';
+        $data[ 'end_date' ]     = $end_date;
+        $formats[]              = '%s';
+    }
+
+    global $wpdb;
+
+    $result = $wpdb->insert( $wpdb->prefix . WE_LS_MYSQL_CHALLENGES, $data, $formats );
+
+    return ! empty( $result );
+}
+
+/**
  * Look at the weight entry table and and look for any users that have at least one weight entry for the given time period.
  *
  * @param $challenge_id
