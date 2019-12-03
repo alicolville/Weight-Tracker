@@ -32,19 +32,18 @@ function ws_ls_challenges_create_mysql_tables() {
     $table_name = $wpdb->prefix . WE_LS_MYSQL_CHALLENGES_DATA;
 
     $sql = "CREATE TABLE $table_name (
-                id mediumint(9) NOT NULL AUTO_INCREMENT,
                 user_id int NOT NULL,
                 challenge_id int NOT NULL,
-                count_wt_entries int NOT NULL,
-                count_mt_entries int NOT NULL,
-                weight_start float NOT NULL,
-                weight_latest float NOT NULL,
-                weight_diff float NOT NULL,
-                bmi_start float NOT NULL,
-                bmi_end float NOT NULL,
-                bmi_diff float NOT NULL,
+                count_wt_entries int NULL,
+                count_mt_entries int NULL,
+                weight_start float NULL,
+                weight_latest float NULL,
+                weight_diff float NULL,
+                bmi_start float NULL,
+                bmi_end float NULL,
+                bmi_diff float NULL,
                 last_processed datetime DEFAULT NULL,
-                UNIQUE KEY id (id)              
+                PRIMARY KEY ( user_id, challenge_id )              
             ) $charset_collate;";
 
     dbDelta( $sql );
@@ -62,4 +61,3 @@ function ws_ls_challenges_activate() {
     }
 }
 add_action( 'admin_init', 'ws_ls_challenges_activate' );
-
