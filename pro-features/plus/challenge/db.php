@@ -24,8 +24,15 @@ function ws_ls_challenges_identify_entries( $challenge_id, $start_date = NULL, $
     // Do we have a start and end date?
     if ( false === empty( $start_date ) && false === empty( $end_date ) ) {
         $sql .= $wpdb->prepare( ' WHERE weight_date >= %s and weight_date <= %s', $start_date, $end_date );
-
     }
 
     return $wpdb->query( $sql );
 }
+
+function t() {
+
+    $r = ws_ls_challenges_add( 22, '2019-12-01', '2019-12-17' );
+    var_dump($r);
+
+}
+add_action( 'init', 't' );
