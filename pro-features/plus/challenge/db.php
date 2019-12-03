@@ -47,13 +47,44 @@ function ws_ls_challenges_enabled( $challenge_id, $enabled = true ) {
     global $wpdb;
 
     $result = $wpdb->update( $wpdb->prefix . WE_LS_MYSQL_CHALLENGES,
-                                [ 'enabled' => ( true === $enabled ) ? 1 : 0 ],
-                                [ 'id' => $challenge_id ],
-                                [ '%d' ],
-                                [ '%d' ]
+        [ 'enabled' => ( true === $enabled ) ? 1 : 0 ],
+        [ 'id' => $challenge_id ],
+        [ '%d' ],
+        [ '%d' ]
     );
 
+    ws_ls_delete_cache( 'challenge-' . (int) $challenge_id );
+
     return ! empty( $result );
+}
+
+/**
+ * Fetch a challenge
+ * @param $challenge_id
+ * @return bool
+ */
+function ws_ls_challenges_get( $challenge_id ) {
+
+    if ( true === empty( $challenge_id ) ) {
+        return false;
+    }
+
+    if ( $cache = ws_ls_get_cache( 'challenge-' . (int) $challenge_id ) ) {
+        echo 'cache';
+        return $cache;
+    }
+
+    global $wpdb;
+
+    $sql = $wpdb->prepare( 'SELECT * FROM ' . $wpdb->prefix . WE_LS_MYSQL_CHALLENGES . ' WHERE id = %d', $challenge_id );
+
+    $result = $wpdb->get_row( $sql, ARRAY_A );
+
+    $result = ( false === empty( $result ) ) ? $result : false;
+
+    ws_ls_set_cache( 'challenge-' . (int) $challenge_id, $result );
+
+    return $result;
 }
 
 /**
