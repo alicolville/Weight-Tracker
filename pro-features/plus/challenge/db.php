@@ -70,7 +70,6 @@ function ws_ls_challenges_get( $challenge_id ) {
     }
 
     if ( $cache = ws_ls_get_cache( 'challenge-' . (int) $challenge_id ) ) {
-        echo 'cache';
         return $cache;
     }
 
