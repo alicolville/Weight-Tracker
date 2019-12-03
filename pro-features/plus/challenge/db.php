@@ -33,6 +33,30 @@ function ws_ls_challenges_add( $challenge_id, $start_date = NULL, $end_date = NU
 }
 
 /**
+ * Update enabled flag for a challenge
+ * @param $challenge_id
+ * @param bool $enabled
+ * @return bool
+ */
+function ws_ls_challenges_enabled( $challenge_id, $enabled = true ) {
+
+    if ( true === empty( $challenge_id ) ) {
+        return false;
+    }
+
+    global $wpdb;
+
+    $result = $wpdb->update( $wpdb->prefix . WE_LS_MYSQL_CHALLENGES,
+                                [ 'enabled' => ( true === $enabled ) ? 1 : 0 ],
+                                [ 'id' => $challenge_id ],
+                                [ '%d' ],
+                                [ '%d' ]
+    );
+
+    return ! empty( $result );
+}
+
+/**
  * Look at the weight entry table and and look for any users that have at least one weight entry for the given time period.
  *
  * @param $challenge_id
@@ -58,11 +82,3 @@ function ws_ls_challenges_identify_entries( $challenge_id, $start_date = NULL, $
 
     return $wpdb->query( $sql );
 }
-
-function t() {
-
-    $r = ws_ls_challenges_add( 22, '2019-12-01', '2019-12-17' );
-    var_dump($r);
-
-}
-add_action( 'init', 't' );
