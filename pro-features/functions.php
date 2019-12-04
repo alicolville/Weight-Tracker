@@ -23,18 +23,22 @@ function ws_ls_get_bmi_for_table($cm, $kg, $no_height_text = false) {
 	return '';
 }
 
-function ws_ls_calculate_bmi($cm, $kg) {
+/**
+ * Given height and weight, calculate a user's BMI
+ * @param $cm
+ * @param $kg
+ * @return bool|float
+ */
+function ws_ls_calculate_bmi( $cm, $kg ) {
 
-	$bmi = false;
+    if ( false === is_numeric( $cm ) || false === is_numeric( $kg ) ) {
+        return false;
+    }
 
-	if(is_numeric($cm) && is_numeric($kg)) {
+    $bmi = $kg / ($cm * $cm);
+    $bmi = $bmi * 10000;
 
-		$bmi = $kg / ($cm * $cm);
-		$bmi = $bmi * 10000;
-		$bmi = round($bmi, 1);
-	}
-
-	return $bmi;
+	return round( $bmi, 1 );
 }
 
 // $bmi = ws_ls_calculate_bmi(150, 66);
