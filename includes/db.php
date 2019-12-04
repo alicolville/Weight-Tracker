@@ -590,32 +590,31 @@ function ws_ls_get_user_preferences($user_id = false, $use_cache = true)
   return $settings;
 }
 
-function ws_ls_get_user_height($user_id = false, $use_cache = true) {
+/**
+ * Fetch a user's height from preferences
+ * @param bool $user_id
+ * @param bool $use_cache
+ * @return bool
+ */
+function ws_ls_get_user_height( $user_id = false, $use_cache = true ) {
 
-  global $wpdb;
-
-  $user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
-
-
-  $table_name = $wpdb->prefix . WE_LS_USER_PREFERENCES_TABLENAME;
-
-  $cache_key = $user_id . '-' . WE_LS_CACHE_KEY_USER_HEIGHT;
-  $cache = ws_ls_get_cache($cache_key);
+  $user_id      = ( true === empty( $user_id ) ) ? get_current_user_id() : $user_id;
+  $cache_key    = sprintf( '%s-%d', WE_LS_CACHE_KEY_USER_HEIGHT, $user_id );
 
   // Return cache if found!
-  if ($cache && true == $use_cache)   {
+  if ( true === $use_cache &&
+        $cache = ws_ls_get_cache( $cache_key ) )   {
       return $cache;
   }
 
-  $sql =  $wpdb->prepare('SELECT height FROM ' . $table_name . ' WHERE user_id = %d', $user_id);
-  $row = $wpdb->get_row($sql);
+  global $wpdb;
 
-  $height = false;
+  $sql      = $wpdb->prepare( 'SELECT height FROM ' . $wpdb->prefix . WE_LS_USER_PREFERENCES_TABLENAME . ' WHERE user_id = %d' , $user_id );
+  $height   = $wpdb->get_var( $sql );
 
-  if (!is_null($row) && $row->height != 0 && !is_null($row->height)) {
-    $height = $row->height;
-	ws_ls_set_cache($cache_key, $height);
-  }
+  $height = ( false === empty( $height ) ) ? $height : false;
+
+  ws_ls_set_cache( $cache_key, $height );
 
   return $height;
 }
