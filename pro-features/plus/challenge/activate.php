@@ -40,7 +40,7 @@ function ws_ls_challenges_create_mysql_tables() {
                 weight_latest float NULL,
                 weight_diff float NULL,
                 bmi_start float NULL,
-                bmi_end float NULL,
+                bmi_latest float NULL,
                 bmi_diff float NULL,
                 last_processed datetime DEFAULT NULL,
                 PRIMARY KEY ( user_id, challenge_id )              

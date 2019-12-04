@@ -112,3 +112,34 @@ function ws_ls_challenges_identify_entries( $challenge_id, $start_date = NULL, $
 
     return $wpdb->query( $sql );
 }
+
+/**
+ * Fetch weight entries (Kg) for the user within the given timeline
+ * @param $user_id
+ * @param null $start_date
+ * @param null $end_date
+ * @return bool
+ */
+function ws_ls_challenges_get_weight_entries( $user_id, $start_date = NULL, $end_date = NULL ) {
+
+    if ( true === empty( $user_id ) ) {
+        return false;
+    }
+
+    global $wpdb;
+
+    $sql = $wpdb->prepare( 'SELECT weight_weight as kg FROM ' . $wpdb->prefix . WE_LS_TABLENAME . ' WHERE weight_user_id = %d', $user_id );
+
+    // Do we have a start and end date?
+    if ( false === empty( $start_date ) && false === empty( $end_date ) ) {
+        $sql .= $wpdb->prepare( ' and weight_date >= %s and weight_date <= %s', $start_date, $end_date );
+    }
+
+    $sql .= ' order by weight_date asc';
+
+    $result = $wpdb->get_results( $sql, ARRAY_A );
+
+    $result = ( false === empty( $result ) ) ? $result : false;
+
+    return $result;
+}

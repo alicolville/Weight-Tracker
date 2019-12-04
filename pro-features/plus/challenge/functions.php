@@ -23,35 +23,56 @@ function ws_ls_challenges_data_update_row( $user_id, $challenge_id ) {
 
     $weight_entries = ws_ls_challenges_get_weight_entries( $user_id, $challenge[ 'start_date' ], $challenge[ 'end_date' ] );
 
-    $data = []; $formats = [ '%d', '%f', '%f' ];
+    $data = []; $formats = [ '%d', '%f', '%f', '%f', '%d', '%f', '%f', '%f', '%s' ];
 
     // Weight Data
     $data[ 'count_wt_entries' ] = count( $weight_entries );
     $data[ 'weight_start' ]     = $weight_entries[ 0 ][ 'kg' ];
     $data[ 'weight_latest' ]    = $weight_entries[ $data[ 'count_wt_entries' ] - 1 ][ 'kg' ];
+    $data[ 'weight_diff' ]      = $data[ 'weight_latest' ] - $data[ 'weight_start' ];
+
+    // Meal Tracker
+    $data[ 'count_mt_entries' ] = 0;
+
+    if ( true === wlt_yk_mt_is_active() ) {
+        $data[ 'count_mt_entries' ] = 99; //TODO
+    }
 
     // BMI
     $user_height = ws_ls_get_user_height( $user_id );
 
-    var_dump($user_height);
+    $data[ 'bmi_start' ]        = ws_ls_calculate_bmi( $user_height, $data[ 'weight_start' ] );
+    $data[ 'bmi_latest' ]       = ws_ls_calculate_bmi( $user_height, $data[ 'weight_latest' ] );
+    $data[ 'bmi_diff' ]         = $data[ 'bmi_latest' ] - $data[ 'bmi_start' ];
 
-    //ws_ls_calculate_bmi($cm, $kg)
+    // Other
+    $data[ 'last_processed' ]   = date( 'Y-m-d H:s');
 
-    print_r($data);
+    global $wpdb;
+
+    $result = $wpdb->update( $wpdb->prefix . WE_LS_MYSQL_CHALLENGES_DATA,
+        $data,
+        [ 'challenge_id' => $challenge_id, 'user_id' => $user_id ],
+        $formats,
+        [ '%d', '%d' ]
+    );
+
+    return ! empty( $result );
 
     /*
      * TODO:
      *
 
-     * 3) Fetch the user's preferences. Using start and end weight, calculate starting BMI, ending BMI and difference.
-     * 4) Count Weight Entries for given period
      * 5) Fetch and count Meal Tracker entries for this period
-     * 6) Set last_processed date
-     * 7) With the given data, update the record
+
      */
 }
 
 function t() {
+
+    if ( true === is_admin() ) {
+        return;
+    }
 
     ws_ls_challenges_add( 708, '2019-08-01', '2019-08-28' );
 
