@@ -137,7 +137,6 @@ function ws_ls_help_page() {
                             </p>
                         </div>
                     </div>
-
                         <div class="postbox">
                             <h3 class="hndle"><span><?php echo __('Weight Tracker Debug Log', WE_LS_SLUG); ?> </span></h3>
                             <div style="padding: 0px 15px 0px 15px">
@@ -153,25 +152,13 @@ function ws_ls_help_page() {
                                        data-toggle="true"
                                        data-use-parent-width="true">
                                 </table>
-
                             </div>
-
                         </div>
                     </div>
 				</div>
-				<!-- .meta-box-sortables .ui-sortable -->
-
 			</div>
-			<!-- post-body-content -->
-
 		</div>
-		<!-- #post-body .metabox-holder .columns-2 -->
-
-		<br class="clear">
 	</div>
-	<!-- #poststuff -->
-
-</div> <!-- .wrap -->
 <?php
 
     ws_ls_create_dialog_jquery_code(__('Are you sure?', WE_LS_SLUG),
@@ -183,7 +170,3 @@ function ws_ls_help_page() {
         'logs-confirm');
 
 }
-
-
-
-?>

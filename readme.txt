@@ -161,6 +161,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 * Improvement: Record when a weight entry was actually inserted. Currently not exposed, but maybe of use with the new Challenges system.
 * Improvement: Hook fired when user cache has been deleted "wlt-hook-delete-cache-for-user".
 * Improvement: Various small refactors of code
+* Bug fix: Fixed layout issue on help page.
 
 = 7.4 =
 
