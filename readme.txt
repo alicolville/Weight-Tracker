@@ -159,6 +159,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 * Added a 5 minute cron hook.
 * Improvement: Record when a weight entry was actually inserted. Currently not exposed, but maybe of use with the new Challenges system.
+* Improvement: Hook fired when user cache has been deleted "wlt-hook-delete-cache-for-user"
 
 = 7.4 =
 
