@@ -219,7 +219,7 @@ function ws_ls_challenges_get_meal_tracker_entries( $user_id, $start_date = NULL
 
     global $wpdb;
 
-    $sql = $wpdb->prepare( 'SELECT id FROM ' . $wpdb->prefix . YK_WT_DB_ENTRY . ' WHERE user_id = %d', $user_id );
+    $sql = $wpdb->prepare( 'SELECT id FROM ' . $wpdb->prefix . YK_WT_DB_ENTRY . ' WHERE user_id = %d and calories_used > 0', $user_id );
 
     // Do we have a start and end date?
     if ( false === empty( $start_date ) && false === empty( $end_date ) ) {
