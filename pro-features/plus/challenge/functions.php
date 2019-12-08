@@ -192,15 +192,15 @@ function t() {
    // ws_ls_challenges_data_last_processed_reset( 1 );
 
    // $t = ws_ls_challenges_process();
-    ws_ls_challenges_process( 1 );
+  //  ws_ls_challenges_process( 1 );
     //var_dump( $t );
 
  //  ws_ls_challenges_add( 708, '2019-08-01', '2019-08-28' );
 
     // ws_ls_challenges_identify_entries( 708, '2019-08-01', '2019-08-28' );
 
-//    $t = ws_ls_challenges_data_update_row( 1,708 );
-  //  print_r( $t );
+    $t = ws_ls_groups_user( 1 );
+    print_r( $t );
     die;
 }
-// add_action( 'init', 't' );
+ // add_action( 'init', 't' );

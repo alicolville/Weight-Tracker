@@ -32,7 +32,7 @@ add_action( 'wlt-hook-delete-cache-for-user', 'ws_ls_challenges_hook_clear_last_
  */
 function ws_ls_challenges_hook_settings_form_opt_in( $html, $user_id ) {
 
-    $html           = ws_ls_title( __( 'Challenges', WE_LS_SLUG ) );
+    $html           .= ws_ls_title( __( 'Challenges', WE_LS_SLUG ) );
     $current_value  = ws_ls_get_user_setting( 'challenge_opt_in', $user_id );
 
     $html .= sprintf( '    <select name="ws-ls-challenge-opt-in" id="ws-ls-challenge-opt-in" tabindex="%1$d">

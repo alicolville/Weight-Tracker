@@ -166,6 +166,8 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 * Improvement: Various small refactors of code.
 * Bug fix: Fixed layout issue on help page.
 * Bug fix: Changed "Show Wizard" link so it doesn't trigger Meal Tracker's to also show.
+* Bug fix: Added missing BMI to JSON export.
+* Bug fix: Added Group to export.
 
 = 7.4 =
 

@@ -39,7 +39,7 @@ function ws_ls_export_data() {
 				$output = ws_ls_csv_from_array( $export_data['weight_data'] );
 				break;
 			default:
-				$output = ws_ls_export_into_json( $export_data['weight_data'] );
+				$output = ws_ls_export_to_json( $export_data['weight_data'] );
 				break;
 		}
 
@@ -85,15 +85,15 @@ function ws_ls_export_process_meta_fields( $rows ) {
 
 
 /**
- * Export into JSON
+ * Export to JSON
  *
  * @param  array  $data                 Data
  * @return string						Contents of JSON file
  */
-function ws_ls_export_into_json($rows) {
+function ws_ls_export_to_json( $rows ) {
 
 	// Ensure we have some data!
-	if(is_array($rows) && count($rows) > 0) {
+	if( is_array($rows) && count($rows) > 0) {
 
 		$output = ['columns' => ws_ls_column_names(), 'rows' => []];
 
@@ -119,8 +119,11 @@ function ws_ls_export_into_json($rows) {
                     } else {
                         $data[$key] = $row[$key];
                     }
+
                 }
-                $row = ws_ls_export_add_bmi($row);
+                $data = ws_ls_export_add_bmi( $data );
+
+                $data = apply_filters( 'wlt-export-row', $data );
 
                 $output['rows'][] = $data;
             }
@@ -165,7 +168,10 @@ function ws_ls_csv_from_array($data, $show_column_headers = true, $delimiter = '
 
            // Build body of CSV
             foreach ($data as $row) {
-                $row = ws_ls_export_add_bmi($row);
+                $row = ws_ls_export_add_bmi( $row );
+
+                $row = apply_filters( 'wlt-export-row', $row );
+
                 $csv_output .= ws_ls_csv_row_write($columns, $row, $delimiter, $end_of_line_char);
             }
 
@@ -259,8 +265,8 @@ function ws_ls_column_names() {
 						'stones' => __('st', WE_LS_SLUG),
 						'pounds' => __('lbs', WE_LS_SLUG),
                         'difference_from_start_display' => __('Difference from start', WE_LS_SLUG),
-						'bmi' => 'BMI',
-						'bmi-readable' => 'BMI Label',
+						'bmi' => __( 'BMI', WE_LS_SLUG),
+						'bmi-readable' => __( 'BMI Label', WE_LS_SLUG),
 						'notes' => __('Notes', WE_LS_SLUG)
 		];
 
@@ -275,6 +281,8 @@ function ws_ls_column_names() {
                 $names[ 'meta-' . $meta_field['id'] ] = $meta_field['field_name'];
             }
         }
+
+    $names = apply_filters( 'wlt-export-columns', $names );
 
 	return $names;
 }
