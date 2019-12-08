@@ -251,48 +251,6 @@ function ws_ls_stats_league_table_fetch($ignore_cache = false, $limit = 10, $los
 }
 
 // -----------------------------------------------------------------
-// Search
-// -----------------------------------------------------------------
-
-
-function ws_ls_user_search($name, $limit = false) {
-
-	if(false === empty($name)) {
-
-		global $wpdb;
-
-		$stats_table_name = $wpdb->prefix . WE_LS_USER_STATS_TABLENAME;
-		$data_table_name = $wpdb->prefix . WE_LS_TABLENAME;
-
-		$sql = "SELECT distinct {$wpdb->prefix}users.*, us.* FROM {$wpdb->prefix}users
-				LEFT JOIN {$data_table_name} as wd ON ( {$wpdb->prefix}users.ID = wd.weight_user_id )
-				LEFT JOIN {$stats_table_name} as us ON ( {$wpdb->prefix}users.ID = us.user_id )
-				LEFT JOIN {$wpdb->prefix}usermeta um ON ( {$wpdb->prefix}users.ID = um.user_id )
-				WHERE 1=1 AND
-				(
-		  			( um.meta_key = 'first_name' AND um.meta_value LIKE '%%%s%%' )
-		  			OR
-		  			( um.meta_key = 'last_name' AND um.meta_value LIKE '%%%s%%' )
-					OR
-					( user_login LIKE '%%%s%%' OR user_nicename LIKE '%%%s%%' OR user_email LIKE '%%%s%%' )
-				)
-				ORDER BY user_login ASC";
-
-		if ( false === empty($limit) ) {
-		    $sql .= ' limit 0, ' . (int) $limit;
-        }
-
-		$sql = $wpdb->prepare($sql, $name, $name, $name, $name, $name);
-
-		return $wpdb->get_results($sql, ARRAY_A);
-
-	}
-
-	return false;
-
-}
-
-// -----------------------------------------------------------------
 // Get Users
 // -----------------------------------------------------------------
 

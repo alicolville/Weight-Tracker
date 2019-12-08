@@ -114,9 +114,6 @@ function ws_ls_stats_update_for_user($user_id) {
 		global $wpdb;
 		$wpdb->replace( $wpdb->prefix . WE_LS_USER_STATS_TABLENAME, $stats, array('%d', '%f', '%f', '%f', '%s') );
 
-		// Update sum of weights for user
-		// ws_ls_get_sum_of_weights_for_user($user_id);
-
 		ws_ls_stats_refresh_summary_stats();
 	}
 
