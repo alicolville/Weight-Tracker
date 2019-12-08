@@ -981,6 +981,30 @@ function ws_ls_calculate_percentage_difference( $previous_weight, $current_weigh
 }
 
 /**
+ * Wrapper of ws_ls_calculate_percentage_difference to return the value as a formatted number
+ *
+ * @param $previous_weight
+ * @param $current_weight
+ */
+function ws_ls_calculate_percentage_difference_as_number( $previous_weight, $current_weight  ) {
+
+    $difference = ws_ls_calculate_percentage_difference( $previous_weight, $current_weight );
+
+    if ( true === empty( $difference ) ) {
+        return NULL;
+    }
+
+    $return = $difference[ 'percentage' ];
+
+    // Invert number if a decrease
+    if ( false === $difference[ 'increase' ] ) {
+        $return = 0 - $return;
+    }
+
+    return number_format( $return, 2 );
+}
+
+/**
  * Return the text value of enabled value
  *
  * @param $value

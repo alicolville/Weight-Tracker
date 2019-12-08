@@ -62,15 +62,16 @@ function ws_ls_challenges_data_update_row( $user_id, $challenge_id ) {
 
     $weight_entries = ws_ls_challenges_get_weight_entries( $user_id, $challenge[ 'start_date' ], $challenge[ 'end_date' ] );
 
-    $data = []; $formats = [ '%d', '%s', '%s', '%f', '%f', '%f', '%d', '%f', '%f', '%f', '%f', '%d', '%d', '%d', '%s' ];
+    $data = []; $formats = [ '%d', '%s', '%s', '%f', '%f', '%f', '%f', '%d', '%f', '%f', '%f', '%f', '%d', '%d', '%d', '%s' ];
 
     // Weight Data
-    $data[ 'count_wt_entries' ] = count( $weight_entries );
-    $data[ 'date_start' ]       = $weight_entries[ 0 ][ 'weight_date' ];
-    $data[ 'date_latest' ]      = $weight_entries[ $data[ 'count_wt_entries' ] - 1 ][ 'weight_date' ];
-    $data[ 'weight_start' ]     = $weight_entries[ 0 ][ 'kg' ];
-    $data[ 'weight_latest' ]    = $weight_entries[ $data[ 'count_wt_entries' ] - 1 ][ 'kg' ];
-    $data[ 'weight_diff' ]      = $data[ 'weight_latest' ] - $data[ 'weight_start' ];
+    $data[ 'count_wt_entries' ]     = count( $weight_entries );
+    $data[ 'date_start' ]           = $weight_entries[ 0 ][ 'weight_date' ];
+    $data[ 'date_latest' ]          = $weight_entries[ $data[ 'count_wt_entries' ] - 1 ][ 'weight_date' ];
+    $data[ 'weight_start' ]         = $weight_entries[ 0 ][ 'kg' ];
+    $data[ 'weight_latest' ]        = $weight_entries[ $data[ 'count_wt_entries' ] - 1 ][ 'kg' ];
+    $data[ 'weight_diff' ]          = $data[ 'weight_latest' ] - $data[ 'weight_start' ];
+    $data[ 'weight_percentage' ]    = ws_ls_calculate_percentage_difference_as_number( $data[ 'weight_start' ], $data[ 'weight_latest' ] );
 
     // Meal Tracker
     $data[ 'count_mt_entries' ] = 0;

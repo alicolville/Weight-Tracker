@@ -40,6 +40,7 @@ function ws_ls_challenges_create_mysql_tables() {
                 weight_start float NULL,
                 weight_latest float NULL,
                 weight_diff float NULL,
+                weight_percentage float NULL,
                 date_start date DEFAULT NULL,
                 date_latest date DEFAULT NULL,
                 bmi_start float NULL,
