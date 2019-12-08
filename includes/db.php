@@ -533,14 +533,14 @@ function ws_ls_user_preferences_get_formats( $db_fields ) {
     $formats = [];
 
     $lookup = [
-			    'activity_level' => '%f',
-			    'aim' => '%d',
-			    'dob' => '%s',
-			    'gender' => '%d',
-			    'height' => '%d',
-		        'settings' => '%s',
-			    'user_group' => '%d',
-			    'user_id' => '%d'
+			    'activity_level'    => '%f',
+			    'aim'               => '%d',
+			    'dob'               => '%s',
+			    'gender'            => '%d',
+			    'height'            => '%d',
+		        'settings'          => '%s',
+			    'user_group'        => '%d',
+                'user_id'           => '%d'
     ];
 
     $lookup = apply_filters( WE_LS_FILTER_USER_SETTINGS_DB_FORMATS, $lookup );
@@ -626,7 +626,7 @@ function ws_ls_get_user_setting($field = 'gender', $user_id = false, $use_cache 
     // Default to logged in user if not user ID not specified.
     $user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
 
-    $valid_settings = apply_filters( 'wlt-filter-setting-fields', ['activity_level', 'gender', 'height', 'dob', 'aim', 'body_type'] );
+    $valid_settings = apply_filters( 'wlt-filter-setting-fields', ['activity_level', 'gender', 'height', 'dob', 'aim', 'body_type', 'challenge_opt_in' ] );
 
     // Validate field
     $field = ( in_array($field, $valid_settings) ) ? $field : 'gender';
