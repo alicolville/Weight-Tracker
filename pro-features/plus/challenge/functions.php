@@ -119,6 +119,65 @@ function ws_ls_challenges_data_update_row( $user_id, $challenge_id ) {
     return ! empty( $result );
 }
 
+/**
+ * Display all user's entries in a data table
+ * @param $args
+ */
+function ws_ls_table_challenge( $args ) {
+
+    $args = wp_parse_args( $args, [
+        'challenge-id'  => NULL
+    ]);
+
+    if ( NULL === $args[ 'challenge-id' ] ) {
+        return;
+    }
+
+    ?>
+    <table class="ws-ls-footable ws-ls-footable-basic widefat" data-paging="true" data-sorting="true" data-state="true">
+        <thead>
+        <tr>
+            <th data-type="date" data-format-string="D/M/Y"><?php echo __( 'Date', WS_LS_SLUG ); ?></th>
+            <th data-type="text" data-breakpoints="sm"  data-visible="<?php echo ( true == $args[ 'show-username' ] ) ? 'true' : 'false'; ?>">
+                <?php echo __( 'User', WS_LS_SLUG ); ?>
+            </th>
+            <th data-breakpoints="xs" data-type="number"><?php echo __( 'Calories Allowed', WS_LS_SLUG ); ?></th>
+            <th data-breakpoints="sm" data-type="number"><?php echo __( 'Calories Used', WS_LS_SLUG ); ?></th>
+            <th data-breakpoints="xs" data-type="number"><?php echo __( 'Calories Remaining', WS_LS_SLUG ); ?></th>
+            <th data-breakpoints="xs" data-sortable="false" width="20"><?php echo __( 'Percentage Used', WS_LS_SLUG ); ?></th>
+            <th></th>
+        </tr>
+        </thead>
+        <?php
+        foreach ( $args[ 'entries' ] as $entry ) {
+
+            $class = ( $entry[ 'calories_used' ] > $entry[ 'calories_allowed' ] ) ? 'ws-ls-error' : 'ws-ls-ok';
+
+            printf ( '    <tr class="%6$s">
+                                                <td>%1$s</td>
+                                                <td>%8$s</td>
+                                                <td class="ws-ls-blur">%2$s</td>
+                                                <td class="ws-ls-blur">%3$s</td>
+                                                <td class="ws-ls-blur">%4$s</td>
+                                                <td class="ws-ls-blur">%5$s</td>
+                                                <td><a href="%7$s" class="btn btn-default footable-edit"><i class="fa fa-eye"></i></a></td>
+                                            </tr>',
+                yk_mt_date_format( $entry['date' ] ),
+                $entry[ 'calories_allowed' ],
+                $entry[ 'calories_used' ],
+                $entry[ 'calories_remaining' ],
+                $entry[ 'percentage_used' ] . '%',
+                $class,
+                yk_mt_link_admin_page_entry( $entry[ 'id' ] ),
+                yk_mt_link_profile_display_name_link( $entry[ 'user_id' ] )
+            );
+        }
+        ?>
+        </tbody>
+    </table>
+    <?php
+}
+
 function t() {
 
     if ( true === is_admin() ) {
