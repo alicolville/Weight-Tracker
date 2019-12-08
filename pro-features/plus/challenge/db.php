@@ -127,10 +127,11 @@ function ws_ls_challenges_identify_entries( $challenge_id, $start_date = NULL, $
 /**
  * Fetch users for the given challenge that need to be processed.
  * @param $challenge_id
+ * @param null $user_id
  * @param int $limit
  * @return bool
  */
-function ws_ls_challenges_data_awaiting_processing($challenge_id, $limit = 20 ) {
+function ws_ls_challenges_data_awaiting_processing( $challenge_id, $user_id = NULL, $limit = 20 ) {
 
     if ( true === empty( $challenge_id ) ) {
         return false;
@@ -139,11 +140,15 @@ function ws_ls_challenges_data_awaiting_processing($challenge_id, $limit = 20 ) 
     global $wpdb;
 
     $sql = $wpdb->prepare( 'SELECT user_id, challenge_id FROM ' . $wpdb->prefix . WE_LS_MYSQL_CHALLENGES_DATA . ' 
-                            WHERE challenge_id = %d and last_processed is NULL
-                            limit 0, %d',
-                            $challenge_id,
-                            $limit
+                            WHERE challenge_id = %d and last_processed is NULL',
+                            $challenge_id
     );
+
+    if ( NULL !== $user_id ) {
+        $sql .= $wpdb->prepare( ' AND user_id = %d', $user_id );
+    }
+
+    $sql .= $wpdb->prepare( ' limit 0, %d', $limit );
 
     return $wpdb->get_results( $sql, ARRAY_A );
 }
@@ -151,15 +156,9 @@ function ws_ls_challenges_data_awaiting_processing($challenge_id, $limit = 20 ) 
 /**
  * Update last processed flag for a user record when processed
  * @param $user_id
- * @param $challenge_id
- * @param bool $set         - If true, set last_processed flag to current timestamp. Otherwise NULL.
  * @return bool
  */
-function ws_ls_challenges_data_last_processed( $user_id, $challenge_id, $set = true ) {
-
-    if ( true === empty( $challenge_id ) ) {
-        return false;
-    }
+function ws_ls_challenges_data_last_processed_reset( $user_id ) {
 
     if ( true === empty( $user_id ) ) {
         return false;
@@ -167,14 +166,9 @@ function ws_ls_challenges_data_last_processed( $user_id, $challenge_id, $set = t
 
     global $wpdb;
 
-    $result = $wpdb->update( $wpdb->prefix . WE_LS_MYSQL_CHALLENGES,
-        [ 'last_processed' => ( true === $set ) ? date( 'Y-M-d H:m:s' ) : NULL ],
-        [ 'challenge_id' => $challenge_id, 'user_id' => $user_id ],
-        [ '%s' ],
-        [ '%d', '%d' ]
-    );
+    $sql = $wpdb->prepare( 'UPDATE ' . $wpdb->prefix . WE_LS_MYSQL_CHALLENGES_DATA . ' SET last_processed = NULL where user_id = %d;', $user_id );
 
-    return ! empty( $result );
+    return $wpdb->query( $sql );
 }
 
 /**

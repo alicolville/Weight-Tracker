@@ -10,7 +10,9 @@ defined('ABSPATH') or die("Jog on!");
  *
  * @param int $max_entries_per_challenge_to_process
  */
-function ws_ls_challenges_process( $max_entries_per_challenge_to_process = 50 ) {
+function ws_ls_challenges_process( $user_id = NULL,
+                                       $identify_new_entries = true,
+                                            $max_entries_per_challenge_to_process = 50 ) {
 
     // Fetch all challenges to consider for processing
     $challenges = ws_ls_challenges();
@@ -22,10 +24,12 @@ function ws_ls_challenges_process( $max_entries_per_challenge_to_process = 50 ) 
     foreach ( $challenges as $challenge ) {
 
         // Ensure all user's that have one entry or more within the time period are included in the challenge.
-        ws_ls_challenges_identify_entries( $challenge[ 'id' ], $challenge[ 'start_date' ], $challenge[ 'end_date' ] );
+        if ( true === $identify_new_entries ) {
+            ws_ls_challenges_identify_entries( $challenge[ 'id' ], $challenge[ 'start_date' ], $challenge[ 'end_date' ] );
+        }
 
         // Fetch user's for the challenge that need their stats updated
-        $users = ws_ls_challenges_data_awaiting_processing( $challenge[ 'id' ], (int) $max_entries_per_challenge_to_process );
+        $users = ws_ls_challenges_data_awaiting_processing( $challenge[ 'id' ],  $user_id, (int) $max_entries_per_challenge_to_process );
 
         if ( true === empty( $users ) ) {
             continue;
@@ -106,7 +110,7 @@ function ws_ls_challenges_data_update_row( $user_id, $challenge_id ) {
     }
 
     // Other
-    $data[ 'last_processed' ]   = date( 'Y-m-d H:s');
+    $data[ 'last_processed' ]   = date("Y-m-d H:i:s");
 
     global $wpdb;
 
@@ -185,9 +189,11 @@ function t() {
         return;
     }
 
-    $t = ws_ls_challenges_process();
+   // ws_ls_challenges_data_last_processed_reset( 1 );
 
-    var_dump( $t );
+   // $t = ws_ls_challenges_process();
+    ws_ls_challenges_process( 1 );
+    //var_dump( $t );
 
  //  ws_ls_challenges_add( 708, '2019-08-01', '2019-08-28' );
 
@@ -197,4 +203,4 @@ function t() {
   //  print_r( $t );
     die;
 }
-add_action( 'init', 't' );
+// add_action( 'init', 't' );
