@@ -178,22 +178,9 @@ function ws_ls_setup_wizard_page() {
 						</div>
                     </div>
 				</div>
-				<!-- .meta-box-sortables .ui-sortable -->
-
 			</div>
-			<!-- post-body-content -->
-
-		</div>
-		<!-- #post-body .metabox-holder .columns-2 -->
-
-		<br class="clear">
+   		</div>
 	</div>
-	<!-- #poststuff -->
 
-	</div> <!-- .wrap -->
 	<?php
-
 }
-
-
-?>

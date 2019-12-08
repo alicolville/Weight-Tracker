@@ -100,7 +100,7 @@ function ws_ls_help_page() {
                                     if ( false === ws_ls_setup_wizard_show_notice() ) {
 
                                         printf('<a class="button" href="%1$s" >%2$s</a>',
-                                            esc_url( admin_url( 'admin.php?page=ws-ls-help&show-setup-wizard-links=y') ),
+                                            esc_url( admin_url( 'admin.php?page=ws-ls-help&wlt-show-setup-wizard-links=y') ),
                                             __('Show Setup Wizard link', WE_LS_SLUG)
                                         );
                                     }

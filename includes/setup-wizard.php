@@ -43,7 +43,7 @@ function ws_ls_setup_wizard_show_notice() {
  */
 function ws_ls_setup_wizard_help_page_show_links_again() {
 
-    if ( true === isset( $_GET[ 'show-setup-wizard-links' ] ) ) {
+    if ( true === isset( $_GET[ 'wlt-show-setup-wizard-links' ] ) ) {
         ws_ls_setup_wizard_show_notice_links_again();
     } else if ( true === isset( $_GET[ 'hide-setup-wizard' ] ) ) {
 		ws_ls_setup_wizard_dismiss_notice();
