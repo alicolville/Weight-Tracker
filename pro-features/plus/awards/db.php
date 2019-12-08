@@ -54,7 +54,6 @@
 	 * Delete awards to a user
 	 *
 	 * @param $user_id
-	 * @return bool
 	 */
 	function ws_ls_awards_db_delete_awards_for_user( $user_id ) {
 
@@ -63,7 +62,6 @@
 		$result = $wpdb->delete( $wpdb->prefix . WE_LS_MYSQL_AWARDS_GIVEN , [ 'user_id' => $user_id ], [ '%d' ] );
 
 		ws_ls_cache_user_delete( $user_id );
-
 	}
 
     /**
@@ -166,7 +164,7 @@
     /**
      * Delete an award
      *
-     * @param $id       award ID to delete
+     * @param $id       Award ID to delete
      * @return bool     true if success
      */
     function ws_ls_awards_delete( $id ) {
@@ -232,7 +230,6 @@
     /**
      * Delete all existing given awards
      *
-     * @return bool     true if success
      */
     function ws_ls_awards_delete_all_previously_given( ) {
 

@@ -44,9 +44,10 @@ function ws_ls_stats_run_cron_for_first_time() {
 }
 add_action('admin_init', 'ws_ls_stats_run_cron_for_first_time');
 
-/*
-	Fetch from cache the summary stats
-*/
+/**
+ * Fetch from cache the summary stats
+ * @return mixed|void
+ */
 function ws_ls_stats_get_summary_stats() {
 
 	// If disabled, don't bother

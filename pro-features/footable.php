@@ -267,7 +267,6 @@ function ws_ls_data_table_get_columns($smaller_width = false, $front_end = false
 
 /**
  * Enqueue relevant CSS / JS when needed to make footables work
- * @return nothing
  */
 function ws_ls_data_table_enqueue_scripts() {
 
@@ -279,7 +278,6 @@ function ws_ls_data_table_enqueue_scripts() {
 	wp_enqueue_script('ws-ls-footables-admin', plugins_url( '/assets/js/data.footable' .     $minified . '.js', __DIR__ ), [ 'ws-ls-footables-js' ], WE_LS_CURRENT_VERSION, true);
 	wp_localize_script('ws-ls-footables-admin', 'ws_user_table_config', ws_ls_data_js_config() );
     wp_enqueue_style('fontawesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', [], WE_LS_CURRENT_VERSION);
-
 }
 
 /**
