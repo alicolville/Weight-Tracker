@@ -196,13 +196,6 @@ HEX: #f7786b
 .ws-ls-label-col {
     width: 10%;
 }
-.ws-ls-header-row {
-    height: 20px;
-}
-.ws-ls-header-row div {
-    font-weight: bold;
-    color: #92a8d1;
-}
 /*
     Custom Fields
  */
@@ -247,8 +240,8 @@ HEX: #f7786b
     color: #1e69de;
     margin: 0px 10px 0px 0px;
 }
-
-.setup-wizard-image {
-    border: 1px dotted #92a8d1;
-    padding: 10px;
+@media only screen and (max-width: 600px) {
+    .ws-ls-user-data a span {
+        display: none !important;
+    }
 }

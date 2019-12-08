@@ -157,10 +157,11 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 = 7.5 =
 
-* Added a 5 minute cron hook.
+* Improvement: Added a 5 minute cron hook.
 * Improvement: Record when a weight entry was actually inserted. Currently not exposed, but maybe of use with the new Challenges system.
 * Improvement: Hook fired when user cache has been deleted "wlt-hook-delete-cache-for-user".
-* Improvement: Refactored search.
+* Improvement: Refactored and improved speed of user search.
+* Improvement: When mobile, make the user header menu responsive.
 * Improvement: Added some cross reference too YeKen's Meal Tracker.
 * Improvement: Various small refactors of code.
 * Bug fix: Fixed layout issue on help page.
