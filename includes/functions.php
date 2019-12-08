@@ -437,6 +437,7 @@ function ws_ls_get_user_preference($key, $user_id = false)
 
   return NULL;
 }
+
 function ws_ls_string_to_bool($value)
 {
   if('false' == $value) {
@@ -448,14 +449,24 @@ function ws_ls_string_to_bool($value)
 
   return $value;
 }
-function ws_ls_force_bool_argument($value) {
 
-    if (strtolower($value) == 'true' || (is_bool($value) === true && $value == true)) {
-        return true;
-    }
+/**
+ * Force a string to boolean
+ * @param $value
+ * @return bool
+ */
+function ws_ls_force_bool_argument( $value ) {
 
-    return false;
+    return ( 'true' === strtolower( $value ) ||
+            ( true === is_bool( $value ) && true === $value ) );
 }
+
+/**
+ * Force a value to an int
+ * @param $value
+ * @param bool $default
+ * @return int
+ */
 function ws_ls_force_numeric_argument( $value, $default = false ) {
 
     if ( is_numeric( $value ) ) {
@@ -568,7 +579,14 @@ function ws_ls_format_stones_pound_for_comparison_display($weight) {
 	return '';
 }
 
-function ws_ls_querystring_value($key, $force_to_int = false, $default = false) {
+/**
+ * Fetch a value from the $_GET
+ * @param $key
+ * @param bool $force_to_int
+ * @param bool $default
+ * @return bool|int|mixed|null
+ */
+function ws_ls_querystring_value( $key, $force_to_int = false, $default = false ) {
 
     $return_value = NULL;
 
@@ -580,25 +598,35 @@ function ws_ls_querystring_value($key, $force_to_int = false, $default = false) 
     return ( false !== $default && true === is_null( $return_value ) ) ? $default : $return_value;
 }
 
-function ws_ls_ajax_post_value($key, $json_decode = false)
-{
-	if( isset($_POST[$key]) && $json_decode) {
-		return json_decode($_POST[$key]);
-	}
-	elseif(isset($_POST[$key])) {
-		return $_POST[$key];
-	}
+/**
+ * Fetch an item from the $_POST object
+ * @param $key
+ * @param bool $json_decode
+ * @param null $default
+ * @return mixed|null
+ */
+function ws_ls_ajax_post_value( $key, $json_decode = false, $default = NULL ) {
 
-	return NULL;
+    if( false === isset( $_POST[ $key ] ) ) {
+        return $default;
+    }
+
+    return ( true === $json_decode ) ? json_decode( $_POST[ $key ] ) : $_POST[ $key ];
 }
 
-function ws_ls_get_url($base_64_encode = false) {
-	$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+/**
+ * Gewt the current page URL
+ * @param bool $base_64_encode
+ * @return mixed|string#
+ */
+function ws_ls_get_url( $base_64_encode = false ) {
+
+    $current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 
 	// Wee hack, replace removedata querystring value
 	$current_url = str_replace('removedata', 'removed', $current_url);
 
-	return (true === $base_64_encode) ? base64_encode($current_url) : $current_url;
+	return ( true === $base_64_encode ) ? base64_encode( $current_url ) : $current_url;
 }
 
 function ws_ls_stats_clear_last_updated_date(){
