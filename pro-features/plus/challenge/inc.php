@@ -8,3 +8,4 @@ defined('ABSPATH') or die("Jog on!");
 require_once( 'activate.php' );
 require_once( 'db.php' );
 require_once( 'functions.php' );
+require_once( 'cron.php' );

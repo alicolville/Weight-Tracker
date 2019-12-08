@@ -34,14 +34,20 @@ function ws_ls_challenges_create_mysql_tables() {
     $sql = "CREATE TABLE $table_name (
                 user_id int NOT NULL,
                 challenge_id int NOT NULL,
+                group_id int NULL,
                 count_wt_entries int NULL,
                 count_mt_entries int NULL,
                 weight_start float NULL,
                 weight_latest float NULL,
                 weight_diff float NULL,
+                date_start date DEFAULT NULL,
+                date_latest date DEFAULT NULL,
                 bmi_start float NULL,
                 bmi_latest float NULL,
                 bmi_diff float NULL,
+                height float NULL,
+                age int NULL,
+                gender int NULL,
                 last_processed datetime DEFAULT NULL,
                 PRIMARY KEY ( user_id, challenge_id )              
             ) $charset_collate;";

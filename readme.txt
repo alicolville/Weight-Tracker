@@ -157,7 +157,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 = 7.5 =
 
-* TODO:
+* Added a 5 minute cron hook.
 * Improvement: Record when a weight entry was actually inserted. Currently not exposed, but maybe of use with the new Challenges system.
 
 = 7.4 =
