@@ -66,7 +66,7 @@ function ws_ls_challenges_data_update_row( $user_id, $challenge_id ) {
 
     $weight_entries = ws_ls_challenges_get_weight_entries( $user_id, $challenge[ 'start_date' ], $challenge[ 'end_date' ] );
 
-    $data = []; $formats = [ '%d', '%s', '%s', '%f', '%f', '%f', '%f', '%d', '%f', '%f', '%f', '%f', '%d', '%d', '%d', '%s' ];
+    $data = []; $formats = [ '%d', '%s', '%s', '%f', '%f', '%f', '%f', '%d', '%f', '%f', '%f', '%f', '%d', '%d', '%d', '%d', '%s' ];
 
     // Weight Data
     $data[ 'count_wt_entries' ]     = count( $weight_entries );
@@ -94,10 +94,11 @@ function ws_ls_challenges_data_update_row( $user_id, $challenge_id ) {
     $data[ 'bmi_diff' ]         = $data[ 'bmi_latest' ] - $data[ 'bmi_start' ];
 
     // Handy user preferences
-    $data[ 'gender' ]   = ws_ls_get_user_setting( $field = 'gender', $user_id );
-    $data[ 'age' ]      = ws_ls_get_age_from_dob( $user_id );
+    $data[ 'gender' ]       = ws_ls_get_user_setting( 'gender', $user_id );
+    $data[ 'age' ]          = ws_ls_get_age_from_dob( $user_id );
+	$data[ 'opted_in' ]     = ws_ls_get_user_setting( 'challenge_opt_in', $user_id );
 
-    $data[ 'group_id' ]    = NULL;
+	$data[ 'group_id' ]    = NULL;
 
     // Group
     if ( true === ws_ls_groups_enabled() ) {
@@ -189,9 +190,11 @@ function t() {
         return;
     }
 
+    ws_ls_set_user_preference_simple( 'challenge_opt_in', 2, 13);
+
    // ws_ls_challenges_data_last_processed_reset( 1 );
 
-   // $t = ws_ls_challenges_process();
+  //  $t = ws_ls_challenges_process();
   //  ws_ls_challenges_process( 1 );
     //var_dump( $t );
 
@@ -199,8 +202,8 @@ function t() {
 
     // ws_ls_challenges_identify_entries( 708, '2019-08-01', '2019-08-28' );
 
-    $t = ws_ls_groups_user( 1 );
-    print_r( $t );
+   // $t = ws_ls_groups_user( 1 );
+    //print_r( $t );
     die;
 }
- // add_action( 'init', 't' );
+//add_action( 'init', 't' );

@@ -49,6 +49,7 @@ function ws_ls_challenges_create_mysql_tables() {
                 height float NULL,
                 age int NULL,
                 gender int NULL,
+                opted_in int NOT NULL DEFAULT 0,
                 last_processed datetime DEFAULT NULL,
                 PRIMARY KEY ( user_id, challenge_id )              
             ) $charset_collate;";

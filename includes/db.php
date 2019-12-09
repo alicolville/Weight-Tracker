@@ -523,6 +523,51 @@ function ws_ls_set_user_preference( $field, $value, $user_id = NULL ) {
 }
 
 /**
+ * Update a user preference field
+ * @param $field
+ * @param $value
+ * @param null $user_id
+ * @return bool
+ */
+function ws_ls_set_user_preference_simple( $field, $value, $user_id = NULL ) {
+
+    // Ensure we have a value!
+    if ( true === empty( $field ) ) {
+        return false;
+    }
+
+    $user_id = $user_id ?: get_current_user_id();
+
+    // Check for existing settings for this user, if none, then we need to insert the settings row
+    if ( true === empty( ws_ls_get_user_preferences( $user_id ) ) ) {
+        return ws_ls_set_user_preference( $field, $value, $user_id );
+    }
+
+    global $wpdb;
+
+    $db_fields = [ $field => $value ];
+
+    // Set data types
+    $db_field_types = ws_ls_user_preferences_get_formats( $db_fields );
+
+    // Update or insert
+    $result = $wpdb->update(
+        $wpdb->prefix . WE_LS_USER_PREFERENCES_TABLENAME,
+        $db_fields,
+        [ 'user_id' => (int) $user_id],
+        $db_field_types,
+        [ '%d' ]
+    );
+
+    $result = ($result === false) ? false : true;
+
+    // Tidy up cache
+    ws_ls_delete_cache_for_given_user( $db_fields['user_id'] );
+
+    return $result;
+}
+
+/**
  * Provide a list of formats for user pref database fields
  *
  * @param $db_fields
@@ -540,7 +585,8 @@ function ws_ls_user_preferences_get_formats( $db_fields ) {
 			    'height'            => '%d',
 		        'settings'          => '%s',
 			    'user_group'        => '%d',
-                'user_id'           => '%d'
+                'user_id'           => '%d',
+                'challenge_opt_in'  => '%d'
     ];
 
     $lookup = apply_filters( WE_LS_FILTER_USER_SETTINGS_DB_FORMATS, $lookup );

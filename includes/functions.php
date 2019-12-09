@@ -615,7 +615,7 @@ function ws_ls_ajax_post_value( $key, $json_decode = false, $default = NULL ) {
 }
 
 /**
- * Gewt the current page URL
+ * Get the current page URL
  * @param bool $base_64_encode
  * @return mixed|string#
  */

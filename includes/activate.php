@@ -70,7 +70,7 @@
 			shoulders float NULL,
 			neck float NULL,
 			photo_id int NULL,
-			inserted TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+			inserted TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 		  UNIQUE KEY id (id)
 		) $charset_collate;";
 
@@ -102,7 +102,7 @@
                  aim float DEFAULT 0 NULL,
                  dob datetime NULL,
                  body_type float DEFAULT 0 NULL,
-                 challenge_opt_in float DEFAULT 0 NULL,
+                 challenge_opt_in float DEFAULT -1 NULL,
 				 UNIQUE KEY user_id (user_id)
 		 ) $charset_collate;";
 
