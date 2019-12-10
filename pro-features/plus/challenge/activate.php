@@ -20,6 +20,7 @@ function ws_ls_challenges_create_mysql_tables() {
 
     $sql = "CREATE TABLE $table_name (
                 id mediumint(9) NOT NULL AUTO_INCREMENT,
+                name varchar( 300 ) NOT NULL,
                 start_date datetime NULL,
                 end_date datetime NULL,
                 timestamp TIMESTAMP NULL,
@@ -64,7 +65,7 @@ add_action('ws-ls-rebuild-database-tables', 'ws_ls_challenges_create_mysql_table
 function ws_ls_challenges_activate() {
 
     // Only run this when the plugin version has changed
-    if( true === update_option( 'ws-ls-challenges-db-number', WE_LS_DB_VERSION ) ) {
+    if( true === update_option( '2ws-ls-challenges-db-number', WE_LS_DB_VERSION ) ) {
         ws_ls_challenges_create_mysql_tables();
     }
 }
