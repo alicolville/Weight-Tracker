@@ -124,6 +124,21 @@ function ws_ls_challenges_identify_entries( $challenge_id, $start_date = NULL, $
     return $wpdb->query( $sql );
 }
 
+/**
+ * Return possible age ranges
+ * < 25, 26-35, 36-45, 46-55, 55+
+ *
+ * @return array
+ */
+function ws_ls_age_ranges() {
+	return [
+		1 => [ 'min' => NULL, 'max' => '25' ],
+		2 => [ 'min' => 26, 'max' => '35' ],
+		3 => [ 'min' => 36, 'max' => '45' ],
+		4 => [ 'min' => 46, 'max' => '55' ],
+		5 => [ 'min' => 55, 'max' => NULL ]
+	];
+}
 
 /**
  * Fetch challenge data
