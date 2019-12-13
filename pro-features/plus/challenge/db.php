@@ -124,6 +124,74 @@ function ws_ls_challenges_identify_entries( $challenge_id, $start_date = NULL, $
     return $wpdb->query( $sql );
 }
 
+
+/**
+ * Fetch challenge data
+ *
+ * @param $args
+ *
+ * @return bool|null
+ */
+function ws_ls_challenges_data( $args ) {
+
+	$args = wp_parse_args( $args, [
+		'challenge-id'  => NULL,
+		'gender'        => NULL,
+		'age-range'     => NULL,
+		'group-id'      => NULL,
+		'opted-in'      => true
+	]);
+
+	if ( true === empty( $args[ 'challenge-id' ] ) ) {
+		return NULL;
+	}
+
+	$cache_key = 'challenge-data-' . md5( json_encode( $args ) );
+
+	if ( $cache = ws_ls_get_cache( $cache_key ) ) {
+		return $cache;
+	}
+
+	global $wpdb;
+
+	$sql = $wpdb->prepare( 'Select * from ' . $wpdb->prefix . WE_LS_MYSQL_CHALLENGES_DATA . ' where challenge_id = %d', $args[ 'challenge-id' ] );
+
+	// Gender
+	if ( false === empty( $args[ 'gender' ] ) ) {
+		$sql .= $wpdb->prepare( ' and gender = %d', $args[ 'gender' ] );
+	}
+
+	// Age range
+	if ( false === empty( $args[ 'age-range' ] ) ) {
+
+		$age_range = ws_ls_age_range_get( $args[ 'age-range' ] );
+
+		if ( false === empty( $age_range[ 'min' ] ) ) {
+			$sql .= $wpdb->prepare( ' and age >= %d', $age_range[ 'min' ] );
+		}
+
+		if ( false === empty( $age_range[ 'max' ] ) ) {
+			$sql .= $wpdb->prepare( ' and age <= %d', $age_range[ 'max' ] );
+		}
+
+	}
+
+	// Group
+	if ( false === empty( $args[ 'group-id' ] ) ) {
+		$sql .= $wpdb->prepare( ' and group_id = %d', $args[ 'group-id' ] );
+	}
+
+	if ( true === $args[ 'opted-in' ] ) {
+		$sql .= ' and opted_in = 1';
+	}
+
+	$data = $wpdb->get_results( $sql, ARRAY_A );
+
+	ws_ls_set_cache( $cache_key, $data );
+
+	return $data;
+}
+
 /**
  * Fetch users for the given challenge that need to be processed.
  * @param $challenge_id

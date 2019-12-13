@@ -184,6 +184,26 @@ function ws_ls_table_challenge( $args ) {
     <?php
 }
 
+/**
+ * Fetch an age range
+ *
+ * @param $key
+ *
+ * @return array
+ */
+function ws_ls_age_range_get( $key ) {
+
+    if ( true === empty( $key ) ) {
+        return NULL;
+    }
+
+	$key = (int) $key;
+
+	$ranges = ws_ls_age_ranges();
+
+	return ( true === array_key_exists( $key, $ranges ) ) ? $ranges[ $key ] : NULL;
+}
+
 function t() {
 
     if ( true === is_admin() ) {
