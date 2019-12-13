@@ -6,6 +6,8 @@ function ws_ls_challenges_admin_page() {
 
     ws_ls_user_data_permission_check();
 
+    ws_ls_data_table_enqueue_scripts();
+
     ?>
     <div class="wrap ws-ls-user-data ws-ls-admin-page">
     <div id="poststuff">
@@ -18,16 +20,16 @@ function ws_ls_challenges_admin_page() {
                         }
                     ?>
                     <div class="postbox">
-                        <h2 class="hndle"><span><?php echo __( 'Chart', YK_MT_SLUG ); ?></span></h2>
+                        <h2 class="hndle"><span><?php echo __( 'Current Challenges', YK_MT_SLUG ); ?></span></h2>
                         <div class="inside">
-
+                            <?php ws_ls_challenges_table(); ?>
                         </div>
                     </div>
                     <div class="postbox">
                         <h2 class="hndle"><span><?php echo __('Entries for this user', YK_MT_SLUG ); ?></span></h2>
                         <div class="inside">
                             <?php
-                               ws_ls_table_challenge( [ 'challenge_id'   => 1 ] );
+
                             ?>
                         </div>
                     </div>

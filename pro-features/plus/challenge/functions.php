@@ -126,72 +126,13 @@ function ws_ls_challenges_data_update_row( $user_id, $challenge_id ) {
 }
 
 /**
- * Display all user's entries in a data table
- * @param $args
- */
-function ws_ls_table_challenge( $args ) {
-
-    $args = wp_parse_args( $args, [
-        'challenge-id'  => NULL
-    ]);
-
-    if ( NULL === $args[ 'challenge-id' ] ) {
-        return;
-    }
-
-    ?>
-    <table class="ws-ls-footable ws-ls-footable-basic widefat" data-paging="true" data-sorting="true" data-state="true">
-        <thead>
-        <tr>
-            <th data-type="date" data-format-string="D/M/Y"><?php echo __( 'Date', WS_LS_SLUG ); ?></th>
-            <th data-type="text" data-breakpoints="sm"  data-visible="<?php echo ( true == $args[ 'show-username' ] ) ? 'true' : 'false'; ?>">
-                <?php echo __( 'User', WS_LS_SLUG ); ?>
-            </th>
-            <th data-breakpoints="xs" data-type="number"><?php echo __( 'Calories Allowed', WS_LS_SLUG ); ?></th>
-            <th data-breakpoints="sm" data-type="number"><?php echo __( 'Calories Used', WS_LS_SLUG ); ?></th>
-            <th data-breakpoints="xs" data-type="number"><?php echo __( 'Calories Remaining', WS_LS_SLUG ); ?></th>
-            <th data-breakpoints="xs" data-sortable="false" width="20"><?php echo __( 'Percentage Used', WS_LS_SLUG ); ?></th>
-            <th></th>
-        </tr>
-        </thead>
-        <?php
-        foreach ( $args[ 'entries' ] as $entry ) {
-
-            $class = ( $entry[ 'calories_used' ] > $entry[ 'calories_allowed' ] ) ? 'ws-ls-error' : 'ws-ls-ok';
-
-            printf ( '    <tr class="%6$s">
-                                                <td>%1$s</td>
-                                                <td>%8$s</td>
-                                                <td class="ws-ls-blur">%2$s</td>
-                                                <td class="ws-ls-blur">%3$s</td>
-                                                <td class="ws-ls-blur">%4$s</td>
-                                                <td class="ws-ls-blur">%5$s</td>
-                                                <td><a href="%7$s" class="btn btn-default footable-edit"><i class="fa fa-eye"></i></a></td>
-                                            </tr>',
-                yk_mt_date_format( $entry['date' ] ),
-                $entry[ 'calories_allowed' ],
-                $entry[ 'calories_used' ],
-                $entry[ 'calories_remaining' ],
-                $entry[ 'percentage_used' ] . '%',
-                $class,
-                yk_mt_link_admin_page_entry( $entry[ 'id' ] ),
-                yk_mt_link_profile_display_name_link( $entry[ 'user_id' ] )
-            );
-        }
-        ?>
-        </tbody>
-    </table>
-    <?php
-}
-
-/**
  * Fetch an age range
  *
  * @param $key
  *
  * @return array
  */
-function ws_ls_age_range_get( $key ) {
+function ws_ls_challenges_age_range_get( $key ) {
 
     if ( true === empty( $key ) ) {
         return NULL;
@@ -204,26 +145,95 @@ function ws_ls_age_range_get( $key ) {
 	return ( true === array_key_exists( $key, $ranges ) ) ? $ranges[ $key ] : NULL;
 }
 
+/**
+ * Display all challenges
+ */
+function ws_ls_challenges_table() {
+
+    ws_ls_data_table_enqueue_scripts();
+
+    ?>
+    <table class="ws-ls-footable ws-ls-footable-basic widefat" data-paging="true" data-sorting="true" data-state="true">
+        <thead>
+        <tr>
+            <th data-type="number"><?php echo __( 'ID', WS_LS_SLUG ); ?></th>
+            <th data-type="text"><?php echo __( 'Name', WS_LS_SLUG ); ?></th>
+            <th data-breakpoints="xs" data-type="date" data-format-string="D/M/Y"><?php echo __( 'Start Date', WS_LS_SLUG ); ?></th>
+            <th data-breakpoints="xs" data-type="date" data-format-string="D/M/Y"><?php echo __( 'End Date', WS_LS_SLUG ); ?></th>
+            <th data-breakpoints="xs" data-type="number"><?php echo __( 'No. entries', WS_LS_SLUG ); ?></th>
+            <th data-breakpoints="xs" data-type="number"><?php echo __( 'Entries to process', WS_LS_SLUG ); ?></th>
+            <th data-breakpoints="xs" data-type="text"><?php echo __( 'Closed', WS_LS_SLUG ); ?></th>
+            <th data-breakpoints="xs"></th>
+        </tr>
+        </thead>
+        <?php
+            foreach ( ws_ls_challenges( false ) as $challenge ) {
+
+                $stats = ws_ls_challenges_stats( $challenge[ 'id' ] );
+
+                printf ( '    <tr>
+                                                    <td>%1$d</td>
+                                                    <td>%2$s</td>
+                                                    <td>%3$s</td>
+                                                    <td>%4$s</td>
+                                                    <td>%5$d</td>
+                                                    <td>%6$d</td>
+                                                    <td>%7$s</td>
+                                                    <td>
+                                                        <a href="%11$s" class="btn btn-default" title="%8$s"><i class="fa fa-eye"></i></a>
+                                                        <a href="%12$s" class="btn btn-default" title="%9$s"><i class="fa fa-lock"></i></a> 
+                                                        <a href="%13$s" class="btn btn-default" title="%10$s"><i class="fa fa-trash"></i></a>    
+                                                    </td>
+                                                </tr>',
+                    $challenge[ 'id' ],
+                    esc_html( $challenge[ 'name' ] ),
+                    ws_ls_iso_date_into_correct_format( $challenge[ 'start_date' ] ),
+                    ws_ls_iso_date_into_correct_format( $challenge[ 'end_date' ] ),
+                    $stats[ 'count' ],
+                    $stats[ 'to-be-processed' ],
+                    ( 1 === (int) $challenge[ 'enabled' ] ) ? __( 'No', WS_LS_SLUG ) : __( 'Yes', WS_LS_SLUG ),
+                    __( 'View challenge data', WS_LS_SLUG ),
+                    __( 'Close challenge', WS_LS_SLUG ),
+                    __( 'Delete challenge', WS_LS_SLUG ),
+                    ws_ls_challenge_link( $challenge[ 'id' ] ),
+                    ws_ls_challenge_link( $challenge[ 'id' ], 'close' ),
+                    ws_ls_challenge_link( $challenge[ 'id' ], 'delete' )
+                );
+            }
+        ?>
+        </tbody>
+    </table>
+    <p>
+        <p><?php echo __( 'Note: ', WS_LS_SLUG ); ?></p>
+    </p>
+    <?php
+}
+
+/**
+ * Link to challenge view / edit
+ * @param $challenge_id
+ * @param string $mode
+ * @return string
+ */
+function ws_ls_challenge_link( $challenge_id, $mode = 'view' ) {
+
+    if ( false === is_numeric( $challenge_id ) ) {
+        return '#';
+    }
+
+    $url = sprintf( 'admin.php?page=ws-ls-challenges&mode=%1$s&challenge-id=%2$d', $mode, $challenge_id );
+
+    $url = admin_url( $url );
+
+    return $url;
+}
+
 function t() {
 
     if ( true === is_admin() ) {
         return;
     }
-
-    ws_ls_set_user_preference_simple( 'challenge_opt_in', 2, 13);
-
-   // ws_ls_challenges_data_last_processed_reset( 1 );
-
-  //  $t = ws_ls_challenges_process();
-  //  ws_ls_challenges_process( 1 );
-    //var_dump( $t );
-
- //  ws_ls_challenges_add( 708, '2019-08-01', '2019-08-28' );
-
-    // ws_ls_challenges_identify_entries( 708, '2019-08-01', '2019-08-28' );
-
-   // $t = ws_ls_groups_user( 1 );
-    //print_r( $t );
+    ws_ls_challenges_process();
     die;
 }
-//add_action( 'init', 't' );
+add_action( 'init', 't' );

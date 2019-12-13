@@ -88,13 +88,20 @@ function ws_ls_challenges_get( $challenge_id ) {
 
 /**
  * Fetch all active challenges
+ * @param bool $enabled
  * @return mixed
  */
-function ws_ls_challenges() {
+function ws_ls_challenges( $enabled = true ) {
 
     global $wpdb;
 
-    return $wpdb->get_results( 'SELECT * FROM ' . $wpdb->prefix . WE_LS_MYSQL_CHALLENGES . ' WHERE enabled = 1', ARRAY_A );
+    $sql = 'SELECT * FROM ' . $wpdb->prefix . WE_LS_MYSQL_CHALLENGES;
+
+    if ( true === $enabled ) {
+        $sql .= ' WHERE enabled = 1';
+    }
+
+    return $wpdb->get_results( $sql, ARRAY_A );
 }
 
 /**
@@ -179,7 +186,7 @@ function ws_ls_challenges_data( $args ) {
 	// Age range
 	if ( false === empty( $args[ 'age-range' ] ) ) {
 
-		$age_range = ws_ls_age_range_get( $args[ 'age-range' ] );
+		$age_range = ws_ls_challenges_age_range_get( $args[ 'age-range' ] );
 
 		if ( false === empty( $age_range[ 'min' ] ) ) {
 			$sql .= $wpdb->prepare( ' and age >= %d', $age_range[ 'min' ] );
@@ -235,6 +242,31 @@ function ws_ls_challenges_data_awaiting_processing( $challenge_id, $user_id = NU
 
     return $wpdb->get_results( $sql, ARRAY_A );
 }
+
+/**
+ * Return basic stats for a challenge
+ * @param $challenge_id
+ * @return array|bool
+ */
+function ws_ls_challenges_stats( $challenge_id ) {
+
+    if ( true === empty( $challenge_id ) ) {
+        return false;
+    }
+
+    global $wpdb;
+
+    $stats = [ 'count' => NULL, 'to-be-processed' => NULL, 'processed' => NULL ];
+
+    $challenge_id = (int) $challenge_id;
+
+    $stats[ 'count' ]           = $wpdb->get_var( 'SELECT count( user_id ) FROM ' . $wpdb->prefix . WE_LS_MYSQL_CHALLENGES_DATA . ' WHERE challenge_id = ' . $challenge_id );
+    $stats[ 'processed' ]       = $wpdb->get_var( 'SELECT count( user_id ) FROM ' . $wpdb->prefix . WE_LS_MYSQL_CHALLENGES_DATA . ' WHERE last_processed is not NULL and challenge_id = ' . $challenge_id );
+    $stats[ 'to-be-processed' ] = $stats[ 'count' ] - $stats[ 'processed' ];
+
+    return $stats;
+}
+
 
 /**
  * Update last processed flag for a user record when processed
