@@ -8,6 +8,17 @@ function ws_ls_challenges_admin_page() {
 
     ws_ls_data_table_enqueue_scripts();
 
+    $challenge_id   =  ws_ls_querystring_value( 'challenge-id', true );
+    $mode           =  ws_ls_querystring_value( 'mode' );
+
+    if ( 'close' === $mode && false !== $challenge_id ) {
+        ws_ls_challenges_enabled( $challenge_id, false );
+    }
+
+    if ( 'delete' === $mode && false !== $challenge_id ) {
+        ws_ls_challenges_delete( $challenge_id);
+    }
+
     ?>
     <div class="wrap ws-ls-user-data ws-ls-admin-page">
     <div id="poststuff">
@@ -25,14 +36,16 @@ function ws_ls_challenges_admin_page() {
                             <?php ws_ls_challenges_table(); ?>
                         </div>
                     </div>
-                    <div class="postbox">
-                        <h2 class="hndle"><span><?php echo __('Entries for this user', YK_MT_SLUG ); ?></span></h2>
-                        <div class="inside">
-                            <?php
+                    <?php if ( 'view' === $mode ): ?>
+                        <div class="postbox">
+                            <h2 class="hndle"><span><?php echo __('Entries for this user', YK_MT_SLUG ); ?></span></h2>
+                            <div class="inside">
+                                <?php
 
-                            ?>
+                                ?>
+                            </div>
                         </div>
-                    </div>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

@@ -59,6 +59,29 @@ function ws_ls_challenges_enabled( $challenge_id, $enabled = true ) {
 }
 
 /**
+ * Delete a challenge
+ * @param $challenge_id
+ * @return bool
+ */
+function ws_ls_challenges_delete( $challenge_id ) {
+
+    if ( true === empty( $challenge_id ) ) {
+        return false;
+    }
+
+    global $wpdb;
+
+    $result = $wpdb->delete( $wpdb->prefix . WE_LS_MYSQL_CHALLENGES,
+        [ 'id' => $challenge_id ],
+        [ '%d' ]
+    );
+
+    ws_ls_delete_cache( 'challenge-' . (int) $challenge_id );
+
+    return ! empty( $result );
+}
+
+/**
  * Fetch a challenge
  * @param $challenge_id
  * @return bool

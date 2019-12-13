@@ -203,9 +203,6 @@ function ws_ls_challenges_table() {
         ?>
         </tbody>
     </table>
-    <p>
-        <p><?php echo __( 'Note: ', WS_LS_SLUG ); ?></p>
-    </p>
     <?php
 }
 
