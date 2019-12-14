@@ -202,7 +202,7 @@ function ws_ls_challenges_data( $args ) {
 	$cache_key = 'challenge-data-' . md5( json_encode( $args ) );
 
 	if ( $cache = ws_ls_get_cache( $cache_key ) ) {
-		return $cache;
+		// return $cache; TODO
 	}
 
 	global $wpdb;
@@ -240,10 +240,28 @@ function ws_ls_challenges_data( $args ) {
 
 	$data = $wpdb->get_results( $sql, ARRAY_A );
 
+	if ( false === empty( $data ) ) {
+	    $data = array_map( 'ws_ls_challenges_data_expand_row', $data );
+    }
+
 	ws_ls_set_cache( $cache_key, $data );
 
 	return $data;
 }
+
+/**
+ * Expand rows
+ * @param $row
+ * @return mixed
+ */
+function ws_ls_challenges_data_expand_row( $row ) {
+
+    $row[ 'display_name' ] = ws_ls_get_display_name( $row[ 'user_id'] );
+
+    return $row;
+}
+
+// ws_ls_get_display_name( $row[ 'user_id' ] )
 
 /**
  * Fetch users for the given challenge that need to be processed.

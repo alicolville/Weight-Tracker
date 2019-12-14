@@ -618,3 +618,14 @@ function ws_ls_array_check_fields($data, $expected_fields ) {
 
     return true;
 }
+
+/**
+ * Get user display name
+ * @param $user_id
+ */
+function ws_ls_get_display_name( $user_id ) {
+
+    $current_user = get_userdata( $user_id );
+
+    return ( false === empty( $current_user->display_name ) ) ? $current_user->display_name : $user_id;
+}

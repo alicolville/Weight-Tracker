@@ -46,6 +46,24 @@ function ws_ls_challenges_process( $user_id = NULL,
 }
 
 /**
+ * Return difference between two dayes in weels
+ * @param $date1
+ * @param $date2
+ * @return float
+ */
+function ws_ls_challenges_diff_between_dates_in_weeks( $date1, $date2 ) {
+
+    if( $date1 > $date2 ) {
+        return ws_ls_challenges_diff_between_dates_in_weeks( $date2, $date1 );
+    }
+
+    $first = DateTime::createFromFormat( 'Y-m-d h:i:s', $date1 );
+    $second = DateTime::createFromFormat( 'Y-m-d h:i:s', $date2 );
+
+    return floor($first->diff( $second )->days/7 );
+}
+
+/**
  * Update the data for the given row
  *
  * @param $user_id
@@ -66,16 +84,17 @@ function ws_ls_challenges_data_update_row( $user_id, $challenge_id ) {
 
     $weight_entries = ws_ls_challenges_get_weight_entries( $user_id, $challenge[ 'start_date' ], $challenge[ 'end_date' ] );
 
-    $data = []; $formats = [ '%d', '%s', '%s', '%f', '%f', '%f', '%f', '%d', '%f', '%f', '%f', '%f', '%d', '%d', '%d', '%d', '%s' ];
+    $data = []; $formats = [ '%d', '%s', '%s', '%d', '%f', '%f', '%f', '%f', '%d', '%f', '%f', '%f', '%f', '%d', '%d', '%d', '%d', '%s' ];
 
     // Weight Data
-    $data[ 'count_wt_entries' ]     = count( $weight_entries );
-    $data[ 'date_start' ]           = $weight_entries[ 0 ][ 'weight_date' ];
-    $data[ 'date_latest' ]          = $weight_entries[ $data[ 'count_wt_entries' ] - 1 ][ 'weight_date' ];
-    $data[ 'weight_start' ]         = $weight_entries[ 0 ][ 'kg' ];
-    $data[ 'weight_latest' ]        = $weight_entries[ $data[ 'count_wt_entries' ] - 1 ][ 'kg' ];
-    $data[ 'weight_diff' ]          = $data[ 'weight_latest' ] - $data[ 'weight_start' ];
-    $data[ 'weight_percentage' ]    = ws_ls_calculate_percentage_difference_as_number( $data[ 'weight_start' ], $data[ 'weight_latest' ] );
+    $data[ 'count_wt_entries' ]         = count( $weight_entries );
+    $data[ 'date_start' ]               = $weight_entries[ 0 ][ 'weight_date' ];
+    $data[ 'date_latest' ]              = $weight_entries[ $data[ 'count_wt_entries' ] - 1 ][ 'weight_date' ];
+    $data[ 'count_wt_entries_week' ]    = ws_ls_challenges_diff_between_dates_in_weeks( $data[ 'date_start' ], $data[ 'date_latest' ] );
+    $data[ 'weight_start' ]             = $weight_entries[ 0 ][ 'kg' ];
+    $data[ 'weight_latest' ]            = $weight_entries[ $data[ 'count_wt_entries' ] - 1 ][ 'kg' ];
+    $data[ 'weight_diff' ]              = number_format( $data[ 'weight_latest' ] - $data[ 'weight_start' ], 3 );
+    $data[ 'weight_percentage' ]        = ws_ls_calculate_percentage_difference_as_number( $data[ 'weight_start' ], $data[ 'weight_latest' ] );
 
     // Meal Tracker
     $data[ 'count_mt_entries' ] = 0;
@@ -91,7 +110,7 @@ function ws_ls_challenges_data_update_row( $user_id, $challenge_id ) {
     $data[ 'height' ]           = ws_ls_get_user_height( $user_id );
     $data[ 'bmi_start' ]        = ws_ls_calculate_bmi( $data[ 'height' ], $data[ 'weight_start' ] );
     $data[ 'bmi_latest' ]       = ws_ls_calculate_bmi( $data[ 'height' ], $data[ 'weight_latest' ] );
-    $data[ 'bmi_diff' ]         = $data[ 'bmi_latest' ] - $data[ 'bmi_start' ];
+    $data[ 'bmi_diff' ]         = number_format( $data[ 'bmi_latest' ] - $data[ 'bmi_start' ], 1 );
 
     // Handy user preferences
     $data[ 'gender' ]       = ws_ls_get_user_setting( 'gender', $user_id );
@@ -155,51 +174,161 @@ function ws_ls_challenges_table() {
     ?>
     <table class="ws-ls-footable ws-ls-footable-basic widefat" data-paging="true" data-sorting="true" data-state="true">
         <thead>
-        <tr>
-            <th data-type="number"><?php echo __( 'ID', WS_LS_SLUG ); ?></th>
-            <th data-type="text"><?php echo __( 'Name', WS_LS_SLUG ); ?></th>
-            <th data-breakpoints="xs" data-type="date" data-format-string="D/M/Y"><?php echo __( 'Start Date', WS_LS_SLUG ); ?></th>
-            <th data-breakpoints="xs" data-type="date" data-format-string="D/M/Y"><?php echo __( 'End Date', WS_LS_SLUG ); ?></th>
-            <th data-breakpoints="xs" data-type="number"><?php echo __( 'No. entries', WS_LS_SLUG ); ?></th>
-            <th data-breakpoints="xs" data-type="number"><?php echo __( 'Entries to process', WS_LS_SLUG ); ?></th>
-            <th data-breakpoints="xs" data-type="text"><?php echo __( 'Closed', WS_LS_SLUG ); ?></th>
-            <th data-breakpoints="xs"></th>
-        </tr>
+            <tr>
+                <th data-type="number"><?php echo __( 'ID', WE_LS_SLUG ); ?></th>
+                <th data-type="text"><?php echo __( 'Name', WE_LS_SLUG ); ?></th>
+                <th data-breakpoints="xs" data-type="date" data-format-string="D/M/Y"><?php echo __( 'Start Date', WE_LS_SLUG ); ?></th>
+                <th data-breakpoints="xs" data-type="date" data-format-string="D/M/Y"><?php echo __( 'End Date', WE_LS_SLUG ); ?></th>
+                <th data-breakpoints="xs" data-type="number"><?php echo __( 'No. entries', WE_LS_SLUG ); ?></th>
+                <th data-breakpoints="xs" data-type="number"><?php echo __( 'Entries to process', WE_LS_SLUG ); ?></th>
+                <th data-breakpoints="xs" data-type="text"><?php echo __( 'Closed', WE_LS_SLUG ); ?></th>
+                <th data-breakpoints="xs"></th>
+            </tr>
         </thead>
+        <tbody>
+            <?php
+                foreach ( ws_ls_challenges( false ) as $challenge ) {
+
+                    $stats = ws_ls_challenges_stats( $challenge[ 'id' ] );
+
+                    printf ( '    <tr>
+                                                        <td>%1$d</td>
+                                                        <td>%2$s</td>
+                                                        <td>%3$s</td>
+                                                        <td>%4$s</td>
+                                                        <td>%5$d</td>
+                                                        <td>%6$d</td>
+                                                        <td>%7$s</td>
+                                                        <td>
+                                                            <a href="%11$s" class="btn btn-default" title="%8$s"><i class="fa fa-eye"></i></a>
+                                                            <a href="%12$s" class="btn btn-default" title="%9$s"><i class="fa fa-lock"></i></a> 
+                                                            <a href="%13$s" class="btn btn-default" title="%10$s"><i class="fa fa-trash"></i></a>    
+                                                        </td>
+                                                    </tr>',
+                        $challenge[ 'id' ],
+                        esc_html( $challenge[ 'name' ] ),
+                        ws_ls_iso_date_into_correct_format( $challenge[ 'start_date' ] ),
+                        ws_ls_iso_date_into_correct_format( $challenge[ 'end_date' ] ),
+                        $stats[ 'count' ],
+                        $stats[ 'to-be-processed' ],
+                        ( 1 === (int) $challenge[ 'enabled' ] ) ? __( 'No', WE_LS_SLUG ) : __( 'Yes', WE_LS_SLUG ),
+                        __( 'View challenge data', WE_LS_SLUG ),
+                        __( 'Close challenge', WE_LS_SLUG ),
+                        __( 'Delete challenge', WE_LS_SLUG ),
+                        ws_ls_challenge_link( $challenge[ 'id' ] ),
+                        ws_ls_challenge_link( $challenge[ 'id' ], 'close' ),
+                        ws_ls_challenge_link( $challenge[ 'id' ], 'delete' )
+                    );
+                }
+            ?>
+        </tbody>
+    </table>
+    <?php
+}
+
+/**
+ * Fetch columns to display
+ * @return array
+ */
+function ws_ls_challenges_entry_columns() {
+
+    $cols = [
+                'weight_diff'           => [ 'title' => __( 'Total Weight Loss', WE_LS_SLUG ), 'type' => 'text' ],
+                'bmi_diff'              => [ 'title' => __( 'BMI Change', WE_LS_SLUG ) ],
+                'weight_percentage'     => [ 'title' => __( '% Body Weight', WE_LS_SLUG ) ],
+                'count_mt_entries'      => [ 'title' => __( 'Meal Tracker Streaks (Days)', WE_LS_SLUG ) ],
+                'count_wt_entries_week' => [ 'title' => __( 'Weight Tracker Streaks (Weeks)', WE_LS_SLUG ) ]
+    ];
+
+    if ( false === wlt_yk_mt_is_active() ) {
+        unset( $cols[ 'count_mt_entries' ] );
+    }
+
+    return $cols;
+}
+
+/**
+ * Display all entries for challenges
+ */
+function ws_ls_challenges_view_entries( $challenge_id ) {
+
+    ws_ls_data_table_enqueue_scripts();
+
+    $columns = ws_ls_challenges_entry_columns();
+
+    $args = [
+                'challenge-id'  => $challenge_id,
+                'opted-in'      => ! is_admin()
+    ];
+
+    $data = ws_ls_challenges_data( $args );
+
+    ?>
+    <table class="ws-ls-footable ws-ls-footable-basic widefat" data-paging="true" data-sorting="true" data-state="true" data-paging-size="50">
+        <thead>
+            <tr>
+                <th data-type="text"><?php echo __( 'Name', WE_LS_SLUG ); ?></th>
+                <?php
+                    foreach ( $columns as $key => $details ) {
+                        printf( '<th data-breakpoints="xs" data-type="%1$s">%2$s</th>',
+                                        ( false === empty( $details[ 'type' ] ) ) ? $details[ 'type' ] : 'number',
+                                        $details[ 'title' ]
+                        );
+                    }
+                ?>
+            </tr>
+        </thead>
+        <tbody>
         <?php
-            foreach ( ws_ls_challenges( false ) as $challenge ) {
 
-                $stats = ws_ls_challenges_stats( $challenge[ 'id' ] );
+            foreach( $data as $row ) {
 
-                printf ( '    <tr>
-                                                    <td>%1$d</td>
-                                                    <td>%2$s</td>
-                                                    <td>%3$s</td>
-                                                    <td>%4$s</td>
-                                                    <td>%5$d</td>
-                                                    <td>%6$d</td>
-                                                    <td>%7$s</td>
-                                                    <td>
-                                                        <a href="%11$s" class="btn btn-default" title="%8$s"><i class="fa fa-eye"></i></a>
-                                                        <a href="%12$s" class="btn btn-default" title="%9$s"><i class="fa fa-lock"></i></a> 
-                                                        <a href="%13$s" class="btn btn-default" title="%10$s"><i class="fa fa-trash"></i></a>    
-                                                    </td>
-                                                </tr>',
-                    $challenge[ 'id' ],
-                    esc_html( $challenge[ 'name' ] ),
-                    ws_ls_iso_date_into_correct_format( $challenge[ 'start_date' ] ),
-                    ws_ls_iso_date_into_correct_format( $challenge[ 'end_date' ] ),
-                    $stats[ 'count' ],
-                    $stats[ 'to-be-processed' ],
-                    ( 1 === (int) $challenge[ 'enabled' ] ) ? __( 'No', WS_LS_SLUG ) : __( 'Yes', WS_LS_SLUG ),
-                    __( 'View challenge data', WS_LS_SLUG ),
-                    __( 'Close challenge', WS_LS_SLUG ),
-                    __( 'Delete challenge', WS_LS_SLUG ),
-                    ws_ls_challenge_link( $challenge[ 'id' ] ),
-                    ws_ls_challenge_link( $challenge[ 'id' ], 'close' ),
-                    ws_ls_challenge_link( $challenge[ 'id' ], 'delete' )
-                );
+                printf( '<tr>
+                                    <td>
+                                        <a href="%1$s">
+                                            %2$s
+                                        </a>
+                                    </td>',
+                                    ws_ls_get_link_to_user_profile( $row[ 'user_id' ] ), $row[ 'display_name' ] );
+
+                foreach ( $columns as $key => $details ) {
+
+                    $value = $row[ $key ];
+
+                    if ( 'weight_diff' == $key ) {
+                        $row[ 'weight_diff' ] = ws_ls_convert_kg_into_relevant_weight_String( $row[ 'weight_diff' ] );
+                    }
+
+                    printf( '    <td  data-sort-value="%1$s">
+                                            %2$s
+                                        </td>',
+                                        $value,
+                                        esc_html( $row[ $key ] )
+                    );
+
+                }
+
+                echo '</tr>';
+
             }
+
+
+        //foreach ( ws_ls_challenges( false ) as $challenge ) {
+
+
+
+//            printf ( '    <tr>
+//                                                    <td>%1$d</td>
+//                                                    <td>%2$s</td>
+//                                                    <td>%3$s</td>
+//                                                    <td>%4$s</td>
+//                                                    <td>%5$d</td>
+//                                                    <td>%6$d</td>
+//                                                    <td>%7$s</td>
+//                                                </tr>',
+//
+//            );
+   //     }
         ?>
         </tbody>
     </table>

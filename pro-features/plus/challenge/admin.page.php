@@ -58,7 +58,7 @@ function ws_ls_challenges_admin_page() {
                     ?>
                     <?php if ( true === in_array( $mode, [ 'delete', 'list' ] ) ): ?>
                         <div class="postbox">
-                            <h2 class="hndle"><span><?php echo __( 'Current Challenges', WS_LS_SLUG ); ?></span></h2>
+                            <h2 class="hndle"><span><?php echo __( 'Current Challenges', WE_LS_SLUG ); ?></span></h2>
                             <div class="inside">
                                 <p>
                                     <a href="<?php echo ws_ls_challenge_link( 1, 'add' ); ?>" class="btn btn-default button-primary">
@@ -99,12 +99,18 @@ function ws_ls_challenges_admin_page() {
                             </div>
                         </div>
                     <?php endif; ?>
-                    <?php if ( 'view' === $mode ): ?>
+                    <?php if ( 'view' === $mode && false !== $challenge_id ): ?>
                         <div class="postbox">
-                            <h2 class="hndle"><span><?php echo __('Entries for this user', WE_LS_SLUG ); ?></span></h2>
+                            <h2 class="hndle"><span><?php echo __('Entries for this challenge', WE_LS_SLUG ); ?></span></h2>
                             <div class="inside">
+                                <p>
+                                    <a href="<?php echo ws_ls_challenge_link( 1, 'list' ); ?>" class="btn btn-default button">
+                                        <i class="fa fa-arrow-left"></i>
+                                        <?php echo __( 'Back', WE_LS_SLUG ); ?>
+                                    </a>
+                                </p>
                                 <?php
-
+                                    ws_ls_challenges_view_entries( $challenge_id );
                                 ?>
                             </div>
                         </div>

@@ -37,6 +37,7 @@ function ws_ls_challenges_create_mysql_tables() {
                 challenge_id int NOT NULL,
                 group_id int NULL,
                 count_wt_entries int NULL,
+                count_wt_entries_week int NULL,
                 count_mt_entries int NULL,
                 weight_start float NULL,
                 weight_latest float NULL,
@@ -65,7 +66,7 @@ add_action('ws-ls-rebuild-database-tables', 'ws_ls_challenges_create_mysql_table
 function ws_ls_challenges_activate() {
 
     // Only run this when the plugin version has changed
-    if( true === update_option( 'kkws-ls-challenges-db-number', WE_LS_DB_VERSION ) ) {
+    if( true === update_option( 'kkfws-ls-challenges-db-number', WE_LS_DB_VERSION ) ) {
         ws_ls_challenges_create_mysql_tables();
     }
 }
