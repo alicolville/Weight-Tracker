@@ -245,3 +245,6 @@ HEX: #f7786b
         display: none !important;
     }
 }
+.ws-ls-challenges .button-primary {
+    color: #FFF;
+}

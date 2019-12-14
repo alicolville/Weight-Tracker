@@ -79,4 +79,16 @@ function ws_ls_challenges_hook_setting_db_format( $formats ) {
 }
 add_filter( 'wlt-filter-user-settings-db-formats', 'ws_ls_challenges_hook_setting_db_format' );
 
+/**
+ * Ajax handler for processing challenge data
+ */
+function ws_ls_challenges_ajax_process() {
 
+    check_ajax_referer( 'process-challenges', 'security' );
+
+    $process = ws_ls_challenges_process();
+
+    wp_send_json( $process );
+
+}
+add_action( 'wp_ajax_process_challenges', 'ws_ls_challenges_ajax_process' );

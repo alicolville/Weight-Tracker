@@ -4,23 +4,26 @@ defined('ABSPATH') or die("Jog on!");
 
 /**
  * Insert a new challenge
- * @param $challenge_id
+ * @param $name
  * @param null $start_date
  * @param null $end_date
  * @return bool
  */
-function ws_ls_challenges_add( $challenge_id, $start_date = NULL, $end_date = NULL ) {
+function ws_ls_challenges_add( $name, $start_date = NULL, $end_date = NULL ) {
 
-    if ( true === empty( $challenge_id ) ) {
+    if ( true === empty( $name ) ) {
         return false;
     }
 
-    $data       = [ 'id' => (int) $challenge_id ];
-    $formats    = [ '%d' ];
+    $data       = [ 'name' => $name, 'enabled' => 1 ];
+    $formats    = [ '%s', '%d' ];
 
-    if ( false === empty( $start_date ) && false === empty( $end_date ) ) {
+    if ( false === empty( $start_date ) ) {
         $data[ 'start_date' ]   = $start_date;
         $formats[]              = '%s';
+    }
+
+    if ( false === empty( $end_date ) ) {
         $data[ 'end_date' ]     = $end_date;
         $formats[]              = '%s';
     }
@@ -77,6 +80,11 @@ function ws_ls_challenges_delete( $challenge_id ) {
     );
 
     ws_ls_delete_cache( 'challenge-' . (int) $challenge_id );
+
+    $result = $wpdb->delete( $wpdb->prefix . WE_LS_MYSQL_CHALLENGES_DATA,
+        [ 'challenge_id' => $challenge_id ],
+        [ '%d' ]
+    );
 
     return ! empty( $result );
 }

@@ -140,10 +140,10 @@
 		}
 
 		// User Data pages
-		if(false === empty($_GET['mode'])) {
+		if( false === empty($_GET['mode']) ) {
 
 			// If on the add / edit entry page, then include relevant CSS / JS for form
-			if(in_array($_GET['mode'], ['entry', 'user-settings'])) {
+			if( true === in_array( $_GET[ 'mode' ], [ 'add', 'entry', 'user-settings' ] ) ) {
 				ws_ls_enqueue_form_dependencies();
 			} else if ('user' == $_GET['mode'] ) {
                 wp_enqueue_script('ws-ls-chart-js', WE_LS_CDN_CHART_JS, array( 'jquery' ), WE_LS_CURRENT_VERSION);

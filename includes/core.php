@@ -446,8 +446,12 @@ function ws_ls_get_existing_value($data, $key, $esc_attr = true) {
 }
 
 
-function ws_ls_convert_date_to_iso($date, $user_id = false)
-{
+function ws_ls_convert_date_to_iso($date, $user_id = false) {
+
+    if ( true === empty( $date ) ) {
+        return NULL;
+    }
+
     if (ws_ls_get_config('WE_LS_US_DATE', $user_id)) {
 		list($month,$day,$year) = sscanf($date, "%d/%d/%d");
 		$date = "$year-$month-$day";
