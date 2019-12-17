@@ -24,7 +24,7 @@ function ws_ls_challenges_create_mysql_tables() {
                 start_date datetime NULL,
                 end_date datetime NULL,
                 timestamp  TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                enabled BIT DEFAULT 0 NULL
+                enabled BIT DEFAULT 0 NULL,
                 UNIQUE KEY id (id)
             ) $charset_collate;";
 
@@ -66,7 +66,7 @@ add_action('ws-ls-rebuild-database-tables', 'ws_ls_challenges_create_mysql_table
 function ws_ls_challenges_activate() {
 
     // Only run this when the plugin version has changed
-    if( true === update_option( 'kkfws-ls-challenges-db-number', WE_LS_DB_VERSION ) ) {
+    if( true === update_option( 'ws-ls-challenges-db-number', WE_LS_DB_VERSION ) ) {
         ws_ls_challenges_create_mysql_tables();
     }
 }
