@@ -311,24 +311,6 @@ function ws_ls_challenges_view_entries( $challenge_id ) {
                 echo '</tr>';
 
             }
-
-
-        //foreach ( ws_ls_challenges( false ) as $challenge ) {
-
-
-
-//            printf ( '    <tr>
-//                                                    <td>%1$d</td>
-//                                                    <td>%2$s</td>
-//                                                    <td>%3$s</td>
-//                                                    <td>%4$s</td>
-//                                                    <td>%5$d</td>
-//                                                    <td>%6$d</td>
-//                                                    <td>%7$s</td>
-//                                                </tr>',
-//
-//            );
-   //     }
         ?>
         </tbody>
     </table>
@@ -353,13 +335,3 @@ function ws_ls_challenge_link( $challenge_id, $mode = 'view' ) {
 
     return $url;
 }
-
-function t() {
-
-    if ( true === is_admin() ) {
-        return;
-    }
-    ws_ls_challenges_process();
-    die;
-}
-add_action( 'init', 't' );
