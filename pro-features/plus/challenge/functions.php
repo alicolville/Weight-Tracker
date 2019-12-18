@@ -249,19 +249,25 @@ function ws_ls_challenges_entry_columns() {
 
 /**
  * Display all entries for challenges
+ * @param $args
  */
-function ws_ls_challenges_view_entries( $challenge_id ) {
+function ws_ls_challenges_view_entries( $args ) {
 
     ws_ls_data_table_enqueue_scripts();
 
     $columns = ws_ls_challenges_entry_columns();
 
-    $args = [
-                'challenge-id'  => $challenge_id,
-                'opted-in'      => ! is_admin()
-    ];
+    $args = wp_parse_args( $args, [
+                                        'challenge-id'  => NULL,
+                                        'opted-in'      => ! is_admin(),
+                                        'show-filters'  => true
+    ]);
 
     $data = ws_ls_challenges_data( $args );
+
+    if ( true === $args[ 'show-filters' ] ) {
+        ws_ls_challenges_show_filters();
+    }
 
     ?>
     <table class="ws-ls-footable ws-ls-footable-basic widefat" data-paging="true" data-sorting="true" data-state="true" data-paging-size="50">
@@ -272,7 +278,7 @@ function ws_ls_challenges_view_entries( $challenge_id ) {
                     foreach ( $columns as $key => $details ) {
                         printf( '<th data-breakpoints="xs" data-type="%1$s">%2$s</th>',
                                         ( false === empty( $details[ 'type' ] ) ) ? $details[ 'type' ] : 'number',
-                                        $details[ 'title' ]
+                                        esc_html( $details[ 'title' ] )
                         );
                     }
                 ?>
@@ -315,6 +321,29 @@ function ws_ls_challenges_view_entries( $challenge_id ) {
         </tbody>
     </table>
     <?php
+}
+
+function ws_ls_challenges_show_filters() {
+
+    printf( '<label for="%1$s">%2$s:</label>
+                                <select id="%1$s" name="%1$s" >',
+                            'ws-ls-gender',
+                                __( 'Gender', WE_LS_SLUG )
+    );
+
+    // Render genders
+    foreach ( ws_ls_genders() as $key => $gender ) {
+        printf('<option value="%1$s" %2$s>%3$s</option>',
+                        $key,
+                    '',
+                        $gender
+        );
+    }
+
+    echo '</select>';
+
+    print_R(ws_ls_age_ranges(true));
+
 }
 
 /**

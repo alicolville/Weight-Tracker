@@ -110,7 +110,7 @@ function ws_ls_challenges_admin_page() {
                                     </a>
                                 </p>
                                 <?php
-                                    ws_ls_challenges_view_entries( $challenge_id );
+                                    ws_ls_challenges_view_entries( [ 'challenge-id'  => $challenge_id ] );
                                 ?>
                             </div>
                         </div>

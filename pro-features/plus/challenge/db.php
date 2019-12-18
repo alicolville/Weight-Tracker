@@ -168,14 +168,34 @@ function ws_ls_challenges_identify_entries( $challenge_id, $start_date = NULL, $
  *
  * @return array
  */
-function ws_ls_age_ranges() {
-	return [
+function ws_ls_age_ranges( $as_string = false) {
+	$age_ranges = [
 		1 => [ 'min' => NULL, 'max' => '25' ],
 		2 => [ 'min' => 26, 'max' => '35' ],
 		3 => [ 'min' => 36, 'max' => '45' ],
 		4 => [ 'min' => 46, 'max' => '55' ],
 		5 => [ 'min' => 55, 'max' => NULL ]
 	];
+
+    if ( false === $as_string ) {
+        return $age_ranges;
+    }
+
+    return array_map( 'ws_ls_age_ranges_array_map_to_string', $age_ranges );
+}
+
+/**
+ * Convert to string
+ * @param $element
+ * @return string
+ */
+function ws_ls_age_ranges_array_map_to_string( $element ) {
+
+    $text = ( true === empty( $element[ 'min' ] ) ) ? 0 : $element[ 'min' ];
+
+    $text .= ( true === empty( $element[ 'max' ] ) ) ? '+' : sprintf( ' %s %d', __( 'to', WE_LS_SLUG ), $element[ 'max' ] );
+
+    return $text;
 }
 
 /**
@@ -202,7 +222,7 @@ function ws_ls_challenges_data( $args ) {
 	$cache_key = 'challenge-data-' . md5( json_encode( $args ) );
 
 	if ( $cache = ws_ls_get_cache( $cache_key ) ) {
-		// return $cache; TODO
+		return $cache;
 	}
 
 	global $wpdb;
