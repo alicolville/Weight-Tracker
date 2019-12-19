@@ -615,6 +615,36 @@ function ws_ls_ajax_post_value( $key, $json_decode = false, $default = NULL ) {
 }
 
 /**
+ * Render a <select> for the given key / value array
+ * @param $key
+ * @param $name
+ * @param $values
+ * @param string $key_prefix
+ */
+function ws_ls_select( $key, $name, $values, $key_prefix = 'filter' ) {
+
+    $key = sprintf( '%s-%s', $key_prefix, $key );
+
+    printf( '<label for="%1$s">%2$s:</label>
+                                    <select id="%1$s" name="%1$s" >',
+        esc_attr( $key ),
+        esc_attr( $name )
+    );
+
+    $selected = ws_ls_querystring_value( $key, true );
+
+    foreach ( $values as $id => $value ) {
+        printf('<option value="%1$s" %2$s>%3$s</option>',
+            esc_attr( $id ),
+            selected( $selected, $id, false ),
+            esc_html( $value )
+        );
+    }
+
+    echo '</select>';
+}
+
+/**
  * Get the current page URL
  * @param bool $base_64_encode
  * @return mixed|string#

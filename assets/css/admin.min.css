@@ -245,3 +245,9 @@ HEX: #f7786b
         display: none !important;
     }
 }
+.ws-ls-challenges-filters {
+     padding: 0px 0px 10px 0px;
+ }
+.ws-ls-challenges-filters label, .ws-ls-challenges-filters input[type=submit] {
+    margin-left: 5px;
+}

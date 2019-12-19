@@ -323,27 +323,41 @@ function ws_ls_challenges_view_entries( $args ) {
     <?php
 }
 
+/**
+ * Render filters for challenge table
+ */
 function ws_ls_challenges_show_filters() {
 
-    printf( '<label for="%1$s">%2$s:</label>
-                                <select id="%1$s" name="%1$s" >',
-                            'ws-ls-gender',
-                                __( 'Gender', WE_LS_SLUG )
-    );
+    $challenge_id = ws_ls_querystring_value( 'challenge-id', true );
 
-    // Render genders
-    foreach ( ws_ls_genders() as $key => $gender ) {
-        printf('<option value="%1$s" %2$s>%3$s</option>',
-                        $key,
-                    '',
-                        $gender
+    echo '<form method="get" class="ws-ls-challenges-filters">';
+
+    // Add some additional fields if admin
+    if ( true === is_admin() ) {
+
+        $current_page = ws_ls_querystring_value( 'page', false, 'ws-ls-challenges' );
+
+        printf( '  <input type="hidden" name="mode" value="view" />
+                           <input type="hidden" name="challenge-id" value="%1$d" />
+                           <input type="hidden" name="page" value="%2$s" />
+                           ',
+                            $challenge_id,
+                            esc_attr( $current_page )
         );
     }
 
-    echo '</select>';
+    // Gender
+    ws_ls_select( 'gender', __( 'Gender', WE_LS_SLUG ),  ws_ls_genders() );
 
-    print_R(ws_ls_age_ranges(true));
+    // Age range
+    ws_ls_select( 'age-range', __( 'Age Range', WE_LS_SLUG ), ws_ls_age_ranges( true, true ) );
 
+    // Optin
+    if ( true === is_admin() ) {
+        ws_ls_select( 'opt-in', __( 'Opted in', WE_LS_SLUG ), [  1 => __( 'Opted in', WE_LS_SLUG ), 0 => __( 'Everyone', WE_LS_SLUG ) ] );
+    }
+
+    printf( '<input type="submit" class="btn button-primary" value="%s" /></form>', __( 'Filter', WE_LS_SLUG ) );
 }
 
 /**

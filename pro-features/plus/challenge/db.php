@@ -166,10 +166,12 @@ function ws_ls_challenges_identify_entries( $challenge_id, $start_date = NULL, $
  * Return possible age ranges
  * < 25, 26-35, 36-45, 46-55, 55+
  *
+ * @param bool $as_string
  * @return array
  */
-function ws_ls_age_ranges( $as_string = false) {
+function ws_ls_age_ranges( $as_string = false ) {
 	$age_ranges = [
+	    0 => [ 'min' => NULL, 'max' => NULL ],
 		1 => [ 'min' => NULL, 'max' => '25' ],
 		2 => [ 'min' => 26, 'max' => '35' ],
 		3 => [ 'min' => 36, 'max' => '45' ],
@@ -195,7 +197,7 @@ function ws_ls_age_ranges_array_map_to_string( $element ) {
 
     $text .= ( true === empty( $element[ 'max' ] ) ) ? '+' : sprintf( ' %s %d', __( 'to', WE_LS_SLUG ), $element[ 'max' ] );
 
-    return $text;
+    return ( '0+' === $text )  ? '' : $text;
 }
 
 /**
