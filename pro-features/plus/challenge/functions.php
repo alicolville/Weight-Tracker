@@ -228,9 +228,10 @@ function ws_ls_challenges_table() {
 
 /**
  * Fetch columns to display
+ * @param null $args
  * @return array
  */
-function ws_ls_challenges_entry_columns() {
+function ws_ls_challenges_entry_columns( $args = NULL ) {
 
     $cols = [
                 'weight_diff'           => [ 'title' => __( 'Total Weight Loss', WE_LS_SLUG ), 'type' => 'text' ],
@@ -244,6 +245,19 @@ function ws_ls_challenges_entry_columns() {
         unset( $cols[ 'count_mt_entries' ] );
     }
 
+    // Do we need to filter out any cols?
+    if ( false === empty( $args[ 'columns' ] ) && 'all' !== $args[ 'columns' ] ) {
+
+        $columns_wanted = explode( ',', $args[ 'columns' ] );
+
+        foreach ( $cols as $key => $details ) {
+            if ( false === in_array( $key, $columns_wanted ) ) {
+                unset( $cols[ $key ] );
+            }
+        }
+
+    }
+
     return $cols;
 }
 
@@ -255,7 +269,7 @@ function ws_ls_challenges_view_entries( $args ) {
 
     ws_ls_data_table_enqueue_scripts();
 
-    $columns = ws_ls_challenges_entry_columns();
+    $columns = ws_ls_challenges_entry_columns( $args );
 
     $args = wp_parse_args( $args, [
                                         'challenge-id'  => NULL,
