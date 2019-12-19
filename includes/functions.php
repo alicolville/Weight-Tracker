@@ -118,12 +118,11 @@ function ws_ls_weight_object($user_id, $kg, $pounds, $stones, $pounds_only, $not
     $user_info = get_userdata($weight['user_id']);
 
     if($user_info) {
-		$weight['user']['id'] = $weight['user_id'];
-      	$weight['user']['display-name'] = $user_info->display_name;
-	  	$weight['user']['email'] = $user_info->user_email;
+		$weight['user']['id']           = $weight[ 'user_id' ];
+      	$weight['user']['display-name'] = ws_ls_user_display_name( $weight['user_id'] );
+	  	$weight['user']['email']        = $user_info->user_email;
     }
   }
-
 
   if ( WE_LS_MEASUREMENTS_ENABLED && is_array($weight['measurements']) && !empty($weight['measurements'])) {
 
@@ -1071,4 +1070,22 @@ function ws_ls_calculate_percentage_difference_as_number( $previous_weight, $cur
 function ws_ls_boolean_as_yes_no_string( $value, $true_value = 2 ) {
 
 	return ( (int) $true_value == (int) $value ) ? __('Yes', WE_LS_SLUG) : __('No', WE_LS_SLUG);
+}
+
+/**
+ * Fetch a user's First name / Last name from WP. IF not available, use display_name.
+ * @param $user_id
+ * @return string
+ */
+function ws_ls_user_display_name( $user_id ) {
+
+    if ( true === empty( $user_id ) ) {
+        return '-';
+    }
+
+    $name = sprintf( '%s %s', get_user_meta( $user_id, 'first_name' , true ), get_user_meta( $user_id, 'last_name' , true ) );
+
+    return ( true === empty( $name ) || ' ' === $name ) ?
+        get_user_meta( $user_id, 'nickname' , true ) :
+        $name;
 }

@@ -49,57 +49,49 @@ function ws_ls_shortcode_stats_league_total($user_defined_arguments)
 			// Allow others to manipulate this data
 			$row = apply_filters(WE_LS_FILTER_STATS_ROW, $row);
 
-			// Display name from WP
-			$user_info = get_userdata($row['user_id']);
+            $display_name = ws_ls_user_display_name( $row['user_id'] );
 
-			if ( false === empty($user_info) ) {
+            // If used in admin, wrap display name in link
+            if(is_admin()) {
+                $display_name = '<a href="' . ws_ls_get_link_to_user_profile($row['user_id']) . '">' . $display_name . '</a>';
+            }
 
-				$display_name = isset($user_info->display_name) ? $user_info->display_name : '';
+            // Get the display value for weight
+            $stats = ws_ls_shortcode_stats_display_value(
+                array('kg' => $row['weight_difference'], 'display-unit' => ws_ls_get_config('WE_LS_DATA_UNITS'), 'display-value' => ''),
+                $arguments
+            );
 
-				// If used in admin, wrap display name in link
-				if(is_admin()) {
-					$display_name = '<a href="' . ws_ls_get_link_to_user_profile($row['user_id']) . '">' . $display_name . '</a>';
-				}
+            $percentage = '';
 
-				// Get the display value for weight
-				$stats = ws_ls_shortcode_stats_display_value(
-					array('kg' => $row['weight_difference'], 'display-unit' => ws_ls_get_config('WE_LS_DATA_UNITS'), 'display-value' => ''),
-					$arguments
-				);
+            // Calculate %
+            if(true == $arguments['show_percentage'] && 0 !== (int) $row['start_weight'] ) {
+                $percentage = (($row['recent_weight'] - $row['start_weight']) / $row['start_weight']) * 100;
+                $percentage = (false === ws_ls_force_bool_argument($arguments['invert'])) ? $percentage : -$percentage ;
+                $percentage = round($percentage) . '%';
+            }
 
-				$percentage = '';
+            $table_cell = (is_admin()) ? ' style="display: table-cell;"' : '';
 
-				// Calculate %
-				if(true == $arguments['show_percentage'] && 0 !== (int) $row['start_weight'] ) {
-					$percentage = (($row['recent_weight'] - $row['start_weight']) / $row['start_weight']) * 100;
-					$percentage = (false === ws_ls_force_bool_argument($arguments['invert'])) ? $percentage : -$percentage ;
-					$percentage = round($percentage) . '%';
-				}
+            // Add HTML!
+            $html .= sprintf(
+                '<tr class="ws-rank-%1$s%2$s">
+                <td class="ws-col-rank" ' . $table_cell . '>%1$s</td>
+                <td ' . $table_cell . '>%4$s</td>
+                <td ' . $table_cell . ' class="%3$s">%5$s</td>
+                %6$s
+                <td ' . $table_cell . ' class="%3$s">%7$s</td>
+            </tr>',
+                $rank,
+                ( ('asc' == $arguments['order'] && $row['weight_difference'] < 0 ) || ( 'desc' == $arguments['order'] && $row['weight_difference'] > 0 ) ) ? ' ws-ls-good' : ' ws-ls-bad',
+                ws_ls_blur(),
+                $display_name,
+                ws_ls_blur_text( $stats['display-value'] ),
+                (true == $arguments['show_percentage']) ? '<td ' . $table_cell . ' class="' . ws_ls_blur() . '">' . ws_ls_blur_text( $percentage ) . '</td>' : '',
+                ws_ls_blur_text( $row['no_entries'] )
+            );
 
-				$table_cell = (is_admin()) ? ' style="display: table-cell;"' : '';
-
-				// Add HTML!
-				$html .= sprintf(
-					'<tr class="ws-rank-%1$s%2$s">
-					<td class="ws-col-rank" ' . $table_cell . '>%1$s</td>
-					<td ' . $table_cell . '>%4$s</td>
-					<td ' . $table_cell . ' class="%3$s">%5$s</td>
-					%6$s
-					<td ' . $table_cell . ' class="%3$s">%7$s</td>
-				</tr>',
-					$rank,
-					( ('asc' == $arguments['order'] && $row['weight_difference'] < 0 ) || ( 'desc' == $arguments['order'] && $row['weight_difference'] > 0 ) ) ? ' ws-ls-good' : ' ws-ls-bad',
-                    ws_ls_blur(),
-                    $display_name,
-                    ws_ls_blur_text( $stats['display-value'] ),
-					(true == $arguments['show_percentage']) ? '<td ' . $table_cell . ' class="' . ws_ls_blur() . '">' . ws_ls_blur_text( $percentage ) . '</td>' : '',
-                    ws_ls_blur_text( $row['no_entries'] )
-				);
-
-				$rank++;
-
-			}
-
+            $rank++;
 		}
 
 		$html .= '	</tbody>

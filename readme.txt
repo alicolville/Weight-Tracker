@@ -158,6 +158,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 = 7.5 =
 
 * Improvement: Added a 5 minute cron hook.
+* Improvement: Changed display to render a user's First and Last name and then fall back to nickname
 * Improvement: Record when a weight entry was actually inserted. Currently not exposed, but maybe of use with the new Challenges system.
 * Improvement: Hook fired when user cache has been deleted "wlt-hook-delete-cache-for-user".
 * Improvement: Refactored and improved speed of user search.

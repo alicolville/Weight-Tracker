@@ -12,7 +12,7 @@ function ws_ls_user_data($filters = false)
 
     $table_name = $wpdb->prefix . WE_LS_TABLENAME;
     $user_table_name = $wpdb->prefix . 'users';
-    $sql = 'SELECT ' . $table_name . '.id, weight_date, weight_weight, weight_stones, weight_pounds, weight_only_pounds, weight_notes, weight_user_id, display_name as user_nicename, photo_id' . $measurement_columns_sql . ' FROM ' . $table_name
+    $sql = 'SELECT ' . $table_name . '.id, weight_date, weight_weight, weight_stones, weight_pounds, weight_only_pounds, weight_notes, weight_user_id, photo_id' . $measurement_columns_sql . ' FROM ' . $table_name
                             . ' INNER JOIN ' . $user_table_name . ' on ' . $user_table_name . '.id = ' . $table_name . '.weight_user_id';
 
 	// Limit to a certain user?
@@ -54,6 +54,8 @@ function ws_ls_user_data($filters = false)
 
 		$meta_field_data = ( true === ws_ls_meta_fields_is_enabled() ) ? ws_ls_meta_fields_for_entry_display( $raw_weight_data->id ) : false;
 
+		$user_display_name = ws_ls_user_display_name( $raw_weight_data->weight_user_id );
+
         array_push($weight_data, ws_ls_weight_object(	$raw_weight_data->weight_user_id,
                                                       	$raw_weight_data->weight_weight,
                                                       	$raw_weight_data->weight_pounds,
@@ -63,7 +65,7 @@ function ws_ls_user_data($filters = false)
                                                       	$raw_weight_data->weight_date,
                                                       	false,
                                                       	$raw_weight_data->id,
-                                                      	$raw_weight_data->user_nicename,
+                                                        $user_display_name,
 													  	$measurements,
 														$raw_weight_data->photo_id,
                                                         $meta_field_data

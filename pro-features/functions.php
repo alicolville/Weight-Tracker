@@ -232,9 +232,9 @@ function ws_ls_get_email_link( $user_id, $include_brackets = false ) {
     }
 
     return sprintf('  %1$s<a href="mailto:%2$s">%2$s</a>%3$s',
-        ( $include_brackets ) ? '(' : '',
+        ( $include_brackets ) ? '( ' : '',
         esc_attr( $user_data->user_email ),
-        ( $include_brackets ) ? ')' : ''
+        ( $include_brackets ) ? ' )' : ''
     );
 }
 
@@ -617,15 +617,4 @@ function ws_ls_array_check_fields($data, $expected_fields ) {
     }
 
     return true;
-}
-
-/**
- * Get user display name
- * @param $user_id
- */
-function ws_ls_get_display_name( $user_id ) {
-
-    $current_user = get_userdata( $user_id );
-
-    return ( false === empty( $current_user->display_name ) ) ? $current_user->display_name : $user_id;
 }
