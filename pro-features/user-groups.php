@@ -381,11 +381,12 @@
 	}
 	add_action( 'wlt-group-deleting', 'ws_ls_groups_user_tidy_up' );
 
-	/**
-	 * Fetch all groups
-	 *
-	 * @return array
-	 */
+/**
+ * Fetch all groups
+ *
+ * @param bool $include_none
+ * @return array
+ */
 	function ws_ls_groups( $include_none = true ) {
 
 		global $wpdb;

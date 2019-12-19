@@ -259,7 +259,10 @@ function ws_ls_challenges_view_entries( $args ) {
 
     $args = wp_parse_args( $args, [
                                         'challenge-id'  => NULL,
-                                        'opted-in'      => ! is_admin(),
+                                        'opted-in'      => ( 1 === ws_ls_querystring_value( 'filter-opt-in', true,  1 ) ),
+                                        'age-range'     =>  ws_ls_querystring_value( 'filter-age-range', true,  0 ),
+                                        'gender'        =>  ws_ls_querystring_value( 'filter-gender', true,  0 ),
+                                        'group-id'      =>  ws_ls_querystring_value( 'filter-group-id', true,  NULL ),
                                         'show-filters'  => true
     ]);
 
@@ -352,12 +355,27 @@ function ws_ls_challenges_show_filters() {
     // Age range
     ws_ls_select( 'age-range', __( 'Age Range', WE_LS_SLUG ), ws_ls_age_ranges( true, true ) );
 
+    // Group
+    if ( true === ws_ls_groups_enabled () ) {
+        ws_ls_select( 'group-id', __( 'Group', WE_LS_SLUG ), ws_ls_challenge_filters_group_select_values() );
+    }
+
     // Optin
     if ( true === is_admin() ) {
         ws_ls_select( 'opt-in', __( 'Opted in', WE_LS_SLUG ), [  1 => __( 'Opted in', WE_LS_SLUG ), 0 => __( 'Everyone', WE_LS_SLUG ) ] );
     }
 
     printf( '<input type="submit" class="btn button-primary" value="%s" /></form>', __( 'Filter', WE_LS_SLUG ) );
+}
+
+/**
+ * Simplify group array for <select>
+ * @return mixed
+ */
+function ws_ls_challenge_filters_group_select_values() {
+
+    $groups = ws_ls_groups( true );
+    return wp_list_pluck( $groups, 'name', 'id' );
 }
 
 /**
