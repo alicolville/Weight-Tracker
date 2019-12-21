@@ -210,14 +210,14 @@ function ws_ls_age_ranges_array_map_to_string( $element ) {
 function ws_ls_challenges_data( $args ) {
 
 	$args = wp_parse_args( $args, [
-		'challenge-id'  => NULL,
+		'id'            => NULL,
 		'gender'        => NULL,
 		'age-range'     => NULL,
 		'group-id'      => NULL,
 		'opted-in'      => true
 	]);
 
-	if ( true === empty( $args[ 'challenge-id' ] ) ) {
+	if ( true === empty( $args[ 'id' ] ) ) {
 		return NULL;
 	}
 
@@ -229,7 +229,7 @@ function ws_ls_challenges_data( $args ) {
 
 	global $wpdb;
 
-	$sql = $wpdb->prepare( 'Select * from ' . $wpdb->prefix . WE_LS_MYSQL_CHALLENGES_DATA . ' where challenge_id = %d', $args[ 'challenge-id' ] );
+	$sql = $wpdb->prepare( 'Select * from ' . $wpdb->prefix . WE_LS_MYSQL_CHALLENGES_DATA . ' where challenge_id = %d', $args[ 'id' ] );
 
 	// Gender
 	if ( false === empty( $args[ 'gender' ] ) ) {

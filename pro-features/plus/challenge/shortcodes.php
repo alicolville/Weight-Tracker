@@ -44,3 +44,51 @@ function ws_ls_challenges_shortcodes_opt_in() {
 	);
 }
 add_shortcode( 'wlt-challenges-optin', 'ws_ls_challenges_shortcodes_opt_in' );
+
+/**
+ * Display Challenge entries
+ * @param $user_defined_arguments
+ */
+function ws_ls_challenges_shortcodes_list_entries( $user_defined_arguments ) {
+
+    ws_ls_data_table_enqueue_scripts();
+   
+    return ws_ls_challenges_view_entries( $user_defined_arguments );
+}
+add_shortcode( 'wlt-challenges', 'ws_ls_challenges_shortcodes_list_entries' );
+
+/**
+ * Examine filters and render out the example shortcode
+ */
+function ws_ls_challenges_view_entries_guide() {
+
+    $challenge_id = ws_ls_querystring_value( 'challenge-id', true );
+
+    if ( false === $challenge_id ) {
+        return;
+    }
+
+    printf( '<h3>%1$s</h3><p>%2$s</p>',
+                __( 'Display data on the front end ', WE_LS_SLUG ),
+                __( 'If you wish to display this table oon a page or post, use the following shortcode: ', WE_LS_SLUG )
+    );
+
+    $arguments = '';
+
+    foreach ( [ 'age-range', 'gender', 'group-id' ] as $key ) {
+
+        $value = ws_ls_querystring_value( 'filter-' . $key, true );
+
+        if( false === empty( $value ) ) {
+            $arguments .= sprintf(' %1$s="%2$d"', $key, $value );
+        }
+    }
+
+    $value = ws_ls_querystring_value( 'filter-opt-in', true );
+
+    if( 0 === $value ) {
+        $arguments .= ' opted-in="0"';
+    }
+
+    printf( '<p>[wlt-challenges id="%1$d"%2$s show-filters="true"]</p>', $challenge_id, $arguments );
+}

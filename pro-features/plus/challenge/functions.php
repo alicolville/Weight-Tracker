@@ -272,7 +272,7 @@ function ws_ls_challenges_view_entries( $args ) {
     $columns = ws_ls_challenges_entry_columns( $args );
 
     $args = wp_parse_args( $args, [
-                                        'challenge-id'  => NULL,
+                                        'id'            => NULL,
                                         'opted-in'      => ( 1 === ws_ls_querystring_value( 'filter-opt-in', true,  1 ) ),
                                         'age-range'     =>  ws_ls_querystring_value( 'filter-age-range', true,  0 ),
                                         'gender'        =>  ws_ls_querystring_value( 'filter-gender', true,  0 ),
@@ -281,63 +281,65 @@ function ws_ls_challenges_view_entries( $args ) {
     ]);
 
     $data = ws_ls_challenges_data( $args );
+    $html = '';
 
     if ( true === $args[ 'show-filters' ] ) {
-        ws_ls_challenges_show_filters();
+        $html .=  ws_ls_challenges_show_filters();
     }
 
-    ?>
-    <table class="ws-ls-footable ws-ls-footable-basic widefat" data-paging="true" data-sorting="true" data-state="true" data-paging-size="50">
-        <thead>
-            <tr>
-                <th data-type="text"><?php echo __( 'Name', WE_LS_SLUG ); ?></th>
-                <?php
-                    foreach ( $columns as $key => $details ) {
-                        printf( '<th data-breakpoints="xs" data-type="%1$s">%2$s</th>',
-                                        ( false === empty( $details[ 'type' ] ) ) ? $details[ 'type' ] : 'number',
-                                        esc_html( $details[ 'title' ] )
-                        );
-                    }
-                ?>
-            </tr>
-        </thead>
-        <tbody>
-        <?php
+    $html .= sprintf( '
+                                <table class="ws-ls-footable ws-ls-footable-basic widefat" data-paging="true" data-sorting="true" data-state="true" data-paging-size="10">
+                                    <thead>
+                                        <tr>
+                                            <th data-type="text">%s</th>',
+                                __( 'Name', WE_LS_SLUG )
+    );
 
-            foreach( $data as $row ) {
+    foreach ( $columns as $key => $details ) {
+        $html .= sprintf( '<th data-breakpoints="xs" data-type="%1$s">%2$s</th>',
+                                ( false === empty( $details[ 'type' ] ) ) ? $details[ 'type' ] : 'number',
+                                esc_html( $details[ 'title' ] )
+        );
+    }
 
-                printf( '<tr>
-                                    <td>
-                                        <a href="%1$s">
-                                            %2$s
-                                        </a>
-                                    </td>',
-                                    ws_ls_get_link_to_user_profile( $row[ 'user_id' ] ), $row[ 'display_name' ] );
+    $html .=        '</tr>
+                    </thead>
+                <tbody>';
 
-                foreach ( $columns as $key => $details ) {
+    foreach( $data as $row ) {
 
-                    $value = $row[ $key ];
+        $html .= sprintf( '<tr>
+                            <td>
+                                <a href="%1$s">
+                                    %2$s
+                                </a>
+                            </td>',
+                            ws_ls_get_link_to_user_profile( $row[ 'user_id' ] ), $row[ 'display_name' ] );
 
-                    if ( 'weight_diff' == $key ) {
-                        $row[ 'weight_diff' ] = ws_ls_convert_kg_into_relevant_weight_String( $row[ 'weight_diff' ] );
-                    }
+        foreach ( $columns as $key => $details ) {
 
-                    printf( '    <td  data-sort-value="%1$s">
-                                            %2$s
-                                        </td>',
-                                        $value,
-                                        esc_html( $row[ $key ] )
-                    );
+            $value = $row[ $key ];
 
-                }
-
-                echo '</tr>';
-
+            if ( 'weight_diff' == $key ) {
+                $row[ 'weight_diff' ] = ws_ls_convert_kg_into_relevant_weight_String( $row[ 'weight_diff' ] );
             }
-        ?>
-        </tbody>
-    </table>
-    <?php
+
+            $html .= sprintf( '    <td  data-sort-value="%1$s">
+                                    %2$s
+                                </td>',
+                                $value,
+                                esc_html( $row[ $key ] )
+            );
+
+        }
+
+        $html .= '</tr>';
+
+    }
+
+    $html .= '</tbody></table>';
+
+    return $html;
 }
 
 /**
@@ -347,14 +349,14 @@ function ws_ls_challenges_show_filters() {
 
     $challenge_id = ws_ls_querystring_value( 'challenge-id', true );
 
-    echo '<form method="get" class="ws-ls-challenges-filters">';
+    $html = '<form method="get" class="ws-ls-challenges-filters">';
 
     // Add some additional fields if admin
     if ( true === is_admin() ) {
 
         $current_page = ws_ls_querystring_value( 'page', false, 'ws-ls-challenges' );
 
-        printf( '  <input type="hidden" name="mode" value="view" />
+        $html .= sprintf( '  <input type="hidden" name="mode" value="view" />
                            <input type="hidden" name="challenge-id" value="%1$d" />
                            <input type="hidden" name="page" value="%2$s" />
                            ',
@@ -364,22 +366,24 @@ function ws_ls_challenges_show_filters() {
     }
 
     // Gender
-    ws_ls_select( 'gender', __( 'Gender', WE_LS_SLUG ),  ws_ls_genders() );
+    $html .= ws_ls_select( 'gender', __( 'Gender', WE_LS_SLUG ),  ws_ls_genders() );
 
     // Age range
-    ws_ls_select( 'age-range', __( 'Age Range', WE_LS_SLUG ), ws_ls_age_ranges( true, true ) );
+    $html .= ws_ls_select( 'age-range', __( 'Age Range', WE_LS_SLUG ), ws_ls_age_ranges( true, true ) );
 
     // Group
     if ( true === ws_ls_groups_enabled () ) {
-        ws_ls_select( 'group-id', __( 'Group', WE_LS_SLUG ), ws_ls_challenge_filters_group_select_values() );
+        $html .= ws_ls_select( 'group-id', __( 'Group', WE_LS_SLUG ), ws_ls_challenge_filters_group_select_values() );
     }
 
     // Optin
     if ( true === is_admin() ) {
-        ws_ls_select( 'opt-in', __( 'Opted in', WE_LS_SLUG ), [  1 => __( 'Opted in', WE_LS_SLUG ), 0 => __( 'Everyone', WE_LS_SLUG ) ] );
+        $html .= ws_ls_select( 'opt-in', __( 'Opted in', WE_LS_SLUG ), [  1 => __( 'Opted in', WE_LS_SLUG ), 0 => __( 'Everyone', WE_LS_SLUG ) ] );
     }
 
-    printf( '<input type="submit" class="btn button-primary" value="%s" /></form>', __( 'Filter', WE_LS_SLUG ) );
+    $html .= sprintf( '<input type="submit" class="btn button-primary" value="%s" /></form>', __( 'Filter', WE_LS_SLUG ) );
+
+    return $html;
 }
 
 /**
