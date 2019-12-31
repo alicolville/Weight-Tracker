@@ -7,6 +7,10 @@ defined('ABSPATH') or die("Jog on!");
  */
 function ws_ls_challenges_shortcodes_opt_in() {
 
+    if( false === WS_LS_IS_PRO_PLUS ) {
+        return '';
+    }
+
 	// Opt-in set?
 	$get_optin = ws_ls_querystring_value( 'opt-in' );
 
@@ -50,6 +54,10 @@ add_shortcode( 'wlt-challenges-optin', 'ws_ls_challenges_shortcodes_opt_in' );
  * @param $user_defined_arguments
  */
 function ws_ls_challenges_shortcodes_list_entries( $user_defined_arguments ) {
+
+    if( false === WS_LS_IS_PRO_PLUS ) {
+        return '';
+    }
 
     ws_ls_data_table_enqueue_scripts();
    

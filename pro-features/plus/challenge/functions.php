@@ -3,6 +3,15 @@
 defined('ABSPATH') or die("Jog on!");
 
 /**
+ * Challenges enabled?
+ * @return bool
+ */
+function ws_ls_challenges_is_enabled() {
+    return ( true === WS_LS_IS_PRO_PLUS &&
+            'yes' === get_option( 'ws-ls-challenges-enabled', 'yes' ) );
+}
+
+/**
  * For each active challenge, do the following:
  *
  *   - Identify and add user's that have made one or more weight entries within the given challenge period.

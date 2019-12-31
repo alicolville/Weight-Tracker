@@ -6,6 +6,12 @@ function ws_ls_challenges_admin_page() {
 
     ws_ls_user_data_permission_check();
 
+    $challenges_enabled = ws_ls_challenges_is_enabled();
+
+    if ( false === $challenges_enabled ) {
+        ws_ls_challenges_admin_disabled();
+        return;
+    }
     ws_ls_data_table_enqueue_scripts();
 
     $challenge_id   = ws_ls_querystring_value( 'challenge-id', true );
@@ -65,6 +71,9 @@ function ws_ls_challenges_admin_page() {
                                         <i class="fa fa-plus"></i>
                                         <?php echo __( 'Add a challenge', WE_LS_SLUG ); ?>
                                     </a>
+                                    <p>
+                                        <?php echo __( 'Why not create challenges for your users and build a league table for a given time period?', WE_LS_SLUG ); ?>
+                                    </p>
                                 </p>
                                 <?php ws_ls_challenges_table(); ?>
                             </div>
@@ -156,6 +165,33 @@ function ws_ls_challenges_admin_page() {
                         </div>
                     <?php endif; ?>
                 </div>
+            </div>
+        </div>
+        <br class="clear">
+    </div>
+    <?php
+}
+function ws_ls_challenges_admin_disabled() { ?>
+
+<div class="wrap ws-ls-challenges ws-ls-admin-page">
+    <div id="poststuff">
+        <div id="post-body" class="metabox-holder">
+            <div id="post-body-content">
+                <div class="meta-box-sortables ui-sortable">
+                    <?php
+                    if ( true !== WS_LS_IS_PRO ) {
+                        ws_ls_display_pro_upgrade_notice();
+                    }
+                    ?>
+                    <div class="postbox">
+                        <h2 class="hndle"><span><?php echo __( 'Challenges Disabled', WE_LS_SLUG ); ?></span></h2>
+                        <div class="inside">
+                            <p>
+                                <?php echo __( 'Challenges are currently disabled. Please enable via the', WE_LS_SLUG ); ?>
+                                <a href="<?php echo ws_ls_get_link_to_settings(); ?>"><?php echo __( 'settings', WE_LS_SLUG ); ?></a> <?php echo __( 'page', WE_LS_SLUG ); ?>.
+                            </p>
+                        </div>
+                    </div>
             </div>
         </div>
         <br class="clear">

@@ -174,9 +174,7 @@ defined('ABSPATH') or die('Jog on!');
     }
 
     // Challenge enabled?
-    if( true === true ) { //TODO
-        $files_to_include[] = 'pro-features/plus/challenge/inc.php';
-    }
+    $files_to_include[] = 'pro-features/plus/challenge/inc.php';
 
     foreach ( $files_to_include as $file ) {
         require_once( WS_LS_ABSPATH . $file );

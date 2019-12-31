@@ -3,18 +3,14 @@
 defined('ABSPATH') or die("Jog on!");
 
 /**
- * Add challenges to main menu
- */
-function ws_ls_challenges_menu() {
-    add_submenu_page( 'ws-ls-data-home', __('Challenges (beta)', WE_LS_SLUG),  __('Challenges (beta)', WE_LS_SLUG), 'manage_options', 'ws-ls-challenges', 'ws_ls_challenges_admin_page' );
-}
-add_action( 'admin_menu', 'ws_ls_challenges_menu' );
-
-/**
  * If a user's cache has been flushed, then lets clear the last_processed flag on challenges data column (i.e. we need to reprocess)
  * @param $user_id
  */
 function ws_ls_challenges_hook_clear_last_processed_on_data_change( $user_id ) {
+
+    if ( false === ws_ls_challenges_is_enabled() ) {
+        return;
+    }
 
     // Clear last processed flag for all challenges for this user i.e. we want to re calculate everything for them.
     ws_ls_challenges_data_last_processed_reset( $user_id );
@@ -31,6 +27,10 @@ add_action( 'wlt-hook-delete-cache-for-user', 'ws_ls_challenges_hook_clear_last_
  * @return string
  */
 function ws_ls_challenges_hook_settings_form_opt_in( $html, $user_id ) {
+
+    if ( false === ws_ls_challenges_is_enabled() ) {
+        return;
+    }
 
     $html           .= ws_ls_title( __( 'Challenges', WE_LS_SLUG ) );
     $current_value  = ws_ls_get_user_setting( 'challenge_opt_in', $user_id );
@@ -59,6 +59,10 @@ add_filter( 'wlt-filter-user-settings-below-dob',  'ws_ls_challenges_hook_settin
  */
 function ws_ls_challenges_hook_settings_form_save( $fields ) {
 
+    if ( false === ws_ls_challenges_is_enabled() ) {
+        return;
+    }
+
     $opt_in                         = ws_ls_ajax_post_value('ws-ls-challenge-opt-in');
     $fields[ 'challenge_opt_in' ]   = ( 'yes' === $opt_in );
 
@@ -73,6 +77,10 @@ add_action( 'wlt-filter-user-settings-save-fields',  'ws_ls_challenges_hook_sett
  */
 function ws_ls_challenges_hook_setting_db_format( $formats ) {
 
+    if ( false === ws_ls_challenges_is_enabled() ) {
+        return;
+    }
+
     $formats[ 'challenge_opt_in' ] = '%d';
 
     return $formats;
@@ -83,6 +91,10 @@ add_filter( 'wlt-filter-user-settings-db-formats', 'ws_ls_challenges_hook_settin
  * Ajax handler for processing challenge data
  */
 function ws_ls_challenges_ajax_process() {
+
+    if ( false === ws_ls_challenges_is_enabled() ) {
+        return;
+    }
 
     check_ajax_referer( 'process-challenges', 'security' );
 

@@ -151,7 +151,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 == Upgrade Notice ==
 
-7.3 - Added support for the new YeKen plugin: Meal Tracker
+7.5 - Challenges added.
 
 == Changelog ==
 
@@ -159,11 +159,12 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 * Improvement: Added a 5 minute cron hook.
 * Improvement: Changed display to render a user's First and Last name and then fall back to nickname
+* Improvement: Added Challenges.
 * Improvement: Record when a weight entry was actually inserted. Currently not exposed, but maybe of use with the new Challenges system.
 * Improvement: Hook fired when user cache has been deleted "wlt-hook-delete-cache-for-user".
 * Improvement: Refactored and improved speed of user search.
 * Improvement: When mobile, make the user header menu responsive.
-* Improvement: Added some cross reference too YeKen's Meal Tracker.
+* Improvement: Added some cross reference to YeKen's Meal Tracker.
 * Improvement: Various small refactors of code.
 * Bug fix: Fixed layout issue on help page.
 * Bug fix: Changed "Show Wizard" link so it doesn't trigger Meal Tracker's to also show.

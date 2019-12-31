@@ -10,6 +10,8 @@
 		add_submenu_page( 'ws-ls-data-home', __('Custom Fields', WE_LS_SLUG),  __('Custom Fields', WE_LS_SLUG), 'manage_options', 'ws-ls-meta-fields', 'ws_ls_meta_fields_page');
         add_submenu_page( 'ws-ls-data-home', __('Awards', WE_LS_SLUG),  __('Awards', WE_LS_SLUG), 'manage_options', 'ws-ls-awards', 'ws_ls_awards_page');
 
+        add_submenu_page( 'ws-ls-data-home', __('Challenges (beta)', WE_LS_SLUG),  __('Challenges (beta)', WE_LS_SLUG), 'manage_options', 'ws-ls-challenges', 'ws_ls_challenges_admin_page' );
+
 		$menu_text = (false === WS_LS_IS_PRO && false === WS_LS_IS_PRO_PLUS) ? __('Upgrade', WE_LS_SLUG) : __('Your License', WE_LS_SLUG);
 
         add_submenu_page( 'ws-ls-data-home', $menu_text,  $menu_text, 'manage_options', 'ws-ls-license', 'ws_ls_advertise_pro');

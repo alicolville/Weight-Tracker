@@ -16,6 +16,7 @@ $pro_features = array(
 
     __('<strong>Access your user\'s data.</strong> Admin can view, edit and delete user data. Various tools for viewing user\'s graphs, tables of entries, BMI, targets, weight lost / gained stats and much more.', WE_LS_SLUG),
 	__('<strong>Measurements.</strong> Support for recording measurements like Hip, Waist, Leg, Bicep, etc. Displayed on charts and tables.', WE_LS_SLUG),
+    __('<strong>Challenges.</strong> Create and display challenges for users over different time periods.', WE_LS_SLUG),
     __('<strong>Custom Fields.</strong> Create and add your own questions to weight entry forms to gather additional information.', WE_LS_SLUG),
     __('<strong>Photo Custom Fields</strong>. Add one or more photo fields to your weight entry forms and allow your users to upload photos of their progress. Photos can be viewed, updated and removed by the end user and administrators. Handy shortcodes are provided for displaying galleries, most recent and oldest photo.', WE_LS_SLUG),
     __('<strong>Export all data or a particular user.</strong> Export in JSON or CSV format.', WE_LS_SLUG),
