@@ -69,6 +69,25 @@ function ws_ls_challenges_admin_page() {
                                 <?php ws_ls_challenges_table(); ?>
                             </div>
                         </div>
+                        <div class="postbox">
+                            <h2 class="hndle"><span><?php echo __( 'Notes', WE_LS_SLUG ); ?></span></h2>
+                            <div class="inside">
+                               <h4><?php echo __('User Opt-in', WE_LS_SLUG ); ?></h4>
+                                <p>
+                                    <?php echo __('By default, all of your users are opted out of challenges. This saves their name and data being displayed in public challenge tables.
+                                                    The user will need to opt-in to participate. To do this, they can either update their preferences (a new option has been added)
+                                                      or you can place this shortcode [wlt-challenges-optin] to provide simple links allowing them to opt in, or out. 
+                                                        ', WE_LS_SLUG ); ?>
+                                </p>
+                               <h4><?php echo __('Performance', WE_LS_SLUG ); ?></h4>
+                               <p>
+                                   <?php echo __('Performance: Please be aware, that every time a user updates their profile by adding or editing a weight, their statistics are
+                                                        recalculated for every challenge that isn\'t closed. As the number of challenges grow and remain open, the greater the work load on your web server.
+                                                        Please ensure you close (or delete) every challenge when expired. 
+                                                        ', WE_LS_SLUG ); ?>
+                               </p>
+                            </div>
+                        </div>
                     <?php endif; ?>
                     <?php if ( 'add' === $mode ): ?>
                         <div class="postbox">
@@ -86,11 +105,11 @@ function ws_ls_challenges_admin_page() {
                                     }
                                 ?>
                                 <form method="post" action="<?php echo ws_ls_challenge_link( 1, 'add' ); ?>" class="we-ls-weight-form ws_ls_display_form">
-                                    <label for="ws-ls-name"><?php echo __( 'Name', WE_LS_SLUG ); ?></label>
+                                    <label for="ws-ls-name"><?php echo __( 'Name of challenge', WE_LS_SLUG ); ?></label>
                                     <input type="text" name="ws-ls-name" id="ws-ls-name" tabindex="1" value="<?php echo ws_ls_ajax_post_value( 'ws-ls-name', false,'' ); ?>" />
-                                    <label for="ws-ls-start-date"><?php echo __( 'Start Date', WE_LS_SLUG ); ?></label>
+                                    <label for="ws-ls-start-date"><?php echo __( 'Start Date (only consider entries from this date)', WE_LS_SLUG ); ?></label>
                                     <input type="text" name="ws-ls-start-date" id="ws-ls-start-date" tabindex="2" value="<?php echo ws_ls_ajax_post_value( 'ws-ls-start-date', false,'' ); ?>" class="we-ls-datepicker" />
-                                    <label for="ws-ls-end-date"><?php echo __( 'End Date', WE_LS_SLUG ); ?></label>
+                                    <label for="ws-ls-end-date"><?php echo __( 'End Date (only consider entries to this date)', WE_LS_SLUG ); ?></label>
                                     <input type="text" name="ws-ls-end-date" id="ws-ls-end-date" tabindex="3" value="<?php echo ws_ls_ajax_post_value( 'ws-ls-end-date', false,'' ); ?>" class="we-ls-datepicker" />
                                     <br />
                                     <input type="hidden" name="add-challenge" value="true" />
@@ -121,7 +140,7 @@ function ws_ls_challenges_admin_page() {
                         <div class="postbox">
                             <h2 class="hndle"><span><?php echo __('Processing...', WE_LS_SLUG ); ?></span></h2>
                             <div class="inside">
-                                <p><?php echo __('Processing existing entries for this challenge', WE_LS_SLUG ); ?>...</p>
+                                <p><?php echo __('Processing existing entries for this challenge. This page will keep refreshing until the initial challenge data has been processed.', WE_LS_SLUG ); ?>...</p>
                                 <?php
                                     $entries_processed = ws_ls_challenges_process( NULL, true, 150 );
 
