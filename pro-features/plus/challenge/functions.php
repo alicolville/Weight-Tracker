@@ -272,20 +272,22 @@ function ws_ls_challenges_view_entries( $args ) {
     $columns = ws_ls_challenges_entry_columns( $args );
 
     $args = wp_parse_args( $args, [
-                                        'id'            => NULL,
-                                        'opted-in'      => ( 1 === ws_ls_querystring_value( 'filter-opt-in', true,  1 ) ),
-                                        'age-range'     =>  ws_ls_querystring_value( 'filter-age-range', true,  0 ),
-                                        'gender'        =>  ws_ls_querystring_value( 'filter-gender', true,  0 ),
-                                        'group-id'      =>  ws_ls_querystring_value( 'filter-group-id', true,  NULL ),
-                                        'show-filters'  => true
+                                        'id'                    => NULL,
+                                        'opted-in'              => ( 1 === ws_ls_querystring_value( 'filter-opt-in', true,  1 ) ),
+                                        'age-range'             =>  ws_ls_querystring_value( 'filter-age-range', true,  0 ),
+                                        'gender'                =>  ws_ls_querystring_value( 'filter-gender', true,  0 ),
+                                        'group-id'              =>  ws_ls_querystring_value( 'filter-group-id', true,  NULL ),
+                                        'show-filters'          => true,
+                                        'counts-and-averages'   => true
     ]);
 
     $data = ws_ls_challenges_data( $args );
+
     $html = '';
 
-    if ( true === $args[ 'show-filters' ] ) {
-        $html .=  ws_ls_challenges_show_filters();
-    }
+	if ( true === filter_var( $args[ 'show-filters' ],FILTER_VALIDATE_BOOLEAN ) ) {
+		$html .=  ws_ls_challenges_show_filters();
+	}
 
     $html .= sprintf( '
                                 <table class="ws-ls-footable ws-ls-footable-basic widefat" data-paging="true" data-sorting="true" data-state="true" data-paging-size="10">
@@ -308,19 +310,17 @@ function ws_ls_challenges_view_entries( $args ) {
 
     foreach( $data as $row ) {
 
-        $html .= sprintf( '<tr>
-                            <td>
-                                <a href="%1$s">
-                                    %2$s
-                                </a>
-                            </td>',
-                            ws_ls_get_link_to_user_profile( $row[ 'user_id' ] ), $row[ 'display_name' ] );
+        $name = ( true === is_admin() ) ?
+                    sprintf( '<a href="%1$s">%2$s</a>', ws_ls_get_link_to_user_profile( $row[ 'user_id' ] ),  $row[ 'display_name' ] ) :
+                        $row[ 'display_name' ];
+
+        $html .= sprintf( '<tr><td>%s</td>', $name );
 
         foreach ( $columns as $key => $details ) {
 
             $value = $row[ $key ];
 
-            if ( 'weight_diff' == $key ) {
+	        if ( 'weight_diff' == $key ) {
                 $row[ 'weight_diff' ] = ws_ls_convert_kg_into_relevant_weight_String( $row[ 'weight_diff' ] );
             }
 
@@ -334,10 +334,25 @@ function ws_ls_challenges_view_entries( $args ) {
         }
 
         $html .= '</tr>';
-
     }
 
     $html .= '</tbody></table>';
+
+    // Include counts and averages?
+    if ( true === $args[ 'counts-and-averages' ] ) {
+
+        $counts = [];
+
+        // Loop through each column we're interested in, sum the column and then divide by count
+	    foreach ( $columns as $key => $details ) {
+
+	        $column_data                = wp_list_pluck( $data, $key );
+		    $counts[ $key ]             = [ 'count' => count( $column_data ), 'sum' => array_sum( $column_data ) ];
+		    $counts[ $key ][ 'average'] = ( 0 !== $counts[ $key ][ 'count'] ) ?
+                                            $counts[ $key ][ 'sum'] / $counts[ $key ][ 'count'] : 0;
+	    }
+
+    }
 
     return $html;
 }

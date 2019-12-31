@@ -70,7 +70,7 @@ function ws_ls_challenges_view_entries_guide() {
 
     printf( '<h3>%1$s</h3><p>%2$s</p>',
                 __( 'Display data on the front end ', WE_LS_SLUG ),
-                __( 'If you wish to display this table oon a page or post, use the following shortcode: ', WE_LS_SLUG )
+                __( 'If you wish to display this table on a page or post, use the following shortcode: ', WE_LS_SLUG )
     );
 
     $arguments = '';
@@ -90,5 +90,5 @@ function ws_ls_challenges_view_entries_guide() {
         $arguments .= ' opted-in="0"';
     }
 
-    printf( '<p>[wlt-challenges id="%1$d"%2$s show-filters="true"]</p>', $challenge_id, $arguments );
+    printf( '<p>[wlt-challenges id="%1$d"%2$s show-filters="false" totals="true"]</p>', $challenge_id, $arguments );
 }

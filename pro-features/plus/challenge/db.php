@@ -256,7 +256,7 @@ function ws_ls_challenges_data( $args ) {
 		$sql .= $wpdb->prepare( ' and group_id = %d', $args[ 'group-id' ] );
 	}
 
-	if ( true === $args[ 'opted-in' ] ) {
+	if ( true === $args[ 'opted-in' ] || 1 === (int) $args[ 'opted-in' ] ) {
 		$sql .= ' and opted_in = 1';
 	}
 
