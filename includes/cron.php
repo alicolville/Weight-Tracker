@@ -13,6 +13,11 @@
 			'display' => 'Weight Tracker Weekly'
 		);
 
+        $schedules[ 'wlt-5-minutes' ] = array(
+            'interval' => 300,					// Every 5 mins
+            'display' => 'Weight Tracker - 5 Minutes'
+        );
+
 		return $schedules;
 	}
 	add_action('cron_schedules', 'ws_ls_schedules');

@@ -240,3 +240,30 @@ HEX: #f7786b
     color: #1e69de;
     margin: 0px 10px 0px 0px;
 }
+@media only screen and (max-width: 600px) {
+    .ws-ls-user-data a span {
+        display: none !important;
+    }
+}
+/*
+    Challenges
+ */
+.ws-ls-challenges-filters {
+    padding: 0px 0px 10px 0px;
+}
+.ws-ls-challenges-filters label, .ws-ls-challenges-filters input[type=submit] {
+    margin-left: 5px;
+}
+@media only screen and (max-width: 600px) {
+    .ws-ls-challenges-filters * {
+        width: 100%;
+        display: block;
+        margin: 0px !important;
+    }
+    .ws-ls-challenges-filters select {
+        min-height: 30px;
+        font-size: 13px;
+        line-height: 1.1;
+        padding: 1px 4px;
+    }
+}

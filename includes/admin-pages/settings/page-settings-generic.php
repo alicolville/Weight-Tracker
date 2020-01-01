@@ -281,6 +281,21 @@ function ws_ls_settings_page_generic() {
                                                 }
                                             ?>
 
+                                            <h3><?php echo __( 'Challenges' , WE_LS_SLUG); ?></h3>
+
+                                            <table class="form-table">
+                                               <tr class="<?php echo $disable_if_not_pro_plus_class; ?>">
+                                                    <th scope="row"><?php echo __( 'Enabled?' , WE_LS_SLUG); ?></th>
+                                                    <td>
+                                                        <select id="ws-ls-challenges-enabled" name="ws-ls-challenges-enabled">
+                                                            <option value="yes" <?php selected( get_option('ws-ls-challenges-enabled'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+                                                            <option value="no" <?php selected( get_option('ws-ls-challenges-enabled'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+                                                        </select>
+                                                        <p><?php echo __('If set to No, challenge data will not be calculated in the background.' , WE_LS_SLUG); ?></em></p>
+                                                    </td>
+                                               </tr>
+                                            </table>
+
                                             <h3><?php echo __( 'Calculating daily calorie intake to lose weight' , WE_LS_SLUG); ?></h3>
 
                                             <table class="form-table">
@@ -377,25 +392,29 @@ function ws_ls_settings_page_generic() {
                                             <h3><?php echo __( 'Macronutrient Calculator: Meals' , WE_LS_SLUG); ?></h3>
                                             <table class="form-table">
                                                 <?php
-                                                    foreach ( ws_ls_harris_benedict_meal_ratio_defaults() as $key => $default ) {
 
-                                                        printf( '<tr class="%1$s">
+                                                    if ( true === WS_LS_IS_PRO_PLUS ) {
+                                                        foreach ( ws_ls_harris_benedict_meal_ratio_defaults() as $key => $default ) {
+
+                                                            printf( '<tr class="%1$s">
                                                                                         <th scope="row">%2$s</th>
                                                                                         <td>
                                                                                             <input  type="number" step="any" min="0" max="100" name="ws-ls-meal-ratio-%3$s" id="ws-ls-meal-ratio-%3$s"  class="ws-ls-macro-meals" value="%4$d" size="3" />%%
                                                                                             <p>%5$s %2$s. %6$s. <em>%7$s</em></p>
                                                                                         </td>
                                                                                     </tr>
-                                                        ',
-                                                            $disable_if_not_pro_plus_class,
-                                                            esc_html( ucfirst( $key ) ),
-                                                            $key,
-                                                            ws_ls_harris_benedict_meal_ratio_get( $key ),
-                                                            __( 'Percentage of calories to split into ', WE_LS_SLUG ),
-                                                            ws_ls_calculations_link(),
-                                                            __( 'Please note, it may take up to 15 minutes for calculations to change (due to caching).' , WE_LS_SLUG )
-                                                        );
+                                                                ',
+                                                                $disable_if_not_pro_plus_class,
+                                                                esc_html( ucfirst( $key ) ),
+                                                                $key,
+                                                                ws_ls_harris_benedict_meal_ratio_get( $key ),
+                                                                __( 'Percentage of calories to split into ', WE_LS_SLUG ),
+                                                                ws_ls_calculations_link(),
+                                                                __( 'Please note, it may take up to 15 minutes for calculations to change (due to caching).' , WE_LS_SLUG )
+                                                            );
+                                                        }
                                                     }
+                                                                                                   
                                                 ?>
                                             </table>
                                         </div>
@@ -822,6 +841,7 @@ function ws_ls_register_settings(){
     // Pro Plus
     if ( WS_LS_IS_PRO_PLUS ) {
 
+        register_setting( 'we-ls-options-group', 'ws-ls-challenges-enabled' );
         register_setting( 'we-ls-options-group', 'ws-ls-female-cal-cap' );
         register_setting( 'we-ls-options-group', 'ws-ls-male-cal-cap' );
         register_setting( 'we-ls-options-group', 'ws-ls-cal-subtract' );

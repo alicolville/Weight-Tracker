@@ -523,6 +523,51 @@ function ws_ls_set_user_preference( $field, $value, $user_id = NULL ) {
 }
 
 /**
+ * Update a user preference field
+ * @param $field
+ * @param $value
+ * @param null $user_id
+ * @return bool
+ */
+function ws_ls_set_user_preference_simple( $field, $value, $user_id = NULL ) {
+
+    // Ensure we have a value!
+    if ( true === empty( $field ) ) {
+        return false;
+    }
+
+    $user_id = $user_id ?: get_current_user_id();
+
+    // Check for existing settings for this user, if none, then we need to insert the settings row
+    if ( true === empty( ws_ls_get_user_preferences( $user_id ) ) ) {
+        return ws_ls_set_user_preference( $field, $value, $user_id );
+    }
+
+    global $wpdb;
+
+    $db_fields = [ $field => $value ];
+
+    // Set data types
+    $db_field_types = ws_ls_user_preferences_get_formats( $db_fields );
+
+    // Update or insert
+    $result = $wpdb->update(
+        $wpdb->prefix . WE_LS_USER_PREFERENCES_TABLENAME,
+        $db_fields,
+        [ 'user_id' => (int) $user_id],
+        $db_field_types,
+        [ '%d' ]
+    );
+
+    $result = ($result === false) ? false : true;
+
+    // Tidy up cache
+    ws_ls_delete_cache_for_given_user( $db_fields['user_id'] );
+
+    return $result;
+}
+
+/**
  * Provide a list of formats for user pref database fields
  *
  * @param $db_fields
@@ -533,14 +578,15 @@ function ws_ls_user_preferences_get_formats( $db_fields ) {
     $formats = [];
 
     $lookup = [
-			    'activity_level' => '%f',
-			    'aim' => '%d',
-			    'dob' => '%s',
-			    'gender' => '%d',
-			    'height' => '%d',
-		        'settings' => '%s',
-			    'user_group' => '%d',
-			    'user_id' => '%d'
+			    'activity_level'    => '%f',
+			    'aim'               => '%d',
+			    'dob'               => '%s',
+			    'gender'            => '%d',
+			    'height'            => '%d',
+		        'settings'          => '%s',
+			    'user_group'        => '%d',
+                'user_id'           => '%d',
+                'challenge_opt_in'  => '%d'
     ];
 
     $lookup = apply_filters( WE_LS_FILTER_USER_SETTINGS_DB_FORMATS, $lookup );
@@ -590,32 +636,31 @@ function ws_ls_get_user_preferences($user_id = false, $use_cache = true)
   return $settings;
 }
 
-function ws_ls_get_user_height($user_id = false, $use_cache = true) {
+/**
+ * Fetch a user's height from preferences
+ * @param bool $user_id
+ * @param bool $use_cache
+ * @return bool
+ */
+function ws_ls_get_user_height( $user_id = false, $use_cache = true ) {
 
-  global $wpdb;
-
-  $user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
-
-
-  $table_name = $wpdb->prefix . WE_LS_USER_PREFERENCES_TABLENAME;
-
-  $cache_key = $user_id . '-' . WE_LS_CACHE_KEY_USER_HEIGHT;
-  $cache = ws_ls_get_cache($cache_key);
+  $user_id      = ( true === empty( $user_id ) ) ? get_current_user_id() : $user_id;
+  $cache_key    = sprintf( '%s-%d', WE_LS_CACHE_KEY_USER_HEIGHT, $user_id );
 
   // Return cache if found!
-  if ($cache && true == $use_cache)   {
+  if ( true === $use_cache &&
+        $cache = ws_ls_get_cache( $cache_key ) )   {
       return $cache;
   }
 
-  $sql =  $wpdb->prepare('SELECT height FROM ' . $table_name . ' WHERE user_id = %d', $user_id);
-  $row = $wpdb->get_row($sql);
+  global $wpdb;
 
-  $height = false;
+  $sql      = $wpdb->prepare( 'SELECT height FROM ' . $wpdb->prefix . WE_LS_USER_PREFERENCES_TABLENAME . ' WHERE user_id = %d' , $user_id );
+  $height   = $wpdb->get_var( $sql );
 
-  if (!is_null($row) && $row->height != 0 && !is_null($row->height)) {
-    $height = $row->height;
-	ws_ls_set_cache($cache_key, $height);
-  }
+  $height = ( false === empty( $height ) ) ? $height : false;
+
+  ws_ls_set_cache( $cache_key, $height );
 
   return $height;
 }
@@ -627,7 +672,7 @@ function ws_ls_get_user_setting($field = 'gender', $user_id = false, $use_cache 
     // Default to logged in user if not user ID not specified.
     $user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
 
-    $valid_settings = apply_filters( 'wlt-filter-setting-fields', ['activity_level', 'gender', 'height', 'dob', 'aim', 'body_type'] );
+    $valid_settings = apply_filters( 'wlt-filter-setting-fields', ['activity_level', 'gender', 'height', 'dob', 'aim', 'body_type', 'challenge_opt_in' ] );
 
     // Validate field
     $field = ( in_array($field, $valid_settings) ) ? $field : 'gender';

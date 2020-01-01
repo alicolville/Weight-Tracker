@@ -1,74 +1,80 @@
 <?php
 defined('ABSPATH') or die("Jog on!");
 
-function ws_ls_user_preferences_form( $user_defined_arguments )
-{
+/**
+ * Render the user preferences form
+ * @param $user_defined_arguments
+ * @return string
+ */
+function ws_ls_user_preferences_form( $user_defined_arguments ) {
+
     // If not logged in then return no value
-    if ( !is_user_logged_in() )	{
+    if ( false === is_user_logged_in() )	{
 		return ws_ls_display_blockquote( __('You must be logged in to edit your settings.', WE_LS_SLUG) , '', false, true);
     }
 
     $html_output = '';
 
-    $arguments = shortcode_atts(['user-id' => false, 'allow-delete-data' => true, 'redirect-url' => '', 'disable-save' => false ], $user_defined_arguments );
+    $arguments = shortcode_atts( ['user-id' => false, 'allow-delete-data' => true, 'redirect-url' => '', 'disable-save' => false ], $user_defined_arguments );
 
     $arguments['allow-delete-data'] = ws_ls_force_bool_argument($arguments['allow-delete-data']);
-    $arguments['user-id'] = ws_ls_force_numeric_argument( $arguments['user-id'] );
-	$arguments['redirect-url'] = (false === empty($arguments['redirect-url'])) ? esc_url($arguments['redirect-url']) : '';
+    $arguments['user-id']           = ws_ls_force_numeric_argument( $arguments['user-id'] );
+	$arguments['redirect-url']      = (false === empty($arguments['redirect-url'])) ? esc_url($arguments['redirect-url']) : '';
 
     // Have user preferences been allowed in Settings?
-    if (false === WE_LS_ALLOW_USER_PREFERENCES && false === is_admin()) {
+    if ( false === WE_LS_ALLOW_USER_PREFERENCES && false === is_admin() ) {
         return $html_output;
     }
 
-    $arguments['user-id'] = (true === empty($arguments['user-id'])) ? get_current_user_id() : $arguments['user-id'];
-    $user_id  = $arguments['user-id'];
+    $arguments['user-id']   = ( true === empty( $arguments['user-id'] ) ) ? get_current_user_id() : $arguments['user-id'];
+    $user_id                = $arguments['user-id'];
 
     // Decide which set of labels to render
 	$labels = [
-                'title-about' => __('About You:', WE_LS_SLUG),
-				'height' => __('Your height:', WE_LS_SLUG),
-				'weight' => __('In which unit would you like to record your weight:', WE_LS_SLUG),
-				'measurements' => __('In which unit would you like to record your measurements:', WE_LS_SLUG),
-				'date' => __('Display dates in the following formats:', WE_LS_SLUG),
-                'gender' => __('Your Gender:', WE_LS_SLUG),
-                'dob' => __('Your Date of Birth:', WE_LS_SLUG),
-                'activitylevel' => __('Your Activity Level:', WE_LS_SLUG),
-                'aim' => __('Your aim:', WE_LS_SLUG)
+                'title-about'       => __('About You:', WE_LS_SLUG),
+				'height'            => __('Your height:', WE_LS_SLUG),
+				'weight'            => __('In which unit would you like to record your weight:', WE_LS_SLUG),
+				'measurements'      => __('In which unit would you like to record your measurements:', WE_LS_SLUG),
+				'date'              => __('Display dates in the following formats:', WE_LS_SLUG),
+                'gender'            => __('Your Gender:', WE_LS_SLUG),
+                'dob'               => __('Your Date of Birth:', WE_LS_SLUG),
+                'activitylevel'     => __('Your Activity Level:', WE_LS_SLUG),
+                'aim'               => __('Your aim:', WE_LS_SLUG)
 	];
 
 	// If admin, add notice and override labels
 	if( is_admin() ) {
 
-		$labels = [ 'title-about' => __('About User:', WE_LS_SLUG),
-					'height' => __('Height:', WE_LS_SLUG),
-					'weight' => __('Weight unit:', WE_LS_SLUG),
-					'measurements' => __('Measurements unit:', WE_LS_SLUG),
-					'date' => __('Date format:', WE_LS_SLUG),
-                    'gender' => __('Gender:', WE_LS_SLUG),
-                    'dob' => __('Date of Birth:', WE_LS_SLUG),
-                    'activitylevel' => __('Activity Level:', WE_LS_SLUG),
-                    'aim' => __('Aim:', WE_LS_SLUG)
+		$labels = [
+		                'title-about'       => __('About User:', WE_LS_SLUG),
+					    'height'            => __('Height:', WE_LS_SLUG),
+					    'weight'            => __('Weight unit:', WE_LS_SLUG),
+					    'measurements'      => __('Measurements unit:', WE_LS_SLUG),
+					    'date'              => __('Date format:', WE_LS_SLUG),
+                        'gender'            => __('Gender:', WE_LS_SLUG),
+                        'dob'               => __('Date of Birth:', WE_LS_SLUG),
+                        'activitylevel'     => __('Activity Level:', WE_LS_SLUG),
+                        'aim'               => __('Aim:', WE_LS_SLUG)
 		];
 
         // If we're in Admin screens, then hide "delete data"
-        $arguments['allow-delete-data'] = false;
+        $arguments[ 'allow-delete-data' ] = false;
 
 	} else {
 	    // Enqueue front end scripts if needed (mainly for datepicker)
         ws_ls_enqueue_files();
     }
 
-    $html_output = ws_ls_title($labels['title-about']);
+    $html_output = ws_ls_title( $labels['title-about'] );
 
 	$html_output .= '
 
-	<form class="ws-ls-user-pref-form" method="post" data-redirect-url=' . $arguments['redirect-url'] . '>
+	<form class="ws-ls-user-pref-form" method="post" data-redirect-url=' . esc_url( $arguments['redirect-url'] ) . '>
 	<div class="ws-ls-error-summary">
 		<ul></ul>
 	</div>
   	<input type="hidden" name="ws-ls-user-pref" value="true" />
-	<input type="hidden" id="ws-ls-user-id" value="' . (($user_id) ? esc_attr($user_id) : '0')  . '" />';
+	<input type="hidden" id="ws-ls-user-id" value="' . ( ($user_id) ? esc_attr($user_id) : '0')  . '" />';
 
     //-------------------------------------------------------
     // Aim

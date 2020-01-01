@@ -27,6 +27,13 @@ function ws_ls_help_page() {
                         </div>
                     </div>
 
+                    <div class="postbox">
+                        <h3 class="hndle"><span><?php echo __( 'Meal Tracker', WE_LS_SLUG); ?> </span></h3>
+                        <div style="padding: 0px 15px 0px 15px">
+                            <?php wl_ls_setup_wizard_meal_tracker_html(); ?>
+                        </div>
+                    </div>
+
 					<div class="postbox">
 						<h3 class="hndle"><span><?php echo __( 'Documentation', WE_LS_SLUG); ?> </span></h3>
 						<div style="padding: 0px 15px 0px 15px">
@@ -100,7 +107,7 @@ function ws_ls_help_page() {
                                     if ( false === ws_ls_setup_wizard_show_notice() ) {
 
                                         printf('<a class="button" href="%1$s" >%2$s</a>',
-                                            esc_url( admin_url( 'admin.php?page=ws-ls-help&show-setup-wizard-links=y') ),
+                                            esc_url( admin_url( 'admin.php?page=ws-ls-help&wlt-show-setup-wizard-links=y') ),
                                             __('Show Setup Wizard link', WE_LS_SLUG)
                                         );
                                     }
@@ -137,7 +144,6 @@ function ws_ls_help_page() {
                             </p>
                         </div>
                     </div>
-
                         <div class="postbox">
                             <h3 class="hndle"><span><?php echo __('Weight Tracker Debug Log', WE_LS_SLUG); ?> </span></h3>
                             <div style="padding: 0px 15px 0px 15px">
@@ -153,25 +159,13 @@ function ws_ls_help_page() {
                                        data-toggle="true"
                                        data-use-parent-width="true">
                                 </table>
-
                             </div>
-
                         </div>
                     </div>
 				</div>
-				<!-- .meta-box-sortables .ui-sortable -->
-
 			</div>
-			<!-- post-body-content -->
-
 		</div>
-		<!-- #post-body .metabox-holder .columns-2 -->
-
-		<br class="clear">
 	</div>
-	<!-- #poststuff -->
-
-</div> <!-- .wrap -->
 <?php
 
     ws_ls_create_dialog_jquery_code(__('Are you sure?', WE_LS_SLUG),
@@ -183,7 +177,3 @@ function ws_ls_help_page() {
         'logs-confirm');
 
 }
-
-
-
-?>

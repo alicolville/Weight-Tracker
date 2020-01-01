@@ -27,7 +27,8 @@ function ws_ls_setup_wizard_page() {
                                         <li><a>2. <?php echo __( 'Setup', WE_LS_SLUG); ?><span><?php echo __( 'How to use Shortcodes and Widgets', WE_LS_SLUG); ?></span></a></li>
                                         <li><a>3. <?php echo __( 'Admin Interface', WE_LS_SLUG); ?><span><?php echo __( 'Viewing and interacting with your user\'s data', WE_LS_SLUG); ?></span></a></li>
                                         <li><a>4. <?php echo __( 'Features and Guides', WE_LS_SLUG); ?><span><?php echo __( 'Useful features and guides', WE_LS_SLUG); ?></span></a></li>
-                                        <li><a>5. <?php echo __( 'Customisations', WE_LS_SLUG); ?><span><?php echo __( 'Custom modifications to Weight Tracker', WE_LS_SLUG); ?></span></a></li>
+                                        <li><a>5. <?php echo __( 'Meal Tracker', WE_LS_SLUG ); ?><span><?php echo __( 'Track meals and calories too', WE_LS_SLUG); ?></span></a></li>
+                                        <li><a>6. <?php echo __( 'Customisations', WE_LS_SLUG); ?><span><?php echo __( 'Custom modifications to Weight Tracker', WE_LS_SLUG); ?></span></a></li>
                                     </ul>
                                     <div>
                                         <div>
@@ -165,6 +166,11 @@ function ws_ls_setup_wizard_page() {
 
 
                                         </div>
+
+                                        <div>
+                                            <?php wl_ls_setup_wizard_meal_tracker_html(); ?>
+                                        </div>
+
                                         <div>
 											<?php wl_ls_setup_wizard_custom_notification_html(); ?>
                                         </div>
@@ -178,22 +184,9 @@ function ws_ls_setup_wizard_page() {
 						</div>
                     </div>
 				</div>
-				<!-- .meta-box-sortables .ui-sortable -->
-
 			</div>
-			<!-- post-body-content -->
-
-		</div>
-		<!-- #post-body .metabox-holder .columns-2 -->
-
-		<br class="clear">
+   		</div>
 	</div>
-	<!-- #poststuff -->
 
-	</div> <!-- .wrap -->
 	<?php
-
 }
-
-
-?>

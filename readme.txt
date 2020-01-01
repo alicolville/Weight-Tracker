@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight, loss, lose, tracker, bmi, bmr, macronutrient, graph, track, stones, kg, table, calories, awards, email, custom, fields, history, pounds, responsive, chart, measurements, cm, centimeters, inches, photos
 Requires at least: 4.4.9
 Tested up to: 5.3
-Stable tag: 7.4
+Stable tag: 7.5
 Requires PHP: 7.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -151,9 +151,25 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 == Upgrade Notice ==
 
-7.3 - Added support for the new YeKen plugin: Meal Tracker
+7.5 - Challenges added.
 
 == Changelog ==
+
+= 7.5 =
+
+* Improvement: Added a 5 minute cron hook.
+* Improvement: Changed display to render a user's First and Last name and then fall back to nickname
+* Improvement: Added Challenges.
+* Improvement: Record when a weight entry was actually inserted. Currently not exposed, but maybe of use with the new Challenges system.
+* Improvement: Hook fired when user cache has been deleted "wlt-hook-delete-cache-for-user".
+* Improvement: Refactored and improved speed of user search.
+* Improvement: When mobile, make the user header menu responsive.
+* Improvement: Added some cross reference to YeKen's Meal Tracker.
+* Improvement: Various small refactors of code.
+* Bug fix: Fixed layout issue on help page.
+* Bug fix: Changed "Show Wizard" link so it doesn't trigger Meal Tracker's to also show.
+* Bug fix: Added missing BMI to JSON export.
+* Bug fix: Added Group to export.
 
 = 7.4 =
 

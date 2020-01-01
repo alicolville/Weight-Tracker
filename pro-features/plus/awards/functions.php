@@ -87,7 +87,7 @@
      * @param $award_id
      * @return int
      */
-    function ws_ls_awards_user_times_awarded( $user_id = NULL, $award_id ) {
+    function ws_ls_awards_user_times_awarded( $user_id, $award_id ) {
 
         $user_id = $user_id ?: get_current_user_id();
 

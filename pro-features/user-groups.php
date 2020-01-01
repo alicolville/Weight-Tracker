@@ -381,11 +381,12 @@
 	}
 	add_action( 'wlt-group-deleting', 'ws_ls_groups_user_tidy_up' );
 
-	/**
-	 * Fetch all groups
-	 *
-	 * @return array
-	 */
+/**
+ * Fetch all groups
+ *
+ * @param bool $include_none
+ * @return array
+ */
 	function ws_ls_groups( $include_none = true ) {
 
 		global $wpdb;
@@ -460,7 +461,7 @@
 
 		global $wpdb;
 
-		if ( false === is_admin() && $cache = ws_ls_cache_user_get( $user_id, 'groups' ) ) {
+		if ( $cache = ws_ls_cache_user_get( $user_id, 'groups' ) ) {
 			return $cache;
 		}
 
@@ -476,6 +477,44 @@
 
 		return $data;
 	}
+
+    /**
+     * Add group to CSV / JSON export
+     * @param $row
+     */
+    function ws_ls_groups_export_add( $row ) {
+
+	    if ( false === ws_ls_groups_enabled () ) {
+	        return $row;
+        }
+
+        $row[ 'group' ] = '';
+
+        $group = ws_ls_groups_user( $row[ 'user_id' ] );
+
+	    if ( false === empty( $group[ 0 ][ 'name' ] ) ) {
+            $row[ 'group' ] = $group[ 0 ][ 'name' ];
+        }
+
+        return $row;
+    }
+    add_filter( 'wlt-export-row', 'ws_ls_groups_export_add' );
+
+    /**
+     * Add Group to export columns
+     * @param $columns
+     * @return mixed
+     */
+    function ws_ls_groups_export_columns( $columns ) {
+
+        if ( false === ws_ls_groups_enabled() ) {
+            return $columns;
+        }
+
+        $columns[ 'group' ] = __( 'Group', WE_LS_SLUG );
+        return $columns;
+    }
+    add_filter( 'wlt-export-columns', 'ws_ls_groups_export_columns' );
 
 	/**
 	 * Fetch all user ids for given group

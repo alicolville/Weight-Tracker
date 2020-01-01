@@ -118,12 +118,11 @@ function ws_ls_weight_object($user_id, $kg, $pounds, $stones, $pounds_only, $not
     $user_info = get_userdata($weight['user_id']);
 
     if($user_info) {
-		$weight['user']['id'] = $weight['user_id'];
-      	$weight['user']['display-name'] = $user_info->display_name;
-	  	$weight['user']['email'] = $user_info->user_email;
+		$weight['user']['id']           = $weight[ 'user_id' ];
+      	$weight['user']['display-name'] = ws_ls_user_display_name( $weight['user_id'] );
+	  	$weight['user']['email']        = $user_info->user_email;
     }
   }
-
 
   if ( WE_LS_MEASUREMENTS_ENABLED && is_array($weight['measurements']) && !empty($weight['measurements'])) {
 
@@ -437,6 +436,7 @@ function ws_ls_get_user_preference($key, $user_id = false)
 
   return NULL;
 }
+
 function ws_ls_string_to_bool($value)
 {
   if('false' == $value) {
@@ -448,14 +448,24 @@ function ws_ls_string_to_bool($value)
 
   return $value;
 }
-function ws_ls_force_bool_argument($value) {
 
-    if (strtolower($value) == 'true' || (is_bool($value) === true && $value == true)) {
-        return true;
-    }
+/**
+ * Force a string to boolean
+ * @param $value
+ * @return bool
+ */
+function ws_ls_force_bool_argument( $value ) {
 
-    return false;
+    return ( 'true' === strtolower( $value ) ||
+            ( true === is_bool( $value ) && true === $value ) );
 }
+
+/**
+ * Force a value to an int
+ * @param $value
+ * @param bool $default
+ * @return int
+ */
 function ws_ls_force_numeric_argument( $value, $default = false ) {
 
     if ( is_numeric( $value ) ) {
@@ -568,7 +578,14 @@ function ws_ls_format_stones_pound_for_comparison_display($weight) {
 	return '';
 }
 
-function ws_ls_querystring_value($key, $force_to_int = false, $default = false) {
+/**
+ * Fetch a value from the $_GET
+ * @param $key
+ * @param bool $force_to_int
+ * @param bool $default
+ * @return bool|int|mixed|null
+ */
+function ws_ls_querystring_value( $key, $force_to_int = false, $default = false ) {
 
     $return_value = NULL;
 
@@ -580,25 +597,67 @@ function ws_ls_querystring_value($key, $force_to_int = false, $default = false) 
     return ( false !== $default && true === is_null( $return_value ) ) ? $default : $return_value;
 }
 
-function ws_ls_ajax_post_value($key, $json_decode = false)
-{
-	if( isset($_POST[$key]) && $json_decode) {
-		return json_decode($_POST[$key]);
-	}
-	elseif(isset($_POST[$key])) {
-		return $_POST[$key];
-	}
+/**
+ * Fetch an item from the $_POST object
+ * @param $key
+ * @param bool $json_decode
+ * @param null $default
+ * @return mixed|null
+ */
+function ws_ls_ajax_post_value( $key, $json_decode = false, $default = NULL ) {
 
-	return NULL;
+    if( false === isset( $_POST[ $key ] ) ) {
+        return $default;
+    }
+
+    return ( true === $json_decode ) ? json_decode( $_POST[ $key ] ) : $_POST[ $key ];
 }
 
-function ws_ls_get_url($base_64_encode = false) {
-	$current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+/**
+ * Render a <select> for the given key / value array
+ * @param $key
+ * @param $name
+ * @param $values
+ * @param string $key_prefix
+ */
+function ws_ls_select( $key, $name, $values, $key_prefix = 'filter' ) {
+
+    $key = sprintf( '%s-%s', $key_prefix, $key );
+
+    $html = sprintf( '<label for="%1$s">%2$s:</label>
+                                    <select id="%1$s" name="%1$s" >',
+        esc_attr( $key ),
+        esc_attr( $name )
+    );
+
+    $selected = ws_ls_querystring_value( $key, true );
+
+    foreach ( $values as $id => $value ) {
+        $html .= sprintf('<option value="%1$s" %2$s>%3$s</option>',
+                    esc_attr( $id ),
+                    selected( $selected, $id, false ),
+                    esc_html( $value )
+        );
+    }
+
+    $html .= '</select>';
+
+    return $html;
+}
+
+/**
+ * Get the current page URL
+ * @param bool $base_64_encode
+ * @return mixed|string#
+ */
+function ws_ls_get_url( $base_64_encode = false ) {
+
+    $current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 
 	// Wee hack, replace removedata querystring value
 	$current_url = str_replace('removedata', 'removed', $current_url);
 
-	return (true === $base_64_encode) ? base64_encode($current_url) : $current_url;
+	return ( true === $base_64_encode ) ? base64_encode( $current_url ) : $current_url;
 }
 
 function ws_ls_stats_clear_last_updated_date(){
@@ -981,6 +1040,30 @@ function ws_ls_calculate_percentage_difference( $previous_weight, $current_weigh
 }
 
 /**
+ * Wrapper of ws_ls_calculate_percentage_difference to return the value as a formatted number
+ *
+ * @param $previous_weight
+ * @param $current_weight
+ */
+function ws_ls_calculate_percentage_difference_as_number( $previous_weight, $current_weight  ) {
+
+    $difference = ws_ls_calculate_percentage_difference( $previous_weight, $current_weight );
+
+    if ( true === empty( $difference ) ) {
+        return NULL;
+    }
+
+    $return = $difference[ 'percentage' ];
+
+    // Invert number if a decrease
+    if ( false === $difference[ 'increase' ] ) {
+        $return = 0 - $return;
+    }
+
+    return number_format( $return, 2 );
+}
+
+/**
  * Return the text value of enabled value
  *
  * @param $value
@@ -989,4 +1072,22 @@ function ws_ls_calculate_percentage_difference( $previous_weight, $current_weigh
 function ws_ls_boolean_as_yes_no_string( $value, $true_value = 2 ) {
 
 	return ( (int) $true_value == (int) $value ) ? __('Yes', WE_LS_SLUG) : __('No', WE_LS_SLUG);
+}
+
+/**
+ * Fetch a user's First name / Last name from WP. IF not available, use display_name.
+ * @param $user_id
+ * @return string
+ */
+function ws_ls_user_display_name( $user_id ) {
+
+    if ( true === empty( $user_id ) ) {
+        return '-';
+    }
+
+    $name = sprintf( '%s %s', get_user_meta( $user_id, 'first_name' , true ), get_user_meta( $user_id, 'last_name' , true ) );
+
+    return ( true === empty( $name ) || ' ' === $name ) ?
+        get_user_meta( $user_id, 'nickname' , true ) :
+        $name;
 }

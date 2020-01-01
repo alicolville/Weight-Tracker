@@ -23,18 +23,22 @@ function ws_ls_get_bmi_for_table($cm, $kg, $no_height_text = false) {
 	return '';
 }
 
-function ws_ls_calculate_bmi($cm, $kg) {
+/**
+ * Given height and weight, calculate a user's BMI
+ * @param $cm
+ * @param $kg
+ * @return bool|float
+ */
+function ws_ls_calculate_bmi( $cm, $kg ) {
 
-	$bmi = false;
+    if ( false === is_numeric( $cm ) || false === is_numeric( $kg ) ) {
+        return false;
+    }
 
-	if(is_numeric($cm) && is_numeric($kg)) {
+    $bmi = $kg / ($cm * $cm);
+    $bmi = $bmi * 10000;
 
-		$bmi = $kg / ($cm * $cm);
-		$bmi = $bmi * 10000;
-		$bmi = round($bmi, 1);
-	}
-
-	return $bmi;
+	return round( $bmi, 1 );
 }
 
 // $bmi = ws_ls_calculate_bmi(150, 66);
@@ -228,9 +232,9 @@ function ws_ls_get_email_link( $user_id, $include_brackets = false ) {
     }
 
     return sprintf('  %1$s<a href="mailto:%2$s">%2$s</a>%3$s',
-        ( $include_brackets ) ? '(' : '',
+        ( $include_brackets ) ? '( ' : '',
         esc_attr( $user_data->user_email ),
-        ( $include_brackets ) ? ')' : ''
+        ( $include_brackets ) ? ' )' : ''
     );
 }
 

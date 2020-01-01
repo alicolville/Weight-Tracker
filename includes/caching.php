@@ -190,6 +190,8 @@ function ws_ls_delete_cache_for_given_user($user_id = false)
 		ws_ls_cache_user_delete($user_id);
 
   	}
+
+  	do_action( 'wlt-hook-delete-cache-for-user', $user_id );
 }
 function ws_ls_delete_all_cache()
 {
