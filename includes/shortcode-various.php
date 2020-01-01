@@ -292,40 +292,59 @@ function ws_ls_get_weight_target($user_id, $unit = "target_weight_weight")
 	return false;
 
 }
-function we_ls_format_weight_into_correct_string_format($weight, $comparison = false) {
+
+/**
+ * Format weight into correct string
+ * @param $weight
+ * @param bool $comparison
+ * @return string
+ */
+function we_ls_format_weight_into_correct_string_format( $weight, $comparison = false ) {
 
     // Don't bother converting the value if there isn't one!
     if ( false === $weight) {
         return '';
     }
 
-	if( ws_ls_get_config('WE_LS_IMPERIAL_WEIGHTS') )
-	{
-		if (ws_ls_get_config('WE_LS_DATA_UNITS') == "pounds_only")
-			return $weight . __("lbs", WE_LS_SLUG);
-		else
-		{
-			$weight_data = ws_ls_to_stone_pounds($weight);
+	if( true === ws_ls_get_config('WE_LS_IMPERIAL_WEIGHTS') ) {
 
-			if ($comparison) {
-				return ws_ls_format_stones_pound_for_comparison_display($weight_data);
+		if ( 'pounds_only' === ws_ls_get_config('WE_LS_DATA_UNITS' ) ) {
+
+            return sprintf( '%1$s%2$s',
+                number_format( $weight, 2 ),
+                __( 'lbs', WE_LS_SLUG )
+            );
+
+        } else {
+
+		    $weight_data = ws_ls_to_stone_pounds( $weight );
+
+			if ( $comparison ) {
+				return ws_ls_format_stones_pound_for_comparison_display( $weight_data );
 			} else {
 
-				if($weight_data["pounds"] < 0) {
-					$weight_data["pounds"] = abs($weight_data["pounds"]);
+				if ( $weight_data[ 'pounds' ] < 0 ) {
+					$weight_data[ 'pounds'] = abs( $weight_data[ 'pounds' ] );
 				}
 
 				// If Lbs is 14, then set to 0 and increment stones!
-				if(14 == $weight_data["pounds"]) {
-					$weight_data["pounds"] = 0;
-					$weight_data["stones"]++;
+				if ( 14 === (int) $weight_data[ 'pounds' ] ) {
+					$weight_data[ 'pounds' ] = 0;
+					$weight_data[ 'stones' ]++;
 				}
 
-				return $weight_data["stones"] . __("st", WE_LS_SLUG) . " " . $weight_data["pounds"] . __("lbs", WE_LS_SLUG);
+				return sprintf( '%1$d%2$s %3$s%4$s',
+                    (int) $weight_data[ 'stones' ],
+                    __( 'st', WE_LS_SLUG ),
+                    number_format( $weight_data["pounds"], 2 ),
+                    __( 'lbs', WE_LS_SLUG )
+                );
 			}
 		}
-	}
-	else {
-		return $weight . __("Kg", WE_LS_SLUG);
+	} else {
+	    return sprintf( '%1$s%2$s',
+                                number_format( $weight, 2 ),
+                                __( 'Kg', WE_LS_SLUG )
+        );
 	}
 }

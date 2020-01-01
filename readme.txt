@@ -166,6 +166,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 * Improvement: When mobile, make the user header menu responsive.
 * Improvement: Added some cross reference to YeKen's Meal Tracker.
 * Improvement: Various small refactors of code.
+* Bug fix: Fixed rounding of [wlt-weight-diff] & [wlt-weight-diff-from-target] to two decimal places
 * Bug fix: Fixed layout issue on help page.
 * Bug fix: Changed "Show Wizard" link so it doesn't trigger Meal Tracker's to also show.
 * Bug fix: Added missing BMI to JSON export.
