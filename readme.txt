@@ -157,6 +157,8 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 = 7.5.1 =
 
+* Improvement: Challenges - added sums and averages table.
+
 = 7.5 =
 
 * Improvement: Added a 5 minute cron hook.
