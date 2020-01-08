@@ -236,19 +236,40 @@ function ws_ls_challenges_table() {
 }
 
 /**
+ * Return all columns
+ * @return array
+ */
+function ws_ls_challenges_entry_columns_defaults() {
+
+    return [
+        'weight_diff'           => [ 'title' => __( 'Total Weight Loss', WE_LS_SLUG ), 'type' => 'text' ],
+        'bmi_diff'              => [ 'title' => __( 'BMI Change', WE_LS_SLUG ) ],
+        'weight_percentage'     => [ 'title' => __( '% Body Weight', WE_LS_SLUG ) ],
+        'count_mt_entries'      => [ 'title' => __( 'Meal Tracker Streaks (Days)', WE_LS_SLUG ) ],
+        'count_wt_entries_week' => [ 'title' => __( 'Weight Tracker Streaks (Weeks)', WE_LS_SLUG ) ]
+    ];
+}
+
+/**
+ * Fetch a column name
+ * @param $key
+ * @return mixed|string
+ */
+function ws_ls_challenges_entry_column_name( $key ) {
+
+    $cols = ws_ls_challenges_entry_columns_defaults();
+
+    return ( true === array_key_exists( $key, $cols ) ) ? $cols[ $key ][ 'title' ] : '-';
+}
+
+/**
  * Fetch columns to display
  * @param null $args
  * @return array
  */
 function ws_ls_challenges_entry_columns( $args = NULL ) {
 
-    $cols = [
-                'weight_diff'           => [ 'title' => __( 'Total Weight Loss', WE_LS_SLUG ), 'type' => 'text' ],
-                'bmi_diff'              => [ 'title' => __( 'BMI Change', WE_LS_SLUG ) ],
-                'weight_percentage'     => [ 'title' => __( '% Body Weight', WE_LS_SLUG ) ],
-                'count_mt_entries'      => [ 'title' => __( 'Meal Tracker Streaks (Days)', WE_LS_SLUG ) ],
-                'count_wt_entries_week' => [ 'title' => __( 'Weight Tracker Streaks (Weeks)', WE_LS_SLUG ) ]
-    ];
+    $cols = ws_ls_challenges_entry_columns_defaults();
 
     if ( false === wlt_yk_mt_is_active() ) {
         unset( $cols[ 'count_mt_entries' ] );
@@ -287,7 +308,7 @@ function ws_ls_challenges_view_entries( $args ) {
                                         'gender'                =>  ws_ls_querystring_value( 'filter-gender', true,  0 ),
                                         'group-id'              =>  ws_ls_querystring_value( 'filter-group-id', true,  NULL ),
                                         'show-filters'          => true,
-                                        'counts-and-averages'   => true
+                                        'sums-and-averages'     => true
     ]);
 
     $data = ws_ls_challenges_data( $args );
@@ -348,9 +369,12 @@ function ws_ls_challenges_view_entries( $args ) {
     $html .= '</tbody></table>';
 
     // Include counts and averages?
-    if ( true === $args[ 'counts-and-averages' ] ) {
+    if ( true === filter_var( $args[ 'sums-and-averages' ],FILTER_VALIDATE_BOOLEAN ) ) {
 
-        $counts = [];
+        $counts         = [];
+        $html_columns   = '';
+        $html_sums      = '';
+        $html_averages  = '';
 
         // Loop through each column we're interested in, sum the column and then divide by count
 	    foreach ( $columns as $key => $details ) {
@@ -359,8 +383,42 @@ function ws_ls_challenges_view_entries( $args ) {
 		    $counts[ $key ]             = [ 'count' => count( $column_data ), 'sum' => array_sum( $column_data ) ];
 		    $counts[ $key ][ 'average'] = ( 0 !== $counts[ $key ][ 'count'] ) ?
                                             $counts[ $key ][ 'sum'] / $counts[ $key ][ 'count'] : 0;
+
+            $html_columns   .= sprintf( '<th data-breakpoints="xs" data-type="number">%s</th>', esc_html( ws_ls_challenges_entry_column_name( $key ) ) );
+
+            switch ( $key ){
+                case 'weight_diff':
+                    $html_sums      .= sprintf( '<td>%s</td>', ws_ls_convert_kg_into_relevant_weight_String( $counts[ $key ][ 'sum' ], true ) );
+                    $html_averages  .= sprintf( '<td>%s</td>', ws_ls_convert_kg_into_relevant_weight_String( $counts[ $key ][ 'average' ] ) );
+                    break;
+                case 'count_mt_entries':
+                case 'count_wt_entries_week':
+                    $html_sums      .= sprintf( '<td>%d</td>', $counts[ $key ][ 'sum' ] );
+                    $html_averages  .= sprintf( '<td>%s</td>', number_format( $counts[ $key ][ 'average' ], 1 ) );
+                    break;
+                default:
+                    $html_sums      .= '<td></td>';
+                    $html_averages  .= sprintf( '<td>%s</td>', number_format( $counts[ $key ][ 'average' ], 2 ) );
+            }
+
 	    }
 
+        $html .= sprintf( '<br />
+                                    <table class="ws-ls-footable ws-ls-footable-basic widefat">
+                                        <thead>
+                                            <tr><th></th>%1$s</tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr><th>%2$s</th>%3$s</tr>
+                                            <tr><th>%4$s</th>%5$s</tr>
+                                        </tbody>    
+                                   </table>',
+                                    $html_columns,
+                                    __( 'Sum', WE_LS_SLUG ),
+                                    $html_sums,
+                                    __( 'Average', WE_LS_SLUG ),
+                                    $html_averages
+        );
     }
 
     return $html;
