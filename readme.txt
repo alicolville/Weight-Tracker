@@ -157,6 +157,9 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 = 7.5.2 =
 
+* Improvement:  Challenges - calculate averages based on user's that have more than one Weight Entry recorded.
+* Bug Fix:      Challenges - issue fixed where rendering sums and averages out in stones / lbs was stripped down to a number.
+
 = 7.5.1 =
 
 * Improvement: Challenges - added sums and averages table.
