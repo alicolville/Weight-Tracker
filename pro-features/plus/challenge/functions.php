@@ -376,15 +376,21 @@ function ws_ls_challenges_view_entries( $args ) {
         $html_sums      = '';
         $html_averages  = '';
 
+        $average_data = array_filter( wp_list_pluck( $data, 'count_wt_entries' ) , function( $value ) {
+            return (int) $value > 1;
+        });
+
+        $count_entries_more_than_one_wt_entry = count( $average_data );
+
         // Loop through each column we're interested in, sum the column and then divide by count
 	    foreach ( $columns as $key => $details ) {
 
 	        $column_data                = wp_list_pluck( $data, $key );
-		    $counts[ $key ]             = [ 'count' => count( $column_data ), 'sum' => array_sum( $column_data ) ];
-		    $counts[ $key ][ 'average'] = ( 0 !== $counts[ $key ][ 'count'] ) ?
-                                            $counts[ $key ][ 'sum'] / $counts[ $key ][ 'count'] : 0;
+		    $counts[ $key ]             = [ 'count' => count( $column_data ), 'count-one-or-more-wt-entries' => $count_entries_more_than_one_wt_entry, 'sum' => array_sum( $column_data ) ];
+		    $counts[ $key ][ 'average'] = ( 0 !== $counts[ $key ][ 'count-one-or-more-wt-entries'] ) ?
+                                            $counts[ $key ][ 'sum'] / $counts[ $key ][ 'count-one-or-more-wt-entries'] : 0;
 
-            $html_columns   .= sprintf( '<th data-breakpoints="xs" data-type="number">%s</th>', esc_html( ws_ls_challenges_entry_column_name( $key ) ) );
+            $html_columns   .= sprintf( '<th data-breakpoints="xs" data-type="string">%s</th>', esc_html( ws_ls_challenges_entry_column_name( $key ) ) );
 
             switch ( $key ){
                 case 'weight_diff':
