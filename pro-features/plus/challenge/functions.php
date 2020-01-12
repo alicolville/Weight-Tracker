@@ -384,7 +384,7 @@ function ws_ls_challenges_view_entries( $args ) {
 		    $counts[ $key ][ 'average'] = ( 0 !== $counts[ $key ][ 'count'] ) ?
                                             $counts[ $key ][ 'sum'] / $counts[ $key ][ 'count'] : 0;
 
-            $html_columns   .= sprintf( '<th data-breakpoints="xs" data-type="number">%s</th>', esc_html( ws_ls_challenges_entry_column_name( $key ) ) );
+            $html_columns   .= sprintf( '<th data-breakpoints="xs" data-type="string">%s</th>', esc_html( ws_ls_challenges_entry_column_name( $key ) ) );
 
             switch ( $key ){
                 case 'weight_diff':
