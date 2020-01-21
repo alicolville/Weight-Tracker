@@ -81,6 +81,8 @@ function ws_ls_load_measurement_form($existing_data = false)
 	  foreach($measurement_fields as $key => $data) {
         if($data['enabled'] && false == $data['user_preference']) {
 
+		$value = '';
+		
 			// Do we have an existing value
 			if( false === empty( $existing_data['measurements'] ) && true === is_array( $existing_data['measurements'] ) ) {
 				$value = ws_ls_get_existing_value( $existing_data['measurements'], $key, false );
