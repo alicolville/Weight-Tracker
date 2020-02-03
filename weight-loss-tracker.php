@@ -167,7 +167,10 @@ defined('ABSPATH') or die('Jog on!');
         ]);
 
         // Challenge enabled?
-        $files_to_include[] = 'pro-features/plus/challenge/inc.php';
+        if  ( true === WS_LS_IS_PRO_PLUS &&
+            'yes' === get_option( 'ws-ls-challenges-enabled', 'no' ) ) {
+            $files_to_include[] = 'pro-features/plus/challenge/inc.php';
+        }
     }
 
     // Email notifications enabled?

@@ -10,7 +10,9 @@
 		add_submenu_page( 'ws-ls-data-home', __('Custom Fields', WE_LS_SLUG),  __('Custom Fields', WE_LS_SLUG), 'manage_options', 'ws-ls-meta-fields', 'ws_ls_meta_fields_page');
         add_submenu_page( 'ws-ls-data-home', __('Awards', WE_LS_SLUG),  __('Awards', WE_LS_SLUG), 'manage_options', 'ws-ls-awards', 'ws_ls_awards_page');
 
-        add_submenu_page( 'ws-ls-data-home', __('Challenges (beta)', WE_LS_SLUG),  __('Challenges (beta)', WE_LS_SLUG), 'manage_options', 'ws-ls-challenges', 'ws_ls_challenges_admin_page' );
+        if ( true === ws_ls_challenges_is_enabled() ) {
+            add_submenu_page( 'ws-ls-data-home', __('Challenges (beta)', WE_LS_SLUG),  __('Challenges (beta)', WE_LS_SLUG), 'manage_options', 'ws-ls-challenges', 'ws_ls_challenges_admin_page' );
+        }
 
 		$menu_text = (false === WS_LS_IS_PRO && false === WS_LS_IS_PRO_PLUS) ? __('Upgrade', WE_LS_SLUG) : __('Your License', WE_LS_SLUG);
 

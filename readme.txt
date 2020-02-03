@@ -157,7 +157,8 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 = 7.5.4 =
 
-* Bug fix: Only include Challenge files (beta) for Pro Plus licenses. Doing so without a valid license caused settings not to save.
+* Bug fix:  Challenges - Only include Challenge files (beta) for Pro Plus licenses. Doing so without a valid license caused settings not to save.
+* Change:   Challenges - by default, Challenges are disabled.
 
 = 7.5.3 =
 
