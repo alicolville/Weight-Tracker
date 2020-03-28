@@ -3,8 +3,8 @@ Contributors: aliakro
 Tags: weight, loss, lose, tracker, bmi, bmr, macronutrient, graph, track, stones, kg, table, calories, awards, email, custom, fields, history, pounds, responsive, chart, measurements, cm, centimeters, inches, photos
 Requires at least: 4.4.9
 Tested up to: 5.3
-Stable tag: 7.5.4
-Requires PHP: 7.1
+Stable tag: 7.5.5
+Requires PHP: 7.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate Link: https://www.paypal.me/yeken
@@ -154,6 +154,11 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 7.5 - Challenges added.
 
 == Changelog ==
+
+= 7.5.1 =
+
+* Change: Added additional support for custom fields in user preferences.
+* Change: Removed redundant github link.
 
 = 7.5.4 =
 
