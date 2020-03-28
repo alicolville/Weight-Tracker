@@ -297,7 +297,10 @@ function ws_ls_macro_validate_percentages()
  * @return string
  */
 function ws_ls_macro_round($value) {
-    return number_format($value, 2);
+
+	$macro_rounding = (int) apply_filters( 'wlt-filters-macros-rounding', 2 );
+
+    return number_format( $value, $macro_rounding );
 }
 
 /**
