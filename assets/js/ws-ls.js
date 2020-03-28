@@ -151,12 +151,12 @@ jQuery( document ).ready(function ($) {
             // ------------------------------------------------------------------------
             // The following code is common between public and admin user preferences
             // ------------------------------------------------------------------------
-            $(".ws-ls-user-pref-form select").each(function () {
-                post_data[$(this).attr("id")] = $(this).val();
+            $( '.ws-ls-user-pref-form select, .ws-ls-user-pref-form .custom-field' ).each(function () {
+              post_data[ $(this).attr("id") ] = $( this ).val();
             });
-
-            post_data['ws-ls-dob'] = $('#ws-ls-dob').val();
-            post_data["action"] = "ws_ls_save_preferences";
+  
+            post_data[ 'action' ]     = 'ws_ls_save_preferences';
+            post_data[ 'ws-ls-dob' ]  = $( '#ws-ls-dob' ).val();
 
             ws_ls_post_data( post_data, ws_ls_user_preference_callback );
         }
