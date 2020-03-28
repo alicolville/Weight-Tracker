@@ -4,7 +4,7 @@ Tags: weight, loss, lose, tracker, bmi, bmr, macronutrient, graph, track, stones
 Requires at least: 4.4.9
 Tested up to: 5.3
 Stable tag: 7.5.5
-Requires PHP: 7.3
+Requires PHP: 7.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate Link: https://www.paypal.me/yeken
@@ -155,7 +155,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 == Changelog ==
 
-= 7.5.1 =
+= 7.5.5 =
 
 * Change: Added additional support for custom fields in user preferences.
 * Change: Removed redundant github link.
