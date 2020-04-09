@@ -9,6 +9,11 @@ defined('ABSPATH') or die('Jog on!');
  */
 function ws_ls_has_a_valid_license() {
 
+	// Has this site hash been banned from upgrading?
+	if ( true === ws_ls_is_site_hash_banned() ){
+		return false;
+	}
+
 	// Do we have an Pro Plus license?
 	$license_type = ws_ls_has_a_valid_subscription_license();
 
@@ -22,6 +27,19 @@ function ws_ls_has_a_valid_license() {
 	}
 
     return false;
+}
+
+/**
+ * Hash this site hash been banned?
+ * @param $site_hash
+ * @return bool
+ */
+function ws_ls_is_site_hash_banned() {
+
+	$site_hash 		= ws_ls_generate_site_hash();
+	$banned_hashes 	= [ 'de984a' ];
+
+	return ( in_array( $site_hash, $banned_hashes ) );
 }
 
 /**
@@ -283,14 +301,18 @@ function ws_ls_license_decode($license) {
 **/
 function ws_ls_generate_site_hash() {
 
-    $site_hash = get_option(WS_LS_LICENSE_SITE_HASH);
+    $site_hash = get_option( WS_LS_LICENSE_SITE_HASH );
+
+    if ( false !== $site_hash ) {
+    	return $site_hash;
+	}
 
     // Generate a basic site key from URL and plugin slug
-    if(false == $site_hash) {
-      $site_hash = md5(WE_LS_SLUG . '-' . site_url());
-      $site_hash = substr($site_hash, 0, 6);
-      update_option(WS_LS_LICENSE_SITE_HASH, $site_hash);
-    }
+    $site_hash = md5(WE_LS_SLUG . '-' . site_url() );
+  	$site_hash = substr( $site_hash, 0, 6 );
+
+  	update_option(WS_LS_LICENSE_SITE_HASH, $site_hash );
+
     return $site_hash;
 }
 
