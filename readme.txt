@@ -158,6 +158,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 = 7.5.7 =
 
 * Improvement: Pass individual Macro shortcode through same rounding.
+* Improvement: Added user_id to wlt-filter-bmr-calculation filter.
 
 = 7.5.6 =
 
