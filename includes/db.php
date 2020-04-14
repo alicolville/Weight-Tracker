@@ -562,7 +562,7 @@ function ws_ls_set_user_preference_simple( $field, $value, $user_id = NULL ) {
     $result = ($result === false) ? false : true;
 
     // Tidy up cache
-    ws_ls_delete_cache_for_given_user( $db_fields['user_id'] );
+    ws_ls_delete_cache_for_given_user( $user_id );
 
     return $result;
 }

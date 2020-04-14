@@ -159,6 +159,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 * Improvement: Pass individual Macro shortcode through same rounding.
 * Improvement: Added user_id to wlt-filter-bmr-calculation filter.
+* Bug fix: Invalidate cache for a user when updating a single setting field
 
 = 7.5.6 =
 
