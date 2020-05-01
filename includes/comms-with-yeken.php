@@ -20,7 +20,7 @@ function ws_ls_stats_send_license_activation_to_yeken() {
 		return;
 	}
 
-	$previously_sent_key = 'ws-ls-license-notify-2017';
+	$previously_sent_key = 'ws-ls-license-notify-2020';
 
 	if(false == get_option($previously_sent_key)) {
 
@@ -46,7 +46,7 @@ add_action('admin_init', 'ws_ls_stats_send_license_activation_to_yeken');					//
 function ws_ls_stats_send_license_expire_to_yeken() {
 
     // Delete flag to notify YeKen of another license activation!
-    delete_option('ws-ls-license-notify-2017');
+    delete_option('ws-ls-license-notify-2020');
 
     // Build payload to send to Yeken
     $data = array();

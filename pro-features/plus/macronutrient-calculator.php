@@ -230,7 +230,7 @@ function ws_ls_shortcode_macro($user_defined_arguments) {
         return '<p>' . esc_html( $arguments['error-message'] ) . '</p>';
     }
 
-	$display_value = (false === empty($macros[$progress][$type][$nutrient])) ? number_format($macros[$progress][$type][$nutrient], 2) : '' ;
+	$display_value = (false === empty($macros[$progress][$type][$nutrient])) ? ws_ls_macro_round( $macros[$progress][$type][$nutrient] ) : '' ;
 
 	return esc_html($display_value);
 }
