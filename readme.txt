@@ -157,7 +157,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 = 7.5.8 =
 
-* Improvement: Added new Spanish translations
+* Improvement: Added new Spanish translations (thanks @Iván)
 * Improvement: Additional filters throughout plugin.
 * Improvement: Additional underlying support for shortcodes to support user IDs other than current logged in user.
 
