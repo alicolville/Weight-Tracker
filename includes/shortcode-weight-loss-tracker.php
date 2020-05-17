@@ -11,18 +11,19 @@
 
             $shortcode_arguments = shortcode_atts(
             array(
-                'min-chart-points' => 2,					// Minimum number of data entries before chart is shown
-				'hide-first-target-form' => false,			// Hide first Target form
-				'hide-second-target-form' => false,			// Hide second Target form
-				'show-add-button' => false,					// Display a "Add weight" button above the chart.
-                'allow-delete-data' => true,                // Show "Delete your data" section
-                'hide-photos' => false,                     // Hide photos part of form
-                'hide-tab-photos' => false,                 // Hide Photos tab
-                'hide-tab-advanced' => false,               // Hide Advanced tab (macroN, calories, etc)
-                'hide-advanced-narrative' => false,         // Hide text describing BMR, MarcoN, etc
-                'disable-advanced-tables' => false,         // Disable advanced data tables.
-                'disable-tabs' => false,                    // Disable using tabs.
-				'disable-second-check' => false				// Disable check to see if [wlt] placed more than once
+                'min-chart-points' 			=> 2,						// Minimum number of data entries before chart is shown
+				'hide-first-target-form' 	=> false,					// Hide first Target form
+				'hide-second-target-form' 	=> false,					// Hide second Target form
+				'show-add-button' 			=> false,					// Display a "Add weight" button above the chart.
+                'allow-delete-data' 		=> true,                	// Show "Delete your data" section
+                'hide-photos' 				=> false,                   // Hide photos part of form
+                'hide-tab-photos' 			=> false,                 	// Hide Photos tab
+                'hide-tab-advanced' 		=> false,               	// Hide Advanced tab (macroN, calories, etc)
+                'hide-advanced-narrative' 	=> false,         			// Hide text describing BMR, MarcoN, etc
+                'disable-advanced-tables' 	=> false,         			// Disable advanced data tables.
+                'disable-tabs' 				=> false,                   // Disable using tabs.
+				'disable-second-check' 		=> false,					// Disable check to see if [wlt] placed more than once
+				'user-id'					=> get_current_user_id()
                ), $user_defined_arguments );
 
 			// Validate arguments
@@ -50,8 +51,8 @@
 				return ws_ls_display_blockquote(__('You need to be logged in to record your weight.', WE_LS_SLUG) , '', false, true);
 			}
 
-            $user_id = get_current_user_id();
-            $use_tabs = (false === $shortcode_arguments['disable-tabs']);
+            $user_id 	= (int) $shortcode_arguments[ 'user-id' ];
+            $use_tabs 	= (false === $shortcode_arguments['disable-tabs']);
 
 	        // Decide whether to show Macro N / Calories tab
             $show_advanced_tab = (false === $shortcode_arguments['hide-tab-advanced'] && true === WS_LS_IS_PRO_PLUS);
@@ -139,7 +140,7 @@
 
 			// Include target form?
 			if (WE_LS_ALLOW_TARGET_WEIGHTS && false == $shortcode_arguments['hide-first-target-form']) {
-				$html_output .= ws_ls_display_weight_form( true, 'ws-ls-target-form' );
+				$html_output .= ws_ls_display_weight_form( true, 'ws-ls-target-form', $user_id );
 			}
 
 			// Display "Add Weight" anchor?
@@ -153,7 +154,7 @@
 			if( false === empty($entry_id)) {
 
 				if ($entry_id) {
-					$data = ws_ls_get_weight(get_current_user_id(), $entry_id);
+					$data = ws_ls_get_weight( $user_id, $entry_id);
 				}
 
 				//If we have a Redirect URL, base decode.
@@ -163,12 +164,12 @@
 					$redirect_url = base64_decode($redirect_url);
 				}
 
-				$html_output .= ws_ls_display_weight_form(false, false,	false, false, false, false,
+				$html_output .= ws_ls_display_weight_form(false, false,	$user_id, false, false, false,
 					false, false, $redirect_url, $data, true, $shortcode_arguments['hide-photos']);
 			} else {
 
 				// Display input form in add mode
-				$html_output .= ws_ls_display_weight_form(false, 'ws-ls-main-weight-form', false, false, false, false, true, false, false, false, false, $shortcode_arguments['hide-photos']);
+				$html_output .= ws_ls_display_weight_form(false, 'ws-ls-main-weight-form', $user_id, false, false, false, true, false, false, false, false, $shortcode_arguments['hide-photos']);
 			}
 
 			// Close first tab
@@ -183,7 +184,7 @@
 			if ( $weight_data && ( count( $weight_data ) > 0 || $selected_week_number != -1 ) )	{
 
 					if ( WE_LS_ALLOW_TARGET_WEIGHTS && $use_tabs && false == $shortcode_arguments['hide-second-target-form'] ) {
-						$html_output .= ws_ls_display_weight_form( true, 'ws-ls-target-form' );
+						$html_output .= ws_ls_display_weight_form( true, 'ws-ls-target-form', $user_id );
 					}
 
 					// Display week filters and data tab
@@ -209,24 +210,24 @@
 			}
 			$html_output .= ws_ls_end_tab($use_tabs);
 
-			// Advanced Data? MacroN etc?
+			// Photos tab?
 			if ( true === $show_photos_tab ){
 				$html_output .= ws_ls_start_tab('wlt-user-photod', $use_tabs);
-				$html_output .= ws_ls_shortcode_wlt_display_photos_tab();
+				$html_output .= ws_ls_shortcode_wlt_display_photos_tab( $user_id );
 				$html_output .= ws_ls_end_tab($use_tabs);
 			}
 
             // Advanced Data? MacroN etc?
             if ( true === $show_advanced_tab ){
                 $html_output .= ws_ls_start_tab('wlt-user-advanced', $use_tabs);
-                $html_output .= ws_ls_shortcode_wlt_display_advanced_tab($shortcode_arguments);
+                $html_output .= ws_ls_shortcode_wlt_display_advanced_tab( $shortcode_arguments );
                 $html_output .= ws_ls_end_tab($use_tabs);
             }
 
 			// If enabled, have a third tab to allow users to manage their own settings!
 			if(WE_LS_ALLOW_USER_PREFERENCES){
 				$html_output .= ws_ls_start_tab('wlt-user-preferences', $use_tabs);
-				$html_output .= ws_ls_user_preferences_form(['user-id' => false,  'allow-delete-data' => $shortcode_arguments['allow-delete-data']]);
+				$html_output .= ws_ls_user_preferences_form( ['user-id' => $user_id,  'allow-delete-data' => $shortcode_arguments['allow-delete-data']]);
 				$html_output .= ws_ls_end_tab($use_tabs);
 			}
 

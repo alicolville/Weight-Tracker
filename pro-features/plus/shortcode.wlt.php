@@ -2,19 +2,20 @@
 
     defined('ABSPATH') or die("Jog on!");
 
-	/**
-	 * Populate the photos tab of [wlt] shortcode
-	 *
-	 * @param $arguments
-	 * @return string
-	 */
-    function ws_ls_shortcode_wlt_display_photos_tab() {
+/**
+ * Populate the photos tab of [wlt] shortcode
+ *
+ * @param null $user_id
+ * @return string
+ */
+    function ws_ls_shortcode_wlt_display_photos_tab( $user_id = null ) {
 
 		if(false === WS_LS_IS_PRO) {
 			return '';
 		}
 
-		$user_id = get_current_user_id();
+		$user_id = ( NULL === $user_id ) ? get_current_user_id() : $user_id;
+
 		$html = '';
 
 		if ( $user_id ) {
@@ -56,7 +57,8 @@
 		}
 
     	$html = '';
-        $user_id = get_current_user_id();
+
+		$user_id = ( true === empty( $arguments[ 'user-id' ] ) ) ? get_current_user_id() : (int) $arguments[ 'user-id' ];
 
        	$include_narrative = ( true === isset($arguments['hide-advanced-narrative'])  &&
 								false === $arguments['hide-advanced-narrative'] ) ? true : false;

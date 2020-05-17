@@ -406,8 +406,8 @@ function ws_ls_meta_fields_get_user_ids_for_this_meta_field( $meta_field_id ) {
     global $wpdb;
 
     $sql = 'Select distinct weight_user_id from ' . $wpdb->prefix . WE_LS_MYSQL_META_ENTRY . ' e ' .
-        ' inner join ' . $wpdb->prefix . WE_LS_TABLENAME . ' d on e.entry_id = d.id 
-	         inner join ' . $wpdb->prefix . WE_LS_MYSQL_META_FIELDS . ' f on f.id = e.meta_field_id    
+        ' inner join ' . $wpdb->prefix . WE_LS_TABLENAME . ' d on e.entry_id = d.id
+	         inner join ' . $wpdb->prefix . WE_LS_MYSQL_META_FIELDS . ' f on f.id = e.meta_field_id
 	         where meta_field_id = %d';
 
     $sql = $wpdb->prepare( $sql, $meta_field_id );

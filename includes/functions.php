@@ -188,15 +188,11 @@ function ws_ls_admin_check_mysql_tables_exist() {
     $error_text = '';
     global $wpdb;
 
-    $tables_to_check = [    $wpdb->prefix . WE_LS_TARGETS_TABLENAME,
-                            $wpdb->prefix . WE_LS_TABLENAME,
-                            $wpdb->prefix . WE_LS_USER_PREFERENCES_TABLENAME,
-                            $wpdb->prefix . WE_LS_MYSQL_META_FIELDS,
-                            $wpdb->prefix . WE_LS_MYSQL_META_ENTRY,
-                            $wpdb->prefix . WE_LS_MYSQL_AWARDS,
-                            $wpdb->prefix . WE_LS_MYSQL_AWARDS_GIVEN,
-                            $wpdb->prefix . WE_LS_MYSQL_GROUPS,
-                            $wpdb->prefix . WE_LS_MYSQL_GROUPS_USER
+    $tables_to_check = [    $wpdb->prefix . YK_WT_DB_MEALS,
+                            $wpdb->prefix . YK_WT_DB_ENTRY,
+                            $wpdb->prefix . YK_WT_DB_ENTRY_MEAL,
+                            $wpdb->prefix . YK_WT_DB_MEAL_TYPES,
+                            $wpdb->prefix . YK_WT_DB_SETTINGS
                        ];
 
     // Check each table exists!
@@ -244,7 +240,7 @@ function ws_ls_create_dialog_jquery_code( $title, $message, $class_used_to_promp
                                 "modal"         : true,
                                 "autoOpen"      : false
                             });
-                            
+
                             $( ".%4$s" ).click( function( event ) {
                                 event.preventDefault();
                                 target_url = $( this ).attr( "href" );
