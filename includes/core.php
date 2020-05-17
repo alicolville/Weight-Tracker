@@ -327,7 +327,7 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
         $entry_id = (int) $existing_data['db_row_id'];
 		$html_output .= '<input type="hidden" value="' . $entry_id . '" id="db_row_id" name="db_row_id" />';
 	}
- 
+
 	// Redirect form afterwards?
 	if($redirect_url) {
 		$html_output .= '<input type="hidden" value="' . esc_url($redirect_url) . '" id="ws_redirect" name="ws_redirect" />';
@@ -338,7 +338,7 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 	}
 
 	$html_output .= '<div class="ws-ls-inner-form comment-input">
-		
+
 	';
 
 	// If not a target form include date
@@ -622,7 +622,7 @@ function ws_ls_get_js_config() {
 		'ajax-security-nonce' => wp_create_nonce( 'ws-ls-nonce' ),
 		'is-pro' => (WS_LS_IS_PRO) ? 'true' : 'false',
 		'user-id' => get_current_user_id(),
-		'current-url' => get_permalink(),
+		'current-url' => apply_filters( 'wlt_current_url', get_permalink() ),
 		'measurements-enabled' => ( WE_LS_MEASUREMENTS_ENABLED && true === ws_ls_any_active_measurement_fields() ) ? 'true' : 'false',
 		'photos-enabled' => ( ws_ls_meta_fields_photo_any_enabled( true ) ) ? 'true' : 'false',
 		'measurements-unit' => ws_ls_get_config('WE_LS_MEASUREMENTS_UNIT'),
