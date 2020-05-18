@@ -15,7 +15,7 @@ Allow registered users of your website to track their weight, measurements, cust
 
 = Demo =
 
-Use our free site for tracking your weight which shows off some of the plugin's feature: [TrackYourWeight.co.uk - Demo Site](https://www.trackyourweight.co.uk "TrackYourWeight.co.uk")
+Use our free site for tracking your weight which shows off some of the plugin's feature: [https://demo.yeken.co.uk - Demo Site](https://demo.yeken.co.uk "https://demo.yeken.co.uk")
 
 = Documentation =
 
