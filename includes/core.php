@@ -314,7 +314,7 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 							(($measurements_form_enabled) ? 'true' : 'false'),
 							(($measurements_form_enabled && WE_LS_MEASUREMENTS_MANDATORY) ? 'true' : 'false'),
 							(($target_form) ? 'true' : 'false'),
-							esc_attr (ws_ls_get_chosen_weight_unit_as_string() ),
+							esc_attr (ws_ls_get_chosen_weight_unit_as_string( $user_id ) ),
 							(($target_form) ? 'true' : 'false'),
 							esc_attr($user_id),
 							esc_attr( wp_hash($user_id) ),
@@ -372,9 +372,9 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 	}
 
 	// Display the relevant weight fields depending on weight unit selected
-	if(ws_ls_get_config('WE_LS_IMPERIAL_WEIGHTS'))
+	if( ws_ls_get_config('WE_LS_IMPERIAL_WEIGHTS', $user_id ) )
 	{
-		if (ws_ls_get_config('WE_LS_DATA_UNITS') == 'stones_pounds') {
+		if ( 'stones_pounds' === ws_ls_get_config('WE_LS_DATA_UNITS' , $user_id ) ) {
 			$html_output .= '<input  type="number"  tabindex="' . ws_ls_get_next_tab_index() . '" step="any" min="0" name="we-ls-weight-stones" id="we-ls-weight-stones" value="' . ws_ls_get_existing_value($existing_data, 'stones') . '" placeholder="' . __('Stones', WE_LS_SLUG) . '" size="11" >';
 			$html_output .= '<input  type="number" tabindex="' . ws_ls_get_next_tab_index() . '" step="any" min="0" max="13.99" name="we-ls-weight-pounds" id="we-ls-weight-pounds" value="' . ws_ls_get_existing_value($existing_data, 'pounds') . '" placeholder="' . __('Pounds', WE_LS_SLUG) . '" size="11"  >';
 		}
@@ -465,7 +465,7 @@ function ws_ls_convert_date_to_iso($date, $user_id = false) {
 
 function ws_ls_capture_form_validate_and_save($user_id = false)
 {
-	if(false == $user_id){
+	if( false == $user_id){
 		$user_id = get_current_user_id();
 	}
 
@@ -512,7 +512,7 @@ function ws_ls_capture_form_validate_and_save($user_id = false)
 		foreach ($weight_keys as $key) {
 			if(array_key_exists($key, $form_values)) {
 				// Convert to CM?
-				if('cm' != ws_ls_get_config('WE_LS_MEASUREMENTS_UNIT')) {
+				if('cm' != ws_ls_get_config('WE_LS_MEASUREMENTS_UNIT', $user_id )) {
 					$measurements[$key] = ws_ls_convert_to_cm(0, $form_values[$key]);
 				} elseif (isset($form_values[$key])) {
 					$measurements[$key] = round($form_values[$key], 2);
@@ -522,7 +522,7 @@ function ws_ls_capture_form_validate_and_save($user_id = false)
 		unset($measurements['ws-ls-height']);	// Remove height key from this form save
 	}
 
-	switch (ws_ls_get_config('WE_LS_DATA_UNITS')) {
+	switch ( ws_ls_get_config('WE_LS_DATA_UNITS', $user_id ) ) {
 		case 'pounds_only':
 				$weight_object = ws_ls_weight_object($user_id, 0, 0, 0, $form_values['we-ls-weight-pounds'], $weight_notes,	$weight_date, true, false, '', $measurements);
 			break;
@@ -587,13 +587,17 @@ function ws_ls_validate_weight_data( $weight_object ) {
 		return false;
 }
 
-function ws_ls_get_chosen_weight_unit_as_string() {
+function ws_ls_get_chosen_weight_unit_as_string( $user_id = NULL ) {
 
-	$use_imperial_weights = ws_ls_get_config('WE_LS_IMPERIAL_WEIGHTS');
+	$user_id = ( null !== $user_id ) ? (int) $user_id : get_current_user_id();
 
-	if($use_imperial_weights && 'stones_pounds' == ws_ls_get_config('WE_LS_DATA_UNITS'))	{
+	$use_imperial_weights = ws_ls_get_config('WE_LS_IMPERIAL_WEIGHTS', $user_id );
+
+	$data_unit =  ws_ls_get_config('WE_LS_DATA_UNITS', $user_id );
+
+	if( $use_imperial_weights && 'stones_pounds' == $data_unit )	{
 		return 'imperial-both';
-	} elseif ($use_imperial_weights && 'pounds_only' == ws_ls_get_config('WE_LS_DATA_UNITS'))	{
+	} elseif ( $use_imperial_weights && 'pounds_only' == $data_unit )	{
 		return 'imperial-pounds';
 	} else {
 		 return 'metric';
@@ -602,7 +606,13 @@ function ws_ls_get_chosen_weight_unit_as_string() {
 
 function ws_ls_get_js_config() {
 
-	$message_for_pounds = (ws_ls_get_config('WE_LS_IMPERIAL_WEIGHTS') && 'stones_pounds' == ws_ls_get_config('WE_LS_DATA_UNITS')) ? __('Please enter a value between 0-13 for pounds', WE_LS_SLUG) : __('Please enter a valid figure for pounds', WE_LS_SLUG);
+	$user_id = get_current_user_id();
+	$user_id = apply_filters( 'wlt-filter-js-ws-ls-config-user-id', $user_id );
+
+	$message_for_pounds = ( ws_ls_get_config('WE_LS_IMPERIAL_WEIGHTS', $user_id )
+								&& 'stones_pounds' == ws_ls_get_config('WE_LS_DATA_UNITS', $user_id ) ) ?
+									__( 'Please enter a value between 0-13 for pounds', WE_LS_SLUG ) :
+										__( 'Please enter a valid figure for pounds', WE_LS_SLUG );
 
 	$use_us_date = ws_ls_get_config('WE_LS_US_DATE');
 
@@ -620,18 +630,16 @@ function ws_ls_get_js_config() {
     	'confirmation-delete' => __('Are you sure you wish to delete this entry? If so, press OK.', WE_LS_SLUG),
 		'ajax-url' => admin_url('admin-ajax.php'),
 		'ajax-security-nonce' => wp_create_nonce( 'ws-ls-nonce' ),
-		'is-pro' => (WS_LS_IS_PRO) ? 'true' : 'false',
-		'user-id' => get_current_user_id(),
+		'is-pro' => ( WS_LS_IS_PRO ) ? 'true' : 'false',
+		'user-id' => $user_id,
 		'current-url' => apply_filters( 'wlt_current_url', get_permalink() ),
 		'measurements-enabled' => ( WE_LS_MEASUREMENTS_ENABLED && true === ws_ls_any_active_measurement_fields() ) ? 'true' : 'false',
 		'photos-enabled' => ( ws_ls_meta_fields_photo_any_enabled( true ) ) ? 'true' : 'false',
-		'measurements-unit' => ws_ls_get_config('WE_LS_MEASUREMENTS_UNIT'),
+		'measurements-unit' => ws_ls_get_config('WE_LS_MEASUREMENTS_UNIT', $user_id ),
 		'validation-we-ls-measurements' => __('Please enter a valid measurement (' . WE_LS_MEASUREMENTS_UNIT . ') which is less that 1000.', WE_LS_SLUG),
 		'date-picker-locale' => ws_ls_get_js_datapicker_locale(),
-		'in-admin' => (is_admin()) ? 'true' : 'false',
+		'in-admin' => ( is_admin() ) ? 'true' : 'false',
 		'max-photo-upload' => ws_ls_photo_max_upload_size(),
-
-
 	);
 
 	// If About You fields mandatory, add extra translations
