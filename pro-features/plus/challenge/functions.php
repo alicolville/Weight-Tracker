@@ -53,7 +53,11 @@ function ws_ls_challenges_process( $user_id = NULL,
  */
 function ws_ls_challenges_diff_between_dates_in_weeks( $date1, $date2 ) {
 
-    if( $date1 > $date2 ) {
+	if ( true === empty( $date1 ) || true === empty( $date2 )  ) {
+		return 0;
+	}
+
+    if ( $date1 > $date2 ) {
         return ws_ls_challenges_diff_between_dates_in_weeks( $date2, $date1 );
     }
 
@@ -201,8 +205,8 @@ function ws_ls_challenges_table() {
                                                         <td>%7$s</td>
                                                         <td>
                                                             <a href="%11$s" class="btn btn-default" title="%8$s"><i class="fa fa-eye"></i></a>
-                                                            <a href="%12$s" class="btn btn-default" title="%9$s"><i class="fa fa-lock"></i></a> 
-                                                            <a href="%13$s" class="btn btn-default" title="%10$s"><i class="fa fa-trash"></i></a>    
+                                                            <a href="%12$s" class="btn btn-default" title="%9$s"><i class="fa fa-lock"></i></a>
+                                                            <a href="%13$s" class="btn btn-default" title="%10$s"><i class="fa fa-trash"></i></a>
                                                         </td>
                                                     </tr>',
                         $challenge[ 'id' ],
@@ -408,7 +412,7 @@ function ws_ls_challenges_view_entries( $args ) {
                                         <tbody>
                                             <tr><th>%2$s</th>%3$s</tr>
                                             <tr><th>%4$s</th>%5$s</tr>
-                                        </tbody>    
+                                        </tbody>
                                    </table>',
                                     $html_columns,
                                     __( 'Sum', WE_LS_SLUG ),
