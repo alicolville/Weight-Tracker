@@ -22,7 +22,7 @@
 
 		// Do we have BMR cached?
 		if($cache = ws_ls_get_cache($cache_key)) {
-			return ws_ls_round_bmr_harris($cache);
+		//	return ws_ls_round_bmr_harris($cache);
 		}
 
         // First, we need to ensure the person has a gender.
@@ -49,7 +49,7 @@
         // Recent weight?
         $weight = ws_ls_get_recent_weight_in_kg($user_id);
 
-		$weight = apply_filters( 'wlt_filters_bmr_weight_raw', $user_id, $weight );
+		$weight = apply_filters( 'wlt_filters_bmr_weight_raw', $weight, $user_id );
 
         if(true === empty($weight)) {
             return ($return_error) ? __('No Weight entered', WE_LS_SLUG) : NULL;
