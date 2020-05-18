@@ -49,6 +49,8 @@
         // Recent weight?
         $weight = ws_ls_get_recent_weight_in_kg($user_id);
 
+		$weight = apply_filters( 'wlt_filters_bmr_weight_raw', $user_id, $weight );
+
         if(true === empty($weight)) {
             return ($return_error) ? __('No Weight entered', WE_LS_SLUG) : NULL;
         }
