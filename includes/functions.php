@@ -42,7 +42,7 @@ function ws_ls_weight_object($user_id, $kg, $pounds, $stones, $pounds_only, $not
     // If enabled, detect which weight fields need to be calculated and do it
     if ($detect_and_convert_missing_values)
     {
-		switch (ws_ls_get_config('WE_LS_DATA_UNITS')) {
+		switch (ws_ls_get_config('WE_LS_DATA_UNITS', $user_id )) {
     		case 'pounds_only':
     			$weight['kg'] = ws_ls_pounds_to_kg($weight['only_pounds']);
             	$conversion = ws_ls_pounds_to_stone_pounds($weight['only_pounds']);
@@ -63,7 +63,7 @@ function ws_ls_weight_object($user_id, $kg, $pounds, $stones, $pounds_only, $not
     }
 
     // Generate display
-    switch (ws_ls_get_config('WE_LS_DATA_UNITS')) {
+    switch ( ws_ls_get_config('WE_LS_DATA_UNITS')) {
       case 'pounds_only':
         $data = ws_ls_round_decimals($weight['only_pounds']);
         $weight['display'] = $data . __('lbs', WE_LS_SLUG);
