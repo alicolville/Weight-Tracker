@@ -29,9 +29,9 @@ function ws_ls_capture_and_handle_form_post()
 		    $user_hash = (isset($_POST['ws_ls_security'])) ? $_POST['ws_ls_security'] : '';
 
 			// If a valid hash, carry on
-			if($user_hash == wp_hash($user_id)){
+			if( $user_hash == wp_hash( $user_id ) ){
 
-        		$save_success = ws_ls_capture_form_validate_and_save($user_id);
+        		$save_success = ws_ls_capture_form_validate_and_save( $user_id );
 
                 // Do we have a redirect URL?
                 if(isset($_POST['ws_redirect']) && wp_validate_redirect($_POST['ws_redirect'])) {
