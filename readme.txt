@@ -161,6 +161,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 * Improvement: Additional filters throughout plugin.
 * Improvement: Additional underlying support for shortcodes to support user IDs other than current logged in user.
 * Bug fix: When a user had one or less entry then an exception was thrown while calculating no of entries in challenges.
+* Bug fix: Error thrown when a start weight of zero is entered.
 
 = 7.5.7 =
 

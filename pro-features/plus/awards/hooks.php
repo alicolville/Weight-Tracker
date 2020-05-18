@@ -21,7 +21,7 @@
 	    	return;
 	    }
 
-		if ( false === empty( $info['type'] ) && $info['type'] === 'weight-measurements' ) {
+		if ( false === empty( $info['type'] ) && $info['type'] === 'weight-measurements' && false === empty( $weight_object['difference_from_start_kg'] ) ) {
 
             // Is user gaining or losing weight?
             $losing_weight = ( $weight_object['difference_from_start_kg'] < 0 );
