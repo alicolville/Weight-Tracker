@@ -346,7 +346,7 @@ function ws_ls_challenges_view_entries( $args ) {
             $value = $row[ $key ];
 
 	        if ( 'weight_diff' == $key ) {
-                $row[ 'weight_diff' ] = ws_ls_convert_kg_into_relevant_weight_String( $row[ 'weight_diff' ] );
+                $row[ 'weight_diff' ] = ws_ls_convert_kg_into_relevant_weight_String( $row[ 'weight_diff' ], true );
             }
 
             $html .= sprintf( '    <td  data-sort-value="%1$s">

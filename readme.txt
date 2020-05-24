@@ -166,6 +166,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 * Bug fix: Gravity Form fix to ensure photos added via custom fields can be added to the weight entry.
 * Bug fix: Error thrown when a start weight of zero is entered.
 * Bug fix: Graph dates are now localised.
+* Bug fix: Challenges tweak, show total weight loss as a comparison value.
 
 = 7.5.7 =
 
