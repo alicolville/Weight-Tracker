@@ -124,7 +124,7 @@ function ws_ls_macro_render_table($user_id, $missing_data_text = false, $additio
                                 </tr>
                             ',
 				ws_ls_get_macro_name( $key ),
-                number_format($macros[$key]['calories']),
+				ws_ls_round_number( $macros[$key]['calories'], 0 ),
                 __('Total', WE_LS_SLUG),
                 __('Breakfast', WE_LS_SLUG),
                 __('Lunch', WE_LS_SLUG),
@@ -300,7 +300,7 @@ function ws_ls_macro_round($value) {
 
 	$macro_rounding = (int) apply_filters( 'wlt-filters-macros-rounding', 2 );
 
-    return number_format( $value, $macro_rounding );
+    return ws_ls_round_number( $value, $macro_rounding );
 }
 
 /**

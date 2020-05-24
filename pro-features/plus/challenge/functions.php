@@ -97,7 +97,7 @@ function ws_ls_challenges_data_update_row( $user_id, $challenge_id ) {
     $data[ 'count_wt_entries_week' ]    = ws_ls_challenges_diff_between_dates_in_weeks( $data[ 'date_start' ], $data[ 'date_latest' ] );
     $data[ 'weight_start' ]             = $weight_entries[ 0 ][ 'kg' ];
     $data[ 'weight_latest' ]            = $weight_entries[ $data[ 'count_wt_entries' ] - 1 ][ 'kg' ];
-    $data[ 'weight_diff' ]              = number_format( $data[ 'weight_latest' ] - $data[ 'weight_start' ], 3 );
+    $data[ 'weight_diff' ]              = ws_ls_round_number( $data[ 'weight_latest' ] - $data[ 'weight_start' ], 3 );
     $data[ 'weight_percentage' ]        = ws_ls_calculate_percentage_difference_as_number( $data[ 'weight_start' ], $data[ 'weight_latest' ] );
 
     // Meal Tracker
@@ -114,7 +114,7 @@ function ws_ls_challenges_data_update_row( $user_id, $challenge_id ) {
     $data[ 'height' ]           = ws_ls_get_user_height( $user_id );
     $data[ 'bmi_start' ]        = ws_ls_calculate_bmi( $data[ 'height' ], $data[ 'weight_start' ] );
     $data[ 'bmi_latest' ]       = ws_ls_calculate_bmi( $data[ 'height' ], $data[ 'weight_latest' ] );
-    $data[ 'bmi_diff' ]         = number_format( $data[ 'bmi_latest' ] - $data[ 'bmi_start' ], 1 );
+    $data[ 'bmi_diff' ]         = ws_ls_round_number( $data[ 'bmi_latest' ] - $data[ 'bmi_start' ], 1 );
 
     // Handy user preferences
     $data[ 'gender' ]       = ws_ls_get_user_setting( 'gender', $user_id );
@@ -395,11 +395,11 @@ function ws_ls_challenges_view_entries( $args ) {
                 case 'count_mt_entries':
                 case 'count_wt_entries_week':
                     $html_sums      .= sprintf( '<td>%d</td>', $counts[ $key ][ 'sum' ] );
-                    $html_averages  .= sprintf( '<td>%s</td>', number_format( $counts[ $key ][ 'average' ], 1 ) );
+                    $html_averages  .= sprintf( '<td>%s</td>', ws_ls_round_number( $counts[ $key ][ 'average' ], 1 ) );
                     break;
                 default:
                     $html_sums      .= '<td></td>';
-                    $html_averages  .= sprintf( '<td>%s</td>', number_format( $counts[ $key ][ 'average' ], 2 ) );
+                    $html_averages  .= sprintf( '<td>%s</td>', ws_ls_round_number( $counts[ $key ][ 'average' ], 2 ) );
             }
 
 	    }

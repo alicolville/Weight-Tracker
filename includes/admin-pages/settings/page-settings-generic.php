@@ -199,6 +199,22 @@ function ws_ls_settings_page_generic() {
                                                     </td>
                                                 </tr>
                                             </table>
+											<h3><?php echo __( 'Number formatting' , WE_LS_SLUG); ?></h3>
+											<table class="form-table">
+												<tr>
+													<th scope="row"><?php echo __( 'Include thousand separator?' , WE_LS_SLUG); ?></th>
+													<td>
+														<?php
+															$include_separator = get_option( 'ws-ls-number-formatting-separator', 'yes' );
+														?>
+														<select id="ws-ls-number-formatting-separator" name="ws-ls-number-formatting-separator">
+															<option value="yes" <?php selected( $include_separator, 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG); ?></option>
+															<option value="no" <?php selected( $include_separator, 'no' ); ?>><?php echo __('No', WE_LS_SLUG); ?></option>
+														</select>
+														<p><?php echo __('If enabled, larger numbers shall be split up by commas e.g. 2,300 instead of 2300', WE_LS_SLUG); ?>.</p>
+													</td>
+												</tr>
+											</table>
                                             <h3><?php echo __( 'Permissions' , WE_LS_SLUG); ?></h3>
                                             <table class="form-table">
                                                 <tr class="<?php echo $disable_if_not_pro_class; ?>">
@@ -805,6 +821,7 @@ function ws_ls_register_settings(){
 	register_setting( 'we-ls-options-group', 'ws-ls-fill-under-weight-line' );
     register_setting( 'we-ls-options-group', 'ws-ls-fill-under-weight-line-opacity' );
     register_setting( 'we-ls-options-group', 'ws-ls-fill-under-weight-line-colour' );
+	register_setting( 'we-ls-options-group', 'ws-ls-number-formatting-separator' );
 
     // Pro only open
     if( WS_LS_IS_PRO ){

@@ -1054,7 +1054,7 @@ function ws_ls_calculate_percentage_difference_as_number( $previous_weight, $cur
         $return = 0 - $return;
     }
 
-    return number_format( $return, 2 );
+    return ws_ls_round_number( $return, 2 );
 }
 
 /**
@@ -1093,4 +1093,17 @@ function ws_ls_user_display_name( $user_id ) {
 function ws_ls_challenges_is_enabled() {
     return ( true === WS_LS_IS_PRO_PLUS &&
         'yes' === get_option( 'ws-ls-challenges-enabled', 'no' ) );
+}
+
+/**
+ * Wrapper to number_format() so we can be consistent throughout plugin for number_format() options.
+ * @param $number
+ * @param int $decimal_places
+ * @return string
+ */
+function ws_ls_round_number( $number, $decimal_places = 0 ) {
+
+	$seperator = ( 'yes' === get_option( 'ws-ls-number-formatting-separator', 'yes' ) ) ? ',' : '';
+
+	return number_format( $number, $decimal_places, '.', $seperator );
 }

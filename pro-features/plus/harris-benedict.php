@@ -206,7 +206,7 @@ function ws_ls_harris_benedict_render_table($user_id, $missing_data_text = false
 									</tr>',
 				esc_attr( $css_class ),
 				esc_html( $calories[$row_name]['label'] ),
-				number_format( $calories[$row_name]['total'] ),
+				ws_ls_round_number( $calories[$row_name]['total'] ),
 				esc_html( $calories[$row_name]['breakfast'] ),
 				esc_html( $calories[$row_name]['lunch'] ),
 				esc_html( $calories[$row_name]['dinner'] ),
@@ -264,7 +264,7 @@ function ws_ls_shortcode_harris_benedict($user_defined_arguments) {
 		return '<p>' . esc_html( $arguments['error-message'] ) . '</p>';
 	}
 
-	$display_value = (false === empty($calorie_intake[$progress][$type])) ? number_format ($calorie_intake[$progress][$type]) : '' ;
+	$display_value = (false === empty($calorie_intake[$progress][$type])) ? ws_ls_round_number($calorie_intake[$progress][$type]) : '' ;
 
 	return esc_html($display_value);
 }
@@ -317,7 +317,7 @@ function ws_ls_display_calorie_cap($user_id = false) {
 	return sprintf('%s %s %s. %s <a href="%s">%s</a>.',
 		($is_female) ? __('Female', WE_LS_SLUG ) : __('Male', WE_LS_SLUG ),
 		__('calories for weight loss are capped at ', WE_LS_SLUG ),
-		($is_female) ? number_format(WS_LS_CAL_CAP_FEMALE) : number_format(WS_LS_CAL_CAP_MALE),
+		($is_female) ? ws_ls_round_number(WS_LS_CAL_CAP_FEMALE ) : ws_ls_round_number(WS_LS_CAL_CAP_MALE ),
 		__('This can be modified within ', WE_LS_SLUG ),
 		ws_ls_get_link_to_settings(),
 		__('settings', WE_LS_SLUG )
