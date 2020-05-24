@@ -163,6 +163,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 * Bug fix: When a user had one or less entry then an exception was thrown while calculating no of entries in challenges.
 * Bug fix: Gravity Form fix to ensure photos added via custom fields can be added to the weight entry.
 * Bug fix: Error thrown when a start weight of zero is entered.
+* Bug fix: Graph dates are now localised.
 
 = 7.5.7 =
 
