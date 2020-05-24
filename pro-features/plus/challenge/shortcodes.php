@@ -60,7 +60,7 @@ function ws_ls_challenges_shortcodes_list_entries( $user_defined_arguments ) {
     }
 
     ws_ls_data_table_enqueue_scripts();
-   
+
     return ws_ls_challenges_view_entries( $user_defined_arguments );
 }
 add_shortcode( 'wlt-challenges', 'ws_ls_challenges_shortcodes_list_entries' );
@@ -83,7 +83,7 @@ function ws_ls_challenges_view_entries_guide() {
 
     $arguments = '';
 
-    foreach ( [ 'age-range', 'gender', 'group-id' ] as $key ) {
+    foreach ( [ 'age-range', 'gender', 'group-id', 'min-wt-entries' ] as $key ) {
 
         $value = ws_ls_querystring_value( 'filter-' . $key, true );
 
