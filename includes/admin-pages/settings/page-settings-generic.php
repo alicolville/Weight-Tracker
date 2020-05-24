@@ -313,28 +313,34 @@ function ws_ls_settings_page_generic() {
                                                     <th scope="row"><?php echo __( 'Female Calorie Cap' , WE_LS_SLUG); ?></th>
                                                     <td>
                                                         <input  type="number"  step="any" min="0" max="5000" name="ws-ls-female-cal-cap" id="ws-ls-female-cal-cap" value="<?php esc_attr_e(WS_LS_CAL_CAP_FEMALE); ?>" size="11" />
-                                                        <p><?php echo __('Specify a maximum value for number of daily calories allowed to achieve weight loss. As per NHS guidelines, females are set to 1400kcal by default', WE_LS_SLUG);?>. <?php echo ws_ls_calculations_link(); ?>. <em><?php echo __( 'Please note, it may take up to 15 minutes for calculations to change (due to caching).' , WE_LS_SLUG); ?></em></p>
+                                                        <p><?php echo __('A safety cap to ensure that the calculations do not provide a recommended calorie intake below this figure. The recommended intake will be set to the safety cap if it falls below it. As per NHS guidelines, females are set to 1400kcal by default', WE_LS_SLUG);?>. <?php echo ws_ls_calculations_link(); ?>. <em><?php echo __( 'Please note, it may take up to 15 minutes for calculations to change (due to caching).' , WE_LS_SLUG); ?></em></p>
                                                     </td>
                                                 </tr>
                                                 <tr class="<?php echo $disable_if_not_pro_plus_class; ?>">
                                                     <th scope="row"><?php echo __( 'Male Calorie Cap' , WE_LS_SLUG); ?></th>
                                                     <td>
                                                         <input  type="number"  step="any" min="0" max="5000" name="ws-ls-male-cal-cap" id="ws-ls-male-cal-cap" value="<?php esc_attr_e(WS_LS_CAL_CAP_MALE); ?>" size="11" />
-                                                        <p><?php echo __('Specify a maximum value for number of daily calories allowed to achieve weight loss. As per NHS guidelines, males are set to 1900kcal by default', WE_LS_SLUG);?>. <?php echo ws_ls_calculations_link(); ?>. <em><?php echo __( 'Please note, it may take up to 15 minutes for calculations to change (due to caching).' , WE_LS_SLUG); ?></em></p>
+                                                        <p><?php echo __( 'A safety cap to ensure that the calculations do not provide a recommended calorie intake below this figure. The recommended intake will be set to the safety cap if it falls below it. As per NHS guidelines, males are set to 1900kcal by default', WE_LS_SLUG);?>. <?php echo ws_ls_calculations_link(); ?>. <em><?php echo __( 'Please note, it may take up to 15 minutes for calculations to change (due to caching).' , WE_LS_SLUG); ?></em></p>
                                                     </td>
                                                 </tr>
-                                                <tr class="<?php echo $disable_if_not_pro_plus_class; ?>">
+											    <tr class="<?php echo $disable_if_not_pro_plus_class; ?>">
                                                     <th scope="row"><?php echo __( 'Calories to subtract' , WE_LS_SLUG); ?></th>
                                                     <?php
-
-                                                        $hb_calories_to_lose = ( true === function_exists('ws_ls_harris_benedict_filter_calories_to_lose') ) ? ws_ls_harris_benedict_filter_calories_to_lose() : 500;
-
+														$hb_calories_to_lose = (int) get_option( 'ws-ls-cal-subtract', 600 );;
                                                     ?>
                                                     <td>
                                                         <input  type="number"  step="any" min="0" max="5000" name="ws-ls-cal-subtract" id="ws-ls-cal-subtract" value="<?php printf( '%d', $hb_calories_to_lose ); ?>" size="11" />
+														<?php
+															$calories_to_lose_unit = get_option( 'ws-ls-cal-lose-unit', 'fixed' );
+														?>
+														<select id="ws-ls-cal-lose-unit" name="ws-ls-cal-lose-unit">
+															<option value="fixed" <?php selected( $calories_to_lose_unit, 'fixed' ); ?>><?php echo __( 'Fixed Calories', WE_LS_SLUG )?></option>
+															<option value="percentage" <?php selected( $calories_to_lose_unit, 'percentage' ); ?>>%</option>
+														</select>
                                                         <p><?php echo __('Part of calculating the daily calorie intake to lose weight is to first calculate the calorie intake to maintain existing weight. Once we have this, we subtract the above figure to calculate the daily calorie intake to lose weight.', WE_LS_SLUG);?>. <?php echo ws_ls_calculations_link(); ?>. <em><?php echo __( 'Please note, it may take up to 15 minutes for calculations to change (due to caching).' , WE_LS_SLUG); ?></em></p>
                                                     </td>
                                                 </tr>
+
                                             </table>
 
                                             <h3><?php echo __( 'Calculating daily calorie intake to gain weight' , WE_LS_SLUG); ?></h3>
@@ -354,12 +360,19 @@ function ws_ls_settings_page_generic() {
                                                     <th scope="row"><?php echo __( 'Calories to add' , WE_LS_SLUG); ?></th>
                                                     <?php
 
-                                                        $hb_calories_to_add = ( true === function_exists('ws_ls_harris_benedict_filter_calories_to_add') ) ? ws_ls_harris_benedict_filter_calories_to_add() : 600;
+                                                        $hb_calories_to_add = (int) get_option( 'ws-ls-cal-add', 500 );;
 
                                                     ?>
                                                     <td>
                                                         <input  type="number"  step="any" min="0" max="5000" name="ws-ls-cal-add" id="ws-ls-cal-add" value="<?php printf( '%d', $hb_calories_to_add ); ?>" size="11" />
-                                                        <p><?php echo __('Part of calculating the daily calorie intake to gain weight is to first calculate the calorie intake to maintain existing weight. Once we have this, we add the above figure to calculate the daily calorie intake to gain weight.', WE_LS_SLUG);?>. <?php echo ws_ls_calculations_link(); ?>. <em><?php echo __( 'Please note, it may take up to 15 minutes for calculations to change (due to caching).' , WE_LS_SLUG); ?></em></p>
+														<?php
+															$calories_to_add_unit = get_option( 'ws-ls-cal-add-unit', 'fixed' );
+														?>
+														<select id="ws-ls-cal-add-unit" name="ws-ls-cal-add-unit">
+															<option value="fixed" <?php selected( $calories_to_add_unit, 'fixed' ); ?>><?php echo __( 'Fixed Calories', WE_LS_SLUG )?></option>
+															<option value="percentage" <?php selected( $calories_to_add_unit, 'percentage' ); ?>>%</option>
+														</select>
+														<p><?php echo __('Part of calculating the daily calorie intake to gain weight is to first calculate the calorie intake to maintain existing weight. Once we have this, we add the above figure to calculate the daily calorie intake to gain weight.', WE_LS_SLUG);?>. <?php echo ws_ls_calculations_link(); ?>. <em><?php echo __( 'Please note, it may take up to 15 minutes for calculations to change (due to caching).' , WE_LS_SLUG); ?></em></p>
                                                     </td>
                                                 </tr>
                                             </table>
@@ -414,7 +427,7 @@ function ws_ls_settings_page_generic() {
                                                             );
                                                         }
                                                     }
-                                                                                                   
+
                                                 ?>
                                             </table>
                                         </div>
@@ -851,6 +864,8 @@ function ws_ls_register_settings(){
         register_setting( 'we-ls-options-group', 'ws-ls-macro-proteins' );
         register_setting( 'we-ls-options-group', 'ws-ls-macro-carbs' );
         register_setting( 'we-ls-options-group', 'ws-ls-macro-fats' );
+		register_setting( 'we-ls-options-group', 'ws-ls-cal-add-unit' );
+		register_setting( 'we-ls-options-group', 'ws-ls-cal-lose-unit' );
 
         foreach ( ws_ls_harris_benedict_meal_ratio_defaults() as $key => $default ) {
             register_setting( 'we-ls-options-group', sprintf( ' ws-ls-meal-ratio-%s', $key ) );

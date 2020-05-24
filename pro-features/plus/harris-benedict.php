@@ -42,7 +42,7 @@ function ws_ls_harris_benedict_calculate_calories($user_id = false) {
 	// Lose
 	// --------------------------------------------------
 
-	$calories_to_lose = ws_ls_harris_benedict_filter_calories_to_lose();
+	$calories_to_lose = ws_ls_harris_benedict_filter_calories_to_lose( $calorie_intake['maintain']['total'] );
 
 	$calories_to_lose = ( $calorie_intake['maintain']['total'] > $calories_to_lose ) ? $calorie_intake['maintain']['total'] - $calories_to_lose : $calorie_intake['maintain']['total'];
 
@@ -64,7 +64,7 @@ function ws_ls_harris_benedict_calculate_calories($user_id = false) {
 	// Gain
 	// --------------------------------------------------
 
-	$calories_to_gain = $calorie_intake['maintain']['total'] + ws_ls_harris_benedict_filter_calories_to_add();
+	$calories_to_gain = $calorie_intake['maintain']['total'] + ws_ls_harris_benedict_filter_calories_to_add( $calorie_intake['maintain']['total'] );
 
 	$calorie_intake['gain'] = [ 'total' => $calories_to_gain, 'label' => __( 'Gain', WE_LS_SLUG ) ] ;
 
@@ -144,6 +144,8 @@ function ws_ls_harris_benedict_meal_ratio_defaults() {
  *
  * @param $user_id
  * @param bool $missing_data_text
+ * @param string $additional_css_class
+ * @param bool $email
  * @return string
  */
 function ws_ls_harris_benedict_render_table($user_id, $missing_data_text = false,  $additional_css_class = '', $email = false) {
@@ -377,31 +379,46 @@ add_filter( 'wlt-filter-calories-pre', 'ws_ls_harris_benedict_filter_show_hide_g
 /**
  * Return the setting for calories to gain weight
  *
+ * @param null $calories_to_maintain
  * @return int
  */
-function ws_ls_harris_benedict_filter_calories_to_add() {
+function ws_ls_harris_benedict_filter_calories_to_add( $calories_to_maintain = NULL ) {
 
-	$cal_to_add = get_option('ws-ls-cal-add');
+	$cal_to_add = (int) get_option( 'ws-ls-cal-add', 500 );
+
+	// Perecentage of calories to add
+	if ( 'percentage' === get_option( 'ws-ls-cal-add-unit', 'fixed' ) &&
+		false === empty( $calories_to_maintain ) ) {
+
+		$cal_to_add = ( ( $calories_to_maintain / 100 ) * $cal_to_add );
+	}
 
 	$cal_to_add = apply_filters( 'wlt-filter-calories-add-raw', $cal_to_add );
 
-	return ( is_numeric( $cal_to_add ) && $cal_to_add > 0) ? (int) $cal_to_add : 500;
-
+	return (int) $cal_to_add;
 }
 
 /**
  * Return the setting for calories to lose weight
  *
+ * @param null $calories_to_maintain
  * @return int
  */
-function ws_ls_harris_benedict_filter_calories_to_lose() {
+function ws_ls_harris_benedict_filter_calories_to_lose( $calories_to_maintain = NULL ) {
 
-	$cal_to_subtract = get_option('ws-ls-cal-subtract');
+	$cal_to_subtract = (int) get_option( 'ws-ls-cal-subtract', 600 );
+
+	// Perecentage of calories to subtract
+	if ( 'percentage' === get_option( 'ws-ls-cal-lose-unit', 'fixed' ) &&
+			false === empty( $calories_to_maintain ) ) {
+
+		$cal_to_subtract = ( ( $calories_to_maintain / 100 ) * $cal_to_subtract );
+
+	}
 
 	$cal_to_subtract = apply_filters( 'wlt-filter-calories-lose-raw', $cal_to_subtract );
 
-	return ( is_numeric( $cal_to_subtract ) && $cal_to_subtract > 0) ? (int) $cal_to_subtract : 600;
-
+	return (int) $cal_to_subtract;
 }
 
 
