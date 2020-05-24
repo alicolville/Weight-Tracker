@@ -175,23 +175,6 @@ function ws_ls_gravity_forms_process( $entry, $form ) {
         }
     }
 
-    // --------------------------------------------------------------------------------
-    // Photo?
-    // --------------------------------------------------------------------------------
-
-    if ( false === empty( $matched_fields['wlt-photo'] ) ) {
-
-        $photo_id = attachment_url_to_postid( $matched_fields['wlt-photo'] );
-
-        if ( false === empty( $photo_id ) ) {
-
-            GFCommon::log_debug( sprintf('Adding photo %s ( %s ) to Weight Entry', $matched_fields['wlt-photo'], $photo_id ) );
-
-            $weight['photo_id'] = $photo_id;
-        }
-
-    }
-
 	// --------------------------------------------------------------------------------
 	// Meta Fields
 	// --------------------------------------------------------------------------------
@@ -200,15 +183,31 @@ function ws_ls_gravity_forms_process( $entry, $form ) {
 
     if ( true === ws_ls_meta_fields_is_enabled() ) {
 
-        foreach ( ws_ls_meta_fields_enabled() as $meta_field ) {
+		$enabled_meta_fields = ws_ls_meta_fields_enabled();
+
+		GFCommon::log_debug( 'Looking for the following meta fields: ' . print_r( $enabled_meta_fields, true ) );
+
+        foreach ( $enabled_meta_fields as $meta_field ) {
 
             $gf_field_key = ws_ls_gravity_forms_meta_fields_key_prefix( $meta_field['field_key'] );
 
             if ( false === empty( $matched_fields[ $gf_field_key ] ) ) {
 
-                $weight[ 'meta-keys' ][ $meta_field['id'] ] = $matched_fields[ $gf_field_key ];
+            	// Photo?
+				if ( 3 === $meta_field['field_key'] ) {
 
-                GFCommon::log_debug( sprintf('Found meta field %s', $gf_field_key ) );
+					$photo_id = attachment_url_to_postid( $matched_fields[ $gf_field_key ] );
+
+					$weight[ 'meta-keys' ][ $meta_field['id'] ] = $photo_id;
+
+					GFCommon::log_debug( sprintf('Adding photo %s ( %s ) to Weight Entry', $matched_fields['wlt-photo'], $photo_id ) );
+
+				} else {
+
+					$weight[ 'meta-keys' ][ $meta_field['id'] ] = $matched_fields[ $gf_field_key ];
+
+					GFCommon::log_debug( sprintf('Found meta field %s', $gf_field_key ) );
+				}
 
             } else {
                 GFCommon::log_debug( sprintf('Could not find meta field %s', $gf_field_key ) );
