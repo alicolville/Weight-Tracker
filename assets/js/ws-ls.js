@@ -58,7 +58,6 @@ jQuery( document ).ready(function ($) {
         multiline: true,
         theme: "silver",
         size: "small",
-        minWindowWidth: 1000,				// Force tabs into browser
         responsive: true,
         animation: {
             effects: "slideH",

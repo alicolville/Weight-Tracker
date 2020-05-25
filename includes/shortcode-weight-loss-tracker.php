@@ -102,7 +102,7 @@
 							],
 							[
 								'icon' 			=> 'fa-table',
-								'title'			=> __( 'All Entries', WE_LS_SLUG ),
+								'title'			=> __( 'History', WE_LS_SLUG ),
 								'description'	=> __( 'View all of your entries', WE_LS_SLUG )
 							]
 
@@ -124,7 +124,7 @@
 					$tabs[] = 	[
 						'icon' 			=> 'fa-university',
 						'title'			=> __( 'Advanced', WE_LS_SLUG ),
-						'description'	=> __( 'View BMI, BMR and suggested Calorie and Macronutrient intake', WE_LS_SLUG )
+						'description'	=> __( 'BMI, BMR, Calories and Macronutrients', WE_LS_SLUG )
 					];
 				}
 
@@ -134,7 +134,7 @@
 					$tabs[] = 	[
 						'icon' 			=> 'fa-cog',
 						'title'			=> __( 'Preferences', WE_LS_SLUG ),
-						'description'	=> __( 'Customise this tool and tell us a little more about you', WE_LS_SLUG )
+						'description'	=> __( 'Customise this tool for you', WE_LS_SLUG )
 					];
 				}
 
