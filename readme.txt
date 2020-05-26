@@ -169,6 +169,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 * Bug fix: Graph dates are now localised.
 * Bug fix: Challenges tweak, show total weight loss as a comparison value.
 * Bug fix: Main shortcode [wlt] would load upto a maximum of 1000 data entries when rendering the shortcode. This was hugely inefficient and the data was not required. Instead, it has been change to load enough data required for the chart (on average just 25 weight entries!)
+* Bug fix: Missing image on license page.
 * Tweaked descriptions on [wlt] tabs
 
 = 7.5.7 =
