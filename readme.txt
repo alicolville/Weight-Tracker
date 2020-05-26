@@ -162,6 +162,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 * Improvement: Additional underlying support for shortcodes to support user IDs other than current logged in user.
 * Bug fix: When a user had one or less entry then an exception was thrown while calculating no of entries in challenges.
 * Bug fix: Error thrown when a start weight of zero is entered.
+* Bug fix: Main shortcode [wlt] would load upto a maximum of 1000 data entries when rendering the shortcode. This was hugely inefficient and the data was not required. Instead, it has been change to load enough data required for the chart (on average just 25 weight entries!)
 
 = 7.5.7 =
 

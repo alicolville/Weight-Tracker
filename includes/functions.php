@@ -382,20 +382,6 @@ function ws_ls_display_week_filters($week_ranges, $selected_week_number)
 
 }
 
-function ws_ls_round_weights($weight)
-{
-  $weight['only_pounds'] = round($weight['only_pounds']);
-  $weight['kg'] = round($weight['kg']);
-  $weight['stones'] = round($weight['stones']);
-  $weight['pounds'] = round($weight['pounds']);
-
-  if (!empty($weight['difference_from_start']) && is_numeric($weight['difference_from_start'])) {
-    $weight['difference_from_start'] = round($weight['difference_from_start']);
-  }
-
-  return $weight;
-}
-
 function ws_ls_get_config($key, $user_id = false)
 {
 
@@ -504,15 +490,6 @@ function ws_ls_remove_non_numeric($text) {
     return preg_replace("/[^0-9]/", "", $text);
   }
   return $text;
-}
-function ws_ls_fetch_elements_from_end_of_array($data, $number_to_grab)
-{
-    if (is_array($data) && count($data) > $number_to_grab) {
-        $start = count($data) - $number_to_grab;
-        $data = array_slice($data, $start, $number_to_grab);
-    }
-
-    return $data;
 }
 
 function ws_ls_display_default_measurements() {
@@ -891,26 +868,6 @@ function ws_ls_display_max_server_upload_size() {
 	$max_size = ws_ls_file_upload_max_size();
 
 	return ws_ls_format_bytes_into_readable($max_size);
-}
-
-/**
- * Either fetch data from the $_POST object or from the array passed in!
- *
- * @param $object
- * @param $key
- * @return string
- */
-function ws_ls_get_value_from_post_or_obj( $object, $key ) {
-
-    if ( true === isset( $_POST[ $key ] ) ) {
-        return $_POST[ $key ];
-    }
-
-    if ( true === isset( $object[ $key ] ) ) {
-        return $object[ $key ];
-    }
-
-    return '';
 }
 
 /**
