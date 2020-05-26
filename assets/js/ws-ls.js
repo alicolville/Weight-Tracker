@@ -58,7 +58,6 @@ jQuery( document ).ready(function ($) {
         multiline: true,
         theme: "silver",
         size: "small",
-        minWindowWidth: 3000,				// Force tabs into browser
         responsive: true,
         animation: {
             effects: "slideH",
@@ -154,7 +153,7 @@ jQuery( document ).ready(function ($) {
             $( '.ws-ls-user-pref-form select, .ws-ls-user-pref-form .custom-field' ).each(function () {
               post_data[ $(this).attr("id") ] = $( this ).val();
             });
-  
+
             post_data[ 'action' ]     = 'ws_ls_save_preferences';
             post_data[ 'ws-ls-dob' ]  = $( '#ws-ls-dob' ).val();
 

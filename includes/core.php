@@ -54,7 +54,7 @@
             $chart_config = wp_parse_args( $options, $chart_config );
         }
 
-		$measurements_enabled = (false == $chart_config['exclude-measurements'] && WE_LS_MEASUREMENTS_ENABLED && ws_ls_any_active_measurement_fields()) ? true : false;
+		$measurements_enabled = ( false == $chart_config['exclude-measurements'] && WE_LS_MEASUREMENTS_ENABLED && ws_ls_any_active_measurement_fields() );
 
         // Make sure they are logged in
         if (false == $chart_config['ignore-login-status'] && !is_user_logged_in())	{

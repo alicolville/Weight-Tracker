@@ -11,28 +11,28 @@ defined('ABSPATH') or die("Jog on!");
  */
 function ws_ls_challenges_add( $name, $start_date = NULL, $end_date = NULL ) {
 
-    if ( true === empty( $name ) ) {
-        return false;
-    }
+	if ( true === empty( $name ) ) {
+		return false;
+	}
 
-    $data       = [ 'name' => $name, 'enabled' => 1 ];
-    $formats    = [ '%s', '%d' ];
+	$data       = [ 'name' => $name, 'enabled' => 1 ];
+	$formats    = [ '%s', '%d' ];
 
-    if ( false === empty( $start_date ) ) {
-        $data[ 'start_date' ]   = $start_date;
-        $formats[]              = '%s';
-    }
+	if ( false === empty( $start_date ) ) {
+		$data[ 'start_date' ]   = $start_date;
+		$formats[]              = '%s';
+	}
 
-    if ( false === empty( $end_date ) ) {
-        $data[ 'end_date' ]     = $end_date;
-        $formats[]              = '%s';
-    }
+	if ( false === empty( $end_date ) ) {
+		$data[ 'end_date' ]     = $end_date;
+		$formats[]              = '%s';
+	}
 
-    global $wpdb;
+	global $wpdb;
 
-    $result = $wpdb->insert( $wpdb->prefix . WE_LS_MYSQL_CHALLENGES, $data, $formats );
+	$result = $wpdb->insert( $wpdb->prefix . WE_LS_MYSQL_CHALLENGES, $data, $formats );
 
-    return ! empty( $result );
+	return ! empty( $result );
 }
 
 /**
@@ -43,22 +43,22 @@ function ws_ls_challenges_add( $name, $start_date = NULL, $end_date = NULL ) {
  */
 function ws_ls_challenges_enabled( $challenge_id, $enabled = true ) {
 
-    if ( true === empty( $challenge_id ) ) {
-        return false;
-    }
+	if ( true === empty( $challenge_id ) ) {
+		return false;
+	}
 
-    global $wpdb;
+	global $wpdb;
 
-    $result = $wpdb->update( $wpdb->prefix . WE_LS_MYSQL_CHALLENGES,
-        [ 'enabled' => ( true === $enabled ) ? 1 : 0 ],
-        [ 'id' => $challenge_id ],
-        [ '%d' ],
-        [ '%d' ]
-    );
+	$result = $wpdb->update( $wpdb->prefix . WE_LS_MYSQL_CHALLENGES,
+		[ 'enabled' => ( true === $enabled ) ? 1 : 0 ],
+		[ 'id' => $challenge_id ],
+		[ '%d' ],
+		[ '%d' ]
+	);
 
-    ws_ls_delete_cache( 'challenge-' . (int) $challenge_id );
+	ws_ls_delete_cache( 'challenge-' . (int) $challenge_id );
 
-    return ! empty( $result );
+	return ! empty( $result );
 }
 
 /**
@@ -68,25 +68,25 @@ function ws_ls_challenges_enabled( $challenge_id, $enabled = true ) {
  */
 function ws_ls_challenges_delete( $challenge_id ) {
 
-    if ( true === empty( $challenge_id ) ) {
-        return false;
-    }
+	if ( true === empty( $challenge_id ) ) {
+		return false;
+	}
 
-    global $wpdb;
+	global $wpdb;
 
-    $result = $wpdb->delete( $wpdb->prefix . WE_LS_MYSQL_CHALLENGES,
-        [ 'id' => $challenge_id ],
-        [ '%d' ]
-    );
+	$result = $wpdb->delete( $wpdb->prefix . WE_LS_MYSQL_CHALLENGES,
+		[ 'id' => $challenge_id ],
+		[ '%d' ]
+	);
 
-    ws_ls_delete_cache( 'challenge-' . (int) $challenge_id );
+	ws_ls_delete_cache( 'challenge-' . (int) $challenge_id );
 
-    $result = $wpdb->delete( $wpdb->prefix . WE_LS_MYSQL_CHALLENGES_DATA,
-        [ 'challenge_id' => $challenge_id ],
-        [ '%d' ]
-    );
+	$result = $wpdb->delete( $wpdb->prefix . WE_LS_MYSQL_CHALLENGES_DATA,
+		[ 'challenge_id' => $challenge_id ],
+		[ '%d' ]
+	);
 
-    return ! empty( $result );
+	return ! empty( $result );
 }
 
 /**
@@ -96,25 +96,25 @@ function ws_ls_challenges_delete( $challenge_id ) {
  */
 function ws_ls_challenges_get( $challenge_id ) {
 
-    if ( true === empty( $challenge_id ) ) {
-        return false;
-    }
+	if ( true === empty( $challenge_id ) ) {
+		return false;
+	}
 
-    if ( $cache = ws_ls_get_cache( 'challenge-' . (int) $challenge_id ) ) {
-        return $cache;
-    }
+	if ( $cache = ws_ls_get_cache( 'challenge-' . (int) $challenge_id ) ) {
+		return $cache;
+	}
 
-    global $wpdb;
+	global $wpdb;
 
-    $sql = $wpdb->prepare( 'SELECT * FROM ' . $wpdb->prefix . WE_LS_MYSQL_CHALLENGES . ' WHERE id = %d', $challenge_id );
+	$sql = $wpdb->prepare( 'SELECT * FROM ' . $wpdb->prefix . WE_LS_MYSQL_CHALLENGES . ' WHERE id = %d', $challenge_id );
 
-    $result = $wpdb->get_row( $sql, ARRAY_A );
+	$result = $wpdb->get_row( $sql, ARRAY_A );
 
-    $result = ( false === empty( $result ) ) ? $result : false;
+	$result = ( false === empty( $result ) ) ? $result : false;
 
-    ws_ls_set_cache( 'challenge-' . (int) $challenge_id, $result );
+	ws_ls_set_cache( 'challenge-' . (int) $challenge_id, $result );
 
-    return $result;
+	return $result;
 }
 
 /**
@@ -124,15 +124,15 @@ function ws_ls_challenges_get( $challenge_id ) {
  */
 function ws_ls_challenges( $enabled = true ) {
 
-    global $wpdb;
+	global $wpdb;
 
-    $sql = 'SELECT * FROM ' . $wpdb->prefix . WE_LS_MYSQL_CHALLENGES;
+	$sql = 'SELECT * FROM ' . $wpdb->prefix . WE_LS_MYSQL_CHALLENGES;
 
-    if ( true === $enabled ) {
-        $sql .= ' WHERE enabled = 1';
-    }
+	if ( true === $enabled ) {
+		$sql .= ' WHERE enabled = 1';
+	}
 
-    return $wpdb->get_results( $sql, ARRAY_A );
+	return $wpdb->get_results( $sql, ARRAY_A );
 }
 
 /**
@@ -145,21 +145,21 @@ function ws_ls_challenges( $enabled = true ) {
  */
 function ws_ls_challenges_identify_entries( $challenge_id, $start_date = NULL, $end_date = NULL ) {
 
-    if ( true === empty( $challenge_id ) ) {
-        return false;
-    }
+	if ( true === empty( $challenge_id ) ) {
+		return false;
+	}
 
-    global $wpdb;
+	global $wpdb;
 
-    $sql = $wpdb->prepare( 'INSERT IGNORE INTO ' . $wpdb->prefix . WE_LS_MYSQL_CHALLENGES_DATA . ' ( user_id, challenge_id ) 
+	$sql = $wpdb->prepare( 'INSERT IGNORE INTO ' . $wpdb->prefix . WE_LS_MYSQL_CHALLENGES_DATA . ' ( user_id, challenge_id )
                             SELECT Distinct weight_user_id AS user_id, %d AS challenge_id FROM ' . $wpdb->prefix . WE_LS_TABLENAME, $challenge_id );
 
-    // Do we have a start and end date?
-    if ( false === empty( $start_date ) && false === empty( $end_date ) ) {
-        $sql .= $wpdb->prepare( ' WHERE weight_date >= %s and weight_date <= %s', $start_date, $end_date );
-    }
+	// Do we have a start and end date?
+	if ( false === empty( $start_date ) && false === empty( $end_date ) ) {
+		$sql .= $wpdb->prepare( ' WHERE weight_date >= %s and weight_date <= %s', $start_date, $end_date );
+	}
 
-    return $wpdb->query( $sql );
+	return $wpdb->query( $sql );
 }
 
 /**
@@ -171,7 +171,7 @@ function ws_ls_challenges_identify_entries( $challenge_id, $start_date = NULL, $
  */
 function ws_ls_age_ranges( $as_string = false ) {
 	$age_ranges = [
-	    0 => [ 'min' => NULL, 'max' => NULL ],
+		0 => [ 'min' => NULL, 'max' => NULL ],
 		1 => [ 'min' => NULL, 'max' => '25' ],
 		2 => [ 'min' => 26, 'max' => '35' ],
 		3 => [ 'min' => 36, 'max' => '45' ],
@@ -179,11 +179,11 @@ function ws_ls_age_ranges( $as_string = false ) {
 		5 => [ 'min' => 55, 'max' => NULL ]
 	];
 
-    if ( false === $as_string ) {
-        return $age_ranges;
-    }
+	if ( false === $as_string ) {
+		return $age_ranges;
+	}
 
-    return array_map( 'ws_ls_age_ranges_array_map_to_string', $age_ranges );
+	return array_map( 'ws_ls_age_ranges_array_map_to_string', $age_ranges );
 }
 
 /**
@@ -193,11 +193,11 @@ function ws_ls_age_ranges( $as_string = false ) {
  */
 function ws_ls_age_ranges_array_map_to_string( $element ) {
 
-    $text = ( true === empty( $element[ 'min' ] ) ) ? 0 : $element[ 'min' ];
+	$text = ( true === empty( $element[ 'min' ] ) ) ? 0 : $element[ 'min' ];
 
-    $text .= ( true === empty( $element[ 'max' ] ) ) ? '+' : sprintf( ' %s %d', __( 'to', WE_LS_SLUG ), $element[ 'max' ] );
+	$text .= ( true === empty( $element[ 'max' ] ) ) ? '+' : sprintf( ' %s %d', __( 'to', WE_LS_SLUG ), $element[ 'max' ] );
 
-    return ( '0+' === $text )  ? '' : $text;
+	return ( '0+' === $text )  ? '' : $text;
 }
 
 /**
@@ -210,11 +210,12 @@ function ws_ls_age_ranges_array_map_to_string( $element ) {
 function ws_ls_challenges_data( $args ) {
 
 	$args = wp_parse_args( $args, [
-		'id'            => NULL,
-		'gender'        => NULL,
-		'age-range'     => NULL,
-		'group-id'      => NULL,
-		'opted-in'      => true
+		'id'            	=> NULL,
+		'gender'        	=> NULL,
+		'age-range'     	=> NULL,
+		'group-id'      	=> NULL,
+		'opted-in'      	=> true,
+		'min-wt-entries'	=> 2
 	]);
 
 	if ( true === empty( $args[ 'id' ] ) ) {
@@ -224,7 +225,7 @@ function ws_ls_challenges_data( $args ) {
 	$cache_key = 'challenge-data-' . md5( json_encode( $args ) );
 
 	if ( $cache = ws_ls_get_cache( $cache_key ) ) {
-	    return $cache;
+		return $cache;
 	}
 
 	global $wpdb;
@@ -234,6 +235,11 @@ function ws_ls_challenges_data( $args ) {
 	// Gender
 	if ( false === empty( $args[ 'gender' ] ) ) {
 		$sql .= $wpdb->prepare( ' and gender = %d', $args[ 'gender' ] );
+	}
+
+	// Min number of weight entries
+	if ( false === empty( $args[ 'min-wt-entries' ] ) ) {
+		$sql .= $wpdb->prepare( ' and count_wt_entries >= %d', $args[ 'min-wt-entries' ] );
 	}
 
 	// Age range
@@ -263,8 +269,8 @@ function ws_ls_challenges_data( $args ) {
 	$data = $wpdb->get_results( $sql, ARRAY_A );
 
 	if ( false === empty( $data ) ) {
-	    $data = array_map( 'ws_ls_challenges_data_expand_row', $data );
-    }
+		$data = array_map( 'ws_ls_challenges_data_expand_row', $data );
+	}
 
 	ws_ls_set_cache( $cache_key, $data );
 
@@ -278,9 +284,9 @@ function ws_ls_challenges_data( $args ) {
  */
 function ws_ls_challenges_data_expand_row( $row ) {
 
-    $row[ 'display_name' ] = ws_ls_user_display_name( $row[ 'user_id'] );
+	$row[ 'display_name' ] = ws_ls_user_display_name( $row[ 'user_id'] );
 
-    return $row;
+	return $row;
 }
 
 /**
@@ -292,24 +298,24 @@ function ws_ls_challenges_data_expand_row( $row ) {
  */
 function ws_ls_challenges_data_awaiting_processing( $challenge_id, $user_id = NULL, $limit = 20 ) {
 
-    if ( true === empty( $challenge_id ) ) {
-        return false;
-    }
+	if ( true === empty( $challenge_id ) ) {
+		return false;
+	}
 
-    global $wpdb;
+	global $wpdb;
 
-    $sql = $wpdb->prepare( 'SELECT user_id, challenge_id FROM ' . $wpdb->prefix . WE_LS_MYSQL_CHALLENGES_DATA . ' 
+	$sql = $wpdb->prepare( 'SELECT user_id, challenge_id FROM ' . $wpdb->prefix . WE_LS_MYSQL_CHALLENGES_DATA . '
                             WHERE challenge_id = %d and last_processed is NULL',
-                            $challenge_id
-    );
+		$challenge_id
+	);
 
-    if ( NULL !== $user_id ) {
-        $sql .= $wpdb->prepare( ' AND user_id = %d', $user_id );
-    }
+	if ( NULL !== $user_id ) {
+		$sql .= $wpdb->prepare( ' AND user_id = %d', $user_id );
+	}
 
-    $sql .= $wpdb->prepare( ' limit 0, %d', $limit );
+	$sql .= $wpdb->prepare( ' limit 0, %d', $limit );
 
-    return $wpdb->get_results( $sql, ARRAY_A );
+	return $wpdb->get_results( $sql, ARRAY_A );
 }
 
 /**
@@ -319,21 +325,21 @@ function ws_ls_challenges_data_awaiting_processing( $challenge_id, $user_id = NU
  */
 function ws_ls_challenges_stats( $challenge_id ) {
 
-    if ( true === empty( $challenge_id ) ) {
-        return false;
-    }
+	if ( true === empty( $challenge_id ) ) {
+		return false;
+	}
 
-    global $wpdb;
+	global $wpdb;
 
-    $stats = [ 'count' => NULL, 'to-be-processed' => NULL, 'processed' => NULL ];
+	$stats = [ 'count' => NULL, 'to-be-processed' => NULL, 'processed' => NULL ];
 
-    $challenge_id = (int) $challenge_id;
+	$challenge_id = (int) $challenge_id;
 
-    $stats[ 'count' ]           = $wpdb->get_var( 'SELECT count( user_id ) FROM ' . $wpdb->prefix . WE_LS_MYSQL_CHALLENGES_DATA . ' WHERE challenge_id = ' . $challenge_id );
-    $stats[ 'processed' ]       = $wpdb->get_var( 'SELECT count( user_id ) FROM ' . $wpdb->prefix . WE_LS_MYSQL_CHALLENGES_DATA . ' WHERE last_processed is not NULL and challenge_id = ' . $challenge_id );
-    $stats[ 'to-be-processed' ] = $stats[ 'count' ] - $stats[ 'processed' ];
+	$stats[ 'count' ]           = $wpdb->get_var( 'SELECT count( user_id ) FROM ' . $wpdb->prefix . WE_LS_MYSQL_CHALLENGES_DATA . ' WHERE challenge_id = ' . $challenge_id );
+	$stats[ 'processed' ]       = $wpdb->get_var( 'SELECT count( user_id ) FROM ' . $wpdb->prefix . WE_LS_MYSQL_CHALLENGES_DATA . ' WHERE last_processed is not NULL and challenge_id = ' . $challenge_id );
+	$stats[ 'to-be-processed' ] = $stats[ 'count' ] - $stats[ 'processed' ];
 
-    return $stats;
+	return $stats;
 }
 
 
@@ -344,15 +350,15 @@ function ws_ls_challenges_stats( $challenge_id ) {
  */
 function ws_ls_challenges_data_last_processed_reset( $user_id ) {
 
-    if ( true === empty( $user_id ) ) {
-        return false;
-    }
+	if ( true === empty( $user_id ) ) {
+		return false;
+	}
 
-    global $wpdb;
+	global $wpdb;
 
-    $sql = $wpdb->prepare( 'UPDATE ' . $wpdb->prefix . WE_LS_MYSQL_CHALLENGES_DATA . ' SET last_processed = NULL where user_id = %d;', $user_id );
+	$sql = $wpdb->prepare( 'UPDATE ' . $wpdb->prefix . WE_LS_MYSQL_CHALLENGES_DATA . ' SET last_processed = NULL where user_id = %d;', $user_id );
 
-    return $wpdb->query( $sql );
+	return $wpdb->query( $sql );
 }
 
 /**
@@ -364,24 +370,24 @@ function ws_ls_challenges_data_last_processed_reset( $user_id ) {
  */
 function ws_ls_challenges_get_weight_entries( $user_id, $start_date = NULL, $end_date = NULL ) {
 
-    if ( true === empty( $user_id ) ) {
-        return false;
-    }
+	if ( true === empty( $user_id ) ) {
+		return false;
+	}
 
-    global $wpdb;
+	global $wpdb;
 
-    $sql = $wpdb->prepare( 'SELECT weight_weight as kg, weight_date FROM ' . $wpdb->prefix . WE_LS_TABLENAME . ' WHERE weight_user_id = %d', $user_id );
+	$sql = $wpdb->prepare( 'SELECT weight_weight as kg, weight_date FROM ' . $wpdb->prefix . WE_LS_TABLENAME . ' WHERE weight_user_id = %d', $user_id );
 
-    // Do we have a start and end date?
-    if ( false === empty( $start_date ) && false === empty( $end_date ) ) {
-        $sql .= $wpdb->prepare( ' and weight_date >= %s and weight_date <= %s', $start_date, $end_date );
-    }
+	// Do we have a start and end date?
+	if ( false === empty( $start_date ) && false === empty( $end_date ) ) {
+		$sql .= $wpdb->prepare( ' and weight_date >= %s and weight_date <= %s', $start_date, $end_date );
+	}
 
-    $sql .= ' order by weight_date asc';
+	$sql .= ' order by weight_date asc';
 
-    $result = $wpdb->get_results( $sql, ARRAY_A );
+	$result = $wpdb->get_results( $sql, ARRAY_A );
 
-    return ( false === empty( $result ) ) ? $result : false;
+	return ( false === empty( $result ) ) ? $result : false;
 }
 
 /**
@@ -393,28 +399,28 @@ function ws_ls_challenges_get_weight_entries( $user_id, $start_date = NULL, $end
  */
 function ws_ls_challenges_get_meal_tracker_entries( $user_id, $start_date = NULL, $end_date = NULL ) {
 
-    if ( false === wlt_yk_mt_is_active() ) {
-        return false;
-    }
+	if ( false === wlt_yk_mt_is_active() ) {
+		return false;
+	}
 
-    if ( true === empty( $user_id ) ) {
-        return false;
-    }
+	if ( true === empty( $user_id ) ) {
+		return false;
+	}
 
-    global $wpdb;
+	global $wpdb;
 
-    $sql = $wpdb->prepare( 'SELECT id FROM ' . $wpdb->prefix . YK_WT_DB_ENTRY . ' WHERE user_id = %d and calories_used > 0', $user_id );
+	$sql = $wpdb->prepare( 'SELECT id FROM ' . $wpdb->prefix . YK_WT_DB_ENTRY . ' WHERE user_id = %d and calories_used > 0', $user_id );
 
-    // Do we have a start and end date?
-    if ( false === empty( $start_date ) && false === empty( $end_date ) ) {
-        $sql .= $wpdb->prepare( ' and date >= %s and date <= %s', $start_date, $end_date );
-    }
+	// Do we have a start and end date?
+	if ( false === empty( $start_date ) && false === empty( $end_date ) ) {
+		$sql .= $wpdb->prepare( ' and date >= %s and date <= %s', $start_date, $end_date );
+	}
 
-    $sql .= ' order by date asc';
+	$sql .= ' order by date asc';
 
-    $result = $wpdb->get_results( $sql, ARRAY_A );
+	$result = $wpdb->get_results( $sql, ARRAY_A );
 
-    $result = ( false === empty( $result ) ) ? $result : false;
+	$result = ( false === empty( $result ) ) ? $result : false;
 
-    return $result;
+	return $result;
 }

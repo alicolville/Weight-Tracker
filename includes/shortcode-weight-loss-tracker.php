@@ -19,6 +19,7 @@
                 'hide-photos' 				=> false,                   // Hide photos part of form
                 'hide-tab-photos' 			=> false,                 	// Hide Photos tab
                 'hide-tab-advanced' 		=> false,               	// Hide Advanced tab (macroN, calories, etc)
+				'hide-tab-descriptions' 	=> false,               	// Hide tab descriptions
                 'hide-advanced-narrative' 	=> false,         			// Hide text describing BMR, MarcoN, etc
                 'disable-advanced-tables' 	=> false,         			// Disable advanced data tables.
                 'disable-tabs' 				=> false,                   // Disable using tabs.
@@ -85,32 +86,75 @@
 			$weight_data = ws_ls_get_weights( $user_id, WE_LS_CHART_MAX_POINTS, $selected_week_number, 'desc' );
 
 			// If enabled, render tab header
-			if ($use_tabs)	{
+			if ( $use_tabs )	{
 
-				$html_output .= '
-                        <div id="ws-ls-tabs-loading" class="ws-ls-loading"></div>
-						<div id="ws-ls-tabs" class="ws-ls-hide">
-							<ul>
-									<li><a><i class="fa fa-line-chart" aria-hidden="true"></i>' . __('Overview', WE_LS_SLUG) . '<span>' . __('Chart and add a new entry', WE_LS_SLUG) . '</span></a></li>
-									<li><a><i class="fa fa-table" aria-hidden="true"></i>' . __('All Entries', WE_LS_SLUG) . '<span>' . __('View all of your entries', WE_LS_SLUG) . '</span></a></li>';
+				$hide_tab_descriptions = ws_ls_force_bool_argument( $shortcode_arguments['hide-tab-descriptions'] );
 
-									 // Show Advanced Tab?
-                                    if ( true === $show_photos_tab ) {
-										$html_output .= '<li><a><i class="fa fa-picture-o" aria-hidden="true"></i>' . __('Photos', WE_LS_SLUG) . '<span>' . __('View a gallery of your photos', WE_LS_SLUG) . '</span></a></li>';
-									}
+				$html_output .= '<div id="ws-ls-tabs-loading" class="ws-ls-loading"></div>
+										<div id="ws-ls-tabs" class="ws-ls-hide">
+										<ul>';
 
-                                    // Show Advanced Tab?
-                                    if ( true === $show_advanced_tab ) {
-                                        $html_output .= '<li><a><i class="fa fa-university" aria-hidden="true"></i>' . __('Advanced', WE_LS_SLUG) . '<span>' . __('View BMI, BMR and suggested Calorie and Macronutrient intake', WE_LS_SLUG) . '</span></a></li>';
-                                    }
+				$tabs = [
+							[
+								'icon' 			=> 'fa-line-chart',
+								'title'			=> __( 'Overview', WE_LS_SLUG ),
+								'description'	=> __( 'Chart and add a new entry', WE_LS_SLUG )
+							],
+							[
+								'icon' 			=> 'fa-table',
+								'title'			=> __( 'History', WE_LS_SLUG ),
+								'description'	=> __( 'View all of your entries', WE_LS_SLUG )
+							]
 
-									// If enabled, have a third tab to allow users to manage their own settings!
-									if(WE_LS_ALLOW_USER_PREFERENCES){
-										$html_output .= '<li><a><i class="fa fa-cog" aria-hidden="true"></i>' . __('Preferences', WE_LS_SLUG) . '<span>' . __('Customise this tool and tell us a little more about you', WE_LS_SLUG) . '</span></a></li>';
-									}
+				];
 
-							$html_output .= '</ul>
-							<div>';
+				// Show Photos Tab?
+				if ( true === $show_photos_tab ) {
+
+					$tabs[] = 	[
+									'icon' 			=> 'fa-picture-o',
+									'title'			=> __( 'Photos', WE_LS_SLUG ),
+									'description'	=> __( 'View a gallery of your photos', WE_LS_SLUG )
+								];
+				}
+
+				// Show Advanced Tab?
+				if ( true === $show_advanced_tab ) {
+
+					$tabs[] = 	[
+						'icon' 			=> 'fa-university',
+						'title'			=> __( 'Advanced', WE_LS_SLUG ),
+						'description'	=> __( 'BMI, BMR, Calories and Macronutrients', WE_LS_SLUG )
+					];
+				}
+
+				// If enabled, have a third tab to allow users to manage their own settings!
+				if ( true === WE_LS_ALLOW_USER_PREFERENCES ) {
+
+					$tabs[] = 	[
+						'icon' 			=> 'fa-cog',
+						'title'			=> __( 'Preferences', WE_LS_SLUG ),
+						'description'	=> __( 'Customise this tool for you', WE_LS_SLUG )
+					];
+				}
+
+				foreach ( $tabs as $tab ) {
+
+					$description = ( false === $hide_tab_descriptions ) ? '<span>' . $tab[ 'description' ] . '</span>' : '';
+
+					$html_output .= sprintf( '<li>
+														<a><i class="fa %1$s" aria-hidden="true"></i>%2$s%3$s</a>
+													</li>',
+													$tab[ 'icon' ],
+													$tab[ 'title' ],
+													$description
+					);
+
+				}
+
+				$html_output .= '</ul>
+				<div>';
+
 			}
 
 			// Start Chart Tab

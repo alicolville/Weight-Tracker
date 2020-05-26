@@ -3,8 +3,8 @@ Contributors: aliakro
 Tags: weight, loss, lose, tracker, bmi, bmr, macronutrient, graph, track, stones, kg, table, calories, awards, email, custom, fields, history, pounds, responsive, chart, measurements, cm, centimeters, inches, photos
 Requires at least: 4.4.9
 Tested up to: 5.4.1
-Stable tag: 7.5.8
-Requires PHP: 7.1
+Stable tag: 7.6
+Requires PHP: 7.1s
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate Link: https://www.paypal.me/yeken
@@ -155,14 +155,21 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 == Changelog ==
 
-= 7.5.8 =
+= 7.6 =
 
+* Improvement: Ability to specify a % of calories to add / subtract for weight gain / loss (instead of just a fixed value)
 * Improvement: Added new Spanish translations (thanks @Iván)
 * Improvement: Additional filters throughout plugin.
 * Improvement: Additional underlying support for shortcodes to support user IDs other than current logged in user.
+* Improvement: New setting to determine whether commas should be used when formatting larger numbers.
+* Improvement: New Challenge filter "Min. Weight Entries". This will default to "Two or more" i.e. ignore all entries that have only entered one weight entered.
 * Bug fix: When a user had one or less entry then an exception was thrown while calculating no of entries in challenges.
+* Bug fix: Gravity Form fix to ensure photos added via custom fields can be added to the weight entry.
 * Bug fix: Error thrown when a start weight of zero is entered.
+* Bug fix: Graph dates are now localised.
+* Bug fix: Challenges tweak, show total weight loss as a comparison value.
 * Bug fix: Main shortcode [wlt] would load upto a maximum of 1000 data entries when rendering the shortcode. This was hugely inefficient and the data was not required. Instead, it has been change to load enough data required for the chart (on average just 25 weight entries!)
+* Tweaked descriptions on [wlt] tabs
 
 = 7.5.7 =
 

@@ -311,7 +311,7 @@ function we_ls_format_weight_into_correct_string_format( $weight, $comparison = 
 		if ( 'pounds_only' === ws_ls_get_config('WE_LS_DATA_UNITS' ) ) {
 
             return sprintf( '%1$s%2$s',
-                number_format( $weight, 2 ),
+				ws_ls_round_number( $weight, 2 ),
                 __( 'lbs', WE_LS_SLUG )
             );
 
@@ -336,14 +336,14 @@ function we_ls_format_weight_into_correct_string_format( $weight, $comparison = 
 				return sprintf( '%1$d%2$s %3$s%4$s',
                     (int) $weight_data[ 'stones' ],
                     __( 'st', WE_LS_SLUG ),
-                    number_format( $weight_data["pounds"], 2 ),
+					ws_ls_round_number( $weight_data["pounds"], 2 ),
                     __( 'lbs', WE_LS_SLUG )
                 );
 			}
 		}
 	} else {
 	    return sprintf( '%1$s%2$s',
-                                number_format( $weight, 2 ),
+						ws_ls_round_number( $weight, 2 ),
                                 __( 'Kg', WE_LS_SLUG )
         );
 	}
