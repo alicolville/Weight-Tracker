@@ -103,7 +103,7 @@
 							[
 								'icon' 			=> 'fa-table',
 								'title'			=> __( 'History', WE_LS_SLUG ),
-								'description'	=> __( 'View all of your entries', WE_LS_SLUG )
+								'description'	=> ( true === WS_LS_IS_PRO ) ? __( 'View all of your entries', WE_LS_SLUG ) : __( 'View your latest entries', WE_LS_SLUG )
 							]
 
 				];
