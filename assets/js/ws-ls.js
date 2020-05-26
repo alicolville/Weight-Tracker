@@ -58,6 +58,7 @@ jQuery( document ).ready(function ($) {
         multiline: true,
         theme: "silver",
         size: "small",
+        minWindowWidth: 3000,
         responsive: true,
         animation: {
             effects: "slideH",
