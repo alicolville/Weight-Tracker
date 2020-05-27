@@ -157,6 +157,9 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 = 7.6 =
 
+TODO: Update readme about subtract and add ranges
+
+* Improvement: Ability to specify ranges when subtracting / adding calories to lose / gain weight.
 * Improvement: Ability to specify a % of calories to add / subtract for weight gain / loss (instead of just a fixed value)
 * Improvement: Added new Spanish translations (thanks @Iván)
 * Improvement: Additional filters throughout plugin.
