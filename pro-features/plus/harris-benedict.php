@@ -406,14 +406,38 @@ function ws_ls_harris_benedict_filter_calories_to_add( $calories_to_maintain = N
  */
 function ws_ls_harris_benedict_filter_calories_to_lose( $calories_to_maintain = NULL ) {
 
-	$cal_to_subtract = (int) get_option( 'ws-ls-cal-subtract', 600 );
+	// See if we have any matching ranges for maintain calories
+	$ranges = ws_ls_harris_benedict_calorie_subtract_ranges();
 
-	// Perecentage of calories to subtract
-	if ( 'percentage' === get_option( 'ws-ls-cal-lose-unit', 'fixed' ) &&
-			false === empty( $calories_to_maintain ) ) {
+	if ( true === empty( $ranges ) ) {
+		return 0;	// We don't want to subtract anything
+	}
 
-		$cal_to_subtract = ( ( $calories_to_maintain / 100 ) * $cal_to_subtract );
+	$calories_to_maintain 	= (int) $calories_to_maintain;
+	$cal_to_subtract 		= 0;
 
+	foreach ( $ranges as $range ) {
+
+		// Disabled? Skip on to next range
+		if ( true === empty( $range[ 'from' ] ) && true === empty( $range[ 'to' ] ) ) {
+			continue;
+		}
+
+		// Does the calorie intake fall into this range?
+		if ( $calories_to_maintain >= (int) $range[ 'from' ] &&  $calories_to_maintain <= (int) $range[ 'to' ] ) {
+
+			$cal_to_subtract = (float) $range[ 'amount' ];
+
+			// Percentage of calories to subtract?
+			if ( 'percentage' ===  $range[ 'type' ] &&
+				false === empty( $calories_to_maintain ) ) {
+
+				$cal_to_subtract = ( ( $calories_to_maintain / 100 ) * $cal_to_subtract );
+			}
+
+			// Do no further processing. We only consider the first range we come across.
+			break;
+		}
 	}
 
 	$cal_to_subtract = apply_filters( 'wlt-filter-calories-lose-raw', $cal_to_subtract );
