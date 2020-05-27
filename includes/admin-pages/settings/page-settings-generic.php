@@ -341,18 +341,58 @@ function ws_ls_settings_page_generic() {
 											    <tr class="<?php echo $disable_if_not_pro_plus_class; ?>">
                                                     <th scope="row"><?php echo __( 'Calories to subtract' , WE_LS_SLUG); ?></th>
                                                     <?php
-														$hb_calories_to_lose = (int) get_option( 'ws-ls-cal-subtract', 600 );;
+
+														$subtract_ranges = ws_ls_harris_benedict_calorie_subtract_ranges();
                                                     ?>
                                                     <td>
-                                                        <input  type="number"  step="any" min="0" max="5000" name="ws-ls-cal-subtract" id="ws-ls-cal-subtract" value="<?php printf( '%d', $hb_calories_to_lose ); ?>" size="11" />
-														<?php
-															$calories_to_lose_unit = get_option( 'ws-ls-cal-lose-unit', 'fixed' );
-														?>
-														<select id="ws-ls-cal-lose-unit" name="ws-ls-cal-lose-unit">
-															<option value="fixed" <?php selected( $calories_to_lose_unit, 'fixed' ); ?>><?php echo __( 'Fixed Calories', WE_LS_SLUG )?></option>
-															<option value="percentage" <?php selected( $calories_to_lose_unit, 'percentage' ); ?>>%</option>
-														</select>
-                                                        <p><?php echo __('Part of calculating the daily calorie intake to lose weight is to first calculate the calorie intake to maintain existing weight. Once we have this, we subtract the above figure to calculate the daily calorie intake to lose weight.', WE_LS_SLUG);?>. <?php echo ws_ls_calculations_link(); ?>. <em><?php echo __( 'Please note, it may take up to 15 minutes for calculations to change (due to caching).' , WE_LS_SLUG); ?></em></p>
+														<p><?php echo __( 'Once the daily calorie intake to maintain weight has been established, use the following table to define how many calories should be subtracted for the user to lose weight. You have the ability to set up ranges - if the user\'s calorie intake figure to maintain weight lands within that range you have the ability to specify whether to subtract a fixed number of calories or a percentage of the calorie intake. 
+														' , WE_LS_SLUG); ?></p>
+														<table class="widefat ws-ls-calories-modify-table">
+															<thead>
+																<tr>
+																	<th class="row-title"><?php echo __( 'From (Kcal)' , WE_LS_SLUG); ?></th>
+																	<th><?php echo __( 'To (Kcal)' , WE_LS_SLUG); ?></th>
+																	<th><?php echo __( 'Fixed calories / percentage to subtract' , WE_LS_SLUG); ?></th>
+																	<th><?php echo __( 'Fixed / Percentage' , WE_LS_SLUG); ?></th>
+																</tr>
+															</thead>
+															<tbody>
+															<?php
+
+																foreach ( $subtract_ranges as $range ) {
+
+																	printf(
+																		'<tr>	
+																					<td>
+																						<input type="number" step="any" min="0" max="9999" name="%1$s-from" id="%1$s-from" value="%2$d" size="5" />
+																					</td>						
+																					<td>
+																						<input type="number" step="any" min="0" max="9999" name="%1$s-to" id="%1$s-to" value="%3$d" size="5" />
+																					</td>
+																					<td>
+																						<input type="number" step="any" min="0" max="9999" name="%1$s" id="%1$s" value="%4$d" size="5" />
+																					</td>
+																					<td>
+																						<select id=%1$s-unit" name="%1$s-unit">
+																							<option value="fixed" %5$s>%6$s</option>
+																							<option value="percentage" %7$s>%%</option>
+																						</select>
+																					</td>
+																				</tr>',
+																				esc_attr( $range[ 'name' ] ),
+																				( float ) $range[ 'from' ],
+																				( float ) $range[ 'to' ],
+																				( float ) $range[ 'amount' ],
+																				selected(  $range[ 'unit' ], 'fixed', false ),
+																				__( 'Fixed Calories', WE_LS_SLUG ),
+																				selected(  $range[ 'unit' ], 'percentage', false )
+																	);
+																}
+
+															?>
+															</tbody>
+														</table>
+                                                        <p><?php echo __('Please note, there is no validation around these ranges. Each range will be considered and the first successful match shall be applied - others will be ignored. If you wish to remove a range, set the "from" and "to" figures to 0.', WE_LS_SLUG);?>. <?php echo ws_ls_calculations_link(); ?>. <em><?php echo __( 'Please note, it may take up to 15 minutes for calculations to change (due to caching).' , WE_LS_SLUG); ?></em></p>
                                                     </td>
                                                 </tr>
 
@@ -887,7 +927,10 @@ function ws_ls_register_settings(){
             register_setting( 'we-ls-options-group', sprintf( ' ws-ls-meal-ratio-%s', $key ) );
         }
 
+        // Calories to subtract
+		foreach ( ws_ls_harris_benedict_calorie_subtract_ranges_keys() as $key ) {
+			register_setting( 'we-ls-options-group', $key );
+		}
     }
-
 }
 add_action( 'admin_init', 'ws_ls_register_settings' );

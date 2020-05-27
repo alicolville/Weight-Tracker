@@ -421,4 +421,55 @@ function ws_ls_harris_benedict_filter_calories_to_lose( $calories_to_maintain = 
 	return (int) $cal_to_subtract;
 }
 
+/**
+ * Return array of subtract ranges for calories
+ * @return mixed|void
+ */
+function ws_ls_harris_benedict_calorie_subtract_ranges() {
 
+	$ranges = [
+
+		[
+			'name'		=> 'ws-ls-cal-subtract',
+			'from'		=> (int) get_option( 'ws-ls-cal-subtract-from', 0 ),
+			'to'		=> (int) get_option( 'ws-ls-cal-subtract-to', 9999 ),
+			'amount'	=> (int) get_option( 'ws-ls-cal-subtract', 600 ),
+			'unit'		=> get_option( 'ws-ls-cal-subtract-unit', 'fixed' )
+		]
+
+	];
+
+	for ( $i = 1; $i < 5; $i++ ) {
+
+		$name = sprintf( 'ws-ls-cal-subtract-%d', $i );
+
+		$ranges[] = [
+						'name'		=> $name,
+						'from'		=> (int) get_option( $name . '-from', 0 ),
+						'to'		=> (int) get_option( $name . '-to', 0 ),
+						'amount'	=> (int) get_option( $name, 0 ),
+						'unit'		=> get_option( $name . '-unit', 'fixed' )
+					];
+	}
+
+	return apply_filters( 'wlt-filter-calories-subtract-ranges', $ranges );
+}
+
+/**
+ * Return an array of keys for registering when saving settings
+ * @return array|mixed|void
+ */
+function ws_ls_harris_benedict_calorie_subtract_ranges_keys() {
+
+	$ranges = ws_ls_harris_benedict_calorie_subtract_ranges();
+	$ranges = wp_list_pluck( $ranges, 'name' );
+
+	foreach ( $ranges as $name ) {
+
+		$ranges[] = $name . '-from';
+		$ranges[] = $name . '-to';
+		$ranges[] = $name . '-unit';
+	}
+
+	return $ranges;
+}
