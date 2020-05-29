@@ -148,7 +148,7 @@ function ws_ls_harris_benedict_meal_ratio_defaults() {
  * @param bool $email
  * @return string
  */
-function ws_ls_harris_benedict_render_table($user_id, $missing_data_text = false,  $additional_css_class = '', $email = false) {
+function ws_ls_harris_benedict_render_table($user_id, $missing_data_text = false,  $additional_css_class = '', $email = false, $include_range = true ) {
 
 	$user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
 
@@ -217,6 +217,29 @@ function ws_ls_harris_benedict_render_table($user_id, $missing_data_text = false
 		$html .= '</table>';
 
 		if(true === is_admin() && false === $email) {
+
+			// Do we wish to include the range used to determine calorie intake for loss / gain?
+			if( true === $include_range && false === empty( $calories[ 'maintain' ][ 'total' ] ) ) {
+
+				//TODO: Toggle for gain too
+				$range = ws_ls_harris_benedict_filter_calories_to_lose( $calories[ 'maintain' ][ 'total' ], true );
+
+				if ( false === empty( $range ) ) {
+
+					$html .= sprintf('
+						<p><strong>%8$s</strong>: %1$d%3$s to %2$d%3$s - %5$s %6$s%7$s.</p>',
+						$range[ 'from' ],
+						$range[ 'to' ],
+						__( 'kcal', WE_LS_SLUG ),
+						$calories['maintain']['total'],
+						__( 'Subtract', WE_LS_SLUG ),
+						esc_html( $range[ 'amount' ] ),
+						'fixed' === $range[ 'unit' ] ? __( 'kcals of total calories to maintain weight', WE_LS_SLUG ) : __( '% of total calories required to maintain weight', WE_LS_SLUG ),
+						__( 'Rule applied for suggested recommended calorie intake', WE_LS_SLUG )
+					);
+				}
+			}
+
 			$html .= sprintf('<p><small>%s</small></p>', ws_ls_display_calorie_cap($user_id));
 		}
 
@@ -402,9 +425,10 @@ function ws_ls_harris_benedict_filter_calories_to_add( $calories_to_maintain = N
  * Return the setting for calories to lose weight
  *
  * @param null $calories_to_maintain
+ * @param bool $return_range
  * @return int
  */
-function ws_ls_harris_benedict_filter_calories_to_lose( $calories_to_maintain = NULL ) {
+function ws_ls_harris_benedict_filter_calories_to_lose( $calories_to_maintain = NULL, $return_range = false ) {
 
 	// See if we have any matching ranges for maintain calories
 	$ranges = ws_ls_harris_benedict_calorie_subtract_ranges();
@@ -426,10 +450,15 @@ function ws_ls_harris_benedict_filter_calories_to_lose( $calories_to_maintain = 
 		// Does the calorie intake fall into this range?
 		if ( $calories_to_maintain >= (int) $range[ 'from' ] &&  $calories_to_maintain <= (int) $range[ 'to' ] ) {
 
+			// Are we just interesting in returning the range that matched? e.g. for debugging purpose?
+			if ( true === $return_range ) {
+				return $range;
+			}
+
 			$cal_to_subtract = (float) $range[ 'amount' ];
 
 			// Percentage of calories to subtract?
-			if ( 'percentage' ===  $range[ 'type' ] &&
+			if ( 'percentage' ===  $range[ 'unit' ] &&
 				false === empty( $calories_to_maintain ) ) {
 
 				$cal_to_subtract = ( ( $calories_to_maintain / 100 ) * $cal_to_subtract );
