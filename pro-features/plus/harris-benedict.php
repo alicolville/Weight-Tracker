@@ -422,28 +422,6 @@ function ws_ls_harris_benedict_filter_show_hide_gains_loss( $calorie_intake ) {
 add_filter( 'wlt-filter-calories-pre', 'ws_ls_harris_benedict_filter_show_hide_gains_loss', 10, 1 );
 
 /**
- * Return the setting for calories to gain weight
- *
- * @param null $calories_to_maintain
- * @return int
- */
-//function ws_ls_harris_benedict_filter_calories_to_add( $calories_to_maintain = NULL ) {
-//
-//	$cal_to_add = (int) get_option( 'ws-ls-cal-add', 500 );
-//
-//	// Perecentage of calories to add
-//	if ( 'percentage' === get_option( 'ws-ls-cal-add-unit', 'fixed' ) &&
-//		false === empty( $calories_to_maintain ) ) {
-//
-//		$cal_to_add = ( ( $calories_to_maintain / 100 ) * $cal_to_add );
-//	}
-//
-//	$cal_to_add = apply_filters( 'wlt-filter-calories-add-raw', $cal_to_add );
-//
-//	return (int) $cal_to_add;
-//}
-
-/**
  * Return the setting for calories to add weight
  *
  * @param null $calories_to_maintain
@@ -452,6 +430,10 @@ add_filter( 'wlt-filter-calories-pre', 'ws_ls_harris_benedict_filter_show_hide_g
  * @return int
  */
 function ws_ls_harris_benedict_filter_calories_to_add( $calories_to_maintain = NULL, $user_id = NULL, $return_range = false ) {
+
+	if( false === WS_LS_IS_PRO_PLUS) {
+		return 0;
+	}
 
 	// See if we have any matching ranges for maintain calories
 	$ranges = ws_ls_harris_benedict_calorie_add_ranges();
@@ -511,6 +493,10 @@ function ws_ls_harris_benedict_filter_calories_to_add( $calories_to_maintain = N
  * @return int
  */
 function ws_ls_harris_benedict_filter_calories_to_lose( $calories_to_maintain = NULL, $user_id = NULL, $return_range = false ) {
+
+	if( false === WS_LS_IS_PRO_PLUS) {
+		return 0;
+	}
 
 	// See if we have any matching ranges for maintain calories
 	$ranges = ws_ls_harris_benedict_calorie_subtract_ranges();
