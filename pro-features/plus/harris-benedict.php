@@ -221,7 +221,6 @@ function ws_ls_harris_benedict_render_table($user_id, $missing_data_text = false
 			// Do we wish to include the range used to determine calorie intake for loss / gain?
 			if( true === $include_range && false === empty( $calories[ 'maintain' ][ 'total' ] ) ) {
 
-				//TODO: Toggle for gain too
 				$range = ws_ls_harris_benedict_filter_calories_to_lose( $calories[ 'maintain' ][ 'total' ], $user_id, true );
 
 				if ( false === empty( $range ) ) {
@@ -237,7 +236,27 @@ function ws_ls_harris_benedict_render_table($user_id, $missing_data_text = false
 						__( 'Subtract', WE_LS_SLUG ),
 						esc_html( $range[ 'amount' ] ),
 						'fixed' === $range[ 'unit' ] ? __( 'kcals of total calories to maintain weight', WE_LS_SLUG ) : __( '% of total calories required to maintain weight', WE_LS_SLUG ),
-						__( 'Rule applied for suggested calorie loss', WE_LS_SLUG ),
+						__( 'Rule applied for suggested weight loss', WE_LS_SLUG ),
+						( false === empty( $gender ) ) ? $gender : __( 'Everyone', WE_LS_SLUG )
+					);
+				}
+
+				$range = ws_ls_harris_benedict_filter_calories_to_add( $calories[ 'maintain' ][ 'total' ], $user_id, true );
+
+				if ( false === empty( $range ) ) {
+
+					$gender = ws_ls_genders_get( $range[ 'gender' ] );
+
+					$html .= sprintf('
+						<p><strong>%8$s</strong>: %9$s - %1$d%3$s to %2$d%3$s - %5$s %6$s%7$s.</p>',
+						$range[ 'from' ],
+						$range[ 'to' ],
+						__( 'kcal', WE_LS_SLUG ),
+						$calories['maintain']['total'],
+						__( 'Add', WE_LS_SLUG ),
+						esc_html( $range[ 'amount' ] ),
+						'fixed' === $range[ 'unit' ] ? __( 'kcals of total calories to maintain weight', WE_LS_SLUG ) : __( '% of total calories required to maintain weight', WE_LS_SLUG ),
+						__( 'Rule applied for suggested weight gain', WE_LS_SLUG ),
 						( false === empty( $gender ) ) ? $gender : __( 'Everyone', WE_LS_SLUG )
 					);
 				}
@@ -408,26 +427,86 @@ add_filter( 'wlt-filter-calories-pre', 'ws_ls_harris_benedict_filter_show_hide_g
  * @param null $calories_to_maintain
  * @return int
  */
-function ws_ls_harris_benedict_filter_calories_to_add( $calories_to_maintain = NULL ) {
+//function ws_ls_harris_benedict_filter_calories_to_add( $calories_to_maintain = NULL ) {
+//
+//	$cal_to_add = (int) get_option( 'ws-ls-cal-add', 500 );
+//
+//	// Perecentage of calories to add
+//	if ( 'percentage' === get_option( 'ws-ls-cal-add-unit', 'fixed' ) &&
+//		false === empty( $calories_to_maintain ) ) {
+//
+//		$cal_to_add = ( ( $calories_to_maintain / 100 ) * $cal_to_add );
+//	}
+//
+//	$cal_to_add = apply_filters( 'wlt-filter-calories-add-raw', $cal_to_add );
+//
+//	return (int) $cal_to_add;
+//}
 
-	$cal_to_add = (int) get_option( 'ws-ls-cal-add', 500 );
+/**
+ * Return the setting for calories to add weight
+ *
+ * @param null $calories_to_maintain
+ * @param null $user_id
+ * @param bool $return_range
+ * @return int
+ */
+function ws_ls_harris_benedict_filter_calories_to_add( $calories_to_maintain = NULL, $user_id = NULL, $return_range = false ) {
 
-	// Perecentage of calories to add
-	if ( 'percentage' === get_option( 'ws-ls-cal-add-unit', 'fixed' ) &&
-		false === empty( $calories_to_maintain ) ) {
+	// See if we have any matching ranges for maintain calories
+	$ranges = ws_ls_harris_benedict_calorie_add_ranges();
 
-		$cal_to_add = ( ( $calories_to_maintain / 100 ) * $cal_to_add );
+	if ( true === empty( $ranges ) ) {
+		return 0;	// We don't want to subtract anything
 	}
 
-	$cal_to_add = apply_filters( 'wlt-filter-calories-add-raw', $cal_to_add );
+	$calories_to_maintain 	= (int) $calories_to_maintain;
+	$cal_to_add		 		= 0;
 
-	return (int) $cal_to_add;
+	foreach ( $ranges as $range ) {
+
+		// Disabled? Skip on to next range
+		if ( 1 !== (int) $range[ 'enabled' ] ) {
+			continue;
+		}
+
+		$user_gender 		= (int) ws_ls_get_user_setting('gender', $user_id );
+		$gender_match_rule	= ( (int) $range[ 'gender' ] === $user_gender  || 0 === (int) $range[ 'gender' ] ) ;
+
+		// Does the calorie intake fall into this range?
+		if ( $gender_match_rule &&
+			$calories_to_maintain >= (int) $range[ 'from' ] &&
+			$calories_to_maintain <= (int) $range[ 'to' ] ) {
+
+			// Are we just interesting in returning the range that matched? e.g. for debugging purpose?
+			if ( true === $return_range ) {
+				return $range;
+			}
+
+			$cal_to_add = (float) $range[ 'amount' ];
+
+			// Percentage of calories to subtract?
+			if ( 'percentage' ===  $range[ 'unit' ] &&
+				false === empty( $calories_to_maintain ) ) {
+
+				$cal_to_add = ( ( $calories_to_maintain / 100 ) * $cal_to_add );
+			}
+
+			// Do no further processing. We only consider the first range we come across.
+			break;
+		}
+	}
+
+	$cal_to_subtract = apply_filters( 'wlt-filter-calories-add-raw', $cal_to_add );
+
+	return (int) $cal_to_subtract;
 }
 
 /**
  * Return the setting for calories to lose weight
  *
  * @param null $calories_to_maintain
+ * @param null $user_id
  * @param bool $return_range
  * @return int
  */
@@ -446,7 +525,7 @@ function ws_ls_harris_benedict_filter_calories_to_lose( $calories_to_maintain = 
 	foreach ( $ranges as $range ) {
 
 		// Disabled? Skip on to next range
-		if ( true === empty( $range[ 'from' ] ) && true === empty( $range[ 'to' ] ) ) {
+		if ( 1 !== (int) $range[ 'enabled' ] ) {
 			continue;
 		}
 
@@ -496,7 +575,9 @@ function ws_ls_harris_benedict_calorie_subtract_ranges() {
 			'to'		=> (int) get_option( 'ws-ls-cal-subtract-to', 9999 ),
 			'amount'	=> (int) get_option( 'ws-ls-cal-subtract', 600 ),
 			'unit'		=> get_option( 'ws-ls-cal-subtract-unit', 'fixed' ),
-			'gender'	=> get_option( 'ws-ls-cal-subtract-gender', 0 )
+			'gender'	=> (int) get_option( 'ws-ls-cal-subtract-gender', 0 ),
+			'enabled'	=> (int) get_option( 'ws-ls-cal-subtract-enabled', 1 ),
+			'default'	=> 1
 		]
 
 	];
@@ -511,7 +592,8 @@ function ws_ls_harris_benedict_calorie_subtract_ranges() {
 						'to'		=> (int) get_option( $name . '-to', 0 ),
 						'amount'	=> (int) get_option( $name, 0 ),
 						'unit'		=> get_option( $name . '-unit', 'fixed' ),
-						'gender' 	=> get_option( $name . '-gender', 0 )
+						'gender' 	=> (int) get_option( $name . '-gender', 0 ),
+						'enabled'	=> (int) get_option(  $name . '-enabled', 0 )
 					];
 	}
 
@@ -524,7 +606,11 @@ function ws_ls_harris_benedict_calorie_subtract_ranges() {
  */
 function ws_ls_harris_benedict_calorie_subtract_ranges_keys() {
 
-	$ranges = ws_ls_harris_benedict_calorie_subtract_ranges();
+	$range_subtract = ws_ls_harris_benedict_calorie_subtract_ranges();
+	$ranges_add 	= ws_ls_harris_benedict_calorie_add_ranges();
+
+	$ranges = array_merge( $range_subtract, $ranges_add );
+
 	$ranges = wp_list_pluck( $ranges, 'name' );
 
 	foreach ( $ranges as $name ) {
@@ -533,7 +619,47 @@ function ws_ls_harris_benedict_calorie_subtract_ranges_keys() {
 		$ranges[] = $name . '-to';
 		$ranges[] = $name . '-unit';
 		$ranges[] = $name . '-gender';
+		$ranges[] = $name . '-enabled';
 	}
 
 	return $ranges;
+}
+
+/**
+ * Return array of add ranges for calories
+ * @return mixed|void
+ */
+function ws_ls_harris_benedict_calorie_add_ranges() {
+
+	$ranges = [
+
+		[
+			'name'		=> 'ws-ls-cal-add',
+			'from'		=> (int) get_option( 'ws-ls-cal-add-from', 0 ),
+			'to'		=> (int) get_option( 'ws-ls-cal-add-to', 9999 ),
+			'amount'	=> (int) get_option( 'ws-ls-cal-add', 600 ),
+			'unit'		=> get_option( 'ws-ls-cal-add-unit', 'fixed' ),
+			'gender'	=> (int) get_option( 'ws-ls-cal-add-gender', 0 ),
+			'enabled'	=> (int) get_option( 'ws-ls-cal-add-enabled', 1 ),
+			'default'	=> 1
+		]
+
+	];
+
+	for ( $i = 1; $i < 9; $i++ ) {
+
+		$name = sprintf( 'ws-ls-cal-add-%d', $i );
+
+		$ranges[] = [
+			'name'		=> $name,
+			'from'		=> (int) get_option( $name . '-from', 0 ),
+			'to'		=> (int) get_option( $name . '-to', 0 ),
+			'amount'	=> (int) get_option( $name, 0 ),
+			'unit'		=> get_option( $name . '-unit', 'fixed' ),
+			'gender' 	=> get_option( $name . '-gender', 0 ),
+			'enabled'	=> (int) get_option(  $name . '-enabled', 0 )
+		];
+	}
+
+	return apply_filters( 'wlt-filter-calories-add-ranges', $ranges );
 }

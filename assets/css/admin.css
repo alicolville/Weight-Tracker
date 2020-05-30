@@ -276,3 +276,10 @@ HEX: #f7786b
         padding: 1px 4px;
     }
 }
+
+/**
+  Settings: Calorie subtract / add
+ */
+.ws-ls-calorie-subtract-ranges-rows, .ws-ls-calorie-add-ranges-rows {
+  display: none;
+}
