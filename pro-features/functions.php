@@ -253,6 +253,18 @@ function ws_ls_genders() {
 }
 
 /**
+ * Return gender for given id
+ * @param $id
+ * @return mixed|string
+ */
+function ws_ls_genders_get( $id ) {
+
+	$genders = ws_ls_genders();
+
+	return ( false === empty( $genders[ $id ] ) ) ? $genders[ $id ] : '';
+}
+
+/**
  * Return an array of activity levels
  *
  * @return array

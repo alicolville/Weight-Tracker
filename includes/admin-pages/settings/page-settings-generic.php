@@ -350,7 +350,8 @@ function ws_ls_settings_page_generic() {
 														<table class="widefat ws-ls-calories-modify-table">
 															<thead>
 																<tr>
-																	<th class="row-title"><?php echo __( 'From (Kcal)' , WE_LS_SLUG); ?></th>
+																	<th class="row-title"><?php echo __( 'Apply to' , WE_LS_SLUG); ?></th>
+																	<th><?php echo __( 'From (Kcal)' , WE_LS_SLUG); ?></th>
 																	<th><?php echo __( 'To (Kcal)' , WE_LS_SLUG); ?></th>
 																	<th><?php echo __( 'Fixed calories / percentage to subtract' , WE_LS_SLUG); ?></th>
 																	<th><?php echo __( 'Fixed / Percentage' , WE_LS_SLUG); ?></th>
@@ -362,7 +363,14 @@ function ws_ls_settings_page_generic() {
 																foreach ( $subtract_ranges as $range ) {
 
 																	printf(
-																		'<tr>	
+																		'<tr>
+																					<td>
+																						<select id="%1$s-gender" name="%1$s-gender">
+																							<option value="0" %8$s>%9$s</option>
+																							<option value="1" %10$s>%11$s</option>
+																							<option value="2" %12$s>%13$s</option>
+																						</select>
+																					</td>	
 																					<td>
 																						<input type="number" step="any" min="0" max="9999" name="%1$s-from" id="%1$s-from" value="%2$d" size="5" />
 																					</td>						
@@ -373,7 +381,7 @@ function ws_ls_settings_page_generic() {
 																						<input type="number" step="any" min="0" max="9999" name="%1$s" id="%1$s" value="%4$d" size="5" />
 																					</td>
 																					<td>
-																						<select id=%1$s-unit" name="%1$s-unit">
+																						<select id="%1$s-unit" name="%1$s-unit">
 																							<option value="fixed" %5$s>%6$s</option>
 																							<option value="percentage" %7$s>%%</option>
 																						</select>
@@ -385,7 +393,13 @@ function ws_ls_settings_page_generic() {
 																				( float ) $range[ 'amount' ],
 																				selected(  $range[ 'unit' ], 'fixed', false ),
 																				__( 'Fixed Calories', WE_LS_SLUG ),
-																				selected(  $range[ 'unit' ], 'percentage', false )
+																				selected(  $range[ 'unit' ], 'percentage', false ),
+																				selected(  $range[ 'gender' ], '', false ),
+																				__( 'Everyone', WE_LS_SLUG ),
+																				selected(  $range[ 'gender' ], '1', false ),
+																				__( 'Females Only', WE_LS_SLUG ),
+																				selected(  $range[ 'gender' ], '2', false ),
+																				__( 'Males Only', WE_LS_SLUG )
 																	);
 																}
 
