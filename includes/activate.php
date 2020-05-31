@@ -151,18 +151,23 @@
 	}
     add_action('ws-ls-rebuild-database-tables', 'ws_ls_create_mysql_tables');
 
-	function ws_ls_upgrade() {
+/**
+ * When the plugin has been installed or upgraded, then update DB and do relevant tasks.
+ */
+function ws_ls_upgrade() {
 
-		if( update_option('ws-ls-version-number', WE_LS_DB_VERSION ) ) {
+	if( update_option('ws-ls-version-number', WE_LS_DB_VERSION ) ) {
 
-			ws_ls_create_mysql_tables();
-			ws_ls_activate();
+		ws_ls_create_mysql_tables();
+		ws_ls_activate();
 
-			// This will force all stat entries to be recreated.
-            ws_ls_stats_clear_last_updated_date();
+		// This will force all stat entries to be recreated.
+		ws_ls_stats_clear_last_updated_date();
 
-            // Check the license is still valid
-            ws_ls_licences_cron();
- 		}
+		// Check the license is still valid
+		ws_ls_licences_cron();
+
+		do_action( 'ws-ls-plugin-updated' );
 	}
-	add_action('admin_init', 'ws_ls_upgrade');
+}
+add_action('admin_init', 'ws_ls_upgrade');

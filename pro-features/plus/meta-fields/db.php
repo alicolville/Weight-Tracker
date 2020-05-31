@@ -281,7 +281,7 @@ function ws_ls_meta_fields_update( $field ) {
  *
  * Add a field.
  *
- * @param $unit    array:   field_key
+ * @param $field    array:  field_key
  *                          field_name
  *                          abv
  *                          display_on_chart

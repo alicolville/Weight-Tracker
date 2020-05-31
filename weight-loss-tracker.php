@@ -178,6 +178,8 @@ defined('ABSPATH') or die('Jog on!');
         $files_to_include[] = 'pro-features/emails.php';
     }
 
+	$files_to_include[] = 'includes/deprecated.php';
+
     foreach ( $files_to_include as $file ) {
         require_once( WS_LS_ABSPATH . $file );
     }

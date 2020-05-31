@@ -157,7 +157,10 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 = 7.7 =
 
+//TODO: Remove measurement fields and tab... constants too
 // TODO: Deprecate Bar Chart
+// How do we deal with height? //'height' => [ 'title' => __('Height', WE_LS_SLUG), 'abv' => __('H', WE_LS_SLUG), 'enabled' => true, 'user_preference' => true),
+
 
 * Improvement: Allow numeric custom fields to be plotted on charts.
 
