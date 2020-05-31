@@ -592,6 +592,8 @@ function ws_user_exist_check($user_id) {
  * Used by the Calories and MacroN shortcodes to convert user's aim preference into a string for the progress attribute.
  *
  * @return string
+ *
+ * Note: Used by Meal Tracker
  */
 function ws_ls_get_progress_attribute_from_aim() {
 
