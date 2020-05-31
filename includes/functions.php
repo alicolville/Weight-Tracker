@@ -36,13 +36,13 @@ function ws_ls_weight_object($user_id, $kg, $pounds, $stones, $pounds_only, $not
         $weight['date-uk'] = date('d/m/Y',$time);
         $weight['date-us'] = date('m/d/Y',$time);
 		$weight['date-display'] = ws_ls_get_config('WE_LS_US_DATE') ? $weight['date-us'] : $weight['date-uk'];
-        $weight['date-graph'] = date('d M',$time);
+        $weight['date-graph'] = date_i18n('d M',$time);
     }
 
     // If enabled, detect which weight fields need to be calculated and do it
     if ($detect_and_convert_missing_values)
     {
-		switch (ws_ls_get_config('WE_LS_DATA_UNITS')) {
+		switch (ws_ls_get_config('WE_LS_DATA_UNITS', $user_id )) {
     		case 'pounds_only':
     			$weight['kg'] = ws_ls_pounds_to_kg($weight['only_pounds']);
             	$conversion = ws_ls_pounds_to_stone_pounds($weight['only_pounds']);
@@ -63,7 +63,7 @@ function ws_ls_weight_object($user_id, $kg, $pounds, $stones, $pounds_only, $not
     }
 
     // Generate display
-    switch (ws_ls_get_config('WE_LS_DATA_UNITS')) {
+    switch ( ws_ls_get_config('WE_LS_DATA_UNITS')) {
       case 'pounds_only':
         $data = ws_ls_round_decimals($weight['only_pounds']);
         $weight['display'] = $data . __('lbs', WE_LS_SLUG);
@@ -188,15 +188,11 @@ function ws_ls_admin_check_mysql_tables_exist() {
     $error_text = '';
     global $wpdb;
 
-    $tables_to_check = [    $wpdb->prefix . WE_LS_TARGETS_TABLENAME,
-                            $wpdb->prefix . WE_LS_TABLENAME,
-                            $wpdb->prefix . WE_LS_USER_PREFERENCES_TABLENAME,
-                            $wpdb->prefix . WE_LS_MYSQL_META_FIELDS,
-                            $wpdb->prefix . WE_LS_MYSQL_META_ENTRY,
-                            $wpdb->prefix . WE_LS_MYSQL_AWARDS,
-                            $wpdb->prefix . WE_LS_MYSQL_AWARDS_GIVEN,
-                            $wpdb->prefix . WE_LS_MYSQL_GROUPS,
-                            $wpdb->prefix . WE_LS_MYSQL_GROUPS_USER
+    $tables_to_check = [    $wpdb->prefix . YK_WT_DB_MEALS,
+                            $wpdb->prefix . YK_WT_DB_ENTRY,
+                            $wpdb->prefix . YK_WT_DB_ENTRY_MEAL,
+                            $wpdb->prefix . YK_WT_DB_MEAL_TYPES,
+                            $wpdb->prefix . YK_WT_DB_SETTINGS
                        ];
 
     // Check each table exists!
@@ -244,7 +240,7 @@ function ws_ls_create_dialog_jquery_code( $title, $message, $class_used_to_promp
                                 "modal"         : true,
                                 "autoOpen"      : false
                             });
-                            
+
                             $( ".%4$s" ).click( function( event ) {
                                 event.preventDefault();
                                 target_url = $( this ).attr( "href" );
@@ -386,20 +382,6 @@ function ws_ls_display_week_filters($week_ranges, $selected_week_number)
 
 }
 
-function ws_ls_round_weights($weight)
-{
-  $weight['only_pounds'] = round($weight['only_pounds']);
-  $weight['kg'] = round($weight['kg']);
-  $weight['stones'] = round($weight['stones']);
-  $weight['pounds'] = round($weight['pounds']);
-
-  if (!empty($weight['difference_from_start']) && is_numeric($weight['difference_from_start'])) {
-    $weight['difference_from_start'] = round($weight['difference_from_start']);
-  }
-
-  return $weight;
-}
-
 function ws_ls_get_config($key, $user_id = false)
 {
 
@@ -508,15 +490,6 @@ function ws_ls_remove_non_numeric($text) {
     return preg_replace("/[^0-9]/", "", $text);
   }
   return $text;
-}
-function ws_ls_fetch_elements_from_end_of_array($data, $number_to_grab)
-{
-    if (is_array($data) && count($data) > $number_to_grab) {
-        $start = count($data) - $number_to_grab;
-        $data = array_slice($data, $start, $number_to_grab);
-    }
-
-    return $data;
 }
 
 function ws_ls_display_default_measurements() {
@@ -673,20 +646,18 @@ function ws_ls_stats_clear_last_updated_date(){
  * @param bool $return_formatted_date_only
  * @return false|string
  */
-function ws_ls_iso_date_into_correct_format($date, $return_formatted_date_only = true) {
+function ws_ls_iso_date_into_correct_format( $date ) {
 
     // Build different date formats
-    if($date != false && !empty($date)) {
-        $time = strtotime($date);
-        $weight['date'] = $date;
-        $weight['date-uk'] = date('d/m/Y',$time);
-        $weight['date-us'] = date('m/d/Y',$time);
-        $weight['date-display'] = ws_ls_get_config('WE_LS_US_DATE') ? $weight['date-us'] : $weight['date-uk'];
-        $weight['date-graph'] = date('d M',$time);
-        return ($return_formatted_date_only) ? $weight['date-display'] : $weight;
+    if( false === empty( $date ) ) {
+
+    	$time 	= strtotime( $date );
+    	$format = ws_ls_get_config('WE_LS_US_DATE') ? 'm/d/Y' : 'd/m/Y';
+
+    	return date( $format, $time );
     }
 
-    return $date;
+    return NULL;
 }
 
 /**
@@ -898,26 +869,6 @@ function ws_ls_display_max_server_upload_size() {
 }
 
 /**
- * Either fetch data from the $_POST object or from the array passed in!
- *
- * @param $object
- * @param $key
- * @return string
- */
-function ws_ls_get_value_from_post_or_obj( $object, $key ) {
-
-    if ( true === isset( $_POST[ $key ] ) ) {
-        return $_POST[ $key ];
-    }
-
-    if ( true === isset( $object[ $key ] ) ) {
-        return $object[ $key ];
-    }
-
-    return '';
-}
-
-/**
  * Either fetch data from the $_POST object for the given object keys
  *
  * @param $meta_field
@@ -1060,7 +1011,7 @@ function ws_ls_calculate_percentage_difference_as_number( $previous_weight, $cur
         $return = 0 - $return;
     }
 
-    return number_format( $return, 2 );
+    return ws_ls_round_number( $return, 2 );
 }
 
 /**
@@ -1099,4 +1050,17 @@ function ws_ls_user_display_name( $user_id ) {
 function ws_ls_challenges_is_enabled() {
     return ( true === WS_LS_IS_PRO_PLUS &&
         'yes' === get_option( 'ws-ls-challenges-enabled', 'no' ) );
+}
+
+/**
+ * Wrapper to number_format() so we can be consistent throughout plugin for number_format() options.
+ * @param $number
+ * @param int $decimal_places
+ * @return string
+ */
+function ws_ls_round_number( $number, $decimal_places = 0 ) {
+
+	$seperator = ( 'yes' === get_option( 'ws-ls-number-formatting-separator', 'yes' ) ) ? ',' : '';
+
+	return number_format( $number, $decimal_places, '.', $seperator );
 }

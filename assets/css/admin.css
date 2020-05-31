@@ -240,6 +240,15 @@ HEX: #f7786b
     color: #1e69de;
     margin: 0px 10px 0px 0px;
 }
+
+/**
+  Calorie Addition / Subtraction tables
+ */
+.ws-ls-calories-modify-table th, .ws-ls-calories-modify-table td {
+  padding: 5px;
+  width: 50px !important;
+}
+
 @media only screen and (max-width: 600px) {
     .ws-ls-user-data a span {
         display: none !important;
@@ -266,4 +275,11 @@ HEX: #f7786b
         line-height: 1.1;
         padding: 1px 4px;
     }
+}
+
+/**
+  Settings: Calorie subtract / add
+ */
+.ws-ls-calorie-subtract-ranges-rows, .ws-ls-calorie-add-ranges-rows {
+  display: none;
 }

@@ -199,6 +199,22 @@ function ws_ls_settings_page_generic() {
                                                     </td>
                                                 </tr>
                                             </table>
+											<h3><?php echo __( 'Number formatting' , WE_LS_SLUG); ?></h3>
+											<table class="form-table">
+												<tr>
+													<th scope="row"><?php echo __( 'Include thousand separator?' , WE_LS_SLUG); ?></th>
+													<td>
+														<?php
+															$include_separator = get_option( 'ws-ls-number-formatting-separator', 'yes' );
+														?>
+														<select id="ws-ls-number-formatting-separator" name="ws-ls-number-formatting-separator">
+															<option value="yes" <?php selected( $include_separator, 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG); ?></option>
+															<option value="no" <?php selected( $include_separator, 'no' ); ?>><?php echo __('No', WE_LS_SLUG); ?></option>
+														</select>
+														<p><?php echo __('If enabled, larger numbers shall be split up by commas e.g. 2,300 instead of 2300', WE_LS_SLUG); ?>.</p>
+													</td>
+												</tr>
+											</table>
                                             <h3><?php echo __( 'Permissions' , WE_LS_SLUG); ?></h3>
                                             <table class="form-table">
                                                 <tr class="<?php echo $disable_if_not_pro_class; ?>">
@@ -320,21 +336,95 @@ function ws_ls_settings_page_generic() {
                                                     <th scope="row"><?php echo __( 'Male Calorie Cap' , WE_LS_SLUG); ?></th>
                                                     <td>
                                                         <input  type="number"  step="any" min="0" max="5000" name="ws-ls-male-cal-cap" id="ws-ls-male-cal-cap" value="<?php esc_attr_e(WS_LS_CAL_CAP_MALE); ?>" size="11" />
-                                                        <p><?php echo __('Specify a maximum value for number of daily calories allowed to achieve weight loss. As per NHS guidelines, males are set to 1900kcal by default', WE_LS_SLUG);?>. <?php echo ws_ls_calculations_link(); ?>. <em><?php echo __( 'Please note, it may take up to 15 minutes for calculations to change (due to caching).' , WE_LS_SLUG); ?></em></p>
-                                                    </td>
+														<p><?php echo __('Specify a maximum value for number of daily calories allowed to achieve weight loss. As per NHS guidelines, males are set to 1900kcal by default', WE_LS_SLUG);?>. <?php echo ws_ls_calculations_link(); ?>. <em><?php echo __( 'Please note, it may take up to 15 minutes for calculations to change (due to caching).' , WE_LS_SLUG); ?></em></p></td>
                                                 </tr>
-                                                <tr class="<?php echo $disable_if_not_pro_plus_class; ?>">
+											    <tr class="<?php echo $disable_if_not_pro_plus_class; ?>">
                                                     <th scope="row"><?php echo __( 'Calories to subtract' , WE_LS_SLUG); ?></th>
                                                     <?php
 
-                                                        $hb_calories_to_lose = ( true === function_exists('ws_ls_harris_benedict_filter_calories_to_lose') ) ? ws_ls_harris_benedict_filter_calories_to_lose() : 500;
-
+														$subtract_ranges = ws_ls_harris_benedict_calorie_subtract_ranges();
                                                     ?>
                                                     <td>
-                                                        <input  type="number"  step="any" min="0" max="5000" name="ws-ls-cal-subtract" id="ws-ls-cal-subtract" value="<?php printf( '%d', $hb_calories_to_lose ); ?>" size="11" />
-                                                        <p><?php echo __('Part of calculating the daily calorie intake to lose weight is to first calculate the calorie intake to maintain existing weight. Once we have this, we subtract the above figure to calculate the daily calorie intake to lose weight.', WE_LS_SLUG);?>. <?php echo ws_ls_calculations_link(); ?>. <em><?php echo __( 'Please note, it may take up to 15 minutes for calculations to change (due to caching).' , WE_LS_SLUG); ?></em></p>
+														<p><?php echo __( 'Once the daily calorie intake to maintain weight has been established, use the following table to define how many calories should be subtracted for the user to lose weight. You have the ability to set up ranges - if the user\'s calorie intake figure to maintain weight lands within that range you have the ability to specify whether to subtract a fixed number of calories or a percentage of the calorie intake. 
+														' , WE_LS_SLUG); ?></p>
+														<br />
+														<table class="widefat ws-ls-calories-modify-table">
+															<thead>
+																<tr>
+																	<th class="row-title"><?php echo __( 'Status' , WE_LS_SLUG); ?></th>
+																	<th><?php echo __( 'Apply to' , WE_LS_SLUG); ?></th>
+																	<th><?php echo __( 'From (Kcal)' , WE_LS_SLUG); ?></th>
+																	<th><?php echo __( 'To (Kcal)' , WE_LS_SLUG); ?></th>
+																	<th><?php echo __( 'Fixed calories / percentage to subtract' , WE_LS_SLUG); ?></th>
+																	<th><?php echo __( 'Fixed / Percentage' , WE_LS_SLUG); ?></th>
+																</tr>
+															</thead>
+															<tbody>
+															<?php
+
+																foreach ( $subtract_ranges as $range ) {
+
+																	printf(
+																		'<tr class="%14$s">
+																					<td>
+																						<select id="%1$s-enabled" name="%1$s-enabled">
+																							<option value="1" %15$s>%16$s</option>
+																							<option value="0" %17$s>%18$s</option>
+																						</select>
+																					</td>
+																					<td>
+																						<select id="%1$s-gender" name="%1$s-gender">
+																							<option value="0" %8$s>%9$s</option>
+																							<option value="1" %10$s>%11$s</option>
+																							<option value="2" %12$s>%13$s</option>
+																						</select>
+																					</td>	
+																					<td>
+																						<input type="number" step="any" min="0" max="9999" name="%1$s-from" id="%1$s-from" value="%2$d" size="5" />
+																					</td>						
+																					<td>
+																						<input type="number" step="any" min="0" max="9999" name="%1$s-to" id="%1$s-to" value="%3$d" size="5" />
+																					</td>
+																					<td>
+																						<input type="number" step="any" min="0" max="9999" name="%1$s" id="%1$s" value="%4$d" size="5" />
+																					</td>
+																					<td>
+																						<select id="%1$s-unit" name="%1$s-unit">
+																							<option value="fixed" %5$s>%6$s</option>
+																							<option value="percentage" %7$s>%%</option>
+																						</select>
+																					</td>
+																				</tr>',
+																				esc_attr( $range[ 'name' ] ),
+																				( float ) $range[ 'from' ],
+																				( float ) $range[ 'to' ],
+																				( float ) $range[ 'amount' ],
+																				selected(  $range[ 'unit' ], 'fixed', false ),
+																				__( 'Fixed Calories', WE_LS_SLUG ),
+																				selected(  $range[ 'unit' ], 'percentage', false ),
+																				selected(  $range[ 'gender' ], '', false ),
+																				__( 'Everyone', WE_LS_SLUG ),
+																				selected(  $range[ 'gender' ], '1', false ),
+																				__( 'Females Only', WE_LS_SLUG ),
+																				selected(  $range[ 'gender' ], '2', false ),
+																				__( 'Males Only', WE_LS_SLUG ),
+																				( true === empty( $range[ 'default' ] ) ) ? 'ws-ls-calorie-subtract-ranges-rows' : '',
+																				selected(  $range[ 'enabled' ], '1', false ),
+																				__( 'Enabled', WE_LS_SLUG ),
+																				selected(  $range[ 'enabled' ], '0', false ),
+																				__( 'Disabled', WE_LS_SLUG )
+																	);
+																}
+
+															?>
+															</tbody>
+														</table>
+														<br />
+														<p><a class="button ws-ls-calorie-subtract-ranges-show-more"><?php echo __( 'Show more rows' , WE_LS_SLUG); ?></a></p>
+														 <p><?php echo __('Please note, there is no validation around these ranges. Each range will be considered and the first successful match shall be applied - others will be ignored', WE_LS_SLUG);?>. <?php echo ws_ls_calculations_link(); ?>. <em><?php echo __( 'Please note, it may take up to 15 minutes for calculations to change (due to caching).' , WE_LS_SLUG); ?></em></p>
                                                     </td>
                                                 </tr>
+
                                             </table>
 
                                             <h3><?php echo __( 'Calculating daily calorie intake to gain weight' , WE_LS_SLUG); ?></h3>
@@ -350,18 +440,93 @@ function ws_ls_settings_page_generic() {
                                                         <p><?php echo __('Show gain figures to your users? For example, if your site is aimed at weight loss only, you may wish not to.', WE_LS_SLUG)?></p>
                                                     </td>
                                                 </tr>
-                                                <tr class="<?php echo $disable_if_not_pro_plus_class; ?>">
-                                                    <th scope="row"><?php echo __( 'Calories to add' , WE_LS_SLUG); ?></th>
-                                                    <?php
+												<tr class="<?php echo $disable_if_not_pro_plus_class; ?>">
+													<th scope="row"><?php echo __( 'Calories to add' , WE_LS_SLUG); ?></th>
+													<?php
 
-                                                        $hb_calories_to_add = ( true === function_exists('ws_ls_harris_benedict_filter_calories_to_add') ) ? ws_ls_harris_benedict_filter_calories_to_add() : 600;
+													$add_ranges = ws_ls_harris_benedict_calorie_add_ranges();
+													?>
+													<td>
+														<p><?php echo __( 'Once the daily calorie intake to maintain weight has been established, use the following table to define how many calories should be subtracted for the user to gain weight. You have the ability to set up ranges - if the user\'s calorie intake figure to maintain weight lands within that range you have the ability to specify whether to add a fixed number of calories or a percentage of the calorie intake. 
+														' , WE_LS_SLUG); ?></p>
+														<br />
+														<table class="widefat ws-ls-calories-modify-table">
+															<thead>
+															<tr>
+																<th class="row-title"><?php echo __( 'Status' , WE_LS_SLUG); ?></th>
+																<th><?php echo __( 'Apply to' , WE_LS_SLUG); ?></th>
+																<th><?php echo __( 'From (Kcal)' , WE_LS_SLUG); ?></th>
+																<th><?php echo __( 'To (Kcal)' , WE_LS_SLUG); ?></th>
+																<th><?php echo __( 'Fixed calories / percentage to add' , WE_LS_SLUG); ?></th>
+																<th><?php echo __( 'Fixed / Percentage' , WE_LS_SLUG); ?></th>
+															</tr>
+															</thead>
+															<tbody>
+															<?php
 
-                                                    ?>
-                                                    <td>
-                                                        <input  type="number"  step="any" min="0" max="5000" name="ws-ls-cal-add" id="ws-ls-cal-add" value="<?php printf( '%d', $hb_calories_to_add ); ?>" size="11" />
-                                                        <p><?php echo __('Part of calculating the daily calorie intake to gain weight is to first calculate the calorie intake to maintain existing weight. Once we have this, we add the above figure to calculate the daily calorie intake to gain weight.', WE_LS_SLUG);?>. <?php echo ws_ls_calculations_link(); ?>. <em><?php echo __( 'Please note, it may take up to 15 minutes for calculations to change (due to caching).' , WE_LS_SLUG); ?></em></p>
-                                                    </td>
-                                                </tr>
+															foreach ( $add_ranges as $range ) {
+
+																printf(
+																	'<tr class="%14$s">
+																					<td>
+																						<select id="%1$s-enabled" name="%1$s-enabled">
+																							<option value="1" %15$s>%16$s</option>
+																							<option value="0" %17$s>%18$s</option>
+																						</select>
+																					</td>
+																					<td>
+																						<select id="%1$s-gender" name="%1$s-gender">
+																							<option value="0" %8$s>%9$s</option>
+																							<option value="1" %10$s>%11$s</option>
+																							<option value="2" %12$s>%13$s</option>
+																						</select>
+																					</td>	
+																					<td>
+																						<input type="number" step="any" min="0" max="9999" name="%1$s-from" id="%1$s-from" value="%2$d" size="5" />
+																					</td>						
+																					<td>
+																						<input type="number" step="any" min="0" max="9999" name="%1$s-to" id="%1$s-to" value="%3$d" size="5" />
+																					</td>
+																					<td>
+																						<input type="number" step="any" min="0" max="9999" name="%1$s" id="%1$s" value="%4$d" size="5" />
+																					</td>
+																					<td>
+																						<select id="%1$s-unit" name="%1$s-unit">
+																							<option value="fixed" %5$s>%6$s</option>
+																							<option value="percentage" %7$s>%%</option>
+																						</select>
+																					</td>
+																				</tr>',
+																	esc_attr( $range[ 'name' ] ),
+																	( float ) $range[ 'from' ],
+																	( float ) $range[ 'to' ],
+																	( float ) $range[ 'amount' ],
+																	selected(  $range[ 'unit' ], 'fixed', false ),
+																	__( 'Fixed Calories', WE_LS_SLUG ),
+																	selected(  $range[ 'unit' ], 'percentage', false ),
+																	selected(  $range[ 'gender' ], '', false ),
+																	__( 'Everyone', WE_LS_SLUG ),
+																	selected(  $range[ 'gender' ], '1', false ),
+																	__( 'Females Only', WE_LS_SLUG ),
+																	selected(  $range[ 'gender' ], '2', false ),
+																	__( 'Males Only', WE_LS_SLUG ),
+																	( true === empty( $range[ 'default' ] ) ) ? 'ws-ls-calorie-add-ranges-rows' : '',
+																	selected(  $range[ 'enabled' ], '1', false ),
+																	__( 'Enabled', WE_LS_SLUG ),
+																	selected(  $range[ 'enabled' ], '0', false ),
+																	__( 'Disabled', WE_LS_SLUG )
+																);
+															}
+
+															?>
+															</tbody>
+														</table>
+														<br />
+														<p><a class="button ws-ls-calorie-add-ranges-show-more"><?php echo __( 'Show more rows' , WE_LS_SLUG); ?></a></p>
+														<p><?php echo __('Please note, there is no validation around these ranges. Each range will be considered and the first successful match shall be applied - others will be ignored', WE_LS_SLUG);?>. <?php echo ws_ls_calculations_link(); ?>. <em><?php echo __( 'Please note, it may take up to 15 minutes for calculations to change (due to caching).' , WE_LS_SLUG); ?></em></p>
+													</td>
+												</tr>
+
                                             </table>
 
                                             <h3><?php echo __( 'Macronutrient Calculator' , WE_LS_SLUG); ?></h3>
@@ -414,7 +579,7 @@ function ws_ls_settings_page_generic() {
                                                             );
                                                         }
                                                     }
-                                                                                                   
+
                                                 ?>
                                             </table>
                                         </div>
@@ -793,6 +958,7 @@ function ws_ls_register_settings(){
 	register_setting( 'we-ls-options-group', 'ws-ls-fill-under-weight-line' );
     register_setting( 'we-ls-options-group', 'ws-ls-fill-under-weight-line-opacity' );
     register_setting( 'we-ls-options-group', 'ws-ls-fill-under-weight-line-colour' );
+	register_setting( 'we-ls-options-group', 'ws-ls-number-formatting-separator' );
 
     // Pro only open
     if( WS_LS_IS_PRO ){
@@ -851,12 +1017,17 @@ function ws_ls_register_settings(){
         register_setting( 'we-ls-options-group', 'ws-ls-macro-proteins' );
         register_setting( 'we-ls-options-group', 'ws-ls-macro-carbs' );
         register_setting( 'we-ls-options-group', 'ws-ls-macro-fats' );
+		register_setting( 'we-ls-options-group', 'ws-ls-cal-add-unit' );
+		register_setting( 'we-ls-options-group', 'ws-ls-cal-lose-unit' );
 
         foreach ( ws_ls_harris_benedict_meal_ratio_defaults() as $key => $default ) {
             register_setting( 'we-ls-options-group', sprintf( ' ws-ls-meal-ratio-%s', $key ) );
         }
 
+        // Calories to subtract
+		foreach ( ws_ls_harris_benedict_calorie_subtract_ranges_keys() as $key ) {
+			register_setting( 'we-ls-options-group', $key );
+		}
     }
-
 }
 add_action( 'admin_init', 'ws_ls_register_settings' );

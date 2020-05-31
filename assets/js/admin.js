@@ -179,4 +179,26 @@ jQuery( document ).ready(function ($) {
         });
     });
 
+  // ------------------------------------------------------------
+  // Settings: Show Calories
+  // ------------------------------------------------------------
+
+  $( '.ws-ls-calorie-subtract-ranges-show-more' ).on('click', function ( event ) {
+
+    event.preventDefault();
+
+    $( '.ws-ls-calorie-subtract-ranges-rows' ).show();
+    $( '.ws-ls-calorie-subtract-ranges-show-more' ).hide();
+
+  });
+
+  $( '.ws-ls-calorie-add-ranges-show-more' ).on('click', function ( event ) {
+
+    event.preventDefault();
+
+    $( '.ws-ls-calorie-add-ranges-rows' ).show();
+    $( '.ws-ls-calorie-add-ranges-show-more' ).hide();
+
+  });
+
 });

@@ -253,13 +253,17 @@ function ws_ls_data_table_get_columns($smaller_width = false, $front_end = false
     if ( true === ws_ls_meta_fields_is_enabled() ) {
 
         foreach ( ws_ls_meta_fields_enabled() as $field ) {
-            array_push($columns, array('name' => 'meta-' . $field['id'], 'title' => $field['field_name'], 'breakpoints'=> (($smaller_width) ? 'lg' : 'md'), 'type' => 'text'));
+        	if ( true === apply_filters( 'wlt-filter-column-include', true, $field ) ) {
+				array_push($columns, array('name' => 'meta-' . $field['id'], 'title' => $field['field_name'], 'breakpoints'=> (($smaller_width) ? 'lg' : 'md'), 'type' => 'text'));
+			}
         }
 
     }
 
 	// Add notes;
 	array_push($columns, array('name' => 'notes', 'title' => __('Notes', WE_LS_SLUG), 'breakpoints'=> 'lg', 'type' => 'text'));
+
+	$columns = apply_filters( 'wlt-filter-front-end-data-table-columns', $columns );
 
 	return $columns;
 }

@@ -11,18 +11,20 @@
 
             $shortcode_arguments = shortcode_atts(
             array(
-                'min-chart-points' => 2,					// Minimum number of data entries before chart is shown
-				'hide-first-target-form' => false,			// Hide first Target form
-				'hide-second-target-form' => false,			// Hide second Target form
-				'show-add-button' => false,					// Display a "Add weight" button above the chart.
-                'allow-delete-data' => true,                // Show "Delete your data" section
-                'hide-photos' => false,                     // Hide photos part of form
-                'hide-tab-photos' => false,                 // Hide Photos tab
-                'hide-tab-advanced' => false,               // Hide Advanced tab (macroN, calories, etc)
-                'hide-advanced-narrative' => false,         // Hide text describing BMR, MarcoN, etc
-                'disable-advanced-tables' => false,         // Disable advanced data tables.
-                'disable-tabs' => false,                    // Disable using tabs.
-				'disable-second-check' => false				// Disable check to see if [wlt] placed more than once
+                'min-chart-points' 			=> 2,						// Minimum number of data entries before chart is shown
+				'hide-first-target-form' 	=> false,					// Hide first Target form
+				'hide-second-target-form' 	=> false,					// Hide second Target form
+				'show-add-button' 			=> false,					// Display a "Add weight" button above the chart.
+                'allow-delete-data' 		=> true,                	// Show "Delete your data" section
+                'hide-photos' 				=> false,                   // Hide photos part of form
+                'hide-tab-photos' 			=> false,                 	// Hide Photos tab
+                'hide-tab-advanced' 		=> false,               	// Hide Advanced tab (macroN, calories, etc)
+				'hide-tab-descriptions' 	=> false,               	// Hide tab descriptions
+                'hide-advanced-narrative' 	=> false,         			// Hide text describing BMR, MarcoN, etc
+                'disable-advanced-tables' 	=> false,         			// Disable advanced data tables.
+                'disable-tabs' 				=> false,                   // Disable using tabs.
+				'disable-second-check' 		=> false,					// Disable check to see if [wlt] placed more than once
+				'user-id'					=> get_current_user_id()
                ), $user_defined_arguments );
 
 			// Validate arguments
@@ -50,8 +52,8 @@
 				return ws_ls_display_blockquote(__('You need to be logged in to record your weight.', WE_LS_SLUG) , '', false, true);
 			}
 
-            $user_id = get_current_user_id();
-            $use_tabs = (false === $shortcode_arguments['disable-tabs']);
+            $user_id 	= (int) $shortcode_arguments[ 'user-id' ];
+            $use_tabs 	= (false === $shortcode_arguments['disable-tabs']);
 
 	        // Decide whether to show Macro N / Calories tab
             $show_advanced_tab = (false === $shortcode_arguments['hide-tab-advanced'] && true === WS_LS_IS_PRO_PLUS);
@@ -81,35 +83,78 @@
 			}
 
 			// Load user's weight dta (taking into account selected week)
-			$weight_data = ws_ls_get_weights($user_id, 1000, $selected_week_number);
+			$weight_data = ws_ls_get_weights( $user_id, WE_LS_CHART_MAX_POINTS, $selected_week_number, 'desc' );
 
 			// If enabled, render tab header
-			if ($use_tabs)	{
+			if ( $use_tabs )	{
 
-				$html_output .= '
-                        <div id="ws-ls-tabs-loading" class="ws-ls-loading"></div>
-						<div id="ws-ls-tabs" class="ws-ls-hide">
-							<ul>
-									<li><a><i class="fa fa-line-chart" aria-hidden="true"></i>' . __('Overview', WE_LS_SLUG) . '<span>' . __('Chart and add a new entry', WE_LS_SLUG) . '</span></a></li>
-									<li><a><i class="fa fa-table" aria-hidden="true"></i>' . __('All Entries', WE_LS_SLUG) . '<span>' . __('View all of your entries', WE_LS_SLUG) . '</span></a></li>';
+				$hide_tab_descriptions = ws_ls_force_bool_argument( $shortcode_arguments['hide-tab-descriptions'] );
 
-									 // Show Advanced Tab?
-                                    if ( true === $show_photos_tab ) {
-										$html_output .= '<li><a><i class="fa fa-picture-o" aria-hidden="true"></i>' . __('Photos', WE_LS_SLUG) . '<span>' . __('View a gallery of your photos', WE_LS_SLUG) . '</span></a></li>';
-									}
+				$html_output .= '<div id="ws-ls-tabs-loading" class="ws-ls-loading"></div>
+										<div id="ws-ls-tabs" class="ws-ls-hide">
+										<ul>';
 
-                                    // Show Advanced Tab?
-                                    if ( true === $show_advanced_tab ) {
-                                        $html_output .= '<li><a><i class="fa fa-university" aria-hidden="true"></i>' . __('Advanced', WE_LS_SLUG) . '<span>' . __('View BMI, BMR and suggested Calorie and Macronutrient intake', WE_LS_SLUG) . '</span></a></li>';
-                                    }
+				$tabs = [
+							[
+								'icon' 			=> 'fa-line-chart',
+								'title'			=> __( 'Overview', WE_LS_SLUG ),
+								'description'	=> __( 'Chart and add a new entry', WE_LS_SLUG )
+							],
+							[
+								'icon' 			=> 'fa-table',
+								'title'			=> __( 'History', WE_LS_SLUG ),
+								'description'	=> ( true === WS_LS_IS_PRO ) ? __( 'View all of your entries', WE_LS_SLUG ) : __( 'View your latest entries', WE_LS_SLUG )
+							]
 
-									// If enabled, have a third tab to allow users to manage their own settings!
-									if(WE_LS_ALLOW_USER_PREFERENCES){
-										$html_output .= '<li><a><i class="fa fa-cog" aria-hidden="true"></i>' . __('Preferences', WE_LS_SLUG) . '<span>' . __('Customise this tool and tell us a little more about you', WE_LS_SLUG) . '</span></a></li>';
-									}
+				];
 
-							$html_output .= '</ul>
-							<div>';
+				// Show Photos Tab?
+				if ( true === $show_photos_tab ) {
+
+					$tabs[] = 	[
+									'icon' 			=> 'fa-picture-o',
+									'title'			=> __( 'Photos', WE_LS_SLUG ),
+									'description'	=> __( 'View a gallery of your photos', WE_LS_SLUG )
+								];
+				}
+
+				// Show Advanced Tab?
+				if ( true === $show_advanced_tab ) {
+
+					$tabs[] = 	[
+						'icon' 			=> 'fa-university',
+						'title'			=> __( 'Advanced', WE_LS_SLUG ),
+						'description'	=> __( 'BMI, BMR, Calories and Macronutrients', WE_LS_SLUG )
+					];
+				}
+
+				// If enabled, have a third tab to allow users to manage their own settings!
+				if ( true === WE_LS_ALLOW_USER_PREFERENCES ) {
+
+					$tabs[] = 	[
+						'icon' 			=> 'fa-cog',
+						'title'			=> __( 'Preferences', WE_LS_SLUG ),
+						'description'	=> __( 'Customise this tool for you', WE_LS_SLUG )
+					];
+				}
+
+				foreach ( $tabs as $tab ) {
+
+					$description = ( false === $hide_tab_descriptions ) ? '<span>' . $tab[ 'description' ] . '</span>' : '';
+
+					$html_output .= sprintf( '<li>
+														<a><i class="fa %1$s" aria-hidden="true"></i>%2$s%3$s</a>
+													</li>',
+													$tab[ 'icon' ],
+													$tab[ 'title' ],
+													$description
+					);
+
+				}
+
+				$html_output .= '</ul>
+				<div>';
+
 			}
 
 			// Start Chart Tab
@@ -128,7 +173,7 @@
 				// Great, we have some weight data. Chop it up so we only have (at most) 30 plot points for the graph
 				$html_output .= ws_ls_title(__('In a chart', WE_LS_SLUG));
 
-                $weight_data_for_graph = ws_ls_fetch_elements_from_end_of_array($weight_data, WE_LS_CHART_MAX_POINTS);
+				$weight_data_for_graph = array_reverse( $weight_data );
 
 				//$weight_data_for_graph = array_slice($weight_data, 0, WE_LS_CHART_MAX_POINTS);
 				$html_output .= ws_ls_display_chart($weight_data_for_graph);
@@ -139,7 +184,7 @@
 
 			// Include target form?
 			if (WE_LS_ALLOW_TARGET_WEIGHTS && false == $shortcode_arguments['hide-first-target-form']) {
-				$html_output .= ws_ls_display_weight_form( true, 'ws-ls-target-form' );
+				$html_output .= ws_ls_display_weight_form( true, 'ws-ls-target-form', $user_id );
 			}
 
 			// Display "Add Weight" anchor?
@@ -153,7 +198,7 @@
 			if( false === empty($entry_id)) {
 
 				if ($entry_id) {
-					$data = ws_ls_get_weight(get_current_user_id(), $entry_id);
+					$data = ws_ls_get_weight( $user_id, $entry_id);
 				}
 
 				//If we have a Redirect URL, base decode.
@@ -163,12 +208,12 @@
 					$redirect_url = base64_decode($redirect_url);
 				}
 
-				$html_output .= ws_ls_display_weight_form(false, false,	false, false, false, false,
+				$html_output .= ws_ls_display_weight_form(false, false,	$user_id, false, false, false,
 					false, false, $redirect_url, $data, true, $shortcode_arguments['hide-photos']);
 			} else {
 
 				// Display input form in add mode
-				$html_output .= ws_ls_display_weight_form(false, 'ws-ls-main-weight-form', false, false, false, false, true, false, false, false, false, $shortcode_arguments['hide-photos']);
+				$html_output .= ws_ls_display_weight_form(false, 'ws-ls-main-weight-form', $user_id, false, false, false, true, false, false, false, false, $shortcode_arguments['hide-photos']);
 			}
 
 			// Close first tab
@@ -183,7 +228,7 @@
 			if ( $weight_data && ( count( $weight_data ) > 0 || $selected_week_number != -1 ) )	{
 
 					if ( WE_LS_ALLOW_TARGET_WEIGHTS && $use_tabs && false == $shortcode_arguments['hide-second-target-form'] ) {
-						$html_output .= ws_ls_display_weight_form( true, 'ws-ls-target-form' );
+						$html_output .= ws_ls_display_weight_form( true, 'ws-ls-target-form', $user_id );
 					}
 
 					// Display week filters and data tab
@@ -209,24 +254,24 @@
 			}
 			$html_output .= ws_ls_end_tab($use_tabs);
 
-			// Advanced Data? MacroN etc?
+			// Photos tab?
 			if ( true === $show_photos_tab ){
 				$html_output .= ws_ls_start_tab('wlt-user-photod', $use_tabs);
-				$html_output .= ws_ls_shortcode_wlt_display_photos_tab();
+				$html_output .= ws_ls_shortcode_wlt_display_photos_tab( $user_id );
 				$html_output .= ws_ls_end_tab($use_tabs);
 			}
 
             // Advanced Data? MacroN etc?
             if ( true === $show_advanced_tab ){
                 $html_output .= ws_ls_start_tab('wlt-user-advanced', $use_tabs);
-                $html_output .= ws_ls_shortcode_wlt_display_advanced_tab($shortcode_arguments);
+                $html_output .= ws_ls_shortcode_wlt_display_advanced_tab( $shortcode_arguments );
                 $html_output .= ws_ls_end_tab($use_tabs);
             }
 
 			// If enabled, have a third tab to allow users to manage their own settings!
 			if(WE_LS_ALLOW_USER_PREFERENCES){
 				$html_output .= ws_ls_start_tab('wlt-user-preferences', $use_tabs);
-				$html_output .= ws_ls_user_preferences_form(['user-id' => false,  'allow-delete-data' => $shortcode_arguments['allow-delete-data']]);
+				$html_output .= ws_ls_user_preferences_form( ['user-id' => $user_id,  'allow-delete-data' => $shortcode_arguments['allow-delete-data']]);
 				$html_output .= ws_ls_end_tab($use_tabs);
 			}
 

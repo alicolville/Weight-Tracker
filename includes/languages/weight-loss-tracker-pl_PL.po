@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Weight Loss Tracker\n"
-"POT-Creation-Date: 2019-07-28 11:15+0100\n"
-"PO-Revision-Date: 2019-07-28 11:25+0100\n"
+"POT-Creation-Date: 2020-05-17 20:25+0100\n"
+"PO-Revision-Date: 2020-05-17 20:25+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.3.1\n"
 "X-Poedit-Basepath: ../..\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 "
 "|| n%100>14) ? 1 : 2);\n"
@@ -83,7 +83,7 @@ msgstr "Kamienie"
 #: includes/admin-pages/awards/page-awards-add-update.php:186
 #: includes/admin-pages/settings/page-settings-generic.php:109
 #: includes/core.php:379 includes/core.php:382
-#: pro-features/user-preferences.php:177
+#: pro-features/user-preferences.php:186
 msgid "Pounds"
 msgstr "Funtów"
 
@@ -99,7 +99,7 @@ msgstr "Waga"
 #: includes/admin-pages/settings/page-settings-generic.php:107
 #: includes/converters.php:56 includes/core.php:75 includes/core.php:386
 #: includes/functions.php:73 includes/functions.php:96
-#: pro-features/export.php:257 pro-features/shortcode-stats.php:169
+#: pro-features/export.php:263 pro-features/shortcode-stats.php:161
 msgid "kg"
 msgstr "kg"
 
@@ -167,22 +167,24 @@ msgstr "Zastosuj do nowych wpisów?"
 #: includes/admin-pages/settings/page-settings-generic.php:260
 #: includes/admin-pages/settings/page-settings-generic.php:270
 #: includes/admin-pages/settings/page-settings-generic.php:291
-#: includes/admin-pages/settings/page-settings-generic.php:333
-#: includes/admin-pages/settings/page-settings-generic.php:402
-#: includes/admin-pages/settings/page-settings-generic.php:434
-#: includes/admin-pages/settings/page-settings-generic.php:463
-#: includes/admin-pages/settings/page-settings-generic.php:481
-#: includes/admin-pages/settings/page-settings-generic.php:506
-#: includes/admin-pages/settings/page-settings-generic.php:557
-#: includes/admin-pages/settings/page-settings-generic.php:572
-#: includes/admin-pages/settings/page-settings-generic.php:582
-#: includes/admin-pages/settings/page-settings-generic.php:592
-#: includes/admin-pages/settings/page-settings-generic.php:612
-#: includes/admin-pages/settings/page-settings-generic.php:632
-#: includes/admin-pages/settings/page-settings-generic.php:693
-#: includes/functions.php:987 pro-features/plus/meta-fields/functions.php:32
-#: pro-features/plus/meta-fields/functions.php:201
-#: pro-features/plus/meta-fields/functions.php:324
+#: includes/admin-pages/settings/page-settings-generic.php:306
+#: includes/admin-pages/settings/page-settings-generic.php:348
+#: includes/admin-pages/settings/page-settings-generic.php:444
+#: includes/admin-pages/settings/page-settings-generic.php:476
+#: includes/admin-pages/settings/page-settings-generic.php:505
+#: includes/admin-pages/settings/page-settings-generic.php:523
+#: includes/admin-pages/settings/page-settings-generic.php:548
+#: includes/admin-pages/settings/page-settings-generic.php:599
+#: includes/admin-pages/settings/page-settings-generic.php:614
+#: includes/admin-pages/settings/page-settings-generic.php:624
+#: includes/admin-pages/settings/page-settings-generic.php:634
+#: includes/admin-pages/settings/page-settings-generic.php:654
+#: includes/admin-pages/settings/page-settings-generic.php:674
+#: includes/admin-pages/settings/page-settings-generic.php:735
+#: includes/functions.php:1070 pro-features/plus/challenge/functions.php:214
+#: pro-features/plus/meta-fields/functions.php:32
+#: pro-features/plus/meta-fields/functions.php:203
+#: pro-features/plus/meta-fields/functions.php:326
 #: pro-features/widget-form.php:91 pro-features/widget-form.php:98
 msgid "Yes"
 msgstr "tak"
@@ -206,22 +208,24 @@ msgstr "tak"
 #: includes/admin-pages/settings/page-settings-generic.php:259
 #: includes/admin-pages/settings/page-settings-generic.php:269
 #: includes/admin-pages/settings/page-settings-generic.php:292
-#: includes/admin-pages/settings/page-settings-generic.php:332
-#: includes/admin-pages/settings/page-settings-generic.php:403
-#: includes/admin-pages/settings/page-settings-generic.php:433
-#: includes/admin-pages/settings/page-settings-generic.php:464
-#: includes/admin-pages/settings/page-settings-generic.php:482
-#: includes/admin-pages/settings/page-settings-generic.php:505
-#: includes/admin-pages/settings/page-settings-generic.php:556
-#: includes/admin-pages/settings/page-settings-generic.php:573
-#: includes/admin-pages/settings/page-settings-generic.php:583
-#: includes/admin-pages/settings/page-settings-generic.php:593
-#: includes/admin-pages/settings/page-settings-generic.php:611
-#: includes/admin-pages/settings/page-settings-generic.php:631
-#: includes/admin-pages/settings/page-settings-generic.php:692
-#: includes/functions.php:987 pro-features/plus/meta-fields/functions.php:32
-#: pro-features/plus/meta-fields/functions.php:198
-#: pro-features/plus/meta-fields/functions.php:323
+#: includes/admin-pages/settings/page-settings-generic.php:307
+#: includes/admin-pages/settings/page-settings-generic.php:347
+#: includes/admin-pages/settings/page-settings-generic.php:445
+#: includes/admin-pages/settings/page-settings-generic.php:475
+#: includes/admin-pages/settings/page-settings-generic.php:506
+#: includes/admin-pages/settings/page-settings-generic.php:524
+#: includes/admin-pages/settings/page-settings-generic.php:547
+#: includes/admin-pages/settings/page-settings-generic.php:598
+#: includes/admin-pages/settings/page-settings-generic.php:615
+#: includes/admin-pages/settings/page-settings-generic.php:625
+#: includes/admin-pages/settings/page-settings-generic.php:635
+#: includes/admin-pages/settings/page-settings-generic.php:653
+#: includes/admin-pages/settings/page-settings-generic.php:673
+#: includes/admin-pages/settings/page-settings-generic.php:734
+#: includes/functions.php:1070 pro-features/plus/challenge/functions.php:214
+#: pro-features/plus/meta-fields/functions.php:32
+#: pro-features/plus/meta-fields/functions.php:200
+#: pro-features/plus/meta-fields/functions.php:325
 #: pro-features/widget-form.php:90 pro-features/widget-form.php:97
 msgid "No"
 msgstr "Nie"
@@ -252,7 +256,7 @@ msgstr "Włączone"
 
 #: includes/admin-pages/awards/page-awards-add-update.php:312
 #: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:173
-#: includes/core.php:425
+#: includes/core.php:425 pro-features/plus/challenge/admin.page.php:108
 msgid "Cancel"
 msgstr "Anuluj"
 
@@ -410,19 +414,26 @@ msgid "Custom modifications / web development"
 msgstr "Niestandardowe modyfikacje / tworzenie stron internetowych"
 
 #: includes/admin-pages/page-help.php:31
+#: includes/admin-pages/page-setup-wizard.php:30
+#, fuzzy
+#| msgid "Weight Tracker"
+msgid "Meal Tracker"
+msgstr "Analizator wagi"
+
+#: includes/admin-pages/page-help.php:38
 #: includes/admin-pages/page-license.php:232
 msgid "Documentation"
 msgstr "Dokumentacja"
 
-#: includes/admin-pages/page-help.php:33
+#: includes/admin-pages/page-help.php:40
 msgid "You can find detailed documentation for this plugin at our site:"
 msgstr "Szczegółową dokumentację tej wtyczki znajdziesz na naszej stronie:"
 
-#: includes/admin-pages/page-help.php:41
+#: includes/admin-pages/page-help.php:48
 msgid "Fix: Stones & Pounds accuracy"
 msgstr "Poprawka: dokładność kamieni i funtów"
 
-#: includes/admin-pages/page-help.php:43
+#: includes/admin-pages/page-help.php:50
 msgid ""
 "Correct accuracy for measurements entered in Stones and Pounds (only run "
 "with the advice of YeKen)"
@@ -430,13 +441,13 @@ msgstr ""
 "Prawidłowa dokładność pomiarów wprowadzona w kamieniach i funtach (działa "
 "tylko za radą YeKen)"
 
-#: includes/admin-pages/page-help.php:60
+#: includes/admin-pages/page-help.php:67
 msgid "Custom Fields: Migrate photos from old system to Custom Fields"
 msgstr ""
 "Pola niestandardowe: Migracja zdjęć ze starego systemu do pól "
 "niestandardowych"
 
-#: includes/admin-pages/page-help.php:62
+#: includes/admin-pages/page-help.php:69
 msgid ""
 "This will migrate photos from the old system to the new custom fields. It "
 "will create a custom field with the key \"photo\". Note! It will remove any "
@@ -447,36 +458,36 @@ msgstr ""
 "„zdjęcie”. Uwaga! Usunie wszystkie istniejące migrowane zdjęcia przed ich "
 "ponownym dodaniem."
 
-#: includes/admin-pages/page-help.php:85
+#: includes/admin-pages/page-help.php:92
 msgid "Done. View Log below for further information."
 msgstr "Gotowe. Zobacz poniższy Log, aby uzyskać więcej informacji."
 
-#: includes/admin-pages/page-help.php:95
+#: includes/admin-pages/page-help.php:102
 msgid "Admin Tools"
 msgstr "Narzędzia administracyjne"
 
-#: includes/admin-pages/page-help.php:104
+#: includes/admin-pages/page-help.php:111
 msgid "Show Setup Wizard link"
 msgstr ""
 
-#: includes/admin-pages/page-help.php:114
-#: includes/admin-pages/page-help.php:128 includes/core.php:668
+#: includes/admin-pages/page-help.php:121
+#: includes/admin-pages/page-help.php:135 includes/core.php:672
 msgid "Done"
 msgstr "Gotowe"
 
-#: includes/admin-pages/page-help.php:119
+#: includes/admin-pages/page-help.php:126
 msgid "Delete all issued awards"
 msgstr "Usuń wszystkie wydane nagrody"
 
-#: includes/admin-pages/page-help.php:133
+#: includes/admin-pages/page-help.php:140
 msgid "Delete all log entries"
 msgstr "Usuń wszystkie wpisy dziennika"
 
-#: includes/admin-pages/page-help.php:142
+#: includes/admin-pages/page-help.php:148
 msgid "Weight Tracker Debug Log"
 msgstr "Dziennik debugowania śledzenia wagi"
 
-#: includes/admin-pages/page-help.php:145
+#: includes/admin-pages/page-help.php:151
 msgid ""
 "Below is a list of the debug information logged by the Weight Tracker plugin "
 "over the last 31 days."
@@ -484,22 +495,22 @@ msgstr ""
 "Poniżej znajduje się lista informacji o debugowaniu zarejestrowanych przez "
 "wtyczkę Weight Tracker w ciągu ostatnich 31 dni."
 
-#: includes/admin-pages/page-help.php:177
-#: includes/admin-pages/page-help.php:181
+#: includes/admin-pages/page-help.php:171
+#: includes/admin-pages/page-help.php:175
 msgid "Are you sure?"
 msgstr "Jesteś pewny?"
 
-#: includes/admin-pages/page-help.php:178
+#: includes/admin-pages/page-help.php:172
 msgid "Are you sure you wish to remove all issued awards?"
 msgstr "Czy na pewno chcesz usunąć wszystkie wydane nagrody?"
 
-#: includes/admin-pages/page-help.php:182
+#: includes/admin-pages/page-help.php:176
 msgid "Are you sure you wish to clear all log entries?"
 msgstr "Czy na pewno chcesz usunąć wszystkie wpisy dziennika?"
 
 #: includes/admin-pages/page-license.php:11
 #: includes/admin-pages/settings/page-settings-generic.php:8
-#: pro-features/export.php:342 pro-features/functions.php:544
+#: pro-features/export.php:350 pro-features/functions.php:547
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Nie masz wystarczających uprawnień, aby uzyskać dostęp do tej strony."
 
@@ -511,7 +522,7 @@ msgstr "Twoja licencja została zastosowana!"
 msgid "An error occurred applying your license: "
 msgstr "Wystąpił błąd podczas stosowania licencji: "
 
-#: includes/admin-pages/page-license.php:70 includes/hooks.php:13
+#: includes/admin-pages/page-license.php:70 includes/hooks.php:17
 msgid "Upgrade"
 msgstr "Aktualizacja"
 
@@ -741,7 +752,7 @@ msgstr ""
 "Czy na pewno chcesz usunąć licencję dla tej witryny? Usunięcie go może "
 "spowodować utratę funkcjonalności przez użytkownika."
 
-#: includes/admin-pages/page-setup-wizard.php:22 includes/hooks.php:19
+#: includes/admin-pages/page-setup-wizard.php:22 includes/hooks.php:23
 msgid "Setup Wizard"
 msgstr ""
 
@@ -778,10 +789,14 @@ msgid "Useful features and guides"
 msgstr ""
 
 #: includes/admin-pages/page-setup-wizard.php:30
+msgid "Track meals and calories too"
+msgstr ""
+
+#: includes/admin-pages/page-setup-wizard.php:31
 msgid "Customisations"
 msgstr ""
 
-#: includes/admin-pages/page-setup-wizard.php:30
+#: includes/admin-pages/page-setup-wizard.php:31
 #, fuzzy
 #| msgid "Custom modifications / web development"
 msgid "Custom modifications to Weight Tracker"
@@ -804,7 +819,7 @@ msgid "General settings"
 msgstr "Ustawienia główne"
 
 #: includes/admin-pages/settings/page-settings-generic.php:74
-#: includes/license.php:316
+#: includes/license.php:342
 msgid "Pro Plus"
 msgstr "Pro Plus"
 
@@ -873,7 +888,7 @@ msgid "Weight Units"
 msgstr "Jednostki wagi"
 
 #: includes/admin-pages/settings/page-settings-generic.php:108
-#: pro-features/user-preferences.php:176
+#: pro-features/user-preferences.php:185
 msgid "Stones & Pounds"
 msgstr "Kamienie i funty"
 
@@ -892,12 +907,12 @@ msgid "UK or US Date format?"
 msgstr "Format daty UK lub US?"
 
 #: includes/admin-pages/settings/page-settings-generic.php:118
-#: pro-features/user-preferences.php:194
+#: pro-features/user-preferences.php:203
 msgid "UK (DD/MM/YYYY)"
 msgstr "UK (DD / MM / RRRR)"
 
 #: includes/admin-pages/settings/page-settings-generic.php:119
-#: pro-features/user-preferences.php:195
+#: pro-features/user-preferences.php:204
 msgid "US (MM/DD/YYYY)"
 msgstr "US (MM / DD / RRRR)"
 
@@ -961,8 +976,8 @@ msgstr ""
 
 #: includes/admin-pages/settings/page-settings-generic.php:169
 #: includes/admin-pages/user-data/data-user.php:91
-#: includes/shortcode-weight-loss-tracker.php:98
-#: pro-features/plus/shortcode.wlt.php:23
+#: includes/shortcode-weight-loss-tracker.php:99
+#: pro-features/plus/shortcode.wlt.php:24
 msgid "Photos"
 msgstr "Zdjęcia"
 
@@ -1045,7 +1060,7 @@ msgstr ""
 "wysłana do użytkowników w dniu ich urodzin."
 
 #: includes/admin-pages/settings/page-settings-generic.php:253
-#: includes/shortcode-weight-loss-tracker.php:103
+#: includes/shortcode-weight-loss-tracker.php:104
 msgid "Advanced"
 msgstr "zaawansowane"
 
@@ -1074,24 +1089,39 @@ msgstr ""
 "WordPress. Użyj tego ustawienia, jeśli chcesz je wyłączyć."
 
 #: includes/admin-pages/settings/page-settings-generic.php:284
+#: pro-features/plus/challenge/hooks.php:35
+msgid "Challenges"
+msgstr ""
+
+#: includes/admin-pages/settings/page-settings-generic.php:288
+#, fuzzy
+#| msgid "Enabled"
+msgid "Enabled?"
+msgstr "Włączone"
+
+#: includes/admin-pages/settings/page-settings-generic.php:294
+msgid "If set to No, challenge data will not be calculated in the background."
+msgstr ""
+
+#: includes/admin-pages/settings/page-settings-generic.php:299
 msgid "Calculating daily calorie intake to lose weight"
 msgstr "Obliczanie dziennego spożycia kalorii w celu utraty wagi"
 
-#: includes/admin-pages/settings/page-settings-generic.php:288
+#: includes/admin-pages/settings/page-settings-generic.php:303
 msgid "Show Loss figures?"
 msgstr ""
 
-#: includes/admin-pages/settings/page-settings-generic.php:294
+#: includes/admin-pages/settings/page-settings-generic.php:309
 msgid ""
 "Show loss figures to your users? For example, if your site is aimed at "
 "muscle building, you may wish not to."
 msgstr ""
 
-#: includes/admin-pages/settings/page-settings-generic.php:298
+#: includes/admin-pages/settings/page-settings-generic.php:313
 msgid "Female Calorie Cap"
 msgstr "Kobieca czapka kaloryczna"
 
-#: includes/admin-pages/settings/page-settings-generic.php:301
+#: includes/admin-pages/settings/page-settings-generic.php:316
 msgid ""
 "Specify a maximum value for number of daily calories allowed to achieve "
 "weight loss. As per NHS guidelines, females are set to 1400kcal by default"
@@ -1100,23 +1130,24 @@ msgstr ""
 "utratę wagi. Zgodnie z wytycznymi NHS kobiety są domyślnie ustawione na 1400 "
 "kcal"
 
-#: includes/admin-pages/settings/page-settings-generic.php:301
-#: includes/admin-pages/settings/page-settings-generic.php:308
-#: includes/admin-pages/settings/page-settings-generic.php:320
-#: includes/admin-pages/settings/page-settings-generic.php:347
-#: includes/admin-pages/settings/page-settings-generic.php:366
-#: includes/admin-pages/settings/page-settings-generic.php:373
+#: includes/admin-pages/settings/page-settings-generic.php:316
+#: includes/admin-pages/settings/page-settings-generic.php:323
+#: includes/admin-pages/settings/page-settings-generic.php:335
+#: includes/admin-pages/settings/page-settings-generic.php:362
+#: includes/admin-pages/settings/page-settings-generic.php:381
+#: includes/admin-pages/settings/page-settings-generic.php:388
+#: includes/admin-pages/settings/page-settings-generic.php:413
 msgid ""
 "Please note, it may take up to 15 minutes for calculations to change (due to "
 "caching)."
 msgstr ""
 "Pamiętaj, że zmiana obliczeń (z powodu buforowania) może potrwać do 15 minut."
 
-#: includes/admin-pages/settings/page-settings-generic.php:305
+#: includes/admin-pages/settings/page-settings-generic.php:320
 msgid "Male Calorie Cap"
 msgstr "Męska czapka kaloryczna"
 
-#: includes/admin-pages/settings/page-settings-generic.php:308
+#: includes/admin-pages/settings/page-settings-generic.php:323
 msgid ""
 "Specify a maximum value for number of daily calories allowed to achieve "
 "weight loss. As per NHS guidelines, males are set to 1900kcal by default"
@@ -1125,11 +1156,11 @@ msgstr ""
 "utratę wagi. Zgodnie z wytycznymi NHS mężczyźni są domyślnie ustawieni na "
 "1900 kcal"
 
-#: includes/admin-pages/settings/page-settings-generic.php:312
+#: includes/admin-pages/settings/page-settings-generic.php:327
 msgid "Calories to subtract"
 msgstr "Kalorie do odjęcia"
 
-#: includes/admin-pages/settings/page-settings-generic.php:320
+#: includes/admin-pages/settings/page-settings-generic.php:335
 msgid ""
 "Part of calculating the daily calorie intake to lose weight is to first "
 "calculate the calorie intake to maintain existing weight. Once we have this, "
@@ -1141,29 +1172,29 @@ msgstr ""
 "już to zrobimy, odejmujemy powyższą liczbę, aby obliczyć dzienne spożycie "
 "kalorii, aby schudnąć."
 
-#: includes/admin-pages/settings/page-settings-generic.php:325
+#: includes/admin-pages/settings/page-settings-generic.php:340
 #, fuzzy
 #| msgid "Calculating daily calorie intake to lose weight"
 msgid "Calculating daily calorie intake to gain weight"
 msgstr "Obliczanie dziennego spożycia kalorii w celu utraty wagi"
 
-#: includes/admin-pages/settings/page-settings-generic.php:329
+#: includes/admin-pages/settings/page-settings-generic.php:344
 msgid "Show Gain figures?"
 msgstr ""
 
-#: includes/admin-pages/settings/page-settings-generic.php:335
+#: includes/admin-pages/settings/page-settings-generic.php:350
 msgid ""
 "Show gain figures to your users? For example, if your site is aimed at "
 "weight loss only, you may wish not to."
 msgstr ""
 
-#: includes/admin-pages/settings/page-settings-generic.php:339
+#: includes/admin-pages/settings/page-settings-generic.php:354
 #, fuzzy
 #| msgid "Calories to subtract"
 msgid "Calories to add"
 msgstr "Kalorie do odjęcia"
 
-#: includes/admin-pages/settings/page-settings-generic.php:347
+#: includes/admin-pages/settings/page-settings-generic.php:362
 #, fuzzy
 #| msgid ""
 #| "Part of calculating the daily calorie intake to lose weight is to first "
@@ -1180,64 +1211,76 @@ msgstr ""
 "już to zrobimy, odejmujemy powyższą liczbę, aby obliczyć dzienne spożycie "
 "kalorii, aby schudnąć."
 
-#: includes/admin-pages/settings/page-settings-generic.php:352
+#: includes/admin-pages/settings/page-settings-generic.php:367
 #: includes/admin-pages/user-data/data-user.php:160
 #: includes/admin-pages/user-data/data-user.php:180
 #: includes/admin-pages/user-data/data-user.php:194
 msgid "Macronutrient Calculator"
 msgstr "Kalkulator makroskładników"
 
-#: includes/admin-pages/settings/page-settings-generic.php:356
+#: includes/admin-pages/settings/page-settings-generic.php:371
 #: pro-features/plus/macronutrient-calculator.php:144
 msgid "Proteins"
 msgstr "Białka"
 
-#: includes/admin-pages/settings/page-settings-generic.php:359
+#: includes/admin-pages/settings/page-settings-generic.php:374
 msgid "Percentage of Proteins to make up a moderate diet"
 msgstr "Odsetek białek do uzupełnienia umiarkowanej diety"
 
-#: includes/admin-pages/settings/page-settings-generic.php:359
+#: includes/admin-pages/settings/page-settings-generic.php:374
 msgid ""
 "Please note, it may take up to 15 minutes for calorie calculations to change "
 "(due to caching)."
 msgstr ""
 "Pamiętaj, że zmiana kalorii może zająć do 15 minut (z powodu buforowania)."
 
-#: includes/admin-pages/settings/page-settings-generic.php:363
-#: pro-features/plus/shortcode.wlt.php:147
+#: includes/admin-pages/settings/page-settings-generic.php:378
+#: pro-features/plus/shortcode.wlt.php:149
 msgid "Carbohydrates"
 msgstr "Węglowodany"
 
-#: includes/admin-pages/settings/page-settings-generic.php:366
+#: includes/admin-pages/settings/page-settings-generic.php:381
 msgid "Percentage of Carbohydrates to make up a moderate diet"
 msgstr "Procent węglowodanów w celu uzyskania umiarkowanej diety"
 
-#: includes/admin-pages/settings/page-settings-generic.php:370
+#: includes/admin-pages/settings/page-settings-generic.php:385
 #: pro-features/plus/macronutrient-calculator.php:178
 msgid "Fats"
 msgstr "Tłuszcze"
 
-#: includes/admin-pages/settings/page-settings-generic.php:373
+#: includes/admin-pages/settings/page-settings-generic.php:388
 msgid "Percentage of Fats to make up a moderate diet"
 msgstr "Odsetek tłuszczów tworzących umiarkowaną dietę"
 
-#: includes/admin-pages/settings/page-settings-generic.php:387
+#: includes/admin-pages/settings/page-settings-generic.php:392
+#, fuzzy
+#| msgid "Macronutrient Calculator"
+msgid "Macronutrient Calculator: Meals"
+msgstr "Kalkulator makroskładników"
+
+#: includes/admin-pages/settings/page-settings-generic.php:411
+#, fuzzy
+#| msgid "Percentage of Carbohydrates to make up a moderate diet"
+msgid "Percentage of calories to split into "
+msgstr "Procent węglowodanów w celu uzyskania umiarkowanej diety"
+
+#: includes/admin-pages/settings/page-settings-generic.php:429
 msgid "Default chart type"
 msgstr "Domyślny typ wykresu"
 
-#: includes/admin-pages/settings/page-settings-generic.php:390
+#: includes/admin-pages/settings/page-settings-generic.php:432
 msgid "Line Chart"
 msgstr "Wykres liniowy"
 
-#: includes/admin-pages/settings/page-settings-generic.php:390
+#: includes/admin-pages/settings/page-settings-generic.php:432
 msgid "Highly Recommended"
 msgstr "Wysoce rekomendowane"
 
-#: includes/admin-pages/settings/page-settings-generic.php:391
+#: includes/admin-pages/settings/page-settings-generic.php:433
 msgid "Bar Chart"
 msgstr "Wykres słupkowy"
 
-#: includes/admin-pages/settings/page-settings-generic.php:394
+#: includes/admin-pages/settings/page-settings-generic.php:436
 msgid ""
 "If enabled, \"Allows points and labels to be displayed on graph. "
 "<strong>Note: If using measurements</strong>, graph type will be forced to "
@@ -1247,32 +1290,32 @@ msgstr ""
 "wykresie. <strong> Uwaga: jeśli używasz pomiarów </strong>, typ wykresu "
 "zostanie wymuszony na linii."
 
-#: includes/admin-pages/settings/page-settings-generic.php:399
+#: includes/admin-pages/settings/page-settings-generic.php:441
 msgid "Display gridlines?"
 msgstr "Wyświetl linie siatki?"
 
-#: includes/admin-pages/settings/page-settings-generic.php:405
+#: includes/admin-pages/settings/page-settings-generic.php:447
 msgid "If enabled, gridlines will be displayed on the Graph canvas."
 msgstr ""
 "Jeśli ta opcja jest włączona, linie siatki będą wyświetlane na kanwie "
 "wykresu."
 
-#: includes/admin-pages/settings/page-settings-generic.php:409
+#: includes/admin-pages/settings/page-settings-generic.php:451
 msgid "Maximum points per graph"
 msgstr "Maksymalne punkty na wykres"
 
-#: includes/admin-pages/settings/page-settings-generic.php:418
-#: includes/admin-pages/settings/page-settings-generic.php:485
+#: includes/admin-pages/settings/page-settings-generic.php:460
+#: includes/admin-pages/settings/page-settings-generic.php:527
 msgid "If enabled, \"Allows points and labels to be displayed on graph."
 msgstr ""
 "Jeśli opcja jest włączona, „Umożliwia wyświetlanie punktów i etykiet na "
 "wykresie."
 
-#: includes/admin-pages/settings/page-settings-generic.php:423
+#: includes/admin-pages/settings/page-settings-generic.php:465
 msgid "Weight colour?"
 msgstr "Kolor wagi?"
 
-#: includes/admin-pages/settings/page-settings-generic.php:426
+#: includes/admin-pages/settings/page-settings-generic.php:468
 msgid ""
 "If enabled, enter a HEX colour code to use for the Weight history line / bar "
 "border on graph."
@@ -1280,11 +1323,11 @@ msgstr ""
 "Jeśli ta opcja jest włączona, wprowadź kod koloru HEX, który ma być używany "
 "dla linii historii / obramowania słupka na wykresie."
 
-#: includes/admin-pages/settings/page-settings-generic.php:430
+#: includes/admin-pages/settings/page-settings-generic.php:472
 msgid "Should y Axes start at 0?"
 msgstr "Czy y Axes powinny zacząć od 0?"
 
-#: includes/admin-pages/settings/page-settings-generic.php:437
+#: includes/admin-pages/settings/page-settings-generic.php:479
 msgid ""
 "If enabled, y Axes shall start at 0. Otherwise, they are automatically "
 "calculated."
@@ -1292,21 +1335,21 @@ msgstr ""
 "Jeśli jest włączona, y Osie zaczynają się od 0. W przeciwnym razie są one "
 "automatycznie obliczane."
 
-#: includes/admin-pages/settings/page-settings-generic.php:441
+#: includes/admin-pages/settings/page-settings-generic.php:483
 msgid "Text colour"
 msgstr "Kolor tekstu"
 
-#: includes/admin-pages/settings/page-settings-generic.php:444
+#: includes/admin-pages/settings/page-settings-generic.php:486
 msgid "Enter a HEX colour code to use for text displayed on the graph."
 msgstr ""
 "Wprowadź kod koloru HEX, który będzie używany dla tekstu wyświetlanego na "
 "wykresie."
 
-#: includes/admin-pages/settings/page-settings-generic.php:448
+#: includes/admin-pages/settings/page-settings-generic.php:490
 msgid "Font Family"
 msgstr "Rodzina czcionek"
 
-#: includes/admin-pages/settings/page-settings-generic.php:451
+#: includes/admin-pages/settings/page-settings-generic.php:493
 msgid ""
 "Specify one or more fonts that should be used when rendering text on the "
 "graph. Separate multiple fonts with a comma. Leave blank to use the default."
@@ -1315,58 +1358,58 @@ msgstr ""
 "renderowania tekstu na wykresie. Oddziel wiele czcionek przecinkiem. "
 "Pozostaw puste, aby użyć domyślnego."
 
-#: includes/admin-pages/settings/page-settings-generic.php:456
+#: includes/admin-pages/settings/page-settings-generic.php:498
 msgid "Line Chart Options"
 msgstr "Opcje wykresów liniowych"
 
-#: includes/admin-pages/settings/page-settings-generic.php:460
+#: includes/admin-pages/settings/page-settings-generic.php:502
 msgid "Bezier Curve?"
 msgstr "Krzywa Beziera?"
 
-#: includes/admin-pages/settings/page-settings-generic.php:467
+#: includes/admin-pages/settings/page-settings-generic.php:509
 msgid "If enabled, lines between points on a line graph will be curved"
 msgstr ""
 "Jeśli opcja jest włączona, linie między punktami na wykresie liniowym będą "
 "zakrzywione"
 
-#: includes/admin-pages/settings/page-settings-generic.php:471
+#: includes/admin-pages/settings/page-settings-generic.php:513
 msgid "Target line colour?"
 msgstr "Kolor linii docelowej?"
 
-#: includes/admin-pages/settings/page-settings-generic.php:474
+#: includes/admin-pages/settings/page-settings-generic.php:516
 msgid ""
 "If enabled, enter a HEX colour code to use for the Target line on graph."
 msgstr ""
 "Jeśli ta opcja jest włączona, wprowadź kod koloru HEX, który ma być używany "
 "dla linii docelowej na wykresie."
 
-#: includes/admin-pages/settings/page-settings-generic.php:478
+#: includes/admin-pages/settings/page-settings-generic.php:520
 msgid "Display points on graph?"
 msgstr "Wyświetl punkty na wykresie?"
 
-#: includes/admin-pages/settings/page-settings-generic.php:489
+#: includes/admin-pages/settings/page-settings-generic.php:531
 msgid "Point thickness"
 msgstr "Grubość punktu"
 
-#: includes/admin-pages/settings/page-settings-generic.php:498
+#: includes/admin-pages/settings/page-settings-generic.php:540
 msgid "Specifies the point thickness on a line chart."
 msgstr "Określa grubość punktu na wykresie liniowym."
 
-#: includes/admin-pages/settings/page-settings-generic.php:502
+#: includes/admin-pages/settings/page-settings-generic.php:544
 msgid "Add a fill under weight line?"
 msgstr "Dodaj linię wypełnienia pod wagą?"
 
-#: includes/admin-pages/settings/page-settings-generic.php:508
+#: includes/admin-pages/settings/page-settings-generic.php:550
 msgid "If enabled, a fill colour will be added under the weight line."
 msgstr ""
 "Jeśli ta opcja jest włączona, kolor wypełnienia zostanie dodany pod linią "
 "wagi."
 
-#: includes/admin-pages/settings/page-settings-generic.php:512
+#: includes/admin-pages/settings/page-settings-generic.php:554
 msgid "Weight Fill Colour"
 msgstr "Kolor wypełnienia ciężarem"
 
-#: includes/admin-pages/settings/page-settings-generic.php:515
+#: includes/admin-pages/settings/page-settings-generic.php:557
 msgid ""
 "If enabled, enter a HEX colour code to use for the fill colour under the "
 "weight line."
@@ -1374,23 +1417,23 @@ msgstr ""
 "Jeśli ta opcja jest włączona, wprowadź kod koloru HEX, aby użyć koloru "
 "wypełnienia pod linią ciężaru."
 
-#: includes/admin-pages/settings/page-settings-generic.php:519
+#: includes/admin-pages/settings/page-settings-generic.php:561
 msgid "Weight Fill Opacity"
 msgstr "Krycie wypełnienia ciężarem"
 
-#: includes/admin-pages/settings/page-settings-generic.php:528
+#: includes/admin-pages/settings/page-settings-generic.php:570
 msgid "Specifies the opacity of the fill colour under the weight line."
 msgstr "Określa krycie koloru wypełnienia pod linią ciężaru."
 
-#: includes/admin-pages/settings/page-settings-generic.php:533
+#: includes/admin-pages/settings/page-settings-generic.php:575
 msgid "Bar Chart Options"
 msgstr "Opcje wykresu słupkowego"
 
-#: includes/admin-pages/settings/page-settings-generic.php:537
+#: includes/admin-pages/settings/page-settings-generic.php:579
 msgid "Weight fill colour?"
 msgstr "Kolor wypełnienia waga?"
 
-#: includes/admin-pages/settings/page-settings-generic.php:540
+#: includes/admin-pages/settings/page-settings-generic.php:582
 msgid ""
 "If enabled, enter a HEX colour code to use for filling the Weight bars on "
 "the graph."
@@ -1398,15 +1441,15 @@ msgstr ""
 "Jeśli ta opcja jest włączona, wprowadź kod koloru HEX, który będzie używany "
 "do wypełniania słupków ciężaru na wykresie."
 
-#: includes/admin-pages/settings/page-settings-generic.php:553
+#: includes/admin-pages/settings/page-settings-generic.php:595
 msgid "Enable email notifications"
 msgstr "Włącz powiadomienia e-mail"
 
-#: includes/admin-pages/settings/page-settings-generic.php:562
+#: includes/admin-pages/settings/page-settings-generic.php:604
 msgid "Email addresses to notify"
 msgstr "Adresy e-mail do powiadomienia"
 
-#: includes/admin-pages/settings/page-settings-generic.php:565
+#: includes/admin-pages/settings/page-settings-generic.php:607
 msgid ""
 "Specify one or more email addresses to be notified. Seperate multiple emails "
 "with a comma."
@@ -1414,90 +1457,90 @@ msgstr ""
 "Określ jeden lub więcej adresów e-mail, które mają zostać powiadomione. "
 "Oddziel wiele wiadomości e-mail przecinkiem."
 
-#: includes/admin-pages/settings/page-settings-generic.php:569
+#: includes/admin-pages/settings/page-settings-generic.php:611
 msgid "New weight / measurement entries"
 msgstr "Nowe wpisy wagi / pomiaru"
 
-#: includes/admin-pages/settings/page-settings-generic.php:575
+#: includes/admin-pages/settings/page-settings-generic.php:617
 msgid ""
 "Receive notifications when a member adds a new weight / measurement entry."
 msgstr "Otrzymuj powiadomienia, gdy członek doda nowy wpis wagi / pomiaru."
 
-#: includes/admin-pages/settings/page-settings-generic.php:579
+#: includes/admin-pages/settings/page-settings-generic.php:621
 msgid "Edited weight / measurement entries"
 msgstr "Edytowane wpisy masy / pomiaru"
 
-#: includes/admin-pages/settings/page-settings-generic.php:585
+#: includes/admin-pages/settings/page-settings-generic.php:627
 msgid ""
 "Receive notifications when a member edits an existing weight / measurement "
 "entry."
 msgstr ""
 "Otrzymuj powiadomienia, gdy członek edytuje istniejący wpis wagi / pomiaru."
 
-#: includes/admin-pages/settings/page-settings-generic.php:589
+#: includes/admin-pages/settings/page-settings-generic.php:631
 msgid "New / updated targets"
 msgstr "Nowe / zaktualizowane cele"
 
-#: includes/admin-pages/settings/page-settings-generic.php:595
+#: includes/admin-pages/settings/page-settings-generic.php:637
 msgid "Receive notifications when a member adds / edits their target."
 msgstr "Otrzymuj powiadomienia, gdy członek dodaje / edytuje swój cel."
 
-#: includes/admin-pages/settings/page-settings-generic.php:608
+#: includes/admin-pages/settings/page-settings-generic.php:650
 msgid "Allow Measurements?"
 msgstr "Zezwalaj na pomiary?"
 
-#: includes/admin-pages/settings/page-settings-generic.php:614
+#: includes/admin-pages/settings/page-settings-generic.php:656
 msgid ""
 "If enabled, a user can also add body measurements along with their weights."
 msgstr ""
 "Jeśli jest włączona, użytkownik może również dodawać pomiary ciała wraz z "
 "ich wagami."
 
-#: includes/admin-pages/settings/page-settings-generic.php:618
+#: includes/admin-pages/settings/page-settings-generic.php:660
 msgid "Measurement Units"
 msgstr "Jednostki miary"
 
-#: includes/admin-pages/settings/page-settings-generic.php:621
-#: pro-features/user-preferences.php:184
+#: includes/admin-pages/settings/page-settings-generic.php:663
+#: pro-features/user-preferences.php:193
 msgid "Centimetres"
 msgstr "Cm"
 
-#: includes/admin-pages/settings/page-settings-generic.php:622
+#: includes/admin-pages/settings/page-settings-generic.php:664
 #: includes/core.php:76 pro-features/footable.php:61
-#: pro-features/functions.php:6 pro-features/user-preferences.php:185
+#: pro-features/functions.php:6 pro-features/user-preferences.php:194
 msgid "Inches"
 msgstr "Cale"
 
-#: includes/admin-pages/settings/page-settings-generic.php:624
+#: includes/admin-pages/settings/page-settings-generic.php:666
 msgid "Default unit for recording measurements."
 msgstr "Domyślna jednostka do nagrywania pomiarów."
 
-#: includes/admin-pages/settings/page-settings-generic.php:628
+#: includes/admin-pages/settings/page-settings-generic.php:670
 msgid "Measurements mandatory?"
 msgstr "Obowiązkowe pomiary?"
 
-#: includes/admin-pages/settings/page-settings-generic.php:634
+#: includes/admin-pages/settings/page-settings-generic.php:676
 msgid "If yes, a user will be forced to complete all measurement features."
 msgstr ""
 "Jeśli tak, użytkownik będzie zmuszony wykonać wszystkie funkcje pomiarowe."
 
-#: includes/admin-pages/settings/page-settings-generic.php:638
+#: includes/admin-pages/settings/page-settings-generic.php:680
 msgid "Areas of measurements"
 msgstr "Obszary pomiarów"
 
-#: includes/admin-pages/settings/page-settings-generic.php:660
+#: includes/admin-pages/settings/page-settings-generic.php:702
 msgid "Enable"
 msgstr "Włączyć"
 
-#: includes/admin-pages/settings/page-settings-generic.php:663
+#: includes/admin-pages/settings/page-settings-generic.php:705
 msgid "Chart Colour"
 msgstr "Kolor wykresu"
 
-#: includes/admin-pages/settings/page-settings-generic.php:689
+#: includes/admin-pages/settings/page-settings-generic.php:731
 msgid "Enable Gravity Forms"
 msgstr "Włącz formularze grawitacyjne"
 
-#: includes/admin-pages/settings/page-settings-generic.php:696
+#: includes/admin-pages/settings/page-settings-generic.php:738
 msgid ""
 "Examine Gravity Form submissions for weight and measurement data. If found, "
 "create a Weight Entry for the user currently logged in."
@@ -1506,7 +1549,7 @@ msgstr ""
 "pomiarowych. Jeśli zostanie znaleziony, utwórz wpis wagi dla aktualnie "
 "zalogowanego użytkownika."
 
-#: includes/admin-pages/settings/page-settings-generic.php:697
+#: includes/admin-pages/settings/page-settings-generic.php:739
 msgid "Read more at "
 msgstr "Przeczytaj więcej na "
 
@@ -1585,7 +1628,7 @@ msgstr "Ten użytkownik przesłał "
 
 #: includes/admin-pages/user-data/data-photos.php:40
 #: includes/admin-pages/user-data/data-user.php:101
-#: pro-features/plus/shortcode.wlt.php:32
+#: pro-features/plus/shortcode.wlt.php:33
 msgid "photo"
 msgid_plural "photos"
 msgstr[0] "zdjęcie"
@@ -1624,43 +1667,34 @@ msgstr "aby umożliwić użytkownikowi przesyłanie zdjęć z ich postępów"
 msgid "Search Results"
 msgstr "Wyniki wyszukiwania"
 
-#: includes/admin-pages/user-data/data-search-results.php:35
+#: includes/admin-pages/user-data/data-search-results.php:37
 msgid "results were found for"
 msgstr "znaleziono wyniki"
 
-#: includes/admin-pages/user-data/data-search-results.php:43
+#: includes/admin-pages/user-data/data-search-results.php:45
 msgid "Username"
 msgstr "Nazwa Użytkownika"
 
-#: includes/admin-pages/user-data/data-search-results.php:44
+#: includes/admin-pages/user-data/data-search-results.php:46
 #: pro-features/plus/awards/hooks.php:296
 msgid "Email"
 msgstr "E-mail"
 
-#: includes/admin-pages/user-data/data-search-results.php:45
-#: pro-features/functions-pages.php:86
-msgid "No. of Entries"
-msgstr "Liczba wpisów"
-
-#: includes/admin-pages/user-data/data-search-results.php:46
-#: pro-features/functions-pages.php:90 pro-features/user-groups.php:579
+#: includes/admin-pages/user-data/data-search-results.php:47
+#: pro-features/functions-pages.php:90 pro-features/user-groups.php:618
 msgid "Start Weight"
 msgstr "Waga startowa"
 
-#: includes/admin-pages/user-data/data-search-results.php:47
-msgid "Recent Weight"
-msgstr "Ostatnia waga"
-
 #: includes/admin-pages/user-data/data-search-results.php:48
-#: includes/core.php:283 pro-features/functions-pages.php:102
-msgid "Target Weight"
-msgstr "Waga docelowa"
+#: pro-features/functions-pages.php:94 pro-features/user-groups.php:619
+msgid "Latest Weight"
+msgstr "Najnowsza waga"
 
-#: includes/admin-pages/user-data/data-search-results.php:61
+#: includes/admin-pages/user-data/data-search-results.php:60
 msgid "No users were found for the given search criteria:"
 msgstr "Nie znaleziono użytkowników dla podanych kryteriów wyszukiwania:"
 
-#: includes/admin-pages/user-data/data-search-results.php:66
+#: includes/admin-pages/user-data/data-search-results.php:65
 msgid "No search terms were specified"
 msgstr "Nie określono wyszukiwanych haseł"
 
@@ -1787,7 +1821,7 @@ msgstr "Edytuj preferencje użytkownika"
 msgid "to save changes to your user's settings"
 msgstr "aby zapisać zmiany w ustawieniach użytkownika"
 
-#: includes/admin-pages/user-data/data-user.php:29 includes/hooks.php:180
+#: includes/admin-pages/user-data/data-user.php:29 includes/hooks.php:184
 msgid "The preferences for this user have been saved."
 msgstr "Preferencje tego użytkownika zostały zapisane."
 
@@ -1821,7 +1855,8 @@ msgstr ""
 "Proszę zapewnić wartości dla białek, węglowodanów i tłuszczów (wewnątrz "
 
 #: includes/admin-pages/user-data/data-user.php:168
-#: pro-features/plus/harris-benedict.php:278
+#: pro-features/plus/challenge/admin.page.php:191
+#: pro-features/plus/harris-benedict.php:321
 msgid "settings"
 msgstr "ustawienia"
 
@@ -1901,14 +1936,14 @@ msgstr "Eksportuj do JSON"
 #: includes/converters.php:53 includes/converters.php:71 includes/core.php:75
 #: includes/functions.php:69 includes/functions.php:84
 #: includes/functions.php:93 includes/functions.php:99
-#: includes/functions.php:294 includes/functions.php:300
-#: includes/functions.php:558 includes/shortcode-various.php:305
-#: includes/shortcode-various.php:324 pro-features/export.php:260
-#: pro-features/shortcode-stats.php:162
+#: includes/functions.php:293 includes/functions.php:299
+#: includes/functions.php:568 includes/shortcode-various.php:315
+#: includes/shortcode-various.php:340 pro-features/export.php:266
+#: pro-features/shortcode-stats.php:154
 msgid "lbs"
 msgstr "lbs"
 
-#: includes/converters.php:71 includes/functions.php:300
+#: includes/converters.php:71 includes/functions.php:299
 msgid "St"
 msgstr "Św"
 
@@ -1918,12 +1953,13 @@ msgid "Date"
 msgstr "Data"
 
 #: includes/core.php:15 includes/core.php:395 pro-features/emails.php:53
-#: pro-features/export.php:264 pro-features/footable.php:262
+#: pro-features/export.php:270 pro-features/footable.php:264
+#: pro-features/plus/challenge/admin.page.php:82
 msgid "Notes"
 msgstr "Uwagi"
 
 #: includes/core.php:62 includes/core.php:263
-#: includes/shortcode-weight-loss-tracker.php:50
+#: includes/shortcode-weight-loss-tracker.php:51
 msgid "You need to be logged in to record your weight."
 msgstr "Musisz być zalogowany, aby zarejestrować swoją wagę."
 
@@ -1931,7 +1967,7 @@ msgstr "Musisz być zalogowany, aby zarejestrować swoją wagę."
 msgid "CM"
 msgstr "CM"
 
-#: includes/core.php:121 pro-features/user-groups.php:582
+#: includes/core.php:121 pro-features/user-groups.php:621
 msgid "Target"
 msgstr "Cel"
 
@@ -1950,6 +1986,10 @@ msgstr "Musisz być zalogowany, aby ustawić swój cel."
 #: includes/core.php:280
 msgid "Add a new weight"
 msgstr "Dodaj nową wagę"
+
+#: includes/core.php:283 pro-features/functions-pages.php:102
+msgid "Target Weight"
+msgstr "Waga docelowa"
 
 #: includes/core.php:285
 msgid "Edit weight"
@@ -1991,122 +2031,122 @@ msgstr "Popraw następujące elementy:"
 msgid "Clear Target"
 msgstr "Wyczyść cel"
 
-#: includes/core.php:601
+#: includes/core.php:605
 msgid "Please enter a value between 0-13 for pounds"
 msgstr "Wprowadź wartość między 0-13 za funty"
 
-#: includes/core.php:601
+#: includes/core.php:605
 msgid "Please enter a valid figure for pounds"
 msgstr "Wprowadź prawidłową liczbę funtów"
 
-#: includes/core.php:608
+#: includes/core.php:612
 msgid "Are you sure you wish to clear your target weight?"
 msgstr "Czy na pewno chcesz wyczyścić swoją wagę docelową?"
 
-#: includes/core.php:611
+#: includes/core.php:615
 msgid "Please enter a valid figure for Kg"
 msgstr "Wprowadź prawidłową liczbę dla Kg"
 
-#: includes/core.php:612
+#: includes/core.php:616
 msgid "Please enter a valid figure for Stones"
 msgstr "Wprowadź prawidłową liczbę kamieni"
 
-#: includes/core.php:613
+#: includes/core.php:617
 msgid "Please enter a valid date"
 msgstr "Proszę wprowadź poprawną datę"
 
-#: includes/core.php:614
+#: includes/core.php:618
 msgid "Please confirm you wish to delete ALL your weight history"
 msgstr "Potwierdź, że chcesz usunąć WSZYSTKIE Twoje dane dotyczące wagi"
 
-#: includes/core.php:615
+#: includes/core.php:619
 msgid "Your photo must be less than "
 msgstr "Twoje zdjęcie musi być mniejsze niż "
 
-#: includes/core.php:616
+#: includes/core.php:620
 msgid "Are you sure you wish to delete this entry? If so, press OK."
 msgstr "Czy na pewno chcesz usunąć ten wpis? Jeśli tak, naciśnij OK."
 
-#: includes/core.php:625
+#: includes/core.php:629
 msgid "Please enter a valid measurement ("
 msgstr "Wprowadź prawidłowy pomiar ("
 
-#: includes/core.php:637
+#: includes/core.php:641
 msgid "Please select or enter a value for height."
 msgstr "Wybierz lub wprowadź wartość wysokości."
 
-#: includes/core.php:638
+#: includes/core.php:642
 msgid "Please select or enter a value for activity level."
 msgstr "Wybierz lub wprowadź wartość dla poziomu aktywności."
 
-#: includes/core.php:639
+#: includes/core.php:643
 msgid "Please select or enter a value for gender."
 msgstr "Wybierz lub wprowadź wartość dla płci."
 
-#: includes/core.php:640
+#: includes/core.php:644
 msgid "Please enter a valid date."
 msgstr "Proszę wprowadź poprawną datę."
 
-#: includes/core.php:641
+#: includes/core.php:645
 msgid "Please select your aim."
 msgstr "Wybierz cel."
 
-#: includes/core.php:651
+#: includes/core.php:655
 msgid "This field is required."
 msgstr "To pole jest wymagane."
 
-#: includes/core.php:669
+#: includes/core.php:673
 msgid "Today"
 msgstr "Dzisiaj"
 
 #: includes/functions.php:84 includes/functions.php:99
-#: includes/functions.php:546 includes/shortcode-various.php:324
-#: pro-features/export.php:259
+#: includes/functions.php:556 includes/shortcode-various.php:338
+#: pro-features/export.php:265
 msgid "st"
 msgstr "ul"
 
-#: includes/functions.php:215
+#: includes/functions.php:210
 msgid "The following MySQL tables are missing for this plugin"
 msgstr "Brakuje następujących tabel MySQL dla tej wtyczki"
 
-#: includes/functions.php:297 includes/shortcode-various.php:329
-#: pro-features/user-preferences.php:175
+#: includes/functions.php:296 includes/shortcode-various.php:347
+#: pro-features/user-preferences.php:184
 msgid "Kg"
 msgstr "Kg"
 
-#: includes/functions.php:359
+#: includes/functions.php:358
 msgid "View all weeks"
 msgstr "Wyświetl wszystkie tygodnie"
 
-#: includes/functions.php:373
+#: includes/functions.php:372
 msgid "View Week"
 msgstr "Zobacz tydzień"
 
-#: includes/functions.php:373
+#: includes/functions.php:372 pro-features/plus/challenge/db.php:198
 msgid "to"
 msgstr "do"
 
-#: includes/functions.php:513
+#: includes/functions.php:523
 msgid "The plugin supports the following measurements"
 msgstr "Wtyczka obsługuje następujące pomiary"
 
-#: includes/functions.php:653
+#: includes/functions.php:712
 msgid "Read more about calculations"
 msgstr "Przeczytaj więcej o obliczeniach"
 
-#: includes/functions.php:687
+#: includes/functions.php:746
 msgid "Your modifications have been saved"
 msgstr "Twoje modyfikacje zostały zapisane"
 
-#: includes/functions.php:705
+#: includes/functions.php:764
 msgid "Login now"
 msgstr "Zaloguj się teraz"
 
-#: includes/functions.php:890
+#: includes/functions.php:949
 msgid "Upgrade Weight Tracker and get more features!"
 msgstr "Uaktualnij Tracker wagi i uzyskaj więcej funkcji!"
 
-#: includes/functions.php:892
+#: includes/functions.php:951
 msgid ""
 "Upgrade to the latest Pro or Pro Plus version of this plugin to manipulate "
 "your user's data, add custom fields, BMR, Macro Nutrients and much more!"
@@ -2115,136 +2155,136 @@ msgstr ""
 "manipulować danymi użytkownika, dodawać pola niestandardowe, BMR, składniki "
 "odżywcze do makr i wiele więcej!"
 
-#: includes/functions.php:893
+#: includes/functions.php:952
 msgid "Read more and Upgrade to Pro / Pro Plus Version"
 msgstr "Przeczytaj więcej i uaktualnij do wersji Pro / Pro Plus"
 
-#: includes/globals.php:120 pro-features/footable.php:230
+#: includes/globals.php:119 pro-features/footable.php:230
 msgid "Forearm - Left"
 msgstr "Przedramię - lewe"
 
-#: includes/globals.php:120 pro-features/footable.php:230
+#: includes/globals.php:119 pro-features/footable.php:230
 msgid "FL"
 msgstr "FL"
 
-#: includes/globals.php:121 pro-features/footable.php:231
+#: includes/globals.php:120 pro-features/footable.php:231
 msgid "Forearm - Right"
 msgstr "Przedramię - Prawo"
 
-#: includes/globals.php:121 pro-features/footable.php:231
+#: includes/globals.php:120 pro-features/footable.php:231
 msgid "FR"
 msgstr "FR"
 
-#: includes/globals.php:122 pro-features/footable.php:232
+#: includes/globals.php:121 pro-features/footable.php:232
 msgid "Biceps - Left"
 msgstr "Bicepsy - po lewej"
 
-#: includes/globals.php:122 pro-features/footable.php:232
+#: includes/globals.php:121 pro-features/footable.php:232
 msgid "BL"
 msgstr "BL"
 
-#: includes/globals.php:123 pro-features/footable.php:233
+#: includes/globals.php:122 pro-features/footable.php:233
 msgid "Biceps - Right"
 msgstr "Bicepsy - w prawo"
 
-#: includes/globals.php:123 pro-features/footable.php:233
+#: includes/globals.php:122 pro-features/footable.php:233
 msgid "BR"
 msgstr "BR"
 
-#: includes/globals.php:124 pro-features/footable.php:234
+#: includes/globals.php:123 pro-features/footable.php:234
 msgid "Calf - Left"
 msgstr "Łydka - lewa"
 
-#: includes/globals.php:124 pro-features/footable.php:234
+#: includes/globals.php:123 pro-features/footable.php:234
 msgid "CL"
 msgstr "CL"
 
-#: includes/globals.php:125 pro-features/footable.php:235
+#: includes/globals.php:124 pro-features/footable.php:235
 msgid "Calf - Right"
 msgstr "Cielę - Racja"
 
-#: includes/globals.php:125 pro-features/footable.php:235
+#: includes/globals.php:124 pro-features/footable.php:235
 msgid "CR"
 msgstr "CR"
 
-#: includes/globals.php:126 pro-features/footable.php:236
+#: includes/globals.php:125 pro-features/footable.php:236
 msgid "Thigh - Left"
 msgstr "Udo - lewe"
 
-#: includes/globals.php:126 pro-features/footable.php:236
+#: includes/globals.php:125 pro-features/footable.php:236
 msgid "TL"
 msgstr "TL"
 
-#: includes/globals.php:127 pro-features/footable.php:237
+#: includes/globals.php:126 pro-features/footable.php:237
 msgid "Thigh - Right"
 msgstr "Udo - racja"
 
-#: includes/globals.php:127 pro-features/footable.php:237
+#: includes/globals.php:126 pro-features/footable.php:237
 msgid "TR"
 msgstr "TR"
 
-#: includes/globals.php:128 pro-features/footable.php:238
+#: includes/globals.php:127 pro-features/footable.php:238
 msgid "Waist"
 msgstr "Talia"
 
-#: includes/globals.php:128 pro-features/footable.php:238
+#: includes/globals.php:127 pro-features/footable.php:238
 msgid "W"
 msgstr "W"
 
-#: includes/globals.php:129 pro-features/footable.php:239
+#: includes/globals.php:128 pro-features/footable.php:239
 msgid "Bust / Chest"
 msgstr "Popiersie / klatka piersiowa"
 
-#: includes/globals.php:129 pro-features/footable.php:239
+#: includes/globals.php:128 pro-features/footable.php:239
 msgid "BC"
 msgstr "pne"
 
-#: includes/globals.php:130 pro-features/footable.php:240
+#: includes/globals.php:129 pro-features/footable.php:240
 msgid "Shoulders"
 msgstr "Ramiona"
 
-#: includes/globals.php:130 pro-features/footable.php:240
+#: includes/globals.php:129 pro-features/footable.php:240
 msgid "S"
 msgstr "S"
 
-#: includes/globals.php:131 pro-features/footable.php:241
+#: includes/globals.php:130 pro-features/footable.php:241
 #: pro-features/functions-pages.php:129
 msgid "Height"
 msgstr "Wysokość"
 
-#: includes/globals.php:131 pro-features/footable.php:241
+#: includes/globals.php:130 pro-features/footable.php:241
 msgid "H"
 msgstr "H"
 
-#: includes/globals.php:132 pro-features/footable.php:242
+#: includes/globals.php:131 pro-features/footable.php:242
 msgid "Buttocks"
 msgstr "Tyłek"
 
-#: includes/globals.php:132 pro-features/footable.php:242
+#: includes/globals.php:131 pro-features/footable.php:242
 msgid "B"
 msgstr "b"
 
-#: includes/globals.php:133 pro-features/footable.php:243
+#: includes/globals.php:132 pro-features/footable.php:243
 msgid "Hips"
 msgstr "Biodra"
 
-#: includes/globals.php:133 pro-features/footable.php:243
+#: includes/globals.php:132 pro-features/footable.php:243
 msgid "HI"
 msgstr "CZEŚĆ"
 
-#: includes/globals.php:134 pro-features/footable.php:244
+#: includes/globals.php:133 pro-features/footable.php:244
 msgid "Navel"
 msgstr "Pępek"
 
-#: includes/globals.php:134 pro-features/footable.php:244
+#: includes/globals.php:133 pro-features/footable.php:244
 msgid "NA"
 msgstr "NA"
 
-#: includes/globals.php:135 pro-features/footable.php:245
+#: includes/globals.php:134 pro-features/footable.php:245
 msgid "Neck"
 msgstr "Szyja"
 
-#: includes/globals.php:135 pro-features/footable.php:245
+#: includes/globals.php:134 pro-features/footable.php:245
 msgid "NE"
 msgstr "NE"
 
@@ -2252,69 +2292,83 @@ msgstr "NE"
 msgid "Manage User Data"
 msgstr "Zarządzaj danymi użytkownika"
 
-#: includes/hooks.php:13
+#: includes/hooks.php:14
+msgid "Challenges (beta)"
+msgstr ""
+
+#: includes/hooks.php:17
 msgid "Your License"
 msgstr "Twoja licencja"
 
-#: includes/hooks.php:16 pro-features/functions-pages.php:190
+#: includes/hooks.php:20 pro-features/functions-pages.php:190
 msgid "Settings"
 msgstr "Ustawienia"
 
-#: includes/hooks.php:22
+#: includes/hooks.php:26
 msgid "Help & Log"
 msgstr "Pomoc i dziennik"
 
-#: includes/hooks.php:181
+#: includes/hooks.php:185
 msgid "An error occurred while trying to save the user's preferences."
 msgstr "Wystąpił błąd podczas próby zapisania preferencji użytkownika."
 
-#: includes/license.php:86
+#: includes/hooks.php:208
+#, fuzzy
+#| msgid "View weight entries"
+msgid "Weight entries"
+msgstr "Wyświetl wpisy wagi"
+
+#: includes/license.php:104
 #, fuzzy
 #| msgid "Weight Tracker"
 msgid "Weight Tracker License"
 msgstr "Analizator wagi"
 
-#: includes/license.php:87
+#: includes/license.php:105
 msgid ""
 "Your license expires in less than 14 days. Please renew your license as soon "
 "as possible"
 msgstr ""
 
-#: includes/license.php:218
+#: includes/license.php:240
 msgid "License missing"
 msgstr "Brak licencji"
 
-#: includes/license.php:225
+#: includes/license.php:247
 msgid "Could not decode / verify license"
 msgstr "Nie można zdekodować / zweryfikować licencji"
 
-#: includes/license.php:230
+#: includes/license.php:252
 msgid "Invalid license hash"
 msgstr "Nieprawidłowy skrót licencyjny"
 
-#: includes/license.php:235
+#: includes/license.php:257
 msgid ""
 "This license doesn't appear to be for this site (no match on site hash)."
 msgstr ""
 "Ta licencja wydaje się nie dotyczyć tej witryny (brak zgodności w haszu "
 "witryny)."
 
-#: includes/license.php:243
+#: includes/license.php:265
 msgid "This license has expired."
 msgstr "Ta licencja wygasła."
 
-#: includes/license.php:300 pro-features/user-groups.php:110
-#: pro-features/user-groups.php:165 pro-features/user-groups.php:404
+#: includes/license.php:326 pro-features/user-groups.php:110
+#: pro-features/user-groups.php:165 pro-features/user-groups.php:405
 msgid "None"
 msgstr "Żaden"
 
-#: includes/license.php:310
+#: includes/license.php:336
 msgid "Yearly Pro"
 msgstr "Roczny Pro"
 
-#: includes/license.php:313
+#: includes/license.php:339
 msgid "Legacy Pro"
 msgstr "Legacy Pro"
+
+#: includes/meal-tracker.php:26 pro-features/functions-pages.php:300
+msgid "Weight Tracker Record"
+msgstr "Rejestr śledzenia wagi"
 
 #: includes/save-data.php:43
 msgid "Saved!"
@@ -2354,6 +2408,37 @@ msgstr ""
 msgid "We provide fixed priced quotes."
 msgstr "Zapewniamy wycenę w stałej cenie."
 
+#: includes/setup-wizard.php:102
+msgid ""
+"Why not check out our sister plugin Meal Tracker. Allow your user's to track "
+"their meals and calorie intake too!"
+msgstr ""
+
+#: includes/setup-wizard.php:103
+msgid "Get Meal Tracker Now"
+msgstr ""
+
+#: includes/setup-wizard.php:104
+#, php-format
+msgid "20% off coupon"
+msgstr ""
+
+#: includes/setup-wizard.php:105
+#, fuzzy
+#| msgid "WordPress Record"
+msgid "from WordPress.org"
+msgstr "Rekord WordPress"
+
+#: includes/setup-wizard.php:106
+#, fuzzy
+#| msgid "Upgrade to Pro"
+msgid "Upgrade to Premium"
+msgstr "Przejść na wersje Pro"
+
+#: includes/setup-wizard.php:107
+msgid "Any questions, email@yeken.uk"
+msgstr ""
+
 #: includes/shortcode-various.php:106 pro-features/functions-pages.php:108
 msgid "No target set"
 msgstr "Brak zestawu celów"
@@ -2364,72 +2449,72 @@ msgstr "Brak zestawu celów"
 msgid "No previous weight"
 msgstr "Schudnąć"
 
-#: includes/shortcode-weight-loss-tracker.php:43
+#: includes/shortcode-weight-loss-tracker.php:44
 msgid "This shortcode can only be placed once on a page / post."
 msgstr "Ten krótki kod może zostać umieszczony tylko raz na stronie / wpisie."
 
-#: includes/shortcode-weight-loss-tracker.php:68
+#: includes/shortcode-weight-loss-tracker.php:69
 msgid "Your settings have been saved!"
 msgstr "Twoje ustawienia zostały zapisane!"
 
-#: includes/shortcode-weight-loss-tracker.php:70
+#: includes/shortcode-weight-loss-tracker.php:71
 msgid "Your weight history has been deleted!"
 msgstr "Twoja historia wagi została usunięta!"
 
-#: includes/shortcode-weight-loss-tracker.php:93
+#: includes/shortcode-weight-loss-tracker.php:94
 msgid "Overview"
 msgstr "Przegląd"
 
-#: includes/shortcode-weight-loss-tracker.php:93
+#: includes/shortcode-weight-loss-tracker.php:94
 msgid "Chart and add a new entry"
 msgstr "Wykres i dodaj nowy wpis"
 
-#: includes/shortcode-weight-loss-tracker.php:94
+#: includes/shortcode-weight-loss-tracker.php:95
 msgid "All Entries"
 msgstr "Wszystkie wpisy"
 
-#: includes/shortcode-weight-loss-tracker.php:94
+#: includes/shortcode-weight-loss-tracker.php:95
 msgid "View all of your entries"
 msgstr "Wyświetl wszystkie swoje wpisy"
 
-#: includes/shortcode-weight-loss-tracker.php:98
+#: includes/shortcode-weight-loss-tracker.php:99
 msgid "View a gallery of your photos"
 msgstr "Wyświetl galerię swoich zdjęć"
 
-#: includes/shortcode-weight-loss-tracker.php:103
+#: includes/shortcode-weight-loss-tracker.php:104
 msgid "View BMI, BMR and suggested Calorie and Macronutrient intake"
 msgstr "Zobacz BMI, BMR i zasugeruj spożycie kalorii i makroskładników"
 
-#: includes/shortcode-weight-loss-tracker.php:108
-#: pro-features/functions-pages.php:194 pro-features/user-preferences.php:170
+#: includes/shortcode-weight-loss-tracker.php:109
+#: pro-features/functions-pages.php:194 pro-features/user-preferences.php:179
 msgid "Preferences"
 msgstr "Preferencje"
 
-#: includes/shortcode-weight-loss-tracker.php:108
+#: includes/shortcode-weight-loss-tracker.php:109
 msgid "Customise this tool and tell us a little more about you"
 msgstr "Dostosuj to narzędzie i powiedz nam trochę więcej o sobie"
 
-#: includes/shortcode-weight-loss-tracker.php:124
+#: includes/shortcode-weight-loss-tracker.php:125
 msgid "Add a weight entry"
 msgstr "Dodaj wpis wagi"
 
-#: includes/shortcode-weight-loss-tracker.php:129
+#: includes/shortcode-weight-loss-tracker.php:130
 msgid "In a chart"
 msgstr "Na wykresie"
 
-#: includes/shortcode-weight-loss-tracker.php:137
+#: includes/shortcode-weight-loss-tracker.php:138
 msgid "A graph will appear once several weights have been entered."
 msgstr "Po wprowadzeniu kilku wag pojawi się wykres."
 
-#: includes/shortcode-weight-loss-tracker.php:190
+#: includes/shortcode-weight-loss-tracker.php:191
 msgid "Weight History"
 msgstr "Historia wagi"
 
-#: includes/shortcode-weight-loss-tracker.php:202
+#: includes/shortcode-weight-loss-tracker.php:203
 msgid "There is no data for this week, please try selecting another:"
 msgstr "Brak danych na ten tydzień, spróbuj wybrać inny:"
 
-#: includes/shortcode-weight-loss-tracker.php:208
+#: includes/shortcode-weight-loss-tracker.php:209
 msgid "You haven't entered any weight data yet."
 msgstr "Nie wprowadziłeś jeszcze żadnych danych dotyczących wagi."
 
@@ -2490,20 +2575,32 @@ msgid "You must have a Pro License to export user data into JSON format."
 msgstr ""
 "Musisz mieć licencję Pro, aby eksportować dane użytkownika do formatu JSON."
 
-#: pro-features/export.php:162
+#: pro-features/export.php:165
 msgid "You must have a Pro License to export user data into CSV format."
 msgstr ""
 "Musisz mieć licencję Pro, aby eksportować dane użytkownika do formatu CSV."
 
-#: pro-features/export.php:258
+#: pro-features/export.php:264
 msgid "lbs only"
 msgstr "tylko lbs"
 
-#: pro-features/export.php:261
+#: pro-features/export.php:267
 msgid "Difference from start"
 msgstr "Różnica od początku"
 
-#: pro-features/export.php:325 pro-features/footable.php:149
+#: pro-features/export.php:268
+#, fuzzy
+#| msgid "BMR"
+msgid "BMI"
+msgstr "BMR"
+
+#: pro-features/export.php:269
+#, fuzzy
+#| msgid "BMI Equals"
+msgid "BMI Label"
+msgstr "BMI Równe"
+
+#: pro-features/export.php:333 pro-features/footable.php:149
 msgid "No height"
 msgstr "Bez wysokości"
 
@@ -2600,13 +2697,19 @@ msgstr ""
 
 #: pro-features/feature-list.php:19
 msgid ""
+"<strong>Challenges.</strong> Create and display challenges for users over "
+"different time periods."
+msgstr ""
+
+#: pro-features/feature-list.php:20
+msgid ""
 "<strong>Custom Fields.</strong> Create and add your own questions to weight "
 "entry forms to gather additional information."
 msgstr ""
 "<strong> Niestandardowe pola. </strong> Utwórz i dodaj własne pytania do "
 "formularzy ważenia, aby zebrać dodatkowe informacje."
 
-#: pro-features/feature-list.php:20
+#: pro-features/feature-list.php:21
 msgid ""
 "<strong>Photo Custom Fields</strong>. Add one or more photo fields to your "
 "weight entry forms and allow your users to upload photos of their progress. "
@@ -2621,7 +2724,7 @@ msgstr ""
 "Przydatne skróty służą do wyświetlania galerii, najnowszych i najstarszych "
 "zdjęć."
 
-#: pro-features/feature-list.php:21
+#: pro-features/feature-list.php:22
 msgid ""
 "<strong>Export all data or a particular user.</strong> Export in JSON or CSV "
 "format."
@@ -2629,7 +2732,7 @@ msgstr ""
 "<strong> Eksportuj wszystkie dane lub konkretnego użytkownika. </strong> "
 "Eksportuj w formacie JSON lub CSV."
 
-#: pro-features/feature-list.php:22
+#: pro-features/feature-list.php:23
 msgid ""
 "<strong>Groups</strong>. Define user groups and assign your user's to them. "
 "View Weight Difference statistics for the group as a whole."
@@ -2637,7 +2740,7 @@ msgstr ""
 "<strong> Grupy </strong>. Zdefiniuj grupy użytkowników i przypisz im "
 "użytkownika. Wyświetl statystyki różnicy masy dla całej grupy."
 
-#: pro-features/feature-list.php:23
+#: pro-features/feature-list.php:24
 msgid ""
 "<strong>BMI.</strong> Allows a user to specify their height. Once specified, "
 "their BMI is displayed next to each weight entry. There is also a shortcode "
@@ -2647,7 +2750,7 @@ msgstr ""
 "określeniu ich BMI jest wyświetlane obok każdego wpisu wagi. Istnieje "
 "również krótki kod do renderowania najnowszego BMI."
 
-#: pro-features/feature-list.php:24
+#: pro-features/feature-list.php:25
 msgid ""
 "<strong>Email notifications.</strong> Receive email notifications when a "
 "person updates their target or adds / edits a weight."
@@ -2655,7 +2758,7 @@ msgstr ""
 "<strong> Powiadomienia e-mail. </strong> Otrzymuj powiadomienia e-mail, gdy "
 "osoba aktualizuje swój cel lub dodaje / edytuje wagę."
 
-#: pro-features/feature-list.php:25
+#: pro-features/feature-list.php:26
 msgid ""
 "<strong>Birthday Emails.</strong> Automatically send your user's a birthday "
 "email (when they have entered a date of birth)"
@@ -2663,7 +2766,7 @@ msgstr ""
 "<strong> E-maile urodzinowe. </strong> Automatycznie wyślij wiadomość e-mail "
 "z urodzinowym użytkownikiem (po wprowadzeniu daty urodzenia)"
 
-#: pro-features/feature-list.php:26
+#: pro-features/feature-list.php:27
 msgid ""
 "<strong>Overall user stats.</strong> Shortcodes that allow you to display "
 "the total lost / gained for the community and another to display a league "
@@ -2673,7 +2776,7 @@ msgstr ""
 "pozwalają wyświetlić łączną utraconą / zdobytą dla społeczności i inną, aby "
 "wyświetlić tabelę ligową."
 
-#: pro-features/feature-list.php:27
+#: pro-features/feature-list.php:28
 msgid ""
 "<strong>Widgets.</strong> Widgets that allow you to display the graph and "
 "quick weight entry form within any widget area."
@@ -2681,7 +2784,7 @@ msgstr ""
 "<strong> Widżety. </strong> Widgety, które umożliwiają wyświetlanie wykresu "
 "i formularza szybkiego wprowadzania wagi w dowolnym obszarze widżetu."
 
-#: pro-features/feature-list.php:28
+#: pro-features/feature-list.php:29
 msgid ""
 "<strong>Chart and form Shortcodes.</strong> That allow you to display the "
 "graph and quick weight entry form by placing a shortcode on any post or page."
@@ -2690,7 +2793,7 @@ msgstr ""
 "i formularza szybkiego wprowadzania wagi poprzez umieszczenie kodu skrótu na "
 "dowolnym poście lub stronie."
 
-#: pro-features/feature-list.php:29
+#: pro-features/feature-list.php:30
 msgid ""
 "<strong>Progress Bar shortcode.</strong> A shortcode that visually displays "
 "the logged in user's progress towards their target"
@@ -2698,7 +2801,7 @@ msgstr ""
 "<strong> Kod skrótu paska postępu. </strong> Krótki kod, który wizualnie "
 "wyświetla postęp zalogowanego użytkownika w kierunku celu"
 
-#: pro-features/feature-list.php:30
+#: pro-features/feature-list.php:31
 msgid ""
 "<strong>Reminder shortcode.</strong> A shortcode that can be used to remind "
 "the user to enter their target or weight for today."
@@ -2706,7 +2809,7 @@ msgstr ""
 "<strong> Kod przypomnienia. </strong> Kod skrótu, którego można użyć, aby "
 "przypomnieć użytkownikowi, aby wprowadził swój cel lub wagę na dziś."
 
-#: pro-features/feature-list.php:31
+#: pro-features/feature-list.php:32
 msgid ""
 "<strong>Message shortcode</strong> A shortcode that allows you to "
 "congratulate a user when they lose weight x number of times. It also "
@@ -2717,7 +2820,7 @@ msgstr ""
 "pogratulować użytkownikowi utraty wagi kilka razy. Zapewnia to również "
 "odwrotną sytuację, pozwalającą na zachęcanie, gdy ktoś przybiera na wadze."
 
-#: pro-features/feature-list.php:32
+#: pro-features/feature-list.php:33
 msgid ""
 "<strong>Text Shortcodes.</strong> Additional shortcodes for earliest and "
 "most recent dates entered."
@@ -2725,7 +2828,7 @@ msgstr ""
 "<strong> Skróty tekstowe </strong>. Wprowadzono dodatkowe skróty dla "
 "najwcześniejszych i ostatnich dat."
 
-#: pro-features/feature-list.php:33
+#: pro-features/feature-list.php:34
 msgid ""
 "<strong>Progress Bar shortcode / widget.</strong> Display a user's progress "
 "towards their weight target."
@@ -2733,7 +2836,7 @@ msgstr ""
 "<strong> Krótki kod / widżet paska postępu. </strong> Wyświetl postępy "
 "użytkownika w zakresie docelowej wagi."
 
-#: pro-features/feature-list.php:34
+#: pro-features/feature-list.php:35
 msgid ""
 "<strong>Reminder shortcode.</strong> Display a reminder to enter their "
 "weight for the given day or enter a target."
@@ -2741,7 +2844,7 @@ msgstr ""
 "<strong> Przypomnij kod skrótu. </strong> Wyświetl przypomnienie, aby "
 "wprowadzić ich wagę w danym dniu lub wprowadź cel."
 
-#: pro-features/feature-list.php:35
+#: pro-features/feature-list.php:36
 msgid ""
 "<strong>Admin: View / Delete user data</strong>. Admin will be able to view "
 "and delete existing user data."
@@ -2749,7 +2852,7 @@ msgstr ""
 "<strong> Administrator: wyświetl / usuń dane użytkownika </strong>. "
 "Administrator będzie mógł przeglądać i usuwać istniejące dane użytkownika."
 
-#: pro-features/feature-list.php:36
+#: pro-features/feature-list.php:37
 msgid ""
 "<strong>User preferences</strong>. If enabled, the user will be able to "
 "select which unit they wish to store their weight in Metric or Imperial. "
@@ -2761,7 +2864,7 @@ msgstr ""
 "systemie metrycznym lub imperialnym. Będą również mogli określić format daty "
 "i usunąć wszystkie dane dotyczące wagi."
 
-#: pro-features/feature-list.php:37
+#: pro-features/feature-list.php:38
 msgid ""
 "<strong>Bar Charts</strong>. Fancy something different to a line chart? The "
 "plugin will also support Bar Charts."
@@ -2769,7 +2872,7 @@ msgstr ""
 "<strong> Wykresy słupkowe </strong>. Masz ochotę na coś innego niż wykres "
 "liniowy? Wtyczka obsługuje także wykresy słupkowe."
 
-#: pro-features/feature-list.php:38
+#: pro-features/feature-list.php:39
 msgid ""
 "<strong>Decimals</strong>. Decimals will be allowed weight in Pounds only or "
 "Kg modes."
@@ -2777,7 +2880,7 @@ msgstr ""
 "<strong> Miejsca dziesiętne </strong>. Miejsca dziesiętne będą miały wagę "
 "tylko w trybach funtów lub kg."
 
-#: pro-features/feature-list.php:39
+#: pro-features/feature-list.php:40
 msgid ""
 "<strong>Delete existing entry</strong>. A logged in user will be able to "
 "delete or edit an existing weight entry."
@@ -2785,7 +2888,7 @@ msgstr ""
 "<strong> Usuń istniejący wpis </strong>. Zalogowany użytkownik będzie mógł "
 "usunąć lub edytować istniejący wpis wagi."
 
-#: pro-features/feature-list.php:40
+#: pro-features/feature-list.php:41
 msgid ""
 "<strong>Better Tables.</strong>. Data tables in front end and admin will "
 "support paging and sorting."
@@ -2793,7 +2896,7 @@ msgstr ""
 "<strong> Lepsze tabele. </strong> Tabele danych na froncie i admin będą "
 "obsługiwać stronicowanie i sortowanie."
 
-#: pro-features/feature-list.php:41
+#: pro-features/feature-list.php:42
 msgid ""
 "<strong>Admin: Extra Settings</strong>. Extra settings to customise the "
 "plugin will be added e.g. number of plot points on graph, rows per page, etc."
@@ -2806,7 +2909,7 @@ msgstr ""
 msgid "Measurements are in"
 msgstr "Pomiary są w"
 
-#: pro-features/footable.php:61 pro-features/functions.php:409
+#: pro-features/footable.php:61 pro-features/functions.php:412
 msgid "cm"
 msgstr "cm"
 
@@ -2814,11 +2917,11 @@ msgstr "cm"
 msgid "First entry"
 msgstr "Pierwszy wpis"
 
-#: pro-features/footable.php:208 pro-features/user-groups.php:577
+#: pro-features/footable.php:208 pro-features/user-groups.php:616
 msgid "User"
 msgstr "Użytkownik"
 
-#: pro-features/footable.php:216 pro-features/user-groups.php:581
+#: pro-features/footable.php:216 pro-features/user-groups.php:620
 msgid "Difference"
 msgstr "Różnica"
 
@@ -2826,31 +2929,31 @@ msgstr "Różnica"
 msgid "Body Mass Index"
 msgstr "Wskaźnik masy ciała"
 
-#: pro-features/footable.php:295 pro-features/plus/awards/hooks.php:294
+#: pro-features/footable.php:297 pro-features/plus/awards/hooks.php:294
 msgid "Add"
 msgstr "Dodaj"
 
-#: pro-features/footable.php:296
+#: pro-features/footable.php:298
 msgid "Add Custom Field"
 msgstr "Dodaj pole niestandardowe"
 
-#: pro-features/footable.php:297
+#: pro-features/footable.php:299
 msgid "Add Award"
 msgstr "Dodaj nagrodę"
 
-#: pro-features/footable.php:298
+#: pro-features/footable.php:300
 msgid "Are you sure you want to delete the row?"
 msgstr "Czy na pewno chcesz usunąć wiersz?"
 
-#: pro-features/footable.php:299
+#: pro-features/footable.php:301
 msgid "Unfortunately there was an error deleting the row."
 msgstr "Niestety wystąpił błąd podczas usuwania wiersza."
 
-#: pro-features/footable.php:300
+#: pro-features/footable.php:302
 msgid "Search"
 msgstr "Szukaj"
 
-#: pro-features/footable.php:301
+#: pro-features/footable.php:303
 msgid "No data found"
 msgstr "Nie znaleziono danych"
 
@@ -2877,9 +2980,9 @@ msgstr "Pokaż wszystkie"
 msgid "User Information"
 msgstr "Informacje o użytkowniku"
 
-#: pro-features/functions-pages.php:94 pro-features/user-groups.php:580
-msgid "Latest Weight"
-msgstr "Najnowsza waga"
+#: pro-features/functions-pages.php:86
+msgid "No. of Entries"
+msgstr "Liczba wpisów"
 
 #: pro-features/functions-pages.php:98
 msgid "Diff. from Start"
@@ -2902,6 +3005,7 @@ msgid "Aim"
 msgstr "Cel"
 
 #: pro-features/functions-pages.php:133
+#: pro-features/plus/challenge/functions.php:448
 msgid "Gender"
 msgstr "Płeć"
 
@@ -2950,16 +3054,13 @@ msgid "Are you sure you wish to remove the data for this user?"
 msgstr "Czy na pewno chcesz usunąć dane tego użytkownika?"
 
 #: pro-features/functions-pages.php:296
+#: pro-features/plus/challenge/admin.page.php:137
 msgid "Back"
 msgstr "Z powrotem"
 
 #: pro-features/functions-pages.php:298
 msgid "WordPress Record"
 msgstr "Rekord WordPress"
-
-#: pro-features/functions-pages.php:300
-msgid "Weight Tracker Record"
-msgstr "Rejestr śledzenia wagi"
 
 #: pro-features/functions.php:6
 msgid "Cm"
@@ -2969,75 +3070,71 @@ msgstr "Cm"
 msgid "Add Height for BMI"
 msgstr "Dodaj wysokość dla BMI"
 
-#: pro-features/functions.php:47 pro-features/functions.php:75
+#: pro-features/functions.php:51 pro-features/functions.php:79
 msgid "Underweight"
 msgstr "Niedowaga"
 
-#: pro-features/functions.php:49 pro-features/functions.php:76
+#: pro-features/functions.php:53 pro-features/functions.php:80
 msgid "Healthy"
 msgstr "Zdrowy"
 
-#: pro-features/functions.php:52 pro-features/functions.php:77
+#: pro-features/functions.php:56 pro-features/functions.php:81
 msgid "Overweight"
 msgstr "Nadwaga"
 
-#: pro-features/functions.php:54 pro-features/functions.php:78
+#: pro-features/functions.php:58 pro-features/functions.php:82
 msgid "Heavily Overweight"
 msgstr "Mocno nadwaga"
 
-#: pro-features/functions.php:247 pro-features/plus/harris-benedict.php:273
+#: pro-features/functions.php:250 pro-features/plus/harris-benedict.php:316
 msgid "Female"
 msgstr "Płeć żeńska"
 
-#: pro-features/functions.php:248 pro-features/plus/harris-benedict.php:273
+#: pro-features/functions.php:251 pro-features/plus/harris-benedict.php:316
 msgid "Male"
 msgstr "Męski"
 
-#: pro-features/functions.php:261
+#: pro-features/functions.php:264
 msgid "Little / No Exercise"
 msgstr "Małe / Brak ćwiczeń"
 
-#: pro-features/functions.php:262
+#: pro-features/functions.php:265
 msgid "Light Exercise"
 msgstr "Lekkie ćwiczenia"
 
-#: pro-features/functions.php:263
+#: pro-features/functions.php:266
 msgid "Moderate Exercise (3-5 days a week)"
 msgstr "Umiarkowane ćwiczenia (3-5 dni w tygodniu)"
 
-#: pro-features/functions.php:264
+#: pro-features/functions.php:267
 msgid "Very Active (6-7 days a week)"
 msgstr "Bardzo aktywny (6-7 dni w tygodniu)"
 
-#: pro-features/functions.php:265
+#: pro-features/functions.php:268
 msgid "Extra Active (very active & physical job)"
 msgstr "Extra Active (bardzo aktywna i fizyczna praca)"
 
-#: pro-features/functions.php:282
+#: pro-features/functions.php:285
 msgid "Maintain current weight"
 msgstr "Utrzymaj aktualną wagę"
 
-#: pro-features/functions.php:283
+#: pro-features/functions.php:286
 msgid "Lose weight"
 msgstr "Schudnąć"
 
-#: pro-features/functions.php:284
+#: pro-features/functions.php:287
 msgid "Gain weight"
 msgstr "Przybierać na wadze"
 
-#: pro-features/functions.php:423 pro-features/functions.php:499
+#: pro-features/functions.php:426 pro-features/functions.php:502
 #: pro-features/shortcode-various.php:61 pro-features/shortcode-various.php:80
 #: pro-features/shortcode-various.php:96 pro-features/shortcode-various.php:112
 msgid "Not Specified"
 msgstr "Nieokreślony"
 
-#: pro-features/functions.php:572
+#: pro-features/functions.php:575
 msgid "Error: The user does not appear to exist"
 msgstr "Błąd: wydaje się, że użytkownik nie istnieje"
-
-#: pro-features/init.php:73
-msgid "View weight entries"
-msgstr "Wyświetl wpisy wagi"
 
 #: pro-features/plus/awards/functions.php:32
 msgid "Weight %"
@@ -3063,7 +3160,7 @@ msgstr "Zmiana wagi w procentach"
 
 #: pro-features/plus/awards/functions.php:60
 #: pro-features/plus/harris-benedict.php:69
-#: pro-features/plus/macronutrient-calculator.php:311
+#: pro-features/plus/macronutrient-calculator.php:314
 msgid "Gain"
 msgstr "Zdobyć"
 
@@ -3121,19 +3218,287 @@ msgstr "Nie określono wysokości"
 msgid "No Weight entered"
 msgstr "Nie wprowadzono wagi"
 
+#: pro-features/plus/challenge/admin.page.php:35
+#, fuzzy
+#| msgid "Please select or enter a value for height."
+msgid "Please ensure you enter a name for the challenge."
+msgstr "Wybierz lub wprowadź wartość wysokości."
+
+#: pro-features/plus/challenge/admin.page.php:49
+msgid "There was an error saving the challenge to the database."
+msgstr ""
+
+#: pro-features/plus/challenge/admin.page.php:67
+msgid "Current Challenges"
+msgstr ""
+
+#: pro-features/plus/challenge/admin.page.php:72
+msgid "Add a challenge"
+msgstr ""
+
+#: pro-features/plus/challenge/admin.page.php:75
+msgid ""
+"Why not create challenges for your users and build a league table for a "
+"given time period?"
+msgstr ""
+
+#: pro-features/plus/challenge/admin.page.php:84
+#, fuzzy
+#| msgid "User Experience"
+msgid "User Opt-in"
+msgstr "Doświadczenie użytkownika"
+
+#: pro-features/plus/challenge/admin.page.php:86
+msgid ""
+"By default, all of your users are opted out of challenges. This saves their "
+"name and data being displayed in public challenge tables.\n"
+"                                                    The user will need to "
+"opt-in to participate. To do this, they can either update their preferences "
+"(a new option has been added)\n"
+"                                                      or you can place this "
+"shortcode [wlt-challenges-optin] to provide simple links allowing them to "
+"opt in, or out. \n"
+"                                                        "
+msgstr ""
+
+#: pro-features/plus/challenge/admin.page.php:91
+msgid "Performance"
+msgstr ""
+
+#: pro-features/plus/challenge/admin.page.php:93
+msgid ""
+"Performance: Please be aware, that every time a user updates their profile "
+"by adding or editing a weight, their statistics are\n"
+"                                                        recalculated for "
+"every challenge that isn't closed. As the number of challenges grow and "
+"remain open, the greater the work load on your web server.\n"
+"                                                        Please ensure you "
+"close (or delete) every challenge when expired. \n"
+"                                                        "
+msgstr ""
+
+#: pro-features/plus/challenge/admin.page.php:103
+#, fuzzy
+#| msgid "Add a new weight"
+msgid "Add a new challenge"
+msgstr "Dodaj nową wagę"
+
+#: pro-features/plus/challenge/admin.page.php:117
+msgid "Name of challenge"
+msgstr ""
+
+#: pro-features/plus/challenge/admin.page.php:119
+msgid "Start Date (only consider entries from this date)"
+msgstr ""
+
+#: pro-features/plus/challenge/admin.page.php:121
+msgid "End Date (only consider entries to this date)"
+msgstr ""
+
+#: pro-features/plus/challenge/admin.page.php:132
+#, fuzzy
+#| msgid "Entries for this user"
+msgid "Entries for this challenge"
+msgstr "Wpisy dla tego użytkownika"
+
+#: pro-features/plus/challenge/admin.page.php:150
+msgid "Processing..."
+msgstr ""
+
+#: pro-features/plus/challenge/admin.page.php:152
+msgid ""
+"Processing existing entries for this challenge. This page will keep "
+"refreshing until the initial challenge data has been processed."
+msgstr ""
+
+#: pro-features/plus/challenge/admin.page.php:157
+msgid "entries processed"
+msgstr ""
+
+#: pro-features/plus/challenge/admin.page.php:187
+#, fuzzy
+#| msgid "Emails Disabled"
+msgid "Challenges Disabled"
+msgstr "Wyłączone wiadomości e-mail"
+
+#: pro-features/plus/challenge/admin.page.php:190
+msgid "Challenges are currently disabled. Please enable via the"
+msgstr ""
+
+#: pro-features/plus/challenge/admin.page.php:191
+msgid "page"
+msgstr ""
+
+#: pro-features/plus/challenge/functions.php:178
+#: pro-features/user-groups.php:615
+msgid "ID"
+msgstr "ID"
+
+#: pro-features/plus/challenge/functions.php:179
+#: pro-features/plus/challenge/functions.php:318
+#: pro-features/shortcode-stats.php:34 pro-features/user-groups.php:569
+msgid "Name"
+msgstr "Imię"
+
+#: pro-features/plus/challenge/functions.php:180
+#, fuzzy
+#| msgid "Start Weight"
+msgid "Start Date"
+msgstr "Waga startowa"
+
+#: pro-features/plus/challenge/functions.php:181
+#, fuzzy
+#| msgid "Date"
+msgid "End Date"
+msgstr "Data"
+
+#: pro-features/plus/challenge/functions.php:182
+#, fuzzy
+#| msgid "No. of Entries"
+msgid "No. entries"
+msgstr "Liczba wpisów"
+
+#: pro-features/plus/challenge/functions.php:183
+#, fuzzy
+#| msgid "Entries for this user"
+msgid "Entries to process"
+msgstr "Wpisy dla tego użytkownika"
+
+#: pro-features/plus/challenge/functions.php:184
+msgid "Closed"
+msgstr ""
+
+#: pro-features/plus/challenge/functions.php:215
+#, fuzzy
+#| msgid "View all data"
+msgid "View challenge data"
+msgstr "Wyświetl wszystkie dane"
+
+#: pro-features/plus/challenge/functions.php:216
+msgid "Close challenge"
+msgstr ""
+
+#: pro-features/plus/challenge/functions.php:217
+#, fuzzy
+#| msgid "Delete Cache"
+msgid "Delete challenge"
+msgstr "Usuń pamięć podręczną"
+
+#: pro-features/plus/challenge/functions.php:236
+#, fuzzy
+#| msgid "Total Weight Difference"
+msgid "Total Weight Loss"
+msgstr "Całkowita różnica wagi"
+
+#: pro-features/plus/challenge/functions.php:237
+#, fuzzy
+#| msgid "BMI: Change"
+msgid "BMI Change"
+msgstr "BMI: Zmień"
+
+#: pro-features/plus/challenge/functions.php:238
+#, fuzzy
+#| msgid "No height"
+msgid "% Body Weight"
+msgstr "Bez wysokości"
+
+#: pro-features/plus/challenge/functions.php:239
+msgid "Meal Tracker Streaks (Days)"
+msgstr ""
+
+#: pro-features/plus/challenge/functions.php:240
+#, fuzzy
+#| msgid "Weight Tracker"
+msgid "Weight Tracker Streaks (Weeks)"
+msgstr "Analizator wagi"
+
+#: pro-features/plus/challenge/functions.php:414
+#, fuzzy
+#| msgid "Summary"
+msgid "Sum"
+msgstr "streszczenie"
+
+#: pro-features/plus/challenge/functions.php:416
+msgid "Average"
+msgstr ""
+
+#: pro-features/plus/challenge/functions.php:451
+msgid "Age Range"
+msgstr ""
+
+#: pro-features/plus/challenge/functions.php:455
+#: pro-features/user-groups.php:113 pro-features/user-groups.php:142
+#: pro-features/user-groups.php:514
+msgid "Group"
+msgstr "Grupa"
+
+#: pro-features/plus/challenge/functions.php:460
+msgid "Opted in"
+msgstr ""
+
+#: pro-features/plus/challenge/functions.php:460
+msgid "Everyone"
+msgstr ""
+
+#: pro-features/plus/challenge/functions.php:463
+msgid "Filter"
+msgstr ""
+
+#: pro-features/plus/challenge/hooks.php:43
+msgid "No - Do not opt me into any challenges"
+msgstr ""
+
+#: pro-features/plus/challenge/hooks.php:45
+msgid "Yes - Opt me into challenges!"
+msgstr ""
+
+#: pro-features/plus/challenge/shortcodes.php:22
+#, fuzzy
+#| msgid "You have uploaded"
+msgid "You have been"
+msgstr "Przesłałeś"
+
+#: pro-features/plus/challenge/shortcodes.php:23
+msgid "opted into all challenges"
+msgstr ""
+
+#: pro-features/plus/challenge/shortcodes.php:23
+msgid "opted out of all challenges"
+msgstr ""
+
+#: pro-features/plus/challenge/shortcodes.php:45
+msgid "Opt in"
+msgstr ""
+
+#: pro-features/plus/challenge/shortcodes.php:47
+msgid "Opt Out"
+msgstr ""
+
+#: pro-features/plus/challenge/shortcodes.php:80
+#, fuzzy
+#| msgid "Display dates in the following formats:"
+msgid "Display data on the front end "
+msgstr "Wyświetl daty w następujących formatach:"
+
+#: pro-features/plus/challenge/shortcodes.php:81
+msgid ""
+"If you wish to display this table on a page or post, use the following "
+"shortcode: "
+msgstr ""
+
 #: pro-features/plus/harris-benedict.php:36
-#: pro-features/plus/macronutrient-calculator.php:311
+#: pro-features/plus/macronutrient-calculator.php:314
 msgid "Maintain"
 msgstr "Utrzymać"
 
 #: pro-features/plus/harris-benedict.php:58
-#: pro-features/plus/macronutrient-calculator.php:311
+#: pro-features/plus/macronutrient-calculator.php:314
 msgid "Lose"
 msgstr "Stracić"
 
-#: pro-features/plus/harris-benedict.php:116
-#: pro-features/plus/harris-benedict.php:198
-#: pro-features/plus/harris-benedict.php:242
+#: pro-features/plus/harris-benedict.php:155
+#: pro-features/plus/harris-benedict.php:241
+#: pro-features/plus/harris-benedict.php:285
 #: pro-features/plus/macronutrient-calculator.php:99
 #: pro-features/plus/macronutrient-calculator.php:207
 #: pro-features/plus/macronutrient-calculator.php:253
@@ -3145,36 +3510,36 @@ msgstr ""
 "spożycia kalorii, np. Poziom aktywności, datę urodzenia, aktualną wagę, płeć "
 "i wysokość."
 
-#: pro-features/plus/harris-benedict.php:133
+#: pro-features/plus/harris-benedict.php:172
 #: pro-features/plus/macronutrient-calculator.php:128
 msgid "Total"
 msgstr "Całkowity"
 
-#: pro-features/plus/harris-benedict.php:134
+#: pro-features/plus/harris-benedict.php:173
 #: pro-features/plus/macronutrient-calculator.php:129
 msgid "Breakfast"
 msgstr "Śniadanie"
 
-#: pro-features/plus/harris-benedict.php:135
+#: pro-features/plus/harris-benedict.php:174
 #: pro-features/plus/macronutrient-calculator.php:130
 msgid "Lunch"
 msgstr "Obiad"
 
-#: pro-features/plus/harris-benedict.php:136
+#: pro-features/plus/harris-benedict.php:175
 #: pro-features/plus/macronutrient-calculator.php:131
 msgid "Dinner"
 msgstr "Obiad"
 
-#: pro-features/plus/harris-benedict.php:137
+#: pro-features/plus/harris-benedict.php:176
 #: pro-features/plus/macronutrient-calculator.php:132
 msgid "Snacks"
 msgstr "Przekąski"
 
-#: pro-features/plus/harris-benedict.php:274
+#: pro-features/plus/harris-benedict.php:317
 msgid "calories for weight loss are capped at "
 msgstr "ograniczono kalorie do utraty wagi "
 
-#: pro-features/plus/harris-benedict.php:276
+#: pro-features/plus/harris-benedict.php:319
 msgid "This can be modified within "
 msgstr "Można to zmodyfikować wewnątrz "
 
@@ -3226,35 +3591,35 @@ msgstr "lub po cichu nie uda im się załadować."
 msgid "A note about photos"
 msgstr "Uwaga na temat zdjęć"
 
-#: pro-features/plus/meta-fields/functions.php:271
+#: pro-features/plus/meta-fields/functions.php:273
 msgid "Please enter a value for"
 msgstr "Wprowadź wartość dla"
 
-#: pro-features/plus/meta-fields/functions.php:294
+#: pro-features/plus/meta-fields/functions.php:296
 msgid "Please enter a number for"
 msgstr "Wprowadź numer dla"
 
-#: pro-features/plus/meta-fields/functions.php:369
+#: pro-features/plus/meta-fields/functions.php:371
 msgid "Replace photo"
 msgstr "Zastąp zdjęcie"
 
-#: pro-features/plus/meta-fields/functions.php:369
+#: pro-features/plus/meta-fields/functions.php:371
 msgid "Select photo"
 msgstr "Wybierz zdjęcie"
 
-#: pro-features/plus/meta-fields/functions.php:372
+#: pro-features/plus/meta-fields/functions.php:374
 msgid "Please select a photo (png or jpg) for"
 msgstr "Wybierz zdjęcie (png lub jpg) dla"
 
-#: pro-features/plus/meta-fields/functions.php:400
+#: pro-features/plus/meta-fields/functions.php:406
 msgid "Existing photo for this date"
 msgstr "Istniejące zdjęcie na tę datę"
 
-#: pro-features/plus/meta-fields/functions.php:404
+#: pro-features/plus/meta-fields/functions.php:410
 msgid "Delete existing photo"
 msgstr "Usuń istniejące zdjęcie"
 
-#: pro-features/plus/meta-fields/functions.php:405
+#: pro-features/plus/meta-fields/functions.php:411
 msgid "Existing photo"
 msgstr "Istniejące zdjęcie"
 
@@ -3290,23 +3655,23 @@ msgstr ""
 "Jeśli użytkownik przesłał to jako część postępu w śledzeniu masy, "
 "prawdopodobnie nie chce, aby był widoczny na publicznej stronie załącznika!"
 
-#: pro-features/plus/shortcode.wlt.php:30
+#: pro-features/plus/shortcode.wlt.php:31
 msgid "You have uploaded"
 msgstr "Przesłałeś"
 
-#: pro-features/plus/shortcode.wlt.php:32
+#: pro-features/plus/shortcode.wlt.php:33
 msgid "photos"
 msgstr "zdjęcia"
 
-#: pro-features/plus/shortcode.wlt.php:39
+#: pro-features/plus/shortcode.wlt.php:40
 msgid "It looks like you haven't uploaded any photos yet"
 msgstr "Wygląda na to, że jeszcze nie przesłałeś żadnych zdjęć"
 
-#: pro-features/plus/shortcode.wlt.php:68
+#: pro-features/plus/shortcode.wlt.php:70
 msgid "BMI (Body Mass Index)"
 msgstr "BMI (Body Mass Index)"
 
-#: pro-features/plus/shortcode.wlt.php:73
+#: pro-features/plus/shortcode.wlt.php:75
 msgid ""
 "The BMI (Body Mass Index) is used by the medical profession to quickly "
 "determine a person’s weight in regard to their height. From a straight "
@@ -3318,17 +3683,17 @@ msgstr ""
 "współczynnik BMI i można go użyć do określenia, czy dana osoba ma niedowagę, "
 "prawidłową wagę, nadwagę lub otyłość."
 
-#: pro-features/plus/shortcode.wlt.php:80
+#: pro-features/plus/shortcode.wlt.php:82
 msgid "Your current BMI is"
 msgstr "Twój obecny BMI to"
 
-#: pro-features/plus/shortcode.wlt.php:86
+#: pro-features/plus/shortcode.wlt.php:88
 msgid ""
 "Before we can calculate your BMI, we need your current weight and height."
 msgstr ""
 "Zanim będziemy mogli obliczyć BMI, potrzebujemy aktualnej wagi i wzrostu."
 
-#: pro-features/plus/shortcode.wlt.php:91
+#: pro-features/plus/shortcode.wlt.php:93
 msgid ""
 "To allow us to calculate this, we need your latest weight, date of birth, "
 "height and gender."
@@ -3336,11 +3701,11 @@ msgstr ""
 "Abyśmy mogli to obliczyć, potrzebujemy Twojej ostatniej wagi, daty "
 "urodzenia, wzrostu i płci."
 
-#: pro-features/plus/shortcode.wlt.php:95
+#: pro-features/plus/shortcode.wlt.php:97
 msgid "BMR (Basal Metabolic Rate)"
 msgstr "BMR (Basal Metabolic Rate)"
 
-#: pro-features/plus/shortcode.wlt.php:99
+#: pro-features/plus/shortcode.wlt.php:101
 msgid ""
 "BMR is short for Basal Metabolic Rate. The Basal Metabolic Rate is the "
 "number of calories required to keep your body functioning at rest, also "
@@ -3352,15 +3717,15 @@ msgstr ""
 "zwanego również metabolizmem. Obliczamy BMR za pomocą wzorów dostarczonych "
 "przez www.diabetes.co.uk."
 
-#: pro-features/plus/shortcode.wlt.php:106
+#: pro-features/plus/shortcode.wlt.php:108
 msgid "Your current BMR is"
 msgstr "Twój obecny BMR to"
 
-#: pro-features/plus/shortcode.wlt.php:117
+#: pro-features/plus/shortcode.wlt.php:119
 msgid "Suggested Calorie Intake"
 msgstr "Sugerowane spożycie kalorii"
 
-#: pro-features/plus/shortcode.wlt.php:122
+#: pro-features/plus/shortcode.wlt.php:124
 msgid ""
 "Once we know your BMR (the number of calories to keep you functioning at "
 "rest), we can go on to give you suggestions on how to spread your calorie "
@@ -3380,11 +3745,11 @@ msgstr ""
 "dane można podzielić, zalecając, jak podzielić spożycie kalorii w ciągu "
 "dnia, tj. Śniadanie, lunch, obiad i przekąski."
 
-#: pro-features/plus/shortcode.wlt.php:139
+#: pro-features/plus/shortcode.wlt.php:141
 msgid "Macronutrients"
 msgstr "Makroskładniki"
 
-#: pro-features/plus/shortcode.wlt.php:146
+#: pro-features/plus/shortcode.wlt.php:148
 msgid ""
 "With calories calculated, the we can recommend how those calories should be "
 "split into Fats, Carbohydrates and Proteins.  Based on 2010 Dietary "
@@ -3394,11 +3759,11 @@ msgstr ""
 "węglowodany i białka. Na podstawie wytycznych dietetycznych dla Amerykanów z "
 "2010 r. Podzieliliśmy go w następujący sposób:"
 
-#: pro-features/plus/shortcode.wlt.php:149
+#: pro-features/plus/shortcode.wlt.php:151
 msgid "of calories, Fat"
 msgstr "kalorii, tłuszcz"
 
-#: pro-features/plus/shortcode.wlt.php:151
+#: pro-features/plus/shortcode.wlt.php:153
 msgid "and Protein"
 msgstr "i białko"
 
@@ -3466,13 +3831,9 @@ msgstr "Pamiętaj, aby wprowadzić swoją wagę i wymiary na dzisiaj."
 msgid "Please remember to enter your weight for today."
 msgstr "Pamiętaj, aby wprowadzić swoją wagę na dzisiaj."
 
-#: pro-features/shortcode-stats.php:8 pro-features/shortcode-stats.php:119
+#: pro-features/shortcode-stats.php:8 pro-features/shortcode-stats.php:111
 msgid "Stats disabled"
 msgstr "Statystyki wyłączone"
-
-#: pro-features/shortcode-stats.php:34 pro-features/user-groups.php:530
-msgid "Name"
-msgstr "Imię"
 
 #: pro-features/shortcode-stats.php:35
 msgid "Weight Difference"
@@ -3482,7 +3843,7 @@ msgstr "Różnica wagi"
 msgid "No of entries"
 msgstr "Liczba wpisów"
 
-#: pro-features/shortcode-stats.php:112
+#: pro-features/shortcode-stats.php:104
 msgid ""
 "The league table has not been generated yet. This is a scheduled task so "
 "please check back in 15 minutes or try pressing the button below."
@@ -3490,11 +3851,11 @@ msgstr ""
 "Tabela ligowa nie została jeszcze wygenerowana. To jest zaplanowane zadanie, "
 "więc sprawdź ponownie za 15 minut lub spróbuj nacisnąć przycisk poniżej."
 
-#: pro-features/shortcode-stats.php:146
+#: pro-features/shortcode-stats.php:138
 msgid "Lost"
 msgstr "Stracony"
 
-#: pro-features/shortcode-stats.php:146
+#: pro-features/shortcode-stats.php:138
 msgid "Gained"
 msgstr "Zyskał"
 
@@ -3506,143 +3867,135 @@ msgstr "Potrzebna wysokość"
 msgid "Weight needed"
 msgstr "Potrzebna waga"
 
-#: pro-features/user-groups.php:113 pro-features/user-groups.php:142
-msgid "Group"
-msgstr "Grupa"
-
 #: pro-features/user-groups.php:149
 msgid "Add / remove Groups"
 msgstr "Dodaj / usuń grupy"
 
-#: pro-features/user-groups.php:529
+#: pro-features/user-groups.php:568
 #, fuzzy
 #| msgid "Group"
 msgid "Group ID"
 msgstr "Grupa"
 
-#: pro-features/user-groups.php:531
+#: pro-features/user-groups.php:570
 #, fuzzy
 #| msgid "User"
 msgid "No. Users"
 msgstr "Użytkownik"
 
-#: pro-features/user-groups.php:533
+#: pro-features/user-groups.php:572
 msgid "Total Weight Difference"
 msgstr "Całkowita różnica wagi"
 
-#: pro-features/user-groups.php:576
-msgid "ID"
-msgstr "ID"
-
-#: pro-features/user-groups.php:578
+#: pro-features/user-groups.php:617
 #, fuzzy
 #| msgid "No. of Entries"
 msgid "No. Entries"
 msgstr "Liczba wpisów"
 
-#: pro-features/user-groups.php:686
+#: pro-features/user-groups.php:725
 msgid "Group ID not found"
 msgstr "Nie znaleziono identyfikatora grupy"
 
-#: pro-features/user-groups.php:698
+#: pro-features/user-groups.php:737
 msgid "No Group"
 msgstr "Brak grupy"
 
-#: pro-features/user-preferences.php:8
+#: pro-features/user-preferences.php:13
 msgid "You must be logged in to edit your settings."
 msgstr "Musisz być zalogowany, aby edytować swoje ustawienia."
 
-#: pro-features/user-preferences.php:29
+#: pro-features/user-preferences.php:34
 msgid "About You:"
 msgstr "O Tobie:"
 
-#: pro-features/user-preferences.php:30
+#: pro-features/user-preferences.php:35
 msgid "Your height:"
 msgstr "Twój wzrost:"
 
-#: pro-features/user-preferences.php:31
+#: pro-features/user-preferences.php:36
 msgid "In which unit would you like to record your weight:"
 msgstr "W jakiej jednostce chcesz zapisać swoją wagę:"
 
-#: pro-features/user-preferences.php:32
+#: pro-features/user-preferences.php:37
 msgid "In which unit would you like to record your measurements:"
 msgstr "W jakiej jednostce chcesz zapisać swoje pomiary:"
 
-#: pro-features/user-preferences.php:33
+#: pro-features/user-preferences.php:38
 msgid "Display dates in the following formats:"
 msgstr "Wyświetl daty w następujących formatach:"
 
-#: pro-features/user-preferences.php:34
+#: pro-features/user-preferences.php:39
 msgid "Your Gender:"
 msgstr "Twoja płeć:"
 
-#: pro-features/user-preferences.php:35
+#: pro-features/user-preferences.php:40
 msgid "Your Date of Birth:"
 msgstr "Twoja data urodzenia:"
 
-#: pro-features/user-preferences.php:36
+#: pro-features/user-preferences.php:41
 msgid "Your Activity Level:"
 msgstr "Twój poziom aktywności:"
 
-#: pro-features/user-preferences.php:37
+#: pro-features/user-preferences.php:42
 msgid "Your aim:"
 msgstr "Twój cel:"
 
-#: pro-features/user-preferences.php:43
+#: pro-features/user-preferences.php:49
 msgid "About User:"
 msgstr "O użytkowniku:"
 
-#: pro-features/user-preferences.php:44
+#: pro-features/user-preferences.php:50
 msgid "Height:"
 msgstr "Wysokość:"
 
-#: pro-features/user-preferences.php:45
+#: pro-features/user-preferences.php:51
 msgid "Weight unit:"
 msgstr "Jednostka wagi:"
 
-#: pro-features/user-preferences.php:46
+#: pro-features/user-preferences.php:52
 msgid "Measurements unit:"
 msgstr "Jednostka miary:"
 
-#: pro-features/user-preferences.php:47
+#: pro-features/user-preferences.php:53
 msgid "Date format:"
 msgstr "Format daty:"
 
-#: pro-features/user-preferences.php:48
+#: pro-features/user-preferences.php:54
 msgid "Gender:"
 msgstr "Płeć:"
 
-#: pro-features/user-preferences.php:49
+#: pro-features/user-preferences.php:55
 msgid "Date of Birth:"
 msgstr "Data urodzenia:"
 
-#: pro-features/user-preferences.php:50
+#: pro-features/user-preferences.php:56
 msgid "Activity Level:"
 msgstr "Poziom aktywności:"
 
-#: pro-features/user-preferences.php:51
+#: pro-features/user-preferences.php:57
 msgid "Aim:"
 msgstr "Cel:"
 
-#: pro-features/user-preferences.php:199
+#: pro-features/user-preferences.php:208
 msgid "Save Settings"
 msgstr "Zapisz ustawienia"
 
-#: pro-features/user-preferences.php:207
+#: pro-features/user-preferences.php:216
 msgid "Delete existing data"
 msgstr "Usuń istniejące dane"
 
-#: pro-features/user-preferences.php:213
+#: pro-features/user-preferences.php:222
 msgid ""
 "The button below allows you to clear your existing weight history. Confirm:"
 msgstr ""
 "Przycisk poniżej pozwala wyczyścić istniejącą historię wag. Potwierdzać:"
 
-#: pro-features/user-preferences.php:216
+#: pro-features/user-preferences.php:225
 msgid "DELETE ALL DATA"
 msgstr "USUŃ WSZYSTKIE DANE"
 
-#: pro-features/user-preferences.php:218
+#: pro-features/user-preferences.php:227
 msgid "Delete"
 msgstr "Kasować"
 
@@ -3654,7 +4007,6 @@ msgstr "Tracker wagi - wykres"
 msgid "Display a chart to see your current progress."
 msgstr "Wyświetl wykres, aby zobaczyć swój bieżący postęp."
 
-#. Plugin Name of the plugin/theme
 #: pro-features/widget-chart.php:17
 msgid "Weight Tracker"
 msgstr "Analizator wagi"
@@ -3790,28 +4142,28 @@ msgstr "Czas trwania animacji"
 msgid "Text to be displayed under bar. Use {t} to display target weight."
 msgstr "Tekst wyświetlany pod paskiem. Użyj {t}, aby wyświetlić wagę docelową."
 
-#. Description of the plugin/theme
-msgid ""
-"Allow your users to track their weight, measurements and other pieces of "
-"custom data. Display in charts, tables, shortcodes and widgets. Manage their "
-"data, issue awards, email notifications, etc! Provide advanced data on Body "
-"Mass Index (BMI), Basal Metabolic Rate (BMR), Calorie intake, Harris "
-"Benedict Formula, Macronutrients Calculator and more."
-msgstr ""
-"Pozwól swoim użytkownikom śledzić ich wagę, pomiary i inne dane "
-"niestandardowe. Wyświetl w wykresach, tabelach, skrótach i widżetach. "
-"Zarządzaj ich danymi, przyznawaj nagrody, powiadomienia e-mail itp.! "
-"Zapewnij zaawansowane dane dotyczące wskaźnika masy ciała (BMI), podstawowej "
-"przemiany materii (BMR), spożycia kalorii, formuły Harris Benedict, "
-"kalkulatora składników odżywczych i innych."
+#~ msgid ""
+#~ "Allow your users to track their weight, measurements and other pieces of "
+#~ "custom data. Display in charts, tables, shortcodes and widgets. Manage "
+#~ "their data, issue awards, email notifications, etc! Provide advanced data "
+#~ "on Body Mass Index (BMI), Basal Metabolic Rate (BMR), Calorie intake, "
+#~ "Harris Benedict Formula, Macronutrients Calculator and more."
+#~ msgstr ""
+#~ "Pozwól swoim użytkownikom śledzić ich wagę, pomiary i inne dane "
+#~ "niestandardowe. Wyświetl w wykresach, tabelach, skrótach i widżetach. "
+#~ "Zarządzaj ich danymi, przyznawaj nagrody, powiadomienia e-mail itp.! "
+#~ "Zapewnij zaawansowane dane dotyczące wskaźnika masy ciała (BMI), "
+#~ "podstawowej przemiany materii (BMR), spożycia kalorii, formuły Harris "
+#~ "Benedict, kalkulatora składników odżywczych i innych."
 
-#. Author of the plugin/theme
-msgid "YeKen"
-msgstr "YeKen"
+#~ msgid "YeKen"
+#~ msgstr "YeKen"
 
-#. Author URI of the plugin/theme
-msgid "https://www.YeKen.uk"
-msgstr "https://www.YeKen.uk"
+#~ msgid "https://www.YeKen.uk"
+#~ msgstr "https://www.YeKen.uk"
+
+#~ msgid "Recent Weight"
+#~ msgstr "Ostatnia waga"
 
 #~ msgid "Send usage data to YeKen?"
 #~ msgstr "Wysyłać dane użytkowania do YeKen?"

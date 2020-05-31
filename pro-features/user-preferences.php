@@ -176,7 +176,8 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
     // Preferences
     //-------------------------------------------------------
 
-    $html_output .= ws_ls_title(__('Preferences', WE_LS_SLUG));
+    $html_output 		.= ws_ls_title(__('Preferences', WE_LS_SLUG));
+    $measurement_unit 	= ws_ls_get_config('WE_LS_MEASUREMENTS_UNIT', $user_id );
 
   	$html_output .= '
 	<label>' . $labels['weight'] . '</label>
@@ -190,8 +191,8 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
 		$html_output .= '
 			<label>' . $labels['measurements'] . '</label>
 		    <select id="WE_LS_MEASUREMENTS_UNIT" name="WE_LS_MEASUREMENTS_UNIT"  tabindex="' . ws_ls_get_next_tab_index() . '">
-		    	<option value="cm" ' . selected( ws_ls_get_config('WE_LS_MEASUREMENTS_UNIT', $user_id), 'cm', false ) . '>' . __('Centimetres', WE_LS_SLUG) . '</option>
-		    	<option value="inches" ' . selected( ws_ls_get_config('WE_LS_MEASUREMENTS_UNIT', $user_id), 'inches', false ) . '>' . __('Inches', WE_LS_SLUG) . '</option>
+		    	<option value="cm" ' . selected( $measurement_unit, 'cm', false ) . '>' . __('Centimetres', WE_LS_SLUG) . '</option>
+		    	<option value="inches" ' . selected( $measurement_unit, 'inches', false ) . '>' . __('Inches', WE_LS_SLUG) . '</option>
 		    </select>
 		';
 	}

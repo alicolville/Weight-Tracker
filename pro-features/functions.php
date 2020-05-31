@@ -253,6 +253,18 @@ function ws_ls_genders() {
 }
 
 /**
+ * Return gender for given id
+ * @param $id
+ * @return mixed|string
+ */
+function ws_ls_genders_get( $id ) {
+
+	$genders = ws_ls_genders();
+
+	return ( false === empty( $genders[ $id ] ) ) ? $genders[ $id ] : '';
+}
+
+/**
  * Return an array of activity levels
  *
  * @return array
@@ -580,6 +592,8 @@ function ws_user_exist_check($user_id) {
  * Used by the Calories and MacroN shortcodes to convert user's aim preference into a string for the progress attribute.
  *
  * @return string
+ *
+ * Note: Used by Meal Tracker
  */
 function ws_ls_get_progress_attribute_from_aim() {
 
