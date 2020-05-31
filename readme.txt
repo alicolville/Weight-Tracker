@@ -151,11 +151,15 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 == Upgrade Notice ==
 
-7.5 - Challenges added.
+7.7 - Numeric custom fields can now be plotted on charts.
 
 == Changelog ==
 
 = 7.7 =
+
+// TODO: Deprecate Bar Chart
+
+* Improvement: Allow numeric custom fields to be plotted on charts.
 
 = 7.6 =
 

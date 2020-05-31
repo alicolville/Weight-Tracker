@@ -28,6 +28,8 @@
                 mandatory int DEFAULT 1,
                 enabled int DEFAULT 1,
                 hide_from_shortcodes int DEFAULT 0,
+                plot_on_graph int DEFAULT 0,
+                plot_colour varchar(10) NOT NULL
                 `system` BIT DEFAULT 0,
                 field_type int NOT NULL,
                 sort int DEFAULT 100,
