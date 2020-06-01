@@ -103,7 +103,9 @@ function ws_ls_help_page() {
 								<p><?php echo __( 'This will migrate enabled measurement fields and data across to Custom Fields.', WE_LS_SLUG ); ?></p>
 								<p><a href="<?php echo esc_url( admin_url( 'admin.php?page=ws-ls-help&yeken=y&custom-fields-migrate=y') ); ?>" >Run</a></p>
 								<?php
-									do_action( 'ws-ls-migrate-old-measurements' );
+									if ( false === empty( $_GET[ 'custom-fields-migrate' ] ) ) {
+										do_action( 'ws-ls-migrate-old-measurements' );
+									}
 								?>
 							</div>
 						</div>

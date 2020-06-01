@@ -37,6 +37,11 @@ function ws_ls_migrate_measurement_into_meta_fields() {
 		$unit 		= get_option( 'ws-ls-measurement-units', 'cm' );
 		$mandatory	= ( 'yes' == get_option( 'ws-ls-measurements-mandatory', 'no' ) ) ? 2 : 1;
 
+		global $wpdb;
+
+		// Reset Migrate flag on DB
+		$result = $wpdb->query ( 'Update ' . $table_name = $wpdb->prefix . WE_LS_TABLENAME . ' set migrate = 0' );
+
 		foreach ( $keys as $key ) {
 
 			// Load details for existing measurement fields
@@ -64,23 +69,35 @@ function ws_ls_migrate_measurement_into_meta_fields() {
 						'mandatory'		=> $mandatory,
 						'enabled'		=> 2,
 						'plot_on_graph'	=> 0,
-						'plot_colour'	=> ( false === empty( $measurements[ 'colors' ][ $key ] ) ) ? $measurements[ 'colors' ][ $key ] : '#000000'
+						'plot_colour'	=> ( false === empty( $measurements[ 'colors' ][ $key ] ) ) ? $measurements[ 'colors' ][ $key ] : '#000000',
+						'migrate'		=> 1
 			];
 
 			ws_ls_log_add('migration', 'Adding measurement. ' . print_r( $field, true ) );
 
-			if ( false !== ws_ls_meta_fields_add( $field ) ) {
+			$meta_field_id = ws_ls_meta_fields_add( $field );
+
+			if ( false !== $meta_field_id ) {
 				ws_ls_log_add('migration', 'Success. ' . $key );
+
+				$result = $wpdb->query( 'INSERT INTO ' . $table_name = $wpdb->prefix . WE_LS_MYSQL_META_ENTRY . ' ( entry_id, meta_field_id, value, migrate )
+				SELECT id as entry_id, ' . (int) $meta_field_id  . ' as meta_field_id, ROUND( waist, 2 ) as value, 1 as migrate FROM ' . $table_name = $wpdb->prefix . WE_LS_TABLENAME . ' where ' . $key . ' is not null' );
+
+				ws_ls_log_add('migration', sprintf( 'Migrating data across: %s, copied: %d', $key, $result ) );
+
 			} else {
 				ws_ls_log_add('migration', 'Fail. ' . $key );
 			}
 
 			$order += 10;
 		}
+
+		$result = $wpdb->get_var( 'select count(id) from ' . $table_name = $wpdb->prefix . WE_LS_TABLENAME . ' where migrate = 1' );
+
+		ws_ls_log_add('migration', sprintf( 'Number of data rows identified for migration: %d', $result ) );
+
 	}
 }
-add_action( 'ws-ls-plugin-updated', 'ws_ls_migrate_measurement_into_meta_fields' );
-add_action( 'ws-ls-rebuild-database-tables', 'ws_ls_migrate_measurement_into_meta_fields' );
 add_action( 'ws-ls-migrate-old-measurements', 'ws_ls_migrate_measurement_into_meta_fields' );
 
 /**
