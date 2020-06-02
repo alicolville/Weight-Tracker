@@ -251,7 +251,6 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
     global $save_response;
     $html_output  = '';
 
-    $measurements_form_enabled = (WE_LS_MEASUREMENTS_ENABLED && ws_ls_any_active_measurement_fields() && false == $hide_measurements_form && !$target_form) ? true : false;
     $photo_form_enabled = ( false === $hide_photos_form && true === ws_ls_meta_fields_photo_any_enabled( true ) && false === $target_form);
     $meta_field_form_enabled = ( false === $hide_meta_fields_form && true === ws_ls_meta_fields_is_enabled() && ws_ls_meta_fields_number_of_enabled() > 0 && false === $target_form);
     $entry_id = NULL;
@@ -606,7 +605,6 @@ function ws_ls_get_js_config() {
 		'is-pro' => ( WS_LS_IS_PRO ) ? 'true' : 'false',
 		'user-id' => $user_id,
 		'current-url' => apply_filters( 'wlt_current_url', get_permalink() ),
-		'measurements-enabled' => ( WE_LS_MEASUREMENTS_ENABLED && true === ws_ls_any_active_measurement_fields() ) ? 'true' : 'false',
 		'photos-enabled' => ( ws_ls_meta_fields_photo_any_enabled( true ) ) ? 'true' : 'false',
 		'measurements-unit' => ws_ls_get_config('WE_LS_MEASUREMENTS_UNIT', $user_id ),
 		'validation-we-ls-measurements' => __('Please enter a valid measurement (' . WE_LS_MEASUREMENTS_UNIT . ') which is less that 1000.', WE_LS_SLUG),
