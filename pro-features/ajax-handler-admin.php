@@ -12,10 +12,10 @@ function ws_ls_get_table_data()
 	// Filter?
 	$max_entries = ws_ls_get_numeric_post_value('max_entries');
 	$user_id = ws_ls_get_numeric_post_value('user_id');
-	$table_id = ws_ls_ajax_post_value('table_id');
-	$small_width = ('true' === ws_ls_ajax_post_value('small_width')) ? true : false;
-	$front_end = ('true' === ws_ls_ajax_post_value('front-end')) ? true : false;
-    $order_direction = ws_ls_ajax_post_value( 'order-direction' );
+	$table_id = ws_ls_post_value('table_id');
+	$small_width = ('true' === ws_ls_post_value('small_width')) ? true : false;
+	$front_end = ('true' === ws_ls_post_value('front-end')) ? true : false;
+    $order_direction = ws_ls_post_value( 'order-direction' );
 
 	$data = array(
 					'columns' => ws_ls_data_table_get_columns( $small_width, $front_end ),
@@ -54,7 +54,7 @@ function ws_ls_ajax_get_errors(){
 
 	check_ajax_referer( 'ws-ls-user-tables', 'security' );
 
-	$table_id = ws_ls_ajax_post_value('table_id');
+	$table_id = ws_ls_post_value('table_id');
 
 	$columns = [
 		[ 'name' => 'timestamp', 'title' => __('Date', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'date' ],

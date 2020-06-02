@@ -83,7 +83,7 @@
 	                id mediumint(9) NOT NULL AUTO_INCREMENT,
 	                user_id mediumint(9) NOT NULL,
 	                group_id mediumint(9) NOT NULL,
-	                UNIQUE KEY id (id) 
+	                UNIQUE KEY id (id)
 	            ) $charset_collate;";
 
 		dbDelta( $sql );
@@ -187,7 +187,7 @@
 		// Update user group?
 		if ( true === $is_admin || true === ws_ls_groups_can_users_edit() ) {
 
-			$group_id =  ws_ls_ajax_post_value('ws-ls-group');
+			$group_id =  ws_ls_post_value('ws-ls-group');
 
 			ws_ls_groups_add_to_user( (int) $group_id, (int) $user_id );
 			ws_ls_cache_user_delete( 'groups-user-for-given' );
@@ -466,7 +466,7 @@
 		}
 
 		$sql = 'Select g.* from ' . $wpdb->prefix . WE_LS_MYSQL_GROUPS . ' g inner join
-		        ' . $wpdb->prefix . WE_LS_MYSQL_GROUPS_USER . ' u on g.id = u.group_id where u.user_id = %d 
+		        ' . $wpdb->prefix . WE_LS_MYSQL_GROUPS_USER . ' u on g.id = u.group_id where u.user_id = %d
 		        order by g.name asc';
 
 		$sql = $wpdb->prepare( $sql, $user_id );
@@ -558,7 +558,7 @@
 
 		check_ajax_referer( 'ws-ls-user-tables', 'security' );
 
-		$table_id = ws_ls_ajax_post_value('table_id');
+		$table_id = ws_ls_post_value('table_id');
 
 		if ( $cache = ws_ls_cache_user_get( 'groups', $table_id ) ) {
 			wp_send_json( $cache );
@@ -604,8 +604,8 @@
 
 		check_ajax_referer( 'ws-ls-user-tables', 'security' );
 
-		$table_id = ws_ls_ajax_post_value( 'table_id' );
-		$group_id = ws_ls_ajax_post_value( 'group_id' );
+		$table_id = ws_ls_post_value( 'table_id' );
+		$group_id = ws_ls_post_value( 'group_id' );
 
 		if ( $cache = ws_ls_cache_user_get( 'groups-user-for-given', 'ajax-' . $group_id ) ) {
 			wp_send_json( $cache );

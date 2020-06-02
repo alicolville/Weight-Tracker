@@ -8,7 +8,7 @@ function ws_ls_save_preferences_callback()
 
 	check_ajax_referer( 'ws-ls-nonce', 'security' );
 
-	$in_admin_area = ws_ls_ajax_post_value('we-ls-in-admin');
+	$in_admin_area = ws_ls_post_value('we-ls-in-admin');
     $in_admin_area = (false === empty($in_admin_area)) ? true : false;
 
   	// List of form fields / globals we want to store for the user
@@ -23,9 +23,9 @@ function ws_ls_save_preferences_callback()
 
   	foreach ($keys_to_save as $key) {
 
-      	$value = ws_ls_ajax_post_value($key);
+      	$value = ws_ls_post_value($key);
       	if(!is_null($value)) {
-        	$user_preferences[$key] = ws_ls_string_to_bool(ws_ls_ajax_post_value($key));
+        	$user_preferences[$key] = ws_ls_string_to_bool(ws_ls_post_value($key));
       	}
   	}
 
@@ -41,16 +41,16 @@ function ws_ls_save_preferences_callback()
 
 	// Save Height?
     $fields['height'] = false;
-	if(!is_null(ws_ls_ajax_post_value('we-ls-height'))) {
-        $fields['height'] = (int) ws_ls_ajax_post_value('we-ls-height');
+	if(!is_null(ws_ls_post_value('we-ls-height'))) {
+        $fields['height'] = (int) ws_ls_post_value('we-ls-height');
 	}
 
     // Save Activity Level, DoB, Aim and Gender
-    $fields['gender'] = (!is_null(ws_ls_ajax_post_value('ws-ls-gender'))) ? (int) ws_ls_ajax_post_value('ws-ls-gender') : 0;
-    $fields['aim'] = (!is_null(ws_ls_ajax_post_value('ws-ls-aim'))) ? (int) ws_ls_ajax_post_value('ws-ls-aim') : 0;
-    $fields['activity_level'] = (!is_null(ws_ls_ajax_post_value('ws-ls-activity-level'))) ? (float) ws_ls_ajax_post_value('ws-ls-activity-level') : 0;
-    $fields['dob'] = (!is_null(ws_ls_ajax_post_value('ws-ls-dob'))) ? ws_ls_ajax_post_value('ws-ls-dob') : false;
-    $fields['user_id'] = ws_ls_ajax_post_value('user-id');
+    $fields['gender'] = (!is_null(ws_ls_post_value('ws-ls-gender'))) ? (int) ws_ls_post_value('ws-ls-gender') : 0;
+    $fields['aim'] = (!is_null(ws_ls_post_value('ws-ls-aim'))) ? (int) ws_ls_post_value('ws-ls-aim') : 0;
+    $fields['activity_level'] = (!is_null(ws_ls_post_value('ws-ls-activity-level'))) ? (float) ws_ls_post_value('ws-ls-activity-level') : 0;
+    $fields['dob'] = (!is_null(ws_ls_post_value('ws-ls-dob'))) ? ws_ls_post_value('ws-ls-dob') : false;
+    $fields['user_id'] = ws_ls_post_value('user-id');
 
     // Add additional fields to be saved.
     $fields = apply_filters( WE_LS_FILTER_USER_SETTINGS_SAVE_FIELDS, $fields );
@@ -73,8 +73,8 @@ function ws_ls_delete_weight_entry_callback()
 
   check_ajax_referer( 'ws-ls-nonce', 'security' );
 
-  $user_id = ws_ls_ajax_post_value('user-id');
-  $row_id = ws_ls_ajax_post_value('row-id');
+  $user_id = ws_ls_post_value('user-id');
+  $row_id = ws_ls_post_value('row-id');
 
   if(true == ws_ls_delete_entry($user_id, $row_id)){
 	$ajax_response = 1;
@@ -90,8 +90,8 @@ function ws_ls_get_entry_callback()
 
   check_ajax_referer( 'ws-ls-nonce', 'security' );
 
-  $user_id = ws_ls_ajax_post_value('user-id');
-  $row_id = ws_ls_ajax_post_value('row-id');
+  $user_id = ws_ls_post_value('user-id');
+  $row_id = ws_ls_post_value('row-id');
 
   $data = ws_ls_get_weight($user_id, $row_id);
 

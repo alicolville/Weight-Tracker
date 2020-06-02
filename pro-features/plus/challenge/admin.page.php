@@ -26,10 +26,10 @@ function ws_ls_challenges_admin_page() {
         ws_ls_challenges_delete( $challenge_id);
     }
 
-    if ( 'true' === ws_ls_ajax_post_value( 'add-challenge', false, false ) ) {
+    if ( 'true' === ws_ls_post_value( 'add-challenge', false, false ) ) {
 
         // Do we have a name? If so, insert Challenge otherwise show error
-        $name = ws_ls_ajax_post_value( 'ws-ls-name' );
+        $name = ws_ls_post_value( 'ws-ls-name' );
 
         if( true === empty( $name ) ) {
             $error = __( 'Please ensure you enter a name for the challenge.', WE_LS_SLUG );
@@ -37,8 +37,8 @@ function ws_ls_challenges_admin_page() {
 
         if( true === empty( $error ) ) {
 
-            $start_date = ws_ls_ajax_post_value( 'ws-ls-start-date', false, NULL );
-            $end_date   = ws_ls_ajax_post_value( 'ws-ls-end-date', false, NULL );
+            $start_date = ws_ls_post_value( 'ws-ls-start-date', false, NULL );
+            $end_date   = ws_ls_post_value( 'ws-ls-end-date', false, NULL );
 
             if ( true === ws_ls_challenges_add( $name, ws_ls_convert_date_to_iso( $start_date ), ws_ls_convert_date_to_iso( $end_date ) ) ) {
 
@@ -116,11 +116,11 @@ function ws_ls_challenges_admin_page() {
                                 ?>
                                 <form method="post" action="<?php echo ws_ls_challenge_link( 1, 'add' ); ?>" class="we-ls-weight-form ws_ls_display_form">
                                     <label for="ws-ls-name"><?php echo __( 'Name of challenge', WE_LS_SLUG ); ?></label>
-                                    <input type="text" name="ws-ls-name" id="ws-ls-name" tabindex="1" value="<?php echo ws_ls_ajax_post_value( 'ws-ls-name', false,'' ); ?>" />
+                                    <input type="text" name="ws-ls-name" id="ws-ls-name" tabindex="1" value="<?php echo ws_ls_post_value( 'ws-ls-name', false,'' ); ?>" />
                                     <label for="ws-ls-start-date"><?php echo __( 'Start Date (only consider entries from this date)', WE_LS_SLUG ); ?></label>
-                                    <input type="text" name="ws-ls-start-date" id="ws-ls-start-date" tabindex="2" value="<?php echo ws_ls_ajax_post_value( 'ws-ls-start-date', false,'' ); ?>" class="we-ls-datepicker" />
+                                    <input type="text" name="ws-ls-start-date" id="ws-ls-start-date" tabindex="2" value="<?php echo ws_ls_post_value( 'ws-ls-start-date', false,'' ); ?>" class="we-ls-datepicker" />
                                     <label for="ws-ls-end-date"><?php echo __( 'End Date (only consider entries to this date)', WE_LS_SLUG ); ?></label>
-                                    <input type="text" name="ws-ls-end-date" id="ws-ls-end-date" tabindex="3" value="<?php echo ws_ls_ajax_post_value( 'ws-ls-end-date', false,'' ); ?>" class="we-ls-datepicker" />
+                                    <input type="text" name="ws-ls-end-date" id="ws-ls-end-date" tabindex="3" value="<?php echo ws_ls_post_value( 'ws-ls-end-date', false,'' ); ?>" class="we-ls-datepicker" />
                                     <br />
                                     <input type="hidden" name="add-challenge" value="true" />
                                     <input type="submit" class="button" value="Add" />

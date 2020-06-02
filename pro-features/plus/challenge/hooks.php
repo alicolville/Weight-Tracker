@@ -63,7 +63,7 @@ function ws_ls_challenges_hook_settings_form_save( $fields ) {
         return $fields;
     }
 
-    $opt_in                         = ws_ls_ajax_post_value('ws-ls-challenge-opt-in');
+    $opt_in                         = ws_ls_post_value('ws-ls-challenge-opt-in');
     $fields[ 'challenge_opt_in' ]   = ( 'yes' === $opt_in );
 
     return $fields;

@@ -581,7 +581,7 @@ function ws_ls_querystring_value( $key, $force_to_int = false, $default = false 
  * @param null $default
  * @return mixed|null
  */
-function ws_ls_ajax_post_value( $key, $json_decode = false, $default = NULL ) {
+function ws_ls_post_value($key, $json_decode = false, $default = NULL ) {
 
     if( false === isset( $_POST[ $key ] ) ) {
         return $default;
@@ -750,6 +750,18 @@ function ws_ls_display_blockquote( $text, $class = '', $just_echo = false, $incl
 	}
 
 	return '';
+}
+
+/**
+ * Display Error Block quote for an error
+ * @param $text
+ * @param string $class
+ * @param bool $just_echo
+ * @param bool $include_log_link
+ * @return string
+ */
+function ws_ls_blockquote_error( $text, $class = 'ws-ls-error-text', $just_echo = false, $include_log_link = false ) {
+	return ws_ls_display_blockquote( $text, $class, $just_echo, $include_log_link );
 }
 
 //todo: review this
