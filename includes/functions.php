@@ -581,7 +581,7 @@ function ws_ls_querystring_value( $key, $force_to_int = false, $default = false 
  * @param null $default
  * @return mixed|null
  */
-function ws_ls_post_value($key, $json_decode = false, $default = NULL ) {
+function ws_ls_post_value( $key, $default = NULL, $json_decode = false ) {
 
     if( false === isset( $_POST[ $key ] ) ) {
         return $default;
