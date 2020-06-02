@@ -204,7 +204,7 @@ function ws_ls_stats_remove_deleted_user_ids_from_stats() {
 */
 function ws_ls_stats_league_table_fetch($ignore_cache = false, $limit = 10, $losers_only = false, $order = 'asc') {
 
-	$cache_key = WE_LS_CACHE_STATS_TABLE . md5($ignore_cache . $limit . $losers_only . $order);
+	$cache_key = 'ws-ls-stats-table-' . md5($ignore_cache . $limit . $losers_only . $order);
 
 	// Return cache if found!
     if (!$ignore_cache && $cache = ws_ls_get_cache($cache_key)) {
