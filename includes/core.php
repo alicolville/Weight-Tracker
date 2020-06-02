@@ -54,7 +54,7 @@
             $chart_config = wp_parse_args( $options, $chart_config );
         }
 
-		$measurements_enabled = ( false == $chart_config['exclude-measurements'] && WE_LS_MEASUREMENTS_ENABLED && ws_ls_any_active_measurement_fields() );
+		$measurements_enabled = false; // ( false == $chart_config['exclude-measurements'] && WE_LS_MEASUREMENTS_ENABLED && ws_ls_any_active_measurement_fields() );
 
         // Make sure they are logged in
         if (false == $chart_config['ignore-login-status'] && !is_user_logged_in())	{
@@ -297,25 +297,20 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 
 	$html_output .= sprintf('
 							<form action="%1$s" method="post" class="we-ls-weight-form we-ls-weight-form-validate ws_ls_display_form%2$s" id="%3$s"
-							data-measurements-enabled="%4$s"
-							data-measurements-all-required="%5$s"
-							data-is-target-form="%6$s"
-							data-metric-unit="%7$s",
-							data-photos-enabled="%12$s",
-							%11$s
+							data-is-target-form="%4$s"
+							data-metric-unit="%5$s",
+							data-photos-enabled="%9$s",
+							%8$s
 							>
-							<input type="hidden" value="%8$s" id="ws_ls_is_target" name="ws_ls_is_target" />
+							<input type="hidden" value="%4$s" id="ws_ls_is_target" name="ws_ls_is_target" />
 							<input type="hidden" value="true" id="ws_ls_is_weight_form" name="ws_ls_is_weight_form" />
-							<input type="hidden" value="%9$s" id="ws_ls_user_id" name="ws_ls_user_id" />
-							<input type="hidden" value="%10$s" id="ws_ls_security" name="ws_ls_security" />',
+							<input type="hidden" value="%6$s" id="ws_ls_user_id" name="ws_ls_user_id" />
+							<input type="hidden" value="%7$s" id="ws_ls_security" name="ws_ls_security" />',
 							esc_url( $post_url ),
 							(($class_name) ? ' ' . esc_attr( $class_name ) : ''),
 							esc_attr( $form_id ),
-							(($measurements_form_enabled) ? 'true' : 'false'),
-							(($measurements_form_enabled && WE_LS_MEASUREMENTS_MANDATORY) ? 'true' : 'false'),
-							(($target_form) ? 'true' : 'false'),
+							( ( true === $target_form ) ? 'true' : 'false'),
 							esc_attr (ws_ls_get_chosen_weight_unit_as_string( $user_id ) ),
-							(($target_form) ? 'true' : 'false'),
 							esc_attr($user_id),
 							esc_attr( wp_hash($user_id) ),
 							( true === $photo_form_enabled) ? ' enctype="multipart/form-data"' : '',
@@ -394,14 +389,6 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 		$html_output .= '<div id="comment-textarea">
 							<textarea name="we-ls-notes" tabindex="' . ws_ls_get_next_tab_index() . '" id="we-ls-notes" cols="39" rows="4" tabindex="4" class="textarea-comment" placeholder="' . __('Notes', WE_LS_SLUG) . '">' . esc_textarea(ws_ls_get_existing_value($existing_data, 'notes', false)) . '</textarea>
 						</div>';
-	}
-
-	// Include
-	if( false === $target_form && $measurements_form_enabled) {
-		$html_output .= sprintf('<h3 class="ws_ls_title">%s (%s)</h3>',
-										( false === empty($existing_data) )	? __('Edit measurements', WE_LS_SLUG) : __('Add measurements', WE_LS_SLUG),
-								(WE_LS_MEASUREMENTS_MANDATORY) ? __('Mandatory', WE_LS_SLUG) : __('Optional', WE_LS_SLUG));
-		$html_output .= ws_ls_load_measurement_form($existing_data);
 	}
 
 	// Render Meta Fields
@@ -505,22 +492,6 @@ function ws_ls_capture_form_validate_and_save($user_id = false)
 	$weight_object = false;
 	$weight_notes = (!$is_target_form) ? $form_values['we-ls-notes'] : '' ;
 	$weight_date = (!$is_target_form) ? $form_values['we-ls-date'] : false ;
-	$measurements = array();
-
-	// Build measurement fields up and convert to CM if needed
-	if (WE_LS_MEASUREMENTS_ENABLED && is_array($weight_keys) && !empty($weight_keys) && !$is_target_form) {
-		foreach ($weight_keys as $key) {
-			if(array_key_exists($key, $form_values)) {
-				// Convert to CM?
-				if('cm' != ws_ls_get_config('WE_LS_MEASUREMENTS_UNIT', $user_id )) {
-					$measurements[$key] = ws_ls_convert_to_cm(0, $form_values[$key]);
-				} elseif (isset($form_values[$key])) {
-					$measurements[$key] = round($form_values[$key], 2);
-				}
-			}
-		}
-		unset($measurements['ws-ls-height']);	// Remove height key from this form save
-	}
 
 	switch ( ws_ls_get_config('WE_LS_DATA_UNITS', $user_id ) ) {
 		case 'pounds_only':
@@ -541,7 +512,9 @@ function ws_ls_capture_form_validate_and_save($user_id = false)
     // Process Meta Fields
     // ---------------------------------------------
 
-    if ( true === ws_ls_meta_fields_is_enabled() && ws_ls_meta_fields_number_of_enabled() > 0 ) {
+    if ( false === $is_target_form &&
+			true === ws_ls_meta_fields_is_enabled() &&
+				ws_ls_meta_fields_number_of_enabled() > 0 ) {
 
 	    // Loop through each enabled meta field. If the field exists in the $_POST object then update the database.
         foreach ( ws_ls_meta_fields_enabled() as $field ) {
