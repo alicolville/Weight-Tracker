@@ -81,7 +81,7 @@ defined('ABSPATH') or die('Jog on!');
         'includes/setup-wizard.php',
         'includes/shortcode-weight-loss-tracker.php',
         'includes/shortcode-various.php',
-        'includes/save-data.php',
+        'includes/form-handler.php',
 	    'includes/email-manager.php',
         'includes/meal-tracker.php',
 	    'includes/admin-pages/settings/page-settings.php',
