@@ -171,6 +171,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 * Improvement: Removed redundant PHP files.
 * Improvement: Removed redundant meta field database columns.
+* Improvement: Various minor PHP tweaks throughout code.
 * Bug fix: Fix to ensure we are checking for correct MySQL tables.
 
 = 7.6 =

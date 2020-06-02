@@ -28,7 +28,7 @@ function ws_ls_admin_page_search_results() {
                             if( true === WS_LS_IS_PRO && false === empty( $search_term ) ) {
 
                                 $user_query     = new WP_User_Query( [ 'search' => sprintf( '*%s*', $search_term ) ] );
-                                $count          = $user_query->total_users;
+                                $count          = $user_query->get_total();
 
                                 if( 0 !== $count ) {
 

@@ -75,7 +75,7 @@ function ws_ls_challenges_admin_page() {
 								<p>
 									<?php echo __( 'Why not create challenges for your users and build a league table for a given time period?', WE_LS_SLUG ); ?>
 								</p>
-                                
+
                                 <?php ws_ls_challenges_table(); ?>
                             </div>
                         </div>
