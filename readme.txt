@@ -159,11 +159,9 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 //TODO: Remove measurement fields and tab... constants too
 // TODO: Deprecate Bar Chart
-// TODO: Remove incompatibility stuff
 // TODO: Remove challenges beta
 // TODO: Review Comms back
-//TODO: Can these go? 'chartable' 			=> '%d',
-                              'display_on_chart' 		=> '%d',
+
 // How do we deal with height? //'height' => [ 'title' => __('Height', WE_LS_SLUG), 'abv' => __('H', WE_LS_SLUG), 'enabled' => true, 'user_preference' => true),
 
 
@@ -171,6 +169,8 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 = 7.6.1 =
 
+* Improvement: Removed redundant PHP files.
+* Improvement: Removed redundant meta field database columns.
 * Bug fix: Fix to ensure we are checking for correct MySQL tables.
 
 = 7.6 =

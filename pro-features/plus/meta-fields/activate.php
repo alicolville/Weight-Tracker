@@ -24,7 +24,6 @@
                 field_name varchar(40) NOT NULL,
                 abv varchar(5) NOT NULL,
                 suffix varchar(5) NOT NULL,
-                display_on_chart BIT DEFAULT 0,
                 mandatory int DEFAULT 1,
                 enabled int DEFAULT 1,
                 hide_from_shortcodes int DEFAULT 0,
@@ -47,7 +46,7 @@
                 meta_field_id int NOT NULL,
                 value varchar(800) NOT NULL,
                 migrate int DEFAULT 0,
-                UNIQUE KEY id (id)              
+                UNIQUE KEY id (id)
             ) $charset_collate;";
 
         dbDelta( $sql );

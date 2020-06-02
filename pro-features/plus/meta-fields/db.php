@@ -284,7 +284,6 @@ function ws_ls_meta_fields_update( $field ) {
  * @param $field    array:  field_key
  *                          field_name
  *                          abv
- *                          display_on_chart
  *                          system
  *                          unit_id
  *
@@ -311,7 +310,7 @@ function ws_ls_meta_fields_add( $field ) {
     $formats = ws_ls_meta_formats( $field );
 
     $result = $wpdb->insert( $wpdb->prefix . WE_LS_MYSQL_META_FIELDS , $field, $formats );
-	
+
 	ws_ls_cache_user_delete( 'meta-fields' );
 
     return ( false === $result ) ? false : $wpdb->insert_id;
@@ -424,9 +423,7 @@ function ws_ls_meta_formats( $data ) {
         'field_key'				=> '%s',
         'field_name' 			=> '%s',
         'abv' 					=> '%s',
-        'chartable' 			=> '%d',
-        'display_on_chart' 		=> '%d',
-		'entry_id' 				=> '%d',
+        'entry_id' 				=> '%d',
         'system' 				=> '%d',
         'unit_id' 				=> '%d',
 		'meta_field_id' 		=> '%d',
