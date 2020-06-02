@@ -311,7 +311,7 @@ function ws_ls_meta_fields_add( $field ) {
     $formats = ws_ls_meta_formats( $field );
 
     $result = $wpdb->insert( $wpdb->prefix . WE_LS_MYSQL_META_FIELDS , $field, $formats );
-
+	
 	ws_ls_cache_user_delete( 'meta-fields' );
 
     return ( false === $result ) ? false : $wpdb->insert_id;
@@ -438,10 +438,9 @@ function ws_ls_meta_formats( $data ) {
         'mandatory' 			=> '%d',
         'hide_from_shortcodes' 	=> '%d',
 		'plot_on_graph'			=> '%d',
-		'plot_colour'			=> '%s'
+		'plot_colour'			=> '%s',
+		'migrate'				=> '%d'
     ];
-
-    $return = [];
 
     foreach ( $data as $key => $value) {
         if ( false === empty( $formats[ $key ] ) ) {
