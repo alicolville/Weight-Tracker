@@ -157,9 +157,8 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 = 7.7 =
 
-//TODO: Remove measurement fields and tab... constants too
+//todo: remove measurements from documentation site
 // TODO: Deprecate Bar Chart
-// TODO: Remove challenges beta
 // TODO: Review Comms back
 // TODO: Get rid of ws_ls_register_shortcodes
 

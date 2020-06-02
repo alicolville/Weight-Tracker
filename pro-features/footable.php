@@ -88,9 +88,6 @@ function ws_ls_data_table_get_rows($user_id = false, $max_entries = false,
 	// Fetch all relevant weight entries that we're interested in
 	$user_data = ws_ls_user_data( $filters );
 
-    // get a list of active measurment fields (needed later)
-	$measurement_fields = ws_ls_get_keys_for_active_measurement_fields();
-
 	// Loop through the data and expected columns and build a clean array of row data for HTML table.
 	$rows = array();
 
@@ -138,11 +135,7 @@ function ws_ls_data_table_get_rows($user_id = false, $max_entries = false,
                     $previous_user_weight[$data['user_id']] = $data['kg'];
                 }
 
-                // Is this a measurement field?
-                if(in_array($column_name, $measurement_fields) && !empty($data['measurements'][$column_name])) {
-                    $row[$column_name]['options']['sortValue'] = $data['measurements'][$column_name];
-                    $row[$column_name]['value'] = ws_ls_prep_measurement_for_display($data['measurements'][$column_name], $convert_weight_format);
-                } else if ('gainloss' === $column_name) {
+                if ('gainloss' === $column_name) {
                     $row[$column_name]['value'] = ws_ls_blur_text( $gain_loss );
                     $row[$column_name]['options']['classes'] = 'ws-ls-' . $gain_class .  ws_ls_blur(); // Can use this method for icons
                 } else if ('bmi' === $column_name) {
@@ -218,36 +211,6 @@ function ws_ls_data_table_get_columns($smaller_width = false, $front_end = false
 	// Add BMI?
 	if(WE_LS_DISPLAY_BMI_IN_TABLES) {
 		array_push($columns, array('name' => 'bmi', 'title' => ws_ls_tooltip('BMI', __('Body Mass Index', WE_LS_SLUG)), 'breakpoints'=> 'xs', 'type' => 'text'));
-	}
-
-	// Add measurements?
-	if(WE_LS_MEASUREMENTS_ENABLED) {
-
-		$unit = ws_ls_admin_measurment_unit();
-
-		// Horrible hack, this is to fix translations which don't seem to be taking effect when pulled in from globals .php
-		$supported_measurements = array(
-			'left_forearm' => array('title' => __('Forearm - Left', WE_LS_SLUG), 'abv' => __('FL', WE_LS_SLUG)),
-			'right_forearm' => array('title' => __('Forearm - Right', WE_LS_SLUG), 'abv' => __('FR', WE_LS_SLUG)),
-			'left_bicep' => array('title' => __('Biceps - Left', WE_LS_SLUG), 'abv' => __('BL', WE_LS_SLUG)),
-			'right_bicep' => array('title' => __('Biceps - Right', WE_LS_SLUG), 'abv' => __('BR', WE_LS_SLUG)),
-			'left_calf' => array('title' => __('Calf - Left', WE_LS_SLUG), 'abv' => __('CL', WE_LS_SLUG)),
-			'right_calf' => array('title' => __('Calf - Right', WE_LS_SLUG), 'abv' => __('CR', WE_LS_SLUG)),
-			'left_thigh' => array('title' => __('Thigh - Left', WE_LS_SLUG), 'abv' => __('TL', WE_LS_SLUG)),
-			'right_thigh' => array('title' => __('Thigh - Right', WE_LS_SLUG), 'abv' => __('TR', WE_LS_SLUG)),
-			'waist' => array('title' => __('Waist', WE_LS_SLUG), 'abv' => __('W', WE_LS_SLUG)),
-			'bust_chest' => array('title' => __('Bust / Chest', WE_LS_SLUG), 'abv' => __('BC', WE_LS_SLUG)),
-			'shoulders' => array('title' => __('Shoulders', WE_LS_SLUG), 'abv' => __('S', WE_LS_SLUG)),
-			'height' => array('title' => __('Height', WE_LS_SLUG), 'abv' => __('H', WE_LS_SLUG)),
-			'buttocks' => array('title' => __('Buttocks', WE_LS_SLUG), 'abv' => __('B', WE_LS_SLUG)),
-			'hips' => array('title' => __('Hips', WE_LS_SLUG), 'abv' => __('HI', WE_LS_SLUG)),
-			'navel' => array('title' => __('Navel', WE_LS_SLUG), 'abv' => __('NA', WE_LS_SLUG)),
-			'neck' => array('title' => __('Neck', WE_LS_SLUG), 'abv' => __('NE', WE_LS_SLUG))
-		);
-
-		foreach (ws_ls_get_active_measurement_fields() as $key => $data) {
-			array_push($columns, array('name' => esc_attr($key), 'title' => ws_ls_tooltip($supported_measurements[$key]['abv'], $supported_measurements[$key]['title'] . ' (' . $unit . ')' ), 'breakpoints'=> (($smaller_width) ? 'lg' : 'md'), 'type' => 'text'));
-		}
 	}
 
     if ( true === ws_ls_meta_fields_is_enabled() ) {

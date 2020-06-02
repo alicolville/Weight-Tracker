@@ -63,15 +63,8 @@ function ws_ls_get_weights($user_id, $limit = 100, $selected_week_number = -1, $
         }
       }
 
-	  $measurement_columns_sql = '';
-	  // Fetch measurement columns if enabled!
-	  if (WE_LS_MEASUREMENTS_ENABLED) {
-		  $measurement_columns = ws_ls_get_keys_for_active_measurement_fields('', true);
-    	  $measurement_columns_sql = (!empty($measurement_columns)) ? ',' . implode(',', $measurement_columns) : '';
-	  }
-
       $table_name = $wpdb->prefix . WE_LS_TABLENAME;
-	  $sql =  $wpdb->prepare('SELECT id, weight_date, weight_weight, weight_stones, weight_pounds, weight_only_pounds, weight_notes' . $measurement_columns_sql . ' FROM ' . $table_name . ' where weight_user_id = %d ' . $additional_sql. ' order by weight_date ' . $sort_order . ' limit 0, %d', $user_id,  $limit);
+	  $sql =  $wpdb->prepare('SELECT id, weight_date, weight_weight, weight_stones, weight_pounds, weight_only_pounds, weight_notes FROM ' . $table_name . ' where weight_user_id = %d ' . $additional_sql. ' order by weight_date ' . $sort_order . ' limit 0, %d', $user_id,  $limit);
 
 	  $rows = $wpdb->get_results( $sql );
 
@@ -81,16 +74,6 @@ function ws_ls_get_weights($user_id, $limit = 100, $selected_week_number = -1, $
         $weight_data = array();
 
         foreach ($rows as $raw_weight_data) {
-
-			$measurements = false;
-
-			// Build weight array
-			if(WE_LS_MEASUREMENTS_ENABLED && $measurement_columns && !empty($measurement_columns)) {
-				$measurements = array();
-				foreach ($measurement_columns as $key) {
-					$measurements[$key] = $raw_weight_data->{$key};
-				}
-			}
 
           array_push($weight_data, ws_ls_weight_object($user_id,
                                                         $raw_weight_data->weight_weight,
@@ -102,7 +85,7 @@ function ws_ls_get_weights($user_id, $limit = 100, $selected_week_number = -1, $
                                                         false,
                                                         $raw_weight_data->id,
 														'',
-														$measurements
+														false
                                                       ));
         }
 
@@ -125,17 +108,6 @@ function ws_ls_get_weight($user_id, $row_id)
 
     if (!is_null($row) ) {
 
-		$measurement_columns = ws_ls_get_keys_for_active_measurement_fields('', true);
-		$measurements = false;
-
-		// Build weight array
-		if(WE_LS_MEASUREMENTS_ENABLED && $measurement_columns && !empty($measurement_columns)) {
-			$measurements = array();
-			foreach ($measurement_columns as $key) {
-				$measurements[$key] = ws_ls_prep_measurement_for_display($row->{$key}, $user_id);
-			}
-		}
-
         return ws_ls_weight_object($user_id,
                                     $row->weight_weight,
                                     $row->weight_pounds,
@@ -146,7 +118,7 @@ function ws_ls_get_weight($user_id, $row_id)
                                     false,
                                     $row->id,
 									'',
-									$measurements,
+									false,
 									$row->photo_id
                                   );
     }
@@ -209,20 +181,7 @@ function ws_ls_save_data($user_id, $weight_object, $is_target_form = false, $exi
 
 	// Set data types
 	$db_field_types = array('%d','%f', '%f', '%f', '%f');
-
-	// If Measurements enabled then save measurements too.
-	if (WE_LS_MEASUREMENTS_ENABLED) {
-		$weight_keys = ws_ls_get_keys_for_active_measurement_fields();
-		foreach ($weight_keys as $key) {
-			if(isset($weight_object['measurements'][$key])) {
-
-				// If empty or zero then NULL field before storing
-				$db_fields[$key] = (empty($weight_object['measurements'][$key]) || 0 == $weight_object['measurements'][$key]) ? NULL : $weight_object['measurements'][$key];
-				$db_field_types[] = '%f';
-			}
-		}
-	}
-
+	
 	// Customise depending on whether an update or not
 	if($is_target_form) {
 		$db_is_update = ws_does_target_weight_exist($user_id);

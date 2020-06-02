@@ -66,10 +66,6 @@ function ws_ls_gravity_forms_process( $entry, $form ) {
 
     $keys_to_ensure_numeric = ws_ls_gravity_forms_weight_keys();
 
-    if ( WE_LS_MEASUREMENTS_ENABLED ) {
-        $keys_to_ensure_numeric = array_merge( $keys_to_ensure_numeric, ws_ls_gravity_forms_measurement_keys() );
-    }
-
     GFCommon::log_debug( 'If found, ensuring the following fields are numeric: ' . print_r( $keys_to_ensure_numeric, true) );
 
     // Are relevant fields are numeric?
@@ -128,34 +124,6 @@ function ws_ls_gravity_forms_process( $entry, $form ) {
         GFCommon::log_debug( 'Weight Entries were not calculated correctly.' );
 		return;
 	}
-
-    // --------------------------------------------------------------------------------
-    // Add Measurements
-    // --------------------------------------------------------------------------------
-
-    if ( WE_LS_MEASUREMENTS_ENABLED ) {
-
-        $weight_keys = ws_ls_gravity_forms_measurement_keys();
-
-        $measurements = [];
-
-        foreach ($weight_keys as $key) {
-
-            if( false === empty( $matched_fields[ $key ] ) ) {
-
-                $db_key = str_replace( $prefix, '', $key);
-                $db_key = str_replace( '-', '_', $db_key);
-
-                $measurements[ $db_key ] = $matched_fields[ $key ];
-            }
-        }
-
-        if ( false === empty( $measurements ) ) {
-            GFCommon::log_debug( 'Identified the following measurements to save: ' . print_r( $measurements, true ) );
-            $weight[ 'measurements' ] = $measurements;
-        }
-
-    }
 
     // --------------------------------------------------------------------------------
     // Preferences
@@ -279,7 +247,6 @@ function ws_ls_gravity_forms_keys() {
     $keys[] = $prefix . 'photo';
 
     $keys = array_merge( $keys, ws_ls_gravity_forms_weight_keys() );
-    $keys = array_merge( $keys, ws_ls_gravity_forms_measurement_keys() );
     $keys = array_merge( $keys, ws_ls_gravity_forms_preferences_keys() );
     $keys = array_merge( $keys, ws_ls_gravity_forms_meta_fields_keys() );
 
@@ -299,27 +266,6 @@ function ws_ls_gravity_forms_weight_keys() {
     $keys[] = $prefix . 'stones';
 
     $keys = apply_filters( 'wlt-filters-gf-weight-keys', $keys );
-
-    return $keys;
-}
-
-/**
- * Measurement Keys
- */
-function ws_ls_gravity_forms_measurement_keys() {
-
-    $prefix = ws_ls_gravity_forms_prefix();
-
-    $keys = [];
-
-    if ( WE_LS_MEASUREMENTS_ENABLED ) {
-
-        $keys = ws_ls_get_keys_for_active_measurement_fields( $prefix );
-        $keys = array_map( 'ws_ls_gravity_forms_measurement_format', $keys );
-
-        $keys = apply_filters( 'wlt-filters-gf-measurement-keys', $keys );
-
-    }
 
     return $keys;
 }

@@ -73,7 +73,6 @@
 		}
 
 		$y_axis_unit = (ws_ls_get_config('WE_LS_IMPERIAL_WEIGHTS')) ? __('lbs', WE_LS_SLUG) : __('kg', WE_LS_SLUG) ;
-		$y_axis_measurement_unit = ('inches' == ws_ls_get_config('WE_LS_MEASUREMENTS_UNIT')) ? __('Inches', WE_LS_SLUG) : __('CM', WE_LS_SLUG) ;
 
 		$point_size = (WE_LS_ALLOW_POINTS && WE_LS_CHART_POINT_SIZE > 0) ? WE_LS_CHART_POINT_SIZE : 0;
         $line_thickness = 2;
@@ -134,32 +133,32 @@
 		// Measurements - add measurement sets if enabled!
 		// ----------------------------------------------------------------------------
 
-		if($measurements_enabled) {
-			$active_measurement_fields = ws_ls_get_active_measurement_fields();
-			$active_measurment_field_keys = ws_ls_get_keys_for_active_measurement_fields('', true);
-			$measurement_graph_indexes = array();
-
-
-			foreach ($active_measurement_fields as $key => $data) {
-
-				$graph_data['datasets'][$dataset_index] = array( 'label' =>  __( $data['title'], WE_LS_SLUG),
-													'borderColor' => $data['chart_colour'],
-													'borderWidth' => $line_thickness,
-													'pointRadius' => $point_size,
-													'fill' => false,
-													'spanGaps' => true,
-													'yAxisID' => 'y-axis-measurements',
-													'type' => 'line',
-													'lineTension' => ($chart_config['bezier']) ? 0.4 : 0
-												);
-				$graph_data['datasets'][$dataset_index]['data'] = array();
-				$graph_data['datasets'][$dataset_index]['data-count'] = 0;
-
-				$measurement_graph_indexes[$key] = $dataset_index;
-
-				$dataset_index++;
-			}
-		}
+//		if($measurements_enabled) {
+//			$active_measurement_fields = ws_ls_get_active_measurement_fields();
+//			$active_measurment_field_keys = ws_ls_get_keys_for_active_measurement_fields('', true);
+//			$measurement_graph_indexes = array();
+//
+//
+//			foreach ($active_measurement_fields as $key => $data) {
+//
+//				$graph_data['datasets'][$dataset_index] = array( 'label' =>  __( $data['title'], WE_LS_SLUG),
+//													'borderColor' => $data['chart_colour'],
+//													'borderWidth' => $line_thickness,
+//													'pointRadius' => $point_size,
+//													'fill' => false,
+//													'spanGaps' => true,
+//													'yAxisID' => 'y-axis-measurements',
+//													'type' => 'line',
+//													'lineTension' => ($chart_config['bezier']) ? 0.4 : 0
+//												);
+//				$graph_data['datasets'][$dataset_index]['data'] = array();
+//				$graph_data['datasets'][$dataset_index]['data-count'] = 0;
+//
+//				$measurement_graph_indexes[$key] = $dataset_index;
+//
+//				$dataset_index++;
+//			}
+//		}
 
 		if($weight_data) {
 			foreach ($weight_data as $weight_object) {
@@ -175,32 +174,32 @@
 				// ----------------------------------------------------------------------------
 				// Add data for all measurements
 				// ----------------------------------------------------------------------------
-				if($measurements_enabled) {
-					foreach ($active_measurment_field_keys as $key) {
-
-						// If we have a genuine measurement value then add to graph data - otherwise NULL
-						if(!is_null($weight_object['measurements'][$key]) && 0 != $weight_object['measurements'][$key]) {
-							$graph_data['datasets'][$measurement_graph_indexes[$key]]['data'][] = ws_ls_prep_measurement_for_display($weight_object['measurements'][$key]);
-							$graph_data['datasets'][$measurement_graph_indexes[$key]]['data-count']++;
-						} else {
-							$graph_data['datasets'][$measurement_graph_indexes[$key]]['data'][] = NULL;
-						}
-					}
-				}
+//				if($measurements_enabled) {
+//					foreach ($active_measurment_field_keys as $key) {
+//
+//						// If we have a genuine measurement value then add to graph data - otherwise NULL
+//						if(!is_null($weight_object['measurements'][$key]) && 0 != $weight_object['measurements'][$key]) {
+//							$graph_data['datasets'][$measurement_graph_indexes[$key]]['data'][] = ws_ls_prep_measurement_for_display($weight_object['measurements'][$key]);
+//							$graph_data['datasets'][$measurement_graph_indexes[$key]]['data-count']++;
+//						} else {
+//							$graph_data['datasets'][$measurement_graph_indexes[$key]]['data'][] = NULL;
+//						}
+//					}
+//				}
 			}
 
 		}
 
 		// Remove any empty measurements from graph
-		if($measurements_enabled) {
-			foreach ($active_measurment_field_keys as $key) {
-				if(0 == $graph_data['datasets'][$measurement_graph_indexes[$key]]['data-count']) {
-			//		unset($graph_data['datasets'][$measurement_graph_indexes[$key]]);
-				} else {
-					$number_of_measurement_datasets_with_data++;
-				}
-			}
-		}
+//		if($measurements_enabled) {
+//			foreach ($active_measurment_field_keys as $key) {
+//				if(0 == $graph_data['datasets'][$measurement_graph_indexes[$key]]['data-count']) {
+//			//		unset($graph_data['datasets'][$measurement_graph_indexes[$key]]);
+//				} else {
+//					$number_of_measurement_datasets_with_data++;
+//				}
+//			}
+//		}
 
 		// Embed JavaScript data object for this graph into page
 		wp_localize_script( 'jquery-chart-ws-ls', $chart_id . '_data', $graph_data );
@@ -472,12 +471,6 @@ function ws_ls_capture_form_validate_and_save($user_id = false)
 	// Target form?
 	$is_target_form = ('true' == $form_values['ws_ls_is_target']) ? true : false;
 
-	// If measurements enabled and PRO add enabled fields to the above list
-	if (WE_LS_MEASUREMENTS_ENABLED && !$is_target_form) {
-		$weight_keys = ws_ls_get_keys_for_active_measurement_fields('ws-ls-');
-		$allowed_post_keys = array_merge($allowed_post_keys, $weight_keys);
-	}
-
 	// Remove invalid post keys
 	foreach ($form_values as $key => $value) {
 		if(!in_array($key, $allowed_post_keys)) {
@@ -494,13 +487,13 @@ function ws_ls_capture_form_validate_and_save($user_id = false)
 
 	switch ( ws_ls_get_config('WE_LS_DATA_UNITS', $user_id ) ) {
 		case 'pounds_only':
-				$weight_object = ws_ls_weight_object($user_id, 0, 0, 0, $form_values['we-ls-weight-pounds'], $weight_notes,	$weight_date, true, false, '', $measurements);
+				$weight_object = ws_ls_weight_object($user_id, 0, 0, 0, $form_values['we-ls-weight-pounds'], $weight_notes,	$weight_date, true, false, '');
 			break;
 		case 'kg':
-				$weight_object = ws_ls_weight_object($user_id, $form_values['we-ls-weight-kg'], 0, 0, 0, $weight_notes,	$weight_date, true, false, '', $measurements);
+				$weight_object = ws_ls_weight_object($user_id, $form_values['we-ls-weight-kg'], 0, 0, 0, $weight_notes,	$weight_date, true, false, '');
 			break;
 		default:
-				$weight_object = ws_ls_weight_object($user_id, 0, $form_values['we-ls-weight-pounds'], $form_values['we-ls-weight-stones'], 0, $weight_notes, $weight_date, true, false, '', $measurements);
+				$weight_object = ws_ls_weight_object($user_id, 0, $form_values['we-ls-weight-pounds'], $form_values['we-ls-weight-stones'], 0, $weight_notes, $weight_date, true, false, '');
 			break;
 	}
 

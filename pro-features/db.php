@@ -6,13 +6,9 @@ function ws_ls_user_data($filters = false)
 {
     global $wpdb;
 
-	 // Fetch measurement columns if enabled!
-  	$measurement_columns = ws_ls_get_keys_for_active_measurement_fields('', true);
-  	$measurement_columns_sql = (!empty($measurement_columns)) ? ',' . implode(',', $measurement_columns) : '';
-
     $table_name = $wpdb->prefix . WE_LS_TABLENAME;
     $user_table_name = $wpdb->prefix . 'users';
-    $sql = 'SELECT ' . $table_name . '.id, weight_date, weight_weight, weight_stones, weight_pounds, weight_only_pounds, weight_notes, weight_user_id, photo_id' . $measurement_columns_sql . ' FROM ' . $table_name
+    $sql = 'SELECT ' . $table_name . '.id, weight_date, weight_weight, weight_stones, weight_pounds, weight_only_pounds, weight_notes, weight_user_id, photo_id FROM ' . $table_name
                             . ' INNER JOIN ' . $user_table_name . ' on ' . $user_table_name . '.id = ' . $table_name . '.weight_user_id';
 
 	// Limit to a certain user?
@@ -42,16 +38,6 @@ function ws_ls_user_data($filters = false)
 
       foreach ($rows as $raw_weight_data) {
 
-		 $measurements = false;
-
-		 // Build weight array
-		 if(WE_LS_MEASUREMENTS_ENABLED && $measurement_columns && !empty($measurement_columns)) {
-			 $measurements = array();
-			 foreach ($measurement_columns as $key) {
-				 $measurements[$key] = $raw_weight_data->{$key};
-			 }
-		 }
-
 		$meta_field_data = ( true === ws_ls_meta_fields_is_enabled() ) ? ws_ls_meta_fields_for_entry_display( $raw_weight_data->id ) : false;
 
 		$user_display_name = ws_ls_user_display_name( $raw_weight_data->weight_user_id );
@@ -66,7 +52,7 @@ function ws_ls_user_data($filters = false)
                                                       	false,
                                                       	$raw_weight_data->id,
                                                         $user_display_name,
-													  	$measurements,
+													  	false,
 														$raw_weight_data->photo_id,
                                                         $meta_field_data
                                                     ));

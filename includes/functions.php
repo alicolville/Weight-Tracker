@@ -25,7 +25,6 @@ function ws_ls_weight_object($user_id, $kg, $pounds, $stones, $pounds_only, $not
     $weight['first_weight'] = false;
     $weight['difference_from_unit'] = '';
     $weight['db_row_id'] = $database_row_id;
-    $weight['measurements'] = $measurements;
 	$weight['photo_id'] = false === empty($photo_id) ? $photo_id : false;
     $weight['meta-fields'] = $meta_fields;
 
@@ -122,22 +121,6 @@ function ws_ls_weight_object($user_id, $kg, $pounds, $stones, $pounds_only, $not
       	$weight['user']['display-name'] = ws_ls_user_display_name( $weight['user_id'] );
 	  	$weight['user']['email']        = $user_info->user_email;
     }
-  }
-
-  if ( WE_LS_MEASUREMENTS_ENABLED && is_array($weight['measurements']) && !empty($weight['measurements'])) {
-
-	  foreach ( $weight['measurements'] as $key => $value) {
-
-		  // Prep field!
-		  $weight['measurements'][$key] = ws_ls_prep_measurement($weight['measurements'][$key]);
-
-		  // Strip field prefix
-		  if(strpos($key, 'ws-ls-') !== false) {
-			  $new_key = str_replace('ws-ls-', '', $key);
-			  $weight['measurements'][$new_key] = $weight['measurements'][$key];
-			  unset($weight['measurements'][$key]);
-		  }
-	  }
   }
 
   return $weight;

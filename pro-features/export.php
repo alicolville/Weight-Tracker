@@ -98,7 +98,6 @@ function ws_ls_export_to_json( $rows ) {
 		$output = ['columns' => ws_ls_column_names(), 'rows' => []];
 
 		$data = [];
-		$measurement_keys = ws_ls_get_keys_for_active_measurement_fields();
 
         // Only render body of report if Pro!
         if ( true !== WS_LS_IS_PRO ) {
@@ -109,17 +108,7 @@ function ws_ls_export_to_json( $rows ) {
 
             foreach ($rows as $row) {
                 foreach ($output['columns'] as $key => $value) {
-                    if(in_array($key, $measurement_keys)) {
-
-                        // Do we need to convert the measurement to inches?
-                        $data[$key] = ( 'inches' === WE_LS_MEASUREMENTS_UNIT ) ?
-                            ws_ls_convert_to_inches( $row['measurements'][$key] ) :
-                            $row['measurements'][$key];
-
-                    } else {
-                        $data[$key] = $row[$key];
-                    }
-
+                	$data[$key] = $row[$key];
                 }
                 $data = ws_ls_export_add_bmi( $data );
 
@@ -221,17 +210,9 @@ function ws_ls_csv_row_write($columns, $row, $delimiter = ',', $end_of_line_char
 	if (is_array($row) && !empty($row)) {
 
 		$data = [];
-		$measurement_keys = ws_ls_get_keys_for_active_measurement_fields();
 
 		foreach ($columns as $key => $value) {
-			if(in_array($key, $measurement_keys)) {
-
-				// Do we need to convert the measurement to inches?
-				$data[$key] = ( 'inches' === WE_LS_MEASUREMENTS_UNIT ) ?
-								ws_ls_convert_to_inches( $row['measurements'][$key] ) :
-									$row['measurements'][$key];
-
-			} elseif(isset($row[$key])) {
+			if(isset($row[$key])) {
 				$data[$key] = $row[$key];
 			} else {
 			    // If the column is not found, blank it so CSV ok.
@@ -269,11 +250,6 @@ function ws_ls_column_names() {
 						'bmi-readable' => __( 'BMI Label', WE_LS_SLUG),
 						'notes' => __('Notes', WE_LS_SLUG)
 		];
-
-		// Add measurements
-		foreach (ws_ls_get_active_measurement_fields() as $key => $measurement) {
-			$names[$key] = $measurement['title'];
-		}
 
 		// Add meta fields
         if ( true === ws_ls_meta_fields_is_enabled() ) {
