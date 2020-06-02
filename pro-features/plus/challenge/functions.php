@@ -76,14 +76,14 @@ function ws_ls_challenges_diff_between_dates_in_weeks( $date1, $date2 ) {
 function ws_ls_challenges_data_update_row( $user_id, $challenge_id ) {
 
 	if ( true === empty( $challenge_id ) || true === empty( $user_id ) ) {
-		return;
+		return false;
 	}
 
 	// First, fetch the details of the challenge
 	$challenge = ws_ls_challenges_get( $challenge_id );
 
 	if ( true === empty( $challenge ) ) {
-		return;
+		return false;
 	}
 
 	$weight_entries = ws_ls_challenges_get_weight_entries( $user_id, $challenge[ 'start_date' ], $challenge[ 'end_date' ] );
