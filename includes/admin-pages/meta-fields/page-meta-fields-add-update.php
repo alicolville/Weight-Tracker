@@ -148,7 +148,7 @@
                                                     <label for="suffix"><?php echo __('Suffix', WE_LS_SLUG); ?></label>
                                                 </div>
                                                 <div class="ws-ls-cell">
-                                                    <input type="text" name="suffix" id="suffix" size="40" maxlength="5" value="<?php echo ( false === empty( $meta_field['suffix'] ) ) ? esc_attr( $meta_field['suffix'] ) : ''; ?>"/>
+                                                    <input type="text" name="suffix" id="suffix" size="40" maxlength="10" value="<?php echo ( false === empty( $meta_field['suffix'] ) ) ? esc_attr( $meta_field['suffix'] ) : ''; ?>"/>
                                                     <p class="ws-ls-info"><?php echo __('Text display at to end of the entered value when displaying it to the user. e.g. CM would display in the following manner: 120 CM', WE_LS_SLUG ); ?></p>
                                                 </div>
                                             </div>

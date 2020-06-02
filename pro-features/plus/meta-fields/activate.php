@@ -23,7 +23,7 @@
                 field_key varchar(40) NOT NULL,
                 field_name varchar(40) NOT NULL,
                 abv varchar(5) NOT NULL,
-                suffix varchar(5) NOT NULL,
+                suffix varchar(10) NOT NULL,
                 mandatory int DEFAULT 1,
                 enabled int DEFAULT 1,
                 hide_from_shortcodes int DEFAULT 0,
@@ -84,10 +84,9 @@
 	        }
 
 	        // Do we need to migrate measurements?
-			ws_ls_migrate_measurement_into_meta_fields();
+			ws_ls_migrate_measurements_into_meta_fields();
 
         }
-
     }
     add_action( 'admin_init', 'ws_ls_activate_meta_fields_activate' );
 
