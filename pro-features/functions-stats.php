@@ -70,8 +70,8 @@ function ws_ls_stats_get_summary_stats() {
 function ws_ls_stats_refresh_summary_stats() {
 
 	// If disabled, don't bother
-	if(WE_LS_DISABLE_USER_STATS) {
-		return;
+	if( WE_LS_DISABLE_USER_STATS ) {
+		return false;
 	}
 
 	$stats = array(
@@ -79,12 +79,9 @@ function ws_ls_stats_refresh_summary_stats() {
 		'sum' => 0
 	);
 
-	update_option(WE_LS_CACHE_KEY_STATS_SUMMARY, $stats);
+	update_option(WE_LS_CACHE_KEY_STATS_SUMMARY, $stats );
 
-	// Clear cache for stats table
-	ws_ls_delete_cache(WE_LS_CACHE_STATS_TABLE);
-
-	return $stats['difference'];
+	return true;
 }
 
 /*

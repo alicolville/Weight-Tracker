@@ -190,7 +190,6 @@
 	// Tidy up various things (cache etc) when user data is deleted.
     function ws_ls_tidy_cache_on_delete(){
         ws_ls_delete_cache(WE_LS_CACHE_KEY_ENTRY_COUNTS);
-		ws_ls_delete_cache(WE_LS_CACHE_STATS_TABLE);
     }
     add_action(WE_LS_HOOK_DATA_ALL_DELETED, 'ws_ls_tidy_cache_on_delete');
     add_action(WE_LS_HOOK_DATA_USER_DELETED, 'ws_ls_tidy_cache_on_delete');

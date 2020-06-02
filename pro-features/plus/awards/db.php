@@ -20,7 +20,7 @@
 
         global $wpdb;
 
-        $sql = $wpdb->prepare('Select * from ' . $wpdb->prefix . WE_LS_MYSQL_AWARDS_GIVEN . ' g INNER JOIN 
+        $sql = $wpdb->prepare('Select * from ' . $wpdb->prefix . WE_LS_MYSQL_AWARDS_GIVEN . ' g INNER JOIN
                                 ' . $wpdb->prefix . WE_LS_MYSQL_AWARDS . ' a on g.award_id = a.id where user_id = %d', $user_id);
 
         $sql .= ( 'value' === $order_by ) ? ' order by a.category, CAST( a.value as DECIMAL( 10, 5 ) )' : ' order by g.timestamp desc' ;
@@ -239,8 +239,7 @@
 
         global $wpdb;
 
-        $wpdb->query( 'TRUNCATE TABLE ' . $wpdb->prefix . WE_LS_MYSQL_AWARDS_GIVEN );
-
+        return $wpdb->query( 'TRUNCATE TABLE ' . $wpdb->prefix . WE_LS_MYSQL_AWARDS_GIVEN );
     }
 
     /**
