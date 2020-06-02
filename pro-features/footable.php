@@ -187,6 +187,8 @@ function ws_ls_data_table_get_rows($user_id = false, $max_entries = false,
 
 /**
  * Depending on settings, return relevant columns for data table
+ * @param bool $smaller_width
+ * @param bool $front_end
  * @return array - column definitions
  */
 function ws_ls_data_table_get_columns($smaller_width = false, $front_end = false) {

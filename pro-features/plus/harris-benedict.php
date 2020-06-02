@@ -146,6 +146,7 @@ function ws_ls_harris_benedict_meal_ratio_defaults() {
  * @param bool $missing_data_text
  * @param string $additional_css_class
  * @param bool $email
+ * @param bool $include_range
  * @return string
  */
 function ws_ls_harris_benedict_render_table($user_id, $missing_data_text = false,  $additional_css_class = '', $email = false, $include_range = true ) {

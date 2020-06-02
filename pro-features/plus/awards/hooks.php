@@ -2,12 +2,12 @@
 
     defined('ABSPATH') or die("Jog on!");
 
-	/**
-	 * Listen for weight entries / updates and determine whether it should be considered for an award
-	 *
-	 * @param $type
-	 * @param $weight_object
-	 */
+/**
+ * Listen for weight entries / updates and determine whether it should be considered for an award
+ *
+ * @param $info
+ * @param $weight_object
+ */
 	function ws_ls_awards_listen( $info, $weight_object ) {
 
 	    if ( false === WS_LS_IS_PRO_PLUS ) {

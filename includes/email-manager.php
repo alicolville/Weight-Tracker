@@ -454,6 +454,7 @@ function ws_ls_emailer_get( $slug ) {
  * Insert an email template
  *
  * @param $slug
+ * @param $subject
  * @param $email
  *
  * @return bool|int
@@ -484,6 +485,7 @@ function ws_ls_emailer_add( $slug, $subject, $email ) {
  * @param $to
  * @param $subject
  * @param $message
+ * @param array $placeholders
  * @return bool
  */
 function ws_ls_emailer_send( $to, $subject, $message, $placeholders = [] ) {

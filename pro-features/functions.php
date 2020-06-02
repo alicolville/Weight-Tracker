@@ -107,7 +107,8 @@ function ws_ls_get_link_to_user_data() {
 
 /**
  * Given a user ID, return a link to the user's profile
- * @param  int $user_id User ID
+ * @param int $user_id User ID
+ * @param null $display_text
  * @return string
  */
 function ws_ls_get_link_to_user_profile( $user_id, $display_text = NULL ) {
@@ -178,8 +179,8 @@ function ws_ls_get_link_to_settings() {
 
 /**
  * Given a user and entry ID, return a link to the edit entrant page
- * @param  int $id User ID
- * @param  int $entry_id Entry ID
+ * @param $user_id
+ * @param bool $entry_id Entry ID
  * @return string
  */
 function ws_ls_get_link_to_edit_entry( $user_id, $entry_id = false ) {
@@ -430,7 +431,9 @@ function ws_ls_heights_formatter( &$height, $key ) {
  * Simple function display a given user preference field for the specified user
  *
  * @param $user_id - User ID
- * @param $field - name of DB field
+ * @param string $field - name of DB field
+ * @param bool $not_specified_text
+ * @param bool $shorten
  * @return bool|string
  */
 function ws_ls_display_user_setting($user_id, $field = 'dob', $not_specified_text = false, $shorten = false) {
@@ -506,8 +509,11 @@ function ws_ls_get_dob($user_id) {
 /**
  * Simple function to convert a user's ISO DOB into pretty format
  *
- * @param $user_id
+ * @param bool $user_id
+ * @param string $not_specified_text
+ * @param bool $include_age
  * @return bool|string
+ * @throws Exception
  */
 function ws_ls_get_dob_for_display($user_id = false, $not_specified_text = '', $include_age = false) {
 

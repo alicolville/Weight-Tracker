@@ -133,13 +133,13 @@
 
     }
 
-    /**
-     * Format meta data for display
-     *
-     * @param $value
-     * @param int $type
-     * @return int
-     */
+/**
+ * Format meta data for display
+ *
+ * @param $value
+ * @param $meta_field_id
+ * @return int
+ */
     function ws_ls_fields_display_field_value( $value, $meta_field_id ) {
 
         $meta_field = ws_ls_meta_fields_get_by_id( $meta_field_id );
@@ -331,13 +331,14 @@
 
     }
 
-	/**
-	 * Generate the HTML for a meta field photo
-	 *
-	 * @param $field
-	 * @param $value
-	 * @return string
-	 */
+/**
+ * Generate the HTML for a meta field photo
+ *
+ * @param $field
+ * @param $value
+ * @param null $field_id
+ * @return string
+ */
 	function ws_ls_meta_fields_form_field_photo( $field, $value, $field_id = NULL ) {
 
 		if ( false === WS_LS_IS_PRO ) {

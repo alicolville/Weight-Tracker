@@ -201,7 +201,11 @@ function ws_ls_admin_check_mysql_tables_exist() {
 
 
 /**
-Used to display a jQuery dialog box in the admin panel
+ * Used to display a jQuery dialog box in the admin panel
+ * @param $title
+ * @param $message
+ * @param $class_used_to_prompt_confirmation
+ * @param bool $js_call
  */
 function ws_ls_create_dialog_jquery_code( $title, $message, $class_used_to_prompt_confirmation, $js_call = false ) {
 
@@ -631,7 +635,6 @@ function ws_ls_stats_clear_last_updated_date(){
  * Helper function to convert an ISO date into the relevant date format
  *
  * @param $date
- * @param bool $return_formatted_date_only
  * @return false|string
  */
 function ws_ls_iso_date_into_correct_format( $date ) {
@@ -666,6 +669,7 @@ function ws_ls_groups_link() {
 
 /**
  * Return the link for calculations page
+ * @param bool $link_only
  * @return string
  */
 function ws_ls_calculations_link($link_only = false) {
@@ -683,8 +687,10 @@ function ws_ls_url_license_types() {
 }
 
 /**
-* Helper function to display a WP notice (in Admin)
-**/
+ * Helper function to display a WP notice (in Admin)
+ * @param $text
+ * @param string $type
+ */
 function ws_ls_display_notice($text, $type = 'success') {
 
 	if(true === empty($text)) {
@@ -717,7 +723,11 @@ function ws_ls_display_data_saved_message() {
  *
  * @class ws-ls-success
  * @text
- *
+ * @param $text
+ * @param string $class
+ * @param bool $just_echo
+ * @param bool $include_log_link
+ * @return string
  */
 function ws_ls_display_blockquote( $text, $class = '', $just_echo = false, $include_log_link = false ) {
 
@@ -872,8 +882,8 @@ function ws_ls_display_max_server_upload_size() {
 /**
  * Either fetch data from the $_POST object for the given object keys
  *
- * @param $meta_field
- * @return string
+ * @param $keys
+ * @return array
  */
 function ws_ls_get_values_from_post( $keys ) {
 
@@ -896,7 +906,6 @@ function ws_ls_get_values_from_post( $keys ) {
 /**
  * Display upgrade notice
  *
- * @param bool $pro_plus
  */
 function ws_ls_display_pro_upgrade_notice( ) {
 ?>
@@ -916,6 +925,7 @@ function ws_ls_display_pro_upgrade_notice( ) {
  * Return a Blur CSS class if not valid license
  *
  * @param bool $pro_plus
+ * @param bool $space_before
  * @return string
  */
 function ws_ls_blur( $pro_plus = false, $space_before = true ) {
@@ -939,6 +949,7 @@ function ws_ls_blur( $pro_plus = false, $space_before = true ) {
  * Blur string if incorrect license
  *
  * @param $text
+ * @param bool $pro_plus
  * @return string
  */
 function ws_ls_blur_text( $text, $pro_plus = false ) {
@@ -1021,6 +1032,7 @@ function ws_ls_calculate_percentage_difference_as_number( $previous_weight, $cur
  * Return the text value of enabled value
  *
  * @param $value
+ * @param int $true_value
  * @return mixed|string
  */
 function ws_ls_boolean_as_yes_no_string( $value, $true_value = 2 ) {

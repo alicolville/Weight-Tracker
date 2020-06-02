@@ -7,7 +7,7 @@ global $save_response;
 /**
  * Look for WT form submissions. If one is found, validate the form and attempt to save the data.
  *
- * @return nothing
+ * @return array|bool|void
  */
 function ws_ls_capture_and_handle_form_post(){
 

@@ -8,6 +8,8 @@ defined('ABSPATH') or die("Jog on!");
  *   - Identify and add user's that have made one or more weight entries within the given challenge period.
  *   - Refresh stat data for each user that requires it (i.e. last_processed) is null
  *
+ * @param null $user_id
+ * @param bool $identify_new_entries
  * @param int $max_entries_per_challenge_to_process
  * @return bool|int
  */

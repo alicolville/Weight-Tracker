@@ -161,6 +161,8 @@ function ws_ls_photos_shortcode_render( $image, $css_class = '', $hide_date = tr
  * @param bool $recent
  * @param int $width
  * @param int $height
+ * @param string $meta_fields_to_use
+ * @param bool $hide_from_shortcodes
  * @return array|bool|null
  */
 function ws_ls_photos_db_get_recent_or_latest( $user_id = false,
@@ -265,7 +267,7 @@ function ws_ls_meta_fields_photos_for_given_entry_id( $entry_id ) {
  *
  * Delete all photo meta entries for given attachment ID
  *
- * @param $entry_id
+ * @param $attachment_id
  * @return array
  */
 function ws_ls_meta_fields_photos_delete_entry( $attachment_id ) {
@@ -292,9 +294,12 @@ function ws_ls_meta_fields_photos_delete_entry( $attachment_id ) {
  *
  * @param bool $user_id
  * @param bool $include_image_object
+ * @param bool $limit
  * @param string $direction
  * @param int $width
  * @param int $height
+ * @param string $meta_fields_to_use
+ * @param bool $hide_from_shortcodes
  * @return array|bool|null
  */
 function ws_ls_photos_db_get_all_photos(    $user_id = false,
@@ -386,8 +391,8 @@ function ws_ls_photos_db_get_all_photos(    $user_id = false,
  * Count number of photos for given user
  *
  * @param bool $user_id
+ * @param bool $hide_from_shortcodes
  * @return array|null
- *
  */
 function ws_ls_photos_db_count_photos( $user_id = false, $hide_from_shortcodes = false ) {
 
@@ -425,8 +430,9 @@ function ws_ls_photos_db_count_photos( $user_id = false, $hide_from_shortcodes =
  * Fetch HTML for given image
  *
  * @param $attachment_id
- * @param $width
- * @param $height
+ * @param int $width
+ * @param int $height
+ * @param bool $include_full_url
  * @return bool
  */
 function ws_ls_photo_get( $attachment_id, $width = 200, $height = 200, $include_full_url = true ) {

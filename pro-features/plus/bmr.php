@@ -100,12 +100,12 @@
     }
     add_shortcode( 'wlt-bmr', 'ws_ls_shortcode_bmr' );
 
-	/**
-	 * Round BMR / Harris Benedict
-	 *
-	 * @param $value
-	 * @return $value
-	 */
+/**
+ * Round BMR / Harris Benedict
+ *
+ * @param $value
+ * @return float $value
+ */
 	function ws_ls_round_bmr_harris( $value ) {
 		return ( true === is_numeric( $value ) ) ? round( $value ) : $value;
 	}

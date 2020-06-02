@@ -87,8 +87,8 @@ function ws_ls_export_process_meta_fields( $rows ) {
 /**
  * Export to JSON
  *
- * @param  array  $data                 Data
- * @return string						Contents of JSON file
+ * @param $rows
+ * @return string                        Contents of JSON file
  */
 function ws_ls_export_to_json( $rows ) {
 
@@ -232,7 +232,6 @@ function ws_ls_csv_row_write($columns, $row, $delimiter = ',', $end_of_line_char
 
 /**
  * Helper function to replace column names with something more readable. For example take MySQL column names and make them easier to read
- * @param  array $names An array of column names
  * @return array Prettified fields names
  */
 function ws_ls_column_names() {
@@ -282,8 +281,9 @@ function ws_ls_csv_cell_escape($data) {
 
 /**
  * Take string and stream it to browser as CSV or JSON
- * @param  string $data             Data
- * @param  string $file_name        File name
+ * @param string $data Data
+ * @param string $file_name File name
+ * @param string $content_type
  * @return void
  */
 function ws_ls_export_to_browser($data, $file_name = 'weight-loss-tracker.csv', $content_type = 'text/csv') {

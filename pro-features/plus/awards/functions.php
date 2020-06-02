@@ -18,11 +18,12 @@
         return admin_url( 'admin.php?page=ws-ls-awards');
     }
 
-    /**
-     * Return an array of Award Types
-     *
-     * @return array
-     */
+/**
+ * Return an array of Award Types
+ *
+ * @param bool $simple
+ * @return array
+ */
     function ws_ls_awards_categories( $simple = false) {
 
     	if ( true === $simple ) {
@@ -67,12 +68,12 @@
 	    }
     }
 
-    /**
-     * Return the text value of a custom field
-     *
-     * @param $id
-     * @return mixed|string
-     */
+/**
+ * Return the text value of a custom field
+ *
+ * @param $slug
+ * @return mixed|string
+ */
     function ws_ls_custom_fields_get_string( $slug ) {
 
         $types = ws_ls_awards_categories();
@@ -129,13 +130,14 @@
 	    return false;
     }
 
-    /**
-     * Determine what awards can be given to this user and the given change type
-     *
-     * @param null $user_id
-     * @param null $change_type
-     * @return array
-     */
+/**
+ * Determine what awards can be given to this user and the given change type
+ *
+ * @param null $user_id
+ * @param null $change_type
+ * @param null $losing_weight_only
+ * @return array
+ */
     function ws_ls_awards_to_give( $user_id = NULL, $change_type = NULL, $losing_weight_only = NULL ) {
 
         $user_id = $user_id ?: get_current_user_id();
@@ -226,6 +228,9 @@
  * Fetch all the awards given to this user (add relevant image data too)
  * @param null $user_id
  *
+ * @param int $width
+ * @param int $height
+ * @param string $order_by
  * @return array|null
  */
 	function ws_ls_awards_previous_awards( $user_id = NULL, $width = 200, $height = 200, $order_by = 'value' ) {

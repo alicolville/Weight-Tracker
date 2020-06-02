@@ -53,8 +53,7 @@ add_filter( 'wlt-filter-user-settings-below-dob',  'ws_ls_challenges_hook_settin
 /**
  * Save user preference value
  *
- * @param $html
- *
+ * @param $fields
  * @return string
  */
 function ws_ls_challenges_hook_settings_form_save( $fields ) {

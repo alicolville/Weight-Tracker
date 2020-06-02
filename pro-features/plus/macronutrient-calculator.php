@@ -87,6 +87,7 @@ function ws_ls_macro_calculate($user_id = false) {
  *
  * @param $user_id
  * @param bool $missing_data_text
+ * @param string $additional_css_class
  * @return string
  */
 function ws_ls_macro_render_table($user_id, $missing_data_text = false, $additional_css_class = '')

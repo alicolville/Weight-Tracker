@@ -120,13 +120,14 @@
 	}
 	add_filter( WE_LS_FILTER_ADMIN_USER_SIDEBAR_MIDDLE,  'ws_ls_groups_hooks_user_side_bar', 10, 2 );
 
-	/**
-	 * Add a <select> for Group to user preference form
-	 *
-	 * @param $html
-	 *
-	 * @return string
-	 */
+/**
+ * Add a <select> for Group to user preference form
+ *
+ * @param $html
+ *
+ * @param $user_id
+ * @return string
+ */
 	function ws_ls_groups_hooks_user_preferences_form( $html, $user_id ) {
 
 		if ( false === is_admin() && false === ws_ls_groups_can_users_edit() ) {
@@ -171,13 +172,14 @@
 	}
 	add_filter( 'wlt-filter-user-settings-below-dob',  'ws_ls_groups_hooks_user_preferences_form', 10, 2 );
 
-	/**
-	 * Add a <select> for Group to user preference form
-	 *
-	 * @param $html
-	 *
-	 * @return string
-	 */
+/**
+ * Add a <select> for Group to user preference form
+ *
+ * @param $user_id
+ * @param $is_admin
+ * @param $fields
+ * @return string
+ */
 	function ws_ls_groups_hooks_user_preferences_save( $user_id, $is_admin, $fields ) {
 
 		if ( false === ws_ls_groups_enabled() ) {
@@ -452,11 +454,12 @@
 	}
 	add_action( 'wlt-hook-stats-running', 'ws_ls_groups_stats_cron' );
 
-	/**
-	 * Fetch all groups for user
-	 *
-	 * @return array
-	 */
+/**
+ * Fetch all groups for user
+ *
+ * @param null $user_id
+ * @return array
+ */
 	function ws_ls_groups_user( $user_id = NULL ) {
 
 		$user_id = $user_id ?: get_current_user_id();
@@ -709,9 +712,11 @@
     }
     add_action( 'wp_ajax_groups_users_delete', 'ws_ls_ajax_groups_users_delete' );
 
-	/**
-	 * Sortcode to display total weight difference for group
-	 */
+/**
+ * Sortcode to display total weight difference for group
+ * @param $user_defined_arguments
+ * @return string|void
+ */
 	function ws_ls_groups_shortcode( $user_defined_arguments ) {
 
 		$arguments = shortcode_atts( [ 'id' => 0 ], $user_defined_arguments );

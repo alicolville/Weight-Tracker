@@ -2,12 +2,13 @@
 
     defined('ABSPATH') or die("Jog on!");
 
-    /**
-     * Fetch all awards for the given user
-     *
-     * @param $user_id
-     * @return array
-     */
+/**
+ * Fetch all awards for the given user
+ *
+ * @param $user_id
+ * @param string $order_by
+ * @return array
+ */
     function ws_ls_awards_db_given_get( $user_id, $order_by = 'value' ) {
 
         $cache_key = 'awards-given-' . $order_by;
@@ -64,11 +65,12 @@
 		ws_ls_cache_user_delete( $user_id );
 	}
 
-    /**
-     * Fetch all Awards
-     *
-     * @return array
-     */
+/**
+ * Fetch all Awards
+ *
+ * @param bool $ignore_cache
+ * @return array
+ */
     function ws_ls_awards( $ignore_cache = false ) {
 
         global $wpdb;
@@ -188,12 +190,12 @@
         return ( 1 === $result );
     }
 
-    /**
-     * Delete all entries for award
-     *
-     * @param $meta_field_id
-     * @return bool
-     */
+/**
+ * Delete all entries for award
+ *
+ * @param $award_id
+ * @return bool
+ */
     function ws_ls_awards_delete_all_given( $award_id ) {
 
         if ( false === is_admin() ) {

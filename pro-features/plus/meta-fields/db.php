@@ -199,6 +199,8 @@ function ws_ls_meta_fields_enabled() {
 /**
  * Fetch all meta fields
  *
+ * @param bool $exclude_system
+ * @param bool $ignore_cache
  * @return array
  */
 function ws_ls_meta_fields( $exclude_system = true, $ignore_cache = false ) {
@@ -378,7 +380,7 @@ function ws_ls_meta_fields_get( $key ) {
 /**
  * Get details for given meta field
  *
- * @param $key
+ * @param $id
  * @return array|bool|object|void|null
  */
 function ws_ls_meta_fields_get_by_id( $id ) {
@@ -476,7 +478,7 @@ function ws_ls_meta_fields_key_sanitise( $key ) {
 /**
  * Generate a unique meta field key
  *
- * @param $key
+ * @param $original_key
  * @return string
  */
 function ws_ls_meta_fields_generate_field_key( $original_key ) {
