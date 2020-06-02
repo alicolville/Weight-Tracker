@@ -160,6 +160,6 @@ function ws_ls_shortcode_new_users( $user_defined_arguments ) {
 
     $user_query = new WP_User_Query( $wp_search_query );
 
-    return esc_html( $user_query->total_users );
+    return esc_html( $user_query->get_total() );
 }
 add_shortcode( 'wlt-new-users', 'ws_ls_shortcode_new_users' );
