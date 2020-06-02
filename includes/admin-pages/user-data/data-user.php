@@ -9,7 +9,7 @@ function ws_ls_admin_page_data_user() {
 	$user_id = ws_get_user_id_from_qs();
 
     // Ensure this WP user ID exists!
-    ws_user_exist_check( $user_id );
+    ws_ls_user_exist_check( $user_id );
 
     // DELETE ALL DATA FOR THIS USER!! AHH!!
     if ( true === isset( $_GET['removedata'] ) && 'y' == $_GET['removedata'] ) {
@@ -182,7 +182,7 @@ function ws_ls_admin_page_data_user() {
                                   <?php
 				                      echo sprintf('<p>
 				                                        <a href="%s">%s</a> %s:
-				                                    </p>     
+				                                    </p>
                                                     <ul>
                                                         <li><strong>- %s</strong> - %s. %s.</li>
                                                         <li><strong>- %s</strong> - %s. %s.</li>

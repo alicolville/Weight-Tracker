@@ -272,7 +272,7 @@ function ws_ls_side_bar_render_rows( $rows ) {
  */
 function ws_ls_user_header( $user_id, $previous_url = false ) {
 
-	if( true === empty( $user_id ) || false === ws_user_exist_check( $user_id ) ) {
+	if( true === empty( $user_id ) || false === ws_ls_user_exist_check( $user_id ) ) {
 		return;
 	}
 

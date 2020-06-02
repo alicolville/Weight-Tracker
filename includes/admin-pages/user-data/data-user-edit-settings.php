@@ -9,7 +9,7 @@ function ws_ls_admin_page_settings_user() {
 	$user_id = ws_get_user_id_from_qs();
 
     // Ensure this WP user ID exists!
-    ws_user_exist_check( $user_id );
+    ws_ls_user_exist_check( $user_id );
 ?>
 <div class="wrap ws-ls-user-data ws-ls-admin-page">
 	<div id="poststuff">

@@ -583,11 +583,13 @@ function ws_ls_user_exist($user_id) {
  * @param $user_id
  * @return bool
  */
-function ws_user_exist_check($user_id) {
+function ws_ls_user_exist_check($user_id ) {
 
-    if(false === ws_ls_user_exist($user_id)) {
-        wp_die(__( 'Error: The user does not appear to exist' , WE_LS_SLUG));
+    if ( false === ws_ls_user_exist( $user_id ) ) {
+        wp_die( __( 'Error: The user does not appear to exist' , WE_LS_SLUG ) );
     }
+
+    return true;
 }
 
 /**
