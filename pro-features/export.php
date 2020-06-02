@@ -306,7 +306,7 @@ function ws_ls_export_to_browser($data, $file_name = 'weight-loss-tracker.csv', 
 
 function ws_ls_export_add_bmi($row) {
 	if(false === empty($row['user_id']) && false === empty($row['kg'])) {
-		$row['bmi'] =  ws_ls_calculate_bmi(ws_ls_get_user_height($row['user_id']), $row['kg'], __('No height', WE_LS_SLUG)) ;
+		$row['bmi'] =  ws_ls_calculate_bmi( ws_ls_get_user_height($row['user_id'] ), $row['kg'] ) ;
 		$row['bmi-readable'] =  (is_numeric($row['bmi'])) ? ws_ls_calculate_bmi_label($row['bmi']) : '';
 	}
 

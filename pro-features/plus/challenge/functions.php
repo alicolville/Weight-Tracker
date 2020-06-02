@@ -453,7 +453,7 @@ function ws_ls_challenges_show_filters() {
 	$html .= ws_ls_select( 'gender', __( 'Gender', WE_LS_SLUG ),  ws_ls_genders() );
 
 	// Age range
-	$html .= ws_ls_select( 'age-range', __( 'Age Range', WE_LS_SLUG ), ws_ls_age_ranges( true, true ) );
+	$html .= ws_ls_select( 'age-range', __( 'Age Range', WE_LS_SLUG ), ws_ls_age_ranges( true ) );
 
 	// Group
 	if ( true === ws_ls_groups_enabled () ) {
