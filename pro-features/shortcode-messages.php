@@ -42,10 +42,10 @@ function ws_ls_shortcode_message($user_defined_arguments, $content = null) {
 
 				// If we are checking for gains, ensure this entry less than the one before.
 				if($checking_for_gains && $current_value <= $previous_value) {
-					return;
+					return '';
 				// If we are checking for consecutive losses, ensure this entry is greater than the one before.
 				} elseif (!$checking_for_gains && $current_value >= $previous_value) {
-					return;
+					return '';
 				}
 			}
 
@@ -57,4 +57,5 @@ function ws_ls_shortcode_message($user_defined_arguments, $content = null) {
 		}
 	}
 
+	return '';
 }

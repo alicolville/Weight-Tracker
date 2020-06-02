@@ -9,7 +9,7 @@ function ws_ls_capture_and_handle_form_post()
 
 		// Ignore non WLT posts
 		if (!($_POST && isset($_POST['ws_ls_is_weight_form']) && 'true' == $_POST['ws_ls_is_weight_form'])) {
-			return;
+			return false;
 		}
 
 		$error = false;

@@ -163,5 +163,6 @@ function ws_ls_shortcode_progress_bar_render($arguments = array()) {
 		);
 	}
 
+	return '';
 
 }

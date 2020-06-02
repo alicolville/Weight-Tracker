@@ -197,42 +197,42 @@ function ws_ls_macro_render_table($user_id, $missing_data_text = false, $additio
  *
  * @param $user_defined_arguments
  */
-function ws_ls_shortcode_macro($user_defined_arguments) {
+function ws_ls_shortcode_macro( $user_defined_arguments ) {
 
-	if(false === WS_LS_IS_PRO_PLUS) {
-		return;
+	if( false === WS_LS_IS_PRO_PLUS ) {
+		return '';
 	}
 
 	$arguments = shortcode_atts([
-									'error-message' => __('Please ensure all relevant data to calculate calorie intake has been entered i.e. Activity Level, Date of Birth, Current Weight, Gender and Height.', WE_LS_SLUG ),
-									'user-id' => false,
-									'progress' => 'maintain',	// 'maintain', 'lose', 'gain', 'auto'
-									'nutrient' => 'fats', 		// 'fats', 'protein', 'carbs'
-									'type' => 'lunch'			// 'breakfast', 'lunch', 'dinner', 'snack', 'total'
+									'error-message' 	=> __('Please ensure all relevant data to calculate calorie intake has been entered i.e. Activity Level, Date of Birth, Current Weight, Gender and Height.', WE_LS_SLUG ),
+									'user-id' 			=> false,
+									'progress' 			=> 'maintain',	// 'maintain', 'lose', 'gain', 'auto'
+									'nutrient' 			=> 'fats', 		// 'fats', 'protein', 'carbs'
+									'type' 				=> 'lunch'		// 'breakfast', 'lunch', 'dinner', 'snack', 'total'
 								], $user_defined_arguments );
 
-    $allowed_progress = apply_filters(WE_LS_FILTER_MACRO_ALLOWED_PROGRESS, [ 'maintain', 'lose', 'gain', 'auto' ]);
+    $allowed_progress = apply_filters( 'wlt-filter-macro-nutrients-allowed-progresses', [ 'maintain', 'lose', 'gain', 'auto' ] );
 
     // If "progress" set as "auto", then determine from the user's aim which progress type to display
     if ( 'auto' === $arguments['progress'] ) {
         $arguments['progress'] = ws_ls_get_progress_attribute_from_aim();
     }
 
-	$arguments['user-id'] = ws_ls_force_numeric_argument($arguments['user-id']);
-    $progress = (false === in_array($arguments['progress'], $allowed_progress)) ? 'maintain' : $arguments['progress'];
-	$type = (false === in_array($arguments['type'], ['breakfast', 'lunch', 'dinner', 'snacks', 'total'])) ? 'lunch' : $arguments['type'];
-	$nutrient = (false === in_array($arguments['nutrient'], ['fats', 'protein', 'carbs'])) ? 'fats' : $arguments['nutrient'];
-
-	$macros = ws_ls_macro_calculate($arguments['user-id']);
+	$arguments['user-id'] 	= (int) $arguments[ 'user-id' ];
+    $progress 				= ( false === in_array( $arguments[ 'progress' ], $allowed_progress ) ) ? 'maintain' : $arguments['progress'];
+	$type 					= ( false === in_array( $arguments[ 'type' ], [ 'breakfast', 'lunch', 'dinner', 'snacks', 'total' ] ) ) ? 'lunch' : $arguments['type'];
+	$nutrient 				= ( false === in_array( $arguments[ 'nutrient' ], [ 'fats', 'protein', 'carbs'] ) ) ? 'fats' : $arguments[ 'nutrient' ];
+	$macros 				= ws_ls_macro_calculate( $arguments['user-id'] );
 
 	// No macro data?
-    if(true === empty($macros) && false === empty($arguments['error-message'])) {
-        return '<p>' . esc_html( $arguments['error-message'] ) . '</p>';
+    if( true === empty($macros) && false === empty( $arguments[ 'error-message' ] ) ) {
+        return sprintf( '<p>%s</p>', esc_html( $arguments[ 'error-message' ] ) );
     }
 
-	$display_value = (false === empty($macros[$progress][$type][$nutrient])) ? ws_ls_macro_round( $macros[$progress][$type][$nutrient] ) : '' ;
+	$display_value = ( false === empty( $macros[ $progress ][ $type ][ $nutrient ] ) ) ?
+						ws_ls_macro_round( $macros[ $progress ][ $type ][ $nutrient ] ) : '' ;
 
-	return esc_html($display_value);
+	return esc_html( $display_value );
 }
 add_shortcode( 'wlt-macronutrients', 'ws_ls_shortcode_macro' );
 
@@ -245,26 +245,26 @@ add_shortcode( 'wlt-macronutrients', 'ws_ls_shortcode_macro' );
  */
 function ws_ls_shortcode_macro_table($user_defined_arguments) {
 
-	if(false === WS_LS_IS_PRO_PLUS) {
-		return;
+	if( false === WS_LS_IS_PRO_PLUS ) {
+		return '';
 	}
 
-	$arguments = shortcode_atts([	'css-class' => '',
-									'error-message' => __('Please ensure all relevant data to calculate calorie intake has been entered i.e. Activity Level, Date of Birth, Current Weight, Gender and Height.', WE_LS_SLUG ),
-									'user-id' => false,
-                                    'disable-jquery' => false
+	$arguments = shortcode_atts([	'css-class' 		=> '',
+									'error-message' 	=> __('Please ensure all relevant data to calculate calorie intake has been entered i.e. Activity Level, Date of Birth, Current Weight, Gender and Height.', WE_LS_SLUG ),
+									'user-id' 			=> false,
+                                    'disable-jquery' 	=> false
 								], $user_defined_arguments );
 
-	$arguments['user-id'] = ws_ls_force_numeric_argument($arguments['user-id']);
-    $arguments['disable-jquery'] = ws_ls_force_bool_argument($arguments['disable-jquery']);
+	$arguments[ 'user-id' ] 		= (int) $arguments['user-id'];
+    $arguments[ 'disable-jquery' ] 	= ws_ls_force_bool_argument( $arguments[ 'disable-jquery' ] );
 
     // Include footable jQuery?
-    if ( false === $arguments['disable-jquery'] ) {
+    if ( false === $arguments[ 'disable-jquery' ] ) {
         ws_ls_data_table_enqueue_scripts();
-        $arguments['css-class'] .= ' ws-ls-footable';
+        $arguments[ 'css-class' ] .= ' ws-ls-footable';
     }
 
-	return ws_ls_macro_render_table($arguments['user-id'], $arguments['error-message'], $arguments['css-class']);
+	return ws_ls_macro_render_table( $arguments[ 'user-id' ], $arguments[ 'error-message' ], $arguments[ 'css-class' ] );
 }
 add_shortcode( 'wlt-macronutrients-table', 'ws_ls_shortcode_macro_table' );
 

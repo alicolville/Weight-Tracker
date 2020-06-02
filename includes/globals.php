@@ -47,7 +47,6 @@
     define('WE_LS_FILTER_HARRIS', 'wlt-filter-harris-benedict');
     define('WE_LS_FILTER_HARRIS_ALLOWED_PROGRESS', 'wlt-filter-harris-benedict-allowed-progresses');
     define('WE_LS_FILTER_HARRIS_TOP_OF_TABLE', 'wlt-filter-harris-benedict-top-of-table');
-    define('WE_LS_FILTER_MACRO_ALLOWED_PROGRESS', 'wlt-filter-macro-nutrients-allowed-progresses');
 
     // -----------------------------------------------------------------------------------
 	// Dynamic Settings based upon user settings, etc

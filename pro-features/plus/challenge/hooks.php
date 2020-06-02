@@ -29,7 +29,7 @@ add_action( 'wlt-hook-delete-cache-for-user', 'ws_ls_challenges_hook_clear_last_
 function ws_ls_challenges_hook_settings_form_opt_in( $html, $user_id ) {
 
     if ( false === ws_ls_challenges_is_enabled() ) {
-        return;
+        return '';
     }
 
     $html           .= ws_ls_title( __( 'Challenges', WE_LS_SLUG ) );
@@ -37,7 +37,7 @@ function ws_ls_challenges_hook_settings_form_opt_in( $html, $user_id ) {
 
     $html .= sprintf( '    <select name="ws-ls-challenge-opt-in" id="ws-ls-challenge-opt-in" tabindex="%1$d">
                                         <option value="no">%2$s</option>
-                                        <option value="yes" %3$s>%4$s</option>      
+                                        <option value="yes" %3$s>%4$s</option>
                                     </select>',
                                     ws_ls_get_next_tab_index(),
                                     __( 'No - Do not opt me into any challenges', WE_LS_SLUG ),
@@ -60,7 +60,7 @@ add_filter( 'wlt-filter-user-settings-below-dob',  'ws_ls_challenges_hook_settin
 function ws_ls_challenges_hook_settings_form_save( $fields ) {
 
     if ( false === ws_ls_challenges_is_enabled() ) {
-        return;
+        return $fields;
     }
 
     $opt_in                         = ws_ls_ajax_post_value('ws-ls-challenge-opt-in');
@@ -78,7 +78,7 @@ add_action( 'wlt-filter-user-settings-save-fields',  'ws_ls_challenges_hook_sett
 function ws_ls_challenges_hook_setting_db_format( $formats ) {
 
     if ( false === ws_ls_challenges_is_enabled() ) {
-        return;
+        return $formats;
     }
 
     $formats[ 'challenge_opt_in' ] = '%d';
