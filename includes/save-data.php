@@ -1,66 +1,81 @@
 <?php
-	defined('ABSPATH') or die('Jog on!');
+
+defined('ABSPATH') or die('Jog on!');
 
 global $save_response;
 
-function ws_ls_capture_and_handle_form_post()
-{
-		global $save_response;
+/**
+ * Look for WT form submissions. If one is found, validate the form and attempt to save the data.
+ *
+ * @return nothing
+ */
+function ws_ls_capture_and_handle_form_post(){
 
 		// Ignore non WLT posts
-		if (!($_POST && isset($_POST['ws_ls_is_weight_form']) && 'true' == $_POST['ws_ls_is_weight_form'])) {
+		if ( true === empty( $_POST[ 'ws_ls_is_weight_form' ] ) ) {
 			return false;
 		}
 
-		$error = false;
-		$save_success = false;
-		$html_output = '';
+		global $save_response;
 
-		// Capture and validate user id from form
-    	$user_id = (isset($_POST['ws_ls_user_id']) && is_numeric($_POST['ws_ls_user_id'])) ? (int) $_POST['ws_ls_user_id'] : false;
+		$form_number = ws_ls_post_value( 'ws_ls_form_number', false );
 
-    	$form_number = (isset($_POST['ws_ls_form_number']) && is_numeric($_POST['ws_ls_form_number'])) ? (int) $_POST['ws_ls_form_number'] : false;
+		$save_response = [ 'form_number' => (int) $form_number, 'message' => '' ];
 
-		$save_response['form_number'] = $form_number;
+		// Do we have a security hash?
+		$user_hash = ws_ls_post_value( 'ws_ls_security' );
 
-		// Got an ID?
-		if( $user_id ){
-
-		    $user_hash = (isset($_POST['ws_ls_security'])) ? $_POST['ws_ls_security'] : '';
-
-			// If a valid hash, carry on
-			if( $user_hash == wp_hash( $user_id ) ){
-
-        		$save_success = ws_ls_capture_form_validate_and_save( $user_id );
-
-                // Do we have a redirect URL?
-                if(isset($_POST['ws_redirect']) && wp_validate_redirect($_POST['ws_redirect'])) {
-                    wp_safe_redirect($_POST['ws_redirect']);
-                    exit;
-                }  elseif ($save_success) {
-
-                    // Allow others to override Saved message
-                    $save_message = apply_filters( 'wlt-filter-form-saved-message', __('Saved!', WE_LS_SLUG));
-
-					$html_output .= ws_ls_display_blockquote( $save_message, 'ws-ls-success');
-				} else {
-					$error = __('An error occurred while saving your data!', WE_LS_SLUG);
-				}
-			} else {
-				$error = __('No user specified (hash)', WE_LS_SLUG);
-			}
-		} else {
-			$error = __('No user specified', WE_LS_SLUG);
+		if ( true === empty( $user_hash ) ) {
+			return ws_ls_save_form_error_prep( $save_response, __( 'No user hash could be found', WE_LS_SLUG ) );
 		}
 
-		if($error) {
-			$html_output .=  ws_ls_display_blockquote( $error, 'ws-ls-error-text');
+		// Got a user ID?
+		$user_id = ws_ls_post_value( 'ws_ls_user_id' );
+
+		if ( true === empty( $user_id ) ) {
+			return ws_ls_save_form_error_prep( $save_response, __( 'No user ID has been found', WE_LS_SLUG ) );
 		}
 
-		$save_response['message'] = $html_output;
+		// Does the hash work for the given user ID?
+		if( $user_hash !== wp_hash( $user_id ) ) {
+			return ws_ls_save_form_error_prep( $save_response, __( 'The given user hash did not match the logged in user', WE_LS_SLUG ) );
+		}
 
-    return $html_output;
+		// Process posted form and save!
+		$save_success = ws_ls_capture_form_validate_and_save( $user_id );
 
+		if ( false === $save_success ) {
+			return ws_ls_save_form_error_prep( $save_response, __( 'An error occurred while saving your data', WE_LS_SLUG ) );
+		}
+
+		// Redirect?
+		$redirect_url = ws_ls_post_value( 'ws_redirect' );
+
+		if ( false === empty( $redirect_url ) ) {
+			wp_safe_redirect( $_POST['ws_redirect'] );
+			exit;
+		}
+
+		$message = apply_filters( 'wlt-filter-form-saved-message', __( 'Your entry has been saved.', WE_LS_SLUG ) );
+
+		$save_response[ 'message' ] = ws_ls_display_blockquote( $message, 'ws-ls-success' );
 }
-add_action('init', 'ws_ls_capture_and_handle_form_post');
-add_action('admin_init', 'ws_ls_capture_and_handle_form_post');
+add_action( 'init', 'ws_ls_capture_and_handle_form_post' );
+add_action( 'admin_init', 'ws_ls_capture_and_handle_form_post' );
+
+/**
+ * Prep a response object for other forms to process
+ * @param $response
+ * @param $error
+ * @return array
+ */
+function ws_ls_save_form_error_prep($response, $error ) {
+
+	if ( false === is_array( $response ) ) {
+		return $response;
+	}
+
+	$response[ 'message' ] = ws_ls_blockquote_error( $error );
+
+	return $response;
+}
