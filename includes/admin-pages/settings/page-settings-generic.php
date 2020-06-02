@@ -806,85 +806,17 @@ function ws_ls_settings_page_generic() {
 											</div>
                                         <div>
                                             <?php
-                                            if ( false === WS_LS_IS_PRO ) {
-                                                ws_ls_display_pro_upgrade_notice();
-                                            }
+												if ( false === WS_LS_IS_PRO ) {
+													ws_ls_display_pro_upgrade_notice();
+												}
+
+												printf( '<p>%s <a href="%s">%s</a>.</p>',
+																__( 'Measurement settings and user data have now been migrated to' , WE_LS_SLUG ),
+																esc_url( ws_ls_meta_fields_base_url() ),
+																__( 'Custom Fields' , WE_LS_SLUG )
+												);
                                             ?>
-                                           <table class="form-table">
-                                                <tr class="<?php echo $disable_if_not_pro_class; ?>">
-                                                	<th scope="row"><?php echo __( 'Allow Measurements?' , WE_LS_SLUG); ?></th>
-													<td>
-														<select id="ws-ls-allow-measurements" name="ws-ls-allow-measurements">
-															<option value="no" <?php selected( get_option('ws-ls-allow-measurements'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG); ?></option>
-															<option value="yes" <?php selected( get_option('ws-ls-allow-measurements'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG); ?></option>
-														</select>
-														<p><?php echo __('If enabled, a user can also add body measurements along with their weights.', WE_LS_SLUG); ?></p>
-													</td>
-												</tr>
-                                                <tr class="<?php echo $disable_if_not_pro_class; ?>">
-                                                    <th scope="row"><?php echo __( 'Measurement Units' , WE_LS_SLUG); ?></th>
-                                                    <td>
-                                                        <select id="ws-ls-measurement-units" name="ws-ls-measurement-units">
-                                                            <option value="cm" <?php selected( get_option('ws-ls-measurement-units'), 'cm' ); ?>><?php echo __('Centimetres', WE_LS_SLUG); ?></option>
-                                                            <option value="inches" <?php selected( get_option('ws-ls-measurement-units'), 'inches' ); ?>><?php echo __('Inches', WE_LS_SLUG); ?></option>
-                                                        </select>
-                                                        <p><?php echo __('Default unit for recording measurements.', WE_LS_SLUG);?></p>
-                                                    </td>
-                                                </tr>
-                                                <tr class="<?php echo $disable_if_not_pro_class; ?>">
-                                                	<th scope="row"><?php echo __( 'Measurements mandatory?' , WE_LS_SLUG); ?></th>
-													<td>
-														<select id="ws-ls-measurements-mandatory" name="ws-ls-measurements-mandatory">
-															<option value="no" <?php selected( get_option('ws-ls-measurements-mandatory'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG); ?></option>
-															<option value="yes" <?php selected( get_option('ws-ls-measurements-mandatory'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG); ?></option>
-														</select>
-														<p><?php echo __('If yes, a user will be forced to complete all measurement features.', WE_LS_SLUG); ?></p>
-													</td>
-												</tr>
-                                                <tr class="<?php echo $disable_if_not_pro_class; ?>">
-                                                    <th scope="row"><?php echo __( 'Areas of measurements' , WE_LS_SLUG); ?></th>
-                                                    <td>
-                                                    <?php
-
-                                                    $measurement_settings = (WS_LS_IS_PRO) ? ws_ls_get_measurement_settings() : false;
-
-                                                        ?>
-                                                    <table>
-                                                        <?php
-
-														if($measurement_settings) {
-															foreach ($measurement_settings as $key => $body_part) {
-	                                                            if (!$body_part['user_preference']) {
-	                                                        ?>
-
-	                                                                <tr>
-	                                                                    <td colspan="2">
-	                                                                        <label style="font-weight: bold;" for="ws-ls-<?php echo $key; ?>"><?php echo $body_part['title']; ?></label>
-	                                                                    </td>
-	                                                                </tr>
-	                                                                <tr>
-	                                                                    <td>
-	                                                                        <?php echo __( 'Enable' , WE_LS_SLUG); ?>: <input type="checkbox" id="ws-ls-<?php echo $key; ?>" name="ws-ls-measurement[enabled][<?php echo $key; ?>]" value="on" <?php checked( $body_part['enabled'] ); ?> />
-	                                                                    </td>
-	                                                                    <td>
-	                                                                        <?php echo __( 'Chart Colour' , WE_LS_SLUG); ?>: <input name="ws-ls-measurement[colors][<?php echo $key; ?>]" type="color" value="<?php echo $body_part['chart_colour']; ?>">
-
-	                                                                    </td>
-	                                                                </tr>
-	                                                        <?php }
-	                                                            }
-														} else {
-															ws_ls_display_default_measurements();
-														}
-													    ?>
-                                                    </table>
-                                                    </td>
-                                                </tr>
-
-
-                                            </table>
-
-                                        </div>
+										</div>
                                         <div>
                                             <?php
                                             if ( false === WS_LS_IS_PRO ) {
