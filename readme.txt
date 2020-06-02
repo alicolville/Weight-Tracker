@@ -164,8 +164,10 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 // How do we deal with height? //'height' => [ 'title' => __('Height', WE_LS_SLUG), 'abv' => __('H', WE_LS_SLUG), 'enabled' => true, 'user_preference' => true),
 
-
 * Improvement: Allow numeric custom fields to be plotted on charts.
+* Improvement: Measurements have been removed. They have now been migrate (along with user data) into Custom Fields.
+* Improvement: 1000s of lines of code optimised and re-factored.
+* Bug fix: Cache now invalidated correctly when updating meta fields.
 
 = 7.6.1 =
 
