@@ -151,7 +151,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 == Upgrade Notice ==
 
-7.7 - Numeric custom fields can now be plotted on charts.
+7.6 - Advanced control of calories added / subtracted for weight gain / loss.
 
 == Changelog ==
 
@@ -168,6 +168,10 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 
 * Improvement: Allow numeric custom fields to be plotted on charts.
+
+= 7.6.1 =
+
+* Bug fix: Fix to ensure we are checking for correct MySQL tables.
 
 = 7.6 =
 
