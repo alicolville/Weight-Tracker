@@ -71,10 +71,11 @@ function ws_ls_challenges_admin_page() {
                                         <i class="fa fa-plus"></i>
                                         <?php echo __( 'Add a challenge', WE_LS_SLUG ); ?>
                                     </a>
-                                    <p>
-                                        <?php echo __( 'Why not create challenges for your users and build a league table for a given time period?', WE_LS_SLUG ); ?>
-                                    </p>
-                                </p>
+								</p>
+								<p>
+									<?php echo __( 'Why not create challenges for your users and build a league table for a given time period?', WE_LS_SLUG ); ?>
+								</p>
+                                
                                 <?php ws_ls_challenges_table(); ?>
                             </div>
                         </div>
@@ -85,14 +86,14 @@ function ws_ls_challenges_admin_page() {
                                 <p>
                                     <?php echo __('By default, all of your users are opted out of challenges. This saves their name and data being displayed in public challenge tables.
                                                     The user will need to opt-in to participate. To do this, they can either update their preferences (a new option has been added)
-                                                      or you can place this shortcode [wlt-challenges-optin] to provide simple links allowing them to opt in, or out. 
+                                                      or you can place this shortcode [wlt-challenges-optin] to provide simple links allowing them to opt in, or out.
                                                         ', WE_LS_SLUG ); ?>
                                 </p>
                                <h4><?php echo __('Performance', WE_LS_SLUG ); ?></h4>
                                <p>
                                    <?php echo __('Performance: Please be aware, that every time a user updates their profile by adding or editing a weight, their statistics are
                                                         recalculated for every challenge that isn\'t closed. As the number of challenges grow and remain open, the greater the work load on your web server.
-                                                        Please ensure you close (or delete) every challenge when expired. 
+                                                        Please ensure you close (or delete) every challenge when expired.
                                                         ', WE_LS_SLUG ); ?>
                                </p>
                             </div>
