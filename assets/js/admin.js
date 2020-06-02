@@ -113,16 +113,16 @@ jQuery( document ).ready(function ($) {
     // Show / hide additional fields on meta fields add / update
     function ws_ls_meta_fields_show_additional() {
 
-        var meta_field_ids = [ 1, 2, 3, 4 ];
+        var meta_field_ids = [ 0, 1, 2, 3 ];
 
         var value = $('#field_type').val();
 
         for ( $i = 0; $i < meta_field_ids.length; $i++ ) {
 
             if ( value == meta_field_ids[ $i ] ) {
-                $('#ws-ls-meta-fields-additional-' + meta_field_ids[ $i ] ).removeClass( 'ws-ls-hide' );
+                $('.ws-ls-meta-fields-additional-' + meta_field_ids[ $i ] ).removeClass( 'ws-ls-hide' );
             } else {
-                $('#ws-ls-meta-fields-additional-' + meta_field_ids[ $i ] ).addClass( 'ws-ls-hide' );
+                $('.ws-ls-meta-fields-additional-' + meta_field_ids[ $i ] ).addClass( 'ws-ls-hide' );
             }
 
         }
