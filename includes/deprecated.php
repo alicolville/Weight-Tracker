@@ -12,15 +12,15 @@ function ws_ls_migrate_measurement_into_meta_fields() {
 		return;
 	}
 
-	// Are measurements already enabled?
-	if ( 'no' == get_option('ws-ls-allow-measurements', 'no' ) ) {
-		return;
-	}
-
 	$force_run = ( false === empty( $_GET[ 'custom-fields-migrate' ] ) );
 
 	if ( false === $force_run && false === update_option( 'ws-ls-migrate-meta-fields', 'y' ) ) {
 		ws_ls_log_add('migration', 'Measurements have already been upgraded.' );
+		return;
+	}
+	// Are measurements already enabled?
+	if ( 'no' == get_option('ws-ls-allow-measurements', 'no' ) ) {
+		ws_ls_log_add('migration', 'Measurements are not enabled. No need to migrate to custom fields.' );
 		return;
 	}
 
