@@ -202,11 +202,12 @@
 
     }
 
-    /**
-     * Fetch all the award IDs previous given to this user.
-     * @param null $user_id
-     *
-     */
+/**
+ * Fetch all the award IDs previous given to this user.
+ * @param null $user_id
+ *
+ * @return array
+ */
     function ws_ls_awards_previous_awards_get_ids( $user_id = NULL ) {
 
         $user_id = $user_id ?: get_current_user_id();
@@ -221,11 +222,12 @@
 
     }
 
-	/**
-	 * Fetch all the awards given to this user (add relevant image data too)
-	 * @param null $user_id
-	 *
-	 */
+/**
+ * Fetch all the awards given to this user (add relevant image data too)
+ * @param null $user_id
+ *
+ * @return array|null
+ */
 	function ws_ls_awards_previous_awards( $user_id = NULL, $width = 200, $height = 200, $order_by = 'value' ) {
 
 		$user_id = $user_id ?: get_current_user_id();

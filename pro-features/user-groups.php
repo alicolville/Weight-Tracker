@@ -195,10 +195,11 @@
 	}
 	add_action( 'ws-ls-hook-user-preference-save',  'ws_ls_groups_hooks_user_preferences_save', 10, 3 );
 
-	/**
-	 * @param $user_id
-	 * @param $group_id
-	 */
+/**
+ * @param $user_id
+ * @param $group_id
+ * @return bool|int
+ */
 	function ws_ls_groups_add_to_user( $group_id, $user_id = NULL ) {
 
 		if ( true === is_numeric( $group_id ) ) {
@@ -408,11 +409,12 @@
 		return $data;
 	}
 
-	/**
-	 * Calculate total weight loss difference for given group
-	 *
-	 * @param $group_id
-	 */
+/**
+ * Calculate total weight loss difference for given group
+ *
+ * @param $group_id
+ * @return float
+ */
 	function ws_ls_groups_stats_get_weight_difference( $group_id ) {
 
 		global $wpdb;
@@ -478,10 +480,11 @@
 		return $data;
 	}
 
-    /**
-     * Add group to CSV / JSON export
-     * @param $row
-     */
+/**
+ * Add group to CSV / JSON export
+ * @param $row
+ * @return mixed
+ */
     function ws_ls_groups_export_add( $row ) {
 
 	    if ( false === ws_ls_groups_enabled () ) {

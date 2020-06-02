@@ -52,6 +52,7 @@ add_shortcode( 'wlt-challenges-optin', 'ws_ls_challenges_shortcodes_opt_in' );
 /**
  * Display Challenge entries
  * @param $user_defined_arguments
+ * @return string
  */
 function ws_ls_challenges_shortcodes_list_entries( $user_defined_arguments ) {
 

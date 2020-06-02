@@ -120,6 +120,9 @@ function ws_ls_photos_shortcode_core($user_defined_arguments) {
 /**
  * Create HTML to render image
  * @param $image
+ * @param string $css_class
+ * @param bool $hide_date
+ * @return string
  */
 function ws_ls_photos_shortcode_render( $image, $css_class = '', $hide_date = true ) {
 
@@ -413,7 +416,7 @@ function ws_ls_photos_db_count_photos( $user_id = false, $hide_from_shortcodes =
 	$count = $wpdb->get_var( $wpdb->prepare( $sql, $user_id) );
 
     $count = ( false === empty($count) ) ? (int) $count : 0;
-    
+
     ws_ls_cache_user_set( $user_id, $cache_key, $count );
     return $count;
 }

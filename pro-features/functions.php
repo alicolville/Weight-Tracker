@@ -534,6 +534,7 @@ function ws_ls_get_dob_for_display($user_id = false, $not_specified_text = '', $
  *
  * @param bool $user_id
  * @return bool|int
+ * @throws Exception
  */
 function ws_ls_get_age_from_dob($user_id = false){
 

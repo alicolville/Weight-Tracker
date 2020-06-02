@@ -270,11 +270,12 @@
 
     }
 
-    /**
-     * Delete all attachments for a given photo meta field
-     *
-     * @param $meta_field_id
-     */
+/**
+ * Delete all attachments for a given photo meta field
+ *
+ * @param $meta_field_id
+ * @return bool|int
+ */
     function ws_ls_meta_fields_photos_delete_all_photos_for_meta_field( $meta_field_id ) {
 
         if ( false === is_admin() ) {
@@ -337,7 +338,7 @@
 
         global $wpdb;
         return $wpdb->get_results( 'Select id, photo_id from ' . $wpdb->prefix . WE_LS_TABLENAME . ' where photo_id is not null and photo_id <> "" and photo_id <> 0', ARRAY_A);
-        
+
     }
 
     /**

@@ -345,6 +345,7 @@ function ws_ls_meta_fields_delete( $id ) {
  * Does unit field_key already exist?
  *
  * @param $key
+ * @return bool
  */
 function ws_ls_meta_fields_key_exist( $key ) {
 
@@ -361,6 +362,7 @@ function ws_ls_meta_fields_key_exist( $key ) {
  * Get details for given meta field
  *
  * @param $key
+ * @return array|bool|object|void|null
  */
 function ws_ls_meta_fields_get( $key ) {
 
@@ -377,6 +379,7 @@ function ws_ls_meta_fields_get( $key ) {
  * Get details for given meta field
  *
  * @param $key
+ * @return array|bool|object|void|null
  */
 function ws_ls_meta_fields_get_by_id( $id ) {
 
@@ -393,6 +396,7 @@ function ws_ls_meta_fields_get_by_id( $id ) {
  * Fetch all user IDs that have a reference to this field (allows us to clear cache)
  *
  * @param $meta_field_id
+ * @return array|object|null
  */
 function ws_ls_meta_fields_get_user_ids_for_this_meta_field( $meta_field_id ) {
 

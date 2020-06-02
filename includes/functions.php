@@ -579,6 +579,7 @@ function ws_ls_post_value( $key, $default = NULL, $json_decode = false ) {
  * @param $name
  * @param $values
  * @param string $key_prefix
+ * @return string
  */
 function ws_ls_select( $key, $name, $values, $key_prefix = 'filter' ) {
 
@@ -806,6 +807,7 @@ function ws_ls_format_bytes_into_readable($bytes) {
  * Get Photos sizes in Mb
  *
  * @param bool $key
+ * @return array|mixed
  */
 function ws_ls_photo_get_sizes($key = false) {
 
@@ -937,6 +939,7 @@ function ws_ls_blur( $pro_plus = false, $space_before = true ) {
  * Blur string if incorrect license
  *
  * @param $text
+ * @return string
  */
 function ws_ls_blur_text( $text, $pro_plus = false ) {
 
@@ -994,6 +997,7 @@ function ws_ls_calculate_percentage_difference( $previous_weight, $current_weigh
  *
  * @param $previous_weight
  * @param $current_weight
+ * @return string|null
  */
 function ws_ls_calculate_percentage_difference_as_number( $previous_weight, $current_weight  ) {
 

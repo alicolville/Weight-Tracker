@@ -277,6 +277,7 @@ function ws_ls_harris_benedict_render_table($user_id, $missing_data_text = false
  * Render the shortcode [wlt-calories]
  *
  * @param $user_defined_arguments
+ * @return string
  */
 function ws_ls_shortcode_harris_benedict( $user_defined_arguments ) {
 
@@ -324,6 +325,7 @@ add_shortcode( 'wlt-calories', 'ws_ls_shortcode_harris_benedict' );
  * Basically displays the maintain / lose calorie table as shown on a user's record in admin
  *
  * @param $user_defined_arguments
+ * @return string
  */
 function ws_ls_shortcode_harris_benedict_table( $user_defined_arguments ) {
 
@@ -359,6 +361,7 @@ add_shortcode( 'wlt-calories-table', 'ws_ls_shortcode_harris_benedict_table' );
  * Depending on the user's gender, display the calorie cap information
  *
  * @param bool $user_id
+ * @return string
  */
 function ws_ls_display_calorie_cap($user_id = false) {
 

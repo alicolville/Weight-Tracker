@@ -53,6 +53,7 @@ function ws_ls_has_a_valid_pro_plus_license() {
  * Return the number of days until the license expires
  *
  * @return int|null
+ * @throws Exception
  */
 function ws_ls_how_many_days_until_license_expires() {
 
@@ -452,11 +453,12 @@ if ( false === function_exists( 'yeken_license_api_fetch_licenses' ) ) {
         return NULL;
     }
 
-    /**
-     * Fetch a certain product price
-     * @param $sku
-     * @param string $type
-     */
+	/**
+	 * Fetch a certain product price
+	 * @param $sku
+	 * @param string $type
+	 * @return |null
+	 */
     function yeken_license_price( $sku, $type = 'yearly' ) {
 
         $licenses = yeken_license_api_fetch_licenses();

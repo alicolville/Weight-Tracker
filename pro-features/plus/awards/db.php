@@ -211,11 +211,12 @@
     }
     do_action( 'wlt-awards-deleting', 'ws_ls_awards_delete_all_given' );
 
-	/**
-	 * Get details for an award
-	 *
-	 * @param $key
-	 */
+/**
+ * Get details for an award
+ *
+ * @param $id
+ * @return array|bool|object|void|null
+ */
 	function ws_ls_award_get( $id ) {
 
 		global $wpdb;

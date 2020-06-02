@@ -9,6 +9,7 @@ defined('ABSPATH') or die("Jog on!");
  *   - Refresh stat data for each user that requires it (i.e. last_processed) is null
  *
  * @param int $max_entries_per_challenge_to_process
+ * @return bool|int
  */
 function ws_ls_challenges_process( $user_id = NULL,
 								   $identify_new_entries = true,
@@ -72,6 +73,7 @@ function ws_ls_challenges_diff_between_dates_in_weeks( $date1, $date2 ) {
  *
  * @param $user_id
  * @param $challenge_id
+ * @return bool
  */
 function ws_ls_challenges_data_update_row( $user_id, $challenge_id ) {
 
@@ -289,6 +291,7 @@ function ws_ls_challenges_entry_columns( $args = NULL ) {
 /**
  * Display all entries for challenges
  * @param $args
+ * @return string
  */
 function ws_ls_challenges_view_entries( $args ) {
 

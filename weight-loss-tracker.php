@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection ALL */
 
 defined('ABSPATH') or die('Jog on!');
 

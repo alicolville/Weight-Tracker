@@ -226,6 +226,7 @@ function ws_ls_user_side_bar($user_id) {
  * Render a sidebar row.
  *
  * @param $row
+ * @return string
  */
 function ws_ls_side_bar_row($row) {
 
@@ -247,6 +248,7 @@ function ws_ls_side_bar_row($row) {
  * Render one or more sidebar rows.
  *
  * @param $rows
+ * @return string
  */
 function ws_ls_side_bar_render_rows( $rows ) {
 

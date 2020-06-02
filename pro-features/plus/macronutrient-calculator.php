@@ -192,10 +192,12 @@ function ws_ls_macro_render_table($user_id, $missing_data_text = false, $additio
     }
 
 }
+
 /**
  * Render the shortcode [wlt-macronutrients]
  *
  * @param $user_defined_arguments
+ * @return string
  */
 function ws_ls_shortcode_macro( $user_defined_arguments ) {
 
@@ -242,6 +244,7 @@ add_shortcode( 'wlt-macronutrients', 'ws_ls_shortcode_macro' );
  * Basically displays the maintain / lose macronutrients table as shown on a user's record in admin
  *
  * @param $user_defined_arguments
+ * @return string
  */
 function ws_ls_shortcode_macro_table($user_defined_arguments) {
 
