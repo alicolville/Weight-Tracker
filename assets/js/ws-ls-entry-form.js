@@ -77,8 +77,7 @@ jQuery( document ).ready( function ( $ ) {
                 "we-ls-date": ws_ls_config["validation-we-ls-date"],
                 "we-ls-weight-pounds": ws_ls_config["validation-we-ls-weight-pounds"],
                 "we-ls-weight-kg": ws_ls_config["validation-we-ls-weight-kg"],
-                "we-ls-weight-stones": ws_ls_config["validation-we-ls-weight-stones"],
-                "we-ls-measurements": ws_ls_config["validation-we-ls-measurements"]
+                "we-ls-weight-stones": ws_ls_config["validation-we-ls-weight-stones"]
             },
             submitHandler: function(form) {
                 $( '.ws-ls-remove-on-submit' ).remove();
@@ -105,19 +104,6 @@ jQuery( document ).ready( function ( $ ) {
                     });
                 }
             }
-
-            // Measurement form
-            if ("true" == ws_ls_config["measurements-enabled"] && true == $("#" + $form_id).data("measurements-enabled")) {
-                $( "#" + $form_id + " .ws-ls-measurement").rules( "add", {
-                    number: true,
-                    range: [1, 1000],
-                    messages: {
-                        number: ws_ls_config["validation-we-ls-measurements"],
-                        range: ws_ls_config["validation-we-ls-measurements"]
-                    }
-                });
-            }
-
         }
 
         // Set up numeric fields to validate
