@@ -6,7 +6,7 @@ defined('ABSPATH') or die("Jog on!");
  * This file contains code for deprecated functionality - or to support it.
  */
 
-function ws_ls_migrate_measurement_into_meta_fields() {
+function ws_ls_migrate_measurements_into_meta_fields() {
 
 	if ( false === WS_LS_IS_PRO ) {
 		return;
@@ -80,8 +80,10 @@ function ws_ls_migrate_measurement_into_meta_fields() {
 			if ( false !== $meta_field_id ) {
 				ws_ls_log_add('migration', 'Success. ' . $key );
 
-				$result = $wpdb->query( 'INSERT INTO ' . $table_name = $wpdb->prefix . WE_LS_MYSQL_META_ENTRY . ' ( entry_id, meta_field_id, value, migrate )
-				SELECT id as entry_id, ' . (int) $meta_field_id  . ' as meta_field_id, ROUND( waist, 2 ) as value, 1 as migrate FROM ' . $table_name = $wpdb->prefix . WE_LS_TABLENAME . ' where ' . $key . ' is not null' );
+				$conversion = ( 'cm' === $unit ) ? '' : ' / 2.54';
+
+				$result = $wpdb->query( 'INSERT INTO ' . $wpdb->prefix . WE_LS_MYSQL_META_ENTRY . ' ( entry_id, meta_field_id, value, migrate )
+				SELECT id as entry_id, ' . (int) $meta_field_id  . ' as meta_field_id, ROUND( ' . $key . $conversion . ', 2 ) as value, 1 as migrate FROM ' . $table_name = $wpdb->prefix . WE_LS_TABLENAME . ' where ' . $key . ' is not null' );
 
 				ws_ls_log_add('migration', sprintf( 'Migrating data across: %s, copied: %d', $key, $result ) );
 
@@ -98,7 +100,7 @@ function ws_ls_migrate_measurement_into_meta_fields() {
 
 	}
 }
-add_action( 'ws-ls-migrate-old-measurements', 'ws_ls_migrate_measurement_into_meta_fields' );
+add_action( 'ws-ls-migrate-old-measurements', 'ws_ls_migrate_measurements_into_meta_fields' );
 
 /**
  * Return details about old measurement fields
