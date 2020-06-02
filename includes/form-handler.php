@@ -59,6 +59,8 @@ function ws_ls_capture_and_handle_form_post(){
 		$message = apply_filters( 'wlt-filter-form-saved-message', __( 'Your entry has been saved.', WE_LS_SLUG ) );
 
 		$save_response[ 'message' ] = ws_ls_display_blockquote( $message, 'ws-ls-success' );
+
+		return;
 }
 add_action( 'init', 'ws_ls_capture_and_handle_form_post' );
 add_action( 'admin_init', 'ws_ls_capture_and_handle_form_post' );

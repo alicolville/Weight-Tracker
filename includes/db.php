@@ -181,7 +181,7 @@ function ws_ls_save_data($user_id, $weight_object, $is_target_form = false, $exi
 
 	// Set data types
 	$db_field_types = array('%d','%f', '%f', '%f', '%f');
-	
+
 	// Customise depending on whether an update or not
 	if($is_target_form) {
 		$db_is_update = ws_does_target_weight_exist($user_id);
@@ -246,7 +246,7 @@ function ws_ls_save_data($user_id, $weight_object, $is_target_form = false, $exi
 
         }
 
-        ws_ls_cache_user_delete( 'meta-fields', 'entry-id-data-' . $db_is_update );
+        ws_ls_cache_user_delete( 'meta-fields' );
 
     }
 
