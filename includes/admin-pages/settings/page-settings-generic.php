@@ -345,7 +345,7 @@ function ws_ls_settings_page_generic() {
 														$subtract_ranges = ws_ls_harris_benedict_calorie_subtract_ranges();
                                                     ?>
                                                     <td>
-														<p><?php echo __( 'Once the daily calorie intake to maintain weight has been established, use the following table to define how many calories should be subtracted for the user to lose weight. You have the ability to set up ranges - if the user\'s calorie intake figure to maintain weight lands within that range you have the ability to specify whether to subtract a fixed number of calories or a percentage of the calorie intake. 
+														<p><?php echo __( 'Once the daily calorie intake to maintain weight has been established, use the following table to define how many calories should be subtracted for the user to lose weight. You have the ability to set up ranges - if the user\'s calorie intake figure to maintain weight lands within that range you have the ability to specify whether to subtract a fixed number of calories or a percentage of the calorie intake.
 														' , WE_LS_SLUG); ?></p>
 														<br />
 														<table class="widefat ws-ls-calories-modify-table">
@@ -378,10 +378,10 @@ function ws_ls_settings_page_generic() {
 																							<option value="1" %10$s>%11$s</option>
 																							<option value="2" %12$s>%13$s</option>
 																						</select>
-																					</td>	
+																					</td>
 																					<td>
 																						<input type="number" step="any" min="0" max="9999" name="%1$s-from" id="%1$s-from" value="%2$d" size="5" />
-																					</td>						
+																					</td>
 																					<td>
 																						<input type="number" step="any" min="0" max="9999" name="%1$s-to" id="%1$s-to" value="%3$d" size="5" />
 																					</td>
@@ -447,7 +447,7 @@ function ws_ls_settings_page_generic() {
 													$add_ranges = ws_ls_harris_benedict_calorie_add_ranges();
 													?>
 													<td>
-														<p><?php echo __( 'Once the daily calorie intake to maintain weight has been established, use the following table to define how many calories should be subtracted for the user to gain weight. You have the ability to set up ranges - if the user\'s calorie intake figure to maintain weight lands within that range you have the ability to specify whether to add a fixed number of calories or a percentage of the calorie intake. 
+														<p><?php echo __( 'Once the daily calorie intake to maintain weight has been established, use the following table to define how many calories should be subtracted for the user to gain weight. You have the ability to set up ranges - if the user\'s calorie intake figure to maintain weight lands within that range you have the ability to specify whether to add a fixed number of calories or a percentage of the calorie intake.
 														' , WE_LS_SLUG); ?></p>
 														<br />
 														<table class="widefat ws-ls-calories-modify-table">
@@ -480,10 +480,10 @@ function ws_ls_settings_page_generic() {
 																							<option value="1" %10$s>%11$s</option>
 																							<option value="2" %12$s>%13$s</option>
 																						</select>
-																					</td>	
+																					</td>
 																					<td>
 																						<input type="number" step="any" min="0" max="9999" name="%1$s-from" id="%1$s-from" value="%2$d" size="5" />
-																					</td>						
+																					</td>
 																					<td>
 																						<input type="number" step="any" min="0" max="9999" name="%1$s-to" id="%1$s-to" value="%3$d" size="5" />
 																					</td>
@@ -592,22 +592,28 @@ function ws_ls_settings_page_generic() {
 											<table class="form-table">
 												<tr  class="<?php echo $disable_if_not_pro_class; ?>">
 													<th scope="row"><?php echo __( 'Default chart type', WE_LS_SLUG ); ?></th>
+													<?php
+														$chart_type = get_option( 'ws-ls-chart-type', 'line' );
+													?>
 													<td>
 														<select id="ws-ls-chart-type" name="ws-ls-chart-type">
-															<option value="line" <?php selected( get_option('ws-ls-chart-type'), 'line' ); ?>><?php echo __('Line Chart', WE_LS_SLUG)?> - (<?php echo __('Highly Recommended', WE_LS_SLUG)?>)</option>
-															<option value="bar" <?php selected( get_option('ws-ls-chart-type'), 'bar' ); ?>><?php echo __('Bar Chart', WE_LS_SLUG)?></option>
+															<option value="line" <?php selected( $chart_type, 'line' ); ?>><?php echo __('Line Chart', WE_LS_SLUG)?> - (<?php echo __('Highly Recommended', WE_LS_SLUG)?>)</option>
+															<option value="bar" <?php selected( $chart_type, 'bar' ); ?>><?php echo __('Bar Chart', WE_LS_SLUG)?></option>
 
 														</select>
-														<p><?php echo __('If enabled, "Allows points and labels to be displayed on graph. <strong>Note: If using measurements</strong>, graph type will be forced to Line.', WE_LS_SLUG); ?></p>
+														<p><?php echo __('If enabled, "Allows points and labels to be displayed on graph. <strong>Note: If using custom fields</strong>, graph type will be forced to Line.', WE_LS_SLUG); ?></p>
 													</td>
 												</tr>
 
 													<tr  class="<?php echo $disable_if_not_pro_class; ?>" >
 														<th scope="row"><?php echo __( 'Display gridlines?', WE_LS_SLUG ); ?></th>
+														<?php
+															$show_gridlines = get_option( 'ws-ls-grid-lines', 'yes' );
+														?>
 														<td>
 															<select id="ws-ls-grid-lines" name="ws-ls-grid-lines">
-																<option value="yes" <?php selected( get_option('ws-ls-grid-lines'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
-																<option value="no" <?php selected( get_option('ws-ls-grid-lines'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+																<option value="yes" <?php selected( $show_gridlines, 'yes' ); ?>><?php echo __( 'Yes', WE_LS_SLUG ); ?></option>
+																<option value="no" <?php selected( $show_gridlines, 'no' ); ?>><?php echo __( 'No', WE_LS_SLUG ); ?></option>
 															</select>
 															<p><?php echo __('If enabled, gridlines will be displayed on the Graph canvas.', WE_LS_SLUG); ?></p>
 														</td>
@@ -629,7 +635,7 @@ function ws_ls_settings_page_generic() {
 												<tr>
 													<th scope="row"><?php echo __( 'Weight colour?', WE_LS_SLUG ); ?></th>
 													<td>
-														<input id="ws-ls-line-colour" name="ws-ls-line-colour" type="color" value="<?php echo WE_LS_WEIGHT_LINE_COLOUR; ?>">
+														<input id="ws-ls-line-colour" name="ws-ls-line-colour" type="color" value="<?php echo esc_attr( get_option( 'ws-ls-line-colour', '#aeaeae' ) ); ?>">
 														<p><?php echo __('If enabled, enter a HEX colour code to use for the Weight history line / bar border on graph.', WE_LS_SLUG); ?></p>
 													</td>
 												</tr>
@@ -677,7 +683,7 @@ function ws_ls_settings_page_generic() {
 												<tr>
 													<th scope="row"><?php echo __( 'Target line colour?', WE_LS_SLUG ); ?></th>
 													<td>
-														<input id="ws-ls-target-colour" name="ws-ls-target-colour" type="color" value="<?php echo WE_LS_TARGET_LINE_COLOUR; ?>">
+														<input id="ws-ls-target-colour" name="ws-ls-target-colour" type="color" value="<?php echo esc_attr( get_option( 'ws-ls-target-colour', '#76bada' ) ); ?>">
 														<p><?php echo __('If enabled, enter a HEX colour code to use for the Target line on graph.', WE_LS_SLUG); ?></p>
 													</td>
 												</tr>
@@ -743,7 +749,7 @@ function ws_ls_settings_page_generic() {
 												<tr>
 													<th scope="row"><?php echo __( 'Weight fill colour?', WE_LS_SLUG ); ?></th>
 													<td>
-														<input id="ws-ls-line-fill-colour" name="ws-ls-line-fill-colour" type="color" value="<?php echo WE_LS_WEIGHT_FILL_COLOUR; ?>">
+														<input id="ws-ls-line-fill-colour" name="ws-ls-line-fill-colour" type="color" value="<?php echo esc_attr( get_option( 'ws-ls-line-fill-colour', '#f9f9f9' ) ); ?>">
 														<p><?php echo __('If enabled, enter a HEX colour code to use for filling the Weight bars on the graph.', WE_LS_SLUG); ?></p>
 													</td>
 												</tr>

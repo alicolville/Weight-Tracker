@@ -59,22 +59,16 @@
 		'WE_LS_ALLOW_TARGET_WEIGHTS' => true,
 		'WE_LS_ALLOW_POINTS' => true,
 		'WE_LS_CSS_ENABLED' => true,
-		'WE_LS_TARGET_LINE_COLOUR' => '#76bada',
-		'WE_LS_WEIGHT_LINE_COLOUR' => '#aeaeae',
-		'WE_LS_WEIGHT_FILL_COLOUR' => '#f9f9f9',
 		'WE_LS_WEIGHT_FILL_LINE_ENABLED' => false,
 		'WE_LS_WEIGHT_FILL_LINE_OPACITY' => '0.5',
         'WE_LS_WEIGHT_FILL_LINE_COLOUR' => '#aeaeae',
         'WE_LS_FONT_FAMILY' => '',
         'WE_LS_TEXT_COLOUR' => '#AEAEAE',
 		'WE_LS_US_DATE' => false,
-		'WE_LS_CHART_TYPE' => 'line', //line, bar
 		'WS_LS_ADVANCED_TABLES' => true,
 		'WE_LS_CHART_MAX_POINTS' => 25,
-		'WE_LS_CHART_HEIGHT' => 250,
 		'WE_LS_CHART_BEZIER_CURVE' => true,
 		'WE_LS_CHART_POINT_SIZE' => 3,
-		'WE_LS_CHART_SHOW_GRID_LINES' => true,
 		'WE_LS_DISPLAY_BMI_IN_TABLES' => false,
 		'WE_LS_AXES_START_AT_ZERO' => false,
 		'WE_LS_ALLOW_STATS' => false,
@@ -164,19 +158,6 @@
 		$globals['WE_LS_CHART_BEZIER_CURVE'] = false;
 	}
 	// -----------------------------------------------------------------------------------
-	// Grid Lines?
-	// -----------------------------------------------------------------------------------
-	if (WS_LS_IS_PRO && 'no' == get_option('ws-ls-grid-lines')){
-		$globals['WE_LS_CHART_SHOW_GRID_LINES'] = false;
-	}
-	// -----------------------------------------------------------------------------------
-	// Bar chart?
-	// -----------------------------------------------------------------------------------
-	if (WS_LS_IS_PRO && in_array(get_option('ws-ls-chart-type'), array('bar', 'line'))){
-		$globals['WE_LS_CHART_TYPE'] = get_option('ws-ls-chart-type');
-	}
-
-	// -----------------------------------------------------------------------------------
 	// Who can view / edit user data
 	// -----------------------------------------------------------------------------------
 	$permission_check = get_option('ws-ls-edit-permissions');
@@ -218,16 +199,8 @@
 	// -----------------------------------------------------------------------------------
 	// Chart Colours
 	// -----------------------------------------------------------------------------------
-	if (get_option('ws-ls-target-colour')) {
-		$globals['WE_LS_TARGET_LINE_COLOUR'] = get_option('ws-ls-target-colour');
-	}
-	if (get_option('ws-ls-line-colour')) {
-		$globals['WE_LS_WEIGHT_LINE_COLOUR'] = get_option('ws-ls-line-colour');
-	}
-	if (get_option('ws-ls-line-fill-colour')) {
-		$globals['WE_LS_WEIGHT_FILL_COLOUR'] = get_option('ws-ls-line-fill-colour');
-	}
-    if (get_option('ws-ls-text-colour')) {
+
+	if (get_option('ws-ls-text-colour')) {
         $globals['WE_LS_TEXT_COLOUR'] = get_option('ws-ls-text-colour');
     }
     if (get_option('ws-ls-font-family')) {

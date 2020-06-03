@@ -37,11 +37,11 @@ function ws_ls_shortcode_form($user_defined_arguments)
     }
 
 	// Ensure certain arguments are booleans
-	foreach (['hide-measurements', 'hide-titles', 'target'] as $key) {
+	foreach (['hide-titles', 'target'] as $key) {
 		$form_arguments[$key] = ws_ls_force_bool_argument($form_arguments[$key]);
 	}
 
     return ws_ls_display_weight_form($form_arguments['target'], $form_arguments['class'], $form_arguments['user-id'], $form_arguments['hide-titles'],
-                                        $form_number, false, true, $form_arguments['hide-measurements'], $form_arguments['redirect-url']);
+                                        $form_number, false, true, $form_arguments['redirect-url']);
 
 }

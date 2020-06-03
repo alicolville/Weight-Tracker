@@ -1,135 +1,131 @@
 <?php
-	defined('ABSPATH') or die('Jog on!');
 
-	/* Display weight data in a HTML table */
-	function ws_ls_display_table($weight_data) {
+defined('ABSPATH') or die('Jog on!');
 
-		$html_output = '';
+/* Display weight data in a HTML table */
+function ws_ls_display_table($weight_data) {
 
-		$html_output .= '
-		<table width="100%" class="ws-ls-data-table">
-		  <thead>
-		  <tr>
-			<th width="25%">' . __('Date', WE_LS_SLUG) .'</th>
-			<th width="25%">' . __('Weight', WE_LS_SLUG) . ' (' . ws_ls_get_unit() . ')</th>
-			<th>' . __('Notes', WE_LS_SLUG) . '</th>
-		  </tr>
-		  </thead>
-		<tbody>';
+	$html_output = '';
 
-		foreach ($weight_data as $weight_object)
-		{
-			$html_output .= '<tr>
-							  <td>' . esc_html(ws_ls_render_date($weight_object)) . '</td>
-							  <td>' . esc_html($weight_object['display']) . '</td>
-							  <td>' . esc_html($weight_object['notes']) . '</td>
-							</tr>';
-		}
+	$html_output .= '
+	<table width="100%" class="ws-ls-data-table">
+	  <thead>
+	  <tr>
+		<th width="25%">' . __('Date', WE_LS_SLUG) .'</th>
+		<th width="25%">' . __('Weight', WE_LS_SLUG) . ' (' . ws_ls_get_unit() . ')</th>
+		<th>' . __('Notes', WE_LS_SLUG) . '</th>
+	  </tr>
+	  </thead>
+	<tbody>';
 
-		$html_output .= '<tbody></table>';
-
-		return $html_output;
+	foreach ($weight_data as $weight_object)
+	{
+		$html_output .= '<tr>
+						  <td>' . esc_html(ws_ls_render_date($weight_object)) . '</td>
+						  <td>' . esc_html($weight_object['display']) . '</td>
+						  <td>' . esc_html($weight_object['notes']) . '</td>
+						</tr>';
 	}
 
-  	/* Display Chart */
-	function ws_ls_display_chart($weight_data, $options = false)
-	{
-        // Build the default arguments for a chart. This can then be overrided by what is being passed in (i.e. to support shortcode arguments)
-		$chart_config = array(
-			'user-id' => get_current_user_id(),
-			'type' => WE_LS_CHART_TYPE,
-			'height' => WE_LS_CHART_HEIGHT,
-            'weight-line-color' => WE_LS_WEIGHT_LINE_COLOUR,
-			'weight-fill-color' => WE_LS_WEIGHT_FILL_COLOUR,
-			'weight-target-color' => WE_LS_TARGET_LINE_COLOUR,
-			'show-gridlines' => WE_LS_CHART_SHOW_GRID_LINES,
-			'bezier' => WE_LS_CHART_BEZIER_CURVE,
-            'hide_login_message_if_needed' => true,
-			'ignore-login-status' => false
-		);
+	$html_output .= '<tbody></table>';
 
-        // If we are PRO and the developer has specified options then override the default
-        if($options && WS_LS_IS_PRO){
-            $chart_config = wp_parse_args( $options, $chart_config );
-        }
+	return $html_output;
+}
 
-		$measurements_enabled = false; // ( false == $chart_config['exclude-measurements'] && WE_LS_MEASUREMENTS_ENABLED && ws_ls_any_active_measurement_fields() );
+/* Display Chart */
+function ws_ls_display_chart( $weight_data, $options = false ) {
 
-        // Make sure they are logged in
-        if (false == $chart_config['ignore-login-status'] && !is_user_logged_in())	{
-            if (false == $chart_config['hide_login_message_if_needed']) {
-				return ws_ls_display_blockquote(__('You need to be logged in to record your weight.', WE_LS_SLUG) , '', false, true);
-			} else {
-                return '';
-            }
-        }
+	$chart_config = wp_parse_args( $options, [
+												'user-id'							=> get_current_user_id(),
+												'type' 								=> get_option( 'ws-ls-chart-type', 'line' ),
+												'height' 							=> 250,
+												'weight-line-color' 				=> get_option( 'ws-ls-line-colour', '#aeaeae' ),
+												'weight-fill-color' 				=> get_option( 'ws-ls-line-fill-colour', '#f9f9f9' ),
+												'weight-target-color' 				=> get_option( 'ws-ls-target-colour', '#76bada' ),
+												'show-gridlines' 					=> get_option( 'ws-ls-grid-lines', 'yes' ),
+												'bezier' 							=> WE_LS_CHART_BEZIER_CURVE,
+												'hide_login_message_if_needed' 		=> true,
+												'ignore-login-status' 				=> false
+	] );
 
-		$chart_id = 'ws_ls_chart_' . rand(10,1000) . '_' . rand(10,1000);
 
-		// If Pro disabled or Measurements to be displayed then force to line
-		if(!WS_LS_IS_PRO || $measurements_enabled) {
-			$chart_config['type'] = 'line';
-		}
+	$measurements_enabled = false; // ( false == $chart_config['exclude-measurements'] && WE_LS_MEASUREMENTS_ENABLED && ws_ls_any_active_measurement_fields() );
 
-		$y_axis_unit = (ws_ls_get_config('WE_LS_IMPERIAL_WEIGHTS')) ? __('lbs', WE_LS_SLUG) : __('kg', WE_LS_SLUG) ;
-
-		$point_size = (WE_LS_ALLOW_POINTS && WE_LS_CHART_POINT_SIZE > 0) ? WE_LS_CHART_POINT_SIZE : 0;
-        $line_thickness = 2;
-
-		// Build graph data
-		$graph_data['labels'] = array();
-		$graph_data['datasets'][0] = array( 'label' =>  __('Weight', WE_LS_SLUG),
-											'borderColor' => $chart_config['weight-line-color'],
-										    );
-
-		// Determine fill based on chart type
-		if ('line' == $chart_config['type']) {
-
-			// Add a fill colour under weight line?
-			if ( true === WE_LS_WEIGHT_FILL_LINE_ENABLED ) {
-				$graph_data['datasets'][0]['fill'] = true;
-				$graph_data['datasets'][0]['backgroundColor'] =  ws_ls_hex_to_rgb( WE_LS_WEIGHT_FILL_LINE_COLOUR, WE_LS_WEIGHT_FILL_LINE_OPACITY );
-			} else {
-				$graph_data['datasets'][0]['fill'] = false;
-			}
-
-			$graph_data['datasets'][0]['lineTension'] = ($chart_config['bezier']) ? 0.4 : 0;
-			$graph_data['datasets'][0]['pointRadius'] = $point_size;
-            $graph_data['datasets'][0]['borderWidth'] = $line_thickness;
+	// Make sure they are logged in
+	if (false == $chart_config['ignore-login-status'] && !is_user_logged_in())	{
+		if (false == $chart_config['hide_login_message_if_needed']) {
+			return ws_ls_display_blockquote(__('You need to be logged in to record your weight.', WE_LS_SLUG) , '', false, true);
 		} else {
+			return '';
+		}
+	}
+
+	$chart_id = 'ws_ls_chart_' . rand(10,1000) . '_' . rand(10,1000);
+
+	// If Pro disabled or Measurements to be displayed then force to line
+	if(!WS_LS_IS_PRO || $measurements_enabled) {
+		$chart_config['type'] = 'line';
+	}
+
+	$y_axis_unit = (ws_ls_get_config('WE_LS_IMPERIAL_WEIGHTS')) ? __('lbs', WE_LS_SLUG) : __('kg', WE_LS_SLUG) ;
+
+	$point_size = (WE_LS_ALLOW_POINTS && WE_LS_CHART_POINT_SIZE > 0) ? WE_LS_CHART_POINT_SIZE : 0;
+	$line_thickness = 2;
+
+	// Build graph data
+	$graph_data['labels'] = array();
+	$graph_data['datasets'][0] = array( 'label' =>  __('Weight', WE_LS_SLUG),
+										'borderColor' => $chart_config['weight-line-color'],
+										);
+
+	// Determine fill based on chart type
+	if ('line' == $chart_config['type']) {
+
+		// Add a fill colour under weight line?
+		if ( true === WE_LS_WEIGHT_FILL_LINE_ENABLED ) {
 			$graph_data['datasets'][0]['fill'] = true;
-			$graph_data['datasets'][0]['backgroundColor'] = $chart_config['weight-fill-color'];
-			$graph_data['datasets'][0]['borderWidth'] = 2;
-
+			$graph_data['datasets'][0]['backgroundColor'] =  ws_ls_hex_to_rgb( WE_LS_WEIGHT_FILL_LINE_COLOUR, WE_LS_WEIGHT_FILL_LINE_OPACITY );
+		} else {
+			$graph_data['datasets'][0]['fill'] = false;
 		}
 
-		$graph_data['datasets'][0]['data'] = array();
-		$graph_data['datasets'][0]['yAxisID'] = 0;
+		$graph_data['datasets'][0]['lineTension'] = ($chart_config['bezier']) ? 0.4 : 0;
+		$graph_data['datasets'][0]['pointRadius'] = $point_size;
+		$graph_data['datasets'][0]['borderWidth'] = $line_thickness;
+	} else {
+		$graph_data['datasets'][0]['fill'] = true;
+		$graph_data['datasets'][0]['backgroundColor'] = $chart_config['weight-fill-color'];
+		$graph_data['datasets'][0]['borderWidth'] = 2;
 
-		$target_weight = ws_ls_get_user_target($chart_config['user-id']);
+	}
 
-		$chart_type_supports_target_data = ('bar' == $chart_config['type']) ? false : true;
+	$graph_data['datasets'][0]['data'] = array();
+	$graph_data['datasets'][0]['yAxisID'] = 0;
 
-		$dataset_index = 1;
+	$target_weight = ws_ls_get_user_target($chart_config['user-id']);
 
-		// If target weights are enabled, then include into javascript data object
-		if ($target_weight != false && WE_LS_ALLOW_TARGET_WEIGHTS && $chart_type_supports_target_data){
+	$chart_type_supports_target_data = ('bar' == $chart_config['type']) ? false : true;
 
-				$graph_data['datasets'][1] = array( 'label' =>  __('Target', WE_LS_SLUG),
-												    'borderColor' => $chart_config['weight-target-color'],
-													'borderWidth' => $line_thickness,
-													'pointRadius' => 0,
-													'borderDash' => array(5,5),
-													'fill' => false,
-													'type' => 'line'
-												);
-				$graph_data['datasets'][1]['data'] = array();
-				$dataset_index = 2;
-		}
+	$dataset_index = 1;
 
-		// ----------------------------------------------------------------------------
-		// Measurements - add measurement sets if enabled!
-		// ----------------------------------------------------------------------------
+	// If target weights are enabled, then include into javascript data object
+	if ($target_weight != false && WE_LS_ALLOW_TARGET_WEIGHTS && $chart_type_supports_target_data){
+
+			$graph_data['datasets'][1] = array( 'label' =>  __('Target', WE_LS_SLUG),
+												'borderColor' => $chart_config['weight-target-color'],
+												'borderWidth' => $line_thickness,
+												'pointRadius' => 0,
+												'borderDash' => array(5,5),
+												'fill' => false,
+												'type' => 'line'
+											);
+			$graph_data['datasets'][1]['data'] = array();
+			$dataset_index = 2;
+	}
+
+	// ----------------------------------------------------------------------------
+	// Measurements - add measurement sets if enabled!
+	// ----------------------------------------------------------------------------
 
 //		if($measurements_enabled) {
 //			$active_measurement_fields = ws_ls_get_active_measurement_fields();
@@ -158,20 +154,20 @@
 //			}
 //		}
 
-		if($weight_data) {
-			foreach ($weight_data as $weight_object) {
+	if($weight_data) {
+		foreach ($weight_data as $weight_object) {
 
-				array_push($graph_data['labels'], $weight_object['date-graph']);
-				array_push($graph_data['datasets'][0]['data'], $weight_object['graph_value']);
+			array_push($graph_data['labels'], $weight_object['date-graph']);
+			array_push($graph_data['datasets'][0]['data'], $weight_object['graph_value']);
 
-				// Set target weight if specified
-				if ($target_weight != false && WE_LS_ALLOW_TARGET_WEIGHTS && $chart_type_supports_target_data){
-					array_push($graph_data['datasets'][1]['data'], $target_weight['graph_value']);
-				}
+			// Set target weight if specified
+			if ($target_weight != false && WE_LS_ALLOW_TARGET_WEIGHTS && $chart_type_supports_target_data){
+				array_push($graph_data['datasets'][1]['data'], $target_weight['graph_value']);
+			}
 
-				// ----------------------------------------------------------------------------
-				// Add data for all measurements
-				// ----------------------------------------------------------------------------
+			// ----------------------------------------------------------------------------
+			// Add data for all measurements
+			// ----------------------------------------------------------------------------
 //				if($measurements_enabled) {
 //					foreach ($active_measurment_field_keys as $key) {
 //
@@ -184,11 +180,11 @@
 //						}
 //					}
 //				}
-			}
-
 		}
 
-		// Remove any empty measurements from graph
+	}
+
+	// Remove any empty measurements from graph
 //		if($measurements_enabled) {
 //			foreach ($active_measurment_field_keys as $key) {
 //				if(0 == $graph_data['datasets'][$measurement_graph_indexes[$key]]['data-count']) {
@@ -199,44 +195,44 @@
 //			}
 //		}
 
-		// Embed JavaScript data object for this graph into page
-		wp_localize_script( 'jquery-chart-ws-ls', $chart_id . '_data', $graph_data );
+	// Embed JavaScript data object for this graph into page
+	wp_localize_script( 'jquery-chart-ws-ls', $chart_id . '_data', $graph_data );
 
-		// Set initial y axis for weight
-		$graph_line_options = array(
-			'scales' => array('yAxes' => array(array('scaleLabel' => array('display' => true, 'labelString' => __('Weight', WE_LS_SLUG) . ' (' . __($y_axis_unit, WE_LS_SLUG) . ')'), 'type' => "linear", 'ticks' => array('beginAtZero' => WE_LS_AXES_START_AT_ZERO), "display" => "true", "position" => "left", "id" => "y-axis-weight", '' , 'gridLines' => array('display' => $chart_config['show-gridlines']))))
-		);
+	// Set initial y axis for weight
+	$graph_line_options = array(
+		'scales' => array('yAxes' => array(array('scaleLabel' => array('display' => true, 'labelString' => __('Weight', WE_LS_SLUG) . ' (' . __($y_axis_unit, WE_LS_SLUG) . ')'), 'type' => "linear", 'ticks' => array('beginAtZero' => WE_LS_AXES_START_AT_ZERO), "display" => "true", "position" => "left", "id" => "y-axis-weight", '' , 'gridLines' => array('display' => ( 'no' === $chart_config[ 'show-gridlines' ] ) ? false : true ) )))
+	);
 
-		if ('line' == $chart_config['type']) {
+	if ('line' == $chart_config['type']) {
 
-			// Add measurement Axis?
+		// Add measurement Axis?
 //			if ($measurements_enabled ) {
 //				$graph_line_options['scales']['yAxes'] = array_merge($graph_line_options['scales']['yAxes'], array(array('scaleLabel' => array('display' => true, 'labelString' => __('Measurement', WE_LS_SLUG) . ' (' . __($y_axis_measurement_unit, WE_LS_SLUG) . ')'), 'ticks' => array('beginAtZero' => WE_LS_AXES_START_AT_ZERO), 'type' => "linear", "display" => (($number_of_measurement_datasets_with_data != 0) ? true : false), "position" => "right", "id" => "y-axis-measurements", 'gridLines' => array('display' => $chart_config['show-gridlines']))));
 //			}
-		}
-
-		// If gridlines are disabled, hide x axes too
-		if(!$chart_config['show-gridlines']) {
-			$graph_line_options['scales']['xAxes'] = array(array('gridLines' => array('display' => false)));
-		}
-
-		// Legend
-		$graph_line_options['legend']['position'] = 'bottom';
-		$graph_line_options['legend']['labels']['boxWidth'] = 10;
-		$graph_line_options['legend']['labels']['fontSize'] = 10;
-
-		// Font settings
-        $graph_line_options['fontColor'] = WE_LS_TEXT_COLOUR;
-        $graph_line_options['fontFamily'] = WE_LS_FONT_FAMILY;
-
-		// Embed JavaScript options object for this graph into page
-		wp_localize_script( 'jquery-chart-ws-ls', $chart_id . '_options', $graph_line_options );
-
-		$html = '<div><canvas id="' . $chart_id . '" class="ws-ls-chart" ' . (($chart_config['height']) ? 'height="'.  esc_attr($chart_config['height']) . '" ' : '') . ' data-chart-type="' . esc_attr($chart_config['type'])  . '" data-target-weight="' . esc_attr($target_weight['graph_value']) . '" data-target-colour="' . esc_attr($chart_config['weight-target-color']) . '"></canvas>';
-		$html .= '<div class="ws-ls-notice-of-refresh ws-ls-reload-page-if-clicked ws-ls-hide"><a href="#">' . __('You have modified data. Please refresh page.', WE_LS_SLUG) . '</a></div>';
-		$html .= '</div>';
-		return $html;
 	}
+
+	// If gridlines are disabled, hide x axes too
+	if(!$chart_config['show-gridlines']) {
+		$graph_line_options['scales']['xAxes'] = array(array('gridLines' => array('display' => false)));
+	}
+
+	// Legend
+	$graph_line_options['legend']['position'] = 'bottom';
+	$graph_line_options['legend']['labels']['boxWidth'] = 10;
+	$graph_line_options['legend']['labels']['fontSize'] = 10;
+
+	// Font settings
+	$graph_line_options['fontColor'] = WE_LS_TEXT_COLOUR;
+	$graph_line_options['fontFamily'] = WE_LS_FONT_FAMILY;
+
+	// Embed JavaScript options object for this graph into page
+	wp_localize_script( 'jquery-chart-ws-ls', $chart_id . '_options', $graph_line_options );
+
+	$html = '<div><canvas id="' . $chart_id . '" class="ws-ls-chart" ' . (($chart_config['height']) ? 'height="'.  esc_attr($chart_config['height']) . '" ' : '') . ' data-chart-type="' . esc_attr($chart_config['type'])  . '" data-target-weight="' . esc_attr($target_weight['graph_value']) . '" data-target-colour="' . esc_attr($chart_config['weight-target-color']) . '"></canvas>';
+	$html .= '<div class="ws-ls-notice-of-refresh ws-ls-reload-page-if-clicked ws-ls-hide"><a href="#">' . __('You have modified data. Please refresh page.', WE_LS_SLUG) . '</a></div>';
+	$html .= '</div>';
+	return $html;
+}
 
 /*
 	Displays either a target or weight form

@@ -157,6 +157,8 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 = 7.7 =
 
+//todo: get everything dynamic out of globals
+//todo: ws_ls_shortcode_form - add argument to hide custom fields. Also update doc to remove measurements arg
 //todo: remove measurements from documentation site
 // TODO: Deprecate Bar Chart
 // TODO: Review Comms back
@@ -165,13 +167,16 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 // refcator ws_ls_capture_form_validate_and_save
 // chart shortcode: update doc: Removed exclude-measurements
 // add formatting for notes
+// update ws_ls_widget_chart to remove measurments
 
 // How do we deal with height? //'height' => [ 'title' => __('Height', WE_LS_SLUG), 'abv' => __('H', WE_LS_SLUG), 'enabled' => true, 'user_preference' => true),
 
 * Improvement: Allow numeric custom fields to be plotted on charts.
 * Improvement: Measurements have been removed. They have now been migrate (along with user data) into Custom Fields.
 * Improvement: 1000s of lines of code optimised and re-factored.
+* Improvement: Various performance tweaks. All globals no longer dynamically loaded.
 * Bug fix: Cache now invalidated correctly when updating meta fields.
+* Bug fix: Grid lines can now be toggled off for charts.
 
 = 7.6.1 =
 

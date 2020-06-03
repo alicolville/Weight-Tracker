@@ -15,12 +15,12 @@ function ws_ls_shortcode_chart($user_defined_arguments)
         array(
             'user-id' => get_current_user_id(),
             'max-data-points' => WE_LS_CHART_MAX_POINTS,
-            'type' => WE_LS_CHART_TYPE,
-            'height' => WE_LS_CHART_HEIGHT,
-            'weight-line-color' => WE_LS_WEIGHT_LINE_COLOUR,
-            'weight-fill-color' => WE_LS_WEIGHT_FILL_COLOUR,
-            'weight-target-color' => WE_LS_TARGET_LINE_COLOUR,
-            'show-gridlines' => WE_LS_CHART_SHOW_GRID_LINES,
+            'type' => get_option( 'ws-ls-chart-type', 'line' ),
+            'height' => 250,
+            'weight-line-color' => get_option( 'ws-ls-line-colour', '#aeaeae' ),
+            'weight-fill-color' => get_option( 'ws-ls-line-fill-colour', '#f9f9f9' ),
+            'weight-target-color' => get_option( 'ws-ls-target-colour', '#76bada' ),
+            'show-gridlines' => get_option( 'ws-ls-grid-lines', 'yes' ),
             'bezier' => WE_LS_CHART_BEZIER_CURVE,
 			'ignore-login-status' => false
            ), $user_defined_arguments );
@@ -32,7 +32,7 @@ function ws_ls_shortcode_chart($user_defined_arguments)
 
     // Validate height
     if (!is_numeric($chart_arguments['height']) || $chart_arguments['height'] < 50) {
-       $chart_arguments['height'] = WE_LS_CHART_HEIGHT;
+       $chart_arguments['height'] = 250;
     }
 
     // Validate max points
