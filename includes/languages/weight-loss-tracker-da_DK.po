@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Weight Loss Tracker da_DK\n"
-"POT-Creation-Date: 2020-05-31 20:14+0100\n"
-"PO-Revision-Date: 2020-05-31 20:14+0100\n"
+"POT-Creation-Date: 2020-06-03 07:55+0100\n"
+"PO-Revision-Date: 2020-06-03 07:55+0100\n"
 "Last-Translator: Spaniole Olsen <spaniole@gmail.com>\n"
 "Language-Team: Team Denmark <spaniole@gmail.com>\n"
 "Language: da_DK\n"
@@ -64,25 +64,25 @@ msgstr ""
 msgid "Weight difference"
 msgstr "Vægt difference"
 
-#: admin-pages/awards/page-awards-add-update.php:173 core.php:378
+#: admin-pages/awards/page-awards-add-update.php:173 core.php:369
 msgid "Stones"
 msgstr "sten"
 
 #: admin-pages/awards/page-awards-add-update.php:175
 #: admin-pages/awards/page-awards-add-update.php:186
-#: admin-pages/settings/page-settings-generic.php:109 core.php:379 core.php:382
+#: admin-pages/settings/page-settings-generic.php:109 core.php:370 core.php:373
 msgid "Pounds"
 msgstr "pund"
 
-#: admin-pages/awards/page-awards-add-update.php:191 core.php:14 core.php:83
-#: core.php:210 core.php:386
+#: admin-pages/awards/page-awards-add-update.php:191 core.php:14 core.php:81
+#: core.php:207 core.php:377
 msgid "Weight"
 msgstr "Vægt"
 
 #: admin-pages/awards/page-awards-add-update.php:191
 #: admin-pages/awards/page-awards-add-update.php:192
 #: admin-pages/settings/page-settings-generic.php:107 converters.php:56
-#: core.php:75 core.php:386 functions.php:73 functions.php:96
+#: core.php:74 core.php:377 functions.php:72 functions.php:95
 msgid "kg"
 msgstr ""
 
@@ -137,8 +137,9 @@ msgstr ""
 #: admin-pages/awards/page-awards-add-update.php:305
 #: admin-pages/meta-fields/page-meta-fields-add-update.php:83
 #: admin-pages/meta-fields/page-meta-fields-add-update.php:99
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:154
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:166
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:112
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:179
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:191
 #: admin-pages/settings/page-settings-generic.php:94
 #: admin-pages/settings/page-settings-generic.php:131
 #: admin-pages/settings/page-settings-generic.php:141
@@ -162,9 +163,7 @@ msgstr ""
 #: admin-pages/settings/page-settings-generic.php:779
 #: admin-pages/settings/page-settings-generic.php:789
 #: admin-pages/settings/page-settings-generic.php:799
-#: admin-pages/settings/page-settings-generic.php:819
-#: admin-pages/settings/page-settings-generic.php:839
-#: admin-pages/settings/page-settings-generic.php:900 functions.php:1025
+#: admin-pages/settings/page-settings-generic.php:832 functions.php:1025
 msgid "Yes"
 msgstr "Ja"
 
@@ -174,8 +173,9 @@ msgstr "Ja"
 #: admin-pages/awards/page-awards-add-update.php:304
 #: admin-pages/meta-fields/page-meta-fields-add-update.php:83
 #: admin-pages/meta-fields/page-meta-fields-add-update.php:98
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:153
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:165
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:111
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:178
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:190
 #: admin-pages/settings/page-settings-generic.php:95
 #: admin-pages/settings/page-settings-generic.php:132
 #: admin-pages/settings/page-settings-generic.php:142
@@ -199,9 +199,7 @@ msgstr "Ja"
 #: admin-pages/settings/page-settings-generic.php:780
 #: admin-pages/settings/page-settings-generic.php:790
 #: admin-pages/settings/page-settings-generic.php:800
-#: admin-pages/settings/page-settings-generic.php:818
-#: admin-pages/settings/page-settings-generic.php:838
-#: admin-pages/settings/page-settings-generic.php:899 functions.php:1025
+#: admin-pages/settings/page-settings-generic.php:831 functions.php:1025
 msgid "No"
 msgstr "Nej"
 
@@ -222,21 +220,21 @@ msgid "Send Email"
 msgstr ""
 
 #: admin-pages/awards/page-awards-add-update.php:299
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:160
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:185
 #: admin-pages/settings/page-settings-generic.php:413
 #: admin-pages/settings/page-settings-generic.php:515
 msgid "Enabled"
 msgstr "Aktiver"
 
 #: admin-pages/awards/page-awards-add-update.php:312
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:173 core.php:425
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:198 core.php:408
 msgid "Cancel"
 msgstr ""
 
 #: admin-pages/awards/page-awards-add-update.php:315
 #: admin-pages/awards/page-awards-add-update.php:317
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:176
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:178
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:201
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:203
 msgid "Save"
 msgstr "Gemt!"
 
@@ -304,44 +302,67 @@ msgid ""
 msgstr ""
 
 #: admin-pages/meta-fields/page-meta-fields-add-update.php:106
+#, fuzzy
+#| msgid "Display points on graph?"
+msgid "Plot on graph?"
+msgstr "Vis punkter på grafen?"
+
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:114
+msgid "Note: If set to Yes, this custom field will also be plotted on graphs."
+msgstr ""
+
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:119
+msgid "Line colour on graph"
+msgstr ""
+
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:126
+#, fuzzy
+#| msgid "Enter a HEX colour code to use for text displayed on the graph."
+msgid "Note: The HEX colour to use for the line when plotting on a graph."
+msgstr ""
+"Hvis det er aktiveret, skal du indtaste en HEX farvekode for at bruge til "
+"mål linje på grafen."
+
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:131
 msgid "Field / Question"
 msgstr ""
 
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:114
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:139
 msgid "Abbreviation"
 msgstr ""
 
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:118
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:143
 msgid ""
 "Used when displaying the field data in smaller spaces e.g. table headers, "
 "charts, etc"
 msgstr ""
 
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:123
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:148
 msgid "Suffix"
 msgstr ""
 
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:127
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:152
 msgid ""
 "Text display at to end of the entered value when displaying it to the user. "
 "e.g. CM would display in the following manner: 120 CM"
 msgstr ""
 
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:132
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:157
 msgid "Display Order"
 msgstr "Vis gitterlinjer?"
 
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:143
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:168
 msgid ""
 "Used to specify the order of custom fields. Lower numbers are displayed "
 "higher up the form."
 msgstr ""
 
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:148 core.php:403
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:173
 msgid "Mandatory"
 msgstr ""
 
-#: admin-pages/meta-fields/page-meta-fields-list.php:23 hooks.php:10
+#: admin-pages/meta-fields/page-meta-fields-list.php:23
+#: admin-pages/settings/page-settings-generic.php:816 hooks.php:10
 msgid "Custom Fields"
 msgstr ""
 
@@ -401,52 +422,62 @@ msgstr ""
 msgid "Done. View Log below for further information."
 msgstr ""
 
-#: admin-pages/page-help.php:102
+#: admin-pages/page-help.php:101
+msgid "Custom Fields: Migrate measurements from old system to Custom Fields"
+msgstr ""
+
+#: admin-pages/page-help.php:103
+msgid ""
+"This will migrate enabled measurement fields and data across to Custom "
+"Fields."
+msgstr ""
+
+#: admin-pages/page-help.php:115
 msgid "Admin Tools"
 msgstr ""
 
-#: admin-pages/page-help.php:111
+#: admin-pages/page-help.php:124
 msgid "Show Setup Wizard link"
 msgstr ""
 
-#: admin-pages/page-help.php:121 admin-pages/page-help.php:135 core.php:680
+#: admin-pages/page-help.php:134 admin-pages/page-help.php:148 core.php:640
 msgid "Done"
 msgstr "OK"
 
-#: admin-pages/page-help.php:126
+#: admin-pages/page-help.php:139
 #, fuzzy
 msgid "Delete all issued awards"
 msgstr "Slet ALLE brugerdata"
 
-#: admin-pages/page-help.php:140
+#: admin-pages/page-help.php:153
 #, fuzzy
 #| msgid "View all entries"
 msgid "Delete all log entries"
 msgstr "Se alle uger"
 
-#: admin-pages/page-help.php:148
+#: admin-pages/page-help.php:161
 msgid "Weight Tracker Debug Log"
 msgstr "Weight Loss Tracker - formular"
 
-#: admin-pages/page-help.php:151
+#: admin-pages/page-help.php:164
 msgid ""
 "Below is a list of the debug information logged by the Weight Tracker plugin "
 "over the last 31 days."
 msgstr ""
 
-#: admin-pages/page-help.php:171 admin-pages/page-help.php:175
+#: admin-pages/page-help.php:184 admin-pages/page-help.php:188
 #, fuzzy
 #| msgid "Are you sure you?"
 msgid "Are you sure?"
 msgstr "Er du sikker?"
 
-#: admin-pages/page-help.php:172
+#: admin-pages/page-help.php:185
 #, fuzzy
 #| msgid "Are you sure you wish to remove all user data?"
 msgid "Are you sure you wish to remove all issued awards?"
 msgstr "Er du sikker på du ønsker at fjerne alle brugerdata?"
 
-#: admin-pages/page-help.php:176
+#: admin-pages/page-help.php:189
 #, fuzzy
 #| msgid "Are you sure you wish to clear your target weight?"
 msgid "Are you sure you wish to clear all log entries?"
@@ -723,7 +754,7 @@ msgstr "Generelt"
 msgid "General settings"
 msgstr "Generelle indstillinger"
 
-#: admin-pages/settings/page-settings-generic.php:74 license.php:342
+#: admin-pages/settings/page-settings-generic.php:74 license.php:350
 msgid "Pro Plus"
 msgstr ""
 
@@ -994,7 +1025,7 @@ msgid ""
 "WordPress dashboard. Use this setting if you wish to disable them."
 msgstr ""
 
-#: admin-pages/settings/page-settings-generic.php:300
+#: admin-pages/settings/page-settings-generic.php:300 hooks.php:14
 msgid "Challenges"
 msgstr ""
 
@@ -1425,65 +1456,21 @@ msgstr ""
 msgid "Receive notifications when a member adds / edits their target."
 msgstr ""
 
-#: admin-pages/settings/page-settings-generic.php:815
-msgid "Allow Measurements?"
-msgstr "Tillad målvægt?"
-
-#: admin-pages/settings/page-settings-generic.php:821
-msgid ""
-"If enabled, a user can also add body measurements along with their weights."
+#: admin-pages/settings/page-settings-generic.php:814
+msgid "Measurement settings and user data have now been migrated to"
 msgstr ""
-"Hvis den er aktiveret, kan en bruger også tilføje kropsmål sammen med deres "
-"vægte."
-
-#: admin-pages/settings/page-settings-generic.php:825
-msgid "Measurement Units"
-msgstr "Målenheder"
 
 #: admin-pages/settings/page-settings-generic.php:828
-msgid "Centimetres"
-msgstr "centimeter"
-
-#: admin-pages/settings/page-settings-generic.php:829 core.php:76
-msgid "Inches"
-msgstr "tommer"
-
-#: admin-pages/settings/page-settings-generic.php:831
-msgid "Default unit for recording measurements."
-msgstr "Standard enhed til optagelse af målinger."
-
-#: admin-pages/settings/page-settings-generic.php:835
-msgid "Measurements mandatory?"
-msgstr "Målinger påkrævet?"
-
-#: admin-pages/settings/page-settings-generic.php:841
-msgid "If yes, a user will be forced to complete all measurement features."
-msgstr ""
-"Hvis ja, vil en bruger blive tvunget til at udfylde alle målefunktioner."
-
-#: admin-pages/settings/page-settings-generic.php:845
-msgid "Areas of measurements"
-msgstr "Områder i målinger"
-
-#: admin-pages/settings/page-settings-generic.php:867
-msgid "Enable"
-msgstr "Aktiver"
-
-#: admin-pages/settings/page-settings-generic.php:870
-msgid "Chart Colour"
-msgstr "Diagram farve"
-
-#: admin-pages/settings/page-settings-generic.php:896
 msgid "Enable Gravity Forms"
 msgstr ""
 
-#: admin-pages/settings/page-settings-generic.php:903
+#: admin-pages/settings/page-settings-generic.php:835
 msgid ""
 "Examine Gravity Form submissions for weight and measurement data. If found, "
 "create a Weight Entry for the user currently logged in."
 msgstr ""
 
-#: admin-pages/settings/page-settings-generic.php:904
+#: admin-pages/settings/page-settings-generic.php:836
 msgid "Read more at "
 msgstr ""
 
@@ -1839,14 +1826,14 @@ msgstr ""
 msgid "Export to JSON"
 msgstr ""
 
-#: converters.php:53 converters.php:71 core.php:75 functions.php:69
-#: functions.php:84 functions.php:93 functions.php:99 functions.php:293
-#: functions.php:299 functions.php:545 shortcode-various.php:315
+#: converters.php:53 converters.php:71 core.php:74 functions.php:68
+#: functions.php:83 functions.php:92 functions.php:98 functions.php:284
+#: functions.php:290 functions.php:521 shortcode-various.php:315
 #: shortcode-various.php:340
 msgid "lbs"
 msgstr "lbs"
 
-#: converters.php:71 functions.php:299
+#: converters.php:71 functions.php:290
 msgid "St"
 msgstr "St"
 
@@ -1854,340 +1841,326 @@ msgstr "St"
 msgid "Date"
 msgstr "Dato"
 
-#: core.php:15 core.php:395
+#: core.php:15 core.php:386
 msgid "Notes"
 msgstr "Noter"
 
-#: core.php:62 core.php:263 shortcode-weight-loss-tracker.php:52
+#: core.php:61 core.php:259 shortcode-weight-loss-tracker.php:52
 msgid "You need to be logged in to record your weight."
 msgstr "Du skal være logget ind for at registrere din egen vægt"
 
-#: core.php:76
-msgid "CM"
-msgstr "cm"
-
-#: core.php:121
+#: core.php:118
 msgid "Target"
 msgstr "Målvægt"
 
-#: core.php:217
-msgid "Measurement"
-msgstr "Målinger"
-
-#: core.php:239
+#: core.php:236
 msgid "You have modified data. Please refresh page."
 msgstr "Data er blevet ændret. Vennligst opdatere siden."
 
-#: core.php:263
+#: core.php:259
 msgid "You need to be logged in to set your target."
 msgstr "Du skal være logget ind for at registrere din egen vægt"
 
-#: core.php:280
+#: core.php:276
 msgid "Add a new weight"
 msgstr "Tilføj en ny vægt"
 
-#: core.php:283
+#: core.php:279
 msgid "Target Weight"
 msgstr "Målvægt"
 
-#: core.php:285
+#: core.php:281
 msgid "Edit weight"
 msgstr "Undervægtig"
 
-#: core.php:368
+#: core.php:359
 msgid "Your target weight is"
 msgstr "Din målvægt er"
 
-#: core.php:368
+#: core.php:359
 msgid "The user's target weight is currently"
 msgstr "Din målvægt er"
 
-#: core.php:402
-msgid "Edit measurements"
-msgstr "Tilføj målinger"
-
-#: core.php:402
-msgid "Add measurements"
-msgstr "Tilføj målinger"
-
-#: core.php:403
-msgid "Optional"
-msgstr ""
-
-#: core.php:412
+#: core.php:395
 msgid "Set Target"
 msgstr "Sæt målvægt"
 
-#: core.php:412
+#: core.php:395
 msgid "Save Entry"
 msgstr "Gem indtastning"
 
-#: core.php:417
+#: core.php:400
 msgid "Please correct the following:"
 msgstr ""
 
-#: core.php:430
+#: core.php:413
 msgid "Clear Target"
 msgstr "Nulstil felt"
 
-#: core.php:614
+#: core.php:577
 msgid "Please enter a value between 0-13 for pounds"
 msgstr "Indtast venligst en værdi mellem 0-14 pund"
 
-#: core.php:615
+#: core.php:578
 msgid "Please enter a valid figure for pounds"
 msgstr "Angiv et gyldigt tal for pund"
 
-#: core.php:622
+#: core.php:585
 msgid "Are you sure you wish to clear your target weight?"
 msgstr "Er du sikker på at du vil nulstille?"
 
-#: core.php:625
+#: core.php:588
 msgid "Please enter a valid figure for Kg"
 msgstr "Indsæt et korrekt format for kg"
 
-#: core.php:626
+#: core.php:589
 msgid "Please enter a valid figure for Stones"
 msgstr "Angiv et gyldigt tal for sten"
 
-#: core.php:627
+#: core.php:590
 msgid "Please enter a valid date"
 msgstr "Indtast venligst en korrekt dato"
 
-#: core.php:628
+#: core.php:591
 msgid "Please confirm you wish to delete ALL your weight history"
 msgstr "Bekræft venligst sletning af ALT vægt historik."
 
-#: core.php:629
+#: core.php:592
 msgid "Your photo must be less than "
 msgstr ""
 
-#: core.php:630
+#: core.php:593
 msgid "Are you sure you wish to delete this entry? If so, press OK."
 msgstr "Er du sikker på at du vil slette denne post?"
 
-#: core.php:639
-msgid "Please enter a valid measurement ("
-msgstr "Indtast venligst en gyldig målenhed ("
-
-#: core.php:649
+#: core.php:609
 msgid "Please select or enter a value for height."
 msgstr "Indsæt et korrekt format for kg."
 
-#: core.php:650
+#: core.php:610
 msgid "Please select or enter a value for activity level."
 msgstr "Angiv et gyldigt tal for sten."
 
-#: core.php:651
+#: core.php:611
 msgid "Please select or enter a value for gender."
 msgstr "Indsæt et korrekt format for kg."
 
-#: core.php:652
+#: core.php:612
 msgid "Please enter a valid date."
 msgstr "Indtast venligst en korrekt dato"
 
-#: core.php:653
+#: core.php:613
 msgid "Please select your aim."
 msgstr "Indsæt et korrekt format for kg"
 
-#: core.php:663
+#: core.php:623
 msgid "This field is required."
 msgstr ""
 
-#: core.php:681
+#: core.php:641
 msgid "Today"
 msgstr "I dag"
 
-#: functions.php:84 functions.php:99 functions.php:533
+#: deprecated.php:113
+msgid "Forearm - Left"
+msgstr "Forarm - venstre"
+
+#: deprecated.php:113
+msgid "FL"
+msgstr ""
+
+#: deprecated.php:114
+msgid "Forearm - Right"
+msgstr "Forarm - højre"
+
+#: deprecated.php:114
+msgid "FR"
+msgstr ""
+
+#: deprecated.php:115
+msgid "Biceps - Left"
+msgstr "Biceps - venstre"
+
+#: deprecated.php:115
+msgid "BL"
+msgstr ""
+
+#: deprecated.php:116
+msgid "Biceps - Right"
+msgstr "Biceps - højre"
+
+#: deprecated.php:116
+msgid "BR"
+msgstr ""
+
+#: deprecated.php:117
+msgid "Calf - Left"
+msgstr "Læg - venstre"
+
+#: deprecated.php:117
+msgid "CL"
+msgstr ""
+
+#: deprecated.php:118
+msgid "Calf - Right"
+msgstr "Læg - højre"
+
+#: deprecated.php:118
+msgid "CR"
+msgstr ""
+
+#: deprecated.php:119
+msgid "Thigh - Left"
+msgstr "Lår - venstre"
+
+#: deprecated.php:119
+msgid "TL"
+msgstr ""
+
+#: deprecated.php:120
+msgid "Thigh - Right"
+msgstr "Lår - højre"
+
+#: deprecated.php:120
+msgid "TR"
+msgstr ""
+
+#: deprecated.php:121
+msgid "Waist"
+msgstr "Talje"
+
+#: deprecated.php:121
+msgid "W"
+msgstr ""
+
+#: deprecated.php:122
+msgid "Bust / Chest"
+msgstr "Bryst"
+
+#: deprecated.php:122
+msgid "BC"
+msgstr ""
+
+#: deprecated.php:123
+msgid "Shoulders"
+msgstr "Skulder"
+
+#: deprecated.php:123
+msgid "S"
+msgstr "St"
+
+#: deprecated.php:124
+msgid "Buttocks"
+msgstr "Bagdel"
+
+#: deprecated.php:124
+msgid "B"
+msgstr ""
+
+#: deprecated.php:125
+msgid "Hips"
+msgstr "Hofte"
+
+#: deprecated.php:125
+msgid "HI"
+msgstr ""
+
+#: deprecated.php:126
+msgid "Navel"
+msgstr "Navle"
+
+#: deprecated.php:126
+msgid "NA"
+msgstr ""
+
+#: deprecated.php:127
+msgid "Neck"
+msgstr ""
+
+#: deprecated.php:127
+msgid "NE"
+msgstr ""
+
+#: form-handler.php:29
+#, fuzzy
+#| msgid "No photos could be found for this user."
+msgid "No user hash could be found"
+msgstr "Ingen vægt data blev fundet for den angivne bruger."
+
+#: form-handler.php:36
+msgid "No user ID has been found"
+msgstr ""
+
+#: form-handler.php:41
+msgid "The given user hash did not match the logged in user"
+msgstr ""
+
+#: form-handler.php:48
+#, fuzzy
+#| msgid "An error occurred while saving your data!"
+msgid "An error occurred while saving your data"
+msgstr "En fejl er opstået!"
+
+#: form-handler.php:59
+#, fuzzy
+#| msgid "Your settings have been saved!"
+msgid "Your entry has been saved."
+msgstr "Instillingerne er blevet gemt!"
+
+#: functions.php:83 functions.php:98 functions.php:509
 #: shortcode-various.php:338
 msgid "st"
 msgstr "st"
 
-#: functions.php:210
+#: functions.php:197
 msgid "The following MySQL tables are missing for this plugin"
 msgstr "Følgende MySQL tabeller mangler for dette plugin"
 
-#: functions.php:296 shortcode-various.php:347
+#: functions.php:287 shortcode-various.php:347
 msgid "Kg"
 msgstr "kg"
 
-#: functions.php:358
+#: functions.php:349
 msgid "View all weeks"
 msgstr "Se alle uger"
 
-#: functions.php:372
+#: functions.php:363
 msgid "View Week"
 msgstr "Se uge"
 
-#: functions.php:372
+#: functions.php:363
 msgid "to"
 msgstr "til"
 
-#: functions.php:500
-msgid "The plugin supports the following measurements"
-msgstr "Dette plugin understøtter følgende målinger"
-
-#: functions.php:687
+#: functions.php:664
 msgid "Read more about calculations"
 msgstr ""
 
-#: functions.php:721
+#: functions.php:700
 msgid "Your modifications have been saved"
 msgstr "Instillingerne er blevet gemt!"
 
-#: functions.php:739
+#: functions.php:722
 msgid "Login now"
 msgstr "Log ind"
 
-#: functions.php:904
+#: functions.php:899
 msgid "Upgrade Weight Tracker and get more features!"
 msgstr ""
 
-#: functions.php:906
+#: functions.php:901
 msgid ""
 "Upgrade to the latest Pro or Pro Plus version of this plugin to manipulate "
 "your user's data, add custom fields, BMR, Macro Nutrients and much more!"
 msgstr ""
 
-#: functions.php:907
+#: functions.php:902
 msgid "Read more and Upgrade to Pro / Pro Plus Version"
 msgstr "Få Pro versionen"
-
-#: globals.php:119
-msgid "Forearm - Left"
-msgstr "Forarm - venstre"
-
-#: globals.php:119
-msgid "FL"
-msgstr ""
-
-#: globals.php:120
-msgid "Forearm - Right"
-msgstr "Forarm - højre"
-
-#: globals.php:120
-msgid "FR"
-msgstr ""
-
-#: globals.php:121
-msgid "Biceps - Left"
-msgstr "Biceps - venstre"
-
-#: globals.php:121
-msgid "BL"
-msgstr ""
-
-#: globals.php:122
-msgid "Biceps - Right"
-msgstr "Biceps - højre"
-
-#: globals.php:122
-msgid "BR"
-msgstr ""
-
-#: globals.php:123
-msgid "Calf - Left"
-msgstr "Læg - venstre"
-
-#: globals.php:123
-msgid "CL"
-msgstr ""
-
-#: globals.php:124
-msgid "Calf - Right"
-msgstr "Læg - højre"
-
-#: globals.php:124
-msgid "CR"
-msgstr ""
-
-#: globals.php:125
-msgid "Thigh - Left"
-msgstr "Lår - venstre"
-
-#: globals.php:125
-msgid "TL"
-msgstr ""
-
-#: globals.php:126
-msgid "Thigh - Right"
-msgstr "Lår - højre"
-
-#: globals.php:126
-msgid "TR"
-msgstr ""
-
-#: globals.php:127
-msgid "Waist"
-msgstr "Talje"
-
-#: globals.php:127
-msgid "W"
-msgstr ""
-
-#: globals.php:128
-msgid "Bust / Chest"
-msgstr "Bryst"
-
-#: globals.php:128
-msgid "BC"
-msgstr ""
-
-#: globals.php:129
-msgid "Shoulders"
-msgstr "Skulder"
-
-#: globals.php:129
-msgid "S"
-msgstr "St"
-
-#: globals.php:130
-msgid "Height"
-msgstr "Højde"
-
-#: globals.php:130
-msgid "H"
-msgstr ""
-
-#: globals.php:131
-msgid "Buttocks"
-msgstr "Bagdel"
-
-#: globals.php:131
-msgid "B"
-msgstr ""
-
-#: globals.php:132
-msgid "Hips"
-msgstr "Hofte"
-
-#: globals.php:132
-msgid "HI"
-msgstr ""
-
-#: globals.php:133
-msgid "Navel"
-msgstr "Navle"
-
-#: globals.php:133
-msgid "NA"
-msgstr ""
-
-#: globals.php:134
-msgid "Neck"
-msgstr ""
-
-#: globals.php:134
-msgid "NE"
-msgstr ""
 
 #: hooks.php:9
 msgid "Manage User Data"
 msgstr "Administrer brugerdata"
-
-#: hooks.php:14
-msgid "Challenges (beta)"
-msgstr ""
 
 #: hooks.php:17
 msgid "Your License"
@@ -2205,7 +2178,7 @@ msgstr ""
 msgid "An error occurred while trying to save the user's preferences."
 msgstr "En fejl er opstået!"
 
-#: hooks.php:208
+#: hooks.php:207
 #, fuzzy
 msgid "Weight entries"
 msgstr "Vægtenheder"
@@ -2222,60 +2195,44 @@ msgid ""
 "as possible"
 msgstr ""
 
-#: license.php:240
+#: license.php:246
 msgid "License missing"
 msgstr ""
 
-#: license.php:247
+#: license.php:253
 msgid "Could not decode / verify license"
 msgstr ""
 
-#: license.php:252
+#: license.php:258
 msgid "Invalid license hash"
 msgstr ""
 
-#: license.php:257
+#: license.php:263
 msgid ""
 "This license doesn't appear to be for this site (no match on site hash)."
 msgstr ""
 
-#: license.php:265
+#: license.php:271
 msgid "This license has expired."
 msgstr ""
 
-#: license.php:326
+#: license.php:334
 msgid "None"
 msgstr ""
 
-#: license.php:336
+#: license.php:344
 msgid "Yearly Pro"
 msgstr ""
 
-#: license.php:339
+#: license.php:347
 msgid "Legacy Pro"
 msgstr ""
 
-#: meal-tracker.php:26
+#: meal-tracker.php:27
 #, fuzzy
 #| msgid "Weight Tracker Debug Log"
 msgid "Weight Tracker Record"
 msgstr "Weight Loss Tracker - formular"
-
-#: save-data.php:43
-msgid "Saved!"
-msgstr "Gemt!"
-
-#: save-data.php:47
-msgid "An error occurred while saving your data!"
-msgstr "En fejl er opstået!"
-
-#: save-data.php:50
-msgid "No user specified (hash)"
-msgstr "Ingen bruger specificeret (hash)"
-
-#: save-data.php:53
-msgid "No user specified"
-msgstr "Ingen bruger specificeret"
 
 #: setup-wizard.php:16
 msgid "Welcome to"
@@ -2409,6 +2366,74 @@ msgstr "Der er ingen data for denne uge, prøv venligst at vælge en anden uge:"
 #: shortcode-weight-loss-tracker.php:253
 msgid "You haven't entered any weight data yet."
 msgstr "Du har ikke indtastet nogle vægtdata endnu."
+
+#~ msgid "Allow Measurements?"
+#~ msgstr "Tillad målvægt?"
+
+#~ msgid ""
+#~ "If enabled, a user can also add body measurements along with their "
+#~ "weights."
+#~ msgstr ""
+#~ "Hvis den er aktiveret, kan en bruger også tilføje kropsmål sammen med "
+#~ "deres vægte."
+
+#~ msgid "Measurement Units"
+#~ msgstr "Målenheder"
+
+#~ msgid "Centimetres"
+#~ msgstr "centimeter"
+
+#~ msgid "Inches"
+#~ msgstr "tommer"
+
+#~ msgid "Default unit for recording measurements."
+#~ msgstr "Standard enhed til optagelse af målinger."
+
+#~ msgid "Measurements mandatory?"
+#~ msgstr "Målinger påkrævet?"
+
+#~ msgid "If yes, a user will be forced to complete all measurement features."
+#~ msgstr ""
+#~ "Hvis ja, vil en bruger blive tvunget til at udfylde alle målefunktioner."
+
+#~ msgid "Areas of measurements"
+#~ msgstr "Områder i målinger"
+
+#~ msgid "Enable"
+#~ msgstr "Aktiver"
+
+#~ msgid "Chart Colour"
+#~ msgstr "Diagram farve"
+
+#~ msgid "CM"
+#~ msgstr "cm"
+
+#~ msgid "Measurement"
+#~ msgstr "Målinger"
+
+#~ msgid "Edit measurements"
+#~ msgstr "Tilføj målinger"
+
+#~ msgid "Add measurements"
+#~ msgstr "Tilføj målinger"
+
+#~ msgid "Please enter a valid measurement ("
+#~ msgstr "Indtast venligst en gyldig målenhed ("
+
+#~ msgid "The plugin supports the following measurements"
+#~ msgstr "Dette plugin understøtter følgende målinger"
+
+#~ msgid "Height"
+#~ msgstr "Højde"
+
+#~ msgid "Saved!"
+#~ msgstr "Gemt!"
+
+#~ msgid "No user specified (hash)"
+#~ msgstr "Ingen bruger specificeret (hash)"
+
+#~ msgid "No user specified"
+#~ msgstr "Ingen bruger specificeret"
 
 #~ msgid "All Entries"
 #~ msgstr "Vis _MENU_ målinger"
