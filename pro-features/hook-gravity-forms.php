@@ -313,16 +313,6 @@ function ws_ls_gravity_forms_meta_fields_key_prefix( $key ) {
 }
 
 /**
- * Replace underscores with hyphens in Measurement keys
- *
- * @param $value
- * @return mixed
- */
-function ws_ls_gravity_forms_measurement_format( $value ) {
-    return str_replace( '_', '-', $value);
-}
-
-/**
  * Prefix used to identify WLT field in GF
  * @return mixed
  */

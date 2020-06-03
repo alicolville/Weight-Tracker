@@ -45,8 +45,7 @@
 			'show-gridlines' => WE_LS_CHART_SHOW_GRID_LINES,
 			'bezier' => WE_LS_CHART_BEZIER_CURVE,
             'hide_login_message_if_needed' => true,
-			'exclude-measurements' => false,
-            'ignore-login-status' => false
+			'ignore-login-status' => false
 		);
 
         // If we are PRO and the developer has specified options then override the default
@@ -112,7 +111,6 @@
 		$chart_type_supports_target_data = ('bar' == $chart_config['type']) ? false : true;
 
 		$dataset_index = 1;
-		$number_of_measurement_datasets_with_data = 0;
 
 		// If target weights are enabled, then include into javascript data object
 		if ($target_weight != false && WE_LS_ALLOW_TARGET_WEIGHTS && $chart_type_supports_target_data){
