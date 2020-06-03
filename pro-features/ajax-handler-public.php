@@ -14,11 +14,6 @@ function ws_ls_save_preferences_callback()
   	// List of form fields / globals we want to store for the user
   	$keys_to_save = array('WE_LS_DATA_UNITS', 'WE_LS_US_DATE');
 
-	// Save measurements if enabled
-	if(WE_LS_MEASUREMENTS_ENABLED) {
-		$keys_to_save[] = 'WE_LS_MEASUREMENTS_UNIT';
-	}
-
   	$user_preferences = array();
 
   	foreach ($keys_to_save as $key) {

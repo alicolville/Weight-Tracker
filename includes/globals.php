@@ -95,46 +95,6 @@
         'WE_LS_THIRD_PARTY_GF_ENABLE' => false
 	);
 
-    // -----------------------------------------------------------------------------------
-	// Measurements (4.0+)
-	// -----------------------------------------------------------------------------------
-
-    // Supported measurements:
-    // Bust/Chest, Waist, Navel, Hips, Buttocks, Right and Left Thighs, Right and Left Biceps, Calves and Height
-    $globals['WE_LS_MEASUREMENTS_ENABLED'] = false;
-	$globals['WE_LS_MEASUREMENTS_UNIT'] = (false == get_option('ws-ls-measurement-units')) ? 'cm' : get_option('ws-ls-measurement-units');
-	$globals['WE_LS_MEASUREMENTS_MANDATORY'] = (false == get_option('ws-ls-measurements-mandatory') || 'no' == get_option('ws-ls-measurements-mandatory')) ? false : true;
-
-    if (WS_LS_IS_PRO && ('yes' == get_option('ws-ls-allow-measurements'))) {
-    	$globals['WE_LS_MEASUREMENTS_ENABLED'] = true;
-	}
-
-	/*
-	 *
-	 *  IMPORTANT! These fields have been reproduced in footables.php for translations. Make any changes there too.
-	 *
-	 */
-    $supported_measurements = array(
-		'left_forearm' => array('title' => __('Forearm - Left', WE_LS_SLUG), 'abv' => __('FL', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#f279ed'),
-        'right_forearm' => array('title' => __('Forearm - Right', WE_LS_SLUG), 'abv' => __('FR', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#a2039b'),
-        'left_bicep' => array('title' => __('Biceps - Left', WE_LS_SLUG), 'abv' => __('BL', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#b00125'),
-        'right_bicep' => array('title' => __('Biceps - Right', WE_LS_SLUG), 'abv' => __('BR', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#035e60'),
-		'left_calf' => array('title' => __('Calf - Left', WE_LS_SLUG), 'abv' => __('CL', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#ffc019'),
-        'right_calf' => array('title' => __('Calf - Right', WE_LS_SLUG), 'abv' => __('CR', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#ff7b9c'),
-		'left_thigh' => array('title' => __('Thigh - Left', WE_LS_SLUG), 'abv' => __('TL', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#eaec13'),
-        'right_thigh' => array('title' => __('Thigh - Right', WE_LS_SLUG), 'abv' => __('TR', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#0101DF'),
-    	'waist' => array('title' => __('Waist', WE_LS_SLUG), 'abv' => __('W', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#8b860b'),
-		'bust_chest' => array('title' => __('Bust / Chest', WE_LS_SLUG), 'abv' => __('BC', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#9600ff'),
-		'shoulders' => array('title' => __('Shoulders', WE_LS_SLUG), 'abv' => __('S', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#70c7c7'),
-		'height' => array('title' => __('Height', WE_LS_SLUG), 'abv' => __('H', WE_LS_SLUG), 'enabled' => true, 'user_preference' => true),
-        'buttocks' => array('title' => __('Buttocks', WE_LS_SLUG), 'abv' => __('B', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#240d1d'),
-        'hips' => array('title' => __('Hips', WE_LS_SLUG), 'abv' => __('HI', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#35e364'),
-        'navel' => array('title' => __('Navel', WE_LS_SLUG), 'abv' => __('NA', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#a28c87'),
-		'neck' => array('title' => __('Neck', WE_LS_SLUG), 'abv' => __('NE', WE_LS_SLUG), 'user_preference' => false, 'enabled' => false, 'chart_colour' => '#FA8072')
-    );
-
-    $globals['WE_LS_MEASUREMENTS'] = json_encode($supported_measurements);
-
 	// -----------------------------------------------------------------------------------
 	// Allow user's to override the default admin settings?
 	// -----------------------------------------------------------------------------------

@@ -483,21 +483,6 @@ function ws_ls_remove_non_numeric($text) {
   return $text;
 }
 
-function ws_ls_display_default_measurements() {
-
-	if(defined('WE_LS_MEASUREMENTS')) {
-		$supported_measurements = json_decode(WE_LS_MEASUREMENTS, true);
-		echo '
-			<p>' . __('The plugin supports the following measurements', WE_LS_SLUG) . ':</p>
-			<ul>';
-		foreach ($supported_measurements as $key => $measurement) {
-			echo '<li>' . $measurement['title'] . '</li>';
-		}
-		echo '</ul>';
-	}
-
-}
-
 function ws_ls_format_stones_pound_for_comparison_display($weight) {
 
 	if(isset($weight['stones']) && isset($weight['pounds'])) {

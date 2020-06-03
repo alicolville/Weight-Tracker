@@ -177,7 +177,6 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
     //-------------------------------------------------------
 
     $html_output 		.= ws_ls_title(__('Preferences', WE_LS_SLUG));
-    $measurement_unit 	= ws_ls_get_config('WE_LS_MEASUREMENTS_UNIT', $user_id );
 
   	$html_output .= '
 	<label>' . $labels['weight'] . '</label>
@@ -186,16 +185,6 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
       <option value="stones_pounds" ' . selected( ws_ls_get_config('WE_LS_DATA_UNITS', $user_id), 'stones_pounds', false ) . '>' . __('Stones & Pounds', WE_LS_SLUG) . '</option>
       <option value="pounds_only" ' . selected( ws_ls_get_config('WE_LS_DATA_UNITS', $user_id), 'pounds_only', false ) . '>' . __('Pounds', WE_LS_SLUG) . '</option>
     </select>';
-
-	if(WE_LS_MEASUREMENTS_ENABLED) {
-		$html_output .= '
-			<label>' . $labels['measurements'] . '</label>
-		    <select id="WE_LS_MEASUREMENTS_UNIT" name="WE_LS_MEASUREMENTS_UNIT"  tabindex="' . ws_ls_get_next_tab_index() . '">
-		    	<option value="cm" ' . selected( $measurement_unit, 'cm', false ) . '>' . __('Centimetres', WE_LS_SLUG) . '</option>
-		    	<option value="inches" ' . selected( $measurement_unit, 'inches', false ) . '>' . __('Inches', WE_LS_SLUG) . '</option>
-		    </select>
-		';
-	}
 
     $html_output .= '
 

@@ -599,8 +599,6 @@ function ws_ls_get_js_config() {
 		'user-id' => $user_id,
 		'current-url' => apply_filters( 'wlt_current_url', get_permalink() ),
 		'photos-enabled' => ( ws_ls_meta_fields_photo_any_enabled( true ) ) ? 'true' : 'false',
-		'measurements-unit' => ws_ls_get_config('WE_LS_MEASUREMENTS_UNIT', $user_id ),
-		'validation-we-ls-measurements' => __('Please enter a valid measurement (' . WE_LS_MEASUREMENTS_UNIT . ') which is less that 1000.', WE_LS_SLUG),
 		'date-picker-locale' => ws_ls_get_js_datapicker_locale(),
 		'in-admin' => ( is_admin() ) ? 'true' : 'false',
 		'max-photo-upload' => ws_ls_photo_max_upload_size(),
