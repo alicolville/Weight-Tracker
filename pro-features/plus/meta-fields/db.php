@@ -196,6 +196,26 @@ function ws_ls_meta_fields_enabled() {
 
 }
 
+/*
+ * Fetch all enabled plottable meta fields
+ *
+ * @return array
+ */
+function ws_ls_meta_fields_plottable() {
+
+	$fields = ws_ls_meta_fields_enabled();
+
+	if ( true === empty( $fields ) ) {
+		return [];
+	}
+
+	$fields = array_filter( $fields, function( $field ) {
+		return ! empty( $field[ 'plot_on_graph' ] );
+	});
+
+	return $fields;
+}
+
 /**
  * Fetch all meta fields
  *
