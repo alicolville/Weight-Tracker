@@ -21,11 +21,6 @@
 		if ( !wp_next_scheduled( 'weight_loss_tracker_daily' ) ) {
 			wp_schedule_event( time(), 'daily', 'weight_loss_tracker_daily' );
 		}
-
-        // Register weekly comms to yeken stats cron job
-        if (!wp_next_scheduled(WE_LS_CRON_NAME_YEKEN_COMMS)) {
-            wp_schedule_event(time(), WE_LS_CRON_SCHEDULE_WEEKLY, WE_LS_CRON_NAME_YEKEN_COMMS);
-        }
     }
 
 	// Code that should run when plugin is deactivated
@@ -34,7 +29,6 @@
 		// Remove cron jobs
 		wp_clear_scheduled_hook( WE_LS_CRON_NAME );
         wp_clear_scheduled_hook( 'weight_loss_tracker_daily' );
-		wp_clear_scheduled_hook( WE_LS_CRON_NAME_YEKEN_COMMS );
 	}
 
 	function ws_ls_create_mysql_tables() {

@@ -3,7 +3,6 @@
 	defined('ABSPATH') or die("Jog on!");
 
 	define('WE_LS_CRON_NAME', 'weight_loss_tracker_hourly');
-	define('WE_LS_CRON_NAME_YEKEN_COMMS', 'weight_loss_tracker_yeken_comms');
 	define('WE_LS_CRON_SCHEDULE_WEEKLY', 'weight_loss_tracker_weekly');
 
 	function ws_ls_schedules( $schedules ) {
