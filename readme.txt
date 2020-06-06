@@ -168,6 +168,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 // add formatting for notes
 // update ws_ls_widget_chart to remove measurements
 // TODO: We changed the cache key for all user preferences. Ensure this is cleared properly
+//TODO: When all my user data was deleted: Warning: count(): Parameter must be an array or an object that implements Countable in /srv/www/wordpress-one/public_html/wp-content/plugins/wlt/pro-features/plus/challenge/functions.php on line 98
 
 // How do we deal with height? //'height' => [ 'title' => __('Height', WE_LS_SLUG), 'abv' => __('H', WE_LS_SLUG), 'enabled' => true, 'user_preference' => true),
 

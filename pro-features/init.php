@@ -27,8 +27,6 @@ function ws_ls_register_pro_shortcodes(){
     	[wlt-if] - display content conditionally
     */
 
-    add_shortcode( 'weight-loss-tracker-chart', 'ws_ls_shortcode_chart' );
-    add_shortcode( 'wlt-chart', 'ws_ls_shortcode_chart' );
     add_shortcode( 'weight-loss-tracker-form', 'ws_ls_shortcode_form' );
     add_shortcode( 'wlt-form', 'ws_ls_shortcode_form' );
     add_shortcode( 'weight-loss-tracker-table', 'ws_ls_shortcode_table' );
