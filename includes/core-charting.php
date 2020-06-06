@@ -17,8 +17,6 @@ define( 'AXIS_META_FIELDS', 'y-axis-meta' );
  */
 function ws_ls_display_chart( $weight_data, $options = [] ) {
 
-	print_r( ws_ls_cache_user_get_all( 'charts' ) );
-
 	$chart_config = wp_parse_args( $options, [
 												'bezier'                => ws_ls_option_to_bool( 'ws-ls-bezier-curve', 'yes', true ),
 												'height'                => 250,
@@ -45,7 +43,7 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 	$chart_config[ 'point-size' ]       = ws_ls_option_to_int( 'ws-ls-point-size', 3, true );
 	$chart_config[ 'line-thickness' ]   = 2;
 	$chart_config[ 'target-weight' ]    = false;
-	$cache_key                          = md5( json_encode( $weight_data ) . json_encode( $options ) );
+	$chart_config[ 'show-target' ]      = ( WE_LS_ALLOW_TARGET_WEIGHTS && true === ws_ls_to_bool( $chart_config[ 'show-target' ] ) );
 
 	// Line graphs only for non-pro
 	if ( false === WS_LS_IS_PRO ) {
@@ -94,8 +92,7 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 	// Target Weight
 	// ----------------------------------------------------------------------
 
-	if ( WE_LS_ALLOW_TARGET_WEIGHTS &&
-	     true === ws_ls_to_bool( $chart_config[ 'show-target' ] ) ) {
+	if ( true === $chart_config[ 'show-target' ] ) {
 
 		$chart_config[ 'target-weight' ] = ws_ls_target_get( $chart_config[ 'user-id' ] );
 
@@ -116,6 +113,8 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 			];
 
 			$chart_config[ 'target-weight' ] = $chart_config[ 'target-weight' ][ 'graph-value' ];
+		} else {
+			$chart_config[ 'show-target' ] = false;
 		}
 	}
 
@@ -125,7 +124,7 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 
 	if ( true === $chart_config[ 'show-meta-fields' ] ) {
 
-		$meta_dataset_index = 2; // Start at 2, as Weight: 0 and Target: 1
+		$meta_dataset_index = ( true === $chart_config[ 'show-target' ] ) ? 2 : 1; // Determine data set on whether or not a target weight has been displayed
 
 		for( $i = 0; $i < count( $chart_config[ 'meta-fields' ] ); $i++ ) {
 
@@ -158,7 +157,7 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 			$graph_data['datasets'][ DATA_WEIGHT ]['data'][] = $weight['graph_value'];
 
 			// Add target weight too
-			if ( false !== $chart_config['target-weight'] ) {
+			if ( false !== $chart_config[ 'show-target' ] ) {
 				$graph_data['datasets'][ DATA_TARGET ]['data'][] = $chart_config['target-weight'];
 			}
 
@@ -252,8 +251,7 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 			'fontFamily' => $chart_config[ 'font-config' ][ 'fontFamily' ]
 		]
 	];
-	print_R($graph_data );
-	print_R($graph_options );
+
 	wp_localize_script( 'jquery-chart-ws-ls', $chart_config['id'] . '_options', $graph_options );
 
 	return sprintf( '<div class="ws-ls-chart-container">
