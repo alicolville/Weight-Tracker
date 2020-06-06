@@ -187,6 +187,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 * Bug fix: Grid lines can now be toggled off for charts.
 * Bug fix: All text when on Widget settings is now translatable.
 * Bug fix: User search results were showing in correct weights.
+* Bug fix: Removed dead setting "Disable notifications from YeKen?".
 
 = 7.6.1 =
 

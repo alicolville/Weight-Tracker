@@ -278,16 +278,6 @@ function ws_ls_settings_page_generic() {
                                                         <p><?php echo __('If you wish to style the forms in your own way, you can use this option to disable WLT\'s style sheets.', WE_LS_SLUG)?></p>
                                                     </td>
                                                 </tr>
-                                                <tr>
-                                                    <th scope="row"><?php echo __( 'Disable notifications from YeKen?' , WE_LS_SLUG); ?></th>
-                                                    <td>
-                                                        <select id="ws-ls-disable-yeken-notifications" name="ws-ls-disable-yeken-notifications">
-                                                            <option value="no" <?php selected( get_option('ws-ls-disable-yeken-notifications'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
-                                                            <option value="yes" <?php selected( get_option('ws-ls-disable-yeken-notifications'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
-                                                        </select>
-                                                        <p><?php echo __('Occasionally YeKen likes to display simple notifications within your WordPress dashboard. Use this setting if you wish to disable them.', WE_LS_SLUG)?></p>
-                                                    </td>
-                                                </tr>
                                             </table>
 										</div>
 										<div>
@@ -924,7 +914,6 @@ function ws_ls_register_settings(){
     register_setting( 'we-ls-options-group', 'ws-ls-use-us-dates' );
     register_setting( 'we-ls-options-group', 'ws-ls-disable-css' );
 	register_setting( 'we-ls-options-group', 'ws-ls-axes-start-at-zero' );
-	register_setting( 'we-ls-options-group', 'ws-ls-disable-yeken-notifications' );
 	register_setting( 'we-ls-options-group', 'ws-ls-edit-permissions' );
     register_setting( 'we-ls-options-group', 'ws-ls-text-colour' );
     register_setting( 'we-ls-options-group', 'ws-ls-font-family' );
