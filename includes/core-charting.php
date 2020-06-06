@@ -79,13 +79,13 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 			$line_opacity = ws_ls_option( 'ws-ls-fill-under-weight-line-opacity', '0.5', true );
 
 			$graph_data[ 'datasets' ][ DATA_WEIGHT ][ 'fill' ]            = true;
-			$graph_data[ 'datasets' ][ DATA_WEIGHT ][ 'backgroundColor' ] = ws_ls_hex_to_rgb( $line_colour, $line_opacity );
+			$graph_data[ 'datasets' ][ DATA_WEIGHT ][ 'backgroundColor' ] = ws_ls_convert_hex_to_rgb( $line_colour, $line_opacity );
 		}
 
 	} else {
 
 		$graph_data[ 'datasets' ][ DATA_WEIGHT ][ 'fill' ]            = false;
-		$graph_data[ 'datasets' ][ DATA_WEIGHT ][ 'backgroundColor' ] = ws_ls_hex_to_rgb( $chart_config[ 'bar-weight-fill-color' ], 0.5 );
+		$graph_data[ 'datasets' ][ DATA_WEIGHT ][ 'backgroundColor' ] = ws_ls_convert_hex_to_rgb( $chart_config[ 'bar-weight-fill-color' ], 0.5 );
 		$graph_data[ 'datasets' ][ DATA_WEIGHT ][ 'borderWidth' ]     = 2;
 	}
 
@@ -109,7 +109,7 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 														'fill'              => false,
 														'type'              => 'line',
 														'data'              => [],
-														'backgroundColor'   => ws_ls_hex_to_rgb( $chart_config[ 'target-fill-color' ], 0.7 ),
+														'backgroundColor'   => ws_ls_convert_hex_to_rgb( $chart_config[ 'target-fill-color' ], 0.7 ),
 														'yAxisID'           => AXIS_WEIGHT_AND_TARGET
 			];
 
@@ -142,7 +142,7 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 																'type'              => 'line',
 																'data'              => [],
 																'spanGaps'          => true,
-																'backgroundColor'   => ws_ls_hex_to_rgb( $field[ 'plot_colour' ], 0.7 ),
+																'backgroundColor'   => ws_ls_convert_hex_to_rgb( $field[ 'plot_colour' ], 0.7 ),
 																'yAxisID'           => AXIS_META_FIELDS
 			];
 

@@ -50,7 +50,7 @@ function ws_ls_shortcode_progress_bar($user_defined_arguments) {
 		// Got a target weight?
 		if($arguments['target-weight'] = ws_ls_get_target_weight_in_kg()) {
 
-			$arguments['target-weight-display'] = ws_ls_convert_kg_into_relevant_weight_String($arguments['target-weight']);
+			$arguments['target-weight-display'] = ws_ls_convert_kg_into_relevant_weight_string($arguments['target-weight']);
 
 			// Latest weight
 			if($arguments['weight'] = ws_ls_get_recent_weight_in_kg()) {

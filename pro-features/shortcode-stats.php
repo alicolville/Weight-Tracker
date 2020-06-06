@@ -151,7 +151,7 @@ function ws_ls_shortcode_stats_display_value($stats, $arguments) {
 
 		switch ($stats['display-unit']) {
 			case 'pounds_only':
-				$stats['display-value'] .= ws_ls_to_lb($difference) .  __('lbs', WE_LS_SLUG);
+				$stats['display-value'] .= ws_ls_convert_kg_to_lb($difference) . __('lbs', WE_LS_SLUG);
 				break;
 			case 'stones_pounds':
 				$weight = ws_ls_to_stone_pounds($difference);

@@ -26,7 +26,7 @@ function ws_ls_fix_to_kg() {
 
 	foreach ($results as $result) {
 
-		$new_kg = ws_ls_to_kg( $result['weight_stones'], $result['weight_pounds'] );
+		$new_kg = ws_ls_convert_stones_pounds_to_kg( $result['weight_stones'], $result['weight_pounds'] );
 
 		if ( $new_kg <> $result['weight_weight']) {
 
@@ -46,7 +46,7 @@ function ws_ls_fix_to_kg() {
 
     foreach ($results as $result) {
 
-        $new_kg = ws_ls_to_kg( $result['target_weight_stones'], $result['target_weight_pounds'] );
+        $new_kg = ws_ls_convert_stones_pounds_to_kg( $result['target_weight_stones'], $result['target_weight_pounds'] );
 
         if ( $new_kg <> $result['target_weight_weight']) {
 

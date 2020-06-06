@@ -582,7 +582,7 @@
 
 		foreach ( $rows as &$row ) {
 			$row[ 'name' ] = ws_ls_render_link( ws_ls_groups_link_to_page( $row[ 'id' ] ) , $row[ 'name' ] );
-			$row[ 'weight_display' ] = ws_ls_convert_kg_into_relevant_weight_String( $row[ 'weight_difference' ], true );
+			$row[ 'weight_display' ] = ws_ls_convert_kg_into_relevant_weight_string( $row[ 'weight_difference' ], true );
 			$row[ 'count' ] = ws_ls_groups_count( $row[ 'id' ] );
 		}
 
@@ -726,7 +726,7 @@
 			$difference = ws_ls_groups_get( $arguments['id'] );
 
 			if ( false === empty( $difference[ 'weight_difference' ] ) ) {
-				return ws_ls_convert_kg_into_relevant_weight_String( $difference[ 'weight_difference' ], true );
+				return ws_ls_convert_kg_into_relevant_weight_string( $difference[ 'weight_difference' ], true );
 			}
 		}
 

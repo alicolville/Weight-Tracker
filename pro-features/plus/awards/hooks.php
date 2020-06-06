@@ -307,7 +307,7 @@
 			for ( $i = 0 ; $i < count( $awards ) ; $i++ ) {
 
 				if ( 'weight' === $awards[ $i ][ 'category' ] ) {
-					$awards[ $i ][ 'value' ] = ws_ls_convert_kg_into_relevant_weight_String( $awards[ $i ][ 'value' ] );
+					$awards[ $i ][ 'value' ] = ws_ls_convert_kg_into_relevant_weight_string( $awards[ $i ][ 'value' ] );
 				} else if ( 'weight-percentage' === $awards[ $i ][ 'category' ]  ) {
 					$awards[ $i ][ 'value' ] = $awards[ $i ][ 'value' ] . '%';
 				} else if ( 'bmi-equals' === $awards[ $i ][ 'category' ]  ) {

@@ -55,20 +55,20 @@ function ws_ls_weight_object($user_id, $kg, $pounds, $stones, $pounds_only, $not
     {
 		switch (ws_ls_get_config('WE_LS_DATA_UNITS', $user_id )) {
     		case 'pounds_only':
-    			$weight['kg'] = ws_ls_pounds_to_kg($weight['only_pounds']);
-            	$conversion = ws_ls_pounds_to_stone_pounds($weight['only_pounds']);
+    			$weight['kg'] = ws_ls_convert_pounds_to_kg($weight['only_pounds']);
+            	$conversion = ws_ls_convert_pounds_to_stone_pounds($weight['only_pounds']);
 	            $weight['stones'] = $conversion['stones'];
             	$weight['pounds'] = $conversion['pounds'];
             	break;
     		case 'kg':
-    			$weight['only_pounds'] = ws_ls_to_lb($weight['kg']);
+    			$weight['only_pounds'] = ws_ls_convert_kg_to_lb($weight['kg']);
             	$conversion = ws_ls_to_stone_pounds($weight['kg']);
             	$weight['stones'] = $conversion['stones'];
             	$weight['pounds'] = $conversion['pounds'];
     			break;
     		default:
-    			$weight['kg'] = ws_ls_to_kg($weight['stones'], $weight['pounds']);
-              	$weight['only_pounds'] = ws_ls_stones_pounds_to_pounds_only($weight['stones'], $weight['pounds']);
+    			$weight['kg'] = ws_ls_convert_stones_pounds_to_kg($weight['stones'], $weight['pounds']);
+              	$weight['only_pounds'] = ws_ls_convert_stones_pounds_to_pounds($weight['stones'], $weight['pounds']);
     			break;
     	}
     }
@@ -122,7 +122,7 @@ function ws_ls_weight_object($user_id, $kg, $pounds, $stones, $pounds_only, $not
 		$weight['difference_from_start_kg'] = $weight['kg'] - $weight['first_weight'];
 	  	$weight['difference_from_start'] = (($weight['difference_from_start_kg']) / $weight['first_weight']) * 100;
       	$weight['difference_from_start'] = round($weight['difference_from_start']);
-		$weight['difference_from_start_display'] = ws_ls_convert_kg_into_relevant_weight_String($weight['difference_from_start_kg'], true);
+		$weight['difference_from_start_display'] = ws_ls_convert_kg_into_relevant_weight_string($weight['difference_from_start_kg'], true);
     }
 
     // Get user display name

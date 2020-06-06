@@ -92,7 +92,7 @@ function ws_ls_gravity_forms_process( $entry, $form ) {
 
         $weight['kg'] = $matched_fields['wlt-kg'];
 
-        $weight['only_pounds'] = ws_ls_to_lb( $weight['kg'] );
+        $weight['only_pounds'] = ws_ls_convert_kg_to_lb( $weight['kg'] );
 
         $conversion = ws_ls_to_stone_pounds( $weight['kg'] );
         $weight['stones'] = $conversion['stones'];
@@ -105,14 +105,14 @@ function ws_ls_gravity_forms_process( $entry, $form ) {
         $weight['stones'] = $matched_fields[ $prefix . 'stones' ];
         $weight['pounds'] = $matched_fields[ $prefix . 'pounds' ];
 
-        $weight['kg'] = ws_ls_to_kg( $weight['stones'], $weight['pounds'] );
-        $weight['only_pounds'] = ws_ls_stones_pounds_to_pounds_only( $weight['stones'], $weight['pounds'] );
+        $weight['kg'] = ws_ls_convert_stones_pounds_to_kg( $weight['stones'], $weight['pounds'] );
+        $weight['only_pounds'] = ws_ls_convert_stones_pounds_to_pounds( $weight['stones'], $weight['pounds'] );
 
 	} elseif ( array_key_exists( $prefix . 'pounds', $matched_fields ) && is_numeric( $matched_fields[ $prefix . 'pounds' ] ) ) {
 
-        $weight['kg'] = ws_ls_pounds_to_kg( $matched_fields[ $prefix . 'pounds' ] );
+        $weight['kg'] = ws_ls_convert_pounds_to_kg( $matched_fields[ $prefix . 'pounds' ] );
 
-        $conversion = ws_ls_pounds_to_stone_pounds( $matched_fields[ $prefix . 'pounds' ] );
+        $conversion = ws_ls_convert_pounds_to_stone_pounds( $matched_fields[ $prefix . 'pounds' ] );
         $weight['stones'] = $conversion[ 'stones' ];
         $weight['pounds'] = $conversion[ 'pounds' ];
 

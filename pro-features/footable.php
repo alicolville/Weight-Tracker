@@ -115,10 +115,10 @@ function ws_ls_data_table_get_rows($user_id = false, $max_entries = false,
 
                         if ($data['kg'] > $previous_user_weight[$data['user_id']]) {
                             $gain_class = 'gain';
-                            $gain_loss = ws_ls_convert_kg_into_relevant_weight_String($data['kg'] - $previous_user_weight[$data['user_id']], true, $convert_weight_format);
+                            $gain_loss = ws_ls_convert_kg_into_relevant_weight_string( $data['kg'] - $previous_user_weight[$data['user_id']], true, $convert_weight_format);
                         } elseif ($data['kg'] < $previous_user_weight[$data['user_id']]) {
                             $gain_class = 'loss';
-                            $gain_loss = ws_ls_convert_kg_into_relevant_weight_String($data['kg'] - $previous_user_weight[$data['user_id']], true, $convert_weight_format);
+                            $gain_loss = ws_ls_convert_kg_into_relevant_weight_string( $data['kg'] - $previous_user_weight[$data['user_id']], true, $convert_weight_format);
                         } elseif ($data['kg'] == $previous_user_weight[$data['user_id']]) {
                             $gain_class = 'same';
                         }
@@ -143,7 +143,7 @@ function ws_ls_data_table_get_rows($user_id = false, $max_entries = false,
                         case 'kg':
                             $row[$column_name]['options']['sortValue'] = $data['kg'];
                             $row[$column_name]['options']['classes'] = ws_ls_blur();
-                            $row[$column_name]['value'] = ws_ls_blur_text(  ws_ls_convert_kg_into_relevant_weight_String($data['kg'] , false, $convert_weight_format) );
+                            $row[$column_name]['value'] = ws_ls_blur_text(  ws_ls_convert_kg_into_relevant_weight_string($data['kg'] , false, $convert_weight_format) );
                             break;
                         case 'user_nicename':
                             $row[$column_name]['options']['sortValue'] = $data['user_nicename'];
