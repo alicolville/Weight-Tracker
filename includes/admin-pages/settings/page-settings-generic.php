@@ -108,7 +108,7 @@ function ws_ls_settings_page_generic() {
 																<option value="stones_pounds" <?php selected( get_option('ws-ls-units'), 'stones_pounds' ); ?>><?php echo __('Stones & Pounds', WE_LS_SLUG); ?></option>
 																<option value="pounds_only" <?php selected( get_option('ws-ls-units'), 'pounds_only' ); ?>><?php echo __('Pounds', WE_LS_SLUG); ?></option>
 															</select>
-															<p><?php echo __('You can specify whether to display weights in Kg, Stones & Pounds or just Pounds. Please note: The graph will be displayed in Pounds if "Stones & Pounds" is selected.', WE_LS_SLUG);?></p>
+															<p><?php echo __('You can specify whether to display weights in Kg, Stones & Pounds or just Pounds. Please note: The chart will be displayed in Pounds if "Stones & Pounds" is selected.', WE_LS_SLUG);?></p>
 														</td>
 													</tr>
 													<tr>
@@ -617,7 +617,7 @@ function ws_ls_settings_page_generic() {
 														</td>
 													</tr>
 													<tr  class="<?php echo $disable_if_not_pro_class; ?>">
-														<th scope="row"><?php echo __( 'Maximum points per graph', WE_LS_SLUG ); ?></th>
+														<th scope="row"><?php echo __( 'Maximum points per chart', WE_LS_SLUG ); ?></th>
 														<td>
 															<?php
 
@@ -638,14 +638,14 @@ function ws_ls_settings_page_generic() {
 													<th scope="row"><?php echo __( 'Weight colour', WE_LS_SLUG ); ?></th>
 													<td>
 														<input id="ws-ls-line-colour" name="ws-ls-line-colour" type="color" value="<?php echo esc_attr( get_option( 'ws-ls-line-colour', '#aeaeae' ) ); ?>">
-														<p><?php echo __('If enabled, enter a HEX colour code to use for the Weight history line / bar border on graph.', WE_LS_SLUG); ?></p>
+														<p><?php echo __('If enabled, enter a HEX colour code to use for the Weight history line / bar border on chart.', WE_LS_SLUG); ?></p>
 													</td>
 												</tr>
 												<tr>
 													<th scope="row"><?php echo __( 'Target line colour', WE_LS_SLUG ); ?></th>
 													<td>
 														<input id="ws-ls-target-colour" name="ws-ls-target-colour" type="color" value="<?php echo esc_attr( get_option( 'ws-ls-target-colour', '#76bada' ) ); ?>">
-														<p><?php echo __('If enabled, enter a HEX colour code to use for the Target line on graph.', WE_LS_SLUG); ?></p>
+														<p><?php echo __('If enabled, enter a HEX colour code to use for the Target line on chart.', WE_LS_SLUG); ?></p>
 													</td>
 												</tr>
 												<tr >
@@ -671,7 +671,7 @@ function ws_ls_settings_page_generic() {
                                                     <th scope="row"><?php echo __( 'Text colour', WE_LS_SLUG ); ?></th>
                                                     <td>
                                                         <input id="ws-ls-text-colour" name="ws-ls-text-colour" type="color" value="<?php echo esc_attr( $text_colour ); ?>">
-                                                        <p><?php echo __('Enter a HEX colour code to use for text displayed on the graph.', WE_LS_SLUG); ?></p>
+                                                        <p><?php echo __('Enter a HEX colour code to use for text displayed on the chart.', WE_LS_SLUG); ?></p>
                                                     </td>
                                                 </tr>
 												<?php
@@ -682,7 +682,7 @@ function ws_ls_settings_page_generic() {
                                                     <th scope="row"><?php echo __( 'Font Family', WE_LS_SLUG ); ?></th>
                                                     <td>
                                                         <input id="ws-ls-font-family" name="ws-ls-font-family" type="text" maxlength="80" class="large-text" value="<?php echo esc_attr( $font_family ); ?>">
-                                                        <p><?php echo __('Specify one or more fonts that should be used when rendering text on the graph. Separate multiple fonts with a comma. Leave blank to use the default.', WE_LS_SLUG); ?></p>
+                                                        <p><?php echo __('Specify one or more fonts that should be used when rendering text on the chart. Separate multiple fonts with a comma. Leave blank to use the default.', WE_LS_SLUG); ?></p>
                                                     </td>
                                                 </tr>
 												<tr>
@@ -702,11 +702,11 @@ function ws_ls_settings_page_generic() {
 															<option value="yes" <?php selected( $bezier_curve, 'yes' ); ?>><?php echo __( 'Yes', WE_LS_SLUG ); ?></option>
 															<option value="no" <?php selected( $bezier_curve, 'no' ); ?>><?php echo __( 'No', WE_LS_SLUG ); ?></option>
 														</select>
-														<p><?php echo __('If enabled, lines between points on a line graph will be curved', WE_LS_SLUG); ?></p>
+														<p><?php echo __('If enabled, lines between points on a line chart will be curved', WE_LS_SLUG); ?></p>
 													</td>
 												</tr>
 												<tr  class="<?php echo $disable_if_not_pro_class; ?>">
-													<th scope="row"><?php echo __( 'Display points on graph?', WE_LS_SLUG ); ?></th>
+													<th scope="row"><?php echo __( 'Display points on chart?', WE_LS_SLUG ); ?></th>
 													<td>
 														<?php
 															$allow_points = get_option( 'ws-ls-allow-points', 'yes' );
@@ -715,7 +715,7 @@ function ws_ls_settings_page_generic() {
 															<option value="yes" <?php selected( $allow_points, 'yes' ); ?>><?php echo __( 'Yes', WE_LS_SLUG ); ?></option>
 															<option value="no" <?php selected( $allow_points, 'no' ); ?>><?php echo __( 'No', WE_LS_SLUG ); ?></option>
 														</select>
-														<p><?php echo __('If enabled, "Allows points and labels to be displayed on graph.', WE_LS_SLUG); ?></p>
+														<p><?php echo __('If enabled, data points shall be drawn on the chart.', WE_LS_SLUG); ?></p>
 													</td>
 												</tr>
 												<tr  class="<?php echo $disable_if_not_pro_class; ?>">
@@ -785,7 +785,7 @@ function ws_ls_settings_page_generic() {
 													<th scope="row"><?php echo __( 'Weight fill colour?', WE_LS_SLUG ); ?></th>
 													<td>
 														<input id="ws-ls-line-fill-colour" name="ws-ls-line-fill-colour" type="color" value="<?php echo esc_attr( get_option( 'ws-ls-line-fill-colour', '#f9f9f9' ) ); ?>">
-														<p><?php echo __('If enabled, enter a HEX colour code to use for filling the Weight bars on the graph.', WE_LS_SLUG); ?></p>
+														<p><?php echo __('If enabled, enter a HEX colour code to use for filling the Weight bars on the chart.', WE_LS_SLUG); ?></p>
 													</td>
 												</tr>
 											</table>
