@@ -183,6 +183,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 * Improvement: Only required JS libraries are included for charts when needed.
 * Bug fix: Cache now invalidated correctly when updating meta fields.
 * Bug fix: Grid lines can now be toggled off for charts.
+* Bug fix: All text when on Widget settings is now translatable.
 
 = 7.6.1 =
 
