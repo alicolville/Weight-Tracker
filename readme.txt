@@ -886,7 +886,7 @@ Bug fix: Use defined() instead of empty() to check for a empty constant.
 
 * Updated Dutch translations (thanks @Robin)
 * Updated Italian translations (thanks @Salvo)
-* Bug fix: Deal with negative numbers in ws_ls_pounds_to_stone_pounds() and ws_ls_to_stone_pounds() - Thanks (@GatorDev)
+* Bug fix: Deal with negative numbers in ws_ls_pounds_to_stone_pounds() and ws_ls_convert_kg_to_stone_pounds() - Thanks (@GatorDev)
 
 = 4.1.8 =
 
@@ -1192,7 +1192,7 @@ BUG FIX: Previous release broke the "Delete all data" button on admin page. Fixe
   - Romanian
   - French
 * Minor tweaks to conversions between stones / pounds
-* Corrected ws_ls_to_stone_pounds to calculate pounds correctly
+* Corrected ws_ls_convert_kg_to_stone_pounds to calculate pounds correctly
 * [weightloss_weight_difference] corrected to display pounds
 * Small bug fixes
 

@@ -94,7 +94,7 @@ function ws_ls_gravity_forms_process( $entry, $form ) {
 
         $weight['only_pounds'] = ws_ls_convert_kg_to_lb( $weight['kg'] );
 
-        $conversion = ws_ls_to_stone_pounds( $weight['kg'] );
+        $conversion = ws_ls_convert_kg_to_stone_pounds( $weight['kg'] );
         $weight['stones'] = $conversion['stones'];
         $weight['pounds'] = $conversion['pounds'];
 

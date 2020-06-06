@@ -317,7 +317,7 @@ function we_ls_format_weight_into_correct_string_format( $weight, $comparison = 
 
         } else {
 
-		    $weight_data = ws_ls_to_stone_pounds( $weight );
+		    $weight_data = ws_ls_convert_kg_to_stone_pounds( $weight );
 
 			if ( $comparison ) {
 				return ws_ls_format_stones_pound_for_comparison_display( $weight_data );

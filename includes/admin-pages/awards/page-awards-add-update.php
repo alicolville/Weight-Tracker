@@ -165,7 +165,7 @@ function ws_ls_awards_add_update_page() {
                                                                $weight['pounds'] = $award['pounds'];
                                                            } elseif ( false === empty( $award['value'] ) ) {
 
-                                                               $conversion = ws_ls_to_stone_pounds( $award['value'] );
+                                                               $conversion = ws_ls_convert_kg_to_stone_pounds( $award['value'] );
                                                                $weight['stones'] = $conversion['stones'];
                                                                $weight['pounds'] = $conversion['pounds'];
                                                            }
