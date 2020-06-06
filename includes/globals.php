@@ -57,18 +57,10 @@
 		'WE_LS_DATA_UNITS' => 'kg',
 		'WE_LS_IMPERIAL_WEIGHTS' => false,
 		'WE_LS_ALLOW_TARGET_WEIGHTS' => true,
-		'WE_LS_ALLOW_POINTS' => true,
 		'WE_LS_CSS_ENABLED' => true,
-		'WE_LS_WEIGHT_FILL_LINE_ENABLED' => false,
-		'WE_LS_WEIGHT_FILL_LINE_OPACITY' => '0.5',
-        'WE_LS_WEIGHT_FILL_LINE_COLOUR' => '#aeaeae',
-        'WE_LS_FONT_FAMILY' => '',
-        'WE_LS_TEXT_COLOUR' => '#AEAEAE',
 		'WE_LS_US_DATE' => false,
 		'WS_LS_ADVANCED_TABLES' => true,
 		'WE_LS_CHART_MAX_POINTS' => 25,
-		'WE_LS_CHART_BEZIER_CURVE' => true,
-		'WE_LS_CHART_POINT_SIZE' => 3,
 		'WE_LS_DISPLAY_BMI_IN_TABLES' => false,
 		'WE_LS_AXES_START_AT_ZERO' => false,
 		'WE_LS_ALLOW_STATS' => false,
@@ -122,41 +114,7 @@
 	if (WS_LS_IS_PRO && get_option('ws-ls-max-points')){
 		$globals['WE_LS_CHART_MAX_POINTS'] = get_option('ws-ls-max-points');
 	}
-	// -----------------------------------------------------------------------------------
-	// Point Size
-	// -----------------------------------------------------------------------------------
-	if (WS_LS_IS_PRO && get_option('ws-ls-point-size')){
-		$globals['WE_LS_CHART_POINT_SIZE'] = get_option('ws-ls-point-size');
-	}
-	// -----------------------------------------------------------------------------------
-	// Weight Fill Colour
-	// -----------------------------------------------------------------------------------
-	if (WS_LS_IS_PRO) {
 
-		if ( 'yes' ==  get_option('ws-ls-fill-under-weight-line') ) {
-			$globals['WE_LS_WEIGHT_FILL_LINE_ENABLED'] = true;
-		}
-
-		$line_colour = get_option('ws-ls-fill-under-weight-line-colour');
-
-		if ( false === empty($line_colour) ) {
-			$globals['WE_LS_WEIGHT_FILL_LINE_COLOUR'] = $line_colour;
-		}
-
-		$opacity = get_option('ws-ls-fill-under-weight-line-opacity');
-
-		if ( false === empty($opacity) ) {
-			$globals['WE_LS_WEIGHT_FILL_LINE_OPACITY'] = $opacity;
-		}
-
-	}
-
-	// -----------------------------------------------------------------------------------
-	// Bezier Curve
-	// -----------------------------------------------------------------------------------
-	if (WS_LS_IS_PRO && 'no' == get_option('ws-ls-bezier-curve')){
-		$globals['WE_LS_CHART_BEZIER_CURVE'] = false;
-	}
 	// -----------------------------------------------------------------------------------
 	// Who can view / edit user data
 	// -----------------------------------------------------------------------------------
@@ -179,12 +137,6 @@
 		$globals['WE_LS_ALLOW_TARGET_WEIGHTS'] = false;
 	}
 	// -----------------------------------------------------------------------------------
-	// Plot points on graph?
-	// -----------------------------------------------------------------------------------
-	if ('no' == get_option('ws-ls-allow-points')) {
-		$globals['WE_LS_ALLOW_POINTS'] = false;
-	}
-	// -----------------------------------------------------------------------------------
 	// Disable plugin CSS
 	// -----------------------------------------------------------------------------------
 	if ('yes' == get_option('ws-ls-disable-css')) {
@@ -196,16 +148,6 @@
 	if (WS_LS_IS_PRO && ('yes' == get_option('ws-ls-display-bmi-in-tables') || false == get_option('ws-ls-display-bmi-in-tables'))) {
 		$globals['WE_LS_DISPLAY_BMI_IN_TABLES'] = true;
 	}
-	// -----------------------------------------------------------------------------------
-	// Chart Colours
-	// -----------------------------------------------------------------------------------
-
-	if (get_option('ws-ls-text-colour')) {
-        $globals['WE_LS_TEXT_COLOUR'] = get_option('ws-ls-text-colour');
-    }
-    if (get_option('ws-ls-font-family')) {
-        $globals['WE_LS_FONT_FAMILY'] = get_option('ws-ls-font-family');
-    }
 
 	// -----------------------------------------------------------------------------------
 	// Email Notifications

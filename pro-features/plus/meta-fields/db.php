@@ -16,7 +16,7 @@ function ws_ls_meta( $entry_id ) {
     $cache_key = 'entry-id-data-' . $entry_id;
 
     if ( $cache = ws_ls_cache_user_get( 'meta-fields', $cache_key ) ) {
-        return $cache;
+    	return $cache;
     }
 
 	$sql = $wpdb->prepare( 'Select * from ' . $wpdb->prefix . WE_LS_MYSQL_META_ENTRY . ' where entry_id = %d', $entry_id );
@@ -213,7 +213,7 @@ function ws_ls_meta_fields_plottable() {
 		return ! empty( $field[ 'plot_on_graph' ] );
 	});
 
-	return $fields;
+	return array_values( $fields );
 }
 
 /**

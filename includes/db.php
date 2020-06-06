@@ -3,7 +3,11 @@ defined('ABSPATH') or die("Jog on!");
 
 /* All DB related logic here! */
 
-/* Load target data for logged in user */
+/* Load target data for logged in user
+
+DEPRECATED: REPLACE WITH ws_ls_target_get() ( underlying ws_ls_db_target_get )
+
+*/
 function ws_ls_get_user_target($user_id) {
 
     global $wpdb;
@@ -27,7 +31,7 @@ function ws_ls_get_user_target($user_id) {
             $target_weight = ws_ls_weight_object($user_id, $row->target_weight_weight, $row->target_weight_pounds, $row->target_weight_stones, $row->target_weight_only_pounds);
 
 			// Clear all cache for this user
-			ws_ls_delete_cache_for_given_user($user_id);
+		//	ws_ls_delete_cache_for_given_user($user_id);
 
             // Store in cache
             ws_ls_set_cache($cache_key, $target_weight);
@@ -36,6 +40,28 @@ function ws_ls_get_user_target($user_id) {
     }
 
   return false;
+}
+
+/**
+ * Return the user's target weight in Kg
+ * @param $user_id
+ * @return string|null
+ */
+function ws_ls_db_target_get( $user_id ) {
+
+	global $wpdb;
+
+	// Cached?
+	if ( $cache = ws_ls_cache_user_get( $user_id, 'target-kg' ) ) {
+		return $cache;
+	}
+
+	$sql 	= $wpdb->prepare('SELECT target_weight_weight as kg FROM ' . $wpdb->prefix . WE_LS_TARGETS_TABLENAME . ' where weight_user_id = %d ', $user_id );
+	$kg 	= $wpdb->get_var( $sql );
+
+	ws_ls_cache_user_set( $user_id, 'target-kg', $kg );
+
+	return $kg;
 }
 
 /* Fetch weight data for given user */
@@ -498,7 +524,7 @@ function ws_ls_set_user_preference_simple( $field, $value, $user_id = NULL ) {
     $user_id = $user_id ?: get_current_user_id();
 
     // Check for existing settings for this user, if none, then we need to insert the settings row
-    if ( true === empty( ws_ls_get_user_preferences( $user_id ) ) ) {
+    if ( true === empty( ws_ls_user_preferences_get( $user_id ) ) ) {
         return ws_ls_set_user_preference( $field, $value, $user_id );
     }
 
@@ -559,40 +585,38 @@ function ws_ls_user_preferences_get_formats( $db_fields ) {
     return $formats;
 }
 
-function ws_ls_get_user_preferences($user_id = false, $use_cache = true)
-{
-  global $wpdb;
+/**
+ * Fetch user preferences
+ * @param null $user_id
+ * @param bool $use_cache
+ * @return array|mixed|string|null
+ */
+function ws_ls_user_preferences_get( $user_id = NULL, $use_cache = true ) {
 
-  if(false == $user_id){
-    $user_id = get_current_user_id();
-  }
+  	$user_id = ( NULL === $user_id ) ? get_current_user_id() : $user_id;
 
-  $table_name = $wpdb->prefix . WE_LS_USER_PREFERENCES_TABLENAME;
+	// Cached?
+	if ( true === $use_cache &&
+			$cache = ws_ls_cache_user_get( $user_id, 'preferences' ) ) {
+		return $cache;
+	}
 
-  $cache_key = $user_id . '-' . WE_LS_CACHE_KEY_USER_PREFERENCE;
-  $cache = ws_ls_get_cache($cache_key);
+	global $wpdb;
 
-  // Return cache if found!
-  if (is_array($cache) && true == $use_cache)   {
-      return $cache;
-  }
+  	$sql 		= $wpdb->prepare('SELECT settings FROM ' . $wpdb->prefix . WE_LS_USER_PREFERENCES_TABLENAME . ' WHERE user_id = %d' , $user_id );
+  	$settings 	= $wpdb->get_var( $sql );
 
-  $sql =  $wpdb->prepare('SELECT settings FROM ' . $table_name . ' WHERE user_id = %d', $user_id);
-  $row = $wpdb->get_row($sql);
+	if ( false === empty( $settings ) ) {
+		$settings = json_decode( $settings, true );
+	}
 
-  $settings = false;
+	if ( false === is_array( $settings ) ) {
+		$settings = [ 'empty' => true ];	// This is a little hack, if we have no settings for this user, store an empty flag so caching works for DB lookup
+	}
 
-  if (!is_null($row)) {
-    $settings = json_decode($row->settings, true);
-  }
+	ws_ls_cache_user_set( $user_id, 'preferences', $settings );
 
-  if (!is_array($settings))  {
-    $settings = array();
-  }
-
-  ws_ls_set_cache($cache_key, $settings);
-
-  return $settings;
+	return $settings;
 }
 
 /**
@@ -708,7 +732,7 @@ function ws_ls_set_user_height($height, $user_id = false)
   // Build array of fields to pass to DB
   $db_fields['user_id'] = $user_id;
   $db_fields['height'] = $height;
-  $db_fields['settings'] = json_encode(ws_ls_get_user_preferences($user_id, false));
+  $db_fields['settings'] = json_encode(ws_ls_user_preferences_get($user_id, false));
 
   // Set data types
   $db_field_types = array('%d','%d','%s');

@@ -77,9 +77,7 @@
                 if ( (int) $meta_field_id === (int) $entry[ 'meta_field_id' ] ) {
                     return $entry[ 'value' ];
                 }
-
             }
-
         }
 
         return NULL;

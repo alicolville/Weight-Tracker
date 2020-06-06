@@ -1,7 +1,10 @@
 <?php
 defined('ABSPATH') or die("Jog on!");
 
-define('WE_LS_CACHE_TIME', 15 * MINUTE_IN_SECONDS);
+define( 'WE_LS_CACHE_ENABLED', 'yes' === get_option( 'ws-ls-caching', 'yes' ) );
+define( 'WE_LS_CACHE_TIME', 15 * MINUTE_IN_SECONDS);
+
+// TODO: Get rid of all these!
 define('WE_LS_CACHE_KEY_TARGET', 'target-data');
 define('WE_LS_CACHE_KEY_DATA', 'weight-data');
 define('WE_LS_CACHE_KEY_MIN_MAX_DATES', 'min-max-dates');
@@ -29,7 +32,7 @@ define('WE_LS_CACHE_ADMIN_USER_DATA', 'admin-user-data');
  * @return bool
  */
 function ws_ls_cache_is_enabled() {
-	return ! ( 'no' === get_option( 'ws-ls-caching' ) );
+	return WE_LS_CACHE_ENABLED;
 }
 
 /**
@@ -40,47 +43,46 @@ function ws_ls_cache_is_enabled() {
  * @param $key
  * @return null
  */
-function ws_ls_cache_user_get($user_id, $key) {
+function ws_ls_cache_user_get( $user_id, $key ) {
 
-	$user_cache = ws_ls_get_cache($user_id);
+	$user_cache = ws_ls_get_cache( $user_id );
 
-	if ( true === is_array($user_cache) && true === isset($user_cache[$key]) ) {
-		return $user_cache[$key];
-	}
-
-	return NULL;
+	return ( true === is_array( $user_cache ) && true === isset( $user_cache[ $key ] ) ) ?
+		 $user_cache[ $key ] :
+			NULL;
 }
 
-function ws_ls_cache_user_get_all($user_id) {
+/**
+ * Return all cache for the given user
+ * @param $user_id
+ * @return array|bool|mixed|null
+ */
+function ws_ls_cache_user_get_all( $user_id ) {
 
-	$user_cache = ws_ls_get_cache($user_id);
+	$user_cache = ws_ls_get_cache( $user_id) ;
 
-	if ( true === is_array($user_cache)) {
-		return $user_cache;
-	}
-
-	return NULL;
+	return ( true === is_array( $user_cache ) ) ? $user_cache : NULL;
 }
 
-function ws_ls_cache_user_set($user_id, $key, $value, $time_to_expire = WE_LS_CACHE_TIME ) {
+/**
+ * Cache for user
+ * @param $user_id
+ * @param $key
+ * @param $value
+ * @param float|int $time_to_expire
+ */
+function ws_ls_cache_user_set( $user_id, $key, $value, $time_to_expire = WE_LS_CACHE_TIME ) {
 
-	$user_cache = ws_ls_get_cache($user_id);
+	$user_cache = ws_ls_get_cache( $user_id );
 
 	// Empty cache? Create array
-	if ( false === is_array($user_cache)) {
+	if ( false === is_array( $user_cache ) ) {
 		$user_cache = [];
 	}
 
-	if ( false === empty($key) ) {
+	$user_cache[ $key ] = $value;
 
-		$user_cache[$key] = $value;
-
-		ws_ls_set_cache( $user_id, $user_cache, $time_to_expire );
-
-		return true;
-	}
-
-	return false;
+	ws_ls_set_cache( $user_id, $user_cache, $time_to_expire );
 }
 
 function ws_ls_cache_user_delete($user_id) {
@@ -89,37 +91,50 @@ function ws_ls_cache_user_delete($user_id) {
 
 
 // ----------------------------------------------------------------
-// Generic caching (replace with above)
+// Generic caching
 // ----------------------------------------------------------------
 
+/**
+ * Fetch Cache
+ * @param $key
+ * @return bool|mixed
+ */
+function ws_ls_get_cache( $key ) {
 
-function ws_ls_get_cache($key) {
-
-    if( true === ws_ls_cache_is_enabled() ) {
-        $key = ws_ls_generate_cache_key($key);
-        return get_transient($key);
+    if( true === WE_LS_CACHE_ENABLED ) {
+        $key = ws_ls_generate_cache_key( $key );
+        return get_transient( $key );
     }
 
     return false;
 }
 
-function ws_ls_set_cache($key, $data, $time_to_expire = WE_LS_CACHE_TIME) {
+/**
+ * Set Cache
+ * @param $key
+ * @param $data
+ * @param float|int $time_to_expire
+ * @return bool
+ */
+function ws_ls_set_cache( $key, $data, $time_to_expire = WE_LS_CACHE_TIME ) {
 
-    if( true === ws_ls_cache_is_enabled() ) {
-      $key = ws_ls_generate_cache_key($key);
-      set_transient($key, $data, $time_to_expire);
+    if( true === WE_LS_CACHE_ENABLED ) {
+      $key = ws_ls_generate_cache_key( $key );
+      set_transient( $key, $data, $time_to_expire );
     }
 
     return false;
 }
 
-function ws_ls_delete_cache($key){
+/**
+ * Delete cache key
+ * @param $key
+ * @return bool
+ */
+function ws_ls_delete_cache( $key ){
 
-    if( true === ws_ls_cache_is_enabled() ) {
-      $key = ws_ls_generate_cache_key($key);
-      return delete_transient($key);
-    }
-    return false;
+	$key = ws_ls_generate_cache_key($key);
+	return delete_transient($key);
 }
 
 /**
@@ -141,7 +156,7 @@ function ws_ls_delete_cache_for_given_user($user_id = false)
 {
   	global $wpdb;
 
-  	if ( true === ws_ls_cache_is_enabled() ){
+  	if ( true === WE_LS_CACHE_ENABLED ){
 
 		if (false == $user_id)  {
 		  $user_id = get_current_user_id();
@@ -196,7 +211,7 @@ function ws_ls_delete_all_cache()
 {
   global $wpdb;
 
-  if ( true === ws_ls_cache_is_enabled() ){
+  if ( true === WE_LS_CACHE_ENABLED ){
 
     $sql = "Delete FROM  $wpdb->options
             WHERE option_name LIKE '%transient_" . WE_LS_SLUG ."%'";

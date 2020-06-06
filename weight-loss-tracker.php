@@ -77,6 +77,7 @@ defined('ABSPATH') or die('Jog on!');
         'includes/functions.php',
         'includes/converters.php',
         'includes/core.php',
+		'includes/core-charting.php',
         'includes/ajax-handler.php',
         'includes/setup-wizard.php',
         'includes/shortcode-weight-loss-tracker.php',
@@ -192,3 +193,19 @@ defined('ABSPATH') or die('Jog on!');
     }
     add_action('plugins_loaded', 'ws_ls_load_textdomain');
 
+
+    function t() {
+		ws_ls_user_preferences_get(1);
+
+    	$t = ws_ls_weight_display( 1234 );
+    	print_r($t);
+
+
+		$t = ws_ls_weight_display( 561 );
+		print_r($t);
+	//ws_ls_cache_user_delete(1);
+		print_r( ws_ls_cache_user_get_all( 1 ) );
+
+		die;
+	}
+	//add_action('init', 't');

@@ -597,11 +597,9 @@ function ws_ls_settings_page_generic() {
 													?>
 													<td>
 														<select id="ws-ls-chart-type" name="ws-ls-chart-type">
-															<option value="line" <?php selected( $chart_type, 'line' ); ?>><?php echo __('Line Chart', WE_LS_SLUG)?> - (<?php echo __('Highly Recommended', WE_LS_SLUG)?>)</option>
+															<option value="line" <?php selected( $chart_type, 'line' ); ?>><?php echo __('Line Chart', WE_LS_SLUG)?> - (<?php echo __('Recommended', WE_LS_SLUG)?>)</option>
 															<option value="bar" <?php selected( $chart_type, 'bar' ); ?>><?php echo __('Bar Chart', WE_LS_SLUG)?></option>
-
 														</select>
-														<p><?php echo __('If enabled, "Allows points and labels to be displayed on graph. <strong>Note: If using custom fields</strong>, graph type will be forced to Line.', WE_LS_SLUG); ?></p>
 													</td>
 												</tr>
 
@@ -633,10 +631,17 @@ function ws_ls_settings_page_generic() {
 													</tr >
 
 												<tr>
-													<th scope="row"><?php echo __( 'Weight colour?', WE_LS_SLUG ); ?></th>
+													<th scope="row"><?php echo __( 'Weight colour', WE_LS_SLUG ); ?></th>
 													<td>
 														<input id="ws-ls-line-colour" name="ws-ls-line-colour" type="color" value="<?php echo esc_attr( get_option( 'ws-ls-line-colour', '#aeaeae' ) ); ?>">
 														<p><?php echo __('If enabled, enter a HEX colour code to use for the Weight history line / bar border on graph.', WE_LS_SLUG); ?></p>
+													</td>
+												</tr>
+												<tr>
+													<th scope="row"><?php echo __( 'Target line colour', WE_LS_SLUG ); ?></th>
+													<td>
+														<input id="ws-ls-target-colour" name="ws-ls-target-colour" type="color" value="<?php echo esc_attr( get_option( 'ws-ls-target-colour', '#76bada' ) ); ?>">
+														<p><?php echo __('If enabled, enter a HEX colour code to use for the Target line on graph.', WE_LS_SLUG); ?></p>
 													</td>
 												</tr>
 												<tr >
@@ -650,17 +655,26 @@ function ws_ls_settings_page_generic() {
 														<p><?php echo __('If enabled, y Axes shall start at 0. Otherwise, they are automatically calculated.', WE_LS_SLUG); ?></p>
 													</td>
 												</tr>
+												<?php
+
+												$text_colour = get_option( 'ws-ls-text-colour', '#AEAEAE' );
+
+												?>
                                                 <tr>
                                                     <th scope="row"><?php echo __( 'Text colour', WE_LS_SLUG ); ?></th>
                                                     <td>
-                                                        <input id="ws-ls-text-colour" name="ws-ls-text-colour" type="color" value="<?php echo WE_LS_TEXT_COLOUR; ?>">
+                                                        <input id="ws-ls-text-colour" name="ws-ls-text-colour" type="color" value="<?php echo esc_attr( $text_colour ); ?>">
                                                         <p><?php echo __('Enter a HEX colour code to use for text displayed on the graph.', WE_LS_SLUG); ?></p>
                                                     </td>
                                                 </tr>
-                                                <tr >
+												<?php
+
+													$font_family = get_option( 'ws-ls-font-family', '' );
+												?>
+                                                <tr>
                                                     <th scope="row"><?php echo __( 'Font Family', WE_LS_SLUG ); ?></th>
                                                     <td>
-                                                        <input id="ws-ls-font-family" name="ws-ls-font-family" type="text" maxlength="80" class="large-text" value="<?php esc_attr_e(WE_LS_FONT_FAMILY); ?>">
+                                                        <input id="ws-ls-font-family" name="ws-ls-font-family" type="text" maxlength="80" class="large-text" value="<?php echo esc_attr( $font_family ); ?>">
                                                         <p><?php echo __('Specify one or more fonts that should be used when rendering text on the graph. Separate multiple fonts with a comma. Leave blank to use the default.', WE_LS_SLUG); ?></p>
                                                     </td>
                                                 </tr>
@@ -672,28 +686,27 @@ function ws_ls_settings_page_generic() {
 												<tr  class="<?php echo $disable_if_not_pro_class; ?>">
 													<th scope="row"><?php echo __( 'Bezier Curve?', WE_LS_SLUG ); ?></th>
 													<td>
-														<select id="ws-ls-bezier-curve" name="ws-ls-bezier-curve">
-															<option value="yes" <?php selected( get_option('ws-ls-bezier-curve'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
-															<option value="no" <?php selected( get_option('ws-ls-bezier-curve'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+														<?php
 
+															$bezier_curve = get_option( 'ws-ls-bezier-curve', 'yes' );
+
+														?>
+														<select id="ws-ls-bezier-curve" name="ws-ls-bezier-curve">
+															<option value="yes" <?php selected( $bezier_curve, 'yes' ); ?>><?php echo __( 'Yes', WE_LS_SLUG ); ?></option>
+															<option value="no" <?php selected( $bezier_curve, 'no' ); ?>><?php echo __( 'No', WE_LS_SLUG ); ?></option>
 														</select>
 														<p><?php echo __('If enabled, lines between points on a line graph will be curved', WE_LS_SLUG); ?></p>
-													</td>
-												</tr>
-												<tr>
-													<th scope="row"><?php echo __( 'Target line colour?', WE_LS_SLUG ); ?></th>
-													<td>
-														<input id="ws-ls-target-colour" name="ws-ls-target-colour" type="color" value="<?php echo esc_attr( get_option( 'ws-ls-target-colour', '#76bada' ) ); ?>">
-														<p><?php echo __('If enabled, enter a HEX colour code to use for the Target line on graph.', WE_LS_SLUG); ?></p>
 													</td>
 												</tr>
 												<tr  class="<?php echo $disable_if_not_pro_class; ?>">
 													<th scope="row"><?php echo __( 'Display points on graph?', WE_LS_SLUG ); ?></th>
 													<td>
+														<?php
+															$allow_points = get_option( 'ws-ls-allow-points', 'yes' );
+														?>
 														<select id="ws-ls-allow-points" name="ws-ls-allow-points">
-															<option value="yes" <?php selected( get_option('ws-ls-allow-points'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
-															<option value="no" <?php selected( get_option('ws-ls-allow-points'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
-
+															<option value="yes" <?php selected( $allow_points, 'yes' ); ?>><?php echo __( 'Yes', WE_LS_SLUG ); ?></option>
+															<option value="no" <?php selected( $allow_points, 'no' ); ?>><?php echo __( 'No', WE_LS_SLUG ); ?></option>
 														</select>
 														<p><?php echo __('If enabled, "Allows points and labels to be displayed on graph.', WE_LS_SLUG); ?></p>
 													</td>
@@ -701,12 +714,19 @@ function ws_ls_settings_page_generic() {
 												<tr  class="<?php echo $disable_if_not_pro_class; ?>">
 													<th scope="row" class="<?php echo $disable_if_not_pro_class; ?>"><?php echo __( 'Point thickness', WE_LS_SLUG ); ?></th>
 													<td>
-														<?php $chart_options = array(1,2,3,4,5,6,7,8,9,10); ?>
+														<?php
+															$point_size = ws_ls_option_to_int( 'ws-ls-point-size', 3 );
+														?>
 														<select id="ws-ls-point-size" name="ws-ls-point-size">
-															<?php foreach ($chart_options as $option):?>
-																<option value="<?php echo $option; ?>" <?php selected( WE_LS_CHART_POINT_SIZE, $option ); ?>><?php echo $option; ?></option>
-															<?php endforeach; ?>
+															<?php
+																for ( $i = 0; $i <= 10; $i++ ) {
 
+																		printf( '<option value="%1$d" %2$s>%1$d</option>',
+																						$i,
+																						selected( $point_size, $i )
+																		);
+																	}
+																?>
 														</select>
 														<p><?php echo __('Specifies the point thickness on a line chart.', WE_LS_SLUG); ?></p>
 													</td>
@@ -714,27 +734,35 @@ function ws_ls_settings_page_generic() {
 												<tr  class="<?php echo $disable_if_not_pro_class; ?>">
 													<th scope="row"><?php echo __( 'Add a fill under weight line?', WE_LS_SLUG ); ?></th>
 													<td>
+														<?php
+
+															$fill_under_line = get_option( 'ws-ls-fill-under-weight-line', 'no' );
+
+														?>
 														<select id="ws-ls-fill-under-weight-line" name="ws-ls-fill-under-weight-line">
-															<option value="no" <?php selected( get_option('ws-ls-fill-under-weight-line'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
-															<option value="yes" <?php selected( get_option('ws-ls-fill-under-weight-line'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+															<option value="no" <?php selected( $fill_under_line, 'no' ); ?>><?php echo __('No', WE_LS_SLUG )?></option>
+															<option value="yes" <?php selected( $fill_under_line, 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG )?></option>
 														</select>
-														<p><?php echo __('If enabled, a fill colour will be added under the weight line.', WE_LS_SLUG); ?></p>
+														<p><?php echo __( 'If enabled, a fill colour will be added under the weight line.', WE_LS_SLUG ); ?></p>
 													</td>
 												</tr>
 												<tr class="<?php echo $disable_if_not_pro_class; ?>">
 													<th scope="row"><?php echo __( 'Weight Fill Colour', WE_LS_SLUG ); ?></th>
 													<td>
-														<input id="ws-ls-fill-under-weight-line-colour" name="ws-ls-fill-under-weight-line-colour" type="color" value="<?php echo WE_LS_WEIGHT_FILL_LINE_COLOUR; ?>">
+														<input id="ws-ls-fill-under-weight-line-colour" name="ws-ls-fill-under-weight-line-colour" type="color" value="<?php echo esc_attr( get_option( 'ws-ls-fill-under-weight-line-colour', '#aeaeae' ) ); ?>">
 														<p><?php echo __('If enabled, enter a HEX colour code to use for the fill colour under the weight line.', WE_LS_SLUG); ?></p>
 													</td>
 												</tr>
 												<tr  class="<?php echo $disable_if_not_pro_class; ?>">
 													<th scope="row" class="<?php echo $disable_if_not_pro_class; ?>"><?php echo __( 'Weight Fill Opacity', WE_LS_SLUG ); ?></th>
 													<td>
-														<?php $chart_options = array('0.1', '0.2', '0.3', '0.4', '0.5', '0.6', '0.7', '0.8', '0.9', '1'); ?>
+														<?php
+															$chart_options 		= [ '0.1', '0.2', '0.3', '0.4', '0.5', '0.6', '0.7', '0.8', '0.9', '1' ];
+															$current_opacity 	= get_option( 'ws-ls-fill-under-weight-line-opacity', '0.5' );
+														?>
 														<select id="ws-ls-fill-under-weight-line-opacity" name="ws-ls-fill-under-weight-line-opacity">
-															<?php foreach ($chart_options as $option):?>
-																<option value="<?php echo $option; ?>" <?php selected( WE_LS_WEIGHT_FILL_LINE_OPACITY, $option ); ?>><?php echo $option; ?></option>
+															<?php foreach ( $chart_options as $option ): ?>
+																<option value="<?php echo $option; ?>" <?php selected( $current_opacity, $option ); ?>><?php echo $option; ?></option>
 															<?php endforeach; ?>
 
 														</select>

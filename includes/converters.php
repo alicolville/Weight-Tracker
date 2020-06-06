@@ -44,6 +44,72 @@ function ws_ls_to_stone_pounds($kg) {
     return $weight;
 }
 
+/**
+ * Take Kg and convert into the relevant formats for unit and graph
+ * @param $kg
+ * @param null $user_id
+ * @param bool $key
+ * @return array|null
+ */
+function ws_ls_weight_display( $kg, $user_id = NULL, $key = false ) {
+
+	$weight 	= [];
+
+	// Are we wanting to format the weight for admin UI?
+	if ( true === is_admin() ) {
+		$weight[ 'format' ] = ws_ls_get_config('WE_LS_DATA_UNITS' );
+
+	// Or, format for front end for the user?
+	} else {
+
+		$user_id = ( NULL === $user_id ) ? get_current_user_id() : $user_id;
+		$weight[ 'user-id' ] 	= $user_id;
+		$weight[ 'format' ] 	= ws_ls_get_config('WE_LS_DATA_UNITS', $user_id );
+	}
+
+	$cache_key = sprintf( 'weight-%s-%s', $kg, $weight[ 'format' ] );
+
+	if ( $cache = ws_ls_cache_user_get( $user_id, $cache_key ) ) {
+		return $cache;
+	}
+
+	$weight[ 'kg' ] = $kg;
+
+	switch ( $weight[ 'format' ] ) {
+
+		case 'pounds_only':
+			$weight[ 'pounds' ] 		= ws_ls_to_lb( $kg );
+			$weight[ 'display' ] 		= sprintf( '%s%s', $weight[ 'pounds' ], __( 'lbs', WE_LS_SLUG ) );
+			$weight[ 'graph-value' ] 	= $weight[ 'pounds' ];
+			break;
+
+		case 'kg':
+			$weight[ 'display' ] 		= sprintf( '%s%s', $kg, __( 'kg', WE_LS_SLUG ) );
+			$weight[ 'graph-value' ] 	= $weight['kg'];
+			break;
+
+		default:
+
+			$imperial = ws_ls_to_stone_pounds( $kg );
+
+			// If pounds at 14, then round up stones!
+			if( 14 == $imperial[ 'pounds' ] ) {
+				$imperial[ 'pounds' ] = 0;
+				$imperial[ 'stones' ]++;
+			}
+
+			$weight['display'] 		= sprintf( '%s%s %s%s', $imperial[ 'stones' ],__( 'st' , WE_LS_SLUG), $imperial[ 'pounds' ], __( 'lbs' , WE_LS_SLUG) );
+			$weight['graph-value'] 	= ( $imperial['stones'] * 14 ) + $imperial['pounds'];
+			break;
+	}
+
+	ws_ls_cache_user_set( $user_id, $cache_key, $weight );
+
+	return ( false !== $key && false === empty( $weight[ $key ] ) ) ?
+		$weight[ $key ] :
+		$weight;
+}
+
 function ws_ls_convert_kg_into_relevant_weight_String($kg, $comparison_value = false, $user_id = false) {
 
 	if ($kg) {
@@ -75,28 +141,6 @@ function ws_ls_convert_kg_into_relevant_weight_String($kg, $comparison_value = f
 	}
 
 	return '';
-}
-
-// -------------------------------------------------------------
-// Measurements
-// -------------------------------------------------------------
-
-function ws_ls_convert_to_inches($inches = 0) {
-
-	if( is_numeric($inches) && $inches > 0 ) {
-		$inches = $inches / 2.54;
-		return round($inches, 2);
-	}
-	return 0;
-}
-function ws_ls_convert_to_cm( $feet, $inches = 0 ) {
-
-	$inches = (float) $inches;
-	$feet = (float) $feet;
-
-	$inches = ($feet * 12) + $inches;
-
-	return round($inches / 0.393701, 2);
 }
 
 // -------------------------------------------------------------

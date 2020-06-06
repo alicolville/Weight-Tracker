@@ -167,14 +167,21 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 // refcator ws_ls_capture_form_validate_and_save
 // chart shortcode: update doc: Removed exclude-measurements
 // add formatting for notes
-// update ws_ls_widget_chart to remove measurments
+// update ws_ls_widget_chart to remove measurements
+// todo: minify: JS
+// TODO: We changed the cache key for all user preferences. Ensure this is cleared properly
 
 // How do we deal with height? //'height' => [ 'title' => __('Height', WE_LS_SLUG), 'abv' => __('H', WE_LS_SLUG), 'enabled' => true, 'user_preference' => true),
 
 * Improvement: Allow numeric custom fields to be plotted on charts.
-* Improvement: Measurements have been removed. They have now been migrate (along with user data) into Custom Fields.
+* Improvement: A user's target weight can now be displayed on bar graphs.
+* Improvement: Measurements have been removed. They have now been migrated (along with user data) into Custom Fields.
+* Improvement: Measurements, now custom fields, can now be displayed on bar graphs.
 * Improvement: 1000s of lines of code optimised and re-factored.
 * Improvement: Various performance tweaks. All globals no longer dynamically loaded.
+* Improvement: Improved caching. Don't destroy all user data when updating user has been manipulated, instead, delete relevant cache only.
+                - User preferences now cached
+* Improvement: JS only included for charts when needed.
 * Bug fix: Cache now invalidated correctly when updating meta fields.
 * Bug fix: Grid lines can now be toggled off for charts.
 

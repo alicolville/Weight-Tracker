@@ -13,6 +13,18 @@ function ws_ls_weight_object($user_id, $kg, $pounds, $stones, $pounds_only, $not
                               $detect_and_convert_missing_values = false, $database_row_id = false, $user_nicename = '', $measurements = false,
 								$photo_id = false, $meta_fields = false )
 {
+
+	// TODO: Refactor this so arguments are an array!
+	// TODO: Refactor this to support different types of weight object. Full, Graph, etc. or have arguments specifying what to include in object!
+	// TODO: Cache object based on options
+
+	/*
+	 * Chart needs:
+	 *
+	 * 		graph_value, date-, db_row_id
+	 *
+	 */
+
     $weight['display'] = '';
     $weight['user_id'] = $user_id;
     $weight['user_nicename'] = $user_nicename;
@@ -373,6 +385,7 @@ function ws_ls_display_week_filters($week_ranges, $selected_week_number)
 
 }
 
+// TODO: This will need to be changed when globals are tweaked
 function ws_ls_get_config($key, $user_id = false)
 {
 
@@ -395,13 +408,14 @@ function ws_ls_get_config($key, $user_id = false)
     return constant($key);
   }
 }
-function ws_ls_get_user_preference($key, $user_id = false)
+
+function ws_ls_get_user_preference( $key, $user_id = false )
 {
   if(false == $user_id){
     $user_id = get_current_user_id();
   }
 
-  $user_preferences = ws_ls_get_user_preferences($user_id);
+  $user_preferences = ws_ls_user_preferences_get( $user_id );
 
   if(array_key_exists($key, $user_preferences)){
     return $user_preferences[$key];
@@ -410,6 +424,40 @@ function ws_ls_get_user_preference($key, $user_id = false)
   return NULL;
 }
 
+/**
+ * Fetch the user's target
+ * @param null $user_id
+ * @return void|null
+ */
+function ws_ls_target_get( $user_id = NULL ) {
+
+	$user_id 	= ( NULL === $user_id ) ? get_current_user_id() : $user_id;
+
+	// Cached?
+	if ( $cache = ws_ls_cache_user_get( $user_id, 'target-processed' ) ) {
+		return $cache;
+	}
+
+	$weight 	= NULL;
+	$kg 		= ws_ls_db_target_get( $user_id );
+
+	if ( false === empty( $kg ) ) {
+		$weight = ws_ls_weight_display( $kg );
+	}
+
+	ws_ls_cache_user_set( $user_id, 'target-processed', $weight );
+
+	return $weight;
+}
+
+/**
+ *
+ * DEPRECATED: replace with ws_ls_to_bool()
+ *
+ * @param $value
+ * @return bool
+ *
+ */
 function ws_ls_string_to_bool($value)
 {
   if('false' == $value) {
@@ -423,6 +471,8 @@ function ws_ls_string_to_bool($value)
 }
 
 /**
+ *  DEPRECATED: replace with ws_ls_to_bool()
+ *
  * Force a string to boolean
  * @param $value
  * @return bool
@@ -432,6 +482,58 @@ function ws_ls_force_bool_argument( $value ) {
     return ( 'true' === strtolower( $value ) ||
             ( true === is_bool( $value ) && true === $value ) );
 }
+
+/**
+ * Convert string to bool
+ * @param $string
+ * @return mixed
+ */
+function ws_ls_to_bool( $string ) {
+	return filter_var( $string, FILTER_VALIDATE_BOOLEAN );
+}
+
+/**
+ * Fetch the given key from options
+ * @param $key
+ * @param $default
+ * @param bool $has_to_be_pro
+ * @return bool|mixed|void
+ */
+function ws_ls_option( $key, $default, $has_to_be_pro = false ) {
+
+	// If they need to be a Pro user and not, the apply default
+	if ( true === $has_to_be_pro && false === WS_LS_IS_PRO ) {
+		return $default;
+	}
+
+	return get_option( $key, $default);
+}
+
+/**
+ * Fetch the given key from options and force to bool
+ * @param $key
+ * @param string $default
+ * @param bool $has_to_be_pro
+ * @return mixed
+ */
+function ws_ls_option_to_bool( $key, $default = 'yes', $has_to_be_pro = false ) {
+
+	$value = ws_ls_option( $key, $default, $has_to_be_pro );
+
+	return ws_ls_to_bool( $value );
+}
+
+/**
+ * Fetch the given key from options and force to int
+ * @param $key
+ * @param int $default
+ * @param bool $has_to_be_pro
+ * @return int
+ */
+function ws_ls_option_to_int( $key, $default = 0, $has_to_be_pro = false ) {
+	return (int) ws_ls_option( $key, $default, $has_to_be_pro );
+}
+
 
 /**
  * Force a value to an int
@@ -560,6 +662,33 @@ function ws_ls_post_value( $key, $default = NULL, $json_decode = false ) {
     }
 
     return ( true === $json_decode ) ? json_decode( $_POST[ $key ] ) : $_POST[ $key ];
+}
+
+
+/**
+ * Either fetch data from the $_POST object for the given object keys
+ *
+ * TODO: Refactor to use ws_ls_post_value()
+ *
+ * @param $keys
+ * @return array
+ */
+function ws_ls_get_values_from_post( $keys ) {
+
+	$data = [];
+
+	foreach ( $keys as $key ) {
+
+		if ( true === isset( $_POST[ $key ] ) ) {
+			$data[ $key ] = $_POST[ $key ];
+		} else {
+			$data[ $key ] = '';
+		}
+
+	}
+
+	return $data;
+
 }
 
 /**
@@ -716,19 +845,24 @@ function ws_ls_display_data_saved_message() {
  */
 function ws_ls_display_blockquote( $text, $class = '', $just_echo = false, $include_log_link = false ) {
 
-	$html_output = sprintf('<blockquote class="ws-ls-blockquote%s"><p>%s</p>%s</blockquote>',
-									(false === empty($class)) ? ' ' . esc_html($class) : '',
-									esc_html($text),
-									(true === $include_log_link) ? '<p><a href="' . esc_url(wp_login_url(get_permalink())) . '">' . __('Login now', WE_LS_SLUG) . '</a></p>' : ''
+	$login_link = ( true === $include_log_link ) ?
+					sprintf( ' <a href="ws-ls-login-link" href="%1$s">%2$s</a>.', esc_url( wp_login_url( get_permalink() ) ), __( 'Login' , WE_LS_SLUG ) ) :
+					'';
+
+	$html_output = sprintf('	<blockquote class="ws-ls-blockquote%s">
+										<p>%s%s</p>
+									</blockquote>',
+									(false === empty( $class ) ) ? ' ' . esc_attr( $class ) : '',
+									esc_html( $text ),
+									$login_link
 						);
 
-	if (true === $just_echo) {
+	if ( true === $just_echo ) {
 		echo $html_output;
-	} else {
-		return $html_output;
+		return;
 	}
 
-	return '';
+	return $html_output;
 }
 
 /**
@@ -741,6 +875,18 @@ function ws_ls_display_blockquote( $text, $class = '', $just_echo = false, $incl
  */
 function ws_ls_blockquote_error( $text, $class = 'ws-ls-error-text', $just_echo = false, $include_log_link = false ) {
 	return ws_ls_display_blockquote( $text, $class, $just_echo, $include_log_link );
+}
+
+/**
+ * Display Error Block quote for an error
+ * @param $text
+ * @param string $class
+ * @param bool $just_echo
+ * @param bool $include_log_link
+ * @return string
+ */
+function ws_ls_blockquote_login_prompt( ) {
+	return ws_ls_display_blockquote( __( 'You must be logged in to view or edit your data.' , WE_LS_SLUG ) , '', false, true );
 }
 
 //todo: review this
@@ -862,30 +1008,6 @@ function ws_ls_display_max_server_upload_size() {
 	$max_size = ws_ls_file_upload_max_size();
 
 	return ws_ls_format_bytes_into_readable($max_size);
-}
-
-/**
- * Either fetch data from the $_POST object for the given object keys
- *
- * @param $keys
- * @return array
- */
-function ws_ls_get_values_from_post( $keys ) {
-
-    $data = [];
-
-    foreach ( $keys as $key ) {
-
-        if ( true === isset( $_POST[ $key ] ) ) {
-            $data[ $key ] = $_POST[ $key ];
-        } else {
-            $data[ $key ] = '';
-        }
-
-    }
-
-    return $data;
-
 }
 
 /**
@@ -1063,4 +1185,12 @@ function ws_ls_round_number( $number, $decimal_places = 0 ) {
 	$seperator = ( 'yes' === get_option( 'ws-ls-number-formatting-separator', 'yes' ) ) ? ',' : '';
 
 	return number_format( $number, $decimal_places, '.', $seperator );
+}
+
+/**
+ * Return a randomised ID for WT user controls
+ * @return string
+ */
+function ws_ls_component_id() {
+	return sprintf( 'ws_ls_%1$s_%2$s', mt_rand(), mt_rand() );
 }

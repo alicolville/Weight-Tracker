@@ -20,13 +20,19 @@ function ws_ls_shortcode_chart($user_defined_arguments)
             'weight-line-color' => get_option( 'ws-ls-line-colour', '#aeaeae' ),
             'weight-fill-color' => get_option( 'ws-ls-line-fill-colour', '#f9f9f9' ),
             'weight-target-color' => get_option( 'ws-ls-target-colour', '#76bada' ),
-            'show-gridlines' => get_option( 'ws-ls-grid-lines', 'yes' ),
-            'bezier' => WE_LS_CHART_BEZIER_CURVE,
+            'show-gridlines' => ws_ls_option_to_bool( 'ws-ls-grid-lines' ),
+            'bezier' => ws_ls_option_to_bool( 'ws-ls-bezier-curve' ),
 			'ignore-login-status' => false
            ), $user_defined_arguments );
 
+	// Make sure they are logged in
+	if ( false === ws_ls_to_bool( $chart_arguments[ 'ignore-login-status'] ) &&
+		false === is_user_logged_in() )	{
+		return ws_ls_blockquote_login_prompt();
+	}
+
     // Tidy up a few configs
-    $chart_arguments['bezier'] = ws_ls_force_bool_argument($chart_arguments['bezier']);
+   // $chart_arguments['bezier'] = ws_ls_force_bool_argument($chart_arguments['bezier']);
     $chart_arguments['show-gridlines'] = ws_ls_force_bool_argument($chart_arguments['show-gridlines']);
 	$chart_arguments['ignore-login-status'] = ws_ls_force_bool_argument($chart_arguments['ignore-login-status']);
 
