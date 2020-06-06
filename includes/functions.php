@@ -433,8 +433,10 @@ function ws_ls_target_get( $user_id = NULL ) {
 
 	$user_id 	= ( NULL === $user_id ) ? get_current_user_id() : $user_id;
 
+	$cache = ws_ls_cache_user_get( $user_id, 'target-processed' );
+
 	// Cached?
-	if ( $cache = ws_ls_cache_user_get( $user_id, 'target-processed' ) ) {
+	if ( false !== $cache ) {
 		return $cache;
 	}
 
