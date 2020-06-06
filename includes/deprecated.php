@@ -68,7 +68,7 @@ function ws_ls_migrate_measurements_into_meta_fields() {
 						'suffix'		=> $unit,
 						'mandatory'		=> $mandatory,
 						'enabled'		=> 2,
-						'plot_on_graph'	=> 0,
+						'plot_on_graph'	=> 1,
 						'plot_colour'	=> ( false === empty( $measurements[ 'colors' ][ $key ] ) ) ? $measurements[ 'colors' ][ $key ] : '#000000',
 						'migrate'		=> 1
 			];
