@@ -7,15 +7,15 @@
 
 	function ws_ls_schedules( $schedules ) {
 
-		$schedules[ WE_LS_CRON_SCHEDULE_WEEKLY ] = array(
+		$schedules[ WE_LS_CRON_SCHEDULE_WEEKLY ] = [
 			'interval' => 604800,					// Every Week
 			'display' => 'Weight Tracker Weekly'
-		);
+		];
 
-        $schedules[ 'wlt-5-minutes' ] = array(
+        $schedules[ 'wlt-5-minutes' ] = [
             'interval' => 300,					// Every 5 mins
             'display' => 'Weight Tracker - 5 Minutes'
-        );
+        ];
 
 		return $schedules;
 	}
