@@ -19,8 +19,8 @@
     define('WE_LS_CDN_CHART_JS', 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js');
 	define('WE_LS_KEY_YEKEN_ADMIN_NOTIFICATION', 'yeken-admin-notification');
 	define('WE_LS_TABLE_MAX_WEEK_FILTERS', 150);
-	define('WS_LS_PRO_PRICE', 40.00);
-	define('WS_LS_PRO_PLUS_PRICE', 80.00);
+	define('WS_LS_PRO_PRICE', 50.00);
+	define('WS_LS_PRO_PLUS_PRICE', 100.00);
 
 	// -----------------------------------------------------------------------------------
 	// Hooks / Filters
