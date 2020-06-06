@@ -49,8 +49,6 @@ function ws_ls_get_user_target($user_id) {
  */
 function ws_ls_db_target_get( $user_id ) {
 
-	global $wpdb;
-
 	if ( true === empty( $user_id ) ) {
 		return NULL;
 	}
@@ -59,6 +57,8 @@ function ws_ls_db_target_get( $user_id ) {
 	if ( $cache = ws_ls_cache_user_get( $user_id, 'target-kg' ) ) {
 		return $cache;
 	}
+
+	global $wpdb;
 
 	$sql 	= $wpdb->prepare('SELECT target_weight_weight as kg FROM ' . $wpdb->prefix . WE_LS_TARGETS_TABLENAME . ' where weight_user_id = %d ', $user_id );
 	$kg 	= $wpdb->get_var( $sql );
@@ -103,10 +103,16 @@ function ws_ls_db_target_set( $user_id, $kg ) {
 
 	global $wpdb;
 
-	$result = $wpdb->replace($wpdb->prefix . WE_LS_TARGETS_TABLENAME,
-		[ 'weight_user_id' => $user_id, 'target_weight_weight' => $kg ],
-		[ '%d', '%f' ]
-	);
+	// Does the user have an existing target?
+	$target_exist   = ( false === empty( ws_ls_db_target_get( $user_id ) ) );
+	$result         = false;
+	$table_name     = $wpdb->prefix . WE_LS_TARGETS_TABLENAME;
+
+	if ( true === $target_exist ) {
+		$result = $wpdb->update( $table_name, [ 'target_weight_weight' => $kg ], [ 'weight_user_id' => $user_id ], [ '%f' ], [ '%d' ] );
+	} else {
+		$result = $wpdb->insert( $table_name, [ 'target_weight_weight' => $kg, 'weight_user_id' => $user_id ], [ '%f', '%d' ] );
+	}
 
 	ws_ls_cache_user_delete( $user_id, 'target-processed' );
 	ws_ls_cache_user_delete( $user_id, 'target-kg' );

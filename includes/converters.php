@@ -109,9 +109,9 @@ function ws_ls_weight_display( $kg, $user_id = NULL, $key = false ) {
 		$weight[ 'format' ] 	= ws_ls_get_config('WE_LS_DATA_UNITS', $user_id );
 	}
 
-	$cache_key = sprintf( 'weight-%s-%s', $kg, $weight[ 'format' ] );
+	$cache_key = sprintf( '%s-%s', $kg, $weight[ 'format' ] );
 
-	if ( $cache = ws_ls_cache_user_get( $user_id, $cache_key ) ) {
+	if ( $cache = ws_ls_get_cache( $cache_key ) ) {
 		return $cache;
 	}
 
@@ -126,7 +126,7 @@ function ws_ls_weight_display( $kg, $user_id = NULL, $key = false ) {
 			break;
 
 		case 'kg':
-			$weight[ 'display' ] 		= sprintf( '%s%s', $kg, __( 'kg', WE_LS_SLUG ) );
+			$weight[ 'display' ] 		= sprintf( '%s%s', ws_ls_round_decimals( $kg ), __( 'kg', WE_LS_SLUG ) );
 			$weight[ 'graph-value' ] 	= $weight['kg'];
 			break;
 
@@ -145,7 +145,7 @@ function ws_ls_weight_display( $kg, $user_id = NULL, $key = false ) {
 			break;
 	}
 
-	ws_ls_cache_user_set( $user_id, $cache_key, $weight );
+	ws_ls_set_cache( $cache_key, $weight );
 
 	return ( false !== $key && false === empty( $weight[ $key ] ) ) ?
 		$weight[ $key ] :

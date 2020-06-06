@@ -1,6 +1,7 @@
 <?php
 	defined('ABSPATH') or die('Jog on!');
 
+
 function ws_ls_weight_target_weight($user_id = false, $admin_display = false) {
 
 	// If not logged in then return no value

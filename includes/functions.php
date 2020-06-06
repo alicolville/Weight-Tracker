@@ -435,7 +435,7 @@ function ws_ls_target_get( $user_id = NULL ) {
 	$cache      = ws_ls_cache_user_get( $user_id, 'target-processed' );
 
 	// Cached?
-	if ( false !== $cache ) {
+	if ( null !== $cache ) {
 		return $cache;
 	}
 

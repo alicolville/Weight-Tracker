@@ -147,7 +147,7 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 
 	} else {
 
-		$target_weight = ws_ls_get_user_target($user_id);
+		$target_weight = ws_ls_target_get( $user_id );
 
 		if ($target_weight['display'] != '') {
 
