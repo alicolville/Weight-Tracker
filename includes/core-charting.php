@@ -27,7 +27,8 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 												'user-id'               => get_current_user_id(),
 												'weight-line-color'     => get_option( 'ws-ls-line-colour', '#aeaeae' ),
 												'bar-weight-fill-color' => get_option( 'ws-ls-line-fill-colour', '#f9f9f9' ),
-												'target-fill-color'     => get_option( 'ws-ls-target-colour', '#76bada' )
+												'target-fill-color'     => get_option( 'ws-ls-target-colour', '#76bada' ),
+												'begin-y-axis-at-zero'  => ws_ls_option_to_bool( 'ws-ls-axes-start-at-zero', 'n' )
 	] );
 
 	$chart_config[ 'id' ]               = ws_ls_component_id();
@@ -205,7 +206,7 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 						'fontFamily'  => $chart_config[ 'font-config' ][ 'fontFamily' ]
 					],
 					'type'       => 'linear',
-					'ticks'      => [ 'beginAtZero' => WE_LS_AXES_START_AT_ZERO ],
+					'ticks'      => [ 'beginAtZero' => $chart_config[ 'begin-y-axis-at-zero' ] ],
 					'display'    => 'true',
 					'position'   => 'left',
 					'id'         => AXIS_WEIGHT_AND_TARGET,
@@ -227,7 +228,7 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 					'fontFamily'  => $chart_config['font-config']['fontFamily']
 				],
 				'type'       => 'linear',
-				'ticks'      => [ 'beginAtZero' => WE_LS_AXES_START_AT_ZERO ],
+				'ticks'      => [ 'beginAtZero' => $chart_config[ 'begin-y-axis-at-zero' ] ],
 				'display'    => 'true',
 				'position'   => 'right',
 				'id'         => AXIS_META_FIELDS,

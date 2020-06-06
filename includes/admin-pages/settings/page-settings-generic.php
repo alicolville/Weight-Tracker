@@ -647,9 +647,12 @@ function ws_ls_settings_page_generic() {
 												<tr >
 													<th scope="row"><?php echo __( 'Should y Axes start at 0?', WE_LS_SLUG ); ?></th>
 													<td>
+														<?php
+															$start_at_zero = get_option( 'ws-ls-axes-start-at-zero', 'no' );
+														?>
 														<select id="ws-ls-axes-start-at-zero" name="ws-ls-axes-start-at-zero">
-															<option value="no" <?php selected( get_option('ws-ls-axes-start-at-zero'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
-															<option value="yes" <?php selected( get_option('ws-ls-axes-start-at-zero'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+															<option value="no" <?php selected( $start_at_zero, 'no' ); ?>><?php echo __( 'No', WE_LS_SLUG ); ?></option>
+															<option value="yes" <?php selected( $start_at_zero, 'yes' ); ?>><?php echo __( 'Yes', WE_LS_SLUG ); ?></option>
 
 														</select>
 														<p><?php echo __('If enabled, y Axes shall start at 0. Otherwise, they are automatically calculated.', WE_LS_SLUG); ?></p>

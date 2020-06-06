@@ -62,7 +62,6 @@
 		'WS_LS_ADVANCED_TABLES' => true,
 		'WE_LS_CHART_MAX_POINTS' => 25,
 		'WE_LS_DISPLAY_BMI_IN_TABLES' => false,
-		'WE_LS_AXES_START_AT_ZERO' => false,
 		'WE_LS_ALLOW_STATS' => false,
 		'WE_LS_DISABLE_USER_STATS' => false,
 		'WE_LS_EMAIL_ENABLE' => false,
@@ -121,13 +120,6 @@
 	$permission_check = get_option('ws-ls-edit-permissions');
 	if (false === empty($permission_check) && in_array($permission_check, ['manage_options', 'read_private_posts', 'publish_posts']) ){
 		$globals['WE_LS_VIEW_EDIT_USER_PERMISSION_LEVEL'] = $permission_check;
-	}
-
-	// -----------------------------------------------------------------------------------
-	// y Axes start at zero
-	// -----------------------------------------------------------------------------------
-	if ('yes' == get_option('ws-ls-axes-start-at-zero')) {
-		$globals['WE_LS_AXES_START_AT_ZERO'] = true;
 	}
 
 	// -----------------------------------------------------------------------------------

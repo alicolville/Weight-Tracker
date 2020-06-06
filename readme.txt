@@ -160,7 +160,6 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 //todo: get everything dynamic out of globals
 //todo: ws_ls_shortcode_form - add argument to hide custom fields. Also update doc to remove measurements arg
 //todo: remove measurements from documentation site
-// TODO: Deprecate Bar Chart
 // TODO: Review Comms back
 // TODO: Get rid of ws_ls_register_shortcodes
 // re-write and cache weight_object function. Arguments should be an array
@@ -168,7 +167,6 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 // chart shortcode: update doc: Removed exclude-measurements
 // add formatting for notes
 // update ws_ls_widget_chart to remove measurements
-// todo: minify: JS
 // TODO: We changed the cache key for all user preferences. Ensure this is cleared properly
 
 // How do we deal with height? //'height' => [ 'title' => __('Height', WE_LS_SLUG), 'abv' => __('H', WE_LS_SLUG), 'enabled' => true, 'user_preference' => true),
