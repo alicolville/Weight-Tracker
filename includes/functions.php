@@ -160,7 +160,7 @@ function ws_ls_delete_data_for_user($user_id = false) {
 
         global $wpdb;
         // Delete user targets
-        ws_ls_delete_target($user_id);
+        ws_ls_db_target_delete($user_id);
 
         // Delete weight history
         $table_name =  $wpdb->prefix . WE_LS_TABLENAME;
@@ -432,8 +432,7 @@ function ws_ls_get_user_preference( $key, $user_id = false )
 function ws_ls_target_get( $user_id = NULL ) {
 
 	$user_id 	= ( NULL === $user_id ) ? get_current_user_id() : $user_id;
-
-	$cache = ws_ls_cache_user_get( $user_id, 'target-processed' );
+	$cache      = ws_ls_cache_user_get( $user_id, 'target-processed' );
 
 	// Cached?
 	if ( false !== $cache ) {
@@ -666,6 +665,18 @@ function ws_ls_post_value( $key, $default = NULL, $json_decode = false ) {
     return ( true === $json_decode ) ? json_decode( $_POST[ $key ] ) : $_POST[ $key ];
 }
 
+/**
+ * Check the value of $_POST and convert to bool
+ * @param $key
+ *
+ * @return mixed
+ */
+function ws_ls_post_value_to_bool( $key ) {
+
+	$value = ws_ls_post_value( $key );
+
+	return ws_ls_to_bool( $value );
+}
 
 /**
  * Either fetch data from the $_POST object for the given object keys

@@ -11,7 +11,7 @@ function ws_ls_clear_target_callback() {
 
   	$user_id = ws_ls_post_value('user-id');
 
-	if( true == ws_ls_delete_target( $user_id ) ){
+	if( true == ws_ls_db_target_delete( $user_id ) ){
 		wp_send_json(1);
 	}
 

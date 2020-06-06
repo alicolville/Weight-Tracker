@@ -9,10 +9,12 @@ global $save_response;
  *
  * @return array|bool|void
  */
-function ws_ls_capture_and_handle_form_post(){
+function ws_ls_form_post_handler(){
+
+		$submission_type = ws_ls_form_post_handler_determine_type();
 
 		// Ignore non WLT posts
-		if ( true === empty( $_POST[ 'ws_ls_is_weight_form' ] ) ) {
+		if ( true === empty( $submission_type ) ) {
 			return false;
 		}
 
@@ -41,10 +43,16 @@ function ws_ls_capture_and_handle_form_post(){
 			return ws_ls_save_form_error_prep( $save_response, __( 'The given user hash did not match the logged in user', WE_LS_SLUG ) );
 		}
 
-		// Process posted form and save!
-		$save_success = ws_ls_capture_form_validate_and_save( $user_id );
+		$result = false;
 
-		if ( false === $save_success ) {
+		// Process posted form and save!
+		if ( 'target' === $submission_type ) {
+			$result = ws_ls_form_post_handler_target( $user_id );
+		} else {    // weight
+			$result = ws_ls_capture_form_validate_and_save( $user_id );
+		}
+
+		if ( false === $result ) {
 			return ws_ls_save_form_error_prep( $save_response, __( 'An error occurred while saving your data', WE_LS_SLUG ) );
 		}
 
@@ -62,8 +70,80 @@ function ws_ls_capture_and_handle_form_post(){
 
 		return;
 }
-add_action( 'init', 'ws_ls_capture_and_handle_form_post' );
-add_action( 'admin_init', 'ws_ls_capture_and_handle_form_post' );
+add_action( 'init', 'ws_ls_form_post_handler' );
+add_action( 'admin_init', 'ws_ls_form_post_handler' );
+
+/**
+ * Update the user's target
+ * @param $user_id
+ *
+ * @return bool
+ */
+function ws_ls_form_post_handler_target( $user_id ) {
+
+	$kg = ws_ls_form_post_handler_extract_weight();
+
+	// Struggled to extract a relevant weight from the form?
+	if ( NULL === $kg ) {
+		return false;
+	}
+
+//	if ( true === $is_target_form && true === empty( $weight_object['kg'] ) ) {
+//		ws_ls_delete_target( $user_id );
+//	}
+
+	return ( false !== ws_ls_db_target_set( $user_id, $kg ) );
+}
+
+/**
+ * Determine the type of form submission
+ * @return string|null
+ */
+function ws_ls_form_post_handler_determine_type() {
+
+	$is_weight_form =  ws_ls_post_value_to_bool( 'ws_ls_is_weight_form' );
+
+	// This isn't a weight tracker submission!
+	if ( false === $is_weight_form ) {
+		return NULL;
+	}
+
+	if ( true === ws_ls_post_value_to_bool( 'ws_ls_is_target' ) ) {
+		return 'target';
+	}
+
+	return 'weight';
+}
+
+/**
+ * Scan the form post for relevant weight fields and convert them into Kg
+ * @return float|null
+ */
+function ws_ls_form_post_handler_extract_weight() {
+
+	// Are we lucky? Metric by default?
+	$kg = ws_ls_post_value( 'we-ls-weight-kg' );
+
+	if ( NULL !== $kg ) {
+		return $kg;
+	}
+
+	$stones = ws_ls_post_value( 'we-ls-weight-stones' );
+	$pounds = ws_ls_post_value( 'we-ls-weight-pounds' );
+
+	// Imperial?
+	if ( NULL !== $pounds ) {
+
+		// Stones and Pounds
+		if ( NULL !== $stones ) {
+			return ws_ls_convert_stones_pounds_to_kg( $stones, $pounds );
+		}
+
+		return ws_ls_convert_pounds_to_kg( $pounds );
+	}
+
+	return NULL;
+}
 
 /**
  * Prep a response object for other forms to process

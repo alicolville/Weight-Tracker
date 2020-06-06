@@ -326,7 +326,7 @@ function ws_ls_capture_form_validate_and_save($user_id = false)
 
     // If nothing was entered for a target weight, then delete existing.
     if ( true === $is_target_form && true === empty( $weight_object['kg'] ) ) {
-        ws_ls_delete_target( $user_id );
+        ws_ls_db_target_delete( $user_id );
     }
 
 	$result = ws_ls_save_data( $user_id, $weight_object, $is_target_form, $existing_db_id );

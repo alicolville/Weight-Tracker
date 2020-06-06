@@ -51,6 +51,10 @@ function ws_ls_db_target_get( $user_id ) {
 
 	global $wpdb;
 
+	if ( true === empty( $user_id ) ) {
+		return NULL;
+	}
+
 	// Cached?
 	if ( $cache = ws_ls_cache_user_get( $user_id, 'target-kg' ) ) {
 		return $cache;
@@ -63,6 +67,54 @@ function ws_ls_db_target_get( $user_id ) {
 
 	return $kg;
 }
+
+/**
+ * Delete a user's target
+ *
+ * @param $user_id
+ * @return bool
+ */
+function ws_ls_db_target_delete( $user_id ) {
+
+	global $wpdb;
+
+	if ( true === empty( $user_id ) ) {
+		return false;
+	}
+
+	$result = $wpdb->delete($wpdb->prefix . WE_LS_TARGETS_TABLENAME, [ 'weight_user_id' => $user_id ], [ '%d' ] );
+
+	ws_ls_cache_user_delete( $user_id, 'target-processed' );
+	ws_ls_cache_user_delete( $user_id, 'target-kg' );
+
+	return $result;
+}
+
+/**
+ * Set a user's target weight
+ * @param $user_id
+ * @param $kg
+ */
+function ws_ls_db_target_set( $user_id, $kg ) {
+
+	if ( true === empty( $user_id ) || true === empty( $kg ) ) {
+		return false;
+	}
+
+	global $wpdb;
+
+	$result = $wpdb->replace($wpdb->prefix . WE_LS_TARGETS_TABLENAME,
+		[ 'weight_user_id' => $user_id, 'target_weight_weight' => $kg ],
+		[ '%d', '%f' ]
+	);
+
+	ws_ls_cache_user_delete( $user_id, 'target-processed' );
+	ws_ls_cache_user_delete( $user_id, 'target-kg' );
+
+	return $result;
+}
+
+
 
 /* Fetch weight data for given user */
 function ws_ls_get_weights($user_id, $limit = 100, $selected_week_number = -1, $sort_order = 'asc')
@@ -325,33 +377,6 @@ function ws_ls_delete_entry($user_id, $row_id)
       }
   }
   return $result;
-}
-
-/**
- * Delete a user's target
- *
- * @param $user_id
- * @return bool
- */
-function ws_ls_delete_target( $user_id ) {
-
-  global $wpdb;
-
-  $user_id = (int) $user_id;
-
-  if ( false === empty( $user_id ) ) {
-
-    $result = $wpdb->delete($wpdb->prefix . WE_LS_TARGETS_TABLENAME, [ 'weight_user_id' => $user_id ], [ '%d' ] );
-
-    if ( false === empty( $result ) ) {
-
-      // Tidy up cache
-      ws_ls_delete_cache_for_given_user( $user_id );
-
-      return true;
-    }
-  }
-  return false;
 }
 
 function ws_ls_get_min_max_dates($user_id)
