@@ -103,7 +103,7 @@
                                             </div>
 											<div class="ws-ls-row ws-ls-hide ws-ls-meta-fields-additional-0">
 												<div class="ws-ls-cell">
-													<label for="plot_on_graph"><?php echo __('Plot on graph?', WE_LS_SLUG); ?></label>
+													<label for="plot_on_graph"><?php echo __('Show on charts?', WE_LS_SLUG); ?></label>
 												</div>
 												<?php $checked = ( false === empty( $meta_field['plot_on_graph'] ) ); ?>
 												<div class="ws-ls-cell">
