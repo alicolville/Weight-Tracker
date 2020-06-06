@@ -169,7 +169,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 // update ws_ls_widget_chart to remove measurements
 // TODO: We changed the cache key for all user preferences. Ensure this is cleared properly
 //TODO: When all my user data was deleted: Warning: count(): Parameter must be an array or an object that implements Countable in /srv/www/wordpress-one/public_html/wp-content/plugins/wlt/pro-features/plus/challenge/functions.php on line 98
-
+// TODO: Explaoin Challenegs more in UI and doc site
 // How do we deal with height? //'height' => [ 'title' => __('Height', WE_LS_SLUG), 'abv' => __('H', WE_LS_SLUG), 'enabled' => true, 'user_preference' => true),
 
 * Improvement: Allow numeric custom fields to be plotted on charts.
