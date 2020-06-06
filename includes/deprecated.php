@@ -14,7 +14,7 @@ function ws_ls_migrate_measurements_into_meta_fields() {
 
 	$force_run = ( false === empty( $_GET[ 'custom-fields-migrate' ] ) );
 
-	if ( false === $force_run && false === update_option( 'ws-ls-migrate-meta-fields', 'y' ) ) {
+	if ( false === $force_run && false === update_option( 'ws-ls-migrate-meta-fields-completed', 'y' ) ) {
 		ws_ls_log_add('migration', 'Measurements have already been upgraded.' );
 		return;
 	}
