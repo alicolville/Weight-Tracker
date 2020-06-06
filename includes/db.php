@@ -1,46 +1,6 @@
 <?php
+
 defined('ABSPATH') or die("Jog on!");
-
-/* All DB related logic here! */
-
-/* Load target data for logged in user
-
-DEPRECATED: REPLACE WITH ws_ls_target_get() ( underlying ws_ls_db_target_get )
-
-*/
-function ws_ls_get_user_target($user_id) {
-
-    global $wpdb;
-
-    // Check if data exists in cache.
-    $cache_key = $user_id . '-' . WE_LS_CACHE_KEY_TARGET;
-
-    // Return cache if found!
-    if ($cache = ws_ls_get_cache($cache_key)) {
-        return $cache;
-    }
-    // No cache? hit the DB
-    else {
-
-      $table_name = $wpdb->prefix . WE_LS_TARGETS_TABLENAME;
-      $sql = $wpdb->prepare('SELECT target_weight_weight, target_weight_stones, target_weight_pounds, target_weight_only_pounds FROM ' . $table_name . ' where weight_user_id = %d ', $user_id);
-      $row = $wpdb->get_row( $sql );
-
-      if (!is_null($row))
-      {
-            $target_weight = ws_ls_weight_object($user_id, $row->target_weight_weight, $row->target_weight_pounds, $row->target_weight_stones, $row->target_weight_only_pounds);
-
-			// Clear all cache for this user
-		//	ws_ls_delete_cache_for_given_user($user_id);
-
-            // Store in cache
-            ws_ls_set_cache($cache_key, $target_weight);
-            return $target_weight;
-      }
-    }
-
-  return false;
-}
 
 /**
  * Return the user's target weight in Kg
