@@ -46,6 +46,7 @@ function ws_ls_admin_page_search_results() {
                                             <th><?php echo __( 'Email', WE_LS_SLUG ) ?></th>
                                             <th><?php echo __( 'Start Weight', WE_LS_SLUG ) ?></th>
                                             <th><?php echo __( 'Latest Weight', WE_LS_SLUG ) ?></th>
+	                                        <th><?php echo __( 'Target Weight', WE_LS_SLUG ) ?></th>
                                         </tr>
                                         <?php
                                             foreach ( $user_query->get_results() as $user ) {
@@ -89,7 +90,8 @@ function ws_ls_search_row( $user, $class = '') {
     printf('<tr valign="top" class="%1$s">
                             <td><a href="%2$s">%3$s</a></td>
                             <td><a href="mailto:%4$s">%4$s</a></td>
-                            <td><a href="%2$s">%6$s</a></td>
+                            <td><a href="%2$s">%5$s</a></td>
+                            <td>%6$s</td>
                             <td>%7$s</td>
                         </tr>',
             esc_attr( $class ),
@@ -98,6 +100,6 @@ function ws_ls_search_row( $user, $class = '') {
             esc_attr( $user->data->user_email ),
             ws_ls_weight_start( $user->data->ID ),
             ws_ls_weight_recent( $user->data->ID ),
-            ws_ls_weight_target_weight( $user->data->ID )
+	        ws_ls_target_get( $user->data->ID, 'display' )
     );
  }

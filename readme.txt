@@ -180,10 +180,12 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 * Improvement: Various performance tweaks. All globals no longer dynamically loaded.
 * Improvement: Improved caching. Don't destroy all user data when updating user has been manipulated, instead, delete relevant cache only.
                 - User preferences now cached
-* Improvement: Only required JS libraries are included for charts when needed.
+* Improvement: Only required JS libraries are included for charts when needed
+* Improvement: Target weight added to user search results.
 * Bug fix: Cache now invalidated correctly when updating meta fields.
 * Bug fix: Grid lines can now be toggled off for charts.
 * Bug fix: All text when on Widget settings is now translatable.
+* Bug fix: User search results were showing in correct weights.
 
 = 7.6.1 =
 

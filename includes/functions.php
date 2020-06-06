@@ -426,18 +426,15 @@ function ws_ls_get_user_preference( $key, $user_id = false )
 
 /**
  * Fetch the user's target
+ *
  * @param null $user_id
+ * @param null $field
+ *
  * @return void|null
  */
-function ws_ls_target_get( $user_id = NULL ) {
+function ws_ls_target_get( $user_id = NULL, $field = NULL ) {
 
 	$user_id 	= ( NULL === $user_id ) ? get_current_user_id() : $user_id;
-	$cache      = ws_ls_cache_user_get( $user_id, 'target-processed' );
-
-	// Cached?
-	if ( null !== $cache ) {
-		return $cache;
-	}
 
 	$weight 	= NULL;
 	$kg 		= ws_ls_db_target_get( $user_id );
@@ -446,9 +443,7 @@ function ws_ls_target_get( $user_id = NULL ) {
 		$weight = ws_ls_weight_display( $kg );
 	}
 
-	ws_ls_cache_user_set( $user_id, 'target-processed', $weight );
-
-	return $weight;
+	return ( false === empty( $weight[ $field ] ) ) ? $weight[ $field ] : $weight;
 }
 
 /**

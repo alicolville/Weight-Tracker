@@ -1,25 +1,28 @@
 <?php
-	defined('ABSPATH') or die('Jog on!');
 
+defined('ABSPATH') or die('Jog on!');
 
-function ws_ls_weight_target_weight($user_id = false, $admin_display = false) {
+/**
+ * Render [wlt-target] shortcode
+ * @param bool $user_id
+ * @param bool $admin_display
+ *
+ * @return string
+ */
+function ws_ls_shortcode_target( $user_id = false ) {
 
 	// If not logged in then return no value
-	if(!is_user_logged_in()) {
+	if( false === is_user_logged_in() ) {
 		return '';
 	}
 
-	$user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
+	$user_id = ( true === empty( $user_id  ) ) ? get_current_user_id() : $user_id;
 
-	$target_weight = ws_ls_get_user_target($user_id);
+	$target_weight = ws_ls_target_get( $user_id, 'display' );
 
-	if ($target_weight) {
-	    return (true === $admin_display) ? $target_weight['display-admin'] : $target_weight['display'];
-	}
-
-	return '';
+	return esc_html( $target_weight );
 }
-add_shortcode( 'wlt-target', 'ws_ls_weight_target_weight' );
+add_shortcode( 'wlt-target', 'ws_ls_shortcode_target' );
 
 
 function ws_ls_weight_start($user_id = false)
