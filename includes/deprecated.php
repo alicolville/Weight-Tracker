@@ -130,3 +130,10 @@ function ws_ls_migrate_measurement_details( $key ) {
 	return array_key_exists( $key, $old_measurements ) ? $old_measurements[ $key ] : NULL;
 }
 
+/**
+ * Display a message when old shortcode names are used.
+ */
+function ws_ls_shortcode_old_names() {
+	return ws_ls_display_blockquote( __( 'You are using an old shortcode name. It is now deprecated. Please view the plugin documentation and use a suitable replacement: https://weight.yeken.uk/shortcodes/', WE_LS_SLUG) );
+}
+add_shortcode( 'weight-loss-tracker-chart', 'ws_ls_shortcode_old_names' );
