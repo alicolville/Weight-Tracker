@@ -137,3 +137,4 @@ function ws_ls_shortcode_old_names() {
 	return ws_ls_display_blockquote( __( 'You are using an old shortcode. It is now deprecated. Please view the plugin documentation and use a suitable replacement: https://weight.yeken.uk/shortcodes/', WE_LS_SLUG) );
 }
 add_shortcode( 'weight-loss-tracker-chart', 'ws_ls_shortcode_old_names' );
+add_shortcode( 'weightloss_target_weight', 'ws_ls_shortcode_old_names' );

@@ -19,6 +19,8 @@ function ws_ls_weight_target_weight($user_id = false, $admin_display = false) {
 
 	return '';
 }
+add_shortcode( 'wlt-target', 'ws_ls_weight_target_weight' );
+
 
 function ws_ls_weight_start($user_id = false)
 {
