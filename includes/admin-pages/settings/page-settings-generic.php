@@ -613,20 +613,24 @@ function ws_ls_settings_page_generic() {
 																<option value="yes" <?php selected( $show_gridlines, 'yes' ); ?>><?php echo __( 'Yes', WE_LS_SLUG ); ?></option>
 																<option value="no" <?php selected( $show_gridlines, 'no' ); ?>><?php echo __( 'No', WE_LS_SLUG ); ?></option>
 															</select>
-															<p><?php echo __('If enabled, gridlines will be displayed on the Graph canvas.', WE_LS_SLUG); ?></p>
+															<p><?php echo __('If enabled, grid lines will be displayed on charts.', WE_LS_SLUG); ?></p>
 														</td>
 													</tr>
 													<tr  class="<?php echo $disable_if_not_pro_class; ?>">
 														<th scope="row"><?php echo __( 'Maximum points per graph', WE_LS_SLUG ); ?></th>
 														<td>
-															<?php $chart_options = array(5,10,25,50,100,200); ?>
+															<?php
+
+																$chart_options  = [ 5, 10, 25, 50, 100 ,200 ];
+																$max_points     = get_option( 'ws-ls-max-points', '25' );
+															?>
 															<select id="ws-ls-max-points" name="ws-ls-max-points">
-																<?php foreach ($chart_options as $option):?>
-																	<option value="<?php echo $option; ?>" <?php selected( WE_LS_CHART_MAX_POINTS, $option ); ?>><?php echo $option; ?></option>
+																<?php foreach ( $chart_options as $option):?>
+																	<option value="<?php echo $option; ?>" <?php selected( $max_points, $option ); ?>><?php echo $option; ?></option>
 																<?php endforeach; ?>
 
 															</select>
-															<p><?php echo __('If enabled, "Allows points and labels to be displayed on graph.', WE_LS_SLUG); ?></p>
+															<p><?php echo __( 'Specifies the maximum number of data points displayed on charts (this does not effect admin).', WE_LS_SLUG); ?></p>
 														</td>
 													</tr >
 

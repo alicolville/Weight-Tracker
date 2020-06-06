@@ -60,7 +60,6 @@
 		'WE_LS_CSS_ENABLED' => true,
 		'WE_LS_US_DATE' => false,
 		'WS_LS_ADVANCED_TABLES' => true,
-		'WE_LS_CHART_MAX_POINTS' => 25,
 		'WE_LS_DISPLAY_BMI_IN_TABLES' => false,
 		'WE_LS_ALLOW_STATS' => false,
 		'WE_LS_DISABLE_USER_STATS' => false,
@@ -106,12 +105,6 @@
 	// -----------------------------------------------------------------------------------
 	if ('us' == get_option('ws-ls-use-us-dates')){
 		$globals['WE_LS_US_DATE'] = true;
-	}
-	// -----------------------------------------------------------------------------------
-	// Plot points
-	// -----------------------------------------------------------------------------------
-	if (WS_LS_IS_PRO && get_option('ws-ls-max-points')){
-		$globals['WE_LS_CHART_MAX_POINTS'] = get_option('ws-ls-max-points');
 	}
 
 	// -----------------------------------------------------------------------------------

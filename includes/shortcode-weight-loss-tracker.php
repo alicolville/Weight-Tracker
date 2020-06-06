@@ -83,7 +83,7 @@
 			}
 
 			// Load user's weight dta (taking into account selected week)
-			$weight_data = ws_ls_get_weights( $user_id, WE_LS_CHART_MAX_POINTS, $selected_week_number, 'desc' );
+			$weight_data = ws_ls_get_weights( $user_id, ws_ls_option( 'ws-ls-max-points', '25', true ), $selected_week_number, 'desc' );
 
 			// If enabled, render tab header
 			if ( $use_tabs )	{
@@ -175,7 +175,6 @@
 
 				$weight_data_for_graph = array_reverse( $weight_data );
 
-				//$weight_data_for_graph = array_slice($weight_data, 0, WE_LS_CHART_MAX_POINTS);
 				$html_output .= ws_ls_display_chart($weight_data_for_graph);
 			}
 			else {

@@ -40,7 +40,7 @@ class ws_ls_widget_chart extends WP_Widget {
 			ws_ls_enqueue_files();
 
             $chart_arguments =  array('user-id' => get_current_user_id(),
-                                    'max-data-points' => WE_LS_CHART_MAX_POINTS);
+                                    'max-data-points' => ws_ls_option( 'ws-ls-max-points', '25', true ));
 
             if(is_numeric($instance['user-id']) && $instance['user-id'] != 0) {
                 $chart_arguments['user-id'] = $instance['user-id'];
