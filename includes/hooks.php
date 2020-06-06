@@ -101,7 +101,6 @@
 		wp_enqueue_script('ws-ls-js-form', plugins_url( '../assets/js/ws-ls-entry-form' . 	$minified . '.js', __FILE__ ), array(), WE_LS_CURRENT_VERSION, true);
 
 
-
         // Add localization data for JS
 		wp_localize_script('ws-ls-js', 'ws_ls_config', ws_ls_get_js_config());
 

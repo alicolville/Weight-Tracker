@@ -181,7 +181,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 * Improvement: Various performance tweaks. All globals no longer dynamically loaded.
 * Improvement: Improved caching. Don't destroy all user data when updating user has been manipulated, instead, delete relevant cache only.
                 - User preferences now cached
-* Improvement: JS only included for charts when needed.
+* Improvement: Only required JS libraries are included for charts when needed.
 * Bug fix: Cache now invalidated correctly when updating meta fields.
 * Bug fix: Grid lines can now be toggled off for charts.
 
