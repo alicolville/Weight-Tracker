@@ -216,21 +216,25 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 		]
 	];
 
-	$graph_options['scales']['yAxes'][] =
-		[
-					'scaleLabel' => [
-						'display'     => true,
-						'labelString' => sprintf( '%s (%s)', __( 'Additional Fieldsß', WE_LS_SLUG ), $chart_config[ 'y-axis-unit' ] ),
-						'fontColor'   => $chart_config[ 'font-config' ][ 'fontColor' ],
-						'fontFamily'  => $chart_config[ 'font-config' ][ 'fontFamily' ]
-					],
-					'type'       => 'linear',
-					'ticks'      => [ 'beginAtZero' => WE_LS_AXES_START_AT_ZERO ],
-					'display'    => 'true',
-					'position'   => 'right',
-					'id'         => AXIS_META_FIELDS,
-					'gridLines'  => [ 'display' => $chart_config[ 'show-gridlines' ] ]
-				];
+	// Custom fields?
+	if ( true === $chart_config[ 'show-meta-fields' ] ) {
+
+		$graph_options['scales']['yAxes'][] =
+			[
+				'scaleLabel' => [
+					'display'     => true,
+					'labelString' => __( 'Additional Fields', WE_LS_SLUG ),
+					'fontColor'   => $chart_config['font-config']['fontColor'],
+					'fontFamily'  => $chart_config['font-config']['fontFamily']
+				],
+				'type'       => 'linear',
+				'ticks'      => [ 'beginAtZero' => WE_LS_AXES_START_AT_ZERO ],
+				'display'    => 'true',
+				'position'   => 'right',
+				'id'         => AXIS_META_FIELDS,
+				'gridLines'  => [ 'display' => $chart_config['show-gridlines'] ]
+			];
+	}
 
 	// Hide Gridlines?
 	if ( false === $chart_config[ 'show-gridlines' ] ) {
@@ -248,7 +252,8 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 			'fontFamily' => $chart_config[ 'font-config' ][ 'fontFamily' ]
 		]
 	];
-
+	print_R($graph_data );
+	print_R($graph_options );
 	wp_localize_script( 'jquery-chart-ws-ls', $chart_config['id'] . '_options', $graph_options );
 
 	return sprintf( '<div class="ws-ls-chart-container">
