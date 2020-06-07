@@ -97,7 +97,7 @@ function ws_ls_convert_kg_to_stone_pounds( $kg ) {
  *
  * @return array|null
  */
-function ws_ls_weight_display( $kg, $user_id = NULL, $key = false, $force_admin = true ) {
+function ws_ls_weight_display( $kg, $user_id = NULL, $key = false, $force_admin = false ) {
 
 	$weight 	= [];
 
