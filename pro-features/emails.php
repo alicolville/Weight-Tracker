@@ -38,11 +38,11 @@ function ws_ls_email_notification($type, $weight_data) {
 
 		$email_data['displayname'] = ws_ls_user_display_name( $type[ 'user-id' ] );
 
-		$entry_date = ws_ls_convert_ISO_date_into_locale( $weight_data[ 'weight_date' ], 'display' );
-
 		// Mode / Type
 		$email_data['mode'] = ('add' == $type['mode']) ? __( 'added' , WE_LS_SLUG) : __( 'updated' , WE_LS_SLUG);
-		$email_data['type'] = ('weight-measurements' == $type['type']) ? __( 'their weight / custom fields for ' , WE_LS_SLUG) . $entry_date : __( 'their target to' , WE_LS_SLUG);
+		$email_data['type'] = ('weight-measurements' == $type['type']) ?
+				__( 'their weight / custom fields for ' , WE_LS_SLUG) . ws_ls_convert_ISO_date_into_locale( $weight_data[ 'weight_date' ], 'display' )
+						: __( 'their target to' , WE_LS_SLUG);
 
 		// Convert Weight into expected admin format
 		$display_weight =  ws_ls_weight_display( $weight_data['kg'], $user_id = NULL, 'display', true );

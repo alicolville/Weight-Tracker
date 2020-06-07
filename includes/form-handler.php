@@ -88,9 +88,7 @@ function ws_ls_form_post_handler_target( $user_id ) {
 		return ( false !== ws_ls_db_target_delete( $user_id ) );
 	}
 
-	// TODO: Fire ws_ls_form_post_handler_throw_hook()
-	// Throw data out in case anyone else wants to process it (also used within plugin for sending emails etc)
-	//ws_ls_form_post_handler_throw_hook( $entry_id, $user_id, 'weight-measurements', $mode );
+	do_action( 'wlt-hook-data-added-edited', [ 'user-id' => $user_id, 'type' => 'target', 'mode' => 'update' ],  [ 'kg' => $kg ] );
 
 	return ( false !== ws_ls_db_target_set( $user_id, $kg ) );
 }
@@ -186,37 +184,20 @@ function ws_ls_form_post_handler_weight( $user_id ) {
 
 		$mode = ( $existing_id === $entry_id ) ? 'update' : 'add';
 
-		// Throw data out in case anyone else wants to process it (also used within plugin for sending emails etc)
-		ws_ls_form_post_handler_throw_hook( $entry_id, $user_id, 'weight-measurements', $mode );
+		$type = array (
+			'user-id' => $user_id,
+			'type' => 'weight-measurements',
+			'mode' => $mode
+		);
+
+		$entry = ws_ls_entry_get( $entry_id );
+
+		if ( false === empty( $entry ) ) {
+			do_action( 'wlt-hook-data-added-edited', $type, $entry );
+		}
 	}
 
 	return true;
-}
-
-/**
- * Throw a hook for other's to listen in. Known listeners:
- *
- * - yk_mt_wlt_calories_allowed_refresh()   - Doesn't use the actual data passed.
- * - ws_ls_email_notification()
- *
- * @param $entry_id
- * @param $user_id
- * @param string $type
- * @param string $mode
- */
-function ws_ls_form_post_handler_throw_hook( $entry_id, $user_id, $type = 'weight-measurements', $mode = 'insert' ) {
-
-	$type = array (
-		'user-id' => $user_id,
-		'type' => $type,
-		'mode' => $mode
-	);
-
-	$entry = ws_ls_entry_get( $entry_id );
-
-	if ( false === empty( $entry ) ) {
-		do_action( 'wlt-hook-data-added-edited', $type, $entry );
-	}
 }
 
 /**
