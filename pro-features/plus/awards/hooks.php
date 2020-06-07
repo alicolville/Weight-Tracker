@@ -177,7 +177,7 @@
 		}
 
 	}
-	add_action( WE_LS_HOOK_DATA_ADDED_EDITED, 'ws_ls_awards_listen', 10, 2 );
+	add_action( 'wlt-hook-data-added-edited', 'ws_ls_awards_listen', 10, 2 );
 
     /**
      * Log award

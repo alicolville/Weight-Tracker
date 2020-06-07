@@ -49,7 +49,7 @@ function ws_ls_form_post_handler(){
 		if ( 'target' === $submission_type ) {
 			$result = ws_ls_form_post_handler_target( $user_id );
 		} else {    // weight
-			$result = ws_ls_capture_form_validate_and_save( $user_id );
+			$result = ws_ls_form_post_handler_weight( $user_id );
 		}
 
 		if ( false === $result ) {
@@ -88,7 +88,135 @@ function ws_ls_form_post_handler_target( $user_id ) {
 		return ( false !== ws_ls_db_target_delete( $user_id ) );
 	}
 
+	// TODO: Fire ws_ls_form_post_handler_throw_hook()
+	// Throw data out in case anyone else wants to process it (also used within plugin for sending emails etc)
+	//ws_ls_form_post_handler_throw_hook( $entry_id, $user_id, 'weight-measurements', $mode );
+
 	return ( false !== ws_ls_db_target_set( $user_id, $kg ) );
+}
+
+/**
+ * Handle a form submission for Weight / Custom fields
+ * @param $user_id
+ *
+ * @return bool
+ */
+function ws_ls_form_post_handler_weight( $user_id ) {
+
+	if ( true === empty( $user_id ) ) {
+		return false;
+	}
+
+	$kg = ws_ls_form_post_handler_extract_weight();
+
+	if ( true === empty( $kg ) ){
+		return false;
+	}
+
+	$date = ws_ls_post_value( 'we-ls-date' );
+
+	if ( true === empty( $date ) ) {
+		return false;
+	}
+
+	$entry_data     = [     'weight_weight' => $kg,
+	                        'weight_date'   => ws_ls_convert_date_to_iso( $date ),
+							'weight_notes'  => ws_ls_post_value( 'we-ls-notes' )
+	];
+
+	$entry_data     = stripslashes_deep( $entry_data );
+	$existing_id    = ws_ls_post_value( 'db_row_id' );
+
+	if ( null === $existing_id ) {
+		$existing_id = ws_does_weight_exist_for_this_date( $user_id, $entry_data[ 'weight_date' ] );
+	}
+
+	$entry_id       = ws_ls_db_entry_set( $entry_data, $user_id, $existing_id );
+
+	if ( true === empty( $entry_id ) ) {
+		return false;
+	}
+
+	// ---------------------------------------------
+	// Process Meta Fields
+	// ---------------------------------------------
+
+	if ( true === ws_ls_meta_fields_is_enabled() &&
+	     ws_ls_meta_fields_number_of_enabled() > 0 ) {
+
+		// Loop through each enabled meta field. If the field exists in the $_POST object then update the database.
+		foreach ( ws_ls_meta_fields_enabled() as $field ) {
+
+			$field_key  = ws_ls_meta_fields_form_field_generate_id( $field['id'] );
+			$value      = NULL;
+
+			// If photo, we need to process the upload
+			if ( true === WS_LS_IS_PRO && 3 === (int) $field[ 'field_type' ] ) {
+
+				$photo_upload = ws_ls_meta_fields_photos_process_upload( $field_key, $date , $user_id, $entry_id, $field['id'] );
+
+				if ( false === empty( $photo_upload ) ) {
+					$value = $photo_upload;
+				}
+
+			} else if ( true === isset( $_POST[ $field_key ] ) ) {
+
+				$value = $_POST[ $field_key ];
+			}
+
+			if ( NULL !== $value ) {
+
+				ws_ls_meta_add_to_entry([
+						'entry_id'      => $entry_id,
+						'key'           => $field['id'],
+						'value'         => $value
+					]
+				);
+			}
+		}
+	}
+
+	// Tidy up cache
+	ws_ls_delete_cache_for_given_user( $user_id );
+
+	// Update User stats table and throw notification hook
+	if ( true === WS_LS_IS_PRO ) {
+
+		ws_ls_stats_update_for_user( $user_id );
+
+		$mode = ( $existing_id === $entry_id ) ? 'update' : 'add';
+
+		// Throw data out in case anyone else wants to process it (also used within plugin for sending emails etc)
+		ws_ls_form_post_handler_throw_hook( $entry_id, $user_id, 'weight-measurements', $mode );
+	}
+
+	return true;
+}
+
+/**
+ * Throw a hook for other's to listen in. Known listeners:
+ *
+ * - yk_mt_wlt_calories_allowed_refresh()   - Doesn't use the actual data passed.
+ * - ws_ls_email_notification()
+ *
+ * @param $entry_id
+ * @param $user_id
+ * @param string $type
+ * @param string $mode
+ */
+function ws_ls_form_post_handler_throw_hook( $entry_id, $user_id, $type = 'weight-measurements', $mode = 'insert' ) {
+
+	$type = array (
+		'user-id' => $user_id,
+		'type' => $type,
+		'mode' => $mode
+	);
+
+	$entry = ws_ls_entry_get( $entry_id );
+
+	if ( false === empty( $entry ) ) {
+		do_action( 'wlt-hook-data-added-edited', $type, $entry );
+	}
 }
 
 /**
@@ -134,6 +262,7 @@ function ws_ls_form_post_handler_extract_weight() {
 		$pounds = ( true === empty( $pounds ) ) ? 0 : $pounds;
 
 		return ws_ls_convert_stones_pounds_to_kg( $stones, $pounds );
+
 	} elseif ( NULL !== $pounds ) {
 
 		return ws_ls_convert_pounds_to_kg( $pounds );

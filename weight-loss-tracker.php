@@ -194,17 +194,10 @@ defined('ABSPATH') or die('Jog on!');
 
 
     function t() {
-		ws_ls_user_preferences_get(1);
 
-    	$t = ws_ls_weight_display( 1234 );
-    	print_r($t);
+    	print_r(ws_ls_convert_ISO_date_into_locale( '2010-01-20'));
 
-
-		$t = ws_ls_weight_display( 561 );
-		print_r($t);
-	//ws_ls_cache_user_delete(1);
-		print_r( ws_ls_cache_user_get_all( 1 ) );
 
 		die;
 	}
-	//add_action('init', 't');
+//	add_action('init', 't');

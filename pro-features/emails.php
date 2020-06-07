@@ -36,35 +36,39 @@ function ws_ls_email_notification($type, $weight_data) {
 
 		$email_data = array();
 
-		// Add display name
-		if(!empty($weight_data['user']['display-name'])) {
-			$email_data['displayname'] = $weight_data['user']['display-name'];
-		}
+		$email_data['displayname'] = ws_ls_user_display_name( $type[ 'user-id' ] );
+
+		$entry_date = ws_ls_convert_ISO_date_into_locale( $weight_data[ 'weight_date' ], 'display' );
 
 		// Mode / Type
 		$email_data['mode'] = ('add' == $type['mode']) ? __( 'added' , WE_LS_SLUG) : __( 'updated' , WE_LS_SLUG);
-		$email_data['type'] = ('weight-measurements' == $type['type']) ? __( 'their weight / measurements for ' , WE_LS_SLUG) . ws_ls_render_date($weight_data, true) : __( 'their target to' , WE_LS_SLUG);
+		$email_data['type'] = ('weight-measurements' == $type['type']) ? __( 'their weight / custom fields for ' , WE_LS_SLUG) . $entry_date : __( 'their target to' , WE_LS_SLUG);
 
-		$email_data['data'] = $weight_data['display-admin'] . '<br />';
+		// Convert Weight into expected admin format
+		$display_weight =  ws_ls_weight_display( $weight_data['kg'], $user_id = NULL, 'display', true );
+
+		$email_data['data'] = $display_weight . '<br />';
 
 		// Weight data
-		if('weight-measurements' == $type['type'] && !empty($weight_data['notes'])) {
+		if('weight-measurements' == $type['type'] && !empty($weight_data['weight_notes'])) {
 			// Do we have notes?
 			$email_data['data'] .= '<br />' . __( 'Notes' , WE_LS_SLUG) . ':' . '<br />' . '-----------------------' . '<br />';
-			$email_data['data'] .= '<br /><strong>' . esc_html($weight_data['notes']) . '</strong><br />' . '-----------------------' . '<br />';
+			$email_data['data'] .= '<br /><strong>' . esc_html($weight_data['weight_notes']) . '</strong><br />' . '-----------------------' . '<br />';
 		}
 
 		// Meta Fields
-		if ( true === ws_ls_meta_fields_is_enabled() && false === empty( $weight_data['meta-keys'] ) ) {
+		if ( true === ws_ls_meta_fields_is_enabled() && false === empty( $weight_data['meta'] ) ) {
 
 			$meta_fields = ws_ls_meta_fields_enabled();
+
+			$weight_data['meta'] = wp_list_pluck($weight_data['meta'], 'value', 'meta_field_id' );
 
 			$email_data['data'] .= '<br /><strong>' . __( 'Custom Fields' , WE_LS_SLUG) . ':</strong>' . '<br />' . '-----------------------' . '<br />';
 
 			foreach ( $meta_fields as $field ) {
 
-				if ( false === empty( $weight_data['meta-keys'][ $field['id'] ] ) ) {
-					$email_data['data'] .= '<br /><em>' . $field['field_name'] . '</em><br />' . ws_ls_fields_display_field_value( $weight_data['meta-keys'][ $field['id'] ], $field['id'] ) . '<br />';
+				if ( false === empty( $weight_data['meta'][ $field['id'] ] ) ) {
+					$email_data['data'] .= '<br /><em>' . $field['field_name'] . '</em><br />' . ws_ls_fields_display_field_value( $weight_data['meta'][ $field['id'] ], $field['id'] ) . '<br />';
 				}
 			}
 
@@ -77,7 +81,7 @@ function ws_ls_email_notification($type, $weight_data) {
 
 		// Send email
 		wp_mail($email_addresses,
-		 		__( 'Weight Tracker update for' , WE_LS_SLUG) . $weight_data['user']['display-name'],
+		 		__( 'Weight Tracker update for ' , WE_LS_SLUG) . $email_data['displayname'],
 				$email,
                 [ 'Content-Type: text/html; charset=UTF-8' ]
         );
@@ -87,7 +91,7 @@ function ws_ls_email_notification($type, $weight_data) {
 	return;
 
 }
-add_action(WE_LS_HOOK_DATA_ADDED_EDITED, 'ws_ls_email_notification', 10, 2);
+add_action( 'wlt-hook-data-added-edited', 'ws_ls_email_notification', 10, 2);
 
 /*
 	Returns a standard email template. This wil be expanded in future releases.

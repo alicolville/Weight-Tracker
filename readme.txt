@@ -171,6 +171,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 //TODO: When all my user data was deleted: Warning: count(): Parameter must be an array or an object that implements Countable in /srv/www/wordpress-one/public_html/wp-content/plugins/wlt/pro-features/plus/challenge/functions.php on line 98
 // TODO: Explaoin Challenegs more in UI and doc site
 // How do we deal with height? //'height' => [ 'title' => __('Height', WE_LS_SLUG), 'abv' => __('H', WE_LS_SLUG), 'enabled' => true, 'user_preference' => true),
+// TODO: When Delete all data for user is clicked, not all awards are deleted
 
 * Improvement: Allow numeric custom fields to be plotted on charts.
 * Improvement: A user's target weight can now be displayed on bar graphs.
@@ -180,7 +181,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 * Improvement: Various performance tweaks. All globals no longer dynamically loaded.
 * Improvement: Improved caching. Don't destroy all user data when updating user has been manipulated, instead, delete relevant cache only.
                 - User preferences now cached
-* Improvement: Only required JS libraries are included for charts when needed
+* Improvement: JS libraries are included for charts when needed.
 * Improvement: Target weight added to user search results.
 * Improvement: Removed redundant usage statistics being sent to YeKen.
 * Bug fix: Cache now invalidated correctly when updating meta fields.
@@ -188,6 +189,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 * Bug fix: All text when on Widget settings is now translatable.
 * Bug fix: User search results were showing in correct weights.
 * Bug fix: Removed dead setting "Disable notifications from YeKen?".
+* Bug fix: Meta fields cache no longer cleared on weight entry insert / save.
 
 = 7.6.1 =
 

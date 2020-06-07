@@ -387,10 +387,10 @@ function ws_ls_display_week_filters($week_ranges, $selected_week_number)
 
 // TODO: This will need to be changed when globals are tweaked
 // TODO: Heabily refactor this function
-function ws_ls_get_config( $key, $user_id = false )
+function ws_ls_get_config( $key, $user_id = false, $force_admin = false )
 {
 	// If in an admin screen, then use admin settings. We're not interested in the user's preference.
-	if ( true === is_admin() ) {
+	if ( true === is_admin() || true === $force_admin ) {
 		return constant( $key );
 	}
 
@@ -446,6 +446,42 @@ function ws_ls_target_get( $user_id = NULL, $field = NULL ) {
 	}
 
 	return ( false === empty( $weight[ $field ] ) ) ? $weight[ $field ] : $weight;
+}
+
+/**
+ * Fetch an Entry from the database
+ * @param $entry_id
+ *
+ * @return string|null
+ */
+function ws_ls_entry_get( $entry_id ) {
+
+	$entry = ws_ls_db_entry_get( $entry_id );
+
+	if ( true === empty( $entry ) ) {
+		return NULL;
+	}
+
+	$user_id    = (int) $entry[ 'weight_user_id' ];
+	$cache_key  = sprintf( 'entry-full-%d', $entry_id );
+
+	if ( $cache = ws_ls_cache_user_get( $user_id, $cache_key ) ) {
+		return $cache;
+	}
+
+	$entry[ 'first_weight' ] = ws_ls_get_start_weight( $user_id );
+
+	$entry[ 'difference_from_start_kg' ] = ( false === empty( $entry[ 'first_weight' ] ) && $entry[ 'first_weight' ] <> $entry[ 'kg' ] ) ?
+												$entry[ 'kg' ] - $entry[ 'first_weight' ] :
+													0;
+
+	if ( true === ws_ls_meta_fields_is_enabled() ) {
+		$entry[ 'meta' ] = ws_ls_meta( $entry_id );
+	}
+
+	ws_ls_cache_user_set( $user_id, $cache_key, $entry );
+
+	return $entry;
 }
 
 /**

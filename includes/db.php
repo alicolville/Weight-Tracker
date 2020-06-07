@@ -78,7 +78,118 @@ function ws_ls_db_target_set( $user_id, $kg ) {
 	return $result;
 }
 
+/**
+ * Insert or update an entry
+ * @param $data
+ * @param $user_id
+ * @param null $existing_id
+ *
+ * @return bool|false|int|mixed|null
+ */
+function ws_ls_db_entry_set( $data, $user_id, $existing_id = NULL ) {
 
+	if ( true === empty( $data ) ) {
+		return false;
+	}
+
+	if ( true === empty( $user_id ) ) {
+		return false;
+	}
+
+	$data[ 'weight_user_id' ] = (int) $user_id;
+
+	$formats = ws_ls_db_get_formats( $data );
+
+	global $wpdb;
+
+	// Do a quick sanity check. If we're going to insert a new record, ensure there isn't already an entry for this user for that date
+	if ( null === $existing_id ) {
+		$existing_id = ws_does_weight_exist_for_this_date( $user_id, $data[ 'weight_date' ] );
+	}
+
+	$result     = false;
+	$table_name = $wpdb->prefix . WE_LS_TABLENAME;
+
+	if ( NULL !== $existing_id ) {
+
+		$result = $wpdb->update( $table_name, $data, [ 'weight_user_id' => $user_id, 'id' => $existing_id ], $formats, [ '%d', '%d' ] );
+
+		// Set result to row ID if a success
+		if ( false !== $result ) {
+			$result = $existing_id;
+		}
+
+	} else {
+
+		if ( false !== $wpdb->insert( $table_name, $data, $formats ) ) {
+			$result = $wpdb->insert_id;
+		}
+	}
+
+	if ( false !== $result ) {
+		ws_ls_delete_cache( sprintf( 'entry-%d', $result ) );
+	}
+
+	ws_ls_stats_update_for_user( $user_id );
+
+	return $result;
+}
+
+/**
+ * Return an entry
+ * @param $entry_id
+ * @return string|null
+ */
+function ws_ls_db_entry_get( $entry_id ) {
+
+	if ( true === empty( $entry_id ) ) {
+		return NULL;
+	}
+
+	$cache_key = sprintf( 'entry-%d', $entry_id );
+
+	// Cached?
+	if ( $cache = ws_ls_get_cache( $cache_key ) ) {
+		return $cache;
+	}
+
+	global $wpdb;
+
+	$sql 	= $wpdb->prepare('SELECT id, weight_date, weight_user_id, weight_notes, weight_weight as kg FROM ' . $wpdb->prefix . WE_LS_TABLENAME . ' where id = %d ', $entry_id );
+	$entry 	= $wpdb->get_row( $sql, ARRAY_A );
+
+	ws_ls_set_cache( $cache_key, $entry );
+
+	return $entry;
+}
+
+/**
+ * Get formats for DB tables
+ * @param $db_fields
+ *
+ * @return array
+ */
+function ws_ls_db_get_formats( $db_fields ) {
+
+	$formats = [];
+
+	$lookup = [
+		'weight_weight'     => '%f',
+		'weight_date'       => '%s',
+		'migrate'           => '%d',
+		'weight_user_id'    => '%d',
+		'weight_notes'      => '%s'
+	];
+
+	foreach ( $db_fields as $key => $value ) {
+		if( false === empty( $lookup[ $key ] ) ) {
+
+			$formats[] = $lookup[ $key ];
+		}
+	}
+
+	return $formats;
+}
 
 /* Fetch weight data for given user */
 function ws_ls_get_weights($user_id, $limit = 100, $selected_week_number = -1, $sort_order = 'asc')
@@ -167,7 +278,10 @@ function ws_ls_get_weight($user_id, $row_id)
 
     return false;
 }
-/* Fetch start weight data for given user */
+/* Fetch start weight data for given user
+
+TODO: Refactor
+*/
 function ws_ls_get_start_weight($user_id)
 {
     // Check if data exists in cache.
@@ -226,7 +340,7 @@ function ws_ls_save_data($user_id, $weight_object, $is_target_form = false, $exi
 
 	// Customise depending on whether an update or not
 	if($is_target_form) {
-		$db_is_update = ws_does_target_weight_exist($user_id);
+		$db_is_update = false; // ws_does_target_weight_exist($user_id);
 	    $table_name = $wpdb->prefix . WE_LS_TARGETS_TABLENAME;
 	} else {
 
@@ -306,11 +420,13 @@ function ws_ls_save_data($user_id, $weight_object, $is_target_form = false, $exi
 			'mode' => $mode
 		);
 
-		do_action( WE_LS_HOOK_DATA_ADDED_EDITED, $type, $weight_object );
+		do_action( 'wlt-hook-data-added-edited', $type, $weight_object );
 	}
 
 	return $result;
 }
+
+
 
 function ws_ls_delete_entry($user_id, $row_id)
 {
@@ -364,6 +480,15 @@ function ws_ls_get_min_max_dates($user_id)
   }
   return false;
 }
+
+/**
+ * TODO: REFACTOR!
+ *
+ * @param $user_id
+ * @param $date
+ *
+ * @return bool|mixed
+ */
 function ws_does_weight_exist_for_this_date($user_id, $date)
 {
   	global $wpdb;
@@ -372,7 +497,7 @@ function ws_does_weight_exist_for_this_date($user_id, $date)
 
 	// Return cache if found!
     if ($cache = ws_ls_get_cache($cache_key)) {
-        return $cache;
+      //  return $cache;
     }
 
 	$table_name = $wpdb->prefix . WE_LS_TABLENAME;
@@ -385,21 +510,9 @@ function ws_does_weight_exist_for_this_date($user_id, $date)
 	}
 
 	ws_ls_set_cache($cache_key, false);
-  	return false;
+  	return NULL;
 }
-function ws_does_target_weight_exist($user_id)
-{
-  global $wpdb;
-  $table_name = $wpdb->prefix . WE_LS_TARGETS_TABLENAME;
-  $sql =  $wpdb->prepare('SELECT id FROM ' . $table_name . ' WHERE weight_user_id = %d', $user_id);
-  $row = $wpdb->get_row($sql);
 
-  if (!is_null($row)) {
-    return $row->id;
-  }
-
-  return false;
-}
 function ws_ls_set_user_preferences($in_admin_area, $fields = [])
 {
     global $wpdb;

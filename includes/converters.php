@@ -86,20 +86,24 @@ function ws_ls_convert_kg_to_stone_pounds( $kg ) {
 	$weight[ 'pounds' ] = Round ( fmod( $totalPounds, 14 ), 2 );
 	return $weight;
 }
+
 /**
  * Take Kg and convert into the relevant formats for unit and graph
+ *
  * @param $kg
  * @param null $user_id
  * @param bool $key
+ * @param bool $force_admin
+ *
  * @return array|null
  */
-function ws_ls_weight_display( $kg, $user_id = NULL, $key = false ) {
+function ws_ls_weight_display( $kg, $user_id = NULL, $key = false, $force_admin = true ) {
 
 	$weight 	= [];
 
 	// Are we wanting to format the weight for admin UI?
-	if ( true === is_admin() ) {
-		$weight[ 'format' ] = ws_ls_get_config('WE_LS_DATA_UNITS' );
+	if ( true === is_admin() || true === $force_admin ) {
+		$weight[ 'format' ] = ws_ls_get_config('WE_LS_DATA_UNITS', false, true );
 
 	// Or, format for front end for the user?
 	} else {
@@ -112,7 +116,10 @@ function ws_ls_weight_display( $kg, $user_id = NULL, $key = false ) {
 	$cache_key = sprintf( '%s-%s', $kg, $weight[ 'format' ] );
 
 	if ( $cache = ws_ls_get_cache( $cache_key ) ) {
-		return $cache;
+
+		return ( false !== $key && false === empty( $cache[ $key ] ) ) ?
+			$cache[ $key ] :
+			$cache;
 	}
 
 	$weight[ 'kg' ] = $kg;
@@ -150,6 +157,37 @@ function ws_ls_weight_display( $kg, $user_id = NULL, $key = false ) {
 	return ( false !== $key && false === empty( $weight[ $key ] ) ) ?
 		$weight[ $key ] :
 		$weight;
+}
+
+/**
+ * Convert an ISO date into a date object
+ * @param $iso_date
+ * @param null $key
+ *
+ * @return array|mixed
+ */
+function ws_ls_convert_ISO_date_into_locale( $iso_date, $key = NULL ) {
+
+	$convert = [ 'raw' => $iso_date, 'chart' => '', 'display' => '', 'admin' => '', 'uk' => '', 'us' => '' ];
+
+	if ( false === empty( $iso_date ) ) {
+
+		$convert[ 'time' ]      = strtotime( $iso_date );
+		$convert[ 'chart' ]     = date_i18n('d M', $convert[ 'time' ] );
+		$convert[ 'uk' ]        = date('d/m/Y', $convert[ 'time' ] );
+		$convert[ 'us' ]        = date('m/d/Y', $convert[ 'time' ] );
+		$convert[ 'display' ]   = ( true === ws_ls_get_config('WE_LS_US_DATE', get_current_user_id() ) ) ? $convert[ 'us' ] : $convert[ 'uk' ];
+
+	}
+
+	if ( NULL !== $key && false === empty( $convert[ $key ] ) ) {
+		return $convert[ $key ];
+
+	} elseif ( NULL !== $key ) {
+		return '';
+	}
+
+	return $convert;
 }
 
 /**
