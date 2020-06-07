@@ -386,8 +386,13 @@ function ws_ls_display_week_filters($week_ranges, $selected_week_number)
 }
 
 // TODO: This will need to be changed when globals are tweaked
-function ws_ls_get_config($key, $user_id = false)
+// TODO: Heabily refactor this function
+function ws_ls_get_config( $key, $user_id = false )
 {
+	// If in an admin screen, then use admin settings. We're not interested in the user's preference.
+	if ( true === is_admin() ) {
+		return constant( $key );
+	}
 
   // If user preferences are enabled, then see if they specified
   if (WE_LS_ALLOW_USER_PREFERENCES && (!is_admin() || $user_id != false))  {
@@ -402,11 +407,8 @@ function ws_ls_get_config($key, $user_id = false)
     }
 
   }
-  else {
 
-    // Use admin default
-    return constant($key);
-  }
+   return constant($key);
 }
 
 function ws_ls_get_user_preference( $key, $user_id = false )
@@ -646,15 +648,22 @@ function ws_ls_querystring_value( $key, $force_to_int = false, $default = false 
 
 /**
  * Fetch an item from the $_POST object
+ *
  * @param $key
- * @param bool $json_decode
  * @param null $default
+ * @param bool $force_empty_to_null
+ * @param bool $json_decode
+ *
  * @return mixed|null
  */
-function ws_ls_post_value( $key, $default = NULL, $json_decode = false ) {
+function ws_ls_post_value( $key, $default = NULL, $force_empty_to_null = false, $json_decode = false ) {
 
     if( false === isset( $_POST[ $key ] ) ) {
         return $default;
+    }
+
+    if ( true === $force_empty_to_null && "" === $_POST[ $key ] ) {
+		return NULL;
     }
 
     return ( true === $json_decode ) ? json_decode( $_POST[ $key ] ) : $_POST[ $key ];

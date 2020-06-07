@@ -83,14 +83,10 @@ function ws_ls_form_post_handler_target( $user_id ) {
 
 	$kg = ws_ls_form_post_handler_extract_weight();
 
-	// Struggled to extract a relevant weight from the form?
+	// If nothing specified, then delete existing target
 	if ( NULL === $kg ) {
-		return false;
+		return ( false !== ws_ls_db_target_delete( $user_id ) );
 	}
-
-//	if ( true === $is_target_form && true === empty( $weight_object['kg'] ) ) {
-//		ws_ls_delete_target( $user_id );
-//	}
 
 	return ( false !== ws_ls_db_target_set( $user_id, $kg ) );
 }
@@ -122,24 +118,26 @@ function ws_ls_form_post_handler_determine_type() {
 function ws_ls_form_post_handler_extract_weight() {
 
 	// Are we lucky? Metric by default?
-	$kg = ws_ls_post_value( 'we-ls-weight-kg' );
+	$kg = ws_ls_post_value( 'we-ls-weight-kg', NULL, true );
 
 	if ( NULL !== $kg ) {
 		return $kg;
 	}
 
-	$stones = ws_ls_post_value( 'we-ls-weight-stones' );
-	$pounds = ws_ls_post_value( 'we-ls-weight-pounds' );
+	$stones = ws_ls_post_value( 'we-ls-weight-stones', NULL, true );
+	$pounds = ws_ls_post_value( 'we-ls-weight-pounds', NULL, true );
 
-	// Imperial?
-	if ( NULL !== $pounds ) {
+	// Stones and Pounds
+	if ( NULL !== $stones ) {
 
-		// Stones and Pounds
-		if ( NULL !== $stones ) {
-			return ws_ls_convert_stones_pounds_to_kg( $stones, $pounds );
-		}
+		// Force pounds to zero if not specified
+		$pounds = ( true === empty( $pounds ) ) ? 0 : $pounds;
+
+		return ws_ls_convert_stones_pounds_to_kg( $stones, $pounds );
+	} elseif ( NULL !== $pounds ) {
 
 		return ws_ls_convert_pounds_to_kg( $pounds );
+
 	}
 
 	return NULL;

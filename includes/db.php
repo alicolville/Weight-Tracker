@@ -44,7 +44,6 @@ function ws_ls_db_target_delete( $user_id ) {
 
 	$result = $wpdb->delete($wpdb->prefix . WE_LS_TARGETS_TABLENAME, [ 'weight_user_id' => $user_id ], [ '%d' ] );
 
-	ws_ls_cache_user_delete( $user_id, 'target-processed' );
 	ws_ls_cache_user_delete( $user_id, 'target-kg' );
 
 	return $result;
@@ -74,7 +73,6 @@ function ws_ls_db_target_set( $user_id, $kg ) {
 		$result = $wpdb->insert( $table_name, [ 'target_weight_weight' => $kg, 'weight_user_id' => $user_id ], [ '%f', '%d' ] );
 	}
 
-	ws_ls_cache_user_delete( $user_id, 'target-processed' );
 	ws_ls_cache_user_delete( $user_id, 'target-kg' );
 
 	return $result;
