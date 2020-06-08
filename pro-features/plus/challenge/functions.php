@@ -92,6 +92,20 @@ function ws_ls_challenges_data_update_row( $user_id, $challenge_id ) {
 
 	$weight_entries = ws_ls_challenges_get_weight_entries( $user_id, $challenge[ 'start_date' ], $challenge[ 'end_date' ] );
 
+	global $wpdb;
+
+	// If we have now weight entries for this date range then remove row from table
+	if ( true === empty( $weight_entries ) ) {
+
+		$result = $wpdb->delete( $wpdb->prefix . WE_LS_MYSQL_CHALLENGES_DATA,
+			[ 'challenge_id' => $challenge_id, 'user_id' => $user_id ],
+			[ '%d', '%d' ]
+		);
+
+		return false;
+	}
+
+
 	$data = []; $formats = [ '%d', '%s', '%s', '%d', '%f', '%f', '%f', '%f', '%d', '%f', '%f', '%f', '%f', '%d', '%d', '%d', '%d', '%s' ];
 
 	// Weight Data
@@ -139,8 +153,6 @@ function ws_ls_challenges_data_update_row( $user_id, $challenge_id ) {
 
 	// Other
 	$data[ 'last_processed' ]   = date("Y-m-d H:i:s");
-
-	global $wpdb;
 
 	$result = $wpdb->update( $wpdb->prefix . WE_LS_MYSQL_CHALLENGES_DATA,
 		$data,

@@ -90,6 +90,31 @@ function ws_ls_challenges_delete( $challenge_id ) {
 }
 
 /**
+ * Deelete all challenge data for this user
+ * @param $user_id
+ *
+ * @return bool
+ */
+function ws_ls_challenges_delete_for_user( $user_id ) {
+
+	if ( true === empty( $user_id ) ) {
+		return false;
+	}
+
+	global $wpdb;
+
+	$result = $wpdb->delete( $wpdb->prefix . WE_LS_MYSQL_CHALLENGES_DATA,
+		[ 'user_id' => $user_id ],
+		[ '%d' ]
+	);
+
+	ws_ls_delete_cache_for_given_user( $user_id );
+
+	return ! empty( $result );
+}
+
+
+/**
  * Fetch a challenge
  * @param $challenge_id
  * @return bool

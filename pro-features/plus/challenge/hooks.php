@@ -103,3 +103,12 @@ function ws_ls_challenges_ajax_process() {
 
 }
 add_action( 'wp_ajax_process_challenges', 'ws_ls_challenges_ajax_process' );
+
+/**
+ * Delete challenge data for given user
+ * @param $user_id
+ */
+function ws_ls_challenges_delete_for_given_user( $user_id ) {
+	ws_ls_challenges_delete_for_user( $user_id );
+}
+add_action( 'wlt-hook-data-user-deleted', 'ws_ls_challenges_delete_for_given_user' );
