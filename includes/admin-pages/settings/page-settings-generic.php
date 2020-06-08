@@ -147,9 +147,13 @@ function ws_ls_settings_page_generic() {
                                                     <tr class="<?php echo $disable_if_not_pro_class; ?>">
                                                         <th scope="row"><?php echo __( 'Allow user settings' , WE_LS_SLUG); ?></th>
                                                         <td>
+	                                                        <?php
+	                                                            $user_preferences = get_option( 'ws-ls-allow-user-preferences', 'no' );
+	                                                        ?>
                                                             <select id="ws-ls-allow-user-preferences" name="ws-ls-allow-user-preferences">
-                                                                <option value="yes" <?php selected( get_option('ws-ls-allow-user-preferences'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
-                                                                <option value="no" <?php selected( get_option('ws-ls-allow-user-preferences'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+                                                                <option value="no" <?php selected( $user_preferences, 'no' ); ?>><?php echo __( 'No', WE_LS_SLUG )?></option>
+	                                                            <option value="yes" <?php selected( $user_preferences, 'yes' ); ?>><?php echo __( 'Yes', WE_LS_SLUG )?></option>
+
                                                             </select>
                                                             <p><?php echo __('Allow your users to select their own data units, complete their "About You" fields and remove all their data.', WE_LS_SLUG)?></p>
                                                         </td>
