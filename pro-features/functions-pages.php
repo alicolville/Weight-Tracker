@@ -79,7 +79,7 @@ function ws_ls_user_side_bar($user_id) {
 			<div class="inside">
     			<table class="ws-ls-sidebar-stats">
 
-					<?php echo ws_ls_side_bar_render_rows( apply_filters(WE_LS_FILTER_ADMIN_USER_SIDEBAR_TOP, [], $user_id) ); ?>
+					<?php echo ws_ls_side_bar_render_rows( apply_filters( 'wlt-filter-admin-user-sidebar-top', [], $user_id) ); ?>
 
                     <?php $stats = ws_ls_get_entry_counts($user_id); ?>
                     <tr>
@@ -119,7 +119,7 @@ function ws_ls_user_side_bar($user_id) {
                         <td class="<?php echo ws_ls_blur(); ?>"><?php echo ws_ls_get_user_bmi(['user-id' => $user_id, 'display' => 'both', 'no-height-text' => __('No height specified', WE_LS_SLUG)]); ?></td>
                     </tr>
 
-					<?php echo ws_ls_side_bar_render_rows( apply_filters(WE_LS_FILTER_ADMIN_USER_SIDEBAR_MIDDLE, [], $user_id) ); ?>
+					<?php echo ws_ls_side_bar_render_rows( apply_filters( 'wlt-filter-admin-user-sidebar-middle', [], $user_id) ); ?>
 
                     <tr>
                         <th><?php echo __('Aim', WE_LS_SLUG); ?></th>
@@ -155,7 +155,7 @@ function ws_ls_user_side_bar($user_id) {
 						</td>
                     </tr>
 
-					<?php echo ws_ls_side_bar_render_rows( apply_filters(WE_LS_FILTER_ADMIN_USER_SIDEBAR_BOTTOM, [], $user_id) ); ?>
+					<?php echo ws_ls_side_bar_render_rows( apply_filters('wlt-filter-admin-user-sidebar-bottom', [], $user_id) ); ?>
 
                 </table>
 			</div>

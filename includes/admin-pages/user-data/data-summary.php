@@ -11,7 +11,7 @@ function ws_ls_admin_page_data_summary() {
         ws_ls_delete_existing_data();
 
         // Let others know we cleared all user data
-        do_action( WE_LS_HOOK_DATA_ALL_DELETED );
+        do_action( 'wlt-hook-data-all-deleted' );
     }
 
 ?>

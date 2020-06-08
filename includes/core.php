@@ -419,7 +419,7 @@ function ws_ls_get_js_config() {
 	}
 
 	// Allow others to filter config object
-    return apply_filters(WE_LS_FILTER_JS_WS_LS_CONFIG, $config);
+    return apply_filters( 'wlt-filter-js-ws-ls-config', $config);
 
 }
 

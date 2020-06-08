@@ -118,7 +118,7 @@
 	    ws_ls_delete_cache_for_given_user( $entry['user_id'] );
 
     }
-    add_action( WE_LS_HOOK_DATA_ENTRY_DELETED, 'ws_ls_meta_fields_tidy_entries_and_attachments' );
+    add_action( 'wlt-hook-data-entry-deleted', 'ws_ls_meta_fields_tidy_entries_and_attachments' );
 
 
 	/**

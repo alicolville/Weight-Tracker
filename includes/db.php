@@ -492,7 +492,7 @@ function ws_ls_delete_entry($user_id, $row_id)
           }
 
           // Inform others of deletion!
-          do_action(WE_LS_HOOK_DATA_ENTRY_DELETED, $weight_entry);
+          do_action( 'wlt-hook-data-entry-deleted', $weight_entry);
       }
   }
   return $result;
@@ -715,7 +715,7 @@ function ws_ls_user_preferences_get_formats( $db_fields ) {
                 'challenge_opt_in'  => '%d'
     ];
 
-    $lookup = apply_filters( WE_LS_FILTER_USER_SETTINGS_DB_FORMATS, $lookup );
+    $lookup = apply_filters( 'wlt-filter-user-settings-db-formats', $lookup );
 
     foreach ( $db_fields as $key ) {
         if( false === empty($lookup[$key])) {

@@ -4,48 +4,26 @@
 	global $form_number;
 
     // -----------------------------------------------------------------------------------
-	// Constants - highly recommended that you don't change these
+	// YeKen Globals
 	// -----------------------------------------------------------------------------------
 
-	define('WE_LS_TITLE', 'Weight Tracker');
-	define('WE_LS_SLUG', 'weight-loss-tracker');
-	define('WE_LS_STATS_URL', 'https://weight.yeken.uk/wlt/stats.php');
-	define('WE_LS_LICENSE_TYPES_URL', 'https://weight.yeken.uk/features');
-	define('WE_LS_CALCULATIONS_URL', '	https://weight.yeken.uk/calculations/');
-	define('WE_LS_UPGRADE_TO_PRO_URL', 'https://shop.yeken.uk/product/weight-tracker-pro/');
-	define('WE_LS_UPGRADE_TO_PRO_PLUS_URL', 'https://shop.yeken.uk/product/weight-tracker-pro-plus/');
-    define('WE_LS_FREE_TRIAL_URL', 'https://weight.yeken.uk/trial/');
-    define('WE_LS_UPGRADE_TO_PRO_PLUS_UPGRADE_URL', 'https://weight.yeken.uk/get-pro-plus-existing-license-holders/');
-    define('WE_LS_CDN_CHART_JS', 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js');
-	define('WE_LS_KEY_YEKEN_ADMIN_NOTIFICATION', 'yeken-admin-notification');
-	define('WE_LS_TABLE_MAX_WEEK_FILTERS', 150);
-	define('WS_LS_PRO_PRICE', 50.00);
-	define('WS_LS_PRO_PLUS_PRICE', 100.00);
+	define( 'WE_LS_TITLE', 'Weight Tracker' );
+	define( 'WE_LS_SLUG', 'weight-loss-tracker' );
+	define( 'WE_LS_LICENSE_TYPES_URL', 'https://weight.yeken.uk/features' );
+	define( 'WE_LS_CALCULATIONS_URL', '	https://weight.yeken.uk/calculations/' );
+	define( 'WE_LS_UPGRADE_TO_PRO_URL', 'https://shop.yeken.uk/product/weight-tracker-pro/' );
+	define( 'WE_LS_UPGRADE_TO_PRO_PLUS_URL', 'https://shop.yeken.uk/product/weight-tracker-pro-plus/' );
+    define( 'WE_LS_FREE_TRIAL_URL', 'https://weight.yeken.uk/trial/' );
+    define( 'WE_LS_UPGRADE_TO_PRO_PLUS_UPGRADE_URL', 'https://weight.yeken.uk/get-pro-plus-existing-license-holders/' );
+    define( 'WE_LS_CDN_CHART_JS', 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js' );
+	define( 'WE_LS_PRO_PRICE', 50.00 );
+	define( 'WE_LS_PRO_PLUS_PRICE', 100.00 );
 
 	// -----------------------------------------------------------------------------------
-	// Hooks / Filters
+	// Weight Tracker
 	// -----------------------------------------------------------------------------------
 
-
-	define('WE_LS_HOOK_DATA_ALL_DELETED', 'wlt-hook-data-all-deleted');
-	define('WE_LS_HOOK_DATA_ENTRY_DELETED', 'wlt-hook-data-entry-deleted');
-    define('WE_LS_HOOK_LICENSE_EXPIRED', 'wlt-hook-license-expired');
-
-    define('WE_LS_FILTER_EMAIL_DATA', 'wlt-filter-email-data');
-	define('WE_LS_FILTER_STATS_SHORTCODE', 'wlt-filter-stats-shortcode');
-	define('WE_LS_FILTER_STATS_ROW', 'wlt-filter-stats-table-row');
-	define('WE_LS_FILTER_STATS_TABLE_HTML', 'wlt-filter-stats-table-html');
-	define('WE_LS_FILTER_ADMIN_USER_SIDEBAR_TOP', 'wlt-filter-admin-user-sidebar-top');
-	define('WE_LS_FILTER_ADMIN_USER_SIDEBAR_MIDDLE', 'wlt-filter-admin-user-sidebar-middle');
-	define('WE_LS_FILTER_ADMIN_USER_SIDEBAR_BOTTOM', 'wlt-filter-admin-user-sidebar-bottom');
-	define('WE_LS_FILTER_USER_SETTINGS_BELOW_AIM', 'wlt-filter-user-settings-below-aim');
-    define('WE_LS_FILTER_USER_SETTINGS_BELOW_GENDER', 'wlt-filter-user-settings-below-gender');
-    define('WE_LS_FILTER_USER_SETTINGS_DB_FORMATS', 'wlt-filter-user-settings-db-formats');
-    define('WE_LS_FILTER_USER_SETTINGS_SAVE_FIELDS', 'wlt-filter-user-settings-save-fields');
-    define('WE_LS_FILTER_JS_WS_LS_CONFIG', 'wlt-filter-js-ws-ls-config');
-    define('WE_LS_FILTER_HARRIS', 'wlt-filter-harris-benedict');
-    define('WE_LS_FILTER_HARRIS_ALLOWED_PROGRESS', 'wlt-filter-harris-benedict-allowed-progresses');
-    define('WE_LS_FILTER_HARRIS_TOP_OF_TABLE', 'wlt-filter-harris-benedict-top-of-table');
+	define( 'WE_LS_TABLE_MAX_WEEK_FILTERS', 150 );
 
     // -----------------------------------------------------------------------------------
 	// Dynamic Settings based upon user settings, etc

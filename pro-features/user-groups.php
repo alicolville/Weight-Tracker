@@ -118,7 +118,7 @@
 
 		return $rows;
 	}
-	add_filter( WE_LS_FILTER_ADMIN_USER_SIDEBAR_MIDDLE,  'ws_ls_groups_hooks_user_side_bar', 10, 2 );
+	add_filter( 'wlt-filter-admin-user-sidebar-middle',  'ws_ls_groups_hooks_user_side_bar', 10, 2 );
 
 /**
  * Add a <select> for Group to user preference form

@@ -92,7 +92,7 @@ function ws_ls_harris_benedict_calculate_calories($user_id = false) {
 		$calorie_intake[ $key ] = array_map('ws_ls_round_bmr_harris', $calorie_intake[$key]);
 	}
 
-	$calorie_intake = apply_filters( WE_LS_FILTER_HARRIS, $calorie_intake, $user_id );
+	$calorie_intake = apply_filters( 'wlt-filter-harris-benedict', $calorie_intake, $user_id );
 
 	// Cache it!
 	ws_ls_set_cache($cache_key, $calorie_intake);
@@ -183,7 +183,7 @@ function ws_ls_harris_benedict_render_table($user_id, $missing_data_text = false
             ws_ls_harris_benedict_meal_ratio_get( 'snacks' )
 		);
 
-		$html .= apply_filters(WE_LS_FILTER_HARRIS_TOP_OF_TABLE, '', $calories);
+		$html .= apply_filters( 'wlt-filter-harris-benedict-top-of-table', '', $calories);
 
 		$rows_to_display = apply_filters( 'wlt-filter-harris-benedict-rows', [ 'maintain', 'lose', 'gain' ] );
 
@@ -295,7 +295,7 @@ function ws_ls_shortcode_harris_benedict( $user_defined_arguments ) {
 									$user_defined_arguments
 	);
 
-	$allowed_progress = apply_filters( WE_LS_FILTER_HARRIS_ALLOWED_PROGRESS, [ 'auto', 'maintain', 'lose', 'gain' ] );
+	$allowed_progress = apply_filters( 'wlt-filter-harris-benedict-allowed-progresses', [ 'auto', 'maintain', 'lose', 'gain' ] );
 
 	// If "progress" set as "auto", then determine from the user's aim which progress type to display
     if ( 'auto' === $arguments['progress'] ) {

@@ -95,7 +95,7 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
     // Additional Body attributes
     //-------------------------------------------------------
 
-    $html_output .= apply_filters(WE_LS_FILTER_USER_SETTINGS_BELOW_AIM, '', $user_id);
+    $html_output .= apply_filters( 'wlt-filter-user-settings-below-aim', '', $user_id);
 
     //-------------------------------------------------------
     // Height
@@ -133,7 +133,7 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
     // Additional Body attributes
     //-------------------------------------------------------
 
-    $html_output .= apply_filters(WE_LS_FILTER_USER_SETTINGS_BELOW_GENDER, '', $user_id);
+    $html_output .= apply_filters( 'wlt-filter-user-settings-below-gender', '', $user_id);
 
     //-------------------------------------------------------
     // Activity Level

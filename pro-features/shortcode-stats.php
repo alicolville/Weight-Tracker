@@ -47,7 +47,7 @@ function ws_ls_shortcode_stats_league_total($user_defined_arguments)
 		foreach ($data as $row) {
 
 			// Allow others to manipulate this data
-			$row = apply_filters(WE_LS_FILTER_STATS_ROW, $row);
+			$row = apply_filters( 'wlt-filter-stats-table-row', $row);
 
             $display_name = ws_ls_user_display_name( $row['user_id'] );
 
@@ -98,7 +98,7 @@ function ws_ls_shortcode_stats_league_total($user_defined_arguments)
 				</table>';
 
 		// Allow others to manipulate this html
-		return apply_filters(WE_LS_FILTER_STATS_TABLE_HTML, $html);
+		return apply_filters( 'wlt-filter-stats-table-html', $html);
 	}
 
 	return '<p>' . __('The league table has not been generated yet. This is a scheduled task so please check back in 15 minutes or try pressing the button below.', WE_LS_SLUG) .'</p>';
@@ -162,7 +162,7 @@ function ws_ls_shortcode_stats_display_value($stats, $arguments) {
 		}
 
 		// Allow theme developer to override stats message
-		$stats = apply_filters(WE_LS_FILTER_STATS_SHORTCODE, $stats);
+		$stats = apply_filters( 'wlt-filter-stats-shortcode', $stats);
 
 		return $stats;
 	}

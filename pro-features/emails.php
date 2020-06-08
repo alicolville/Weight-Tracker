@@ -75,7 +75,7 @@ function ws_ls_email_notification($type, $weight_data) {
 		}
 
 		// Allow others to filter data
-		$email_data = apply_filters(WE_LS_FILTER_EMAIL_DATA, $email_data, $type, $weight_data);
+		$email_data = apply_filters( 'wlt-filter-email-data', $email_data, $type, $weight_data);
 
 		$email = ws_ls_email_notifications_template($email_data);
 
