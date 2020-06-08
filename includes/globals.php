@@ -28,8 +28,7 @@
 
 
 	define('WE_LS_HOOK_DATA_ALL_DELETED', 'wlt-hook-data-all-deleted');
-	define('WE_LS_HOOK_DATA_USER_DELETED', 'wlt-hook-data-user-deleted');
-    define('WE_LS_HOOK_DATA_ENTRY_DELETED', 'wlt-hook-data-entry-deleted');
+	define('WE_LS_HOOK_DATA_ENTRY_DELETED', 'wlt-hook-data-entry-deleted');
     define('WE_LS_HOOK_LICENSE_EXPIRED', 'wlt-hook-license-expired');
 
     define('WE_LS_FILTER_EMAIL_DATA', 'wlt-filter-email-data');

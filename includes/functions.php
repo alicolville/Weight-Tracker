@@ -139,41 +139,34 @@ function ws_ls_weight_object($user_id, $kg, $pounds, $stones, $pounds_only, $not
 }
 
 
-
-/* Delete ALL existing user data */
+/**
+ * Delete all targets and weight entries
+ */
 function ws_ls_delete_existing_data() {
-    if(is_admin())  {
-        global $wpdb;
-        $wpdb->query('TRUNCATE TABLE ' . $wpdb->prefix . WE_LS_TARGETS_TABLENAME);
-        $wpdb->query('TRUNCATE TABLE ' . $wpdb->prefix . WE_LS_TABLENAME);
+    if( true === is_admin() )  {
+	    ws_ls_db_entry_delete_all();
     }
 }
 
-/* Delete all data for a user */
-function ws_ls_delete_data_for_user($user_id = false) {
+/**
+ * Delete all data for given user
+ * @param null $user_id
+ */
+function ws_ls_delete_data_for_user( $user_id = NULL ) {
 
-    if(WE_LS_ALLOW_USER_PREFERENCES || is_admin())  {
+    if( WE_LS_ALLOW_USER_PREFERENCES || is_admin())  {
 
-        if(false === $user_id) {
-            $user_id = get_current_user_id();
-        }
+	    $user_id = ( NULL === $user_id ) ? get_current_user_id() : $user_id;
 
-        global $wpdb;
-        // Delete user targets
-        ws_ls_db_target_delete($user_id);
+        ws_ls_db_target_delete( $user_id );
 
-        // Delete weight history
-        $table_name =  $wpdb->prefix . WE_LS_TABLENAME;
-        $sql = $wpdb->prepare("Delete from $table_name where weight_user_id = %d", $user_id);
-        $wpdb->query($sql);
-
-        ws_ls_delete_cache_for_given_user($user_id);
+	    ws_ls_db_entry_delete_all_for_user( $user_id );
 
 		// Update User stats table
-		ws_ls_stats_update_for_user($user_id);
+		ws_ls_stats_update_for_user( $user_id );
 
 		// Let others know we cleared all user data
-		do_action( WE_LS_HOOK_DATA_USER_DELETED, $user_id);
+		do_action( 'wlt-hook-data-user-deleted', $user_id );
     }
 }
 

@@ -164,6 +164,45 @@ function ws_ls_db_entry_get( $entry_id ) {
 }
 
 /**
+ * Delete all entries for given user
+ * @param $user_id
+ *
+ * @return bool|int|null
+ */
+function ws_ls_db_entry_delete_all_for_user( $user_id ) {
+
+	if ( true === empty( $user_id ) ) {
+		return NULL;
+	}
+
+	global $wpdb;
+
+	$sql    = $wpdb->prepare('Delete from ' . $wpdb->prefix . WE_LS_TABLENAME . ' where weight_user_id = %d', $user_id );
+	$result = $wpdb->query($sql);
+
+	ws_ls_delete_cache_for_given_user( $user_id );
+
+	return $result;
+}
+
+/**
+ * Delete all entries
+ * @return null
+ */
+function ws_ls_db_entry_delete_all() {
+
+	// Extra check! Should only be done in Admin
+	if ( true === is_admin() ) {
+		return NULL;
+	}
+
+	global $wpdb;
+
+	$wpdb->query('TRUNCATE TABLE ' . $wpdb->prefix . WE_LS_TARGETS_TABLENAME );
+	$wpdb->query('TRUNCATE TABLE ' . $wpdb->prefix . WE_LS_TABLENAME );
+}
+
+/**
  * Get formats for DB tables
  * @param $db_fields
  *

@@ -28,7 +28,7 @@ function ws_ls_stats_run_cron() {
 }
 add_action( WE_LS_CRON_NAME , 'ws_ls_stats_run_cron');
 add_action( WE_LS_HOOK_DATA_ALL_DELETED, 'ws_ls_stats_run_cron' );	// Delete stats if all user data has been deleted
-add_action( WE_LS_HOOK_DATA_USER_DELETED, 'ws_ls_stats_run_cron' );	// Tidy up stats if a user deletes their entry
+add_action( 'wlt-hook-data-user-deleted', 'ws_ls_stats_run_cron' );	// Tidy up stats if a user deletes their entry
 
 function ws_ls_stats_run_cron_for_first_time() {
 

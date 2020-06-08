@@ -184,6 +184,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 * Improvement: JS libraries are included for charts when needed.
 * Improvement: Target weight added to user search results.
 * Improvement: Removed redundant usage statistics being sent to YeKen.
+* Bug fix: Awards are now deleted when "Delete all data for this user" has been clicked.
 * Bug fix: Cache now invalidated correctly when updating meta fields.
 * Bug fix: Grid lines can now be toggled off for charts.
 * Bug fix: All text when on Widget settings is now translatable.
