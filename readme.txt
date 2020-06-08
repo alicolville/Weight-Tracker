@@ -160,7 +160,6 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 //todo: get everything dynamic out of globals
 //todo: ws_ls_shortcode_form - add argument to hide custom fields. Also update doc to remove measurements arg
 //todo: remove measurements from documentation site
-// TODO: Review Comms back
 // TODO: Get rid of ws_ls_register_shortcodes
 // re-write and cache weight_object function. Arguments should be an array
 // refcator ws_ls_capture_form_validate_and_save
@@ -168,10 +167,8 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 // add formatting for notes
 // update ws_ls_widget_chart to remove measurements
 // TODO: We changed the cache key for all user preferences. Ensure this is cleared properly
-//TODO: When all my user data was deleted: Warning: count(): Parameter must be an array or an object that implements Countable in /srv/www/wordpress-one/public_html/wp-content/plugins/wlt/pro-features/plus/challenge/functions.php on line 98
 // TODO: Explaoin Challenegs more in UI and doc site
 // How do we deal with height? //'height' => [ 'title' => __('Height', WE_LS_SLUG), 'abv' => __('H', WE_LS_SLUG), 'enabled' => true, 'user_preference' => true),
-// TODO: When Delete all data for user is clicked, not all awards are deleted
 
 * Improvement: Allow numeric custom fields to be plotted on charts.
 * Improvement: A user's target weight can now be displayed on bar graphs.
