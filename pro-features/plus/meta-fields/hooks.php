@@ -157,7 +157,6 @@
 	 * @param $user_id
 	 */
 	function ws_ls_meta_fields_delete_for_given_user( $user_id ) {
-var_Dump($user_id);
 		ws_ls_awards_db_delete_awards_for_user( $user_id );
 	}
 	add_action( 'wlt-hook-data-user-deleted', 'ws_ls_meta_fields_delete_for_given_user' );
