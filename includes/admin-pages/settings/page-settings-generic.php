@@ -157,11 +157,14 @@ function ws_ls_settings_page_generic() {
                                                     <tr class="<?php echo $disable_if_not_pro_class; ?>">
                                                         <th scope="row"><?php echo __( '"About You" fields mandatory?' , WE_LS_SLUG); ?></th>
                                                         <td>
+	                                                        <?php
+	                                                            $about_you = get_option( 'ws-ls-about-you-mandatory', 'no' );
+	                                                        ?>
                                                             <select id="ws-ls-about-you-mandatory" name="ws-ls-about-you-mandatory">
-                                                                <option value="no" <?php selected( get_option('ws-ls-about-you-mandatory'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
-                                                                <option value="yes" <?php selected( get_option('ws-ls-about-you-mandatory'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+                                                                <option value="no" <?php selected( $about_you, 'no' ); ?>><?php echo __( 'No', WE_LS_SLUG )?></option>
+                                                                <option value="yes" <?php selected( $about_you, 'yes' ); ?>><?php echo __( 'Yes', WE_LS_SLUG )?></option>
                                                             </select>
-                                                            <p><?php echo __('If User Settings is enabled, should all the "About You" (height, activity level, etc) be mandatory?', WE_LS_SLUG)?></p>
+                                                            <p><?php echo __( 'If User Settings is enabled, should all the "About You" (height, activity level, etc) be mandatory?', WE_LS_SLUG )?></p>
                                                         </td>
                                                     </tr>
 											</table>

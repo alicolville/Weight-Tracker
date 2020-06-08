@@ -378,7 +378,7 @@ function ws_ls_get_js_config() {
 		'us-date' => ($use_us_date) ? 'true' : 'false',
 		'date-format' => ($use_us_date) ? 'mm/dd/yy' : 'dd/mm/yy',
     	'clear-target' => __('Are you sure you wish to clear your target weight?', WE_LS_SLUG),
-		'validation-about-you-mandatory' => (WE_LS_ABOUT_YOU_MANDATORY) ? 'true' : 'false',
+		'validation-about-you-mandatory' => ( true === ws_ls_option_to_bool( 'ws-ls-about-you-mandatory', 'no', true ) ) ? 'true' : 'false',
 		'validation-we-ls-weight-pounds' => $message_for_pounds,
 		'validation-we-ls-weight-kg' => __('Please enter a valid figure for Kg', WE_LS_SLUG),
 		'validation-we-ls-weight-stones' => __('Please enter a valid figure for Stones', WE_LS_SLUG),
@@ -398,7 +398,7 @@ function ws_ls_get_js_config() {
 	);
 
 	// If About You fields mandatory, add extra translations
-	if( WE_LS_ABOUT_YOU_MANDATORY ) {
+	if( true === ws_ls_option_to_bool( 'ws-ls-about-you-mandatory', 'no', true ) ) {
 
 	    $config['validation-user-pref-messages'] = [
             'we-ls-height' => __('Please select or enter a value for height.', WE_LS_SLUG),
