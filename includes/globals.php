@@ -56,16 +56,6 @@
 	);
 
 	// -----------------------------------------------------------------------------------
-	// Allow user's to override the default admin settings?
-	// -----------------------------------------------------------------------------------
-	if (WS_LS_IS_PRO && (false == get_option('ws-ls-allow-user-preferences') || 'yes' == get_option('ws-ls-allow-user-preferences'))) {
-		define('WE_LS_ALLOW_USER_PREFERENCES', true);
-	} else {
-		define('WE_LS_ALLOW_USER_PREFERENCES', false);
-	}
-
-
-	// -----------------------------------------------------------------------------------
 	// Define whether Imperial and Units
 	// -----------------------------------------------------------------------------------
 	if ('stones_pounds' == get_option('ws-ls-units') || 'pounds_only' == get_option('ws-ls-units')) {

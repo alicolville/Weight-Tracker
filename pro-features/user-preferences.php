@@ -22,7 +22,7 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
 	$arguments['redirect-url']      = (false === empty($arguments['redirect-url'])) ? esc_url($arguments['redirect-url']) : '';
 
     // Have user preferences been allowed in Settings?
-    if ( false === WE_LS_ALLOW_USER_PREFERENCES && false === is_admin() ) {
+    if ( false === ws_ls_user_preferences_is_enabled() && false === is_admin() ) {
         return $html_output;
     }
 

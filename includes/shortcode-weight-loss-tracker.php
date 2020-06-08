@@ -68,7 +68,7 @@
 
 			if(isset($_GET['user-preference-saved']) && 'true' == $_GET['user-preference-saved'])	{
 				$html_output .= ws_ls_display_blockquote(__('Your settings have been saved!', WE_LS_SLUG), 'ws-ls-success');
-			} elseif(WE_LS_ALLOW_USER_PREFERENCES && isset($_GET['user-delete-all']) && 'true' == $_GET['user-delete-all'])	{
+			} elseif( true === ws_ls_user_preferences_is_enabled() && isset($_GET['user-delete-all']) && 'true' == $_GET['user-delete-all'])	{
 				$html_output .= ws_ls_display_blockquote(__('Your weight history has been deleted!', WE_LS_SLUG), 'ws-ls-success');
 			}
 			// Has the user selected a particular week to look at?
@@ -129,7 +129,7 @@
 				}
 
 				// If enabled, have a third tab to allow users to manage their own settings!
-				if ( true === WE_LS_ALLOW_USER_PREFERENCES ) {
+				if ( true === ws_ls_user_preferences_is_enabled() ) {
 
 					$tabs[] = 	[
 						'icon' 			=> 'fa-cog',
@@ -268,7 +268,7 @@
             }
 
 			// If enabled, have a third tab to allow users to manage their own settings!
-			if(WE_LS_ALLOW_USER_PREFERENCES){
+			if( true === ws_ls_user_preferences_is_enabled() ){
 				$html_output .= ws_ls_start_tab('wlt-user-preferences', $use_tabs);
 				$html_output .= ws_ls_user_preferences_form( ['user-id' => $user_id,  'allow-delete-data' => $shortcode_arguments['allow-delete-data']]);
 				$html_output .= ws_ls_end_tab($use_tabs);

@@ -52,7 +52,7 @@
 		add_shortcode( 'wlt-weight-diff-from-target', 'ws_ls_weight_difference_target' );
 
         // If user has deleted all their data then delete it here. That way cache isn't displayed
-        if(WE_LS_ALLOW_USER_PREFERENCES && isset($_GET['user-delete-all']) && 'true' == $_GET['user-delete-all'])	{
+        if( true === ws_ls_user_preferences_is_enabled() && isset($_GET['user-delete-all']) && 'true' == $_GET['user-delete-all'])	{
             ws_ls_delete_data_for_user();
         }
 

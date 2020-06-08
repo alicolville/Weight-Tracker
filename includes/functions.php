@@ -154,7 +154,7 @@ function ws_ls_delete_existing_data() {
  */
 function ws_ls_delete_data_for_user( $user_id = NULL ) {
 
-    if( WE_LS_ALLOW_USER_PREFERENCES || is_admin())  {
+    if( true === ws_ls_user_preferences_is_enabled() || is_admin())  {
 
 	    $user_id = ( NULL === $user_id ) ? get_current_user_id() : $user_id;
 
@@ -388,7 +388,7 @@ function ws_ls_get_config( $key, $user_id = false, $force_admin = false )
 	}
 
   // If user preferences are enabled, then see if they specified
-  if (WE_LS_ALLOW_USER_PREFERENCES && (!is_admin() || $user_id != false))  {
+  if ( true === ws_ls_user_preferences_is_enabled() && (!is_admin() || $user_id != false))  {
 
     // Look to see if the user had a preference, if not, default to admin choice
     $user_preference = ws_ls_get_user_preference($key, $user_id);
@@ -1239,4 +1239,12 @@ function ws_ls_round_number( $number, $decimal_places = 0 ) {
  */
 function ws_ls_component_id() {
 	return sprintf( 'ws_ls_%1$s_%2$s', mt_rand(), mt_rand() );
+}
+
+/**
+ * User preferences enabled?
+ * @return mixed
+ */
+function ws_ls_user_preferences_is_enabled() {
+	return ws_ls_option_to_bool( 'ws-ls-allow-user-preferences', 'no', true );
 }
