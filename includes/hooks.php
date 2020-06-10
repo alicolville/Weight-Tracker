@@ -28,18 +28,6 @@
 	}
 	add_action( 'admin_menu', 'ws_ls_build_admin_menu' );
 
-  /* Register the relevant WP shortcodes */
-	function ws_ls_register_shortcodes(){
-		
-
-        // If user has deleted all their data then delete it here. That way cache isn't displayed
-        if( true === ws_ls_user_preferences_is_enabled() && isset($_GET['user-delete-all']) && 'true' == $_GET['user-delete-all'])	{
-            ws_ls_delete_data_for_user();
-        }
-
-	}
-	add_action( 'init', 'ws_ls_register_shortcodes');
-
 	function ws_ls_enqueue_css(){
 
 		$minified = ws_ls_use_minified();

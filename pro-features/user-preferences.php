@@ -26,6 +26,11 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
         return $html_output;
     }
 
+	// Delete all the user's data if selected
+	if(  true === $arguments['allow-delete-data'] && false !== ws_ls_querystring_value( 'user-delete-all' ) )	{
+		ws_ls_delete_data_for_user();
+	}
+
     $arguments['user-id']   = ( true === empty( $arguments['user-id'] ) ) ? get_current_user_id() : $arguments['user-id'];
     $user_id                = $arguments['user-id'];
 
