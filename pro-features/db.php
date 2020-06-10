@@ -66,19 +66,7 @@ function ws_ls_user_data($filters = false)
 
     return false;
 }
-function ws_ls_user_data_count()
-{
-    global $wpdb;
 
-    $table_name = $wpdb->prefix . WE_LS_TABLENAME;
-    $result =  $wpdb->get_col('SELECT count(*) from ' . $table_name);
-
-    if(!empty($result)) {
-      return $result;
-    }
-
-    return 0;
-}
 function ws_ls_sql_count($sql)
 {
     global $wpdb;

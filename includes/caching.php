@@ -152,6 +152,12 @@ function ws_ls_delete_cache_for_given_users( $user_ids ) {
 
 }
 
+/**
+ *
+ * REFACTOR! Should be a case to just call ws_ls_cache_user_delete()
+ *
+ * @param bool $user_id
+ */
 function ws_ls_delete_cache_for_given_user($user_id = false)
 {
   	global $wpdb;
@@ -207,6 +213,10 @@ function ws_ls_delete_cache_for_given_user($user_id = false)
 
   	do_action( 'wlt-hook-delete-cache-for-user', $user_id );
 }
+
+/**
+ * Delete all weight tracker cache
+ */
 function ws_ls_delete_all_cache()
 {
   global $wpdb;
