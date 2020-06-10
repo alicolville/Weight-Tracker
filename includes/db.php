@@ -467,14 +467,15 @@ function ws_ls_save_data($user_id, $weight_object, $is_target_form = false, $exi
 
 
 
-function ws_ls_delete_entry($user_id, $row_id) {
+function ws_ls_delete_entry( $user_id, $row_id ) {
+
+	if ( true === empty( $user_id ) || true === empty( $row_id ) ) {
+		return false;
+	}
+
   $result = false;
   global $wpdb;
 
-  if (is_numeric($user_id) && is_numeric($row_id)) {
-
-      // Fetch entry from DB before deleting. This will allow us to throw it for others to hook onto.
-      $weight_entry = ws_ls_get_weight($user_id, $row_id);
 
       $result = $wpdb->delete($wpdb->prefix . WE_LS_TABLENAME, array( 'id' => $row_id, 'weight_user_id' => $user_id));
 
@@ -485,15 +486,10 @@ function ws_ls_delete_entry($user_id, $row_id) {
           // Tidy up cache
           ws_ls_delete_cache_for_given_user($user_id);
 
-          // Update User stats table
-          if (WS_LS_IS_PRO) {
-              ws_ls_stats_update_for_user($user_id);
-          }
-
           // Inform others of deletion!
           do_action( 'wlt-hook-data-entry-deleted', [ 'id' => $row_id, 'user-id' => $user_id ] );
       }
-  }
+
   return $result;
 }
 

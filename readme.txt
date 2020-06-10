@@ -169,6 +169,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 // TODO: We changed the cache key for all user preferences. Ensure this is cleared properly
 // TODO: Explaoin Challenegs more in UI and doc site
 // How do we deal with height? //'height' => [ 'title' => __('Height', WE_LS_SLUG), 'abv' => __('H', WE_LS_SLUG), 'enabled' => true, 'user_preference' => true),
+// Remove all  references too WE_LS_DISABLE_USER_STATS (always set to false)
 
 * Improvement: Allow numeric custom fields to be plotted on charts.
 * Improvement: A user's target weight can now be displayed on bar graphs.

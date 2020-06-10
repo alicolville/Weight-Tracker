@@ -117,6 +117,19 @@ function ws_ls_stats_update_for_user($user_id) {
 	return;
 }
 
+/**
+ * If a user deletes an entry, update their stats.
+ * @param $entry
+ */
+function ws_ls_stats_update_user_stats_on_entry_delete( $entry ) {
+
+	if( false === empty( $entry[ 'user-id' ] ) ) {
+		ws_ls_stats_update_for_user( $entry[ 'user-id' ] );
+	}
+
+}
+add_action( 'wlt-hook-data-entry-deleted', 'ws_ls_stats_update_user_stats_on_entry_delete' );
+
 function ws_ls_get_sum_of_weights_for_user($user_id)
 {
 	global $wpdb;
