@@ -467,8 +467,7 @@ function ws_ls_save_data($user_id, $weight_object, $is_target_form = false, $exi
 
 
 
-function ws_ls_delete_entry($user_id, $row_id)
-{
+function ws_ls_delete_entry($user_id, $row_id) {
   $result = false;
   global $wpdb;
 
@@ -492,7 +491,7 @@ function ws_ls_delete_entry($user_id, $row_id)
           }
 
           // Inform others of deletion!
-          do_action( 'wlt-hook-data-entry-deleted', $weight_entry);
+          do_action( 'wlt-hook-data-entry-deleted', [ 'id' => $row_id, 'user-id' => $user_id ] );
       }
   }
   return $result;
