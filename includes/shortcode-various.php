@@ -42,6 +42,8 @@ function ws_ls_weight_start($user_id = false)
 	}
 	return we_ls_format_weight_into_correct_string_format($weight);
 }
+add_shortcode( 'wlt-weight-start', 'ws_ls_weight_start' );
+
 function ws_ls_weight_recent($user_id = false)
 {
 	// If not logged in then return no value
@@ -60,6 +62,8 @@ function ws_ls_weight_recent($user_id = false)
 
 	return we_ls_format_weight_into_correct_string_format($weight);
 }
+add_shortcode( 'wlt-weight-most-recent', 'ws_ls_weight_recent' );
+
 function ws_ls_weight_difference($user_id = false)
 {
 	// If not logged in then return no value
@@ -91,6 +95,8 @@ function ws_ls_weight_difference($user_id = false)
 
 	return $display_string;
 }
+add_shortcode( 'wlt-weight-diff', 'ws_ls_weight_difference' );
+
 function ws_ls_weight_difference_target($user_id = false){
 	// If not logged in then return no value
 	if(!is_user_logged_in()) {
@@ -120,6 +126,8 @@ function ws_ls_weight_difference_target($user_id = false){
 
 	return $display_string;
 }
+add_shortcode( 'wlt-weight-diff-from-target', 'ws_ls_weight_difference_target' );
+
 function ws_ls_weight_difference_previous( $user_id = false ){
 	// If not logged in then return no value
 	if(!is_user_logged_in()) {

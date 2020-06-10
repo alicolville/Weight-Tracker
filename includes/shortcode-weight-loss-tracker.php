@@ -282,6 +282,8 @@
 			return $html_output;
 
 	}
+add_shortcode( 'weight-loss-tracker', 'ws_ls_shortcode' );
+add_shortcode( 'wlt', 'ws_ls_shortcode' );
 
 function ws_ls_start_tab($tab_name, $use_tabs)	{
 	if ($use_tabs) {

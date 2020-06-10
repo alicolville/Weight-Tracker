@@ -30,27 +30,7 @@
 
   /* Register the relevant WP shortcodes */
 	function ws_ls_register_shortcodes(){
-
-		/*
-			[wlt-weight-diff] - total weight lost by the logged in member
-			[wlt-weight-start] - start weight of the logged in member
-			[wlt-weight-most-recent] - end weight of the logged in member
-			[wlt-weight-diff-from-target] - difference between latest and target
-			[wlt-target] - target weight
-		*/
-
-
-
-		add_shortcode( 'weight-loss-tracker', 'ws_ls_shortcode' );
-		add_shortcode( 'wlt', 'ws_ls_shortcode' );
-
-		add_shortcode( 'wlt-weight-diff', 'ws_ls_weight_difference' );
-
-		add_shortcode( 'wlt-weight-start', 'ws_ls_weight_start' );
-
-		add_shortcode( 'wlt-weight-most-recent', 'ws_ls_weight_recent' );
-
-		add_shortcode( 'wlt-weight-diff-from-target', 'ws_ls_weight_difference_target' );
+		
 
         // If user has deleted all their data then delete it here. That way cache isn't displayed
         if( true === ws_ls_user_preferences_is_enabled() && isset($_GET['user-delete-all']) && 'true' == $_GET['user-delete-all'])	{
