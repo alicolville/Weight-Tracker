@@ -41,26 +41,7 @@ function ws_ls_help_page() {
                             <p><a href="https://weight.yeken.uk" rel="noopener noreferrer" target="_blank">https://weight.yeken.uk</a></p>
 						</div>
 				    </div>
-
-					<?php if ( true === current_user_can( 'manage_options' ) && 'y' === ws_ls_querystring_value('yeken') && 'stones_pounds' === WE_LS_DATA_UNITS )  : ?>
-
-						<div class="postbox">
-							<h3 class="hndle"><span><?php echo __( 'Fix: Stones & Pounds accuracy', WE_LS_SLUG); ?> </span></h3>
-							<div style="padding: 0px 15px 0px 15px">
-								<p><?php echo __( 'Correct accuracy for measurements entered in Stones and Pounds (only run with the advice of YeKen)', WE_LS_SLUG ); ?></p>
-								<p><a href="<?php echo esc_url( admin_url( 'admin.php?page=ws-ls-help&yeken=y&run=y') ); ?>" >Run</a></p>
-
-								<?php
-
-								if ( 'y' === ws_ls_querystring_value('run') ) {
-									ws_ls_fix_to_kg();
-								}
-
-								?>
-							</div>
-						</div>
-					<?php endif; ?>
-
+				    </div>
 					<?php if ( true === current_user_can( 'manage_options' ) && 'y' === ws_ls_querystring_value('yeken') ) : ?>
 
                         <div class="postbox">

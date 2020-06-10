@@ -181,6 +181,8 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 * Improvement: JS libraries are included for charts when needed.
 * Improvement: Target weight added to user search results.
 * Improvement: Removed redundant usage statistics being sent to YeKen.
+* Improvement: Weights are no longer inserted into the database in three formats. Instead, only Kg is stored and converted when required.
+* Improvement: Removed redundant tools for correcting conversion issues (added 5+ years ago).
 * Bug fix: Awards for a user are now deleted when "Delete all data for this user" has been clicked.
 * Bug fix: All challenge data for a user is now deleted when "Delete all data for this user" has been clicked.
 * Bug fix: Cache now invalidated correctly when updating meta fields.

@@ -73,7 +73,6 @@ defined('ABSPATH') or die('Jog on!');
         'includes/activate.php',
         'includes/hooks.php',
         'includes/cron.php',
-        'includes/fixes.php',
         'includes/functions.php',
         'includes/converters.php',
         'includes/core.php',
