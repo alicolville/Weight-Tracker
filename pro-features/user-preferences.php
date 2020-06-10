@@ -27,7 +27,7 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
     }
 
 	// Delete all the user's data if selected
-	if(  true === $arguments['allow-delete-data'] && false !== ws_ls_querystring_value( 'user-delete-all' ) )	{
+	if(  true === $arguments['allow-delete-data'] && 'true' === ws_ls_querystring_value( 'user-delete-all' ) )	{
 		ws_ls_delete_data_for_user();
 	}
 
