@@ -39,16 +39,17 @@
 			[wlt-target] - target weight
 		*/
 
-	 	add_shortcode( 'weightlosstracker', 'ws_ls_shortcode' );
+
+
 		add_shortcode( 'weight-loss-tracker', 'ws_ls_shortcode' );
 		add_shortcode( 'wlt', 'ws_ls_shortcode' );
-	 	add_shortcode( 'weightloss_weight_difference', 'ws_ls_weight_difference' );
+
 		add_shortcode( 'wlt-weight-diff', 'ws_ls_weight_difference' );
-	 	add_shortcode( 'weightloss_weight_start', 'ws_ls_weight_start' );
+
 		add_shortcode( 'wlt-weight-start', 'ws_ls_weight_start' );
-	 	add_shortcode( 'weightloss_weight_most_recent', 'ws_ls_weight_recent' );
+
 		add_shortcode( 'wlt-weight-most-recent', 'ws_ls_weight_recent' );
-		add_shortcode( 'weightloss_weight_difference_from_target', 'ws_ls_weight_difference_target' );
+
 		add_shortcode( 'wlt-weight-diff-from-target', 'ws_ls_weight_difference_target' );
 
         // If user has deleted all their data then delete it here. That way cache isn't displayed

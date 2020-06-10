@@ -138,3 +138,9 @@ function ws_ls_shortcode_old_names() {
 }
 add_shortcode( 'weight-loss-tracker-chart', 'ws_ls_shortcode_old_names' );
 add_shortcode( 'weightloss_target_weight', 'ws_ls_shortcode_old_names' );
+add_shortcode( 'weightlosstracker', 'ws_ls_shortcode_old_names' );
+add_shortcode( 'weightloss_weight_start', 'ws_ls_shortcode_old_names' );
+add_shortcode( 'weightloss_weight_most_recent', 'ws_ls_shortcode_old_names' );
+add_shortcode( 'weightloss_weight_difference_from_target', 'ws_ls_shortcode_old_names' );
+add_shortcode( 'weightlosstracker', 'ws_ls_shortcode_old_names' );
+add_shortcode( 'weightloss_weight_difference', 'ws_ls_shortcode_old_names' );
