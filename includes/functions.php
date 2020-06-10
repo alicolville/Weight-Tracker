@@ -298,6 +298,15 @@ function ws_ls_get_unit()
 
   return $unit;
 }
+
+/**
+ *
+ * REFACTOR!!
+ * CACHE!
+ *
+ * @return array|bool
+ * @throws Exception
+ */
 function ws_ls_get_week_ranges()
 {
   $entered_date_ranges = ws_ls_db_dates_min_max_get(get_current_user_id());

@@ -170,6 +170,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 // TODO: Explaoin Challenegs more in UI and doc site
 // How do we deal with height? //'height' => [ 'title' => __('Height', WE_LS_SLUG), 'abv' => __('H', WE_LS_SLUG), 'enabled' => true, 'user_preference' => true),
 // Remove all  references too WE_LS_DISABLE_USER_STATS (always set to false)
+// Should we consider a cron job that runs, caching user profiles?
 
 * Improvement: Allow numeric custom fields to be plotted on charts.
 * Improvement: A user's target weight can now be displayed on bar graphs.
@@ -177,14 +178,14 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 * Improvement: Measurements, now custom fields, can now be displayed on bar graphs.
 * Improvement: 1000s of lines of code optimised and re-factored.
 * Improvement: Various performance tweaks. All globals no longer dynamically loaded.
-* Improvement: Improved caching. Don't destroy all user data when updating user has been manipulated, instead, delete relevant cache only.
-                - User preferences now cached
+* Improvement: Improved add added additional caching throughout plugin.
 * Improvement: JS libraries are included for charts when needed.
 * Improvement: Target weight added to user search results.
 * Improvement: Removed redundant usage statistics being sent to YeKen.
 * Improvement: Weights are no longer inserted into the database in three formats. Instead, only Kg is stored and converted when required.
 * Improvement: Removed redundant tools for correcting conversion issues (added 5+ years ago).
 * Improvement: Old shortcode names have now been deprecated and should be replaced with current names.
+* Improvement: Optimised SQL queries.
 * Bug fix: Awards for a user are now deleted when "Delete all data for this user" has been clicked.
 * Bug fix: All challenge data for a user is now deleted when "Delete all data for this user" has been clicked.
 * Bug fix: Cache now invalidated correctly when updating meta fields.

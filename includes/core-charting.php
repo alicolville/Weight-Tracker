@@ -155,8 +155,8 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 
 		foreach ( $weight_data as $weight ) {
 
-			$graph_data['labels'][]                          = $weight['date-graph'];
-			$graph_data['datasets'][ DATA_WEIGHT ]['data'][] = $weight['graph_value'];
+			$graph_data['labels'][]                          = $weight['chart-date'];
+			$graph_data['datasets'][ DATA_WEIGHT ]['data'][] = $weight['graph-value'];
 
 			// Add target weight too
 			if ( false !== $chart_config[ 'show-target' ] ) {
@@ -166,7 +166,7 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 			// Custom fields
 			if ( true === $chart_config['show-meta-fields'] ) {
 
-				$meta_data = ws_ls_meta( $weight['db_row_id'] );
+				$meta_data = ws_ls_meta( $weight[ 'id' ] );
 
 				$meta_data = wp_list_pluck( $meta_data, 'value', 'meta_field_id' );
 

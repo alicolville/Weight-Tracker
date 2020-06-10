@@ -82,8 +82,7 @@
 				$week_ranges = ws_ls_get_week_ranges();
 			}
 
-			// Load user's weight dta (taking into account selected week)
-			$weight_data = ws_ls_get_weights( $user_id, ws_ls_option( 'ws-ls-max-points', '25', true ), $selected_week_number, 'desc' );
+			$weight_data = ws_ls_db_weights_get( [ 'week' => $selected_week_number, 'prep' => true ] );
 
 			// If enabled, render tab header
 			if ( $use_tabs )	{

@@ -87,21 +87,6 @@ function ws_ls_sql_count($sql)
     return 0;
 }
 
-/**
- * Return an array of allowed sort columns
- * @return array
- */
-function ws_ls_db_lookup_sort_columns() {
-  return [ 'id', 'weight_date', 'weight_weight', 'user_nicename' ];
-}
-
-/**
- * Return an array of allowed sort orcers
- * @return array
- */
-function ws_ls_db_lookup_sort_orders() {
-  return [ 'asc', 'desc' ];
-}
 // -----------------------------------------------------------------
 // Stats
 // -----------------------------------------------------------------

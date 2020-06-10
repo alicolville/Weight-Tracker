@@ -41,7 +41,7 @@ function ws_ls_email_notification($type, $weight_data) {
 		// Mode / Type
 		$email_data['mode'] = ('add' == $type['mode']) ? __( 'added' , WE_LS_SLUG) : __( 'updated' , WE_LS_SLUG);
 		$email_data['type'] = ('weight-measurements' == $type['type']) ?
-				__( 'their weight / custom fields for ' , WE_LS_SLUG) . ws_ls_convert_ISO_date_into_locale( $weight_data[ 'weight_date' ], 'display' )
+				__( 'their weight / custom fields for ' , WE_LS_SLUG) . ws_ls_convert_ISO_date_into_locale( $weight_data[ 'weight_date' ], 'display-date' )
 						: __( 'their target to' , WE_LS_SLUG);
 
 		// Convert Weight into expected admin format

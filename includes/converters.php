@@ -172,11 +172,11 @@ function ws_ls_convert_ISO_date_into_locale( $iso_date, $key = NULL ) {
 
 	if ( false === empty( $iso_date ) ) {
 
-		$convert[ 'time' ]      = strtotime( $iso_date );
-		$convert[ 'chart' ]     = date_i18n('d M', $convert[ 'time' ] );
-		$convert[ 'uk' ]        = date('d/m/Y', $convert[ 'time' ] );
-		$convert[ 'us' ]        = date('m/d/Y', $convert[ 'time' ] );
-		$convert[ 'display' ]   = ( true === ws_ls_get_config('WE_LS_US_DATE', get_current_user_id() ) ) ? $convert[ 'us' ] : $convert[ 'uk' ];
+		$convert[ 'time' ]          = strtotime( $iso_date );
+		$convert[ 'chart-date' ]    = date_i18n('d M', $convert[ 'time' ] );
+		$convert[ 'uk' ]            = date('d/m/Y', $convert[ 'time' ] );
+		$convert[ 'us' ]            = date('m/d/Y', $convert[ 'time' ] );
+		$convert[ 'display-date' ]       = ( true === ws_ls_get_config('WE_LS_US_DATE', get_current_user_id() ) ) ? $convert[ 'us' ] : $convert[ 'uk' ];
 
 	}
 

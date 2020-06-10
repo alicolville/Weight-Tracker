@@ -21,7 +21,7 @@ function ws_ls_display_table($weight_data) {
 	foreach ($weight_data as $weight_object)
 	{
 		$html_output .= '<tr>
-						  <td>' . esc_html(ws_ls_render_date($weight_object)) . '</td>
+						  <td>' . esc_html($weight_object['display-date']) . '</td>
 						  <td>' . esc_html($weight_object['display']) . '</td>
 						  <td>' . esc_html($weight_object['notes']) . '</td>
 						</tr>';
