@@ -242,7 +242,7 @@ function ws_ls_db_weights_get( $arguments = [] ) {
 	$arguments = wp_parse_args( $arguments, [   'user-id'   => get_current_user_id(),
 												'limit'     => ws_ls_option( 'ws-ls-max-points', '25', true ),
 												'week'      => NULL,
-												'sort'      => 'asc',
+												'sort'      => 'desc',
 												'prep'      => false
 	] );
 

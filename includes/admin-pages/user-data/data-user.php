@@ -52,7 +52,7 @@ function ws_ls_admin_page_data_user() {
 							<?php
 
 								// Fetch last 25 weight entries
-								$weight_data = ws_ls_get_weights($user_id, 25, -1, 'desc');
+								$weight_data = ws_ls_db_weights_get( [ 'user-id' => $user_id, 'limit' => 25, 'prep' => true ] );
 
 								// Reverse array so in cron order
                                 if($weight_data) {

@@ -61,13 +61,11 @@ class ws_ls_widget_chart extends WP_Widget {
 				$chart_arguments[ 'show-meta-fields' ] = false;
 			}
 
-			$weight_data                = ws_ls_get_weights( $chart_arguments['user-id'], $chart_arguments['max-data-points'], - 1, 'desc' );
+			$weight_data = ws_ls_db_weights_get( [ 'user-id' => $chart_arguments['user-id'], 'limit' => $chart_arguments['max-data-points'], 'prep' => true ] );
+
 			$chart_arguments['height']  = false;
 
 			if ( false === empty( $weight_data ) ) {
-
-				// Reverse array so in cron order
-				$weight_data = array_reverse( $weight_data );
 
 				$html = ws_ls_display_chart( $weight_data, $chart_arguments );
 

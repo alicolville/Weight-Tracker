@@ -50,7 +50,7 @@ function ws_ls_shortcode_chart( $user_defined_arguments ) {
 		$chart_arguments['max-data-points'] = ws_ls_option( 'ws-ls-max-points', '25', true );
 	}
 	// Fetch data for chart
-	$weight_data = ws_ls_get_weights( $chart_arguments['user-id'], $chart_arguments['max-data-points'], - 1, 'desc' );
+	$weight_data = ws_ls_db_weights_get( [ 'user-id' => $chart_arguments['user-id'], 'limit' => $chart_arguments['max-data-points'], 'prep' => true ] );
 
 	// Reverse array so in cron order
 	if ( true === empty( $weight_data ) ) {
