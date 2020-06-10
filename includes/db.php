@@ -466,31 +466,34 @@ function ws_ls_save_data($user_id, $weight_object, $is_target_form = false, $exi
 }
 
 
-
-function ws_ls_delete_entry( $user_id, $row_id ) {
+/**
+ * Delete an entry for the given user.
+ * @param $user_id
+ * @param $row_id
+ *
+ * @return bool
+ */
+function ws_ls_db_entry_entry( $user_id, $row_id ) {
 
 	if ( true === empty( $user_id ) || true === empty( $row_id ) ) {
 		return false;
 	}
 
-  $result = false;
-  global $wpdb;
+    global $wpdb;
 
+    $result = $wpdb->delete($wpdb->prefix . WE_LS_TABLENAME, [ 'id' => $row_id, 'weight_user_id' => $user_id ] );
 
-      $result = $wpdb->delete($wpdb->prefix . WE_LS_TABLENAME, array( 'id' => $row_id, 'weight_user_id' => $user_id));
+	if ( false !== $result ) {
 
-      if ($result !== false) {
+		ws_ls_delete_cache_for_given_user( $user_id );
 
-          $result = true;
+        // Inform others of deletion!
+        do_action( 'wlt-hook-data-entry-deleted', [ 'id' => $row_id, 'user-id' => $user_id ] );
 
-          // Tidy up cache
-          ws_ls_delete_cache_for_given_user($user_id);
+        return true;
+	}
 
-          // Inform others of deletion!
-          do_action( 'wlt-hook-data-entry-deleted', [ 'id' => $row_id, 'user-id' => $user_id ] );
-      }
-
-  return $result;
+    return false;
 }
 
 function ws_ls_get_min_max_dates($user_id)
