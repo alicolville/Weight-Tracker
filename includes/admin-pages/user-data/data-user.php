@@ -54,11 +54,6 @@ function ws_ls_admin_page_data_user() {
 								// Fetch last 25 weight entries
 								$weight_data = ws_ls_db_weights_get( [ 'user-id' => $user_id, 'limit' => 25, 'prep' => true ] );
 
-								// Reverse array so in cron order
-                                if($weight_data) {
-                                    $weight_data = array_reverse($weight_data);
-                                }
-
                                 if ( true !== WS_LS_IS_PRO ) {
 
                                     echo sprintf('<p><a href="%s">%s</a> %s.</p>',

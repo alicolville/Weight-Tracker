@@ -172,9 +172,7 @@
 				// Great, we have some weight data. Chop it up so we only have (at most) 30 plot points for the graph
 				$html_output .= ws_ls_title(__('In a chart', WE_LS_SLUG));
 
-				$weight_data_for_graph = array_reverse( $weight_data );
-
-				$html_output .= ws_ls_display_chart($weight_data_for_graph);
+				$html_output .= ws_ls_display_chart( $weight_data );
 			}
 			else {
 				$html_output .= ws_ls_display_blockquote( __('A graph will appear once several weights have been entered.', WE_LS_SLUG) );

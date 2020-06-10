@@ -28,7 +28,7 @@ function ws_ls_shortcode_message($user_defined_arguments, $content = null) {
 	}
 
 	$checking_for_gains = ('gained' == $arguments['type']) ? true : false;
-
+print_R($arguments);
 	// Fetch the user's weight history
 	if( $weight_data = ws_ls_get_weights(get_current_user_id(), $arguments['consecutive'] + 1, -1, 'desc') ) {
 

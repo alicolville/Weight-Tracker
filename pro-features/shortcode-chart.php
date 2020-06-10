@@ -56,9 +56,7 @@ function ws_ls_shortcode_chart( $user_defined_arguments ) {
 	if ( true === empty( $weight_data ) ) {
 		return ws_ls_display_blockquote( __( 'No data could be found for the user.', WE_LS_SLUG ) );
 	}
-
-	$weight_data = array_reverse( $weight_data );
-
+	
 	return ws_ls_display_chart( $weight_data, $chart_arguments );
 }
 add_shortcode( 'wlt-chart', 'ws_ls_shortcode_chart' );
