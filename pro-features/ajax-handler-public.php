@@ -71,7 +71,7 @@ function ws_ls_delete_weight_entry_callback()
   $user_id = ws_ls_post_value('user-id');
   $row_id = ws_ls_post_value('row-id');
 
-  if( true == ws_ls_db_entry_entry($user_id, $row_id)){
+  if( true == ws_ls_db_entry_delete($user_id, $row_id)){
 	$ajax_response = 1;
   }
   echo $ajax_response;

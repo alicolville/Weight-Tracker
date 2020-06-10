@@ -39,7 +39,7 @@ function ws_ls_footable_delete_entry() {
 	$user_id = ws_ls_get_numeric_post_value('user_id');
 
 	// IF we have valid inputs, try and delete from DB.
-	if ($row_id && $user_id && ws_ls_db_entry_entry($user_id, $row_id)) {
+	if ($row_id && $user_id && ws_ls_db_entry_delete($user_id, $row_id)) {
 		wp_send_json(1);
 	}
 

@@ -460,7 +460,7 @@ function ws_ls_save_data($user_id, $weight_object, $is_target_form = false, $exi
  *
  * @return bool
  */
-function ws_ls_db_entry_entry( $user_id, $row_id ) {
+function ws_ls_db_entry_delete( $user_id, $row_id ) {
 
 	if ( true === empty( $user_id ) || true === empty( $row_id ) ) {
 		return false;
