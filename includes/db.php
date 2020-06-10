@@ -317,40 +317,27 @@ function ws_ls_get_weight($user_id, $row_id)
 
     return false;
 }
-/* Fetch start weight data for given user
 
-TODO: Refactor
-*/
-function ws_ls_get_start_weight($user_id)
-{
-    // Check if data exists in cache.
-    $cache_key = $user_id . '-' . WE_LS_CACHE_KEY_START_WEIGHT;
-    $cache_data = ws_ls_get_cache($cache_key);
+/**
+ * Fetch a user's starting weight
+ * @param $user_id
+ *
+ * @return string|null
+ */
+function ws_ls_db_weight_start_get( $user_id ) {
 
-    // Return cache if found!
-    if ($cache_data && !empty($cache_data))   {
-      return $cache_data;
-    }
-    // No cache? hit the DB
-    else {
+	if ( $cache = ws_ls_cache_user_get( $user_id, 'start-weight' ) ) {
+		return $cache;
+	}
 
-      global $wpdb;
-      $table_name = $wpdb->prefix . WE_LS_TABLENAME;
-      $sql =  $wpdb->prepare('SELECT weight_weight FROM ' . $table_name . ' where weight_user_id = %d order by weight_date asc limit 0, 1', $user_id);
-      $cols = $wpdb->get_col($sql);
+	global $wpdb;
 
-      // If data found in DB then save to cache and return
-      if (is_array($cols) && count($cols) > 0) {
+    $sql    =  $wpdb->prepare('SELECT weight_weight as kg FROM ' .  $wpdb->prefix . WE_LS_TABLENAME . ' where weight_user_id = %d order by weight_date asc limit 0, 1', $user_id);
+    $kg     = $wpdb->get_var( $sql );
 
-        $first_weight = $cols[0];
+	ws_ls_cache_user_set( $user_id, 'start-weight', $kg );
 
-        // Fetch existing cached object for this user and store
-        ws_ls_set_cache($cache_key, $first_weight);
-        return $first_weight;
-      }
-    }
-
-    return false;
+    return $kg;
 }
 
 function ws_ls_save_data($user_id, $weight_object, $is_target_form = false, $existing_row_id = false)
@@ -496,26 +483,30 @@ function ws_ls_db_entry_entry( $user_id, $row_id ) {
     return false;
 }
 
-function ws_ls_get_min_max_dates($user_id)
-{
-  global $wpdb;
+/**
+ * Fetch the min and max dates for the user's history
+ * @param $user_id
+ *
+ * @return array|object|void|null
+ */
+function ws_ls_db_dates_min_max_get( $user_id ) {
 
-  $cache_key = $user_id . '-' . WE_LS_CACHE_KEY_MIN_MAX_DATES;
-  $cache = ws_ls_get_cache($cache_key);
+	if ( true === empty( $user_id ) ) {
+		return NULL;
+	}
 
-  // Return cache if found!
-  if ($cache)   {
-      return $cache;
-  }
+	if ( $cache = ws_ls_cache_user_get( $user_id, 'min-max-dates' ) ) {
+		return $cache;
+	}
 
-  $table_name = $wpdb->prefix . WE_LS_TABLENAME;
-  $sql =  $wpdb->prepare('SELECT min(weight_date) as min_date, max(weight_date) as max_date FROM ' . $table_name . ' WHERE weight_user_id = %d', $user_id);
-  $row = $wpdb->get_row($sql);
-  if (!is_null($row)) {
-    ws_ls_set_cache($cache_key, $row);
-    return $row;
-  }
-  return false;
+	global $wpdb;
+
+	$sql = $wpdb->prepare('SELECT min( weight_date ) as min, max( weight_date ) as max FROM ' . $wpdb->prefix . WE_LS_TABLENAME . ' WHERE weight_user_id = %d', $user_id );
+	$row = $wpdb->get_row($sql, ARRAY_A);
+
+	ws_ls_cache_user_set( $user_id, 'min-max-dates', $row );
+
+	return $row;
 }
 
 /**

@@ -117,7 +117,7 @@ function ws_ls_weight_object($user_id, $kg, $pounds, $stones, $pounds_only, $not
     // Generate weight index
     $weight['user_id'] = $user_id;
 
-    $weight['first_weight'] = ws_ls_get_start_weight($weight['user_id']);
+    $weight['first_weight'] = ws_ls_db_weight_start_get($weight['user_id']);
     if(is_numeric($weight['first_weight']) && $weight['first_weight'] > 0 && $weight['first_weight'] <> $weight['kg']) {
 		$weight['difference_from_start_kg'] = $weight['kg'] - $weight['first_weight'];
 	  	$weight['difference_from_start'] = (($weight['difference_from_start_kg']) / $weight['first_weight']) * 100;
@@ -300,13 +300,13 @@ function ws_ls_get_unit()
 }
 function ws_ls_get_week_ranges()
 {
-  $entered_date_ranges = ws_ls_get_min_max_dates(get_current_user_id());
+  $entered_date_ranges = ws_ls_db_dates_min_max_get(get_current_user_id());
 
   if ($entered_date_ranges != false)  {
 
     // Get min and max dates for weight entries
-    $start_date = new DateTime($entered_date_ranges->min_date);
-    $end_date = new DateTime($entered_date_ranges->max_date);
+    $start_date = new DateTime($entered_date_ranges[ 'min' ]);
+    $end_date = new DateTime($entered_date_ranges[ 'max' ]);
 
     // Grab all the weekly intervals between those dates
     $interval = new DateInterval('P1W');
@@ -462,7 +462,7 @@ function ws_ls_entry_get( $entry_id ) {
 		return $cache;
 	}
 
-	$entry[ 'first_weight' ] = ws_ls_get_start_weight( $user_id );
+	$entry[ 'first_weight' ] = ws_ls_db_weight_start_get( $user_id );
 
 	$entry[ 'difference_from_start_kg' ] = ( false === empty( $entry[ 'first_weight' ] ) && $entry[ 'first_weight' ] <> $entry[ 'kg' ] ) ?
 												$entry[ 'kg' ] - $entry[ 'first_weight' ] :
