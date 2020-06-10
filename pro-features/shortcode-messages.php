@@ -28,9 +28,11 @@ function ws_ls_shortcode_message($user_defined_arguments, $content = null) {
 	}
 
 	$checking_for_gains = ('gained' == $arguments['type']) ? true : false;
-print_R($arguments);
+
+	$weight_data = ws_ls_db_weights_get( [ 'limit' => $arguments['consecutive'] + 1, 'prep' => true, 'sort' => 'desc' ] );
+
 	// Fetch the user's weight history
-	if( $weight_data = ws_ls_get_weights(get_current_user_id(), $arguments['consecutive'] + 1, -1, 'desc') ) {
+	if( false === empty( $weight_data ) ) {
 
 		// If we have data, ensure we have enough data to do our consecutive check
 		if(count($weight_data) > $arguments['consecutive']) {
