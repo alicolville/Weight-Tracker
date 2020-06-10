@@ -955,10 +955,7 @@ function ws_ls_register_settings(){
 
 		// BMI
 		register_setting( 'we-ls-options-group', 'ws-ls-display-bmi-in-tables' );
-
-		// Stats
-		register_setting( 'we-ls-options-group', 'ws-ls-disable-stats-cron' );
-
+		
 		// Emails
 		register_setting( 'we-ls-options-group', 'ws-ls-email-enable' );
 		register_setting( 'we-ls-options-group', 'ws-ls-email-addresses' );
