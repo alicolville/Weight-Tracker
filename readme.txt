@@ -192,6 +192,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 * Bug fix: User search results were showing in correct weights.
 * Bug fix: Removed dead setting "Disable notifications from YeKen?".
 * Bug fix: Meta fields cache no longer cleared on weight entry insert / save.
+* Bug fix: Delete all cache if admin delete's all data.
 
 = 7.6.1 =
 

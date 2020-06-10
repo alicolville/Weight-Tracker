@@ -139,26 +139,31 @@
 		wp_localize_script('ws-ls-js', 'ws_ls_config', ws_ls_get_js_config());
 	}
 
-	function ws_ls_use_minified() {
-        return (defined('SCRIPT_DEBUG') && false == SCRIPT_DEBUG) ? '.min' : '';
-	}
+/**
+ * Should we use a minified version of an asset file?
+ * @return string
+ */
+function ws_ls_use_minified() {
+    return ( defined('SCRIPT_DEBUG' ) && false == SCRIPT_DEBUG ) ? '.min' : '';
+}
 
-	function ws_ls_admin_config() {
-		return [
-				'ajax-security-nonce' => wp_create_nonce( 'ws-ls-nonce' ),
-				'preferences-save-ok' => __('The preferences for this user have been saved.', WE_LS_SLUG),
-				'preferences-saved-fail' => __('An error occurred while trying to save the user\'s preferences.', WE_LS_SLUG),
-				'preferences-page' => ws_ls_get_link_to_user_profile((false === empty($_GET['user-id'])) ? esc_attr($_GET['user-id']) : '')
-				];
-	}
+function ws_ls_admin_config() {
+	return [
+			'ajax-security-nonce'       => wp_create_nonce( 'ws-ls-nonce' ),
+			'preferences-save-ok'       => __('The preferences for this user have been saved.', WE_LS_SLUG),
+			'preferences-saved-fail'    => __('An error occurred while trying to save the user\'s preferences.', WE_LS_SLUG),
+			'preferences-page'          => ws_ls_get_link_to_user_profile((false === empty($_GET['user-id'])) ? esc_attr($_GET['user-id']) : '')
+			];
+}
 
-	// Tidy up various things (cache etc) when user data is deleted.
-    function ws_ls_tidy_cache_on_delete(){
-        ws_ls_delete_cache(WE_LS_CACHE_KEY_ENTRY_COUNTS);
-    }
-    add_action( 'wlt-hook-data-all-deleted', 'ws_ls_tidy_cache_on_delete');
-    add_action( 'wlt-hook-data-user-deleted', 'ws_ls_tidy_cache_on_delete');
-
+/**
+ * Delete all cache in the event admin delete's all data.
+ */
+function ws_ls_tidy_cache_on_delete(){
+	ws_ls_delete_all_cache();
+}
+add_action( 'wlt-hook-data-all-deleted', 'ws_ls_tidy_cache_on_delete' );
+add_action( 'wlt-hook-data-user-deleted', 'ws_ls_tidy_cache_on_delete' );
 
 /**
  * Add view link alongside WP action links
