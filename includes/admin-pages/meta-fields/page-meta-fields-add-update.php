@@ -10,7 +10,7 @@
         // Data Posted? If so, replace the above from $_POST object
         if ( false === empty( $_POST ) && true === ws_ls_meta_fields_is_enabled() ) {
 
-            $meta_field = ws_ls_get_values_from_post( [ 'id', 'field_name', 'abv', 'field_type', 'suffix', 'mandatory', 'enabled', 'suffix', 'sort', 'hide_from_shortcodes', 'plot_on_graph', 'plot_colour' ] );
+            $meta_field = ws_ls_get_values_from_post( [ 'id', 'field_name', 'abv', 'field_type', 'suffix', 'mandatory', 'enabled', 'suffix', 'sort', 'hide_from_shortcodes' ] );
 
             // Ensure all mandatory fields have been completed!
             foreach ( [ 'field_name', 'abv' ] as $key ) {
@@ -88,7 +88,7 @@
                                                     <?php endif; ?>
                                                 </div>
                                             </div>
-                                            <div class="ws-ls-row ws-ls-hide ws-ls-meta-fields-additional-3">
+                                            <div class="ws-ls-row ws-ls-hide" id="ws-ls-meta-fields-additional-3">
                                                 <div class="ws-ls-cell">
                                                     <label for="hide_from_shortcodes"><?php echo __('Hide from shortcodes', WE_LS_SLUG); ?></label>
                                                 </div>
