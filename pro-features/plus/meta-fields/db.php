@@ -252,13 +252,7 @@ function ws_ls_meta_fields( $exclude_system = true, $ignore_cache = false ) {
  *
  * Update a field.
  *
- * @param $unit    array:   field_key
- *                          field_name
- *                          abv
- *                          display_on_chart
- *                          system
- *                          unit_id
- *
+ * @param $field
  * @return bool     true if success
  */
 function ws_ls_meta_fields_update( $field ) {
@@ -309,7 +303,7 @@ function ws_ls_meta_fields_update( $field ) {
  *
  * Add a field.
  *
- * @param $unit    array:   field_key
+ * @param $field    array:  field_key
  *                          field_name
  *                          abv
  *                          system
@@ -470,8 +464,6 @@ function ws_ls_meta_formats( $data ) {
 		'plot_colour'			=> '%s',
 		'migrate'				=> '%d'
     ];
-
-    $return = [];
 
     foreach ( $data as $key => $value) {
         if ( false === empty( $formats[ $key ] ) ) {

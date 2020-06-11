@@ -155,6 +155,8 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 == Changelog ==
 
+= 7.7 =
+
 //todo: get everything dynamic out of globals
 //todo: ws_ls_shortcode_form - add argument to hide custom fields. Also update doc to remove measurements arg
 //todo: remove measurements from documentation site
@@ -193,7 +195,6 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 * Bug fix: Removed dead setting "Disable notifications from YeKen?".
 * Bug fix: Meta fields cache no longer cleared on weight entry insert / save.
 * Bug fix: Delete all cache if admin delete's all data.
-
 
 = 7.6.2 =
 

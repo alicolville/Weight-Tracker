@@ -12,7 +12,7 @@ defined('ABSPATH') or die('Jog on!');
  * Text Domain: weight-loss-tracker
  */
 /*  Copyright 2020 YeKen.uk
-s
+
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License, version 2, as
     published by the Free Software Foundation.
@@ -175,6 +175,8 @@ s
     if( true === WE_LS_EMAIL_ENABLE ) {
         $files_to_include[] = 'pro-features/emails.php';
     }
+
+	$files_to_include[] = 'includes/deprecated.php';
 
     foreach ( $files_to_include as $file ) {
         require_once( WS_LS_ABSPATH . $file );
