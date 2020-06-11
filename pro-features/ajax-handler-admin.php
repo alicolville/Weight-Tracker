@@ -73,6 +73,14 @@ function ws_ls_ajax_get_errors(){
 }
 add_action( 'wp_ajax_get_errors', 'ws_ls_ajax_get_errors' );
 
+/**
+ * Deprecated!! Replace with  ws_ls_post_value_numeric
+ *
+ * @param $key
+ * @param bool $default
+ *
+ * @return bool|mixed
+ */
 function ws_ls_get_numeric_post_value($key, $default = false) {
 	return (isset($_POST[$key]) && is_numeric($_POST[$key])) ? $_POST[$key] : $default;
 }

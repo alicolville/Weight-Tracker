@@ -721,6 +721,24 @@ function ws_ls_post_value_to_bool( $key ) {
 }
 
 /**
+ * Check for POST value and whether numeric or not
+ * @param $key
+ * @param null $default
+ *
+ * @return mixed|null
+ */
+function ws_ls_post_value_numeric( $key, $default = NULL ) {
+
+	$value = ws_ls_post_value( $key, $default );
+
+	if ( false === is_numeric( $value ) ) {
+		return $default;
+	}
+
+	return $value;
+}
+
+/**
  * Either fetch data from the $_POST object for the given object keys
  *
  * TODO: Refactor to use ws_ls_post_value()
