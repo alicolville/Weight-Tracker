@@ -342,10 +342,10 @@ function ws_ls_settings_page_generic() {
                                                     <th scope="row"><?php echo __( 'Calories to subtract' , WE_LS_SLUG); ?></th>
                                                     <?php
 
-														$subtract_ranges = ws_ls_harris_benedict_calorie_subtract_ranges();
+														$subtract_ranges = ( true === WS_LS_IS_PRO_PLUS ) ? ws_ls_harris_benedict_calorie_subtract_ranges() : [];
                                                     ?>
                                                     <td>
-														<p><?php echo __( 'Once the daily calorie intake to maintain weight has been established, use the following table to define how many calories should be subtracted for the user to lose weight. You have the ability to set up ranges - if the user\'s calorie intake figure to maintain weight lands within that range you have the ability to specify whether to subtract a fixed number of calories or a percentage of the calorie intake. 
+														<p><?php echo __( 'Once the daily calorie intake to maintain weight has been established, use the following table to define how many calories should be subtracted for the user to lose weight. You have the ability to set up ranges - if the user\'s calorie intake figure to maintain weight lands within that range you have the ability to specify whether to subtract a fixed number of calories or a percentage of the calorie intake.
 														' , WE_LS_SLUG); ?></p>
 														<br />
 														<table class="widefat ws-ls-calories-modify-table">
@@ -378,10 +378,10 @@ function ws_ls_settings_page_generic() {
 																							<option value="1" %10$s>%11$s</option>
 																							<option value="2" %12$s>%13$s</option>
 																						</select>
-																					</td>	
+																					</td>
 																					<td>
 																						<input type="number" step="any" min="0" max="9999" name="%1$s-from" id="%1$s-from" value="%2$d" size="5" />
-																					</td>						
+																					</td>
 																					<td>
 																						<input type="number" step="any" min="0" max="9999" name="%1$s-to" id="%1$s-to" value="%3$d" size="5" />
 																					</td>
@@ -444,10 +444,10 @@ function ws_ls_settings_page_generic() {
 													<th scope="row"><?php echo __( 'Calories to add' , WE_LS_SLUG); ?></th>
 													<?php
 
-													$add_ranges = ws_ls_harris_benedict_calorie_add_ranges();
+													$add_ranges = ( true === WS_LS_IS_PRO_PLUS ) ? ws_ls_harris_benedict_calorie_add_ranges() : [];
 													?>
 													<td>
-														<p><?php echo __( 'Once the daily calorie intake to maintain weight has been established, use the following table to define how many calories should be subtracted for the user to gain weight. You have the ability to set up ranges - if the user\'s calorie intake figure to maintain weight lands within that range you have the ability to specify whether to add a fixed number of calories or a percentage of the calorie intake. 
+														<p><?php echo __( 'Once the daily calorie intake to maintain weight has been established, use the following table to define how many calories should be subtracted for the user to gain weight. You have the ability to set up ranges - if the user\'s calorie intake figure to maintain weight lands within that range you have the ability to specify whether to add a fixed number of calories or a percentage of the calorie intake.
 														' , WE_LS_SLUG); ?></p>
 														<br />
 														<table class="widefat ws-ls-calories-modify-table">
@@ -480,10 +480,10 @@ function ws_ls_settings_page_generic() {
 																							<option value="1" %10$s>%11$s</option>
 																							<option value="2" %12$s>%13$s</option>
 																						</select>
-																					</td>	
+																					</td>
 																					<td>
 																						<input type="number" step="any" min="0" max="9999" name="%1$s-from" id="%1$s-from" value="%2$d" size="5" />
-																					</td>						
+																					</td>
 																					<td>
 																						<input type="number" step="any" min="0" max="9999" name="%1$s-to" id="%1$s-to" value="%3$d" size="5" />
 																					</td>
