@@ -28,12 +28,9 @@
                 mandatory int DEFAULT 1,
                 enabled int DEFAULT 1,
                 hide_from_shortcodes int DEFAULT 0,
-                plot_on_graph int DEFAULT 0,
-                plot_colour varchar(10) NOT NULL,
                 `system` BIT DEFAULT 0,
                 field_type int NOT NULL,
                 sort int DEFAULT 100,
-                migrate int DEFAULT 0,
                 UNIQUE KEY id (id)
             ) $charset_collate;";
 
@@ -46,7 +43,7 @@
                 entry_id int NOT NULL,
                 meta_field_id int NOT NULL,
                 value varchar(800) NOT NULL,
-                migrate int DEFAULT 0,
+                migrate BIT DEFAULT 0,
                 UNIQUE KEY id (id)              
             ) $charset_collate;";
 
@@ -83,9 +80,6 @@
 
 		        ws_ls_meta_fields_photos_migrate_old();
 	        }
-
-	        // Do we need to migrate measurements?
-			ws_ls_migrate_measurement_into_meta_fields();
 
         }
 

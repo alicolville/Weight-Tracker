@@ -230,7 +230,13 @@ function ws_ls_meta_fields( $exclude_system = true, $ignore_cache = false ) {
  *
  * Update a field.
  *
- * @param $field
+ * @param $unit    array:   field_key
+ *                          field_name
+ *                          abv
+ *                          display_on_chart
+ *                          system
+ *                          unit_id
+ *
  * @return bool     true if success
  */
 function ws_ls_meta_fields_update( $field ) {
@@ -281,7 +287,7 @@ function ws_ls_meta_fields_update( $field ) {
  *
  * Add a field.
  *
- * @param $field    array:  field_key
+ * @param $unit    array:   field_key
  *                          field_name
  *                          abv
  *                          display_on_chart
@@ -311,7 +317,7 @@ function ws_ls_meta_fields_add( $field ) {
     $formats = ws_ls_meta_formats( $field );
 
     $result = $wpdb->insert( $wpdb->prefix . WE_LS_MYSQL_META_FIELDS , $field, $formats );
-	
+
 	ws_ls_cache_user_delete( 'meta-fields' );
 
     return ( false === $result ) ? false : $wpdb->insert_id;
@@ -420,27 +426,26 @@ function ws_ls_meta_fields_get_user_ids_for_this_meta_field( $meta_field_id ) {
 function ws_ls_meta_formats( $data ) {
 
     $formats = [
-        'id' 					=> '%d',
-        'field_key'				=> '%s',
-        'field_name' 			=> '%s',
-        'abv' 					=> '%s',
-        'chartable' 			=> '%d',
-        'display_on_chart' 		=> '%d',
-		'entry_id' 				=> '%d',
-        'system' 				=> '%d',
-        'unit_id' 				=> '%d',
-		'meta_field_id' 		=> '%d',
-		'value' 				=> '%s',
-		'field_type' 			=> '%d',
-		'suffix' 				=> '%s',
-        'enabled'				=> '%d',
-        'sort' 					=> '%d',
-        'mandatory' 			=> '%d',
-        'hide_from_shortcodes' 	=> '%d',
-		'plot_on_graph'			=> '%d',
-		'plot_colour'			=> '%s',
-		'migrate'				=> '%d'
+        'id' => '%d',
+        'field_key' => '%s',
+        'field_name' => '%s',
+        'abv' => '%s',
+        'chartable' => '%d',
+        'display_on_chart' => '%d',
+		'entry_id' => '%d',
+        'system' => '%d',
+        'unit_id' => '%d',
+		'meta_field_id' => '%d',
+		'value' => '%s',
+		'field_type' => '%d',
+		'suffix' => '%s',
+        'enabled' => '%d',
+        'sort' => '%d',
+        'mandatory' => '%d',
+        'hide_from_shortcodes' => '%d'
     ];
+
+    $return = [];
 
     foreach ( $data as $key => $value) {
         if ( false === empty( $formats[ $key ] ) ) {

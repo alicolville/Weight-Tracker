@@ -5,7 +5,7 @@ defined('ABSPATH') or die('Jog on!');
 /**
  * Plugin Name: Weight Tracker
  * Description: Allow your users to track their weight, measurements and other pieces of custom data. Display in charts, tables, shortcodes and widgets. Manage their data, issue awards, email notifications, etc! Provide advanced data on Body Mass Index (BMI), Basal Metabolic Rate (BMR), Calorie intake, Harris Benedict Formula, Macronutrients Calculator and more.
- * Version: 7.7
+ * Version: 7.6.1
  * Author: YeKen
  * Author URI: https://www.YeKen.uk
  * License: GPL2
@@ -28,8 +28,8 @@ defined('ABSPATH') or die('Jog on!');
 */
 
     define('WS_LS_ABSPATH', plugin_dir_path( __FILE__ ));
-    define('WE_LS_CURRENT_VERSION', '7.7');
-    define('WE_LS_DB_VERSION', '7.7');
+    define('WE_LS_CURRENT_VERSION', '7.6.1');
+    define('WE_LS_DB_VERSION', '7.6.1');
 
 // -----------------------------------------------------------------------------------------
 // AC: Activate / Deactivate / Uninstall Hooks
@@ -177,8 +177,6 @@ defined('ABSPATH') or die('Jog on!');
     if( true === WE_LS_EMAIL_ENABLE ) {
         $files_to_include[] = 'pro-features/emails.php';
     }
-
-	$files_to_include[] = 'includes/deprecated.php';
 
     foreach ( $files_to_include as $file ) {
         require_once( WS_LS_ABSPATH . $file );
