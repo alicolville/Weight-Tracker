@@ -92,31 +92,16 @@ function ws_ls_gravity_forms_process( $entry, $form ) {
 
         $weight['kg'] = $matched_fields['wlt-kg'];
 
-        $weight['only_pounds'] = ws_ls_convert_kg_to_lb( $weight['kg'] );
-
-        $conversion = ws_ls_convert_kg_to_stone_pounds( $weight['kg'] );
-        $weight['stones'] = $conversion['stones'];
-        $weight['pounds'] = $conversion['pounds'];
-
 	} elseif ( array_key_exists( $prefix . 'pounds', $matched_fields ) && array_key_exists( $prefix . 'stones', $matched_fields )
                     && is_numeric( $matched_fields[ $prefix . 'pounds' ] )  && is_numeric( $matched_fields[ $prefix . 'stones' ] )
                 ) {
 
-        $weight['stones'] = $matched_fields[ $prefix . 'stones' ];
-        $weight['pounds'] = $matched_fields[ $prefix . 'pounds' ];
-
-        $weight['kg'] = ws_ls_convert_stones_pounds_to_kg( $weight['stones'], $weight['pounds'] );
-        $weight['only_pounds'] = ws_ls_convert_stones_pounds_to_pounds( $weight['stones'], $weight['pounds'] );
+        $weight['kg'] = ws_ls_convert_stones_pounds_to_kg( $matched_fields[ $prefix . 'stones' ], $matched_fields[ $prefix . 'pounds' ] );
 
 	} elseif ( array_key_exists( $prefix . 'pounds', $matched_fields ) && is_numeric( $matched_fields[ $prefix . 'pounds' ] ) ) {
 
         $weight['kg'] = ws_ls_convert_pounds_to_kg( $matched_fields[ $prefix . 'pounds' ] );
 
-        $conversion = ws_ls_convert_pounds_to_stone_pounds( $matched_fields[ $prefix . 'pounds' ] );
-        $weight['stones'] = $conversion[ 'stones' ];
-        $weight['pounds'] = $conversion[ 'pounds' ];
-
-        $weight['only_pounds'] = $matched_fields[ $prefix . 'pounds' ];
 	}
 
     // Have we got a weight?
@@ -147,7 +132,7 @@ function ws_ls_gravity_forms_process( $entry, $form ) {
 	// Meta Fields
 	// --------------------------------------------------------------------------------
 
-    $weight[ 'meta-keys' ] = [];
+    $meta = [];
 
     if ( true === ws_ls_meta_fields_is_enabled() ) {
 
@@ -166,13 +151,13 @@ function ws_ls_gravity_forms_process( $entry, $form ) {
 
 					$photo_id = attachment_url_to_postid( $matched_fields[ $gf_field_key ] );
 
-					$weight[ 'meta-keys' ][ $meta_field['id'] ] = $photo_id;
+					$meta[ $meta_field['id'] ] = $photo_id;
 
 					GFCommon::log_debug( sprintf('Adding photo %s ( %s ) to Weight Entry', $matched_fields['wlt-photo'], $photo_id ) );
 
 				} else {
 
-					$weight[ 'meta-keys' ][ $meta_field['id'] ] = $matched_fields[ $gf_field_key ];
+					$meta[ $meta_field['id'] ] = $matched_fields[ $gf_field_key ];
 
 					GFCommon::log_debug( sprintf('Found meta field %s', $gf_field_key ) );
 				}
@@ -187,10 +172,10 @@ function ws_ls_gravity_forms_process( $entry, $form ) {
     // Add additional fields
     // --------------------------------------------------------------------------------
 
-    $weight['date'] = $matched_fields['wlt-date'];
+    $weight[ 'weight_date' ] = ws_ls_convert_date_to_iso( $matched_fields['wlt-date'] );
 
     // Do we have a weight entry?
-    $weight['notes'] = ( false === empty( $matched_fields['wlt-notes'] ) ? $matched_fields['wlt-notes'] : '' );
+    $weight[ 'weight_notes' ] = ( false === empty( $matched_fields['wlt-notes'] ) ? $matched_fields['wlt-notes'] : '' );
 
     $user_id = get_current_user_id();
 
@@ -198,10 +183,20 @@ function ws_ls_gravity_forms_process( $entry, $form ) {
     GFCommon::log_debug( 'Data trying to be saved: ' . print_r( $weight, true ) );
 
 	// Add weight entry!
-    $result = ws_ls_save_data( $user_id , $weight, $is_target_form = false );
+    $result = ws_ls_db_entry_set( $weight , $user_id );
 
-    if ( true === $result ) {
+    if ( false === empty( $result ) ) {
+
         GFCommon::log_debug( 'Weight entry saved!' );
+
+		foreach ( $meta as $key => $value ) {
+
+			$meta_field = [ 'entry_id' => $result, 'key' => $key, 'value' => $value ];
+
+			GFCommon::log_debug( 'Adding meta data: ' . print_r( $meta_field, true ) );
+
+			ws_ls_meta_add_to_entry( $meta_field );
+		}
     } else {
         GFCommon::log_debug( 'Weight entry did not save correctly :(' );
     }
