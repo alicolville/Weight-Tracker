@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight, loss, lose, tracker, bmi, bmr, macronutrient, graph, track, stones, kg, table, calories, awards, email, custom, fields, history, pounds, responsive, chart, measurements, cm, centimeters, inches, photos
 Requires at least: 4.4.9
 Tested up to: 5.4.1
-Stable tag: 7.7
+Stable tag: 7.6.2
 Requires PHP: 7.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -155,19 +155,9 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 == Changelog ==
 
-= 7.7 =
+= 7.6.2 =
 
-//TODO: Remove measurement fields and tab... constants too
-// TODO: Deprecate Bar Chart
-// TODO: Remove incompatibility stuff
-// TODO: Remove challenges beta
-// TODO: Review Comms back
-//TODO: Can these go? 'chartable' 			=> '%d',
-                              'display_on_chart' 		=> '%d',
-// How do we deal with height? //'height' => [ 'title' => __('Height', WE_LS_SLUG), 'abv' => __('H', WE_LS_SLUG), 'enabled' => true, 'user_preference' => true),
-
-
-* Improvement: Allow numeric custom fields to be plotted on charts.
+* Bug fix: Error thrown on settings page as Pro Plus not active.
 
 = 7.6.1 =
 

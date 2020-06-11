@@ -70,7 +70,6 @@
 			shoulders float NULL,
 			neck float NULL,
 			photo_id int NULL,
-			migrate int NULL DEFAULT 0,
 			inserted TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 		  UNIQUE KEY id (id)
 		) $charset_collate;";
@@ -152,23 +151,18 @@
 	}
     add_action('ws-ls-rebuild-database-tables', 'ws_ls_create_mysql_tables');
 
-/**
- * When the plugin has been installed or upgraded, then update DB and do relevant tasks.
- */
-function ws_ls_upgrade() {
+	function ws_ls_upgrade() {
 
-	if( update_option('ws-ls-version-number', WE_LS_DB_VERSION ) ) {
+		if( update_option('ws-ls-version-number', WE_LS_DB_VERSION ) ) {
 
-		ws_ls_create_mysql_tables();
-		ws_ls_activate();
+			ws_ls_create_mysql_tables();
+			ws_ls_activate();
 
-		// This will force all stat entries to be recreated.
-		ws_ls_stats_clear_last_updated_date();
+			// This will force all stat entries to be recreated.
+            ws_ls_stats_clear_last_updated_date();
 
-		// Check the license is still valid
-		ws_ls_licences_cron();
-
-		do_action( 'ws-ls-plugin-updated' );
+            // Check the license is still valid
+            ws_ls_licences_cron();
+ 		}
 	}
-}
-add_action('admin_init', 'ws_ls_upgrade');
+	add_action('admin_init', 'ws_ls_upgrade');
