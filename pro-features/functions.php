@@ -440,7 +440,7 @@ function ws_ls_display_user_setting($user_id, $field = 'dob', $not_specified_tex
 
 	$not_specified_text = (false === $not_specified_text) ? __('Not Specified', WE_LS_SLUG) : esc_html($not_specified_text);
 
-	$user_data = ws_ls_get_user_setting($field, $user_id);
+	$user_data = ws_ls_user_preferences_get($field, $user_id);
 
 	switch ($field) {
 		case 'activity_level':
@@ -486,7 +486,7 @@ function ws_ls_is_female( $user_id ) {
 
     $user_id = ( true === empty( $user_id ) ) ? get_current_user_id() : $user_id;
 
-    $gender = ws_ls_get_user_setting( 'gender', $user_id );
+    $gender = ws_ls_user_preferences_get( 'gender', $user_id );
 
     return ( false === empty( $gender ) && 1 == (int) $gender ) ? true : false;
 }
@@ -501,7 +501,7 @@ function ws_ls_get_dob($user_id) {
 
 	$user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
 
-    return ws_ls_get_user_setting('dob', $user_id);
+    return ws_ls_user_preferences_get('dob', $user_id);
 }
 
 /**
@@ -606,7 +606,7 @@ function ws_ls_user_exist_check($user_id ) {
  */
 function ws_ls_get_progress_attribute_from_aim() {
 
-    $aim_int = (int) ws_ls_get_user_setting( 'aim' );
+    $aim_int = (int) ws_ls_user_preferences_get( 'aim' );
 
     switch ( $aim_int ) {
 	    case 1:
@@ -640,4 +640,38 @@ function ws_ls_array_check_fields($data, $expected_fields ) {
     }
 
     return true;
+}
+
+/**
+ * Fetch a user preference
+ * @param string $field
+ * @param bool $user_id
+ *
+ * @return |null
+ */
+function ws_ls_user_preferences_get( $field = 'gender', $user_id = false ) {
+
+	// Default to logged in user if not user ID not specified.
+	$user_id = ( true === empty( $user_id ) ) ? get_current_user_id() : $user_id;
+
+	$user_preferences = ws_ls_db_user_preferences( $user_id );
+
+	return ( true === array_key_exists( $field, $user_preferences ) ) ? $user_preferences[ $field ] : NULL;
+}
+
+
+/**
+ * Fetch user preferences
+ * @param null $user_id
+ * @param bool $use_cache
+ * @return array|mixed|string|null
+ */
+function ws_ls_user_preferences_get_settings( $user_id = NULL ) {
+
+	$user_id    = ( NULL === $user_id ) ? get_current_user_id() : $user_id;
+	$settings   = ws_ls_user_preferences_get( 'settings', $user_id );
+
+	return ( false === empty( $settings ) ) ?
+			$settings = json_decode( $settings, true ) :
+				$settings;
 }

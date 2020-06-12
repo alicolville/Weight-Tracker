@@ -419,7 +419,7 @@ function ws_ls_get_user_preference( $key, $user_id = false )
     $user_id = get_current_user_id();
   }
 
-  $user_preferences = ws_ls_user_preferences_get( $user_id );
+  $user_preferences = ws_ls_user_preferences_get_settings( $user_id );
 
   if(array_key_exists($key, $user_preferences)){
     return $user_preferences[$key];

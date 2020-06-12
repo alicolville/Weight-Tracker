@@ -24,7 +24,7 @@ function ws_ls_challenges_shortcodes_opt_in() {
         );
     }
 
-	$opt_int_status     = ws_ls_get_user_setting( 'challenge_opt_in' );
+	$opt_int_status     = ws_ls_user_preferences_get( 'challenge_opt_in' );
 	$status_never_set   = ( -1 === (int) $opt_int_status );
 
 	// Only show the buttons if a User had never specified an opt-in preference before.

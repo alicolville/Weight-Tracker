@@ -87,7 +87,7 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
 		<label>' . $labels['aim'] . '</label>
 		<select id="ws-ls-aim" name="ws-ls-aim"  tabindex="' . ws_ls_get_next_tab_index() . '" class="ws-ls-aboutyou-field">';
 
-    $existing_aim = ws_ls_get_user_setting('aim', $user_id);
+    $existing_aim = ws_ls_user_preferences_get('aim', $user_id);
     $existing_aim = (true === empty($existing_aim)) ? '0' : $existing_aim;
 
     foreach (ws_ls_aims() as $key => $value) {
@@ -110,7 +110,7 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
     <label>' . $labels['height'] . '</label>
     <select id="we-ls-height" name="we-ls-height"  tabindex="' . ws_ls_get_next_tab_index() . '" class="ws-ls-aboutyou-field">';
     $heights = ws_ls_heights();
-    $existing_height = ws_ls_get_user_height($user_id, false);
+    $existing_height = ws_ls_get_user_height($user_id);
 
     foreach ($heights as $key => $value) {
         $html_output .= sprintf('<option value="%s" %s>%s</option>', $key, selected($key, $existing_height, false), $value);
@@ -125,7 +125,7 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
 		<label>' . $labels['gender'] . '</label>
 		<select id="ws-ls-gender" name="ws-ls-gender"  tabindex="' . ws_ls_get_next_tab_index() . '" class="ws-ls-aboutyou-field">';
 
-        $existing_gender = ws_ls_get_user_setting('gender', $user_id);
+        $existing_gender = ws_ls_user_preferences_get('gender', $user_id);
         $existing_gender = (true === empty($existing_gender)) ? '0' : $existing_gender;
 
         foreach (ws_ls_genders() as $key => $value) {
@@ -147,7 +147,7 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
 		<label>' . $labels['activitylevel'] . '</label>
 		<select id="ws-ls-activity-level" name="ws-ls-activity-level"  tabindex="' . ws_ls_get_next_tab_index() . '" class="ws-ls-aboutyou-field">';
 
-    $activity_level = ws_ls_get_user_setting('activity_level', $user_id);
+    $activity_level = ws_ls_user_preferences_get('activity_level', $user_id);
     $activity_level = (true === empty($activity_level)) ? '0' : $activity_level;
 
     foreach (ws_ls_activity_levels() as $key => $value) {

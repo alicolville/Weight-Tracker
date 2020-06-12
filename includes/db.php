@@ -451,7 +451,7 @@ function ws_ls_set_user_preferences($in_admin_area, $fields = [])
     if (false !== $db_fields['height']) {
         $db_fields['height'] = ws_ls_height_validate($db_fields['height']);
     } else {
-        $db_fields['height'] = ws_ls_get_user_height($db_fields['user_id'], false);
+        $db_fields['height'] = ws_ls_get_user_height($db_fields['user_id']);
     }
 
     // Set data types
@@ -534,7 +534,7 @@ function ws_ls_set_user_preference_simple( $field, $value, $user_id = NULL ) {
     $user_id = $user_id ?: get_current_user_id();
 
     // Check for existing settings for this user, if none, then we need to insert the settings row
-    if ( true === empty( ws_ls_user_preferences_get( $user_id ) ) ) {
+    if ( true === empty( ws_ls_user_preferences_get_settings( $user_id ) ) ) {
         return ws_ls_set_user_preference( $field, $value, $user_id );
     }
 
@@ -596,40 +596,6 @@ function ws_ls_user_preferences_get_formats( $db_fields ) {
 }
 
 /**
- * Fetch user preferences
- * @param null $user_id
- * @param bool $use_cache
- * @return array|mixed|string|null
- */
-function ws_ls_user_preferences_get( $user_id = NULL, $use_cache = true ) {
-
-  	$user_id = ( NULL === $user_id ) ? get_current_user_id() : $user_id;
-
-	// Cached?
-	if ( true === $use_cache &&
-			$cache = ws_ls_cache_user_get( $user_id, 'preferences' ) ) {
-		return $cache;
-	}
-
-	global $wpdb;
-
-  	$sql 		= $wpdb->prepare('SELECT settings FROM ' . $wpdb->prefix . WE_LS_USER_PREFERENCES_TABLENAME . ' WHERE user_id = %d' , $user_id );
-  	$settings 	= $wpdb->get_var( $sql );
-
-	if ( false === empty( $settings ) ) {
-		$settings = json_decode( $settings, true );
-	}
-
-	if ( false === is_array( $settings ) ) {
-		$settings = [ 'empty' => true ];	// This is a little hack, if we have no settings for this user, store an empty flag so caching works for DB lookup
-	}
-
-	ws_ls_cache_user_set( $user_id, 'preferences', $settings );
-
-	return $settings;
-}
-
-/**
  * Fetch a user's height from preferences
  * @param bool $user_id
  * @param bool $use_cache
@@ -656,40 +622,6 @@ function ws_ls_get_user_height( $user_id = false, $use_cache = true ) {
   ws_ls_set_cache( $cache_key, $height );
 
   return $height;
-}
-
-function ws_ls_get_user_setting($field = 'gender', $user_id = false, $use_cache = true) {
-
-    global $wpdb;
-
-    // Default to logged in user if not user ID not specified.
-    $user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
-
-    $valid_settings = apply_filters( 'wlt-filter-setting-fields', ['activity_level', 'gender', 'height', 'dob', 'aim', 'body_type', 'challenge_opt_in' ] );
-
-    // Validate field
-    $field = ( in_array($field, $valid_settings) ) ? $field : 'gender';
-
-    $cache_key = WE_LS_CACHE_KEY_USER_PREFERENCE . '-' . $field;
-
-    // Return cache if found!
-    $cache = ws_ls_cache_user_get($user_id, $cache_key);
-    if (false === empty($cache) && true == $use_cache)   {
-    	return $cache;
-    }
-
-    $sql =  $wpdb->prepare('SELECT ' . $field . ' FROM ' . $wpdb->prefix . WE_LS_USER_PREFERENCES_TABLENAME . ' WHERE user_id = %d', $user_id);
-    $row = $wpdb->get_row($sql, ARRAY_A);
-
-    $result = NULL;
-
-    if($row[$field]) {
-		$result = apply_filters( 'wlt-filter-user-setting-' . $field, $row[$field], $user_id, $field );
-    }
-
-	ws_ls_cache_user_set($user_id, $cache_key, $result);
-
-    return $result;
 }
 
 /**

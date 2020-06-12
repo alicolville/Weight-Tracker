@@ -135,9 +135,9 @@ function ws_ls_challenges_data_update_row( $user_id, $challenge_id ) {
 	$data[ 'bmi_diff' ]         = ws_ls_round_number( $data[ 'bmi_latest' ] - $data[ 'bmi_start' ], 1 );
 
 	// Handy user preferences
-	$data[ 'gender' ]       = ws_ls_get_user_setting( 'gender', $user_id );
+	$data[ 'gender' ]       = ws_ls_user_preferences_get( 'gender', $user_id );
 	$data[ 'age' ]          = ws_ls_get_age_from_dob( $user_id );
-	$data[ 'opted_in' ]     = ws_ls_get_user_setting( 'challenge_opt_in', $user_id );
+	$data[ 'opted_in' ]     = ws_ls_user_preferences_get( 'challenge_opt_in', $user_id );
 
 	$data[ 'group_id' ]    = NULL;
 

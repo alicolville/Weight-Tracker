@@ -22,7 +22,7 @@ function ws_ls_harris_benedict_calculate_calories($user_id = false) {
 	}
 
 	// Fetch the user's activity level
-	$activity_level = ws_ls_get_user_setting('activity_level', $user_id);
+	$activity_level = ws_ls_user_preferences_get('activity_level', $user_id);
 
 	if( true === empty( $activity_level ) ) {
 		return NULL;
@@ -463,7 +463,7 @@ function ws_ls_harris_benedict_filter_calories_to_add( $calories_to_maintain = N
 			continue;
 		}
 
-		$user_gender 		= (int) ws_ls_get_user_setting('gender', $user_id );
+		$user_gender 		= (int) ws_ls_user_preferences_get('gender', $user_id );
 		$gender_match_rule	= ( (int) $range[ 'gender' ] === $user_gender  || 0 === (int) $range[ 'gender' ] ) ;
 
 		// Does the calorie intake fall into this range?
@@ -526,7 +526,7 @@ function ws_ls_harris_benedict_filter_calories_to_lose( $calories_to_maintain = 
 			continue;
 		}
 
-		$user_gender 		= (int) ws_ls_get_user_setting('gender', $user_id );
+		$user_gender 		= (int) ws_ls_user_preferences_get('gender', $user_id );
 		$gender_match_rule	= ( (int) $range[ 'gender' ] === $user_gender  || 0 === (int) $range[ 'gender' ] ) ;
 
 		// Does the calorie intake fall into this range?

@@ -26,7 +26,7 @@
 		}
 
         // First, we need to ensure the person has a gender.
-        $gender = ws_ls_get_user_setting('gender', $user_id);
+        $gender = ws_ls_user_preferences_get('gender', $user_id);
 
         if(true === empty($gender)) {
             return ($return_error) ? __('No Gender specified', WE_LS_SLUG) : NULL;
@@ -40,7 +40,7 @@
         }
 
         //Get height
-        $height = ws_ls_get_user_setting('height', $user_id);
+        $height = ws_ls_user_preferences_get('height', $user_id);
 
         if(true === empty($height)) {
             return ($return_error) ? __('No Height specified', WE_LS_SLUG) : NULL;
