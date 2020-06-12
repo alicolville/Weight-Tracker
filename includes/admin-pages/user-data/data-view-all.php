@@ -25,7 +25,7 @@ function ws_ls_admin_page_view_all() {
 						<div class="inside">
 							<?php
 
-									$entry_counts = ws_ls_get_entry_counts();
+									$entry_counts = ws_ls_db_entries_count();
 
 									if(false === empty($entry_counts)) {
 

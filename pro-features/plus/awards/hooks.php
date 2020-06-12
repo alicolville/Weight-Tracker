@@ -15,7 +15,7 @@
         }
 
         // Ensure the user has more than one weight entry! No point doing any comparisons!
-        $user_stats = ws_ls_get_entry_counts(  $info['user-id'] );
+        $user_stats = ws_ls_db_entries_count(  $info['user-id'] );
 
 	    if ( (int) $user_stats[ 'number-of-entries' ] <= 1 ) {
 	    	return;

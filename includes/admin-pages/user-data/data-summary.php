@@ -131,7 +131,7 @@ function ws_ls_admin_page_data_summary() {
 						<div class="inside">
 							<?php
 
-								$entry_counts = ws_ls_get_entry_counts();
+								$entry_counts = ws_ls_db_entries_count();
 
 								if(false === empty($entry_counts)) {
 

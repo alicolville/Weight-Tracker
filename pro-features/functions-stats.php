@@ -104,7 +104,7 @@ function ws_ls_stats_update_for_user($user_id) {
 		$stats['weight_difference'] = (is_numeric($stats['start_weight']) && is_numeric($stats['recent_weight'])) ? $stats['recent_weight'] - $stats['start_weight'] : 0;
 		$stats['last_update'] = current_time('mysql', 1);
 
-		$entry_stats = ws_ls_get_entry_counts($user_id, false);
+		$entry_stats = ws_ls_db_entries_count($user_id, false);
 		$stats['no_entries'] = $entry_stats['number-of-entries'];
         $stats['target_added'] = ($entry_stats['number-of-targets'] > 0) ? 1 : 0;
 

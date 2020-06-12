@@ -200,8 +200,6 @@ function ws_ls_db_entry_for_date( $user_id, $date ) {
 	return $entry_id;
 }
 
-
-
 /**
  * Fetch weight entries for user
  * @param array $arguments
@@ -694,28 +692,35 @@ function ws_ls_get_user_setting($field = 'gender', $user_id = false, $use_cache 
     return $result;
 }
 
+/**
+ * Fetch entry counts for the given user or for the site as a whole
+ * @param null $user_id
+ * @param bool $use_cache
+ *
+ * @return array|null
+ */
+function ws_ls_db_entries_count( $user_id = NULL, $use_cache = true ) {
 
-function ws_ls_get_entry_counts($user_id = false, $use_cache = true) {
+    // If not looking up user stats, then store against dummy cache
+	$user_id = ( true === empty( $user_id ) ) ? -1 : (int) $user_id;
 
-    global $wpdb;
+	$cache = ws_ls_cache_user_get( $user_id, 'entry-counts' );
 
-    $cache_key = WE_LS_CACHE_KEY_ENTRY_COUNTS;
-    $cache = ws_ls_get_cache($cache_key);
+	if ( true == $use_cache &&
+	        false === empty( $cache )  )   {
+		return $cache;
+	}
 
-    // Return cache if found!
-    if ($cache && true == $use_cache && false === $user_id)   {
-        return $cache;
-    }
+	$where = ( -1 !== $user_id ) ? ' where weight_user_id = ' . (int) $user_id : '';
 
-    $stats = ['number-of-users' => false, 'number-of-entries' => false, 'number-of-targets' => false];
+	global $wpdb;
 
-    $where = (false === empty($user_id) && true === is_numeric($user_id)) ? (int) $user_id : false;
+    $stats = [      'number-of-entries'     => $wpdb->get_var('SELECT count( id ) FROM ' . $wpdb->prefix . WE_LS_TABLENAME . $where ),
+	                'number-of-users'       => $wpdb->get_var('SELECT count( id ) FROM ' . $wpdb->prefix . 'users'),
+					'number-of-targets'     => $wpdb->get_var('SELECT count( id ) FROM ' . $wpdb->prefix . WE_LS_TARGETS_TABLENAME. $where )
+    ];
 
-    $stats['number-of-entries'] = $wpdb->get_var('SELECT count(id) FROM ' . $wpdb->prefix . WE_LS_TABLENAME . (($where) ? ' where weight_user_id = ' . $where : ''));
-    $stats['number-of-users'] = $wpdb->get_var('SELECT count(ID) FROM ' . $wpdb->prefix . 'users');
-    $stats['number-of-targets'] = $wpdb->get_var('SELECT count(id) FROM ' . $wpdb->prefix . WE_LS_TARGETS_TABLENAME . (($where) ? ' where weight_user_id = ' . $where : ''));
-
-    ws_ls_set_cache($cache_key, $stats);
+	ws_ls_cache_user_set( $user_id, 'entry-counts', $stats );
 
     return $stats;
 }

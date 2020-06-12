@@ -633,7 +633,7 @@
 
 			$row[ 'display_name' ] = ws_ls_get_link_to_user_profile( $row[ 'user_id' ], $row[ 'display_name' ] );
 
-            $stats = ws_ls_get_entry_counts( $row[ 'user_id' ] );
+            $stats = ws_ls_db_entries_count( $row[ 'user_id' ] );
 
             if ( false === empty( $stats ) ) {
 

@@ -81,7 +81,7 @@ function ws_ls_user_side_bar($user_id) {
 
 					<?php echo ws_ls_side_bar_render_rows( apply_filters( 'wlt-filter-admin-user-sidebar-top', [], $user_id) ); ?>
 
-                    <?php $stats = ws_ls_get_entry_counts($user_id); ?>
+                    <?php $stats = ws_ls_db_entries_count($user_id); ?>
                     <tr>
                         <th><?php echo __('No. of Entries', WE_LS_SLUG); ?></th>
                         <td><?php echo $stats['number-of-entries']; ?></td>
