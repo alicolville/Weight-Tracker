@@ -126,7 +126,7 @@ function ws_ls_form_post_handler_weight( $user_id ) {
 	$existing_id    = ws_ls_post_value( 'db_row_id' );
 
 	if ( null === $existing_id ) {
-		$existing_id = ws_does_weight_exist_for_this_date( $user_id, $entry_data[ 'weight_date' ] );
+		$existing_id = ws_ls_db_entry_for_date( $user_id, $entry_data[ 'weight_date' ] );
 	}
 
 	$entry_id       = ws_ls_db_entry_set( $entry_data, $user_id, $existing_id );

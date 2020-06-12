@@ -104,7 +104,7 @@ function ws_ls_db_entry_set( $data, $user_id, $existing_id = NULL ) {
 
 	// Do a quick sanity check. If we're going to insert a new record, ensure there isn't already an entry for this user for that date
 	if ( null === $existing_id ) {
-		$existing_id = ws_does_weight_exist_for_this_date( $user_id, $data[ 'weight_date' ] );
+		$existing_id = ws_ls_db_entry_for_date( $user_id, $data[ 'weight_date' ] );
 	}
 
 	$result     = false;
@@ -175,6 +175,31 @@ function ws_ls_db_entry_get( $arguments = [] ) {
 
 	return $entry;
 }
+
+/**
+ * If an entry exists for this date, then return an ID
+ *
+ * @param $user_id
+ * @param $date
+ *
+ * @return bool|mixed
+ */
+function ws_ls_db_entry_for_date( $user_id, $date ) {
+
+	if ( $cache = ws_ls_cache_user_get( $user_id, 'exist-' . $date ) ) {
+		return $cache;
+	}
+
+	global $wpdb;
+
+	$sql        = $wpdb->prepare('SELECT id FROM ' . $wpdb->prefix . WE_LS_TABLENAME . ' WHERE weight_date = %s and weight_user_id = %d', $date, $user_id );
+	$entry_id   = $wpdb->get_var($sql);
+
+	ws_ls_cache_user_set( $user_id, 'exist-' . $date, $entry_id );
+
+	return $entry_id;
+}
+
 
 
 /**
@@ -396,38 +421,6 @@ function ws_ls_db_dates_min_max_get( $user_id ) {
 	ws_ls_cache_user_set( $user_id, 'min-max-dates', $row );
 
 	return $row;
-}
-
-/**
- * TODO: REFACTOR!
- *
- * @param $user_id
- * @param $date
- *
- * @return bool|mixed
- */
-function ws_does_weight_exist_for_this_date($user_id, $date)
-{
-  	global $wpdb;
-
-	$cache_key = $user_id . '-' . WE_LS_CACHE_KEY_WEIGHT_FOR_DAY;
-
-	// Return cache if found!
-    if ($cache = ws_ls_get_cache($cache_key)) {
-      //  return $cache;
-    }
-
-	$table_name = $wpdb->prefix . WE_LS_TABLENAME;
-	$sql =  $wpdb->prepare('SELECT id FROM ' . $table_name . ' WHERE weight_date = %s and weight_user_id = %d', $date, $user_id);
-	$row = $wpdb->get_row($sql);
-
-	if (!is_null($row)) {
-		ws_ls_set_cache($cache_key, true);
-		return $row->id;
-	}
-
-	ws_ls_set_cache($cache_key, false);
-  	return NULL;
 }
 
 function ws_ls_set_user_preferences($in_admin_area, $fields = [])

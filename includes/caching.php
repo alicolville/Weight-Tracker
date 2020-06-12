@@ -18,7 +18,6 @@ define('WE_LS_CACHE_KEY_USER_PREFERENCE', 'user-preference');
 define('WE_LS_CACHE_KEY_USER_HEIGHT', 'user-height');
 define('WE_LS_CACHE_KEY_YEKEN_JSON', 'yeken-json-lookup-wlt-2017');
 define('WE_LS_CACHE_KEY_STATS_SUMMARY', 'user-stats-summary');
-define('WE_LS_CACHE_KEY_WEIGHT_FOR_DAY', 'user-weight-for-day');
 define('WE_LS_CACHE_KEY_ENTRY_COUNTS', 'entry-counts');
 define('WE_LS_CACHE_KEY_BMR', 'bmr');
 define('WE_LS_CACHE_KEY_HARRIS_BENEDICT', 'harris-benedict');
@@ -186,7 +185,6 @@ function ws_ls_delete_cache_for_given_user($user_id = false)
 
 		$keys_to_clear = array(
 								$user_id . '-' . WE_LS_CACHE_KEY_START_WEIGHT,
-								$user_id . '-' . WE_LS_CACHE_KEY_WEIGHT_FOR_DAY,
 								$user_id . '-' . WE_LS_CACHE_KEY_TARGET_WEIGHT . 'target_weight_weight',
 								$user_id . '-' . WE_LS_CACHE_KEY_TARGET_WEIGHT . 'target_weight_only_pounds',
 								$user_id . '-' . WE_LS_CACHE_KEY_WEIGHT_EXTREME . '-asc-weight_only_pounds',
