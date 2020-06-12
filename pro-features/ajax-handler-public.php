@@ -2,6 +2,13 @@
 
 defined('ABSPATH') or die('Naw ya dinnie!');
 
+
+/**
+ * REFACTOR.
+ *
+ * MOVE INTO ADMIN  HANDLER and rename that
+ *
+ */
 function ws_ls_save_preferences_callback()
 {
   	$ajax_response = 0;

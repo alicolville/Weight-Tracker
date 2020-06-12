@@ -17,47 +17,26 @@ function ws_ls_data_table_placeholder( $user_id = false, $max_entries = false,
 		$html = ws_ls_display_data_saved_message();
 	}
 
-	// Are we in front end and editing enabled, and of course we want to edit, then do so!
-	if( false === empty($entry_id) && false === is_admin()) {
-
-		if ($entry_id) {
-			$data = ws_ls_get_weight(get_current_user_id(), $entry_id);
-		}
-
-		//If we have a Redirect URL, base decode.
-		$redirect_url = ws_ls_querystring_value('redirect');
-
-		if(false === empty($redirect_url)) {
-			$redirect_url = base64_decode($redirect_url);
-		}
-
-		$html .= ws_ls_display_weight_form(false, false, false, false, false, false,
-											false, false, $redirect_url, $data, true);
-
-	} else {
-
-		$html .= sprintf('<table class="ws-ls-user-data-ajax table ws-ls-loading-table" id="%s"
-				data-paging="true"
-				data-filtering="true"
-				data-sorting="true"
-				data-editing="%s"
-				data-cascade="true"
-				data-toggle="true"
-				data-use-parent-width="true"
-				data-user-id="%s",
-				data-max-entries="%s"
-				data-small-width="%s"
-				data-order-direction="%s">
-			</table>',
-			uniqid('ws-ls-'),
-			true === $enable_add_edit ? 'true' : 'false',
-			is_numeric($user_id) ? $user_id : 'false',
-			is_numeric($max_entries) ? $max_entries : 'false',
-			$smaller_width ? 'true' : 'false',
-            $order_direction
-		);
-
-	}
+	$html .= sprintf('<table class="ws-ls-user-data-ajax table ws-ls-loading-table" id="%s"
+			data-paging="true"
+			data-filtering="true"
+			data-sorting="true"
+			data-editing="%s"
+			data-cascade="true"
+			data-toggle="true"
+			data-use-parent-width="true"
+			data-user-id="%s",
+			data-max-entries="%s"
+			data-small-width="%s"
+			data-order-direction="%s">
+		</table>',
+		uniqid('ws-ls-'),
+		true === $enable_add_edit ? 'true' : 'false',
+		is_numeric($user_id) ? $user_id : 'false',
+		is_numeric($max_entries) ? $max_entries : 'false',
+		$smaller_width ? 'true' : 'false',
+        $order_direction
+	);
 
 	return $html;
 }
