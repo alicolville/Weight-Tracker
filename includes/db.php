@@ -321,43 +321,6 @@ function ws_ls_db_get_formats( $db_fields ) {
 }
 
 /**
- *
- * DEPRECATED! REPLACE WITH ws_ls_db_weight_get()
- *
- * @param $user_id
- * @param $row_id
- *
- * @return bool|mixed
- */
-function ws_ls_get_weight($user_id, $row_id)
-{
-    global $wpdb;
-    $table_name = $wpdb->prefix . WE_LS_TABLENAME;
-    $sql =  $wpdb->prepare('SELECT * FROM ' . $table_name . ' where weight_user_id = %d and id = %d', $user_id, $row_id);
-
-    $row = $wpdb->get_row( $sql );
-
-    if (!is_null($row) ) {
-
-        return ws_ls_weight_object($user_id,
-                                    $row->weight_weight,
-                                    $row->weight_pounds,
-                                    $row->weight_stones,
-                                    $row->weight_only_pounds,
-                                    $row->weight_notes,
-                                    $row->weight_date,
-                                    false,
-                                    $row->id,
-									'',
-									false,
-									$row->photo_id
-                                  );
-    }
-
-    return false;
-}
-
-/**
  * Fetch a user's starting weight
  * @param $user_id
  *
