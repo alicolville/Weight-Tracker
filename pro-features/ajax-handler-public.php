@@ -62,38 +62,3 @@ function ws_ls_save_preferences_callback()
 }
 add_action( 'wp_ajax_ws_ls_save_preferences', 'ws_ls_save_preferences_callback' );
 
-function ws_ls_delete_weight_entry_callback()
-{
-    $ajax_response = 0;
-
-  check_ajax_referer( 'ws-ls-nonce', 'security' );
-
-  $user_id = ws_ls_post_value('user-id');
-  $row_id = ws_ls_post_value('row-id');
-
-  if( true == ws_ls_db_entry_delete($user_id, $row_id)){
-	$ajax_response = 1;
-  }
-  echo $ajax_response;
-	wp_die();
-}
-add_action( 'wp_ajax_ws_ls_delete_weight_entry', 'ws_ls_delete_weight_entry_callback' );
-
-function ws_ls_get_entry_callback()
-{
-  $ajax_response = 0;
-
-  check_ajax_referer( 'ws-ls-nonce', 'security' );
-
-  $user_id = ws_ls_post_value('user-id');
-  $row_id = ws_ls_post_value('row-id');
-
-  $data = ws_ls_get_weight($user_id, $row_id);
-
-  if($data){
-    $ajax_response = json_encode($data);
-  }
-  echo $ajax_response;
-	wp_die();
-}
-add_action( 'wp_ajax_ws_ls_get_entry', 'ws_ls_get_entry_callback' );

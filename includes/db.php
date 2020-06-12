@@ -148,7 +148,6 @@ function ws_ls_db_entry_get( $arguments = [] ) {
 	                                            'prep'      => true
 	] );
 
-
 	if ( true === empty( $arguments[ 'user-id' ] ) || true === empty( $arguments[ 'row-id' ] ) ) {
 		return NULL;
 	}
