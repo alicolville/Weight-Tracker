@@ -458,7 +458,7 @@ function ws_ls_set_user_preferences($in_admin_area, $fields = [])
 
     // Save Height, if not specified look up.
     if (false !== $db_fields['height']) {
-        $db_fields['height'] = ws_ls_validate_height($db_fields['height']);
+        $db_fields['height'] = ws_ls_height_validate($db_fields['height']);
     } else {
         $db_fields['height'] = ws_ls_get_user_height($db_fields['user_id'], false);
     }

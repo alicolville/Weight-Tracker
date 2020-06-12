@@ -751,6 +751,20 @@ function ws_ls_post_value_numeric( $key, $default = NULL ) {
 }
 
 /**
+ * Do we have a validate height
+ * @param $height
+ *
+ * @return int
+ */
+function ws_ls_height_validate( $height ) {
+
+	$height = (int) $height;
+
+	return ( $height < 122 || $height > 201 ) ? 0 : $height;
+}
+
+
+/**
  * Either fetch data from the $_POST object for the given object keys
  *
  * TODO: Refactor to use ws_ls_post_value()
