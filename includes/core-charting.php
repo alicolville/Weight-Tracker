@@ -214,7 +214,8 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 					'gridLines'  => [ 'display' => $chart_config[ 'show-gridlines' ] ]
 				]
 			]
-		]
+		],
+		'maintainAspectRatio' => false
 	];
 
 	// Custom fields?
@@ -256,12 +257,13 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 
 	wp_localize_script( 'jquery-chart-ws-ls', $chart_config['id'] . '_options', $graph_options );
 
-	return sprintf( '<div class="ws-ls-chart-container">
+	return sprintf( '<div class="ws-ls-chart-container" %4$s>
 								<canvas id="%1$s" class="ws-ls-chart" %2$s data-chart-type="%3$s" />
 							</div>',
 		$chart_config['id'],
 		( false === empty( $chart_config['height'] ) ) ? sprintf( 'height="%d"', (int) $chart_config['height'] ) : '',
-		esc_attr( $chart_config['type'] )
+		esc_attr( $chart_config['type'] ),
+		( false === empty( $chart_config['height'] ) ) ? sprintf( ' style="height: 250px"', (int) $chart_config['height'] ) : ''
 	);
 }
 
