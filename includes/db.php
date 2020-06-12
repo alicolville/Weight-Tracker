@@ -693,6 +693,34 @@ function ws_ls_get_user_setting($field = 'gender', $user_id = false, $use_cache 
 }
 
 /**
+ * Fetch all user preferences for the given user
+ * @param null $user_id
+ * @param bool $use_cache
+ *
+ * @return null
+ */
+function ws_ls_db_user_preferences( $user_id = NULL, $use_cache = true ) {
+
+	$user_id = ( NULL === $user_id ) ? get_current_user_id() : $user_id;
+
+	$cache = ws_ls_cache_user_get( $user_id, 'user-preferences' );
+
+	if ( true == $use_cache &&
+	     false === empty( $cache )  )   {
+		return $cache;
+	}
+
+	global $wpdb;
+
+	$sql            = $wpdb->prepare('SELECT * FROM ' . $wpdb->prefix . WE_LS_USER_PREFERENCES_TABLENAME . ' WHERE user_id = %d', $user_id );
+	$preferences    = $wpdb->get_row( $sql, ARRAY_A );
+
+	ws_ls_cache_user_set( $user_id, 'user-preferences', $preferences );
+
+	return $preferences;
+}
+
+/**
  * Fetch entry counts for the given user or for the site as a whole
  * @param null $user_id
  * @param bool $use_cache
