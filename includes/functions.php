@@ -469,7 +469,7 @@ function ws_ls_entry_get( $arguments = [] ) {
 
 	$arguments[ 'row-id' ] = $arguments[ 'id' ];
 
-	$entry = ws_ls_db_weight_get( $arguments );
+	$entry = ws_ls_db_entry_get( $arguments );
 
 	if ( true === empty( $entry ) ) {
 		return NULL;

@@ -61,7 +61,7 @@ class ws_ls_widget_chart extends WP_Widget {
 				$chart_arguments[ 'show-meta-fields' ] = false;
 			}
 
-			$weight_data = ws_ls_db_weights_get( [ 'user-id' => $chart_arguments['user-id'], 'limit' => $chart_arguments['max-data-points'], 'prep' => true ] );
+			$weight_data = ws_ls_db_entries_get( [ 'user-id' => $chart_arguments['user-id'], 'limit' => $chart_arguments['max-data-points'], 'prep' => true ] );
 
 			$chart_arguments['height']  = false;
 
