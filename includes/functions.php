@@ -452,36 +452,48 @@ function ws_ls_target_get( $user_id = NULL, $field = NULL ) {
 
 /**
  * Fetch an Entry from the database
- * @param $entry_id
+ *
+ * @param array $arguments
  *
  * @return string|null
  */
-function ws_ls_entry_get( $entry_id ) {
+function ws_ls_entry_get( $arguments = [] ) {
 
-	$entry = ws_ls_db_entry_get( $entry_id );
+	$arguments = wp_parse_args( $arguments, [ 'user-id' => get_current_user_id(), 'id' => NULL, 'meta' => true ] );
+
+	$cache_key  = sprintf( 'entry-full-%d', $arguments[ 'id' ] );
+
+	if ( $cache = ws_ls_cache_user_get( $arguments[ 'user-id' ], $cache_key ) ) {
+		return $cache;
+	}
+
+	$arguments[ 'row-id' ] = $arguments[ 'id' ];
+
+	$entry = ws_ls_db_weight_get( $arguments );
 
 	if ( true === empty( $entry ) ) {
 		return NULL;
 	}
 
-	$user_id    = (int) $entry[ 'weight_user_id' ];
-	$cache_key  = sprintf( 'entry-full-%d', $entry_id );
-
-	if ( $cache = ws_ls_cache_user_get( $user_id, $cache_key ) ) {
-		return $cache;
-	}
-
-	$entry[ 'first_weight' ] = ws_ls_db_weight_start_get( $user_id );
+	$entry[ 'first_weight' ] = ws_ls_db_weight_start_get( $arguments[ 'user-id' ] );
 
 	$entry[ 'difference_from_start_kg' ] = ( false === empty( $entry[ 'first_weight' ] ) && $entry[ 'first_weight' ] <> $entry[ 'kg' ] ) ?
 												$entry[ 'kg' ] - $entry[ 'first_weight' ] :
 													0;
 
-	if ( true === ws_ls_meta_fields_is_enabled() ) {
-		$entry[ 'meta' ] = ws_ls_meta( $entry_id );
+	if ( true === WS_LS_IS_PRO &&
+	        true === $arguments[ 'meta' ] &&
+	            true === ws_ls_meta_fields_is_enabled() ) {
+
+		$entry[ 'meta' ] = ws_ls_meta( $arguments[ 'id' ] );
+
+		// Pluck to meta_id => value
+		if ( false === empty( $entry[ 'meta'] ) ) {
+			$entry[ 'meta'] = wp_list_pluck( $entry[ 'meta'], 'value', 'meta_field_id' );
+		}
 	}
 
-	ws_ls_cache_user_set( $user_id, $cache_key, $entry );
+	ws_ls_cache_user_set( $arguments[ 'user-id' ], $cache_key, $entry );
 
 	return $entry;
 }

@@ -136,29 +136,75 @@ function ws_ls_db_entry_set( $data, $user_id, $existing_id = NULL ) {
 }
 
 /**
+ *
+ * DEPRECATE: Replace with ws_ls_db_weight_get
+ *
  * Return an entry
  * @param $entry_id
  * @return string|null
  */
-function ws_ls_db_entry_get( $entry_id ) {
+//function ws_ls_db_entry_get( $entry_id ) {
+//
+//	if ( true === empty( $entry_id ) ) {
+//		return NULL;
+//	}
+//
+//	$cache_key = sprintf( 'entry-%d', $entry_id );
+//
+//	// Cached?
+//	if ( $cache = ws_ls_get_cache( $cache_key ) ) {
+//		return $cache;
+//	}
+//
+//	global $wpdb;
+//
+//	$sql 	= $wpdb->prepare('SELECT id, weight_date, weight_user_id, weight_notes, weight_weight as kg FROM ' . $wpdb->prefix . WE_LS_TABLENAME . ' where id = %d ', $entry_id );
+//	$entry 	= $wpdb->get_row( $sql, ARRAY_A );
+//
+//	ws_ls_set_cache( $cache_key, $entry );
+//
+//	return $entry;
+//}
 
-	if ( true === empty( $entry_id ) ) {
+
+/**
+ * Fetch a weight entry for the given ID
+ * @param array $arguments
+ *
+ * @return array|object|void|null
+ */
+function ws_ls_db_weight_get( $arguments = [] ) {
+
+	$arguments = wp_parse_args( $arguments, [   'user-id'   => get_current_user_id(),
+	                                            'row-id'    => NULL,
+	                                            'prep'      => true
+	] );
+
+
+	if ( true === empty( $arguments[ 'user-id' ] ) || true === empty( $arguments[ 'row-id' ] ) ) {
 		return NULL;
 	}
 
-	$cache_key = sprintf( 'entry-%d', $entry_id );
+	$cache_key = 'weight-' . md5( json_encode( $arguments ) );
 
-	// Cached?
-	if ( $cache = ws_ls_get_cache( $cache_key ) ) {
+	if ( $cache = ws_ls_cache_user_get( $arguments[ 'user-id'], $cache_key ) ) {
 		return $cache;
 	}
 
 	global $wpdb;
 
-	$sql 	= $wpdb->prepare('SELECT id, weight_date, weight_user_id, weight_notes, weight_weight as kg FROM ' . $wpdb->prefix . WE_LS_TABLENAME . ' where id = %d ', $entry_id );
-	$entry 	= $wpdb->get_row( $sql, ARRAY_A );
+	$sql    =  $wpdb->prepare('SELECT id, weight_date, weight_weight as kg, weight_notes as notes, weight_user_id as user_id FROM ' . $wpdb->prefix . WE_LS_TABLENAME . ' where weight_user_id = %d and id = %d',
+		$arguments[ 'user-id' ],
+		$arguments[ 'row-id' ]
+	);
 
-	ws_ls_set_cache( $cache_key, $entry );
+	$entry  = $wpdb->get_row( $sql, ARRAY_A );
+
+	if( true === $arguments[ 'prep' ] ) {
+		$entry = ws_ls_db_weight_prep( $entry );
+	}
+
+	ws_ls_cache_user_set( $arguments[ 'user-id' ], $cache_key, $entry );
 
 	return $entry;
 }
@@ -304,48 +350,6 @@ function ws_ls_db_weight_prep( $weight ) {
 	}
 
 	return $weight;
-}
-
-/**
- * Fetch a weight entry for the given ID
- * @param array $arguments
- *
- * @return array|object|void|null
- */
-function ws_ls_db_weight_get( $arguments = [] ) {
-
-	$arguments = wp_parse_args( $arguments, [   'user-id'   => get_current_user_id(),
-	                                            'row-id'    => NULL,
-	                                            'prep'      => true
-	] );
-
-
-	if ( true === empty( $arguments[ 'user-id' ] ) || true === empty( $arguments[ 'row-id' ] ) ) {
-		return NULL;
-	}
-
-	$cache_key = 'weight-' . md5( json_encode( $arguments ) );
-
-	if ( $cache = ws_ls_cache_user_get( $arguments[ 'user-id'], $cache_key ) ) {
-		return $cache;
-	}
-
-	global $wpdb;
-
-	$sql    =  $wpdb->prepare('SELECT id, weight_date, weight_weight as kg, weight_notes, weight_user_id as user_id FROM ' . $wpdb->prefix . WE_LS_TABLENAME . ' where weight_user_id = %d and id = %d',
-									$arguments[ 'user-id' ],
-									$arguments[ 'row-id' ]
-	);
-
-	$entry  = $wpdb->get_row( $sql, ARRAY_A );
-
-	if( true === $arguments[ 'prep' ] ) {
-		$entry = ws_ls_db_weight_prep( $entry );
-	}
-
-	ws_ls_cache_user_set( $arguments[ 'user-id' ], $cache_key, $entry );
-
-	return $entry;
 }
 
 /**

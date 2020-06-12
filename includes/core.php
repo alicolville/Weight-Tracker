@@ -109,8 +109,8 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 	);
 
 	// Do we have data? If so, embed existing row ID
-	if(!empty($existing_data['db_row_id']) && is_numeric($existing_data['db_row_id'])) {
-        $entry_id = (int) $existing_data['db_row_id'];
+	if(!empty($existing_data['id']) && is_numeric($existing_data['id'])) {
+        $entry_id = (int) $existing_data['id'];
 		$html_output .= '<input type="hidden" value="' . $entry_id . '" id="db_row_id" name="db_row_id" />';
 	}
 
@@ -184,7 +184,7 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 
 	// Render Meta Fields
     if ( false === $target_form && true === $meta_field_form_enabled ) {
-	    $html_output .= ws_ls_meta_fields_form( $entry_id );
+	    $html_output .= ws_ls_meta_fields_form( $existing_data );
     }
 
 	$button_text = ($target_form) ?  __('Set Target', WE_LS_SLUG) :  __('Save Entry', WE_LS_SLUG);
@@ -216,7 +216,7 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 
 function ws_ls_get_existing_value($data, $key, $esc_attr = true) {
 
-	if(false === empty($data[$key])) {
+	if(true === isset($data[$key])) {
 		return ($esc_attr) ? esc_attr($data[$key]) : $data[$key];
 	}
 

@@ -117,9 +117,9 @@ function ws_ls_weight_display( $kg, $user_id = NULL, $key = false, $force_admin 
 
 	if ( $cache = ws_ls_get_cache( $cache_key ) ) {
 
-		return ( false !== $key && false === empty( $cache[ $key ] ) ) ?
-			$cache[ $key ] :
-			$cache;
+//		return ( false !== $key && false === empty( $cache[ $key ] ) ) ?
+//			$cache[ $key ] :
+//			$cache;
 	}
 
 	$weight[ 'kg' ] = $kg;
@@ -130,11 +130,14 @@ function ws_ls_weight_display( $kg, $user_id = NULL, $key = false, $force_admin 
 			$weight[ 'pounds' ] 		= ws_ls_convert_kg_to_lb( $kg );
 			$weight[ 'display' ] 		= sprintf( '%s%s', $weight[ 'pounds' ], __( 'lbs', WE_LS_SLUG ) );
 			$weight[ 'graph-value' ] 	= $weight[ 'pounds' ];
+			$weight[ 'pounds' ]         = $weight['pounds'];
+			$weight[ 'imperial' ]       = true;
 			break;
 
 		case 'kg':
 			$weight[ 'display' ] 		= sprintf( '%s%s', ws_ls_round_decimals( $kg ), __( 'kg', WE_LS_SLUG ) );
 			$weight[ 'graph-value' ] 	= $weight['kg'];
+			$weight[ 'imperial' ]       = false;
 			break;
 
 		default:
@@ -149,6 +152,10 @@ function ws_ls_weight_display( $kg, $user_id = NULL, $key = false, $force_admin 
 
 			$weight['display'] 		= sprintf( '%s%s %s%s', $imperial[ 'stones' ],__( 'st' , WE_LS_SLUG), $imperial[ 'pounds' ], __( 'lbs' , WE_LS_SLUG) );
 			$weight['graph-value'] 	= ( $imperial['stones'] * 14 ) + $imperial['pounds'];
+			$weight[ 'stones' ]     = $imperial['stones'];
+			$weight[ 'pounds' ]     = $imperial['pounds'];
+			$weight[ 'imperial' ]   = true;
+
 			break;
 	}
 

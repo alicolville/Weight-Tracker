@@ -194,7 +194,9 @@
 			if( false === empty($entry_id)) {
 
 				if ($entry_id) {
-					$data = ws_ls_get_weight( $user_id, $entry_id);
+				//	$data = ws_ls_get_weight( $user_id, $entry_id);
+
+					$data = ws_ls_entry_get( [ 'user-id' => $user_id, 'id' => $entry_id ] );
 				}
 
 				//If we have a Redirect URL, base decode.

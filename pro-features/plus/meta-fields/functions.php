@@ -212,7 +212,7 @@
      * @param null $entry_id
      * @return string
      */
-    function ws_ls_meta_fields_form( $entry_id = NULL ) {
+    function ws_ls_meta_fields_form( $entry ) {
 
         $html = '';
 
@@ -220,7 +220,10 @@
 
         foreach ( ws_ls_meta_fields_enabled() as $field ) {
 
-            $value = ws_ls_meta_fields_get_value_for_entry( $entry_id, $field[ 'id' ] );
+	        $value = ( false === empty( $entry[ 'meta'] ) &&
+	                     true === array_key_exists( $field[ 'id' ], $entry[ 'meta'] ) ) ?
+					        $entry[ 'meta'][ $field[ 'id' ] ]
+					            : '';
 
             switch ( (int) $field[ 'field_type' ] ) {
 
