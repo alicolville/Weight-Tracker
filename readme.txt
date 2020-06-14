@@ -162,10 +162,6 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 //todo: remove measurements from documentation site
 // TODO: Get rid of ws_ls_register_shortcodes
 // re-write and cache weight_object function. Arguments should be an array
-// refcator ws_ls_capture_form_validate_and_save
-// chart shortcode: update doc: Removed exclude-measurements
-// add formatting for notes
-// update ws_ls_widget_chart to remove measurements
 // TODO: We changed the cache key for all user preferences. Ensure this is cleared properly
 // TODO: Explaoin Challenegs more in UI and doc site
 
