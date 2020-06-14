@@ -67,7 +67,7 @@
 
 				if ( false === empty( $awards['counts']['bmi-equals'] ) && false === empty( $start_weight ) ) {
 
-					$user_height = ws_ls_get_user_height( $info['user-id'] );
+					$user_height =  ws_ls_user_preferences_get( 'height', $info['user-id'] );
 
 					if ( false === empty( $user_height ) ) {
 
@@ -108,7 +108,7 @@
 
                 if ( false === empty( $awards['counts']['bmi'] ) && false === empty( $start_weight ) ) {
 
-                    $user_height = ws_ls_get_user_height( $info['user-id'] );
+                    $user_height =  ws_ls_user_preferences_get( 'height', $info['user-id'] );
 
                     if ( false === empty( $user_height ) ) {
 

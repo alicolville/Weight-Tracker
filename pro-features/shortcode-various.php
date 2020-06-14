@@ -17,7 +17,7 @@ function ws_ls_get_user_bmi($user_defined_arguments) {
 						           ), $user_defined_arguments );
 
 	$kg = ws_ls_get_recent_weight_in_kg( $arguments['user-id'] );
-	$cm = ws_ls_get_user_height($arguments['user-id']);
+	$cm = ws_ls_user_preferences_get( 'height', $arguments['user-id']);
 
 	// Don't attempt to calculate BMI if no weight entries!
 	if(true === empty($kg)) {

@@ -129,7 +129,7 @@ function ws_ls_challenges_data_update_row( $user_id, $challenge_id ) {
 	}
 
 	// BMI
-	$data[ 'height' ]           = ws_ls_get_user_height( $user_id );
+	$data[ 'height' ]           =  ws_ls_user_preferences_get( 'height', $user_id );
 	$data[ 'bmi_start' ]        = ws_ls_calculate_bmi( $data[ 'height' ], $data[ 'weight_start' ] );
 	$data[ 'bmi_latest' ]       = ws_ls_calculate_bmi( $data[ 'height' ], $data[ 'weight_latest' ] );
 	$data[ 'bmi_diff' ]         = ws_ls_round_number( $data[ 'bmi_latest' ] - $data[ 'bmi_start' ], 1 );
