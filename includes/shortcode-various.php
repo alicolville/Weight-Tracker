@@ -5,33 +5,34 @@ defined('ABSPATH') or die('Jog on!');
 /**
  * Render [wlt-target] shortcode
  * @param bool $user_id
- * @param bool $admin_display
  *
  * @return string
  */
-function ws_ls_shortcode_target( $user_id = false ) {
+function ws_ls_shortcode_target() {
 
-	// If not logged in then return no value
 	if( false === is_user_logged_in() ) {
 		return '';
 	}
 
-	$user_id = ( true === empty( $user_id  ) ) ? get_current_user_id() : $user_id;
-
-	$target_weight = ws_ls_target_get( $user_id, 'display' );
+	$target_weight = ws_ls_target_get( get_current_user_id(), 'display' );
 
 	return esc_html( $target_weight );
 }
 add_shortcode( 'wlt-target', 'ws_ls_shortcode_target' );
+add_shortcode( 'wt-target-weight', 'ws_ls_shortcode_target' );
 
+/**
+ * Render shortcode [wlt-weight-start]
+ * @param bool $user_id
+ *
+ * @return string
+ */
+function ws_ls_weight_start( $user_id = false ) {
 
-function ws_ls_weight_start($user_id = false)
-{
-	// If not logged in then return no value
-	if(!is_user_logged_in()) {
+	if( false === is_user_logged_in() ) {
 		return '';
 	}
-
+//ws_ls_entry_get_oldest
 	$user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
 
 	if (ws_ls_get_config('WE_LS_DATA_UNITS') == "pounds_only") {
@@ -43,6 +44,7 @@ function ws_ls_weight_start($user_id = false)
 	return we_ls_format_weight_into_correct_string_format($weight);
 }
 add_shortcode( 'wlt-weight-start', 'ws_ls_weight_start' );
+add_shortcode( 'wt-start-weight', 'ws_ls_weight_start' );
 
 function ws_ls_weight_recent($user_id = false)
 {
@@ -192,6 +194,16 @@ function ws_ls_get_recent_weight_in_pounds($user_id){
 	return ws_ls_get_weight_extreme($user_id, true, "weight_only_pounds");
 }
 
+/**
+ *
+ * REPLACE WITH: ws_ls_entry_get_oldest / latest
+ *
+ * @param $user_id
+ * @param bool $recent
+ * @param string $unit
+ *
+ * @return bool|mixed
+ */
 function ws_ls_get_weight_extreme($user_id, $recent = false, $unit = "weight_weight")
 {
 	global $wpdb;

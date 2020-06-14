@@ -164,6 +164,13 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 // re-write and cache weight_object function. Arguments should be an array
 // TODO: We changed the cache key for all user preferences. Ensure this is cleared properly
 // TODO: Explaoin Challenegs more in UI and doc site
+// Fix Start Weight
+       Latest Weight
+       Diff. from Start in admin side bar
+
+Documentation updates:
+add_shortcode( 'wlt-target', 'ws_ls_shortcode_target' ); to add_shortcode( 'wt-target-weight', 'ws_ls_shortcode_target' );
+add_shortcode( 'wlt-weight-start', 'ws_ls_weight_start' ); to add_shortcode( 'wt-start-weight', 'ws_ls_weight_start' );
 
 //test GF
 

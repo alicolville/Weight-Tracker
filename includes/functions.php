@@ -467,8 +467,6 @@ function ws_ls_entry_get( $arguments = [] ) {
 		return $cache;
 	}
 
-	$arguments[ 'row-id' ] = $arguments[ 'id' ];
-
 	$entry = ws_ls_db_entry_get( $arguments );
 
 	if ( true === empty( $entry ) ) {
@@ -496,6 +494,25 @@ function ws_ls_entry_get( $arguments = [] ) {
 	ws_ls_cache_user_set( $arguments[ 'user-id' ], $cache_key, $entry );
 
 	return $entry;
+}
+
+/**
+ * Fetch the oldest entry
+ * @param array $arguments
+ *
+ * @return string|null
+ */
+function ws_ls_entry_get_oldest( $arguments = [] ) {
+
+	$arguments              = wp_parse_args( $arguments, [ 'user-id' => get_current_user_id(), 'meta' => true ] );
+	$arguments[ 'which']    = 'oldest';
+	$arguments[ 'id' ]      = ws_ls_db_entry_latest_or_oldest( $arguments );
+
+	if ( true === empty( $arguments[ 'id' ] ) ) {
+		return NULL;
+	}
+
+	return ws_ls_entry_get( $arguments );
 }
 
 /**

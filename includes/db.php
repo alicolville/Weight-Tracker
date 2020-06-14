@@ -148,11 +148,11 @@ function ws_ls_db_entry_set( $data, $user_id, $existing_id = NULL ) {
 function ws_ls_db_entry_get( $arguments = [] ) {
 
 	$arguments = wp_parse_args( $arguments, [   'user-id'   => get_current_user_id(),
-	                                            'row-id'    => NULL,
+	                                            'id'        => NULL,
 	                                            'prep'      => true
 	] );
 
-	if ( true === empty( $arguments[ 'user-id' ] ) || true === empty( $arguments[ 'row-id' ] ) ) {
+	if ( true === empty( $arguments[ 'user-id' ] ) || true === empty( $arguments[ 'id' ] ) ) {
 		return NULL;
 	}
 
@@ -166,7 +166,7 @@ function ws_ls_db_entry_get( $arguments = [] ) {
 
 	$sql    =  $wpdb->prepare('SELECT id, weight_date, weight_weight as kg, weight_notes as notes, weight_user_id as user_id FROM ' . $wpdb->prefix . WE_LS_TABLENAME . ' where weight_user_id = %d and id = %d',
 		$arguments[ 'user-id' ],
-		$arguments[ 'row-id' ]
+		$arguments[ 'id' ]
 	);
 
 	$entry  = $wpdb->get_row( $sql, ARRAY_A );
@@ -179,6 +179,38 @@ function ws_ls_db_entry_get( $arguments = [] ) {
 
 	return $entry;
 }
+
+/**
+ * Fetch the entry ID for the oldest or latest entry
+ * @param $arguments
+ *
+ * @return string|null
+ */
+function ws_ls_db_entry_latest_or_oldest( $arguments ) {
+
+	$arguments = wp_parse_args( $arguments, [   'user-id'   => get_current_user_id(),
+	                                            'which'     => 'latest',                // 'oldest' / 'latest'
+	                                            'prep'      => true
+	] );
+
+	$cache_key = 'extreme-' . md5( json_encode( $arguments ) );
+
+	if ( $cache = ws_ls_cache_user_get( $arguments[ 'user-id'], $cache_key ) ) {
+		return $cache;
+	}
+
+	global $wpdb;
+
+	$sort_order = ( 'latest' === $arguments[ 'which' ] ) ? 'desc' : 'asc';
+
+	$sql        = $wpdb->prepare("SELECT id FROM ' . $wpdb->prefix . WE_LS_TABLENAME . ' where weight_user_id = %d order by weight_date " . $sort_order . " limit 0, 1", $arguments[ 'user-id' ] );
+	$entry_id   = $wpdb->get_var( $sql );
+
+	ws_ls_cache_user_set( $arguments[ 'user-id' ], $cache_key, $entry_id );
+
+	return $entry_id;
+}
+
 
 /**
  * If an entry exists for this date, then return an ID
