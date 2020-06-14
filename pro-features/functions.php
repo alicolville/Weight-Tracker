@@ -566,10 +566,26 @@ function ws_ls_get_age_from_dob( $user_id = NULL ){
 /**
  * Helper function to disable admin page if the user doesn't have the correct user role.
  */
-function ws_ls_user_data_permission_check() {
-    if ( !current_user_can( WE_LS_VIEW_EDIT_USER_PERMISSION_LEVEL ) )  {
-        wp_die( __( 'You do not have sufficient permissions to access this page.' , WE_LS_SLUG) );
+function ws_ls_permission_check_message() {
+    if ( false === ws_ls_permission_check() )  {
+        wp_die( __( 'You do not have sufficient permissions to access this page.' , WE_LS_SLUG ) );
     }
+}
+
+/**
+ * Can the current user view this admin data page?
+ * @return bool
+ */
+function ws_ls_permission_check() {
+	return current_user_can( ws_ls_permission_role() );
+}
+
+/**
+ * Get the minimum user role allowed for viewing data pages in admin
+ * @return mixed|void
+ */
+function ws_ls_permission_role() {
+	return get_option( 'ws-ls-edit-permissions', 'manage_options' );
 }
 
 /**
@@ -578,13 +594,13 @@ function ws_ls_user_data_permission_check() {
  * @param $user_id
  * @return bool
  */
-function ws_ls_user_exist($user_id) {
+function ws_ls_user_exist( $user_id ) {
 
-    if(true === empty($user_id) || false === is_numeric($user_id)) {
+    if( true === empty( $user_id ) ) {
         return false;
     }
 
-    return (false === get_userdata( $user_id )) ? false : true;
+    return ( false === get_userdata( $user_id ) ) ? false : true;
 }
 
 /**

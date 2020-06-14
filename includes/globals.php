@@ -45,8 +45,7 @@
 		'WE_LS_EMAIL_NOTIFICATIONS_EDIT' => true,
 		'WE_LS_EMAIL_NOTIFICATIONS_NEW' => true,
 		'WE_LS_EMAIL_NOTIFICATIONS_TARGETS' => true,
-		'WE_LS_VIEW_EDIT_USER_PERMISSION_LEVEL' => 'manage_options', // Default to admin only being allowed to edit / view user data
-        'WS_LS_CAL_CAP_MALE' => 1900,
+		'WS_LS_CAL_CAP_MALE' => 1900,
         'WS_LS_CAL_CAP_FEMALE' => 1400,
 		'WS_LS_MACRO_PROTEINS' => 25,
         'WS_LS_MACRO_CARBS' => 50,
@@ -68,15 +67,7 @@
 	if ('us' == get_option('ws-ls-use-us-dates')){
 		$globals['WE_LS_US_DATE'] = true;
 	}
-
-	// -----------------------------------------------------------------------------------
-	// Who can view / edit user data
-	// -----------------------------------------------------------------------------------
-	$permission_check = get_option('ws-ls-edit-permissions');
-	if (false === empty($permission_check) && in_array($permission_check, ['manage_options', 'read_private_posts', 'publish_posts']) ){
-		$globals['WE_LS_VIEW_EDIT_USER_PERMISSION_LEVEL'] = $permission_check;
-	}
-
+	
 	// -----------------------------------------------------------------------------------
 	// Define if target weights enabled
 	// -----------------------------------------------------------------------------------

@@ -4,7 +4,7 @@ defined('ABSPATH') or die('Naw ya dinnie!');
 
 function ws_ls_admin_page_data_edit_target() {
 
-    ws_ls_user_data_permission_check();
+    ws_ls_permission_check_message();
 
     // Determine user id
 	$user_id = ws_ls_querystring_value('user-id', true);

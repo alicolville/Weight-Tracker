@@ -4,7 +4,7 @@ defined('ABSPATH') or die('Naw ya dinnie!');
 
 function ws_ls_admin_page_data_add_edit() {
 
-    ws_ls_user_data_permission_check();
+    ws_ls_permission_check_message();
 
 	$data = false;
 

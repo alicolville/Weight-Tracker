@@ -4,7 +4,7 @@ defined('ABSPATH') or die("Jog on!");
 
 function ws_ls_challenges_admin_page() {
 
-    ws_ls_user_data_permission_check();
+    ws_ls_permission_check_message();
 
     $challenges_enabled = ws_ls_challenges_is_enabled();
 
