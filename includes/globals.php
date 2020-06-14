@@ -39,7 +39,6 @@
 		'WS_LS_ADVANCED_TABLES' => true,
 		'WE_LS_DISPLAY_BMI_IN_TABLES' => false,
 		'WE_LS_ALLOW_STATS' => false,
-		'WE_LS_DISABLE_USER_STATS' => false,
 		'WE_LS_EMAIL_ENABLE' => false,
 		'WE_LS_EMAIL_ADDRESSES' => '',
 		'WE_LS_EMAIL_NOTIFICATIONS_EDIT' => true,
@@ -67,7 +66,7 @@
 	if ('us' == get_option('ws-ls-use-us-dates')){
 		$globals['WE_LS_US_DATE'] = true;
 	}
-	
+
 	// -----------------------------------------------------------------------------------
 	// Define if target weights enabled
 	// -----------------------------------------------------------------------------------

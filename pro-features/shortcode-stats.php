@@ -4,10 +4,6 @@ defined('ABSPATH') or die("Jog on!");
 
 function ws_ls_shortcode_stats_league_total($user_defined_arguments)
 {
-    if ( true === WE_LS_DISABLE_USER_STATS ) {
-       return  __('Stats disabled', WE_LS_SLUG);
-    }
-
 	$arguments = shortcode_atts(
 	array(
 		'display' => 'number',

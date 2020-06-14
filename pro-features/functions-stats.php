@@ -4,11 +4,6 @@ defined('ABSPATH') or die('Jog on!');
 
 function ws_ls_stats_run_cron() {
 
-	// If disabled, don't bother
-	if(WE_LS_DISABLE_USER_STATS) {
-		return;
-	}
-
 	// Copy across anyone missing from the stats table!
 	ws_ls_stats_insert_missing_user_ids_into_stats();
 
@@ -32,12 +27,7 @@ add_action( 'wlt-hook-data-user-deleted', 'ws_ls_stats_run_cron' );	// Tidy up s
 
 function ws_ls_stats_run_cron_for_first_time() {
 
-	// If disabled, don't bother
-	if(WE_LS_DISABLE_USER_STATS) {
-		return;
-	}
-
-	if(false == WE_LS_DISABLE_USER_STATS && false == get_option('ws-ls-stats-run-for-first-time')) {
+	if( false == get_option('ws-ls-stats-run-for-first-time')) {
 		ws_ls_stats_run_cron();
 		update_option('ws-ls-stats-run-for-first-time', true);
 	}
@@ -49,11 +39,6 @@ add_action('admin_init', 'ws_ls_stats_run_cron_for_first_time');
  * @return mixed|void
  */
 function ws_ls_stats_get_summary_stats() {
-
-	// If disabled, don't bother
-	if( WE_LS_DISABLE_USER_STATS ) {
-		return;
-	}
 
 	// Cached?
 	if ($stats = get_option(WE_LS_CACHE_KEY_STATS_SUMMARY))	{
@@ -69,11 +54,6 @@ function ws_ls_stats_get_summary_stats() {
 */
 function ws_ls_stats_refresh_summary_stats() {
 
-	// If disabled, don't bother
-	if( WE_LS_DISABLE_USER_STATS ) {
-		return false;
-	}
-
 	$stats = array(
 		'difference' => ws_ls_stats_sum_weight_difference(),
 		'sum' => 0
@@ -88,11 +68,6 @@ function ws_ls_stats_refresh_summary_stats() {
 	Generate stats for user
 */
 function ws_ls_stats_update_for_user($user_id) {
-
-	// If disabled, don't bother
-	if(WE_LS_DISABLE_USER_STATS) {
-		return;
-	}
 
 	if(is_numeric($user_id)) {
 
