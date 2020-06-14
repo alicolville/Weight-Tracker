@@ -203,7 +203,7 @@ function ws_ls_db_entry_latest_or_oldest( $arguments ) {
 
 	$sort_order = ( 'latest' === $arguments[ 'which' ] ) ? 'desc' : 'asc';
 
-	$sql        = $wpdb->prepare("SELECT id FROM ' . $wpdb->prefix . WE_LS_TABLENAME . ' where weight_user_id = %d order by weight_date " . $sort_order . " limit 0, 1", $arguments[ 'user-id' ] );
+	$sql        = $wpdb->prepare('SELECT id FROM ' . $wpdb->prefix . WE_LS_TABLENAME . ' where weight_user_id = %d order by weight_date ' . $sort_order . ' limit 0, 1', $arguments[ 'user-id' ] );
 	$entry_id   = $wpdb->get_var( $sql );
 
 	ws_ls_cache_user_set( $arguments[ 'user-id' ], $cache_key, $entry_id );

@@ -98,8 +98,8 @@ function ws_ls_search_row( $user, $class = '') {
             ws_ls_get_link_to_user_profile( $user->data->ID ),
             esc_html( $user->data->display_name ),
             esc_attr( $user->data->user_email ),
-            ws_ls_weight_start( $user->data->ID ),
-            ws_ls_weight_recent( $user->data->ID ),
+            ws_ls_shortcode_start_weight( $user->data->ID ),
+            ws_ls_shortcode_recent_weight( $user->data->ID ),
 	        ws_ls_target_get( $user->data->ID, 'display' )
     );
  }

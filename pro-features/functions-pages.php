@@ -88,11 +88,11 @@ function ws_ls_user_side_bar($user_id) {
                     </tr>
                     <tr>
                         <th><?php echo __('Start Weight', WE_LS_SLUG); ?></th>
-                        <td class="<?php echo ws_ls_blur(); ?>"><?php echo ws_ls_blur_text( ws_ls_weight_start($user_id) ); ?></td>
+                        <td class="<?php echo ws_ls_blur(); ?>"><?php echo ws_ls_blur_text( ws_ls_shortcode_start_weight($user_id) ); ?></td>
                     </tr>
                     <tr>
                         <th><?php echo __('Latest Weight', WE_LS_SLUG); ?></th>
-                        <td class="<?php echo ws_ls_blur(); ?>"><?php echo ws_ls_blur_text( ws_ls_weight_recent($user_id) ); ?></td>
+                        <td class="<?php echo ws_ls_blur(); ?>"><?php echo ws_ls_blur_text( ws_ls_shortcode_recent_weight($user_id) ); ?></td>
                     </tr>
                     <tr>
                         <th><?php echo __('Diff. from Start', WE_LS_SLUG); ?></th>

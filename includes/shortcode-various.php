@@ -8,13 +8,15 @@ defined('ABSPATH') or die('Jog on!');
  *
  * @return string
  */
-function ws_ls_shortcode_target() {
+function ws_ls_shortcode_target( $user_id = NULL ) {
 
 	if( false === is_user_logged_in() ) {
 		return '';
 	}
 
-	$target_weight = ws_ls_target_get( get_current_user_id(), 'display' );
+	$user_id = ( true === empty( $user_id ) ) ? get_current_user_id() : $user_id;
+
+	$target_weight = ws_ls_target_get( $user_id, 'display' );
 
 	return esc_html( $target_weight );
 }
@@ -22,49 +24,54 @@ add_shortcode( 'wlt-target', 'ws_ls_shortcode_target' );
 add_shortcode( 'wt-target-weight', 'ws_ls_shortcode_target' );
 
 /**
- * Render shortcode [wlt-weight-start]
+ * Render shortcode [wt-start-weight]
  * @param bool $user_id
  *
  * @return string
  */
-function ws_ls_weight_start( $user_id = false ) {
+function ws_ls_shortcode_start_weight( $user_id = NULL ) {
 
 	if( false === is_user_logged_in() ) {
 		return '';
 	}
-//ws_ls_entry_get_oldest
-	$user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
 
-	if (ws_ls_get_config('WE_LS_DATA_UNITS') == "pounds_only") {
-		$weight = ws_ls_get_start_weight_in_pounds($user_id);
-	}
-	else {
-		$weight = ws_ls_get_weight_extreme($user_id);
-	}
-	return we_ls_format_weight_into_correct_string_format($weight);
-}
-add_shortcode( 'wlt-weight-start', 'ws_ls_weight_start' );
-add_shortcode( 'wt-start-weight', 'ws_ls_weight_start' );
+	$arguments[ 'user-id' ] = ( true === empty( $user_id ) ) ? get_current_user_id() : $user_id;
 
-function ws_ls_weight_recent($user_id = false)
-{
-	// If not logged in then return no value
-	if(!is_user_logged_in()) {
+	$oldest_entry = ws_ls_entry_get_oldest( $arguments );
+
+	if( true === empty( $oldest_entry ) ) {
 		return '';
 	}
 
-	$user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
-
-	if (ws_ls_get_config('WE_LS_DATA_UNITS') == "pounds_only") {
-		$weight =  ws_ls_get_recent_weight_in_pounds($user_id);
-	}
-	else {
-		$weight =  ws_ls_get_weight_extreme($user_id, true);
-	}
-
-	return we_ls_format_weight_into_correct_string_format($weight);
+	return $oldest_entry[ 'display' ];
 }
-add_shortcode( 'wlt-weight-most-recent', 'ws_ls_weight_recent' );
+add_shortcode( 'wlt-weight-start', 'ws_ls_shortcode_start_weight' );
+add_shortcode( 'wt-start-weight', 'ws_ls_shortcode_start_weight' );
+
+/**
+ * Render shortcode [wt-latest-weight]
+ * @param bool $user_id
+ *
+ * @return string
+ */
+function ws_ls_shortcode_recent_weight( $user_id = NULL ) {
+
+	if( false === is_user_logged_in() ) {
+		return '';
+	}
+
+	$arguments[ 'user-id' ] = ( true === empty( $user_id ) ) ? get_current_user_id() : $user_id;
+
+	$latest_entry = ws_ls_entry_get_latest( $arguments );
+
+	if( true === empty( $latest_entry ) ) {
+		return '';
+	}
+
+	return $latest_entry[ 'display' ];
+}
+add_shortcode( 'wlt-weight-most-recent', 'ws_ls_shortcode_recent_weight' );
+add_shortcode( 'wt-latest-weight', 'ws_ls_shortcode_recent_weight' );
 
 function ws_ls_weight_difference($user_id = false)
 {

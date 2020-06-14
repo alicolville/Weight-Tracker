@@ -638,8 +638,8 @@
             if ( false === empty( $stats ) ) {
 
                 $row[ 'number-of-entries' ] = $stats['number-of-entries'];
-                $row[ 'start-weight' ] = ws_ls_weight_start( $row[ 'user_id' ] );
-                $row[ 'latest-weight' ] = ws_ls_weight_recent( $row[ 'user_id' ] );
+                $row[ 'start-weight' ] = ws_ls_shortcode_start_weight( $row[ 'user_id' ] );
+                $row[ 'latest-weight' ] = ws_ls_shortcode_recent_weight( $row[ 'user_id' ] );
                 $row[ 'diff-weight' ] = ws_ls_weight_difference( $row[ 'user_id' ] );
                 $row[ 'target' ] = ws_ls_target_get( $row[ 'user_id' ], 'display' );
             }

@@ -516,6 +516,25 @@ function ws_ls_entry_get_oldest( $arguments = [] ) {
 }
 
 /**
+ * Fetch the latest entry
+ * @param array $arguments
+ *
+ * @return string|null
+ */
+function ws_ls_entry_get_latest( $arguments = [] ) {
+
+	$arguments              = wp_parse_args( $arguments, [ 'user-id' => get_current_user_id(), 'meta' => true ] );
+	$arguments[ 'which']    = 'latest';
+	$arguments[ 'id' ]      = ws_ls_db_entry_latest_or_oldest( $arguments );
+
+	if ( true === empty( $arguments[ 'id' ] ) ) {
+		return NULL;
+	}
+
+	return ws_ls_entry_get( $arguments );
+}
+
+/**
  *
  * DEPRECATED: replace with ws_ls_to_bool()
  *
