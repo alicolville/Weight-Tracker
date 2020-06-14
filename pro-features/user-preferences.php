@@ -181,20 +181,24 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
 
     $html_output 		.= ws_ls_title(__('Preferences', WE_LS_SLUG));
 
+	$unit = ws_ls_user_preferences_settings_get( 'WE_LS_DATA_UNITS', $user_id );
+
   	$html_output .= '
 	<label>' . $labels['weight'] . '</label>
     <select id="WE_LS_DATA_UNITS" name="WE_LS_DATA_UNITS"  tabindex="' . ws_ls_get_next_tab_index() . '">
-      <option value="kg" ' . selected( ws_ls_get_config('WE_LS_DATA_UNITS', $user_id), 'kg', false ) . '>' . __('Kg', WE_LS_SLUG) . '</option>
-      <option value="stones_pounds" ' . selected( ws_ls_get_config('WE_LS_DATA_UNITS', $user_id), 'stones_pounds', false ) . '>' . __('Stones & Pounds', WE_LS_SLUG) . '</option>
-      <option value="pounds_only" ' . selected( ws_ls_get_config('WE_LS_DATA_UNITS', $user_id), 'pounds_only', false ) . '>' . __('Pounds', WE_LS_SLUG) . '</option>
+      <option value="kg" ' . selected( $unit, 'kg', false ) . '>' . __('Kg', WE_LS_SLUG) . '</option>
+      <option value="stones_pounds" ' . selected( $unit, 'stones_pounds', false ) . '>' . __('Stones & Pounds', WE_LS_SLUG) . '</option>
+      <option value="pounds_only" ' . selected( $unit, 'pounds_only', false ) . '>' . __('Pounds', WE_LS_SLUG) . '</option>
     </select>';
+
+	$date_format = ws_ls_user_preferences_settings_get( 'WE_LS_US_DATE', $user_id );
 
     $html_output .= '
 
 	<label>' . $labels['date'] . '</label>
     <select id="WE_LS_US_DATE" name="WE_LS_US_DATE"  tabindex="' . ws_ls_get_next_tab_index() . '">
-      <option value="false" ' . selected( ws_ls_get_config('WE_LS_US_DATE', $user_id), false, false ) . '>' . __('UK (DD/MM/YYYY)', WE_LS_SLUG) . '</option>
-      <option value="true" ' . selected( ws_ls_get_config('WE_LS_US_DATE', $user_id), true, false ) . '>' . __('US (MM/DD/YYYY)', WE_LS_SLUG) . '</option>
+      <option value="false" ' . selected( $date_format, false, false ) . '>' . __('UK (DD/MM/YYYY)', WE_LS_SLUG) . '</option>
+      <option value="true" ' . selected( $date_format, true, false ) . '>' . __('US (MM/DD/YYYY)', WE_LS_SLUG) . '</option>
     </select>';
 
     if ( true !== $arguments['disable-save'] ) {

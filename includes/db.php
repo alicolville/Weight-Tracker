@@ -3,6 +3,10 @@
 defined('ABSPATH') or die("Jog on!");
 
 /**
+ * Refactor complete: 14/06/2020
+ */
+
+/**
  * Return the user's target weight in Kg
  * @param $user_id
  * @return string|null
@@ -534,7 +538,7 @@ function ws_ls_set_user_preference_simple( $field, $value, $user_id = NULL ) {
     $user_id = $user_id ?: get_current_user_id();
 
     // Check for existing settings for this user, if none, then we need to insert the settings row
-    if ( true === empty( ws_ls_user_preferences_get_settings( $user_id ) ) ) {
+    if ( true === empty( ws_ls_user_preferences_settings( $user_id ) ) ) {
         return ws_ls_set_user_preference( $field, $value, $user_id );
     }
 

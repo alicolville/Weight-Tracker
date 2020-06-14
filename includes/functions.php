@@ -419,7 +419,7 @@ function ws_ls_get_user_preference( $key, $user_id = false )
     $user_id = get_current_user_id();
   }
 
-  $user_preferences = ws_ls_user_preferences_get_settings( $user_id );
+  $user_preferences = ws_ls_user_preferences_settings( $user_id );
 
   if(array_key_exists($key, $user_preferences)){
     return $user_preferences[$key];
@@ -704,9 +704,11 @@ function ws_ls_querystring_value( $key, $force_to_int = false, $default = false 
  * @param bool $force_empty_to_null
  * @param bool $json_decode
  *
+ * @param null $cast
+ *
  * @return mixed|null
  */
-function ws_ls_post_value( $key, $default = NULL, $force_empty_to_null = false, $json_decode = false ) {
+function ws_ls_post_value( $key, $default = NULL, $force_empty_to_null = false, $json_decode = false, $cast = NULL ) {
 
     if( false === isset( $_POST[ $key ] ) ) {
         return $default;
@@ -716,7 +718,24 @@ function ws_ls_post_value( $key, $default = NULL, $force_empty_to_null = false, 
 		return NULL;
     }
 
-    return ( true === $json_decode ) ? json_decode( $_POST[ $key ] ) : $_POST[ $key ];
+	$value = $_POST[ $key ];
+
+    switch ( $cast ) {
+
+	    case 'int':
+	    	$value = (int) $value;
+	        break;
+	    case 'float':
+		    $value = (float) $value;
+		    break;
+	    case 'bool':
+		    $value = ws_ls_to_bool( $value );
+		    break;
+	    default:
+	    	//already in the right format
+    }
+
+    return ( true === $json_decode ) ? json_decode( $value ) : $value;
 }
 
 /**
@@ -728,7 +747,6 @@ function ws_ls_post_value( $key, $default = NULL, $force_empty_to_null = false, 
 function ws_ls_post_value_to_bool( $key ) {
 
 	$value = ws_ls_post_value( $key );
-
 	return ws_ls_to_bool( $value );
 }
 
@@ -762,7 +780,6 @@ function ws_ls_height_validate( $height ) {
 
 	return ( $height < 122 || $height > 201 ) ? 0 : $height;
 }
-
 
 /**
  * Either fetch data from the $_POST object for the given object keys

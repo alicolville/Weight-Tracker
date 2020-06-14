@@ -666,7 +666,7 @@ function ws_ls_user_preferences_get( $field = 'gender', $user_id = false ) {
  * @param bool $use_cache
  * @return array|mixed|string|null
  */
-function ws_ls_user_preferences_get_settings( $user_id = NULL ) {
+function ws_ls_user_preferences_settings( $user_id = NULL ) {
 
 	$user_id    = ( NULL === $user_id ) ? get_current_user_id() : $user_id;
 	$settings   = ws_ls_user_preferences_get( 'settings', $user_id );
@@ -674,4 +674,25 @@ function ws_ls_user_preferences_get_settings( $user_id = NULL ) {
 	return ( false === empty( $settings ) ) ?
 			$settings = json_decode( $settings, true ) :
 				$settings;
+}
+
+/**
+ * Fetch the user setting
+ *
+ * @param string $field
+ * @param bool $user_id
+ *
+ * @return |null
+ */
+function ws_ls_user_preferences_settings_get( $field = 'WE_LS_DATA_UNITS', $user_id = MILL ) {
+
+	// Ensure a valid setting
+	if ( false === in_array( $field, [ 'WE_LS_DATA_UNITS', 'WE_LS_US_DATE', 'WE_LS_IMPERIAL_WEIGHTS' ] ) ) {
+		return NULL;
+	}
+
+	$user_id    = ( true === empty( $user_id ) ) ? get_current_user_id() : $user_id;
+	$settings   = ws_ls_user_preferences_settings( $user_id );
+
+	return ( true === array_key_exists( $field, $settings ) ) ? $settings[ $field ] : NULL;
 }
