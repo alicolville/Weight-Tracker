@@ -73,38 +73,33 @@ function ws_ls_shortcode_recent_weight( $user_id = NULL ) {
 add_shortcode( 'wlt-weight-most-recent', 'ws_ls_shortcode_recent_weight' );
 add_shortcode( 'wt-latest-weight', 'ws_ls_shortcode_recent_weight' );
 
-function ws_ls_weight_difference($user_id = false)
-{
+/**
+ * Display shortcode for difference since start
+ * @param null $user_id
+ *
+ * @return string
+ */
+function ws_ls_shortcode_difference_in_weight_from_oldest( $user_id = NULL ) {
+
 	// If not logged in then return no value
-	if(!is_user_logged_in()) {
+	if( false === is_user_logged_in() ) {
 		return '';
 	}
 
-	$user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
+	$arguments[ 'user-id' ] = ( true === empty( $user_id ) ) ? get_current_user_id() : $user_id;
 
-	if (ws_ls_get_config('WE_LS_DATA_UNITS') == "pounds_only"){
-		$start_weight = ws_ls_get_start_weight_in_pounds($user_id);
-		$recent_weight = ws_ls_get_recent_weight_in_pounds($user_id);
-	}
-	else	{
-		$start_weight = ws_ls_get_start_weight_in_kg($user_id);
-		$recent_weight = ws_ls_get_weight_extreme($user_id, true);
+	$latest_entry = ws_ls_entry_get_latest( $arguments );
+
+	if( true === empty( $latest_entry ) ) {
+		return '';
 	}
 
-	// If no data, return empty string
-    if ( false === $recent_weight && false === $start_weight ) {
-	    return '';
-    }
+	$difference =  ws_ls_weight_display( $latest_entry[ 'difference_from_start_kg' ], $arguments[ 'user-id' ], false, false, true );
 
-	$difference = $recent_weight - $start_weight;
-
-	$display_string = ($difference > 0) ? "+" : "";
-
-	$display_string .= we_ls_format_weight_into_correct_string_format($difference, true);
-
-	return $display_string;
+	return $difference[ 'display' ];
 }
-add_shortcode( 'wlt-weight-diff', 'ws_ls_weight_difference' );
+add_shortcode( 'wlt-weight-diff', 'ws_ls_shortcode_difference_in_weight_from_oldest' );
+add_shortcode( 'wt-difference-since-start', 'ws_ls_shortcode_difference_in_weight_from_oldest' );
 
 function ws_ls_weight_difference_target($user_id = false){
 	// If not logged in then return no value

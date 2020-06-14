@@ -172,7 +172,7 @@ Documentation updates:
 add_shortcode( 'wlt-target', 'ws_ls_shortcode_target' ); to add_shortcode( 'wt-target-weight', 'ws_ls_shortcode_target' );
 add_shortcode( 'wlt-weight-start', 'ws_ls_weight_start' ); to add_shortcode( 'wt-start-weight', 'ws_ls_weight_start' );
 add_shortcode( 'wlt-weight-most-recent', 'ws_ls_weight_recent' ); to add_shortcode( 'wt-latest-weight', 'ws_ls_weight_recent' );
-
+add_shortcode( 'wlt-weight-diff', 'ws_ls_shortcode_difference_in_weight_from_oldest' ); to add_shortcode( 'wt-difference-since-start', 'ws_ls_shortcode_difference_in_weight_from_oldest' );
 
 //test GF
 

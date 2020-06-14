@@ -95,9 +95,11 @@ function ws_ls_convert_kg_to_stone_pounds( $kg ) {
  * @param bool $key
  * @param bool $force_admin
  *
+ * @param bool $comparison_value
+ *
  * @return array|null
  */
-function ws_ls_weight_display( $kg, $user_id = NULL, $key = false, $force_admin = false ) {
+function ws_ls_weight_display( $kg, $user_id = NULL, $key = false, $force_admin = false, $comparison_value = false ) {
 
 	$weight 	= [];
 
@@ -114,13 +116,6 @@ function ws_ls_weight_display( $kg, $user_id = NULL, $key = false, $force_admin 
 	}
 
 	$cache_key = sprintf( '%s-%s', $kg, $weight[ 'format' ] );
-
-	if ( $cache = ws_ls_get_cache( $cache_key ) ) {
-
-//		return ( false !== $key && false === empty( $cache[ $key ] ) ) ?
-//			$cache[ $key ] :
-//			$cache;
-	}
 
 	$weight[ 'kg' ] = $kg;
 
@@ -156,10 +151,13 @@ function ws_ls_weight_display( $kg, $user_id = NULL, $key = false, $force_admin 
 			$weight[ 'pounds' ]     = $imperial['pounds'];
 			$weight[ 'imperial' ]   = true;
 
+			// Comparison value?
+			if ( true === $comparison_value ) {
+				$weight[ 'display' ] = ws_ls_format_stones_pound_for_comparison_display( $weight );
+			}
+
 			break;
 	}
-
-	ws_ls_set_cache( $cache_key, $weight );
 
 	return ( false !== $key && false === empty( $weight[ $key ] ) ) ?
 		$weight[ $key ] :
