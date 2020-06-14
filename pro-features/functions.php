@@ -497,9 +497,9 @@ function ws_ls_is_female( $user_id ) {
  * @param $user_id
  * @return bool|string
  */
-function ws_ls_get_dob($user_id) {
+function ws_ls_get_dob( $user_id ) {
 
-	$user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
+	$user_id = ( true === empty( $user_id ) ) ? get_current_user_id() : $user_id;
 
     return ws_ls_user_preferences_get('dob', $user_id);
 }
@@ -513,18 +513,18 @@ function ws_ls_get_dob($user_id) {
  * @return bool|string
  * @throws Exception
  */
-function ws_ls_get_dob_for_display($user_id = false, $not_specified_text = '', $include_age = false) {
+function ws_ls_get_dob_for_display( $user_id = false, $not_specified_text = '', $include_age = false ) {
 
-	$dob = ws_ls_get_dob($user_id);
+	$dob = ws_ls_get_dob( $user_id );
 
-	$not_specified_text = (false === $not_specified_text) ? __('Not Specified', WE_LS_SLUG) : esc_html($not_specified_text);
+	$not_specified_text = ( false === $not_specified_text) ? __( 'Not Specified', WE_LS_SLUG ) : esc_html( $not_specified_text );
 
-    if (false === empty($dob) && '0000-00-00 00:00:00' !== $dob) {
-		$html = ws_ls_iso_date_into_correct_format($dob);
+    if (false === empty( $dob ) && '0000-00-00 00:00:00' !== $dob ) {
+		$html = ws_ls_iso_date_into_correct_format( $dob );
 
 		// Include age?
 		if(true === $include_age) {
-			$html .= ' ('. ws_ls_get_age_from_dob($user_id) . ')';
+			$html .= ' ('. ws_ls_get_age_from_dob( $user_id ) . ')';
 		}
 
 		return $html;
@@ -534,28 +534,33 @@ function ws_ls_get_dob_for_display($user_id = false, $not_specified_text = '', $
 }
 
 /**
- * Used to calculate agre from the person's DOB
+ * Used to calculate age from the person's DOB
  *
  * @param bool $user_id
  * @return bool|int
  * @throws Exception
  */
-function ws_ls_get_age_from_dob($user_id = false){
+function ws_ls_get_age_from_dob( $user_id = NULL ){
 
-    $user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
+    $user_id = ( true === empty( $user_id ) ) ? get_current_user_id() : $user_id;
 
-    $dob = ws_ls_get_dob($user_id);
+	if ( $cache = ws_ls_cache_user_get( $user_id, 'age' ) ) {
+		return $cache;
+	}
 
-    if(false === empty($dob) && '0000-00-00 00:00:00' !== $dob) {
+    $dob = ws_ls_get_dob( $user_id );
 
-        $dob = new DateTime($dob);
-        $today   = new DateTime('today');
-        $age = $dob->diff($today)->y;
-
-        return $age;
+    if( true === empty( $dob ) || '0000-00-00 00:00:00' === $dob ) {
+		return NULL;
     }
 
-    return NULL;
+    $dob        = new DateTime( $dob );
+    $today      = new DateTime('today' );
+    $age        = $dob->diff( $today )->y;
+
+	ws_ls_cache_user_set( $user_id, 'age', $age );
+
+	return $age;
 }
 
 /**
