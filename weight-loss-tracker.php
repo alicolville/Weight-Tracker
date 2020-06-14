@@ -113,15 +113,11 @@ defined('ABSPATH') or die('Jog on!');
         'includes/admin-pages/user-data/data-user.php',
         'includes/admin-pages/user-data/data-user-edit-settings.php',
         'includes/admin-pages/user-data/data-search-results.php',
-        'includes/admin-pages/user-data/data-photos.php'
-    ];
-
-    $pro_files = [
-	    'pro-features/user-groups.php',
+        'includes/admin-pages/user-data/data-photos.php',
+		'pro-features/user-groups.php',
         'pro-features/user-birthdays.php',
         'pro-features/user-preferences.php',
-        'pro-features/ajax-handler-public.php',
-        'pro-features/ajax-handler-admin.php',
+        'pro-features/ajax.php',
         'pro-features/shortcode-chart.php',
         'pro-features/shortcode-form.php',
         'pro-features/shortcode-footable.php',
@@ -147,8 +143,6 @@ defined('ABSPATH') or die('Jog on!');
         'pro-features/plus/awards/db.php',
         'pro-features/plus/awards/hooks.php',
     ];
-
-    $files_to_include = array_merge( $files_to_include, $pro_files );
 
     // Gravity Forms
     if ( true === WE_LS_THIRD_PARTY_GF_ENABLE ) {
@@ -190,13 +184,3 @@ defined('ABSPATH') or die('Jog on!');
       load_plugin_textdomain( WE_LS_SLUG, false, dirname( plugin_basename( __FILE__ )  ) . '/includes/languages/' );
     }
     add_action('plugins_loaded', 'ws_ls_load_textdomain');
-
-
-    function t() {
-
-    	print_r(ws_ls_convert_ISO_date_into_locale( '2010-01-20'));
-
-
-		die;
-	}
-//	add_action('init', 't');
