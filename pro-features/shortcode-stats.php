@@ -103,7 +103,7 @@ function ws_ls_shortcode_stats_league_total($user_defined_arguments)
 
 function ws_ls_shortcode_stats_total_lost($user_defined_arguments)
 {
-    if(!WS_LS_IS_PRO || WE_LS_DISABLE_USER_STATS) {
+    if( false === WS_LS_IS_PRO ) {
        return  __('Stats disabled', WE_LS_SLUG);
     }
 
