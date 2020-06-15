@@ -4,9 +4,6 @@ defined('ABSPATH') or die('Jog on!');
 
 function ws_ls_advertise_pro() {
 
-	global $pro_features;
-	global $pro_plus_features;
-
 	if ( !current_user_can( 'manage_options' ) )  {
 		wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
 	}
@@ -250,7 +247,7 @@ function ws_ls_advertise_pro() {
 	                                   <div style="padding: 0px 15px 0px 15px">
 											<div class="inside">
 												<p><?php echo __('Below is a list of the intended features of the Pro Plus version', WE_LS_SLUG); ?>. <strong><?php echo __('You can upgrade for', WE_LS_SLUG); ?> &pound;<?php echo $proprice; ?> <?php echo __('a year', WE_LS_SLUG); ?>.</strong> <?php echo ws_ls_url_license_types(); ?>:</p>
-												<?php ws_ls_display_features($pro_plus_features); ?>
+												<?php ws_ls_display_features( ws_ls_feature_list_pro_plus() ); ?>
 											</div>
 										</div>
 									</div>
@@ -264,7 +261,7 @@ function ws_ls_advertise_pro() {
 
 										<div class="inside">
 											<p><?php echo __('Below is a list of the intended features of the Pro version', WE_LS_SLUG); ?>.  <strong><?php echo __('You can upgrade for', WE_LS_SLUG); ?> &pound;<?php echo $price; ?> <?php echo __('a year', WE_LS_SLUG); ?>.</strong> <?php echo ws_ls_url_license_types(); ?>:</p>
-											<?php ws_ls_display_features($pro_features); ?>
+											<?php ws_ls_display_features( ws_ls_feature_list_pro() ); ?>
 										</div>
 									</div>
 								<?php endif; ?>

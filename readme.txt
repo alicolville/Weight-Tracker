@@ -198,6 +198,7 @@ add_shortcode('wlt-weight-previous', 'ws_ls_shortcode_previous_weight'); to add_
 * Improvement: Removed redundant tools for correcting conversion issues (added 5+ years ago).
 * Improvement: Old shortcode names have now been deprecated and should be replaced with current names.
 * Improvement: Optimised SQL queries.
+* Improvement: Global variables declared on each page load for feature lists have been removed.
 * Bug fix: "Who can view and modify user data?" has been fixed so user's with the specified minimum role can now access admin data pages.
 * Bug fix: Awards for a user are now deleted when "Delete all data for this user" has been clicked.
 * Bug fix: All challenge data for a user is now deleted when "Delete all data for this user" has been clicked.
