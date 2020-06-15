@@ -5,33 +5,12 @@ define( 'WE_LS_CACHE_ENABLED', 'yes' === get_option( 'ws-ls-caching', 'yes' ) );
 define( 'WE_LS_CACHE_TIME', 15 * MINUTE_IN_SECONDS);
 
 // TODO: Get rid of all these!
-define('WE_LS_CACHE_KEY_TARGET', 'target-data');
-define('WE_LS_CACHE_KEY_DATA', 'weight-data');
-define('WE_LS_CACHE_KEY_MIN_MAX_DATES', 'min-max-dates');
-define('WE_LS_CACHE_KEY_TARGET_WEIGHT', 'target-weight');
-define('WE_LS_CACHE_KEY_START_WEIGHT', 'start-weight-index');
-define('WE_LS_CACHE_KEY_WEIGHT_EXTREME', 'weight-extreme-');
 define('WE_LS_CACHE_KEY_PHOTOS', 'photos-extreme-');
 define('WE_LS_CACHE_KEY_PHOTOS_ALL', 'photos-all-');
 define('WE_LS_CACHE_KEY_PHOTOS_COUNT', 'photos-count-');
-define('WE_LS_CACHE_KEY_USER_PREFERENCE', 'user-preference');
-define('WE_LS_CACHE_KEY_YEKEN_JSON', 'yeken-json-lookup-wlt-2017');
-define('WE_LS_CACHE_KEY_STATS_SUMMARY', 'user-stats-summary');
-define('WE_LS_CACHE_KEY_ENTRY_COUNTS', 'entry-counts');
 define('WE_LS_CACHE_KEY_BMR', 'bmr');
 define('WE_LS_CACHE_KEY_HARRIS_BENEDICT', 'harris-benedict');
 define('WE_LS_CACHE_KEY_MACRO', 'macro');
-define('WE_LS_CACHE_KEY_WEIGHT_PREVIOUS', 'previous-weight');
-define('WE_LS_CACHE_ADMIN_USER_DATA', 'admin-user-data');
-
-/**
- * Caching enabled?
- *
- * @return bool
- */
-function ws_ls_cache_is_enabled() {
-	return WE_LS_CACHE_ENABLED;
-}
 
 /**
  * User caching. From now on, store an array for each user in cache. Each caache key can then be stored in an array element.
@@ -222,16 +201,7 @@ function ws_ls_delete_cache_for_given_user($user_id = false)
 		$wpdb->query($sql);
 
 		$keys_to_clear = array(
-								$user_id . '-' . WE_LS_CACHE_KEY_START_WEIGHT,
-								$user_id . '-' . WE_LS_CACHE_KEY_TARGET_WEIGHT . 'target_weight_weight',
-								$user_id . '-' . WE_LS_CACHE_KEY_TARGET_WEIGHT . 'target_weight_only_pounds',
-								$user_id . '-' . WE_LS_CACHE_KEY_WEIGHT_EXTREME . '-asc-weight_only_pounds',
-								$user_id . '-' . WE_LS_CACHE_KEY_WEIGHT_EXTREME . '-desc-weight_only_pounds',
-								$user_id . '-' . WE_LS_CACHE_KEY_WEIGHT_EXTREME . '-asc-weight_weight',
-								$user_id . '-' . WE_LS_CACHE_KEY_WEIGHT_EXTREME . '-desc-weight_weight',
-								$user_id . '-' . WE_LS_CACHE_KEY_USER_PREFERENCE . '-gender',
-								$user_id . '-' . WE_LS_CACHE_KEY_USER_PREFERENCE . '-activity_level',
-								$user_id . '-' . WE_LS_CACHE_KEY_USER_PREFERENCE . '-dob',
+
 								$user_id . '-' . WE_LS_CACHE_KEY_BMR,
 								$user_id . '-' . WE_LS_CACHE_KEY_HARRIS_BENEDICT,
 								$user_id . '-' . WE_LS_CACHE_KEY_MACRO,

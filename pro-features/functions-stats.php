@@ -41,7 +41,7 @@ add_action('admin_init', 'ws_ls_stats_run_cron_for_first_time');
 function ws_ls_stats_get_summary_stats() {
 
 	// Cached?
-	if ($stats = get_option(WE_LS_CACHE_KEY_STATS_SUMMARY))	{
+	if ( $stats = get_option( 'user-stats-summary' ) )	{
 		return $stats;
 	}
 
@@ -59,7 +59,7 @@ function ws_ls_stats_refresh_summary_stats() {
 		'sum' => 0
 	);
 
-	update_option(WE_LS_CACHE_KEY_STATS_SUMMARY, $stats );
+	update_option('user-stats-summary', $stats );
 
 	return true;
 }
