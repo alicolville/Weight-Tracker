@@ -169,6 +169,8 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
        Latest Weight
        Diff. from Start in admin side bar
 
+// finish shortcodes-various.php
+
 Documentation updates:
 add_shortcode( 'wlt-target', 'ws_ls_shortcode_target' ); to add_shortcode( 'wt-target-weight', 'ws_ls_shortcode_target' );
 add_shortcode( 'wlt-weight-start', 'ws_ls_weight_start' ); to add_shortcode( 'wt-start-weight', 'ws_ls_weight_start' );

@@ -62,11 +62,17 @@ function ws_ls_shortcode_recent_weight( $user_id = NULL ) {
 
 	$arguments[ 'user-id' ] = ( true === empty( $user_id ) ) ? get_current_user_id() : $user_id;
 
+	if ( $cache = ws_ls_cache_user_get( $arguments[ 'user-id' ], 'shortcode-latest-weight' ) ) {
+		return $cache;
+	}
+
 	$latest_entry = ws_ls_entry_get_latest( $arguments );
 
 	if( true === empty( $latest_entry ) ) {
 		return '';
 	}
+
+	ws_ls_cache_user_set( $arguments[ 'user-id' ], 'shortcode-latest-weight', $latest_entry[ 'display' ] );
 
 	return $latest_entry[ 'display' ];
 }
@@ -88,6 +94,10 @@ function ws_ls_shortcode_difference_in_weight_from_oldest( $user_id = NULL ) {
 
 	$arguments[ 'user-id' ] = ( true === empty( $user_id ) ) ? get_current_user_id() : $user_id;
 
+	if ( $cache = ws_ls_cache_user_get( $arguments[ 'user-id' ], 'shortcode-since-start' ) ) {
+		return $cache;
+	}
+
 	$latest_entry = ws_ls_entry_get_latest( $arguments );
 
 	if( true === empty( $latest_entry ) ) {
@@ -95,6 +105,8 @@ function ws_ls_shortcode_difference_in_weight_from_oldest( $user_id = NULL ) {
 	}
 
 	$difference =  ws_ls_weight_display( $latest_entry[ 'difference_from_start_kg' ], $arguments[ 'user-id' ], false, false, true );
+
+	ws_ls_cache_user_set( $arguments[ 'user-id' ], 'shortcode-since-start', $difference[ 'display' ] );
 
 	return $difference[ 'display' ];
 }
