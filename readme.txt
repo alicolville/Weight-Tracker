@@ -164,7 +164,6 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 // re-write and cache weight_object function. Arguments should be an array
 // TODO: We changed the cache key for all user preferences. Ensure this is cleared properly
 // TODO: Explaoin Challenegs more in UI and doc site
-// Look at cache, what happens if the data at a lookup key has expired?
 // Fix Start Weight
        Latest Weight
        Diff. from Start in admin side bar
