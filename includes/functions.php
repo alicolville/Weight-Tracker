@@ -504,7 +504,7 @@ function ws_ls_entry_get( $arguments = [] ) {
  */
 function ws_ls_entry_get_oldest( $arguments = [] ) {
 
-	$arguments              = wp_parse_args( $arguments, [ 'user-id' => get_current_user_id(), 'meta' => true ] );
+	$arguments              = wp_parse_args( $arguments, [ 'user-id' => get_current_user_id(), 'meta' => true, 'kg-only' => false ] );
 	$arguments[ 'which']    = 'oldest';
 	$arguments[ 'id' ]      = ws_ls_db_entry_latest_or_oldest( $arguments );
 
@@ -512,7 +512,26 @@ function ws_ls_entry_get_oldest( $arguments = [] ) {
 		return NULL;
 	}
 
-	return ws_ls_entry_get( $arguments );
+	$oldest_entry = ws_ls_entry_get( $arguments );
+
+	return ( true === $arguments[ 'kg-only'] &&
+			false === empty( $oldest_entry[ 'kg' ] ) ) ?
+				$oldest_entry[ 'kg' ] :
+					$oldest_entry;
+
+}
+
+/**
+ * Return Kg for oldest weight
+ * @param $user_id
+ *
+ * @return string|null
+ */
+function ws_ls_entry_get_oldest_kg( $user_id ) {
+
+	$user_id = ( NULL === $user_id ) ? get_current_user_id() : $user_id;
+
+	return ws_ls_entry_get_oldest( [ 'user-id' => $user_id, 'meta' => false, 'kg-only' => true ] );
 }
 
 /**
@@ -523,7 +542,7 @@ function ws_ls_entry_get_oldest( $arguments = [] ) {
  */
 function ws_ls_entry_get_latest( $arguments = [] ) {
 
-	$arguments              = wp_parse_args( $arguments, [ 'user-id' => get_current_user_id(), 'meta' => true ] );
+	$arguments              = wp_parse_args( $arguments, [ 'user-id' => get_current_user_id(), 'meta' => true, 'kg-only' => false ] );
 	$arguments[ 'which']    = 'latest';
 	$arguments[ 'id' ]      = ws_ls_db_entry_latest_or_oldest( $arguments );
 
@@ -531,7 +550,25 @@ function ws_ls_entry_get_latest( $arguments = [] ) {
 		return NULL;
 	}
 
-	return ws_ls_entry_get( $arguments );
+	$latest_entry = ws_ls_entry_get( $arguments );
+
+	return ( true === $arguments[ 'kg-only'] &&
+	         false === empty( $latest_entry[ 'kg' ] ) ) ?
+				$latest_entry[ 'kg' ] :
+					$latest_entry;
+}
+
+/**
+ * Return Kg for latest weight
+ * @param $user_id
+ *
+ * @return string|null
+ */
+function ws_ls_entry_get_latest_kg( $user_id ) {
+
+	$user_id = ( NULL === $user_id ) ? get_current_user_id() : $user_id;
+
+	return ws_ls_entry_get_latest( [ 'user-id' => $user_id, 'meta' => false, 'kg-only' => true ] );
 }
 
 /**

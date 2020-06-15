@@ -30,7 +30,7 @@
 
 			if ( false === empty( $awards ) ) {
 
-			    $start_weight = ws_ls_get_weight_extreme( $info['user-id'] );
+			    $start_weight = ws_ls_entry_get_oldest_kg( $info['user-id'] );
 
 			    // ---------------------------------------------------------------
 			    // Weight Awards

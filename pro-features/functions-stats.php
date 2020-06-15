@@ -74,8 +74,8 @@ function ws_ls_stats_update_for_user($user_id) {
 		$stats = array();
 
 		$stats['user_id'] = $user_id;
-		$stats['start_weight'] = ws_ls_get_weight_extreme($user_id);
-		$stats['recent_weight'] = ws_ls_get_weight_extreme($user_id, true);
+		$stats['start_weight'] = ws_ls_entry_get_oldest_kg($user_id);
+		$stats['recent_weight'] = ws_ls_entry_get_latest_kg( $user_id );
 		$stats['weight_difference'] = (is_numeric($stats['start_weight']) && is_numeric($stats['recent_weight'])) ? $stats['recent_weight'] - $stats['start_weight'] : 0;
 		$stats['last_update'] = current_time('mysql', 1);
 

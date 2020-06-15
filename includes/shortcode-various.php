@@ -157,61 +157,6 @@ add_shortcode( 'wlt-weight-diff-from-target', 'ws_ls_shortcode_difference_in_wei
 add_shortcode( 'wt-difference-from-target', 'ws_ls_shortcode_difference_in_weight_target' );
 
 
-function ws_ls_get_start_weight_in_kg($user_id = false){
-
-	$user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
-
-	return ws_ls_get_weight_extreme($user_id);
-}
-function ws_ls_get_recent_weight_in_kg($user_id = false){
-
-	$user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
-
-	return ws_ls_get_weight_extreme($user_id, true);
-}
-
-
-/**
- *
- * REPLACE WITH: ws_ls_entry_get_oldest / latest
- *
- * @param $user_id
- * @param bool $recent
- * @param string $unit
- *
- * @return bool|mixed
- */
-function ws_ls_get_weight_extreme($user_id, $recent = false, $unit = "weight_weight")
-{
-	global $wpdb;
-
-	$direction = "asc";
-
-	if ($recent)
-		$direction = "desc";
-
-	$cache_key = $user_id . '-' . WE_LS_CACHE_KEY_WEIGHT_EXTREME . '-' . $direction . '-' . $unit;
-
-	// Return cache if found!
-	if ($cache = ws_ls_get_cache($cache_key))   {
-		return $cache;
-	}
-
-	$table_name = $wpdb->prefix . WE_LS_TABLENAME;
-	$sql =  $wpdb->prepare("SELECT " . $unit . " as weight_value FROM $table_name where weight_user_id = %d order by weight_date " . $direction . " limit 0, %d", $user_id, 1);
-	$rows = $wpdb->get_row($sql);
-
-	if ( false === empty( $rows->weight_value ) ) {
-		ws_ls_set_cache($cache_key, $rows->weight_value );
-
-		return $rows->weight_value;
-	}
-	else
-		return false;
-
-}
-
-
 function ws_ls_get_weight_previous( $user_id ) {
 
     $user_id = $user_id ?: get_current_user_id();

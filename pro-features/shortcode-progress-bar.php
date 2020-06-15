@@ -61,7 +61,9 @@ function ws_ls_shortcode_progress_bar($user_defined_arguments) {
 			// Latest weight
 			if( false === empty( $arguments['weight'] ) ) {
 
-				$arguments['start-weight'] = ws_ls_get_start_weight_in_kg();
+				$oldest_entry = ws_ls_entry_get_oldest();
+
+				$arguments['start-weight'] = ( false === empty( $oldest_entry[ 'kg' ] ) ) ? $oldest_entry[ 'kg' ] : NULL;
 
 				// -----------------------------------------------------
 				// Aim to Gain weight?

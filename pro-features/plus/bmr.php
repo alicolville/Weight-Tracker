@@ -47,7 +47,7 @@
         }
 
         // Recent weight?
-        $weight = ws_ls_get_recent_weight_in_kg($user_id);
+        $weight = ws_ls_entry_get_latest_kg($user_id);
 
 		$weight = apply_filters( 'wlt_filters_bmr_weight_raw', $weight, $user_id );
 
