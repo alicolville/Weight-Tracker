@@ -151,7 +151,7 @@ function ws_ls_shortcode_if_value_exist($user_id, $fields) {
                     $value = ws_ls_entry_get_latest_kg($user_id);
                     break;
                 case 'target':
-                    $value = ws_ls_get_target_weight_in_kg($user_id);
+                    $value = ws_ls_target_get( $user_id, 'kg' );
                     break;
                 case 'bmr':
 

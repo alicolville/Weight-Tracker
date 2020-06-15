@@ -3,6 +3,39 @@
 defined('ABSPATH') or die("Jog on!");
 
 /**
+ *
+ * Render the shortcode for previous weight [wlt-weight-previous]
+ *
+ * @param null $user_id
+ *
+ * @return string
+ */
+function ws_ls_shortcode_previous_weight( $user_id = NULL ) {
+
+	if ( false === WS_LS_IS_PRO ) {
+		return '';
+	}
+
+	$arguments[ 'user-id' ] = ( true === empty( $user_id ) ) ? get_current_user_id() : $user_id;
+
+	if ( $cache = ws_ls_cache_user_get( $arguments[ 'user-id' ], 'shortcode-previous-weight' ) ) {
+		return $cache;
+	}
+
+	$previous_entry = ws_ls_entry_get_previous( $arguments );
+
+	$output = ( false === empty( $previous_entry[ 'display' ] ) ) ?
+		$previous_entry[ 'display' ] :
+		'';
+
+	ws_ls_cache_user_set( $arguments[ 'user-id' ], 'shortcode-previous-weight', $output );
+
+	return $output;
+}
+add_shortcode('wlt-weight-previous', 'ws_ls_shortcode_previous_weight');
+add_shortcode('wt-previous-weight', 'ws_ls_shortcode_previous_weight');
+
+/**
  * Shortcode for [wt-difference-from-previous] - render weight difference between latest and previous entry
  * @param bool $user_id
  *
