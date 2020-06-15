@@ -2,6 +2,53 @@
 
 defined('ABSPATH') or die("Jog on!");
 
+/**
+ * Shortcode for [wt-difference-from-previous] - render weight difference between latest and previous entry
+ * @param bool $user_id
+ *
+ * @return string|null
+ */
+function ws_ls_weight_difference_previous( $user_id = false ){
+
+	if ( false === WS_LS_IS_PRO ) {
+		return '';
+	}
+
+	// If not logged in then return no value
+	if( false === is_user_logged_in() ) {
+		return '';
+	}
+
+	$arguments[ 'user-id' ] = ( true === empty( $user_id ) ) ? get_current_user_id() : $user_id;
+
+	if ( $cache = ws_ls_cache_user_get( $arguments[ 'user-id' ], 'shortcode-difference-previous' ) ) {
+		return $cache;
+	}
+
+	$latest_entry = ws_ls_entry_get_latest( $arguments );
+
+	if ( true === empty( $latest_entry[ 'kg' ] ) ) {
+		return '';
+	}
+
+	$previous_entry = ws_ls_entry_get_previous( $arguments );
+
+	if ( true === empty( $previous_entry[ 'kg' ] ) ) {
+		return '';
+	}
+
+	$difference = $latest_entry[ 'kg' ] - $previous_entry[ 'kg' ];
+	$sign       = ( $difference > 0 ) ? '+' : '';
+	$difference = ws_ls_weight_display( $difference, $arguments[ 'user-id' ], false, false, true );
+	$output     = sprintf ('%s%s', $sign, $difference[ 'display' ] );
+
+	ws_ls_cache_user_set( $arguments[ 'user-id' ], 'shortcode-difference-previous', $output );
+
+	return $output;
+}
+add_shortcode('wlt-weight-difference-previous', 'ws_ls_weight_difference_previous' );
+add_shortcode('wt-difference-from-previous', 'ws_ls_weight_difference_previous' );
+
 function ws_ls_get_user_bmi($user_defined_arguments) {
 
 	// If not logged in then return no value

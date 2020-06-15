@@ -113,6 +113,12 @@ function ws_ls_shortcode_difference_in_weight_from_oldest( $user_id = NULL ) {
 add_shortcode( 'wlt-weight-diff', 'ws_ls_shortcode_difference_in_weight_from_oldest' );
 add_shortcode( 'wt-difference-since-start', 'ws_ls_shortcode_difference_in_weight_from_oldest' );
 
+/**
+ * Shortcide [wt-difference-from-target] display weight difference from target
+ * @param null $user_id
+ *
+ * @return string|null
+ */
 function ws_ls_shortcode_difference_in_weight_target( $user_id = NULL ){
 
 	// If not logged in then return no value
@@ -150,44 +156,6 @@ function ws_ls_shortcode_difference_in_weight_target( $user_id = NULL ){
 add_shortcode( 'wlt-weight-diff-from-target', 'ws_ls_shortcode_difference_in_weight_target' );
 add_shortcode( 'wt-difference-from-target', 'ws_ls_shortcode_difference_in_weight_target' );
 
-function ws_ls_weight_difference_previous( $user_id = false ){
-	// If not logged in then return no value
-	if(!is_user_logged_in()) {
-		return '';
-	}
-
-	$user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
-
-	$previous_weight = ws_ls_get_weight_previous( $user_id );
-	$recent_weight = ws_ls_get_recent_weight_in_kg( $user_id );
-
-	$difference = $recent_weight - $previous_weight;
-
-	$display_string = ($difference > 0) ? "+" : "";
-
-	$display_string .= we_ls_format_weight_into_correct_string_format($difference, true);
-
-	return $display_string;
-}
-
-/**
- *
- * Render the shortcode for difference between current and previous weight [wlt-weight-difference-previous]
- *
- * @return string
- *
- */
-function ws_ls_shortcode_difference_between_recent_previous_weight() {
-
-	if ( false === WS_LS_IS_PRO ) {
-		return '';
-	}
-
-	return ws_ls_weight_difference_previous( NULL );
-
-}
-add_shortcode('wlt-weight-difference-previous', 'ws_ls_shortcode_difference_between_recent_previous_weight');
-
 
 function ws_ls_get_start_weight_in_kg($user_id = false){
 
@@ -201,18 +169,7 @@ function ws_ls_get_recent_weight_in_kg($user_id = false){
 
 	return ws_ls_get_weight_extreme($user_id, true);
 }
-function ws_ls_get_start_weight_in_pounds($user_id = false) {
 
-	$user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
-
-	return ws_ls_get_weight_extreme($user_id, false, "weight_only_pounds");
-}
-function ws_ls_get_recent_weight_in_pounds($user_id){
-
-	$user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
-
-	return ws_ls_get_weight_extreme($user_id, true, "weight_only_pounds");
-}
 
 /**
  *

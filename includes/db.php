@@ -211,6 +211,33 @@ function ws_ls_db_entry_latest_or_oldest( $arguments ) {
 	return $entry_id;
 }
 
+/**
+ * Fetch the ID for the previous entry
+ * @param $arguments
+ *
+ * @return string|null
+ */
+function ws_ls_db_entry_previous( $arguments ) {
+
+	$arguments = wp_parse_args( $arguments, [   'user-id'   => get_current_user_id(),
+	                                            'prep'      => true
+	] );
+
+	$cache_key = 'previous-entry-' . md5( json_encode( $arguments ) );
+
+	if ( $cache = ws_ls_cache_user_get( $arguments[ 'user-id'], $cache_key ) ) {
+		return $cache;
+	}
+
+	global $wpdb;
+
+	$sql        = $wpdb->prepare('SELECT id FROM ' . $wpdb->prefix . WE_LS_TABLENAME . ' where weight_user_id = %d order by weight_date desc limit 1, 1', $arguments[ 'user-id' ] );
+	$entry_id   = $wpdb->get_var( $sql );
+
+	ws_ls_cache_user_set( $arguments[ 'user-id' ], $cache_key, $entry_id );
+
+	return $entry_id;
+}
 
 /**
  * If an entry exists for this date, then return an ID

@@ -168,7 +168,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 // Fix Start Weight
        Latest Weight
        Diff. from Start in admin side bar
-
+//test GF
 // finish shortcodes-various.php
 
 Documentation updates:
@@ -177,7 +177,8 @@ add_shortcode( 'wlt-weight-start', 'ws_ls_weight_start' ); to add_shortcode( 'wt
 add_shortcode( 'wlt-weight-most-recent', 'ws_ls_weight_recent' ); to add_shortcode( 'wt-latest-weight', 'ws_ls_weight_recent' );
 add_shortcode( 'wlt-weight-diff', 'ws_ls_shortcode_difference_in_weight_from_oldest' ); to add_shortcode( 'wt-difference-since-start', 'ws_ls_shortcode_difference_in_weight_from_oldest' );
 add_shortcode( 'wlt-weight-diff-from-target', 'ws_ls_shortcode_difference_in_weight_target' ); to add_shortcode( 'wt-difference-from-target', 'ws_ls_shortcode_difference_in_weight_target' );
-//test GF
+add_shortcode('wlt-weight-difference-previous', 'ws_ls_shortcode_difference_between_recent_previous_weight'); to add_shortcode('wt-difference-from-previous', 'ws_ls_shortcode_difference_between_recent_previous_weight');
+
 
 * Improvement: Allow numeric custom fields to be plotted on charts.
 * Improvement: A user's target weight can now be displayed on bar graphs.
