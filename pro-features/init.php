@@ -40,8 +40,6 @@ function ws_ls_register_pro_shortcodes(){
     add_shortcode( 'wlt-league-table', 'ws_ls_shortcode_stats_league_total' );
     add_shortcode( 'weight-loss-tracker-reminder', 'ws_ls_shortcode_reminder' );
     add_shortcode( 'wlt-reminder', 'ws_ls_shortcode_reminder' );
-    add_shortcode( 'weight-loss-tracker-progress-bar', 'ws_ls_shortcode_progress_bar' );
-    add_shortcode( 'wlt-progress-bar', 'ws_ls_shortcode_progress_bar' );
     add_shortcode( 'weight-loss-tracker-message', 'ws_ls_shortcode_message' );
     add_shortcode( 'wlt-message', 'ws_ls_shortcode_message' );
     add_shortcode( 'wlt-user-settings', 'ws_ls_user_preferences_form' );

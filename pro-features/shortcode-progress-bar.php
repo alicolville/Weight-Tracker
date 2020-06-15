@@ -52,8 +52,14 @@ function ws_ls_shortcode_progress_bar($user_defined_arguments) {
 
 			$arguments['target-weight-display'] = ws_ls_convert_kg_into_relevant_weight_string($arguments['target-weight']);
 
+			$latest_entry = ws_ls_entry_get_latest();
+
+			if ( false === empty( $latest_entry[ 'kg' ] ) ) {
+				$arguments['weight'] = $latest_entry[ 'kg' ];
+			}
+
 			// Latest weight
-			if($arguments['weight'] = ws_ls_get_recent_weight_in_kg()) {
+			if( false === empty( $arguments['weight'] ) ) {
 
 				$arguments['start-weight'] = ws_ls_get_start_weight_in_kg();
 
@@ -124,8 +130,10 @@ function ws_ls_shortcode_progress_bar($user_defined_arguments) {
 	} else if($display_errors) {
 		return __('This shortcode can not be used as Target weights have been disabled in the plugin\'s settings.', WE_LS_SLUG);
 	}
-
 }
+add_shortcode( 'weight-loss-tracker-progress-bar', 'ws_ls_shortcode_progress_bar' );
+add_shortcode( 'wlt-progress-bar', 'ws_ls_shortcode_progress_bar' );
+add_shortcode( 'wt-progress-bar', 'ws_ls_shortcode_progress_bar' );
 
 function ws_ls_shortcode_progress_bar_render($arguments = array()) {
 

@@ -265,12 +265,7 @@ function ws_ls_get_target_weight_in_kg($user_id = false){
 
 	return ws_ls_get_weight_target($user_id);
 }
-function ws_ls_get_target_weight_in_pounds($user_id = false){
 
-	$user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
-
-	return ws_ls_get_weight_target($user_id, "target_weight_only_pounds");
-}
 function ws_ls_get_weight_target($user_id, $unit = "target_weight_weight")
 {
 	global $wpdb;
