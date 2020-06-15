@@ -112,7 +112,7 @@ function ws_ls_user_side_bar($user_id) {
                     </tr>
                     <tr>
                         <th><?php echo __('Diff. from Target', WE_LS_SLUG); ?></th>
-                        <td class="<?php echo ws_ls_blur(); ?>"><?php echo ws_ls_blur_text( ws_ls_weight_difference_target($user_id) ); ?></td>
+                        <td class="<?php echo ws_ls_blur(); ?>"><?php echo ws_ls_blur_text( ws_ls_shortcode_difference_in_weight_target($user_id) ); ?></td>
                     </tr>
                     <tr>
                         <th><?php echo __('Current BMI', WE_LS_SLUG); ?></th>

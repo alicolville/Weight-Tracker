@@ -101,36 +101,42 @@ function ws_ls_shortcode_difference_in_weight_from_oldest( $user_id = NULL ) {
 add_shortcode( 'wlt-weight-diff', 'ws_ls_shortcode_difference_in_weight_from_oldest' );
 add_shortcode( 'wt-difference-since-start', 'ws_ls_shortcode_difference_in_weight_from_oldest' );
 
-function ws_ls_weight_difference_target($user_id = false){
+function ws_ls_shortcode_difference_in_weight_target( $user_id = NULL ){
+
 	// If not logged in then return no value
-	if(!is_user_logged_in()) {
+	if( false === is_user_logged_in() ) {
 		return '';
 	}
 
-	$user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
+	$arguments[ 'user-id' ] = ( true === empty( $user_id ) ) ? get_current_user_id() : $user_id;
 
-	if (ws_ls_get_config('WE_LS_DATA_UNITS') == "pounds_only") {
-		$target_weight = ws_ls_get_target_weight_in_pounds($user_id);
-		$recent_weight = ws_ls_get_recent_weight_in_pounds($user_id);
-	}
-	else {
-		$target_weight = ws_ls_get_target_weight_in_kg($user_id);
-		$recent_weight = ws_ls_get_weight_extreme($user_id, true);
+	if ( $cache = ws_ls_cache_user_get( $arguments[ 'user-id' ], 'shortcode-target' ) ) {
+		return $cache;
 	}
 
-	if(empty($target_weight)) {
-		return __('No target weight has been set.', WE_LS_SLUG);
+	$latest_entry = ws_ls_entry_get_latest( $arguments );
+
+	if ( true === empty( $latest_entry[ 'kg' ] ) ) {
+		return '';
 	}
 
-	$difference = $recent_weight - $target_weight;
+	$target_weight = ws_ls_db_target_get( $arguments[ 'user-id' ] );
 
-	$display_string = ($difference > 0) ? "+" : "";
+	if ( true === empty( $target_weight ) ) {
+		return '';
+	}
 
-	$display_string .= we_ls_format_weight_into_correct_string_format($difference, true);
+	$difference = $latest_entry[ 'kg' ] - $target_weight;
+	$sign       = ( $difference > 0 ) ? '+' : '';
+	$difference = ws_ls_weight_display( $difference, $arguments[ 'user-id' ], false, false, true );
+	$output     = sprintf ('%s%s', $sign, $difference[ 'display' ] );
 
-	return $display_string;
+	ws_ls_cache_user_set( $arguments[ 'user-id' ], 'shortcode-target', $output );
+
+	return $output;
 }
-add_shortcode( 'wlt-weight-diff-from-target', 'ws_ls_weight_difference_target' );
+add_shortcode( 'wlt-weight-diff-from-target', 'ws_ls_shortcode_difference_in_weight_target' );
+add_shortcode( 'wt-difference-from-target', 'ws_ls_shortcode_difference_in_weight_target' );
 
 function ws_ls_weight_difference_previous( $user_id = false ){
 	// If not logged in then return no value

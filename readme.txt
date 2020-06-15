@@ -164,6 +164,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 // re-write and cache weight_object function. Arguments should be an array
 // TODO: We changed the cache key for all user preferences. Ensure this is cleared properly
 // TODO: Explaoin Challenegs more in UI and doc site
+// Look at cache, Perhaps store an array of keys for user cahche. Save loading one monolithic one!
 // Fix Start Weight
        Latest Weight
        Diff. from Start in admin side bar
@@ -173,7 +174,7 @@ add_shortcode( 'wlt-target', 'ws_ls_shortcode_target' ); to add_shortcode( 'wt-t
 add_shortcode( 'wlt-weight-start', 'ws_ls_weight_start' ); to add_shortcode( 'wt-start-weight', 'ws_ls_weight_start' );
 add_shortcode( 'wlt-weight-most-recent', 'ws_ls_weight_recent' ); to add_shortcode( 'wt-latest-weight', 'ws_ls_weight_recent' );
 add_shortcode( 'wlt-weight-diff', 'ws_ls_shortcode_difference_in_weight_from_oldest' ); to add_shortcode( 'wt-difference-since-start', 'ws_ls_shortcode_difference_in_weight_from_oldest' );
-
+add_shortcode( 'wlt-weight-diff-from-target', 'ws_ls_shortcode_difference_in_weight_target' ); to add_shortcode( 'wt-difference-from-target', 'ws_ls_shortcode_difference_in_weight_target' );
 //test GF
 
 * Improvement: Allow numeric custom fields to be plotted on charts.
@@ -189,6 +190,7 @@ add_shortcode( 'wlt-weight-diff', 'ws_ls_shortcode_difference_in_weight_from_old
 * Improvement: Weights are no longer inserted into the database in three formats. Instead, only Kg is stored and converted when required.
 * Improvement: Removed redundant tools for correcting conversion issues (added 5+ years ago).
 * Improvement: Old shortcode names have now been deprecated and should be replaced with current names.
+* Improvement: Shortcodes have additional caching.
 * Improvement: Optimised SQL queries.
 * Bug fix: "Who can view and modify user data?" has been fixed so user's with the specified minimum role can now access admin data pages.
 * Bug fix: Awards for a user are now deleted when "Delete all data for this user" has been clicked.
