@@ -34,9 +34,16 @@ function ws_ls_cache_user_get( $user_id, $key ) {
 	}
 
 	// Take the cache key and dig further!
-	$data_key = $user_lookup_table[ $key ];
+	$data_key   = $user_lookup_table[ $key ];
+	$data_value = ws_ls_get_cache( $data_key );
 
-	return ws_ls_get_cache( $data_key );
+	// If no data is found at this key, presume the cache entry has expired, so remove from lookup.
+	if ( false === $data_value ) {
+		unset( $user_lookup_table[ $key ] );
+		ws_ls_set_cache( $user_id, $user_lookup_table, WE_LS_CACHE_TIME );
+	}
+
+	return $data_value;
 }
 
 /**
