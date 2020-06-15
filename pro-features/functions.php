@@ -677,8 +677,8 @@ function ws_ls_user_preferences_get( $field = 'gender', $user_id = false ) {
 
 	$user_preferences = ws_ls_db_user_preferences( $user_id );
 
-	if ( NULL === $user_preferences ) {
-		return NULL;
+	if ( false === is_array( $user_preferences ) ) {
+		$user_preferences = [];
 	}
 
 	return ( true === array_key_exists( $field, $user_preferences ) ) ? $user_preferences[ $field ] : NULL;

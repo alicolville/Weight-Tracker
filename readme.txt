@@ -185,14 +185,15 @@ add_shortcode( 'wlt-weight-diff-from-target', 'ws_ls_shortcode_difference_in_wei
 * Improvement: Measurements, now custom fields, can now be displayed on bar graphs.
 * Improvement: 1000s of lines of code optimised and re-factored.
 * Improvement: Various performance tweaks. All globals no longer dynamically loaded.
-* Improvement: Improved add added additional caching throughout plugin.
+* Improvement: Caching: Previously, user cache consisted of a large data object per user. This would be loaded on every cache lookup. Now, instead, the cache object has been replaced with a lookup table of cache keys relating to the user. If a sub key is found, the larger, relevant data object is fetched from catch.
+* Improvement: Caching: More database lookups are now cached.
+* Improvement: Caching: Shortcodes now have additional caching.
 * Improvement: JS libraries are included for charts when needed.
 * Improvement: Target weight added to user search results.
 * Improvement: Removed redundant usage statistics being sent to YeKen.
 * Improvement: Weights are no longer inserted into the database in three formats. Instead, only Kg is stored and converted when required.
 * Improvement: Removed redundant tools for correcting conversion issues (added 5+ years ago).
 * Improvement: Old shortcode names have now been deprecated and should be replaced with current names.
-* Improvement: Shortcodes have additional caching.
 * Improvement: Optimised SQL queries.
 * Bug fix: "Who can view and modify user data?" has been fixed so user's with the specified minimum role can now access admin data pages.
 * Bug fix: Awards for a user are now deleted when "Delete all data for this user" has been clicked.
