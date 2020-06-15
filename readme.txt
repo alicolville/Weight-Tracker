@@ -164,7 +164,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 // re-write and cache weight_object function. Arguments should be an array
 // TODO: We changed the cache key for all user preferences. Ensure this is cleared properly
 // TODO: Explaoin Challenegs more in UI and doc site
-// Look at cache, Perhaps store an array of keys for user cahche. Save loading one monolithic one!
+// Look at cache, what happens if the data at a lookup key has expired?
 // Fix Start Weight
        Latest Weight
        Diff. from Start in admin side bar
@@ -179,6 +179,8 @@ add_shortcode( 'wlt-weight-diff', 'ws_ls_shortcode_difference_in_weight_from_old
 add_shortcode( 'wlt-weight-diff-from-target', 'ws_ls_shortcode_difference_in_weight_target' ); to add_shortcode( 'wt-difference-from-target', 'ws_ls_shortcode_difference_in_weight_target' );
 add_shortcode('wlt-weight-difference-previous', 'ws_ls_shortcode_difference_between_recent_previous_weight'); to add_shortcode('wt-difference-from-previous', 'ws_ls_shortcode_difference_between_recent_previous_weight');
 add_shortcode( 'wlt-progress-bar', 'ws_ls_shortcode_progress_bar' ); to add_shortcode( 'wt-progress-bar', 'ws_ls_shortcode_progress_bar' );
+add_shortcode('wlt-weight-previous', 'ws_ls_shortcode_previous_weight'); to add_shortcode('wt-previous-weight', 'ws_ls_shortcode_previous_weight');
+
 
 * Improvement: Allow numeric custom fields to be plotted on charts.
 * Improvement: A user's target weight can now be displayed on bar graphs.

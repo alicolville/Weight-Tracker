@@ -187,22 +187,36 @@ function ws_ls_get_weight_previous( $user_id ) {
 
 /**
  *
- * Render the shortcode for previos weight [wlt-weight-previous]
+ * Render the shortcode for previous weight [wlt-weight-previous]
+ *
+ * @param null $user_id
  *
  * @return string
- *
  */
-function ws_ls_shortcode_previous_weight() {
+function ws_ls_shortcode_previous_weight( $user_id = NULL ) {
 
     if ( false === WS_LS_IS_PRO ) {
         return '';
     }
 
-    $kg = ws_ls_get_weight_previous( NULL );
+	$arguments[ 'user-id' ] = ( true === empty( $user_id ) ) ? get_current_user_id() : $user_id;
 
-    return ( false === empty( $kg ) ) ? we_ls_format_weight_into_correct_string_format( $kg ) : __( 'No previous weight', WE_LS_SLUG );
+	if ( $cache = ws_ls_cache_user_get( $arguments[ 'user-id' ], 'shortcode-previous-weight' ) ) {
+		return $cache;
+	}
+
+    $previous_entry = ws_ls_entry_get_previous( $arguments );
+
+    $output = ( false === empty( $previous_entry[ 'display' ] ) ) ?
+	            $previous_entry[ 'display' ] :
+	                '';
+
+	ws_ls_cache_user_set( $arguments[ 'user-id' ], 'shortcode-previous-weight', $output );
+
+    return $output;
 }
 add_shortcode('wlt-weight-previous', 'ws_ls_shortcode_previous_weight');
+add_shortcode('wt-previous-weight', 'ws_ls_shortcode_previous_weight');
 
 function ws_ls_get_target_weight_in_kg($user_id = false){
 
