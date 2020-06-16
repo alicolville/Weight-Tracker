@@ -400,7 +400,7 @@ function ws_ls_get_config( $key, $user_id = false, $force_admin = false )
   if ( true === ws_ls_user_preferences_is_enabled() && (!is_admin() || $user_id != false))  {
 
     // Look to see if the user had a preference, if not, default to admin choice
-    $user_preference = ws_ls_get_user_preference($key, $user_id);
+    $user_preference = ws_ls_user_preferences_settings_get( $key, $user_id );
 
     if(is_null($user_preference)) {
       return constant($key);
@@ -411,21 +411,6 @@ function ws_ls_get_config( $key, $user_id = false, $force_admin = false )
   }
 
    return constant($key);
-}
-
-function ws_ls_get_user_preference( $key, $user_id = false )
-{
-  if(false == $user_id){
-    $user_id = get_current_user_id();
-  }
-
-  $user_preferences = ws_ls_user_preferences_settings( $user_id );
-
-  if(array_key_exists($key, $user_preferences)){
-    return $user_preferences[$key];
-  }
-
-  return NULL;
 }
 
 /**

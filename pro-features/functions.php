@@ -719,5 +719,9 @@ function ws_ls_user_preferences_settings_get( $field = 'WE_LS_DATA_UNITS', $user
 	$user_id    = ( true === empty( $user_id ) ) ? get_current_user_id() : $user_id;
 	$settings   = ws_ls_user_preferences_settings( $user_id );
 
+	if ( false === is_array( $settings ) ) {
+		$settings = [];
+	}
+
 	return ( true === array_key_exists( $field, $settings ) ) ? $settings[ $field ] : NULL;
 }
