@@ -105,7 +105,7 @@ function ws_ls_shortcode_bmi( $arguments = [] ) {
 										'user-id'           => get_current_user_id()
 						           ], $arguments );
 
-	$cache_key = 'shortcode-bmi-' . md5( json_encode( $arguments ) );
+	$cache_key = ws_ls_cache_generate_key_from_array( 'shortcode-bmi', $arguments );
 
 	if ( $cache = ws_ls_cache_user_get( $arguments[ 'user-id' ], $cache_key ) ) {
 		return $cache;
@@ -154,17 +154,20 @@ add_shortcode( 'wt-bmi', 'ws_ls_shortcode_bmi' );
  * @param $user_defined_arguments an array of arguments passed in via shortcode
  * @return string - HTML to be sent to browser
  */
-function ws_ls_shortcode_activity_level($user_defined_arguments) {
+function ws_ls_shortcode_activity_level( $user_defined_arguments ) {
 
-	$arguments = shortcode_atts(array(	'not-specified-text' => __('Not Specified', WE_LS_SLUG),
-										'user-id' => get_current_user_id(),
-									 	'shorten' => false),
-								$user_defined_arguments );
+	$arguments = shortcode_atts( [  'not-specified-text'    => __( 'Not Specified', WE_LS_SLUG ),
+									'user-id'               => get_current_user_id(),
+									'shorten'               => false
+								], $user_defined_arguments );
 
-	$arguments['shorten'] = ws_ls_force_bool_argument($arguments['shorten']);
+	$arguments[ 'shorten' ] = ws_ls_to_bool( $arguments[ 'shorten' ] );
+	$arguments[ 'field' ]   = 'activity_level';
 
-	return ws_ls_display_user_setting($arguments['user-id'], 'activity_level', $arguments['not-specified-text'], $arguments['shorten']);
+	return ws_ls_user_preferences_display( $arguments );
 }
+add_shortcode( 'wlt-activity-level', 'ws_ls_shortcode_activity_level' );
+add_shortcode( 'wt-activity-level', 'ws_ls_shortcode_activity_level' );
 
 /**
  *
@@ -173,14 +176,20 @@ function ws_ls_shortcode_activity_level($user_defined_arguments) {
  * @param $user_defined_arguments an array of arguments passed in via shortcode
  * @return string - HTML to be sent to browser
  */
-function ws_ls_shortcode_gender($user_defined_arguments) {
+function ws_ls_shortcode_gender( $user_defined_arguments ) {
 
-	$arguments = shortcode_atts(array(	'not-specified-text' => __('Not Specified', WE_LS_SLUG),
-										'user-id' => get_current_user_id() ),
-								$user_defined_arguments );
+	$arguments = shortcode_atts( [  'not-specified-text'    => __( 'Not Specified', WE_LS_SLUG ),
+	                                'user-id'               => get_current_user_id(),
+	                                'shorten'               => false
+	], $user_defined_arguments );
 
-	return ws_ls_display_user_setting($arguments['user-id'], 'gender', $arguments['not-specified-text']);
+	$arguments[ 'shorten' ] = ws_ls_to_bool( $arguments[ 'shorten' ] );
+	$arguments[ 'field' ]   = 'gender';
+
+	return ws_ls_user_preferences_display( $arguments );
 }
+add_shortcode( 'wlt-gender', 'ws_ls_shortcode_gender' );
+add_shortcode( 'wt-gender', 'ws_ls_shortcode_gender' );
 
 /**
  *

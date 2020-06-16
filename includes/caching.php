@@ -96,7 +96,7 @@ function ws_ls_cache_user_set( $user_id, $key, $value, $time_to_expire = WE_LS_C
 }
 
 /**
- * Helper function for user in shortcodes etc. Cache value and return value.
+ * Helper function for use in shortcodes etc. Cache value and return value.
  * @param $user_id
  * @param $key
  * @param $value
@@ -271,4 +271,20 @@ function ws_ls_delete_all_cache()
  */
 function ws_ls_cache_generate_key( $key ){
     return sprintf( 'wt-%s-%s', WE_LS_CURRENT_VERSION, $key );
+}
+
+/**
+ * Generate an array key based on an array
+ * @param string $prefix
+ * @param $array
+ *
+ * @return string
+ */
+function ws_ls_cache_generate_key_from_array( $prefix = 'wt', $array ) {
+
+	if ( false === is_array( $array ) ) {
+		return '';
+	}
+
+	return sprintf( '%s-%s', $prefix, md5( json_encode( $array ) ) );
 }

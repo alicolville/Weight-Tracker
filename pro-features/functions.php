@@ -681,9 +681,71 @@ function ws_ls_user_preferences_get( $field = 'gender', $user_id = false ) {
 		$user_preferences = [];
 	}
 
-	return ( true === array_key_exists( $field, $user_preferences ) ) ? $user_preferences[ $field ] : NULL;
+	return ( true === array_key_exists( $field, $user_preferences ) ) ? $user_preferences[ $field ] : null;
 }
 
+/**
+ * Display a user's preference
+ * @param array $arguments
+ *
+ * @return string
+ */
+function ws_ls_user_preferences_display( $arguments = [] ) {
+
+	$arguments = wp_parse_args( $arguments, [ 'user-id' => get_current_user_id(), 'field' => 'dob', 'shorten' => false , 'not-specified-text' => __( 'Not Specified', WE_LS_SLUG ) ] );
+
+	$cache_key = ws_ls_cache_generate_key_from_array( 'pref-display-', $arguments );
+
+	if ( $cache = ws_ls_cache_user_get( $arguments[ 'user-id' ], $cache_key ) ) {
+		return $cache;
+	}
+
+	$arguments[ 'not-specified-text' ]      = esc_html( $arguments[ 'not-specified-text' ] );
+	$user_data                              = ws_ls_user_preferences_get( $arguments[ 'field' ], $arguments[ 'user-id' ] );
+
+	if ( true === empty( $user_data ) ) {
+		return ws_ls_cache_user_set_and_return( $arguments[ 'user-id' ], $cache_key, $arguments[ 'not-specified-text' ] );
+	}
+
+	// Get relevant lookup
+	switch ( $arguments[ 'field' ] ) {
+		case 'activity_level':
+			$field_data = ws_ls_activity_levels();
+			break;
+		case 'height':
+			$field_data = ws_ls_heights();
+			break;
+		case 'aim':
+			$field_data = ws_ls_aims();
+			break;
+		default:
+			$field_data = ws_ls_genders();
+			break;
+	}
+
+	if ( false === isset( $field_data[ $user_data ] ) ) {
+		return ws_ls_cache_user_set_and_return( $arguments[ 'user-id' ], $cache_key, $arguments[ 'not-specified-text' ] );
+	}
+
+
+	// If a height setting and we want to shorten, look for a bracket and remove everything from there onwards
+	if( true === $arguments[ 'shorten' ] &&
+	        'activity_level' === $arguments[ 'field' ] ) {
+
+		$bracket_location = strpos( $field_data[ $user_data ], '(' );
+
+		if( false !== $bracket_location ) {
+			$field_data[$user_data] = substr( $field_data[$user_data], 0, $bracket_location );
+		}
+
+	}
+
+	$field_data[ $user_data ] = esc_html( $field_data[ $user_data ] );
+
+	ws_ls_cache_user_set( $arguments[ 'user-id' ], $cache_key, $field_data[ $user_data ] );
+
+	return $field_data[ $user_data ];
+}
 
 /**
  * Fetch user preferences
