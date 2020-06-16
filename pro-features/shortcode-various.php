@@ -285,8 +285,7 @@ function ws_ls_shortcode_new_users( $user_defined_arguments ) {
 	$cache_key = ws_ls_cache_generate_key_from_array( 'shortcode-new-users', $arguments );
 
 	if ( $cache = ws_ls_cache_user_get( 'new-users', $cache_key ) ) {
-		echo 'cache';
-		//return $cache;
+		return $cache;
 	}
 
     // Build from date
