@@ -184,3 +184,42 @@ defined('ABSPATH') or die('Jog on!');
       load_plugin_textdomain( WE_LS_SLUG, false, dirname( plugin_basename( __FILE__ )  ) . '/includes/languages/' );
     }
     add_action('plugins_loaded', 'ws_ls_load_textdomain');
+
+
+    function t() {
+
+    	if ( true === empty( $_GET[ 'debug' ] ) ) {
+    		return;
+	    }
+
+    	$user_id = 1; // get_current_user_id();
+
+    	echo 'ID: ' . $user_id . '<br />';
+	//    $t = ws_ls_user_preferences_get( 'gender', $user_id );
+
+	  //  var_Dump($t);
+
+	//    $t = ws_ls_user_preferences_settings( $user_id );
+
+	//    var_dump( $t );
+
+    	print_r(ws_ls_cache_user_get_all( 'new-users' ));
+
+	  //  var_Dump( ws_ls_entry_get_oldest_kg( $user_id ));
+
+
+	   // var_Dump( ws_ls_entry_get_latest_kg( $user_id ));
+
+	//  ws_ls_delete_cache( 'wt-item-1-entry-full-25794');
+
+	  //  print_R( ws_ls_cache_user_get( 1, 'entry-full-25794') );
+
+
+		var_dump( ws_ls_get_cache( 'wt-item-new-users-shortcode-new-users-12868a28616a123a8ad5578cc2151162' ) );
+
+	  //  print_r( ws_ls_entry_get( [ 'user-id' => 1, 'id' => 25794 ] ) );
+
+
+		die;
+	}
+	add_action('init', 't');

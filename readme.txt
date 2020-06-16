@@ -182,6 +182,10 @@ add_shortcode('wlt-weight-previous', 'ws_ls_shortcode_previous_weight'); to add_
 add_shortcode( 'wlt-bmi', 'ws_ls_get_user_bmi' ); to add_shortcode( 'wt-bmi', 'ws_ls_get_user_bmi' );
 add_shortcode( 'wlt-activity-level', 'ws_ls_shortcode_activity_level' ); to add_shortcode( 'wt-activity-level', 'ws_ls_shortcode_activity_level' );
 add_shortcode( 'wlt-gender', 'ws_ls_shortcode_gender' ); to add_shortcode( 'wt-gender', 'ws_ls_shortcode_gender' );
+add_shortcode( 'wlt-dob', 'ws_ls_shortcode_dob' ); to add_shortcode( 'wt-dob', 'ws_ls_shortcode_dob' );
+add_shortcode( 'wlt-height', 'ws_ls_shortcode_height' ); to add_shortcode( 'wt-height', 'ws_ls_shortcode_height' );
+add_shortcode( 'wlt-new-users', 'ws_ls_shortcode_new_users' ); to add_shortcode( 'wt-new-users', 'ws_ls_shortcode_new_users' );
+
 
 * Improvement: Allow numeric custom fields to be plotted on charts.
 * Improvement: A user's target weight can now be displayed on bar graphs.

@@ -4,6 +4,10 @@ defined('ABSPATH') or die("Jog on!");
 
 function ws_ls_shortcode_progress_bar($user_defined_arguments) {
 
+	if ( false === WS_LS_IS_PRO ) {
+		return '';
+	}
+
 	// If not logged in then return no value
 	if(!is_user_logged_in()) {
 		return '';

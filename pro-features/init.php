@@ -41,8 +41,8 @@ function ws_ls_register_pro_shortcodes(){
     add_shortcode( 'wlt-message', 'ws_ls_shortcode_message' );
     add_shortcode( 'wlt-user-settings', 'ws_ls_user_preferences_form' );
 
-    add_shortcode( 'wlt-dob', 'ws_ls_shortcode_dob' );
-    add_shortcode( 'wlt-height', 'ws_ls_shortcode_height' );
+
+
     add_shortcode( 'wlt-if', 'ws_ls_shortcode_if' );
 }
 add_action( 'init', 'ws_ls_register_pro_shortcodes');
