@@ -238,7 +238,7 @@
 					if ( WS_LS_IS_PRO && false === $shortcode_arguments['disable-advanced-tables'] ){
 						$html_output .=  ws_ls_data_table_placeholder( $user_id );
 					} else {
-						$html_output .= ws_ls_display_table( $weight_data );
+						$html_output .= ws_ls_display_table( $user_id, $weight_data );
 					}
 			}
             elseif ($use_tabs && $selected_week_number != -1) {
