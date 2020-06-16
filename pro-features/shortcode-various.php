@@ -41,7 +41,7 @@ add_shortcode('wt-previous-weight', 'ws_ls_shortcode_previous_weight');
  *
  * @return string|null
  */
-function ws_ls_weight_difference_previous( $user_id = false ){
+function ws_ls_shortcode_weight_difference_previous( $user_id = false ){
 
 	if ( false === WS_LS_IS_PRO ) {
 		return '';
@@ -79,8 +79,8 @@ function ws_ls_weight_difference_previous( $user_id = false ){
 
 	return $output;
 }
-add_shortcode('wlt-weight-difference-previous', 'ws_ls_weight_difference_previous' );
-add_shortcode('wt-difference-from-previous', 'ws_ls_weight_difference_previous' );
+add_shortcode('wlt-weight-difference-previous', 'ws_ls_shortcode_weight_difference_previous' );
+add_shortcode('wt-difference-from-previous', 'ws_ls_shortcode_weight_difference_previous' );
 
 /**
  * Render BMI shortcode [wt-bmi]
