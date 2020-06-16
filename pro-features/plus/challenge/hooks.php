@@ -39,7 +39,7 @@ function ws_ls_challenges_hook_settings_form_opt_in( $html, $user_id ) {
                                         <option value="no">%2$s</option>
                                         <option value="yes" %3$s>%4$s</option>
                                     </select>',
-                                    ws_ls_get_next_tab_index(),
+                                    ws_ls_form_tab_index_next(),
                                     __( 'No - Do not opt me into any challenges', WE_LS_SLUG ),
                                     selected( '1', $current_value, false ),
                                     __( 'Yes - Opt me into challenges!', WE_LS_SLUG )

@@ -269,7 +269,7 @@
             ws_ls_meta_fields_form_field_generate_id( $field['id'] ),
             esc_attr( $field['field_name'] ),
             2 === (int) $field['mandatory'] ? ' required' : '',
-            ws_ls_get_next_tab_index(),
+            ws_ls_form_tab_index_next(),
             ( false === empty( $value ) ) ? esc_attr( $value ) : '',
             __('Please enter a value for', WE_LS_SLUG)
         );
@@ -292,7 +292,7 @@
             ws_ls_meta_fields_form_field_generate_id( $field['id'] ),
             esc_attr( $field['field_name'] ),
             2 === (int)  $field['mandatory'] ? ' required' : '',
-            ws_ls_get_next_tab_index(),
+            ws_ls_form_tab_index_next(),
             ( false === empty( $value ) ) ? esc_attr( $value ) : '',
             __('Please enter a number for', WE_LS_SLUG)
         );
@@ -314,7 +314,7 @@
                             ',
                             ws_ls_meta_fields_form_field_generate_id( $field['id'] ),
                             esc_attr( $field['field_name'] ),
-                            ws_ls_get_next_tab_index()
+                            ws_ls_form_tab_index_next()
         );
 
         $value = (int) $value;
@@ -369,7 +369,7 @@
 
                         ',
             esc_attr( $field_id ),
-            ws_ls_get_next_tab_index(),
+            ws_ls_form_tab_index_next(),
             ( false === empty( $value ) ) ? __('Replace photo', WE_LS_SLUG) : __('Select photo', WE_LS_SLUG),
             2 === (int) $field['mandatory'] ? 'y' : 'n',
             true === empty( $value ) && 2 === (int) $field['mandatory'] ? 'required' : '',

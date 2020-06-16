@@ -150,7 +150,7 @@
 					$html .= sprintf( '<p><a href="%s">%s</a></p>', ws_ls_groups_link(), __('Add / remove Groups', WE_LS_SLUG) );
 				}
 
-				$html .= sprintf( '<select name="ws-ls-group" id="ws-ls-group" tabindex="%d">', ws_ls_get_next_tab_index() );
+				$html .= sprintf( '<select name="ws-ls-group" id="ws-ls-group" tabindex="%d">', ws_ls_form_tab_index_next() );
 
 				foreach ( $groups as $group ) {
 					$html .= sprintf( '<option value="%s" %s>%s</option>',

@@ -163,7 +163,7 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 		}
 
 		if(false == $force_to_todays_date){
-			$html_output .= '<input type="text" name="we-ls-date" tabindex="' . ws_ls_get_next_tab_index() . '" id="we-ls-date-' . esc_attr($form_id) . '" value="' . esc_attr($default_date) . '" placeholder="' . esc_attr($default_date) . '" size="22" class="we-ls-datepicker">';
+			$html_output .= '<input type="text" name="we-ls-date" tabindex="' . ws_ls_form_tab_index_next() . '" id="we-ls-date-' . esc_attr($form_id) . '" value="' . esc_attr($default_date) . '" placeholder="' . esc_attr($default_date) . '" size="22" class="we-ls-datepicker">';
 		} else {
 			$html_output .= '<input type="hidden" name="we-ls-date" value="' . esc_attr($default_date) . '">';
 		}
@@ -184,15 +184,15 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 	if( ws_ls_get_config('WE_LS_IMPERIAL_WEIGHTS', $user_id ) )
 	{
 		if ( 'stones_pounds' === ws_ls_get_config('WE_LS_DATA_UNITS' , $user_id ) ) {
-			$html_output .= '<input  type="number"  tabindex="' . ws_ls_get_next_tab_index() . '" step="any" min="0" name="we-ls-weight-stones" id="we-ls-weight-stones" value="' . ws_ls_get_existing_value($existing_data, 'stones') . '" placeholder="' . __('Stones', WE_LS_SLUG) . '" size="11" >';
-			$html_output .= '<input  type="number" tabindex="' . ws_ls_get_next_tab_index() . '" step="any" min="0" max="13.99" name="we-ls-weight-pounds" id="we-ls-weight-pounds" value="' . ws_ls_get_existing_value($existing_data, 'pounds') . '" placeholder="' . __('Pounds', WE_LS_SLUG) . '" size="11"  >';
+			$html_output .= '<input  type="number"  tabindex="' . ws_ls_form_tab_index_next() . '" step="any" min="0" name="we-ls-weight-stones" id="we-ls-weight-stones" value="' . ws_ls_get_existing_value($existing_data, 'stones') . '" placeholder="' . __('Stones', WE_LS_SLUG) . '" size="11" >';
+			$html_output .= '<input  type="number" tabindex="' . ws_ls_form_tab_index_next() . '" step="any" min="0" max="13.99" name="we-ls-weight-pounds" id="we-ls-weight-pounds" value="' . ws_ls_get_existing_value($existing_data, 'pounds') . '" placeholder="' . __('Pounds', WE_LS_SLUG) . '" size="11"  >';
 		}
 		else {
-			$html_output .= '<input  type="number" tabindex="' . ws_ls_get_next_tab_index() . '" step="any" min="1" name="we-ls-weight-pounds" id="we-ls-weight-pounds" value="' . ws_ls_get_existing_value($existing_data, 'only_pounds') . '" placeholder="' . __('Pounds', WE_LS_SLUG) . '" size="11"  >';
+			$html_output .= '<input  type="number" tabindex="' . ws_ls_form_tab_index_next() . '" step="any" min="1" name="we-ls-weight-pounds" id="we-ls-weight-pounds" value="' . ws_ls_get_existing_value($existing_data, 'only_pounds') . '" placeholder="' . __('Pounds', WE_LS_SLUG) . '" size="11"  >';
 		}
 	}
 	else {
-		$html_output .= '<input  type="number" tabindex="' . ws_ls_get_next_tab_index() . '" step="any" min="1" name="we-ls-weight-kg" id="we-ls-weight-kg" value="' . ws_ls_get_existing_value($existing_data, 'kg') . '" placeholder="' . __('Weight', WE_LS_SLUG) . ' (' . __('kg', WE_LS_SLUG) . ')" size="22" >';
+		$html_output .= '<input  type="number" tabindex="' . ws_ls_form_tab_index_next() . '" step="any" min="1" name="we-ls-weight-kg" id="we-ls-weight-kg" value="' . ws_ls_get_existing_value($existing_data, 'kg') . '" placeholder="' . __('Weight', WE_LS_SLUG) . ' (' . __('kg', WE_LS_SLUG) . ')" size="22" >';
 	}
 
 	$html_output .= '</div>';
@@ -201,7 +201,7 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 	if (false === $target_form) {
 
 		$html_output .= '<div id="comment-textarea">
-							<textarea name="we-ls-notes" tabindex="' . ws_ls_get_next_tab_index() . '" id="we-ls-notes" cols="39" rows="4" tabindex="4" class="textarea-comment" placeholder="' . __('Notes', WE_LS_SLUG) . '">' . esc_textarea(ws_ls_get_existing_value($existing_data, 'notes', false)) . '</textarea>
+							<textarea name="we-ls-notes" tabindex="' . ws_ls_form_tab_index_next() . '" id="we-ls-notes" cols="39" rows="4" tabindex="4" class="textarea-comment" placeholder="' . __('Notes', WE_LS_SLUG) . '">' . esc_textarea(ws_ls_get_existing_value($existing_data, 'notes', false)) . '</textarea>
 						</div>';
 	}
 
@@ -219,16 +219,16 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
                                 <ul></ul>
                             </div>
                             <div class="ws-ls-form-processing-throbber ws-ls-loading ws-ls-hide"></div>
-							<input name="submit_button" type="submit" id="we-ls-submit"  tabindex="' . ws_ls_get_next_tab_index() . '" value="' . $button_text . '" class="comment-submit button ws-ls-remove-on-submit" />';
+							<input name="submit_button" type="submit" id="we-ls-submit"  tabindex="' . ws_ls_form_tab_index_next() . '" value="' . $button_text . '" class="comment-submit button ws-ls-remove-on-submit" />';
 
 							// If we want a cancel button then add one
 							if ( false === empty( $cancel_button ) && false === $target_form && false === empty( $redirect_url ) ) {
-								$html_output .= '&nbsp;<button id="ws-ls-cancel" type="button" tabindex="' . ws_ls_get_next_tab_index() . '" class="ws-ls-cancel-form button ws-ls-remove-on-submit" data-form-id="' . esc_attr($form_id) . '" >' . __('Cancel', WE_LS_SLUG) . '</button>';
+								$html_output .= '&nbsp;<button id="ws-ls-cancel" type="button" tabindex="' . ws_ls_form_tab_index_next() . '" class="ws-ls-cancel-form button ws-ls-remove-on-submit" data-form-id="' . esc_attr($form_id) . '" >' . __('Cancel', WE_LS_SLUG) . '</button>';
 							}
 
 							//If a target form, display "Clear Target" button
 							if ($target_form && false === is_admin()){
-								$html_output .= '&nbsp;<button name="ws-ls-clear-target" id="ws-ls-clear-target" type="button" tabindex="' . ws_ls_get_next_tab_index() . '" class="ws-ls-clear-target button ws-ls-remove-on-submit" >' . __('Clear Target', WE_LS_SLUG) . '</button>';
+								$html_output .= '&nbsp;<button name="ws-ls-clear-target" id="ws-ls-clear-target" type="button" tabindex="' . ws_ls_form_tab_index_next() . '" class="ws-ls-clear-target button ws-ls-remove-on-submit" >' . __('Clear Target', WE_LS_SLUG) . '</button>';
 							}
 	$html_output .= '	</div>
 					</div>
@@ -371,7 +371,12 @@ function ws_ls_strip_array_indices( $ArrayToStrip ) {
     return( $NewArray );
 }
 
-function ws_ls_get_next_tab_index() {
+/**
+ * Keep track of the current tab index and increment
+ * @return int
+ */
+function ws_ls_form_tab_index_next() {
+
 	global $ws_ls_tab_index;
 
 	$current_index = $ws_ls_tab_index;

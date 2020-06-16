@@ -85,7 +85,7 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
 
     $html_output .= '
 		<label>' . $labels['aim'] . '</label>
-		<select id="ws-ls-aim" name="ws-ls-aim"  tabindex="' . ws_ls_get_next_tab_index() . '" class="ws-ls-aboutyou-field">';
+		<select id="ws-ls-aim" name="ws-ls-aim"  tabindex="' . ws_ls_form_tab_index_next() . '" class="ws-ls-aboutyou-field">';
 
     $existing_aim = ws_ls_user_preferences_get('aim', $user_id);
     $existing_aim = (true === empty($existing_aim)) ? '0' : $existing_aim;
@@ -108,7 +108,7 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
 
 	$html_output .= '
     <label>' . $labels['height'] . '</label>
-    <select id="we-ls-height" name="we-ls-height"  tabindex="' . ws_ls_get_next_tab_index() . '" class="ws-ls-aboutyou-field">';
+    <select id="we-ls-height" name="we-ls-height"  tabindex="' . ws_ls_form_tab_index_next() . '" class="ws-ls-aboutyou-field">';
     $heights = ws_ls_heights();
     $existing_height =  ws_ls_user_preferences_get( 'height', $user_id);
 
@@ -123,7 +123,7 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
     //-------------------------------------------------------
     $html_output .= '
 		<label>' . $labels['gender'] . '</label>
-		<select id="ws-ls-gender" name="ws-ls-gender"  tabindex="' . ws_ls_get_next_tab_index() . '" class="ws-ls-aboutyou-field">';
+		<select id="ws-ls-gender" name="ws-ls-gender"  tabindex="' . ws_ls_form_tab_index_next() . '" class="ws-ls-aboutyou-field">';
 
         $existing_gender = ws_ls_user_preferences_get('gender', $user_id);
         $existing_gender = (true === empty($existing_gender)) ? '0' : $existing_gender;
@@ -145,7 +145,7 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
     //-------------------------------------------------------
     $html_output .= '
 		<label>' . $labels['activitylevel'] . '</label>
-		<select id="ws-ls-activity-level" name="ws-ls-activity-level"  tabindex="' . ws_ls_get_next_tab_index() . '" class="ws-ls-aboutyou-field">';
+		<select id="ws-ls-activity-level" name="ws-ls-activity-level"  tabindex="' . ws_ls_form_tab_index_next() . '" class="ws-ls-aboutyou-field">';
 
     $activity_level = ws_ls_user_preferences_get('activity_level', $user_id);
     $activity_level = (true === empty($activity_level)) ? '0' : $activity_level;
@@ -165,7 +165,7 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
     $html_output .= sprintf( '  <label>%1$s</label>
                                         <input type="text" id="ws-ls-dob"  name="ws-ls-dob" tabindex="%2$d" value="%3$s" size="22" class="we-ls-datepicker ws-ls-dob-field ws-ls-aboutyou-field">',
                                         esc_html( $labels['dob'] ),
-                                        ws_ls_get_next_tab_index(),
+                                        ws_ls_form_tab_index_next(),
                                         esc_attr( $dob )
     );
 
@@ -185,7 +185,7 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
 
   	$html_output .= '
 	<label>' . $labels['weight'] . '</label>
-    <select id="WE_LS_DATA_UNITS" name="WE_LS_DATA_UNITS"  tabindex="' . ws_ls_get_next_tab_index() . '">
+    <select id="WE_LS_DATA_UNITS" name="WE_LS_DATA_UNITS"  tabindex="' . ws_ls_form_tab_index_next() . '">
       <option value="kg" ' . selected( $unit, 'kg', false ) . '>' . __('Kg', WE_LS_SLUG) . '</option>
       <option value="stones_pounds" ' . selected( $unit, 'stones_pounds', false ) . '>' . __('Stones & Pounds', WE_LS_SLUG) . '</option>
       <option value="pounds_only" ' . selected( $unit, 'pounds_only', false ) . '>' . __('Pounds', WE_LS_SLUG) . '</option>
@@ -196,13 +196,13 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
     $html_output .= '
 
 	<label>' . $labels['date'] . '</label>
-    <select id="WE_LS_US_DATE" name="WE_LS_US_DATE"  tabindex="' . ws_ls_get_next_tab_index() . '">
+    <select id="WE_LS_US_DATE" name="WE_LS_US_DATE"  tabindex="' . ws_ls_form_tab_index_next() . '">
       <option value="false" ' . selected( $date_format, false, false ) . '>' . __('UK (DD/MM/YYYY)', WE_LS_SLUG) . '</option>
       <option value="true" ' . selected( $date_format, true, false ) . '>' . __('US (MM/DD/YYYY)', WE_LS_SLUG) . '</option>
     </select>';
 
     if ( true !== $arguments['disable-save'] ) {
-        $html_output .= '<input name="submit_button" type="submit" id="we-ls-user-pref-submit"  tabindex="' . ws_ls_get_next_tab_index() . '" value="' .  __('Save Settings', WE_LS_SLUG) . '" class="comment-submit btn btn-default button default small fusion-button button-small button-default button-round button-flat">';
+        $html_output .= '<input name="submit_button" type="submit" id="we-ls-user-pref-submit"  tabindex="' . ws_ls_form_tab_index_next() . '" value="' . __('Save Settings', WE_LS_SLUG) . '" class="comment-submit btn btn-default button default small fusion-button button-small button-default button-round button-flat">';
     }
 
     $html_output .= '</form><br />';
@@ -217,11 +217,11 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
 	            </div>
                 <input type="hidden" name="ws-ls-user-delete-all" value="true" />
                 <label for="ws-ls-delete-all">' . __('The button below allows you to clear your existing weight history. Confirm:', WE_LS_SLUG) . '</label>
-                <select id="ws-ls-delete-all" name="ws-ls-delete-all"  tabindex="' . ws_ls_get_next_tab_index() . '" required>
+                <select id="ws-ls-delete-all" name="ws-ls-delete-all"  tabindex="' . ws_ls_form_tab_index_next() . '" required>
                     <option value=""></option>
                     <option value="true">' . __('DELETE ALL DATA', WE_LS_SLUG) . '</option>
                 </select>
-                <input name="submit_button" type="submit" tabindex="' . ws_ls_get_next_tab_index() . '" value="' .  __('Delete', WE_LS_SLUG) . '" class="comment-submit btn btn-default button default small fusion-button button-small button-default button-round button-flat">
+                <input name="submit_button" type="submit" tabindex="' . ws_ls_form_tab_index_next() . '" value="' . __('Delete', WE_LS_SLUG) . '" class="comment-submit btn btn-default button default small fusion-button button-small button-default button-round button-flat">
             </form>';
     }
 
