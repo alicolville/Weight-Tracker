@@ -77,7 +77,7 @@ defined('ABSPATH') or die('Jog on!');
         'includes/converters.php',
         'includes/core.php',
 		'includes/core-charting.php',
-        'includes/ajax-handler.php',
+        'includes/ajax.php',
         'includes/setup-wizard.php',
         'includes/shortcode-weight-loss-tracker.php',
         'includes/shortcode-various.php',
