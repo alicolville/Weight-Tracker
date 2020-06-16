@@ -31,9 +31,6 @@ function ws_ls_register_pro_shortcodes(){
     add_shortcode( 'wlt-form', 'ws_ls_shortcode_form' );
     add_shortcode( 'weight-loss-tracker-table', 'ws_ls_shortcode_table' );
     add_shortcode( 'wlt-table', 'ws_ls_shortcode_table' );
-    add_shortcode( 'weight-loss-tracker-most-recent-bmi', 'ws_ls_get_user_bmi' );
-    add_shortcode( 'wlt-recent-bmi', 'ws_ls_get_user_bmi' );
-    add_shortcode( 'wlt-bmi', 'ws_ls_get_user_bmi' );
     add_shortcode( 'weight-loss-tracker-total-lost', 'ws_ls_shortcode_stats_total_lost' );
     add_shortcode( 'wlt-total-lost', 'ws_ls_shortcode_stats_total_lost' );
     add_shortcode( 'weight-loss-tracker-league-table', 'ws_ls_shortcode_stats_league_total' );

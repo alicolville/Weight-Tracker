@@ -80,7 +80,7 @@
 											<p>%s: <span>%s</span></p>
 										</div>',
 					__('Your current BMI is', WE_LS_SLUG),
-					ws_ls_get_user_bmi(['user-id' => $user_id, 'display' => 'both'])
+					ws_ls_shortcode_bmi([ 'user-id' => $user_id, 'display' => 'both'])
 
 				);
 

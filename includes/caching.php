@@ -96,6 +96,21 @@ function ws_ls_cache_user_set( $user_id, $key, $value, $time_to_expire = WE_LS_C
 }
 
 /**
+ * Helper function for user in shortcodes etc. Cache value and return value.
+ * @param $user_id
+ * @param $key
+ * @param $value
+ *
+ * @return mixed
+ */
+function ws_ls_cache_user_set_and_return( $user_id, $key, $value ) {
+
+	ws_ls_cache_user_set( $user_id, $key, $value );
+
+	return $value;
+}
+
+/**
  * Fetch all keys associated with the user and delete
  * @param $user_id
  */

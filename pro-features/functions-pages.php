@@ -116,7 +116,7 @@ function ws_ls_user_side_bar($user_id) {
                     </tr>
                     <tr>
                         <th><?php echo __('Current BMI', WE_LS_SLUG); ?></th>
-                        <td class="<?php echo ws_ls_blur(); ?>"><?php echo ws_ls_get_user_bmi(['user-id' => $user_id, 'display' => 'both', 'no-height-text' => __('No height specified', WE_LS_SLUG)]); ?></td>
+                        <td class="<?php echo ws_ls_blur(); ?>"><?php echo ws_ls_shortcode_bmi([ 'user-id' => $user_id, 'display' => 'both', 'no-height-text' => __('No height specified', WE_LS_SLUG)]); ?></td>
                     </tr>
 
 					<?php echo ws_ls_side_bar_render_rows( apply_filters( 'wlt-filter-admin-user-sidebar-middle', [], $user_id) ); ?>

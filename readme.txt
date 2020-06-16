@@ -179,7 +179,7 @@ add_shortcode( 'wlt-weight-diff-from-target', 'ws_ls_shortcode_difference_in_wei
 add_shortcode('wlt-weight-difference-previous', 'ws_ls_shortcode_difference_between_recent_previous_weight'); to add_shortcode('wt-difference-from-previous', 'ws_ls_shortcode_difference_between_recent_previous_weight');
 add_shortcode( 'wlt-progress-bar', 'ws_ls_shortcode_progress_bar' ); to add_shortcode( 'wt-progress-bar', 'ws_ls_shortcode_progress_bar' );
 add_shortcode('wlt-weight-previous', 'ws_ls_shortcode_previous_weight'); to add_shortcode('wt-previous-weight', 'ws_ls_shortcode_previous_weight');
-
+add_shortcode( 'wlt-bmi', 'ws_ls_get_user_bmi' ); to add_shortcode( 'wt-bmi', 'ws_ls_get_user_bmi' );
 
 * Improvement: Allow numeric custom fields to be plotted on charts.
 * Improvement: A user's target weight can now be displayed on bar graphs.

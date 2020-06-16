@@ -82,52 +82,70 @@ function ws_ls_weight_difference_previous( $user_id = false ){
 add_shortcode('wlt-weight-difference-previous', 'ws_ls_weight_difference_previous' );
 add_shortcode('wt-difference-from-previous', 'ws_ls_weight_difference_previous' );
 
-function ws_ls_get_user_bmi($user_defined_arguments) {
+/**
+ * Render BMI shortcode [wt-bmi]
+ *
+ * @param array $arguments
+ *
+ * @return bool|mixed|string|null
+ */
+function ws_ls_shortcode_bmi( $arguments = [] ) {
 
-	// If not logged in then return no value
-	if(!is_user_logged_in()) {
+	if ( false === WS_LS_IS_PRO ) {
 		return '';
 	}
 
-	$arguments = shortcode_atts(array(
-						            'display' => 'index', // 'index' - Actual BMI value. 'label' - BMI label for given value. 'both' - Label and BMI value in brackets,
-									'no-height-text' => __('Height needed', WE_LS_SLUG),
+	// If not logged in then return no value
+	if( false === is_user_logged_in() ) {
+		return '';
+	}
 
-									'user-id' => get_current_user_id()
-						           ), $user_defined_arguments );
+	$arguments = shortcode_atts( [      'display'           => 'index',                             // 'index' - Actual BMI value. 'label' - BMI label for given value. 'both' - Label and BMI value in brackets,
+										'no-height-text'    => __( 'Height needed', WE_LS_SLUG ),
+										'user-id'           => get_current_user_id()
+						           ], $arguments );
+
+	$cache_key = 'shortcode-bmi-' . md5( json_encode( $arguments ) );
+
+	if ( $cache = ws_ls_cache_user_get( $arguments[ 'user-id' ], $cache_key ) ) {
+		return $cache;
+	}
 
 	$kg = ws_ls_entry_get_latest_kg( $arguments['user-id'] );
 	$cm = ws_ls_user_preferences_get( 'height', $arguments['user-id']);
 
 	// Don't attempt to calculate BMI if no weight entries!
-	if(true === empty($kg)) {
-		return __('Weight needed', WE_LS_SLUG);
+	if( true === empty( $kg ) ) {
+		return ws_ls_cache_user_set_and_return( $arguments['user-id'], $cache_key, __( 'Weight needed', WE_LS_SLUG ) );
 	}
 
 	// Do we have a height for user?
-	if($cm) {
-		$bmi = ws_ls_calculate_bmi($cm, $kg);
-
-		switch ($arguments['display']) {
-			case 'index':
-				return $bmi;
-				break;
-			case 'label':
-				return ws_ls_calculate_bmi_label($bmi);
-				break;
-			case 'both':
-				return ws_ls_calculate_bmi_label($bmi) . ' (' . $bmi . ')';
-				break;
-			default:
-				break;
-		}
-	} else {
-		return esc_html($arguments['no-height-text']);
+	if( true === empty( $cm ) ) {
+		return ws_ls_cache_user_set_and_return( $arguments['user-id'], $cache_key, esc_html( $arguments['no-height-text'] ) );
 	}
 
+	$bmi = ws_ls_calculate_bmi( $cm, $kg );
 
-	return '';
+	$output = '';
+
+	switch ( $arguments['display'] ) {
+		case 'index':
+			$output = $bmi;
+			break;
+		case 'label':
+			$output = ws_ls_calculate_bmi_label( $bmi );
+			break;
+		case 'both':
+			$output = sprintf( '%s (%s)', ws_ls_calculate_bmi_label( $bmi ), $bmi );
+			break;
+		default:
+			break;
+	}
+
+	return ws_ls_cache_user_set_and_return( $arguments['user-id'], $cache_key, $output );
 }
+add_shortcode( 'wlt-bmi', 'ws_ls_shortcode_bmi' );
+add_shortcode( 'wt-bmi', 'ws_ls_shortcode_bmi' );
 
 /**
  *
