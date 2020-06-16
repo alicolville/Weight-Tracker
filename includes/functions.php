@@ -1038,7 +1038,7 @@ function ws_ls_display_data_saved_message() {
 function ws_ls_display_blockquote( $text, $class = '', $just_echo = false, $include_log_link = false ) {
 
 	$login_link = ( true === $include_log_link ) ?
-					sprintf( ' <a href="ws-ls-login-link" href="%1$s">%2$s</a>.', esc_url( wp_login_url( get_permalink() ) ), __( 'Login' , WE_LS_SLUG ) ) :
+					sprintf( ' <a class="ws-ls-login-link" href="%1$s">%2$s</a>.', esc_url( wp_login_url( get_permalink() ) ), __( 'Login' , WE_LS_SLUG ) ) :
 					'';
 
 	$html_output = sprintf('	<blockquote class="ws-ls-blockquote%s">
