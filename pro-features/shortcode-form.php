@@ -7,17 +7,17 @@ global $form_number;
 function ws_ls_shortcode_form($user_defined_arguments)
 {
 
-    global $form_number;
+//    global $form_number;
 
   	ws_ls_enqueue_files();
+//
+//    if(is_null($form_number)){
+//      $form_number = 1;
+//    } else {
+//      $form_number++;
+//    }
 
-    if(is_null($form_number)){
-      $form_number = 1;
-    } else {
-      $form_number++;
-    }
-
-    if(!WS_LS_IS_PRO) {
+    if( false === WS_LS_IS_PRO) {
        return false;
     }
 
@@ -41,7 +41,12 @@ function ws_ls_shortcode_form($user_defined_arguments)
 		$form_arguments[$key] = ws_ls_force_bool_argument($form_arguments[$key]);
 	}
 
-    return ws_ls_display_weight_form($form_arguments['target'], $form_arguments['class'], $form_arguments['user-id'], $form_arguments['hide-titles'],
-                                        $form_number, false, true, $form_arguments['redirect-url']);
+	return ws_ls_form_weight( [ 'hide-login-message' => false, 'entry-fid' => 25795, 'hide-titles' => false, 'is-target-form' => false ] );
+
+	//TODO:
+//    return ws_ls_display_weight_form($form_arguments['target'], $form_arguments['class'], $form_arguments['user-id'], $form_arguments['hide-titles'],
+//                                        $form_number, false, true, $form_arguments['redirect-url']);
 
 }
+add_shortcode( 'wlt-form', 'ws_ls_shortcode_form' );
+add_shortcode( 'wt-form', 'ws_ls_shortcode_form' );

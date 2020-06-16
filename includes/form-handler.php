@@ -213,7 +213,7 @@ function ws_ls_form_post_handler_determine_type() {
 		return NULL;
 	}
 
-	if ( true === ws_ls_post_value_to_bool( 'ws_ls_is_target' ) ) {
+	if ( true === ws_ls_post_value_to_bool( 'ws_ls_is_target_form' ) ) {
 		return 'target';
 	}
 
