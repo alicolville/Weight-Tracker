@@ -341,14 +341,31 @@ function ws_ls_get_week_ranges()
 
   return false;
 }
-function ws_ls_get_date_format()
-{
-  if(ws_ls_get_config('WE_LS_US_DATE')){
-    return 'm/d/Y';
-  }
 
-  return 'd/m/Y';
+/**
+ * Get today's in the correct format
+ * @param null $user_id
+ *
+ * @return false|string
+ */
+function ws_ls_date_todays_date( $user_id = NULL ) {
+
+	$user_id 	= ( NULL === $user_id ) ? get_current_user_id() : $user_id;
+	$format		= ws_ls_get_date_format( $user_id );
+
+	return date( $format );
 }
+
+/**
+ * Return date format based on settings
+ * @param null $user_id
+ *
+ * @return string
+ */
+function ws_ls_get_date_format( $user_id = NULL ) {
+  return ( true === ws_ls_get_config('WE_LS_US_DATE', $user_id ) ) ? 'm/d/Y': 'd/m/Y';
+}
+
 function ws_ls_display_week_filters($week_ranges, $selected_week_number)
 {
   $output = '';
@@ -389,7 +406,7 @@ function ws_ls_display_week_filters($week_ranges, $selected_week_number)
 
 // TODO: This will need to be changed when globals are tweaked
 // TODO: Heabily refactor this function
-function ws_ls_get_config( $key, $user_id = false, $force_admin = false )
+function ws_ls_get_config( $key, $user_id = NULL, $force_admin = false )
 {
 	// If in an admin screen, then use admin settings. We're not interested in the user's preference.
 	if ( true === is_admin() || true === $force_admin ) {
@@ -397,7 +414,7 @@ function ws_ls_get_config( $key, $user_id = false, $force_admin = false )
 	}
 
   // If user preferences are enabled, then see if they specified
-  if ( true === ws_ls_user_preferences_is_enabled() && (!is_admin() || $user_id != false))  {
+  if ( true === ws_ls_user_preferences_is_enabled() && (!is_admin() || false == empty( $user_id )) )  {
 
     // Look to see if the user had a preference, if not, default to admin choice
     $user_preference = ws_ls_user_preferences_settings_get( $key, $user_id );

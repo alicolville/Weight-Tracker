@@ -67,17 +67,33 @@ function ws_ls_form_weight( $arguments = [] ) {
 							$arguments[ 'form-number' ]
 	);
 
-
-	$html .= '</form>';
 	print_R($arguments);
-
-
-
 
 	$html .= '<div class="ws-ls-inner-form">';
 
+	// Display date field?
+	if ( false === $arguments[ 'is-target-form' ] ) {
+
+		$todays_date = ws_ls_date_todays_date( $arguments[ 'user-id' ] );
+
+		// Don't bother with date picker and instead force to today's date?
+		if ( true === ws_ls_to_bool( $arguments[ 'option-force-today' ] ) ) {
+			$html .= sprintf( '<input type="hidden" name="we-ls-date" value="%s" />', esc_attr( $todays_date ) );
+		}
+
+//		$date = ( false === empty( $arguments[ 'entry'][ 'display-date' ] ) ) ?
+//					$arguments[ 'entry'][ 'display-date' ] :
+//
+
+		echo $todays_date;
+
+	} else {
+
+	}
+
 	$html .= '</div>';
 
+	$html .= '</form>';
 	return $html;
 //
 //	';
