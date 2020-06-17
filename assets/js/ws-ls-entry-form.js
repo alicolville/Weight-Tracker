@@ -107,16 +107,14 @@ jQuery( document ).ready( function ( $ ) {
         }
 
         // Set up numeric fields to validate
-        if("imperial-pounds" == $weight_unit)
+        if("pounds_only" == $weight_unit)
         {
             $( "#" + $form_id + " #we-ls-weight-pounds").rules( "add", {
                 required: true,
                 number: true,
                 range: [0, 5000]
             });
-        }
-        if("imperial-both" == $weight_unit)
-        {
+        } else if("stones_pounds" == $weight_unit) {
             $( "#" + $form_id + " #we-ls-weight-stones").rules( "add", {
                 required: true,
                 number: true,
@@ -127,9 +125,7 @@ jQuery( document ).ready( function ( $ ) {
                 number: true,
                 range: [0, 14]
             });
-        }
-        if("metric" == $weight_unit)
-        {
+        } else {
             $( "#" + $form_id + " #we-ls-weight-kg").rules( "add", {
                 required: true,
                 number: true,

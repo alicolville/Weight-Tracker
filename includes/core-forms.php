@@ -20,7 +20,7 @@ function ws_ls_form_weight( $arguments = [] ) {
 	                                            'html'                  => '',
 	                                            'option-force-today'    => false,
 	                                            'is-target-form'        => false,
-	                                            'redirect-url'          => NULL,
+	                                            'redirect-url'          => '',
 	                                            'user-id'               => get_current_user_id() ] );
 
 	// Is the user logged in?
@@ -39,63 +39,46 @@ function ws_ls_form_weight( $arguments = [] ) {
 		if ( true === empty( $arguments[ 'entry' ] ) ) {
 			return ws_ls_blockquote_error( __( 'There was an issue loading the data for this weight entry.', WE_LS_SLUG ) );
 		}
+	} else {
+		$arguments[ 'entry-id'] = 0;    // If a target form, then blank ID
 	}
 
-	$arguments = ws_ls_form_init( $arguments );
+	$arguments  = ws_ls_form_init( $arguments );
+	$html       = $arguments[ 'html' ];
+
+	$html .= sprintf( '<form action="%1$s" method="post" class="we-ls-weight-form we-ls-weight-form-validate ws_ls_display_form %2$s"
+									id="%3$s" data-is-target-form="%4$s" data-metric-unit="%5$s" %9$s>
+									<input type="hidden" name="target-form" value="%4$s" />
+									<input type="hidden" name="user-id" value="%6$d" />
+									<input type="hidden" name="security" value="%7$s" />
+									<input type="hidden" name="entry-id" value="%8$d" />
+									<input type="hidden" name="redirect-url" value="%10$s" />
+									<input type="hidden" name="form-number" value="%11$d" />',
+							esc_url_raw( $arguments[ 'post-url' ] ),
+							esc_attr( $arguments[ 'css-class-form' ] ),
+							$arguments[ 'form-id' ],
+							( true === $arguments[ 'is-target-form' ] ) ? 'true' : 'false',
+							esc_attr( $arguments[ 'data-unit' ] ),
+							esc_attr( $arguments[ 'user-id' ] ),
+							esc_attr( wp_hash( $arguments[ 'user-id' ] ) ),
+							$arguments[ 'entry-id' ],
+							( true === $arguments[ 'photos-enabled' ]  ) ? 'enctype="multipart/form-data"' : '',
+							esc_url_raw( $arguments[ 'redirect-url' ] ),
+							$arguments[ 'form-number' ]
+	);
 
 
+	$html .= '</form>';
 	print_R($arguments);
-	return $arguments[ 'html' ];
 
-//
-//	$meta_field_form_enabled = ( false === $hide_meta_fields_form && true === ws_ls_meta_fields_is_enabled() && ws_ls_meta_fields_number_of_enabled() > 0 && false === $target_form);
-//	$entry_id = NULL;
-//
-//
 
-//
 
-//
-//
-//
-//	$html_output .= sprintf('
-//							<form action="%1$s" method="post" class="we-ls-weight-form we-ls-weight-form-validate ws_ls_display_form%2$s" id="%3$s"
-//							data-is-target-form="%4$s"
-//							data-metric-unit="%5$s",
-//							data-photos-enabled="%9$s",
-//							%8$s
-//							>
-//							<input type="hidden" value="%4$s" id="ws_ls_is_target_form" name="ws_ls_is_target_form" />
-//							<input type="hidden" value="true" id="ws_ls_is_weight_form" name="ws_ls_is_weight_form" />
-//							<input type="hidden" value="%6$s" id="ws_ls_user_id" name="ws_ls_user_id" />
-//							<input type="hidden" value="%7$s" id="ws_ls_security" name="ws_ls_security" />',
-//		esc_url( $post_url ),
-//		(($class_name) ? ' ' . esc_attr( $class_name ) : ''),
-//		esc_attr( $form_id ),
-//		( ( true === $target_form ) ? 'true' : 'false'),
-//		esc_attr (ws_ls_get_chosen_weight_unit_as_string( $user_id ) ),
-//		esc_attr($user_id),
-//		esc_attr( wp_hash($user_id) ),
-//		( true === $photo_form_enabled) ? ' enctype="multipart/form-data"' : '',
-//		(($photo_form_enabled) ? 'true' : 'false')
-//	);
-//
-//	// Do we have data? If so, embed existing row ID
-//	if(!empty($existing_data['id']) && is_numeric($existing_data['id'])) {
-//		$entry_id = (int) $existing_data['id'];
-//		$html_output .= '<input type="hidden" value="' . $entry_id . '" id="db_row_id" name="db_row_id" />';
-//	}
-//
-//	// Redirect form afterwards?
-//	if($redirect_url) {
-//		$html_output .= '<input type="hidden" value="' . esc_url($redirect_url) . '" id="ws_redirect" name="ws_redirect" />';
-//	}
-//
-//	if($form_number){
-//		$html_output .= '	<input type="hidden" value="' . esc_attr($form_number) . '" id="ws_ls_form_number" name="ws_ls_form_number" />';
-//	}
-//
-//	$html_output .= '<div class="ws-ls-inner-form comment-input">
+
+	$html .= '<div class="ws-ls-inner-form">';
+
+	$html .= '</div>';
+
+	return $html;
 //
 //	';
 //
@@ -187,6 +170,54 @@ function ws_ls_form_weight( $arguments = [] ) {
 }
 
 
+/**
+ * Initialise the form config
+ * @param array $arguments
+ *
+ * @return array
+ */
+function ws_ls_form_init( $arguments = [] ) {
+
+	$arguments[ 'form-id' ]     = ws_ls_component_id();
+	$arguments[ 'form-number' ] = ws_ls_form_number_next();
+	$arguments[ 'data-unit' ]   = ws_ls_get_config('WE_LS_DATA_UNITS', $arguments[ 'user-id' ] );
+
+	global $save_response;
+
+	// Has this form been previously submitted?
+	if ( false === empty( $save_response ) &&
+	     $arguments[ 'form-number'] === $save_response['form_number'] ){
+		$arguments[ 'html' ] .=  ws_ls_display_blockquote( $save_response[ 'message' ] );
+	}
+
+	// Main title for form
+	if ( true === $arguments[ 'is-target-form' ] ) {
+		$title = __( 'Target weight', WE_LS_SLUG );
+	} else if ( false === empty( $arguments[ 'entry' ] ) ) {
+		$title = __( 'Edit an existing entry', WE_LS_SLUG );
+	} else {
+		$title = __( 'Add a new weight entry', WE_LS_SLUG );
+	}
+
+	$arguments[ 'html' ] .= ws_ls_form_title( $title, $arguments[ 'hide-titles' ] );
+
+	// Allow others to determine where form is posted too
+	$arguments[ 'post-url' ] = apply_filters( 'wlt_form_url', get_permalink() );
+
+	// Are meta fields enabled for this form?
+	$arguments[ 'meta-enabled' ]  = ( false === $arguments[ 'is-target-form' ] &&
+	                                  false === $arguments[ 'hide-fields-meta' ] &&
+	                                  true === ws_ls_meta_fields_is_enabled() &&
+	                                  ws_ls_meta_fields_number_of_enabled() > 0 );
+
+
+	// Are photo fields enabled for this form?
+	$arguments[ 'photos-enabled' ] = ( false === $arguments[ 'hide-fields-photos' ] &&
+	                                   true === $arguments[ 'meta-enabled' ] &&
+	                                   true === ws_ls_meta_fields_photo_any_enabled( true ) );
+
+	return $arguments;
+}
 
 
 /*
@@ -368,47 +399,6 @@ function ws_ls_display_weight_form($target_form = false, $class_name = false, $u
 	</form>';
 
 	return $html_output;
-}
-
-/**
- * Initialise the form config
- * @param array $arguments
- *
- * @return array
- */
-function ws_ls_form_init( $arguments = [] ) {
-
-	$arguments[ 'form-id' ]     = ws_ls_component_id();
-	$arguments[ 'form-number']  = ws_ls_form_number_next();
-
-	global $save_response;
-
-	// Has this form been previously submitted?
-	if ( false === empty( $save_response ) &&
-	     $arguments[ 'form-number'] === $save_response['form_number'] ){
-			$arguments[ 'html' ] .=  ws_ls_display_blockquote( $save_response[ 'message' ] );
-	}
-
-	// Main title for form
-	if ( true === $arguments[ 'is-target-form' ] ) {
-		$title = __( 'Target weight', WE_LS_SLUG );
-	} else if ( false === empty( $arguments[ 'entry' ] ) ) {
-		$title = __( 'Edit an existing entry', WE_LS_SLUG );
-	} else {
-		$title = __( 'Add a new weight entry', WE_LS_SLUG );
-	}
-
-	$arguments[ 'html' ] .= ws_ls_form_title( $title, $arguments[ 'hide-titles' ] );
-
-	// Allow others to determine where form is posted too
-	$arguments[ 'post-url' ] = apply_filters( 'wlt_form_url', get_permalink() );
-
-	// Are photo fields enabled for this form?
-	$arguments[ 'photos-enabled' ] = ( false === $arguments[ 'hide-fields-photos'] &&
-	                                   false === $arguments[ 'is-target-form' ] &&
-	                                   true === ws_ls_meta_fields_photo_any_enabled( true ) );
-
-	return $arguments;
 }
 
 /**

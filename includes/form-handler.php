@@ -20,19 +20,19 @@ function ws_ls_form_post_handler(){
 
 		global $save_response;
 
-		$form_number = ws_ls_post_value( 'ws_ls_form_number', false );
+		$form_number = ws_ls_post_value( 'form-number', false );
 
 		$save_response = [ 'form_number' => (int) $form_number, 'message' => '' ];
 
 		// Do we have a security hash?
-		$user_hash = ws_ls_post_value( 'ws_ls_security' );
+		$user_hash = ws_ls_post_value( 'security' );
 
 		if ( true === empty( $user_hash ) ) {
 			return ws_ls_save_form_error_prep( $save_response, __( 'No user hash could be found', WE_LS_SLUG ) );
 		}
 
 		// Got a user ID?
-		$user_id = ws_ls_post_value( 'ws_ls_user_id' );
+		$user_id = ws_ls_post_value( 'user-id' );
 
 		if ( true === empty( $user_id ) ) {
 			return ws_ls_save_form_error_prep( $save_response, __( 'No user ID has been found', WE_LS_SLUG ) );
@@ -57,10 +57,10 @@ function ws_ls_form_post_handler(){
 		}
 
 		// Redirect?
-		$redirect_url = ws_ls_post_value( 'ws_redirect' );
+		$redirect_url = ws_ls_post_value( 'redirect-url' );
 
 		if ( false === empty( $redirect_url ) ) {
-			wp_safe_redirect( $_POST['ws_redirect'] );
+			wp_safe_redirect( $redirect_url );
 			exit;
 		}
 
@@ -123,9 +123,9 @@ function ws_ls_form_post_handler_weight( $user_id ) {
 	];
 
 	$entry_data     = stripslashes_deep( $entry_data );
-	$existing_id    = ws_ls_post_value( 'db_row_id' );
+	$existing_id    = ws_ls_post_value( 'entry-id' );
 
-	if ( null === $existing_id ) {
+	if ( true === empty( $existing_id ) ) {
 		$existing_id = ws_ls_db_entry_for_date( $user_id, $entry_data[ 'weight_date' ] );
 	}
 
@@ -206,18 +206,14 @@ function ws_ls_form_post_handler_weight( $user_id ) {
  */
 function ws_ls_form_post_handler_determine_type() {
 
-	$is_weight_form =  ws_ls_post_value_to_bool( 'ws_ls_is_weight_form' );
+	$is_target =  ws_ls_post_value( 'target-form' );
 
 	// This isn't a weight tracker submission!
-	if ( false === $is_weight_form ) {
+	if ( NULL === $is_target ) {
 		return NULL;
 	}
 
-	if ( true === ws_ls_post_value_to_bool( 'ws_ls_is_target_form' ) ) {
-		return 'target';
-	}
-
-	return 'weight';
+	return ( true === ws_ls_to_bool( $is_target ) ) ? 'target' : 'weight';
 }
 
 /**
