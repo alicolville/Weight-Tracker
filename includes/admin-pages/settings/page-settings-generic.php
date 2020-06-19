@@ -171,6 +171,19 @@ function ws_ls_settings_page_generic() {
                                                             <p><?php echo __( 'If User Settings is enabled, should all the "About You" (height, activity level, etc) be mandatory?', WE_LS_SLUG )?></p>
                                                         </td>
                                                     </tr>
+	                                                <tr class="<?php echo $disable_if_not_pro_class; ?>">
+		                                                <th scope="row"><?php echo __( 'Allow users to add notes for weight entries?' , WE_LS_SLUG); ?></th>
+		                                                <td>
+			                                                <?php
+			                                                $user_notes = get_option( 'ws-ls-allow-user-notes', 'yes' );
+			                                                ?>
+			                                                <select id="ws-ls-allow-user-notes" name="ws-ls-allow-user-notes">
+				                                                <option value="yes" <?php selected( $user_notes, 'yes' ); ?>><?php echo __( 'Yes', WE_LS_SLUG )?></option>
+				                                                <option value="no" <?php selected( $user_notes, 'no' ); ?>><?php echo __( 'No', WE_LS_SLUG )?></option>
+			                                                </select>
+			                                                <p><?php echo __('If enabled, users can add notes against weight entries.', WE_LS_SLUG)?></p>
+		                                                </td>
+	                                                </tr>
 											</table>
 
                                             <h3><?php echo __( 'Photos' , WE_LS_SLUG); ?></h3>
@@ -955,6 +968,7 @@ function ws_ls_register_settings(){
         register_setting( 'we-ls-options-group', 'ws-ls-measurement-units' );
         register_setting( 'we-ls-options-group', 'ws-ls-measurement' );
         register_setting( 'we-ls-options-group', 'ws-ls-measurements-mandatory' );
+	    register_setting( 'we-ls-options-group', 'ws-ls-allow-user-notes' );
 
 		// BMI
 		register_setting( 'we-ls-options-group', 'ws-ls-display-bmi-in-tables' );

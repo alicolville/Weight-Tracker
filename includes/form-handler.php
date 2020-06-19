@@ -2,8 +2,6 @@
 
 defined('ABSPATH') or die('Jog on!');
 
-global $save_response;
-
 /**
  * Look for WT form submissions. If one is found, validate the form and attempt to save the data.
  *
@@ -18,29 +16,25 @@ function ws_ls_form_post_handler(){
 			return false;
 		}
 
-		global $save_response;
-
 		$form_number = ws_ls_post_value( 'form-number', false );
-
-		$save_response = [ 'form_number' => (int) $form_number, 'message' => '' ];
 
 		// Do we have a security hash?
 		$user_hash = ws_ls_post_value( 'security' );
 
 		if ( true === empty( $user_hash ) ) {
-			return ws_ls_save_form_error_prep( $save_response, __( 'No user hash could be found', WE_LS_SLUG ) );
+			return ws_ls_save_form_error_prep( $form_number, __( 'No user hash could be found', WE_LS_SLUG ) );
 		}
 
 		// Got a user ID?
 		$user_id = ws_ls_post_value( 'user-id' );
 
 		if ( true === empty( $user_id ) ) {
-			return ws_ls_save_form_error_prep( $save_response, __( 'No user ID has been found', WE_LS_SLUG ) );
+			return ws_ls_save_form_error_prep( $form_number, __( 'No user ID has been found', WE_LS_SLUG ) );
 		}
 
 		// Does the hash work for the given user ID?
 		if( $user_hash !== wp_hash( $user_id ) ) {
-			return ws_ls_save_form_error_prep( $save_response, __( 'The given user hash did not match the logged in user', WE_LS_SLUG ) );
+			return ws_ls_save_form_error_prep( $form_number, __( 'The given user hash did not match the logged in user', WE_LS_SLUG ) );
 		}
 
 		$result = false;
@@ -52,8 +46,8 @@ function ws_ls_form_post_handler(){
 			$result = ws_ls_form_post_handler_weight( $user_id );
 		}
 
-		if ( false === $result ) {
-			return ws_ls_save_form_error_prep( $save_response, __( 'An error occurred while saving your data', WE_LS_SLUG ) );
+		if ( true === empty( $result ) ) {
+			return ws_ls_save_form_error_prep( $form_number, __( 'An error occurred while saving your data', WE_LS_SLUG ) );
 		}
 
 		// Redirect?
@@ -66,9 +60,7 @@ function ws_ls_form_post_handler(){
 
 		$message = apply_filters( 'wlt-filter-form-saved-message', __( 'Your entry has been saved.', WE_LS_SLUG ) );
 
-		$save_response[ 'message' ] = ws_ls_display_blockquote( $message, 'ws-ls-success' );
-
-		return;
+		return ws_ls_save_form_error_prep( $form_number );
 }
 add_action( 'init', 'ws_ls_form_post_handler' );
 add_action( 'admin_init', 'ws_ls_form_post_handler' );
@@ -223,14 +215,14 @@ function ws_ls_form_post_handler_determine_type() {
 function ws_ls_form_post_handler_extract_weight() {
 
 	// Are we lucky? Metric by default?
-	$kg = ws_ls_post_value( 'we-ls-weight-kg', NULL, true );
+	$kg = ws_ls_post_value( 'ws-ls-weight-kg', NULL, true );
 
 	if ( NULL !== $kg ) {
 		return $kg;
 	}
 
-	$stones = ws_ls_post_value( 'we-ls-weight-stones', NULL, true );
-	$pounds = ws_ls_post_value( 'we-ls-weight-pounds', NULL, true );
+	$stones = ws_ls_post_value( 'ws-ls-weight-stones', NULL, true );
+	$pounds = ws_ls_post_value( 'ws-ls-weight-pounds', NULL, true );
 
 	// Stones and Pounds
 	if ( NULL !== $stones ) {
@@ -251,17 +243,26 @@ function ws_ls_form_post_handler_extract_weight() {
 
 /**
  * Prep a response object for other forms to process
- * @param $response
+ *
+ * @param $form_number
  * @param $error
+ *
  * @return array
  */
-function ws_ls_save_form_error_prep($response, $error ) {
+function ws_ls_save_form_error_prep( $form_number, $error = NULL ) {
 
-	if ( false === is_array( $response ) ) {
-		return $response;
+	global $save_response;
+
+	if ( false === is_array( $save_response ) ) {
+		$save_response = [ 'form_number' => (int) $form_number, 'message' => '' ];
 	}
 
-	$response[ 'message' ] = ws_ls_blockquote_error( $error );
+	if ( false === empty( $error ) ) {
+		$save_response[ 'message' ] = ws_ls_blockquote_error( $error );
+		$save_response[ 'error' ]   = true;
+	} else {
+		$save_response[ 'error' ]   = false;
+	}
 
-	return $response;
+	return $error;
 }

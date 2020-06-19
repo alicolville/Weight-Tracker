@@ -185,7 +185,7 @@ add_shortcode( 'wlt-gender', 'ws_ls_shortcode_gender' ); to add_shortcode( 'wt-g
 add_shortcode( 'wlt-dob', 'ws_ls_shortcode_dob' ); to add_shortcode( 'wt-dob', 'ws_ls_shortcode_dob' );
 add_shortcode( 'wlt-height', 'ws_ls_shortcode_height' ); to add_shortcode( 'wt-height', 'ws_ls_shortcode_height' );
 add_shortcode( 'wlt-new-users', 'ws_ls_shortcode_new_users' ); to add_shortcode( 'wt-new-users', 'ws_ls_shortcode_new_users' );
-
+wt-form replace "hide-measurements" with "hide-meta"
 
 * Improvement: Allow numeric custom fields to be plotted on charts.
 * Improvement: A user's target weight can now be displayed on bar graphs.
@@ -205,6 +205,7 @@ add_shortcode( 'wlt-new-users', 'ws_ls_shortcode_new_users' ); to add_shortcode(
 * Improvement: Optimised SQL queries.
 * Improvement: Global variables declared on each page load for feature lists have been removed.
 * Improvement: [wt-new-users] shortcode is now cached for 15 minutes.
+* Improvement: New setting: Notes can be disabled on user weight forms (via settings).
 * Bug fix: "Who can view and modify user data?" has been fixed so user's with the specified minimum role can now access admin data pages.
 * Bug fix: Awards for a user are now deleted when "Delete all data for this user" has been clicked.
 * Bug fix: All challenge data for a user is now deleted when "Delete all data for this user" has been clicked.

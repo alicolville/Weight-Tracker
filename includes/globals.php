@@ -1,7 +1,8 @@
 <?php
 	defined('ABSPATH') or die("Jog on!");
 
-	global $form_number;
+	global $form_number;        // This is used to keep track of multiple forms on a page allowing us to pass messages to each
+	global $save_response;      // This is used to keep track of form posts responses
 
     // -----------------------------------------------------------------------------------
 	// YeKen Globals
