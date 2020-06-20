@@ -45,6 +45,8 @@ function ws_ls_admin_page_data_edit_target() {
 	                                                                 'hide-login-message'   => true,
 	                                    ] );
 
+										echo sprintf( '<p><em>%s</em></p>', __('A user\'s target weight can be cleared by setting the value to 0 or leaving blank.', WE_LS_SLUG) );
+
                                     } else {
                                         echo sprintf( '<p>%s</p>', __('A Pro license is required to set a user\'s target weight.', WE_LS_SLUG) );
                                     }
