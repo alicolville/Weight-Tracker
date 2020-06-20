@@ -25,6 +25,12 @@ add_action( 'weight_loss_tracker_hourly' , 'ws_ls_stats_run_cron');
 add_action( 'wlt-hook-data-all-deleted', 'ws_ls_stats_run_cron' );	// Delete stats if all user data has been deleted
 add_action( 'wlt-hook-data-user-deleted', 'ws_ls_stats_run_cron' );	// Tidy up stats if a user deletes their entry
 
+function ws_ls_stats_clear_last_updated_date(){
+	global $wpdb;
+	$wpdb->query('Update ' . $wpdb->prefix . WE_LS_USER_STATS_TABLENAME . ' set last_update = NULL');
+	return;
+}
+
 function ws_ls_stats_run_cron_for_first_time() {
 
 	if( false == get_option('ws-ls-stats-run-for-first-time')) {

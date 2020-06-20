@@ -901,39 +901,6 @@ function ws_ls_get_values_from_post( $keys ) {
 }
 
 /**
- * Render a <select> for the given key / value array
- * @param $key
- * @param $name
- * @param $values
- * @param string $key_prefix
- * @return string
- */
-function ws_ls_select( $key, $name, $values, $key_prefix = 'filter' ) {
-
-    $key = sprintf( '%s-%s', $key_prefix, $key );
-
-    $html = sprintf( '<label for="%1$s">%2$s:</label>
-                                    <select id="%1$s" name="%1$s" >',
-        esc_attr( $key ),
-        esc_attr( $name )
-    );
-
-    $selected = ws_ls_querystring_value( $key, true );
-
-    foreach ( $values as $id => $value ) {
-        $html .= sprintf('<option value="%1$s" %2$s>%3$s</option>',
-                    esc_attr( $id ),
-                    selected( $selected, $id, false ),
-                    esc_html( $value )
-        );
-    }
-
-    $html .= '</select>';
-
-    return $html;
-}
-
-/**
  * Get the current page URL
  * @param bool $base_64_encode
  * @return mixed|string#
@@ -946,12 +913,6 @@ function ws_ls_get_url( $base_64_encode = false ) {
 	$current_url = str_replace('removedata', 'removed', $current_url);
 
 	return ( true === $base_64_encode ) ? base64_encode( $current_url ) : $current_url;
-}
-
-function ws_ls_stats_clear_last_updated_date(){
-    global $wpdb;
-    $wpdb->query('Update ' . $wpdb->prefix . WE_LS_USER_STATS_TABLENAME . ' set last_update = NULL');
-    return;
 }
 
 /**
@@ -1098,53 +1059,69 @@ function ws_ls_blockquote_login_prompt( ) {
 	return ws_ls_display_blockquote( __( 'You must be logged in to view or edit your data.' , WE_LS_SLUG ) , '', false, true );
 }
 
-//todo: review this
-// Calculate max upload size (taken from Drupal)
+/**
+ * Calculate max upload size (taken from Drupal)
+ * @return float|int
+ */
 function ws_ls_file_upload_max_size() {
-    static $max_size = -1;
 
-    if ($max_size < 0) {
+	static $max_size = -1;
+
+    if ( $max_size < 0 ) {
         // Start with post_max_size.
-        $post_max_size = ws_ls_parse_size(ini_get('post_max_size'));
-        if ($post_max_size > 0) {
+        $post_max_size = ws_ls_parse_size( ini_get( 'post_max_size' ) );
+        if ( $post_max_size > 0) {
             $max_size = $post_max_size;
         }
 
         // If upload_max_size is less, then reduce. Except if upload_max_size is
         // zero, which indicates no limit.
-        $upload_max = ws_ls_parse_size(ini_get('upload_max_filesize'));
-        if ($upload_max > 0 && $upload_max < $max_size) {
+        $upload_max = ws_ls_parse_size( ini_get( 'upload_max_filesize' ) );
+        if ( $upload_max > 0 && $upload_max < $max_size ) {
             $max_size = $upload_max;
         }
     }
     return $max_size;
 }
 
-// Parse size from PHP ini into bytes (taken from Drupal)
-function ws_ls_parse_size($size) {
-    $unit = preg_replace('/[^bkmgtpezy]/i', '', $size); // Remove the non-unit characters from the size.
-    $size = preg_replace('/[^0-9\.]/', '', $size); // Remove the non-numeric characters from the size.
-    if ($unit) {
+/**
+ * Parse size from PHP ini into bytes (taken from Drupal)
+ *
+ * @param $size
+ *
+ * @return float
+ */
+function ws_ls_parse_size( $size ) {
+
+    $unit = preg_replace('/[^bkmgtpezy]/i', '', $size ); // Remove the non-unit characters from the size.
+    $size = preg_replace('/[^0-9\.]/', '', $size ); // Remove the non-numeric characters from the size.
+
+	if ( $unit ) {
         // Find the position of the unit in the ordered string which is the power of magnitude to multiply a kilobyte by.
-        return round($size * pow(1024, stripos('bkmgtpezy', $unit[0])));
+        return round($size * pow(1024, stripos('bkmgtpezy', $unit[0] ) ) );
     }
-    else {
-        return round($size);
-    }
+
+	return round( $size );
 }
 
-// Snippet from PHP Share: http://www.phpshare.org
-function ws_ls_format_bytes_into_readable($bytes) {
-    if ($bytes >= 1073741824) {
-        $bytes = number_format($bytes / 1073741824, 2) . 'Gb';
+/**
+ * Display bytes in readable format
+ * (Snippet from PHP Share: http://www.phpshare.org)
+ * @param $bytes
+ *
+ * @return string
+ */
+function ws_ls_format_bytes_into_readable( $bytes ) {
+    if ( $bytes >= 1073741824) {
+        $bytes = number_format($bytes / 1073741824, 2 ) . 'Gb';
     }
-    elseif ($bytes >= 1048576) {
-        $bytes = number_format($bytes / 1048576, 2) . 'Mb';
-    } elseif ($bytes >= 1024) {
-        $bytes = number_format($bytes / 1024, 2) . ' Kb';
-    } elseif ($bytes > 1) {
+    elseif ( $bytes >= 1048576) {
+        $bytes = number_format($bytes / 1048576, 2 ) . 'Mb';
+    } elseif ( $bytes >= 1024) {
+        $bytes = number_format($bytes / 1024, 2 ) . ' Kb';
+    } elseif ( $bytes > 1) {
         $bytes = $bytes . ' bytes';
-    } elseif ($bytes == 1) {
+    } elseif ( $bytes == 1) {
         $bytes = $bytes . ' byte';
     }  else {
         $bytes = '0 bytes';

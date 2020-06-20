@@ -467,22 +467,22 @@ function ws_ls_challenges_show_filters() {
 	}
 
 	// Gender
-	$html .= ws_ls_select( 'gender', __( 'Gender', WE_LS_SLUG ),  ws_ls_genders() );
+	$html .= ws_ls_form_field_select( 'gender', __( 'Gender', WE_LS_SLUG ),  ws_ls_genders() );
 
 	// Age range
-	$html .= ws_ls_select( 'age-range', __( 'Age Range', WE_LS_SLUG ), ws_ls_age_ranges( true ) );
+	$html .= ws_ls_form_field_select( 'age-range', __( 'Age Range', WE_LS_SLUG ), ws_ls_age_ranges( true ) );
 
 	// Group
 	if ( true === ws_ls_groups_enabled () ) {
-		$html .= ws_ls_select( 'group-id', __( 'Group', WE_LS_SLUG ), ws_ls_challenge_filters_group_select_values() );
+		$html .= ws_ls_form_field_select( 'group-id', __( 'Group', WE_LS_SLUG ), ws_ls_challenge_filters_group_select_values() );
 	}
 
 	// Optin
 	if ( true === is_admin() ) {
-		$html .= ws_ls_select( 'opt-in', __( 'Opted in', WE_LS_SLUG ), [  1 => __( 'Opted in', WE_LS_SLUG ), 0 => __( 'Everyone', WE_LS_SLUG ) ] );
+		$html .= ws_ls_form_field_select( 'opt-in', __( 'Opted in', WE_LS_SLUG ), [ 1 => __( 'Opted in', WE_LS_SLUG ), 0 => __( 'Everyone', WE_LS_SLUG ) ] );
 
 		// Min Weight Entries
-		$html .= ws_ls_select( 'min-wt-entries', __( 'Min. Weight Entries', WE_LS_SLUG ), [  2 => __( 'Two or more', WE_LS_SLUG ),  1 => __( 'One or more', WE_LS_SLUG ) ] );
+		$html .= ws_ls_form_field_select( 'min-wt-entries', __( 'Min. Weight Entries', WE_LS_SLUG ), [ 2 => __( 'Two or more', WE_LS_SLUG ), 1 => __( 'One or more', WE_LS_SLUG ) ] );
 	}
 
 	$html .= sprintf( '<input type="submit" class="btn button-primary" value="%s" /></form>', __( 'Filter', WE_LS_SLUG ) );

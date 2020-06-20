@@ -367,6 +367,40 @@ function ws_ls_form_field_number( $arguments = [] ) {
 
 	return $html . '</div>';
 }
+
+/**
+ * Render a <select> for the given key / value array
+ * @param $key
+ * @param $name
+ * @param $values
+ * @param string $key_prefix
+ * @return string
+ */
+function ws_ls_form_field_select( $key, $name, $values, $key_prefix = 'filter' ) {
+
+	$key = sprintf( '%s-%s', $key_prefix, $key );
+
+	$html = sprintf( '<label for="%1$s">%2$s:</label>
+                                    <select id="%1$s" name="%1$s" >',
+		esc_attr( $key ),
+		esc_attr( $name )
+	);
+
+	$selected = ws_ls_querystring_value( $key, true );
+
+	foreach ( $values as $id => $value ) {
+		$html .= sprintf('<option value="%1$s" %2$s>%3$s</option>',
+			esc_attr( $id ),
+			selected( $selected, $id, false ),
+			esc_html( $value )
+		);
+	}
+
+	$html .= '</select>';
+
+	return $html;
+}
+
 /**
  * Format form title
  * @param $title
