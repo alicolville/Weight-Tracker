@@ -115,7 +115,7 @@ function ws_ls_weight_display( $kg, $user_id = NULL, $key = false, $force_admin 
 		$weight[ 'format' ] 	= ws_ls_get_config('WE_LS_DATA_UNITS', $user_id );
 	}
 
-	$cache_key = sprintf( '%s-%s', $kg, $weight[ 'format' ] );
+	// $cache_key = sprintf( '%s-%s', $kg, $weight[ 'format' ] );
 
 	$weight[ 'kg' ] = $kg;
 

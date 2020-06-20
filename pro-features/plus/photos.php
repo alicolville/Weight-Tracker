@@ -302,14 +302,8 @@ function ws_ls_meta_fields_photos_delete_entry( $attachment_id ) {
  * @param bool $hide_from_shortcodes
  * @return array|bool|null
  */
-function ws_ls_photos_db_get_all_photos(    $user_id = false,
-	$include_image_object = false,
-	$limit = false,
-	$direction = 'asc',
-	$width = 200,
-	$height = 200,
-	$meta_fields_to_use = '',
-	$hide_from_shortcodes = false) {
+function ws_ls_photos_db_get_all_photos( $user_id = false, $include_image_object = false, $limit = false, $direction = 'asc',
+											$width = 200, $height = 200, $meta_fields_to_use = '', $hide_from_shortcodes = false) {
 
 	$user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
 
@@ -323,67 +317,47 @@ function ws_ls_photos_db_get_all_photos(    $user_id = false,
 	global $wpdb;
 
 	// Validate fields
-	$direction = (false === in_array($direction, ['asc', 'desc'])) ? 'desc' : $direction;
-	$width = ws_ls_force_numeric_argument($width, 200);
-	$height = ws_ls_force_numeric_argument($height, 200);
-
-	$cache_key = 'photos-all-' . $direction . $include_image_object . $limit . $width . $height;
+	$direction  = (false === in_array($direction, ['asc', 'desc'])) ? 'desc' : $direction;
+	$width      = ws_ls_force_numeric_argument($width, 200);
+	$height     = ws_ls_force_numeric_argument($height, 200);
+	$cache_key  = 'photos-all-' . $direction . $include_image_object . $limit . $width . $height;
 
 	// Return cache if found!
-	if ($cache = ws_ls_cache_user_get($user_id, $cache_key))   {
+	if ( $cache = ws_ls_cache_user_get( $user_id, $cache_key ) )   {
 		return $cache;
 	}
 
-	$limit = ( false === empty($limit) && is_numeric($limit) ) ? ' limit 0, ' . (int) $limit : '';
+	$limit = ( false === empty( $limit ) && is_numeric( $limit ) ) ? ' limit 0, ' . (int) $limit : '';
 
-	$sql = 'Select d.id, d.weight_weight, d.weight_pounds, d.weight_stones, d.weight_only_pounds, d.weight_notes, d.weight_date, e.value as photo_id, f.field_name, f.sort 
+	$sql = 'Select d.id, d.weight_weight as kg, d.weight_notes, d.weight_date, e.value as photo_id, f.field_name, f.sort 
 			from ' . $wpdb->prefix . WE_LS_MYSQL_META_ENTRY . ' e 
 	        inner join ' . $wpdb->prefix . WE_LS_TABLENAME . ' d on e.entry_id = d.id 
 	        inner join ' . $wpdb->prefix . WE_LS_MYSQL_META_FIELDS . ' f on f.id = e.meta_field_id    
 	        where weight_user_id = %d and e.value <> "" and meta_field_id in (' . implode( ',', $photo_fields) . ') order by weight_date ' . $direction . ', f.sort asc ' . $limit;
 
-	$sql = $wpdb->prepare( $sql, $user_id );
-
-	$photos = $wpdb->get_results( $sql );
-
-	$photos_to_return = [];
+	$sql                = $wpdb->prepare( $sql, $user_id );
+	$photos             = $wpdb->get_results( $sql, ARRAY_A );
+	$photos_to_return   = [];
 
 	if ( false === empty($photos) ) {
 
-		foreach ( $photos as $row ) {
-
-			$photo = ws_ls_weight_object($user_id,
-				$row->weight_weight,
-				$row->weight_pounds,
-				$row->weight_stones,
-				$row->weight_only_pounds,
-				$row->weight_notes,
-				$row->weight_date,
-				false,
-				$row->id,
-				'',
-				false,
-				$row->photo_id
-			);
-
-			$photo['field-name'] = $row->field_name;
+		foreach ( $photos as $photo ) {
 
 			// Embed image attachment data?
 			if ( true === $include_image_object ) {
 				$photo_src = ws_ls_photo_get( $photo['photo_id'], $width, $height);
 
-				if ( false === empty($photo_src) ) {
+				if ( false === empty( $photo_src ) ) {
 					$photo = array_merge( $photo_src, $photo);
 				}
 			}
-
-			$photo['display-text'] = $photo['date-display'] . ' &middot; ' . $photo['field-name'] . ' &middot; ' . $photo['display'];
 
 			$photos_to_return[] = $photo;
 		}
 	}
 
-	ws_ls_cache_user_set($user_id, $cache_key, $photos_to_return);
+	ws_ls_cache_user_set( $user_id, $cache_key, $photos_to_return );
+
 	return $photos_to_return;
 }
 
