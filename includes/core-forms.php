@@ -14,6 +14,7 @@ function ws_ls_form_weight( $arguments = [] ) {
 	                                            'hide-fields-meta'      => false,
 	                                            'hide-fields-photos'    => false,
 	                                            'hide-login-message'    => false,
+	                                            'hide-notes'            => ( 'no' === get_option( 'ws-ls-allow-user-notes', 'yes' ) ),
 	                                            'hide-titles'           => false,
 	                                            'html'                  => '',
 	                                            'option-force-today'    => false,
@@ -133,7 +134,7 @@ function ws_ls_form_weight( $arguments = [] ) {
 	}
 
 	if ( false === $arguments[ 'is-target-form' ] &&
-	        'yes' === get_option( 'ws-ls-allow-user-notes', 'yes' ) ) {
+	        false === $arguments[ 'hide-notes' ] ) {
 
 		$html .= ws_ls_form_field_textarea( [   'name'          => 'we-ls-notes',
 		                                        'placeholder'   => __( 'Notes', WE_LS_SLUG ),

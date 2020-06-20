@@ -20,6 +20,7 @@ function ws_ls_shortcode_form( $user_defined_arguments ) {
                                        'target'            => false,
                                        'class'             => false,
 								       'hide-titles'       => false,
+								       'hide-notes'        => false,
 								       'redirect-url'      => false,
 								       'hide-measurements' => false,
 								       'hide-meta'         => false
@@ -29,6 +30,7 @@ function ws_ls_shortcode_form( $user_defined_arguments ) {
 	$arguments[ 'css-class-form' ]      = $arguments[ 'class' ];
 	$arguments[ 'is-target-form' ]      = ws_ls_to_bool( $arguments[ 'target' ] );
 	$arguments[ 'hide-titles' ]         = ws_ls_to_bool( $arguments[ 'hide-titles' ] );
+	$arguments[ 'hide-notes' ]          = ws_ls_to_bool( $arguments[ 'hide-notes' ] );
 	$arguments[ 'hide-fields-meta' ]    = ( true === ws_ls_to_bool( $arguments[ 'hide-meta' ] ) || true === ws_ls_to_bool( $arguments[ 'hide-measurements' ] ) );
 
 	return ws_ls_form_weight( $arguments );
