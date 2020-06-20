@@ -719,45 +719,59 @@ function ws_ls_force_dimension_argument($value, $default = false) {
 
 	return ( false === empty($default) ) ? $default : 0;
 }
-function ws_ls_remove_non_numeric($text) {
-  if( false === empty($text) ){
-    return preg_replace("/[^0-9]/", "", $text);
-  }
-  return $text;
+
+/**
+ * Remove non numeric characters
+ * @param $text
+ *
+ * @return string|string[]|null
+ */
+function ws_ls_remove_non_numeric( $text ) {
+	if( true === empty( $text ) ) {
+		return '';
+	}
+
+	return preg_replace("/[^0-9]/", '', $text );
 }
 
+/**
+ * Prepare Stones / Pounds for display
+ * @param $weight
+ *
+ * @return string
+ */
 function ws_ls_format_stones_pound_for_comparison_display($weight) {
 
-	if(isset($weight['stones']) && isset($weight['pounds'])) {
+	if( true === isset( $weight[ 'stones' ] ) &&
+	        true === isset( $weight['pounds'] ) ) {
 
-		$text = array();
-
-		$show_stones = true;
+		$text           = [];
+		$show_stones    = true;
 
 		// Round up figures that hit 14lb
-		if(14 == $weight["pounds"]) {
-			$weight["pounds"] = 0;
-			$weight["stones"]++;
+		if( 14 == $weight[ 'pounds' ] ) {
+			$weight[ 'pounds' ] = 0;
+			$weight[ 'stones' ]++;
 		} else if (-14 == $weight["pounds"]) {
-			$weight["pounds"] = 0;
-			$weight["stones"]--;
+			$weight[ 'pounds' ] = 0;
+			$weight[ 'stones' ]--;
 		}
 
 		// Is stones equal to zero?
-		if(-0 == $weight['stones'] || 0 == $weight['stones']) {
+		if( -0 == $weight['stones'] || 0 == $weight['stones'] ) {
 			$show_stones = false;
 		}
 
 		if ($show_stones) {
-			$text[] = $weight['stones'] . __('st', WE_LS_SLUG);
+			$text[] = $weight['stones'] . __( 'st', WE_LS_SLUG );
 		}
 
-		if (is_numeric($weight['pounds'])) {
+		if ( true === is_numeric( $weight['pounds'] ) ) {
 
 			// If both stones and pounds negative then invert pounds.
 			// e.g.
 			// -1 stone -10 pounds will get displayed as -1 stone 10 pounds
-			if ($show_stones && (-0 == $weight['stones'] || $weight['stones'] < 0) && $weight['pounds'] < 0) {
+			if ( $show_stones && ( -0 == $weight['stones'] || $weight['stones'] < 0 ) && $weight['pounds'] < 0 ) {
 				$weight['pounds'] = abs($weight['pounds']);
 			}
 
