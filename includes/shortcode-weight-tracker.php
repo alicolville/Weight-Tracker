@@ -6,6 +6,11 @@
 
 	function ws_ls_shortcode($user_defined_arguments)
 	{
+
+
+		// TODO: Add hide-notes
+
+
 			global $save_response;
 			global $ws_ls_wlt_already_placed;
 
