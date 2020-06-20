@@ -14,16 +14,14 @@
      * @param bool $return_error
      * @return float|null
      */
-    function ws_ls_calculate_bmr($user_id = false, $return_error = true) {
+    function ws_ls_calculate_bmr( $user_id = false, $return_error = true ) {
 
-        $user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
-
-		$cache_key = $user_id . '-' . WE_LS_CACHE_KEY_BMR;
+        $user_id = ( true === empty( $user_id ) ) ? get_current_user_id() : $user_id;
 
 		// Do we have BMR cached?
-		if($cache = ws_ls_get_cache($cache_key)) {
-		//	return ws_ls_round_bmr_harris($cache);
-		}
+	    if ( $cache = ws_ls_cache_user_get( $user_id, 'bmr' ) ) {
+	    	return ws_ls_round_bmr_harris( $cache );
+	    }
 
         // First, we need to ensure the person has a gender.
         $gender = ws_ls_user_preferences_get('gender', $user_id);
@@ -68,8 +66,7 @@
 
         $bmr = apply_filters( 'wlt-filter-bmr-calculation', $bmr, $gender, $weight, $height, $age, $user_id );
 
-		// Cache BMR
-		ws_ls_set_cache($cache_key, $bmr);
+		ws_ls_cache_user_set( $user_id, 'bmr', $bmr );
 
         return ws_ls_round_bmr_harris($bmr);
     }

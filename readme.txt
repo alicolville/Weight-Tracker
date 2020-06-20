@@ -225,6 +225,7 @@ wt-form replace "hide-measurements" with "hide-meta"
 * Bug fix: Removed dead setting "Disable notifications from YeKen?".
 * Bug fix: Meta fields cache no longer cleared on weight entry insert / save.
 * Bug fix: Delete all cache if admin delete's all data.
+* Bug fix: BMR now cached on a user by user basis correctly.
 
 = 7.6.2 =
 

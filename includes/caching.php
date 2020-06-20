@@ -8,7 +8,6 @@ define( 'WE_LS_CACHE_TIME', 15 * MINUTE_IN_SECONDS);
 define('WE_LS_CACHE_KEY_PHOTOS', 'photos-extreme-');
 define('WE_LS_CACHE_KEY_PHOTOS_ALL', 'photos-all-');
 define('WE_LS_CACHE_KEY_PHOTOS_COUNT', 'photos-count-');
-define('WE_LS_CACHE_KEY_BMR', 'bmr');
 define('WE_LS_CACHE_KEY_HARRIS_BENEDICT', 'harris-benedict');
 define('WE_LS_CACHE_KEY_MACRO', 'macro');
 
@@ -224,7 +223,6 @@ function ws_ls_delete_cache_for_given_user($user_id = false)
 
 		$keys_to_clear = array(
 
-								$user_id . '-' . WE_LS_CACHE_KEY_BMR,
 								$user_id . '-' . WE_LS_CACHE_KEY_HARRIS_BENEDICT,
 								$user_id . '-' . WE_LS_CACHE_KEY_MACRO,
 								$user_id . '-' . WE_LS_CACHE_KEY_PHOTOS . '-asc',
