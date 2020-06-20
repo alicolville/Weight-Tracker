@@ -72,7 +72,7 @@
 
 
         // Add localization data for JS
-		wp_localize_script('ws-ls-js', 'ws_ls_config', ws_ls_get_js_config());
+		wp_localize_script('ws-ls-js', 'ws_ls_config', ws_ls_config_js());
 
 		// Tabs enabled?
 		wp_enqueue_style('wlt-font-awesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', array(), WE_LS_CURRENT_VERSION);
@@ -120,7 +120,7 @@
 			} else if ('user' == $_GET['mode'] ) {
                 wp_enqueue_script('ws-ls-chart-js', WE_LS_CDN_CHART_JS, array( 'jquery' ), WE_LS_CURRENT_VERSION);
                 wp_enqueue_script('jquery-chart-ws-ls', plugins_url( '../assets/js/ws-ls-chart' . 	$minified . '.js', __FILE__ ), array('ws-ls-chart-js'), WE_LS_CURRENT_VERSION, true);
-				wp_localize_script('jquery-chart-ws-ls', 'ws_ls_config', ws_ls_get_js_config());
+				wp_localize_script('jquery-chart-ws-ls', 'ws_ls_config', ws_ls_config_js());
 			}
 		}
 	}
@@ -139,7 +139,7 @@
 		wp_enqueue_script('jquery-validate',plugins_url( '../assets/js/jquery.validate.min.js', __FILE__ ), array('jquery'), WE_LS_CURRENT_VERSION);
 		wp_enqueue_script('jquery-validate-additional',plugins_url( '../assets/js/additional-methods.min.js', __FILE__ ), array('jquery', 'jquery-validate'), WE_LS_CURRENT_VERSION);
 		wp_enqueue_script('ws-ls-js', plugins_url( '../assets/js/ws-ls-entry-form' . $minified . '.js', __FILE__ ), array(), WE_LS_CURRENT_VERSION, true);
-		wp_localize_script('ws-ls-js', 'ws_ls_config', ws_ls_get_js_config());
+		wp_localize_script('ws-ls-js', 'ws_ls_config', ws_ls_config_js());
 	}
 
 /**

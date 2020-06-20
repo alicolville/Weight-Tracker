@@ -6,7 +6,7 @@ defined('ABSPATH') or die('Jog on!');
  * JS config used for localise script
  * @return mixed|void
  */
-function ws_ls_get_js_config() {
+function ws_ls_config_js() {
 
 	$user_id            = get_current_user_id();
 	$user_id            = apply_filters( 'wlt-filter-js-ws-ls-config-user-id', $user_id );
@@ -35,7 +35,7 @@ function ws_ls_get_js_config() {
 					'user-id'                           => $user_id,
 					'current-url'                       => apply_filters( 'wlt_current_url', get_permalink() ),
 					'photos-enabled'                    => ( ws_ls_meta_fields_photo_any_enabled( true ) ) ? 'true' : 'false',
-					'date-picker-locale'                => ws_ls_get_js_datapicker_locale(),
+					'date-picker-locale'                => ws_ls_config_js_datapicker_locale(),
 					'in-admin'                          => ( is_admin() ) ? 'true' : 'false',
 					'max-photo-upload'                  => ws_ls_photo_max_upload_size(),
 	];
@@ -69,7 +69,7 @@ function ws_ls_get_js_config() {
 	Use a combination of WP Locale and MO file to translate datepicker
 	Based on: https://gist.github.com/clubdeuce/4053820
  */
-function ws_ls_get_js_datapicker_locale() {
+function ws_ls_config_js_datapicker_locale() {
 
 	global $wp_locale;
 
