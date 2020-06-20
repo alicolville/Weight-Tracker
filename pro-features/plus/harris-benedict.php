@@ -6,11 +6,7 @@ function ws_ls_harris_benedict_calculate_calories($user_id = false) {
 
 	$user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
 
-	// Data cached?
-	$cache_key = $user_id . '-' . WE_LS_CACHE_KEY_HARRIS_BENEDICT;
-
-	// Do we have BMR cached?
-	if ( $cache = ws_ls_get_cache( $cache_key ) ) {
+	if ( $cache = ws_ls_cache_user_get( $user_id, 'harris-benedict' ) ) {
 		return $cache;
 	}
 
@@ -94,8 +90,7 @@ function ws_ls_harris_benedict_calculate_calories($user_id = false) {
 
 	$calorie_intake = apply_filters( 'wlt-filter-harris-benedict', $calorie_intake, $user_id );
 
-	// Cache it!
-	ws_ls_set_cache($cache_key, $calorie_intake);
+	ws_ls_cache_user_set( $user_id, 'harris-benedict', $calorie_intake );
 
 	return $calorie_intake;
 

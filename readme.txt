@@ -199,6 +199,7 @@ wt-form replace "hide-measurements" with "hide-meta"
 * Improvement: Various performance tweaks. All globals no longer dynamically loaded.
 * Improvement: Caching: Previously, user cache consisted of a large data object per user. This would be loaded on every cache lookup. Now, instead, the cache object has been replaced with a lookup table of cache keys relating to the user. If a sub key is found, the larger, relevant data object is fetched from catch.
 * Improvement: Caching: More database lookups are now cached.
+* Improvement: Caching: Cache time has been increased from 15 minutes to 24 hours.
 * Improvement: Caching: Shortcodes now have additional caching.
 * Improvement: JS libraries are included for charts when needed.
 * Improvement: Target weight added to user search results.
