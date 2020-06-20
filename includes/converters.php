@@ -179,10 +179,10 @@ function ws_ls_convert_ISO_date_into_locale( $iso_date, $key = NULL ) {
 
 		$convert[ 'time' ]          = strtotime( $iso_date );
 		$convert[ 'chart-date' ]    = date_i18n('d M', $convert[ 'time' ] );
-		$convert[ 'uk' ]            = date('d/m/Y', $convert[ 'time' ] );
-		$convert[ 'us' ]            = date('m/d/Y', $convert[ 'time' ] );
-		$convert[ 'display-date' ]  = ( true === ws_ls_get_config('WE_LS_US_DATE', get_current_user_id() ) ) ? $convert[ 'us' ] : $convert[ 'uk' ];
-
+		// $convert[ 'uk' ]            = date('d/m/Y', $convert[ 'time' ] );
+		// $convert[ 'us' ]            = date('m/d/Y', $convert[ 'time' ] );
+		$format  = ( true === ws_ls_get_config('WE_LS_US_DATE', get_current_user_id() ) ) ? 'm/d/Y' : 'd/m/Y';
+		$convert[ 'display-date' ] = date( $format, $convert[ 'time' ] );
 	}
 
 	if ( NULL !== $key && false === empty( $convert[ $key ] ) ) {
