@@ -423,13 +423,12 @@ function ws_ls_emailer_replace_placeholders( $email, $placeholders ) {
 function ws_ls_emailer_placeholders( $placeholders = [] ) {
 
 	$default_placeholders = [
-		'name' => get_bloginfo('name'),
-		'url' => get_bloginfo('url'),
-		'admin_email'=> get_bloginfo('admin_email')
+								'name'          => get_bloginfo('name'),
+								'url'           => get_bloginfo('url'),
+								'admin_email'   => get_bloginfo('admin_email')
 	];
 
 	return array_merge( $placeholders, $default_placeholders );
-
 }
 
 /**
@@ -492,15 +491,15 @@ function ws_ls_emailer_send( $to, $subject, $message, $placeholders = [] ) {
 
 	if ( false === empty( $message ) ) {
 
-		$email_template = ws_ls_emailer_default_template();
+		$email_template     = ws_ls_emailer_default_template();
 
-		$email_template = ws_ls_emailer_replace_placeholders( $email_template, [ 'message' => $message ] );
+		$email_template     = ws_ls_emailer_replace_placeholders( $email_template, [ 'message' => $message ] );
 
-		$placeholders = ws_ls_emailer_placeholders( $placeholders );
+		$placeholders       = ws_ls_emailer_placeholders( $placeholders );
 
-		$message = ws_ls_emailer_replace_placeholders( $email_template, $placeholders );
+		$message            = ws_ls_emailer_replace_placeholders( $email_template, $placeholders );
 
-		$result = wp_mail( $to,  $subject,  $message, [ 'Content-Type: text/html; charset=UTF-8' ] );
+		$result             = wp_mail( $to,  $subject,  $message, [ 'Content-Type: text/html; charset=UTF-8' ] );
 
 		ws_ls_log_add('email-sent', sprintf('To: %s / Subject: %s', $to, $subject ) );
 
