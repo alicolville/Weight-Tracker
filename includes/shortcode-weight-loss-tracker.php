@@ -180,7 +180,7 @@
 
 			// Include target form?
 			if (WE_LS_ALLOW_TARGET_WEIGHTS && false == $shortcode_arguments['hide-first-target-form']) {
-				$html_output .= ws_ls_display_weight_form( true, 'ws-ls-target-form', $user_id );
+				$html_output .= ws_ls_form_weight( [ 'is-target-form' => true, 'css-class-form' => 'ws-ls-target-form', 'user-id' => $user_id ] ) . ' <br />';
 			}
 
 			// Display "Add Weight" anchor?
@@ -191,13 +191,7 @@
 			$entry_id = ws_ls_querystring_value('ws-edit-entry', true);
 
 			// Are we in front end and editing enabled, and of course we want to edit, then do so!
-			if( false === empty($entry_id)) {
-
-				if ($entry_id) {
-				//	$data = ws_ls_get_weight( $user_id, $entry_id);
-
-					$data = ws_ls_entry_get( [ 'user-id' => $user_id, 'id' => $entry_id ] );
-				}
+			if( false === empty( $entry_id ) ) {
 
 				//If we have a Redirect URL, base decode.
 				$redirect_url = ws_ls_querystring_value('redirect');
@@ -206,12 +200,16 @@
 					$redirect_url = base64_decode($redirect_url);
 				}
 
-				$html_output .= ws_ls_display_weight_form(false, false,	$user_id, false, false, false,
-					false, false, $redirect_url, $data, true, $shortcode_arguments['hide-photos']);
+				$html_output .= ws_ls_form_weight( [    'css-class-form'       => 'ws-ls-main-weight-form',
+				                                        'user-id'              => $user_id,
+				                                        'entry-id'             => $entry_id,
+				                                        'hide-fields-photos'   => ws_ls_to_bool( $shortcode_arguments['hide-photos'] ),
+														'redirect-url'         => $redirect_url
+				] );
+
 			} else {
 
-				// Display input form in add mode
-				$html_output .= ws_ls_display_weight_form(false, 'ws-ls-main-weight-form', $user_id, false, false, false, true, false, false, false, false, $shortcode_arguments['hide-photos']);
+				$html_output .= ws_ls_form_weight( [ 'css-class-form' => 'ws-ls-main-weight-form', 'user-id' => $user_id, 'hide-fields-photos' => ws_ls_to_bool( $shortcode_arguments['hide-photos'] ) ] );
 			}
 
 			// Close first tab
@@ -226,7 +224,7 @@
 			if ( $weight_data && ( count( $weight_data ) > 0 || $selected_week_number != -1 ) )	{
 
 					if ( WE_LS_ALLOW_TARGET_WEIGHTS && $use_tabs && false == $shortcode_arguments['hide-second-target-form'] ) {
-						$html_output .= ws_ls_display_weight_form( true, 'ws-ls-target-form', $user_id );
+						$html_output .= ws_ls_form_weight( [ 'is-target-form' => true, 'css-class-form' => 'ws-ls-target-form', 'user-id' => $user_id ] ) . ' <br />';
 					}
 
 					// Display week filters and data tab

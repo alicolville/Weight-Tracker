@@ -62,7 +62,7 @@ jQuery( document ).ready( function ( $ ) {
         $form_id = $(this).attr("id");
         $target_form = $(this).data("is-target-form");
         $weight_unit = $(this).data("metric-unit");
-
+console.log($form_id,$weight_unit);
         console.log("Adding form validation to: " + $form_id + ". Target form? " + $target_form + ". Weight Unit: " + $weight_unit);
 
         // Add form validation
@@ -75,9 +75,9 @@ jQuery( document ).ready( function ( $ ) {
             validClass: "ws-ls-valid",
             messages: {
                 "we-ls-date": ws_ls_config["validation-we-ls-date"],
-                "we-ls-weight-pounds": ws_ls_config["validation-we-ls-weight-pounds"],
-                "we-ls-weight-kg": ws_ls_config["validation-we-ls-weight-kg"],
-                "we-ls-weight-stones": ws_ls_config["validation-we-ls-weight-stones"]
+                "ws-ls-weight-pounds": ws_ls_config["validation-we-ls-weight-pounds"],
+                "ws-ls-weight-kg": ws_ls_config["validation-we-ls-weight-kg"],
+                "ws-ls-weight-stones": ws_ls_config["validation-we-ls-weight-stones"]
             },
             submitHandler: function(form) {
                 $( '.ws-ls-remove-on-submit' ).remove();
@@ -109,24 +109,24 @@ jQuery( document ).ready( function ( $ ) {
         // Set up numeric fields to validate
         if("pounds_only" == $weight_unit)
         {
-            $( "#" + $form_id + " #we-ls-weight-pounds").rules( "add", {
+            $( "#" + $form_id + " .ws-ls-weight-pounds").rules( "add", {
                 required: true,
                 number: true,
                 range: [0, 5000]
             });
         } else if("stones_pounds" == $weight_unit) {
-            $( "#" + $form_id + " #we-ls-weight-stones").rules( "add", {
+            $( "#" + $form_id + " .ws-ls-weight-stones").rules( "add", {
                 required: true,
                 number: true,
                 range: [0, 5000] // Stupid high in case not tracking human weight!
             });
-            $( "#" + $form_id + " #we-ls-weight-pounds").rules( "add", {
+            $( "#" + $form_id + " .ws-ls-weight-pounds").rules( "add", {
                 required: true,
                 number: true,
                 range: [0, 14]
             });
         } else {
-            $( "#" + $form_id + " #we-ls-weight-kg").rules( "add", {
+            $( "#" + $form_id + " .ws-ls-weight-kg").rules( "add", {
                 required: true,
                 number: true,
                 range: [0, 50000] // Stupid high in case not tracking human weight!

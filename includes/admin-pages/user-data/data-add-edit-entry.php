@@ -49,7 +49,13 @@ function ws_ls_admin_page_data_add_edit() {
 							<div class="inside">
 								<?php
 	                                if ( true === WS_LS_IS_PRO ) {
-		                                echo ws_ls_display_weight_form( false, false, $user_id, false, false, false, false, false, $redirect_url, $data );
+
+		                                echo ws_ls_form_weight( [    'user-id'              => $user_id,
+		                                                             'entry-id'             => $entry_id,
+		                                                             'redirect-url'         => $redirect_url,
+		                                                             'hide-login-message'   => true,
+		                                ] );
+
 	                                } else {
 	                                    echo sprintf( '<p>%s</p>', __('A Pro license is required to add / edit a weight entry.', WE_LS_SLUG) );
                                     }

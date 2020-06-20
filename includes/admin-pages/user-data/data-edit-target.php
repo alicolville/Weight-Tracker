@@ -38,7 +38,13 @@ function ws_ls_admin_page_data_edit_target() {
 							<div class="inside">
                                 <?php
                                     if ( true === WS_LS_IS_PRO ) {
-	                                    echo ws_ls_display_weight_form(true, false, $user_id, true, false, false, false, false, $redirect_url);
+
+	                                    echo ws_ls_form_weight( [    'user-id'              => $user_id,
+	                                                                 'is-target-form'       => true,
+	                                                                 'redirect-url'         => $redirect_url,
+	                                                                 'hide-login-message'   => true,
+	                                    ] );
+
                                     } else {
                                         echo sprintf( '<p>%s</p>', __('A Pro license is required to set a user\'s target weight.', WE_LS_SLUG) );
                                     }

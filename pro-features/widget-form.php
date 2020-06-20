@@ -45,8 +45,13 @@ class ws_ls_widget_form extends WP_Widget {
 			$exclude_measurements = (!empty($instance['exclude-measurements']) && 'yes' == $instance['exclude-measurements']) ? true : false;
             $exclude_meta_fields = ( true === empty($instance['exclude-meta-fields']) || 'yes' == $instance['exclude-meta-fields'] ) ? true : false;
 			$redirect_url = (!empty($instance['redirect-url'])) ? $instance['redirect-url']  : '';
-			echo ws_ls_display_weight_form(false, false, false, true, ws_ls_remove_non_numeric($args['widget_id']) + 10000,
-												$force_to_todays_date, true, $exclude_measurements, $redirect_url, false, false, false, $exclude_meta_fields);
+
+	        echo ws_ls_form_weight( [    'redirect-url'         => $redirect_url,
+	                                     'hide-login-message'   => true,
+		                                 'hide-fields-meta'     => $exclude_meta_fields,
+		                                 'option-force-today'   => $exclude_measurements
+	        ] );
+	        
             echo $args['after_widget'];
         } elseif (isset($instance['not-logged-in-message']) && !empty($instance['not-logged-in-message'])) {
             echo $args['before_widget'];

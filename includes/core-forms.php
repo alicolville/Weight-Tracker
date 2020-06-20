@@ -89,7 +89,6 @@ function ws_ls_form_weight( $arguments = [] ) {
 			                                  'placeholder' => $date,
 			                                  'title'       => __( 'Date', WE_LS_SLUG )
 			] );
-
 		}
 
 		// Target form?
@@ -118,7 +117,7 @@ function ws_ls_form_weight( $arguments = [] ) {
 	if ( true === in_array( $arguments[ 'data-unit' ], [ 'stones_pounds', 'pounds_only' ] ) ) {
 		$html .= ws_ls_form_field_number( [    'name'          => 'ws-ls-weight-pounds',
 		                                       'placeholder'   => __( 'Pounds', WE_LS_SLUG ),
-		                                       'max'           => '13.99',
+		                                       'max'           => ( 'stones_pounds' ===  $arguments[ 'data-unit' ] ) ? '13.99' : '5000',
 		                                       'value' => ( false === empty( $arguments[ 'entry' ][ 'pounds' ] ) ) ? $arguments[ 'entry' ][ 'pounds' ] : '' ] );
 	}
 
@@ -129,7 +128,8 @@ function ws_ls_form_weight( $arguments = [] ) {
 		                                        'value'         => ( false === empty( $arguments[ 'entry' ][ 'kg' ] ) ) ? $arguments[ 'entry' ][ 'kg' ] : '' ] );
 	}
 
-	if ( 'yes' === get_option( 'ws-ls-allow-user-notes', 'yes' ) ) {
+	if ( false === $arguments[ 'is-target-form' ] &&
+	        'yes' === get_option( 'ws-ls-allow-user-notes', 'yes' ) ) {
 
 		$html .= ws_ls_form_field_textarea( [   'name'          => 'we-ls-notes',
 		                                        'placeholder'   => __( 'Notes', WE_LS_SLUG ),
@@ -265,7 +265,7 @@ function ws_ls_form_field_date( $arguments = [] ) {
 			esc_attr( $arguments[ 'value' ] ),
 			esc_attr( $arguments[ 'placeholder' ] ),
 			$arguments[ 'size' ],
-			$arguments[ 'css-class' ]
+			$arguments[ 'name' ] . ' ' . $arguments[ 'css-class' ]
 	);
 
 	if ( false === empty( $arguments[ 'trailing-html' ] ) ) {
@@ -307,7 +307,7 @@ function ws_ls_form_field_textarea( $arguments = [] ) {
 		esc_attr( $arguments[ 'placeholder' ] ),
 		$arguments[ 'cols' ],
 		$arguments[ 'rows' ],
-		$arguments[ 'css-class' ],
+		$arguments[ 'name' ] . ' ' . $arguments[ 'css-class' ],
 		esc_textarea( $arguments[ 'value' ] )
 
 	);
@@ -349,14 +349,14 @@ function ws_ls_form_field_number( $arguments = [] ) {
 	}
 
 
-	$html .= sprintf( '<input type="number" name="%1$s" id="%1$s" step="%2$s" tabindex="%3$d" value="%4$s" placeholder="%5$s" size="%6$d" class="%7$s" min="%8$s" max="%9$s" />',
+	$html .= sprintf( '<input type="number" name="%1$s" step="%2$s" tabindex="%3$d" value="%4$s" placeholder="%5$s" size="%6$d" class="%7$s" min="%8$s" max="%9$s" />',
 		$arguments[ 'name' ],
 		$arguments[ 'step' ],
 		ws_ls_form_tab_index_next(),
 		esc_attr( $arguments[ 'value' ] ),
 		esc_attr( $arguments[ 'placeholder' ] ),
 		$arguments[ 'size' ],
-		$arguments[ 'css-class' ],
+		$arguments[ 'name' ] . ' ' . $arguments[ 'css-class' ],
 		$arguments[ 'min' ],
 		$arguments[ 'max' ]
 	);
