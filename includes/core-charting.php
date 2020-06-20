@@ -45,7 +45,6 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 	$chart_config[ 'line-thickness' ]   = 2;
 	$chart_config[ 'target-weight' ]    = false;
 	$chart_config[ 'show-target' ]      = ( WE_LS_ALLOW_TARGET_WEIGHTS && true === ws_ls_to_bool( $chart_config[ 'show-target' ] ) );
-	$chart_config[ 'min-datasets' ]     = ( true === $chart_config[ 'show-target' ] ) ? 2 : 1;
 
 	// Line graphs only for non-pro
 	if ( false === WS_LS_IS_PRO ) {
@@ -118,7 +117,10 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 		} else {
 			$chart_config[ 'show-target' ] = false;
 		}
+
 	}
+
+	$chart_config[ 'min-datasets' ] = ( true === $chart_config[ 'show-target' ] ) ? 2 : 1;
 
 	// ----------------------------------------------------------------------------
 	// Custom Fields - setup lines for each
