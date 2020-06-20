@@ -62,7 +62,9 @@ jQuery( document ).ready( function ( $ ) {
         $form_id = $(this).attr("id");
         $target_form = $(this).data("is-target-form");
         $weight_unit = $(this).data("metric-unit");
-console.log($form_id,$weight_unit);
+
+
+
         console.log("Adding form validation to: " + $form_id + ". Target form? " + $target_form + ". Weight Unit: " + $weight_unit);
 
         // Add form validation
@@ -110,26 +112,26 @@ console.log($form_id,$weight_unit);
         if("pounds_only" == $weight_unit)
         {
             $( "#" + $form_id + " .ws-ls-weight-pounds").rules( "add", {
-                required: true,
+                required: ! $target_form,
                 number: true,
                 range: [0, 5000]
             });
         } else if("stones_pounds" == $weight_unit) {
             $( "#" + $form_id + " .ws-ls-weight-stones").rules( "add", {
-                required: true,
+                required: ! $target_form,
                 number: true,
                 range: [0, 5000] // Stupid high in case not tracking human weight!
             });
             $( "#" + $form_id + " .ws-ls-weight-pounds").rules( "add", {
-                required: true,
+                required: ! $target_form,
                 number: true,
                 range: [0, 14]
             });
         } else {
             $( "#" + $form_id + " .ws-ls-weight-kg").rules( "add", {
-                required: true,
+                required: ! $target_form,
                 number: true,
-                range: [0, 50000] // Stupid high in case not tracking human weight!
+                range: [0, 5000] // Stupid high in case not tracking human weight!
             });
         }
     });

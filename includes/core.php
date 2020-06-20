@@ -106,8 +106,8 @@ function ws_ls_get_js_config() {
 
 	$message_for_pounds = ( ws_ls_get_config('WE_LS_IMPERIAL_WEIGHTS', $user_id )
 								&& 'stones_pounds' == ws_ls_get_config('WE_LS_DATA_UNITS', $user_id ) ) ?
-									__( 'Please enter a value between 0-13 for pounds', WE_LS_SLUG ) :
-										__( 'Please enter a valid figure for pounds', WE_LS_SLUG );
+									__( 'Please enter a value between 0-13.00 for pounds', WE_LS_SLUG ) :
+										__( 'Please enter a value between 1 and 5000 for pounds', WE_LS_SLUG );
 
 	$use_us_date = ws_ls_get_config('WE_LS_US_DATE');
 
@@ -117,8 +117,8 @@ function ws_ls_get_js_config() {
     	'clear-target' => __('Are you sure you wish to clear your target weight?', WE_LS_SLUG),
 		'validation-about-you-mandatory' => ( true === ws_ls_option_to_bool( 'ws-ls-about-you-mandatory', 'no', true ) ) ? 'true' : 'false',
 		'validation-we-ls-weight-pounds' => $message_for_pounds,
-		'validation-we-ls-weight-kg' => __('Please enter a valid figure for Kg', WE_LS_SLUG),
-		'validation-we-ls-weight-stones' => __('Please enter a valid figure for Stones', WE_LS_SLUG),
+		'validation-we-ls-weight-kg' => __('Please enter a value between 1 and 5000 for Kg', WE_LS_SLUG),
+		'validation-we-ls-weight-stones' => __('Please enter a value between 1 and 5000 for Stones', WE_LS_SLUG),
 		'validation-we-ls-date' => __('Please enter a valid date', WE_LS_SLUG),
 		'validation-we-ls-history' => __('Please confirm you wish to delete ALL your weight history', WE_LS_SLUG),
 		'validation-we-ls-photo' => __('Your photo must be less than ', WE_LS_SLUG) . ws_ls_photo_display_max_upload_size(),

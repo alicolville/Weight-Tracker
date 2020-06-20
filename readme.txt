@@ -164,7 +164,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 // re-write and cache weight_object function. Arguments should be an array
 // TODO: We changed the cache key for all user preferences. Ensure this is cleared properly
 // TODO: Explaoin Challenegs more in UI and doc site
-// compress ws-ls-entry-form.js
+// compress ws-ls-entry-form.js, admin-and-public.min.css
 // Fix Start Weight
        Latest Weight
        Diff. from Start in admin side bar
@@ -187,6 +187,8 @@ add_shortcode( 'wlt-dob', 'ws_ls_shortcode_dob' ); to add_shortcode( 'wt-dob', '
 add_shortcode( 'wlt-height', 'ws_ls_shortcode_height' ); to add_shortcode( 'wt-height', 'ws_ls_shortcode_height' );
 add_shortcode( 'wlt-new-users', 'ws_ls_shortcode_new_users' ); to add_shortcode( 'wt-new-users', 'ws_ls_shortcode_new_users' );
 wt-form replace "hide-measurements" with "hide-meta"
+[wlt] to [wt]
+
 
 * Improvement: Allow numeric custom fields to be plotted on charts.
 * Improvement: A user's target weight can now be displayed on bar graphs.
@@ -207,6 +209,9 @@ wt-form replace "hide-measurements" with "hide-meta"
 * Improvement: Global variables declared on each page load for feature lists have been removed.
 * Improvement: [wt-new-users] shortcode is now cached for 15 minutes.
 * Improvement: New setting: Notes can be disabled on user weight forms (via settings).
+* Improvement: Expanded error messages where required to be more descriptive.
+* Improvement: Improved some error handling messages.
+* Improvement: Targets can now be cleared by submitting the form with no weight specified.
 * Bug fix: "Who can view and modify user data?" has been fixed so user's with the specified minimum role can now access admin data pages.
 * Bug fix: Awards for a user are now deleted when "Delete all data for this user" has been clicked.
 * Bug fix: All challenge data for a user is now deleted when "Delete all data for this user" has been clicked.

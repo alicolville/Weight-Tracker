@@ -56,7 +56,7 @@
 
 		global $ws_already_enqueued;
 
-		if($ws_already_enqueued) {
+		if( $ws_already_enqueued ) {
 			return;
 		}
 
