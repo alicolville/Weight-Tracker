@@ -106,7 +106,7 @@ function ws_ls_get_js_config() {
 
 	$message_for_pounds = ( ws_ls_get_config('WE_LS_IMPERIAL_WEIGHTS', $user_id )
 								&& 'stones_pounds' == ws_ls_get_config('WE_LS_DATA_UNITS', $user_id ) ) ?
-									__( 'Please enter a value between 0-13.00 for pounds', WE_LS_SLUG ) :
+									__( 'Please enter a value between 0-13.99 for pounds', WE_LS_SLUG ) :
 										__( 'Please enter a value between 1 and 5000 for pounds', WE_LS_SLUG );
 
 	$use_us_date = ws_ls_get_config('WE_LS_US_DATE');
