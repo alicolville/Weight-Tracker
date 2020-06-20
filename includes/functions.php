@@ -461,41 +461,99 @@ function ws_ls_target_get( $user_id = NULL, $field = NULL ) {
  */
 function ws_ls_entry_get( $arguments = [] ) {
 
-	$arguments = wp_parse_args( $arguments, [ 'user-id' => get_current_user_id(), 'id' => NULL, 'meta' => true ] );
-
+	$arguments  = wp_parse_args( $arguments, [ 'user-id' => get_current_user_id(), 'id' => NULL, 'meta' => true ] );
 	$cache_key  = sprintf( 'entry-full-%d', $arguments[ 'id' ] );
+	$entry      = NULL;
 
 	if ( $cache = ws_ls_cache_user_get( $arguments[ 'user-id' ], $cache_key ) ) {
-		return $cache;
-	}
 
-	$entry = ws_ls_db_entry_get( $arguments );
+		$entry = $cache;
 
-	if ( true === empty( $entry ) ) {
-		return NULL;
-	}
+	} else {
 
-	$entry[ 'first_weight' ] = ws_ls_db_weight_start_get( $arguments[ 'user-id' ] );
+		$entry = ws_ls_db_entry_get( $arguments );
 
-	$entry[ 'difference_from_start_kg' ] = ( false === empty( $entry[ 'first_weight' ] ) && $entry[ 'first_weight' ] <> $entry[ 'kg' ] ) ?
-												$entry[ 'kg' ] - $entry[ 'first_weight' ] :
-													0;
-
-	if ( true === WS_LS_IS_PRO &&
-	        true === $arguments[ 'meta' ] &&
-	            true === ws_ls_meta_fields_is_enabled() ) {
-
-		$entry[ 'meta' ] = ws_ls_meta( $arguments[ 'id' ] );
-
-		// Pluck to meta_id => value
-		if ( false === empty( $entry[ 'meta'] ) ) {
-			$entry[ 'meta'] = wp_list_pluck( $entry[ 'meta'], 'value', 'meta_field_id' );
+		if ( true === empty( $entry ) ) {
+			return null;
 		}
+
+		$entry['first_weight'] = ws_ls_db_weight_start_get( $arguments['user-id'] );
+
+		$entry['difference_from_start_kg'] = ( false === empty( $entry['first_weight'] ) && $entry['first_weight'] <> $entry['kg'] ) ?
+			$entry['kg'] - $entry['first_weight'] :
+			0;
+
+		if ( true === WS_LS_IS_PRO &&
+		     true === $arguments['meta'] &&
+		     true === ws_ls_meta_fields_is_enabled() ) {
+
+			$entry['meta'] = ws_ls_meta( $arguments['id'] );
+
+			// Pluck to meta_id => value
+			if ( false === empty( $entry['meta'] ) ) {
+				$entry['meta'] = wp_list_pluck( $entry['meta'], 'value', 'meta_field_id' );
+			}
+		}
+
+		ws_ls_cache_user_set( $arguments['user-id'], $cache_key, $entry );
+
 	}
 
-	ws_ls_cache_user_set( $arguments[ 'user-id' ], $cache_key, $entry );
+	$entry = ws_ls_weight_prep( $entry );
 
 	return $entry;
+}
+
+/**
+ * Fetch Entries
+ * @param $arguments
+ *
+ * @return array|object|null
+ * @throws Exception
+ */
+function ws_ls_entries_get( $arguments ) {
+
+	$arguments = wp_parse_args( $arguments, [   'user-id'   => get_current_user_id(),
+	                                            'limit'     => ws_ls_option( 'ws-ls-max-points', '25', true ),
+	                                            'week'      => NULL,
+	                                            'sort'      => 'asc',
+	                                            'prep'      => false
+	] );
+
+	$entries = ws_ls_db_entries_get( $arguments );
+
+	if ( true === $arguments[ 'prep' ] &&
+	        false === empty( $entries ) ) {
+		$entries = array_map( 'ws_ls_weight_prep', $entries );
+	}
+
+	return $entries;
+}
+
+/**
+ * Prep a weight result if further detail needed
+ * @param $weight
+ *
+ * @return array
+ */
+function ws_ls_weight_prep( $weight ) {
+
+	if ( false === empty( $weight[ 'weight_date' ] ) ) {
+
+		// Add dates to weight entry
+		$dates  = ws_ls_convert_ISO_date_into_locale( $weight['weight_date'] );
+		$weight = array_merge( $weight, $dates );
+	}
+
+	if ( false === empty( $weight[ 'kg' ] ) ) {
+
+		// Add Weight display values
+		$display_values = ws_ls_weight_display( $weight[ 'kg' ] );
+		$weight = array_merge( $weight, $display_values );
+
+	}
+
+	return $weight;
 }
 
 /**

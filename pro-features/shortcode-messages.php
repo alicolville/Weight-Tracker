@@ -29,7 +29,7 @@ function ws_ls_shortcode_message($user_defined_arguments, $content = null) {
 
 	$checking_for_gains = ('gained' == $arguments['type']) ? true : false;
 
-	$weight_data = ws_ls_db_entries_get( [ 'limit' => $arguments['consecutive'] + 1, 'prep' => true, 'sort' => 'desc' ] );
+	$weight_data = ws_ls_entries_get( [ 'limit' => $arguments['consecutive'] + 1, 'prep' => true, 'sort' => 'desc' ] );
 
 	// Fetch the user's weight history
 	if( false === empty( $weight_data ) ) {

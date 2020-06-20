@@ -171,10 +171,6 @@ function ws_ls_db_entry_get( $arguments = [] ) {
 
 	$entry  = $wpdb->get_row( $sql, ARRAY_A );
 
-	if( true === $arguments[ 'prep' ] ) {
-		$entry = ws_ls_db_weight_prep( $entry );
-	}
-
 	ws_ls_cache_user_set( $arguments[ 'user-id' ], $cache_key, $entry );
 
 	return $entry;
@@ -265,6 +261,9 @@ function ws_ls_db_entry_for_date( $user_id, $date ) {
 
 /**
  * Fetch weight entries for user
+ *
+ * Don't call this function directly. Call: ws_ls_entries_get()
+ *
  * @param array $arguments
  *
  * @return array|object|null
@@ -275,8 +274,7 @@ function ws_ls_db_entries_get( $arguments = [] ) {
 	$arguments = wp_parse_args( $arguments, [   'user-id'   => get_current_user_id(),
 	                                            'limit'     => ws_ls_option( 'ws-ls-max-points', '25', true ),
 	                                            'week'      => NULL,
-	                                            'sort'      => 'asc',
-	                                            'prep'      => false
+	                                            'sort'      => 'asc'
 	] );
 
 	$cache_key = 'weights-' . md5( json_encode( $arguments ) );
@@ -306,10 +304,6 @@ function ws_ls_db_entries_get( $arguments = [] ) {
 	                       ' limit 0, %d', $arguments[ 'user-id' ],  $arguments[ 'limit' ] );
 
 	$results = $wpdb->get_results( $sql, ARRAY_A );
-
-	if ( true === ( $arguments[ 'prep' ] ) ) {
-		$results = array_map( 'ws_ls_db_weight_prep', $results );
-	}
 
 	ws_ls_cache_user_set( $arguments[ 'user-id'], $cache_key, $results );
 

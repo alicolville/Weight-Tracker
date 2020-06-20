@@ -87,7 +87,7 @@
 				$week_ranges = ws_ls_get_week_ranges();
 			}
 
-			$weight_data = ws_ls_db_entries_get( [ 'week' => $selected_week_number, 'prep' => true ] );
+			$weight_data = ws_ls_entries_get( [ 'week' => $selected_week_number, 'prep' => true ] );
 
 			// If enabled, render tab header
 			if ( $use_tabs )	{
