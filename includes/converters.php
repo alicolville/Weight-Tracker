@@ -164,24 +164,6 @@ function ws_ls_weight_display( $kg, $user_id = NULL, $key = false, $force_admin 
 		$weight;
 }
 
-
-function ws_ls_convert_date_to_iso($date, $user_id = false) {
-
-	if ( true === empty( $date ) ) {
-		return NULL;
-	}
-
-	if (ws_ls_get_config('WE_LS_US_DATE', $user_id)) {
-		list($month,$day,$year) = sscanf($date, "%d/%d/%d");
-		$date = "$year-$month-$day";
-	} else {
-		list($day,$month,$year) = sscanf($date, "%d/%d/%d");
-		$date = "$year-$month-$day";
-	}
-
-	return $date;
-}
-
 /**
  * Convert an ISO date into a date object
  * @param $iso_date
@@ -199,7 +181,7 @@ function ws_ls_convert_ISO_date_into_locale( $iso_date, $key = NULL ) {
 		$convert[ 'chart-date' ]    = date_i18n('d M', $convert[ 'time' ] );
 		$convert[ 'uk' ]            = date('d/m/Y', $convert[ 'time' ] );
 		$convert[ 'us' ]            = date('m/d/Y', $convert[ 'time' ] );
-		$convert[ 'display-date' ]       = ( true === ws_ls_get_config('WE_LS_US_DATE', get_current_user_id() ) ) ? $convert[ 'us' ] : $convert[ 'uk' ];
+		$convert[ 'display-date' ]  = ( true === ws_ls_get_config('WE_LS_US_DATE', get_current_user_id() ) ) ? $convert[ 'us' ] : $convert[ 'uk' ];
 
 	}
 
@@ -211,6 +193,31 @@ function ws_ls_convert_ISO_date_into_locale( $iso_date, $key = NULL ) {
 	}
 
 	return $convert;
+}
+
+/**
+ * DEPRECATED: REFACTOR: WITH ws_ls_convert_ISO_date_into_locale
+ *
+ * @param $date
+ * @param bool $user_id
+ *
+ * @return string|null
+ */
+function ws_ls_convert_date_to_iso($date, $user_id = false) {
+
+	if ( true === empty( $date ) ) {
+		return NULL;
+	}
+
+	if (ws_ls_get_config('WE_LS_US_DATE', $user_id)) {
+		list($month,$day,$year) = sscanf($date, "%d/%d/%d");
+		$date = "$year-$month-$day";
+	} else {
+		list($day,$month,$year) = sscanf($date, "%d/%d/%d");
+		$date = "$year-$month-$day";
+	}
+
+	return $date;
 }
 
 /**
