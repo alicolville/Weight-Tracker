@@ -4,12 +4,6 @@ defined('ABSPATH') or die("Jog on!");
 define( 'WE_LS_CACHE_ENABLED', 'yes' === get_option( 'ws-ls-caching', 'yes' ) );
 define( 'WE_LS_CACHE_TIME', DAY_IN_SECONDS );
 
-// TODO: Get rid of all these!
-define('WE_LS_CACHE_KEY_PHOTOS', 'photos-extreme-');
-define('WE_LS_CACHE_KEY_PHOTOS_ALL', 'photos-all-');
-define('WE_LS_CACHE_KEY_PHOTOS_COUNT', 'photos-count-');
-define('WE_LS_CACHE_KEY_MACRO', 'macro');
-
 /**
  * User caching. From now on, store an array for each user in cache. Each caache key can then be stored in an array element.
  * To remove all use cache, just need to delete the cache key.
@@ -189,74 +183,24 @@ function ws_ls_delete_cache_for_given_users( $user_ids ) {
 }
 
 /**
- *
- * REFACTOR! Should be a case to just call ws_ls_cache_user_delete()
- *
- * @param bool $user_id
- */
-function ws_ls_delete_cache_for_given_user($user_id = false)
-{
-  	global $wpdb;
-
-  	if ( true === WE_LS_CACHE_ENABLED ){
-
-		if (false == $user_id)  {
-		  $user_id = get_current_user_id();
-		}
-
-		if(false === is_numeric($user_id)) {
-			return;
-		}
-
-		$user_id = (int) $user_id;
-
-		$sql = "Delete FROM  $wpdb->options
-				WHERE option_name LIKE '%transient_" . WE_LS_SLUG . WE_LS_CURRENT_VERSION . $user_id ."%'";
-
-		$wpdb->query($sql);
-
-		$sql = "Delete FROM  $wpdb->options
-				WHERE option_name LIKE '%transient_timeout_" . WE_LS_SLUG . $user_id . WE_LS_CURRENT_VERSION . "%'";
-
-		$wpdb->query($sql);
-
-		$keys_to_clear = array(
-
-								$user_id . '-' . WE_LS_CACHE_KEY_MACRO,
-								$user_id . '-' . WE_LS_CACHE_KEY_PHOTOS . '-asc',
-								$user_id . '-' . WE_LS_CACHE_KEY_PHOTOS . '-desc'
-							);
-
-		foreach ($keys_to_clear as $key) {
-			ws_ls_delete_cache($key);
-		}
-
-		ws_ls_cache_user_delete( $user_id );
-
-  	}
-
-  	do_action( 'wlt-hook-delete-cache-for-user', $user_id );
-}
-
-/**
  * Delete all weight tracker cache
  */
-function ws_ls_delete_all_cache()
-{
-  global $wpdb;
+function ws_ls_delete_all_cache() {
 
-  if ( true === WE_LS_CACHE_ENABLED ){
+	if ( true === WE_LS_CACHE_ENABLED ) {
+		return;
+	}
 
-    $sql = "Delete FROM  $wpdb->options
-            WHERE option_name LIKE '%transient_" . WE_LS_SLUG ."%'";
+	global $wpdb;
+
+    $sql = "Delete FROM  $wpdb->options WHERE option_name LIKE '%transient_" . WE_LS_SLUG ."%'";
+
+    $wpdb->query($sql);
+
+    $sql = "Delete FROM  $wpdb->options WHERE option_name LIKE '%transient_timeout_" . WE_LS_SLUG ."%'";
 
     $wpdb->query($sql);
 
-    $sql = "Delete FROM  $wpdb->options
-            WHERE option_name LIKE '%transient_timeout_" . WE_LS_SLUG ."%'";
-
-    $wpdb->query($sql);
-  }
 }
 
 /**
@@ -266,7 +210,7 @@ function ws_ls_delete_all_cache()
  * @return string
  */
 function ws_ls_cache_generate_key( $key ){
-    return sprintf( 'wt-%s-%s', WE_LS_CURRENT_VERSION, $key );
+    return sprintf( '%s-%s-%s', WE_LS_SLUG, WE_LS_CURRENT_VERSION, $key );
 }
 
 /**

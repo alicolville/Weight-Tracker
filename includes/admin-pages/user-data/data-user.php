@@ -30,7 +30,7 @@ function ws_ls_admin_page_data_user() {
 <?php endif; ?>
 
 <?php if(!empty($_GET['deletecache'])) :
-        ws_ls_delete_cache_for_given_user($user_id);
+		ws_ls_cache_user_delete( $user_id );
     ?>
     <div class="notice notice-success"><p><?php echo __('The cache for this user has been deleted.', WE_LS_SLUG); ?></p></div>
 <?php endif; ?>

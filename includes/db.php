@@ -356,7 +356,7 @@ function ws_ls_db_entry_delete_all_for_user( $user_id ) {
 	$sql    = $wpdb->prepare('Delete from ' . $wpdb->prefix . WE_LS_TABLENAME . ' where weight_user_id = %d', $user_id );
 	$result = $wpdb->query($sql);
 
-	ws_ls_delete_cache_for_given_user( $user_id );
+	ws_ls_cache_user_delete( $user_id );
 
 	return $result;
 }
@@ -447,7 +447,7 @@ function ws_ls_db_entry_delete( $user_id, $row_id ) {
 
 	if ( false !== $result ) {
 
-		ws_ls_delete_cache_for_given_user( $user_id );
+		ws_ls_cache_user_delete( $user_id );
 
         // Inform others of deletion!
         do_action( 'wlt-hook-data-entry-deleted', [ 'id' => $row_id, 'user-id' => $user_id ] );
@@ -529,10 +529,10 @@ function ws_ls_set_user_preferences($in_admin_area, $fields = [])
                             $db_field_types
                           );
 
-    $result = ($result === false) ? false : true;
+    $result = ( $result === false ) ? false : true;
 
     // Tidy up cache
-    ws_ls_delete_cache_for_given_user($db_fields['user_id']);
+	ws_ls_cache_user_delete( $db_fields['user_id'] );
     return $result;
 }
 
@@ -575,7 +575,7 @@ function ws_ls_set_user_preference( $field, $value, $user_id = NULL ) {
     $result = ($result === false) ? false : true;
 
     // Tidy up cache
-    ws_ls_delete_cache_for_given_user( $db_fields['user_id'] );
+	ws_ls_cache_user_delete( $db_fields['user_id'] );
 
     return $result;
 }
@@ -620,7 +620,7 @@ function ws_ls_set_user_preference_simple( $field, $value, $user_id = NULL ) {
     $result = ($result === false) ? false : true;
 
     // Tidy up cache
-    ws_ls_delete_cache_for_given_user( $user_id );
+	ws_ls_cache_user_delete( $user_id );
 
     return $result;
 }

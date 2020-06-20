@@ -108,7 +108,7 @@ function ws_ls_challenges_delete_for_user( $user_id ) {
 		[ '%d' ]
 	);
 
-	ws_ls_delete_cache_for_given_user( $user_id );
+	ws_ls_cache_user_delete( $user_id );
 
 	return ! empty( $result );
 }

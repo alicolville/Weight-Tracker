@@ -167,7 +167,7 @@ function ws_ls_form_post_handler_weight( $user_id ) {
 	}
 
 	// Tidy up cache
-	ws_ls_delete_cache_for_given_user( $user_id );
+	ws_ls_cache_user_delete( $user_id );
 
 	// Update User stats table and throw notification hook
 	if ( true === WS_LS_IS_PRO ) {

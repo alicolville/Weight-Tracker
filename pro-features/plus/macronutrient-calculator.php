@@ -6,12 +6,9 @@ function ws_ls_macro_calculate($user_id = false) {
 
     $user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
 
-    // Data cached?
-    $cache_key = $user_id . '-' . WE_LS_CACHE_KEY_MACRO;
-
-    if ($cache = ws_ls_get_cache($cache_key)) {
-       return $cache;
-    }
+	if ( $cache = ws_ls_cache_user_get( $user_id, 'macros' ) ) {
+		return $cache;
+	}
 
     $calories = ws_ls_harris_benedict_calculate_calories( $user_id );
 
@@ -76,8 +73,7 @@ function ws_ls_macro_calculate($user_id = false) {
 
 	$macros = apply_filters( 'wlt-filter-macros', $macros, $calories );
 
-    // Cache it!
-    ws_ls_set_cache($cache_key, $macros);
+	ws_ls_cache_user_set( $user_id, 'macros', $macros );
 
     return $macros;
 }

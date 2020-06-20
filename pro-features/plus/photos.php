@@ -181,7 +181,7 @@ function ws_ls_photos_db_get_recent_or_latest( $user_id = false,
 	$width = ws_ls_force_numeric_argument($width, 200);
 	$height = ws_ls_force_numeric_argument($height, 200);
 
-	$cache_key = WE_LS_CACHE_KEY_PHOTOS . '-' . $direction . $width . $height;
+	$cache_key = sprintf( 'photos-extreme-%s-%s-%s',  $direction, $width, $height );
 
 	// Return cache if found!
 	if ($cache = ws_ls_cache_user_get($user_id, $cache_key))   {
@@ -327,7 +327,7 @@ function ws_ls_photos_db_get_all_photos(    $user_id = false,
 	$width = ws_ls_force_numeric_argument($width, 200);
 	$height = ws_ls_force_numeric_argument($height, 200);
 
-	$cache_key = WE_LS_CACHE_KEY_PHOTOS_ALL . '-' . $direction . $include_image_object . $limit . $width . $height;
+	$cache_key = 'photos-all-' . $direction . $include_image_object . $limit . $width . $height;
 
 	// Return cache if found!
 	if ($cache = ws_ls_cache_user_get($user_id, $cache_key))   {
@@ -400,10 +400,8 @@ function ws_ls_photos_db_count_photos( $user_id = false, $hide_from_shortcodes =
 
     global $wpdb;
 
-    $cache_key = WE_LS_CACHE_KEY_PHOTOS_COUNT;
-
     // Return cache if found!
-    if ($cache = ws_ls_cache_user_get($user_id, $cache_key))   {
+    if ( $cache = ws_ls_cache_user_get( $user_id, 'no-photos' ) )   {
     	return $cache;
     }
 
@@ -422,7 +420,7 @@ function ws_ls_photos_db_count_photos( $user_id = false, $hide_from_shortcodes =
 
     $count = ( false === empty($count) ) ? (int) $count : 0;
 
-    ws_ls_cache_user_set( $user_id, $cache_key, $count );
+    ws_ls_cache_user_set( $user_id, 'no-photos', $count );
     return $count;
 }
 
