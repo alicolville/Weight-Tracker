@@ -32,7 +32,7 @@ function ws_ls_advertise_pro() {
 
 					if ($valid_old_license || true === $valid_new_license) {
 						ws_ls_display_notice(__('Your license has been applied!', WE_LS_SLUG));
-						ws_ls_delete_all_cache();
+						ws_ls_cache_delete_all();
 					} else {
 						ws_ls_display_notice(__('An error occurred applying your license: ', WE_LS_SLUG) . $valid_new_license, 'error');
 					}

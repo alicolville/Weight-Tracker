@@ -163,7 +163,7 @@ function ws_ls_admin_config() {
  * Delete all cache in the event admin delete's all data.
  */
 function ws_ls_tidy_cache_on_delete(){
-	ws_ls_delete_all_cache();
+	ws_ls_cache_delete_all();
 }
 add_action( 'wlt-hook-data-all-deleted', 'ws_ls_tidy_cache_on_delete' );
 add_action( 'wlt-hook-data-user-deleted', 'ws_ls_tidy_cache_on_delete' );

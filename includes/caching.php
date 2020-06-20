@@ -185,7 +185,7 @@ function ws_ls_delete_cache_for_given_users( $user_ids ) {
 /**
  * Delete all weight tracker cache
  */
-function ws_ls_delete_all_cache() {
+function ws_ls_cache_delete_all() {
 
 	if ( true === WE_LS_CACHE_ENABLED ) {
 		return;

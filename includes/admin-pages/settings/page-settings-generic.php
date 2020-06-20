@@ -21,7 +21,7 @@ function ws_ls_settings_page_generic() {
 	}
 
 	if( $clear_cache ) {
-		ws_ls_delete_all_cache();
+		ws_ls_cache_delete_all();
 	}
 
 	?>
