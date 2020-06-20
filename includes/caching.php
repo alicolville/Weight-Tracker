@@ -14,7 +14,7 @@ define( 'WE_LS_CACHE_TIME', DAY_IN_SECONDS );
  */
 function ws_ls_cache_user_get( $user_id, $key ) {
 
-	$user_lookup_table = ws_ls_get_cache( $user_id );
+	$user_lookup_table = ws_ls_cache_get( $user_id );
 
 	if ( false === is_array( $user_lookup_table ) ) {
 		return NULL;
@@ -27,12 +27,12 @@ function ws_ls_cache_user_get( $user_id, $key ) {
 
 	// Take the cache key and dig further!
 	$data_key   = $user_lookup_table[ $key ];
-	$data_value = ws_ls_get_cache( $data_key );
+	$data_value = ws_ls_cache_get( $data_key );
 
 	// If no data is found at this key, presume the cache entry has expired, so remove from lookup.
 	if ( false === $data_value ) {
 		unset( $user_lookup_table[ $key ] );
-		ws_ls_set_cache( $user_id, $user_lookup_table, WE_LS_CACHE_TIME );
+		ws_ls_cache_set( $user_id, $user_lookup_table, WE_LS_CACHE_TIME );
 	}
 
 	return $data_value;
@@ -45,7 +45,7 @@ function ws_ls_cache_user_get( $user_id, $key ) {
  */
 function ws_ls_cache_user_get_all( $user_id ) {
 
-	$user_cache = ws_ls_get_cache( $user_id) ;
+	$user_cache = ws_ls_cache_get( $user_id) ;
 
 	return ( true === is_array( $user_cache ) ) ? $user_cache : NULL;
 }
@@ -59,7 +59,7 @@ function ws_ls_cache_user_get_all( $user_id ) {
  */
 function ws_ls_cache_user_set( $user_id, $key, $value, $time_to_expire = WE_LS_CACHE_TIME ) {
 
-	$user_cache = ws_ls_get_cache( $user_id );
+	$user_cache = ws_ls_cache_get( $user_id );
 
 	// Empty cache? Create array
 	if ( false === is_array( $user_cache ) ) {
@@ -81,10 +81,10 @@ function ws_ls_cache_user_set( $user_id, $key, $value, $time_to_expire = WE_LS_C
 	$user_cache[ $key ] = $cache_key;
 
 	// Store data
-	ws_ls_set_cache( $cache_key, $value, $time_to_expire );
+	ws_ls_cache_set( $cache_key, $value, $time_to_expire );
 
 	// Update lookup table
-	ws_ls_set_cache( $user_id, $user_cache, $time_to_expire );
+	ws_ls_cache_set( $user_id, $user_cache, $time_to_expire );
 }
 
 /**
@@ -129,7 +129,7 @@ function ws_ls_cache_user_delete( $user_id ) {
  * @param $key
  * @return bool|mixed
  */
-function ws_ls_get_cache( $key ) {
+function ws_ls_cache_get( $key ) {
 
     if( true === WE_LS_CACHE_ENABLED ) {
         $key = ws_ls_cache_generate_key( $key );
@@ -146,7 +146,7 @@ function ws_ls_get_cache( $key ) {
  * @param float|int $time_to_expire
  * @return bool
  */
-function ws_ls_set_cache( $key, $data, $time_to_expire = WE_LS_CACHE_TIME ) {
+function ws_ls_cache_set( $key, $data, $time_to_expire = WE_LS_CACHE_TIME ) {
 
     if( true === WE_LS_CACHE_ENABLED ) {
       $key = ws_ls_cache_generate_key( $key );

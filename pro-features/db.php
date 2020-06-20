@@ -174,7 +174,7 @@ function ws_ls_stats_league_table_fetch($ignore_cache = false, $limit = 10, $los
 	$cache_key = 'ws-ls-stats-table-' . md5($ignore_cache . $limit . $losers_only . $order);
 
 	// Return cache if found!
-    if (!$ignore_cache && $cache = ws_ls_get_cache($cache_key)) {
+    if (!$ignore_cache && $cache = ws_ls_cache_get($cache_key)) {
 
 		return $cache;
     }
@@ -212,7 +212,7 @@ function ws_ls_stats_league_table_fetch($ignore_cache = false, $limit = 10, $los
 	$results = $wpdb->get_results( $sql, ARRAY_A );
 
 	if(!empty($results)) {
-		ws_ls_set_cache($cache_key, $results, 5 * MINUTE_IN_SECONDS);
+		ws_ls_cache_set($cache_key, $results, 5 * MINUTE_IN_SECONDS);
 		return $results;
 	}
 

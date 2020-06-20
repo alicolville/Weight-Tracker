@@ -216,7 +216,7 @@ defined('ABSPATH') or die('Jog on!');
 	  //  print_R( ws_ls_cache_user_get( 1, 'entry-full-25794') );
 
 
-		var_dump( ws_ls_get_cache( 'wt-item-new-users-shortcode-new-users-12868a28616a123a8ad5578cc2151162' ) );
+		var_dump( ws_ls_cache_get( 'wt-item-new-users-shortcode-new-users-12868a28616a123a8ad5578cc2151162' ) );
 
 	  //  print_r( ws_ls_entry_get( [ 'user-id' => 1, 'id' => 25794 ] ) );
 
