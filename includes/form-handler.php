@@ -76,7 +76,7 @@ function ws_ls_form_post_handler_target( $user_id ) {
 	$kg = ws_ls_form_post_handler_extract_weight();
 
 	// If nothing specified, then delete existing target
-	if ( NULL === $kg ) {
+	if ( true === empty( $kg ) ) {
 		return ( false !== ws_ls_db_target_delete( $user_id ) );
 	}
 
