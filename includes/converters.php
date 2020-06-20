@@ -164,6 +164,24 @@ function ws_ls_weight_display( $kg, $user_id = NULL, $key = false, $force_admin 
 		$weight;
 }
 
+
+function ws_ls_convert_date_to_iso($date, $user_id = false) {
+
+	if ( true === empty( $date ) ) {
+		return NULL;
+	}
+
+	if (ws_ls_get_config('WE_LS_US_DATE', $user_id)) {
+		list($month,$day,$year) = sscanf($date, "%d/%d/%d");
+		$date = "$year-$month-$day";
+	} else {
+		list($day,$month,$year) = sscanf($date, "%d/%d/%d");
+		$date = "$year-$month-$day";
+	}
+
+	return $date;
+}
+
 /**
  * Convert an ISO date into a date object
  * @param $iso_date

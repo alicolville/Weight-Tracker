@@ -77,6 +77,7 @@ defined('ABSPATH') or die('Jog on!');
         'includes/converters.php',
         'includes/core.php',
 	    'includes/core-forms.php',
+	    'includes/core-tables.php',
 		'includes/core-charting.php',
         'includes/ajax.php',
         'includes/setup-wizard.php',
