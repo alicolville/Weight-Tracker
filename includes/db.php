@@ -274,7 +274,8 @@ function ws_ls_db_entries_get( $arguments = [] ) {
 	$arguments = wp_parse_args( $arguments, [   'user-id'   => get_current_user_id(),
 	                                            'limit'     => ws_ls_option( 'ws-ls-max-points', '25', true ),
 	                                            'week'      => NULL,
-	                                            'sort'      => 'asc'
+	                                            'sort'      => 'asc',
+												'start'     => 0
 	] );
 
 	$cache_key = 'weights-' . md5( json_encode( $arguments ) );
@@ -301,36 +302,13 @@ function ws_ls_db_entries_get( $arguments = [] ) {
 
 	$sql =  $wpdb->prepare('SELECT id, weight_date, weight_weight as kg, weight_notes as notes FROM ' . $wpdb->prefix . WE_LS_TABLENAME .
 	                       ' where weight_user_id = %d ' . $additional_sql. ' order by weight_date ' . $sort_order .
-	                       ' limit 0, %d', $arguments[ 'user-id' ],  $arguments[ 'limit' ] );
+	                       ' limit %d, %d', $arguments[ 'user-id' ],  $arguments[ 'start' ], $arguments[ 'limit' ] );
 
 	$results = $wpdb->get_results( $sql, ARRAY_A );
 
 	ws_ls_cache_user_set( $arguments[ 'user-id'], $cache_key, $results );
 
 	return $results;
-}
-
-/**
- * Prep a weight result if further detail needed
- * @param $weight
- *
- * @return array
- */
-function ws_ls_db_weight_prep( $weight ) {
-
-	if ( false === empty( $weight ) ) {
-
-		// Add dates to weight entry
-		$dates = ws_ls_convert_ISO_date_into_locale( $weight[ 'weight_date' ] );
-		$weight = array_merge( $weight, $dates );
-
-		// Add Weight display values
-		$display_values = ws_ls_weight_display( $weight[ 'kg' ] );
-		$weight = array_merge( $weight, $display_values );
-
-	}
-
-	return $weight;
 }
 
 /**

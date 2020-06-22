@@ -14,6 +14,10 @@ define( 'WE_LS_CACHE_TIME', DAY_IN_SECONDS );
  */
 function ws_ls_cache_user_get( $user_id, $key ) {
 
+	if ( true === empty( $user_id ) ) {
+		$user_id = -1;
+	}
+
 	$user_lookup_table = ws_ls_cache_get( $user_id );
 
 	if ( false === is_array( $user_lookup_table ) ) {
@@ -43,7 +47,11 @@ function ws_ls_cache_user_get( $user_id, $key ) {
  * @param $user_id
  * @return array|bool|mixed|null
  */
-function ws_ls_cache_user_get_all( $user_id ) {
+function ws_ls_cache_user_get_all( $user_id = NULL ) {
+
+	if ( true === empty( $user_id ) ) {
+		$user_id = -1;
+	}
 
 	$user_cache = ws_ls_cache_get( $user_id) ;
 
@@ -58,6 +66,10 @@ function ws_ls_cache_user_get_all( $user_id ) {
  * @param float|int $time_to_expire
  */
 function ws_ls_cache_user_set( $user_id, $key, $value, $time_to_expire = WE_LS_CACHE_TIME ) {
+
+	if ( true === empty( $user_id ) ) {
+		$user_id = -1;
+	}
 
 	$user_cache = ws_ls_cache_get( $user_id );
 
@@ -97,6 +109,10 @@ function ws_ls_cache_user_set( $user_id, $key, $value, $time_to_expire = WE_LS_C
  */
 function ws_ls_cache_user_set_and_return( $user_id, $key, $value ) {
 
+	if ( true === empty( $user_id ) ) {
+		$user_id = -1;
+	}
+
 	ws_ls_cache_user_set( $user_id, $key, $value );
 
 	return $value;
@@ -106,7 +122,11 @@ function ws_ls_cache_user_set_and_return( $user_id, $key, $value ) {
  * Fetch all keys associated with the user and delete
  * @param $user_id
  */
-function ws_ls_cache_user_delete( $user_id ) {
+function ws_ls_cache_user_delete( $user_id = NULL ) {
+
+	if ( true === empty( $user_id ) ) {
+		$user_id = -1;
+	}
 
 	$all_keys = ws_ls_cache_user_get_all( $user_id );
 

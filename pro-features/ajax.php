@@ -59,7 +59,8 @@ function ws_ls_get_table_data()
 
 	$data = array(
 					'columns' => ws_ls_data_table_get_columns( $small_width, $front_end ),
-					'rows' => ws_ls_data_table_get_rows( $user_id, $max_entries, $small_width, $front_end, $order_direction),
+					//'rows' => ws_ls_data_table_get_rows( $user_id, $max_entries, $small_width, $front_end, $order_direction),
+					'rows' => ws_ls_datatable_rows( [ 'user-id'  => $user_id, 'max-entries' => $max_entries, 'smaller-width' => $small_width, 'front-end' => $front_end, 'sort-order' => $order_direction ] ),
 					'table_id' => $table_id
 				);
 

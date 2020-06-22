@@ -10,7 +10,6 @@ function ws_ls_data_table_placeholder( $user_id = false, $max_entries = false,
 	ws_ls_data_table_enqueue_scripts();
 
 	$html = '';
-	$entry_id = ws_ls_querystring_value('ws-edit-entry', true);
 
 	// Saved data?
 	if (false === is_admin()) {
@@ -45,14 +44,29 @@ function ws_ls_data_table_get_rows($user_id = false, $max_entries = false,
                                     $smaller_width = false, $front_end = false,
                                     $order_direction = 'asc' ) {
 
+	$chart_config = wp_parse_args( $options, [
+		'bezier'                => ws_ls_option_to_bool( 'ws-ls-bezier-curve', 'yes', true ),
+		'height'                => 250,
+		'show-gridlines'        => ws_ls_option_to_bool( 'ws-ls-grid-lines', 'yes', true ),
+		'show-target'           => true,
+		'show-meta-fields'      => true,
+		'type'                  => get_option( 'ws-ls-chart-type', 'line' ),
+		'user-id'               => get_current_user_id(),
+		'weight-line-color'     => get_option( 'ws-ls-line-colour', '#aeaeae' ),
+		'bar-weight-fill-color' => get_option( 'ws-ls-line-fill-colour', '#f9f9f9' ),
+		'target-fill-color'     => get_option( 'ws-ls-target-colour', '#76bada' ),
+		'begin-y-axis-at-zero'  => ws_ls_option_to_bool( 'ws-ls-axes-start-at-zero', 'n' )
+	] );
+
 	// Fetch all columns that will be displayed in data table.
-	$columns = ws_ls_data_table_get_columns($smaller_width, $front_end);
+	$columns = ws_ls_data_table_get_columns( $smaller_width, $front_end );
 
 	// Build any filters
-	$filters = array();
-	if(is_numeric($max_entries)) {
+	$filters = [];
+
+	if( false === empty( $max_entries ) ) {
 		$filters['start'] = 0;
-		$filters['limit'] = $max_entries;
+		$filters['limit'] = (int) $max_entries;
 	}
 	if(is_numeric($user_id)) {
 		$filters['user-id'] = $user_id;
@@ -102,7 +116,7 @@ function ws_ls_data_table_get_rows($user_id = false, $max_entries = false,
                             $gain_class = 'same';
                         }
 
-                        $row['previous-weight-diff'] = $data['kg'] - $previous_user_weight[$data['user_id']];
+                        $row[ 'previous-weight-diff' ] = $data[ 'kg' ] - $previous_user_weight[ $data[ 'user_id' ] ];
 
                     } else {
                         $gain_loss = __('First entry', WE_LS_SLUG);
@@ -140,7 +154,7 @@ function ws_ls_data_table_get_rows($user_id = false, $max_entries = false,
 
                     if ( false === empty( $data['meta-fields'][ (int)$field_id ]['value'] ) ) {
 
-                        $field = $data['meta-fields'][ (int)$field_id ];
+                        $field = $data['meta-fields'][ (int) $field_id ];
 
                         $row[ $column_name ]['value'] = ws_ls_fields_display_field_value( $field['value'], $field['meta_field_id'] );
                         $row[ $column_name ]['value'] = ws_ls_blur_text( $row[ $column_name ]['value'] );
@@ -150,16 +164,177 @@ function ws_ls_data_table_get_rows($user_id = false, $max_entries = false,
                 }
 
             }
-            array_push($rows, $row);
+            array_push($rows, $row );
         }
     }
 
     // Reverse the array so most recent entries are shown first (as default)
-    $rows = array_reverse($rows);
+    $rows = array_reverse( $rows );
 
     return $rows;
 }
 
+/**
+ * Fetch the rows for the data table
+ * @param $arguments
+ *
+ * @return array|null
+ */
+function ws_ls_datatable_rows( $arguments ) {
+
+	$arguments = wp_parse_args( $arguments, [	 'user-id'          => NULL,
+	                                             'max-entries'      => NULL,
+	                                             'smaller-width'    => false,
+	                                             'front-end'        => false,
+	                                             'sort-order'       => 'asc'
+	] );
+
+	$cache_key  = ws_ls_cache_generate_key_from_array( 'footable', $arguments );
+	$rows       = NULL;
+
+	if ( $cache = ws_ls_cache_user_get( $arguments[ 'user-id' ], $cache_key ) ) {
+		$rows = $cache;
+	} else {
+
+		// Fetch all columns that will be displayed in data table.
+		$columns = ws_ls_data_table_get_columns( $arguments[ 'smaller-width' ], $arguments[ 'front-end' ] );
+
+		// Build any filters
+		$filters = [];
+
+		if( false === empty( $arguments[ 'max-entries' ] ) ) {
+			$filters['start'] = 0;
+			$filters['limit'] = (int) $arguments[ 'max-entries' ];
+		}
+
+		if( false === empty( $arguments[ 'user-id' ] ) ) {
+			$filters['user-id'] = (int) $arguments[ 'user-id' ];
+		}
+
+		$filters['sort-column'] = 'weight_date';
+		$filters['sort-order']  = $arguments[ 'sort-order' ];
+
+		// Fetch all relevant weight entries that we're interested in
+		$user_data = ws_ls_user_data( $filters );
+
+		// Loop through the data and expected columns and build a clean array of row data for HTML table.
+		$rows = [];
+
+		$previous_user_weight = [];
+
+		if ( false === empty( $user_data[ 'weight_data' ] ) ) {
+			foreach ( $user_data[ 'weight_data' ] as $data ) {
+
+				// Build a row up for given columns
+				$row = [];
+
+				foreach ( $columns as $column ) {
+
+					$column_name = $column[ 'name' ];
+
+					if('gainloss' == $column_name) {
+
+						// Compare to previous weight and determine if a gain / loss in weight
+						$gain_loss = '';
+						$gain_class = '';
+
+						if( false === empty( $previous_user_weight[ $data['user_id'] ] ) ) {
+
+							$row[ 'previous-weight'] = $previous_user_weight[ $data[ 'user_id' ] ];
+
+							if ( $data['kg'] > $previous_user_weight[ $data[ 'user_id' ] ] ) {
+								$gain_class = 'gain';
+							} elseif ( $data[ 'kg' ] < $previous_user_weight[ $data[ 'user_id' ] ] ) {
+								$gain_class = 'loss';
+							} elseif ( $data['kg'] == $previous_user_weight[ $data[ 'user_id' ] ] ) {
+								$gain_class = 'same';
+							}
+
+							$row[ 'previous-weight-diff' ] = $data['kg'] - $previous_user_weight[ $data[ 'user_id' ] ];
+
+						} else {
+							$gain_loss = __( 'First entry', WE_LS_SLUG );
+						}
+
+						$previous_user_weight[ $data[ 'user_id' ] ] = $data[ 'kg' ];
+
+						$row[ $column_name ][ 'value']              = $gain_loss;
+						$row[ $column_name ][ 'options']['classes'] = 'ws-ls-' . $gain_class .  ws_ls_blur();
+
+					} else if ( 'bmi' === $column_name ) {
+
+						$row[ $column_name ][ 'value' ]                 =  ws_ls_get_bmi_for_table(ws_ls_user_preferences_get( 'height',$data['user_id']), $data['kg'], __('No height', WE_LS_SLUG)) ;
+						$row[ $column_name ][ 'options' ][ 'classes' ]  = 'ws-ls-' . sanitize_key( $row[ $column_name ][ 'value' ] ) . ws_ls_blur();
+
+					} else if ( false === empty( $data[ $column_name ] ) ) {
+
+						switch ( $column_name ) {
+							case 'kg':
+								$row[ $column_name ][ 'options' ][ 'sortValue' ]    = $data['kg'];
+								$row[ $column_name ][ 'options' ][ 'classes' ]      = ws_ls_blur();
+								$row[ $column_name ][ 'value' ]                     = $data['kg'];
+								break;
+							case 'user_nicename':
+								$row[ $column_name ]['options']['sortValue']  = $data[ 'user_nicename' ];
+								$row[ $column_name ]['value']                 = sprintf('<a href="%s">%s</a>', ws_ls_get_link_to_user_profile( $data[ 'user_id' ] ), $data[ 'user_nicename' ] );
+								break;
+							default:
+								$row[ $column_name ] = esc_html( $data[ $column_name ] );
+								break;
+						}
+
+					} else if ( false !== strpos( $column_name , 'meta-' ) ) {
+
+						$field_id = str_replace( 'meta-', '', $column_name );
+
+						$row[ $column_name ] = [];
+
+						if ( false === empty( $data[ 'meta-fields' ][ (int) $field_id ][ 'value' ] ) ) {
+
+							$field = $data[ 'meta-fields' ][ (int) $field_id ] ;
+
+							$row[ $column_name ][ 'value' ]                 = ws_ls_fields_display_field_value( $field[ 'value' ], $field[ 'meta_field_id' ] );
+							$row[ $column_name ][ 'value' ]                 = ws_ls_blur_text( $row[ $column_name ][ 'value' ] );
+							$row[ $column_name ][ 'options' ][ 'classes' ]  = ws_ls_blur();
+						}
+
+					}
+
+				}
+				array_push( $rows, $row );
+			}
+		}
+
+		// Reverse the array so most recent entries are shown first (as default)
+		$rows = array_reverse( $rows );
+
+		ws_ls_cache_user_set( $arguments[ 'user-id' ], $cache_key, $rows );
+	}
+
+	// Localise the row for the user viewing
+	$rows = array_map( 'ws_ls_datatable_rows_localise', $rows );
+
+	return $rows;
+}
+
+/**
+ * Take a table row and localise for the person viewing it
+ * @param $row
+ *
+ * @return mixed
+ */
+function ws_ls_datatable_rows_localise( $row ) {
+
+	if ( false === empty( $row[ 'previous-weight-diff' ] ) ) {
+		$row[ 'gainloss' ][ 'value' ] = ws_ls_blur_text( ws_ls_weight_display( $row[ 'previous-weight-diff' ], NULL, 'display', false, true ) );
+	}
+
+	if ( false === empty( $row[ 'kg' ][ 'value' ] ) ) {
+		$row[ 'kg' ][ 'value' ] = ws_ls_blur_text( ws_ls_weight_display( $row[ 'kg' ][ 'value' ], NULL, 'display' ) );
+	}
+
+	return $row;
+}
 
 /**
  * Depending on settings, return relevant columns for data table
