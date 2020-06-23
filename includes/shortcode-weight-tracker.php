@@ -234,7 +234,7 @@
 
 					// Display week filters and data tab
 					$html_output .= ws_ls_title( __('Weight History', WE_LS_SLUG ) );
-					if( count($week_ranges) <= WE_LS_TABLE_MAX_WEEK_FILTERS ) {
+					if( count($week_ranges) <= 150 ) {
 						$html_output .= ws_ls_display_week_filters( $week_ranges, $selected_week_number );
 					}
 
@@ -246,7 +246,7 @@
 			}
             elseif ($use_tabs && $selected_week_number != -1) {
 				$html_output .= __('There is no data for this week, please try selecting another:', WE_LS_SLUG);
-                if(count($week_ranges) <= WE_LS_TABLE_MAX_WEEK_FILTERS) {
+                if(count($week_ranges) <= 150) {
                     $html_output .= ws_ls_display_week_filters($week_ranges, $selected_week_number);
                 }
 			}
