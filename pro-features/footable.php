@@ -1,44 +1,6 @@
 <?php
 
-	defined('ABSPATH') or die('Jog on!');
-
-
-function ws_ls_data_table_placeholder( $user_id = false, $max_entries = false,
-                                        $smaller_width = false, $enable_add_edit = true,
-                                            $order_direction = 'asc' ) {
-
-	ws_ls_data_table_enqueue_scripts();
-
-	$html = '';
-
-	// Saved data?
-	if (false === is_admin()) {
-		$html = ws_ls_display_data_saved_message();
-	}
-
-	$html .= sprintf('<table class="ws-ls-user-data-ajax table ws-ls-loading-table" id="%s"
-									data-paging="true"
-									data-filtering="true"
-									data-sorting="true"
-									data-editing="%s"
-									data-cascade="true"
-									data-toggle="true"
-									data-use-parent-width="true"
-									data-user-id="%s",
-									data-max-entries="%s"
-									data-small-width="%s"
-									data-order-direction="%s">
-		</table>',
-		uniqid('ws-ls-'),
-		true === $enable_add_edit ? 'true' : 'false',
-		is_numeric($user_id) ? $user_id : 'false',
-		is_numeric($max_entries) ? $max_entries : 'false',
-		$smaller_width ? 'true' : 'false',
-        $order_direction
-	);
-
-	return $html;
-}
+defined('ABSPATH') or die('Jog on!');
 
 /**
  * Render HTML for user entry table
@@ -53,7 +15,8 @@ function ws_ls_data_table_render( $arguments = [] ) {
 	                                            'limit'                 => NULL,
 	                                            'smaller-width'         => false,
 	                                            'enable-add-edit'       => true,
-												'enable-meta-fields'    => false
+												'enable-meta-fields'    => ( true === ws_ls_meta_fields_is_enabled() &&
+												                                ws_ls_meta_fields_number_of_enabled() > 0 )
 	] );
 
 	ws_ls_data_table_enqueue_scripts();

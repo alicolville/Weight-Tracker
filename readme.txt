@@ -190,7 +190,7 @@ add_shortcode( 'wlt-new-users', 'ws_ls_shortcode_new_users' ); to add_shortcode(
 wt-form replace "hide-measurements" with "hide-meta"
 [wlt] to [wt]
 [wlt-form] to [wt-form] /  [wt-form] new argument "hide-notes" to hide notes field.
-
+add_shortcode( 'wlt-table', 'ws_ls_shortcode_table' ); to add_shortcode( 'wt-table', 'ws_ls_shortcode_table' );  / Added argument: 'enable-meta-fields'
 
 * Improvement: Allow numeric custom fields to be plotted on charts.
 * Improvement: A user's target weight can now be displayed on bar graphs.
