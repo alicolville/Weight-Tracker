@@ -164,7 +164,8 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 // re-write and cache weight_object function. Arguments should be an array
 // TODO: We changed the cache key for all user preferences. Ensure this is cleared properly
 // TODO: Explaoin Challenegs more in UI and doc site
-// compress ws-ls-entry-form.js, admin-and-public.min.css
+// compress ws-ls-entry-form.js, admin-and-public.min.css, data-footable.js
+/ /when form loading, stone / pounds, if punds is 0 it loads as blank
 // Fix Start Weight
        Latest Weight
        Diff. from Start in admin side bar
@@ -216,6 +217,9 @@ wt-form replace "hide-measurements" with "hide-meta"
 * Improvement: Expanded error messages where required to be more descriptive.
 * Improvement: Improved some error handling messages.
 * Improvement: Targets can now be cleared by submitting the form with no weight specified.
+* Improvement: User entry tables: MySQL queries and data processing are now cached.
+* Improvement: User entry tables: Option to exclude meta field data when viewing all user entries (big speed improvement)
+* Improvement: User entry tables: Usernames now open the user's record in a new tab.
 * Bug fix: "Who can view and modify user data?" has been fixed so user's with the specified minimum role can now access admin data pages.
 * Bug fix: Awards for a user are now deleted when "Delete all data for this user" has been clicked.
 * Bug fix: All challenge data for a user is now deleted when "Delete all data for this user" has been clicked.
@@ -227,6 +231,7 @@ wt-form replace "hide-measurements" with "hide-meta"
 * Bug fix: Meta fields cache no longer cleared on weight entry insert / save.
 * Bug fix: Delete all cache if admin delete's all data.
 * Bug fix: BMR now cached on a user by user basis correctly.
+* Bug fix: User data tables, difference in weight field now displays correct difference.
 
 = 7.6.2 =
 

@@ -111,13 +111,23 @@ function ws_ls_get_link_to_user_data() {
  */
 function ws_ls_get_link_to_user_profile( $user_id, $display_text = NULL ) {
 
+	$cache_key = 'profile-url-' .sanitize_title( $display_text );
+
+	if ( $cache = ws_ls_cache_user_get( $user_id, $cache_key ) ) {
+		return $cache;
+	}
+
 	$profile_url = admin_url( 'admin.php?page=ws-ls-data-home&mode=user&user-id=' . (int) $user_id );
 
 	$profile_url = esc_url( $profile_url );
 
-	return ( NULL !== $display_text ) ?
+	$profile_url = ( NULL !== $display_text ) ?
 			ws_ls_render_link( $profile_url, $display_text ) :
 			$profile_url;
+
+	ws_ls_cache_user_set( $user_id, $cache_key, $profile_url );
+
+	return $profile_url;
 }
 
 /**

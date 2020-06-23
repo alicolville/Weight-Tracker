@@ -13,8 +13,6 @@ function ws_ls_meta( $entry_id ) {
 
 	global $wpdb;
 
-    $cache_key = 'entry-id-data-' . $entry_id;
-
 	$sql = $wpdb->prepare( 'Select * from ' . $wpdb->prefix . WE_LS_MYSQL_META_ENTRY . ' where entry_id = %d', $entry_id );
 
 	$data = $wpdb->get_results( $sql, ARRAY_A );

@@ -28,8 +28,8 @@ defined('ABSPATH') or die('Jog on!');
 */
 
     define('WS_LS_ABSPATH', plugin_dir_path( __FILE__ ));
-    define('WE_LS_CURRENT_VERSION', '7.7-bet13');
-    define('WE_LS_DB_VERSION', '7.7-beta3');
+    define('WE_LS_CURRENT_VERSION', '7.7-beta4');
+    define('WE_LS_DB_VERSION', '7.7-beta4');
 
 // -----------------------------------------------------------------------------------------
 // AC: Activate / Deactivate / Uninstall Hooks
@@ -194,7 +194,10 @@ defined('ABSPATH') or die('Jog on!');
     		return;
 	    }
 
-    	$user_id = 595; // get_current_user_id();
+    	print_r( ws_ls_datatable_rows([ 'limit' => 500]) );
+    	die;
+
+    	$user_id = 1; // get_current_user_id();
 
     	echo 'ID: ' . $user_id . '<br />';
 	//    $t = ws_ls_user_preferences_get( 'gender', $user_id );

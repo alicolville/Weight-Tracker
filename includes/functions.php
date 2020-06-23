@@ -1416,11 +1416,19 @@ function ws_ls_user_display_name( $user_id ) {
         return '-';
     }
 
-    $name = sprintf( '%s %s', get_user_meta( $user_id, 'first_name' , true ), get_user_meta( $user_id, 'last_name' , true ) );
+	if ( $cache = ws_ls_cache_user_get( $user_id, 'display-name' ) ) {
+		return $cache;
+	}
 
-    return ( true === empty( $name ) || ' ' === $name ) ?
-        get_user_meta( $user_id, 'nickname' , true ) :
-        $name;
+    $name           = sprintf( '%s %s', get_user_meta( $user_id, 'first_name' , true ), get_user_meta( $user_id, 'last_name' , true ) );
+
+    $display_name   = ( true === empty( $name ) || ' ' === $name ) ?
+                            get_user_meta( $user_id, 'nickname' , true ) :
+                                $name;
+
+	ws_ls_cache_user_set( $user_id, 'display-name', $display_name );
+
+	return $display_name;
 }
 
 /**

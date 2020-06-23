@@ -32,7 +32,7 @@ jQuery( document ).ready(function ($, undefined) {
         var user_id = $(this).data("user-id");
         var max_entries = $(this).data("max-entries");
         var small_width = $(this).data("small-width");
-        var order_direction = $(this).data("order-direction");
+        var enable_meta_fields = $(this).data("enable-meta-fields");
 
         ws_ls_log('Setting up user data table: ' + table_id);
 
@@ -44,7 +44,7 @@ jQuery( document ).ready(function ($, undefined) {
         data['small_width'] = small_width;
         data['table_id'] = table_id;
         data['front-end'] = ws_ls_in_front_end();
-        data['order-direction'] = order_direction;
+        data['enable-meta-fields'] = enable_meta_fields;
         ws_ls_post_data_to_WP('table_data', data, ws_ls_callback_setup_table)
 
     });

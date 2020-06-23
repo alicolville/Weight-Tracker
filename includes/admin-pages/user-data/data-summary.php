@@ -91,28 +91,38 @@ function ws_ls_admin_page_data_summary() {
 						<?php
 
 							// Show 100 most recent entries? Or show 500?
-							if(false === empty($_GET['show-all'])) {
-								$value = ('y' === $_GET['show-all']) ? true : false;
-								update_option('ws-ls-show-all', $value);
+							if( false === empty( $_GET['show-all'] ) ) {
+								$value = ( 'y' === $_GET['show-all'] ) ? true : false;
+								update_option('ws-ls-show-all', $value );
 							}
 
-							$show_all = get_option('ws-ls-show-all') ? true : false;
+							// Show meta data?
+							if( false === empty( $_GET['show-meta'] ) ) {
+								$value = ( 'y' === $_GET['show-meta'] ) ? true : false;
+								update_option('ws-ls-show-meta', $value );
+							}
 
+							$show_all   = get_option( 'ws-ls-show-all' ) ? true : false;
+							$show_meta  = get_option( 'ws-ls-show-meta' ) ? true : false;
 						?>
 						<h2 class="hndle"><span><?php echo ($show_all) ? __('Last 500 entries', WE_LS_SLUG) : __('Last 100 entries', WE_LS_SLUG); ?></span></h2>
 						<div class="inside">
-							<?php echo ws_ls_data_table_placeholder(    false,
-                                                                        ( $show_all ) ? 500 : 100,
-                                                                        true,
-                                                                        true,
-                                                                        'desc'
-                                );
+							<?php
+
+								echo ws_ls_data_table_render( [ 'limit' => ( $show_all ) ? 500 : 100, 'smaller-width' => true, 'enable-meta-fields' => $show_meta ] );
+
+
 								echo sprintf(
 												'<a class="btn button-secondary" href="%s"><i class="fa fa-book"></i> %s</a>',
-												admin_url( 'admin.php?page=ws-ls-data-home&show-all=') . ((false === $show_all) ? 'y' : 'n'),
-												(false === $show_all) ? __('Show 500 recent entries', WE_LS_SLUG) : __('Show 100 recent entries', WE_LS_SLUG)
+												admin_url( 'admin.php?page=ws-ls-data-home&show-all=' ) . ( ( false === $show_all ) ? 'y' : 'n'),
+												( false === $show_all ) ? __( 'Show 500 recent entries', WE_LS_SLUG ) : __( 'Show 100 recent entries', WE_LS_SLUG )
 											);
 
+								echo sprintf(
+									'&nbsp;<a class="btn button-secondary" href="%s"><i class="fas fa-book-reader"></i> %s</a>',
+									admin_url( 'admin.php?page=ws-ls-data-home&show-meta=' ) . ( ( false === $show_meta ) ? 'y' : 'n'),
+									( false === $show_meta ) ? __( 'Include Custom Fields (Slower)', WE_LS_SLUG ) : __( 'Hide Custom Fields (Quicker)', WE_LS_SLUG )
+								);
 						 	?>
 						</div>
 					</div>

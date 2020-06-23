@@ -274,7 +274,7 @@ function ws_ls_db_entries_get( $arguments = [] ) {
 	$arguments = wp_parse_args( $arguments, [   'user-id'   => get_current_user_id(),
 	                                            'limit'     => ws_ls_option( 'ws-ls-max-points', '25', true ),
 	                                            'week'      => NULL,
-	                                            'sort'      => 'asc',
+	                                            'sort'      => 'desc',
 												'start'     => 0
 	] );
 
@@ -294,15 +294,23 @@ function ws_ls_db_entries_get( $arguments = [] ) {
 		$week_ranges = ws_ls_get_week_ranges();
 
 		if( false === empty( $week_ranges[ $week_number ] ) ) {
-			$additional_sql =  $wpdb->prepare('and ( weight_date BETWEEN %s AND %s )', $week_ranges[ $week_number ][ 'start' ], $week_ranges[ $week_number ][ 'end' ] );
+			$additional_sql = $wpdb->prepare( ' and ( weight_date BETWEEN %s AND %s )', $week_ranges[ $week_number ][ 'start' ], $week_ranges[ $week_number ][ 'end' ] );
 		}
+	}
+
+	// User ID specified? IF empty or set to 0 then don't add into where clause
+	if ( false === empty( $arguments[ 'user-id' ] ) ) {
+		$additional_sql .= $wpdb->prepare( ' and weight_user_id = %d', $arguments[ 'user-id' ] );
 	}
 
 	$sort_order = ( true === in_array( $arguments[ 'sort' ], ws_ls_db_lookup_sort_orders() ) ) ? $arguments[ 'sort' ] : 'asc';
 
-	$sql =  $wpdb->prepare('SELECT id, weight_date, weight_weight as kg, weight_notes as notes FROM ' . $wpdb->prefix . WE_LS_TABLENAME .
-	                       ' where weight_user_id = %d ' . $additional_sql. ' order by weight_date ' . $sort_order .
-	                       ' limit %d, %d', $arguments[ 'user-id' ],  $arguments[ 'start' ], $arguments[ 'limit' ] );
+	$sql =  'SELECT id, weight_date, weight_weight as kg, weight_notes as notes, weight_user_id as user_id FROM ' . $wpdb->prefix . WE_LS_TABLENAME .
+	                       ' where 1 = 1' . $additional_sql. ' order by weight_date ' . $sort_order;
+
+	if ( false === empty( $arguments[ 'limit'] ) ) {
+		$sql .=  $wpdb->prepare( ' limit %d, %d', $arguments[ 'start' ], $arguments[ 'limit' ] );
+	}
 
 	$results = $wpdb->get_results( $sql, ARRAY_A );
 
