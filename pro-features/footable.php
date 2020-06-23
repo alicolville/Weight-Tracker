@@ -47,7 +47,7 @@ function ws_ls_data_table_placeholder( $user_id = false, $max_entries = false,
  *
  * @return string
  */
-function ws_ls_data_table_render( $arguments ) {
+function ws_ls_data_table_render( $arguments = [] ) {
 
 	$arguments = wp_parse_args( $arguments, [   'user-id'               => NULL,
 	                                            'limit'                 => NULL,
@@ -86,6 +86,10 @@ function ws_ls_data_table_render( $arguments ) {
 		true === $arguments[ 'enable-meta-fields' ] ? 'true' : 'false'
 	);
 
+	if ( true === empty( $arguments[ 'user-id' ] ) ) {
+		$html .= sprintf( '<p><small>%s</small></p>', __( 'Please note: For performance reasons, this table will only update every 5 minutes.', WE_LS_SLUG ) );
+	}
+
 	return $html;
 }
 
@@ -105,7 +109,7 @@ function ws_ls_datatable_rows( $arguments ) {
 												 'enable-meta'      => true
 	] );
 
-	$cache_key  = ws_ls_cache_generate_key_from_array( 'footable', $arguments ) . mt_rand(); //TODO: Remove mt_rand
+	$cache_key  = ws_ls_cache_generate_key_from_array( 'footable', $arguments );
 	$rows       = NULL;
 
 	if ( $cache = ws_ls_cache_user_get( $arguments[ 'user-id' ], $cache_key ) ) {
@@ -118,7 +122,8 @@ function ws_ls_datatable_rows( $arguments ) {
 		$user_name              = NULL;
 		$user_profile_link      = '';
 
-		if ( false === empty( $arguments[ 'user-id' ] ) ) {
+		if ( false === $arguments[ 'front-end' ] &&
+		        false === empty( $arguments[ 'user-id' ] ) ) {
 			$user_name          = ws_ls_user_display_name( $arguments[ 'user-id' ] ) ;
 			$user_profile_link  = sprintf('<a href="%s" rel="noopener noreferrer" target="_blank">%s</a>', ws_ls_get_link_to_user_profile( $arguments[ 'user-id' ] ), $user_name );
 		}
@@ -130,15 +135,21 @@ function ws_ls_datatable_rows( $arguments ) {
 			// Build a row up for given columns
 			$row = [ 'date' => $entry[ 'weight_date' ], 'db_row_id' => $entry[ 'id' ], 'user_id' => $entry[ 'user_id' ] ];
 
-			if ( null === $user_name ) {
-				$entry[ 'user_name' ]    = ws_ls_user_display_name( $entry[ 'user_id' ] );
-				$entry[ 'user_profile' ] = sprintf('<a href="%s" rel="noopener noreferrer" target="_blank">%s</a>', ws_ls_get_link_to_user_profile( $entry[ 'user_id' ] ), $entry[ 'user_name' ] );
-			} else {
-				$entry[ 'user_name' ]    = $user_name;
-				$entry[ 'user_profile' ] = $user_profile_link;
-			}
+			if ( false === $arguments[ 'front-end' ] ) {
 
-			$row[ 'user_nicename' ] = [ 'options' => [ 'sortValue' => $entry[ 'user_name' ] ], 'value' => $entry[ 'user_profile' ]];
+				if ( null === $user_name ) {
+					$entry['user_name']    = ws_ls_user_display_name( $entry['user_id'] );
+					$entry['user_profile'] = sprintf( '<a href="%s" rel="noopener noreferrer" target="_blank">%s</a>', ws_ls_get_link_to_user_profile( $entry['user_id'] ), $entry['user_name'] );
+				} else {
+					$entry['user_name']    = $user_name;
+					$entry['user_profile'] = $user_profile_link;
+				}
+
+				$row['user_nicename'] = [
+					'options' => [ 'sortValue' => $entry['user_name'] ],
+					'value'   => $entry['user_profile']
+				];
+			}
 
 			// Compare to previous weight and determine if a gain / loss in weight
 			$gain_loss = '';
@@ -244,7 +255,7 @@ function ws_ls_datatable_columns( $smaller_width = false, $front_end = false, $e
 	];
 
 	// If not front end, add nice nice name
-	if ( false == $front_end ) {
+	if ( false === $front_end ) {
 		$columns[] = [ 'name' => 'user_nicename', 'title' => __( 'User', WE_LS_SLUG ), 'breakpoints'=> '', 'type' => 'text' ];
 	} else {
 		// If in the front end, switch to smaller width (hide meta fields etc)
@@ -299,39 +310,51 @@ function ws_ls_data_table_enqueue_scripts() {
  * @return array of settings
  */
 function ws_ls_data_js_config() {
-	$config = array(
-					'security' => wp_create_nonce('ws-ls-user-tables'),
-					'base-url' => ws_ls_get_link_to_user_data(),
-					'base-url-meta-fields' => ws_ls_meta_fields_base_url(),
-					'base-url-awards' => ws_ls_awards_base_url(),
-					'label-add' =>  __('Add', WE_LS_SLUG),
-                    'label-meta-fields-add-button' =>  __('Add Custom Field', WE_LS_SLUG),
-					'label-awards-add-button' =>  __('Add Award', WE_LS_SLUG),
-					'label-confirm-delete' =>  __('Are you sure you want to delete the row?', WE_LS_SLUG),
-					'label-error-delete' =>  __('Unfortunately there was an error deleting the row.', WE_LS_SLUG),
-                    'locale-search-text' =>  __('Search', WE_LS_SLUG),
-					'locale-no-results' =>  __('No data found', WE_LS_SLUG)
-				);
+	$config =   [
+					'security'                      => wp_create_nonce( 'ws-ls-user-tables' ),
+					'base-url'                      => ws_ls_get_link_to_user_data(),
+					'base-url-meta-fields'          => ws_ls_meta_fields_base_url(),
+					'base-url-awards'               => ws_ls_awards_base_url(),
+					'label-add'                     =>  __( 'Add' , WE_LS_SLUG ),
+                    'label-meta-fields-add-button'  =>  __( 'Add Custom Field', WE_LS_SLUG ),
+					'label-awards-add-button'       =>  __( 'Add Award', WE_LS_SLUG ),
+					'label-confirm-delete'          =>  __( 'Are you sure you want to delete the row?', WE_LS_SLUG ),
+					'label-error-delete'            =>  __( 'Unfortunately there was an error deleting the row.', WE_LS_SLUG ),
+                    'locale-search-text'            =>  __( 'Search', WE_LS_SLUG ),
+					'locale-no-results'             =>  __( 'No data found', WE_LS_SLUG )
+				];
 	// Add some extra config settings if not in admin
     if ( false === is_admin() ) {
-        $config['front-end'] = 'true';
-        $config['ajax-url'] = admin_url('admin-ajax.php');
 
-        $edit_link = ws_ls_get_url();
+    	$config[ 'front-end' ]              = 'true';
+        $config[ 'ajax-url' ]               = admin_url('admin-ajax.php');
+        $edit_link                          = ws_ls_get_url();
 
         // Strip old edit and cancel QS values
-		$edit_link = remove_query_arg( ['ws-edit-entry', 'ws-edit-cancel', 'ws-edit-saved'], $edit_link );
+		$edit_link                      = remove_query_arg( ['ws-edit-entry', 'ws-edit-cancel', 'ws-edit-saved'], $edit_link );
 
-		$config['edit-url'] = esc_url( add_query_arg( 'ws-edit-entry', '|ws-id|', $edit_link ) );
-
-		$config['current-url-base64'] = add_query_arg( 'ws-edit-saved', 'true', $edit_link );
-		$config['current-url-base64'] = base64_encode($config['current-url-base64']);
-        $config['us-date'] = ( false === ws_ls_get_config('WE_LS_US_DATE', get_current_user_id()) ) ? 'false' : 'true';
+		$config[ 'edit-url' ]             = esc_url( add_query_arg( 'ws-edit-entry', '|ws-id|', $edit_link ) );
+		$config[ 'current-url-base64' ]   = add_query_arg( 'ws-edit-saved', 'true', $edit_link );
+		$config[ 'current-url-base64' ]   = base64_encode($config['current-url-base64']);
+        $config[ 'us-date' ]              = ( false === ws_ls_get_config('WE_LS_US_DATE', get_current_user_id()) ) ? 'false' : 'true';
 
     } else {
-		$config['current-url-base64'] = ws_ls_get_url(true);
-        $config['us-date'] = (WE_LS_US_DATE) ? 'true' : 'false';
-	}
+		$config[ 'current-url-base64' ]   = ws_ls_get_url( true );
+        $config[ 'us-date' ]              = (WE_LS_US_DATE) ? 'true' : 'false';
+
+	    // Have we detected were in Admin, on a user profile?
+	    if ( true === ws_ls_datatable_is_user_profile() ) {
+		    $config[ 'front-end' ] = 'true';
+	    }
+    }
 
 	return $config;
+}
+
+/**
+ * Are we on a user profile page?@
+ * @return bool
+ */
+function ws_ls_datatable_is_user_profile() {
+	return ( 'ws-ls-data-home' === ws_ls_querystring_value( 'page' ) && 'user' === ws_ls_querystring_value( 'mode' ) );
 }

@@ -3,6 +3,7 @@ defined('ABSPATH') or die("Jog on!");
 
 define( 'WE_LS_CACHE_ENABLED', 'yes' === get_option( 'ws-ls-caching', 'yes' ) );
 define( 'WE_LS_CACHE_TIME', DAY_IN_SECONDS );
+define( 'WE_LS_CACHE_SHORT_TIME', 5 * MINUTE_IN_SECONDS );
 
 /**
  * User caching. From now on, store an array for each user in cache. Each caache key can then be stored in an array element.
@@ -68,7 +69,8 @@ function ws_ls_cache_user_get_all( $user_id = NULL ) {
 function ws_ls_cache_user_set( $user_id, $key, $value, $time_to_expire = WE_LS_CACHE_TIME ) {
 
 	if ( true === empty( $user_id ) ) {
-		$user_id = -1;
+		$user_id        = -1;
+		$time_to_expire = WE_LS_CACHE_SHORT_TIME;
 	}
 
 	$user_cache = ws_ls_cache_get( $user_id );

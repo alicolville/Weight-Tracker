@@ -45,26 +45,30 @@ add_action( 'wp_ajax_ws_ls_save_preferences', 'ws_ls_save_preferences_callback' 
 /**
 	Load data for user table (admin)
 **/
-function ws_ls_get_table_data()
-{
-  	check_ajax_referer( 'ws-ls-user-tables', 'security' );
+function ws_ls_get_table_data() {
 
-	// Filter?
-	$max_entries = ws_ls_get_numeric_post_value('max_entries');
-	$user_id = ws_ls_get_numeric_post_value('user_id');
-	$table_id = ws_ls_post_value('table_id');
-	$small_width = ('true' === ws_ls_post_value('small_width')) ? true : false;
-	$front_end = ('true' === ws_ls_post_value('front-end')) ? true : false;
-	$enable_meta = ws_ls_post_value_to_bool( 'enable-meta-fields' );
+		check_ajax_referer( 'ws-ls-user-tables', 'security' );
 
-	$data = array(
-					'columns' => ws_ls_datatable_columns( $small_width, $front_end, $enable_meta ),
-					'rows' => ws_ls_datatable_rows( [ 'user-id'  => $user_id, 'limit' => $max_entries, 'smaller-width' => $small_width, 'front-end' => $front_end, 'sort-order' => $order_direction, 'enable-meta' => $enable_meta ] ),
-					'table_id' => $table_id
-				);
+		// Filter?
+		$max_entries    = ws_ls_get_numeric_post_value('max_entries');
+		$user_id        = ws_ls_get_numeric_post_value('user_id');
+		$table_id       = ws_ls_post_value('table_id');
+		$small_width    = ws_ls_post_value_to_bool( 'small_width' );
+		$front_end      = ws_ls_post_value_to_bool( 'front-end' );
+		$enable_meta    = ws_ls_post_value_to_bool( 'enable-meta-fields' );
 
-  	 wp_send_json($data);
+		// If we have a user ID and we're in admin then hide the name from the user entry page
+		if ( true === ws_ls_datatable_is_user_profile() ) {
+			$front_end = true();
+		}
 
+		$data = [
+					'columns'   => ws_ls_datatable_columns( $small_width, $front_end, $enable_meta ),
+					'rows'      => ws_ls_datatable_rows( [ 'user-id'  => $user_id, 'limit' => $max_entries, 'smaller-width' => $small_width, 'front-end' => $front_end, 'enable-meta' => $enable_meta ] ),
+					'table_id'  => $table_id
+				];
+
+  	 wp_send_json( $data );
 }
 add_action( 'wp_ajax_table_data', 'ws_ls_get_table_data' );
 

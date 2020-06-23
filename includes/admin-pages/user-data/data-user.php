@@ -203,7 +203,7 @@ function ws_ls_admin_page_data_user() {
 					<div class="postbox">
 						<h2 class="hndle"><span><?php echo __('Entries for this user', WE_LS_SLUG); ?></span></h2>
 						<div class="inside">
-							<?php echo ws_ls_data_table_placeholder($user_id, false, true); ?>
+							<?php echo ws_ls_data_table_render( [ 'smaller-width' => true, 'user-id' => $user_id ] ); ?>
 						</div>
 					</div>
 				</div>

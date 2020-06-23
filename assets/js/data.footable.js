@@ -547,7 +547,7 @@ jQuery( document ).ready(function ($, undefined) {
     }
 
     function ws_ls_in_front_end() {
-        return ( undefined !== ws_user_table_config['front-end'] && 'true' == ws_user_table_config['front-end']) ? true : false;
+       return ( undefined !== ws_user_table_config['front-end'] && 'true' == ws_user_table_config['front-end']) ? true : false;
     }
 
 });
