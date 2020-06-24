@@ -29,7 +29,6 @@
 		'WE_LS_DATA_UNITS' => 'kg',
 		'WE_LS_IMPERIAL_WEIGHTS' => false,
 		'WE_LS_ALLOW_TARGET_WEIGHTS' => true,
-		'WE_LS_CSS_ENABLED' => true,
 		'WE_LS_US_DATE' => false,
 		'WS_LS_ADVANCED_TABLES' => true,
 		'WE_LS_DISPLAY_BMI_IN_TABLES' => false,
@@ -68,12 +67,7 @@
 	if ('no' == get_option('ws-ls-allow-targets')) {
 		$globals['WE_LS_ALLOW_TARGET_WEIGHTS'] = false;
 	}
-	// -----------------------------------------------------------------------------------
-	// Disable plugin CSS
-	// -----------------------------------------------------------------------------------
-	if ('yes' == get_option('ws-ls-disable-css')) {
-		$globals['WE_LS_CSS_ENABLED'] = false;
-	}
+
 	// -----------------------------------------------------------------------------------
 	// Display BMI in tables?
 	// -----------------------------------------------------------------------------------

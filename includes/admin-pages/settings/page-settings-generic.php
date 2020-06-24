@@ -294,9 +294,12 @@ function ws_ls_settings_page_generic() {
                                                 <tr>
                                                     <th scope="row"><?php echo __( 'Disable plugin CSS?' , WE_LS_SLUG); ?></th>
                                                     <td>
+														<?php
+															$disable_css = get_option( 'ws-ls-disable-css', 'no' );
+														?>
                                                         <select id="ws-ls-disable-css" name="ws-ls-disable-css">
-                                                            <option value="no" <?php selected( get_option('ws-ls-disable-css'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
-                                                            <option value="yes" <?php selected( get_option('ws-ls-disable-css'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+                                                            <option value="no" <?php selected( $disable_css, 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+                                                            <option value="yes" <?php selected( $disable_css, 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
                                                         </select>
                                                         <p><?php echo __('If you wish to style the forms in your own way, you can use this option to disable WLT\'s style sheets.', WE_LS_SLUG)?></p>
                                                     </td>

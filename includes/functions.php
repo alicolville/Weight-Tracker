@@ -1468,3 +1468,11 @@ function ws_ls_component_id() {
 function ws_ls_user_preferences_is_enabled() {
 	return ws_ls_option_to_bool( 'ws-ls-allow-user-preferences', 'no', true );
 }
+
+/**
+ * Hass CSS been disabled?
+ * @return bool
+ */
+function ws_ls_css_is_disabled() {
+	return ( 'yes' === get_option('ws-ls-disable-css', 'no' ) );
+}
