@@ -33,9 +33,6 @@
 		'WS_LS_ADVANCED_TABLES' => true,
 		'WE_LS_DISPLAY_BMI_IN_TABLES' => false,
 		'WE_LS_ALLOW_STATS' => false,
-		'WE_LS_EMAIL_ENABLE' => false,
-		'WE_LS_EMAIL_ADDRESSES' => '',
-		'WE_LS_EMAIL_NOTIFICATIONS_EDIT' => true,
 		'WE_LS_EMAIL_NOTIFICATIONS_NEW' => true,
 		'WE_LS_EMAIL_NOTIFICATIONS_TARGETS' => true,
 		'WS_LS_CAL_CAP_MALE' => 1900,
@@ -81,17 +78,8 @@
 
 	if (WS_LS_IS_PRO) {
 
-		if ('yes' == get_option('ws-ls-email-enable')) {
-			$globals['WE_LS_EMAIL_ENABLE'] = true;
-		}
-		if (get_option('ws-ls-email-addresses')) {
-			$globals['WE_LS_EMAIL_ADDRESSES'] = get_option('ws-ls-email-addresses');
-		} else {
-			$globals['WE_LS_EMAIL_ADDRESSES'] = '';
-		}
-		if ('no' == get_option('ws-ls-email-notifications-edit')) {
-			$globals['WE_LS_EMAIL_NOTIFICATIONS_EDIT'] = false;
-		}
+
+
 		if ('no' == get_option('ws-ls-email-notifications-new')) {
 			$globals['WE_LS_EMAIL_NOTIFICATIONS_NEW'] = false;
 		}

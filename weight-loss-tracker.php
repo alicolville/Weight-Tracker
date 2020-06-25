@@ -144,6 +144,7 @@ defined('ABSPATH') or die('Jog on!');
         'pro-features/plus/awards/functions.php',
         'pro-features/plus/awards/db.php',
         'pro-features/plus/awards/hooks.php',
+	    'pro-features/emails.php'
     ];
 
     // Gravity Forms
@@ -165,11 +166,6 @@ defined('ABSPATH') or die('Jog on!');
             'yes' === get_option( 'ws-ls-challenges-enabled', 'no' ) ) {
             $files_to_include[] = 'pro-features/plus/challenge/inc.php';
         }
-    }
-
-    // Email notifications enabled?
-    if( true === WE_LS_EMAIL_ENABLE ) {
-        $files_to_include[] = 'pro-features/emails.php';
     }
 
 	$files_to_include[] = 'includes/deprecated.php';

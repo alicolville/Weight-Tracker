@@ -2,6 +2,14 @@
 
 defined('ABSPATH') or die("Jog on!");
 
+/**
+ * Is enabled notifications enabled?
+ * @return bool
+ */
+function ws_ls_email_enabled() {
+	return ( 'yes' === get_option( 'ws-ls-email-enable', 'no' ) );
+}
+
 /*
  *
  * TODO: Refactor this file to use new email manager code
@@ -10,7 +18,7 @@ defined('ABSPATH') or die("Jog on!");
 
 function ws_ls_email_notification($type, $weight_data) {
 
-	if(!WE_LS_EMAIL_ENABLE) {
+	if( false === ws_ls_email_enabled() ) {
 		return;
 	}
 
@@ -19,18 +27,22 @@ function ws_ls_email_notification($type, $weight_data) {
 	}
 
 	$email_addresses  = ws_ls_email_notification_addresses();
+
+	if ( true === empty( $email_addresses ) ) {
+		return;
+	}
+
 	$allowed_types = array('target', 'weight-measurements');
 	$allowed_modes = array('add', 'update');
 
 	// Do we actually have one or more email addresses?
-	if($email_addresses
-		&& !empty($type['type']) && in_array($type['type'], $allowed_types)
+	if( !empty($type['type']) && in_array($type['type'], $allowed_types)
 		 && !empty($type['mode']) && in_array($type['mode'], $allowed_modes)) {
-
+		
 		// Email notifications enable for this type?
 		if (('target' == $type['type'] && false == WE_LS_EMAIL_NOTIFICATIONS_TARGETS) ||
 			('weight-measurements' == $type['type'] && 'add' == $type['mode'] && false == WE_LS_EMAIL_NOTIFICATIONS_NEW) ||
-			('weight-measurements' == $type['type'] && 'update' == $type['mode'] && false == WE_LS_EMAIL_NOTIFICATIONS_EDIT)) {
+			('weight-measurements' == $type['type'] && 'update' == $type['mode'] && 'no' === get_option( 'ws-ls-email-notifications-edit', 'yes' ) )) {
 			return;
 		}
 
@@ -111,12 +123,19 @@ function ws_ls_email_notifications_template($placeholders = array()) {
 	return $email;
 }
 
+/**
+ * Return an array of emails to send email notifications too
+ * @return string[]|null
+ */
 function ws_ls_email_notification_addresses() {
 
-	if(!defined('WE_LS_EMAIL_ADDRESSES')) {
-		return false;
+	$email_addresses = get_option( 'ws-ls-email-addresses', '' );
+
+	if ( true === empty( $email_addresses ) ) {
+		return NULL;
 	}
 
-	$emails = explode(',',  WE_LS_EMAIL_ADDRESSES);
-	return (is_array($emails) && !empty($emails)) ? $emails : false;
+	$emails = explode(',',  $email_addresses );
+
+	return ( true === is_array( $emails ) && false === empty( $emails ) ) ? $emails : NULL;
 }
