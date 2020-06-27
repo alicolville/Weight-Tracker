@@ -58,9 +58,8 @@ function ws_ls_get_table_data() {
 		$enable_meta    = ws_ls_post_value_to_bool( 'enable-meta-fields' );
 
 		// If we have a user ID and we're in admin then hide the name from the user entry page
-		if ( false === empty( $user_id )
-		        && true === is_admin() ) {
-			$front_end = true;
+		if ( true === ws_ls_datatable_is_user_profile() ) {
+			$front_end = true();
 		}
 
 		$data = [
