@@ -16,7 +16,8 @@ function ws_ls_data_table_render( $arguments = [] ) {
 	                                            'smaller-width'         => false,
 	                                            'enable-add-edit'       => true,
 												'enable-meta-fields'    => ( true === ws_ls_meta_fields_is_enabled() &&
-												                                ws_ls_meta_fields_number_of_enabled() > 0 )
+												                                ws_ls_meta_fields_number_of_enabled() > 0 ),
+												'page-size'             => 10
 	] );
 
 	ws_ls_data_table_enqueue_scripts();
@@ -30,6 +31,7 @@ function ws_ls_data_table_render( $arguments = [] ) {
 
 	$html .= sprintf('<table class="ws-ls-user-data-ajax table ws-ls-loading-table" id="%1$s"
 									data-paging="true"
+									data-paging-size="%7$d" 
 									data-filtering="true"
 									data-sorting="true"
 									data-editing="%2$s"
@@ -46,7 +48,8 @@ function ws_ls_data_table_render( $arguments = [] ) {
 		false === empty( $arguments[ 'user-id' ] ) ? $arguments[ 'user-id' ] : 'false',
 		false === empty( $arguments[ 'limit' ] ) ? $arguments[ 'limit' ] : 'false',
 		true === $arguments[ 'smaller-width' ] ? 'true' : 'false',
-		true === $arguments[ 'enable-meta-fields' ] ? 'true' : 'false'
+		true === $arguments[ 'enable-meta-fields' ] ? 'true' : 'false',
+		$arguments[ 'page-size' ]
 	);
 
 	if ( true === empty( $arguments[ 'user-id' ] ) ) {

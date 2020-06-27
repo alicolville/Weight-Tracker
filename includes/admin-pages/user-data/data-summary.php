@@ -110,8 +110,7 @@ function ws_ls_admin_page_data_summary() {
 						<div class="inside">
 							<?php
 
-								echo ws_ls_data_table_render( [ 'limit' => ( $show_all ) ? 500 : 100, 'smaller-width' => true, 'enable-meta-fields' => $show_meta ] );
-
+								echo ws_ls_data_table_render( [ 'limit' => ( $show_all ) ? 500 : 100, 'smaller-width' => true, 'enable-meta-fields' => $show_meta, 'page-size' => 20 ] );
 
 								echo sprintf(
 												'<a class="btn button-secondary" href="%s"><i class="fa fa-book"></i> %s</a>',
