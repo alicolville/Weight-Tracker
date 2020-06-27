@@ -29,7 +29,34 @@ function ws_ls_data_table_render( $arguments = [] ) {
 		$html = ws_ls_display_data_saved_message();
 	}
 
-	$html .= sprintf('<table class="ws-ls-user-data-ajax table ws-ls-loading-table" id="%1$s"
+	$html = '';
+	$entry_id = ws_ls_querystring_value('ws-edit-entry', true);
+
+	// Saved data?
+	if (false === is_admin()) {
+		$html = ws_ls_display_data_saved_message();
+	}
+
+	// Are we in front end and editing enabled, and of course we want to edit, then do so!
+	if( false === empty( $entry_id ) && false === is_admin() ) {
+
+	//	$data = ws_ls_get_weight( get_current_user_id(), $entry_id );
+
+		// If we have a Redirect URL, base decode.
+		$redirect_url = ws_ls_querystring_value('redirect');
+
+		if( false === empty( $redirect_url ) ) {
+			$redirect_url = base64_decode( $redirect_url );
+		}
+
+		$html .= ws_ls_form_weight( [ 'entry-id' => $entry_id, 'redirect-url' => $redirect_url ] );
+
+//		$html .= ws_ls_display_weight_form(false, false, false, false, false, false,
+//			false, false, $redirect_url, $data, true);
+
+	} else {
+
+		$html .= sprintf('<table class="ws-ls-user-data-ajax table ws-ls-loading-table" id="%1$s"
 									data-paging="true"
 									data-paging-size="%7$d" 
 									data-filtering="true"
@@ -43,17 +70,18 @@ function ws_ls_data_table_render( $arguments = [] ) {
 									data-small-width="%5$s"
 									data-enable-meta-fields="%6$s">
 		</table>',
-		ws_ls_component_id(),
-		true === $arguments[ 'enable-add-edit' ] ? 'true' : 'false',
-		false === empty( $arguments[ 'user-id' ] ) ? $arguments[ 'user-id' ] : 'false',
-		false === empty( $arguments[ 'limit' ] ) ? $arguments[ 'limit' ] : 'false',
-		true === $arguments[ 'smaller-width' ] ? 'true' : 'false',
-		true === $arguments[ 'enable-meta-fields' ] ? 'true' : 'false',
-		$arguments[ 'page-size' ]
-	);
+			ws_ls_component_id(),
+			true === $arguments[ 'enable-add-edit' ] ? 'true' : 'false',
+			false === empty( $arguments[ 'user-id' ] ) ? $arguments[ 'user-id' ] : 'false',
+			false === empty( $arguments[ 'limit' ] ) ? $arguments[ 'limit' ] : 'false',
+			true === $arguments[ 'smaller-width' ] ? 'true' : 'false',
+			true === $arguments[ 'enable-meta-fields' ] ? 'true' : 'false',
+			$arguments[ 'page-size' ]
+		);
 
-	if ( true === empty( $arguments[ 'user-id' ] ) ) {
-		$html .= sprintf( '<p><small>%s</small></p>', __( 'Please note: For performance reasons, this table will only update every 5 minutes.', WE_LS_SLUG ) );
+		if ( true === empty( $arguments[ 'user-id' ] ) ) {
+			$html .= sprintf( '<p><small>%s</small></p>', __( 'Please note: For performance reasons, this table will only update every 5 minutes.', WE_LS_SLUG ) );
+		}
 	}
 
 	return $html;
