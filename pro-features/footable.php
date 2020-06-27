@@ -302,7 +302,7 @@ function ws_ls_data_table_enqueue_scripts() {
  * @return array of settings
  */
 function ws_ls_data_js_config() {
-	$config =   [
+	$config =   [   'is-admin'                      => is_admin(),
 					'security'                      => wp_create_nonce( 'ws-ls-user-tables' ),
 					'base-url'                      => ws_ls_get_link_to_user_data(),
 					'base-url-meta-fields'          => ws_ls_meta_fields_base_url(),
@@ -313,7 +313,8 @@ function ws_ls_data_js_config() {
 					'label-confirm-delete'          =>  __( 'Are you sure you want to delete the row?', WE_LS_SLUG ),
 					'label-error-delete'            =>  __( 'Unfortunately there was an error deleting the row.', WE_LS_SLUG ),
                     'locale-search-text'            =>  __( 'Search', WE_LS_SLUG ),
-					'locale-no-results'             =>  __( 'No data found', WE_LS_SLUG )
+					'locale-no-results'             =>  __( 'No data found', WE_LS_SLUG ),
+					'hide-display-name'             => false
 				];
 	// Add some extra config settings if not in admin
     if ( false === is_admin() ) {
@@ -323,20 +324,20 @@ function ws_ls_data_js_config() {
         $edit_link                          = ws_ls_get_url();
 
         // Strip old edit and cancel QS values
-		$edit_link                      = remove_query_arg( ['ws-edit-entry', 'ws-edit-cancel', 'ws-edit-saved'], $edit_link );
+		$edit_link                          = remove_query_arg( ['ws-edit-entry', 'ws-edit-cancel', 'ws-edit-saved'], $edit_link );
 
-		$config[ 'edit-url' ]             = esc_url( add_query_arg( 'ws-edit-entry', '|ws-id|', $edit_link ) );
-		$config[ 'current-url-base64' ]   = add_query_arg( 'ws-edit-saved', 'true', $edit_link );
-		$config[ 'current-url-base64' ]   = base64_encode($config['current-url-base64']);
-        $config[ 'us-date' ]              = ( false === ws_ls_get_config('WE_LS_US_DATE', get_current_user_id()) ) ? 'false' : 'true';
+		$config[ 'edit-url' ]               = esc_url( add_query_arg( 'ws-edit-entry', '|ws-id|', $edit_link ) );
+		$config[ 'current-url-base64' ]     = add_query_arg( 'ws-edit-saved', 'true', $edit_link );
+		$config[ 'current-url-base64' ]     = base64_encode($config['current-url-base64']);
+        $config[ 'us-date' ]                = ( false === ws_ls_get_config('WE_LS_US_DATE', get_current_user_id()) ) ? 'false' : 'true';
 
     } else {
-		$config[ 'current-url-base64' ]   = ws_ls_get_url( true );
-        $config[ 'us-date' ]              = (WE_LS_US_DATE) ? 'true' : 'false';
+		$config[ 'current-url-base64' ]     = ws_ls_get_url( true );
+        $config[ 'us-date' ]                = ( WE_LS_US_DATE ) ? 'true' : 'false';
 
 	    // Have we detected were in Admin, on a user profile?
 	    if ( true === ws_ls_datatable_is_user_profile() ) {
-		    $config[ 'front-end' ] = 'true';
+		    $config[ 'front-end' ]  = 'true';
 	    }
     }
 

@@ -484,7 +484,7 @@ jQuery( document ).ready(function ($, undefined) {
                     var values = row.val();
 
                     // If we're in Admin, redirect to the relevant admin screen. Otherwise, toggle edit in front end
-                    if(true === ws_ls_in_front_end()) {
+                    if(true === ws_ls_in_front_end() && 1 === ws_user_table_config['is-admin'] ) {
                         var url = ws_user_table_config['edit-url'];
                         url = url.replace('|ws-id|', values.db_row_id);
 
