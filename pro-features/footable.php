@@ -344,9 +344,18 @@ function ws_ls_data_js_config() {
 }
 
 /**
- * Are we on a user profile page?@
+ * Are we on a user profile page?
  * @return bool
  */
 function ws_ls_datatable_is_user_profile() {
-	return ( 'ws-ls-data-home' === ws_ls_querystring_value( 'page' ) && 'user' === ws_ls_querystring_value( 'mode' ) );
+
+	if ( 'ws-ls-data-home' === ws_ls_querystring_value( 'page' ) ) {
+		return false;
+	}
+
+	if ( 'user' === ws_ls_querystring_value( 'mode' ) ) {
+		return false;
+	}
+
+	return true;
 }
