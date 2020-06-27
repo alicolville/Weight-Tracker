@@ -39,6 +39,8 @@ function ws_ls_form_weight( $arguments = [] ) {
 		if ( true === empty( $arguments[ 'entry' ] ) ) {
 			return ws_ls_blockquote_error( __( 'There was an issue loading the data for this weight entry.', WE_LS_SLUG ) );
 		}
+
+		$arguments[ 'hide-button-cancel' ] = false;
 	} else {
 		$arguments[ 'entry-id'] = 0;    // If a target form, then blank ID
 	}
@@ -55,7 +57,7 @@ function ws_ls_form_weight( $arguments = [] ) {
 									<input type="hidden" name="user-id" value="%6$d" />
 									<input type="hidden" name="security" value="%7$s" />
 									<input type="hidden" name="entry-id" value="%8$d" />
-									<input type="hidden" name="redirect-url" value="%10$s" />
+									<input type="hidden" name="redirect-url" id="redirect-url" value="%10$s" />
 									<input type="hidden" name="form-number" value="%11$d" />',
 									esc_url_raw( $arguments[ 'post-url' ] ),
 									esc_attr( $arguments[ 'css-class-form' ] ),
@@ -161,7 +163,7 @@ function ws_ls_form_weight( $arguments = [] ) {
 
 		$html .= sprintf('&nbsp;<button id="ws-ls-cancel" type="button" tabindex="%1$d" class="ws-ls-cancel-form button ws-ls-remove-on-submit" data-form-id="%2$s">%3$s</button>',
 			ws_ls_form_tab_index_next(),
-			$arguments[ 'form-id '],
+			$arguments[ 'form-id' ],
 			__( 'Cancel', WE_LS_SLUG )
 		);
 	}

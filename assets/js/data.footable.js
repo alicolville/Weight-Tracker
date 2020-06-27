@@ -16,7 +16,7 @@ jQuery( document ).ready(function ($, undefined) {
 
         if ( undefined !== form_id ) {
 
-            var redirect_url = $('#' + form_id + ' #ws_redirect').val();
+            var redirect_url = $('#' + form_id + ' #redirect-url').val();
 
             if ( undefined !== redirect_url ) {
                 window.location.href = redirect_url.replace('ws-edit-saved', 'ws-edit-cancel');

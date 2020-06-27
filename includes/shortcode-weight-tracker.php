@@ -199,7 +199,7 @@
 			if( false === empty( $entry_id ) ) {
 
 				//If we have a Redirect URL, base decode.
-				$redirect_url = ws_ls_querystring_value('redirect');
+				$redirect_url = ws_ls_querystring_value( 'redirect' );
 
 				if (false === empty($redirect_url)) {
 					$redirect_url = base64_decode($redirect_url);
