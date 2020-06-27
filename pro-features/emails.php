@@ -38,11 +38,11 @@ function ws_ls_email_notification($type, $weight_data) {
 	// Do we actually have one or more email addresses?
 	if( !empty($type['type']) && in_array($type['type'], $allowed_types)
 		 && !empty($type['mode']) && in_array($type['mode'], $allowed_modes)) {
-		
+
 		// Email notifications enable for this type?
 		if (('target' == $type['type'] && false == WE_LS_EMAIL_NOTIFICATIONS_TARGETS) ||
-			('weight-measurements' == $type['type'] && 'add' == $type['mode'] && false == WE_LS_EMAIL_NOTIFICATIONS_NEW) ||
-			('weight-measurements' == $type['type'] && 'update' == $type['mode'] && 'no' === get_option( 'ws-ls-email-notifications-edit', 'yes' ) )) {
+			('weight-measurements' == $type['type'] && 'add' == $type['mode'] && 'no' === get_option( 'ws-ls-email-notifications-new', 'yes' ) ) ||
+			('weight-measurements' == $type['type'] && 'update' == $type['mode'] && 'no' === get_option( 'ws-ls-email-notifications-edit', 'yes' ) ) ) {
 			return;
 		}
 

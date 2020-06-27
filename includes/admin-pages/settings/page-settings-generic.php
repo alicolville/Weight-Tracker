@@ -838,11 +838,14 @@ function ws_ls_settings_page_generic() {
 													<tr class="<?php echo $disable_if_not_pro_class; ?>">
 														<th scope="row"><?php echo __( 'New weight / measurement entries', WE_LS_SLUG ); ?></th>
 														<td>
+															<?php
+																$email_notification_new = get_option( 'ws-ls-email-notifications-new', 'yes' );
+															?>
 															<select id="ws-ls-email-notifications-new" name="ws-ls-email-notifications-new">
-																<option value="yes" <?php selected( get_option('ws-ls-email-notifications-new'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
-																<option value="no" <?php selected( get_option('ws-ls-email-notifications-new'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+																<option value="yes" <?php selected( $email_notification_new, 'yes' ); ?>><?php echo __( 'Yes', WE_LS_SLUG )?></option>
+																<option value="no" <?php selected( $email_notification_new, 'no' ); ?>><?php echo __( 'No', WE_LS_SLUG )?></option>
 															</select>
-															<p><?php echo __('Receive notifications when a member adds a new weight / custom field entry.', WE_LS_SLUG); ?></p>
+															<p><?php echo __( 'Receive notifications when a member adds a new weight / custom field entry.', WE_LS_SLUG ); ?></p>
 														</td>
 													</tr>
 													<tr class="<?php echo $disable_if_not_pro_class; ?>">

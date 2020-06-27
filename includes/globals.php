@@ -33,7 +33,6 @@
 		'WS_LS_ADVANCED_TABLES' => true,
 		'WE_LS_DISPLAY_BMI_IN_TABLES' => false,
 		'WE_LS_ALLOW_STATS' => false,
-		'WE_LS_EMAIL_NOTIFICATIONS_NEW' => true,
 		'WE_LS_EMAIL_NOTIFICATIONS_TARGETS' => true,
 		'WS_LS_CAL_CAP_MALE' => 1900,
         'WS_LS_CAL_CAP_FEMALE' => 1400,
@@ -80,9 +79,6 @@
 
 
 
-		if ('no' == get_option('ws-ls-email-notifications-new')) {
-			$globals['WE_LS_EMAIL_NOTIFICATIONS_NEW'] = false;
-		}
 		if ('no' == get_option('ws-ls-email-notifications-targets')) {
 			$globals['WE_LS_EMAIL_NOTIFICATIONS_TARGETS'] = false;
 		}
