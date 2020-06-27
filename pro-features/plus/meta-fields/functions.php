@@ -136,9 +136,11 @@
  *
  * @param $value
  * @param $meta_field_id
+ * @param bool $is_export
+ *
  * @return int
  */
-    function ws_ls_fields_display_field_value( $value, $meta_field_id ) {
+    function ws_ls_fields_display_field_value( $value, $meta_field_id, $is_export = false ) {
 
         $meta_field = ws_ls_meta_fields_get_by_id( $meta_field_id );
 
@@ -150,7 +152,7 @@
             if ( 2 === $meta_field['field_type'] ) {
                 return ws_ls_fields_display_field_value_yes_no( $value);
             } else if ( 3 === $meta_field['field_type'] ) {
-		        return ws_ls_fields_display_field_value_photo( $value);
+		        return ws_ls_fields_display_field_value_photo( $value, $is_export );
 	        }
 
         }
@@ -166,11 +168,16 @@
 	 * @return string
 	 *
 	 */
-	function ws_ls_fields_display_field_value_photo( $value ) {
+	function ws_ls_fields_display_field_value_photo( $value, $is_export = false ) {
 
 		if ( false === empty( $value ) ) {
 
 			$photo = ws_ls_photo_get( $value , 120, 120);
+
+			// If we are exporting, just return the URL to full image
+			if ( true === $is_export ) {
+				return  wp_get_attachment_url( $value );
+			}
 
 			$photo = apply_filters( 'wlt_meta_fields_photo_value', $photo );
 

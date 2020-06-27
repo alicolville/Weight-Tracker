@@ -408,6 +408,7 @@ function ws_ls_display_week_filters($week_ranges, $selected_week_number)
 
 // TODO: This will need to be changed when globals are tweaked
 // TODO: Heabily refactor this function
+// Refactor to use: ws_ls_settings_weight_unit
 function ws_ls_get_config( $key, $user_id = NULL, $force_admin = false )
 {
 	// If in an admin screen, then use admin settings. We're not interested in the user's preference.
@@ -649,26 +650,6 @@ function ws_ls_entry_get_previous( $arguments = [] ) {
 	}
 
 	return ws_ls_entry_get( $arguments );
-}
-
-/**
- *
- * DEPRECATED: replace with ws_ls_to_bool()
- *
- * @param $value
- * @return bool
- *
- */
-function ws_ls_string_to_bool($value)
-{
-  if('false' == $value) {
-    return false;
-  }
-  elseif('true' == $value) {
-    return true;
-  }
-
-  return $value;
 }
 
 /**
@@ -1477,4 +1458,72 @@ function ws_ls_user_preferences_is_enabled() {
  */
 function ws_ls_css_is_disabled() {
 	return ( 'yes' === get_option('ws-ls-disable-css', 'no' ) );
+}
+
+/**
+ * Fetch weight unit as readable text
+ * @param $key
+ *
+ * @return string|void
+ */
+function ws_ls_weight_unit_label( $key ) {
+
+	switch ( $key ) {
+		case 'kg':
+			return __( 'Kg', WE_LS_SLUG );
+			break;
+		case 'pounds_only':
+			return __( 'Pounds', WE_LS_SLUG );
+			break;
+		case 'stones_pounds':
+			return __( 'Stones & Pounds', WE_LS_SLUG );
+			break;
+		default:
+			return '';
+	}
+}
+
+/**
+ * Get the default weight unit for the site (specified in admin settings)
+ * @return mixed|void
+ */
+function ws_ls_settings_weight_unit() {
+	return get_option( 'ws-ls-units', 'kg' );
+}
+
+/**
+ * Fetch admin weight unit setting as a readable string
+ * @return string|void
+ */
+function ws_ls_settings_weight_unit_readable() {
+	$unit = get_option( 'ws-ls-units', 'kg' );
+
+	return ws_ls_weight_unit_label( $unit );
+}
+
+/**
+ * Is the site default (specified in admin settings) to use imperial measurements?
+ * @return bool
+ */
+function ws_ls_settings_weight_is_imperial() {
+	return ( 'kg' !== ws_ls_settings_weight_unit() );
+}
+
+/**
+ * Compare the given weight against a user's start weight and return difference
+ * @param $user_id
+ * @param $kg
+ * @param bool $display
+ *
+ * @return string|null
+ */
+function ws_ls_weight_difference_from_start( $user_id, $kg ) {
+
+	$start_kg = ws_ls_db_weight_start_get( $user_id );
+
+	if ( true === empty( $start_kg ) ) {
+		return NULL;
+	}
+
+	return $kg - $start_kg;
 }

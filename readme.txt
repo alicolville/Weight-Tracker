@@ -196,6 +196,7 @@ add_shortcode( 'wlt-table', 'ws_ls_shortcode_table' ); to add_shortcode( 'wt-tab
 * Improvement: A user's target weight can now be displayed on bar graphs.
 * Improvement: Measurements have been removed. They have now been migrated (along with user data) into Custom Fields.
 * Improvement: Measurements, now custom fields, can now be displayed on bar graphs.
+* Improvement: Export to CSV / JSON performance has been drastically improved.
 * Improvement: 1000s of lines of code optimised and re-factored.
 * Improvement: Various performance tweaks. All globals no longer dynamically loaded.
 * Improvement: Caching: Previously, user cache consisted of a large data object per user. This would be loaded on every cache lookup. Now, instead, the cache object has been replaced with a lookup table of cache keys relating to the user. If a sub key is found, the larger, relevant data object is fetched from catch.
@@ -234,6 +235,7 @@ add_shortcode( 'wlt-table', 'ws_ls_shortcode_table' ); to add_shortcode( 'wt-tab
 * Bug fix: User data tables, difference in weight field now displays correct difference.
 * Bug fix: Stats database table is also cleared when all user data has been deleted.
 * Bug fix: When all user data has been removed, cache is now cleared.
+* Bug fix: When exporting to CSV / JSON, HTML is removed from image custom fields. Instead the full URL is returned.
 
 = 7.6.2 =
 

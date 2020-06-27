@@ -43,6 +43,13 @@
         'WE_LS_THIRD_PARTY_GF_ENABLE' => false
 	);
 
+
+	/*
+	 * **********
+	 * REFATCOR BELOW to use ws_ls_settings_weight_unit() / ws_ls_settings_weight_is_imperial()
+	 */
+
+
 	// -----------------------------------------------------------------------------------
 	// Define whether Imperial and Units
 	// -----------------------------------------------------------------------------------

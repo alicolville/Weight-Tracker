@@ -105,7 +105,7 @@ function ws_ls_weight_display( $kg, $user_id = NULL, $key = false, $force_admin 
 
 	// Are we wanting to format the weight for admin UI?
 	if ( true === is_admin() || true === $force_admin ) {
-		$weight[ 'format' ] = ws_ls_get_config('WE_LS_DATA_UNITS', false, true );
+		$weight[ 'format' ] = ws_ls_settings_weight_unit();
 
 	// Or, format for front end for the user?
 	} else {
@@ -173,7 +173,7 @@ function ws_ls_weight_display( $kg, $user_id = NULL, $key = false, $force_admin 
  */
 function ws_ls_convert_ISO_date_into_locale( $iso_date, $key = NULL ) {
 
-	$convert = [ 'raw' => $iso_date, 'chart' => '', 'display' => '', 'admin' => '', 'uk' => '', 'us' => '' ];
+	$convert = [ 'raw' => $iso_date, 'chart' => '', 'display-date' => '', 'admin' => '', 'uk' => '', 'us' => '' ];
 
 	if ( false === empty( $iso_date ) ) {
 
