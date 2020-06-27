@@ -239,7 +239,7 @@
 					}
 
 					if ( WS_LS_IS_PRO && false === $shortcode_arguments['disable-advanced-tables'] ){
-						$html_output .=  ws_ls_shortcode_table( [ 'user-id' => $user_id, 'enable-add-edit' => true ] );
+						$html_output .=  ws_ls_shortcode_table( [ 'user-id' => $user_id, 'enable-add-edit' => true, 'enable-meta-fields' => true ] );
 					} else {
 						$html_output .= ws_ls_display_table( $user_id, $weight_data );
 					}
