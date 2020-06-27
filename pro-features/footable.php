@@ -169,9 +169,9 @@ function ws_ls_datatable_rows( $arguments ) {
 
 			$previous_user_weight[ $entry[ 'user_id' ] ] = $entry[ 'kg' ];
 
-			$row[ 'gainloss' ][ 'value']              = $gain_loss;
-			$row[ 'gainloss' ][ 'options']['classes'] = 'ws-ls-' . $gain_class .  ws_ls_blur();
-			$row[ 'notes' ] = wp_kses_post( [ 'notes' ] );
+			$row[ 'gainloss' ][ 'value']                = $gain_loss;
+			$row[ 'gainloss' ][ 'options']['classes']   = 'ws-ls-' . $gain_class .  ws_ls_blur();
+			$row[ 'notes' ]                             = wp_kses_post( $entry[ 'notes' ] );
 
 			if( true === WE_LS_DISPLAY_BMI_IN_TABLES ) {
 				$row[ 'bmi' ] = [   'value' => ws_ls_get_bmi_for_table( ws_ls_user_preferences_get( 'height', $entry[ 'user_id' ] ), $entry[ 'kg' ], __( 'No height', WE_LS_SLUG ) ),
