@@ -165,12 +165,10 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 // TODO: We changed the cache key for all user preferences. Ensure this is cleared properly
 // TODO: Explaoin Challenegs more in UI and doc site
 // compress ws-ls-entry-form.js, admin-and-public.min.css, data-footable.js
-/ /when form loading, stone / pounds, if punds is 0 it loads as blank
 // Fix Start Weight
        Latest Weight
        Diff. from Start in admin side bar
 //test GF
-// finish shortcodes-various.php
 
 Documentation updates:
 add_shortcode( 'wlt-target', 'ws_ls_shortcode_target' ); to add_shortcode( 'wt-target-weight', 'ws_ls_shortcode_target' );
