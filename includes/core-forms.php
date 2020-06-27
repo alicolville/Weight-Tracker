@@ -18,6 +18,7 @@ function ws_ls_form_weight( $arguments = [] ) {
 	                                            'hide-titles'           => false,
 	                                            'html'                  => '',
 	                                            'option-force-today'    => false,
+	                                            'option-tiny-mce-notes' => is_admin(),
 	                                            'is-target-form'        => false,
 	                                            'redirect-url'          => '',
 	                                            'user-id'               => get_current_user_id() ] );
@@ -123,7 +124,7 @@ function ws_ls_form_weight( $arguments = [] ) {
 		$html .= ws_ls_form_field_number( [    'name'          => 'ws-ls-weight-pounds',
 		                                       'placeholder'   => __( 'Pounds', WE_LS_SLUG ),
 		                                       'max'           => ( 'stones_pounds' ===  $arguments[ 'data-unit' ] ) ? '13.99' : '5000',
-		                                       'value' => ( false === empty( $arguments[ 'entry' ][ 'pounds' ] ) ) ? $arguments[ 'entry' ][ 'pounds' ] : '' ] );
+		                                       'value' => ( true === isset( $arguments[ 'entry' ][ 'pounds' ] ) ) ? $arguments[ 'entry' ][ 'pounds' ] : '' ] );
 	}
 
 	// Kg?

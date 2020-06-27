@@ -51,9 +51,6 @@ function ws_ls_data_table_render( $arguments = [] ) {
 
 		$html .= ws_ls_form_weight( [ 'entry-id' => $entry_id, 'redirect-url' => $redirect_url ] );
 
-//		$html .= ws_ls_display_weight_form(false, false, false, false, false, false,
-//			false, false, $redirect_url, $data, true);
-
 	} else {
 
 		$html .= sprintf('<table class="ws-ls-user-data-ajax table ws-ls-loading-table" id="%1$s"
@@ -132,16 +129,16 @@ function ws_ls_datatable_rows( $arguments ) {
 			if ( false === $arguments[ 'front-end' ] ) {
 
 				if ( null === $user_name ) {
-					$entry['user_name']    = ws_ls_user_display_name( $entry['user_id'] );
-					$entry['user_profile'] = sprintf( '<a href="%s" rel="noopener noreferrer" target="_blank">%s</a>', ws_ls_get_link_to_user_profile( $entry['user_id'] ), $entry['user_name'] );
+					$entry[ 'user_name' ]    = ws_ls_user_display_name( $entry[ 'user_id' ] );
+					$entry[ 'user_profile' ] = sprintf( '<a href="%s" rel="noopener noreferrer" target="_blank">%s</a>', ws_ls_get_link_to_user_profile( $entry['user_id'] ), $entry['user_name'] );
 				} else {
-					$entry['user_name']    = $user_name;
-					$entry['user_profile'] = $user_profile_link;
+					$entry[ 'user_name' ]    = $user_name;
+					$entry[ 'user_profile' ] = $user_profile_link;
 				}
 
-				$row['user_nicename'] = [
-					'options' => [ 'sortValue' => $entry['user_name'] ],
-					'value'   => $entry['user_profile']
+				$row[ 'user_nicename' ] = [
+					'options' => [ 'sortValue' => $entry[ 'user_name' ] ],
+					'value'   => $entry[ 'user_profile' ]
 				];
 			}
 
@@ -174,6 +171,7 @@ function ws_ls_datatable_rows( $arguments ) {
 
 			$row[ 'gainloss' ][ 'value']              = $gain_loss;
 			$row[ 'gainloss' ][ 'options']['classes'] = 'ws-ls-' . $gain_class .  ws_ls_blur();
+			$row[ 'notes' ] = wp_kses_post( [ 'notes' ] );
 
 			if( true === WE_LS_DISPLAY_BMI_IN_TABLES ) {
 				$row[ 'bmi' ] = [   'value' => ws_ls_get_bmi_for_table( ws_ls_user_preferences_get( 'height', $entry[ 'user_id' ] ), $entry[ 'kg' ], __( 'No height', WE_LS_SLUG ) ),
