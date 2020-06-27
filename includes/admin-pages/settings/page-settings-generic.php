@@ -816,16 +816,22 @@ function ws_ls_settings_page_generic() {
 													<tr class="<?php echo $disable_if_not_pro_class; ?>">
 														<th scope="row"><?php echo __( 'Enable email notifications', WE_LS_SLUG ); ?></th>
 														<td>
+															<?php
+																$email_enabled = get_option( 'ws-ls-email-enable', 'no' );
+															?>
 															<select id="ws-ls-email-enable" name="ws-ls-email-enable">
-																<option value="no" <?php selected( get_option('ws-ls-email-enable'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
-																<option value="yes" <?php selected( get_option('ws-ls-email-enable'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+																<option value="no" <?php selected( $email_enabled, 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+																<option value="yes" <?php selected( $email_enabled, 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
 															</select>
 														</td>
 													</tr>
 													<tr class="<?php echo $disable_if_not_pro_class; ?>">
 														<th scope="row"><?php echo __( 'Email addresses to notify', WE_LS_SLUG ); ?></th>
+														<?php
+															$email_addresses = get_option( 'ws-ls-email-addresses', '' );
+														?>
 														<td>
-															<input id="ws-ls-email-addresses" name="ws-ls-email-addresses" type="text" maxlength="500" class="large-text" value="<?php esc_attr_e(WE_LS_EMAIL_ADDRESSES); ?>">
+															<input id="ws-ls-email-addresses" name="ws-ls-email-addresses" type="text" maxlength="500" class="large-text" value="<?php echo esc_attr( $email_addresses ); ?>">
 															<p><?php echo __('Specify one or more email addresses to be notified. Seperate multiple emails with a comma.', WE_LS_SLUG); ?></p>
 														</td>
 													</tr>
@@ -836,17 +842,20 @@ function ws_ls_settings_page_generic() {
 																<option value="yes" <?php selected( get_option('ws-ls-email-notifications-new'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
 																<option value="no" <?php selected( get_option('ws-ls-email-notifications-new'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
 															</select>
-															<p><?php echo __('Receive notifications when a member adds a new weight / measurement entry.', WE_LS_SLUG); ?></p>
+															<p><?php echo __('Receive notifications when a member adds a new weight / custom field entry.', WE_LS_SLUG); ?></p>
 														</td>
 													</tr>
 													<tr class="<?php echo $disable_if_not_pro_class; ?>">
 														<th scope="row"><?php echo __( 'Edited weight / measurement entries', WE_LS_SLUG ); ?></th>
 														<td>
+															<?php
+																$email_notification_edit = get_option( 'ws-ls-email-notifications-edit', 'yes' );
+															?>
 															<select id="ws-ls-email-notifications-edit" name="ws-ls-email-notifications-edit">
-																<option value="yes" <?php selected( get_option('ws-ls-email-notifications-edit'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
-																<option value="no" <?php selected( get_option('ws-ls-email-notifications-edit'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+																<option value="yes" <?php selected( $email_notification_edit, 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+																<option value="no" <?php selected( $email_notification_edit, 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
 															</select>
-															<p><?php echo __('Receive notifications when a member edits an existing weight / measurement entry.', WE_LS_SLUG); ?></p>
+															<p><?php echo __('Receive notifications when a member edits an existing weight / custom field entry.', WE_LS_SLUG); ?></p>
 														</td>
 													</tr>
 													<tr class="<?php echo $disable_if_not_pro_class; ?>">
