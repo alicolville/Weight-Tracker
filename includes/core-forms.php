@@ -33,7 +33,7 @@ function ws_ls_form_weight( $arguments = [] ) {
 	if ( false === empty( $arguments[ 'entry-id'] ) &&
 	        false === $arguments[ 'is-target-form' ] ) {
 
-		$arguments[ 'entry' ] = ws_ls_entry_get( [ 'user-id' => $arguments[ 'user-id' ], 'id' => $arguments[ 'entry-id'] ] );
+		$arguments[ 'entry' ] = ws_ls_entry_get( [ 'user-id' => $arguments[ 'user-id' ], 'id' => $arguments[ 'entry-id'], 'meta' => ( false === $arguments[ 'hide-fields-meta' ] ) ] );
 
 		// Did we manage to fetch an entry?
 		if ( true === empty( $arguments[ 'entry' ] ) ) {
