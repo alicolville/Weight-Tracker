@@ -8,7 +8,8 @@ function ws_ls_admin_page_data_summary() {
 
     // DELETE ALL DATA!! AHH!!
     if (is_admin() && isset($_GET['removedata']) && 'y' == $_GET['removedata']) {
-        ws_ls_delete_existing_data();
+
+	    ws_ls_delete_existing_data();
 
         // Let others know we cleared all user data
         do_action( 'wlt-hook-data-all-deleted' );

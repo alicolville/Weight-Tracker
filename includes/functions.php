@@ -624,7 +624,7 @@ function ws_ls_entry_get_latest( $arguments = [] ) {
  *
  * @return string|null
  */
-function ws_ls_entry_get_latest_kg( $user_id ) {
+function ws_ls_entry_get_latest_kg( $user_id = NULL ) {
 
 	$user_id = ( NULL === $user_id ) ? get_current_user_id() : $user_id;
 

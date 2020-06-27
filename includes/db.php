@@ -348,7 +348,7 @@ function ws_ls_db_entry_delete_all_for_user( $user_id ) {
 function ws_ls_db_entry_delete_all() {
 
 	// Extra check! Should only be done in Admin
-	if ( true === is_admin() ) {
+	if ( false === is_admin() ) {
 		return NULL;
 	}
 
