@@ -145,6 +145,8 @@ function ws_ls_weight_object($user_id, $kg, $pounds, $stones, $pounds_only, $not
 function ws_ls_delete_existing_data() {
     if( true === is_admin() )  {
 	    ws_ls_db_entry_delete_all();
+
+	    ws_ls_cache_delete_all();
     }
 }
 

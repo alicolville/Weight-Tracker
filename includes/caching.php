@@ -209,10 +209,6 @@ function ws_ls_delete_cache_for_given_users( $user_ids ) {
  */
 function ws_ls_cache_delete_all() {
 
-	if ( true === WE_LS_CACHE_ENABLED ) {
-		return;
-	}
-
 	global $wpdb;
 
     $sql = "Delete FROM  $wpdb->options WHERE option_name LIKE '%transient_" . WE_LS_SLUG ."%'";

@@ -356,6 +356,7 @@ function ws_ls_db_entry_delete_all() {
 
 	$wpdb->query('TRUNCATE TABLE ' . $wpdb->prefix . WE_LS_TARGETS_TABLENAME );
 	$wpdb->query('TRUNCATE TABLE ' . $wpdb->prefix . WE_LS_TABLENAME );
+	$wpdb->query('TRUNCATE TABLE ' . $wpdb->prefix . WE_LS_USER_STATS_TABLENAME );
 }
 
 /**

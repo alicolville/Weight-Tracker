@@ -13,7 +13,7 @@ function ws_ls_admin_page_data_user() {
 
     // DELETE ALL DATA FOR THIS USER!! AHH!!
     if ( true === isset( $_GET['removedata'] ) && 'y' == $_GET['removedata'] ) {
-        ws_ls_delete_data_for_user($user_id);
+        ws_ls_delete_data_for_user( $user_id);
     }
 
     // Delete all awards for this user

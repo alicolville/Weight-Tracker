@@ -232,6 +232,8 @@ add_shortcode( 'wlt-table', 'ws_ls_shortcode_table' ); to add_shortcode( 'wt-tab
 * Bug fix: Delete all cache if admin delete's all data.
 * Bug fix: BMR now cached on a user by user basis correctly.
 * Bug fix: User data tables, difference in weight field now displays correct difference.
+* Bug fix: Stats database table is also cleared when all user data has been deleted.
+* Bug fix: When all user data has been removed, cache is now cleared.
 
 = 7.6.2 =
 
