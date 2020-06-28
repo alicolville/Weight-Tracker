@@ -24,12 +24,7 @@ function ws_ls_export_data() {
 
 	global $ws_ls_export_config;
 
-	// Do we have a user ID? If so limit data
-	$filters = ( false === empty( $_GET[ 'user-id'] )
-	                && is_numeric( $_GET[ 'user-id'] ) ) ?
-						[ 'user-id' => (int) $_GET[ 'user-id' ] ] : 0;
-
-	$export_data = ws_ls_db_entries_get( [ 'user-id' => 0, 'limit' => NULL ] );
+	$export_data = ws_ls_db_entries_get( [ 'user-id' => ws_ls_querystring_value( 'user-id', true, 0 ), 'limit' => NULL ] );
 
 	$ws_ls_export_config[ 'meta' ] = ws_ls_meta_fields_is_enabled();
 
@@ -63,6 +58,47 @@ function ws_ls_export_data() {
 	die();
 }
 add_action( 'admin_post_export_data', 'ws_ls_export_data' );
+
+/**
+ * Take a database row and expand with useful information
+ * @param $row
+ *
+ * @return mixed
+ */
+function ws_ls_export_row_prep( $row ) {
+
+	global $ws_ls_export_config;
+
+	$row[ 'user_nicename' ]                 = ws_ls_user_display_name( $row[ 'user_id' ] );
+	$row[ 'date-display' ]                  = ws_ls_convert_ISO_date_into_locale( $row[ 'weight_date' ], 'display-date' );
+	$row[ 'weight' ]                        = ws_ls_weight_display( $row['kg'], $row[ 'user_id' ], 'display', true );
+	$row[ 'difference_from_start_display' ] = ws_ls_weight_difference_from_start( $row[ 'user_id' ], $row['kg'] );
+	$row[ 'difference_from_start_display' ] = ws_ls_weight_display( $row[ 'difference_from_start_display' ],  NULL, 'display', true, true );
+	$height                                 = ws_ls_user_preferences_get( 'height', $row[ 'user_id' ] );
+
+	if ( false === empty( $height ) ) {
+		$row['bmi']                         = ws_ls_calculate_bmi( $height, $row['kg'] ) ;
+		$row['bmi-readable']                = ws_ls_calculate_bmi_label( $row['bmi'] );
+	}
+
+	if ( true === $ws_ls_export_config[ 'meta' ] ) {
+
+		$meta_data = ws_ls_meta( $row[ 'id' ] );
+
+		// Pluck to meta_id => value
+		if ( false === empty( $meta_data ) ) {
+			$meta_data = wp_list_pluck( $meta_data, 'value', 'meta_field_id' );
+
+			foreach ( $meta_data as $key => $field ) {
+				$row[ 'meta-' . $key ] = ws_ls_fields_display_field_value( $field, $key, true );
+			}
+		}
+	}
+
+	$row = apply_filters( 'wlt-export-row', $row );
+
+	return $row;
+}
 
 /**
  * Export to JSON
@@ -260,54 +296,6 @@ function ws_ls_export_to_browser($data, $file_name = 'weight-loss-tracker.csv', 
 	}
 
 	return;
-}
-
-
-/**
- * Take a database row and expand with useful information
- * @param $row
- *
- * @return mixed
- */
-function ws_ls_export_row_prep( $row ) {
-
-	global $ws_ls_export_config;
-
-	$row[ 'user_nicename' ]                 = ws_ls_user_display_name( $row[ 'user_id' ] );
-	$row[ 'date-display' ]                  =  ws_ls_convert_ISO_date_into_locale( $row[ 'weight_date' ], 'display-date' );
-	$row[ 'weight' ]                        = ws_ls_weight_display( $row['kg'], $row[ 'user_id' ], 'display', true );
-	$row[ 'difference_from_start_display' ] = ws_ls_weight_difference_from_start( $row[ 'user_id' ], $row['kg'] );
-	$row[ 'difference_from_start_display' ] = ws_ls_weight_display( $row[ 'difference_from_start_display' ],  NULL, 'display', true, true );
-	$height                                 = ws_ls_user_preferences_get( 'height', $row[ 'user_id' ] );
-
-	if ( false === empty( $height ) ) {
-		$row['bmi']                             = ws_ls_calculate_bmi( $height, $row['kg'] ) ;
-		$row['bmi-readable']                    = ws_ls_calculate_bmi_label( $row['bmi'] );
-	}
-
-	if ( true === $ws_ls_export_config[ 'meta' ] ) {
-
-		$meta_data = ws_ls_meta( $row[ 'id' ] );
-
-		// Pluck to meta_id => value
-		if ( false === empty( $meta_data ) ) {
-			$meta_data = wp_list_pluck( $meta_data, 'value', 'meta_field_id' );
-
-			foreach ( $meta_data as $key => $field ) {
-				$row[ 'meta-' . $key ] = ws_ls_fields_display_field_value( $field, $key, true );
-			}
-		}
-
-	}
-
-	$row = apply_filters( 'wlt-export-row', $row );
-
-	// Lose data that isn't worth passing around
-	unset( $row[ 'weight_date' ] );
-	unset( $row[ 'kg' ] );
-	unset( $row[ 'id' ] );
-
-	return $row;
 }
 
 /**
