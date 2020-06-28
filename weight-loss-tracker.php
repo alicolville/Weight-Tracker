@@ -47,10 +47,10 @@ defined('ABSPATH') or die('Jog on!');
     $license_type = ws_ls_has_a_valid_license();
 
     // Standard Pro license?
-    if(in_array($license_type, ['pro', 'pro-old', 'pro-plus']) ){
-     define('WS_LS_IS_PRO', true);
+    if( true === in_array( $license_type, [ 'pro', 'pro-old', 'pro-plus' ] ) ){
+     define( 'WS_LS_IS_PRO', true);
     } else {
-     define('WS_LS_IS_PRO', false);
+     define( 'WS_LS_IS_PRO', false);
     }
 
     // Pro Plus license?
@@ -189,35 +189,20 @@ defined('ABSPATH') or die('Jog on!');
     		return;
 	    }
 
-//    	print_r( ws_ls_datatable_rows([ 'limit' => 500]) );
-//    	die;
+	 //   $setting = ws_ls_setting();
+
+    //	var_Dump( $setting );
+
+	    var_Dump( ws_ls_setting( 'weight-unit', 1 ) );
+	    var_Dump( ws_ls_setting( 'use-imperial', 1 ) );
+	    var_Dump( ws_ls_setting( 'use-us-dates', 1 ) );
 
     	$user_id = 1; // get_current_user_id();
 
-    	echo 'ID: ' . $user_id . '<br />';
-	//    $t = ws_ls_user_preferences_get( 'gender', $user_id );
 
-	  //  var_Dump($t);
+   // 	print_r(ws_ls_cache_user_get_all( $user_id ));
+	  //  print_r(ws_ls_cache_user_get_all( NULL ));
 
-	//    $t = ws_ls_user_preferences_settings( $user_id );
-
-	//    var_dump( $t );
-
-    	print_r(ws_ls_cache_user_get_all( $user_id ));
-	    print_r(ws_ls_cache_user_get_all( NULL ));
-	  //  var_Dump( ws_ls_entry_get_oldest_kg( $user_id ));
-
-
-	   // var_Dump( ws_ls_entry_get_latest_kg( $user_id ));
-
-	//  ws_ls_delete_cache( 'wt-item-1-entry-full-25794');
-
-	  //  print_R( ws_ls_cache_user_get( 1, 'entry-full-25794') );
-
-
-//		var_dump( ws_ls_cache_get( 'wt-item-new-users-shortcode-new-users-12868a28616a123a8ad5578cc2151162' ) );
-
-	  //  print_r( ws_ls_entry_get( [ 'user-id' => 1, 'id' => 25794 ] ) );
 
 
 		die;

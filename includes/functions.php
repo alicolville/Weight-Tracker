@@ -271,79 +271,6 @@ function ws_ls_create_dialog_jquery_code( $title, $message, $class_used_to_promp
 
 }
 
-function ws_ls_render_date($weight_object, $use_admin_setting = false)
-{
-	$config_setting = ($use_admin_setting) ? WE_LS_US_DATE : ws_ls_get_config('WE_LS_US_DATE');
-
-  	// Return US date if enabled otherwise return UK date
-	if($config_setting) {
-		return $weight_object['date-us'];
-	}
-	else {
-		return $weight_object['date-uk'];
-	}
-}
-function ws_ls_get_unit()
-{
-
-  switch (ws_ls_get_config('WE_LS_DATA_UNITS')) {
-    case 'pounds_only':
-      $unit = __("lbs", WE_LS_SLUG);
-      break;
-    case 'kg':
-      $unit = __("Kg", WE_LS_SLUG);
-      break;
-    default:
-      $unit = __("St", WE_LS_SLUG) . " " . __("lbs", WE_LS_SLUG);
-      break;
-  }
-
-  return $unit;
-}
-
-/**
- *
- * REFACTOR!!
- * CACHE!
- *
- * @return array|bool
- * @throws Exception
- */
-function ws_ls_get_week_ranges()
-{
-  $entered_date_ranges = ws_ls_db_dates_min_max_get(get_current_user_id());
-
-  if ($entered_date_ranges != false)  {
-
-    // Get min and max dates for weight entries
-    $start_date = new DateTime($entered_date_ranges[ 'min' ]);
-    $end_date = new DateTime($entered_date_ranges[ 'max' ]);
-
-    // Grab all the weekly intervals between those dates
-    $interval = new DateInterval('P1W');
-    $daterange = new DatePeriod($start_date, $interval ,$end_date);
-
-    $date_ranges = array();
-
-    $i = 1;
-
-    // Build an easy to use array
-    foreach($daterange as $date){
-
-      $end_of_week = clone $date;
-      $end_of_week = date_modify($end_of_week, '+1 week' );
-
-        $date_ranges[$i] =  array("start" => $date->format("Y-m-d"), "end" => $end_of_week->format("Y-m-d") );
-
-        $i++;
-    }
-
-    return $date_ranges;
-  }
-
-  return false;
-}
-
 /**
  * Get today's in the correct format
  * @param null $user_id
@@ -366,6 +293,50 @@ function ws_ls_date_todays_date( $user_id = NULL ) {
  */
 function ws_ls_get_date_format( $user_id = NULL ) {
   return ( true === ws_ls_get_config('WE_LS_US_DATE', $user_id ) ) ? 'm/d/Y': 'd/m/Y';
+}
+
+
+/**
+ *
+ * REFACTOR!!
+ * CACHE!
+ *
+ * @return array|bool
+ * @throws Exception
+ */
+function ws_ls_get_week_ranges()
+{
+	$entered_date_ranges = ws_ls_db_dates_min_max_get(get_current_user_id());
+
+	if ($entered_date_ranges != false)  {
+
+		// Get min and max dates for weight entries
+		$start_date = new DateTime($entered_date_ranges[ 'min' ]);
+		$end_date = new DateTime($entered_date_ranges[ 'max' ]);
+
+		// Grab all the weekly intervals between those dates
+		$interval = new DateInterval('P1W');
+		$daterange = new DatePeriod($start_date, $interval ,$end_date);
+
+		$date_ranges = array();
+
+		$i = 1;
+
+		// Build an easy to use array
+		foreach($daterange as $date){
+
+			$end_of_week = clone $date;
+			$end_of_week = date_modify($end_of_week, '+1 week' );
+
+			$date_ranges[$i] =  array("start" => $date->format("Y-m-d"), "end" => $end_of_week->format("Y-m-d") );
+
+			$i++;
+		}
+
+		return $date_ranges;
+	}
+
+	return false;
 }
 
 function ws_ls_display_week_filters($week_ranges, $selected_week_number)
@@ -406,8 +377,7 @@ function ws_ls_display_week_filters($week_ranges, $selected_week_number)
 
 }
 
-// TODO: This will need to be changed when globals are tweaked
-// TODO: Heabily refactor this function
+// TODO: DEPRECATED: Replace with ws_ls_setting()
 // Refactor to use: ws_ls_settings_weight_unit
 function ws_ls_get_config( $key, $user_id = NULL, $force_admin = false )
 {
@@ -1023,18 +993,18 @@ function ws_ls_groups_link() {
  * @param bool $link_only
  * @return string
  */
-function ws_ls_calculations_link($link_only = false) {
+function ws_ls_calculations_link( $link_only = false ) {
 
     $url = 'https://weight.yeken.uk/calculations/';
 
-    return (false === $link_only) ? sprintf('<a href="%s" target="blank">%s</a>', $url, __('Read more about calculations', WE_LS_SLUG)) : $url;
+    return ( false === $link_only ) ? sprintf('<a href="%s" target="blank">%s</a>', $url, __( 'Read more about calculations', WE_LS_SLUG ) ) : $url;
 }
 
 /**
 * Helper function to get URL for further info on license types.
 **/
 function ws_ls_url_license_types() {
-	return sprintf('For further information regarding the types of licenses available, <a href="%s" rel="noopener noreferrer" target="_blank">please visit our site, weight.yeken.uk</a>', esc_url(WE_LS_LICENSE_TYPES_URL));
+	return sprintf( 'For further information regarding the types of licenses available, <a href="%s" rel="noopener noreferrer" target="_blank">please visit our site, https;??weight.yeken.uk</a>', esc_url( WE_LS_LICENSE_TYPES_URL ) );
 }
 
 /**
@@ -1042,20 +1012,22 @@ function ws_ls_url_license_types() {
  * @param $text
  * @param string $type
  */
-function ws_ls_display_notice($text, $type = 'success') {
+function ws_ls_display_notice( $text, $type = 'success' ) {
 
-	if(true === empty($text)) {
+	if( true === empty( $text ) ) {
 		return;
 	}
 
-	$type = (false === empty($type) && false === in_array($type, ['success', 'error', 'warning', 'info'])) ? 'success' : $type;
+	$type = ( false === empty( $type )
+	            && false === in_array( $type, [ 'success', 'error', 'warning', 'info' ] ) ) ? 'success' :
+					$type;
 
 	echo sprintf('	<div class="notice notice-%s">
-						<p>%s</p>
-					</div>',
-                    wp_kses_post( $type ),
-                    wp_kses_post( $text )
-				);
+								<p>%s</p>
+							</div>',
+                            wp_kses_post( $type ),
+                            wp_kses_post( $text )
+	);
 }
 /**
  * If QS value detected, display data saved message
@@ -1218,7 +1190,7 @@ function ws_ls_photo_get_sizes($key = false) {
 				10000000 => '10Mb'
 	];
 
-	return ( false === empty($key) && array_key_exists($key, $sizes) ) ? $sizes[$key] : $sizes;
+	return ( false === empty( $key ) && array_key_exists( $key, $sizes ) ) ? $sizes[ $key ] : $sizes;
 }
 
 /**
@@ -1461,6 +1433,11 @@ function ws_ls_component_id() {
  * @return mixed
  */
 function ws_ls_user_preferences_is_enabled() {
+
+	if ( false === WS_LS_IS_PRO ) {
+		return false;
+	}
+
 	return ws_ls_option_to_bool( 'ws-ls-allow-user-preferences', 'no', true );
 }
 
@@ -1522,6 +1499,97 @@ function ws_ls_settings_weight_is_imperial() {
 }
 
 /**
+ * Is the site default (specified in admin settings) to use US date formats?
+ * @return bool
+ */
+function ws_ls_settings_date_is_us() {
+	return ( 'us' == get_option( 'ws-ls-use-us-dates', 'uk' ) );
+}
+
+/**
+ * Fetch a user setting, OR, if not applicable load the default site setting
+ *
+ * Works with:
+ *
+ *      Weight Unit         ( weight-unit )
+ *      Use Imperial Unit   ( use-imperial ) - historical
+ *      Use US Date format? ( use-us-dates )
+ *
+ * @param string $key
+ * @param null $user_id
+ * @param bool $force_admin
+ *
+ * @return bool|mixed|void|null
+ */
+function ws_ls_setting( $key = 'weight-unit', $user_id = NULL, $force_admin = false ) {
+
+	$mappings = ws_ls_setting_mappings();
+
+	// Valid key?
+	if ( true === empty( $mappings[ $key ] ) ) {
+		return NULL;
+	}
+
+	// Are we considering the user preferences?
+	if ( false === empty( $user_id )
+	            && true === ws_ls_user_preferences_is_enabled() &&
+	                false === $force_admin &&
+	                    false === is_admin() ) {
+
+		$user_preference    = NULL;
+		$legacy_key         = $mappings[ $key ];
+
+		// Do a direct lookup?
+		if ( true === in_array( $legacy_key, [ 'WE_LS_US_DATE', 'WE_LS_DATA_UNITS' ] ) ) {
+
+			$user_preference = ws_ls_user_preferences_settings_get( $legacy_key, $user_id );
+
+			// We don't need to store this any longer, it can be determined by the selected user weight unit
+		} elseif ( 'WE_LS_IMPERIAL_WEIGHTS' === $legacy_key ) {
+
+			$user_weight_unit = ws_ls_user_preferences_settings_get( 'WE_LS_DATA_UNITS', $user_id );
+
+			if ( false === empty( $user_weight_unit ) ) {
+				$user_preference = ( 'kg' !== $user_weight_unit );
+			}
+		}
+
+		// If we were able to find a user setting, then return that!
+		if ( false === empty( $user_preference ) ) {
+			return $user_preference;
+		}
+	}
+
+	// Use the defaults specified in admin settings
+	switch ( $key ) {
+
+		case 'weight-unit':
+			return ws_ls_settings_weight_unit();
+			break;
+		case 'use-imperial':
+			return ws_ls_settings_weight_is_imperial();
+			break;
+		case 'use-us-dates':
+			return ws_ls_settings_date_is_us();
+			break;
+	}
+
+	return NULL;
+}
+
+/**
+ * Return of setting keys against their legacy names (stored in user preferences table as part of a JSON object)
+ * @return array
+ */
+function ws_ls_setting_mappings() {
+	return [
+				'use-us-dates'  => 'WE_LS_US_DATE',
+				'weight-unit'   => 'WE_LS_DATA_UNITS',
+				'use-imperial'  => 'WE_LS_IMPERIAL_WEIGHTS'     // This is likely to be dropped as can be determined by WE_LS_DATA_UNITS
+	];
+}
+
+/**
  * Compare the given weight against a user's start weight and return difference
  * @param $user_id
  * @param $kg
@@ -1539,3 +1607,28 @@ function ws_ls_weight_difference_from_start( $user_id, $kg ) {
 
 	return $kg - $start_kg;
 }
+
+
+/**
+ * REFACTOR: replace with ws_ls_weight_unit_label
+ *
+ * @return string|void
+ */
+function ws_ls_get_unit()
+{
+
+	switch (ws_ls_get_config('WE_LS_DATA_UNITS')) {
+		case 'pounds_only':
+			$unit = __("lbs", WE_LS_SLUG);
+			break;
+		case 'kg':
+			$unit = __("Kg", WE_LS_SLUG);
+			break;
+		default:
+			$unit = __("St", WE_LS_SLUG) . " " . __("lbs", WE_LS_SLUG);
+			break;
+	}
+
+	return $unit;
+}
+
