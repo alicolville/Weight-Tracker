@@ -161,7 +161,7 @@ function ws_ls_form_weight( $arguments = [] ) {
 			false === $arguments[ 'hide-button-cancel' ] &&
 	            false === empty( $arguments[ 'redirect-url' ] ) ) {
 
-		$html .= sprintf('&nbsp;<button id="ws-ls-cancel" type="button" tabindex="%1$d" class="ws-ls-cancel-form button ws-ls-remove-on-submit" data-form-id="%2$s">%3$s</button>',
+		$html .= sprintf('&nbsp;<button type="button" tabindex="%1$d" class="ws-ls-cancel-form button ws-ls-remove-on-submit" data-form-id="%2$s">%3$s</button>',
 			ws_ls_form_tab_index_next(),
 			$arguments[ 'form-id' ],
 			__( 'Cancel', WE_LS_SLUG )

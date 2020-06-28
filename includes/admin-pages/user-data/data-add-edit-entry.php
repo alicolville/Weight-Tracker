@@ -6,8 +6,6 @@ function ws_ls_admin_page_data_add_edit() {
 
     ws_ls_permission_check_message();
 
-	$data = false;
-
 	// Determine user id / entry id
 	$user_id = ws_ls_querystring_value('user-id', true);
 	$entry_id = ws_ls_querystring_value('entry-id', true);
@@ -21,21 +19,16 @@ function ws_ls_admin_page_data_add_edit() {
 	// Ensure this WP user ID exists!
     ws_ls_user_exist_check( $user_id );
 
-	// If we have an entry ID, then load data
-	if ( $entry_id ) {
-		$data = ws_ls_entry_get( [ 'user-id' => $user_id, 'id' => $entry_id ] );
-	}
-
 	//If we have a Redirect URL, base decode.
 	$redirect_url = ws_ls_querystring_value('redirect');
 
-	if(false === empty($redirect_url)) {
-		$redirect_url = base64_decode($redirect_url);
+	if( false === empty( $redirect_url ) ) {
+		$redirect_url = base64_decode( $redirect_url );
 	}
 ?>
 	<div class="wrap ws-ls-user-data ws-ls-admin-page">
 		<div id="poststuff">
-			<?php ws_ls_user_header($user_id, ws_ls_get_link_to_user_profile($user_id)); ?>
+			<?php ws_ls_user_header( $user_id, ws_ls_get_link_to_user_profile( $user_id ) ); ?>
 			<div id="post-body" class="metabox-holder columns-2">
 				<div id="post-body-content">
 					<div class="meta-box-sortables ui-sortable">

@@ -135,4 +135,46 @@ jQuery( document ).ready( function ( $ ) {
             });
         }
     });
+
+  // $( '.ws-ls-cancel-form' ).click(function( event ) {
+  //   event.preventDefault();
+  //
+  //   var button = $(this);
+  //   var form_id = button.data('form-id');
+  //
+  //   if ( undefined !== form_id ) {
+  //
+  //     var redirect_url = $('#' + form_id + ' #redirect-url').val();
+  //
+  //     if ( undefined !== redirect_url ) {
+  //       window.location.href = redirect_url.replace('ws-edit-saved', 'ws-edit-cancel');
+  //     }
+  //
+  //   }
+  //
+  // });
+
+  /**
+   * Handle Cancel button weight entry forms
+   */
+  $( '.we-ls-weight-form' ).on( 'click', '.ws-ls-cancel-form', function( event ) {
+
+    event.preventDefault();
+
+    let button  = $( this );
+    let form_id = button.data( 'form-id' );
+
+    if ( undefined === form_id ) {
+      return;
+    }
+
+    let redirect_url = $('#' + form_id + ' #redirect-url').val();
+
+    if ( undefined === redirect_url ) {
+      return;
+    }
+
+    window.location.href = redirect_url.replace( 'ws-edit-saved', 'ws-edit-cancel' );
+  });
+
 });

@@ -8,24 +8,6 @@ jQuery( document ).ready(function ($, undefined) {
     // Add Footables to Calories and MacroN tables
     $('.ws-ls-footable').footable({});
 
-    $(".ws-ls-cancel-form").click(function( event ) {
-        event.preventDefault();
-
-        var button = $(this);
-        var form_id = button.data('form-id');
-
-        if ( undefined !== form_id ) {
-
-            var redirect_url = $('#' + form_id + ' #redirect-url').val();
-
-            if ( undefined !== redirect_url ) {
-                window.location.href = redirect_url.replace('ws-edit-saved', 'ws-edit-cancel');
-            }
-
-        }
-
-    });
-
     $(".ws-ls-user-data-ajax").each(function () {
 
         var table_id = $(this).attr("id");
@@ -484,7 +466,7 @@ jQuery( document ).ready(function ($, undefined) {
                     var values = row.val();
 
                     // If we're in Admin, redirect to the relevant admin screen. Otherwise, toggle edit in front end
-                    if(true === ws_ls_in_front_end() && 1 === ws_user_table_config['is-admin'] ) {
+                    if(true === ws_ls_in_front_end() && '1' !== ws_user_table_config[ 'is-admin' ] ) {
                         var url = ws_user_table_config['edit-url'];
                         url = url.replace('|ws-id|', values.db_row_id);
 
