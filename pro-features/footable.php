@@ -345,7 +345,7 @@ function ws_ls_data_js_config() {
 }
 
 /**
- * Are we on a user profile page?@
+ * Are we on a user profile page?
  * @return bool
  */
 function ws_ls_datatable_is_user_profile() {

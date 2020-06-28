@@ -104,7 +104,9 @@ function ws_ls_footable_delete_entry() {
 	if ( false !== $row_id
 	        && false !== $user_id &&
 	            true === ws_ls_db_entry_delete( $user_id, $row_id ) ) {
+
 		wp_send_json( 1 );
+
 	}
 
 	wp_send_json(0 );

@@ -141,11 +141,6 @@ function ws_ls_cache_user_delete( $user_id = NULL ) {
 	ws_ls_delete_cache( $user_id );
 }
 
-
-// ----------------------------------------------------------------
-// Generic caching
-// ----------------------------------------------------------------
-
 /**
  * Fetch Cache
  * @param $key
@@ -187,6 +182,16 @@ function ws_ls_delete_cache( $key ){
 
 	$key = ws_ls_cache_generate_key($key);
 	return delete_transient($key);
+}
+
+/**
+ * Delete admin cache
+ */
+function ws_ls_cache_delete_admin() {
+
+	ws_ls_cache_user_delete();
+
+	do_action( 'wlt-cache-admin-delete' );
 }
 
 /**

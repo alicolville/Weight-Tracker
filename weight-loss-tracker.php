@@ -189,8 +189,8 @@ defined('ABSPATH') or die('Jog on!');
     		return;
 	    }
 
-    	print_r( ws_ls_datatable_rows([ 'limit' => 500]) );
-    	die;
+//    	print_r( ws_ls_datatable_rows([ 'limit' => 500]) );
+//    	die;
 
     	$user_id = 1; // get_current_user_id();
 
