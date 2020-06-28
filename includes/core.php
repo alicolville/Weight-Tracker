@@ -10,15 +10,13 @@ function ws_ls_config_js() {
 
 	$user_id            = get_current_user_id();
 	$user_id            = apply_filters( 'wlt-filter-js-ws-ls-config-user-id', $user_id );
-	$message_for_pounds = ( ws_ls_get_config('WE_LS_IMPERIAL_WEIGHTS', $user_id )
-								&& 'stones_pounds' == ws_ls_get_config('WE_LS_DATA_UNITS', $user_id ) ) ?
+	$message_for_pounds = ( 'stones_pounds' == ws_ls_setting('weight-unit', $user_id ) ) ?
 									__( 'Please enter a value between 0-13.99 for pounds', WE_LS_SLUG ) :
 										__( 'Please enter a value between 1 and 5000 for pounds', WE_LS_SLUG );
 
-	$use_us_date        = ws_ls_get_config('WE_LS_US_DATE' );
+	$use_us_date        = ws_ls_setting('use-us-dates', $user_id );
 
-	$config = [
-					'us-date'                           => ( $use_us_date ) ? 'true' : 'false',
+	$config = [     'us-date'                           => ( $use_us_date ) ? 'true' : 'false',
 					'date-format'                       => ( $use_us_date ) ? 'mm/dd/yy' : 'dd/mm/yy',
     	            'clear-target'                      => __( 'Are you sure you wish to clear your target weight?', WE_LS_SLUG ),
 					'validation-about-you-mandatory'    => ( true === ws_ls_option_to_bool( 'ws-ls-about-you-mandatory', 'no', true ) ) ? 'true' : 'false',
