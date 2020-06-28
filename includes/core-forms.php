@@ -37,7 +37,7 @@ function ws_ls_form_weight( $arguments = [] ) {
 
 		// Did we manage to fetch an entry?
 		if ( true === empty( $arguments[ 'entry' ] ) ) {
-			return ws_ls_blockquote_error( __( 'There was an issue loading the data for this weight entry.', WE_LS_SLUG ) );
+			return ws_ls_blockquote_error( __( 'The selected entry no longer exists.', WE_LS_SLUG ) );
 		}
 
 		$arguments[ 'hide-button-cancel' ] = false;

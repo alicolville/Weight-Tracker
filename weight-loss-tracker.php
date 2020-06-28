@@ -119,7 +119,6 @@ defined('ABSPATH') or die('Jog on!');
 		'pro-features/user-groups.php',
         'pro-features/user-birthdays.php',
         'pro-features/user-preferences.php',
-        'pro-features/ajax.php',
         'pro-features/shortcode-chart.php',
         'pro-features/shortcode-form.php',
         'pro-features/shortcode-footable.php',
