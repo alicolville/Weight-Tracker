@@ -97,15 +97,17 @@ function ws_ls_footable_delete_entry() {
 
 	check_ajax_referer( 'ws-ls-user-tables', 'security' );
 
-	$row_id = ws_ls_get_numeric_post_value('row_id');
-	$user_id = ws_ls_get_numeric_post_value('user_id');
+	$row_id  = ws_ls_post_value_numeric( 'row_id' );
+	$user_id = ws_ls_post_value_numeric( 'user_id' );
 
 	// IF we have valid inputs, try and delete from DB.
-	if ($row_id && $user_id && ws_ls_db_entry_delete($user_id, $row_id)) {
-		wp_send_json(1);
+	if ( false !== $row_id
+	        && false !== $user_id &&
+	            true === ws_ls_db_entry_delete( $user_id, $row_id ) ) {
+		wp_send_json( 1 );
 	}
 
-	wp_send_json(0);
+	wp_send_json(0 );
 }
 add_action( 'wp_ajax_delete_entry', 'ws_ls_footable_delete_entry' );
 
@@ -134,15 +136,3 @@ function ws_ls_ajax_get_errors(){
 
 }
 add_action( 'wp_ajax_get_errors', 'ws_ls_ajax_get_errors' );
-
-/**
- * Deprecated!! Replace with  ws_ls_post_value_numeric
- *
- * @param $key
- * @param bool $default
- *
- * @return bool|mixed
- */
-function ws_ls_get_numeric_post_value($key, $default = false) {
-	return (isset($_POST[$key]) && is_numeric($_POST[$key])) ? $_POST[$key] : $default;
-}

@@ -917,6 +917,18 @@ function ws_ls_post_value_numeric( $key, $default = NULL ) {
 }
 
 /**
+ * Deprecated!! Replace with  ws_ls_post_value_numeric
+ *
+ * @param $key
+ * @param bool $default
+ *
+ * @return bool|mixed
+ */
+function ws_ls_get_numeric_post_value($key, $default = false) {
+	return (isset($_POST[$key]) && is_numeric($_POST[$key])) ? $_POST[$key] : $default;
+}
+
+/**
  * Do we have a validate height
  * @param $height
  *
