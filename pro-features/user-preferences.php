@@ -8,6 +8,9 @@ defined('ABSPATH') or die("Jog on!");
  */
 function ws_ls_user_preferences_form( $user_defined_arguments ) {
 
+
+	// TODO: Check if user PRO?
+
     // If not logged in then return no value
     if ( false === is_user_logged_in() )	{
 		return ws_ls_display_blockquote( __('You must be logged in to edit your settings.', WE_LS_SLUG) , '', false, true);

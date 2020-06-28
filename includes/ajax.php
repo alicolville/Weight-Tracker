@@ -25,6 +25,10 @@ add_action( 'wp_ajax_ws_ls_clear_target', 'ws_ls_clear_target_callback' );
  */
 function ws_ls_save_preferences_callback() {
 
+	if ( false === WS_LS_IS_PRO ) {
+		wp_send_json( 0 );
+	}
+
 	check_ajax_referer( 'ws-ls-nonce', 'security' );
 
 	$in_admin_area = ( NULL !== ws_ls_post_value('we-ls-in-admin' ) ) ? true : false;
@@ -65,6 +69,10 @@ Load data for user table (admin)
  **/
 function ws_ls_get_table_data() {
 
+	if ( false === WS_LS_IS_PRO ) {
+		wp_send_json( [] );
+	}
+
 	check_ajax_referer( 'ws-ls-user-tables', 'security' );
 
 	// Filter?
@@ -95,6 +103,10 @@ Ajax handler used for deleting rows in a footable
  **/
 function ws_ls_footable_delete_entry() {
 
+	if ( false === WS_LS_IS_PRO ) {
+		wp_send_json(0 );
+	}
+
 	check_ajax_referer( 'ws-ls-user-tables', 'security' );
 
 	$row_id  = ws_ls_post_value_numeric( 'row_id' );
@@ -114,8 +126,8 @@ function ws_ls_footable_delete_entry() {
 add_action( 'wp_ajax_delete_entry', 'ws_ls_footable_delete_entry' );
 
 /**
-Fetch Errors
- **/
+ * Fetch error log entries
+ */
 function ws_ls_ajax_get_errors(){
 
 	check_ajax_referer( 'ws-ls-user-tables', 'security' );
@@ -123,9 +135,9 @@ function ws_ls_ajax_get_errors(){
 	$table_id = ws_ls_post_value('table_id');
 
 	$columns = [
-		[ 'name' => 'timestamp', 'title' => __('Date', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'date' ],
-		[ 'name' => 'module', 'title' => __('Module', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ],
-		[ 'name' => 'message', 'title' => __('Message', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ]
+		[ 'name' => 'timestamp', 'title' => __( 'Date', WE_LS_SLUG ), 'breakpoints'=> '', 'type' => 'date' ],
+		[ 'name' => 'module', 'title' => __( 'Module', WE_LS_SLUG ), 'breakpoints'=> '', 'type' => 'text' ],
+		[ 'name' => 'message', 'title' => __( 'Message', WE_LS_SLUG ), 'breakpoints'=> '', 'type' => 'text' ]
 	];
 
 	$data = [
@@ -134,7 +146,7 @@ function ws_ls_ajax_get_errors(){
 		'table_id' => $table_id
 	];
 
-	wp_send_json($data);
+	wp_send_json( $data );
 
 }
 add_action( 'wp_ajax_get_errors', 'ws_ls_ajax_get_errors' );
