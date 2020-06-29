@@ -332,7 +332,7 @@ function ws_ls_data_js_config() {
 		$config[ 'edit-url' ]               = esc_url( add_query_arg( 'ws-edit-entry', '|ws-id|', $edit_link ) );
 		$config[ 'current-url-base64' ]     = add_query_arg( 'ws-edit-saved', 'true', $edit_link );
 		$config[ 'current-url-base64' ]     = base64_encode($config['current-url-base64']);
-        $config[ 'us-date' ]                = ( false === ws_ls_setting('weight-unit', get_current_user_id() ) ) ? 'false' : 'true';
+        $config[ 'us-date' ]                = ( false === ws_ls_setting('use-us-dates', get_current_user_id() ) ) ? 'false' : 'true';
 
     } else {
 		$config[ 'current-url-base64' ]     = ws_ls_get_url( true );
