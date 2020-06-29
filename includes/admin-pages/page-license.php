@@ -92,7 +92,7 @@ function ws_ls_advertise_pro() {
 
 										$display_pro_marketing = true;
 
-									} elseif ($display_pro_plus_marketing) {
+									} elseif ( $display_pro_plus_marketing ) {
 
 										echo sprintf('<p>%s %s %s</p>',
 											__('Of course, a big thank you purchasing a Pro license at some point - it is much appreciated. As you can see below, you can further expand the features of', WE_LS_SLUG),
@@ -119,24 +119,15 @@ function ws_ls_advertise_pro() {
                                                 WE_LS_FREE_TRIAL_URL,
                                                 ws_ls_generate_site_hash(),
                                                 ws_ls_license_get_old_or_new(),
-                                                __('Get a free 7 day trial!', WE_LS_SLUG)
+                                                __( 'Get a free 7 day trial!', WE_LS_SLUG )
                                             );
 
                                             }
 
 										    if ($display_pro_plus_marketing)  {
 
-                                            $text = __('Upgrade to Pro Plus for', WE_LS_SLUG) . ' &pound;' . $proprice . ' ' . __('a year', WE_LS_SLUG);
+                                            $text = __( 'Upgrade to Pro Plus for', WE_LS_SLUG) . ' &pound;' . $proprice . ' ' . __('a year', WE_LS_SLUG);
                                             $link = WE_LS_UPGRADE_TO_PRO_PLUS_URL;
-
-                                            // If an old Pro license, then offer them 50% off upgrading!
-                                            if ( true ===  in_array($license_type, ['pro', 'pro-old']) ) {
-                                                $proprice = $proprice / 2;
-                                                $text = __('Upgrade to Pro Plus for', WE_LS_SLUG) . ' &pound;' . $proprice . ' ' . __('a year', WE_LS_SLUG) .
-                                                    /* xgettext:no-php-format */
-                                                    __(' (50% discount)', WE_LS_SLUG);
-                                                $link = WE_LS_UPGRADE_TO_PRO_PLUS_UPGRADE_URL;
-                                            }
 
 										    echo sprintf('<a href="%s?hash=%s&license=%s" rel="noopener noreferrer" target="_blank" class="button-primary ws-ls-upgrade-button"><i class="fa fa-plus"></i> <i class="fa fa-plus"></i> %s</a>',
                                                 $link,

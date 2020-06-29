@@ -143,7 +143,8 @@ defined('ABSPATH') or die('Jog on!');
         'pro-features/plus/awards/functions.php',
         'pro-features/plus/awards/db.php',
         'pro-features/plus/awards/hooks.php',
-	    'pro-features/emails.php'
+	    'pro-features/emails.php',
+	    'pro-features/plus/challenge/inc.php'
     ];
 
     // Gravity Forms
@@ -160,11 +161,6 @@ defined('ABSPATH') or die('Jog on!');
             'pro-features/plus/macronutrient-calculator.php'
         ]);
 
-        // Challenge enabled?
-        if  ( true === WS_LS_IS_PRO_PLUS &&
-            'yes' === get_option( 'ws-ls-challenges-enabled', 'no' ) ) {
-            $files_to_include[] = 'pro-features/plus/challenge/inc.php';
-        }
     }
 
 	$files_to_include[] = 'includes/deprecated.php';

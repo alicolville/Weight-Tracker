@@ -57,11 +57,7 @@ function ws_ls_challenges_admin_page() {
         <div id="post-body" class="metabox-holder">
             <div id="post-body-content">
                 <div class="meta-box-sortables ui-sortable">
-                    <?php
-                        if ( true !== WS_LS_IS_PRO ) {
-                            ws_ls_display_pro_upgrade_notice();
-                        }
-                    ?>
+
                     <?php if ( true === in_array( $mode, [ 'delete', 'list' ] ) ): ?>
                         <div class="postbox">
                             <h2 class="hndle"><span><?php echo __( 'Current Challenges', WE_LS_SLUG ); ?></span></h2>
@@ -180,7 +176,7 @@ function ws_ls_challenges_admin_disabled() { ?>
             <div id="post-body-content">
                 <div class="meta-box-sortables ui-sortable">
                     <?php
-                    if ( true !== WS_LS_IS_PRO ) {
+                    if ( true !== WS_LS_IS_PRO_PLUS ) {
                         ws_ls_display_pro_upgrade_notice();
                     }
                     ?>

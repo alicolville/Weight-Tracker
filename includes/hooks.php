@@ -12,12 +12,9 @@
         add_submenu_page( 'ws-ls-data-home', __('Manage User Data', WE_LS_SLUG),  __( 'Manage User Data', WE_LS_SLUG ), $minimum_role_to_view, 'ws-ls-data-home', 'ws_ls_admin_page_data_home');
 		add_submenu_page( 'ws-ls-data-home', __('Custom Fields', WE_LS_SLUG),  __('Custom Fields', WE_LS_SLUG), 'manage_options', 'ws-ls-meta-fields', 'ws_ls_meta_fields_page');
         add_submenu_page( 'ws-ls-data-home', __('Awards', WE_LS_SLUG),  __('Awards', WE_LS_SLUG), 'manage_options', 'ws-ls-awards', 'ws_ls_awards_page');
+        add_submenu_page( 'ws-ls-data-home', __( 'Challenges', WE_LS_SLUG),  __('Challenges', WE_LS_SLUG), 'manage_options', 'ws-ls-challenges', 'ws_ls_challenges_admin_page' );
 
-        if ( true === ws_ls_challenges_is_enabled() ) {
-            add_submenu_page( 'ws-ls-data-home', __( 'Challenges', WE_LS_SLUG),  __('Challenges', WE_LS_SLUG), 'manage_options', 'ws-ls-challenges', 'ws_ls_challenges_admin_page' );
-        }
-
-		$menu_text = (false === WS_LS_IS_PRO && false === WS_LS_IS_PRO_PLUS) ? __('Upgrade', WE_LS_SLUG) : __('Your License', WE_LS_SLUG);
+		$menu_text = ( false === WS_LS_IS_PRO && false === WS_LS_IS_PRO_PLUS ) ? __('Upgrade', WE_LS_SLUG) : __('Your License', WE_LS_SLUG);
 
         add_submenu_page( 'ws-ls-data-home', $menu_text,  $menu_text, 'manage_options', 'ws-ls-license', 'ws_ls_advertise_pro');
 		add_submenu_page( 'ws-ls-data-home', __('Settings', WE_LS_SLUG),  __('Settings', WE_LS_SLUG), 'manage_options', 'ws-ls-settings', 'ws_ls_settings_page');
