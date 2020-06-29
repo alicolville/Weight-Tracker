@@ -17,7 +17,8 @@ function ws_ls_data_table_render( $arguments = [] ) {
 	                                            'enable-add-edit'       => true,
 												'enable-meta-fields'    => ( true === ws_ls_meta_fields_is_enabled() &&
 												                                ws_ls_meta_fields_number_of_enabled() > 0 ),
-												'page-size'             => 10
+												'page-size'             => 10,
+												'week'                  => NULL
 	] );
 
 	ws_ls_data_table_enqueue_scripts();
@@ -65,7 +66,8 @@ function ws_ls_data_table_render( $arguments = [] ) {
 									data-user-id="%3$d",
 									data-max-entries="%4$d"
 									data-small-width="%5$s"
-									data-enable-meta-fields="%6$s">
+									data-enable-meta-fields="%6$s"
+									data-week="%8$d" >
 		</table>',
 			ws_ls_component_id(),
 			true === $arguments[ 'enable-add-edit' ] ? 'true' : 'false',
@@ -73,7 +75,8 @@ function ws_ls_data_table_render( $arguments = [] ) {
 			false === empty( $arguments[ 'limit' ] ) ? $arguments[ 'limit' ] : 'false',
 			true === $arguments[ 'smaller-width' ] ? 'true' : 'false',
 			true === $arguments[ 'enable-meta-fields' ] ? 'true' : 'false',
-			$arguments[ 'page-size' ]
+			$arguments[ 'page-size' ],
+			$arguments[ 'week' ]
 		);
 
 		if ( true === empty( $arguments[ 'user-id' ] ) ) {
@@ -95,6 +98,7 @@ function ws_ls_datatable_rows( $arguments ) {
 	$arguments = wp_parse_args( $arguments, [	 'user-id'          => NULL,
 	                                             'limit'            => NULL,
 	                                             'smaller-width'    => false,
+	                                             'week'             => NULL,
 	                                             'front-end'        => false,
 	                                             'sort'             => 'desc',
 												 'enable-meta'      => true,

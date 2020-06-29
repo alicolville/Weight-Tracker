@@ -15,6 +15,7 @@ jQuery( document ).ready(function ($, undefined) {
         var max_entries = $(this).data("max-entries");
         var small_width = $(this).data("small-width");
         var enable_meta_fields = $(this).data("enable-meta-fields");
+        var week = $(this).data("week");
 
         ws_ls_log('Setting up user data table: ' + table_id);
 
@@ -28,6 +29,7 @@ jQuery( document ).ready(function ($, undefined) {
         data['front-end'] = ws_ls_in_front_end();
         data['enable-meta-fields'] = enable_meta_fields;
         data[ 'in-admin'] = ws_user_table_config[ 'is-admin' ];
+        data[ 'week'] = week;
 
       ws_ls_post_data_to_WP('table_data', data, ws_ls_callback_setup_table)
 

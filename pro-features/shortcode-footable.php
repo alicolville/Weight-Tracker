@@ -12,7 +12,8 @@ function ws_ls_shortcode_table($user_defined_arguments) {
         array(
             'user-id' => get_current_user_id(),
 			'enable-add-edit' => false,
-            'enable-meta-fields' => false
+            'enable-meta-fields' => false,
+	        'week' => NULL
         ), $user_defined_arguments);
 
     $arguments['user-id'] = ws_ls_force_numeric_argument($arguments['user-id'], get_current_user_id());
@@ -24,7 +25,7 @@ function ws_ls_shortcode_table($user_defined_arguments) {
 		$arguments['enable-add-edit'] = false;
 	}
 
-	return ws_ls_data_table_render( [ 'user-id' => $arguments['user-id'], 'enable-add-edit' => $arguments['enable-add-edit'], 'enable-meta-fields' => $arguments['enable-meta-fields'] ] );
+	return ws_ls_data_table_render( [ 'user-id' => $arguments['user-id'], 'enable-add-edit' => $arguments['enable-add-edit'], 'enable-meta-fields' => $arguments['enable-meta-fields'], 'week' => $arguments['week'] ] );
 }
 add_shortcode( 'wlt-table', 'ws_ls_shortcode_table' );
 add_shortcode( 'wt-table', 'ws_ls_shortcode_table' );

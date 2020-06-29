@@ -78,6 +78,7 @@ function ws_ls_get_table_data() {
 	// Filter?
 	$max_entries                        = ws_ls_get_numeric_post_value('max_entries');
 	$user_id                            = ws_ls_get_numeric_post_value('user_id');
+	$week_number                        = ws_ls_get_numeric_post_value('week');
 	$table_id                           = ws_ls_post_value('table_id');
 	$small_width                        = ws_ls_post_value_to_bool( 'small_width' );
 	$front_end                          = ws_ls_post_value_to_bool( 'front-end' );
@@ -91,7 +92,7 @@ function ws_ls_get_table_data() {
 
 	$data = [
 		'columns'   => ws_ls_datatable_columns( $small_width, $front_end, $enable_meta ),
-		'rows'      => ws_ls_datatable_rows( [ 'user-id'  => $user_id, 'limit' => $max_entries, 'smaller-width' => $small_width, 'front-end' => $front_end, 'enable-meta' => $enable_meta, 'in-admin' => $ws_ls_request_from_admin_screen ] ),
+		'rows'      => ws_ls_datatable_rows( [ 'user-id'  => $user_id, 'limit' => $max_entries, 'smaller-width' => $small_width, 'front-end' => $front_end, 'enable-meta' => $enable_meta, 'in-admin' => $ws_ls_request_from_admin_screen, 'week' => $week_number ] ),
 		'table_id'  => $table_id
 	];
 

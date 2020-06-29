@@ -77,7 +77,7 @@
 				$html_output .= ws_ls_display_blockquote(__('Your weight history has been deleted!', WE_LS_SLUG), 'ws-ls-success');
 			}
 			// Has the user selected a particular week to look at?
-			$selected_week_number = -1;
+			$selected_week_number = NULL;
 			if (isset($_POST["week_number"]) && is_numeric($_POST["week_number"])) {
 				$selected_week_number = $_POST["week_number"];
 			}
@@ -87,7 +87,7 @@
 				$week_ranges = ws_ls_get_week_ranges();
 			}
 
-			$weight_data = ws_ls_entries_get( [ 'week' => $selected_week_number, 'prep' => true ] );
+			$weight_data = ws_ls_entries_get( [ 'week' => $selected_week_number, 'prep' => true, 'week' => $selected_week_number ] );
 
 			// If enabled, render tab header
 			if ( $use_tabs )	{
@@ -234,17 +234,18 @@
 
 					// Display week filters and data tab
 					$html_output .= ws_ls_title( __('Weight History', WE_LS_SLUG ) );
+
 					if( count($week_ranges) <= 150 ) {
 						$html_output .= ws_ls_display_week_filters( $week_ranges, $selected_week_number );
 					}
 
 					if ( WS_LS_IS_PRO && false === $shortcode_arguments['disable-advanced-tables'] ){
-						$html_output .=  ws_ls_shortcode_table( [ 'user-id' => $user_id, 'enable-add-edit' => true, 'enable-meta-fields' => true ] );
+						$html_output .=  ws_ls_shortcode_table( [ 'user-id' => $user_id, 'enable-add-edit' => true, 'enable-meta-fields' => true,  'week' => $selected_week_number ] );
 					} else {
 						$html_output .= ws_ls_display_table( $user_id, $weight_data );
 					}
 			}
-            elseif ($use_tabs && $selected_week_number != -1) {
+            elseif ($use_tabs && false === empty( $selected_week_number ) ) {
 				$html_output .= __('There is no data for this week, please try selecting another:', WE_LS_SLUG);
                 if(count($week_ranges) <= 150) {
                     $html_output .= ws_ls_display_week_filters($week_ranges, $selected_week_number);

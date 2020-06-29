@@ -223,7 +223,7 @@ function ws_ls_display_week_filters($week_ranges, $selected_week_number)
     // Loop through each weekly option and build drop down
     foreach ($week_ranges as $key => $week) {
 
-      $date_format = ws_ls_get_date_format();
+      $date_format = ws_ls_get_date_format( get_current_user_id() );
 
       $start_date = new DateTime($week['start']);
       $start_date = $start_date->format($date_format);
@@ -851,7 +851,7 @@ function ws_ls_calculations_link( $link_only = false ) {
 * Helper function to get URL for further info on license types.
 **/
 function ws_ls_url_license_types() {
-	return sprintf( 'For further information regarding the types of licenses available, <a href="%s" rel="noopener noreferrer" target="_blank">please visit our site, https;??weight.yeken.uk</a>', esc_url( WE_LS_LICENSE_TYPES_URL ) );
+	return sprintf( 'For further information regarding the types of licenses available, <a href="%s" rel="noopener noreferrer" target="_blank">please visit our site, https://weight.yeken.uk</a>', esc_url( WE_LS_LICENSE_TYPES_URL ) );
 }
 
 /**
@@ -1404,7 +1404,7 @@ function ws_ls_setting( $key = 'weight-unit', $user_id = NULL, $force_admin = fa
 				$user_preference = ( 'kg' !== $user_weight_unit );
 			}
 		}
-	
+
 		// If we were able to find a user setting, then return that!
 		if ( false === $user_preference ||
 		        false === empty( $user_preference ) ) {
