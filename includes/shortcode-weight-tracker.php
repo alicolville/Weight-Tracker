@@ -184,7 +184,7 @@
 			}
 
 			// Include target form?
-			if (WE_LS_ALLOW_TARGET_WEIGHTS && false == $shortcode_arguments['hide-first-target-form']) {
+			if ( true === ws_ls_targets_enabled() && false == $shortcode_arguments['hide-first-target-form']) {
 				$html_output .= ws_ls_form_weight( [ 'is-target-form' => true, 'css-class-form' => 'ws-ls-target-form', 'user-id' => $user_id ] ) . ' <br />';
 			}
 
@@ -228,7 +228,7 @@
             //If we have data, display data table
 			if ( $weight_data && ( count( $weight_data ) > 0 || $selected_week_number != -1 ) )	{
 
-					if ( WE_LS_ALLOW_TARGET_WEIGHTS && $use_tabs && false == $shortcode_arguments['hide-second-target-form'] ) {
+					if ( true === ws_ls_targets_enabled() && $use_tabs && false == $shortcode_arguments['hide-second-target-form'] ) {
 						$html_output .= ws_ls_form_weight( [ 'is-target-form' => true, 'css-class-form' => 'ws-ls-target-form', 'user-id' => $user_id ] ) . ' <br />';
 					}
 

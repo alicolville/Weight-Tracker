@@ -25,7 +25,6 @@
 
     // Set defaults
 	$globals = array(
-		'WE_LS_ALLOW_TARGET_WEIGHTS' => true,
 		'WE_LS_DISPLAY_BMI_IN_TABLES' => false,
 		'WS_LS_CAL_CAP_MALE' => 1900,
         'WS_LS_CAL_CAP_FEMALE' => 1400,
@@ -36,20 +35,7 @@
         'WE_LS_THIRD_PARTY_GF_ENABLE' => false
 	);
 
-
-	/*
-	 * **********
-	 * REFATCOR BELOW to use ws_ls_settings_weight_unit() / ws_ls_settings_weight_is_imperial()
-	 */
-
-
-	// -----------------------------------------------------------------------------------
-	// Define if target weights enabled
-	// -----------------------------------------------------------------------------------
-	if ('no' == get_option('ws-ls-allow-targets')) {
-		$globals['WE_LS_ALLOW_TARGET_WEIGHTS'] = false;
-	}
-
+	
 	// -----------------------------------------------------------------------------------
 	// Display BMI in tables?
 	// -----------------------------------------------------------------------------------

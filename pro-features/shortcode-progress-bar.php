@@ -32,7 +32,7 @@ function ws_ls_shortcode_progress_bar($user_defined_arguments) {
 	$display_errors = ws_ls_force_bool_argument($arguments['display-errors']);
 
 	// Are targets enabled? If not, no point carrying on!
-	if(WE_LS_ALLOW_TARGET_WEIGHTS) {
+	if( true === ws_ls_targets_enabled() ) {
 
 		// Width / Height specified for circle?
 		$arguments['width-height-specified'] = (isset($user_defined_arguments['width']) || isset($user_defined_arguments['height'])) ?

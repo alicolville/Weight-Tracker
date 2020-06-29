@@ -1297,6 +1297,14 @@ function ws_ls_css_is_disabled() {
 }
 
 /**
+ * Are target forms enabled?
+ * @return bool
+ */
+function ws_ls_targets_enabled() {
+	return ( 'yes' === get_option( 'ws-ls-allow-targets', 'yes' ) );
+}
+
+/**
  * Fetch weight unit as readable text
  * @param $key
  *

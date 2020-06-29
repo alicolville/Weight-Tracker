@@ -21,7 +21,7 @@ function ws_ls_shortcode_reminder($user_defined_arguments, $content = null) {
 									'link' => ''				// Wrap the message in a link
 								), $user_defined_arguments );
 
-	$target_required = (in_array($arguments['type'], array('target', 'both')) && WE_LS_ALLOW_TARGET_WEIGHTS && NULL == ws_ls_target_get(get_current_user_id()));
+	$target_required = (in_array($arguments['type'], array('target', 'both')) && true === ws_ls_targets_enabled() && NULL == ws_ls_target_get(get_current_user_id()));
 	$weight_required = (in_array($arguments['type'], array('weight', 'both')) && !ws_ls_db_entry_for_date(get_current_user_id(), date('Y-m-d')));
 
 	// Missing both?

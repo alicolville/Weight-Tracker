@@ -127,9 +127,12 @@ function ws_ls_settings_page_generic() {
 													<tr>
                                                         <th scope="row"><?php echo __( 'Allow target weights?' , WE_LS_SLUG); ?></th>
                                                         <td>
+	                                                        <?php
+	                                                            $target_weights = get_option( 'ws-ls-allow-targets', 'yes' );
+	                                                        ?>
                                                             <select id="ws-ls-allow-targets" name="ws-ls-allow-targets">
-                                                                <option value="yes" <?php selected( get_option('ws-ls-allow-targets'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG); ?></option>
-                                                                <option value="no" <?php selected( get_option('ws-ls-allow-targets'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG); ?></option>
+                                                                <option value="yes" <?php selected( $target_weights, 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG); ?></option>
+                                                                <option value="no" <?php selected( $target_weights, 'no' ); ?>><?php echo __('No', WE_LS_SLUG); ?></option>
                                                             </select>
                                                             <p><?php echo __('If enabled, a user is allowed to enter a target weight. This will be displayed as a horizontal bar on the line chart.', WE_LS_SLUG); ?></p>
                                                         </td>
