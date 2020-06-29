@@ -452,12 +452,12 @@ function ws_ls_db_dates_min_max_get( $user_id ) {
 	}
 
 	if ( $cache = ws_ls_cache_user_get( $user_id, 'min-max-dates' ) ) {
-		return $cache;
+	//	return $cache;
 	}
 
 	global $wpdb;
 
-	$sql = $wpdb->prepare('SELECT min( weight_date ) as min, max( weight_date ) as max FROM ' . $wpdb->prefix . WE_LS_TABLENAME . ' WHERE weight_user_id = %d', $user_id );
+	$sql = $wpdb->prepare('SELECT min( weight_date ) as min, max( weight_date ) as max FROM ' . $wpdb->prefix . WE_LS_TABLENAME . ' WHERE weight_user_id = %d AND weight_date <> "0000-00-00 00:00:00"', $user_id );
 	$row = $wpdb->get_row($sql, ARRAY_A);
 
 	ws_ls_cache_user_set( $user_id, 'min-max-dates', $row );

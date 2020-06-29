@@ -52,7 +52,7 @@ function ws_ls_admin_page_data_user() {
 							<?php
 
 								// Fetch last 25 weight entries
-								$weight_data = ws_ls_entries_get( [ 'user-id' => $user_id, 'limit' => 25, 'prep' => true ] );
+								$weight_data = ws_ls_entries_get( [ 'user-id' => $user_id, 'limit' => 25, 'prep' => true, 'sort' => 'desc', 'reverse' => true ] );
 
                                 if ( true !== WS_LS_IS_PRO ) {
 

@@ -490,7 +490,8 @@ function ws_ls_entries_get( $arguments ) {
 	                                            'limit'     => ws_ls_option( 'ws-ls-max-points', '25', true ),
 	                                            'week'      => NULL,
 	                                            'sort'      => 'asc',
-	                                            'prep'      => false
+	                                            'prep'      => false,
+												'reverse'   => false    // Handy when charting
 	] );
 
 	$entries = ws_ls_db_entries_get( $arguments );
@@ -498,6 +499,10 @@ function ws_ls_entries_get( $arguments ) {
 	if ( true === $arguments[ 'prep' ] &&
 	        false === empty( $entries ) ) {
 		$entries = array_map( 'ws_ls_weight_prep', $entries );
+	}
+
+	if ( true === $arguments[ 'reverse' ] ) {
+		$entries = array_reverse( $entries );
 	}
 
 	return $entries;
