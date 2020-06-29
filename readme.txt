@@ -233,6 +233,7 @@ add_shortcode( 'wlt-table', 'ws_ls_shortcode_table' ); to add_shortcode( 'wt-tab
 * Bug fix: User data tables, difference in weight field now displays correct difference.
 * Bug fix: Stats database table is also cleared when all user data has been deleted.
 * Bug fix: When all user data has been removed, cache is now cleared.
+* Bug fix: Week selector works correctly on [wlt] shortcode when showing advanced data table.
 * Bug fix: When exporting to CSV / JSON, HTML is removed from image custom fields. Instead the full URL is returned.
 
 = 7.6.2 =

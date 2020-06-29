@@ -783,7 +783,7 @@ function ws_ls_user_preferences_settings( $user_id = NULL ) {
  *
  * @return |null
  */
-function ws_ls_user_preferences_settings_get( $field = 'WE_LS_DATA_UNITS', $user_id = MILL ) {
+function ws_ls_user_preferences_settings_get( $field = 'WE_LS_DATA_UNITS', $user_id = NULL ) {
 
 	// Ensure a valid setting
 	if ( false === in_array( $field, [ 'WE_LS_DATA_UNITS', 'WE_LS_US_DATE', 'WE_LS_IMPERIAL_WEIGHTS' ] ) ) {

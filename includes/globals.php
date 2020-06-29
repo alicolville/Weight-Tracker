@@ -25,8 +25,6 @@
 
     // Set defaults
 	$globals = array(
-		'WE_LS_DATA_UNITS' => 'kg',
-		'WE_LS_IMPERIAL_WEIGHTS' => false,
 		'WE_LS_ALLOW_TARGET_WEIGHTS' => true,
 		'WE_LS_US_DATE' => false,
 		'WS_LS_ADVANCED_TABLES' => true,
@@ -49,13 +47,6 @@
 	 */
 
 
-	// -----------------------------------------------------------------------------------
-	// Define whether Imperial and Units
-	// -----------------------------------------------------------------------------------
-	if ('stones_pounds' == get_option('ws-ls-units') || 'pounds_only' == get_option('ws-ls-units')) {
-		$globals['WE_LS_DATA_UNITS'] = get_option('ws-ls-units');
-		$globals['WE_LS_IMPERIAL_WEIGHTS'] = true;
-	}
 	// -----------------------------------------------------------------------------------
 	// UK or US date?
 	// -----------------------------------------------------------------------------------
