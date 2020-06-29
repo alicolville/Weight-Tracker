@@ -27,16 +27,16 @@ defined('ABSPATH') or die('Jog on!');
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-    define('WS_LS_ABSPATH', plugin_dir_path( __FILE__ ));
-    define('WE_LS_CURRENT_VERSION', '7.7-beta4');
-    define('WE_LS_DB_VERSION', '7.7-beta4');
+    define( 'WS_LS_ABSPATH', plugin_dir_path( __FILE__ ) );
+    define( 'WE_LS_CURRENT_VERSION', '8.0' );
+    define( 'WE_LS_DB_VERSION', '8.0' );
 
 // -----------------------------------------------------------------------------------------
 // AC: Activate / Deactivate / Uninstall Hooks
 // ------------------------------------------------------------------------------------------
 
-    register_activation_hook(__FILE__, 'ws_ls_activate');
-    register_deactivation_hook(__FILE__, 'ws_ls_deactivate');
+    register_activation_hook( __FILE__, 'ws_ls_activate' );
+    register_deactivation_hook( __FILE__, 'ws_ls_deactivate' );
 
 // -----------------------------------------------------------------------------------------
 // AC: Check if valid pro license (if valid license)

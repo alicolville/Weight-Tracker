@@ -26,7 +26,6 @@
     // Set defaults
 	$globals = array(
 		'WE_LS_ALLOW_TARGET_WEIGHTS' => true,
-		'WE_LS_US_DATE' => false,
 		'WS_LS_ADVANCED_TABLES' => true,
 		'WE_LS_DISPLAY_BMI_IN_TABLES' => false,
 		'WE_LS_ALLOW_STATS' => false,
@@ -46,13 +45,6 @@
 	 * REFATCOR BELOW to use ws_ls_settings_weight_unit() / ws_ls_settings_weight_is_imperial()
 	 */
 
-
-	// -----------------------------------------------------------------------------------
-	// UK or US date?
-	// -----------------------------------------------------------------------------------
-	if ('us' == get_option('ws-ls-use-us-dates')){
-		$globals['WE_LS_US_DATE'] = true;
-	}
 
 	// -----------------------------------------------------------------------------------
 	// Define if target weights enabled
