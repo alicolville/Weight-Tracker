@@ -101,23 +101,10 @@ function ws_ls_convert_kg_to_stone_pounds( $kg ) {
  */
 function ws_ls_weight_display( $kg, $user_id = NULL, $key = false, $force_admin = false, $comparison_value = false ) {
 
-	$weight 	= [];
-
-	// Are we wanting to format the weight for admin UI?
-	if ( true === is_admin() || true === $force_admin ) {
-		$weight[ 'format' ] = ws_ls_settings_weight_unit();
-
-	// Or, format for front end for the user?
-	} else {
-
-		$user_id = ( NULL === $user_id ) ? get_current_user_id() : $user_id;
-		$weight[ 'user-id' ] 	= $user_id;
-		$weight[ 'format' ] 	= ws_ls_get_config('WE_LS_DATA_UNITS', $user_id );
-	}
-
-	// $cache_key = sprintf( '%s-%s', $kg, $weight[ 'format' ] );
-
-	$weight[ 'kg' ] = $kg;
+	$weight 	            = [];
+	$weight[ 'user-id' ]    = ( NULL === $user_id ) ? get_current_user_id() : $user_id;
+	$weight[ 'format' ]     = ws_ls_setting( 'weight-unit', $weight[ 'user-id' ], $force_admin );
+	$weight[ 'kg' ]         = $kg;
 
 	switch ( $weight[ 'format' ] ) {
 
@@ -145,11 +132,11 @@ function ws_ls_weight_display( $kg, $user_id = NULL, $key = false, $force_admin 
 				$imperial[ 'stones' ]++;
 			}
 
-			$weight['display'] 		= sprintf( '%s%s %s%s', $imperial[ 'stones' ],__( 'st' , WE_LS_SLUG), $imperial[ 'pounds' ], __( 'lbs' , WE_LS_SLUG) );
-			$weight['graph-value'] 	= ( $imperial['stones'] * 14 ) + $imperial['pounds'];
-			$weight[ 'stones' ]     = $imperial['stones'];
-			$weight[ 'pounds' ]     = $imperial['pounds'];
-			$weight[ 'imperial' ]   = true;
+			$weight[ 'display' ] 		= sprintf( '%s%s %s%s', $imperial[ 'stones' ],__( 'st' , WE_LS_SLUG), $imperial[ 'pounds' ], __( 'lbs' , WE_LS_SLUG) );
+			$weight[ 'graph-value' ] 	= ( $imperial['stones'] * 14 ) + $imperial['pounds'];
+			$weight[ 'stones' ]         = $imperial['stones'];
+			$weight[ 'pounds' ]         = $imperial['pounds'];
+			$weight[ 'imperial' ]       = true;
 
 			// Comparison value?
 			if ( true === $comparison_value ) {

@@ -1535,11 +1535,15 @@ function ws_ls_setting( $key = 'weight-unit', $user_id = NULL, $force_admin = fa
 		return NULL;
 	}
 
+	// Only consider ourselves in admin when not handling AJAX requests. Otherwise, force admin required.
+	$in_admin = ( true === $force_admin ||
+				  	( true === is_admin() && false === wp_doing_ajax() ) );
+
 	// Are we considering the user preferences?
 	if ( false === empty( $user_id )
 	            && true === ws_ls_user_preferences_is_enabled() &&
 	                false === $force_admin &&
-	                    false === is_admin() ) {
+		 				false === $in_admin ) {
 
 		$user_preference    = NULL;
 		$legacy_key         = $mappings[ $key ];
