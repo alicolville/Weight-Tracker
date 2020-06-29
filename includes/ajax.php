@@ -71,10 +71,6 @@ Load data for user table (admin)
  **/
 function ws_ls_get_table_data() {
 
-	if ( false === WS_LS_IS_PRO ) {
-		wp_send_json( [] );
-	}
-
 	check_ajax_referer( 'ws-ls-user-tables', 'security' );
 
 	global $ws_ls_request_from_admin_screen;

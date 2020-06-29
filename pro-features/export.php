@@ -18,6 +18,11 @@ function ws_ls_export_data() {
 	// Ensure the user has relevant permissions
 	ws_ls_permission_check_message();
 
+	// Only render body of report if Pro!
+	if ( true !== WS_LS_IS_PRO ) {
+		wp_die( __( 'You must have a Pro License to export user data.', WE_LS_SLUG ) );
+	}
+
 	if( false === WE_LS_CACHE_ENABLED ) {
 		wp_die( __( 'You must have "Caching" enabled in Weight Tracker Settings to perform exports.' , WE_LS_SLUG ) );
 	}

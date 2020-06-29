@@ -595,7 +595,9 @@ function ws_ls_permission_check() {
  * @return mixed|void
  */
 function ws_ls_permission_role() {
-	return get_option( 'ws-ls-edit-permissions', 'manage_options' );
+	$permission_role = get_option( 'ws-ls-edit-permissions', 'manage_options' );
+
+	return ( false === empty( $permission_role ) ) ? $permission_role : 'manage_options';
 }
 
 /**
