@@ -161,9 +161,8 @@ function ws_ls_date_todays_date( $user_id = NULL ) {
  * @return string
  */
 function ws_ls_get_date_format( $user_id = NULL ) {
-  return ( true === ws_ls_get_config('WE_LS_US_DATE', $user_id ) ) ? 'm/d/Y': 'd/m/Y';
+  return ( true === ws_ls_setting('use-us-dates', $user_id ) ) ? 'm/d/Y': 'd/m/Y';
 }
-
 
 /**
  *
@@ -244,32 +243,6 @@ function ws_ls_display_week_filters($week_ranges, $selected_week_number)
 
   return $output;
 
-}
-
-// TODO: DEPRECATED: Replace with ws_ls_setting()
-// Refactor to use: ws_ls_settings_weight_unit
-function ws_ls_get_config( $key, $user_id = NULL, $force_admin = false )
-{
-	// If in an admin screen, then use admin settings. We're not interested in the user's preference.
-	if ( true === is_admin() || true === $force_admin ) {
-		return constant( $key );
-	}
-
-  // If user preferences are enabled, then see if they specified
-  if ( true === ws_ls_user_preferences_is_enabled() && (!is_admin() || false == empty( $user_id )) )  {
-
-    // Look to see if the user had a preference, if not, default to admin choice
-    $user_preference = ws_ls_user_preferences_settings_get( $key, $user_id );
-
-    if(is_null($user_preference)) {
-      return constant($key);
-    } else {
-      return $user_preference;
-    }
-
-  }
-
-   return constant($key);
 }
 
 /**
@@ -838,7 +811,7 @@ function ws_ls_iso_date_into_correct_format( $date ) {
     if( false === empty( $date ) ) {
 
     	$time 	= strtotime( $date );
-    	$format = ws_ls_get_config('WE_LS_US_DATE') ? 'm/d/Y' : 'd/m/Y';
+    	$format = ws_ls_setting('use-us-dates') ? 'm/d/Y' : 'd/m/Y';
 
     	return date( $format, $time );
     }
@@ -1492,10 +1465,9 @@ function ws_ls_weight_difference_from_start( $user_id, $kg ) {
  *
  * @return string|void
  */
-function ws_ls_get_unit()
-{
+function ws_ls_get_unit() {
 
-	switch (ws_ls_get_config('WE_LS_DATA_UNITS')) {
+	switch ( ws_ls_setting( 'weight-unit' )) {
 		case 'pounds_only':
 			$unit = __("lbs", WE_LS_SLUG);
 			break;

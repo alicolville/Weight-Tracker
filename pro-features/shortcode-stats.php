@@ -54,7 +54,7 @@ function ws_ls_shortcode_stats_league_total($user_defined_arguments)
 
             // Get the display value for weight
             $stats = ws_ls_shortcode_stats_display_value(
-                array('kg' => $row['weight_difference'], 'display-unit' => ws_ls_get_config('WE_LS_DATA_UNITS'), 'display-value' => ''),
+                array('kg' => $row['weight_difference'], 'display-unit' => ws_ls_setting( 'weight-unit' ), 'display-value' => ''),
                 $arguments
             );
 
@@ -115,7 +115,7 @@ function ws_ls_shortcode_stats_total_lost($user_defined_arguments)
 	 ), $user_defined_arguments );
 
 	$summary_stats = ws_ls_stats_get_summary_stats();
-	$stats = array('kg' => $summary_stats['difference'], 'display-unit' => ws_ls_get_config('WE_LS_DATA_UNITS'), 'display-value' => '');
+	$stats = [ 'kg' => $summary_stats['difference'], 'display-unit' => ws_ls_setting('weight-unit' ), 'display-value' => '' ];
 	$stats = ws_ls_shortcode_stats_display_value($stats, $arguments);
 
 	return $stats['display-value'];

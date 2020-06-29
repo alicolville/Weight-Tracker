@@ -168,7 +168,7 @@ function ws_ls_convert_ISO_date_into_locale( $iso_date, $key = NULL ) {
 		$convert[ 'chart-date' ]    = date_i18n('d M', $convert[ 'time' ] );
 		// $convert[ 'uk' ]            = date('d/m/Y', $convert[ 'time' ] );
 		// $convert[ 'us' ]            = date('m/d/Y', $convert[ 'time' ] );
-		$format  = ( true === ws_ls_get_config('WE_LS_US_DATE', get_current_user_id() ) ) ? 'm/d/Y' : 'd/m/Y';
+		$format  = ( true === ws_ls_setting('use-us-dates', get_current_user_id() ) ) ? 'm/d/Y' : 'd/m/Y';
 		$convert[ 'display-date' ] = date( $format, $convert[ 'time' ] );
 	}
 
@@ -196,11 +196,11 @@ function ws_ls_convert_date_to_iso($date, $user_id = false) {
 		return NULL;
 	}
 
-	if (ws_ls_get_config('WE_LS_US_DATE', $user_id)) {
-		list($month,$day,$year) = sscanf($date, "%d/%d/%d");
+	if ( true === ws_ls_setting('use-us-dates', $user_id ) ) {
+		list( $month,$day,$year ) = sscanf( $date, "%d/%d/%d" );
 		$date = "$year-$month-$day";
 	} else {
-		list($day,$month,$year) = sscanf($date, "%d/%d/%d");
+		list( $day,$month,$year ) = sscanf ( $date, "%d/%d/%d" );
 		$date = "$year-$month-$day";
 	}
 
@@ -222,7 +222,7 @@ function ws_ls_convert_kg_into_relevant_weight_string( $kg, $comparison_value = 
 
 	if ( $kg ) {
 
-		switch ( ws_ls_get_config('WE_LS_DATA_UNITS', $user_id ) ) {
+		switch ( ws_ls_setting('weight-unit', $user_id ) ) {
 			case 'pounds_only':
 				return ws_ls_convert_kg_to_lb( $kg ) . __('lbs', WE_LS_SLUG);
 			break;

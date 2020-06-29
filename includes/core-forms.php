@@ -197,7 +197,7 @@ function ws_ls_form_init( $arguments = [] ) {
 
 	$arguments[ 'form-id' ]     = ws_ls_component_id();
 	$arguments[ 'form-number' ] = ws_ls_form_number_next();
-	$arguments[ 'data-unit' ]   = ws_ls_get_config('WE_LS_DATA_UNITS', $arguments[ 'user-id' ] );
+	$arguments[ 'data-unit' ]   = ws_ls_setting( 'weight-unit', $arguments[ 'user-id' ] );
 
 	global $save_response;
 
