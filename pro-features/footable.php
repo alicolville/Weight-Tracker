@@ -55,7 +55,7 @@ function ws_ls_data_table_render( $arguments = [] ) {
 
 		$html .= sprintf('<table class="ws-ls-user-data-ajax table ws-ls-loading-table" id="%1$s"
 									data-paging="true"
-									data-paging-size="%7$d" 
+									data-paging-size="%7$d"
 									data-filtering="true"
 									data-sorting="true"
 									data-editing="%2$s"
@@ -97,7 +97,8 @@ function ws_ls_datatable_rows( $arguments ) {
 	                                             'smaller-width'    => false,
 	                                             'front-end'        => false,
 	                                             'sort'             => 'desc',
-												 'enable-meta'      => true
+												 'enable-meta'      => true,
+												 'in-admin'         => false    // Has this request come from the admin area (used to render dates differently)
 	] );
 
 	$cache_key  = ws_ls_cache_generate_key_from_array( 'footable', $arguments );
@@ -219,12 +220,14 @@ function ws_ls_datatable_rows( $arguments ) {
  */
 function ws_ls_datatable_rows_localise( $row ) {
 
+	global $ws_ls_request_from_admin_screen;
+
 	if ( false === empty( $row[ 'previous-weight-diff' ] ) ) {
-		$row[ 'gainloss' ][ 'value' ] = ws_ls_blur_text( ws_ls_weight_display( $row[ 'previous-weight-diff' ], NULL, 'display', false, true ) );
+		$row[ 'gainloss' ][ 'value' ] = ws_ls_blur_text( ws_ls_weight_display( $row[ 'previous-weight-diff' ], NULL, 'display', $ws_ls_request_from_admin_screen, true ) );
 	}
 
 	if ( false === empty( $row[ 'kg' ][ 'value' ] ) ) {
-		$row[ 'kg' ][ 'value' ] = ws_ls_blur_text( ws_ls_weight_display( $row[ 'kg' ][ 'value' ], NULL, 'display' ) );
+		$row[ 'kg' ][ 'value' ] = ws_ls_blur_text( ws_ls_weight_display( $row[ 'kg' ][ 'value' ], NULL, 'display', $ws_ls_request_from_admin_screen ) );
 	}
 
 	return $row;

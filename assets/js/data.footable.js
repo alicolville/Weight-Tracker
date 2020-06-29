@@ -27,7 +27,9 @@ jQuery( document ).ready(function ($, undefined) {
         data['table_id'] = table_id;
         data['front-end'] = ws_ls_in_front_end();
         data['enable-meta-fields'] = enable_meta_fields;
-        ws_ls_post_data_to_WP('table_data', data, ws_ls_callback_setup_table)
+        data[ 'in-admin'] = ws_user_table_config[ 'is-admin' ];
+
+      ws_ls_post_data_to_WP('table_data', data, ws_ls_callback_setup_table)
 
     });
 
@@ -446,8 +448,8 @@ jQuery( document ).ready(function ($, undefined) {
 
                             // OK, we have a Row ID - send to Ajax handler to delete from DB
                             var data = {};
-                            data['row_id'] = values.db_row_id;
-                            data['user_id'] = values.user_id;
+                            data[ 'row_id' ] = values.db_row_id;
+                            data[ 'user_id' ] = values.user_id;
 
                             // To keep things looking fast (i.e. so no AJAX lag) delete row instantly from UI
                             row.delete();
