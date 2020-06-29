@@ -36,13 +36,12 @@ function ws_ls_save_preferences_callback() {
 	$in_admin_area = ( NULL !== ws_ls_post_value('we-ls-in-admin' ) ) ? true : false;
 
 	// Look for globals that user's can override
-	$fields             = [ 'settings' =>   [
-		'WE_LS_DATA_UNITS'  => ws_ls_post_value( 'WE_LS_DATA_UNITS' ),
-		'WE_LS_US_DATE'     => ws_ls_post_value_to_bool( 'WE_LS_US_DATE' )
-	]
+	$fields             = [
+								'settings' =>   [
+													'WE_LS_DATA_UNITS'  => ws_ls_post_value( 'WE_LS_DATA_UNITS' ),
+													'WE_LS_US_DATE'     => ws_ls_post_value_to_bool( 'WE_LS_US_DATE' )
+												]
 	];
-
-	$fields[ 'settings' ][ 'WE_LS_IMPERIAL_WEIGHTS' ] = in_array( $fields[ 'settings' ][ 'WE_LS_DATA_UNITS' ], [ 'stones_pounds', 'pounds_only' ] );
 
 	$fields[ 'height' ]         = ws_ls_post_value( 'we-ls-height', NULL, false, false, 'int' );
 	$fields[ 'gender' ]         = ws_ls_post_value( 'ws-ls-gender', NULL, false, false, 'int' );
