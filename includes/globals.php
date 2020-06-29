@@ -26,10 +26,7 @@
     // Set defaults
 	$globals = array(
 		'WE_LS_ALLOW_TARGET_WEIGHTS' => true,
-		'WS_LS_ADVANCED_TABLES' => true,
 		'WE_LS_DISPLAY_BMI_IN_TABLES' => false,
-		'WE_LS_ALLOW_STATS' => false,
-		'WE_LS_EMAIL_NOTIFICATIONS_TARGETS' => true,
 		'WS_LS_CAL_CAP_MALE' => 1900,
         'WS_LS_CAL_CAP_FEMALE' => 1400,
 		'WS_LS_MACRO_PROTEINS' => 25,
@@ -58,19 +55,6 @@
 	// -----------------------------------------------------------------------------------
 	if (WS_LS_IS_PRO && ('yes' == get_option('ws-ls-display-bmi-in-tables') || false == get_option('ws-ls-display-bmi-in-tables'))) {
 		$globals['WE_LS_DISPLAY_BMI_IN_TABLES'] = true;
-	}
-
-	// -----------------------------------------------------------------------------------
-	// Email Notifications
-	// -----------------------------------------------------------------------------------
-
-	if (WS_LS_IS_PRO) {
-
-
-
-		if ('no' == get_option('ws-ls-email-notifications-targets')) {
-			$globals['WE_LS_EMAIL_NOTIFICATIONS_TARGETS'] = false;
-		}
 	}
 
     // -----------------------------------------------------------------------------------

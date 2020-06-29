@@ -40,9 +40,9 @@ function ws_ls_email_notification($type, $weight_data) {
 		 && !empty($type['mode']) && in_array($type['mode'], $allowed_modes)) {
 
 		// Email notifications enable for this type?
-		if (('target' == $type['type'] && false == WE_LS_EMAIL_NOTIFICATIONS_TARGETS) ||
-			('weight-measurements' == $type['type'] && 'add' == $type['mode'] && 'no' === get_option( 'ws-ls-email-notifications-new', 'yes' ) ) ||
-			('weight-measurements' == $type['type'] && 'update' == $type['mode'] && 'no' === get_option( 'ws-ls-email-notifications-edit', 'yes' ) ) ) {
+		if ( ( 'target' == $type['type'] && 'no' == get_option( 'ws-ls-email-notifications-targets', 'yes' ) ) ||
+			( 'weight-measurements' == $type['type'] && 'add' == $type['mode'] && 'no' === get_option( 'ws-ls-email-notifications-new', 'yes' ) ) ||
+			( 'weight-measurements' == $type['type'] && 'update' == $type['mode'] && 'no' === get_option( 'ws-ls-email-notifications-edit', 'yes' ) ) ) {
 			return;
 		}
 
