@@ -35,10 +35,13 @@ function ws_ls_help_page() {
                     </div>
 
 					<div class="postbox">
-						<h3 class="hndle"><span><?php echo __( 'Documentation', WE_LS_SLUG); ?> </span></h3>
+						<h3 class="hndle"><span><?php echo __( 'Documentation and Release notes', WE_LS_SLUG); ?> </span></h3>
 						<div style="padding: 0px 15px 0px 15px">
 							<p><?php echo __( 'You can find detailed documentation for this plugin at our site:', WE_LS_SLUG ); ?></p>
-                            <p><a href="https://weight.yeken.uk" rel="noopener noreferrer" target="_blank">https://weight.yeken.uk</a></p>
+                            <p>
+	                            <a href="https://weight.yeken.uk" rel="noopener noreferrer"  class="button"  target="_blank"><?php echo __( 'View Documentation', WE_LS_SLUG ); ?></a> 
+	                            <a href="https://github.com/alicolville/Weight-Tracker/releases"  class="button"  rel="noopener noreferrer" target="_blank"><?php echo __( 'Release Notes', WE_LS_SLUG ); ?></a>
+                            </p>
 						</div>
 				    </div>
 				    </div>
