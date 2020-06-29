@@ -1404,9 +1404,10 @@ function ws_ls_setting( $key = 'weight-unit', $user_id = NULL, $force_admin = fa
 				$user_preference = ( 'kg' !== $user_weight_unit );
 			}
 		}
-
+	
 		// If we were able to find a user setting, then return that!
-		if ( false === empty( $user_preference ) ) {
+		if ( false === $user_preference ||
+		        false === empty( $user_preference ) ) {
 			return $user_preference;
 		}
 	}
