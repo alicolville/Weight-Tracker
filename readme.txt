@@ -217,6 +217,8 @@ add_shortcode( 'wlt-table', 'ws_ls_shortcode_table' ); to add_shortcode( 'wt-tab
 * Improvement: User entry tables: MySQL queries and data processing are now cached.
 * Improvement: User entry tables: Option to exclude meta field data when viewing all user entries (big speed improvement)
 * Improvement: User entry tables: Usernames now open the user's record in a new tab.
+* Improvement: Emails notifications: Now using underlying email manager that was added in 6.1.
+* Improvement: Emails notifications: Subjects are more informative.
 * Bug fix: "Who can view and modify user data?" has been fixed so user's with the specified minimum role can now access admin data pages.
 * Bug fix: Awards for a user are now deleted when "Delete all data for this user" has been clicked.
 * Bug fix: All challenge data for a user is now deleted when "Delete all data for this user" has been clicked.

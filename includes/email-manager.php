@@ -134,6 +134,19 @@ function ws_ls_emailer_default_template() {
 						text-align: center;
 						text-transform: capitalize; 
 					  }
+					   h3 {
+						font-size: 20px;
+						font-weight: 300;
+						text-align: center;
+						text-transform: capitalize; 
+					}
+					  h4 {
+						font-size: 17px;
+						font-weight: 300;
+						text-align: center;
+						text-transform: capitalize; 
+						border-bottom: 1px dotted #000000;
+					  }
 				
 					  p,
 					  ul,
@@ -501,7 +514,7 @@ function ws_ls_emailer_send( $to, $subject, $message, $placeholders = [] ) {
 
 		$result             = wp_mail( $to,  $subject,  $message, [ 'Content-Type: text/html; charset=UTF-8' ] );
 
-		ws_ls_log_add('email-sent', sprintf('To: %s / Subject: %s', $to, $subject ) );
+		ws_ls_log_add('email-sent', sprintf('To: %s / Subject: %s', print_r( $to, true ), $subject ) );
 
 		return $result;
 	}
