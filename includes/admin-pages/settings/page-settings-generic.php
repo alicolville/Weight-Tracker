@@ -905,9 +905,12 @@ function ws_ls_settings_page_generic() {
                                                 <tr class="<?php echo $disable_if_not_pro_class; ?>">
                                                     <th scope="row"><?php echo __( 'Enable Gravity Forms', WE_LS_SLUG ); ?></th>
                                                     <td>
+														<?php
+															$gf_enabled = get_option( 'ws-ls-gf-enable', 'no' );
+														?>
                                                         <select id="ws-ls-gf-enable" name="ws-ls-gf-enable">
-                                                            <option value="no" <?php selected( get_option('ws-ls-gf-enable'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
-                                                            <option value="yes" <?php selected( get_option('ws-ls-gf-enable'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+                                                            <option value="no" <?php selected( $gf_enabled, 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+                                                            <option value="yes" <?php selected( $gf_enabled, 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
                                                         </select>
                                                         <p>
                                                             <?php echo __('Examine Gravity Form submissions for weight and measurement data. If found, create a Weight Entry for the user currently logged in.', WE_LS_SLUG); ?>

@@ -148,7 +148,8 @@ defined('ABSPATH') or die('Jog on!');
     ];
 
     // Gravity Forms
-    if ( true === WE_LS_THIRD_PARTY_GF_ENABLE ) {
+    if ( true === WS_LS_IS_PRO &&
+            'yes' == get_option( 'ws-ls-gf-enable', 'yes' ) ) {
         $files_to_include[] = 'pro-features/hook-gravity-forms.php';
     }
 

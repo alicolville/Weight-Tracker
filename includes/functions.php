@@ -1048,13 +1048,8 @@ function ws_ls_photo_get_sizes($key = false) {
 
 function ws_ls_photo_max_upload_size() {
 
-	$file_size = WE_LS_PHOTOS_MAX_SIZE;
+	$file_size = get_option( 'ws-ls-photos-max-size', 2000000 );	// Default to 2Mb
 	$max_size = ws_ls_file_upload_max_size();
-
-	// If no photo size specified, default to 2Mb
-	if ( false === defined('WE_LS_PHOTOS_MAX_SIZE') || 0 === $file_size ) {
-		return 2000000;
-	}
 
 	return ( $file_size > $max_size ) ? (int) $max_size : (int) $file_size;
 }

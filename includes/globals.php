@@ -29,28 +29,9 @@
         'WS_LS_CAL_CAP_FEMALE' => 1400,
 		'WS_LS_MACRO_PROTEINS' => 25,
         'WS_LS_MACRO_CARBS' => 50,
-        'WS_LS_MACRO_FATS' => 25,
-		'WE_LS_PHOTOS_MAX_SIZE' => false,
-        'WE_LS_THIRD_PARTY_GF_ENABLE' => false
+        'WS_LS_MACRO_FATS' => 25
 	);
 
-    // -----------------------------------------------------------------------------------
-    // Pro
-    // -----------------------------------------------------------------------------------
-
-    if (WS_LS_IS_PRO) {
-
-        if ( 'yes' == get_option('ws-ls-gf-enable') ) {
-            $globals['WE_LS_THIRD_PARTY_GF_ENABLE'] = true;
-        }
-
-	    $photo_max_size = get_option('ws-ls-photos-max-size');
-
-	    if(is_numeric($photo_max_size)) {
-		    $globals['WE_LS_PHOTOS_MAX_SIZE'] = (int) $photo_max_size;
-	    }
-
-    }
 
     // -----------------------------------------------------------------------------------
     // Pro Plus
