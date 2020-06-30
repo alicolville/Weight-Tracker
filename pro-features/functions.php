@@ -799,3 +799,11 @@ function ws_ls_user_preferences_settings_get( $field = 'WE_LS_DATA_UNITS', $user
 
 	return ( true === array_key_exists( $field, $settings ) ) ? $settings[ $field ] : NULL;
 }
+
+/**
+ * Should we display BMI values in tables?s
+ * @return bool
+ */
+function ws_ls_bmi_in_tables() {
+	return ( WS_LS_IS_PRO && ( 'yes' == get_option('ws-ls-display-bmi-in-tables', 'yes' ) ) );
+}

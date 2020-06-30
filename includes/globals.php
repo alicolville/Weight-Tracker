@@ -25,7 +25,6 @@
 
     // Set defaults
 	$globals = array(
-		'WE_LS_DISPLAY_BMI_IN_TABLES' => false,
 		'WS_LS_CAL_CAP_MALE' => 1900,
         'WS_LS_CAL_CAP_FEMALE' => 1400,
 		'WS_LS_MACRO_PROTEINS' => 25,
@@ -34,14 +33,6 @@
 		'WE_LS_PHOTOS_MAX_SIZE' => false,
         'WE_LS_THIRD_PARTY_GF_ENABLE' => false
 	);
-
-	
-	// -----------------------------------------------------------------------------------
-	// Display BMI in tables?
-	// -----------------------------------------------------------------------------------
-	if (WS_LS_IS_PRO && ('yes' == get_option('ws-ls-display-bmi-in-tables') || false == get_option('ws-ls-display-bmi-in-tables'))) {
-		$globals['WE_LS_DISPLAY_BMI_IN_TABLES'] = true;
-	}
 
     // -----------------------------------------------------------------------------------
     // Pro

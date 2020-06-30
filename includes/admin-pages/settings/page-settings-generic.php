@@ -139,10 +139,13 @@ function ws_ls_settings_page_generic() {
                                                     </tr>
                                                     <tr class="<?php echo $disable_if_not_pro_class; ?>">
                                                         <th scope="row"><?php echo __( 'Display BMI in tables?' , WE_LS_SLUG); ?></th>
+														<?php
+															$display_bmi_in_tables = get_option( 'ws-ls-display-bmi-in-tables', 'yes' );
+														?>
                                                         <td>
                                                             <select id="ws-ls-display-bmi-in-tables" name="ws-ls-display-bmi-in-tables">
-                                                                <option value="yes" <?php selected( get_option('ws-ls-display-bmi-in-tables'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
-                                                                <option value="no" <?php selected( get_option('ws-ls-display-bmi-in-tables'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+                                                                <option value="yes" <?php selected( $display_bmi_in_tables, 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+                                                                <option value="no" <?php selected( $display_bmi_in_tables, 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
                                                             </select>
                                                             <p><?php echo __('If enabled, BMI values will be displayed alongside weight entries in data tables.', WE_LS_SLUG)?></p>
                                                         </td>

@@ -178,7 +178,7 @@ function ws_ls_datatable_rows( $arguments ) {
 			$row[ 'gainloss' ][ 'options']['classes']   = 'ws-ls-' . $gain_class .  ws_ls_blur();
 			$row[ 'notes' ]                             = wp_kses_post( $entry[ 'notes' ] );
 
-			if( true === WE_LS_DISPLAY_BMI_IN_TABLES ) {
+			if( true === ws_ls_bmi_in_tables() ) {
 				$row[ 'bmi' ] = [   'value' => ws_ls_get_bmi_for_table( ws_ls_user_preferences_get( 'height', $entry[ 'user_id' ] ), $entry[ 'kg' ], __( 'No height', WE_LS_SLUG ) ),
 									'options' => [ 'classes' => '' ]
 				];
@@ -266,7 +266,7 @@ function ws_ls_datatable_columns( $smaller_width = false, $front_end = false, $e
 	$columns[] = [ 'name' => 'gainloss', 'title' => ws_ls_tooltip('+/-', __( 'Difference', WE_LS_SLUG ) ), 'visible'=> true, 'breakpoints'=> 'xs', 'type' => 'text' ];
 
 	// Add BMI?
-	if( true === WE_LS_DISPLAY_BMI_IN_TABLES ) {
+	if( true === ws_ls_bmi_in_tables() ) {
 		array_push($columns, [ 'name' => 'bmi', 'title' => ws_ls_tooltip( __( 'BMI', WE_LS_SLUG ), __( 'Body Mass Index', WE_LS_SLUG ) ), 'breakpoints'=> 'xs', 'type' => 'text' ] );
 	}
 

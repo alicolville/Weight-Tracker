@@ -160,9 +160,6 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 //todo: get everything dynamic out of globals
 //todo: ws_ls_shortcode_form - add argument to hide custom fields. Also update doc to remove measurements arg
 //todo: remove measurements from documentation site
-// TODO: Get rid of ws_ls_register_shortcodes
-// re-write and cache weight_object function. Arguments should be an array
-// TODO: We changed the cache key for all user preferences. Ensure this is cleared properly
 // TODO: Explaoin Challenegs more in UI and doc site
 // compress ws-ls-entry-form.js, admin-and-public.min.css, data-footable.js
 // Fix Start Weight
