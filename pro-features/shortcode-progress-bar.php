@@ -26,23 +26,23 @@ function ws_ls_shortcode_progress_bar( $user_defined_arguments ) {
 										'user-id'               => get_current_user_id()
 								], $user_defined_arguments );
 
-	$display_errors = ws_ls_force_bool_argument( $arguments[ 'display-errors' ] );
+	$display_errors = ws_ls_to_bool( $arguments[ 'display-errors' ] );
 
 	// Are targets enabled? If not, no point carrying on!
 	if( false === ws_ls_targets_enabled() ) {
-		return __( 'This shortcode can not be used as Target weights have been disabled in the plugin\'s settings.', WE_LS_SLUG );
+		return ws_ls_shortcode_progress_bar_display_error( __( 'This shortcode can not be used as Target weights have been disabled in the plugin\'s settings.', WE_LS_SLUG ), $display_errors );
 	}
 
 	$arguments[ 'target-weight' ] = ws_ls_target_get( $arguments[ 'user-id' ], 'kg' );
 
 	if ( true === empty( $arguments[ 'target-weight' ] ) ) {
-		return __( 'Please enter a target weight to see your progress.', WE_LS_SLUG );
+		return ws_ls_shortcode_progress_bar_display_error( __( 'Please enter a target weight to see your progress.', WE_LS_SLUG ), $display_errors );
 	}
 
 	$arguments[ 'weight' ] = ws_ls_entry_get_latest_kg();
 
 	if ( true === empty( $arguments[ 'weight' ] ) ) {
-		return __( 'Please add a weight entry to see your progress.', WE_LS_SLUG );
+		return ws_ls_shortcode_progress_bar_display_error( __( 'Please add a weight entry to see your progress.', WE_LS_SLUG ), $display_errors );
 	}
 
 	$arguments[ 'target-weight-display' ] = ws_ls_weight_display( $arguments[ 'target-weight' ], $arguments[ 'user-id' ], 'display' );
@@ -126,6 +126,17 @@ function ws_ls_shortcode_progress_bar( $user_defined_arguments ) {
 }
 add_shortcode( 'wlt-progress-bar', 'ws_ls_shortcode_progress_bar' );
 add_shortcode( 'wt-progress-bar', 'ws_ls_shortcode_progress_bar' );
+
+/**
+ * Show an error?
+ * @param $text
+ * @param $show
+ *
+ * @return string
+ */
+function ws_ls_shortcode_progress_bar_display_error( $text, $show ) {
+	return ( true === $show ) ? $text : '';
+}
 
 /**
  * Render HTML for progress bar
