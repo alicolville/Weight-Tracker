@@ -47,22 +47,18 @@ function ws_ls_shortcode_progress_bar( $user_defined_arguments ) {
 
 	$arguments[ 'target-weight-display' ] = ws_ls_weight_display( $arguments[ 'target-weight' ], $arguments[ 'user-id' ], 'display' );
 
-
-
 	// Width / Height specified for circle?
-//	$arguments[ 'width-height-specified' ] = ( true === isset( $user_defined_arguments['width'] ) || true === isset( $user_defined_arguments['height'] ) );
-//
-//	// Validate / apply defaults
-//	$arguments['type'] = (in_array($arguments['type'], array('circle', 'line'))) ? $arguments['type'] : 'line';
-//	$arguments['stroke-width'] = ws_ls_force_numeric_argument($arguments['stroke-width'], 3);
-//	$arguments['trail-width'] = ws_ls_force_numeric_argument($arguments['trail-width'], 1);
-//	$arguments['animation-duration'] = ws_ls_force_numeric_argument($arguments['animation-duration'], 1400);
-//
-//	// If no width or height specified by user, then set circle to a better default size.
-//	if('circle' == $arguments['type'] && false == $arguments['width-height-specified']) {
-//		$arguments['width'] = '150px';
-//		$arguments['height'] = '150px';
-//	}
+	$arguments[ 'width-height-specified' ]  = ( true === isset( $user_defined_arguments['width'] ) || true === isset( $user_defined_arguments['height'] ) );
+	$arguments[ 'type' ]                    = ( true === in_array( $arguments[ 'type' ], [ 'circle', 'line' ] ) ) ? $arguments[ 'type' ] : 'line';
+	$arguments['stroke-width']              = ws_ls_force_numeric_argument( $arguments[ 'stroke-width' ], 3 );
+	$arguments['trail-width']               = ws_ls_force_numeric_argument( $arguments[ 'trail-width' ], 1 );
+	$arguments['animation-duration']        = ws_ls_force_numeric_argument( $arguments[ 'animation-duration' ], 1400 );
+
+	// If no width or height specified by user, then set circle to a better default size.
+	if('circle' == $arguments['type'] && false == $arguments['width-height-specified']) {
+		$arguments['width'] = '150px';
+		$arguments['height'] = '150px';
+	}
 
 	$oldest_entry = ws_ls_entry_get_oldest_kg( $arguments[ 'user-id' ] );
 
@@ -89,7 +85,8 @@ function ws_ls_shortcode_progress_bar( $user_defined_arguments ) {
 			$arguments[ 'progress' ] = 0;	// Error
 		}
 	} else {
-	// -----------------------------------------------------
+
+		// -----------------------------------------------------
 	// Aim to Lose weight?
 	// -----------------------------------------------------
 		// Have we met or exceeded the target?
@@ -122,7 +119,7 @@ function ws_ls_shortcode_progress_bar( $user_defined_arguments ) {
 	} else {
 		$arguments[ 'progress-chart' ] = 0;
 	}
-	print_R($arguments);
+
 	// Render bar!
 	return ws_ls_shortcode_progress_bar_render($arguments);
 

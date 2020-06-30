@@ -167,11 +167,12 @@ jQuery( document ).ready(function ($) {
         window.location.replace(ws_ls_config["current-url"]);
     });
 
-    // Progress Bar Shortcodes
+  // Progress Bar Shortcodes
     $(".ws-ls-progress").each(function () {
         var id = $(this).attr("id");
         var progress = $(this).data("progress");
         var type = $(this).data("type");
+        var text = $(this).data("precentage-text" );
 
         var options = {
             strokeWidth: $(this).data("stroke-width"),
@@ -185,9 +186,11 @@ jQuery( document ).ready(function ($) {
                 style: {
                     color: $(this).data("text-colour")
                 },
+               value: Math.round(progress * 100) + "% " + text
             },
-            step: function(state, bar, id) {
-                bar.setText(Math.round(bar.value() * 100) + "% " + $('#' + bar._container.id).data("precentage-text"));
+            step: function( state, bar ) {
+              console.log( bar.value());
+          //      bar.setText(Math.round(bar.value() * 100) + "% " + $('#' + bar._container.id).data("precentage-text"));
             }
         };
 
