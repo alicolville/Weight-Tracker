@@ -12,8 +12,8 @@ function ws_ls_stats_fetch_those_that_need_update() {
 
 	global $wpdb;
 	$table_name = $wpdb->prefix . WE_LS_USER_STATS_TABLENAME;
-	$sql = 'SELECT * FROM ' . $table_name . ' where last_update < DATE_SUB(NOW(),INTERVAL 6 HOUR) or last_update is null ORDER BY RAND() ';
-	$rows = $wpdb->get_results( $sql, ARRAY_A );
+	$sql        = 'SELECT * FROM ' . $table_name . ' where last_update < DATE_SUB(NOW(),INTERVAL 6 HOUR) or last_update is null ORDER BY RAND() ';
+	$rows       = $wpdb->get_results( $sql, ARRAY_A );
 
 	if (is_array($rows) && count($rows) > 0) {
 		return $rows;
@@ -36,20 +36,7 @@ function ws_ls_stats_sum_weight_difference() {
 
 	return false;
 }
-/*
-	Refresh total sum count
-*/
-function ws_ls_stats_sum_all_weights() {
 
-	global $wpdb;
-	$result = $wpdb->get_var( 'SELECT sum(sum_of_weights) FROM ' . $wpdb->prefix . WE_LS_USER_STATS_TABLENAME );
-
-	if (!is_null($result)) {
-		return floatval($result);
-	}
-
-	return false;
-}
 /*
 	Copy user IDs of those that have entered weights into stats table (assuming they aren't they're already)
 */
@@ -132,44 +119,4 @@ function ws_ls_stats_league_table_fetch($ignore_cache = false, $limit = 10, $los
 	}
 
 	return false;
-}
-
-// -----------------------------------------------------------------
-// Get Users
-// -----------------------------------------------------------------
-
-function ws_ls_user_get($id) {
-
-    if(false === empty($id) && true === is_numeric($id) ) {
-
-        global $wpdb;
-
-        // Return cache if found!
-        $cache = ws_ls_cache_user_get($id, 'user-object');
-        if (false === empty($cache)) {
-            return $cache;
-        }
-
-        $stats_table_name = $wpdb->prefix . WE_LS_USER_STATS_TABLENAME;
-        $data_table_name = $wpdb->prefix . WE_LS_TABLENAME;
-
-        $sql = "SELECT distinct {$wpdb->prefix}users.*, us.* FROM {$wpdb->prefix}users
-				LEFT JOIN {$data_table_name} as wd ON ( {$wpdb->prefix}users.ID = wd.weight_user_id )
-				LEFT JOIN {$stats_table_name} as us ON ( {$wpdb->prefix}users.ID = us.user_id )
-				LEFT JOIN {$wpdb->prefix}usermeta um ON ( {$wpdb->prefix}users.ID = um.user_id )
-				WHERE 1=1 AND {$wpdb->prefix}users.ID = %d";
-
-        $id = (int) $id;
-
-        $sql = $wpdb->prepare($sql, $id);
-
-        $user = $wpdb->get_row($sql, ARRAY_A);
-
-        ws_ls_cache_user_set($id, 'user-object', $user);
-
-        return $user;
-    }
-
-    return false;
-
 }
