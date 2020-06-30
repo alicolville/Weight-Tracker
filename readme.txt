@@ -169,6 +169,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
        Latest Weight
        Diff. from Start in admin side bar
 //test GF
+// Chart - allow axes's to be displayed e..g only this custom field, etc
 
 Documentation updates:
 add_shortcode( 'wlt-target', 'ws_ls_shortcode_target' ); to add_shortcode( 'wt-target-weight', 'ws_ls_shortcode_target' );
