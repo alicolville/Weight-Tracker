@@ -38,17 +38,16 @@ function ws_ls_harris_benedict_calculate_calories($user_id = false) {
 	// Lose
 	// --------------------------------------------------
 
-	$calories_to_lose = ws_ls_harris_benedict_filter_calories_to_lose( $calorie_intake['maintain']['total'], $user_id, false  );
+	$calories_to_lose   = ws_ls_harris_benedict_filter_calories_to_lose( $calorie_intake['maintain']['total'], $user_id, false  );
+	$calories_to_lose   = ( $calorie_intake['maintain']['total'] > $calories_to_lose ) ? $calorie_intake['maintain']['total'] - $calories_to_lose : $calorie_intake['maintain']['total'];
+	$is_female          = ws_ls_is_female( $user_id );
+	$calorie_cap        = ( true == $is_female ) ?
+								ws_ls_harris_benedict_setting( 'ws-ls-female-cal-cap' )
+									: ws_ls_harris_benedict_setting( 'ws-ls-male-cal-cap' );
 
-	$calories_to_lose = ( $calorie_intake['maintain']['total'] > $calories_to_lose ) ? $calorie_intake['maintain']['total'] - $calories_to_lose : $calorie_intake['maintain']['total'];
-
-	$is_female = ws_ls_is_female( $user_id );
-
-	// Female
-	if ( true === $is_female && 0 !== WS_LS_CAL_CAP_FEMALE && $calories_to_lose > WS_LS_CAL_CAP_FEMALE ) {
-		$calories_to_lose = WS_LS_CAL_CAP_FEMALE;
-	} elseif ( false === $is_female && 0 !== WS_LS_CAL_CAP_MALE && $calories_to_lose > WS_LS_CAL_CAP_MALE ) {
-		$calories_to_lose = WS_LS_CAL_CAP_MALE;
+	// If suggested calorie intake to lose weight is above the cap, then set to cap.
+	if ( $calories_to_lose > $calorie_cap ) {
+		$calories_to_lose = $calorie_cap;
 	}
 
 	$calorie_intake['lose'] = ['total' => $calories_to_lose, 'label' => __( 'Lose', WE_LS_SLUG ) ] ; // lose weight (1 to 2lbs per week)
@@ -363,12 +362,15 @@ function ws_ls_display_calorie_cap($user_id = false) {
 
 	$user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
 
-	$is_female = ws_ls_is_female($user_id);
+	$is_female          = ws_ls_is_female($user_id);
+	$calorie_cap        = ( true == $is_female ) ?
+							ws_ls_harris_benedict_setting( 'ws-ls-female-cal-cap' ) :
+							 ws_ls_harris_benedict_setting( 'ws-ls-male-cal-cap' );
 
 	return sprintf('%s %s %s. %s <a href="%s">%s</a>.',
 		($is_female) ? __('Female', WE_LS_SLUG ) : __('Male', WE_LS_SLUG ),
 		__('calories for weight loss are capped at ', WE_LS_SLUG ),
-		($is_female) ? ws_ls_round_number(WS_LS_CAL_CAP_FEMALE ) : ws_ls_round_number(WS_LS_CAL_CAP_MALE ),
+		ws_ls_round_number( $calorie_cap ),
 		__('This can be modified within ', WE_LS_SLUG ),
 		ws_ls_get_link_to_settings(),
 		__('settings', WE_LS_SLUG )
@@ -654,4 +656,57 @@ function ws_ls_harris_benedict_calorie_add_ranges() {
 	}
 
 	return apply_filters( 'wlt-filter-calories-add-ranges', $ranges );
+}
+
+/**
+ * Look up Harris Benedict setting
+ * @param $key
+ *
+ * @return int|int[]|null
+ */
+function ws_ls_harris_benedict_setting( $key ) {
+
+	$default_value = ws_ls_harris_benedict_defaults( $key );
+
+	// No default found? Then we have an invalid key!
+	if ( NULL === $default_value ) {
+		return NULL;
+	}
+
+	// apply default if no Pro Plus license
+	if ( false === WS_LS_IS_PRO_PLUS ) {
+		return $default_value;
+	}
+
+	$value = (int) get_option( $key, $default_value );
+
+	// Do we want to ensure this value within 0 and 100.
+	if ( true === in_array( $key, [ 'ws-ls-macro-proteins', 'ws-ls-macro-carbs', 'ws-ls-macro-fats' ] ) && ( $value < 0 || $value > 100 ) ) {
+		$value = $default_value;
+	}
+
+	return $value;
+}
+
+/**
+ * Return an array of default values for Harris Benedict calculations
+ * @param $key
+ *
+ * @return int[]
+ */
+function ws_ls_harris_benedict_defaults( $key = NULL ) {
+
+		$defaults = [
+					'ws-ls-male-cal-cap'    => 1900,
+					'ws-ls-female-cal-cap'  => 1400,
+					'ws-ls-macro-proteins'  => 25,
+					'ws-ls-macro-carbs'     => 50,
+					'ws-ls-macro-fats'      => 25
+		];
+
+		if ( NULL !== $key && false === empty( $defaults[ $key ] ) ) {
+			return $defaults[ $key ];
+		}
+
+		return $defaults;
 }

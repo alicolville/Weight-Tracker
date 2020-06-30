@@ -349,15 +349,21 @@ function ws_ls_settings_page_generic() {
                                                 </tr>
                                                  <tr class="<?php echo $disable_if_not_pro_plus_class; ?>">
                                                     <th scope="row"><?php echo __( 'Female Calorie Cap' , WE_LS_SLUG); ?></th>
+													 <?php
+													 	$female_calorie_cap = ws_ls_harris_benedict_setting( 'ws-ls-female-cal-cap' );
+													 ?>
                                                     <td>
-                                                        <input  type="number"  step="any" min="0" max="5000" name="ws-ls-female-cal-cap" id="ws-ls-female-cal-cap" value="<?php esc_attr_e(WS_LS_CAL_CAP_FEMALE); ?>" size="11" />
+                                                        <input  type="number"  step="any" min="0" max="5000" name="ws-ls-female-cal-cap" id="ws-ls-female-cal-cap" value="<?php echo esc_attr( $female_calorie_cap ); ?>" size="11" />
                                                         <p><?php echo __('Specify a maximum value for number of daily calories allowed to achieve weight loss. As per NHS guidelines, females are set to 1400kcal by default', WE_LS_SLUG);?>. <?php echo ws_ls_calculations_link(); ?>. <em><?php echo __( 'Please note, it may take up to 15 minutes for calculations to change (due to caching).' , WE_LS_SLUG); ?></em></p>
                                                     </td>
                                                 </tr>
                                                 <tr class="<?php echo $disable_if_not_pro_plus_class; ?>">
                                                     <th scope="row"><?php echo __( 'Male Calorie Cap' , WE_LS_SLUG); ?></th>
                                                     <td>
-                                                        <input  type="number"  step="any" min="0" max="5000" name="ws-ls-male-cal-cap" id="ws-ls-male-cal-cap" value="<?php esc_attr_e(WS_LS_CAL_CAP_MALE); ?>" size="11" />
+														<?php
+															$male_calorie_cap = ws_ls_harris_benedict_setting( 'ws-ls-male-cal-cap' );
+														?>
+                                                        <input  type="number"  step="any" min="0" max="5000" name="ws-ls-male-cal-cap" id="ws-ls-male-cal-cap" value="<?php echo esc_attr( $male_calorie_cap ); ?>" size="11" />
 														<p><?php echo __('Specify a maximum value for number of daily calories allowed to achieve weight loss. As per NHS guidelines, males are set to 1900kcal by default', WE_LS_SLUG);?>. <?php echo ws_ls_calculations_link(); ?>. <em><?php echo __( 'Please note, it may take up to 15 minutes for calculations to change (due to caching).' , WE_LS_SLUG); ?></em></p></td>
                                                 </tr>
 											    <tr class="<?php echo $disable_if_not_pro_plus_class; ?>">
@@ -557,21 +563,21 @@ function ws_ls_settings_page_generic() {
                                                 <tr class="<?php echo $disable_if_not_pro_plus_class; ?>">
                                                     <th scope="row"><?php echo __( 'Proteins' , WE_LS_SLUG); ?></th>
                                                     <td>
-                                                        <input  type="number"  step="any" min="0" max="100" name="ws-ls-macro-proteins" id="ws-ls-macro-proteins" class="ws-ls-macro" value="<?php esc_attr_e(WS_LS_MACRO_PROTEINS); ?>" size="3" />%
+                                                        <input  type="number"  step="any" min="0" max="100" name="ws-ls-macro-proteins" id="ws-ls-macro-proteins" class="ws-ls-macro" value="<?php echo esc_attr( ws_ls_harris_benedict_setting( 'ws-ls-macro-proteins' ) ); ?>" size="3" />%
                                                         <p><?php echo __('Percentage of Proteins to make up a moderate diet', WE_LS_SLUG);?>. <?php echo ws_ls_calculations_link(); ?>. <em><?php echo __( 'Please note, it may take up to 15 minutes for calorie calculations to change (due to caching).' , WE_LS_SLUG); ?></em></p>
                                                     </td>
                                                 </tr>
                                                 <tr class="<?php echo $disable_if_not_pro_plus_class; ?>">
                                                     <th scope="row"><?php echo __( 'Carbohydrates' , WE_LS_SLUG); ?></th>
                                                     <td>
-                                                        <input  type="number"  step="any" min="0" max="100" name="ws-ls-macro-carbs" id="ws-ls-macro-carbs" class="ws-ls-macro" value="<?php esc_attr_e(WS_LS_MACRO_CARBS) ?>" size="3" />%
+                                                        <input  type="number"  step="any" min="0" max="100" name="ws-ls-macro-carbs" id="ws-ls-macro-carbs" class="ws-ls-macro" value="<?php echo esc_attr( ws_ls_harris_benedict_setting( 'ws-ls-macro-carbs' ) ); ?>" size="3" />%
                                                         <p><?php echo __('Percentage of Carbohydrates to make up a moderate diet', WE_LS_SLUG);?>. <?php echo ws_ls_calculations_link(); ?>. <em><?php echo __( 'Please note, it may take up to 15 minutes for calculations to change (due to caching).' , WE_LS_SLUG); ?></em></p>
                                                     </td>
                                                 </tr>
                                                 <tr class="<?php echo $disable_if_not_pro_plus_class; ?>">
                                                     <th scope="row"><?php echo __( 'Fats' , WE_LS_SLUG); ?></th>
                                                     <td>
-                                                        <input  type="number"  step="any" min="0" max="100" name="ws-ls-macro-fats" id="ws-ls-macro-fats"  class="ws-ls-macro" value="<?php esc_attr_e(WS_LS_MACRO_FATS); ?>" size="3" />%
+                                                        <input  type="number"  step="any" min="0" max="100" name="ws-ls-macro-fats" id="ws-ls-macro-fats"  class="ws-ls-macro" value="<?php echo esc_attr( ws_ls_harris_benedict_setting( 'ws-ls-macro-fats' ) ); ?>" size="3" />%
                                                         <p><?php echo __('Percentage of Fats to make up a moderate diet', WE_LS_SLUG);?>. <?php echo ws_ls_calculations_link(); ?>. <em><?php echo __( 'Please note, it may take up to 15 minutes for calculations to change (due to caching).' , WE_LS_SLUG); ?></em></p>
                                                     </td>
                                                 </tr>

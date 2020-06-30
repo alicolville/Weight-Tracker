@@ -32,9 +32,13 @@ function ws_ls_macro_calculate($user_id = false) {
 
             $macros[$key]['calories'] = $calories[$key]['total'];
 
-			$protein_calc = WS_LS_MACRO_PROTEINS / 100;
-			$carbs_calc = WS_LS_MACRO_CARBS / 100;
-			$fats_calc = WS_LS_MACRO_FATS / 100;
+	        $protein_calc   = ws_ls_harris_benedict_setting( 'ws-ls-macro-proteins' );
+	        $carbs_calc     = ws_ls_harris_benedict_setting( 'ws-ls-macro-carbs' );
+	        $fats_calc      = ws_ls_harris_benedict_setting( 'ws-ls-macro-fats' );
+
+	        $protein_calc   = $protein_calc / 100;
+			$carbs_calc     = $carbs_calc / 100;
+			$fats_calc      = $fats_calc / 100;
 
             // Total
             $macros[$key]['total']['protein'] = ($macros[$key]['calories'] * $protein_calc) / 4;
@@ -274,19 +278,14 @@ add_shortcode( 'wlt-macronutrients-table', 'ws_ls_shortcode_macro_table' );
  *
  * @return bool
  */
-function ws_ls_macro_validate_percentages()
-{
+function ws_ls_macro_validate_percentages() {
 
-    // All numeric?
-    if (false === is_numeric(WS_LS_MACRO_PROTEINS) ||
-        false === is_numeric(WS_LS_MACRO_CARBS) ||
-        false === is_numeric(WS_LS_MACRO_FATS)
-    ) {
-        return false;
-    }
+	$proteins   = ws_ls_harris_benedict_setting( 'ws-ls-macro-proteins' );
+	$fats       = ws_ls_harris_benedict_setting( 'ws-ls-macro-fats' );
+	$carbs      = ws_ls_harris_benedict_setting( 'ws-ls-macro-carbs' );
 
     // Is their sum 100 (i.e. 100%)
-    return ( 100 == ( WS_LS_MACRO_PROTEINS + WS_LS_MACRO_CARBS + WS_LS_MACRO_FATS ) ) ? true : false;
+    return ( 100 === ( $proteins + $fats + $carbs ) );
 }
 
 /**

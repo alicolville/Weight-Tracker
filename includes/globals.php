@@ -4,10 +4,6 @@
 	global $form_number;        // This is used to keep track of multiple forms on a page allowing us to pass messages to each
 	global $save_response;      // This is used to keep track of form posts responses
 
-    // -----------------------------------------------------------------------------------
-	// YeKen Globals
-	// -----------------------------------------------------------------------------------
-
 	define( 'WE_LS_TITLE', 'Weight Tracker' );
 	define( 'WE_LS_SLUG', 'weight-loss-tracker' );
 	define( 'WE_LS_LICENSE_TYPES_URL', 'https://weight.yeken.uk/features' );
@@ -18,66 +14,3 @@
     define( 'WE_LS_CDN_CHART_JS', 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js' );
 	define( 'WE_LS_PRO_PRICE', 50.00 );
 	define( 'WE_LS_PRO_PLUS_PRICE', 100.00 );
-
-    // -----------------------------------------------------------------------------------
-	// Dynamic Settings based upon user settings, etc
-	// -----------------------------------------------------------------------------------
-
-    // Set defaults
-	$globals = array(
-		'WS_LS_CAL_CAP_MALE' => 1900,
-        'WS_LS_CAL_CAP_FEMALE' => 1400,
-		'WS_LS_MACRO_PROTEINS' => 25,
-        'WS_LS_MACRO_CARBS' => 50,
-        'WS_LS_MACRO_FATS' => 25
-	);
-
-
-    // -----------------------------------------------------------------------------------
-    // Pro Plus
-    // -----------------------------------------------------------------------------------
-
-    if (WS_LS_IS_PRO_PLUS) {
-
-	    // Calories
-	    $female_cal_cap = get_option('ws-ls-female-cal-cap');
-
-	    if(is_numeric($female_cal_cap)) {
-            $globals['WS_LS_CAL_CAP_FEMALE'] =  (int) $female_cal_cap;
-        }
-
-        $male_cal_cap = get_option('ws-ls-male-cal-cap');
-
-        if(is_numeric($male_cal_cap)) {
-            $globals['WS_LS_CAL_CAP_MALE'] =  (int) $male_cal_cap;
-        }
-
-	    // Macro N
-
-        $macro_value = get_option('ws-ls-macro-proteins');
-
-        if(is_numeric($macro_value) && $macro_value > 0 && $macro_value < 100) {
-            $globals['WS_LS_MACRO_PROTEINS'] = (int) $macro_value;
-        }
-
-        $macro_value = get_option('ws-ls-macro-carbs');
-
-        if(is_numeric($macro_value) && $macro_value > 0 && $macro_value < 100) {
-            $globals['WS_LS_MACRO_CARBS'] = (int) $macro_value;
-        }
-
-        $macro_value = get_option('ws-ls-macro-fats');
-
-        if(is_numeric($macro_value) && $macro_value > 0 && $macro_value < 100) {
-            $globals['WS_LS_MACRO_FATS'] = (int) $macro_value;
-        }
-
-    }
-
-	// -----------------------------------------------------------------------------------
-	// Loop through array and set defines!
-	// -----------------------------------------------------------------------------------
-    foreach($globals as $key => $value) {
-		define($key, $value);
-	}
-
