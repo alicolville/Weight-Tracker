@@ -149,3 +149,4 @@ add_shortcode( 'wlt-recent-bmi', 'ws_ls_shortcode_old_names' );
 add_shortcode( 'weight-loss-tracker-form', 'ws_ls_shortcode_old_names' );
 add_shortcode( 'weight-loss-tracker', 'ws_ls_shortcode_old_names' );
 add_shortcode( 'weight-loss-tracker-table', 'ws_ls_shortcode_old_names' );
+add_shortcode( 'weight-loss-tracker-progress-bar', 'ws_ls_shortcode_old_names' );

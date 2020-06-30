@@ -155,7 +155,6 @@ require_once( WS_LS_ABSPATH . 'pro-features/plus/awards/hooks.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/emails.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/plus/challenge/inc.php' );
 
-
 // Gravity Forms
 if ( true === WS_LS_IS_PRO && 'yes' == get_option( 'ws-ls-gf-enable', 'yes' ) ) {
 	require_once( WS_LS_ABSPATH . 'pro-features/hook-gravity-forms.php' );
