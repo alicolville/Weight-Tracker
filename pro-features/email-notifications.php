@@ -108,7 +108,7 @@ add_action( 'wlt-hook-data-added-edited', 'ws_ls_email_notification', 10, 2);
 /*
 	Returns a standard email template. This wil be expanded in future releases.
 */
-function ws_ls_email_notifications_template($placeholders = array()) {
+function ws_ls_email_notifications_template( $placeholders = array()) {
 
 	$email = sprintf( '<p>%s,</p>', __( 'Hello' , WE_LS_SLUG) );
     $email .= __( '<p>Just a quick email to let you know that "{displayname}" has {mode} {type}:</p>' , WE_LS_SLUG);
@@ -139,3 +139,25 @@ function ws_ls_email_notification_addresses() {
 
 	return ( true === is_array( $emails ) && false === empty( $emails ) ) ? $emails : NULL;
 }
+
+/**
+ *  Add email template for email notifications
+ */
+function ws_ls_email_notification_activate() {
+
+	// Only run this when the plugin version has changed
+	if( true === update_option('ws-ls-email-notification-db-number', WE_LS_DB_VERSION ) ) {
+
+		// Insert the notification template
+		if ( false === ws_ls_emailer_get('notify') ) {
+
+			$email = sprintf( '<p>%s,</p>', __( 'Hello' , WE_LS_SLUG) );
+			$email .= __( '<p>Just a quick email to let you know that "{displayname}" has {mode} {type}:</p>' , WE_LS_SLUG);
+			$email .= __( '{data}' , WE_LS_SLUG) . PHP_EOL . PHP_EOL;
+			$email .= sprintf( '<p>%s</p>', __( 'Thank you!' , WE_LS_SLUG) );
+
+			ws_ls_emailer_add( 'notify', 'Weight Tracker Update', '<center>' . $email . '</center>' );
+		}
+	}
+}
+add_action( 'admin_init', 'ws_ls_email_notification_activate' );

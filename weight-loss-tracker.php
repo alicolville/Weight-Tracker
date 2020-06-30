@@ -152,7 +152,7 @@ require_once( WS_LS_ABSPATH . 'pro-features/plus/awards/activate.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/plus/awards/functions.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/plus/awards/db.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/plus/awards/hooks.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/emails.php' );
+require_once( WS_LS_ABSPATH . 'pro-features/email-notifications.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/plus/challenge/inc.php' );
 
 // Gravity Forms
