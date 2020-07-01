@@ -277,24 +277,24 @@ function ws_ls_round_decimals( $value ) {
  */
 function ws_ls_convert_hex_to_rgb( $colour = '', $alpha = null ) {
 
-	if ( $colour[0] == '#' ) {
+	if ( '#' === $colour[0] ) {
 		$colour = substr( $colour, 1 );
 	}
-	if ( strlen( $colour ) == 6 ) {
+	if ( 6 === strlen( $colour ) ) {
 		list( $r, $g, $b ) = array( $colour[0] . $colour[1], $colour[2] . $colour[3], $colour[4] . $colour[5] );
-	} elseif ( strlen( $colour ) == 3 ) {
+	} elseif ( 3 === strlen( $colour ) ) {
 		list( $r, $g, $b ) = array( $colour[0] . $colour[0], $colour[1] . $colour[1], $colour[2] . $colour[2] );
 	} else {
 		return false;
 	}
+
 	$r = hexdec( $r );
 	$g = hexdec( $g );
 	$b = hexdec( $b );
-	$value = $r . ',' . $g . ',' . $b;
-	if ( empty($alpha) === false ) {
-		return 'rgba(' . $value . ',' . $alpha . ')';
-	} else {
-		return 'rgb(' . $value . ')';
-	}
 
+	$value = $r . ',' . $g . ',' . $b;
+
+	return ( false === empty( $alpha )  ) ?
+		 'rgba(' . $value . ',' . $alpha . ')' :
+			 'rgb(' . $value . ')';
 }
