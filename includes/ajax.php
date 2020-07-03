@@ -136,15 +136,15 @@ function ws_ls_ajax_get_errors(){
 	$table_id = ws_ls_post_value('table_id');
 
 	$columns = [
-		[ 'name' => 'timestamp', 'title' => __( 'Date', WE_LS_SLUG ), 'breakpoints'=> '', 'type' => 'date' ],
-		[ 'name' => 'module', 'title' => __( 'Module', WE_LS_SLUG ), 'breakpoints'=> '', 'type' => 'text' ],
-		[ 'name' => 'message', 'title' => __( 'Message', WE_LS_SLUG ), 'breakpoints'=> '', 'type' => 'text' ]
+					[ 'name' => 'timestamp', 'title' => __( 'Date', WE_LS_SLUG ), 'breakpoints'=> '', 'type' => 'date' ],
+					[ 'name' => 'module', 'title' => __( 'Module', WE_LS_SLUG ), 'breakpoints'=> '', 'type' => 'text' ],
+					[ 'name' => 'message', 'title' => __( 'Message', WE_LS_SLUG ), 'breakpoints'=> '', 'type' => 'text' ]
 	];
 
 	$data = [
-		'columns' => $columns,
-		'rows' => ws_ls_log_all(),
-		'table_id' => $table_id
+		'columns'   => $columns,
+		'rows'      => ws_ls_log_all(),
+		'table_id'  => $table_id
 	];
 
 	wp_send_json( $data );
