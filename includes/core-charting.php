@@ -28,7 +28,8 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 												'weight-line-color'     => get_option( 'ws-ls-line-colour', '#aeaeae' ),
 												'bar-weight-fill-color' => get_option( 'ws-ls-line-fill-colour', '#f9f9f9' ),
 												'target-fill-color'     => get_option( 'ws-ls-target-colour', '#76bada' ),
-												'begin-y-axis-at-zero'  => ws_ls_option_to_bool( 'ws-ls-axes-start-at-zero', 'n' )
+												'begin-y-axis-at-zero'  => ws_ls_option_to_bool( 'ws-ls-axes-start-at-zero', 'n' ),
+												'reverse'               => false
 	] );
 
 	$chart_config[ 'id' ]               = ws_ls_component_id();
@@ -154,6 +155,10 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 	}
 
 	if ( false === empty( $weight_data ) ) {
+
+		if ( true === $chart_config[ 'reverse' ] ) {
+			$weight_data = array_reverse( $weight_data );
+		}
 
 		foreach ( $weight_data as $weight ) {
 
