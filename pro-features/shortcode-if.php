@@ -72,6 +72,8 @@ function ws_ls_shortcode_if($user_defined_arguments, $content = null, $level = 0
 
     return '';
 }
+add_shortcode( 'wlt-if', 'ws_ls_shortcode_if' );
+add_shortcode( 'wt-if', 'ws_ls_shortcode_if' );
 
 /**
  * Remove <br> and <p> tags from text

@@ -1046,6 +1046,19 @@ function ws_ls_display_pro_upgrade_notice( ) {
 }
 
 /**
+ * Upgrade notice for shortcode
+ * @return string
+ */
+function ws_ls_display_pro_upgrade_notice_for_shortcode () {
+
+	return sprintf( '<p>%s <a href="%s">%s</a></p>',
+							__( 'To use this shortcode, you need to upgrade to the Pro or Pro Plus version.', WE_LS_SLUG ),
+							esc_url( admin_url('admin.php?page=ws-ls-license') ),
+							__( 'Upgrade now', WE_LS_SLUG )
+	);
+}
+
+/**
  * Return a Blur CSS class if not valid license
  *
  * @param bool $pro_plus

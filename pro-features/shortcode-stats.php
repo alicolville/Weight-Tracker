@@ -4,6 +4,10 @@ defined('ABSPATH') or die("Jog on!");
 
 function ws_ls_shortcode_stats_league_total($user_defined_arguments)
 {
+	if ( false === WS_LS_IS_PRO ) {
+		return ws_ls_display_pro_upgrade_notice_for_shortcode();
+	}
+
 	$arguments = shortcode_atts(
 	array(
 		'display' => 'number',
@@ -99,10 +103,15 @@ function ws_ls_shortcode_stats_league_total($user_defined_arguments)
 
 	return '<p>' . __('The league table has not been generated yet. This is a scheduled task so please check back in 15 minutes or try pressing the button below.', WE_LS_SLUG) .'</p>';
 }
-
+add_shortcode( 'wlt-league-table', 'ws_ls_shortcode_stats_league_total' );
+add_shortcode( 'wt-league-table', 'ws_ls_shortcode_stats_league_total' );
 
 function ws_ls_shortcode_stats_total_lost($user_defined_arguments)
 {
+	if ( false === WS_LS_IS_PRO ) {
+		return ws_ls_display_pro_upgrade_notice_for_shortcode();
+	}
+
     if( false === WS_LS_IS_PRO ) {
        return  __('Stats disabled', WE_LS_SLUG);
     }
@@ -120,6 +129,8 @@ function ws_ls_shortcode_stats_total_lost($user_defined_arguments)
 
 	return $stats['display-value'];
 }
+add_shortcode( 'wlt-total-lost', 'ws_ls_shortcode_stats_total_lost' );
+add_shortcode( 'wt-total-lost', 'ws_ls_shortcode_stats_total_lost' );
 
 function ws_ls_shortcode_stats_display_value($stats, $arguments) {
 

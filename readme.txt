@@ -189,6 +189,12 @@ wt-form replace "hide-measurements" with "hide-meta"
 add_shortcode( 'wlt-table', 'ws_ls_shortcode_table' ); to add_shortcode( 'wt-table', 'ws_ls_shortcode_table' );  / Added argument: 'enable-meta-fields'
 add documentation for wt-group-weight-difference
 wlt-group to wt-group
+wlt-if to wt-if
+wlt-user-settings to wt-user-settings
+wlt-message to wt-message
+wlt-reminder to wt-reminder
+wlt-total-lost to wt-total-lost
+wlt-league-table to wt-league-table
 
 * Improvement: Allow numeric custom fields to be plotted on charts.
 * Improvement: A user's target weight can now be displayed on bar graphs.

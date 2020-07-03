@@ -150,3 +150,7 @@ add_shortcode( 'weight-loss-tracker-form', 'ws_ls_shortcode_old_names' );
 add_shortcode( 'weight-loss-tracker', 'ws_ls_shortcode_old_names' );
 add_shortcode( 'weight-loss-tracker-table', 'ws_ls_shortcode_old_names' );
 add_shortcode( 'weight-loss-tracker-progress-bar', 'ws_ls_shortcode_old_names' );
+add_shortcode( 'weight-loss-tracker-message', 'ws_ls_shortcode_old_names' );
+add_shortcode( 'weight-loss-tracker-reminder', 'ws_ls_shortcode_old_names' );
+add_shortcode( 'weight-loss-tracker-league-table', 'ws_ls_shortcode_old_names' );
+add_shortcode( 'weight-loss-tracker-total-lost', 'ws_ls_shortcode_old_names' );

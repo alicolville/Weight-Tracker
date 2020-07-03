@@ -4,6 +4,10 @@ defined('ABSPATH') or die("Jog on!");
 
 function ws_ls_shortcode_reminder($user_defined_arguments, $content = null) {
 
+	if ( false === WS_LS_IS_PRO ) {
+		return ws_ls_display_pro_upgrade_notice_for_shortcode();
+	}
+
 	// If not logged in then return no value
 	if(!is_user_logged_in()) {
 		return '';
@@ -58,3 +62,5 @@ function ws_ls_shortcode_reminder($user_defined_arguments, $content = null) {
 
 	return $message;
 }
+add_shortcode( 'wlt-reminder', 'ws_ls_shortcode_reminder' );
+add_shortcode( 'wt-reminder', 'ws_ls_shortcode_reminder' );

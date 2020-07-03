@@ -10,6 +10,9 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
 
 
 	// TODO: Check if user PRO?
+//	if ( false === WS_LS_IS_PRO ) {
+//		return ws_ls_display_pro_upgrade_notice_for_shortcode();
+//	}
 
     // If not logged in then return no value
     if ( false === is_user_logged_in() )	{
@@ -230,3 +233,5 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
 
 	return $html_output;
 }
+add_shortcode( 'wlt-user-settings', 'ws_ls_user_preferences_form' );
+add_shortcode( 'wt-user-settings', 'ws_ls_user_preferences_form' );

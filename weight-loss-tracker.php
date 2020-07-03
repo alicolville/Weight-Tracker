@@ -147,7 +147,7 @@ require_once( WS_LS_ABSPATH . 'pro-features/footable.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/db.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/functions-stats.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/export.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/init.php' );
+require_once( WS_LS_ABSPATH . 'pro-features/hooks.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/plus/awards/activate.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/plus/awards/functions.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/plus/awards/db.php' );
