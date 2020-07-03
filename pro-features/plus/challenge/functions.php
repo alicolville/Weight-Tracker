@@ -364,7 +364,7 @@ function ws_ls_challenges_view_entries( $args ) {
 			$value = $row[ $key ];
 
 			if ( 'weight_diff' == $key ) {
-				$row[ 'weight_diff' ] = ws_ls_convert_kg_into_relevant_weight_string( $row[ 'weight_diff' ], true );
+				$row[ 'weight_diff' ] = ws_ls_weight_display( $row[ 'weight_diff' ], NULL, 'display', true, true );
 			}
 
 			$html .= sprintf( '    <td  data-sort-value="%1$s">
@@ -407,8 +407,8 @@ function ws_ls_challenges_view_entries( $args ) {
 
 			switch ( $key ){
 				case 'weight_diff':
-					$html_sums      .= sprintf( '<td>%s</td>', ws_ls_convert_kg_into_relevant_weight_string( $counts[ $key ][ 'sum' ], true ) );
-					$html_averages  .= sprintf( '<td>%s</td>', ws_ls_convert_kg_into_relevant_weight_string( $counts[ $key ][ 'average' ] ) );
+					$html_sums      .= sprintf( '<td>%s</td>', ws_ls_weight_display( $counts[ $key ][ 'sum' ], NULL, 'display', true, true ) ) ;
+					$html_averages  .= sprintf( '<td>%s</td>', ws_ls_weight_display( $counts[ $key ][ 'average' ], NULL, 'display', true, true )  );
 					break;
 				case 'count_mt_entries':
 				case 'count_wt_entries_week':

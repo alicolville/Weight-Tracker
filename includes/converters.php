@@ -151,6 +151,58 @@ function ws_ls_weight_display( $kg, $user_id = NULL, $key = false, $force_admin 
 		$weight;
 }
 
+
+/**
+ * Prepare Stones / Pounds for display
+ * @param $weight
+ *
+ * @return string
+ */
+function ws_ls_format_stones_pound_for_comparison_display( $weight ) {
+
+	if( true === isset( $weight[ 'stones' ] ) &&
+	    true === isset( $weight['pounds'] ) ) {
+
+		$text           = [];
+		$show_stones    = true;
+
+		// Round up figures that hit 14lb
+		if( 14 == $weight[ 'pounds' ] ) {
+			$weight[ 'pounds' ] = 0;
+			$weight[ 'stones' ]++;
+		} else if (-14 == $weight["pounds"]) {
+			$weight[ 'pounds' ] = 0;
+			$weight[ 'stones' ]--;
+		}
+
+		// Is stones equal to zero?
+		if( -0 == $weight['stones'] || 0 == $weight['stones'] ) {
+			$show_stones = false;
+		}
+
+		if ($show_stones) {
+			$text[] = $weight['stones'] . __( 'st', WE_LS_SLUG );
+		}
+
+		if ( true === is_numeric( $weight['pounds'] ) ) {
+
+			// If both stones and pounds negative then invert pounds.
+			// e.g.
+			// -1 stone -10 pounds will get displayed as -1 stone 10 pounds
+			if ( $show_stones && ( -0 == $weight['stones'] || $weight['stones'] < 0 ) && $weight['pounds'] < 0 ) {
+				$weight['pounds'] = abs($weight['pounds']);
+			}
+
+			$text[] = $weight['pounds'] . __('lbs', WE_LS_SLUG);
+		}
+
+		return implode(' ', $text);
+	}
+
+	return '';
+}
+
+
 /**
  * Convert an ISO date into a date object
  * @param $iso_date
@@ -205,50 +257,6 @@ function ws_ls_convert_date_to_iso($date, $user_id = false) {
 	}
 
 	return $date;
-}
-
-/**
- * Convert Kg into relevant display string
- *
- * TODO: DEPRECATED. Should be replaced by ws_ls_weight_display
- *
- * @param $kg
- * @param bool $comparison_value
- * @param bool $user_id
- *
- * @return string
- */
-function ws_ls_convert_kg_into_relevant_weight_string( $kg, $comparison_value = false, $user_id = false ) {
-
-	if ( $kg ) {
-
-		switch ( ws_ls_setting('weight-unit', $user_id ) ) {
-			case 'pounds_only':
-				return ws_ls_convert_kg_to_lb( $kg ) . __('lbs', WE_LS_SLUG);
-			break;
-			case 'kg':
-				return round($kg, 2) . __('kg', WE_LS_SLUG);
-			break;
-			default:
-				$weight = ws_ls_convert_kg_to_stone_pounds( $kg );
-
-				if ($comparison_value) {
-					return ws_ls_format_stones_pound_for_comparison_display( $weight );
-				}
-
-				// If pounds at 14, then round up stones!
-                if( 14 == $weight['pounds'] ) {
-                    $weight['pounds'] = 0;
-                    $weight['stones']++;
-                }
-
-				return $weight['stones'] . __( 'St', WE_LS_SLUG ) . ' ' . $weight[ 'pounds' ] . __( 'lbs', WE_LS_SLUG );
-			break;
-		}
-
-	}
-
-	return '';
 }
 
 // -------------------------------------------------------------

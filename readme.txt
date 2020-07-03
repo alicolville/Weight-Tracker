@@ -187,6 +187,8 @@ wt-form replace "hide-measurements" with "hide-meta"
 [wlt] to [wt]
 [wlt-form] to [wt-form] /  [wt-form] new argument "hide-notes" to hide notes field.
 add_shortcode( 'wlt-table', 'ws_ls_shortcode_table' ); to add_shortcode( 'wt-table', 'ws_ls_shortcode_table' );  / Added argument: 'enable-meta-fields'
+add documentation for wt-group-weight-difference
+wlt-group to wt-group
 
 * Improvement: Allow numeric custom fields to be plotted on charts.
 * Improvement: A user's target weight can now be displayed on bar graphs.
@@ -235,6 +237,7 @@ add_shortcode( 'wlt-table', 'ws_ls_shortcode_table' ); to add_shortcode( 'wt-tab
 * Bug fix: When all user data has been removed, cache is now cleared.
 * Bug fix: Week selector works correctly on [wlt] shortcode when showing advanced data table.
 * Bug fix: When exporting to CSV / JSON, HTML is removed from image custom fields. Instead the full URL is returned.
+* Bug fix: [wt-group-weight-difference] now shows the weight in the correct user format.
 
 = 7.6.2 =
 

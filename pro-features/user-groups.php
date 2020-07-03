@@ -581,9 +581,9 @@
 		$rows = ws_ls_groups( false );
 
 		foreach ( $rows as &$row ) {
-			$row[ 'name' ] = ws_ls_render_link( ws_ls_groups_link_to_page( $row[ 'id' ] ) , $row[ 'name' ] );
-			$row[ 'weight_display' ] = ws_ls_convert_kg_into_relevant_weight_string( $row[ 'weight_difference' ], true );
-			$row[ 'count' ] = ws_ls_groups_count( $row[ 'id' ] );
+			$row[ 'name' ]              = ws_ls_render_link( ws_ls_groups_link_to_page( $row[ 'id' ] ) , $row[ 'name' ] );
+			$row[ 'weight_display' ]    = ws_ls_weight_display( $row[ 'weight_difference' ], NULL, 'display', false, true );
+			$row[ 'count' ]             = ws_ls_groups_count( $row[ 'id' ] );
 		}
 
 		$data = [
@@ -726,14 +726,15 @@
 			$difference = ws_ls_groups_get( $arguments['id'] );
 
 			if ( false === empty( $difference[ 'weight_difference' ] ) ) {
-				return ws_ls_convert_kg_into_relevant_weight_string( $difference[ 'weight_difference' ], true );
+				return ws_ls_weight_display( $difference[ 'weight_difference' ], NULL, 'display', false, true );
 			}
 		}
 
 		return __('Group ID not found', WE_LS_SLUG);
 	}
 	add_shortcode( 'wlt-group-weight-difference', 'ws_ls_groups_shortcode' );
-
+	add_shortcode( 'wt-group-weight-difference', 'ws_ls_groups_shortcode' );
+//
     /**
      * Shortcode to display the user's current group
      *
@@ -753,7 +754,7 @@
         return esc_html( $group_text );
     }
     add_shortcode( 'wlt-group', 'ws_ls_groups_current' );
-
+	add_shortcode( 'wt-group', 'ws_ls_groups_current' );
 
 	/**
 	 * Given a group ID, return a link to the group page

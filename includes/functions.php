@@ -593,56 +593,6 @@ function ws_ls_remove_non_numeric( $text ) {
 }
 
 /**
- * Prepare Stones / Pounds for display
- * @param $weight
- *
- * @return string
- */
-function ws_ls_format_stones_pound_for_comparison_display($weight) {
-
-	if( true === isset( $weight[ 'stones' ] ) &&
-	        true === isset( $weight['pounds'] ) ) {
-
-		$text           = [];
-		$show_stones    = true;
-
-		// Round up figures that hit 14lb
-		if( 14 == $weight[ 'pounds' ] ) {
-			$weight[ 'pounds' ] = 0;
-			$weight[ 'stones' ]++;
-		} else if (-14 == $weight["pounds"]) {
-			$weight[ 'pounds' ] = 0;
-			$weight[ 'stones' ]--;
-		}
-
-		// Is stones equal to zero?
-		if( -0 == $weight['stones'] || 0 == $weight['stones'] ) {
-			$show_stones = false;
-		}
-
-		if ($show_stones) {
-			$text[] = $weight['stones'] . __( 'st', WE_LS_SLUG );
-		}
-
-		if ( true === is_numeric( $weight['pounds'] ) ) {
-
-			// If both stones and pounds negative then invert pounds.
-			// e.g.
-			// -1 stone -10 pounds will get displayed as -1 stone 10 pounds
-			if ( $show_stones && ( -0 == $weight['stones'] || $weight['stones'] < 0 ) && $weight['pounds'] < 0 ) {
-				$weight['pounds'] = abs($weight['pounds']);
-			}
-
-			$text[] = $weight['pounds'] . __('lbs', WE_LS_SLUG);
-		}
-
-		return implode(' ', $text);
-	}
-
-	return '';
-}
-
-/**
  * Fetch a value from the $_GET
  * @param $key
  * @param bool $force_to_int
