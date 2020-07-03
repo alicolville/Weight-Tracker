@@ -56,6 +56,7 @@ function ws_ls_admin_page_data_summary() {
                                 echo ws_ls_shortcode_stats_league_total(['ignore_cache' => $ignore_cache, 'order' => (false === $show_gain) ? 'asc' : 'desc']);
 
                             ?>
+							<p><small><?php echo __( 'Please note: For performance reasons, this table only will update every hour. Click the following button to manually update.', WE_LS_SLUG ); ?></small></p>
                             <a class="btn button-secondary" href="<?php echo admin_url( 'admin.php?page=ws-ls-data-home&regenerate-stats=y' ); ?>"><i class="fa fa-refresh"></i> <?php echo __('Regenerate these stats', WE_LS_SLUG); ?></a>
 							<?php
 

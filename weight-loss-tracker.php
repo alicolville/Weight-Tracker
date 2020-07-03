@@ -188,16 +188,13 @@ add_action('plugins_loaded', 'ws_ls_load_textdomain');
 	 //   $setting = ws_ls_setting();
 
     //	var_Dump( $setting );
-
-	    var_Dump( ws_ls_setting( 'weight-unit', 1 ) );
-	    var_Dump( ws_ls_setting( 'use-imperial', 1 ) );
-	    var_Dump( ws_ls_setting( 'use-us-dates', 1 ) );
-
+//	    $t = ws_ls_stats_sum_weight_difference();
+//print_r($t);
     	$user_id = 1; // get_current_user_id();
 
 
-   // 	print_r(ws_ls_cache_user_get_all( $user_id ));
-	  //  print_r(ws_ls_cache_user_get_all( NULL ));
+   	print_r(ws_ls_cache_user_get_all( $user_id ));
+	    print_r(ws_ls_cache_user_get_all( NULL ));
 
 
 

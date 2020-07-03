@@ -2,6 +2,9 @@
 
 defined('ABSPATH') or die('Jog on!');
 
+/**
+ * User records where their stats could do with a refresh
+ */
 function ws_ls_stats_run_cron() {
 
 	// Copy across anyone missing from the stats table!
@@ -10,10 +13,12 @@ function ws_ls_stats_run_cron() {
 	// Remove any old IDs from stats table
 	ws_ls_stats_remove_deleted_user_ids_from_stats();
 
+	$users_to_update = ws_ls_stats_fetch_those_that_need_update();
+
 	// Fetch some records to process
-	if($users = ws_ls_stats_fetch_those_that_need_update()) {
-		foreach ($users as $user) {
-			ws_ls_stats_update_for_user($user['user_id']);
+	if( false === empty( $users_to_update ) ) {
+		foreach ( $users_to_update as $user ) {
+			ws_ls_stats_update_for_user( $user['user_id'] );
 		}
 	}
 
