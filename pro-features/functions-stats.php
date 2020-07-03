@@ -8,12 +8,12 @@ defined('ABSPATH') or die('Jog on!');
 function ws_ls_stats_run_cron() {
 
 	// Copy across anyone missing from the stats table!
-	ws_ls_stats_insert_missing_user_ids_into_stats();
+	ws_ls_db_stats_insert_missing_user_ids_into_stats();
 
 	// Remove any old IDs from stats table
-	ws_ls_stats_remove_deleted_user_ids_from_stats();
+	ws_ls_db_stats_remove_deleted_user_ids_from_stats();
 
-	$users_to_update = ws_ls_stats_fetch_those_that_need_update();
+	$users_to_update = ws_ls_db_stats_fetch_those_that_need_update();
 
 	// Fetch some records to process
 	if( false === empty( $users_to_update ) ) {
@@ -29,12 +29,6 @@ function ws_ls_stats_run_cron() {
 add_action( 'weight_loss_tracker_hourly' , 'ws_ls_stats_run_cron');
 add_action( 'wlt-hook-data-all-deleted', 'ws_ls_stats_run_cron' );	// Delete stats if all user data has been deleted
 add_action( 'wlt-hook-data-user-deleted', 'ws_ls_stats_run_cron' );	// Tidy up stats if a user deletes their entry
-
-function ws_ls_stats_clear_last_updated_date(){
-	global $wpdb;
-	$wpdb->query('Update ' . $wpdb->prefix . WE_LS_USER_STATS_TABLENAME . ' set last_update = NULL');
-	return;
-}
 
 function ws_ls_stats_run_cron_for_first_time() {
 
@@ -66,7 +60,7 @@ function ws_ls_stats_get_summary_stats() {
 function ws_ls_stats_refresh_summary_stats() {
 
 	$stats = array(
-		'difference' => ws_ls_stats_sum_weight_difference(),
+		'difference' => ws_ls_db_stats_sum_weight_difference(),
 		'sum' => 0
 	);
 

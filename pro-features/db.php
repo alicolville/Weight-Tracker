@@ -8,7 +8,7 @@ defined('ABSPATH') or die("Jog on!");
 /*
 	Fetch records that haven't been updated in the last 6 hours
 */
-function ws_ls_stats_fetch_those_that_need_update() {
+function ws_ls_db_stats_fetch_those_that_need_update() {
 
 	global $wpdb;
 	$sql = 'SELECT * FROM ' . $wpdb->prefix . WE_LS_USER_STATS_TABLENAME . ' where last_update < DATE_SUB( NOW(), INTERVAL 6 HOUR ) or last_update is null ORDER BY RAND()';
@@ -18,7 +18,7 @@ function ws_ls_stats_fetch_those_that_need_update() {
 /*
 	Refresh total lost count
 */
-function ws_ls_stats_sum_weight_difference() {
+function ws_ls_db_stats_sum_weight_difference() {
 
 	global $wpdb;
 	$result = $wpdb->get_var( 'SELECT sum( weight_difference ) FROM ' . $wpdb->prefix . WE_LS_USER_STATS_TABLENAME );
@@ -29,7 +29,7 @@ function ws_ls_stats_sum_weight_difference() {
 /*
 	Copy user IDs of those that have entered weights into stats table (assuming they aren't they're already)
 */
-function ws_ls_stats_insert_missing_user_ids_into_stats() {
+function ws_ls_db_stats_insert_missing_user_ids_into_stats() {
 
 	global $wpdb;
 	$stats_table_name   = $wpdb->prefix . WE_LS_USER_STATS_TABLENAME;
@@ -45,7 +45,7 @@ function ws_ls_stats_insert_missing_user_ids_into_stats() {
 /*
 	Copy user IDs of those that have entered weights into stats table (assuming they aren't they're already)
 */
-function ws_ls_stats_remove_deleted_user_ids_from_stats() {
+function ws_ls_db_stats_remove_deleted_user_ids_from_stats() {
 
 	global $wpdb;
 
@@ -59,10 +59,16 @@ function ws_ls_stats_remove_deleted_user_ids_from_stats() {
 	return;
 }
 
-/*
-	Select league table
-*/
-function ws_ls_stats_league_table_fetch( $ignore_cache = false, $limit = 10, $losers_only = false, $order = 'asc' ) {
+/**
+ * Fetch data for stats table
+ * @param bool $ignore_cache
+ * @param int $limit
+ * @param bool $losers_only
+ * @param string $order
+ *
+ * @return array|object|null
+ */
+function ws_ls_db_stats_league_table_fetch( $ignore_cache = false, $limit = 10, $losers_only = false, $order = 'asc' ) {
 
 	$cache_key = 'ws-ls-stats-table-' . md5($ignore_cache . $limit . $losers_only . $order);
 
@@ -105,4 +111,13 @@ function ws_ls_stats_league_table_fetch( $ignore_cache = false, $limit = 10, $lo
 	ws_ls_cache_user_set( NULL, $cache_key, $results, HOUR_IN_SECONDS );
 
 	return $results;
+}
+
+/**
+ * Clear last update timestamp for stats
+ */
+function ws_ls_db_stats_clear_last_updated_date(){
+	global $wpdb;
+	$wpdb->query( 'Update ' . $wpdb->prefix . WE_LS_USER_STATS_TABLENAME . ' set last_update = NULL' );
+	return;
 }

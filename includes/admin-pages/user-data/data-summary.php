@@ -47,7 +47,7 @@ function ws_ls_admin_page_data_summary() {
 
                                 // Run stats if plugin version number has changed!
                                 if( true === WS_LS_IS_PRO && update_option('ws-ls-version-number-stats', WE_LS_CURRENT_VERSION) || (false === empty($_GET['regenerate-stats']) && 'y' == $_GET['regenerate-stats'])) {
-                                    ws_ls_stats_clear_last_updated_date();
+                                    ws_ls_db_stats_clear_last_updated_date();
                                     ws_ls_stats_run_cron();
                                     ws_ls_tidy_cache_on_delete();
 									$ignore_cache = true;

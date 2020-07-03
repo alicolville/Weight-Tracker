@@ -16,7 +16,7 @@ function ws_ls_shortcode_stats_league_total($user_defined_arguments)
 		'ignore_cache' => false			// If we have a cached data set, then use that.
 	 ), $user_defined_arguments );
 
-	$data = ws_ls_stats_league_table_fetch($arguments['ignore_cache'], $arguments['number_to_show'],
+	$data = ws_ls_db_stats_league_table_fetch($arguments['ignore_cache'], $arguments['number_to_show'],
 	 										$arguments['losers_only'], $arguments['order']);
 
 	$arguments['show_percentage'] = ws_ls_force_bool_argument($arguments['show_percentage']);
