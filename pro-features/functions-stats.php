@@ -30,6 +30,9 @@ add_action( 'weight_loss_tracker_hourly' , 'ws_ls_stats_run_cron');
 add_action( 'wlt-hook-data-all-deleted', 'ws_ls_stats_run_cron' );	// Delete stats if all user data has been deleted
 add_action( 'wlt-hook-data-user-deleted', 'ws_ls_stats_run_cron' );	// Tidy up stats if a user deletes their entry
 
+/**
+ * Generate initial stats
+ */
 function ws_ls_stats_run_cron_for_first_time() {
 
 	if( false == get_option('ws-ls-stats-run-for-first-time')) {
@@ -69,30 +72,32 @@ function ws_ls_stats_refresh_summary_stats() {
 	return true;
 }
 
-/*
-	Generate stats for user
-*/
-function ws_ls_stats_update_for_user($user_id) {
+/**
+ * Generate stats for the given user
+ * @param $user_id
+ */
+function ws_ls_stats_update_for_user( $user_id ) {
 
-	if(is_numeric($user_id)) {
+	if ( false === empty( $user_id ) ) {
+		return;
+	}
 
-		$stats = array();
+	$stats =  [];
 
-		$stats['user_id'] = $user_id;
-		$stats['start_weight'] = ws_ls_entry_get_oldest_kg($user_id);
-		$stats['recent_weight'] = ws_ls_entry_get_latest_kg( $user_id );
-		$stats['weight_difference'] = (is_numeric($stats['start_weight']) && is_numeric($stats['recent_weight'])) ? $stats['recent_weight'] - $stats['start_weight'] : 0;
-		$stats['last_update'] = current_time('mysql', 1);
+	$stats[ 'user_id' ]           = $user_id;
+	$stats[ 'start_weight' ]      = ws_ls_entry_get_oldest_kg( $user_id );
+	$stats[ 'recent_weight' ]     = ws_ls_entry_get_latest_kg( $user_id );
+	$stats[ 'weight_difference' ] = ( true === is_numeric( $stats[ 'start_weight' ] ) && true === is_numeric( $stats[ 'recent_weight' ] ) ) ? $stats[ 'recent_weight' ] - $stats[ 'start_weight' ] : 0;
+	$stats[ 'last_update' ]       = current_time( 'mysql', 1 );
 
-		$entry_stats = ws_ls_db_entries_count($user_id, false);
-		$stats['no_entries'] = $entry_stats['number-of-entries'];
-        $stats['target_added'] = ($entry_stats['number-of-targets'] > 0) ? 1 : 0;
+	$entry_stats                  = ws_ls_db_entries_count( $user_id, false );
+	$stats[ 'no_entries' ]        = $entry_stats[ 'number-of-entries' ];
+    $stats[ 'target_added' ]      = ( $entry_stats[ 'number-of-targets' ] > 0) ? 1 : 0;
 
-		global $wpdb;
-		$wpdb->replace( $wpdb->prefix . WE_LS_USER_STATS_TABLENAME, $stats, array('%d', '%f', '%f', '%f', '%s') );
+	global $wpdb;
+	$wpdb->replace( $wpdb->prefix . WE_LS_USER_STATS_TABLENAME, $stats, array('%d', '%f', '%f', '%f', '%s') );
 
 		ws_ls_stats_refresh_summary_stats();
-	}
 
 	return;
 }
@@ -109,12 +114,3 @@ function ws_ls_stats_update_user_stats_on_entry_delete( $entry ) {
 
 }
 add_action( 'wlt-hook-data-entry-deleted', 'ws_ls_stats_update_user_stats_on_entry_delete' );
-
-function ws_ls_get_sum_of_weights_for_user($user_id)
-{
-	global $wpdb;
-	$sql = $wpdb->prepare('Update ' . $wpdb->prefix . WE_LS_USER_STATS_TABLENAME . ' set sum_of_weights = (Select sum(weight_weight)
-							from ' . $wpdb->prefix . WE_LS_TABLENAME . ' where weight_user_id = %d) where user_id = %d', $user_id, $user_id);
-	$wpdb->query($sql);
-	return;
-}
