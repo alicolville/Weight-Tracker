@@ -134,7 +134,7 @@ function ws_ls_migrate_measurement_details( $key ) {
  * Display a message when old shortcode names are used.
  */
 function ws_ls_shortcode_old_names() {
-	return ws_ls_display_blockquote( __( 'You are using an old shortcode. It is now deprecated but will exist under a different names. Please view the plugin documentation and use a suitable replacement: https://weight.yeken.uk/shortcodes/', WE_LS_SLUG) );
+	return ws_ls_display_blockquote( __( 'You are using an old shortcode. It is now deprecated but will exist under a different name. Please view the plugin documentation and use a suitable replacement: https://weight.yeken.uk/shortcodes/', WE_LS_SLUG) );
 }
 add_shortcode( 'weight-loss-tracker-chart', 'ws_ls_shortcode_old_names' );
 add_shortcode( 'weightloss_target_weight', 'ws_ls_shortcode_old_names' );
