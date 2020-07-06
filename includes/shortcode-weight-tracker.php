@@ -288,19 +288,32 @@
 add_shortcode( 'wlt', 'ws_ls_shortcode' );
 add_shortcode( 'wt', 'ws_ls_shortcode' );
 
-function ws_ls_start_tab($tab_name, $use_tabs)	{
-	if ($use_tabs) {
-		return '<div' . (($tab_name) ? ' class="' . esc_attr( $tab_name ) . '"' : '') . '>';
-	}
-	return '';
+/**
+ * HTML for opening tab
+ * @param $tab_name
+ * @param $use_tabs
+ *
+ * @return string
+ */
+function ws_ls_start_tab( $tab_name, $use_tabs )	{
+	return ( true === $use_tabs ) ? sprintf( '<div class="ws-ls-tab %s">', $tab_name ) : '';
 }
-function ws_ls_end_tab($use_tabs)	{
-	if ($use_tabs) {
-		return '</div>';
-	}
-	return '';
+
+/**
+ * HTML for closing tab
+ * @param $use_tabs
+ *
+ * @return string
+ */
+function ws_ls_end_tab( $use_tabs )	{
+	return ( true === $use_tabs ) ? '</div>' : '';
 }
-function ws_ls_title($title_text)
-{
-	return '<h3 class="ws_ls_title">' . esc_html( $title_text ) . '</h3>';
+
+/**
+ * @param $title_text
+ *
+ * @return string
+ */
+function ws_ls_title( $title_text ) {
+	return sprintf( '<h3 class="ws_ls_title">%s</h3>', esc_html( $title_text ) );
 }
