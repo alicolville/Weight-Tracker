@@ -236,7 +236,7 @@ input.ws-ls-valid
 }
 .ws-ls-loading
 {
-    width: 16px;
+    width: 16px !important;
     height: 16px;
     background-image: url(images/ajax-loader.gif);
 }

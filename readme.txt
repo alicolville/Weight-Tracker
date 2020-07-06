@@ -157,11 +157,8 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 = 7.7 =
 
-//todo: get everything dynamic out of globals
-//todo: ws_ls_shortcode_form - add argument to hide custom fields. Also update doc to remove measurements arg
-//todo: remove measurements from documentation site
 // TODO: Explaoin Challenegs more in UI and doc site
-// compress ws-ls-entry-form.js, admin-and-public.min.css, data-footable.js
+// compress ws-ls-entry-form.js, admin-and-public.min.css, data-footable.js, ws-ls.css
 // Fix Start Weight
        Latest Weight
        Diff. from Start in admin side bar
@@ -169,6 +166,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 // Chart - allow axes's to be displayed e..g only this custom field, etc
 
 Documentation updates:
+remove measurements from documentation site
 add_shortcode( 'wlt-target', 'ws_ls_shortcode_target' ); to add_shortcode( 'wt-target-weight', 'ws_ls_shortcode_target' );
 add_shortcode( 'wlt-weight-start', 'ws_ls_weight_start' ); to add_shortcode( 'wt-start-weight', 'ws_ls_weight_start' );
 add_shortcode( 'wlt-weight-most-recent', 'ws_ls_weight_recent' ); to add_shortcode( 'wt-latest-weight', 'ws_ls_weight_recent' );
@@ -185,7 +183,7 @@ add_shortcode( 'wlt-height', 'ws_ls_shortcode_height' ); to add_shortcode( 'wt-h
 add_shortcode( 'wlt-new-users', 'ws_ls_shortcode_new_users' ); to add_shortcode( 'wt-new-users', 'ws_ls_shortcode_new_users' );
 wt-form replace "hide-measurements" with "hide-meta"
 [wlt] to [wt]
-[wlt-form] to [wt-form] /  [wt-form] new argument "hide-notes" to hide notes field.
+[wlt-form] to [wt-form] /  [wt-form] new argument "hide-notes" to hide notes field and "hide-fields-meta". Delete argument "hide-measurements"
 add_shortcode( 'wlt-table', 'ws_ls_shortcode_table' ); to add_shortcode( 'wt-table', 'ws_ls_shortcode_table' );  / Added argument: 'enable-meta-fields'
 add documentation for wt-group-weight-difference
 wlt-group to wt-group
