@@ -75,7 +75,7 @@ function ws_ls_shortcode( $user_defined_arguments ) {
 		}
 
 		// Load week ranges
-		if ( true === ws_ls_is_date_intervals_enabled() ) {
+		if ( true === ws_ls_is_date_intervals_enabled()  ) {
 			$week_ranges = ws_ls_get_week_ranges();
 		}
 
