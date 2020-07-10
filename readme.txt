@@ -155,7 +155,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 == Changelog ==
 
-= 7.7 =
+= 8.0 =
 
 // TODO: Explaoin Challenegs more in UI and doc site
 // compress ws-ls-entry-form.js, admin-and-public.min.css, data-footable.js, ws-ls.css
@@ -243,6 +243,10 @@ wlt-league-table to wt-league-table
 * Bug fix: When exporting to CSV / JSON, HTML is removed from image custom fields. Instead the full URL is returned.
 * Bug fix: [wt-group-weight-difference] now shows the weight in the correct user format.
 * Bug fix: User stats table is now cached for up to an hour.
+
+= 7.6.3 =
+
+* Improvement: Added user ID to Harris Benedict filters.
 
 = 7.6.2 =
 
