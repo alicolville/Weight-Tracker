@@ -24,7 +24,7 @@ function ws_ls_macro_calculate($user_id = false) {
 
     if ( true === isset( $calories['maintain']['total'] ) ) {
 
-        $macros_to_calculate = apply_filters( 'wlt-filter-macros-calculate', ['maintain', 'lose', 'gain' ], $calories);
+        $macros_to_calculate = apply_filters( 'wlt-filter-macros-calculate', ['maintain', 'lose', 'gain' ], $calories, $user_id);
 
         foreach ( $macros_to_calculate as $key ) {
 
@@ -45,7 +45,7 @@ function ws_ls_macro_calculate($user_id = false) {
             $macros[$key]['total']['fats'] = ($macros[$key]['calories'] * $fats_calc) / 9;
 
             // Allow 3rd parties to filter macro nutrient totals
-            $macros[$key]['total'] = apply_filters( 'wlt-filter-macros-' . $key . '-total', $macros[$key]['total'], $key, $calories );
+            $macros[$key]['total'] = apply_filters( 'wlt-filter-macros-' . $key . '-total', $macros[$key]['total'], $key, $calories, $user_id );
 
             // Breakfast
             $macros[$key]['breakfast']['protein'] = $macros[$key]['total']['protein'] * 0.2;
@@ -67,14 +67,14 @@ function ws_ls_macro_calculate($user_id = false) {
             $macros[$key]['snacks']['carbs'] = $macros[$key]['total']['carbs'] * 0.2;
             $macros[$key]['snacks']['fats'] = $macros[$key]['total']['fats'] * 0.2;
 
-            $macros[$key] = apply_filters( 'wlt-filter-macros-' . $key, $macros[$key], $calories );
+            $macros[$key] = apply_filters( 'wlt-filter-macros-' . $key, $macros[$key], $calories, $user_id );
         }
 
     } else {
         return NULL;
     }
 
-	$macros = apply_filters( 'wlt-filter-macros', $macros, $calories );
+	$macros = apply_filters( 'wlt-filter-macros', $macros, $calories, $user_id );
 
     // Cache it!
     ws_ls_set_cache($cache_key, $macros);
@@ -104,7 +104,7 @@ function ws_ls_macro_render_table($user_id, $missing_data_text = false, $additio
 			(false === empty($additional_css_class)) ? esc_attr($additional_css_class) . ' ' : '',
 				false === is_admin() ? '' : ' widefat');
 
-        $macros_to_display = apply_filters( 'wlt-filter-macros-display', [ 'maintain', 'lose', 'gain' ], $macros);
+        $macros_to_display = apply_filters( 'wlt-filter-macros-display', [ 'maintain', 'lose', 'gain' ], $macros, $user_id);
 
         foreach ( $macros_to_display as $key ) {
 

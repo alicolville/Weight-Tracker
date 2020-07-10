@@ -686,6 +686,7 @@ function ws_ls_get_user_setting($field = 'gender', $user_id = false, $use_cache 
     }
 
     $sql =  $wpdb->prepare('SELECT ' . $field . ' FROM ' . $wpdb->prefix . WE_LS_USER_PREFERENCES_TABLENAME . ' WHERE user_id = %d', $user_id);
+
     $row = $wpdb->get_row($sql, ARRAY_A);
 
     $result = NULL;
