@@ -58,9 +58,9 @@ function ws_ls_form_post_handler(){
 			exit;
 		}
 
-		$message = apply_filters( 'wlt-filter-form-saved-message', __( 'Your entry has been saved.', WE_LS_SLUG ) );
+		$message = apply_filters( 'wlt-filter-form-saved-message', __( 'Your entry has been successfully saved.', WE_LS_SLUG ) );
 
-		return ws_ls_save_form_error_prep( $form_number );
+		return ws_ls_save_form_error_prep( $form_number, $message, false );
 }
 add_action( 'init', 'ws_ls_form_post_handler' );
 add_action( 'admin_init', 'ws_ls_form_post_handler' );
@@ -245,24 +245,20 @@ function ws_ls_form_post_handler_extract_weight() {
  * Prep a response object for other forms to process
  *
  * @param $form_number
- * @param $error
+ * @param null $message
+ * @param bool $error
  *
- * @return array
+ * @return bool
  */
-function ws_ls_save_form_error_prep( $form_number, $error = NULL ) {
+function ws_ls_save_form_error_prep( $form_number, $message = '', $error = true ) {
 
 	global $save_response;
 
 	if ( false === is_array( $save_response ) ) {
-		$save_response = [ 'form_number' => (int) $form_number, 'message' => '' ];
+		$save_response = [ 'form_number' => (int) $form_number, 'message' => '', 'error' => $error ];
 	}
 
-	if ( false === empty( $error ) ) {
-		$save_response[ 'message' ] = ws_ls_blockquote_error( $error );
-		$save_response[ 'error' ]   = true;
-	} else {
-		$save_response[ 'error' ]   = false;
-	}
+	$save_response[ 'message' ] = ( true === $error ) ? ws_ls_blockquote_error( $message ) : ws_ls_blockquote_success( $message );
 
 	return $error;
 }

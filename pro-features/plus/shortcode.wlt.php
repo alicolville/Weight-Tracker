@@ -60,8 +60,7 @@
 
 		$user_id = ( true === empty( $arguments[ 'user-id' ] ) ) ? get_current_user_id() : (int) $arguments[ 'user-id' ];
 
-       	$include_narrative = ( true === isset($arguments['hide-advanced-narrative'])  &&
-								false === $arguments['hide-advanced-narrative'] ) ? true : false;
+       	$include_narrative = ! ws_ls_to_bool( $arguments[ 'hide-advanced-narrative'] );
 
 		if ( $user_id ) {
 

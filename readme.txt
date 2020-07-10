@@ -225,6 +225,7 @@ wlt-league-table to wt-league-table
 * Improvement: User entry tables: Usernames now open the user's record in a new tab.
 * Improvement: Emails notifications: Now using underlying email manager that was added in 6.1.
 * Improvement: Emails notifications: Subjects are more informative.
+* Improvement: WLT Shortcode: Week Ranges are now displayed when over 150 weeks. They can also have to be enabled with new argument "enable-week-ranges"
 * Bug fix: "Who can view and modify user data?" has been fixed so user's with the specified minimum role can now access admin data pages.
 * Bug fix: Awards for a user are now deleted when "Delete all data for this user" has been clicked.
 * Bug fix: All challenge data for a user is now deleted when "Delete all data for this user" has been clicked.

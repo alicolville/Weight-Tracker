@@ -172,39 +172,37 @@ function ws_ls_get_date_format( $user_id = NULL ) {
  * @return array|bool
  * @throws Exception
  */
-function ws_ls_get_week_ranges()
-{
+function ws_ls_get_week_ranges() {
+
 	$entered_date_ranges = ws_ls_db_dates_min_max_get(get_current_user_id());
 
-	if ($entered_date_ranges != false)  {
-
-		// Get min and max dates for weight entries
-		$start_date = new DateTime($entered_date_ranges[ 'min' ]);
-		$end_date = new DateTime($entered_date_ranges[ 'max' ]);
-
-		// Grab all the weekly intervals between those dates
-		$interval = new DateInterval('P1W');
-		$daterange = new DatePeriod($start_date, $interval ,$end_date);
-
-		$date_ranges = array();
-
-		$i = 1;
-
-		// Build an easy to use array
-		foreach($daterange as $date){
-
-			$end_of_week = clone $date;
-			$end_of_week = date_modify($end_of_week, '+1 week' );
-
-			$date_ranges[$i] =  array("start" => $date->format("Y-m-d"), "end" => $end_of_week->format("Y-m-d") );
-
-			$i++;
-		}
-
-		return $date_ranges;
+	if ( true === empty( $entered_date_ranges ) ) {
+		return false;
 	}
 
-	return false;
+	// Get min and max dates for weight entries
+	$start_date     = new DateTime( $entered_date_ranges[ 'min' ] );
+	$end_date       = new DateTime( $entered_date_ranges[ 'max' ] );
+
+	// Grab all the weekly intervals between those dates
+	$interval       = new DateInterval( 'P1W' );
+	$daterange      = new DatePeriod( $start_date, $interval ,$end_date );
+	$date_ranges    = [];
+
+	$i = 1;
+
+	// Build an easy to use array
+	foreach( $daterange as $date ){
+
+		$end_of_week = clone $date;
+		$end_of_week = date_modify( $end_of_week, '+1 week' );
+
+		$date_ranges[ $i ] =  [ 'start' => $date->format( 'Y-m-d'), 'end' => $end_of_week->format( 'Y-m-d' ) ];
+
+		$i++;
+	}
+
+	return $date_ranges;
 }
 
 function ws_ls_display_week_filters($week_ranges, $selected_week_number)
@@ -217,7 +215,7 @@ function ws_ls_display_week_filters($week_ranges, $selected_week_number)
     $output .= '<form action="' .  get_permalink() . '#wlt-weight-history" method="post">
                   <input type="hidden" value="true" name="week_filter">
                     <div class="ws_ls_week_controls">
-                      <select name="week_number" onchange="this.form.submit()" class="ws-ls-select">
+                      <select name="week-number" onchange="this.form.submit()" class="ws-ls-select">
                         <option value="-1" ' . (($selected_week_number == -1) ?  ' selected="selected"' : '') . '>'. __('View all weeks', WE_LS_SLUG) . '</option>';
 
     // Loop through each weekly option and build drop down
@@ -869,6 +867,19 @@ function ws_ls_display_blockquote( $text, $class = '', $just_echo = false, $incl
 	}
 
 	return $html_output;
+}
+
+/**
+ * Display a success block quote
+ * @param $text
+ * @param string $class
+ * @param bool $just_echo
+ * @param bool $include_log_link
+ *
+ * @return string
+ */
+function ws_ls_blockquote_success( $text, $class = 'ws-ls-success' , $just_echo = false, $include_log_link = false ) {
+	return ws_ls_display_blockquote( $text, $class, $just_echo, $include_log_link );
 }
 
 /**

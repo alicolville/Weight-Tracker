@@ -146,7 +146,7 @@ function ws_ls_form_weight( $arguments = [] ) {
 
 	// Render Meta Fields
 	if ( false === $arguments[ 'is-target-form' ] && true === $arguments[ 'meta-enabled' ] ) {
-		$html .= ws_ls_meta_fields_form( $arguments[ 'entry' ] );
+		$html .= ws_ls_meta_fields_form( $arguments );
 	}
 
 	$html .= sprintf( '<div class="ws-ls-form-buttons">

@@ -219,7 +219,9 @@
      * @param null $entry_id
      * @return string
      */
-    function ws_ls_meta_fields_form( $entry ) {
+    function ws_ls_meta_fields_form( $arguments ) {
+
+	    $arguments = wp_parse_args( $arguments, [  'entry' => NULL, 'hide-fields-photos' => false ] );
 
         $html = '';
 
@@ -227,9 +229,9 @@
 
         foreach ( ws_ls_meta_fields_enabled() as $field ) {
 
-	        $value = ( false === empty( $entry[ 'meta'] ) &&
-	                     true === array_key_exists( $field[ 'id' ], $entry[ 'meta'] ) ) ?
-					        $entry[ 'meta'][ $field[ 'id' ] ]
+	        $value = ( false === empty( $arguments[ 'entry' ][ 'meta'] ) &&
+	                     true === array_key_exists( $field[ 'id' ], $arguments[ 'entry' ][ 'meta'] ) ) ?
+		                    $arguments[ 'entry' ][ 'meta'][ $field[ 'id' ] ]
 					            : '';
 
             switch ( (int) $field[ 'field_type' ] ) {
@@ -241,9 +243,12 @@
                     $html .= ws_ls_meta_fields_form_field_yes_no( $field, $value );
                     break;
 	            case 3:
-		            $html .= ws_ls_meta_fields_form_field_photo( $field, $value );
 
-		            $photo_fields_rendered++;
+	            	if ( true !== $arguments[ 'hide-fields-photos' ] ) {
+			            $html .= ws_ls_meta_fields_form_field_photo( $field, $value );
+
+			            $photo_fields_rendered++;
+		            }
 
 		            break;
                 default: // 0
