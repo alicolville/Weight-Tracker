@@ -30,7 +30,7 @@
                                 <h4><?php echo __('Add a new group', WE_LS_SLUG); ?></h4>
                                 <?php
 
-                                    $new_group = ws_ls_ajax_post_value( 'group' );
+                                    $new_group = ws_ls_post_value( 'group' );
 
                                     if ( false === empty( $new_group ) ) {
 	                                    ws_ls_groups_add( $new_group );

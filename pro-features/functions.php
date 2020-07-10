@@ -2,23 +2,29 @@
 
 defined('ABSPATH') or die("Jog on!");
 
-function ws_ls_admin_measurment_unit() {
-	return ('inches' == WE_LS_MEASUREMENTS_UNIT) ? __('Inches', WE_LS_SLUG) : __('Cm', WE_LS_SLUG);
-}
+/**
+ * Fetch BMI value for data table
+ * @param $cm
+ * @param $kg
+ * @param bool $no_height_text
+ *
+ * @return string|void
+ */
+function ws_ls_get_bmi_for_table( $cm, $kg, $no_height_text = false ) {
 
-function ws_ls_get_bmi_for_table($cm, $kg, $no_height_text = false) {
+	if ( false === empty( $cm ) ) {
+		$bmi = ws_ls_calculate_bmi( $cm, $kg );
 
-	if ($cm) {
-		$bmi = ws_ls_calculate_bmi($cm, $kg);
-
-		if($bmi) {
-			return ws_ls_calculate_bmi_label($bmi);
+		if( false === empty( $bmi ) ) {
+			return ws_ls_calculate_bmi_label( $bmi );
 		}
 	} else {
 
-        $no_height_text = (empty($no_height_text)) ? __('Add Height for BMI', WE_LS_SLUG) : $no_height_text;
+        $no_height_text = ( true === empty( $no_height_text ) ) ?
+	                        __( 'Add Height for BMI', WE_LS_SLUG ) :
+	                            $no_height_text;
 
-		return esc_html($no_height_text);
+		return esc_html( $no_height_text );
 	}
 	return '';
 }
@@ -41,31 +47,29 @@ function ws_ls_calculate_bmi( $cm, $kg ) {
 	return round( $bmi, 1 );
 }
 
-// $bmi = ws_ls_calculate_bmi(150, 66);
-// $label = ws_ls_calculate_bmi_label($bmi);
-function ws_ls_calculate_bmi_label($bmi) {
+/**
+ * Fetch label for given BMI value
+ * @param $bmi
+ *
+ * @return string|void
+ */
+function ws_ls_calculate_bmi_label( $bmi ) {
 
-	if( is_numeric($bmi) ) {
+	if( true === is_numeric( $bmi ) ) {
 
 		if( $bmi < 18.5 ) {
-			return __('Underweight', WE_LS_SLUG);
+			return __( 'Underweight', WE_LS_SLUG );
 		} else if ( $bmi >= 18.5 && $bmi <= 24.9 ) {
-			return __('Healthy', WE_LS_SLUG);
+			return __( 'Healthy', WE_LS_SLUG );
 		}
 		else if ( $bmi >= 25 && $bmi <= 29.9 ) {
-			return __('Overweight', WE_LS_SLUG);
+			return __( 'Overweight', WE_LS_SLUG );
 		} else if ( $bmi >= 30 ) {
-			return __('Heavily Overweight', WE_LS_SLUG);
+			return __( 'Heavily Overweight', WE_LS_SLUG );
 		}
-		// } else if ($bmi >= 30 && $bmi <= 39.9) {
-		// 	return __('Obese', WE_LS_SLUG);
-		// } else if ($bmi >= 39.9) {
-		// 	return __('Severely / Morbidly obese', WE_LS_SLUG);
-		// }
-
 	}
 
-	return 'Err';
+	return __( 'Err', WE_LS_SLUG );
 }
 
 
@@ -76,24 +80,26 @@ function ws_ls_calculate_bmi_label($bmi) {
  */
 function ws_ls_bmi_all_labels() {
 	return [
-		0 => __('Underweight', WE_LS_SLUG),
-		1 => __('Healthy', WE_LS_SLUG),
-		2 => __('Overweight', WE_LS_SLUG),
-		3 => __('Heavily Overweight', WE_LS_SLUG)
+				0 => __( 'Underweight', WE_LS_SLUG ),
+				1 => __( 'Healthy', WE_LS_SLUG ),
+				2 => __( 'Overweight', WE_LS_SLUG ),
+				3 => __( 'Heavily Overweight', WE_LS_SLUG )
 	];
 }
 
-function ws_ls_tooltip($text, $tooltip) {
+/**
+ * Render out tool tip
+ * @param $text
+ * @param $tooltip
+ * @return string
+ */
+function ws_ls_tooltip( $text, $tooltip ) {
 
-	if(empty($text) || empty($tooltip)) {
-		return;
+	if( true === empty( $text ) || true === empty( $tooltip ) ) {
+		return '';
 	}
 
-	return sprintf(
-		'<div class="ws-tooltip">%s<span class="tooltiptext">%s</span></div>',
-		esc_html($text),
-		esc_html($tooltip)
-	);
+	return sprintf('<div class="ws-ls-tooltip">%1$s<span>%s</span></div>', esc_html( $text ), esc_html( $tooltip ) );
 }
 /**
  * Return base URL for user data
@@ -105,18 +111,29 @@ function ws_ls_get_link_to_user_data() {
 
 /**
  * Given a user ID, return a link to the user's profile
- * @param  int $user_id User ID
+ * @param int $user_id User ID
+ * @param null $display_text
  * @return string
  */
 function ws_ls_get_link_to_user_profile( $user_id, $display_text = NULL ) {
+
+	$cache_key = 'profile-url-' .sanitize_title( $display_text );
+
+	if ( $cache = ws_ls_cache_user_get( $user_id, $cache_key ) ) {
+		return $cache;
+	}
 
 	$profile_url = admin_url( 'admin.php?page=ws-ls-data-home&mode=user&user-id=' . (int) $user_id );
 
 	$profile_url = esc_url( $profile_url );
 
-	return ( NULL !== $display_text ) ?
+	$profile_url = ( NULL !== $display_text ) ?
 			ws_ls_render_link( $profile_url, $display_text ) :
 			$profile_url;
+
+	ws_ls_cache_user_set( $user_id, $cache_key, $profile_url );
+
+	return $profile_url;
 }
 
 /**
@@ -176,8 +193,8 @@ function ws_ls_get_link_to_settings() {
 
 /**
  * Given a user and entry ID, return a link to the edit entrant page
- * @param  int $id User ID
- * @param  int $entry_id Entry ID
+ * @param $user_id
+ * @param bool $entry_id Entry ID
  * @return string
  */
 function ws_ls_get_link_to_edit_entry( $user_id, $entry_id = false ) {
@@ -428,7 +445,9 @@ function ws_ls_heights_formatter( &$height, $key ) {
  * Simple function display a given user preference field for the specified user
  *
  * @param $user_id - User ID
- * @param $field - name of DB field
+ * @param string $field - name of DB field
+ * @param bool $not_specified_text
+ * @param bool $shorten
  * @return bool|string
  */
 function ws_ls_display_user_setting($user_id, $field = 'dob', $not_specified_text = false, $shorten = false) {
@@ -437,7 +456,7 @@ function ws_ls_display_user_setting($user_id, $field = 'dob', $not_specified_tex
 
 	$not_specified_text = (false === $not_specified_text) ? __('Not Specified', WE_LS_SLUG) : esc_html($not_specified_text);
 
-	$user_data = ws_ls_get_user_setting($field, $user_id);
+	$user_data = ws_ls_user_preferences_get($field, $user_id);
 
 	switch ($field) {
 		case 'activity_level':
@@ -483,7 +502,7 @@ function ws_ls_is_female( $user_id ) {
 
     $user_id = ( true === empty( $user_id ) ) ? get_current_user_id() : $user_id;
 
-    $gender = ws_ls_get_user_setting( 'gender', $user_id );
+    $gender = ws_ls_user_preferences_get( 'gender', $user_id );
 
     return ( false === empty( $gender ) && 1 == (int) $gender ) ? true : false;
 }
@@ -494,31 +513,34 @@ function ws_ls_is_female( $user_id ) {
  * @param $user_id
  * @return bool|string
  */
-function ws_ls_get_dob($user_id) {
+function ws_ls_get_dob( $user_id ) {
 
-	$user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
+	$user_id = ( true === empty( $user_id ) ) ? get_current_user_id() : $user_id;
 
-    return ws_ls_get_user_setting('dob', $user_id);
+    return ws_ls_user_preferences_get('dob', $user_id);
 }
 
 /**
  * Simple function to convert a user's ISO DOB into pretty format
  *
- * @param $user_id
+ * @param bool $user_id
+ * @param string $not_specified_text
+ * @param bool $include_age
  * @return bool|string
+ * @throws Exception
  */
-function ws_ls_get_dob_for_display($user_id = false, $not_specified_text = '', $include_age = false) {
+function ws_ls_get_dob_for_display( $user_id = false, $not_specified_text = '', $include_age = false ) {
 
-	$dob = ws_ls_get_dob($user_id);
+	$dob = ws_ls_get_dob( $user_id );
 
-	$not_specified_text = (false === $not_specified_text) ? __('Not Specified', WE_LS_SLUG) : esc_html($not_specified_text);
+	$not_specified_text = ( false === $not_specified_text) ? __( 'Not Specified', WE_LS_SLUG ) : esc_html( $not_specified_text );
 
-    if (false === empty($dob) && '0000-00-00 00:00:00' !== $dob) {
-		$html = ws_ls_iso_date_into_correct_format($dob);
+    if (false === empty( $dob ) && '0000-00-00 00:00:00' !== $dob ) {
+		$html = ws_ls_iso_date_into_correct_format( $dob );
 
 		// Include age?
 		if(true === $include_age) {
-			$html .= ' ('. ws_ls_get_age_from_dob($user_id) . ')';
+			$html .= ' ('. ws_ls_get_age_from_dob( $user_id ) . ')';
 		}
 
 		return $html;
@@ -528,36 +550,60 @@ function ws_ls_get_dob_for_display($user_id = false, $not_specified_text = '', $
 }
 
 /**
- * Used to calculate agre from the person's DOB
+ * Used to calculate age from the person's DOB
  *
  * @param bool $user_id
  * @return bool|int
+ * @throws Exception
  */
-function ws_ls_get_age_from_dob($user_id = false){
+function ws_ls_get_age_from_dob( $user_id = NULL ){
 
-    $user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
+    $user_id = ( true === empty( $user_id ) ) ? get_current_user_id() : $user_id;
 
-    $dob = ws_ls_get_dob($user_id);
+	if ( $cache = ws_ls_cache_user_get( $user_id, 'age' ) ) {
+		return $cache;
+	}
 
-    if(false === empty($dob) && '0000-00-00 00:00:00' !== $dob) {
+    $dob = ws_ls_get_dob( $user_id );
 
-        $dob = new DateTime($dob);
-        $today   = new DateTime('today');
-        $age = $dob->diff($today)->y;
-
-        return $age;
+    if( true === empty( $dob ) || '0000-00-00 00:00:00' === $dob ) {
+		return NULL;
     }
 
-    return NULL;
+    $dob        = new DateTime( $dob );
+    $today      = new DateTime('today' );
+    $age        = $dob->diff( $today )->y;
+
+	ws_ls_cache_user_set( $user_id, 'age', $age );
+
+	return $age;
 }
 
 /**
  * Helper function to disable admin page if the user doesn't have the correct user role.
  */
-function ws_ls_user_data_permission_check() {
-    if ( !current_user_can( WE_LS_VIEW_EDIT_USER_PERMISSION_LEVEL ) )  {
-        wp_die( __( 'You do not have sufficient permissions to access this page.' , WE_LS_SLUG) );
+function ws_ls_permission_check_message() {
+    if ( false === ws_ls_permission_check() )  {
+        wp_die( __( 'You do not have sufficient permissions to access this page.' , WE_LS_SLUG ) );
     }
+}
+
+/**
+ * Can the current user view this admin data page?
+ * @return bool
+ */
+function ws_ls_permission_check() {
+	return current_user_can( ws_ls_permission_role() );
+}
+
+/**
+ * Get the minimum user role allowed for viewing data pages in admin
+ * @return mixed|void
+ */
+function ws_ls_permission_role() {
+	$permission_role = get_option( 'ws-ls-edit-permissions', 'manage_options' );
+
+	return ( false === empty( $permission_role ) ) ? $permission_role : 'manage_options';
 }
 
 /**
@@ -566,13 +612,13 @@ function ws_ls_user_data_permission_check() {
  * @param $user_id
  * @return bool
  */
-function ws_ls_user_exist($user_id) {
+function ws_ls_user_exist( $user_id ) {
 
-    if(true === empty($user_id) || false === is_numeric($user_id)) {
+    if( true === empty( $user_id ) ) {
         return false;
     }
 
-    return (false === get_userdata( $user_id )) ? false : true;
+    return ( false === get_userdata( $user_id ) ) ? false : true;
 }
 
 /**
@@ -581,11 +627,13 @@ function ws_ls_user_exist($user_id) {
  * @param $user_id
  * @return bool
  */
-function ws_user_exist_check($user_id) {
+function ws_ls_user_exist_check($user_id ) {
 
-    if(false === ws_ls_user_exist($user_id)) {
-        wp_die(__( 'Error: The user does not appear to exist' , WE_LS_SLUG));
+    if ( false === ws_ls_user_exist( $user_id ) ) {
+        wp_die( __( 'Error: The user does not appear to exist' , WE_LS_SLUG ) );
     }
+
+    return true;
 }
 
 /**
@@ -597,7 +645,7 @@ function ws_user_exist_check($user_id) {
  */
 function ws_ls_get_progress_attribute_from_aim() {
 
-    $aim_int = (int) ws_ls_get_user_setting( 'aim' );
+    $aim_int = (int) ws_ls_user_preferences_get( 'aim' );
 
     switch ( $aim_int ) {
 	    case 1:
@@ -631,4 +679,137 @@ function ws_ls_array_check_fields($data, $expected_fields ) {
     }
 
     return true;
+}
+
+/**
+ * Fetch a user preference
+ * @param string $field
+ * @param bool $user_id
+ *
+ * @return |null
+ */
+function ws_ls_user_preferences_get( $field = 'gender', $user_id = false ) {
+
+	// Default to logged in user if not user ID not specified.
+	$user_id = ( true === empty( $user_id ) ) ? get_current_user_id() : $user_id;
+
+	$user_preferences = ws_ls_db_user_preferences( $user_id );
+
+	if ( false === is_array( $user_preferences ) ) {
+		$user_preferences = [];
+	}
+
+	return ( true === array_key_exists( $field, $user_preferences ) ) ? $user_preferences[ $field ] : null;
+}
+
+/**
+ * Display a user's preference
+ * @param array $arguments
+ *
+ * @return string
+ */
+function ws_ls_user_preferences_display( $arguments = [] ) {
+
+	$arguments = wp_parse_args( $arguments, [ 'user-id' => get_current_user_id(), 'field' => 'dob', 'shorten' => false , 'not-specified-text' => __( 'Not Specified', WE_LS_SLUG ) ] );
+
+	$cache_key = ws_ls_cache_generate_key_from_array( 'pref-display-', $arguments );
+
+	if ( $cache = ws_ls_cache_user_get( $arguments[ 'user-id' ], $cache_key ) ) {
+		return $cache;
+	}
+
+	$arguments[ 'not-specified-text' ]      = esc_html( $arguments[ 'not-specified-text' ] );
+	$user_data                              = ws_ls_user_preferences_get( $arguments[ 'field' ], $arguments[ 'user-id' ] );
+
+	if ( true === empty( $user_data ) ) {
+		return ws_ls_cache_user_set_and_return( $arguments[ 'user-id' ], $cache_key, $arguments[ 'not-specified-text' ] );
+	}
+
+	// Get relevant lookup
+	switch ( $arguments[ 'field' ] ) {
+		case 'activity_level':
+			$field_data = ws_ls_activity_levels();
+			break;
+		case 'height':
+			$field_data = ws_ls_heights();
+			break;
+		case 'aim':
+			$field_data = ws_ls_aims();
+			break;
+		default:
+			$field_data = ws_ls_genders();
+			break;
+	}
+
+	if ( false === isset( $field_data[ $user_data ] ) ) {
+		return ws_ls_cache_user_set_and_return( $arguments[ 'user-id' ], $cache_key, $arguments[ 'not-specified-text' ] );
+	}
+
+
+	// If a height setting and we want to shorten, look for a bracket and remove everything from there onwards
+	if( true === $arguments[ 'shorten' ] &&
+	        'activity_level' === $arguments[ 'field' ] ) {
+
+		$bracket_location = strpos( $field_data[ $user_data ], '(' );
+
+		if( false !== $bracket_location ) {
+			$field_data[$user_data] = substr( $field_data[$user_data], 0, $bracket_location );
+		}
+
+	}
+
+	$field_data[ $user_data ] = esc_html( $field_data[ $user_data ] );
+
+	ws_ls_cache_user_set( $arguments[ 'user-id' ], $cache_key, $field_data[ $user_data ] );
+
+	return $field_data[ $user_data ];
+}
+
+/**
+ * Fetch user preferences
+ * @param null $user_id
+ * @param bool $use_cache
+ * @return array|mixed|string|null
+ */
+function ws_ls_user_preferences_settings( $user_id = NULL ) {
+
+	$user_id    = ( NULL === $user_id ) ? get_current_user_id() : $user_id;
+	$settings   = ws_ls_user_preferences_get( 'settings', $user_id );
+
+	return ( false === empty( $settings ) ) ?
+			$settings = json_decode( $settings, true ) :
+				$settings;
+}
+
+/**
+ * Fetch the user setting
+ *
+ * @param string $field
+ * @param bool $user_id
+ *
+ * @return |null
+ */
+function ws_ls_user_preferences_settings_get( $field = 'WE_LS_DATA_UNITS', $user_id = NULL ) {
+
+	// Ensure a valid setting
+	if ( false === in_array( $field, [ 'WE_LS_DATA_UNITS', 'WE_LS_US_DATE', 'WE_LS_IMPERIAL_WEIGHTS' ] ) ) {
+		return NULL;
+	}
+
+	$user_id    = ( true === empty( $user_id ) ) ? get_current_user_id() : $user_id;
+	$settings   = ws_ls_user_preferences_settings( $user_id );
+
+	if ( false === is_array( $settings ) ) {
+		$settings = [];
+	}
+
+	return ( true === array_key_exists( $field, $settings ) ) ? $settings[ $field ] : NULL;
+}
+
+/**
+ * Should we display BMI values in tables?s
+ * @return bool
+ */
+function ws_ls_bmi_in_tables() {
+	return ( WS_LS_IS_PRO && ( 'yes' == get_option('ws-ls-display-bmi-in-tables', 'yes' ) ) );
 }

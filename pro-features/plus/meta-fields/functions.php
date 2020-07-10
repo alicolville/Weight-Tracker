@@ -77,9 +77,7 @@
                 if ( (int) $meta_field_id === (int) $entry[ 'meta_field_id' ] ) {
                     return $entry[ 'value' ];
                 }
-
             }
-
         }
 
         return NULL;
@@ -133,14 +131,16 @@
 
     }
 
-    /**
-     * Format meta data for display
-     *
-     * @param $value
-     * @param int $type
-     * @return int
-     */
-    function ws_ls_fields_display_field_value( $value, $meta_field_id ) {
+/**
+ * Format meta data for display
+ *
+ * @param $value
+ * @param $meta_field_id
+ * @param bool $is_export
+ *
+ * @return int
+ */
+    function ws_ls_fields_display_field_value( $value, $meta_field_id, $is_export = false ) {
 
         $meta_field = ws_ls_meta_fields_get_by_id( $meta_field_id );
 
@@ -152,7 +152,7 @@
             if ( 2 === $meta_field['field_type'] ) {
                 return ws_ls_fields_display_field_value_yes_no( $value);
             } else if ( 3 === $meta_field['field_type'] ) {
-		        return ws_ls_fields_display_field_value_photo( $value);
+		        return ws_ls_fields_display_field_value_photo( $value, $is_export );
 	        }
 
         }
@@ -168,11 +168,16 @@
 	 * @return string
 	 *
 	 */
-	function ws_ls_fields_display_field_value_photo( $value ) {
+	function ws_ls_fields_display_field_value_photo( $value, $is_export = false ) {
 
 		if ( false === empty( $value ) ) {
 
 			$photo = ws_ls_photo_get( $value , 120, 120);
+
+			// If we are exporting, just return the URL to full image
+			if ( true === $is_export ) {
+				return  wp_get_attachment_url( $value );
+			}
 
 			$photo = apply_filters( 'wlt_meta_fields_photo_value', $photo );
 
@@ -214,7 +219,7 @@
      * @param null $entry_id
      * @return string
      */
-    function ws_ls_meta_fields_form( $entry_id = NULL ) {
+    function ws_ls_meta_fields_form( $entry ) {
 
         $html = '';
 
@@ -222,7 +227,10 @@
 
         foreach ( ws_ls_meta_fields_enabled() as $field ) {
 
-            $value = ws_ls_meta_fields_get_value_for_entry( $entry_id, $field[ 'id' ] );
+	        $value = ( false === empty( $entry[ 'meta'] ) &&
+	                     true === array_key_exists( $field[ 'id' ], $entry[ 'meta'] ) ) ?
+					        $entry[ 'meta'][ $field[ 'id' ] ]
+					            : '';
 
             switch ( (int) $field[ 'field_type' ] ) {
 
@@ -268,7 +276,7 @@
             ws_ls_meta_fields_form_field_generate_id( $field['id'] ),
             esc_attr( $field['field_name'] ),
             2 === (int) $field['mandatory'] ? ' required' : '',
-            ws_ls_get_next_tab_index(),
+            ws_ls_form_tab_index_next(),
             ( false === empty( $value ) ) ? esc_attr( $value ) : '',
             __('Please enter a value for', WE_LS_SLUG)
         );
@@ -291,7 +299,7 @@
             ws_ls_meta_fields_form_field_generate_id( $field['id'] ),
             esc_attr( $field['field_name'] ),
             2 === (int)  $field['mandatory'] ? ' required' : '',
-            ws_ls_get_next_tab_index(),
+            ws_ls_form_tab_index_next(),
             ( false === empty( $value ) ) ? esc_attr( $value ) : '',
             __('Please enter a number for', WE_LS_SLUG)
         );
@@ -313,7 +321,7 @@
                             ',
                             ws_ls_meta_fields_form_field_generate_id( $field['id'] ),
                             esc_attr( $field['field_name'] ),
-                            ws_ls_get_next_tab_index()
+                            ws_ls_form_tab_index_next()
         );
 
         $value = (int) $value;
@@ -331,13 +339,14 @@
 
     }
 
-	/**
-	 * Generate the HTML for a meta field photo
-	 *
-	 * @param $field
-	 * @param $value
-	 * @return string
-	 */
+/**
+ * Generate the HTML for a meta field photo
+ *
+ * @param $field
+ * @param $value
+ * @param null $field_id
+ * @return string
+ */
 	function ws_ls_meta_fields_form_field_photo( $field, $value, $field_id = NULL ) {
 
 		if ( false === WS_LS_IS_PRO ) {
@@ -367,7 +376,7 @@
 
                         ',
             esc_attr( $field_id ),
-            ws_ls_get_next_tab_index(),
+            ws_ls_form_tab_index_next(),
             ( false === empty( $value ) ) ? __('Replace photo', WE_LS_SLUG) : __('Select photo', WE_LS_SLUG),
             2 === (int) $field['mandatory'] ? 'y' : 'n',
             true === empty( $value ) && 2 === (int) $field['mandatory'] ? 'required' : '',

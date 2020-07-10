@@ -4,7 +4,7 @@ defined('ABSPATH') or die('Naw ya dinnie!');
 
 function ws_ls_admin_page_group_view() {
 
-    ws_ls_user_data_permission_check();
+    ws_ls_permission_check_message();
 
     ws_ls_data_table_enqueue_scripts();
 

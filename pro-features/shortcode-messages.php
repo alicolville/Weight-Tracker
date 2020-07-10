@@ -4,6 +4,10 @@ defined('ABSPATH') or die("Jog on!");
 
 function ws_ls_shortcode_message($user_defined_arguments, $content = null) {
 
+	if ( false === WS_LS_IS_PRO ) {
+		return ws_ls_display_pro_upgrade_notice_for_shortcode();
+	}
+
 	// If not logged in then return no value
 	if(!is_user_logged_in()) {
 		return '';
@@ -29,8 +33,10 @@ function ws_ls_shortcode_message($user_defined_arguments, $content = null) {
 
 	$checking_for_gains = ('gained' == $arguments['type']) ? true : false;
 
+	$weight_data = ws_ls_entries_get( [ 'limit' => $arguments['consecutive'] + 1, 'prep' => true, 'sort' => 'desc' ] );
+
 	// Fetch the user's weight history
-	if( $weight_data = ws_ls_get_weights(get_current_user_id(), $arguments['consecutive'] + 1, -1, 'desc') ) {
+	if( false === empty( $weight_data ) ) {
 
 		// If we have data, ensure we have enough data to do our consecutive check
 		if(count($weight_data) > $arguments['consecutive']) {
@@ -42,10 +48,10 @@ function ws_ls_shortcode_message($user_defined_arguments, $content = null) {
 
 				// If we are checking for gains, ensure this entry less than the one before.
 				if($checking_for_gains && $current_value <= $previous_value) {
-					return;
+					return '';
 				// If we are checking for consecutive losses, ensure this entry is greater than the one before.
 				} elseif (!$checking_for_gains && $current_value >= $previous_value) {
-					return;
+					return '';
 				}
 			}
 
@@ -57,4 +63,7 @@ function ws_ls_shortcode_message($user_defined_arguments, $content = null) {
 		}
 	}
 
+	return '';
 }
+add_shortcode( 'wlt-message', 'ws_ls_shortcode_message' );
+add_shortcode( 'wt-message', 'ws_ls_shortcode_message' );

@@ -8,6 +8,12 @@ defined('ABSPATH') or die("Jog on!");
  */
 function ws_ls_user_preferences_form( $user_defined_arguments ) {
 
+
+	// TODO: Check if user PRO?
+//	if ( false === WS_LS_IS_PRO ) {
+//		return ws_ls_display_pro_upgrade_notice_for_shortcode();
+//	}
+
     // If not logged in then return no value
     if ( false === is_user_logged_in() )	{
 		return ws_ls_display_blockquote( __('You must be logged in to edit your settings.', WE_LS_SLUG) , '', false, true);
@@ -22,9 +28,14 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
 	$arguments['redirect-url']      = (false === empty($arguments['redirect-url'])) ? esc_url($arguments['redirect-url']) : '';
 
     // Have user preferences been allowed in Settings?
-    if ( false === WE_LS_ALLOW_USER_PREFERENCES && false === is_admin() ) {
+    if ( false === ws_ls_user_preferences_is_enabled() && false === is_admin() ) {
         return $html_output;
     }
+
+	// Delete all the user's data if selected
+	if(  true === $arguments['allow-delete-data'] && 'true' === ws_ls_querystring_value( 'user-delete-all' ) )	{
+		ws_ls_delete_data_for_user();
+	}
 
     $arguments['user-id']   = ( true === empty( $arguments['user-id'] ) ) ? get_current_user_id() : $arguments['user-id'];
     $user_id                = $arguments['user-id'];
@@ -34,7 +45,6 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
                 'title-about'       => __('About You:', WE_LS_SLUG),
 				'height'            => __('Your height:', WE_LS_SLUG),
 				'weight'            => __('In which unit would you like to record your weight:', WE_LS_SLUG),
-				'measurements'      => __('In which unit would you like to record your measurements:', WE_LS_SLUG),
 				'date'              => __('Display dates in the following formats:', WE_LS_SLUG),
                 'gender'            => __('Your Gender:', WE_LS_SLUG),
                 'dob'               => __('Your Date of Birth:', WE_LS_SLUG),
@@ -49,7 +59,6 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
 		                'title-about'       => __('About User:', WE_LS_SLUG),
 					    'height'            => __('Height:', WE_LS_SLUG),
 					    'weight'            => __('Weight unit:', WE_LS_SLUG),
-					    'measurements'      => __('Measurements unit:', WE_LS_SLUG),
 					    'date'              => __('Date format:', WE_LS_SLUG),
                         'gender'            => __('Gender:', WE_LS_SLUG),
                         'dob'               => __('Date of Birth:', WE_LS_SLUG),
@@ -82,9 +91,9 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
 
     $html_output .= '
 		<label>' . $labels['aim'] . '</label>
-		<select id="ws-ls-aim" name="ws-ls-aim"  tabindex="' . ws_ls_get_next_tab_index() . '" class="ws-ls-aboutyou-field">';
+		<select id="ws-ls-aim" name="ws-ls-aim"  tabindex="' . ws_ls_form_tab_index_next() . '" class="ws-ls-aboutyou-field">';
 
-    $existing_aim = ws_ls_get_user_setting('aim', $user_id);
+    $existing_aim = ws_ls_user_preferences_get('aim', $user_id);
     $existing_aim = (true === empty($existing_aim)) ? '0' : $existing_aim;
 
     foreach (ws_ls_aims() as $key => $value) {
@@ -97,7 +106,7 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
     // Additional Body attributes
     //-------------------------------------------------------
 
-    $html_output .= apply_filters(WE_LS_FILTER_USER_SETTINGS_BELOW_AIM, '', $user_id);
+    $html_output .= apply_filters( 'wlt-filter-user-settings-below-aim', '', $user_id);
 
     //-------------------------------------------------------
     // Height
@@ -105,9 +114,9 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
 
 	$html_output .= '
     <label>' . $labels['height'] . '</label>
-    <select id="we-ls-height" name="we-ls-height"  tabindex="' . ws_ls_get_next_tab_index() . '" class="ws-ls-aboutyou-field">';
+    <select id="we-ls-height" name="we-ls-height"  tabindex="' . ws_ls_form_tab_index_next() . '" class="ws-ls-aboutyou-field">';
     $heights = ws_ls_heights();
-    $existing_height = ws_ls_get_user_height($user_id, false);
+    $existing_height =  ws_ls_user_preferences_get( 'height', $user_id);
 
     foreach ($heights as $key => $value) {
         $html_output .= sprintf('<option value="%s" %s>%s</option>', $key, selected($key, $existing_height, false), $value);
@@ -120,9 +129,9 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
     //-------------------------------------------------------
     $html_output .= '
 		<label>' . $labels['gender'] . '</label>
-		<select id="ws-ls-gender" name="ws-ls-gender"  tabindex="' . ws_ls_get_next_tab_index() . '" class="ws-ls-aboutyou-field">';
+		<select id="ws-ls-gender" name="ws-ls-gender"  tabindex="' . ws_ls_form_tab_index_next() . '" class="ws-ls-aboutyou-field">';
 
-        $existing_gender = ws_ls_get_user_setting('gender', $user_id);
+        $existing_gender = ws_ls_user_preferences_get('gender', $user_id);
         $existing_gender = (true === empty($existing_gender)) ? '0' : $existing_gender;
 
         foreach (ws_ls_genders() as $key => $value) {
@@ -135,16 +144,16 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
     // Additional Body attributes
     //-------------------------------------------------------
 
-    $html_output .= apply_filters(WE_LS_FILTER_USER_SETTINGS_BELOW_GENDER, '', $user_id);
+    $html_output .= apply_filters( 'wlt-filter-user-settings-below-gender', '', $user_id);
 
     //-------------------------------------------------------
     // Activity Level
     //-------------------------------------------------------
     $html_output .= '
 		<label>' . $labels['activitylevel'] . '</label>
-		<select id="ws-ls-activity-level" name="ws-ls-activity-level"  tabindex="' . ws_ls_get_next_tab_index() . '" class="ws-ls-aboutyou-field">';
+		<select id="ws-ls-activity-level" name="ws-ls-activity-level"  tabindex="' . ws_ls_form_tab_index_next() . '" class="ws-ls-aboutyou-field">';
 
-    $activity_level = ws_ls_get_user_setting('activity_level', $user_id);
+    $activity_level = ws_ls_user_preferences_get('activity_level', $user_id);
     $activity_level = (true === empty($activity_level)) ? '0' : $activity_level;
 
     foreach (ws_ls_activity_levels() as $key => $value) {
@@ -162,7 +171,7 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
     $html_output .= sprintf( '  <label>%1$s</label>
                                         <input type="text" id="ws-ls-dob"  name="ws-ls-dob" tabindex="%2$d" value="%3$s" size="22" class="we-ls-datepicker ws-ls-dob-field ws-ls-aboutyou-field">',
                                         esc_html( $labels['dob'] ),
-                                        ws_ls_get_next_tab_index(),
+                                        ws_ls_form_tab_index_next(),
                                         esc_attr( $dob )
     );
 
@@ -177,36 +186,29 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
     //-------------------------------------------------------
 
     $html_output 		.= ws_ls_title(__('Preferences', WE_LS_SLUG));
-    $measurement_unit 	= ws_ls_get_config('WE_LS_MEASUREMENTS_UNIT', $user_id );
+
+	$unit = ws_ls_user_preferences_settings_get( 'WE_LS_DATA_UNITS', $user_id );
 
   	$html_output .= '
 	<label>' . $labels['weight'] . '</label>
-    <select id="WE_LS_DATA_UNITS" name="WE_LS_DATA_UNITS"  tabindex="' . ws_ls_get_next_tab_index() . '">
-      <option value="kg" ' . selected( ws_ls_get_config('WE_LS_DATA_UNITS', $user_id), 'kg', false ) . '>' . __('Kg', WE_LS_SLUG) . '</option>
-      <option value="stones_pounds" ' . selected( ws_ls_get_config('WE_LS_DATA_UNITS', $user_id), 'stones_pounds', false ) . '>' . __('Stones & Pounds', WE_LS_SLUG) . '</option>
-      <option value="pounds_only" ' . selected( ws_ls_get_config('WE_LS_DATA_UNITS', $user_id), 'pounds_only', false ) . '>' . __('Pounds', WE_LS_SLUG) . '</option>
+    <select id="WE_LS_DATA_UNITS" name="WE_LS_DATA_UNITS"  tabindex="' . ws_ls_form_tab_index_next() . '">
+      <option value="kg" ' . selected( $unit, 'kg', false ) . '>' . __('Kg', WE_LS_SLUG) . '</option>
+      <option value="stones_pounds" ' . selected( $unit, 'stones_pounds', false ) . '>' . __('Stones & Pounds', WE_LS_SLUG) . '</option>
+      <option value="pounds_only" ' . selected( $unit, 'pounds_only', false ) . '>' . __('Pounds', WE_LS_SLUG) . '</option>
     </select>';
 
-	if(WE_LS_MEASUREMENTS_ENABLED) {
-		$html_output .= '
-			<label>' . $labels['measurements'] . '</label>
-		    <select id="WE_LS_MEASUREMENTS_UNIT" name="WE_LS_MEASUREMENTS_UNIT"  tabindex="' . ws_ls_get_next_tab_index() . '">
-		    	<option value="cm" ' . selected( $measurement_unit, 'cm', false ) . '>' . __('Centimetres', WE_LS_SLUG) . '</option>
-		    	<option value="inches" ' . selected( $measurement_unit, 'inches', false ) . '>' . __('Inches', WE_LS_SLUG) . '</option>
-		    </select>
-		';
-	}
+	$date_format = ws_ls_user_preferences_settings_get( 'WE_LS_US_DATE', $user_id );
 
     $html_output .= '
 
 	<label>' . $labels['date'] . '</label>
-    <select id="WE_LS_US_DATE" name="WE_LS_US_DATE"  tabindex="' . ws_ls_get_next_tab_index() . '">
-      <option value="false" ' . selected( ws_ls_get_config('WE_LS_US_DATE', $user_id), false, false ) . '>' . __('UK (DD/MM/YYYY)', WE_LS_SLUG) . '</option>
-      <option value="true" ' . selected( ws_ls_get_config('WE_LS_US_DATE', $user_id), true, false ) . '>' . __('US (MM/DD/YYYY)', WE_LS_SLUG) . '</option>
+    <select id="WE_LS_US_DATE" name="WE_LS_US_DATE"  tabindex="' . ws_ls_form_tab_index_next() . '">
+      <option value="false" ' . selected( $date_format, false, false ) . '>' . __('UK (DD/MM/YYYY)', WE_LS_SLUG) . '</option>
+      <option value="true" ' . selected( $date_format, true, false ) . '>' . __('US (MM/DD/YYYY)', WE_LS_SLUG) . '</option>
     </select>';
 
     if ( true !== $arguments['disable-save'] ) {
-        $html_output .= '<input name="submit_button" type="submit" id="we-ls-user-pref-submit"  tabindex="' . ws_ls_get_next_tab_index() . '" value="' .  __('Save Settings', WE_LS_SLUG) . '" class="comment-submit btn btn-default button default small fusion-button button-small button-default button-round button-flat">';
+        $html_output .= '<input name="submit_button" type="submit" id="we-ls-user-pref-submit"  tabindex="' . ws_ls_form_tab_index_next() . '" value="' . __('Save Settings', WE_LS_SLUG) . '" class="comment-submit btn btn-default button default small fusion-button button-small button-default button-round button-flat">';
     }
 
     $html_output .= '</form><br />';
@@ -221,13 +223,15 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
 	            </div>
                 <input type="hidden" name="ws-ls-user-delete-all" value="true" />
                 <label for="ws-ls-delete-all">' . __('The button below allows you to clear your existing weight history. Confirm:', WE_LS_SLUG) . '</label>
-                <select id="ws-ls-delete-all" name="ws-ls-delete-all"  tabindex="' . ws_ls_get_next_tab_index() . '" required>
+                <select id="ws-ls-delete-all" name="ws-ls-delete-all"  tabindex="' . ws_ls_form_tab_index_next() . '" required>
                     <option value=""></option>
                     <option value="true">' . __('DELETE ALL DATA', WE_LS_SLUG) . '</option>
                 </select>
-                <input name="submit_button" type="submit" tabindex="' . ws_ls_get_next_tab_index() . '" value="' .  __('Delete', WE_LS_SLUG) . '" class="comment-submit btn btn-default button default small fusion-button button-small button-default button-round button-flat">
+                <input name="submit_button" type="submit" tabindex="' . ws_ls_form_tab_index_next() . '" value="' . __('Delete', WE_LS_SLUG) . '" class="comment-submit btn btn-default button default small fusion-button button-small button-default button-round button-flat">
             </form>';
     }
 
 	return $html_output;
 }
+add_shortcode( 'wlt-user-settings', 'ws_ls_user_preferences_form' );
+add_shortcode( 'wt-user-settings', 'ws_ls_user_preferences_form' );

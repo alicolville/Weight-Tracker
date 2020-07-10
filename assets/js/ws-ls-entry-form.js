@@ -63,6 +63,8 @@ jQuery( document ).ready( function ( $ ) {
         $target_form = $(this).data("is-target-form");
         $weight_unit = $(this).data("metric-unit");
 
+
+
         console.log("Adding form validation to: " + $form_id + ". Target form? " + $target_form + ". Weight Unit: " + $weight_unit);
 
         // Add form validation
@@ -75,10 +77,9 @@ jQuery( document ).ready( function ( $ ) {
             validClass: "ws-ls-valid",
             messages: {
                 "we-ls-date": ws_ls_config["validation-we-ls-date"],
-                "we-ls-weight-pounds": ws_ls_config["validation-we-ls-weight-pounds"],
-                "we-ls-weight-kg": ws_ls_config["validation-we-ls-weight-kg"],
-                "we-ls-weight-stones": ws_ls_config["validation-we-ls-weight-stones"],
-                "we-ls-measurements": ws_ls_config["validation-we-ls-measurements"]
+                "ws-ls-weight-pounds": ws_ls_config["validation-we-ls-weight-pounds"],
+                "ws-ls-weight-kg": ws_ls_config["validation-we-ls-weight-kg"],
+                "ws-ls-weight-stones": ws_ls_config["validation-we-ls-weight-stones"]
             },
             submitHandler: function(form) {
                 $( '.ws-ls-remove-on-submit' ).remove();
@@ -105,50 +106,75 @@ jQuery( document ).ready( function ( $ ) {
                     });
                 }
             }
-
-            // Measurement form
-            if ("true" == ws_ls_config["measurements-enabled"] && true == $("#" + $form_id).data("measurements-enabled")) {
-                $( "#" + $form_id + " .ws-ls-measurement").rules( "add", {
-                    number: true,
-                    range: [1, 1000],
-                    messages: {
-                        number: ws_ls_config["validation-we-ls-measurements"],
-                        range: ws_ls_config["validation-we-ls-measurements"]
-                    }
-                });
-            }
-
         }
 
         // Set up numeric fields to validate
-        if("imperial-pounds" == $weight_unit)
+        if("pounds_only" == $weight_unit)
         {
-            $( "#" + $form_id + " #we-ls-weight-pounds").rules( "add", {
-                required: true,
+            $( "#" + $form_id + " .ws-ls-weight-pounds").rules( "add", {
+                required: ! $target_form,
                 number: true,
                 range: [0, 5000]
             });
-        }
-        if("imperial-both" == $weight_unit)
-        {
-            $( "#" + $form_id + " #we-ls-weight-stones").rules( "add", {
-                required: true,
+        } else if("stones_pounds" == $weight_unit) {
+            $( "#" + $form_id + " .ws-ls-weight-stones").rules( "add", {
+                required: ! $target_form,
                 number: true,
                 range: [0, 5000] // Stupid high in case not tracking human weight!
             });
-            $( "#" + $form_id + " #we-ls-weight-pounds").rules( "add", {
-                required: true,
+            $( "#" + $form_id + " .ws-ls-weight-pounds").rules( "add", {
+                required: ! $target_form,
                 number: true,
                 range: [0, 14]
             });
-        }
-        if("metric" == $weight_unit)
-        {
-            $( "#" + $form_id + " #we-ls-weight-kg").rules( "add", {
-                required: true,
+        } else {
+            $( "#" + $form_id + " .ws-ls-weight-kg").rules( "add", {
+                required: ! $target_form,
                 number: true,
-                range: [0, 50000] // Stupid high in case not tracking human weight!
+                range: [0, 5000] // Stupid high in case not tracking human weight!
             });
         }
     });
+
+  // $( '.ws-ls-cancel-form' ).click(function( event ) {
+  //   event.preventDefault();
+  //
+  //   var button = $(this);
+  //   var form_id = button.data('form-id');
+  //
+  //   if ( undefined !== form_id ) {
+  //
+  //     var redirect_url = $('#' + form_id + ' #redirect-url').val();
+  //
+  //     if ( undefined !== redirect_url ) {
+  //       window.location.href = redirect_url.replace('ws-edit-saved', 'ws-edit-cancel');
+  //     }
+  //
+  //   }
+  //
+  // });
+
+  /**
+   * Handle Cancel button weight entry forms
+   */
+  $( '.we-ls-weight-form' ).on( 'click', '.ws-ls-cancel-form', function( event ) {
+
+    event.preventDefault();
+
+    let button  = $( this );
+    let form_id = button.data( 'form-id' );
+
+    if ( undefined === form_id ) {
+      return;
+    }
+
+    let redirect_url = $('#' + form_id + ' #redirect-url').val();
+
+    if ( undefined === redirect_url ) {
+      return;
+    }
+
+    window.location.href = redirect_url.replace( 'ws-edit-saved', 'ws-edit-cancel' );
+  });
+
 });

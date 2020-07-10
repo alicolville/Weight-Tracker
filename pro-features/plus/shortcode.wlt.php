@@ -80,7 +80,7 @@
 											<p>%s: <span>%s</span></p>
 										</div>',
 					__('Your current BMI is', WE_LS_SLUG),
-					ws_ls_get_user_bmi(['user-id' => $user_id, 'display' => 'both'])
+					ws_ls_shortcode_bmi([ 'user-id' => $user_id, 'display' => 'both'])
 
 				);
 
@@ -147,11 +147,11 @@
 					$html .= sprintf('%s %s %s %s %s %s %s.',
 						__('With calories calculated, the we can recommend how those calories should be split into Fats, Carbohydrates and Proteins.  Based on 2010 Dietary Guidelines for Americans we have split it in the following manner:' , WE_LS_SLUG),
 						__('Carbohydrates', WE_LS_SLUG),
-						esc_html(WS_LS_MACRO_CARBS) . '%',
+						ws_ls_harris_benedict_setting( 'ws-ls-macro-carbs' ) . '%',
 						__('of calories, Fat', WE_LS_SLUG),
-						esc_html(WS_LS_MACRO_FATS) . '%',
+						ws_ls_harris_benedict_setting( 'ws-ls-macro-fats' ) . '%',
 						__('and Protein', WE_LS_SLUG),
-						esc_html(WS_LS_MACRO_PROTEINS) . '%'
+						ws_ls_harris_benedict_setting( 'ws-ls-macro-proteins' ) . '%'
 					);
 
 				}

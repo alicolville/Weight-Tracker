@@ -21,13 +21,13 @@ function ws_ls_awards_add_update_page() {
         if ( 'weight-percentage' === $award['category'] ) {
             $mandatory_fields = array_merge( $mandatory_fields, [ 'weight_percentage' ] );
         } else if ( 'weight' === $award['category'] ) {
-            if( ws_ls_get_config('WE_LS_IMPERIAL_WEIGHTS') ) {
-                if ( 'stones_pounds' === ws_ls_get_config('WE_LS_DATA_UNITS') ) {
+            if( ws_ls_setting( 'use-imperial' ) ) {
+                if ( 'stones_pounds' === ws_ls_setting( 'weight-unit' ) ) {
                     $mandatory_fields = array_merge( $mandatory_fields, [ 'stones', 'pounds' ] );
-                    $award['value'] = ws_ls_to_kg( $award['stones'], $award['pounds'] );
+                    $award['value'] = ws_ls_convert_stones_pounds_to_kg( $award['stones'], $award['pounds'] );
                 } else {
                     $mandatory_fields = array_merge( $mandatory_fields, [ 'pounds' ] );
-                    $award['value'] = ws_ls_pounds_to_kg( $award['pounds'] );
+                    $award['value'] = ws_ls_convert_pounds_to_kg( $award['pounds'] );
                 }
             } else {
                 $mandatory_fields = array_merge( $mandatory_fields, [ 'value' ] );
@@ -156,16 +156,16 @@ function ws_ls_awards_add_update_page() {
 
                                                     $weight = [ 'stones' => '', 'pounds' => '' ];
 
-                                                    if( ws_ls_get_config('WE_LS_IMPERIAL_WEIGHTS') ) {
+                                                    if( ws_ls_setting( 'use-imperial' ) ) {
 
-                                                       if ( ws_ls_get_config('WE_LS_DATA_UNITS') == 'stones_pounds') {
+                                                       if ( 'stones_pounds' === ws_ls_setting( 'weight-unit' ) ) {
 
                                                            if ( true === $validation_fail ) {
                                                                $weight['stones'] = $award['stones'];
                                                                $weight['pounds'] = $award['pounds'];
                                                            } elseif ( false === empty( $award['value'] ) ) {
 
-                                                               $conversion = ws_ls_to_stone_pounds( $award['value'] );
+                                                               $conversion = ws_ls_convert_kg_to_stone_pounds( $award['value'] );
                                                                $weight['stones'] = $conversion['stones'];
                                                                $weight['pounds'] = $conversion['pounds'];
                                                            }
@@ -180,7 +180,7 @@ function ws_ls_awards_add_update_page() {
                                                            if ( true === $validation_fail ) {
                                                                $weight['pounds'] = $award['pounds'];
                                                            } else if ( false === empty( $award['value'] ) ) {
-                                                               $weight['pounds'] = ws_ls_to_lb( $award['value'] );
+                                                               $weight['pounds'] = ws_ls_convert_kg_to_lb( $award['value'] );
                                                            }
 
                                                            printf( '<input novalidate type="number" step="any" min="1" name="pounds" id="pounds" value="%s" placeholder="%s" size="11" class="%s" >', esc_attr( $weight['pounds'] ), __('Pounds', WE_LS_SLUG),

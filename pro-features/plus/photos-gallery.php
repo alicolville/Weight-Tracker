@@ -76,14 +76,14 @@ function ws_ls_photos_shortcode_gallery($user_defined_arguments) {
 
 	} else {
 
-		$photos = ws_ls_photos_db_get_all_photos($arguments['user-id'], true,  $arguments['limit'],
+		$photos = ws_ls_photos_db_get_all_photos( $arguments['user-id'], true,  $arguments['limit'],
 			$arguments['direction'], $thumb_width, $arguments['height'], $arguments['custom-fields-to-use'], $arguments['custom-fields-hide-from-shortcodes'] );
 
 	}
 
-	if ( false === empty($photos) ) {
+	if ( false === empty( $photos ) ) {
 
-		ws_ls_photos_gallery_js_css($arguments['mode']);
+		ws_ls_photos_gallery_js_css( $arguments[ 'mode' ] );
 
 		// If compact / default pass config settings to JS
 		wp_localize_script('ws-ls-pro-gallery', 'ws_ls_gallery_config', ['height' => $arguments['height'], 'width' => $arguments['width']]);
@@ -96,6 +96,11 @@ function ws_ls_photos_shortcode_gallery($user_defined_arguments) {
 		);
 
 		foreach ( $photos as $photo ) {
+
+			$weight = ws_ls_weight_display( $photo[ 'kg' ], $arguments['user-id'] );
+			$date   = ws_ls_convert_ISO_date_into_locale( $photo[ 'weight_date' ] );
+
+			$photo['display-text'] = $date['display-date'] . ' &middot; ' . $photo[ 'field_name' ] . ' &middot; ' . $weight[ 'display' ];
 
 			$additional_data = sprintf(' alt="%1$s" data-image="%2$s" data-description="%1$s"',
 				esc_html( $photo['display-text'] ),

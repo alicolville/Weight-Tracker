@@ -72,6 +72,8 @@ function ws_ls_shortcode_if($user_defined_arguments, $content = null, $level = 0
 
     return '';
 }
+add_shortcode( 'wlt-if', 'ws_ls_shortcode_if' );
+add_shortcode( 'wt-if', 'ws_ls_shortcode_if' );
 
 /**
  * Remove <br> and <p> tags from text
@@ -148,10 +150,10 @@ function ws_ls_shortcode_if_value_exist($user_id, $fields) {
 
                     break;
                 case 'weight':
-                    $value = ws_ls_get_recent_weight_in_kg($user_id);
+                    $value = ws_ls_entry_get_latest_kg($user_id);
                     break;
                 case 'target':
-                    $value = ws_ls_get_target_weight_in_kg($user_id);
+                    $value = ws_ls_target_get( $user_id, 'kg' );
                     break;
                 case 'bmr':
 
@@ -168,7 +170,7 @@ function ws_ls_shortcode_if_value_exist($user_id, $fields) {
                 case 'activity_level':
                 case 'dob':
                 case 'aim':
-                    $value = ws_ls_get_user_setting($field, $user_id);
+                    $value = ws_ls_user_preferences_get($field, $user_id);
 
                     if ( 'dob' === $field && '0000-00-00 00:00:00' === $value ) {
                         $value = NULL;

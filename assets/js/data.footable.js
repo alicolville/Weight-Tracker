@@ -8,31 +8,14 @@ jQuery( document ).ready(function ($, undefined) {
     // Add Footables to Calories and MacroN tables
     $('.ws-ls-footable').footable({});
 
-    $(".ws-ls-cancel-form").click(function( event ) {
-        event.preventDefault();
-
-        var button = $(this);
-        var form_id = button.data('form-id');
-
-        if ( undefined !== form_id ) {
-
-            var redirect_url = $('#' + form_id + ' #ws_redirect').val();
-
-            if ( undefined !== redirect_url ) {
-                window.location.href = redirect_url.replace('ws-edit-saved', 'ws-edit-cancel');
-            }
-
-        }
-
-    });
-
     $(".ws-ls-user-data-ajax").each(function () {
 
         var table_id = $(this).attr("id");
         var user_id = $(this).data("user-id");
         var max_entries = $(this).data("max-entries");
         var small_width = $(this).data("small-width");
-        var order_direction = $(this).data("order-direction");
+        var enable_meta_fields = $(this).data("enable-meta-fields");
+        var week = $(this).data("week");
 
         ws_ls_log('Setting up user data table: ' + table_id);
 
@@ -44,8 +27,11 @@ jQuery( document ).ready(function ($, undefined) {
         data['small_width'] = small_width;
         data['table_id'] = table_id;
         data['front-end'] = ws_ls_in_front_end();
-        data['order-direction'] = order_direction;
-        ws_ls_post_data_to_WP('table_data', data, ws_ls_callback_setup_table)
+        data['enable-meta-fields'] = enable_meta_fields;
+        data[ 'in-admin'] = ws_user_table_config[ 'is-admin' ];
+        data[ 'week'] = week;
+
+      ws_ls_post_data_to_WP('table_data', data, ws_ls_callback_setup_table)
 
     });
 
@@ -464,8 +450,8 @@ jQuery( document ).ready(function ($, undefined) {
 
                             // OK, we have a Row ID - send to Ajax handler to delete from DB
                             var data = {};
-                            data['row_id'] = values.db_row_id;
-                            data['user_id'] = values.user_id;
+                            data[ 'row_id' ] = values.db_row_id;
+                            data[ 'user_id' ] = values.user_id;
 
                             // To keep things looking fast (i.e. so no AJAX lag) delete row instantly from UI
                             row.delete();
@@ -484,7 +470,7 @@ jQuery( document ).ready(function ($, undefined) {
                     var values = row.val();
 
                     // If we're in Admin, redirect to the relevant admin screen. Otherwise, toggle edit in front end
-                    if(true === ws_ls_in_front_end()) {
+                    if(true === ws_ls_in_front_end() && '1' !== ws_user_table_config[ 'is-admin' ] ) {
                         var url = ws_user_table_config['edit-url'];
                         url = url.replace('|ws-id|', values.db_row_id);
 
@@ -547,7 +533,7 @@ jQuery( document ).ready(function ($, undefined) {
     }
 
     function ws_ls_in_front_end() {
-        return ( undefined !== ws_user_table_config['front-end'] && 'true' == ws_user_table_config['front-end']) ? true : false;
+       return ( undefined !== ws_user_table_config['front-end'] && 'true' == ws_user_table_config['front-end']) ? true : false;
     }
 
 });

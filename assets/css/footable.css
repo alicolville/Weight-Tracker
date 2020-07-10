@@ -6,12 +6,12 @@
     background-repeat: no-repeat;
     background-position: center;
 }
-.ws-tooltip {
+.ws-ls-tooltip {
     position: relative;
     display: inline-block;
 }
 
-.ws-tooltip .tooltiptext {
+.ws-ls-tooltip span {
     visibility: hidden;
     width: 120px;
     background-color: black;
@@ -24,7 +24,7 @@
     z-index: 1;
 }
 
-.ws-tooltip:hover .tooltiptext {
+.ws-ls-tooltip:hover span {
     visibility: visible;
 }
 

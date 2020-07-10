@@ -13,6 +13,7 @@ function wlt_yk_mt_is_active() {
 /**
  * Add Weight Tracker Record link to user header
  * @param $links
+ * @param $user_id
  * @return string
  */
 function wlt_user_profile_add_header_link( $links, $user_id ) {

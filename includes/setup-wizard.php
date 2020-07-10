@@ -56,7 +56,7 @@ add_action( 'plugins_loaded', 'ws_ls_setup_wizard_help_page_show_links_again' );
  * Show Wizard Links again
  */
 function ws_ls_setup_wizard_show_notice_links_again() {
-    delete_option( WE_LS_SETUP_WIZARD_DIMISS_OPTION, true );
+    delete_option( WE_LS_SETUP_WIZARD_DIMISS_OPTION );
 }
 
 /**

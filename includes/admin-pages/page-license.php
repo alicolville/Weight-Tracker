@@ -4,9 +4,6 @@ defined('ABSPATH') or die('Jog on!');
 
 function ws_ls_advertise_pro() {
 
-	global $pro_features;
-	global $pro_plus_features;
-
 	if ( !current_user_can( 'manage_options' ) )  {
 		wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
 	}
@@ -35,7 +32,7 @@ function ws_ls_advertise_pro() {
 
 					if ($valid_old_license || true === $valid_new_license) {
 						ws_ls_display_notice(__('Your license has been applied!', WE_LS_SLUG));
-						ws_ls_delete_all_cache();
+						ws_ls_cache_delete_all();
 					} else {
 						ws_ls_display_notice(__('An error occurred applying your license: ', WE_LS_SLUG) . $valid_new_license, 'error');
 					}
@@ -95,7 +92,7 @@ function ws_ls_advertise_pro() {
 
 										$display_pro_marketing = true;
 
-									} elseif ($display_pro_plus_marketing) {
+									} elseif ( $display_pro_plus_marketing ) {
 
 										echo sprintf('<p>%s %s %s</p>',
 											__('Of course, a big thank you purchasing a Pro license at some point - it is much appreciated. As you can see below, you can further expand the features of', WE_LS_SLUG),
@@ -122,24 +119,15 @@ function ws_ls_advertise_pro() {
                                                 WE_LS_FREE_TRIAL_URL,
                                                 ws_ls_generate_site_hash(),
                                                 ws_ls_license_get_old_or_new(),
-                                                __('Get a free 7 day trial!', WE_LS_SLUG)
+                                                __( 'Get a free 7 day trial!', WE_LS_SLUG )
                                             );
 
                                             }
 
 										    if ($display_pro_plus_marketing)  {
 
-                                            $text = __('Upgrade to Pro Plus for', WE_LS_SLUG) . ' &pound;' . $proprice . ' ' . __('a year', WE_LS_SLUG);
+                                            $text = __( 'Upgrade to Pro Plus for', WE_LS_SLUG) . ' &pound;' . $proprice . ' ' . __('a year', WE_LS_SLUG);
                                             $link = WE_LS_UPGRADE_TO_PRO_PLUS_URL;
-
-                                            // If an old Pro license, then offer them 50% off upgrading!
-                                            if ( true ===  in_array($license_type, ['pro', 'pro-old']) ) {
-                                                $proprice = $proprice / 2;
-                                                $text = __('Upgrade to Pro Plus for', WE_LS_SLUG) . ' &pound;' . $proprice . ' ' . __('a year', WE_LS_SLUG) .
-                                                    /* xgettext:no-php-format */
-                                                    __(' (50% discount)', WE_LS_SLUG);
-                                                $link = WE_LS_UPGRADE_TO_PRO_PLUS_UPGRADE_URL;
-                                            }
 
 										    echo sprintf('<a href="%s?hash=%s&license=%s" rel="noopener noreferrer" target="_blank" class="button-primary ws-ls-upgrade-button"><i class="fa fa-plus"></i> <i class="fa fa-plus"></i> %s</a>',
                                                 $link,
@@ -250,7 +238,7 @@ function ws_ls_advertise_pro() {
 	                                   <div style="padding: 0px 15px 0px 15px">
 											<div class="inside">
 												<p><?php echo __('Below is a list of the intended features of the Pro Plus version', WE_LS_SLUG); ?>. <strong><?php echo __('You can upgrade for', WE_LS_SLUG); ?> &pound;<?php echo $proprice; ?> <?php echo __('a year', WE_LS_SLUG); ?>.</strong> <?php echo ws_ls_url_license_types(); ?>:</p>
-												<?php ws_ls_display_features($pro_plus_features); ?>
+												<?php ws_ls_display_features( ws_ls_feature_list_pro_plus() ); ?>
 											</div>
 										</div>
 									</div>
@@ -264,7 +252,7 @@ function ws_ls_advertise_pro() {
 
 										<div class="inside">
 											<p><?php echo __('Below is a list of the intended features of the Pro version', WE_LS_SLUG); ?>.  <strong><?php echo __('You can upgrade for', WE_LS_SLUG); ?> &pound;<?php echo $price; ?> <?php echo __('a year', WE_LS_SLUG); ?>.</strong> <?php echo ws_ls_url_license_types(); ?>:</p>
-											<?php ws_ls_display_features($pro_features); ?>
+											<?php ws_ls_display_features( ws_ls_feature_list_pro() ); ?>
 										</div>
 									</div>
 								<?php endif; ?>

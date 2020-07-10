@@ -83,7 +83,7 @@
 	                id mediumint(9) NOT NULL AUTO_INCREMENT,
 	                user_id mediumint(9) NOT NULL,
 	                group_id mediumint(9) NOT NULL,
-	                UNIQUE KEY id (id) 
+	                UNIQUE KEY id (id)
 	            ) $charset_collate;";
 
 		dbDelta( $sql );
@@ -118,15 +118,16 @@
 
 		return $rows;
 	}
-	add_filter( WE_LS_FILTER_ADMIN_USER_SIDEBAR_MIDDLE,  'ws_ls_groups_hooks_user_side_bar', 10, 2 );
+	add_filter( 'wlt-filter-admin-user-sidebar-middle',  'ws_ls_groups_hooks_user_side_bar', 10, 2 );
 
-	/**
-	 * Add a <select> for Group to user preference form
-	 *
-	 * @param $html
-	 *
-	 * @return string
-	 */
+/**
+ * Add a <select> for Group to user preference form
+ *
+ * @param $html
+ *
+ * @param $user_id
+ * @return string
+ */
 	function ws_ls_groups_hooks_user_preferences_form( $html, $user_id ) {
 
 		if ( false === is_admin() && false === ws_ls_groups_can_users_edit() ) {
@@ -149,7 +150,7 @@
 					$html .= sprintf( '<p><a href="%s">%s</a></p>', ws_ls_groups_link(), __('Add / remove Groups', WE_LS_SLUG) );
 				}
 
-				$html .= sprintf( '<select name="ws-ls-group" id="ws-ls-group" tabindex="%d">', ws_ls_get_next_tab_index() );
+				$html .= sprintf( '<select name="ws-ls-group" id="ws-ls-group" tabindex="%d">', ws_ls_form_tab_index_next() );
 
 				foreach ( $groups as $group ) {
 					$html .= sprintf( '<option value="%s" %s>%s</option>',
@@ -171,13 +172,14 @@
 	}
 	add_filter( 'wlt-filter-user-settings-below-dob',  'ws_ls_groups_hooks_user_preferences_form', 10, 2 );
 
-	/**
-	 * Add a <select> for Group to user preference form
-	 *
-	 * @param $html
-	 *
-	 * @return string
-	 */
+/**
+ * Add a <select> for Group to user preference form
+ *
+ * @param $user_id
+ * @param $is_admin
+ * @param $fields
+ * @return string
+ */
 	function ws_ls_groups_hooks_user_preferences_save( $user_id, $is_admin, $fields ) {
 
 		if ( false === ws_ls_groups_enabled() ) {
@@ -187,7 +189,7 @@
 		// Update user group?
 		if ( true === $is_admin || true === ws_ls_groups_can_users_edit() ) {
 
-			$group_id =  ws_ls_ajax_post_value('ws-ls-group');
+			$group_id =  ws_ls_post_value('ws-ls-group');
 
 			ws_ls_groups_add_to_user( (int) $group_id, (int) $user_id );
 			ws_ls_cache_user_delete( 'groups-user-for-given' );
@@ -195,10 +197,11 @@
 	}
 	add_action( 'ws-ls-hook-user-preference-save',  'ws_ls_groups_hooks_user_preferences_save', 10, 3 );
 
-	/**
-	 * @param $user_id
-	 * @param $group_id
-	 */
+/**
+ * @param $user_id
+ * @param $group_id
+ * @return bool|int
+ */
 	function ws_ls_groups_add_to_user( $group_id, $user_id = NULL ) {
 
 		if ( true === is_numeric( $group_id ) ) {
@@ -408,11 +411,12 @@
 		return $data;
 	}
 
-	/**
-	 * Calculate total weight loss difference for given group
-	 *
-	 * @param $group_id
-	 */
+/**
+ * Calculate total weight loss difference for given group
+ *
+ * @param $group_id
+ * @return float
+ */
 	function ws_ls_groups_stats_get_weight_difference( $group_id ) {
 
 		global $wpdb;
@@ -450,11 +454,12 @@
 	}
 	add_action( 'wlt-hook-stats-running', 'ws_ls_groups_stats_cron' );
 
-	/**
-	 * Fetch all groups for user
-	 *
-	 * @return array
-	 */
+/**
+ * Fetch all groups for user
+ *
+ * @param null $user_id
+ * @return array
+ */
 	function ws_ls_groups_user( $user_id = NULL ) {
 
 		$user_id = $user_id ?: get_current_user_id();
@@ -466,7 +471,7 @@
 		}
 
 		$sql = 'Select g.* from ' . $wpdb->prefix . WE_LS_MYSQL_GROUPS . ' g inner join
-		        ' . $wpdb->prefix . WE_LS_MYSQL_GROUPS_USER . ' u on g.id = u.group_id where u.user_id = %d 
+		        ' . $wpdb->prefix . WE_LS_MYSQL_GROUPS_USER . ' u on g.id = u.group_id where u.user_id = %d
 		        order by g.name asc';
 
 		$sql = $wpdb->prepare( $sql, $user_id );
@@ -478,10 +483,11 @@
 		return $data;
 	}
 
-    /**
-     * Add group to CSV / JSON export
-     * @param $row
-     */
+/**
+ * Add group to CSV / JSON export
+ * @param $row
+ * @return mixed
+ */
     function ws_ls_groups_export_add( $row ) {
 
 	    if ( false === ws_ls_groups_enabled () ) {
@@ -558,7 +564,7 @@
 
 		check_ajax_referer( 'ws-ls-user-tables', 'security' );
 
-		$table_id = ws_ls_ajax_post_value('table_id');
+		$table_id = ws_ls_post_value('table_id');
 
 		if ( $cache = ws_ls_cache_user_get( 'groups', $table_id ) ) {
 			wp_send_json( $cache );
@@ -575,9 +581,9 @@
 		$rows = ws_ls_groups( false );
 
 		foreach ( $rows as &$row ) {
-			$row[ 'name' ] = ws_ls_render_link( ws_ls_groups_link_to_page( $row[ 'id' ] ) , $row[ 'name' ] );
-			$row[ 'weight_display' ] = ws_ls_convert_kg_into_relevant_weight_String( $row[ 'weight_difference' ], true );
-			$row[ 'count' ] = ws_ls_groups_count( $row[ 'id' ] );
+			$row[ 'name' ]              = ws_ls_render_link( ws_ls_groups_link_to_page( $row[ 'id' ] ) , $row[ 'name' ] );
+			$row[ 'weight_display' ]    = ws_ls_weight_display( $row[ 'weight_difference' ], NULL, 'display', false, true );
+			$row[ 'count' ]             = ws_ls_groups_count( $row[ 'id' ] );
 		}
 
 		$data = [
@@ -604,8 +610,8 @@
 
 		check_ajax_referer( 'ws-ls-user-tables', 'security' );
 
-		$table_id = ws_ls_ajax_post_value( 'table_id' );
-		$group_id = ws_ls_ajax_post_value( 'group_id' );
+		$table_id = ws_ls_post_value( 'table_id' );
+		$group_id = ws_ls_post_value( 'group_id' );
 
 		if ( $cache = ws_ls_cache_user_get( 'groups-user-for-given', 'ajax-' . $group_id ) ) {
 			wp_send_json( $cache );
@@ -627,15 +633,15 @@
 
 			$row[ 'display_name' ] = ws_ls_get_link_to_user_profile( $row[ 'user_id' ], $row[ 'display_name' ] );
 
-            $stats = ws_ls_get_entry_counts( $row[ 'user_id' ] );
+            $stats = ws_ls_db_entries_count( $row[ 'user_id' ] );
 
             if ( false === empty( $stats ) ) {
 
                 $row[ 'number-of-entries' ] = $stats['number-of-entries'];
-                $row[ 'start-weight' ] = ws_ls_weight_start( $row[ 'user_id' ] );
-                $row[ 'latest-weight' ] = ws_ls_weight_recent( $row[ 'user_id' ] );
-                $row[ 'diff-weight' ] = ws_ls_weight_difference( $row[ 'user_id' ] );
-                $row[ 'target' ] = ws_ls_weight_target_weight( $row[ 'user_id' ], true );
+                $row[ 'start-weight' ] = ws_ls_shortcode_start_weight( $row[ 'user_id' ] );
+                $row[ 'latest-weight' ] = ws_ls_shortcode_recent_weight( $row[ 'user_id' ] );
+                $row[ 'diff-weight' ] = ws_ls_shortcode_difference_in_weight_from_oldest( $row[ 'user_id' ] );
+                $row[ 'target' ] = ws_ls_target_get( $row[ 'user_id' ], 'display' );
             }
         }
 
@@ -706,9 +712,11 @@
     }
     add_action( 'wp_ajax_groups_users_delete', 'ws_ls_ajax_groups_users_delete' );
 
-	/**
-	 * Sortcode to display total weight difference for group
-	 */
+/**
+ * Sortcode to display total weight difference for group
+ * @param $user_defined_arguments
+ * @return string|void
+ */
 	function ws_ls_groups_shortcode( $user_defined_arguments ) {
 
 		$arguments = shortcode_atts( [ 'id' => 0 ], $user_defined_arguments );
@@ -718,14 +726,15 @@
 			$difference = ws_ls_groups_get( $arguments['id'] );
 
 			if ( false === empty( $difference[ 'weight_difference' ] ) ) {
-				return ws_ls_convert_kg_into_relevant_weight_String( $difference[ 'weight_difference' ], true );
+				return ws_ls_weight_display( $difference[ 'weight_difference' ], NULL, 'display', false, true );
 			}
 		}
 
 		return __('Group ID not found', WE_LS_SLUG);
 	}
 	add_shortcode( 'wlt-group-weight-difference', 'ws_ls_groups_shortcode' );
-
+	add_shortcode( 'wt-group-weight-difference', 'ws_ls_groups_shortcode' );
+//
     /**
      * Shortcode to display the user's current group
      *
@@ -745,7 +754,7 @@
         return esc_html( $group_text );
     }
     add_shortcode( 'wlt-group', 'ws_ls_groups_current' );
-
+	add_shortcode( 'wt-group', 'ws_ls_groups_current' );
 
 	/**
 	 * Given a group ID, return a link to the group page

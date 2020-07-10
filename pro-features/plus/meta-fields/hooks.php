@@ -105,7 +105,7 @@
 		    return;
 	    }
 
-	    $photos = ws_ls_meta_fields_photos_for_given_entry_id( $entry['db_row_id'] );
+	    $photos = ws_ls_meta_fields_photos_for_given_entry_id( $entry[ 'id' ] );
 
 	    foreach ( $photos as $photo ) {
 		    if ( false === empty( $photo['value'] ) ) {
@@ -113,12 +113,12 @@
 		    }
 	    }
 
-	    ws_ls_meta_delete_for_entry( $entry['db_row_id'] );
+	    ws_ls_meta_delete_for_entry( $entry[ 'id' ] );
 
-	    ws_ls_delete_cache_for_given_user( $entry['user_id'] );
+	    ws_ls_cache_user_delete( $entry[ 'user-id' ] );
 
     }
-    add_action( WE_LS_HOOK_DATA_ENTRY_DELETED, 'ws_ls_meta_fields_tidy_entries_and_attachments' );
+    add_action( 'wlt-hook-data-entry-deleted', 'ws_ls_meta_fields_tidy_entries_and_attachments' );
 
 
 	/**
@@ -151,3 +151,12 @@
 	}
 	add_action('wlt-meta-fields-deleting-meta-field', 'ws_ls_meta_fields_clear_cache_for_users_using_this_field', 50);
 	add_action('wlt-meta-fields-updating-meta-field', 'ws_ls_meta_fields_clear_cache_for_users_using_this_field', 50);
+
+	/**
+	 * Delete awards for given user
+	 * @param $user_id
+	 */
+	function ws_ls_meta_fields_delete_for_given_user( $user_id ) {
+		ws_ls_awards_db_delete_awards_for_user( $user_id );
+	}
+	add_action( 'wlt-hook-data-user-deleted', 'ws_ls_meta_fields_delete_for_given_user' );

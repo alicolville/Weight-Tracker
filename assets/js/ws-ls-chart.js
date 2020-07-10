@@ -1,40 +1,34 @@
 //
 // To compress this script, use https://jscompress.com
 //
-jQuery( document ).ready(function ($, undefined) {
 
-	// Render upon page
-	$(".ws-ls-chart").each(function () {
-	  $chart_id = $(this).attr("id");
-	  ws_ls_render_graph($chart_id);
+jQuery( document ).ready( function ($ ) {
+
+	// Search for any Weight Tracker charts and render chart.js
+	$( '.ws-ls-chart' ).each( function () {
+
+	  let chart_id = $( this ).attr('id' );
+
+    ws_ls_render_graph( chart_id );
+
 	});
 
-	function ws_ls_render_graph($chart_id) 	{
+	function ws_ls_render_graph( chart_id ) 	{
 
-		$chart_type = $("#" + $chart_id).data("chart-type");
+	  let chart_obj     = $( '#' + chart_id );
+		let chart_type    = $( '#' + chart_id ).data('chart-type' );
 
 		// If not specified, default to line
-		if(typeof $chart_type === "undefined"){
-			$chart_type = "line";
+		if( 'undefined' === typeof chart_type ) {
+			chart_type = 'line';
 		}
 
-		var ctx = $("#" + $chart_id).get(0).getContext("2d");
+		let ctx = chart_obj.get(0).getContext( '2d' );
 
-        Chart.defaults.global.defaultFontColor = this[$chart_id + "_options"]["fontColor"];
+		let width = chart_obj.parent().width();
 
-        if ( undefined !== this[$chart_id + "_options"]["fontFamily"] && '' !== this[$chart_id + "_options"]["fontFamily"] ) {
-	      Chart.defaults.global.defaultFontFamily = this[$chart_id + "_options"]["fontFamily"];
-		}
+    chart_obj.attr('width', width - 50);
 
-		var width = $("#" + $chart_id).parent().width();
-		$("#" + $chart_id).attr("width", width - 50);
-
-		if ("line" == $chart_type) {
-			new Chart(ctx, {type: "line", data: this[$chart_id + "_data"], options: this[$chart_id + "_options"]});
-		}
-		else if ("bar" == $chart_type) {
-			new Chart(ctx, {type: "bar", data: this[$chart_id + "_data"], options: this[$chart_id + "_options"]});
-		}
+    new Chart( ctx, { type: chart_type, data: this[ chart_id + "_data"], options: this[ chart_id + "_options" ] } );
 	}
-
 });

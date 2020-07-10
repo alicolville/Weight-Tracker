@@ -4,16 +4,16 @@ defined('ABSPATH') or die('Naw ya dinnie!');
 
 function ws_ls_admin_page_data_user() {
 
-    ws_ls_user_data_permission_check();
+    ws_ls_permission_check_message();
 
 	$user_id = ws_get_user_id_from_qs();
 
     // Ensure this WP user ID exists!
-    ws_user_exist_check( $user_id );
+    ws_ls_user_exist_check( $user_id );
 
     // DELETE ALL DATA FOR THIS USER!! AHH!!
     if ( true === isset( $_GET['removedata'] ) && 'y' == $_GET['removedata'] ) {
-        ws_ls_delete_data_for_user($user_id);
+        ws_ls_delete_data_for_user( $user_id);
     }
 
     // Delete all awards for this user
@@ -30,7 +30,7 @@ function ws_ls_admin_page_data_user() {
 <?php endif; ?>
 
 <?php if(!empty($_GET['deletecache'])) :
-        ws_ls_delete_cache_for_given_user($user_id);
+		ws_ls_cache_user_delete( $user_id );
     ?>
     <div class="notice notice-success"><p><?php echo __('The cache for this user has been deleted.', WE_LS_SLUG); ?></p></div>
 <?php endif; ?>
@@ -52,12 +52,7 @@ function ws_ls_admin_page_data_user() {
 							<?php
 
 								// Fetch last 25 weight entries
-								$weight_data = ws_ls_get_weights($user_id, 25, -1, 'desc');
-
-								// Reverse array so in cron order
-                                if($weight_data) {
-                                    $weight_data = array_reverse($weight_data);
-                                }
+								$weight_data = ws_ls_entries_get( [ 'user-id' => $user_id, 'limit' => 25, 'prep' => true, 'sort' => 'desc', 'reverse' => true ] );
 
                                 if ( true !== WS_LS_IS_PRO ) {
 
@@ -182,7 +177,7 @@ function ws_ls_admin_page_data_user() {
                                   <?php
 				                      echo sprintf('<p>
 				                                        <a href="%s">%s</a> %s:
-				                                    </p>     
+				                                    </p>
                                                     <ul>
                                                         <li><strong>- %s</strong> - %s. %s.</li>
                                                         <li><strong>- %s</strong> - %s. %s.</li>
@@ -208,7 +203,7 @@ function ws_ls_admin_page_data_user() {
 					<div class="postbox">
 						<h2 class="hndle"><span><?php echo __('Entries for this user', WE_LS_SLUG); ?></span></h2>
 						<div class="inside">
-							<?php echo ws_ls_data_table_placeholder($user_id, false, true); ?>
+							<?php echo ws_ls_data_table_render( [ 'smaller-width' => true, 'user-id' => $user_id ] ); ?>
 						</div>
 					</div>
 				</div>

@@ -31,7 +31,6 @@ function ws_ls_has_a_valid_license() {
 
 /**
  * Hash this site hash been banned?
- * @param $site_hash
  * @return bool
  */
 function ws_ls_is_site_hash_banned() {
@@ -53,6 +52,7 @@ function ws_ls_has_a_valid_pro_plus_license() {
  * Return the number of days until the license expires
  *
  * @return int|null
+ * @throws Exception
  */
 function ws_ls_how_many_days_until_license_expires() {
 
@@ -171,8 +171,11 @@ function ws_ls_license_type() {
 }
 
 /**
-* Validate and apply a license
-**/
+ * Validate and apply a license
+ * @param $license
+ * @param bool $is_cron
+ * @return bool|string|void
+ */
 function ws_ls_license_apply( $license, $is_cron = true ) {
 
 	// Validate license
@@ -208,6 +211,7 @@ function ws_ls_license_apply( $license, $is_cron = true ) {
 
 /**
  * Remove new and old licenses
+ * @param string $type
  */
 function ws_ls_license_remove( $type = 'both' ) {
 
@@ -219,7 +223,7 @@ function ws_ls_license_remove( $type = 'both' ) {
         delete_option(WS_LS_LICENSE_2_VALID);
 
 		// Fire comms to Yeken to record expire
-		do_action(WE_LS_HOOK_LICENSE_EXPIRED);
+		do_action('wlt-hook-license-expired' );
 	}
 
 	if(true === in_array($type, ['old', 'both'])) {
@@ -227,13 +231,15 @@ function ws_ls_license_remove( $type = 'both' ) {
         delete_option(WS_LS_LICENSE_VALID);
 
 		// Fire comms to Yeken to record expire
-		do_action(WE_LS_HOOK_LICENSE_EXPIRED);
+		do_action('wlt-hook-license-expired' );
     }
 }
 
 /**
-*	Check an existing license's hash is still valid
-**/
+ *    Check an existing license's hash is still valid
+ * @param $license
+ * @return bool|string|void
+ */
 function ws_ls_license_validate($license) {
 
 	if(true === empty($license)) {
@@ -269,8 +275,10 @@ function ws_ls_license_validate($license) {
 }
 
 /**
-* Validate and decode a license
-**/
+ * Validate and decode a license
+ * @param $license
+ * @return mixed|null
+ */
 function ws_ls_license_decode($license) {
 
 	if(true === empty($license)) {
@@ -371,15 +379,19 @@ function ws_ls_has_a_valid_old_pro_license() {
 }
 
 /**
-*	Generate an old Pro license so it can be compared against one entered.
-**/
+ *    Generate an old Pro license so it can be compared against one entered.
+ * @param $site_hash
+ * @return string
+ */
 function ws_ls_generate_old_pro_license($site_hash) {
 	return md5('yeken.co.uk' . $site_hash);
 }
 
 /**
-*	Validate and store an old Pro license
-**/
+ *    Validate and store an old Pro license
+ * @param $license_key_from_yeken
+ * @return bool
+ */
 function ws_ls_is_validate_old_pro_license($license_key_from_yeken) {
     $site_hash = ws_ls_generate_site_hash();
     $comparison_license = ws_ls_generate_old_pro_license($site_hash);
@@ -407,7 +419,7 @@ function ws_ls_license_pro_price() {
 
     $price = yeken_license_price( 'pro' );
 
-    return ( false === empty( $price ) ) ? $price : WS_LS_PRO_PRICE;
+    return ( false === empty( $price ) ) ? $price : WE_LS_PRO_PRICE;
 }
 
 /**
@@ -419,7 +431,7 @@ function ws_ls_license_pro_plus_price() {
 
     $price = yeken_license_price( 'pro-plus' );
 
-    return ( false === empty( $price ) ) ? $price : WS_LS_PRO_PLUS_PRICE;
+    return ( false === empty( $price ) ) ? $price : WE_LS_PRO_PLUS_PRICE;
 }
 
 if ( false === function_exists( 'yeken_license_api_fetch_licenses' ) ) {
@@ -452,11 +464,12 @@ if ( false === function_exists( 'yeken_license_api_fetch_licenses' ) ) {
         return NULL;
     }
 
-    /**
-     * Fetch a certain product price
-     * @param $sku
-     * @param string $type
-     */
+	/**
+	 * Fetch a certain product price
+	 * @param $sku
+	 * @param string $type
+	 * @return |null
+	 */
     function yeken_license_price( $sku, $type = 'yearly' ) {
 
         $licenses = yeken_license_api_fetch_licenses();
