@@ -36,7 +36,7 @@ function ws_ls_harris_benedict_calculate_calories($user_id = false) {
 	$calorie_intake['maintain'] = ['total' => round($activity_level * $bmr, 2), 'label' => __( 'Maintain', WE_LS_SLUG )];
 
 	// Filter total
-	$calorie_intake['maintain']['total'] = apply_filters( 'wlt-filter-calories-maintain', $calorie_intake['maintain']['total'], $bmr, $activity_level );
+	$calorie_intake['maintain']['total'] = apply_filters( 'wlt-filter-calories-maintain', $calorie_intake['maintain']['total'], $bmr, $activity_level, $user_id );
 
 	// --------------------------------------------------
 	// Lose
@@ -58,7 +58,7 @@ function ws_ls_harris_benedict_calculate_calories($user_id = false) {
 	$calorie_intake['lose'] = ['total' => $calories_to_lose, 'label' => __( 'Lose', WE_LS_SLUG ) ] ; // lose weight (1 to 2lbs per week)
 
 	// Filter lose total
-	$calorie_intake['lose']['total'] = apply_filters( 'wlt-filter-calories-lose', $calorie_intake['lose']['total'], $bmr, $activity_level, $calories_to_lose );
+	$calorie_intake['lose']['total'] = apply_filters( 'wlt-filter-calories-lose', $calorie_intake['lose']['total'], $bmr, $activity_level, $calories_to_lose, $user_id );
 
 	// --------------------------------------------------
 	// Gain
@@ -69,14 +69,14 @@ function ws_ls_harris_benedict_calculate_calories($user_id = false) {
 	$calorie_intake['gain'] = [ 'total' => $calories_to_gain, 'label' => __( 'Gain', WE_LS_SLUG ) ] ;
 
 	// Filter lose total
-	$calorie_intake['gain']['total'] = apply_filters( 'wlt-filter-calories-gain', $calorie_intake['gain']['total'], $bmr, $activity_level, $calories_to_gain );
+	$calorie_intake['gain']['total'] = apply_filters( 'wlt-filter-calories-gain', $calorie_intake['gain']['total'], $bmr, $activity_level, $calories_to_gain, $user_id );
 
 	// --------------------------------------------------
 	// Breakdown
 	// --------------------------------------------------
 
 	// Allow all calorie totals to be replaced or add additional rows.
-	$calorie_intake = apply_filters( 'wlt-filter-calories-pre', $calorie_intake, $bmr, $activity_level, $calories_to_lose, $calories_to_gain );
+	$calorie_intake = apply_filters( 'wlt-filter-calories-pre', $calorie_intake, $bmr, $activity_level, $calories_to_lose, $calories_to_gain, $user_id );
 
     $meal_ratios = ws_ls_harris_benedict_meal_ratio_defaults();
 
