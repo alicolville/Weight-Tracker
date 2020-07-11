@@ -165,10 +165,12 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
                 								<ul></ul>
                 							</div>', esc_url( get_permalink() ) );
 
-	    $html_output .= ws_ls_form_field_select( 'ws-ls-delete-all', __( 'The button below allows you to clear your existing weight history. Confirm:', WE_LS_SLUG ), [
-		    '' => '',
-		    'yes' => __( 'DELETE ALL DATA', WE_LS_SLUG )
-	    ], '', '', true );
+	    $html_output .= ws_ls_form_field_select( [ 'key'        => 'ws-ls-delete-all',
+	                                               'label'      => __( 'The button below allows you to clear your existing weight history. Confirm:', WE_LS_SLUG ),
+	                                               'values'     => [ '' => '',
+																	    'yes' => __( 'DELETE ALL DATA', WE_LS_SLUG )
+		                                                            ],
+		                                           'required'   => true ] );
 
 	    $html_output .= sprintf('<input name="submit_button" type="submit" id="we-ls-user-pref-submit" tabindex="%1$d" class="button" value="%2$s" /></form>',
 		    ws_ls_form_tab_index_next(),
