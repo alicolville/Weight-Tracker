@@ -41,8 +41,6 @@ function ws_ls_data_table_render( $arguments = [] ) {
 	// Are we in front end and editing enabled, and of course we want to edit, then do so!
 	if( false === empty( $entry_id ) && false === is_admin() ) {
 
-	//	$data = ws_ls_get_weight( get_current_user_id(), $entry_id );
-
 		// If we have a Redirect URL, base decode.
 		$redirect_url = ws_ls_querystring_value('redirect');
 

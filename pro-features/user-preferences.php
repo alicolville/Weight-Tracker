@@ -82,7 +82,7 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
     // Aim
     //-------------------------------------------------------
 
-	$html_output .= ws_ls_form_field_select( 'ws-ls-aim', $labels['aim'], ws_ls_aims(), ws_ls_user_preferences_get( 'aim', $user_id, 0 ), 'ws-ls-aboutyou-field' );
+	$html_output .= ws_ls_form_field_select( [ 'key' => 'ws-ls-aim', 'label' => $labels['aim'], 'values' => ws_ls_aims(), 'selected' => ws_ls_user_preferences_get( 'aim', $user_id, 0 ), 'css-class' => 'ws-ls-aboutyou-field' ] );
 
     //-------------------------------------------------------
     // Additional Body attributes
@@ -94,15 +94,15 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
     // Height
     //-------------------------------------------------------
 
-	$html_output .= ws_ls_form_field_select( 'ws-ls-height', $labels['height'], ws_ls_heights(), ws_ls_user_preferences_get( 'height', $user_id ), 'ws-ls-aboutyou-field' );
+	$html_output .= ws_ls_form_field_select( [ 'key' => 'ws-ls-height', 'label' => $labels[ 'height' ], 'values' => ws_ls_heights(), 'selected' => ws_ls_user_preferences_get( 'height', $user_id ), 'css-class' => 'ws-ls-aboutyou-field' ] );
 
 	//-------------------------------------------------------
     // Gender
     //-------------------------------------------------------
 
-	$html_output .= ws_ls_form_field_select( 'ws-ls-gender', $labels['gender'], ws_ls_genders(), ws_ls_user_preferences_get( 'gender', $user_id ), 'ws-ls-aboutyou-field' );
+	$html_output .= ws_ls_form_field_select( [ 'key' => 'ws-ls-gender', 'label' => $labels[ 'gender' ], 'values' => ws_ls_genders(), 'selected' => ws_ls_user_preferences_get( 'gender', $user_id ), 'css-class' => 'ws-ls-aboutyou-field' ] );
 
-    //-------------------------------------------------------
+	//-------------------------------------------------------
     // Additional Body attributes
     //-------------------------------------------------------
 
@@ -112,7 +112,7 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
     // Activity Level
     //-------------------------------------------------------
 
-	$html_output .= ws_ls_form_field_select( 'ws-ls-activity-level', $labels['activitylevel'], ws_ls_activity_levels(), ws_ls_user_preferences_get( 'activity_level', $user_id ), 'ws-ls-aboutyou-field' );
+	$html_output .= ws_ls_form_field_select( [ 'key' => 'ws-ls-activity-level', 'label' => $labels[ 'activitylevel' ], 'values' => ws_ls_activity_levels(), 'selected' => ws_ls_user_preferences_get( 'activity_level', $user_id ), 'css-class' => 'ws-ls-aboutyou-field' ] );
 
     //-------------------------------------------------------
     // Date of Birth
@@ -137,13 +137,12 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
 
     $html_output .= ws_ls_title( __('Preferences', WE_LS_SLUG ) );
 
-	$html_output .= ws_ls_form_field_select( 'WE_LS_DATA_UNITS', $labels['weight'], ws_ls_weight_units(), ws_ls_user_preferences_settings_get( 'WE_LS_DATA_UNITS', $user_id ) );
+	$html_output .= ws_ls_form_field_select( [ 'key' => 'WE_LS_DATA_UNITS', 'label' => $labels[ 'weight' ], 'values' => ws_ls_weight_units(), 'selected' => ws_ls_user_preferences_settings_get( 'WE_LS_DATA_UNITS', $user_id ) ] );
 
-	$html_output .= ws_ls_form_field_select( 'WE_LS_US_DATE', $labels['date'], [
-		'false' => __( 'UK (DD/MM/YYYY)', WE_LS_SLUG ),
-		'true'  => __( 'US (MM/DD/YYYY)', WE_LS_SLUG )
-	], ( true === ws_ls_user_preferences_settings_get( 'WE_LS_US_DATE', $user_id ) ) ? 'true' : 'false' );
-
+	$html_output .= ws_ls_form_field_select( [  'key'       => 'WE_LS_US_DATE',
+	                                            'label'     => $labels[ 'date' ],
+	                                            'values'    => [ 'false'     => __( 'UK (DD/MM/YYYY)', WE_LS_SLUG ), 'true' => __( 'US (MM/DD/YYYY)', WE_LS_SLUG ) ],
+	                                            'selected'  => ( true === ws_ls_user_preferences_settings_get( 'WE_LS_US_DATE', $user_id ) ) ? 'true' : 'false' ] );
 
     if ( true !== $arguments[ 'disable-save' ] ) {
 

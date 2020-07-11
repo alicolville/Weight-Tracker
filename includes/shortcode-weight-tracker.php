@@ -74,7 +74,7 @@ function ws_ls_shortcode( $user_defined_arguments ) {
 		// If enabled, render tab header
 		if ( $use_tabs ) {
 
-			$hide_tab_descriptions = ws_ls_force_bool_argument( $shortcode_arguments[ 'hide-tab-descriptions' ] );
+			$hide_tab_descriptions = ws_ls_to_bool( $shortcode_arguments[ 'hide-tab-descriptions' ] );
 
 			$html_output .= '<div id="ws-ls-tabs-loading" class="ws-ls-loading"></div>
 									<div id="ws-ls-tabs" class="ws-ls-hide">
@@ -184,8 +184,8 @@ function ws_ls_shortcode( $user_defined_arguments ) {
 			//If we have a Redirect URL, base decode.
 			$redirect_url = ws_ls_querystring_value( 'redirect' );
 
-			if (false === empty($redirect_url)) {
-				$redirect_url = base64_decode($redirect_url);
+			if ( false === empty( $redirect_url ) ) {
+				$redirect_url = base64_decode( $redirect_url );
 			}
 
 			$html_output .= ws_ls_form_weight( [    'css-class-form'       => 'ws-ls-main-weight-form',
@@ -213,7 +213,7 @@ function ws_ls_shortcode( $user_defined_arguments ) {
 			$html_output .= ws_ls_start_tab( 'wlt-weight-history', $use_tabs );
 		}
 
-		$week_ranges = ( true === $week_ranges_enabled ) ? ws_ls_get_week_ranges() : NULL;
+		$week_ranges = ( true === $week_ranges_enabled ) ? ws_ls_week_ranges_get( $user_id ) : NULL;
 
         // If we have data, display data table
 		if ( false === empty( $weight_data ) )	{
@@ -227,7 +227,7 @@ function ws_ls_shortcode( $user_defined_arguments ) {
 				$html_output .= ws_ls_title( __( 'Weight History', WE_LS_SLUG ) );
 
 				if( true === $week_ranges_enabled ) {
-					$html_output .= ws_ls_display_week_filters( $week_ranges, $selected_week_number );
+					$html_output .= ws_ls_week_ranges_display( $week_ranges, $selected_week_number );
 				}
 
 				if ( true === WS_LS_IS_PRO && false === ws_ls_to_bool( $shortcode_arguments[ 'disable-advanced-tables' ] ) ){
@@ -239,7 +239,7 @@ function ws_ls_shortcode( $user_defined_arguments ) {
         elseif ( $use_tabs && false === empty( $selected_week_number ) ) {
 			$html_output .= __( 'No data could be found for this week, please try selecting another:', WE_LS_SLUG );
 	        if( true === $week_ranges_enabled ) {
-                $html_output .= ws_ls_display_week_filters( $week_ranges, $selected_week_number );
+                $html_output .= ws_ls_week_ranges_display( $week_ranges, $selected_week_number );
 	        }
 		}
 		elseif ( $use_tabs ) {

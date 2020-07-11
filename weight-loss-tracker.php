@@ -190,7 +190,7 @@ add_action('plugins_loaded', 'ws_ls_load_textdomain');
     //	var_Dump( $setting );
 //	    $t = ws_ls_stats_sum_weight_difference();
 //print_r($t);
-    	$user_id = 1; // get_current_user_id();
+    	$user_id = 203; // get_current_user_id();
 
 
    	print_r(ws_ls_cache_user_get_all( $user_id ));

@@ -291,7 +291,7 @@ function ws_ls_db_entries_get( $arguments = [] ) {
 	if ( false === empty( $arguments[ 'week' ] ) ){
 
 		$week_number = (int) $arguments[ 'week' ];
-		$week_ranges = ws_ls_get_week_ranges();
+		$week_ranges = ws_ls_week_ranges_get();
 
 		if( false === empty( $week_ranges[ $week_number ] ) ) {
 			$additional_sql = $wpdb->prepare( ' and ( weight_date BETWEEN %s AND %s )', $week_ranges[ $week_number ][ 'start' ], $week_ranges[ $week_number ][ 'end' ] );

@@ -161,7 +161,10 @@ function ws_ls_date_todays_date( $user_id = NULL ) {
  * @return string
  */
 function ws_ls_get_date_format( $user_id = NULL ) {
-  return ( true === ws_ls_setting('use-us-dates', $user_id ) ) ? 'm/d/Y': 'd/m/Y';
+
+	$user_id = ( NULL === $user_id ) ? get_current_user_id() : $user_id;
+
+	return ( true === ws_ls_setting('use-us-dates', $user_id ) ) ? 'm/d/Y': 'd/m/Y';
 }
 
 /**
@@ -169,12 +172,20 @@ function ws_ls_get_date_format( $user_id = NULL ) {
  * REFACTOR!!
  * CACHE!
  *
+ * @param null $user_id
+ *
  * @return array|bool
  * @throws Exception
  */
-function ws_ls_get_week_ranges() {
+function ws_ls_week_ranges_get( $user_id = NULL ) {
 
-	$entered_date_ranges = ws_ls_db_dates_min_max_get(get_current_user_id());
+	$user_id = ( NULL === $user_id ) ? get_current_user_id() : $user_id;
+
+	if ( $cache = ws_ls_cache_user_get( $user_id, 'week-ranges' ) ) {
+		return $cache;
+	}
+
+	$entered_date_ranges = ws_ls_db_dates_min_max_get( $user_id );
 
 	if ( true === empty( $entered_date_ranges ) ) {
 		return false;
@@ -187,60 +198,51 @@ function ws_ls_get_week_ranges() {
 	// Grab all the weekly intervals between those dates
 	$interval       = new DateInterval( 'P1W' );
 	$daterange      = new DatePeriod( $start_date, $interval ,$end_date );
-	$date_ranges    = [];
+	$date_ranges    = [ 0 => [ 'display' => __( 'View all weeks', WE_LS_SLUG ), 'start' => $start_date->format( 'Y-m-d' ), 'end' => $end_date->format( 'Y-m-d' ) ] ];
+	$date_format    = ws_ls_get_date_format( $user_id );
 
 	$i = 1;
 
 	// Build an easy to use array
 	foreach( $daterange as $date ){
 
-		$end_of_week = clone $date;
-		$end_of_week = date_modify( $end_of_week, '+1 week' );
+		$end_of_week    = clone $date;
+		$end_of_week    = date_modify( $end_of_week, '+1 week' );
+		$display        = sprintf( '%s %d - %s %s %s', __( 'View Week', WE_LS_SLUG ), $i, $date->format( $date_format ), __('to', WE_LS_SLUG), $end_of_week->format( $date_format ) );
 
-		$date_ranges[ $i ] =  [ 'start' => $date->format( 'Y-m-d'), 'end' => $end_of_week->format( 'Y-m-d' ) ];
+		$date_ranges[ $i ] =  [     'start'     => $date->format( 'Y-m-d' ),
+		                            'end'       => $end_of_week->format( 'Y-m-d' ),
+		                            'display'   => $display ];
 
 		$i++;
 	}
 
+	ws_ls_cache_user_set( $user_id, 'week-ranges', $date_ranges );
+
 	return $date_ranges;
 }
 
-function ws_ls_display_week_filters($week_ranges, $selected_week_number)
-{
-  $output = '';
+/**
+ * Get form / dropdown for weekly ranges
+ * @param $week_ranges
+ * @param $selected_week_number
+ * @param null $user_id
+ *
+ * @return string|null
+ * @throws Exception
+ */
+function ws_ls_week_ranges_display( $week_ranges, $selected_week_number ) {
 
-  // If we have valid options for week dropdown, start building it
-  if ( false === empty( $week_ranges ) && true === is_array( $week_ranges ) )	{
+	if ( true === empty( $week_ranges ) ) {
+		return '';
+	}
 
-    $output .= '<form action="' .  get_permalink() . '#wlt-weight-history" method="post">
-                  <input type="hidden" value="true" name="week_filter">
-                    <div class="ws_ls_week_controls">
-                      <select name="week-number" onchange="this.form.submit()" class="ws-ls-select">
-                        <option value="-1" ' . (($selected_week_number == -1) ?  ' selected="selected"' : '') . '>'. __('View all weeks', WE_LS_SLUG) . '</option>';
+	$week_ranges    = wp_list_pluck( $week_ranges, 'display' );
+    $output         = sprintf('<form action="%1$s#wlt-weight-history" method="post">', esc_url( get_permalink() ) );
+	$output         .= ws_ls_form_field_select( [ 'key' => 'week-number', 'show-label' => false, 'values' => $week_ranges, 'selected' => $selected_week_number, 'css-class' => 'ws-ls-select', 'js-on-change' => 'this.form.submit()' ] );
+	$output         .= '</form>';
 
-    // Loop through each weekly option and build drop down
-    foreach ($week_ranges as $key => $week) {
-
-      $date_format = ws_ls_get_date_format( get_current_user_id() );
-
-      $start_date = new DateTime($week['start']);
-      $start_date = $start_date->format($date_format);
-
-      $end_date = new DateTime($week['end']);
-      $end_date = $end_date->format($date_format);
-
-      $output .= '<option value="' . $key . '" ' . (($selected_week_number == $key) ? ' selected="selected"' : '') . '>'
-                  . __('View Week', WE_LS_SLUG) . ' ' . $key . ' - ' . $start_date . ' ' . __('to', WE_LS_SLUG) . ' ' . $end_date . '</option>';
-
-    }
-
-    $output .= '</select>
-              </div>
-            </form>';
-  }
-
-  return $output;
-
+	return $output;
 }
 
 /**

@@ -351,7 +351,7 @@ function ws_ls_form_field_number( $arguments = [] ) {
 												'min'                   => 0,
 												'max'                   => 9999,
 												'step'                  => 'any'
-		]);
+	]);
 
 	$html = sprintf( '<div id="%1$s-row" class="ws-ls-form-row">', $arguments[ 'name' ] );
 
@@ -382,32 +382,40 @@ function ws_ls_form_field_number( $arguments = [] ) {
 /**
  * Render a <select> for the given key / value array
  *
- * @param $key
- * @param $label
- * @param $values
- * @param null $selected
- *
- * @param string $class
- *
- * @param bool $required
+ * @param $arguments
  *
  * @return string
  */
-function ws_ls_form_field_select( $key, $label, $values, $selected = null, $class = '', $required = false ) {
+function ws_ls_form_field_select( $arguments ) {
 
-	$html = sprintf( '<label for="%1$s">%2$s</label>
-                                    <select id="%1$s" name="%1$s" tabindex="%3$d" class="%4$s" %5$s>',
-		esc_attr( $key ),
-		esc_attr( $label ),
+	$arguments = wp_parse_args( $arguments, [	'key'                   => '',
+												'label'                 => '',
+												'values'                => [],
+												'selected'              => NULL,
+												'show-label'            => true,
+												'css-class'             => '',
+												'required'              => false,
+												'js-on-change'          => ''
+	]);
+
+	$html = '';
+
+	if ( true === $arguments[ 'show-label' ] ) {
+		$html .= sprintf( '<label for="%1$s">%2$s</label>', esc_attr( $arguments[ 'key' ] ), esc_attr( $arguments[ 'label' ] ) );
+	}
+
+	$html .= sprintf( '<select id="%1$s" name="%1$s" tabindex="%2$d" class="%3$s" %4$s %5$s>',
+		esc_attr( $arguments[ 'key' ] ),
 		ws_ls_form_tab_index_next(),
-		esc_attr( $class ),
-		( true === $required ) ? ' required' : ''
+		esc_attr( $arguments[ 'css-class' ] ),
+		( true === $arguments[ 'required' ] ) ? ' required' : '',
+		( false === empty( $arguments[ 'js-on-change' ] ) ) ? sprintf( ' onchange="%s"', $arguments[ 'js-on-change' ] ) : ''
 	);
 
-	foreach ( $values as $id => $value ) {
+	foreach ( $arguments[ 'values' ] as $id => $value ) {
 		$html .= sprintf('<option value="%1$s" %2$s>%3$s</option>',
 			esc_attr( $id ),
-			selected( $selected, $id, false ),
+			selected( $arguments[ 'selected' ], $id, false ),
 			esc_html( $value )
 		);
 	}
