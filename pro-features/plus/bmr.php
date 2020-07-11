@@ -77,9 +77,9 @@
      * @param $user_defined_arguments
      * @return string
      */
-    function ws_ls_shortcode_bmr($user_defined_arguments) {
+    function ws_ls_shortcode_bmr( $user_defined_arguments ) {
 
-        if(false === WS_LS_IS_PRO_PLUS) {
+        if( false === WS_LS_IS_PRO_PLUS ) {
             return '';
         }
 

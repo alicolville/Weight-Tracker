@@ -60,3 +60,4 @@ function ws_ls_shortcode_chart( $user_defined_arguments ) {
 	return ws_ls_display_chart( $weight_data, $chart_arguments );
 }
 add_shortcode( 'wlt-chart', 'ws_ls_shortcode_chart' );
+add_shortcode( 'wt-chart', 'ws_ls_shortcode_chart' );

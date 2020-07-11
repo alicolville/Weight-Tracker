@@ -5,7 +5,7 @@ defined('ABSPATH') or die("Jog on!");
 function ws_ls_shortcode_progress_bar( $user_defined_arguments ) {
 
 	if ( false === WS_LS_IS_PRO ) {
-		return '';
+		return ws_ls_display_pro_upgrade_notice_for_shortcode();
 	}
 
 	if( false === is_user_logged_in() ) {

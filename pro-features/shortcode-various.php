@@ -13,7 +13,7 @@ defined('ABSPATH') or die("Jog on!");
 function ws_ls_shortcode_previous_weight( $user_id = NULL ) {
 
 	if ( false === WS_LS_IS_PRO ) {
-		return '';
+		return ws_ls_display_pro_upgrade_notice_for_shortcode();
 	}
 
 	$arguments[ 'user-id' ] = ( true === empty( $user_id ) ) ? get_current_user_id() : $user_id;
@@ -44,7 +44,7 @@ add_shortcode('wt-previous-weight', 'ws_ls_shortcode_previous_weight');
 function ws_ls_shortcode_weight_difference_previous( $user_id = false ){
 
 	if ( false === WS_LS_IS_PRO ) {
-		return '';
+		return ws_ls_display_pro_upgrade_notice_for_shortcode();
 	}
 
 	// If not logged in then return no value
@@ -92,7 +92,7 @@ add_shortcode('wt-difference-from-previous', 'ws_ls_shortcode_weight_difference_
 function ws_ls_shortcode_bmi( $arguments = [] ) {
 
 	if ( false === WS_LS_IS_PRO ) {
-		return '';
+		return ws_ls_display_pro_upgrade_notice_for_shortcode();
 	}
 
 	// If not logged in then return no value
@@ -157,7 +157,7 @@ add_shortcode( 'wt-bmi', 'ws_ls_shortcode_bmi' );
 function ws_ls_shortcode_activity_level( $user_defined_arguments ) {
 
 	if ( false === WS_LS_IS_PRO ) {
-		return '';
+		return ws_ls_display_pro_upgrade_notice_for_shortcode();
 	}
 
 	$arguments = shortcode_atts( [  'not-specified-text'    => __( 'Not Specified', WE_LS_SLUG ),
@@ -183,7 +183,7 @@ add_shortcode( 'wt-activity-level', 'ws_ls_shortcode_activity_level' );
 function ws_ls_shortcode_gender( $user_defined_arguments ) {
 
 	if ( false === WS_LS_IS_PRO ) {
-		return '';
+		return ws_ls_display_pro_upgrade_notice_for_shortcode();
 	}
 
 	$arguments = shortcode_atts( [  'not-specified-text'    => __( 'Not Specified', WE_LS_SLUG ),
@@ -209,7 +209,7 @@ add_shortcode( 'wt-gender', 'ws_ls_shortcode_gender' );
 function ws_ls_shortcode_dob( $user_defined_arguments ) {
 
 	if ( false === WS_LS_IS_PRO ) {
-		return '';
+		return ws_ls_display_pro_upgrade_notice_for_shortcode();
 	}
 
 	$arguments = shortcode_atts( [ 'not-specified-text' => __( 'Not Specified', WE_LS_SLUG ), 'user-id' => get_current_user_id() ], $user_defined_arguments );
@@ -237,7 +237,7 @@ add_shortcode( 'wt-dob', 'ws_ls_shortcode_dob' );
 function ws_ls_shortcode_height( $user_defined_arguments ) {
 
 	if ( false === WS_LS_IS_PRO ) {
-		return '';
+		return ws_ls_display_pro_upgrade_notice_for_shortcode();
 	}
 
 	$arguments = shortcode_atts( [  'not-specified-text'    => __( 'Not Specified', WE_LS_SLUG ),
@@ -271,7 +271,7 @@ add_shortcode( 'wt-height', 'ws_ls_shortcode_height' );
 function ws_ls_shortcode_new_users( $user_defined_arguments ) {
 
 	if ( false === WS_LS_IS_PRO ) {
-		return '';
+		return ws_ls_display_pro_upgrade_notice_for_shortcode();
 	}
 
     $arguments = shortcode_atts( [ 'days' => 7, 'count-all-roles' => false ], $user_defined_arguments );

@@ -200,7 +200,7 @@ function ws_ls_get_link_to_edit_entry( $user_id, $entry_id = false ) {
 
 	$base_url = admin_url( 'admin.php?page=ws-ls-data-home&mode=entry&user-id=' . $user_id );
 
-	if( false === is_empty( $entry_id ) ) {
+	if( false === empty( $entry_id ) ) {
 		$base_url .= '&entry-id=' . (int) $entry_id;
 	}
 
@@ -287,13 +287,12 @@ function ws_ls_genders_get( $id ) {
  */
 function ws_ls_activity_levels() {
 
-    $activity_levels = [
-        '0' => '',
-        '1.2' => __('Little / No Exercise', WE_LS_SLUG),
-        '1.375' => __('Light Exercise', WE_LS_SLUG),
-        '1.55' => __('Moderate Exercise (3-5 days a week)', WE_LS_SLUG),
-        '1.725' => __('Very Active (6-7 days a week)', WE_LS_SLUG),
-        '1.9' => __('Extra Active (very active & physical job)', WE_LS_SLUG)
+    $activity_levels = [    '0'     => '',
+					        '1.2'   => __( 'Little / No Exercise', WE_LS_SLUG ),
+					        '1.375' => __( 'Light Exercise', WE_LS_SLUG ),
+					        '1.55'  => __( 'Moderate Exercise (3-5 days a week)', WE_LS_SLUG ),
+					        '1.725' => __( 'Very Active (6-7 days a week)', WE_LS_SLUG ),
+					        '1.9'   => __( 'Extra Active (very active & physical job)', WE_LS_SLUG )
     ];
 
 	$activity_levels = apply_filters( 'wlt-filter-activity-levels', $activity_levels );

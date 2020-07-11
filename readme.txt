@@ -193,6 +193,7 @@ wlt-message to wt-message
 wlt-reminder to wt-reminder
 wlt-total-lost to wt-total-lost
 wlt-league-table to wt-league-table
+wlt-chart to wt-chart
 
 * Improvement: Allow numeric custom fields to be plotted on charts.
 * Improvement: A user's target weight can now be displayed on bar graphs.
