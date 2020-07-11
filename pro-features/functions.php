@@ -151,8 +151,8 @@ function ws_ls_render_link( $link, $label ) {
  * @param  int $id User ID
  * @return string
  */
-function ws_ls_get_link_to_delete_user_cache($id) {
-    return ws_ls_get_link_to_user_profile($id) . '&amp;deletecache=y';
+function ws_ls_get_link_to_delete_user_cache( $id ) {
+    return ws_ls_get_link_to_user_profile( $id ) . '&amp;deletecache=y';
 }
 
 /**
@@ -160,8 +160,8 @@ function ws_ls_get_link_to_delete_user_cache($id) {
  * @param  int $id User ID
  * @return string
  */
-function ws_ls_get_link_to_user_settings($id) {
-	return is_numeric($id) ? esc_url(admin_url( 'admin.php?page=ws-ls-data-home&mode=user-settings&user-id=' . $id )) : '#';
+function ws_ls_get_link_to_user_settings( $id ) {
+	return esc_url( admin_url( 'admin.php?page=ws-ls-data-home&mode=user-settings&user-id=' . (int) $id ) );
 }
 
 /**
@@ -169,8 +169,8 @@ function ws_ls_get_link_to_user_settings($id) {
  * @param  int $id User ID
  * @return string
  */
-function ws_ls_get_link_to_edit_target($id) {
-	return is_numeric($id) ? esc_url(admin_url( 'admin.php?page=ws-ls-data-home&mode=target&user-id=' . $id )) : '#';
+function ws_ls_get_link_to_edit_target( $id ) {
+	return esc_url( admin_url( 'admin.php?page=ws-ls-data-home&mode=target&user-id=' . (int) $id ) );
 }
 
 /**
@@ -178,8 +178,8 @@ function ws_ls_get_link_to_edit_target($id) {
  * @param  int $id User ID
  * @return string
  */
-function ws_ls_get_link_to_photos($id) {
-    return is_numeric($id) ? esc_url(admin_url( 'admin.php?page=ws-ls-data-home&mode=photos&user-id=' . $id )) : '#';
+function ws_ls_get_link_to_photos( $id ) {
+	return esc_url( admin_url( 'admin.php?page=ws-ls-data-home&mode=photos&user-id=' . (int) $id ) );
 }
 
 /**
@@ -189,7 +189,6 @@ function ws_ls_get_link_to_photos($id) {
 function ws_ls_get_link_to_settings() {
     return admin_url( 'admin.php?page=ws-ls-settings' );
 }
-
 
 /**
  * Given a user and entry ID, return a link to the edit entrant page
@@ -201,13 +200,13 @@ function ws_ls_get_link_to_edit_entry( $user_id, $entry_id = false ) {
 
 	$base_url = admin_url( 'admin.php?page=ws-ls-data-home&mode=entry&user-id=' . $user_id );
 
-	if(is_numeric($entry_id)) {
-		$base_url .= '&entry-id=' . $entry_id;
+	if( false === is_empty( $entry_id ) ) {
+		$base_url .= '&entry-id=' . (int) $entry_id;
 	}
 
-	$base_url .= '&redirect=' . ws_ls_get_url(true);
+	$base_url .= '&redirect=' . ws_ls_get_url( true );
 
-	return esc_url($base_url);
+	return esc_url($base_url );
 }
 
 /**
@@ -224,8 +223,8 @@ function ws_ls_get_link_to_export( $type = 'csv', $user_id = false ) {
 
     $base_url = admin_url( 'admin-post.php?action=export_data&file-type=' . $type);
 
-    if( true === is_numeric( $user_id ) ) {
-        $base_url .= '&user-id=' . $user_id;
+    if( false === empty( $user_id ) ) {
+        $base_url .= '&user-id=' . (int) $user_id;
     }
 
     return esc_url( $base_url );
@@ -244,7 +243,7 @@ function ws_ls_get_email_link( $user_id, $include_brackets = false ) {
 
     $user_data = get_userdata( $user_id );
 
-    if ( true === empty($user_data->user_email) ) {
+    if ( true === empty( $user_data->user_email ) ) {
         return '';
     }
 
@@ -450,15 +449,13 @@ function ws_ls_heights_formatter( &$height, $key ) {
  * @param bool $shorten
  * @return bool|string
  */
-function ws_ls_display_user_setting($user_id, $field = 'dob', $not_specified_text = false, $shorten = false) {
+function ws_ls_display_user_setting( $user_id, $field = 'dob', $not_specified_text = false, $shorten = false ) {
 
-	$user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
+	$user_id            = ( true === empty( $user_id )) ? get_current_user_id() : $user_id;
+	$not_specified_text = ( false === $not_specified_text ) ? __( 'Not Specified', WE_LS_SLUG ) : esc_html( $not_specified_text );
+	$user_data          = ws_ls_user_preferences_get( $field, $user_id );
 
-	$not_specified_text = (false === $not_specified_text) ? __('Not Specified', WE_LS_SLUG) : esc_html($not_specified_text);
-
-	$user_data = ws_ls_user_preferences_get($field, $user_id);
-
-	switch ($field) {
+	switch ( $field ) {
 		case 'activity_level':
 			$field_data = ws_ls_activity_levels();
 			break;
@@ -473,20 +470,19 @@ function ws_ls_display_user_setting($user_id, $field = 'dob', $not_specified_tex
 			break;
 	}
 
-	if (false === empty($user_data) && isset($field_data[$user_data])) {
+	if ( false === empty( $user_data ) && true === isset( $field_data[ $user_data ] ) ) {
 
 		// If a height setting and we want to shorten, look for a bracket and remove everything from there onwards
-		if($shorten && 'activity_level' == $field) {
+		if( $shorten && 'activity_level' == $field ) {
 
-			$bracket_location = strpos($field_data[$user_data], '(');
+			$bracket_location = strpos( $field_data[ $user_data ], '(' );
 
-			if(false !== $bracket_location) {
-				$field_data[$user_data] = substr($field_data[$user_data], 0, $bracket_location);
+			if( false !== $bracket_location ) {
+				$field_data[ $user_data ] = substr( $field_data[ $user_data ], 0, $bracket_location );
 			}
-
 		}
 
-		return esc_html($field_data[$user_data]);
+		return esc_html( $field_data[ $user_data ] );
 	}
 
 	return $not_specified_text;
@@ -498,11 +494,10 @@ function ws_ls_display_user_setting($user_id, $field = 'dob', $not_specified_tex
  * @param $user_id
  * @return bool
  */
-function ws_ls_is_female( $user_id ) {
+function ws_ls_is_female( $user_id = NULL ) {
 
-    $user_id = ( true === empty( $user_id ) ) ? get_current_user_id() : $user_id;
-
-    $gender = ws_ls_user_preferences_get( 'gender', $user_id );
+    $user_id    = ( true === empty( $user_id ) ) ? get_current_user_id() : $user_id;
+    $gender     = ws_ls_user_preferences_get( 'gender', $user_id );
 
     return ( false === empty( $gender ) && 1 == (int) $gender ) ? true : false;
 }
@@ -513,7 +508,7 @@ function ws_ls_is_female( $user_id ) {
  * @param $user_id
  * @return bool|string
  */
-function ws_ls_get_dob( $user_id ) {
+function ws_ls_get_dob( $user_id = NULL ) {
 
 	$user_id = ( true === empty( $user_id ) ) ? get_current_user_id() : $user_id;
 
@@ -529,9 +524,10 @@ function ws_ls_get_dob( $user_id ) {
  * @return bool|string
  * @throws Exception
  */
-function ws_ls_get_dob_for_display( $user_id = false, $not_specified_text = '', $include_age = false ) {
+function ws_ls_get_dob_for_display( $user_id = NULL, $not_specified_text = '', $include_age = false ) {
 
-	$dob = ws_ls_get_dob( $user_id );
+	$user_id    = ( true === empty( $user_id ) ) ? get_current_user_id() : $user_id;
+	$dob        = ws_ls_get_dob( $user_id );
 
 	$not_specified_text = ( false === $not_specified_text) ? __( 'Not Specified', WE_LS_SLUG ) : esc_html( $not_specified_text );
 
@@ -658,7 +654,7 @@ function ws_ls_get_progress_attribute_from_aim() {
 		    $aim_string = 'lose';
     }
 
-    $aim_string = apply_filters('wlt-filter-aim-progress-attribute', $aim_string, $aim_int );
+    $aim_string = apply_filters( 'wlt-filter-aim-progress-attribute', $aim_string, $aim_int );
 
     return $aim_string;
 }
