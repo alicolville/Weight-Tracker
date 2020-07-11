@@ -216,7 +216,7 @@ wlt-league-table to wt-league-table
 * Improvement: [wt-new-users] shortcode is now cached for 15 minutes.
 * Improvement: New setting: Notes can be disabled on user weight forms (via settings).
 * Improvement: Form Widget: Ability to show / hide the notes field.
-* Improvement: [wt-form] new argument "hide-notes" to hide notes field.
+* Improvement: [wt-form] and [wt] - new argument "hide-notes" to hide notes field.
 * Improvement: Expanded error messages where required to be more descriptive.
 * Improvement: Improved some error handling messages.
 * Improvement: Targets can now be cleared by submitting the form with no weight specified.

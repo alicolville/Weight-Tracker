@@ -4,9 +4,14 @@ defined('ABSPATH') or die('Jog on!');
 $ws_ls_tab_index            = 1;
 $ws_ls_wlt_already_placed   = false;
 
+/**
+ * Main Weight Tracker shortcode
+ * @param $user_defined_arguments
+ *
+ * @return string
+ * @throws Exception
+ */
 function ws_ls_shortcode( $user_defined_arguments ) {
-
-	// TODO: Add hide-notes
 
 		global $save_response;
 		global $ws_ls_wlt_already_placed;
@@ -17,6 +22,7 @@ function ws_ls_shortcode( $user_defined_arguments ) {
 													'hide-second-target-form' 	=> false,					// Hide second Target form
 													'show-add-button' 			=> false,					// Display a "Add weight" button above the chart.
 									                'allow-delete-data' 		=> true,                	// Show "Delete your data" section
+									                'hide-notes' 				=> false,                   // Hide notes field
 									                'hide-photos' 				=> false,                   // Hide photos part of form
 									                'hide-tab-photos' 			=> false,                 	// Hide Photos tab
 									                'hide-tab-advanced' 		=> false,               	// Hide Advanced tab (macroN, calories, etc)
@@ -66,7 +72,7 @@ function ws_ls_shortcode( $user_defined_arguments ) {
 					                                    'sort'      => 'desc' ] );
 
 		// If enabled, render tab header
-		if ( $use_tabs )	{
+		if ( $use_tabs ) {
 
 			$hide_tab_descriptions = ws_ls_force_bool_argument( $shortcode_arguments[ 'hide-tab-descriptions' ] );
 
@@ -120,21 +126,16 @@ function ws_ls_shortcode( $user_defined_arguments ) {
 
 			foreach ( $tabs as $tab ) {
 
-				$description = ( false === $hide_tab_descriptions ) ? '<span>' . $tab[ 'description' ] . '</span>' : '';
-
 				$html_output .= sprintf( '<li>
 													<a><i class="fa %1$s" aria-hidden="true"></i>%2$s%3$s</a>
 												</li>',
 												$tab[ 'icon' ],
 												$tab[ 'title' ],
-												$description
-				);
-
+												( false === $hide_tab_descriptions ) ? sprintf( '<span>%s</span>', $tab[ 'description' ] ) : '' );
 			}
 
 			$html_output .= '</ul>
 			<div>';
-
 		}
 
 		// Start Chart Tab
@@ -190,27 +191,32 @@ function ws_ls_shortcode( $user_defined_arguments ) {
 			$html_output .= ws_ls_form_weight( [    'css-class-form'       => 'ws-ls-main-weight-form',
 			                                        'user-id'              => $user_id,
 			                                        'entry-id'             => $entry_id,
-			                                        'hide-fields-photos'   => ws_ls_to_bool( $shortcode_arguments['hide-photos'] ),
-													'redirect-url'         => $redirect_url
+			                                        'hide-fields-photos'   => ws_ls_to_bool( $shortcode_arguments[ 'hide-photos' ] ),
+													'redirect-url'         => $redirect_url,
+													'hide-notes'           => ws_ls_to_bool( $shortcode_arguments[ 'hide-notes' ] )
 			] );
 
 		} else {
 
-			$html_output .= ws_ls_form_weight( [ 'css-class-form' => 'ws-ls-main-weight-form', 'user-id' => $user_id, 'hide-fields-photos' => ws_ls_to_bool( $shortcode_arguments[ 'hide-photos' ] ) ] );
+			$html_output .= ws_ls_form_weight( [    'css-class-form'        => 'ws-ls-main-weight-form',
+			                                        'user-id'               => $user_id,
+			                                        'hide-fields-photos'    => ws_ls_to_bool( $shortcode_arguments[ 'hide-photos' ] ),
+			                                        'hide-notes'            => ws_ls_to_bool( $shortcode_arguments[ 'hide-notes' ] )
+			] );
 		}
 
 		// Close first tab
-		$html_output .= ws_ls_end_tab($use_tabs);
+		$html_output .= ws_ls_end_tab( $use_tabs );
 
 		// Start data table tab?
-		if ($use_tabs)	{
-			$html_output .= ws_ls_start_tab('wlt-weight-history', $use_tabs);
+		if ( true === $use_tabs )	{
+			$html_output .= ws_ls_start_tab( 'wlt-weight-history', $use_tabs );
 		}
 
 		$week_ranges = ( true === $week_ranges_enabled ) ? ws_ls_get_week_ranges() : NULL;
 
-        //If we have data, display data table
-		if ( $weight_data && ( count( $weight_data ) > 0 || $selected_week_number != -1 ) )	{
+        // If we have data, display data table
+		if ( false === empty( $weight_data ) )	{
 
 				if ( true === ws_ls_targets_enabled() && $use_tabs &&
 				        false === ws_ls_to_bool( $shortcode_arguments[ 'hide-second-target-form' ] ) ) {
@@ -218,7 +224,7 @@ function ws_ls_shortcode( $user_defined_arguments ) {
 				}
 
 				// Display week filters and data tab
-				$html_output .= ws_ls_title( __('Weight History', WE_LS_SLUG ) );
+				$html_output .= ws_ls_title( __( 'Weight History', WE_LS_SLUG ) );
 
 				if( true === $week_ranges_enabled ) {
 					$html_output .= ws_ls_display_week_filters( $week_ranges, $selected_week_number );
@@ -230,40 +236,41 @@ function ws_ls_shortcode( $user_defined_arguments ) {
 					$html_output .= ws_ls_display_table( $user_id, $weight_data );
 				}
 		}
-        elseif ($use_tabs && false === empty( $selected_week_number ) ) {
-			$html_output .= __('There is no data for this week, please try selecting another:', WE_LS_SLUG);
+        elseif ( $use_tabs && false === empty( $selected_week_number ) ) {
+			$html_output .= __( 'No data could be found for this week, please try selecting another:', WE_LS_SLUG );
 	        if( true === $week_ranges_enabled ) {
-                $html_output .= ws_ls_display_week_filters($week_ranges, $selected_week_number);
+                $html_output .= ws_ls_display_week_filters( $week_ranges, $selected_week_number );
 	        }
 		}
-		elseif ($use_tabs) {
+		elseif ( $use_tabs ) {
 			$html_output .= __('You haven\'t entered any weight data yet.', WE_LS_SLUG);
 		}
+
 		$html_output .= ws_ls_end_tab($use_tabs);
 
 		// Photos tab?
 		if ( true === $show_photos_tab ){
-			$html_output .= ws_ls_start_tab('wlt-user-photos', $use_tabs);
+			$html_output .= ws_ls_start_tab( 'wlt-user-photos', $use_tabs );
 			$html_output .= ws_ls_shortcode_wlt_display_photos_tab( $user_id );
-			$html_output .= ws_ls_end_tab($use_tabs);
+			$html_output .= ws_ls_end_tab( $use_tabs );
 		}
 
         // Advanced Data? MacroN etc?
         if ( true === $show_advanced_tab ){
-            $html_output .= ws_ls_start_tab('wlt-user-advanced', $use_tabs);
+            $html_output .= ws_ls_start_tab( 'wlt-user-advanced', $use_tabs );
             $html_output .= ws_ls_shortcode_wlt_display_advanced_tab( $shortcode_arguments );
-            $html_output .= ws_ls_end_tab($use_tabs);
+            $html_output .= ws_ls_end_tab( $use_tabs );
         }
 
 		// If enabled, have a third tab to allow users to manage their own settings!
 		if( true === ws_ls_user_preferences_is_enabled() ){
-			$html_output .= ws_ls_start_tab('wlt-user-preferences', $use_tabs);
+			$html_output .= ws_ls_start_tab( 'wlt-user-preferences', $use_tabs );
 			$html_output .= ws_ls_user_preferences_form( [ 'user-id' => $user_id,  'allow-delete-data' => ws_ls_to_bool( $shortcode_arguments[ 'allow-delete-data' ] ) ] );
-			$html_output .= ws_ls_end_tab($use_tabs);
+			$html_output .= ws_ls_end_tab( $use_tabs );
 		}
 
-		$html_output .= ws_ls_end_tab($use_tabs);
-		$html_output .= ws_ls_end_tab($use_tabs);
+		$html_output .= ws_ls_end_tab( $use_tabs );
+		$html_output .= ws_ls_end_tab( $use_tabs );
 
         $ws_ls_wlt_already_placed = true;
 
