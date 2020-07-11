@@ -245,6 +245,7 @@ function ws_ls_form_init( $arguments = [] ) {
 function ws_ls_form_field_date( $arguments = [] ) {
 
 	$arguments = wp_parse_args( $arguments, [	'type'                  => 'date',
+												'id'                    => ws_ls_component_id(),
 												'name'                  => '',
 	                                            'value'                 => NULL,
 												'placeholder'           => NULL,
@@ -252,18 +253,21 @@ function ws_ls_form_field_date( $arguments = [] ) {
 	                                            'title'                 => '',
 	                                            'css-class'             => 'we-ls-datepicker',
 	                                            'size'                  => 22,
-	                                            'trailing-html'         => '' ]);
+	                                            'trailing-html'         => '',
+												'include-div'           => true	 ]);
+	$html = '';
 
-	$html = sprintf( '<div id="%1$s-row" class="ws-ls-form-row">', $arguments[ 'name' ] );
-
-	if ( true === $arguments[ 'show-label' ] ) {
-		$html .= sprintf( '<label for="%1$s" class="yk-mt__label %3$s">%2$s</label>', $arguments[ 'name' ], $arguments[ 'title' ], $arguments[ 'css-class' ] );
+	if ( true === $arguments[ 'include-div' ] ) {
+		$html .= sprintf( '<div id="%1$s-row" class="ws-ls-form-row">', $arguments[ 'name' ] );
 	}
 
+	if ( true === $arguments[ 'show-label' ] ) {
+		$html .= sprintf( '<label for="%1$s" class="yk-mt__label">%2$s</label>', $arguments[ 'name' ], $arguments[ 'title' ]);
+	}
 
 	$html .= sprintf( '<input type="text" name="%1$s" id="%2$s" tabindex="%3$d" value="%4$s" placeholder="%5$s" size="%6$d" class="%7$s" />',
 			$arguments[ 'name' ],
-			ws_ls_component_id(),
+			esc_attr( $arguments[ 'id' ] ),
 			ws_ls_form_tab_index_next(),
 			esc_attr( $arguments[ 'value' ] ),
 			esc_attr( $arguments[ 'placeholder' ] ),
@@ -275,7 +279,11 @@ function ws_ls_form_field_date( $arguments = [] ) {
 		$html .= $arguments[ 'trailing-html' ];
 	}
 
-	return $html . '</div>';
+	if ( true === $arguments[ 'include-div' ] ) {
+		$html .= '</div>';
+	}
+
+	return $html;
 }
 
 /**
@@ -373,23 +381,28 @@ function ws_ls_form_field_number( $arguments = [] ) {
 
 /**
  * Render a <select> for the given key / value array
+ *
  * @param $key
- * @param $name
+ * @param $label
  * @param $values
- * @param string $key_prefix
+ * @param null $selected
+ *
+ * @param string $class
+ *
+ * @param bool $required
+ *
  * @return string
  */
-function ws_ls_form_field_select( $key, $name, $values, $key_prefix = 'filter' ) {
+function ws_ls_form_field_select( $key, $label, $values, $selected = null, $class = '', $required = false ) {
 
-	$key = sprintf( '%s-%s', $key_prefix, $key );
-
-	$html = sprintf( '<label for="%1$s">%2$s:</label>
-                                    <select id="%1$s" name="%1$s" >',
+	$html = sprintf( '<label for="%1$s">%2$s</label>
+                                    <select id="%1$s" name="%1$s" tabindex="%3$d" class="%4$s" %5$s>',
 		esc_attr( $key ),
-		esc_attr( $name )
+		esc_attr( $label ),
+		ws_ls_form_tab_index_next(),
+		esc_attr( $class ),
+		( true === $required ) ? ' required' : ''
 	);
-
-	$selected = ws_ls_querystring_value( $key, true );
 
 	foreach ( $values as $id => $value ) {
 		$html .= sprintf('<option value="%1$s" %2$s>%3$s</option>',

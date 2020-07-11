@@ -2,6 +2,12 @@
 
 defined('ABSPATH') or die("Jog on!");
 
+/**
+ * Progress Bar shortcode
+ * @param $user_defined_arguments
+ *
+ * @return string
+ */
 function ws_ls_shortcode_progress_bar( $user_defined_arguments ) {
 
 	if ( false === WS_LS_IS_PRO ) {

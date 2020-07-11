@@ -751,15 +751,19 @@ function ws_ls_get_url( $base_64_encode = false ) {
  * Helper function to convert an ISO date into the relevant date format
  *
  * @param $date
+ * @param null $user_id
+ *
  * @return false|string
  */
-function ws_ls_iso_date_into_correct_format( $date ) {
+function ws_ls_iso_date_into_correct_format( $date, $user_id = NULL ) {
+
+	$user_id    = ( true === empty( $user_id ) ) ? get_current_user_id() : $user_id;
 
     // Build different date formats
     if( false === empty( $date ) ) {
 
     	$time 	= strtotime( $date );
-    	$format = ws_ls_setting('use-us-dates') ? 'm/d/Y' : 'd/m/Y';
+    	$format = ws_ls_setting('use-us-dates', $user_id ) ? 'm/d/Y' : 'd/m/Y';
 
     	return date( $format, $time );
     }
@@ -1281,19 +1285,17 @@ function ws_ls_targets_enabled() {
  */
 function ws_ls_weight_unit_label( $key ) {
 
-	switch ( $key ) {
-		case 'kg':
-			return __( 'Kg', WE_LS_SLUG );
-			break;
-		case 'pounds_only':
-			return __( 'Pounds', WE_LS_SLUG );
-			break;
-		case 'stones_pounds':
-			return __( 'Stones & Pounds', WE_LS_SLUG );
-			break;
-		default:
-			return '';
-	}
+	$units = ws_ls_weight_units();
+
+	return ( false === empty( $units[ $key ] ) ) ?  $units[ $key ] : '';
+}
+
+/**
+ * Return an array of weight units
+ * @return array
+ */
+function ws_ls_weight_units() {
+	return [ 'kg' => __( 'Kg', WE_LS_SLUG ), 'pounds_only' => __( 'Pounds', WE_LS_SLUG ), 'stones_pounds' => __( 'Stones & Pounds', WE_LS_SLUG ) ];
 }
 
 /**

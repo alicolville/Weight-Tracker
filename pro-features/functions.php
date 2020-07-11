@@ -37,11 +37,11 @@ function ws_ls_get_bmi_for_table( $cm, $kg, $no_height_text = false ) {
  */
 function ws_ls_calculate_bmi( $cm, $kg ) {
 
-    if ( false === is_numeric( $cm ) || false === is_numeric( $kg ) ) {
+    if ( true === empty( $cm ) || true === empty( $kg ) ) {
         return false;
     }
 
-    $bmi = $kg / ($cm * $cm);
+    $bmi = $kg / ( $cm * $cm );
     $bmi = $bmi * 10000;
 
 	return round( $bmi, 1 );
@@ -531,7 +531,7 @@ function ws_ls_get_dob_for_display( $user_id = NULL, $not_specified_text = '', $
 	$not_specified_text = ( false === $not_specified_text) ? __( 'Not Specified', WE_LS_SLUG ) : esc_html( $not_specified_text );
 
     if (false === empty( $dob ) && '0000-00-00 00:00:00' !== $dob ) {
-		$html = ws_ls_iso_date_into_correct_format( $dob );
+		$html = ws_ls_iso_date_into_correct_format( $dob, $user_id );
 
 		// Include age?
 		if(true === $include_age) {
@@ -678,12 +678,15 @@ function ws_ls_array_check_fields($data, $expected_fields ) {
 
 /**
  * Fetch a user preference
+ *
  * @param string $field
  * @param bool $user_id
  *
- * @return |null
+ * @param null $default
+ *
+ * @return mixed|null |null
  */
-function ws_ls_user_preferences_get( $field = 'gender', $user_id = false ) {
+function ws_ls_user_preferences_get( $field = 'gender', $user_id = false, $default = NULL ) {
 
 	// Default to logged in user if not user ID not specified.
 	$user_id = ( true === empty( $user_id ) ) ? get_current_user_id() : $user_id;
@@ -694,7 +697,7 @@ function ws_ls_user_preferences_get( $field = 'gender', $user_id = false ) {
 		$user_preferences = [];
 	}
 
-	return ( true === array_key_exists( $field, $user_preferences ) ) ? $user_preferences[ $field ] : null;
+	return ( true === array_key_exists( $field, $user_preferences ) ) ? $user_preferences[ $field ] : $default;
 }
 
 /**
@@ -798,7 +801,13 @@ function ws_ls_user_preferences_settings_get( $field = 'WE_LS_DATA_UNITS', $user
 		$settings = [];
 	}
 
-	return ( true === array_key_exists( $field, $settings ) ) ? $settings[ $field ] : NULL;
+	$value = ( true === array_key_exists( $field, $settings ) ) ? $settings[ $field ] : NULL;
+
+	if ( 'WE_LS_US_DATE' === $field ) {
+		return ws_ls_to_bool( $value );
+	}
+
+	return $value;
 }
 
 /**

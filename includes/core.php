@@ -24,7 +24,7 @@ function ws_ls_config_js() {
 					'validation-we-ls-weight-kg'        => __( 'Please enter a value between 1 and 5000 for Kg', WE_LS_SLUG ),
 					'validation-we-ls-weight-stones'    => __( 'Please enter a value between 1 and 5000 for Stones', WE_LS_SLUG ),
 					'validation-we-ls-date'             => __( 'Please enter a valid date', WE_LS_SLUG ),
-					'validation-we-ls-history'          => __( 'Please confirm you wish to delete ALL your weight history', WE_LS_SLUG ),
+					'validation-we-ls-history'          => __( 'Please confirm that you wish to delete ALL of your user data', WE_LS_SLUG ),
 					'validation-we-ls-photo'            => __( 'Your photo must be less than ', WE_LS_SLUG ) . ws_ls_photo_display_max_upload_size(),
     	            'confirmation-delete'               => __( 'Are you sure you wish to delete this entry? If so, press OK.', WE_LS_SLUG ),
 					'ajax-url'                          => admin_url( 'admin-ajax.php' ),
@@ -42,7 +42,7 @@ function ws_ls_config_js() {
 	if( true === ws_ls_option_to_bool( 'ws-ls-about-you-mandatory', 'no', true ) ) {
 
 	    $config['validation-user-pref-messages'] = [
-											            'we-ls-height'          => __( 'Please select or enter a value for height.', WE_LS_SLUG ),
+											            'ws-ls-height'          => __( 'Please select or enter a value for height.', WE_LS_SLUG ),
 											            'ws-ls-activity-level'  => __( 'Please select or enter a value for activity level.', WE_LS_SLUG ),
 											            'ws-ls-gender'          => __( 'Please select or enter a value for gender.', WE_LS_SLUG ),
 											            'we-ls-dob'             => __( 'Please enter a valid date.', WE_LS_SLUG ),
@@ -51,7 +51,7 @@ function ws_ls_config_js() {
 
         $config['validation-user-pref-rules']   = [
 										            'ws-ls-gender'          => [ 'required' => true, 'min' => 1 ],
-										            'we-ls-height'          => [ 'required' => true, 'min' => 1 ],
+										            'ws-ls-height'          => [ 'required' => true, 'min' => 1 ],
 										            'ws-ls-aim'             => [ 'required' => true, 'min' => 1 ],
 										            'ws-ls-activity-level'  => [ 'required' => true, 'min' => 1 ]
         ];

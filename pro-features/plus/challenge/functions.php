@@ -315,11 +315,11 @@ function ws_ls_challenges_view_entries( $args ) {
 
 	$args = wp_parse_args( $args, [
 		'id'                    => NULL,
-		'opted-in'              => ( 1 === ws_ls_querystring_value( 'filter-opt-in', true,  1 ) ),
-		'age-range'             =>  ws_ls_querystring_value( 'filter-age-range', true,  0 ),
-		'gender'                =>  ws_ls_querystring_value( 'filter-gender', true,  0 ),
-		'group-id'              =>  ws_ls_querystring_value( 'filter-group-id', true,  NULL ),
-		'min-wt-entries'		=> ws_ls_querystring_value( 'filter-min-wt-entries', true,  2 ),
+		'opted-in'              => ( 1 === ws_ls_querystring_value( 'opt-in', true,  1 ) ),
+		'age-range'             =>  ws_ls_querystring_value( 'age-range', true,  0 ),
+		'gender'                =>  ws_ls_querystring_value( 'gender', true,  0 ),
+		'group-id'              =>  ws_ls_querystring_value( 'group-id', true,  NULL ),
+		'min-wt-entries'		=> ws_ls_querystring_value( 'min-wt-entries', true,  2 ),
 		'show-filters'          => true,
 		'sums-and-averages'     => true
 	]);
@@ -467,22 +467,28 @@ function ws_ls_challenges_show_filters() {
 	}
 
 	// Gender
-	$html .= ws_ls_form_field_select( 'gender', __( 'Gender', WE_LS_SLUG ),  ws_ls_genders() );
+	$html .= ws_ls_form_field_select( 'gender', __( 'Gender', WE_LS_SLUG ) . ':', ws_ls_genders(), ws_ls_querystring_value( 'gender', true ) );
 
 	// Age range
-	$html .= ws_ls_form_field_select( 'age-range', __( 'Age Range', WE_LS_SLUG ), ws_ls_age_ranges( true ) );
+	$html .= ws_ls_form_field_select( 'age-range', __( 'Age Range', WE_LS_SLUG ) . ':', ws_ls_age_ranges( true ), ws_ls_querystring_value( 'age-range', true ) );
 
 	// Group
 	if ( true === ws_ls_groups_enabled () ) {
-		$html .= ws_ls_form_field_select( 'group-id', __( 'Group', WE_LS_SLUG ), ws_ls_challenge_filters_group_select_values() );
+		$html .= ws_ls_form_field_select( 'group-id', __( 'Group', WE_LS_SLUG ) . ':', ws_ls_challenge_filters_group_select_values(), ws_ls_querystring_value( 'group-id', true ) );
 	}
 
 	// Optin
 	if ( true === is_admin() ) {
-		$html .= ws_ls_form_field_select( 'opt-in', __( 'Opted in', WE_LS_SLUG ), [ 1 => __( 'Opted in', WE_LS_SLUG ), 0 => __( 'Everyone', WE_LS_SLUG ) ] );
+		$html .= ws_ls_form_field_select( 'opt-in', __( 'Opted in', WE_LS_SLUG ) . ':', [
+			1 => __( 'Opted in', WE_LS_SLUG ),
+			0 => __( 'Everyone', WE_LS_SLUG )
+		], ws_ls_querystring_value( 'opt-in', true ) );
 
 		// Min Weight Entries
-		$html .= ws_ls_form_field_select( 'min-wt-entries', __( 'Min. Weight Entries', WE_LS_SLUG ), [ 2 => __( 'Two or more', WE_LS_SLUG ), 1 => __( 'One or more', WE_LS_SLUG ) ] );
+		$html .= ws_ls_form_field_select( 'min-wt-entries', __( 'Min. Weight Entries', WE_LS_SLUG ) . ':', [
+			2 => __( 'Two or more', WE_LS_SLUG ),
+			1 => __( 'One or more', WE_LS_SLUG )
+		], ws_ls_querystring_value( 'min-wt-entries', true ) );
 	}
 
 	$html .= sprintf( '<input type="submit" class="btn button-primary" value="%s" /></form>', __( 'Filter', WE_LS_SLUG ) );

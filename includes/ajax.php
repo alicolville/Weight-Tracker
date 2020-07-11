@@ -43,7 +43,7 @@ function ws_ls_save_preferences_callback() {
 												]
 	];
 
-	$fields[ 'height' ]         = ws_ls_post_value( 'we-ls-height', NULL, false, false, 'int' );
+	$fields[ 'height' ]         = ws_ls_post_value( 'ws-ls-height', NULL, false, false, 'int' );
 	$fields[ 'gender' ]         = ws_ls_post_value( 'ws-ls-gender', NULL, false, false, 'int' );
 	$fields[ 'aim' ]            = ws_ls_post_value( 'ws-ls-aim', NULL, false, false, 'int' );
 	$fields[ 'activity_level' ] = ws_ls_post_value( 'ws-ls-activity-level', NULL, false, false, 'float' );
