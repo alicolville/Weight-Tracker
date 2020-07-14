@@ -2,7 +2,17 @@
 
 defined('ABSPATH') or die("Jog on!");
 
+/**
+ * Calculate MacroN values for the given user
+ * @param bool $user_id
+ *
+ * @return mixed|void|null
+ */
 function ws_ls_macro_calculate($user_id = false) {
+
+	if( false === WS_LS_IS_PRO_PLUS ) {
+		return NULL;
+	}
 
     $user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
 
@@ -90,8 +100,11 @@ function ws_ls_macro_calculate($user_id = false) {
  * @param string $additional_css_class
  * @return string
  */
-function ws_ls_macro_render_table($user_id, $missing_data_text = false, $additional_css_class = '')
-{
+function ws_ls_macro_render_table($user_id, $missing_data_text = false, $additional_css_class = '') {
+
+	if( false === WS_LS_IS_PRO_PLUS ) {
+		return '';
+	}
 
     $user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
 

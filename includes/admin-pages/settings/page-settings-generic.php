@@ -337,7 +337,7 @@ function ws_ls_settings_page_generic() {
                                             <h3><?php echo __( 'Calculating daily calorie intake to lose weight' , WE_LS_SLUG); ?></h3>
 
                                             <table class="form-table">
-                                                <tr>
+                                                <tr class="<?php echo $disable_if_not_pro_plus_class; ?>">
                                                     <th scope="row"><?php echo __( 'Show Loss figures?' , WE_LS_SLUG); ?></th>
                                                     <td>
                                                         <select id="ws-ls-cal-show-loss" name="ws-ls-cal-show-loss">
@@ -350,7 +350,7 @@ function ws_ls_settings_page_generic() {
                                                  <tr class="<?php echo $disable_if_not_pro_plus_class; ?>">
                                                     <th scope="row"><?php echo __( 'Female Calorie Cap' , WE_LS_SLUG); ?></th>
 													 <?php
-													 	$female_calorie_cap = ws_ls_harris_benedict_setting( 'ws-ls-female-cal-cap' );
+													 	$female_calorie_cap =  ws_ls_harris_benedict_setting( 'ws-ls-female-cal-cap' );
 													 ?>
                                                     <td>
                                                         <input  type="number"  step="any" min="0" max="5000" name="ws-ls-female-cal-cap" id="ws-ls-female-cal-cap" value="<?php echo esc_attr( $female_calorie_cap ); ?>" size="11" />
@@ -370,7 +370,7 @@ function ws_ls_settings_page_generic() {
                                                     <th scope="row"><?php echo __( 'Calories to subtract' , WE_LS_SLUG); ?></th>
                                                     <?php
 
-														$subtract_ranges = ( true === WS_LS_IS_PRO_PLUS ) ? ws_ls_harris_benedict_calorie_subtract_ranges() : [];
+														$subtract_ranges = ws_ls_harris_benedict_calorie_subtract_ranges();
                                                     ?>
                                                     <td>
 														<p><?php echo __( 'Once the daily calorie intake to maintain weight has been established, use the following table to define how many calories should be subtracted for the user to lose weight. You have the ability to set up ranges - if the user\'s calorie intake figure to maintain weight lands within that range you have the ability to specify whether to subtract a fixed number of calories or a percentage of the calorie intake.
@@ -458,7 +458,7 @@ function ws_ls_settings_page_generic() {
                                             <h3><?php echo __( 'Calculating daily calorie intake to gain weight' , WE_LS_SLUG); ?></h3>
 
                                             <table class="form-table">
-                                                <tr>
+                                                <tr class="<?php echo $disable_if_not_pro_plus_class; ?>">
                                                     <th scope="row"><?php echo __( 'Show Gain figures?' , WE_LS_SLUG); ?></th>
                                                     <td>
                                                         <select id="ws-ls-cal-show-gain" name="ws-ls-cal-show-gain">
@@ -472,7 +472,7 @@ function ws_ls_settings_page_generic() {
 													<th scope="row"><?php echo __( 'Calories to add' , WE_LS_SLUG); ?></th>
 													<?php
 
-													$add_ranges = ( true === WS_LS_IS_PRO_PLUS ) ? ws_ls_harris_benedict_calorie_add_ranges() : [];
+													$add_ranges = ws_ls_harris_benedict_calorie_add_ranges();
 													?>
 													<td>
 														<p><?php echo __( 'Once the daily calorie intake to maintain weight has been established, use the following table to define how many calories should be subtracted for the user to gain weight. You have the ability to set up ranges - if the user\'s calorie intake figure to maintain weight lands within that range you have the ability to specify whether to add a fixed number of calories or a percentage of the calorie intake.
@@ -585,8 +585,6 @@ function ws_ls_settings_page_generic() {
                                             <h3><?php echo __( 'Macronutrient Calculator: Meals' , WE_LS_SLUG); ?></h3>
                                             <table class="form-table">
                                                 <?php
-
-                                                    if ( true === WS_LS_IS_PRO_PLUS ) {
                                                         foreach ( ws_ls_harris_benedict_meal_ratio_defaults() as $key => $default ) {
 
                                                             printf( '<tr class="%1$s">
@@ -606,8 +604,6 @@ function ws_ls_settings_page_generic() {
                                                                 __( 'Please note, it may take up to 15 minutes for calculations to change (due to caching).' , WE_LS_SLUG )
                                                             );
                                                         }
-                                                    }
-
                                                 ?>
                                             </table>
                                         </div>

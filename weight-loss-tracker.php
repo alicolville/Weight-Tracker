@@ -154,17 +154,13 @@ require_once( WS_LS_ABSPATH . 'pro-features/plus/awards/db.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/plus/awards/hooks.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/email-notifications.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/plus/challenge/inc.php' );
+require_once( WS_LS_ABSPATH . 'pro-features/plus/bmr.php' );
+require_once( WS_LS_ABSPATH . 'pro-features/plus/harris-benedict.php' );
+require_once( WS_LS_ABSPATH . 'pro-features/plus/macronutrient-calculator.php' );
 
 // Gravity Forms
 if ( true === WS_LS_IS_PRO && 'yes' == get_option( 'ws-ls-gf-enable', 'yes' ) ) {
 	require_once( WS_LS_ABSPATH . 'pro-features/hook-gravity-forms.php' );
-}
-
-// Include files for those that have a Pro Plus license
-if( true === WS_LS_IS_PRO_PLUS ) {
-	require_once( WS_LS_ABSPATH . 'pro-features/plus/bmr.php' );
-	require_once( WS_LS_ABSPATH . 'pro-features/plus/harris-benedict.php' );
-    require_once( WS_LS_ABSPATH . 'pro-features/plus/macronutrient-calculator.php' );
 }
 
 require_once( WS_LS_ABSPATH . 'includes/deprecated.php' );

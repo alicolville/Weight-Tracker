@@ -2,7 +2,17 @@
 
 defined('ABSPATH') or die("Jog on!");
 
-function ws_ls_harris_benedict_calculate_calories($user_id = false) {
+/**
+ * Calculate calorie intake for given user
+ * @param bool $user_id
+ *
+ * @return mixed|void|null
+ */
+function ws_ls_harris_benedict_calculate_calories( $user_id = false ) {
+
+	if( false === WS_LS_IS_PRO_PLUS ) {
+		return NULL;
+	}
 
 	$user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
 
@@ -143,13 +153,17 @@ function ws_ls_harris_benedict_meal_ratio_defaults() {
  * @param bool $include_range
  * @return string
  */
-function ws_ls_harris_benedict_render_table($user_id, $missing_data_text = false,  $additional_css_class = '', $email = false, $include_range = true ) {
+function ws_ls_harris_benedict_render_table( $user_id, $missing_data_text = false,  $additional_css_class = '', $email = false, $include_range = true ) {
 
-	$user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
+	if( false === WS_LS_IS_PRO_PLUS ) {
+		return '';
+	}
 
-	$calories = ws_ls_harris_benedict_calculate_calories($user_id);
+	$user_id = ( true === empty( $user_id ) ) ? get_current_user_id() : $user_id;
 
-	$missing_data_text = (false === $missing_data_text) ? __('Please ensure all relevant data to calculate calorie intake has been entered i.e. Activity Level, Date of Birth, Current Weight, Gender and Height.', WE_LS_SLUG ) : $missing_data_text;
+	$calories = ws_ls_harris_benedict_calculate_calories( $user_id );
+
+	$missing_data_text = ( false === $missing_data_text ) ? __('Please ensure all relevant data to calculate calorie intake has been entered i.e. Activity Level, Date of Birth, Current Weight, Gender and Height.', WE_LS_SLUG ) : $missing_data_text;
 
 	if(false === empty($calories)) {
 
@@ -263,7 +277,7 @@ function ws_ls_harris_benedict_render_table($user_id, $missing_data_text = false
 		return $html;
 
 	} else {
-		return '<p>' . esc_html($missing_data_text) . '</p>';
+		return '<p>' . esc_html( $missing_data_text ) . '</p>';
 	}
 
 }
@@ -360,7 +374,7 @@ add_shortcode( 'wlt-calories-table', 'ws_ls_shortcode_harris_benedict_table' );
  */
 function ws_ls_display_calorie_cap($user_id = false) {
 
-	$user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
+	$user_id = ( true === empty($user_id) ) ? get_current_user_id() : $user_id;
 
 	$is_female          = ws_ls_is_female($user_id);
 	$calorie_cap        = ( true == $is_female ) ?
@@ -414,6 +428,10 @@ function ws_ls_harris_benedict_show_gain_figures() {
  * @return mixed
  */
 function ws_ls_harris_benedict_filter_show_hide_gains_loss( $calorie_intake ) {
+
+	if( false === WS_LS_IS_PRO_PLUS) {
+		return $calorie_intake;
+	}
 
 	// Hide gains?
 	if ( true !== ws_ls_harris_benedict_show_gain_figures() ) {

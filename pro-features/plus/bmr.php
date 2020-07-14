@@ -16,6 +16,10 @@
      */
     function ws_ls_calculate_bmr( $user_id = false, $return_error = true ) {
 
+	    if( false === WS_LS_IS_PRO_PLUS ) {
+		    return '';
+	    }
+
         $user_id = ( true === empty( $user_id ) ) ? get_current_user_id() : $user_id;
 
 		// Do we have BMR cached?
