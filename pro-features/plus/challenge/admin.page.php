@@ -67,6 +67,7 @@ function ws_ls_challenges_admin_page() {
                                         <i class="fa fa-plus"></i>
                                         <?php echo __( 'Add a challenge', WE_LS_SLUG ); ?>
                                     </a>
+	                                <a href="https://weight.yeken.uk/challenges/" class="button" target="_blank"><?php echo __( 'Read more about Challenges', WE_LS_SLUG ); ?></a>
 								</p>
 								<p>
 									<?php echo __( 'Why not create challenges for your users and build a league table for a given time period?', WE_LS_SLUG ); ?>
@@ -78,6 +79,10 @@ function ws_ls_challenges_admin_page() {
                         <div class="postbox">
                             <h2 class="hndle"><span><?php echo __( 'Notes', WE_LS_SLUG ); ?></span></h2>
                             <div class="inside">
+	                            <h4><?php echo __( 'Overview', WE_LS_SLUG ); ?></h4>
+	                            <p><?php echo __( 'Why not set challenges for your user\'s within a given time period? Display Total Weight Lost, BMI Change, %Body Weight, Weight Tracker Streaks and Meal Tracker streaks achieved by each user in a league table.', WE_LS_SLUG ); ?>
+	                            <?php echo __( 'Besides viewing all your challenges and their data, the shortcode will allow you to display the league table in the public facing website.', WE_LS_SLUG ); ?></p>
+
                                <h4><?php echo __('User Opt-in', WE_LS_SLUG ); ?></h4>
                                 <p>
                                     <?php echo __('By default, all of your users are opted out of challenges. This saves their name and data being displayed in public challenge tables.
@@ -182,10 +187,20 @@ function ws_ls_challenges_admin_disabled() { ?>
                     ?>
                     <div class="postbox">
                         <h2 class="hndle"><span><?php echo __( 'Challenges Disabled', WE_LS_SLUG ); ?></span></h2>
-                        <div class="inside">
-                            <p>
-                                <?php echo __( 'Challenges are currently disabled. Please enable via the', WE_LS_SLUG ); ?>
-                                <a href="<?php echo ws_ls_get_link_to_settings(); ?>"><?php echo __( 'settings', WE_LS_SLUG ); ?></a> <?php echo __( 'page', WE_LS_SLUG ); ?>.
+	                    <div class="inside">
+
+		                    <p>
+			                    <strong>
+				                    <?php echo __( 'Challenges are currently disabled. Please enable via the', WE_LS_SLUG ); ?>
+			                        <a href="<?php echo ws_ls_get_link_to_settings(); ?>"><?php echo __( 'settings', WE_LS_SLUG ); ?></a> <?php echo __( 'page', WE_LS_SLUG ); ?>.
+			                    </strong>
+		                    </p>
+		                    <p><?php echo __( 'Why not set challenges for your user\'s within a given time period? Display Total Weight Lost, BMI Change, %Body Weight, Weight Tracker Streaks and Meal Tracker streaks achieved by each user in a league table.', WE_LS_SLUG ); ?></p>
+		                    <p><?php echo __( 'Besides viewing all your challenges and their data, the shortcode will allow you to display the league table in the public facing website.', WE_LS_SLUG ); ?></p>
+		                    <a href="https://weight.yeken.uk/challenges/" class="button" target="_blank"><?php echo __( 'Read more about Challenges', WE_LS_SLUG ); ?></a>
+		                    <p>
+
+
                             </p>
                         </div>
                     </div>

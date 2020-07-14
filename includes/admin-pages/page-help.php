@@ -156,7 +156,7 @@ function ws_ls_help_page() {
                                        data-toggle="true"
                                        data-use-parent-width="true">
                                 </table>
-                            </div>
+
                         </div>
                     </div>
 				</div>
