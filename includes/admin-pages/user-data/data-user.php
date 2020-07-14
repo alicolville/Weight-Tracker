@@ -121,7 +121,7 @@ function ws_ls_admin_page_data_user() {
                                     echo sprintf('<p><a href="%s">%s</a> %s.</p>',
                                         ws_ls_upgrade_link(),
                                         __('Upgrade to Pro', WE_LS_SLUG),
-                                        __('to allow a user to upload photos of their progress' , WE_LS_SLUG)
+                                        __('to allow a user to upload photos of their progress. Before a user can upload photos, you must add one or more custom fields' , WE_LS_SLUG)
                                     );
                                 }
                                 ?>
