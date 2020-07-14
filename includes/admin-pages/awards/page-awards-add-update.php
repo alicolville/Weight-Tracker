@@ -4,8 +4,9 @@ defined('ABSPATH') or die("Jog on!");
 
 function ws_ls_awards_add_update_page() {
 
-    $id =  ws_ls_querystring_value('id', true);
-    $validation_fail = false;
+    $id                 =  ws_ls_querystring_value( 'id', true );
+    $validation_fail    = false;
+	$award              = [ 'value' => NULL ];
 
     // Data Posted? If so, replace the above from $_POST object
     if ( false === empty( $_POST ) && true === ws_ls_awards_is_enabled() ) {
