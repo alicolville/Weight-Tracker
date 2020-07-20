@@ -759,7 +759,7 @@ function ws_ls_get_url( $base_64_encode = false ) {
  */
 function ws_ls_iso_date_into_correct_format( $date, $user_id = NULL ) {
 
-	$user_id    = ( true === empty( $user_id ) ) ? get_current_user_id() : $user_id;
+	$user_id = ( true === empty( $user_id ) ) ? get_current_user_id() : $user_id;
 
     // Build different date formats
     if( false === empty( $date ) ) {

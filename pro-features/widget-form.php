@@ -7,21 +7,19 @@ class ws_ls_widget_form extends WP_Widget {
     private $field_values;
 
 	function __construct() {
-		parent::__construct(
-			'ws_ls_widget_form',
-			__('Weight Tracker - Form', WE_LS_SLUG),
-			array( 'description' => __('Display a quick entry form for logged in users to record their weight for today.', WE_LS_SLUG) ) // Args
-		);
 
-        $this->field_values = array(
-            							'title' => __('Your weight today', WE_LS_SLUG),
-										'force_todays_date' => 'yes',
-				                        'not-logged-in-message' => '',
-										'exclude-measurements' => 'no',
-                                        'exclude-meta-fields' => 'yes',
-										'hide-notes' => get_option( 'ws-ls-allow-user-notes', 'no' ),
-										'redirect-url' => ''
-        );
+		parent::__construct( 'ws_ls_widget_form', __( 'Weight Tracker - Form', WE_LS_SLUG ),
+										[ 'description' => __('Display a quick entry form for logged in users to record their weight for today.', WE_LS_SLUG ) ] );
+
+        $this->field_values = [
+                                    'title'                     => __( 'Your weight today', WE_LS_SLUG ),
+									'force_todays_date'         => 'yes',
+			                        'not-logged-in-message'     => '',
+									'exclude-measurements'      => 'no',
+                                    'exclude-meta-fields'       => 'yes',
+									'hide-notes'                => get_option( 'ws-ls-allow-user-notes', 'no' ),
+									'redirect-url'              => ''
+        ];
 
 	}
 
@@ -36,17 +34,18 @@ class ws_ls_widget_form extends WP_Widget {
 	public function widget( $args, $instance ) {
 
         // User logged in?
-        if(is_user_logged_in()) {
+        if( true === is_user_logged_in() ) {
 
 			ws_ls_enqueue_files();
 
 			echo $args['before_widget'];
 			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
-			$force_to_todays_date = ('yes' == $instance['force_todays_date']) ? true : false;
-			$exclude_measurements = (!empty($instance['exclude-measurements']) && 'yes' == $instance['exclude-measurements']) ? true : false;
-            $exclude_meta_fields = ( true === empty($instance['exclude-meta-fields']) || 'yes' == $instance['exclude-meta-fields'] ) ? true : false;
-			$hide_notes = ( false === empty($instance['hide-notes']) && 'yes' == $instance['hide-notes'] ) ? true : false;
-			$redirect_url = (!empty($instance['redirect-url'])) ? $instance['redirect-url']  : '';
+
+			$force_to_todays_date   = ( 'yes' == $instance['force_todays_date'] ) ? true : false;
+			$exclude_measurements   = ( false === empty($instance['exclude-measurements'] ) && 'yes' == $instance['exclude-measurements']) ? true : false;
+            $exclude_meta_fields    = ( true === empty($instance['exclude-meta-fields'] ) || 'yes' == $instance['exclude-meta-fields'] ) ? true : false;
+			$hide_notes             = ( false === empty( $instance['hide-notes']) && 'yes' == $instance['hide-notes'] ) ? true : false;
+			$redirect_url           = ( false === empty( $instance['redirect-url'] ) ) ? $instance['redirect-url']  : '';
 
 	        echo ws_ls_form_weight( [    'redirect-url'         => $redirect_url,
 	                                     'hide-login-message'   => true,

@@ -165,6 +165,8 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 //test GF
 // Chart - allow axes's to be displayed e..g only this custom field, etc
 
+// eyJ0eXBlIjoicHJvLXBsdXMiLCJleHBpcnktZGF5cyI6NjAwMCwic2l0ZS1oYXNoIjoiMzkxMzc3IiwiZXhwaXJ5LWRhdGUiOiIyMDM0LTAxLTI4IiwiaGFzaCI6ImJhNzExNjY3OTU5ODQ2NWQ5YTBiNDY0OTEyYzc4YmQ5In0
+
 Documentation updates:
 remove measurements from documentation site
 add_shortcode( 'wlt-target', 'ws_ls_shortcode_target' ); to add_shortcode( 'wt-target-weight', 'ws_ls_shortcode_target' );
@@ -195,8 +197,8 @@ wlt-total-lost to wt-total-lost
 wlt-league-table to wt-league-table
 wlt-chart to wt-chart
 
-* Improvement: Allow numeric custom fields to be plotted on charts.
-* Improvement: A user's target weight can now be displayed on bar graphs.
+* New Feature: Allow numeric custom fields to be plotted on charts.
+* New Feature: A user's target weight can now be displayed on bar graphs.
 * Improvement: Measurements have been removed. They have now been migrated (along with user data) into Custom Fields.
 * Improvement: Measurements, now custom fields, can now be displayed on bar graphs.
 * Improvement: Export to CSV / JSON performance has been drastically improved.
@@ -245,6 +247,7 @@ wlt-chart to wt-chart
 * Bug fix: When exporting to CSV / JSON, HTML is removed from image custom fields. Instead the full URL is returned.
 * Bug fix: [wt-group-weight-difference] now shows the weight in the correct user format.
 * Bug fix: User stats table is now cached for up to an hour.
+* Bug fix: When placing more than one form on a page, unique IDs are generated for photo fields. This fixes an issue where the first field would be populated with a user selected a photo rather than the correct field.
 
 = 7.6.3 =
 

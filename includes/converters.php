@@ -242,11 +242,13 @@ function ws_ls_convert_ISO_date_into_locale( $iso_date, $key = NULL ) {
  *
  * @return string|null
  */
-function ws_ls_convert_date_to_iso($date, $user_id = false) {
+function ws_ls_convert_date_to_iso( $date, $user_id = false ) {
 
 	if ( true === empty( $date ) ) {
 		return NULL;
 	}
+
+	$user_id = ( true === empty( $user_id ) ) ? get_current_user_id() : $user_id;
 
 	if ( true === ws_ls_setting('use-us-dates', $user_id ) ) {
 		list( $month,$day,$year ) = sscanf( $date, "%d/%d/%d" );
