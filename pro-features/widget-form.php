@@ -41,20 +41,21 @@ class ws_ls_widget_form extends WP_Widget {
 			echo $args[ 'before_widget' ];
 			echo $args[ 'before_title' ] . apply_filters( 'widget_title', $instance[ 'title' ] ). $args[ 'after_title' ];
 
-			$force_to_todays_date   = ( 'yes' == $instance['force_todays_date'] ) ? true : false;
-			$exclude_measurements   = ( false === empty($instance['exclude-measurements'] ) && 'yes' == $instance['exclude-measurements']) ? true : false;
-            $exclude_meta_fields    = ( true === empty($instance['exclude-meta-fields'] ) || 'yes' == $instance['exclude-meta-fields'] ) ? true : false;
-			$hide_notes             = ( false === empty( $instance['hide-notes']) && 'yes' == $instance['hide-notes'] ) ? true : false;
-			$redirect_url           = ( false === empty( $instance['redirect-url'] ) ) ? $instance['redirect-url']  : '';
+			$force_to_todays_date   = ( 'yes' == $instance[ 'force_todays_date' ] );
+			$exclude_measurements   = ( false === empty( $instance[ 'exclude-measurements' ] ) && 'yes' == $instance[ 'exclude-measurements' ] );
+            $exclude_meta_fields    = ( true === empty( $instance[ 'exclude-meta-fields' ] ) || 'yes' == $instance[ 'exclude-meta-fields'] );
+			$hide_notes             = ( false === empty( $instance[ 'hide-notes' ]) && 'yes' == $instance[ 'hide-notes' ] );
+			$redirect_url           = ( false === empty( $instance[ 'redirect-url' ] ) ) ? $instance[ 'redirect-url' ]  : '';
 
 	        echo ws_ls_form_weight( [    'redirect-url'         => $redirect_url,
 	                                     'hide-login-message'   => true,
 		                                 'hide-fields-meta'     => ( true === $exclude_meta_fields || true === $exclude_measurements ),
 		                                 'option-force-today'   => $force_to_todays_date,
-										'hide-notes' => $hide_notes
+		                                 'hide-notes'           => $hide_notes
 	        ] );
 
             echo $args[ 'after_widget' ];
+
         } else if ( false === empty( $instance[ 'not-logged-in-message' ] ) ) {
             echo $args[ 'before_widget' ];
             echo $args[ 'before_title' ] . apply_filters( 'widget_title', $instance[ 'title' ] ). $args[ 'after_title' ];
@@ -73,8 +74,8 @@ class ws_ls_widget_form extends WP_Widget {
 	public function form( $instance ) {
 
         // Loop through expected fields and process
-        foreach($this->field_values as $key => $default) {
-            $field_values[$key] = !empty($instance[$key]) ? $instance[$key] : $default;
+        foreach( $this->field_values as $key => $default ) {
+            $field_values[ $key ] = false === empty( $instance[ $key ] ) ? $instance[ $key ] : $default;
         }
 
 		?>
@@ -84,17 +85,17 @@ class ws_ls_widget_form extends WP_Widget {
 			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $field_values['title'] ); ?>">
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'force_todays_date' ); ?>"><?php _e('Allow user to specify a date?', WE_LS_SLUG); ?></label>
+			<label for="<?php echo $this->get_field_id( 'force_todays_date' ); ?>"><?php _e('Allow user to specify a date?', WE_LS_SLUG ); ?></label>
             <select class="widefat" name="<?php echo $this->get_field_name( 'force_todays_date' ); ?>" id="<?php echo $this->get_field_id( 'force_todays_date' ); ?>">
-                    <option value="yes" <?php selected( $field_values['force_todays_date'], 'yes'); ?>><?php _e('No. Automatically set to today\'s date', WE_LS_SLUG); ?></option>
-                    <option value="no" <?php selected( $field_values['force_todays_date'], 'no'); ?>><?php _e('Allow user to specify a date', WE_LS_SLUG); ?></option>
+                    <option value="yes" <?php selected( $field_values[ 'force_todays_date' ], 'yes' ); ?>><?php _e('No. Automatically set to today\'s date', WE_LS_SLUG); ?></option>
+                    <option value="no" <?php selected( $field_values[ 'force_todays_date' ], 'no' ); ?>><?php _e('Allow user to specify a date', WE_LS_SLUG); ?></option>
             </select>
 		</p>
 		<p>
-            <label for="<?php echo $this->get_field_id( 'exclude-meta-fields' ); ?>"><?php _e('Hide Meta Fields (Pro)?', WE_LS_SLUG); ?></label>
+            <label for="<?php echo $this->get_field_id( 'exclude-meta-fields' ); ?>"><?php _e('Hide Meta Fields (Pro)?', WE_LS_SLUG ); ?></label>
             <select class="widefat" name="<?php echo $this->get_field_name( 'exclude-meta-fields' ); ?>" id="<?php echo $this->get_field_id( 'exclude-meta-fields' ); ?>">
-                <option value="no" <?php selected( $field_values['exclude-meta-fields'], 'no'); ?>><?php _e('No', WE_LS_SLUG); ?></option>
-                <option value="yes" <?php selected( $field_values['exclude-meta-fields'], 'yes'); ?>><?php _e('Yes', WE_LS_SLUG); ?></option>
+                <option value="no" <?php selected( $field_values[ 'exclude-meta-fields' ], 'no' ); ?>><?php _e('No', WE_LS_SLUG ); ?></option>
+                <option value="yes" <?php selected( $field_values[ 'exclude-meta-fields' ], 'yes' ); ?>><?php _e('Yes', WE_LS_SLUG ); ?></option>
             </select>
         </p>
 		<p><?php
