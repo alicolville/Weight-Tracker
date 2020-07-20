@@ -1,6 +1,6 @@
 <?php
-	defined('ABSPATH') or die('Jog on!');
 
+defined('ABSPATH') or die('Jog on!');
 
 class ws_ls_widget_form extends WP_Widget {
 
@@ -38,8 +38,8 @@ class ws_ls_widget_form extends WP_Widget {
 
 			ws_ls_enqueue_files();
 
-			echo $args['before_widget'];
-			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
+			echo $args[ 'before_widget' ];
+			echo $args[ 'before_title' ] . apply_filters( 'widget_title', $instance[ 'title' ] ). $args[ 'after_title' ];
 
 			$force_to_todays_date   = ( 'yes' == $instance['force_todays_date'] ) ? true : false;
 			$exclude_measurements   = ( false === empty($instance['exclude-measurements'] ) && 'yes' == $instance['exclude-measurements']) ? true : false;
@@ -54,14 +54,13 @@ class ws_ls_widget_form extends WP_Widget {
 										'hide-notes' => $hide_notes
 	        ] );
 
-            echo $args['after_widget'];
-        } elseif (isset($instance['not-logged-in-message']) && !empty($instance['not-logged-in-message'])) {
-            echo $args['before_widget'];
-            echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
-            echo '<p>' . esc_html($instance['not-logged-in-message']) . '</p>';
-            echo $args['after_widget'];
+            echo $args[ 'after_widget' ];
+        } else if ( false === empty( $instance[ 'not-logged-in-message' ] ) ) {
+            echo $args[ 'before_widget' ];
+            echo $args[ 'before_title' ] . apply_filters( 'widget_title', $instance[ 'title' ] ). $args[ 'after_title' ];
+            printf( '<p>%s</p>', esc_html( $instance[ 'not-logged-in-message' ] ) );
+            echo $args[ 'after_widget' ];
         }
-
 	}
 
 	/**
@@ -133,10 +132,10 @@ class ws_ls_widget_form extends WP_Widget {
 	 */
 	public function update( $new_instance, $old_instance ) {
 
-		$instance = array();
+		$instance = [];
 
-		foreach($this->field_values as $key => $value) {
-			$instance[$key] = !empty($new_instance[$key]) ? strip_tags($new_instance[$key]) : '';
+		foreach( $this->field_values as $key => $value ) {
+			$instance[ $key ] = false === empty( $new_instance[ $key ] ) ? strip_tags( $new_instance[ $key ] ) : '';
 		}
 
 		return $instance;
