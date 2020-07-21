@@ -4,37 +4,24 @@
 
 let tabs_global = false;
 
-jQuery( document ).ready(function ($) {
+jQuery( document ).ready( function ( $ ) {
 
-    $(".ws-ls-clear-target").click(function( event ) {
-        event.preventDefault();
+  // -----------------------------------------------------------------------
+  // Clear Target
+  // -----------------------------------------------------------------------
 
-        if(!confirm(ws_ls_config["clear-target"])){
-            return;
-        }
+  $( '.ws-ls-clear-target' ).click( function( event ) {
 
-        $post_data = {};
-        $post_data["action"] = "ws_ls_clear_target";
-        $post_data["security"] = ws_ls_config["ajax-security-nonce"];
-        $post_data["user-id"] = ws_ls_config["user-id"];
+    event.preventDefault();
 
-        ws_ls_post_data($post_data, ws_ls_clear_target_callback);
-    });
+      if( false === confirm( ws_ls_config[ 'clear-target' ] ) ){
+          return;
+      }
 
-    function ws_ls_clear_target_callback( data, response ) {
-
-        if (response == 1) {
-
-            ws_ls_show_you_need_to_refresh_messages();
-
-            if( ws_ls_config["current-url"] ) {
-                window.location.replace( ws_ls_config["current-url"] + "?target-cleared=true");
-            }
-
-        } else {
-            console.log("Error clearing target :(", data, response);
-        }
-    }
+      ws_ls_post( 'ws_ls_clear_target',
+                  { 'user-id' : ws_ls_config[ 'user-id' ] },
+                function() { window.location.replace( ws_ls_config[ 'current-url' ] + '?target-cleared=true' ) } );
+  });
 
   // -----------------------------------------------------------------------
   // Tabs (zozo)
@@ -102,7 +89,7 @@ jQuery( document ).ready(function ($) {
 
     progress_bar.animate( progress );
   });
-  
+
   // -----------------------------------------------------------------------
   // XXX
   // -----------------------------------------------------------------------
@@ -239,6 +226,23 @@ function ws_ls_post_data(data, callback)
         var response = JSON.parse(response);
         callback(data, response);
     });
+}
+
+/**
+ * Post back to AJAX handler
+ * @param action
+ * @param data
+ * @param callback
+ */
+function ws_ls_post( action, data, callback ) {
+
+  data[ 'action' ]    = action;
+  data[ 'security' ]  = ws_ls_config['ajax-security-nonce'];
+
+  jQuery.post( ws_ls_config[ 'ajax-url' ], data, function ( response ) {
+
+    callback( data, response );
+  });
 }
 
 function ws_ls_user_preference_callback(data, response)
