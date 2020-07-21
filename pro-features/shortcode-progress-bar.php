@@ -164,7 +164,7 @@ function ws_ls_shortcode_progress_bar_render( $arguments ) {
 	$arguments[ 'percentage-text' ] = str_replace('{t}', $arguments['target-weight-display'], $arguments[ 'percentage-text' ] );
 
 	return sprintf('<div id="%s" class="ws-ls-progress" data-stroke-width="%s" data-stroke-colour="%s"
-								data-trail-width="%s" data-trail-colour="%s" data-precentage-text="%s" data-text-colour="%s"
+								data-trail-width="%s" data-trail-colour="%s" data-percentage-text="%s" data-text-colour="%s"
 								data-animation-duration="%s" data-width="%s" data-height="%s" data-type="%s" data-progress="%s"></div>',
 								ws_ls_component_id(),
 								esc_attr( $arguments[ 'stroke-width' ] ),

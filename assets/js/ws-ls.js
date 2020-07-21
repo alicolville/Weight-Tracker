@@ -2,7 +2,7 @@
 // To compress this script, use https://jscompress.com
 //
 
-$tabs_global = false;
+let tabs_global = false;
 
 jQuery( document ).ready(function ($) {
 
@@ -36,39 +36,76 @@ jQuery( document ).ready(function ($) {
         }
     }
 
-    function ws_ls_show_you_need_to_refresh_messages() {
-        $(".ws-ls-notice-of-refresh").removeClass("ws-ls-hide");
-    }
+  // -----------------------------------------------------------------------
+  // Tabs (zozo)
+  // -----------------------------------------------------------------------
 
-    var default_tab = "tab1";
+  // Just saved data or cancelled? If so, set default Tab to be "In Detail"
+  let default_tab = ( ws_ls_querystring_value('ws-edit-saved') || ws_ls_querystring_value('ws-edit-cancel')) ? 'tab1' : 'tab2';
 
-    // Just saved data or cancelled? If so, set default Tab to be "In Detail"
-    if(ws_ls_get_querystring_value('ws-edit-saved') || ws_ls_get_querystring_value('ws-edit-cancel')) {
-        default_tab = "tab2";
-    }
+  let tabs_are_ready = function( event, item ) {
+      $( '#ws-ls-tabs-loading' ).addClass( 'ws-ls-hide' );
+      $( '#' + item.id ).addClass( 'ws-ls-force-show' );
+      $( '#' + item.id ).removeClass( 'ws-ls-hide' );
+  };
 
-    var wsLSTabsReady = function(event, item) {
-        $("#ws-ls-tabs-loading").addClass("ws-ls-hide");
-        $("#" + item.id).addClass("ws-ls-force-show");
-        $("#" + item.id).removeClass("ws-ls-hide");
+  tabs_global = $( '#ws-ls-tabs' ).zozoTabs({   rounded:        false,
+                                                multiline:      true,
+                                                theme:          'silver',
+                                                size:           'small',
+                                                minWindowWidth: 3000,
+                                                responsive:     true,
+                                                animation: {
+                                                                effects: 'slideH',
+                                                                easing: 'easeInOutCirc',
+                                                                type: 'jquery'
+                                                },
+                                                defaultTab:     default_tab,
+                                                ready:          tabs_are_ready
+  });
+
+  // -----------------------------------------------------------------------
+  // Progress Bar
+  // -----------------------------------------------------------------------
+
+  $( '.ws-ls-progress' ).each( function() {
+
+    let id        = '#' + $( this ).attr('id' );
+    let progress  = $( this ).data( 'progress' );
+    let text      = $( this ).data( 'percentage-text' );
+    let options   = {
+                          strokeWidth:  $( this ).data( 'stroke-width' ),
+                          easing:       'easeInOut',
+                          duration:     $( this ).data( 'animation-duration' ),
+                          color:        $( this ).data('stroke-colour' ),
+                          trailColor:   $( this ).data( 'trail-colour' ),
+                          trailWidth:   $( this ).data( 'trail-width' ),
+                          svgStyle:     { width: $( this ).data( 'width' ), height: $( this ).data( 'height' ) },
+                          text: {
+                            style: {
+                                color: $(this).data( 'text-colour' )
+                            },
+                            value: Math.round( progress * 100 ) + '% ' + text
+                          },
+                          step: function( state, bar ) {
+                              bar.setText( Math.round(bar.value() * 100 ) + '% ' + text );
+                          }
     };
 
-    $tabs_global = $("#ws-ls-tabs").zozoTabs({
-        rounded: false,
-        multiline: true,
-        theme: "silver",
-        size: "small",
-        minWindowWidth: 3000,
-        responsive: true,
-        animation: {
-            effects: "slideH",
-            easing: "easeInOutCirc",
-            type: "jquery"
-        },
-        defaultTab: default_tab,
-        ready: wsLSTabsReady
-    });
+    let progress_bar = false;
 
+    if( 'circle' === $(this).data('type' ) ) {
+       progress_bar = new ProgressBar.Circle( id, options );
+    } else {
+       progress_bar = new ProgressBar.Line( id, options );
+    }
+
+    progress_bar.animate( progress );
+  });
+  
+  // -----------------------------------------------------------------------
+  // XXX
+  // -----------------------------------------------------------------------
 
     // User preference form
     if ("true" == ws_ls_config["is-pro"]) {
@@ -167,41 +204,6 @@ jQuery( document ).ready(function ($) {
         window.location.replace(ws_ls_config["current-url"]);
     });
 
-  // Progress Bar Shortcodes
-    $(".ws-ls-progress").each(function () {
-        var id = $(this).attr("id");
-        var progress = $(this).data("progress");
-        var type = $(this).data("type");
-        var text = $(this).data("precentage-text" );
-
-        var options = {
-            strokeWidth: $(this).data("stroke-width"),
-            easing: "easeInOut",
-            duration: $(this).data("animation-duration"),
-            color: $(this).data("stroke-colour"),
-            trailColor: $(this).data("trail-colour"),
-            trailWidth: $(this).data("trail-width"),
-            svgStyle: {width: $(this).data("width"), height: $(this).data("height")},
-            text: {
-                style: {
-                    color: $(this).data("text-colour")
-                },
-               value: Math.round(progress * 100) + "% " + text
-            },
-            step: function( state, bar ) {
-              console.log( bar.value());
-          //      bar.setText(Math.round(bar.value() * 100) + "% " + $('#' + bar._container.id).data("precentage-text"));
-            }
-        };
-
-        if("circle" == type) {
-            var progress_bar = new ProgressBar.Circle("#" + id, options);
-        } else {
-            var progress_bar = new ProgressBar.Line("#" + id, options);
-        }
-        progress_bar.animate(progress);
-
-    });
 
     // ------------------------------------------------------------------------
     // User for file selector labels
@@ -258,15 +260,22 @@ function ws_ls_user_preference_callback(data, response)
     }
 }
 
-function ws_ls_get_querystring_value(name)
-{
-    var sPageURL = window.location.search.substring(1);
-    var sURLVariables = sPageURL.split("&");
-    for (var i = 0; i < sURLVariables.length; i++)
-    {
-        var sParameterName = sURLVariables[i].split("=");
-        if (sParameterName[0] == name) {
-            return sParameterName[1];
+/**
+ * Fetch a querystring value for the given key
+ * @param key
+ * @returns {string}
+ */
+function ws_ls_querystring_value(key ) {
+
+    let page_url    = window.location.search.substring( 1 );
+    let qs_values   = page_url.split('&' );
+
+    for ( let i = 0; i < qs_values.length; i++ ) {
+
+        let qs_name = qs_values[ i ].split( '=' );
+
+        if ( key === qs_name[0]) {
+            return qs_values[ i ];
         }
     }
 }
