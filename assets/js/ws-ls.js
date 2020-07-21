@@ -28,7 +28,7 @@ jQuery( document ).ready( function ( $ ) {
   // -----------------------------------------------------------------------
 
   // Just saved data or cancelled? If so, set default Tab to be "In Detail"
-  let default_tab = ( ws_ls_querystring_value('ws-edit-saved') || ws_ls_querystring_value('ws-edit-cancel')) ? 'tab1' : 'tab2';
+  let default_tab = ( ws_ls_querystring_value( 'ws-edit-saved' ) || ws_ls_querystring_value( 'ws-edit-cancel' ) ) ? 'tab2' : 'tab1';
 
   let tabs_are_ready = function( event, item ) {
       $( '#ws-ls-tabs-loading' ).addClass( 'ws-ls-hide' );
@@ -81,7 +81,7 @@ jQuery( document ).ready( function ( $ ) {
 
     let progress_bar = false;
 
-    if( 'circle' === $(this).data('type' ) ) {
+    if( 'circle' === $( this ).data('type' ) ) {
        progress_bar = new ProgressBar.Circle( id, options );
     } else {
        progress_bar = new ProgressBar.Line( id, options );
@@ -89,6 +89,36 @@ jQuery( document ).ready( function ( $ ) {
 
     progress_bar.animate( progress );
   });
+
+  // ------------------------------------------------------------------------
+  // File selector for meta fields
+  // ------------------------------------------------------------------------
+
+  if ( 'true' === ws_ls_config[ 'photos-enabled' ] ) {
+
+    let inputs = document.querySelectorAll( '.ws-ls-input-file' );
+
+    Array.prototype.forEach.call( inputs, function( input ) {
+
+      let label	  = input.nextElementSibling;
+      let value   = label.innerHTML;
+
+      input.addEventListener( 'change', function( e )  {
+
+        let file_name = e.target.value.split( '\\' ).pop();
+
+        if( file_name ) {
+          label.querySelector( 'span' ).innerHTML = file_name;
+        } else {
+          label.innerHTML = value;
+        }
+      });
+
+      // Firefox bug fix
+      input.addEventListener( 'focus', function(){ input.classList.add( 'has-focus' ); });
+      input.addEventListener( 'blur', function(){ input.classList.remove( 'has-focus' ); });
+    });
+  }
 
   // -----------------------------------------------------------------------
   // XXX
@@ -191,30 +221,6 @@ jQuery( document ).ready( function ( $ ) {
         window.location.replace(ws_ls_config["current-url"]);
     });
 
-
-    // ------------------------------------------------------------------------
-    // User for file selector labels
-    // ------------------------------------------------------------------------
-    var inputs = document.querySelectorAll( '.ws-ls-input-file' );
-    Array.prototype.forEach.call( inputs, function( input )
-    {
-        var label	 = input.nextElementSibling,
-            labelVal = label.innerHTML;
-
-        input.addEventListener( 'change', function( e )
-        {
-            var fileName = e.target.value.split( '\\' ).pop();
-
-            if( fileName )
-                label.querySelector( 'span' ).innerHTML = fileName;
-            else
-                label.innerHTML = labelVal;
-        });
-
-        // Firefox bug fix
-        input.addEventListener( 'focus', function(){ input.classList.add( 'has-focus' ); });
-        input.addEventListener( 'blur', function(){ input.classList.remove( 'has-focus' ); });
-    });
 });
 
 function ws_ls_post_data(data, callback)

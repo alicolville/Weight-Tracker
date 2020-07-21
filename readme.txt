@@ -238,6 +238,7 @@ wlt-chart to wt-chart
 * Bug fix: User search results were showing in correct weights.
 * Bug fix: Removed dead setting "Disable notifications from YeKen?".
 * Bug fix: Meta fields cache no longer cleared on weight entry insert / save.
+* Bug fix: Only display "Clear Target" if the user has a target currently set.
 * Bug fix: Delete all cache if admin delete's all data.
 * Bug fix: BMR now cached on a user by user basis correctly.
 * Bug fix: User data tables, difference in weight field now displays correct difference.
