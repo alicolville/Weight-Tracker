@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2020-05-31 20:14+0100\n"
-"PO-Revision-Date: 2020-05-31 20:14+0100\n"
+"POT-Creation-Date: 2020-07-23 10:19+0100\n"
+"PO-Revision-Date: 2020-07-23 10:19+0100\n"
 "Last-Translator: Alex\n"
 "Language-Team: \n"
 "Language: en_GB\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.3.1\n"
+"X-Generator: Poedit 2.4\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-KeywordsList: __;_e\n"
@@ -163,7 +163,7 @@ msgstr ""
 #: admin-pages/settings/page-settings-generic.php:799
 #: admin-pages/settings/page-settings-generic.php:819
 #: admin-pages/settings/page-settings-generic.php:839
-#: admin-pages/settings/page-settings-generic.php:900 functions.php:1025
+#: admin-pages/settings/page-settings-generic.php:900 functions.php:1029
 msgid "Yes"
 msgstr "Da"
 
@@ -200,7 +200,7 @@ msgstr "Da"
 #: admin-pages/settings/page-settings-generic.php:800
 #: admin-pages/settings/page-settings-generic.php:818
 #: admin-pages/settings/page-settings-generic.php:838
-#: admin-pages/settings/page-settings-generic.php:899 functions.php:1025
+#: admin-pages/settings/page-settings-generic.php:899 functions.php:1029
 msgid "No"
 msgstr "Nu"
 
@@ -1046,7 +1046,7 @@ msgid ""
 "user to lose weight. You have the ability to set up ranges - if the user's "
 "calorie intake figure to maintain weight lands within that range you have "
 "the ability to specify whether to subtract a fixed number of calories or a "
-"percentage of the calorie intake. \n"
+"percentage of the calorie intake.\n"
 "\t\t\t\t\t\t\t\t\t\t\t\t\t\t"
 msgstr ""
 
@@ -1144,7 +1144,7 @@ msgid ""
 "user to gain weight. You have the ability to set up ranges - if the user's "
 "calorie intake figure to maintain weight lands within that range you have "
 "the ability to specify whether to add a fixed number of calories or a "
-"percentage of the calorie intake. \n"
+"percentage of the calorie intake.\n"
 "\t\t\t\t\t\t\t\t\t\t\t\t\t\t"
 msgstr ""
 
@@ -1809,13 +1809,13 @@ msgid "Export to JSON"
 msgstr ""
 
 #: converters.php:53 converters.php:71 core.php:75 functions.php:69
-#: functions.php:84 functions.php:93 functions.php:99 functions.php:293
-#: functions.php:299 functions.php:545 shortcode-various.php:315
+#: functions.php:84 functions.php:93 functions.php:99 functions.php:297
+#: functions.php:303 functions.php:549 shortcode-various.php:315
 #: shortcode-various.php:340
 msgid "lbs"
 msgstr "lbs"
 
-#: converters.php:71 functions.php:299
+#: converters.php:71 functions.php:303
 msgid "St"
 msgstr "St"
 
@@ -1967,58 +1967,58 @@ msgstr ""
 msgid "Today"
 msgstr ""
 
-#: functions.php:84 functions.php:99 functions.php:533
+#: functions.php:84 functions.php:99 functions.php:537
 #: shortcode-various.php:338
 msgid "st"
 msgstr "st"
 
-#: functions.php:210
+#: functions.php:214
 msgid "The following MySQL tables are missing for this plugin"
 msgstr "Tabelele urmatoare lipsesc din baza de date:"
 
-#: functions.php:296 shortcode-various.php:347
+#: functions.php:300 shortcode-various.php:347
 msgid "Kg"
 msgstr "Kg"
 
-#: functions.php:358
+#: functions.php:362
 msgid "View all weeks"
 msgstr "Vezi toate saptamanile"
 
-#: functions.php:372
+#: functions.php:376
 msgid "View Week"
 msgstr "Vezi saptamana"
 
-#: functions.php:372
+#: functions.php:376
 msgid "to"
 msgstr "la"
 
-#: functions.php:500
+#: functions.php:504
 msgid "The plugin supports the following measurements"
 msgstr ""
 
-#: functions.php:687
+#: functions.php:691
 msgid "Read more about calculations"
 msgstr ""
 
-#: functions.php:721
+#: functions.php:725
 msgid "Your modifications have been saved"
 msgstr ""
 
-#: functions.php:739
+#: functions.php:743
 msgid "Login now"
 msgstr "Autentificare"
 
-#: functions.php:904
+#: functions.php:908
 msgid "Upgrade Weight Tracker and get more features!"
 msgstr ""
 
-#: functions.php:906
+#: functions.php:910
 msgid ""
 "Upgrade to the latest Pro or Pro Plus version of this plugin to manipulate "
 "your user's data, add custom fields, BMR, Macro Nutrients and much more!"
 msgstr ""
 
-#: functions.php:907
+#: functions.php:911
 msgid "Read more and Upgrade to Pro / Pro Plus Version"
 msgstr "Obtine versiunea PRO"
 

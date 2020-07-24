@@ -2,15 +2,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Weight Loss Tracker\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-31 20:14+0100\n"
-"PO-Revision-Date: 2020-05-31 20:14+0100\n"
+"POT-Creation-Date: 2020-07-23 10:19+0100\n"
+"PO-Revision-Date: 2020-07-23 10:19+0100\n"
 "Last-Translator: saeedalakakah <salakakah@gmail.com>\n"
 "Language-Team: Arabic\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.3.1\n"
+"X-Generator: Poedit 2.4\n"
 "X-Poedit-Basepath: ../..\n"
 "Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
@@ -187,7 +187,7 @@ msgstr "جميع الإدخالات"
 #: includes/admin-pages/settings/page-settings-generic.php:819
 #: includes/admin-pages/settings/page-settings-generic.php:839
 #: includes/admin-pages/settings/page-settings-generic.php:900
-#: includes/functions.php:1025 pro-features/plus/challenge/functions.php:218
+#: includes/functions.php:1029 pro-features/plus/challenge/functions.php:218
 #: pro-features/plus/meta-fields/functions.php:32
 #: pro-features/plus/meta-fields/functions.php:203
 #: pro-features/plus/meta-fields/functions.php:326
@@ -229,7 +229,7 @@ msgstr "نعم"
 #: includes/admin-pages/settings/page-settings-generic.php:818
 #: includes/admin-pages/settings/page-settings-generic.php:838
 #: includes/admin-pages/settings/page-settings-generic.php:899
-#: includes/functions.php:1025 pro-features/plus/challenge/functions.php:218
+#: includes/functions.php:1029 pro-features/plus/challenge/functions.php:218
 #: pro-features/plus/meta-fields/functions.php:32
 #: pro-features/plus/meta-fields/functions.php:200
 #: pro-features/plus/meta-fields/functions.php:325
@@ -1180,7 +1180,7 @@ msgid ""
 "user to lose weight. You have the ability to set up ranges - if the user's "
 "calorie intake figure to maintain weight lands within that range you have "
 "the ability to specify whether to subtract a fixed number of calories or a "
-"percentage of the calorie intake. \n"
+"percentage of the calorie intake.\n"
 "\t\t\t\t\t\t\t\t\t\t\t\t\t\t"
 msgstr ""
 
@@ -1291,7 +1291,7 @@ msgid ""
 "user to gain weight. You have the ability to set up ranges - if the user's "
 "calorie intake figure to maintain weight lands within that range you have "
 "the ability to specify whether to add a fixed number of calories or a "
-"percentage of the calorie intake. \n"
+"percentage of the calorie intake.\n"
 "\t\t\t\t\t\t\t\t\t\t\t\t\t\t"
 msgstr ""
 
@@ -2017,14 +2017,14 @@ msgstr "تصدير إلى ملف JSON"
 #: includes/converters.php:53 includes/converters.php:71 includes/core.php:75
 #: includes/functions.php:69 includes/functions.php:84
 #: includes/functions.php:93 includes/functions.php:99
-#: includes/functions.php:293 includes/functions.php:299
-#: includes/functions.php:545 includes/shortcode-various.php:315
+#: includes/functions.php:297 includes/functions.php:303
+#: includes/functions.php:549 includes/shortcode-various.php:315
 #: includes/shortcode-various.php:340 pro-features/export.php:266
 #: pro-features/shortcode-stats.php:154
 msgid "lbs"
 msgstr "باوند"
 
-#: includes/converters.php:71 includes/functions.php:299
+#: includes/converters.php:71 includes/functions.php:303
 msgid "St"
 msgstr ""
 
@@ -2182,59 +2182,59 @@ msgid "Today"
 msgstr "اليوم"
 
 #: includes/functions.php:84 includes/functions.php:99
-#: includes/functions.php:533 includes/shortcode-various.php:338
+#: includes/functions.php:537 includes/shortcode-various.php:338
 #: pro-features/export.php:265
 msgid "st"
 msgstr ""
 
-#: includes/functions.php:210
+#: includes/functions.php:214
 msgid "The following MySQL tables are missing for this plugin"
 msgstr "الجداول MySQL التالية مفقودة لهذا الـ plugin"
 
-#: includes/functions.php:296 includes/shortcode-various.php:347
+#: includes/functions.php:300 includes/shortcode-various.php:347
 #: pro-features/user-preferences.php:185
 msgid "Kg"
 msgstr "كغم"
 
-#: includes/functions.php:358
+#: includes/functions.php:362
 msgid "View all weeks"
 msgstr "عرض كل الأسابيع"
 
-#: includes/functions.php:372
+#: includes/functions.php:376
 msgid "View Week"
 msgstr "عرض الأسبوع"
 
-#: includes/functions.php:372 pro-features/plus/challenge/db.php:198
+#: includes/functions.php:376 pro-features/plus/challenge/db.php:198
 msgid "to"
 msgstr "إلى"
 
-#: includes/functions.php:500
+#: includes/functions.php:504
 msgid "The plugin supports the following measurements"
 msgstr "يدعم الـ plugin  القياسات التالية"
 
-#: includes/functions.php:687
+#: includes/functions.php:691
 msgid "Read more about calculations"
 msgstr "اقرأ المزيد عن إجراء الحسابات"
 
-#: includes/functions.php:721
+#: includes/functions.php:725
 msgid "Your modifications have been saved"
 msgstr "تم حفظ تعديلاتك"
 
-#: includes/functions.php:739
+#: includes/functions.php:743
 msgid "Login now"
 msgstr "تسجيل الدخول الآن"
 
-#: includes/functions.php:904
+#: includes/functions.php:908
 msgid "Upgrade Weight Tracker and get more features!"
 msgstr ""
 
-#: includes/functions.php:906
+#: includes/functions.php:910
 msgid ""
 "Upgrade to the latest Pro or Pro Plus version of this plugin to manipulate "
 "your user's data, add custom fields, BMR, Macro Nutrients and much more!"
 msgstr ""
 
-#: includes/functions.php:907
+#: includes/functions.php:911
 msgid "Read more and Upgrade to Pro / Pro Plus Version"
 msgstr "الترقية إلى الإصدار برو"
 
