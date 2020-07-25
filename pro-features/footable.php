@@ -295,7 +295,7 @@ function ws_ls_data_table_enqueue_scripts() {
 	$minified = ws_ls_use_minified();
 
 	wp_enqueue_style('ws-ls-footables', plugins_url( '/assets/css/libraries/footable.standalone.min.css', __DIR__  ), [], WE_LS_CURRENT_VERSION);
-    wp_enqueue_style('ws-ls-footables-wlt', plugins_url( '/assets/css/footable.css', __DIR__ ), [ 'ws-ls-footables' ], WE_LS_CURRENT_VERSION);
+    wp_enqueue_style('ws-ls-footables-wlt', plugins_url( '/assets/css/footable' . $minified . '.css', __DIR__ ), [ 'ws-ls-footables' ], WE_LS_CURRENT_VERSION);
     wp_enqueue_script('ws-ls-footables-js', plugins_url( '/assets/js/libraries/footable.min.js', __DIR__ ), [ 'jquery' ], WE_LS_CURRENT_VERSION, true);
 	wp_enqueue_script('ws-ls-footables-admin', plugins_url( '/assets/js/data.footable' .     $minified . '.js', __DIR__ ), [ 'ws-ls-footables-js' ], WE_LS_CURRENT_VERSION, true);
 	wp_localize_script('ws-ls-footables-admin', 'ws_user_table_config', ws_ls_data_js_config() );

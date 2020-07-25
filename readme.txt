@@ -157,10 +157,6 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 = 8.0 =
 
-
-// compress admin-and-public.min.css,  ws-ls.css
-
-
 Documentation updates:
 remove measurements from documentation site
 add_shortcode( 'wlt-target', 'ws_ls_shortcode_target' ); to add_shortcode( 'wt-target-weight', 'ws_ls_shortcode_target' );
@@ -224,6 +220,7 @@ wlt-chart to wt-chart
 * Improvement: Emails notifications: Subjects are more informative.
 * Improvement: WLT Shortcode: Week Ranges are now displayed when over 150 weeks. They can also have to be enabled with new argument "enable-week-ranges"
 * Improvement: Admin JS has been minified.
+* Improvement: All CSS files are now minified.
 * Bug fix: "Who can view and modify user data?" has been fixed so user's with the specified minimum role can now access admin data pages.
 * Bug fix: Awards for a user are now deleted when "Delete all data for this user" has been clicked.
 * Bug fix: All challenge data for a user is now deleted when "Delete all data for this user" has been clicked.

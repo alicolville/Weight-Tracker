@@ -94,7 +94,7 @@ function ws_ls_enqueue_admin_files(){
 
 	$minified = ws_ls_use_minified();
 
-	wp_enqueue_style( 'ws-ls-admin-style', plugins_url( '../assets/css/admin.css', __FILE__ ), [], WE_LS_CURRENT_VERSION );
+	wp_enqueue_style( 'ws-ls-admin-style', plugins_url( '../assets/css/admin' . 	$minified . '.css', __FILE__ ), [], WE_LS_CURRENT_VERSION );
 
     wp_enqueue_script( 'ws-ls-admin', plugins_url( '../assets/js/admin' . 	$minified . '.js', __FILE__ ), [ 'jquery' ], WE_LS_CURRENT_VERSION );
 
