@@ -121,118 +121,96 @@ jQuery( document ).ready( function ( $ ) {
   }
 
   // -----------------------------------------------------------------------
-  // XXX
+  // User Preference form (Front end)
   // -----------------------------------------------------------------------
 
-    // User preference form
-    if ("true" == ws_ls_config["is-pro"]) {
+  if ( 'true' === ws_ls_config[ 'is-pro' ] ) {
 
-        $( ".ws-ls-user-delete-all" ).validate({
-            errorClass: "ws-ls-invalid",
-            validClass: "ws-ls-valid",
-            errorContainer: ".ws-ls-user-delete-all .ws-ls-error-summary",
-            errorLabelContainer: ".ws-ls-user-delete-all .ws-ls-error-summary ul",
-            wrapper: "li",
-            messages: {
-                "ws-ls-delete-all": ws_ls_config["validation-we-ls-history"],
-            },
-            submitHandler: function(form) {
-                form.submit();
-            }
-        });
+    /**
+     * Delete existing user data
+     */
+    $( '.ws-ls-user-delete-all' ).validate({        errorClass:           'ws-ls-invalid',
+                                                            validClass:           'ws-ls-valid',
+                                                            errorContainer:       '.ws-ls-user-delete-all .ws-ls-error-summary',
+                                                            errorLabelContainer:  '.ws-ls-user-delete-all .ws-ls-error-summary ul',
+                                                            wrapper:              'li',
+                                                            messages: {
+                                                                                  'ws-ls-delete-all': ws_ls_config[ 'validation-we-ls-history'  ],
+                                                            },
+                                                            submitHandler: function( form ) {
+                                                                form.submit();
+                                                            }
+      });
 
-        $( ".ws-ls-user-pref-form" ).submit(function( event ) {
+    /**
+     * Save Preferences
+     */
+    $( '.ws-ls-user-pref-form' ).submit( function( event ) {
 
-            event.preventDefault();
+        event.preventDefault();
 
-            if ("true" != ws_ls_config['validation-about-you-mandatory']) {
+        if ( 'true' !== ws_ls_config[ 'validation-about-you-mandatory' ] ) {
+            ws_ls_submit_preference_form();
+        }
+    });
+
+
+      // Do we want to force all About You fields in user preferences to be mandatory?
+    if ( 'true' === ws_ls_config[ 'validation-about-you-mandatory' ] ) {
+
+       $( ".ws-ls-user-pref-form" ).validate({        errorClass:           'ws-ls-invalid',
+                                                              validClass:           'ws-ls-valid',
+                                                              errorContainer:       '.ws-ls-user-delete-all .ws-ls-error-summary',
+                                                              errorLabelContainer:  '.ws-ls-user-delete-all .ws-ls-error-summary ul',
+                                                              wrapper:              'li',
+                                                              rules:                 ws_ls_config[ 'validation-user-pref-rules' ],
+                                                              messages:              ws_ls_config[ 'validation-user-pref-messages' ],
+            submitHandler: function( form ) {
                 ws_ls_submit_preference_form();
             }
-
         });
 
-        var form_preference_validation = false;
+        $.extend( jQuery.validator.messages, {
+            required: ws_ls_config[ 'validation-required' ]
+        });
 
-        // // Do we want to force all About You fields in user preferences to be madatory?
-        if ("true" == ws_ls_config['validation-about-you-mandatory']) {
-
-            form_preference_validation = $( ".ws-ls-user-pref-form" ).validate({
-                errorClass: "ws-ls-invalid",
-                validClass: "ws-ls-valid",
-                errorContainer: ".ws-ls-user-pref-form .ws-ls-error-summary",
-                errorLabelContainer: ".ws-ls-user-pref-form .ws-ls-error-summary ul",
-                wrapper: "li",
-                rules: ws_ls_config['validation-user-pref-rules'],
-                messages: ws_ls_config["validation-user-pref-messages"],
-                submitHandler: function(form) {
-                    ws_ls_submit_preference_form();
-                }
-            });
-
-            $.extend(jQuery.validator.messages, {
-                required: ws_ls_config["validation-required"]
-            });
-
-            //If a datepicker is on this form
-            if ($(".ws-ls-user-pref-form .we-ls-datepicker").length) {
-                // Validate date
-                if ("true" == ws_ls_config["us-date"]) {
-                    $(".ws-ls-user-pref-form .we-ls-datepicker").rules( "add", {
-                        required: true,
-                        date: true
-                    });
-                }
-                else {
-                    $(".ws-ls-user-pref-form .we-ls-datepicker").rules( "add", {
-                        required: true,
-                        dateITA: true
-                    });
-                }
+        // If a datepicker is on this form
+        if ( $( '.ws-ls-user-pref-form .we-ls-datepicker' ).length ) {
+            // Validate date
+            if ( 'true' === ws_ls_config[ 'us-date' ] ) {
+                $( '.ws-ls-user-pref-form .we-ls-datepicker' ).rules( 'add', {
+                    required: true,
+                    date:     true
+                });
+            } else {
+                $( '.ws-ls-user-pref-form .we-ls-datepicker' ).rules( 'add', {
+                    required: true,
+                    dateITA:  true
+                });
             }
-        }
-
-        /**
-         * Post user preferences to AJAX handler
-         **/
-        function ws_ls_submit_preference_form() {
-
-            var post_data = {};
-
-            // This code is specifc to front end
-            post_data["security"] = ws_ls_config["ajax-security-nonce"];
-            post_data["user-id"] = ws_ls_config["user-id"];
-
-            // ------------------------------------------------------------------------
-            // The following code is common between public and admin user preferences
-            // ------------------------------------------------------------------------
-            $( '.ws-ls-user-pref-form select, .ws-ls-user-pref-form .custom-field' ).each(function () {
-              post_data[ $(this).attr("id") ] = $( this ).val();
-            });
-
-            post_data[ 'action' ]     = 'ws_ls_save_preferences';
-            post_data[ 'ws-ls-dob' ]  = $( '#ws-ls-dob' ).val();
-
-            ws_ls_post_data( post_data, ws_ls_user_preference_callback );
         }
     }
 
-    $(".ws-ls-reload-page-if-clicked").click(function( event ) {
-        event.preventDefault();
-        window.location.replace(ws_ls_config["current-url"]);
-    });
+    /**
+     * Post user preferences to AJAX handler
+     **/
+    function ws_ls_submit_preference_form() {
 
+        let post_data = { 'user-id' : ws_ls_config[ 'user-id' ] };
+
+        // ------------------------------------------------------------------------
+        // The following code is common between public and admin user preferences
+        // ------------------------------------------------------------------------
+        $( '.ws-ls-user-pref-form select, .ws-ls-user-pref-form .custom-field' ).each(function () {
+          post_data[ $( this ).attr('id' ) ] = $( this ).val();
+        });
+
+        post_data[ 'ws-ls-dob' ]  = $( '#ws-ls-dob' ).val();
+
+        ws_ls_post( 'ws_ls_save_preferences', post_data, ws_ls_user_preference_callback );
+    }
+  }
 });
-
-function ws_ls_post_data(data, callback)
-{
-    var ajaxurl = ws_ls_config["ajax-url"];
-
-    jQuery.post(ajaxurl, data, function(response) {
-
-        var response = JSON.parse(response);
-        callback(data, response);
-    });
-}
 
 /**
  * Post back to AJAX handler
@@ -255,7 +233,7 @@ function ws_ls_user_preference_callback(data, response)
 {
     if (response == 1) {
 
-        // Is there a redirect url specified on the form itself? If so, redirect to that URL.
+        // Is there a redirect url  specified on the form itself? If so, redirect to that URL.
         var redirect_url = jQuery(".ws-ls-user-pref-form").data('redirect-url');
 
         if(redirect_url) {
