@@ -159,7 +159,7 @@ function ws_ls_shortcode_progress_bar_render( $arguments ) {
 	ws_ls_enqueue_files();
 
 	// Enqueue Progress library
-	wp_enqueue_script('ws-ls-progress-bar', plugins_url( '../assets/js/progress-bar.js', __FILE__ ), [ 'jquery' ], WE_LS_CURRENT_VERSION );
+	wp_enqueue_script('ws-ls-progress-bar', plugins_url( '../assets/js/libraries/progress-bar.js', __FILE__ ), [ 'jquery' ], WE_LS_CURRENT_VERSION );
 
 	$arguments[ 'percentage-text' ] = str_replace('{t}', $arguments['target-weight-display'], $arguments[ 'percentage-text' ] );
 
