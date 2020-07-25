@@ -1,4 +1,4 @@
-var tabs_global = false;
+let tabs_global = false;
 
 jQuery( document ).ready( function ( $ ) {
 
@@ -156,8 +156,8 @@ jQuery( document ).ready( function ( $ ) {
 
        $( ".ws-ls-user-pref-form" ).validate({        errorClass:           'ws-ls-invalid',
                                                               validClass:           'ws-ls-valid',
-                                                              errorContainer:       '.ws-ls-user-delete-all .ws-ls-error-summary',
-                                                              errorLabelContainer:  '.ws-ls-user-delete-all .ws-ls-error-summary ul',
+                                                              errorContainer:       '.ws-ls-user-pref-form .ws-ls-error-summary',
+                                                              errorLabelContainer:  '.ws-ls-user-pref-form .ws-ls-error-summary ul',
                                                               wrapper:              'li',
                                                               rules:                 ws_ls_config[ 'validation-user-pref-rules' ],
                                                               messages:              ws_ls_config[ 'validation-user-pref-messages' ],
