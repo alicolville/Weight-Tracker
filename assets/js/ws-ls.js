@@ -23,7 +23,7 @@ jQuery( document ).ready( function ( $ ) {
   // Tabs (ZoZo)
   // -----------------------------------------------------------------------
 
-  // Just saved data or cancelled? If so, set default Tab to be "In Detail"
+  // Just saved data or cancelled?  If so, set default Tab to be "In Detail"
   let default_tab = ( ws_ls_querystring_value( 'ws-edit-saved' ) || ws_ls_querystring_value( 'ws-edit-cancel' ) ) ? 'tab2' : 'tab1';
 
   let tabs_are_ready = function( event, item ) {
