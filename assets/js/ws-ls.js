@@ -1,3 +1,6 @@
+//
+// To compress this script, use https://jscompress.com
+//
 let tabs_global = false;
 
 jQuery( document ).ready( function ( $ ) {
@@ -150,17 +153,17 @@ jQuery( document ).ready( function ( $ ) {
         }
     });
 
-
+    let form_preference_validation = false;
       // Do we want to force all About You fields in user preferences to be mandatory?
     if ( 'true' === ws_ls_config[ 'validation-about-you-mandatory' ] ) {
 
-       $( ".ws-ls-user-pref-form" ).validate({        errorClass:           'ws-ls-invalid',
-                                                              validClass:           'ws-ls-valid',
-                                                              errorContainer:       '.ws-ls-user-pref-form .ws-ls-error-summary',
-                                                              errorLabelContainer:  '.ws-ls-user-pref-form .ws-ls-error-summary ul',
-                                                              wrapper:              'li',
-                                                              rules:                 ws_ls_config[ 'validation-user-pref-rules' ],
-                                                              messages:              ws_ls_config[ 'validation-user-pref-messages' ],
+      form_preference_validation = $( ".ws-ls-user-pref-form" ).validate({        errorClass:           'ws-ls-invalid',
+                                                                                          validClass:           'ws-ls-valid',
+                                                                                          errorContainer:       '.ws-ls-user-pref-form .ws-ls-error-summary',
+                                                                                          errorLabelContainer:  '.ws-ls-user-pref-form .ws-ls-error-summary ul',
+                                                                                          wrapper:              'li',
+                                                                                          rules:                 ws_ls_config[ 'validation-user-pref-rules' ],
+                                                                                          messages:              ws_ls_config[ 'validation-user-pref-messages' ],
             submitHandler: function( form ) {
                 ws_ls_submit_preference_form();
             }
@@ -225,22 +228,23 @@ function ws_ls_post( action, data, callback ) {
   });
 }
 
-function ws_ls_user_preference_callback(data, response)
-{
-    if (response == 1) {
+/**
+ * Handle response from Save Preferences
+ * @param data
+ * @param response
+ */
+function ws_ls_user_preference_callback( data, response ) {
+
+    if ( 1 == response ) {
 
         // Is there a redirect url  specified on the form itself? If so, redirect to that URL.
-        var redirect_url = jQuery(".ws-ls-user-pref-form").data('redirect-url');
+        let  redirect_url = jQuery(".ws-ls-user-pref-form").data('redirect-url');
 
-        if(redirect_url) {
-            window.location.replace(redirect_url);
+        if( redirect_url ) {
+            window.location.replace( redirect_url );
         } else {
-            window.location.replace(ws_ls_config["current-url"] + "?user-preference-saved=true");
+            window.location.replace(ws_ls_config[ 'current-url' ] + '?user-preference-saved=true' );
         }
-    }
-    else
-    {
-        console.log("Error saving the user preferences");
     }
 }
 

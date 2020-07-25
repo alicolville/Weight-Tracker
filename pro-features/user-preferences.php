@@ -146,7 +146,7 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
 
     if ( true !== $arguments[ 'disable-save' ] ) {
 
-	    $html_output .= sprintf('<input name="submit_button" type="submit" id="we-ls-user-pref-submit" tabindex="%1$d" class="ws-ls-cancel-form button ws-ls-remove-on-submit" value="%2$s" />',
+	    $html_output .= sprintf('<input name="we-ls-user-pref-submit" type="submit" id="we-ls-user-pref-submit" tabindex="%1$d" class="ws-ls-cancel-form button ws-ls-remove-on-submit" value="%2$s" />',
 		    ws_ls_form_tab_index_next(),
 		    __( 'Save Settings', WE_LS_SLUG )
 	    );

@@ -144,6 +144,7 @@
  * @return string
  */
 function ws_ls_use_minified() {
+	//return '.min';
 	return '.min';
     return ( defined('SCRIPT_DEBUG' ) && false == SCRIPT_DEBUG ) ? '.min' : '';
 }

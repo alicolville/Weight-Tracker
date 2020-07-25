@@ -1,7 +1,6 @@
 //
 // To compress this script, use https://jscompress.com
 //
-
 jQuery( document ).ready( function ($ ) {
 
 	// Search for any Weight Tracker charts and render chart.js

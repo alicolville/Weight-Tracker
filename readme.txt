@@ -165,7 +165,6 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 //test GF
 // Chart - allow axes's to be displayed e..g only this custom field, etc
 
-// eyJ0eXBlIjoicHJvLXBsdXMiLCJleHBpcnktZGF5cyI6NjAwMCwic2l0ZS1oYXNoIjoiMzkxMzc3IiwiZXhwaXJ5LWRhdGUiOiIyMDM0LTAxLTI4IiwiaGFzaCI6ImJhNzExNjY3OTU5ODQ2NWQ5YTBiNDY0OTEyYzc4YmQ5In0
 
 Documentation updates:
 remove measurements from documentation site
