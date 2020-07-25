@@ -158,7 +158,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 = 8.0 =
 
 // TODO: Explaoin Challenegs more in UI and doc site
-// compress ws-ls-entry-form.js, admin-and-public.min.css, data-footable.js, ws-ls.css
+// compress admin-and-public.min.css, data-footable.js, ws-ls.css
 // Fix Start Weight
        Latest Weight
        Diff. from Start in admin side bar

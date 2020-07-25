@@ -65,7 +65,7 @@
 
 		wp_enqueue_script('jquery-ui-datepicker');
 		wp_enqueue_script('ws-ls-js', plugins_url( '../assets/js/ws-ls' . 	$minified . '.js', __FILE__ ), array(), WE_LS_CURRENT_VERSION, true);
-		wp_enqueue_script('ws-ls-js-form', plugins_url( '../assets/js/ws-ls-entry-form' . 	$minified . '.js', __FILE__ ), array(), WE_LS_CURRENT_VERSION, true);
+		//wp_enqueue_script('ws-ls-js-form', plugins_url( '../assets/js/ws-ls-entry-form' . 	$minified . '.js', __FILE__ ), array(), WE_LS_CURRENT_VERSION, true);
 
 
         // Add localization data for JS
@@ -145,7 +145,6 @@
  */
 function ws_ls_use_minified() {
 	//return '.min';
-	return '.min';
     return ( defined('SCRIPT_DEBUG' ) && false == SCRIPT_DEBUG ) ? '.min' : '';
 }
 

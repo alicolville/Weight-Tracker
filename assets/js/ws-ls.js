@@ -209,6 +209,7 @@ jQuery( document ).ready( function ( $ ) {
         ws_ls_post( 'ws_ls_save_preferences', post_data, ws_ls_user_preference_callback );
     }
   }
+
 });
 
 /**
@@ -253,7 +254,7 @@ function ws_ls_user_preference_callback( data, response ) {
  * @param key
  * @returns {string}
  */
-function ws_ls_querystring_value(key ) {
+function ws_ls_querystring_value( key ) {
 
     let page_url    = window.location.search.substring( 1 );
     let qs_values   = page_url.split('&' );
@@ -267,3 +268,4 @@ function ws_ls_querystring_value(key ) {
         }
     }
 }
+
