@@ -20,7 +20,7 @@ jQuery( document ).ready( function ( $ ) {
   });
 
   // -----------------------------------------------------------------------
-  // Tabs (zozo)
+  // Tabs (ZoZo)
   // -----------------------------------------------------------------------
 
   // Just saved data or cancelled? If so, set default Tab to be "In Detail"
