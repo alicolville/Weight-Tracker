@@ -3,19 +3,18 @@
 //
 jQuery( document ).ready(function ($) {
 
-
-    if ($.fn.zozoTabs) {
-        $("#ws-ls-tabs").zozoTabs({
-            rounded: false,
-            multiline: true,
-            theme: "silver",
-            size: "medium",
-            responsive: true,
-            animation: {
-                effects: "slideH",
-                easing: "easeInOutCirc",
-                type: "jquery"
-            }
+    if ( $.fn.zozoTabs ) {
+        $( '#ws-ls-tabs' ).zozoTabs({
+                                      rounded:    false,
+                                      multiline:  true,
+                                      theme:      'silver',
+                                      size:       'medium',
+                                      responsive: true,
+                                      animation: {
+                                          effects:  'slideH',
+                                          easing:   'easeInOutCirc',
+                                          type:     'jquery'
+                                      }
         });
     }
 

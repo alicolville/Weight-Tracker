@@ -96,8 +96,7 @@ function ws_ls_enqueue_admin_files(){
 
 	wp_enqueue_style( 'ws-ls-admin-style', plugins_url( '../assets/css/admin.css', __FILE__ ), [], WE_LS_CURRENT_VERSION );
 
-    // Enqueue admin.js regardless (needed to dismiss notices)
-    wp_enqueue_script( 'ws-ls-admin', plugins_url( '../assets/js/admin.js', __FILE__ ), [ 'jquery' ], WE_LS_CURRENT_VERSION );
+    wp_enqueue_script( 'ws-ls-admin', plugins_url( '../assets/js/admin' . 	$minified . '.js', __FILE__ ), [ 'jquery' ], WE_LS_CURRENT_VERSION );
 
     // Settings page
 	if( false === empty( $_GET[ 'page' ] ) && true === in_array( $_GET[ 'page' ], [ 'ws-ls-settings', 'ws-ls-data-setup-wizard' ] ) ) {
