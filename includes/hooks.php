@@ -44,10 +44,10 @@ function ws_ls_enqueue_css(){
 		wp_enqueue_style( 'wlt-style-both', plugins_url( '../assets/css/admin-and-public' . 	$minified . '.css', __FILE__ ), [], WE_LS_CURRENT_VERSION );
 	}
 
-	wp_enqueue_style( 'jquery-style', plugins_url( '../assets/css/jquery-ui.min.css', __FILE__ ), [], WE_LS_CURRENT_VERSION );
+	wp_enqueue_style( 'jquery-style', plugins_url( '../assets/css/libraries/jquery-ui.min.css', __FILE__ ), [], WE_LS_CURRENT_VERSION );
 
-	wp_enqueue_style( 'wlt-tabs', plugins_url( '../assets/css/tabs.min.css', __FILE__ ), [], WE_LS_CURRENT_VERSION );
-	wp_enqueue_style( 'wlt-tabs-flat', plugins_url( '../assets/css/tabs.flat.min.css', __FILE__ ), [], WE_LS_CURRENT_VERSION );
+	wp_enqueue_style( 'wlt-tabs', plugins_url( '../assets/css/libraries/tabs.min.css', __FILE__ ), [], WE_LS_CURRENT_VERSION );
+	wp_enqueue_style( 'wlt-tabs-flat', plugins_url( '../assets/css/libraries/tabs.flat.min.css', __FILE__ ), [], WE_LS_CURRENT_VERSION );
 
 }
 add_action( 'wp_head', 'ws_ls_enqueue_css' );
@@ -101,8 +101,8 @@ function ws_ls_enqueue_admin_files(){
     // Settings page
 	if( false === empty( $_GET[ 'page' ] ) && true === in_array( $_GET[ 'page' ], [ 'ws-ls-settings', 'ws-ls-data-setup-wizard' ] ) ) {
 		wp_enqueue_script('jquery-tabs', plugins_url( '../assets/js/libraries/tabs.min.js', __FILE__ ), [ 'jquery' ], WE_LS_CURRENT_VERSION );
-		wp_enqueue_style('wlt-tabs', plugins_url( '../assets/css/tabs.min.css', __FILE__ ), [], WE_LS_CURRENT_VERSION );
-		wp_enqueue_style('wlt-tabs-flat', plugins_url( '../assets/css/tabs.flat.min.css', __FILE__ ), [], WE_LS_CURRENT_VERSION );
+		wp_enqueue_style('wlt-tabs', plugins_url( '../assets/css/libraries/tabs.min.css', __FILE__ ), [], WE_LS_CURRENT_VERSION );
+		wp_enqueue_style('wlt-tabs-flat', plugins_url( '../assets/css/libraries/tabs.flat.min.css', __FILE__ ), [], WE_LS_CURRENT_VERSION );
 	}
 
 	if( false === empty( $_GET[ 'page' ] ) && true === in_array( $_GET['page'], [ 'ws-ls-data-home', 'ws-ls-license', 'ws-ls-data-setup-wizard', 'ws-ls-challenges' ] ) ) {
@@ -139,7 +139,7 @@ function ws_ls_enqueue_form_dependencies() {
 
 	// CSS
 	wp_enqueue_style( 'wlt-style', plugins_url( '../assets/css/ws-ls' . 	$minified . '.css', __FILE__ ), [], WE_LS_CURRENT_VERSION );
-	wp_enqueue_style('jquery-style', plugins_url( '../assets/css/jquery-ui.min.css', __FILE__ ), [], WE_LS_CURRENT_VERSION );
+	wp_enqueue_style('jquery-style', plugins_url( '../assets/css/libraries/jquery-ui.min.css', __FILE__ ), [], WE_LS_CURRENT_VERSION );
 
 	// JavaScript
 	wp_enqueue_script( 'jquery-ui-datepicker' );

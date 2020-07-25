@@ -157,13 +157,8 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 = 8.0 =
 
-// TODO: Explaoin Challenegs more in UI and doc site
-// compress admin-and-public.min.css, data-footable.js, ws-ls.css
-// Fix Start Weight
-       Latest Weight
-       Diff. from Start in admin side bar
-//test GF
-// Chart - allow axes's to be displayed e..g only this custom field, etc
+
+// compress admin-and-public.min.css,  ws-ls.css
 
 
 Documentation updates:
