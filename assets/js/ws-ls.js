@@ -1,8 +1,4 @@
-//
-// To compress this script, use https://jscompress.com
-//
-
-let tabs_global = false;
+var tabs_global = false;
 
 jQuery( document ).ready( function ( $ ) {
 
