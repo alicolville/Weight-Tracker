@@ -12,11 +12,9 @@
 	 */
 	function ws_ls_groups_enabled() {
 
-		if ( false === WS_LS_IS_PRO ) {
-			return false;
-		}
+		return WS_LS_IS_PRO;
 
-		return 'no' === get_option('ws-ls-enable-groups', true ) ? false : true;
+		// return 'no' === get_option('ws-ls-enable-groups', true ) ? false : true;
 	}
 
 	/**
@@ -293,6 +291,10 @@
 	 */
 	function ws_ls_groups_add( $name ) {
 
+		if ( false === WS_LS_IS_PRO ) {
+			return false;
+		}
+
 		if ( false === is_admin() ) {
 			return false;
 		}
@@ -558,10 +560,6 @@
 	 **/
 	function ws_ls_ajax_groups_get(){
 
-		if ( false === WS_LS_IS_PRO ) {
-			return;
-		}
-
 		check_ajax_referer( 'ws-ls-user-tables', 'security' );
 
 		$table_id = ws_ls_post_value('table_id');
@@ -578,12 +576,18 @@
 			[ 'name' => 'weight_display', 'title' => __('Total Weight Difference', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ]
 		];
 
-		$rows = ws_ls_groups( false );
+		$rows = [];
 
-		foreach ( $rows as &$row ) {
-			$row[ 'name' ]              = ws_ls_render_link( ws_ls_groups_link_to_page( $row[ 'id' ] ) , $row[ 'name' ] );
-			$row[ 'weight_display' ]    = ws_ls_weight_display( $row[ 'weight_difference' ], NULL, 'display', false, true );
-			$row[ 'count' ]             = ws_ls_groups_count( $row[ 'id' ] );
+		if ( true === WS_LS_IS_PRO ) {
+
+			$rows = ws_ls_groups( false );
+
+			foreach ( $rows as &$row ) {
+				$row[ 'name' ]              = ws_ls_render_link( ws_ls_groups_link_to_page( $row[ 'id' ] ) , $row[ 'name' ] );
+				$row[ 'weight_display' ]    = ws_ls_weight_display( $row[ 'weight_difference' ], NULL, 'display', false, true );
+				$row[ 'count' ]             = ws_ls_groups_count( $row[ 'id' ] );
+			}
+
 		}
 
 		$data = [
@@ -604,10 +608,6 @@
 	 **/
 	function ws_ls_ajax_groups_users_get(){
 
-		if ( false === WS_LS_IS_PRO ) {
-			return;
-		}
-
 		check_ajax_referer( 'ws-ls-user-tables', 'security' );
 
 		$table_id = ws_ls_post_value( 'table_id' );
@@ -627,23 +627,29 @@
             [ 'name' => 'target', 'title' => __('Target', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ],
 		];
 
-		$rows = ws_ls_groups_users_for_given_group( $group_id );
+		$rows = [];
 
-		foreach ( $rows as &$row ) {
+		if ( true === WS_LS_IS_PRO ) {
 
-			$row[ 'display_name' ] = ws_ls_get_link_to_user_profile( $row[ 'user_id' ], $row[ 'display_name' ] );
+			$rows = ws_ls_groups_users_for_given_group( $group_id );
 
-            $stats = ws_ls_db_entries_count( $row[ 'user_id' ] );
+			foreach ( $rows as &$row ) {
 
-            if ( false === empty( $stats ) ) {
+				$row[ 'display_name' ] = ws_ls_get_link_to_user_profile( $row[ 'user_id' ], $row[ 'display_name' ] );
 
-                $row[ 'number-of-entries' ] = $stats['number-of-entries'];
-                $row[ 'start-weight' ] = ws_ls_shortcode_start_weight( $row[ 'user_id' ] );
-                $row[ 'latest-weight' ] = ws_ls_shortcode_recent_weight( $row[ 'user_id' ] );
-                $row[ 'diff-weight' ] = ws_ls_shortcode_difference_in_weight_from_oldest( $row[ 'user_id' ] );
-                $row[ 'target' ] = ws_ls_target_get( $row[ 'user_id' ], 'display' );
-            }
-        }
+				$stats = ws_ls_db_entries_count( $row[ 'user_id' ] );
+
+				if ( false === empty( $stats ) ) {
+
+					$row[ 'number-of-entries' ] = $stats['number-of-entries'];
+					$row[ 'start-weight' ] = ws_ls_shortcode_start_weight( $row[ 'user_id' ] );
+					$row[ 'latest-weight' ] = ws_ls_shortcode_recent_weight( $row[ 'user_id' ] );
+					$row[ 'diff-weight' ] = ws_ls_shortcode_difference_in_weight_from_oldest( $row[ 'user_id' ] );
+					$row[ 'target' ] = ws_ls_target_get( $row[ 'user_id' ], 'display' );
+				}
+			}
+
+		}
 
 		$data = [
 			'columns' => $columns,

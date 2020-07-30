@@ -21,8 +21,6 @@ function ws_ls_admin_page_data_user() {
 		ws_ls_awards_db_delete_awards_for_user( $user_id );
 	}
 
-
-
     $user_data = get_userdata( $user_id );
 ?>
 <?php if(!empty($_GET['user-preference-saved'])) : ?>

@@ -218,6 +218,7 @@ wlt-chart to wt-chart
 * Improvement: User entry tables: Usernames now open the user's record in a new tab.
 * Improvement: Emails notifications: Now using underlying email manager that was added in 6.1.
 * Improvement: Emails notifications: Subjects are more informative.
+* Improvement: User groups are now enabled by default and appear on the main menu.
 * Improvement: WLT Shortcode: Week Ranges are now displayed when over 150 weeks. They can also have to be enabled with new argument "enable-week-ranges"
 * Improvement: Admin JS has been minified.
 * Improvement: All CSS files are now minified.

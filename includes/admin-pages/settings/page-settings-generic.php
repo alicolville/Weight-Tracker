@@ -261,17 +261,6 @@ function ws_ls_settings_page_generic() {
                                             <h3><?php echo __( 'Groups' , WE_LS_SLUG); ?></h3>
                                             <table class="form-table">
                                                 <tr class="<?php echo $disable_if_not_pro_class; ?>">
-                                                    <th scope="row"><?php echo __( 'Enable Groups?' , WE_LS_SLUG); ?></th>
-                                                    <td>
-                                                        <select id="ws-ls-enable-groups" name="ws-ls-enable-groups">
-                                                            <option value="yes" <?php selected( get_option('ws-ls-enable-groups'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
-                                                            <option value="no" <?php selected( get_option('ws-ls-enable-groups'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
-                                                        </select>
-                                                        <p><?php echo __('Add the ability to place your user\'s into groups.', WE_LS_SLUG)?></p>
-                                                        <br /><p><a href="<?php echo ws_ls_groups_link(); ?>" class="button"><?php echo __( 'Manage User Groups' , WE_LS_SLUG); ?></a></p>
-                                                    </td>
-                                                </tr>
-                                                <tr class="<?php echo $disable_if_not_pro_class; ?>">
                                                     <th scope="row"><?php echo __( 'Allow user\'s to edit their own group?' , WE_LS_SLUG); ?></th>
                                                     <td>
                                                         <select id="ws-ls-enable-groups-user-edit" name="ws-ls-enable-groups-user-edit">
@@ -986,7 +975,6 @@ function ws_ls_register_settings(){
         register_setting( 'we-ls-options-group', 'ws-ls-grid-lines' );
 
 	    // Groups
-	    register_setting( 'we-ls-options-group', 'ws-ls-enable-groups' );
 	    register_setting( 'we-ls-options-group', 'ws-ls-enable-groups-user-edit' );
 
 	    // Birthdays
