@@ -2,9 +2,13 @@
 
 defined('ABSPATH') or die("Jog on!");
 
-/**
- * Refactor complete: 14/06/2020
- */
+// Core MySQL tables
+define( 'WE_LS_TABLENAME', 'WS_LS_DATA' );
+define( 'WE_LS_TARGETS_TABLENAME', 'WS_LS_DATA_TARGETS' );
+define( 'WE_LS_USER_PREFERENCES_TABLENAME', 'WS_LS_DATA_USER_PREFERENCES' );
+define( 'WE_LS_USER_STATS_TABLENAME', 'WS_LS_DATA_USER_STATS' );
+define( 'WE_LS_LOG_TABLENAME', 'WS_LS_ERROR_LOG' );
+define( 'WE_LS_EMAIL_TABLENAME', 'WS_LS_EMAIL_TEMPLATES' );
 
 /**
  * Return the user's target weight in Kg
@@ -763,6 +767,102 @@ function ws_ls_log_delete_old() {
 }
 
 /**
+ * Create core MySQL tables
+ */
+function ws_ls_db_create_core_tables() {
+
+	global $wpdb;
+
+	$table_name = $wpdb->prefix . WE_LS_TABLENAME;
+
+	$charset_collate = $wpdb->get_charset_collate();
+
+	$sql = "CREATE TABLE $table_name (
+		id mediumint(9) NOT NULL AUTO_INCREMENT,
+		weight_date datetime NOT NULL,
+		weight_user_id integer NOT NULL,
+		weight_weight float NOT NULL,
+		weight_notes text null,
+		migrate int NULL DEFAULT 0,
+		inserted TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	  UNIQUE KEY id (id)
+	) $charset_collate;";
+
+	require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+	dbDelta( $sql );
+
+	$table_name = $wpdb->prefix . WE_LS_TARGETS_TABLENAME;
+
+	$sql = "CREATE TABLE $table_name (
+		  id mediumint(9) NOT NULL AUTO_INCREMENT,
+		  weight_user_id integer NOT NULL,
+		  target_weight_weight float NOT NULL,
+		  UNIQUE KEY id (id)
+	) $charset_collate;";
+
+	dbDelta( $sql );
+
+	$table_name = $wpdb->prefix . WE_LS_USER_PREFERENCES_TABLENAME;
+
+	$sql = "CREATE TABLE $table_name (
+			 user_id integer NOT NULL,
+		     activity_level float DEFAULT 0 NULL,
+			 settings text not null,
+             height float DEFAULT 0 NULL,
+             gender float DEFAULT 0 NULL,
+             aim float DEFAULT 0 NULL,
+             dob datetime NULL,
+             body_type float DEFAULT 0 NULL,
+             challenge_opt_in float DEFAULT -1 NULL,
+			 UNIQUE KEY user_id (user_id)
+	 ) $charset_collate;";
+
+	dbDelta( $sql );
+
+	$table_name = $wpdb->prefix . WE_LS_USER_STATS_TABLENAME;
+
+	$sql = "CREATE TABLE $table_name (
+			user_id integer NOT NULL,
+			start_weight float DEFAULT 0 NULL,
+			recent_weight float DEFAULT 0 NULL,
+			weight_difference float DEFAULT 0 NULL,
+			sum_of_weights float DEFAULT 0 NULL,
+			no_entries integer DEFAULT 0 NULL,
+			target_added integer DEFAULT 0 NULL,
+			last_update TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+			UNIQUE KEY user_id (user_id)
+	) $charset_collate;";
+
+	dbDelta( $sql );
+
+	$table_name = $wpdb->prefix . WE_LS_LOG_TABLENAME;
+
+	$sql = "CREATE TABLE $table_name (
+			id mediumint(9) NOT NULL AUTO_INCREMENT,
+			timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+			module varchar(20) NOT NULL,
+			message text NOT NULL,
+			UNIQUE KEY id (id)
+	) $charset_collate;";
+
+	dbDelta( $sql );
+
+	$table_name = $wpdb->prefix . WE_LS_EMAIL_TABLENAME;
+
+	$sql = "CREATE TABLE $table_name (
+			id mediumint(9) NOT NULL AUTO_INCREMENT,
+			slug varchar(10) NOT NULL,
+			subject varchar(40) NOT NULL,
+			email text NOT NULL,
+			UNIQUE KEY id (id)
+	) $charset_collate;";
+
+	dbDelta( $sql );
+
+}
+add_action( 'ws-ls-rebuild-database-tables', 'ws_ls_db_create_core_tables' );
+
+/**
  * Return an array of allowed sort columns
  * @return array
  */
@@ -777,3 +877,4 @@ function ws_ls_db_lookup_sort_columns() {
 function ws_ls_db_lookup_sort_orders() {
 	return [ 'asc', 'desc' ];
 }
+
