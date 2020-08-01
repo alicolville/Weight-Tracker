@@ -172,28 +172,4 @@ require_once( WS_LS_ABSPATH . 'includes/deprecated.php' );
 function ws_ls_load_textdomain() {
   load_plugin_textdomain( WE_LS_SLUG, false, dirname( plugin_basename( __FILE__ )  ) . '/includes/languages/' );
 }
-add_action('plugins_loaded', 'ws_ls_load_textdomain');
-
-
-    function t() {
-
-    	if ( true === empty( $_GET[ 'debug' ] ) ) {
-    		return;
-	    }
-
-	 //   $setting = ws_ls_setting();
-
-    //	var_Dump( $setting );
-//	    $t = ws_ls_stats_sum_weight_difference();
-//print_r($t);
-    	$user_id = 203; // get_current_user_id();
-
-
-   	print_r(ws_ls_cache_user_get_all( $user_id ));
-	    print_r(ws_ls_cache_user_get_all( NULL ));
-
-
-
-		die;
-	}
-	add_action('init', 't');
+add_action( 'plugins_loaded', 'ws_ls_load_textdomain' );
