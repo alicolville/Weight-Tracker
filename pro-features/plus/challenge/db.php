@@ -11,6 +11,10 @@ defined('ABSPATH') or die("Jog on!");
  */
 function ws_ls_challenges_add( $name, $start_date = NULL, $end_date = NULL ) {
 
+	if ( false === ws_ls_challenges_is_enabled() ) {
+		return false;
+	}
+
 	if ( true === empty( $name ) ) {
 		return false;
 	}
@@ -42,6 +46,10 @@ function ws_ls_challenges_add( $name, $start_date = NULL, $end_date = NULL ) {
  * @return bool
  */
 function ws_ls_challenges_enabled( $challenge_id, $enabled = true ) {
+
+	if ( false === ws_ls_challenges_is_enabled() ) {
+		return false;
+	}
 
 	if ( true === empty( $challenge_id ) ) {
 		return false;
@@ -148,6 +156,10 @@ function ws_ls_challenges_get( $challenge_id ) {
  * @return mixed
  */
 function ws_ls_challenges( $enabled = true ) {
+
+	if ( false === ws_ls_challenges_is_enabled() ) {
+		return NULL;
+	}
 
 	global $wpdb;
 

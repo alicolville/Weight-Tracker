@@ -6,12 +6,6 @@ function ws_ls_challenges_admin_page() {
 
     ws_ls_permission_check_message();
 
-    $challenges_enabled = ws_ls_challenges_is_enabled();
-
-    if ( false === $challenges_enabled ) {
-        ws_ls_challenges_admin_disabled();
-        return;
-    }
     ws_ls_data_table_enqueue_scripts();
 
     $challenge_id   = ws_ls_querystring_value( 'challenge-id', true );
@@ -57,7 +51,11 @@ function ws_ls_challenges_admin_page() {
         <div id="post-body" class="metabox-holder">
             <div id="post-body-content">
                 <div class="meta-box-sortables ui-sortable">
-
+	                <?php
+		                if ( true !== WS_LS_IS_PRO_PLUS ) {
+			                ws_ls_display_pro_upgrade_notice();
+		                }
+	                ?>
                     <?php if ( true === in_array( $mode, [ 'delete', 'list' ] ) ): ?>
                         <div class="postbox">
                             <h2 class="hndle"><span><?php echo __( 'Current Challenges', WE_LS_SLUG ); ?></span></h2>
@@ -67,12 +65,9 @@ function ws_ls_challenges_admin_page() {
                                         <i class="fa fa-plus"></i>
                                         <?php echo __( 'Add a challenge', WE_LS_SLUG ); ?>
                                     </a>
-	                                <a href="https://weight.yeken.uk/challenges/" class="button" target="_blank"><?php echo __( 'Read more about Challenges', WE_LS_SLUG ); ?></a>
+	                            <p><?php echo __( 'Why not set challenges for your user\'s within a given time period? Display Total Weight Lost, BMI Change, %Body Weight, Weight Tracker Streaks and Meal Tracker streaks achieved by each user in a league table.', WE_LS_SLUG ); ?>
+		                            <?php echo __( 'Besides viewing all your challenges and their data, the shortcode will allow you to display the league table in the public facing website.', WE_LS_SLUG ); ?> <a href="https://weight.yeken.uk/challenges/" target="_blank"><?php echo __( 'Read more about Challenges', WE_LS_SLUG ); ?></a>
 								</p>
-								<p>
-									<?php echo __( 'Why not create challenges for your users and build a league table for a given time period?', WE_LS_SLUG ); ?>
-								</p>
-
                                 <?php ws_ls_challenges_table(); ?>
                             </div>
                         </div>
@@ -124,7 +119,7 @@ function ws_ls_challenges_admin_page() {
                                     <input type="text" name="ws-ls-end-date" id="ws-ls-end-date" tabindex="3" value="<?php echo ws_ls_post_value( 'ws-ls-end-date', false,'' ); ?>" class="we-ls-datepicker" />
                                     <br />
                                     <input type="hidden" name="add-challenge" value="true" />
-                                    <input type="submit" class="button" value="Add" />
+                                    <input type="submit" class="button" value="Add" <?php if ( false === ws_ls_challenges_is_enabled() ) { echo ' disabled'; } ?>  />
                                 </form>
                             </div>
                         </div>
