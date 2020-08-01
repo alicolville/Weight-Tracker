@@ -14,6 +14,7 @@ function ws_ls_form_weight( $arguments = [] ) {
 	                                            'hide-fields-meta'      => false,
 	                                            'hide-fields-photos'    => false,
 	                                            'hide-login-message'    => false,
+	                                            'hide-confirmation'     => false,
 	                                            'hide-notes'            => ( 'no' === get_option( 'ws-ls-allow-user-notes', 'yes' ) ),
 	                                            'hide-titles'           => false,
 	                                            'html'                  => '',
@@ -205,6 +206,7 @@ function ws_ls_form_init( $arguments = [] ) {
 
 	// Has this form been previously submitted?
 	if ( false === empty( $save_response ) &&
+	        false === $arguments[ 'hide-confirmation' ] &&
 	     $arguments[ 'form-number'] === $save_response['form_number'] ){
 		$arguments[ 'html' ] .=  ( true === $save_response[ 'error' ] ) ? $save_response[ 'message' ] : ws_ls_display_blockquote( __( 'Your entry has been successfully saved.', WE_LS_SLUG ) );
 	}
