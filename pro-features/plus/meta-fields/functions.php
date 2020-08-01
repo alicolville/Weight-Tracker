@@ -11,12 +11,18 @@
         return WS_LS_IS_PRO;
     }
 
-    /**
-     * Return base URL for meta fields
-     * @return string
-     */
-    function ws_ls_meta_fields_base_url() {
-        return admin_url( 'admin.php?page=ws-ls-meta-fields');
+/**
+ * Return base URL for meta fields
+ *
+ * @param array $args
+ *
+ * @return string
+ */
+    function ws_ls_meta_fields_base_url( $args = [] ) {
+
+	    $url = admin_url( 'admin.php?page=ws-ls-meta-fields' );
+
+    	return ( false === empty( $args ) ) ? add_query_arg( $args, $url ) : $url;
     }
 
     /**

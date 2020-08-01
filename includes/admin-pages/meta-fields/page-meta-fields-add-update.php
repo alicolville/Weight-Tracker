@@ -75,7 +75,7 @@
                                                 </div>
                                                 <div class="ws-ls-cell">
                                                     <?php
-                                                        $checked = ( false === empty( $meta_field['field_type'] ) ) ? (int) $meta_field['field_type'] : 0;
+                                                        $checked = ( false === empty( $meta_field['field_type'] ) ) ? (int) $meta_field['field_type'] : ws_ls_querystring_value('field_type', true);
                                                     ?>
                                                     <select name="field_type" id="field_type">
                                                         <option value="0" <?php selected( $checked, 0 ); ?>><?php echo __('Number', WE_LS_SLUG); ?></option>
