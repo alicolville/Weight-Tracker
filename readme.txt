@@ -223,6 +223,7 @@ wlt-chart to wt-chart
 * Improvement: Admin JS has been minified.
 * Improvement: All CSS files are now minified.
 * Improvement: Added buttons for quickly adding new custom fields.
+* Improvement: Challenges are now enabled by default.
 * Bug fix: "Who can view and modify user data?" has been fixed so user's with the specified minimum role can now access admin data pages.
 * Bug fix: Awards for a user are now deleted when "Delete all data for this user" has been clicked.
 * Bug fix: All challenge data for a user is now deleted when "Delete all data for this user" has been clicked.

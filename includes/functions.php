@@ -1225,8 +1225,7 @@ function ws_ls_user_display_name( $user_id ) {
  * @return bool
  */
 function ws_ls_challenges_is_enabled() {
-    return ( true === WS_LS_IS_PRO_PLUS &&
-        'yes' === get_option( 'ws-ls-challenges-enabled', 'no' ) );
+    return WS_LS_IS_PRO_PLUS;
 }
 
 /**
