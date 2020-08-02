@@ -469,8 +469,13 @@ function ws_ls_db_dates_min_max_get( $user_id ) {
 	return $row;
 }
 
-function ws_ls_set_user_preferences($in_admin_area, $fields = [])
-{
+/**
+ * @param $in_admin_area
+ * @param array $fields
+ *
+ * @return bool|false|int
+ */
+function ws_ls_set_user_preferences( $in_admin_area, $fields = [] ) {
     global $wpdb;
 
     // Defaults for user preference fields

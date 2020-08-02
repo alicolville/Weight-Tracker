@@ -1,13 +1,6 @@
 <?php
 defined('ABSPATH') or die("Jog on!");
 
-/*
-Date Interval class doesn't exist before PHP 4.3.
-*/
-function ws_ls_is_date_intervals_enabled()	{
-  return class_exists('DateInterval');
-}
-
 /**
  * Delete all targets and weight entries
  */
