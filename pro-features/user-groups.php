@@ -129,7 +129,7 @@
 	function ws_ls_groups_hooks_user_preferences_form( $html, $user_id ) {
 
 		if ( false === is_admin() && false === ws_ls_groups_can_users_edit() ) {
-			return;
+			return $html;
 		}
 
 		if ( true === ws_ls_groups_enabled() ) {
@@ -168,7 +168,7 @@
 
 		return $html;
 	}
-	add_filter( 'wlt-filter-user-settings-below-dob',  'ws_ls_groups_hooks_user_preferences_form', 10, 2 );
+	add_filter( 'wlt-filter-user-settings-below-dob',  'ws_ls_groups_hooks_user_preferences_form', 15, 2 );
 
 /**
  * Add a <select> for Group to user preference form

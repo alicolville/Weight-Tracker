@@ -29,7 +29,7 @@ add_action( 'wlt-hook-delete-cache-for-user', 'ws_ls_challenges_hook_clear_last_
 function ws_ls_challenges_hook_settings_form_opt_in( $html, $user_id ) {
 
     if ( false === ws_ls_challenges_is_enabled() ) {
-        return '';
+        return $html;
     }
 
     $html           .= ws_ls_title( __( 'Challenges', WE_LS_SLUG ) );
@@ -48,7 +48,7 @@ function ws_ls_challenges_hook_settings_form_opt_in( $html, $user_id ) {
 
     return $html;
 }
-add_filter( 'wlt-filter-user-settings-below-dob',  'ws_ls_challenges_hook_settings_form_opt_in', 10, 2 );
+add_filter( 'wlt-filter-user-settings-below-dob',  'ws_ls_challenges_hook_settings_form_opt_in', 15, 2 );
 
 /**
  * Save user preference value
