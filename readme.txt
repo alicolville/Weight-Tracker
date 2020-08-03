@@ -244,6 +244,7 @@ wlt-chart to wt-chart
 * Bug fix: [wt-group-weight-difference] now shows the weight in the correct user format.
 * Bug fix: User stats table is now cached for up to an hour.
 * Bug fix: When placing more than one form on a page, unique IDs are generated for photo fields. This fixes an issue where the first field would be populated with a user selected a photo rather than the correct field.
+* Bug fix: "ID" now displayed when displaying custom fields table in admin area.
 
 = 7.6.3 =
 

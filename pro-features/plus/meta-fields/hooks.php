@@ -11,7 +11,7 @@
         check_ajax_referer( 'ws-ls-user-tables', 'security' );
 
         $columns = [
-                        [ 'name' => 'id', 'title' => 'ID', 'visible'=> false, 'type' => 'number' ],
+                        [ 'name' => 'id', 'title' => 'ID', 'visible'=> true, 'type' => 'number' ],
                         [ 'name' => 'field_name', 'title' => __('Field / Question', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
                         [ 'name' => 'field_key', 'title' => __('Key', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
                         [ 'name' => 'field_type', 'title' => __('Type', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
