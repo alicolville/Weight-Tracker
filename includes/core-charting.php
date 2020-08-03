@@ -40,7 +40,7 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 	$chart_config[ 'meta-fields' ]      =  WS_LS_IS_PRO ? ws_ls_meta_fields_plottable() : false;
 	$chart_config[ 'show-meta-fields' ] = ( true === ws_ls_to_bool( $chart_config[ 'show-meta-fields' ] ) &&
 	                                        false === empty( $chart_config[ 'meta-fields' ] ) );
-	$chart_config[ 'y-axis-unit' ]      = ( true === ws_ls_setting( 'weight-unit' ) ) ? __( 'lbs', WE_LS_SLUG ) : __( 'kg', WE_LS_SLUG );
+	$chart_config[ 'y-axis-unit' ]      = ( 'kg' !== ws_ls_setting( 'weight-unit', $chart_config[ 'user-id' ] ) ) ? __( 'lbs', WE_LS_SLUG ) : __( 'kg', WE_LS_SLUG );
 	$chart_config[ 'points-enabled' ]   = ws_ls_option_to_bool( 'ws-ls-allow-points', 'yes', true );
 	$chart_config[ 'point-size' ]       = ws_ls_option_to_int( 'ws-ls-point-size', 3, true );
 	$chart_config[ 'line-thickness' ]   = 2;
