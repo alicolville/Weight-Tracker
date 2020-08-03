@@ -5,13 +5,14 @@ defined('ABSPATH') or die("Jog on!");
 // -----------------------------------------------------------------
 // Stats
 // -----------------------------------------------------------------
-/*
+/**
 	Fetch records that haven't been updated in the last 6 hours
 */
 function ws_ls_db_stats_fetch_those_that_need_update() {
 
 	global $wpdb;
 	$sql = 'SELECT * FROM ' . $wpdb->prefix . WE_LS_USER_STATS_TABLENAME . ' where last_update < DATE_SUB( NOW(), INTERVAL 6 HOUR ) or last_update is null ORDER BY RAND()';
+
 	return  $wpdb->get_results( $sql, ARRAY_A );
 }
 
@@ -26,23 +27,25 @@ function ws_ls_db_stats_sum_weight_difference() {
 	return ( false == empty( $result ) ) ? floatval( $result ) : false;
 }
 
-/*
-	Copy user IDs of those that have entered weights into stats table (assuming they aren't they're already)
-*/
+/**
+ * Copy user IDs of those that have entered weights into stats table (assuming they aren't they're already)
+ */
 function ws_ls_db_stats_insert_missing_user_ids_into_stats() {
 
 	global $wpdb;
 	$stats_table_name   = $wpdb->prefix . WE_LS_USER_STATS_TABLENAME;
 	$data_table_name    = $wpdb->prefix . WE_LS_TABLENAME;
 
+	// Note: Set last update to 7 days ago so this record is considered to be out of date and requiring a refresh
+
 	$sql = "INSERT INTO $stats_table_name (user_id, start_weight, recent_weight, weight_difference, last_update)
-			Select distinct weight_user_id, NULL, NULL, NULL, NULL from $data_table_name where weight_user_id not in (Select user_id from $stats_table_name)";
+			Select distinct weight_user_id, NULL, NULL, NULL, NOW() - INTERVAL 7 DAY from $data_table_name where weight_user_id not in (Select user_id from $stats_table_name)";
 
 	$wpdb->query( $sql );
 	return;
 }
 
-/*
+/**
 	Copy user IDs of those that have entered weights into stats table (assuming they aren't they're already)
 */
 function ws_ls_db_stats_remove_deleted_user_ids_from_stats() {
@@ -118,6 +121,8 @@ function ws_ls_db_stats_league_table_fetch( $ignore_cache = false, $limit = 10, 
  */
 function ws_ls_db_stats_clear_last_updated_date(){
 	global $wpdb;
-	$wpdb->query( 'Update ' . $wpdb->prefix . WE_LS_USER_STATS_TABLENAME . ' set last_update = NULL' );
+
+	// Note: Set last update to 7 days ago so this record is considered to be out of date and requiring a refresh
+	$wpdb->query( 'Update ' . $wpdb->prefix . WE_LS_USER_STATS_TABLENAME . ' set last_update = NOW() - INTERVAL 7 DAY' );
 	return;
 }

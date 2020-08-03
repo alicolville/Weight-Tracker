@@ -78,7 +78,7 @@ function ws_ls_stats_refresh_summary_stats() {
  */
 function ws_ls_stats_update_for_user( $user_id ) {
 
-	if ( false === empty( $user_id ) ) {
+	if ( true === empty( $user_id ) ) {
 		return;
 	}
 
