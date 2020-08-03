@@ -246,7 +246,7 @@ function ws_ls_challenges_table() {
 				);
 			}
 		}
-		
+
 		?>
 		</tbody>
 	</table>

@@ -61,11 +61,15 @@ function ws_ls_admin_page_view_all() {
 
 									echo ws_ls_data_table_render( [ 'limit' => 5000, 'enable-meta-fields' => $show_meta ] );
 
-									echo sprintf(
-										'&nbsp;<a class="btn button-secondary" href="%s"><i class="fas fa-book-reader"></i> %s</a>',
-										admin_url( 'admin.php?page=ws-ls-data-home&mode=all&show-meta=' ) . ( ( false === $show_meta ) ? 'y' : 'n'),
-										( false === $show_meta ) ? __( 'Include Custom Fields (Slower)', WE_LS_SLUG ) : __( 'Hide Custom Fields (Quicker)', WE_LS_SLUG )
-									);
+									if ( ws_ls_meta_fields_number_of_enabled() > 0 ) {
+
+										echo sprintf(
+											'&nbsp;<a class="btn button-secondary" href="%s"><i class="fas fa-book-reader"></i> %s</a>',
+											admin_url( 'admin.php?page=ws-ls-data-home&mode=all&show-meta=' ) . ( ( false === $show_meta ) ? 'y' : 'n'),
+											( false === $show_meta ) ? __( 'Include Custom Fields (Slower)', WE_LS_SLUG ) : __( 'Hide Custom Fields (Quicker)', WE_LS_SLUG )
+										);
+
+									}
 
 							?>
 						</div>
