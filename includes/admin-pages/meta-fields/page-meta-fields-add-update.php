@@ -196,12 +196,7 @@
                                                 <div class="ws-ls-cell"></div>
                                                 <div class="ws-ls-cell">
                                                     <a class="comment-submit button" href="<?php echo ws_ls_meta_fields_base_url(); ?>"><?php echo __('Cancel', WE_LS_SLUG); ?></a>
-
-                                                    <?php if ( true === ws_ls_meta_fields_is_enabled() ): ?>
-                                                        <input name="submit_button" type="submit" value="<?php echo __('Save', WE_LS_SLUG); ?>" class="comment-submit button button-primary">
-                                                    <?php else: ?>
-                                                        <a class="comment-submit button button-primary" href="<?php echo esc_url( admin_url('admin.php?page=ws-ls-license') ); ?>"><?php echo __('Save', WE_LS_SLUG); ?></a>
-                                                    <?php endif; ?>
+													<input name="submit_button" type="submit" value="<?php echo __('Save', WE_LS_SLUG); ?>" class="comment-submit button button-primary"  <?php if ( false === ws_ls_meta_fields_is_enabled() ) { echo ' disabled'; } ?> >
                                                 </div>
                                             </div>
                                         </div>
