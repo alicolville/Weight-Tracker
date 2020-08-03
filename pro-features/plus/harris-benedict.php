@@ -230,44 +230,50 @@ function ws_ls_harris_benedict_render_table( $user_id, $missing_data_text = fals
 			// Do we wish to include the range used to determine calorie intake for loss / gain?
 			if( true === $include_range && false === empty( $calories[ 'maintain' ][ 'total' ] ) ) {
 
-				$range = ws_ls_harris_benedict_filter_calories_to_lose( $calories[ 'maintain' ][ 'total' ], $user_id, true );
+				if ( true === ws_ls_harris_benedict_show_lose_figures() ) {
 
-				if ( false === empty( $range ) ) {
+					$range = ws_ls_harris_benedict_filter_calories_to_lose( $calories[ 'maintain' ][ 'total' ], $user_id, true );
 
-					$gender = ws_ls_genders_get( $range[ 'gender' ] );
+					if ( false === empty( $range ) ) {
 
-					$html .= sprintf('
+						$gender = ws_ls_genders_get( $range[ 'gender' ] );
+
+						$html .= sprintf('
 						<p><strong>%8$s</strong>: %9$s - %1$d%3$s to %2$d%3$s - %5$s %6$s%7$s.</p>',
-						$range[ 'from' ],
-						$range[ 'to' ],
-						__( 'kcal', WE_LS_SLUG ),
-						$calories['maintain']['total'],
-						__( 'Subtract', WE_LS_SLUG ),
-						esc_html( $range[ 'amount' ] ),
-						'fixed' === $range[ 'unit' ] ? __( 'kcals of total calories to maintain weight', WE_LS_SLUG ) : __( '% of total calories required to maintain weight', WE_LS_SLUG ),
-						__( 'Rule applied for suggested weight loss', WE_LS_SLUG ),
-						( false === empty( $gender ) ) ? $gender : __( 'Everyone', WE_LS_SLUG )
-					);
+							$range[ 'from' ],
+							$range[ 'to' ],
+							__( 'kcal', WE_LS_SLUG ),
+							$calories['maintain']['total'],
+							__( 'Subtract', WE_LS_SLUG ),
+							esc_html( $range[ 'amount' ] ),
+							'fixed' === $range[ 'unit' ] ? __( 'kcals of total calories to maintain weight', WE_LS_SLUG ) : __( '% of total calories required to maintain weight', WE_LS_SLUG ),
+							__( 'Rule applied for suggested weight loss', WE_LS_SLUG ),
+							( false === empty( $gender ) ) ? $gender : __( 'Everyone', WE_LS_SLUG )
+						);
+					}
 				}
 
-				$range = ws_ls_harris_benedict_filter_calories_to_add( $calories[ 'maintain' ][ 'total' ], $user_id, true );
+				if ( true === ws_ls_harris_benedict_show_gain_figures() ) {
 
-				if ( false === empty( $range ) ) {
+					$range = ws_ls_harris_benedict_filter_calories_to_add( $calories[ 'maintain' ][ 'total' ], $user_id, true );
 
-					$gender = ws_ls_genders_get( $range[ 'gender' ] );
+					if ( false === empty( $range ) ) {
 
-					$html .= sprintf('
+						$gender = ws_ls_genders_get( $range[ 'gender' ] );
+
+						$html .= sprintf('
 						<p><strong>%8$s</strong>: %9$s - %1$d%3$s to %2$d%3$s - %5$s %6$s%7$s.</p>',
-						$range[ 'from' ],
-						$range[ 'to' ],
-						__( 'kcal', WE_LS_SLUG ),
-						$calories['maintain']['total'],
-						__( 'Add', WE_LS_SLUG ),
-						esc_html( $range[ 'amount' ] ),
-						'fixed' === $range[ 'unit' ] ? __( 'kcals of total calories to maintain weight', WE_LS_SLUG ) : __( '% of total calories required to maintain weight', WE_LS_SLUG ),
-						__( 'Rule applied for suggested weight gain', WE_LS_SLUG ),
-						( false === empty( $gender ) ) ? $gender : __( 'Everyone', WE_LS_SLUG )
-					);
+							$range[ 'from' ],
+							$range[ 'to' ],
+							__( 'kcal', WE_LS_SLUG ),
+							$calories['maintain']['total'],
+							__( 'Add', WE_LS_SLUG ),
+							esc_html( $range[ 'amount' ] ),
+							'fixed' === $range[ 'unit' ] ? __( 'kcals of total calories to maintain weight', WE_LS_SLUG ) : __( '% of total calories required to maintain weight', WE_LS_SLUG ),
+							__( 'Rule applied for suggested weight gain', WE_LS_SLUG ),
+							( false === empty( $gender ) ) ? $gender : __( 'Everyone', WE_LS_SLUG )
+						);
+					}
 				}
 			}
 

@@ -314,9 +314,12 @@ function ws_ls_settings_page_generic() {
                                                 <tr class="<?php echo $disable_if_not_pro_plus_class; ?>">
                                                     <th scope="row"><?php echo __( 'Show Loss figures?' , WE_LS_SLUG); ?></th>
                                                     <td>
+	                                                    <?php
+	                                                    $show_loss_figures = get_option('ws-ls-cal-show-loss', 'yes' );
+	                                                    ?>
                                                         <select id="ws-ls-cal-show-loss" name="ws-ls-cal-show-loss">
-                                                            <option value="yes" <?php selected( get_option('ws-ls-cal-show-loss'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
-                                                            <option value="no" <?php selected( get_option('ws-ls-cal-show-loss'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+                                                            <option value="yes" <?php selected( $show_loss_figures, 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+                                                            <option value="no" <?php selected( $show_loss_figures, 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
                                                         </select>
                                                         <p><?php echo __('Show loss figures to your users? For example, if your site is aimed at muscle building, you may wish not to.', WE_LS_SLUG)?></p>
                                                     </td>
