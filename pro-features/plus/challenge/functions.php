@@ -207,11 +207,16 @@ function ws_ls_challenges_table() {
 		</thead>
 		<tbody>
 		<?php
-		foreach ( ws_ls_challenges( false ) as $challenge ) {
 
-			$stats = ws_ls_challenges_stats( $challenge[ 'id' ] );
+		$challenges = ws_ls_challenges( false );
 
-			printf ( '    <tr>
+		if ( false === empty( $challenges ) ) {
+
+			foreach ( ws_ls_challenges( false ) as $challenge ) {
+
+				$stats = ws_ls_challenges_stats( $challenge[ 'id' ] );
+
+				printf ( '    <tr>
                                                         <td>%1$d</td>
                                                         <td>%2$s</td>
                                                         <td>%3$s</td>
@@ -225,21 +230,23 @@ function ws_ls_challenges_table() {
                                                             <a href="%13$s" class="btn btn-default" title="%10$s"><i class="fa fa-trash"></i></a>
                                                         </td>
                                                     </tr>',
-				$challenge[ 'id' ],
-				esc_html( $challenge[ 'name' ] ),
-				ws_ls_iso_date_into_correct_format( $challenge[ 'start_date' ] ),
-				ws_ls_iso_date_into_correct_format( $challenge[ 'end_date' ] ),
-				$stats[ 'count' ],
-				$stats[ 'to-be-processed' ],
-				( 1 === (int) $challenge[ 'enabled' ] ) ? __( 'No', WE_LS_SLUG ) : __( 'Yes', WE_LS_SLUG ),
-				__( 'View challenge data', WE_LS_SLUG ),
-				__( 'Close challenge', WE_LS_SLUG ),
-				__( 'Delete challenge', WE_LS_SLUG ),
-				ws_ls_challenge_link( $challenge[ 'id' ] ),
-				ws_ls_challenge_link( $challenge[ 'id' ], 'close' ),
-				ws_ls_challenge_link( $challenge[ 'id' ], 'delete' )
-			);
+					$challenge[ 'id' ],
+					esc_html( $challenge[ 'name' ] ),
+					ws_ls_iso_date_into_correct_format( $challenge[ 'start_date' ] ),
+					ws_ls_iso_date_into_correct_format( $challenge[ 'end_date' ] ),
+					$stats[ 'count' ],
+					$stats[ 'to-be-processed' ],
+					( 1 === (int) $challenge[ 'enabled' ] ) ? __( 'No', WE_LS_SLUG ) : __( 'Yes', WE_LS_SLUG ),
+					__( 'View challenge data', WE_LS_SLUG ),
+					__( 'Close challenge', WE_LS_SLUG ),
+					__( 'Delete challenge', WE_LS_SLUG ),
+					ws_ls_challenge_link( $challenge[ 'id' ] ),
+					ws_ls_challenge_link( $challenge[ 'id' ], 'close' ),
+					ws_ls_challenge_link( $challenge[ 'id' ], 'delete' )
+				);
+			}
 		}
+		
 		?>
 		</tbody>
 	</table>
