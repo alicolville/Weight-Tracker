@@ -340,7 +340,7 @@ function ws_ls_challenges_view_entries( $args ) {
 	}
 
 	$html .= sprintf( '
-                                <table class="ws-ls-footable ws-ls-footable-basic widefat" data-paging="true" data-sorting="true" data-state="true" data-paging-size="10">
+                                <table class="ws-ls-footable ws-ls-footable-basic widefat" data-paging="true" data-sorting="true" data-state="true" data-paging-size="40">
                                     <thead>
                                         <tr>
                                             <th data-type="text">%s</th>',

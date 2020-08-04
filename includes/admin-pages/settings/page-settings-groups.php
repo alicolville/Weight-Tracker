@@ -50,6 +50,7 @@
 	                                       data-sorting="true"
 	                                       data-editing-allow-add="false"
 	                                       data-editing-allow-edit="true"
+	                                       data-paging-size="40"
 	                                       data-cascade="true"
 	                                       data-toggle="true"
 	                                       data-use-parent-width="true">

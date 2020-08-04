@@ -87,6 +87,7 @@ function ws_ls_admin_page_data_summary() {
                                        data-editing-allow-delete="false"
                                        data-editing-allow-edit="false"
                                        data-cascade="true"
+                                       data-paging-size="10"
                                        data-toggle="true"
                                        data-use-parent-width="true">
                                 </table>
@@ -132,7 +133,7 @@ function ws_ls_admin_page_data_summary() {
 										( false === $show_meta ) ? __( 'Include Custom Fields (Slower)', WE_LS_SLUG ) : __( 'Hide Custom Fields (Quicker)', WE_LS_SLUG )
 									);
 								}
-								
+
 						 	?>
 						</div>
 					</div>

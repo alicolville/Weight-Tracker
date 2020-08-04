@@ -43,6 +43,7 @@
                                        data-editing="true"
                                        data-cascade="true"
                                        data-toggle="true"
+                                       data-paging-size="40"
                                        data-use-parent-width="true">
                                 </table>
                             </div>
