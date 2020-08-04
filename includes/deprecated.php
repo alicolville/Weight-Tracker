@@ -27,11 +27,12 @@ function ws_ls_migrate_measurements_into_meta_fields() {
 	ws_ls_log_add('migration', 'Measurements are enabled. Looking to migrate to custom fields.' );
 
 	// Scan for enabled measurement fields.
-	$measurements = get_option( 'ws-ls-measurement', false );
+	$measurements           = ws_ls_migrate_measurement_enabled();
+	$measurements_enabled   = ( false === empty( $measurements[ 'enabled' ] ) ) ? array_keys( $measurements[ 'enabled' ] ) : [];
 
-	if ( false === empty( $measurements['enabled'] ) ) {
+	if ( false === empty( $measurements ) ) {
 
-		$keys = array_keys( $measurements['enabled'] );
+		$keys = array_keys( $measurements[ 'colors' ] );
 
 		$order 		= 100;
 		$unit 		= get_option( 'ws-ls-measurement-units', 'cm' );
@@ -40,7 +41,7 @@ function ws_ls_migrate_measurements_into_meta_fields() {
 		global $wpdb;
 
 		// Reset Migrate flag on DB
-		$result = $wpdb->query ( 'Update ' . $table_name = $wpdb->prefix . WE_LS_TABLENAME . ' set migrate = 0' );
+		$result = $wpdb->query( 'Update ' . $table_name = $wpdb->prefix . WE_LS_TABLENAME . ' set migrate = 0' );
 
 		foreach ( $keys as $key ) {
 
@@ -67,7 +68,7 @@ function ws_ls_migrate_measurements_into_meta_fields() {
 						'sort'			=> $order,
 						'suffix'		=> $unit,
 						'mandatory'		=> $mandatory,
-						'enabled'		=> 2,
+						'enabled'		=> ( true === in_array( $key, $measurements_enabled ) ) ? 2 : 1,
 						'plot_on_graph'	=> 1,
 						'plot_colour'	=> ( false === empty( $measurements[ 'colors' ][ $key ] ) ) ? $measurements[ 'colors' ][ $key ] : '#000000',
 						'migrate'		=> 1
@@ -109,25 +110,41 @@ add_action( 'ws-ls-migrate-old-measurements', 'ws_ls_migrate_measurements_into_m
  */
 function ws_ls_migrate_measurement_details( $key ) {
 
-	$old_measurements = [
-								'left_forearm' 	=> [ 'title' => __('Forearm - Left', WE_LS_SLUG), 'abv' => __('FL', WE_LS_SLUG) ],
-								'right_forearm' => [ 'title' => __('Forearm - Right', WE_LS_SLUG), 'abv' => __('FR', WE_LS_SLUG) ],
-								'left_bicep' 	=> [ 'title' => __('Biceps - Left', WE_LS_SLUG), 'abv' => __('BL', WE_LS_SLUG) ],
-								'right_bicep' 	=> [ 'title' => __('Biceps - Right', WE_LS_SLUG), 'abv' => __('BR', WE_LS_SLUG) ],
-								'left_calf' 	=> [ 'title' => __('Calf - Left', WE_LS_SLUG), 'abv' => __('CL', WE_LS_SLUG) ],
-								'right_calf' 	=> [ 'title' => __('Calf - Right', WE_LS_SLUG), 'abv' => __('CR', WE_LS_SLUG) ],
-								'left_thigh' 	=> [ 'title' => __('Thigh - Left', WE_LS_SLUG), 'abv' => __('TL', WE_LS_SLUG) ],
-								'right_thigh' 	=> [ 'title' => __('Thigh - Right', WE_LS_SLUG), 'abv' => __('TR', WE_LS_SLUG) ],
-								'waist' 		=> [ 'title' => __('Waist', WE_LS_SLUG), 'abv' => __('W', WE_LS_SLUG ) ],
-								'bust_chest' 	=> [ 'title' => __('Bust / Chest', WE_LS_SLUG), 'abv' => __('BC', WE_LS_SLUG) ],
-								'shoulders' 	=> [ 'title' => __('Shoulders', WE_LS_SLUG), 'abv' => __('S', WE_LS_SLUG) ],
-								'buttocks' 		=> [ 'title' => __('Buttocks', WE_LS_SLUG), 'abv' => __('B', WE_LS_SLUG) ],
-								'hips' 			=> [ 'title' => __('Hips', WE_LS_SLUG), 'abv' => __('HI', WE_LS_SLUG) ],
-								'navel' 		=> [ 'title' => __('Navel', WE_LS_SLUG), 'abv' => __('NA', WE_LS_SLUG) ],
-								'neck'			=> [ 'title' => __('Neck', WE_LS_SLUG), 'abv' => __('NE', WE_LS_SLUG) ]
-	];
+	$old_measurements = ws_ls_migrate_measurement_fields();
 
 	return array_key_exists( $key, $old_measurements ) ? $old_measurements[ $key ] : NULL;
+}
+
+/**
+ * Return enabled keys
+ * @return array
+ */
+function ws_ls_migrate_measurement_enabled() {
+	return get_option( 'ws-ls-measurement', false );
+}
+
+/**
+ * Return previous measurement fields
+ * @return array
+ */
+function ws_ls_migrate_measurement_fields(){
+	return  [
+					'left_forearm' 	=> [ 'title' => __('Forearm - Left', WE_LS_SLUG), 'abv' => __('FL', WE_LS_SLUG) ],
+					'right_forearm' => [ 'title' => __('Forearm - Right', WE_LS_SLUG), 'abv' => __('FR', WE_LS_SLUG) ],
+					'left_bicep' 	=> [ 'title' => __('Biceps - Left', WE_LS_SLUG), 'abv' => __('BL', WE_LS_SLUG) ],
+					'right_bicep' 	=> [ 'title' => __('Biceps - Right', WE_LS_SLUG), 'abv' => __('BR', WE_LS_SLUG) ],
+					'left_calf' 	=> [ 'title' => __('Calf - Left', WE_LS_SLUG), 'abv' => __('CL', WE_LS_SLUG) ],
+					'right_calf' 	=> [ 'title' => __('Calf - Right', WE_LS_SLUG), 'abv' => __('CR', WE_LS_SLUG) ],
+					'left_thigh' 	=> [ 'title' => __('Thigh - Left', WE_LS_SLUG), 'abv' => __('TL', WE_LS_SLUG) ],
+					'right_thigh' 	=> [ 'title' => __('Thigh - Right', WE_LS_SLUG), 'abv' => __('TR', WE_LS_SLUG) ],
+					'waist' 		=> [ 'title' => __('Waist', WE_LS_SLUG), 'abv' => __('W', WE_LS_SLUG ) ],
+					'bust_chest' 	=> [ 'title' => __('Bust / Chest', WE_LS_SLUG), 'abv' => __('BC', WE_LS_SLUG) ],
+					'shoulders' 	=> [ 'title' => __('Shoulders', WE_LS_SLUG), 'abv' => __('S', WE_LS_SLUG) ],
+					'buttocks' 		=> [ 'title' => __('Buttocks', WE_LS_SLUG), 'abv' => __('B', WE_LS_SLUG) ],
+					'hips' 			=> [ 'title' => __('Hips', WE_LS_SLUG), 'abv' => __('HI', WE_LS_SLUG) ],
+					'navel' 		=> [ 'title' => __('Navel', WE_LS_SLUG), 'abv' => __('NA', WE_LS_SLUG) ],
+					'neck'			=> [ 'title' => __('Neck', WE_LS_SLUG), 'abv' => __('NE', WE_LS_SLUG) ]
+	];
 }
 
 /**
