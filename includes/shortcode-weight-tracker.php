@@ -17,21 +17,21 @@ function ws_ls_shortcode( $user_defined_arguments ) {
 		global $ws_ls_wlt_already_placed;
 
         $shortcode_arguments = shortcode_atts( [
-									                'min-chart-points' 			=> 2,	                    // Minimum number of data entries before chart is shown
-													'hide-first-target-form' 	=> false,					// Hide first Target form
-													'hide-second-target-form' 	=> false,					// Hide second Target form
-													'show-add-button' 			=> false,					// Display a "Add weight" button above the chart.
-									                'allow-delete-data' 		=> true,                	// Show "Delete your data" section
-									                'hide-notes' 				=> false,                   // Hide notes field
-									                'hide-photos' 				=> false,                   // Hide photos part of form
-									                'hide-tab-photos' 			=> false,                 	// Hide Photos tab
-									                'hide-tab-advanced' 		=> false,               	// Hide Advanced tab (macroN, calories, etc)
-													'hide-tab-descriptions' 	=> false,               	// Hide tab descriptions
-									                'hide-advanced-narrative' 	=> false,         			// Hide text describing BMR, MarcoN, etc
-									                'disable-advanced-tables' 	=> false,         			// Disable advanced data tables.
-									                'disable-tabs' 				=> false,                   // Disable using tabs.
-													'disable-second-check' 		=> false,					// Disable check to see if [wlt] placed more than once
-	                                                'enable-week-ranges'        => false,                   // Enable Week Ranges?
+									                'min-chart-points' 			=> 2,	                        // Minimum number of data entries before chart is shown
+													'hide-first-target-form' 	=> false,					    // Hide first Target form
+													'hide-second-target-form' 	=> false,					    // Hide second Target form
+													'show-add-button' 			=> false,					    // Display a "Add weight" button above the chart.
+									                'allow-delete-data' 		=> true,                	    // Show "Delete your data" section
+									                'hide-notes' 				=> ws_ls_setting_hide_notes(),  // Hide notes field
+									                'hide-photos' 				=> false,                       // Hide photos part of form
+									                'hide-tab-photos' 			=> false,                 	    // Hide Photos tab
+									                'hide-tab-advanced' 		=> false,               	    // Hide Advanced tab (macroN, calories, etc)
+													'hide-tab-descriptions' 	=> false,               	    // Hide tab descriptions
+									                'hide-advanced-narrative' 	=> false,         			    // Hide text describing BMR, MarcoN, etc
+									                'disable-advanced-tables' 	=> false,         			    // Disable advanced data tables.
+									                'disable-tabs' 				=> false,                       // Disable using tabs.
+													'disable-second-check' 		=> false,					    // Disable check to see if [wlt] placed more than once
+	                                                'enable-week-ranges'        => false,                       // Enable Week Ranges?
 													'user-id'					=> get_current_user_id()
         ], $user_defined_arguments );
 

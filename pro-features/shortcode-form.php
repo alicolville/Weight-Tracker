@@ -20,7 +20,7 @@ function ws_ls_shortcode_form( $user_defined_arguments ) {
                                        'target'            => false,
                                        'class'             => false,
 								       'hide-titles'       => false,
-								       'hide-notes'        => false,
+								       'hide-notes'        => ws_ls_setting_hide_notes(),
 								       'redirect-url'      => false,
 								       'hide-measurements' => false,
 								       'hide-meta'         => false

@@ -17,7 +17,7 @@ class ws_ls_widget_form extends WP_Widget {
 			                        'not-logged-in-message'     => '',
 									'exclude-measurements'      => 'no',
                                     'exclude-meta-fields'       => 'yes',
-									'hide-notes'                => get_option( 'ws-ls-allow-user-notes', 'no' ),
+									'hide-notes'                => ws_ls_setting_hide_notes(),
 									'redirect-url'              => ''
         ];
 

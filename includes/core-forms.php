@@ -15,7 +15,7 @@ function ws_ls_form_weight( $arguments = [] ) {
 	                                            'hide-fields-photos'    => false,
 	                                            'hide-login-message'    => false,
 	                                            'hide-confirmation'     => false,
-	                                            'hide-notes'            => ( 'no' === get_option( 'ws-ls-allow-user-notes', 'yes' ) ),
+	                                            'hide-notes'            => ws_ls_setting_hide_notes(),
 	                                            'hide-titles'           => false,
 	                                            'html'                  => '',
 	                                            'option-force-today'    => false,

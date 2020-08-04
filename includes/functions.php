@@ -1415,6 +1415,14 @@ function ws_ls_setting_mappings() {
 }
 
 /**
+ * Is the notes field to be shown?
+ * @return bool
+ */
+function ws_ls_setting_hide_notes() {
+	return ( 'no' === get_option( 'ws-ls-allow-user-notes', 'yes' ) );
+}
+
+/**
  * Compare the given weight against a user's start weight and return difference
  * @param $user_id
  * @param $kg
