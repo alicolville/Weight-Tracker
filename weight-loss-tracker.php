@@ -157,6 +157,7 @@ require_once( WS_LS_ABSPATH . 'pro-features/plus/challenge/inc.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/plus/bmr.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/plus/harris-benedict.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/plus/macronutrient-calculator.php' );
+require_once( WS_LS_ABSPATH . 'pro-features/export/inc.php' );
 
 // Gravity Forms
 if ( true === WS_LS_IS_PRO && 'yes' == get_option( 'ws-ls-gf-enable', 'yes' ) ) {
