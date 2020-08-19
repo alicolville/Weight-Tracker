@@ -72,7 +72,7 @@ function ws_ls_shortcode_weight_difference_previous( $user_id = false ){
 
 	$difference = $latest_entry[ 'kg' ] - $previous_entry[ 'kg' ];
 	$sign       = ( $difference > 0 ) ? '+' : '';
-	$difference = ws_ls_weight_display( $difference, $arguments[ 'user-id' ], false, is_admin(), true );
+	$difference = ws_ls_weight_display( $difference, $arguments[ 'user-id' ], false, false, true );
 	$output     = sprintf ('%s%s', $sign, $difference[ 'display' ] );
 
 	ws_ls_cache_user_set( $arguments[ 'user-id' ], 'shortcode-difference-previous', $output );

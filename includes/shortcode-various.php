@@ -104,7 +104,7 @@ function ws_ls_shortcode_difference_in_weight_from_oldest( $user_id = NULL ) {
 		return '';
 	}
 
-	$difference =  ws_ls_weight_display( $latest_entry[ 'difference_from_start_kg' ], $arguments[ 'user-id' ], false, is_admin(), true );
+	$difference =  ws_ls_weight_display( $latest_entry[ 'difference_from_start_kg' ], $arguments[ 'user-id' ], false, false, true );
 
 	ws_ls_cache_user_set( $arguments[ 'user-id' ], 'shortcode-since-start', $difference[ 'display' ] );
 
@@ -146,7 +146,7 @@ function ws_ls_shortcode_difference_in_weight_target( $user_id = NULL ){
 
 	$difference = $latest_entry[ 'kg' ] - $target_weight;
 	$sign       = ( $difference > 0 ) ? '+' : '';
-	$difference = ws_ls_weight_display( $difference, $arguments[ 'user-id' ], false, is_admin(), true );
+	$difference = ws_ls_weight_display( $difference, $arguments[ 'user-id' ], false, false, true );
 	$output     = sprintf ('%s%s', $sign, $difference[ 'display' ] );
 
 	ws_ls_cache_user_set( $arguments[ 'user-id' ], 'shortcode-target', $output );
