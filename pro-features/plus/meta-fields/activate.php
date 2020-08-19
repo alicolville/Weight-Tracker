@@ -112,6 +112,36 @@
 
         }
 
+	    if ( false === ws_ls_meta_fields_key_exist( 'waist' ) ) {
+		    // Number
+		    ws_ls_meta_fields_add([
+			    'field_name' => __('Waist', WE_LS_SLUG),
+			    'abv' => __('Waist', WE_LS_SLUG),
+			    'field_type' => 0,
+			    'suffix' => __('Cm', WE_LS_SLUG),
+			    'mandatory' => 1,
+			    'enabled' => 1,
+			    'sort' => 100,
+			    'hide_from_shortcodes' => 0
+		    ]);
+
+	    }
+
+	    if ( false === ws_ls_meta_fields_key_exist( 'leg' ) ) {
+		    // Number
+		    ws_ls_meta_fields_add([
+			    'field_name' => __('Leg', WE_LS_SLUG),
+			    'abv' => __('Leg', WE_LS_SLUG),
+			    'field_type' => 0,
+			    'suffix' => __('Cm', WE_LS_SLUG),
+			    'mandatory' => 1,
+			    'enabled' => 1,
+			    'sort' => 100,
+			    'hide_from_shortcodes' => 0
+		    ]);
+
+	    }
+
         if ( false === ws_ls_meta_fields_key_exist( 'did-you-stick-to-your-diet' ) ) {
             // Yes / No
             ws_ls_meta_fields_add([
