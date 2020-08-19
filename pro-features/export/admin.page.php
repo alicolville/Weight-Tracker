@@ -60,12 +60,20 @@ function ws_ls_export_admin_page_summary() {
 * Create new report criteria
  */
 function ws_ls_export_admin_page_new() {
+
+	ws_ls_enqueue_files();
+
+	ws_ls_enqueue_form_dependencies();
 ?>
 	<div class="postbox">
 		<h2 class="hndle"><span><?php echo __( 'Export Data', WE_LS_SLUG ); ?></span></h2>
 		<div class="inside">
 			<h4><?php echo __( 'Criteria', WE_LS_SLUG ); ?></h4>
+			<?php
 
+				echo ws_ls_form_field_date( [ 'name' => 'we-ls-date', 'title' => __( 'Date', WE_LS_SLUG ), 'show-label' => true ] );
+
+			 ?>
 		</div>
 	</div>
 <?php
