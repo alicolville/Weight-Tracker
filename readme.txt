@@ -50,8 +50,7 @@ For further information read our documentation:
 * **Support for Gravity Forms.** Scan Gravity Form submissions for relevant Weight / Measurement fields and create a weight entry automatically. [Read more](https://weight.yeken.uk/gravity-forms/ "Read more")
 * **Admin can view, edit and delete user data.** Various tools for viewing user's graphs, tables of entries, BMI, targets, weight lost / gained stats and much more.
 * **CSV and JSON exports** for all data or a particular user.
-* **Measurements.** Support for recording measurements like Hip, Waist, Leg, Bicep, etc. Displayed on charts and tables.
-* **Custom Fields.** Define and ask your user's custom questions on weight entry forms.
+* **Custom Fields.** Define and ask your user's custom questions on weight entry forms. Add numeric fields (for things like measurements), yes/no and text fields.
 * **Photo Custom Fields**. Add one or more photo fields to your weight entry forms and allow your users to upload photos of their progress. Photos can be viewed, updated and removed by the end user and administrators. Handy shortcodes are provided for displaying galleries, most recent and oldest photo.
 * **Groups**. Define user groups and assign your user's to them. View Weight Difference statistics for the group as a whole.
 * **BMI.** Allows a user to specify their height. Once specified, their BMI is displayed next to each weight entry. There is also a shortcode to render the latest BMI.
@@ -158,6 +157,7 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 = 8.0 =
 
 Documentation updates:
+
 remove measurements from documentation site
 add_shortcode( 'wlt-target', 'ws_ls_shortcode_target' ); to add_shortcode( 'wt-target-weight', 'ws_ls_shortcode_target' );
 add_shortcode( 'wlt-weight-start', 'ws_ls_weight_start' ); to add_shortcode( 'wt-start-weight', 'ws_ls_weight_start' );
