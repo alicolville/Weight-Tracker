@@ -176,11 +176,9 @@ function ws_ls_form_post_handler_weight( $user_id ) {
 
 		$mode = ( $existing_id === $entry_id ) ? 'update' : 'add';
 
-		$type = array (
-			'user-id' => $user_id,
-			'type' => 'weight-measurements',
-			'mode' => $mode
-		);
+		$type = [	'user-id' 	=> $user_id,
+					'type' 		=> 'weight-measurements',
+					'mode' 		=> $mode ];
 
 		$entry = ws_ls_entry_get( [ 'user-id' => $user_id, 'id' => $entry_id ] );
 
