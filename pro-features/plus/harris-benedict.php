@@ -193,7 +193,7 @@ function ws_ls_harris_benedict_render_table( $user_id, $missing_data_text = fals
 
 		$html .= apply_filters( 'wlt-filter-harris-benedict-top-of-table', '', $calories);
 
-		$rows_to_display = apply_filters( 'wlt-filter-harris-benedict-rows', [ 'maintain', 'lose', 'gain' ] );
+		$rows_to_display = apply_filters( 'wlt-filter-harris-benedict-rows', [ 'maintain', 'lose', 'gain' ], $user_id );
 
 		$css_class = '';
 
