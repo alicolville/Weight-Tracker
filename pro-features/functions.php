@@ -697,7 +697,9 @@ function ws_ls_user_preferences_get( $field = 'gender', $user_id = false, $defau
 		$user_preferences = [];
 	}
 
-	return ( true === array_key_exists( $field, $user_preferences ) ) ? $user_preferences[ $field ] : $default;
+	$value = ( true === array_key_exists( $field, $user_preferences ) ) ? $user_preferences[ $field ] : $default;
+
+	return apply_filters( 'wlt-filter-user-setting-' . $field, $value, $user_id, $field );
 }
 
 /**
