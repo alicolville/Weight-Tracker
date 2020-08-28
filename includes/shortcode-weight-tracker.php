@@ -20,6 +20,7 @@ function ws_ls_shortcode( $user_defined_arguments ) {
 									                'min-chart-points' 			=> 2,	                        // Minimum number of data entries before chart is shown
 													'hide-first-target-form' 	=> false,					    // Hide first Target form
 													'hide-second-target-form' 	=> false,					    // Hide second Target form
+									                'bmi-format'                => 'label',                     // Format for display BMI
 													'show-add-button' 			=> false,					    // Display a "Add weight" button above the chart.
 									                'allow-delete-data' 		=> true,                	    // Show "Delete your data" section
 									                'hide-notes' 				=> ws_ls_setting_hide_notes(),  // Hide notes field
@@ -233,7 +234,7 @@ function ws_ls_shortcode( $user_defined_arguments ) {
 				}
 
 				if ( true === WS_LS_IS_PRO && false === ws_ls_to_bool( $shortcode_arguments[ 'disable-advanced-tables' ] ) ){
-					$html_output .=  ws_ls_shortcode_table( [ 'user-id' => $user_id, 'enable-add-edit' => true, 'enable-meta-fields' => true,  'week' => $selected_week_number ] );
+					$html_output .=  ws_ls_shortcode_table( [ 'user-id' => $user_id, 'enable-add-edit' => true, 'enable-meta-fields' => true,  'week' => $selected_week_number, 'bmi-format' => $shortcode_arguments[ 'bmi-format' ] ] );
 				} else {
 					$html_output .= ws_ls_display_table( $user_id, $weight_data );
 				}
