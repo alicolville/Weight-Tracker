@@ -21,7 +21,7 @@ function ws_ls_shortcode_chart( $user_defined_arguments ) {
 											'ignore-login-status' => false,
 											'max-data-points'     => ws_ls_option( 'ws-ls-max-points', '25', true ),
 											'show-gridlines'      => ws_ls_option_to_bool( 'ws-ls-grid-lines' ),
-											'show-meta-fields'    => true,
+											'show-custom-fields'  => true,
 											'type'                => get_option( 'ws-ls-chart-type', 'line' ),
 											'user-id'             => get_current_user_id(),
 											'weight-fill-color'   => get_option( 'ws-ls-line-fill-colour', '#f9f9f9' ),
