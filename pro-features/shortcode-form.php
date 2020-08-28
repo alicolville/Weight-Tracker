@@ -31,7 +31,7 @@ function ws_ls_shortcode_form( $user_defined_arguments ) {
 	$arguments[ 'is-target-form' ]      = ws_ls_to_bool( $arguments[ 'target' ] );
 	$arguments[ 'hide-titles' ]         = ws_ls_to_bool( $arguments[ 'hide-titles' ] );
 	$arguments[ 'hide-notes' ]          = ws_ls_to_bool( $arguments[ 'hide-notes' ] );
-	$arguments[ 'hide-fields-meta' ]    = ( true === ws_ls_to_bool( $arguments[ 'hide-meta' ] ) || true === ws_ls_to_bool( $arguments[ 'hide-measurements' ] ) );
+	$arguments[ 'hide-fields-meta' ]    = ( true === ws_ls_to_bool( $arguments[ 'hide-custom-fields' ] ) || true === ws_ls_to_bool( $arguments[ 'hide-measurements' ] ) );
 
 	return ws_ls_form_weight( $arguments );
 
