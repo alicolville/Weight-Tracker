@@ -16,14 +16,14 @@ function ws_ls_shortcode_form( $user_defined_arguments ) {
        return false;
     }
 
-    $arguments = shortcode_atts( [     'user-id'           => get_current_user_id(),
-                                       'target'            => false,
-                                       'class'             => false,
-								       'hide-titles'       => false,
-								       'hide-notes'        => ws_ls_setting_hide_notes(),
-								       'redirect-url'      => false,
-								       'hide-measurements' => false,
-								       'hide-meta'         => false
+    $arguments = shortcode_atts( [     'user-id'            => get_current_user_id(),
+                                       'target'             => false,
+                                       'class'              => false,
+								       'hide-titles'        => false,
+								       'hide-notes'         => ws_ls_setting_hide_notes(),
+								       'redirect-url'       => false,
+								       'hide-measurements'  => false,
+								       'hide-custom-fields' => false
     ], $user_defined_arguments );
 
     // Port shortcode arguments to core function
