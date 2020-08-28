@@ -9,7 +9,7 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate Link: https://www.paypal.me/yeken
 
-Allow registered users of your website to track their weight, measurements, custom fields and much more! History can be displayed in both tables & charts. Support for BMI, BMR, Calorie Intake, Macronutrients and much more!
+Allow registered users of your website to track their weight, measurements, photos, custom fields and much more! History can be displayed in both tables & charts. Support for BMI, BMR, Calorie Intake, Macronutrients and much more!
 
 == Description ==
 
@@ -23,7 +23,7 @@ Use our free site for tracking your weight which shows off some of the plugin's 
 
 = Core Features =
 
-An easy to use plugin that allows your users to track their weight, body measurements and any custom fields you define. Their entries can be seen in various ways, charts, tables, shortcodes and widgets. The user is able to set targets and modify their entries.
+An easy to use plugin that allows your users to track their weight, body measurements, photos and any custom fields you define. Their entries can be seen in various ways, charts, tables, shortcodes and widgets. The user is able to set targets and modify their entries.
 
 The admin area features a rich user interface to allow site owners and personal trainers interact with their user base and help them achieve their goals.
 
@@ -119,13 +119,17 @@ Yes it creates six:
 
 Currently it supports both UK (dd/mm/yyy) and US (mm/dd/yyyy) date formats.
 
+= How do I add photo fields? =
+
+Photo fields can be defined using a Custom Field.
+
+= How do I add measurements? =
+
+Measurements can be defined using a Custom Field.
+
 = What measurement formats doe it support? =
 
-Currently it supports both Centimetres (CM) and Inches.
-
-= Can I change measurement units while the site is live? =
-
-Yes. Only recommended if you first installed the plugin at version 1.6 or greater. Newer versions stores measurements in Kg and Pounds. Versions prior 1.6 didn't so you may find data isn't present for previous date entries.
+Measurements are created using Custom Fields. You can therefore specify the unit yourself, whether that's centimetres, inches, feet, etc, it's entirely up to you.
 
 == Screenshots ==
 
@@ -150,42 +154,11 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 == Upgrade Notice ==
 
-7.6 - Advanced control of calories added / subtracted for weight gain / loss.
+8.0 - A HUGE re-write of the core plugin, improved code and better performance! Also support for plotting numeric custom fields on charts!
 
 == Changelog ==
 
 = 8.0 =
-
-Documentation updates:
-
-remove measurements from documentation site
-add_shortcode( 'wlt-target', 'ws_ls_shortcode_target' ); to add_shortcode( 'wt-target-weight', 'ws_ls_shortcode_target' );
-add_shortcode( 'wlt-weight-start', 'ws_ls_weight_start' ); to add_shortcode( 'wt-start-weight', 'ws_ls_weight_start' );
-add_shortcode( 'wlt-weight-most-recent', 'ws_ls_weight_recent' ); to add_shortcode( 'wt-latest-weight', 'ws_ls_weight_recent' );
-add_shortcode( 'wlt-weight-diff', 'ws_ls_shortcode_difference_in_weight_from_oldest' ); to add_shortcode( 'wt-difference-since-start', 'ws_ls_shortcode_difference_in_weight_from_oldest' );
-add_shortcode( 'wlt-weight-diff-from-target', 'ws_ls_shortcode_difference_in_weight_target' ); to add_shortcode( 'wt-difference-from-target', 'ws_ls_shortcode_difference_in_weight_target' );
-add_shortcode('wlt-weight-difference-previous', 'ws_ls_shortcode_difference_between_recent_previous_weight'); to add_shortcode('wt-difference-from-previous', 'ws_ls_shortcode_difference_between_recent_previous_weight');
-add_shortcode( 'wlt-progress-bar', 'ws_ls_shortcode_progress_bar' ); to add_shortcode( 'wt-progress-bar', 'ws_ls_shortcode_progress_bar' );
-add_shortcode('wlt-weight-previous', 'ws_ls_shortcode_previous_weight'); to add_shortcode('wt-previous-weight', 'ws_ls_shortcode_previous_weight');
-add_shortcode( 'wlt-bmi', 'ws_ls_get_user_bmi' ); to add_shortcode( 'wt-bmi', 'ws_ls_get_user_bmi' );
-add_shortcode( 'wlt-activity-level', 'ws_ls_shortcode_activity_level' ); to add_shortcode( 'wt-activity-level', 'ws_ls_shortcode_activity_level' );
-add_shortcode( 'wlt-gender', 'ws_ls_shortcode_gender' ); to add_shortcode( 'wt-gender', 'ws_ls_shortcode_gender' );
-add_shortcode( 'wlt-dob', 'ws_ls_shortcode_dob' ); to add_shortcode( 'wt-dob', 'ws_ls_shortcode_dob' );
-add_shortcode( 'wlt-height', 'ws_ls_shortcode_height' ); to add_shortcode( 'wt-height', 'ws_ls_shortcode_height' );
-add_shortcode( 'wlt-new-users', 'ws_ls_shortcode_new_users' ); to add_shortcode( 'wt-new-users', 'ws_ls_shortcode_new_users' );
-wt-form replace "hide-measurements" with "hide-meta"
-[wlt] to [wt]
-[wlt-form] to [wt-form] /  [wt-form] new argument "hide-notes" to hide notes field and "hide-fields-meta". Delete argument "hide-measurements"
-add_shortcode( 'wlt-table', 'ws_ls_shortcode_table' ); to add_shortcode( 'wt-table', 'ws_ls_shortcode_table' );  / Added argument: 'enable-meta-fields'
-add documentation for wt-group-weight-difference
-wlt-group to wt-group
-wlt-if to wt-if
-wlt-user-settings to wt-user-settings
-wlt-message to wt-message
-wlt-reminder to wt-reminder
-wlt-total-lost to wt-total-lost
-wlt-league-table to wt-league-table
-wlt-chart to wt-chart
 
 * New Feature: Allow numeric custom fields to be plotted on charts.
 * New Feature: A user's target weight can now be displayed on bar graphs.
