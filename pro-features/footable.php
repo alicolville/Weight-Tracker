@@ -13,6 +13,7 @@ function ws_ls_data_table_render( $arguments = [] ) {
 
 	$arguments = wp_parse_args( $arguments, [   'user-id'               => NULL,
 	                                            'limit'                 => NULL,
+	                                            'bmi-format'            => 'label',
 	                                            'smaller-width'         => false,
 	                                            'enable-add-edit'       => true,
 												'enable-meta-fields'    => ( true === ws_ls_meta_fields_is_enabled() &&
@@ -65,7 +66,9 @@ function ws_ls_data_table_render( $arguments = [] ) {
 									data-max-entries="%4$d"
 									data-small-width="%5$s"
 									data-enable-meta-fields="%6$s"
-									data-week="%8$d" >
+									data-week="%8$d"
+									data-bmi-format="%9$s"
+									 >
 		</table>',
 			ws_ls_component_id(),
 			true === $arguments[ 'enable-add-edit' ] ? 'true' : 'false',
@@ -74,7 +77,8 @@ function ws_ls_data_table_render( $arguments = [] ) {
 			true === $arguments[ 'smaller-width' ] ? 'true' : 'false',
 			true === $arguments[ 'enable-meta-fields' ] ? 'true' : 'false',
 			$arguments[ 'page-size' ],
-			$arguments[ 'week' ]
+			$arguments[ 'week' ],
+			esc_attr( $arguments[ 'bmi-format' ] )
 		);
 
 		if ( true === empty( $arguments[ 'user-id' ] ) ) {
@@ -100,6 +104,7 @@ function ws_ls_datatable_rows( $arguments ) {
 	                                             'front-end'        => false,
 	                                             'sort'             => 'desc',
 												 'enable-meta'      => true,
+												 'bmi-format'       => 'index',
 												 'in-admin'         => false    // Has this request come from the admin area (used to render dates differently)
 	] );
 
@@ -177,7 +182,7 @@ function ws_ls_datatable_rows( $arguments ) {
 			$row[ 'notes' ]                             = wp_kses_post( $entry[ 'notes' ] );
 
 			if( true === ws_ls_bmi_in_tables() ) {
-				$row[ 'bmi' ] = [   'value' => ws_ls_get_bmi_for_table( ws_ls_user_preferences_get( 'height', $entry[ 'user_id' ] ), $entry[ 'kg' ], __( 'No height', WE_LS_SLUG ) ),
+				$row[ 'bmi' ] = [   'value' => ws_ls_get_bmi_for_table( ws_ls_user_preferences_get( 'height', $entry[ 'user_id' ] ), $entry[ 'kg' ], __( 'No height', WE_LS_SLUG ), $arguments[ 'bmi-format'] ),
 									'options' => [ 'classes' => '' ]
 				];
 			}

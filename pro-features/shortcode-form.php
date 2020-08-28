@@ -16,14 +16,14 @@ function ws_ls_shortcode_form( $user_defined_arguments ) {
        return false;
     }
 
-    $arguments = shortcode_atts( [     'user-id'           => get_current_user_id(),
-                                       'target'            => false,
-                                       'class'             => false,
-								       'hide-titles'       => false,
-								       'hide-notes'        => ws_ls_setting_hide_notes(),
-								       'redirect-url'      => false,
-								       'hide-measurements' => false,
-								       'hide-meta'         => false
+    $arguments = shortcode_atts( [     'user-id'            => get_current_user_id(),
+                                       'target'             => false,
+                                       'class'              => false,
+								       'hide-titles'        => false,
+								       'hide-notes'         => ws_ls_setting_hide_notes(),
+								       'redirect-url'       => false,
+								       'hide-measurements'  => false,
+								       'hide-custom-fields' => false
     ], $user_defined_arguments );
 
     // Port shortcode arguments to core function
@@ -31,7 +31,7 @@ function ws_ls_shortcode_form( $user_defined_arguments ) {
 	$arguments[ 'is-target-form' ]      = ws_ls_to_bool( $arguments[ 'target' ] );
 	$arguments[ 'hide-titles' ]         = ws_ls_to_bool( $arguments[ 'hide-titles' ] );
 	$arguments[ 'hide-notes' ]          = ws_ls_to_bool( $arguments[ 'hide-notes' ] );
-	$arguments[ 'hide-fields-meta' ]    = ( true === ws_ls_to_bool( $arguments[ 'hide-meta' ] ) || true === ws_ls_to_bool( $arguments[ 'hide-measurements' ] ) );
+	$arguments[ 'hide-fields-meta' ]    = ( true === ws_ls_to_bool( $arguments[ 'hide-custom-fields' ] ) || true === ws_ls_to_bool( $arguments[ 'hide-measurements' ] ) );
 
 	return ws_ls_form_weight( $arguments );
 

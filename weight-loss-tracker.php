@@ -4,8 +4,8 @@ defined('ABSPATH') or die('Jog on!');
 
 /**
  * Plugin Name: Weight Tracker
- * Description: Allow your users to track their weight, measurements and other pieces of custom data. Display in charts, tables, shortcodes and widgets. Manage their data, issue awards, email notifications, etc! Provide advanced data on Body Mass Index (BMI), Basal Metabolic Rate (BMR), Calorie intake, Harris Benedict Formula, Macronutrients Calculator and more.
- * Version: 8.0
+ * Description: Allow your users to track their weight, body measurements, photos and other pieces of custom data. Display in charts, tables, shortcodes and widgets. Manage their data, issue awards, email notifications, etc! Provide advanced data on Body Mass Index (BMI), Basal Metabolic Rate (BMR), Calorie intake, Harris Benedict Formula, Macronutrients Calculator and more.
+ * Version: 8.0.2
  * Author: YeKen
  * Author URI: https://www.YeKen.uk
  * License: GPL2
@@ -28,8 +28,8 @@ defined('ABSPATH') or die('Jog on!');
 */
 
 define( 'WS_LS_ABSPATH', plugin_dir_path( __FILE__ ) );
-define( 'WE_LS_CURRENT_VERSION', '8.0-beta2' );
-define( 'WE_LS_DB_VERSION', '8.0-beta2' );
+define( 'WE_LS_CURRENT_VERSION', '8.0.2' );
+define( 'WE_LS_DB_VERSION', '8.0.1' );
 define( 'WE_LS_TITLE', 'Weight Tracker' );
 define( 'WE_LS_SLUG', 'weight-loss-tracker' );
 define( 'WE_LS_LICENSE_TYPES_URL', 'https://weight.yeken.uk/features' );
@@ -170,7 +170,3 @@ require_once( WS_LS_ABSPATH . 'includes/deprecated.php' );
 // AC: Load relevant language files (https://wpallinfo.com/complete-list-of-wordpress-locale-codes/)
 // -----------------------------------------------------------------------------------------
 
-function ws_ls_load_textdomain() {
-  load_plugin_textdomain( WE_LS_SLUG, false, dirname( plugin_basename( __FILE__ )  ) . '/includes/languages/' );
-}
-add_action( 'plugins_loaded', 'ws_ls_load_textdomain' );

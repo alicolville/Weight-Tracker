@@ -1,15 +1,15 @@
 ﻿=== Weight Tracker ===
 Contributors: aliakro
-Tags: weight, loss, lose, tracker, bmi, bmr, macronutrient, graph, track, stones, kg, table, calories, awards, email, custom, fields, history, pounds, responsive, chart, measurements, cm, centimeters, inches, photos
+Tags: weight, loss, lose, tracker, bmi, bmr, macronutrient, graph, chart, track, stones, kg, table, calories, awards, email, custom, fields, history, pounds, responsive, chart, measurements, cm, centimeters, inches, photos
 Requires at least: 4.4.9
-Tested up to: 5.4.1
-Stable tag: 8.0
+Tested up to: 5.5.1
+Stable tag: 8.0.2
 Requires PHP: 7.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate Link: https://www.paypal.me/yeken
 
-Allow registered users of your website to track their weight, measurements, custom fields and much more! History can be displayed in both tables & charts. Support for BMI, BMR, Calorie Intake, Macronutrients and much more!
+Allow registered users of your website to track their weight, measurements, photos, custom fields and much more! History can be displayed in both tables & charts. Support for BMI, BMR, Calorie Intake, Macronutrients and much more!
 
 == Description ==
 
@@ -23,7 +23,7 @@ Use our free site for tracking your weight which shows off some of the plugin's 
 
 = Core Features =
 
-An easy to use plugin that allows your users to track their weight, body measurements and any custom fields you define. Their entries can be seen in various ways, charts, tables, shortcodes and widgets. The user is able to set targets and modify their entries.
+An easy to use plugin that allows your users to track their weight, body measurements, photos and any custom fields you define. Their entries can be seen in various ways, charts, tables, shortcodes and widgets. The user is able to set targets and modify their entries.
 
 The admin area features a rich user interface to allow site owners and personal trainers interact with their user base and help them achieve their goals.
 
@@ -50,8 +50,7 @@ For further information read our documentation:
 * **Support for Gravity Forms.** Scan Gravity Form submissions for relevant Weight / Measurement fields and create a weight entry automatically. [Read more](https://weight.yeken.uk/gravity-forms/ "Read more")
 * **Admin can view, edit and delete user data.** Various tools for viewing user's graphs, tables of entries, BMI, targets, weight lost / gained stats and much more.
 * **CSV and JSON exports** for all data or a particular user.
-* **Measurements.** Support for recording measurements like Hip, Waist, Leg, Bicep, etc. Displayed on charts and tables.
-* **Custom Fields.** Define and ask your user's custom questions on weight entry forms.
+* **Custom Fields.** Define and ask your user's custom questions on weight entry forms. Add numeric fields (for things like measurements), yes/no and text fields.
 * **Photo Custom Fields**. Add one or more photo fields to your weight entry forms and allow your users to upload photos of their progress. Photos can be viewed, updated and removed by the end user and administrators. Handy shortcodes are provided for displaying galleries, most recent and oldest photo.
 * **Groups**. Define user groups and assign your user's to them. View Weight Difference statistics for the group as a whole.
 * **BMI.** Allows a user to specify their height. Once specified, their BMI is displayed next to each weight entry. There is also a shortcode to render the latest BMI.
@@ -120,13 +119,17 @@ Yes it creates six:
 
 Currently it supports both UK (dd/mm/yyy) and US (mm/dd/yyyy) date formats.
 
+= How do I add photo fields? =
+
+Photo fields can be defined using a Custom Field.
+
+= How do I add measurements? =
+
+Measurements can be defined using a Custom Field.
+
 = What measurement formats doe it support? =
 
-Currently it supports both Centimetres (CM) and Inches.
-
-= Can I change measurement units while the site is live? =
-
-Yes. Only recommended if you first installed the plugin at version 1.6 or greater. Newer versions stores measurements in Kg and Pounds. Versions prior 1.6 didn't so you may find data isn't present for previous date entries.
+Measurements are created using Custom Fields. You can therefore specify the unit yourself, whether that's centimetres, inches, feet, etc, it's entirely up to you.
 
 == Screenshots ==
 
@@ -151,41 +154,23 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 == Upgrade Notice ==
 
-7.6 - Advanced control of calories added / subtracted for weight gain / loss.
+8.0 - A HUGE re-write of the core plugin, improved code and better performance! Also support for plotting numeric custom fields on charts!
 
 == Changelog ==
 
-= 8.0 =
+= 8.0.2 =
 
-Documentation updates:
-remove measurements from documentation site
-add_shortcode( 'wlt-target', 'ws_ls_shortcode_target' ); to add_shortcode( 'wt-target-weight', 'ws_ls_shortcode_target' );
-add_shortcode( 'wlt-weight-start', 'ws_ls_weight_start' ); to add_shortcode( 'wt-start-weight', 'ws_ls_weight_start' );
-add_shortcode( 'wlt-weight-most-recent', 'ws_ls_weight_recent' ); to add_shortcode( 'wt-latest-weight', 'ws_ls_weight_recent' );
-add_shortcode( 'wlt-weight-diff', 'ws_ls_shortcode_difference_in_weight_from_oldest' ); to add_shortcode( 'wt-difference-since-start', 'ws_ls_shortcode_difference_in_weight_from_oldest' );
-add_shortcode( 'wlt-weight-diff-from-target', 'ws_ls_shortcode_difference_in_weight_target' ); to add_shortcode( 'wt-difference-from-target', 'ws_ls_shortcode_difference_in_weight_target' );
-add_shortcode('wlt-weight-difference-previous', 'ws_ls_shortcode_difference_between_recent_previous_weight'); to add_shortcode('wt-difference-from-previous', 'ws_ls_shortcode_difference_between_recent_previous_weight');
-add_shortcode( 'wlt-progress-bar', 'ws_ls_shortcode_progress_bar' ); to add_shortcode( 'wt-progress-bar', 'ws_ls_shortcode_progress_bar' );
-add_shortcode('wlt-weight-previous', 'ws_ls_shortcode_previous_weight'); to add_shortcode('wt-previous-weight', 'ws_ls_shortcode_previous_weight');
-add_shortcode( 'wlt-bmi', 'ws_ls_get_user_bmi' ); to add_shortcode( 'wt-bmi', 'ws_ls_get_user_bmi' );
-add_shortcode( 'wlt-activity-level', 'ws_ls_shortcode_activity_level' ); to add_shortcode( 'wt-activity-level', 'ws_ls_shortcode_activity_level' );
-add_shortcode( 'wlt-gender', 'ws_ls_shortcode_gender' ); to add_shortcode( 'wt-gender', 'ws_ls_shortcode_gender' );
-add_shortcode( 'wlt-dob', 'ws_ls_shortcode_dob' ); to add_shortcode( 'wt-dob', 'ws_ls_shortcode_dob' );
-add_shortcode( 'wlt-height', 'ws_ls_shortcode_height' ); to add_shortcode( 'wt-height', 'ws_ls_shortcode_height' );
-add_shortcode( 'wlt-new-users', 'ws_ls_shortcode_new_users' ); to add_shortcode( 'wt-new-users', 'ws_ls_shortcode_new_users' );
-wt-form replace "hide-measurements" with "hide-meta"
-[wlt] to [wt]
-[wlt-form] to [wt-form] /  [wt-form] new argument "hide-notes" to hide notes field and "hide-fields-meta". Delete argument "hide-measurements"
-add_shortcode( 'wlt-table', 'ws_ls_shortcode_table' ); to add_shortcode( 'wt-table', 'ws_ls_shortcode_table' );  / Added argument: 'enable-meta-fields'
-add documentation for wt-group-weight-difference
-wlt-group to wt-group
-wlt-if to wt-if
-wlt-user-settings to wt-user-settings
-wlt-message to wt-message
-wlt-reminder to wt-reminder
-wlt-total-lost to wt-total-lost
-wlt-league-table to wt-league-table
-wlt-chart to wt-chart
+* Improvement: Added the argument 'bmi-format' (accepts 'label', 'both' or 'index') to shortcodes wt-table and wt. Allows you to control the format BMI is displayed in.
+
+= 8.0.1 =
+
+* Tweak: 'hide-meta' argument renamed to 'hide-custom-fields' on [wt-form] shortcode.
+* Tweak: Replaced 'enable-meta-fields' argument with 'enable-custom-fields' for [wt-table] shortcode.
+* Tweak: Renamed argument 'show-meta-fields' with 'show-custom-fields' on [wt-chart].
+* Improvement: Added 'wt-total-weight-loss-by-community' alias for 'wt-total-lost'.
+* Improvement: Standardised shortcode names, created new versions with 'wt-' prefix instead of 'wlt-'
+
+= 8.0 =
 
 * New Feature: Allow numeric custom fields to be plotted on charts.
 * New Feature: A user's target weight can now be displayed on bar graphs.

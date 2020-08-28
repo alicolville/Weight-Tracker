@@ -4,20 +4,22 @@ defined('ABSPATH') or die("Jog on!");
 
 /**
  * Fetch BMI value for data table
+ *
  * @param $cm
  * @param $kg
  * @param bool $no_height_text
  *
+ * @param string $display
+ *
  * @return string|void
  */
-function ws_ls_get_bmi_for_table( $cm, $kg, $no_height_text = false ) {
+function ws_ls_get_bmi_for_table( $cm, $kg, $no_height_text = false, $display = 'index' ) {
 
 	if ( false === empty( $cm ) ) {
 		$bmi = ws_ls_calculate_bmi( $cm, $kg );
 
-		if( false === empty( $bmi ) ) {
-			return ws_ls_calculate_bmi_label( $bmi );
-		}
+		return ws_ls_bmi_display( $bmi, $display );
+
 	} else {
 
         $no_height_text = ( true === empty( $no_height_text ) ) ?
@@ -72,6 +74,30 @@ function ws_ls_calculate_bmi_label( $bmi ) {
 	return __( 'Err', WE_LS_SLUG );
 }
 
+/**
+ * @param $bmi
+ * @param string $display
+ */
+function ws_ls_bmi_display( $bmi, $display = 'index' ) {
+
+	if ( true === empty( $bmi ) ) {
+		$bmi;
+	}
+
+	switch ( $display ) {
+		case 'label':
+			return ws_ls_calculate_bmi_label( $bmi );
+			break;
+		case 'both':
+			return sprintf( '%s (%s)', ws_ls_calculate_bmi_label( $bmi ), $bmi );
+			break;
+		default:
+			return $bmi;
+			break;
+	}
+
+	return '';
+}
 
 /**
  * Return an array of all possible BMI labels
@@ -697,7 +723,9 @@ function ws_ls_user_preferences_get( $field = 'gender', $user_id = false, $defau
 		$user_preferences = [];
 	}
 
-	return ( true === array_key_exists( $field, $user_preferences ) ) ? $user_preferences[ $field ] : $default;
+	$value = ( true === array_key_exists( $field, $user_preferences ) ) ? $user_preferences[ $field ] : $default;
+
+	return apply_filters( 'wlt-filter-user-setting-' . $field, $value, $user_id, $field );
 }
 
 /**
