@@ -169,7 +169,3 @@ require_once( WS_LS_ABSPATH . 'includes/deprecated.php' );
 // AC: Load relevant language files (https://wpallinfo.com/complete-list-of-wordpress-locale-codes/)
 // -----------------------------------------------------------------------------------------
 
-function ws_ls_load_textdomain() {
-  load_plugin_textdomain( WE_LS_SLUG, false, dirname( plugin_basename( __FILE__ )  ) . '/includes/languages/' );
-}
-add_action( 'plugins_loaded', 'ws_ls_load_textdomain' );
