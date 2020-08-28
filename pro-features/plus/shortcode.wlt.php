@@ -29,8 +29,7 @@ function ws_ls_shortcode_wlt_display_photos_tab( $user_id = null ) {
 			$html .= sprintf('<p>%s <strong>%s</strong> %s:</p>',
 									__('You have uploaded', WE_LS_SLUG),
 									$photo_count,
-									$photo_count > 1 ? __('photos', WE_LS_SLUG) : __('photo', WE_LS_SLUG)
-
+									_n( 'photo', 'photos', $photo_count, WE_LS_SLUG )
 			);
 
 			$html .= ws_ls_photos_shortcode_gallery( ['user-id' => $user_id] );
