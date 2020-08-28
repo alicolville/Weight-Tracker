@@ -121,6 +121,7 @@ function ws_ls_photos_shortcode_gallery($user_defined_arguments) {
 	return $html;
 }
 add_shortcode('wlt-gallery', 'ws_ls_photos_shortcode_gallery');
+add_shortcode('wt-gallery', 'ws_ls_photos_shortcode_gallery');
 
 /**
  * Used to validate the type of uniteGallery being used.

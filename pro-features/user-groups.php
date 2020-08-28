@@ -740,7 +740,8 @@
 	}
 	add_shortcode( 'wlt-group-weight-difference', 'ws_ls_groups_shortcode' );
 	add_shortcode( 'wt-group-weight-difference', 'ws_ls_groups_shortcode' );
-//
+	add_shortcode( 'wt-group-total-weight-loss', 'ws_ls_groups_shortcode' );
+
     /**
      * Shortcode to display the user's current group
      *

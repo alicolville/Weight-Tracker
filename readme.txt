@@ -162,7 +162,9 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 * Tweak: 'hide-meta' argument renamed to 'hide-custom-fields' on [wt-form] shortcode.
 * Tweak: Replaced 'enable-meta-fields' argument with 'enable-custom-fields' for [wt-table] shortcode.
+* Tweak: Renamed argument 'show-meta-fields' with 'show-custom-fields' on [wt-chart].
 * Improvement: Added 'wt-total-weight-loss-by-community' alias for 'wt-total-lost'.
+* Improvement: Standardised shortcode names, created new versions with 'wt-' prefix instead of 'wlt-'
 
 = 8.0 =
 
