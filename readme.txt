@@ -1,8 +1,8 @@
 ﻿=== Weight Tracker ===
 Contributors: aliakro
-Tags: weight, loss, lose, tracker, bmi, bmr, macronutrient, graph, track, stones, kg, table, calories, awards, email, custom, fields, history, pounds, responsive, chart, measurements, cm, centimeters, inches, photos
+Tags: weight, loss, lose, tracker, bmi, bmr, macronutrient, graph, chart, track, stones, kg, table, calories, awards, email, custom, fields, history, pounds, responsive, chart, measurements, cm, centimeters, inches, photos
 Requires at least: 4.4.9
-Tested up to: 5.4.1
+Tested up to: 5.5.1
 Stable tag: 8.0
 Requires PHP: 7.1
 License: GPLv2 or later
