@@ -333,6 +333,7 @@ function ws_ls_shortcode_harris_benedict( $user_defined_arguments ) {
 	return esc_html( $display_value );
 }
 add_shortcode( 'wlt-calories', 'ws_ls_shortcode_harris_benedict' );
+add_shortcode( 'wt-calories', 'ws_ls_shortcode_harris_benedict' );
 
 /**
  * Renders the shortcode [wlt-calories-table]
@@ -370,6 +371,7 @@ function ws_ls_shortcode_harris_benedict_table( $user_defined_arguments ) {
 	return ws_ls_harris_benedict_render_table( $arguments['user-id'], $arguments['error-message'], $arguments['css-class'] );
 }
 add_shortcode( 'wlt-calories-table', 'ws_ls_shortcode_harris_benedict_table' );
+add_shortcode( 'wt-calories-table', 'ws_ls_shortcode_harris_benedict_table' );
 
 /**
  *

@@ -128,6 +128,7 @@ function ws_ls_shortcode_stats_total_lost( $user_defined_arguments ) {
 }
 add_shortcode( 'wlt-total-lost', 'ws_ls_shortcode_stats_total_lost' );
 add_shortcode( 'wt-total-lost', 'ws_ls_shortcode_stats_total_lost' );
+add_shortcode( 'wt-total-weight-loss-by-community', 'ws_ls_shortcode_stats_total_lost' );
 
 /**
  * Display a Stat value

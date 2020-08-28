@@ -24,6 +24,7 @@ function ws_ls_photos_shortcode_count( $user_defined_arguments ) {
 
 }
 add_shortcode('wlt-photo-count', 'ws_ls_photos_shortcode_count');
+add_shortcode('wt-photo-count', 'ws_ls_photos_shortcode_count');
 
 /**
  * Display recent photo
@@ -43,6 +44,7 @@ function ws_ls_photos_shortcode_recent($user_defined_arguments) {
 
 }
 add_shortcode('wlt-photo-recent', 'ws_ls_photos_shortcode_recent');
+add_shortcode('wt-photo-recent', 'ws_ls_photos_shortcode_recent');
 
 /**
  * Display oldest photo
@@ -63,7 +65,7 @@ function ws_ls_photos_shortcode_oldest($user_defined_arguments) {
 
 }
 add_shortcode('wlt-photo-oldest', 'ws_ls_photos_shortcode_oldest');
-
+add_shortcode('wt-photo-oldest', 'ws_ls_photos_shortcode_oldest');
 
 function ws_ls_photos_shortcode_core($user_defined_arguments) {
 
@@ -128,7 +130,7 @@ function ws_ls_photos_shortcode_render( $image, $css_class = '', $hide_date = tr
 
 	if ( isset( $image['photo_id'], $image['thumb'], $image['full']) ) {
 
-		return sprintf('	
+		return sprintf('
 	                        <div class="ws-ls-photo-frame%4$s">
 	                            <div class="ws-ls-photo-embed">
 	                                <a href="%1$s" target="_blank" rel="noopener noreferrer" data-id="%3$s">
@@ -196,8 +198,8 @@ function ws_ls_photos_db_get_recent_or_latest( $user_id = false,
 	}
 
 	$sql = 'Select d.id as entry_id, d.weight_date, e.value as photo_id, f.sort from ' . $wpdb->prefix . WE_LS_MYSQL_META_ENTRY . ' e ' .
-	       ' inner join ' . $wpdb->prefix . WE_LS_TABLENAME . ' d on e.entry_id = d.id 
-	         inner join ' . $wpdb->prefix . WE_LS_MYSQL_META_FIELDS . ' f on f.id = e.meta_field_id    
+	       ' inner join ' . $wpdb->prefix . WE_LS_TABLENAME . ' d on e.entry_id = d.id
+	         inner join ' . $wpdb->prefix . WE_LS_MYSQL_META_FIELDS . ' f on f.id = e.meta_field_id
 	         where weight_user_id = %d and meta_field_id in (' . implode( ',', $photo_fields) . ') and e.value <> ""
  	         order by weight_date ' . $direction . ', f.sort asc';
 
@@ -329,10 +331,10 @@ function ws_ls_photos_db_get_all_photos( $user_id = false, $include_image_object
 
 	$limit = ( false === empty( $limit ) && is_numeric( $limit ) ) ? ' limit 0, ' . (int) $limit : '';
 
-	$sql = 'Select d.id, d.weight_weight as kg, d.weight_notes, d.weight_date, e.value as photo_id, f.field_name, f.sort 
-			from ' . $wpdb->prefix . WE_LS_MYSQL_META_ENTRY . ' e 
-	        inner join ' . $wpdb->prefix . WE_LS_TABLENAME . ' d on e.entry_id = d.id 
-	        inner join ' . $wpdb->prefix . WE_LS_MYSQL_META_FIELDS . ' f on f.id = e.meta_field_id    
+	$sql = 'Select d.id, d.weight_weight as kg, d.weight_notes, d.weight_date, e.value as photo_id, f.field_name, f.sort
+			from ' . $wpdb->prefix . WE_LS_MYSQL_META_ENTRY . ' e
+	        inner join ' . $wpdb->prefix . WE_LS_TABLENAME . ' d on e.entry_id = d.id
+	        inner join ' . $wpdb->prefix . WE_LS_MYSQL_META_FIELDS . ' f on f.id = e.meta_field_id
 	        where weight_user_id = %d and e.value <> "" and meta_field_id in (' . implode( ',', $photo_fields) . ') order by weight_date ' . $direction . ', f.sort asc ' . $limit;
 
 	$sql                = $wpdb->prepare( $sql, $user_id );
@@ -387,7 +389,7 @@ function ws_ls_photos_db_count_photos( $user_id = false, $hide_from_shortcodes =
 	}
 
 	$sql = 'Select count(*) from ' . $wpdb->prefix . WE_LS_MYSQL_META_ENTRY . ' e ' .
-	       ' inner join ' . $wpdb->prefix . WE_LS_TABLENAME . ' d on e.entry_id = d.id where weight_user_id = %d 
+	       ' inner join ' . $wpdb->prefix . WE_LS_TABLENAME . ' d on e.entry_id = d.id where weight_user_id = %d
 	        and e.value <> "" and meta_field_id in (' . implode( ',', $photo_fields) . ')';
 
 	$count = $wpdb->get_var( $wpdb->prepare( $sql, $user_id) );

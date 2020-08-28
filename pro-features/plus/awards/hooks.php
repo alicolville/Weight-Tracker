@@ -387,6 +387,7 @@
 		return ws_ls_photos_shortcode_gallery( $user_defined_arguments );
 	}
 	add_shortcode('wlt-awards', 'ws_ls_awards_shortcode_gallery');
+	add_shortcode('wt-awards', 'ws_ls_awards_shortcode_gallery');
 
 	/**
 	 * Render a grid of all awards
@@ -432,6 +433,7 @@
 		return esc_html( $arguments['message'] );
 	}
 	add_shortcode('wlt-awards-grid', 'ws_ls_awards_shortcode_grid');
+	add_shortcode('wt-awards-grid', 'ws_ls_awards_shortcode_grid');
 
 	/**
 	 * Display latest award image
@@ -485,3 +487,4 @@
 
 	}
 	add_shortcode('wlt-awards-recent', 'ws_ls_awards_shortcode_recent');
+	add_shortcode('wt-awards-recent', 'ws_ls_awards_shortcode_recent');

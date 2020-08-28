@@ -100,6 +100,7 @@
         return (false === is_numeric($bmr) && $arguments['suppress-errors']) ? '' : esc_html($bmr);
     }
     add_shortcode( 'wlt-bmr', 'ws_ls_shortcode_bmr' );
+	add_shortcode( 'wt-bmr', 'ws_ls_shortcode_bmr' );
 
 /**
  * Round BMR / Harris Benedict

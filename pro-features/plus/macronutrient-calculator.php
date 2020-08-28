@@ -251,6 +251,7 @@ function ws_ls_shortcode_macro( $user_defined_arguments ) {
 	return esc_html( $display_value );
 }
 add_shortcode( 'wlt-macronutrients', 'ws_ls_shortcode_macro' );
+add_shortcode( 'wt-macronutrients', 'ws_ls_shortcode_macro' );
 
 /**
  * Renders the shortcode [wlt-macronutrients-table]
@@ -284,6 +285,7 @@ function ws_ls_shortcode_macro_table($user_defined_arguments) {
 	return ws_ls_macro_render_table( $arguments[ 'user-id' ], $arguments[ 'error-message' ], $arguments[ 'css-class' ] );
 }
 add_shortcode( 'wlt-macronutrients-table', 'ws_ls_shortcode_macro_table' );
+add_shortcode( 'wt-macronutrients-table', 'ws_ls_shortcode_macro_table' );
 
 /**
  *

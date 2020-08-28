@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight, loss, lose, tracker, bmi, bmr, macronutrient, graph, chart, track, stones, kg, table, calories, awards, email, custom, fields, history, pounds, responsive, chart, measurements, cm, centimeters, inches, photos
 Requires at least: 4.4.9
 Tested up to: 5.5.1
-Stable tag: 8.0
+Stable tag: 8.0.1
 Requires PHP: 7.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -157,6 +157,14 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 8.0 - A HUGE re-write of the core plugin, improved code and better performance! Also support for plotting numeric custom fields on charts!
 
 == Changelog ==
+
+= 8.0.1 =
+
+* Tweak: 'hide-meta' argument renamed to 'hide-custom-fields' on [wt-form] shortcode.
+* Tweak: Replaced 'enable-meta-fields' argument with 'enable-custom-fields' for [wt-table] shortcode.
+* Tweak: Renamed argument 'show-meta-fields' with 'show-custom-fields' on [wt-chart].
+* Improvement: Added 'wt-total-weight-loss-by-community' alias for 'wt-total-lost'.
+* Improvement: Standardised shortcode names, created new versions with 'wt-' prefix instead of 'wlt-'
 
 = 8.0 =
 
