@@ -23,14 +23,16 @@
                 field_key varchar(40) NOT NULL,
                 field_name varchar(40) NOT NULL,
                 abv varchar(5) NOT NULL,
-                suffix varchar(5) NOT NULL,
-                display_on_chart BIT DEFAULT 0,
+                suffix varchar(10) NOT NULL,
                 mandatory int DEFAULT 1,
                 enabled int DEFAULT 1,
                 hide_from_shortcodes int DEFAULT 0,
+                plot_on_graph int DEFAULT 0,
+                plot_colour varchar(10) NOT NULL,
                 `system` BIT DEFAULT 0,
                 field_type int NOT NULL,
                 sort int DEFAULT 100,
+                migrate int DEFAULT 0,
                 UNIQUE KEY id (id)
             ) $charset_collate;";
 
@@ -43,8 +45,8 @@
                 entry_id int NOT NULL,
                 meta_field_id int NOT NULL,
                 value varchar(800) NOT NULL,
-                migrate BIT DEFAULT 0,
-                UNIQUE KEY id (id)              
+                migrate int DEFAULT 0,
+                UNIQUE KEY id (id)
             ) $charset_collate;";
 
         dbDelta( $sql );
@@ -81,8 +83,10 @@
 		        ws_ls_meta_fields_photos_migrate_old();
 	        }
 
-        }
+	        // Do we need to migrate measurements?
+			ws_ls_migrate_measurements_into_meta_fields();
 
+        }
     }
     add_action( 'admin_init', 'ws_ls_activate_meta_fields_activate' );
 
@@ -107,6 +111,36 @@
             ]);
 
         }
+
+	    if ( false === ws_ls_meta_fields_key_exist( 'waist' ) ) {
+		    // Number
+		    ws_ls_meta_fields_add([
+			    'field_name' => __('Waist', WE_LS_SLUG),
+			    'abv' => __('Waist', WE_LS_SLUG),
+			    'field_type' => 0,
+			    'suffix' => __('Cm', WE_LS_SLUG),
+			    'mandatory' => 1,
+			    'enabled' => 1,
+			    'sort' => 100,
+			    'hide_from_shortcodes' => 0
+		    ]);
+
+	    }
+
+	    if ( false === ws_ls_meta_fields_key_exist( 'leg' ) ) {
+		    // Number
+		    ws_ls_meta_fields_add([
+			    'field_name' => __('Leg', WE_LS_SLUG),
+			    'abv' => __('Leg', WE_LS_SLUG),
+			    'field_type' => 0,
+			    'suffix' => __('Cm', WE_LS_SLUG),
+			    'mandatory' => 1,
+			    'enabled' => 1,
+			    'sort' => 100,
+			    'hide_from_shortcodes' => 0
+		    ]);
+
+	    }
 
         if ( false === ws_ls_meta_fields_key_exist( 'did-you-stick-to-your-diet' ) ) {
             // Yes / No

@@ -2,12 +2,12 @@
 
     defined('ABSPATH') or die("Jog on!");
 
-	/**
-	 * Listen for weight entries / updates and determine whether it should be considered for an award
-	 *
-	 * @param $type
-	 * @param $weight_object
-	 */
+/**
+ * Listen for weight entries / updates and determine whether it should be considered for an award
+ *
+ * @param $info
+ * @param $weight_object
+ */
 	function ws_ls_awards_listen( $info, $weight_object ) {
 
 	    if ( false === WS_LS_IS_PRO_PLUS ) {
@@ -15,7 +15,7 @@
         }
 
         // Ensure the user has more than one weight entry! No point doing any comparisons!
-        $user_stats = ws_ls_get_entry_counts(  $info['user-id'] );
+        $user_stats = ws_ls_db_entries_count(  $info['user-id'] );
 
 	    if ( (int) $user_stats[ 'number-of-entries' ] <= 1 ) {
 	    	return;
@@ -30,7 +30,7 @@
 
 			if ( false === empty( $awards ) ) {
 
-			    $start_weight = ws_ls_get_weight_extreme( $info['user-id'] );
+			    $start_weight = ws_ls_entry_get_oldest_kg( $info['user-id'] );
 
 			    // ---------------------------------------------------------------
 			    // Weight Awards
@@ -67,7 +67,7 @@
 
 				if ( false === empty( $awards['counts']['bmi-equals'] ) && false === empty( $start_weight ) ) {
 
-					$user_height = ws_ls_get_user_height( $info['user-id'] );
+					$user_height =  ws_ls_user_preferences_get( 'height', $info['user-id'] );
 
 					if ( false === empty( $user_height ) ) {
 
@@ -108,7 +108,7 @@
 
                 if ( false === empty( $awards['counts']['bmi'] ) && false === empty( $start_weight ) ) {
 
-                    $user_height = ws_ls_get_user_height( $info['user-id'] );
+                    $user_height =  ws_ls_user_preferences_get( 'height', $info['user-id'] );
 
                     if ( false === empty( $user_height ) ) {
 
@@ -177,7 +177,7 @@
 		}
 
 	}
-	add_action( WE_LS_HOOK_DATA_ADDED_EDITED, 'ws_ls_awards_listen', 10, 2 );
+	add_action( 'wlt-hook-data-added-edited', 'ws_ls_awards_listen', 10, 2 );
 
     /**
      * Log award
@@ -307,7 +307,7 @@
 			for ( $i = 0 ; $i < count( $awards ) ; $i++ ) {
 
 				if ( 'weight' === $awards[ $i ][ 'category' ] ) {
-					$awards[ $i ][ 'value' ] = ws_ls_convert_kg_into_relevant_weight_String( $awards[ $i ][ 'value' ] );
+					$awards[ $i ][ 'value' ] = ws_ls_weight_display( $awards[ $i ][ 'value' ], NULL, 'display', true );
 				} else if ( 'weight-percentage' === $awards[ $i ][ 'category' ]  ) {
 					$awards[ $i ][ 'value' ] = $awards[ $i ][ 'value' ] . '%';
 				} else if ( 'bmi-equals' === $awards[ $i ][ 'category' ]  ) {

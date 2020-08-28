@@ -1,269 +1,271 @@
 //
 // To compress this script, use https://jscompress.com
 //
+let tabs_global = false;
 
-$tabs_global = false;
+jQuery( document ).ready( function ( $ ) {
 
-jQuery( document ).ready(function ($) {
+  // -----------------------------------------------------------------------
+  // Clear Target
+  // -----------------------------------------------------------------------
 
-    $(".ws-ls-clear-target").click(function( event ) {
-        event.preventDefault();
+  $( '.ws-ls-clear-target' ).click( function( event ) {
 
-        if(!confirm(ws_ls_config["clear-target"])){
-            return;
-        }
+    event.preventDefault();
 
-        $post_data = {};
-        $post_data["action"] = "ws_ls_clear_target";
-        $post_data["security"] = ws_ls_config["ajax-security-nonce"];
-        $post_data["user-id"] = ws_ls_config["user-id"];
+      if( false === confirm( ws_ls_config[ 'clear-target' ] ) ){
+          return;
+      }
 
-        ws_ls_post_data($post_data, ws_ls_clear_target_callback);
-    });
+      ws_ls_post( 'ws_ls_clear_target',
+                  { 'user-id' : ws_ls_config[ 'user-id' ] },
+                function() { window.location.replace( ws_ls_config[ 'current-url' ] + '?target-cleared=true' ) } );
+  });
 
-    function ws_ls_clear_target_callback( data, response ) {
+  // -----------------------------------------------------------------------
+  // Tabs (ZoZo)
+  // -----------------------------------------------------------------------
 
-        if (response == 1) {
+  // Just saved data or cancelled?  If so, set default Tab to be "In Detail"
+  let default_tab = ( ws_ls_querystring_value( 'ws-edit-saved' ) || ws_ls_querystring_value( 'ws-edit-cancel' ) ) ? 'tab2' : 'tab1';
 
-            ws_ls_show_you_need_to_refresh_messages();
+  let tabs_are_ready = function( event, item ) {
+      $( '#ws-ls-tabs-loading' ).addClass( 'ws-ls-hide' );
+      $( '#' + item.id ).addClass( 'ws-ls-force-show' );
+      $( '#' + item.id ).removeClass( 'ws-ls-hide' );
+  };
 
-            if( ws_ls_config["current-url"] ) {
-                window.location.replace( ws_ls_config["current-url"] + "?target-cleared=true");
-            }
+  tabs_global = $( '#ws-ls-tabs' ).zozoTabs({   rounded:        false,
+                                                multiline:      true,
+                                                theme:          'silver',
+                                                size:           'small',
+                                                minWindowWidth: 3000,
+                                                responsive:     true,
+                                                animation: {
+                                                                effects: 'slideH',
+                                                                easing: 'easeInOutCirc',
+                                                                type: 'jquery'
+                                                },
+                                                defaultTab:     default_tab,
+                                                ready:          tabs_are_ready
+  });
 
-        } else {
-            console.log("Error clearing target :(", data, response);
-        }
-    }
+  // -----------------------------------------------------------------------
+  // Progress Bar
+  // -----------------------------------------------------------------------
 
-    function ws_ls_show_you_need_to_refresh_messages() {
-        $(".ws-ls-notice-of-refresh").removeClass("ws-ls-hide");
-    }
+  $( '.ws-ls-progress' ).each( function() {
 
-    var default_tab = "tab1";
-
-    // Just saved data or cancelled? If so, set default Tab to be "In Detail"
-    if(ws_ls_get_querystring_value('ws-edit-saved') || ws_ls_get_querystring_value('ws-edit-cancel')) {
-        default_tab = "tab2";
-    }
-
-    var wsLSTabsReady = function(event, item) {
-        $("#ws-ls-tabs-loading").addClass("ws-ls-hide");
-        $("#" + item.id).addClass("ws-ls-force-show");
-        $("#" + item.id).removeClass("ws-ls-hide");
+    let id        = '#' + $( this ).attr('id' );
+    let progress  = $( this ).data( 'progress' );
+    let text      = $( this ).data( 'percentage-text' );
+    let options   = {
+                          strokeWidth:  $( this ).data( 'stroke-width' ),
+                          easing:       'easeInOut',
+                          duration:     $( this ).data( 'animation-duration' ),
+                          color:        $( this ).data('stroke-colour' ),
+                          trailColor:   $( this ).data( 'trail-colour' ),
+                          trailWidth:   $( this ).data( 'trail-width' ),
+                          svgStyle:     { width: $( this ).data( 'width' ), height: $( this ).data( 'height' ) },
+                          text: {
+                            style: {
+                                color: $(this).data( 'text-colour' )
+                            },
+                            value: Math.round( progress * 100 ) + '% ' + text
+                          },
+                          step: function( state, bar ) {
+                              bar.setText( Math.round(bar.value() * 100 ) + '% ' + text );
+                          }
     };
 
-    $tabs_global = $("#ws-ls-tabs").zozoTabs({
-        rounded: false,
-        multiline: true,
-        theme: "silver",
-        size: "small",
-        minWindowWidth: 3000,
-        responsive: true,
-        animation: {
-            effects: "slideH",
-            easing: "easeInOutCirc",
-            type: "jquery"
-        },
-        defaultTab: default_tab,
-        ready: wsLSTabsReady
+    let progress_bar = false;
+
+    if( 'circle' === $( this ).data('type' ) ) {
+       progress_bar = new ProgressBar.Circle( id, options );
+    } else {
+       progress_bar = new ProgressBar.Line( id, options );
+    }
+
+    progress_bar.animate( progress );
+  });
+
+  // ------------------------------------------------------------------------
+  // File selector for meta fields
+  // ------------------------------------------------------------------------
+
+  if ( 'true' === ws_ls_config[ 'photos-enabled' ] ) {
+
+    let inputs = document.querySelectorAll( '.ws-ls-input-file' );
+
+    Array.prototype.forEach.call( inputs, function( input ) {
+
+      let label	  = input.nextElementSibling;
+      let value   = label.innerHTML;
+
+      input.addEventListener( 'change', function( e )  {
+
+        let file_name = e.target.value.split( '\\' ).pop();
+
+        if( file_name ) {
+          label.querySelector( 'span' ).innerHTML = file_name;
+        } else {
+          label.innerHTML = value;
+        }
+      });
+
+      // Firefox bug fix
+      input.addEventListener( 'focus', function(){ input.classList.add( 'has-focus' ); });
+      input.addEventListener( 'blur', function(){ input.classList.remove( 'has-focus' ); });
+    });
+  }
+
+  // -----------------------------------------------------------------------
+  // User Preference form (Front end)
+  // -----------------------------------------------------------------------
+
+  if ( 'true' === ws_ls_config[ 'is-pro' ] ) {
+
+    /**
+     * Delete existing user data
+     */
+    $( '.ws-ls-user-delete-all' ).validate({        errorClass:           'ws-ls-invalid',
+                                                            validClass:           'ws-ls-valid',
+                                                            errorContainer:       '.ws-ls-user-delete-all .ws-ls-error-summary',
+                                                            errorLabelContainer:  '.ws-ls-user-delete-all .ws-ls-error-summary ul',
+                                                            wrapper:              'li',
+                                                            messages: {
+                                                                                  'ws-ls-delete-all': ws_ls_config[ 'validation-we-ls-history'  ],
+                                                            },
+                                                            submitHandler: function( form ) {
+                                                                form.submit();
+                                                            }
+      });
+
+    /**
+     * Save Preferences
+     */
+    $( '.ws-ls-user-pref-form' ).submit( function( event ) {
+
+        event.preventDefault();
+
+        if ( 'true' !== ws_ls_config[ 'validation-about-you-mandatory' ] ) {
+            ws_ls_submit_preference_form();
+        }
     });
 
+    let form_preference_validation = false;
+      // Do we want to force all About You fields in user preferences to be mandatory?
+    if ( 'true' === ws_ls_config[ 'validation-about-you-mandatory' ] ) {
 
-    // User preference form
-    if ("true" == ws_ls_config["is-pro"]) {
-
-        $( ".ws-ls-user-delete-all" ).validate({
-            errorClass: "ws-ls-invalid",
-            validClass: "ws-ls-valid",
-            errorContainer: ".ws-ls-user-delete-all .ws-ls-error-summary",
-            errorLabelContainer: ".ws-ls-user-delete-all .ws-ls-error-summary ul",
-            wrapper: "li",
-            messages: {
-                "ws-ls-delete-all": ws_ls_config["validation-we-ls-history"],
-            },
-            submitHandler: function(form) {
-                form.submit();
-            }
-        });
-
-        $( ".ws-ls-user-pref-form" ).submit(function( event ) {
-
-            event.preventDefault();
-
-            if ("true" != ws_ls_config['validation-about-you-mandatory']) {
+      form_preference_validation = $( ".ws-ls-user-pref-form" ).validate({        errorClass:           'ws-ls-invalid',
+                                                                                          validClass:           'ws-ls-valid',
+                                                                                          errorContainer:       '.ws-ls-user-pref-form .ws-ls-error-summary',
+                                                                                          errorLabelContainer:  '.ws-ls-user-pref-form .ws-ls-error-summary ul',
+                                                                                          wrapper:              'li',
+                                                                                          rules:                 ws_ls_config[ 'validation-user-pref-rules' ],
+                                                                                          messages:              ws_ls_config[ 'validation-user-pref-messages' ],
+            submitHandler: function( form ) {
                 ws_ls_submit_preference_form();
             }
-
         });
 
-        var form_preference_validation = false;
+        $.extend( jQuery.validator.messages, {
+            required: ws_ls_config[ 'validation-required' ]
+        });
 
-        // // Do we want to force all About You fields in user preferences to be madatory?
-        if ("true" == ws_ls_config['validation-about-you-mandatory']) {
-
-            form_preference_validation = $( ".ws-ls-user-pref-form" ).validate({
-                errorClass: "ws-ls-invalid",
-                validClass: "ws-ls-valid",
-                errorContainer: ".ws-ls-user-pref-form .ws-ls-error-summary",
-                errorLabelContainer: ".ws-ls-user-pref-form .ws-ls-error-summary ul",
-                wrapper: "li",
-                rules: ws_ls_config['validation-user-pref-rules'],
-                messages: ws_ls_config["validation-user-pref-messages"],
-                submitHandler: function(form) {
-                    ws_ls_submit_preference_form();
-                }
-            });
-
-            $.extend(jQuery.validator.messages, {
-                required: ws_ls_config["validation-required"]
-            });
-
-            //If a datepicker is on this form
-            if ($(".ws-ls-user-pref-form .we-ls-datepicker").length) {
-                // Validate date
-                if ("true" == ws_ls_config["us-date"]) {
-                    $(".ws-ls-user-pref-form .we-ls-datepicker").rules( "add", {
-                        required: true,
-                        date: true
-                    });
-                }
-                else {
-                    $(".ws-ls-user-pref-form .we-ls-datepicker").rules( "add", {
-                        required: true,
-                        dateITA: true
-                    });
-                }
+        // If a datepicker is on this form
+        if ( $( '.ws-ls-user-pref-form .we-ls-datepicker' ).length ) {
+            // Validate date
+            if ( 'true' === ws_ls_config[ 'us-date' ] ) {
+                $( '.ws-ls-user-pref-form .we-ls-datepicker' ).rules( 'add', {
+                    required: true,
+                    date:     true
+                });
+            } else {
+                $( '.ws-ls-user-pref-form .we-ls-datepicker' ).rules( 'add', {
+                    required: true,
+                    dateITA:  true
+                });
             }
-        }
-
-        /**
-         * Post user preferences to AJAX handler
-         **/
-        function ws_ls_submit_preference_form() {
-
-            var post_data = {};
-
-            // This code is specifc to front end
-            post_data["security"] = ws_ls_config["ajax-security-nonce"];
-            post_data["user-id"] = ws_ls_config["user-id"];
-
-            // ------------------------------------------------------------------------
-            // The following code is common between public and admin user preferences
-            // ------------------------------------------------------------------------
-            $( '.ws-ls-user-pref-form select, .ws-ls-user-pref-form .custom-field' ).each(function () {
-              post_data[ $(this).attr("id") ] = $( this ).val();
-            });
-
-            post_data[ 'action' ]     = 'ws_ls_save_preferences';
-            post_data[ 'ws-ls-dob' ]  = $( '#ws-ls-dob' ).val();
-
-            ws_ls_post_data( post_data, ws_ls_user_preference_callback );
         }
     }
 
-    $(".ws-ls-reload-page-if-clicked").click(function( event ) {
-        event.preventDefault();
-        window.location.replace(ws_ls_config["current-url"]);
-    });
+    /**
+     * Post user preferences to AJAX handler
+     **/
+    function ws_ls_submit_preference_form() {
 
-    // Progress Bar Shortcodes
-    $(".ws-ls-progress").each(function () {
-        var id = $(this).attr("id");
-        var progress = $(this).data("progress");
-        var type = $(this).data("type");
+        let post_data = { 'user-id' : ws_ls_config[ 'user-id' ] };
 
-        var options = {
-            strokeWidth: $(this).data("stroke-width"),
-            easing: "easeInOut",
-            duration: $(this).data("animation-duration"),
-            color: $(this).data("stroke-colour"),
-            trailColor: $(this).data("trail-colour"),
-            trailWidth: $(this).data("trail-width"),
-            svgStyle: {width: $(this).data("width"), height: $(this).data("height")},
-            text: {
-                style: {
-                    color: $(this).data("text-colour")
-                },
-            },
-            step: function(state, bar, id) {
-                bar.setText(Math.round(bar.value() * 100) + "% " + $('#' + bar._container.id).data("precentage-text"));
-            }
-        };
-
-        if("circle" == type) {
-            var progress_bar = new ProgressBar.Circle("#" + id, options);
-        } else {
-            var progress_bar = new ProgressBar.Line("#" + id, options);
-        }
-        progress_bar.animate(progress);
-
-    });
-
-    // ------------------------------------------------------------------------
-    // User for file selector labels
-    // ------------------------------------------------------------------------
-    var inputs = document.querySelectorAll( '.ws-ls-input-file' );
-    Array.prototype.forEach.call( inputs, function( input )
-    {
-        var label	 = input.nextElementSibling,
-            labelVal = label.innerHTML;
-
-        input.addEventListener( 'change', function( e )
-        {
-            var fileName = e.target.value.split( '\\' ).pop();
-
-            if( fileName )
-                label.querySelector( 'span' ).innerHTML = fileName;
-            else
-                label.innerHTML = labelVal;
+        // ------------------------------------------------------------------------
+        // The following code is common between public and admin user preferences
+        // ------------------------------------------------------------------------
+        $( '.ws-ls-user-pref-form select, .ws-ls-user-pref-form .custom-field' ).each(function () {
+          post_data[ $( this ).attr('id' ) ] = $( this ).val();
         });
 
-        // Firefox bug fix
-        input.addEventListener( 'focus', function(){ input.classList.add( 'has-focus' ); });
-        input.addEventListener( 'blur', function(){ input.classList.remove( 'has-focus' ); });
-    });
+        post_data[ 'ws-ls-dob' ]  = $( '#ws-ls-dob' ).val();
+
+        ws_ls_post( 'ws_ls_save_preferences', post_data, ws_ls_user_preference_callback );
+    }
+  }
+
 });
 
-function ws_ls_post_data(data, callback)
-{
-    var ajaxurl = ws_ls_config["ajax-url"];
+/**
+ * Post back to AJAX handler
+ * @param action
+ * @param data
+ * @param callback
+ */
+function ws_ls_post( action, data, callback ) {
 
-    jQuery.post(ajaxurl, data, function(response) {
+  data[ 'action' ]    = action;
+  data[ 'security' ]  = ws_ls_config['ajax-security-nonce'];
 
-        var response = JSON.parse(response);
-        callback(data, response);
-    });
+  jQuery.post( ws_ls_config[ 'ajax-url' ], data, function ( response ) {
+
+    callback( data, response );
+  });
 }
 
-function ws_ls_user_preference_callback(data, response)
-{
-    if (response == 1) {
+/**
+ * Handle response from Save Preferences
+ * @param data
+ * @param response
+ */
+function ws_ls_user_preference_callback( data, response ) {
 
-        // Is there a redirect url specified on the form itself? If so, redirect to that URL.
-        var redirect_url = jQuery(".ws-ls-user-pref-form").data('redirect-url');
+    if ( 1 == response ) {
 
-        if(redirect_url) {
-            window.location.replace(redirect_url);
+        // Is there a redirect url  specified on the form itself? If so, redirect to that URL.
+        let  redirect_url = jQuery(".ws-ls-user-pref-form").data('redirect-url');
+
+        if( redirect_url ) {
+            window.location.replace( redirect_url );
         } else {
-            window.location.replace(ws_ls_config["current-url"] + "?user-preference-saved=true");
+            window.location.replace(ws_ls_config[ 'current-url' ] + '?user-preference-saved=true' );
         }
-    }
-    else
-    {
-        console.log("Error saving the user preferences");
     }
 }
 
-function ws_ls_get_querystring_value(name)
-{
-    var sPageURL = window.location.search.substring(1);
-    var sURLVariables = sPageURL.split("&");
-    for (var i = 0; i < sURLVariables.length; i++)
-    {
-        var sParameterName = sURLVariables[i].split("=");
-        if (sParameterName[0] == name) {
-            return sParameterName[1];
+/**
+ * Fetch a querystring value for the given key
+ * @param key
+ * @returns {string}
+ */
+function ws_ls_querystring_value( key ) {
+
+    let page_url    = window.location.search.substring( 1 );
+    let qs_values   = page_url.split('&' );
+
+    for ( let i = 0; i < qs_values.length; i++ ) {
+
+        let qs_name = qs_values[ i ].split( '=' );
+
+        if ( key === qs_name[0]) {
+            return qs_values[ i ];
         }
     }
 }
+

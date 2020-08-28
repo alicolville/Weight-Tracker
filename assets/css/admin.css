@@ -48,9 +48,6 @@ HEX: #f7786b
 {
     padding: 1px 1px 1px 3px !important;
 }
-.ws-ls-notice-of-refresh {
-    display: none;
-}
 .ws_ls_display_form {
     width: 100%;
 }
@@ -282,4 +279,24 @@ HEX: #f7786b
  */
 .ws-ls-calorie-subtract-ranges-rows, .ws-ls-calorie-add-ranges-rows {
   display: none;
+}
+
+
+.ws-ls-error-summary
+{
+  width: 100%;
+  padding-left: 30px;
+  color: red;
+  display:none;
+  margin-bottom: 20px;
+}
+.ws-ls-error-summary p {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.ws-ls-error-summary ul
+{
+  width: 100%;
+  padding: 0px;
+  margin: 0px 0px 10px 0px;
 }

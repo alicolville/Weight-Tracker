@@ -17,15 +17,18 @@
 		return true === WS_LS_IS_PRO && ! empty( $photo_fields );
 	}
 
-	/**
-	 * Process a photo upload / deletion
-	 *
-	 * @param $field_name
-	 * @param null $date_text
-	 * @param null $user_id
-	 *
-	 * @return bool|int
-	 */
+/**
+ * Process a photo upload / deletion
+ *
+ * @param $field_name
+ * @param null $date_text
+ * @param null $user_id
+ *
+ * @param null $entry_id
+ * @param null $meta_field_id
+ * @param string $module
+ * @return bool|int
+ */
 	function ws_ls_meta_fields_photos_process_upload( $field_name, $date_text = NULL, $user_id = NULL,
                                                             $entry_id = NULL, $meta_field_id = null, $module = 'photo-upload' ) {
 
@@ -159,12 +162,14 @@
 		 return false;
 	}
 
-    /**
-     * Return all enabled Photo fields
-     *
-     * @param bool $hide_from_shortcodes
-     * @return array
-     */
+/**
+ * Return all enabled Photo fields
+ *
+ * @param bool $hide_from_shortcodes
+ * @param bool $ids_only
+ * @param bool $ignore_enabled
+ * @return array
+ */
 	function ws_ls_meta_fields_photos_all( $hide_from_shortcodes = false, $ids_only = true, $ignore_enabled = false ) {
 
 	    $fields = ws_ls_meta_fields_enabled();
@@ -193,14 +198,16 @@
 	    return ( true === $ids_only && false === empty( $return ) ) ? wp_list_pluck( $return, 'id' ) : $return;
     }
 
-	/**
-	 *
-	 * Take an array or comma delimited string of meta field keys and translate them into meta field IDs
-	 *
-	 * @param $keys
-	 *
-	 * @return array
-	 */
+/**
+ *
+ * Take an array or comma delimited string of meta field keys and translate them into meta field IDs
+ *
+ * @param $keys
+ *
+ * @param bool $ids_only
+ * @param bool $hide_from_shortcodes
+ * @return array
+ */
     function ws_ls_meta_fields_photos_keys_to_ids( $keys, $ids_only = true, $hide_from_shortcodes = false ) {
 
 	    $return = [];
@@ -249,13 +256,14 @@
         return ( true === is_array( $photo_fields ) && in_array( (int) $meta_field_id, $photo_fields ) );
     }
 
-	/**
-	 * Determine what
-	 *
-	 * @param $meta_fields_to_use
-	 *
-	 * @return array
-	 */
+/**
+ * Determine what
+ *
+ * @param $meta_fields_to_use
+ *
+ * @param bool $hide_from_shortcodes
+ * @return array
+ */
     function ws_ls_meta_fields_photos_ids_to_use( $meta_fields_to_use, $hide_from_shortcodes = false ) {
 
 	    // Identify which photo fields to use
@@ -270,11 +278,12 @@
 
     }
 
-    /**
-     * Delete all attachments for a given photo meta field
-     *
-     * @param $meta_field_id
-     */
+/**
+ * Delete all attachments for a given photo meta field
+ *
+ * @param $meta_field_id
+ * @return bool|int
+ */
     function ws_ls_meta_fields_photos_delete_all_photos_for_meta_field( $meta_field_id ) {
 
         if ( false === is_admin() ) {
@@ -300,11 +309,12 @@
         return $count;
     }
 
-    /**
-     * Do we need to migrate old photos over?
-     *
-     * @return bool
-     */
+/**
+ * Do we need to migrate old photos over?
+ *
+ * @param bool $ignore_previous_run
+ * @return bool
+ */
     function ws_ls_meta_fields_photos_do_we_need_to_migrate( $ignore_previous_run = false ) {
 
         if ( false === WS_LS_IS_PRO ) {
@@ -337,12 +347,13 @@
 
         global $wpdb;
         return $wpdb->get_results( 'Select id, photo_id from ' . $wpdb->prefix . WE_LS_TABLENAME . ' where photo_id is not null and photo_id <> "" and photo_id <> 0', ARRAY_A);
-        
+
     }
 
-    /**
-     * Migrate old photos to new meta fields!
-     */
+/**
+ * Migrate old photos to new meta fields!
+ * @param bool $ignore_previous_run
+ */
     function ws_ls_meta_fields_photos_migrate_old( $ignore_previous_run = false ) {
 
         if ( true === ws_ls_meta_fields_photos_do_we_need_to_migrate( $ignore_previous_run ) ) {

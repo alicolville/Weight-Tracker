@@ -11,6 +11,10 @@ defined('ABSPATH') or die("Jog on!");
  */
 function ws_ls_challenges_add( $name, $start_date = NULL, $end_date = NULL ) {
 
+	if ( false === ws_ls_challenges_is_enabled() ) {
+		return false;
+	}
+
 	if ( true === empty( $name ) ) {
 		return false;
 	}
@@ -42,6 +46,10 @@ function ws_ls_challenges_add( $name, $start_date = NULL, $end_date = NULL ) {
  * @return bool
  */
 function ws_ls_challenges_enabled( $challenge_id, $enabled = true ) {
+
+	if ( false === ws_ls_challenges_is_enabled() ) {
+		return false;
+	}
 
 	if ( true === empty( $challenge_id ) ) {
 		return false;
@@ -90,6 +98,31 @@ function ws_ls_challenges_delete( $challenge_id ) {
 }
 
 /**
+ * Deelete all challenge data for this user
+ * @param $user_id
+ *
+ * @return bool
+ */
+function ws_ls_challenges_delete_for_user( $user_id ) {
+
+	if ( true === empty( $user_id ) ) {
+		return false;
+	}
+
+	global $wpdb;
+
+	$result = $wpdb->delete( $wpdb->prefix . WE_LS_MYSQL_CHALLENGES_DATA,
+		[ 'user_id' => $user_id ],
+		[ '%d' ]
+	);
+
+	ws_ls_cache_user_delete( $user_id );
+
+	return ! empty( $result );
+}
+
+
+/**
  * Fetch a challenge
  * @param $challenge_id
  * @return bool
@@ -100,7 +133,7 @@ function ws_ls_challenges_get( $challenge_id ) {
 		return false;
 	}
 
-	if ( $cache = ws_ls_get_cache( 'challenge-' . (int) $challenge_id ) ) {
+	if ( $cache = ws_ls_cache_get( 'challenge-' . (int) $challenge_id ) ) {
 		return $cache;
 	}
 
@@ -112,7 +145,7 @@ function ws_ls_challenges_get( $challenge_id ) {
 
 	$result = ( false === empty( $result ) ) ? $result : false;
 
-	ws_ls_set_cache( 'challenge-' . (int) $challenge_id, $result );
+	ws_ls_cache_set( 'challenge-' . (int) $challenge_id, $result );
 
 	return $result;
 }
@@ -123,6 +156,10 @@ function ws_ls_challenges_get( $challenge_id ) {
  * @return mixed
  */
 function ws_ls_challenges( $enabled = true ) {
+
+	if ( false === ws_ls_challenges_is_enabled() ) {
+		return NULL;
+	}
 
 	global $wpdb;
 
@@ -224,7 +261,7 @@ function ws_ls_challenges_data( $args ) {
 
 	$cache_key = 'challenge-data-' . md5( json_encode( $args ) );
 
-	if ( $cache = ws_ls_get_cache( $cache_key ) ) {
+	if ( $cache = ws_ls_cache_get( $cache_key ) ) {
 		return $cache;
 	}
 
@@ -272,7 +309,7 @@ function ws_ls_challenges_data( $args ) {
 		$data = array_map( 'ws_ls_challenges_data_expand_row', $data );
 	}
 
-	ws_ls_set_cache( $cache_key, $data );
+	ws_ls_cache_set( $cache_key, $data );
 
 	return $data;
 }

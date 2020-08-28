@@ -1,15 +1,15 @@
 ﻿=== Weight Tracker ===
 Contributors: aliakro
-Tags: weight, loss, lose, tracker, bmi, bmr, macronutrient, graph, track, stones, kg, table, calories, awards, email, custom, fields, history, pounds, responsive, chart, measurements, cm, centimeters, inches, photos
+Tags: weight, loss, lose, tracker, bmi, bmr, macronutrient, graph, chart, track, stones, kg, table, calories, awards, email, custom, fields, history, pounds, responsive, chart, measurements, cm, centimeters, inches, photos
 Requires at least: 4.4.9
-Tested up to: 5.4.1
-Stable tag: 7.6.4
+Tested up to: 5.5.1
+Stable tag: 8.0
 Requires PHP: 7.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate Link: https://www.paypal.me/yeken
 
-Allow registered users of your website to track their weight, measurements, custom fields and much more! History can be displayed in both tables & charts. Support for BMI, BMR, Calorie Intake, Macronutrients and much more!
+Allow registered users of your website to track their weight, measurements, photos, custom fields and much more! History can be displayed in both tables & charts. Support for BMI, BMR, Calorie Intake, Macronutrients and much more!
 
 == Description ==
 
@@ -23,7 +23,7 @@ Use our free site for tracking your weight which shows off some of the plugin's 
 
 = Core Features =
 
-An easy to use plugin that allows your users to track their weight, body measurements and any custom fields you define. Their entries can be seen in various ways, charts, tables, shortcodes and widgets. The user is able to set targets and modify their entries.
+An easy to use plugin that allows your users to track their weight, body measurements, photos and any custom fields you define. Their entries can be seen in various ways, charts, tables, shortcodes and widgets. The user is able to set targets and modify their entries.
 
 The admin area features a rich user interface to allow site owners and personal trainers interact with their user base and help them achieve their goals.
 
@@ -50,8 +50,7 @@ For further information read our documentation:
 * **Support for Gravity Forms.** Scan Gravity Form submissions for relevant Weight / Measurement fields and create a weight entry automatically. [Read more](https://weight.yeken.uk/gravity-forms/ "Read more")
 * **Admin can view, edit and delete user data.** Various tools for viewing user's graphs, tables of entries, BMI, targets, weight lost / gained stats and much more.
 * **CSV and JSON exports** for all data or a particular user.
-* **Measurements.** Support for recording measurements like Hip, Waist, Leg, Bicep, etc. Displayed on charts and tables.
-* **Custom Fields.** Define and ask your user's custom questions on weight entry forms.
+* **Custom Fields.** Define and ask your user's custom questions on weight entry forms. Add numeric fields (for things like measurements), yes/no and text fields.
 * **Photo Custom Fields**. Add one or more photo fields to your weight entry forms and allow your users to upload photos of their progress. Photos can be viewed, updated and removed by the end user and administrators. Handy shortcodes are provided for displaying galleries, most recent and oldest photo.
 * **Groups**. Define user groups and assign your user's to them. View Weight Difference statistics for the group as a whole.
 * **BMI.** Allows a user to specify their height. Once specified, their BMI is displayed next to each weight entry. There is also a shortcode to render the latest BMI.
@@ -120,13 +119,17 @@ Yes it creates six:
 
 Currently it supports both UK (dd/mm/yyy) and US (mm/dd/yyyy) date formats.
 
+= How do I add photo fields? =
+
+Photo fields can be defined using a Custom Field.
+
+= How do I add measurements? =
+
+Measurements can be defined using a Custom Field.
+
 = What measurement formats doe it support? =
 
-Currently it supports both Centimetres (CM) and Inches.
-
-= Can I change measurement units while the site is live? =
-
-Yes. Only recommended if you first installed the plugin at version 1.6 or greater. Newer versions stores measurements in Kg and Pounds. Versions prior 1.6 didn't so you may find data isn't present for previous date entries.
+Measurements are created using Custom Fields. You can therefore specify the unit yourself, whether that's centimetres, inches, feet, etc, it's entirely up to you.
 
 == Screenshots ==
 
@@ -151,14 +154,70 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 == Upgrade Notice ==
 
-7.6 - Advanced control of calories added / subtracted for weight gain / loss.
+8.0 - A HUGE re-write of the core plugin, improved code and better performance! Also support for plotting numeric custom fields on charts!
 
 == Changelog ==
 
-= 7.6.4 =
+= 8.0 =
 
-* Improvement: Updated Spanish translations. Thanks Eduardo.
-* Improvement: Updated French translations. Thanks Sylvain.
+* New Feature: Allow numeric custom fields to be plotted on charts.
+* New Feature: A user's target weight can now be displayed on bar graphs.
+* Improvement: Measurements have been removed. They have now been migrated (along with user data) into Custom Fields.
+* Improvement: Measurements, now custom fields, can now be displayed on bar graphs.
+* Improvement: Export to CSV / JSON performance has been drastically improved.
+* Improvement: 1000s of lines of code optimised and re-factored.
+* Improvement: Various performance tweaks. All globals no longer dynamically loaded.
+* Improvement: Caching: Previously, user cache consisted of a large data object per user. This would be loaded on every cache lookup. Now, instead, the cache object has been replaced with a lookup table of cache keys relating to the user. If a sub key is found, the larger, relevant data object is fetched from catch.
+* Improvement: Caching: More database lookups are now cached.
+* Improvement: Caching: Cache time has been increased from 15 minutes to 24 hours.
+* Improvement: Caching: Shortcodes now have additional caching.
+* Improvement: JS libraries are included for charts when needed.
+* Improvement: Target weight added to user search results.
+* Improvement: Removed redundant usage statistics being sent to YeKen.
+* Improvement: Weights are no longer inserted into the database in three formats. Instead, only Kg is stored and converted when required.
+* Improvement: Removed redundant tools for correcting conversion issues (added 5+ years ago).
+* Improvement: Old shortcode names have now been deprecated and should be replaced with current names.
+* Improvement: Optimised SQL queries.
+* Improvement: Global variables declared on each page load for feature lists have been removed.
+* Improvement: [wt-new-users] shortcode is now cached for 15 minutes.
+* Improvement: New setting: Notes can be disabled on user weight forms (via settings).
+* Improvement: Form Widget: Ability to show / hide the notes field.
+* Improvement: [wt-form] and [wt] - new argument "hide-notes" to hide notes field.
+* Improvement: Expanded error messages where required to be more descriptive.
+* Improvement: Improved some error handling messages.
+* Improvement: Targets can now be cleared by submitting the form with no weight specified.
+* Improvement: User entry tables: MySQL queries and data processing are now cached.
+* Improvement: User entry tables: Option to exclude meta field data when viewing all user entries (big speed improvement)
+* Improvement: User entry tables: Usernames now open the user's record in a new tab.
+* Improvement: Emails notifications: Now using underlying email manager that was added in 6.1.
+* Improvement: Emails notifications: Subjects are more informative.
+* Improvement: User groups are now enabled by default and appear on the main menu.
+* Improvement: WLT Shortcode: Week Ranges are now displayed when over 150 weeks. They can also have to be enabled with new argument "enable-week-ranges"
+* Improvement: Admin JS has been minified.
+* Improvement: All CSS files are now minified.
+* Improvement: Added buttons for quickly adding new custom fields.
+* Improvement: Challenges are now enabled by default.
+* Bug fix: "Who can view and modify user data?" has been fixed so user's with the specified minimum role can now access admin data pages.
+* Bug fix: Awards for a user are now deleted when "Delete all data for this user" has been clicked.
+* Bug fix: All challenge data for a user is now deleted when "Delete all data for this user" has been clicked.
+* Bug fix: Cache now invalidated correctly when updating meta fields.
+* Bug fix: Grid lines can now be toggled off for charts.
+* Bug fix: All text when on Widget settings is now translatable.
+* Bug fix: User search results were showing in correct weights.
+* Bug fix: Removed dead setting "Disable notifications from YeKen?".
+* Bug fix: Meta fields cache no longer cleared on weight entry insert / save.
+* Bug fix: Only display "Clear Target" if the user has a target currently set.
+* Bug fix: Delete all cache if admin delete's all data.
+* Bug fix: BMR now cached on a user by user basis correctly.
+* Bug fix: User data tables, difference in weight field now displays correct difference.
+* Bug fix: Stats database table is also cleared when all user data has been deleted.
+* Bug fix: When all user data has been removed, cache is now cleared.
+* Bug fix: Week selector works correctly on [wlt] shortcode when showing advanced data table.
+* Bug fix: When exporting to CSV / JSON, HTML is removed from image custom fields. Instead the full URL is returned.
+* Bug fix: [wt-group-weight-difference] now shows the weight in the correct user format.
+* Bug fix: User stats table is now cached for up to an hour.
+* Bug fix: When placing more than one form on a page, unique IDs are generated for photo fields. This fixes an issue where the first field would be populated with a user selected a photo rather than the correct field.
+* Bug fix: "ID" now displayed when displaying custom fields table in admin area.
 
 = 7.6.3 =
 
@@ -170,6 +229,9 @@ Yes. Only recommended if you first installed the plugin at version 1.6 or greate
 
 = 7.6.1 =
 
+* Improvement: Removed redundant PHP files.
+* Improvement: Removed redundant meta field database columns.
+* Improvement: Various minor PHP tweaks throughout code.
 * Bug fix: Fix to ensure we are checking for correct MySQL tables.
 
 = 7.6 =
@@ -866,7 +928,7 @@ Bug fix: Use defined() instead of empty() to check for a empty constant.
 
 * Updated Dutch translations (thanks @Robin)
 * Updated Italian translations (thanks @Salvo)
-* Bug fix: Deal with negative numbers in ws_ls_pounds_to_stone_pounds() and ws_ls_to_stone_pounds() - Thanks (@GatorDev)
+* Bug fix: Deal with negative numbers in ws_ls_pounds_to_stone_pounds() and ws_ls_convert_kg_to_stone_pounds() - Thanks (@GatorDev)
 
 = 4.1.8 =
 
@@ -1172,7 +1234,7 @@ BUG FIX: Previous release broke the "Delete all data" button on admin page. Fixe
   - Romanian
   - French
 * Minor tweaks to conversions between stones / pounds
-* Corrected ws_ls_to_stone_pounds to calculate pounds correctly
+* Corrected ws_ls_convert_kg_to_stone_pounds to calculate pounds correctly
 * [weightloss_weight_difference] corrected to display pounds
 * Small bug fixes
 

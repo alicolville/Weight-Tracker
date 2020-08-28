@@ -4,7 +4,7 @@ defined('ABSPATH') or die('Naw ya dinnie!');
 
 function ws_ls_admin_page_search_results() {
 
-    ws_ls_user_data_permission_check();
+    ws_ls_permission_check_message();
 
     ?>
     <div class="wrap ws-ls-user-data ws-ls-admin-page">
@@ -28,7 +28,7 @@ function ws_ls_admin_page_search_results() {
                             if( true === WS_LS_IS_PRO && false === empty( $search_term ) ) {
 
                                 $user_query     = new WP_User_Query( [ 'search' => sprintf( '*%s*', $search_term ) ] );
-                                $count          = $user_query->total_users;
+                                $count          = $user_query->get_total();
 
                                 if( 0 !== $count ) {
 
@@ -46,6 +46,7 @@ function ws_ls_admin_page_search_results() {
                                             <th><?php echo __( 'Email', WE_LS_SLUG ) ?></th>
                                             <th><?php echo __( 'Start Weight', WE_LS_SLUG ) ?></th>
                                             <th><?php echo __( 'Latest Weight', WE_LS_SLUG ) ?></th>
+	                                        <th><?php echo __( 'Target Weight', WE_LS_SLUG ) ?></th>
                                         </tr>
                                         <?php
                                             foreach ( $user_query->get_results() as $user ) {
@@ -89,15 +90,16 @@ function ws_ls_search_row( $user, $class = '') {
     printf('<tr valign="top" class="%1$s">
                             <td><a href="%2$s">%3$s</a></td>
                             <td><a href="mailto:%4$s">%4$s</a></td>
-                            <td><a href="%2$s">%6$s</a></td>
+                            <td><a href="%2$s">%5$s</a></td>
+                            <td>%6$s</td>
                             <td>%7$s</td>
                         </tr>',
             esc_attr( $class ),
             ws_ls_get_link_to_user_profile( $user->data->ID ),
             esc_html( $user->data->display_name ),
             esc_attr( $user->data->user_email ),
-            ws_ls_weight_start( $user->data->ID ),
-            ws_ls_weight_recent( $user->data->ID ),
-            ws_ls_weight_target_weight( $user->data->ID )
+            ws_ls_shortcode_start_weight( $user->data->ID ),
+            ws_ls_shortcode_recent_weight( $user->data->ID ),
+	        ws_ls_target_get( $user->data->ID, 'display' )
     );
  }

@@ -7,23 +7,19 @@ class ws_ls_widget_progress_bar extends WP_Widget {
     private $field_values;
 
 	function __construct() {
-		parent::__construct(
-			'ws_ls_widget_progress_bar',
-			__('Weight Tracker - Progress Bar', WE_LS_SLUG),
-			array( 'description' => __('A progress bar to indicate weight loss towards target.', WE_LS_SLUG) ) // Args
-		);
 
-        $this->field_values = array(
-            'title' => __('Weight Progress', WE_LS_SLUG),
-			'type' => 'line',
-			'stroke-width' => 3,
-			'stroke-colour' => '#FFEA82',
-			'trail-width' => 1,
-			'trail-colour' => '#EEE',
-			'text-colour' => '#000',
-			'animation-duration' => 1400,
-			'percentage-text' => __('towards your target of {t}.', WE_LS_SLUG)
-        );
+		parent::__construct( 'ws_ls_widget_progress_bar', __( 'Weight Tracker - Progress Bar', WE_LS_SLUG ),[ 'description' => __('A progress bar to indicate weight loss towards target.', WE_LS_SLUG ) ] );
+
+        $this->field_values = [ 'title'                 => __( 'Weight Progress', WE_LS_SLUG ),
+								'type'                  => 'line',
+								'stroke-width'          => 3,
+								'stroke-colour'         => '#FFEA82',
+								'trail-width'           => 1,
+								'trail-colour'          => '#EEE',
+								'text-colour'           => '#000',
+								'animation-duration'    => 1400,
+								'percentage-text'       => __( 'towards your target of {t}.', WE_LS_SLUG )
+        ];
 	}
 
 	/**
@@ -37,22 +33,22 @@ class ws_ls_widget_progress_bar extends WP_Widget {
 	public function widget( $args, $instance ) {
 
         // User logged in?
-        if(is_user_logged_in()) {
+        if( true === is_user_logged_in() ) {
 
-			echo $args['before_widget'];
-			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
+			echo $args[ 'before_widget' ];
+			echo $args[ 'before_title' ] . apply_filters( 'widget_title', $instance[ 'title' ] ). $args[ 'after_title' ];
 
-			if(('circle' == $instance['type'])) {
+			if( 'circle' === $instance[ 'type' ] ) {
 				echo '<center>';
 			}
 
-			echo ws_ls_shortcode_progress_bar($instance);
+			echo ws_ls_shortcode_progress_bar( $instance );
 
-			if(('circle' == $instance['type'])) {
+			if( 'circle' === $instance[ 'type' ] ) {
 				echo '</center>';
 			}
 
-            echo $args['after_widget'];
+            echo $args[ 'after_widget' ];
         }
 	}
 
@@ -66,8 +62,8 @@ class ws_ls_widget_progress_bar extends WP_Widget {
 	public function form( $instance ) {
 
         // Loop through expected fields and process
-        foreach($this->field_values as $key => $default) {
-            $field_values[$key] = !empty($instance[$key]) ? $instance[$key] : $default;
+        foreach( $this->field_values as $key => $default ) {
+            $field_values[ $key ] = ( false === empty( $instance[ $key ] ) ) ? $instance[ $key ] : $default;
         }
 		?>
         <p>Display a progress bar towards the user's weight target.</p>
@@ -138,10 +134,10 @@ class ws_ls_widget_progress_bar extends WP_Widget {
 	 */
 	public function update( $new_instance, $old_instance ) {
 
-		$instance = array();
+		$instance = [];
 
-	    foreach($this->field_values as $key => $value) {
-	        $instance[$key] = !empty($new_instance[$key]) ? strip_tags($new_instance[$key]) : '';
+	    foreach( $this->field_values as $key => $value ) {
+	        $instance[ $key ] = ( false === empty( $new_instance[ $key ] ) ) ? strip_tags( $new_instance[ $key ] ) : '';
 	    }
 
 		return $instance;

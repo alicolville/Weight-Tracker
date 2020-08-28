@@ -4,12 +4,12 @@ defined('ABSPATH') or die('Naw ya dinnie!');
 
 function ws_ls_admin_page_settings_user() {
 
-    ws_ls_user_data_permission_check();
+    ws_ls_permission_check_message();
 
 	$user_id = ws_get_user_id_from_qs();
 
     // Ensure this WP user ID exists!
-    ws_user_exist_check( $user_id );
+    ws_ls_user_exist_check( $user_id );
 ?>
 <div class="wrap ws-ls-user-data ws-ls-admin-page">
 	<div id="poststuff">

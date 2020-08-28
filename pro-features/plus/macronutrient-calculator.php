@@ -2,16 +2,23 @@
 
 defined('ABSPATH') or die("Jog on!");
 
+/**
+ * Calculate MacroN values for the given user
+ * @param bool $user_id
+ *
+ * @return mixed|void|null
+ */
 function ws_ls_macro_calculate($user_id = false) {
+
+	if( false === WS_LS_IS_PRO_PLUS ) {
+		return NULL;
+	}
 
     $user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
 
-    // Data cached?
-    $cache_key = $user_id . '-' . WE_LS_CACHE_KEY_MACRO;
-
-    if ($cache = ws_ls_get_cache($cache_key)) {
-       return $cache;
-    }
+	if ( $cache = ws_ls_cache_user_get( $user_id, 'macros' ) ) {
+		return $cache;
+	}
 
     $calories = ws_ls_harris_benedict_calculate_calories( $user_id );
 
@@ -35,9 +42,13 @@ function ws_ls_macro_calculate($user_id = false) {
 
             $macros[$key]['calories'] = $calories[$key]['total'];
 
-			$protein_calc = WS_LS_MACRO_PROTEINS / 100;
-			$carbs_calc = WS_LS_MACRO_CARBS / 100;
-			$fats_calc = WS_LS_MACRO_FATS / 100;
+	        $protein_calc   = ws_ls_harris_benedict_setting( 'ws-ls-macro-proteins' );
+	        $carbs_calc     = ws_ls_harris_benedict_setting( 'ws-ls-macro-carbs' );
+	        $fats_calc      = ws_ls_harris_benedict_setting( 'ws-ls-macro-fats' );
+
+	        $protein_calc   = $protein_calc / 100;
+			$carbs_calc     = $carbs_calc / 100;
+			$fats_calc      = $fats_calc / 100;
 
             // Total
             $macros[$key]['total']['protein'] = ($macros[$key]['calories'] * $protein_calc) / 4;
@@ -76,8 +87,7 @@ function ws_ls_macro_calculate($user_id = false) {
 
 	$macros = apply_filters( 'wlt-filter-macros', $macros, $calories, $user_id );
 
-    // Cache it!
-    ws_ls_set_cache($cache_key, $macros);
+	ws_ls_cache_user_set( $user_id, 'macros', $macros );
 
     return $macros;
 }
@@ -87,10 +97,14 @@ function ws_ls_macro_calculate($user_id = false) {
  *
  * @param $user_id
  * @param bool $missing_data_text
+ * @param string $additional_css_class
  * @return string
  */
-function ws_ls_macro_render_table($user_id, $missing_data_text = false, $additional_css_class = '')
-{
+function ws_ls_macro_render_table($user_id, $missing_data_text = false, $additional_css_class = '') {
+
+	if( false === WS_LS_IS_PRO_PLUS ) {
+		return '';
+	}
 
     $user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
 
@@ -192,47 +206,49 @@ function ws_ls_macro_render_table($user_id, $missing_data_text = false, $additio
     }
 
 }
+
 /**
  * Render the shortcode [wlt-macronutrients]
  *
  * @param $user_defined_arguments
+ * @return string
  */
-function ws_ls_shortcode_macro($user_defined_arguments) {
+function ws_ls_shortcode_macro( $user_defined_arguments ) {
 
-	if(false === WS_LS_IS_PRO_PLUS) {
-		return;
+	if( false === WS_LS_IS_PRO_PLUS ) {
+		return '';
 	}
 
 	$arguments = shortcode_atts([
-									'error-message' => __('Please ensure all relevant data to calculate calorie intake has been entered i.e. Activity Level, Date of Birth, Current Weight, Gender and Height.', WE_LS_SLUG ),
-									'user-id' => false,
-									'progress' => 'maintain',	// 'maintain', 'lose', 'gain', 'auto'
-									'nutrient' => 'fats', 		// 'fats', 'protein', 'carbs'
-									'type' => 'lunch'			// 'breakfast', 'lunch', 'dinner', 'snack', 'total'
+									'error-message' 	=> __('Please ensure all relevant data to calculate calorie intake has been entered i.e. Activity Level, Date of Birth, Current Weight, Gender and Height.', WE_LS_SLUG ),
+									'user-id' 			=> false,
+									'progress' 			=> 'maintain',	// 'maintain', 'lose', 'gain', 'auto'
+									'nutrient' 			=> 'fats', 		// 'fats', 'protein', 'carbs'
+									'type' 				=> 'lunch'		// 'breakfast', 'lunch', 'dinner', 'snack', 'total'
 								], $user_defined_arguments );
 
-    $allowed_progress = apply_filters(WE_LS_FILTER_MACRO_ALLOWED_PROGRESS, [ 'maintain', 'lose', 'gain', 'auto' ]);
+    $allowed_progress = apply_filters( 'wlt-filter-macro-nutrients-allowed-progresses', [ 'maintain', 'lose', 'gain', 'auto' ] );
 
     // If "progress" set as "auto", then determine from the user's aim which progress type to display
     if ( 'auto' === $arguments['progress'] ) {
         $arguments['progress'] = ws_ls_get_progress_attribute_from_aim();
     }
 
-	$arguments['user-id'] = ws_ls_force_numeric_argument($arguments['user-id']);
-    $progress = (false === in_array($arguments['progress'], $allowed_progress)) ? 'maintain' : $arguments['progress'];
-	$type = (false === in_array($arguments['type'], ['breakfast', 'lunch', 'dinner', 'snacks', 'total'])) ? 'lunch' : $arguments['type'];
-	$nutrient = (false === in_array($arguments['nutrient'], ['fats', 'protein', 'carbs'])) ? 'fats' : $arguments['nutrient'];
-
-	$macros = ws_ls_macro_calculate($arguments['user-id']);
+	$arguments['user-id'] 	= (int) $arguments[ 'user-id' ];
+    $progress 				= ( false === in_array( $arguments[ 'progress' ], $allowed_progress ) ) ? 'maintain' : $arguments['progress'];
+	$type 					= ( false === in_array( $arguments[ 'type' ], [ 'breakfast', 'lunch', 'dinner', 'snacks', 'total' ] ) ) ? 'lunch' : $arguments['type'];
+	$nutrient 				= ( false === in_array( $arguments[ 'nutrient' ], [ 'fats', 'protein', 'carbs'] ) ) ? 'fats' : $arguments[ 'nutrient' ];
+	$macros 				= ws_ls_macro_calculate( $arguments['user-id'] );
 
 	// No macro data?
-    if(true === empty($macros) && false === empty($arguments['error-message'])) {
-        return '<p>' . esc_html( $arguments['error-message'] ) . '</p>';
+    if( true === empty($macros) && false === empty( $arguments[ 'error-message' ] ) ) {
+        return sprintf( '<p>%s</p>', esc_html( $arguments[ 'error-message' ] ) );
     }
 
-	$display_value = (false === empty($macros[$progress][$type][$nutrient])) ? ws_ls_macro_round( $macros[$progress][$type][$nutrient] ) : '' ;
+	$display_value = ( false === empty( $macros[ $progress ][ $type ][ $nutrient ] ) ) ?
+						ws_ls_macro_round( $macros[ $progress ][ $type ][ $nutrient ] ) : '' ;
 
-	return esc_html($display_value);
+	return esc_html( $display_value );
 }
 add_shortcode( 'wlt-macronutrients', 'ws_ls_shortcode_macro' );
 
@@ -242,29 +258,30 @@ add_shortcode( 'wlt-macronutrients', 'ws_ls_shortcode_macro' );
  * Basically displays the maintain / lose macronutrients table as shown on a user's record in admin
  *
  * @param $user_defined_arguments
+ * @return string
  */
 function ws_ls_shortcode_macro_table($user_defined_arguments) {
 
-	if(false === WS_LS_IS_PRO_PLUS) {
-		return;
+	if( false === WS_LS_IS_PRO_PLUS ) {
+		return '';
 	}
 
-	$arguments = shortcode_atts([	'css-class' => '',
-									'error-message' => __('Please ensure all relevant data to calculate calorie intake has been entered i.e. Activity Level, Date of Birth, Current Weight, Gender and Height.', WE_LS_SLUG ),
-									'user-id' => false,
-                                    'disable-jquery' => false
+	$arguments = shortcode_atts([	'css-class' 		=> '',
+									'error-message' 	=> __('Please ensure all relevant data to calculate calorie intake has been entered i.e. Activity Level, Date of Birth, Current Weight, Gender and Height.', WE_LS_SLUG ),
+									'user-id' 			=> false,
+                                    'disable-jquery' 	=> false
 								], $user_defined_arguments );
 
-	$arguments['user-id'] = ws_ls_force_numeric_argument($arguments['user-id']);
-    $arguments['disable-jquery'] = ws_ls_force_bool_argument($arguments['disable-jquery']);
+	$arguments[ 'user-id' ] 		= (int) $arguments['user-id'];
+    $arguments[ 'disable-jquery' ] 	= ws_ls_force_bool_argument( $arguments[ 'disable-jquery' ] );
 
     // Include footable jQuery?
-    if ( false === $arguments['disable-jquery'] ) {
+    if ( false === $arguments[ 'disable-jquery' ] ) {
         ws_ls_data_table_enqueue_scripts();
-        $arguments['css-class'] .= ' ws-ls-footable';
+        $arguments[ 'css-class' ] .= ' ws-ls-footable';
     }
 
-	return ws_ls_macro_render_table($arguments['user-id'], $arguments['error-message'], $arguments['css-class']);
+	return ws_ls_macro_render_table( $arguments[ 'user-id' ], $arguments[ 'error-message' ], $arguments[ 'css-class' ] );
 }
 add_shortcode( 'wlt-macronutrients-table', 'ws_ls_shortcode_macro_table' );
 
@@ -274,19 +291,14 @@ add_shortcode( 'wlt-macronutrients-table', 'ws_ls_shortcode_macro_table' );
  *
  * @return bool
  */
-function ws_ls_macro_validate_percentages()
-{
+function ws_ls_macro_validate_percentages() {
 
-    // All numeric?
-    if (false === is_numeric(WS_LS_MACRO_PROTEINS) ||
-        false === is_numeric(WS_LS_MACRO_CARBS) ||
-        false === is_numeric(WS_LS_MACRO_FATS)
-    ) {
-        return false;
-    }
+	$proteins   = ws_ls_harris_benedict_setting( 'ws-ls-macro-proteins' );
+	$fats       = ws_ls_harris_benedict_setting( 'ws-ls-macro-fats' );
+	$carbs      = ws_ls_harris_benedict_setting( 'ws-ls-macro-carbs' );
 
     // Is their sum 100 (i.e. 100%)
-    return ( 100 == ( WS_LS_MACRO_PROTEINS + WS_LS_MACRO_CARBS + WS_LS_MACRO_FATS ) ) ? true : false;
+    return ( 100 === ( $proteins + $fats + $carbs ) );
 }
 
 /**

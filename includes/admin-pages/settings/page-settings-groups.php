@@ -20,40 +20,42 @@
                             }
                         ?>
                         <div class="postbox">
-                            <h3 class="hndle"><span><?php echo __('Manage Groups', WE_LS_SLUG); ?></span></h3>
+                            <h3 class="hndle"><span><?php echo __( 'Manage User Groups', WE_LS_SLUG ); ?></span></h3>
                             <div style="padding: 0px 15px 0px 15px">
 
-                                <p><?php echo __('Add or remove Groups that users can be assigned to.', WE_LS_SLUG); ?>
-                                    <a href="https://weight.yeken.uk/groups/" target="_blank" rel="noopener"><?php echo __('Read more about Groups', WE_LS_SLUG); ?></a>
+                                <p><?php echo __( 'Assign your users to groups - this will allow you to group members together and calculate the weight difference for entire groups.', WE_LS_SLUG ); ?>
+                                    <a href="https://weight.yeken.uk/groups/" target="_blank" rel="noopener"><?php echo __( 'Read more about Groups', WE_LS_SLUG ); ?></a>
                                 </p>
 
-                                <h4><?php echo __('Add a new group', WE_LS_SLUG); ?></h4>
-                                <?php
+	                                <h4><?php echo __('Add a new group', WE_LS_SLUG); ?></h4>
+	                                <?php
 
-                                    $new_group = ws_ls_ajax_post_value( 'group' );
+	                                    $new_group = ws_ls_post_value( 'group' );
 
-                                    if ( false === empty( $new_group ) ) {
-	                                    ws_ls_groups_add( $new_group );
-                                    }
+	                                    if ( false === empty( $new_group ) ) {
+		                                    ws_ls_groups_add( $new_group );
+	                                    }
 
-                                ?>
-                                <form method="post">
-                                    <input type="text" name="group" size="30" maxlength="40" />
-                                    <input type="submit" value="Add" class="button"/>
-                                </form>
+	                                ?>
+	                                <form method="post">
+	                                    <input type="text" name="group" size="30" maxlength="40" />
+	                                    <input type="submit" value="Add" class="button" <?php if ( false === WS_LS_IS_PRO ) { echo ' disabled'; } ?> />
+	                                </form>
 
-                                <h4><?php echo __('Existing groups', WE_LS_SLUG); ?></h4>
+	                                <h4><?php echo __('Existing groups', WE_LS_SLUG); ?></h4>
 
-                                <table class="ws-ls-settings-groups-list-ajax table ws-ls-loading-table" id="groups-list"
-                                       data-paging="true"
-                                       data-filtering="false"
-                                       data-sorting="true"
-                                       data-editing-allow-add="false"
-                                       data-editing-allow-edit="true"
-                                       data-cascade="true"
-                                       data-toggle="true"
-                                       data-use-parent-width="true">
-                                </table>
+	                                <table class="ws-ls-settings-groups-list-ajax table ws-ls-loading-table" id="groups-list"
+	                                       data-paging="true"
+	                                       data-filtering="false"
+	                                       data-sorting="true"
+	                                       data-editing-allow-add="false"
+	                                       data-editing-allow-edit="true"
+	                                       data-paging-size="40"
+	                                       data-cascade="true"
+	                                       data-toggle="true"
+	                                       data-use-parent-width="true">
+	                                </table>
+
                             </div>
                         </div>
 

@@ -4,14 +4,15 @@ defined('ABSPATH') or die('Naw ya dinnie!');
 
 function ws_ls_admin_page_data_summary() {
 
-    ws_ls_user_data_permission_check();
+    ws_ls_permission_check_message();
 
     // DELETE ALL DATA!! AHH!!
     if (is_admin() && isset($_GET['removedata']) && 'y' == $_GET['removedata']) {
-        ws_ls_delete_existing_data();
+
+	    ws_ls_delete_existing_data();
 
         // Let others know we cleared all user data
-        do_action( WE_LS_HOOK_DATA_ALL_DELETED );
+        do_action( 'wlt-hook-data-all-deleted' );
     }
 
 ?>
@@ -46,7 +47,7 @@ function ws_ls_admin_page_data_summary() {
 
                                 // Run stats if plugin version number has changed!
                                 if( true === WS_LS_IS_PRO && update_option('ws-ls-version-number-stats', WE_LS_CURRENT_VERSION) || (false === empty($_GET['regenerate-stats']) && 'y' == $_GET['regenerate-stats'])) {
-                                    ws_ls_stats_clear_last_updated_date();
+                                    ws_ls_db_stats_clear_last_updated_date();
                                     ws_ls_stats_run_cron();
                                     ws_ls_tidy_cache_on_delete();
 									$ignore_cache = true;
@@ -54,16 +55,23 @@ function ws_ls_admin_page_data_summary() {
 
                                 echo ws_ls_shortcode_stats_league_total(['ignore_cache' => $ignore_cache, 'order' => (false === $show_gain) ? 'asc' : 'desc']);
 
-                            ?>
-                            <a class="btn button-secondary" href="<?php echo admin_url( 'admin.php?page=ws-ls-data-home&regenerate-stats=y' ); ?>"><i class="fa fa-refresh"></i> <?php echo __('Regenerate these stats', WE_LS_SLUG); ?></a>
-							<?php
+								if( true === WS_LS_IS_PRO ) {
+									?>
+									<p>
+										<small><?php echo __( 'Please note: For performance reasons, this table only will update every hour. Click the following button to manually update.', WE_LS_SLUG ); ?></small>
+									</p>
+									<a class="btn button-secondary"
+									   href="<?php echo admin_url( 'admin.php?page=ws-ls-data-home&regenerate-stats=y' ); ?>"><i
+											class="fa fa-refresh"></i> <?php echo __( 'Regenerate these stats', WE_LS_SLUG ); ?>
+									</a>
+									<?php
 
-								echo sprintf(
-												'<a class="btn button-secondary" href="%s"><i class="fa fa-arrows-v"></i> %s</a>',
-												admin_url( 'admin.php?page=ws-ls-data-home&show-gain=') . ((false === $show_gain) ? 'y' : 'n'),
-												(false === $show_gain) ? __('Show who has gained the most', WE_LS_SLUG) : __('Show who has lost the most', WE_LS_SLUG)
-											);
-
+									echo sprintf(
+										'<a class="btn button-secondary" href="%s"><i class="fa fa-arrows-v"></i> %s</a>',
+										admin_url( 'admin.php?page=ws-ls-data-home&show-gain=' ) . ( ( false === $show_gain ) ? 'y' : 'n' ),
+										( false === $show_gain ) ? __( 'Show who has gained the most', WE_LS_SLUG ) : __( 'Show who has lost the most', WE_LS_SLUG )
+									);
+								}
 						 	?>
 						</div>
 					</div>
@@ -79,6 +87,7 @@ function ws_ls_admin_page_data_summary() {
                                        data-editing-allow-delete="false"
                                        data-editing-allow-edit="false"
                                        data-cascade="true"
+                                       data-paging-size="10"
                                        data-toggle="true"
                                        data-use-parent-width="true">
                                 </table>
@@ -91,27 +100,39 @@ function ws_ls_admin_page_data_summary() {
 						<?php
 
 							// Show 100 most recent entries? Or show 500?
-							if(false === empty($_GET['show-all'])) {
-								$value = ('y' === $_GET['show-all']) ? true : false;
-								update_option('ws-ls-show-all', $value);
+							if( false === empty( $_GET['show-all'] ) ) {
+								$value = ( 'y' === $_GET['show-all'] ) ? true : false;
+								update_option('ws-ls-show-all', $value );
 							}
 
-							$show_all = get_option('ws-ls-show-all') ? true : false;
+							// Show meta data?
+							if( false === empty( $_GET['show-meta'] ) ) {
+								$value = ( 'y' === $_GET['show-meta'] ) ? true : false;
+								update_option('ws-ls-show-meta', $value );
+							}
 
+							$show_all   = get_option( 'ws-ls-show-all' ) ? true : false;
+							$show_meta  = get_option( 'ws-ls-show-meta' ) ? true : false;
 						?>
 						<h2 class="hndle"><span><?php echo ($show_all) ? __('Last 500 entries', WE_LS_SLUG) : __('Last 100 entries', WE_LS_SLUG); ?></span></h2>
 						<div class="inside">
-							<?php echo ws_ls_data_table_placeholder(    false,
-                                                                        ( $show_all ) ? 500 : 100,
-                                                                        true,
-                                                                        true,
-                                                                        'desc'
-                                );
+							<?php
+
+								echo ws_ls_data_table_render( [ 'limit' => ( $show_all ) ? 500 : 100, 'smaller-width' => true, 'enable-meta-fields' => $show_meta, 'page-size' => 20 ] );
+
 								echo sprintf(
 												'<a class="btn button-secondary" href="%s"><i class="fa fa-book"></i> %s</a>',
-												admin_url( 'admin.php?page=ws-ls-data-home&show-all=') . ((false === $show_all) ? 'y' : 'n'),
-												(false === $show_all) ? __('Show 500 recent entries', WE_LS_SLUG) : __('Show 100 recent entries', WE_LS_SLUG)
+												admin_url( 'admin.php?page=ws-ls-data-home&show-all=' ) . ( ( false === $show_all ) ? 'y' : 'n'),
+												( false === $show_all ) ? __( 'Show 500 recent entries', WE_LS_SLUG ) : __( 'Show 100 recent entries', WE_LS_SLUG )
 											);
+
+								if ( ws_ls_meta_fields_number_of_enabled() > 0 ) {
+									echo sprintf(
+										'&nbsp;<a class="btn button-secondary" href="%s"><i class="fas fa-book-reader"></i> %s</a>',
+										admin_url( 'admin.php?page=ws-ls-data-home&show-meta=' ) . ( ( false === $show_meta ) ? 'y' : 'n'),
+										( false === $show_meta ) ? __( 'Include Custom Fields (Slower)', WE_LS_SLUG ) : __( 'Hide Custom Fields (Quicker)', WE_LS_SLUG )
+									);
+								}
 
 						 	?>
 						</div>
@@ -131,7 +152,7 @@ function ws_ls_admin_page_data_summary() {
 						<div class="inside">
 							<?php
 
-								$entry_counts = ws_ls_get_entry_counts();
+								$entry_counts = ws_ls_db_entries_count();
 
 								if(false === empty($entry_counts)) {
 

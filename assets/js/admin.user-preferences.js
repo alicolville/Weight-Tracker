@@ -1,22 +1,18 @@
 //
 // To compress this script, use https://jscompress.com
 //
-jQuery( document ).ready(function ($) {
-    $( ".ws-ls-user-pref-form" ).submit(function( event ) {
+jQuery( document ).ready( function ( $ ) {
+
+    $( '.ws-ls-user-pref-form' ).submit( function( event ) {
 
         event.preventDefault();
 
-        var post_data = {};
+        let post_data = {};
 
-        // This code is specifc to admin
-        post_data["security"] = ws_ls_user_pref_config["ajax-security-nonce"];
-        post_data["we-ls-in-admin"] = true;
+        post_data[ 'user-id' ] = $( '#ws-ls-user-id' ).val();
 
-        // Get User ID from form
-        post_data["user-id"] = $('#ws-ls-user-id').val();
-
-        if(0 === post_data["user-id"]) {
-            alert('Error loading user ID');
+        if( 0 === post_data[ 'user-id' ] ) {
+            alert( 'Error loading user ID' );
             return;
         }
 
@@ -33,24 +29,27 @@ jQuery( document ).ready(function ($) {
         ws_ls_post_data( post_data, ws_ls_user_preference_callback );
     });
 
-    function ws_ls_user_preference_callback(data, response)	{
+    function ws_ls_user_preference_callback( data, response )	{
 
-        if (1 == response) {
-            window.location.replace(ws_ls_user_pref_config["preferences-page"] + '&user-preference-saved=y');
+        if ( 1 == response ) {
+            window.location.replace(ws_ls_user_pref_config[ 'preferences-page' ] + '&user-preference-saved=y' );
         } else {
-            $('#ws-ls-notice p').text(ws_ls_user_pref_config["preferences-save-fail"]);
-            $('#ws-ls-notice').removeClass('ws-ls-hide');
-            $('#ws-ls-notice').addClass('notice-error');
+            $( '#ws-ls-notice p' ).text( ws_ls_user_pref_config[ 'preferences-save-fail' ] );
+            $( '#ws-ls-notice' ).removeClass( 'ws-ls-hide' );
+            $( '#ws-ls-notice' ).addClass( 'notice-error' );
         }
     }
 
-    function ws_ls_post_data(data, callback)
-    {
-        jQuery.post(ajaxurl, data, function(response) {
+    function ws_ls_post_data( data, callback ) {
 
-            var response = JSON.parse(response);
-            callback(data, response);
-        });
+      data[ 'security' ]        = ws_ls_user_pref_config[ 'ajax-security-nonce' ];
+      data[ 'we-ls-in-admin' ]  = true;
+
+      jQuery.post( ajaxurl, data, function( response ) {
+
+           response = JSON.parse( response );
+          callback( data, response );
+      });
     }
 
 });

@@ -1,58 +1,63 @@
 <?php
 
-defined('ABSPATH') or die("Jog on!");
+defined( 'ABSPATH' ) or die( "Jog on!" );
 
-function ws_ls_shortcode_chart($user_defined_arguments)
-{
+/**
+ * Render the [wlt-chart] shortcode
+ *
+ * @param $user_defined_arguments
+ *
+ * @return bool|string
+ */
+function ws_ls_shortcode_chart( $user_defined_arguments ) {
 
-    if(!WS_LS_IS_PRO) {
-       return false;
-    }
-
-    ws_ls_enqueue_files();
-
-    $chart_arguments = shortcode_atts(
-        array(
-            'user-id' => get_current_user_id(),
-            'max-data-points' => WE_LS_CHART_MAX_POINTS,
-            'type' => WE_LS_CHART_TYPE,
-            'height' => WE_LS_CHART_HEIGHT,
-            'weight-line-color' => WE_LS_WEIGHT_LINE_COLOUR,
-            'weight-fill-color' => WE_LS_WEIGHT_FILL_COLOUR,
-            'weight-target-color' => WE_LS_TARGET_LINE_COLOUR,
-            'show-gridlines' => WE_LS_CHART_SHOW_GRID_LINES,
-            'bezier' => WE_LS_CHART_BEZIER_CURVE,
-			'exclude-measurements' => false,
-			'ignore-login-status' => false
-           ), $user_defined_arguments );
-
-    // Tidy up a few configs
-    $chart_arguments['bezier'] = ws_ls_force_bool_argument($chart_arguments['bezier']);
-    $chart_arguments['show-gridlines'] = ws_ls_force_bool_argument($chart_arguments['show-gridlines']);
-	$chart_arguments['exclude-measurements'] = ws_ls_force_bool_argument($chart_arguments['exclude-measurements']);
-	$chart_arguments['ignore-login-status'] = ws_ls_force_bool_argument($chart_arguments['ignore-login-status']);
-
-    // Validate height
-    if (!is_numeric($chart_arguments['height']) || $chart_arguments['height'] < 50) {
-       $chart_arguments['height'] = WE_LS_CHART_HEIGHT;
-    }
-
-    // Validate max points
-    if (!is_numeric($chart_arguments['max-data-points']) || $chart_arguments['max-data-points'] < 2) {
-       $chart_arguments['max-data-points'] = WE_LS_CHART_MAX_POINTS;
-    }
-    // Fetch data for chart
-    $weight_data = ws_ls_get_weights($chart_arguments['user-id'], $chart_arguments['max-data-points'], -1, 'desc');
-
-    // Reverse array so in cron order
-	if(is_array($weight_data) && !empty($weight_data)) {
-    	$weight_data = array_reverse($weight_data);
+	if ( false === WS_LS_IS_PRO ) {
+		return false;
 	}
 
-    // Render chart
-    if ($weight_data){
-        return ws_ls_display_chart($weight_data, $chart_arguments);
-    } else {
-        return '<p>' . __('No weight data was found for the specified user.', WE_LS_SLUG) . '</p>';
-    }
+	$chart_arguments = shortcode_atts( [
+											'bezier'              => ws_ls_option_to_bool( 'ws-ls-bezier-curve' ),
+											'height'              => 250,
+											'ignore-login-status' => false,
+											'max-data-points'     => ws_ls_option( 'ws-ls-max-points', '25', true ),
+											'show-gridlines'      => ws_ls_option_to_bool( 'ws-ls-grid-lines' ),
+											'show-meta-fields'    => true,
+											'type'                => get_option( 'ws-ls-chart-type', 'line' ),
+											'user-id'             => get_current_user_id(),
+											'weight-fill-color'   => get_option( 'ws-ls-line-fill-colour', '#f9f9f9' ),
+											'weight-line-color'   => get_option( 'ws-ls-line-colour', '#aeaeae' ),
+											'weight-target-color' => get_option( 'ws-ls-target-colour', '#76bada' )
+	], $user_defined_arguments );
+
+	// Make sure they are logged in
+	if ( false === ws_ls_to_bool( $chart_arguments['ignore-login-status'] ) &&
+	     false === is_user_logged_in() ) {
+		return ws_ls_blockquote_login_prompt();
+	}
+
+	$chart_arguments['height'] = (int) $chart_arguments['height'];
+
+	// Validate height and ensure height is not below 50
+	if ( $chart_arguments['height'] < 50 ) {
+		$chart_arguments['height'] = 250;
+	}
+	$chart_arguments['max-data-points'] = 0;
+
+	// Ensure we have at least two data points
+	$chart_arguments[ 'max-data-points' ] = (int) $chart_arguments[ 'max-data-points' ];
+
+	if ( $chart_arguments['max-data-points'] < 2 ) {
+		$chart_arguments['max-data-points'] = ws_ls_option( 'ws-ls-max-points', '25', true );
+	}
+	// Fetch data for chart
+	$weight_data = ws_ls_entries_get( [ 'user-id' => $chart_arguments['user-id'], 'limit' => $chart_arguments['max-data-points'], 'prep' => true ] );
+
+	// Reverse array so in cron order
+	if ( true === empty( $weight_data ) ) {
+		return ws_ls_display_blockquote( __( 'No data could be found for the user.', WE_LS_SLUG ) );
+	}
+
+	return ws_ls_display_chart( $weight_data, $chart_arguments );
 }
+add_shortcode( 'wlt-chart', 'ws_ls_shortcode_chart' );
+add_shortcode( 'wt-chart', 'ws_ls_shortcode_chart' );

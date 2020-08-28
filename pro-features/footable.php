@@ -1,13 +1,34 @@
 <?php
 
-	defined('ABSPATH') or die('Jog on!');
+defined('ABSPATH') or die('Jog on!');
 
+/**
+ * Render HTML for user entry table
+ *
+ * @param $arguments
+ *
+ * @return string
+ */
+function ws_ls_data_table_render( $arguments = [] ) {
 
-function ws_ls_data_table_placeholder( $user_id = false, $max_entries = false,
-                                        $smaller_width = false, $enable_add_edit = true,
-                                            $order_direction = 'asc' ) {
+	$arguments = wp_parse_args( $arguments, [   'user-id'               => NULL,
+	                                            'limit'                 => NULL,
+	                                            'smaller-width'         => false,
+	                                            'enable-add-edit'       => true,
+												'enable-meta-fields'    => ( true === ws_ls_meta_fields_is_enabled() &&
+												                                ws_ls_meta_fields_number_of_enabled() > 0 ),
+												'page-size'             => 10,
+												'week'                  => NULL
+	] );
 
 	ws_ls_data_table_enqueue_scripts();
+
+	$html = '';
+
+	// Saved data?
+	if ( false === is_admin() ) {
+		$html = ws_ls_display_data_saved_message();
+	}
 
 	$html = '';
 	$entry_id = ws_ls_querystring_value('ws-edit-entry', true);
@@ -18,250 +39,247 @@ function ws_ls_data_table_placeholder( $user_id = false, $max_entries = false,
 	}
 
 	// Are we in front end and editing enabled, and of course we want to edit, then do so!
-	if( false === empty($entry_id) && false === is_admin()) {
+	if( false === empty( $entry_id ) && false === is_admin() ) {
 
-		if ($entry_id) {
-			$data = ws_ls_get_weight(get_current_user_id(), $entry_id);
-		}
-
-		//If we have a Redirect URL, base decode.
+		// If we have a Redirect URL, base decode.
 		$redirect_url = ws_ls_querystring_value('redirect');
 
-		if(false === empty($redirect_url)) {
-			$redirect_url = base64_decode($redirect_url);
+		if( false === empty( $redirect_url ) ) {
+			$redirect_url = base64_decode( $redirect_url );
 		}
 
-		$html .= ws_ls_display_weight_form(false, false, false, false, false, false,
-											false, false, $redirect_url, $data, true);
+		$html .= ws_ls_form_weight( [ 'entry-id' => $entry_id, 'redirect-url' => $redirect_url ] );
 
 	} else {
 
-		$html .= sprintf('<table class="ws-ls-user-data-ajax table ws-ls-loading-table" id="%s"
-				data-paging="true"
-				data-filtering="true"
-				data-sorting="true"
-				data-editing="%s"
-				data-cascade="true"
-				data-toggle="true"
-				data-use-parent-width="true"
-				data-user-id="%s",
-				data-max-entries="%s"
-				data-small-width="%s"
-				data-order-direction="%s">
-			</table>',
-			uniqid('ws-ls-'),
-			true === $enable_add_edit ? 'true' : 'false',
-			is_numeric($user_id) ? $user_id : 'false',
-			is_numeric($max_entries) ? $max_entries : 'false',
-			$smaller_width ? 'true' : 'false',
-            $order_direction
+		$html .= sprintf('<table class="ws-ls-user-data-ajax table ws-ls-loading-table" id="%1$s"
+									data-paging="true"
+									data-paging-size="%7$d"
+									data-filtering="true"
+									data-sorting="true"
+									data-editing="%2$s"
+									data-cascade="true"
+									data-toggle="true"
+									data-use-parent-width="true"
+									data-user-id="%3$d",
+									data-max-entries="%4$d"
+									data-small-width="%5$s"
+									data-enable-meta-fields="%6$s"
+									data-week="%8$d" >
+		</table>',
+			ws_ls_component_id(),
+			true === $arguments[ 'enable-add-edit' ] ? 'true' : 'false',
+			false === empty( $arguments[ 'user-id' ] ) ? $arguments[ 'user-id' ] : 'false',
+			false === empty( $arguments[ 'limit' ] ) ? $arguments[ 'limit' ] : 'false',
+			true === $arguments[ 'smaller-width' ] ? 'true' : 'false',
+			true === $arguments[ 'enable-meta-fields' ] ? 'true' : 'false',
+			$arguments[ 'page-size' ],
+			$arguments[ 'week' ]
 		);
 
-		if (WE_LS_MEASUREMENTS_ENABLED) {
-			$html .= '<p><em>' . __('Measurements are in', WE_LS_SLUG) . ' ' . (('inches' == ws_ls_get_config('WE_LS_MEASUREMENTS_UNIT')) ? __('Inches', WE_LS_SLUG) : __('cm', WE_LS_SLUG)) . '</em></p>';
+		if ( true === empty( $arguments[ 'user-id' ] ) ) {
+			$html .= sprintf( '<p><small>%s</small></p>', __( 'Please note: For performance reasons, this table will only update every 5 minutes.', WE_LS_SLUG ) );
 		}
 	}
 
 	return $html;
 }
 
-function ws_ls_data_table_get_rows($user_id = false, $max_entries = false,
-                                    $smaller_width = false, $front_end = false,
-                                    $order_direction = 'asc' ) {
+/**
+ * Fetch the rows for the data table
+ * @param $arguments
+ *
+ * @return array|null
+ */
+function ws_ls_datatable_rows( $arguments ) {
 
-	// Fetch all columns that will be displayed in data table.
-	$columns = ws_ls_data_table_get_columns($smaller_width, $front_end);
+	$arguments = wp_parse_args( $arguments, [	 'user-id'          => NULL,
+	                                             'limit'            => NULL,
+	                                             'smaller-width'    => false,
+	                                             'week'             => NULL,
+	                                             'front-end'        => false,
+	                                             'sort'             => 'desc',
+												 'enable-meta'      => true,
+												 'in-admin'         => false    // Has this request come from the admin area (used to render dates differently)
+	] );
 
-	// Build any filters
-	$filters = array();
-	if(is_numeric($max_entries)) {
-		$filters['start'] = 0;
-		$filters['limit'] = $max_entries;
+	$cache_key  = ws_ls_cache_generate_key_from_array( 'footable', $arguments );
+	$rows       = NULL;
+
+	if ( $cache = ws_ls_cache_user_get( $arguments[ 'user-id' ], $cache_key ) ) {
+		$rows = $cache;
+	} else {
+
+		$entries                = ws_ls_db_entries_get( $arguments );
+		$rows                   = [];
+		$previous_user_weight   = [];
+		$user_name              = NULL;
+		$user_profile_link      = '';
+
+		if ( false === $arguments[ 'front-end' ] &&
+		        false === empty( $arguments[ 'user-id' ] ) ) {
+			$user_name          = ws_ls_user_display_name( $arguments[ 'user-id' ] ) ;
+			$user_profile_link  = sprintf('<a href="%s" rel="noopener noreferrer" target="_blank">%s</a>', ws_ls_get_link_to_user_profile( $arguments[ 'user-id' ] ), $user_name );
+		}
+
+		$entries = array_reverse( $entries );
+
+		foreach ( $entries as $entry ) {
+
+			// Build a row up for given columns
+			$row = [ 'date' => $entry[ 'weight_date' ], 'db_row_id' => $entry[ 'id' ], 'user_id' => $entry[ 'user_id' ] ];
+
+			if ( false === $arguments[ 'front-end' ] ) {
+
+				if ( null === $user_name ) {
+					$entry[ 'user_name' ]    = ws_ls_user_display_name( $entry[ 'user_id' ] );
+					$entry[ 'user_profile' ] = sprintf( '<a href="%s" rel="noopener noreferrer" target="_blank">%s</a>', ws_ls_get_link_to_user_profile( $entry['user_id'] ), $entry['user_name'] );
+				} else {
+					$entry[ 'user_name' ]    = $user_name;
+					$entry[ 'user_profile' ] = $user_profile_link;
+				}
+
+				$row[ 'user_nicename' ] = [
+					'options' => [ 'sortValue' => $entry[ 'user_name' ] ],
+					'value'   => $entry[ 'user_profile' ]
+				];
+			}
+
+			// Compare to previous weight and determine if a gain / loss in weight
+			$gain_loss = '';
+			$gain_class = '';
+
+			if( false === empty( $previous_user_weight[ $entry[ 'user_id' ] ] ) ) {
+
+				$row[ 'previous-weight' ] = $previous_user_weight[ $entry[ 'user_id' ] ];
+
+				if ( $entry['kg'] > $previous_user_weight[ $entry[ 'user_id' ] ] ) {
+					$gain_class = 'gain';
+				} elseif ( $entry[ 'kg' ] < $previous_user_weight[ $entry[ 'user_id' ] ] ) {
+					$gain_class = 'loss';
+				} elseif ( $entry['kg'] == $previous_user_weight[ $entry[ 'user_id' ] ] ) {
+					$gain_class = 'same';
+					$gain_loss = __( 'No Change', WE_LS_SLUG );
+				}
+
+				$row[ 'previous-weight-diff' ] = $entry['kg'] - $previous_user_weight[ $entry[ 'user_id' ] ];
+
+			} elseif ( true === empty( $arguments[ 'user-id' ] )) {
+				$gain_loss = $entry[ 'user_profile' ] = sprintf('<a href="%s" rel="noopener noreferrer" target="_blank">%s</a>', ws_ls_get_link_to_user_profile( $entry[ 'user_id' ] ), __( 'Check record', WE_LS_SLUG ) );
+			} else {
+				$gain_loss = __( 'First entry', WE_LS_SLUG );
+			}
+
+			$previous_user_weight[ $entry[ 'user_id' ] ] = $entry[ 'kg' ];
+
+			$row[ 'gainloss' ][ 'value']                = $gain_loss;
+			$row[ 'gainloss' ][ 'options']['classes']   = 'ws-ls-' . $gain_class .  ws_ls_blur();
+			$row[ 'notes' ]                             = wp_kses_post( $entry[ 'notes' ] );
+
+			if( true === ws_ls_bmi_in_tables() ) {
+				$row[ 'bmi' ] = [   'value' => ws_ls_get_bmi_for_table( ws_ls_user_preferences_get( 'height', $entry[ 'user_id' ] ), $entry[ 'kg' ], __( 'No height', WE_LS_SLUG ) ),
+									'options' => [ 'classes' => '' ]
+				];
+			}
+
+			$row[ 'kg' ] = [ 'value' => $entry['kg'], 'options' => [ 'classes' => ws_ls_blur(), 'sortValue' => $entry['kg'] ] ];
+
+			if ( true === $arguments[ 'enable-meta' ] &&
+			        true === ws_ls_meta_fields_is_enabled() ) {
+
+				$meta_data = ws_ls_meta( $entry['id'] );
+
+				// Pluck to meta_id => value
+				if ( false === empty( $meta_data ) ) {
+					$meta_data = wp_list_pluck( $meta_data, 'value', 'meta_field_id' );
+
+					foreach ( $meta_data as $key => $field ) {
+						$row[ 'meta-' . $key ] = ws_ls_fields_display_field_value( $field, $key );
+					}
+				}
+			}
+
+			array_push( $rows, $row );
+		}
+
+		ws_ls_cache_user_set( $arguments[ 'user-id' ], $cache_key, $rows );
 	}
-	if(is_numeric($user_id)) {
-		$filters['user-id'] = $user_id;
-	}
 
-	$filters['sort-column'] = 'weight_date';
-    $filters['sort-order'] = $order_direction;
+	// Reverse the array so most recent entries are shown first (as default)
+	$rows = array_reverse( $rows );
 
-	// Fetch all relevant weight entries that we're interested in
-	$user_data = ws_ls_user_data( $filters );
+	// Localise the row for the user viewing
+	$rows = array_map( 'ws_ls_datatable_rows_localise', $rows );
 
-    // get a list of active measurment fields (needed later)
-	$measurement_fields = ws_ls_get_keys_for_active_measurement_fields();
-
-	// Loop through the data and expected columns and build a clean array of row data for HTML table.
-	$rows = array();
-
-	$previous_user_weight = [];
-
-	// If in front end, load user's weight format
-	$convert_weight_format = ( true === $front_end ) ? (int) $user_id : false;
-
-	if ( false === empty( $user_data['weight_data'] ) ) {
-        foreach ( $user_data['weight_data'] as $data) {
-
-            // Build a row up for given columns
-            $row = array();
-
-            foreach ($columns as $column) {
-
-                $column_name = $column['name'];
-
-                if('gainloss' == $column_name) {
-
-                    // Compare to previous weight and determine if a gain / loss in weight
-                    $gain_loss = '';
-                    $gain_class = '';
-
-                    if(false === empty($previous_user_weight[$data['user_id']])) {
-
-                        $row['previous-weight'] = $previous_user_weight[$data['user_id']];
-
-                        if ($data['kg'] > $previous_user_weight[$data['user_id']]) {
-                            $gain_class = 'gain';
-                            $gain_loss = ws_ls_convert_kg_into_relevant_weight_String($data['kg'] - $previous_user_weight[$data['user_id']], true, $convert_weight_format);
-                        } elseif ($data['kg'] < $previous_user_weight[$data['user_id']]) {
-                            $gain_class = 'loss';
-                            $gain_loss = ws_ls_convert_kg_into_relevant_weight_String($data['kg'] - $previous_user_weight[$data['user_id']], true, $convert_weight_format);
-                        } elseif ($data['kg'] == $previous_user_weight[$data['user_id']]) {
-                            $gain_class = 'same';
-                        }
-
-                        $row['previous-weight-diff'] = $data['kg'] - $previous_user_weight[$data['user_id']];
-
-                    } else {
-                        $gain_loss = __('First entry', WE_LS_SLUG);
-                    }
-
-                    $previous_user_weight[$data['user_id']] = $data['kg'];
-                }
-
-                // Is this a measurement field?
-                if(in_array($column_name, $measurement_fields) && !empty($data['measurements'][$column_name])) {
-                    $row[$column_name]['options']['sortValue'] = $data['measurements'][$column_name];
-                    $row[$column_name]['value'] = ws_ls_prep_measurement_for_display($data['measurements'][$column_name], $convert_weight_format);
-                } else if ('gainloss' === $column_name) {
-                    $row[$column_name]['value'] = ws_ls_blur_text( $gain_loss );
-                    $row[$column_name]['options']['classes'] = 'ws-ls-' . $gain_class .  ws_ls_blur(); // Can use this method for icons
-                } else if ('bmi' === $column_name) {
-                    $row[$column_name]['value'] =  ws_ls_get_bmi_for_table(ws_ls_get_user_height($data['user_id']), $data['kg'], __('No height', WE_LS_SLUG)) ;
-                    $row[$column_name]['options']['classes'] = 'ws-ls-' . sanitize_key($row[$column_name]['value']) . ws_ls_blur(); // Can use this method for icons
-                } else if (!empty($data[$column_name])) {
-                    switch ($column_name) {
-                        case 'kg':
-                            $row[$column_name]['options']['sortValue'] = $data['kg'];
-                            $row[$column_name]['options']['classes'] = ws_ls_blur();
-                            $row[$column_name]['value'] = ws_ls_blur_text(  ws_ls_convert_kg_into_relevant_weight_String($data['kg'] , false, $convert_weight_format) );
-                            break;
-                        case 'user_nicename':
-                            $row[$column_name]['options']['sortValue'] = $data['user_nicename'];
-                            $row[$column_name]['value'] = sprintf('<a href="%s">%s</a>', ws_ls_get_link_to_user_profile($data['user_id']), $data['user_nicename'] );
-                            break;
-                        default:
-                            $row[$column_name] = esc_html( $data[$column_name] );
-                            break;
-                    }
-                } else if ( false !== strpos( $column_name , 'meta-' ) ) {
-
-                    $field_id = str_replace( 'meta-', '', $column_name );
-
-                    $row[ $column_name ] = [];
-
-                    if ( false === empty( $data['meta-fields'][ (int)$field_id ]['value'] ) ) {
-
-                        $field = $data['meta-fields'][ (int)$field_id ];
-
-                        $row[ $column_name ]['value'] = ws_ls_fields_display_field_value( $field['value'], $field['meta_field_id'] );
-                        $row[ $column_name ]['value'] = ws_ls_blur_text( $row[ $column_name ]['value'] );
-                        $row[ $column_name ]['options']['classes'] = ws_ls_blur();
-                    }
-
-                }
-
-            }
-            array_push($rows, $row);
-        }
-    }
-
-    // Reverse the array so most recent entries are shown first (as default)
-    $rows = array_reverse($rows);
-
-    return $rows;
+	return $rows;
 }
 
+/**
+ * Take a table row and localise for the person viewing it
+ * @param $row
+ *
+ * @return mixed
+ */
+function ws_ls_datatable_rows_localise( $row ) {
+
+	global $ws_ls_request_from_admin_screen;
+
+	if ( false === empty( $row[ 'previous-weight-diff' ] ) ) {
+		$row[ 'gainloss' ][ 'value' ] = ws_ls_blur_text( ws_ls_weight_display( $row[ 'previous-weight-diff' ], NULL, 'display', $ws_ls_request_from_admin_screen, true ) );
+	}
+
+	if ( false === empty( $row[ 'kg' ][ 'value' ] ) ) {
+		$row[ 'kg' ][ 'value' ] = ws_ls_blur_text( ws_ls_weight_display( $row[ 'kg' ][ 'value' ], NULL, 'display', $ws_ls_request_from_admin_screen ) );
+	}
+
+	return $row;
+}
 
 /**
  * Depending on settings, return relevant columns for data table
+ *
+ * @param bool $smaller_width
+ * @param bool $front_end
+ * @param bool $enable_meta
+ *
  * @return array - column definitions
  */
-function ws_ls_data_table_get_columns($smaller_width = false, $front_end = false) {
+function ws_ls_datatable_columns( $smaller_width = false, $front_end = false, $enable_meta = true ) {
 
-	$columns = array (
-		array('name' => 'db_row_id', 'title' => 'ID', 'visible'=> false, 'type' => 'number'),
-		array('name' => 'user_id', 'title' => 'USER ID', 'visible'=> false, 'type' => 'number')
-	);
+	$columns = [
+					[ 'name' => 'db_row_id', 'title' => 'ID', 'visible' => false, 'type' => 'number' ],
+					[ 'name' => 'user_id', 'title' => 'USER ID', 'visible' => false, 'type' => 'number' ]
+	];
 
 	// If not front end, add nice nice name
-	if (false == $front_end) {
-		$columns[] = array('name' => 'user_nicename', 'title' => __('User', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text');
+	if ( false === $front_end ) {
+		$columns[] = [ 'name' => 'user_nicename', 'title' => __( 'User', WE_LS_SLUG ), 'breakpoints'=> '', 'type' => 'text' ];
 	} else {
-		// If in the front end, switch to smaller width (hide measurements etc)
+		// If in the front end, switch to smaller width (hide meta fields etc)
 		$smaller_width = $front_end;
 	}
 
-	$columns[] = array('name' => 'date', 'title' => __('Date', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'date');
-	$columns[] = array('name' => 'kg', 'title' => __('Weight', WE_LS_SLUG), 'visible'=> true, 'type' => 'text');
-	$columns[] = array('name' => 'gainloss', 'title' => ws_ls_tooltip('+/-', __('Difference', WE_LS_SLUG)), 'visible'=> true, 'breakpoints'=> 'xs', 'type' => 'text');
+	$columns[] = [ 'name' => 'date', 'title' => __( 'Date', WE_LS_SLUG ), 'breakpoints'=> '', 'type' => 'date' ];
+	$columns[] = [ 'name' => 'kg', 'title' => __( 'Weight', WE_LS_SLUG ), 'visible'=> true, 'type' => 'text' ];
+	$columns[] = [ 'name' => 'gainloss', 'title' => ws_ls_tooltip('+/-', __( 'Difference', WE_LS_SLUG ) ), 'visible'=> true, 'breakpoints'=> 'xs', 'type' => 'text' ];
 
 	// Add BMI?
-	if(WE_LS_DISPLAY_BMI_IN_TABLES) {
-		array_push($columns, array('name' => 'bmi', 'title' => ws_ls_tooltip('BMI', __('Body Mass Index', WE_LS_SLUG)), 'breakpoints'=> 'xs', 'type' => 'text'));
+	if( true === ws_ls_bmi_in_tables() ) {
+		array_push($columns, [ 'name' => 'bmi', 'title' => ws_ls_tooltip( __( 'BMI', WE_LS_SLUG ), __( 'Body Mass Index', WE_LS_SLUG ) ), 'breakpoints'=> 'xs', 'type' => 'text' ] );
 	}
 
-	// Add measurements?
-	if(WE_LS_MEASUREMENTS_ENABLED) {
-
-		$unit = ws_ls_admin_measurment_unit();
-
-		// Horrible hack, this is to fix translations which don't seem to be taking effect when pulled in from globals .php
-		$supported_measurements = array(
-			'left_forearm' => array('title' => __('Forearm - Left', WE_LS_SLUG), 'abv' => __('FL', WE_LS_SLUG)),
-			'right_forearm' => array('title' => __('Forearm - Right', WE_LS_SLUG), 'abv' => __('FR', WE_LS_SLUG)),
-			'left_bicep' => array('title' => __('Biceps - Left', WE_LS_SLUG), 'abv' => __('BL', WE_LS_SLUG)),
-			'right_bicep' => array('title' => __('Biceps - Right', WE_LS_SLUG), 'abv' => __('BR', WE_LS_SLUG)),
-			'left_calf' => array('title' => __('Calf - Left', WE_LS_SLUG), 'abv' => __('CL', WE_LS_SLUG)),
-			'right_calf' => array('title' => __('Calf - Right', WE_LS_SLUG), 'abv' => __('CR', WE_LS_SLUG)),
-			'left_thigh' => array('title' => __('Thigh - Left', WE_LS_SLUG), 'abv' => __('TL', WE_LS_SLUG)),
-			'right_thigh' => array('title' => __('Thigh - Right', WE_LS_SLUG), 'abv' => __('TR', WE_LS_SLUG)),
-			'waist' => array('title' => __('Waist', WE_LS_SLUG), 'abv' => __('W', WE_LS_SLUG)),
-			'bust_chest' => array('title' => __('Bust / Chest', WE_LS_SLUG), 'abv' => __('BC', WE_LS_SLUG)),
-			'shoulders' => array('title' => __('Shoulders', WE_LS_SLUG), 'abv' => __('S', WE_LS_SLUG)),
-			'height' => array('title' => __('Height', WE_LS_SLUG), 'abv' => __('H', WE_LS_SLUG)),
-			'buttocks' => array('title' => __('Buttocks', WE_LS_SLUG), 'abv' => __('B', WE_LS_SLUG)),
-			'hips' => array('title' => __('Hips', WE_LS_SLUG), 'abv' => __('HI', WE_LS_SLUG)),
-			'navel' => array('title' => __('Navel', WE_LS_SLUG), 'abv' => __('NA', WE_LS_SLUG)),
-			'neck' => array('title' => __('Neck', WE_LS_SLUG), 'abv' => __('NE', WE_LS_SLUG))
-		);
-
-		foreach (ws_ls_get_active_measurement_fields() as $key => $data) {
-			array_push($columns, array('name' => esc_attr($key), 'title' => ws_ls_tooltip($supported_measurements[$key]['abv'], $supported_measurements[$key]['title'] . ' (' . $unit . ')' ), 'breakpoints'=> (($smaller_width) ? 'lg' : 'md'), 'type' => 'text'));
-		}
-	}
-
-    if ( true === ws_ls_meta_fields_is_enabled() ) {
+    if ( true === $enable_meta &&
+            true === ws_ls_meta_fields_is_enabled() ) {
 
         foreach ( ws_ls_meta_fields_enabled() as $field ) {
         	if ( true === apply_filters( 'wlt-filter-column-include', true, $field ) ) {
-				array_push($columns, array('name' => 'meta-' . $field['id'], 'title' => $field['field_name'], 'breakpoints'=> (($smaller_width) ? 'lg' : 'md'), 'type' => 'text'));
+				array_push($columns, [ 'name' => 'meta-' . $field['id'], 'title' => $field['field_name'], 'breakpoints'=> ( ($smaller_width ) ? 'lg' : 'md' ), 'type' => 'text' ] );
 			}
         }
-
     }
 
 	// Add notes;
-	array_push($columns, array('name' => 'notes', 'title' => __('Notes', WE_LS_SLUG), 'breakpoints'=> 'lg', 'type' => 'text'));
+	array_push($columns, [ 'name' => 'notes', 'title' => __( 'Notes', WE_LS_SLUG ), 'breakpoints'=> 'lg', 'type' => 'text' ] );
 
 	$columns = apply_filters( 'wlt-filter-front-end-data-table-columns', $columns );
 
@@ -276,9 +294,9 @@ function ws_ls_data_table_enqueue_scripts() {
 
 	$minified = ws_ls_use_minified();
 
-	wp_enqueue_style('ws-ls-footables', plugins_url( '/assets/css/footable.standalone.min.css', __DIR__  ), [], WE_LS_CURRENT_VERSION);
-    wp_enqueue_style('ws-ls-footables-wlt', plugins_url( '/assets/css/footable.css', __DIR__ ), [ 'ws-ls-footables' ], WE_LS_CURRENT_VERSION);
-    wp_enqueue_script('ws-ls-footables-js', plugins_url( '/assets/js/footable.min.js', __DIR__ ), [ 'jquery' ], WE_LS_CURRENT_VERSION, true);
+	wp_enqueue_style('ws-ls-footables', plugins_url( '/assets/css/libraries/footable.standalone.min.css', __DIR__  ), [], WE_LS_CURRENT_VERSION);
+    wp_enqueue_style('ws-ls-footables-wlt', plugins_url( '/assets/css/footable' . $minified . '.css', __DIR__ ), [ 'ws-ls-footables' ], WE_LS_CURRENT_VERSION);
+    wp_enqueue_script('ws-ls-footables-js', plugins_url( '/assets/js/libraries/footable.min.js', __DIR__ ), [ 'jquery' ], WE_LS_CURRENT_VERSION, true);
 	wp_enqueue_script('ws-ls-footables-admin', plugins_url( '/assets/js/data.footable' .     $minified . '.js', __DIR__ ), [ 'ws-ls-footables-js' ], WE_LS_CURRENT_VERSION, true);
 	wp_localize_script('ws-ls-footables-admin', 'ws_user_table_config', ws_ls_data_js_config() );
     wp_enqueue_style('fontawesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', [], WE_LS_CURRENT_VERSION);
@@ -289,39 +307,52 @@ function ws_ls_data_table_enqueue_scripts() {
  * @return array of settings
  */
 function ws_ls_data_js_config() {
-	$config = array(
-					'security' => wp_create_nonce('ws-ls-user-tables'),
-					'base-url' => ws_ls_get_link_to_user_data(),
-					'base-url-meta-fields' => ws_ls_meta_fields_base_url(),
-					'base-url-awards' => ws_ls_awards_base_url(),
-					'label-add' =>  __('Add', WE_LS_SLUG),
-                    'label-meta-fields-add-button' =>  __('Add Custom Field', WE_LS_SLUG),
-					'label-awards-add-button' =>  __('Add Award', WE_LS_SLUG),
-					'label-confirm-delete' =>  __('Are you sure you want to delete the row?', WE_LS_SLUG),
-					'label-error-delete' =>  __('Unfortunately there was an error deleting the row.', WE_LS_SLUG),
-                    'locale-search-text' =>  __('Search', WE_LS_SLUG),
-					'locale-no-results' =>  __('No data found', WE_LS_SLUG)
-				);
+	$config =   [   'is-admin'                      => is_admin(),
+					'security'                      => wp_create_nonce( 'ws-ls-user-tables' ),
+					'base-url'                      => ws_ls_get_link_to_user_data(),
+					'base-url-meta-fields'          => ws_ls_meta_fields_base_url(),
+					'base-url-awards'               => ws_ls_awards_base_url(),
+					'label-add'                     =>  __( 'Add' , WE_LS_SLUG ),
+                    'label-meta-fields-add-button'  =>  __( 'Add Custom Field', WE_LS_SLUG ),
+					'label-awards-add-button'       =>  __( 'Add Award', WE_LS_SLUG ),
+					'label-confirm-delete'          =>  __( 'Are you sure you want to delete the row?', WE_LS_SLUG ),
+					'label-error-delete'            =>  __( 'Unfortunately there was an error deleting the row.', WE_LS_SLUG ),
+                    'locale-search-text'            =>  __( 'Search', WE_LS_SLUG ),
+					'locale-no-results'             =>  __( 'No data found', WE_LS_SLUG ),
+					'hide-display-name'             => false
+				];
 	// Add some extra config settings if not in admin
     if ( false === is_admin() ) {
-        $config['front-end'] = 'true';
-        $config['ajax-url'] = admin_url('admin-ajax.php');
 
-        $edit_link = ws_ls_get_url();
+    	$config[ 'front-end' ]              = 'true';
+        $config[ 'ajax-url' ]               = admin_url('admin-ajax.php');
+        $edit_link                          = ws_ls_get_url();
 
         // Strip old edit and cancel QS values
-		$edit_link = remove_query_arg( ['ws-edit-entry', 'ws-edit-cancel', 'ws-edit-saved'], $edit_link );
+		$edit_link                          = remove_query_arg( ['ws-edit-entry', 'ws-edit-cancel', 'ws-edit-saved'], $edit_link );
 
-		$config['edit-url'] = esc_url( add_query_arg( 'ws-edit-entry', '|ws-id|', $edit_link ) );
-
-		$config['current-url-base64'] = add_query_arg( 'ws-edit-saved', 'true', $edit_link );
-		$config['current-url-base64'] = base64_encode($config['current-url-base64']);
-        $config['us-date'] = ( false === ws_ls_get_config('WE_LS_US_DATE', get_current_user_id()) ) ? 'false' : 'true';
+		$config[ 'edit-url' ]               = esc_url( add_query_arg( 'ws-edit-entry', '|ws-id|', $edit_link ) );
+		$config[ 'current-url-base64' ]     = add_query_arg( 'ws-edit-saved', 'true', $edit_link );
+		$config[ 'current-url-base64' ]     = base64_encode($config['current-url-base64']);
+        $config[ 'us-date' ]                = ( false === ws_ls_setting('use-us-dates', get_current_user_id() ) ) ? 'false' : 'true';
 
     } else {
-		$config['current-url-base64'] = ws_ls_get_url(true);
-        $config['us-date'] = (WE_LS_US_DATE) ? 'true' : 'false';
-	}
+		$config[ 'current-url-base64' ]     = ws_ls_get_url( true );
+        $config[ 'us-date' ]                = ( true == ws_ls_settings_date_is_us() ) ? 'true' : 'false';
+
+	    // Have we detected were in Admin, on a user profile?
+	    if ( true === ws_ls_datatable_is_user_profile() ) {
+		    $config[ 'front-end' ]  = 'true';
+	    }
+    }
 
 	return $config;
+}
+
+/**
+ * Are we on a user profile page?
+ * @return bool
+ */
+function ws_ls_datatable_is_user_profile() {
+	return ( 'ws-ls-data-home' === ws_ls_querystring_value( 'page' ) && 'user' === ws_ls_querystring_value( 'mode' ) );
 }

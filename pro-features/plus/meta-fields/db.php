@@ -13,17 +13,9 @@ function ws_ls_meta( $entry_id ) {
 
 	global $wpdb;
 
-    $cache_key = 'entry-id-data-' . $entry_id;
-
-    if ( $cache = ws_ls_cache_user_get( 'meta-fields', $cache_key ) ) {
-        return $cache;
-    }
-
 	$sql = $wpdb->prepare( 'Select * from ' . $wpdb->prefix . WE_LS_MYSQL_META_ENTRY . ' where entry_id = %d', $entry_id );
 
 	$data = $wpdb->get_results( $sql, ARRAY_A );
-
-    ws_ls_cache_user_set( 'meta-fields', $cache_key , $data, 30 );
 
 	return $data;
 }
@@ -196,9 +188,31 @@ function ws_ls_meta_fields_enabled() {
 
 }
 
+/*
+ * Fetch all enabled plottable meta fields
+ *
+ * @return array
+ */
+function ws_ls_meta_fields_plottable() {
+
+	$fields = ws_ls_meta_fields_enabled();
+
+	if ( true === empty( $fields ) ) {
+		return [];
+	}
+
+	$fields = array_filter( $fields, function( $field ) {
+		return ! empty( $field[ 'plot_on_graph' ] );
+	});
+
+	return array_values( $fields );
+}
+
 /**
  * Fetch all meta fields
  *
+ * @param bool $exclude_system
+ * @param bool $ignore_cache
  * @return array
  */
 function ws_ls_meta_fields( $exclude_system = true, $ignore_cache = false ) {
@@ -230,13 +244,7 @@ function ws_ls_meta_fields( $exclude_system = true, $ignore_cache = false ) {
  *
  * Update a field.
  *
- * @param $unit    array:   field_key
- *                          field_name
- *                          abv
- *                          display_on_chart
- *                          system
- *                          unit_id
- *
+ * @param $field
  * @return bool     true if success
  */
 function ws_ls_meta_fields_update( $field ) {
@@ -287,10 +295,9 @@ function ws_ls_meta_fields_update( $field ) {
  *
  * Add a field.
  *
- * @param $unit    array:   field_key
+ * @param $field    array:  field_key
  *                          field_name
  *                          abv
- *                          display_on_chart
  *                          system
  *                          unit_id
  *
@@ -352,6 +359,7 @@ function ws_ls_meta_fields_delete( $id ) {
  * Does unit field_key already exist?
  *
  * @param $key
+ * @return bool
  */
 function ws_ls_meta_fields_key_exist( $key ) {
 
@@ -368,6 +376,7 @@ function ws_ls_meta_fields_key_exist( $key ) {
  * Get details for given meta field
  *
  * @param $key
+ * @return array|bool|object|void|null
  */
 function ws_ls_meta_fields_get( $key ) {
 
@@ -383,7 +392,8 @@ function ws_ls_meta_fields_get( $key ) {
 /**
  * Get details for given meta field
  *
- * @param $key
+ * @param $id
+ * @return array|bool|object|void|null
  */
 function ws_ls_meta_fields_get_by_id( $id ) {
 
@@ -400,6 +410,7 @@ function ws_ls_meta_fields_get_by_id( $id ) {
  * Fetch all user IDs that have a reference to this field (allows us to clear cache)
  *
  * @param $meta_field_id
+ * @return array|object|null
  */
 function ws_ls_meta_fields_get_user_ids_for_this_meta_field( $meta_field_id ) {
 
@@ -426,26 +437,25 @@ function ws_ls_meta_fields_get_user_ids_for_this_meta_field( $meta_field_id ) {
 function ws_ls_meta_formats( $data ) {
 
     $formats = [
-        'id' => '%d',
-        'field_key' => '%s',
-        'field_name' => '%s',
-        'abv' => '%s',
-        'chartable' => '%d',
-        'display_on_chart' => '%d',
-		'entry_id' => '%d',
-        'system' => '%d',
-        'unit_id' => '%d',
-		'meta_field_id' => '%d',
-		'value' => '%s',
-		'field_type' => '%d',
-		'suffix' => '%s',
-        'enabled' => '%d',
-        'sort' => '%d',
-        'mandatory' => '%d',
-        'hide_from_shortcodes' => '%d'
+        'id' 					=> '%d',
+        'field_key'				=> '%s',
+        'field_name' 			=> '%s',
+        'abv' 					=> '%s',
+        'entry_id' 				=> '%d',
+        'system' 				=> '%d',
+        'unit_id' 				=> '%d',
+		'meta_field_id' 		=> '%d',
+		'value' 				=> '%s',
+		'field_type' 			=> '%d',
+		'suffix' 				=> '%s',
+        'enabled'				=> '%d',
+        'sort' 					=> '%d',
+        'mandatory' 			=> '%d',
+        'hide_from_shortcodes' 	=> '%d',
+		'plot_on_graph'			=> '%d',
+		'plot_colour'			=> '%s',
+		'migrate'				=> '%d'
     ];
-
-    $return = [];
 
     foreach ( $data as $key => $value) {
         if ( false === empty( $formats[ $key ] ) ) {
@@ -480,7 +490,7 @@ function ws_ls_meta_fields_key_sanitise( $key ) {
 /**
  * Generate a unique meta field key
  *
- * @param $key
+ * @param $original_key
  * @return string
  */
 function ws_ls_meta_fields_generate_field_key( $original_key ) {

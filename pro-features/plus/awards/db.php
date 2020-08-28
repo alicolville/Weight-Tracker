@@ -2,12 +2,13 @@
 
     defined('ABSPATH') or die("Jog on!");
 
-    /**
-     * Fetch all awards for the given user
-     *
-     * @param $user_id
-     * @return array
-     */
+/**
+ * Fetch all awards for the given user
+ *
+ * @param $user_id
+ * @param string $order_by
+ * @return array
+ */
     function ws_ls_awards_db_given_get( $user_id, $order_by = 'value' ) {
 
         $cache_key = 'awards-given-' . $order_by;
@@ -20,7 +21,7 @@
 
         global $wpdb;
 
-        $sql = $wpdb->prepare('Select * from ' . $wpdb->prefix . WE_LS_MYSQL_AWARDS_GIVEN . ' g INNER JOIN 
+        $sql = $wpdb->prepare('Select * from ' . $wpdb->prefix . WE_LS_MYSQL_AWARDS_GIVEN . ' g INNER JOIN
                                 ' . $wpdb->prefix . WE_LS_MYSQL_AWARDS . ' a on g.award_id = a.id where user_id = %d', $user_id);
 
         $sql .= ( 'value' === $order_by ) ? ' order by a.category, CAST( a.value as DECIMAL( 10, 5 ) )' : ' order by g.timestamp desc' ;
@@ -64,11 +65,12 @@
 		ws_ls_cache_user_delete( $user_id );
 	}
 
-    /**
-     * Fetch all Awards
-     *
-     * @return array
-     */
+/**
+ * Fetch all Awards
+ *
+ * @param bool $ignore_cache
+ * @return array
+ */
     function ws_ls_awards( $ignore_cache = false ) {
 
         global $wpdb;
@@ -188,12 +190,12 @@
         return ( 1 === $result );
     }
 
-    /**
-     * Delete all entries for award
-     *
-     * @param $meta_field_id
-     * @return bool
-     */
+/**
+ * Delete all entries for award
+ *
+ * @param $award_id
+ * @return bool
+ */
     function ws_ls_awards_delete_all_given( $award_id ) {
 
         if ( false === is_admin() ) {
@@ -211,11 +213,12 @@
     }
     do_action( 'wlt-awards-deleting', 'ws_ls_awards_delete_all_given' );
 
-	/**
-	 * Get details for an award
-	 *
-	 * @param $key
-	 */
+/**
+ * Get details for an award
+ *
+ * @param $id
+ * @return array|bool|object|void|null
+ */
 	function ws_ls_award_get( $id ) {
 
 		global $wpdb;
@@ -239,8 +242,7 @@
 
         global $wpdb;
 
-        $wpdb->query( 'TRUNCATE TABLE ' . $wpdb->prefix . WE_LS_MYSQL_AWARDS_GIVEN );
-
+        return $wpdb->query( 'TRUNCATE TABLE ' . $wpdb->prefix . WE_LS_MYSQL_AWARDS_GIVEN );
     }
 
     /**

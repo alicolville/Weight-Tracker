@@ -54,19 +54,19 @@ function ws_ls_user_side_bar($user_id) {
 					<center>
 						<?php
 
-							if(ws_ls_has_a_valid_pro_plus_license()) {
-								echo ws_ls_photos_shortcode_recent(['user-id' => $user_id, 'width' => 200, 'height' => 200, 'hide-date' => true]);
+							if( true === ws_ls_has_a_valid_pro_plus_license() ) {
+								echo ws_ls_photos_shortcode_recent( [ 'user-id' => $user_id, 'width' => 200, 'height' => 200, 'hide-date' => true ] );
 
-                                $photo_count = ws_ls_photos_db_count_photos($user_id);
+                                $photo_count = ws_ls_photos_db_count_photos( $user_id );
 
                                 echo sprintf('<p>%s <strong>%s</strong>. <a href="%s">%s</a></p>',
-                                    __('No. of photos: ', WE_LS_SLUG),
+                                    __( 'No. of photos: ', WE_LS_SLUG ),
                                     $photo_count,
-                                    ws_ls_get_link_to_photos($user_id),
-                                    __('View all', WE_LS_SLUG)
+                                    ws_ls_get_link_to_photos( $user_id),
+                                    __( 'View all', WE_LS_SLUG )
                                 );
 							} else {
-								echo sprintf('<a href="%s">Upgrade to Pro Plus</a>', ws_ls_upgrade_link());
+								echo sprintf('<a href="%s">%s</a>', ws_ls_upgrade_link(), __( 'Upgrade to Pro Plus', WE_LS_SLUG ) );
 							}
 					   ?>
 					</center>
@@ -79,24 +79,24 @@ function ws_ls_user_side_bar($user_id) {
 			<div class="inside">
     			<table class="ws-ls-sidebar-stats">
 
-					<?php echo ws_ls_side_bar_render_rows( apply_filters(WE_LS_FILTER_ADMIN_USER_SIDEBAR_TOP, [], $user_id) ); ?>
+					<?php echo ws_ls_side_bar_render_rows( apply_filters( 'wlt-filter-admin-user-sidebar-top', [], $user_id) ); ?>
 
-                    <?php $stats = ws_ls_get_entry_counts($user_id); ?>
+                    <?php $stats = ws_ls_db_entries_count($user_id); ?>
                     <tr>
                         <th><?php echo __('No. of Entries', WE_LS_SLUG); ?></th>
                         <td><?php echo $stats['number-of-entries']; ?></td>
                     </tr>
                     <tr>
                         <th><?php echo __('Start Weight', WE_LS_SLUG); ?></th>
-                        <td class="<?php echo ws_ls_blur(); ?>"><?php echo ws_ls_blur_text( ws_ls_weight_start($user_id) ); ?></td>
+                        <td class="<?php echo ws_ls_blur(); ?>"><?php echo ws_ls_blur_text( ws_ls_shortcode_start_weight($user_id) ); ?></td>
                     </tr>
                     <tr>
                         <th><?php echo __('Latest Weight', WE_LS_SLUG); ?></th>
-                        <td class="<?php echo ws_ls_blur(); ?>"><?php echo ws_ls_blur_text( ws_ls_weight_recent($user_id) ); ?></td>
+                        <td class="<?php echo ws_ls_blur(); ?>"><?php echo ws_ls_blur_text( ws_ls_shortcode_recent_weight($user_id) ); ?></td>
                     </tr>
                     <tr>
                         <th><?php echo __('Diff. from Start', WE_LS_SLUG); ?></th>
-                        <td class="<?php echo ws_ls_blur(); ?>"><?php echo ws_ls_blur_text( ws_ls_weight_difference($user_id) ); ?></td>
+                        <td class="<?php echo ws_ls_blur(); ?>"><?php echo ws_ls_blur_text( ws_ls_shortcode_difference_in_weight_from_oldest($user_id) ); ?></td>
                     </tr>
                     <tr>
                         <th><?php echo __('Target Weight', WE_LS_SLUG); ?></th>
@@ -104,22 +104,22 @@ function ws_ls_user_side_bar($user_id) {
                             <a href="<?php echo ws_ls_get_link_to_edit_target($user_id); ?>">
                                 <?php
 
-                                $target = ws_ls_weight_target_weight($user_id, true);
-                                echo (true === empty($target)) ? __('No target set', WE_LS_SLUG) : ws_ls_blur_text( $target );
+                                $target = ws_ls_target_get( $user_id );
+                                echo ( true === empty( $target[ 'display' ] ) ) ? __( 'No target set', WE_LS_SLUG ) : ws_ls_blur_text( $target[ 'display' ] );
                                 ?>
                             </a>
                         </td>
                     </tr>
                     <tr>
                         <th><?php echo __('Diff. from Target', WE_LS_SLUG); ?></th>
-                        <td class="<?php echo ws_ls_blur(); ?>"><?php echo ws_ls_blur_text( ws_ls_weight_difference_target($user_id) ); ?></td>
+                        <td class="<?php echo ws_ls_blur(); ?>"><?php echo ws_ls_blur_text( ws_ls_shortcode_difference_in_weight_target($user_id) ); ?></td>
                     </tr>
                     <tr>
                         <th><?php echo __('Current BMI', WE_LS_SLUG); ?></th>
-                        <td class="<?php echo ws_ls_blur(); ?>"><?php echo ws_ls_get_user_bmi(['user-id' => $user_id, 'display' => 'both', 'no-height-text' => __('No height specified', WE_LS_SLUG)]); ?></td>
+                        <td class="<?php echo ws_ls_blur(); ?>"><?php echo ws_ls_shortcode_bmi([ 'user-id' => $user_id, 'display' => 'both', 'no-height-text' => __('No height specified', WE_LS_SLUG)]); ?></td>
                     </tr>
 
-					<?php echo ws_ls_side_bar_render_rows( apply_filters(WE_LS_FILTER_ADMIN_USER_SIDEBAR_MIDDLE, [], $user_id) ); ?>
+					<?php echo ws_ls_side_bar_render_rows( apply_filters( 'wlt-filter-admin-user-sidebar-middle', [], $user_id) ); ?>
 
                     <tr>
                         <th><?php echo __('Aim', WE_LS_SLUG); ?></th>
@@ -155,7 +155,7 @@ function ws_ls_user_side_bar($user_id) {
 						</td>
                     </tr>
 
-					<?php echo ws_ls_side_bar_render_rows( apply_filters(WE_LS_FILTER_ADMIN_USER_SIDEBAR_BOTTOM, [], $user_id) ); ?>
+					<?php echo ws_ls_side_bar_render_rows( apply_filters('wlt-filter-admin-user-sidebar-bottom', [], $user_id) ); ?>
 
                 </table>
 			</div>
@@ -226,6 +226,7 @@ function ws_ls_user_side_bar($user_id) {
  * Render a sidebar row.
  *
  * @param $row
+ * @return string
  */
 function ws_ls_side_bar_row($row) {
 
@@ -247,6 +248,7 @@ function ws_ls_side_bar_row($row) {
  * Render one or more sidebar rows.
  *
  * @param $rows
+ * @return string
  */
 function ws_ls_side_bar_render_rows( $rows ) {
 
@@ -272,7 +274,7 @@ function ws_ls_side_bar_render_rows( $rows ) {
  */
 function ws_ls_user_header( $user_id, $previous_url = false ) {
 
-	if( true === empty( $user_id ) || false === ws_user_exist_check( $user_id ) ) {
+	if( true === empty( $user_id ) || false === ws_ls_user_exist_check( $user_id ) ) {
 		return;
 	}
 

@@ -40,12 +40,13 @@
     }
     add_action( 'admin_init', 'ws_ls_birthdays_activate' );
 
-    /**
-     * Send Birthday email
-     *
-     * @param null $user_id
-     *
-     */
+/**
+ * Send Birthday email
+ *
+ * @param null $user_id
+ *
+ * @return bool
+ */
     function ws_ls_birthdays_send_email( $user_id = NULL ) {
 
         $user_id = $user_id ?: get_current_user_id();

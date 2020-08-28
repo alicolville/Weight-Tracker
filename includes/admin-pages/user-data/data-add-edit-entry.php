@@ -4,9 +4,7 @@ defined('ABSPATH') or die('Naw ya dinnie!');
 
 function ws_ls_admin_page_data_add_edit() {
 
-    ws_ls_user_data_permission_check();
-
-	$data = false;
+    ws_ls_permission_check_message();
 
 	// Determine user id / entry id
 	$user_id = ws_ls_querystring_value('user-id', true);
@@ -19,23 +17,18 @@ function ws_ls_admin_page_data_add_edit() {
 	}
 
 	// Ensure this WP user ID exists!
-    ws_user_exist_check($user_id);
-
-	// If we have an entry ID, then load data
-	if ($entry_id) {
-		$data = ws_ls_get_weight($user_id, $entry_id);
-	}
+    ws_ls_user_exist_check( $user_id );
 
 	//If we have a Redirect URL, base decode.
 	$redirect_url = ws_ls_querystring_value('redirect');
 
-	if(false === empty($redirect_url)) {
-		$redirect_url = base64_decode($redirect_url);
+	if( false === empty( $redirect_url ) ) {
+		$redirect_url = base64_decode( $redirect_url );
 	}
 ?>
 	<div class="wrap ws-ls-user-data ws-ls-admin-page">
 		<div id="poststuff">
-			<?php ws_ls_user_header($user_id, ws_ls_get_link_to_user_profile($user_id)); ?>
+			<?php ws_ls_user_header( $user_id, ws_ls_get_link_to_user_profile( $user_id ) ); ?>
 			<div id="post-body" class="metabox-holder columns-2">
 				<div id="post-body-content">
 					<div class="meta-box-sortables ui-sortable">
@@ -49,7 +42,13 @@ function ws_ls_admin_page_data_add_edit() {
 							<div class="inside">
 								<?php
 	                                if ( true === WS_LS_IS_PRO ) {
-		                                echo ws_ls_display_weight_form( false, false, $user_id, false, false, false, false, false, $redirect_url, $data );
+
+		                                echo ws_ls_form_weight( [    'user-id'              => $user_id,
+		                                                             'entry-id'             => $entry_id,
+		                                                             'redirect-url'         => $redirect_url,
+		                                                             'hide-login-message'   => true,
+		                                ] );
+
 	                                } else {
 	                                    echo sprintf( '<p>%s</p>', __('A Pro license is required to add / edit a weight entry.', WE_LS_SLUG) );
                                     }

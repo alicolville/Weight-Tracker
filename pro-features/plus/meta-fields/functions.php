@@ -11,12 +11,18 @@
         return WS_LS_IS_PRO;
     }
 
-    /**
-     * Return base URL for meta fields
-     * @return string
-     */
-    function ws_ls_meta_fields_base_url() {
-        return admin_url( 'admin.php?page=ws-ls-meta-fields');
+/**
+ * Return base URL for meta fields
+ *
+ * @param array $args
+ *
+ * @return string
+ */
+    function ws_ls_meta_fields_base_url( $args = [] ) {
+
+	    $url = admin_url( 'admin.php?page=ws-ls-meta-fields' );
+
+    	return ( false === empty( $args ) ) ? add_query_arg( $args, $url ) : $url;
     }
 
     /**
@@ -77,9 +83,7 @@
                 if ( (int) $meta_field_id === (int) $entry[ 'meta_field_id' ] ) {
                     return $entry[ 'value' ];
                 }
-
             }
-
         }
 
         return NULL;
@@ -133,14 +137,16 @@
 
     }
 
-    /**
-     * Format meta data for display
-     *
-     * @param $value
-     * @param int $type
-     * @return int
-     */
-    function ws_ls_fields_display_field_value( $value, $meta_field_id ) {
+/**
+ * Format meta data for display
+ *
+ * @param $value
+ * @param $meta_field_id
+ * @param bool $is_export
+ *
+ * @return int
+ */
+    function ws_ls_fields_display_field_value( $value, $meta_field_id, $is_export = false ) {
 
         $meta_field = ws_ls_meta_fields_get_by_id( $meta_field_id );
 
@@ -152,7 +158,7 @@
             if ( 2 === $meta_field['field_type'] ) {
                 return ws_ls_fields_display_field_value_yes_no( $value);
             } else if ( 3 === $meta_field['field_type'] ) {
-		        return ws_ls_fields_display_field_value_photo( $value);
+		        return ws_ls_fields_display_field_value_photo( $value, $is_export );
 	        }
 
         }
@@ -168,11 +174,16 @@
 	 * @return string
 	 *
 	 */
-	function ws_ls_fields_display_field_value_photo( $value ) {
+	function ws_ls_fields_display_field_value_photo( $value, $is_export = false ) {
 
 		if ( false === empty( $value ) ) {
 
 			$photo = ws_ls_photo_get( $value , 120, 120);
+
+			// If we are exporting, just return the URL to full image
+			if ( true === $is_export ) {
+				return  wp_get_attachment_url( $value );
+			}
 
 			$photo = apply_filters( 'wlt_meta_fields_photo_value', $photo );
 
@@ -214,7 +225,9 @@
      * @param null $entry_id
      * @return string
      */
-    function ws_ls_meta_fields_form( $entry_id = NULL ) {
+    function ws_ls_meta_fields_form( $arguments ) {
+
+	    $arguments = wp_parse_args( $arguments, [  'entry' => NULL, 'hide-fields-photos' => false ] );
 
         $html = '';
 
@@ -222,7 +235,10 @@
 
         foreach ( ws_ls_meta_fields_enabled() as $field ) {
 
-            $value = ws_ls_meta_fields_get_value_for_entry( $entry_id, $field[ 'id' ] );
+	        $value = ( false === empty( $arguments[ 'entry' ][ 'meta'] ) &&
+	                     true === array_key_exists( $field[ 'id' ], $arguments[ 'entry' ][ 'meta'] ) ) ?
+		                    $arguments[ 'entry' ][ 'meta'][ $field[ 'id' ] ]
+					            : '';
 
             switch ( (int) $field[ 'field_type' ] ) {
 
@@ -233,9 +249,12 @@
                     $html .= ws_ls_meta_fields_form_field_yes_no( $field, $value );
                     break;
 	            case 3:
-		            $html .= ws_ls_meta_fields_form_field_photo( $field, $value );
 
-		            $photo_fields_rendered++;
+	            	if ( true !== $arguments[ 'hide-fields-photos' ] ) {
+			            $html .= ws_ls_meta_fields_form_field_photo( $field, $value );
+
+			            $photo_fields_rendered++;
+		            }
 
 		            break;
                 default: // 0
@@ -268,7 +287,7 @@
             ws_ls_meta_fields_form_field_generate_id( $field['id'] ),
             esc_attr( $field['field_name'] ),
             2 === (int) $field['mandatory'] ? ' required' : '',
-            ws_ls_get_next_tab_index(),
+            ws_ls_form_tab_index_next(),
             ( false === empty( $value ) ) ? esc_attr( $value ) : '',
             __('Please enter a value for', WE_LS_SLUG)
         );
@@ -291,7 +310,7 @@
             ws_ls_meta_fields_form_field_generate_id( $field['id'] ),
             esc_attr( $field['field_name'] ),
             2 === (int)  $field['mandatory'] ? ' required' : '',
-            ws_ls_get_next_tab_index(),
+            ws_ls_form_tab_index_next(),
             ( false === empty( $value ) ) ? esc_attr( $value ) : '',
             __('Please enter a number for', WE_LS_SLUG)
         );
@@ -313,7 +332,7 @@
                             ',
                             ws_ls_meta_fields_form_field_generate_id( $field['id'] ),
                             esc_attr( $field['field_name'] ),
-                            ws_ls_get_next_tab_index()
+                            ws_ls_form_tab_index_next()
         );
 
         $value = (int) $value;
@@ -331,13 +350,14 @@
 
     }
 
-	/**
-	 * Generate the HTML for a meta field photo
-	 *
-	 * @param $field
-	 * @param $value
-	 * @return string
-	 */
+/**
+ * Generate the HTML for a meta field photo
+ *
+ * @param $field
+ * @param $value
+ * @param null $field_id
+ * @return string
+ */
 	function ws_ls_meta_fields_form_field_photo( $field, $value, $field_id = NULL ) {
 
 		if ( false === WS_LS_IS_PRO ) {
@@ -359,20 +379,21 @@
 
         // Show Add button
         $html .= sprintf('<div class="ws-ls-cell ws-ls-photo-select">
-                                <input type="file" data-msg="%6$s \'%7$s\'." name="%1$s" id="%1$s" tabindex="%2$s" data-rule-accept="png|jpeg|jpg" class="ws-ls-hide ws-ls-input-file ws-ls-meta-fields-photo"  %5$s data-required="%4$s" />
-                                <label for="%1$s" class="ws-ls-button">
+                                <input type="file" data-msg="%6$s \'%7$s\'." name="%1$s" id="%8$s" tabindex="%2$s" data-rule-accept="png|jpeg|jpg" class="ws-ls-hide ws-ls-input-file ws-ls-meta-fields-photo" %5$s data-required="%4$s" />
+                                <label for="%8$s" class="ws-ls-button">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/></svg>
                                     <span>%3$s</span>
                                 </label>
 
                         ',
             esc_attr( $field_id ),
-            ws_ls_get_next_tab_index(),
+            ws_ls_form_tab_index_next(),
             ( false === empty( $value ) ) ? __('Replace photo', WE_LS_SLUG) : __('Select photo', WE_LS_SLUG),
             2 === (int) $field['mandatory'] ? 'y' : 'n',
             true === empty( $value ) && 2 === (int) $field['mandatory'] ? 'required' : '',
             __('Please select a photo (png or jpg) for', WE_LS_SLUG),
-            esc_attr( $field['field_name'] )
+            esc_attr( $field['field_name'] ),
+            ws_ls_component_id()
         );
 
 		// Do we have an existing photo?

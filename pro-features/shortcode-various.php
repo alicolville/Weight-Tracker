@@ -2,52 +2,150 @@
 
 defined('ABSPATH') or die("Jog on!");
 
-function ws_ls_get_user_bmi($user_defined_arguments) {
+/**
+ *
+ * Render the shortcode for previous weight [wlt-weight-previous]
+ *
+ * @param null $user_id
+ *
+ * @return string
+ */
+function ws_ls_shortcode_previous_weight( $user_id = NULL ) {
+
+	if ( false === WS_LS_IS_PRO ) {
+		return ws_ls_display_pro_upgrade_notice_for_shortcode();
+	}
+
+	$arguments[ 'user-id' ] = ( true === empty( $user_id ) ) ? get_current_user_id() : $user_id;
+
+	if ( $cache = ws_ls_cache_user_get( $arguments[ 'user-id' ], 'shortcode-previous-weight' ) ) {
+		return $cache;
+	}
+
+	$previous_entry = ws_ls_entry_get_previous( $arguments );
+
+	$output = ( false === empty( $previous_entry[ 'display' ] ) ) ?
+		$previous_entry[ 'display' ] :
+		'';
+
+	ws_ls_cache_user_set( $arguments[ 'user-id' ], 'shortcode-previous-weight', $output );
+
+	return $output;
+}
+add_shortcode('wlt-weight-previous', 'ws_ls_shortcode_previous_weight');
+add_shortcode('wt-previous-weight', 'ws_ls_shortcode_previous_weight');
+
+/**
+ * Shortcode for [wt-difference-from-previous] - render weight difference between latest and previous entry
+ * @param bool $user_id
+ *
+ * @return string|null
+ */
+function ws_ls_shortcode_weight_difference_previous( $user_id = false ){
+
+	if ( false === WS_LS_IS_PRO ) {
+		return ws_ls_display_pro_upgrade_notice_for_shortcode();
+	}
 
 	// If not logged in then return no value
-	if(!is_user_logged_in()) {
+	if( false === is_user_logged_in() ) {
 		return '';
 	}
 
-	$arguments = shortcode_atts(array(
-						            'display' => 'index', // 'index' - Actual BMI value. 'label' - BMI label for given value. 'both' - Label and BMI value in brackets,
-									'no-height-text' => __('Height needed', WE_LS_SLUG),
+	$arguments[ 'user-id' ] = ( true === empty( $user_id ) ) ? get_current_user_id() : $user_id;
 
-									'user-id' => get_current_user_id()
-						           ), $user_defined_arguments );
+	if ( $cache = ws_ls_cache_user_get( $arguments[ 'user-id' ], 'shortcode-difference-previous' ) ) {
+		return $cache;
+	}
 
-	$kg = ws_ls_get_recent_weight_in_kg($arguments['user-id'], true);
-	$cm = ws_ls_get_user_height($arguments['user-id']);
+	$latest_entry = ws_ls_entry_get_latest( $arguments );
+
+	if ( true === empty( $latest_entry[ 'kg' ] ) ) {
+		return '';
+	}
+
+	$previous_entry = ws_ls_entry_get_previous( $arguments );
+
+	if ( true === empty( $previous_entry[ 'kg' ] ) ) {
+		return '';
+	}
+
+	$difference = $latest_entry[ 'kg' ] - $previous_entry[ 'kg' ];
+	$sign       = ( $difference > 0 ) ? '+' : '';
+	$difference = ws_ls_weight_display( $difference, $arguments[ 'user-id' ], false, is_admin(), true );
+	$output     = sprintf ('%s%s', $sign, $difference[ 'display' ] );
+
+	ws_ls_cache_user_set( $arguments[ 'user-id' ], 'shortcode-difference-previous', $output );
+
+	return $output;
+}
+add_shortcode('wlt-weight-difference-previous', 'ws_ls_shortcode_weight_difference_previous' );
+add_shortcode('wt-difference-from-previous', 'ws_ls_shortcode_weight_difference_previous' );
+
+/**
+ * Render BMI shortcode [wt-bmi]
+ *
+ * @param array $arguments
+ *
+ * @return bool|mixed|string|null
+ */
+function ws_ls_shortcode_bmi( $arguments = [] ) {
+
+	if ( false === WS_LS_IS_PRO ) {
+		return ws_ls_display_pro_upgrade_notice_for_shortcode();
+	}
+
+	// If not logged in then return no value
+	if( false === is_user_logged_in() ) {
+		return '';
+	}
+
+	$arguments = shortcode_atts( [      'display'           => 'index',                             // 'index' - Actual BMI value. 'label' - BMI label for given value. 'both' - Label and BMI value in brackets,
+										'no-height-text'    => __( 'Height needed', WE_LS_SLUG ),
+										'user-id'           => get_current_user_id()
+						           ], $arguments );
+
+	$cache_key = ws_ls_cache_generate_key_from_array( 'shortcode-bmi', $arguments );
+
+	if ( $cache = ws_ls_cache_user_get( $arguments[ 'user-id' ], $cache_key ) ) {
+		return $cache;
+	}
+
+	$kg = ws_ls_entry_get_latest_kg( $arguments['user-id'] );
+	$cm = ws_ls_user_preferences_get( 'height', $arguments['user-id']);
 
 	// Don't attempt to calculate BMI if no weight entries!
-	if(true === empty($kg)) {
-		return __('Weight needed', WE_LS_SLUG);
+	if( true === empty( $kg ) ) {
+		return ws_ls_cache_user_set_and_return( $arguments['user-id'], $cache_key, __( 'Weight needed', WE_LS_SLUG ) );
 	}
 
 	// Do we have a height for user?
-	if($cm) {
-		$bmi = ws_ls_calculate_bmi($cm, $kg);
-
-		switch ($arguments['display']) {
-			case 'index':
-				return $bmi;
-				break;
-			case 'label':
-				return ws_ls_calculate_bmi_label($bmi);
-				break;
-			case 'both':
-				return ws_ls_calculate_bmi_label($bmi) . ' (' . $bmi . ')';
-				break;
-			default:
-				break;
-		}
-	} else {
-		return esc_html($arguments['no-height-text']);
+	if( true === empty( $cm ) ) {
+		return ws_ls_cache_user_set_and_return( $arguments['user-id'], $cache_key, esc_html( $arguments['no-height-text'] ) );
 	}
 
+	$bmi = ws_ls_calculate_bmi( $cm, $kg );
 
-	return '';
+	$output = '';
+
+	switch ( $arguments['display'] ) {
+		case 'index':
+			$output = $bmi;
+			break;
+		case 'label':
+			$output = ws_ls_calculate_bmi_label( $bmi );
+			break;
+		case 'both':
+			$output = sprintf( '%s (%s)', ws_ls_calculate_bmi_label( $bmi ), $bmi );
+			break;
+		default:
+			break;
+	}
+
+	return ws_ls_cache_user_set_and_return( $arguments['user-id'], $cache_key, $output );
 }
+add_shortcode( 'wlt-bmi', 'ws_ls_shortcode_bmi' );
+add_shortcode( 'wt-bmi', 'ws_ls_shortcode_bmi' );
 
 /**
  *
@@ -56,17 +154,24 @@ function ws_ls_get_user_bmi($user_defined_arguments) {
  * @param $user_defined_arguments an array of arguments passed in via shortcode
  * @return string - HTML to be sent to browser
  */
-function ws_ls_shortcode_activity_level($user_defined_arguments) {
+function ws_ls_shortcode_activity_level( $user_defined_arguments ) {
 
-	$arguments = shortcode_atts(array(	'not-specified-text' => __('Not Specified', WE_LS_SLUG),
-										'user-id' => get_current_user_id(),
-									 	'shorten' => false),
-								$user_defined_arguments );
+	if ( false === WS_LS_IS_PRO ) {
+		return ws_ls_display_pro_upgrade_notice_for_shortcode();
+	}
 
-	$arguments['shorten'] = ws_ls_force_bool_argument($arguments['shorten']);
+	$arguments = shortcode_atts( [  'not-specified-text'    => __( 'Not Specified', WE_LS_SLUG ),
+									'user-id'               => get_current_user_id(),
+									'shorten'               => false
+								], $user_defined_arguments );
 
-	return ws_ls_display_user_setting($arguments['user-id'], 'activity_level', $arguments['not-specified-text'], $arguments['shorten']);
+	$arguments[ 'shorten' ] = ws_ls_to_bool( $arguments[ 'shorten' ] );
+	$arguments[ 'field' ]   = 'activity_level';
+
+	return ws_ls_user_preferences_display( $arguments );
 }
+add_shortcode( 'wlt-activity-level', 'ws_ls_shortcode_activity_level' );
+add_shortcode( 'wt-activity-level', 'ws_ls_shortcode_activity_level' );
 
 /**
  *
@@ -75,14 +180,24 @@ function ws_ls_shortcode_activity_level($user_defined_arguments) {
  * @param $user_defined_arguments an array of arguments passed in via shortcode
  * @return string - HTML to be sent to browser
  */
-function ws_ls_shortcode_gender($user_defined_arguments) {
+function ws_ls_shortcode_gender( $user_defined_arguments ) {
 
-	$arguments = shortcode_atts(array(	'not-specified-text' => __('Not Specified', WE_LS_SLUG),
-										'user-id' => get_current_user_id() ),
-								$user_defined_arguments );
+	if ( false === WS_LS_IS_PRO ) {
+		return ws_ls_display_pro_upgrade_notice_for_shortcode();
+	}
 
-	return ws_ls_display_user_setting($arguments['user-id'], 'gender', $arguments['not-specified-text']);
+	$arguments = shortcode_atts( [  'not-specified-text'    => __( 'Not Specified', WE_LS_SLUG ),
+	                                'user-id'               => get_current_user_id(),
+	                                'shorten'               => false
+	], $user_defined_arguments );
+
+	$arguments[ 'shorten' ] = ws_ls_to_bool( $arguments[ 'shorten' ] );
+	$arguments[ 'field' ]   = 'gender';
+
+	return ws_ls_user_preferences_display( $arguments );
 }
+add_shortcode( 'wlt-gender', 'ws_ls_shortcode_gender' );
+add_shortcode( 'wt-gender', 'ws_ls_shortcode_gender' );
 
 /**
  *
@@ -91,14 +206,26 @@ function ws_ls_shortcode_gender($user_defined_arguments) {
  * @param $user_defined_arguments an array of arguments passed in via shortcode
  * @return string - HTML to be sent to browser
  */
-function ws_ls_shortcode_dob($user_defined_arguments) {
+function ws_ls_shortcode_dob( $user_defined_arguments ) {
 
-	$arguments = shortcode_atts(array(	'not-specified-text' => __('Not Specified', WE_LS_SLUG),
-										'user-id' => get_current_user_id() ),
-								$user_defined_arguments );
+	if ( false === WS_LS_IS_PRO ) {
+		return ws_ls_display_pro_upgrade_notice_for_shortcode();
+	}
 
-	return ws_ls_get_dob_for_display($arguments['user-id'], $arguments['not-specified-text']);
+	$arguments = shortcode_atts( [ 'not-specified-text' => __( 'Not Specified', WE_LS_SLUG ), 'user-id' => get_current_user_id() ], $user_defined_arguments );
+
+	$cache_key = ws_ls_cache_generate_key_from_array( 'shortcode-dob', $arguments );
+
+	if ( $cache = ws_ls_cache_user_get( $arguments[ 'user-id' ], $cache_key ) ) {
+		return $cache;
+	}
+
+	$output = ws_ls_get_dob_for_display( $arguments['user-id'], $arguments['not-specified-text'] );
+
+	return ws_ls_cache_user_set_and_return(  $arguments['user-id'], $cache_key, $output );
 }
+add_shortcode( 'wlt-dob', 'ws_ls_shortcode_dob' );
+add_shortcode( 'wt-dob', 'ws_ls_shortcode_dob' );
 
 /**
  *
@@ -107,14 +234,30 @@ function ws_ls_shortcode_dob($user_defined_arguments) {
  * @param $user_defined_arguments an array of arguments passed in via shortcode
  * @return string - HTML to be sent to browser
  */
-function ws_ls_shortcode_height($user_defined_arguments) {
+function ws_ls_shortcode_height( $user_defined_arguments ) {
 
-	$arguments = shortcode_atts(array(	'not-specified-text' => __('Not Specified', WE_LS_SLUG),
-										'user-id' => get_current_user_id() ),
-								$user_defined_arguments );
+	if ( false === WS_LS_IS_PRO ) {
+		return ws_ls_display_pro_upgrade_notice_for_shortcode();
+	}
 
-	return ws_ls_display_user_setting($arguments['user-id'], 'height', $arguments['not-specified-text']);
+	$arguments = shortcode_atts( [  'not-specified-text'    => __( 'Not Specified', WE_LS_SLUG ),
+	                                'user-id'               => get_current_user_id()
+	], $user_defined_arguments );
+
+	$arguments[ 'field' ]   = 'height';
+
+	$cache_key = ws_ls_cache_generate_key_from_array( 'shortcode-height', $arguments );
+
+	if ( $cache = ws_ls_cache_user_get( $arguments[ 'user-id' ], $cache_key ) ) {
+		return $cache;
+	}
+
+	$output = ws_ls_user_preferences_display( $arguments );
+
+	return ws_ls_cache_user_set_and_return(  $arguments['user-id'], $cache_key, $output );
 }
+add_shortcode( 'wlt-height', 'ws_ls_shortcode_height' );
+add_shortcode( 'wt-height', 'ws_ls_shortcode_height' );
 
 /**
  * Shortcode to render the number of WordPress users in last x days
@@ -128,16 +271,22 @@ function ws_ls_shortcode_height($user_defined_arguments) {
 function ws_ls_shortcode_new_users( $user_defined_arguments ) {
 
 	if ( false === WS_LS_IS_PRO ) {
-		return '';
+		return ws_ls_display_pro_upgrade_notice_for_shortcode();
 	}
 
-    $arguments = shortcode_atts(['days' => 7, 'count-all-roles' => false], $user_defined_arguments );
+    $arguments = shortcode_atts( [ 'days' => 7, 'count-all-roles' => false ], $user_defined_arguments );
 
-    $arguments['days'] = ws_ls_force_numeric_argument($arguments['days'], 7);
-    $arguments['count-all-roles'] = ws_ls_force_bool_argument($arguments['count-all-roles']);
+    $arguments[ 'days' ]                = ws_ls_force_numeric_argument( $arguments[ 'days' ], 7 );
+    $arguments[ 'count-all-roles' ]     = ws_ls_to_bool( $arguments[ 'count-all-roles' ] );
 
     // Ensure no. days greater than or equal to 1
-    $arguments['days'] = ($arguments['days'] < 1) ? 1 : $arguments['days'];
+    $arguments[ 'days' ] = ( $arguments[ 'days' ] < 1 ) ? 1 : $arguments[ 'days' ];
+
+	$cache_key = ws_ls_cache_generate_key_from_array( 'shortcode-new-users', $arguments );
+
+	if ( $cache = ws_ls_cache_user_get( 'new-users', $cache_key ) ) {
+		return $cache;
+	}
 
     // Build from date
     $from_date = strtotime ( "-{$arguments['days']} day" ) ;
@@ -154,12 +303,14 @@ function ws_ls_shortcode_new_users( $user_defined_arguments ) {
     ];
 
     // Do we want to count all user roles within WordPress or subscribers (most likely) only
-    if (false === $arguments['count-all-roles']) {
-        $wp_search_query['role'] = 'subscriber';
+    if ( false === $arguments[ 'count-all-roles' ] ) {
+        $wp_search_query[ 'role' ] = 'subscriber';
     }
 
     $user_query = new WP_User_Query( $wp_search_query );
+    $output     = esc_html( $user_query->get_total() );
 
-    return esc_html( $user_query->total_users );
+    return ws_ls_cache_user_set_and_return( 'new-users', $cache_key, $output );
 }
 add_shortcode( 'wlt-new-users', 'ws_ls_shortcode_new_users' );
+add_shortcode( 'wt-new-users', 'ws_ls_shortcode_new_users' );
