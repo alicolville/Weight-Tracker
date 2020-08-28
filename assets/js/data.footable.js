@@ -25,7 +25,8 @@ jQuery( document ).ready(function ( $, undefined ) {
                         'user_id':              $( this ).data('user-id' ),
                         'small_width':          $( this ).data('small-width' ),
                         'table_id':             table_id,
-                        'week':                 $( this ).data( 'week' )
+                        'week':                 $( this ).data( 'week' ),
+                        'bmi-format':           $( this ).data( 'bmi-format' )
         };
 
         ws_ls_post_data_to_WP( 'table_data', data, ws_ls_callback_setup_table )

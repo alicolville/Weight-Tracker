@@ -83,6 +83,7 @@ function ws_ls_get_table_data() {
 	$front_end                          = ws_ls_post_value_to_bool( 'front-end' );
 	$enable_meta                        = ws_ls_post_value_to_bool( 'enable-meta-fields' );
 	$ws_ls_request_from_admin_screen    = ws_ls_post_value_to_bool( 'in-admin' );
+	$bmi_format                         = ws_ls_post_value('bmi-format', 'label' );
 
 	// If we have a user ID and we're in admin then hide the name from the user entry page
 	if ( true === ws_ls_datatable_is_user_profile() ) {
@@ -91,7 +92,8 @@ function ws_ls_get_table_data() {
 
 	$data = [
 		'columns'   => ws_ls_datatable_columns( $small_width, $front_end, $enable_meta ),
-		'rows'      => ws_ls_datatable_rows( [ 'user-id'  => $user_id, 'limit' => $max_entries, 'smaller-width' => $small_width, 'front-end' => $front_end, 'enable-meta' => $enable_meta, 'in-admin' => $ws_ls_request_from_admin_screen, 'week' => $week_number ] ),
+		'rows'      => ws_ls_datatable_rows( [ 'user-id'  => $user_id, 'limit' => $max_entries, 'smaller-width' => $small_width, 'front-end' => $front_end,
+		                                        'enable-meta' => $enable_meta, 'in-admin' => $ws_ls_request_from_admin_screen, 'week' => $week_number, 'bmi-format' => $bmi_format ] ),
 		'table_id'  => $table_id
 	];
 

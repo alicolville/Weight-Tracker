@@ -124,23 +124,8 @@ function ws_ls_shortcode_bmi( $arguments = [] ) {
 		return ws_ls_cache_user_set_and_return( $arguments['user-id'], $cache_key, esc_html( $arguments['no-height-text'] ) );
 	}
 
-	$bmi = ws_ls_calculate_bmi( $cm, $kg );
-
-	$output = '';
-
-	switch ( $arguments['display'] ) {
-		case 'index':
-			$output = $bmi;
-			break;
-		case 'label':
-			$output = ws_ls_calculate_bmi_label( $bmi );
-			break;
-		case 'both':
-			$output = sprintf( '%s (%s)', ws_ls_calculate_bmi_label( $bmi ), $bmi );
-			break;
-		default:
-			break;
-	}
+	$bmi    = ws_ls_calculate_bmi( $cm, $kg );
+	$output = ws_ls_bmi_display( $bmi, $arguments['display'] );
 
 	return ws_ls_cache_user_set_and_return( $arguments['user-id'], $cache_key, $output );
 }
