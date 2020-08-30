@@ -241,6 +241,55 @@ function ws_ls_form_init( $arguments = [] ) {
 }
 
 /**
+ * Display a text field
+ * @param array $arguments
+ * @return string
+ */
+function ws_ls_form_field_text( $arguments = [] ) {
+
+	$arguments = wp_parse_args( $arguments, [	'type'                  => 'text',
+												'id'                    => ws_ls_component_id(),
+												'name'                  => '',
+												'value'                 => NULL,
+												'placeholder'           => NULL,
+												'show-label'            => false,
+												'title'                 => '',
+												'css-class'             => '',
+												'size'                  => 22,
+												'trailing-html'         => '',
+												'include-div'           => true	 ]);
+	$html = '';
+
+	if ( true === $arguments[ 'include-div' ] ) {
+		$html .= sprintf( '<div id="%1$s-row" class="ws-ls-form-row">', $arguments[ 'name' ] );
+	}
+
+	if ( true === $arguments[ 'show-label' ] ) {
+		$html .= sprintf( '<label for="%1$s" class="">%2$s</label>', $arguments[ 'name' ], $arguments[ 'title' ]);
+	}
+
+	$html .= sprintf( '<input type="text" name="%1$s" id="%2$s" tabindex="%3$d" value="%4$s" placeholder="%5$s" size="%6$d" class="%7$s" />',
+		$arguments[ 'name' ],
+		esc_attr( $arguments[ 'id' ] ),
+		ws_ls_form_tab_index_next(),
+		esc_attr( $arguments[ 'value' ] ),
+		esc_attr( $arguments[ 'placeholder' ] ),
+		$arguments[ 'size' ],
+		$arguments[ 'name' ] . ' ' . $arguments[ 'css-class' ]
+	);
+
+	if ( false === empty( $arguments[ 'trailing-html' ] ) ) {
+		$html .= $arguments[ 'trailing-html' ];
+	}
+
+	if ( true === $arguments[ 'include-div' ] ) {
+		$html .= '</div>';
+	}
+
+	return $html;
+}
+
+/**
  * Display a date field
  * @param array $arguments
  *
@@ -266,7 +315,7 @@ function ws_ls_form_field_date( $arguments = [] ) {
 	}
 
 	if ( true === $arguments[ 'show-label' ] ) {
-		$html .= sprintf( '<label for="%1$s" class="yk-mt__label">%2$s</label>', $arguments[ 'name' ], $arguments[ 'title' ]);
+		$html .= sprintf( '<label for="%1$s" class="">%2$s</label>', $arguments[ 'name' ], $arguments[ 'title' ]);
 	}
 
 	$html .= sprintf( '<input type="text" name="%1$s" id="%2$s" tabindex="%3$d" value="%4$s" placeholder="%5$s" size="%6$d" class="%7$s" />',
@@ -399,13 +448,18 @@ function ws_ls_form_field_select( $arguments ) {
 												'show-label'            => true,
 												'css-class'             => '',
 												'required'              => false,
-												'js-on-change'          => ''
+												'js-on-change'          => '',
+												'include-div'           => false
 	]);
 
 	$html = '';
 
 	if ( true === $arguments[ 'show-label' ] ) {
 		$html .= sprintf( '<label for="%1$s">%2$s</label>', esc_attr( $arguments[ 'key' ] ), esc_attr( $arguments[ 'label' ] ) );
+	}
+
+	if ( true === $arguments[ 'include-div' ] ) {
+		$html .= sprintf( '<div id="%1$s-row" class="ws-ls-form-row">', $arguments[ 'name' ] );
 	}
 
 	$html .= sprintf( '<select id="%1$s" name="%1$s" tabindex="%2$d" class="%3$s" %4$s %5$s>',
@@ -425,6 +479,10 @@ function ws_ls_form_field_select( $arguments ) {
 	}
 
 	$html .= '</select>';
+
+	if ( true === $arguments[ 'include-div' ] ) {
+		$html .= '</div>';
+	}
 
 	return $html;
 }
