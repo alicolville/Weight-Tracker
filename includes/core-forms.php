@@ -257,7 +257,8 @@ function ws_ls_form_field_text( $arguments = [] ) {
 												'css-class'             => '',
 												'size'                  => 22,
 												'trailing-html'         => '',
-												'include-div'           => true	 ]);
+												'include-div'           => true,
+												'required' 				=> false ]);
 	$html = '';
 
 	if ( true === $arguments[ 'include-div' ] ) {
@@ -265,17 +266,18 @@ function ws_ls_form_field_text( $arguments = [] ) {
 	}
 
 	if ( true === $arguments[ 'show-label' ] ) {
-		$html .= sprintf( '<label for="%1$s" class="">%2$s</label>', $arguments[ 'name' ], $arguments[ 'title' ]);
+		$html .= sprintf( '<label for="%1$s" class="">%2$s</label>', $arguments[ 'id' ], $arguments[ 'title' ]);
 	}
 
-	$html .= sprintf( '<input type="text" name="%1$s" id="%2$s" tabindex="%3$d" value="%4$s" placeholder="%5$s" size="%6$d" class="%7$s" />',
+	$html .= sprintf( '<input type="text" name="%1$s" id="%2$s" tabindex="%3$d" value="%4$s" placeholder="%5$s" size="%6$d" class="%7$s" %8$s />',
 		$arguments[ 'name' ],
 		esc_attr( $arguments[ 'id' ] ),
 		ws_ls_form_tab_index_next(),
 		esc_attr( $arguments[ 'value' ] ),
 		esc_attr( $arguments[ 'placeholder' ] ),
 		$arguments[ 'size' ],
-		$arguments[ 'name' ] . ' ' . $arguments[ 'css-class' ]
+		$arguments[ 'name' ] . ' ' . $arguments[ 'css-class' ],
+		( true === $arguments[ 'required' ] ) ? 'required="required"' : ''
 	);
 
 	if ( false === empty( $arguments[ 'trailing-html' ] ) ) {
@@ -315,7 +317,7 @@ function ws_ls_form_field_date( $arguments = [] ) {
 	}
 
 	if ( true === $arguments[ 'show-label' ] ) {
-		$html .= sprintf( '<label for="%1$s" class="">%2$s</label>', $arguments[ 'name' ], $arguments[ 'title' ]);
+		$html .= sprintf( '<label for="%1$s" class="">%2$s</label>', $arguments[ 'id' ], $arguments[ 'title' ]);
 	}
 
 	$html .= sprintf( '<input type="text" name="%1$s" id="%2$s" tabindex="%3$d" value="%4$s" placeholder="%5$s" size="%6$d" class="%7$s" />',
@@ -430,6 +432,47 @@ function ws_ls_form_field_number( $arguments = [] ) {
 	}
 
 	return $html . '</div>';
+}
+
+/**
+ * Render a check box field
+ * @param array $arguments
+ * @return string
+ */
+function ws_ls_form_field_checkbox( $arguments = [] ) {
+
+	$arguments = wp_parse_args( $arguments, [	'type'                  => 'text',
+												'id'                    => ws_ls_component_id(),
+												'name'                  => '',
+												'value'                 => NULL,
+												'show-label'            => false,
+												'css-class'             => '',
+												'include-div'           => true,
+												'required' 				=> false ]);
+
+	$html = '';
+
+	if ( true === $arguments[ 'include-div' ] ) {
+		$html .= sprintf( '<div id="%1$s-row" class="ws-ls-form-row">', $arguments[ 'name' ] );
+	}
+
+	$html .= sprintf( '<input type="checkbox" name="%1$s" id="%2$s" tabindex="%3$d" value="%4$s" class="%5$s" />',
+		$arguments[ 'name' ],
+		esc_attr( $arguments[ 'id' ] ),
+		ws_ls_form_tab_index_next(),
+		esc_attr( $arguments[ 'value' ] ),
+		$arguments[ 'name' ] . ' ' . $arguments[ 'css-class' ]
+	);
+
+	if ( true === $arguments[ 'show-label' ] ) {
+		$html .= sprintf( '<label for="%1$s" class="">%2$s</label>', $arguments[ 'id' ], $arguments[ 'title' ]);
+	}
+
+	if ( true === $arguments[ 'include-div' ] ) {
+		$html .= '</div>';
+	}
+
+	return $html;
 }
 
 /**

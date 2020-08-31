@@ -158,6 +158,10 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 == Changelog ==
 
+= 8.1 =
+
+* Bug fix: Labels for form fields are correctly linked by ID.
+
 = 8.0.3 =
 
 * Bug fix: Reverse weight entry data correct for [wt-chart] shortcode.
