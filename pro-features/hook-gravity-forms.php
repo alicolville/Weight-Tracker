@@ -90,23 +90,23 @@ function ws_ls_gravity_forms_process( $entry, $form ) {
 
     if ( array_key_exists( $prefix . 'kg', $matched_fields ) && is_numeric( $matched_fields[ $prefix . 'kg' ] ) ) {
 
-        $weight['kg'] = $matched_fields['wlt-kg'];
+		$weight[ 'weight_weight' ] = $matched_fields['wlt-kg'];
 
 	} elseif ( array_key_exists( $prefix . 'pounds', $matched_fields ) && array_key_exists( $prefix . 'stones', $matched_fields )
                     && is_numeric( $matched_fields[ $prefix . 'pounds' ] )  && is_numeric( $matched_fields[ $prefix . 'stones' ] )
                 ) {
 
-        $weight['kg'] = ws_ls_convert_stones_pounds_to_kg( $matched_fields[ $prefix . 'stones' ], $matched_fields[ $prefix . 'pounds' ] );
+		$weight[ 'weight_weight' ] = ws_ls_convert_stones_pounds_to_kg( $matched_fields[ $prefix . 'stones' ], $matched_fields[ $prefix . 'pounds' ] );
 
 	} elseif ( array_key_exists( $prefix . 'pounds', $matched_fields ) && is_numeric( $matched_fields[ $prefix . 'pounds' ] ) ) {
 
-        $weight['kg'] = ws_ls_convert_pounds_to_kg( $matched_fields[ $prefix . 'pounds' ] );
+		$weight[ 'weight_weight' ] = ws_ls_convert_pounds_to_kg( $matched_fields[ $prefix . 'pounds' ] );
 
 	}
 
     // Have we got a weight?
-	if ( 4 !== count( $weight ) ) {
-        GFCommon::log_debug( 'Weight Entries were not calculated correctly.' );
+	if ( true === empty( $weight[ 'weight_weight' ] ) ) {
+        GFCommon::log_debug( 'Could not calculate the weight (in KG) correctly.' );
 		return;
 	}
 
@@ -144,6 +144,7 @@ function ws_ls_gravity_forms_process( $entry, $form ) {
 
             $gf_field_key = ws_ls_gravity_forms_meta_fields_key_prefix( $meta_field['field_key'] );
 
+
             if ( false === empty( $matched_fields[ $gf_field_key ] ) ) {
 
             	// Photo?
@@ -172,7 +173,12 @@ function ws_ls_gravity_forms_process( $entry, $form ) {
     // Add additional fields
     // --------------------------------------------------------------------------------
 
-    $weight[ 'weight_date' ] = ws_ls_convert_date_to_iso( $matched_fields['wlt-date'] );
+	$weight[ 'weight_date' ] = $matched_fields['wlt-date'] ;
+
+	// Do we have a valid ISO date? Try and convert if not
+	if ( false === ws_ls_iso_date_valid( $weight[ 'weight_date' ] ) ) {
+		$weight[ 'weight_date' ] = ws_ls_convert_date_to_iso( $weight[ 'weight_date' ] );
+	}
 
     // Do we have a weight entry?
     $weight[ 'weight_notes' ] = ( false === empty( $matched_fields['wlt-notes'] ) ? $matched_fields['wlt-notes'] : '' );
@@ -239,7 +245,6 @@ function ws_ls_gravity_forms_keys() {
     $keys = [];
     $keys[] = $prefix . 'date';
     $keys[] = $prefix . 'notes';
-    $keys[] = $prefix . 'photo';
 
     $keys = array_merge( $keys, ws_ls_gravity_forms_weight_keys() );
     $keys = array_merge( $keys, ws_ls_gravity_forms_preferences_keys() );
