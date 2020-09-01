@@ -70,7 +70,7 @@ function ws_ls_export_admin_page_new() {
 	}
 
 ?>
-	<form method="post">
+	<form method="post" id="ws-ls-export-new-form">
 		<input type="hidden" name="add-report" value="yes" />
 
 		<div class="wrap ws-ls-challenges ws-ls-admin-page">
@@ -95,9 +95,13 @@ function ws_ls_export_admin_page_new() {
 
 									echo ws_ls_form_field_select( [ 'key' => 'ws-ls-date-range', 'label' => __( 'Period', WE_LS_SLUG ), 'values' => ws_ls_export_date_ranges(), 'selected' => '' ] );
 
+									echo '<div id="ws-ls-date-range-options" class="ws-ls-hide">';
+
 									echo ws_ls_form_field_date( [ 'name' => 'we-ls-date-from', 'title' => __( 'From', WE_LS_SLUG ), 'show-label' => true ] );
 
 									echo ws_ls_form_field_date( [ 'name' => 'we-ls-date-to', 'title' => __( 'To', WE_LS_SLUG ), 'show-label' => true ] );
+
+									echo '</div>';
 
 								?>
 							</div>

@@ -307,13 +307,14 @@ function ws_ls_form_field_date( $arguments = [] ) {
 	                                            'show-label'            => false,
 	                                            'title'                 => '',
 	                                            'css-class'             => 'we-ls-datepicker',
+												'css-class-row'         => '',
 	                                            'size'                  => 22,
 	                                            'trailing-html'         => '',
 												'include-div'           => true	 ]);
 	$html = '';
 
 	if ( true === $arguments[ 'include-div' ] ) {
-		$html .= sprintf( '<div id="%1$s-row" class="ws-ls-form-row">', $arguments[ 'name' ] );
+		$html .= sprintf( '<div id="%1$s-row" class="ws-ls-form-row%2$s">', $arguments[ 'name' ], ( false === empty( $arguments[ 'css-class-row' ] ) ) ? ' ' . esc_attr( $arguments[ 'css-class-row' ] ) : '' );
 	}
 
 	if ( true === $arguments[ 'show-label' ] ) {
