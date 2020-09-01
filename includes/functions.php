@@ -743,6 +743,16 @@ function ws_ls_get_url( $base_64_encode = false ) {
 }
 
 /**
+ * Validate an ISO date
+ * @param $iso_date
+ * @return bool
+ */
+function ws_ls_iso_date_valid( $iso_date ) {
+	$dt = DateTime::createFromFormat("Y-m-d", $iso_date);
+	return $dt !== false && !array_sum($dt::getLastErrors());
+}
+
+/**
  * Helper function to convert an ISO date into the relevant date format
  *
  * @param $date

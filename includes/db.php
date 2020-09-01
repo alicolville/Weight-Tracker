@@ -374,6 +374,7 @@ function ws_ls_db_get_formats( $db_fields ) {
 	$formats = [];
 
 	$lookup = [
+		'kg'				=> '%f',
 		'weight_weight'     => '%f',
 		'weight_date'       => '%s',
 		'migrate'           => '%d',
