@@ -200,4 +200,24 @@ jQuery( document ).ready(function ($) {
 
   });
 
+  // ------------------------------------------------------------
+  // Export
+  // ------------------------------------------------------------
+
+  $( '.ws-ls-export-check-all' ).on( 'click', function ( event ) {
+
+    event.preventDefault();
+
+    $( '.report-column' ).prop( 'checked', true );
+
+  });
+
+  $( '.ws-ls-export-uncheck-all' ).on( 'click', function ( event ) {
+
+    event.preventDefault();
+
+    $( '.report-column' ).prop( 'checked', false );
+
+  });
+
 });

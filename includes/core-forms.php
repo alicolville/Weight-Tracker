@@ -461,7 +461,7 @@ function ws_ls_form_field_checkbox( $arguments = [] ) {
 		esc_attr( $arguments[ 'id' ] ),
 		ws_ls_form_tab_index_next(),
 		esc_attr( $arguments[ 'value' ] ),
-		$arguments[ 'name' ] . ' ' . $arguments[ 'css-class' ]
+		$arguments[ 'css-class' ]
 	);
 
 	if ( true === $arguments[ 'show-label' ] ) {
