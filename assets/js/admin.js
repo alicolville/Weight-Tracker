@@ -200,4 +200,43 @@ jQuery( document ).ready(function ($) {
 
   });
 
+  // ------------------------------------------------------------
+  // Export
+  // ------------------------------------------------------------
+
+  // Show / hide additional fields on meta fields add / update
+  function ws_ls_export_show_date_ranges() {
+
+    let value = $('#ws-ls-export-new-form #ws-ls-date-range').val();
+
+    if ( 'custom' === value ) {
+      $( '#ws-ls-date-range-options' ).removeClass( 'ws-ls-hide' );
+    } else {
+      $( '#ws-ls-date-range-options' ).addClass( 'ws-ls-hide' );
+    }
+
+  }
+
+  $( "#ws-ls-export-new-form #ws-ls-date-range" ).change(function() {
+      ws_ls_export_show_date_ranges();
+  });
+
+  ws_ls_export_show_date_ranges();
+
+  $( '.ws-ls-export-check-all' ).on( 'click', function ( event ) {
+
+    event.preventDefault();
+
+    $( '.report-column' ).prop( 'checked', true );
+
+  });
+
+  $( '.ws-ls-export-uncheck-all' ).on( 'click', function ( event ) {
+
+    event.preventDefault();
+
+    $( '.report-column' ).prop( 'checked', false );
+
+  });
+
 });

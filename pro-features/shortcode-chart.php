@@ -16,17 +16,18 @@ function ws_ls_shortcode_chart( $user_defined_arguments ) {
 	}
 
 	$chart_arguments = shortcode_atts( [
-											'bezier'              => ws_ls_option_to_bool( 'ws-ls-bezier-curve' ),
-											'height'              => 250,
-											'ignore-login-status' => false,
-											'max-data-points'     => ws_ls_option( 'ws-ls-max-points', '25', true ),
-											'show-gridlines'      => ws_ls_option_to_bool( 'ws-ls-grid-lines' ),
-											'show-meta-fields'    => true,
-											'type'                => get_option( 'ws-ls-chart-type', 'line' ),
-											'user-id'             => get_current_user_id(),
-											'weight-fill-color'   => get_option( 'ws-ls-line-fill-colour', '#f9f9f9' ),
-											'weight-line-color'   => get_option( 'ws-ls-line-colour', '#aeaeae' ),
-											'weight-target-color' => get_option( 'ws-ls-target-colour', '#76bada' )
+											'bezier'              	=> ws_ls_option_to_bool( 'ws-ls-bezier-curve' ),
+											'height'              	=> 250,
+											'ignore-login-status' 	=> false,
+											'max-data-points'     	=> ws_ls_option( 'ws-ls-max-points', '25', true ),
+											'show-gridlines'      	=> ws_ls_option_to_bool( 'ws-ls-grid-lines' ),
+											'show-custom-fields'  	=> true,
+											'type'                	=> get_option( 'ws-ls-chart-type', 'line' ),
+											'user-id'            	=> get_current_user_id(),
+											'weight-fill-color'   	=> get_option( 'ws-ls-line-fill-colour', '#f9f9f9' ),
+											'weight-line-color'   	=> get_option( 'ws-ls-line-colour', '#aeaeae' ),
+											'weight-target-color' 	=> get_option( 'ws-ls-target-colour', '#76bada' ),
+											'reverse'				=> true
 	], $user_defined_arguments );
 
 	// Make sure they are logged in
@@ -41,7 +42,6 @@ function ws_ls_shortcode_chart( $user_defined_arguments ) {
 	if ( $chart_arguments['height'] < 50 ) {
 		$chart_arguments['height'] = 250;
 	}
-	$chart_arguments['max-data-points'] = 0;
 
 	// Ensure we have at least two data points
 	$chart_arguments[ 'max-data-points' ] = (int) $chart_arguments[ 'max-data-points' ];
@@ -49,8 +49,9 @@ function ws_ls_shortcode_chart( $user_defined_arguments ) {
 	if ( $chart_arguments['max-data-points'] < 2 ) {
 		$chart_arguments['max-data-points'] = ws_ls_option( 'ws-ls-max-points', '25', true );
 	}
+
 	// Fetch data for chart
-	$weight_data = ws_ls_entries_get( [ 'user-id' => $chart_arguments['user-id'], 'limit' => $chart_arguments['max-data-points'], 'prep' => true ] );
+	$weight_data = ws_ls_entries_get( [ 'user-id' => $chart_arguments['user-id'], 'limit' => $chart_arguments['max-data-points'], 'prep' => true, 'sort' => 'desc' ] );
 
 	// Reverse array so in cron order
 	if ( true === empty( $weight_data ) ) {

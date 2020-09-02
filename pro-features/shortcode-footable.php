@@ -16,12 +16,15 @@ function ws_ls_shortcode_table( $user_defined_arguments ) {
 
     $arguments = shortcode_atts( [  'enable-add-edit'       => false,
 						            'enable-meta-fields'    => false,
+						            'enable-custom-fields'  => false,
+							        'bmi-format'            => 'label',
 							        'week'                  => NULL,
 						            'user-id'               => get_current_user_id() ], $user_defined_arguments );
 
-    $arguments[ 'user-id' ]             = (int) $arguments[ 'user-id' ];
-	$arguments[ 'enable-add-edit' ]     = ws_ls_to_bool( $arguments[ 'enable-add-edit' ] );
-    $arguments[ 'enable-meta-fields' ]  = ws_ls_to_bool( $arguments[ 'enable-meta-fields' ] );
+    $arguments[ 'user-id' ]                 = (int) $arguments[ 'user-id' ];
+	$arguments[ 'enable-add-edit' ]         = ws_ls_to_bool( $arguments[ 'enable-add-edit' ] );
+    $arguments[ 'enable-meta-fields' ]      = ws_ls_to_bool( $arguments[ 'enable-meta-fields' ] );  // Kept for redundancy (replaced in 8.0)
+	$arguments[ 'enable-custom-fields' ]    = ws_ls_to_bool( $arguments[ 'enable-custom-fields' ] );
 
 	// Check, that the person logged in is the person that is wanting to do the editing.
 	if( true === $arguments['enable-add-edit'] && get_current_user_id() !== $arguments['user-id'] ) {
@@ -30,8 +33,10 @@ function ws_ls_shortcode_table( $user_defined_arguments ) {
 
 	return ws_ls_data_table_render( [   'user-id'               => $arguments[ 'user-id' ],
 	                                    'enable-add-edit'       => $arguments[ 'enable-add-edit' ],
-	                                    'enable-meta-fields'    => $arguments[ 'enable-meta-fields' ],
-	                                    'week'                  => $arguments[ 'week' ] ] );
+	                                    'enable-meta-fields'    => $arguments[ 'enable-meta-fields' ] || $arguments[ 'enable-custom-fields' ],
+	                                    'week'                  => $arguments[ 'week' ],
+										'bmi-format'            => $arguments[ 'bmi-format' ]
+	] );
 }
 add_shortcode( 'wlt-table', 'ws_ls_shortcode_table' );
 add_shortcode( 'wt-table', 'ws_ls_shortcode_table' );
