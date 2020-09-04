@@ -99,6 +99,8 @@ function ws_ls_enqueue_admin_files(){
 
     wp_enqueue_script( 'ws-ls-admin', plugins_url( '../assets/js/admin' . 	$minified . '.js', __FILE__ ), [ 'jquery' ], WE_LS_CURRENT_VERSION );
 
+	wp_localize_script( 'ws-ls-admin', 'ws_ls_security', [ 'ajax-security-nonce' => wp_create_nonce( 'ws-ls-nonce' ) ] );
+
     // Settings page
 	if( false === empty( $_GET[ 'page' ] ) && true === in_array( $_GET[ 'page' ], [ 'ws-ls-settings', 'ws-ls-data-setup-wizard' ] ) ) {
 		wp_enqueue_script('jquery-tabs', plugins_url( '../assets/js/libraries/tabs.min.js', __FILE__ ), [ 'jquery' ], WE_LS_CURRENT_VERSION );

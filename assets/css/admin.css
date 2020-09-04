@@ -300,3 +300,16 @@ HEX: #f7786b
   padding: 0px;
   margin: 0px 0px 10px 0px;
 }
+
+/**
+  Export Progress Bar
+ */
+.ws-ls-export-progress-bar,.ws-ls-export-progress-bar:hover {
+    color: #000 !important;
+    background-color: #f1f1f1 !important
+}
+.ws-ls-export-progress-bar-inner {
+    color: #fff !important;
+    background-color: #2196F3 !important;
+    height: 30px;
+}

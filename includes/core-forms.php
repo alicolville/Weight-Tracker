@@ -446,23 +446,24 @@ function ws_ls_form_field_checkbox( $arguments = [] ) {
 												'id'                    => ws_ls_component_id(),
 												'name'                  => '',
 												'value'                 => NULL,
+												'checked'               => false,
 												'show-label'            => false,
 												'css-class'             => '',
 												'include-div'           => true,
 												'required' 				=> false ]);
-
 	$html = '';
 
 	if ( true === $arguments[ 'include-div' ] ) {
 		$html .= sprintf( '<div id="%1$s-row" class="ws-ls-form-row">', $arguments[ 'name' ] );
 	}
 
-	$html .= sprintf( '<input type="checkbox" name="%1$s" id="%2$s" tabindex="%3$d" value="%4$s" class="%5$s" />',
+	$html .= sprintf( '<input type="checkbox" name="%1$s" id="%2$s" tabindex="%3$d" value="%4$s" class="%5$s" %6$s />',
 		$arguments[ 'name' ],
 		esc_attr( $arguments[ 'id' ] ),
 		ws_ls_form_tab_index_next(),
 		esc_attr( $arguments[ 'value' ] ),
-		$arguments[ 'css-class' ]
+		$arguments[ 'css-class' ],
+		true === $arguments[ 'checked' ] ? ' checked="checked" ' : ''
 	);
 
 	if ( true === $arguments[ 'show-label' ] ) {
@@ -488,6 +489,7 @@ function ws_ls_form_field_select( $arguments ) {
 	$arguments = wp_parse_args( $arguments, [	'key'                   => '',
 												'label'                 => '',
 												'values'                => [],
+												'empty-option'          => false,
 												'selected'              => NULL,
 												'show-label'            => true,
 												'css-class'             => '',
@@ -513,6 +515,10 @@ function ws_ls_form_field_select( $arguments ) {
 		( true === $arguments[ 'required' ] ) ? ' required' : '',
 		( false === empty( $arguments[ 'js-on-change' ] ) ) ? sprintf( ' onchange="%s"', $arguments[ 'js-on-change' ] ) : ''
 	);
+
+	if ( true === $arguments[ 'empty-option' ] ) {
+		$html .= '<option value=""></option>';
+	}
 
 	foreach ( $arguments[ 'values' ] as $id => $value ) {
 		$html .= sprintf('<option value="%1$s" %2$s>%3$s</option>',

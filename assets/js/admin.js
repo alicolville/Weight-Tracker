@@ -207,7 +207,7 @@ jQuery( document ).ready(function ($) {
   // Show / hide additional fields on meta fields add / update
   function ws_ls_export_show_date_ranges() {
 
-    let value = $('#ws-ls-export-new-form #ws-ls-date-range').val();
+    let value = $('#ws-ls-export-new-form #date-range').val();
 
     if ( 'custom' === value ) {
       $( '#ws-ls-date-range-options' ).removeClass( 'ws-ls-hide' );
@@ -217,7 +217,7 @@ jQuery( document ).ready(function ($) {
 
   }
 
-  $( "#ws-ls-export-new-form #ws-ls-date-range" ).change(function() {
+  $( "#ws-ls-export-new-form #date-range" ).change(function() {
       ws_ls_export_show_date_ranges();
   });
 
@@ -238,5 +238,43 @@ jQuery( document ).ready(function ($) {
     $( '.report-column' ).prop( 'checked', false );
 
   });
+
+
+
+  ws_ls_export_process( ws_ls_export_process_callback  );
+  function ws_ls_export_process( callback ) {
+
+    let data = { 'action': 'process_export', 'security' : ws_ls_security[ 'ajax-security-nonce' ] };
+
+    jQuery.post( ajaxurl, data, function( response ) {
+      console.log( response );
+     // response = JSON.parse( response );
+      callback( data, response );
+    });
+  }
+
+  function ws_ls_export_process_callback( data, response) {
+
+    // Do we have an error?
+    if ( true === response[ 'error' ] ) {
+      $( '#ws-ls-export-message' ).text( response[ 'message'] );
+      return;
+    }
+
+    // Update progress bar
+    $( '.ws-ls-export-progress-bar-inner' ).css( 'width', response[ 'percentage'] );
+
+    // Update message if we have one
+    if ( '' != response[ 'message' ] ) {
+      $( '#ws-ls-export-message' ).text( response[ 'message'] );
+    }
+
+    // Continue?
+    if ( true === response[ 'continue' ] ) {
+      ws_ls_export_process();
+    }
+
+  }
+
 
 });
