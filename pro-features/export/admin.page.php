@@ -46,7 +46,45 @@ function ws_ls_export_admin_page_summary() {
 									<?php echo __( 'Start a new export', WE_LS_SLUG ); ?>
 								</a>
 							</p>
-							<h4><?php echo __( 'Last 10 exports', WE_LS_SLUG ); ?></h4>
+							<h4><?php echo __( 'Last 20 exports', WE_LS_SLUG ); ?></h4>
+							<?php
+
+								$previous_exports = ws_ls_db_export_criteria_all( 20 );
+
+								if ( false === empty( $previous_exports ) ) {
+
+									echo '<ul class="ws-ls-export-list">';
+
+									foreach ( $previous_exports as $export ) {
+
+										$title = sprintf( '%s &middot; %s',
+															ws_ls_convert_ISO_date_into_locale( $export[ 'created' ], 'display-date' ),
+															esc_html( $export[ 'options' ][ 'title' ] )
+										);
+
+										if ( 100 === (int) $export[ 'step' ] ) {
+											$title .= sprintf( '<span><a href="%s">%s</a></span>',
+												'#',
+												__( 'Download', WE_LS_SLUG )
+											);
+										} else {
+											$title .= sprintf( '<span><a href="%s%d">%s ></a></span>',
+												admin_url( 'admin.php?page=ws-ls-export-data&mode=process&id='),
+												$export[ 'id' ],
+												__( 'finish processing', WE_LS_SLUG )
+											);
+										}
+
+										printf( '<li>%s</li>', $title );
+
+									}
+
+									echo '</ul>';
+
+								} else {
+									printf( '<p>%s</p>', __( 'No data has been exported.' ) );
+								}
+							?>
 						</div>
 					</div>
                 </div>
@@ -239,7 +277,7 @@ function ws_ls_export_admin_page_process() {
 	}
 
 	// Fetch export criteria from DB
-	$criteria = ws_ls_export_get( $export_id );
+	$criteria = ws_ls_db_export_criteria_get( $export_id );
 
 	?>
 	<div class="wrap ws-ls-challenges ws-ls-admin-page">
@@ -256,7 +294,7 @@ function ws_ls_export_admin_page_process() {
 									echo __( 'There was an error loading the criteria for the export.', WE_LS_SLUG );
 								} else { ?>
 
-									<div class="ws-ls-export-progress-bar">
+									<div class="ws-ls-export-progress-bar" data-export-id="<?php echo (int) $export_id; ?>">
 										<div class="ws-ls-export-progress-bar-inner" style="width:75%;"></div>
 									</div>
 									<p id="ws-ls-export-message"><?php echo __( 'Initialising...', WE_LS_SLUG ); ?></p>

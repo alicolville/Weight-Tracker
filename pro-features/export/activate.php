@@ -21,19 +21,32 @@
         $sql = "CREATE TABLE $table_name (
                 id mediumint(9) NOT NULL AUTO_INCREMENT,
                 options TEXT NOT NULL,
-           		completed BIT DEFAULT 0,
-                created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                finished TIMESTAMP NULL,
+           		step INT DEFAULT 0,
+           		number_of_records INT DEFAULT 0,
+           		created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 UNIQUE KEY id (id)
             ) $charset_collate;";
 
         dbDelta( $sql );
 
+	    $table_name = $wpdb->prefix . WE_LS_MYSQL_EXPORT_REPORT;
+
+	    $sql = "CREATE TABLE $table_name (
+                id mediumint(9) NOT NULL AUTO_INCREMENT,
+                export_id INT NOT NULL,
+                entry_id TEXT NOT NULL,
+           		completed BIT DEFAULT 0,
+           		data TEXT NOT NULL,
+                UNIQUE KEY id (id)
+            ) $charset_collate;";
+
+	    dbDelta( $sql );
+
     }
     add_action('ws-ls-rebuild-database-tables', 'ws_ls_meta_fields_create_mysql_tables');
 
     /**
-     *  Activat Export feature
+     *  Activate Export feature
      */
     function ws_ls_export_activate() {
 

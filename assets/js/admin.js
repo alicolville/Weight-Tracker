@@ -241,15 +241,18 @@ jQuery( document ).ready(function ($) {
 
 
 
-  ws_ls_export_process( ws_ls_export_process_callback  );
-  function ws_ls_export_process( callback ) {
+  ws_ls_export_process(  );
 
-    let data = { 'action': 'process_export', 'security' : ws_ls_security[ 'ajax-security-nonce' ] };
+  function ws_ls_export_process(  ) {
+
+    let data = {  'action'    : 'process_export',
+                  'security'  : ws_ls_security[ 'ajax-security-nonce' ],
+                  'id'        : $( '.ws-ls-export-progress-bar' ).data( 'export-id' )
+    };
 
     jQuery.post( ajaxurl, data, function( response ) {
-      console.log( response );
      // response = JSON.parse( response );
-      callback( data, response );
+      ws_ls_export_process_callback( data, response );
     });
   }
 
@@ -262,19 +265,17 @@ jQuery( document ).ready(function ($) {
     }
 
     // Update progress bar
-    $( '.ws-ls-export-progress-bar-inner' ).css( 'width', response[ 'percentage'] );
+    $( '.ws-ls-export-progress-bar-inner' ).css( 'width', response[ 'percentage'] + '%');
 
     // Update message if we have one
     if ( '' != response[ 'message' ] ) {
       $( '#ws-ls-export-message' ).text( response[ 'message'] );
     }
-
+;
     // Continue?
     if ( true === response[ 'continue' ] ) {
       ws_ls_export_process();
     }
 
   }
-
-
 });

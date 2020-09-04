@@ -302,8 +302,22 @@ HEX: #f7786b
 }
 
 /**
-  Export Progress Bar
+  Export
  */
+.ws-ls-export-list {
+
+}
+.ws-ls-export-list li {
+  border-bottom: 1px dotted #5C5C5C;
+  margin-bottom: 0px;
+  padding: 10px;
+}
+.ws-ls-export-list li:hover {
+  background-color: #c7ddef;
+}
+.ws-ls-export-list span {
+  float: right;
+}
 .ws-ls-export-progress-bar,.ws-ls-export-progress-bar:hover {
     color: #000 !important;
     background-color: #f1f1f1 !important
