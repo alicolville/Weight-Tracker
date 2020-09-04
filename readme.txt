@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight, loss, lose, tracker, bmi, bmr, macronutrient, graph, chart, track, stones, kg, table, calories, awards, email, custom, fields, history, pounds, responsive, chart, measurements, cm, centimeters, inches, photos
 Requires at least: 4.4.9
 Tested up to: 5.5.1
-Stable tag: 8.0.4
+Stable tag: 8.0.6
 Requires PHP: 7.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -15,7 +15,7 @@ Allow registered users of your website to track their weight, measurements, phot
 
 = Demo =
 
-Use our free site for tracking your weight which shows off some of the plugin's feature: [https://demo.yeken.co.uk - Demo Site](https://demo.yeken.co.uk "https://demo.yeken.co.uk")
+Use our free site for tracking your weight which shows off some of the plugin's feature: [https://demo.yeken.uk - Demo Site](https://demo.yeken.uk "https://demo.yeken.uk")
 
 = Documentation =
 
@@ -161,6 +161,14 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 = 8.1 =
 
 * Bug fix: Labels for form fields are correctly linked by ID.
+
+= 8.0.6 =
+
+* Bug fix: Updated URL to demo site.
+
+= 8.0.5 =
+
+* Bug fix: Corrected an issue where localisation wasn't always kicking in.
 
 = 8.0.4 =
 
