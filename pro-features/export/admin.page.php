@@ -137,7 +137,7 @@ function ws_ls_export_admin_page_new() {
 
 									if ( false === empty( $user_id ) ) {
 
-										printf( '<input type="hidden" name="user-id" value"%d" />', $user_id );
+										printf( '<input type="hidden" name="user-id" value="%d" />', $user_id );
 
 										printf( '<h4>%s</h4>', __( 'User', WE_LS_SLUG ) );
 
@@ -186,7 +186,7 @@ function ws_ls_export_admin_page_new() {
 								<p><?php echo __( 'Specifying a date range will filter the report to only include weight entries within that period of time.', WE_LS_SLUG ); ?></p>
 								<?php
 
-									echo ws_ls_form_field_select( [ 'key' => 'date-range', 'label' => __( 'Period', WE_LS_SLUG ), 'values' => ws_ls_export_date_ranges(), 'selected' => 'last-31' ] );
+									echo ws_ls_form_field_select( [ 'key' => 'date-range', 'label' => __( 'Period', WE_LS_SLUG ), 'values' => ws_ls_export_date_ranges(), 'selected' => '' ] );
 
 									echo '<div id="ws-ls-date-range-options" class="ws-ls-hide">';
 
@@ -292,6 +292,8 @@ function ws_ls_export_admin_page_process() {
 
 								if ( true === empty( $criteria ) ) {
 									echo __( 'There was an error loading the criteria for the export.', WE_LS_SLUG );
+								} else if ( 100 === (int) $criteria[ 'step' ] ) {
+									echo __( 'This report has already been processed.', WE_LS_SLUG );
 								} else { ?>
 
 									<div class="ws-ls-export-progress-bar" data-export-id="<?php echo (int) $export_id; ?>">
@@ -301,10 +303,7 @@ function ws_ls_export_admin_page_process() {
 
 								<?php
 								}
-
-								print_r($criteria);
 							?>
-
 						</div>
 					</div>
 				</div>

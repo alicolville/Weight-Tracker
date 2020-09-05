@@ -25,6 +25,7 @@ function ws_ls_export_link( $mode = 'view' ) {
 function ws_ls_export_date_ranges() {
 
 	return [
+				'' 			=> '',
 				'today' 	=> __( 'Today', WE_LS_SLUG ),
 				'last-7' 	=> __( 'Last 7 Days', WE_LS_SLUG ),
 				'last-31' 	=> __( 'Last 31 Days', WE_LS_SLUG ),

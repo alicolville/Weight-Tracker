@@ -40,7 +40,7 @@ function ws_ls_export_ajax_process() {
 	if ( 0 === $current_step ) {
 
 		ws_ls_db_export_identify_weight_entries( $id );
-		$return[ 'message' ]    = __( 'Rows have been identified for the export.', WE_LS_SLUG );
+		$return[ 'message' ]    = __( 'Initialising: Rows have been identified for the export.', WE_LS_SLUG );
 		$return[ 'percentage' ] = 50;
 		ws_ls_db_export_criteria_step( $id, 1 );
 
@@ -50,7 +50,7 @@ function ws_ls_export_ajax_process() {
 
 		ws_ls_db_export_criteria_count( $id, $number_of_records );
 
-		$return['message']    = sprintf( '%d %s', $number_of_records, __( 'records have been identified for this report.', WE_LS_SLUG ) );
+		$return['message']    = sprintf( 'Initialising: %d %s', $number_of_records, __( 'records have been identified for this report.', WE_LS_SLUG ) );
 		$return['percentage'] = 100;
 
 		ws_ls_db_export_criteria_step( $id, 2 );
@@ -62,7 +62,7 @@ function ws_ls_export_ajax_process() {
 
 		if ( true === empty( $rows ) ) {
 
-			$return[ 'message' ]        = __( 'All record data has now been processed.', WE_LS_SLUG );
+			$return[ 'message' ]        = __( 'Preparing data: Complete.', WE_LS_SLUG );
 			$return[ 'percentage' ]     = 100;
 
 			ws_ls_db_export_criteria_step( $id, 3 );
@@ -78,7 +78,7 @@ function ws_ls_export_ajax_process() {
 			$percentage                 = ( $return[ 'processed' ] / $return[ 'total' ] ) * 100.0;
 			$return[ 'percentage' ]     = (int) $percentage;
 
-			$return[ 'message' ]        = sprintf( 'Prepared %d of %d weight entries for report', $return[ 'processed' ], $return[ 'total' ] );
+			$return[ 'message' ]        = sprintf( 'Preparing data: %d of %d entries', $return[ 'processed' ], $return[ 'total' ] );
 
 			ws_ls_db_export_report_complete_rows_mark( $id, $processed_ids );
 
