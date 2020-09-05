@@ -127,7 +127,7 @@ function ws_ls_db_export_identify_weight_entries( $export_id ) {
 	if ( false === empty( $where ) ) {
 		$sql .= ' and ' . implode( 'and ', $where );
 	}
-	
+
 	return $wpdb->query( $sql );
 }
 

@@ -37,6 +37,9 @@ function ws_ls_export_ajax_process() {
 
 	$current_step = (int) $export[ 'step' ];
 
+	// ------------------------------------------------------------------------------------------------------
+	// Identify based on criteria
+	// ------------------------------------------------------------------------------------------------------
 	if ( 0 === $current_step ) {
 
 		ws_ls_db_export_identify_weight_entries( $id );
@@ -44,6 +47,9 @@ function ws_ls_export_ajax_process() {
 		$return[ 'percentage' ] = 50;
 		ws_ls_db_export_criteria_step( $id, 1 );
 
+	// ------------------------------------------------------------------------------------------------------
+	// Count records going into the report
+	// ------------------------------------------------------------------------------------------------------
 	} else if ( 1 === $current_step ) {
 
 		$number_of_records = ws_ls_db_export_report_count( $id );
@@ -55,11 +61,15 @@ function ws_ls_export_ajax_process() {
 
 		ws_ls_db_export_criteria_step( $id, 2 );
 
+	// ------------------------------------------------------------------------------------------------------
+	// Prepare rows. Take a set of rows and pre-process for the report
+	// ------------------------------------------------------------------------------------------------------
 	} else if ( 2 === $current_step ) {
 
 		// Fetch some entries to process
 		$rows = ws_ls_db_export_report_incomplete_rows( $id );
 
+		// There are no more rows to process
 		if ( true === empty( $rows ) ) {
 
 			$return[ 'message' ]        = __( 'Preparing data: Complete.', WE_LS_SLUG );
