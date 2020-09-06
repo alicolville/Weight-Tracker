@@ -5,9 +5,11 @@ defined('ABSPATH') or die("Jog on!");
 /**
  * Insert a new export into DB
  * @param $options
+ * @param $folder
+ * @param $filename
  * @return bool
  */
-function ws_ls_db_export_insert( $options ) {
+function ws_ls_db_export_insert( $options, $folder, $filename ) {
 
 	if ( false === WS_LS_IS_PRO ) {
 		return false;
@@ -27,7 +29,7 @@ function ws_ls_db_export_insert( $options ) {
 
 	global $wpdb;
 
-	$result = $wpdb->insert( $wpdb->prefix . WE_LS_MYSQL_EXPORT, [ 'options' => json_encode( $options ) ], [ '%s' ] );
+	$result = $wpdb->insert( $wpdb->prefix . WE_LS_MYSQL_EXPORT, [ 'options' => json_encode( $options ), 'file' => $filename, 'folder' => $folder ], [ '%s', '%s', '%s' ] );
 
 	return ( false !== $result ) ? $result = $wpdb->insert_id : false;
 

@@ -48,9 +48,28 @@ function ws_ls_export_ajax_process() {
 		ws_ls_db_export_criteria_step( $id, 1 );
 
 	// ------------------------------------------------------------------------------------------------------
-	// Count records going into the report
+	// Ensure we can write to uploads folder by creating the file we need
 	// ------------------------------------------------------------------------------------------------------
 	} else if ( 1 === $current_step ) {
+
+		$physical_path = ws_ls_export_file_physical_folder( $id );
+
+		if ( false === wp_mkdir_p( $physical_path ) ) {
+			ws_ls_export_ajax_error( $return, __( 'There was an issue creating the export folder: ' , WE_LS_SLUG ) . $physical_path );
+		}
+
+		$physical_path_to_file = ws_ls_export_file_physical_path( $id );
+
+		if ( false === touch( $physical_path_to_file ) ) {
+			ws_ls_export_ajax_error( $return, __( 'There was an issue creating the export file: ' , WE_LS_SLUG ) . $physical_path_to_file );
+		}
+
+		ws_ls_db_export_criteria_step( $id, 2 );
+
+	// ------------------------------------------------------------------------------------------------------
+	// Count records going into the report
+	// ------------------------------------------------------------------------------------------------------
+	} else if ( 2 === $current_step ) {
 
 		$number_of_records = ws_ls_db_export_report_count( $id );
 
@@ -59,12 +78,12 @@ function ws_ls_export_ajax_process() {
 		$return['message']    = sprintf( 'Initialising: %d %s', $number_of_records, __( 'records have been identified for this report.', WE_LS_SLUG ) );
 		$return['percentage'] = 100;
 
-		ws_ls_db_export_criteria_step( $id, 2 );
+		ws_ls_db_export_criteria_step( $id, 20 );
 
 	// ------------------------------------------------------------------------------------------------------
 	// Prepare rows. Take a set of rows and pre-process for the report
 	// ------------------------------------------------------------------------------------------------------
-	} else if ( 2 === $current_step ) {
+	} else if ( 20 === $current_step ) {
 
 		// Fetch some entries to process
 		$rows = ws_ls_db_export_report_incomplete_rows( $id );
@@ -75,13 +94,19 @@ function ws_ls_export_ajax_process() {
 			$return[ 'message' ]        = __( 'Preparing data: Complete.', WE_LS_SLUG );
 			$return[ 'percentage' ]     = 100;
 
-			ws_ls_db_export_criteria_step( $id, 3 );
+			ws_ls_db_export_criteria_step( $id, 30 );
 
 		} else {
 
-			//TODO: Actually update row data here.
+			foreach ( $rows as $row ) {
 
-			$processed_ids              = wp_list_pluck( $rows, 'id' );
+				if( false === ws_ls_export_update_export_row( $id, $row ) ) {
+					ws_ls_export_ajax_error( $return, __( 'There was an error processing weight entry' , WE_LS_SLUG ) . ': ' . $row[ 'entry_id' ] );
+				}
+
+			}
+
+			$processed_ids              = wp_list_pluck( $rows, 'id' );	// Take the row ID regardless of whether it was processed correctly (as the report creation may just loop)
 			$return[ 'total' ]          = ws_ls_db_export_report_count( $id );
 			$return[ 'remaining' ]      = ws_ls_db_export_report_to_be_processed_count( $id );
 			$return[ 'processed' ]      = $return[ 'total' ] - $return[ 'remaining' ];
@@ -94,7 +119,7 @@ function ws_ls_export_ajax_process() {
 
 		}
 
-	} else if ( 3 === $current_step ) {
+	} else if ( 30 === $current_step ) {
 
 
 		ws_ls_db_export_criteria_step( $id, 100 );
@@ -122,9 +147,9 @@ add_action( 'wp_ajax_process_export', 'ws_ls_export_ajax_process' );
  */
 function ws_ls_export_ajax_error( $obj, $message = '' ) {
 
-	$return[ 'error' ]      = true;
-	$return[ 'message' ]    = $message;
+	$obj[ 'error' ]      = true;
+	$obj[ 'message' ]    = $message;
 
-	wp_send_json( $return );
+	wp_send_json( $obj );
 }
 

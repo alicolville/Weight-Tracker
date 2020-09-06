@@ -245,7 +245,7 @@ function ws_ls_export_admin_page_new() {
 						<div class="inside">
 							<?php
 
-								echo ws_ls_form_field_select( [ 'key' => 'format', 'label' => __( 'Format', WE_LS_SLUG ), 'values' => [ 'json' => __( 'Json', WE_LS_SLUG ), 'xml' => __( 'XML', WE_LS_SLUG ) ], 'selected' => '' ] );
+								echo ws_ls_form_field_select( [ 'key' => 'format', 'label' => __( 'Format', WE_LS_SLUG ), 'values' => [ 'csv' => __( 'CSV', WE_LS_SLUG ), 'json' => __( 'Json', WE_LS_SLUG ) ], 'selected' => '' ] );
 							?>
 						</div>
 					</div>
@@ -273,7 +273,7 @@ function ws_ls_export_admin_page_process() {
 	// Are we adding a new export?
 	if ( true === empty( $export_id ) &&
 		 	'yes' === ws_ls_post_value( 'add-report' ) ) {
-		$export_id = ws_ls_db_export_insert( $_POST );
+		$export_id = ws_ls_export_insert( $_POST );
 	}
 
 	// Fetch export criteria from DB
