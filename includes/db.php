@@ -324,6 +324,26 @@ function ws_ls_db_entries_get( $arguments = [] ) {
 }
 
 /**
+ * Fetch a collection of weight entries for the given IDs
+ * @param array $arguments
+ *
+ * @return array|object|null
+ */
+function ws_ls_db_entries_by_id( $arguments = [] ) {
+
+	$arguments = wp_parse_args( $arguments, [ 'ids' => [] ] );
+
+
+	global $wpdb;
+
+	$sql =  'SELECT id, weight_date, weight_weight as kg, weight_notes as notes, weight_user_id as user_id FROM ' . $wpdb->prefix . WE_LS_TABLENAME .
+	        ' where id in ( ' . implode( ',', $arguments ) .  ' ) order by weight_date asc';
+
+	return $wpdb->get_results( $sql, ARRAY_A );
+
+}
+
+/**
  * Delete all entries for given user
  * @param $user_id
  *

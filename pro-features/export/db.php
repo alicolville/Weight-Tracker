@@ -123,12 +123,14 @@ function ws_ls_db_export_identify_weight_entries( $export_id ) {
 	}
 
 	$sql = 'INSERT INTO ' . $wpdb->prefix . WE_LS_MYSQL_EXPORT_REPORT . ' ( export_id, entry_id, data )
-                            SELECT ' . (int) $export_id . ', id, "" 
+                            SELECT ' . (int) $export_id . ', id, ""
                             FROM ' . $wpdb->prefix . WE_LS_TABLENAME . ' WHERE 1 = 1';
 
 	if ( false === empty( $where ) ) {
 		$sql .= ' and ' . implode( 'and ', $where );
 	}
+
+	$sql .= ' order by weight_date asc';
 
 	return $wpdb->query( $sql );
 }
@@ -177,6 +179,8 @@ function ws_ls_db_export_report_to_be_processed_count( $export_id ) {
 
 /**
  * Fetch some rows to process
+ *
+ * @param $export_id
  * @param int $limit
  *
  * @return array|object
