@@ -121,9 +121,16 @@ function ws_ls_export_file_physical_folder( $id ) {
 //
 //}
 
-function ws_ls_export_update_export_row( $export_id, $row ) {
+/**
+ * Update a Weight Entry row with the required report data
+ * @param $export_id
+ * @param $data
+ * @return bool
+ */
+function ws_ls_export_update_export_row( $export_id, $data ) {
 
-	return false;
+
+	return ws_ls_db_export_rows_update( $export_id, $data );
 }
 
 function ws_ls_export_output_create_file() {

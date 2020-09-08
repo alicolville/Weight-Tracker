@@ -333,14 +333,16 @@ function ws_ls_db_entries_by_id( $arguments = [] ) {
 
 	$arguments = wp_parse_args( $arguments, [ 'ids' => [] ] );
 
+	if ( true === empty( $arguments[ 'ids' ] ) ) {
+		return [];
+	}
 
 	global $wpdb;
 
 	$sql =  'SELECT id, weight_date, weight_weight as kg, weight_notes as notes, weight_user_id as user_id FROM ' . $wpdb->prefix . WE_LS_TABLENAME .
-	        ' where id in ( ' . implode( ',', $arguments ) .  ' ) order by weight_date asc';
+	        ' where id in ( ' . implode( ',', $arguments[ 'ids' ] ) .  ' ) order by weight_date asc';
 
 	return $wpdb->get_results( $sql, ARRAY_A );
-
 }
 
 /**
