@@ -26,7 +26,7 @@
            		folder varchar( 200 ) DEFAULT NULL,
            		file varchar( 200 ) DEFAULT NULL,
            		created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                UNIQUE KEY id (id)
+           		UNIQUE KEY id (id)
             ) $charset_collate;";
 
         dbDelta( $sql );
@@ -36,16 +36,17 @@
 	    $sql = "CREATE TABLE $table_name (
                 id mediumint(9) NOT NULL AUTO_INCREMENT,
                 export_id INT NOT NULL,
-                entry_id TEXT NOT NULL,
+                entry_id INT NOT NULL,
            		completed BIT DEFAULT 0,
            		data TEXT NOT NULL,
+           		PRIMARY KEY (`export_id`,`entry_id`),
                 UNIQUE KEY id (id)
             ) $charset_collate;";
 
 	    dbDelta( $sql );
 
     }
-    add_action('ws-ls-rebuild-database-tables', 'ws_ls_meta_fields_create_mysql_tables');
+    add_action('ws-ls-rebuild-database-tables', 'ws_ls_export_create_mysql_tables');
 
     /**
      *  Activate Export feature
@@ -53,7 +54,7 @@
     function ws_ls_export_activate() {
 
         // Only run this when the plugin version has changed
-        if( true === update_option('w1wws-ls-export-version-number', WE_LS_DB_VERSION )) {
+        if( true === update_option('ws-ls-export-version-number', WE_LS_DB_VERSION )) {
 
 			ws_ls_export_create_mysql_tables();
 

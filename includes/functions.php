@@ -48,7 +48,9 @@ function ws_ls_admin_check_mysql_tables_exist() {
 							$wpdb->prefix . WE_LS_MYSQL_AWARDS,
 							$wpdb->prefix . WE_LS_MYSQL_AWARDS_GIVEN,
 							$wpdb->prefix . WE_LS_MYSQL_GROUPS,
-							$wpdb->prefix . WE_LS_MYSQL_GROUPS_USER
+							$wpdb->prefix . WE_LS_MYSQL_GROUPS_USER,
+							$wpdb->prefix . WE_LS_MYSQL_EXPORT_REPORT,
+							$wpdb->prefix . WE_LS_MYSQL_EXPORT
                        ];
 
     // Check each table exists!

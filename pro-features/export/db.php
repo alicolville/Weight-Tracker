@@ -151,7 +151,7 @@ function ws_ls_db_export_report_count( $export_id ) {
 
 	global $wpdb;
 
-	$sql = $wpdb->prepare( 'SELECT count(id) FROM ' . $wpdb->prefix . WE_LS_MYSQL_EXPORT_REPORT .
+	$sql = $wpdb->prepare( 'SELECT count( entry_id ) FROM ' . $wpdb->prefix . WE_LS_MYSQL_EXPORT_REPORT .
 	                        ' WHERE export_id = %d', $export_id );
 
 	$result = $wpdb->get_var( $sql );
@@ -171,7 +171,7 @@ function ws_ls_db_export_report_to_be_processed_count( $export_id ) {
 
 	global $wpdb;
 
-	$sql = $wpdb->prepare( 'SELECT count(id) FROM ' . $wpdb->prefix . WE_LS_MYSQL_EXPORT_REPORT .
+	$sql = $wpdb->prepare( 'SELECT count( entry_id ) FROM ' . $wpdb->prefix . WE_LS_MYSQL_EXPORT_REPORT .
 	                       ' WHERE export_id = %d and completed = 0', $export_id );
 
 	return (int) $wpdb->get_var( $sql );
@@ -185,7 +185,7 @@ function ws_ls_db_export_report_to_be_processed_count( $export_id ) {
  *
  * @return array|object
  */
-function ws_ls_db_export_report_incomplete_rows( $export_id, $limit = 40 ) {
+function ws_ls_db_export_report_incomplete_rows( $export_id, $limit = 50 ) {
 
 	global $wpdb;
 
@@ -215,21 +215,6 @@ function ws_ls_db_export_rows_update( $export_criteria, $data, $completed = 1 ) 
 							[ 'entry_id' => $data[ 'entry_id' ], 'export_id' => $export_criteria[ 'id' ] ],
 							[ '%d', '%s' ],
 							[ '%d', '%d' ] );
-}
-
-/**
- * Mark rows as completed
- * @param $export_id
- * @param $ids
- */
-function ws_ls_db_export_report_complete_rows_mark( $export_id, $ids ) {
-
-	global $wpdb;
-
-	$sql = $wpdb->prepare( 'UPDATE ' . $wpdb->prefix . WE_LS_MYSQL_EXPORT_REPORT . ' set completed = 1 WHERE
-                            export_id = %d and id in ( ' . implode( ',', $ids ) . ' )', $export_id );
-
-	return $wpdb->query( $sql );
 }
 
 /**
