@@ -107,6 +107,44 @@ function ws_ls_export_file_physical_folder( $id ) {
 }
 
 /**
+ * Helper function to replace column names with something more readable. For example take MySQL column names and make them easier to read
+ *
+ * @param $export_criteria
+ *
+ * @return array Prettified fields names
+ */
+function ws_ls_export_column_names( $export_criteria ) {
+
+	$names = [
+		'user_id'                       => 'User ID',
+		'user_nicename'                 => 'Nicename',
+		'date-display'                  => 'Date',
+		'weight'                        => ws_ls_settings_weight_unit_readable(),
+		'difference_from_start_display' => __( 'Difference from start', WE_LS_SLUG ),
+		'bmi'                           => __( 'BMI', WE_LS_SLUG ),
+		'bmi-readable'                  => __( 'BMI Label', WE_LS_SLUG ),
+		'notes'                         => __( 'Notes', WE_LS_SLUG )
+	];
+
+	$options = ( false === empty( $export_criteria[ 'options' ] ) ) ? $export_criteria[ 'options' ] : NULL;
+
+	// Add meta fields
+	if ( ws_ls_meta_fields_number_of_enabled() > 0 &&
+	     false === empty( $options[ 'fields-meta' ] ) ) {
+		foreach ( ws_ls_meta_fields_enabled() as $meta_field ) {
+
+			if ( true === in_array( $meta_field[ 'id' ], $options[ 'fields-meta' ] ) ) {
+				$names[ 'meta-' . $meta_field[ 'id' ] ] = $meta_field['field_name'];
+			}
+		}
+	}
+
+	$names = apply_filters( 'wlt-export-columns', $names );
+
+	return $names;
+}
+
+/**
  * Update a Weight Entry row with the required report data
  *
  * @param $export_criteria
@@ -115,7 +153,7 @@ function ws_ls_export_file_physical_folder( $id ) {
  * @return bool
  */
 function ws_ls_export_update_export_row( $export_criteria, $data ) {
-	
+
 	$data[ 'user_nicename' ]                 = ws_ls_user_display_name( $data[ 'user_id' ] );
 	$data[ 'date-display' ]                  = ws_ls_convert_ISO_date_into_locale( $data[ 'weight_date' ], 'display-date' );
 	$data[ 'weight' ]                        = ws_ls_weight_display( $data['kg'], $data[ 'user_id' ], 'display', true );
@@ -140,7 +178,8 @@ function ws_ls_export_update_export_row( $export_criteria, $data ) {
 	}
 
 	// Enabled meta fields?
-	if ( false === empty( $options[ 'fields-meta' ] ) ) {
+	if ( ws_ls_meta_fields_number_of_enabled() > 0 &&
+	        false === empty( $options[ 'fields-meta' ] ) ) {
 
 		$meta_data = ws_ls_meta( $data[ 'id' ] );
 
