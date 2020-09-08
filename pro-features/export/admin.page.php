@@ -209,15 +209,15 @@ function ws_ls_export_admin_page_new() {
 							</div>
 						</div>
 						<div class="postbox">
-							<h2 class="hndle"><span><?php echo __( 'Columns', WE_LS_SLUG ); ?></span></h2>
+							<h2 class="hndle"><span><?php echo __( 'Additional columns', WE_LS_SLUG ); ?></span></h2>
 							<div class="inside">
-								<p><?php echo __( 'Select the data to be included for each weight entry.', WE_LS_SLUG ); ?></p>
+								<p><?php echo __( 'Select additional data columns to be included for each weight entry.', WE_LS_SLUG ); ?></p>
 								<p><a class="button ws-ls-export-check-all">Check All</a><a class="button ws-ls-export-uncheck-all">Un-check All</a></p>
 								<?php
 
-									echo ws_ls_form_field_checkbox( [ 'name' => 'fields[]', 'title' => __( 'BMI Value', WE_LS_SLUG ), 'show-label' => true, 'value' => 'bmi-value', 'css-class' => 'report-column', 'checked' => true ] );
+									echo ws_ls_form_field_checkbox( [ 'name' => 'fields[]', 'title' => __( 'BMI Value (height required)', WE_LS_SLUG ), 'show-label' => true, 'value' => 'bmi-value', 'css-class' => 'report-column', 'checked' => false ] );
 
-									echo ws_ls_form_field_checkbox( [ 'name' => 'fields[]', 'title' => __( 'BMI Label', WE_LS_SLUG ), 'show-label' => true, 'value' => 'bmi-label', 'css-class' => 'report-column', 'checked' => true ] );
+									echo ws_ls_form_field_checkbox( [ 'name' => 'fields[]', 'title' => __( 'BMI Label (height required)', WE_LS_SLUG ), 'show-label' => true, 'value' => 'bmi-label', 'css-class' => 'report-column', 'checked' => true ] );
 
 									echo ws_ls_form_field_checkbox( [ 'name' => 'fields[]', 'title' => __( 'Difference between current and start weight', WE_LS_SLUG ), 'show-label' => true, 'value' => 'weight-diff-start', 'css-class' => 'report-column', 'checked' => true ] );
 
@@ -229,7 +229,7 @@ function ws_ls_export_admin_page_new() {
 
 										foreach ( $enabled_meta_fields as $meta_field ) {
 
-											echo ws_ls_form_field_checkbox( [ 'name' => 'fields-meta[]', 'title' => $meta_field[ 'field_name' ], 'show-label' => true, 'value' => $meta_field[ 'field_key' ], 'css-class' => 'report-column', 'checked' => true ] );
+											echo ws_ls_form_field_checkbox( [ 'name' => 'fields-meta[]', 'title' => $meta_field[ 'field_name' ], 'show-label' => true, 'value' => $meta_field[ 'id' ], 'css-class' => 'report-column', 'checked' => false ] );
 
 										}
 									}

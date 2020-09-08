@@ -103,7 +103,7 @@ function ws_ls_export_ajax_process() {
 
 			foreach ( $rows_to_process as $row ) {
 
-				if( false === ws_ls_export_update_export_row( $id, $row ) ) {
+				if( false === ws_ls_export_update_export_row( $export, $row ) ) {
 					ws_ls_export_ajax_error( $return, __( 'There was an error processing weight entry' , WE_LS_SLUG ) . ': ' . $row[ 'entry_id' ] );
 				}
 

@@ -199,18 +199,20 @@ function ws_ls_db_export_report_incomplete_rows( $export_id, $limit = 40 ) {
 
 /**
  * Updated export data row
- * @param $id
+ *
+ * @param $export_criteria
  * @param $data
  * @param int $completed
+ *
  * @return false|int
  */
-function ws_ls_db_export_rows_update( $id, $data, $completed = 1 ) {
+function ws_ls_db_export_rows_update( $export_criteria, $data, $completed = 1 ) {
 
 	global $wpdb;
 
 	return $wpdb->update( $wpdb->prefix . WE_LS_MYSQL_EXPORT_REPORT,
 							[ 'completed' => $completed, 'data' => json_encode( $data ) ],
-							[ 'entry_id' => $data[ 'id' ], 'export_id' => $id ],
+							[ 'entry_id' => $data[ 'id' ], 'export_id' => $export_criteria[ 'id' ] ],
 							[ '%d', '%s' ],
 							[ '%d', '%d' ] );
 }

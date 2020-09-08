@@ -123,21 +123,93 @@ function ws_ls_export_file_physical_folder( $id ) {
 
 /**
  * Update a Weight Entry row with the required report data
- * @param $export_id
+ *
+ * @param $export_criteria
  * @param $data
+ *
  * @return bool
  */
-function ws_ls_export_update_export_row( $export_id, $data ) {
+function ws_ls_export_update_export_row( $export_criteria, $data ) {
 
+	//{"add-report":"yes","title":"10.1 Stones Gone!","user-group":"","date-range":"","date-from":"","date-to":"","fields":["bmi-value","bmi-label","weight-diff-start","notes"],"fields-meta":["hips"],"format":"csv"}
 
-	return ws_ls_db_export_rows_update( $export_id, $data );
+	$data[ 'user_nicename' ]                 = ws_ls_user_display_name( $data[ 'user_id' ] );
+	$data[ 'date-display' ]                  = ws_ls_convert_ISO_date_into_locale( $data[ 'weight_date' ], 'display-date' );
+	$data[ 'weight' ]                        = ws_ls_weight_display( $data['kg'], $data[ 'user_id' ], 'display', true );
+
+	$options = ( false === empty( $export_criteria[ 'options' ] ) ) ? $export_criteria[ 'options' ] : NULL;
+
+	if ( false === empty( $options[ 'fields' ] ) ) {
+
+		// Difference from start weights
+		if ( true === in_array( 'weight-diff-start', $options[ 'fields' ] ) ) {
+			$data[ 'difference_from_start_display' ] = ws_ls_weight_difference_from_start( $data[ 'user_id' ], $data['kg'] );
+			$data[ 'difference_from_start_display' ] = ws_ls_weight_display( $data[ 'difference_from_start_display' ],  NULL, 'display', true, true );
+		}
+
+		if ( true === in_array( 'bmi-value', $options[ 'fields' ] ) ||
+				 ( true === in_array( 'bmi-label', $options[ 'fields' ] ) ) ) {
+
+			$height                 = ws_ls_user_preferences_get( 'height', $data[ 'user_id' ] );
+			$data[ 'bmi' ]          = ws_ls_calculate_bmi( $height, $data[ 'kg' ] ) ;
+			$data[ 'bmi-readable' ] = ws_ls_calculate_bmi_label( $data[ 'bmi' ] );
+		}
+	}
+
+	// Enabled meta fields?
+	if ( false === empty( $options[ 'fields-meta' ] ) ) {
+
+		$meta_data = ws_ls_meta( $data[ 'id' ] );
+
+		// Pluck to meta_id => value
+		if ( false === empty( $meta_data ) ) {
+			$meta_data = wp_list_pluck( $meta_data, 'value', 'meta_field_id' );
+
+			foreach ( $meta_data as $key => $field ) {
+
+				if ( true === in_array( $key, $options[ 'fields-meta' ] ) ) {
+					$data[ 'meta' ][ $key ] = ws_ls_fields_display_field_value( $field, $key, true );
+				}
+			}
+		}
+	}
+
+	return ws_ls_db_export_rows_update( $export_criteria, $data );
 }
 
-function ws_ls_export_output_create_file() {
+//
+//function ws_ls_export_row_prep( $row ) {
+//
+//	global $ws_ls_export_config;
+//
+//	$row[ 'user_nicename' ]                 = ws_ls_user_display_name( $row[ 'user_id' ] );
+//	$row[ 'date-display' ]                  = ws_ls_convert_ISO_date_into_locale( $row[ 'weight_date' ], 'display-date' );
+//	$row[ 'weight' ]                        = ws_ls_weight_display( $row['kg'], $row[ 'user_id' ], 'display', true );
+//	$row[ 'difference_from_start_display' ] = ws_ls_weight_difference_from_start( $row[ 'user_id' ], $row['kg'] );
+//	$row[ 'difference_from_start_display' ] = ws_ls_weight_display( $row[ 'difference_from_start_display' ],  NULL, 'display', true, true );
+//	$height                                 = ws_ls_user_preferences_get( 'height', $row[ 'user_id' ] );
+//
+//	if ( false === empty( $height ) ) {
+//		$row['bmi']                         = ws_ls_calculate_bmi( $height, $row['kg'] ) ;
+//		$row['bmi-readable']                = ws_ls_calculate_bmi_label( $row['bmi'] );
+//	}
+//
+//	if ( true === $ws_ls_export_config[ 'meta' ] ) {
+//
+//		$meta_data = ws_ls_meta( $row[ 'id' ] );
+//
+//		// Pluck to meta_id => value
+//		if ( false === empty( $meta_data ) ) {
+//			$meta_data = wp_list_pluck( $meta_data, 'value', 'meta_field_id' );
+//
+//			foreach ( $meta_data as $key => $field ) {
+//				$row[ 'meta-' . $key ] = ws_ls_fields_display_field_value( $field, $key, true );
+//			}
+//		}
+//	}
+//
+//	$row = apply_filters( 'wlt-export-row', $row );
+//
+//	return $row;
+//}
 
-
-//	$upload_dir = wp_upload_dir();
-//	$user_dirname = $upload_dir['basedir'] . '/' . $current_user->user_login;
-//	if(!file_exists($user_dirname)) wp_mkdir_p($user_dirname);
-
-}
