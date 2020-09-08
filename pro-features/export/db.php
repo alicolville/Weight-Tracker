@@ -189,12 +189,12 @@ function ws_ls_db_export_report_incomplete_rows( $export_id, $limit = 40 ) {
 
 	global $wpdb;
 
-	$sql = $wpdb->prepare(  'SELECT * FROM ' . $wpdb->prefix . WE_LS_MYSQL_EXPORT_REPORT .
-	                        ' where completed = 0 and export_id = %d limit 0, %d', $export_id, $limit );
+	$sql = $wpdb->prepare(  'SELECT r.id, r.data, w.id as entry_id, w.weight_date, w.weight_weight as kg, w.weight_notes, w.weight_user_id as user_id FROM ' . $wpdb->prefix . WE_LS_MYSQL_EXPORT_REPORT . ' r ' .
+										' INNER JOIN ' . $wpdb->prefix . WE_LS_TABLENAME . ' w on w.id = r.entry_id where r.completed = 0 and r.export_id = %d limit 0, %d', $export_id, $limit );
 
-	$result = $wpdb->get_results( $sql, ARRAY_A );
+	$results = $wpdb->get_results( $sql, ARRAY_A );
 
-	return ( false === empty( $result ) ) ? $result : [];
+	return ( false === empty( $results ) ) ? $results : [];
 }
 
 /**
@@ -212,7 +212,7 @@ function ws_ls_db_export_rows_update( $export_criteria, $data, $completed = 1 ) 
 
 	return $wpdb->update( $wpdb->prefix . WE_LS_MYSQL_EXPORT_REPORT,
 							[ 'completed' => $completed, 'data' => json_encode( $data ) ],
-							[ 'entry_id' => $data[ 'id' ], 'export_id' => $export_criteria[ 'id' ] ],
+							[ 'entry_id' => $data[ 'entry_id' ], 'export_id' => $export_criteria[ 'id' ] ],
 							[ '%d', '%s' ],
 							[ '%d', '%d' ] );
 }

@@ -86,10 +86,10 @@ function ws_ls_export_ajax_process() {
 	} else if ( 20 === $current_step ) {
 
 		// Fetch some entries to process
-		$ids_to_process = ws_ls_db_export_report_incomplete_rows( $id );
+		$rows_to_process = ws_ls_db_export_report_incomplete_rows( $id );
 
 		// There are no more rows to process
-		if ( true === empty( $ids_to_process ) ) {
+		if ( true === empty( $rows_to_process ) ) {
 
 			$return['message']    = __( 'Preparing data: Complete.', WE_LS_SLUG );
 			$return['percentage'] = 100;
@@ -98,15 +98,11 @@ function ws_ls_export_ajax_process() {
 
 		} else {
 
-			$ids_to_process  = wp_list_pluck( $ids_to_process, 'entry_id' );    // Take the row ID regardless of whether it was processed correctly (as the report creation may just loop)
-			$rows_to_process = ws_ls_db_entries_by_id( [ 'ids' => $ids_to_process ] );
-
 			foreach ( $rows_to_process as $row ) {
 
 				if ( false === ws_ls_export_update_export_row( $export, $row ) ) {
 					ws_ls_export_ajax_error( $return, __( 'There was an error processing weight entry', WE_LS_SLUG ) . ': ' . $row['entry_id'] );
 				}
-
 			}
 
 			$return['total']      = ws_ls_db_export_report_count( $id );
@@ -116,10 +112,8 @@ function ws_ls_export_ajax_process() {
 			$return['percentage'] = (int) $percentage;
 
 			$return['message'] = sprintf( 'Preparing data: %d of %d entries', $return['processed'], $return['total'] );
-
-			ws_ls_db_export_report_complete_rows_mark( $id, $ids_to_process );
-
 		}
+
 	} else if ( 40 === $current_step ) {
 
 		$column_names = ws_ls_export_column_names( $export );

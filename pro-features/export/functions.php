@@ -164,15 +164,15 @@ function ws_ls_export_update_export_row( $export_criteria, $data ) {
 
 		// Difference from start weights
 		if ( true === in_array( 'weight-diff-start', $options[ 'fields' ] ) ) {
-			$data[ 'difference_from_start_display' ] = ws_ls_weight_difference_from_start( $data[ 'user_id' ], $data['kg'] );
+			$data[ 'difference_from_start_display' ] = ws_ls_weight_difference_from_start( $data[ 'user_id' ], $data[ 'kg' ] );
 			$data[ 'difference_from_start_display' ] = ws_ls_weight_display( $data[ 'difference_from_start_display' ],  NULL, 'display', true, true );
 		}
 
 		if ( true === in_array( 'bmi-value', $options[ 'fields' ] ) ||
 				 ( true === in_array( 'bmi-label', $options[ 'fields' ] ) ) ) {
 
-			$height                 = ws_ls_user_preferences_get( 'height', $data[ 'user_id' ] );
-			$data[ 'bmi' ]          = ws_ls_calculate_bmi( $height, $data[ 'kg' ] ) ;
+			$data[ 'height' ]       = ws_ls_user_preferences_get( 'height', $data[ 'user_id' ] );
+			$data[ 'bmi' ]          = ws_ls_calculate_bmi( $data[ 'height' ], $data[ 'kg' ] ) ;
 			$data[ 'bmi-readable' ] = ws_ls_calculate_bmi_label( $data[ 'bmi' ] );
 		}
 	}
@@ -181,7 +181,7 @@ function ws_ls_export_update_export_row( $export_criteria, $data ) {
 	if ( ws_ls_meta_fields_number_of_enabled() > 0 &&
 	        false === empty( $options[ 'fields-meta' ] ) ) {
 
-		$meta_data = ws_ls_meta( $data[ 'id' ] );
+		$meta_data = ws_ls_meta( $data[ 'entry_id' ] );
 
 		// Pluck to meta_id => value
 		if ( false === empty( $meta_data ) ) {
