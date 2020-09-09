@@ -116,6 +116,8 @@ function ws_ls_export_ajax_process() {
 
 	} else if ( 40 === $current_step ) {
 
+		// TODO: Cache ws_ls_export_column_names()
+
 		$column_names = ws_ls_export_column_names( $export );
 
 		print_r( $column_names ); die;
