@@ -38,6 +38,7 @@
                 export_id INT NOT NULL,
                 entry_id TEXT NOT NULL,
            		completed BIT DEFAULT 0,
+           		saved_to_disk BIT DEFAULT 0,
            		data TEXT NOT NULL,
                 UNIQUE KEY id (id)
             ) $charset_collate;";
@@ -53,7 +54,7 @@
     function ws_ls_export_activate() {
 
         // Only run this when the plugin version has changed
-        if( true === update_option('w1wws-ls-export-version-number', WE_LS_DB_VERSION )) {
+        if( true === update_option('ws-ls-export-version-number', WE_LS_DB_VERSION )) {
 
 			ws_ls_export_create_mysql_tables();
 
