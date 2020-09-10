@@ -130,7 +130,7 @@ function ws_ls_export_ajax_process() {
 
 		if ( true === $is_csv ) {
 
-			$column_headers = ws_ls_csv_row_header( $column_names );
+			$column_headers = ws_ls_export_csv_row_header( $column_names );
 			ws_ls_export_file_write( $id, $column_headers );
 
 		} else {
@@ -139,10 +139,6 @@ function ws_ls_export_ajax_process() {
 			// JSON
 
 		}
-
-
-
-		print_r( $column_names ); die;
 
 		ws_ls_db_export_criteria_step( $id, 42 );
 		$return['message']    = __( 'Saving to disk: Column headers', WE_LS_SLUG );
@@ -153,33 +149,78 @@ function ws_ls_export_ajax_process() {
 		// ------------------------------------------------------------------------------------------------------
 	} else if ( 42 === $current_step ) {
 
-		// CSV?
-		$is_csv = ( false === empty( $export[ 'options' ][ 'format'] ) &&
-		            'csv' === $export[ 'options' ][ 'format'] );
+		$rows_to_write = ws_ls_db_export_report_unsaved_rows( $id );
 
-		if ( true === $is_csv ) {
+		if ( true === empty( $rows_to_write ) ) {
 
+			$return['message']    = __( 'Saving to disk: Complete.', WE_LS_SLUG );
+			$return['percentage'] = 100;
 
+			ws_ls_db_export_criteria_step( $id, 99 );
 
 		} else {
 
+			$column_names = ws_ls_export_column_names( $export );
 
-			// JSON
+			// CSV?
+			$is_csv = ( false === empty( $export[ 'options' ][ 'format'] ) &&
+				'csv' === $export[ 'options' ][ 'format'] );
 
+			if ( true === $is_csv ) {
+
+
+
+				foreach ( $rows_to_write as $row ) {
+
+					$row[ 'data' ] = json_decode( $row[ 'data' ], true );
+print_r($row[ 'data' ] ); print_R($column_names);
+					$row = ws_ls_export_csv_row_write( $column_names, $row[ 'data' ] );
+
+					ws_ls_export_file_write( $id, $row );
+
+//				if ( false === ws_ls_export_update_export_row( $export, $row ) ) {
+//					ws_ls_export_ajax_error( $return, __( 'There was an error processing weight entry', WE_LS_SLUG ) . ': ' . $row['entry_id'] );
+//				}
+				}
+				die;
+
+
+
+			} else {
+
+
+				// JSON
+
+			}
+
+//			ws_ls_db_export_criteria_step( $id, 42 );
+//			$return['message']    = __( 'Saving to disk: Column headers', WE_LS_SLUG );
+//			$return['percentage'] = 5;
+//
+//
+
+
+			$ids_processed = wp_list_pluck( $rows_to_write, 'id' );
+
+			ws_ls_db_export_report_saved_rows_mark( $id, $ids_processed );
+
+//
+//			$return['total']      = ws_ls_db_export_report_count( $id );
+//			$return['remaining']  = ws_ls_db_export_report_to_be_processed_count( $id );
+//			$return['processed']  = $return['total'] - $return['remaining'];
+//			$percentage           = ( $return['processed'] / $return['total'] ) * 100.0;
+//			$return['percentage'] = (int) $percentage;
+//
+//			$return['message'] = sprintf( 'Preparing data: %d of %d entries', $return['processed'], $return['total'] );
 		}
-		
-		ws_ls_db_export_criteria_step( $id, 42 );
-		$return['message']    = __( 'Saving to disk: Column headers', WE_LS_SLUG );
-		$return['percentage'] = 5;
 
-	} else if ( 90 === $current_step ) {
+	} else if ( 99 === $current_step ) {
 
 		ws_ls_db_export_criteria_step( $id, 100 );
 
 		$return[ 'message' ]        = __( 'Done!', WE_LS_SLUG );
 		$return[ 'percentage' ]     = 100;
 		$return[ 'continue' ]       = false;
-		$return[ 'step' ]           = 100;
 	}
 
 

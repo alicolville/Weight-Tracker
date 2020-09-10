@@ -139,7 +139,7 @@ function ws_ls_export_column_names( $export_criteria ) {
 		'difference_from_start_display' => __( 'Difference from start', WE_LS_SLUG ),
 		'bmi'                           => __( 'BMI', WE_LS_SLUG ),
 		'bmi-readable'                  => __( 'BMI Label', WE_LS_SLUG ),
-		'notes'                         => __( 'Notes', WE_LS_SLUG )
+		'weight_notes'                  => __( 'Notes', WE_LS_SLUG )
 	];
 
 	$options = ( false === empty( $export_criteria[ 'options' ] ) ) ? $export_criteria[ 'options' ] : NULL;
@@ -173,7 +173,7 @@ function ws_ls_export_column_names( $export_criteria ) {
 function ws_ls_export_update_export_row( $export_criteria, $data ) {
 
 	$data[ 'user_nicename' ]                 = ws_ls_user_display_name( $data[ 'user_id' ] );
-	$data[ 'date-display' ]                  = ws_ls_convert_ISO_date_into_locale( $data[ 'weight_date' ], 'display-date' );
+	$data[ 'date-display' ]                  = ( '0000-00-00 00:00:00' !== $data[ 'weight_date' ] ) ? ws_ls_convert_ISO_date_into_locale( $data[ 'weight_date' ], 'display-date' ) : '00/00/0000';
 	$data[ 'weight' ]                        = ws_ls_weight_display( $data['kg'], $data[ 'user_id' ], 'display', true );
 
 	$options = ( false === empty( $export_criteria[ 'options' ] ) ) ? $export_criteria[ 'options' ] : NULL;
@@ -254,7 +254,7 @@ function ws_ls_export_csv_row_write( $columns, $row, $delimiter = ',', $end_of_l
 	}
 
 	// Escape cell contents and encapsulate in double quotes
-	$data = array_map('ws_ls_csv_cell_escape', $data );
+	$data = array_map('ws_ls_export_csv_cell_escape', $data );
 
 	// Implode and build Row
 	return implode( $delimiter, $data ) . $end_of_line_char;

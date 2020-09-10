@@ -198,6 +198,38 @@ function ws_ls_db_export_report_incomplete_rows( $export_id, $limit = 50 ) {
 }
 
 /**
+ * Fetch records that haven't already been written to disk
+ * @param $export_id
+ * @param int $limit
+ * @return array|object|null
+ */
+function ws_ls_db_export_report_unsaved_rows( $export_id, $limit = 50 ) {
+
+	global $wpdb;
+
+	$sql = $wpdb->prepare(  'SELECT * FROM ' . $wpdb->prefix . WE_LS_MYSQL_EXPORT_REPORT . ' where completed = 1 and saved_to_disk = 0 and export_id = %d order by id asc limit 0, %d', $export_id, $limit );
+
+	$results = $wpdb->get_results( $sql, ARRAY_A );
+
+	return ( false === empty( $results ) ) ? $results : [];
+}
+
+/**
+ * Mark rows as saved to disk
+ * @param $export_id
+ * @param $ids
+ */
+function ws_ls_db_export_report_saved_rows_mark( $export_id, $ids ) {
+
+	global $wpdb;
+
+	$sql = $wpdb->prepare( 'UPDATE ' . $wpdb->prefix . WE_LS_MYSQL_EXPORT_REPORT . ' set saved_to_disk = 1 WHERE
+                            export_id = %d and id in ( ' . implode( ',', $ids ) . ' )', $export_id );
+
+	return $wpdb->query( $sql );
+}
+
+/**
  * Updated export data row
  *
  * @param $export_criteria
@@ -242,8 +274,7 @@ function ws_ls_db_export_criteria_step( $export_id, $step = 0 ) {
 /**
  * Update number of record count
  * @param $export_id
- * @param int $step
- *
+ * @param int $count
  * @return bool|false|int
  */
 function ws_ls_db_export_criteria_count( $export_id, $count = 0 ) {
