@@ -79,13 +79,23 @@ function ws_ls_export_file_generate_folder_name( $options ) {
  */
 function ws_ls_export_file_physical_path( $id ) {
 
+	$cache_key = sprintf( 'filepath-%d', $id );
+
+	if ( $cache = ws_ls_cache_user_get(  'exports', $cache_key ) ) {
+		return $cache;
+	}
+
 	$export = ws_ls_db_export_criteria_get( $id );
 
 	if( true === empty( $export[ 'file' ] ) ) {
 		return NULL;
 	}
 
-	return sprintf( '%s/%s', ws_ls_export_file_physical_folder( $id ), $export[ 'file' ] );
+	$path = sprintf( '%s/%s', ws_ls_export_file_physical_folder( $id ), $export[ 'file' ] );
+
+	ws_ls_cache_user_set( 'exports', $cache_key, $path );
+
+	return $path;
 }
 
 /**
@@ -115,6 +125,12 @@ function ws_ls_export_file_physical_folder( $id ) {
  */
 function ws_ls_export_column_names( $export_criteria ) {
 
+	$cache_key = sprintf( 'columns-%d', $export_criteria );
+
+	if ( $cache = ws_ls_cache_user_get( 'export', $cache_key ) ) {
+		return $cache;
+	}
+
 	$names = [
 		'user_id'                       => 'User ID',
 		'user_nicename'                 => 'Nicename',
@@ -139,7 +155,9 @@ function ws_ls_export_column_names( $export_criteria ) {
 		}
 	}
 
-	$names = apply_filters( 'wlt-export-columns', $names );
+	$cache = apply_filters( 'wlt-export-columns', $names );
+
+	ws_ls_cache_user_set( 'export', $cache_key, $cache );
 
 	return $names;
 }
@@ -197,4 +215,64 @@ function ws_ls_export_update_export_row( $export_criteria, $data ) {
 	}
 
 	return ws_ls_db_export_rows_update( $export_criteria, $data );
+}
+
+/**
+ * Produce a CSV header row
+ * @param  array  $columns          Columns we want from the row
+ * @return string CSV row
+ */
+function ws_ls_export_csv_row_header($columns) {
+
+	if ( true === empty( $columns ) ) {
+		return '';
+	}
+
+	$columns = array_values( $columns );
+
+	// Escape cell contents and encapsulate in double quotes
+	$columns = array_map( 'ws_ls_csv_cell_escape', $columns );
+
+	// Implode and build Row
+	return implode( ',', $columns ) . PHP_EOL;
+}
+
+/**
+ * Produce a CSV row
+ * @param  array  $columns          Columns we want from the row
+ * @param  array  $row              Contains the raw data for a given row.
+ * @param  string $delimiter        Delimiter between CSV columns
+ * @param  string $end_of_line_char End of line character
+ * @return string CSV row
+ */
+function ws_ls_export_csv_row_write( $columns, $row, $delimiter = ',', $end_of_line_char = PHP_EOL) {
+
+	$data = [];
+
+	foreach ( $columns as $key => $value ) {
+		$data[ $key ] = ( true === isset( $row[ $key ] ) ) ? $row[$key] : '';
+	}
+
+	// Escape cell contents and encapsulate in double quotes
+	$data = array_map('ws_ls_csv_cell_escape', $data );
+
+	// Implode and build Row
+	return implode( $delimiter, $data ) . $end_of_line_char;
+}
+
+/**
+ * Escape the contents of a CSV cell to ensure the cell remains intact e.g. escape quotes and encase field in quotes.
+ * @param  string $data CSV cell content
+ * @return string modified CSV cell content
+ */
+function ws_ls_export_csv_cell_escape($data) {
+
+	// Escape double quotes within data
+	$data = str_replace( '"', '""', $data );
+
+	// UTF encode (recommended by CSV lint when testing CSV output)
+	$data = utf8_encode( $data );
+
+	// Enclose fields within quotes.
+	return sprintf( '"%s"', $data) ;
 }

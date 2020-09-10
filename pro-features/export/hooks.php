@@ -16,7 +16,7 @@ add_action( 'admin_menu', 'ws_ls_export_admin_menu' );
  */
 function ws_ls_export_ajax_process() {
 
-	if ( false === WE_LS_IS_PRO ) {
+	if ( false === WS_LS_IS_PRO ) {
 		return;
 	}
 
@@ -44,7 +44,7 @@ function ws_ls_export_ajax_process() {
 
 		ws_ls_db_export_identify_weight_entries( $id );
 		$return[ 'message' ]    = __( 'Initialising: Rows have been identified for the export.', WE_LS_SLUG );
-		$return[ 'percentage' ] = 50;
+		$return[ 'percentage' ] = 40;
 		ws_ls_db_export_criteria_step( $id, 1 );
 
 	// ------------------------------------------------------------------------------------------------------
@@ -63,6 +63,9 @@ function ws_ls_export_ajax_process() {
 		if ( false === touch( $physical_path_to_file ) ) {
 			ws_ls_export_ajax_error( $return, __( 'There was an issue creating the export file: ' , WE_LS_SLUG ) . $physical_path_to_file );
 		}
+
+		$return[ 'message' ]    = __( 'Initialising: created empty file on disk.', WE_LS_SLUG );
+		$return[ 'percentage' ] = 70;
 
 		ws_ls_db_export_criteria_step( $id, 2 );
 
@@ -114,18 +117,60 @@ function ws_ls_export_ajax_process() {
 			$return['message'] = sprintf( 'Preparing data: %d of %d entries', $return['processed'], $return['total'] );
 		}
 
+		// ------------------------------------------------------------------------------------------------------
+		// Write column headers to file
+		// ------------------------------------------------------------------------------------------------------
 	} else if ( 40 === $current_step ) {
 
 		$column_names = ws_ls_export_column_names( $export );
 
+		// CSV?
+		$is_csv = ( false === empty( $export[ 'options' ][ 'format'] ) &&
+		               'csv' === $export[ 'options' ][ 'format'] );
+
+		if ( true === $is_csv ) {
+
+			$column_headers = ws_ls_csv_row_header( $column_names );
+			ws_ls_export_file_write( $id, $column_headers );
+
+		} else {
+
+
+			// JSON
+
+		}
+
+
+
 		print_r( $column_names ); die;
 
-//		ws_ls_db_export_criteria_step( $id, 90 );
-//		$return['message']    = __( 'Done!', WE_LS_SLUG );
-//		$return['percentage'] = 10;
-//		$return['continue']   = false;
-//		//$return['step']       = 100;
+		ws_ls_db_export_criteria_step( $id, 42 );
+		$return['message']    = __( 'Saving to disk: Column headers', WE_LS_SLUG );
+		$return['percentage'] = 5;
 
+		// ------------------------------------------------------------------------------------------------------
+		// Write rows to file
+		// ------------------------------------------------------------------------------------------------------
+	} else if ( 42 === $current_step ) {
+
+		// CSV?
+		$is_csv = ( false === empty( $export[ 'options' ][ 'format'] ) &&
+		            'csv' === $export[ 'options' ][ 'format'] );
+
+		if ( true === $is_csv ) {
+
+
+
+		} else {
+
+
+			// JSON
+
+		}
+		
+		ws_ls_db_export_criteria_step( $id, 42 );
+		$return['message']    = __( 'Saving to disk: Column headers', WE_LS_SLUG );
+		$return['percentage'] = 5;
 
 	} else if ( 90 === $current_step ) {
 

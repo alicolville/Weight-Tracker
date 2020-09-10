@@ -190,11 +190,25 @@ function ws_ls_csv_from_array($data, $show_column_headers = true, $delimiter = '
 }
 
 /**
+ * Write to export file on disk
+ * @param $export_id
+ * @param $text
+ *
+ * @return false|int
+ */
+function ws_ls_export_file_write( $export_id, $text ) {
+
+	$physical_path = ws_ls_export_file_physical_path( $export_id );
+
+	return file_put_contents( $physical_path, $text, FILE_APPEND );
+}
+
+/**
  * Produce a CSV header row
  * @param  array  $columns          Columns we want from the row
  * @return string CSV row
  */
-function ws_ls_csv_row_header($columns) {
+function ws_ls_csv_row_header( $columns ) {
 
 	if ( true === empty( $columns ) ) {
 		return '';

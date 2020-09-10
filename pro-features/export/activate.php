@@ -38,6 +38,7 @@
                 export_id INT NOT NULL,
                 entry_id INT NOT NULL,
            		completed BIT DEFAULT 0,
+           		saved_to_disk BIT DEFAULT 0,
            		data TEXT NOT NULL,
            		PRIMARY KEY (`export_id`,`entry_id`),
                 UNIQUE KEY id (id)
