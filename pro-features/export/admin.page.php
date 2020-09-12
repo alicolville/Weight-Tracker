@@ -6,10 +6,6 @@ function ws_ls_export_admin_page() {
 
     ws_ls_permission_check_message();
 
-    if ( true !== WS_LS_IS_PRO_PLUS ) {
-		ws_ls_display_pro_upgrade_notice();
-	}
-
     $delete_id = ws_ls_querystring_value( 'delete', true );
 
     if ( false === empty( $delete_id ) ) {
@@ -45,6 +41,11 @@ function ws_ls_export_admin_page_summary() {
 	              	<div class="postbox">
 						<h2 class="hndle"><span><?php echo __( 'Export Data', WE_LS_SLUG ); ?></span></h2>
 						<div class="inside">
+							<?php
+								if ( true !== WS_LS_IS_PRO_PLUS ) {
+									ws_ls_display_pro_upgrade_notice();
+								}
+							?>
 							<p>
 								<a href="<?php echo ws_ls_export_link( 'new' ); ?>" class="btn btn-default button-primary">
 									<i class="fa fa-plus"></i>
@@ -139,6 +140,9 @@ function ws_ls_export_admin_page_new() {
 							<h2 class="hndle"><span><?php echo __( 'Details', WE_LS_SLUG ); ?></span></h2>
 							<div class="inside">
 								<?php
+									if (true !== WS_LS_IS_PRO_PLUS) {
+										ws_ls_display_pro_upgrade_notice();
+									}
 
 									$title = ws_ls_querystring_value( 'title' );
 
@@ -313,7 +317,9 @@ function ws_ls_export_admin_page_process() {
 						<div class="inside">
 							<?php
 
-								if ( true === empty( $criteria ) ) {
+								if ( true !== WS_LS_IS_PRO_PLUS ) {
+									ws_ls_display_pro_upgrade_notice();
+								} else if ( true === empty( $criteria ) ) {
 									echo __( 'There was an error loading the criteria for the export.', WE_LS_SLUG );
 								} else if ( 100 === (int) $criteria[ 'step' ] ) {
 									echo __( 'This report has already been processed.', WE_LS_SLUG );

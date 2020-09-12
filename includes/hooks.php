@@ -20,8 +20,9 @@ function ws_ls_build_admin_menu() {
 
 	$menu_text = ( false === WS_LS_IS_PRO && false === WS_LS_IS_PRO_PLUS ) ? __('Upgrade', WE_LS_SLUG) : __('Your License', WE_LS_SLUG);
 
-    add_submenu_page( 'ws-ls-data-home', $menu_text,  $menu_text, 'manage_options', 'ws-ls-license', 'ws_ls_advertise_pro');
+
 	add_submenu_page( 'ws-ls-data-home', __('Settings', WE_LS_SLUG),  __('Settings', WE_LS_SLUG), 'manage_options', 'ws-ls-settings', 'ws_ls_settings_page');
+	add_submenu_page( 'ws-ls-data-home', $menu_text,  $menu_text, 'manage_options', 'ws-ls-license', 'ws_ls_advertise_pro');
 
     if ( true === ws_ls_setup_wizard_show_notice() ) {
         add_submenu_page( 'ws-ls-data-home', __('Setup Wizard', WE_LS_SLUG),  __('Setup Wizard', WE_LS_SLUG), 'manage_options', 'ws-ls-data-setup-wizard', 'ws_ls_setup_wizard_page');
