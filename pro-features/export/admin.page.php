@@ -5,9 +5,15 @@ defined('ABSPATH') or die("Jog on!");
 function ws_ls_export_admin_page() {
 
     ws_ls_permission_check_message();
-    
+
     if ( true !== WS_LS_IS_PRO_PLUS ) {
 		ws_ls_display_pro_upgrade_notice();
+	}
+
+    $delete_id = ws_ls_querystring_value( 'delete', true );
+
+    if ( false === empty( $delete_id ) ) {
+		ws_ls_export_delete( $delete_id );
 	}
 
 	switch ( ws_ls_querystring_value( 'mode' ) ) {
@@ -39,17 +45,16 @@ function ws_ls_export_admin_page_summary() {
 	              	<div class="postbox">
 						<h2 class="hndle"><span><?php echo __( 'Export Data', WE_LS_SLUG ); ?></span></h2>
 						<div class="inside">
-							<h4><?php echo __( 'Start a new export', WE_LS_SLUG ); ?></h4>
 							<p>
 								<a href="<?php echo ws_ls_export_link( 'new' ); ?>" class="btn btn-default button-primary">
 									<i class="fa fa-plus"></i>
 									<?php echo __( 'Start a new export', WE_LS_SLUG ); ?>
 								</a>
 							</p>
-							<h4><?php echo __( 'Last 20 exports', WE_LS_SLUG ); ?></h4>
+							<h4><?php echo __( 'Last 30 exports', WE_LS_SLUG ); ?></h4>
 							<?php
 
-								$previous_exports = ws_ls_db_export_criteria_all( 20 );
+								$previous_exports = ws_ls_db_export_criteria_all( 30 );
 
 								if ( false === empty( $previous_exports ) ) {
 
@@ -62,18 +67,28 @@ function ws_ls_export_admin_page_summary() {
 															esc_html( $export[ 'options' ][ 'title' ] )
 										);
 
+										$title .= '<span>';
+
+										$title .= sprintf( '<a href="%s">%s</a> &middot; ',
+											ws_ls_export_link( 'view', [ 'delete' => $export[ 'id' ] ] ),
+											__( 'Delete', WE_LS_SLUG )
+										);
+
 										if ( 100 === (int) $export[ 'step' ] ) {
-											$title .= sprintf( '<span><a href="%s">%s</a></span>',
+											$title .= sprintf( '<a href="%s">%s %s</a>',
 												ws_ls_export_file_url( $export[ 'id' ] ),
-												__( 'Download', WE_LS_SLUG )
+												__( 'Download', WE_LS_SLUG ),
+												esc_html( $export[ 'file' ] )
 											);
 										} else {
-											$title .= sprintf( '<span><a href="%s%d">%s ></a></span>',
+											$title .= sprintf( '<a href="%s%d">%s ></a>',
 												admin_url( 'admin.php?page=ws-ls-export-data&mode=process&id='),
 												$export[ 'id' ],
 												__( 'finish processing', WE_LS_SLUG )
 											);
 										}
+
+										$title .= '</span>';
 
 										printf( '<li>%s</li>', $title );
 
