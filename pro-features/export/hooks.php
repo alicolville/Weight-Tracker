@@ -135,8 +135,7 @@ function ws_ls_export_ajax_process() {
 
 		} else {
 
-
-			// JSON
+			ws_ls_export_file_write( $id, '{"columns":' . json_encode( $column_names ) . ',"rows":[' );
 
 		}
 
@@ -168,23 +167,30 @@ function ws_ls_export_ajax_process() {
 
 			if ( true === $is_csv ) {
 
-
-
 				foreach ( $rows_to_write as $row ) {
 
 					$row[ 'data' ] = json_decode( $row[ 'data' ], true );
 
-					$row = ws_ls_export_csv_row_write( $column_names, $row[ 'data' ] );
+					$data = [];
+
+					$row = ws_ls_export_csv_row_write( $column_names, $data );
 
 					ws_ls_export_file_write( $id, $row );
-
 				}
-
 			} else {
 
+				foreach ( $rows_to_write as $row ) {
 
-				// JSON
+					$data			= [];
+					$row[ 'data' ] 	= json_decode( $row[ 'data' ], ARRAY_A );
 
+					foreach ( $column_names as $key => $value ) {
+						$data[ $key ] = ( true === isset( $row[ 'data' ][ $key ] ) ) ? $row[ 'data' ][ $key ] : '';
+					}
+
+					ws_ls_export_file_write( $id, json_encode( $data ) . ',');
+
+				}
 			}
 
 			$ids_processed = wp_list_pluck( $rows_to_write, 'id' );
@@ -202,7 +208,11 @@ function ws_ls_export_ajax_process() {
 
 	} else if ( 47 === $current_step ) {
 
-		// TODO: If JSON, finalise file.
+		// JSON?
+		if ( ( false === empty( $export[ 'options' ][ 'format'] ) &&
+				'json' === $export[ 'options' ][ 'format'] ) ) {
+			ws_ls_export_file_write( $id, ']}' );
+		}
 
 		ws_ls_db_export_criteria_step( $id, 99 );
 
