@@ -160,8 +160,8 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 = 8.1 =
 
-TODO: Restrict to Pro
-
+* Improvement: New export interface that supports large data sets. Data is now prepped and saved to disk in stages which improves performance.
+* Improvement: Ability to download the last 30 reports.
 * Bug fix: Labels for form fields are correctly linked by ID.
 
 = 8.0.6 =
