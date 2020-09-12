@@ -325,6 +325,24 @@ function ws_ls_db_export_criteria_all( $limit = 10 ) {
 }
 
 /**
+ * Delete report data
+ * @param $export_id
+ * @return bool|int
+ */
+function ws_ls_db_export_report_delete( $export_id ) {
+
+	global $wpdb;
+
+	$sql = $wpdb->prepare( 'DELETE FROM ' . $wpdb->prefix . WE_LS_MYSQL_EXPORT_REPORT . ' WHERE export_id = %d', $export_id );
+
+	$wpdb->query( $sql );
+
+	$sql = $wpdb->prepare( 'DELETE FROM ' . $wpdb->prefix . WE_LS_MYSQL_EXPORT . ' WHERE id = %d', $export_id );
+
+	$wpdb->query( $sql );
+}
+
+/**
  * Prep Export Criteria object
  * @param $export
  *

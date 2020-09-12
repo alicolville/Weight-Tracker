@@ -5,7 +5,7 @@ defined('ABSPATH') or die("Jog on!");
 function ws_ls_export_admin_page() {
 
     ws_ls_permission_check_message();
-
+    
     if ( true !== WS_LS_IS_PRO_PLUS ) {
 		ws_ls_display_pro_upgrade_notice();
 	}

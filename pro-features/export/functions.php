@@ -144,6 +144,29 @@ function ws_ls_export_file_url( $id ) {
 }
 
 /**
+ * Delete a report from disk and clear up database
+ * @param $id
+ */
+function ws_ls_export_delete( $id ) {
+
+	$physical_path = ws_ls_export_file_physical_path( $id );
+
+	// Delete file
+	if ( true === file_exists( $physical_path ) ) {
+		wp_delete_file( $physical_path );
+	}
+
+	// Delete folder
+	$physical_folder = ws_ls_export_file_physical_folder( $id );
+
+	if ( true === is_dir( $physical_folder ) ) {
+		rmdir( $physical_folder );
+	}
+
+	ws_ls_db_export_report_delete( $id );
+}
+
+/**
  * Format ISO date for export
  * @param $iso_date
  * @return false|string
