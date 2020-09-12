@@ -171,9 +171,7 @@ function ws_ls_export_ajax_process() {
 
 					$row[ 'data' ] = json_decode( $row[ 'data' ], true );
 
-					$data = [];
-
-					$row = ws_ls_export_csv_row_write( $column_names, $data );
+					$row = ws_ls_export_csv_row_write( $column_names, $row[ 'data' ] );
 
 					ws_ls_export_file_write( $id, $row );
 				}

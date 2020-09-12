@@ -140,7 +140,7 @@ function ws_ls_export_file_url( $id ) {
 
 	$upload_dir = wp_upload_dir();
 
-	return sprintf( '%s/%s/%s', $upload_dir[ 'baseurl' ], $export[ 'folder' ], $export[ 'file' ] );
+	return sprintf( '%s/%s%s', $upload_dir[ 'baseurl' ], $export[ 'folder' ], $export[ 'file' ] );
 }
 
 /**
@@ -279,7 +279,7 @@ function ws_ls_export_csv_row_header($columns) {
 	$columns = array_values( $columns );
 
 	// Escape cell contents and encapsulate in double quotes
-	$columns = array_map( 'ws_ls_csv_cell_escape', $columns );
+	$columns = array_map( 'ws_ls_export_csv_cell_escape', $columns );
 
 	// Implode and build Row
 	return implode( ',', $columns ) . PHP_EOL;
@@ -306,6 +306,20 @@ function ws_ls_export_csv_row_write( $columns, $row, $delimiter = ',', $end_of_l
 
 	// Implode and build Row
 	return implode( $delimiter, $data ) . $end_of_line_char;
+}
+
+/**
+ * Write to export file on disk
+ * @param $export_id
+ * @param $text
+ *
+ * @return false|int
+ */
+function ws_ls_export_file_write( $export_id, $text ) {
+
+	$physical_path = ws_ls_export_file_physical_path( $export_id );
+
+	return file_put_contents( $physical_path, $text, FILE_APPEND );
 }
 
 /**

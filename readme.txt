@@ -160,9 +160,6 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 = 8.1 =
 
-TOdo: Minify admin.js and admin.css
-TODO: Add group to export
-TODO: Json
 TODO: Restrict to Pro
 
 * Bug fix: Labels for form fields are correctly linked by ID.
