@@ -51,54 +51,58 @@ function ws_ls_export_admin_page_summary() {
 									<?php echo __( 'Start a new export', WE_LS_SLUG ); ?>
 								</a>
 							</p>
-							<h4><?php echo __( 'Last 30 exports', WE_LS_SLUG ); ?></h4>
+						</div>
+					</div>
+					<div class="postbox">
+						<h2 class="hndle"><span><?php echo __( 'Last 30 exports', WE_LS_SLUG ); ?></span></h2>
+						<div class="inside">
 							<?php
 
-								$previous_exports = ws_ls_db_export_criteria_all( 30 );
+							$previous_exports = ws_ls_db_export_criteria_all( 30 );
 
-								if ( false === empty( $previous_exports ) ) {
+							if ( false === empty( $previous_exports ) ) {
 
-									echo '<ul class="ws-ls-export-list">';
+								echo '<ul class="ws-ls-export-list">';
 
-									foreach ( $previous_exports as $export ) {
+								foreach ( $previous_exports as $export ) {
 
-										$title = sprintf( '%s &middot; %s',
-															ws_ls_export_render_date( $export[ 'created' ] ),
-															esc_html( $export[ 'options' ][ 'title' ] )
+									$title = sprintf( '%s &middot; %s',
+										ws_ls_export_render_date( $export[ 'created' ] ),
+										esc_html( $export[ 'options' ][ 'title' ] )
+									);
+
+									$title .= '<span>';
+
+									$title .= sprintf( '<a href="%s">%s</a> &middot; ',
+										ws_ls_export_link( 'view', [ 'delete' => $export[ 'id' ] ] ),
+										__( 'Delete', WE_LS_SLUG )
+									);
+
+									if ( 100 === (int) $export[ 'step' ] ) {
+										$title .= sprintf( '<a href="%s">%s %s</a>',
+											ws_ls_export_file_url( $export[ 'id' ] ),
+											__( 'Download', WE_LS_SLUG ),
+											esc_html( $export[ 'file' ] )
 										);
-
-										$title .= '<span>';
-
-										$title .= sprintf( '<a href="%s">%s</a> &middot; ',
-											ws_ls_export_link( 'view', [ 'delete' => $export[ 'id' ] ] ),
-											__( 'Delete', WE_LS_SLUG )
+									} else {
+										$title .= sprintf( '<a href="%s%d">%s ></a>',
+											admin_url( 'admin.php?page=ws-ls-export-data&mode=process&id='),
+											$export[ 'id' ],
+											__( 'finish processing', WE_LS_SLUG )
 										);
-
-										if ( 100 === (int) $export[ 'step' ] ) {
-											$title .= sprintf( '<a href="%s">%s %s</a>',
-												ws_ls_export_file_url( $export[ 'id' ] ),
-												__( 'Download', WE_LS_SLUG ),
-												esc_html( $export[ 'file' ] )
-											);
-										} else {
-											$title .= sprintf( '<a href="%s%d">%s ></a>',
-												admin_url( 'admin.php?page=ws-ls-export-data&mode=process&id='),
-												$export[ 'id' ],
-												__( 'finish processing', WE_LS_SLUG )
-											);
-										}
-
-										$title .= '</span>';
-
-										printf( '<li>%s</li>', $title );
-
 									}
 
-									echo '</ul>';
+									$title .= '</span>';
 
-								} else {
-									printf( '<p>%s</p>', __( 'No data has been exported.' ) );
+									printf( '<li>%s</li>', $title );
+
 								}
+
+								echo '</ul>';
+
+							} else {
+								printf( '<p>%s</p>', __( 'No data has been exported.' ) );
+							}
 							?>
 						</div>
 					</div>
@@ -138,7 +142,7 @@ function ws_ls_export_admin_page_new() {
 
 									$title = ws_ls_querystring_value( 'title' );
 
-									echo ws_ls_form_field_text( [ 'name' => 'title', 'title' => __( 'Title', WE_LS_SLUG ), 'show-label' => true, 'required' => true, 'css-class' => 'set-title', 'value' => $title ] );
+									echo ws_ls_form_field_text( [ 'name' => 'title', 'title' => __( 'Title', WE_LS_SLUG ), 'show-label' => true, 'required' => true, 'css-class' => 'set-title widefat', 'value' => $title ] );
 								?>
 							</div>
 						</div>
@@ -192,7 +196,7 @@ function ws_ls_export_admin_page_new() {
 
 												printf( '<h4>%s</h4>', __( 'User Group', WE_LS_SLUG ) );
 
-												echo ws_ls_form_field_select( [ 'key' => 'user-group', 'label' => __( 'Group', WE_LS_SLUG ), 'values' => $user_groups, 'selected' => '', 'empty-option' => true ] );
+												echo ws_ls_form_field_select( [ 'key' => 'user-group', 'label' => __( 'Group', WE_LS_SLUG ), 'values' => $user_groups, 'selected' => '', 'empty-option' => true, 'css-class' => 'widefat' ] );
 											}
 
 										}
@@ -203,7 +207,7 @@ function ws_ls_export_admin_page_new() {
 								<p><?php echo __( 'Specifying a date range will filter the report to only include weight entries within that period of time.', WE_LS_SLUG ); ?></p>
 								<?php
 
-									echo ws_ls_form_field_select( [ 'key' => 'date-range', 'label' => __( 'Period', WE_LS_SLUG ), 'values' => ws_ls_export_date_ranges(), 'selected' => '' ] );
+									echo ws_ls_form_field_select( [ 'key' => 'date-range', 'label' => __( 'Period', WE_LS_SLUG ), 'values' => ws_ls_export_date_ranges(), 'selected' => '', 'css-class' => 'widefat' ] );
 
 									echo '<div id="ws-ls-date-range-options" class="ws-ls-hide">';
 
