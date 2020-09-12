@@ -7,13 +7,18 @@ defined('ABSPATH') or die('Jog on.');
  *
  * @param string $mode
  *
+ * @param array $querystring_values
  * @return string|void
  */
-function ws_ls_export_link( $mode = 'view' ) {
+function ws_ls_export_link( $mode = 'view', $querystring_values = [] ) {
 
 	$url = sprintf( 'admin.php?page=ws-ls-export-data&mode=%1$s', $mode );
 
 	$url = admin_url( $url );
+
+	if ( false === empty( $querystring_values ) ) {
+		$url = add_query_arg( $querystring_values, $url );
+	}
 
 	return $url;
 }
@@ -117,6 +122,47 @@ function ws_ls_export_file_physical_folder( $id ) {
 }
 
 /**
+ * Fetch Download URL
+ * @param $id
+ * @return string|null
+ */
+function ws_ls_export_file_url( $id ) {
+
+	$export = ws_ls_db_export_criteria_get( $id );
+
+	if( true === empty( $export[ 'folder' ] ) ) {
+		return NULL;
+	}
+
+	if( true === empty( $export[ 'file' ] ) ) {
+		return NULL;
+	}
+
+	$upload_dir = wp_upload_dir();
+
+	return sprintf( '%s/%s/%s', $upload_dir[ 'baseurl' ], $export[ 'folder' ], $export[ 'file' ] );
+}
+
+/**
+ * Format ISO date for export
+ * @param $iso_date
+ * @return false|string
+ */
+function ws_ls_export_render_date( $iso_date ) {
+
+	if ( true === empty( $iso_date ) ) {
+		return '';
+	}
+
+	$time 		= strtotime( $iso_date );
+	$format  	= ( true === ws_ls_setting('use-us-dates', get_current_user_id(), true ) ) ? 'm/d/Y' : 'd/m/Y';
+
+	$format .= ' H:i';
+
+	return date( $format, $time );
+}
+
+/**
  * Helper function to replace column names with something more readable. For example take MySQL column names and make them easier to read
  *
  * @param $export_criteria
@@ -125,7 +171,7 @@ function ws_ls_export_file_physical_folder( $id ) {
  */
 function ws_ls_export_column_names( $export_criteria ) {
 
-	$cache_key = sprintf( 'columns-%d', $export_criteria );
+	$cache_key = sprintf( 'columns-%d', $export_criteria[ 'id' ] );
 
 	if ( $cache = ws_ls_cache_user_get( 'export', $cache_key ) ) {
 		return $cache;
@@ -208,11 +254,13 @@ function ws_ls_export_update_export_row( $export_criteria, $data ) {
 			foreach ( $meta_data as $key => $field ) {
 
 				if ( true === in_array( $key, $options[ 'fields-meta' ] ) ) {
-					$data[ 'meta' ][ $key ] = ws_ls_fields_display_field_value( $field, $key, true );
+					$data[ 'meta-' . $key ] = ws_ls_fields_display_field_value( $field, $key, true );
 				}
 			}
 		}
 	}
+
+	$data = apply_filters( 'wlt-export-row', $data );
 
 	return ws_ls_db_export_rows_update( $export_criteria, $data );
 }
@@ -250,7 +298,7 @@ function ws_ls_export_csv_row_write( $columns, $row, $delimiter = ',', $end_of_l
 	$data = [];
 
 	foreach ( $columns as $key => $value ) {
-		$data[ $key ] = ( true === isset( $row[ $key ] ) ) ? $row[$key] : '';
+		$data[ $key ] = ( true === isset( $row[ $key ] ) ) ? $row[ $key ] : '';
 	}
 
 	// Escape cell contents and encapsulate in double quotes

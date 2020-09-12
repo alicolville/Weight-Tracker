@@ -162,17 +162,26 @@ function ws_ls_db_export_report_count( $export_id ) {
 }
 
 /**
- * Count remaining rows to processed
+ * Count remaining rows to processed / saved to disk
  * @param $export_id
  *
+ * @param bool $saved_to_disk
  * @return string|null
  */
-function ws_ls_db_export_report_to_be_processed_count( $export_id ) {
+function ws_ls_db_export_report_to_be_processed_count( $export_id, $saved_to_disk = false ) {
 
 	global $wpdb;
 
 	$sql = $wpdb->prepare( 'SELECT count( entry_id ) FROM ' . $wpdb->prefix . WE_LS_MYSQL_EXPORT_REPORT .
 	                       ' WHERE export_id = %d and completed = 0', $export_id );
+
+	if ( true === $saved_to_disk ) {
+		$sql = $wpdb->prepare('SELECT count( entry_id ) FROM ' . $wpdb->prefix . WE_LS_MYSQL_EXPORT_REPORT .
+			' WHERE export_id = %d and completed = 1 and saved_to_disk = 0', $export_id);
+	} else {
+		$sql = $wpdb->prepare( 'SELECT count( entry_id ) FROM ' . $wpdb->prefix . WE_LS_MYSQL_EXPORT_REPORT .
+			' WHERE export_id = %d and completed = 0', $export_id );
+	}
 
 	return (int) $wpdb->get_var( $sql );
 }

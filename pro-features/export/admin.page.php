@@ -58,13 +58,13 @@ function ws_ls_export_admin_page_summary() {
 									foreach ( $previous_exports as $export ) {
 
 										$title = sprintf( '%s &middot; %s',
-															ws_ls_convert_ISO_date_into_locale( $export[ 'created' ], 'display-date' ),
+															ws_ls_export_render_date( $export[ 'created' ] ),
 															esc_html( $export[ 'options' ][ 'title' ] )
 										);
 
 										if ( 100 === (int) $export[ 'step' ] ) {
 											$title .= sprintf( '<span><a href="%s">%s</a></span>',
-												'#',
+												ws_ls_export_file_url( $export[ 'id' ] ),
 												__( 'Download', WE_LS_SLUG )
 											);
 										} else {
@@ -121,7 +121,9 @@ function ws_ls_export_admin_page_new() {
 							<div class="inside">
 								<?php
 
-									echo ws_ls_form_field_text( [ 'name' => 'title', 'title' => __( 'Title', WE_LS_SLUG ), 'show-label' => true, 'required' => true, 'css-class' => 'set-title' ] );
+									$title = ws_ls_querystring_value( 'title' );
+
+									echo ws_ls_form_field_text( [ 'name' => 'title', 'title' => __( 'Title', WE_LS_SLUG ), 'show-label' => true, 'required' => true, 'css-class' => 'set-title', 'value' => $title ] );
 								?>
 							</div>
 						</div>
@@ -245,7 +247,9 @@ function ws_ls_export_admin_page_new() {
 						<div class="inside">
 							<?php
 
-								echo ws_ls_form_field_select( [ 'key' => 'format', 'label' => __( 'Format', WE_LS_SLUG ), 'values' => [ 'csv' => __( 'CSV', WE_LS_SLUG ), 'json' => __( 'Json', WE_LS_SLUG ) ], 'selected' => '' ] );
+								$selected_format = ws_ls_querystring_value( 'format', false, 'csv' );
+
+								echo ws_ls_form_field_select( [ 'key' => 'format', 'label' => __( 'Format', WE_LS_SLUG ), 'values' => [ 'csv' => __( 'CSV', WE_LS_SLUG ), 'json' => __( 'Json', WE_LS_SLUG ) ], 'selected' => $selected_format ] );
 							?>
 						</div>
 					</div>

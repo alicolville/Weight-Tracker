@@ -269,7 +269,10 @@ jQuery( document ).ready(function ($) {
 
     // Update message if we have one
     if ( '' != response[ 'message' ] ) {
-      $( '#ws-ls-export-message' ).text( response[ 'message'] );
+
+      let message = response[ 'message'];
+
+      $( '#ws-ls-export-message' ).html( message );
     }
 ;
     // Continue?

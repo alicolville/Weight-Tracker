@@ -176,11 +176,11 @@ function ws_ls_user_side_bar($user_id) {
 		<div class="postbox ws-ls-user-data">
 			<h2 class="hndle"><span><?php echo __('Export Data', WE_LS_SLUG); ?></span></h2>
 			<div class="inside">
-				<a class="button-secondary" href="<?php echo ws_ls_get_link_to_export('csv', $user_id); ?>">
+				<a class="button-secondary" href="<?php echo ws_ls_export_link('new', [ 'user-id' => $user_id, 'format' => 'csv' ] ); ?>">
 					<i class="fa fa-file-excel-o"></i>
 					<?php echo __('To CSV', WE_LS_SLUG); ?>
 				</a>
-				<a class="button-secondary" href="<?php echo ws_ls_get_link_to_export('json', $user_id); ?>">
+				<a class="button-secondary" href="<?php echo ws_ls_export_link('new', [ 'user-id' => $user_id, 'format' => 'json' ] ); ?>">
 					<i class="fa fa-file-code-o"></i>
 					<?php echo __('To JSON', WE_LS_SLUG); ?>
 				</a>
