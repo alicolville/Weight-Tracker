@@ -239,9 +239,7 @@ jQuery( document ).ready(function ($) {
 
   });
 
-
-
-  ws_ls_export_process(  );
+  ws_ls_export_process();
 
   function ws_ls_export_process(  ) {
 
