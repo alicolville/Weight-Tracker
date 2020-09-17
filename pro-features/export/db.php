@@ -316,7 +316,7 @@ function ws_ls_db_export_criteria_all( $limit = NULL ) {
 	if ( false === empty( $limit ) ) {
 		$sql .= sprintf( ' limit 0, %d', $limit );
 	}
-echo $sql;
+
 	$result = $wpdb->get_results( $sql, ARRAY_A );
 
 	$result = ( false === empty( $result ) ) ? $result : [];
