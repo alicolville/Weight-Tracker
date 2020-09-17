@@ -236,7 +236,7 @@ function ws_ls_export_admin_page_new() {
 						<div class="postbox">
 							<h2 class="hndle"><span><?php echo __( 'Additional columns', WE_LS_SLUG ); ?></span></h2>
 							<div class="inside">
-								<p><?php echo __( 'Select additional data columns to be included for each weight entry.', WE_LS_SLUG ); ?></p>
+								<p><?php echo __( 'Select additional data columns to be included for each weight entry. Please note, each additional column requires extra work and will therefore impact the time it takes to produce the export.', WE_LS_SLUG ); ?></p>
 								<p><a class="button ws-ls-export-check-all">Check All</a><a class="button ws-ls-export-uncheck-all">Un-check All</a></p>
 								<?php
 
