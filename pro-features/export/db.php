@@ -307,12 +307,16 @@ function ws_ls_db_export_criteria_count( $export_id, $count = 0 ) {
  *
  * @return array|bool|object|null
  */
-function ws_ls_db_export_criteria_all( $limit = 10 ) {
+function ws_ls_db_export_criteria_all( $limit = NULL ) {
 
 	global $wpdb;
 
-	$sql = $wpdb->prepare( 'SELECT * FROM ' . $wpdb->prefix . WE_LS_MYSQL_EXPORT . ' order by `created` desc limit 0, %d ', $limit );
+	$sql = 'SELECT * FROM ' . $wpdb->prefix . WE_LS_MYSQL_EXPORT . ' order by `created` desc';
 
+	if ( false === empty( $limit ) ) {
+		$sql .= sprintf( ' limit 0, %d', $limit );
+	}
+echo $sql;
 	$result = $wpdb->get_results( $sql, ARRAY_A );
 
 	$result = ( false === empty( $result ) ) ? $result : [];

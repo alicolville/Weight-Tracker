@@ -55,11 +55,11 @@ function ws_ls_export_admin_page_summary() {
 						</div>
 					</div>
 					<div class="postbox">
-						<h2 class="hndle"><span><?php echo __( 'Last 30 exports', WE_LS_SLUG ); ?></span></h2>
+						<h2 class="hndle"><span><?php echo __( 'Previous exports', WE_LS_SLUG ); ?></span></h2>
 						<div class="inside">
 							<?php
 
-							$previous_exports = ws_ls_db_export_criteria_all( 30 );
+							$previous_exports = ws_ls_db_export_criteria_all();
 
 							if ( false === empty( $previous_exports ) ) {
 
