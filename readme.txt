@@ -162,6 +162,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 * Improvement: New export interface that supports large data sets. Data is now prepped and saved to disk in stages which improves performance.
 * Improvement: Ability to download the last 30 reports.
+* Bug fix: [wt-progress-bar] - when a user meets or exceeds their target, set the progress to 100%, not 1%!
 * Bug fix: Labels for form fields are correctly linked by ID.
 
 = 8.0.6 =

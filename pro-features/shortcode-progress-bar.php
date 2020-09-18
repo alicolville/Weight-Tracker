@@ -77,7 +77,7 @@ function ws_ls_shortcode_progress_bar( $user_defined_arguments ) {
 		// Have we met or exceeded the target?
 		if ( $arguments[ 'weight' ] >= $arguments[ 'target-weight' ] ) {
 
-			$arguments[ 'progress' ] = 1.0;
+			$arguments[ 'progress' ] = 100;
 
 			// Is recent weight less than target? If so, calulate %.
 		} else if ( $arguments[ 'target-weight' ] >= $arguments[ 'weight' ] ) {
@@ -98,7 +98,7 @@ function ws_ls_shortcode_progress_bar( $user_defined_arguments ) {
 		// Have we met or exceeded the target?
 		if ( $arguments[ 'weight' ] <= $arguments[ 'target-weight' ] ) {
 
-				$arguments[ 'progress' ] = 1.0;
+				$arguments[ 'progress' ] = 100;
 
 		// Is recent weight greater than target? If so, calulate %.
 		} else if ( $arguments[ 'target-weight' ] <= $arguments[ 'weight' ] ) {
