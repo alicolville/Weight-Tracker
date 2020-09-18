@@ -191,7 +191,22 @@ function ws_ls_settings_page_generic() {
 		                                                </td>
 	                                                </tr>
 											</table>
-
+											<h3><?php echo __( 'Challenges' , WE_LS_SLUG); ?></h3>
+											<table class="form-table">
+												<tr class="<?php echo $disable_if_not_pro_class; ?>">
+													<th scope="row"><?php echo __( 'Enabled' , WE_LS_SLUG); ?></th>
+													<td>
+														<?php
+														$challenges_enabled = get_option( 'ws-ls-challenges-enabled', 'yes' );
+														?>
+														<select id="ws-ls-challenges-enabled" name="ws-ls-challenges-enabled">
+															<option value="yes" <?php selected( $challenges_enabled, 'yes' ); ?>><?php echo __( 'Yes', WE_LS_SLUG )?></option>
+															<option value="no" <?php selected( $challenges_enabled, 'no' ); ?>><?php echo __( 'No', WE_LS_SLUG )?></option>
+														</select>
+														<p> <?php echo __( 'If enabled, Challenge functionality shall be included within shortcodes and admin interface', WE_LS_SLUG ); ?> <a href="https://weight.yeken.uk/challenges/" target="_blank"><?php echo __( 'Read more about Challenges', WE_LS_SLUG ); ?></a></p>
+													</td>
+												</tr>
+											</table>
                                             <h3><?php echo __( 'Photos' , WE_LS_SLUG); ?></h3>
                                             <table class="form-table">
                                                 <tr class="<?php echo $disable_if_not_pro_class; ?>">
@@ -1006,6 +1021,7 @@ function ws_ls_register_settings(){
         register_setting( 'we-ls-options-group', 'ws-ls-macro-fats' );
 		register_setting( 'we-ls-options-group', 'ws-ls-cal-add-unit' );
 		register_setting( 'we-ls-options-group', 'ws-ls-cal-lose-unit' );
+		register_setting( 'we-ls-options-group', 'ws-ls-challenges-enabled' );
 
         foreach ( ws_ls_harris_benedict_meal_ratio_defaults() as $key => $default ) {
             register_setting( 'we-ls-options-group', sprintf( ' ws-ls-meal-ratio-%s', $key ) );
