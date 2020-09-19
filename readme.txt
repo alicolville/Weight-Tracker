@@ -163,8 +163,10 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 * Improvement: New export interface that supports large data sets. Data is now prepped and saved to disk in stages which improves performance.
 * Improvement: Ability to download all exports.
 * Improvement: Added new setting to enable and disable challenges functionality.
+* Improvement: Added new setting for email notifications "Include Weight Summary". If enabled, additional data will be included regarding the user's weight entries.
 * Bug fix: [wt-progress-bar] - when a user meets or exceeds their target, set the progress to 100%, not 1%!
 * Bug fix: Labels for form fields are correctly linked by ID.
+* Bug fix: Corrected caching issue when fetching entries. Not just caching on ID but all arguments for the lookup.
 
 = 8.0.6 =
 

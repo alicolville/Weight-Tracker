@@ -874,6 +874,19 @@ function ws_ls_settings_page_generic() {
 															<p><?php echo __('Receive notifications when a member adds / edits their target.', WE_LS_SLUG); ?></p>
 														</td>
 													</tr>
+													<tr class="<?php echo $disable_if_not_pro_class; ?>">
+														<th scope="row"><?php echo __( 'Include Weight Summary?', WE_LS_SLUG ); ?></th>
+														<td>
+															<?php
+															$include_weight_summary = get_option( 'ws-ls-email-include-weight-summary', 'yes' );
+															?>
+															<select id="ws-ls-email-include-weight-summary" name="ws-ls-email-include-weight-summary">
+																<option value="yes" <?php selected( $include_weight_summary, 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+																<option value="no" <?php selected( $include_weight_summary, 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+															</select>
+															<p><?php echo __('Receive notifications when a member edits an existing weight / custom field entry.', WE_LS_SLUG); ?></p>
+														</td>
+													</tr>
 												</table>
 											</div>
                                         <div>
@@ -999,6 +1012,7 @@ function ws_ls_register_settings(){
 		register_setting( 'we-ls-options-group', 'ws-ls-email-notifications-edit' );
 		register_setting( 'we-ls-options-group', 'ws-ls-email-notifications-new' );
 		register_setting( 'we-ls-options-group', 'ws-ls-email-notifications-targets' );
+		register_setting( 'we-ls-options-group', 'ws-ls-email-include-weight-summary' );
 
 		// Third Party
         register_setting( 'we-ls-options-group', 'ws-ls-gf-enable' );
