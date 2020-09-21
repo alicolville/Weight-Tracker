@@ -5,7 +5,7 @@ defined('ABSPATH') or die('Jog on!');
 /**
  * Plugin Name: Weight Tracker
  * Description: Allow your users to track their weight, body measurements, photos and other pieces of custom data. Display in charts, tables, shortcodes and widgets. Manage their data, issue awards, email notifications, etc! Provide advanced data on Body Mass Index (BMI), Basal Metabolic Rate (BMR), Calorie intake, Harris Benedict Formula, Macronutrients Calculator and more.
- * Version: 8.0.6
+ * Version: 8.1
  * Author: YeKen
  * Author URI: https://www.YeKen.uk
  * License: GPL2
@@ -28,8 +28,8 @@ defined('ABSPATH') or die('Jog on!');
 */
 
 define( 'WS_LS_ABSPATH', plugin_dir_path( __FILE__ ) );
-define( 'WE_LS_CURRENT_VERSION', '8.0.6' );
-define( 'WE_LS_DB_VERSION', '8.0.1' );
+define( 'WE_LS_CURRENT_VERSION', '8.1' );
+define( 'WE_LS_DB_VERSION', '8.1' );
 define( 'WE_LS_TITLE', 'Weight Tracker' );
 define( 'WE_LS_SLUG', 'weight-loss-tracker' );
 define( 'WE_LS_LICENSE_TYPES_URL', 'https://weight.yeken.uk/features' );
@@ -146,17 +146,21 @@ require_once( WS_LS_ABSPATH . 'pro-features/widget-progress.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/footable.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/db.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/functions-stats.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/export.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/hooks.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/plus/awards/activate.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/plus/awards/functions.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/plus/awards/db.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/plus/awards/hooks.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/email-notifications.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/plus/challenge/inc.php' );
+
+if ( true === ws_ls_settings_challenges_enabled() ) {
+	require_once( WS_LS_ABSPATH . 'pro-features/plus/challenge/inc.php' );
+}
+
 require_once( WS_LS_ABSPATH . 'pro-features/plus/bmr.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/plus/harris-benedict.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/plus/macronutrient-calculator.php' );
+require_once( WS_LS_ABSPATH . 'pro-features/export/inc.php' );
 
 // Gravity Forms
 if ( true === WS_LS_IS_PRO && 'yes' == get_option( 'ws-ls-gf-enable', 'yes' ) ) {

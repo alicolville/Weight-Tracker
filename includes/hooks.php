@@ -16,12 +16,16 @@ function ws_ls_build_admin_menu() {
 	add_submenu_page( 'ws-ls-data-home', __( 'User Groups', WE_LS_SLUG ),  __( 'User Groups', WE_LS_SLUG ), 'manage_options', 'ws-ls-user-groups', 'ws_ls_settings_page_group' );
 	add_submenu_page( 'ws-ls-data-home', __( 'Custom Fields', WE_LS_SLUG ),  __('Custom Fields', WE_LS_SLUG), 'manage_options', 'ws-ls-meta-fields', 'ws_ls_meta_fields_page' );
     add_submenu_page( 'ws-ls-data-home', __( 'Awards', WE_LS_SLUG ),  __('Awards', WE_LS_SLUG), 'manage_options', 'ws-ls-awards', 'ws_ls_awards_page' );
-    add_submenu_page( 'ws-ls-data-home', __( 'Challenges', WE_LS_SLUG ),  __('Challenges', WE_LS_SLUG), 'manage_options', 'ws-ls-challenges', 'ws_ls_challenges_admin_page' );
+
+    if ( true === ws_ls_settings_challenges_enabled() ) {
+		add_submenu_page( 'ws-ls-data-home', __( 'Challenges', WE_LS_SLUG ),  __('Challenges', WE_LS_SLUG), 'manage_options', 'ws-ls-challenges', 'ws_ls_challenges_admin_page' );
+	}
 
 	$menu_text = ( false === WS_LS_IS_PRO && false === WS_LS_IS_PRO_PLUS ) ? __('Upgrade', WE_LS_SLUG) : __('Your License', WE_LS_SLUG);
 
-    add_submenu_page( 'ws-ls-data-home', $menu_text,  $menu_text, 'manage_options', 'ws-ls-license', 'ws_ls_advertise_pro');
+
 	add_submenu_page( 'ws-ls-data-home', __('Settings', WE_LS_SLUG),  __('Settings', WE_LS_SLUG), 'manage_options', 'ws-ls-settings', 'ws_ls_settings_page');
+	add_submenu_page( 'ws-ls-data-home', $menu_text,  $menu_text, 'manage_options', 'ws-ls-license', 'ws_ls_advertise_pro');
 
     if ( true === ws_ls_setup_wizard_show_notice() ) {
         add_submenu_page( 'ws-ls-data-home', __('Setup Wizard', WE_LS_SLUG),  __('Setup Wizard', WE_LS_SLUG), 'manage_options', 'ws-ls-data-setup-wizard', 'ws_ls_setup_wizard_page');
@@ -98,6 +102,8 @@ function ws_ls_enqueue_admin_files(){
 	wp_enqueue_style( 'ws-ls-admin-style', plugins_url( '../assets/css/admin' . 	$minified . '.css', __FILE__ ), [], WE_LS_CURRENT_VERSION );
 
     wp_enqueue_script( 'ws-ls-admin', plugins_url( '../assets/js/admin' . 	$minified . '.js', __FILE__ ), [ 'jquery' ], WE_LS_CURRENT_VERSION );
+
+	wp_localize_script( 'ws-ls-admin', 'ws_ls_security', [ 'ajax-security-nonce' => wp_create_nonce( 'ws-ls-nonce' ) ] );
 
     // Settings page
 	if( false === empty( $_GET[ 'page' ] ) && true === in_array( $_GET[ 'page' ], [ 'ws-ls-settings', 'ws-ls-data-setup-wizard' ] ) ) {

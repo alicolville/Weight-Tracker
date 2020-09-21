@@ -147,6 +147,13 @@ function ws_ls_emailer_default_template() {
 						text-transform: capitalize; 
 						border-bottom: 1px dotted #000000;
 					  }
+					  
+					   h5 {
+						font-size: 14px;
+						font-weight: bold;
+						text-align: center;
+						text-transform: capitalize; 
+					  }
 				
 					  p,
 					  ul,

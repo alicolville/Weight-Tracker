@@ -208,9 +208,10 @@ function ws_ls_format_stones_pound_for_comparison_display( $weight ) {
  * @param $iso_date
  * @param null $key
  *
+ * @param bool $force_admin
  * @return array|mixed
  */
-function ws_ls_convert_ISO_date_into_locale( $iso_date, $key = NULL ) {
+function ws_ls_convert_ISO_date_into_locale( $iso_date, $key = NULL, $force_admin = false ) {
 
 	$convert = [ 'raw' => $iso_date, 'chart' => '', 'display-date' => '', 'admin' => '', 'uk' => '', 'us' => '' ];
 
@@ -220,7 +221,7 @@ function ws_ls_convert_ISO_date_into_locale( $iso_date, $key = NULL ) {
 		$convert[ 'chart-date' ]    = date_i18n('d M', $convert[ 'time' ] );
 		// $convert[ 'uk' ]            = date('d/m/Y', $convert[ 'time' ] );
 		// $convert[ 'us' ]            = date('m/d/Y', $convert[ 'time' ] );
-		$format  = ( true === ws_ls_setting('use-us-dates', get_current_user_id() ) ) ? 'm/d/Y' : 'd/m/Y';
+		$format  = ( true === ws_ls_setting('use-us-dates', get_current_user_id(), $force_admin ) ) ? 'm/d/Y' : 'd/m/Y';
 		$convert[ 'display-date' ] = date( $format, $convert[ 'time' ] );
 	}
 

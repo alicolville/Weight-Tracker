@@ -180,7 +180,7 @@ function ws_ls_form_post_handler_weight( $user_id ) {
 					'type' 		=> 'weight-measurements',
 					'mode' 		=> $mode ];
 
-		$entry = ws_ls_entry_get( [ 'user-id' => $user_id, 'id' => $entry_id ] );
+		$entry = ws_ls_entry_get( [ 'user-id' => $user_id, 'id' => $entry_id, 'meta' => true ] );
 
 		if ( false === empty( $entry ) ) {
 			do_action( 'wlt-hook-data-added-edited', $type, $entry );

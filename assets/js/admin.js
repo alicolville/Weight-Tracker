@@ -200,4 +200,83 @@ jQuery( document ).ready(function ($) {
 
   });
 
+  // ------------------------------------------------------------
+  // Export
+  // ------------------------------------------------------------
+
+  // Show / hide additional fields on meta fields add / update
+  function ws_ls_export_show_date_ranges() {
+
+    let value = $('#ws-ls-export-new-form #date-range').val();
+
+    if ( 'custom' === value ) {
+      $( '#ws-ls-date-range-options' ).removeClass( 'ws-ls-hide' );
+    } else {
+      $( '#ws-ls-date-range-options' ).addClass( 'ws-ls-hide' );
+    }
+
+  }
+
+  $( "#ws-ls-export-new-form #date-range" ).change(function() {
+      ws_ls_export_show_date_ranges();
+  });
+
+  ws_ls_export_show_date_ranges();
+
+  $( '.ws-ls-export-check-all' ).on( 'click', function ( event ) {
+
+    event.preventDefault();
+
+    $( '.report-column' ).prop( 'checked', true );
+
+  });
+
+  $( '.ws-ls-export-uncheck-all' ).on( 'click', function ( event ) {
+
+    event.preventDefault();
+
+    $( '.report-column' ).prop( 'checked', false );
+
+  });
+
+  ws_ls_export_process();
+
+  function ws_ls_export_process(  ) {
+
+    let data = {  'action'    : 'process_export',
+                  'security'  : ws_ls_security[ 'ajax-security-nonce' ],
+                  'id'        : $( '.ws-ls-export-progress-bar' ).data( 'export-id' )
+    };
+
+    jQuery.post( ajaxurl, data, function( response ) {
+     // response = JSON.parse( response );
+      ws_ls_export_process_callback( data, response );
+    });
+  }
+
+  function ws_ls_export_process_callback( data, response) {
+
+    // Do we have an error?
+    if ( true === response[ 'error' ] ) {
+      $( '#ws-ls-export-message' ).text( response[ 'message'] );
+      return;
+    }
+
+    // Update progress bar
+    $( '.ws-ls-export-progress-bar-inner' ).css( 'width', response[ 'percentage'] + '%');
+
+    // Update message if we have one
+    if ( '' != response[ 'message' ] ) {
+
+      let message = response[ 'message'];
+
+      $( '#ws-ls-export-message' ).html( message );
+    }
+;
+    // Continue?
+    if ( true === response[ 'continue' ] ) {
+      ws_ls_export_process();
+    }
+
+  }
 });

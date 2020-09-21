@@ -48,7 +48,9 @@ function ws_ls_admin_check_mysql_tables_exist() {
 							$wpdb->prefix . WE_LS_MYSQL_AWARDS,
 							$wpdb->prefix . WE_LS_MYSQL_AWARDS_GIVEN,
 							$wpdb->prefix . WE_LS_MYSQL_GROUPS,
-							$wpdb->prefix . WE_LS_MYSQL_GROUPS_USER
+							$wpdb->prefix . WE_LS_MYSQL_GROUPS_USER,
+							$wpdb->prefix . WE_LS_MYSQL_EXPORT_REPORT,
+							$wpdb->prefix . WE_LS_MYSQL_EXPORT
                        ];
 
     // Check each table exists!
@@ -269,7 +271,7 @@ function ws_ls_target_get( $user_id = NULL, $field = NULL ) {
  */
 function ws_ls_entry_get( $arguments = [] ) {
 
-	$arguments  = wp_parse_args( $arguments, [ 'user-id' => get_current_user_id(), 'id' => NULL, 'meta' => true ] );
+	$arguments  = wp_parse_args( $arguments, [ 'user-id' => get_current_user_id(), 'id' => NULL ] );
 	$cache_key  = sprintf( 'entry-full-%d', $arguments[ 'id' ] );
 	$entry      = NULL;
 
@@ -292,7 +294,6 @@ function ws_ls_entry_get( $arguments = [] ) {
 			0;
 
 		if ( true === WS_LS_IS_PRO &&
-		     true === $arguments['meta'] &&
 		     true === ws_ls_meta_fields_is_enabled() ) {
 
 			$entry['meta'] = ws_ls_meta( $arguments['id'] );
@@ -1228,7 +1229,8 @@ function ws_ls_user_display_name( $user_id ) {
  * @return bool
  */
 function ws_ls_challenges_is_enabled() {
-    return WS_LS_IS_PRO_PLUS;
+    return ( WS_LS_IS_PRO_PLUS &&
+				true === ws_ls_settings_challenges_enabled() );
 }
 
 /**
@@ -1279,6 +1281,14 @@ function ws_ls_css_is_disabled() {
  */
 function ws_ls_targets_enabled() {
 	return ( 'yes' === get_option( 'ws-ls-allow-targets', 'yes' ) );
+}
+
+/**
+ * Challenges enabled?
+ * @return bool
+ */
+function ws_ls_settings_challenges_enabled() {
+	return ( 'yes' === get_option( 'ws-ls-challenges-enabled', 'yes' ) );
 }
 
 /**
