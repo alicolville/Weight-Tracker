@@ -154,7 +154,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 == Upgrade Notice ==
 
-8.0 - A HUGE re-write of the core plugin, improved code and better performance! Also support for plotting numeric custom fields on charts!
+8.1 - A new and improved export tool that handles large data sets!
 
 == Changelog ==
 
@@ -167,6 +167,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 * Bug fix: [wt-progress-bar] - when a user meets or exceeds their target, set the progress to 100%, not 1%!
 * Bug fix: Labels for form fields are correctly linked by ID.
 * Bug fix: Corrected caching issue when fetching entries. Not just caching on ID but all arguments for the lookup.
+* Bug fix: Fixed Danish PO file
 
 = 8.0.6 =
 
