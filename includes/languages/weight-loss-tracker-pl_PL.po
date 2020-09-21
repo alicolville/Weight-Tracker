@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Weight Loss Tracker\n"
-"POT-Creation-Date: 2020-09-21 21:11+0100\n"
-"PO-Revision-Date: 2020-09-21 21:11+0100\n"
+"POT-Creation-Date: 2020-09-21 21:19+0100\n"
+"PO-Revision-Date: 2020-09-21 21:27+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pl\n"
@@ -35,7 +35,6 @@ msgstr "Wypełnij wszystkie obowiązkowe pola."
 #: includes/admin-pages/awards/page-awards-add-update.php:110
 #: pro-features/export/admin.page.php:149
 #: pro-features/plus/awards/hooks.php:289 pro-features/widget-chart.php:107
-#: pro-features/widget-form.php:84 pro-features/widget-progress.php:72
 msgid "Title"
 msgstr "Tytuł"
 
@@ -184,8 +183,7 @@ msgstr "Zastosuj do nowych wpisów?"
 #: pro-features/plus/meta-fields/functions.php:38
 #: pro-features/plus/meta-fields/functions.php:214
 #: pro-features/plus/meta-fields/functions.php:345
-#: pro-features/widget-chart.php:160 pro-features/widget-form.php:98
-#: pro-features/widget-form.php:107
+#: pro-features/widget-chart.php:160
 msgid "Yes"
 msgstr "tak"
 
@@ -226,8 +224,7 @@ msgstr "tak"
 #: pro-features/plus/meta-fields/functions.php:38
 #: pro-features/plus/meta-fields/functions.php:211
 #: pro-features/plus/meta-fields/functions.php:344
-#: pro-features/widget-chart.php:159 pro-features/widget-form.php:97
-#: pro-features/widget-form.php:106
+#: pro-features/widget-chart.php:159
 msgid "No"
 msgstr "Nie"
 
@@ -1777,15 +1774,6 @@ msgstr "Zdjęcia użytkownika"
 #: includes/admin-pages/user-data/data-user.php:92
 msgid "This user has uploaded "
 msgstr "Ten użytkownik przesłał "
-
-#: includes/admin-pages/user-data/data-photos.php:40
-#: includes/admin-pages/user-data/data-user.php:94
-#: pro-features/plus/shortcode.wlt.php:32
-msgid "photo"
-msgid_plural "photos"
-msgstr[0] "zdjęcie"
-msgstr[1] "zdjęcie"
-msgstr[2] ""
 
 #: includes/admin-pages/user-data/data-photos.php:43
 #: includes/admin-pages/user-data/data-user.php:101
@@ -4662,7 +4650,6 @@ msgstr "Tracker wagi - wykres"
 msgid "Display a chart to see your current progress."
 msgstr "Wyświetl wykres, aby zobaczyć swój bieżący postęp."
 
-#. Plugin Name of the plugin/theme
 #: pro-features/widget-chart.php:18
 msgid "Weight Tracker"
 msgstr "Analizator wagi"
@@ -4677,11 +4664,11 @@ msgstr ""
 msgid "Maximum number of plot points on chart"
 msgstr "Maksymalna liczba punktów na wykresie"
 
-#: pro-features/widget-chart.php:137 pro-features/widget-form.php:111
+#: pro-features/widget-chart.php:137
 msgid "Message to display if not logged in"
 msgstr "Wiadomość do wyświetlenia, jeśli nie jest zalogowany"
 
-#: pro-features/widget-chart.php:141 pro-features/widget-form.php:114
+#: pro-features/widget-chart.php:141
 msgid ""
 "By default the widget is hidden if the user is not logged in. If you wish, "
 "you can display a message to the visitor instead."
@@ -4710,7 +4697,7 @@ msgstr ""
 "zalogowanego użytkownika. Jeśli nie zostanie określony, zostanie użyty "
 "domyślny plugin."
 
-#: pro-features/widget-chart.php:157 pro-features/widget-form.php:95
+#: pro-features/widget-chart.php:157
 msgid "Hide Meta Fields (Pro)?"
 msgstr "Ukryj meta pola (Pro)?"
 
@@ -4730,36 +4717,6 @@ msgstr ""
 msgid "Your weight today"
 msgstr "Twoja waga dzisiaj"
 
-#: pro-features/widget-form.php:88
-msgid "Allow user to specify a date?"
-msgstr "Zezwalaj użytkownikowi na określenie daty?"
-
-#: pro-features/widget-form.php:90
-msgid "No. Automatically set to today's date"
-msgstr "Nie. Automatycznie ustawiony na dzisiejszą datę"
-
-#: pro-features/widget-form.php:91
-msgid "Allow user to specify a date"
-msgstr "Zezwalaj użytkownikowi na określenie daty"
-
-#: pro-features/widget-form.php:104
-#, fuzzy
-#| msgid "Hide Meta Fields (Pro)?"
-msgid "Hide notes field?"
-msgstr "Ukryj meta pola (Pro)?"
-
-#: pro-features/widget-form.php:116
-msgid "Redirect URL (Defaults to current page)"
-msgstr "Przekieruj adres URL (domyślnie do bieżącej strony)"
-
-#: pro-features/widget-form.php:119
-msgid ""
-"Specify where the user should be redirected to after completing the form. "
-"Note: The URL must be within the site domain."
-msgstr ""
-"Określ, dokąd użytkownik powinien zostać przekierowany po wypełnieniu "
-"formularza. Uwaga: adres URL musi znajdować się w domenie witryny."
-
 #: pro-features/widget-progress.php:11
 msgid "Weight Tracker - Progress Bar"
 msgstr "Waga Tracker - Progress Bar"
@@ -4772,67 +4729,88 @@ msgstr "Pasek postępu wskazujący utratę wagi w kierunku celu."
 msgid "Weight Progress"
 msgstr "Postęp masy ciała"
 
-#: pro-features/widget-progress.php:76
-msgid "Chart type"
-msgstr "Typ wykresu"
+#~ msgid "photo"
+#~ msgid_plural "photos"
+#~ msgstr[0] "zdjęcie"
+#~ msgstr[1] "zdjęcie"
+#~ msgstr[2] ""
 
-#: pro-features/widget-progress.php:83
-msgid "Stroke Width"
-msgstr "Szerokość obrysu"
+#~ msgid "Allow user to specify a date?"
+#~ msgstr "Zezwalaj użytkownikowi na określenie daty?"
 
-#: pro-features/widget-progress.php:91
-msgid "Stroke Colour"
-msgstr "Kolor obrysu"
+#~ msgid "No. Automatically set to today's date"
+#~ msgstr "Nie. Automatycznie ustawiony na dzisiejszą datę"
 
-#: pro-features/widget-progress.php:95
-msgid "Trail Width"
-msgstr "Szerokość szlaku"
+#~ msgid "Allow user to specify a date"
+#~ msgstr "Zezwalaj użytkownikowi na określenie daty"
 
-#: pro-features/widget-progress.php:103
-msgid "Trail Colour"
-msgstr "Kolor szlaku"
-
-#: pro-features/widget-progress.php:107
-msgid "Text Colour"
-msgstr "Kolor tekstu"
-
-#: pro-features/widget-progress.php:111
-msgid "Animation Duration"
-msgstr "Czas trwania animacji"
-
-#: pro-features/widget-progress.php:119
-msgid "Text to be displayed under bar. Use {t} to display target weight."
-msgstr "Tekst wyświetlany pod paskiem. Użyj {t}, aby wyświetlić wagę docelową."
-
-#. Description of the plugin/theme
 #, fuzzy
-#| msgid ""
-#| "Allow your users to track their weight, measurements and other pieces of "
-#| "custom data. Display in charts, tables, shortcodes and widgets. Manage "
-#| "their data, issue awards, email notifications, etc! Provide advanced data "
-#| "on Body Mass Index (BMI), Basal Metabolic Rate (BMR), Calorie intake, "
-#| "Harris Benedict Formula, Macronutrients Calculator and more."
-msgid ""
-"Allow your users to track their weight, body measurements, photos and other "
-"pieces of custom data. Display in charts, tables, shortcodes and widgets. "
-"Manage their data, issue awards, email notifications, etc! Provide advanced "
-"data on Body Mass Index (BMI), Basal Metabolic Rate (BMR), Calorie intake, "
-"Harris Benedict Formula, Macronutrients Calculator and more."
-msgstr ""
-"Pozwól swoim użytkownikom śledzić ich wagę, pomiary i inne dane "
-"niestandardowe. Wyświetl w wykresach, tabelach, skrótach i widżetach. "
-"Zarządzaj ich danymi, przyznawaj nagrody, powiadomienia e-mail itp.! "
-"Zapewnij zaawansowane dane dotyczące wskaźnika masy ciała (BMI), podstawowej "
-"przemiany materii (BMR), spożycia kalorii, formuły Harris Benedict, "
-"kalkulatora składników odżywczych i innych."
+#~| msgid "Hide Meta Fields (Pro)?"
+#~ msgid "Hide notes field?"
+#~ msgstr "Ukryj meta pola (Pro)?"
 
-#. Author of the plugin/theme
-msgid "YeKen"
-msgstr "YeKen"
+#~ msgid "Redirect URL (Defaults to current page)"
+#~ msgstr "Przekieruj adres URL (domyślnie do bieżącej strony)"
 
-#. Author URI of the plugin/theme
-msgid "https://www.YeKen.uk"
-msgstr "https://www.YeKen.uk"
+#~ msgid ""
+#~ "Specify where the user should be redirected to after completing the form. "
+#~ "Note: The URL must be within the site domain."
+#~ msgstr ""
+#~ "Określ, dokąd użytkownik powinien zostać przekierowany po wypełnieniu "
+#~ "formularza. Uwaga: adres URL musi znajdować się w domenie witryny."
+
+#~ msgid "Chart type"
+#~ msgstr "Typ wykresu"
+
+#~ msgid "Stroke Width"
+#~ msgstr "Szerokość obrysu"
+
+#~ msgid "Stroke Colour"
+#~ msgstr "Kolor obrysu"
+
+#~ msgid "Trail Width"
+#~ msgstr "Szerokość szlaku"
+
+#~ msgid "Trail Colour"
+#~ msgstr "Kolor szlaku"
+
+#~ msgid "Text Colour"
+#~ msgstr "Kolor tekstu"
+
+#~ msgid "Animation Duration"
+#~ msgstr "Czas trwania animacji"
+
+#~ msgid "Text to be displayed under bar. Use {t} to display target weight."
+#~ msgstr ""
+#~ "Tekst wyświetlany pod paskiem. Użyj {t}, aby wyświetlić wagę docelową."
+
+#, fuzzy
+#~| msgid ""
+#~| "Allow your users to track their weight, measurements and other pieces of "
+#~| "custom data. Display in charts, tables, shortcodes and widgets. Manage "
+#~| "their data, issue awards, email notifications, etc! Provide advanced "
+#~| "data on Body Mass Index (BMI), Basal Metabolic Rate (BMR), Calorie "
+#~| "intake, Harris Benedict Formula, Macronutrients Calculator and more."
+#~ msgid ""
+#~ "Allow your users to track their weight, body measurements, photos and "
+#~ "other pieces of custom data. Display in charts, tables, shortcodes and "
+#~ "widgets. Manage their data, issue awards, email notifications, etc! "
+#~ "Provide advanced data on Body Mass Index (BMI), Basal Metabolic Rate "
+#~ "(BMR), Calorie intake, Harris Benedict Formula, Macronutrients Calculator "
+#~ "and more."
+#~ msgstr ""
+#~ "Pozwól swoim użytkownikom śledzić ich wagę, pomiary i inne dane "
+#~ "niestandardowe. Wyświetl w wykresach, tabelach, skrótach i widżetach. "
+#~ "Zarządzaj ich danymi, przyznawaj nagrody, powiadomienia e-mail itp.! "
+#~ "Zapewnij zaawansowane dane dotyczące wskaźnika masy ciała (BMI), "
+#~ "podstawowej przemiany materii (BMR), spożycia kalorii, formuły Harris "
+#~ "Benedict, kalkulatora składników odżywczych i innych."
+
+#~ msgid "YeKen"
+#~ msgstr "YeKen"
+
+#~ msgid "https://www.YeKen.uk"
+#~ msgstr "https://www.YeKen.uk"
 
 #, fuzzy
 #~| msgid "You must have a Pro License to export user data into CSV format."

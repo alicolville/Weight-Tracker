@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Weight Loss Tracker\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-21 21:11+0100\n"
-"PO-Revision-Date: 2020-09-21 21:11+0100\n"
+"POT-Creation-Date: 2020-09-21 21:19+0100\n"
+"PO-Revision-Date: 2020-09-21 21:20+0100\n"
 "Last-Translator: saeedalakakah <salakakah@gmail.com>\n"
 "Language-Team: Arabic\n"
 "Language: ar\n"
@@ -38,7 +38,6 @@ msgstr "يرجى إكمال جميع الحقول الإلزامية."
 #: includes/admin-pages/awards/page-awards-add-update.php:110
 #: pro-features/export/admin.page.php:149
 #: pro-features/plus/awards/hooks.php:289 pro-features/widget-chart.php:107
-#: pro-features/widget-form.php:84 pro-features/widget-progress.php:72
 msgid "Title"
 msgstr "عنوان"
 
@@ -189,8 +188,7 @@ msgstr "جميع الإدخالات"
 #: pro-features/plus/meta-fields/functions.php:38
 #: pro-features/plus/meta-fields/functions.php:214
 #: pro-features/plus/meta-fields/functions.php:345
-#: pro-features/widget-chart.php:160 pro-features/widget-form.php:98
-#: pro-features/widget-form.php:107
+#: pro-features/widget-chart.php:160
 msgid "Yes"
 msgstr "نعم"
 
@@ -231,8 +229,7 @@ msgstr "نعم"
 #: pro-features/plus/meta-fields/functions.php:38
 #: pro-features/plus/meta-fields/functions.php:211
 #: pro-features/plus/meta-fields/functions.php:344
-#: pro-features/widget-chart.php:159 pro-features/widget-form.php:97
-#: pro-features/widget-form.php:106
+#: pro-features/widget-chart.php:159
 msgid "No"
 msgstr "لا"
 
@@ -1745,18 +1742,6 @@ msgstr ""
 #: includes/admin-pages/user-data/data-user.php:92
 msgid "This user has uploaded "
 msgstr "تم تحميل هذا المستخدم"
-
-#: includes/admin-pages/user-data/data-photos.php:40
-#: includes/admin-pages/user-data/data-user.php:94
-#: pro-features/plus/shortcode.wlt.php:32
-msgid "photo"
-msgid_plural "photos"
-msgstr[0] "صورة"
-msgstr[1] "صورة"
-msgstr[2] "صورتان"
-msgstr[3] "صور"
-msgstr[4] "صور"
-msgstr[5] "صور"
 
 #: includes/admin-pages/user-data/data-photos.php:43
 #: includes/admin-pages/user-data/data-user.php:101
@@ -4578,7 +4563,6 @@ msgstr "الرسم البياني - متتبع نزول الوزن"
 msgid "Display a chart to see your current progress."
 msgstr "عرض الرسم البياني لرؤية تقدمك الحالي."
 
-#. Plugin Name of the plugin/theme
 #: pro-features/widget-chart.php:18
 #, fuzzy
 #| msgid "Weight Loss Tracker"
@@ -4595,11 +4579,11 @@ msgstr ""
 msgid "Maximum number of plot points on chart"
 msgstr "الحد الأقصى لعدد نقاط الـ plot على الرسم البياني"
 
-#: pro-features/widget-chart.php:137 pro-features/widget-form.php:111
+#: pro-features/widget-chart.php:137
 msgid "Message to display if not logged in"
 msgstr "رسالة للعرض إذا لم تقم بتسجيل الدخول"
 
-#: pro-features/widget-chart.php:141 pro-features/widget-form.php:114
+#: pro-features/widget-chart.php:141
 msgid ""
 "By default the widget is hidden if the user is not logged in. If you wish, "
 "you can display a message to the visitor instead."
@@ -4626,7 +4610,7 @@ msgstr ""
 "المستخدم الذي قام بتسجيل الدخول. إذا لم يتم تحديد سيتم استخدام القيمة "
 "الافتراضية لبرنامج plugin ."
 
-#: pro-features/widget-chart.php:157 pro-features/widget-form.php:95
+#: pro-features/widget-chart.php:157
 msgid "Hide Meta Fields (Pro)?"
 msgstr "إخفاء القياسات (برو)؟"
 
@@ -4647,36 +4631,6 @@ msgstr ""
 msgid "Your weight today"
 msgstr "وزنك اليوم"
 
-#: pro-features/widget-form.php:88
-msgid "Allow user to specify a date?"
-msgstr "السماح للمستخدم بتحديد تاريخ؟"
-
-#: pro-features/widget-form.php:90
-msgid "No. Automatically set to today's date"
-msgstr "رقم تعيين تلقائيا إلى تاريخ اليوم"
-
-#: pro-features/widget-form.php:91
-msgid "Allow user to specify a date"
-msgstr "السماح للمستخدم بتحديد تاريخ"
-
-#: pro-features/widget-form.php:104
-#, fuzzy
-#| msgid "Hide Meta Fields (Pro)?"
-msgid "Hide notes field?"
-msgstr "إخفاء القياسات (برو)؟"
-
-#: pro-features/widget-form.php:116
-msgid "Redirect URL (Defaults to current page)"
-msgstr "إعادة توجيه عنوان URL (الإعدادات الافتراضية للصفحة الحالية)"
-
-#: pro-features/widget-form.php:119
-msgid ""
-"Specify where the user should be redirected to after completing the form. "
-"Note: The URL must be within the site domain."
-msgstr ""
-"حدد المكان الذي يجب إعادة توجيه المستخدم إليه بعد إكمال النموذج. ملاحظة: يجب "
-"أن يكون عنوان URL ضمن نطاق الموقع."
-
 #: pro-features/widget-progress.php:11
 #, fuzzy
 #| msgid "Weight Loss Tracker - Progress Bar"
@@ -4693,54 +4647,62 @@ msgstr "شريط التقدم للإشارة إلى فقدان الوزن نحو
 msgid "Weight Progress"
 msgstr "تقدم فقدان الوزن"
 
-#: pro-features/widget-progress.php:76
-msgid "Chart type"
-msgstr "نوع الرسم لبياني"
+#~ msgid "photo"
+#~ msgid_plural "photos"
+#~ msgstr[0] "صورة"
+#~ msgstr[1] "صورة"
+#~ msgstr[2] "صورتان"
+#~ msgstr[3] "صور"
+#~ msgstr[4] "صور"
+#~ msgstr[5] "صور"
 
-#: pro-features/widget-progress.php:83
-msgid "Stroke Width"
-msgstr "عرض الخط (Stroke)"
+#~ msgid "Allow user to specify a date?"
+#~ msgstr "السماح للمستخدم بتحديد تاريخ؟"
 
-#: pro-features/widget-progress.php:91
-msgid "Stroke Colour"
-msgstr "لون الخط (Stroke)"
+#~ msgid "No. Automatically set to today's date"
+#~ msgstr "رقم تعيين تلقائيا إلى تاريخ اليوم"
 
-#: pro-features/widget-progress.php:95
-msgid "Trail Width"
-msgstr "عرض أثار (Trail)"
+#~ msgid "Allow user to specify a date"
+#~ msgstr "السماح للمستخدم بتحديد تاريخ"
 
-#: pro-features/widget-progress.php:103
-msgid "Trail Colour"
-msgstr "لون أثار (Trail)"
+#, fuzzy
+#~| msgid "Hide Meta Fields (Pro)?"
+#~ msgid "Hide notes field?"
+#~ msgstr "إخفاء القياسات (برو)؟"
 
-#: pro-features/widget-progress.php:107
-msgid "Text Colour"
-msgstr "لون النص"
+#~ msgid "Redirect URL (Defaults to current page)"
+#~ msgstr "إعادة توجيه عنوان URL (الإعدادات الافتراضية للصفحة الحالية)"
 
-#: pro-features/widget-progress.php:111
-msgid "Animation Duration"
-msgstr "مدة التحرك"
+#~ msgid ""
+#~ "Specify where the user should be redirected to after completing the form. "
+#~ "Note: The URL must be within the site domain."
+#~ msgstr ""
+#~ "حدد المكان الذي يجب إعادة توجيه المستخدم إليه بعد إكمال النموذج. ملاحظة: "
+#~ "يجب أن يكون عنوان URL ضمن نطاق الموقع."
 
-#: pro-features/widget-progress.php:119
-msgid "Text to be displayed under bar. Use {t} to display target weight."
-msgstr "نص ليتم عرضه تحت شريط. استخدم {t} لعرض وزن الهدف."
+#~ msgid "Chart type"
+#~ msgstr "نوع الرسم لبياني"
 
-#. Description of the plugin/theme
-msgid ""
-"Allow your users to track their weight, body measurements, photos and other "
-"pieces of custom data. Display in charts, tables, shortcodes and widgets. "
-"Manage their data, issue awards, email notifications, etc! Provide advanced "
-"data on Body Mass Index (BMI), Basal Metabolic Rate (BMR), Calorie intake, "
-"Harris Benedict Formula, Macronutrients Calculator and more."
-msgstr ""
+#~ msgid "Stroke Width"
+#~ msgstr "عرض الخط (Stroke)"
 
-#. Author of the plugin/theme
-msgid "YeKen"
-msgstr ""
+#~ msgid "Stroke Colour"
+#~ msgstr "لون الخط (Stroke)"
 
-#. Author URI of the plugin/theme
-msgid "https://www.YeKen.uk"
-msgstr ""
+#~ msgid "Trail Width"
+#~ msgstr "عرض أثار (Trail)"
+
+#~ msgid "Trail Colour"
+#~ msgstr "لون أثار (Trail)"
+
+#~ msgid "Text Colour"
+#~ msgstr "لون النص"
+
+#~ msgid "Animation Duration"
+#~ msgstr "مدة التحرك"
+
+#~ msgid "Text to be displayed under bar. Use {t} to display target weight."
+#~ msgstr "نص ليتم عرضه تحت شريط. استخدم {t} لعرض وزن الهدف."
 
 #, fuzzy
 #~| msgid "You must be logged in to edit your settings."
