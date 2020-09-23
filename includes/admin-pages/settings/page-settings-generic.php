@@ -122,7 +122,7 @@ function ws_ls_settings_page_generic() {
 														</td>
 													</tr>
                                                 </table>
-                                                <h3><?php echo __( 'User Experience' , WE_LS_SLUG); ?></h3>
+                                                <h3><?php echo __( 'User experience' , WE_LS_SLUG); ?></h3>
                                                 <table class="form-table">
 													<tr>
                                                         <th scope="row"><?php echo __( 'Allow target weights?' , WE_LS_SLUG); ?></th>
