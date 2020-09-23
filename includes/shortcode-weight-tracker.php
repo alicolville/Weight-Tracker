@@ -27,7 +27,7 @@ function ws_ls_shortcode( $user_defined_arguments ) {
 									                'hide-photos' 				=> false,                       // Hide photos part of form
 									                'hide-tab-photos' 			=> false,                 	    // Hide Photos tab
 									                'hide-tab-advanced' 		=> false,               	    // Hide Advanced tab (macroN, calories, etc)
-													'hide-tab-descriptions' 	=> false,               	    // Hide tab descriptions
+													'hide-tab-descriptions' 	=> ws_ls_option_to_bool( 'ws-ls-tab-hide-descriptions', 'no' ), // Hide tab descriptions
 									                'hide-advanced-narrative' 	=> false,         			    // Hide text describing BMR, MarcoN, etc
 									                'disable-advanced-tables' 	=> false,         			    // Disable advanced data tables.
 									                'disable-tabs' 				=> false,                       // Disable using tabs.

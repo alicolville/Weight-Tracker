@@ -36,6 +36,7 @@ function ws_ls_config_js() {
 					'date-picker-locale'                => ws_ls_config_js_datapicker_locale(),
 					'in-admin'                          => ( is_admin() ) ? 'true' : 'false',
 					'max-photo-upload'                  => ws_ls_photo_max_upload_size(),
+					'tab-config'                        => ws_ls_config_js_tab_config()
 	];
 
 	// If About You fields mandatory, add extra translations
@@ -81,5 +82,22 @@ function ws_ls_config_js_datapicker_locale() {
 	        'dayNamesMin'       => array_values( $wp_locale->weekday_initial ),
 	    	// get the start of week from WP general setting
 	        'firstDay'          => get_option( 'start_of_week' ),
+	];
+}
+
+/**
+ * JS Config for Tabs
+ * @return array
+ */
+function ws_ls_config_js_tab_config() {
+
+	return [    'rounded'           => false,
+				'multiline'         => true,
+				'theme'             => get_option( 'ws-ls-tab-theme', 'silver' ), // white, crystal, silver, gray, black, orange, red, green, blue, deepblue
+                'size'              => 'small',
+				'minWindowWidth'    => (int) get_option( 'ws-ls-tab-window-resize', '1200' ),
+				'mobileNav'         => true,
+				'responsive'        => true,
+				'animation'         => [ 'effects' => 'slideH', 'easing' => 'easeInOutCirc', 'type' => 'jquery' ]
 	];
 }

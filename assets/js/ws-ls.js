@@ -35,20 +35,10 @@ jQuery( document ).ready( function ( $ ) {
       $( '#' + item.id ).removeClass( 'ws-ls-hide' );
   };
 
-  tabs_global = $( '#ws-ls-tabs' ).zozoTabs({   rounded:        false,
-                                                multiline:      true,
-                                                theme:          'silver',
-                                                size:           'small',
-                                                minWindowWidth: 3000,
-                                                responsive:     true,
-                                                animation: {
-                                                                effects: 'slideH',
-                                                                easing: 'easeInOutCirc',
-                                                                type: 'jquery'
-                                                },
-                                                defaultTab:     default_tab,
-                                                ready:          tabs_are_ready
-  });
+  ws_ls_config[ 'tab-config' ][ 'defaultTab' ]  = default_tab;
+  ws_ls_config[ 'tab-config' ][ 'ready' ]       = tabs_are_ready;
+
+  tabs_global = $( '#ws-ls-tabs' ).zozoTabs( ws_ls_config[ 'tab-config' ] );
 
   // -----------------------------------------------------------------------
   // Progress Bar

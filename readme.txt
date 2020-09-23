@@ -160,6 +160,8 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 = 8.1.1 =
 
+* Improvement: Added new settings for tabs. Theme, hide descriptions and when to switch to a dropdown.
+* Bug fix: Re-build language files.
 * Bug fix: Changed word "drunk" to "drank".
 
 = 8.1 =
