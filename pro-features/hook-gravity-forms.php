@@ -207,7 +207,8 @@ function ws_ls_gravity_forms_process( $entry, $form ) {
         GFCommon::log_debug( 'Weight entry did not save correctly :(' );
     }
 
-
+    // Delete cache for the given user
+    ws_ls_cache_user_delete( $user_id );
 }
 add_action( 'gform_after_submission', 'ws_ls_gravity_forms_process', 10, 2 );
 

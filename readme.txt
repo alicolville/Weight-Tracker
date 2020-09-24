@@ -162,6 +162,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 * Improvement: Added new settings for tabs. Theme, hide descriptions and when to switch to a dropdown.
 * Bug fix: Re-build language files.
+* Bug fix: Delete user cache upon a Gravity Form submission.
 * Bug fix: Changed word "drunk" to "drank".
 
 = 8.1 =
