@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Weight Loss Tracker da_DK\n"
-"POT-Creation-Date: 2020-09-21 20:36+0100\n"
-"PO-Revision-Date: 2020-09-21 20:47+0100\n"
+"POT-Creation-Date: 2020-09-21 21:19+0100\n"
+"PO-Revision-Date: 2020-09-21 21:23+0100\n"
 "Last-Translator: Spaniole Olsen <spaniole@gmail.com>\n"
 "Language-Team: Team Denmark <spaniole@gmail.com>\n"
 "Language: da_DK\n"
@@ -2593,8 +2593,9 @@ msgid "added"
 msgstr ""
 
 #: pro-features/email-notifications.php:54
+#, fuzzy
 msgid "updated"
-msgstr ""
+msgstr "DK eller US dato format?"
 
 #: pro-features/email-notifications.php:56
 #, fuzzy
@@ -2613,8 +2614,9 @@ msgid "Weight entry"
 msgstr "Vægtenheder"
 
 #: pro-features/email-notifications.php:61
+#, fuzzy
 msgid "added for"
-msgstr ""
+msgstr "DK eller US dato format?"
 
 #: pro-features/email-notifications.php:61
 #, fuzzy
@@ -2782,8 +2784,10 @@ msgid "BMI Label (height required)"
 msgstr ""
 
 #: pro-features/export/admin.page.php:247
+#, fuzzy
+#| msgid "Underweight"
 msgid "Difference between current and start weight"
-msgstr ""
+msgstr "Undervægtig"
 
 #: pro-features/export/admin.page.php:275
 msgid "Format"
@@ -2802,8 +2806,9 @@ msgid "Run Report"
 msgstr ""
 
 #: pro-features/export/admin.page.php:316
+#, fuzzy
 msgid "Processing your export"
-msgstr ""
+msgstr "Forrige"
 
 #: pro-features/export/admin.page.php:323
 msgid "There was an error loading the criteria for the export."
@@ -3225,8 +3230,9 @@ msgid "Add Custom Field"
 msgstr ""
 
 #: pro-features/footable.php:322
+#, fuzzy
 msgid "Add Award"
-msgstr ""
+msgstr "Se alle uger"
 
 #: pro-features/footable.php:323
 #, fuzzy
@@ -3258,8 +3264,10 @@ msgid "Most Recent Photo"
 msgstr "Målvægt"
 
 #: pro-features/functions-pages.php:63
+#, fuzzy
+#| msgid "No. of Weight Entries"
 msgid "No. of photos: "
-msgstr ""
+msgstr "Vægtenheder"
 
 #: pro-features/functions-pages.php:66
 #, fuzzy
@@ -3277,16 +3285,20 @@ msgid "No. of Entries"
 msgstr "Vægtenheder"
 
 #: pro-features/functions-pages.php:98
+#, fuzzy
+#| msgid "Weight Difference"
 msgid "Diff. from Start"
-msgstr ""
+msgstr "Vægt difference"
 
 #: pro-features/functions-pages.php:108
 msgid "No target set"
 msgstr "Din målvægt er"
 
 #: pro-features/functions-pages.php:114
+#, fuzzy
+#| msgid "Weight Difference"
 msgid "Diff. from Target"
-msgstr ""
+msgstr "Vægt difference"
 
 #: pro-features/functions-pages.php:118
 #, fuzzy
@@ -3352,8 +3364,9 @@ msgid "Delete Cache for this user"
 msgstr "Slet"
 
 #: pro-features/functions-pages.php:213
+#, fuzzy
 msgid "Delete ALL data for this user"
-msgstr ""
+msgstr "Slet"
 
 #: pro-features/functions-pages.php:220
 #, fuzzy
@@ -3402,8 +3415,9 @@ msgid "Male"
 msgstr ""
 
 #: pro-features/functions.php:317
+#, fuzzy
 msgid "Little / No Exercise"
-msgstr ""
+msgstr "Vægtenheder"
 
 #: pro-features/functions.php:318
 #, fuzzy
@@ -3478,8 +3492,9 @@ msgid "Weight change in units"
 msgstr "Vægtenheder"
 
 #: pro-features/plus/awards/functions.php:44
+#, fuzzy
 msgid "Weight change as a percentage"
-msgstr ""
+msgstr "Vægtenheder"
 
 #: pro-features/plus/awards/functions.php:61
 #: pro-features/plus/harris-benedict.php:74
@@ -3556,12 +3571,15 @@ msgid "There was an error saving the challenge to the database."
 msgstr ""
 
 #: pro-features/plus/challenge/admin.page.php:61
+#, fuzzy
 msgid "Current Challenges"
-msgstr ""
+msgstr "Slet"
 
 #: pro-features/plus/challenge/admin.page.php:66
+#, fuzzy
+#| msgid "Add a new weight"
 msgid "Add a challenge"
-msgstr ""
+msgstr "Tilføj en ny vægt"
 
 #: pro-features/plus/challenge/admin.page.php:68
 #: pro-features/plus/challenge/admin.page.php:78
@@ -3622,8 +3640,10 @@ msgid "Add a new challenge"
 msgstr "Tilføj en ny vægt"
 
 #: pro-features/plus/challenge/admin.page.php:114
+#, fuzzy
+#| msgid "Add a new weight"
 msgid "Name of challenge"
-msgstr ""
+msgstr "Tilføj en ny vægt"
 
 #: pro-features/plus/challenge/admin.page.php:116
 msgid "Start Date (only consider entries from this date)"
@@ -3648,8 +3668,10 @@ msgid ""
 msgstr ""
 
 #: pro-features/plus/challenge/admin.page.php:154
+#, fuzzy
+#| msgid "Processing..."
 msgid "entries processed"
-msgstr ""
+msgstr "Arbejder..."
 
 #: pro-features/plus/challenge/admin.page.php:184
 #, fuzzy
@@ -3695,8 +3717,10 @@ msgid "No. entries"
 msgstr "Vægtenheder"
 
 #: pro-features/plus/challenge/functions.php:203
+#, fuzzy
+#| msgid "Processing..."
 msgid "Entries to process"
-msgstr ""
+msgstr "Arbejder..."
 
 #: pro-features/plus/challenge/functions.php:204
 msgid "Closed"
@@ -3709,8 +3733,9 @@ msgid "View challenge data"
 msgstr "Se alle uger"
 
 #: pro-features/plus/challenge/functions.php:241
+#, fuzzy
 msgid "Close challenge"
-msgstr ""
+msgstr "Slet"
 
 #: pro-features/plus/challenge/functions.php:242
 #, fuzzy
@@ -3733,8 +3758,10 @@ msgid "% Body Weight"
 msgstr "Din højde:"
 
 #: pro-features/plus/challenge/functions.php:266
+#, fuzzy
+#| msgid "Weight Loss Tracker"
 msgid "Meal Tracker Streaks (Days)"
-msgstr ""
+msgstr "Weight Loss Tracker"
 
 #: pro-features/plus/challenge/functions.php:267
 #, fuzzy
@@ -3985,8 +4012,10 @@ msgid "Please select a photo (png or jpg) for"
 msgstr ""
 
 #: pro-features/plus/meta-fields/functions.php:427
+#, fuzzy
+#| msgid "Delete existing data"
 msgid "Existing photo for this date"
-msgstr ""
+msgstr "Slet eksisterende data"
 
 #: pro-features/plus/meta-fields/functions.php:431
 #, fuzzy
@@ -4220,8 +4249,10 @@ msgid "Add / remove Groups"
 msgstr "Tilføj en ny vægt"
 
 #: pro-features/user-groups.php:572
+#, fuzzy
+#| msgid "Enable"
 msgid "Group ID"
-msgstr ""
+msgstr "Aktiver"
 
 #: pro-features/user-groups.php:574
 #, fuzzy
@@ -4294,8 +4325,9 @@ msgid "Your aim:"
 msgstr "Din højde:"
 
 #: pro-features/user-preferences.php:52
+#, fuzzy
 msgid "About User:"
-msgstr ""
+msgstr "Bruger"
 
 #: pro-features/user-preferences.php:53
 #, fuzzy

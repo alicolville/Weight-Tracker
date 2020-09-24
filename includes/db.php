@@ -140,6 +140,9 @@ function ws_ls_db_entry_set( $data, $user_id, $existing_id = NULL ) {
 
 	ws_ls_stats_update_for_user( $user_id );
 
+	// Delete cache for the given user
+	ws_ls_cache_user_delete( $user_id );
+
 	return $result;
 }
 

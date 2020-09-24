@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight, loss, lose, tracker, bmi, bmr, macronutrient, graph, chart, track, stones, kg, table, calories, awards, email, custom, fields, history, pounds, responsive, chart, measurements, cm, centimeters, inches, photos
 Requires at least: 4.4.9
 Tested up to: 5.5.1
-Stable tag: 8.1
+Stable tag: 8.1.1
 Requires PHP: 7.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -158,12 +158,20 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 == Changelog ==
 
+= 8.1.1 =
+
+* Improvement: Added new settings for tabs. Theme, hide descriptions and when to switch to a dropdown.
+* Bug fix: Re-build language files.
+* Bug fix: Delete user cache upon a Gravity Form submission.
+* Bug fix: Changed word "drunk" to "drank".
+
 = 8.1 =
 
 * Improvement: New export interface that supports large data sets. Data is now prepped and saved to disk in stages which improves performance.
 * Improvement: Ability to download all exports.
 * Improvement: Added new setting to enable and disable challenges functionality.
 * Improvement: Added new setting for email notifications "Include Weight Summary". If enabled, additional data will be included regarding the user's weight entries.
+* Change: By default, tab descriptions shall now be hidden unless enabled in Settings.
 * Bug fix: [wt-progress-bar] - when a user meets or exceeds their target, set the progress to 100%, not 1%!
 * Bug fix: Labels for form fields are correctly linked by ID.
 * Bug fix: Corrected caching issue when fetching entries. Not just caching on ID but all arguments for the lookup.

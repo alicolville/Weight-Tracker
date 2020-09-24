@@ -97,10 +97,11 @@
 
 	    ws_ls_log_add('meta-field-setup', 'Adding some example custom fields' );
 
-	    if ( false === ws_ls_meta_fields_key_exist( 'cups-of-water-drunk-today' ) ) {
+	    if ( false === ws_ls_meta_fields_key_exist( 'cups-of-water-drunk-today' ) &&
+				false === ws_ls_meta_fields_key_exist( 'cups-of-water-drank-today' ) ) {
             // Number
             ws_ls_meta_fields_add([
-                'field_name' => __('Cups of water drunk today?', WE_LS_SLUG),
+                'field_name' => __('Cups of water drank today?', WE_LS_SLUG),
                 'abv' => __('Water', WE_LS_SLUG),
                 'field_type' => 0,
                 'suffix' => __('Cups', WE_LS_SLUG),
