@@ -97,11 +97,6 @@ function ws_ls_photos_shortcode_gallery($user_defined_arguments) {
 
 		foreach ( $photos as $photo ) {
 
-			$weight = ws_ls_weight_display( $photo[ 'kg' ], $arguments['user-id'] );
-			$date   = ws_ls_convert_ISO_date_into_locale( $photo[ 'weight_date' ] );
-
-			$photo['display-text'] = $date['display-date'] . ' &middot; ' . $photo[ 'field_name' ] . ' &middot; ' . $weight[ 'display' ];
-
 			$additional_data = sprintf(' alt="%1$s" data-image="%2$s" data-description="%1$s"',
 				esc_html( $photo['display-text'] ),
 				esc_html( $photo['full'] )
