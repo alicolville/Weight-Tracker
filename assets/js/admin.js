@@ -243,6 +243,10 @@ jQuery( document ).ready(function ($) {
 
   function ws_ls_export_process(  ) {
 
+    if ( 0 === $( '.ws-ls-export-progress-bar' ).length ) {
+      return;
+    }
+
     let data = {  'action'    : 'process_export',
                   'security'  : ws_ls_security[ 'ajax-security-nonce' ],
                   'id'        : $( '.ws-ls-export-progress-bar' ).data( 'export-id' )

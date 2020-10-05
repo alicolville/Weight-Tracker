@@ -161,6 +161,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 = 8.1.2 =
 
 * Bug fix: Changes to ensure [wlt-awards] would render badges correctly.
+* Bug fix: Only fire Ajax call to process export when on the export page.
 * Bug fix: Updated Czech PO file.
 
 = 8.1.1 =
