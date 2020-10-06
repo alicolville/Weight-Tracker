@@ -3,29 +3,18 @@
 defined('ABSPATH') or die('Jog on!');
 
 /**
- * Plugin Name: Weight Tracker
- * Description: Allow your users to track their weight, body measurements, photos and other pieces of custom data. Display in charts, tables, shortcodes and widgets. Manage their data, issue awards, email notifications, etc! Provide advanced data on Body Mass Index (BMI), Basal Metabolic Rate (BMR), Calorie intake, Harris Benedict Formula, Macronutrients Calculator and more.
- * Version: 8.1.2
- * Author: YeKen
- * Author URI: https://www.YeKen.uk
- * License: GPL2
- * Text Domain: weight-loss-tracker
+ * Plugin Name:         Weight Tracker
+ * Description:         Allow your users to track their weight, body measurements, photos and other pieces of custom data. Display in charts, tables, shortcodes and widgets. Manage their data, issue awards, email notifications, etc! Provide advanced data on Body Mass Index (BMI), Basal Metabolic Rate (BMR), Calorie intake, Harris Benedict Formula, Macronutrients Calculator and more.
+ * Version:             8.1.3
+ * Requires at least:   5.2
+ * Requires PHP:        7.2
+ * Author:              Ali Colville
+ * Author URI:          https://www.YeKen.uk
+ * License:             GPL v2 or later
+ * License URI:         https://www.gnu.org/licenses/gpl-2.0.html
+ * Text Domain:         weight-loss-tracker
+ * Domain Path:         /includes/languages
  */
-/*  Copyright 2020 YeKen.uk
-
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License, version 2, as
-    published by the Free Software Foundation.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-*/
 
 define( 'WS_LS_ABSPATH', plugin_dir_path( __FILE__ ) );
 define( 'WE_LS_CURRENT_VERSION', '8.1.2' );
