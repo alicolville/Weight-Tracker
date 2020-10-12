@@ -160,6 +160,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 = 8.1.4 =
 
+* Improvement: Custom field names / questions have been increased from 40 characted to 200 to allow for bigger questions.
 * Bug fix: When a meta field was removed from the graph dataset due to no data, a missing index caused the graph to fail. This has now been corrected.
 
 = 8.1.3 =

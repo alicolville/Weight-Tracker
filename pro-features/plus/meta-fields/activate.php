@@ -21,7 +21,7 @@
         $sql = "CREATE TABLE $table_name (
                 id mediumint(9) NOT NULL AUTO_INCREMENT,
                 field_key varchar(40) NOT NULL,
-                field_name varchar(40) NOT NULL,
+                field_name varchar(200) NOT NULL,
                 abv varchar(5) NOT NULL,
                 suffix varchar(10) NOT NULL,
                 mandatory int DEFAULT 1,
