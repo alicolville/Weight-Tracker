@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight, loss, lose, tracker, bmi, bmr, macronutrient, graph, chart, track, stones, kg, table, calories, awards, email, custom, fields, history, pounds, responsive, chart, measurements, cm, centimeters, inches, photos
 Requires at least: 4.4.9
 Tested up to: 5.5.1
-Stable tag: 8.1.3
+Stable tag: 8.1.4
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -157,6 +157,13 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 8.1 - A new and improved export tool that handles large data sets!
 
 == Changelog ==
+
+= 8.1.4 =
+
+* Improvement: Custom field names / questions have been increased from 40 characters to 200 to allow for bigger questions.
+* Improvement: New setting: Specify whether to use a custom field's name / question or abbreviation for chart legends.
+* Improvement: Added user's email address to email notifications.
+* Bug fix: When a meta field was removed from the graph dataset due to no data, a missing index caused the graph to fail. This has now been corrected.
 
 = 8.1.3 =
 

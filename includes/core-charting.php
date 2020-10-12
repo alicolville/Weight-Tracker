@@ -131,14 +131,18 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 
 		$meta_dataset_index = $chart_config[ 'min-datasets' ]; // Determine data set on whether or not a target weight has been displayed
 
+		$use_abbreviation = ( 'abbv' === get_option( 'ws-ls-abbv-or-question', 'abbv' ) );
+
 		for( $i = 0; $i < count( $chart_config[ 'meta-fields' ] ); $i++ ) {
 
 			$chart_config[ 'meta-fields' ][ $i ][ 'index' ] = $meta_dataset_index;
 
 			$field = $chart_config[ 'meta-fields' ][ $i ];
 
+			$meta_label =
+
 			$graph_data['datasets'][ $meta_dataset_index ] = [
-																'label'             => $field[ 'field_name' ],
+																'label'             => ( $use_abbreviation ) ? $field[ 'abv' ] : $field[ 'field_name' ],
 																'borderColor'       => $field[ 'plot_colour' ],
 																'borderWidth'       => $chart_config[ 'line-thickness' ],
 																'pointRadius'       => $chart_config[ 'point-size' ],
@@ -196,6 +200,10 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 		// Do we have any data for this data set?
 		return ! empty( $dataset['data'] );
 	} );
+
+	// If we strip a meta field out due to above, then we may have a missing array index e.g. 0,1,2,3,5, we need this line to
+	// reshuffle and allow the chart to render.
+	$graph_data['datasets'] = array_values($graph_data['datasets']);
 
 	ws_ls_charting_enqueue_scripts();
 
