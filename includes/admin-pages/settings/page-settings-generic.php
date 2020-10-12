@@ -748,6 +748,26 @@ function ws_ls_settings_page_generic() {
                                                 </tr>
 												<tr>
 													<th colspan="2">
+														<h3><?php echo __( 'Custom Field Options', WE_LS_SLUG ); ?></h3>
+													</th>
+												</tr>
+												<tr  class="<?php echo $disable_if_not_pro_class; ?>">
+													<th scope="row"><?php echo __( 'Field / Question or Abbreviation', WE_LS_SLUG ); ?></th>
+													<td>
+														<?php
+
+														$abbv_or_question = get_option( 'ws-ls-abbv-or-question', 'abbv' );
+
+														?>
+														<select id="ws-ls-abbv-or-question" name="ws-ls-abbv-or-question">
+															<option value="abbv" <?php selected( $abbv_or_question, 'abbv' ); ?>><?php echo __( 'Abbreviation', WE_LS_SLUG ); ?></option>
+															<option value="question" <?php selected( $abbv_or_question, 'question' ); ?>><?php echo __( 'Field / Question', WE_LS_SLUG ); ?></option>
+														</select>
+														<p><?php echo __('When displaying a custom field on a chart, which value should be displayed in the chart\`s legend? The field question or abbreviation.', WE_LS_SLUG); ?></p>
+													</td>
+												</tr>
+												<tr>
+													<th colspan="2">
 														<h3><?php echo __( 'Line Chart Options', WE_LS_SLUG ); ?></h3>
 													</th>
 												</tr>
@@ -1037,6 +1057,7 @@ function ws_ls_register_settings(){
         register_setting( 'we-ls-options-group', 'ws-ls-chart-type' );
         register_setting( 'we-ls-options-group', 'ws-ls-max-points' );
         register_setting( 'we-ls-options-group', 'ws-ls-bezier-curve' );
+		register_setting( 'we-ls-options-group', 'ws-ls-abbv-or-question' );
         register_setting( 'we-ls-options-group', 'ws-ls-point-size' );
         register_setting( 'we-ls-options-group', 'ws-ls-grid-lines' );
 
