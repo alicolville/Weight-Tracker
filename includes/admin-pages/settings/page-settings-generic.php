@@ -944,7 +944,7 @@ function ws_ls_settings_page_generic() {
 														</td>
 													</tr>
 													<tr class="<?php echo $disable_if_not_pro_class; ?>">
-														<th scope="row"><?php echo __( 'Include User\'s email address?', WE_LS_SLUG ); ?></th>
+														<th scope="row"><?php echo __( 'Include user\'s email address?', WE_LS_SLUG ); ?></th>
 														<td>
 															<?php
 															$include_email_address = get_option( 'ws-ls-email-include-email-address', 'yes' );
@@ -953,7 +953,7 @@ function ws_ls_settings_page_generic() {
 																<option value="yes" <?php selected( $include_email_address, 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
 																<option value="no" <?php selected( $include_email_address, 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
 															</select>
-															<p><?php echo __('Receive notifications when a member edits an existing weight / custom field entry.', WE_LS_SLUG); ?></p>
+															<p><?php echo __('Include the user\'s email address within the email body.', WE_LS_SLUG); ?></p>
 														</td>
 													</tr>
 													<tr class="<?php echo $disable_if_not_pro_class; ?>">
