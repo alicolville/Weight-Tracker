@@ -4,6 +4,20 @@ defined('ABSPATH') or die("Jog on!");
 define( 'WE_LS_CACHE_ENABLED', 'yes' === get_option( 'ws-ls-caching', 'yes' ) );
 define( 'WE_LS_CACHE_TIME', DAY_IN_SECONDS );
 define( 'WE_LS_CACHE_SHORT_TIME', 5 * MINUTE_IN_SECONDS );
+define( 'WE_LS_INITIAL_CACHE_NUMBER', 1 );
+/**
+ * When settings are saved, invalidate existing cache by incrementing cache version number.
+ */
+function ws_ls_cache_admin_hooks_update_cache_version() {
+
+	$current_version = get_option( 'ws-ls-cache-number', WE_LS_INITIAL_CACHE_NUMBER );
+
+	$current_version++;
+
+	update_option( 'ws-ls-cache-number', $current_version );
+
+}
+add_action( 'ws_ls_settings_saved', 'ws_ls_cache_admin_hooks_update_cache_version');
 
 /**
  * User caching. From now on, store an array for each user in cache. Each caache key can then be stored in an array element.
@@ -233,7 +247,10 @@ function ws_ls_cache_delete_all() {
  * @return string
  */
 function ws_ls_cache_generate_key( $key ){
-    return sprintf( '%s-%s-%s', WE_LS_SLUG, WE_LS_CURRENT_VERSION, $key );
+
+	$cache_version = get_option( 'ws-ls-cache-number', WE_LS_INITIAL_CACHE_NUMBER );
+
+	return sprintf( 'wt-%s-%s-%s-%d-%s',  WS_LS_IS_PRO_PLUS, WS_LS_IS_PRO, WE_LS_CURRENT_VERSION, $cache_version, $key );
 }
 
 /**

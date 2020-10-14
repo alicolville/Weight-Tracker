@@ -92,6 +92,16 @@ function ws_ls_email_notification( $type, $weight_data ) {
 
 		}
 
+		// Add user's email address into email?
+		if ( 'yes' === get_option( 'ws-ls-email-include-email-address', 'yes' ) ) {
+
+			$current_user = get_userdata( $type[ 'user-id' ] );
+
+			if ( false === empty( $current_user->user_email ) ) {
+				$email_data[ 'data' ] .= sprintf('<h4>%s</h4>', __('User email address', WE_LS_SLUG) );
+				$email_data[ 'data' ] .= sprintf('<p><a href="mailto:%1$s>%1$s</a></p>', esc_html( $current_user->user_email ) );
+			}
+		}
 		// Add weight summary
 		if ( 'yes' === get_option( 'ws-ls-email-include-weight-summary', 'yes' ) ) {
 			$email_data[ 'data' ] .= ws_ls_email_user_summary( $type[ 'user-id' ] );
@@ -120,13 +130,6 @@ add_action( 'wlt-hook-data-added-edited', 'ws_ls_email_notification', 10, 2);
 function ws_ls_email_user_summary( $user_id ) {
 
 	$summary = sprintf('<h4>%s</h4>', __( 'Weight Summary', WE_LS_SLUG ) );
-
-	$current_user = get_userdata( $user_id );
-
-	if ( false === empty( $current_user->user_email ) ) {
-		$summary .= sprintf( '<h5>%s</h5>', __( 'User email address', WE_LS_SLUG ) );
-		$summary .= sprintf( '<p><a href="mailto:%1$s>%1$s</a></p>', esc_html( $current_user->user_email ) );
-	}
 
 	$latest_entry = ws_ls_entry_get_latest( [ 'user-id' => $user_id, 'meta' => false ] );
 

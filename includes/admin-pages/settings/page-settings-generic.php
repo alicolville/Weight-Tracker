@@ -24,6 +24,10 @@ function ws_ls_settings_page_generic() {
 		ws_ls_cache_delete_all();
 	}
 
+	if ( true === isset( $_GET[ 'settings-updated' ] ) ) {
+		do_action( 'ws_ls_settings_saved' );
+	}
+
 	?>
 	<div class="wrap ws-ls-admin-page">
 
@@ -682,7 +686,7 @@ function ws_ls_settings_page_generic() {
 														<td>
 															<?php
 
-																$chart_options  = [ 5, 10, 25, 50, 100 ,200 ];
+																$chart_options  = [ 5, 10, 25, 50, 100, 200 ];
 																$max_points     = get_option( 'ws-ls-max-points', '25' );
 															?>
 															<select id="ws-ls-max-points" name="ws-ls-max-points">
@@ -940,6 +944,19 @@ function ws_ls_settings_page_generic() {
 														</td>
 													</tr>
 													<tr class="<?php echo $disable_if_not_pro_class; ?>">
+														<th scope="row"><?php echo __( 'Include User\'s email address?', WE_LS_SLUG ); ?></th>
+														<td>
+															<?php
+															$include_email_address = get_option( 'ws-ls-email-include-email-address', 'yes' );
+															?>
+															<select id="ws-ls-email-include-email-address" name="ws-ls-email-include-email-address">
+																<option value="yes" <?php selected( $include_email_address, 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+																<option value="no" <?php selected( $include_email_address, 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+															</select>
+															<p><?php echo __('Receive notifications when a member edits an existing weight / custom field entry.', WE_LS_SLUG); ?></p>
+														</td>
+													</tr>
+													<tr class="<?php echo $disable_if_not_pro_class; ?>">
 														<th scope="row"><?php echo __( 'Include Weight Summary?', WE_LS_SLUG ); ?></th>
 														<td>
 															<?php
@@ -949,7 +966,7 @@ function ws_ls_settings_page_generic() {
 																<option value="yes" <?php selected( $include_weight_summary, 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
 																<option value="no" <?php selected( $include_weight_summary, 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
 															</select>
-															<p><?php echo __('Receive notifications when a member edits an existing weight / custom field entry.', WE_LS_SLUG); ?></p>
+															<p><?php echo __('Add additional weight summary information into the email e.g. start weight, previous weight, difference between both, difference between current weight and start weight, etc.', WE_LS_SLUG); ?></p>
 														</td>
 													</tr>
 												</table>
@@ -1084,6 +1101,7 @@ function ws_ls_register_settings(){
 		register_setting( 'we-ls-options-group', 'ws-ls-email-notifications-new' );
 		register_setting( 'we-ls-options-group', 'ws-ls-email-notifications-targets' );
 		register_setting( 'we-ls-options-group', 'ws-ls-email-include-weight-summary' );
+		register_setting( 'we-ls-options-group', 'ws-ls-email-include-email-address' );
 
 		// Third Party
         register_setting( 'we-ls-options-group', 'ws-ls-gf-enable' );
