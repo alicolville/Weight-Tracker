@@ -161,6 +161,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 = 8.1.5 =
 
 * Improvement: New setting to disable adding user's email to notification settings.
+* Improvement: Entire cache is invalidated when settings are saved.
 * Bug fix: Corrected rendering of user email address in notification email (i.e. not part of Weight Summary).
 * Bug fix: Fixed issue when rendering [wt-gallery] where an error would be displayed saying an array element was missing.
 

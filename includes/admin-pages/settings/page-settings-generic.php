@@ -24,6 +24,10 @@ function ws_ls_settings_page_generic() {
 		ws_ls_cache_delete_all();
 	}
 
+	if ( true === isset( $_GET[ 'settings-updated' ] ) ) {
+		do_action( 'ws_ls_settings_saved' );
+	}
+
 	?>
 	<div class="wrap ws-ls-admin-page">
 
