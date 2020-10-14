@@ -38,3 +38,31 @@ function ws_ls_shortcode_form( $user_defined_arguments ) {
 }
 add_shortcode( 'wlt-form', 'ws_ls_shortcode_form' );
 add_shortcode( 'wt-form', 'ws_ls_shortcode_form' );
+
+/**
+ * Render [wt-form-target] form
+ * @param $user_defined_arguments
+ *
+ * @return bool|mixed|string
+ */
+function ws_ls_shortcode_target_form( $user_defined_arguments ) {
+
+	if( false === WS_LS_IS_PRO ) {
+		return false;
+	}
+
+	$arguments = shortcode_atts( [     	'user-id'            => get_current_user_id(),
+										'class'              => false,
+										'hide-titles'        => false,
+										'hide-notes'         => ws_ls_setting_hide_notes(),
+										'redirect-url'       => false,
+										'hide-measurements'  => false,
+										'hide-custom-fields' => false
+	], $user_defined_arguments );
+
+	$arguments[ 'target' ] = true;
+
+	return ws_ls_shortcode_form( $arguments );
+
+}
+add_shortcode( 'wt-form-target', 'ws_ls_shortcode_target_form' );

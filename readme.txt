@@ -160,6 +160,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 = 8.1.6 =
 
+* Improvement: Added a new shortcode [wt-form-target] which renders a target form ( wraps around [wt-form] ).
 * Bug fix: Corrected additional information under "Include User's email address" setting.
 
 = 8.1.5 =
