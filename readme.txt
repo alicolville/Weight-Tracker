@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight, loss, lose, tracker, bmi, bmr, macronutrient, graph, chart, track, stones, kg, table, calories, awards, email, custom, fields, history, pounds, responsive, chart, measurements, cm, centimeters, inches, photos
 Requires at least: 4.4.9
 Tested up to: 5.5.1
-Stable tag: 8.1.6
+Stable tag: 8.1.7
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -157,6 +157,11 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 8.1 - A new and improved export tool that handles large data sets!
 
 == Changelog ==
+
+= 8.1.7 =
+
+* Improvement: Made it clearer that challenges are a Pro Plus feature.
+* Improvement: Added shortened challenges shortcodes.
 
 = 8.1.6 =
 

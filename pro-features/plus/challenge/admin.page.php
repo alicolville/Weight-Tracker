@@ -53,7 +53,7 @@ function ws_ls_challenges_admin_page() {
                 <div class="meta-box-sortables ui-sortable">
 	                <?php
 		                if ( true !== WS_LS_IS_PRO_PLUS ) {
-			                ws_ls_display_pro_upgrade_notice();
+			                ws_ls_display_pro_upgrade_notice( 'pro-plus' );
 		                }
 	                ?>
                     <?php if ( true === in_array( $mode, [ 'delete', 'list' ] ) ): ?>

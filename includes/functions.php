@@ -1051,15 +1051,26 @@ function ws_ls_display_max_server_upload_size() {
 /**
  * Display upgrade notice
  *
+ * @param string $prompt_level
  */
-function ws_ls_display_pro_upgrade_notice( ) {
-?>
+function ws_ls_display_pro_upgrade_notice( $prompt_level = '' ) {
 
+
+	// Is there a certain Pro level we're prompting for?
+	if ( 'pro-plus' === $prompt_level ) {
+		$title 		= __( 'Upgrade to Pro Plus and get more features!', WE_LS_SLUG );
+		$message 	= __( 'Upgrade to Pro Plus version of this plugin to get additional features like Challenges, Harris Benedict, BMR, Macronutrients and much more!', WE_LS_SLUG );
+	} else {
+		$title 		= __( 'Upgrade Weight Tracker and get more features!', WE_LS_SLUG );
+		$message 	= __( 'Upgrade to the latest Pro or Pro Plus version of this plugin to manipulate your user\'s data, add custom fields, BMR, Macronutrients and much more!', WE_LS_SLUG );
+	}
+
+	?>
     <div class="postbox ws-ls-advertise">
-        <h3 class="hndle"><span><?php echo __( 'Upgrade Weight Tracker and get more features!', WE_LS_SLUG); ?> </span></h3>
+        <h3 class="hndle"><span><?php echo $title; ?> </span></h3>
         <div style="padding: 0px 15px 0px 15px">
-            <p><?php echo __( 'Upgrade to the latest Pro or Pro Plus version of this plugin to manipulate your user\'s data, add custom fields, BMR, Macro Nutrients and much more!', WE_LS_SLUG); ?></p>
-            <p><a href="<?php echo esc_url( admin_url('admin.php?page=ws-ls-license') ); ?>" class="button-primary"><?php echo __( 'Read more and Upgrade to Pro / Pro Plus Version', WE_LS_SLUG); ?></a></p>
+            <p><?php echo $message; ?></p>
+            <p><a href="<?php echo esc_url( admin_url('admin.php?page=ws-ls-license') ); ?>" class="button-primary"><?php echo __( 'Read more and upgrade', WE_LS_SLUG); ?></a></p>
         </div>
     </div>
 
