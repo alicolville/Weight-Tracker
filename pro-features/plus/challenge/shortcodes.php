@@ -100,5 +100,5 @@ function ws_ls_challenges_view_entries_guide() {
         $arguments .= ' opted-in="0"';
     }
 
-    printf( '<p>[wlt-challenges id="%1$d"%2$s show-filters="false" sums-and-averages="true"]</p>', $challenge_id, $arguments );
+    printf( '<p>[wt-challenges id="%1$d"%2$s show-filters="false" sums-and-averages="true"]</p>', $challenge_id, $arguments );
 }
