@@ -48,6 +48,7 @@ function ws_ls_challenges_shortcodes_opt_in() {
 	);
 }
 add_shortcode( 'wlt-challenges-optin', 'ws_ls_challenges_shortcodes_opt_in' );
+add_shortcode( 'wt-challenges-optin', 'ws_ls_challenges_shortcodes_opt_in' );
 
 /**
  * Display Challenge entries
@@ -65,7 +66,7 @@ function ws_ls_challenges_shortcodes_list_entries( $user_defined_arguments ) {
     return ws_ls_challenges_view_entries( $user_defined_arguments );
 }
 add_shortcode( 'wlt-challenges', 'ws_ls_challenges_shortcodes_list_entries' );
-
+add_shortcode( 'wt-challenges', 'ws_ls_challenges_shortcodes_list_entries' );
 /**
  * Examine filters and render out the example shortcode
  */
