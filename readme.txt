@@ -161,6 +161,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 = 8.1.7 =
 
 * Improvement: Made it clearer that challenges are a Pro Plus feature.
+* Improvement: Added shortened challenges shortcodes.
 
 = 8.1.6 =
 
