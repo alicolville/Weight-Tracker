@@ -1,9 +1,9 @@
 ﻿=== Weight Tracker ===
 Contributors: aliakro
-Tags: weight, loss, lose, tracker, bmi, bmr, macronutrient, graph, chart, track, stones, kg, table, calories, awards, email, custom, fields, history, pounds, responsive, chart, measurements, cm, centimeters, inches, photos
+Tags: weight,tracker,chart,bmi,bmr,macronutrient,measure,awards,custom fields,history,measurements,data
 Requires at least: 4.4.9
 Tested up to: 5.5.1
-Stable tag: 8.1.7
+Stable tag: 8.1.8
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -157,6 +157,13 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 8.1 - A new and improved export tool that handles large data sets!
 
 == Changelog ==
+
+= 8.1.8 =
+
+* Improvement: Added 50% off voucher for Prp Plus upgrade.
+* Bug fix: Added shortened shortcodes for wlt-if-1, etc e.g. wlt-if-1 > wt-if-1
+* Bug fix: Challenges not shown when "Close" icon was pressed.
+* Updated plugin tags.
 
 = 8.1.7 =
 

@@ -17,7 +17,7 @@ function ws_ls_challenges_admin_page() {
     }
 
     if ( 'delete' === $mode && false !== $challenge_id ) {
-        ws_ls_challenges_delete( $challenge_id);
+        ws_ls_challenges_delete( $challenge_id );
     }
 
     if ( 'true' === ws_ls_post_value( 'add-challenge', false ) ) {
@@ -56,7 +56,7 @@ function ws_ls_challenges_admin_page() {
 			                ws_ls_display_pro_upgrade_notice( 'pro-plus' );
 		                }
 	                ?>
-                    <?php if ( true === in_array( $mode, [ 'delete', 'list' ] ) ): ?>
+                    <?php if ( true === in_array( $mode, [ 'delete', 'close', 'list' ] ) ): ?>
                         <div class="postbox">
                             <h2 class="hndle"><span><?php echo __( 'Current Challenges', WE_LS_SLUG ); ?></span></h2>
                             <div class="inside">

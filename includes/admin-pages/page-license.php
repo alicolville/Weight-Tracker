@@ -112,8 +112,9 @@ function ws_ls_advertise_pro() {
                                     <center>
                                         <h3><?php echo __('In case you need, your <strong>Site Hash</strong> is', WE_LS_SLUG); ?>: <?php echo ws_ls_generate_site_hash(); ?></h3>
 
+                                        <?php
 
-                                        <?php if ($display_pro_plus_marketing || $display_pro_marketing)  {
+										if ( false === WS_LS_IS_PRO && false === WS_LS_IS_PRO_PLUS )  {
 
                                             echo sprintf('<a href="%s?hash=%s&license=%s" rel="noopener noreferrer" target="_blank" class="button-primary ws-ls-upgrade-button"><i class="fa fa-angellist"></i> %s</a>',
                                                 WE_LS_FREE_TRIAL_URL,
@@ -122,28 +123,26 @@ function ws_ls_advertise_pro() {
                                                 __( 'Get a free 7 day trial!', WE_LS_SLUG )
                                             );
 
-                                            }
+										}
 
-										    if ($display_pro_plus_marketing)  {
+										if ( $display_pro_plus_marketing )  {
 
-                                            $text = __( 'Upgrade to Pro Plus for', WE_LS_SLUG) . ' &pound;' . $proprice . ' ' . __('a year', WE_LS_SLUG);
-                                            $link = WE_LS_UPGRADE_TO_PRO_PLUS_URL;
+											$text = __( 'Upgrade to Pro Plus for', WE_LS_SLUG) . ' &pound;' . $proprice . ' ' . __('a year', WE_LS_SLUG);
+											$link = WE_LS_UPGRADE_TO_PRO_PLUS_URL;
 
-										    echo sprintf('<a href="%s?hash=%s&license=%s" rel="noopener noreferrer" target="_blank" class="button-primary ws-ls-upgrade-button"><i class="fa fa-plus"></i> <i class="fa fa-plus"></i> %s</a>',
-                                                $link,
-                                                ws_ls_generate_site_hash(),
-                                                ws_ls_license_get_old_or_new(),
-                                                $text
-                                            );
+											echo sprintf('<a href="%s?hash=%s&license=%s" rel="noopener noreferrer" target="_blank" class="button-primary ws-ls-upgrade-button"><i class="fa fa-plus"></i> <i class="fa fa-plus"></i> %s</a>',
+												$link,
+												ws_ls_generate_site_hash(),
+												ws_ls_license_get_old_or_new(),
+												$text
+											);
 
-                                        } ?>
+										}
+										if ( $display_pro_marketing ) :
 
-
-										<?php if ($display_pro_marketing) : ?>
-      											<?php $button_text = ('pro-old' === $license_type) ?
-												__('Switch to a yearly Pro license for ', WE_LS_SLUG) . '&pound;' . $price . __(' a year', WE_LS_SLUG) :
-												__('Upgrade to Pro for ', WE_LS_SLUG) . '&pound;' . $price . __(' a year', WE_LS_SLUG); ?>
-
+												$button_text = ('pro-old' === $license_type) ?
+																	__('Switch to a yearly Pro license for ', WE_LS_SLUG) . '&pound;' . $price . __(' a year', WE_LS_SLUG) :
+																			__('Upgrade to Pro for ', WE_LS_SLUG) . '&pound;' . $price . __(' a year', WE_LS_SLUG); ?>
 											<a href="<?php echo WE_LS_UPGRADE_TO_PRO_URL; ?>?hash=<?php echo ws_ls_generate_site_hash(); ?>" target="_blank" rel="noopener noreferrer" class="button-primary ws-ls-upgrade-button"><i class="fa fa-plus"></i> <?php echo $button_text; ?></a>
 										<?php endif; ?>
 									</center>
@@ -230,7 +229,13 @@ function ws_ls_advertise_pro() {
 					<div id="post-body" class="metabox-holder columns-3">
 						<div id="post-body-content">
 							<div class="meta-box-sortables ui-sortable">
-								<?php if ($display_pro_plus_marketing): ?>
+								<?php if ( false === WS_LS_IS_PRO_PLUS && true === WS_LS_IS_PRO ): ?>
+									<div class="postbox">
+										<h3 class="hndle"><span><?php echo __( '50% off - When upgrading from Pro to Pro Plus', WE_LS_SLUG); ?> </span></h3>
+										<div style="padding: 0px 15px 0px 15px">
+											<?php wl_ls_setup_discount_to_pro_plus_html(); ?>
+										</div>
+									</div>
 									<div class="postbox ws-ls-advertise-pro-plus">
 										<h3 class="hndle highlight-title">
                                             <?php echo __('Pro Plus Features', WE_LS_SLUG); ?>
