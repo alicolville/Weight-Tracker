@@ -160,6 +160,9 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 = 8.1.8 =
 
+* Bug fix: Added shortened shortcodes for wlt-if-1, etc e.g. wlt-if-1 > wt-if-1
+* Updated plugin tags.
+
 = 8.1.7 =
 
 * Improvement: Made it clearer that challenges are a Pro Plus feature.

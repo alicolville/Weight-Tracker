@@ -215,6 +215,7 @@ function ws_ls_shortcode_if_level_one( $user_defined_arguments, $content = null 
     return ws_ls_shortcode_if( $user_defined_arguments, $content, 1 );
 }
 add_shortcode( 'wlt-if-1', 'ws_ls_shortcode_if_level_one' );
+add_shortcode( 'wt-if-1', 'ws_ls_shortcode_if_level_one' );
 
 /**
  * Shortcode to allow nesting of [wlt-if]. This is for [wlt-if-2]
@@ -227,6 +228,7 @@ function ws_ls_shortcode_if_level_two( $user_defined_arguments, $content = null 
     return ws_ls_shortcode_if( $user_defined_arguments, $content, 2 );
 }
 add_shortcode( 'wlt-if-2', 'ws_ls_shortcode_if_level_two' );
+add_shortcode( 'wt-if-2', 'ws_ls_shortcode_if_level_two' );
 
 /**
  * Shortcode to allow nesting of [wlt-if]. This is for [wlt-if-3]
@@ -239,3 +241,4 @@ function ws_ls_shortcode_if_level_three( $user_defined_arguments, $content = nul
     return ws_ls_shortcode_if( $user_defined_arguments, $content, 3 );
 }
 add_shortcode( 'wlt-if-3', 'ws_ls_shortcode_if_level_three' );
+add_shortcode( 'wt-if-3', 'ws_ls_shortcode_if_level_three' );
