@@ -161,6 +161,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 = 8.1.9 =
 
 * Bug fix: Persist querystring values when a weight or target form is submitted.
+* Bug fix: Persist querystring values when a user deletes their data.
 
 = 8.1.8 =
 
