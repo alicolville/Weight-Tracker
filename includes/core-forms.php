@@ -223,7 +223,7 @@ function ws_ls_form_init( $arguments = [] ) {
 	$arguments[ 'html' ] .= ws_ls_form_title( $title, $arguments[ 'hide-titles' ] );
 
 	// Allow others to determine where form is posted too
-	$arguments[ 'post-url' ] = apply_filters( 'wlt_form_url', get_permalink() );
+	$arguments[ 'post-url' ] = apply_filters( 'wlt_form_url', ws_ls_get_url() );
 
 	// Are meta fields enabled for this form?
 	$arguments[ 'meta-enabled' ]  = ( false === $arguments[ 'is-target-form' ] &&
