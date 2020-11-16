@@ -12,7 +12,7 @@ $ws_ls_wlt_already_placed   = false;
  * @throws Exception
  */
 function ws_ls_shortcode( $user_defined_arguments ) {
-return '<div id="root"></div>';
+
 		global $save_response;
 		global $ws_ls_wlt_already_placed;
 
