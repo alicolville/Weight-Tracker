@@ -160,10 +160,12 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
 
 	    $html_output .= ws_ls_title( __( 'Delete existing data', WE_LS_SLUG ) );
 
-	    $html_output .= sprintf( '<form action="%s?user-delete-all=true" class="ws-ls-user-delete-all" method="post">
+	    $post_url = add_query_arg( 'user-delete-all', 'true', ws_ls_get_url() );
+
+	    $html_output .= sprintf( '<form action="%s" class="ws-ls-user-delete-all" method="post">
 											<div class="ws-ls-error-summary">
                 								<ul></ul>
-                							</div>', esc_url( get_permalink() ) );
+                							</div>', esc_url( $post_url ) );
 
 	    $html_output .= ws_ls_form_field_select( [ 'key'        => 'ws-ls-delete-all',
 	                                               'label'      => __( 'The button below allows you to clear your existing weight history. Confirm:', WE_LS_SLUG ),
