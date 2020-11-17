@@ -1,7 +1,12 @@
 import React from 'react';
 import { render } from 'react-dom';
+import WeightTracker from './components/WeightTracker';
 
 render(
-  <h1>YeKen Test</h1>,
+
+  <div>
+    <WeightTracker />
+  </div>
+  ,
   document.querySelector( '#yk-wt-react' ),
 );

@@ -20,8 +20,8 @@ function ws_ls_react_enqueue() {
 function ws_ls_react_config() {
 
 	$config = [
-				'locale' => ws_ls_react_config_locale()
-
+				'locale'    => ws_ls_react_config_locale(),
+				'data'      => ws_ls_entries_get( [] )
 	];
 
 	return apply_filters( 'wlt-filter-react-config', $config );
@@ -33,8 +33,9 @@ function ws_ls_react_config() {
  */
 function ws_ls_react_config_locale() {
 
-	$strings = [
-		'target' => __( 'Target', WE_LS_SLUG )
+	$strings = [    'kg'        => __( 'Kg', WE_LS_SLUG ),
+					'save'      => __( 'Save', WE_LS_SLUG ),
+					'target'    => __( 'Target', WE_LS_SLUG )
 
 	];
 
