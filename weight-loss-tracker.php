@@ -150,6 +150,7 @@ require_once( WS_LS_ABSPATH . 'pro-features/plus/bmr.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/plus/harris-benedict.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/plus/macronutrient-calculator.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/export/inc.php' );
+require_once( WS_LS_ABSPATH . 'includes/api.php' );
 require_once( WS_LS_ABSPATH . 'includes/react/inc.php' );
 
 // Gravity Forms

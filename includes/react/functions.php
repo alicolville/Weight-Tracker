@@ -19,7 +19,7 @@ function ws_ls_react_enqueue() {
  */
 function ws_ls_react_config() {
 
-	$config = [
+	$config = [	'nonce'		=> wp_create_nonce( 'wp_rest' ),
 				'locale'    => ws_ls_react_config_locale(),
 				'data'      => ws_ls_entries_get( [] )
 	];
