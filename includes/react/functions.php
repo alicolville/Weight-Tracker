@@ -19,9 +19,12 @@ function ws_ls_react_enqueue() {
  */
 function ws_ls_react_config() {
 
+	$user_id = get_current_user_id();
+
 	$config = [	'nonce'		=> wp_create_nonce( 'wp_rest' ),
 				'locale'    => ws_ls_react_config_locale(),
-				'data'      => ws_ls_entries_get( [] )
+				'data'      => ws_ls_entries_get( [] ),
+				'target'	=> ws_ls_target_get( $user_id )
 	];
 
 	return apply_filters( 'wlt-filter-react-config', $config );
