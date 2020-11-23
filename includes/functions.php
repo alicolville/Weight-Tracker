@@ -246,9 +246,10 @@ function ws_ls_week_ranges_display( $week_ranges, $selected_week_number ) {
  * @param null $user_id
  * @param null $field
  *
+ * @param bool $add_fields_if_no_target
  * @return void|null
  */
-function ws_ls_target_get( $user_id = NULL, $field = NULL ) {
+function ws_ls_target_get( $user_id = NULL, $field = NULL, $add_fields_if_no_target = false ) {
 
 	$user_id 	= ( NULL === $user_id ) ? get_current_user_id() : $user_id;
 
@@ -257,6 +258,9 @@ function ws_ls_target_get( $user_id = NULL, $field = NULL ) {
 
 	if ( false === empty( $kg ) ) {
 		$weight = ws_ls_weight_display( $kg );
+		$weight[ 'exists' ] = true;
+	} else if( true === $add_fields_if_no_target ) {
+		$weight = [ 'format' => ws_ls_setting( 'weight-unit', $user_id ), 'exists' => false ];
 	}
 
 	return ( false === empty( $weight[ $field ] ) ) ? $weight[ $field ] : $weight;

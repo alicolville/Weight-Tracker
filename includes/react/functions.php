@@ -24,7 +24,7 @@ function ws_ls_react_config() {
 	$config = [	'nonce'		=> wp_create_nonce( 'wp_rest' ),
 				'locale'    => ws_ls_react_config_locale(),
 				'data'      => ws_ls_entries_get( [] ),
-				'target'	=> ws_ls_target_get( $user_id )
+				'target'	=> ws_ls_target_get( $user_id, NULL, true )
 	];
 
 	return apply_filters( 'wlt-filter-react-config', $config );

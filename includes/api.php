@@ -43,7 +43,7 @@ function ws_ls_api_permission_check() {
  * @return void|null
  */
 function ws_ls_api_target_get() {
-	return ws_ls_target_get( get_current_user_id() );
+	return ws_ls_target_get( get_current_user_id(), NULL, true );
 }
 
 /**
