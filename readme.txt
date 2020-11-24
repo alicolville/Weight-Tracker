@@ -1,9 +1,9 @@
 ﻿=== Weight Tracker ===
 Contributors: aliakro
 Tags: weight,tracker,chart,bmi,bmr,macronutrient,measure,awards,custom fields,history,measurements,data
-Requires at least: 4.4.9
-Tested up to: 5.5.1
-Stable tag: 8.1.9
+Requires at least: 5.2
+Tested up to: 5.6
+Stable tag: 8.1.10
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -157,6 +157,10 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 8.1 - A new and improved export tool that handles large data sets!
 
 == Changelog ==
+
+= 8.1.10 =
+
+* Tested with 5.6 and updated tested upto statement.
 
 = 8.1.9 =
 
