@@ -1,9 +1,8 @@
 import React from 'react';
 import { render } from 'react-dom';
 import WeightTracker from './components/WeightTracker';
-console.log('here');
-render(
 
+render(
   <div>
     <WeightTracker />
   </div>
