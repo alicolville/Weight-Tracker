@@ -9,29 +9,24 @@ class TargetForm extends React.Component {
     this.state = { target: this.props.target };
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleSave = this.handleSave.bind(this);
   }
 
+  /**
+   * Handle data coming up from the weight fields
+   * @param new_target
+   */
   handleChange( new_target ) {
-console.log(this.state.target , new_target);
+
     let update = Object.assign( this.state.target , new_target );
 
-    this.setState({ target: update } );
-
-    //console.log( this.state.target , new_target,update );
-
-    // let target = this.state.target;
-    //
-    // target[ 'kg' ] = new_target;
-    //
-    // this.setState( { target: new_target } );
-    //
-    // console.log( this.state.target );
+    this.setState({ target: update });
   }
 
   handleSave() {
 
-
-  //  this.props.onClick()
+    console.log( 'SAVE');
+    this.props.Save( this.state.target )
   }
 
   render() {
@@ -46,7 +41,7 @@ console.log(this.state.target , new_target);
 
     return(
             <div>
-              <h1>{ws_ls_react.locale.target}: {this.state.target.kg}</h1>
+              <h1>{ws_ls_react.locale.target}: {this.state.target.display}</h1>
               {form_fields}
               <button onClick={ () => this.handleSave() }>{ws_ls_react.locale.save}</button>
             </div>
