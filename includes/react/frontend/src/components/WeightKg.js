@@ -6,21 +6,23 @@ class WeightKg extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { value: this.props.value }
+    this.state = { kg: this.props.value }
 
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange( event ) {
-    this.setState( { value: event.target.value } );
-    window.console.log(this.state.value);
-    this.props.handleChange( event.target.value );
+  handleChange( e ) {
+
+    this.setState( { kg: e.target.value } );
+
+    // Throw new weight to parent to process
+    this.props.handleChange( { format : 'kg', kg : this.state.kg } );
   }
 
   render() {
 
     return( <div className="ws-ls-form-row">
-                <input type="number" onChange={ this.handleChange } value={this.state.value} id={this.props.name} name={this.props.name}
+                <input type="number" onChange={ this.handleChange } value={this.state.kg} id={this.props.name} name={this.props.name}
                        placeholder={ws_ls_react.locale.kg} step="any"  size="4" min="0" max="9999"/>
     </div>
 

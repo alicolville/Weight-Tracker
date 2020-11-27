@@ -9,9 +9,11 @@ class WeightTracker extends React.Component {
     this.state = { target: ws_ls_react.target, data: ws_ls_react.data };
   }
 
-  handleClick() {
+  handleClick( new_target ) {
 
-   // this.setState( { target: this.state.target['graph-value'] + 10 } )
+    console.log( 'click in WeightTracker.js: ' + new_target )
+
+    this.setState( { target: new_target } )
 
   }
 
