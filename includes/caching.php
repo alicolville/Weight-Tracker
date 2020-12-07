@@ -29,6 +29,11 @@ add_action( 'ws_ls_settings_saved', 'ws_ls_cache_admin_hooks_update_cache_versio
  */
 function ws_ls_cache_user_get( $user_id, $key ) {
 
+	// Cache enabled?
+	if( false === WE_LS_CACHE_ENABLED ) {
+		return NULL;
+	}
+
 	if ( true === empty( $user_id ) ) {
 		$user_id = -1;
 	}
@@ -81,6 +86,11 @@ function ws_ls_cache_user_get_all( $user_id = NULL ) {
  * @param float|int $time_to_expire
  */
 function ws_ls_cache_user_set( $user_id, $key, $value, $time_to_expire = WE_LS_CACHE_TIME ) {
+
+	// Cache enabled?
+	if( false === WE_LS_CACHE_ENABLED ) {
+		return;
+	}
 
 	if ( true === empty( $user_id ) ) {
 		$user_id        = -1;
