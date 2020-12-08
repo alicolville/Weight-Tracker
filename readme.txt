@@ -160,6 +160,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 = 8.1.11 =
 
+* Improvement: Added helper CSS classes to <body> to support different licenses.
 * Bug fix: Don't attempt to set/get user cache on a group basis when cache has been disabled.
 
 = 8.1.10 =
