@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight,tracker,chart,bmi,bmr,macronutrient,measure,awards,custom fields,history,measurements,data
 Requires at least: 5.2
 Tested up to: 5.6
-Stable tag: 8.1.10
+Stable tag: 8.1.11
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -157,6 +157,11 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 8.1 - A new and improved export tool that handles large data sets!
 
 == Changelog ==
+
+= 8.1.11 =
+
+* Improvement: Added helper CSS classes to <body> to support different licenses.
+* Bug fix: Don't attempt to set/get user cache on a group basis when cache has been disabled.
 
 = 8.1.10 =
 
