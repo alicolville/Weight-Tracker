@@ -196,3 +196,19 @@ function wlt_user_action_links( $actions, $user_object ) {
     return $actions;
 }
 add_filter( 'user_row_actions', 'wlt_user_action_links', 10, 2 );
+
+/**
+ * Add a CSS classes to the <body>
+ * @param $classes
+ * @return array
+ */
+function wlt_body_class( $classes ) {
+
+	$classes[]  = 'yk-wt';
+	$classes[]  = 'yk-wt-' . ws_ls_generate_site_hash();
+	$license    = ws_ls_has_a_valid_license();
+	$classes[]  = sprintf( 'yk-wt-%s', ( false === empty( $license ) ) ? esc_attr( $license ) : 'no-license' );
+
+	return $classes;
+}
+add_filter( 'body_class','wlt_body_class' );
