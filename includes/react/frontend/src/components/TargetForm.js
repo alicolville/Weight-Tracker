@@ -19,13 +19,16 @@ class TargetForm extends React.Component {
   handleChange( new_target ) {
 
     let update = Object.assign( this.state.target , new_target );
+    console.log( 'changing in targetform', JSON. stringify(update));
 
     this.setState({ target: update });
   }
 
   handleSave() {
 
-    console.log( 'SAVE');
+    // TODO: Do we actually have a chance in Kg value? If not, may as well stop?
+
+    console.log( 'saving in targetform', JSON. stringify(this.state.target));
     this.props.Save( this.state.target )
   }
 
@@ -33,7 +36,7 @@ class TargetForm extends React.Component {
 
     let form_fields;
 
-    if ( 'kg' === this.state.target.format ) {
+    if ( 'kg' === this.props.target.format ) {
       form_fields = <WeightKg value={this.props.target['kg']} handleChange={this.handleChange} />
     } else {
       form_fields = <div>Hello</div>
