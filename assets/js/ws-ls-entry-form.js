@@ -11,6 +11,11 @@ jQuery( document ).ready( function ( $ ) {
         let is_dob_field    = $( this ).hasClass( 'ws-ls-dob-field' );
         let year_range      = ( true === is_dob_field ) ? '-100:-1' : '-100:+0';
 
+        // Challenge field?
+        if ( false === is_dob_field && $( this ).hasClass( 'we-ls-challenge-datepicker' ) ) {
+          year_range = ( true === is_dob_field ) ? '-100:-1' : '-100:+100';
+        }
+
         let options = {
             changeMonth         : true,
             changeYear          : true,
