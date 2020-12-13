@@ -114,9 +114,9 @@ function ws_ls_challenges_admin_page() {
                                     <label for="ws-ls-name"><?php echo __( 'Name of challenge', WE_LS_SLUG ); ?></label>
                                     <input type="text" name="ws-ls-name" id="ws-ls-name" tabindex="1" value="<?php echo ws_ls_post_value( 'ws-ls-name', '' ); ?>" />
                                     <label for="ws-ls-start-date"><?php echo __( 'Start Date (only consider entries from this date)', WE_LS_SLUG ); ?></label>
-                                    <input type="text" name="ws-ls-start-date" id="ws-ls-start-date" tabindex="2" value="<?php echo ws_ls_post_value( 'ws-ls-start-date', false,'' ); ?>" class="we-ls-datepicker" />
+                                    <input type="text" name="ws-ls-start-date" id="ws-ls-start-date" tabindex="2" value="<?php echo ws_ls_post_value( 'ws-ls-start-date', false,'' ); ?>" class="we-ls-datepicker we-ls-challenge-datepicker" />
                                     <label for="ws-ls-end-date"><?php echo __( 'End Date (only consider entries to this date)', WE_LS_SLUG ); ?></label>
-                                    <input type="text" name="ws-ls-end-date" id="ws-ls-end-date" tabindex="3" value="<?php echo ws_ls_post_value( 'ws-ls-end-date', false,'' ); ?>" class="we-ls-datepicker" />
+                                    <input type="text" name="ws-ls-end-date" id="ws-ls-end-date" tabindex="3" value="<?php echo ws_ls_post_value( 'ws-ls-end-date', false,'' ); ?>" class="we-ls-datepicker we-ls-challenge-datepicker" />
                                     <br />
                                     <input type="hidden" name="add-challenge" value="true" />
                                     <input type="submit" class="button" value="Add" <?php if ( false === ws_ls_challenges_is_enabled() ) { echo ' disabled'; } ?>  />

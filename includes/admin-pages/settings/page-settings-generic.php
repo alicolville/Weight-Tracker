@@ -207,7 +207,7 @@ function ws_ls_settings_page_generic() {
 															<option value="yes" <?php selected( $hide_descriptions, 'yes' ); ?>><?php echo __( 'Yes', WE_LS_SLUG ); ?></option>
 															<option value="no" <?php selected( $hide_descriptions, 'no' ); ?>><?php echo __( 'No', WE_LS_SLUG ); ?></option>
 														</select>
-														<p> <?php echo __( 'If enabled, the description text under each tab title shall be hidden', WE_LS_SLUG ); ?> <a href="https://weight.yeken.uk/challenges/" target="_blank"><?php echo __( 'Read more about Challenges', WE_LS_SLUG ); ?></a></p>
+														<p> <?php echo __( 'If enabled, the description text under each tab title shall be hidden', WE_LS_SLUG ); ?>.</p>
 													</td>
 												</tr>
 												<tr>
