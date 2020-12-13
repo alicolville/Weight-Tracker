@@ -161,6 +161,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 = 8.1.12 =
 
 * Bug fix: Challenge datepicker can now pick years in the future.
+* Bug fix: Removed "Read more about challenges" link under hide tab descriptions.
 
 = 8.1.11 =
 
