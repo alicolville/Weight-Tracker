@@ -512,12 +512,13 @@ function ws_ls_emailer_add( $slug, $subject, $email ) {
 	$email     			= ws_ls_emailer_replace_placeholders( $email_template, [ 'message' => $email ] );
 
 	$data = [
-		'slug' => $slug,
-		'subject' => $subject,
-		'email' => $email
+				'slug' 		=> $slug,
+				'subject' 	=> $subject,
+				'email' 	=> $email,
+				'editable'	=> 1
 	];
 
-	$result = $wpdb->insert( $wpdb->prefix . WE_LS_EMAIL_TABLENAME , $data, [ '%s', '%s', '%s' ] );
+	$result = $wpdb->insert( $wpdb->prefix . WE_LS_EMAIL_TABLENAME , $data, [ '%s', '%s', '%s', '%d' ] );
 
 	return ( false === $result ) ? false : $wpdb->insert_id;
 }
