@@ -24,11 +24,26 @@ function ws_ls_settings_email_manager() {
 				<div class="meta-box-sortables ui-sortable">
 
 					<div class="postbox">
-						<h3 class="hndle"><span><?php echo __( 'Email Manager', WE_LS_SLUG); ?></span></h3>
+						<h3 class="hndle"><span><?php echo __( 'Email Manager', WE_LS_SLUG ); ?></span></h3>
 
 						<div class="inside">
+							<?php
 
+								if ( 'y' === ws_ls_post_value( 'save' ) ){
 
+									//TODO: Add save logic here
+									
+									ws_ls_display_notice('test');
+								}
+
+								$slug = ws_ls_querystring_value( 'slug' );
+
+								if ( false === empty( $slug ) ) {
+									ws_ls_settings_email_manager_edit_form( $slug );
+								} else {
+									ws_ls_settings_email_manager_all_list();
+								}
+							?>
 						</div>
 						<!-- .inside -->
 
@@ -53,3 +68,55 @@ function ws_ls_settings_email_manager() {
 	<?php
 
 }
+
+/**
+ * Render all email templates
+ */
+function ws_ls_settings_email_manager_all_list() {
+
+	$email_templates = ws_ls_emailer_get_all();
+
+	if ( true === empty( $email_templates ) ) {
+		printf( '<p>%s</p>', __( 'No email templates were found in the database.', WE_LS_SLUG ) );
+	}
+
+	printf( '<p>%s:</p><ul>', __( 'Select an email to edit', WE_LS_SLUG ) );
+
+	foreach ( $email_templates as $template ) {
+
+		printf( '<li><a href="%s">%s</a></li>', ws_ls_emailer_edit_link( $template[ 'slug' ] ), esc_html( $template[ 'subject' ] ) );
+
+	}
+
+	echo '</ul>';
+}
+
+/**
+ * Render a form to edit email
+ * @param $slug
+ */
+function ws_ls_settings_email_manager_edit_form( $slug ) {
+
+
+	$template = ws_ls_emailer_get( $slug );
+
+	if ( true === empty( $template ) ) {
+		echo __( 'An error occurred loading the email template', WE_LS_SLUG );
+	}
+
+	printf( '<form action="%1$s" method="POST">
+						<input type="hidden" name="save" value="y" />
+						<input type="hidden" name="slug" value="%2$s" />',
+						ws_ls_emailer_edit_link(),
+						esc_attr( $slug )
+	);
+
+	echo ws_ls_form_field_text( [ 'name' => 'subject', 'value' => $template[ 'subject' ], 'title' => __( 'Subject', WE_LS_SLUG ), 'show-label' => true, 'css-class' => 'widefat', 'required' => true ] );
+
+	echo ws_ls_form_field_textarea( [ 'name' => 'email', 'value' => $template[ 'email' ], 'title' => __( 'Body', WE_LS_SLUG ), 'show-label' => true, 'css-class' => 'widefat', 'required' => true, 'rows' => 10  ] );
+
+	printf( '<button name="submit_button" type="submit" tabindex="%1$d" class="button ws-ls-remove-on-submit" >%2$s</button>', ws_ls_form_tab_index_next(), __( 'Save', WE_LS_SLUG ) );
+
+	echo '</form>';
+}
+

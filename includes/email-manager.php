@@ -471,13 +471,20 @@ function ws_ls_emailer_get( $slug ) {
 
 /**
  * Get all email templates
+ * @param bool $only_editable
  * @return array|bool|object|null
  */
-function ws_ls_emailer_get_all() {
+function ws_ls_emailer_get_all( $only_editable = true ) {
 
 	global $wpdb;
 
-	return $wpdb->get_results( 'Select * from ' . $wpdb->prefix . WE_LS_EMAIL_TABLENAME . ' order by slug asc', ARRAY_A );
+	$sql = 'Select * from ' . $wpdb->prefix . WE_LS_EMAIL_TABLENAME;
+
+	if ( true == $only_editable ) {
+		$sql .= ' where editable = 1';
+	}
+
+	return $wpdb->get_results( $sql . ' order by slug asc', ARRAY_A );
 }
 
 /**
@@ -485,7 +492,7 @@ function ws_ls_emailer_get_all() {
  * @param $slug
  * @return string
  */
-function ws_ls_emailer_edit_link( $slug ) {
+function ws_ls_emailer_edit_link( $slug = '' ) {
 	$url = admin_url( 'admin.php?page=ws-ls-settings&mode=email-manager&slug=' . $slug );
 
 	return esc_url( $url );
