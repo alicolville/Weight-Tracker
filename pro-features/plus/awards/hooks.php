@@ -227,7 +227,7 @@
             return;
         }
 
-   	    $email_template = ws_ls_emailer_get( 'award ');
+   	    $email_template = ws_ls_emailer_get( 'email-award ');
 
         if ( false === empty( $email_template ) ) {
 

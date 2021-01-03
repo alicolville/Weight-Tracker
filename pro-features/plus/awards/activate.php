@@ -64,9 +64,9 @@ function ws_ls_awards_activate() {
         ws_ls_awards_create_mysql_tables();
 
         // Insert the Award email template
-        if ( false === ws_ls_emailer_get('award') ) {
+        if ( false === ws_ls_emailer_get('email-award') ) {
 
-        	ws_ls_emailer_add( 'award', 'You\'ve received an award!', '<center>
+        	ws_ls_emailer_add( 'email-award', 'You\'ve received an award!', '<center>
 												<h1>Well Done!</h1>
 												<p>You have just won an award for your hard work: <strong>{title}</strong></p>
 											</center>
