@@ -88,6 +88,7 @@ require_once( WS_LS_ABSPATH . 'includes/meal-tracker.php' );
 require_once( WS_LS_ABSPATH . 'includes/admin-pages/settings/page-settings.php' );
 require_once( WS_LS_ABSPATH . 'includes/admin-pages/settings/page-settings-generic.php' );
 require_once( WS_LS_ABSPATH . 'includes/admin-pages/settings/page-settings-groups.php' );
+require_once( WS_LS_ABSPATH . 'includes/admin-pages/settings/page-settings-email-manager.php' );
 require_once( WS_LS_ABSPATH . 'includes/admin-pages/user-data/data-groups.php' );
 require_once( WS_LS_ABSPATH . 'includes/admin-pages/page-help.php' );
 require_once( WS_LS_ABSPATH . 'includes/admin-pages/page-license.php' );
