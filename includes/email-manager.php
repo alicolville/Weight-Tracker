@@ -418,7 +418,9 @@ function ws_ls_emailer_default_template() {
 function ws_ls_emailer_add_default_template() {
 
 	// Only run this when the plugin version has changed
-	if( true === update_option('ws-ls-email-t12emplate-db-number', WE_LS_DB_VERSION ) ) {
+	if( true === update_option('ws-ls-email-templates-db-number', WE_LS_DB_VERSION ) ) {
+
+
 
 		// Insert the notification template
 		if ( false === ws_ls_emailer_get('_template') ) {
@@ -493,7 +495,18 @@ function ws_ls_emailer_get_all() {
 
 	global $wpdb;
 
-	return $wpdb->get_results( 'Select * from ' . $wpdb->prefix . WE_LS_EMAIL_TABLENAME, ARRAY_A );
+	return $wpdb->get_results( 'Select * from ' . $wpdb->prefix . WE_LS_EMAIL_TABLENAME . ' order by slug asc', ARRAY_A );
+}
+
+/**
+ * Return the link for managing Groups page
+ * @param $slug
+ * @return string
+ */
+function ws_ls_emailer_edit_link( $slug ) {
+	$url = admin_url( 'admin.php?page=ws-ls-settings&mode=email-manager&slug=' . $slug );
+
+	return esc_url( $url );
 }
 
 /**
@@ -512,6 +525,9 @@ function ws_ls_emailer_add( $slug, $subject, $email ) {
 	}
 
 	global $wpdb;
+
+	$email_template     = ws_ls_emailer_default_template();
+	$email     			= ws_ls_emailer_replace_placeholders( $email_template, [ 'message' => $email ] );
 
 	$data = [
 		'slug' => $slug,
@@ -537,6 +553,8 @@ function ws_ls_emailer_add( $slug, $subject, $email ) {
 function ws_ls_emailer_send( $to, $subject, $message, $placeholders = [] ) {
 
 	if ( false === empty( $message ) ) {
+
+		//TODO
 
 		$email_template     = ws_ls_emailer_default_template();
 
