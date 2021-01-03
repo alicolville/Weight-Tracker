@@ -413,6 +413,22 @@ function ws_ls_emailer_default_template() {
 }
 
 /**
+ *  Add email template for email notifications
+ */
+function ws_ls_emailer_add_default_template() {
+
+	// Only run this when the plugin version has changed
+	if( true === update_option('ws-ls-email-t12emplate-db-number', WE_LS_DB_VERSION ) ) {
+
+		// Insert the notification template
+		if ( false === ws_ls_emailer_get('_template') ) {
+			ws_ls_emailer_add( '_template', '', ws_ls_emailer_default_template() );
+		}
+	}
+}
+add_action( 'admin_init', 'ws_ls_emailer_add_default_template' );
+
+/**
  * Replace placeholders in email
  *
  * @param $email
@@ -467,6 +483,17 @@ function ws_ls_emailer_get( $slug ) {
 	$email = $wpdb->get_row( $sql, ARRAY_A );
 
 	return ( false === empty( $email ) ) ? $email : false;
+}
+
+/**
+ * Get all email templates
+ * @return array|bool|object|null
+ */
+function ws_ls_emailer_get_all() {
+
+	global $wpdb;
+
+	return $wpdb->get_results( 'Select * from ' . $wpdb->prefix . WE_LS_EMAIL_TABLENAME, ARRAY_A );
 }
 
 /**
