@@ -861,6 +861,7 @@ function ws_ls_db_create_core_tables() {
 	$sql = "CREATE TABLE $table_name (
 			id mediumint(9) NOT NULL AUTO_INCREMENT,
 			slug varchar(20) NOT NULL,
+			display_name varchar(40) NOT NULL,
 			subject varchar(40) NOT NULL,
 			editable INT DEFAULT 0 NOT NULL,
 			email text NOT NULL,

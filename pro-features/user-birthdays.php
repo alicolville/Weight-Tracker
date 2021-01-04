@@ -32,7 +32,8 @@
                                                     <p>We thought we\'d drop you a quick message to wish you all the best and hope you have a great day!</p>
                                                     <p>All the best,</p>
                                                     <p><a href="{url}" target="_blank" rel="noopener">{name}</a></p>
-                                                </center>'
+                                                </center>',
+	                                            __( 'Birthday Email' , WE_LS_SLUG )
                 );
             }
 

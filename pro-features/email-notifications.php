@@ -197,7 +197,7 @@ function ws_ls_email_notification_activate() {
 			$email .= __( '<p>Just a quick email to let you know that "{displayname}" has {mode} {type}:</p>' , WE_LS_SLUG);
 			$email .= __( '<p>{data}</p>' , WE_LS_SLUG) . PHP_EOL . PHP_EOL;
 
-			ws_ls_emailer_add( 'email-notify', 'Weight Tracker Update', '<center>' . $email . '</center>' );
+			ws_ls_emailer_add( 'email-notify', 'Weight Tracker Update', '<center>' . $email . '</center>', __( 'Weight/Target update' , WE_LS_SLUG ) );
 		}
 	}
 }

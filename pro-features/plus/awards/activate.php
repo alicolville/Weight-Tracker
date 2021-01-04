@@ -46,7 +46,7 @@ function ws_ls_awards_create_mysql_tables() {
                 user_id int NOT NULL,
                 award_id int NOT NULL,
                 timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                UNIQUE KEY id (id)              
+                UNIQUE KEY id (id)
             ) $charset_collate;";
 
     dbDelta( $sql );
@@ -72,7 +72,8 @@ function ws_ls_awards_activate() {
 											</center>
 											{badge}
 											{url-link}
-											{custom_message}'
+											{custom_message}',
+		                                    __( 'Receiving an award' , WE_LS_SLUG )
 	        );
 
         }
