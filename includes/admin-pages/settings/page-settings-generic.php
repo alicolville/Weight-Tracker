@@ -880,6 +880,7 @@ function ws_ls_settings_page_generic() {
                                                     ws_ls_display_pro_upgrade_notice();
                                                 }
                                                 ?>
+												<h3><?php echo __( 'Settings' , WE_LS_SLUG); ?></h3>
 												<table class="form-table">
 													<tr class="<?php echo $disable_if_not_pro_class; ?>">
 														<th scope="row"><?php echo __( 'Enable email notifications', WE_LS_SLUG ); ?></th>
@@ -969,6 +970,12 @@ function ws_ls_settings_page_generic() {
 														</td>
 													</tr>
 												</table>
+												<h3><?php echo __( 'Templates' , WE_LS_SLUG); ?></h3>
+												<p><?php printf( '<p>%s</p><a href="%s" target="_blank" rel="noopener">%s</a>',
+																	__( 'Email templates are stored within the database and can be edited in the Email Template manager', WE_LS_SLUG ),
+																	ws_ls_emailer_edit_link(),
+																	__( 'Email Template Manager', WE_LS_SLUG ) ) ; ?>
+												</p>
 											</div>
                                         <div>
                                             <?php
