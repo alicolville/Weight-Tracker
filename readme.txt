@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight,tracker,chart,bmi,bmr,macronutrient,measure,awards,custom fields,history,measurements,data
 Requires at least: 5.2
 Tested up to: 5.6
-Stable tag: 8.1.12
+Stable tag: 8.2
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -154,9 +154,14 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 == Upgrade Notice ==
 
-8.1 - A new and improved export tool that handles large data sets!
+8.2 - Email Template Manager - edit emails that go out to your users
 
 == Changelog ==
+
+= 8.2 =
+
+* Improvement: Added an Email Template manager so outgoing email templates can be edited without needing to dive into the database.
+* Improvement: Removed redundant "Measurements" tab.
 
 = 8.1.12 =
 

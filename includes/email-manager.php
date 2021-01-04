@@ -19,15 +19,15 @@ function ws_ls_emailer_default_template() {
 					  /* -------------------------------------
 						  GLOBAL RESETS
 					  ------------------------------------- */
-					  
+
 					  /*All the styling goes here*/
-					  
+
 					  img {
 						border: none;
 						-ms-interpolation-mode: bicubic;
-						max-width: 100%; 
+						max-width: 100%;
 					  }
-				
+
 					  body {
 						background-color: #f6f6f6;
 						font-family: sans-serif;
@@ -37,9 +37,9 @@ function ws_ls_emailer_default_template() {
 						margin: 0;
 						padding: 0;
 						-ms-text-size-adjust: 100%;
-						-webkit-text-size-adjust: 100%; 
+						-webkit-text-size-adjust: 100%;
 					  }
-				
+
 					  table {
 						border-collapse: separate;
 						mso-table-lspace: 0pt;
@@ -48,18 +48,18 @@ function ws_ls_emailer_default_template() {
 						table td {
 						  font-family: sans-serif;
 						  font-size: 14px;
-						  vertical-align: top; 
+						  vertical-align: top;
 					  }
-				
+
 					  /* -------------------------------------
 						  BODY & CONTAINER
 					  ------------------------------------- */
-				
+
 					  .body {
 						background-color: #f6f6f6;
-						width: 100%; 
+						width: 100%;
 					  }
-				
+
 					  /* Set a max-width, and make it display as block so it will automatically stretch to that width, but will also shrink down on a phone or something */
 					  .container {
 						display: block;
@@ -67,42 +67,42 @@ function ws_ls_emailer_default_template() {
 						/* makes it centered */
 						max-width: 580px;
 						padding: 10px;
-						width: 580px; 
+						width: 580px;
 					  }
-				
+
 					  /* This should also be a block element, so that it will fill 100% of the .container */
 					  .content {
 						box-sizing: border-box;
 						display: block;
 						Margin: 0 auto;
 						max-width: 580px;
-						padding: 10px; 
+						padding: 10px;
 					  }
-				
+
 					  /* -------------------------------------
 						  HEADER, FOOTER, MAIN
 					  ------------------------------------- */
 					  .main {
 						background: #ffffff;
 						border-radius: 3px;
-						width: 100%; 
+						width: 100%;
 					  }
-				
+
 					  .wrapper {
 						box-sizing: border-box;
-						padding: 20px; 
+						padding: 20px;
 					  }
-				
+
 					  .content-block {
 						padding-bottom: 10px;
 						padding-top: 10px;
 					  }
-				
+
 					  .footer {
 						clear: both;
 						Margin-top: 10px;
 						text-align: center;
-						width: 100%; 
+						width: 100%;
 					  }
 						.footer td,
 						.footer p,
@@ -110,9 +110,9 @@ function ws_ls_emailer_default_template() {
 						.footer a {
 						  color: #999999;
 						  font-size: 12px;
-						  text-align: center; 
+						  text-align: center;
 					  }
-				
+
 					  /* -------------------------------------
 						  TYPOGRAPHY
 					  ------------------------------------- */
@@ -125,36 +125,36 @@ function ws_ls_emailer_default_template() {
 						font-weight: 400;
 						line-height: 1.4;
 						margin: 0;
-						margin-bottom: 30px; 
+						margin-bottom: 30px;
 					  }
-				
+
 					  h1 {
 						font-size: 35px;
 						font-weight: 300;
 						text-align: center;
-						text-transform: capitalize; 
+						text-transform: capitalize;
 					  }
 					   h3 {
 						font-size: 20px;
 						font-weight: 300;
 						text-align: center;
-						text-transform: capitalize; 
+						text-transform: capitalize;
 					}
 					  h4 {
 						font-size: 17px;
 						font-weight: 300;
 						text-align: center;
-						text-transform: capitalize; 
+						text-transform: capitalize;
 						border-bottom: 1px dotted #000000;
 					  }
-					  
+
 					   h5 {
 						font-size: 14px;
 						font-weight: bold;
 						text-align: center;
-						text-transform: capitalize; 
+						text-transform: capitalize;
 					  }
-				
+
 					  p,
 					  ul,
 					  ol {
@@ -162,20 +162,20 @@ function ws_ls_emailer_default_template() {
 						font-size: 14px;
 						font-weight: normal;
 						margin: 0;
-						margin-bottom: 15px; 
+						margin-bottom: 15px;
 					  }
 						p li,
 						ul li,
 						ol li {
 						  list-style-position: inside;
-						  margin-left: 5px; 
+						  margin-left: 5px;
 					  }
-				
+
 					  a {
 						color: #3498db;
-						text-decoration: underline; 
+						text-decoration: underline;
 					  }
-				
+
 					  /* -------------------------------------
 						  BUTTONS
 					  ------------------------------------- */
@@ -185,12 +185,12 @@ function ws_ls_emailer_default_template() {
 						.btn > tbody > tr > td {
 						  padding-bottom: 15px; }
 						.btn table {
-						  width: auto; 
+						  width: auto;
 					  }
 						.btn table td {
 						  background-color: #ffffff;
 						  border-radius: 5px;
-						  text-align: center; 
+						  text-align: center;
 					  }
 						.btn a {
 						  background-color: #ffffff;
@@ -205,54 +205,54 @@ function ws_ls_emailer_default_template() {
 						  margin: 0;
 						  padding: 12px 25px;
 						  text-decoration: none;
-						  text-transform: capitalize; 
+						  text-transform: capitalize;
 					  }
-				
+
 					  .btn-primary table td {
-						background-color: #3498db; 
+						background-color: #3498db;
 					  }
-				
+
 					  .btn-primary a {
 						background-color: #3498db;
 						border-color: #3498db;
-						color: #ffffff; 
+						color: #ffffff;
 					  }
-				
+
 					  /* -------------------------------------
 						  OTHER STYLES THAT MIGHT BE USEFUL
 					  ------------------------------------- */
 					  .last {
-						margin-bottom: 0; 
+						margin-bottom: 0;
 					  }
-				
+
 					  .first {
-						margin-top: 0; 
+						margin-top: 0;
 					  }
-				
+
 					  .align-center {
-						text-align: center; 
+						text-align: center;
 					  }
-				
+
 					  .align-right {
-						text-align: right; 
+						text-align: right;
 					  }
-				
+
 					  .align-left {
-						text-align: left; 
+						text-align: left;
 					  }
-				
+
 					  .clear {
-						clear: both; 
+						clear: both;
 					  }
-				
+
 					  .mt0 {
-						margin-top: 0; 
+						margin-top: 0;
 					  }
-				
+
 					  .mb0 {
-						margin-bottom: 0; 
+						margin-bottom: 0;
 					  }
-				
+
 					  .preheader {
 						color: transparent;
 						display: none;
@@ -263,26 +263,26 @@ function ws_ls_emailer_default_template() {
 						overflow: hidden;
 						mso-hide: all;
 						visibility: hidden;
-						width: 0; 
+						width: 0;
 					  }
-				
+
 					  .powered-by a {
-						text-decoration: none; 
+						text-decoration: none;
 					  }
-				
+
 					  hr {
 						border: 0;
 						border-bottom: 1px solid #f6f6f6;
-						Margin: 20px 0; 
+						Margin: 20px 0;
 					  }
-				
+
 					  /* -------------------------------------
 						  RESPONSIVE AND MOBILE FRIENDLY STYLES
 					  ------------------------------------- */
 					  @media only screen and (max-width: 620px) {
 						table[class=body] h1 {
 						  font-size: 28px !important;
-						  margin-bottom: 10px !important; 
+						  margin-bottom: 10px !important;
 						}
 						table[class=body] p,
 						table[class=body] ul,
@@ -290,43 +290,43 @@ function ws_ls_emailer_default_template() {
 						table[class=body] td,
 						table[class=body] span,
 						table[class=body] a {
-						  font-size: 16px !important; 
+						  font-size: 16px !important;
 						}
 						table[class=body] .wrapper,
 						table[class=body] .article {
-						  padding: 10px !important; 
+						  padding: 10px !important;
 						}
 						table[class=body] .content {
-						  padding: 0 !important; 
+						  padding: 0 !important;
 						}
 						table[class=body] .container {
 						  padding: 0 !important;
-						  width: 100% !important; 
+						  width: 100% !important;
 						}
 						table[class=body] .main {
 						  border-left-width: 0 !important;
 						  border-radius: 0 !important;
-						  border-right-width: 0 !important; 
+						  border-right-width: 0 !important;
 						}
 						table[class=body] .btn table {
-						  width: 100% !important; 
+						  width: 100% !important;
 						}
 						table[class=body] .btn a {
-						  width: 100% !important; 
+						  width: 100% !important;
 						}
 						table[class=body] .img-responsive {
 						  height: auto !important;
 						  max-width: 100% !important;
-						  width: auto !important; 
+						  width: auto !important;
 						}
 					  }
-				
+
 					  /* -------------------------------------
 						  PRESERVE THESE STYLES IN THE HEAD
 					  ------------------------------------- */
 					  @media all {
 						.ExternalClass {
-						  width: 100%; 
+						  width: 100%;
 						}
 						.ExternalClass,
 						.ExternalClass p,
@@ -334,7 +334,7 @@ function ws_ls_emailer_default_template() {
 						.ExternalClass font,
 						.ExternalClass td,
 						.ExternalClass div {
-						  line-height: 100%; 
+						  line-height: 100%;
 						}
 						.apple-link a {
 						  color: inherit !important;
@@ -342,17 +342,17 @@ function ws_ls_emailer_default_template() {
 						  font-size: inherit !important;
 						  font-weight: inherit !important;
 						  line-height: inherit !important;
-						  text-decoration: none !important; 
+						  text-decoration: none !important;
 						}
 						.btn-primary table td:hover {
-						  background-color: #34495e !important; 
+						  background-color: #34495e !important;
 						}
 						.btn-primary a:hover {
 						  background-color: #34495e !important;
-						  border-color: #34495e !important; 
-						} 
+						  border-color: #34495e !important;
+						}
 					  }
-				
+
 					</style>
 				  </head>
 				  <body class="">
@@ -361,11 +361,11 @@ function ws_ls_emailer_default_template() {
 						<td>&nbsp;</td>
 						<td class="container">
 						  <div class="content">
-				
+
 							<!-- START CENTERED WHITE CONTAINER -->
-							
+
 							<table role="presentation" class="main">
-				
+
 							  <!-- START MAIN CONTENT AREA -->
 							  <tr>
 								<td class="wrapper">
@@ -378,10 +378,10 @@ function ws_ls_emailer_default_template() {
 								  </table>
 								</td>
 							  </tr>
-				
+
 							<!-- END MAIN CONTENT AREA -->
 							</table>
-				
+
 							<!-- START FOOTER -->
 							<div class="footer">
 							  <table role="presentation" border="0" cellpadding="0" cellspacing="0">
@@ -398,7 +398,7 @@ function ws_ls_emailer_default_template() {
 							  </table>
 							</div>
 							<!-- END FOOTER -->
-				
+
 						  <!-- END CENTERED WHITE CONTAINER -->
 						  </div>
 						</td>
@@ -466,7 +466,40 @@ function ws_ls_emailer_get( $slug ) {
 
 	$email = $wpdb->get_row( $sql, ARRAY_A );
 
+	if ( false === empty( $email ) ) {
+		$email = array_map( 'stripslashes', $email );
+	}
+
 	return ( false === empty( $email ) ) ? $email : false;
+}
+
+/**
+ * Get all email templates
+ * @param bool $only_editable
+ * @return array|bool|object|null
+ */
+function ws_ls_emailer_get_all( $only_editable = true ) {
+
+	global $wpdb;
+
+	$sql = 'Select * from ' . $wpdb->prefix . WE_LS_EMAIL_TABLENAME;
+
+	if ( true == $only_editable ) {
+		$sql .= ' where editable = 1';
+	}
+
+	return $wpdb->get_results( $sql . ' order by slug asc', ARRAY_A );
+}
+
+/**
+ * Return the link for managing Groups page
+ * @param $slug
+ * @return string
+ */
+function ws_ls_emailer_edit_link( $slug = '' ) {
+	$url = admin_url( 'admin.php?page=ws-ls-settings&mode=email-manager&slug=' . $slug );
+
+	return esc_url( $url );
 }
 
 /**
@@ -476,9 +509,11 @@ function ws_ls_emailer_get( $slug ) {
  * @param $subject
  * @param $email
  *
+ * @param $display_name
+ *
  * @return bool|int
  */
-function ws_ls_emailer_add( $slug, $subject, $email ) {
+function ws_ls_emailer_add( $slug, $subject, $email, $display_name = '' ) {
 
 	if ( false === is_admin() ) {
 		return false;
@@ -486,17 +521,42 @@ function ws_ls_emailer_add( $slug, $subject, $email ) {
 
 	global $wpdb;
 
+	$email_template     = ws_ls_emailer_default_template();
+	$email     			= ws_ls_emailer_replace_placeholders( $email_template, [ 'message' => $email ] );
+
 	$data = [
-		'slug' => $slug,
-		'subject' => $subject,
-		'email' => $email
+				'slug' 		    => $slug,
+				'subject' 	    => $subject,
+				'email' 	    => $email,
+				'display_name'  => ( false === empty( $display_name ) ) ? $display_name : $subject,
+				'editable'	    => 1
 	];
 
-	$result = $wpdb->insert( $wpdb->prefix . WE_LS_EMAIL_TABLENAME , $data, [ '%s', '%s', '%s' ] );
+	$result = $wpdb->insert( $wpdb->prefix . WE_LS_EMAIL_TABLENAME , $data, [ '%s', '%s', '%s', '%s', '%d' ] );
 
 	return ( false === $result ) ? false : $wpdb->insert_id;
 }
 
+/**
+ * Update an email template
+ * @param $slug
+ * @param $subject
+ * @param $email
+ *
+ * @return bool|false|int
+ */
+function ws_ls_emailer_update( $slug, $subject, $email ) {
+
+	if ( false === is_admin() ) {
+		return false;
+	}
+
+	global $wpdb;
+
+	$data = [ 'subject' 	=> $subject, 'email' 	=> $email ];
+
+	return $wpdb->update( $wpdb->prefix . WE_LS_EMAIL_TABLENAME , $data, ['slug' => $slug ], [ '%s', '%s', '%s', '%d' ], [ '%s' ] );
+}
 
 /**
  * Send email
@@ -511,13 +571,9 @@ function ws_ls_emailer_send( $to, $subject, $message, $placeholders = [] ) {
 
 	if ( false === empty( $message ) ) {
 
-		$email_template     = ws_ls_emailer_default_template();
-
-		$email_template     = ws_ls_emailer_replace_placeholders( $email_template, [ 'message' => $message ] );
-
 		$placeholders       = ws_ls_emailer_placeholders( $placeholders );
 
-		$message            = ws_ls_emailer_replace_placeholders( $email_template, $placeholders );
+		$message            = ws_ls_emailer_replace_placeholders( $message, $placeholders );
 
 		$result             = wp_mail( $to,  $subject,  $message, [ 'Content-Type: text/html; charset=UTF-8' ] );
 

@@ -110,7 +110,7 @@ function ws_ls_email_notification( $type, $weight_data ) {
 		// Allow others to filter data
 		$email_data = apply_filters( 'wlt-filter-email-data', $email_data, $type, $weight_data);
 
-		$message    = ws_ls_emailer_get( 'notify' );
+		$message    = ws_ls_emailer_get( 'email-notify' );
 
 		if ( false === empty( $message[ 'email' ] ) ) {
 			ws_ls_emailer_send( $email_addresses, $email_data[ 'subject' ], $message[ 'email' ], $email_data );
@@ -191,13 +191,13 @@ function ws_ls_email_notification_activate() {
 	if( true === update_option('ws-ls-email-notification-db-number', WE_LS_DB_VERSION ) ) {
 
 		// Insert the notification template
-		if ( false === ws_ls_emailer_get('notify') ) {
+		if ( false === ws_ls_emailer_get('email-notify') ) {
 
 			$email = sprintf( '<p>%s,</p>', __( 'Hello' , WE_LS_SLUG) );
 			$email .= __( '<p>Just a quick email to let you know that "{displayname}" has {mode} {type}:</p>' , WE_LS_SLUG);
 			$email .= __( '<p>{data}</p>' , WE_LS_SLUG) . PHP_EOL . PHP_EOL;
 
-			ws_ls_emailer_add( 'notify', 'Weight Tracker Update', '<center>' . $email . '</center>' );
+			ws_ls_emailer_add( 'email-notify', 'Weight Tracker Update', '<center>' . $email . '</center>', __( 'Weight/Target update' , WE_LS_SLUG ) );
 		}
 	}
 }

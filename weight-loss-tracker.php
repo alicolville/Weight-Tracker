@@ -5,7 +5,7 @@ defined('ABSPATH') or die('Jog on!');
 /**
  * Plugin Name:         Weight Tracker
  * Description:         Allow your users to track their weight, body measurements, photos and other pieces of custom data. Display in charts, tables, shortcodes and widgets. Manage their data, issue awards, email notifications, etc! Provide advanced data on Body Mass Index (BMI), Basal Metabolic Rate (BMR), Calorie intake, Harris Benedict Formula, Macronutrients Calculator and more.
- * Version:             8.1.12
+ * Version:             8.2
  * Requires at least:   5.2
  * Tested up to: 		5.6
  * Requires PHP:        7.2
@@ -18,8 +18,8 @@ defined('ABSPATH') or die('Jog on!');
  */
 
 define( 'WS_LS_ABSPATH', plugin_dir_path( __FILE__ ) );
-define( 'WE_LS_CURRENT_VERSION', '8.1.12' );
-define( 'WE_LS_DB_VERSION', '8.1.4' );
+define( 'WE_LS_CURRENT_VERSION', '8.2' );
+define( 'WE_LS_DB_VERSION', '8.2' );
 define( 'WE_LS_TITLE', 'Weight Tracker' );
 define( 'WE_LS_SLUG', 'weight-loss-tracker' );
 define( 'WE_LS_LICENSE_TYPES_URL', 'https://weight.yeken.uk/features' );
@@ -88,6 +88,7 @@ require_once( WS_LS_ABSPATH . 'includes/meal-tracker.php' );
 require_once( WS_LS_ABSPATH . 'includes/admin-pages/settings/page-settings.php' );
 require_once( WS_LS_ABSPATH . 'includes/admin-pages/settings/page-settings-generic.php' );
 require_once( WS_LS_ABSPATH . 'includes/admin-pages/settings/page-settings-groups.php' );
+require_once( WS_LS_ABSPATH . 'includes/admin-pages/settings/page-settings-email-manager.php' );
 require_once( WS_LS_ABSPATH . 'includes/admin-pages/user-data/data-groups.php' );
 require_once( WS_LS_ABSPATH . 'includes/admin-pages/page-help.php' );
 require_once( WS_LS_ABSPATH . 'includes/admin-pages/page-license.php' );

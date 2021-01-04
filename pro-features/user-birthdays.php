@@ -25,14 +25,15 @@
         if( true === update_option('ws-ls-birthday-db-number', WE_LS_DB_VERSION )) {
 
              // Insert the Birthday template
-            if ( false === ws_ls_emailer_get('birthday') ) {
+            if ( false === ws_ls_emailer_get('email-birthday') ) {
 
-                ws_ls_emailer_add( 'birthday', 'Happy Birthday!', '<center>
+                ws_ls_emailer_add( 'email-birthday', 'Happy Birthday!', '<center>
                                                     <h1>Happy Birthday {name}!</h1>
                                                     <p>We thought we\'d drop you a quick message to wish you all the best and hope you have a great day!</p>
                                                     <p>All the best,</p>
                                                     <p><a href="{url}" target="_blank" rel="noopener">{name}</a></p>
-                                                </center>'
+                                                </center>',
+	                                            __( 'Birthday Email' , WE_LS_SLUG )
                 );
             }
 
@@ -51,7 +52,7 @@
 
         $user_id = $user_id ?: get_current_user_id();
 
-        $email_template = ws_ls_emailer_get( 'birthday' );
+        $email_template = ws_ls_emailer_get( 'email-birthday' );
 
         if ( false === empty( $email_template ) ) {
 

@@ -71,14 +71,12 @@ function ws_ls_settings_page_generic() {
 									do_settings_sections( 'we-ls-options-group' );
 
 								?>
-
 								<div id="ws-ls-tabs">
 									<ul>
                                         <li><a><?php echo __( 'General', WE_LS_SLUG); ?><span><?php echo __( 'General settings', WE_LS_SLUG); ?></span></a></li>
                                         <li><a><?php echo __( 'Pro Plus', WE_LS_SLUG); ?><span><?php echo __( 'Adjust settings for your Pro Plus features', WE_LS_SLUG); ?></span></a></li>
                                         <li><a><?php echo __( 'Chart', WE_LS_SLUG); ?><span><?php echo __( 'Chart styling and config', WE_LS_SLUG); ?></span></a></li>
-										<li><a><?php echo __( 'Notifications', WE_LS_SLUG); ?><span><?php echo __( 'Configure email notifications', WE_LS_SLUG); ?></span></a></li>
-                                        <li><a><?php echo __( 'Measurements', WE_LS_SLUG); ?><span><?php echo __( 'Allow users to record their measurements', WE_LS_SLUG); ?></span></a></li>
+										<li><a><?php echo __( 'Emails & Notifications', WE_LS_SLUG); ?><span><?php echo __( 'Configure email notifications and templates', WE_LS_SLUG); ?></span></a></li>
                                         <li><a><?php echo __( '3rd Party', WE_LS_SLUG); ?><span><?php echo __( '3rd Party Integrations', WE_LS_SLUG); ?></span></a></li>
                                     </ul>
 									<div>
@@ -881,6 +879,7 @@ function ws_ls_settings_page_generic() {
                                                     ws_ls_display_pro_upgrade_notice();
                                                 }
                                                 ?>
+												<h3><?php echo __( 'Settings' , WE_LS_SLUG); ?></h3>
 												<table class="form-table">
 													<tr class="<?php echo $disable_if_not_pro_class; ?>">
 														<th scope="row"><?php echo __( 'Enable email notifications', WE_LS_SLUG ); ?></th>
@@ -970,20 +969,13 @@ function ws_ls_settings_page_generic() {
 														</td>
 													</tr>
 												</table>
+												<h3><?php echo __( 'Templates' , WE_LS_SLUG); ?></h3>
+												<p><?php printf( '<p>%s</p><a href="%s" target="_blank" rel="noopener">%s</a>',
+																	__( 'Email templates are stored within the database and can be edited in the Email Template manager', WE_LS_SLUG ),
+																	ws_ls_emailer_edit_link(),
+																	__( 'Email Template Manager', WE_LS_SLUG ) ) ; ?>
+												</p>
 											</div>
-                                        <div>
-                                            <?php
-												if ( false === WS_LS_IS_PRO ) {
-													ws_ls_display_pro_upgrade_notice();
-												}
-
-												printf( '<p>%s <a href="%s">%s</a>.</p>',
-																__( 'Measurement settings and user data have now been migrated to' , WE_LS_SLUG ),
-																esc_url( ws_ls_meta_fields_base_url() ),
-																__( 'Custom Fields' , WE_LS_SLUG )
-												);
-                                            ?>
-										</div>
                                         <div>
                                             <?php
                                             if ( false === WS_LS_IS_PRO ) {
