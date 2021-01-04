@@ -31,9 +31,15 @@ function ws_ls_settings_email_manager() {
 
 								if ( 'y' === ws_ls_post_value( 'save' ) ){
 
-									//TODO: Add save logic here
-									
-									ws_ls_display_notice('test');
+									$slug 		= ws_ls_post_value( 'slug' );
+									$subject 	= ws_ls_post_value( 'subject' );
+									$email 		= ws_ls_post_value( 'email' );
+
+									if ( false === ws_ls_emailer_update( $slug, $subject, $email ) ) {
+										ws_ls_display_notice(__( 'There was an error saving your changes.', WE_LS_SLUG ), 'error' );
+									} else {
+										ws_ls_display_notice(__( 'Email template has been updated.', WE_LS_SLUG ) );
+									}
 								}
 
 								$slug = ws_ls_querystring_value( 'slug' );
@@ -84,7 +90,7 @@ function ws_ls_settings_email_manager_all_list() {
 
 	foreach ( $email_templates as $template ) {
 
-		printf( '<li><a href="%s">%s</a></li>', ws_ls_emailer_edit_link( $template[ 'slug' ] ), esc_html( $template[ 'subject' ] ) );
+		printf( '<li><a href="%s">%s</a></li>', ws_ls_emailer_edit_link( $template[ 'slug' ] ), esc_html( $template[ 'display_name' ] ) );
 
 	}
 
@@ -111,9 +117,13 @@ function ws_ls_settings_email_manager_edit_form( $slug ) {
 						esc_attr( $slug )
 	);
 
-	echo ws_ls_form_field_text( [ 'name' => 'subject', 'value' => $template[ 'subject' ], 'title' => __( 'Subject', WE_LS_SLUG ), 'show-label' => true, 'css-class' => 'widefat', 'required' => true ] );
+	if ( 'email-notify' !== $slug ) {
+		echo ws_ls_form_field_text( [ 'name' => 'subject', 'value' => $template[ 'subject' ], 'title' => __( 'Subject', WE_LS_SLUG ), 'show-label' => true, 'css-class' => 'widefat', 'required' => true ] );
+	} else {
+		echo '<input type="hidden" name="subject" value="" />' ;
+	}
 
-	echo ws_ls_form_field_textarea( [ 'name' => 'email', 'value' => $template[ 'email' ], 'title' => __( 'Body', WE_LS_SLUG ), 'show-label' => true, 'css-class' => 'widefat', 'required' => true, 'rows' => 10  ] );
+	echo ws_ls_form_field_textarea( [ 'name' => 'email', 'value' => $template[ 'email' ], 'title' => __( 'Body', WE_LS_SLUG ), 'show-label' => true, 'css-class' => 'widefat', 'required' => true, 'rows' => 20  ] );
 
 	printf( '<button name="submit_button" type="submit" tabindex="%1$d" class="button ws-ls-remove-on-submit" >%2$s</button>', ws_ls_form_tab_index_next(), __( 'Save', WE_LS_SLUG ) );
 
