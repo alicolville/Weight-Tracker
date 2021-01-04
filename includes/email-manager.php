@@ -570,7 +570,7 @@ function ws_ls_emailer_update( $slug, $subject, $email ) {
 function ws_ls_emailer_send( $to, $subject, $message, $placeholders = [] ) {
 
 	if ( false === empty( $message ) ) {
-		
+
 		$placeholders       = ws_ls_emailer_placeholders( $placeholders );
 
 		$message            = ws_ls_emailer_replace_placeholders( $message, $placeholders );

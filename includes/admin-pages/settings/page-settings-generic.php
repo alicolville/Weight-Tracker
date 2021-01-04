@@ -77,7 +77,6 @@ function ws_ls_settings_page_generic() {
                                         <li><a><?php echo __( 'Pro Plus', WE_LS_SLUG); ?><span><?php echo __( 'Adjust settings for your Pro Plus features', WE_LS_SLUG); ?></span></a></li>
                                         <li><a><?php echo __( 'Chart', WE_LS_SLUG); ?><span><?php echo __( 'Chart styling and config', WE_LS_SLUG); ?></span></a></li>
 										<li><a><?php echo __( 'Emails & Notifications', WE_LS_SLUG); ?><span><?php echo __( 'Configure email notifications and templates', WE_LS_SLUG); ?></span></a></li>
-                                        <li><a><?php echo __( 'Measurements', WE_LS_SLUG); ?><span><?php echo __( 'Allow users to record their measurements', WE_LS_SLUG); ?></span></a></li>
                                         <li><a><?php echo __( '3rd Party', WE_LS_SLUG); ?><span><?php echo __( '3rd Party Integrations', WE_LS_SLUG); ?></span></a></li>
                                     </ul>
 									<div>
@@ -977,19 +976,6 @@ function ws_ls_settings_page_generic() {
 																	__( 'Email Template Manager', WE_LS_SLUG ) ) ; ?>
 												</p>
 											</div>
-                                        <div>
-                                            <?php
-												if ( false === WS_LS_IS_PRO ) {
-													ws_ls_display_pro_upgrade_notice();
-												}
-
-												printf( '<p>%s <a href="%s">%s</a>.</p>',
-																__( 'Measurement settings and user data have now been migrated to' , WE_LS_SLUG ),
-																esc_url( ws_ls_meta_fields_base_url() ),
-																__( 'Custom Fields' , WE_LS_SLUG )
-												);
-                                            ?>
-										</div>
                                         <div>
                                             <?php
                                             if ( false === WS_LS_IS_PRO ) {
