@@ -15,7 +15,8 @@ function ws_ls_feature_list_pro_plus() {
 		__(' <strong>Macronutrients Calculator</strong>. Shortcodes and extended admin screens to recommend how their calorie consumption should be split into fats, carbohydrates and proteins. For further information on the Macronutrients Calculator and how these calculations are performed please visit <a href="' . WE_LS_CALCULATIONS_URL . '" rel="noopener noreferrer" target="_blank">our calculations page</a>.</strong>', WE_LS_SLUG ),
 		__(' <strong>Additional user preference fields</strong>. Additional user preference fields and shortcodes to display them: Activity Level, Date of Birth and Gender.', WE_LS_SLUG ),
 		__(' <strong>Awards</strong>. Awards and Badges! Set awards for: BMI Change, BMI Equals, Weight Gain / Loss from start and Percentage of weight lost from start.', WE_LS_SLUG ),
-		__(' <strong>Challenges</strong>. Set challenges for your user\'s within a given time period? Display Total Weight Lost, BMI Change, %Body Weight, Weight Tracker Streaks and Meal Tracker streaks achieved by each user in a league table. Besides viewing all your challenges and their data, the shortcode will allow you to display the league table in the public facing website.', WE_LS_SLUG )
+		__(' <strong>Challenges</strong>. Set challenges for your user\'s within a given time period? Display Total Weight Lost, BMI Change, %Body Weight, Weight Tracker Streaks and Meal Tracker streaks achieved by each user in a league table. Besides viewing all your challenges and their data, the shortcode will allow you to display the league table in the public facing website.', WE_LS_SLUG ),
+		__(' <strong>Webhooks, Zapier & Slack</strong>. Push weight entry data and targets to Slack channels, Zapier or your own custom Webhooks!', WE_LS_SLUG )
 	];
 }
 

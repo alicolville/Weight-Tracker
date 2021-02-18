@@ -2,8 +2,8 @@
 Contributors: aliakro
 Tags: weight,tracker,chart,bmi,bmr,macronutrient,measure,awards,custom fields,history,measurements,data
 Requires at least: 5.2
-Tested up to: 5.6
-Stable tag: 8.2
+Tested up to: 5.6.1
+Stable tag: 8.3
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -42,6 +42,7 @@ For further information read our documentation:
 * **Macronutrients Calculator**. Shortcodes and extended admin screens to recommend how their calorie consumption should be split into fats, carbohydrates and proteins. For further information on the Macronutrients Calculator and how these calculations are performed please visit our calculations page.
 * **Additional user preference fields**. Additional user preference fields and shortcodes to display them: Activity Level, Date of Birth and Gender.
 * **Awards**. Awards and Badges! Set awards for: BMI Change, BMI Equals, Weight Gain / Loss from start and Percentage of weight lost from start.
+* **Webhooks, Zapier & Slack**. Push weight entry data and targets to Slack channels, Zapier or your own custom Webhooks!
 
 [Read more about features](https://weight.yeken.uk/features/ "Read more about features")
 
@@ -154,9 +155,13 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 == Upgrade Notice ==
 
-8.2 - Email Template Manager - edit emails that go out to your users
+8.3 - Webhooks, Zapier & Slack. Push weight entry data and targets to Slack channels, Zapier or your own custom Webhooks.
 
 == Changelog ==
+
+= 8.3 =
+
+* Improvement: Webhooks, Zapier & Slack. Push weight entry data and targets to Slack channels, Zapier or your own custom Webhooks.
 
 = 8.2 =
 
