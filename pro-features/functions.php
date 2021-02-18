@@ -137,11 +137,14 @@ function ws_ls_get_link_to_user_data() {
 
 /**
  * Given a user ID, return a link to the user's profile
+ *
  * @param int $user_id User ID
  * @param null $display_text
+ * @param bool $escape_url
+ *
  * @return string
  */
-function ws_ls_get_link_to_user_profile( $user_id, $display_text = NULL ) {
+function ws_ls_get_link_to_user_profile( $user_id, $display_text = NULL, $escape_url = true ) {
 
 	$cache_key = 'profile-url-' .sanitize_title( $display_text );
 
@@ -151,7 +154,9 @@ function ws_ls_get_link_to_user_profile( $user_id, $display_text = NULL ) {
 
 	$profile_url = admin_url( 'admin.php?page=ws-ls-data-home&mode=user&user-id=' . (int) $user_id );
 
-	$profile_url = esc_url( $profile_url );
+	if ( true === $escape_url ) {
+		$profile_url = esc_url( $profile_url );
+	}
 
 	$profile_url = ( NULL !== $display_text ) ?
 			ws_ls_render_link( $profile_url, $display_text ) :
@@ -218,11 +223,16 @@ function ws_ls_get_link_to_settings() {
 
 /**
  * Given a user and entry ID, return a link to the edit entrant page
+ *
  * @param $user_id
  * @param bool $entry_id Entry ID
+ * @param bool $escape_url
+ *
+ * @param bool $redirect_url
+ *
  * @return string
  */
-function ws_ls_get_link_to_edit_entry( $user_id, $entry_id = false ) {
+function ws_ls_get_link_to_edit_entry( $user_id, $entry_id = false, $escape_url = false, $redirect_url = false ) {
 
 	$base_url = admin_url( 'admin.php?page=ws-ls-data-home&mode=entry&user-id=' . $user_id );
 
@@ -230,9 +240,11 @@ function ws_ls_get_link_to_edit_entry( $user_id, $entry_id = false ) {
 		$base_url .= '&entry-id=' . (int) $entry_id;
 	}
 
-	$base_url .= '&redirect=' . ws_ls_get_url( true );
+	$redirect_url = ( false === empty( $redirect_url ) ) ? base64_encode( $redirect_url ) : ws_ls_get_url( true );
 
-	return esc_url($base_url );
+	$base_url .= '&redirect=' . $redirect_url;
+
+	return ( true === $escape_url ) ? esc_url( $base_url ) : $base_url;
 }
 
 /**

@@ -65,6 +65,23 @@
         return count( ws_ls_meta_fields_enabled() );
     }
 
+	/**
+	 * Get the field key for given meta id
+	 * @param $id
+	 *
+	 * @return mixed|null
+	 */
+	function ws_ls_meta_fields_get_column( $id, $column = 'field_key' ) {
+
+		$fields = ws_ls_meta_fields();
+		$fields = wp_list_pluck( $fields, $column, 'id' );
+
+		return ( false === empty( $fields[ $id ] ) ) ?
+			$fields[ $id ] :
+				NULL;
+
+	}
+
     /**
      * Return the value for a given entry / meta field
      *
