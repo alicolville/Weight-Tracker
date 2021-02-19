@@ -7,7 +7,7 @@ defined('ABSPATH') or die("Jog on!");
  */
 function ws_ls_webhooks_enabled() {
 
-	if ( false === WS_LS_IS_PRO_PLUS ) {
+	if ( false === WS_LS_IS_PRO ) {
 		return false;
 	}
 
@@ -15,7 +15,9 @@ function ws_ls_webhooks_enabled() {
 		return false;
 	}
 
-	//TODO: Admin check
+	if ( 'yes' !== get_option( 'ws-ls-webhooks-enabled', 'no' ) ) {
+		return false;
+	}
 
 	return true;
 }
@@ -26,8 +28,23 @@ function ws_ls_webhooks_enabled() {
  */
 function ws_ls_webhooks_urls() {
 
-	$urls = [];
+	if ( $urls = ws_ls_cache_get( 'webhook-endpoints' ) ) {
+		return $urls;
+	}
 
+	$urls       = [];
+	$url_keys   = [ 'one', 'two', 'three' ];
+
+	foreach ( $url_keys as $key ) {
+
+		$url = get_option( 'ws-ls-webhook-endpoint-' . $key, '' );
+
+		if ( false !== filter_var( $url, FILTER_VALIDATE_URL ) ) {
+			$urls[] = $url;
+		}
+	}
+
+	ws_ls_cache_set( 'webhook-endpoints', $urls );
 
 	return $urls;
 }
@@ -62,6 +79,35 @@ function ws_ls_webhooks_endpoints_contain_slack() {
 }
 
 /**
+ * Do we want to send this?
+ * @param $type
+ *
+ * @return bool
+ */
+function ws_ls_webhooks_process_this( $type ) {
+
+	// If this is from an admin screen, do we want to process it?
+	if ( true === is_admin() &&
+	     'yes' !== get_option( 'ws-ls-webhooks-admin-changes-enabled', 'no' ) ) {
+		return false;
+	}
+
+	// Do we want to weight entries?
+	if ( 'weight' === $type &&
+	     'yes' !== get_option( 'ws-ls-webhooks-weight-entries-enabled', 'no' ) ) {
+		return false;
+	}
+
+	// Do we want to process targets?
+	if ( 'target' === $type &&
+	     'yes' !== get_option( 'ws-ls-webhooks-targets-enabled', 'no' ) ) {
+		return false;
+	}
+
+	return true;
+}
+
+/**
  * Listen out for weight entry add/edit hooks
  * @param $type
  * @param $entry
@@ -69,6 +115,11 @@ function ws_ls_webhooks_endpoints_contain_slack() {
 function ws_ls_webhooks_weight_target( $type, $entry ) {
 
 	if ( false === ws_ls_webhooks_enabled() ) {
+		return;
+	}
+	
+	// Want to process this?
+	if ( false === ws_ls_webhooks_process_this( $type[ 'type' ] ) ) {
 		return;
 	}
 

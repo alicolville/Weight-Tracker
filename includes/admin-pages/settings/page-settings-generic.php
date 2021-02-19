@@ -986,7 +986,6 @@ function ws_ls_settings_page_generic() {
 												<?php echo __( 'Push data to third party applications when a user adds/updates weight entries or updates their target.' , WE_LS_SLUG ); ?>
 												<a href="https://weight.yeken.uk/webhooks-zapier-and-slack/" target="_blank" rel="noopener noreferrer"><?php echo __( 'Read more about Webhooks/Slack/Zapier' , WE_LS_SLUG); ?></a>
 											</p>
-
 											<table class="form-table">
 												<tr class="<?php echo $disable_if_not_pro_class; ?>">
 													<th scope="row"><?php echo __( 'Enabled', WE_LS_SLUG ); ?></th>
@@ -1013,7 +1012,7 @@ function ws_ls_settings_page_generic() {
 															<input id="ws-ls-webhook-endpoint-two" name="ws-ls-webhook-endpoint-two" type="url" maxlength="250" class="large-text" value="<?php echo esc_url( $endpoint_two ); ?>">
 															<input id="ws-ls-webhook-endpoint-three" name="ws-ls-webhook-endpoint-three" type="url" maxlength="250" class="large-text" value="<?php echo esc_url( $endpoint_three ); ?>">
 															<p>
-																<?php echo __( 'Specify one or more endpoints that data should be pushed to. If the endpoint is a determined to be Slack a message shall be built to be posted within the given Slack channel. All other endpoints will receive a JSON object representing the data.', WE_LS_SLUG); ?>
+																<?php echo __( 'Specify one or more endpoints that data should be pushed to. If the endpoint is a determined to be Slack URL then a message shall be posted within the given Slack channel. All other endpoints will receive a JSON object representing the data.', WE_LS_SLUG); ?>
 																<a href="https://weight.yeken.uk/webhooks-zapier-and-slack/" target="_blank" rel="noopener noreferrer"><?php echo __('Read more at ', WE_LS_SLUG); ?>https://weight.yeken.uk/webhooks-zapier-and-slack/</a>
 															</p>
 														</td>
