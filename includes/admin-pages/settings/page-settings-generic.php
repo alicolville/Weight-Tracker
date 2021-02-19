@@ -74,10 +74,10 @@ function ws_ls_settings_page_generic() {
 								<div id="ws-ls-tabs">
 									<ul>
                                         <li><a><?php echo __( 'General', WE_LS_SLUG); ?><span><?php echo __( 'General settings', WE_LS_SLUG); ?></span></a></li>
-                                        <li><a><?php echo __( 'Pro Plus', WE_LS_SLUG); ?><span><?php echo __( 'Adjust settings for your Pro Plus features', WE_LS_SLUG); ?></span></a></li>
+                                        <li><a><?php echo __( 'Macros & Calories', WE_LS_SLUG); ?><span><?php echo __( 'Adjust settings for macronutrients and calories', WE_LS_SLUG); ?></span></a></li>
                                         <li><a><?php echo __( 'Chart', WE_LS_SLUG); ?><span><?php echo __( 'Chart styling and config', WE_LS_SLUG); ?></span></a></li>
 										<li><a><?php echo __( 'Emails & Notifications', WE_LS_SLUG); ?><span><?php echo __( 'Configure email notifications and templates', WE_LS_SLUG); ?></span></a></li>
-                                        <li><a><?php echo __( '3rd Party', WE_LS_SLUG); ?><span><?php echo __( '3rd Party Integrations', WE_LS_SLUG); ?></span></a></li>
+                                        <li><a><?php echo __( 'Integrations', WE_LS_SLUG); ?><span><?php echo __( '3rd party integrations and webhooks', WE_LS_SLUG); ?></span></a></li>
                                     </ul>
 									<div>
 										<div>
