@@ -86,6 +86,8 @@ function ws_ls_webhooks_endpoints_contain_slack() {
  */
 function ws_ls_webhooks_process_this( $type ) {
 
+
+
 	// If this is from an admin screen, do we want to process it?
 	if ( true === is_admin() &&
 	     'yes' !== get_option( 'ws-ls-webhooks-admin-changes-enabled', 'no' ) ) {
@@ -117,7 +119,7 @@ function ws_ls_webhooks_weight_target( $type, $entry ) {
 	if ( false === ws_ls_webhooks_enabled() ) {
 		return;
 	}
-	
+
 	// Want to process this?
 	if ( false === ws_ls_webhooks_process_this( $type[ 'type' ] ) ) {
 		return;
