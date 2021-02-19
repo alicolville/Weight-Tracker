@@ -42,12 +42,13 @@ For further information read our documentation:
 * **Macronutrients Calculator**. Shortcodes and extended admin screens to recommend how their calorie consumption should be split into fats, carbohydrates and proteins. For further information on the Macronutrients Calculator and how these calculations are performed please visit our calculations page.
 * **Additional user preference fields**. Additional user preference fields and shortcodes to display them: Activity Level, Date of Birth and Gender.
 * **Awards**. Awards and Badges! Set awards for: BMI Change, BMI Equals, Weight Gain / Loss from start and Percentage of weight lost from start.
-* **Webhooks, Zapier & Slack**. Push weight entry data and targets to Slack channels, Zapier or your own custom Webhooks!
+
 
 [Read more about features](https://weight.yeken.uk/features/ "Read more about features")
 
 = Pro Version =
 
+* **Webhooks, Zapier & Slack**. Push weight entry data and targets to Slack channels, Zapier or your own custom Webhooks!
 * **Support for Gravity Forms.** Scan Gravity Form submissions for relevant Weight / Measurement fields and create a weight entry automatically. [Read more](https://weight.yeken.uk/gravity-forms/ "Read more")
 * **Admin can view, edit and delete user data.** Various tools for viewing user's graphs, tables of entries, BMI, targets, weight lost / gained stats and much more.
 * **CSV and JSON exports** for all data or a particular user.
