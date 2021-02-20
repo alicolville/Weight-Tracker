@@ -74,10 +74,10 @@ function ws_ls_settings_page_generic() {
 								<div id="ws-ls-tabs">
 									<ul>
                                         <li><a><?php echo __( 'General', WE_LS_SLUG); ?><span><?php echo __( 'General settings', WE_LS_SLUG); ?></span></a></li>
-                                        <li><a><?php echo __( 'Pro Plus', WE_LS_SLUG); ?><span><?php echo __( 'Adjust settings for your Pro Plus features', WE_LS_SLUG); ?></span></a></li>
+                                        <li><a><?php echo __( 'Macros & Calories', WE_LS_SLUG); ?><span><?php echo __( 'Adjust settings for macronutrients and calories', WE_LS_SLUG); ?></span></a></li>
                                         <li><a><?php echo __( 'Chart', WE_LS_SLUG); ?><span><?php echo __( 'Chart styling and config', WE_LS_SLUG); ?></span></a></li>
 										<li><a><?php echo __( 'Emails & Notifications', WE_LS_SLUG); ?><span><?php echo __( 'Configure email notifications and templates', WE_LS_SLUG); ?></span></a></li>
-                                        <li><a><?php echo __( '3rd Party', WE_LS_SLUG); ?><span><?php echo __( '3rd Party Integrations', WE_LS_SLUG); ?></span></a></li>
+                                        <li><a><?php echo __( 'Integrations', WE_LS_SLUG); ?><span><?php echo __( '3rd party integrations and webhooks', WE_LS_SLUG); ?></span></a></li>
                                     </ul>
 									<div>
 										<div>
@@ -86,7 +86,6 @@ function ws_ls_settings_page_generic() {
                                                         ws_ls_display_pro_upgrade_notice();
                                                     }
                                                 ?>
-
                                                 <h3><?php echo __( 'Caching' , WE_LS_SLUG); ?></h3>
                                                 <table class="form-table">
                                                     <tr>
@@ -982,9 +981,89 @@ function ws_ls_settings_page_generic() {
                                                 ws_ls_display_pro_upgrade_notice();
                                             }
                                             ?>
+											<h3><?php echo __( 'Webhooks/Slack/Zapier' , WE_LS_SLUG); ?></h3>
+											<p>
+												<?php echo __( 'Push data to third party applications when a user adds/updates weight entries or updates their target.' , WE_LS_SLUG ); ?>
+												<a href="https://weight.yeken.uk/webhooks-zapier-and-slack/" target="_blank" rel="noopener noreferrer"><?php echo __( 'Read more about Webhooks/Slack/Zapier' , WE_LS_SLUG); ?></a>
+											</p>
+											<table class="form-table">
+												<tr class="<?php echo $disable_if_not_pro_class; ?>">
+													<th scope="row"><?php echo __( 'Enabled', WE_LS_SLUG ); ?></th>
+													<td>
+														<?php
+														$is_enabled = get_option( 'ws-ls-webhooks-enabled', 'no' );
+														?>
+														<select id="ws-ls-webhooks-enabled" name="ws-ls-webhooks-enabled">
+															<option value="yes" <?php selected( $is_enabled, 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+															<option value="no" <?php selected( $is_enabled, 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+														</select>
+														<p><?php echo __( 'If set to Yes, data will be fired to the specified endpoints.', WE_LS_SLUG); ?></p>
+													</td>
+												</tr>
+												<tr class="<?php echo $disable_if_not_pro_class; ?>">
+													<th scope="row"><?php echo __( 'Endpoint URLs', WE_LS_SLUG ); ?></th>
+													<td>
+														<?php
+															$endpoint_one 	= get_option( 'ws-ls-webhook-endpoint-one', '' );
+															$endpoint_two 	= get_option( 'ws-ls-webhook-endpoint-two', '' );
+															$endpoint_three = get_option( 'ws-ls-webhook-endpoint-three', '' );
+														?>
+															<input id="ws-ls-webhook-endpoint-one" name="ws-ls-webhook-endpoint-one" type="url" maxlength="250" class="large-text" value="<?php echo esc_url( $endpoint_one ); ?>">
+															<input id="ws-ls-webhook-endpoint-two" name="ws-ls-webhook-endpoint-two" type="url" maxlength="250" class="large-text" value="<?php echo esc_url( $endpoint_two ); ?>">
+															<input id="ws-ls-webhook-endpoint-three" name="ws-ls-webhook-endpoint-three" type="url" maxlength="250" class="large-text" value="<?php echo esc_url( $endpoint_three ); ?>">
+															<p>
+																<?php echo __( 'Specify one or more endpoints that data should be pushed to. If the endpoint is a determined to be Slack URL then a message shall be posted within the given Slack channel. All other endpoints will receive a JSON object representing the data.', WE_LS_SLUG); ?>
+																<a href="https://weight.yeken.uk/webhooks-zapier-and-slack/" target="_blank" rel="noopener noreferrer"><?php echo __('Read more at ', WE_LS_SLUG); ?>https://weight.yeken.uk/webhooks-zapier-and-slack/</a>
+															</p>
+														</td>
+													</td>
+												</tr>
+												<tr class="<?php echo $disable_if_not_pro_class; ?>">
+													<th scope="row"><?php echo __( 'Send data for weight entries?', WE_LS_SLUG ); ?></th>
+													<td>
+														<?php
+															$is_enabled = get_option( 'ws-ls-webhooks-weight-entries-enabled', 'yes' );
+														?>
+														<select id="ws-ls-webhooks-weight-entries-enabled" name="ws-ls-webhooks-weight-entries-enabled">
+															<option value="yes" <?php selected( $is_enabled, 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+															<option value="no" <?php selected( $is_enabled, 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+														</select>
+														<p><?php echo __( 'When a user adds/updates a weight entry, should data be fired to the endpoint(s)?', WE_LS_SLUG); ?></p>
+													</td>
+												</tr>
+												<tr class="<?php echo $disable_if_not_pro_class; ?>">
+													<th scope="row"><?php echo __( 'Send data for target updates?', WE_LS_SLUG ); ?></th>
+													<td>
+														<?php
+														$is_enabled = get_option( 'ws-ls-webhooks-targets-enabled', 'no' );
+														?>
+														<select id="ws-ls-webhooks-targets-enabled" name="ws-ls-webhooks-targets-enabled">
+															<option value="yes" <?php selected( $is_enabled, 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+															<option value="no" <?php selected( $is_enabled, 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+														</select>
+														<p><?php echo __( 'When a user updates their target, should data be fired to the endpoint(s)?', WE_LS_SLUG); ?></p>
+													</td>
+												</tr>
+												<tr class="<?php echo $disable_if_not_pro_class; ?>">
+													<th scope="row"><?php echo __( 'Include admin updates?', WE_LS_SLUG ); ?></th>
+													<td>
+														<?php
+														$is_enabled = get_option( 'ws-ls-webhooks-admin-changes-enabled', 'no' );
+														?>
+														<select id="ws-ls-webhooks-admin-changes-enabled" name="ws-ls-webhooks-admin-changes-enabled">
+															<option value="yes" <?php selected( $is_enabled, 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+															<option value="no" <?php selected( $is_enabled, 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+														</select>
+														<p><?php echo __( 'Should changes made by admins (via the admin screens) cause data to be fired to the endpoints?', WE_LS_SLUG); ?></p>
+													</td>
+												</tr>
+											</table>
+
+
+											<h3><?php echo __( 'Form Handlers' , WE_LS_SLUG); ?></h3>
                                             <table class="form-table">
                                                 <tr class="<?php echo $disable_if_not_pro_class; ?>">
-                                                    <th scope="row"><?php echo __( 'Enable Gravity Forms', WE_LS_SLUG ); ?></th>
+                                                    <th scope="row"><?php echo __( 'Process Gravity Forms', WE_LS_SLUG ); ?></th>
                                                     <td>
 														<?php
 															$gf_enabled = get_option( 'ws-ls-gf-enable', 'no' );
@@ -1095,8 +1174,15 @@ function ws_ls_register_settings(){
 		register_setting( 'we-ls-options-group', 'ws-ls-email-include-weight-summary' );
 		register_setting( 'we-ls-options-group', 'ws-ls-email-include-email-address' );
 
-		// Third Party
+		// Third Party / Web hooks
         register_setting( 'we-ls-options-group', 'ws-ls-gf-enable' );
+		register_setting( 'we-ls-options-group', 'ws-ls-webhooks-enabled' );
+		register_setting( 'we-ls-options-group', 'ws-ls-webhook-endpoint-one' );
+		register_setting( 'we-ls-options-group', 'ws-ls-webhook-endpoint-two' );
+		register_setting( 'we-ls-options-group', 'ws-ls-webhook-endpoint-three' );
+		register_setting( 'we-ls-options-group', 'ws-ls-webhooks-admin-changes-enabled' );
+		register_setting( 'we-ls-options-group', 'ws-ls-webhooks-weight-entries-enabled' );
+		register_setting( 'we-ls-options-group', 'ws-ls-webhooks-targets-enabled' );
 
         // Photos
 	    register_setting( 'we-ls-options-group', 'ws-ls-photos-max-size' );

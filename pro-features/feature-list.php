@@ -30,6 +30,7 @@ function ws_ls_feature_list_pro() {
 		__(' <strong>Custom Fields.</strong> Create and add your own questions to weight entry forms to gather additional information.', WE_LS_SLUG ),
 		__(' <strong>Photo Custom Fields</strong>. Add one or more photo fields to your weight entry forms and allow your users to upload photos of their progress. Photos can be viewed, updated and removed by the end user and administrators. Handy shortcodes are provided for displaying galleries, most recent and oldest photo.', WE_LS_SLUG ),
 		__(' <strong>Export all data or a particular user.</strong> Export in JSON or CSV format.', WE_LS_SLUG ),
+		__(' <strong>Webhooks, Zapier & Slack</strong>. Push weight entry data and targets to Slack channels, Zapier or your own custom Webhooks!', WE_LS_SLUG ),
 		__(' <strong>Groups</strong>. Define user groups and assign your user\'s to them. View Weight Difference statistics for the group as a whole.', WE_LS_SLUG ),
 		__(' <strong>BMI.</strong> Allows a user to specify their height. Once specified, their BMI is displayed next to each weight entry. There is also a shortcode to render the latest BMI.', WE_LS_SLUG ),
 		__(' <strong>Email notifications.</strong> Receive email notifications when a person updates their target or adds / edits a weight.', WE_LS_SLUG ),
