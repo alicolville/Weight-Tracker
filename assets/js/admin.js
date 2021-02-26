@@ -283,4 +283,64 @@ jQuery( document ).ready(function ($) {
     }
 
   }
+
+  /*
+    Postbox sorting / hiding
+   */
+  $( '.ws-ls-postbox .handlediv' ).on('click', function ( event ) {
+
+    event.preventDefault();
+
+    let postbox_id = $( this ).data( 'postbox-id' );
+    let postbox    = $( '#' + postbox_id );
+
+    postbox.toggleClass( 'closed' );
+
+    let value = ( postbox.hasClass( 'closed' ) ) ? 0 : 1;
+
+    ws_ls_postboxes_event( postbox_id, 'display', value )
+
+  });
+
+  function ws_ls_postboxes_event( id, key, value ) {
+
+    let data = {  'action'    : 'postboxes_event',
+                  'security'  : ws_ls_security[ 'ajax-security-nonce' ],
+                  'id'        : id,
+                  'key'       : key,
+                  'value'     : value
+    };
+
+    jQuery.post( ajaxurl, data, function( response ) {
+      ws_ls_postboxes_event_callback( data, response );
+    });
+  }
+
+  function ws_ls_postboxes_event_callback( data, response) {
+
+    console.log( response );
+
+    // Do we have an error?
+    // if ( true === response[ 'error' ] ) {
+    //   $( '#ws-ls-export-message' ).text( response[ 'message'] );
+    //   return;
+    // }
+    //
+    // // Update progress bar
+    // $( '.ws-ls-export-progress-bar-inner' ).css( 'width', response[ 'percentage'] + '%');
+    //
+    // // Update message if we have one
+    // if ( '' != response[ 'message' ] ) {
+    //
+    //   let message = response[ 'message'];
+    //
+    //   $( '#ws-ls-export-message' ).html( message );
+    // }
+    // ;
+    // // Continue?
+    // if ( true === response[ 'continue' ] ) {
+    //   ws_ls_export_process();
+    // }
+
+  }
 });

@@ -26,8 +26,9 @@ function ws_ls_admin_page_data_summary() {
                         if ( true !== WS_LS_IS_PRO ) {
                             ws_ls_display_pro_upgrade_notice();
                         }
+
                     ?>
-					<div class="postbox">
+					<div class="postbox <?php ws_ls_postbox_classes( 'league-table' ); ?>" id="league-table">
 						<?php
 
 							// If changing gain / loss set options
@@ -38,9 +39,11 @@ function ws_ls_admin_page_data_summary() {
 							}
 
 							// Are we wanting to see who has lost the most? Or gained?
-							$show_gain = get_option('ws-ls-show-gains') ? true : false;
+							$show_gain 	= get_option('ws-ls-show-gains') ? true : false;
+							$title 		= ( false === $show_gain ) ? __( 'League table for those that have lost the most', WE_LS_SLUG ) : __( 'League Table for those that have gained the most', WE_LS_SLUG );
+
+							ws_ls_postbox_header( [ 'title' => $title, 'postbox-id' => 'league-table' ] );
 						?>
-						<h2 class="hndle"><span><?php echo (false === $show_gain) ? __('League table for those that have lost the most', WE_LS_SLUG) : __('League Table for those that have gained the most', WE_LS_SLUG) ; ?></span></h2>
 						<div class="inside">
 							<?php
 								$ignore_cache = false;
@@ -76,8 +79,10 @@ function ws_ls_admin_page_data_summary() {
 						</div>
 					</div>
                     <?php if ( true === ws_ls_groups_do_we_have_any() ): ?>
-                        <div class="postbox">
-                            <h2 class="hndle"><span><?php echo __('Weight change by group', WE_LS_SLUG); ?></span></h2>
+                        <div class="postbox <?php ws_ls_postbox_classes( 'weight-change-by-group' ); ?>" id="weight-change-by-group">
+							<?php
+								ws_ls_postbox_header( [ 'title' => __( 'Weight change by group', WE_LS_SLUG ), 'postbox-id' => 'weight-change-by-group' ] );
+							?>
                             <div class="inside">
                                 <table class="ws-ls-settings-groups-list-ajax table ws-ls-loading-table" id="groups-list-stats"
                                        data-paging="true"
@@ -96,7 +101,7 @@ function ws_ls_admin_page_data_summary() {
                             </div>
                         </div>
                     <?php endif; ?>
-					<div class="postbox">
+					<div class="postbox <?php ws_ls_postbox_classes( 'summary-entries' ); ?>" id="summary-entries">
 						<?php
 
 							// Show 100 most recent entries? Or show 500?
@@ -113,8 +118,11 @@ function ws_ls_admin_page_data_summary() {
 
 							$show_all   = get_option( 'ws-ls-show-all' ) ? true : false;
 							$show_meta  = get_option( 'ws-ls-show-meta' ) ? true : false;
+
+							$title = ( $show_all ) ? __( 'Last 500 entries', WE_LS_SLUG ) : __( 'Last 100 entries', WE_LS_SLUG );
+
+							ws_ls_postbox_header( [ 'title' => $title, 'postbox-id' => 'summary-entries' ] );
 						?>
-						<h2 class="hndle"><span><?php echo ($show_all) ? __('Last 500 entries', WE_LS_SLUG) : __('Last 100 entries', WE_LS_SLUG); ?></span></h2>
 						<div class="inside">
 							<?php
 

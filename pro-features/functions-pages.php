@@ -304,6 +304,63 @@ function ws_ls_user_header( $user_id, $previous_url = false ) {
     );
 }
 
+/**
+ * Render Postbox header
+ * @param array $args
+ */
+function ws_ls_postbox_header( $args = [] ) {
+
+		$args = wp_parse_args( $args, [		'title'			=> __( 'Title', WE_LS_SLUG ),
+											'show-controls' => true,
+											'postbox-id'	=> NULL
+		]);
+
+		echo '<div class="postbox-header">';
+
+		printf( '<h2 class="hndle"><span>%1$s</span></h2>', esc_html( $args[ 'title' ] ) );
+
+		if ( true === $args[ 'show-controls' ] &&
+			 	false === empty( $args[ 'postbox-id' ] ) ) {
+
+			printf( '<div class="handle-actions hide-if-no-js">
+						<button type="button" class="handle-order-higher" data-postbox-id="%1$s"><span class="order-higher-indicator"></span></button>
+						<button type="button" class="handle-order-lower" data-postbox-id="%1$s"><span class="order-lower-indicator"></span></button>
+						<button type="button" class="handlediv" data-postbox-id="%1$s"><span class="toggle-indicator"></span></button>
+					</div>',
+					esc_attr( $args[ 'postbox-id' ] )
+			);
+		}
+
+		echo '</div>';
+}
+
+/**
+ * Show / Hide postbox?
+ * @param $id
+ *
+ * @return bool
+ */
+function ws_ls_postbox_show( $id ) {
+
+	$key = sprintf( 'ws-ls-postbox-%s-display', $id );
+
+	return (bool) get_option( $key, true );
+}
+
+/**
+ * Render class to hide postbox if needed
+ * @param $id
+ */
+function ws_ls_postbox_classes( $id ) {
+
+	$classes = [ 'ws-ls-postbox' ];
+
+	if ( false === ws_ls_postbox_show( $id ) ) {
+		$classes[] = 'closed';
+	}
+
+	echo implode( ' ', $classes );
+}
 
 // ------------------------------------------------------------------------------
 // Helper functions
