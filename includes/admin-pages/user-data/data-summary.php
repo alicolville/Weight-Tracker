@@ -27,124 +27,12 @@ function ws_ls_admin_page_data_summary() {
                             ws_ls_display_pro_upgrade_notice();
                         }
 
+                        ws_ls_postbox_league_table();
+
+                    	ws_ls_postbox_change_by_groups();
+
+                        ws_ls_postbox_latest_entries();
                     ?>
-					<div class="postbox <?php ws_ls_postbox_classes( 'league-table' ); ?>" id="league-table">
-						<?php
-
-							// If changing gain / loss set options
-							if( false === empty($_GET['show-gain'])) {
-
-								$value = ('y' === $_GET['show-gain']) ? true : false;
-								update_option('ws-ls-show-gains', $value);
-							}
-
-							// Are we wanting to see who has lost the most? Or gained?
-							$show_gain 	= get_option('ws-ls-show-gains') ? true : false;
-							$title 		= ( false === $show_gain ) ? __( 'League table for those that have lost the most', WE_LS_SLUG ) : __( 'League Table for those that have gained the most', WE_LS_SLUG );
-
-							ws_ls_postbox_header( [ 'title' => $title, 'postbox-id' => 'league-table' ] );
-						?>
-						<div class="inside">
-							<?php
-								$ignore_cache = false;
-
-                                // Run stats if plugin version number has changed!
-                                if( true === WS_LS_IS_PRO && update_option('ws-ls-version-number-stats', WE_LS_CURRENT_VERSION) || (false === empty($_GET['regenerate-stats']) && 'y' == $_GET['regenerate-stats'])) {
-                                    ws_ls_db_stats_clear_last_updated_date();
-                                    ws_ls_stats_run_cron();
-                                    ws_ls_tidy_cache_on_delete();
-									$ignore_cache = true;
-                                }
-
-                                echo ws_ls_shortcode_stats_league_total(['ignore_cache' => $ignore_cache, 'order' => (false === $show_gain) ? 'asc' : 'desc']);
-
-								if( true === WS_LS_IS_PRO ) {
-									?>
-									<p>
-										<small><?php echo __( 'Please note: For performance reasons, this table only will update every hour. Click the following button to manually update.', WE_LS_SLUG ); ?></small>
-									</p>
-									<a class="btn button-secondary"
-									   href="<?php echo admin_url( 'admin.php?page=ws-ls-data-home&regenerate-stats=y' ); ?>"><i
-											class="fa fa-refresh"></i> <?php echo __( 'Regenerate these stats', WE_LS_SLUG ); ?>
-									</a>
-									<?php
-
-									echo sprintf(
-										'<a class="btn button-secondary" href="%s"><i class="fa fa-arrows-v"></i> %s</a>',
-										admin_url( 'admin.php?page=ws-ls-data-home&show-gain=' ) . ( ( false === $show_gain ) ? 'y' : 'n' ),
-										( false === $show_gain ) ? __( 'Show who has gained the most', WE_LS_SLUG ) : __( 'Show who has lost the most', WE_LS_SLUG )
-									);
-								}
-						 	?>
-						</div>
-					</div>
-                    <?php if ( true === ws_ls_groups_do_we_have_any() ): ?>
-                        <div class="postbox <?php ws_ls_postbox_classes( 'weight-change-by-group' ); ?>" id="weight-change-by-group">
-							<?php
-								ws_ls_postbox_header( [ 'title' => __( 'Weight change by group', WE_LS_SLUG ), 'postbox-id' => 'weight-change-by-group' ] );
-							?>
-                            <div class="inside">
-                                <table class="ws-ls-settings-groups-list-ajax table ws-ls-loading-table" id="groups-list-stats"
-                                       data-paging="true"
-                                       data-filtering="false"
-                                       data-sorting="true"
-                                       data-editing-allow-add="false"
-                                       data-editing-allow-delete="false"
-                                       data-editing-allow-edit="false"
-                                       data-cascade="true"
-                                       data-paging-size="10"
-                                       data-toggle="true"
-                                       data-use-parent-width="true">
-                                </table>
-                                <a class="btn button-secondary" href="<?php echo admin_url( 'admin.php?page=ws-ls-data-home&regenerate-stats=y' ); ?>"><i class="fa fa-refresh"></i> <?php echo __('Regenerate these stats', WE_LS_SLUG); ?></a>
-                                <a class="btn button-secondary" href="<?php echo admin_url( 'admin.php?page=ws-ls-settings&mode=groups' ); ?>"><i class="fa fa-eye"></i> <?php echo __('View / Edit', WE_LS_SLUG); ?></a>
-                            </div>
-                        </div>
-                    <?php endif; ?>
-					<div class="postbox <?php ws_ls_postbox_classes( 'summary-entries' ); ?>" id="summary-entries">
-						<?php
-
-							// Show 100 most recent entries? Or show 500?
-							if( false === empty( $_GET['show-all'] ) ) {
-								$value = ( 'y' === $_GET['show-all'] ) ? true : false;
-								update_option('ws-ls-show-all', $value );
-							}
-
-							// Show meta data?
-							if( false === empty( $_GET['show-meta'] ) ) {
-								$value = ( 'y' === $_GET['show-meta'] ) ? true : false;
-								update_option('ws-ls-show-meta', $value );
-							}
-
-							$show_all   = get_option( 'ws-ls-show-all' ) ? true : false;
-							$show_meta  = get_option( 'ws-ls-show-meta' ) ? true : false;
-
-							$title = ( $show_all ) ? __( 'Last 500 entries', WE_LS_SLUG ) : __( 'Last 100 entries', WE_LS_SLUG );
-
-							ws_ls_postbox_header( [ 'title' => $title, 'postbox-id' => 'summary-entries' ] );
-						?>
-						<div class="inside">
-							<?php
-
-								echo ws_ls_data_table_render( [ 'limit' => ( $show_all ) ? 500 : 100, 'smaller-width' => true, 'enable-meta-fields' => $show_meta, 'page-size' => 20 ] );
-
-								echo sprintf(
-												'<a class="btn button-secondary" href="%s"><i class="fa fa-book"></i> %s</a>',
-												admin_url( 'admin.php?page=ws-ls-data-home&show-all=' ) . ( ( false === $show_all ) ? 'y' : 'n'),
-												( false === $show_all ) ? __( 'Show 500 recent entries', WE_LS_SLUG ) : __( 'Show 100 recent entries', WE_LS_SLUG )
-											);
-
-								if ( ws_ls_meta_fields_number_of_enabled() > 0 ) {
-									echo sprintf(
-										'&nbsp;<a class="btn button-secondary" href="%s"><i class="fas fa-book-reader"></i> %s</a>',
-										admin_url( 'admin.php?page=ws-ls-data-home&show-meta=' ) . ( ( false === $show_meta ) ? 'y' : 'n'),
-										( false === $show_meta ) ? __( 'Include Custom Fields (Slower)', WE_LS_SLUG ) : __( 'Hide Custom Fields (Quicker)', WE_LS_SLUG )
-									);
-								}
-
-						 	?>
-						</div>
-					</div>
 				</div>
 			</div>
 			<div id="postbox-container-1" class="postbox-container">
@@ -235,4 +123,140 @@ function ws_ls_admin_page_data_summary() {
     ws_ls_create_dialog_jquery_code(__('Are you sure you?', WE_LS_SLUG),
         __('Are you sure you wish to remove all user data?', WE_LS_SLUG) . '<br /><br />',
         'delete-confirm');
+}
+
+function ws_ls_postbox_league_table() {
+?>
+	<div class="postbox <?php ws_ls_postbox_classes( 'league-table' ); ?>" id="league-table">
+		<?php
+
+			// If changing gain / loss set options
+			if( false === empty($_GET['show-gain'])) {
+
+				$value = ('y' === $_GET['show-gain']) ? true : false;
+				update_option('ws-ls-show-gains', $value);
+			}
+
+			// Are we wanting to see who has lost the most? Or gained?
+			$show_gain 	= get_option('ws-ls-show-gains') ? true : false;
+			$title 		= ( false === $show_gain ) ? __( 'League table for those that have lost the most', WE_LS_SLUG ) : __( 'League Table for those that have gained the most', WE_LS_SLUG );
+
+			ws_ls_postbox_header( [ 'title' => $title, 'postbox-id' => 'league-table' ] );
+		?>
+		<div class="inside">
+			<?php
+			$ignore_cache = false;
+
+			// Run stats if plugin version number has changed!
+			if( true === WS_LS_IS_PRO && update_option('ws-ls-version-number-stats', WE_LS_CURRENT_VERSION) || (false === empty($_GET['regenerate-stats']) && 'y' == $_GET['regenerate-stats'])) {
+				ws_ls_db_stats_clear_last_updated_date();
+				ws_ls_stats_run_cron();
+				ws_ls_tidy_cache_on_delete();
+				$ignore_cache = true;
+			}
+
+			echo ws_ls_shortcode_stats_league_total(['ignore_cache' => $ignore_cache, 'order' => (false === $show_gain) ? 'asc' : 'desc']);
+
+			if( true === WS_LS_IS_PRO ) {
+				?>
+				<p>
+					<small><?php echo __( 'Please note: For performance reasons, this table only will update every hour. Click the following button to manually update.', WE_LS_SLUG ); ?></small>
+				</p>
+				<a class="btn button-secondary"
+				   href="<?php echo admin_url( 'admin.php?page=ws-ls-data-home&regenerate-stats=y' ); ?>"><i
+						class="fa fa-refresh"></i> <?php echo __( 'Regenerate these stats', WE_LS_SLUG ); ?>
+				</a>
+				<?php
+
+				echo sprintf(
+					'<a class="btn button-secondary" href="%s"><i class="fa fa-arrows-v"></i> %s</a>',
+					admin_url( 'admin.php?page=ws-ls-data-home&show-gain=' ) . ( ( false === $show_gain ) ? 'y' : 'n' ),
+					( false === $show_gain ) ? __( 'Show who has gained the most', WE_LS_SLUG ) : __( 'Show who has lost the most', WE_LS_SLUG )
+				);
+			}
+			?>
+		</div>
+	</div>
+<?php
+}
+
+function ws_ls_postbox_latest_entries() {?>
+	<div class="postbox <?php ws_ls_postbox_classes( 'summary-entries' ); ?>" id="summary-entries">
+		<?php
+
+			// Show 100 most recent entries? Or show 500?
+			if( false === empty( $_GET['show-all'] ) ) {
+				$value = ( 'y' === $_GET['show-all'] ) ? true : false;
+				update_option('ws-ls-show-all', $value );
+			}
+
+			// Show meta data?
+			if( false === empty( $_GET['show-meta'] ) ) {
+				$value = ( 'y' === $_GET['show-meta'] ) ? true : false;
+				update_option('ws-ls-show-meta', $value );
+			}
+
+			$show_all   = get_option( 'ws-ls-show-all' ) ? true : false;
+			$show_meta  = get_option( 'ws-ls-show-meta' ) ? true : false;
+
+			$title = ( $show_all ) ? __( 'Last 500 entries', WE_LS_SLUG ) : __( 'Last 100 entries', WE_LS_SLUG );
+
+			ws_ls_postbox_header( [ 'title' => $title, 'postbox-id' => 'summary-entries' ] );
+		?>
+		<div class="inside">
+			<?php
+
+				echo ws_ls_data_table_render( [ 'limit' => ( $show_all ) ? 500 : 100, 'smaller-width' => true, 'enable-meta-fields' => $show_meta, 'page-size' => 20 ] );
+
+				echo sprintf(
+								'<a class="btn button-secondary" href="%s"><i class="fa fa-book"></i> %s</a>',
+								admin_url( 'admin.php?page=ws-ls-data-home&show-all=' ) . ( ( false === $show_all ) ? 'y' : 'n'),
+								( false === $show_all ) ? __( 'Show 500 recent entries', WE_LS_SLUG ) : __( 'Show 100 recent entries', WE_LS_SLUG )
+							);
+
+				if ( ws_ls_meta_fields_number_of_enabled() > 0 ) {
+					echo sprintf(
+						'&nbsp;<a class="btn button-secondary" href="%s"><i class="fas fa-book-reader"></i> %s</a>',
+						admin_url( 'admin.php?page=ws-ls-data-home&show-meta=' ) . ( ( false === $show_meta ) ? 'y' : 'n'),
+						( false === $show_meta ) ? __( 'Include Custom Fields (Slower)', WE_LS_SLUG ) : __( 'Hide Custom Fields (Quicker)', WE_LS_SLUG )
+					);
+				}
+
+			?>
+		</div>
+	</div>
+
+<?php
+}
+
+function ws_ls_postbox_change_by_groups() {
+
+	if ( false === ws_ls_groups_do_we_have_any() ) {
+		return;
+	}
+
+	?>
+	<div class="postbox <?php ws_ls_postbox_classes( 'weight-change-by-group' ); ?>" id="weight-change-by-group">
+		<?php
+			ws_ls_postbox_header( [ 'title' => __( 'Weight change by group', WE_LS_SLUG ), 'postbox-id' => 'weight-change-by-group' ] );
+		?>
+		<div class="inside">
+			<table class="ws-ls-settings-groups-list-ajax table ws-ls-loading-table" id="groups-list-stats"
+				   data-paging="true"
+				   data-filtering="false"
+				   data-sorting="true"
+				   data-editing-allow-add="false"
+				   data-editing-allow-delete="false"
+				   data-editing-allow-edit="false"
+				   data-cascade="true"
+				   data-paging-size="10"
+				   data-toggle="true"
+				   data-use-parent-width="true">
+			</table>
+			<a class="btn button-secondary" href="<?php echo admin_url( 'admin.php?page=ws-ls-data-home&regenerate-stats=y' ); ?>"><i class="fa fa-refresh"></i> <?php echo __('Regenerate these stats', WE_LS_SLUG); ?></a>
+			<a class="btn button-secondary" href="<?php echo admin_url( 'admin.php?page=ws-ls-settings&mode=groups' ); ?>"><i class="fa fa-eye"></i> <?php echo __('View / Edit', WE_LS_SLUG); ?></a>
+		</div>
+	</div>
+
+	<?php
 }
