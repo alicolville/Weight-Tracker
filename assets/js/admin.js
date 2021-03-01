@@ -302,6 +302,12 @@ jQuery( document ).ready(function ($) {
 
   });
 
+  /**
+   * Fire an Ajax event back to back end to update postbox display / order preferences
+   * @param id
+   * @param key
+   * @param value
+   */
   function ws_ls_postboxes_event( id, key, value ) {
 
     let data = {  'action'    : 'postboxes_event',
@@ -312,35 +318,78 @@ jQuery( document ).ready(function ($) {
     };
 
     jQuery.post( ajaxurl, data, function( response ) {
-      ws_ls_postboxes_event_callback( data, response );
+      // Fire and forget.
     });
   }
 
-  function ws_ls_postboxes_event_callback( data, response) {
+  /**
+   * Handle Up and down click on postbox headers
+   */
+  $( '.ws-ls-col-one .ws-ls-postbox-higher, .ws-ls-col-one .ws-ls-postbox-lower' ).click( function( e ) {
 
-    console.log( response );
+    e.preventDefault();
 
-    // Do we have an error?
-    // if ( true === response[ 'error' ] ) {
-    //   $( '#ws-ls-export-message' ).text( response[ 'message'] );
-    //   return;
-    // }
-    //
-    // // Update progress bar
-    // $( '.ws-ls-export-progress-bar-inner' ).css( 'width', response[ 'percentage'] + '%');
-    //
-    // // Update message if we have one
-    // if ( '' != response[ 'message' ] ) {
-    //
-    //   let message = response[ 'message'];
-    //
-    //   $( '#ws-ls-export-message' ).html( message );
-    // }
-    // ;
-    // // Continue?
-    // if ( true === response[ 'continue' ] ) {
-    //   ws_ls_export_process();
-    // }
+    let column_name     = $( this ).data( 'postbox-col' );
+    let ids             = ws_ls_postboxes_ids( column_name );
+    let selected_id     = $( this ).data( 'postbox-id' );
+    let selected_index  = ids.indexOf( selected_id );
+    let move_up         = $( this ).hasClass( 'ws-ls-postbox-higher' );
 
+    if ( true === move_up && selected_index > 0 || false === move_up && selected_index < ids.length ) {
+
+      let postboxes   = $( '#' + column_name + ' .ws-ls-postbox' );
+      let swap_index  = ( true === move_up ) ? selected_index - 1 : selected_index + 1;
+
+      ws_ls_swap_elements( $( postboxes[ selected_index ] ).attr( 'id' ), $( postboxes[ swap_index ] ).attr( 'id' ) );
+
+      ws_ls_postboxes_event( 'user-summary', 'order-col-one', ws_ls_postboxes_ids( column_name ) );
+    }
+  });
+
+  /**
+   * Get all IDs for postboxes within column
+   * @param name
+   * @returns {[]}
+   */
+  function ws_ls_postboxes_ids( column_name ) {
+    let  ids = [];
+    $( '#' + column_name + ' .ws-ls-postbox' ).each( function () {
+      ids.push( this.id );
+    });
+
+    return ids;
+  }
+
+  /**
+   * Swap around two HTML elements
+   * Source: https://stackoverflow.com/questions/10716986/swap-two-html-elements-and-preserve-event-listeners-on-them
+   * @param first_element_id
+   * @param second_element_id
+   */
+  function ws_ls_swap_elements( first_element_id, second_element_id ) {
+
+    let obj1 = document.getElementById( first_element_id );
+    let obj2 = document.getElementById( second_element_id );
+
+    // save the location of obj2
+    let parent2 = obj2.parentNode;
+    let next2 = obj2.nextSibling;
+    // special case for obj1 is the next sibling of obj2
+    if (next2 === obj1) {
+      // just put obj1 before obj2
+      parent2.insertBefore(obj1, obj2);
+    } else {
+      // insert obj2 right before obj1
+      obj1.parentNode.insertBefore(obj2, obj1);
+
+      // now insert obj1 where obj2 was
+      if (next2) {
+        // if there was an element after obj2, then insert obj1 right before that
+        parent2.insertBefore(obj1, next2);
+      } else {
+        // otherwise, just append as last child
+        parent2.appendChild(obj1);
+      }
+    }
   }
 });

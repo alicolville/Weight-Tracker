@@ -164,7 +164,7 @@ function ws_ls_ajax_postbox_value() {
 	$key        = ws_ls_post_value('key' );
 	$value      = ws_ls_post_value('value' );
 	$result     = update_option( 'ws-ls-postbox-' . $postbox_id . '-' . $key, $value );
-	wp_send_json( get_option( 'ws-ls-postbox-league-table-display', false) );
+
 	wp_send_json( $result );
 }
 add_action( 'wp_ajax_postboxes_event', 'ws_ls_ajax_postbox_value' );

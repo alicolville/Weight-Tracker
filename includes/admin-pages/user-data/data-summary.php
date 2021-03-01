@@ -21,17 +21,26 @@ function ws_ls_admin_page_data_summary() {
 	<div id="poststuff">
 		<div id="post-body" class="metabox-holder columns-2">
 			<div id="post-body-content">
-				<div class="meta-box-sortables ui-sortable">
+				<div class="meta-box-sortables ui-sortable" id="ws-ls-col-one">
                     <?php
                         if ( true !== WS_LS_IS_PRO ) {
                             ws_ls_display_pro_upgrade_notice();
                         }
 
-                        ws_ls_postbox_league_table();
+                        $user_summary_order = get_option( 'ws-ls-postbox-user-summary-order-col-one', [ 'league-table', 'weight-change-by-group', 'summary-entries' ] );
 
-                    	ws_ls_postbox_change_by_groups();
+						foreach ( $user_summary_order as $postbox ) {
 
-                        ws_ls_postbox_latest_entries();
+							if ( 'league-table' === $postbox ) {
+								ws_ls_postbox_league_table();
+							} elseif ( 'weight-change-by-group' === $postbox ) {
+								ws_ls_postbox_change_by_groups();
+							} elseif ( 'summary-entries' === $postbox ) {
+								ws_ls_postbox_latest_entries();
+							}
+
+						}
+
                     ?>
 				</div>
 			</div>

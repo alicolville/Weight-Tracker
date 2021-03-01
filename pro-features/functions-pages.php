@@ -312,7 +312,8 @@ function ws_ls_postbox_header( $args = [] ) {
 
 		$args = wp_parse_args( $args, [		'title'			=> __( 'Title', WE_LS_SLUG ),
 											'show-controls' => true,
-											'postbox-id'	=> NULL
+											'postbox-id'	=> NULL,
+											'postbox-col'	=> 'ws-ls-col-one'
 		]);
 
 		echo '<div class="postbox-header">';
@@ -323,11 +324,12 @@ function ws_ls_postbox_header( $args = [] ) {
 			 	false === empty( $args[ 'postbox-id' ] ) ) {
 
 			printf( '<div class="handle-actions hide-if-no-js">
-						<button type="button" class="handle-order-higher" data-postbox-id="%1$s"><span class="order-higher-indicator"></span></button>
-						<button type="button" class="handle-order-lower" data-postbox-id="%1$s"><span class="order-lower-indicator"></span></button>
-						<button type="button" class="handlediv" data-postbox-id="%1$s"><span class="toggle-indicator"></span></button>
+						<button type="button" class="handle-order-higher ws-ls-postbox-higher" data-postbox-id="%1$s" data-postbox-col="%2$s"><span class="order-higher-indicator"></span></button>
+						<button type="button" class="handle-order-lower ws-ls-postbox-lower" data-postbox-id="%1$s" data-postbox-col="%2$s"><span class="order-lower-indicator"></span></button>
+						<button type="button" class="handlediv" data-postbox-id="%1$s" data-postbox-col="%2$s"><span class="toggle-indicator"></span></button>
 					</div>',
-					esc_attr( $args[ 'postbox-id' ] )
+					esc_attr( $args[ 'postbox-id' ] ),
+					esc_attr( $args[ 'postbox-col' ] )
 			);
 		}
 
@@ -349,17 +351,23 @@ function ws_ls_postbox_show( $id ) {
 
 /**
  * Render class to hide postbox if needed
+ *
  * @param $id
+ * @param string $column
+ *
+ * @return string|void
  */
-function ws_ls_postbox_classes( $id ) {
+function ws_ls_postbox_classes( $id, $column = 'ws-ls-col-one' ) {
 
-	$classes = [ 'ws-ls-postbox' ];
+	$classes = [ 'ws-ls-postbox', $column ];
 
 	if ( false === ws_ls_postbox_show( $id ) ) {
 		$classes[] = 'closed';
 	}
 
-	echo implode( ' ', $classes );
+	$classes = implode( ' ', $classes );
+
+	echo esc_attr( $classes );
 }
 
 // ------------------------------------------------------------------------------
