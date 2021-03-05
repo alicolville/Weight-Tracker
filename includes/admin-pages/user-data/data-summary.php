@@ -76,17 +76,6 @@ function ws_ls_admin_page_data_summary() {
         'delete-confirm');
 }
 
-function ws_ls_postbox_user_search() {
-?>
-	<div class="postbox <?php ws_ls_postbox_classes( 'user-search', 'ws-ls-col-two' ); ?>" id="user-search">
-		<?php ws_ls_postbox_header( [ 'title' => __( 'User Search', WE_LS_SLUG ), 'postbox-id' => 'user-search', 'postbox-col' => 'ws-ls-col-two' ] ); ?>
-		<div class="inside">
-			<?php ws_ls_box_user_search_form(); ?>
-		</div>
-	</div>
-<?php
-}
-
 function ws_ls_postbox_quick_stats() {
 ?>
 	<div class="postbox <?php ws_ls_postbox_classes( 'quick-stats', 'ws-ls-col-two' ); ?>" id="quick-stats">

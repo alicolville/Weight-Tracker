@@ -31,163 +31,202 @@ function ws_ls_box_user_search_form( $ajax_mode = false ) {
 /**
  * @param $user_id
  */
-function ws_ls_user_side_bar($user_id) {
+function ws_ls_user_side_bar( $user_id ) {
 
-	if( true === empty($user_id ) )  {
+	if( true === empty( $user_id ) )  {
 		return;
 	}
 
-	$settings_url = ws_ls_get_link_to_user_settings($user_id);
+	echo '<div class="meta-box-sortables" id="ws-ls-user-data-col-two">';
 
-	?>
-	<div class="meta-box-sortables" id="ws-ls-user-data-col-two">
-		<div class="postbox <?php ws_ls_postbox_classes( 'user-search', 'ws-ls-user-data-col-two' ); ?>" id="user-search">
-			<?php ws_ls_postbox_header( [ 'title' => __( 'User Search', WE_LS_SLUG ), 'postbox-id' => 'user-search', 'postbox-col' => 'ws-ls-user-data-col-two' ] ); ?>
-			<div class="inside">
-				<?php ws_ls_box_user_search_form(); ?>
-			</div>
+	// If true, add sidebar into array if missing ws_ls_meta_fields_photo_any_enabled()
+
+	ws_ls_postbox_user_search( 'ws-ls-user-data-col-two' );
+	ws_ls_postbox_sidebar_recent_photo();
+	ws_ls_postbox_sidebar_user_information( $user_id );
+	ws_ls_postbox_sidebar_add_entry( $user_id );
+	ws_ls_postbox_sidebar_export_data( $user_id );
+	ws_ls_postbox_sidebar_settings( $user_id );
+	ws_ls_postbox_sidebar_delete_data();
+	ws_ls_postbox_sidebar_delete_cache( $user_id );
+
+	echo '</div>';
+
+}
+
+/**
+ * Postbox for user search
+ *
+ * @param string $class
+ */
+function ws_ls_postbox_user_search( $class = 'ws-ls-col-two' ) {
+?>
+	<div class="postbox <?php ws_ls_postbox_classes( 'user-search', $class ); ?>" id="user-search">
+		<?php ws_ls_postbox_header( [ 'title' => __( 'User Search', WE_LS_SLUG ), 'postbox-id' => 'user-search', 'postbox-col' => $class ] ); ?>
+		<div class="inside">
+			<?php ws_ls_box_user_search_form(); ?>
 		</div>
-
-		<?php if ( true === ws_ls_meta_fields_photo_any_enabled() ) : ?>
-			<div class="postbox <?php ws_ls_postbox_classes( 'most-recent', 'ws-ls-user-data-col-two' ); ?>" id="most-recent">
-				<?php ws_ls_postbox_header( [ 'title' => __( 'Most Recent Photo', WE_LS_SLUG ), 'postbox-id' => 'most-recent', 'postbox-col' => 'ws-ls-user-data-col-two' ] ); ?>
-				<div class="inside">
-					<center>
-						<?php
-
-							if( true === ws_ls_has_a_valid_pro_plus_license() ) {
-								echo ws_ls_photos_shortcode_recent( [ 'user-id' => $user_id, 'width' => 200, 'height' => 200, 'hide-date' => true ] );
-
-                                $photo_count = ws_ls_photos_db_count_photos( $user_id );
-
-                                echo sprintf('<p>%s <strong>%s</strong>. <a href="%s">%s</a></p>',
-                                    __( 'No. of photos: ', WE_LS_SLUG ),
-                                    $photo_count,
-                                    ws_ls_get_link_to_photos( $user_id),
-                                    __( 'View all', WE_LS_SLUG )
-                                );
-							} else {
-								echo sprintf('<a href="%s">%s</a>', ws_ls_upgrade_link(), __( 'Upgrade to Pro Plus', WE_LS_SLUG ) );
-							}
-					   ?>
-					</center>
-				</div>
-			</div>
-		<?php endif; ?>
-
-		<div class="postbox ws-ls-user-data <?php ws_ls_postbox_classes( 'user-information', 'ws-ls-user-data-col-two' ); ?>" id="user-information">
-			<?php ws_ls_postbox_header( [ 'title' => __( 'User Information', WE_LS_SLUG ), 'postbox-id' => 'user-information', 'postbox-col' => 'ws-ls-user-data-col-two' ] ); ?>
-			<div class="inside">
-    			<table class="ws-ls-sidebar-stats">
-
-					<?php echo ws_ls_side_bar_render_rows( apply_filters( 'wlt-filter-admin-user-sidebar-top', [], $user_id) ); ?>
-
-                    <?php $stats = ws_ls_db_entries_count($user_id); ?>
-                    <tr>
-                        <th><?php echo __('No. of Entries', WE_LS_SLUG); ?></th>
-                        <td><?php echo $stats['number-of-entries']; ?></td>
-                    </tr>
-                    <tr>
-                        <th><?php echo __('Start Weight', WE_LS_SLUG); ?></th>
-                        <td class="<?php echo ws_ls_blur(); ?>"><?php echo ws_ls_blur_text( ws_ls_shortcode_start_weight($user_id) ); ?></td>
-                    </tr>
-                    <tr>
-                        <th><?php echo __('Latest Weight', WE_LS_SLUG); ?></th>
-                        <td class="<?php echo ws_ls_blur(); ?>"><?php echo ws_ls_blur_text( ws_ls_shortcode_recent_weight($user_id) ); ?></td>
-                    </tr>
-                    <tr>
-                        <th><?php echo __('Diff. from Start', WE_LS_SLUG); ?></th>
-                        <td class="<?php echo ws_ls_blur(); ?>"><?php echo ws_ls_blur_text( ws_ls_shortcode_difference_in_weight_from_oldest($user_id) ); ?></td>
-                    </tr>
-                    <tr>
-                        <th><?php echo __('Target Weight', WE_LS_SLUG); ?></th>
-                        <td class="<?php echo ws_ls_blur(); ?>">
-                            <a href="<?php echo ws_ls_get_link_to_edit_target($user_id); ?>">
-                                <?php
-
-                                $target = ws_ls_target_get( $user_id );
-                                echo ( true === empty( $target[ 'display' ] ) ) ? __( 'No target set', WE_LS_SLUG ) : ws_ls_blur_text( $target[ 'display' ] );
-                                ?>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th><?php echo __('Diff. from Target', WE_LS_SLUG); ?></th>
-                        <td class="<?php echo ws_ls_blur(); ?>"><?php echo ws_ls_blur_text( ws_ls_shortcode_difference_in_weight_target($user_id) ); ?></td>
-                    </tr>
-                    <tr>
-                        <th><?php echo __('Current BMI', WE_LS_SLUG); ?></th>
-                        <td class="<?php echo ws_ls_blur(); ?>"><?php echo ws_ls_shortcode_bmi([ 'user-id' => $user_id, 'display' => 'both', 'no-height-text' => __('No height specified', WE_LS_SLUG)]); ?></td>
-                    </tr>
-
-					<?php echo ws_ls_side_bar_render_rows( apply_filters( 'wlt-filter-admin-user-sidebar-middle', [], $user_id) ); ?>
-
-                    <tr>
-                        <th><?php echo __('Aim', WE_LS_SLUG); ?></th>
-                        <td class="<?php echo ws_ls_blur(); ?>"><a href="<?php echo $settings_url; ?>"><?php echo ws_ls_blur_text( ws_ls_display_user_setting($user_id, 'aim') ); ?></a></td>
-                    </tr>
-					<tr>
-                        <th><?php echo __('Height', WE_LS_SLUG); ?></th>
-                        <td class="<?php echo ws_ls_blur(); ?>"><a href="<?php echo $settings_url; ?>"><?php echo ws_ls_blur_text ( ws_ls_display_user_setting($user_id, 'height') ); ?></a></td>
-                    </tr>
-					<tr>
-                        <th><?php echo __('Gender', WE_LS_SLUG); ?></th>
-                        <td class="<?php echo ws_ls_blur(); ?>"><a href="<?php echo $settings_url; ?>"><?php echo ws_ls_blur_text( ws_ls_display_user_setting($user_id, 'gender') ); ?></a></td>
-                    </tr>
-					<tr>
-                        <th><?php echo __('Activity Level', WE_LS_SLUG); ?></th>
-                        <td class="<?php echo ws_ls_blur(); ?>"><a href="<?php echo $settings_url; ?>"><?php echo ws_ls_blur_text( ws_ls_display_user_setting($user_id, 'activity_level', false, true) ); ?></a></td>
-                    </tr>
-					<tr>
-                        <th><?php echo __('Date of Birth', WE_LS_SLUG); ?></th>
-                        <td class="<?php echo ws_ls_blur(); ?>"><a href="<?php echo $settings_url; ?>"><?php echo ws_ls_blur_text( ws_ls_get_dob_for_display($user_id, false, true) ); ?></a></td>
-                    </tr>
-					<tr class="last">
-                        <th><?php echo __('BMR', WE_LS_SLUG); ?></th>
-                        <td>
-							<?php
-                                    if(ws_ls_has_a_valid_pro_plus_license()) {
-                                        $bmr = ws_ls_calculate_bmr($user_id, false);
-				                        echo (false === empty($bmr)) ? esc_html($bmr) : __('Missing data', WE_LS_SLUG);
-                                    } else {
-                                        echo sprintf('<a href="%s">Upgrade to Pro Plus</a>', ws_ls_upgrade_link());
-                                    }
-							?>
-						</td>
-                    </tr>
-
-					<?php echo ws_ls_side_bar_render_rows( apply_filters('wlt-filter-admin-user-sidebar-bottom', [], $user_id) ); ?>
-
-                </table>
-			</div>
-		</div>
-		<div class="postbox ws-ls-user-data <?php ws_ls_postbox_classes( 'add-entry', 'ws-ls-user-data-col-two' ); ?>" id="add-entry">
-			<?php ws_ls_postbox_header( [ 'title' => __( 'Add Entry', WE_LS_SLUG ), 'postbox-id' => 'add-entry', 'postbox-col' => 'ws-ls-user-data-col-two' ] ); ?>
-			<div class="inside">
-				<a class="button-primary" href="<?php echo ws_ls_get_link_to_edit_entry($user_id); ?>">
-					<i class="fa fa-calendar-plus-o"></i>
-					<?php echo __('Add Entry', WE_LS_SLUG); ?>
-				</a>
-				<a class="button-secondary" href="<?php echo ws_ls_get_link_to_edit_target($user_id); ?>">
-					<i class="fa fa-bullseye"></i>
-					<?php echo __('Edit Target', WE_LS_SLUG); ?>
-				</a>
-			</div>
-		</div>
-
-		<?php
-			ws_ls_postbox_sidebar_export_data( $user_id );
-			ws_ls_postbox_sidebar_settings( $user_id );
-			ws_ls_postbox_sidebar_delete_data();
-			ws_ls_postbox_sidebar_delete_cache( $user_id );
-		?>
 	</div>
+<?php
+}
 
-	<?php
-        ws_ls_create_dialog_jquery_code(__('Are you sure you?', WE_LS_SLUG),
-            __('Are you sure you wish to remove the data for this user?', WE_LS_SLUG) . '<br /><br />',
-            'delete-confirm');
+/**
+ * Postbox for recent photo
+ */
+function ws_ls_postbox_sidebar_recent_photo() {
 
+	if ( false === ws_ls_meta_fields_photo_any_enabled() ) {
+		return;
+	}
+
+?>
+	<div class="postbox <?php ws_ls_postbox_classes( 'most-recent', 'ws-ls-user-data-col-two' ); ?>" id="most-recent">
+		<?php ws_ls_postbox_header( [ 'title' => __( 'Most Recent Photo', WE_LS_SLUG ), 'postbox-id' => 'most-recent', 'postbox-col' => 'ws-ls-user-data-col-two' ] ); ?>
+		<div class="inside">
+			<center>
+				<?php
+
+				if( true === ws_ls_has_a_valid_pro_plus_license() ) {
+					echo ws_ls_photos_shortcode_recent( [ 'user-id' => $user_id, 'width' => 200, 'height' => 200, 'hide-date' => true ] );
+
+					$photo_count = ws_ls_photos_db_count_photos( $user_id );
+
+					echo sprintf('<p>%s <strong>%s</strong>. <a href="%s">%s</a></p>',
+						__( 'No. of photos: ', WE_LS_SLUG ),
+						$photo_count,
+						ws_ls_get_link_to_photos( $user_id),
+						__( 'View all', WE_LS_SLUG )
+					);
+				} else {
+					echo sprintf('<a href="%s">%s</a>', ws_ls_upgrade_link(), __( 'Upgrade to Pro Plus', WE_LS_SLUG ) );
+				}
+				?>
+			</center>
+		</div>
+	</div>
+<?php
+}
+
+/**
+ * Sidebar for user information
+ * @param $user_id
+ *
+ * @throws Exception
+ */
+function ws_ls_postbox_sidebar_user_information( $user_id ) {
+
+	$settings_url = ws_ls_get_link_to_user_settings( $user_id );
+
+?>
+	<div class="postbox ws-ls-user-data <?php ws_ls_postbox_classes( 'user-information', 'ws-ls-user-data-col-two' ); ?>" id="user-information">
+		<?php ws_ls_postbox_header( [ 'title' => __( 'User Information', WE_LS_SLUG ), 'postbox-id' => 'user-information', 'postbox-col' => 'ws-ls-user-data-col-two' ] ); ?>
+		<div class="inside">
+			<table class="ws-ls-sidebar-stats">
+
+				<?php echo ws_ls_side_bar_render_rows( apply_filters( 'wlt-filter-admin-user-sidebar-top', [], $user_id ) ); ?>
+
+				<?php $stats = ws_ls_db_entries_count($user_id); ?>
+				<tr>
+					<th><?php echo __('No. of Entries', WE_LS_SLUG); ?></th>
+					<td><?php echo $stats['number-of-entries']; ?></td>
+				</tr>
+				<tr>
+					<th><?php echo __('Start Weight', WE_LS_SLUG); ?></th>
+					<td class="<?php echo ws_ls_blur(); ?>"><?php echo ws_ls_blur_text( ws_ls_shortcode_start_weight($user_id) ); ?></td>
+				</tr>
+				<tr>
+					<th><?php echo __('Latest Weight', WE_LS_SLUG); ?></th>
+					<td class="<?php echo ws_ls_blur(); ?>"><?php echo ws_ls_blur_text( ws_ls_shortcode_recent_weight($user_id) ); ?></td>
+				</tr>
+				<tr>
+					<th><?php echo __('Diff. from Start', WE_LS_SLUG); ?></th>
+					<td class="<?php echo ws_ls_blur(); ?>"><?php echo ws_ls_blur_text( ws_ls_shortcode_difference_in_weight_from_oldest($user_id) ); ?></td>
+				</tr>
+				<tr>
+					<th><?php echo __('Target Weight', WE_LS_SLUG); ?></th>
+					<td class="<?php echo ws_ls_blur(); ?>">
+						<a href="<?php echo ws_ls_get_link_to_edit_target($user_id); ?>">
+							<?php
+
+							$target = ws_ls_target_get( $user_id );
+							echo ( true === empty( $target[ 'display' ] ) ) ? __( 'No target set', WE_LS_SLUG ) : ws_ls_blur_text( $target[ 'display' ] );
+							?>
+						</a>
+					</td>
+				</tr>
+				<tr>
+					<th><?php echo __('Diff. from Target', WE_LS_SLUG); ?></th>
+					<td class="<?php echo ws_ls_blur(); ?>"><?php echo ws_ls_blur_text( ws_ls_shortcode_difference_in_weight_target($user_id) ); ?></td>
+				</tr>
+				<tr>
+					<th><?php echo __('Current BMI', WE_LS_SLUG); ?></th>
+					<td class="<?php echo ws_ls_blur(); ?>"><?php echo ws_ls_shortcode_bmi([ 'user-id' => $user_id, 'display' => 'both', 'no-height-text' => __('No height specified', WE_LS_SLUG)]); ?></td>
+				</tr>
+
+				<?php echo ws_ls_side_bar_render_rows( apply_filters( 'wlt-filter-admin-user-sidebar-middle', [], $user_id) ); ?>
+
+				<tr>
+					<th><?php echo __('Aim', WE_LS_SLUG); ?></th>
+					<td class="<?php echo ws_ls_blur(); ?>"><a href="<?php echo $settings_url; ?>"><?php echo ws_ls_blur_text( ws_ls_display_user_setting($user_id, 'aim') ); ?></a></td>
+				</tr>
+				<tr>
+					<th><?php echo __('Height', WE_LS_SLUG); ?></th>
+					<td class="<?php echo ws_ls_blur(); ?>"><a href="<?php echo $settings_url; ?>"><?php echo ws_ls_blur_text ( ws_ls_display_user_setting($user_id, 'height') ); ?></a></td>
+				</tr>
+				<tr>
+					<th><?php echo __('Gender', WE_LS_SLUG); ?></th>
+					<td class="<?php echo ws_ls_blur(); ?>"><a href="<?php echo $settings_url; ?>"><?php echo ws_ls_blur_text( ws_ls_display_user_setting($user_id, 'gender') ); ?></a></td>
+				</tr>
+				<tr>
+					<th><?php echo __('Activity Level', WE_LS_SLUG); ?></th>
+					<td class="<?php echo ws_ls_blur(); ?>"><a href="<?php echo $settings_url; ?>"><?php echo ws_ls_blur_text( ws_ls_display_user_setting($user_id, 'activity_level', false, true) ); ?></a></td>
+				</tr>
+				<tr>
+					<th><?php echo __('Date of Birth', WE_LS_SLUG); ?></th>
+					<td class="<?php echo ws_ls_blur(); ?>"><a href="<?php echo $settings_url; ?>"><?php echo ws_ls_blur_text( ws_ls_get_dob_for_display($user_id, false, true) ); ?></a></td>
+				</tr>
+				<tr class="last">
+					<th><?php echo __('BMR', WE_LS_SLUG); ?></th>
+					<td>
+						<?php
+						if(ws_ls_has_a_valid_pro_plus_license()) {
+							$bmr = ws_ls_calculate_bmr($user_id, false);
+							echo (false === empty($bmr)) ? esc_html($bmr) : __('Missing data', WE_LS_SLUG);
+						} else {
+							echo sprintf('<a href="%s">Upgrade to Pro Plus</a>', ws_ls_upgrade_link());
+						}
+						?>
+					</td>
+				</tr>
+
+				<?php echo ws_ls_side_bar_render_rows( apply_filters('wlt-filter-admin-user-sidebar-bottom', [], $user_id) ); ?>
+
+			</table>
+		</div>
+	</div>
+<?php
+}
+
+/**
+ * Postbox for add entry buttons
+ * @param $user_id
+ */
+function ws_ls_postbox_sidebar_add_entry( $user_id ) {
+?>
+	<div class="postbox ws-ls-user-data <?php ws_ls_postbox_classes( 'add-entry', 'ws-ls-user-data-col-two' ); ?>" id="add-entry">
+		<?php ws_ls_postbox_header( [ 'title' => __( 'Add Entry', WE_LS_SLUG ), 'postbox-id' => 'add-entry', 'postbox-col' => 'ws-ls-user-data-col-two' ] ); ?>
+		<div class="inside">
+			<a class="button-primary" href="<?php echo ws_ls_get_link_to_edit_entry( $user_id ); ?>">
+				<i class="fa fa-calendar-plus-o"></i>
+				<?php echo __('Add Entry', WE_LS_SLUG); ?>
+			</a>
+			<a class="button-secondary" href="<?php echo ws_ls_get_link_to_edit_target( $user_id ); ?>">
+				<i class="fa fa-bullseye"></i>
+				<?php echo __('Edit Target', WE_LS_SLUG); ?>
+			</a>
+		</div>
+	</div>
+<?php
 }
 
 /**
@@ -266,6 +305,9 @@ function ws_ls_postbox_sidebar_delete_data() {
 		</div>
 	</div>
 <?php
+	ws_ls_create_dialog_jquery_code(__('Are you sure you?', WE_LS_SLUG),
+		__('Are you sure you wish to remove the data for this user?', WE_LS_SLUG) . '<br /><br />',
+		'delete-confirm');
 }
 
 /**
