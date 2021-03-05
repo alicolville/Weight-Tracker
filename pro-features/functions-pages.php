@@ -40,16 +40,17 @@ function ws_ls_user_side_bar($user_id) {
 	$settings_url = ws_ls_get_link_to_user_settings($user_id);
 
 	?>
-		<div class="postbox">
-			<h2 class="hndle"><?php echo __('User Search', WE_LS_SLUG); ?></h2>
+	<div class="meta-box-sortables" id="ws-ls-user-data-col-two">
+		<div class="postbox <?php ws_ls_postbox_classes( 'user-search', 'ws-ls-user-data-col-two' ); ?>" id="user-search">
+			<?php ws_ls_postbox_header( [ 'title' => __( 'User Search', WE_LS_SLUG ), 'postbox-id' => 'user-search', 'postbox-col' => 'ws-ls-user-data-col-two' ] ); ?>
 			<div class="inside">
 				<?php ws_ls_box_user_search_form(); ?>
 			</div>
 		</div>
 
 		<?php if ( true === ws_ls_meta_fields_photo_any_enabled() ) : ?>
-			<div class="postbox">
-				<h2 class="hndle"><?php echo __('Most Recent Photo', WE_LS_SLUG); ?></h2>
+			<div class="postbox <?php ws_ls_postbox_classes( 'most-recent', 'ws-ls-user-data-col-two' ); ?>" id="most-recent">
+				<?php ws_ls_postbox_header( [ 'title' => __( 'Most Recent Photo', WE_LS_SLUG ), 'postbox-id' => 'most-recent', 'postbox-col' => 'ws-ls-user-data-col-two' ] ); ?>
 				<div class="inside">
 					<center>
 						<?php
@@ -74,8 +75,8 @@ function ws_ls_user_side_bar($user_id) {
 			</div>
 		<?php endif; ?>
 
-		<div class="postbox ws-ls-user-data">
-			<h2 class="hndle"><span><?php echo __('User Information', WE_LS_SLUG); ?></span></h2>
+		<div class="postbox ws-ls-user-data <?php ws_ls_postbox_classes( 'user-information', 'ws-ls-user-data-col-two' ); ?>" id="user-information">
+			<?php ws_ls_postbox_header( [ 'title' => __( 'User Information', WE_LS_SLUG ), 'postbox-id' => 'user-information', 'postbox-col' => 'ws-ls-user-data-col-two' ] ); ?>
 			<div class="inside">
     			<table class="ws-ls-sidebar-stats">
 
@@ -160,8 +161,8 @@ function ws_ls_user_side_bar($user_id) {
                 </table>
 			</div>
 		</div>
-		<div class="postbox ws-ls-user-data">
-			<h2 class="hndle"><span><?php echo __('Add Entry', WE_LS_SLUG); ?></span></h2>
+		<div class="postbox ws-ls-user-data <?php ws_ls_postbox_classes( 'add-entry', 'ws-ls-user-data-col-two' ); ?>" id="add-entry">
+			<?php ws_ls_postbox_header( [ 'title' => __( 'Add Entry', WE_LS_SLUG ), 'postbox-id' => 'add-entry', 'postbox-col' => 'ws-ls-user-data-col-two' ] ); ?>
 			<div class="inside">
 				<a class="button-primary" href="<?php echo ws_ls_get_link_to_edit_entry($user_id); ?>">
 					<i class="fa fa-calendar-plus-o"></i>
@@ -173,53 +174,98 @@ function ws_ls_user_side_bar($user_id) {
 				</a>
 			</div>
 		</div>
-		<div class="postbox ws-ls-user-data">
-			<h2 class="hndle"><span><?php echo __('Export Data', WE_LS_SLUG); ?></span></h2>
-			<div class="inside">
-				<a class="button-secondary" href="<?php echo ws_ls_export_link('new', [ 'user-id' => $user_id, 'format' => 'csv' ] ); ?>">
-					<i class="fa fa-file-excel-o"></i>
-					<?php echo __('To CSV', WE_LS_SLUG); ?>
-				</a>
-				<a class="button-secondary" href="<?php echo ws_ls_export_link('new', [ 'user-id' => $user_id, 'format' => 'json' ] ); ?>">
-					<i class="fa fa-file-code-o"></i>
-					<?php echo __('To JSON', WE_LS_SLUG); ?>
-				</a>
-			</div>
-		</div>
-		<div class="postbox ws-ls-user-data">
-			<h2 class="hndle"><span><?php echo __('Settings', WE_LS_SLUG); ?></span></h2>
-			<div class="inside">
-				<a class="button-secondary" href="<?php echo $settings_url; ?>">
-						<i class="fa fa-cog"></i>
-					<?php echo __('Preferences', WE_LS_SLUG); ?>
-				</a>
-				<a href="<?php echo get_edit_user_link($user_id); ?>" class="button-secondary"><i class="fa fa-wordpress"></i> WordPress Record</a>
-			</div>
-		</div>
-        <div class="postbox ws-ls-user-data">
-            <h2 class="hndle"><span><?php echo __('Delete Cache', WE_LS_SLUG); ?></span></h2>
-            <div class="inside">
-                <a class="button-secondary" href="<?php echo esc_url(ws_ls_get_link_to_delete_user_cache($user_id )); ?>">
-                    <i class="fa fa-refresh"></i>
-                    <?php echo __('Delete Cache for this user', WE_LS_SLUG); ?>
-                </a>
-            </div>
-        </div>
-		<div class="postbox ws-ls-user-data">
-			<h2 class="hndle"><span><?php echo __('Delete Data', WE_LS_SLUG); ?></span></h2>
-			<div class="inside">
-				<a class="button-secondary delete-confirm" href="<?php echo esc_url(admin_url( 'admin.php?page=ws-ls-data-home&mode=user&removedata=y&user-id=' . $user_id )); ?>">
-					<i class="fa fa-trash-o"></i>
-					<?php echo __('Delete ALL data for this user', WE_LS_SLUG); ?>
-				</a>
-			</div>
-		</div>
+
+		<?php
+			ws_ls_postbox_sidebar_export_data( $user_id );
+			ws_ls_postbox_sidebar_settings( $user_id );
+			ws_ls_postbox_sidebar_delete_data();
+			ws_ls_postbox_sidebar_delete_cache( $user_id );
+		?>
+	</div>
 
 	<?php
         ws_ls_create_dialog_jquery_code(__('Are you sure you?', WE_LS_SLUG),
             __('Are you sure you wish to remove the data for this user?', WE_LS_SLUG) . '<br /><br />',
             'delete-confirm');
 
+}
+
+/**
+ * Postbox for export data
+ * @param $user_id
+ */
+function ws_ls_postbox_sidebar_export_data( $user_id ) {
+?>
+	<div class="postbox ws-ls-user-data <?php ws_ls_postbox_classes( 'export-data', 'ws-ls-user-data-col-two' ); ?>" id="export-data">
+		<?php ws_ls_postbox_header( [ 'title' => __( 'Export Data', WE_LS_SLUG ), 'postbox-id' => 'export-data', 'postbox-col' => 'ws-ls-user-data-col-two' ] ); ?>
+		<div class="inside">
+			<a class="button-secondary" href="<?php echo ws_ls_export_link('new', [ 'user-id' => $user_id, 'format' => 'csv' ] ); ?>">
+				<i class="fa fa-file-excel-o"></i>
+				<?php echo __('To CSV', WE_LS_SLUG); ?>
+			</a>
+			<a class="button-secondary" href="<?php echo ws_ls_export_link('new', [ 'user-id' => $user_id, 'format' => 'json' ] ); ?>">
+				<i class="fa fa-file-code-o"></i>
+				<?php echo __('To JSON', WE_LS_SLUG); ?>
+			</a>
+		</div>
+	</div>
+<?php
+}
+
+/**
+ * Postbox for settings
+ * @param $user_id
+ */
+function ws_ls_postbox_sidebar_settings( $user_id ) {
+
+	$settings_url = ws_ls_get_link_to_user_settings( $user_id );
+?>
+	<div class="postbox ws-ls-user-data <?php ws_ls_postbox_classes( 'settings', 'ws-ls-user-data-col-two' ); ?>" id="settings">
+		<?php ws_ls_postbox_header( [ 'title' => __( 'Settings', WE_LS_SLUG ), 'postbox-id' => 'settings', 'postbox-col' => 'ws-ls-user-data-col-two' ] ); ?>
+		<div class="inside">
+			<a class="button-secondary" href="<?php echo $settings_url; ?>">
+				<i class="fa fa-cog"></i>
+				<?php echo __('Preferences', WE_LS_SLUG); ?>
+			</a>
+			<a href="<?php echo get_edit_user_link( $user_id ); ?>" class="button-secondary"><i class="fa fa-wordpress"></i> WordPress Record</a>
+		</div>
+	</div>
+<?php
+}
+
+/**
+ * Postbox for deleting cache
+ * @param $user_id
+ */
+function ws_ls_postbox_sidebar_delete_cache( $user_id ) {
+?>
+	<div class="postbox ws-ls-user-data <?php ws_ls_postbox_classes( 'delete-cache', 'ws-ls-user-data-col-two' ); ?>" id="delete-cache">
+		<?php ws_ls_postbox_header( [ 'title' => __( 'Delete Cache', WE_LS_SLUG ), 'postbox-id' => 'delete-cache', 'postbox-col' => 'ws-ls-user-data-col-two' ] ); ?>
+		<div class="inside">
+			<a class="button-secondary" href="<?php echo esc_url( ws_ls_get_link_to_delete_user_cache( $user_id ) ); ?>">
+				<i class="fa fa-refresh"></i>
+				<?php echo __( 'Delete Cache for this user', WE_LS_SLUG ); ?>
+			</a>
+		</div>
+	</div>
+<?php
+}
+
+/**
+ * Delete data postbox
+ */
+function ws_ls_postbox_sidebar_delete_data() {
+?>
+	<div class="postbox ws-ls-user-data <?php ws_ls_postbox_classes( 'delete-data', 'ws-ls-user-data-col-two' ); ?>" id="delete-data">
+		<?php ws_ls_postbox_header( [ 'title' => __( 'Delete Data', WE_LS_SLUG ), 'postbox-id' => 'delete-data', 'postbox-col' => 'ws-ls-user-data-col-two' ] ); ?>
+		<div class="inside">
+			<a class="button-secondary delete-confirm" href="<?php echo esc_url( admin_url( 'admin.php?page=ws-ls-data-home&mode=user&removedata=y&user-id=' . $user_id ) ); ?>">
+				<i class="fa fa-trash-o"></i>
+				<?php echo __('Delete ALL data for this user', WE_LS_SLUG); ?>
+			</a>
+		</div>
+	</div>
+<?php
 }
 
 /**
