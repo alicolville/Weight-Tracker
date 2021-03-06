@@ -39,9 +39,12 @@ function ws_ls_user_side_bar( $user_id ) {
 
 	echo '<div class="meta-box-sortables" id="ws-ls-user-data-two">';
 
-	// TODO: If true, add sidebar into array if missing ws_ls_meta_fields_photo_any_enabled()
-
 	$user_sidebar_order = get_option( 'ws-ls-postbox-order-ws-ls-user-data-two', [ 'user-search', 'most-recent', 'user-information', 'add-entry', 'export-data', 'settings', 'delete-cache', 'delete-data' ] );
+
+	// Most recent photo missing? i.e. have we saved the order when it was previously hidden?
+	if ( true === ws_ls_meta_fields_photo_any_enabled() && false === in_array( 'most-recent', $user_sidebar_order ) ) {
+		array_unshift($user_sidebar_order , 'most-recent' );
+	}
 
 	foreach ( $user_sidebar_order as $postbox ) {
 
