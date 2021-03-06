@@ -167,7 +167,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 * New Feature: New shortcode [wt-start-date] - display the date of the first weight entry.
 * New Feature: If enabled (Setting: Display previous entry on form?), the user's previous entry will be displayed as placeholders on form fields. This will allow the user to see the values on the previous entry.
 * Improvement: Display and change the order of boxes on user summary and profile page (admin).
-
+* Improvement: Added a new button to "Show all entries" on the User summary page. Please bare in mind, this option maybe slow performing on large data sets.
 = 8.3 =
 
 * Improvement: Webhooks, Zapier & Slack. Push weight entry data and targets to Slack channels, Zapier or your own custom Webhooks.

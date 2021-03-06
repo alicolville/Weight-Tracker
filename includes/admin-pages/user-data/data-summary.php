@@ -226,9 +226,9 @@ function ws_ls_postbox_latest_entries() {?>
 		<?php
 
 			// Show 100 most recent entries? Or show 500?
-			if( false === empty( $_GET['show-all'] ) ) {
-				$value = ( 'y' === $_GET['show-all'] ) ? true : false;
-				update_option('ws-ls-show-all', $value );
+			if( true === isset( $_GET[ 'entries-limit' ] ) ) {
+				$value = ws_ls_querystring_value( 'entries-limit', true );
+				update_option( 'ws-ls-entries-limit', $value );
 			}
 
 			// Show meta data?
@@ -237,27 +237,49 @@ function ws_ls_postbox_latest_entries() {?>
 				update_option('ws-ls-show-meta', $value );
 			}
 
-			$show_all   = get_option( 'ws-ls-show-all' ) ? true : false;
-			$show_meta  = get_option( 'ws-ls-show-meta' ) ? true : false;
+			$entries_limit  = (int) get_option( 'ws-ls-entries-limit', 100 );
+			$show_meta  	= get_option( 'ws-ls-show-meta' ) ? true : false;
 
-			$title = ( $show_all ) ? __( 'Last 500 entries', WE_LS_SLUG ) : __( 'Last 100 entries', WE_LS_SLUG );
+			$title = ( false === empty( $entries_limit ) ) ? sprintf( 'Last %d entries', $entries_limit ) : __( 'All entries', WE_LS_SLUG );
 
 			ws_ls_postbox_header( [ 'title' => $title, 'postbox-id' => 'summary-entries' ] );
 		?>
 		<div class="inside">
 			<?php
 
-				echo ws_ls_data_table_render( [ 'limit' => ( $show_all ) ? 500 : 100, 'smaller-width' => true, 'enable-meta-fields' => $show_meta, 'page-size' => 20 ] );
+				if ( true === empty( $entries_limit ) ) {
+					$entries_limit = NULL;
+				}
 
-				echo sprintf(
-								'<a class="btn button-secondary" href="%s"><i class="fa fa-book"></i> %s</a>',
-								admin_url( 'admin.php?page=ws-ls-data-home&show-all=' ) . ( ( false === $show_all ) ? 'y' : 'n'),
-								( false === $show_all ) ? __( 'Show 500 recent entries', WE_LS_SLUG ) : __( 'Show 100 recent entries', WE_LS_SLUG )
+				echo ws_ls_data_table_render( [ 'limit' => $entries_limit, 'smaller-width' => true, 'enable-meta-fields' => $show_meta, 'page-size' => 20 ] );
+
+				if ( 100 !== $entries_limit ) {
+					echo sprintf(
+								'<a class="btn button-secondary" href="%s"><i class="fa fa-book"></i> %s</a>&nbsp;',
+								admin_url( 'admin.php?page=ws-ls-data-home&entries-limit=100' ),
+								__( 'Show 100 recent entries', WE_LS_SLUG )
 							);
+				}
+
+				if ( 500 !== $entries_limit ) {
+					echo sprintf(
+								'<a class="btn button-secondary" href="%s"><i class="fa fa-book"></i> %s</a>&nbsp;',
+								admin_url( 'admin.php?page=ws-ls-data-home&entries-limit=500' ),
+								__( 'Show 500 recent entries', WE_LS_SLUG )
+							);
+				}
+
+				if ( false === empty( $entries_limit ) ) {
+					echo sprintf('<a class="btn button-secondary" href="%s"><i class="fa fa-book"></i> %s (%s)</a>&nbsp;',
+									admin_url( 'admin.php?page=ws-ls-data-home&entries-limit=0' ),
+									__( 'Show all entries', WE_LS_SLUG ),
+									__( 'slow!', WE_LS_SLUG )
+								);
+				}
 
 				if ( ws_ls_meta_fields_number_of_enabled() > 0 ) {
 					echo sprintf(
-						'&nbsp;<a class="btn button-secondary" href="%s"><i class="fas fa-book-reader"></i> %s</a>',
+						'<a class="btn button-secondary" href="%s"><i class="fas fa-book-reader"></i> %s</a>',
 						admin_url( 'admin.php?page=ws-ls-data-home&show-meta=' ) . ( ( false === $show_meta ) ? 'y' : 'n'),
 						( false === $show_meta ) ? __( 'Include Custom Fields (Slower)', WE_LS_SLUG ) : __( 'Hide Custom Fields (Quicker)', WE_LS_SLUG )
 					);
