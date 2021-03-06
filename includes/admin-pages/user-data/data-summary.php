@@ -21,13 +21,13 @@ function ws_ls_admin_page_data_summary() {
 	<div id="poststuff">
 		<div id="post-body" class="metabox-holder columns-2">
 			<div id="post-body-content">
-				<div class="meta-box-sortables ui-sortable" id="ws-ls-col-one">
+				<div class="meta-box-sortables ui-sortable" id="ws-ls-user-summary-one">
                     <?php
                         if ( true !== WS_LS_IS_PRO ) {
                             ws_ls_display_pro_upgrade_notice();
                         }
 
-                        $user_summary_order = get_option( 'ws-ls-postbox-user-summary-ws-ls-col-one', [ 'league-table', 'weight-change-by-group', 'summary-entries' ] );
+                        $user_summary_order = get_option( 'ws-ls-postbox-order-ws-ls-user-summary-one', [ 'league-table', 'weight-change-by-group', 'summary-entries' ] );
 
 						foreach ( $user_summary_order as $postbox ) {
 
@@ -43,10 +43,10 @@ function ws_ls_admin_page_data_summary() {
 				</div>
 			</div>
 			<div id="postbox-container-1" class="postbox-container">
-				<div class="meta-box-sortables" id="ws-ls-col-two">
+				<div class="meta-box-sortables" id="ws-ls-user-summary-two">
 					<?php
 
-						$user_summary_order = get_option( 'ws-ls-postbox-user-summary-ws-ls-col-two', [ 'user-search', 'quick-stats', 'view-all', 'export', 'delete-data' ] );
+						$user_summary_order = get_option( 'ws-ls-postbox-order-ws-ls-user-summary-two', [ 'user-search', 'quick-stats', 'view-all', 'export', 'delete-data' ] );
 
 						foreach ( $user_summary_order as $postbox ) {
 
@@ -78,8 +78,8 @@ function ws_ls_admin_page_data_summary() {
 
 function ws_ls_postbox_quick_stats() {
 ?>
-	<div class="postbox <?php ws_ls_postbox_classes( 'quick-stats', 'ws-ls-col-two' ); ?>" id="quick-stats">
-		<?php ws_ls_postbox_header( [ 'title' => __( 'Quick Stats', WE_LS_SLUG ), 'postbox-id' => 'quick-stats', 'postbox-col' => 'ws-ls-col-two' ] ); ?>
+	<div class="postbox <?php ws_ls_postbox_classes( 'quick-stats', 'ws-ls-user-summary-two' ); ?>" id="quick-stats">
+		<?php ws_ls_postbox_header( [ 'title' => __( 'Quick Stats', WE_LS_SLUG ), 'postbox-id' => 'quick-stats', 'postbox-col' => 'ws-ls-user-summary-two' ] ); ?>
 		<div class="inside">
 			<?php
 
@@ -122,8 +122,8 @@ function ws_ls_postbox_quick_stats() {
 
 function ws_ls_postbox_view_all() {
 ?>
-	<div class="postbox <?php ws_ls_postbox_classes( 'view-all', 'ws-ls-col-two' ); ?>" id="view-all">
-		<?php ws_ls_postbox_header( [ 'title' => __( 'View all data', WE_LS_SLUG ), 'postbox-id' => 'view-all', 'postbox-col' => 'ws-ls-col-two' ] ); ?>
+	<div class="postbox <?php ws_ls_postbox_classes( 'view-all', 'ws-ls-user-summary-two' ); ?>" id="view-all">
+		<?php ws_ls_postbox_header( [ 'title' => __( 'View all data', WE_LS_SLUG ), 'postbox-id' => 'view-all', 'postbox-col' => 'ws-ls-user-summary-two' ] ); ?>
 		<div class="inside">
 			<a class="button-primary" href="<?php echo ws_ls_get_link_to_user_data() . '&amp;mode=all'; ?>">
 				<i class="fa fa-book"></i>
@@ -136,8 +136,8 @@ function ws_ls_postbox_view_all() {
 
 function ws_ls_postbox_export() {
 ?>
-	<div class="postbox <?php ws_ls_postbox_classes( 'export', 'ws-ls-col-two' ); ?>" id="export">
-		<?php ws_ls_postbox_header( [ 'title' => __( 'Export all data', WE_LS_SLUG ), 'postbox-id' => 'export', 'postbox-col' => 'ws-ls-col-two' ] ); ?>
+	<div class="postbox <?php ws_ls_postbox_classes( 'export', 'ws-ls-user-summary-two' ); ?>" id="export">
+		<?php ws_ls_postbox_header( [ 'title' => __( 'Export all data', WE_LS_SLUG ), 'postbox-id' => 'export', 'postbox-col' => 'ws-ls-user-summary-two' ] ); ?>
 		<div class="inside">
 			<a class="button-secondary" href="<?php echo ws_ls_export_link('new', [ 'format' => 'csv', 'title' => __( 'All Data', WE_LS_SLUG ) ] ); ?>">
 				<i class="fa fa-file-excel-o"></i>
@@ -154,8 +154,8 @@ function ws_ls_postbox_export() {
 
 function ws_ls_postbox_delete_data() {
 ?>
-	<div class="postbox <?php ws_ls_postbox_classes( 'delete-data', 'ws-ls-col-two' ); ?>" id="delete-data" >
-		<?php ws_ls_postbox_header( [ 'title' => __( 'Delete Data', WE_LS_SLUG ), 'postbox-id' => 'delete-data', 'postbox-col' => 'ws-ls-col-two' ] ); ?>
+	<div class="postbox <?php ws_ls_postbox_classes( 'delete-data', 'ws-ls-user-summary-two' ); ?>" id="delete-data" >
+		<?php ws_ls_postbox_header( [ 'title' => __( 'Delete Data', WE_LS_SLUG ), 'postbox-id' => 'delete-data', 'postbox-col' => 'ws-ls-user-summary-two' ] ); ?>
 		<div class="inside">
 			<a class="button-secondary delete-confirm" href="<?php echo admin_url( 'admin.php?page=ws-ls-data-home&removedata=y' ); ?>">
 				<i class="fa fa-exclamation-circle"></i>

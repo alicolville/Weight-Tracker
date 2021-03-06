@@ -342,7 +342,7 @@ jQuery( document ).ready(function ($) {
 
       ws_ls_swap_elements( $( postboxes[ selected_index ] ).attr( 'id' ), $( postboxes[ swap_index ] ).attr( 'id' ) );
 
-      ws_ls_postboxes_event( 'user-summary', column_name, ws_ls_postboxes_ids( column_name ) );
+      ws_ls_postboxes_event( 'order', column_name, ws_ls_postboxes_ids( column_name ) );
     }
   });
 

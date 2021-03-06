@@ -37,18 +37,34 @@ function ws_ls_user_side_bar( $user_id ) {
 		return;
 	}
 
-	echo '<div class="meta-box-sortables" id="ws-ls-user-data-col-two">';
+	echo '<div class="meta-box-sortables" id="ws-ls-user-data-two">';
 
-	// If true, add sidebar into array if missing ws_ls_meta_fields_photo_any_enabled()
+	// TODO: If true, add sidebar into array if missing ws_ls_meta_fields_photo_any_enabled()
 
-	ws_ls_postbox_user_search( 'ws-ls-user-data-col-two' );
-	ws_ls_postbox_sidebar_recent_photo();
-	ws_ls_postbox_sidebar_user_information( $user_id );
-	ws_ls_postbox_sidebar_add_entry( $user_id );
-	ws_ls_postbox_sidebar_export_data( $user_id );
-	ws_ls_postbox_sidebar_settings( $user_id );
-	ws_ls_postbox_sidebar_delete_data();
-	ws_ls_postbox_sidebar_delete_cache( $user_id );
+	$user_sidebar_order = get_option( 'ws-ls-postbox-order-ws-ls-user-data-two', [ 'user-search', 'most-recent', 'user-information', 'add-entry', 'export-data', 'settings', 'delete-cache', 'delete-data' ] );
+
+	foreach ( $user_sidebar_order as $postbox ) {
+
+		if ( 'user-search' === $postbox ) {
+			ws_ls_postbox_user_search( 'ws-ls-user-data-one' );
+		} elseif ( 'most-recent' === $postbox ) {
+			ws_ls_postbox_sidebar_recent_photo( $user_id );
+		} elseif ( 'user-information' === $postbox ) {
+			ws_ls_postbox_sidebar_user_information( $user_id );
+		} elseif ( 'add-entry' === $postbox ) {
+			ws_ls_postbox_sidebar_add_entry( $user_id );
+		} elseif ( 'user-information' === $postbox ) {
+			ws_ls_postbox_sidebar_user_information( $user_id );
+		} elseif ( 'export-data' === $postbox ) {
+			ws_ls_postbox_sidebar_export_data( $user_id );
+		} elseif ( 'settings' === $postbox ) {
+			ws_ls_postbox_sidebar_settings( $user_id );
+		} elseif ( 'delete-cache' === $postbox ) {
+			ws_ls_postbox_sidebar_delete_data( $user_id );
+		} elseif ( 'delete-data' === $postbox ) {
+			ws_ls_postbox_sidebar_settings( $user_id );
+		}
+	}
 
 	echo '</div>';
 
@@ -59,7 +75,7 @@ function ws_ls_user_side_bar( $user_id ) {
  *
  * @param string $class
  */
-function ws_ls_postbox_user_search( $class = 'ws-ls-col-two' ) {
+function ws_ls_postbox_user_search( $class = 'ws-ls-user-summary-two' ) {
 ?>
 	<div class="postbox <?php ws_ls_postbox_classes( 'user-search', $class ); ?>" id="user-search">
 		<?php ws_ls_postbox_header( [ 'title' => __( 'User Search', WE_LS_SLUG ), 'postbox-id' => 'user-search', 'postbox-col' => $class ] ); ?>
@@ -73,15 +89,15 @@ function ws_ls_postbox_user_search( $class = 'ws-ls-col-two' ) {
 /**
  * Postbox for recent photo
  */
-function ws_ls_postbox_sidebar_recent_photo() {
+function ws_ls_postbox_sidebar_recent_photo( $user_id ) {
 
 	if ( false === ws_ls_meta_fields_photo_any_enabled() ) {
 		return;
 	}
 
 ?>
-	<div class="postbox <?php ws_ls_postbox_classes( 'most-recent', 'ws-ls-user-data-col-two' ); ?>" id="most-recent">
-		<?php ws_ls_postbox_header( [ 'title' => __( 'Most Recent Photo', WE_LS_SLUG ), 'postbox-id' => 'most-recent', 'postbox-col' => 'ws-ls-user-data-col-two' ] ); ?>
+	<div class="postbox <?php ws_ls_postbox_classes( 'most-recent', 'ws-ls-user-data-two' ); ?>" id="most-recent">
+		<?php ws_ls_postbox_header( [ 'title' => __( 'Most Recent Photo', WE_LS_SLUG ), 'postbox-id' => 'most-recent', 'postbox-col' => 'ws-ls-user-data-two' ] ); ?>
 		<div class="inside">
 			<center>
 				<?php
@@ -118,8 +134,8 @@ function ws_ls_postbox_sidebar_user_information( $user_id ) {
 	$settings_url = ws_ls_get_link_to_user_settings( $user_id );
 
 ?>
-	<div class="postbox ws-ls-user-data <?php ws_ls_postbox_classes( 'user-information', 'ws-ls-user-data-col-two' ); ?>" id="user-information">
-		<?php ws_ls_postbox_header( [ 'title' => __( 'User Information', WE_LS_SLUG ), 'postbox-id' => 'user-information', 'postbox-col' => 'ws-ls-user-data-col-two' ] ); ?>
+	<div class="postbox ws-ls-user-data <?php ws_ls_postbox_classes( 'user-information', 'ws-ls-user-data-two' ); ?>" id="user-information">
+		<?php ws_ls_postbox_header( [ 'title' => __( 'User Information', WE_LS_SLUG ), 'postbox-id' => 'user-information', 'postbox-col' => 'ws-ls-user-data-two' ] ); ?>
 		<div class="inside">
 			<table class="ws-ls-sidebar-stats">
 
@@ -213,8 +229,8 @@ function ws_ls_postbox_sidebar_user_information( $user_id ) {
  */
 function ws_ls_postbox_sidebar_add_entry( $user_id ) {
 ?>
-	<div class="postbox ws-ls-user-data <?php ws_ls_postbox_classes( 'add-entry', 'ws-ls-user-data-col-two' ); ?>" id="add-entry">
-		<?php ws_ls_postbox_header( [ 'title' => __( 'Add Entry', WE_LS_SLUG ), 'postbox-id' => 'add-entry', 'postbox-col' => 'ws-ls-user-data-col-two' ] ); ?>
+	<div class="postbox ws-ls-user-data <?php ws_ls_postbox_classes( 'add-entry', 'ws-ls-user-data-two' ); ?>" id="add-entry">
+		<?php ws_ls_postbox_header( [ 'title' => __( 'Add Entry', WE_LS_SLUG ), 'postbox-id' => 'add-entry', 'postbox-col' => 'ws-ls-user-data-two' ] ); ?>
 		<div class="inside">
 			<a class="button-primary" href="<?php echo ws_ls_get_link_to_edit_entry( $user_id ); ?>">
 				<i class="fa fa-calendar-plus-o"></i>
@@ -235,8 +251,8 @@ function ws_ls_postbox_sidebar_add_entry( $user_id ) {
  */
 function ws_ls_postbox_sidebar_export_data( $user_id ) {
 ?>
-	<div class="postbox ws-ls-user-data <?php ws_ls_postbox_classes( 'export-data', 'ws-ls-user-data-col-two' ); ?>" id="export-data">
-		<?php ws_ls_postbox_header( [ 'title' => __( 'Export Data', WE_LS_SLUG ), 'postbox-id' => 'export-data', 'postbox-col' => 'ws-ls-user-data-col-two' ] ); ?>
+	<div class="postbox ws-ls-user-data <?php ws_ls_postbox_classes( 'export-data', 'ws-ls-user-data-two' ); ?>" id="export-data">
+		<?php ws_ls_postbox_header( [ 'title' => __( 'Export Data', WE_LS_SLUG ), 'postbox-id' => 'export-data', 'postbox-col' => 'ws-ls-user-data-two' ] ); ?>
 		<div class="inside">
 			<a class="button-secondary" href="<?php echo ws_ls_export_link('new', [ 'user-id' => $user_id, 'format' => 'csv' ] ); ?>">
 				<i class="fa fa-file-excel-o"></i>
@@ -259,8 +275,8 @@ function ws_ls_postbox_sidebar_settings( $user_id ) {
 
 	$settings_url = ws_ls_get_link_to_user_settings( $user_id );
 ?>
-	<div class="postbox ws-ls-user-data <?php ws_ls_postbox_classes( 'settings', 'ws-ls-user-data-col-two' ); ?>" id="settings">
-		<?php ws_ls_postbox_header( [ 'title' => __( 'Settings', WE_LS_SLUG ), 'postbox-id' => 'settings', 'postbox-col' => 'ws-ls-user-data-col-two' ] ); ?>
+	<div class="postbox ws-ls-user-data <?php ws_ls_postbox_classes( 'settings', 'ws-ls-user-data-two' ); ?>" id="settings">
+		<?php ws_ls_postbox_header( [ 'title' => __( 'Settings', WE_LS_SLUG ), 'postbox-id' => 'settings', 'postbox-col' => 'ws-ls-user-data-two' ] ); ?>
 		<div class="inside">
 			<a class="button-secondary" href="<?php echo $settings_url; ?>">
 				<i class="fa fa-cog"></i>
@@ -278,8 +294,8 @@ function ws_ls_postbox_sidebar_settings( $user_id ) {
  */
 function ws_ls_postbox_sidebar_delete_cache( $user_id ) {
 ?>
-	<div class="postbox ws-ls-user-data <?php ws_ls_postbox_classes( 'delete-cache', 'ws-ls-user-data-col-two' ); ?>" id="delete-cache">
-		<?php ws_ls_postbox_header( [ 'title' => __( 'Delete Cache', WE_LS_SLUG ), 'postbox-id' => 'delete-cache', 'postbox-col' => 'ws-ls-user-data-col-two' ] ); ?>
+	<div class="postbox ws-ls-user-data <?php ws_ls_postbox_classes( 'delete-cache', 'ws-ls-user-data-two' ); ?>" id="delete-cache">
+		<?php ws_ls_postbox_header( [ 'title' => __( 'Delete Cache', WE_LS_SLUG ), 'postbox-id' => 'delete-cache', 'postbox-col' => 'ws-ls-user-data-two' ] ); ?>
 		<div class="inside">
 			<a class="button-secondary" href="<?php echo esc_url( ws_ls_get_link_to_delete_user_cache( $user_id ) ); ?>">
 				<i class="fa fa-refresh"></i>
@@ -295,8 +311,8 @@ function ws_ls_postbox_sidebar_delete_cache( $user_id ) {
  */
 function ws_ls_postbox_sidebar_delete_data() {
 ?>
-	<div class="postbox ws-ls-user-data <?php ws_ls_postbox_classes( 'delete-data', 'ws-ls-user-data-col-two' ); ?>" id="delete-data">
-		<?php ws_ls_postbox_header( [ 'title' => __( 'Delete Data', WE_LS_SLUG ), 'postbox-id' => 'delete-data', 'postbox-col' => 'ws-ls-user-data-col-two' ] ); ?>
+	<div class="postbox ws-ls-user-data <?php ws_ls_postbox_classes( 'delete-data', 'ws-ls-user-data-two' ); ?>" id="delete-data">
+		<?php ws_ls_postbox_header( [ 'title' => __( 'Delete Data', WE_LS_SLUG ), 'postbox-id' => 'delete-data', 'postbox-col' => 'ws-ls-user-data-two' ] ); ?>
 		<div class="inside">
 			<a class="button-secondary delete-confirm" href="<?php echo esc_url( admin_url( 'admin.php?page=ws-ls-data-home&mode=user&removedata=y&user-id=' . $user_id ) ); ?>">
 				<i class="fa fa-trash-o"></i>
@@ -401,7 +417,7 @@ function ws_ls_postbox_header( $args = [] ) {
 		$args = wp_parse_args( $args, [		'title'			=> __( 'Title', WE_LS_SLUG ),
 											'show-controls' => true,
 											'postbox-id'	=> NULL,
-											'postbox-col'	=> 'ws-ls-col-one'
+											'postbox-col'	=> 'ws-ls-user-summary-one'
 		]);
 
 		echo '<div class="postbox-header">';
@@ -445,7 +461,7 @@ function ws_ls_postbox_show( $id ) {
  *
  * @return string|void
  */
-function ws_ls_postbox_classes( $id, $column = 'ws-ls-col-one' ) {
+function ws_ls_postbox_classes( $id, $column = 'ws-ls-user-summary-one' ) {
 
 	$classes = [ 'ws-ls-postbox', $column ];
 
