@@ -236,13 +236,15 @@
         }
     }
 
-    /**
-     * Render Meta Fields form
-     *
-     * @param null $entry_id
-     * @return string
-     */
-    function ws_ls_meta_fields_form( $arguments ) {
+/**
+ * Render Meta Fields form
+ *
+ * @param $arguments
+ * @param null $placeholders
+ *
+ * @return string
+ */
+    function ws_ls_meta_fields_form( $arguments, $placeholders = NULL ) {
 
 	    $arguments = wp_parse_args( $arguments, [  'entry' => NULL, 'hide-fields-photos' => false ] );
 
@@ -251,6 +253,8 @@
         $photo_fields_rendered = 0;
 
         foreach ( ws_ls_meta_fields_enabled() as $field ) {
+
+	        $field[ 'placeholder' ] = ( false === empty( $placeholders[ 'meta' ][ $field[ 'id' ] ] ) ) ? $placeholders[ 'meta' ][ $field[ 'id' ] ] : '';
 
 	        $value = ( false === empty( $arguments[ 'entry' ][ 'meta'] ) &&
 	                     true === array_key_exists( $field[ 'id' ], $arguments[ 'entry' ][ 'meta'] ) ) ?
@@ -299,14 +303,15 @@
 
         return sprintf('<div class="ws-ls-meta-field">
                             <label for="%1$s" class="ws-ls-meta-field-title" >%2$s:</label>
-                            <input type="text" id="%1$s" name="%1$s" %3$s tabindex="%4$s" maxlength="200" value="%5$s" class="ws-ls-meta-field" data-msg="%6$s \'%2$s\'." />
+                            <input type="text" id="%1$s" name="%1$s" %3$s tabindex="%4$s" maxlength="200" value="%5$s" class="ws-ls-meta-field" data-msg="%6$s \'%2$s\'." placeholder="%7$s" />
                         </div>',
             ws_ls_meta_fields_form_field_generate_id( $field['id'] ),
             esc_attr( $field['field_name'] ),
             2 === (int) $field['mandatory'] ? ' required' : '',
             ws_ls_form_tab_index_next(),
             ( false === empty( $value ) ) ? esc_attr( $value ) : '',
-            __('Please enter a value for', WE_LS_SLUG)
+            __('Please enter a value for', WE_LS_SLUG),
+	        ( false === empty( $field[ 'placeholder' ] ) ) ? esc_attr( $field[ 'placeholder' ] ) : ''
         );
 
     }
@@ -322,14 +327,15 @@
 
         return sprintf('<div class="ws-ls-meta-field">
                             <label for="%1$s" class="ws-ls-meta-field-title">%2$s:</label>
-                            <input type="number" id="%1$s" name="%1$s" %3$s step="any" tabindex="%4$s" maxlength="200" value="%5$s" class="ws-ls-meta-field" data-msg="%6$s \'%2$s\'." />
+                            <input type="number" id="%1$s" name="%1$s" %3$s step="any" tabindex="%4$s" maxlength="200" value="%5$s" class="ws-ls-meta-field" data-msg="%6$s \'%2$s\'." placeholder="%7$s" />
                         </div>',
             ws_ls_meta_fields_form_field_generate_id( $field['id'] ),
             esc_attr( $field['field_name'] ),
             2 === (int)  $field['mandatory'] ? ' required' : '',
             ws_ls_form_tab_index_next(),
             ( false === empty( $value ) ) ? esc_attr( $value ) : '',
-            __('Please enter a number for', WE_LS_SLUG)
+            __('Please enter a number for', WE_LS_SLUG),
+	        ( false === empty( $field[ 'placeholder' ] ) ) ? esc_attr( $field[ 'placeholder' ] ) : ''
         );
 
     }

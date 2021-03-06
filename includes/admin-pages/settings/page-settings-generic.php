@@ -191,6 +191,19 @@ function ws_ls_settings_page_generic() {
 			                                                <p><?php echo __('If enabled, users can add notes against weight entries.', WE_LS_SLUG); ?></p>
 		                                                </td>
 	                                                </tr>
+													<tr class="<?php echo $disable_if_not_pro_class; ?>">
+														<th scope="row"><?php echo __( 'Display previous entry on form?' , WE_LS_SLUG); ?></th>
+														<td>
+															<?php
+															$enabled = get_option( 'ws-ls-populate-placeholders-with-previous-values', 'yes' );
+															?>
+															<select id="ws-ls-populate-placeholders-with-previous-values" name="ws-ls-populate-placeholders-with-previous-values">
+																<option value="yes" <?php selected( $enabled, 'yes' ); ?>><?php echo __( 'Yes', WE_LS_SLUG ); ?></option>
+																<option value="no" <?php selected( $enabled, 'no' ); ?>><?php echo __( 'No', WE_LS_SLUG ); ?></option>
+															</select>
+															<p><?php echo __('If enabled, when adding a new weight entry, the previous weight entries values will be added as field placeholders to show the user the values previously entered.', WE_LS_SLUG); ?></p>
+														</td>
+													</tr>
 											</table>
 											<h3><?php echo __( 'Tab appearance' , WE_LS_SLUG); ?></h3>
 											<table class="form-table">
@@ -1148,6 +1161,7 @@ function ws_ls_register_settings(){
 		register_setting( 'we-ls-options-group', 'ws-ls-abbv-or-question' );
         register_setting( 'we-ls-options-group', 'ws-ls-point-size' );
         register_setting( 'we-ls-options-group', 'ws-ls-grid-lines' );
+		register_setting( 'we-ls-options-group', 'ws-ls-populate-placeholders-with-previous-values' );
 
 	    // Groups
 	    register_setting( 'we-ls-options-group', 'ws-ls-enable-groups-user-edit' );

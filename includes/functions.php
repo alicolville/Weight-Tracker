@@ -1454,6 +1454,14 @@ function ws_ls_setting_hide_notes() {
 }
 
 /**
+ * Should we add previous entry values as placeholders to form?
+ * @return bool
+ */
+function ws_ls_setting_populate_placeholders_with_previous_values() {
+	return ( 'yes' === get_option( 'ws-ls-populate-placeholders-with-previous-values', 'yes' ) );
+}
+
+/**
  * Compare the given weight against a user's start weight and return difference
  * @param $user_id
  * @param $kg

@@ -18,6 +18,7 @@ function ws_ls_form_weight( $arguments = [] ) {
 	                                            'hide-notes'            => ws_ls_setting_hide_notes(),
 	                                            'hide-titles'           => false,
 	                                            'html'                  => '',
+	                                            'load-placeholders'     => ws_ls_setting_populate_placeholders_with_previous_values(), // Should we set previous values as form placeholders?
 	                                            'option-force-today'    => false,
 	                                            'option-tiny-mce-notes' => is_admin(),
 	                                            'is-target-form'        => false,
@@ -115,25 +116,43 @@ function ws_ls_form_weight( $arguments = [] ) {
 		}
 	}
 
+	$placeholders = [   'stones'    => __( 'Stones', WE_LS_SLUG ),
+						'pounds'    => __( 'Pounds', WE_LS_SLUG ),
+						'kg'        => __( 'Kg', WE_LS_SLUG ),
+						'meta'      => []
+	];
+
+	if (  false === $arguments[ 'is-target-form'  ] &&
+	        true === $arguments[ 'load-placeholders' ] &&
+				true === empty( $arguments[ 'entry' ] ) ) {
+
+		$latest_entry = ws_ls_entry_get_latest( $arguments );
+
+		if ( false === empty( $latest_entry ) ) {
+			$placeholders = ws_ls_weight_display( $latest_entry[ 'kg' ] );
+			$placeholders[ 'meta' ] = $latest_entry[ 'meta' ];
+		}
+	}
+
 	// Stones field?
 	if ( 'stones_pounds' ===  $arguments[ 'data-unit' ] ) {
 		$html .= ws_ls_form_field_number( [     'name'          => 'ws-ls-weight-stones',
-		                                        'placeholder'   => __( 'Stones', WE_LS_SLUG ),
+		                                        'placeholder'   => $placeholders[ 'stones' ],
 												'value'         => ( false === empty( $arguments[ 'entry' ][ 'stones' ] ) ) ? $arguments[ 'entry' ][ 'stones' ] : '' ] );
 	}
 
 	// Pounds?
 	if ( true === in_array( $arguments[ 'data-unit' ], [ 'stones_pounds', 'pounds_only' ] ) ) {
 		$html .= ws_ls_form_field_number( [    'name'          => 'ws-ls-weight-pounds',
-		                                       'placeholder'   => __( 'Pounds', WE_LS_SLUG ),
+		                                       'placeholder'   => $placeholders[ 'pounds' ],
 		                                       'max'           => ( 'stones_pounds' ===  $arguments[ 'data-unit' ] ) ? '13.99' : '5000',
 		                                       'value' => ( true === isset( $arguments[ 'entry' ][ 'pounds' ] ) ) ? $arguments[ 'entry' ][ 'pounds' ] : '' ] );
 	}
 
-	// Kg?
+	// Kg
 	if ( 'kg' ===  $arguments[ 'data-unit' ] ) {
 		$html .= ws_ls_form_field_number( [     'name'          => 'ws-ls-weight-kg',
-		                                        'placeholder'   => __( 'Kg', WE_LS_SLUG ),
+		                                        'placeholder'   => $placeholders[ 'kg' ],
 		                                        'value'         => ( false === empty( $arguments[ 'entry' ][ 'kg' ] ) ) ? $arguments[ 'entry' ][ 'kg' ] : '' ] );
 	}
 
@@ -147,7 +166,7 @@ function ws_ls_form_weight( $arguments = [] ) {
 
 	// Render Meta Fields
 	if ( false === $arguments[ 'is-target-form' ] && true === $arguments[ 'meta-enabled' ] ) {
-		$html .= ws_ls_meta_fields_form( $arguments );
+		$html .= ws_ls_meta_fields_form( $arguments, $placeholders );
 	}
 
 	$html .= sprintf( '<div class="ws-ls-form-buttons">
