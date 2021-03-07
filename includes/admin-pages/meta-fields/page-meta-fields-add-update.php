@@ -160,10 +160,12 @@
 												</div>
 												<div class="ws-ls-cell">
 													<?php
-														$groups = ws_ls_groups();
-														$groups = wp_list_pluck( $groups, 'name', 'id' );
+														$groups 	= ws_ls_meta_fields_groups();
+														$groups 	= wp_list_pluck( $groups, 'name', 'id' );
+														$selected 	= ( false === empty( $meta_field[ 'group_id' ] ) ) ? (int) $meta_field[ 'group_id' ] : 0;
 
-														echo ws_ls_form_field_select( [ 'key' => 'group_id', 'show-label' => false, 'values' => $groups, 'selected' => $meta_field['group_id'] ] );
+
+														echo ws_ls_form_field_select( [ 'key' => 'group_id', 'show-label' => false, 'values' => $groups, 'selected' => $selected ] );
 
 													 	printf( '&nbsp;<a href="%s">%s</a>', ws_ls_meta_fields_groups_link(), __('Add / remove Groups', WE_LS_SLUG) );
 													?>

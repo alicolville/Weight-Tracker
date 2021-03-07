@@ -583,6 +583,8 @@ function ws_ls_meta_fields_groups_delete( $id ) {
 
 	$result = $wpdb->delete( $wpdb->prefix . WE_LS_MYSQL_META_GROUPS, [ 'id' => $id ], [ '%d' ] );
 
+	ws_ls_meta_fields_clear( $id );
+
 	ws_ls_cache_user_delete( 'custom-fields-groups' );
 
 	return ( 1 === $result );
@@ -603,7 +605,7 @@ function ws_ls_meta_fields_groups_count( $id ) {
 		return $cache;
 	}
 
-	$sql = $wpdb->prepare('Select count( id ) from ' . $wpdb->prefix . WE_LS_MYSQL_META_GROUPS . ' where group_id = %d', $id );
+	$sql = $wpdb->prepare('Select count( id ) from ' . $wpdb->prefix . WE_LS_MYSQL_META_FIELDS . ' where group_id = %d', $id );
 
 	$count = $wpdb->get_var( $sql );
 
@@ -613,6 +615,25 @@ function ws_ls_meta_fields_groups_count( $id ) {
 
 	return $count;
 }
+
+/**
+ * Clear links to a removed group
+ * @param $id
+ *
+ * @return bool|false|int|mysqli_result|resource|null
+ */
+function ws_ls_meta_fields_clear( $id ) {
+
+	global $wpdb;
+
+	$sql    = $wpdb->prepare('Update ' . $wpdb->prefix . WE_LS_MYSQL_META_FIELDS . ' set group_id = 0 where group_id = %d', $id );
+	$count  = $wpdb->query( $sql );
+
+	ws_ls_cache_user_delete( 'custom-fields-groups' );
+
+	return $count;
+}
+
 
 /**
  * Add a group

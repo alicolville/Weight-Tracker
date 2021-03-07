@@ -23,8 +23,8 @@
                             <h3 class="hndle"><span><?php echo __('Custom Fields', WE_LS_SLUG); ?></span></h3>
                             <div style="padding: 0px 15px 0px 15px">
 
-                                <p><?php echo __( 'Custom Fields allows you to ask your user\'s additional questions when adding a weight entry. 
-                                                        For example, you may wish to ask them how many cups of water they drank today or perhaps how they are feeling. 
+                                <p><?php echo __( 'Custom Fields allows you to ask your user\'s additional questions when adding a weight entry.
+                                                        For example, you may wish to ask them how many cups of water they drank today or perhaps how they are feeling.
                                                             You can use the following screen to add as many questions as you wish.', WE_LS_SLUG); ?>
                                                         <a href="https://weight.yeken.uk/custom-fields/" target="_blank" rel="noopener"><?php echo __('Read more about Custom Fields', WE_LS_SLUG); ?></a>
                                                         </p>
@@ -35,6 +35,8 @@
 	                            <a href="<?php echo $base_url; ?>&amp;field_type=0" class="button"><?php echo __( 'Add Numeric Field', WE_LS_SLUG ); ?></a>
 	                            <a href="<?php echo $base_url; ?>&amp;field_type=1" class="button"><?php echo __( 'Add Text Field', WE_LS_SLUG ); ?></a>
 	                            <a href="<?php echo $base_url; ?>&amp;field_type=2" class="button"><?php echo __( 'Add Yes/No Field', WE_LS_SLUG ); ?></a>
+								&nbsp;&nbsp;
+								<a href="<?php echo ws_ls_meta_fields_groups_link(); ?>&amp;field_type=2" class="button"><?php echo __( 'Add / remove Groups', WE_LS_SLUG ); ?></a>
 
                                 <table class="ws-ls-meta-fields-list-ajax table ws-ls-loading-table" id="meta-fields-list"
                                        data-paging="true"
