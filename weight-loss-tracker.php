@@ -19,7 +19,7 @@ defined('ABSPATH') or die('Jog on!');
 
 define( 'WS_LS_ABSPATH', plugin_dir_path( __FILE__ ) );
 define( 'WE_LS_CURRENT_VERSION', '8.4' );
-define( 'WE_LS_DB_VERSION', '8.2' );
+define( 'WE_LS_DB_VERSION', '8.4' );
 define( 'WE_LS_TITLE', 'Weight Tracker' );
 define( 'WE_LS_SLUG', 'weight-loss-tracker' );
 define( 'WE_LS_LICENSE_TYPES_URL', 'https://weight.yeken.uk/features' );
@@ -96,6 +96,7 @@ require_once( WS_LS_ABSPATH . 'includes/admin-pages/page-setup-wizard.php' );
 require_once( WS_LS_ABSPATH . 'includes/admin-pages/meta-fields/page-meta-fields.php' );
 require_once( WS_LS_ABSPATH . 'includes/admin-pages/meta-fields/page-meta-fields-add-update.php' );
 require_once( WS_LS_ABSPATH . 'includes/admin-pages/meta-fields/page-meta-fields-list.php' );
+require_once( WS_LS_ABSPATH . 'includes/admin-pages/meta-fields/page-meta-fields-groups.php' );
 require_once( WS_LS_ABSPATH . 'includes/admin-pages/awards/page-awards.php' );
 require_once( WS_LS_ABSPATH . 'includes/admin-pages/awards/page-awards-list.php' );
 require_once( WS_LS_ABSPATH . 'includes/admin-pages/awards/page-awards-add-update.php' );

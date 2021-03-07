@@ -462,5 +462,42 @@
         $html .= '</div></div></div></div>';
 
 		return $html;
+}
 
+/**
+ * Slug exist?
+ * @param $slug
+ * @param null $exising_id
+ *
+ * @return string|null
+ */
+function ws_ls_meta_fields_group_slug_generate( $slug, $exising_id = NULL ) {
+
+	if ( true === empty( $slug ) ) {
+		return NULL;
+	}
+
+	$slug = sanitize_title( $slug );
+
+	$original_slug = $slug;
+
+	$try = 1;
+
+	// Ensure the slug is unique
+	while ( false === ws_ls_meta_fields_slug_is_unique( $slug, $exising_id ) ) {
+
+		$slug = sprintf( '%s_%d', $original_slug, $try );
+
+		$try++;
+	}
+
+	return $slug;
+}
+
+/**
+ * Return the link for managing Groups page
+ * @return string
+ */
+function ws_ls_meta_fields_groups_link() {
+	return admin_url( 'admin.php?page=ws-ls-meta-fields&mode=groups' );
 }

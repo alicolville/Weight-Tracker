@@ -275,6 +275,7 @@ function ws_ls_meta_fields_update( $field ) {
     $result = $wpdb->update( $wpdb->prefix . WE_LS_MYSQL_META_FIELDS, $field, [ 'id' => $id ], $formats, [ '%d' ] );
 
 	ws_ls_cache_user_delete( 'meta-fields' );
+	ws_ls_cache_user_delete( 'custom-fields-groups' );
 
 	do_action( 'wlt-meta-fields-updating-meta-field', $id );
 
@@ -326,6 +327,7 @@ function ws_ls_meta_fields_add( $field ) {
     $result = $wpdb->insert( $wpdb->prefix . WE_LS_MYSQL_META_FIELDS , $field, $formats );
 
 	ws_ls_cache_user_delete( 'meta-fields' );
+	ws_ls_cache_user_delete( 'custom-fields-groups' );
 
     return ( false === $result ) ? false : $wpdb->insert_id;
 }
@@ -351,6 +353,7 @@ function ws_ls_meta_fields_delete( $id ) {
 	ws_ls_meta_delete_for_meta_field( $id );
 
 	ws_ls_cache_user_delete( 'meta-fields' );
+	ws_ls_cache_user_delete( 'custom-fields-groups' );
 
     return ( 1 === $result );
 }
@@ -454,7 +457,8 @@ function ws_ls_meta_formats( $data ) {
         'hide_from_shortcodes' 	=> '%d',
 		'plot_on_graph'			=> '%d',
 		'plot_colour'			=> '%s',
-		'migrate'				=> '%d'
+		'migrate'				=> '%d',
+        'group_id'				=> '%d'
     ];
 
     foreach ( $data as $key => $value) {
@@ -503,4 +507,137 @@ function ws_ls_meta_fields_generate_field_key( $original_key ) {
 	}
 
 	return $key;
+}
+
+/**
+ * Check if the slug already exists
+ *
+ * @param $slug
+ * @param $existing_id
+ *
+ * @return bool
+ */
+function ws_ls_meta_fields_slug_is_unique( $slug, $existing_id = NULL ) {
+
+	if ( true === empty( $slug ) ) {
+		return false;
+	}
+
+	global $wpdb;
+
+	$sql = $wpdb->prepare( 'SELECT count( slug ) FROM ' . $wpdb->prefix . WE_LS_MYSQL_META_GROUPS . ' where slug = %s', $slug );
+
+	if ( false === empty( $existing_id ) ) {
+		$sql .= $wpdb->prepare( ' and id <> %d', $existing_id );
+	}
+
+	$row = $wpdb->get_var( $sql );
+
+	return ( empty( $row ) );
+}
+
+/**
+ * Fetch all groups
+ *
+ * @param bool $include_none
+ * @return array
+ */
+function ws_ls_meta_fields_groups( $include_none = true ) {
+
+	global $wpdb;
+
+	if ( false === is_admin() && $cache = ws_ls_cache_user_get( 'custom-fields-groups', 'all' ) ) {
+		return $cache;
+	}
+
+	$sql = 'Select * from ' . $wpdb->prefix . WE_LS_MYSQL_META_GROUPS . ' order by name asc';
+
+	$data = $wpdb->get_results( $sql , ARRAY_A );
+
+	ws_ls_cache_user_set( 'custom-fields-groups', 'all' , $data );
+
+	if ( true === $include_none ) {
+		$data = array_merge( [ [ 'id' => 0, 'name' => __('None', WE_LS_SLUG ) ] ], $data );
+	}
+
+	return $data;
+}
+
+/**
+ * Delete a group
+ *
+ * @param $id       award ID to delete
+ * @return bool     true if success
+ */
+function ws_ls_meta_fields_groups_delete( $id ) {
+
+	if ( false === is_admin() ) {
+		return;
+	}
+
+	global $wpdb;
+
+	ws_ls_log_add( 'custom-field-group', sprintf( 'Deleting: %d', $id ) );
+
+	do_action( 'wlt-custom-field-group-deleting', $id );
+
+	$result = $wpdb->delete( $wpdb->prefix . WE_LS_MYSQL_META_GROUPS, [ 'id' => $id ], [ '%d' ] );
+
+	ws_ls_cache_user_delete( 'custom-fields-groups' );
+
+	return ( 1 === $result );
+}
+
+/**
+ * Fetch count of number of feilds in a group
+ *
+ * @param $id
+ *
+ * @return int
+ */
+function ws_ls_meta_fields_groups_count( $id ) {
+
+	global $wpdb;
+
+	if ( $cache = ws_ls_cache_user_get( 'custom-fields-groups', 'count-' . $id ) ) {
+		return $cache;
+	}
+
+	$sql = $wpdb->prepare('Select count( id ) from ' . $wpdb->prefix . WE_LS_MYSQL_META_GROUPS . ' where group_id = %d', $id );
+
+	$count = $wpdb->get_var( $sql );
+
+	$count = (int) $count;
+
+	ws_ls_cache_user_set( 'custom-fields-groups', 'count-' .$id , $count );
+
+	return $count;
+}
+
+/**
+ * Add a group
+ *
+ * @param $name
+ *
+ * @return bool|void
+ */
+function ws_ls_meta_fields_groups_add( $name ) {
+
+	if ( false === is_admin() ) {
+		return false;
+	}
+
+	if ( true === empty( $name ) ) {
+		return false;
+	}
+
+	global $wpdb;
+
+	ws_ls_log_add( 'custom-field-group', sprintf( 'Adding: %s', $name ) );
+
+	$result = $wpdb->insert( $wpdb->prefix . WE_LS_MYSQL_META_GROUPS , [ 'name' => $name, 'slug' => ws_ls_meta_fields_group_slug_generate( $name ) ], [ '%s', '%s' ] );
+
+	ws_ls_cache_user_delete( 'custom-fields-groups' );
+
+	return ( false === $result ) ? false : $wpdb->insert_id;
 }

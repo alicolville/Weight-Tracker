@@ -356,6 +356,67 @@ jQuery( document ).ready(function ( $, undefined ) {
       $( table_id + ' .footable-empty td').html( ws_user_table_config[ 'locale-no-results' ] );
     }
   }
+  // ------------------------------------------------------------------------------------
+  // Custom Field Groups
+  // ------------------------------------------------------------------------------------
+
+  $( '.ws-ls-settings-custom-field-groups-list-ajax' ).each(function () {
+
+    let table_id = $( this ).attr('id' );
+
+    ws_ls_log( 'Custom Fields Groups: Fetching Data: ' + table_id );
+
+    ws_ls_post_data_to_WP( 'get_custom_field_groups', { 'table_id' : table_id }, ws_ls_callback_custom_field_groups );
+
+  });
+
+  function ws_ls_callback_custom_field_groups( response, data ){
+
+    let table_id  = '#' + response.table_id;
+    let columns   = ws_ls_apply_formatters( response.columns );
+    let rows      = response.rows;
+
+    ws_ls_log('Groups: Rendering Table: ' + table_id );
+
+    $( table_id ).removeClass( 'ws-ls-loading-table' );
+
+    $( table_id ).footable({  'columns':  columns,
+      'rows':     rows,
+      'state':    { 'enabled' : true, 'key': 'ws-ls-admin-footable' },
+      editing: {
+        enabled:      true,
+        allowAdd:     true,
+        alwaysShow:   true,
+        addText:      ws_user_table_config[ 'label-add' ],
+        deleteRow: function( row ){
+          if ( true === confirm( ws_user_table_config[ 'label-confirm-delete' ] ) ){
+
+            let values = row.val();
+
+            // Fetch the database record ID
+            if ( true === $.isNumeric( values.id ) ) {
+
+              row.delete();
+
+              // Post back to WP and delete from dB
+              ws_ls_post_data_to_WP('custom_field_groups_delete', { 'id' : values.id }, function( response, data ) {
+                if( 1 !== response ) {
+                  alert( ws_user_table_config[ 'label-error-delete' ] );
+                }
+              });
+            }
+          }
+        },
+      }
+    });
+
+    $( table_id + ' .footable-filtering-search .input-group .form-control').attr('placeholder', ws_user_table_config[ 'locale-search-text' ] ) ;
+
+    // Replace "No results" string with locale version
+    if ( 0 === rows.length ) {
+      $( table_id + ' .footable-empty td').html( ws_user_table_config[ 'locale-no-results' ] );
+    }
+  }
 
   // ------------------------------------------------------------------------------------
   // Users within a group

@@ -4,6 +4,7 @@
 
     define( 'WE_LS_MYSQL_META_FIELDS', 'WS_LS_META_FIELDS' );
     define( 'WE_LS_MYSQL_META_ENTRY', 'WS_LS_META_ENTRY' );
+	define( 'WE_LS_MYSQL_META_GROUPS', 'WS_LS_META_GROUPS' );
 
     /**
      * Create the relevant database tables required to support meta fields
@@ -32,6 +33,7 @@
                 `system` BIT DEFAULT 0,
                 field_type int NOT NULL,
                 sort int DEFAULT 100,
+                group_id int DEFAULT 0,
                 migrate int DEFAULT 0,
                 UNIQUE KEY id (id)
             ) $charset_collate;";
@@ -50,6 +52,18 @@
             ) $charset_collate;";
 
         dbDelta( $sql );
+
+	    $table_name = $wpdb->prefix . WE_LS_MYSQL_META_GROUPS;
+
+	    $sql = "CREATE TABLE $table_name (
+	                id mediumint(9) NOT NULL AUTO_INCREMENT,
+	                slug varchar(60) NOT NULL,
+	                name varchar(60) NOT NULL,
+	                UNIQUE KEY id (id)
+	            ) $charset_collate;";
+
+	    dbDelta( $sql );
+
     }
     add_action('ws-ls-rebuild-database-tables', 'ws_ls_meta_fields_create_mysql_tables');
 
