@@ -20,6 +20,8 @@ function ws_ls_shortcode( $user_defined_arguments ) {
 									                'min-chart-points' 			=> 2,	                        // Minimum number of data entries before chart is shown
 													'hide-first-target-form' 	=> false,					    // Hide first Target form
 													'hide-second-target-form' 	=> false,					    // Hide second Target form
+									                'custom-field-groups'       => '',                          // If specified, only show custom fields that are within these groups
+									                'custom-field-slugs'        => '',                          // If specified, only show the custom fields that are specified
 									                'bmi-format'                => 'label',                     // Format for display BMI
 													'show-add-button' 			=> false,					    // Display a "Add weight" button above the chart.
 									                'allow-delete-data' 		=> true,                	    // Show "Delete your data" section
@@ -157,7 +159,8 @@ function ws_ls_shortcode( $user_defined_arguments ) {
 			}
 
 			$html_output .= ws_ls_title( __( 'In a chart', WE_LS_SLUG ) );
-			$html_output .= ws_ls_display_chart( $weight_data );
+			$html_output .= ws_ls_display_chart( $weight_data, [ 'custom-field-groups'   => $shortcode_arguments[ 'custom-field-groups' ],
+			                                                     'custom-field-slugs'    => $shortcode_arguments[ 'custom-field-slugs' ] ] );
 
 		} else {
 
@@ -189,13 +192,15 @@ function ws_ls_shortcode( $user_defined_arguments ) {
 				$redirect_url = base64_decode( $redirect_url );
 			}
 
-			$html_output .= ws_ls_form_weight( [    'css-class-form'       => 'ws-ls-main-weight-form',
-			                                        'user-id'              => $user_id,
-			                                        'entry-id'             => $entry_id,
-			                                        'hide-fields-photos'   => ws_ls_to_bool( $shortcode_arguments[ 'hide-photos' ] ),
-													'redirect-url'         => $redirect_url,
-													'hide-notes'           => ws_ls_to_bool( $shortcode_arguments[ 'hide-notes' ] ),
-													'hide-confirmation'    => true
+			$html_output .= ws_ls_form_weight( [    'css-class-form'        => 'ws-ls-main-weight-form',
+			                                        'user-id'               => $user_id,
+			                                        'entry-id'              => $entry_id,
+			                                        'hide-fields-photos'    => ws_ls_to_bool( $shortcode_arguments[ 'hide-photos' ] ),
+													'redirect-url'          => $redirect_url,
+													'hide-notes'            => ws_ls_to_bool( $shortcode_arguments[ 'hide-notes' ] ),
+													'hide-confirmation'     => true,
+													'custom-field-groups'   => $shortcode_arguments[ 'custom-field-groups' ],
+													'custom-field-slugs'    => $shortcode_arguments[ 'custom-field-slugs' ]
 			] );
 
 		} else {
@@ -204,7 +209,9 @@ function ws_ls_shortcode( $user_defined_arguments ) {
 			                                        'user-id'               => $user_id,
 			                                        'hide-fields-photos'    => ws_ls_to_bool( $shortcode_arguments[ 'hide-photos' ] ),
 			                                        'hide-notes'            => ws_ls_to_bool( $shortcode_arguments[ 'hide-notes' ] ),
-			                                        'hide-confirmation'     => true
+			                                        'hide-confirmation'     => true,
+			                                        'custom-field-groups'   => $shortcode_arguments[ 'custom-field-groups' ],
+			                                        'custom-field-slugs'    => $shortcode_arguments[ 'custom-field-slugs' ]
 			] );
 		}
 
@@ -234,7 +241,11 @@ function ws_ls_shortcode( $user_defined_arguments ) {
 				}
 
 				if ( true === WS_LS_IS_PRO && false === ws_ls_to_bool( $shortcode_arguments[ 'disable-advanced-tables' ] ) ){
-					$html_output .=  ws_ls_shortcode_table( [ 'user-id' => $user_id, 'enable-add-edit' => true, 'enable-meta-fields' => true,  'week' => $selected_week_number, 'bmi-format' => $shortcode_arguments[ 'bmi-format' ] ] );
+					$html_output .=  ws_ls_shortcode_table( [ 'user-id' => $user_id, 'enable-add-edit' => true, 'enable-meta-fields' => true,
+					                                            'week' => $selected_week_number, 'bmi-format' => $shortcode_arguments[ 'bmi-format' ],
+					                                                'custom-field-groups'   => $shortcode_arguments[ 'custom-field-groups' ],
+					                                                'custom-field-slugs'    => $shortcode_arguments[ 'custom-field-slugs' ]
+					] );
 				} else {
 					$html_output .= ws_ls_display_table( $user_id, $weight_data );
 				}
