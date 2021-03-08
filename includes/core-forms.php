@@ -8,6 +8,8 @@ defined('ABSPATH') or die('Jog on!');
 function ws_ls_form_weight( $arguments = [] ) {
 
 	$arguments = wp_parse_args( $arguments, [   'css-class-form'        => '',
+												'custom-field-groups'   => '',      // If specified, only show custom fields that are within these groups
+												'custom-field-slugs'    => '',      // If specified, only show the custom fields that are specified
 	                                            'entry-id'              => NULL,
 	                                            'entry'                 => NULL,
 	                                            'hide-button-cancel'    => true,
@@ -24,7 +26,7 @@ function ws_ls_form_weight( $arguments = [] ) {
 	                                            'is-target-form'        => false,
 	                                            'redirect-url'          => '',
 	                                            'user-id'               => get_current_user_id() ] );
-
+	
 	// Is the user logged in?
 	if ( false === is_user_logged_in() ) {
 		// Suppress login prompt?
@@ -255,6 +257,10 @@ function ws_ls_form_init( $arguments = [] ) {
 	$arguments[ 'photos-enabled' ] = ( false === $arguments[ 'hide-fields-photos' ] &&
 	                                   true === $arguments[ 'meta-enabled' ] &&
 	                                   true === ws_ls_meta_fields_photo_any_enabled( true ) );
+
+	// Custom field filtering?
+	$arguments[ 'custom-field-groups' ] = ws_ls_meta_fields_groups_slugs_to_ids( $arguments[ 'custom-field-groups' ] );
+	$arguments[ 'custom-field-slugs' ]  = ws_ls_meta_fields_slugs_to_ids( $arguments[ 'custom-field-slugs' ] );
 
 	return $arguments;
 }

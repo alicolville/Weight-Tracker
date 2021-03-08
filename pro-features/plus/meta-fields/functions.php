@@ -246,13 +246,34 @@
  */
     function ws_ls_meta_fields_form( $arguments, $placeholders = NULL ) {
 
-	    $arguments = wp_parse_args( $arguments, [  'entry' => NULL, 'hide-fields-photos' => false ] );
+	    $arguments = wp_parse_args( $arguments, [
+	    	                                        'entry'                 => NULL,
+		                                            'hide-fields-photos'    => false,
+		                                            'custom-field-groups'   => '',      // If specified, only show custom fields that are within these groups
+		                                            'custom-field-slugs'    => ''       // If specified, only show the custom fields that are specified
+	    ] );
 
-        $html = '';
+        $html                   = '';
+        $photo_fields_rendered  = 0;
 
-        $photo_fields_rendered = 0;
+        // Do we have to filter by ID or Group?
+	    $filter_by_id       = ( false === empty( $arguments[ 'custom-field-slugs' ] ) );
+	    $filter_by_group    = ( false === empty( $arguments[ 'custom-field-groups' ] ) );
 
         foreach ( ws_ls_meta_fields_enabled() as $field ) {
+
+        	// Filter by ID?
+	        if ( true === $filter_by_id &&
+	                false === in_array( $field[ 'id' ], $arguments[ 'custom-field-slugs' ] ) ) {
+				continue;
+	        }
+
+	        // Filter by group?
+	        if ( true === $filter_by_group &&
+	                0 !== (int) $field[ 'group_id' ] &&
+	                    false === in_array( $field[ 'group_id' ], $arguments[ 'custom-field-groups' ] ) ) {
+		        continue;
+	        }
 
 	        $field[ 'placeholder' ] = ( false === empty( $placeholders[ 'meta' ][ $field[ 'id' ] ] ) ) ? $placeholders[ 'meta' ][ $field[ 'id' ] ] : '';
 
@@ -500,4 +521,60 @@ function ws_ls_meta_fields_group_slug_generate( $slug, $exising_id = NULL ) {
  */
 function ws_ls_meta_fields_groups_link() {
 	return admin_url( 'admin.php?page=ws-ls-meta-fields&mode=groups' );
+}
+
+/**
+ * Take one or many custom field group slugs and convert to ID
+ * @param $slugs
+ *
+ * @return array
+ */
+function ws_ls_meta_fields_groups_slugs_to_ids( $slugs ) {
+
+	$ids = NULL;
+
+	if ( true === empty( $slugs ) ) {
+		return $ids;
+	}
+
+	$slugs  = explode( ',', $slugs );
+	$groups = ws_ls_meta_fields_groups();
+	$groups = wp_list_pluck( $groups, 'id', 'slug' );
+
+	foreach ( $slugs as $slug ) {
+
+		if ( false === empty( $groups[ $slug ] ) ) {
+			$ids[] = (int) $groups[ $slug ];
+		}
+	}
+
+	return $ids;
+}
+
+/**
+ * Take one or many custom field group slugs and convert to ID
+ * @param $slugs
+ *
+ * @return array
+ */
+function ws_ls_meta_fields_slugs_to_ids( $slugs ) {
+
+	$ids = NULL;
+
+	if ( true === empty( $slugs ) ) {
+		return $ids;
+	}
+
+	$slugs  = explode( ',', $slugs );
+	$fields = ws_ls_meta_fields();
+	$fields = wp_list_pluck( $fields, 'id', 'field_key' );
+
+	foreach ( $slugs as $slug ) {
+
+		if ( false === empty( $fields[ $slug ] ) ) {
+			$ids[] = (int) $fields[ $slug ];
+		}
+	}
+
+	return $ids;
 }
