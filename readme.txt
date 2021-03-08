@@ -166,6 +166,8 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 * New Feature: New shortcode [wt-previous-date] - display the date of the previous weight entry.
 * New Feature: New shortcode [wt-start-date] - display the date of the first weight entry.
 * New Feature: If enabled (Setting: Display previous entry on form?), the user's previous entry will be displayed as placeholders on form fields. This will allow the user to see the values on the previous entry.
+* New Feature: Custom Field Groups. Custom fields can now be added to groups.
+* Improvement: The following shortcodes can now be filtered so only certain custom fields or custom field groups are rendered: [weight-tracker], [wt-form], [wt-chart] and [wt-table].
 * Improvement: Display and change the order of boxes on user summary and profile page (admin).
 * Improvement: Added a new button to "Show all entries" on the User summary page. Please bare in mind, this option maybe slow performing on large data sets.
 = 8.3 =
