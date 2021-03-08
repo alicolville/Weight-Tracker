@@ -169,7 +169,10 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 * New Feature: Custom Field Groups. Custom fields can now be added to groups.
 * Improvement: The following shortcodes can now be filtered so only certain custom fields or custom field groups are rendered: [weight-tracker], [wt-form], [wt-chart] and [wt-table].
 * Improvement: Display and change the order of boxes on user summary and profile page (admin).
+* Improvement: [weight-tracker] - new argument "hide-chart-overview" to hide chart on the Overview tab.
+* Improvement: [weight-tracker] - new argument "show-chart-history" to show a chart on the History tab.
 * Improvement: Added a new button to "Show all entries" on the User summary page. Please bare in mind, this option maybe slow performing on large data sets.
+
 = 8.3 =
 
 * Improvement: Webhooks, Zapier & Slack. Push weight entry data and targets to Slack channels, Zapier or your own custom Webhooks.
