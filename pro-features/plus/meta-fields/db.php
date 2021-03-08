@@ -564,6 +564,21 @@ function ws_ls_meta_fields_groups( $include_none = true ) {
 }
 
 /**
+ * Fetch the field for the given group
+ * @param $id
+ * @param string $field
+ *
+ * @return mixed|string
+ */
+function ws_ls_meta_fields_groups_get_field( $id, $field = 'name' ) {
+
+	$groups = ws_ls_meta_fields_groups();
+	$groups = wp_list_pluck( $groups, $field, 'id' );
+
+	return ( false === empty( $groups[ $id ] ) ) ? $groups[ $id ] : '';
+}
+
+/**
  * Delete a group
  *
  * @param $id       award ID to delete

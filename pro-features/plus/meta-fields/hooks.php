@@ -16,6 +16,7 @@
                         [ 'name' => 'field_key', 'title' => __('Key', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
                         [ 'name' => 'field_type', 'title' => __('Type', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
                         [ 'name' => 'sort', 'title' => __('Display Order', WE_LS_SLUG), 'visible'=> true, 'type' => 'number' ],
+	                    [ 'name' => 'group', 'title' => __('Group', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
                         [ 'name' => 'mandatory', 'title' => __('Mandatory', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
                         [ 'name' => 'enabled', 'title' => __('Enabled', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ]
         ];
@@ -25,9 +26,10 @@
         // Format Row data
         for ( $i = 0 ; $i < count( $meta_fields ) ; $i++ ) {
 
-            $meta_fields[ $i ][ 'field_type' ] = ws_ls_meta_fields_types_get_string( $meta_fields[ $i ][ 'field_type' ] );
-            $meta_fields[ $i ][ 'enabled' ] = ws_ls_boolean_as_yes_no_string( $meta_fields[ $i ][ 'enabled' ] );
-            $meta_fields[ $i ][ 'mandatory' ] = ws_ls_boolean_as_yes_no_string( $meta_fields[ $i ][ 'mandatory' ] );
+	        $meta_fields[ $i ][ 'group' ]       = ws_ls_meta_fields_groups_get_field( $meta_fields[ $i ][ 'group_id' ] );
+            $meta_fields[ $i ][ 'field_type' ]  = ws_ls_meta_fields_types_get_string( $meta_fields[ $i ][ 'field_type' ] );
+            $meta_fields[ $i ][ 'enabled' ]     = ws_ls_boolean_as_yes_no_string( $meta_fields[ $i ][ 'enabled' ] );
+            $meta_fields[ $i ][ 'mandatory' ]   = ws_ls_boolean_as_yes_no_string( $meta_fields[ $i ][ 'mandatory' ] );
         }
 
         $data = [
