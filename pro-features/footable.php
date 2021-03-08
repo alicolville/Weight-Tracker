@@ -19,7 +19,9 @@ function ws_ls_data_table_render( $arguments = [] ) {
 												'enable-meta-fields'    => ( true === ws_ls_meta_fields_is_enabled() &&
 												                                ws_ls_meta_fields_number_of_enabled() > 0 ),
 												'page-size'             => 10,
-												'week'                  => NULL
+												'week'                  => NULL,
+												'custom-field-groups'   => '',      // If specified, only show custom fields that are within these groups
+												'custom-field-slugs'    => '',      // If specified, only show the custom fields that are specified
 	] );
 
 	ws_ls_data_table_enqueue_scripts();
@@ -68,6 +70,8 @@ function ws_ls_data_table_render( $arguments = [] ) {
 									data-enable-meta-fields="%6$s"
 									data-week="%8$d"
 									data-bmi-format="%9$s"
+									data-custom-field-slugs="%10$s"
+									data-custom-field-groups="%11$s"
 									 >
 		</table>',
 			ws_ls_component_id(),
@@ -78,7 +82,9 @@ function ws_ls_data_table_render( $arguments = [] ) {
 			true === $arguments[ 'enable-meta-fields' ] ? 'true' : 'false',
 			$arguments[ 'page-size' ],
 			$arguments[ 'week' ],
-			esc_attr( $arguments[ 'bmi-format' ] )
+			esc_attr( $arguments[ 'bmi-format' ] ),
+			esc_attr( $arguments[ 'custom-field-slugs' ] ),
+			esc_attr( $arguments[ 'custom-field-groups' ] )
 		);
 
 		if ( true === empty( $arguments[ 'user-id' ] ) ) {
@@ -97,15 +103,15 @@ function ws_ls_data_table_render( $arguments = [] ) {
  */
 function ws_ls_datatable_rows( $arguments ) {
 
-	$arguments = wp_parse_args( $arguments, [	 'user-id'          => NULL,
-	                                             'limit'            => NULL,
-	                                             'smaller-width'    => false,
-	                                             'week'             => NULL,
-	                                             'front-end'        => false,
-	                                             'sort'             => 'desc',
-												 'enable-meta'      => true,
-												 'bmi-format'       => 'index',
-												 'in-admin'         => false    // Has this request come from the admin area (used to render dates differently)
+	$arguments = wp_parse_args( $arguments, [	    'user-id'               => NULL,
+	                                                'limit'                 => NULL,
+	                                                'smaller-width'         => false,
+	                                                'week'                  => NULL,
+	                                                'front-end'             => false,
+	                                                'sort'                  => 'desc',
+	                                                'enable-meta'           => true,
+	                                                'bmi-format'            => 'index',
+												    'in-admin'              => false    // Has this request come from the admin area (used to render dates differently)
 	] );
 
 	$cache_key  = ws_ls_cache_generate_key_from_array( 'footable', $arguments );
@@ -199,6 +205,7 @@ function ws_ls_datatable_rows( $arguments ) {
 					$meta_data = wp_list_pluck( $meta_data, 'value', 'meta_field_id' );
 
 					foreach ( $meta_data as $key => $field ) {
+
 						$row[ 'meta-' . $key ] = ws_ls_fields_display_field_value( $field, $key );
 					}
 				}
@@ -247,9 +254,12 @@ function ws_ls_datatable_rows_localise( $row ) {
  * @param bool $front_end
  * @param bool $enable_meta
  *
+ * @param null $custom_field_slugs
+ * @param null $custom_field_groups
+ *
  * @return array - column definitions
  */
-function ws_ls_datatable_columns( $smaller_width = false, $front_end = false, $enable_meta = true ) {
+function ws_ls_datatable_columns( $smaller_width = false, $front_end = false, $enable_meta = true, $custom_field_slugs = NULL, $custom_field_groups = NULL ) {
 
 	$columns = [
 					[ 'name' => 'db_row_id', 'title' => 'ID', 'visible' => false, 'type' => 'number' ],
@@ -276,8 +286,28 @@ function ws_ls_datatable_columns( $smaller_width = false, $front_end = false, $e
     if ( true === $enable_meta &&
             true === ws_ls_meta_fields_is_enabled() ) {
 
-        foreach ( ws_ls_meta_fields_enabled() as $field ) {
+	    // Custom field filtering?
+	    $custom_field_groups    = ws_ls_meta_fields_groups_slugs_to_ids( $custom_field_groups );
+	    $custom_field_slugs     = ws_ls_meta_fields_slugs_to_ids( $custom_field_slugs );
+	    $filter_by_group        = ( false === empty( $custom_field_groups) );
+	    $filter_by_id           = ( false === empty( $custom_field_slugs ) );
+
+	    foreach ( ws_ls_meta_fields_enabled() as $field ) {
         	if ( true === apply_filters( 'wlt-filter-column-include', true, $field ) ) {
+
+		        // Filter by ID?
+		        if ( true === $filter_by_id &&
+		             false === in_array( $field[ 'id' ], $custom_field_slugs ) ) {
+			        continue;
+		        }
+
+		        // Filter by group?
+		        if ( true === $filter_by_group &&
+		             0 !== (int) $field[ 'group_id' ] &&
+		             false === in_array( $field[ 'group_id' ], $custom_field_groups ) ) {
+			        continue;
+		        }
+
 				array_push($columns, [ 'name' => 'meta-' . $field['id'], 'title' => $field['field_name'], 'breakpoints'=> ( ($smaller_width ) ? 'lg' : 'md' ), 'type' => 'text' ] );
 			}
         }

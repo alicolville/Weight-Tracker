@@ -19,6 +19,8 @@ jQuery( document ).ready(function ( $, undefined ) {
 
         let data = {
                         'enable-meta-fields':   $( this ).data('enable-meta-fields' ),
+                        'custom-field-groups':  $( this ).data('custom-field-groups' ),
+                        'custom-field-slugs':   $( this ).data('custom-field-slugs' ),
                         'front-end' :           ws_ls_in_front_end(),
                         'is-admin' :            ws_user_table_config[ 'is-admin' ],
                         'max_entries':          $( this ).data( 'max-entries' ),

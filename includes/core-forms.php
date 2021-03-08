@@ -26,7 +26,7 @@ function ws_ls_form_weight( $arguments = [] ) {
 	                                            'is-target-form'        => false,
 	                                            'redirect-url'          => '',
 	                                            'user-id'               => get_current_user_id() ] );
-	
+
 	// Is the user logged in?
 	if ( false === is_user_logged_in() ) {
 		// Suppress login prompt?

@@ -23,7 +23,9 @@ function ws_ls_shortcode_form( $user_defined_arguments ) {
 								       'hide-notes'         => ws_ls_setting_hide_notes(),
 								       'redirect-url'       => false,
 								       'hide-measurements'  => false,
-								       'hide-custom-fields' => false
+								       'hide-custom-fields' => false,
+								       'custom-field-groups'   => '',      // If specified, only show custom fields that are within these groups
+								       'custom-field-slugs'    => '',      // If specified, only show the custom fields that are specified
     ], $user_defined_arguments );
 
     // Port shortcode arguments to core function

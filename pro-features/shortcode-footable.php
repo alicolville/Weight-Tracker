@@ -17,6 +17,8 @@ function ws_ls_shortcode_table( $user_defined_arguments ) {
     $arguments = shortcode_atts( [  'enable-add-edit'       => false,
 						            'enable-meta-fields'    => false,
 						            'enable-custom-fields'  => false,
+						            'custom-field-groups'   => '',      // If specified, only show custom fields that are within these groups
+						            'custom-field-slugs'    => '',      // If specified, only show the custom fields that are specified
 							        'bmi-format'            => 'label',
 							        'week'                  => NULL,
 						            'user-id'               => get_current_user_id() ], $user_defined_arguments );
@@ -35,7 +37,9 @@ function ws_ls_shortcode_table( $user_defined_arguments ) {
 	                                    'enable-add-edit'       => $arguments[ 'enable-add-edit' ],
 	                                    'enable-meta-fields'    => $arguments[ 'enable-meta-fields' ] || $arguments[ 'enable-custom-fields' ],
 	                                    'week'                  => $arguments[ 'week' ],
-										'bmi-format'            => $arguments[ 'bmi-format' ]
+										'bmi-format'            => $arguments[ 'bmi-format' ],
+										'custom-field-groups'   => $arguments[ 'custom-field-groups' ],
+										'custom-field-slugs'    => $arguments[ 'custom-field-slugs' ],
 	] );
 }
 add_shortcode( 'wlt-table', 'ws_ls_shortcode_table' );

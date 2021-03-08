@@ -193,7 +193,7 @@ function ws_ls_meta_fields_enabled() {
  *
  * @return array
  */
-function ws_ls_meta_fields_plottable() {
+function ws_ls_meta_fields_plottable( $arguments = [] ) {
 
 	$fields = ws_ls_meta_fields_enabled();
 
@@ -204,6 +204,25 @@ function ws_ls_meta_fields_plottable() {
 	$fields = array_filter( $fields, function( $field ) {
 		return ! empty( $field[ 'plot_on_graph' ] );
 	});
+
+	// Do we have to filter by ID or Group?
+	if ( false === empty( $arguments[ 'custom-field-slugs' ] ) ) {
+
+		$allowed_meta_ids = $arguments[ 'custom-field-slugs' ];
+
+		$fields = array_filter( $fields, function( $field ) use ($allowed_meta_ids) {
+			return in_array( $field[ 'id' ], $allowed_meta_ids );
+		});
+	}
+
+	if ( false === empty( $arguments[ 'custom-field-groups' ] ) ) {
+
+		$allowed_meta_ids = $arguments[ 'custom-field-groups' ];
+
+		$fields = array_filter( $fields, function( $field ) use ($allowed_meta_ids) {
+			return in_array( $field[ 'group_id' ], $allowed_meta_ids );
+		});
+	}
 
 	return array_values( $fields );
 }
