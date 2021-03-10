@@ -2,8 +2,8 @@
 Contributors: aliakro
 Tags: weight,tracker,chart,bmi,bmr,macronutrient,measure,awards,custom fields,history,measurements,data
 Requires at least: 5.2
-Tested up to: 5.6.1
-Stable tag: 8.3
+Tested up to: 5.7
+Stable tag: 8.3.1
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -159,6 +159,10 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 8.3 - Webhooks, Zapier & Slack. Push weight entry data and targets to Slack channels, Zapier or your own custom Webhooks.
 
 == Changelog ==
+
+= 8.3.1 =
+
+* Updated "Tested upto" statement within readme.txt
 
 = 8.3 =
 
