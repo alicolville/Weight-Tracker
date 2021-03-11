@@ -172,6 +172,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 * Improvement: [weight-tracker] - new argument "hide-chart-overview" to hide chart on the Overview tab.
 * Improvement: [weight-tracker] - new argument "show-chart-history" to show a chart on the History tab.
 * Improvement: Added a new button to "Show all entries" on the User summary page. Please bare in mind, this option maybe slow performing on large data sets.
+* Improvement: Admin: User profile: Added "Start" and "Latest" dates.
 
 = 8.3 =
 

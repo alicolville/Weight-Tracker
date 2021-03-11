@@ -138,7 +138,7 @@ function ws_ls_postbox_sidebar_user_information( $user_id ) {
 
 ?>
 	<div class="postbox ws-ls-user-data <?php ws_ls_postbox_classes( 'user-information', 'ws-ls-user-data-two' ); ?>" id="user-information">
-		<?php ws_ls_postbox_header( [ 'title' => __( 'User Information', WE_LS_SLUG ), 'postbox-id' => 'user-information', 'postbox-col' => 'ws-ls-user-data-two' ] ); ?>
+		<?php ws_ls_postbox_header( [ 'title' => __( 'User summary', WE_LS_SLUG ), 'postbox-id' => 'user-information', 'postbox-col' => 'ws-ls-user-data-two' ] ); ?>
 		<div class="inside">
 			<table class="ws-ls-sidebar-stats">
 
@@ -146,23 +146,31 @@ function ws_ls_postbox_sidebar_user_information( $user_id ) {
 
 				<?php $stats = ws_ls_db_entries_count($user_id); ?>
 				<tr>
-					<th><?php echo __('No. of Entries', WE_LS_SLUG); ?></th>
+					<th><?php echo __('No. of entries', WE_LS_SLUG); ?></th>
 					<td><?php echo $stats['number-of-entries']; ?></td>
 				</tr>
 				<tr>
-					<th><?php echo __('Start Weight', WE_LS_SLUG); ?></th>
-					<td class="<?php echo ws_ls_blur(); ?>"><?php echo ws_ls_blur_text( ws_ls_shortcode_start_weight($user_id) ); ?></td>
+					<th><?php echo __( 'Starting entry', WE_LS_SLUG ); ?></th>
+					<td class="<?php echo ws_ls_blur(); ?>"><?php echo ws_ls_blur_text( ws_ls_shortcode_start_date( $user_id ) ); ?></td>
 				</tr>
 				<tr>
-					<th><?php echo __('Latest Weight', WE_LS_SLUG); ?></th>
-					<td class="<?php echo ws_ls_blur(); ?>"><?php echo ws_ls_blur_text( ws_ls_shortcode_recent_weight($user_id) ); ?></td>
+					<th></th>
+					<td class="<?php echo ws_ls_blur(); ?>"><?php echo ws_ls_blur_text( ws_ls_shortcode_start_weight( $user_id ) ); ?></td>
 				</tr>
 				<tr>
-					<th><?php echo __('Diff. from Start', WE_LS_SLUG); ?></th>
+					<th><?php echo __( 'Latest entry', WE_LS_SLUG ); ?></th>
+					<td class="<?php echo ws_ls_blur(); ?>"><?php echo ws_ls_blur_text( ws_ls_shortcode_recent_date( $user_id ) ); ?></td>
+				</tr>
+				<tr>
+					<th></th>
+					<td class="<?php echo ws_ls_blur(); ?>"><?php echo ws_ls_blur_text( ws_ls_shortcode_recent_weight( $user_id ) ); ?></td>
+				</tr>
+				<tr>
+					<th><?php echo __('Diff. from start', WE_LS_SLUG); ?></th>
 					<td class="<?php echo ws_ls_blur(); ?>"><?php echo ws_ls_blur_text( ws_ls_shortcode_difference_in_weight_from_oldest($user_id) ); ?></td>
 				</tr>
 				<tr>
-					<th><?php echo __('Target Weight', WE_LS_SLUG); ?></th>
+					<th><?php echo __('Target weight', WE_LS_SLUG); ?></th>
 					<td class="<?php echo ws_ls_blur(); ?>">
 						<a href="<?php echo ws_ls_get_link_to_edit_target($user_id); ?>">
 							<?php
@@ -174,7 +182,7 @@ function ws_ls_postbox_sidebar_user_information( $user_id ) {
 					</td>
 				</tr>
 				<tr>
-					<th><?php echo __('Diff. from Target', WE_LS_SLUG); ?></th>
+					<th><?php echo __('Diff. from target', WE_LS_SLUG); ?></th>
 					<td class="<?php echo ws_ls_blur(); ?>"><?php echo ws_ls_blur_text( ws_ls_shortcode_difference_in_weight_target($user_id) ); ?></td>
 				</tr>
 				<tr>
@@ -197,11 +205,11 @@ function ws_ls_postbox_sidebar_user_information( $user_id ) {
 					<td class="<?php echo ws_ls_blur(); ?>"><a href="<?php echo $settings_url; ?>"><?php echo ws_ls_blur_text( ws_ls_display_user_setting($user_id, 'gender') ); ?></a></td>
 				</tr>
 				<tr>
-					<th><?php echo __('Activity Level', WE_LS_SLUG); ?></th>
+					<th><?php echo __('Activity level', WE_LS_SLUG); ?></th>
 					<td class="<?php echo ws_ls_blur(); ?>"><a href="<?php echo $settings_url; ?>"><?php echo ws_ls_blur_text( ws_ls_display_user_setting($user_id, 'activity_level', false, true) ); ?></a></td>
 				</tr>
 				<tr>
-					<th><?php echo __('Date of Birth', WE_LS_SLUG); ?></th>
+					<th><?php echo __('Date of birth', WE_LS_SLUG); ?></th>
 					<td class="<?php echo ws_ls_blur(); ?>"><a href="<?php echo $settings_url; ?>"><?php echo ws_ls_blur_text( ws_ls_get_dob_for_display($user_id, false, true) ); ?></a></td>
 				</tr>
 				<tr class="last">
@@ -255,7 +263,7 @@ function ws_ls_postbox_sidebar_add_entry( $user_id ) {
 function ws_ls_postbox_sidebar_export_data( $user_id ) {
 ?>
 	<div class="postbox ws-ls-user-data <?php ws_ls_postbox_classes( 'export-data', 'ws-ls-user-data-two' ); ?>" id="export-data">
-		<?php ws_ls_postbox_header( [ 'title' => __( 'Export Data', WE_LS_SLUG ), 'postbox-id' => 'export-data', 'postbox-col' => 'ws-ls-user-data-two' ] ); ?>
+		<?php ws_ls_postbox_header( [ 'title' => __( 'Export data', WE_LS_SLUG ), 'postbox-id' => 'export-data', 'postbox-col' => 'ws-ls-user-data-two' ] ); ?>
 		<div class="inside">
 			<a class="button-secondary" href="<?php echo ws_ls_export_link('new', [ 'user-id' => $user_id, 'format' => 'csv' ] ); ?>">
 				<i class="fa fa-file-excel-o"></i>
@@ -298,7 +306,7 @@ function ws_ls_postbox_sidebar_settings( $user_id ) {
 function ws_ls_postbox_sidebar_delete_cache( $user_id ) {
 ?>
 	<div class="postbox ws-ls-user-data <?php ws_ls_postbox_classes( 'delete-cache', 'ws-ls-user-data-two' ); ?>" id="delete-cache">
-		<?php ws_ls_postbox_header( [ 'title' => __( 'Delete Cache', WE_LS_SLUG ), 'postbox-id' => 'delete-cache', 'postbox-col' => 'ws-ls-user-data-two' ] ); ?>
+		<?php ws_ls_postbox_header( [ 'title' => __( 'Delete cache', WE_LS_SLUG ), 'postbox-id' => 'delete-cache', 'postbox-col' => 'ws-ls-user-data-two' ] ); ?>
 		<div class="inside">
 			<a class="button-secondary" href="<?php echo esc_url( ws_ls_get_link_to_delete_user_cache( $user_id ) ); ?>">
 				<i class="fa fa-refresh"></i>
@@ -315,7 +323,7 @@ function ws_ls_postbox_sidebar_delete_cache( $user_id ) {
 function ws_ls_postbox_sidebar_delete_data() {
 ?>
 	<div class="postbox ws-ls-user-data <?php ws_ls_postbox_classes( 'delete-data', 'ws-ls-user-data-two' ); ?>" id="delete-data">
-		<?php ws_ls_postbox_header( [ 'title' => __( 'Delete Data', WE_LS_SLUG ), 'postbox-id' => 'delete-data', 'postbox-col' => 'ws-ls-user-data-two' ] ); ?>
+		<?php ws_ls_postbox_header( [ 'title' => __( 'Delete data', WE_LS_SLUG ), 'postbox-id' => 'delete-data', 'postbox-col' => 'ws-ls-user-data-two' ] ); ?>
 		<div class="inside">
 			<a class="button-secondary delete-confirm" href="<?php echo esc_url( admin_url( 'admin.php?page=ws-ls-data-home&mode=user&removedata=y&user-id=' . $user_id ) ); ?>">
 				<i class="fa fa-trash-o"></i>

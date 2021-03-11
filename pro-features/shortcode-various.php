@@ -82,7 +82,6 @@ function ws_ls_shortcode_start_date( $user_id = NULL ) {
 	$arguments[ 'user-id' ] = ( true === empty( $user_id ) ) ? get_current_user_id() : $user_id;
 
 	if ( $cache = ws_ls_cache_user_get( $arguments[ 'user-id' ], 'shortcode-start-date' ) ) {
-		echo 'cache';
 		return $cache;
 	}
 
