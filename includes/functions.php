@@ -409,6 +409,32 @@ function ws_ls_entry_get_oldest_kg( $user_id ) {
 }
 
 /**
+ * Fetch the start date for the given user
+ *
+ * @param $user_id
+ *
+ * @return array|mixed|string
+ */
+function ws_ls_entry_get_start_date( $user_id, $format = false ) {
+
+	$user_id 		= ( NULL === $user_id ) ? get_current_user_id() : $user_id;
+
+	if ( $cache = ws_ls_cache_user_get( $user_id, 'start-date' ) ) {
+		return ( true === $format ) ?
+				ws_ls_convert_ISO_date_into_locale( $cache ) :
+					$cache;
+	}
+
+	$oldest_entry 	= ws_ls_entry_get_oldest( [ 'user-id' => $user_id, 'meta' => false, 'kg-only' => false ] );
+
+	ws_ls_cache_user_set( $user_id, 'start-date', $oldest_entry[ 'raw' ] );
+
+	return ( true === $format ) ?
+				ws_ls_convert_ISO_date_into_locale( $oldest_entry[ 'raw' ] ) :
+					$oldest_entry[ 'raw' ];
+}
+
+/**
  * Fetch the latest entry
  * @param array $arguments
  *
