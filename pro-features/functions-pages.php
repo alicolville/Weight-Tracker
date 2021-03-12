@@ -159,7 +159,14 @@ function ws_ls_postbox_sidebar_user_information( $user_id ) {
 				</tr>
 				<tr>
 					<th><?php echo __( 'Latest entry', WE_LS_SLUG ); ?></th>
-					<td class="<?php echo ws_ls_blur(); ?>"><?php echo ws_ls_blur_text( ws_ls_shortcode_recent_date( $user_id ) ); ?></td>
+					<td class="<?php echo ws_ls_blur(); ?>">
+						<?php
+
+								echo ws_ls_blur_text( ws_ls_shortcode_recent_date( $user_id ) );
+								echo ' ';
+								echo ws_ls_blur_text( ws_ls_shortcode_days_between_start_and_latest( [ 'user-id' => $user_id, 'include-brackets' => true, 'include-days' => true ] ) );
+					?>
+					</td>
 				</tr>
 				<tr>
 					<th></th>

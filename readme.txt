@@ -162,9 +162,10 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 = 8.4 =
 
-* New Feature: New shortcode [wt-latest-date] - display the date of the latest weight entry.
-* New Feature: New shortcode [wt-previous-date] - display the date of the previous weight entry.
-* New Feature: New shortcode [wt-start-date] - display the date of the first weight entry.
+* New Feature: New shortcode [wt-latest-date] - display the date of the latest weight entry. Read more: https://weight.yeken.uk/shortcodes/?section=other-useful-core-shortcodes
+* New Feature: New shortcode [wt-previous-date] - display the date of the previous weight entry. Read more: https://weight.yeken.uk/shortcodes/?section=other-useful-core-shortcodes
+* New Feature: New shortcode [wt-start-date] - display the date of the first weight entry. Read more: https://weight.yeken.uk/shortcodes/?section=other-useful-core-shortcodes
+* New Feature: New Shortcode [wt-days-between-start-and-latest] - display the number of days between first and latest entry. Read more: https://weight.yeken.uk/shortcodes/?section=other-useful-core-shortcodes
 * New Feature: If enabled (Setting: Display previous entry on form?), the user's previous entry will be displayed as placeholders on form fields. This will allow the user to see the values on the previous entry.
 * New Feature: Custom Field Groups. Custom fields can now be added to groups.
 * Improvement: The following shortcodes can now be filtered so only certain custom fields or custom field groups are rendered: [weight-tracker], [wt-form], [wt-chart] and [wt-table].
@@ -172,7 +173,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 * Improvement: [weight-tracker] - new argument "hide-chart-overview" to hide chart on the Overview tab.
 * Improvement: [weight-tracker] - new argument "show-chart-history" to show a chart on the History tab.
 * Improvement: Added a new button to "Show all entries" on the User summary page. Please bare in mind, this option maybe slow performing on large data sets.
-* Improvement: Admin: User profile: Added "Start" and "Latest" dates.
+* Improvement: Admin: User profile: Added "Start" and "Latest" dates. Also the number of days between them is also displayed.
 
 = 8.3 =
 
