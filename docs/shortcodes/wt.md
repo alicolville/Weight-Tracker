@@ -13,9 +13,9 @@ This is the most popular shortcode for the Weight Loss Tracker plugin and displa
 
 **Overview**
 
-![enter image description here](/assets/images/wt-1.png)
+![enter image description here](http://yeken.uk/wp-content/uploads/2021/03/wt-e1615930590182.png)
 
-[![](https://weight.yeken.uk/wp-content/uploads/2017/02/wlt-1-216x300.png)](https://weight.yeken.uk/wp-content/uploads/2017/02/wlt-1.png)Displays a chart of the user’s weight and custom field ([Pro feature](https://weight.yeken.uk/pro/)) entries in either imperial or metric. The appearance of chart can be customised within the admin settings to change its appearance, type, maximum number of points, etc.
+Displays a chart of the user’s weight and custom field ([Pro feature](https://weight.yeken.uk/pro/)) entries in either imperial or metric. The appearance of chart can be customised within the admin settings to change its appearance, type, maximum number of points, etc.
 
 Below the chart is a target form and weight / custom field entry form. If enabled, the target form allows the user to enter their desired target weight. This target is then displayed on the chart and used by other shortcodes / widgets.
 
