@@ -20,4 +20,4 @@ For a detailed list of all Weight Tracker features, please read the [read our fe
 	   6. Weight Tracker contains a rich set of  [features,](https://weight.yeken.uk/features/) [shortcodes](https://weight.yeken.uk/shortcodes/)  and  [widgets](https://weight.yeken.uk/widgets/) that allow Weight Tracker to be implemented in various ways to compliment their website’s needs.
 
 ## Translate Weight Tracker
-All [YeKen](https://www.yeken.uk) plugins are fully translatable and can be translated with [Loco Translate](https://en-gb.wordpress.org/plugins/loco-translate/). For further information, please read our [guide on translating YeKen plugins](https://alicolville.github.io/Weight-Tracker/features.html).
+All [YeKen](https://www.yeken.uk) plugins are fully translatable and can be translated with [Loco Translate](https://en-gb.wordpress.org/plugins/loco-translate/). For further information, please read our [guide on translating YeKen plugins](https://alicolville.github.io/Weight-Tracker/translate.html).
