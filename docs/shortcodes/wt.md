@@ -37,21 +37,28 @@ They also have the option to delete their existing data.
 
 The shortcode supports the following arguments:
 
-Argument
+| Argument | Description | Options | Example |
+|--|--|--|--|
+|min-chart-points|Specifies how many weight entries must be present before the chart is displayed. By default, it is set to 2.|A numeric value. Default 2.|[wt min-chart-points=0]|
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
 
-Description
 
-Options
 
-Example
 
-min-chart-points
 
-Specifies how many weight entries must be present before the chart is displayed. By default, it is set to 2.
 
-A numeric value. Default 2.
 
-[wt min-chart-points=0]
+
+
+
+
+
+
 
 hide-first-target-form
 
