@@ -19,6 +19,10 @@ For a detailed list of all Weight Tracker features, please read the [read our fe
    5. To get started, create a page and add the  shortcode [[wt]](https://weight.yeken.uk/shortcodes/?section=weight-loss-tracker-shortcode)  into the content section. The  [[wt] shortcode](https://weight.yeken.uk/shortcodes/?section=weight-loss-tracker-shortcode)  incorporates the majority of Weight Tracker features out of the box.  
    6. Weight Tracker contains a rich set of  [features,](https://alicolville.github.io/Weight-Tracker/features.html) [shortcodes](https://weight.yeken.uk/shortcodes/)  and  [widgets](https://weight.yeken.uk/widgets/) that allow Weight Tracker to be implemented in various ways to compliment their website’s needs.  
 
+## Demo
+
+A demo site with Weight Tracker installed can be found at [https://demo.yeken.uk/](https://demo.yeken.uk/).
+
 ## Free Trial 
 
 If you would like to trial the Pro Plus version of the plugin, then we are happy to provide a free trial. [Get your free trial now](https://shop.yeken.uk/get-a-trial-license/). 
