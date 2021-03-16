@@ -1,7 +1,7 @@
 theme: jekyll-theme-minimal
 title: Weight Tracker Documentation
 description: Documentation and tips for setting up Weight Tracker on your WordPress site.
-baseurl: " "
+baseurl: ""
 # Links to include in menu navigation
 links:
   section_1:
