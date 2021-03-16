@@ -1,3 +1,4 @@
+
 # Upgrade to Pro or Pro plus
 
 Thank you for showing an interest in upgrading your copy of Weight Tracker to the Pro or Pro Plus version. Upgrading will help support the ongoing development of the plugin, provide you with an [extended feature set](https://alicolville.github.io/Weight-Tracker/features.html) and free updates for the lifespan of your license.
@@ -17,4 +18,4 @@ Thank you for showing an interest in upgrading your copy of Weight Tracker to th
 |  | User preferences |
 |  | BMI |
 |  | [...and much more](https://alicolville.github.io/Weight-Tracker/features.html)! |
-| [Download](https://wordpress.org/plugins/search/weight-tracker/) | [Upgrade to Pro](https://weight.yeken.uk/get-pro/) | [Upgrade to Pro Plus]
+| [Download](https://wordpress.org/plugins/search/weight-tracker/) | [Upgrade to Pro](https://weight.yeken.uk/get-pro/) | [Upgrade to Pro Plus](https://weight.yeken.uk/get-pro-plus/)
