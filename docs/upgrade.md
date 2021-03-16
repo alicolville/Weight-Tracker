@@ -17,4 +17,4 @@ Thank you for showing an interest in upgrading your copy of Weight Tracker to th
 |  | User preferences |
 |  | BMI |
 |  | [...and much more](https://alicolville.github.io/Weight-Tracker/features.html)! |
-| [**Download**](https://wordpress.org/plugins/search/weight-tracker/) | [**Upgrade to Pro**](https://weight.yeken.uk/get-pro/) | [**Upgrade to Pro Plus**](https://weight.yeken.uk/get-pro-plus/)
+| [**Download**](https://wordpress.org/plugins/weight-loss-tracker/) | [**Upgrade to Pro**](https://weight.yeken.uk/get-pro/) | [**Upgrade to Pro Plus**](https://weight.yeken.uk/get-pro-plus/)
