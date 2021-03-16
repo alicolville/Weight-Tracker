@@ -1,3 +1,15 @@
 theme: jekyll-theme-minimal
 title: Weight Tracker Documentation
 description: Documentation and tips for setting up Weight Tracker on your WordPress site.
+toc:
+  - title: Group 1
+    subfolderitems:
+      - page: Thing 1
+        url: /thing1.html
+      - page: Thing 2
+        url: /thing2.html
+      - page: Thing 3
+        url: /thing3.html
+  - title: Group 2
+    subfolderitems:
+      - page: Piece 1
