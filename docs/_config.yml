@@ -1,7 +1,4 @@
 theme: jekyll-theme-minimal
-skin: dark
 title: Weight Tracker Documentation
 description: Documentation and tips for setting up Weight Tracker on your WordPress site.
 
-plugins:
-  - jekyll-menus

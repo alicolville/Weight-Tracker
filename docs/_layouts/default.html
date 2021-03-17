@@ -24,6 +24,7 @@
     .menu li a {
       font-size: 14px;
       color: #267cb8;
+      text-align: left;
     }
   </style>
   <!--[if lt IE 9]>
@@ -57,18 +58,9 @@
 
     <ul class="menu">
       <li>
-        <a href="#" title="Go to {{ item.title }}">test</a>
+        <a href="/">Home</a>
       </li>
     </ul>
-
-    <ul class="menu">
-      {% for item in site.menus.header %}
-      <li class="menu-item-{{ loop.index }}">
-        <a href="{{ item.url }}" title="Go to {{ item.title }}">{{ item.title }}</a>
-      </li>
-      {% endfor %}
-    </ul>
-
   </header>
   <section>
 
