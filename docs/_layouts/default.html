@@ -41,7 +41,7 @@
     {% endif %}
 
     <p>{{ site.description | default: site.github.project_tagline }}</p>
-
+<!--
     {% if site.github.is_project_page %}
     <p class="view"><a href="{{ site.github.repository_url }}">View the Project on GitHub <small>{{ site.github.repository_nwo }}</small></a></p>
     {% endif %}
@@ -55,13 +55,16 @@
       <li><a href="/upgrade.html">Upgrade <strong>Now</strong></a></li>
       <li><a href="https://shop.yeken.uk/get-a-trial-license/">Get a <strong>Trial</strong></a></li>
     </ul>
-
+-->
     <ul class="menu">
-      <li>
-        <a href="/">Home</a>
-        <a href="/features.html">Features</a>
-      </li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/features.html">Features</a></li>
+      <li><a href="/upgrade.html">Upgrade</a></li>
+      <li><a href="/shortcodes.html">Shortcodes</a></li>
     </ul>
+
+    <p class="view"><a href="{{ site.github.repository_url }}">View the Project on GitHub <small>{{ site.github.repository_nwo }}</small></a></p>
+
   </header>
   <section>
 
