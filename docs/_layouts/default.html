@@ -56,6 +56,12 @@
     </ul>
 
     <ul class="menu">
+      <li >
+        <a href="#" title="Go to {{ item.title }}">test</a>
+      </li>
+    </ul>
+
+    <ul class="menu">
       {% for item in site.menus.header %}
       <li class="menu-item-{{ loop.index }}">
         <a href="{{ item.url }}" title="Go to {{ item.title }}">{{ item.title }}</a>
