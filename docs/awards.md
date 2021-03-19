@@ -1,3 +1,4 @@
+# Awards
 > The following feature is only available in the [Pro Plus](/upgrade.html)  version of the plugin.
 
 [Pro Plus](https://weight.yeken.uk/upgrade-to-pro/)  sites have the ability to give users awards for reaching defined goals. Currently you can set awards for:
