@@ -14,7 +14,7 @@
 
 From this screen it is possible to delete and edit existing awards as well as define new ones.
 
-[![Advanced tab](/assets/images/awards-add-edit-small.png)](/assets/images/awards-add-edit.png)
+[![Awards Add / Edit](/assets/images/awards-add-edit-small.png)](/assets/images/awards-add-edit.png)
 
 When defining an award, you have several options. As the image on the illustrates, you have the ability to specify the type of award, whether it is rewarded for a gain or loss in weight, a badge (image), a custom message (appears in emails), weight entry types that should be considered, whether an email should be sent and finally whether it is enabled.
 
