@@ -8,12 +8,24 @@ The best way to explain how this shortcode works is to look at the output of [wt
  
 [![Calories Table]({{ site.baseurl }}/assets/images/calories-table-small.png)]({{ site.baseurl }}/assets/images/calories-table.png)
  
- Taking the table above, you may only be interested in displaying the recommended calories to consume at dinner if wanting to lose weight. This is where the [wt-calories] comes into play. Given that example, you would use this shortcode:
+ Taking the table above, you may only be interested in displaying the recommended calories to consume at dinner if wanting to lose weight. This is where the [wt-calories] comes into play. Given that example, you could use the shortcode in the following ways:
  
-     [wt-calories type=”lose” type=”dinner”]
- 
- For further examples, please look at  [this Gist](https://gist.github.com/yekenuk/67b290007024dfa56c51e759a70f536c).
- 
+     [wlt-calories progress="gain" type="total"]
+     [wlt-calories progress="gain" type="breakfast"]
+     [wlt-calories progress="gain" type="lunch"]
+     [wlt-calories progress="gain" type="dinner"]
+     [wlt-calories progress="gain" type="snacks"]
+     [wlt-calories progress="maintain" type="total"]
+     [wlt-calories progress="maintain" type="breakfast"]
+     [wlt-calories progress="maintain" type="lunch"]
+     [wlt-calories progress="maintain" type="dinner"]
+     [wlt-calories progress="maintain" type="snacks"]
+     [wlt-calories progress="lose" type="total"]
+     [wlt-calories progress="lose" type="breakfast"]
+     [wlt-calories progress="lose" type="lunch"]
+     [wlt-calories progress="lose" type="dinner"]
+     [wlt-calories progress="lose" type="snacks"]
+
  **Shortcode Arguments**
  
  The shortcode supports the following arguments:
