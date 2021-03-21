@@ -6,7 +6,7 @@
  
 The best way to explain how this shortcode works is to look at the output of [wt-calorie-table]. This table displays the calorie intake calculations for a user and how it is split over type (meal type / total) and progress (whether to maintain / lose weight):
  
-[![Awards Add / Edit]({{ site.baseurl }}/assets/images/calories-table-small.png)]({{ site.baseurl }}/assets/images/calories-table.png)
+[![Calories Table]({{ site.baseurl }}/assets/images/calories-table-small.png)]({{ site.baseurl }}/assets/images/calories-table.png)
  
  Taking the table above, you may only be interested in displaying the recommended calories to consume at dinner if wanting to lose weight. This is where the [wt-calories] comes into play. Given that example, you would use this shortcode:
  
