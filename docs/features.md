@@ -41,7 +41,7 @@ Besides the features listed under core, the Pro version benefits from the follow
   
 Besides the features listed under Pro, the Pro Plus version benefits from the following:  
   
-- [**Awards.**](https://weight.yeken.uk/awards/) Set awards for: BMI Change, BMI Equals, Weight Gain / Loss from start and Percentage of weight lost from start.  [Read more about awards.](https://weight.yeken.uk/awards/)  
+- [**Awards.**]({{ site.baseurl }}/awards.html) Set awards for: BMI Change, BMI Equals, Weight Gain / Loss from start and Percentage of weight lost from start.  [Read more about awards.]({{ site.baseurl }}/awards.html)  
 -   [**Challenges**](https://weight.yeken.uk/challenges/).Set challenges for your user's within a given time period? Display Total Weight Lost, BMI Change, %Body Weight, Weight Tracker Streaks and Meal Tracker streaks achieved by each user in a league table.  [Read more](https://weight.yeken.uk/challenges/).  
 -   **All of the features that come with a standard Pro license**.  
 -   **Basal Metabolic Rate (BMR) calculations per user.** Shortcodes and extended admin screens to display a user's BMR. For further information on BMR and how it is calculated visit our  [calculations page](https://weight.yeken.uk/calculations/).  
