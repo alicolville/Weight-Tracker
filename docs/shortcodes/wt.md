@@ -1,5 +1,5 @@
 ## [wt] 
-This is the most popular shortcode for the Weight Loss Tracker plugin and displays three sections / tabs when the user is logged into WordPress.    
+This is the most popular shortcode for the Weight Tracker plugin and displays upto four sections / tabs when a user is logged into WordPress.    
     
 > The following shortcode is available in both the free and [Pro/Pro Plus]({{ site.baseurl }}/features.html) version of the plugin. The Pro version has the following additional features: 
 > * Support for measurements and  [custom fields](https://weight.yeken.uk/custom-fields/). 
@@ -37,7 +37,7 @@ With a [Pro Plus](https://shop.yeken.uk/product/weight-tracker-pro-plus/) licens
 - Suggested Calorie Intake
 - Macronutrients
 
-For more information on these values, please read our guide on [Weight Tracker calculations](/calculations.html).
+For more information on these values, please read our guide on [Weight Tracker calculations]({{ site.baseurl }}/calculations.html).
    
 **Settings**  
   

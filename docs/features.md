@@ -8,7 +8,7 @@
 - [Supports Imperial (Pounds or Stones & Pounds) and Metric (Kg) units](https://weight.yeken.uk/weight-units-date-formats-languages/)  
 - Optional use of tabs to display data and forms  
 - [Supports UK and US date formats](https://weight.yeken.uk/weight-units-date-formats-languages/)  
-- [Includes translations](https://weight.yeken.uk/translating-weight-loss-tracker-plugin/)  for several  [languages, e.g. German, Dutch, Brazilian-Portuguese, etc](https://weight.yeken.uk/weight-units-date-formats-languages/)  
+- [Includes translations](https://weight.yeken.uk/translating-weight-loss-tracker-plugin/) for several  [languages, e.g. German, Dutch, Brazilian-Portuguese, etc](https://weight.yeken.uk/weight-units-date-formats-languages/)  
   
 ## Pro license (£50 a year )
 ### *Includes core features and the following:*
