@@ -11,7 +11,8 @@ TODO
 |[[wt-challenges]]({{ site.baseurl }}/shortcodes/wt-challenges.html)|Display a [Challenge]({{ site.baseurl }}/challenges.html) league table.|
 |[[wt-form]]({{ site.baseurl }}/shortcodes/wt-form.html)|Display a target or weight entry / [custom fields]({{ site.baseurl }}/custom-fields.html) form.|
 |[[wt-form-target]]({{ site.baseurl }}/shortcodes/wt-form-target.html)|Display a target form.|
-|[[wt-if]]({{ site.baseurl }}/shortcodes/wt-if.html)|Add conditional logic based on whether WT data has been completed.|
+|[[wt-if]]({{ site.baseurl }}/shortcodes/wt-if.html)|Add conditional display logic based on whether WT data has been completed or not.|
+|[[wt-league-table]]({{ site.baseurl }}/shortcodes/wt-league-table.html)|Display a league table of Weight Tracker users.|
 |||
 |||
 |||
