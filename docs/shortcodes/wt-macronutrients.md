@@ -6,7 +6,7 @@
 
 The best way to explain how this shortcode works is to look at the output of [[wt-macronutrients-table]]({{ site.baseurl }}/shotcodes/wt-macronutrients-table.html)). This table displays the macronutrient intake calculations for a user and how it is split over  **type**  (meal type / total), **progress**  (whether to maintain / lose weight) and  **nutrient**  (fats, carbs or proteins):
 
-[![League Table]({{ site.baseurl }}/assets/images/macronutrients-small.png)]({{ site.baseurl }}/assets/images/macronutrients.png)
+[![Macronutrient table]({{ site.baseurl }}/assets/images/macronutrients-small.png)]({{ site.baseurl }}/assets/images/macronutrients.png)
 
 Taking the table above, you may only be interested in displaying the recommended proteins to consume at lunch if wanting to lose weight. This is where the [wt-macronutrients] comes into play. Given that example, you would use this shortcode:
 
