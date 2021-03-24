@@ -8,7 +8,7 @@
   {% seo %}
   <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
   <style>
-    .menu {
+    .menu, .menu ul {
       background: none;
       border: none;
       list-style: disc;
@@ -18,7 +18,7 @@
       border: none;
       display: list-item;
       float: none;
-      height: 25px;
+      height: auto;
       margin-left:20px;
       width: 100%;
     }
@@ -81,7 +81,19 @@
 -->
     <ul class="menu">
         <li><a href="{{ site.baseurl }}/">Home</a></li>
-        <li><a href="{{ site.baseurl }}/features.html">Features</a></li>
+        <li>
+            <a href="{{ site.baseurl }}/features.html">Features</a>
+            <ul>
+                <li><a href="{{ site.baseurl }}/awards.html">Awards</a></li>
+                <li><a href="{{ site.baseurl }}/calculations.html">Calculations</a></li>
+                <li><a href="{{ site.baseurl }}/challenges.html">Challenges</a></li>
+                <li><a href="{{ site.baseurl }}/custom-fields.html">Custom Fields</a></li>
+                <li><a href="{{ site.baseurl }}/gravity-forms.html">Gravity Forms</a></li>
+                <li><a href="{{ site.baseurl }}/groups.html">Goups</a></li>
+                <li><a href="{{ site.baseurl }}/email-notifications.html">Email notifications</a></li>
+                <li><a href="{{ site.baseurl }}/web-hooks.html">Webhooks, Zapier and Slack</a></li>
+            </ul>
+        </li>
         <li><a href="{{ site.baseurl }}/upgrade.html">Upgrade</a></li>
         <li><a href="{{ site.baseurl }}/shortcodes.html">Shortcodes</a></li>
         <li><a href="{{ site.baseurl }}/admin.html">The admin side</a></li>
@@ -90,8 +102,8 @@
     </ul>
 
     <p class="view">
-        <small>View on:</small><br />
-        <a href="https://wordpress.org/plugins/weight-loss-tracker/">WordPress.org</a> / <a href="{{ site.github.repository_url }}">GitHub</a>
+        <small>More:</small><br />
+        <a href="https://wordpress.org/plugins/weight-loss-tracker/">WordPress.org</a> / <a href="{{ site.github.repository_url }}">GitHub</a> / <a href="https://www.yeken.uk">YeKen.uk</a>
     </p>
 
   </header>
@@ -100,12 +112,13 @@
     {{ content }}
 
   </section>
+    <!--
   <footer>
     {% if site.github.is_project_page %}
     <p>This project is maintained by <a href="https://yeken.uk">YeKen.uk</a></p>
     {% endif %}
     <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-  </footer>
+  </footer> -->
 </div>
 <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
 {% if site.google_analytics %}
