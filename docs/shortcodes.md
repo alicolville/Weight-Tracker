@@ -1,4 +1,6 @@
-TODO
+# Shortcodes
+
+The majority of the public facing functionality is implemented using [WordPress shortcodes](https://codex.wordpress.org/Shortcode_API). This allows you to place Weight Tracker functionality amongst your website content. For example, the most popular shortcode of the plugin is [[wt]]({{ site.baseurl }}/shortcodes/wt.html)). To use a shortcode, [place it amongst your website content]({{ site.baseurl }}/assets/images/shortcodes.png)) and save. The shortcode shall then be replaced by the plugin feature. 
 
 |Shortcode|Description|    
 |--|--|
@@ -14,7 +16,10 @@ TODO
 |[[wt-if]]({{ site.baseurl }}/shortcodes/wt-if.html)|Add conditional display logic based on whether WT data has been completed or not.|
 |[[wt-league-table]]({{ site.baseurl }}/shortcodes/wt-league-table.html)|Display a league table of Weight Tracker users.|
 |[[wt-macronutrients]]({{ site.baseurl }}/shortcodes/wt-macronutrients.html)|Displays a macronutrient figure from the macronutrient intake calculations.|
-|[[wt-macronutrients-table]]({{ site.baseurl }}/shortcodes/wt-macronutrients-table.html)|Displays recommendations on the best way to split your calorie intake|
+|[[wt-macronutrients-table]]({{ site.baseurl }}/shortcodes/wt-macronutrients-table.html)|Displays recommendations on the best way to split your calorie intake.|
+|[[wt-message]]({{ site.baseurl }}/shortcodes/wt-message.html)|Display a message when a user has gained/lost weight over a number of consecutive entries.|
+|[[wt-progress-bar]]({{ site.baseurl }}/shortcodes/wt-progress-bar.html)|Display a progress bar of the current user’s progress towards their target weight.|
+
 |||
 |||
 |||
