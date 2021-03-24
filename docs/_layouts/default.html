@@ -26,6 +26,7 @@
       font-size: 14px;
       color: #267cb8;
       text-align: left;
+        height: 15px;
     }
     blockquote {
       color: green;
@@ -46,6 +47,11 @@
     a:hover {
       font-weight: normal;
     }
+      @media only screen and (max-width: 600px) {
+          .site-description {
+            display: none;
+          }
+        }
   </style>
   <!--[if lt IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -63,22 +69,8 @@
         </a>
     </h1>
 
-    <p>{{ site.description | default: site.github.project_tagline }}</p>
-<!--
-    {% if site.github.is_project_page %}
-    <p class="view"><a href="{{ site.github.repository_url }}">View the Project on GitHub <small>{{ site.github.repository_nwo }}</small></a></p>
-    {% endif %}
+    <p class="site-description">{{ site.description | default: site.github.project_tagline }}</p>
 
-    {% if site.github.is_user_page %}
-    <p class="view"><a href="{{ site.github.owner_url }}">View My GitHub Profile</a></p>
-    {% endif %}
-
-    <ul class="downloads">
-      <li><a href="https://wordpress.org/plugins/weight-loss-tracker/">Download <strong>Plugin</strong></a></li>
-      <li><a href="/upgrade.html">Upgrade <strong>Now</strong></a></li>
-      <li><a href="https://shop.yeken.uk/get-a-trial-license/">Get a <strong>Trial</strong></a></li>
-    </ul>
--->
     <ul class="menu">
         <li><a href="{{ site.baseurl }}/">Home</a></li>
         <li>
@@ -89,7 +81,7 @@
                 <li><a href="{{ site.baseurl }}/challenges.html">Challenges</a></li>
                 <li><a href="{{ site.baseurl }}/custom-fields.html">Custom Fields</a></li>
                 <li><a href="{{ site.baseurl }}/gravity-forms.html">Gravity Forms</a></li>
-                <li><a href="{{ site.baseurl }}/groups.html">Goups</a></li>
+                <li><a href="{{ site.baseurl }}/groups.html">Groups</a></li>
                 <li><a href="{{ site.baseurl }}/email-notifications.html">Email notifications</a></li>
                 <li><a href="{{ site.baseurl }}/web-hooks.html">Webhooks, Zapier and Slack</a></li>
             </ul>
