@@ -55,6 +55,36 @@
             display: none;
           }
         }
+      
+      
+      
+        /* Hide checkbox */
+        #navcheck {
+          visibility: hidden;
+        }
+
+        /* Mobile breakpoint */
+        @media (max-width: 767px) {  
+
+          .label {
+            user-select: none;
+          }
+
+          .menu {
+            display: none;
+          }
+
+          #navcheck:checked + .menu {
+            display: block;
+          }
+        }
+
+        /* Desktop breakpoint */
+        @media (min-width: 768px) {
+          .label {
+            display: none;
+          }
+        }
   </style>
   <!--[if lt IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -73,7 +103,8 @@
     </h1>
 
     <p class="site-description">{{ site.description | default: site.github.project_tagline }}</p>
-
+      <label class="label" for="navcheck">Toggle Navigation</label>
+      <input type="checkbox" id="navcheck" name="navcheck" />
     <ul class="menu">
         <li><a href="{{ site.baseurl }}/">Home</a></li>
         <li><a href="https://shop.yeken.uk/get-a-trial-license/">Get a trial</a></li>
