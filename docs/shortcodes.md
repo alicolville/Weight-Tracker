@@ -28,9 +28,8 @@ The majority of the public facing functionality is implemented using [WordPress 
 |[[wt-photo-oldest]]({{ site.baseurl }}/shortcodes/wt-photo-oldest.html)|Display the the oldest photo uploaded by the user.|
 |[[wt-photo-recent]]({{ site.baseurl }}/shortcodes/wt-photo-recent.html)|Display the the latest photo uploaded by the user.|
 |[[wt-progress-bar]]({{ site.baseurl }}/shortcodes/wt-progress-bar.html)|Display a progress bar of the current user’s progress towards their target weight.|
-|[[wt-reminder]]({{ site.baseurl }}/shortcodes/wt-reminder.html)|Render reminders to logged in users informing them to add an entry or target for today.|
-
-
+|[[wt-reminder]]({{ site.baseurl }}/shortcodes/wt-reminder.html)|Display reminders to logged in users informing them to add an entry or target for today.|
+|[[wt-table]]({{ site.baseurl }}/shortcodes/wt-table.html)|Display a data table of the user's weight and [custom fields]({{ site.baseurl }}/custom-fields.html) entry|
 
 |||
 |||
