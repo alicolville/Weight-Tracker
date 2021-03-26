@@ -5,6 +5,9 @@ The majority of the public facing functionality is implemented using [WordPress 
 |Shortcode|Description|    
 |--|--|
 |[[wt]]({{ site.baseurl }}/shortcodes/wt.html) |A shortcode that encompasses all Weight Tracker front end functionality.|   
+|[[wt-awards]]({{ site.baseurl }}/shortcodes/wt-awards.html)|Display [awards]({{ site.baseurl }}/awards.html) given to the user.
+|[[wt-awards-grid]]({{ site.baseurl }}/shortcodes/wt-awards-grid.html)|Display most recent [award]({{ site.baseurl }}/awards.html) for the given user.
+|[[wt-awards-recent]]({{ site.baseurl }}/shortcodes/wt-awards-recent.html)|Display [awards]({{ site.baseurl }}/awards.html) given to the user in gird format.
 |[[wt-bmi]]({{ site.baseurl }}/shortcodes/wt-bmi.html)|Display the user's BMI.|
 |[[wt-bmr]]({{ site.baseurl }}/shortcodes/wt-bmr.html)|Display the user's BMR.|
 |[[wt-calories]]({{ site.baseurl }}/shortcodes/wt-calories.html)|Displays a specific calorie figure from a user's calorie intake figures.|
@@ -18,6 +21,9 @@ The majority of the public facing functionality is implemented using [WordPress 
 |[[wt-macronutrients]]({{ site.baseurl }}/shortcodes/wt-macronutrients.html)|Displays a macronutrient figure from the macronutrient intake calculations.|
 |[[wt-macronutrients-table]]({{ site.baseurl }}/shortcodes/wt-macronutrients-table.html)|Displays recommendations on the best way to split your calorie intake.|
 |[[wt-message]]({{ site.baseurl }}/shortcodes/wt-message.html)|Display a message when a user has gained/lost weight over a number of consecutive entries.|
+|[[wt-photo-count]]({{ site.baseurl }}/shortcodes/wt-photo-count.html)|Display the number of photos uploaded by the current user.|
+|[[wt-photo-oldest]]({{ site.baseurl }}/shortcodes/wt-photo-oldest.html)|Display the the oldest photo uploaded by the user.|
+|[[wt-photo-recent]]({{ site.baseurl }}/shortcodes/wt-photo-recent.html)|Display the the latest photo uploaded by the user.|
 |[[wt-progress-bar]]({{ site.baseurl }}/shortcodes/wt-progress-bar.html)|Display a progress bar of the current user’s progress towards their target weight.|
 
 |||
