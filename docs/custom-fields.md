@@ -13,7 +13,7 @@ There are four field types currently supported:
 -   **Yes or No**  – displays a drop down box allowing the user to select an option of either Yes or No.
 -   **Number Field** – allows the user to enter a number.
 -   **Text Field**  – allows the user to enter text.
--   **Photo Field ([Pro Plus only](/upgrade.html))**  – allows the user to upload a photo
+-   **Photo Field** ([Pro Plus only](/upgrade.html))  – allows the user to upload a photo
 
 [![Custom fields in frontend](/assets/images/custom-fields-form-frontend-small.png)](/assets/images/custom-fields-form-frontend.png)
 
@@ -25,7 +25,7 @@ From here, you can delete, add and edit Custom fields.
 
 ### Groups
 
-Custom fields can be added into groups. This allows the following shortcodes to be filtered to only display custom fields from one or more groups: [weight-tracker], [wt-form], [wt-chart] and [wt-table]. https://weight.yeken.uk/shortcodes
+Custom fields can be added into groups. This allows the following shortcodes to be filtered to only display custom fields from one or more groups: [[wt]]({{ site.baseurl }}/shortcodes/wt.html), [[wt-form]]({{ site.baseurl }}/shortcodes/wt-form.html), [[wt-chart]]({{ site.baseurl }}/shortcodes/wt-chart.html) and [[wt-table]]({{ site.baseurl }}/shortcodes/wt-table.html).
 
 
 
@@ -44,7 +44,7 @@ Custom fields are visible within data tables and charts (if a numeric custom fie
 
 Currently there are only shortcodes to render Photo Custom Fields. To render photos the following shortcodes can be used:
 
- - [[wt-photo-count]](https://weight.yeken.uk/shortcodes/?section=wlt-photo-count)
- - [[wt-photo-oldest]](https://weight.yeken.uk/shortcodes/?section=wlt-photo-oldest)
- - [[wt-photo-recent]](https://weight.yeken.uk/shortcodes/?section=wlt-photo-recent)
- - [[wt-gallery]](https://weight.yeken.uk/shortcodes/?section=wlt-gallery)
+ - [[wt-photo-count]]({{ site.baseurl }}/shortcodes/wt-photo-count.html)
+ - [[wt-photo-oldest]]({{ site.baseurl }}/shortcodes/wt-photo-oldest.html)
+ - [[wt-photo-recent]]({{ site.baseurl }}/shortcodes/wt-photo-recent.html)
+ - [[wt-gallery]]({{ site.baseurl }}/shortcodes/wt-photo-gallery.html)

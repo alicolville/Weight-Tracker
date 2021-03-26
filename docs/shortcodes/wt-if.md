@@ -28,7 +28,7 @@ You may wish to create an AND condition where multiple fields must exist or not 
     	Please add a weight entry as well as your height.
     [/wt-if]
 
-At the moment this shortcode is in it’s infancy, so  [please get in touch](https://weight.yeken.uk/contact/)  with any suggestions. Below you can see the fields and operators it supports and further examples of its usage  [can be found on the [wt-if] gist](https://gist.github.com/alicolville/d33fbdabc628c92e4e40b7f08b343fe7).
+At the moment this shortcode is in it’s infancy, so  [please get in touch]({{ site.baseurl }}/contact.html)  with any suggestions. Below you can see the fields and operators it supports and further examples of its usage  [can be found on the [wt-if] gist](https://gist.github.com/alicolville/d33fbdabc628c92e4e40b7f08b343fe7).
 
 **Nesting [wt-if] statements**
 
