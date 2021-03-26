@@ -175,6 +175,14 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 * Improvement: Added a new button to "Show all entries" on the User summary page. Please bare in mind, this option maybe slow performing on large data sets.
 * Improvement: Admin: User profile: Added "Start" and "Latest" dates. Also the number of days between them is also displayed.
 
+= 8.3.2 =
+
+* Updated "Tested upto" statement within readme.txt
+
+= 8.3.1 =
+
+* Updated "Tested upto" statement within readme.txt
+
 = 8.3 =
 
 * Improvement: Webhooks, Zapier & Slack. Push weight entry data and targets to Slack channels, Zapier or your own custom Webhooks.
