@@ -24,7 +24,7 @@
                             <div style="padding: 0px 15px 0px 15px">
 
                                 <p><?php echo __( 'Assign your users to groups - this will allow you to group members together and calculate the weight difference for entire groups.', WE_LS_SLUG ); ?>
-                                    <a href="https://weight.yeken.uk/groups/" target="_blank" rel="noopener"><?php echo __( 'Read more about Groups', WE_LS_SLUG ); ?></a>
+                                    <a href="https://docs.yeken.uk/groups.html" target="_blank" rel="noopener"><?php echo __( 'Read more about Groups', WE_LS_SLUG ); ?></a>
                                 </p>
 
 	                                <h4><?php echo __('Add a new group', WE_LS_SLUG); ?></h4>

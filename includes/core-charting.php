@@ -19,6 +19,8 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 
 	$chart_config = wp_parse_args( $options, [
 												'bezier'                => ws_ls_option_to_bool( 'ws-ls-bezier-curve', 'yes', true ),
+												'custom-field-groups'   => '',      // If specified, only show custom fields that are within these groups
+												'custom-field-slugs'    => '',      // If specified, only show the custom fields that are specified
 												'height'                => 250,
 												'show-gridlines'        => ws_ls_option_to_bool( 'ws-ls-grid-lines', 'yes', true ),
 												'show-target'           => true,
@@ -37,7 +39,12 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 											'fontColor'  => get_option( 'ws-ls-text-colour', '#AEAEAE' ),
 											'fontFamily' => get_option( 'ws-ls-font-family', '' )
 	];
-	$chart_config[ 'meta-fields' ]      =  WS_LS_IS_PRO ? ws_ls_meta_fields_plottable() : false;
+
+	// Custom field filtering?
+	$chart_config[ 'custom-field-groups' ] = ws_ls_meta_fields_groups_slugs_to_ids( $chart_config[ 'custom-field-groups' ] );
+	$chart_config[ 'custom-field-slugs' ]  = ws_ls_meta_fields_slugs_to_ids( $chart_config[ 'custom-field-slugs' ] );
+
+	$chart_config[ 'meta-fields' ]      =  WS_LS_IS_PRO ? ws_ls_meta_fields_plottable( $chart_config ) : false;
 	$chart_config[ 'show-meta-fields' ] = ( true === ws_ls_to_bool( $chart_config[ 'show-meta-fields' ] ) &&
 	                                        false === empty( $chart_config[ 'meta-fields' ] ) );
 	$chart_config[ 'y-axis-unit' ]      = ( 'kg' !== ws_ls_setting( 'weight-unit', $chart_config[ 'user-id' ] ) ) ? __( 'lbs', WE_LS_SLUG ) : __( 'kg', WE_LS_SLUG );
@@ -129,32 +136,30 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 
 	if ( true === $chart_config[ 'show-meta-fields' ] ) {
 
-		$meta_dataset_index = $chart_config[ 'min-datasets' ]; // Determine data set on whether or not a target weight has been displayed
+		$meta_dataset_index = $chart_config['min-datasets']; // Determine data set on whether or not a target weight has been displayed
 
 		$use_abbreviation = ( 'abbv' === get_option( 'ws-ls-abbv-or-question', 'abbv' ) );
 
-		for( $i = 0; $i < count( $chart_config[ 'meta-fields' ] ); $i++ ) {
+		for ( $i = 0; $i < count( $chart_config['meta-fields'] ); $i ++ ) {
 
-			$chart_config[ 'meta-fields' ][ $i ][ 'index' ] = $meta_dataset_index;
+			$field = $chart_config['meta-fields'][ $i ];
 
-			$field = $chart_config[ 'meta-fields' ][ $i ];
-
-			$meta_label =
+			$chart_config['meta-fields'][ $i ]['index'] = $meta_dataset_index;
 
 			$graph_data['datasets'][ $meta_dataset_index ] = [
-																'label'             => ( $use_abbreviation ) ? $field[ 'abv' ] : $field[ 'field_name' ],
-																'borderColor'       => $field[ 'plot_colour' ],
-																'borderWidth'       => $chart_config[ 'line-thickness' ],
-																'pointRadius'       => $chart_config[ 'point-size' ],
-																'fill'              => false,
-																'type'              => 'line',
-																'data'              => [],
-																'spanGaps'          => true,
-																'backgroundColor'   => ws_ls_convert_hex_to_rgb( $field[ 'plot_colour' ], 0.7 ),
-																'yAxisID'           => AXIS_META_FIELDS
+				'label'           => ( $use_abbreviation ) ? $field['abv'] : $field['field_name'],
+				'pointRadius'     => $chart_config['point-size'],
+				'borderColor'     => $field[ 'plot_colour' ],
+				'borderWidth'     => $chart_config[ 'line-thickness' ],
+				'fill'            => false,
+				'type'            => 'line',
+				'data'            => [],
+				'spanGaps'        => true,
+				'backgroundColor' => ws_ls_convert_hex_to_rgb( $field['plot_colour'], 0.7 ),
+				'yAxisID'         => AXIS_META_FIELDS
 			];
 
-			$meta_dataset_index++;
+			$meta_dataset_index ++;
 		}
 	}
 

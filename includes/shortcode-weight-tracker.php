@@ -20,11 +20,15 @@ function ws_ls_shortcode( $user_defined_arguments ) {
 									                'min-chart-points' 			=> 2,	                        // Minimum number of data entries before chart is shown
 													'hide-first-target-form' 	=> false,					    // Hide first Target form
 													'hide-second-target-form' 	=> false,					    // Hide second Target form
+									                'custom-field-groups'       => '',                          // If specified, only show custom fields that are within these groups
+									                'custom-field-slugs'        => '',                          // If specified, only show the custom fields that are specified
 									                'bmi-format'                => 'label',                     // Format for display BMI
 													'show-add-button' 			=> false,					    // Display a "Add weight" button above the chart.
+									                'show-chart-history' 		=> false,					    // Display a chart on the History tab.
 									                'allow-delete-data' 		=> true,                	    // Show "Delete your data" section
 									                'hide-notes' 				=> ws_ls_setting_hide_notes(),  // Hide notes field
 									                'hide-photos' 				=> false,                       // Hide photos part of form
+									                'hide-chart-overview' 		=> false,               	    // Hide chart on the overview tab
 									                'hide-tab-photos' 			=> false,                 	    // Hide Photos tab
 									                'hide-tab-advanced' 		=> false,               	    // Hide Advanced tab (macroN, calories, etc)
 													'hide-tab-descriptions' 	=> ws_ls_option_to_bool( 'ws-ls-tab-hide-descriptions', 'yes' ), // Hide tab descriptions
@@ -47,12 +51,13 @@ function ws_ls_shortcode( $user_defined_arguments ) {
 			return ws_ls_display_blockquote( __( 'You need to be logged in to record your weight.', WE_LS_SLUG ) , '', false, true );
 		}
 
-        $user_id 	            = (int) $shortcode_arguments[ 'user-id' ];
-        $use_tabs 	            = ( false === ws_ls_to_bool( $shortcode_arguments[ 'disable-tabs' ] ) );
-        $show_advanced_tab      = ( false === ws_ls_to_bool( $shortcode_arguments[ 'hide-tab-advanced' ] ) && true === WS_LS_IS_PRO_PLUS );
-		$show_photos_tab        = ( false === ws_ls_to_bool( $shortcode_arguments[ 'hide-tab-photos' ] ) && true === ws_ls_meta_fields_photo_any_enabled( true ) );
-		$week_ranges_enabled    = ws_ls_to_bool( $shortcode_arguments[ 'enable-week-ranges' ] );
-        $html_output            = '';
+        $user_id 	                                = (int) $shortcode_arguments[ 'user-id' ];
+        $use_tabs 	                                = ( false === ws_ls_to_bool( $shortcode_arguments[ 'disable-tabs' ] ) );
+        $show_advanced_tab                          = ( false === ws_ls_to_bool( $shortcode_arguments[ 'hide-tab-advanced' ] ) && true === WS_LS_IS_PRO_PLUS );
+		$show_photos_tab                            = ( false === ws_ls_to_bool( $shortcode_arguments[ 'hide-tab-photos' ] ) && true === ws_ls_meta_fields_photo_any_enabled( true ) );
+		$week_ranges_enabled                        = ws_ls_to_bool( $shortcode_arguments[ 'enable-week-ranges' ] );
+		$shortcode_arguments[ 'min-chart-points' ]  = (int) $shortcode_arguments[ 'min-chart-points' ];
+        $html_output                                = '';
 
 		// If a form was previously submitted then display resulting message!
 		if ( false === empty( $save_response[ 'message' ] ) ){
@@ -140,31 +145,11 @@ function ws_ls_shortcode( $user_defined_arguments ) {
 		}
 
 		// Start Chart Tab
-		$html_output                                .= ws_ls_start_tab("wlt-chart", $use_tabs);
-		$shortcode_arguments[ 'min-chart-points' ]  = (int) $shortcode_arguments[ 'min-chart-points' ];
+		$html_output .= ws_ls_start_tab("wlt-chart", $use_tabs);
 
-		// Do we have enough data points to display a chart?
-		if ( ( false === empty( $weight_data ) && count( $weight_data ) >= $shortcode_arguments[ 'min-chart-points' ] ) ||
-                ( true === empty( $weight_data ) && 0 === $shortcode_arguments[ 'min-chart-points' ] ) ) {
-
-			// Display "Add Weight" button?
-			if( true === ws_ls_to_bool( $shortcode_arguments[ 'show-add-button' ] ) ) {
-				$html_output .= sprintf('	<div class="ws-ls-add-weight-button">
-														<input type="button" onclick="location.href=\'#add-weight\';" value="%s" />
-													</div>',
-													__( 'Add a weight entry', WE_LS_SLUG )
-				);
-			}
-
-			$html_output .= ws_ls_title( __( 'In a chart', WE_LS_SLUG ) );
-			$html_output .= ws_ls_display_chart( $weight_data );
-
-		} else {
-
-			$message = sprintf( __( 'A graph shall appear when %d or more weight entries have been entered.', WE_LS_SLUG ),
-						$shortcode_arguments[ 'min-chart-points' ] );
-
-			$html_output .= ws_ls_display_blockquote( $message );
+		// Display chart?
+		if ( false === ws_ls_to_bool( $shortcode_arguments[ 'hide-chart-overview' ] ) ) {
+			$html_output .= ws_ls_shortcode_embed_chart( $weight_data, $shortcode_arguments );
 		}
 
 		// Include target form?
@@ -189,13 +174,15 @@ function ws_ls_shortcode( $user_defined_arguments ) {
 				$redirect_url = base64_decode( $redirect_url );
 			}
 
-			$html_output .= ws_ls_form_weight( [    'css-class-form'       => 'ws-ls-main-weight-form',
-			                                        'user-id'              => $user_id,
-			                                        'entry-id'             => $entry_id,
-			                                        'hide-fields-photos'   => ws_ls_to_bool( $shortcode_arguments[ 'hide-photos' ] ),
-													'redirect-url'         => $redirect_url,
-													'hide-notes'           => ws_ls_to_bool( $shortcode_arguments[ 'hide-notes' ] ),
-													'hide-confirmation'    => true
+			$html_output .= ws_ls_form_weight( [    'css-class-form'        => 'ws-ls-main-weight-form',
+			                                        'user-id'               => $user_id,
+			                                        'entry-id'              => $entry_id,
+			                                        'hide-fields-photos'    => ws_ls_to_bool( $shortcode_arguments[ 'hide-photos' ] ),
+													'redirect-url'          => $redirect_url,
+													'hide-notes'            => ws_ls_to_bool( $shortcode_arguments[ 'hide-notes' ] ),
+													'hide-confirmation'     => true,
+													'custom-field-groups'   => $shortcode_arguments[ 'custom-field-groups' ],
+													'custom-field-slugs'    => $shortcode_arguments[ 'custom-field-slugs' ]
 			] );
 
 		} else {
@@ -204,7 +191,9 @@ function ws_ls_shortcode( $user_defined_arguments ) {
 			                                        'user-id'               => $user_id,
 			                                        'hide-fields-photos'    => ws_ls_to_bool( $shortcode_arguments[ 'hide-photos' ] ),
 			                                        'hide-notes'            => ws_ls_to_bool( $shortcode_arguments[ 'hide-notes' ] ),
-			                                        'hide-confirmation'     => true
+			                                        'hide-confirmation'     => true,
+			                                        'custom-field-groups'   => $shortcode_arguments[ 'custom-field-groups' ],
+			                                        'custom-field-slugs'    => $shortcode_arguments[ 'custom-field-slugs' ]
 			] );
 		}
 
@@ -221,23 +210,31 @@ function ws_ls_shortcode( $user_defined_arguments ) {
         // If we have data, display data table
 		if ( false === empty( $weight_data ) )	{
 
-				if ( true === ws_ls_targets_enabled() && $use_tabs &&
-				        false === ws_ls_to_bool( $shortcode_arguments[ 'hide-second-target-form' ] ) ) {
-					$html_output .= ws_ls_form_weight( [ 'is-target-form' => true, 'css-class-form' => 'ws-ls-target-form', 'user-id' => $user_id, 'hide-confirmation' => true ] ) . ' <br />';
-				}
+			if ( true === ws_ls_to_bool( $shortcode_arguments[ 'show-chart-history' ] ) ) {
+				$html_output .= ws_ls_shortcode_embed_chart( $weight_data, $shortcode_arguments );
+			}
 
-				// Display week filters and data tab
-				$html_output .= ws_ls_title( __( 'Weight History', WE_LS_SLUG ) );
+			if ( true === ws_ls_targets_enabled() && $use_tabs &&
+			        false === ws_ls_to_bool( $shortcode_arguments[ 'hide-second-target-form' ] ) ) {
+				$html_output .= ws_ls_form_weight( [ 'is-target-form' => true, 'css-class-form' => 'ws-ls-target-form', 'user-id' => $user_id, 'hide-confirmation' => true ] ) . ' <br />';
+			}
 
-				if( true === $week_ranges_enabled ) {
-					$html_output .= ws_ls_week_ranges_display( $week_ranges, $selected_week_number );
-				}
+			// Display week filters and data tab
+			$html_output .= ws_ls_title( __( 'Weight History', WE_LS_SLUG ) );
 
-				if ( true === WS_LS_IS_PRO && false === ws_ls_to_bool( $shortcode_arguments[ 'disable-advanced-tables' ] ) ){
-					$html_output .=  ws_ls_shortcode_table( [ 'user-id' => $user_id, 'enable-add-edit' => true, 'enable-meta-fields' => true,  'week' => $selected_week_number, 'bmi-format' => $shortcode_arguments[ 'bmi-format' ] ] );
-				} else {
-					$html_output .= ws_ls_display_table( $user_id, $weight_data );
-				}
+			if( true === $week_ranges_enabled ) {
+				$html_output .= ws_ls_week_ranges_display( $week_ranges, $selected_week_number );
+			}
+
+			if ( true === WS_LS_IS_PRO && false === ws_ls_to_bool( $shortcode_arguments[ 'disable-advanced-tables' ] ) ){
+				$html_output .=  ws_ls_shortcode_table( [ 'user-id' => $user_id, 'enable-add-edit' => true, 'enable-meta-fields' => true,
+				                                            'week' => $selected_week_number, 'bmi-format' => $shortcode_arguments[ 'bmi-format' ],
+				                                                'custom-field-groups'   => $shortcode_arguments[ 'custom-field-groups' ],
+				                                                'custom-field-slugs'    => $shortcode_arguments[ 'custom-field-slugs' ]
+				] );
+			} else {
+				$html_output .= ws_ls_display_table( $user_id, $weight_data );
+			}
 		}
         elseif ( $use_tabs && false === empty( $selected_week_number ) ) {
 			$html_output .= __( 'No data could be found for this week, please try selecting another:', WE_LS_SLUG );
@@ -282,6 +279,44 @@ function ws_ls_shortcode( $user_defined_arguments ) {
 }
 add_shortcode( 'wlt', 'ws_ls_shortcode' );
 add_shortcode( 'wt', 'ws_ls_shortcode' );
+
+/**
+ * Embed Chart
+ * @param $shortcode_arguments
+ *
+ * @return string
+ */
+function ws_ls_shortcode_embed_chart( $weight_data, $shortcode_arguments ) {
+
+	$html_output = '';
+
+	// Do we have enough data points to display a chart?
+	if ( ( false === empty( $weight_data ) && count( $weight_data ) >= $shortcode_arguments[ 'min-chart-points' ] ) ||
+	     ( true === empty( $weight_data ) && 0 === $shortcode_arguments[ 'min-chart-points' ] ) ) {
+
+		// Display "Add Weight" button?
+		if( true === ws_ls_to_bool( $shortcode_arguments[ 'show-add-button' ] ) ) {
+			$html_output .= sprintf('	<div class="ws-ls-add-weight-button">
+														<input type="button" onclick="location.href=\'#add-weight\';" value="%s" />
+													</div>',
+				__( 'Add a weight entry', WE_LS_SLUG )
+			);
+		}
+
+		$html_output .= ws_ls_title( __( 'In a chart', WE_LS_SLUG ) );
+		$html_output .= ws_ls_display_chart( $weight_data, [ 'custom-field-groups'   => $shortcode_arguments[ 'custom-field-groups' ],
+		                                                     'custom-field-slugs'    => $shortcode_arguments[ 'custom-field-slugs' ] ] );
+
+	} else {
+
+		$message = sprintf( __( 'A graph shall appear when %d or more weight entries have been entered.', WE_LS_SLUG ),
+			$shortcode_arguments[ 'min-chart-points' ] );
+
+		$html_output .= ws_ls_display_blockquote( $message );
+	}
+
+	return $html_output;
+}
 
 /**
 * HTML for opening tab

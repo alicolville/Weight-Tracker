@@ -10,7 +10,7 @@
         // Data Posted? If so, replace the above from $_POST object
         if ( false === empty( $_POST ) && true === ws_ls_meta_fields_is_enabled() ) {
 
-            $meta_field = ws_ls_get_values_from_post( [ 'id', 'field_name', 'abv', 'field_type', 'suffix', 'mandatory', 'enabled', 'suffix', 'sort', 'hide_from_shortcodes', 'plot_on_graph', 'plot_colour' ] );
+            $meta_field = ws_ls_get_values_from_post( [ 'id', 'field_name', 'abv', 'field_type', 'suffix', 'mandatory', 'enabled', 'suffix', 'sort', 'hide_from_shortcodes', 'plot_on_graph', 'plot_colour', 'group_id' ] );
 
             // Ensure all mandatory fields have been completed!
             foreach ( [ 'field_name', 'abv' ] as $key ) {
@@ -28,6 +28,8 @@
 
                 // Add / Update
                 $result = ( true === empty( $meta_field['id'] ) ) ? ws_ls_meta_fields_add( $meta_field ) : ws_ls_meta_fields_update( $meta_field );
+
+				ws_ls_cache_user_delete( 'custom-fields-groups' );
 
                 ws_ls_meta_fields_list_page();
 
@@ -152,6 +154,23 @@
                                                     <p class="ws-ls-info"><?php echo __('Text display at to end of the entered value when displaying it to the user. e.g. CM would display in the following manner: 120 CM', WE_LS_SLUG ); ?></p>
                                                 </div>
                                             </div>
+											<div class="ws-ls-row">
+												<div class="ws-ls-cell ws-ls-label-col">
+													<label for="sort"><?php echo __('Group', WE_LS_SLUG); ?></label>
+												</div>
+												<div class="ws-ls-cell">
+													<?php
+														$groups 	= ws_ls_meta_fields_groups();
+														$groups 	= wp_list_pluck( $groups, 'name', 'id' );
+														$selected 	= ( false === empty( $meta_field[ 'group_id' ] ) ) ? (int) $meta_field[ 'group_id' ] : 0;
+
+														echo ws_ls_form_field_select( [ 'key' => 'group_id', 'show-label' => false, 'values' => $groups, 'selected' => $selected ] );
+
+													 	printf( '&nbsp;<a href="%s">%s</a>', ws_ls_meta_fields_groups_link(), __('Add / remove Groups', WE_LS_SLUG) );
+													?>
+													<p class="ws-ls-info"><?php echo __( 'Used to group custom fields together. This gives the ability to specify which groups of fields should appear on forms and charts.', WE_LS_SLUG); ?></p>
+												</div>
+											</div>
                                             <div class="ws-ls-row">
                                                 <div class="ws-ls-cell ws-ls-label-col">
                                                     <label for="sort"><?php echo __('Display Order', WE_LS_SLUG); ?></label>

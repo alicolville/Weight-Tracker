@@ -36,6 +36,70 @@ add_shortcode('wlt-weight-previous', 'ws_ls_shortcode_previous_weight');
 add_shortcode('wt-previous-weight', 'ws_ls_shortcode_previous_weight');
 
 /**
+ *
+ * Render the shortcode for previous date [wt-previous-date]
+ *
+ * @param null $user_id
+ *
+ * @return string
+ */
+function ws_ls_shortcode_previous_date( $user_id = NULL ) {
+
+	if ( false === WS_LS_IS_PRO ) {
+		return ws_ls_display_pro_upgrade_notice_for_shortcode();
+	}
+
+	$arguments[ 'user-id' ] = ( true === empty( $user_id ) ) ? get_current_user_id() : $user_id;
+
+	if ( $cache = ws_ls_cache_user_get( $arguments[ 'user-id' ], 'shortcode-previous-date' ) ) {
+		return $cache;
+	}
+
+	$previous_entry = ws_ls_entry_get_previous( $arguments );
+
+	$output = ( false === empty( $previous_entry[ 'display-date' ] ) ) ?
+				$previous_entry[ 'display-date' ] :
+					'';
+
+	ws_ls_cache_user_set( $arguments[ 'user-id' ], 'shortcode-previous-date', $output );
+
+	return $output;
+}
+add_shortcode( 'wt-previous-date', 'ws_ls_shortcode_previous_date' );
+
+/**
+ * Render shortcode [wt-start-date]
+ * @param bool $user_id
+ *
+ * @return string
+ */
+function ws_ls_shortcode_start_date( $user_id = NULL ) {
+
+	if ( false === WS_LS_IS_PRO ) {
+		return ws_ls_display_pro_upgrade_notice_for_shortcode();
+	}
+
+	$arguments[ 'user-id' ] = ( true === empty( $user_id ) ) ? get_current_user_id() : $user_id;
+
+	if ( $cache = ws_ls_cache_user_get( $arguments[ 'user-id' ], 'shortcode-start-date' ) ) {
+		return $cache;
+	}
+
+	$arguments[ 'user-id' ] = ( true === empty( $user_id ) ) ? get_current_user_id() : $user_id;
+
+	$oldest_entry = ws_ls_entry_get_oldest( $arguments );
+
+	if( true === empty( $oldest_entry ) ) {
+		return '';
+	}
+
+	ws_ls_cache_user_set( $arguments[ 'user-id' ], 'shortcode-start-date', $oldest_entry[ 'display-date' ] );
+
+	return $oldest_entry[ 'display-date' ];
+}
+add_shortcode( 'wt-start-date', 'ws_ls_shortcode_start_date' );
+
+/**
  * Shortcode for [wt-difference-from-previous] - render weight difference between latest and previous entry
  * @param bool $user_id
  *
@@ -299,3 +363,87 @@ function ws_ls_shortcode_new_users( $user_defined_arguments ) {
 }
 add_shortcode( 'wlt-new-users', 'ws_ls_shortcode_new_users' );
 add_shortcode( 'wt-new-users', 'ws_ls_shortcode_new_users' );
+
+/**
+ * Render shortcode [wt-latest-date]
+ * @param bool $user_id
+ *
+ * @return string
+ */
+function ws_ls_shortcode_recent_date( $user_id = NULL ) {
+
+	if ( false === WS_LS_IS_PRO ) {
+		return ws_ls_display_pro_upgrade_notice_for_shortcode();
+	}
+
+	if( false === is_user_logged_in() ) {
+		return '';
+	}
+
+	$arguments[ 'user-id' ] = ( true === empty( $user_id ) ) ? get_current_user_id() : $user_id;
+
+	if ( $cache = ws_ls_cache_user_get( $arguments[ 'user-id' ], 'shortcode-latest-date' ) ) {
+		return $cache;
+	}
+
+	$latest_entry = ws_ls_entry_get_latest( $arguments );
+
+	if( true === empty( $latest_entry ) ) {
+		return '';
+	}
+
+	ws_ls_cache_user_set( $arguments[ 'user-id' ], 'shortcode-latest-date', $latest_entry[ 'display-date' ] );
+
+	return $latest_entry[ 'display-date' ];
+}
+add_shortcode( 'wt-latest-date', 'ws_ls_shortcode_recent_date' );
+
+/**
+ * Render shortcode [wt-days-between-start-and-latest]
+ *
+ * @param $user_defined_arguments
+ *
+ * @return string
+ */
+function ws_ls_shortcode_days_between_start_and_latest( $user_defined_arguments ) {
+
+	if ( false === WS_LS_IS_PRO ) {
+		return ws_ls_display_pro_upgrade_notice_for_shortcode();
+	}
+
+	$arguments = shortcode_atts( [ 'user-id' => get_current_user_id(), 'include-brackets' => false, 'include-days' => false ], $user_defined_arguments );
+
+	if( false === is_user_logged_in() ) {
+		return '';
+	}
+
+	$latest_entry = ws_ls_entry_get_latest( $arguments );
+
+	if ( true === empty( $latest_entry[ 'raw' ] ) ) {
+		return '';
+	}
+
+	$oldest_entry = ws_ls_entry_get_oldest( $arguments );
+
+	if ( true === empty( $oldest_entry[ 'raw' ] ) ) {
+		return '';
+	}
+
+
+	$latest_entry   = date_create( $latest_entry[ 'raw' ] );
+	$oldest_entry   = date_create( $oldest_entry[ 'raw' ] );
+	$difference     = date_diff( $latest_entry, $oldest_entry, true);
+
+	if ( true === empty( $difference->days ) ) {
+		return '';
+	}
+
+	$text = ( true === ws_ls_to_bool( $arguments[ 'include-days' ] ) ) ?
+				sprintf( '%d %s', $difference->days, __( 'days', WE_LS_SLUG ) ) :
+					$difference->days;
+
+	return ( true === ws_ls_to_bool( $arguments[ 'include-brackets' ] ) ) ?
+				sprintf( '(%s)', $text ) :
+					$text;
+}
+add_shortcode( 'wt-days-between-start-and-latest', 'ws_ls_shortcode_days_between_start_and_latest' );

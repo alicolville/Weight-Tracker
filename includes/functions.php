@@ -409,6 +409,32 @@ function ws_ls_entry_get_oldest_kg( $user_id ) {
 }
 
 /**
+ * Fetch the start date for the given user
+ *
+ * @param $user_id
+ *
+ * @return array|mixed|string
+ */
+function ws_ls_entry_get_start_date( $user_id, $format = false ) {
+
+	$user_id 		= ( NULL === $user_id ) ? get_current_user_id() : $user_id;
+
+	if ( $cache = ws_ls_cache_user_get( $user_id, 'start-date' ) ) {
+		return ( true === $format ) ?
+				ws_ls_convert_ISO_date_into_locale( $cache ) :
+					$cache;
+	}
+
+	$oldest_entry 	= ws_ls_entry_get_oldest( [ 'user-id' => $user_id, 'meta' => false, 'kg-only' => false ] );
+
+	ws_ls_cache_user_set( $user_id, 'start-date', $oldest_entry[ 'raw' ] );
+
+	return ( true === $format ) ?
+				ws_ls_convert_ISO_date_into_locale( $oldest_entry[ 'raw' ] ) :
+					$oldest_entry[ 'raw' ];
+}
+
+/**
  * Fetch the latest entry
  * @param array $arguments
  *
@@ -800,7 +826,7 @@ function ws_ls_groups_link() {
  */
 function ws_ls_calculations_link( $link_only = false ) {
 
-    $url = 'https://weight.yeken.uk/calculations/';
+    $url = 'https://docs.yeken.uk/calculations.html';
 
     return ( false === $link_only ) ? sprintf('<a href="%s" target="blank">%s</a>', $url, __( 'Read more about calculations', WE_LS_SLUG ) ) : $url;
 }
@@ -809,7 +835,7 @@ function ws_ls_calculations_link( $link_only = false ) {
 * Helper function to get URL for further info on license types.
 **/
 function ws_ls_url_license_types() {
-	return sprintf( 'For further information regarding the types of licenses available, <a href="%s" rel="noopener noreferrer" target="_blank">please visit our site, https://weight.yeken.uk</a>', esc_url( WE_LS_LICENSE_TYPES_URL ) );
+	return sprintf( 'For further information regarding the types of licenses available, <a href="%s" rel="noopener noreferrer" target="_blank">please visit our site, https://docs.yeken.uk</a>', esc_url( WE_LS_LICENSE_TYPES_URL ) );
 }
 
 /**
@@ -1451,6 +1477,14 @@ function ws_ls_setting_mappings() {
  */
 function ws_ls_setting_hide_notes() {
 	return ( 'no' === get_option( 'ws-ls-allow-user-notes', 'yes' ) );
+}
+
+/**
+ * Should we add previous entry values as placeholders to form?
+ * @return bool
+ */
+function ws_ls_setting_populate_placeholders_with_previous_values() {
+	return ( 'yes' === get_option( 'ws-ls-populate-placeholders-with-previous-values', 'yes' ) );
 }
 
 /**

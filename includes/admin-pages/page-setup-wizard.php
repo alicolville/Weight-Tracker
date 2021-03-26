@@ -40,7 +40,7 @@ function ws_ls_setup_wizard_page() {
 
                                             <h3>Features of Weight Tracker</h3>
                                             <p>For a full list of Weight Tracker features, please visit our documentation site:</p>
-                                            <a href="https://weight.yeken.uk/features/" target="_blank" rel="noopener" class="button"><i class="fa fa-link"></i> Weight Tracker Features</a>
+                                            <a href="https://docs.yeken.uk/features.html" target="_blank" rel="noopener" class="button"><i class="fa fa-link"></i> Weight Tracker Features</a>
 
                                             <h3>Settings</h3>
                                             <p>The Weight Tracker plugin is highly configurable, you should review and modify the settings to suit your needs.</p>
@@ -49,11 +49,11 @@ function ws_ls_setup_wizard_page() {
 
                                             <h3>Documentation</h3>
                                             <p>Further help and documentation, please visit our documentation site:</p>
-                                            <a href="https://weight.yeken.uk" target="_blank" rel="noopener" class="button"><i class="fa fa-link"></i> Visit Documentation Site</a>
+                                            <a href="https://docs.yeken.uk" target="_blank" rel="noopener" class="button"><i class="fa fa-link"></i> Visit Documentation Site</a>
                                         </div>
                                         <div>
                                             <p>Out of the box, Weight Tracker does not extend the public facing side of your site with features that allow the users of your site to interact with.
-                                                You need to build these by using Weight Tracker <a href="https://weight.yeken.uk/shortcodes/" target="_blank" rel="noopener">shortcodes</a> and <a href="https://weight.yeken.uk/widgets/" target="_blank" rel="noopener">widgets</a>.
+                                                You need to build these by using Weight Tracker <a href="https://docs.yeken.uk/shortcodes.html" target="_blank" rel="noopener">shortcodes</a> and <a href="https://docs.yeken.uk/widgets/" target="_blank" rel="noopener">widgets</a>.
 
                                             <h3>Shortcodes</h3>
                                             <h4>What are they?</h4>
@@ -67,9 +67,9 @@ function ws_ls_setup_wizard_page() {
                                                 Weight Tracker ships with nearly 30 WordPress shortcodes. These  <a href="https://en.support.wordpress.com/shortcodes/" target="_blank" rel="noopener">shortcodes</a> render the required forms, graphs, interfaces, data, photos, etc that power Weight Tracker and the tools that will enrich your user's experience.</p>
                                             <p>It's highly recommended that you browse the <a href="https://en.support.wordpress.com/shortcodes/" target="_blank" rel="noopener">Weight Tracker shortcode documentation</a> to get an idea of the features you can build.</p>
                                             <p><strong>A simple, one page example</strong></p>
-                                            <p>A simple example is to create a page and add the [wlt] shortcode into the content. The [wlt] is the most commonly used shortcode and encompasses the majority of the front end functionality that your user may require.</p>
+                                            <p>A simple example is to create a page and add the [wt] shortcode into the content. The [wlt] is the most commonly used shortcode and encompasses the majority of the front end functionality that your user may require.</p>
                                             <p><strong>A little more complex</strong></p>
-                                            <p>Using the [wlt] on a single page may not be the best option for your site and you may wish to create separate pages for various parts of functionality. Another route is to create seperate pages and use different Weight Tracker shortcodes. For example:</p>
+                                            <p>Using the [wt] on a single page may not be the best option for your site and you may wish to create separate pages for various parts of functionality. Another route is to create seperate pages and use different Weight Tracker shortcodes. For example:</p>
 
                                             <table cellspacing="5">
                                                 <tr>
@@ -78,37 +78,37 @@ function ws_ls_setup_wizard_page() {
                                                 </tr>
                                                 <tr>
                                                     <td>Add an entry</td>
-                                                    <td><a href="https://weight.yeken.uk/shortcodes/?section=weight-loss-tracker-form" target="_blank" rel="noopener">[wlt-form]</a></td>
+                                                    <td><a href="https://docs.yeken.uk/shortcodes/wt-form.html" target="_blank" rel="noopener">[wt-form]</a></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Your entries</td>
-                                                    <td><a href="https://weight.yeken.uk/shortcodes/?section=wlt-chart" target="_blank" rel="noopener">[wlt-chart]</a>,
-                                                        <a href="https://weight.yeken.uk/shortcodes/?section=wlt-chart" target="_blank" rel="noopener">[wlt-table]</a>
+                                                    <td><a href="https://docs.yeken.uk/shortcodes/wt-chart.html" target="_blank" rel="noopener">[wt-chart]</a>,
+                                                        <a href="https://docs.yeken.uk/shortcodes/wt-table.html" target="_blank" rel="noopener">[wt-table]</a>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td>Your Photos</td>
-                                                    <td><a href="https://weight.yeken.uk/shortcodes/?section=wlt-gallery" target="_blank" rel="noopener">[wlt-gallery]</a></td>
+                                                    <td><a href="https://docs.yeken.uk/shortcodes/wt-gallery.html" target="_blank" rel="noopener">[wt-gallery]</a></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Macronutrients</td>
                                                     <td>
-                                                        <a href="https://weight.yeken.uk/shortcodes/?section=wlt-macronutrients-table" target="_blank" rel="noopener">[wlt-macronutrients]</a>
+                                                        <a href="https://docs.yeken.uk/shortcodes/wt-macronutrients-table.html" target="_blank" rel="noopener">[wt-macronutrients]</a>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td>Your awards</td>
-                                                    <td><a href="https://weight.yeken.uk/shortcodes/?section=wlt-awards-grid" target="_blank" rel="noopener">[wlt-awards-grid</a></td>
+                                                    <td><a href="https://docs.yeken.uk/shortcodes/wt-awards-grid.html" target="_blank" rel="noopener">[wt-awards-grid</a></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Your settings</td>
-                                                    <td><a href="https://weight.yeken.uk/shortcodes/?section=wlt-user-settings" target="_blank" rel="noopener">[wlt-user-settings]</a></td>
+                                                    <td><a href="https://docs.yeken.uk/shortcodes/wt-user-settings.html" target="_blank" rel="noopener">[wt-user-settings]</a></td>
                                                 </tr>
                                             </table>
 
                                             <p>The shortcodes cover the majority of Weight Tracker functionality and are designed to be flexible. For further information, please refer to the shortcode documentation:</p>
                                             <p>
-                                                <a href="https://weight.yeken.uk/shortcodes/" target="_blank" rel="noopener" class="button"><i class="fa fa-link"></i> View avaliable shortcodes</a>
+                                                <a href="https://docs.yeken.uk/shortcodes.html" target="_blank" rel="noopener" class="button"><i class="fa fa-link"></i> View avaliable shortcodes</a>
                                             </p>
 
                                             <h3>Widgets</h3>
@@ -119,7 +119,7 @@ function ws_ls_setup_wizard_page() {
                                             <p>Weight Tracker has three Widgets that you can make use of, Entry Forms, Charts and Progress bars.</p>
 
                                             <p>Further help and documentation can be found on our website:</p>
-                                            <a href="https://weight.yeken.uk/widgets/" target="_blank" rel="noopener" class="button"><i class="fa fa-link"></i> View Available Widgets</a>
+                                            <a href="https://docs.yeken.uk/widgets.html" target="_blank" rel="noopener" class="button"><i class="fa fa-link"></i> View Available Widgets</a>
                                             <br clear="all" />
                                         </div>
                                         <div>
@@ -138,32 +138,27 @@ function ws_ls_setup_wizard_page() {
 
                                             <h4>Advanced Calculations</h4>
                                             <p>Support for BMR, Harris Benedict Formula, Calorie intake to lose and gain weight, Meal breakdowns, Macronutrient Calculators and more.</p>
-                                            <a href="https://weight.yeken.uk/calculations/" target="_blank" rel="noopener" class="button"><i class="fa fa-link"></i> Read more</a>
+                                            <a href="https://docs.yeken.uk/calculations.html" target="_blank" rel="noopener" class="button"><i class="fa fa-link"></i> Read more</a>
 
                                             <h4>Custom Fields</h4>
                                             <p>Custom fields allow a site administrator to ask custom questions of their users when they complete a weight entry. For example, you may want to ask the user “How many cups of water have you drunk today?” or “Did you stick to your diet today?”. From the WP Dashboard, you will see a new option under “Weight Tracker” called “Custom Fields”. From here, you can see a list of all Custom Fields that have been added and have the ability to add, edit and delete them.</p>
-                                            <a href="https://weight.yeken.uk/custom-fields/" target="_blank" rel="noopener" class="button"><i class="fa fa-link"></i> Read more</a>
+                                            <a href="https://docs.yeken.uk/custom-fields.html" target="_blank" rel="noopener" class="button"><i class="fa fa-link"></i> Read more</a>
 
                                             <h4>Awards</h4>
                                             <p>As of version 7.0, Pro Plus sites have the ability to give users awards for reaching defined goals. Currently you can set awards for change in Weight, change in Weight %, change in BMI and a BMI being met.</p>
-                                            <a href="https://weight.yeken.uk/awards/" target="_blank" rel="noopener" class="button"><i class="fa fa-link"></i> Read more</a>
+                                            <a href="https://docs.yeken.uk/awards.html" target="_blank" rel="noopener" class="button"><i class="fa fa-link"></i> Read more</a>
 
                                             <h4>Gravity Forms</h4>
                                             <p>Weight Tracker, can examine Gravity Form submissions for relevant Weight and Measurement data. If valid data is found, a weight entry will automatically be created for the user currently logged in. This allows you to mix Weight Tracker fields amongst your Gravity Forms to provide a more tailored experience.</p>
-                                            <a href="https://weight.yeken.uk/gravity-forms/" target="_blank" rel="noopener" class="button"><i class="fa fa-link"></i> Read more</a>
+                                            <a href="https://docs.yeken.uk/gravity-forms.html" target="_blank" rel="noopener" class="button"><i class="fa fa-link"></i> Read more</a>
 
                                             <h4>Groups</h4>
                                             <p>As of 7.0, site administrators will have the ability to create “Groups” to assign their user’s to. This allows Weight Difference to be calculated on a group basis and displayed on the “Manage User Data” summary page.</p>
-                                            <a href="https://weight.yeken.uk/groups/" target="_blank" rel="noopener" class="button"><i class="fa fa-link"></i> Read more</a>
+                                            <a href="https://docs.yeken.uk/groups.html" target="_blank" rel="noopener" class="button"><i class="fa fa-link"></i> Read more</a>
 
                                             <h4>Email Notifications</h4>
                                             <p>If enabled, one or more administrators can be notified by email when a user adds or updates their target weight, adds a weight entry or updates a weight entry.</p>
-                                            <a href="https://weight.yeken.uk/email-notifications/" target="_blank" rel="noopener" class="button"><i class="fa fa-link"></i> Read more</a>
-
-                                            <h4>Hooks and Filters</h4>
-                                            <p>The plugin can be manipulated by various hooks and filters.</p>
-                                            <a href="https://weight.yeken.uk/hooks-and-filters/" target="_blank" rel="noopener" class="button"><i class="fa fa-link"></i> Read more</a>
-
+                                            <a href="https://docs.yeken.uk/email-notifications.html" target="_blank" rel="noopener" class="button"><i class="fa fa-link"></i> Read more</a>
 
                                         </div>
 

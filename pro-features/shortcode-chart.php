@@ -27,7 +27,9 @@ function ws_ls_shortcode_chart( $user_defined_arguments ) {
 											'weight-fill-color'   	=> get_option( 'ws-ls-line-fill-colour', '#f9f9f9' ),
 											'weight-line-color'   	=> get_option( 'ws-ls-line-colour', '#aeaeae' ),
 											'weight-target-color' 	=> get_option( 'ws-ls-target-colour', '#76bada' ),
-											'reverse'				=> true
+											'reverse'				=> true,
+											'custom-field-groups'   => '',      // If specified, only show custom fields that are within these groups
+											'custom-field-slugs'    => '',      // If specified, only show the custom fields that are specified
 	], $user_defined_arguments );
 
 	// Make sure they are logged in

@@ -236,21 +236,46 @@
         }
     }
 
-    /**
-     * Render Meta Fields form
-     *
-     * @param null $entry_id
-     * @return string
-     */
-    function ws_ls_meta_fields_form( $arguments ) {
+/**
+ * Render Meta Fields form
+ *
+ * @param $arguments
+ * @param null $placeholders
+ *
+ * @return string
+ */
+    function ws_ls_meta_fields_form( $arguments, $placeholders = NULL ) {
 
-	    $arguments = wp_parse_args( $arguments, [  'entry' => NULL, 'hide-fields-photos' => false ] );
+	    $arguments = wp_parse_args( $arguments, [
+	    	                                        'entry'                 => NULL,
+		                                            'hide-fields-photos'    => false,
+		                                            'custom-field-groups'   => '',      // If specified, only show custom fields that are within these groups
+		                                            'custom-field-slugs'    => ''       // If specified, only show the custom fields that are specified
+	    ] );
 
-        $html = '';
+        $html                   = '';
+        $photo_fields_rendered  = 0;
 
-        $photo_fields_rendered = 0;
+        // Do we have to filter by ID or Group?
+	    $filter_by_id       = ( false === empty( $arguments[ 'custom-field-slugs' ] ) );
+	    $filter_by_group    = ( false === empty( $arguments[ 'custom-field-groups' ] ) );
 
         foreach ( ws_ls_meta_fields_enabled() as $field ) {
+
+        	// Filter by ID?
+	        if ( true === $filter_by_id &&
+	                false === in_array( $field[ 'id' ], $arguments[ 'custom-field-slugs' ] ) ) {
+				continue;
+	        }
+
+	        // Filter by group?
+	        if ( true === $filter_by_group &&
+	                0 !== (int) $field[ 'group_id' ] &&
+	                    false === in_array( $field[ 'group_id' ], $arguments[ 'custom-field-groups' ] ) ) {
+		        continue;
+	        }
+
+	        $field[ 'placeholder' ] = ( false === empty( $placeholders[ 'meta' ][ $field[ 'id' ] ] ) ) ? $placeholders[ 'meta' ][ $field[ 'id' ] ] : '';
 
 	        $value = ( false === empty( $arguments[ 'entry' ][ 'meta'] ) &&
 	                     true === array_key_exists( $field[ 'id' ], $arguments[ 'entry' ][ 'meta'] ) ) ?
@@ -299,14 +324,15 @@
 
         return sprintf('<div class="ws-ls-meta-field">
                             <label for="%1$s" class="ws-ls-meta-field-title" >%2$s:</label>
-                            <input type="text" id="%1$s" name="%1$s" %3$s tabindex="%4$s" maxlength="200" value="%5$s" class="ws-ls-meta-field" data-msg="%6$s \'%2$s\'." />
+                            <input type="text" id="%1$s" name="%1$s" %3$s tabindex="%4$s" maxlength="200" value="%5$s" class="ws-ls-meta-field" data-msg="%6$s \'%2$s\'." placeholder="%7$s" />
                         </div>',
             ws_ls_meta_fields_form_field_generate_id( $field['id'] ),
             esc_attr( $field['field_name'] ),
             2 === (int) $field['mandatory'] ? ' required' : '',
             ws_ls_form_tab_index_next(),
             ( false === empty( $value ) ) ? esc_attr( $value ) : '',
-            __('Please enter a value for', WE_LS_SLUG)
+            __('Please enter a value for', WE_LS_SLUG),
+	        ( false === empty( $field[ 'placeholder' ] ) ) ? esc_attr( $field[ 'placeholder' ] ) : ''
         );
 
     }
@@ -322,14 +348,15 @@
 
         return sprintf('<div class="ws-ls-meta-field">
                             <label for="%1$s" class="ws-ls-meta-field-title">%2$s:</label>
-                            <input type="number" id="%1$s" name="%1$s" %3$s step="any" tabindex="%4$s" maxlength="200" value="%5$s" class="ws-ls-meta-field" data-msg="%6$s \'%2$s\'." />
+                            <input type="number" id="%1$s" name="%1$s" %3$s step="any" tabindex="%4$s" maxlength="200" value="%5$s" class="ws-ls-meta-field" data-msg="%6$s \'%2$s\'." placeholder="%7$s" />
                         </div>',
             ws_ls_meta_fields_form_field_generate_id( $field['id'] ),
             esc_attr( $field['field_name'] ),
             2 === (int)  $field['mandatory'] ? ' required' : '',
             ws_ls_form_tab_index_next(),
             ( false === empty( $value ) ) ? esc_attr( $value ) : '',
-            __('Please enter a number for', WE_LS_SLUG)
+            __('Please enter a number for', WE_LS_SLUG),
+	        ( false === empty( $field[ 'placeholder' ] ) ) ? esc_attr( $field[ 'placeholder' ] ) : ''
         );
 
     }
@@ -456,5 +483,98 @@
         $html .= '</div></div></div></div>';
 
 		return $html;
+}
 
+/**
+ * Slug exist?
+ * @param $slug
+ * @param null $exising_id
+ *
+ * @return string|null
+ */
+function ws_ls_meta_fields_group_slug_generate( $slug, $exising_id = NULL ) {
+
+	if ( true === empty( $slug ) ) {
+		return NULL;
+	}
+
+	$slug = sanitize_title( $slug );
+
+	$original_slug = $slug;
+
+	$try = 1;
+
+	// Ensure the slug is unique
+	while ( false === ws_ls_meta_fields_slug_is_unique( $slug, $exising_id ) ) {
+
+		$slug = sprintf( '%s_%d', $original_slug, $try );
+
+		$try++;
+	}
+
+	return $slug;
+}
+
+/**
+ * Return the link for managing Groups page
+ * @return string
+ */
+function ws_ls_meta_fields_groups_link() {
+	return admin_url( 'admin.php?page=ws-ls-meta-fields&mode=groups' );
+}
+
+/**
+ * Take one or many custom field group slugs and convert to ID
+ * @param $slugs
+ *
+ * @return array
+ */
+function ws_ls_meta_fields_groups_slugs_to_ids( $slugs ) {
+
+	$ids = NULL;
+
+	if ( true === empty( $slugs ) ) {
+		return $ids;
+	}
+
+	$slugs  = explode( ',', $slugs );
+	$groups = ws_ls_meta_fields_groups();
+	$groups = wp_list_pluck( $groups, 'id', 'slug' );
+
+	foreach ( $slugs as $slug ) {
+
+		if ( false === empty( $groups[ $slug ] ) ) {
+			$ids[] = (int) $groups[ $slug ];
+		}
+	}
+
+	return $ids;
+}
+
+/**
+ * Take one or many custom field group slugs and convert to ID
+ * @param $slugs
+ *
+ * @return array
+ */
+function ws_ls_meta_fields_slugs_to_ids( $slugs ) {
+
+	$ids = NULL;
+
+	if ( true === empty( $slugs ) ) {
+		return $ids;
+	}
+
+	$slugs  = explode( ',', $slugs );
+	$fields = ws_ls_meta_fields();
+	$fields = wp_list_pluck( $fields, 'id', 'field_key' );
+
+	foreach ( $slugs as $slug ) {
+
+		if ( false === empty( $fields[ $slug ] ) ) {
+			$ids[] = (int) $fields[ $slug ];
+		}
+	}
+
+	return $ids;
 }

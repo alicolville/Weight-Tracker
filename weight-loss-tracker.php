@@ -5,9 +5,9 @@ defined('ABSPATH') or die('Jog on!');
 /**
  * Plugin Name:         Weight Tracker
  * Description:         Allow your users to track their weight, body measurements, photos and other pieces of custom data. Display in charts, tables, shortcodes and widgets. Manage their data, issue awards, email notifications, etc! Provide advanced data on Body Mass Index (BMI), Basal Metabolic Rate (BMR), Calorie intake, Harris Benedict Formula, Macronutrients Calculator and more.
- * Version:             8.3.2
+ * Version:             8.4
  * Requires at least:   5.2
- * Tested up to: 	5.7
+ * Tested up to: 		5.7
  * Requires PHP:        7.2
  * Author:              Ali Colville
  * Author URI:          https://www.YeKen.uk
@@ -18,15 +18,15 @@ defined('ABSPATH') or die('Jog on!');
  */
 
 define( 'WS_LS_ABSPATH', plugin_dir_path( __FILE__ ) );
-define( 'WE_LS_CURRENT_VERSION', '8.3.2' );
-define( 'WE_LS_DB_VERSION', '8.2' );
+define( 'WE_LS_CURRENT_VERSION', '8.4' );
+define( 'WE_LS_DB_VERSION', '8.4' );
 define( 'WE_LS_TITLE', 'Weight Tracker' );
 define( 'WE_LS_SLUG', 'weight-loss-tracker' );
-define( 'WE_LS_LICENSE_TYPES_URL', 'https://weight.yeken.uk/features' );
-define( 'WE_LS_CALCULATIONS_URL', '	https://weight.yeken.uk/calculations/' );
+define( 'WE_LS_LICENSE_TYPES_URL', 'https://docs.yeken.uk/features.html' );
+define( 'WE_LS_CALCULATIONS_URL', '	https://docs.yeken.uk/calculations.html' );
 define( 'WE_LS_UPGRADE_TO_PRO_URL', 'https://shop.yeken.uk/product/weight-tracker-pro/' );
 define( 'WE_LS_UPGRADE_TO_PRO_PLUS_URL', 'https://shop.yeken.uk/product/weight-tracker-pro-plus/' );
-define( 'WE_LS_FREE_TRIAL_URL', 'https://weight.yeken.uk/trial/' );
+define( 'WE_LS_FREE_TRIAL_URL', 'https://shop.yeken.uk/get-a-trial-license/' );
 define( 'WE_LS_CDN_CHART_JS', 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js' );
 define( 'WE_LS_PRO_PRICE', 50.00 );
 define( 'WE_LS_PRO_PLUS_PRICE', 100.00 );
@@ -96,6 +96,7 @@ require_once( WS_LS_ABSPATH . 'includes/admin-pages/page-setup-wizard.php' );
 require_once( WS_LS_ABSPATH . 'includes/admin-pages/meta-fields/page-meta-fields.php' );
 require_once( WS_LS_ABSPATH . 'includes/admin-pages/meta-fields/page-meta-fields-add-update.php' );
 require_once( WS_LS_ABSPATH . 'includes/admin-pages/meta-fields/page-meta-fields-list.php' );
+require_once( WS_LS_ABSPATH . 'includes/admin-pages/meta-fields/page-meta-fields-groups.php' );
 require_once( WS_LS_ABSPATH . 'includes/admin-pages/awards/page-awards.php' );
 require_once( WS_LS_ABSPATH . 'includes/admin-pages/awards/page-awards-list.php' );
 require_once( WS_LS_ABSPATH . 'includes/admin-pages/awards/page-awards-add-update.php' );

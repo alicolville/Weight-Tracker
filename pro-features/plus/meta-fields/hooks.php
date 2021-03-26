@@ -16,6 +16,7 @@
                         [ 'name' => 'field_key', 'title' => __('Key', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
                         [ 'name' => 'field_type', 'title' => __('Type', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
                         [ 'name' => 'sort', 'title' => __('Display Order', WE_LS_SLUG), 'visible'=> true, 'type' => 'number' ],
+	                    [ 'name' => 'group', 'title' => __('Group', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
                         [ 'name' => 'mandatory', 'title' => __('Mandatory', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
                         [ 'name' => 'enabled', 'title' => __('Enabled', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ]
         ];
@@ -25,9 +26,10 @@
         // Format Row data
         for ( $i = 0 ; $i < count( $meta_fields ) ; $i++ ) {
 
-            $meta_fields[ $i ][ 'field_type' ] = ws_ls_meta_fields_types_get_string( $meta_fields[ $i ][ 'field_type' ] );
-            $meta_fields[ $i ][ 'enabled' ] = ws_ls_boolean_as_yes_no_string( $meta_fields[ $i ][ 'enabled' ] );
-            $meta_fields[ $i ][ 'mandatory' ] = ws_ls_boolean_as_yes_no_string( $meta_fields[ $i ][ 'mandatory' ] );
+	        $meta_fields[ $i ][ 'group' ]       = ws_ls_meta_fields_groups_get_field( $meta_fields[ $i ][ 'group_id' ] );
+            $meta_fields[ $i ][ 'field_type' ]  = ws_ls_meta_fields_types_get_string( $meta_fields[ $i ][ 'field_type' ] );
+            $meta_fields[ $i ][ 'enabled' ]     = ws_ls_boolean_as_yes_no_string( $meta_fields[ $i ][ 'enabled' ] );
+            $meta_fields[ $i ][ 'mandatory' ]   = ws_ls_boolean_as_yes_no_string( $meta_fields[ $i ][ 'mandatory' ] );
         }
 
         $data = [
@@ -39,6 +41,77 @@
 
     }
     add_action( 'wp_ajax_meta_fields_full_list', 'ws_ls_meta_fields_ajax_list' );
+
+	/**
+	Get Groups
+	 **/
+	function ws_ls_meta_fields_ajax_custom_field_groups_get(){
+
+		check_ajax_referer( 'ws-ls-user-tables', 'security' );
+
+		$table_id = ws_ls_post_value('table_id' );
+
+		if ( $cache = ws_ls_cache_user_get( 'custom-fields-groups', $table_id ) ) {
+			wp_send_json( $cache );
+		}
+
+		$columns = [
+			[ 'name' => 'id', 'title' => __('Group ID', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'number', 'visible' => false ],
+			[ 'name' => 'slug', 'title' => __( 'Slug', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ],
+			[ 'name' => 'name', 'title' => __( 'Name', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ],
+			[ 'name' => 'count', 'title' => __( 'No. Fields', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'number' ],
+		];
+
+		$rows = [];
+
+		if ( true === WS_LS_IS_PRO ) {
+
+			$rows = ws_ls_meta_fields_groups( false );
+
+			foreach ( $rows as &$row ) {
+				$row[ 'id' ]        = $row[ 'id' ];
+				$row[ 'slug' ]      = $row[ 'slug' ];
+				$row[ 'name' ]      = $row[ 'name' ];
+				$row[ 'count' ]     = ws_ls_meta_fields_groups_count( $row[ 'id' ] );
+			}
+
+		}
+
+		$data = [
+			'columns' => $columns,
+			'rows' => $rows,
+			'table_id' => $table_id
+		];
+
+		ws_ls_cache_user_set( 'custom-fields-groups', $table_id, $data );
+
+		wp_send_json( $data );
+
+	}
+	add_action( 'wp_ajax_get_custom_field_groups', 'ws_ls_meta_fields_ajax_custom_field_groups_get' );
+
+	/**
+	 * AJAX: Delete given group
+	 */
+	function ws_ls_ajax_meta_fields_groups_delete() {
+
+		check_ajax_referer( 'ws-ls-user-tables', 'security' );
+
+		$id = ws_ls_get_numeric_post_value('id');
+
+		if ( false === empty( $id ) ) {
+
+			$result = ws_ls_meta_fields_groups_delete( $id );
+
+			if ( true === $result ) {
+				wp_send_json( 1 );
+			}
+		}
+
+		wp_send_json( 0 );
+
+	}
+	add_action( 'wp_ajax_custom_field_groups_delete', 'ws_ls_ajax_meta_fields_groups_delete' );
 
     /**
      * AJAX: Delete given meta field ID

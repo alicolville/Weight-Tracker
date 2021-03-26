@@ -21,7 +21,6 @@ function ws_ls_clear_target_callback() {
 }
 add_action( 'wp_ajax_ws_ls_clear_target', 'ws_ls_clear_target_callback' );
 
-
 /**
  * AJAX handler for saving user preferences.
  */
@@ -84,6 +83,8 @@ function ws_ls_get_table_data() {
 	$enable_meta                        = ws_ls_post_value_to_bool( 'enable-meta-fields' );
 	$ws_ls_request_from_admin_screen    = ws_ls_post_value_to_bool( 'in-admin' );
 	$bmi_format                         = ws_ls_post_value('bmi-format', 'label' );
+	$custom_field_groups                = ws_ls_post_value('custom-field-groups' );
+	$custom_field_slugs                 = ws_ls_post_value('custom-field-slugs' );
 
 	// If we have a user ID and we're in admin then hide the name from the user entry page
 	if ( true === ws_ls_datatable_is_user_profile() ) {
@@ -91,7 +92,7 @@ function ws_ls_get_table_data() {
 	}
 
 	$data = [
-		'columns'   => ws_ls_datatable_columns( $small_width, $front_end, $enable_meta ),
+		'columns'   => ws_ls_datatable_columns( $small_width, $front_end, $enable_meta, $custom_field_slugs, $custom_field_groups ),
 		'rows'      => ws_ls_datatable_rows( [ 'user-id'  => $user_id, 'limit' => $max_entries, 'smaller-width' => $small_width, 'front-end' => $front_end,
 		                                        'enable-meta' => $enable_meta, 'in-admin' => $ws_ls_request_from_admin_screen, 'week' => $week_number, 'bmi-format' => $bmi_format ] ),
 		'table_id'  => $table_id
@@ -153,3 +154,19 @@ function ws_ls_ajax_get_errors(){
 
 }
 add_action( 'wp_ajax_get_errors', 'ws_ls_ajax_get_errors' );
+
+/**
+ * AJAX handler for clearing Target Weight
+ */
+function ws_ls_ajax_postbox_value() {
+
+	check_ajax_referer( 'ws-ls-nonce', 'security' );
+
+	$postbox_id = ws_ls_post_value('id' );
+	$key        = ws_ls_post_value('key' );
+	$value      = ws_ls_post_value('value' );
+	$result     = update_option( 'ws-ls-postbox-' . $postbox_id . '-' . $key, $value );
+
+	wp_send_json( $result );
+}
+add_action( 'wp_ajax_postboxes_event', 'ws_ls_ajax_postbox_value' );

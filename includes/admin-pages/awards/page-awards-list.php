@@ -38,7 +38,7 @@
                                     <div class="ws-ls-row">
                                         <div class="ws-ls-cell">
                                             <p><?php echo __('Issue awards to your user\'s for meeting certain goals.' , WE_LS_SLUG); ?>
-                                                <a href="https://weight.yeken.uk/awards/" target="_blank" rel="noopener"><?php echo __('Read more about Awards', WE_LS_SLUG); ?></a>
+                                                <a href="https://docs.yeken.uk/awards.html" target="_blank" rel="noopener"><?php echo __('Read more about Awards', WE_LS_SLUG); ?></a>
                                             </p>
                                             <?php if ( false === $emails_enabled ): ?>
                                                 <p class="ws-ls-validation-error"><strong><?php echo __('Emails Disabled', WE_LS_SLUG); ?></strong>: <?php echo __('Emails will not be sent for email enabled awards. This allows you to test awards without emails being sent. Use the button to the right enable them', WE_LS_SLUG); ?>.</p>
