@@ -1,4 +1,4 @@
-# Shortcodes
+# Main Shortcodes
 
 The majority of the public facing functionality is implemented using [WordPress shortcodes](https://codex.wordpress.org/Shortcode_API). This allows you to place Weight Tracker functionality amongst your website content. For example, the most popular shortcode of the plugin is [[wt]]({{ site.baseurl }}/shortcodes/wt.html)). To use a shortcode, [place it amongst your website content]({{ site.baseurl }}/assets/images/shortcodes.png)) and save. The shortcode shall then be replaced by the plugin feature. 
 
@@ -29,21 +29,6 @@ The majority of the public facing functionality is implemented using [WordPress 
 |[[wt-photo-recent]]({{ site.baseurl }}/shortcodes/wt-photo-recent.html)|Display the the latest photo uploaded by the user.|
 |[[wt-progress-bar]]({{ site.baseurl }}/shortcodes/wt-progress-bar.html)|Display a progress bar of the current user’s progress towards their target weight.|
 |[[wt-reminder]]({{ site.baseurl }}/shortcodes/wt-reminder.html)|Display reminders to logged in users informing them to add an entry or target for today.|
-|[[wt-table]]({{ site.baseurl }}/shortcodes/wt-table.html)|Display a data table of the user's weight and [custom fields]({{ site.baseurl }}/custom-fields.html) entry|
-
-|||
-|||
-|||
-|||
-|||
-|||
-|||
-|||
-|||
-|||
-|||
-|||
-|||
-|||
-|||
-|||
+|[[wt-table]]({{ site.baseurl }}/shortcodes/wt-table.html)|Display a data table of the user's weight and [custom fields]({{ site.baseurl }}/custom-fields.html) entry.|
+|[[wt-total-weight-loss-by-community]]({{ site.baseurl }}/shortcodes/wt-total-weight-loss-by-community.html)|Display the weight lost by the entire community.|
+|[[wt-user-settings]]({{ site.baseurl }}/shortcodes/wt-user-settings.html)|Display the user settings form.|
