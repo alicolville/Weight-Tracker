@@ -26,7 +26,7 @@
                                 <p><?php echo __( 'Custom Fields allows you to ask your user\'s additional questions when adding a weight entry.
                                                         For example, you may wish to ask them how many cups of water they drank today or perhaps how they are feeling.
                                                             You can use the following screen to add as many questions as you wish.', WE_LS_SLUG); ?>
-                                                        <a href="https://weight.yeken.uk/custom-fields/" target="_blank" rel="noopener"><?php echo __('Read more about Custom Fields', WE_LS_SLUG); ?></a>
+                                                        <a href="https://docs.yeken.uk/custom-fields.html" target="_blank" rel="noopener"><?php echo __('Read more about Custom Fields', WE_LS_SLUG); ?></a>
                                                         </p>
 
 	                            <?php $base_url = ws_ls_meta_fields_base_url( [ 'mode' => 'add-edit' ] );  ?>

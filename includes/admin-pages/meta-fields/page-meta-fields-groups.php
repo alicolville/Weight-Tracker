@@ -24,7 +24,7 @@ function ws_ls_meta_fields_page_group() {
 							<div style="padding: 0px 15px 0px 15px">
 
 								<p><?php echo __( 'Assign your custom fields to groups - this will allow you to display certain groups of custom fields on forms and charts.', WE_LS_SLUG ); ?>
-									<a href="https://weight.yeken.uk/custom-fields/" target="_blank" rel="noopener"><?php echo __( 'Read more about Custom Fields', WE_LS_SLUG ); ?></a>.
+									<a href="https://docs.yeken.uk/custom-fields.html" target="_blank" rel="noopener"><?php echo __( 'Read more about Custom Fields', WE_LS_SLUG ); ?></a>.
 								</p>
 
 								<h4><?php echo __('Add a new custom field group', WE_LS_SLUG); ?></h4>

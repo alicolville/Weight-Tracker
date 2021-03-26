@@ -220,8 +220,8 @@ function ws_ls_advertise_pro() {
 
                                 <div class="inside">
                                     <p><?php echo __('Need further help or information, please visit our documentation site:', WE_LS_SLUG); ?></p>
-                                    <p><strong><a href="https://weight.yeken.uk" target="_blank" rel="noopener noreferrer">weight.yeken.uk</a></strong></p>
-                                    <a href="https://weight.yeken.uk" target="_blank" rel="noopener noreferrer"><img class="widefat" src="<?php echo plugins_url( 'assets/images/weight-yeken-uk.png', __FILE__ ); ?>" /></a>
+                                    <p><strong><a href="https://docs.yeken.uk" target="_blank" rel="noopener noreferrer">docs.yeken.uk</a></strong></p>
+                                    <a href="https://docs.yeken.uk" target="_blank" rel="noopener noreferrer"><img class="widefat" src="<?php echo plugins_url( 'assets/images/weight-yeken-uk.png', __FILE__ ); ?>" /></a>
                                 </div>
                             </div>
 						</div>

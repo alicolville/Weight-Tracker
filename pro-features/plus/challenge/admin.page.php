@@ -66,7 +66,7 @@ function ws_ls_challenges_admin_page() {
                                         <?php echo __( 'Add a challenge', WE_LS_SLUG ); ?>
                                     </a>
 	                            <p><?php echo __( 'Why not set challenges for your user\'s within a given time period? Display Total Weight Lost, BMI Change, %Body Weight, Weight Tracker Streaks and Meal Tracker streaks achieved by each user in a league table.', WE_LS_SLUG ); ?>
-		                            <?php echo __( 'Besides viewing all your challenges and their data, the shortcode will allow you to display the league table in the public facing website.', WE_LS_SLUG ); ?> <a href="https://weight.yeken.uk/challenges/" target="_blank"><?php echo __( 'Read more about Challenges', WE_LS_SLUG ); ?></a>
+		                            <?php echo __( 'Besides viewing all your challenges and their data, the shortcode will allow you to display the league table in the public facing website.', WE_LS_SLUG ); ?> <a href="https://docs.yeken.uk/challenges/" target="_blank"><?php echo __( 'Read more about Challenges', WE_LS_SLUG ); ?></a>
 								</p>
                                 <?php ws_ls_challenges_table(); ?>
                             </div>
@@ -192,7 +192,7 @@ function ws_ls_challenges_admin_disabled() { ?>
 		                    </p>
 		                    <p><?php echo __( 'Why not set challenges for your user\'s within a given time period? Display Total Weight Lost, BMI Change, %Body Weight, Weight Tracker Streaks and Meal Tracker streaks achieved by each user in a league table.', WE_LS_SLUG ); ?></p>
 		                    <p><?php echo __( 'Besides viewing all your challenges and their data, the shortcode will allow you to display the league table in the public facing website.', WE_LS_SLUG ); ?></p>
-		                    <a href="https://weight.yeken.uk/challenges/" class="button" target="_blank"><?php echo __( 'Read more about Challenges', WE_LS_SLUG ); ?></a>
+		                    <a href="https://docs.yeken.uk/challenges.html" class="button" target="_blank"><?php echo __( 'Read more about Challenges', WE_LS_SLUG ); ?></a>
 		                    <p>
 
 

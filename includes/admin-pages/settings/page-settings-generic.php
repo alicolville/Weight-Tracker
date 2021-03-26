@@ -262,7 +262,7 @@ function ws_ls_settings_page_generic() {
 															<option value="yes" <?php selected( $challenges_enabled, 'yes' ); ?>><?php echo __( 'Yes', WE_LS_SLUG ); ?></option>
 															<option value="no" <?php selected( $challenges_enabled, 'no' ); ?>><?php echo __( 'No', WE_LS_SLUG ); ?></option>
 														</select>
-														<p> <?php echo __( 'If enabled, Challenge functionality shall be included within shortcodes and admin interface', WE_LS_SLUG ); ?> <a href="https://weight.yeken.uk/challenges/" target="_blank"><?php echo __( 'Read more about Challenges', WE_LS_SLUG ); ?></a></p>
+														<p> <?php echo __( 'If enabled, Challenge functionality shall be included within shortcodes and admin interface', WE_LS_SLUG ); ?> <a href="https://docs.yeken.uk/challenges/" target="_blank"><?php echo __( 'Read more about Challenges', WE_LS_SLUG ); ?></a></p>
 													</td>
 												</tr>
 											</table>
@@ -997,7 +997,7 @@ function ws_ls_settings_page_generic() {
 											<h3><?php echo __( 'Webhooks/Slack/Zapier' , WE_LS_SLUG); ?></h3>
 											<p>
 												<?php echo __( 'Push data to third party applications when a user adds/updates weight entries or updates their target.' , WE_LS_SLUG ); ?>
-												<a href="https://weight.yeken.uk/webhooks-zapier-and-slack/" target="_blank" rel="noopener noreferrer"><?php echo __( 'Read more about Webhooks/Slack/Zapier' , WE_LS_SLUG); ?></a>
+												<a href="https://docs.yeken.uk/web-hooks.html" target="_blank" rel="noopener noreferrer"><?php echo __( 'Read more about Webhooks/Slack/Zapier' , WE_LS_SLUG); ?></a>
 											</p>
 											<table class="form-table">
 												<tr class="<?php echo $disable_if_not_pro_class; ?>">
@@ -1026,7 +1026,7 @@ function ws_ls_settings_page_generic() {
 															<input id="ws-ls-webhook-endpoint-three" name="ws-ls-webhook-endpoint-three" type="url" maxlength="250" class="large-text" value="<?php echo esc_url( $endpoint_three ); ?>">
 															<p>
 																<?php echo __( 'Specify one or more endpoints that data should be pushed to. If the endpoint is a determined to be Slack URL then a message shall be posted within the given Slack channel. All other endpoints will receive a JSON object representing the data.', WE_LS_SLUG); ?>
-																<a href="https://weight.yeken.uk/webhooks-zapier-and-slack/" target="_blank" rel="noopener noreferrer"><?php echo __('Read more at ', WE_LS_SLUG); ?>https://weight.yeken.uk/webhooks-zapier-and-slack/</a>
+																<a href="https://docs.yeken.uk/web-hooks.html" target="_blank" rel="noopener noreferrer"><?php echo __('Read more at ', WE_LS_SLUG); ?>https://docs.yeken.uk/web-hooks.html</a>
 															</p>
 														</td>
 													</td>
@@ -1087,7 +1087,7 @@ function ws_ls_settings_page_generic() {
                                                         </select>
                                                         <p>
                                                             <?php echo __('Examine Gravity Form submissions for weight and measurement data. If found, create a Weight Entry for the user currently logged in.', WE_LS_SLUG); ?>
-                                                            <a href="https://weight.yeken.uk/gravity-forms/" target="_blank" rel="noopener noreferrer"><?php echo __('Read more at ', WE_LS_SLUG); ?>weight.yeken.uk/gravity-forms/</a>
+                                                            <a href="https://docs.yeken.uk/gravity-forms.html" target="_blank" rel="noopener noreferrer"><?php echo __('Read more at ', WE_LS_SLUG); ?>https://docs.yeken.uk/gravity-forms.html</a>
                                                         </p>
                                                     </td>
                                                 </tr>

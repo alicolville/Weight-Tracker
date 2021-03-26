@@ -174,6 +174,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 * Improvement: [weight-tracker] - new argument "show-chart-history" to show a chart on the History tab.
 * Improvement: Added a new button to "Show all entries" on the User summary page. Please bare in mind, this option maybe slow performing on large data sets.
 * Improvement: Admin: User profile: Added "Start" and "Latest" dates. Also the number of days between them is also displayed.
+* Improvement: New revamped documentation site https://docs.yeken.uk. All references to https://weight.yeken.uk have been changed to the new site.
 
 = 8.3.2 =
 

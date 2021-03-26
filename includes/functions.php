@@ -826,7 +826,7 @@ function ws_ls_groups_link() {
  */
 function ws_ls_calculations_link( $link_only = false ) {
 
-    $url = 'https://weight.yeken.uk/calculations/';
+    $url = 'https://docs.yeken.uk/calculations.html';
 
     return ( false === $link_only ) ? sprintf('<a href="%s" target="blank">%s</a>', $url, __( 'Read more about calculations', WE_LS_SLUG ) ) : $url;
 }
@@ -835,7 +835,7 @@ function ws_ls_calculations_link( $link_only = false ) {
 * Helper function to get URL for further info on license types.
 **/
 function ws_ls_url_license_types() {
-	return sprintf( 'For further information regarding the types of licenses available, <a href="%s" rel="noopener noreferrer" target="_blank">please visit our site, https://weight.yeken.uk</a>', esc_url( WE_LS_LICENSE_TYPES_URL ) );
+	return sprintf( 'For further information regarding the types of licenses available, <a href="%s" rel="noopener noreferrer" target="_blank">please visit our site, https://docs.yeken.uk</a>', esc_url( WE_LS_LICENSE_TYPES_URL ) );
 }
 
 /**
