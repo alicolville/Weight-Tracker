@@ -6,13 +6,13 @@ Thank you for showing an interest in upgrading your copy of Weight Tracker to th
 | Core (free)      | Pro (£50 a year) |Pro Plus (£100 a year) |
 | ----------- | ----------- |----------- |
 | Record weight entries for any date.      | All Free features       | All Free & Pro features
-| [Shortcodes](https://weight.yeken.uk/shortcodes/)   | [Custom fields]({{ site.baseurl }}/custom-fields.html) | [Awards]({{ site.baseurl }}/awards.html)
+| [Shortcodes]({{ site.baseurl }}/shortcodes.html)   | [Custom fields]({{ site.baseurl }}/custom-fields.html) | [Awards]({{ site.baseurl }}/awards.html)
 | Target weights | [Photo custom fields]({{ site.baseurl }}/custom-fields.html) | [Harris Benedict formula support.](https://weight.yeken.uk/calculations/)
 | Charts | Manage and view your user's data. |[Recommended calorie intake per meal time.](https://weight.yeken.uk/calculations/)
 | Imperial and metric units | [Groups]({{ site.baseurl }}/groups.html) | [Macronutrients calculator](https://weight.yeken.uk/calculations/)
 | UK / US date formats | [Email notifications](https://weight.yeken.uk/email-notifications/) | [Additional user preference fields](https://weight.yeken.uk/calculations/)
 | [...and much more](https://alicolville.github.io/Weight-Tracker/features.html)! | [Widgets](https://weight.yeken.uk/widgets/) | [Basal Metabolic Rate (BMR) support](https://weight.yeken.uk/calculations/)
-|  | [Additional shortcodes](https://weight.yeken.uk/shortcodes/) | [...and much more](https://alicolville.github.io/Weight-Tracker/features.html)! 
+|  | [Additional shortcodes]({{ site.baseurl }}/shortcodes.html) | [...and much more](https://alicolville.github.io/Weight-Tracker/features.html)! 
 |  | Advanced data tables |
 |  | User preferences |
 |  | BMI |

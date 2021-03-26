@@ -41,9 +41,9 @@ Awards that have been issued can either be displayed via shortcodes (see the fol
 
 The following shortcodes can be used to render a user’s awards:
 
--   [[wt-awards]](https://weight.yeken.uk/shortcodes/?section=wlt-awards)
+-   [[wt-awards]]({{ site.baseurl }}/shortcodes.html?section=wlt-awards)
 -   [[wt-awards-grid]](https://weight.yeken.uk/section/wlt-awards-grid/)
--   [[wt-award-latest]](https://weight.yeken.uk/shortcodes/?section=wlt-awards-latest)
+-   [[wt-award-latest]]({{ site.baseurl }}/shortcodes.html?section=wlt-awards-latest)
 
 ### Clearing Awards
 

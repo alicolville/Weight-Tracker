@@ -8,7 +8,7 @@
 - [Supports Imperial (Pounds or Stones & Pounds) and Metric (Kg) units](https://weight.yeken.uk/weight-units-date-formats-languages/)  
 - Optional use of tabs to display data and forms  
 - [Supports UK and US date formats](https://weight.yeken.uk/weight-units-date-formats-languages/)  
-- [Includes translations](https://weight.yeken.uk/translating-weight-loss-tracker-plugin/) for several  [languages, e.g. German, Dutch, Brazilian-Portuguese, etc](https://weight.yeken.uk/weight-units-date-formats-languages/)  
+- [Includes translations]({{ site.baseurl }}/translate.html) for several  [languages, e.g. German, Dutch, Brazilian-Portuguese, etc](https://weight.yeken.uk/weight-units-date-formats-languages/)  
   
 ## Pro license (£50 a year )
 ### *Includes core features and the following:*
@@ -24,11 +24,11 @@ Besides the features listed under core, the Pro version benefits from the follow
 -   **Email Notifications**. Receive email notifications when a person updates their target or adds / edits a weight.  [Read more about email notifications](https://weight.yeken.uk/email-notifications/).  
 -   **Birthday Emails**. Automatically send your user's a birthday email (when they have entered a date of birth).  
 -   **Widgets**. Widgets that allow you to display the graphs, quick weight entry forms and progress bars within any widget area.  [Read more about widgets.](https://weight.yeken.uk/widgets/)  
--   **Chart and form shortcodes**. That allow you to display the  [graph](https://weight.yeken.uk/shortcodes/?section=wlt-chart)  and quick  [weight entry form](https://weight.yeken.uk/shortcodes/?section=wlt-form)  by placing a shortcode on any post or page.  
--   **Progress Bar shortcode**. A shortcode that visually displays the logged in user's progress towards their target.  [Read more](https://weight.yeken.uk/shortcodes/?section=weight-loss-tracker-progress-bar).  
--   **Reminder shortcode**. A shortcode that can be used to remind the user to enter their target or weight for today.  [Read more](https://weight.yeken.uk/shortcodes/?section=weight-loss-tracker-reminder).  
--   **Message shortcode**. A shortcode that allows you to congratulate a user when they lose weight x number of times. It also provides the opposite allowing you to provide encouragement when someone gains weight.  [Read more](https://weight.yeken.uk/shortcodes/?section=weight-loss-tracker-message).  
--   **Text shortcodes**. Additional shortcodes for earliest and most recent dates entered.  [Read more](https://weight.yeken.uk/shortcodes/?section=other-useful-core-shortcodes).  
+-   **Chart and form shortcodes**. That allow you to display the  [graph]({{ site.baseurl }}/shortcodes.html?section=wlt-chart)  and quick  [weight entry form]({{ site.baseurl }}/shortcodes.html?section=wlt-form)  by placing a shortcode on any post or page.  
+-   **Progress Bar shortcode**. A shortcode that visually displays the logged in user's progress towards their target.  [Read more]({{ site.baseurl }}/shortcodes.html?section=weight-loss-tracker-progress-bar).  
+-   **Reminder shortcode**. A shortcode that can be used to remind the user to enter their target or weight for today.  [Read more]({{ site.baseurl }}/shortcodes.html?section=weight-loss-tracker-reminder).  
+-   **Message shortcode**. A shortcode that allows you to congratulate a user when they lose weight x number of times. It also provides the opposite allowing you to provide encouragement when someone gains weight.  [Read more]({{ site.baseurl }}/shortcodes.html?section=weight-loss-tracker-message).  
+-   **Text shortcodes**. Additional shortcodes for earliest and most recent dates entered.  [Read more]({{ site.baseurl }}/shortcodes.html?section=other-useful-core-shortcodes).  
 -   **Admin**:  **View / Delete user data**. Admin will be able to view and delete existing user data.  
 -   **User preferences**. If enabled, the user will be able to select which unit they wish to store their weight - Metric or Imperial. They will also be able to specify date format and clear all their weight data.  
 -   **Bar Charts**. Fancy something different to a line chart? The plugin will also support Bar Charts.  

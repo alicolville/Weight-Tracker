@@ -44,7 +44,7 @@ Custom fields are visible within data tables and charts (if a numeric custom fie
 
 Currently there are only shortcodes to render Photo Custom Fields. To render photos the following shortcodes can be used:
 
- - [[wt-photo-count]](https://weight.yeken.uk/shortcodes/?section=wlt-photo-count)
- - [[wt-photo-oldest]](https://weight.yeken.uk/shortcodes/?section=wlt-photo-oldest)
- - [[wt-photo-recent]](https://weight.yeken.uk/shortcodes/?section=wlt-photo-recent)
- - [[wt-gallery]](https://weight.yeken.uk/shortcodes/?section=wlt-gallery)
+ - [[wt-photo-count]]({{ site.baseurl }}/shortcodes.html?section=wlt-photo-count)
+ - [[wt-photo-oldest]]({{ site.baseurl }}/shortcodes.html?section=wlt-photo-oldest)
+ - [[wt-photo-recent]]({{ site.baseurl }}/shortcodes.html?section=wlt-photo-recent)
+ - [[wt-gallery]]({{ site.baseurl }}/shortcodes.html?section=wlt-gallery)
