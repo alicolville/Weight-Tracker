@@ -25,7 +25,7 @@ Within the  **admin area**, clicking into a challenge will display all of the re
 
 Viewing challenge data
 
-To view data on a  **public page or post**, use the shortcode  [[wt-challenges]]({{ site.baseurl }}/shortcodes.html?section=wt-challenges)  e.g.
+To view data on a  **public page or post**, use the shortcode  [[wt-challenges]](https://weight.yeken.uk/shortcodes/?section=wt-challenges)  e.g.
 
     [wt-challenges id="2" show-filters="false" sums-and-averages="true"]
 
