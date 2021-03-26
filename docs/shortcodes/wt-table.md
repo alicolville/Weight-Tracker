@@ -1,4 +1,4 @@
-## [wt-reminder]
+## [wt-table]
 
 > The following shortcode is available in both the free and [Pro]({{ site.baseurl }}/upgrade.html) version of the plugin. However, the non-pro version is a simple HTML table with limited functionality.
 
