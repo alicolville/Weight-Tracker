@@ -16,8 +16,8 @@
   
 Besides the features listed under core, the Pro version benefits from the following:  
   
--   **Custom Fields**. Create and add your own questions to weight entry forms to gather additional information. These may be questions around measurements, cups of water consumed, etc.  [Read more about custom fields.](https://weight.yeken.uk/custom-fields/)  
--   **Photo Custom Fields**. Add one or more photo fields to your weight entry forms and allow your users to upload photos of their progress. Photos can be viewed, updated and removed by the end user and administrators. Handy shortcodes are provided for displaying galleries, most recent and oldest photo.  [Read more about custom fields.](https://weight.yeken.uk/custom-fields/)  
+-   **Custom Fields**. Create and add your own questions to weight entry forms to gather additional information. These may be questions around measurements, cups of water consumed, etc.  [Read more about custom fields.]({{ site.baseurl }}/custom-fields.html)  
+-   **Photo Custom Fields**. Add one or more photo fields to your weight entry forms and allow your users to upload photos of their progress. Photos can be viewed, updated and removed by the end user and administrators. Handy shortcodes are provided for displaying galleries, most recent and oldest photo.  [Read more about custom fields.]({{ site.baseurl }}/custom-fields.html)  
 -   **Webhooks, Zapier & Slack**. Push weight entry data and targets to Slack channels, Zapier or your own custom Webhooks.  [Read more about Webhooks, Zapier & Slack.](https://weight.yeken.uk/webhooks-zapier-and-slack/)  
 -   **Groups**. Define user groups and assign your user's to them. View Weight Difference statistics for the group as a whole.  [Read more about groups.](https://weight.yeken.uk/groups/)  
 -   **BMI**. A user can specify their height allowing their BMI to be displayed alongside their weight entry.  [Read more about BMI](https://weight.yeken.uk/calculations/).  

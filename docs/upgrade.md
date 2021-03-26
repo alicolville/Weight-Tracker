@@ -6,8 +6,8 @@ Thank you for showing an interest in upgrading your copy of Weight Tracker to th
 | Core (free)      | Pro (£50 a year) |Pro Plus (£100 a year) |
 | ----------- | ----------- |----------- |
 | Record weight entries for any date.      | All Free features       | All Free & Pro features
-| [Shortcodes](https://weight.yeken.uk/shortcodes/)   | [Custom fields](https://weight.yeken.uk/custom-fields/) | [Awards]({{ site.baseurl }}/awards.html)
-| Target weights | [Photo custom fields](https://weight.yeken.uk/custom-fields/) | [Harris Benedict formula support.](https://weight.yeken.uk/calculations/)
+| [Shortcodes](https://weight.yeken.uk/shortcodes/)   | [Custom fields]({{ site.baseurl }}/custom-fields.html) | [Awards]({{ site.baseurl }}/awards.html)
+| Target weights | [Photo custom fields]({{ site.baseurl }}/custom-fields.html) | [Harris Benedict formula support.](https://weight.yeken.uk/calculations/)
 | Charts | Manage and view your user's data. |[Recommended calorie intake per meal time.](https://weight.yeken.uk/calculations/)
 | Imperial and metric units | [Groups](https://weight.yeken.uk/groups/) | [Macronutrients calculator](https://weight.yeken.uk/calculations/)
 | UK / US date formats | [Email notifications](https://weight.yeken.uk/email-notifications/) | [Additional user preference fields](https://weight.yeken.uk/calculations/)

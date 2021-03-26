@@ -2,7 +2,7 @@
 This is the most popular shortcode for the Weight Tracker plugin and displays upto four sections / tabs when a user is logged into WordPress.    
     
 > The following shortcode is available in both the free and [Pro/Pro Plus]({{ site.baseurl }}/features.html) version of the plugin. The Pro version has the following additional features: 
-> * Support for measurements and  [custom fields](https://weight.yeken.uk/custom-fields/). 
+> * Support for measurements and  [custom fields]({{ site.baseurl }}/custom-fields.html). 
 > * Advanced data table for viewing weight entries. Supporting sorting, paging, editing and deleting. 
 > * Support for BMI, BMR, suggested calorie intake and Macronutrients.
 > * A settings page to allow the user to tailor the plugin to their needs. 
