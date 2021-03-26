@@ -1,1 +1,5 @@
-theme: jekyll-theme-slate
+theme: jekyll-theme-minimal
+title: Weight Tracker Documentation
+description: Documentation and tips for setting up Weight Tracker on your WordPress site.
+baseurl: /
+logo: assets/images/product-logo.png

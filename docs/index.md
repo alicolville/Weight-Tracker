@@ -1,43 +1,30 @@
+# Introduction
 
-## Weight Tracker Documentation
+Weight Tracker is an easy to use [WordPress Plugin](https://wordpress.org/plugins/weight-loss-tracker/) that allows registered users of your website to track their weight, measurements, photos, custom fields, etc. History can be displayed in both tables & charts. Support for BMI, BMR, Calorie Intake, Macronutrients and much more!    
+    
+The plugin is available in a [Free](https://wordpress.org/plugins/weight-loss-tracker/) and [Pro](https://shop.yeken.uk/product/weight-tracker-pro/)/[Pro Plus](https://shop.yeken.uk/product/weight-tracker-pro-plus/) version. This documentation will help you to set up Weight Tracker to suit your business.  
+  
+## Features  
+  
+For a detailed list of all Weight Tracker features, please read the [read our features guide]({{ site.baseurl}}/features.html).  We also offer a free trial of the Pro versions of the plugin, [get your free trial now](https://shop.yeken.uk/get-a-trial-license/).
+## Getting Started  
+  
+ 1. Ensure your hosting matches the minimum requirements specified by [WordPress Requirements](https://wordpress.org/about/requirements/). Unfortunately, Weight Tracker may not work on older versions.  
+ 2. Install the [Weight Tracker plugin](https://wordpress.org/plugins/weight-loss-tracker/).  
+   1. Within your WordPress Admin area, navigate to “Plugins” > “Add New”. Search for “Weight Tracker” and click “Install Now”.  
+   2. Activate the plugin.  
+   3. [Upgrade the plugin]({{ site.baseurl}}/upgrade.html) if you require additional [features]({{ site.baseurl}}/features.html). We offer a free trial of the Pro versions of the plugin, [get your free trial now](https://shop.yeken.uk/get-a-trial-license/).
+   4. Configure the plugin. Navigate to “Weight Tracker” > “Settings” and review / modify each setting to meet your needs.  
+   5. To get started, create a page and add the  shortcode [[wt]]({{ site.baseurl }}/shortcodes/wt.html)  into the content section. The  [[wt] shortcode]({{ site.baseurl }}/shortcodes/wt.html)  incorporates the majority of Weight Tracker features out of the box.  
+   6. Weight Tracker contains a rich set of  [features,]({{ site.baseurl }}/features.html) [shortcodes]({{ site.baseurl }}/shortcodes.html)  and  [widgets]({{ site.baseurl }}/widgets.html) that allow Weight Tracker to be implemented in various ways to compliment their website’s needs.  
 
-Weight Tracker is an easy to use [WordPress Plugin](https://wordpress.org/plugins/weight-loss-tracker/) that allows registered users of your website to track their weight, measurements, photos, custom fields, etc. History can be displayed in both tables & charts. Support for BMI, BMR, Calorie Intake, Macronutrients and much more!
+## Demo
 
-The plugin is available in a Free and Pro/Pro Plus version. This documentation will help you to setup Weight Tracker to suit your business.
+A demo site with Weight Tracker installed can be found at [https://demo.yeken.uk/](https://demo.yeken.uk/).
 
+## Free Trial 
 
-You can use the [editor on GitHub](https://github.com/alicolville/Weight-Tracker/edit/master/docs/index.md) to maintain and preview the content for your website in Markdown files.
+If you would like to trial the Pro Plus version of the plugin, then we are happy to provide a free trial. [Get your free trial now](https://shop.yeken.uk/get-a-trial-license/). 
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/alicolville/Weight-Tracker/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+## Translate Weight Tracker  
+All [YeKen](https://www.yeken.uk) plugins are fully translatable and can be translated with [Loco Translate](https://en-gb.wordpress.org/plugins/loco-translate/). For further information, please read our [guide on translating YeKen plugins]({{ site.baseurl}}/translate.html).
