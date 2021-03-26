@@ -162,10 +162,10 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 = 8.4 =
 
-* New Feature: New shortcode [wt-latest-date] - display the date of the latest weight entry. Read more: https://weight.yeken.uk/shortcodes/?section=other-useful-core-shortcodes
-* New Feature: New shortcode [wt-previous-date] - display the date of the previous weight entry. Read more: https://weight.yeken.uk/shortcodes/?section=other-useful-core-shortcodes
-* New Feature: New shortcode [wt-start-date] - display the date of the first weight entry. Read more: https://weight.yeken.uk/shortcodes/?section=other-useful-core-shortcodes
-* New Feature: New Shortcode [wt-days-between-start-and-latest] - display the number of days between first and latest entry. Read more: https://weight.yeken.uk/shortcodes/?section=other-useful-core-shortcodes
+* New Feature: New shortcode [wt-latest-date] - display the date of the latest weight entry. Read more: https://docs.yeken.uk/shortcodes-text.html
+* New Feature: New shortcode [wt-previous-date] - display the date of the previous weight entry. Read more: https://docs.yeken.uk/shortcodes-text.html
+* New Feature: New shortcode [wt-start-date] - display the date of the first weight entry. Read more: https://docs.yeken.uk/shortcodes-text.html
+* New Feature: New Shortcode [wt-days-between-start-and-latest] - display the number of days between first and latest entry. Read more: https://docs.yeken.uk/shortcodes-text.html
 * New Feature: If enabled (Setting: Display previous entry on form?), the user's previous entry will be displayed as placeholders on form fields. This will allow the user to see the values on the previous entry.
 * New Feature: Custom Field Groups. Custom fields can now be added to groups.
 * Improvement: The following shortcodes can now be filtered so only certain custom fields or custom field groups are rendered: [weight-tracker], [wt-form], [wt-chart] and [wt-table].
