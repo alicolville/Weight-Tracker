@@ -57,7 +57,6 @@
         }
       
       
-      
         /* Hide checkbox */
         #navcheck {
           visibility: hidden;
@@ -66,7 +65,7 @@
         /* Mobile breakpoint */
         @media (max-width: 767px) {  
 
-          .label {
+          .menu-label {
             user-select: none;
           }
 
@@ -74,14 +73,23 @@
             display: none;
           }
 
+         .view {
+              text-align: right;
+              display: none;
+          }
+            
           #navcheck:checked + .menu {
             display: block;
           }
+            
+            #navcheck:checked + .view {
+                display: block;
+            }
         }
 
         /* Desktop breakpoint */
         @media (min-width: 768px) {
-          .label {
+          .menu-label {
             display: none;
           }
         }
@@ -103,7 +111,7 @@
     </h1>
 
     <p class="site-description">{{ site.description | default: site.github.project_tagline }}</p>
-      <label class="label" for="navcheck">Toggle Navigation</label>
+      <label class="menu-label" for="navcheck"><img src="{{ site.baseurl }}/assets/images/menu.png"/></label>
       <input type="checkbox" id="navcheck" name="navcheck" />
     <ul class="menu">
         <li><a href="{{ site.baseurl }}/">Home</a></li>
