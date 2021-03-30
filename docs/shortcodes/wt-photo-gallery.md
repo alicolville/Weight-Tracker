@@ -1,4 +1,4 @@
-## [wt-gallery]
+## [wt-photo-gallery]
 
 > The following shortcode is only available in the [Pro Plus]({{ site.baseurl }}/upgrade.html) version of the plugin.
 

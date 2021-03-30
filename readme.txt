@@ -163,6 +163,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 = 8.5 =
 
 * New Feature: Support for myCred. Reward your users for adding weight entries and setting their target.
+* Renamed [wt-gallery] to [wt-photo-gallery]. Please note, the old shortcode will still work.
 
 = 8.4 =
 
