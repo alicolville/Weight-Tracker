@@ -1,5 +1,7 @@
 # Custom fields
 
+> The following feature is only available in the [Pro]({{ site.baseurl }}/upgrade.html) version of the plugin.
+
 ### What are custom fields?
 
 Custom fields allow a site administrator to ask custom questions of their users when they complete a weight entry. For example, you may want to ask the user “How many cups of water have you drank today?” or “Did you stick to your diet today?”. From the WP Dashboard, under “Weight Tracker” there is a menu item labelled “Custom Fields”. From here, you can see a list of all Custom Fields that have been added and have the ability to add, edit and delete them.

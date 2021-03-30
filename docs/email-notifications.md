@@ -1,6 +1,6 @@
 # Email Notifications
 
-> The following shortcode is only available in the [Pro]({{ site.baseurl }}/upgrade.html) version of the plugin.
+> The following feature is only available in the [Pro]({{ site.baseurl }}/upgrade.html) version of the plugin.
 
 If enabled, one or more administrators can be notified by email when a user does one of the following:
 

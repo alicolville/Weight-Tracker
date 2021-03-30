@@ -18,7 +18,7 @@ defined('ABSPATH') or die( 'Jog on!' );
 function ws_ls_mycred_add_hooks( $installed, $point_type ) {
 
 	// Weight added
-	$installed[ 'weight_entry' ] = [	'title'        => __( 'Weight Tracker: Weight Entry', WE_LS_SLUG ),
+	$installed[ 'weight_entry' ] = [	'title'        => __( 'Weight Tracker: Weight Entry Added', WE_LS_SLUG ),
 										'description'  => __( 'Reward a user when they have recorded a new weight entry.', WE_LS_SLUG ),
 										'callback'     => [ 'ws_ls_mycred_weight_entry_class' ]
 	];
