@@ -16,7 +16,6 @@ The majority of the public facing functionality is implemented using [WordPress 
 |[[wt-challenges]]({{ site.baseurl }}/shortcodes/wt-challenges.html)|Display a [Challenge]({{ site.baseurl }}/challenges.html) league table.|
 |[[wt-form]]({{ site.baseurl }}/shortcodes/wt-form.html)|Display a target or weight entry / [custom fields]({{ site.baseurl }}/custom-fields.html) form.|
 |[[wt-form-target]]({{ site.baseurl }}/shortcodes/wt-form-target.html)|Display a target form.|
-|[[wt-gallery]]({{ site.baseurl }}/shortcodes/wt-photo-gallery.html)|Display a gallery of the user’s uploaded photos ([custom fields]({{ site.baseurl }}/custom-fields.html)).
 |[[wt-group]]({{ site.baseurl }}/shortcodes/wt-group.html)|Display the user’s current [group]({{ site.baseurl }}/groups.html).
 |[[wt-group-total-weight-loss]]({{ site.baseurl }}/shortcodes/wt-group-total-weight-loss.html)|Display the the weight lost by the entire [group]({{ site.baseurl }}/groups.html).
 |[[wt-if]]({{ site.baseurl }}/shortcodes/wt-if.html)|Add conditional display logic based on whether WT data has been completed or not.|
@@ -25,6 +24,7 @@ The majority of the public facing functionality is implemented using [WordPress 
 |[[wt-macronutrients-table]]({{ site.baseurl }}/shortcodes/wt-macronutrients-table.html)|Displays recommendations on the best way to split your calorie intake.|
 |[[wt-message]]({{ site.baseurl }}/shortcodes/wt-message.html)|Display a message when a user has gained/lost weight over a number of consecutive entries.|
 |[[wt-photo-count]]({{ site.baseurl }}/shortcodes/wt-photo-count.html)|Display the number of photos uploaded by the current user.|
+|[[wt-photo-gallery]]({{ site.baseurl }}/shortcodes/wt-photo-gallery.html)|Display a gallery of the user’s uploaded photos ([custom fields]({{ site.baseurl }}/custom-fields.html)).
 |[[wt-photo-oldest]]({{ site.baseurl }}/shortcodes/wt-photo-oldest.html)|Display the the oldest photo uploaded by the user.|
 |[[wt-photo-recent]]({{ site.baseurl }}/shortcodes/wt-photo-recent.html)|Display the the latest photo uploaded by the user.|
 |[[wt-progress-bar]]({{ site.baseurl }}/shortcodes/wt-progress-bar.html)|Display a progress bar of the current user’s progress towards their target weight.|

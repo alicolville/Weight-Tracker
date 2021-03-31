@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight,tracker,chart,bmi,bmr,macronutrient,measure,awards,custom fields,history,measurements,data
 Requires at least: 5.2
 Tested up to: 5.7
-Stable tag: 8.4
+Stable tag: 8.5
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -156,9 +156,14 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 == Upgrade Notice ==
 
-8.3 - Webhooks, Zapier & Slack. Push weight entry data and targets to Slack channels, Zapier or your own custom Webhooks.
+8.5 - Gamification - Added support for myCred! Reward your users for using Weight Tracker.
 
 == Changelog ==
+
+= 8.5 =
+
+* New Feature: Support for myCred. Reward your users for adding weight entries and setting their target. Read more: https://docs.yeken.uk/gamification.html
+* Renamed [wt-gallery] to [wt-photo-gallery]. Please note, the old shortcode will still work.
 
 = 8.4 =
 

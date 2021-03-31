@@ -5,7 +5,7 @@ defined('ABSPATH') or die('Jog on!');
 /**
  * Plugin Name:         Weight Tracker
  * Description:         Allow your users to track their weight, body measurements, photos and other pieces of custom data. Display in charts, tables, shortcodes and widgets. Manage their data, issue awards, email notifications, etc! Provide advanced data on Body Mass Index (BMI), Basal Metabolic Rate (BMR), Calorie intake, Harris Benedict Formula, Macronutrients Calculator and more.
- * Version:             8.4
+ * Version:             8.5
  * Requires at least:   5.2
  * Tested up to: 		5.7
  * Requires PHP:        7.2
@@ -18,7 +18,7 @@ defined('ABSPATH') or die('Jog on!');
  */
 
 define( 'WS_LS_ABSPATH', plugin_dir_path( __FILE__ ) );
-define( 'WE_LS_CURRENT_VERSION', '8.4' );
+define( 'WE_LS_CURRENT_VERSION', '8.5' );
 define( 'WE_LS_DB_VERSION', '8.4' );
 define( 'WE_LS_TITLE', 'Weight Tracker' );
 define( 'WE_LS_SLUG', 'weight-loss-tracker' );
@@ -139,6 +139,11 @@ require_once( WS_LS_ABSPATH . 'pro-features/footable.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/db.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/functions-stats.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/hooks.php' );
+
+if ( true === WS_LS_IS_PRO ) {
+	require_once( WS_LS_ABSPATH . 'pro-features/gamification.php' );
+}
+
 require_once( WS_LS_ABSPATH . 'pro-features/plus/awards/activate.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/plus/awards/functions.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/plus/awards/db.php' );

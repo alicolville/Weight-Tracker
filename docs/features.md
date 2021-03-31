@@ -13,13 +13,13 @@
 ## Pro license (£50 a year )
 ### *Includes core features and the following:*
 
-  
 Besides the features listed under core, the Pro version benefits from the following:  
   
 -   **Custom Fields**. Create and add your own questions to weight entry forms to gather additional information. These may be questions around measurements, cups of water consumed, etc.  [Read more about custom fields.]({{ site.baseurl }}/custom-fields.html)  
 -   **Photo Custom Fields**. Add one or more photo fields to your weight entry forms and allow your users to upload photos of their progress. Photos can be viewed, updated and removed by the end user and administrators. Handy shortcodes are provided for displaying galleries, most recent and oldest photo.  [Read more about custom fields.]({{ site.baseurl }}/custom-fields.html)  
 -   **Webhooks, Zapier & Slack**. Push weight entry data and targets to Slack channels, Zapier or your own custom Webhooks.  [Read more about Webhooks, Zapier & Slack.]({{ site.baseurl }}/web-hooks.html)  
 -   **Groups**. Define user groups and assign your user's to them. View Weight Difference statistics for the group as a whole.  [Read more about groups.]({{ site.baseurl }}/groups.html)  
+-   **Gamification**. Support for myCred, a popular gamification plugin. Reward your users for weight entries and setting their targets.  [Read more about gamification.]({{ site.baseurl }}/gamification.html)  
 -   **BMI**. A user can specify their height allowing their BMI to be displayed alongside their weight entry.  [Read more about BMI]({{ site.baseurl }}/calculations.html).  
 -   **Email Notifications**. Receive email notifications when a person updates their target or adds / edits a weight.  [Read more about email notifications]({{ site.baseurl }}/email-notifications.html).  
 -   **Birthday Emails**. Automatically send your user's a birthday email (when they have entered a date of birth).  
@@ -41,7 +41,7 @@ Besides the features listed under core, the Pro version benefits from the follow
   
 Besides the features listed under Pro, the Pro Plus version benefits from the following:  
   
-- [**Awards.**]({{ site.baseurl }}/awards.html) Set awards for: BMI Change, BMI Equals, Weight Gain / Loss from start and Percentage of weight lost from start.  [Read more about awards.]({{ site.baseurl }}/awards.html)  
+-   [**Awards.**]({{ site.baseurl }}/awards.html) Set awards for: BMI Change, BMI Equals, Weight Gain / Loss from start and Percentage of weight lost from start.  [Read more about awards.]({{ site.baseurl }}/awards.html)  
 -   [**Challenges**]({{ site.baseurl }}/challenges.html).Set challenges for your user's within a given time period? Display Total Weight Lost, BMI Change, %Body Weight, Weight Tracker Streaks and Meal Tracker streaks achieved by each user in a league table.  [Read more]({{ site.baseurl }}/challenges.html).  
 -   **All of the features that come with a standard Pro license**.  
 -   **Basal Metabolic Rate (BMR) calculations per user.** Shortcodes and extended admin screens to display a user's BMR. For further information on BMR and how it is calculated visit our  [calculations page]({{ site.baseurl }}/calculations.html).  
