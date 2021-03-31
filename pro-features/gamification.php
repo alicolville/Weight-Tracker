@@ -29,8 +29,6 @@ function ws_ls_mycred_add_hooks( $installed, $point_type ) {
 												'callback'     => [ 'ws_ls_mycred_target_set_class' ]
 	];
 
-
-
 	return $installed;
 
 }
@@ -273,3 +271,18 @@ function ws_ls_mycred_load_hooks() {
 	}
 }
 add_action( 'mycred_load_hooks', 'ws_ls_mycred_load_hooks' );
+
+/**
+ * Expand custom references in log filters
+ * @param $list
+ *
+ * @return mixed
+ */
+function ws_ls_mycred_custom_references( $list ) {
+
+	$list[ 'ws_ls_target_set' ] 	= 'Weight Tracker: Target set';
+	$list[ 'ws_ls_weight_entry' ] 	= 'Weight Tracker: Weight Entry Added';
+
+	return $list;
+}
+add_filter( 'mycred_all_references', 'ws_ls_mycred_custom_references' );

@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight,tracker,chart,bmi,bmr,macronutrient,measure,awards,custom fields,history,measurements,data
 Requires at least: 5.2
 Tested up to: 5.7
-Stable tag: 8.5
+Stable tag: 8.5.1
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -159,6 +159,10 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 8.5 - Gamification - Added support for myCred! Reward your users for using Weight Tracker.
 
 == Changelog ==
+
+= 8.5.1 =
+
+* Improvement: Added Weight Tracker filters to myCred log page.
 
 = 8.5 =
 
