@@ -18,15 +18,15 @@ defined('ABSPATH') or die( 'Jog on!' );
 function ws_ls_mycred_add_hooks( $installed, $point_type ) {
 
 	// Weight added
-	$installed[ 'weight_entry' ] = [	'title'        => __( 'Weight Tracker: Weight Entry Added', WE_LS_SLUG ),
-										'description'  => __( 'Reward a user when they have recorded a new weight entry.', WE_LS_SLUG ),
-										'callback'     => [ 'ws_ls_mycred_weight_entry_class' ]
+	$installed[ 'ws_ls_weight_entry' ] = [	'title'        => __( 'Weight Tracker: Weight Entry Added', WE_LS_SLUG ),
+											'description'  => __( 'Reward a user when they have recorded a new weight entry.', WE_LS_SLUG ),
+											'callback'     => [ 'ws_ls_mycred_weight_entry_class' ]
 	];
 
 	// Target added
-	$installed[ 'target_set' ] = 	[	'title'        => __( 'Weight Tracker: Target set', WE_LS_SLUG ),
-										'description'  => __( 'Reward a user when they have set their target.', WE_LS_SLUG ),
-										'callback'     => [ 'ws_ls_mycred_target_set_class' ]
+	$installed[ 'ws_ls_target_set' ] = 	[	'title'        => __( 'Weight Tracker: Target set', WE_LS_SLUG ),
+												'description'  => __( 'Reward a user when they have set their target.', WE_LS_SLUG ),
+												'callback'     => [ 'ws_ls_mycred_target_set_class' ]
 	];
 
 
@@ -50,14 +50,14 @@ function ws_ls_mycred_load_hooks() {
 		 */
 		function __construct( $hook_prefs, $type ) {
 
-			parent::__construct( array(
-				'id'       => 'weight_entry',
-				'defaults' => array( 'weight_entry'    => [	'creds'  => 10,
+			parent::__construct( [
+				'id'       => 'ws_ls_weight_entry',
+				'defaults' => [ 'ws_ls_weight_entry'    => [	'creds'  => 10,
 															'log'    => __( 'Weight entry added', WE_LS_SLUG ),
 															'limit'  => '0/x'
 															]
-				)
-			), $hook_prefs, $type );
+				]
+			], $hook_prefs, $type );
 
 		}
 
@@ -89,15 +89,15 @@ function ws_ls_mycred_load_hooks() {
 			}
 
 			// Have we reached the limit defined by admin against the myCred hook?
-			if ( true === $this->over_hook_limit( 'weight_entry', 'weight_entry', $entry[ 'user-id' ] ) ) {
+			if ( true === $this->over_hook_limit( 'ws_ls_weight_entry', 'ws_ls_weight_entry', $entry[ 'user-id' ] ) ) {
 				return;
 			}
 
-			$this->core->add_creds(	'weight_entry',
+			$this->core->add_creds(	'ws_ls_weight_entry',
 									$entry[ 'user-id' ],
-									$this->prefs[ 'weight_entry' ][ 'creds' ],
-									$this->prefs[ 'weight_entry' ][ 'log' ],
-									'weight_entry'
+									$this->prefs[ 'ws_ls_weight_entry' ][ 'creds' ],
+									$this->prefs[ 'ws_ls_weight_entry' ][ 'log' ],
+									'ws_ls_weight_entry'
 			);
 		}
 
@@ -115,20 +115,20 @@ function ws_ls_mycred_load_hooks() {
 			<label class="subheader"><?php _e( 'Log template', WE_LS_SLUG ); ?></label>
 			<ol>
 				<li>
-					<div class="h2"><input type="text" name="<?php echo $this->field_name( [ 'weight_entry' => 'log' ] ); ?>" id="<?php echo $this->field_id( [ 'weight_entry' => 'log' ] ); ?>" value="<?php echo esc_attr( $prefs[ 'weight_entry' ][ 'log' ] ); ?>" class="long" /></div>
+					<div class="h2"><input type="text" name="<?php echo $this->field_name( [ 'ws_ls_weight_entry' => 'log' ] ); ?>" id="<?php echo $this->field_id( [ 'ws_ls_weight_entry' => 'log' ] ); ?>" value="<?php echo esc_attr( $prefs[ 'ws_ls_weight_entry' ][ 'log' ] ); ?>" class="long" /></div>
 					<span class="description"></span>
 				</li>
 			</ol>
 			<label class="subheader"><?php _e( 'Points', WE_LS_SLUG ); ?></label>
 			<ol>
 				<li>
-					<div class="h2"><input type="number" name="<?php echo $this->field_name( [ 'weight_entry' => 'creds' ] ); ?>" id="<?php echo $this->field_id( [ 'weight_entry' => 'creds' ] ); ?>" value="<?php echo esc_attr( $prefs['weight_entry']['creds'] ); ?>" class="long" /></div>
+					<div class="h2"><input type="number" name="<?php echo $this->field_name( [ 'ws_ls_weight_entry' => 'creds' ] ); ?>" id="<?php echo $this->field_id( [ 'ws_ls_weight_entry' => 'creds' ] ); ?>" value="<?php echo esc_attr( $prefs['ws_ls_weight_entry']['creds'] ); ?>" class="long" /></div>
 				</li>
 			</ol>
 			<label class="subheader"><?php _e( 'Limit', WE_LS_SLUG ); ?></label>
 			<ol>
 				<li>
-					<div class="h2"><?php echo $this->hook_limit_setting( $this->field_name( [ 'weight_entry' => 'limit' ] ), $this->field_id( [ 'weight_entry' => 'limit' ]  ), $prefs['weight_entry']['limit'] ); ?></div>
+					<div class="h2"><?php echo $this->hook_limit_setting( $this->field_name( [ 'ws_ls_weight_entry' => 'limit' ] ), $this->field_id( [ 'ws_ls_weight_entry' => 'limit' ]  ), $prefs['ws_ls_weight_entry']['limit'] ); ?></div>
 					<span class="description"><?php _e( 'Limit the number of times this award can be given within the specified time limit.', WE_LS_SLUG ); ?></span>
 				</li>
 			</ol>
@@ -143,14 +143,14 @@ function ws_ls_mycred_load_hooks() {
 		 */
 		public function sanitise_preferences( $data ) {
 
-			if ( isset( $data['weight_entry']['limit'] ) && isset( $data['weight_entry']['limit_by'] ) ) {
+			if ( isset( $data['ws_ls_weight_entry']['limit'] ) && isset( $data['ws_ls_weight_entry']['limit_by'] ) ) {
 
-				$limit = sanitize_text_field( $data['weight_entry']['limit'] );
+				$limit = sanitize_text_field( $data['ws_ls_weight_entry']['limit'] );
 				if ( $limit == '' ) {
 					$limit = 0;
 				}
-				$data['weight_entry']['limit'] = $limit . '/' . $data['weight_entry']['limit_by'];
-				unset( $data['weight_entry']['limit_by'] );
+				$data['ws_ls_weight_entry']['limit'] = $limit . '/' . $data['ws_ls_weight_entry']['limit_by'];
+				unset( $data['ws_ls_weight_entry']['limit_by'] );
 			}
 
 			return $data;
@@ -167,8 +167,8 @@ function ws_ls_mycred_load_hooks() {
 		function __construct( $hook_prefs, $type ) {
 
 			parent::__construct( [
-									'id'       => 'target_set',
-									'defaults' => [ 'target_set'    => [	'creds'  => 10,
+									'id'       => 'ws_ls_target_set',
+									'defaults' => [ 'ws_ls_target_set'    => [	'creds'  => 10,
 																			'log'    => __( 'Weight target set', WE_LS_SLUG ),
 																			'limit'  => '0/x'
 									]
@@ -204,15 +204,15 @@ function ws_ls_mycred_load_hooks() {
 			}
 
 			// Have we reached the limit defined by admin against the myCred hook?
-			if ( true === $this->over_hook_limit( 'target_set', 'target_set', $entry[ 'user-id' ] ) ) {
+			if ( true === $this->over_hook_limit( 'ws_ls_target_set', 'ws_ls_target_set', $entry[ 'user-id' ] ) ) {
 				return;
 			}
 
-			$this->core->add_creds(	'target_set',
+			$this->core->add_creds(	'ws_ls_target_set',
 				$entry[ 'user-id' ],
-				$this->prefs[ 'target_set' ][ 'creds' ],
-				$this->prefs[ 'target_set' ][ 'log' ],
-				'target_set'
+				$this->prefs[ 'ws_ls_target_set' ][ 'creds' ],
+				$this->prefs[ 'ws_ls_target_set' ][ 'log' ],
+				'ws_ls_target_set'
 			);
 		}
 
@@ -230,20 +230,20 @@ function ws_ls_mycred_load_hooks() {
 			<label class="subheader"><?php _e( 'Log template', WE_LS_SLUG ); ?></label>
 			<ol>
 				<li>
-					<div class="h2"><input type="text" name="<?php echo $this->field_name( [ 'target_set' => 'log' ] ); ?>" id="<?php echo $this->field_id( [ 'target_set' => 'log' ] ); ?>" value="<?php echo esc_attr( $prefs[ 'target_set' ][ 'log' ] ); ?>" class="long" /></div>
+					<div class="h2"><input type="text" name="<?php echo $this->field_name( [ 'ws_ls_target_set' => 'log' ] ); ?>" id="<?php echo $this->field_id( [ 'ws_ls_target_set' => 'log' ] ); ?>" value="<?php echo esc_attr( $prefs[ 'ws_ls_target_set' ][ 'log' ] ); ?>" class="long" /></div>
 					<span class="description"></span>
 				</li>
 			</ol>
 			<label class="subheader"><?php _e( 'Points', WE_LS_SLUG ); ?></label>
 			<ol>
 				<li>
-					<div class="h2"><input type="number" name="<?php echo $this->field_name( [ 'target_set' => 'creds' ] ); ?>" id="<?php echo $this->field_id( [ 'target_set' => 'creds' ] ); ?>" value="<?php echo esc_attr( $prefs['target_set']['creds'] ); ?>" class="long" /></div>
+					<div class="h2"><input type="number" name="<?php echo $this->field_name( [ 'ws_ls_target_set' => 'creds' ] ); ?>" id="<?php echo $this->field_id( [ 'ws_ls_target_set' => 'creds' ] ); ?>" value="<?php echo esc_attr( $prefs['ws_ls_target_set']['creds'] ); ?>" class="long" /></div>
 				</li>
 			</ol>
 			<label class="subheader"><?php _e( 'Limit', WE_LS_SLUG ); ?></label>
 			<ol>
 				<li>
-					<div class="h2"><?php echo $this->hook_limit_setting( $this->field_name( [ 'target_set' => 'limit' ] ), $this->field_id( [ 'target_set' => 'limit' ]  ), $prefs['target_set']['limit'] ); ?></div>
+					<div class="h2"><?php echo $this->hook_limit_setting( $this->field_name( [ 'ws_ls_target_set' => 'limit' ] ), $this->field_id( [ 'ws_ls_target_set' => 'limit' ]  ), $prefs['ws_ls_target_set']['limit'] ); ?></div>
 					<span class="description"><?php _e( 'Limit the number of times this award can be given within the specified time limit.', WE_LS_SLUG ); ?></span>
 				</li>
 			</ol>
@@ -258,14 +258,14 @@ function ws_ls_mycred_load_hooks() {
 		 */
 		public function sanitise_preferences( $data ) {
 
-			if ( isset( $data['target_set']['limit'] ) && isset( $data['target_set']['limit_by'] ) ) {
+			if ( isset( $data['ws_ls_target_set']['limit'] ) && isset( $data['ws_ls_target_set']['limit_by'] ) ) {
 
-				$limit = sanitize_text_field( $data['target_set']['limit'] );
+				$limit = sanitize_text_field( $data['ws_ls_target_set']['limit'] );
 				if ( $limit == '' ) {
 					$limit = 0;
 				}
-				$data['target_set']['limit'] = $limit . '/' . $data['target_set']['limit_by'];
-				unset( $data['target_set']['limit_by'] );
+				$data['ws_ls_target_set']['limit'] = $limit . '/' . $data['ws_ls_target_set']['limit_by'];
+				unset( $data['ws_ls_target_set']['limit_by'] );
 			}
 
 			return $data;
