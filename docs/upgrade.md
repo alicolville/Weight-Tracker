@@ -18,4 +18,4 @@ Thank you for showing an interest in upgrading your copy of Weight Tracker to th
 |  | User preferences |
 |  | BMI |
 |  | [...and much more]({{ site.baseurl }}/features.html)! |
-| [Download](https://wordpress.org/plugins/weight-loss-tracker/) | [Upgrade to Pro]({{ site.baseurl }}/upgrade.html) | [Upgrade to Pro Plus]({{ site.baseurl }}/upgrade.html)
+| [Download](https://wordpress.org/plugins/weight-loss-tracker/) | [Upgrade to Pro](https://shop.yeken.uk/product/weight-tracker-pro/) | [Upgrade to Pro Plus](https://shop.yeken.uk/product/weight-tracker-pro-plus/)
