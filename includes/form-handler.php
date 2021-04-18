@@ -97,13 +97,8 @@ function ws_ls_form_post_handler_weight( $user_id ) {
 		return false;
 	}
 
-	$kg = ws_ls_form_post_handler_extract_weight();
-
-	if ( true === empty( $kg ) ){
-		return false;
-	}
-
-	$date = ws_ls_post_value( 'we-ls-date' );
+	$kg 	= ws_ls_form_post_handler_extract_weight();
+	$date	= ws_ls_post_value( 'we-ls-date' );
 
 	if ( true === empty( $date ) ) {
 		return false;
@@ -174,11 +169,10 @@ function ws_ls_form_post_handler_weight( $user_id ) {
 
 		ws_ls_stats_update_for_user( $user_id );
 
-		$mode = ( $existing_id === $entry_id ) ? 'update' : 'add';
-
 		$type = [	'user-id' 	=> $user_id,
-					'type' 		=> 'weight-measurements',
-					'mode' 		=> $mode ];
+					'type' 		=> ( false === empty( $kg ) ) ? 'weight-measurements' : 'custom-fields-only',
+					'mode' 		=> ( $existing_id === $entry_id ) ? 'update' : 'add'
+		];
 
 		$entry = ws_ls_entry_get( [ 'user-id' => $user_id, 'id' => $entry_id, 'meta' => true ] );
 
