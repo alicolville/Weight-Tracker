@@ -790,7 +790,7 @@ function ws_ls_db_create_core_tables() {
 		id mediumint(9) NOT NULL AUTO_INCREMENT,
 		weight_date datetime NOT NULL,
 		weight_user_id integer NOT NULL,
-		weight_weight float NOT NULL,
+		weight_weight float NULL,
 		weight_notes text null,
 		migrate int NULL DEFAULT 0,
 		inserted TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
