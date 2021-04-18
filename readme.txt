@@ -160,6 +160,14 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 == Changelog ==
 
+TODO:
+
+  - Bar charts
+  - Hooks firing on a new entry
+  - On user data, difference value
+  - Weight entry forms. What do we do? Option for no weight?
+  - Custom field only form
+
 = 8.5.1 =
 
 * Improvement: Added Weight Tracker filters to myCred log page.

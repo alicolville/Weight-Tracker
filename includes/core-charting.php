@@ -69,7 +69,8 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 												'label'       => __( 'Weight', WE_LS_SLUG ),
 												'borderColor' => $chart_config[ 'weight-line-color' ],
 												'data'        => [],
-												'yAxisID'     => AXIS_WEIGHT_AND_TARGET
+												'yAxisID'     => AXIS_WEIGHT_AND_TARGET,
+												'spanGaps'    => true
 	];
 
 	// Determine fill based on chart type
@@ -172,7 +173,7 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 		foreach ( $weight_data as $weight ) {
 
 			$graph_data['labels'][]                          = $weight['chart-date'];
-			$graph_data['datasets'][ DATA_WEIGHT ]['data'][] = $weight['graph-value'];
+			$graph_data['datasets'][ DATA_WEIGHT ]['data'][] = ( false === empty( $weight[ 'graph-value' ] ) ) ? $weight[ 'graph-value' ] : NULL;
 
 			// Add target weight too
 			if ( false !== $chart_config[ 'show-target' ] ) {

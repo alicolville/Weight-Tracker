@@ -162,18 +162,20 @@ function ws_ls_datatable_rows( $arguments ) {
 
 			if( false === empty( $previous_user_weight[ $entry[ 'user_id' ] ] ) ) {
 
-				$row[ 'previous-weight' ] = $previous_user_weight[ $entry[ 'user_id' ] ];
+				if ( false === empty( $entry[ 'kg' ] ) ) {
+					$row[ 'previous-weight' ] = $previous_user_weight[ $entry[ 'user_id' ] ];
 
-				if ( $entry['kg'] > $previous_user_weight[ $entry[ 'user_id' ] ] ) {
-					$gain_class = 'gain';
-				} elseif ( $entry[ 'kg' ] < $previous_user_weight[ $entry[ 'user_id' ] ] ) {
-					$gain_class = 'loss';
-				} elseif ( $entry['kg'] == $previous_user_weight[ $entry[ 'user_id' ] ] ) {
-					$gain_class = 'same';
-					$gain_loss = __( 'No Change', WE_LS_SLUG );
+					if ( $entry['kg'] > $previous_user_weight[ $entry[ 'user_id' ] ] ) {
+						$gain_class = 'gain';
+					} elseif ( $entry[ 'kg' ] < $previous_user_weight[ $entry[ 'user_id' ] ] ) {
+						$gain_class = 'loss';
+					} elseif ( $entry['kg'] == $previous_user_weight[ $entry[ 'user_id' ] ] ) {
+						$gain_class = 'same';
+						$gain_loss = __( 'No Change', WE_LS_SLUG );
+					}
+
+					$row[ 'previous-weight-diff' ] = $entry['kg'] - $previous_user_weight[ $entry[ 'user_id' ] ];
 				}
-
-				$row[ 'previous-weight-diff' ] = $entry['kg'] - $previous_user_weight[ $entry[ 'user_id' ] ];
 
 			} elseif ( true === empty( $arguments[ 'user-id' ] )) {
 				$gain_loss = $entry[ 'user_profile' ] = sprintf('<a href="%s" rel="noopener noreferrer" target="_blank">%s</a>', ws_ls_get_link_to_user_profile( $entry[ 'user_id' ] ), __( 'Check record', WE_LS_SLUG ) );
@@ -181,16 +183,23 @@ function ws_ls_datatable_rows( $arguments ) {
 				$gain_loss = __( 'First entry', WE_LS_SLUG );
 			}
 
-			$previous_user_weight[ $entry[ 'user_id' ] ] = $entry[ 'kg' ];
+			if ( false === empty( $entry[ 'kg' ] ) ) {
+				$previous_user_weight[ $entry[ 'user_id' ] ] = $entry[ 'kg' ];
+			}
 
 			$row[ 'gainloss' ][ 'value']                = $gain_loss;
 			$row[ 'gainloss' ][ 'options']['classes']   = 'ws-ls-' . $gain_class .  ws_ls_blur();
 			$row[ 'notes' ]                             = wp_kses_post( $entry[ 'notes' ] );
 
 			if( true === ws_ls_bmi_in_tables() ) {
-				$row[ 'bmi' ] = [   'value' => ws_ls_get_bmi_for_table( ws_ls_user_preferences_get( 'height', $entry[ 'user_id' ] ), $entry[ 'kg' ], __( 'No height', WE_LS_SLUG ), $arguments[ 'bmi-format'] ),
-									'options' => [ 'classes' => '' ]
-				];
+
+				if ( false === empty( $entry[ 'kg' ] ) ) {
+					$row[ 'bmi' ] = [   'value' => ws_ls_get_bmi_for_table( ws_ls_user_preferences_get( 'height', $entry[ 'user_id' ] ), $entry[ 'kg' ], __( 'No height', WE_LS_SLUG ), $arguments[ 'bmi-format'] ),
+						'options' => [ 'classes' => '' ]
+					];
+				} else {
+					$row[ 'bmi' ] = '';
+				}
 			}
 
 			$row[ 'kg' ] = [ 'value' => $entry['kg'], 'options' => [ 'classes' => ws_ls_blur(), 'sortValue' => $entry['kg'] ] ];
