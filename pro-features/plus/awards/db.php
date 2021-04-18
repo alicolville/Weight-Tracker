@@ -211,7 +211,7 @@
         return ( 1 === $result );
 
     }
-    do_action( 'wlt-awards-deleting', 'ws_ls_awards_delete_all_given' );
+    add_action( 'wlt-awards-deleting', 'ws_ls_awards_delete_all_given' );
 
 /**
  * Get details for an award

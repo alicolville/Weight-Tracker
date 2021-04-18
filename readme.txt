@@ -168,6 +168,10 @@ TODO:
   - Weight entry forms. What do we do? Option for no weight?
   - Custom field only form
 
+= * =
+
+- Bug fix: Fixed "wlt-awards-deleting" hook from incorrectly firing.
+
 = 8.5.1 =
 
 * Improvement: Added Weight Tracker filters to myCred log page.
