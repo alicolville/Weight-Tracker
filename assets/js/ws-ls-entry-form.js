@@ -112,21 +112,21 @@ jQuery( document ).ready( function ( $ ) {
         let default_field_options = { required: ! target_form, number: true, range: [ 0, 5000 ] };
 
         // Set up numeric fields to validate
-        if( 'pounds_only' === weight_unit ) {
-
-            $( '#' + form_id + ' .ws-ls-weight-pounds' ).rules( 'add', default_field_options );
-
-        } else if( 'stones_pounds' === weight_unit ) {
-
-            $( '#' + form_id + ' .ws-ls-weight-stones' ).rules( 'add', default_field_options );
-
-            default_field_options[ 'range' ] = [ 0, 14 ];
-
-            $( '#' + form_id + ' .ws-ls-weight-pounds' ).rules('add',  default_field_options );
-
-        } else {
-            $( '#' + form_id + ' .ws-ls-weight-kg' ).rules('add',  default_field_options );
-        }
+        // if( 'pounds_only' === weight_unit ) {
+        //
+        //     $( '#' + form_id + ' .ws-ls-weight-pounds' ).rules( 'add', default_field_options );
+        //
+        // } else if( 'stones_pounds' === weight_unit ) {
+        //
+        //     $( '#' + form_id + ' .ws-ls-weight-stones' ).rules( 'add', default_field_options );
+        //
+        //     default_field_options[ 'range' ] = [ 0, 14 ];
+        //
+        //     $( '#' + form_id + ' .ws-ls-weight-pounds' ).rules('add',  default_field_options );
+        //
+        // } else {
+        //     $( '#' + form_id + ' .ws-ls-weight-kg' ).rules('add',  default_field_options );
+        // }
     });
 
   /**
