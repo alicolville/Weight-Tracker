@@ -18,18 +18,6 @@ myCred has a collection of hooks (these can be found in WP Dashboard > Points > 
 
 Below are some example usages by our friends at [Be Strong](https://mybestrong.com/).
 
-**Today's Meal Tracker leaderboard**
-
-    [mycred_leaderboard based_on="yk_mt_meal_added" number=20 total=1 timeframe="today" current=1 wrap="ol" template="#%position% %user_profile_link% (%cred_f% Superstars)"]
-
-**This week's Meal Tracker leaderboard**
-
-    [mycred_leaderboard based_on="yk_mt_meal_added" number=20 total=1 timeframe="this-week" current=1 wrap="ol" template="#%position% %user_profile_link% (%cred_f% Superstars)"]  
-
-**This month's Meal Tracker leaderboard**
-  
-    [mycred_leaderboard based_on="yk_mt_meal_added" number=20 total=1 timeframe="thismonth" current=1 wrap="ol" template="#%position% %user_profile_link% (%cred_f% Superstars)"]  
-
 **Today's Weight Tracker leaderboard**  
 
     [mycred_leaderboard based_on="ws_ls_ Weight_Entry" number=20 total=1 timeframe="today" current=1 wrap="ol" template="#%position% %user_profile_link% (%cred_f% Superstars)"]  
