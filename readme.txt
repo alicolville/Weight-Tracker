@@ -173,6 +173,9 @@ TODO:
   - League tables / stats. How do these work with null dates
   - Examine all SQL queries that reference WE_LS_TABLENAME
 
+Files OK: PRO:  harris-b, macro-calc, bmr, shortcode.wlt, challenges, awards, meta-fields, stats
+
+
 = * =
 
 - Bug fix: Fixed "wlt-awards-deleting" hook from incorrectly firing.
