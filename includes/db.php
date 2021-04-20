@@ -206,7 +206,7 @@ function ws_ls_db_entry_latest_or_oldest( $arguments ) {
 
 	$sort_order = ( 'latest' === $arguments[ 'which' ] ) ? 'desc' : 'asc';
 
-	$sql        = $wpdb->prepare('SELECT id FROM ' . $wpdb->prefix . WE_LS_TABLENAME . ' where weight_user_id = %d order by weight_date ' . $sort_order . ' limit 0, 1', $arguments[ 'user-id' ] );
+	$sql        = $wpdb->prepare('SELECT id FROM ' . $wpdb->prefix . WE_LS_TABLENAME . ' where weight_user_id = %d and weight_weight is not null order by weight_date ' . $sort_order . ' limit 0, 1', $arguments[ 'user-id' ] );
 	$entry_id   = $wpdb->get_var( $sql );
 
 	ws_ls_cache_user_set( $arguments[ 'user-id' ], $cache_key, $entry_id );
@@ -409,7 +409,7 @@ function ws_ls_db_weight_start_get( $user_id ) {
 
 	global $wpdb;
 
-    $sql    =  $wpdb->prepare('SELECT weight_weight as kg FROM ' .  $wpdb->prefix . WE_LS_TABLENAME . ' where weight_user_id = %d order by weight_date asc limit 0, 1', $user_id);
+    $sql    =  $wpdb->prepare('SELECT weight_weight as kg FROM ' .  $wpdb->prefix . WE_LS_TABLENAME . ' where weight_user_id = %d and weight_weight is not null order by weight_date asc limit 0, 1', $user_id);
     $kg     = $wpdb->get_var( $sql );
 
 	ws_ls_cache_user_set( $user_id, 'start-weight', $kg );

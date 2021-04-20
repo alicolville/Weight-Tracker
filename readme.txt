@@ -163,12 +163,15 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 TODO:
 
   - Bar charts
+  - Charts without weight entries/target on
   - Hooks firing on a new entry - what listens for: weight-measurements do we need to expand?
   - On user data, difference value
   - Weight entry forms. What do we do? Option for no weight?
     - Modify commented out code in ws-ls-entry-form for optional weight values
   - Custom field only form
   - Shortcodes like starting and latest weight. What if those weights are empty?
+  - League tables / stats. How do these work with null dates
+  - Examine all SQL queries that reference WE_LS_TABLENAME
 
 = * =
 
