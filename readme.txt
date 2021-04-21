@@ -169,8 +169,6 @@ TODO:
   - Weight entry forms. What do we do? Option for no weight?
     - Modify commented out code in ws-ls-entry-form for optional weight values
   - Custom field only form
-  - Shortcodes like starting and latest weight. What if those weights are empty?
-  - League tables / stats. How do these work with null dates
   - Examine all SQL queries that reference WE_LS_TABLENAME
 
 Files OK: PRO:  harris-b, macro-calc, bmr, shortcode.wlt, challenges, awards, meta-fields, stats
