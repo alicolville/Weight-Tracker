@@ -178,7 +178,7 @@ Files OK: PRO:  harris-b, macro-calc, bmr, shortcode.wlt, challenges, awards, me
 
 = * =
 
-- Bug fix: Fixed "wlt-awards-deleting" hook from incorrectly firing.
+* Bug fix: Fixed "wlt-awards-deleting" hook from incorrectly firing.
 
 = 8.5.1 =
 
