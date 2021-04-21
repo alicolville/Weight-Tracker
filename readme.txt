@@ -162,7 +162,6 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 TODO:
 
-  - Bar charts
   - Charts without weight entries/target on
   - Hooks firing on a new entry - what listens for: weight-measurements do we need to expand?
   - On user data, difference value
