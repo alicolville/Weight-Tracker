@@ -4,8 +4,12 @@ defined( 'ABSPATH' ) or die( 'Jog on!' );
 
 define( 'DATA_WEIGHT', 0 );
 define( 'DATA_TARGET', 1 );
-define( 'AXIS_WEIGHT_AND_TARGET', 'y-axis-weight' );
-define( 'AXIS_META_FIELDS', 'y-axis-meta' );
+define( 'AXIS_WEIGHT_AND_TARGET', 'y' );
+define( 'AXIS_META_FIELDS', 'y1' );
+
+/*
+ * Useful example: https://www.chartjs.org/docs/latest/samples/line/multi-axis.html
+ */
 
 /**
  * Render a Chart
@@ -109,8 +113,7 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 		// If target weights are enabled, then include into javascript data object
 		if ( false === empty( $chart_config[ 'target-weight' ] ) ) {
 
-			$graph_data['datasets'][ DATA_TARGET ] = [
-														'label'              => __( 'Target', WE_LS_SLUG ),
+			$graph_data['datasets'][ DATA_TARGET ] = [  'label'             => __( 'Target', WE_LS_SLUG ),
 														'borderColor'       => $chart_config[ 'target-fill-color' ],
 														'borderWidth'       => $chart_config[ 'line-thickness' ],
 														'pointRadius'       => 0,
@@ -219,22 +222,23 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 	// Set initial y axis for weight
 	$graph_options = [
 		'scales' => [
-			'yAxes' => [
+
+			'y' =>
 				[
-					'scaleLabel' => [
-						'display'     => true,
-						'labelString' => sprintf( '%s (%s)', __( 'Weight', WE_LS_SLUG ), $chart_config[ 'y-axis-unit' ] ),
-						'fontColor'   => $chart_config[ 'font-config' ][ 'fontColor' ],
-						'fontFamily'  => $chart_config[ 'font-config' ][ 'fontFamily' ]
-					],
-					'type'       => 'linear',
-					'ticks'      => [ 'beginAtZero' => $chart_config[ 'begin-y-axis-at-zero' ] ],
-					'display'    => 'true',
+					'display'   => 'auto',
+					'type' => 'linear',
+//					'scaleLabel' => [
+//						'display'     => true,
+//						'labelString' => sprintf( '%s (%s)', __( 'Weight', WE_LS_SLUG ), $chart_config[ 'y-axis-unit' ] ),
+//						'fontColor'   => $chart_config[ 'font-config' ][ 'fontColor' ],
+//						'fontFamily'  => $chart_config[ 'font-config' ][ 'fontFamily' ]
+//					],
+					//'ticks'      => [ 'beginAtZero' => $chart_config[ 'begin-y-axis-at-zero' ] ],
+					'display'    => 'auto',
 					'position'   => 'left',
-					'id'         => AXIS_WEIGHT_AND_TARGET,
-					'gridLines'  => [ 'display' => $chart_config[ 'show-gridlines' ] ]
+					'grid'  => [ 'drawOnChartArea' => $chart_config[ 'show-gridlines' ] ]
 				]
-			]
+
 		],
 		'maintainAspectRatio' => false
 	];
@@ -242,40 +246,52 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 	// Custom fields?
 	if ( true === $chart_config[ 'show-meta-fields' ] && count( $graph_data['datasets'] ) > $chart_config[ 'min-datasets' ] ) {
 
-		$graph_options['scales']['yAxes'][] =
+		$graph_options['scales']['y1'] =
 			[
-				'scaleLabel' => [
-					'display'     => true,
-					'labelString' => __( 'Additional Fields', WE_LS_SLUG ),
-					'fontColor'   => $chart_config['font-config']['fontColor'],
-					'fontFamily'  => $chart_config['font-config']['fontFamily']
+				'display'    => true,
+				'type'  => 'linear',
+				'title' => [
+					'display'   => true,
+					'text'      => __( 'Additional Fields', WE_LS_SLUG ),
+					'color'     => $chart_config['font-config']['fontColor'],
+					'font'      => [ 'family' => $chart_config[ 'font-config' ][ 'fontFamily' ] ],
 				],
-				'type'       => 'linear',
-				'ticks'      => [ 'beginAtZero' => $chart_config[ 'begin-y-axis-at-zero' ] ],
-				'display'    => 'true',
+				'type'  => 'linear',
+		//		'ticks'      => [ 'beginAtZero' => $chart_config[ 'begin-y-axis-at-zero' ] ],
 				'position'   => 'right',
-				'id'         => AXIS_META_FIELDS,
-				'gridLines'  => [ 'display' => $chart_config['show-gridlines'] ]
+				'grid'  => [ 'drawOnChartArea' => $chart_config[ 'show-gridlines' ] ]
 			];
 	}
 
 	// Hide Gridlines?
 	if ( false === $chart_config[ 'show-gridlines' ] ) {
-		$graph_options[ 'scales' ][ 'xAxes' ] = [ [ 'gridLines' => [ 'display' => false ] ] ];
+		$graph_options[ 'scales' ][ 'x' ][ 'grid' ]  = [ 'drawOnChartArea' => $chart_config[ 'show-gridlines' ] ];
 	}
 
-	// Legend
-	$graph_options['legend'] = [
-		'position' => 'bottom',
-		'labels'   => [
-			'position'   => 'bottom',
-			'boxWidth'   => 10,
-			'fontSize'   => 10,
-			'fontColor'  => $chart_config[ 'font-config' ][ 'fontColor' ],
-			'fontFamily' => $chart_config[ 'font-config' ][ 'fontFamily' ]
-		]
+	// Graph title
+	$graph_options[ 'plugins' ][ 'title' ] = [ 'display' => true, 'text' => 'Title' ];
+
+	// Graph legend
+	$graph_options[ 'plugins' ][ 'legend' ][ 'labels' ] = [ 'color'     => $chart_config[ 'font-config' ][ 'fontColor' ],
+															'display'   => true,
+				                                            'font'      => [ 'family' => $chart_config[ 'font-config' ][ 'fontFamily' ] ],
+				                                            'position'  => 'bottom'
 	];
 
+
+	// Legend
+//	$graph_options['legend'] = [
+//		'position' => 'bottom',
+//		'labels'   => [
+//			'position'   => 'bottom',
+//			'boxWidth'   => 10,
+//			'fontSize'   => 10,
+//			'fontColor'  => $chart_config[ 'font-config' ][ 'fontColor' ],
+//			'fontFamily' => $chart_config[ 'font-config' ][ 'fontFamily' ]
+//		]
+//	];
+//	print_r($graph_data);
+//print_r($graph_options);
 	wp_localize_script( 'jquery-chart-ws-ls', $chart_config['id'] . '_options', $graph_options );
 
 	return sprintf( '<div class="ws-ls-chart-container" %4$s>
@@ -295,6 +311,7 @@ function ws_ls_charting_enqueue_scripts() {
 
 	$minified = ws_ls_use_minified();
 
-	wp_enqueue_script( 'ws-ls-chart-js', WE_LS_CDN_CHART_JS, [ 'jquery' ], WE_LS_CURRENT_VERSION );
+	wp_enqueue_script( 'ws-ls-chart-js-polyfill', 'https://polyfill.io/v3/polyfill.min.js?features=ResizeObserver', [ 'jquery' ], WE_LS_CURRENT_VERSION );
+	wp_enqueue_script( 'ws-ls-chart-js', WE_LS_CDN_CHART_JS, [ 'jquery', 'ws-ls-chart-js-polyfill' ], WE_LS_CURRENT_VERSION );
 	wp_enqueue_script( 'jquery-chart-ws-ls', plugins_url( '../assets/js/ws-ls-chart' . $minified . '.js', __FILE__ ), [ 'ws-ls-chart-js' ], WE_LS_CURRENT_VERSION, true );
 }

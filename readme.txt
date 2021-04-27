@@ -166,7 +166,7 @@ TODO:
   - Hooks firing on a new entry - what listens for: weight-measurements do we need to expand?
   - On user data, difference value
   - Weight entry forms. What do we do? Option for no weight?
-    - Modify commented out code in ws-ls-entry-form for optional weight values
+  - Modify commented out code in ws-ls-entry-form for optional weight values
   - Custom field only form
   - Examine all SQL queries that reference WE_LS_TABLENAME
 
@@ -175,6 +175,7 @@ Files OK: PRO:  harris-b, macro-calc, bmr, shortcode.wlt, challenges, awards, me
 
 = * =
 
+* Improvement: Upgrading charting library (chart.js) and underlying code to 3.2.0.
 * Bug fix: Fixed "wlt-awards-deleting" hook from incorrectly firing.
 
 = 8.5.1 =
