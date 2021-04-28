@@ -35,7 +35,6 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 												'weight-line-color'     => get_option( 'ws-ls-line-colour', '#aeaeae' ),
 												'bar-weight-fill-color' => get_option( 'ws-ls-line-fill-colour', '#f9f9f9' ),
 												'target-fill-color'     => get_option( 'ws-ls-target-colour', '#76bada' ),
-												'begin-y-axis-at-zero'  => ws_ls_option_to_bool( 'ws-ls-axes-start-at-zero', 'n' ),
 												'reverse'               => false
 	] );
 
@@ -227,23 +226,18 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 	// Set initial y axis for weight
 	$graph_options = [
 		'scales' => [
-
-			'y' =>
-				[
-					'display'   => 'auto',
-					'type' => 'linear',
-//					'scaleLabel' => [
-//						'display'     => true,
-//						'labelString' => sprintf( '%s (%s)', __( 'Weight', WE_LS_SLUG ), $chart_config[ 'y-axis-unit' ] ),
-//						'fontColor'   => $chart_config[ 'font-config' ][ 'fontColor' ],
-//						'fontFamily'  => $chart_config[ 'font-config' ][ 'fontFamily' ]
-//					],
-					//'ticks'      => [ 'beginAtZero' => $chart_config[ 'begin-y-axis-at-zero' ] ],
-					'display'    => 'auto',
-					'position'   => 'left',
-					'grid'  => [ 'drawOnChartArea' => $chart_config[ 'show-gridlines' ] ]
-				]
-
+						'y' =>
+								[
+									'display'   => 'true',
+									'grid'      => [ 'drawOnChartArea' => $chart_config[ 'show-gridlines' ] ],
+									'position'  => 'left',
+									'title'     => [	'display'   => true,
+														'text'      => __( 'Target', WE_LS_SLUG ),
+														'color'     => $chart_config['font-config']['fontColor'],
+														'font'      => [ 'family' => $chart_config[ 'font-config' ][ 'fontFamily' ] ]
+									],
+									'type' => 'linear'
+								]
 		],
 		'maintainAspectRatio' => false
 	];
@@ -251,21 +245,18 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 	// Custom fields?
 	if ( true === $chart_config[ 'show-meta-fields' ] && count( $graph_data['datasets'] ) > $chart_config[ 'min-datasets' ] ) {
 
-		$graph_options['scales']['y1'] =
-			[
-				'display'    => true,
-				'type'  => 'linear',
-				'title' => [
-					'display'   => true,
-					'text'      => __( 'Additional Fields', WE_LS_SLUG ),
-					'color'     => $chart_config['font-config']['fontColor'],
-					'font'      => [ 'family' => $chart_config[ 'font-config' ][ 'fontFamily' ] ],
-				],
-				'type'  => 'linear',
-		//		'ticks'      => [ 'beginAtZero' => $chart_config[ 'begin-y-axis-at-zero' ] ],
-				'position'   => 'right',
-				'grid'  => [ 'drawOnChartArea' => $chart_config[ 'show-gridlines' ] ]
-			];
+		$graph_options['scales']['y1'] =	[
+												'display'       => true,
+												'grid'          => [ 'drawOnChartArea' => $chart_config[ 'show-gridlines' ] ],
+												'position'      => 'right',
+												'title' => [
+													'display'   => true,
+													'text'      => __( 'Additional Fields', WE_LS_SLUG ),
+													'color'     => $chart_config['font-config']['fontColor'],
+													'font'      => [ 'family' => $chart_config[ 'font-config' ][ 'fontFamily' ] ],
+												],
+												'type'  => 'linear',
+											];
 	}
 
 	// Hide Gridlines?

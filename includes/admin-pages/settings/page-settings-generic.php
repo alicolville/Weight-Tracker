@@ -723,20 +723,6 @@ function ws_ls_settings_page_generic() {
 														<p><?php echo __('If enabled, enter a HEX colour code to use for the Target line on chart.', WE_LS_SLUG); ?></p>
 													</td>
 												</tr>
-												<tr >
-													<th scope="row"><?php echo __( 'Should y Axes start at 0?', WE_LS_SLUG ); ?></th>
-													<td>
-														<?php
-															$start_at_zero = get_option( 'ws-ls-axes-start-at-zero', 'no' );
-														?>
-														<select id="ws-ls-axes-start-at-zero" name="ws-ls-axes-start-at-zero">
-															<option value="no" <?php selected( $start_at_zero, 'no' ); ?>><?php echo __( 'No', WE_LS_SLUG ); ?></option>
-															<option value="yes" <?php selected( $start_at_zero, 'yes' ); ?>><?php echo __( 'Yes', WE_LS_SLUG ); ?></option>
-
-														</select>
-														<p><?php echo __('If enabled, y Axes shall start at 0. Otherwise, they are automatically calculated.', WE_LS_SLUG); ?></p>
-													</td>
-												</tr>
 												<?php
 
 												$text_colour = get_option( 'ws-ls-text-colour', '#AEAEAE' );
@@ -1136,7 +1122,6 @@ function ws_ls_register_settings(){
     register_setting( 'we-ls-options-group', 'ws-ls-line-colour' );
     register_setting( 'we-ls-options-group', 'ws-ls-use-us-dates' );
     register_setting( 'we-ls-options-group', 'ws-ls-disable-css' );
-	register_setting( 'we-ls-options-group', 'ws-ls-axes-start-at-zero' );
 	register_setting( 'we-ls-options-group', 'ws-ls-edit-permissions' );
     register_setting( 'we-ls-options-group', 'ws-ls-text-colour' );
     register_setting( 'we-ls-options-group', 'ws-ls-font-family' );
