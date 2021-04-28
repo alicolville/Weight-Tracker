@@ -81,11 +81,13 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 												'spanGaps'    => true
 	];
 
+	$bezier_line_tension = $chart_config[ 'bezier' ] ? 0.4 : 0;
+
 	// Determine fill based on chart type
 	if ( 'line' == $chart_config['type'] ) {
 
 		// Default to no fill
-		$graph_data[ 'datasets' ][ DATA_WEIGHT ][ 'lineTension' ] = $chart_config[ 'bezier' ] ? 0.4 : 0;
+		$graph_data[ 'datasets' ][ DATA_WEIGHT ][ 'lineTension' ] = $bezier_line_tension;
 		$graph_data[ 'datasets' ][ DATA_WEIGHT ][ 'pointRadius' ] = $chart_config[ 'point-size' ];
 		$graph_data[ 'datasets' ][ DATA_WEIGHT ][ 'borderWidth' ] = $chart_config[ 'line-thickness' ];
 
@@ -155,16 +157,17 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 			$chart_config['meta-fields'][ $i ]['index'] = $meta_dataset_index;
 
 			$graph_data['datasets'][ $meta_dataset_index ] = [
-				'label'           => ( $use_abbreviation ) ? $field['abv'] : $field['field_name'],
-				'pointRadius'     => $chart_config['point-size'],
-				'borderColor'     => $field[ 'plot_colour' ],
-				'borderWidth'     => $chart_config[ 'line-thickness' ],
-				'fill'            => false,
-				'type'            => 'line',
-				'data'            => [],
-				'spanGaps'        => true,
-				'backgroundColor' => ws_ls_convert_hex_to_rgb( $field['plot_colour'], 0.7 ),
-				'yAxisID'         => AXIS_META_FIELDS
+																'label'           => ( $use_abbreviation ) ? $field['abv'] : $field['field_name'],
+																'pointRadius'     => $chart_config['point-size'],
+																'borderColor'     => $field[ 'plot_colour' ],
+																'borderWidth'     => $chart_config[ 'line-thickness' ],
+																'fill'            => false,
+																'type'            => 'line',
+																'data'            => [],
+																'spanGaps'        => true,
+																'lineTension'     => $bezier_line_tension,
+																'backgroundColor' => ws_ls_convert_hex_to_rgb( $field['plot_colour'], 0.7 ),
+																'yAxisID'         => AXIS_META_FIELDS
 			];
 
 			$meta_dataset_index ++;
