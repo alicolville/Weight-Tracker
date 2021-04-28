@@ -787,19 +787,6 @@ function ws_ls_settings_page_generic() {
 													</td>
 												</tr>
 												<tr  class="<?php echo $disable_if_not_pro_class; ?>">
-													<th scope="row"><?php echo __( 'Display points on chart?', WE_LS_SLUG ); ?></th>
-													<td>
-														<?php
-															$allow_points = get_option( 'ws-ls-allow-points', 'yes' );
-														?>
-														<select id="ws-ls-allow-points" name="ws-ls-allow-points">
-															<option value="yes" <?php selected( $allow_points, 'yes' ); ?>><?php echo __( 'Yes', WE_LS_SLUG ); ?></option>
-															<option value="no" <?php selected( $allow_points, 'no' ); ?>><?php echo __( 'No', WE_LS_SLUG ); ?></option>
-														</select>
-														<p><?php echo __('If enabled, data points shall be drawn on the chart.', WE_LS_SLUG); ?></p>
-													</td>
-												</tr>
-												<tr  class="<?php echo $disable_if_not_pro_class; ?>">
 													<th scope="row" class="<?php echo $disable_if_not_pro_class; ?>"><?php echo __( 'Point thickness', WE_LS_SLUG ); ?></th>
 													<td>
 														<?php
@@ -816,7 +803,7 @@ function ws_ls_settings_page_generic() {
 																	}
 																?>
 														</select>
-														<p><?php echo __('Specifies the point thickness on a line chart.', WE_LS_SLUG); ?></p>
+														<p><?php echo __('Specifies the point thickness on a line chart. Set to 0 to hide points.', WE_LS_SLUG); ?></p>
 													</td>
 												</tr>
 												<tr  class="<?php echo $disable_if_not_pro_class; ?>">
@@ -1116,8 +1103,7 @@ function ws_ls_register_settings(){
     register_setting( 'we-ls-options-group', 'ws-ls-units' );
     register_setting( 'we-ls-options-group', 'ws-ls-allow-targets' );
 	register_setting( 'we-ls-options-group', 'ws-ls-caching' );
-	register_setting( 'we-ls-options-group', 'ws-ls-allow-points' );
-    register_setting( 'we-ls-options-group', 'ws-ls-target-colour' );
+	register_setting( 'we-ls-options-group', 'ws-ls-target-colour' );
     register_setting( 'we-ls-options-group', 'ws-ls-line-fill-colour' );
     register_setting( 'we-ls-options-group', 'ws-ls-line-colour' );
     register_setting( 'we-ls-options-group', 'ws-ls-use-us-dates' );

@@ -179,6 +179,7 @@ Files OK: PRO:  harris-b, macro-calc, bmr, shortcode.wlt, challenges, awards, me
 * Improvement: Added support for curved (bezier) lines for custom fields when plotted on charts.
 * Bug fix: Fixed "wlt-awards-deleting" hook from incorrectly firing.
 * Change: Removed redundant setting "Should y Axes start at 0?" as chart.js 3 treats y axes differently.
+* Change: Removed redundant setting "Display points on chart?" this is now controlled by "Point thickness".
 
 = 8.5.1 =
 

@@ -56,7 +56,6 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 	$chart_config[ 'show-meta-fields' ] = ( true === ws_ls_to_bool( $chart_config[ 'show-meta-fields' ] ) &&
 	                                        false === empty( $chart_config[ 'meta-fields' ] ) );
 	$chart_config[ 'y-axis-unit' ]      = ( 'kg' !== ws_ls_setting( 'weight-unit', $chart_config[ 'user-id' ] ) ) ? __( 'lbs', WE_LS_SLUG ) : __( 'kg', WE_LS_SLUG );
-	$chart_config[ 'points-enabled' ]   = ws_ls_option_to_bool( 'ws-ls-allow-points', 'yes', true );
 	$chart_config[ 'point-size' ]       = ws_ls_option_to_int( 'ws-ls-point-size', 3, true );
 	$chart_config[ 'line-thickness' ]   = 2;
 	$chart_config[ 'target-weight' ]    = false;
@@ -276,7 +275,7 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 				                                            'font'      => [ 'family' => $chart_config[ 'font-config' ][ 'fontFamily' ] ],
 				                                            'position'  => 'bottom'
 	];
-	
+
 	wp_localize_script( 'jquery-chart-ws-ls', $chart_config['id'] . '_options', $graph_options );
 
 	return sprintf( '<div class="ws-ls-chart-container" %4$s>
