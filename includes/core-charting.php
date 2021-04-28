@@ -26,6 +26,7 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 												'custom-field-groups'   => '',      // If specified, only show custom fields that are within these groups
 												'custom-field-slugs'    => '',      // If specified, only show the custom fields that are specified
 												'height'                => 250,
+												'message-no-data'       => __( 'No entries could be found for this user.', WE_LS_SLUG ),
 												'show-gridlines'        => ws_ls_option_to_bool( 'ws-ls-grid-lines', 'yes', true ),
 												'show-target'           => true,
 												'show-meta-fields'      => true,
@@ -37,6 +38,10 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 												'begin-y-axis-at-zero'  => ws_ls_option_to_bool( 'ws-ls-axes-start-at-zero', 'n' ),
 												'reverse'               => false
 	] );
+
+	if ( true === empty( $weight_data ) ) {
+		return esc_html( $chart_config[ 'message-no-data' ] );
+	}
 
 	$chart_config[ 'id' ]               = ws_ls_component_id();
 	$chart_config[ 'font-config' ]      = [
