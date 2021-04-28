@@ -2,8 +2,7 @@
 
 defined( 'ABSPATH' ) or die( 'Jog on!' );
 
-define( 'DATA_WEIGHT', 0 );
-define( 'DATA_TARGET', 1 );
+
 define( 'AXIS_WEIGHT_AND_TARGET', 'y' );
 define( 'AXIS_META_FIELDS', 'y1' );
 
@@ -28,6 +27,7 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 												'height'                => 250,
 												'message-no-data'       => __( 'No entries could be found for this user.', WE_LS_SLUG ),
 												'show-gridlines'        => ws_ls_option_to_bool( 'ws-ls-grid-lines', 'yes', true ),
+												'show-weight'           => true,
 												'show-target'           => true,
 												'show-meta-fields'      => true,
 												'type'                  => get_option( 'ws-ls-chart-type', 'line' ),
@@ -65,46 +65,58 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 	if ( false === WS_LS_IS_PRO ) {
 		$chart_config['type'] = 'line';
 	}
-
+	$chart_config[ 'show-weight' ] = false;
+	$chart_config[ 'show-target' ] = false;
 	// ----------------------------------------------------------------------
 	// Weight
 	// ----------------------------------------------------------------------
 
-	$graph_data['labels']                  = [];    // "labels" are the labels along the x axis (dates)
-	$graph_data['datasets'][ DATA_WEIGHT ] = [
-												'fill'        => false,
-												'label'       => __( 'Weight', WE_LS_SLUG ),
-												'borderColor' => $chart_config[ 'weight-line-color' ],
-												'data'        => [],
-												'yAxisID'     => AXIS_WEIGHT_AND_TARGET,
-												'spanGaps'    => true
-	];
+	$bezier_line_tension    = $chart_config[ 'bezier' ] ? 0.4 : 0;
+	$graph_data['labels']   = [];    // "labels" are the labels along the x axis (dates)
+	$dataset_index_count    = 0;
+	$index_weight           = 0;
+	$index_target           = 0;
 
-	$bezier_line_tension = $chart_config[ 'bezier' ] ? 0.4 : 0;
+	if ( true === $chart_config[ 'show-weight' ] ) {
 
-	// Determine fill based on chart type
-	if ( 'line' == $chart_config['type'] ) {
+		$index_weight = $dataset_index_count;
 
-		// Default to no fill
-		$graph_data[ 'datasets' ][ DATA_WEIGHT ][ 'lineTension' ] = $bezier_line_tension;
-		$graph_data[ 'datasets' ][ DATA_WEIGHT ][ 'pointRadius' ] = $chart_config[ 'point-size' ];
-		$graph_data[ 'datasets' ][ DATA_WEIGHT ][ 'borderWidth' ] = $chart_config[ 'line-thickness' ];
+		$graph_data['datasets'][ $index_weight ] = [
+			'fill'        => false,
+			'label'       => __( 'Weight', WE_LS_SLUG ),
+			'borderColor' => $chart_config[ 'weight-line-color' ],
+			'data'        => [],
+			'yAxisID'     => AXIS_WEIGHT_AND_TARGET,
+			'spanGaps'    => true
+		];
 
-		// Add a fill colour under weight line?
-		if ( true === ws_ls_option_to_bool( 'ws-ls-fill-under-weight-line', 'no', true ) ) {
 
-			$line_colour  = ws_ls_option( 'ws-ls-fill-under-weight-line-colour', '#aeaeae', true );
-			$line_opacity = ws_ls_option( 'ws-ls-fill-under-weight-line-opacity', '0.5', true );
+		// Determine fill based on chart type
+		if ( 'line' == $chart_config['type'] ) {
 
-			$graph_data[ 'datasets' ][ DATA_WEIGHT ][ 'fill' ]            = true;
-			$graph_data[ 'datasets' ][ DATA_WEIGHT ][ 'backgroundColor' ] = ws_ls_convert_hex_to_rgb( $line_colour, $line_opacity );
+			// Default to no fill
+			$graph_data[ 'datasets' ][ $index_weight ][ 'lineTension' ] = $bezier_line_tension;
+			$graph_data[ 'datasets' ][ $index_weight ][ 'pointRadius' ] = $chart_config[ 'point-size' ];
+			$graph_data[ 'datasets' ][ $index_weight ][ 'borderWidth' ] = $chart_config[ 'line-thickness' ];
+		//	$graph_data[ 'datasets' ][ DATA_WEIGHT ][ 'hidden' ] = true;
+			// Add a fill colour under weight line?
+			if ( true === ws_ls_option_to_bool( 'ws-ls-fill-under-weight-line', 'no', true ) ) {
+
+				$line_colour  = ws_ls_option( 'ws-ls-fill-under-weight-line-colour', '#aeaeae', true );
+				$line_opacity = ws_ls_option( 'ws-ls-fill-under-weight-line-opacity', '0.5', true );
+
+				$graph_data[ 'datasets' ][ $index_weight ][ 'fill' ]            = true;
+				$graph_data[ 'datasets' ][ $index_weight ][ 'backgroundColor' ] = ws_ls_convert_hex_to_rgb( $line_colour, $line_opacity );
+			}
+
+		} else {
+
+			$graph_data[ 'datasets' ][ $index_weight ][ 'fill' ]            = false;
+			$graph_data[ 'datasets' ][ $index_weight ][ 'backgroundColor' ] = ws_ls_convert_hex_to_rgb( $chart_config[ 'bar-weight-fill-color' ], 0.5 );
+			$graph_data[ 'datasets' ][ $index_weight ][ 'borderWidth' ]     = 2;
 		}
 
-	} else {
-
-		$graph_data[ 'datasets' ][ DATA_WEIGHT ][ 'fill' ]            = false;
-		$graph_data[ 'datasets' ][ DATA_WEIGHT ][ 'backgroundColor' ] = ws_ls_convert_hex_to_rgb( $chart_config[ 'bar-weight-fill-color' ], 0.5 );
-		$graph_data[ 'datasets' ][ DATA_WEIGHT ][ 'borderWidth' ]     = 2;
+		$dataset_index_count++;
 	}
 
 	// ----------------------------------------------------------------------
@@ -113,12 +125,14 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 
 	if ( true === $chart_config[ 'show-target' ] ) {
 
+		$index_target = $dataset_index_count;
+
 		$chart_config[ 'target-weight' ] = ws_ls_target_get( $chart_config[ 'user-id' ] );
 
 		// If target weights are enabled, then include into javascript data object
 		if ( false === empty( $chart_config[ 'target-weight' ] ) ) {
 
-			$graph_data['datasets'][ DATA_TARGET ] = [  'label'             => __( 'Target', WE_LS_SLUG ),
+			$graph_data['datasets'][ $index_target ] = [  'label'           => __( 'Target', WE_LS_SLUG ),
 														'borderColor'       => $chart_config[ 'target-fill-color' ],
 														'borderWidth'       => $chart_config[ 'line-thickness' ],
 														'pointRadius'       => 0,
@@ -135,9 +149,10 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 			$chart_config[ 'show-target' ] = false;
 		}
 
+		$dataset_index_count++;
 	}
 
-	$chart_config[ 'min-datasets' ] = ( true === $chart_config[ 'show-target' ] ) ? 2 : 1;
+	$chart_config[ 'min-datasets' ] = $dataset_index_count;
 
 	// ----------------------------------------------------------------------------
 	// Custom Fields - setup lines for each
@@ -181,12 +196,15 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 
 		foreach ( $weight_data as $weight ) {
 
-			$graph_data['labels'][]                          = $weight['chart-date'];
-			$graph_data['datasets'][ DATA_WEIGHT ]['data'][] = ( false === empty( $weight[ 'graph-value' ] ) ) ? $weight[ 'graph-value' ] : NULL;
+			$graph_data['labels'][] = $weight['chart-date'];
+
+			if ( false !== $chart_config[ 'show-weight' ] ) {
+				$graph_data['datasets'][ $index_weight ]['data'][] = ( false === empty( $weight[ 'graph-value' ] ) ) ? $weight[ 'graph-value' ] : NULL;
+			}
 
 			// Add target weight too
 			if ( false !== $chart_config[ 'show-target' ] ) {
-				$graph_data['datasets'][ DATA_TARGET ]['data'][] = $chart_config['target-weight'];
+				$graph_data['datasets'][ $index_target ]['data'][] = $chart_config['target-weight'];
 			}
 
 			// Custom fields
@@ -225,16 +243,18 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 	// Embed JavaScript data object for this graph into page
 	wp_localize_script( 'jquery-chart-ws-ls', $chart_config['id'] . '_data', $graph_data );
 
+	$show_weight_axis = ( true === $chart_config[ 'show-weight' ] || true === $chart_config[ 'show-target' ] );
+
 	// Set initial y axis for weight
 	$graph_options = [
 		'scales' => [
 						'y' =>
 								[
-									'display'   => 'true',
+									'display'   => $show_weight_axis,
 									'grid'      => [ 'drawOnChartArea' => $chart_config[ 'show-gridlines' ] ],
 									'position'  => 'left',
 									'title'     => [	'display'   => true,
-														'text'      => __( 'Target', WE_LS_SLUG ),
+														'text'      => sprintf( '%s (%s)', __( 'Weight', WE_LS_SLUG ), $chart_config[ 'y-axis-unit' ] ),
 														'color'     => $chart_config['font-config']['fontColor'],
 														'font'      => [ 'family' => $chart_config[ 'font-config' ][ 'fontFamily' ] ]
 									],
@@ -250,7 +270,7 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 		$graph_options['scales']['y1'] =	[
 												'display'       => true,
 												'grid'          => [ 'drawOnChartArea' => $chart_config[ 'show-gridlines' ] ],
-												'position'      => 'right',
+												'position'      => ( true === $show_weight_axis ) ? 'right' : 'left',
 												'title' => [
 													'display'   => true,
 													'text'      => __( 'Additional Fields', WE_LS_SLUG ),
