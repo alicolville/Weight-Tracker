@@ -276,21 +276,7 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 				                                            'font'      => [ 'family' => $chart_config[ 'font-config' ][ 'fontFamily' ] ],
 				                                            'position'  => 'bottom'
 	];
-
-
-	// Legend
-//	$graph_options['legend'] = [
-//		'position' => 'bottom',
-//		'labels'   => [
-//			'position'   => 'bottom',
-//			'boxWidth'   => 10,
-//			'fontSize'   => 10,
-//			'fontColor'  => $chart_config[ 'font-config' ][ 'fontColor' ],
-//			'fontFamily' => $chart_config[ 'font-config' ][ 'fontFamily' ]
-//		]
-//	];
-//	print_r($graph_data);
-//print_r($graph_options);
+	
 	wp_localize_script( 'jquery-chart-ws-ls', $chart_config['id'] . '_options', $graph_options );
 
 	return sprintf( '<div class="ws-ls-chart-container" %4$s>
