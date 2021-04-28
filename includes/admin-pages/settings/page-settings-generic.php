@@ -763,7 +763,7 @@ function ws_ls_settings_page_generic() {
 															<option value="abbv" <?php selected( $abbv_or_question, 'abbv' ); ?>><?php echo __( 'Abbreviation', WE_LS_SLUG ); ?></option>
 															<option value="question" <?php selected( $abbv_or_question, 'question' ); ?>><?php echo __( 'Field / Question', WE_LS_SLUG ); ?></option>
 														</select>
-														<p><?php echo __('When displaying a custom field on a chart, which value should be displayed in the chart\`s legend? The field question or abbreviation.', WE_LS_SLUG); ?></p>
+														<p><?php echo __('When displaying a custom field on a chart, which value should be displayed in the chart\'s legend? The field question or abbreviation.', WE_LS_SLUG); ?></p>
 													</td>
 												</tr>
 												<tr>
