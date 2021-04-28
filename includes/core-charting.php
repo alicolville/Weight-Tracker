@@ -66,7 +66,7 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 		$chart_config['type'] = 'line';
 	}
 	$chart_config[ 'show-weight' ] = false;
-	$chart_config[ 'show-target' ] = false;
+	$chart_config[ 'show-target' ] = true;
 	// ----------------------------------------------------------------------
 	// Weight
 	// ----------------------------------------------------------------------
@@ -98,7 +98,7 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 			$graph_data[ 'datasets' ][ $index_weight ][ 'lineTension' ] = $bezier_line_tension;
 			$graph_data[ 'datasets' ][ $index_weight ][ 'pointRadius' ] = $chart_config[ 'point-size' ];
 			$graph_data[ 'datasets' ][ $index_weight ][ 'borderWidth' ] = $chart_config[ 'line-thickness' ];
-		//	$graph_data[ 'datasets' ][ DATA_WEIGHT ][ 'hidden' ] = true;
+	
 			// Add a fill colour under weight line?
 			if ( true === ws_ls_option_to_bool( 'ws-ls-fill-under-weight-line', 'no', true ) ) {
 
@@ -158,6 +158,9 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 	// Custom Fields - setup lines for each
 	// ----------------------------------------------------------------------------
 
+	$y_axis_label       = '';
+	$count_meta_fields  = 0;
+
 	if ( true === $chart_config[ 'show-meta-fields' ] ) {
 
 		$meta_dataset_index = $chart_config['min-datasets']; // Determine data set on whether or not a target weight has been displayed
@@ -184,7 +187,12 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 																'yAxisID'         => AXIS_META_FIELDS
 			];
 
-			$meta_dataset_index ++;
+			if ( false === empty( $field[ 'suffix' ] ) ) {
+				$y_axis_label = $field[ 'suffix' ];
+			}
+
+			$meta_dataset_index++;
+			$count_meta_fields++;
 		}
 	}
 
@@ -264,6 +272,12 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 		'maintainAspectRatio' => false
 	];
 
+	// If we only have one custom field, then use that suffix for the y axis label.
+	if( $count_meta_fields > 1 ||
+	    true === empty( $y_axis_label ) ) {
+		$y_axis_label = __( 'Additional Fields', WE_LS_SLUG );
+	}
+
 	// Custom fields?
 	if ( true === $chart_config[ 'show-meta-fields' ] && count( $graph_data['datasets'] ) > $chart_config[ 'min-datasets' ] ) {
 
@@ -273,7 +287,7 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 												'position'      => ( true === $show_weight_axis ) ? 'right' : 'left',
 												'title' => [
 													'display'   => true,
-													'text'      => __( 'Additional Fields', WE_LS_SLUG ),
+													'text'      => $y_axis_label,
 													'color'     => $chart_config['font-config']['fontColor'],
 													'font'      => [ 'family' => $chart_config[ 'font-config' ][ 'fontFamily' ] ],
 												],
@@ -285,9 +299,6 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 	if ( false === $chart_config[ 'show-gridlines' ] ) {
 		$graph_options[ 'scales' ][ 'x' ][ 'grid' ]  = [ 'drawOnChartArea' => $chart_config[ 'show-gridlines' ] ];
 	}
-
-	// Graph title
-	$graph_options[ 'plugins' ][ 'title' ] = [ 'display' => true, 'text' => 'Title' ];
 
 	// Graph legend
 	$graph_options[ 'plugins' ][ 'legend' ][ 'labels' ] = [ 'color'     => $chart_config[ 'font-config' ][ 'fontColor' ],
