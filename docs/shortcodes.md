@@ -1,6 +1,6 @@
 # Main Shortcodes
 
-The majority of the public facing functionality is implemented using [WordPress shortcodes](https://codex.wordpress.org/Shortcode_API). This allows you to place Weight Tracker functionality amongst your website content. For example, the most popular shortcode of the plugin is [[wt]]({{ site.baseurl }}/shortcodes/wt.html)). To use a shortcode, [place it amongst your website content]({{ site.baseurl }}/assets/images/shortcodes.png)) and save. The shortcode shall then be replaced by the plugin feature. 
+The majority of the public facing functionality are implemented using [WordPress shortcodes](https://codex.wordpress.org/Shortcode_API). This allows you to place Weight Tracker functionality amongst your website content. For example, the most popular shortcode of the plugin is [[wt]]({{ site.baseurl }}/shortcodes/wt.html)). To use a shortcode, [place it amongst your website content]({{ site.baseurl }}/assets/images/shortcodes.png)) and save. The shortcode shall then be replaced by the plugin feature. 
 
 |Shortcode|Description|    
 |--|--|
@@ -14,6 +14,7 @@ The majority of the public facing functionality is implemented using [WordPress 
 |[[wt-calories-table]]({{ site.baseurl }}/shortcodes/wt-calories-table.html)|Displays recommendations on the best way to split your calorie intake.|
 |[[wt-chart]]({{ site.baseurl }}/shortcodes/wt-chart.html)|Displays a chart of the user’s weight / [custom field]({{ site.baseurl }}/custom-fields.html) entries.|
 |[[wt-challenges]]({{ site.baseurl }}/shortcodes/wt-challenges.html)|Display a [Challenge]({{ site.baseurl }}/challenges.html) league table.|
+|[[wt-custom-fields-chart]]({{ site.baseurl }}/shortcodes/wt-custom-fields-chart.html)|Displays a chart of the user’s [custom field]({{ site.baseurl }}/custom-fields.html) entries.|
 |[[wt-form]]({{ site.baseurl }}/shortcodes/wt-form.html)|Display a target or weight entry / [custom fields]({{ site.baseurl }}/custom-fields.html) form.|
 |[[wt-form-target]]({{ site.baseurl }}/shortcodes/wt-form-target.html)|Display a target form.|
 |[[wt-group]]({{ site.baseurl }}/shortcodes/wt-group.html)|Display the user’s current [group]({{ site.baseurl }}/groups.html).
