@@ -19,9 +19,12 @@ function ws_ls_shortcode_chart( $user_defined_arguments ) {
 											'bezier'              	=> ws_ls_option_to_bool( 'ws-ls-bezier-curve' ),
 											'height'              	=> 250,
 											'ignore-login-status' 	=> false,
+											'message-no-data'       => __( 'Currently there is no data to display on the chart.', WE_LS_SLUG ),
 											'max-data-points'     	=> ws_ls_option( 'ws-ls-max-points', '25', true ),
 											'show-gridlines'      	=> ws_ls_option_to_bool( 'ws-ls-grid-lines' ),
 											'show-custom-fields'  	=> true,
+											'show-weight'           => true,
+											'show-target'           => true,
 											'type'                	=> get_option( 'ws-ls-chart-type', 'line' ),
 											'user-id'            	=> get_current_user_id(),
 											'weight-fill-color'   	=> get_option( 'ws-ls-line-fill-colour', '#f9f9f9' ),
@@ -59,6 +62,8 @@ function ws_ls_shortcode_chart( $user_defined_arguments ) {
 	if ( true === empty( $weight_data ) ) {
 		return ws_ls_display_blockquote( __( 'No data could be found for the user.', WE_LS_SLUG ) );
 	}
+
+	$chart_arguments[ 'show-meta-fields' ] = $chart_arguments[ 'show-custom-fields' ];
 
 	return ws_ls_display_chart( $weight_data, $chart_arguments );
 }

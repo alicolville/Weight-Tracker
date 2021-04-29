@@ -38,8 +38,20 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 												'reverse'               => false
 	] );
 
+
 	if ( true === empty( $weight_data ) ) {
 		return esc_html( $chart_config[ 'message-no-data' ] );
+	}
+
+	$chart_config[ 'show-weight' ]      = ws_ls_to_bool( $chart_config[ 'show-weight' ] );
+	$chart_config[ 'show-target' ]      = ws_ls_to_bool( $chart_config[ 'show-target' ] );
+	$chart_config[ 'show-meta-fields' ] = ws_ls_to_bool( $chart_config[ 'show-meta-fields' ] );
+
+	if ( false === $chart_config[ 'show-weight' ] &&
+	         false === $chart_config[ 'show-target' ] &&
+	            false === $chart_config[ 'show-meta-fields' ]
+	) {
+		return __( 'Error. You have disabled all data sets from rendering.', WE_LS_SLUG );
 	}
 
 	$chart_config[ 'id' ]               = ws_ls_component_id();
@@ -65,8 +77,7 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 	if ( false === WS_LS_IS_PRO ) {
 		$chart_config['type'] = 'line';
 	}
-	$chart_config[ 'show-weight' ] = false;
-	$chart_config[ 'show-target' ] = true;
+
 	// ----------------------------------------------------------------------
 	// Weight
 	// ----------------------------------------------------------------------
@@ -98,7 +109,7 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 			$graph_data[ 'datasets' ][ $index_weight ][ 'lineTension' ] = $bezier_line_tension;
 			$graph_data[ 'datasets' ][ $index_weight ][ 'pointRadius' ] = $chart_config[ 'point-size' ];
 			$graph_data[ 'datasets' ][ $index_weight ][ 'borderWidth' ] = $chart_config[ 'line-thickness' ];
-	
+
 			// Add a fill colour under weight line?
 			if ( true === ws_ls_option_to_bool( 'ws-ls-fill-under-weight-line', 'no', true ) ) {
 
@@ -232,6 +243,10 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 		}
 	}
 
+	if ( true === empty( $graph_data['datasets'] ) ) {
+		return esc_html( $chart_config[ 'message-no-data' ] );
+	}
+
 	// Remove all data sets that have no data from the graph
 	$graph_data['datasets'] = array_filter( $graph_data['datasets'], function ( $dataset ) {
 
@@ -245,6 +260,7 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 	// If we strip a meta field out due to above, then we may have a missing array index e.g. 0,1,2,3,5, we need this line to
 	// reshuffle and allow the chart to render.
 	$graph_data['datasets'] = array_values($graph_data['datasets']);
+
 
 	ws_ls_charting_enqueue_scripts();
 
