@@ -162,7 +162,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 TODO:
 
-  - Charts without weight entries/target on
+  - New shortcode [wt-custom-field-chart]. Wrap around existing chart one, but set weight/target to false.
   - Hooks firing on a new entry - what listens for: weight-measurements do we need to expand?
   - On user data, difference value
   - Weight entry forms. What do we do? Option for no weight?
@@ -170,7 +170,7 @@ TODO:
   - Custom field only form
   - Examine all SQL queries that reference WE_LS_TABLENAME
 
-Files OK: PRO:  harris-b, macro-calc, bmr, shortcode.wlt, challenges, awards, meta-fields, stats
+Files OK: PRO:  harris-b, macro-calc, bmr, shortcode.wlt, challenges, awards, meta-fields, stats, core-charting
 
 
 = * =
