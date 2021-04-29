@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight,tracker,chart,bmi,bmr,macronutrient,measure,awards,custom fields,history,measurements,data
 Requires at least: 5.2
 Tested up to: 5.7
-Stable tag: 8.5.1
+Stable tag: 9.0
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -173,7 +173,7 @@ TODO:
 Files OK: PRO:  harris-b, macro-calc, bmr, shortcode.wlt, challenges, awards, meta-fields, stats, core-charting
 
 
-= * =
+= 9.0 =
 
 * New feature: New shortcode: [wt-custom-fields-chart] - display custom fields only on a chart. Read more https://docs.yeken.uk/shortcodes/wt-custom-fields-chart.html
 * New feature: [wt-chart] shortcode can be used to display custom fields only (i.e. hide weight entries/targets). Use the new shortcode arguments 'show-weight' and 'show-target'. Read more https://docs.yeken.uk/shortcodes/wt-chart.html
