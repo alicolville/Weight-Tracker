@@ -162,7 +162,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 TODO:
 
-  - New shortcode [wt-custom-field-chart]. Wrap around existing chart one, but set weight/target to false.
+
   - Hooks firing on a new entry - what listens for: weight-measurements do we need to expand?
   - On user data, difference value
   - Weight entry forms. What do we do? Option for no weight?
