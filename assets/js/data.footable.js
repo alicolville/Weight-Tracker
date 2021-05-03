@@ -18,17 +18,21 @@ jQuery( document ).ready(function ( $, undefined ) {
         ws_ls_log('Weight Entries: Fetching Data: ' + table_id );
 
         let data = {
-                        'enable-meta-fields':   $( this ).data('enable-meta-fields' ),
-                        'custom-field-groups':  $( this ).data('custom-field-groups' ),
-                        'custom-field-slugs':   $( this ).data('custom-field-slugs' ),
-                        'front-end' :           ws_ls_in_front_end(),
-                        'is-admin' :            ws_user_table_config[ 'is-admin' ],
-                        'max_entries':          $( this ).data( 'max-entries' ),
-                        'user_id':              $( this ).data('user-id' ),
-                        'small_width':          $( this ).data('small-width' ),
-                        'table_id':             table_id,
-                        'week':                 $( this ).data( 'week' ),
-                        'bmi-format':           $( this ).data( 'bmi-format' )
+                        'enable-bmi':             $( this ).data('enable-bmi' ),
+                        'enable-notes':           $( this ).data('enable-notes' ),
+                        'enable-weight':          $( this ).data('enable-weight' ),
+                        'enable-meta-fields':     $( this ).data('enable-meta-fields' ),
+                        'custom-field-groups':    $( this ).data('custom-field-groups' ),
+                        'custom-field-slugs':     $( this ).data('custom-field-slugs' ),
+                        'custom-field-col-size':  $( this ).data('custom-field-col-size' ),
+                        'front-end' :             ws_ls_in_front_end(),
+                        'is-admin' :              ws_user_table_config[ 'is-admin' ],
+                        'max_entries':            $( this ).data( 'max-entries' ),
+                        'user_id':                $( this ).data('user-id' ),
+                        'small_width':            $( this ).data('small-width' ),
+                        'table_id':               table_id,
+                        'week':                   $( this ).data( 'week' ),
+                        'bmi-format':             $( this ).data( 'bmi-format' )
         };
 
         ws_ls_post_data_to_WP( 'table_data', data, ws_ls_callback_setup_table )

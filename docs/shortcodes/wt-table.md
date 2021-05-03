@@ -16,5 +16,8 @@ The shortcode supports the following arguments:
 |custom-field-groups (8.4+)|	Specify one or more [custom field]({{ site.baseurl }}/custom-fields.html) group slugs. Specifying groups will ensure that only custom fields within those groups are displayed on the control.	|An individual slug or multiple slugs comma delimited.	|[wt-table custom-field-groups='measurements'] [wt-table custom-field-groups='measurements,fitness-test']
 |custom-field-slugs (8.4+)|	Specify one or more [custom field]({{ site.baseurl }}/custom-fields.html) slugs. Specifying slugs will ensure only the fields specified are displayed on the control.|	An individual slug or multiple slugs comma delimited.|	[wt-table custom-field-slugs='waist'] [wt-table custom-field-slugs='waist,bicep,distance-run']
 |enable-add-edit	|If set to true (default is false) show the delete/edit icons to allow a users to edit their data.	|true or false (default)|	[wt-table enable-add-edit=true]
+|enable-bmi|	If set to false (default is true), BMI will be hidden from each row.|	true (default) or false	|[wt-table enable-bmi=true]
+|enable-notes|	If set to false (default is true), notes will be hidden from each row.|	true (default) or false	|[wt-table enable-notes=true]
+|enable-weight|	If set to false (default is true), Weight and Weight difference will be hidden from each row.|	true (default) or false	|[wt-table enable-weight=true]
 |enable-custom-fields|	If set to true (default is false), meta fields shall be included in each row.|	true or false (default)	|[wt-table enable-custom-fields=true]
 |user-id|By default, the shortcode will display the table for the current user. You can display the table for another user by setting this argument to the relevant user ID.|Numeric| [wt-table user-id="1"]

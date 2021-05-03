@@ -175,9 +175,11 @@ Files OK: PRO:  harris-b, macro-calc, bmr, shortcode.wlt, challenges, awards, me
 
 = 9.0 =
 
+* New feature: New shortcode: [wt-custom-fields-table] - display custom fields entries in a table. Read more https://docs.yeken.uk/shortcodes/wt-custom-fields-table.html
 * New feature: New shortcode: [wt-custom-fields-chart] - display custom fields only on a chart. Read more https://docs.yeken.uk/shortcodes/wt-custom-fields-chart.html
 * New feature: [wt-chart] shortcode can be used to display custom fields only (i.e. hide weight entries/targets). Use the new shortcode arguments 'show-weight' and 'show-target'. Read more https://docs.yeken.uk/shortcodes/wt-chart.html
 * New feature: [wt-chart] new argument "message-no-data" to specify the error message to display when there is no data to display on the chart. Read more https://docs.yeken.uk/shortcodes/wt-chart.html
+* Improvement: New arguments for shortcode [wt-table] 'enable-bmi', 'enable-notes'and 'enable-weight'. Read more https://docs.yeken.uk/shortcodes/wt-table.html
 * Improvement: Upgrading charting library (chart.js) and underlying code to 3.2.0.
 * Improvement: Added support for curved (bezier) lines for custom fields when plotted on charts.
 * Bug fix: Fixed "wlt-awards-deleting" hook from incorrectly firing.

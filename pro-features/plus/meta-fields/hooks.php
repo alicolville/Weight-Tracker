@@ -243,7 +243,7 @@ add_action( 'wlt-hook-data-user-deleted', 'ws_ls_meta_fields_delete_for_given_us
 function ws_ls_meta_fields_shortcode_chart( $user_defined_arguments ) {
 
 	if ( false === ws_ls_meta_fields_is_enabled() ) {
-		return false;
+		return ws_ls_display_pro_upgrade_notice_for_shortcode();
 	}
 
 	if ( false === is_array( $user_defined_arguments ) ) {
@@ -257,3 +257,27 @@ function ws_ls_meta_fields_shortcode_chart( $user_defined_arguments ) {
 	return ws_ls_shortcode_chart( $user_defined_arguments );
 }
 add_shortcode( 'wt-custom-fields-chart', 'ws_ls_meta_fields_shortcode_chart' );
+
+/**
+ * Render data table [wt-custom-fields-table]
+ * @param $user_defined_arguments
+ *
+ * @return string
+ */
+function ws_ls_meta_fields_shortcode_table( $user_defined_arguments ) {
+
+	if ( false === ws_ls_meta_fields_is_enabled() ) {
+		return ws_ls_display_pro_upgrade_notice_for_shortcode();
+	}
+
+	$arguments = shortcode_atts( [  'enable-bmi'            => false,
+	                                'enable-notes'          => false,
+	                                'enable-weight'         => false,
+	                                'enable-meta-fields'    => true,
+	                                'custom-field-groups'   => '',      // If specified, only show custom fields that are within these groups
+	                                'custom-field-slugs'    => '',      // If specified, only show the custom fields that are specified
+	                                'custom-field-col-size' => 'x-large' ] , $user_defined_arguments );
+
+	return ws_ls_shortcode_table( $arguments );
+}
+add_shortcode( 'wt-custom-fields-table', 'ws_ls_meta_fields_shortcode_table' );

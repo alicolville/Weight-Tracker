@@ -47,6 +47,7 @@ Custom fields are visible within data tables and charts (if a numeric custom fie
 The following shortcodes are available for custom fields:
 
  - [[wt-custom-fields-chart]]({{ site.baseurl }}/shortcodes/wt-custom-fields-chart.html)
+ - [[wt-custom-fields-table]]({{ site.baseurl }}/shortcodes/wt-custom-fields-table.html)
  - [[wt-photo-count]]({{ site.baseurl }}/shortcodes/wt-photo-count.html)
  - [[wt-photo-oldest]]({{ site.baseurl }}/shortcodes/wt-photo-oldest.html)
  - [[wt-photo-recent]]({{ site.baseurl }}/shortcodes/wt-photo-recent.html)
