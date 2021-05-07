@@ -95,10 +95,10 @@ function ws_ls_data_table_render( $arguments = [] ) {
 			esc_attr( $arguments[ 'custom-field-groups' ] ),
 			true === ws_ls_to_bool($arguments[ 'enable-bmi' ] ) ? 'true' : 'false',
 			true === ws_ls_to_bool($arguments[ 'enable-notes' ] ) ? 'true' : 'false',
-			true === ws_ls_to_bool( [ 'enable-weight' ] ) ? 'true' : 'false',
+			true === ws_ls_to_bool( $arguments[ 'enable-weight' ] ) ? 'true' : 'false',
 			esc_attr( $arguments[ 'custom-field-col-size' ] )
 		);
-
+	
 		if ( true === empty( $arguments[ 'user-id' ] ) ) {
 			$html .= sprintf( '<p><small>%s</small></p>', __( 'Please note: For performance reasons, this table will only update every 5 minutes.', WE_LS_SLUG ) );
 		}
