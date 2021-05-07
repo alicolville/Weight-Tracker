@@ -23,7 +23,8 @@ function ws_ls_form_weight( $arguments = [] ) {
 	                                            'load-placeholders'     => ws_ls_setting_populate_placeholders_with_previous_values(), // Should we set previous values as form placeholders?
 	                                            'option-force-today'    => false,
 	                                            'option-tiny-mce-notes' => is_admin(),
-	                                            'is-target-form'        => false,
+	                                            //'is-target-form'        => false,
+												'type'                  => 'weight',
 	                                            'redirect-url'          => '',
 	                                            'user-id'               => get_current_user_id() ] );
 
@@ -35,7 +36,7 @@ function ws_ls_form_weight( $arguments = [] ) {
 
 	// If a ID has been specified, let's try and fetch the entry in question
 	if ( false === empty( $arguments[ 'entry-id'] ) &&
-	        false === $arguments[ 'is-target-form' ] ) {
+	        'target' !== $arguments[ 'type' ] ) {
 
 		$arguments[ 'entry' ] = ws_ls_entry_get( [ 'user-id' => $arguments[ 'user-id' ], 'id' => $arguments[ 'entry-id'], 'meta' => ( false === $arguments[ 'hide-fields-meta' ] ) ] );
 
@@ -66,7 +67,7 @@ function ws_ls_form_weight( $arguments = [] ) {
 									esc_url_raw( $arguments[ 'post-url' ] ),
 									esc_attr( $arguments[ 'css-class-form' ] ),
 									$arguments[ 'form-id' ],
-									( true === $arguments[ 'is-target-form' ] ) ? 'true' : 'false',
+									( 'target' === $arguments[ 'type' ] ) ? 'true' : 'false',
 									esc_attr( $arguments[ 'data-unit' ] ),
 									esc_attr( $arguments[ 'user-id' ] ),
 									esc_attr( wp_hash( $arguments[ 'user-id' ] ) ),
@@ -83,7 +84,7 @@ function ws_ls_form_weight( $arguments = [] ) {
                             </div>', __( 'Please correct the following:', WE_LS_SLUG ) );
 
 	// Weight form? Display date field?
-	if ( false === $arguments[ 'is-target-form' ] ) {
+	if ( 'weight' === $arguments[ 'type' ] ) {
 
 		$arguments['todays-date'] = ws_ls_date_todays_date( $arguments['user-id'] );
 
@@ -124,7 +125,7 @@ function ws_ls_form_weight( $arguments = [] ) {
 						'meta'      => []
 	];
 
-	if (  false === $arguments[ 'is-target-form'  ] &&
+	if (  'target' !== $arguments[ 'type' ] &&
 	        true === $arguments[ 'load-placeholders' ] &&
 				true === empty( $arguments[ 'entry' ] ) ) {
 
@@ -158,7 +159,7 @@ function ws_ls_form_weight( $arguments = [] ) {
 		                                        'value'         => ( false === empty( $arguments[ 'entry' ][ 'kg' ] ) ) ? $arguments[ 'entry' ][ 'kg' ] : '' ] );
 	}
 
-	if ( false === $arguments[ 'is-target-form' ] &&
+	if ( 'target' !== $arguments[ 'type' ] &&
 	        false === $arguments[ 'hide-notes' ] ) {
 
 		$html .= ws_ls_form_field_textarea( [   'name'          => 'we-ls-notes',
@@ -167,7 +168,7 @@ function ws_ls_form_weight( $arguments = [] ) {
 	}
 
 	// Render Meta Fields
-	if ( false === $arguments[ 'is-target-form' ] && true === $arguments[ 'meta-enabled' ] ) {
+	if ( 'target' !== $arguments[ 'type' ] && true === $arguments[ 'meta-enabled' ] ) {
 		$html .= ws_ls_meta_fields_form( $arguments, $placeholders );
 	}
 
@@ -176,11 +177,11 @@ function ws_ls_form_weight( $arguments = [] ) {
 							<div class="ws-ls-form-processing-throbber ws-ls-loading ws-ls-hide"></div>
 							<button name="submit_button" type="submit" id="we-ls-submit" tabindex="%1$d" class="button ws-ls-remove-on-submit" for="%3$s" >%2$s</button>',
 							ws_ls_form_tab_index_next(),
-							( true === $arguments[ 'is-target-form' ] ) ?  __( 'Set Target', WE_LS_SLUG ) :  __( 'Save Entry', WE_LS_SLUG ),
+							( 'target' === $arguments[ 'type' ] ) ?  __( 'Set Target', WE_LS_SLUG ) :  __( 'Save Entry', WE_LS_SLUG ),
 							$arguments[ 'form-id' ]
 	);
 
-	if ( false === $arguments[ 'is-target-form' ] &&
+	if ( 'target' !== $arguments[ 'type' ] &&
 			false === $arguments[ 'hide-button-cancel' ] &&
 	            false === empty( $arguments[ 'redirect-url' ] ) ) {
 
@@ -193,7 +194,7 @@ function ws_ls_form_weight( $arguments = [] ) {
 
 
 	// If a target form, display "Clear Target" button
-	if ( true  === $arguments[ 'is-target-form' ] &&
+	if ( 'target' === $arguments[ 'type' ] &&
 			false === is_admin() &&
 				false === empty( ws_ls_target_get( $arguments[ 'user-id' ] ) ) ){
 		$html .= sprintf('&nbsp;<button name="ws-ls-clear-target" id="ws-ls-clear-target" type="button" tabindex="%1$d" class="ws-ls-clear-target button ws-ls-remove-on-submit" >%2$s</button>',

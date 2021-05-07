@@ -25,5 +25,5 @@ The shortcode supports the following arguments:
 |hide-custom-fields|If set to true, the [custom fields]({{ site.baseurl }}/custom-fields.html) part of the form will be hidden.|True or false (default)|[wt-form hide-custom-fields='true']
 |load-placeholders (8.4+)|If set to true, the weight and [custom field]({{ site.baseurl }}/custom-fields.html) values will be added as placeholders form form fields.|True (default) or false|[wt-form load-placeholders='true']
 |redirect-url|If specified, a URL that the user should be redirected to after completing the form.|A URL within the current domain.|[wt-form redirect-url='https://yoursite.com/thank-you-page']
-|target|If set to true, specifies that the form is for recording target weight.|True or false (default)|[wt-form target='true']
+|type|The type of form. Either weight entry (weight), Set target (target) or [custom field]({{ site.baseurl }}/custom-fields.html) entry (custom-field).|"weight" (default), "target" or "custom-field"|[wt-form type='target']
 |user-id|By default, the shortcode will save data against the current user. You can specify this argument to save the form data against another user ID.|Numeric| [wt-form user-id="1"]

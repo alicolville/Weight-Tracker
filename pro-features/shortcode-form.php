@@ -24,16 +24,21 @@ function ws_ls_shortcode_form( $user_defined_arguments ) {
 								       'redirect-url'       => false,
 								       'hide-measurements'  => false,
 								       'hide-custom-fields' => false,
+								       'type'               => 'weight',
 								       'custom-field-groups'   => '',      // If specified, only show custom fields that are within these groups
 								       'custom-field-slugs'    => '',      // If specified, only show the custom fields that are specified
     ], $user_defined_arguments );
 
     // Port shortcode arguments to core function
 	$arguments[ 'css-class-form' ]      = $arguments[ 'class' ];
-	$arguments[ 'is-target-form' ]      = ws_ls_to_bool( $arguments[ 'target' ] );
 	$arguments[ 'hide-titles' ]         = ws_ls_to_bool( $arguments[ 'hide-titles' ] );
 	$arguments[ 'hide-notes' ]          = ws_ls_to_bool( $arguments[ 'hide-notes' ] );
 	$arguments[ 'hide-fields-meta' ]    = ( true === ws_ls_to_bool( $arguments[ 'hide-custom-fields' ] ) || true === ws_ls_to_bool( $arguments[ 'hide-measurements' ] ) );
+
+	// Backwards compatibility
+	if ( true === ws_ls_to_bool( $arguments[ 'target' ] ) ) {
+		$arguments[ 'type' ] = 'target';
+	}
 
 	return ws_ls_form_weight( $arguments );
 

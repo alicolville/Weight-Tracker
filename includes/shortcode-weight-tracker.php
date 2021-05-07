@@ -154,7 +154,7 @@ function ws_ls_shortcode( $user_defined_arguments ) {
 
 		// Include target form?
 		if ( true === ws_ls_targets_enabled() && false === ws_ls_to_bool( $shortcode_arguments[ 'hide-first-target-form' ] ) ) {
-			$html_output .= ws_ls_form_weight( [ 'is-target-form' => true, 'css-class-form' => 'ws-ls-target-form', 'user-id' => $user_id, 'hide-confirmation' => true ] ) . ' <br />';
+			$html_output .= ws_ls_form_weight( [ 'type' => 'target', 'css-class-form' => 'ws-ls-target-form', 'user-id' => $user_id, 'hide-confirmation' => true ] ) . ' <br />';
 		}
 
 		// Display "Add Weight" anchor?
@@ -216,7 +216,7 @@ function ws_ls_shortcode( $user_defined_arguments ) {
 
 			if ( true === ws_ls_targets_enabled() && $use_tabs &&
 			        false === ws_ls_to_bool( $shortcode_arguments[ 'hide-second-target-form' ] ) ) {
-				$html_output .= ws_ls_form_weight( [ 'is-target-form' => true, 'css-class-form' => 'ws-ls-target-form', 'user-id' => $user_id, 'hide-confirmation' => true ] ) . ' <br />';
+				$html_output .= ws_ls_form_weight( [ 'type' => 'target', 'css-class-form' => 'ws-ls-target-form', 'user-id' => $user_id, 'hide-confirmation' => true ] ) . ' <br />';
 			}
 
 			// Display week filters and data tab
