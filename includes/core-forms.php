@@ -234,7 +234,7 @@ function ws_ls_form_init( $arguments = [] ) {
 	}
 
 	// Main title for form
-	if ( true === $arguments[ 'is-target-form' ] ) {
+	if ( 'target' === $arguments[ 'type' ] ) {
 		$title = __( 'Target weight', WE_LS_SLUG );
 	} else if ( false === empty( $arguments[ 'entry' ] ) ) {
 		$title = __( 'Edit an existing entry', WE_LS_SLUG );
@@ -248,7 +248,7 @@ function ws_ls_form_init( $arguments = [] ) {
 	$arguments[ 'post-url' ] = apply_filters( 'wlt_form_url', ws_ls_get_url() );
 
 	// Are meta fields enabled for this form?
-	$arguments[ 'meta-enabled' ]  = ( false === $arguments[ 'is-target-form' ] &&
+	$arguments[ 'meta-enabled' ]  = ( 'weight' === $arguments[ 'type' ] &&
 	                                  false === $arguments[ 'hide-fields-meta' ] &&
 	                                  true === ws_ls_meta_fields_is_enabled() &&
 	                                  ws_ls_meta_fields_number_of_enabled() > 0 );
