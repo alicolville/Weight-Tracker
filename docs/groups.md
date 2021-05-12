@@ -20,7 +20,7 @@ Groups can be created and deleted by clicking on the “Manage Groups” button 
 
 [![Group List]({{ site.baseurl }}/assets/images/groups-sidebar-small.png)]({{ site.baseurl }}/assets/images/groups-sidebar.png)
 
-Administrators can assign user’s to a group by navigating to a user’s record and clicking the “Group” link. This redirects the administrator to the user’s preference screen where the group can be changed.
+Administrators can assign user's to a group by navigating to a user's record and clicking the “Group” link. This redirects the administrator to the user's preference screen where the group can be changed.
 
 ## Group statistics
 
@@ -28,4 +28,4 @@ Weight Difference per group can be viewed from the WP Dashboard by navigating to
 
 ## Shortcodes
 
-The shortcode  [[wt-group]]({{ site.baseurl }}/shortcodes/wt-group.html)  can be used to display the user’s current group.
+The shortcode  [[wt-group]]({{ site.baseurl }}/shortcodes/wt-group.html)  can be used to display the user's current group.

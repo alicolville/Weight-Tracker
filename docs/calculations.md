@@ -5,7 +5,7 @@ Below summarises how certain default values are calculated within the plugin.
 
 ## BMR
 
-BMR is short for Basal Metabolic Rate. The Basal Metabolic Rate is the number of calories required to keep the person’s body functioning at rest, also known as your metabolism. Weight Loss Tracker calculates BMR using the following formula (taken from [www.diabetes.co.uk](http://www.diabetes.co.uk/bmr-calculator.html)):
+BMR is short for Basal Metabolic Rate. The Basal Metabolic Rate is the number of calories required to keep the person's body functioning at rest, also known as your metabolism. Weight Loss Tracker calculates BMR using the following formula (taken from [www.diabetes.co.uk](http://www.diabetes.co.uk/bmr-calculator.html)):
 
 -   **BMR for Men** = `66.47 + (13.7 * weight [kg]) + (5 * size [cm]) − (6.8 * age [years])`
 -   **BMR for Women** = `655.1 + (9.6 * weight [kg]) + (1.8 * size [cm]) − (4.7 * age [years])`
@@ -14,7 +14,7 @@ Sources: [Be Strong](https://mybestrong.com/) and  [Diabetes UK](http://www.diab
 
 ## Harris Benedict Formula
 
-Once a user’s BMR has been calculated, the plugin can calculate the user’s total calorie intake required to maintain their current weight. This is calculated by multiplying your BMR i.e.
+Once a user's BMR has been calculated, the plugin can calculate the user's total calorie intake required to maintain their current weight. This is calculated by multiplying your BMR i.e.
 
     Total Calorie Need to Maintain Weight = BMR x Activity Level
 
@@ -34,7 +34,7 @@ Based on [NICE guidance](http://www.nice.org.uk/guidance/cg189), which states th
 
     Daily Calorie Need to Lose weight = Total Calorie Need to Maintain Weight – 600kcal
 
-Depending on your plan, the 600kcal is configurable and can be changed via the plugin’s settings page.
+Depending on your plan, the 600kcal is configurable and can be changed via the plugin's settings page.
 
 Sources:  [Be Strong](https://mybestrong.com/), [NHS Weight Loss Plan](http://www.nhs.uk/Livewell/weight-loss-guide/Pages/losing-weight-getting-started.aspx)  and  [Day One PDF of the plan](http://www.nhs.uk/Tools/Documents/WEIGHT-LOSS-PACK/week-1.pdf).
 
@@ -46,7 +46,7 @@ If enabled, you can present your users with the recommended number of calories t
 
     Daily Calorie Need to Gain weight = Total Calorie Need to Maintain Weight + 500kcal
 
-Depending on your plan, the 500kcal is configurable and can be changed via the plugin’s settings page.
+Depending on your plan, the 500kcal is configurable and can be changed via the plugin's settings page.
 
 #### Calorie intake broken down into meal times and snacks
 
@@ -67,7 +67,7 @@ Sources [Be Strong](https://mybestrong.com/) and  [NHS](http://www.nhs.uk/Tools/
 
 #### Macronutrients Calculator
 
-With calories calculated, the plugin’s macronutrient calculator can recommend how those calories should be split into Fats, Carbohydrates and Proteins. The  [2010 Dietary Guidelines for Americans](https://health.gov/dietaryguidelines/2010/)  recommends eating within the following ranges:
+With calories calculated, the plugin's macronutrient calculator can recommend how those calories should be split into Fats, Carbohydrates and Proteins. The  [2010 Dietary Guidelines for Americans](https://health.gov/dietaryguidelines/2010/)  recommends eating within the following ranges:
 
 -   Carbohydrates: 45-65% of calories
 -   Fat: 20-35% of calories

@@ -2,7 +2,7 @@
 
 > The following shortcode is only available in the [Pro]({{ site.baseurl }}/upgrade.html) version of the plugin.
 
-In some cases, you may only wish to display content if the user has completed certain WT fields. Let’s say for example, you have a page where you wish to display a chart and some text introductory text, there is no point displaying the chart if the user has not entered their weight. The shortcode [wt-if] allows you some basic logic to specify “if exists” or “if not exists” type logic. So using the example above, you could have something like:
+In some cases, you may only wish to display content if the user has completed certain WT fields. Let's say for example, you have a page where you wish to display a chart and some text introductory text, there is no point displaying the chart if the user has not entered their weight. The shortcode [wt-if] allows you some basic logic to specify “if exists” or “if not exists” type logic. So using the example above, you could have something like:
 
     [wt-if field="weight" operator="exists]
     	Some introductory text here explaining the chart.
@@ -28,7 +28,7 @@ You may wish to create an AND condition where multiple fields must exist or not 
     	Please add a weight entry as well as your height.
     [/wt-if]
 
-At the moment this shortcode is in it’s infancy, so  [please get in touch]({{ site.baseurl }}/contact.html)  with any suggestions. Below you can see the fields and operators it supports and further examples of its usage  [can be found on the [wt-if] gist](https://gist.github.com/alicolville/d33fbdabc628c92e4e40b7f08b343fe7).
+At the moment this shortcode is in it's infancy, so  [please get in touch]({{ site.baseurl }}/contact.html)  with any suggestions. Below you can see the fields and operators it supports and further examples of its usage  [can be found on the [wt-if] gist](https://gist.github.com/alicolville/d33fbdabc628c92e4e40b7f08b343fe7).
 
 **Nesting [wt-if] statements**
 

@@ -2,7 +2,7 @@
 
 > The following shortcode is only available in the [Pro]({{ site.baseurl }}/upgrade.html) version of the plugin.
 
-This shortcode can be used to display a progress bar indicating the current user’s progress towards their target weight. Below is an example of the rendered shortcode:
+This shortcode can be used to display a progress bar indicating the current user's progress towards their target weight. Below is an example of the rendered shortcode:
 
 [![Progress Bar]({{ site.baseurl }}/assets/images/progress-bar-small.png)]({{ site.baseurl }}/assets/images/progress-bar.png)
 

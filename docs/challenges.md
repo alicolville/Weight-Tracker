@@ -11,7 +11,7 @@ Once created, league tables are updated on an hourly basis, processing any new u
 
 ### All Challenges
 
-The initial screen lists all of the Challenges that have been setup. They can exist in two states,  **opened**  or  **closed**. If a Challenge is open, then user’s weight entries that fall within the date range criteria will cause an update to Challenge’s league table. However, if closed, the league table will no longer be updated – which is handy if you wish to show historic league tables.
+The initial screen lists all of the Challenges that have been setup. They can exist in two states,  **opened**  or  **closed**. If a Challenge is open, then user's weight entries that fall within the date range criteria will cause an update to Challenge's league table. However, if closed, the league table will no longer be updated – which is handy if you wish to show historic league tables.
 
 [![List of all challenges](/assets/images/challenges-all-small.png)](/assets/images/challenges-all.png)
 
@@ -43,4 +43,4 @@ By default, all of your users are opted out of challenges. This saves their name
 
 #### Performance
 
-Performance: Please be aware, that every time a user updates their profile by adding or editing a weight, their statistics are recalculated for every challenge that isn’t closed. As the number of challenges grow and remain open, the greater the work load on your web server. Please ensure you close (or delete) every challenge when expired.
+Performance: Please be aware, that every time a user updates their profile by adding or editing a weight, their statistics are recalculated for every challenge that isn't closed. As the number of challenges grow and remain open, the greater the work load on your web server. Please ensure you close (or delete) every challenge when expired.
