@@ -2,7 +2,7 @@
 
 > The following shortcode is only available in the [Pro]({{ site.baseurl }}/upgrade.html) version of the plugin.
 
-This shortcode renders a chart of the user’s weight and [custom field]({{ site.baseurl }}/custom-fields.html) entries.
+This shortcode renders a chart of the user's weight and [custom field]({{ site.baseurl }}/custom-fields.html) entries.
 
 The following is an example of how the rendered chart will look:
 

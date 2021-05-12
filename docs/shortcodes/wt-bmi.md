@@ -2,7 +2,7 @@
 
 > The following shortcode is only available in the [Pro]({{ site.baseurl }}/upgrade.html) version of the plugin.
 
-This shortcode can be used to display the user’s latest BMI and has the following arguments:
+This shortcode can be used to display the user's latest BMI and has the following arguments:
 
 | Argument | Description | Options | Example |
 |--|--|--|--|

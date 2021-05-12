@@ -16,7 +16,7 @@ For a detailed list of all Weight Tracker features, please read the [read our fe
    3. [Upgrade the plugin]({{ site.baseurl}}/upgrade.html) if you require additional [features]({{ site.baseurl}}/features.html). We offer a free trial of the Pro versions of the plugin, [get your free trial now](https://shop.yeken.uk/get-a-trial-license/).
    4. Configure the plugin. Navigate to “Weight Tracker” > “Settings” and review / modify each setting to meet your needs.  
    5. To get started, create a page and add the  shortcode [[wt]]({{ site.baseurl }}/shortcodes/wt.html)  into the content section. The  [[wt] shortcode]({{ site.baseurl }}/shortcodes/wt.html)  incorporates the majority of Weight Tracker features out of the box.  
-   6. Weight Tracker contains a rich set of  [features,]({{ site.baseurl }}/features.html) [shortcodes]({{ site.baseurl }}/shortcodes.html)  and  [widgets]({{ site.baseurl }}/widgets.html) that allow Weight Tracker to be implemented in various ways to compliment their website’s needs.  
+   6. Weight Tracker contains a rich set of  [features,]({{ site.baseurl }}/features.html) [shortcodes]({{ site.baseurl }}/shortcodes.html)  and  [widgets]({{ site.baseurl }}/widgets.html) that allow Weight Tracker to be implemented in various ways to compliment their website's needs.  
 
 ## Demo
 

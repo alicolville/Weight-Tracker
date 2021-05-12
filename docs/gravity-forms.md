@@ -2,7 +2,7 @@
 
 > The following shortcode is only available in the [Pro]({{ site.baseurl }}/upgrade.html) version of the plugin.
 
-This shortcode can be used to display a progress bar indicating the current user’s progress towards their target weight. Below is an example of the rendered shortcode:
+This shortcode can be used to display a progress bar indicating the current user's progress towards their target weight. Below is an example of the rendered shortcode:
 
 ## How it works
 
@@ -46,7 +46,7 @@ If other fields have a Weight Tracker CSS name and contain valid data, then thei
 
 ## Debugging
 
-If you are finding that weight entries aren’t being created, please turn on Gravity Forms debugging ( Forms > Settings > Logging ) and re-submit the form. Once submitted, refresh the settings page and click View Log. From here, you should see messages from the Weight Tracker plugin. Hopefully one of these messages will help you to understand why the weight entry was rejected.
+If you are finding that weight entries aren't being created, please turn on Gravity Forms debugging ( Forms > Settings > Logging ) and re-submit the form. Once submitted, refresh the settings page and click View Log. From here, you should see messages from the Weight Tracker plugin. Hopefully one of these messages will help you to understand why the weight entry was rejected.
 
 ## Gravity form fields
 

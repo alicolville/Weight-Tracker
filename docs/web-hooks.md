@@ -4,7 +4,7 @@
 
 ## What is a webhook?
 
-A webhook is HTTP push protocol that allows one application to push data to another. If enabled, Weight Tracker can push weight and target data to endpoints. This data can then be read by the other application.  _For example,_  [Zapier](https://zapier.com/)  can receive incoming webhooks as a trigger and one or more actions can be performed based upon it. Perhaps you want to save them to a Google Sheet, or send an SMS, or perform various additional calculations. Whatever you decide, having the ability to fire the data to another service allows you to extend Weight Tracker in ways that suits your business and it’s workflows.
+A webhook is HTTP push protocol that allows one application to push data to another. If enabled, Weight Tracker can push weight and target data to endpoints. This data can then be read by the other application.  _For example,_  [Zapier](https://zapier.com/)  can receive incoming webhooks as a trigger and one or more actions can be performed based upon it. Perhaps you want to save them to a Google Sheet, or send an SMS, or perform various additional calculations. Whatever you decide, having the ability to fire the data to another service allows you to extend Weight Tracker in ways that suits your business and it's workflows.
 
 [Zapier](https://www.zapier.com/)  is just one example of a service that can process incoming webhooks. There are lots more out there which may greatly benefit your business e.g. IFTTT – that said, you may have your own endpoint that you wish to push data to.
 
