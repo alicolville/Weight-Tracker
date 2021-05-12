@@ -34,7 +34,7 @@ An example form with measurements enabled:
 
 ## Progress Bar
 
-The Progress Bar widget allows you to add a progress bar to display the user’s progress towards their target. The settings below are self explanatory and explained in better detail on the [[wt-progress-bar] page]({{ site.baseurl }}/shortcodes/wt-progress-bar.html).
+The Progress Bar widget allows you to add a progress bar to display the user's progress towards their target. The settings below are self explanatory and explained in better detail on the [[wt-progress-bar] page]({{ site.baseurl }}/shortcodes/wt-progress-bar.html).
 
 [![Widget Progress Form]({{ site.baseurl }}/assets/images/widget-progress-bar.png)]({{ site.baseurl }}/assets/images/widget-progress-bar.png)
 

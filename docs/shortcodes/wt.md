@@ -14,17 +14,17 @@ This is the most popular shortcode for the Weight Tracker plugin and displays up
 
 ![Main image](http://yeken.uk/wp-content/uploads/2021/03/wt-e1615930590182.png)    
     
-Displays a chart of the user’s weight and custom field ([Pro feature]({{ site.baseurl }}/upgrade.html)) entries in either imperial or metric. The appearance of chart can be customised within the admin settings to change its appearance, type, maximum number of points, etc.    
+Displays a chart of the user's weight and custom field ([Pro feature]({{ site.baseurl }}/upgrade.html)) entries in either imperial or metric. The appearance of chart can be customised within the admin settings to change its appearance, type, maximum number of points, etc.    
     
 Below the chart is a target form and weight / custom field entry form. If enabled, the target form allows the user to enter their desired target weight. This target is then displayed on the chart and used by other shortcodes / widgets.    
     
-The main feature of the Overview screen is the ability to enter a weight for the given day or overwrite a previous entry. These entries are then stored against the user’s record in chronological order and displayed on the chart and “In Detail” tab.    
+The main feature of the Overview screen is the ability to enter a weight for the given day or overwrite a previous entry. These entries are then stored against the user's record in chronological order and displayed on the chart and “In Detail” tab.    
     
-[Pro]({{ site.baseurl }}/upgrade.html) users that have enabled measurements will be presented with additional fields that allow your user’s to enter measurements for various parts of their body. Measurement entries are displayed alongside the weight entries    
+[Pro]({{ site.baseurl }}/upgrade.html) users that have enabled measurements will be presented with additional fields that allow your user's to enter measurements for various parts of their body. Measurement entries are displayed alongside the weight entries    
     
 **In detail**    
 
- “The in Detail” tab has another target form for ease of use but its primary function is to display all of the user’s weight and custom field entries in tabular format. The  [Pro]({{ site.baseurl }}/upgrade.html) version has an improved data table with features such as sortable, expandable and contains links to edit / delete each weight entry. The weight entries can also be filtered by the drop down to show all entries or select them by a week by week basis. This filtering is reflected in the table and the chart.    
+ “The in Detail” tab has another target form for ease of use but its primary function is to display all of the user's weight and custom field entries in tabular format. The  [Pro]({{ site.baseurl }}/upgrade.html) version has an improved data table with features such as sortable, expandable and contains links to edit / delete each weight entry. The weight entries can also be filtered by the drop down to show all entries or select them by a week by week basis. This filtering is reflected in the table and the chart.    
 
 **Advanced**
 

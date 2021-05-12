@@ -22,11 +22,11 @@ Display the date of previous weight entry (for the current logged in user).
 
 **[wt-difference-from-previous]** (  [Pro]({{ site.baseurl }}/upgrade.html) )
 
-Display the difference between the user’s current weight and the previous entry.
+Display the difference between the user's current weight and the previous entry.
 
 **[wt-days-between-start-and-latest]** (  [Pro]({{ site.baseurl }}/upgrade.html)  ) (8.4+)
 
-Display the number of days between the user’s current weight and the previous entry. The shortcode has two arguments “include-days” (default false) to include the word “days” after the number and “include-brackets” to wrap the data within brackets.
+Display the number of days between the user's current weight and the previous entry. The shortcode has two arguments “include-days” (default false) to include the word “days” after the number and “include-brackets” to wrap the data within brackets.
 
 e.g
 
@@ -42,15 +42,15 @@ Display the weight for latest weight entry (for the current logged in user).
 
 **[wt-target-weight]**
 
-Display the logged in user’s current target weight.
+Display the logged in user's current target weight.
 
 **[wt-difference-from-target]** (  [Pro]({{ site.baseurl }}/upgrade.html) )
 
-Display the difference between the current user’s most recent weight entry and their target weight.
+Display the difference between the current user's most recent weight entry and their target weight.
 
 **[wt-height]**
 
-Displays the user’s height. It also supports the argument “not-specified-text” so you can display a message the user hasn’t specified their height e.g.
+Displays the user's height. It also supports the argument “not-specified-text” so you can display a message the user hasn't specified their height e.g.
 
     [wt-height not-specified-text=”No height specified”]
 
@@ -60,7 +60,7 @@ or to blank the default text:
 
 **[wt-gender]**
 
-Displays the user’s gender. It also supports the argument “not-specified-text” so you can display a message the user hasn’t specified their gender e.g.
+Displays the user's gender. It also supports the argument “not-specified-text” so you can display a message the user hasn't specified their gender e.g.
 
     [wt-gender not-specified-text=”No gender specified”]
 
@@ -70,7 +70,7 @@ or to blank the default text:
 
 **[wt-dob]**
 
-Displays the user’s Date of Birth. It also supports the argument “not-specified-text” so you can display a message the user hasn’t specified their DOB e.g.
+Displays the user's Date of Birth. It also supports the argument “not-specified-text” so you can display a message the user hasn't specified their DOB e.g.
 
     [wt-dob not-specified-text=”No DOB specified”]
 
@@ -80,7 +80,7 @@ or to blank the default text:
 
 **[wt-activity-level]**
 
-Displays the user’s  [Activity Level]({{ site.baseurl }}/calculations.html). It also supports the arguments “not-specified-text” and “shorten”. “not-specified-text” allows you to display a message the user hasn’t specified their Activity Level e.g.
+Displays the user's  [Activity Level]({{ site.baseurl }}/calculations.html). It also supports the arguments “not-specified-text” and “shorten”. “not-specified-text” allows you to display a message the user hasn't specified their Activity Level e.g.
 
     [wt-activity-level not-specified-text=”No activity level specified”]
 
