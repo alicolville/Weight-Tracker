@@ -41,7 +41,7 @@ function ws_ls_shortcode( $user_defined_arguments ) {
         ], $user_defined_arguments );
 
 		if ( true === $ws_ls_wlt_already_placed && false === ws_ls_to_bool( $shortcode_arguments['disable-second-check'] ) ) {
-			return sprintf('<p>%s</p>', __( 'This shortcode can only be placed once on a page / post.', WE_LS_SLUG ) );
+			return sprintf('<p>%s</p>', __( 'This shortcode can only be placed once on a page / post. To disable this check, try: [wt disable-second-check=true]', WE_LS_SLUG ) );
 		}
 
 		ws_ls_enqueue_files();
