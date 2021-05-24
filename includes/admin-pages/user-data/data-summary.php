@@ -251,7 +251,7 @@ function ws_ls_postbox_latest_entries() {?>
 					$entries_limit = NULL;
 				}
 
-				echo ws_ls_data_table_render( [ 'limit' => $entries_limit, 'smaller-width' => true, 'enable-meta-fields' => $show_meta, 'page-size' => 20 ] );
+				echo ws_ls_data_table_render( [ 'limit' => $entries_limit, 'smaller-width' => true, 'enable-meta-fields' => $show_meta, 'page-size' => 20, 'bmi-format' => 'both' ] );
 
 				if ( 100 !== $entries_limit ) {
 					echo sprintf(
