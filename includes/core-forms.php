@@ -23,8 +23,8 @@ function ws_ls_form_weight( $arguments = [] ) {
 	                                            'load-placeholders'     => ws_ls_setting_populate_placeholders_with_previous_values(), // Should we set previous values as form placeholders?
 	                                            'option-force-today'    => false,
 	                                            'option-tiny-mce-notes' => is_admin(),
-	                                            //'is-target-form'        => false,
-												'type'                  => 'weight',
+	                                            'title'                 => '',
+	                                            'type'                  => 'weight',
 	                                            'redirect-url'          => '',
 	                                            'user-id'               => get_current_user_id() ] );
 
@@ -57,8 +57,8 @@ function ws_ls_form_weight( $arguments = [] ) {
 	$html       = $arguments[ 'html' ];
 
 	$html .= sprintf( '<form action="%1$s" method="post" class="we-ls-weight-form we-ls-weight-form-validate ws_ls_display_form %2$s"
-									id="%3$s" data-is-target-form="%4$s" data-metric-unit="%5$s" %9$s>
-									<input type="hidden" name="target-form" value="%4$s" />
+									id="%3$s" data-form-type="%4$s" data-metric-unit="%5$s" %9$s>
+									<input type="hidden" name="type" value="%4$s" />
 									<input type="hidden" name="user-id" value="%6$d" />
 									<input type="hidden" name="security" value="%7$s" />
 									<input type="hidden" name="entry-id" value="%8$d" />
@@ -67,7 +67,7 @@ function ws_ls_form_weight( $arguments = [] ) {
 									esc_url_raw( $arguments[ 'post-url' ] ),
 									esc_attr( $arguments[ 'css-class-form' ] ),
 									$arguments[ 'form-id' ],
-									( 'target' === $arguments[ 'type' ] ) ? 'true' : 'false',
+									esc_attr( $arguments[ 'type' ] ),
 									esc_attr( $arguments[ 'data-unit' ] ),
 									esc_attr( $arguments[ 'user-id' ] ),
 									esc_attr( wp_hash( $arguments[ 'user-id' ] ) ),
@@ -83,8 +83,8 @@ function ws_ls_form_weight( $arguments = [] ) {
                                 <ul></ul>
                             </div>', __( 'Please correct the following:', WE_LS_SLUG ) );
 
-	// Weight form? Display date field?
-	if ( 'weight' === $arguments[ 'type' ] ) {
+	// Weight / Custom fields form? Display date field?
+	if ( true === in_array( $arguments[ 'type' ], [ 'custom-fields', 'weight' ] ) ) {
 
 		$arguments['todays-date'] = ws_ls_date_todays_date( $arguments['user-id'] );
 
@@ -103,9 +103,10 @@ function ws_ls_form_weight( $arguments = [] ) {
 			                                  'title'       => __( 'Date', WE_LS_SLUG )
 			] );
 		}
+	}
 
-		// Target form?
-	} else {
+	// Target form?
+	if ( 'target' === $arguments[ 'type' ] ) {
 
 		$target_weight = ws_ls_target_get( $arguments[ 'user-id' ] );
 
@@ -137,38 +138,40 @@ function ws_ls_form_weight( $arguments = [] ) {
 		}
 	}
 
-	// Stones field?
-	if ( 'stones_pounds' ===  $arguments[ 'data-unit' ] ) {
-		$html .= ws_ls_form_field_number( [     'name'          => 'ws-ls-weight-stones',
-		                                        'placeholder'   => $placeholders[ 'stones' ],
-												'value'         => ( false === empty( $arguments[ 'entry' ][ 'stones' ] ) ) ? $arguments[ 'entry' ][ 'stones' ] : '' ] );
-	}
+	if ( 'weight' === $arguments[ 'type' ] ) {
 
-	// Pounds?
-	if ( true === in_array( $arguments[ 'data-unit' ], [ 'stones_pounds', 'pounds_only' ] ) ) {
-		$html .= ws_ls_form_field_number( [    'name'          => 'ws-ls-weight-pounds',
-		                                       'placeholder'   => $placeholders[ 'pounds' ],
-		                                       'max'           => ( 'stones_pounds' ===  $arguments[ 'data-unit' ] ) ? '13.99' : '5000',
-		                                       'value' => ( true === isset( $arguments[ 'entry' ][ 'pounds' ] ) ) ? $arguments[ 'entry' ][ 'pounds' ] : '' ] );
-	}
+		// Stones field?
+		if ( 'stones_pounds' ===  $arguments[ 'data-unit' ] ) {
+			$html .= ws_ls_form_field_number( [     'name'          => 'ws-ls-weight-stones',
+			                                        'placeholder'   => $placeholders[ 'stones' ],
+			                                        'value'         => ( false === empty( $arguments[ 'entry' ][ 'stones' ] ) ) ? $arguments[ 'entry' ][ 'stones' ] : '' ] );
+		}
 
-	// Kg
-	if ( 'kg' ===  $arguments[ 'data-unit' ] ) {
-		$html .= ws_ls_form_field_number( [     'name'          => 'ws-ls-weight-kg',
-		                                        'placeholder'   => $placeholders[ 'kg' ],
-		                                        'value'         => ( false === empty( $arguments[ 'entry' ][ 'kg' ] ) ) ? $arguments[ 'entry' ][ 'kg' ] : '' ] );
-	}
+		// Pounds?
+		if ( true === in_array( $arguments[ 'data-unit' ], [ 'stones_pounds', 'pounds_only' ] ) ) {
+			$html .= ws_ls_form_field_number( [    'name'          => 'ws-ls-weight-pounds',
+			                                       'placeholder'   => $placeholders[ 'pounds' ],
+			                                       'max'           => ( 'stones_pounds' ===  $arguments[ 'data-unit' ] ) ? '13.99' : '5000',
+			                                       'value' => ( true === isset( $arguments[ 'entry' ][ 'pounds' ] ) ) ? $arguments[ 'entry' ][ 'pounds' ] : '' ] );
+		}
 
-	if ( 'target' !== $arguments[ 'type' ] &&
-	        false === $arguments[ 'hide-notes' ] ) {
+		// Kg
+		if ( 'kg' ===  $arguments[ 'data-unit' ] ) {
+			$html .= ws_ls_form_field_number( [     'name'          => 'ws-ls-weight-kg',
+			                                        'placeholder'   => $placeholders[ 'kg' ],
+			                                        'value'         => ( false === empty( $arguments[ 'entry' ][ 'kg' ] ) ) ? $arguments[ 'entry' ][ 'kg' ] : '' ] );
+		}
 
-		$html .= ws_ls_form_field_textarea( [   'name'          => 'we-ls-notes',
-		                                        'placeholder'   => __( 'Notes', WE_LS_SLUG ),
-		                                        'value'         => ( false === empty( $arguments[ 'entry' ][ 'notes' ] ) ) ? $arguments[ 'entry' ][ 'notes' ] : '' ] );
+		if ( false === $arguments[ 'hide-notes' ] ) {
+
+			$html .= ws_ls_form_field_textarea( [   'name'          => 'we-ls-notes',
+			                                        'placeholder'   => __( 'Notes', WE_LS_SLUG ),
+			                                        'value'         => ( false === empty( $arguments[ 'entry' ][ 'notes' ] ) ) ? $arguments[ 'entry' ][ 'notes' ] : '' ] );
+		}
 	}
 
 	// Render Meta Fields
-	if ( 'target' !== $arguments[ 'type' ] && true === $arguments[ 'meta-enabled' ] ) {
+	if ( true === $arguments[ 'meta-enabled' ] ) {
 		$html .= ws_ls_meta_fields_form( $arguments, $placeholders );
 	}
 
@@ -234,21 +237,31 @@ function ws_ls_form_init( $arguments = [] ) {
 	}
 
 	// Main title for form
-	if ( 'target' === $arguments[ 'type' ] ) {
-		$title = __( 'Target weight', WE_LS_SLUG );
-	} else if ( false === empty( $arguments[ 'entry' ] ) ) {
-		$title = __( 'Edit an existing entry', WE_LS_SLUG );
-	} else {
-		$title = __( 'Add a new weight entry', WE_LS_SLUG );
+	$title = $arguments[ 'title' ];
+
+	if ( true === empty( $title ) ) {
+		if ( 'target' === $arguments[ 'type' ] ) {
+			$title = __( 'Target weight', WE_LS_SLUG );
+		} elseif ( 'weight' === $arguments[ 'type' ] ) {
+			if ( false === empty( $arguments[ 'entry' ] ) ) {
+				$title = __( 'Edit an existing entry', WE_LS_SLUG );
+			} else {
+				$title = __( 'Add a new weight entry', WE_LS_SLUG );
+			}
+		} elseif ( 'custom-fields' === $arguments[ 'type' ] ) {
+			$title = __( 'Complete the following form', WE_LS_SLUG );
+		}
 	}
 
-	$arguments[ 'html' ] .= ws_ls_form_title( $title, $arguments[ 'hide-titles' ] );
+	if ( false === empty( $title ) ) {
+		$arguments[ 'html' ] .= ws_ls_form_title( $title, $arguments[ 'hide-titles' ] );
+	}
 
 	// Allow others to determine where form is posted too
 	$arguments[ 'post-url' ] = apply_filters( 'wlt_form_url', ws_ls_get_url() );
 
 	// Are meta fields enabled for this form?
-	$arguments[ 'meta-enabled' ]  = ( 'weight' === $arguments[ 'type' ] &&
+	$arguments[ 'meta-enabled' ]  = ( true === in_array( $arguments[ 'type' ], [ 'custom-fields', 'weight' ] ) &&
 	                                  false === $arguments[ 'hide-fields-meta' ] &&
 	                                  true === ws_ls_meta_fields_is_enabled() &&
 	                                  ws_ls_meta_fields_number_of_enabled() > 0 );
@@ -583,10 +596,7 @@ function ws_ls_form_tab_index_next() {
 
 	global $ws_ls_tab_index;
 
-	$current_index = $ws_ls_tab_index;
-	$ws_ls_tab_index++;
-
-	return $current_index;
+	return $ws_ls_tab_index++;
 }
 
 /**

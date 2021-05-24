@@ -98,7 +98,7 @@ function ws_ls_data_table_render( $arguments = [] ) {
 			true === ws_ls_to_bool( $arguments[ 'enable-weight' ] ) ? 'true' : 'false',
 			esc_attr( $arguments[ 'custom-field-col-size' ] )
 		);
-	
+
 		if ( true === empty( $arguments[ 'user-id' ] ) ) {
 			$html .= sprintf( '<p><small>%s</small></p>', __( 'Please note: For performance reasons, this table will only update every 5 minutes.', WE_LS_SLUG ) );
 		}
@@ -342,7 +342,8 @@ function ws_ls_datatable_columns( $arguments = [] ) {
 	    $filter_by_group        = ( false === empty( $custom_field_groups) );
 	    $filter_by_id           = ( false === empty( $custom_field_slugs ) );
 
-	    $column_size = ( $arguments[ 'smaller-width' ] ) ? 'lg' : 'md';
+	    $column_size = ( false === empty( $arguments[ 'smaller-width' ] ) &&
+	                        $arguments[ 'smaller-width' ] ) ? 'lg' : 'md';
 
 		if ( false === empty( $arguments[ 'custom-field-col-size' ] ) ) {
 			$column_size = $arguments[ 'custom-field-col-size' ];

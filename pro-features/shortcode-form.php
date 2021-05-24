@@ -16,23 +16,26 @@ function ws_ls_shortcode_form( $user_defined_arguments ) {
        return false;
     }
 
-    $arguments = shortcode_atts( [     'user-id'            => get_current_user_id(),
-                                       'target'             => false,
-                                       'class'              => false,
-								       'hide-titles'        => false,
-								       'hide-notes'         => ws_ls_setting_hide_notes(),
-								       'redirect-url'       => false,
-								       'hide-measurements'  => false,
-								       'hide-custom-fields' => false,
-								       'type'               => 'weight',
-								       'custom-field-groups'   => '',      // If specified, only show custom fields that are within these groups
-								       'custom-field-slugs'    => '',      // If specified, only show the custom fields that are specified
+    $arguments = shortcode_atts( [     'user-id'                => get_current_user_id(),
+                                       'target'                 => false,
+                                       'class'                  => false,
+								       'force-todays-date'      => false,
+								       'hide-titles'            => false,
+								       'hide-notes'             => ws_ls_setting_hide_notes(),
+								       'redirect-url'           => false,
+								       'hide-measurements'      => false,
+								       'hide-custom-fields'     => false,
+								       'title'                  => '',
+								       'type'                   => 'weight',
+								       'custom-field-groups'    => '',      // If specified, only show custom fields that are within these groups
+								       'custom-field-slugs'     => '',      // If specified, only show the custom fields that are specified
     ], $user_defined_arguments );
 
     // Port shortcode arguments to core function
 	$arguments[ 'css-class-form' ]      = $arguments[ 'class' ];
 	$arguments[ 'hide-titles' ]         = ws_ls_to_bool( $arguments[ 'hide-titles' ] );
 	$arguments[ 'hide-notes' ]          = ws_ls_to_bool( $arguments[ 'hide-notes' ] );
+	$arguments[ 'option-force-today' ]  = ws_ls_to_bool( $arguments[ 'force-todays-date' ] );
 	$arguments[ 'hide-fields-meta' ]    = ( true === ws_ls_to_bool( $arguments[ 'hide-custom-fields' ] ) || true === ws_ls_to_bool( $arguments[ 'hide-measurements' ] ) );
 
 	// Backwards compatibility

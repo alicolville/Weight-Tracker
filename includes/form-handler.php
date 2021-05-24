@@ -42,8 +42,8 @@ function ws_ls_form_post_handler(){
 		// Process posted form and save!
 		if ( 'target' === $submission_type ) {
 			$result = ws_ls_form_post_handler_target( $user_id );
-		} else {    // weight
-			$result = ws_ls_form_post_handler_weight( $user_id );
+		} else {    // weight / custom-fields
+			$result = ws_ls_form_post_handler_weight( $user_id, $submission_type );
 		}
 
 		if ( true === empty( $result ) ) {
@@ -87,11 +87,14 @@ function ws_ls_form_post_handler_target( $user_id ) {
 
 /**
  * Handle a form submission for Weight / Custom fields
+ *
  * @param $user_id
+ *
+ * @param string $type
  *
  * @return bool
  */
-function ws_ls_form_post_handler_weight( $user_id ) {
+function ws_ls_form_post_handler_weight( $user_id, $type = 'weight' ) {
 
 	if ( true === empty( $user_id ) ) {
 		return false;
@@ -189,15 +192,11 @@ function ws_ls_form_post_handler_weight( $user_id ) {
  * @return string|null
  */
 function ws_ls_form_post_handler_determine_type() {
+	$type = ws_ls_post_value( 'type' );
 
-	$is_target =  ws_ls_post_value( 'target-form' );
-
-	// This isn't a weight tracker submission!
-	if ( NULL === $is_target ) {
-		return NULL;
-	}
-
-	return ( true === ws_ls_to_bool( $is_target ) ) ? 'target' : 'weight';
+	return ( true === in_array( $type, [ 'custom-fields', 'target', 'weight' ] ) ) ?
+				$type :
+					NULL;
 }
 
 /**

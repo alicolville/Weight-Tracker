@@ -64,11 +64,12 @@ jQuery( document ).ready( function ( $ ) {
     // Form Validation
     $( '.we-ls-weight-form-validate' ).each( function () {
 
-        let form_id = $(this).attr("id");
-        let target_form = $(this).data("is-target-form");
+        let form_id     = $(this).attr("id");
+        let form_type   = $(this).data("form-type");
+        let target_form = ( 'target' === form_type );
         let weight_unit = $(this).data("metric-unit");
 
-        window.console && console.log( ' Adding form validation to: ' + form_id + '. Target form? ' + target_form + '. Weight Unit: ' + weight_unit );
+        window.console && console.log( ' Adding form validation to: ' + form_id + '. Form Type: ' + form_type+ '. Target form? ' + target_form + '. Weight Unit: ' + weight_unit );
 
         // Add form validation
         $( "#" + form_id ).validate({     errorContainer:       '#' + form_id + ' .ws-ls-error-summary',
@@ -109,24 +110,26 @@ jQuery( document ).ready( function ( $ ) {
             }
         }
 
-        let default_field_options = { required: ! target_form, number: true, range: [ 0, 5000 ] };
+        if ( 'weight' === form_type ) {
+          let default_field_options = { required: ! target_form, number: true, range: [ 0, 5000 ] };
 
-        // Set up numeric fields to validate
-        // if( 'pounds_only' === weight_unit ) {
-        //
-        //     $( '#' + form_id + ' .ws-ls-weight-pounds' ).rules( 'add', default_field_options );
-        //
-        // } else if( 'stones_pounds' === weight_unit ) {
-        //
-        //     $( '#' + form_id + ' .ws-ls-weight-stones' ).rules( 'add', default_field_options );
-        //
-        //     default_field_options[ 'range' ] = [ 0, 14 ];
-        //
-        //     $( '#' + form_id + ' .ws-ls-weight-pounds' ).rules('add',  default_field_options );
-        //
-        // } else {
-        //     $( '#' + form_id + ' .ws-ls-weight-kg' ).rules('add',  default_field_options );
-        // }
+          // Set up numeric fields to validate
+          if( 'pounds_only' === weight_unit ) {
+
+            $( '#' + form_id + ' .ws-ls-weight-pounds' ).rules( 'add', default_field_options );
+
+          } else if( 'stones_pounds' === weight_unit ) {
+
+            $( '#' + form_id + ' .ws-ls-weight-stones' ).rules( 'add', default_field_options );
+
+            default_field_options[ 'range' ] = [ 0, 14 ];
+
+            $( '#' + form_id + ' .ws-ls-weight-pounds' ).rules('add',  default_field_options );
+
+          } else {
+            $( '#' + form_id + ' .ws-ls-weight-kg' ).rules('add',  default_field_options );
+          }
+        }
     });
 
   /**

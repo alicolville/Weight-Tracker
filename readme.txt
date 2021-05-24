@@ -165,9 +165,7 @@ TODO:
 
   - Hooks firing on a new entry - what listens for: weight-measurements do we need to expand?
   - On user data, difference value
-  - Weight entry forms. What do we do? Option for no weight?
-  - Modify commented out code in ws-ls-entry-form for optional weight values
-  - Custom field only form
+
   - Examine all SQL queries that reference WE_LS_TABLENAME
 
 Files OK: PRO:  harris-b, macro-calc, bmr, shortcode.wlt, challenges, awards, meta-fields, stats, core-charting
@@ -183,6 +181,8 @@ Files OK: PRO:  harris-b, macro-calc, bmr, shortcode.wlt, challenges, awards, me
 * Improvement: New arguments for shortcode [wt-table] 'enable-bmi', 'enable-notes'and 'enable-weight'. Read more https://docs.yeken.uk/shortcodes/wt-table.html
 * Improvement: Upgrading charting library (chart.js) and underlying code to 3.2.0.
 * Improvement: Added support for curved (bezier) lines for custom fields when plotted on charts.
+* Improvement: Added the argument "title" to the the [wt-form] shortcode.
+* Improvement: Added the argument "force-todays-date" to the the [wt-form] shortcode.
 * Bug fix: Fixed "wlt-awards-deleting" hook from incorrectly firing.
 * Bug fix: Fixed issue with "Delete Data" button not working in admin.
 * Change: Removed redundant setting "Should y Axes start at 0?" as chart.js 3 treats y axes differently.
