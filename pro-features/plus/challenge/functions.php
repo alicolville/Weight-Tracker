@@ -331,6 +331,10 @@ function ws_ls_challenges_view_entries( $args ) {
 		'sums-and-averages'     => true
 	]);
 
+	if ( true === empty( $args[ 'id' ] ) ) {
+		return __( 'Please specify an ID e.g. [wt-challenges id="1"]');
+	}
+
 	$data = ws_ls_challenges_data( $args );
 
 	$html = '';
