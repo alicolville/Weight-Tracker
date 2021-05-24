@@ -184,6 +184,7 @@ Files OK: PRO:  harris-b, macro-calc, bmr, shortcode.wlt, challenges, awards, me
 * Improvement: Added the argument "title" to the the [wt-form] shortcode.
 * Improvement: Added the argument "force-todays-date" to the the [wt-form] shortcode.
 * Improvement: Placeholder values in weight/custom-field/target forms will now have suffixes.
+* Bug fix: Fixed an issue where exports would not run for Pro users.
 * Bug fix: Fixed "wlt-awards-deleting" hook from incorrectly firing.
 * Bug fix: Fixed issue with "Delete Data" button not working in admin.
 * Change: Removed redundant setting "Should y Axes start at 0?" as chart.js 3 treats y axes differently.
