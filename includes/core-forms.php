@@ -127,10 +127,11 @@ function ws_ls_form_weight( $arguments = [] ) {
 	];
 
 	if (  'target' !== $arguments[ 'type' ] &&
-	        true === $arguments[ 'load-placeholders' ] &&
-				true === empty( $arguments[ 'entry' ] ) ) {
+	        true === $arguments[ 'load-placeholders' ] ) {
 
-		$latest_entry = ws_ls_entry_get_latest( $arguments );
+		$latest_entry = ( true === empty( $arguments[ 'entry' ] ) ) ?
+							ws_ls_entry_get_latest( $arguments ) :
+								$arguments[ 'entry' ];
 
 		if ( false === empty( $latest_entry ) ) {
 			$placeholders = ws_ls_weight_display( $latest_entry[ 'kg' ] );
@@ -150,7 +151,7 @@ function ws_ls_form_weight( $arguments = [] ) {
 		// Pounds?
 		if ( true === in_array( $arguments[ 'data-unit' ], [ 'stones_pounds', 'pounds_only' ] ) ) {
 			$html .= ws_ls_form_field_number( [    'name'          => 'ws-ls-weight-pounds',
-			                                       'placeholder'   => $placeholders[ 'pounds' ]. __( 'lb', WE_LS_SLUG ),
+			                                       'placeholder'   => $placeholders[ 'pounds' ] . __( 'lb', WE_LS_SLUG ),
 			                                       'max'           => ( 'stones_pounds' ===  $arguments[ 'data-unit' ] ) ? '13.99' : '5000',
 			                                       'value' => ( true === isset( $arguments[ 'entry' ][ 'pounds' ] ) ) ? $arguments[ 'entry' ][ 'pounds' ] : '' ] );
 		}
