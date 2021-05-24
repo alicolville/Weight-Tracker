@@ -120,9 +120,9 @@ function ws_ls_form_weight( $arguments = [] ) {
 		}
 	}
 
-	$placeholders = [   'stones'    => __( 'Stones', WE_LS_SLUG ),
-						'pounds'    => __( 'Pounds', WE_LS_SLUG ),
-						'kg'        => __( 'Kg', WE_LS_SLUG ),
+	$placeholders = [   'stones'    => '',
+						'pounds'    => '',
+						'kg'        => '',
 						'meta'      => []
 	];
 
@@ -134,17 +134,19 @@ function ws_ls_form_weight( $arguments = [] ) {
 								$arguments[ 'entry' ];
 
 		if ( false === empty( $latest_entry ) ) {
-			$placeholders = ws_ls_weight_display( $latest_entry[ 'kg' ] );
+			if ( false === empty( $latest_entry[ 'kg' ] ) ) {
+				$placeholders = ws_ls_weight_display( $latest_entry[ 'kg' ] );
+			}
 			$placeholders[ 'meta' ] = $latest_entry[ 'meta' ];
 		}
 	}
 
-	if ( 'weight' === $arguments[ 'type' ] ) {
+	if ( true === in_array( $arguments[ 'type' ], [ 'target', 'weight' ] ) ) {
 
 		// Stones field?
 		if ( 'stones_pounds' ===  $arguments[ 'data-unit' ] ) {
 			$html .= ws_ls_form_field_number( [     'name'          => 'ws-ls-weight-stones',
-			                                        'placeholder'   => $placeholders[ 'stones' ]. __( 'st', WE_LS_SLUG ),
+			                                        'placeholder'   => $placeholders[ 'stones' ] . __( 'st', WE_LS_SLUG ),
 			                                        'value'         => ( false === empty( $arguments[ 'entry' ][ 'stones' ] ) ) ? $arguments[ 'entry' ][ 'stones' ] : '' ] );
 		}
 
@@ -162,13 +164,14 @@ function ws_ls_form_weight( $arguments = [] ) {
 			                                        'placeholder'   => $placeholders[ 'kg' ] . __( 'kg', WE_LS_SLUG ),
 			                                        'value'         => ( false === empty( $arguments[ 'entry' ][ 'kg' ] ) ) ? $arguments[ 'entry' ][ 'kg' ] : '' ] );
 		}
+	}
 
-		if ( false === $arguments[ 'hide-notes' ] ) {
+	if ( 'weight' === $arguments[ 'type' ] &&
+	        false === $arguments[ 'hide-notes' ] ) {
 
-			$html .= ws_ls_form_field_textarea( [   'name'          => 'we-ls-notes',
-			                                        'placeholder'   => __( 'Notes', WE_LS_SLUG ),
-			                                        'value'         => ( false === empty( $arguments[ 'entry' ][ 'notes' ] ) ) ? $arguments[ 'entry' ][ 'notes' ] : '' ] );
-		}
+		$html .= ws_ls_form_field_textarea( [   'name'          => 'we-ls-notes',
+		                                        'placeholder'   => __( 'Notes', WE_LS_SLUG ),
+		                                        'value'         => ( false === empty( $arguments[ 'entry' ][ 'notes' ] ) ) ? $arguments[ 'entry' ][ 'notes' ] : '' ] );
 	}
 
 	// Render Meta Fields
