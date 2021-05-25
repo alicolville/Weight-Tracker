@@ -94,6 +94,9 @@ function ws_ls_db_stats_league_table_fetch( $ignore_cache = false, $limit = 10, 
 		$where[] = 'weight_difference <= 0';
 	}
 
+	// If either is null, then we know the user has entries, but no weights associated with them. So don't include in this table
+	$where[] = '(recent_weight is not null and start_weight is not null)';
+
 	// Add where
 	if ( false === empty( $where ) ) {
 		$sql .= ' where ' . implode( ' and ', $where );
