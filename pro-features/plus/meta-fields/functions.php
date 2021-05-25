@@ -65,12 +65,15 @@
         return count( ws_ls_meta_fields_enabled() );
     }
 
-	/**
-	 * Get the field key for given meta id
-	 * @param $id
-	 *
-	 * @return mixed|null
-	 */
+/**
+ * Get the field key for given meta id
+ *
+ * @param $id
+ *
+ * @param string $column
+ *
+ * @return mixed|null
+ */
 	function ws_ls_meta_fields_get_column( $id, $column = 'field_key' ) {
 
 		$fields = ws_ls_meta_fields();
@@ -275,7 +278,7 @@
 		        continue;
 	        }
 
-	        $field[ 'placeholder' ] = ( false === empty( $placeholders[ 'meta' ][ $field[ 'id' ] ] ) ) ? $placeholders[ 'meta' ][ $field[ 'id' ] ] . ws_ls_meta_get_column( $field[ 'id' ] ) : '';
+	        $field[ 'placeholder' ] = ( false === empty( $placeholders[ 'meta' ][ $field[ 'id' ] ] ) ) ? $placeholders[ 'meta' ][ $field[ 'id' ] ] . ws_ls_meta_fields_get_column( $field[ 'id' ], 'suffix' ) : '';
 
 	        $value = ( false === empty( $arguments[ 'entry' ][ 'meta'] ) &&
 	                     true === array_key_exists( $field[ 'id' ], $arguments[ 'entry' ][ 'meta'] ) ) ?
@@ -578,20 +581,3 @@ function ws_ls_meta_fields_slugs_to_ids( $slugs ) {
 
 	return $ids;
 }
-
-/**
- * Fetch a DB column for the given meta fields
- * @param $id
- * @param string $column
- *
- * @return mixed|string
- */
-function ws_ls_meta_get_column( $id, $column = 'suffix' ) {
-
-	$meta_field = ws_ls_meta_fields_get_by_id( $id );
-
-	return ( false === empty( $meta_field[ $column ] ) ) ?
-				$meta_field[ $column ] :
-					'';
-}
-
