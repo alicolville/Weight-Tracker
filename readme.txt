@@ -165,7 +165,6 @@ TODO:
 
   - when adding an entry, if a date is selected that matches today, load in today's value. Save losing data.
   - Hooks firing on a new entry - what listens for: weight-measurements do we need to expand?
-  - On user data, difference value
 
   - Examine all SQL queries that reference WE_LS_TABLENAME
 
