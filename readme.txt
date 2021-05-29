@@ -162,7 +162,8 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 TODO:
 
-  - add/edit weight entry in admin should prob not be mandatory
+
+  - when adding an entry, if a date is selected that matches today, load in today's value. Save losing data.
   - Hooks firing on a new entry - what listens for: weight-measurements do we need to expand?
   - On user data, difference value
 

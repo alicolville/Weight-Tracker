@@ -180,7 +180,10 @@ function ws_ls_datatable_rows( $arguments ) {
 				$gain_loss = '';
 				$gain_class = '';
 
-				if( false === empty( $previous_user_weight[ $entry[ 'user_id' ] ] ) ) {
+				if ( true === empty( $entry[ 'kg' ] ) ) {
+					$gain_class = 'same';
+					$gain_loss = __( 'No weight recorded', WE_LS_SLUG );
+				} elseif( false === empty( $previous_user_weight[ $entry[ 'user_id' ] ] ) ) {
 
 					if ( false === empty( $entry[ 'kg' ] ) ) {
 						$row[ 'previous-weight' ] = $previous_user_weight[ $entry[ 'user_id' ] ];
