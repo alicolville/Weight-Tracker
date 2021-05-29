@@ -32,12 +32,12 @@ jQuery( document ).ready( function ( $ ) {
           if ( true === response[ 'error' ] ) {
             status_message.addClass( 'ws-meta-error' ).removeClass( 'ws-meta-success' ).html('<p>' + ws_ls_meta_fields_config[ 'text-failure' ] + '</p>');
 
-            button.html( '<i class="fa fa-meh"></i>' );
+            button.html( '<i class="fa fa-exclamation-circle"></i>' );
           } else {
 
             $( '#' + parent + ' .ws-ls-acc-value' ).html( response[ 'value' ] );
 
-            button.html( '<i class="fa fa-smile"></i>' );
+            button.html( '<i class="fa fa-check"></i>' );
 
           }
 
