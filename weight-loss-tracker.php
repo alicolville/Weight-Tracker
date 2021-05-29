@@ -28,6 +28,7 @@ define( 'WE_LS_UPGRADE_TO_PRO_URL', 'https://shop.yeken.uk/product/weight-tracke
 define( 'WE_LS_UPGRADE_TO_PRO_PLUS_URL', 'https://shop.yeken.uk/product/weight-tracker-pro-plus/' );
 define( 'WE_LS_FREE_TRIAL_URL', 'https://shop.yeken.uk/get-a-trial-license/' );
 define( 'WE_LS_CDN_CHART_JS', 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.0/chart.min.js' );
+define( 'WE_LS_CDN_FONT_AWESOME_CSS', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css' );
 define( 'WE_LS_PRO_PRICE', 50.00 );
 define( 'WE_LS_PRO_PLUS_PRICE', 100.00 );
 
@@ -105,6 +106,7 @@ require_once( WS_LS_ABSPATH . 'pro-features/plus/meta-fields/db.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/plus/meta-fields/hooks.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/plus/meta-fields/functions.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/plus/meta-fields/functions-photos.php' );
+require_once( WS_LS_ABSPATH . 'pro-features/plus/meta-fields/shortcodes.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/feature-list.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/functions.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/functions-pages.php' );

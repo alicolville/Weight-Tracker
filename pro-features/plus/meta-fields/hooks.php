@@ -3,6 +3,71 @@
 defined('ABSPATH') or die("Jog on!");
 
 /**
+ * AJAX handler for clearing Target Weight
+ */
+function ws_ls_meta_fields_ajax_accumulator() {
+
+	check_ajax_referer( 'ws-ls-nonce', 'security' );
+
+	$increment = ws_ls_post_value( 'increment' );
+
+	if( true === empty( $increment ) ) {
+		wp_send_json( [ 'error' => true, 'text' => 'Missing increment' ] );
+	}
+
+	$meta_field_id = ws_ls_post_value( 'meta-field-id' );
+
+	if( true === empty( $meta_field_id ) ) {
+		wp_send_json( [ 'error' => true, 'text' => 'Missing meta field ID' ] );
+	}
+
+	$meta_field = ws_ls_meta_fields_get_by_id( $meta_field_id );
+
+	if ( false === $meta_field ||
+	        0 !== (int) $meta_field[ 'field_type' ] ) {
+		wp_send_json( [ 'error' => true, 'text' => 'Meta field does not exist or not numeric' ] );
+	}
+
+	$return = [ 'error' => false, 'value' => '', 'previous' => '', 'new-entry' => false ];
+
+	// Do we have an entry for today's date?
+	$return[ 'entry_id' ]       = ws_ls_db_entry_for_date( get_current_user_id(), date('Y-m-d' ) );
+
+	// If no entry for today, then we need to add one!
+	if ( true === empty( $return[ 'entry_id' ] ) ) {
+		$return[ 'new-entry' ]  = true;
+		$return[ 'entry_id' ]   = ws_ls_db_entry_set( [ 'weight_date' => date('Y-m-d' ) ], get_current_user_id() );
+		$return[ 'value' ]      = (int) $increment;
+	} else {
+		$return[ 'previous' ]   = (int) ws_ls_meta_fields_get_value_for_entry( $return[ 'entry_id' ], $meta_field_id );
+		$return[ 'value' ]      = $return[ 'previous' ] + (int) $increment;
+	}
+
+	// Final check - do we have an entry ID?
+	if( true === empty( $return[ 'entry_id' ] ) ) {
+
+		$return[ 'error' ] = true;
+		$return[ 'text' ] = 'Error loading entry ID';
+
+		wp_send_json( $return );
+	}
+
+	$result = ws_ls_meta_add_to_entry([
+			'entry_id'      => $return[ 'entry_id' ],
+			'key'           => $meta_field_id,
+			'value'         => $return[ 'value' ]
+		]
+	);
+
+	if ( false === $result ) {
+		wp_send_json( [ 'error' => true, 'text' => 'Error incrementing meta value' ] );
+	}
+
+	wp_send_json( $return );
+}
+add_action( 'wp_ajax_ws_ls_meta_field_accumulator', 'ws_ls_meta_fields_ajax_accumulator' );
+
+/**
     AJAX: Fetch all meta fields for main list
  **/
 function ws_ls_meta_fields_ajax_list() {

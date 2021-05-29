@@ -162,7 +162,8 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 TODO:
 
-
+  - look for missing font awesome icons
+  - add/edit weight entry in admin should prob not be mandatory
   - Hooks firing on a new entry - what listens for: weight-measurements do we need to expand?
   - On user data, difference value
 
@@ -186,6 +187,7 @@ Files OK: PRO:  harris-b, macro-calc, bmr, shortcode.wlt, challenges, awards, me
 * Improvement: Placeholder values in weight/custom-field/target forms will now have suffixes.
 * Improvement: Added BMI numeric value in admin data tables.
 * Improvement: Added additional error handling around the ID argument for the [wt-challenges] shortcode.
+* Improvement: Upgraded font awesome library to 5.15.3.
 * Bug fix: Fixed an issue where exports would not run for Pro users.
 * Bug fix: Fixed "wlt-awards-deleting" hook from incorrectly firing.
 * Bug fix: Fixed issue with "Delete Data" button not working in admin.

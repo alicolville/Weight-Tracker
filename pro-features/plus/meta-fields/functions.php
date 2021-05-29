@@ -562,11 +562,11 @@ function ws_ls_meta_fields_groups_slugs_to_ids( $slugs ) {
  */
 function ws_ls_meta_fields_slugs_to_ids( $slugs ) {
 
-	$ids = NULL;
-
 	if ( true === empty( $slugs ) ) {
-		return $ids;
+		return null;
 	}
+
+	$ids = NULL;
 
 	$slugs  = explode( ',', $slugs );
 	$fields = ws_ls_meta_fields();
