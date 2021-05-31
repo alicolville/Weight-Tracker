@@ -2,6 +2,12 @@
 
 defined('ABSPATH') or die("Jog on!");
 
+/**
+ * Render meta field accumulator
+ * @param $user_defined_arguments
+ *
+ * @return string|void
+ */
 function ws_ls_meta_fields_shortcode_accumulator( $user_defined_arguments ) {
 
 	$shortcode_arguments = shortcode_atts( [    'button-classes'    => 'button btn-primary',
@@ -11,12 +17,20 @@ function ws_ls_meta_fields_shortcode_accumulator( $user_defined_arguments ) {
 												'title-level'       => 'h3',
 												'hide-title'        => false,
 												'hide-value'        => false,
+												'hide-login-prompt' => false,
 												'increment-values'  => '1,5,10',         // A string of comma delimited integers of allowed increments
 												'value-text'        => sprintf( '%s <strong>{value}</strong>.', __( 'So far you have recorded:', WE_LS_SLUG ) ),
 												'value-level'       => 'p',
 												'saved-text'        => __( 'Your entry has been saved!', WE_LS_SLUG )
 
 	], $user_defined_arguments );
+
+	// Display error if user not logged in
+	if ( false === is_user_logged_in() ) {
+		return ( true !== ws_ls_to_bool( $shortcode_arguments[ 'hide-login-prompt' ] ) ) ?
+							'' :
+								ws_ls_display_blockquote( __( 'You need to be logged in to record your weight.', WE_LS_SLUG ) , '', false, true );
+	}
 
 	if ( true === empty( $shortcode_arguments[ 'slug' ] ) ) {
 		return __( 'Please specify a custom field slug e.g. [wt-custom-fields-accumulator slug="cups-of-water-drank-today"].', WE_LS_SLUG );
