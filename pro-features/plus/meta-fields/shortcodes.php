@@ -25,7 +25,7 @@ function ws_ls_meta_fields_shortcode_accumulator( $user_defined_arguments ) {
 	$meta_field = ws_ls_meta_fields_get( [ $shortcode_arguments[ 'slug' ] ] );
 
 	if ( true === empty( $meta_field ) ) {
-		return __( 'The custom field could not be found for the given slug.', WE_LS_SLUG );
+		return __( 'The custom field could not be found for the given slug or it needs to be enabled.', WE_LS_SLUG );
 	}
 
 	if ( 0 !== (int) $meta_field[ 'field_type' ] ) {
