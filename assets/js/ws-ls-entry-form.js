@@ -64,10 +64,11 @@ jQuery( document ).ready( function ( $ ) {
     // Form Validation
     $( '.we-ls-weight-form-validate' ).each( function () {
 
-        let form_id     = $(this).attr("id");
-        let form_type   = $(this).data("form-type");
-        let target_form = ( 'target' === form_type );
-        let weight_unit = $(this).data("metric-unit");
+        let form_id           = $(this).attr("id");
+        let form_type         = $(this).data("form-type");
+        let target_form       = ( 'target' === form_type );
+        let weight_unit       = $(this).data("metric-unit");
+        let weight_mandatory  = $(this).hasClass("weight-required");
 
         window.console && console.log( ' Adding form validation to: ' + form_id + '. Form Type: ' + form_type+ '. Target form? ' + target_form + '. Weight Unit: ' + weight_unit );
 
@@ -110,7 +111,8 @@ jQuery( document ).ready( function ( $ ) {
             }
         }
 
-        if ( 'weight' === form_type ) {
+        if ( 'weight' === form_type &&
+                true === weight_mandatory ) {
           let default_field_options = { required: ! target_form, number: true, range: [ 0, 5000 ] };
 
           // Set up numeric fields to validate
