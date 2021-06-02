@@ -47,6 +47,7 @@ function ws_ls_admin_page_data_add_edit() {
 		                                                             'entry-id'             => $entry_id,
 		                                                             'redirect-url'         => $redirect_url,
 		                                                             'hide-login-message'   => true,
+																	 'weight-mandatory'		=> false
 		                                ] );
 
 	                                } else {
