@@ -192,6 +192,7 @@ Files OK: PRO:  harris-b, macro-calc, bmr, shortcode.wlt, challenges, awards, me
 * Bug fix: Fixed an issue where exports would not run for Pro users.
 * Bug fix: Fixed "wlt-awards-deleting" hook from incorrectly firing.
 * Bug fix: Fixed issue with "Delete Data" button not working in admin.
+* Bug fix: Removed name and id attributes from "Clear Target" as causing non-unique console errors.
 * Change: Removed redundant setting "Should y Axes start at 0?" as chart.js 3 treats y axes differently.
 * Change: Removed redundant setting "Display points on chart?" this is now controlled by "Point thickness".
 

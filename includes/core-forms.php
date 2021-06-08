@@ -206,7 +206,7 @@ function ws_ls_form_weight( $arguments = [] ) {
 	if ( 'target' === $arguments[ 'type' ] &&
 			false === is_admin() &&
 				false === empty( ws_ls_target_get( $arguments[ 'user-id' ] ) ) ){
-		$html .= sprintf('&nbsp;<button name="ws-ls-clear-target" id="ws-ls-clear-target" type="button" tabindex="%1$d" class="ws-ls-clear-target button ws-ls-remove-on-submit" >%2$s</button>',
+		$html .= sprintf('&nbsp;<button type="button" tabindex="%1$d" class="ws-ls-clear-target button ws-ls-remove-on-submit" >%2$s</button>',
 			ws_ls_form_tab_index_next(),
 			__( 'Clear Target', WE_LS_SLUG )
 		);
