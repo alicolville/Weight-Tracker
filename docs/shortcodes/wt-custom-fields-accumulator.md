@@ -15,7 +15,7 @@ The aim is to provide an interactive and simpler way to increment a custom field
 |hide-title|If true, hide the title.|True or false (default).|[wt-custom-fields-accumulator hide-title="true"]
 |hide-value|If true, hide the current value.|True or false (default).|[wt-custom-fields-accumulator hide-value="true"]
 |hide-login-prompt|If true, hide the login prompt.|True or false (default).|[wt-custom-fields-accumulator hide-login-prompt="true"]
-|**increment-values**|A comma delimited list of increment values. Each increment value will be displayed on a button.|Text. Default "1,5,10"|[wt-custom-fields-accumulator increment-values="10,50,100"]
+|**increment-values**|A comma delimited list of increment values. Each increment value will be displayed on a button.|Text. Default "1,5,10"|[wt-custom-fields-accumulator increment-values="5,10,20"]
 |saved-text|The text displayed when the entry is saved.|Text. Defaults to "Your entry has been saved!".|[wt-custom-fields-accumulator saved-text="Saved."]
 |**slug**|Specify the slug of the numeric [custom field]({{ site.baseurl }}/custom-fields.html) to increment.|Text|[wt-custom-fields-accumulator slug='cups-of-water']
 |title|Override the default title.|Text. Defaults to the [custom field]({{ site.baseurl }}/custom-fields.html) title.|[wt-custom-fields-accumulator title="Please log your water consumption"]
