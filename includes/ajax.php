@@ -177,3 +177,36 @@ function ws_ls_ajax_postbox_value() {
 	wp_send_json( $result );
 }
 add_action( 'wp_ajax_postboxes_event', 'ws_ls_ajax_postbox_value' );
+
+/**
+ * Load an entry for the given user / date
+ */
+function ws_ls_ajax_get_entry_for_date() {
+
+	check_ajax_referer( 'ws-ls-nonce', 'security' );
+
+	$user_id = ws_ls_post_value('user-id' );
+
+	if ( true === empty( $user_id ) ) {
+		wp_send_json( NULL );
+	}
+
+	$date = ws_ls_post_value('date' );
+
+	if ( true === empty( $date ) ) {
+		wp_send_json( NULL );
+	}
+
+	$date           = ws_ls_convert_date_to_iso( $date );
+	$existing_id    = ws_ls_db_entry_for_date( $user_id, $date );
+
+	if ( true === empty( $existing_id ) ) {
+		wp_send_json( NULL );
+	}
+
+	$entry = ws_ls_entry_get( [ 'user-id' => $user_id, 'id' => $existing_id ] );
+
+	wp_send_json( $entry );
+
+}
+add_action( 'wp_ajax_ws_ls_get_entry_for_date', 'ws_ls_ajax_get_entry_for_date' );

@@ -29,7 +29,31 @@ jQuery( document ).ready( function ( $ ) {
             dayNames            : ws_ls_config[ 'date-picker-locale' ][ 'dayNames' ],
             dayNamesShort       : ws_ls_config[ 'date-picker-locale' ][ 'dayNamesShort' ],
             dayNamesMin         : ws_ls_config[ 'date-picker-locale' ][ 'dayNamesMin' ],
-            firstDay            : ws_ls_config[ 'date-picker-locale' ][ 'firstDay' ]
+            firstDay            : ws_ls_config[ 'date-picker-locale' ][ 'firstDay' ],
+            onSelect            : function( date ) {
+
+                if ( '1' !== ws_ls_config[ 'form-load-previous' ] ) {
+                  return;
+                }
+
+
+
+              ws_ls_entry_post_data( 'ws_ls_get_entry_for_date',
+                            { 'user-id' : ws_ls_config[ 'user-id' ], 'date' : date },
+                            function( data, response ) {
+
+                                // Was an entry found for this user/date?
+                                if ( null !== response ) {
+
+                                  if ( true === confirm( ws_ls_config[ 'date-picker-locale' ][ 'entry-found' ] ) ) {
+                                    console.log(response);
+
+                                  }
+
+
+                                }
+                            });
+                }
         };
 
         // Default the date to something that isn't this year for DoB
@@ -158,3 +182,14 @@ jQuery( document ).ready( function ( $ ) {
   });
 
 });
+
+function ws_ls_entry_post_data( action, data, callback ) {
+
+  data[ 'action' ]    = action;
+  data[ 'security' ]  = ws_ls_config['ajax-security-nonce'];
+
+  jQuery.post( ws_ls_config[ 'ajax-url' ], data, function ( response ) {
+
+    callback( data, response );
+  });
+}
