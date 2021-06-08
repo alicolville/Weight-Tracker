@@ -156,7 +156,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 == Upgrade Notice ==
 
-8.5 - Gamification - Added support for myCred! Reward your users for using Weight Tracker.
+9.0 - Non weight entries! Support for custom field entries only! New custom field shortcodes.
 
 == Changelog ==
 
@@ -174,6 +174,7 @@ Files OK: PRO:  harris-b, macro-calc, bmr, shortcode.wlt, challenges, awards, me
 = 9.0 =
 
 * New feature: Allow entries without needing a weight - e.g. Custom Field only entries.
+* New feature: New shortcode: [wt-custom-fields-accumulator] - displays a series of buttons that allow the user to increment the value of a numeric custom field. Read more https://docs.yeken.uk/shortcodes/wt-custom-fields-accumulator.html
 * New feature: New shortcode: [wt-custom-fields-table] - display custom fields entries in a table. Read more https://docs.yeken.uk/shortcodes/wt-custom-fields-table.html
 * New feature: New shortcode: [wt-custom-fields-chart] - display custom fields only on a chart. Read more https://docs.yeken.uk/shortcodes/wt-custom-fields-chart.html
 * New feature: [wt-chart] shortcode can be used to display custom fields only (i.e. hide weight entries/targets). Use the new shortcode arguments 'show-weight' and 'show-target'. Read more https://docs.yeken.uk/shortcodes/wt-chart.html
