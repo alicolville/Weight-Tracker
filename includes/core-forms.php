@@ -184,7 +184,7 @@ function ws_ls_form_weight( $arguments = [] ) {
 	$html .= sprintf( '<div class="ws-ls-form-buttons">
 						<div>
 							<div class="ws-ls-form-processing-throbber ws-ls-loading ws-ls-hide"></div>
-							<button name="submit_button" type="submit" id="we-ls-submit" tabindex="%1$d" class="button ws-ls-remove-on-submit" for="%3$s" >%2$s</button>',
+							<button name="submit_button" type="submit" tabindex="%1$d" class="button ws-ls-remove-on-submit" for="%3$s" >%2$s</button>',
 							ws_ls_form_tab_index_next(),
 							( 'target' === $arguments[ 'type' ] ) ?  __( 'Set Target', WE_LS_SLUG ) :  __( 'Save Entry', WE_LS_SLUG ),
 							$arguments[ 'form-id' ]
