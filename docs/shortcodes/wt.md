@@ -71,3 +71,4 @@ The shortcode supports the following arguments:
 | min-chart-points|Specifies how many weight entries must be present before the chart is displayed. By default, it is set to 2.|A numeric value. Default 2.|[wt min-chart-points=0]|    
 | show-add-button  | If true, an "Add Entry" button is displayed above the chart. Clicking this button jumps the user to the weight entry form.   | True or false (default).   | [wl show-add-button=true] |    
 | show-chart-history (8.4+)   | If true, display a chart on the "History" tab. | True or false (default).   | [wt show-chart-history=true] |    
+|weight-mandatory|By default, for a weight form, it is mandatory for a weight to be entered. If setting this argument to false, the form can be submitted with out.|true or false (default)|[wt weight-mandatory='true']

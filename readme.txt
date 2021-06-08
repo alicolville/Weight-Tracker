@@ -183,6 +183,8 @@ Files OK: PRO:  harris-b, macro-calc, bmr, shortcode.wlt, challenges, awards, me
 * Improvement: Added support for curved (bezier) lines for custom fields when plotted on charts.
 * Improvement: Added the argument "title" to the the [wt-form] shortcode.
 * Improvement: Added the argument "force-todays-date" to the the [wt-form] shortcode.
+* Improvement: Added the argument "weight-mandatory" to the the [wt-form] shortcode.
+* Improvement: Added the argument "weight-mandatory" to the the [wt] shortcode.
 * Improvement: Placeholder values in weight/custom-field/target forms will now have suffixes.
 * Improvement: Added BMI numeric value in admin data tables.
 * Improvement: Added additional error handling around the ID argument for the [wt-challenges] shortcode.

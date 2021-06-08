@@ -29,3 +29,4 @@ The shortcode supports the following arguments:
 |title|The title to be displayed at the top of the form|Text. By default, it will try to be automatically determined based on the type of form|[wt-form title='Enter your cups of water for today']
 |type|The type of form. Either weight entry (weight), Set target (target) or [custom field]({{ site.baseurl }}/custom-fields.html) entry (custom-field).|"weight" (default), "target" or "custom-field"|[wt-form type='target']
 |user-id|By default, the shortcode will save data against the current user. You can specify this argument to save the form data against another user ID.|Numeric| [wt-form user-id="1"]
+|weight-mandatory|By default, for a weight form, it is mandatory for a weight to be entered. If setting this argument to false, the form can be submitted with out.|true or false (default)|[wt-form weight-mandatory='true']
