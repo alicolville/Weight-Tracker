@@ -10,6 +10,10 @@ defined('ABSPATH') or die("Jog on!");
  */
 function ws_ls_meta_fields_shortcode_accumulator( $user_defined_arguments ) {
 
+	if ( false === ws_ls_meta_fields_is_enabled() ) {
+		return ws_ls_display_pro_upgrade_notice_for_shortcode();
+	}
+
 	$shortcode_arguments = shortcode_atts( [    'button-classes'    => 'button btn-primary',
 												'button-text'       => '{increment}',
 												'slug'              => '',

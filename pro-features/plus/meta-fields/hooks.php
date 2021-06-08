@@ -7,6 +7,10 @@ defined('ABSPATH') or die("Jog on!");
  */
 function ws_ls_meta_fields_ajax_accumulator() {
 
+	if ( false === ws_ls_meta_fields_is_enabled() ) {
+		wp_send_json( [ 'error' => true, 'text' => 'Meta fields are not enabled' ] );
+	}
+
 	check_ajax_referer( 'ws-ls-nonce', 'security' );
 
 	$increment = ws_ls_post_value( 'increment' );
