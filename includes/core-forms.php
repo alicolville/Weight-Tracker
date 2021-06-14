@@ -10,7 +10,7 @@ function ws_ls_form_weight( $arguments = [] ) {
 	$arguments = wp_parse_args( $arguments, [   'css-class-form'        => '',
 												'custom-field-groups'   => '',      // If specified, only show custom fields that are within these groups
 												'custom-field-slugs'    => '',      // If specified, only show the custom fields that are specified
-	                                            'entry-id'              => NULL,
+	                                            'entry-id'              => ws_ls_querystring_value( 'load-entry', NULL ),
 	                                            'entry'                 => NULL,
 	                                            'hide-button-cancel'    => true,
 	                                            'hide-fields-meta'      => false,
@@ -99,10 +99,11 @@ function ws_ls_form_weight( $arguments = [] ) {
 			$date = ( false === empty( $arguments['entry']['display-date'] ) ) ?
 				$arguments['entry']['display-date'] : $arguments['todays-date'];
 
-			$html .= ws_ls_form_field_date( [ 'name'        => 'we-ls-date',
-			                                  'value'       => $date,
-			                                  'placeholder' => $date,
-			                                  'title'       => __( 'Date', WE_LS_SLUG )
+			$html .= ws_ls_form_field_date( [   'name'        => 'we-ls-date',
+			                                    'value'       => $date,
+			                                    'placeholder' => $date,
+			                                    'title'       => __( 'Date', WE_LS_SLUG ),
+												'form-id'     => $arguments[ 'form-id' ]
 			] );
 		}
 	}
@@ -266,6 +267,8 @@ function ws_ls_form_init( $arguments = [] ) {
 	// Allow others to determine where form is posted too
 	$arguments[ 'post-url' ] = apply_filters( 'wlt_form_url', ws_ls_get_url() );
 
+	$arguments[ 'post-url' ] = str_replace('load-entry', 'load-entry-saved', $arguments[ 'post-url' ] );
+
 	// Are meta fields enabled for this form?
 	$arguments[ 'meta-enabled' ]  = ( true === in_array( $arguments[ 'type' ], [ 'custom-fields', 'weight' ] ) &&
 	                                  false === $arguments[ 'hide-fields-meta' ] &&
@@ -347,6 +350,7 @@ function ws_ls_form_field_date( $arguments = [] ) {
 	$arguments = wp_parse_args( $arguments, [	'type'                  => 'date',
 												'id'                    => ws_ls_component_id(),
 												'name'                  => '',
+	                                            'form-id'               => NULL,
 	                                            'value'                 => NULL,
 												'placeholder'           => NULL,
 	                                            'show-label'            => false,
@@ -366,14 +370,15 @@ function ws_ls_form_field_date( $arguments = [] ) {
 		$html .= sprintf( '<label for="%1$s" class="">%2$s</label>', $arguments[ 'id' ], $arguments[ 'title' ]);
 	}
 
-	$html .= sprintf( '<input type="text" name="%1$s" id="%2$s" tabindex="%3$d" value="%4$s" placeholder="%5$s" size="%6$d" class="%7$s" />',
+	$html .= sprintf( '<input type="text" name="%1$s" id="%2$s" tabindex="%3$d" value="%4$s" placeholder="%5$s" size="%6$d" class="%7$s" data-form-id="%8$s" />',
 			$arguments[ 'name' ],
 			esc_attr( $arguments[ 'id' ] ),
 			ws_ls_form_tab_index_next(),
 			esc_attr( $arguments[ 'value' ] ),
 			esc_attr( $arguments[ 'placeholder' ] ),
 			$arguments[ 'size' ],
-			$arguments[ 'name' ] . ' ' . $arguments[ 'css-class' ]
+			$arguments[ 'name' ] . ' ' . $arguments[ 'css-class' ],
+			esc_attr( $arguments[ 'form-id' ] )
 	);
 
 	if ( false === empty( $arguments[ 'trailing-html' ] ) ) {

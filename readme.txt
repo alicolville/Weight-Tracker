@@ -162,14 +162,10 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 TODO:
 
-
+-- add an error message if user settings shortcode placed when disabled
+ - add a new setting to cap min calories for losing weight
   - when adding an entry, if a date is selected that matches today, load in today's value. Save losing data.
   - Hooks firing on a new entry - what listens for: weight-measurements do we need to expand?
-
-  - Examine all SQL queries that reference WE_LS_TABLENAME
-
-Files OK: PRO:  harris-b, macro-calc, bmr, shortcode.wlt, challenges, awards, meta-fields, stats, core-charting
-
 
 = 9.0 =
 
@@ -179,6 +175,7 @@ Files OK: PRO:  harris-b, macro-calc, bmr, shortcode.wlt, challenges, awards, me
 * New feature: New shortcode: [wt-custom-fields-chart] - display custom fields only on a chart. Read more https://docs.yeken.uk/shortcodes/wt-custom-fields-chart.html
 * New feature: [wt-chart] shortcode can be used to display custom fields only (i.e. hide weight entries/targets). Use the new shortcode arguments 'show-weight' and 'show-target'. Read more https://docs.yeken.uk/shortcodes/wt-chart.html
 * New feature: [wt-chart] new argument "message-no-data" to specify the error message to display when there is no data to display on the chart. Read more https://docs.yeken.uk/shortcodes/wt-chart.html
+* New setting: "Load previous entry upon date selection?" - If enabled, and data exists, then the user will be asked whether they wish to load the data for the selected date chosen on the entry form.
 * Improvement: New arguments for shortcode [wt-table] 'enable-bmi', 'enable-notes'and 'enable-weight'. Read more https://docs.yeken.uk/shortcodes/wt-table.html
 * Improvement: Upgrading charting library (chart.js) and underlying code to 3.2.0.
 * Improvement: Added support for curved (bezier) lines for custom fields when plotted on charts.

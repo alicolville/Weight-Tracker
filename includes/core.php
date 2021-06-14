@@ -37,7 +37,7 @@ function ws_ls_config_js() {
 					'in-admin'                          => ( is_admin() ) ? 'true' : 'false',
 					'max-photo-upload'                  => ws_ls_photo_max_upload_size(),
 					'tab-config'                        => ws_ls_config_js_tab_config(),
-					'form-load-previous'                => true // TODO! Add a new setting to admin panel - also set to false if in admin?? Or should admin see previous values?
+					'form-load-previous'                => false === is_admin() && WS_LS_IS_PRO && ws_ls_option_to_bool( 'ws-ls-populate-form-with-values-on-date', 'yes' )
 	];
 
 	// If About You fields mandatory, add extra translations
@@ -83,7 +83,7 @@ function ws_ls_config_js_datapicker_locale() {
 	        'dayNamesMin'       => array_values( $wp_locale->weekday_initial ),
 	    	// get the start of week from WP general setting
 	        'firstDay'          => get_option( 'start_of_week' ),
-			'entry-found'       => __( 'An entry has been found for this date. Would you like to load the existing values?', WE_LS_SLUG ) . PHP_EOL . PHP_EOL . __( 'Note: Any unsaved data shall be lost!', WE_LS_SLUG )
+			'entry-found'       => __( 'An entry has been found for this date. Would you like to load the existing entry?', WE_LS_SLUG ) . PHP_EOL . PHP_EOL . __( 'Note: Any unsaved data shall be lost!', WE_LS_SLUG )
 	];
 }
 

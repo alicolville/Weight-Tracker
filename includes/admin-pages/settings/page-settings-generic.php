@@ -204,6 +204,19 @@ function ws_ls_settings_page_generic() {
 															<p><?php echo __('If enabled, when adding a new weight entry, the previous weight entries values will be added as field placeholders to show the user the values previously entered.', WE_LS_SLUG); ?></p>
 														</td>
 													</tr>
+													<tr class="<?php echo $disable_if_not_pro_class; ?>">
+														<th scope="row"><?php echo __( 'Load previous entry upon date selection?' , WE_LS_SLUG); ?></th>
+														<td>
+															<?php
+															$enabled = get_option( 'ws-ls-populate-form-with-values-on-date', 'yes' );
+															?>
+															<select id="ws-ls-populate-form-with-values-on-date" name="ws-ls-populate-form-with-values-on-date">
+																<option value="yes" <?php selected( $enabled, 'yes' ); ?>><?php echo __( 'Yes', WE_LS_SLUG ); ?></option>
+																<option value="no" <?php selected( $enabled, 'no' ); ?>><?php echo __( 'No', WE_LS_SLUG ); ?></option>
+															</select>
+															<p><?php echo __('If enabled, and data exists, then the user will be asked whether they wish to load the data for the selected date chosen on the entry form.', WE_LS_SLUG); ?></p>
+														</td>
+													</tr>
 											</table>
 											<h3><?php echo __( 'Tab appearance' , WE_LS_SLUG); ?></h3>
 											<table class="form-table">
@@ -1133,6 +1146,7 @@ function ws_ls_register_settings(){
         register_setting( 'we-ls-options-group', 'ws-ls-point-size' );
         register_setting( 'we-ls-options-group', 'ws-ls-grid-lines' );
 		register_setting( 'we-ls-options-group', 'ws-ls-populate-placeholders-with-previous-values' );
+		register_setting( 'we-ls-options-group', 'ws-ls-populate-form-with-values-on-date' );
 
 	    // Groups
 	    register_setting( 'we-ls-options-group', 'ws-ls-enable-groups-user-edit' );

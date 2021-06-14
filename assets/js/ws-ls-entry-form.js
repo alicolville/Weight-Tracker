@@ -8,11 +8,12 @@ jQuery( document ).ready( function ( $ ) {
      */
     $( '.we-ls-datepicker, .we-ls-datepicker-plain' ).each( function() {
 
-        let is_dob_field    = $( this ).hasClass( 'ws-ls-dob-field' );
+        let datepicker      = $( this );
+        let is_dob_field    = datepicker.hasClass( 'ws-ls-dob-field' );
         let year_range      = ( true === is_dob_field ) ? '-100:-1' : '-100:+0';
 
         // Challenge field?
-        if ( false === is_dob_field && $( this ).hasClass( 'we-ls-challenge-datepicker' ) ) {
+        if ( false === is_dob_field && datepicker.hasClass( 'we-ls-challenge-datepicker' ) ) {
           year_range = ( true === is_dob_field ) ? '-100:-1' : '-100:+100';
         }
 
@@ -36,8 +37,6 @@ jQuery( document ).ready( function ( $ ) {
                   return;
                 }
 
-
-
               ws_ls_entry_post_data( 'ws_ls_get_entry_for_date',
                             { 'user-id' : ws_ls_config[ 'user-id' ], 'date' : date },
                             function( data, response ) {
@@ -45,12 +44,11 @@ jQuery( document ).ready( function ( $ ) {
                                 // Was an entry found for this user/date?
                                 if ( null !== response ) {
 
-                                  if ( true === confirm( ws_ls_config[ 'date-picker-locale' ][ 'entry-found' ] ) ) {
-                                    console.log(response);
-
+                                  if ( true !== confirm( ws_ls_config[ 'date-picker-locale' ][ 'entry-found' ] ) ) {
+                                    return;
                                   }
 
-
+                                  window.location.href = ws_ls_config[ 'current-url' ] + '?load-entry=' + response[ 'id' ];
                                 }
                             });
                 }

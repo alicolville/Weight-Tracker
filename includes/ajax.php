@@ -204,9 +204,8 @@ function ws_ls_ajax_get_entry_for_date() {
 		wp_send_json( NULL );
 	}
 
-	$entry = ws_ls_entry_get( [ 'user-id' => $user_id, 'id' => $existing_id ] );
+	$entry                  = ws_ls_entry_get( [ 'user-id' => $user_id, 'id' => $existing_id ] );
 
 	wp_send_json( $entry );
-
 }
 add_action( 'wp_ajax_ws_ls_get_entry_for_date', 'ws_ls_ajax_get_entry_for_date' );
