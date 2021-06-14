@@ -344,13 +344,10 @@ function ws_ls_datatable_columns( $arguments = [] ) {
 	    $custom_field_slugs     = ws_ls_meta_fields_slugs_to_ids( $arguments[ 'custom-field-slugs' ] );
 	    $filter_by_group        = ( false === empty( $custom_field_groups) );
 	    $filter_by_id           = ( false === empty( $custom_field_slugs ) );
-
-	    $column_size = ( false === empty( $arguments[ 'smaller-width' ] ) &&
-	                        $arguments[ 'smaller-width' ] ) ? 'lg' : 'md';
-
-		if ( false === empty( $arguments[ 'custom-field-col-size' ] ) ) {
-			$column_size = $arguments[ 'custom-field-col-size' ];
-		}
+	    
+	    $column_size = ( false === empty( $arguments[ 'custom-field-col-size' ] ) ) ?
+		                    $column_size = $arguments[ 'custom-field-col-size' ] :
+		                        'lg';
 
 	    foreach ( ws_ls_meta_fields_enabled() as $field ) {
         	if ( true === apply_filters( 'wlt-filter-column-include', true, $field ) ) {
