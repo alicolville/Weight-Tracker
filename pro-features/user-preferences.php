@@ -25,7 +25,7 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
 
     // Have user preferences been allowed in Settings?
     if ( false === ws_ls_user_preferences_is_enabled() && false === is_admin() ) {
-        return $html_output;
+        return ws_ls_display_blockquote( __( 'To use this shortcode, please ensure you have enabled the setting "Allow user settings".', WE_LS_SLUG) );;
     }
 
 	// Delete all the user's data if selected

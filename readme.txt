@@ -162,9 +162,6 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 TODO:
 
--- add an error message if user settings shortcode placed when disabled
-
-  - when adding an entry, if a date is selected that matches today, load in today's value. Save losing data.
   - Hooks firing on a new entry - what listens for: weight-measurements do we need to expand?
 
 = 9.0 =
@@ -187,6 +184,7 @@ TODO:
 * Improvement: Placeholder values in weight/custom-field/target forms will now have suffixes.
 * Improvement: Added BMI numeric value in admin data tables.
 * Improvement: Added additional error handling around the ID argument for the [wt-challenges] shortcode.
+* Improvement: Added a small notice to [wt-user-settings] informing admin that "Allow user settings" must be enabled for the shortcode to work.
 * Bug fix: Fixed an issue where exports would not run for Pro users.
 * Bug fix: Fixed "wlt-awards-deleting" hook from incorrectly firing.
 * Bug fix: Fixed issue with "Delete Data" button not working in admin.
