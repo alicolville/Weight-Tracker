@@ -26,7 +26,7 @@ function ws_ls_shortcode_form( $user_defined_arguments ) {
 								       'hide-measurements'      => false,
 								       'hide-custom-fields'     => false,
 								       'title'                  => '',
-								       'type'                   => 'weight',
+								       'type'                   => 'both',
 								       'custom-field-groups'    => '',      // If specified, only show custom fields that are within these groups
 								       'custom-field-slugs'     => '',      // If specified, only show the custom fields that are specified
     ], $user_defined_arguments );
@@ -41,6 +41,14 @@ function ws_ls_shortcode_form( $user_defined_arguments ) {
 	// Backwards compatibility
 	if ( true === ws_ls_to_bool( $arguments[ 'target' ] ) ) {
 		$arguments[ 'type' ] = 'target';
+	} else {
+
+		if ( 'both' === $arguments[ 'type' ] ) {
+			$arguments[ 'type' ] = 'weight';
+		} elseif ( 'weight' === $arguments[ 'type' ] ) {
+			$arguments[ 'hide-fields-meta' ] = true;
+		}
+
 	}
 
 	return ws_ls_form_weight( $arguments );

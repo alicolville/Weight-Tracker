@@ -27,6 +27,5 @@ The shortcode supports the following arguments:
 |load-placeholders|If set to true, the weight and [custom field]({{ site.baseurl }}/custom-fields.html) values will be added as placeholders form form fields.|True (default) or false|[wt-form load-placeholders='true']
 |redirect-url|If specified, a URL that the user should be redirected to after completing the form.|A URL within the current domain.|[wt-form redirect-url='https://yoursite.com/thank-you-page']
 |title|The title to be displayed at the top of the form|Text. By default, it will try to be automatically determined based on the type of form|[wt-form title='Enter your cups of water for today']
-|type|The type of form. Either weight entry (weight), Set target (target) or [custom field]({{ site.baseurl }}/custom-fields.html) entry (custom-field).|"weight" (default), "target" or "custom-field"|[wt-form type='target']
+|**type**|The type of form. Either weight entry (weight), Set target (target), [custom field]({{ site.baseurl }}/custom-fields.html) entry (custom-fields) or both weight and custom fields. |"weight" (default), "target", "custom-fields" or "both"|[wt-form type='target']
 |user-id|By default, the shortcode will save data against the current user. You can specify this argument to save the form data against another user ID.|Numeric| [wt-form user-id="1"]
-|weight-mandatory|By default, for a weight form, it is mandatory for a weight to be entered. If setting this argument to false, the form can be submitted with out.|true or false (default)|[wt-form weight-mandatory='true']
