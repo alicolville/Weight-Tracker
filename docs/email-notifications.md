@@ -5,8 +5,8 @@
 If enabled, one or more administrators can be notified by email when a user does one of the following:
 
 -   Adds / updates their target weight
--   Adds a weight entry
--   Updates a weight entry
+-   Adds a weight/custom field entry
+-   Updates a weight/custom field entry
 
 Email notifications can be enabled via the WP Admin panel under Weight Loss Tracker > Settings > Emails and Notifications. The following settings are available:
 

@@ -929,7 +929,7 @@ function ws_ls_settings_page_generic() {
 														</td>
 													</tr>
 													<tr class="<?php echo $disable_if_not_pro_class; ?>">
-														<th scope="row"><?php echo __( 'New weight / measurement entries', WE_LS_SLUG ); ?></th>
+														<th scope="row"><?php echo __( 'New weight / custom field entries', WE_LS_SLUG ); ?></th>
 														<td>
 															<?php
 																$email_notification_new = get_option( 'ws-ls-email-notifications-new', 'yes' );
@@ -942,7 +942,7 @@ function ws_ls_settings_page_generic() {
 														</td>
 													</tr>
 													<tr class="<?php echo $disable_if_not_pro_class; ?>">
-														<th scope="row"><?php echo __( 'Edited weight / measurement entries', WE_LS_SLUG ); ?></th>
+														<th scope="row"><?php echo __( 'Edited weight / custom field entries', WE_LS_SLUG ); ?></th>
 														<td>
 															<?php
 																$email_notification_edit = get_option( 'ws-ls-email-notifications-edit', 'yes' );
@@ -1099,7 +1099,7 @@ function ws_ls_settings_page_generic() {
                                                             <option value="yes" <?php selected( $gf_enabled, 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
                                                         </select>
                                                         <p>
-                                                            <?php echo __('Examine Gravity Form submissions for weight and measurement data. If found, create a Weight Entry for the user currently logged in.', WE_LS_SLUG); ?>
+                                                            <?php echo __('Examine Gravity Form submissions for weight and custom fields. If found, create a Weight Entry for the user currently logged in.', WE_LS_SLUG); ?>
                                                             <a href="https://docs.yeken.uk/gravity-forms.html" target="_blank" rel="noopener noreferrer"><?php echo __('Read more at ', WE_LS_SLUG); ?>https://docs.yeken.uk/gravity-forms.html</a>
                                                         </p>
                                                     </td>
