@@ -163,7 +163,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 TODO:
 
 -- add an error message if user settings shortcode placed when disabled
- - add a new setting to cap min calories for losing weight
+
   - when adding an entry, if a date is selected that matches today, load in today's value. Save losing data.
   - Hooks firing on a new entry - what listens for: weight-measurements do we need to expand?
 
@@ -175,6 +175,7 @@ TODO:
 * New feature: New shortcode: [wt-custom-fields-chart] - display custom fields only on a chart. Read more https://docs.yeken.uk/shortcodes/wt-custom-fields-chart.html
 * New feature: [wt-chart] shortcode can be used to display custom fields only (i.e. hide weight entries/targets). Use the new shortcode arguments 'show-weight' and 'show-target'. Read more https://docs.yeken.uk/shortcodes/wt-chart.html
 * New feature: [wt-chart] new argument "message-no-data" to specify the error message to display when there is no data to display on the chart. Read more https://docs.yeken.uk/shortcodes/wt-chart.html
+* New feature: Specify safety caps to ensure calories to lose weight doesn't fall below a certain value.
 * New setting: "Load previous entry upon date selection?" - If enabled, and data exists, then the user will be asked whether they wish to load the data for the selected date chosen on the entry form.
 * Improvement: New arguments for shortcode [wt-table] 'enable-bmi', 'enable-notes'and 'enable-weight'. Read more https://docs.yeken.uk/shortcodes/wt-table.html
 * Improvement: Upgrading charting library (chart.js) and underlying code to 3.2.0.

@@ -411,8 +411,22 @@ function ws_ls_settings_page_generic() {
                                                         <p><?php echo __('Show loss figures to your users? For example, if your site is aimed at muscle building, you may wish not to.', WE_LS_SLUG)?></p>
                                                     </td>
                                                 </tr>
+												<tr class="<?php echo $disable_if_not_pro_plus_class; ?>">
+													<th scope="row"><?php echo __( 'Female Minimum Calorie Cap' , WE_LS_SLUG); ?></th>
+													<?php
+														$female_min_calorie_cap = ws_ls_harris_benedict_setting( 'ws-ls-female-min-cal-cap' );
+
+														if ( true === empty( $female_min_calorie_cap ) ) {
+															$female_min_calorie_cap = '';
+														}
+													?>
+													<td>
+														<input  type="number" step="any" min="800" max="5000" name="ws-ls-female-min-cal-cap" id="ws-ls-female-min-cal-cap" value="<?php echo esc_attr( $female_min_calorie_cap ); ?>" size="11" />
+														<p><?php echo __('If specified, any calorie intake suggestions below this value shall be replaced by it e.g. if Weight Tracker calculates the recommended calorie intake to lose weight at 940kcal and the safety is set to 1200kcal, then Weight Tracker has calculated a value below your limits. The safety value will replace the calculated value and set it to 1200kcal.', WE_LS_SLUG);?>. <?php echo ws_ls_calculations_link(); ?>. <em><?php echo __( 'Please note, it may take up to 15 minutes for calculations to change (due to caching).' , WE_LS_SLUG); ?></em></p>
+													</td>
+												</tr>
                                                  <tr class="<?php echo $disable_if_not_pro_plus_class; ?>">
-                                                    <th scope="row"><?php echo __( 'Female Calorie Cap' , WE_LS_SLUG); ?></th>
+                                                    <th scope="row"><?php echo __( 'Female Maximum Calorie Cap' , WE_LS_SLUG); ?></th>
 													 <?php
 													 	$female_calorie_cap =  ws_ls_harris_benedict_setting( 'ws-ls-female-cal-cap' );
 													 ?>
@@ -422,14 +436,27 @@ function ws_ls_settings_page_generic() {
                                                     </td>
                                                 </tr>
                                                 <tr class="<?php echo $disable_if_not_pro_plus_class; ?>">
-                                                    <th scope="row"><?php echo __( 'Male Calorie Cap' , WE_LS_SLUG); ?></th>
+                                                    <th scope="row"><?php echo __( 'Male Minimum Calorie Cap' , WE_LS_SLUG); ?></th>
                                                     <td>
+														<?php
+															$male_min_calorie_cap = ws_ls_harris_benedict_setting( 'ws-ls-male-min-cal-cap' );
+
+															if ( true === empty( $male_min_calorie_cap ) ) {
+																$male_min_calorie_cap = '';
+															}
+														?>
+                                                        <input  type="number"  step="any" min="800" max="5000" name="ws-ls-male-min-cal-cap" id="ws-ls-male-min-cal-cap" value="<?php echo esc_attr( $male_min_calorie_cap ); ?>" size="11" />
+														<p><?php echo __('If specified, any calorie intake suggestions below this value shall be replaced by it e.g. if Weight Tracker calculates the recommended calorie intake to lose weight at 940kcal and the safety is set to 1200kcal, then Weight Tracker has calculated a value below your limits. The safety value will replace the calculated value and set it to 1200kcal.', WE_LS_SLUG);?>. <?php echo ws_ls_calculations_link(); ?>. <em><?php echo __( 'Please note, it may take up to 15 minutes for calculations to change (due to caching).' , WE_LS_SLUG); ?></em></p>
+												</tr>
+												<tr class="<?php echo $disable_if_not_pro_plus_class; ?>">
+													<th scope="row"><?php echo __( 'Male Maximum Calorie Cap' , WE_LS_SLUG); ?></th>
+													<td>
 														<?php
 															$male_calorie_cap = ws_ls_harris_benedict_setting( 'ws-ls-male-cal-cap' );
 														?>
-                                                        <input  type="number"  step="any" min="0" max="5000" name="ws-ls-male-cal-cap" id="ws-ls-male-cal-cap" value="<?php echo esc_attr( $male_calorie_cap ); ?>" size="11" />
+														<input  type="number"  step="any" min="0" max="5000" name="ws-ls-male-cal-cap" id="ws-ls-male-cal-cap" value="<?php echo esc_attr( $male_calorie_cap ); ?>" size="11" />
 														<p><?php echo __('Specify a maximum value for number of daily calories allowed to achieve weight loss. As per NHS guidelines, males are set to 1900kcal by default', WE_LS_SLUG);?>. <?php echo ws_ls_calculations_link(); ?>. <em><?php echo __( 'Please note, it may take up to 15 minutes for calculations to change (due to caching).' , WE_LS_SLUG); ?></em></p></td>
-                                                </tr>
+												</tr>
 											    <tr class="<?php echo $disable_if_not_pro_plus_class; ?>">
                                                     <th scope="row"><?php echo __( 'Calories to subtract' , WE_LS_SLUG); ?></th>
                                                     <?php
@@ -1191,7 +1218,9 @@ function ws_ls_register_settings(){
     if ( WS_LS_IS_PRO_PLUS ) {
 
         register_setting( 'we-ls-options-group', 'ws-ls-female-cal-cap' );
-        register_setting( 'we-ls-options-group', 'ws-ls-male-cal-cap' );
+		register_setting( 'we-ls-options-group', 'ws-ls-female-min-cal-cap' );
+		register_setting( 'we-ls-options-group', 'ws-ls-male-cal-cap' );
+		register_setting( 'we-ls-options-group', 'ws-ls-male-min-cal-cap' );
         register_setting( 'we-ls-options-group', 'ws-ls-cal-subtract' );
 	    register_setting( 'we-ls-options-group', 'ws-ls-cal-add' );
 	    register_setting( 'we-ls-options-group', 'ws-ls-cal-show-loss' );
