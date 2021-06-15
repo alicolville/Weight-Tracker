@@ -160,10 +160,6 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 == Changelog ==
 
-TODO:
-
-  - Hooks firing on a new entry - what listens for: weight-measurements do we need to expand?
-
 = 9.0 =
 
 * New feature: Allow entries without needing a weight - e.g. Custom Field only entries.
