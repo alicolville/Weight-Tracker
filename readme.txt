@@ -170,6 +170,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 * New feature: [wt-chart] new argument "message-no-data" to specify the error message to display when there is no data to display on the chart. Read more https://docs.yeken.uk/shortcodes/wt-chart.html
 * New feature: Specify safety caps to ensure calories to lose weight doesn't fall below a certain value.
 * New setting: "Load previous entry upon date selection?" - If enabled, and data exists, then the user will be asked whether they wish to load the data for the selected date chosen on the entry form.
+* Improvement: When updating an entry, only fields that exist in the form shall be updated on the entry. This will save parts of an entry being blanked in certian circumstancs.
 * Improvement: New arguments for shortcode [wt-table] 'enable-bmi', 'enable-notes'and 'enable-weight'. Read more https://docs.yeken.uk/shortcodes/wt-table.html
 * Improvement: Upgrading charting library (chart.js) and underlying code to 3.2.0.
 * Improvement: Added support for curved (bezier) lines for custom fields when plotted on charts.
