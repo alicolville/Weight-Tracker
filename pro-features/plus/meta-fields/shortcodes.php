@@ -161,8 +161,48 @@ function ws_ls_meta_fields_shortcode_js() {
 				'text-failure'          => __( 'There was an issue saving your entry. Please try again.', WE_LS_SLUG ),
 	];
 }
+/**
+ * Render [wt-form] form
+ * @param $user_defined_arguments
+ *
+ * @return bool|mixed|string
+ */
+function ws_ls_shortcode_form( $user_defined_arguments ) {
 
+	if( false === WS_LS_IS_PRO ) {
+		return false;
+	}
 
+	$arguments = shortcode_atts( [      'user-id'                => get_current_user_id(),
+	                                    'class'                  => false,
+	                                    'force-todays-date'      => false,
+	                                    'hide-titles'            => false,
+	                                    'redirect-url'           => false,
+	                                    'load-placeholders'      => true,
+	                                    'title'                  => '',
+	                                    'custom-field-groups'    => '',      // If specified, only show custom fields that are within these groups
+	                                    'custom-field-slugs'     => '',      // If specified, only show the custom fields that are specified
+	], $user_defined_arguments );
+
+	// Port shortcode arguments to core function
+	$arguments[ 'css-class-form' ]      = $arguments[ 'class' ];
+	$arguments[ 'hide-titles' ]         = ws_ls_to_bool( $arguments[ 'hide-titles' ] );
+	$arguments[ 'hide-notes' ]          = ws_ls_to_bool( $arguments[ 'hide-notes' ] );
+	$arguments[ 'option-force-today' ]  = ws_ls_to_bool( $arguments[ 'force-todays-date' ] );
+	$arguments[ 'hide-fields-meta' ]    = false;
+	$arguments[ 'type' ]                = 'custom-fields';
+
+	return ws_ls_form_weight( $arguments );
+
+}
+add_shortcode( 'wt-custom-fields-form', 'ws_ls_shortcode_form' );
+
+/**
+ * Shortcode for [wt-custom-fields-chart]
+ * @param $user_defined_arguments
+ *
+ * @return bool|string
+ */
 function ws_ls_meta_fields_shortcode_chart( $user_defined_arguments ) {
 
 	if ( false === ws_ls_meta_fields_is_enabled() ) {

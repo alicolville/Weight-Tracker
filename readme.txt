@@ -175,10 +175,8 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 * Improvement: New arguments for shortcode [wt-table] 'enable-bmi', 'enable-notes'and 'enable-weight'. Read more https://docs.yeken.uk/shortcodes/wt-table.html
 * Improvement: Upgrading charting library (chart.js) and underlying code to 3.2.0.
 * Improvement: Added support for curved (bezier) lines for custom fields when plotted on charts.
-* Improvement: Added the argument "title" to the the [wt-form] shortcode.
-* Improvement: Added the argument "force-todays-date" to the the [wt-form] shortcode. Read more https://docs.yeken.uk/shortcodes/wt-form.html
-* Improvement: Added the argument "weight-mandatory" to the the [wt-form] shortcode. Read more https://docs.yeken.uk/shortcodes/wt-form.html
-* Improvement: Added the argument "weight-mandatory" to the the [wt] shortcode.
+* Improvement: Added the arguments "force-todays-date", "weight-mandatory", "load-placeholders" and "title" to the [wt-form] shortcode. Read more https://docs.yeken.uk/shortcodes/wt-form.html
+* Improvement: Added the argument "weight-mandatory" to the [wt] shortcode.
 * Improvement: Added the argument "type" to the shortcode [wt-form]. Specifies type of form. Either weight entry (weight), Set target (target), custom fields or both weight and custom fields. Read more https://docs.yeken.uk/shortcodes/wt-form.html
 * Improvement: Placeholder values in weight/custom-field/target forms will now have suffixes.
 * Improvement: Added BMI numeric value in admin data tables.
