@@ -100,24 +100,17 @@ function ws_ls_form_post_handler_weight( $user_id, $type = 'weight' ) {
 		return false;
 	}
 
+	$kg 	= ws_ls_form_post_handler_extract_weight();
 	$date	= ws_ls_post_value( 'we-ls-date' );
 
 	if ( true === empty( $date ) ) {
 		return false;
 	}
 
-	$entry_data     = [ 'weight_date'   => ws_ls_convert_date_to_iso( $date ) ];
-
-	// Were weight fields present on the form?
-	if ( true === ws_ls_form_post_handler_any_weight_fields() ) {
-		$entry_data[ 'weight_weight' ] = ws_ls_form_post_handler_extract_weight();
-	}
-
-	$weight_notes = ws_ls_post_value( 'we-ls-notes' );
-
-	if ( NULL !== $weight_notes ) {
-		$entry_data[ 'weight_notes' ] = $weight_notes;
-	}
+	$entry_data     = [     'weight_weight' => $kg,
+	                        'weight_date'   => ws_ls_convert_date_to_iso( $date ),
+							'weight_notes'  => ws_ls_post_value( 'we-ls-notes' )
+	];
 
 	$entry_data     = stripslashes_deep( $entry_data );
 	$existing_id    = ws_ls_post_value( 'entry-id' );
@@ -237,23 +230,6 @@ function ws_ls_form_post_handler_extract_weight() {
 	}
 
 	return NULL;
-}
-
-/**
- * Were any weight fields detected?
- * @return bool
- */
-function ws_ls_form_post_handler_any_weight_fields() {
-
-	$field_keys = [ 'ws-ls-weight-kg', 'ws-ls-weight-stones', 'ws-ls-weight-pounds' ];
-
-	foreach ( $field_keys as $key ) {
-		if ( true === isset( $_POST[ $key ] ) ) {
-			return true;
-		}
-	}
-
-	return false;
 }
 
 /**
