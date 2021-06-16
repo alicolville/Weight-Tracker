@@ -184,6 +184,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 * Improvement: Added BMI numeric value in admin data tables.
 * Improvement: Added additional error handling around the ID argument for the [wt-challenges] shortcode.
 * Improvement: Added a small notice to [wt-user-settings] informing admin that "Allow user settings" must be enabled for the shortcode to work.
+* Bug fix: Fixed an issue where the argument "custom-field-groups" on forms wasn't being respected properly.
 * Bug fix: Fixed an issue where exports would not run for Pro users.
 * Bug fix: Fixed "wlt-awards-deleting" hook from incorrectly firing.
 * Bug fix: Fixed issue with "Delete Data" button not working in admin.
