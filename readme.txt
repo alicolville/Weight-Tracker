@@ -166,6 +166,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 * New feature: New shortcode: [wt-custom-fields-accumulator] - displays a series of buttons that allow the user to increment the value of a numeric custom field. Read more https://docs.yeken.uk/shortcodes/wt-custom-fields-accumulator.html
 * New feature: New shortcode: [wt-custom-fields-table] - display custom fields entries in a table. Read more https://docs.yeken.uk/shortcodes/wt-custom-fields-table.html
 * New feature: New shortcode: [wt-custom-fields-chart] - display custom fields only on a chart. Read more https://docs.yeken.uk/shortcodes/wt-custom-fields-chart.html
+* New feature: New shortcode: [wt-custom-fields-form] - display custom fields only on a form. Read more https://docs.yeken.uk/shortcodes/wt-custom-fields-form.html
 * New feature: [wt-chart] shortcode can be used to display custom fields only (i.e. hide weight entries/targets). Use the new shortcode arguments 'show-weight' and 'show-target'. Read more https://docs.yeken.uk/shortcodes/wt-chart.html
 * New feature: [wt-chart] new argument "message-no-data" to specify the error message to display when there is no data to display on the chart. Read more https://docs.yeken.uk/shortcodes/wt-chart.html
 * New feature: Specify safety caps to ensure calories to lose weight doesn't fall below a certain value.
