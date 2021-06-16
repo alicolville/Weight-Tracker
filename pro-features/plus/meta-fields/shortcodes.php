@@ -167,7 +167,7 @@ function ws_ls_meta_fields_shortcode_js() {
  *
  * @return bool|mixed|string
  */
-function ws_ls_shortcode_form( $user_defined_arguments ) {
+function ws_ls_meta_fields_shortcode_form( $user_defined_arguments ) {
 
 	if( false === WS_LS_IS_PRO ) {
 		return false;
@@ -187,7 +187,6 @@ function ws_ls_shortcode_form( $user_defined_arguments ) {
 	// Port shortcode arguments to core function
 	$arguments[ 'css-class-form' ]      = $arguments[ 'class' ];
 	$arguments[ 'hide-titles' ]         = ws_ls_to_bool( $arguments[ 'hide-titles' ] );
-	$arguments[ 'hide-notes' ]          = ws_ls_to_bool( $arguments[ 'hide-notes' ] );
 	$arguments[ 'option-force-today' ]  = ws_ls_to_bool( $arguments[ 'force-todays-date' ] );
 	$arguments[ 'hide-fields-meta' ]    = false;
 	$arguments[ 'type' ]                = 'custom-fields';
@@ -195,7 +194,7 @@ function ws_ls_shortcode_form( $user_defined_arguments ) {
 	return ws_ls_form_weight( $arguments );
 
 }
-add_shortcode( 'wt-custom-fields-form', 'ws_ls_shortcode_form' );
+add_shortcode( 'wt-custom-fields-form', 'ws_ls_meta_fields_shortcode_form' );
 
 /**
  * Shortcode for [wt-custom-fields-chart]
