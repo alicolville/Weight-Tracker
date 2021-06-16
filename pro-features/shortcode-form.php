@@ -16,19 +16,20 @@ function ws_ls_shortcode_form( $user_defined_arguments ) {
        return false;
     }
 
-    $arguments = shortcode_atts( [     'user-id'                => get_current_user_id(),
-                                       'target'                 => false,
-                                       'class'                  => false,
-								       'force-todays-date'      => false,
-								       'hide-titles'            => false,
-								       'hide-notes'             => ws_ls_setting_hide_notes(),
-								       'redirect-url'           => false,
-								       'hide-measurements'      => false,
-								       'hide-custom-fields'     => false,
-								       'title'                  => '',
-								       'type'                   => 'both',
-								       'custom-field-groups'    => '',      // If specified, only show custom fields that are within these groups
-								       'custom-field-slugs'     => '',      // If specified, only show the custom fields that are specified
+    $arguments = shortcode_atts( [      'user-id'                => get_current_user_id(),
+                                        'target'                 => false,
+                                        'class'                  => false,
+								        'force-todays-date'      => false,
+								        'hide-titles'            => false,
+								        'hide-notes'             => ws_ls_setting_hide_notes(),
+								        'redirect-url'           => false,
+								        'hide-measurements'      => false,
+								        'hide-custom-fields'     => false,
+								        'title'                  => '',
+								        'type'                   => 'both',
+								        'custom-field-groups'    => '',      // If specified, only show custom fields that are within these groups
+								        'custom-field-slugs'     => '',      // If specified, only show the custom fields that are specified
+	                                    'weight-mandatory'       => true
     ], $user_defined_arguments );
 
     // Port shortcode arguments to core function
