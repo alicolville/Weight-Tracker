@@ -103,7 +103,7 @@ function ws_ls_form_weight( $arguments = [] ) {
 								__( 'Load the existing data.', WE_LS_SLUG )
 			);
 
-			$html .= ws_ls_display_blockquote( $message );
+			$html .= ws_ls_display_blockquote( $message, 'ws-ls-previous-entry-notice' );
 		}
 	}
 

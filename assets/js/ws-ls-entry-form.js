@@ -44,6 +44,8 @@ jQuery( document ).ready( function ( $ ) {
                                 // Was an entry found for this user/date?
                                 if ( null !== response ) {
 
+                                  $( '.ws-ls-previous-entry-notice' ).addClass( 'ws-ls-hide' );
+
                                   if ( true !== confirm( ws_ls_config[ 'date-picker-locale' ][ 'entry-found' ] ) ) {
                                     return;
                                   }
