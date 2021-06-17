@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-17 15:41+0100\n"
-"PO-Revision-Date: 2021-06-17 15:41+0100\n"
+"POT-Creation-Date: 2021-06-17 16:23+0100\n"
+"PO-Revision-Date: 2021-06-17 16:23+0100\n"
 "Last-Translator: Gero <geroarias@gmail.com>\n"
 "Language-Team: Spanish (Mexico)\n"
 "Language: es\n"
@@ -2424,8 +2424,8 @@ msgstr "Notas"
 
 #: core-forms.php:101
 msgid ""
-"Data has previously been entered for this date. Completing this form may "
-"cause that data to be lost."
+"Data has previously been entered for this date and will be replaced if this "
+"form is submitted."
 msgstr ""
 
 #: core-forms.php:103

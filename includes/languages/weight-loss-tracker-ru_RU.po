@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Weight Loss Tracker\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-17 15:41+0100\n"
-"PO-Revision-Date: 2021-06-17 15:41+0100\n"
+"POT-Creation-Date: 2021-06-17 16:23+0100\n"
+"PO-Revision-Date: 2021-06-17 16:23+0100\n"
 "Last-Translator: Роман <yanshevroman@yandex.ru>\n"
 "Language-Team: Русский\n"
 "Language: ru_RU\n"
@@ -2405,8 +2405,8 @@ msgstr "Заметки"
 
 #: core-forms.php:101
 msgid ""
-"Data has previously been entered for this date. Completing this form may "
-"cause that data to be lost."
+"Data has previously been entered for this date and will be replaced if this "
+"form is submitted."
 msgstr ""
 
 #: core-forms.php:103
