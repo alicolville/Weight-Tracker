@@ -98,7 +98,7 @@ function ws_ls_form_weight( $arguments = [] ) {
 
 			$message = sprintf( '<strong>%1$s:</strong> %2$s <a href="%3$s">%4$s</a>',
 								__( 'Note', WE_LS_SLUG ),
-								__( 'Data has previously been entered for this date. Completing this form will replace your existing data.', WE_LS_SLUG ),
+								__( 'Data has previously been entered for this date and will be replaced if this form is submitted.', WE_LS_SLUG ),
 								esc_url( $url ),
 								__( 'Load the existing data.', WE_LS_SLUG )
 			);
