@@ -72,12 +72,40 @@ function ws_ls_form_weight( $arguments = [] ) {
 									esc_attr( $arguments[ 'data-unit' ] ),
 									esc_attr( $arguments[ 'user-id' ] ),
 									esc_attr( wp_hash( $arguments[ 'user-id' ] ) ),
-									$arguments[ 'entry-id' ],
+									( NULL === ws_ls_querystring_value( 'load-entry', NULL ) ) ? $arguments[ 'entry-id' ] : '',
 									( true === $arguments[ 'photos-enabled' ]  ) ? 'enctype="multipart/form-data"' : '',
 									esc_url_raw( $arguments[ 'redirect-url' ] ),
 									$arguments[ 'form-number' ],
 									( 'weight' === $arguments[ 'type' ] && true === ws_ls_to_bool( $arguments[ 'weight-mandatory' ] ) ) ? 'weight-required ' : ''
 	);
+
+	/*
+	 *  If the form is just loading for the first time, with no entry or entry id passed, let's assume it's setting it self up for today's date.
+	 *  If so, let's check if already an entry for this date and load the data if applicable!
+	 */
+
+	if ( true === in_array( $arguments[ 'type' ], [ 'custom-fields', 'weight' ] ) &&
+	        ( true === empty( $arguments[ 'entry-id' ] ) && empty( $arguments[ 'entry' ] ) )
+				&& WS_LS_IS_PRO && ws_ls_option_to_bool( 'ws-ls-populate-form-with-values-on-date', 'yes' )
+	) {
+
+		$date           = ws_ls_convert_date_to_iso( $arguments[ 'todays-date' ] );
+		$existing_id    = ws_ls_db_entry_for_date( $arguments[ 'user-id' ], $date );
+
+		if ( false === empty( $existing_id ) ) {
+
+			$url = add_query_arg( 'load-entry', $existing_id, $arguments[ 'post-url' ] );
+
+			$message = sprintf( '<strong>%1$s:</strong> %2$s <a href="%3$s">%4$s</a>',
+								__( 'Note', WE_LS_SLUG ),
+								__( 'Data has previously been entered for this date. Completing this form may cause that data to be lost.', WE_LS_SLUG ),
+								esc_url( $url ),
+								__( 'Load the existing data.', WE_LS_SLUG )
+			);
+
+			$html .= ws_ls_display_blockquote( $message );
+		}
+	}
 
 	$html .= sprintf( '<div class="ws-ls-inner-form">
 							<div class="ws-ls-error-summary">
@@ -87,8 +115,6 @@ function ws_ls_form_weight( $arguments = [] ) {
 
 	// Weight / Custom fields form? Display date field?
 	if ( true === in_array( $arguments[ 'type' ], [ 'custom-fields', 'weight' ] ) ) {
-
-		$arguments['todays-date'] = ws_ls_date_todays_date( $arguments['user-id'] );
 
 		// Don't bother with date picker and instead force to today's date?
 		if ( true === ws_ls_to_bool( $arguments['option-force-today'] ) ) {
@@ -233,6 +259,7 @@ function ws_ls_form_init( $arguments = [] ) {
 	$arguments[ 'form-id' ]     = ws_ls_component_id();
 	$arguments[ 'form-number' ] = ws_ls_form_number_next();
 	$arguments[ 'data-unit' ]   = ws_ls_setting( 'weight-unit', $arguments[ 'user-id' ] );
+	$arguments[ 'todays-date' ] = ws_ls_date_todays_date( $arguments['user-id'] );
 
 	global $save_response;
 

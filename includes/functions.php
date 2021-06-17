@@ -893,7 +893,7 @@ function ws_ls_display_blockquote( $text, $class = '', $just_echo = false, $incl
 										<p>%s%s</p>
 									</blockquote>',
 									(false === empty( $class ) ) ? ' ' . esc_attr( $class ) : '',
-									esc_html( $text ),
+									wp_kses_post( $text ),
 									$login_link
 						);
 
