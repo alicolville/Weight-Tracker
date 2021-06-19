@@ -800,6 +800,7 @@ function ws_ls_db_create_core_tables() {
 	require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 	dbDelta( $sql );
 
+	// From version 9 onwards, we allow entries with no weight
 	$wpdb->query( "ALTER TABLE $table_name MODIFY COLUMN weight_weight float NULL;" );
 
 	$table_name = $wpdb->prefix . WE_LS_TARGETS_TABLENAME;
