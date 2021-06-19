@@ -96,14 +96,13 @@ function ws_ls_form_weight( $arguments = [] ) {
 
 			$url = add_query_arg( 'load-entry', $existing_id, $arguments[ 'post-url' ] );
 
-			$message = sprintf( '<strong>%1$s:</strong> %2$s <a href="%3$s">%4$s</a>',
+			$html .= sprintf( '<p class="ws-ls-previous-entry-notice"><strong>%1$s:</strong> %2$s <a href="%3$s">%4$s</a></p>',
 								__( 'Note', WE_LS_SLUG ),
 								__( 'Data has previously been entered for this date and will be replaced if this form is submitted.', WE_LS_SLUG ),
 								esc_url( $url ),
 								__( 'Load the existing data.', WE_LS_SLUG )
 			);
 
-			$html .= ws_ls_display_blockquote( $message, 'ws-ls-previous-entry-notice' );
 		}
 	}
 
