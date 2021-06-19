@@ -41,10 +41,10 @@ jQuery( document ).ready( function ( $ ) {
                             { 'user-id' : ws_ls_config[ 'user-id' ], 'date' : date },
                             function( data, response ) {
 
+                                $( '.ws-ls-previous-entry-notice' ).addClass( 'ws-ls-hide' );
+
                                 // Was an entry found for this user/date?
                                 if ( null !== response ) {
-
-                                  $( '.ws-ls-previous-entry-notice' ).addClass( 'ws-ls-hide' );
 
                                   if ( true !== confirm( ws_ls_config[ 'date-picker-locale' ][ 'entry-found' ] ) ) {
                                     return;
