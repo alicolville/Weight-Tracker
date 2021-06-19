@@ -792,7 +792,7 @@ function ws_ls_db_create_core_tables() {
 		weight_user_id integer NOT NULL,
 		weight_weight float NULL,
 		weight_notes text null,
-		weight_pre_null float null,
+		weight_pre_upgrade float null,
 		migrate int NULL DEFAULT 0,
 		inserted TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	  UNIQUE KEY id (id)
@@ -803,7 +803,7 @@ function ws_ls_db_create_core_tables() {
 
 	// From version 9 onwards, we allow entries with no weight
 	$wpdb->query( "ALTER TABLE $table_name MODIFY COLUMN weight_weight float NULL;" );
-	$wpdb->query( "Update $table_name set weight_pre_null = weight_weight;" );
+	$wpdb->query( "Update $table_name set weight_pre_upgrade = weight_weight;" );
 	$wpdb->query( "Update $table_name set weight_weight = NULL where weight_weight = 0;" );
 
 	$table_name = $wpdb->prefix . WE_LS_TARGETS_TABLENAME;
