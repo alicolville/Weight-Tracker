@@ -37,7 +37,8 @@ function ws_ls_config_js() {
 					'in-admin'                          => ( is_admin() ) ? 'true' : 'false',
 					'max-photo-upload'                  => ws_ls_photo_max_upload_size(),
 					'tab-config'                        => ws_ls_config_js_tab_config(),
-					'form-load-previous'                => false === is_admin() && WS_LS_IS_PRO && ws_ls_option_to_bool( 'ws-ls-populate-form-with-values-on-date', 'yes' )
+					'form-load-previous'                => false === is_admin() && WS_LS_IS_PRO && ws_ls_option_to_bool( 'ws-ls-populate-form-with-values-on-date', 'yes' ),
+					'focus'             	  			=> ws_ls_querystring_value( 'focus' )
 	];
 
 	// If About You fields mandatory, add extra translations

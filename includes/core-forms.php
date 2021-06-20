@@ -2,10 +2,14 @@
 
 defined('ABSPATH') or die('Jog on!');
 
+$ws_ls_form_position = 0;
+
 /*
 	Displays either a target or weight form
 */
 function ws_ls_form_weight( $arguments = [] ) {
+
+	global $ws_ls_form_position; $ws_ls_form_position++;
 
 	$arguments = wp_parse_args( $arguments, [   'css-class-form'        => '',
 												'custom-field-groups'   => '',      // If specified, only show custom fields that are within these groups
@@ -54,11 +58,12 @@ function ws_ls_form_weight( $arguments = [] ) {
 	// Enqueue relevant JS / CSS
 	ws_ls_enqueue_files();
 
-	$arguments  = ws_ls_form_init( $arguments );
-	$html       = $arguments[ 'html' ];
 
-	$html .= sprintf( '<form action="%1$s" method="post" class="%12$swe-ls-weight-form we-ls-weight-form-validate ws_ls_display_form %2$s"
-									id="%3$s" data-form-type="%4$s" data-metric-unit="%5$s" %9$s">
+	$arguments[ 'form-key' ] 	= sprintf( 'ws-ls-form-%d', $ws_ls_form_position );	// We need to generate a semi consistent form key that will hopefully remain the same between page loads. This is for the JS focus
+	$arguments  				= ws_ls_form_init( $arguments );
+	$html      					= $arguments[ 'html' ];
+
+	$html .= sprintf( '		<form action="%1$s" method="post" class="%12$swe-ls-weight-form we-ls-weight-form-validate ws_ls_display_form %2$s" id="%3$s" data-form-type="%4$s" data-metric-unit="%5$s" %9$s">
 									<input type="hidden" name="type" value="%4$s" />
 									<input type="hidden" name="user-id" value="%6$d" />
 									<input type="hidden" name="security" value="%7$s" />
@@ -94,9 +99,11 @@ function ws_ls_form_weight( $arguments = [] ) {
 
 		if ( false === empty( $existing_id ) ) {
 
-			$url = add_query_arg( 'load-entry', $existing_id, $arguments[ 'post-url' ] );
+			$url = add_query_arg( 'load-entry', (int) $existing_id, $arguments[ 'post-url' ] );
 
-			$html .= sprintf( '<p class="ws-ls-previous-entry-notice"><strong>%1$s:</strong> %2$s <a href="%3$s">%4$s</a></p>',
+			$url .= '#' . $arguments[ 'form-key' ];
+
+			$html .= sprintf( '<p class="ws-ls-previous-entry-noticews-ls-previous-entry-notice"><strong>%1$s:</strong> %2$s <a href="%3$s">%4$s</a></p>',
 								__( 'Note', WE_LS_SLUG ),
 								__( 'Data has previously been entered for this date and will be replaced if this form is submitted.', WE_LS_SLUG ),
 								esc_url( $url ),
@@ -261,6 +268,8 @@ function ws_ls_form_init( $arguments = [] ) {
 	$arguments[ 'todays-date' ] = ws_ls_date_todays_date( $arguments['user-id'] );
 
 	global $save_response;
+
+	$arguments[ 'html' ] .= sprintf( '<a name="%s"></a>', $arguments[ 'form-key' ] );
 
 	// Has this form been previously submitted?
 	if ( false === empty( $save_response ) &&
