@@ -38,7 +38,7 @@ jQuery( document ).ready( function ( $ ) {
         }
 
         ws_ls_entry_post_data( 'ws_ls_get_entry_for_date',
-          { 'user-id' : ws_ls_config[ 'user-id' ], 'date' : date },
+          { 'user-id' : ws_ls_config[ 'user-id' ], 'date' : date, 'form-key' : $( this ).closest( 'form' ).data( 'form-key' ) },
           function( data, response ) {
 
             $( '.ws-ls-previous-entry-notice' ).addClass( 'ws-ls-hide' );
@@ -50,7 +50,9 @@ jQuery( document ).ready( function ( $ ) {
                 return;
               }
 
-              window.location.href = ws_ls_config[ 'current-url' ] + '?load-entry=' + response[ 'id' ];
+              let redirect_url = ws_ls_config[ 'load-entry-url' ];
+
+              window.location.href =  redirect_url.replace( '{entry-id}', response[ 'id' ] ) + '#' + data[ 'form-key' ];
             }
           });
       }

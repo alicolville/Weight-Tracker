@@ -38,7 +38,8 @@ function ws_ls_config_js() {
 					'max-photo-upload'                  => ws_ls_photo_max_upload_size(),
 					'tab-config'                        => ws_ls_config_js_tab_config(),
 					'form-load-previous'                => false === is_admin() && WS_LS_IS_PRO && ws_ls_option_to_bool( 'ws-ls-populate-form-with-values-on-date', 'yes' ),
-					'focus'             	  			=> ws_ls_querystring_value( 'focus' )
+					'focus'             	  			=> ws_ls_querystring_value( 'focus' ),
+					'load-entry-url'                    => apply_filters( 'wlt_current_url', get_permalink() ),
 	];
 
 	// If About You fields mandatory, add extra translations
@@ -61,6 +62,8 @@ function ws_ls_config_js() {
 
         $config['validation-required']          = __( 'This field is required.', WE_LS_SLUG );
 	}
+
+	$config[ 'load-entry-url' ] = add_query_arg( 'load-entry', '{entry-id}', $config[ 'load-entry-url' ] );
 
 	// Allow others to filter config object
     return apply_filters( 'wlt-filter-js-ws-ls-config', $config );

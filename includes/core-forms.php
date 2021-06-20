@@ -63,7 +63,7 @@ function ws_ls_form_weight( $arguments = [] ) {
 	$arguments  				= ws_ls_form_init( $arguments );
 	$html      					= $arguments[ 'html' ];
 
-	$html .= sprintf( '		<form action="%1$s" method="post" class="%12$swe-ls-weight-form we-ls-weight-form-validate ws_ls_display_form %2$s" id="%3$s" data-form-type="%4$s" data-metric-unit="%5$s" %9$s">
+	$html .= sprintf( '		<form action="%1$s" method="post" class="%12$swe-ls-weight-form we-ls-weight-form-validate ws_ls_display_form %2$s" id="%3$s" data-form-type="%4$s" data-metric-unit="%5$s" %9$s data-form-key="%13$s" ">
 									<input type="hidden" name="type" value="%4$s" />
 									<input type="hidden" name="user-id" value="%6$d" />
 									<input type="hidden" name="security" value="%7$s" />
@@ -81,7 +81,8 @@ function ws_ls_form_weight( $arguments = [] ) {
 									( true === $arguments[ 'photos-enabled' ]  ) ? 'enctype="multipart/form-data"' : '',
 									esc_url_raw( $arguments[ 'redirect-url' ] ),
 									$arguments[ 'form-number' ],
-									( 'weight' === $arguments[ 'type' ] && true === ws_ls_to_bool( $arguments[ 'weight-mandatory' ] ) ) ? 'weight-required ' : ''
+									( 'weight' === $arguments[ 'type' ] && true === ws_ls_to_bool( $arguments[ 'weight-mandatory' ] ) ) ? 'weight-required ' : '',
+									$arguments[ 'form-key' ]
 	);
 
 	/*
