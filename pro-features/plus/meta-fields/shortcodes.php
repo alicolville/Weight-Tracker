@@ -232,7 +232,8 @@ function ws_ls_meta_fields_shortcode_table( $user_defined_arguments ) {
 		return ws_ls_display_pro_upgrade_notice_for_shortcode();
 	}
 
-	$arguments = shortcode_atts( [  'enable-bmi'            => false,
+	$arguments = shortcode_atts( [  'enable-add-edit'       => false,
+									'enable-bmi'            => false,
 	                                'enable-notes'          => false,
 	                                'enable-weight'         => false,
 	                                'enable-meta-fields'    => true,
