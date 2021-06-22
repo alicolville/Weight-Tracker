@@ -46,6 +46,9 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 	$chart_config[ 'show-weight' ]      = ws_ls_to_bool( $chart_config[ 'show-weight' ] );
 	$chart_config[ 'show-target' ]      = ws_ls_to_bool( $chart_config[ 'show-target' ] );
 	$chart_config[ 'show-meta-fields' ] = ws_ls_to_bool( $chart_config[ 'show-meta-fields' ] );
+	$chart_config[ 'meta-fields-only' ] = true === $chart_config[ 'show-meta-fields' ] &&
+	                                        false === $chart_config[ 'show-target' ] &&
+	                                           false === $chart_config[ 'show-weight' ];
 
 	if ( false === $chart_config[ 'show-weight' ] &&
 	         false === $chart_config[ 'show-target' ] &&
@@ -190,7 +193,7 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 																'borderColor'     => $field[ 'plot_colour' ],
 																'borderWidth'     => $chart_config[ 'line-thickness' ],
 																'fill'            => false,
-																'type'            => 'line',
+																'type'            => ( true === $chart_config[ 'meta-fields-only' ] ) ?  $chart_config[ 'type' ] : 'line',
 																'data'            => [],
 																'spanGaps'        => true,
 																'lineTension'     => $bezier_line_tension,
@@ -260,7 +263,6 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 	// If we strip a meta field out due to above, then we may have a missing array index e.g. 0,1,2,3,5, we need this line to
 	// reshuffle and allow the chart to render.
 	$graph_data['datasets'] = array_values($graph_data['datasets']);
-
 
 	ws_ls_charting_enqueue_scripts();
 

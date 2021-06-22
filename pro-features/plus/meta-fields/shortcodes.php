@@ -208,7 +208,7 @@ function ws_ls_meta_fields_shortcode_chart( $user_defined_arguments ) {
 		return ws_ls_display_pro_upgrade_notice_for_shortcode();
 	}
 
-	$user_defined_arguments = shortcode_atts( ['bezier'              	=> ws_ls_option_to_bool( 'ws-ls-bezier-curve' ),
+	$user_defined_arguments = shortcode_atts( [ 'bezier'              	=> ws_ls_option_to_bool( 'ws-ls-bezier-curve' ),
 												'height'              	=> 250,
 												'ignore-login-status' 	=> false,
 												'message-no-data'       => __( 'Currently there is no data to display on the chart.', WE_LS_SLUG ),
