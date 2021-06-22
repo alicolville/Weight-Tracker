@@ -36,15 +36,21 @@ function ws_ls_meta_fields_ajax_accumulator() {
 
 	// Do we have an entry for today's date?
 	$return[ 'entry_id' ]       = ws_ls_db_entry_for_date( get_current_user_id(), date('Y-m-d' ) );
+	$increment                  = (int) $increment;
 
 	// If no entry for today, then we need to add one!
 	if ( true === empty( $return[ 'entry_id' ] ) ) {
 		$return[ 'new-entry' ]  = true;
 		$return[ 'entry_id' ]   = ws_ls_db_entry_set( [ 'weight_date' => date('Y-m-d' ) ], get_current_user_id() );
-		$return[ 'value' ]      = (int) $increment;
+		$return[ 'value' ]      = ( $increment > 0 ) ? $increment : 0;
 	} else {
 		$return[ 'previous' ]   = (int) ws_ls_meta_fields_get_value_for_entry( $return[ 'entry_id' ], $meta_field_id );
-		$return[ 'value' ]      = $return[ 'previous' ] + (int) $increment;
+		$return[ 'value' ]      = $return[ 'previous' ] + $increment;
+
+		// Don't allow minus values // TODO: Review this - should we allow them?
+		if ( $return[ 'value' ] < 0 ) {
+			$return[ 'value' ] = 0;
+		}
 	}
 
 	// Final check - do we have an entry ID?

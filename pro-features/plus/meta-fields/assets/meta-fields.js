@@ -46,7 +46,7 @@ jQuery( document ).ready( function ( $ ) {
           // Revert button back to original state
           button.delay(1000)
                 .queue(function(n) {
-                  button.html('<i class="fa fa-plus"></i> ' + button.data( 'original-text' ) );
+                  button.html('<i class="fa ' + button.data( 'icon' ) + '"></i> ' + button.data( 'original-text' ) );
                   n();
                  });
     });
