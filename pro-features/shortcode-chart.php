@@ -60,7 +60,7 @@ function ws_ls_shortcode_chart( $user_defined_arguments ) {
 
 	// Reverse array so in cron order
 	if ( true === empty( $weight_data ) ) {
-		return ws_ls_display_blockquote( __( 'No data could be found for the user.', WE_LS_SLUG ) );
+		return ws_ls_display_blockquote( $chart_arguments[ 'message-no-data' ] );
 	}
 
 	$chart_arguments[ 'show-meta-fields' ] = $chart_arguments[ 'show-custom-fields' ];

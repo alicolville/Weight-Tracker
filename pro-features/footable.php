@@ -344,7 +344,7 @@ function ws_ls_datatable_columns( $arguments = [] ) {
 	    $custom_field_slugs     = ws_ls_meta_fields_slugs_to_ids( $arguments[ 'custom-field-slugs' ] );
 	    $filter_by_group        = ( false === empty( $custom_field_groups) );
 	    $filter_by_id           = ( false === empty( $custom_field_slugs ) );
-	    
+
 	    $column_size = ( false === empty( $arguments[ 'custom-field-col-size' ] ) ) ?
 		                    $column_size = $arguments[ 'custom-field-col-size' ] :
 		                        'lg';
@@ -360,8 +360,7 @@ function ws_ls_datatable_columns( $arguments = [] ) {
 
 		        // Filter by group?
 		        if ( true === $filter_by_group &&
-		             0 !== (int) $field[ 'group_id' ] &&
-		             false === in_array( $field[ 'group_id' ], $custom_field_groups ) ) {
+		             ( 0 === (int) $field[ 'group_id' ] || false === in_array( $field[ 'group_id' ], $arguments[ 'custom-field-groups' ] ) ) ) {
 			        continue;
 		        }
 
