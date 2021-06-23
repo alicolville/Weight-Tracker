@@ -15,6 +15,7 @@ function ws_ls_shortcode_table( $user_defined_arguments ) {
 	}
 
     $arguments = shortcode_atts( [  'enable-add-edit'       => false,
+	                                'weight-mandatory'      => true,
                                     'enable-bmi'            => true,
                                     'enable-notes'          => true,
                                     'enable-weight'         => true,

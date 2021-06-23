@@ -24,6 +24,7 @@ function ws_ls_data_table_render( $arguments = [] ) {
 												'page-size'             => 10,
 												'week'                  => NULL,
 												'custom-field-col-size' => NULL,
+												'weight-mandatory'      => true,
 												'custom-field-groups'   => '',      // If specified, only show custom fields that are within these groups
 												'custom-field-slugs'    => '',      // If specified, only show the custom fields that are specified
 	] );
@@ -55,7 +56,7 @@ function ws_ls_data_table_render( $arguments = [] ) {
 			$redirect_url = base64_decode( $redirect_url );
 		}
 
-		$html .= ws_ls_form_weight( [ 'entry-id' => $entry_id, 'redirect-url' => $redirect_url ] );
+		$html .= ws_ls_form_weight( [ 'entry-id' => $entry_id, 'redirect-url' => $redirect_url, 'weight-mandatory' => $arguments[ 'weight-mandatory' ] ] );
 
 	} else {
 

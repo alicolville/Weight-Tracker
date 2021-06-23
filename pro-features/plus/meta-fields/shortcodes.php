@@ -256,6 +256,8 @@ function ws_ls_meta_fields_shortcode_table( $user_defined_arguments ) {
 	                                'custom-field-slugs'    => '',      // If specified, only show the custom fields that are specified
 	                                'custom-field-col-size' => 'x-large' ] , $user_defined_arguments );
 
+	$arguments[ 'weight-mandatory' ] = false;
+
 	return ws_ls_shortcode_table( $arguments );
 }
 add_shortcode( 'wt-custom-fields-table', 'ws_ls_meta_fields_shortcode_table' );
