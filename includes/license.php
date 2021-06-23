@@ -123,7 +123,7 @@ function ws_ls_display_license_deprecated_message() {
 	}
 
 	printf('<div class="notice notice-error" id="ws-ls-admin-notice" data-wsmd5="">
-                <p><strong>%s</strong>: %s <a href="mailto:email@yeken.uk" >email@yeken.uk</a>.</p>
+                <p><strong>%s</strong> %s <a href="mailto:email@yeken.uk" >email@yeken.uk</a>.</p>
             </div>',
 			__('Warning!', WE_LS_SLUG ),
 			__('Your current Weight Tracker license will soon no longer be supported by the plugin. Please contact YeKen support at', WE_LS_SLUG )
