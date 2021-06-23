@@ -109,9 +109,9 @@ function ws_ls_meta_fields_shortcode_accumulator( $user_defined_arguments ) {
 		$button_text    = str_replace( '{increment}', abs( $increment ), $shortcode_arguments[ 'button-text' ] );
 		$increment      = (int) $increment;
 
-		$html .= sprintf(   '	<button id="%4$s" type="button" class="%2$s " data-increment="%1$d" data-meta-field-id="%5$d" data-parent-id="%6$s" data-original-text="%3$s" data-width-set="false" data-icon="fa-%8$s">
-									<i class="fa fa-%8$s"></i>
-									%7$s
+		$html .= sprintf(   '	<button id="%4$s" type="button" class="%2$s " data-increment="%1$d" data-meta-field-id="%5$d" data-parent-id="%6$s" data-original-text="%3$s" data-width-set="false" data-icon="fa-%7$s">
+									<i class="fa fa-%7$s"></i>
+									%3$s
 								</button>&nbsp;' . PHP_EOL,
 							$increment,
 							esc_attr( $shortcode_arguments[ 'button-classes' ] ),
@@ -119,7 +119,6 @@ function ws_ls_meta_fields_shortcode_accumulator( $user_defined_arguments ) {
 							ws_ls_component_id(),
 							$meta_field[ 'id' ],
 							$main_id,
-							abs( $increment ),
 							( $increment < 0 ) ? 'minus' : 'plus'
 		);
 	}
