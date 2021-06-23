@@ -98,14 +98,16 @@ function ws_ls_display_license_expiry_warning() {
         return;
     }
 
-    printf('<div class="notice notice-warning" id="ws-ls-admin-notice" data-wsmd5="">
-                <p><strong>%s</strong>: %s. <a href="%s?hash=%s" rel="noopener noreferrer" target="_blank" >Renew your license now</a></p>
+    printf('<div class="notice notice-%s" id="ws-ls-admin-notice" data-wsmd5="">
+                <p><strong>%s</strong>: %s %d %s. <a href="%s?hash=%s" rel="noopener noreferrer" target="_blank" >Renew your license now</a></p>
             </div>',
+	            ( $days_until_expiry < 7 ) ? 'error' : 'warning',
                 __('Weight Tracker License', WE_LS_SLUG ),
-                __('Your license expires in less than 14 days. Please renew your license as soon as possible', WE_LS_SLUG ),
+	            __('Your license expires in', WE_LS_SLUG ),
+	            $days_until_expiry,
+	            __('days. Please renew your license as soon as possible', WE_LS_SLUG ),
                 WE_LS_UPGRADE_TO_PRO_PLUS_URL,
                 ws_ls_generate_site_hash()
-
     );
 
 }
