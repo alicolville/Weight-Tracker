@@ -36,6 +36,11 @@ function ws_ls_email_notification( $type, $weight_data ) {
 		return;
 	}
 
+	// Treat custom fields form submissions the same as weight-measurements
+	if ( 'custom-fields-only' === $type['type'] ) {
+		$type['type'] = 'weight-measurements';
+	}
+
 	// Do we actually have one or more email addresses?
 	if( false === empty( $type['type'] ) && in_array( $type['type'], [ 'target', 'weight-measurements' ] )
 		 && false === empty( $type['mode'] ) && true === in_array( $type[ 'mode' ], [ 'add', 'update' ] ) ) {
@@ -48,19 +53,21 @@ function ws_ls_email_notification( $type, $weight_data ) {
 		}
 
 		// Convert Weight into expected admin format
-		$display_weight =  ws_ls_weight_display( $weight_data['kg'], NULL, 'display', true );
+		$display_weight = ( false === empty( $weight_data['kg'] ) ) ?
+								ws_ls_weight_display( $weight_data['kg'], NULL, 'display', true ) :
+									'';
 
 		$email_data = [ 'displayname'   => ws_ls_user_display_name( $type[ 'user-id' ] ),
 						'mode'          => ('add' === $type[ 'mode' ] ) ? __( 'added' , WE_LS_SLUG ) : __( 'updated' , WE_LS_SLUG ),
 						'type'          => ( 'weight-measurements' === $type[ 'type' ] ) ?
 												__( 'their weight / custom fields for ' , WE_LS_SLUG) . ws_ls_convert_ISO_date_into_locale( $weight_data[ 'weight_date' ], 'display-date' ) :
 													 __( 'their target to' , WE_LS_SLUG ),
-						'data'          => sprintf('<h3>%s</h3>', $display_weight ),
-						'subject'       => sprintf( '%s %s %s: %s',
-										( 'weight-measurements' === $type[ 'type' ] ) ? __( 'Weight entry' , WE_LS_SLUG ) : __( 'Target' , WE_LS_SLUG ),
+						'data'          => ( false === empty( $display_weight ) ) ? sprintf('<h3>%s</h3>', $display_weight ) : '',
+						'subject'       => sprintf( '%s %s %s%s',
+										( 'weight-measurements' === $type[ 'type' ] ) ? __( 'Weight/Custom fields entry' , WE_LS_SLUG ) : __( 'Target' , WE_LS_SLUG ),
 										('add' === $type[ 'mode' ] ) ? __( 'added for' , WE_LS_SLUG ) : __( 'updated for' , WE_LS_SLUG ),
 										ws_ls_user_display_name( $type[ 'user-id' ] ),
-										$display_weight
+										( false === empty( $display_weight ) ) ? ': ' . $display_weight : ''
 						)
 
 

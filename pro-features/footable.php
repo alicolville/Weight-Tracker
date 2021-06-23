@@ -18,8 +18,13 @@ function ws_ls_data_table_render( $arguments = [] ) {
 	                                            'enable-add-edit'       => true,
 												'enable-meta-fields'    => ( true === ws_ls_meta_fields_is_enabled() &&
 												                                ws_ls_meta_fields_number_of_enabled() > 0 ),
+												'enable-bmi'            => true,
+												'enable-notes'          => true,
+												'enable-weight'         => true,
 												'page-size'             => 10,
 												'week'                  => NULL,
+												'custom-field-col-size' => NULL,
+												'weight-mandatory'      => true,
 												'custom-field-groups'   => '',      // If specified, only show custom fields that are within these groups
 												'custom-field-slugs'    => '',      // If specified, only show the custom fields that are specified
 	] );
@@ -30,7 +35,7 @@ function ws_ls_data_table_render( $arguments = [] ) {
 
 	// Saved data?
 	if ( false === is_admin() ) {
-		$html = ws_ls_display_data_saved_message();
+		$html .= ws_ls_display_data_saved_message();
 	}
 
 	$html = '';
@@ -51,7 +56,7 @@ function ws_ls_data_table_render( $arguments = [] ) {
 			$redirect_url = base64_decode( $redirect_url );
 		}
 
-		$html .= ws_ls_form_weight( [ 'entry-id' => $entry_id, 'redirect-url' => $redirect_url ] );
+		$html .= ws_ls_form_weight( [ 'entry-id' => $entry_id, 'redirect-url' => $redirect_url, 'weight-mandatory' => $arguments[ 'weight-mandatory' ] ] );
 
 	} else {
 
@@ -67,11 +72,15 @@ function ws_ls_data_table_render( $arguments = [] ) {
 									data-user-id="%3$d",
 									data-max-entries="%4$d"
 									data-small-width="%5$s"
+									data-enable-bmi="%12$s"
+									data-enable-notes="%13$s"
+									data-enable-weight="%14$s"
 									data-enable-meta-fields="%6$s"
 									data-week="%8$d"
 									data-bmi-format="%9$s"
 									data-custom-field-slugs="%10$s"
 									data-custom-field-groups="%11$s"
+									data-custom-field-col-size="%15$s"
 									 >
 		</table>',
 			ws_ls_component_id(),
@@ -84,7 +93,11 @@ function ws_ls_data_table_render( $arguments = [] ) {
 			$arguments[ 'week' ],
 			esc_attr( $arguments[ 'bmi-format' ] ),
 			esc_attr( $arguments[ 'custom-field-slugs' ] ),
-			esc_attr( $arguments[ 'custom-field-groups' ] )
+			esc_attr( $arguments[ 'custom-field-groups' ] ),
+			true === ws_ls_to_bool($arguments[ 'enable-bmi' ] ) ? 'true' : 'false',
+			true === ws_ls_to_bool($arguments[ 'enable-notes' ] ) ? 'true' : 'false',
+			true === ws_ls_to_bool( $arguments[ 'enable-weight' ] ) ? 'true' : 'false',
+			esc_attr( $arguments[ 'custom-field-col-size' ] )
 		);
 
 		if ( true === empty( $arguments[ 'user-id' ] ) ) {
@@ -109,10 +122,17 @@ function ws_ls_datatable_rows( $arguments ) {
 	                                                'week'                  => NULL,
 	                                                'front-end'             => false,
 	                                                'sort'                  => 'desc',
+	                                                'enable-bmi'            => true,
 	                                                'enable-meta'           => true,
+	                                                'enable-notes'          => true,
+	                                                'enable-weight'         => true,
 	                                                'bmi-format'            => 'index',
 												    'in-admin'              => false    // Has this request come from the admin area (used to render dates differently)
 	] );
+
+	$arguments[ 'enable-bmi' ]      = ws_ls_to_bool( $arguments[ 'enable-bmi' ] );
+	$arguments[ 'enable-notes' ]    = ws_ls_to_bool( $arguments[ 'enable-notes' ] );
+	$arguments[ 'enable-weight' ]   = ws_ls_to_bool( $arguments[ 'enable-weight' ] );
 
 	$cache_key  = ws_ls_cache_generate_key_from_array( 'footable', $arguments );
 	$rows       = NULL;
@@ -156,44 +176,64 @@ function ws_ls_datatable_rows( $arguments ) {
 				];
 			}
 
-			// Compare to previous weight and determine if a gain / loss in weight
-			$gain_loss = '';
-			$gain_class = '';
+			if( true === $arguments[ 'enable-weight' ] ) {
+				// Compare to previous weight and determine if a gain / loss in weight
+				$gain_loss = '';
+				$gain_class = '';
 
-			if( false === empty( $previous_user_weight[ $entry[ 'user_id' ] ] ) ) {
-
-				$row[ 'previous-weight' ] = $previous_user_weight[ $entry[ 'user_id' ] ];
-
-				if ( $entry['kg'] > $previous_user_weight[ $entry[ 'user_id' ] ] ) {
-					$gain_class = 'gain';
-				} elseif ( $entry[ 'kg' ] < $previous_user_weight[ $entry[ 'user_id' ] ] ) {
-					$gain_class = 'loss';
-				} elseif ( $entry['kg'] == $previous_user_weight[ $entry[ 'user_id' ] ] ) {
+				if ( true === empty( $entry[ 'kg' ] ) ) {
 					$gain_class = 'same';
-					$gain_loss = __( 'No Change', WE_LS_SLUG );
+					$gain_loss = __( 'No weight recorded', WE_LS_SLUG );
+				} elseif( false === empty( $previous_user_weight[ $entry[ 'user_id' ] ] ) ) {
+
+					if ( false === empty( $entry[ 'kg' ] ) ) {
+						$row[ 'previous-weight' ] = $previous_user_weight[ $entry[ 'user_id' ] ];
+
+						if ( $entry['kg'] > $previous_user_weight[ $entry[ 'user_id' ] ] ) {
+							$gain_class = 'gain';
+						} elseif ( $entry[ 'kg' ] < $previous_user_weight[ $entry[ 'user_id' ] ] ) {
+							$gain_class = 'loss';
+						} elseif ( $entry['kg'] == $previous_user_weight[ $entry[ 'user_id' ] ] ) {
+							$gain_class = 'same';
+							$gain_loss = __( 'No Change', WE_LS_SLUG );
+						}
+
+						$row[ 'previous-weight-diff' ] = $entry['kg'] - $previous_user_weight[ $entry[ 'user_id' ] ];
+					}
+
+				} elseif ( true === empty( $arguments[ 'user-id' ] )) {
+					$gain_loss = $entry[ 'user_profile' ] = sprintf('<a href="%s" rel="noopener noreferrer" target="_blank">%s</a>', ws_ls_get_link_to_user_profile( $entry[ 'user_id' ] ), __( 'Check record', WE_LS_SLUG ) );
+				} elseif ( false === empty( $entry[ 'kg' ] ) ) {
+					$gain_loss = __( 'First weight entry', WE_LS_SLUG );
+				} else {
+					$gain_loss = '';
 				}
 
-				$row[ 'previous-weight-diff' ] = $entry['kg'] - $previous_user_weight[ $entry[ 'user_id' ] ];
+				if ( false === empty( $entry[ 'kg' ] ) ) {
+					$previous_user_weight[ $entry[ 'user_id' ] ] = $entry[ 'kg' ];
+				}
 
-			} elseif ( true === empty( $arguments[ 'user-id' ] )) {
-				$gain_loss = $entry[ 'user_profile' ] = sprintf('<a href="%s" rel="noopener noreferrer" target="_blank">%s</a>', ws_ls_get_link_to_user_profile( $entry[ 'user_id' ] ), __( 'Check record', WE_LS_SLUG ) );
-			} else {
-				$gain_loss = __( 'First entry', WE_LS_SLUG );
+				$row[ 'gainloss' ][ 'value']                = $gain_loss;
+				$row[ 'gainloss' ][ 'options']['classes']   = 'ws-ls-' . $gain_class .  ws_ls_blur();
+			}
+			if( true === $arguments[ 'enable-notes' ] ) {
+				$row[ 'notes' ] = wp_kses_post( $entry[ 'notes' ] );
 			}
 
-			$previous_user_weight[ $entry[ 'user_id' ] ] = $entry[ 'kg' ];
+			if( true === $arguments[ 'enable-bmi' ] &&
+			        true === ws_ls_bmi_in_tables() ) {
 
-			$row[ 'gainloss' ][ 'value']                = $gain_loss;
-			$row[ 'gainloss' ][ 'options']['classes']   = 'ws-ls-' . $gain_class .  ws_ls_blur();
-			$row[ 'notes' ]                             = wp_kses_post( $entry[ 'notes' ] );
-
-			if( true === ws_ls_bmi_in_tables() ) {
-				$row[ 'bmi' ] = [   'value' => ws_ls_get_bmi_for_table( ws_ls_user_preferences_get( 'height', $entry[ 'user_id' ] ), $entry[ 'kg' ], __( 'No height', WE_LS_SLUG ), $arguments[ 'bmi-format'] ),
-									'options' => [ 'classes' => '' ]
-				];
+				if ( false === empty( $entry[ 'kg' ] ) ) {
+					$row[ 'bmi' ] = [   'value' => ws_ls_get_bmi_for_table( ws_ls_user_preferences_get( 'height', $entry[ 'user_id' ] ), $entry[ 'kg' ], __( 'No height', WE_LS_SLUG ), $arguments[ 'bmi-format'] ),
+						'options' => [ 'classes' => '' ]
+					];
+				} else {
+					$row[ 'bmi' ] = '';
+				}
 			}
-
-			$row[ 'kg' ] = [ 'value' => $entry['kg'], 'options' => [ 'classes' => ws_ls_blur(), 'sortValue' => $entry['kg'] ] ];
+			if( true === $arguments[ 'enable-weight' ] ) {
+				$row[ 'kg' ] = [ 'value' => $entry['kg'], 'options' => [ 'classes' => ws_ls_blur(), 'sortValue' => $entry['kg'] ] ];
+			}
 
 			if ( true === $arguments[ 'enable-meta' ] &&
 			        true === ws_ls_meta_fields_is_enabled() ) {
@@ -250,16 +290,26 @@ function ws_ls_datatable_rows_localise( $row ) {
 /**
  * Depending on settings, return relevant columns for data table
  *
- * @param bool $smaller_width
- * @param bool $front_end
- * @param bool $enable_meta
- *
- * @param null $custom_field_slugs
- * @param null $custom_field_groups
+ * @param array $arguments
  *
  * @return array - column definitions
  */
-function ws_ls_datatable_columns( $smaller_width = false, $front_end = false, $enable_meta = true, $custom_field_slugs = NULL, $custom_field_groups = NULL ) {
+function ws_ls_datatable_columns( $arguments = [] ) {
+
+	$arguments = wp_parse_args( $arguments, [   'small-width'           => false,
+	                                            'front-end'             => false,
+	                                            'enable-bmi'            => true,
+	                                            'enable-meta'           => true,
+	                                            'enable-notes'          => true,
+	                                            'enable-weight'         => true,
+	                                            'custom-field-col-size' => NULL,
+	                                            'custom-field-slugs'    => NULL,
+	                                            'custom-field-groups'   => NULL
+	] );
+
+	$arguments[ 'enable-bmi' ]      = ws_ls_to_bool( $arguments[ 'enable-bmi' ] );
+	$arguments[ 'enable-notes' ]    = ws_ls_to_bool( $arguments[ 'enable-notes' ] );
+	$arguments[ 'enable-weight' ]   = ws_ls_to_bool( $arguments[ 'enable-weight' ] );
 
 	$columns = [
 					[ 'name' => 'db_row_id', 'title' => 'ID', 'visible' => false, 'type' => 'number' ],
@@ -267,30 +317,38 @@ function ws_ls_datatable_columns( $smaller_width = false, $front_end = false, $e
 	];
 
 	// If not front end, add nice nice name
-	if ( false === $front_end ) {
+	if ( false === $arguments[ 'front-end' ] ) {
 		$columns[] = [ 'name' => 'user_nicename', 'title' => __( 'User', WE_LS_SLUG ), 'breakpoints'=> '', 'type' => 'text' ];
 	} else {
 		// If in the front end, switch to smaller width (hide meta fields etc)
-		$smaller_width = $front_end;
+		$arguments[ 'small-width' ] = $arguments[ 'front-end' ];
 	}
 
 	$columns[] = [ 'name' => 'date', 'title' => __( 'Date', WE_LS_SLUG ), 'breakpoints'=> '', 'type' => 'date' ];
-	$columns[] = [ 'name' => 'kg', 'title' => __( 'Weight', WE_LS_SLUG ), 'visible'=> true, 'type' => 'text' ];
-	$columns[] = [ 'name' => 'gainloss', 'title' => ws_ls_tooltip('+/-', __( 'Difference', WE_LS_SLUG ) ), 'visible'=> true, 'breakpoints'=> 'xs', 'type' => 'text' ];
+
+	if ( true === $arguments[ 'enable-weight' ] ) {
+		$columns[] = [ 'name' => 'kg', 'title' => __( 'Weight', WE_LS_SLUG ), 'visible'=> true, 'type' => 'text' ];
+		$columns[] = [ 'name' => 'gainloss', 'title' => ws_ls_tooltip('+/-', __( 'Difference', WE_LS_SLUG ) ), 'visible'=> true, 'breakpoints'=> 'xs', 'type' => 'text' ];
+	}
 
 	// Add BMI?
-	if( true === ws_ls_bmi_in_tables() ) {
+	if( true === $arguments[ 'enable-bmi' ] &&
+	        true === ws_ls_bmi_in_tables() ) {
 		array_push($columns, [ 'name' => 'bmi', 'title' => ws_ls_tooltip( __( 'BMI', WE_LS_SLUG ), __( 'Body Mass Index', WE_LS_SLUG ) ), 'breakpoints'=> 'xs', 'type' => 'text' ] );
 	}
 
-    if ( true === $enable_meta &&
+    if ( true === $arguments[ 'enable-meta' ] &&
             true === ws_ls_meta_fields_is_enabled() ) {
 
 	    // Custom field filtering?
-	    $custom_field_groups    = ws_ls_meta_fields_groups_slugs_to_ids( $custom_field_groups );
-	    $custom_field_slugs     = ws_ls_meta_fields_slugs_to_ids( $custom_field_slugs );
+	    $custom_field_groups    = ws_ls_meta_fields_groups_slugs_to_ids( $arguments[ 'custom-field-groups' ] );
+	    $custom_field_slugs     = ws_ls_meta_fields_slugs_to_ids( $arguments[ 'custom-field-slugs' ] );
 	    $filter_by_group        = ( false === empty( $custom_field_groups) );
 	    $filter_by_id           = ( false === empty( $custom_field_slugs ) );
+
+	    $column_size = ( false === empty( $arguments[ 'custom-field-col-size' ] ) ) ?
+		                    $column_size = $arguments[ 'custom-field-col-size' ] :
+		                        'lg';
 
 	    foreach ( ws_ls_meta_fields_enabled() as $field ) {
         	if ( true === apply_filters( 'wlt-filter-column-include', true, $field ) ) {
@@ -303,18 +361,18 @@ function ws_ls_datatable_columns( $smaller_width = false, $front_end = false, $e
 
 		        // Filter by group?
 		        if ( true === $filter_by_group &&
-		             0 !== (int) $field[ 'group_id' ] &&
-		             false === in_array( $field[ 'group_id' ], $custom_field_groups ) ) {
+		             ( 0 === (int) $field[ 'group_id' ] || false === in_array( $field[ 'group_id' ], $arguments[ 'custom-field-groups' ] ) ) ) {
 			        continue;
 		        }
 
-				array_push($columns, [ 'name' => 'meta-' . $field['id'], 'title' => $field['field_name'], 'breakpoints'=> ( ($smaller_width ) ? 'lg' : 'md' ), 'type' => 'text' ] );
+				array_push($columns, [ 'name' => 'meta-' . $field['id'], 'title' => $field['field_name'], 'breakpoints'=> $column_size, 'type' => 'text' ] );
 			}
         }
     }
 
-	// Add notes;
-	array_push($columns, [ 'name' => 'notes', 'title' => __( 'Notes', WE_LS_SLUG ), 'breakpoints'=> 'lg', 'type' => 'text' ] );
+	if ( true === $arguments[ 'enable-notes' ] ) {
+		array_push($columns, [ 'name' => 'notes', 'title' => __( 'Notes', WE_LS_SLUG ), 'breakpoints'=> 'lg', 'type' => 'text' ] );
+	}
 
 	$columns = apply_filters( 'wlt-filter-front-end-data-table-columns', $columns );
 
@@ -334,7 +392,7 @@ function ws_ls_data_table_enqueue_scripts() {
     wp_enqueue_script('ws-ls-footables-js', plugins_url( '/assets/js/libraries/footable.min.js', __DIR__ ), [ 'jquery' ], WE_LS_CURRENT_VERSION, true);
 	wp_enqueue_script('ws-ls-footables-admin', plugins_url( '/assets/js/data.footable' .     $minified . '.js', __DIR__ ), [ 'ws-ls-footables-js' ], WE_LS_CURRENT_VERSION, true);
 	wp_localize_script('ws-ls-footables-admin', 'ws_user_table_config', ws_ls_data_js_config() );
-    wp_enqueue_style('fontawesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', [], WE_LS_CURRENT_VERSION);
+    wp_enqueue_style('fontawesome', WE_LS_CDN_FONT_AWESOME_CSS, [], WE_LS_CURRENT_VERSION);
 }
 
 /**

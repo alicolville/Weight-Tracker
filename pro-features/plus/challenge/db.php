@@ -189,11 +189,11 @@ function ws_ls_challenges_identify_entries( $challenge_id, $start_date = NULL, $
 	global $wpdb;
 
 	$sql = $wpdb->prepare( 'INSERT IGNORE INTO ' . $wpdb->prefix . WE_LS_MYSQL_CHALLENGES_DATA . ' ( user_id, challenge_id )
-                            SELECT Distinct weight_user_id AS user_id, %d AS challenge_id FROM ' . $wpdb->prefix . WE_LS_TABLENAME, $challenge_id );
+                            SELECT Distinct weight_user_id AS user_id, %d AS challenge_id FROM ' . $wpdb->prefix . WE_LS_TABLENAME . ' where weight_weight is not null', $challenge_id );
 
 	// Do we have a start and end date?
 	if ( false === empty( $start_date ) && false === empty( $end_date ) ) {
-		$sql .= $wpdb->prepare( ' WHERE weight_date >= %s and weight_date <= %s', $start_date, $end_date );
+		$sql .= $wpdb->prepare( ' and weight_date >= %s and weight_date <= %s', $start_date, $end_date );
 	}
 
 	return $wpdb->query( $sql );
@@ -413,7 +413,7 @@ function ws_ls_challenges_get_weight_entries( $user_id, $start_date = NULL, $end
 
 	global $wpdb;
 
-	$sql = $wpdb->prepare( 'SELECT weight_weight as kg, weight_date FROM ' . $wpdb->prefix . WE_LS_TABLENAME . ' WHERE weight_user_id = %d', $user_id );
+	$sql = $wpdb->prepare( 'SELECT weight_weight as kg, weight_date FROM ' . $wpdb->prefix . WE_LS_TABLENAME . ' WHERE weight_user_id = %d and weight_weight is not null', $user_id );
 
 	// Do we have a start and end date?
 	if ( false === empty( $start_date ) && false === empty( $end_date ) ) {

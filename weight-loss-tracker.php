@@ -5,7 +5,7 @@ defined('ABSPATH') or die('Jog on!');
 /**
  * Plugin Name:         Weight Tracker
  * Description:         Allow your users to track their weight, body measurements, photos and other pieces of custom data. Display in charts, tables, shortcodes and widgets. Manage their data, issue awards, email notifications, etc! Provide advanced data on Body Mass Index (BMI), Basal Metabolic Rate (BMR), Calorie intake, Harris Benedict Formula, Macronutrients Calculator and more.
- * Version:             8.5.1
+ * Version:             9.0
  * Requires at least:   5.2
  * Tested up to: 		5.7
  * Requires PHP:        7.2
@@ -18,8 +18,8 @@ defined('ABSPATH') or die('Jog on!');
  */
 
 define( 'WS_LS_ABSPATH', plugin_dir_path( __FILE__ ) );
-define( 'WE_LS_CURRENT_VERSION', '8.5.1' );
-define( 'WE_LS_DB_VERSION', '8.4' );
+define( 'WE_LS_CURRENT_VERSION', '9.0' );
+define( 'WE_LS_DB_VERSION', '9.0/1' );
 define( 'WE_LS_TITLE', 'Weight Tracker' );
 define( 'WE_LS_SLUG', 'weight-loss-tracker' );
 define( 'WE_LS_LICENSE_TYPES_URL', 'https://docs.yeken.uk/features.html' );
@@ -27,7 +27,8 @@ define( 'WE_LS_CALCULATIONS_URL', '	https://docs.yeken.uk/calculations.html' );
 define( 'WE_LS_UPGRADE_TO_PRO_URL', 'https://shop.yeken.uk/product/weight-tracker-pro/' );
 define( 'WE_LS_UPGRADE_TO_PRO_PLUS_URL', 'https://shop.yeken.uk/product/weight-tracker-pro-plus/' );
 define( 'WE_LS_FREE_TRIAL_URL', 'https://shop.yeken.uk/get-a-trial-license/' );
-define( 'WE_LS_CDN_CHART_JS', 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js' );
+define( 'WE_LS_CDN_CHART_JS', 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.0/chart.min.js' );
+define( 'WE_LS_CDN_FONT_AWESOME_CSS', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' );
 define( 'WE_LS_PRO_PRICE', 50.00 );
 define( 'WE_LS_PRO_PLUS_PRICE', 100.00 );
 
@@ -105,6 +106,7 @@ require_once( WS_LS_ABSPATH . 'pro-features/plus/meta-fields/db.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/plus/meta-fields/hooks.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/plus/meta-fields/functions.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/plus/meta-fields/functions-photos.php' );
+require_once( WS_LS_ABSPATH . 'pro-features/plus/meta-fields/shortcodes.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/feature-list.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/functions.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/functions-pages.php' );

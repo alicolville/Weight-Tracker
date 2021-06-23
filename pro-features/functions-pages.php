@@ -328,8 +328,10 @@ function ws_ls_postbox_sidebar_delete_cache( $user_id ) {
 
 /**
  * Delete data postbox
+ *
+ * @param $user_id
  */
-function ws_ls_postbox_sidebar_delete_data() {
+function ws_ls_postbox_sidebar_delete_data( $user_id ) {
 ?>
 	<div class="postbox ws-ls-user-data <?php ws_ls_postbox_classes( 'delete-data', 'ws-ls-user-data-two' ); ?>" id="delete-data">
 		<?php ws_ls_postbox_header( [ 'title' => __( 'Delete data', WE_LS_SLUG ), 'postbox-id' => 'delete-data', 'postbox-col' => 'ws-ls-user-data-two' ] ); ?>

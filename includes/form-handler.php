@@ -42,8 +42,8 @@ function ws_ls_form_post_handler(){
 		// Process posted form and save!
 		if ( 'target' === $submission_type ) {
 			$result = ws_ls_form_post_handler_target( $user_id );
-		} else {    // weight
-			$result = ws_ls_form_post_handler_weight( $user_id );
+		} else {    // weight / custom-fields
+			$result = ws_ls_form_post_handler_weight( $user_id, $submission_type );
 		}
 
 		if ( true === empty( $result ) ) {
@@ -87,32 +87,37 @@ function ws_ls_form_post_handler_target( $user_id ) {
 
 /**
  * Handle a form submission for Weight / Custom fields
+ *
  * @param $user_id
+ *
+ * @param string $type
  *
  * @return bool
  */
-function ws_ls_form_post_handler_weight( $user_id ) {
+function ws_ls_form_post_handler_weight( $user_id, $type = 'weight' ) {
 
 	if ( true === empty( $user_id ) ) {
 		return false;
 	}
 
-	$kg = ws_ls_form_post_handler_extract_weight();
-
-	if ( true === empty( $kg ) ){
-		return false;
-	}
-
-	$date = ws_ls_post_value( 'we-ls-date' );
+	$date	= ws_ls_post_value( 'we-ls-date' );
 
 	if ( true === empty( $date ) ) {
 		return false;
 	}
 
-	$entry_data     = [     'weight_weight' => $kg,
-	                        'weight_date'   => ws_ls_convert_date_to_iso( $date ),
-							'weight_notes'  => ws_ls_post_value( 'we-ls-notes' )
-	];
+	$entry_data     = [ 'weight_date'   => ws_ls_convert_date_to_iso( $date ) ];
+
+	// Were weight fields present on the form?
+	if ( true === ws_ls_form_post_handler_any_weight_fields() ) {
+		$entry_data[ 'weight_weight' ] = ws_ls_form_post_handler_extract_weight();
+	}
+
+	$weight_notes = ws_ls_post_value( 'we-ls-notes' );
+
+	if ( NULL !== $weight_notes ) {
+		$entry_data[ 'weight_notes' ] = $weight_notes;
+	}
 
 	$entry_data     = stripslashes_deep( $entry_data );
 	$existing_id    = ws_ls_post_value( 'entry-id' );
@@ -174,11 +179,10 @@ function ws_ls_form_post_handler_weight( $user_id ) {
 
 		ws_ls_stats_update_for_user( $user_id );
 
-		$mode = ( $existing_id === $entry_id ) ? 'update' : 'add';
-
 		$type = [	'user-id' 	=> $user_id,
-					'type' 		=> 'weight-measurements',
-					'mode' 		=> $mode ];
+					'type' 		=> ( false === empty( $kg ) ) ? 'weight-measurements' : 'custom-fields-only',
+					'mode' 		=> ( $existing_id === $entry_id ) ? 'update' : 'add'
+		];
 
 		$entry = ws_ls_entry_get( [ 'user-id' => $user_id, 'id' => $entry_id, 'meta' => true ] );
 
@@ -195,15 +199,11 @@ function ws_ls_form_post_handler_weight( $user_id ) {
  * @return string|null
  */
 function ws_ls_form_post_handler_determine_type() {
+	$type = ws_ls_post_value( 'type' );
 
-	$is_target =  ws_ls_post_value( 'target-form' );
-
-	// This isn't a weight tracker submission!
-	if ( NULL === $is_target ) {
-		return NULL;
-	}
-
-	return ( true === ws_ls_to_bool( $is_target ) ) ? 'target' : 'weight';
+	return ( true === in_array( $type, [ 'custom-fields', 'target', 'weight' ] ) ) ?
+				$type :
+					NULL;
 }
 
 /**
@@ -237,6 +237,23 @@ function ws_ls_form_post_handler_extract_weight() {
 	}
 
 	return NULL;
+}
+
+/**
+ * Were any weight fields detected?
+ * @return bool
+ */
+function ws_ls_form_post_handler_any_weight_fields() {
+
+	$field_keys = [ 'ws-ls-weight-kg', 'ws-ls-weight-stones', 'ws-ls-weight-pounds' ];
+
+	foreach ( $field_keys as $key ) {
+		if ( true === isset( $_POST[ $key ] ) ) {
+			return true;
+		}
+	}
+
+	return false;
 }
 
 /**

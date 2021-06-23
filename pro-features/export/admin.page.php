@@ -42,7 +42,7 @@ function ws_ls_export_admin_page_summary() {
 						<h2 class="hndle"><span><?php echo __( 'Export Data', WE_LS_SLUG ); ?></span></h2>
 						<div class="inside">
 							<?php
-								if ( true !== WS_LS_IS_PRO_PLUS ) {
+								if ( true !== WS_LS_IS_PRO ) {
 									ws_ls_display_pro_upgrade_notice();
 								}
 							?>
@@ -140,7 +140,7 @@ function ws_ls_export_admin_page_new() {
 							<h2 class="hndle"><span><?php echo __( 'Details', WE_LS_SLUG ); ?></span></h2>
 							<div class="inside">
 								<?php
-									if (true !== WS_LS_IS_PRO_PLUS) {
+									if (true !== WS_LS_IS_PRO) {
 										ws_ls_display_pro_upgrade_notice();
 									}
 
@@ -317,8 +317,10 @@ function ws_ls_export_admin_page_process() {
 						<div class="inside">
 							<?php
 
-								if ( true !== WS_LS_IS_PRO_PLUS ) {
+								if ( true !== WS_LS_IS_PRO ) {
 									ws_ls_display_pro_upgrade_notice();
+
+									echo __( 'Please upgrade for your report to be generated.', WE_LS_SLUG );
 								} else if ( true === empty( $criteria ) ) {
 									echo __( 'There was an error loading the criteria for the export.', WE_LS_SLUG );
 								} else if ( 100 === (int) $criteria[ 'step' ] ) {

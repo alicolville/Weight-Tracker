@@ -39,7 +39,7 @@ function ws_ls_db_stats_insert_missing_user_ids_into_stats() {
 	// Note: Set last update to 7 days ago so this record is considered to be out of date and requiring a refresh
 
 	$sql = "INSERT INTO $stats_table_name (user_id, start_weight, recent_weight, weight_difference, last_update)
-			Select distinct weight_user_id, NULL, NULL, NULL, NOW() - INTERVAL 7 DAY from $data_table_name where weight_user_id not in (Select user_id from $stats_table_name)";
+			Select distinct weight_user_id, NULL, NULL, NULL, NOW() - INTERVAL 7 DAY from $data_table_name where weight_weight is not null and weight_user_id not in (Select user_id from $stats_table_name)";
 
 	$wpdb->query( $sql );
 	return;
@@ -93,6 +93,9 @@ function ws_ls_db_stats_league_table_fetch( $ignore_cache = false, $limit = 10, 
 	if( true == ws_ls_force_bool_argument( $losers_only ) ) {
 		$where[] = 'weight_difference <= 0';
 	}
+
+	// If either is null, then we know the user has entries, but no weights associated with them. So don't include in this table
+	$where[] = '(recent_weight is not null and start_weight is not null)';
 
 	// Add where
 	if ( false === empty( $where ) ) {

@@ -204,6 +204,19 @@ function ws_ls_settings_page_generic() {
 															<p><?php echo __('If enabled, when adding a new weight entry, the previous weight entries values will be added as field placeholders to show the user the values previously entered.', WE_LS_SLUG); ?></p>
 														</td>
 													</tr>
+													<tr class="<?php echo $disable_if_not_pro_class; ?>">
+														<th scope="row"><?php echo __( 'Load previous entry upon date selection?' , WE_LS_SLUG); ?></th>
+														<td>
+															<?php
+															$enabled = get_option( 'ws-ls-populate-form-with-values-on-date', 'yes' );
+															?>
+															<select id="ws-ls-populate-form-with-values-on-date" name="ws-ls-populate-form-with-values-on-date">
+																<option value="yes" <?php selected( $enabled, 'yes' ); ?>><?php echo __( 'Yes', WE_LS_SLUG ); ?></option>
+																<option value="no" <?php selected( $enabled, 'no' ); ?>><?php echo __( 'No', WE_LS_SLUG ); ?></option>
+															</select>
+															<p><?php echo __('If enabled, and data exists, then the user will be asked whether they wish to load the data for the selected date chosen on the entry form.', WE_LS_SLUG); ?></p>
+														</td>
+													</tr>
 											</table>
 											<h3><?php echo __( 'Tab appearance' , WE_LS_SLUG); ?></h3>
 											<table class="form-table">
@@ -398,8 +411,22 @@ function ws_ls_settings_page_generic() {
                                                         <p><?php echo __('Show loss figures to your users? For example, if your site is aimed at muscle building, you may wish not to.', WE_LS_SLUG)?></p>
                                                     </td>
                                                 </tr>
+												<tr class="<?php echo $disable_if_not_pro_plus_class; ?>">
+													<th scope="row"><?php echo __( 'Female Minimum Calorie Cap' , WE_LS_SLUG); ?></th>
+													<?php
+														$female_min_calorie_cap = ws_ls_harris_benedict_setting( 'ws-ls-female-min-cal-cap' );
+
+														if ( true === empty( $female_min_calorie_cap ) ) {
+															$female_min_calorie_cap = '';
+														}
+													?>
+													<td>
+														<input  type="number" step="any" min="800" max="5000" name="ws-ls-female-min-cal-cap" id="ws-ls-female-min-cal-cap" value="<?php echo esc_attr( $female_min_calorie_cap ); ?>" size="11" />
+														<p><?php echo __('If specified, any calorie intake suggestions below this value shall be replaced by it e.g. if Weight Tracker calculates the recommended calorie intake to lose weight at 940kcal and the safety is set to 1200kcal, then Weight Tracker has calculated a value below your limits. The safety value will replace the calculated value and set it to 1200kcal.', WE_LS_SLUG);?>. <?php echo ws_ls_calculations_link(); ?>. <em><?php echo __( 'Please note, it may take up to 15 minutes for calculations to change (due to caching).' , WE_LS_SLUG); ?></em></p>
+													</td>
+												</tr>
                                                  <tr class="<?php echo $disable_if_not_pro_plus_class; ?>">
-                                                    <th scope="row"><?php echo __( 'Female Calorie Cap' , WE_LS_SLUG); ?></th>
+                                                    <th scope="row"><?php echo __( 'Female Maximum Calorie Cap' , WE_LS_SLUG); ?></th>
 													 <?php
 													 	$female_calorie_cap =  ws_ls_harris_benedict_setting( 'ws-ls-female-cal-cap' );
 													 ?>
@@ -409,14 +436,27 @@ function ws_ls_settings_page_generic() {
                                                     </td>
                                                 </tr>
                                                 <tr class="<?php echo $disable_if_not_pro_plus_class; ?>">
-                                                    <th scope="row"><?php echo __( 'Male Calorie Cap' , WE_LS_SLUG); ?></th>
+                                                    <th scope="row"><?php echo __( 'Male Minimum Calorie Cap' , WE_LS_SLUG); ?></th>
                                                     <td>
+														<?php
+															$male_min_calorie_cap = ws_ls_harris_benedict_setting( 'ws-ls-male-min-cal-cap' );
+
+															if ( true === empty( $male_min_calorie_cap ) ) {
+																$male_min_calorie_cap = '';
+															}
+														?>
+                                                        <input  type="number"  step="any" min="800" max="5000" name="ws-ls-male-min-cal-cap" id="ws-ls-male-min-cal-cap" value="<?php echo esc_attr( $male_min_calorie_cap ); ?>" size="11" />
+														<p><?php echo __('If specified, any calorie intake suggestions below this value shall be replaced by it e.g. if Weight Tracker calculates the recommended calorie intake to lose weight at 940kcal and the safety is set to 1200kcal, then Weight Tracker has calculated a value below your limits. The safety value will replace the calculated value and set it to 1200kcal.', WE_LS_SLUG);?>. <?php echo ws_ls_calculations_link(); ?>. <em><?php echo __( 'Please note, it may take up to 15 minutes for calculations to change (due to caching).' , WE_LS_SLUG); ?></em></p>
+												</tr>
+												<tr class="<?php echo $disable_if_not_pro_plus_class; ?>">
+													<th scope="row"><?php echo __( 'Male Maximum Calorie Cap' , WE_LS_SLUG); ?></th>
+													<td>
 														<?php
 															$male_calorie_cap = ws_ls_harris_benedict_setting( 'ws-ls-male-cal-cap' );
 														?>
-                                                        <input  type="number"  step="any" min="0" max="5000" name="ws-ls-male-cal-cap" id="ws-ls-male-cal-cap" value="<?php echo esc_attr( $male_calorie_cap ); ?>" size="11" />
+														<input  type="number"  step="any" min="0" max="5000" name="ws-ls-male-cal-cap" id="ws-ls-male-cal-cap" value="<?php echo esc_attr( $male_calorie_cap ); ?>" size="11" />
 														<p><?php echo __('Specify a maximum value for number of daily calories allowed to achieve weight loss. As per NHS guidelines, males are set to 1900kcal by default', WE_LS_SLUG);?>. <?php echo ws_ls_calculations_link(); ?>. <em><?php echo __( 'Please note, it may take up to 15 minutes for calculations to change (due to caching).' , WE_LS_SLUG); ?></em></p></td>
-                                                </tr>
+												</tr>
 											    <tr class="<?php echo $disable_if_not_pro_plus_class; ?>">
                                                     <th scope="row"><?php echo __( 'Calories to subtract' , WE_LS_SLUG); ?></th>
                                                     <?php
@@ -723,20 +763,6 @@ function ws_ls_settings_page_generic() {
 														<p><?php echo __('If enabled, enter a HEX colour code to use for the Target line on chart.', WE_LS_SLUG); ?></p>
 													</td>
 												</tr>
-												<tr >
-													<th scope="row"><?php echo __( 'Should y Axes start at 0?', WE_LS_SLUG ); ?></th>
-													<td>
-														<?php
-															$start_at_zero = get_option( 'ws-ls-axes-start-at-zero', 'no' );
-														?>
-														<select id="ws-ls-axes-start-at-zero" name="ws-ls-axes-start-at-zero">
-															<option value="no" <?php selected( $start_at_zero, 'no' ); ?>><?php echo __( 'No', WE_LS_SLUG ); ?></option>
-															<option value="yes" <?php selected( $start_at_zero, 'yes' ); ?>><?php echo __( 'Yes', WE_LS_SLUG ); ?></option>
-
-														</select>
-														<p><?php echo __('If enabled, y Axes shall start at 0. Otherwise, they are automatically calculated.', WE_LS_SLUG); ?></p>
-													</td>
-												</tr>
 												<?php
 
 												$text_colour = get_option( 'ws-ls-text-colour', '#AEAEAE' );
@@ -777,7 +803,7 @@ function ws_ls_settings_page_generic() {
 															<option value="abbv" <?php selected( $abbv_or_question, 'abbv' ); ?>><?php echo __( 'Abbreviation', WE_LS_SLUG ); ?></option>
 															<option value="question" <?php selected( $abbv_or_question, 'question' ); ?>><?php echo __( 'Field / Question', WE_LS_SLUG ); ?></option>
 														</select>
-														<p><?php echo __('When displaying a custom field on a chart, which value should be displayed in the chart\`s legend? The field question or abbreviation.', WE_LS_SLUG); ?></p>
+														<p><?php echo __('When displaying a custom field on a chart, which value should be displayed in the chart\'s legend? The field question or abbreviation.', WE_LS_SLUG); ?></p>
 													</td>
 												</tr>
 												<tr>
@@ -801,19 +827,6 @@ function ws_ls_settings_page_generic() {
 													</td>
 												</tr>
 												<tr  class="<?php echo $disable_if_not_pro_class; ?>">
-													<th scope="row"><?php echo __( 'Display points on chart?', WE_LS_SLUG ); ?></th>
-													<td>
-														<?php
-															$allow_points = get_option( 'ws-ls-allow-points', 'yes' );
-														?>
-														<select id="ws-ls-allow-points" name="ws-ls-allow-points">
-															<option value="yes" <?php selected( $allow_points, 'yes' ); ?>><?php echo __( 'Yes', WE_LS_SLUG ); ?></option>
-															<option value="no" <?php selected( $allow_points, 'no' ); ?>><?php echo __( 'No', WE_LS_SLUG ); ?></option>
-														</select>
-														<p><?php echo __('If enabled, data points shall be drawn on the chart.', WE_LS_SLUG); ?></p>
-													</td>
-												</tr>
-												<tr  class="<?php echo $disable_if_not_pro_class; ?>">
 													<th scope="row" class="<?php echo $disable_if_not_pro_class; ?>"><?php echo __( 'Point thickness', WE_LS_SLUG ); ?></th>
 													<td>
 														<?php
@@ -830,7 +843,7 @@ function ws_ls_settings_page_generic() {
 																	}
 																?>
 														</select>
-														<p><?php echo __('Specifies the point thickness on a line chart.', WE_LS_SLUG); ?></p>
+														<p><?php echo __('Specifies the point thickness on a line chart. Set to 0 to hide points.', WE_LS_SLUG); ?></p>
 													</td>
 												</tr>
 												<tr  class="<?php echo $disable_if_not_pro_class; ?>">
@@ -916,7 +929,7 @@ function ws_ls_settings_page_generic() {
 														</td>
 													</tr>
 													<tr class="<?php echo $disable_if_not_pro_class; ?>">
-														<th scope="row"><?php echo __( 'New weight / measurement entries', WE_LS_SLUG ); ?></th>
+														<th scope="row"><?php echo __( 'New weight / custom field entries', WE_LS_SLUG ); ?></th>
 														<td>
 															<?php
 																$email_notification_new = get_option( 'ws-ls-email-notifications-new', 'yes' );
@@ -929,7 +942,7 @@ function ws_ls_settings_page_generic() {
 														</td>
 													</tr>
 													<tr class="<?php echo $disable_if_not_pro_class; ?>">
-														<th scope="row"><?php echo __( 'Edited weight / measurement entries', WE_LS_SLUG ); ?></th>
+														<th scope="row"><?php echo __( 'Edited weight / custom field entries', WE_LS_SLUG ); ?></th>
 														<td>
 															<?php
 																$email_notification_edit = get_option( 'ws-ls-email-notifications-edit', 'yes' );
@@ -1086,7 +1099,7 @@ function ws_ls_settings_page_generic() {
                                                             <option value="yes" <?php selected( $gf_enabled, 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
                                                         </select>
                                                         <p>
-                                                            <?php echo __('Examine Gravity Form submissions for weight and measurement data. If found, create a Weight Entry for the user currently logged in.', WE_LS_SLUG); ?>
+                                                            <?php echo __('Examine Gravity Form submissions for weight and custom fields. If found, create a Weight Entry for the user currently logged in.', WE_LS_SLUG); ?>
                                                             <a href="https://docs.yeken.uk/gravity-forms.html" target="_blank" rel="noopener noreferrer"><?php echo __('Read more at ', WE_LS_SLUG); ?>https://docs.yeken.uk/gravity-forms.html</a>
                                                         </p>
                                                     </td>
@@ -1130,13 +1143,11 @@ function ws_ls_register_settings(){
     register_setting( 'we-ls-options-group', 'ws-ls-units' );
     register_setting( 'we-ls-options-group', 'ws-ls-allow-targets' );
 	register_setting( 'we-ls-options-group', 'ws-ls-caching' );
-	register_setting( 'we-ls-options-group', 'ws-ls-allow-points' );
-    register_setting( 'we-ls-options-group', 'ws-ls-target-colour' );
+	register_setting( 'we-ls-options-group', 'ws-ls-target-colour' );
     register_setting( 'we-ls-options-group', 'ws-ls-line-fill-colour' );
     register_setting( 'we-ls-options-group', 'ws-ls-line-colour' );
     register_setting( 'we-ls-options-group', 'ws-ls-use-us-dates' );
     register_setting( 'we-ls-options-group', 'ws-ls-disable-css' );
-	register_setting( 'we-ls-options-group', 'ws-ls-axes-start-at-zero' );
 	register_setting( 'we-ls-options-group', 'ws-ls-edit-permissions' );
     register_setting( 'we-ls-options-group', 'ws-ls-text-colour' );
     register_setting( 'we-ls-options-group', 'ws-ls-font-family' );
@@ -1162,6 +1173,7 @@ function ws_ls_register_settings(){
         register_setting( 'we-ls-options-group', 'ws-ls-point-size' );
         register_setting( 'we-ls-options-group', 'ws-ls-grid-lines' );
 		register_setting( 'we-ls-options-group', 'ws-ls-populate-placeholders-with-previous-values' );
+		register_setting( 'we-ls-options-group', 'ws-ls-populate-form-with-values-on-date' );
 
 	    // Groups
 	    register_setting( 'we-ls-options-group', 'ws-ls-enable-groups-user-edit' );
@@ -1206,7 +1218,9 @@ function ws_ls_register_settings(){
     if ( WS_LS_IS_PRO_PLUS ) {
 
         register_setting( 'we-ls-options-group', 'ws-ls-female-cal-cap' );
-        register_setting( 'we-ls-options-group', 'ws-ls-male-cal-cap' );
+		register_setting( 'we-ls-options-group', 'ws-ls-female-min-cal-cap' );
+		register_setting( 'we-ls-options-group', 'ws-ls-male-cal-cap' );
+		register_setting( 'we-ls-options-group', 'ws-ls-male-min-cal-cap' );
         register_setting( 'we-ls-options-group', 'ws-ls-cal-subtract' );
 	    register_setting( 'we-ls-options-group', 'ws-ls-cal-add' );
 	    register_setting( 'we-ls-options-group', 'ws-ls-cal-show-loss' );

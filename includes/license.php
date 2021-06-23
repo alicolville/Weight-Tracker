@@ -98,18 +98,39 @@ function ws_ls_display_license_expiry_warning() {
         return;
     }
 
-    printf('<div class="notice notice-warning" id="ws-ls-admin-notice" data-wsmd5="">
-                <p><strong>%s</strong>: %s. <a href="%s?hash=%s" rel="noopener noreferrer" target="_blank" >Renew your license now</a></p>
+    printf('<div class="notice notice-%s" id="ws-ls-admin-notice" data-wsmd5="">
+                <p><strong>%s</strong>: %s %d %s. <a href="%s?hash=%s" rel="noopener noreferrer" target="_blank" >Renew your license now</a></p>
             </div>',
+	            ( $days_until_expiry < 7 ) ? 'error' : 'warning',
                 __('Weight Tracker License', WE_LS_SLUG ),
-                __('Your license expires in less than 14 days. Please renew your license as soon as possible', WE_LS_SLUG ),
+	            __('Your license expires in', WE_LS_SLUG ),
+	            $days_until_expiry,
+	            __('days. Please renew your license as soon as possible', WE_LS_SLUG ),
                 WE_LS_UPGRADE_TO_PRO_PLUS_URL,
                 ws_ls_generate_site_hash()
-
     );
 
 }
 add_action('admin_notices', 'ws_ls_display_license_expiry_warning');
+
+/**
+ * Inform users with an old license that they will soon be gone.
+ */
+function ws_ls_display_license_deprecated_message() {
+
+	if ( true !== ws_ls_has_a_valid_old_pro_license() ) {
+		return;
+	}
+
+	printf('<div class="notice notice-error" id="ws-ls-admin-notice" data-wsmd5="">
+                <p><strong>%s</strong> %s <a href="mailto:email@yeken.uk" >email@yeken.uk</a>.</p>
+            </div>',
+			__('Warning!', WE_LS_SLUG ),
+			__('Your current Weight Tracker license will soon no longer be supported by the plugin. Please contact YeKen support at', WE_LS_SLUG )
+	);
+
+}
+add_action('admin_notices', 'ws_ls_display_license_deprecated_message');
 
 // ------------------------------------------------------------------------------------------------------------
 // Current licensing

@@ -4,8 +4,12 @@
 
 Render a user settings form which allows the user to change their Weight Tracker preferences.
 
-[![Table]({{ site.baseurl }}/assets/images/settings.png)]({{ site.baseurl }}/assets/images/settings.png)
+[![]({{ site.baseurl }}/assets/images/settings.png)]({{ site.baseurl }}/assets/images/settings.png)
 
+> Please ensure you have the Weight Tracker setting "User Experience" > "Allow user settings" set to "Yes".
+
+
+Allow user settings
 
 **Shortcode Arguments**
  

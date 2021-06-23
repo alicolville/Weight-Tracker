@@ -40,7 +40,7 @@ function ws_ls_admin_page_data_edit_target() {
                                     if ( true === WS_LS_IS_PRO ) {
 
 	                                    echo ws_ls_form_weight( [    'user-id'              => $user_id,
-	                                                                 'is-target-form'       => true,
+	                                                                 'type'       			=> 'target',
 	                                                                 'redirect-url'         => $redirect_url,
 	                                                                 'hide-login-message'   => true,
 	                                    ] );

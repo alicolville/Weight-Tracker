@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight,tracker,chart,bmi,bmr,macronutrient,measure,awards,custom fields,history,measurements,data
 Requires at least: 5.2
 Tested up to: 5.7
-Stable tag: 8.5.1
+Stable tag: 9.0
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -156,9 +156,43 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 == Upgrade Notice ==
 
-8.5 - Gamification - Added support for myCred! Reward your users for using Weight Tracker.
+9.0 - Non weight entries! Support for custom field entries only! New custom field shortcodes.
 
 == Changelog ==
+
+= 9.0 =
+
+* New feature: Allow entries without needing a weight - e.g. Custom Field only entries.
+* New feature: New shortcode: [wt-custom-fields-accumulator] - displays a series of buttons that allow the user to increment the value of a numeric custom field. Read more https://docs.yeken.uk/shortcodes/wt-custom-fields-accumulator.html
+* New feature: New shortcode: [wt-custom-fields-table] - display custom fields entries in a table. Read more https://docs.yeken.uk/shortcodes/wt-custom-fields-table.html
+* New feature: New shortcode: [wt-custom-fields-chart] - display custom fields only on a chart. Read more https://docs.yeken.uk/shortcodes/wt-custom-fields-chart.html
+* New feature: New shortcode: [wt-custom-fields-form] - display custom fields only on a form. Read more https://docs.yeken.uk/shortcodes/wt-custom-fields-form.html
+* New feature: [wt-chart] shortcode can be used to display custom fields only (i.e. hide weight entries/targets). Use the new shortcode arguments 'show-weight' and 'show-target'. Read more https://docs.yeken.uk/shortcodes/wt-chart.html
+* New feature: [wt-chart] new argument "message-no-data" to specify the error message to display when there is no data to display on the chart. Read more https://docs.yeken.uk/shortcodes/wt-chart.html
+* New feature: Specify safety caps to ensure calories to lose weight doesn't fall below a certain value.
+* New setting: "Load previous entry upon date selection?" - If enabled, and data exists, then the user will be asked whether they wish to load the data for the selected date chosen on the entry form.
+* Improvement: When updating an entry, only fields that exist in the form shall be updated on the entry. This will save parts of an entry being blanked in certian circumstancs.
+* Improvement: New arguments for shortcode [wt-table] 'enable-bmi', 'enable-notes'and 'enable-weight'. Read more https://docs.yeken.uk/shortcodes/wt-table.html
+* Improvement: Upgrading charting library (chart.js) and underlying code to 3.2.0.
+* Improvement: Added support for curved (bezier) lines for custom fields when plotted on charts.
+* Improvement: Added the arguments "force-todays-date", "weight-mandatory", "load-placeholders" and "title" to the [wt-form] shortcode. Read more https://docs.yeken.uk/shortcodes/wt-form.html
+* Improvement: Added the argument "weight-mandatory" to the [wt] shortcode.
+* Improvement: Added the argument "type" to the shortcode [wt-form]. Specifies type of form. Either weight entry (weight), Set target (target), custom fields or both weight and custom fields. Read more https://docs.yeken.uk/shortcodes/wt-form.html
+* Improvement: Placeholder values in weight/custom-field/target forms will now have suffixes.
+* Improvement: Added BMI numeric value in admin data tables.
+* Improvement: Added additional error handling around the ID argument for the [wt-challenges] shortcode.
+* Improvement: Added a small notice to [wt-user-settings] informing admin that "Allow user settings" must be enabled for the shortcode to work.
+* Improvement: Improved the warning around license expiring in x days.
+* Bug fix: Fixed an issue where the argument "custom-field-groups" on forms wasn't being respected properly.
+* Bug fix: Ensured [wt-chart] respected the argument "message-no-data".
+* Bug fix: Fixed an issue where exports would not run for Pro users.
+* Bug fix: Fixed "wlt-awards-deleting" hook from incorrectly firing.
+* Bug fix: Fixed issue with "Delete Data" button not working in admin.
+* Bug fix: Removed name and id attributes from "Clear Target" as causing non-unique console errors.
+* Bug fix: Removed name and id attributes from "Save Entry" as causing non-unique console errors.
+* Change: Removed redundant setting "Should y Axes start at 0?" as chart.js 3 treats y axes differently.
+* Change: Removed redundant setting "Display points on chart?" this is now controlled by "Point thickness".
+* Change: Added warning message around older licenses being deprecated.
 
 = 8.5.1 =
 

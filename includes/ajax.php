@@ -73,6 +73,8 @@ function ws_ls_get_table_data() {
 
 	global $ws_ls_request_from_admin_screen;
 
+	// TODO: Refactor the code below - grown messy!
+
 	// Filter?
 	$max_entries                        = ws_ls_get_numeric_post_value('max_entries');
 	$user_id                            = ws_ls_get_numeric_post_value('user_id');
@@ -80,9 +82,13 @@ function ws_ls_get_table_data() {
 	$table_id                           = ws_ls_post_value('table_id');
 	$small_width                        = ws_ls_post_value_to_bool( 'small_width' );
 	$front_end                          = ws_ls_post_value_to_bool( 'front-end' );
+	$enable_bmi                         = ws_ls_post_value_to_bool( 'enable-bmi' );
+	$enable_notes                       = ws_ls_post_value_to_bool( 'enable-notes' );
 	$enable_meta                        = ws_ls_post_value_to_bool( 'enable-meta-fields' );
+	$enable_weight                      = ws_ls_post_value_to_bool( 'enable-weight' );
 	$ws_ls_request_from_admin_screen    = ws_ls_post_value_to_bool( 'in-admin' );
 	$bmi_format                         = ws_ls_post_value('bmi-format', 'label' );
+	$custom_field_col_size              = ws_ls_post_value('custom-field-col-size' );
 	$custom_field_groups                = ws_ls_post_value('custom-field-groups' );
 	$custom_field_slugs                 = ws_ls_post_value('custom-field-slugs' );
 
@@ -92,8 +98,9 @@ function ws_ls_get_table_data() {
 	}
 
 	$data = [
-		'columns'   => ws_ls_datatable_columns( $small_width, $front_end, $enable_meta, $custom_field_slugs, $custom_field_groups ),
-		'rows'      => ws_ls_datatable_rows( [ 'user-id'  => $user_id, 'limit' => $max_entries, 'smaller-width' => $small_width, 'front-end' => $front_end,
+		'columns'   => ws_ls_datatable_columns( [ 'small-width' => $small_width, 'front-end' => $front_end, 'enable-meta' => $enable_meta, 'enable-bmi' => $enable_bmi, 'enable-weight' => $enable_weight, 'enable-notes' => $enable_notes,
+		                                          'custom-field-col-size' => $custom_field_col_size, 'custom-field-slugs' => $custom_field_slugs, 'custom-field-groups' => $custom_field_groups ] ),
+		'rows'      => ws_ls_datatable_rows( [ 'user-id'  => $user_id, 'limit' => $max_entries, 'smaller-width' => $small_width, 'front-end' => $front_end, 'enable-bmi' => $enable_bmi, 'enable-weight' => $enable_weight, 'enable-notes' => $enable_notes,
 		                                        'enable-meta' => $enable_meta, 'in-admin' => $ws_ls_request_from_admin_screen, 'week' => $week_number, 'bmi-format' => $bmi_format ] ),
 		'table_id'  => $table_id
 	];
@@ -170,3 +177,35 @@ function ws_ls_ajax_postbox_value() {
 	wp_send_json( $result );
 }
 add_action( 'wp_ajax_postboxes_event', 'ws_ls_ajax_postbox_value' );
+
+/**
+ * Load an entry for the given user / date
+ */
+function ws_ls_ajax_get_entry_for_date() {
+
+	check_ajax_referer( 'ws-ls-nonce', 'security' );
+
+	$user_id = ws_ls_post_value('user-id' );
+
+	if ( true === empty( $user_id ) ) {
+		wp_send_json( NULL );
+	}
+
+	$date = ws_ls_post_value('date' );
+
+	if ( true === empty( $date ) ) {
+		wp_send_json( NULL );
+	}
+
+	$date           = ws_ls_convert_date_to_iso( $date );
+	$existing_id    = ws_ls_db_entry_for_date( $user_id, $date );
+
+	if ( true === empty( $existing_id ) ) {
+		wp_send_json( NULL );
+	}
+
+	$entry                  = ws_ls_entry_get( [ 'user-id' => $user_id, 'id' => $existing_id ] );
+
+	wp_send_json( $entry );
+}
+add_action( 'wp_ajax_ws_ls_get_entry_for_date', 'ws_ls_ajax_get_entry_for_date' );

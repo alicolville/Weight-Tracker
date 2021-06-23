@@ -292,7 +292,7 @@ function ws_ls_postbox_user_entries( $user_id ) {
 	<div class="postbox <?php ws_ls_postbox_classes( 'user-entries', 'ws-ls-user-data-one' ); ?>" id="user-entries">
 		<?php ws_ls_postbox_header( [ 'title' => __( 'Entries for this user', WE_LS_SLUG ), 'postbox-id' => 'user-entries', 'postbox-col' => 'ws-ls-user-data-one' ] ); ?>
 		<div class="inside">
-			<?php echo ws_ls_data_table_render( [ 'smaller-width' => true, 'user-id' => $user_id ] ); ?>
+			<?php echo ws_ls_data_table_render( [ 'smaller-width' => true, 'user-id' => $user_id, 'bmi-format' => 'both' ] ); ?>
 		</div>
 	</div>
 <?php

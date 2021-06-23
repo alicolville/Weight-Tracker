@@ -65,12 +65,15 @@
         return count( ws_ls_meta_fields_enabled() );
     }
 
-	/**
-	 * Get the field key for given meta id
-	 * @param $id
-	 *
-	 * @return mixed|null
-	 */
+/**
+ * Get the field key for given meta id
+ *
+ * @param $id
+ *
+ * @param string $column
+ *
+ * @return mixed|null
+ */
 	function ws_ls_meta_fields_get_column( $id, $column = 'field_key' ) {
 
 		$fields = ws_ls_meta_fields();
@@ -270,12 +273,11 @@
 
 	        // Filter by group?
 	        if ( true === $filter_by_group &&
-	                0 !== (int) $field[ 'group_id' ] &&
-	                    false === in_array( $field[ 'group_id' ], $arguments[ 'custom-field-groups' ] ) ) {
+	                ( 0 === (int) $field[ 'group_id' ] || false === in_array( $field[ 'group_id' ], $arguments[ 'custom-field-groups' ] ) ) ) {
 		        continue;
 	        }
 
-	        $field[ 'placeholder' ] = ( false === empty( $placeholders[ 'meta' ][ $field[ 'id' ] ] ) ) ? $placeholders[ 'meta' ][ $field[ 'id' ] ] : '';
+	        $field[ 'placeholder' ] = ( false === empty( $placeholders[ 'meta' ][ $field[ 'id' ] ] ) ) ? $placeholders[ 'meta' ][ $field[ 'id' ] ] . ws_ls_meta_fields_get_column( $field[ 'id' ], 'suffix' ) : '';
 
 	        $value = ( false === empty( $arguments[ 'entry' ][ 'meta'] ) &&
 	                     true === array_key_exists( $field[ 'id' ], $arguments[ 'entry' ][ 'meta'] ) ) ?
@@ -324,7 +326,7 @@
 
         return sprintf('<div class="ws-ls-meta-field">
                             <label for="%1$s" class="ws-ls-meta-field-title" >%2$s:</label>
-                            <input type="text" id="%1$s" name="%1$s" %3$s tabindex="%4$s" maxlength="200" value="%5$s" class="ws-ls-meta-field" data-msg="%6$s \'%2$s\'." placeholder="%7$s" />
+                            <input type="text" id="%1$s" name="%1$s" %3$s tabindex="%4$s" maxlength="200" value="%5$s" class="%1$s ws-ls-meta-field" data-msg="%6$s \'%2$s\'." placeholder="%7$s" />
                         </div>',
             ws_ls_meta_fields_form_field_generate_id( $field['id'] ),
             esc_attr( $field['field_name'] ),
@@ -348,7 +350,7 @@
 
         return sprintf('<div class="ws-ls-meta-field">
                             <label for="%1$s" class="ws-ls-meta-field-title">%2$s:</label>
-                            <input type="number" id="%1$s" name="%1$s" %3$s step="any" tabindex="%4$s" maxlength="200" value="%5$s" class="ws-ls-meta-field" data-msg="%6$s \'%2$s\'." placeholder="%7$s" />
+                            <input type="number" id="%1$s" name="%1$s" %3$s step="any" tabindex="%4$s" maxlength="200" value="%5$s" class="%1$s ws-ls-meta-field" data-msg="%6$s \'%2$s\'." placeholder="%7$s" />
                         </div>',
             ws_ls_meta_fields_form_field_generate_id( $field['id'] ),
             esc_attr( $field['field_name'] ),
@@ -372,7 +374,7 @@
 
         $html = sprintf( '<div class="ws-ls-meta-field">
                             <label for="%1$s" class="ws-ls-meta-field-title">%2$s:</label>
-                            <select name="%1$s" id="%1$s" tabindex="%3$s">
+                            <select name="%1$s" id="%1$s" tabindex="%3$s" class="%1$s">
                             ',
                             ws_ls_meta_fields_form_field_generate_id( $field['id'] ),
                             esc_attr( $field['field_name'] ),
@@ -559,11 +561,11 @@ function ws_ls_meta_fields_groups_slugs_to_ids( $slugs ) {
  */
 function ws_ls_meta_fields_slugs_to_ids( $slugs ) {
 
-	$ids = NULL;
-
 	if ( true === empty( $slugs ) ) {
-		return $ids;
+		return null;
 	}
+
+	$ids = NULL;
 
 	$slugs  = explode( ',', $slugs );
 	$fields = ws_ls_meta_fields();

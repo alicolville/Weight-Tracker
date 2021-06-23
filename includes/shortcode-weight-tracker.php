@@ -37,11 +37,12 @@ function ws_ls_shortcode( $user_defined_arguments ) {
 									                'disable-tabs' 				=> false,                       // Disable using tabs.
 													'disable-second-check' 		=> false,					    // Disable check to see if [wlt] placed more than once
 	                                                'enable-week-ranges'        => false,                       // Enable Week Ranges?
-													'user-id'					=> get_current_user_id()
+													'user-id'					=> get_current_user_id(),
+													'weight-mandatory'			=> true,						// Is weight mandatory?
         ], $user_defined_arguments );
 
 		if ( true === $ws_ls_wlt_already_placed && false === ws_ls_to_bool( $shortcode_arguments['disable-second-check'] ) ) {
-			return sprintf('<p>%s</p>', __( 'This shortcode can only be placed once on a page / post.', WE_LS_SLUG ) );
+			return sprintf('<p>%s</p>', __( 'This shortcode can only be placed once on a page / post. To disable this check, try: [wt disable-second-check=true]', WE_LS_SLUG ) );
 		}
 
 		ws_ls_enqueue_files();
@@ -154,7 +155,7 @@ function ws_ls_shortcode( $user_defined_arguments ) {
 
 		// Include target form?
 		if ( true === ws_ls_targets_enabled() && false === ws_ls_to_bool( $shortcode_arguments[ 'hide-first-target-form' ] ) ) {
-			$html_output .= ws_ls_form_weight( [ 'is-target-form' => true, 'css-class-form' => 'ws-ls-target-form', 'user-id' => $user_id, 'hide-confirmation' => true ] ) . ' <br />';
+			$html_output .= ws_ls_form_weight( [ 'type' => 'target', 'css-class-form' => 'ws-ls-target-form', 'user-id' => $user_id, 'hide-confirmation' => true ] ) . ' <br />';
 		}
 
 		// Display "Add Weight" anchor?
@@ -182,7 +183,8 @@ function ws_ls_shortcode( $user_defined_arguments ) {
 													'hide-notes'            => ws_ls_to_bool( $shortcode_arguments[ 'hide-notes' ] ),
 													'hide-confirmation'     => true,
 													'custom-field-groups'   => $shortcode_arguments[ 'custom-field-groups' ],
-													'custom-field-slugs'    => $shortcode_arguments[ 'custom-field-slugs' ]
+													'custom-field-slugs'    => $shortcode_arguments[ 'custom-field-slugs' ],
+													'weight-mandatory'		=> $shortcode_arguments[ 'weight-mandatory' ]
 			] );
 
 		} else {
@@ -193,7 +195,8 @@ function ws_ls_shortcode( $user_defined_arguments ) {
 			                                        'hide-notes'            => ws_ls_to_bool( $shortcode_arguments[ 'hide-notes' ] ),
 			                                        'hide-confirmation'     => true,
 			                                        'custom-field-groups'   => $shortcode_arguments[ 'custom-field-groups' ],
-			                                        'custom-field-slugs'    => $shortcode_arguments[ 'custom-field-slugs' ]
+			                                        'custom-field-slugs'    => $shortcode_arguments[ 'custom-field-slugs' ],
+													'weight-mandatory'		=> $shortcode_arguments[ 'weight-mandatory' ]
 			] );
 		}
 
@@ -216,7 +219,7 @@ function ws_ls_shortcode( $user_defined_arguments ) {
 
 			if ( true === ws_ls_targets_enabled() && $use_tabs &&
 			        false === ws_ls_to_bool( $shortcode_arguments[ 'hide-second-target-form' ] ) ) {
-				$html_output .= ws_ls_form_weight( [ 'is-target-form' => true, 'css-class-form' => 'ws-ls-target-form', 'user-id' => $user_id, 'hide-confirmation' => true ] ) . ' <br />';
+				$html_output .= ws_ls_form_weight( [ 'type' => 'target', 'css-class-form' => 'ws-ls-target-form', 'user-id' => $user_id, 'hide-confirmation' => true ] ) . ' <br />';
 			}
 
 			// Display week filters and data tab

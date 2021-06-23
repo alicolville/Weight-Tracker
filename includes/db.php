@@ -206,7 +206,7 @@ function ws_ls_db_entry_latest_or_oldest( $arguments ) {
 
 	$sort_order = ( 'latest' === $arguments[ 'which' ] ) ? 'desc' : 'asc';
 
-	$sql        = $wpdb->prepare('SELECT id FROM ' . $wpdb->prefix . WE_LS_TABLENAME . ' where weight_user_id = %d order by weight_date ' . $sort_order . ' limit 0, 1', $arguments[ 'user-id' ] );
+	$sql        = $wpdb->prepare('SELECT id FROM ' . $wpdb->prefix . WE_LS_TABLENAME . ' where weight_user_id = %d and weight_weight is not null order by weight_date ' . $sort_order . ' limit 0, 1', $arguments[ 'user-id' ] );
 	$entry_id   = $wpdb->get_var( $sql );
 
 	ws_ls_cache_user_set( $arguments[ 'user-id' ], $cache_key, $entry_id );
@@ -234,7 +234,7 @@ function ws_ls_db_entry_previous( $arguments ) {
 
 	global $wpdb;
 
-	$sql        = $wpdb->prepare('SELECT id FROM ' . $wpdb->prefix . WE_LS_TABLENAME . ' where weight_user_id = %d order by weight_date desc limit 1, 1', $arguments[ 'user-id' ] );
+	$sql        = $wpdb->prepare('SELECT id FROM ' . $wpdb->prefix . WE_LS_TABLENAME . ' where weight_user_id = %d and weight_weight is not null order by weight_date desc limit 1, 1', $arguments[ 'user-id' ] );
 	$entry_id   = $wpdb->get_var( $sql );
 
 	ws_ls_cache_user_set( $arguments[ 'user-id' ], $cache_key, $entry_id );
@@ -409,7 +409,7 @@ function ws_ls_db_weight_start_get( $user_id ) {
 
 	global $wpdb;
 
-    $sql    =  $wpdb->prepare('SELECT weight_weight as kg FROM ' .  $wpdb->prefix . WE_LS_TABLENAME . ' where weight_user_id = %d order by weight_date asc limit 0, 1', $user_id);
+    $sql    =  $wpdb->prepare('SELECT weight_weight as kg FROM ' .  $wpdb->prefix . WE_LS_TABLENAME . ' where weight_user_id = %d and weight_weight is not null order by weight_date asc limit 0, 1', $user_id);
     $kg     = $wpdb->get_var( $sql );
 
 	ws_ls_cache_user_set( $user_id, 'start-weight', $kg );
@@ -792,6 +792,7 @@ function ws_ls_db_create_core_tables() {
 		weight_user_id integer NOT NULL,
 		weight_weight float NULL,
 		weight_notes text null,
+		weight_pre_upgrade float null,
 		migrate int NULL DEFAULT 0,
 		inserted TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	  UNIQUE KEY id (id)
@@ -799,6 +800,15 @@ function ws_ls_db_create_core_tables() {
 
 	require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 	dbDelta( $sql );
+
+	// From version 9 onwards, we allow entries with no weight
+	$wpdb->query( "ALTER TABLE $table_name MODIFY COLUMN weight_weight float NULL;" );
+
+	if ( '9.0/1' === WE_LS_DB_VERSION ) {
+		$wpdb->query( "Update $table_name set weight_pre_upgrade = weight_weight;" );
+	}
+
+	$wpdb->query( "Update $table_name set weight_weight = NULL where weight_weight = 0;" );
 
 	$table_name = $wpdb->prefix . WE_LS_TARGETS_TABLENAME;
 
