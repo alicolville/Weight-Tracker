@@ -192,6 +192,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 * Bug fix: Removed name and id attributes from "Save Entry" as causing non-unique console errors.
 * Change: Removed redundant setting "Should y Axes start at 0?" as chart.js 3 treats y axes differently.
 * Change: Removed redundant setting "Display points on chart?" this is now controlled by "Point thickness".
+* Change: Added warning message around older licenses being deprecated.
 
 = 8.5.1 =
 

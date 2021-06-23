@@ -113,6 +113,25 @@ function ws_ls_display_license_expiry_warning() {
 }
 add_action('admin_notices', 'ws_ls_display_license_expiry_warning');
 
+/**
+ * Inform users with an old license that they will soon be gone.
+ */
+function ws_ls_display_license_deprecated_message() {
+
+	if ( true !== ws_ls_has_a_valid_old_pro_license() ) {
+		return;
+	}
+
+	printf('<div class="notice notice-error" id="ws-ls-admin-notice" data-wsmd5="">
+                <p><strong>%s</strong>: %s <a href="mailto:email@yeken.uk" >email@yeken.uk</a>.</p>
+            </div>',
+			__('Warning!', WE_LS_SLUG ),
+			__('Your current Weight Tracker license will soon no longer be supported by the plugin. Please contact YeKen support at', WE_LS_SLUG )
+	);
+
+}
+add_action('admin_notices', 'ws_ls_display_license_deprecated_message');
+
 // ------------------------------------------------------------------------------------------------------------
 // Current licensing
 // ------------------------------------------------------------------------------------------------------------
