@@ -1,0 +1,1 @@
+- Replace <input type=number> with react number control
