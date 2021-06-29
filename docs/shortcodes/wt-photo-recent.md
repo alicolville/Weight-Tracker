@@ -15,6 +15,6 @@ The shortcode supports the following arguments:
 |error-message|	Message to display if a relevant photo could not be found.	|String. Defaults to an in-build message.|	[wt-photo-recent error-message="No photo!!"]
 |height|	Allows you to specify the maximum height for the photo. It is best to specify the width argument as well.|	Number (default: 200).|	[wt-photo-recent height="400" width="400"]
 |hide-date|	If set to true, hide the date that is displayed.|	True or false (default)	|[wt-photo-recent hide-date=true]|
-|maximum|	Maximum number of photos to render.	|Numeric	|[wt-photo-recent maximum=3]
+|maximum|	Maximum number of photos to render.	|Numeric (defaults to 1)	|[wt-photo-recent maximum=3]
 |width|	Allows you to specify the maximum width for the photo. It is best to specify the height argument as well.|	Number (default: 200).	|[wt-photo-recent height="400" width="400"]
 |user-id|By default, the shortcode will display the oldest photo for the current user. You can display the oldest photo for another user by setting this argument to the relevant user ID.|Numeric| [wt-photo-recent user-id="1"]
