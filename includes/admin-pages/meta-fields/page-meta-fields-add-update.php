@@ -12,6 +12,9 @@
 
             $meta_field = ws_ls_get_values_from_post( [ 'id', 'field_name', 'abv', 'field_type', 'suffix', 'mandatory', 'enabled', 'suffix', 'sort', 'hide_from_shortcodes', 'plot_on_graph', 'plot_colour', 'group_id' ] );
 
+            $meta_field = ws_ls_get_values_from_post( [ 'id', 'field_name', 'abv', 'field_type', 'suffix', 'mandatory', 'enabled',
+															'suffix', 'sort', 'hide_from_shortcodes', 'plot_on_graph', 'plot_colour', 'group_id',
+																'min_value', 'max_value', 'step' ] );
             // Ensure all mandatory fields have been completed!
             foreach ( [ 'field_name', 'abv' ] as $key ) {
                 if ( true === empty( $meta_field[ $key ] ) ) {
@@ -143,6 +146,42 @@
                                                     <input type="text" name="field_name" id="field_name" class="<?php if ( true === $validation_fail && true === empty( $meta_field['field_name'] ) ) { echo 'ws-ls-mandatory-field'; } ?>"  size="40" maxlength="200" value="<?php echo ( false === empty( $meta_field['field_name'] ) ) ? esc_attr( $meta_field['field_name'] ) : ''; ?>"/><span class="ws-ls-mandatory">*</span>
                                                 </div>
                                             </div>
+											<div class="ws-ls-row ws-ls-hide ws-ls-meta-fields-additional-4">
+												<div class="ws-ls-cell">
+													<label for="min_value"><?php echo __('Minimum value', WE_LS_SLUG); ?></label>
+												</div>
+												<div class="ws-ls-cell">
+													<?php
+														$min_value = ( false === empty( $meta_field[ 'min_value' ] ) ) ? (int) $meta_field[ 'min_value' ] : 0;
+													?>
+													<input name="min_value" id="min_value" type="number"  min="-1000000" max="1000000" step="any" value="<?php echo $min_value; ?>">
+													<p class="ws-ls-info"><?php echo __('Specifies the lowest number on the range slider.', WE_LS_SLUG); ?></p>
+												</div>
+											</div>
+											<div class="ws-ls-row ws-ls-hide ws-ls-meta-fields-additional-4">
+												<div class="ws-ls-cell">
+													<label for="max_value"><?php echo __('Maximum value', WE_LS_SLUG); ?></label>
+												</div>
+												<div class="ws-ls-cell">
+													<?php
+													$max_value = ( false === empty( $meta_field[ 'max_value' ] ) ) ? (int) $meta_field[ 'max_value' ] : 100;
+													?>
+													<input name="max_value" id="max_value" type="number" min="-1000000" max="1000000" step="any" value="<?php echo $max_value; ?>">
+													<p class="ws-ls-info"><?php echo __('Specifies the maximum number on the range slider.', WE_LS_SLUG); ?></p>
+												</div>
+											</div>
+											<div class="ws-ls-row ws-ls-hide ws-ls-meta-fields-additional-4">
+												<div class="ws-ls-cell">
+													<label for="step"><?php echo __('Step', WE_LS_SLUG); ?></label>
+												</div>
+												<div class="ws-ls-cell">
+													<?php
+														$step = ( false === empty( $meta_field[ 'step' ] ) ) ? (int) $meta_field[ 'step' ] : 10;
+													?>
+													<input name="step" id="step" type="number" min="-1000000" max="1000000" step="any" value="<?php echo $step; ?>">
+													<p class="ws-ls-info"><?php echo __('Specifies the steps between points on the slider.', WE_LS_SLUG); ?></p>
+												</div>
+											</div>
                                             <div class="ws-ls-row">
                                                 <div class="ws-ls-cell">
                                                     <label for="abv"><?php echo __('Abbreviation', WE_LS_SLUG); ?></label>
