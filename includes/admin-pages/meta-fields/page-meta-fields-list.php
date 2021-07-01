@@ -29,14 +29,25 @@
                                                         <a href="https://docs.yeken.uk/custom-fields.html" target="_blank" rel="noopener"><?php echo __('Read more about Custom Fields', WE_LS_SLUG); ?></a>
                                                         </p>
 
-	                            <?php $base_url = ws_ls_meta_fields_base_url( [ 'mode' => 'add-edit' ] );  ?>
+	                            <?php
 
-	                            <a href="<?php echo $base_url; ?>&amp;field_type=3" class="button"><?php echo __( 'Add Photo Field', WE_LS_SLUG ); ?></a>
-	                            <a href="<?php echo $base_url; ?>&amp;field_type=0" class="button"><?php echo __( 'Add Numeric Field', WE_LS_SLUG ); ?></a>
-	                            <a href="<?php echo $base_url; ?>&amp;field_type=1" class="button"><?php echo __( 'Add Text Field', WE_LS_SLUG ); ?></a>
-	                            <a href="<?php echo $base_url; ?>&amp;field_type=2" class="button"><?php echo __( 'Add Yes/No Field', WE_LS_SLUG ); ?></a>
-								&nbsp;&nbsp;
-								<a href="<?php echo ws_ls_meta_fields_groups_link(); ?>&amp;field_type=2" class="button"><?php echo __( 'Add / remove Groups', WE_LS_SLUG ); ?></a>
+									$base_url 			= ws_ls_meta_fields_base_url( [ 'mode' => 'add-edit' ] );
+									$meta_field_types 	= ws_ls_meta_fields_types();
+
+									foreach ( $meta_field_types as $key => $name ) {
+										printf( '<a href="%1$s&amp;field_type=%2$d" class="button">
+															%3$s %4$s %5$s
+														</a> ',
+														esc_url( $base_url ),
+														$key,
+														__( 'Add', WE_LS_SLUG ),
+														$name,
+														__( 'field', WE_LS_SLUG )
+										);
+									}
+
+	                            ?>
+								<a href="<?php echo ws_ls_meta_fields_groups_link(); ?>&amp;field_type=2" class="button"><?php echo __( 'Add / remove groups', WE_LS_SLUG ); ?></a>
 
                                 <table class="ws-ls-meta-fields-list-ajax table ws-ls-loading-table" id="meta-fields-list"
                                        data-paging="true"
