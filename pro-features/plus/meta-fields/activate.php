@@ -32,6 +32,7 @@
                 min_value float DEFAULT 0,
                 max_value float DEFAULT 0,
                 step float DEFAULT 0,
+                show_all_labels int default 1,
                 plot_colour varchar(10) NOT NULL,
                 `system` BIT DEFAULT 0,
                 field_type int NOT NULL,

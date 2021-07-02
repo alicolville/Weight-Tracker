@@ -14,7 +14,7 @@
 
             $meta_field = ws_ls_get_values_from_post( [ 'id', 'field_name', 'abv', 'field_type', 'suffix', 'mandatory', 'enabled',
 															'suffix', 'sort', 'hide_from_shortcodes', 'plot_on_graph', 'plot_colour', 'group_id',
-																'min_value', 'max_value', 'step' ] );
+																'min_value', 'max_value', 'step', 'show_all_labels' ] );
             // Ensure all mandatory fields have been completed!
             foreach ( [ 'field_name', 'abv' ] as $key ) {
                 if ( true === empty( $meta_field[ $key ] ) ) {
@@ -90,7 +90,7 @@
 																printf( '<option value="%1$d" %2$s>%3$s</option>',
 																				$key,
 																				selected( $checked, $key, false ),
-																				$name,
+																				$name
 																);
 															}
 														?>
@@ -113,7 +113,7 @@
                                                     <p class="ws-ls-info"><?php echo __('Note: If set to Yes, photos uploaded into this custom field cannot be used in shortcodes i.e. the photos will only be visible to admin.', WE_LS_SLUG); ?></p>
                                                 </div>
                                             </div>
-											<div class="ws-ls-row ws-ls-hide ws-ls-meta-fields-additional-0">
+											<div class="ws-ls-row ws-ls-hide ws-ls-meta-fields-additional-0  ws-ls-meta-fields-additional-4">
 												<div class="ws-ls-cell">
 													<label for="plot_on_graph"><?php echo __('Show on charts?', WE_LS_SLUG); ?></label>
 												</div>
@@ -126,7 +126,7 @@
 													<p class="ws-ls-info"><?php echo __('Note: If set to Yes, this custom field will also be plotted on graphs.', WE_LS_SLUG); ?></p>
 												</div>
 											</div>
-											<div class="ws-ls-row ws-ls-hide ws-ls-meta-fields-additional-0">
+											<div class="ws-ls-row ws-ls-hide ws-ls-meta-fields-additional-0  ws-ls-meta-fields-additional-4">
 												<div class="ws-ls-cell">
 													<label for="plot_colour"><?php echo __('Line colour on graph', WE_LS_SLUG); ?></label>
 												</div>
@@ -180,6 +180,19 @@
 													?>
 													<input name="step" id="step" type="number" min="-1000000" max="1000000" step="any" value="<?php echo $step; ?>">
 													<p class="ws-ls-info"><?php echo __('Specifies the steps between points on the slider.', WE_LS_SLUG); ?></p>
+												</div>
+											</div>
+											<div class="ws-ls-row ws-ls-hide ws-ls-meta-fields-additional-4">
+												<div class="ws-ls-cell">
+													<label for="show_all_labels"><?php echo __('Show all labels', WE_LS_SLUG); ?></label>
+												</div>
+												<?php $checked = ( false === empty( $meta_field['show_all_labels'] ) && 2 === (int) $meta_field['show_all_labels'] ) ? 2 : 1; ?>
+												<div class="ws-ls-cell">
+													<select name="show_all_labels" id="show_all_labels">
+														<option value="1" <?php selected( $checked, 1 ); ?>><?php echo __('No', WE_LS_SLUG); ?></option>
+														<option value="2" <?php selected( $checked, 2 ); ?>><?php echo __('Yes', WE_LS_SLUG); ?></option>
+													</select>
+													<p class="ws-ls-info"><?php echo __('Note: If set to Yes, all labels shall be displayed on the slider. If no, only the start and finish.', WE_LS_SLUG); ?></p>
 												</div>
 											</div>
                                             <div class="ws-ls-row">

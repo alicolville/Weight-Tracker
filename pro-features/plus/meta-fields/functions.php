@@ -302,6 +302,9 @@
 		            }
 
 		            break;
+	            case 4:
+		            $html .= ws_ls_meta_fields_form_field_range_slider( $field, $value );
+	            	break;
                 default: // 0
                     $html .= ws_ls_meta_fields_form_field_number( $field, $value );
             }
