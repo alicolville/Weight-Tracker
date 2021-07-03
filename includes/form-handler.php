@@ -180,7 +180,7 @@ function ws_ls_form_post_handler_weight( $user_id, $type = 'weight' ) {
 		ws_ls_stats_update_for_user( $user_id );
 
 		$type = [	'user-id' 	=> $user_id,
-					'type' 		=> ( false === empty( $kg ) ) ? 'weight-measurements' : 'custom-fields-only',
+					'type' 		=> ( false === empty( $entry_data[ 'weight_weight' ]  ) ) ? 'weight-measurements' : 'custom-fields-only',
 					'mode' 		=> ( $existing_id === $entry_id ) ? 'update' : 'add'
 		];
 

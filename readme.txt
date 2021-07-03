@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight,tracker,chart,bmi,bmr,macronutrient,measure,awards,custom fields,history,measurements,data
 Requires at least: 5.2
 Tested up to: 5.7
-Stable tag: 9.0.3
+Stable tag: 9.0.4
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -159,6 +159,10 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 9.0 - Non weight entries! Support for custom field entries only! New custom field shortcodes.
 
 == Changelog ==
+
+= 9.0.4 =
+
+* Bug fix: Fixed an issue where weight entry hooks were not being fired correctly (so awards etc not being issues as expected).
 
 = 9.0.3 =
 
