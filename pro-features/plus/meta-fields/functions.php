@@ -503,7 +503,7 @@ function ws_ls_meta_fields_form_field_radio_buttons( $field, $value ) {
 		$html = sprintf('<div class="ws-ls-meta-field ws-ls-meta-field-photo">
                             <label for="%1$s" class="ws-ls-meta-field-title">%2$s</label>',
                             esc_attr( $field_id ),
-                            esc_attr( $field['field_name'] )
+							esc_html( $field['field_name'] )
                         );
 
         $attachment_id = NULL;
