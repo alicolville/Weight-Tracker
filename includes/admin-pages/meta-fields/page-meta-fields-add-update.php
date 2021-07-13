@@ -146,6 +146,7 @@
 														?>
 														</tbody>
 													</table>
+													<br />
 												</div>
 											</div>
 											<div class="ws-ls-row ws-ls-hide ws-ls-meta-fields-additional-0 ws-ls-meta-fields-additional-4 ws-ls-meta-fields-additional-5">
