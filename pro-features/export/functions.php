@@ -219,7 +219,7 @@ function ws_ls_export_column_names( $export_criteria ) {
 		foreach ( ws_ls_meta_fields_enabled() as $meta_field ) {
 
 			if ( true === in_array( $meta_field[ 'id' ], $options[ 'fields-meta' ] ) ) {
-				$names[ 'meta-' . $meta_field[ 'id' ] ] = $meta_field['field_name'];
+				$names[ 'meta-' . $meta_field[ 'id' ] ] = stripslashes( $meta_field['field_name'] );
 			}
 		}
 	}
