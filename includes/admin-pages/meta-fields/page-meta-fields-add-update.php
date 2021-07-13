@@ -148,7 +148,7 @@
 													</table>
 												</div>
 											</div>
-											<div class="ws-ls-row ws-ls-hide ws-ls-meta-fields-additional-0 ws-ls-meta-fields-additional-4">
+											<div class="ws-ls-row ws-ls-hide ws-ls-meta-fields-additional-0 ws-ls-meta-fields-additional-4 ws-ls-meta-fields-additional-5">
 												<div class="ws-ls-cell">
 													<label for="plot_on_graph"><?php echo __('Show on charts?', WE_LS_SLUG); ?></label>
 												</div>
@@ -158,7 +158,7 @@
 														<option value="0" <?php selected( $checked, 0 ); ?>><?php echo __('No', WE_LS_SLUG); ?></option>
 														<option value="1" <?php selected( $checked, 1 ); ?>><?php echo __('Yes', WE_LS_SLUG); ?></option>
 													</select>
-													<p class="ws-ls-info"><?php echo __('Note: If set to Yes, this custom field will also be plotted on graphs.', WE_LS_SLUG); ?></p>
+													<p class="ws-ls-info"><?php echo __('Note: If set to Yes, this custom field will also be plotted on graphs. If the custom field is a radio button, ensure all values are numeric.', WE_LS_SLUG); ?></p>
 												</div>
 											</div>
 											<div class="ws-ls-row ws-ls-hide ws-ls-meta-fields-additional-0  ws-ls-meta-fields-additional-4">

@@ -365,9 +365,6 @@ function ws_ls_meta_fields_prep_option_fields( $field ) {
 
 	foreach ( [ 'options-labels', 'options-values' ] as $key ) {
 		if ( true === isset( $field[ $key ] ) ) {
-
-			$field[ $key ] = array_filter( $field[ $key ] );
-
 			$field[ $key ] = json_encode( $field[ $key ] );
 		}
 	}
