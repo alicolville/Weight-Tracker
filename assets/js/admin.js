@@ -112,7 +112,7 @@ jQuery( document ).ready(function ($) {
     // Show / hide additional fields on meta fields add / update
     function ws_ls_meta_fields_show_additional() {
 
-        let meta_field_ids = [ 0, 1, 2, 3, 4 ];
+        let meta_field_ids = [ 0, 1, 2, 3, 4, 5 ];
 
         let value = $('#field_type').val();
 

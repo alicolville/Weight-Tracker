@@ -113,7 +113,16 @@
                                                     <p class="ws-ls-info"><?php echo __('Note: If set to Yes, photos uploaded into this custom field cannot be used in shortcodes i.e. the photos will only be visible to admin.', WE_LS_SLUG); ?></p>
                                                 </div>
                                             </div>
-											<div class="ws-ls-row ws-ls-hide ws-ls-meta-fields-additional-0  ws-ls-meta-fields-additional-4">
+											<div class="ws-ls-row ws-ls-hide ws-ls-meta-fields-additional-5">
+												<div class="ws-ls-cell">
+													<label for="add_options"><?php echo __('Add options', WE_LS_SLUG); ?></label>
+												</div>
+												<div class="ws-ls-cell">
+													123
+													<p class="ws-ls-info"><?php echo __('Note: If set to Yes, this custom field will also be plotted on graphs.', WE_LS_SLUG); ?></p>
+												</div>
+											</div>
+											<div class="ws-ls-row ws-ls-hide ws-ls-meta-fields-additional-0 ws-ls-meta-fields-additional-4">
 												<div class="ws-ls-cell">
 													<label for="plot_on_graph"><?php echo __('Show on charts?', WE_LS_SLUG); ?></label>
 												</div>

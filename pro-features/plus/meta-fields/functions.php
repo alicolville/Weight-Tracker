@@ -37,7 +37,8 @@
             1 => __('Text', WE_LS_SLUG),
             2 => __('Yes', WE_LS_SLUG) . ' / ' . __('No', WE_LS_SLUG),
             3 => __('Photo', WE_LS_SLUG),
-			4 => __('Range slider', WE_LS_SLUG)
+			4 => __('Range slider', WE_LS_SLUG),
+            5 => __('Select', WE_LS_SLUG)
         ];
 
 	    return $fields;
