@@ -10,11 +10,9 @@
         // Data Posted? If so, replace the above from $_POST object
         if ( false === empty( $_POST ) && true === ws_ls_meta_fields_is_enabled() ) {
 
-            $meta_field = ws_ls_get_values_from_post( [ 'id', 'field_name', 'abv', 'field_type', 'suffix', 'mandatory', 'enabled', 'suffix', 'sort', 'hide_from_shortcodes', 'plot_on_graph', 'plot_colour', 'group_id' ] );
-
             $meta_field = ws_ls_get_values_from_post( [ 'id', 'field_name', 'abv', 'field_type', 'suffix', 'mandatory', 'enabled',
 															'suffix', 'sort', 'hide_from_shortcodes', 'plot_on_graph', 'plot_colour', 'group_id',
-																'min_value', 'max_value', 'step', 'show_all_labels' ] );
+																'min_value', 'max_value', 'step', 'show_all_labels', 'options-values', 'options-labels' ] );
             // Ensure all mandatory fields have been completed!
             foreach ( [ 'field_name', 'abv' ] as $key ) {
                 if ( true === empty( $meta_field[ $key ] ) ) {
@@ -118,8 +116,36 @@
 													<label for="add_options"><?php echo __('Add options', WE_LS_SLUG); ?></label>
 												</div>
 												<div class="ws-ls-cell">
-													123
-													<p class="ws-ls-info"><?php echo __('Note: If set to Yes, this custom field will also be plotted on graphs.', WE_LS_SLUG); ?></p>
+													<table class="widefat ws-ls-calories-modify-table">
+														<thead>
+														<tr>
+															<th class="row-title" width="50%"><?php echo __( 'Value (not visible to user, defaults to label if blank)' , WE_LS_SLUG); ?></th>
+															<th><?php echo __( 'Label (visible to user)' , WE_LS_SLUG); ?></th>
+														</tr>
+														</thead>
+														<tbody>
+														<?php
+
+														for( $i = 0; $i < 10; $i++ ) {
+
+															printf(
+																'<tr>
+																	<td>
+																		<input type="text" name="options-values[%1$d]" id="options-value-%1$d" value="%2$s" maxlength="50" class="widefat"  />
+																	</td>
+																	<td>
+																		<input type="text" name="options-labels[%1$d]" id="options-label-%1$d" value="%3$s" maxlength="50"  class="widefat" />
+																	</td>
+																</tr>',
+																$i,
+																( false === empty( $meta_field[ 'options-values' ][ $i ] ) ) ? $meta_field[ 'options-values' ][ $i ] : '',
+																( false === empty( $meta_field[ 'options-labels' ][ $i ] ) ) ? $meta_field[ 'options-labels' ][ $i ] : ''
+															);
+														}
+
+														?>
+														</tbody>
+													</table>
 												</div>
 											</div>
 											<div class="ws-ls-row ws-ls-hide ws-ls-meta-fields-additional-0 ws-ls-meta-fields-additional-4">

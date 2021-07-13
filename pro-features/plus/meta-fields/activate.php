@@ -39,6 +39,8 @@
                 sort int DEFAULT 100,
                 group_id int DEFAULT 0,
                 migrate int DEFAULT 0,
+                `options-values` text NULL,
+                `options-labels` text NULL,
                 UNIQUE KEY id (id)
             ) $charset_collate;";
 
