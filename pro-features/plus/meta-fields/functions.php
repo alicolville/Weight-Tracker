@@ -306,6 +306,9 @@
 	            case 4:
 		            $html .= ws_ls_meta_fields_form_field_range_slider( $field, $value );
 	            	break;
+	            case 5:
+		            $html .= ws_ls_meta_fields_form_field_radio_buttons( $field, $value );
+		            break;
                 default: // 0
                     $html .= ws_ls_meta_fields_form_field_number( $field, $value );
             }
@@ -400,6 +403,126 @@
         return $html;
 
     }
+
+/**
+ * Prep option arrays
+ * @param $field
+ *
+ * @return mixed
+ */
+function ws_ls_meta_fields_form_prep_options( $field ) {
+
+	foreach ( [ 'options-labels', 'options-values' ] as $key ) {
+		if ( true === isset( $field[ $key ] ) ) {
+
+			$field[ $key ] = json_decode( $field[ $key ], true );
+
+			$field[ $key ] = array_filter( $field[ $key ] );
+
+		}
+	}
+
+	return $field;
+}
+
+/**
+ * Display meta field for radio button
+ * @param $field
+ * @param $value
+ *
+ * @return string
+ */
+function ws_ls_meta_fields_form_field_radio_buttons( $field, $value ) {
+
+	if ( false === WS_LS_IS_PRO ) {
+		return '';
+	}
+
+	$field_id = ws_ls_meta_fields_form_field_generate_id( $field['id'] );
+
+	$html = sprintf( '<div class="ws-ls-meta-field">
+						<label for="%1$s" class="ws-ls-meta-field-title">%2$s:</label>',
+		$field_id,
+		esc_attr( $field['field_name'] )
+	);
+
+	// Prep label/values
+	$field = ws_ls_meta_fields_form_prep_options( $field );
+
+	if ( true === empty( $field[ 'options-labels' ] ) ) {
+		$html .= '<p>' . __( 'No labels/values have been specified for this question.', WE_LS_SLUG ) . '</p>';
+	}
+
+	$first = true;
+
+	foreach ( $field[ 'options-labels' ] as $key => $label ) {
+
+		$option_value = ( false === empty( $field[ 'options-values' ][ $key ] ) ) ?
+							$field[ 'options-values' ][ $key ] :
+								$label;
+
+		$checked = ( ( $value === $option_value ) ||
+		                ( true === $first && 2 === (int) $field[ 'mandatory' ] ) );
+
+		$html .= sprintf ( '<div class="ws-ls-meta-field-radio-button">
+							  <input type="radio" id="%2$s" name="%1$s" value="%3$s" %5$s>
+							  <label for="%2$s">%4$s</label>
+							</div>',
+							$field_id,
+							ws_ls_component_id(),
+							esc_attr( $option_value ),
+							esc_attr( $label ),
+							( true === $checked ) ? 'checked' : ''
+		);
+
+		$first = false;
+	}
+
+	$html .= '</div>';
+
+	print_r ( $field);
+
+
+//	$html = sprintf( '	<div class="ws-ls-meta-field">
+//                            <label for="%1$s" class="ws-ls-meta-field-title">%2$s:</label>
+//                            <div class="ws-ls-meta-fields-slider" id="%4$s"></div>
+//                            <input id="%4$s-value" name="%1$s" value="%8$s" type="hidden" />
+//                      	</div>
+//                      	<script>
+//                      		jQuery( document ).ready( function ( $ ) {
+//                      			$( "#%4$s" ).slider(
+//	                                  {
+//	                                    min: 	%5$s,
+//	                                    max: 	%6$s,
+//	                                    step:	%7$s,
+//	                                    value:	"%8$s"
+//	                                  }
+//                      			).slider( "pips",
+//	                                 {
+//	                                   rest: "%9$s"
+//	                                 }
+//                      			 ).on( "slidechange", function(e,ui) {
+//       						 			$( "#%4$s-value" ).val( ui.value );
+//    							});;
+//                      		});
+//						</script>
+//	                            ',
+//		ws_ls_meta_fields_form_field_generate_id( $field['id'] ),
+//		esc_attr( $field['field_name'] ),
+//		ws_ls_form_tab_index_next(),
+//		ws_ls_component_id(),
+//		esc_attr( $field[ 'min_value' ] ),
+//		esc_attr( $field[ 'max_value' ] ),
+//		esc_attr( $field[ 'step' ] ),
+//		esc_attr( $value ),
+//		2 === (int) $field[ 'show_all_labels' ] ? 'label' : ''
+//	);
+//
+//	$value = (int) $value;
+
+	return $html;
+
+}
 
 /**
  * Generate the HTML for a meta field photo

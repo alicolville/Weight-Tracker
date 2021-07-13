@@ -161,6 +161,8 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 == Changelog ==
 
 = 9.1 =
+// todo: write up radio buttons and range slider
+// ensure both are pro plus only
 
 = 9.0.2 =
 

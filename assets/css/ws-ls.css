@@ -419,3 +419,9 @@ input.ws-ls-valid
 .ws-ls-meta-field-photo .ws-ls-photo-select span {
     left: 3px;
 }
+.ws-ls-meta-field-radio-button {
+  margin-top: 10px;
+}
+.ws-ls-meta-field-radio-button label {
+  margin-left: 5px;
+}

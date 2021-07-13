@@ -16,6 +16,10 @@ defined('ABSPATH') or die("Jog on!");
  */
 function ws_ls_meta_fields_form_field_range_slider( $field, $value ) {
 
+	if ( false === WS_LS_IS_PRO ) {
+		return '';
+	}
+
 	ws_meta_fields_range_slider_enqueue();
 
 	$html = sprintf( '	<div class="ws-ls-meta-field">
