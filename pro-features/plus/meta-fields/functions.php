@@ -480,46 +480,6 @@ function ws_ls_meta_fields_form_field_radio_buttons( $field, $value ) {
 
 	$html .= '</div>';
 
-	print_r ( $field);
-
-
-//	$html = sprintf( '	<div class="ws-ls-meta-field">
-//                            <label for="%1$s" class="ws-ls-meta-field-title">%2$s:</label>
-//                            <div class="ws-ls-meta-fields-slider" id="%4$s"></div>
-//                            <input id="%4$s-value" name="%1$s" value="%8$s" type="hidden" />
-//                      	</div>
-//                      	<script>
-//                      		jQuery( document ).ready( function ( $ ) {
-//                      			$( "#%4$s" ).slider(
-//	                                  {
-//	                                    min: 	%5$s,
-//	                                    max: 	%6$s,
-//	                                    step:	%7$s,
-//	                                    value:	"%8$s"
-//	                                  }
-//                      			).slider( "pips",
-//	                                 {
-//	                                   rest: "%9$s"
-//	                                 }
-//                      			 ).on( "slidechange", function(e,ui) {
-//       						 			$( "#%4$s-value" ).val( ui.value );
-//    							});;
-//                      		});
-//						</script>
-//	                            ',
-//		ws_ls_meta_fields_form_field_generate_id( $field['id'] ),
-//		esc_attr( $field['field_name'] ),
-//		ws_ls_form_tab_index_next(),
-//		ws_ls_component_id(),
-//		esc_attr( $field[ 'min_value' ] ),
-//		esc_attr( $field[ 'max_value' ] ),
-//		esc_attr( $field[ 'step' ] ),
-//		esc_attr( $value ),
-//		2 === (int) $field[ 'show_all_labels' ] ? 'label' : ''
-//	);
-//
-//	$value = (int) $value;
-
 	return $html;
 
 }
