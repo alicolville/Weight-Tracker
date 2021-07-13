@@ -365,7 +365,7 @@ function ws_ls_datatable_columns( $arguments = [] ) {
 			        continue;
 		        }
 
-				array_push($columns, [ 'name' => 'meta-' . $field['id'], 'title' => $field['field_name'], 'breakpoints'=> $column_size, 'type' => 'text' ] );
+		        array_push($columns, [ 'name' => 'meta-' . $field['id'], 'title' => stripslashes( $field['field_name'] ), 'breakpoints'=> $column_size, 'type' => 'text' ] );
 			}
         }
     }
