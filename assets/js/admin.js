@@ -134,7 +134,16 @@ jQuery( document ).ready(function ($) {
 
     ws_ls_meta_fields_show_additional();
 
-    // ------------------------------------------------------------
+  $( '.ws-ls-radio-button-options-show-more' ).on('click', function ( event ) {
+
+    event.preventDefault();
+
+    $( '.ws-ls-radio-button-options-table tr' ).removeClass( 'ws-ls-hide' );
+
+  });
+
+
+  // ------------------------------------------------------------
     // Awards
     // ------------------------------------------------------------
 

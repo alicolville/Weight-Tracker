@@ -116,7 +116,7 @@
 													<label for="add_options"><?php echo __('Add options', WE_LS_SLUG); ?></label>
 												</div>
 												<div class="ws-ls-cell">
-													<table class="widefat ws-ls-calories-modify-table">
+													<table class="widefat ws-ls-radio-button-options-table">
 														<thead>
 														<tr>
 															<th class="row-title" width="50%"><?php echo __( 'Value (not visible to user, defaults to label if blank)' , WE_LS_SLUG); ?></th>
@@ -126,10 +126,10 @@
 														<tbody>
 														<?php
 
-														for( $i = 0; $i < 10; $i++ ) {
+														for( $i = 0; $i < 30; $i++ ) {
 
 															printf(
-																'<tr>
+																'<tr class="%4$s">
 																	<td>
 																		<input type="text" name="options-values[%1$d]" id="options-value-%1$d" value="%2$s" maxlength="50" class="widefat"  />
 																	</td>
@@ -139,14 +139,15 @@
 																</tr>',
 																$i,
 																( false === empty( $meta_field[ 'options-values' ][ $i ] ) ) ? $meta_field[ 'options-values' ][ $i ] : '',
-																( false === empty( $meta_field[ 'options-labels' ][ $i ] ) ) ? $meta_field[ 'options-labels' ][ $i ] : ''
+																( false === empty( $meta_field[ 'options-labels' ][ $i ] ) ) ? $meta_field[ 'options-labels' ][ $i ] : '',
+																( $i >= 5 ) ? 'ws-ls-hide' : ''
 															);
 														}
 
 														?>
 														</tbody>
 													</table>
-													<br />
+													<p><a class="button ws-ls-radio-button-options-show-more"><?php echo __( 'Show more rows' , WE_LS_SLUG); ?></a></p>
 												</div>
 											</div>
 											<div class="ws-ls-row ws-ls-hide ws-ls-meta-fields-additional-0 ws-ls-meta-fields-additional-4 ws-ls-meta-fields-additional-5">
