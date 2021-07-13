@@ -267,6 +267,8 @@
 
         foreach ( ws_ls_meta_fields_enabled() as $field ) {
 
+	        $field[ 'field_name' ] = stripslashes( $field[ 'field_name' ] );
+
         	// Filter by ID?
 	        if ( true === $filter_by_id &&
 	                false === in_array( $field[ 'id' ], $arguments[ 'custom-field-slugs' ] ) ) {

@@ -105,6 +105,7 @@ function ws_ls_meta_fields_ajax_list() {
         $meta_fields[ $i ][ 'field_type' ]  = ws_ls_meta_fields_types_get_string( $meta_fields[ $i ][ 'field_type' ] );
         $meta_fields[ $i ][ 'enabled' ]     = ws_ls_boolean_as_yes_no_string( $meta_fields[ $i ][ 'enabled' ] );
         $meta_fields[ $i ][ 'mandatory' ]   = ws_ls_boolean_as_yes_no_string( $meta_fields[ $i ][ 'mandatory' ] );
+	    $meta_fields[ $i ][ 'field_name' ]  = stripslashes( $meta_fields[ $i ][ 'field_name' ] );
     }
 
     $data = [

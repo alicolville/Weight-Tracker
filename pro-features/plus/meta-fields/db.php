@@ -455,7 +455,9 @@ function ws_ls_meta_fields_get_by_id( $id ) {
 		}
 	}
 
-    return ( false === empty( $meta_field ) ) ? $meta_field : false;
+	$meta_field[ 'field_name' ] = stripslashes( $meta_field[ 'field_name' ] );
+
+	return ( false === empty( $meta_field ) ) ? $meta_field : false;
 }
 
 /**

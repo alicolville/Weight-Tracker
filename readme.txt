@@ -164,6 +164,8 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 // todo: write up radio buttons and range slider
 // ensure both are pro plus only
 
+* Bug fix: Remove back slashes in custom field titles.
+
 = 9.0.2 =
 
 * Bug fix: Hide notice about expiring license once a new license has been entered.
