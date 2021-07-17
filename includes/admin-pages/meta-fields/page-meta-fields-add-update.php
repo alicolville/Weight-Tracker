@@ -111,45 +111,6 @@
                                                     <p class="ws-ls-info"><?php echo __('Note: If set to Yes, photos uploaded into this custom field cannot be used in shortcodes i.e. the photos will only be visible to admin.', WE_LS_SLUG); ?></p>
                                                 </div>
                                             </div>
-											<div class="ws-ls-row ws-ls-hide ws-ls-meta-fields-additional-5">
-												<div class="ws-ls-cell">
-													<label for="add_options"><?php echo __('Add options', WE_LS_SLUG); ?></label>
-												</div>
-												<div class="ws-ls-cell">
-													<table class="widefat ws-ls-radio-button-options-table">
-														<thead>
-														<tr>
-															<th class="row-title" width="50%"><?php echo __( 'Value (not visible to user, defaults to label if blank)' , WE_LS_SLUG); ?></th>
-															<th><?php echo __( 'Label (visible to user)' , WE_LS_SLUG); ?></th>
-														</tr>
-														</thead>
-														<tbody>
-														<?php
-
-														for( $i = 0; $i < 30; $i++ ) {
-
-															printf(
-																'<tr class="%4$s">
-																	<td>
-																		<input type="text" name="options-values[%1$d]" id="options-value-%1$d" value="%2$s" maxlength="50" class="widefat"  />
-																	</td>
-																	<td>
-																		<input type="text" name="options-labels[%1$d]" id="options-label-%1$d" value="%3$s" maxlength="50"  class="widefat" />
-																	</td>
-																</tr>',
-																$i,
-																( false === empty( $meta_field[ 'options-values' ][ $i ] ) ) ? $meta_field[ 'options-values' ][ $i ] : '',
-																( false === empty( $meta_field[ 'options-labels' ][ $i ] ) ) ? $meta_field[ 'options-labels' ][ $i ] : '',
-																( $i >= 5 ) ? 'ws-ls-hide' : ''
-															);
-														}
-
-														?>
-														</tbody>
-													</table>
-													<p><a class="button ws-ls-radio-button-options-show-more"><?php echo __( 'Show more rows' , WE_LS_SLUG); ?></a></p>
-												</div>
-											</div>
 											<div class="ws-ls-row ws-ls-hide ws-ls-meta-fields-additional-0 ws-ls-meta-fields-additional-4 ws-ls-meta-fields-additional-5">
 												<div class="ws-ls-cell">
 													<label for="plot_on_graph"><?php echo __('Show on charts?', WE_LS_SLUG); ?></label>
@@ -230,6 +191,45 @@
 														<option value="2" <?php selected( $checked, 2 ); ?>><?php echo __('Yes', WE_LS_SLUG); ?></option>
 													</select>
 													<p class="ws-ls-info"><?php echo __('Note: If set to Yes, all labels shall be displayed on the slider. If no, only the start and finish.', WE_LS_SLUG); ?></p>
+												</div>
+											</div>
+											<div class="ws-ls-row ws-ls-hide ws-ls-meta-fields-additional-5">
+												<div class="ws-ls-cell">
+													<label for="add_options"><?php echo __('Add options', WE_LS_SLUG); ?></label>
+												</div>
+												<div class="ws-ls-cell">
+													<table class="widefat ws-ls-radio-button-options-table">
+														<thead>
+														<tr>
+															<th class="row-title" width="50%"><?php echo __( 'Value (not visible to user, defaults to label if blank)' , WE_LS_SLUG); ?></th>
+															<th><?php echo __( 'Label (visible to user)' , WE_LS_SLUG); ?></th>
+														</tr>
+														</thead>
+														<tbody>
+														<?php
+
+														for( $i = 0; $i < 30; $i++ ) {
+
+															printf(
+																'<tr class="%4$s">
+																	<td>
+																		<input type="text" name="options-values[%1$d]" id="options-value-%1$d" value="%2$s" maxlength="50" class="widefat"  />
+																	</td>
+																	<td>
+																		<input type="text" name="options-labels[%1$d]" id="options-label-%1$d" value="%3$s" maxlength="50"  class="widefat" />
+																	</td>
+																</tr>',
+																$i,
+																( false === empty( $meta_field[ 'options-values' ][ $i ] ) ) ? $meta_field[ 'options-values' ][ $i ] : '',
+																( false === empty( $meta_field[ 'options-labels' ][ $i ] ) ) ? $meta_field[ 'options-labels' ][ $i ] : '',
+																( $i >= 5 ) ? 'ws-ls-hide' : ''
+															);
+														}
+
+														?>
+														</tbody>
+													</table>
+													<p><a class="button ws-ls-radio-button-options-show-more"><?php echo __( 'Show more rows' , WE_LS_SLUG); ?></a></p>
 												</div>
 											</div>
                                             <div class="ws-ls-row">
