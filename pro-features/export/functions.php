@@ -224,9 +224,9 @@ function ws_ls_export_column_names( $export_criteria ) {
 		}
 	}
 
-	$cache = apply_filters( 'wlt-export-columns', $names );
+	$names = apply_filters( 'wlt-export-columns', $names );
 
-	ws_ls_cache_user_set( 'export', $cache_key, $cache );
+	ws_ls_cache_user_set( 'export', $cache_key, $names );
 
 	return $names;
 }

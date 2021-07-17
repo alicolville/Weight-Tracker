@@ -165,6 +165,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 // ensure both are pro plus only
 
 * Bug fix: Remove back slashes in custom field titles.
+* Bug fix: Additional column headers are now correctly added to CSV output.
 
 = 9.0.2 =
 
