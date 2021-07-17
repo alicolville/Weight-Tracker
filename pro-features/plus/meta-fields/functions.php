@@ -35,9 +35,10 @@
         $fields = [
             0 => __('Number', WE_LS_SLUG),
             3 => __('Photo', WE_LS_SLUG),
-            5 => __('Radio Button', WE_LS_SLUG),
+            5 => __('Radio buttons', WE_LS_SLUG),
             4 => __('Range slider', WE_LS_SLUG),
-            1 => __('Text', WE_LS_SLUG),
+			6 => __('Large text', WE_LS_SLUG),
+            1 => __('Small text', WE_LS_SLUG),
             2 => __('Yes', WE_LS_SLUG) . ' / ' . __('No', WE_LS_SLUG)
         ];
 
@@ -174,7 +175,8 @@
 
         if ( false === empty( $meta_field['field_type'] ) ) {
 
-            $meta_field['field_type'] = (int) $meta_field['field_type'];
+            $meta_field['field_type'] 	= (int) $meta_field['field_type'];
+			$value 						= stripslashes( $value );
 
             // Yes / No
             if ( 2 === $meta_field['field_type'] ) {
@@ -311,6 +313,9 @@
 	            case 5:
 		            $html .= ws_ls_meta_fields_form_field_radio_buttons( $field, $value );
 		            break;
+				case 6:
+					$html .= ws_ls_meta_fields_form_field_textarea( $field, $value );
+					break;
                 default: // 0
                     $html .= ws_ls_meta_fields_form_field_number( $field, $value );
             }
@@ -349,6 +354,32 @@
 
     }
 
+	/**
+	 * Generate the HTML for a meta field text field
+	 *
+	 * @param $field
+	 * @param $value
+	 * @return string
+	 */
+	function ws_ls_meta_fields_form_field_textarea( $field, $value ) {
+
+		if ( false === empty( $value ) ) {
+			$value = stripslashes( $value );
+		}
+
+		return ws_ls_form_field_textarea( [ 'css-class' 		=> '',
+											'css-class-label' 	=> 'ws-ls-meta-field-title',
+											'css-class-row' 	=> 'ws-ls-meta-field',
+											'mandatory'			=> ( 2 === (int) $field['mandatory'] ),
+											'name'				=> ws_ls_meta_fields_form_field_generate_id( $field['id'] ),
+											'placeholder'		=> '',
+											'show-label'		=> true,
+											'title'				=> $field['field_name'],
+											'value'				=> $value
+
+		]);
+
+	}
     /**
      * Generate the HTML for a meta field number field
      *

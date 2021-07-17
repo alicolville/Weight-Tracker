@@ -443,26 +443,29 @@ function ws_ls_form_field_textarea( $arguments = [] ) {
 												'show-label'            => false,
 												'title'                 => '',
 												'css-class'             => 'we-ls-textarea',
+												'css-class-label'       => 'we-ls-textarea',
+												'css-class-row'         => 'ws-ls-form-row',
 												'trailing-html'         => '',
 												'cols'                  => 39,
-												'rows'                  => 4
+												'rows'                  => 4,
+												'mandatory'				=> false
 	]);
 
-	$html = sprintf( '<div id="%1$s-row" class="ws-ls-form-row">', $arguments[ 'name' ] );
+	$html = sprintf( '<div id="%1$s-row" class="%2$s">', $arguments[ 'name' ], $arguments[ 'css-class-row' ] );
 
 	if ( true === $arguments[ 'show-label' ] ) {
-		$html .= sprintf( '<label for="%1$s" class="yk-mt__label %3$s">%2$s</label>', $arguments[ 'name' ], $arguments[ 'title' ], $arguments[ 'css-class' ] );
+		$html .= sprintf( '<label for="%1$s" class="yk-mt__label %3$s">%2$s</label>', $arguments[ 'name' ], $arguments[ 'title' ], $arguments[ 'css-class-label' ] );
 	}
 
-	$html .= sprintf( '<textarea name="%1$s" id="%1$s" tabindex="%2$d" placeholder="%3$s" cols="%4$d" rows="%5$d" class="%6$s" >%7$s</textarea>',
+	$html .= sprintf( '<textarea name="%1$s" id="%1$s" tabindex="%2$d" placeholder="%3$s" cols="%4$d" rows="%5$d" class="%6$s" %8$s >%7$s</textarea>',
 		$arguments[ 'name' ],
 		ws_ls_form_tab_index_next(),
 		esc_attr( $arguments[ 'placeholder' ] ),
 		$arguments[ 'cols' ],
 		$arguments[ 'rows' ],
 		$arguments[ 'name' ] . ' ' . $arguments[ 'css-class' ],
-		esc_textarea( $arguments[ 'value' ] )
-
+		esc_textarea( $arguments[ 'value' ] ),
+		( true === $arguments[ 'mandatory' ] ? 'required' : '')
 	);
 
 	if ( false === empty( $arguments[ 'trailing-html' ] ) ) {

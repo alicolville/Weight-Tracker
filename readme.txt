@@ -161,7 +161,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 == Changelog ==
 
 = 9.1 =
-// todo: write up radio buttons and range slider
+// todo: write up radio buttons, range slider and text area
 // ensure both are pro plus only
 
 * Bug fix: Remove back slashes in custom field titles.
