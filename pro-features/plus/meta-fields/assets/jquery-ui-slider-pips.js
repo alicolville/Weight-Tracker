@@ -400,7 +400,7 @@
 
                     if ( slider.options.range ) {
 
-                        if ( labelValue > values[0] && 
+                        if ( labelValue > values[0] &&
                             labelValue < values[1] ) {
 
                             classes += " ui-slider-pip-inrange";
@@ -430,8 +430,6 @@
                     }
 
                 }
-
-
 
                 css = ( slider.options.orientation === "horizontal" ) ?
                     "left: " + percent :
@@ -552,20 +550,9 @@
                     selectPip.single( value );
 
                 }
-
             });
 
-
-
-
         },
-
-
-
-
-
-
-
 
         // floats
 
@@ -628,9 +615,6 @@
                 return;
 
             }
-
-
-
 
             if ( value < min ) {
                 value = min;

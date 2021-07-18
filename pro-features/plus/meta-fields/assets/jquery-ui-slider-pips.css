@@ -64,12 +64,13 @@
   left: 50%;
   margin-left: -1em;
   width: 2em;
+  font-size: 0.7em;
 }
 
 /* make it easy to see when we hover a label */
 .ui-slider-pips:not(.ui-slider-disabled) .ui-slider-pip:hover .ui-slider-label {
   color: black;
-  font-weight: bold;
+
 }
 
 /* VERTICAL */
@@ -308,7 +309,6 @@
 }
 
 .ui-slider-pips [class*=ui-slider-pip-selected] {
-  font-weight: bold;
   color: #FF7A00;
 }
 

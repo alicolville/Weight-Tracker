@@ -68,6 +68,8 @@ function ws_ls_meta_fields_form_field_range_slider( $field, $value ) {
  */
 function ws_meta_fields_range_slider_enqueue() {
 
-	wp_enqueue_script( 'ws-ls-meta-fields-range-js', plugins_url( '/meta-fields/assets/jquery-ui-slider-pips.js', __DIR__ ), [ 'jquery', 'jquery-ui-core', 'jquery-ui-slider' ], WE_LS_CURRENT_VERSION, true );
-	wp_enqueue_style( 'ws-ls-meta-fields-range-css', plugins_url( '/meta-fields/assets/jquery-ui-slider-pips.css', __DIR__ ), [], WE_LS_CURRENT_VERSION );
+	$minified = ws_ls_use_minified();
+
+	wp_enqueue_script( 'ws-ls-meta-fields-range-js', plugins_url( '/meta-fields/assets/jquery-ui-slider-pips' . 	$minified . '.js', __DIR__ ), [ 'jquery', 'jquery-ui-core', 'jquery-ui-slider' ], WE_LS_CURRENT_VERSION, true );
+	wp_enqueue_style( 'ws-ls-meta-fields-range-css', plugins_url( '/meta-fields/assets/jquery-ui-slider-pips' . 	$minified . '.css', __DIR__ ), [], WE_LS_CURRENT_VERSION );
 }
