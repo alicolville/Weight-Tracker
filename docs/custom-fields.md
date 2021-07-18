@@ -12,10 +12,13 @@ Custom fields allow a site administrator to ask custom questions of their users 
 
 There are four field types currently supported:
 
--   **Yes or No**  – displays a drop down box allowing the user to select an option of either Yes or No.
--   **Number Field** – allows the user to enter a number.
--   **Text Field**  – allows the user to enter text.
--   **Photo Field** ([Pro Plus only](/upgrade.html))  – allows the user to upload a photo
+-   **Range slider** – create sliders to allow your user to answer using a scale.
+-   **Number** – allows the user to enter a number.
+-   **Photo** ([Pro Plus only](/upgrade.html))  – allows the user to upload a photo.
+-   **Radio buttons** – allows the user to select an answer from a defined list.
+-   **Small text** – allows the user to enter text into a small text field.
+-   **Large text** – allows the user to enter text into a larger text area.
+-   **Yes or No** – displays a drop down box allowing the user to select an option of either Yes or No.
 
 [![Custom fields in frontend](/assets/images/custom-fields-form-frontend-small.png)](/assets/images/custom-fields-form-frontend.png)
 
