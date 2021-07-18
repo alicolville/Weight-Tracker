@@ -193,7 +193,7 @@
 													<p class="ws-ls-info"><?php echo __('Note: If set to Yes, all labels shall be displayed on the slider. If no, only the start and finish.', WE_LS_SLUG); ?></p>
 												</div>
 											</div>
-											<div class="ws-ls-row ws-ls-hide ws-ls-meta-fields-additional-5">
+											<div class="ws-ls-row ws-ls-hide ws-ls-meta-fields-additional-5 ws-ls-meta-fields-additional-7">
 												<div class="ws-ls-cell">
 													<label for="add_options"><?php echo __('Add options', WE_LS_SLUG); ?></label>
 												</div>
@@ -207,25 +207,23 @@
 														</thead>
 														<tbody>
 														<?php
+															for( $i = 0; $i < 30; $i++ ) {
 
-														for( $i = 0; $i < 30; $i++ ) {
-
-															printf(
-																'<tr class="%4$s">
-																	<td>
-																		<input type="text" name="options-values[%1$d]" id="options-value-%1$d" value="%2$s" maxlength="50" class="widefat"  />
-																	</td>
-																	<td>
-																		<input type="text" name="options-labels[%1$d]" id="options-label-%1$d" value="%3$s" maxlength="50"  class="widefat" />
-																	</td>
-																</tr>',
-																$i,
-																( false === empty( $meta_field[ 'options-values' ][ $i ] ) ) ? $meta_field[ 'options-values' ][ $i ] : '',
-																( false === empty( $meta_field[ 'options-labels' ][ $i ] ) ) ? $meta_field[ 'options-labels' ][ $i ] : '',
-																( $i >= 5 ) ? 'ws-ls-hide' : ''
-															);
-														}
-
+																printf(
+																	'<tr class="%4$s">
+																				<td>
+																					<input type="text" name="options-values[%1$d]" id="options-value-%1$d" value="%2$s" maxlength="50" class="widefat"  />
+																				</td>
+																				<td>
+																					<input type="text" name="options-labels[%1$d]" id="options-label-%1$d" value="%3$s" maxlength="50"  class="widefat" />
+																				</td>
+																			</tr>',
+																			$i,
+																			( false === empty( $meta_field[ 'options-values' ][ $i ] ) ) ? $meta_field[ 'options-values' ][ $i ] : '',
+																			( false === empty( $meta_field[ 'options-labels' ][ $i ] ) ) ? $meta_field[ 'options-labels' ][ $i ] : '',
+																			( $i >= 5 ) ? 'ws-ls-hide' : ''
+																);
+															}
 														?>
 														</tbody>
 													</table>
