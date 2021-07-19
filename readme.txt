@@ -168,6 +168,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 * New feature: New custom field type "Radio buttons" - allow your user's to chose an answer from a defined list.
 * Bug fix: Remove back slashes in custom field titles.
 * Bug fix: Additional column headers are now correctly added to CSV output.
+* Change: Removed trailing colon (:) from meta field labels.
 
 = 9.0.2 =
 
