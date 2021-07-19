@@ -141,6 +141,8 @@ jQuery( document ).ready(function ($) {
 
     $( '.ws-ls-radio-button-options-table tr' ).removeClass( 'ws-ls-hide' );
 
+    $( this ).hide();
+
   });
 
 

@@ -536,18 +536,22 @@ function ws_ls_meta_fields_form_field_select( $field, $value ) {
 	}
 
 	// Prep label/values
-	$options = ws_ls_meta_fields_form_prep_options( $field );
+	$field = ws_ls_meta_fields_form_prep_options( $field );
 
-	if ( true === empty( $field[ 'options-labels' ] ) ) {
+	if ( true === empty( $field[ 'options' ] ) ) {
 		return '<p>' . __( 'No labels/values have been specified for this question.', WE_LS_SLUG ) . '</p>';
 	}
 
-	return ws_ls_form_field_select([	'key' 			=>  ws_ls_meta_fields_form_field_generate_id( $field['id'] ),
-										'label'			=> $field[ 'field_name' ],
-										'values'		=> $options[ 'options' ],
-										'selected'		=> $value,
-										'css-class'		=> '',
-										'empty-option'	=> ! ( 2 === (int) $field[ 'mandatory' ] )
+	return ws_ls_form_field_select([	'key' 			    =>  ws_ls_meta_fields_form_field_generate_id( $field['id'] ),
+										'label'			    => $field[ 'field_name' ],
+										'values'		    => $field[ 'options' ],
+										'selected'		    => $value,
+										'include-div'       => true,
+										'css-class'		    => '',
+										'css-class-row'     => 'ws-ls-meta-field',
+										'css-class-title'   => 'ws-ls-meta-field-title',
+										'required'          => ( 2 === (int) $field[ 'mandatory' ] ),
+										'empty-option'	    => ( 2 === (int) $field[ 'include_empty' ] )
 	]);
 
 	return $html;

@@ -26,6 +26,7 @@
                 abv varchar(5) NOT NULL,
                 suffix varchar(10) NOT NULL,
                 mandatory int DEFAULT 1,
+                include_empty int DEFAULT 0,
                 enabled int DEFAULT 1,
                 hide_from_shortcodes int DEFAULT 0,
                 plot_on_graph int DEFAULT 0,

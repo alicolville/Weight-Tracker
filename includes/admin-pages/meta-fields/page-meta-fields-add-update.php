@@ -11,7 +11,7 @@
         if ( false === empty( $_POST ) && true === ws_ls_meta_fields_is_enabled() ) {
 
             $meta_field = ws_ls_get_values_from_post( [ 'id', 'field_name', 'abv', 'field_type', 'suffix', 'mandatory', 'enabled',
-															'suffix', 'sort', 'hide_from_shortcodes', 'plot_on_graph', 'plot_colour', 'group_id',
+															'suffix', 'sort', 'hide_from_shortcodes', 'plot_on_graph', 'plot_colour', 'group_id', 'include_empty',
 																'min_value', 'max_value', 'step', 'show_all_labels', 'options-values', 'options-labels' ] );
             // Ensure all mandatory fields have been completed!
             foreach ( [ 'field_name', 'abv' ] as $key ) {
@@ -201,7 +201,7 @@
 													<table class="widefat ws-ls-radio-button-options-table">
 														<thead>
 														<tr>
-															<th class="row-title" width="50%"><?php echo __( 'Value (not visible to user, defaults to label if blank)' , WE_LS_SLUG); ?></th>
+															<th class="row-title" width="50%"><?php echo __( 'Value (visible to admin/export)' , WE_LS_SLUG); ?></th>
 															<th><?php echo __( 'Label (visible to user)' , WE_LS_SLUG); ?></th>
 														</tr>
 														</thead>
@@ -228,6 +228,20 @@
 														</tbody>
 													</table>
 													<p><a class="button ws-ls-radio-button-options-show-more"><?php echo __( 'Show more rows' , WE_LS_SLUG); ?></a></p>
+													<p class="ws-ls-info"><?php echo __('Please note, editing values to existing fields shall cause the user selection to be lost.', WE_LS_SLUG ); ?></p>
+												</div>
+											</div>
+											<div class="ws-ls-row ws-ls-meta-fields-additional-7">
+												<div class="ws-ls-cell ws-ls-label-col">
+													<label for="mandatory"><?php echo __('Include empty option', WE_LS_SLUG); ?></label>
+												</div>
+												<?php $checked = ( false === empty( $meta_field['include_empty'] ) && 2 === (int) $meta_field['include_empty'] ) ? 2 : 0; ?>
+												<div class="ws-ls-cell">
+													<select name="include_empty" id="include_empty">
+														<option value="1" <?php selected( $checked, 1 ); ?>><?php echo __('No', WE_LS_SLUG); ?></option>
+														<option value="2" <?php selected( $checked, 2 ); ?>><?php echo __('Yes', WE_LS_SLUG); ?></option>
+													</select>
+													<p class="ws-ls-info"><?php echo __('If yes, a blank option shall be added at the top of the drop down options.', WE_LS_SLUG ); ?></p>
 												</div>
 											</div>
                                             <div class="ws-ls-row">
