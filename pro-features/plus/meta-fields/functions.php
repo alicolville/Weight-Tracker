@@ -31,8 +31,7 @@ function ws_ls_meta_fields_base_url( $args = [] ) {
  * @return array
  */
 function ws_ls_meta_fields_types() {
-
-	$fields = [
+	return [
 		0 => __( 'Number', WE_LS_SLUG),
 		3 => __( 'Photo', WE_LS_SLUG),
 		5 => __( 'Radio buttons', WE_LS_SLUG ),
@@ -42,8 +41,6 @@ function ws_ls_meta_fields_types() {
 		1 => __( 'Small text', WE_LS_SLUG ),
 		2 => __( 'Yes', WE_LS_SLUG ) . ' / ' . __( 'No', WE_LS_SLUG )
 	];
-
-	return $fields;
 }
 
 /**
