@@ -457,7 +457,7 @@ function ws_ls_form_field_textarea( $arguments = [] ) {
 		$html .= sprintf( '<label for="%1$s" class="yk-mt__label %3$s">%2$s</label>', $arguments[ 'name' ], $arguments[ 'title' ], $arguments[ 'css-class-label' ] );
 	}
 
-	$html .= sprintf( '<textarea name="%1$s" id="%1$s" tabindex="%2$d" placeholder="%3$s" cols="%4$d" rows="%5$d" class="%6$s" %8$s >%7$s</textarea>',
+	$html .= sprintf( '<textarea name="%1$s" id="%1$s" tabindex="%2$d" placeholder="%3$s" cols="%4$d" rows="%5$d" class="%6$s" %8$s data-msg="%9$s \'%10$s\'.">%7$s</textarea>',
 		$arguments[ 'name' ],
 		ws_ls_form_tab_index_next(),
 		esc_attr( $arguments[ 'placeholder' ] ),
@@ -465,7 +465,9 @@ function ws_ls_form_field_textarea( $arguments = [] ) {
 		$arguments[ 'rows' ],
 		$arguments[ 'name' ] . ' ' . $arguments[ 'css-class' ],
 		esc_textarea( $arguments[ 'value' ] ),
-		( true === $arguments[ 'mandatory' ] ? 'required' : '')
+		( true === $arguments[ 'mandatory' ] ? 'required' : ''),
+		__( 'Please select a value for'),
+		esc_attr( $arguments[ 'title' ] )
 	);
 
 	if ( false === empty( $arguments[ 'trailing-html' ] ) ) {
