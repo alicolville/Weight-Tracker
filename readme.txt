@@ -162,6 +162,8 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 = 9.1 =
 
+TODO: In export, blank columns like BMI when no weight entered.
+
 * New feature: New custom field type "Dropdown" - create sliders to allow your user to answer using a scale.
 * New feature: New custom field type "Range Slider" - create sliders to allow your user to answer using a scale.
 * New feature: New custom field type "Large Text" - allow your user's to enter larger blocks of text.
