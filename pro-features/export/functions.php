@@ -241,22 +241,26 @@ function ws_ls_export_column_names( $export_criteria ) {
  */
 function ws_ls_export_update_export_row( $export_criteria, $data ) {
 
-	$data[ 'user_nicename' ]                 = ws_ls_user_display_name( $data[ 'user_id' ] );
-	$data[ 'date-display' ]                  = ( '0000-00-00 00:00:00' !== $data[ 'weight_date' ] ) ? ws_ls_convert_ISO_date_into_locale( $data[ 'weight_date' ], 'display-date' ) : '00/00/0000';
-	$data[ 'weight' ]                        = ws_ls_weight_display( $data['kg'], $data[ 'user_id' ], 'display', true );
+	$data[ 'user_nicename' ]	= ws_ls_user_display_name( $data[ 'user_id' ] );
+	$data[ 'date-display' ]		= ( '0000-00-00 00:00:00' !== $data[ 'weight_date' ] ) ? ws_ls_convert_ISO_date_into_locale( $data[ 'weight_date' ], 'display-date' ) : '00/00/0000';
+	$has_weight					= ! empty( $data['kg'] );
+	$data[ 'weight' ]			= $has_weight ? ws_ls_weight_display( $data['kg'], $data[ 'user_id' ], 'display', true ) : '';
 
 	$options = ( false === empty( $export_criteria[ 'options' ] ) ) ? $export_criteria[ 'options' ] : NULL;
 
 	if ( false === empty( $options[ 'fields' ] ) ) {
 
 		// Difference from start weights
-		if ( true === in_array( 'weight-diff-start', $options[ 'fields' ] ) ) {
+		if ( $has_weight &&
+				true === in_array( 'weight-diff-start', $options[ 'fields' ] ) ) {
 			$data[ 'difference_from_start_display' ] = ws_ls_weight_difference_from_start( $data[ 'user_id' ], $data[ 'kg' ] );
 			$data[ 'difference_from_start_display' ] = ws_ls_weight_display( $data[ 'difference_from_start_display' ],  NULL, 'display', true, true );
 		}
 
-		if ( true === in_array( 'bmi-value', $options[ 'fields' ] ) ||
-				 ( true === in_array( 'bmi-label', $options[ 'fields' ] ) ) ) {
+		if ( $has_weight && (
+								true === in_array( 'bmi-value', $options[ 'fields' ] ) ||
+								true === in_array( 'bmi-label', $options[ 'fields' ] ) )
+			) {
 
 			$data[ 'height' ]       = ws_ls_user_preferences_get( 'height', $data[ 'user_id' ] );
 			$data[ 'bmi' ]          = ws_ls_calculate_bmi( $data[ 'height' ], $data[ 'kg' ] ) ;

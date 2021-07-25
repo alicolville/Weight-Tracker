@@ -162,14 +162,13 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 = 9.1 =
 
-TODO: In export, blank columns like BMI when no weight entered.
-
 * New feature: New custom field type "Dropdown" - create sliders to allow your user to answer using a scale.
 * New feature: New custom field type "Range Slider" - create sliders to allow your user to answer using a scale.
 * New feature: New custom field type "Large Text" - allow your user's to enter larger blocks of text.
 * New feature: New custom field type "Radio buttons" - allow your user's to chose an answer from a defined list.
 * Bug fix: Remove back slashes in custom field titles.
 * Bug fix: Additional column headers are now correctly added to CSV output.
+* Bug fix: Remove weight related columns from export rows where no weight entry was added.
 * Change: Removed trailing colon (:) from meta field labels.
 
 = 9.0.2 =
