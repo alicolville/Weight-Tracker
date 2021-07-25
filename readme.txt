@@ -169,6 +169,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 * Bug fix: Remove back slashes in custom field titles.
 * Bug fix: Additional column headers are now correctly added to CSV output.
 * Bug fix: Remove weight related columns from export rows where no weight entry was added.
+* Bug fix: Bug fix with caching in [wt-photo-oldest] and [wt-photo-recent].
 * Change: Removed trailing colon (:) from meta field labels.
 
 = 9.0.2 =
