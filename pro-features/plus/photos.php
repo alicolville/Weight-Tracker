@@ -179,14 +179,13 @@ function ws_ls_photos_db_get_recent_or_latest( $user_id = false,
 	global $wpdb;
 
 	// Validate fields
-	$direction = (true === $recent) ? 'desc' : 'asc';
-	$width = ws_ls_force_numeric_argument($width, 200);
-	$height = ws_ls_force_numeric_argument($height, 200);
-
-	$cache_key = sprintf( 'photos-extreme-%s-%s-%s',  $direction, $width, $height );
+	$direction 	= (true === $recent) ? 'desc' : 'asc';
+	$width 		= ws_ls_force_numeric_argument($width, 200);
+	$height 	= ws_ls_force_numeric_argument($height, 200);
+	$cache_key 	= sprintf( 'photos-extreme-%s-%s-%s-%s',  $direction, $width, $height, md5( json_encode( $meta_fields_to_use ) ) );
 
 	// Return cache if found!
-	if ($cache = ws_ls_cache_user_get($user_id, $cache_key))   {
+	if ( $cache = ws_ls_cache_user_get( $user_id, $cache_key ) )   {
 		return $cache;
 	}
 
