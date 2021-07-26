@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight,tracker,chart,bmi,bmr,macronutrient,measure,awards,custom fields,history,measurements,data
 Requires at least: 5.2
 Tested up to: 5.7
-Stable tag: 9.0.4
+Stable tag: 9.1
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -159,6 +159,18 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 9.0 - Non weight entries! Support for custom field entries only! New custom field shortcodes.
 
 == Changelog ==
+
+= 9.1 =
+
+* New feature: New custom field type "Dropdown" - create sliders to allow your user to answer using a scale.
+* New feature: New custom field type "Range Slider" - create sliders to allow your user to answer using a scale.
+* New feature: New custom field type "Large Text" - allow your user's to enter larger blocks of text.
+* New feature: New custom field type "Radio buttons" - allow your user's to chose an answer from a defined list.
+* Bug fix: Remove back slashes in custom field titles.
+* Bug fix: Additional column headers are now correctly added to CSV output.
+* Bug fix: Remove weight related columns from export rows where no weight entry was added.
+* Bug fix: Bug fix with caching in [wt-photo-oldest] and [wt-photo-recent].
+* Change: Removed trailing colon (:) from meta field labels.
 
 = 9.0.4 =
 

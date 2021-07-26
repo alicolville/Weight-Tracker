@@ -254,7 +254,7 @@ function ws_ls_export_admin_page_new() {
 
 										foreach ( $enabled_meta_fields as $meta_field ) {
 
-											echo ws_ls_form_field_checkbox( [ 'name' => 'fields-meta[]', 'title' => $meta_field[ 'field_name' ], 'show-label' => true, 'value' => $meta_field[ 'id' ], 'css-class' => 'report-column', 'checked' => false ] );
+											echo ws_ls_form_field_checkbox( [ 'name' => 'fields-meta[]', 'title' => stripslashes( $meta_field[ 'field_name' ] ), 'show-label' => true, 'value' => $meta_field[ 'id' ], 'css-class' => 'report-column', 'checked' => false ] );
 
 										}
 									}

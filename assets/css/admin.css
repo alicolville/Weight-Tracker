@@ -211,6 +211,16 @@ HEX: #f7786b
 .ws-ls-meta-fields-form .ws-ls-note, .ws-ls-validation-error, .ws-ls-mandatory, .ws-ls-mandatory-field, .ws-ls-not-enabled {
     color: red;
 }
+.ws-ls-meta-field-radio-button {
+  margin-top: 10px;
+}
+.ws-ls-meta-field-radio-button input {
+  display: inline-block;
+}
+.ws-ls-meta-field-radio-button label {
+  display: inline;
+  margin-left: 5px;
+}
 .ws-ls-mandatory-field {
     border: 1px solid red !important;
 }

@@ -443,26 +443,31 @@ function ws_ls_form_field_textarea( $arguments = [] ) {
 												'show-label'            => false,
 												'title'                 => '',
 												'css-class'             => 'we-ls-textarea',
+												'css-class-label'       => 'we-ls-textarea',
+												'css-class-row'         => 'ws-ls-form-row',
 												'trailing-html'         => '',
 												'cols'                  => 39,
-												'rows'                  => 4
+												'rows'                  => 4,
+												'mandatory'				=> false
 	]);
 
-	$html = sprintf( '<div id="%1$s-row" class="ws-ls-form-row">', $arguments[ 'name' ] );
+	$html = sprintf( '<div id="%1$s-row" class="%2$s">', $arguments[ 'name' ], $arguments[ 'css-class-row' ] );
 
 	if ( true === $arguments[ 'show-label' ] ) {
-		$html .= sprintf( '<label for="%1$s" class="yk-mt__label %3$s">%2$s</label>', $arguments[ 'name' ], $arguments[ 'title' ], $arguments[ 'css-class' ] );
+		$html .= sprintf( '<label for="%1$s" class="yk-mt__label %3$s">%2$s</label>', $arguments[ 'name' ], $arguments[ 'title' ], $arguments[ 'css-class-label' ] );
 	}
 
-	$html .= sprintf( '<textarea name="%1$s" id="%1$s" tabindex="%2$d" placeholder="%3$s" cols="%4$d" rows="%5$d" class="%6$s" >%7$s</textarea>',
+	$html .= sprintf( '<textarea name="%1$s" id="%1$s" tabindex="%2$d" placeholder="%3$s" cols="%4$d" rows="%5$d" class="%6$s" %8$s data-msg="%9$s \'%10$s\'.">%7$s</textarea>',
 		$arguments[ 'name' ],
 		ws_ls_form_tab_index_next(),
 		esc_attr( $arguments[ 'placeholder' ] ),
 		$arguments[ 'cols' ],
 		$arguments[ 'rows' ],
 		$arguments[ 'name' ] . ' ' . $arguments[ 'css-class' ],
-		esc_textarea( $arguments[ 'value' ] )
-
+		esc_textarea( $arguments[ 'value' ] ),
+		( true === $arguments[ 'mandatory' ] ? 'required' : ''),
+		__( 'Please select a value for'),
+		esc_attr( $arguments[ 'title' ] )
 	);
 
 	if ( false === empty( $arguments[ 'trailing-html' ] ) ) {
@@ -579,27 +584,37 @@ function ws_ls_form_field_select( $arguments ) {
 												'selected'              => NULL,
 												'show-label'            => true,
 												'css-class'             => '',
+												'css-class-row'         => 'ws-ls-form-row',
+												'css-class-title'       => '',
 												'required'              => false,
 												'js-on-change'          => '',
 												'include-div'           => false
 	]);
 
-	$html = '';
-
-	if ( true === $arguments[ 'show-label' ] ) {
-		$html .= sprintf( '<label for="%1$s">%2$s</label>', esc_attr( $arguments[ 'key' ] ), esc_attr( $arguments[ 'label' ] ) );
-	}
+	$html       = '';
+	$label_id   = ws_ls_component_id();
 
 	if ( true === $arguments[ 'include-div' ] ) {
-		$html .= sprintf( '<div id="%1$s-row" class="ws-ls-form-row">', $arguments[ 'name' ] );
+		$html .= sprintf( '<div id="%1$s-row" class="%2$s">', $arguments[ 'key' ], esc_attr( $arguments[ 'css-class-row' ] ) );
 	}
 
-	$html .= sprintf( '<select id="%1$s" name="%1$s" tabindex="%2$d" class="%3$s" %4$s %5$s>',
+	if ( true === $arguments[ 'show-label' ] ) {
+		$html .= sprintf(   '<label id="%4$s" for="%1$s" class="%3$s">%2$s</label>',
+							esc_attr( $arguments[ 'key' ] ),
+							esc_attr( $arguments[ 'label' ] ),
+							esc_attr( $arguments[ 'css-class-title' ] ),
+							$label_id
+		);
+	}
+
+	$html .= sprintf( '<select id="%1$s" name="%1$s" tabindex="%2$d" class="%3$s" %4$s %5$s data-msg="%6$s \'%7$s\'.">',
 		esc_attr( $arguments[ 'key' ] ),
 		ws_ls_form_tab_index_next(),
 		esc_attr( $arguments[ 'css-class' ] ),
-		( true === $arguments[ 'required' ] ) ? ' required' : '',
-		( false === empty( $arguments[ 'js-on-change' ] ) ) ? sprintf( ' onchange="%s"', $arguments[ 'js-on-change' ] ) : ''
+		( true === $arguments[ 'required' ] ) ? ' required="required" ' : '',
+		( false === empty( $arguments[ 'js-on-change' ] ) ) ? sprintf( ' onchange="%s"', $arguments[ 'js-on-change' ] ) : '',
+		__( 'Please select a value for'),
+		esc_attr( $arguments[ 'label' ] )
 	);
 
 	if ( true === $arguments[ 'empty-option' ] ) {

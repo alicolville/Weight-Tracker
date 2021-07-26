@@ -2,14 +2,14 @@
 
     defined('ABSPATH') or die('Jog on!');
 
-    /**
-     * Returns true if Meta Fields fully enabled (i.e. not trial mode)
-     *
-     * @return bool
-     */
-    function ws_ls_meta_fields_is_enabled() {
-        return WS_LS_IS_PRO;
-    }
+/**
+ * Returns true if Meta Fields fully enabled (i.e. not trial mode)
+ *
+ * @return bool
+ */
+function ws_ls_meta_fields_is_enabled() {
+	return WS_LS_IS_PRO;
+}
 
 /**
  * Return base URL for meta fields
@@ -18,52 +18,53 @@
  *
  * @return string
  */
-    function ws_ls_meta_fields_base_url( $args = [] ) {
+function ws_ls_meta_fields_base_url( $args = [] ) {
 
-	    $url = admin_url( 'admin.php?page=ws-ls-meta-fields' );
+	$url = admin_url( 'admin.php?page=ws-ls-meta-fields' );
 
-    	return ( false === empty( $args ) ) ? add_query_arg( $args, $url ) : $url;
-    }
+	return ( false === empty( $args ) ) ? add_query_arg( $args, $url ) : $url;
+}
 
-    /**
-     * Return an array of field types
-     *
-     * @return array
-     */
-    function ws_ls_meta_fields_types() {
+/**
+ * Return an array of field types
+ *
+ * @return array
+ */
+function ws_ls_meta_fields_types() {
+	return [
+		0 => __( 'Number', WE_LS_SLUG),
+		3 => __( 'Photo', WE_LS_SLUG),
+		5 => __( 'Radio buttons', WE_LS_SLUG ),
+		4 => __( 'Range slider', WE_LS_SLUG ),
+		7 => __( 'Dropdown', WE_LS_SLUG ),
+		6 => __( 'Large text', WE_LS_SLUG ),
+		1 => __( 'Small text', WE_LS_SLUG ),
+		2 => __( 'Yes', WE_LS_SLUG ) . ' / ' . __( 'No', WE_LS_SLUG )
+	];
+}
 
-        $fields = [
-            0 => __('Number', WE_LS_SLUG),
-            1 => __('Text', WE_LS_SLUG),
-            2 => __('Yes', WE_LS_SLUG) . ' / ' . __('No', WE_LS_SLUG),
-            3 => __('Photo', WE_LS_SLUG)
-        ];
+/**
+ * Return the text value of a field type ID
+ *
+ * @param $id
+ * @return mixed|string
+ */
+function ws_ls_meta_fields_types_get_string( $id ) {
 
-	    return $fields;
-    }
+	$types = ws_ls_meta_fields_types();
 
-    /**
-     * Return the text value of a field type ID
-     *
-     * @param $id
-     * @return mixed|string
-     */
-    function ws_ls_meta_fields_types_get_string( $id ) {
+	return ( false === empty( $types[ $id ] ) ) ? $types[ $id ] : '';
+}
 
-        $types = ws_ls_meta_fields_types();
+/**
+ * Return a count of enabled meta fields
+ *
+ * @return int
+ */
+function ws_ls_meta_fields_number_of_enabled() {
 
-        return ( false === empty( $types[ $id ] ) ) ? $types[ $id ] : '';
-    }
-
-    /**
-     * Return a count of enabled meta fields
-     *
-     * @return int
-     */
-    function ws_ls_meta_fields_number_of_enabled() {
-
-        return count( ws_ls_meta_fields_enabled() );
-    }
+	return count( ws_ls_meta_fields_enabled() );
+}
 
 /**
  * Get the field key for given meta id
@@ -74,88 +75,87 @@
  *
  * @return mixed|null
  */
-	function ws_ls_meta_fields_get_column( $id, $column = 'field_key' ) {
+function ws_ls_meta_fields_get_column( $id, $column = 'field_key' ) {
 
-		$fields = ws_ls_meta_fields();
-		$fields = wp_list_pluck( $fields, $column, 'id' );
+	$fields = ws_ls_meta_fields();
+	$fields = wp_list_pluck( $fields, $column, 'id' );
 
-		return ( false === empty( $fields[ $id ] ) ) ?
-			$fields[ $id ] :
-				NULL;
+	return ( false === empty( $fields[ $id ] ) ) ?
+		$fields[ $id ] :
+			NULL;
 
+}
+
+/**
+ * Return the value for a given entry / meta field
+ *
+ * @param $entry_id
+ * @param $meta_field_id
+ * @return null
+ */
+function ws_ls_meta_fields_get_value_for_entry( $entry_id, $meta_field_id ) {
+
+	if ( false === empty( $entry_id ) ) {
+
+		$data_for_entry = ws_ls_meta( $entry_id );
+
+		foreach ( $data_for_entry as $entry ) {
+
+			if ( (int) $meta_field_id === (int) $entry[ 'meta_field_id' ] ) {
+				return $entry[ 'value' ];
+			}
+		}
 	}
 
-    /**
-     * Return the value for a given entry / meta field
-     *
-     * @param $entry_id
-     * @param $meta_field_id
-     * @return null
-     */
-    function ws_ls_meta_fields_get_value_for_entry( $entry_id, $meta_field_id ) {
-
-        if ( false === empty( $entry_id ) ) {
-
-            $data_for_entry = ws_ls_meta( $entry_id );
-
-            foreach ( $data_for_entry as $entry ) {
-
-                if ( (int) $meta_field_id === (int) $entry[ 'meta_field_id' ] ) {
-                    return $entry[ 'value' ];
-                }
-            }
-        }
-
-        return NULL;
-    }
+	return NULL;
+}
 
 
-    /**
-     * Fetch all HTML keys for enabled meta fields
-     *
-     * @return array
-     */
-    function ws_ls_meta_fields_form_field_ids() {
+/**
+ * Fetch all HTML keys for enabled meta fields
+ *
+ * @return array
+ */
+function ws_ls_meta_fields_form_field_ids() {
 
-        $ids = [];
+	$ids = [];
 
-        foreach ( ws_ls_meta_fields_enabled() as $field ) {
-            $ids[] = ws_ls_meta_fields_form_field_generate_id( $field['id'] );
-        }
+	foreach ( ws_ls_meta_fields_enabled() as $field ) {
+		$ids[] = ws_ls_meta_fields_form_field_generate_id( $field['id'] );
+	}
 
-        return $ids;
-    }
+	return $ids;
+}
 
-    /**
-     *Generate field key
-     *
-     * @param $id
-     * @return string
-     */
-    function ws_ls_meta_fields_form_field_generate_id( $id ) {
-        return ( false === empty( $id ) ) ? 'ws-ls-meta-field-' . (int) $id: '';
-    }
+/**
+ *Generate field key
+ *
+ * @param $id
+ * @return string
+ */
+function ws_ls_meta_fields_form_field_generate_id( $id ) {
+	return ( false === empty( $id ) ) ? 'ws-ls-meta-field-' . (int) $id: '';
+}
 
-    /**
-     *
-     * Get Meta Fields for entry (used in table display)
-     *
-     * @param $entry_id
-     * @return array
-     */
-    function ws_ls_meta_fields_for_entry_display( $entry_id ) {
+/**
+ *
+ * Get Meta Fields for entry (used in table display)
+ *
+ * @param $entry_id
+ * @return array
+ */
+function ws_ls_meta_fields_for_entry_display( $entry_id ) {
 
-        $return = [];
+	$return = [];
 
-        $data = ws_ls_meta( $entry_id );
+	$data = ws_ls_meta( $entry_id );
 
-        foreach ( $data as $field ) {
-            $return[ $field['meta_field_id'] ] = $field;
-        }
+	foreach ( $data as $field ) {
+		$return[ $field['meta_field_id'] ] = $field;
+	}
 
-        return $return;
-
-    }
+	return $return;
+}
 
 /**
  * Format meta data for display
@@ -172,7 +172,8 @@
 
         if ( false === empty( $meta_field['field_type'] ) ) {
 
-            $meta_field['field_type'] = (int) $meta_field['field_type'];
+            $meta_field['field_type'] 	= (int) $meta_field['field_type'];
+			$value 						= stripslashes( $value );
 
             // Yes / No
             if ( 2 === $meta_field['field_type'] ) {
@@ -184,7 +185,6 @@
         }
 
         return $value;
-
     }
 
 	/**
@@ -265,6 +265,8 @@
 
         foreach ( ws_ls_meta_fields_enabled() as $field ) {
 
+	        $field[ 'field_name' ] = stripslashes( $field[ 'field_name' ] );
+
         	// Filter by ID?
 	        if ( true === $filter_by_id &&
 	                false === in_array( $field[ 'id' ], $arguments[ 'custom-field-slugs' ] ) ) {
@@ -301,10 +303,21 @@
 		            }
 
 		            break;
+	            case 4:
+		            $html .= ws_ls_meta_fields_form_field_range_slider( $field, $value );
+	            	break;
+	            case 5:
+		            $html .= ws_ls_meta_fields_form_field_radio_buttons( $field, $value );
+		            break;
+				case 6:
+					$html .= ws_ls_meta_fields_form_field_textarea( $field, $value );
+					break;
+				case 7:
+					$html .= ws_ls_meta_fields_form_field_select( $field, $value );
+					break;
                 default: // 0
                     $html .= ws_ls_meta_fields_form_field_number( $field, $value );
             }
-
         }
 
         // Any photos displayed? Add a wee notice about file sizes etc
@@ -325,7 +338,7 @@
     function ws_ls_meta_fields_form_field_text( $field, $value ) {
 
         return sprintf('<div class="ws-ls-meta-field">
-                            <label for="%1$s" class="ws-ls-meta-field-title" >%2$s:</label>
+                            <label for="%1$s" class="ws-ls-meta-field-title" >%2$s</label>
                             <input type="text" id="%1$s" name="%1$s" %3$s tabindex="%4$s" maxlength="200" value="%5$s" class="%1$s ws-ls-meta-field" data-msg="%6$s \'%2$s\'." placeholder="%7$s" />
                         </div>',
             ws_ls_meta_fields_form_field_generate_id( $field['id'] ),
@@ -339,6 +352,32 @@
 
     }
 
+	/**
+	 * Generate the HTML for a meta field text field
+	 *
+	 * @param $field
+	 * @param $value
+	 * @return string
+	 */
+	function ws_ls_meta_fields_form_field_textarea( $field, $value ) {
+
+		if ( false === empty( $value ) ) {
+			$value = stripslashes( $value );
+		}
+
+		return ws_ls_form_field_textarea( [ 'css-class' 		=> '',
+											'css-class-label' 	=> 'ws-ls-meta-field-title',
+											'css-class-row' 	=> 'ws-ls-meta-field',
+											'mandatory'			=> ( 2 === (int) $field['mandatory'] ),
+											'name'				=> ws_ls_meta_fields_form_field_generate_id( $field['id'] ),
+											'placeholder'		=> '',
+											'show-label'		=> true,
+											'title'				=> $field['field_name'],
+											'value'				=> $value
+
+		]);
+
+	}
     /**
      * Generate the HTML for a meta field number field
      *
@@ -348,8 +387,10 @@
      */
     function ws_ls_meta_fields_form_field_number( $field, $value ) {
 
+    	//TODO: Refactor to use ws_ls_form_field_number()
+
         return sprintf('<div class="ws-ls-meta-field">
-                            <label for="%1$s" class="ws-ls-meta-field-title">%2$s:</label>
+                            <label for="%1$s" class="ws-ls-meta-field-title">%2$s</label>
                             <input type="number" id="%1$s" name="%1$s" %3$s step="any" tabindex="%4$s" maxlength="200" value="%5$s" class="%1$s ws-ls-meta-field" data-msg="%6$s \'%2$s\'." placeholder="%7$s" />
                         </div>',
             ws_ls_meta_fields_form_field_generate_id( $field['id'] ),
@@ -373,7 +414,7 @@
     function ws_ls_meta_fields_form_field_yes_no( $field, $value ) {
 
         $html = sprintf( '<div class="ws-ls-meta-field">
-                            <label for="%1$s" class="ws-ls-meta-field-title">%2$s:</label>
+                            <label for="%1$s" class="ws-ls-meta-field-title">%2$s</label>
                             <select name="%1$s" id="%1$s" tabindex="%3$s" class="%1$s">
                             ',
                             ws_ls_meta_fields_form_field_generate_id( $field['id'] ),
@@ -397,6 +438,128 @@
     }
 
 /**
+ * Prep option arrays
+ * @param $field
+ *
+ * @return mixed
+ */
+function ws_ls_meta_fields_form_prep_options( $field ) {
+
+	foreach ( [ 'options-labels', 'options-values' ] as $key ) {
+		if ( true === isset( $field[ $key ] ) ) {
+
+			$field[ $key ] = json_decode( $field[ $key ], true );
+
+			$field[ $key ] = array_filter( $field[ $key ] );
+
+		}
+	}
+
+	$field[ 'options' ] = [];
+
+	// Set value to label if not specified
+	for ( $i = 0; $i < count( $field[ 'options-labels' ] ); $i++ ) {
+
+		if ( true === empty( $field[ 'options-values' ][ $i ] ) ) {
+			$field[ 'options-values' ][ $i ] = $field[ 'options-labels' ][ $i ];
+		}
+
+		$field[ 'options' ][ $field[ 'options-values' ][ $i ] ] = $field[ 'options-labels' ][ $i ];
+	}
+
+	return $field;
+}
+
+/**
+ * Display meta field for radio button
+ * @param $field
+ * @param $value
+ *
+ * @return string
+ */
+function ws_ls_meta_fields_form_field_radio_buttons( $field, $value ) {
+
+	if ( false === WS_LS_IS_PRO ) {
+		return '';
+	}
+
+	$field_id = ws_ls_meta_fields_form_field_generate_id( $field['id'] );
+
+	$html = sprintf( '<div class="ws-ls-meta-field">
+						<label for="%1$s" class="ws-ls-meta-field-title">%2$s</label>',
+		$field_id,
+		esc_attr( $field['field_name'] )
+	);
+
+	// Prep label/values
+	$field = ws_ls_meta_fields_form_prep_options( $field );
+
+	if ( true === empty( $field[ 'options-labels' ] ) ) {
+		$html .= '<p>' . __( 'No labels/values have been specified for this question.', WE_LS_SLUG ) . '</p>';
+	}
+
+	$first = true;
+
+	foreach ( $field[ 'options-labels' ] as $key => $label ) {
+
+		$option_value = $field[ 'options-values' ][ $key ];
+		$checked 		= ( ( $value === $option_value ) ||
+		                	( true === $first && 2 === (int) $field[ 'mandatory' ] ) );
+
+		$html .= sprintf ( '<div class="ws-ls-meta-field-radio-button">
+							  <input type="radio" id="%2$s" name="%1$s" value="%3$s" %5$s>
+							  <label for="%2$s">%4$s</label>
+							</div>',
+							$field_id,
+							ws_ls_component_id(),
+							esc_attr( $option_value ),
+							esc_attr( $label ),
+							( true === $checked ) ? 'checked' : ''
+		);
+
+		$first = false;
+	}
+
+	$html .= '</div>';
+
+	return $html;
+}
+
+/**
+ * Meta field select
+ * @param $field
+ * @param $value
+ * @return string
+ */
+function ws_ls_meta_fields_form_field_select( $field, $value ) {
+
+	if ( false === WS_LS_IS_PRO ) {
+		return '';
+	}
+
+	// Prep label/values
+	$field = ws_ls_meta_fields_form_prep_options( $field );
+
+	if ( true === empty( $field[ 'options' ] ) ) {
+		return '<p>' . __( 'No labels/values have been specified for this question.', WE_LS_SLUG ) . '</p>';
+	}
+
+	return ws_ls_form_field_select([	'key' 			    =>  ws_ls_meta_fields_form_field_generate_id( $field['id'] ),
+										'label'			    => $field[ 'field_name' ],
+										'values'		    => $field[ 'options' ],
+										'selected'		    => $value,
+										'include-div'       => true,
+										'css-class'		    => '',
+										'css-class-row'     => 'ws-ls-meta-field',
+										'css-class-title'   => 'ws-ls-meta-field-title',
+										'required'          => ( 2 === (int) $field[ 'mandatory' ] ),
+										'empty-option'	    => ( 2 === (int) $field[ 'include_empty' ] )
+	]);
+
+	return $html;
+}
+
+/**
  * Generate the HTML for a meta field photo
  *
  * @param $field
@@ -415,7 +578,7 @@
 		$html = sprintf('<div class="ws-ls-meta-field ws-ls-meta-field-photo">
                             <label for="%1$s" class="ws-ls-meta-field-title">%2$s</label>',
                             esc_attr( $field_id ),
-                            esc_attr( $field['field_name'] )
+							esc_html( $field['field_name'] )
                         );
 
         $attachment_id = NULL;

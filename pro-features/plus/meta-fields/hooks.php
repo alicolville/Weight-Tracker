@@ -88,7 +88,7 @@ function ws_ls_meta_fields_ajax_list() {
     $columns = [
                     [ 'name' => 'id', 'title' => 'ID', 'visible'=> true, 'type' => 'number' ],
                     [ 'name' => 'field_name', 'title' => __('Field / Question', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
-                    [ 'name' => 'field_key', 'title' => __('Key', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
+                    [ 'name' => 'field_key', 'title' => __('Key / Slug', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
                     [ 'name' => 'field_type', 'title' => __('Type', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
                     [ 'name' => 'sort', 'title' => __('Display Order', WE_LS_SLUG), 'visible'=> true, 'type' => 'number' ],
                     [ 'name' => 'group', 'title' => __('Group', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
@@ -105,6 +105,7 @@ function ws_ls_meta_fields_ajax_list() {
         $meta_fields[ $i ][ 'field_type' ]  = ws_ls_meta_fields_types_get_string( $meta_fields[ $i ][ 'field_type' ] );
         $meta_fields[ $i ][ 'enabled' ]     = ws_ls_boolean_as_yes_no_string( $meta_fields[ $i ][ 'enabled' ] );
         $meta_fields[ $i ][ 'mandatory' ]   = ws_ls_boolean_as_yes_no_string( $meta_fields[ $i ][ 'mandatory' ] );
+	    $meta_fields[ $i ][ 'field_name' ]  = stripslashes( $meta_fields[ $i ][ 'field_name' ] );
     }
 
     $data = [

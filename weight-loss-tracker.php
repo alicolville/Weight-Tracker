@@ -5,7 +5,7 @@ defined('ABSPATH') or die('Jog on!');
 /**
  * Plugin Name:         Weight Tracker
  * Description:         Allow your users to track their weight, body measurements, photos and other pieces of custom data. Display in charts, tables, shortcodes and widgets. Manage their data, issue awards, email notifications, etc! Provide advanced data on Body Mass Index (BMI), Basal Metabolic Rate (BMR), Calorie intake, Harris Benedict Formula, Macronutrients Calculator and more.
- * Version:             9.0.4
+ * Version:             9.1
  * Requires at least:   5.2
  * Tested up to: 		5.7
  * Requires PHP:        7.2
@@ -18,8 +18,8 @@ defined('ABSPATH') or die('Jog on!');
  */
 
 define( 'WS_LS_ABSPATH', plugin_dir_path( __FILE__ ) );
-define( 'WE_LS_CURRENT_VERSION', '9.0.4' );
-define( 'WE_LS_DB_VERSION', '9.0/1' );
+define( 'WE_LS_CURRENT_VERSION', '9.1' );
+define( 'WE_LS_DB_VERSION', '9.1' );
 define( 'WE_LS_TITLE', 'Weight Tracker' );
 define( 'WE_LS_SLUG', 'weight-loss-tracker' );
 define( 'WE_LS_LICENSE_TYPES_URL', 'https://docs.yeken.uk/features.html' );
@@ -106,6 +106,7 @@ require_once( WS_LS_ABSPATH . 'pro-features/plus/meta-fields/db.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/plus/meta-fields/hooks.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/plus/meta-fields/functions.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/plus/meta-fields/functions-photos.php' );
+require_once( WS_LS_ABSPATH . 'pro-features/plus/meta-fields/functions-slider.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/plus/meta-fields/shortcodes.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/feature-list.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/functions.php' );

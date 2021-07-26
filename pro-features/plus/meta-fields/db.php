@@ -289,9 +289,11 @@ function ws_ls_meta_fields_update( $field ) {
 
     global $wpdb;
 
-    $formats = ws_ls_meta_formats( $field );
+	$field      = ws_ls_meta_fields_prep_option_fields( $field );
 
-    $result = $wpdb->update( $wpdb->prefix . WE_LS_MYSQL_META_FIELDS, $field, [ 'id' => $id ], $formats, [ '%d' ] );
+	$formats    = ws_ls_meta_formats( $field );
+
+    $result     = $wpdb->update( $wpdb->prefix . WE_LS_MYSQL_META_FIELDS, $field, [ 'id' => $id ], $formats, [ '%d' ] );
 
 	ws_ls_cache_user_delete( 'meta-fields' );
 	ws_ls_cache_user_delete( 'custom-fields-groups' );
@@ -341,14 +343,33 @@ function ws_ls_meta_fields_add( $field ) {
 
     global $wpdb;
 
-    $formats = ws_ls_meta_formats( $field );
+	$field      = ws_ls_meta_fields_prep_option_fields( $field );
 
-    $result = $wpdb->insert( $wpdb->prefix . WE_LS_MYSQL_META_FIELDS , $field, $formats );
+    $formats    = ws_ls_meta_formats( $field );
+
+    $result     = $wpdb->insert( $wpdb->prefix . WE_LS_MYSQL_META_FIELDS , $field, $formats );
 
 	ws_ls_cache_user_delete( 'meta-fields' );
 	ws_ls_cache_user_delete( 'custom-fields-groups' );
 
     return ( false === $result ) ? false : $wpdb->insert_id;
+}
+
+/**
+ * Json encode relevant fields
+ * @param $field
+ *
+ * @return mixed
+ */
+function ws_ls_meta_fields_prep_option_fields( $field ) {
+
+	foreach ( [ 'options-labels', 'options-values' ] as $key ) {
+		if ( true === isset( $field[ $key ] ) ) {
+			$field[ $key ] = json_encode( $field[ $key ] );
+		}
+	}
+
+	return $field;
 }
 
 /**
@@ -421,11 +442,19 @@ function ws_ls_meta_fields_get_by_id( $id ) {
 
     global $wpdb;
 
-    $sql = $wpdb->prepare('Select * from ' . $wpdb->prefix . WE_LS_MYSQL_META_FIELDS . ' where id = %d limit 0, 1', $id );
+    $sql        = $wpdb->prepare('Select * from ' . $wpdb->prefix . WE_LS_MYSQL_META_FIELDS . ' where id = %d limit 0, 1', $id );
 
     $meta_field = $wpdb->get_row( $sql, ARRAY_A );
 
-    return ( false === empty( $meta_field ) ) ? $meta_field : false;
+	foreach ( [ 'options-labels', 'options-values' ] as $key ) {
+		if ( false === empty( $meta_field[ $key ] ) ) {
+			$meta_field[ $key ] = json_decode( $meta_field[ $key ], true );
+		}
+	}
+
+	$meta_field[ 'field_name' ] = stripslashes( $meta_field[ 'field_name' ] );
+
+	return ( false === empty( $meta_field ) ) ? $meta_field : false;
 }
 
 /**

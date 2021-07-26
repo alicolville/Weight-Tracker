@@ -10,8 +10,9 @@
         // Data Posted? If so, replace the above from $_POST object
         if ( false === empty( $_POST ) && true === ws_ls_meta_fields_is_enabled() ) {
 
-            $meta_field = ws_ls_get_values_from_post( [ 'id', 'field_name', 'abv', 'field_type', 'suffix', 'mandatory', 'enabled', 'suffix', 'sort', 'hide_from_shortcodes', 'plot_on_graph', 'plot_colour', 'group_id' ] );
-
+            $meta_field = ws_ls_get_values_from_post( [ 'id', 'field_name', 'abv', 'field_type', 'suffix', 'mandatory', 'enabled',
+															'suffix', 'sort', 'hide_from_shortcodes', 'plot_on_graph', 'plot_colour', 'group_id', 'include_empty',
+																'min_value', 'max_value', 'step', 'show_all_labels', 'options-values', 'options-labels' ] );
             // Ensure all mandatory fields have been completed!
             foreach ( [ 'field_name', 'abv' ] as $key ) {
                 if ( true === empty( $meta_field[ $key ] ) ) {
@@ -80,11 +81,18 @@
                                                         $checked = ( false === empty( $meta_field['field_type'] ) ) ? (int) $meta_field['field_type'] : ws_ls_querystring_value('field_type', true);
                                                     ?>
                                                     <select name="field_type" id="field_type">
-                                                        <option value="0" <?php selected( $checked, 0 ); ?>><?php echo __('Number', WE_LS_SLUG); ?></option>
-                                                        <option value="1" <?php selected( $checked, 1 ); ?>><?php echo __('Text', WE_LS_SLUG); ?></option>
-                                                        <option value="2" <?php selected( $checked, 2 ); ?>><?php echo __('Yes', WE_LS_SLUG); ?> / <?php echo __('No', WE_LS_SLUG); ?></option>
-                                                        <option value="3" <?php selected( $checked, 3 ); ?>><?php echo __('Photo', WE_LS_SLUG); ?></option>
-                                                    </select>
+														<?php
+															$meta_field_types 	= ws_ls_meta_fields_types();
+
+															foreach ( $meta_field_types as $key => $name ) {
+																printf( '<option value="%1$d" %2$s>%3$s</option>',
+																				$key,
+																				selected( $checked, $key, false ),
+																				$name
+																);
+															}
+														?>
+													</select>
                                                     <?php if ( false === empty( $id ) ) : ?>
                                                         <p class="ws-ls-note"><?php echo __('Note: Changing the field type will cause existing user data to be lost.', WE_LS_SLUG); ?></p>
                                                     <?php endif; ?>
@@ -103,7 +111,7 @@
                                                     <p class="ws-ls-info"><?php echo __('Note: If set to Yes, photos uploaded into this custom field cannot be used in shortcodes i.e. the photos will only be visible to admin.', WE_LS_SLUG); ?></p>
                                                 </div>
                                             </div>
-											<div class="ws-ls-row ws-ls-hide ws-ls-meta-fields-additional-0">
+											<div class="ws-ls-row ws-ls-hide ws-ls-meta-fields-additional-0 ws-ls-meta-fields-additional-4 ws-ls-meta-fields-additional-5 ws-ls-meta-fields-additional-7">
 												<div class="ws-ls-cell">
 													<label for="plot_on_graph"><?php echo __('Show on charts?', WE_LS_SLUG); ?></label>
 												</div>
@@ -113,10 +121,10 @@
 														<option value="0" <?php selected( $checked, 0 ); ?>><?php echo __('No', WE_LS_SLUG); ?></option>
 														<option value="1" <?php selected( $checked, 1 ); ?>><?php echo __('Yes', WE_LS_SLUG); ?></option>
 													</select>
-													<p class="ws-ls-info"><?php echo __('Note: If set to Yes, this custom field will also be plotted on graphs.', WE_LS_SLUG); ?></p>
+													<p class="ws-ls-info"><?php echo __('Note: If set to Yes, this custom field will also be plotted on graphs. If the custom field is a radio button, ensure all values are numeric.', WE_LS_SLUG); ?></p>
 												</div>
 											</div>
-											<div class="ws-ls-row ws-ls-hide ws-ls-meta-fields-additional-0">
+											<div class="ws-ls-row ws-ls-hide ws-ls-meta-fields-additional-0  ws-ls-meta-fields-additional-4 ws-ls-meta-fields-additional-5 ws-ls-meta-fields-additional-7">
 												<div class="ws-ls-cell">
 													<label for="plot_colour"><?php echo __('Line colour on graph', WE_LS_SLUG); ?></label>
 												</div>
@@ -136,6 +144,106 @@
                                                     <input type="text" name="field_name" id="field_name" class="<?php if ( true === $validation_fail && true === empty( $meta_field['field_name'] ) ) { echo 'ws-ls-mandatory-field'; } ?>"  size="40" maxlength="200" value="<?php echo ( false === empty( $meta_field['field_name'] ) ) ? esc_attr( $meta_field['field_name'] ) : ''; ?>"/><span class="ws-ls-mandatory">*</span>
                                                 </div>
                                             </div>
+											<div class="ws-ls-row ws-ls-hide ws-ls-meta-fields-additional-4">
+												<div class="ws-ls-cell">
+													<label for="min_value"><?php echo __('Minimum value', WE_LS_SLUG); ?></label>
+												</div>
+												<div class="ws-ls-cell">
+													<?php
+														$min_value = ( false === empty( $meta_field[ 'min_value' ] ) ) ? (int) $meta_field[ 'min_value' ] : 0;
+													?>
+													<input name="min_value" id="min_value" type="number"  min="-1000000" max="1000000" step="any" value="<?php echo $min_value; ?>">
+													<p class="ws-ls-info"><?php echo __('Specifies the lowest number on the range slider.', WE_LS_SLUG); ?></p>
+												</div>
+											</div>
+											<div class="ws-ls-row ws-ls-hide ws-ls-meta-fields-additional-4">
+												<div class="ws-ls-cell">
+													<label for="max_value"><?php echo __('Maximum value', WE_LS_SLUG); ?></label>
+												</div>
+												<div class="ws-ls-cell">
+													<?php
+													$max_value = ( false === empty( $meta_field[ 'max_value' ] ) ) ? (int) $meta_field[ 'max_value' ] : 100;
+													?>
+													<input name="max_value" id="max_value" type="number" min="-1000000" max="1000000" step="any" value="<?php echo $max_value; ?>">
+													<p class="ws-ls-info"><?php echo __('Specifies the maximum number on the range slider.', WE_LS_SLUG); ?></p>
+												</div>
+											</div>
+											<div class="ws-ls-row ws-ls-hide ws-ls-meta-fields-additional-4">
+												<div class="ws-ls-cell">
+													<label for="step"><?php echo __('Step', WE_LS_SLUG); ?></label>
+												</div>
+												<div class="ws-ls-cell">
+													<?php
+														$step = ( false === empty( $meta_field[ 'step' ] ) ) ? (int) $meta_field[ 'step' ] : 10;
+													?>
+													<input name="step" id="step" type="number" min="-1000000" max="1000000" step="any" value="<?php echo $step; ?>">
+													<p class="ws-ls-info"><?php echo __('Specifies the steps between points on the slider.', WE_LS_SLUG); ?></p>
+												</div>
+											</div>
+											<div class="ws-ls-row ws-ls-hide ws-ls-meta-fields-additional-4">
+												<div class="ws-ls-cell">
+													<label for="show_all_labels"><?php echo __('Show all labels', WE_LS_SLUG); ?></label>
+												</div>
+												<?php $checked = ( false === empty( $meta_field['show_all_labels'] ) && 2 === (int) $meta_field['show_all_labels'] ) ? 2 : 1; ?>
+												<div class="ws-ls-cell">
+													<select name="show_all_labels" id="show_all_labels">
+														<option value="1" <?php selected( $checked, 1 ); ?>><?php echo __('No', WE_LS_SLUG); ?></option>
+														<option value="2" <?php selected( $checked, 2 ); ?>><?php echo __('Yes', WE_LS_SLUG); ?></option>
+													</select>
+													<p class="ws-ls-info"><?php echo __('Note: If set to Yes, all labels shall be displayed on the slider. If no, only the start and finish.', WE_LS_SLUG); ?></p>
+												</div>
+											</div>
+											<div class="ws-ls-row ws-ls-hide ws-ls-meta-fields-additional-5 ws-ls-meta-fields-additional-7">
+												<div class="ws-ls-cell">
+													<label for="add_options"><?php echo __('Add options', WE_LS_SLUG); ?></label>
+												</div>
+												<div class="ws-ls-cell">
+													<table class="widefat ws-ls-radio-button-options-table">
+														<thead>
+														<tr>
+															<th class="row-title" width="50%"><?php echo __( 'Value (visible to admin/export)' , WE_LS_SLUG); ?></th>
+															<th><?php echo __( 'Label (visible to user)' , WE_LS_SLUG); ?></th>
+														</tr>
+														</thead>
+														<tbody>
+														<?php
+															for( $i = 0; $i < 30; $i++ ) {
+
+																printf(
+																	'<tr class="%4$s">
+																				<td>
+																					<input type="text" name="options-values[%1$d]" id="options-value-%1$d" value="%2$s" maxlength="50" class="widefat"  />
+																				</td>
+																				<td>
+																					<input type="text" name="options-labels[%1$d]" id="options-label-%1$d" value="%3$s" maxlength="50"  class="widefat" />
+																				</td>
+																			</tr>',
+																			$i,
+																			( false === empty( $meta_field[ 'options-values' ][ $i ] ) ) ? $meta_field[ 'options-values' ][ $i ] : '',
+																			( false === empty( $meta_field[ 'options-labels' ][ $i ] ) ) ? $meta_field[ 'options-labels' ][ $i ] : '',
+																			( $i >= 5 ) ? 'ws-ls-hide' : ''
+																);
+															}
+														?>
+														</tbody>
+													</table>
+													<p><a class="button ws-ls-radio-button-options-show-more"><?php echo __( 'Show more rows' , WE_LS_SLUG); ?></a></p>
+													<p class="ws-ls-info"><?php echo __('Please note, editing values to existing fields shall cause the user selection to be lost.', WE_LS_SLUG ); ?></p>
+												</div>
+											</div>
+											<div class="ws-ls-row ws-ls-meta-fields-additional-7">
+												<div class="ws-ls-cell ws-ls-label-col">
+													<label for="mandatory"><?php echo __('Include empty option', WE_LS_SLUG); ?></label>
+												</div>
+												<?php $checked = ( false === empty( $meta_field['include_empty'] ) && 2 === (int) $meta_field['include_empty'] ) ? 2 : 0; ?>
+												<div class="ws-ls-cell">
+													<select name="include_empty" id="include_empty">
+														<option value="1" <?php selected( $checked, 1 ); ?>><?php echo __('No', WE_LS_SLUG); ?></option>
+														<option value="2" <?php selected( $checked, 2 ); ?>><?php echo __('Yes', WE_LS_SLUG); ?></option>
+													</select>
+													<p class="ws-ls-info"><?php echo __('If yes, a blank option shall be added at the top of the drop down options.', WE_LS_SLUG ); ?></p>
+												</div>
+											</div>
                                             <div class="ws-ls-row">
                                                 <div class="ws-ls-cell">
                                                     <label for="abv"><?php echo __('Abbreviation', WE_LS_SLUG); ?></label>

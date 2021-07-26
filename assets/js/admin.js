@@ -112,20 +112,21 @@ jQuery( document ).ready(function ($) {
     // Show / hide additional fields on meta fields add / update
     function ws_ls_meta_fields_show_additional() {
 
-        var meta_field_ids = [ 0, 1, 2, 3 ];
+        let meta_field_ids = [ 0, 1, 2, 3, 4, 5, 6, 7 ];
 
-        var value = $('#field_type').val();
+        let value = $('#field_type').val();
 
         for ( $i = 0; $i < meta_field_ids.length; $i++ ) {
-
-            if ( value == meta_field_ids[ $i ] ) {
-                $('.ws-ls-meta-fields-additional-' + meta_field_ids[ $i ] ).removeClass( 'ws-ls-hide' );
-            } else {
-                $('.ws-ls-meta-fields-additional-' + meta_field_ids[ $i ] ).addClass( 'ws-ls-hide' );
-            }
-
+          if ( value !== meta_field_ids[ $i ] ) {
+             $('.ws-ls-meta-fields-additional-' + meta_field_ids[ $i ] ).addClass( 'ws-ls-hide' );
+          }
         }
 
+        for ( $i = 0; $i < meta_field_ids.length; $i++ ) {
+            if ( value == meta_field_ids[ $i ] ) {
+                $('.ws-ls-meta-fields-additional-' + meta_field_ids[ $i ] ).removeClass( 'ws-ls-hide' );
+            }
+        }
     }
 
     $( "#field_type" ).change(function() {
@@ -134,7 +135,18 @@ jQuery( document ).ready(function ($) {
 
     ws_ls_meta_fields_show_additional();
 
-    // ------------------------------------------------------------
+  $( '.ws-ls-radio-button-options-show-more' ).on('click', function ( event ) {
+
+    event.preventDefault();
+
+    $( '.ws-ls-radio-button-options-table tr' ).removeClass( 'ws-ls-hide' );
+
+    $( this ).hide();
+
+  });
+
+
+  // ------------------------------------------------------------
     // Awards
     // ------------------------------------------------------------
 

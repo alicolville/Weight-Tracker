@@ -26,15 +26,22 @@
                 abv varchar(5) NOT NULL,
                 suffix varchar(10) NOT NULL,
                 mandatory int DEFAULT 1,
+                include_empty int DEFAULT 0,
                 enabled int DEFAULT 1,
                 hide_from_shortcodes int DEFAULT 0,
                 plot_on_graph int DEFAULT 0,
+                min_value float DEFAULT 0,
+                max_value float DEFAULT 0,
+                step float DEFAULT 0,
+                show_all_labels int default 1,
                 plot_colour varchar(10) NOT NULL,
                 `system` BIT DEFAULT 0,
                 field_type int NOT NULL,
                 sort int DEFAULT 100,
                 group_id int DEFAULT 0,
                 migrate int DEFAULT 0,
+                `options-values` text NULL,
+                `options-labels` text NULL,
                 UNIQUE KEY id (id)
             ) $charset_collate;";
 
