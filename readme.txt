@@ -172,6 +172,14 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 * Bug fix: Bug fix with caching in [wt-photo-oldest] and [wt-photo-recent].
 * Change: Removed trailing colon (:) from meta field labels.
 
+= 9.0.4 =
+
+* Bug fix: Fixed an issue where weight entry hooks were not being fired correctly (so awards etc not being issues as expected).
+
+= 9.0.3 =
+
+* Tweak to notice about expiring legacy licenses.
+
 = 9.0.2 =
 
 * Bug fix: Hide notice about expiring license once a new license has been entered.
