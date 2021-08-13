@@ -361,7 +361,7 @@ function ws_ls_datatable_columns( $arguments = [] ) {
 
 		        // Filter by group?
 		        if ( true === $filter_by_group &&
-		             ( 0 === (int) $field[ 'group_id' ] || false === in_array( $field[ 'group_id' ], $arguments[ 'custom-field-groups' ] ) ) ) {
+		             ( 0 === (int) $field[ 'group_id' ] || false === in_array( $field[ 'group_id' ], $custom_field_groups ) ) ) {
 			        continue;
 		        }
 
