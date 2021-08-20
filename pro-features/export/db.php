@@ -90,7 +90,7 @@ function ws_ls_db_export_identify_weight_entries( $export_id ) {
 		$where[] = sprintf( 'weight_user_id in ( select user_id from ' . $wpdb->prefix . WE_LS_MYSQL_GROUPS_USER . ' where group_id = %d )', $options[ 'user-group' ] );
 	}
 
-	// User Group
+	// User ID
 	if ( false === empty( $options[ 'user-id' ] ) ) {
 		$where[] = sprintf( 'weight_user_id = %d', $options[ 'user-id' ] );
 	}
@@ -127,7 +127,7 @@ function ws_ls_db_export_identify_weight_entries( $export_id ) {
                             FROM ' . $wpdb->prefix . WE_LS_TABLENAME . ' WHERE 1 = 1';
 
 	if ( false === empty( $where ) ) {
-		$sql .= ' and ' . implode( 'and ', $where );
+		$sql .= ' and ' . implode( ' and ', $where );
 	}
 
 	$sql .= ' order by weight_date asc';
