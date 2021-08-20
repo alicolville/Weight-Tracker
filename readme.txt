@@ -162,6 +162,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 = 9.1.1 =
 
+* Improvement: Added date pickers on "From" and "To" for custom date range on export page.
 * Bug fix: Ensured the argument "custom-field-groups" is being respected correctly when using [wt-custom-fields-chart].
 * Bug fix: Issue when building SQL statement for report options
 

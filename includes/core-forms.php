@@ -392,6 +392,7 @@ function ws_ls_form_field_date( $arguments = [] ) {
 	                                            'show-label'            => false,
 	                                            'title'                 => '',
 	                                            'css-class'             => 'we-ls-datepicker',
+	                                            'css-class-label'       => '',
 												'css-class-row'         => '',
 	                                            'size'                  => 22,
 	                                            'trailing-html'         => '',
@@ -403,7 +404,10 @@ function ws_ls_form_field_date( $arguments = [] ) {
 	}
 
 	if ( true === $arguments[ 'show-label' ] ) {
-		$html .= sprintf( '<label for="%1$s" class="">%2$s</label>', $arguments[ 'id' ], $arguments[ 'title' ]);
+		$html .= sprintf( '<label for="%1$s" class="%3$s">%2$s</label>',
+							$arguments[ 'id' ],
+							esc_html( $arguments[ 'title' ] ),
+							esc_attr( $arguments[ 'css-class-label' ] ) );
 	}
 
 	$html .= sprintf( '<input type="text" name="%1$s" id="%2$s" tabindex="%3$d" value="%4$s" placeholder="%5$s" size="%6$d" class="%7$s" data-form-id="%8$s" />',
