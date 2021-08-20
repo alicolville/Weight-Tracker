@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight,tracker,chart,bmi,bmr,macronutrient,measure,awards,custom fields,history,measurements,data
 Requires at least: 5.2
 Tested up to: 5.7
-Stable tag: 9.1
+Stable tag: 9.1.1
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -159,6 +159,12 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 9.0 - Non weight entries! Support for custom field entries only! New custom field shortcodes.
 
 == Changelog ==
+
+= 9.1.1 =
+
+* Improvement: Added date pickers on "From" and "To" for custom date range on export page.
+* Bug fix: Ensured the argument "custom-field-groups" is being respected correctly when using [wt-custom-fields-chart].
+* Bug fix: Issue when building SQL statement for report options
 
 = 9.1 =
 

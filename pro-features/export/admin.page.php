@@ -215,9 +215,9 @@ function ws_ls_export_admin_page_new() {
 
 									echo '<div id="ws-ls-date-range-options" class="ws-ls-hide">';
 
-									echo ws_ls_form_field_date( [ 'name' => 'date-from', 'title' => __( 'From', WE_LS_SLUG ), 'show-label' => true, 'css-class' => 'widefat' ] );
+									echo ws_ls_form_field_date( [ 'name' => 'date-from', 'title' => __( 'From', WE_LS_SLUG ), 'show-label' => true, 'css-class' => 'we-ls-datepicker widefat', 'css-class-label' => 'ws-ls-block-it' ] );
 
-									echo ws_ls_form_field_date( [ 'name' => 'date-to', 'title' => __( 'To', WE_LS_SLUG ), 'show-label' => true, 'css-class' => 'widefat' ] );
+									echo ws_ls_form_field_date( [ 'name' => 'date-to', 'title' => __( 'To', WE_LS_SLUG ), 'show-label' => true, 'css-class' => 'we-ls-datepicker widefat', 'css-class-label' => 'ws-ls-block-it' ] );
 
 									echo '</div>';
 

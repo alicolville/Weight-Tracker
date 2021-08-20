@@ -53,7 +53,7 @@ HEX: #f7786b
 }
 .ws_ls_display_form label, .ws_ls_display_form input,
 .ws-ls-meta-fields-form label, .ws-ls-meta-fields-form input
-#we-ls-user-pref-submit {
+#we-ls-user-pref-submit, .ws-ls-block-it {
     display: block;
 }
 .ws-ls-user-pref-form input, .ws-ls-user-pref-form select {
