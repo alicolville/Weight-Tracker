@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight,tracker,chart,bmi,bmr,macronutrient,measure,awards,custom fields,history,measurements,data
 Requires at least: 5.2
 Tested up to: 5.7
-Stable tag: 9.1.1
+Stable tag: 9.2
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -159,6 +159,10 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 9.0 - Non weight entries! Support for custom field entries only! New custom field shortcodes.
 
 == Changelog ==
+
+= 9.2 =
+
+* Improvement: New argument "always-show" for [wt-shortcode-optin]. If set to true, the buttons shall always be displayed regardless of user choice. https://docs.yeken.uk/shortcodes/wt-challenges-optin.html
 
 = 9.1.1 =
 

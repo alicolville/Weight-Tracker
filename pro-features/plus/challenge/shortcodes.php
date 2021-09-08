@@ -4,12 +4,18 @@ defined('ABSPATH') or die("Jog on!");
 
 /**
  * Render Opt-in or Opt-out buttons
+ *
+ * @param $user_defined_arguments
+ *
+ * @return string
  */
-function ws_ls_challenges_shortcodes_opt_in() {
+function ws_ls_challenges_shortcodes_opt_in( $user_defined_arguments ) {
 
     if( false === WS_LS_IS_PRO_PLUS ) {
         return '';
     }
+
+	$arguments = shortcode_atts( [  'always-show' => false ] , $user_defined_arguments );
 
 	// Opt-in set?
 	$get_optin = ws_ls_querystring_value( 'opt-in' );
@@ -28,7 +34,8 @@ function ws_ls_challenges_shortcodes_opt_in() {
 	$status_never_set   = ( -1 === (int) $opt_int_status );
 
 	// Only show the buttons if a User had never specified an opt-in preference before.
-	if ( false === $status_never_set ) {
+	if ( false === $status_never_set
+	        && true !== ws_ls_to_bool( $arguments[ 'always-show' ] ) ) {
 		return '';
 	}
 

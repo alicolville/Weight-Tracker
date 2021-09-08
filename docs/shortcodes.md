@@ -14,6 +14,7 @@ The majority of the public facing functionality are implemented using [WordPress
 |[[wt-calories-table]]({{ site.baseurl }}/shortcodes/wt-calories-table.html)|Displays recommendations on the best way to split your calorie intake.|
 |[[wt-chart]]({{ site.baseurl }}/shortcodes/wt-chart.html)|Displays a chart of the user's weight / [custom field]({{ site.baseurl }}/custom-fields.html) entries.|
 |[[wt-challenges]]({{ site.baseurl }}/shortcodes/wt-challenges.html)|Display a [Challenge]({{ site.baseurl }}/challenges.html) league table.|
+|[[wt-challenges-optin]]({{ site.baseurl }}/shortcodes/wt-challenges-optin.html)|Display buttons allow the using to opt in and out of [Challenges]({{ site.baseurl }}/challenges.html).|
 |[[wt-custom-fields-chart]]({{ site.baseurl }}/shortcodes/wt-custom-fields-chart.html)|Displays a chart of the user’s [custom field]({{ site.baseurl }}/custom-fields.html) entries.|
 |[[wt-custom-fields-form]]({{ site.baseurl }}/shortcodes/wt-custom-fields-form.html)|Displays a form for [custom fields]({{ site.baseurl }}/custom-fields.html) only.|
 |[[wt-custom-fields-table]]({{ site.baseurl }}/shortcodes/wt-custom-fields-table.html)|Displays a table of the user’s [custom field]({{ site.baseurl }}/custom-fields.html) entries.|
