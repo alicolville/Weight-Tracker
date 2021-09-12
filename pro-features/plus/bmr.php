@@ -28,24 +28,24 @@ function ws_ls_calculate_bmr( $user_id = false, $return_error = true ) {
     }
 
     // First, we need to ensure the person has a gender.
-    $gender = ws_ls_user_preferences_get('gender', $user_id);
+    $gender = ws_ls_user_preferences_get('gender', $user_id );
 
-    if(true === empty($gender)) {
-        return ($return_error) ? __('No Gender specified', WE_LS_SLUG) : NULL;
+    if( true === empty( $gender ) ) {
+        return ( $return_error ) ? __('No Gender specified', WE_LS_SLUG) : NULL;
     }
 
     // Check if user has DOB - calculate age
-    $age = ws_ls_get_age_from_dob($user_id);
+    $age = ws_ls_get_age_from_dob( $user_id );
 
-    if(true === empty($age) ) {
-        return ($return_error) ? __('No Date of Birth specified or too young', WE_LS_SLUG) : NULL;
+    if( true === empty( $age ) ) {
+        return ( $return_error ) ? __('No Date of Birth specified or too young', WE_LS_SLUG ) : NULL;
     }
 
     //Get height
     $height = ws_ls_user_preferences_get('height', $user_id);
 
-    if(true === empty($height)) {
-        return ($return_error) ? __('No Height specified', WE_LS_SLUG) : NULL;
+    if( true === empty( $height ) ) {
+        return ( $return_error ) ? __( 'No Height specified', WE_LS_SLUG ) : NULL;
     }
 
     // Recent weight?
@@ -53,8 +53,8 @@ function ws_ls_calculate_bmr( $user_id = false, $return_error = true ) {
 
 	$weight = apply_filters( 'wlt_filters_bmr_weight_raw', $weight, $user_id );
 
-    if(true === empty($weight)) {
-        return ($return_error) ? __('No Weight entered', WE_LS_SLUG) : NULL;
+    if( true === empty( $weight ) ) {
+        return ( $return_error ) ? __('No Weight entered', WE_LS_SLUG) : NULL;
     }
 
     $bmr = ws_ls_calculate_bmr_raw( $gender, $weight, $height, $age, $user_id );
