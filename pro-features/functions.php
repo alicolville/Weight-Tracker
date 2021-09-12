@@ -536,7 +536,22 @@ function ws_ls_is_female( $user_id = NULL ) {
     $user_id    = ( true === empty( $user_id ) ) ? get_current_user_id() : $user_id;
     $gender     = ws_ls_user_preferences_get( 'gender', $user_id );
 
-    return ( false === empty( $gender ) && 1 == (int) $gender ) ? true : false;
+    return ws_ls_is_female_raw( $gender );
+}
+
+/**
+ * Depending on Gender value, return true if female
+ * @param $gender
+ *
+ * @return bool
+ */
+function ws_ls_is_female_raw( $gender ) {
+
+	if ( true === empty( $gender ) ) {
+		return NULL;
+	}
+
+	return ( 1 === (int) $gender );
 }
 
 /**
