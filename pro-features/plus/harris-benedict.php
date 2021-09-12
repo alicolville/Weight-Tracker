@@ -271,18 +271,18 @@ function ws_ls_harris_benedict_render_table( $user_id, $missing_data_text = fals
 		if(true === is_admin() && false === $email) {
 
 			// Fetch the user's gender
-			$gender = ws_ls_user_preferences_get('gender', $user_id );
+			$user_gender = ws_ls_user_preferences_get('gender', $user_id );
 
 			// Do we wish to include the range used to determine calorie intake for loss / gain?
 			if( true === $include_range && false === empty( $calories[ 'maintain' ][ 'total' ] ) ) {
 
 				if ( true === ws_ls_harris_benedict_show_lose_figures() ) {
 
-					if( true === empty( $gender ) ) {
+					if( true === empty( $user_gender ) ) {
 						return NULL;
 					}
 
-					$range = ws_ls_harris_benedict_filter_calories_to_lose( $calories[ 'maintain' ][ 'total' ], $gender, true );
+					$range = ws_ls_harris_benedict_filter_calories_to_lose( $calories[ 'maintain' ][ 'total' ], $user_gender, true );
 
 					if ( false === empty( $range ) ) {
 
@@ -305,7 +305,7 @@ function ws_ls_harris_benedict_render_table( $user_id, $missing_data_text = fals
 
 				if ( true === ws_ls_harris_benedict_show_gain_figures() ) {
 
-					$range = ws_ls_harris_benedict_filter_calories_to_add( $calories[ 'maintain' ][ 'total' ], $gender, true );
+					$range = ws_ls_harris_benedict_filter_calories_to_add( $calories[ 'maintain' ][ 'total' ], $user_gender, true );
 
 					if ( false === empty( $range ) ) {
 
@@ -327,7 +327,7 @@ function ws_ls_harris_benedict_render_table( $user_id, $missing_data_text = fals
 				}
 			}
 
-			$html .= sprintf('<p><small>%s</small></p>', ws_ls_display_calorie_cap($user_id));
+			$html .= sprintf( '<p><small>%s</small></p>', ws_ls_display_calorie_cap_raw( $user_gender ) );
 		}
 
 		return $html;
@@ -430,14 +430,25 @@ add_shortcode( 'wt-calories-table', 'ws_ls_shortcode_harris_benedict_table' );
  * @param bool $user_id
  * @return string
  */
-function ws_ls_display_calorie_cap($user_id = false) {
+function ws_ls_display_calorie_cap( $user_id = false ) {
 
-	$user_id = ( true === empty($user_id) ) ? get_current_user_id() : $user_id;
+	$gender = ws_ls_user_preferences_get('gender', $user_id );
 
-	$is_female          = ws_ls_is_female($user_id);
+	return ws_ls_display_calorie_cap_raw( $gender );
+}
+
+/**
+ * Display salary capped for given gender
+ * @param $gender
+ *
+ * @return string
+ */
+function ws_ls_display_calorie_cap_raw( $gender ) {
+
+	$is_female          = ws_ls_is_female_raw( $gender );
 	$calorie_cap        = ( true == $is_female ) ?
-							ws_ls_harris_benedict_setting( 'ws-ls-female-cal-cap' ) :
-							 ws_ls_harris_benedict_setting( 'ws-ls-male-cal-cap' );
+		ws_ls_harris_benedict_setting( 'ws-ls-female-cal-cap' ) :
+		ws_ls_harris_benedict_setting( 'ws-ls-male-cal-cap' );
 
 	return sprintf('%s %s %s. %s <a href="%s">%s</a>.',
 		($is_female) ? __('Female', WE_LS_SLUG ) : __('Male', WE_LS_SLUG ),
