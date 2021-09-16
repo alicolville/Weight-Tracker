@@ -272,7 +272,7 @@ input.ws-ls-valid
   color: #ffA500;
 }
 
-.ws-ls-user-data-ajax th, td {
+.ws-ls-user-data-ajax th, .ws-ls-user-data-ajax td {
   font-size: 13px;
 }
 .ws-ls-blockquote p {

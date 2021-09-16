@@ -164,6 +164,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 * Improvement: New argument "always-show" for [wt-shortcode-optin]. If set to true, the buttons shall always be displayed regardless of user choice. https://docs.yeken.uk/shortcodes/wt-challenges-optin.html
 * Change: Changed the underlying code that powers BMR, Calorie and Macro N calculations to not be exclusively tied to user accounts. This is to support upcoming features.
+* Bug fix: Minor CSS fix based on https://github.com/alicolville/Weight-Tracker/issues/386. Thanks @shakethatweight-simon
 
 = 9.1.1 =
 
