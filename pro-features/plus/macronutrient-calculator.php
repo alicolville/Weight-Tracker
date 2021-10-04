@@ -227,7 +227,7 @@ function ws_ls_macro_render_table($user_id, $missing_data_text = false, $additio
 function ws_ls_shortcode_macro( $user_defined_arguments ) {
 
 	if( false === WS_LS_IS_PRO_PLUS ) {
-		return '';
+		return ws_ls_display_pro_upgrade_notice_for_shortcode();
 	}
 
 	$arguments = shortcode_atts([
@@ -346,3 +346,163 @@ function ws_ls_get_macro_name( $key ) {
 
     return $key;
 }
+
+function ws_ls_shortcode_calculator( $user_defined_arguments ) {
+
+	if( false === WS_LS_IS_PRO_PLUS ) {
+		return ws_ls_display_pro_upgrade_notice_for_shortcode();
+	}
+
+	$arguments = shortcode_atts([   'load'                  => true,        // If the user is logged in, their use their user preferences
+									'show-form-on-results'  => true         // If true, always show the form when rendering results
+	], $user_defined_arguments );
+
+	// Enqueue front end scripts if needed (mainly for datepicker)
+	ws_ls_enqueue_files();
+
+	// If the user is logged in and we want to load existing data, then default to their preferences
+	$user_id = ( true === ws_ls_to_bool( $arguments[ 'load' ] ) ) ?
+					get_current_user_id() : NULL;
+
+	// Form submitted?
+	$form_submitted = ! empty( ws_ls_querystring_value( 'ws-ls-submit' ) );
+	$entry          = [ 'ws-ls-weight-stones' => '', 'ws-ls-weight-pounds' => '', 'ws-ls-weight-kg' => '', 'kg' => '' ];
+	$form_validated = false;
+	$form_visible   = false;
+	$html_output    = '';
+
+	// Form submitted?
+	if ( true === $form_submitted ) {
+		$entry = $_GET;
+
+		$entry[ 'kg' ] = ws_ls_form_post_handler_extract_weight( 'get' );
+
+		$form_validated = NULL !== $entry[ 'kg' ] &&
+		                    ! empty( $entry[ 'ws-ls-aim' ] ) &&
+		                        ! empty( $entry[ 'ws-ls-height' ] ) &&
+			                        ! empty( $entry[ 'ws-ls-gender' ] ) &&
+			                            ! empty( $entry[ 'ws-ls-activity-level' ] ) &&
+		                                    ! empty( $entry[ 'ws-ls-dob' ] );
+
+		$form_visible = ! $form_validated;
+
+	} else if ( false === $form_submitted &&
+	        false === empty( $user_id ) ) {
+
+		$entry                              = ws_ls_entry_get_latest( [ 'user-id' => $user_id, 'meta' => false ] );
+		$entry[ 'ws-ls-weight-stones' ]     = ( false === empty( $entry[ 'stones' ] ) ) ? $entry[ 'stones' ] : '';
+		$entry[ 'ws-ls-weight-pounds' ]     = ( false === empty( $entry[ 'pounds' ] ) ) ? $entry[ 'pounds' ] : '';
+		$entry[ 'ws-ls-weight-kg' ]         = ( false === empty( $entry[ 'kg' ] ) ) ? $entry[ 'kg' ] : '';
+		$entry[ 'ws-ls-aim' ]               = ws_ls_user_preferences_get( 'aim', $user_id, 0 );
+		$entry[ 'ws-ls-height' ]            = ws_ls_user_preferences_get( 'height', $user_id );
+		$entry[ 'ws-ls-gender' ]            = ws_ls_user_preferences_get( 'gender', $user_id );
+		$entry[ 'ws-ls-activity-level' ]    = ws_ls_user_preferences_get( 'activity_level', $user_id );
+		$entry[ 'ws-ls-dob' ]               = ws_ls_get_dob_for_display( $user_id );
+
+		$form_visible = true;
+	}
+
+	// Show results?
+	if ( true === $form_validated ) {
+
+		$bmr = ws_ls_calculate_bmr_raw( $entry[ 'ws-ls-gender' ], $entry[ 'kg' ], $entry[ 'ws-ls-height' ], 37 ); //TODO Calculat eage
+
+		$html_output .= 'show results: ' .$bmr;
+	}
+
+	// Show form
+	if ( true === $form_visible || true === ws_ls_to_bool( $arguments[ 'show-form-on-results' ] ) ) {
+
+		$html_output .= sprintf( '<form class="we-ls-weight-form" method="get" action="%s">', esc_url( get_permalink() ) );
+
+		if ( true === $form_submitted &&
+		     false === $form_validated ) {
+			$html_output .= sprintf( '<div class="ws-ls-error-summary" style="display: block;">
+						        <p>%1$s</p>
+                                <ul></ul>
+                            </div>',
+				__( 'Please ensure you have completed all of the fields.', WE_LS_SLUG ) );
+		}
+
+		//-------------------------------------------------------
+		// Weight
+		//-------------------------------------------------------
+
+		$data_unit = ws_ls_setting( 'weight-unit', $user_id );
+
+		$html_output .= sprintf( '<label class="yk-mt__label">%1$s:</label>', __( 'Current weight', WE_LS_SLUG ) );
+
+		// Stones field?
+		if ( 'stones_pounds' === $data_unit ) {
+			$html_output .= ws_ls_form_field_number( [      'name'          => 'ws-ls-weight-stones',
+			                                                'placeholder'   => __( 'st', WE_LS_SLUG ),
+			                                                'value'         => $entry[ 'ws-ls-weight-stones' ] ]);
+		}
+
+		// Pounds?
+		if ( true === in_array( $data_unit, [ 'stones_pounds', 'pounds_only' ] ) ) {
+			$html_output .= ws_ls_form_field_number( [      'name'          => 'ws-ls-weight-pounds',
+			                                                'placeholder'   => __( 'lb', WE_LS_SLUG ),
+			                                                'max'           => ( 'stones_pounds' ===  $data_unit ) ? '13.99' : '5000',
+			                                                'value' => $entry[ 'ws-ls-weight-pounds' ] ] );
+		}
+
+		// Kg
+		if ( 'kg' ===  $data_unit ) {
+			$html_output .= ws_ls_form_field_number( [      'name'          => 'ws-ls-weight-kg',
+			                                                'placeholder'   => __( 'kg', WE_LS_SLUG ),
+			                                                'value'         => $entry[ 'ws-ls-weight-kg' ] ]);
+		}
+
+		//-------------------------------------------------------
+		// Aim
+		//-------------------------------------------------------
+
+		$html_output .= ws_ls_form_field_select( [  'key' => 'ws-ls-aim', 'required' => true, 'label' => __( 'Your aim:' , WE_LS_SLUG ), 'values' => ws_ls_aims(),
+		                                            'selected' => ( false === empty( $entry[ 'ws-ls-aim' ] ) ) ? $entry[ 'ws-ls-aim' ] : '' , 'css-class' => 'ws-ls-aboutyou-field' ] );
+
+		//-------------------------------------------------------
+		// Height
+		//-------------------------------------------------------
+
+		$html_output .= ws_ls_form_field_select( [ 'key' => 'ws-ls-height', 'label' => __( 'Your height:', WE_LS_SLUG ), 'values' => ws_ls_heights(), 'empty-option' => true,
+		                                           'selected' => ( false === empty( $entry[ 'ws-ls-height' ] ) ) ? $entry[ 'ws-ls-height' ] : '', 'css-class' => 'ws-ls-aboutyou-field' ] );
+
+		//-------------------------------------------------------
+		// Gender
+		//-------------------------------------------------------
+
+		$html_output .= ws_ls_form_field_select( [ 'key' => 'ws-ls-gender', 'required' => true, 'label' => __( 'Your Gender:', WE_LS_SLUG ), 'values' => ws_ls_genders(),
+		                                           'selected' => ( false === empty( $entry[ 'ws-ls-gender' ] ) ) ? $entry[ 'ws-ls-gender' ] : '', 'css-class' => 'ws-ls-aboutyou-field' ] );
+
+		//-------------------------------------------------------
+		// Activity Level
+		//-------------------------------------------------------
+
+		$html_output .= ws_ls_form_field_select( [ 'key' => 'ws-ls-activity-level', 'required' => true, 'label' => __( 'Your Activity Level:', WE_LS_SLUG ), 'values' => ws_ls_activity_levels(),
+		                                           'selected' => ( false === empty( $entry[ 'ws-ls-activity-level' ] ) ) ? $entry[ 'ws-ls-activity-level' ] : '', 'css-class' => 'ws-ls-aboutyou-field' ] );
+
+		//-------------------------------------------------------
+		// Date of Birth
+		//-------------------------------------------------------
+
+		$html_output .= ws_ls_form_field_date( [    'name'          => 'ws-ls-dob',
+		                                            'id'            => 'ws-ls-dob',
+		                                            'title'         => __( 'Your Date of Birth:', WE_LS_SLUG ),
+		                                            'value'         => ( false === empty( $entry[ 'ws-ls-dob' ] ) ) ? $entry[ 'ws-ls-dob' ] : '',
+		                                            'css-class'     => 'we-ls-datepicker ws-ls-dob-field ws-ls-aboutyou-field',
+		                                            'show-label'    => true ] );
+
+
+		$html_output .= sprintf('<input type="submit" tabindex="%1$d" value="%2$s" name="ws-ls-submit" />',
+			ws_ls_form_tab_index_next(),
+			__( 'Calculate', WE_LS_SLUG )
+		);
+
+		$html_output .= '</form>';
+
+	}
+
+	return $html_output;
+}
+add_shortcode( 'wt-calculator', 'ws_ls_shortcode_calculator' );

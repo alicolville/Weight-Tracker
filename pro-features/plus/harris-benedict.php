@@ -203,9 +203,6 @@ function ws_ls_harris_benedict_render_table( $user_id, $missing_data_text = fals
 
 	$calories = ws_ls_harris_benedict_calculate_calories( $user_id );
 
-//	$calorie_intake = ws_ls_harris_benedict_calculate_calories_raw( $bmr, $gender, $activity_level, $user_id );
-
-
 	$missing_data_text = ( false === $missing_data_text ) ? __('Please ensure all relevant data to calculate calorie intake has been entered i.e. Activity Level, Date of Birth, Current Weight, Gender and Height.', WE_LS_SLUG ) : $missing_data_text;
 
 	if(false === empty($calories)) {

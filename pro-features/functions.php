@@ -744,6 +744,11 @@ function ws_ls_user_preferences_get( $field = 'gender', $user_id = false, $defau
 	// Default to logged in user if not user ID not specified.
 	$user_id = ( true === empty( $user_id ) ) ? get_current_user_id() : $user_id;
 
+	// Not logged in?
+	if ( true === empty( $user_id ) ) {
+		return NULL;
+	}
+
 	$user_preferences = ws_ls_db_user_preferences( $user_id );
 
 	if ( false === is_array( $user_preferences ) ) {
