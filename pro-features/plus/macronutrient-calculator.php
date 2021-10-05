@@ -109,9 +109,11 @@ function ws_ls_macro_calculate_raw( $calories, $user_id = false ) {
  * @param $user_id
  * @param bool $missing_data_text
  * @param string $additional_css_class
+ * @param null $macros
+ *
  * @return string
  */
-function ws_ls_macro_render_table($user_id, $missing_data_text = false, $additional_css_class = '') {
+function ws_ls_macro_render_table($user_id, $missing_data_text = false, $additional_css_class = '', $macros = NULL ) {
 
 	if( false === WS_LS_IS_PRO_PLUS ) {
 		return '';
@@ -119,7 +121,9 @@ function ws_ls_macro_render_table($user_id, $missing_data_text = false, $additio
 
     $user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
 
-    $macros = ws_ls_macro_calculate( $user_id );
+	if ( NULL === $macros ) {
+		$macros = ws_ls_macro_calculate( $user_id );
+	}
 
     $missing_data_text = ( false === $missing_data_text ) ? __('Please ensure all relevant data to calculate calorie intake has been entered i.e. Activity Level, Date of Birth, Current Weight, Gender and Height.', WE_LS_SLUG) : $missing_data_text;
 
@@ -353,12 +357,32 @@ function ws_ls_shortcode_calculator( $user_defined_arguments ) {
 		return ws_ls_display_pro_upgrade_notice_for_shortcode();
 	}
 
-	$arguments = shortcode_atts([   'load'                  => true,        // If the user is logged in, their use their user preferences
-									'show-form-on-results'  => true         // If true, always show the form when rendering results
+	$arguments = shortcode_atts([   'bmi-display'               => 'both',                          // Specifies what to show for BMI: "index", "label" or "both".
+									'load'                      => true,                            // If the user is logged in, their use their user preferences
+									'responsive-tables'         => true,                            // If set to true, responsive HTML tables will be used. If false, plain HTML tables.
+	                                'results-show-bmi'          => true,                            // Show BMI on results page
+									'results-show-bmr'          => true,                            // Show BMR on results page
+									'results-show-calories'     => true,                            // Show calories on results page
+									'results-show-macros'       => true,                            // Show macros on results page
+									'results-show-form'         => true,                            // If true, always show the form when rendering results
+									'text-bmi'                  => __( 'Your BMI is:', WE_LS_SLUG ),
+									'text-bmr'                  => __( 'Your BMR is:', WE_LS_SLUG ),
+									'text-calories'             => __( 'The following table illustrates your recommended calorie intake:', WE_LS_SLUG ),
+									'text-macros'               => __( 'The following table illustrates your recommended macronutrient intake:', WE_LS_SLUG ),
 	], $user_defined_arguments );
 
 	// Enqueue front end scripts if needed (mainly for datepicker)
 	ws_ls_enqueue_files();
+
+	$arguments[ 'responsive-tables' ]               = ws_ls_to_bool( $arguments[ 'responsive-tables' ] );
+	$arguments[ 'responsive-tables-css-class' ]     = '';
+
+
+	if ( true === $arguments[ 'responsive-tables' ] ) {
+		ws_ls_data_table_enqueue_scripts();
+		$arguments[ 'responsive-tables-css-class' ] = 'ws-ls-footable';
+	}
+
 
 	// If the user is logged in and we want to load existing data, then default to their preferences
 	$user_id = ( true === ws_ls_to_bool( $arguments[ 'load' ] ) ) ?
@@ -369,7 +393,7 @@ function ws_ls_shortcode_calculator( $user_defined_arguments ) {
 	$entry          = [ 'ws-ls-weight-stones' => '', 'ws-ls-weight-pounds' => '', 'ws-ls-weight-kg' => '', 'kg' => '' ];
 	$form_validated = false;
 	$form_visible   = false;
-	$html_output    = '';
+	$html_output    = '<div class="ws-ls-macro-calculator">';
 
 	// Form submitted?
 	if ( true === $form_submitted ) {
@@ -405,13 +429,43 @@ function ws_ls_shortcode_calculator( $user_defined_arguments ) {
 	// Show results?
 	if ( true === $form_validated ) {
 
-		$bmr = ws_ls_calculate_bmr_raw( $entry[ 'ws-ls-gender' ], $entry[ 'kg' ], $entry[ 'ws-ls-height' ], 37 ); //TODO Calculat eage
+		$age = ws_ls_age_from_dob( $entry[ 'ws-ls-dob' ] );
 
-		$html_output .= 'show results: ' .$bmr;
+		$bmr = ws_ls_calculate_bmr_raw( $entry[ 'ws-ls-gender' ], $entry[ 'kg' ], $entry[ 'ws-ls-height' ], $age );
+
+		if ( true === ws_ls_to_bool( $arguments[ 'results-show-bmr' ] ) ) {
+			$html_output .= sprintf( '<p class="ws-ls-calc-bmr">%1$s <span>%2$s</span>.</p>', esc_html( $arguments[ 'text-bmr' ] ), esc_html( $bmr ) );
+		}
+
+		if ( true === ws_ls_to_bool( $arguments[ 'results-show-bmi' ] ) ) {
+
+			$bmi = ws_ls_calculate_bmi( $entry[ 'ws-ls-height' ], $entry[ 'kg' ] );
+			$bmi = ws_ls_bmi_display( $bmi, $arguments[ 'bmi-display' ] );
+
+			$html_output .= sprintf( '<p class="ws-ls-calc-bmi">%1$s <span>%2$s</span>.</p>', esc_html( $arguments[ 'text-bmr' ] ), esc_html( $bmi ) );
+		}
+
+		$calories = ws_ls_harris_benedict_calculate_calories_raw( $bmr, $entry[ 'ws-ls-gender' ], $entry[ 'ws-ls-activity-level' ], false );
+
+		if ( true === ws_ls_to_bool( $arguments[ 'results-show-calories' ] ) ) {
+
+			$html_output .= sprintf( '<p class="ws-ls-calc-cals">%1$s</p>', esc_html( $arguments[ 'text-calories' ] ) );
+
+			$html_output .= ws_ls_harris_benedict_render_table( $user_id, false, $arguments[ 'responsive-tables-css-class' ], false, true, $calories );
+		}
+
+		if ( true === ws_ls_to_bool( $arguments[ 'results-show-macros' ] ) ) {
+
+			$html_output    .= sprintf( '<p class="ws-ls-calc-macros">%1$s</p>', esc_html( $arguments[ 'text-macros' ] ) );
+
+			$macros         = ws_ls_macro_calculate_raw( $calories );
+
+			$html_output    .= ws_ls_macro_render_table( $user_id, false, $arguments[ 'responsive-tables-css-class' ], $macros );
+		}
 	}
 
 	// Show form
-	if ( true === $form_visible || true === ws_ls_to_bool( $arguments[ 'show-form-on-results' ] ) ) {
+	if ( true === $form_visible || true === ws_ls_to_bool( $arguments[ 'results-show-form' ] ) ) {
 
 		$html_output .= sprintf( '<form class="we-ls-weight-form" method="get" action="%s">', esc_url( get_permalink() ) );
 
@@ -500,8 +554,9 @@ function ws_ls_shortcode_calculator( $user_defined_arguments ) {
 		);
 
 		$html_output .= '</form>';
-
 	}
+
+	$html_output .= '</div>';
 
 	return $html_output;
 }

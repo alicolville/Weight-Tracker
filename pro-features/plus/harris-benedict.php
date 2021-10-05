@@ -191,9 +191,11 @@ function ws_ls_harris_benedict_meal_ratio_defaults() {
  * @param string $additional_css_class
  * @param bool $email
  * @param bool $include_range
+ * @param null $calories
+ *
  * @return string
  */
-function ws_ls_harris_benedict_render_table( $user_id, $missing_data_text = false,  $additional_css_class = '', $email = false, $include_range = true ) {
+function ws_ls_harris_benedict_render_table( $user_id, $missing_data_text = false,  $additional_css_class = '', $email = false, $include_range = true, $calories = NULL ) {
 
 	if( false === WS_LS_IS_PRO_PLUS ) {
 		return '';
@@ -201,7 +203,9 @@ function ws_ls_harris_benedict_render_table( $user_id, $missing_data_text = fals
 
 	$user_id = ( true === empty( $user_id ) ) ? get_current_user_id() : $user_id;
 
-	$calories = ws_ls_harris_benedict_calculate_calories( $user_id );
+	if ( NULL === $calories ) {
+		$calories = ws_ls_harris_benedict_calculate_calories( $user_id );
+	}
 
 	$missing_data_text = ( false === $missing_data_text ) ? __('Please ensure all relevant data to calculate calorie intake has been entered i.e. Activity Level, Date of Birth, Current Weight, Gender and Height.', WE_LS_SLUG ) : $missing_data_text;
 
@@ -334,6 +338,8 @@ function ws_ls_harris_benedict_render_table( $user_id, $missing_data_text = fals
 	}
 
 }
+
+
 
 /**
  * Render the shortcode [wlt-calories]

@@ -614,17 +614,34 @@ function ws_ls_get_age_from_dob( $user_id = NULL ){
 
     $dob = ws_ls_get_dob( $user_id );
 
-    if( true === empty( $dob ) || '0000-00-00 00:00:00' === $dob ) {
+	$age = ws_ls_age_from_dob( $dob );
+
+    if( true === empty( $age ) ) {
 		return NULL;
     }
-
-    $dob        = new DateTime( $dob );
-    $today      = new DateTime('today' );
-    $age        = $dob->diff( $today )->y;
 
 	ws_ls_cache_user_set( $user_id, 'age', $age );
 
 	return $age;
+}
+
+/**
+ * Calculate age from DOB
+ * @param $dob
+ *
+ * @return int|null
+ * @throws Exception
+ */
+function ws_ls_age_from_dob( $dob ) {
+
+	if( true === empty( $dob ) || '0000-00-00 00:00:00' === $dob ) {
+		return NULL;
+	}
+
+	$dob    = new DateTime( $dob );
+	$today  = new DateTime('today' );
+
+	return $dob->diff( $today )->y;
 }
 
 /**
