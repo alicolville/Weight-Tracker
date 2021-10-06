@@ -351,6 +351,14 @@ function ws_ls_get_macro_name( $key ) {
     return $key;
 }
 
+/**
+ * [wt-calculator]
+ *
+ * @param $user_defined_arguments
+ *
+ * @return string
+ * @throws Exception
+ */
 function ws_ls_shortcode_calculator( $user_defined_arguments ) {
 
 	if( false === WS_LS_IS_PRO_PLUS ) {
