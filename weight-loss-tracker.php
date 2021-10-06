@@ -161,6 +161,7 @@ if ( true === ws_ls_settings_challenges_enabled() ) {
 require_once( WS_LS_ABSPATH . 'pro-features/plus/bmr.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/plus/harris-benedict.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/plus/macronutrient-calculator.php' );
+require_once( WS_LS_ABSPATH . 'pro-features/plus/shortcode.calculator.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/export/inc.php' );
 
 // Gravity Forms
