@@ -88,7 +88,9 @@ function ws_ls_shortcode_calculator( $user_defined_arguments ) {
 	// Show results?
 	if ( true === $form_validated ) {
 
-		$age = ws_ls_age_from_dob( $entry[ 'ws-ls-dob' ] );
+		$dob = ws_ls_convert_date_to_iso( $entry[ 'ws-ls-dob' ] );
+
+		$age = ws_ls_age_from_dob( $dob );
 
 		$bmr = ws_ls_calculate_bmr_raw( $entry[ 'ws-ls-gender' ], $entry[ 'kg' ], $entry[ 'ws-ls-height' ], $age );
 
