@@ -588,7 +588,7 @@ function ws_ls_get_dob_for_display( $user_id = NULL, $not_specified_text = '', $
 
 		// Include age?
 		if(true === $include_age) {
-			$html .= ' ('. ws_ls_get_age_from_dob( $user_id ) . ')';
+			$html .= ' (' . ws_ls_user_get_age_from_dob( $user_id ) . ')';
 		}
 
 		return $html;
@@ -604,7 +604,7 @@ function ws_ls_get_dob_for_display( $user_id = NULL, $not_specified_text = '', $
  * @return bool|int
  * @throws Exception
  */
-function ws_ls_get_age_from_dob( $user_id = NULL ){
+function ws_ls_user_get_age_from_dob( $user_id = NULL ){
 
     $user_id = ( true === empty( $user_id ) ) ? get_current_user_id() : $user_id;
 

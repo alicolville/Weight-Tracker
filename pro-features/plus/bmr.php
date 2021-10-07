@@ -35,7 +35,7 @@ function ws_ls_calculate_bmr( $user_id = false, $return_error = true ) {
     }
 
     // Check if user has DOB - calculate age
-    $age = ws_ls_get_age_from_dob( $user_id );
+    $age = ws_ls_user_get_age_from_dob( $user_id );
 
     if( true === empty( $age ) ) {
         return ( $return_error ) ? __('No Date of Birth specified or too young', WE_LS_SLUG ) : NULL;
