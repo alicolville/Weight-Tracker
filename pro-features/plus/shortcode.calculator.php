@@ -128,7 +128,7 @@ function ws_ls_shortcode_calculator( $user_defined_arguments ) {
 	// Show form
 	if ( true === $form_visible || true === ws_ls_to_bool( $arguments[ 'results-show-form' ] ) ) {
 
-		$html_output .= sprintf( '<form class="we-ls-weight-form" method="get" action="%s">', esc_url( get_permalink() ) );
+		$html_output .= sprintf( '<form class="we-ls-weight-form ws-ls-calculator-form" method="get" action="%s">', esc_url( get_permalink() ) );
 
 		if ( true === $form_submitted &&
 		     false === $form_validated ) {
@@ -173,28 +173,28 @@ function ws_ls_shortcode_calculator( $user_defined_arguments ) {
 		// Aim
 		//-------------------------------------------------------
 
-		$html_output .= ws_ls_form_field_select( [  'key' => 'ws-ls-aim', 'required' => true, 'label' => __( 'Your aim:' , WE_LS_SLUG ), 'values' => ws_ls_aims(),
+		$html_output .= ws_ls_form_field_select( [  'key' => 'ws-ls-aim', 'required' => true, 'label' => __( 'Your aim:' , WE_LS_SLUG ), 'values' => ws_ls_aims(), 'include-div' => true,
 		                                            'selected' => ( false === empty( $entry[ 'ws-ls-aim' ] ) ) ? $entry[ 'ws-ls-aim' ] : '' , 'css-class' => 'ws-ls-aboutyou-field' ] );
 
 		//-------------------------------------------------------
 		// Height
 		//-------------------------------------------------------
 
-		$html_output .= ws_ls_form_field_select( [ 'key' => 'ws-ls-height', 'label' => __( 'Your height:', WE_LS_SLUG ), 'values' => ws_ls_heights(), 'empty-option' => true,
+		$html_output .= ws_ls_form_field_select( [ 'key' => 'ws-ls-height', 'label' => __( 'Your height:', WE_LS_SLUG ), 'values' => ws_ls_heights(), 'empty-option' => true, 'include-div' => true,
 		                                           'selected' => ( false === empty( $entry[ 'ws-ls-height' ] ) ) ? $entry[ 'ws-ls-height' ] : '', 'css-class' => 'ws-ls-aboutyou-field' ] );
 
 		//-------------------------------------------------------
 		// Gender
 		//-------------------------------------------------------
 
-		$html_output .= ws_ls_form_field_select( [ 'key' => 'ws-ls-gender', 'required' => true, 'label' => __( 'Your Gender:', WE_LS_SLUG ), 'values' => ws_ls_genders(),
+		$html_output .= ws_ls_form_field_select( [ 'key' => 'ws-ls-gender', 'required' => true, 'label' => __( 'Your Gender:', WE_LS_SLUG ), 'values' => ws_ls_genders(), 'include-div' => true,
 		                                           'selected' => ( false === empty( $entry[ 'ws-ls-gender' ] ) ) ? $entry[ 'ws-ls-gender' ] : '', 'css-class' => 'ws-ls-aboutyou-field' ] );
 
 		//-------------------------------------------------------
 		// Activity Level
 		//-------------------------------------------------------
 
-		$html_output .= ws_ls_form_field_select( [ 'key' => 'ws-ls-activity-level', 'required' => true, 'label' => __( 'Your Activity Level:', WE_LS_SLUG ), 'values' => ws_ls_activity_levels(),
+		$html_output .= ws_ls_form_field_select( [ 'key' => 'ws-ls-activity-level', 'required' => true, 'label' => __( 'Your Activity Level:', WE_LS_SLUG ), 'values' => ws_ls_activity_levels(), 'include-div' => true,
 		                                           'selected' => ( false === empty( $entry[ 'ws-ls-activity-level' ] ) ) ? $entry[ 'ws-ls-activity-level' ] : '', 'css-class' => 'ws-ls-aboutyou-field' ] );
 
 		//-------------------------------------------------------
@@ -203,6 +203,7 @@ function ws_ls_shortcode_calculator( $user_defined_arguments ) {
 
 		$html_output .= ws_ls_form_field_date( [    'name'          => 'ws-ls-dob',
 		                                            'id'            => 'ws-ls-dob',
+													'include-div' => true,
 		                                            'title'         => __( 'Your Date of Birth:', WE_LS_SLUG ),
 		                                            'value'         => ( false === empty( $entry[ 'ws-ls-dob' ] ) ) ? $entry[ 'ws-ls-dob' ] : '',
 		                                            'css-class'     => 'we-ls-datepicker ws-ls-dob-field ws-ls-aboutyou-field',
@@ -214,7 +215,7 @@ function ws_ls_shortcode_calculator( $user_defined_arguments ) {
 		if ( false === empty( $page_id ) ) {
 			$html_output .= sprintf( '<input type="hidden" name="page_id" value="%d" />', $page_id );
 		}
-		
+
 		$html_output .= sprintf('<input type="submit" tabindex="%1$d" value="%2$s" name="ws-ls-submit" />',
 			ws_ls_form_tab_index_next(),
 			__( 'Calculate', WE_LS_SLUG )
