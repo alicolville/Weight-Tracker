@@ -103,7 +103,7 @@ function ws_ls_shortcode_calculator( $user_defined_arguments ) {
 			$bmi = ws_ls_calculate_bmi( $entry[ 'ws-ls-height' ], $entry[ 'kg' ] );
 			$bmi = ws_ls_bmi_display( $bmi, $arguments[ 'bmi-display' ] );
 
-			$html_output .= sprintf( '<p class="ws-ls-calc-bmi">%1$s <span>%2$s</span>.</p>', esc_html( $arguments[ 'text-bmr' ] ), esc_html( $bmi ) );
+			$html_output .= sprintf( '<p class="ws-ls-calc-bmi">%1$s <span>%2$s</span>.</p>', esc_html( $arguments[ 'text-bmi' ] ), esc_html( $bmi ) );
 		}
 
 		$calories = ws_ls_harris_benedict_calculate_calories_raw( $bmr, $entry[ 'ws-ls-gender' ], $entry[ 'ws-ls-activity-level' ], false );
@@ -208,7 +208,13 @@ function ws_ls_shortcode_calculator( $user_defined_arguments ) {
 		                                            'css-class'     => 'we-ls-datepicker ws-ls-dob-field ws-ls-aboutyou-field',
 		                                            'show-label'    => true ] );
 
+		// Page ID in querystring?
+		$page_id = ws_ls_querystring_value( 'page_id' );
 
+		if ( false === empty( $page_id ) ) {
+			$html_output .= sprintf( '<input type="hidden" name="page_id" value="%d" />', $page_id );
+		}
+		
 		$html_output .= sprintf('<input type="submit" tabindex="%1$d" value="%2$s" name="ws-ls-submit" />',
 			ws_ls_form_tab_index_next(),
 			__( 'Calculate', WE_LS_SLUG )
