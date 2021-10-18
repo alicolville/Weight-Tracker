@@ -156,7 +156,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 == Upgrade Notice ==
 
-9.0 - Non weight entries! Support for custom field entries only! New custom field shortcodes.
+9.2 - New shortcode [wt-calculator]
 
 == Changelog ==
 
@@ -167,6 +167,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 * Improvement: Added the filter "wlt-form-custom-field-row". Specifying this will allow you to inject HTML before each custom field on a form.
 * Change: Changed the underlying code that powers BMR, Calorie and Macro N calculations to not be exclusively tied to user accounts. This is to support upcoming features.
 * Bug fix: Minor CSS fix based on https://github.com/alicolville/Weight-Tracker/issues/386. Thanks @shakethatweight-simon
+* Bug fix: Removed extra slashes from custom field dropdown and select options. https://github.com/alicolville/Weight-Tracker/issues/385
 
 = 9.1.1 =
 

@@ -219,8 +219,8 @@
 																				</td>
 																			</tr>',
 																			$i,
-																			( false === empty( $meta_field[ 'options-values' ][ $i ] ) ) ? $meta_field[ 'options-values' ][ $i ] : '',
-																			( false === empty( $meta_field[ 'options-labels' ][ $i ] ) ) ? $meta_field[ 'options-labels' ][ $i ] : '',
+																			( false === empty( $meta_field[ 'options-values' ][ $i ] ) ) ? stripslashes( $meta_field[ 'options-values' ][ $i ] ) : '',
+																			( false === empty( $meta_field[ 'options-labels' ][ $i ] ) ) ? stripslashes( [ 'options-labels' ][ $i ] ) : '',
 																			( $i >= 5 ) ? 'ws-ls-hide' : ''
 																);
 															}
