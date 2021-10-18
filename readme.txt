@@ -1,10 +1,10 @@
 ﻿=== Weight Tracker ===
 Contributors: aliakro
 Tags: weight,tracker,chart,bmi,bmr,macronutrient,measure,awards,custom fields,history,measurements,data
-Requires at least: 5.2
-Tested up to: 5.7
+Requires at least: 5.7
+Tested up to: 5.8.1
 Stable tag: 9.2
-Requires PHP: 7.2
+Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate Link: https://www.paypal.me/yeken
