@@ -536,7 +536,22 @@ function ws_ls_is_female( $user_id = NULL ) {
     $user_id    = ( true === empty( $user_id ) ) ? get_current_user_id() : $user_id;
     $gender     = ws_ls_user_preferences_get( 'gender', $user_id );
 
-    return ( false === empty( $gender ) && 1 == (int) $gender ) ? true : false;
+    return ws_ls_is_female_raw( $gender );
+}
+
+/**
+ * Depending on Gender value, return true if female
+ * @param $gender
+ *
+ * @return bool
+ */
+function ws_ls_is_female_raw( $gender ) {
+
+	if ( true === empty( $gender ) ) {
+		return NULL;
+	}
+
+	return ( 1 === (int) $gender );
 }
 
 /**
@@ -573,7 +588,7 @@ function ws_ls_get_dob_for_display( $user_id = NULL, $not_specified_text = '', $
 
 		// Include age?
 		if(true === $include_age) {
-			$html .= ' ('. ws_ls_get_age_from_dob( $user_id ) . ')';
+			$html .= ' (' . ws_ls_user_get_age_from_dob( $user_id ) . ')';
 		}
 
 		return $html;
@@ -589,7 +604,7 @@ function ws_ls_get_dob_for_display( $user_id = NULL, $not_specified_text = '', $
  * @return bool|int
  * @throws Exception
  */
-function ws_ls_get_age_from_dob( $user_id = NULL ){
+function ws_ls_user_get_age_from_dob( $user_id = NULL ){
 
     $user_id = ( true === empty( $user_id ) ) ? get_current_user_id() : $user_id;
 
@@ -599,17 +614,34 @@ function ws_ls_get_age_from_dob( $user_id = NULL ){
 
     $dob = ws_ls_get_dob( $user_id );
 
-    if( true === empty( $dob ) || '0000-00-00 00:00:00' === $dob ) {
+	$age = ws_ls_age_from_dob( $dob );
+
+    if( true === empty( $age ) ) {
 		return NULL;
     }
-
-    $dob        = new DateTime( $dob );
-    $today      = new DateTime('today' );
-    $age        = $dob->diff( $today )->y;
 
 	ws_ls_cache_user_set( $user_id, 'age', $age );
 
 	return $age;
+}
+
+/**
+ * Calculate age from DOB
+ * @param $dob
+ *
+ * @return int|null
+ * @throws Exception
+ */
+function ws_ls_age_from_dob( $dob ) {
+
+	if( true === empty( $dob ) || '0000-00-00 00:00:00' === $dob ) {
+		return NULL;
+	}
+
+	$dob    = new DateTime( $dob );
+	$today  = new DateTime('today' );
+
+	return $dob->diff( $today )->y;
 }
 
 /**
@@ -728,6 +760,11 @@ function ws_ls_user_preferences_get( $field = 'gender', $user_id = false, $defau
 
 	// Default to logged in user if not user ID not specified.
 	$user_id = ( true === empty( $user_id ) ) ? get_current_user_id() : $user_id;
+
+	// Not logged in?
+	if ( true === empty( $user_id ) ) {
+		return NULL;
+	}
 
 	$user_preferences = ws_ls_db_user_preferences( $user_id );
 

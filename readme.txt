@@ -1,10 +1,10 @@
 ﻿=== Weight Tracker ===
 Contributors: aliakro
 Tags: weight,tracker,chart,bmi,bmr,macronutrient,measure,awards,custom fields,history,measurements,data
-Requires at least: 5.2
-Tested up to: 5.7
-Stable tag: 9.1.1
-Requires PHP: 7.2
+Requires at least: 5.7
+Tested up to: 5.8.1
+Stable tag: 9.2
+Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate Link: https://www.paypal.me/yeken
@@ -156,9 +156,18 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 == Upgrade Notice ==
 
-9.0 - Non weight entries! Support for custom field entries only! New custom field shortcodes.
+9.2 - New shortcode [wt-calculator]
 
 == Changelog ==
+
+= 9.2 =
+
+* New feature: New shortcode [wt-calculator]. Allow logged in and non-logged in users to calculate their BMI, BMR, suggested calorie intake and macronutrients by varying the input parameters. https://docs.yeken.uk/shortcodes/wt-calculator.html
+* Improvement: New argument "always-show" for [wt-shortcode-optin]. If set to true, the buttons shall always be displayed regardless of user choice. https://docs.yeken.uk/shortcodes/wt-challenges-optin.html
+* Improvement: Added the filter "wlt-form-custom-field-row". Specifying this will allow you to inject HTML before each custom field on a form.
+* Change: Changed the underlying code that powers BMR, Calorie and Macro N calculations to not be exclusively tied to user accounts. This is to support upcoming features.
+* Bug fix: Minor CSS fix based on https://github.com/alicolville/Weight-Tracker/issues/386. Thanks @shakethatweight-simon
+* Bug fix: Removed extra slashes from custom field dropdown and select options. https://github.com/alicolville/Weight-Tracker/issues/385
 
 = 9.1.1 =
 

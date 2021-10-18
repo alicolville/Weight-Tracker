@@ -21,7 +21,7 @@ The shortcode supports the following arguments:
 |css-class	|Specify an additional CSS class for the gallery frame.|	String (empty by default)|	[wt-gallery css-class="a-css-class"]
 |direction	|Order to show photos in.	|'desc' (default) to show newest first or 'asc' for oldest first.|	[wt-gallery direction="desc"]
 |custom-fields-hide-from-shortcodes	|Determines whether or not to exclude all photo fields marked as "Hide from shortcodes"|	True (default) or False|	[wt-gallery custom-fields-hide-from-shortcodes="false"]
-|custom-fields-to-use	|Keys of one or more Custom Field Photo keys to display within the gallery.	|Defaults to all enabled Custom Photo Fields if not specified	|[wt-gallery custom-fields-to-use="24"] [wt-gallery custom-fields-to-use="34,53"]
+|custom-fields-to-use	|Keys/slugs of one or more photo custom fields to display within the gallery.	|Defaults to all enabled photo custom photo fields if not specified	|[wt-gallery custom-fields-to-use="24"] [wt-gallery custom-fields-to-use="leg,waist"]
 |error-message|	Message to display if a no photos could not be found.	|String. Defaults to an in-build message.	|[wt-gallery error-message="No photos"]
 |height|	Allows you to specify the maximum height of the gallery.	|Number (default: 800).	|[wt-gallery height="400"]
 |limit	|Maximum number of photos to show.	|Number (default: 20).	|[wt-gallery limit="40"]

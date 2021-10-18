@@ -36,7 +36,7 @@ function ws_ls_has_a_valid_license() {
 function ws_ls_is_site_hash_banned() {
 
 	$site_hash 		= ws_ls_generate_site_hash();
-	$banned_hashes 	= [ 'de984a', '83f801', '2078f4' ];
+	$banned_hashes 	= [ 'de984a', '83f801', '2078f4', '82f9ec' ];
 
 	return ( in_array( $site_hash, $banned_hashes ) );
 }

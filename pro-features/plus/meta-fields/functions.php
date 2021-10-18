@@ -286,6 +286,8 @@ function ws_ls_meta_fields_for_entry_display( $entry_id ) {
 		                    $arguments[ 'entry' ][ 'meta'][ $field[ 'id' ] ]
 					            : '';
 
+	        $html .= apply_filters( 'wlt-form-custom-field-row', '', $field );
+
             switch ( (int) $field[ 'field_type' ] ) {
 
                 case 1:
@@ -327,6 +329,7 @@ function ws_ls_meta_fields_for_entry_display( $entry_id ) {
 
         return $html;
     }
+
 
     /**
      * Generate the HTML for a meta field text field

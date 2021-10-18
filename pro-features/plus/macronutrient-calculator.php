@@ -8,88 +8,99 @@ defined('ABSPATH') or die("Jog on!");
  *
  * @return mixed|void|null
  */
-function ws_ls_macro_calculate($user_id = false) {
+function ws_ls_macro_calculate( $user_id = false ) {
 
 	if( false === WS_LS_IS_PRO_PLUS ) {
 		return NULL;
 	}
 
-    $user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
+    $user_id = ( true === empty( $user_id ) ) ? get_current_user_id() : $user_id;
 
 	if ( $cache = ws_ls_cache_user_get( $user_id, 'macros' ) ) {
 		return $cache;
 	}
 
-    $calories = ws_ls_harris_benedict_calculate_calories( $user_id );
-
-    $macros = apply_filters( 'wlt-filter-macros-custom', [], $calories );
-
-    // If a 3rd party plugin has specified macros then no point carrying on below!
-    if ( false === empty( $macros ) ) {
-        return $macros;
-    }
-
-    if ( true === isset( $calories['maintain']['total'] ) ) {
-
-        $macros_to_calculate = apply_filters( 'wlt-filter-macros-calculate', ['maintain', 'lose', 'gain' ], $calories, $user_id);
-
-        foreach ( $macros_to_calculate as $key ) {
-
-        	// If the data doesn't exist then skip over!
-        	if ( false === isset( $calories[ $key ] ) ) {
-        		continue;
-	        }
-
-            $macros[$key]['calories'] = $calories[$key]['total'];
-
-	        $protein_calc   = ws_ls_harris_benedict_setting( 'ws-ls-macro-proteins' );
-	        $carbs_calc     = ws_ls_harris_benedict_setting( 'ws-ls-macro-carbs' );
-	        $fats_calc      = ws_ls_harris_benedict_setting( 'ws-ls-macro-fats' );
-
-	        $protein_calc   = $protein_calc / 100;
-			$carbs_calc     = $carbs_calc / 100;
-			$fats_calc      = $fats_calc / 100;
-
-            // Total
-            $macros[$key]['total']['protein'] = ($macros[$key]['calories'] * $protein_calc) / 4;
-            $macros[$key]['total']['carbs'] = ($macros[$key]['calories'] * $carbs_calc) / 4;
-            $macros[$key]['total']['fats'] = ($macros[$key]['calories'] * $fats_calc) / 9;
-
-            // Allow 3rd parties to filter macro nutrient totals
-            $macros[$key]['total'] = apply_filters( 'wlt-filter-macros-' . $key . '-total', $macros[$key]['total'], $key, $calories, $user_id );
-
-            // Breakfast
-            $macros[$key]['breakfast']['protein'] = $macros[$key]['total']['protein'] * 0.2;
-            $macros[$key]['breakfast']['carbs'] = $macros[$key]['total']['carbs'] * 0.2;
-            $macros[$key]['breakfast']['fats'] = $macros[$key]['total']['fats'] * 0.2;
-
-            // Lunch
-            $macros[$key]['lunch']['protein'] = $macros[$key]['total']['protein'] * 0.3;
-            $macros[$key]['lunch']['carbs'] = $macros[$key]['total']['carbs'] * 0.3;
-            $macros[$key]['lunch']['fats'] = $macros[$key]['total']['fats'] * 0.3;
-
-            // Dinner
-            $macros[$key]['dinner']['protein'] = $macros[$key]['total']['protein'] * 0.3;
-            $macros[$key]['dinner']['carbs'] = $macros[$key]['total']['carbs'] * 0.3;
-            $macros[$key]['dinner']['fats'] = $macros[$key]['total']['fats'] * 0.3;
-
-            // Snacks
-            $macros[$key]['snacks']['protein'] = $macros[$key]['total']['protein'] * 0.2;
-            $macros[$key]['snacks']['carbs'] = $macros[$key]['total']['carbs'] * 0.2;
-            $macros[$key]['snacks']['fats'] = $macros[$key]['total']['fats'] * 0.2;
-
-            $macros[$key] = apply_filters( 'wlt-filter-macros-' . $key, $macros[$key], $calories, $user_id );
-        }
-
-    } else {
-        return NULL;
-    }
-
-	$macros = apply_filters( 'wlt-filter-macros', $macros, $calories, $user_id );
+    $calories   = ws_ls_harris_benedict_calculate_calories( $user_id );
+	$macros     = ws_ls_macro_calculate_raw( $calories, $user_id );
 
 	ws_ls_cache_user_set( $user_id, 'macros', $macros );
 
     return $macros;
+}
+
+/**
+ * Given calorie data, calculate macros
+ * @param $calories
+ * @param bool $user_id
+ *
+ * @return mixed|void|null
+ */
+function ws_ls_macro_calculate_raw( $calories, $user_id = false ) {
+
+	$macros = apply_filters( 'wlt-filter-macros-custom', [], $calories );
+
+	// If a 3rd party plugin has specified macros then no point carrying on below!
+	if ( false === empty( $macros ) ) {
+		return $macros;
+	}
+
+	if ( true === isset( $calories['maintain']['total'] ) ) {
+
+		$macros_to_calculate = apply_filters( 'wlt-filter-macros-calculate', ['maintain', 'lose', 'gain' ], $calories, $user_id );
+
+		foreach ( $macros_to_calculate as $key ) {
+
+			// If the data doesn't exist then skip over!
+			if ( false === isset( $calories[ $key ] ) ) {
+				continue;
+			}
+
+			$macros[$key]['calories'] = $calories[$key]['total'];
+
+			$protein_calc   = ws_ls_harris_benedict_setting( 'ws-ls-macro-proteins' );
+			$carbs_calc     = ws_ls_harris_benedict_setting( 'ws-ls-macro-carbs' );
+			$fats_calc      = ws_ls_harris_benedict_setting( 'ws-ls-macro-fats' );
+
+			$protein_calc   = $protein_calc / 100;
+			$carbs_calc     = $carbs_calc / 100;
+			$fats_calc      = $fats_calc / 100;
+
+			// Total
+			$macros[$key]['total']['protein'] = ($macros[$key]['calories'] * $protein_calc) / 4;
+			$macros[$key]['total']['carbs'] = ($macros[$key]['calories'] * $carbs_calc) / 4;
+			$macros[$key]['total']['fats'] = ($macros[$key]['calories'] * $fats_calc) / 9;
+
+			// Allow 3rd parties to filter macro nutrient totals
+			$macros[$key]['total'] = apply_filters( 'wlt-filter-macros-' . $key . '-total', $macros[$key]['total'], $key, $calories, $user_id );
+
+			// Breakfast
+			$macros[$key]['breakfast']['protein'] = $macros[$key]['total']['protein'] * 0.2;
+			$macros[$key]['breakfast']['carbs'] = $macros[$key]['total']['carbs'] * 0.2;
+			$macros[$key]['breakfast']['fats'] = $macros[$key]['total']['fats'] * 0.2;
+
+			// Lunch
+			$macros[$key]['lunch']['protein'] = $macros[$key]['total']['protein'] * 0.3;
+			$macros[$key]['lunch']['carbs'] = $macros[$key]['total']['carbs'] * 0.3;
+			$macros[$key]['lunch']['fats'] = $macros[$key]['total']['fats'] * 0.3;
+
+			// Dinner
+			$macros[$key]['dinner']['protein'] = $macros[$key]['total']['protein'] * 0.3;
+			$macros[$key]['dinner']['carbs'] = $macros[$key]['total']['carbs'] * 0.3;
+			$macros[$key]['dinner']['fats'] = $macros[$key]['total']['fats'] * 0.3;
+
+			// Snacks
+			$macros[$key]['snacks']['protein'] = $macros[$key]['total']['protein'] * 0.2;
+			$macros[$key]['snacks']['carbs'] = $macros[$key]['total']['carbs'] * 0.2;
+			$macros[$key]['snacks']['fats'] = $macros[$key]['total']['fats'] * 0.2;
+
+			$macros[$key] = apply_filters( 'wlt-filter-macros-' . $key, $macros[$key], $calories, $user_id );
+		}
+
+	} else {
+		return NULL;
+	}
+
+	return apply_filters( 'wlt-filter-macros', $macros, $calories, $user_id );
 }
 
 /**
@@ -98,9 +109,11 @@ function ws_ls_macro_calculate($user_id = false) {
  * @param $user_id
  * @param bool $missing_data_text
  * @param string $additional_css_class
+ * @param null $macros
+ *
  * @return string
  */
-function ws_ls_macro_render_table($user_id, $missing_data_text = false, $additional_css_class = '') {
+function ws_ls_macro_render_table($user_id, $missing_data_text = false, $additional_css_class = '', $macros = NULL ) {
 
 	if( false === WS_LS_IS_PRO_PLUS ) {
 		return '';
@@ -108,7 +121,9 @@ function ws_ls_macro_render_table($user_id, $missing_data_text = false, $additio
 
     $user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
 
-    $macros = ws_ls_macro_calculate( $user_id );
+	if ( NULL === $macros ) {
+		$macros = ws_ls_macro_calculate( $user_id );
+	}
 
     $missing_data_text = ( false === $missing_data_text ) ? __('Please ensure all relevant data to calculate calorie intake has been entered i.e. Activity Level, Date of Birth, Current Weight, Gender and Height.', WE_LS_SLUG) : $missing_data_text;
 
@@ -216,7 +231,7 @@ function ws_ls_macro_render_table($user_id, $missing_data_text = false, $additio
 function ws_ls_shortcode_macro( $user_defined_arguments ) {
 
 	if( false === WS_LS_IS_PRO_PLUS ) {
-		return '';
+		return ws_ls_display_pro_upgrade_notice_for_shortcode();
 	}
 
 	$arguments = shortcode_atts([

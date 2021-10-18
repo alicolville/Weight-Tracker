@@ -5,10 +5,10 @@ defined('ABSPATH') or die('Jog on!');
 /**
  * Plugin Name:         Weight Tracker
  * Description:         Allow your users to track their weight, body measurements, photos and other pieces of custom data. Display in charts, tables, shortcodes and widgets. Manage their data, issue awards, email notifications, etc! Provide advanced data on Body Mass Index (BMI), Basal Metabolic Rate (BMR), Calorie intake, Harris Benedict Formula, Macronutrients Calculator and more.
- * Version:             9.1.1
- * Requires at least:   5.2
- * Tested up to: 		5.8
- * Requires PHP:        7.2
+ * Version:             9.2
+ * Requires at least:   5.7
+ * Tested up to: 		5.8.1
+ * Requires PHP:        7.4
  * Author:              Ali Colville
  * Author URI:          https://www.YeKen.uk
  * License:             GPL v2 or later
@@ -18,7 +18,7 @@ defined('ABSPATH') or die('Jog on!');
  */
 
 define( 'WS_LS_ABSPATH', plugin_dir_path( __FILE__ ) );
-define( 'WE_LS_CURRENT_VERSION', '9.1.1' );
+define( 'WE_LS_CURRENT_VERSION', '9.2' );
 define( 'WE_LS_DB_VERSION', '9.1' );
 define( 'WE_LS_TITLE', 'Weight Tracker' );
 define( 'WE_LS_SLUG', 'weight-loss-tracker' );
@@ -161,6 +161,7 @@ if ( true === ws_ls_settings_challenges_enabled() ) {
 require_once( WS_LS_ABSPATH . 'pro-features/plus/bmr.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/plus/harris-benedict.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/plus/macronutrient-calculator.php' );
+require_once( WS_LS_ABSPATH . 'pro-features/plus/shortcode.calculator.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/export/inc.php' );
 
 // Gravity Forms

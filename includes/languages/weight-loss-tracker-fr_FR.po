@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Weight Loss Tracker\n"
-"POT-Creation-Date: 2021-06-17 16:23+0100\n"
-"PO-Revision-Date: 2021-06-17 16:23+0100\n"
+"POT-Creation-Date: 2021-10-18 15:29+0100\n"
+"PO-Revision-Date: 2021-10-18 15:29+0100\n"
 "Last-Translator: \n"
 "Language-Team: Yeken - email@yeken.uk\n"
 "Language: fr\n"
@@ -23,7 +23,7 @@ msgid "Add / Edit an Award"
 msgstr "Ajouter / Modifier une récompense"
 
 #: admin-pages/awards/page-awards-add-update.php:102
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:68
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:69
 msgid "Please complete all mandatory fields."
 msgstr "S'il vous plaît, veuillez remplir tous les champs obligatoires."
 
@@ -73,19 +73,19 @@ msgstr "Stones"
 
 #: admin-pages/awards/page-awards-add-update.php:176
 #: admin-pages/awards/page-awards-add-update.php:187
-#: admin-pages/settings/page-settings-generic.php:110 functions.php:1349
+#: admin-pages/settings/page-settings-generic.php:110 functions.php:1357
 msgid "Pounds"
 msgstr "Pounds"
 
-#: admin-pages/awards/page-awards-add-update.php:192 core-charting.php:97
-#: core-charting.php:281 core-tables.php:34
+#: admin-pages/awards/page-awards-add-update.php:192 core-charting.php:100
+#: core-charting.php:283 core-tables.php:34
 msgid "Weight"
 msgstr "Poids"
 
 #: admin-pages/awards/page-awards-add-update.php:192
 #: admin-pages/awards/page-awards-add-update.php:193
 #: admin-pages/settings/page-settings-generic.php:108 converters.php:120
-#: core-charting.php:70 core-forms.php:193
+#: core-charting.php:73 core-forms.php:200
 msgid "kg"
 msgstr "kg"
 
@@ -140,11 +140,12 @@ msgstr "Appliquer aux nouvelles saisies ?"
 #: admin-pages/awards/page-awards-add-update.php:280
 #: admin-pages/awards/page-awards-add-update.php:293
 #: admin-pages/awards/page-awards-add-update.php:306
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:85
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:101
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:114
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:198
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:210
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:109
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:122
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:191
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:242
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:306
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:318
 #: admin-pages/settings/page-settings-generic.php:95
 #: admin-pages/settings/page-settings-generic.php:135
 #: admin-pages/settings/page-settings-generic.php:148
@@ -174,7 +175,7 @@ msgstr "Appliquer aux nouvelles saisies ?"
 #: admin-pages/settings/page-settings-generic.php:1054
 #: admin-pages/settings/page-settings-generic.php:1067
 #: admin-pages/settings/page-settings-generic.php:1080
-#: admin-pages/settings/page-settings-generic.php:1099 functions.php:1235
+#: admin-pages/settings/page-settings-generic.php:1099 functions.php:1243
 msgid "Yes"
 msgstr "Oui"
 
@@ -182,11 +183,12 @@ msgstr "Oui"
 #: admin-pages/awards/page-awards-add-update.php:281
 #: admin-pages/awards/page-awards-add-update.php:294
 #: admin-pages/awards/page-awards-add-update.php:305
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:85
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:100
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:113
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:197
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:209
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:108
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:121
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:190
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:241
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:305
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:317
 #: admin-pages/settings/page-settings-generic.php:96
 #: admin-pages/settings/page-settings-generic.php:136
 #: admin-pages/settings/page-settings-generic.php:149
@@ -216,7 +218,7 @@ msgstr "Oui"
 #: admin-pages/settings/page-settings-generic.php:1055
 #: admin-pages/settings/page-settings-generic.php:1068
 #: admin-pages/settings/page-settings-generic.php:1081
-#: admin-pages/settings/page-settings-generic.php:1098 functions.php:1235
+#: admin-pages/settings/page-settings-generic.php:1098 functions.php:1243
 msgid "No"
 msgstr "Non"
 
@@ -241,7 +243,7 @@ msgid "Send Email"
 msgstr "Envoyer un E-mail"
 
 #: admin-pages/awards/page-awards-add-update.php:300
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:204
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:312
 #: admin-pages/settings/page-settings-generic.php:269
 #: admin-pages/settings/page-settings-generic.php:532
 #: admin-pages/settings/page-settings-generic.php:634
@@ -250,14 +252,14 @@ msgid "Enabled"
 msgstr "Activer"
 
 #: admin-pages/awards/page-awards-add-update.php:313
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:217
-#: core-forms.php:227
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:325
+#: core-forms.php:234
 msgid "Cancel"
 msgstr "Annuler"
 
 #: admin-pages/awards/page-awards-add-update.php:316
 #: admin-pages/awards/page-awards-add-update.php:318
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:218
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:326
 #: admin-pages/settings/page-settings-email-manager.php:128
 msgid "Save"
 msgstr "Sauvegarder"
@@ -291,37 +293,25 @@ msgstr ""
 "récompenses sans que les e-mails soient envoyés. Utilisez le bouton de "
 "droite pour autorisé l'envoi des e-mails"
 
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:64
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:65
 msgid "Add / Edit a Custom Field"
 msgstr "Ajouter / Modifier un champ"
 
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:76
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:77
 msgid "Field Type"
 msgstr "Type de champ"
 
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:83
-msgid "Number"
-msgstr "Nombre"
-
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:84
-msgid "Text"
-msgstr "Texte"
-
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:86
-msgid "Photo"
-msgstr ""
-
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:89
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:97
 msgid "Note: Changing the field type will cause existing user data to be lost."
 msgstr ""
 "Notez que : changez le type de champ entraînera la perte des données "
 "existantes des utilisateurs."
 
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:95
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:103
 msgid "Hide from shortcodes"
 msgstr "Cacher depuis les racourcis"
 
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:103
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:111
 msgid ""
 "Note: If set to Yes, photos uploaded into this custom field cannot be used "
 "in shortcodes i.e. the photos will only be visible to admin."
@@ -330,21 +320,23 @@ msgstr ""
 "ne pourront pas être utilisées dans des raccourcis i.e.  Les photos ne "
 "seront visibles que de l'admin."
 
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:108
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:116
 #, fuzzy
 #| msgid "Show more rows"
 msgid "Show on charts?"
 msgstr "Afficher plus de lignes"
 
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:116
-msgid "Note: If set to Yes, this custom field will also be plotted on graphs."
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:124
+msgid ""
+"Note: If set to Yes, this custom field will also be plotted on graphs. If "
+"the custom field is a radio button, ensure all values are numeric."
 msgstr ""
 
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:121
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:129
 msgid "Line colour on graph"
 msgstr ""
 
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:128
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:136
 #, fuzzy
 #| msgid "Enter a HEX colour code to use for text displayed on the graph."
 msgid "Note: The HEX colour to use for the line when plotting on a graph."
@@ -352,17 +344,88 @@ msgstr ""
 "Si activé, entrez un code de couleur HEX à utiliser pour la ligne de la "
 "cible sur le graphique."
 
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:133
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:141
 #: admin-pages/settings/page-settings-generic.php:804
 msgid "Field / Question"
 msgstr "Champ / Question"
 
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:141
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:149
+msgid "Minimum value"
+msgstr ""
+
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:156
+msgid "Specifies the lowest number on the range slider."
+msgstr ""
+
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:161
+msgid "Maximum value"
+msgstr ""
+
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:168
+msgid "Specifies the maximum number on the range slider."
+msgstr ""
+
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:173
+msgid "Step"
+msgstr ""
+
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:180
+msgid "Specifies the steps between points on the slider."
+msgstr ""
+
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:185
+#, fuzzy
+#| msgid "Show all entries"
+msgid "Show all labels"
+msgstr "Afficher toutes les entrées"
+
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:193
+msgid ""
+"Note: If set to Yes, all labels shall be displayed on the slider. If no, "
+"only the start and finish."
+msgstr ""
+
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:198
+#, fuzzy
+#| msgid "Options"
+msgid "Add options"
+msgstr "Options"
+
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:204
+msgid "Value (visible to admin/export)"
+msgstr ""
+
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:205
+msgid "Label (visible to user)"
+msgstr ""
+
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:230
+#: admin-pages/settings/page-settings-generic.php:542
+#: admin-pages/settings/page-settings-generic.php:644
+msgid "Show more rows"
+msgstr "Afficher plus de lignes"
+
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:231
+msgid ""
+"Please note, editing values to existing fields shall cause the user "
+"selection to be lost."
+msgstr ""
+
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:236
+msgid "Include empty option"
+msgstr ""
+
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:244
+msgid ""
+"If yes, a blank option shall be added at the top of the drop down options."
+msgstr ""
+
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:249
 #: admin-pages/settings/page-settings-generic.php:803
 msgid "Abbreviation"
 msgstr "Abréviation"
 
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:145
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:253
 msgid ""
 "Used when displaying the field data in smaller spaces e.g. table headers, "
 "charts, etc"
@@ -370,11 +433,11 @@ msgstr ""
 "Utilisé quand on affiche dans des champs à l'espace réduit, dans les entêtes "
 "de tableaux, etc"
 
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:150
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:258
 msgid "Suffix"
 msgstr "Suffixe"
 
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:154
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:262
 msgid ""
 "Text display at to end of the entered value when displaying it to the user. "
 "e.g. CM would display in the following manner: 120 CM"
@@ -382,30 +445,29 @@ msgstr ""
 "Texte affiché à la fin d'une valeur saisie quand elle s'affiche à l'écran de "
 "l'utilisateur (unité de mesure)"
 
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:159
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:267
 #, fuzzy
 #| msgid "View Group"
 msgid "Group"
 msgstr "Voir le groupe"
 
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:169
-#: admin-pages/meta-fields/page-meta-fields-list.php:39
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:277
 #, fuzzy
 #| msgid "Add a new group"
 msgid "Add / remove Groups"
 msgstr "Ajouter un nouveau groupe"
 
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:171
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:279
 msgid ""
 "Used to group custom fields together. This gives the ability to specify "
 "which groups of fields should appear on forms and charts."
 msgstr ""
 
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:176
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:284
 msgid "Display Order"
 msgstr "Ordre d'affichage"
 
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:187
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:295
 msgid ""
 "Used to specify the order of custom fields. Lower numbers are displayed "
 "higher up the form."
@@ -413,7 +475,7 @@ msgstr ""
 "Utilisé pour spécifier l'ordre des champs personnalisés. L'affichage se fait "
 "par ordre croissant à partir du haut du formulaire."
 
-#: admin-pages/meta-fields/page-meta-fields-add-update.php:192
+#: admin-pages/meta-fields/page-meta-fields-add-update.php:300
 msgid "Mandatory"
 msgstr "Obligatoire"
 
@@ -473,23 +535,19 @@ msgstr ""
 "utilisateurs. Vous pouvez utiliser l'écran suivant pour ajouter autant de "
 "questions que vous le souhaitez."
 
-#: admin-pages/meta-fields/page-meta-fields-list.php:34
+#: admin-pages/meta-fields/page-meta-fields-list.php:43
+msgid "Add"
+msgstr ""
+
+#: admin-pages/meta-fields/page-meta-fields-list.php:45
+msgid "field"
+msgstr ""
+
+#: admin-pages/meta-fields/page-meta-fields-list.php:50
 #, fuzzy
-#| msgid "Add and enable a Photo Custom Field"
-msgid "Add Photo Field"
-msgstr "Ajouter et activer un champ personnalisé de photos"
-
-#: admin-pages/meta-fields/page-meta-fields-list.php:35
-msgid "Add Numeric Field"
-msgstr ""
-
-#: admin-pages/meta-fields/page-meta-fields-list.php:36
-msgid "Add Text Field"
-msgstr ""
-
-#: admin-pages/meta-fields/page-meta-fields-list.php:37
-msgid "Add Yes/No Field"
-msgstr ""
+#| msgid "Add a new group"
+msgid "Add / remove groups"
+msgstr "Ajouter un nouveau groupe"
 
 #: admin-pages/page-help.php:24
 msgid "Custom modifications / web development"
@@ -558,7 +616,7 @@ msgstr "Outils administrateur"
 msgid "Show Setup Wizard link"
 msgstr "Afficher le lien de l'assistant d'installation"
 
-#: admin-pages/page-help.php:118 admin-pages/page-help.php:132 core.php:77
+#: admin-pages/page-help.php:118 admin-pages/page-help.php:132 core.php:81
 msgid "Done"
 msgstr "Terminé"
 
@@ -1018,7 +1076,7 @@ msgstr "Unités par défaut / formats à utiliser par l'extension"
 msgid "Weight Units"
 msgstr "Unités de poids"
 
-#: admin-pages/settings/page-settings-generic.php:109 functions.php:1349
+#: admin-pages/settings/page-settings-generic.php:109 functions.php:1357
 msgid "Stones & Pounds"
 msgstr "Stones & Pounds"
 
@@ -1494,11 +1552,6 @@ msgstr "Seulement pour les hommes"
 #: admin-pages/settings/page-settings-generic.php:636
 msgid "Disabled"
 msgstr "Désactivé"
-
-#: admin-pages/settings/page-settings-generic.php:542
-#: admin-pages/settings/page-settings-generic.php:644
-msgid "Show more rows"
-msgstr "Afficher plus de lignes"
 
 #: admin-pages/settings/page-settings-generic.php:543
 #: admin-pages/settings/page-settings-generic.php:645
@@ -2268,7 +2321,7 @@ msgstr "Modifier les préférences de l'utilisateur"
 msgid "to save changes to your user's settings"
 msgstr "pour sauvegarder les modifications apportées aux réglages utilisateurs"
 
-#: admin-pages/user-data/data-user.php:27 hooks.php:183
+#: admin-pages/user-data/data-user.php:27 hooks.php:182
 msgid "The preferences for this user have been saved."
 msgstr "Les préférences de cet utilisateur ont été enregistrées."
 
@@ -2375,7 +2428,7 @@ msgid ""
 "maximum of 5000 entries. For more data, please view individual user records."
 msgstr ""
 
-#: ajax.php:149 core-forms.php:131 core-tables.php:33
+#: ajax.php:149 core-forms.php:138 core-tables.php:33
 msgid "Date"
 msgstr "Date"
 
@@ -2390,11 +2443,11 @@ msgid "Message"
 msgstr "Message personnalisé"
 
 #: converters.php:113 converters.php:135 converters.php:196
-#: core-charting.php:70 functions.php:1519 functions.php:1525
+#: core-charting.php:73 functions.php:1527 functions.php:1533
 msgid "lbs"
 msgstr "lbs"
 
-#: converters.php:135 converters.php:184 core-forms.php:178
+#: converters.php:135 converters.php:184 core-forms.php:185
 msgid "st"
 msgstr "st"
 
@@ -2404,105 +2457,111 @@ msgstr "st"
 msgid "No entries could be found for this user."
 msgstr "Aucune photo n'a été trouvée pour l'utilisateur spécifié."
 
-#: core-charting.php:54
+#: core-charting.php:57
 msgid "Error. You have disabled all data sets from rendering."
 msgstr ""
 
-#: core-charting.php:146
+#: core-charting.php:149
 msgid "Target"
 msgstr "Objectif"
 
-#: core-charting.php:294
+#: core-charting.php:296
 #, fuzzy
 #| msgid "User Information"
 msgid "Additional Fields"
 msgstr "Informations de l'utilisateur"
 
-#: core-forms.php:46
+#: core-forms.php:50
 msgid "The selected entry no longer exists."
 msgstr ""
 
-#: core-forms.php:100
+#: core-forms.php:108
 #, fuzzy
 #| msgid "Notes"
 msgid "Note"
 msgstr "Remarques"
 
-#: core-forms.php:101
+#: core-forms.php:109
 msgid ""
 "Data has previously been entered for this date and will be replaced if this "
 "form is submitted."
 msgstr ""
 
-#: core-forms.php:103
+#: core-forms.php:111
 #, fuzzy
 #| msgid "Delete existing data"
 msgid "Load the existing data."
 msgstr "Supprimer les données existantes"
 
-#: core-forms.php:114
+#: core-forms.php:121
 msgid "Please correct the following:"
 msgstr "SVP Corrigez les données suivantes :"
 
-#: core-forms.php:145
+#: core-forms.php:152
 msgid "Your target weight is"
 msgstr "Votre objectif de poids est"
 
-#: core-forms.php:145
+#: core-forms.php:152
 msgid "The user's target weight is currently"
 msgstr "L'objectif de poids de l'utilisateur est actuellement"
 
-#: core-forms.php:185
+#: core-forms.php:192
 #, fuzzy
 #| msgid "lbs"
 msgid "lb"
 msgstr "lbs"
 
-#: core-forms.php:202 core-forms.php:433 core-tables.php:35
+#: core-forms.php:209 core-forms.php:446 core-tables.php:35
 msgid "Notes"
 msgstr "Remarques"
 
-#: core-forms.php:216
+#: core-forms.php:223
 msgid "Set Target"
 msgstr "Déterminer un objectif"
 
-#: core-forms.php:216
+#: core-forms.php:223
 msgid "Save Entry"
 msgstr "Enregistrer la saisie"
 
-#: core-forms.php:238
+#: core-forms.php:245
 msgid "Clear Target"
 msgstr "Effacer l'objectif"
 
-#: core-forms.php:270 form-handler.php:61
+#: core-forms.php:279 form-handler.php:61
 #, fuzzy
 #| msgid "Your settings have been saved!"
 msgid "Your entry has been successfully saved."
 msgstr "Vos réglages ont été sauvegardés!"
 
-#: core-forms.php:278
+#: core-forms.php:287
 #, fuzzy
 #| msgid "Target Weight"
 msgid "Target weight"
 msgstr "Objectif de poids"
 
-#: core-forms.php:281
+#: core-forms.php:290
 #, fuzzy
 #| msgid "Add a weight entry"
 msgid "Edit an existing entry"
 msgstr "Ajoutez une entrée de poids"
 
-#: core-forms.php:283
+#: core-forms.php:292
 #, fuzzy
 #| msgid "Add a weight entry"
 msgid "Add a new weight entry"
 msgstr "Ajoutez une entrée de poids"
 
-#: core-forms.php:286
+#: core-forms.php:295
 #, fuzzy
 #| msgid "Display dates in the following formats:"
 msgid "Complete the following form"
 msgstr "Afficher les dates dans les formats suivants:"
+
+#: core-forms.php:473 core-forms.php:620
+#, fuzzy
+#| msgid "Please enter a valid figure for Kg"
+msgid "Please select a value for"
+msgstr "S'il vous plaît, entrez un nombre valide pour Kg"
 
 #: core.php:14
 #, fuzzy
@@ -2553,42 +2612,42 @@ msgid "Are you sure you wish to delete this entry? If so, press OK."
 msgstr ""
 "Êtes-vous sûr de vouloir supprimer cette entrée? Si oui, appuyez sur OK."
 
-#: core.php:47
+#: core.php:49
 msgid "Please select or enter a value for height."
 msgstr "S'il vous plaît, sélectionnez ou entrez une valeur pour la taille."
 
-#: core.php:48
+#: core.php:50
 msgid "Please select or enter a value for activity level."
 msgstr ""
 "S'il vous plaît, sélectionnez ou entrez une valeur pour le niveau d'activité."
 
-#: core.php:49
+#: core.php:51
 msgid "Please select or enter a value for gender."
 msgstr "S'il vous plaît, sélectionnez ou entrez une valeur pour le genre."
 
-#: core.php:50
+#: core.php:52
 msgid "Please enter a valid date."
 msgstr "S'il vous plaît, veuillez entrer une date valide."
 
-#: core.php:51
+#: core.php:53
 msgid "Please select your aim."
 msgstr "S'il vous plaît, sélectionnez votre objectif."
 
-#: core.php:61
+#: core.php:63
 msgid "This field is required."
 msgstr "Ce champ est obligatoire."
 
-#: core.php:78
+#: core.php:82
 msgid "Today"
 msgstr "Aujourd'hui"
 
-#: core.php:86
+#: core.php:90
 msgid ""
 "An entry has been found for this date. Would you like to load the existing "
 "entry?"
 msgstr ""
 
-#: core.php:86
+#: core.php:90
 msgid "Note: Any unsaved data shall be lost!"
 msgstr ""
 
@@ -2719,6 +2778,24 @@ msgid ""
 "replacement: https://docs.yeken.uk/shortcodes/"
 msgstr ""
 
+#: deprecated.php:187
+#, fuzzy
+#| msgid "Weight Tracker Record"
+msgid "Weight Tracker"
+msgstr "Enregistrement de Weight Tracker"
+
+#: deprecated.php:188
+msgid ""
+"Your current Weight Tracker license will soon no longer be supported by the "
+"plugin."
+msgstr ""
+
+#: deprecated.php:189
+#, fuzzy
+#| msgid "Read more about calculations"
+msgid "Read more about replacing legacy licenses"
+msgstr "En savoir plus sur les calculs"
+
 #: form-handler.php:25
 #, fuzzy
 #| msgid "The group could not be found"
@@ -2755,43 +2832,43 @@ msgstr "Voir la semaine"
 msgid "to"
 msgstr "à"
 
-#: functions.php:831
+#: functions.php:839
 msgid "Read more about calculations"
 msgstr "En savoir plus sur les calculs"
 
-#: functions.php:869
+#: functions.php:877
 msgid "Your modifications have been saved"
 msgstr "Vos réglages ont été sauvegardés"
 
-#: functions.php:889
+#: functions.php:897
 #, fuzzy
 #| msgid "Login now"
 msgid "Login"
 msgstr "Connectez-vous maintenant"
 
-#: functions.php:942
+#: functions.php:950
 #, fuzzy
 #| msgid "You must be logged in to edit your settings."
 msgid "You must be logged in to view or edit your data."
 msgstr "Vous devez être connecté pour modifier vos paramètres."
 
-#: functions.php:1087
+#: functions.php:1095
 #, fuzzy
 #| msgid "Upgrade Weight Tracker and get more features!"
 msgid "Upgrade to Pro Plus and get more features!"
 msgstr "Améliore Weight Tracker et obtiens plus d'options !"
 
-#: functions.php:1088
+#: functions.php:1096
 msgid ""
 "Upgrade to Pro Plus version of this plugin to get additional features like "
 "Challenges, Harris Benedict, BMR, Macronutrients and much more!"
 msgstr ""
 
-#: functions.php:1090
+#: functions.php:1098
 msgid "Upgrade Weight Tracker and get more features!"
 msgstr "Améliore Weight Tracker et obtiens plus d'options !"
 
-#: functions.php:1091
+#: functions.php:1099
 #, fuzzy
 #| msgid ""
 #| "Upgrade to the Pro version of this plugin to view, edit and delete your "
@@ -2803,29 +2880,29 @@ msgstr ""
 "Passez à la version Pro de ce plugin pour afficher, modifier et supprimer "
 "les entrées de poids de votre utilisateur"
 
-#: functions.php:1099
+#: functions.php:1107
 #, fuzzy
 #| msgid "Read more at "
 msgid "Read more and upgrade"
 msgstr "En savoir plus "
 
-#: functions.php:1113
+#: functions.php:1121
 #, fuzzy
 #| msgid "Read more and Upgrade to Pro / Pro Plus Version"
 msgid "To view this data, you need to upgrade to the Pro or Pro Plus version."
 msgstr "Mettre à niveau vers la Version Pro"
 
-#: functions.php:1115
+#: functions.php:1123
 #, fuzzy
 #| msgid "Upgrade"
 msgid "Upgrade now"
 msgstr "Surclassement"
 
-#: functions.php:1349 functions.php:1522
+#: functions.php:1357 functions.php:1530
 msgid "Kg"
 msgstr "Kg"
 
-#: functions.php:1525
+#: functions.php:1533
 msgid "St"
 msgstr "St"
 
@@ -2849,62 +2926,66 @@ msgstr "Votre licence"
 msgid "Help & Log"
 msgstr "Aide et journal"
 
-#: hooks.php:184
+#: hooks.php:183
 msgid "An error occurred while trying to save the user's preferences."
 msgstr ""
 "Une erreur s'est produite lors de l'enregistrement des préférences de "
 "l'utilisateur."
 
-#: hooks.php:206
+#: hooks.php:205
 msgid "Weight entries"
 msgstr "Saisies de poids"
 
-#: license.php:104
+#: license.php:105
 msgid "Weight Tracker License"
 msgstr "Licence Weight Tracker"
 
-#: license.php:105
-msgid ""
-"Your license expires in less than 14 days. Please renew your license as soon "
-"as possible"
+#: license.php:106
+#, fuzzy
+#| msgid "Your license has been applied!"
+msgid "Your license expires in"
+msgstr "Votre licence a été appliquée !"
+
+#: license.php:108
+msgid "days. Please renew your license as soon as possible"
 msgstr ""
 
-#: license.php:246
+#: license.php:248
 msgid "License missing"
 msgstr "Licence manquante"
 
-#: license.php:253
+#: license.php:255
 msgid "Could not decode / verify license"
 msgstr "Impossible décoder / vérifier la licence"
 
-#: license.php:258
+#: license.php:260
 msgid "Invalid license hash"
 msgstr "Licence invalide hash"
 
-#: license.php:263
+#: license.php:265
 msgid ""
 "This license doesn't appear to be for this site (no match on site hash)."
 msgstr ""
 "Cette licence ne semble pas être pour ce site (aucune correspondance sur le "
 "site hash)."
 
-#: license.php:271
+#: license.php:273
 msgid "This license has expired."
 msgstr "Cette licence a expiré."
 
-#: license.php:334
+#: license.php:336
 msgid "None"
 msgstr "Aucun"
 
-#: license.php:344
+#: license.php:346
 msgid "Yearly Pro"
 msgstr "Annuel Pro"
 
-#: license.php:347
+#: license.php:349
 msgid "Legacy Pro"
 msgstr "Héritage Pro"
 
-#: license.php:350
+#: license.php:352
 msgid "Pro Plus"
 msgstr "Pro Plus"
 
@@ -3066,6 +3147,17 @@ msgid "A graph shall appear when %d or more weight entries have been entered."
 msgstr ""
 "Un graphique apparaîtra une fois que plusieurs mesures de poids ont été "
 "entrés."
+
+#~ msgid "Number"
+#~ msgstr "Nombre"
+
+#~ msgid "Text"
+#~ msgstr "Texte"
+
+#, fuzzy
+#~| msgid "Add and enable a Photo Custom Field"
+#~ msgid "Add Photo Field"
+#~ msgstr "Ajouter et activer un champ personnalisé de photos"
 
 #~ msgid "Notifications"
 #~ msgstr "Notifications"
@@ -4058,11 +4150,6 @@ msgstr ""
 
 #, fuzzy
 #~| msgid "Please enter a valid figure for Kg"
-#~ msgid "Please enter a value for"
-#~ msgstr "S'il vous plaît, entrez un nombre valide pour Kg"
-
-#, fuzzy
-#~| msgid "Please enter a valid figure for Kg"
 #~ msgid "Please enter a number for"
 #~ msgstr "S'il vous plaît, entrez un nombre valide pour Kg"
 
@@ -4321,11 +4408,6 @@ msgstr ""
 
 #~ msgid "Display a chart to see your current progress."
 #~ msgstr "Affichez un graphique pour voir vos progrès en cours."
-
-#, fuzzy
-#~| msgid "Weight Tracker Record"
-#~ msgid "Weight Tracker"
-#~ msgstr "Enregistrement de Weight Tracker"
 
 #, fuzzy
 #~| msgid "Maximum points per graph"
@@ -4691,9 +4773,6 @@ msgstr ""
 #~| msgid "About You:"
 #~ msgid "... and About You"
 #~ msgstr "Au propos de vous:"
-
-#~ msgid "Options"
-#~ msgstr "Options"
 
 #~ msgid "No data available in table"
 #~ msgstr "Aucune donnée disponible dans le tableau"

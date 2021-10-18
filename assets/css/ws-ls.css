@@ -272,7 +272,7 @@ input.ws-ls-valid
   color: #ffA500;
 }
 
-.ws-ls-user-data-ajax th, td {
+.ws-ls-user-data-ajax th, .ws-ls-user-data-ajax td {
   font-size: 13px;
 }
 .ws-ls-blockquote p {
@@ -425,4 +425,10 @@ input.ws-ls-valid
 .ws-ls-meta-field-radio-button label {
   display: inline;
   margin-left: 5px;
+}
+.ws-ls-calculator-form .ws-ls-form-row {
+  margin-bottom: 10px;
+}
+.ws-ls-calculator-form #ws-ls-dob-row {
+  margin-bottom: 20px;
 }

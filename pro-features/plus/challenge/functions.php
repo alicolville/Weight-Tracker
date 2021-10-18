@@ -136,7 +136,7 @@ function ws_ls_challenges_data_update_row( $user_id, $challenge_id ) {
 
 	// Handy user preferences
 	$data[ 'gender' ]       = ws_ls_user_preferences_get( 'gender', $user_id );
-	$data[ 'age' ]          = ws_ls_get_age_from_dob( $user_id );
+	$data[ 'age' ]          = ws_ls_user_get_age_from_dob( $user_id );
 	$data[ 'opted_in' ]     = ws_ls_user_preferences_get( 'challenge_opt_in', $user_id );
 
 	$data[ 'group_id' ]    = NULL;

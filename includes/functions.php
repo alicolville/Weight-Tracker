@@ -614,16 +614,24 @@ function ws_ls_remove_non_numeric( $text ) {
 
 /**
  * Fetch a value from the $_GET
+ *
  * @param $key
  * @param bool $force_to_int
  * @param bool $default
+ * @param bool $force_empty_to_null
+ *
  * @return bool|int|mixed|null
  */
-function ws_ls_querystring_value( $key, $force_to_int = false, $default = false ) {
+function ws_ls_querystring_value( $key, $force_to_int = false, $default = false, $force_empty_to_null = true ) {
 
     $return_value = NULL;
 
     if ( true === isset( $_GET[$key] ) ) {
+
+		if ( true === $force_empty_to_null && '' === $_GET[ $key ] ) {
+			return NULL;
+		}
+
         return ( true === $force_to_int ) ? (int) $_GET[$key] : $_GET[$key];
     }
 
@@ -649,7 +657,7 @@ function ws_ls_post_value( $key, $default = NULL, $force_empty_to_null = false, 
         return $default;
     }
 
-    if ( true === $force_empty_to_null && "" === $_POST[ $key ] ) {
+    if ( true === $force_empty_to_null && '' === $_POST[ $key ] ) {
 		return NULL;
     }
 
