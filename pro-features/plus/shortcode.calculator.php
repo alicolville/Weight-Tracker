@@ -61,7 +61,6 @@ function ws_ls_shortcode_calculator( $user_defined_arguments ) {
 		$entry[ 'kg' ] = ws_ls_form_post_handler_extract_weight( 'get' );
 
 		$form_validated = NULL !== $entry[ 'kg' ] &&
-		                  ! empty( $entry[ 'ws-ls-aim' ] ) &&
 		                  ! empty( $entry[ 'ws-ls-height' ] ) &&
 		                  ! empty( $entry[ 'ws-ls-gender' ] ) &&
 		                  ! empty( $entry[ 'ws-ls-activity-level' ] ) &&
@@ -76,7 +75,6 @@ function ws_ls_shortcode_calculator( $user_defined_arguments ) {
 		$entry[ 'ws-ls-weight-stones' ]     = ( false === empty( $entry[ 'stones' ] ) ) ? $entry[ 'stones' ] : '';
 		$entry[ 'ws-ls-weight-pounds' ]     = ( false === empty( $entry[ 'pounds' ] ) ) ? $entry[ 'pounds' ] : '';
 		$entry[ 'ws-ls-weight-kg' ]         = ( false === empty( $entry[ 'kg' ] ) ) ? $entry[ 'kg' ] : '';
-		$entry[ 'ws-ls-aim' ]               = ws_ls_user_preferences_get( 'aim', $user_id, 0 );
 		$entry[ 'ws-ls-height' ]            = ws_ls_user_preferences_get( 'height', $user_id );
 		$entry[ 'ws-ls-gender' ]            = ws_ls_user_preferences_get( 'gender', $user_id );
 		$entry[ 'ws-ls-activity-level' ]    = ws_ls_user_preferences_get( 'activity_level', $user_id );
@@ -168,13 +166,6 @@ function ws_ls_shortcode_calculator( $user_defined_arguments ) {
 			                                                'placeholder'   => __( 'kg', WE_LS_SLUG ),
 			                                                'value'         => $entry[ 'ws-ls-weight-kg' ] ]);
 		}
-
-		//-------------------------------------------------------
-		// Aim
-		//-------------------------------------------------------
-
-		$html_output .= ws_ls_form_field_select( [  'key' => 'ws-ls-aim', 'required' => true, 'label' => __( 'Your aim:' , WE_LS_SLUG ), 'values' => ws_ls_aims(), 'include-div' => true,
-		                                            'selected' => ( false === empty( $entry[ 'ws-ls-aim' ] ) ) ? $entry[ 'ws-ls-aim' ] : '' , 'css-class' => 'ws-ls-aboutyou-field' ] );
 
 		//-------------------------------------------------------
 		// Height
