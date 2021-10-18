@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Weight Loss Tracker\n"
-"POT-Creation-Date: 2021-06-17 16:23+0100\n"
-"PO-Revision-Date: 2021-06-17 16:23+0100\n"
+"POT-Creation-Date: 2021-10-18 15:30+0100\n"
+"PO-Revision-Date: 2021-10-18 15:30+0100\n"
 "Last-Translator: Greg Vid <drobtinca@hotmail.com>\n"
 "Language-Team: \n"
 "Language: sl_SI\n"
@@ -30,7 +30,7 @@ msgid "Add / Edit an Award"
 msgstr "Dodaj / spremeni vnos"
 
 #: includes/admin-pages/awards/page-awards-add-update.php:102
-#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:68
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:69
 msgid "Please complete all mandatory fields."
 msgstr "Vnesite pravilen datum."
 
@@ -82,13 +82,13 @@ msgstr "Stones"
 #: includes/admin-pages/awards/page-awards-add-update.php:176
 #: includes/admin-pages/awards/page-awards-add-update.php:187
 #: includes/admin-pages/settings/page-settings-generic.php:110
-#: includes/functions.php:1349
+#: includes/functions.php:1357
 msgid "Pounds"
 msgstr "Funti"
 
 #: includes/admin-pages/awards/page-awards-add-update.php:192
-#: includes/core-charting.php:97 includes/core-charting.php:281
-#: includes/core-tables.php:34 pro-features/footable.php:329
+#: includes/core-charting.php:100 includes/core-charting.php:283
+#: includes/core-tables.php:34 pro-features/footable.php:330
 #: pro-features/plus/awards/functions.php:32 pro-features/web-hooks.php:241
 msgid "Weight"
 msgstr "Teža"
@@ -96,8 +96,9 @@ msgstr "Teža"
 #: includes/admin-pages/awards/page-awards-add-update.php:192
 #: includes/admin-pages/awards/page-awards-add-update.php:193
 #: includes/admin-pages/settings/page-settings-generic.php:108
-#: includes/converters.php:120 includes/core-charting.php:70
-#: includes/core-forms.php:193 pro-features/shortcode-stats.php:173
+#: includes/converters.php:120 includes/core-charting.php:73
+#: includes/core-forms.php:200 pro-features/plus/shortcode.calculator.php:166
+#: pro-features/shortcode-stats.php:173
 msgid "kg"
 msgstr "kg"
 
@@ -152,11 +153,12 @@ msgstr "Vsi vnosi"
 #: includes/admin-pages/awards/page-awards-add-update.php:280
 #: includes/admin-pages/awards/page-awards-add-update.php:293
 #: includes/admin-pages/awards/page-awards-add-update.php:306
-#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:85
-#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:101
-#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:114
-#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:198
-#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:210
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:109
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:122
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:191
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:242
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:306
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:318
 #: includes/admin-pages/settings/page-settings-generic.php:95
 #: includes/admin-pages/settings/page-settings-generic.php:135
 #: includes/admin-pages/settings/page-settings-generic.php:148
@@ -187,10 +189,10 @@ msgstr "Vsi vnosi"
 #: includes/admin-pages/settings/page-settings-generic.php:1067
 #: includes/admin-pages/settings/page-settings-generic.php:1080
 #: includes/admin-pages/settings/page-settings-generic.php:1099
-#: includes/functions.php:1235 pro-features/plus/challenge/functions.php:239
-#: pro-features/plus/meta-fields/functions.php:38
+#: includes/functions.php:1243 pro-features/plus/challenge/functions.php:239
+#: pro-features/plus/meta-fields/functions.php:42
 #: pro-features/plus/meta-fields/functions.php:234
-#: pro-features/plus/meta-fields/functions.php:391
+#: pro-features/plus/meta-fields/functions.php:435
 #: pro-features/widget-chart.php:160 pro-features/widget-form.php:98
 #: pro-features/widget-form.php:107
 msgid "Yes"
@@ -200,11 +202,12 @@ msgstr "Da"
 #: includes/admin-pages/awards/page-awards-add-update.php:281
 #: includes/admin-pages/awards/page-awards-add-update.php:294
 #: includes/admin-pages/awards/page-awards-add-update.php:305
-#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:85
-#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:100
-#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:113
-#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:197
-#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:209
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:108
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:121
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:190
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:241
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:305
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:317
 #: includes/admin-pages/settings/page-settings-generic.php:96
 #: includes/admin-pages/settings/page-settings-generic.php:136
 #: includes/admin-pages/settings/page-settings-generic.php:149
@@ -235,10 +238,10 @@ msgstr "Da"
 #: includes/admin-pages/settings/page-settings-generic.php:1068
 #: includes/admin-pages/settings/page-settings-generic.php:1081
 #: includes/admin-pages/settings/page-settings-generic.php:1098
-#: includes/functions.php:1235 pro-features/plus/challenge/functions.php:239
-#: pro-features/plus/meta-fields/functions.php:38
+#: includes/functions.php:1243 pro-features/plus/challenge/functions.php:239
+#: pro-features/plus/meta-fields/functions.php:42
 #: pro-features/plus/meta-fields/functions.php:231
-#: pro-features/plus/meta-fields/functions.php:390
+#: pro-features/plus/meta-fields/functions.php:434
 #: pro-features/widget-chart.php:159 pro-features/widget-form.php:97
 #: pro-features/widget-form.php:106
 msgid "No"
@@ -272,25 +275,25 @@ msgid "Send Email"
 msgstr "Email"
 
 #: includes/admin-pages/awards/page-awards-add-update.php:300
-#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:204
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:312
 #: includes/admin-pages/settings/page-settings-generic.php:269
 #: includes/admin-pages/settings/page-settings-generic.php:532
 #: includes/admin-pages/settings/page-settings-generic.php:634
 #: includes/admin-pages/settings/page-settings-generic.php:1017
 #: pro-features/plus/awards/hooks.php:301
-#: pro-features/plus/meta-fields/hooks.php:90
+#: pro-features/plus/meta-fields/hooks.php:96
 msgid "Enabled"
 msgstr "Omogoči"
 
 #: includes/admin-pages/awards/page-awards-add-update.php:313
-#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:217
-#: includes/core-forms.php:227 pro-features/plus/challenge/admin.page.php:105
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:325
+#: includes/core-forms.php:234 pro-features/plus/challenge/admin.page.php:105
 msgid "Cancel"
 msgstr ""
 
 #: includes/admin-pages/awards/page-awards-add-update.php:316
 #: includes/admin-pages/awards/page-awards-add-update.php:318
-#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:218
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:326
 #: includes/admin-pages/settings/page-settings-email-manager.php:128
 msgid "Save"
 msgstr "Shranjeno!"
@@ -325,127 +328,182 @@ msgid ""
 "awards without emails being sent. Use the button to the right enable them"
 msgstr ""
 
-#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:64
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:65
 msgid "Add / Edit a Custom Field"
 msgstr "Dodaj / spremeni vnos"
 
-#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:76
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:77
 msgid "Field Type"
 msgstr ""
 
-#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:83
-#: pro-features/plus/meta-fields/functions.php:36
-msgid "Number"
-msgstr ""
-
-#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:84
-#: pro-features/plus/meta-fields/functions.php:37
-msgid "Text"
-msgstr ""
-
-#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:86
-#: pro-features/plus/meta-fields/functions-photos.php:424
-#: pro-features/plus/meta-fields/functions-photos.php:425
-#: pro-features/plus/meta-fields/functions.php:39
-msgid "Photo"
-msgstr ""
-
-#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:89
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:97
 msgid "Note: Changing the field type will cause existing user data to be lost."
 msgstr ""
 
-#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:95
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:103
 msgid "Hide from shortcodes"
 msgstr ""
 
-#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:103
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:111
 msgid ""
 "Note: If set to Yes, photos uploaded into this custom field cannot be used "
 "in shortcodes i.e. the photos will only be visible to admin."
 msgstr ""
 
-#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:108
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:116
 msgid "Show on charts?"
 msgstr ""
 
-#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:116
-msgid "Note: If set to Yes, this custom field will also be plotted on graphs."
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:124
+msgid ""
+"Note: If set to Yes, this custom field will also be plotted on graphs. If "
+"the custom field is a radio button, ensure all values are numeric."
 msgstr ""
 
-#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:121
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:129
 msgid "Line colour on graph"
 msgstr ""
 
-#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:128
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:136
 #, fuzzy
 #| msgid "Enter a HEX colour code to use for text displayed on the graph."
 msgid "Note: The HEX colour to use for the line when plotting on a graph."
 msgstr "Vpišite HEX kodo barve linije ciljne teže za grafu."
 
-#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:133
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:141
 #: includes/admin-pages/settings/page-settings-generic.php:804
-#: pro-features/plus/meta-fields/hooks.php:84
+#: pro-features/plus/meta-fields/hooks.php:90
 msgid "Field / Question"
 msgstr ""
 
-#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:141
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:149
+msgid "Minimum value"
+msgstr ""
+
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:156
+msgid "Specifies the lowest number on the range slider."
+msgstr ""
+
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:161
+msgid "Maximum value"
+msgstr ""
+
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:168
+msgid "Specifies the maximum number on the range slider."
+msgstr ""
+
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:173
+msgid "Step"
+msgstr ""
+
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:180
+msgid "Specifies the steps between points on the slider."
+msgstr ""
+
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:185
+#, fuzzy
+#| msgid "Show all entries"
+msgid "Show all labels"
+msgstr "Prikaži vse vnose"
+
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:193
+msgid ""
+"Note: If set to Yes, all labels shall be displayed on the slider. If no, "
+"only the start and finish."
+msgstr ""
+
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:198
+#, fuzzy
+#| msgid "Options"
+msgid "Add options"
+msgstr "Izbire"
+
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:204
+msgid "Value (visible to admin/export)"
+msgstr ""
+
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:205
+msgid "Label (visible to user)"
+msgstr ""
+
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:230
+#: includes/admin-pages/settings/page-settings-generic.php:542
+#: includes/admin-pages/settings/page-settings-generic.php:644
+msgid "Show more rows"
+msgstr ""
+
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:231
+msgid ""
+"Please note, editing values to existing fields shall cause the user "
+"selection to be lost."
+msgstr ""
+
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:236
+msgid "Include empty option"
+msgstr ""
+
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:244
+msgid ""
+"If yes, a blank option shall be added at the top of the drop down options."
+msgstr ""
+
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:249
 #: includes/admin-pages/settings/page-settings-generic.php:803
 msgid "Abbreviation"
 msgstr ""
 
-#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:145
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:253
 msgid ""
 "Used when displaying the field data in smaller spaces e.g. table headers, "
 "charts, etc"
 msgstr ""
 
-#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:150
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:258
 msgid "Suffix"
 msgstr ""
 
-#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:154
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:262
 msgid ""
 "Text display at to end of the entered value when displaying it to the user. "
 "e.g. CM would display in the following manner: 120 CM"
 msgstr ""
 
-#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:159
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:267
 #: pro-features/export/admin.page.php:203
 #: pro-features/plus/challenge/functions.php:488
-#: pro-features/plus/meta-fields/hooks.php:88 pro-features/user-groups.php:111
+#: pro-features/plus/meta-fields/hooks.php:94 pro-features/user-groups.php:111
 #: pro-features/user-groups.php:141 pro-features/user-groups.php:522
 #, fuzzy
 #| msgid "Enable"
 msgid "Group"
 msgstr "Omogoči"
 
-#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:169
-#: includes/admin-pages/meta-fields/page-meta-fields-list.php:39
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:277
 #: pro-features/user-groups.php:148
 #, fuzzy
 #| msgid "Add a new weight"
 msgid "Add / remove Groups"
 msgstr "Dodajte novo težo"
 
-#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:171
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:279
 msgid ""
 "Used to group custom fields together. This gives the ability to specify "
 "which groups of fields should appear on forms and charts."
 msgstr ""
 
-#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:176
-#: pro-features/plus/meta-fields/hooks.php:87
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:284
+#: pro-features/plus/meta-fields/hooks.php:93
 msgid "Display Order"
 msgstr "Prikaži mrežne črte?"
 
-#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:187
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:295
 msgid ""
 "Used to specify the order of custom fields. Lower numbers are displayed "
 "higher up the form."
 msgstr ""
 
-#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:192
-#: pro-features/plus/meta-fields/hooks.php:89
+#: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:300
+#: pro-features/plus/meta-fields/hooks.php:95
 msgid "Mandatory"
 msgstr "Obvezno"
 
@@ -492,27 +550,21 @@ msgid ""
 "following screen to add as many questions as you wish."
 msgstr ""
 
-#: includes/admin-pages/meta-fields/page-meta-fields-list.php:34
-#, fuzzy
-#| msgid "Animation Duration"
-msgid "Add Photo Field"
-msgstr "Dolžina animacije"
-
-#: includes/admin-pages/meta-fields/page-meta-fields-list.php:35
-msgid "Add Numeric Field"
+#: includes/admin-pages/meta-fields/page-meta-fields-list.php:43
+#: pro-features/footable.php:408 pro-features/plus/awards/hooks.php:298
+#: pro-features/plus/harris-benedict.php:321
+msgid "Add"
 msgstr ""
 
-#: includes/admin-pages/meta-fields/page-meta-fields-list.php:36
-#, fuzzy
-#| msgid "Animation Duration"
-msgid "Add Text Field"
-msgstr "Dolžina animacije"
+#: includes/admin-pages/meta-fields/page-meta-fields-list.php:45
+msgid "field"
+msgstr ""
 
-#: includes/admin-pages/meta-fields/page-meta-fields-list.php:37
+#: includes/admin-pages/meta-fields/page-meta-fields-list.php:50
 #, fuzzy
-#| msgid "Animation Duration"
-msgid "Add Yes/No Field"
-msgstr "Dolžina animacije"
+#| msgid "Add a new weight"
+msgid "Add / remove groups"
+msgstr "Dodajte novo težo"
 
 #: includes/admin-pages/page-help.php:24
 msgid "Custom modifications / web development"
@@ -575,7 +627,7 @@ msgid "Show Setup Wizard link"
 msgstr ""
 
 #: includes/admin-pages/page-help.php:118
-#: includes/admin-pages/page-help.php:132 includes/core.php:77
+#: includes/admin-pages/page-help.php:132 includes/core.php:81
 msgid "Done"
 msgstr "Dokončano"
 
@@ -621,7 +673,7 @@ msgstr "Res želite izbrisati cilj?"
 #: includes/admin-pages/page-license.php:8
 #: includes/admin-pages/settings/page-settings-email-manager.php:8
 #: includes/admin-pages/settings/page-settings-generic.php:8
-#: pro-features/functions.php:620
+#: pro-features/functions.php:652
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Nimate dovoljenja za ogled te strani."
 
@@ -764,7 +816,7 @@ msgid "Site Hash"
 msgstr "Hash strani"
 
 #: includes/admin-pages/page-license.php:181
-#: pro-features/plus/meta-fields/hooks.php:86 pro-features/widget-chart.php:114
+#: pro-features/plus/meta-fields/hooks.php:92 pro-features/widget-chart.php:114
 msgid "Type"
 msgstr "Vrsta"
 
@@ -1009,7 +1061,7 @@ msgid "Weight Units"
 msgstr "Enote za težo"
 
 #: includes/admin-pages/settings/page-settings-generic.php:109
-#: includes/functions.php:1349
+#: includes/functions.php:1357
 msgid "Stones & Pounds"
 msgstr "Stonei in funti"
 
@@ -1453,8 +1505,8 @@ msgstr "Zgornja meja kalorij za ženske"
 #: includes/admin-pages/settings/page-settings-generic.php:525
 #: includes/admin-pages/settings/page-settings-generic.php:627
 #: pro-features/plus/challenge/functions.php:498
-#: pro-features/plus/harris-benedict.php:253
-#: pro-features/plus/harris-benedict.php:276
+#: pro-features/plus/harris-benedict.php:302
+#: pro-features/plus/harris-benedict.php:325
 msgid "Everyone"
 msgstr ""
 
@@ -1476,11 +1528,6 @@ msgstr ""
 #| msgid "Stats disabled"
 msgid "Disabled"
 msgstr "Statistika onemogočena"
-
-#: includes/admin-pages/settings/page-settings-generic.php:542
-#: includes/admin-pages/settings/page-settings-generic.php:644
-msgid "Show more rows"
-msgstr ""
 
 #: includes/admin-pages/settings/page-settings-generic.php:543
 #: includes/admin-pages/settings/page-settings-generic.php:645
@@ -1534,7 +1581,7 @@ msgid "Macronutrient Calculator"
 msgstr "Kalkulator makrohranil"
 
 #: includes/admin-pages/settings/page-settings-generic.php:655
-#: pro-features/plus/macronutrient-calculator.php:158
+#: pro-features/plus/macronutrient-calculator.php:173
 msgid "Proteins"
 msgstr "Beljakovine"
 
@@ -1558,7 +1605,7 @@ msgid "Percentage of Carbohydrates to make up a moderate diet"
 msgstr "Delež OH povprečne diete"
 
 #: includes/admin-pages/settings/page-settings-generic.php:669
-#: pro-features/plus/macronutrient-calculator.php:192
+#: pro-features/plus/macronutrient-calculator.php:207
 msgid "Fats"
 msgstr "Maščobe"
 
@@ -2235,7 +2282,7 @@ msgstr "Spremeni nastavitve uporabnika"
 msgid "to save changes to your user's settings"
 msgstr "Spremeni nastavitve tega uporabnika"
 
-#: includes/admin-pages/user-data/data-user.php:27 includes/hooks.php:183
+#: includes/admin-pages/user-data/data-user.php:27 includes/hooks.php:182
 msgid "The preferences for this user have been saved."
 msgstr "Preference tega uporabnika so bile shranjene."
 
@@ -2336,8 +2383,8 @@ msgid ""
 "maximum of 5000 entries. For more data, please view individual user records."
 msgstr ""
 
-#: includes/ajax.php:149 includes/core-forms.php:131
-#: includes/core-tables.php:33 pro-features/footable.php:326
+#: includes/ajax.php:149 includes/core-forms.php:138
+#: includes/core-tables.php:33 pro-features/footable.php:327
 #: pro-features/web-hooks.php:230
 msgid "Date"
 msgstr "Datum"
@@ -2351,14 +2398,14 @@ msgid "Message"
 msgstr ""
 
 #: includes/converters.php:113 includes/converters.php:135
-#: includes/converters.php:196 includes/core-charting.php:70
-#: includes/functions.php:1519 includes/functions.php:1525
+#: includes/converters.php:196 includes/core-charting.php:73
+#: includes/functions.php:1527 includes/functions.php:1533
 #: pro-features/shortcode-stats.php:166
 msgid "lbs"
 msgstr "lbs"
 
 #: includes/converters.php:135 includes/converters.php:184
-#: includes/core-forms.php:178
+#: includes/core-forms.php:185 pro-features/plus/shortcode.calculator.php:151
 msgid "st"
 msgstr "st"
 
@@ -2368,62 +2415,62 @@ msgstr "st"
 msgid "No entries could be found for this user."
 msgstr "Za tega uporabnika ni podatkov o teži."
 
-#: includes/core-charting.php:54
+#: includes/core-charting.php:57
 msgid "Error. You have disabled all data sets from rendering."
 msgstr ""
 
-#: includes/core-charting.php:146 pro-features/email-notifications.php:67
+#: includes/core-charting.php:149 pro-features/email-notifications.php:67
 #: pro-features/user-groups.php:627
 msgid "Target"
 msgstr "Cilj"
 
-#: includes/core-charting.php:294
+#: includes/core-charting.php:296
 #, fuzzy
 #| msgid "Animation Duration"
 msgid "Additional Fields"
 msgstr "Dolžina animacije"
 
-#: includes/core-forms.php:46
+#: includes/core-forms.php:50
 msgid "The selected entry no longer exists."
 msgstr ""
 
-#: includes/core-forms.php:100
+#: includes/core-forms.php:108
 #, fuzzy
 #| msgid "Notes"
 msgid "Note"
 msgstr "Opombe"
 
-#: includes/core-forms.php:101
+#: includes/core-forms.php:109
 msgid ""
 "Data has previously been entered for this date and will be replaced if this "
 "form is submitted."
 msgstr ""
 
-#: includes/core-forms.php:103
+#: includes/core-forms.php:111
 #, fuzzy
 #| msgid "Delete existing data"
 msgid "Load the existing data."
 msgstr "Izbriši obstoječe podatke"
 
-#: includes/core-forms.php:114
+#: includes/core-forms.php:121
 msgid "Please correct the following:"
 msgstr ""
 
-#: includes/core-forms.php:145
+#: includes/core-forms.php:152
 msgid "Your target weight is"
 msgstr "Vaša ciljna teža je"
 
-#: includes/core-forms.php:145
+#: includes/core-forms.php:152
 msgid "The user's target weight is currently"
 msgstr "Uporabnikova ciljna teža je"
 
-#: includes/core-forms.php:185
+#: includes/core-forms.php:192 pro-features/plus/shortcode.calculator.php:158
 #, fuzzy
 #| msgid "lbs"
 msgid "lb"
 msgstr "lbs"
 
-#: includes/core-forms.php:202 includes/core-forms.php:433
+#: includes/core-forms.php:209 includes/core-forms.php:446
 #: includes/core-tables.php:35 pro-features/email-notifications.php:81
 #: pro-features/export/admin.page.php:249 pro-features/export/functions.php:211
 #: pro-features/footable.php:374 pro-features/plus/challenge/admin.page.php:75
@@ -2431,47 +2478,53 @@ msgstr "lbs"
 msgid "Notes"
 msgstr "Opombe"
 
-#: includes/core-forms.php:216
+#: includes/core-forms.php:223
 msgid "Set Target"
 msgstr "Shrani ciljno težo"
 
-#: includes/core-forms.php:216
+#: includes/core-forms.php:223
 msgid "Save Entry"
 msgstr "Shrani vnos"
 
-#: includes/core-forms.php:238
+#: includes/core-forms.php:245
 msgid "Clear Target"
 msgstr "Izbriši ciljno težo"
 
-#: includes/core-forms.php:270 includes/form-handler.php:61
+#: includes/core-forms.php:279 includes/form-handler.php:61
 #, fuzzy
 #| msgid "Your settings have been saved!"
 msgid "Your entry has been successfully saved."
 msgstr "Nastavitve so bile shranjene!"
 
-#: includes/core-forms.php:278 pro-features/functions-pages.php:182
+#: includes/core-forms.php:287 pro-features/functions-pages.php:182
 #, fuzzy
 #| msgid "Target Weight"
 msgid "Target weight"
 msgstr "Ciljna teža"
 
-#: includes/core-forms.php:281
+#: includes/core-forms.php:290
 #, fuzzy
 #| msgid "Add a weight entry"
 msgid "Edit an existing entry"
 msgstr "Dodaj težo"
 
-#: includes/core-forms.php:283
+#: includes/core-forms.php:292
 #, fuzzy
 #| msgid "Add a weight entry"
 msgid "Add a new weight entry"
 msgstr "Dodaj težo"
 
-#: includes/core-forms.php:286
+#: includes/core-forms.php:295
 #, fuzzy
 #| msgid "Display dates in the following formats:"
 msgid "Complete the following form"
 msgstr "Želena oblika datuma:"
+
+#: includes/core-forms.php:473 includes/core-forms.php:620
+#, fuzzy
+#| msgid "Please enter a valid figure for Kg"
+msgid "Please select a value for"
+msgstr "Prosimo, vnesite težo"
 
 #: includes/core.php:14
 #, fuzzy
@@ -2519,41 +2572,41 @@ msgstr ""
 msgid "Are you sure you wish to delete this entry? If so, press OK."
 msgstr "Res želite izbrisati vnos?"
 
-#: includes/core.php:47
+#: includes/core.php:49
 msgid "Please select or enter a value for height."
 msgstr "Prosimo, vnesite višino."
 
-#: includes/core.php:48
+#: includes/core.php:50
 msgid "Please select or enter a value for activity level."
 msgstr "Prosimo, vnesite nivo aktivnosti."
 
-#: includes/core.php:49
+#: includes/core.php:51
 msgid "Please select or enter a value for gender."
 msgstr "Prosimo, vnesite spol."
 
-#: includes/core.php:50
+#: includes/core.php:52
 msgid "Please enter a valid date."
 msgstr "Vnesite pravilen datum."
 
-#: includes/core.php:51
+#: includes/core.php:53
 msgid "Please select your aim."
 msgstr "Prosimo, vnesite višino."
 
-#: includes/core.php:61
+#: includes/core.php:63
 msgid "This field is required."
 msgstr "Licenca je potekla."
 
-#: includes/core.php:78 pro-features/export/functions.php:34
+#: includes/core.php:82 pro-features/export/functions.php:34
 msgid "Today"
 msgstr "Danes"
 
-#: includes/core.php:86
+#: includes/core.php:90
 msgid ""
 "An entry has been found for this date. Would you like to load the existing "
 "entry?"
 msgstr ""
 
-#: includes/core.php:86
+#: includes/core.php:90
 msgid "Note: Any unsaved data shall be lost!"
 msgstr ""
 
@@ -2621,8 +2674,8 @@ msgstr "Stegno, desno"
 msgid "TR"
 msgstr "SD"
 
-#: includes/deprecated.php:140 pro-features/plus/meta-fields/activate.php:133
-#: pro-features/plus/meta-fields/activate.php:134
+#: includes/deprecated.php:140 pro-features/plus/meta-fields/activate.php:140
+#: pro-features/plus/meta-fields/activate.php:141
 msgid "Waist"
 msgstr "Pas"
 
@@ -2685,6 +2738,25 @@ msgid ""
 "replacement: https://docs.yeken.uk/shortcodes/"
 msgstr ""
 
+#. Plugin Name of the plugin/theme
+#: includes/deprecated.php:187 pro-features/widget-chart.php:18
+#, fuzzy
+#| msgid "Weight Tracker Debug Log"
+msgid "Weight Tracker"
+msgstr "Weight Loss Tracker - Obrazec"
+
+#: includes/deprecated.php:188
+msgid ""
+"Your current Weight Tracker license will soon no longer be supported by the "
+"plugin."
+msgstr ""
+
+#: includes/deprecated.php:189
+#, fuzzy
+#| msgid "Read more about calculations"
+msgid "Read more about replacing legacy licenses"
+msgstr "Več informacij o izračunih"
+
 #: includes/form-handler.php:25
 #, fuzzy
 #| msgid "No photos could be found for this user."
@@ -2721,43 +2793,43 @@ msgstr "Poglej teden"
 msgid "to"
 msgstr "do"
 
-#: includes/functions.php:831
+#: includes/functions.php:839
 msgid "Read more about calculations"
 msgstr "Več informacij o izračunih"
 
-#: includes/functions.php:869
+#: includes/functions.php:877
 msgid "Your modifications have been saved"
 msgstr "Nastavitve so bile shranjene!"
 
-#: includes/functions.php:889
+#: includes/functions.php:897
 #, fuzzy
 #| msgid "Login now"
 msgid "Login"
 msgstr "Prijava"
 
-#: includes/functions.php:942
+#: includes/functions.php:950
 #, fuzzy
 #| msgid "You must be logged in to edit your settings."
 msgid "You must be logged in to view or edit your data."
 msgstr "Za spreminjanje nastavitev morate biti prijavljeni."
 
-#: includes/functions.php:1087
+#: includes/functions.php:1095
 #, fuzzy
 #| msgid "Upgrade to Pro Plus for"
 msgid "Upgrade to Pro Plus and get more features!"
 msgstr "Nadgradite na Pro Plus za"
 
-#: includes/functions.php:1088
+#: includes/functions.php:1096
 msgid ""
 "Upgrade to Pro Plus version of this plugin to get additional features like "
 "Challenges, Harris Benedict, BMR, Macronutrients and much more!"
 msgstr ""
 
-#: includes/functions.php:1090
+#: includes/functions.php:1098
 msgid "Upgrade Weight Tracker and get more features!"
 msgstr ""
 
-#: includes/functions.php:1091
+#: includes/functions.php:1099
 #, fuzzy
 #| msgid ""
 #| "Upgrade to the Pro version of this plugin to view, edit and delete your "
@@ -2769,29 +2841,29 @@ msgstr ""
 "Nadgradite na Pro verzijo za možnost ogleda, spreminjanja in brisanja vnosov "
 "uporabnikov"
 
-#: includes/functions.php:1099
+#: includes/functions.php:1107
 #, fuzzy
 #| msgid "Read more at "
 msgid "Read more and upgrade"
 msgstr "Več informacij o izračunih"
 
-#: includes/functions.php:1113
+#: includes/functions.php:1121
 #, fuzzy
 #| msgid "Read more and Upgrade to Pro / Pro Plus Version"
 msgid "To view this data, you need to upgrade to the Pro or Pro Plus version."
 msgstr "Nadgradite na Pro verzijo"
 
-#: includes/functions.php:1115
+#: includes/functions.php:1123
 #, fuzzy
 #| msgid "Upgrade"
 msgid "Upgrade now"
 msgstr "Nadgradite"
 
-#: includes/functions.php:1349 includes/functions.php:1522
+#: includes/functions.php:1357 includes/functions.php:1530
 msgid "Kg"
 msgstr "Kg"
 
-#: includes/functions.php:1525
+#: includes/functions.php:1533
 msgid "St"
 msgstr "St"
 
@@ -2815,64 +2887,68 @@ msgstr "Vaša licenca"
 msgid "Help & Log"
 msgstr ""
 
-#: includes/hooks.php:184
+#: includes/hooks.php:183
 msgid "An error occurred while trying to save the user's preferences."
 msgstr "Med shranjevanjem uporabnikovih preferenc je prišlo do napake."
 
-#: includes/hooks.php:206
+#: includes/hooks.php:205
 #, fuzzy
 #| msgid "View weight entries"
 msgid "Weight entries"
 msgstr "Poglej vnose teže"
 
-#: includes/license.php:104
+#: includes/license.php:105
 #, fuzzy
 #| msgid "Weight Loss Tracker"
 msgid "Weight Tracker License"
 msgstr "Weight Loss Tracker"
 
-#: includes/license.php:105
-msgid ""
-"Your license expires in less than 14 days. Please renew your license as soon "
-"as possible"
+#: includes/license.php:106
+#, fuzzy
+#| msgid "Your license has been applied!"
+msgid "Your license expires in"
+msgstr "Licenca je bila uporabljena!"
+
+#: includes/license.php:108
+msgid "days. Please renew your license as soon as possible"
 msgstr ""
 
-#: includes/license.php:246
+#: includes/license.php:248
 msgid "License missing"
 msgstr "Ni licence"
 
-#: includes/license.php:253
+#: includes/license.php:255
 msgid "Could not decode / verify license"
 msgstr "Ne morem verificirati licence"
 
-#: includes/license.php:258
+#: includes/license.php:260
 msgid "Invalid license hash"
 msgstr "Napačen hash licence"
 
-#: includes/license.php:263
+#: includes/license.php:265
 msgid ""
 "This license doesn't appear to be for this site (no match on site hash)."
 msgstr "Ta licenca ni za to stran (ni ujemanja za hash strani)."
 
-#: includes/license.php:271
+#: includes/license.php:273
 msgid "This license has expired."
 msgstr "Licenca je potekla."
 
-#: includes/license.php:334 pro-features/plus/meta-fields/db.php:579
+#: includes/license.php:336 pro-features/plus/meta-fields/db.php:608
 #: pro-features/user-groups.php:108 pro-features/user-groups.php:164
 #: pro-features/user-groups.php:410
 msgid "None"
 msgstr ""
 
-#: includes/license.php:344
+#: includes/license.php:346
 msgid "Yearly Pro"
 msgstr "Letno Pro"
 
-#: includes/license.php:347
+#: includes/license.php:349
 msgid "Legacy Pro"
 msgstr ""
 
-#: includes/license.php:350
+#: includes/license.php:352
 msgid "Pro Plus"
 msgstr "Pro Plus"
 
@@ -3184,7 +3260,7 @@ msgid ""
 "the export."
 msgstr ""
 
-#: pro-features/export/admin.page.php:167 pro-features/footable.php:320
+#: pro-features/export/admin.page.php:167 pro-features/footable.php:321
 #: pro-features/user-groups.php:622
 #, fuzzy
 #| msgid "Username"
@@ -3303,7 +3379,7 @@ msgstr ""
 msgid "Difference from start"
 msgstr "Razlika od začetka"
 
-#: pro-features/export/functions.php:209 pro-features/footable.php:336
+#: pro-features/export/functions.php:209 pro-features/footable.php:337
 msgid "BMI"
 msgstr "ITM"
 
@@ -3592,50 +3668,45 @@ msgid ""
 "plugin will be added e.g. number of plot points on graph, rows per page, etc."
 msgstr ""
 
-#: pro-features/footable.php:103
+#: pro-features/footable.php:104
 msgid ""
 "Please note: For performance reasons, this table will only update every 5 "
 "minutes."
 msgstr ""
 
-#: pro-features/footable.php:185
+#: pro-features/footable.php:186
 #, fuzzy
 #| msgid "No Weight entered"
 msgid "No weight recorded"
 msgstr "Ni vnesene teže"
 
-#: pro-features/footable.php:197
+#: pro-features/footable.php:198
 msgid "No Change"
 msgstr ""
 
-#: pro-features/footable.php:204
+#: pro-features/footable.php:205
 msgid "Check record"
 msgstr ""
 
-#: pro-features/footable.php:206
+#: pro-features/footable.php:207
 #, fuzzy
 #| msgid "First entry"
 msgid "First weight entry"
 msgstr "Prvi vnos"
 
-#: pro-features/footable.php:226
+#: pro-features/footable.php:227
 msgid "No height"
 msgstr "Ni višine"
 
-#: pro-features/footable.php:330 pro-features/user-groups.php:626
+#: pro-features/footable.php:331 pro-features/user-groups.php:626
 #, fuzzy
 #| msgid "Weight Difference"
 msgid "Difference"
 msgstr "Razlika v teži"
 
-#: pro-features/footable.php:336
+#: pro-features/footable.php:337
 msgid "Body Mass Index"
 msgstr "Indeks telesne mase"
-
-#: pro-features/footable.php:408 pro-features/plus/awards/hooks.php:298
-#: pro-features/plus/harris-benedict.php:272
-msgid "Add"
-msgstr ""
 
 #: pro-features/footable.php:409
 #, fuzzy
@@ -3849,13 +3920,13 @@ msgstr "Močno prekomerna teža"
 msgid "Err"
 msgstr ""
 
-#: pro-features/functions.php:304 pro-features/plus/harris-benedict.php:395
+#: pro-features/functions.php:304 pro-features/plus/harris-benedict.php:457
 #, fuzzy
 #| msgid "Female"
 msgid "Female"
 msgstr "Ženska"
 
-#: pro-features/functions.php:305 pro-features/plus/harris-benedict.php:395
+#: pro-features/functions.php:305 pro-features/plus/harris-benedict.php:457
 msgid "Male"
 msgstr "Moški"
 
@@ -3898,20 +3969,20 @@ msgid "Gain weight"
 msgstr "Prenizka teža"
 
 #: pro-features/functions.php:477
-#: pro-features/plus/meta-fields/activate.php:136
-#: pro-features/plus/meta-fields/activate.php:151
+#: pro-features/plus/meta-fields/activate.php:143
+#: pro-features/plus/meta-fields/activate.php:158
 msgid "cm"
 msgstr ""
 
-#: pro-features/functions.php:492 pro-features/functions.php:569
-#: pro-features/functions.php:751 pro-features/shortcode-various.php:212
+#: pro-features/functions.php:492 pro-features/functions.php:584
+#: pro-features/functions.php:788 pro-features/shortcode-various.php:212
 #: pro-features/shortcode-various.php:238
 #: pro-features/shortcode-various.php:264
 #: pro-features/shortcode-various.php:292
 msgid "Not Specified"
 msgstr "Ni določeno"
 
-#: pro-features/functions.php:666
+#: pro-features/functions.php:698
 msgid "Error: The user does not appear to exist"
 msgstr "Napaka: Uporabnik ne obstaja"
 
@@ -3999,8 +4070,8 @@ msgid "Weight change as a percentage"
 msgstr ""
 
 #: pro-features/plus/awards/functions.php:61
-#: pro-features/plus/harris-benedict.php:76
-#: pro-features/plus/macronutrient-calculator.php:328
+#: pro-features/plus/harris-benedict.php:117
+#: pro-features/plus/macronutrient-calculator.php:343
 #, fuzzy
 #| msgid "Gained"
 msgid "Gain"
@@ -4183,7 +4254,7 @@ msgid "Challenges are currently disabled. Please enable via the"
 msgstr ""
 
 #: pro-features/plus/challenge/admin.page.php:190
-#: pro-features/plus/harris-benedict.php:400
+#: pro-features/plus/harris-benedict.php:462
 msgid "settings"
 msgstr "nastavitve"
 
@@ -4198,7 +4269,7 @@ msgstr ""
 
 #: pro-features/plus/challenge/functions.php:199
 #: pro-features/plus/challenge/functions.php:351
-#: pro-features/plus/meta-fields/hooks.php:130
+#: pro-features/plus/meta-fields/hooks.php:137
 #: pro-features/shortcode-stats.php:38 pro-features/user-groups.php:573
 #: pro-features/web-hooks.php:226 pro-features/web-hooks.php:345
 msgid "Name"
@@ -4323,56 +4394,56 @@ msgstr ""
 msgid "Yes - Opt me into challenges!"
 msgstr ""
 
-#: pro-features/plus/challenge/shortcodes.php:22
+#: pro-features/plus/challenge/shortcodes.php:28
 #, fuzzy
 #| msgid "This license has expired."
 msgid "You have been"
 msgstr "Licenca je potekla."
 
-#: pro-features/plus/challenge/shortcodes.php:23
+#: pro-features/plus/challenge/shortcodes.php:29
 msgid "opted into all challenges"
 msgstr ""
 
-#: pro-features/plus/challenge/shortcodes.php:23
+#: pro-features/plus/challenge/shortcodes.php:29
 msgid "opted out of all challenges"
 msgstr ""
 
-#: pro-features/plus/challenge/shortcodes.php:45
+#: pro-features/plus/challenge/shortcodes.php:52
 msgid "Opt in"
 msgstr ""
 
-#: pro-features/plus/challenge/shortcodes.php:47
+#: pro-features/plus/challenge/shortcodes.php:54
 msgid "Opt Out"
 msgstr ""
 
-#: pro-features/plus/challenge/shortcodes.php:82
+#: pro-features/plus/challenge/shortcodes.php:89
 #, fuzzy
 #| msgid "Display dates in the following formats:"
 msgid "Display data on the front end "
 msgstr "Želena oblika datuma:"
 
-#: pro-features/plus/challenge/shortcodes.php:83
+#: pro-features/plus/challenge/shortcodes.php:90
 msgid ""
 "If you wish to display this table on a page or post, use the following "
 "shortcode: "
 msgstr ""
 
-#: pro-features/plus/harris-benedict.php:42
-#: pro-features/plus/macronutrient-calculator.php:328
+#: pro-features/plus/harris-benedict.php:82
+#: pro-features/plus/macronutrient-calculator.php:343
 msgid "Maintain"
 msgstr "Vzdrževanje"
 
-#: pro-features/plus/harris-benedict.php:65
-#: pro-features/plus/macronutrient-calculator.php:328
+#: pro-features/plus/harris-benedict.php:106
+#: pro-features/plus/macronutrient-calculator.php:343
 msgid "Lose"
 msgstr "Hujšanje"
 
-#: pro-features/plus/harris-benedict.php:168
-#: pro-features/plus/harris-benedict.php:306
-#: pro-features/plus/harris-benedict.php:355
-#: pro-features/plus/macronutrient-calculator.php:113
-#: pro-features/plus/macronutrient-calculator.php:223
-#: pro-features/plus/macronutrient-calculator.php:271
+#: pro-features/plus/harris-benedict.php:210
+#: pro-features/plus/harris-benedict.php:357
+#: pro-features/plus/harris-benedict.php:406
+#: pro-features/plus/macronutrient-calculator.php:128
+#: pro-features/plus/macronutrient-calculator.php:238
+#: pro-features/plus/macronutrient-calculator.php:286
 msgid ""
 "Please ensure all relevant data to calculate calorie intake has been entered "
 "i.e. Activity Level, Date of Birth, Current Weight, Gender and Height."
@@ -4380,95 +4451,95 @@ msgstr ""
 "Prosimo, vnesite vse podatke, ki so potrebni za izračun (stopnja aktivnosti, "
 "datum rojstva, spol, višina, trenutna teža)."
 
-#: pro-features/plus/harris-benedict.php:185
-#: pro-features/plus/macronutrient-calculator.php:142
+#: pro-features/plus/harris-benedict.php:227
+#: pro-features/plus/macronutrient-calculator.php:157
 msgid "Total"
 msgstr "Skupaj"
 
-#: pro-features/plus/harris-benedict.php:186
-#: pro-features/plus/macronutrient-calculator.php:143
+#: pro-features/plus/harris-benedict.php:228
+#: pro-features/plus/macronutrient-calculator.php:158
 msgid "Breakfast"
 msgstr "Zajtrk"
 
-#: pro-features/plus/harris-benedict.php:187
-#: pro-features/plus/macronutrient-calculator.php:144
+#: pro-features/plus/harris-benedict.php:229
+#: pro-features/plus/macronutrient-calculator.php:159
 msgid "Lunch"
 msgstr "Kosilo"
 
-#: pro-features/plus/harris-benedict.php:188
-#: pro-features/plus/macronutrient-calculator.php:145
+#: pro-features/plus/harris-benedict.php:230
+#: pro-features/plus/macronutrient-calculator.php:160
 msgid "Dinner"
 msgstr "Večerja"
 
-#: pro-features/plus/harris-benedict.php:189
-#: pro-features/plus/macronutrient-calculator.php:146
+#: pro-features/plus/harris-benedict.php:231
+#: pro-features/plus/macronutrient-calculator.php:161
 msgid "Snacks"
 msgstr "Malice"
 
-#: pro-features/plus/harris-benedict.php:247
-#: pro-features/plus/harris-benedict.php:270
+#: pro-features/plus/harris-benedict.php:296
+#: pro-features/plus/harris-benedict.php:319
 msgid "kcal"
 msgstr ""
 
-#: pro-features/plus/harris-benedict.php:249
+#: pro-features/plus/harris-benedict.php:298
 msgid "Subtract"
 msgstr ""
 
-#: pro-features/plus/harris-benedict.php:251
-#: pro-features/plus/harris-benedict.php:274
+#: pro-features/plus/harris-benedict.php:300
+#: pro-features/plus/harris-benedict.php:323
 #, fuzzy
 #| msgid "Calculating daily calorie intake to lose weight"
 msgid "kcals of total calories to maintain weight"
 msgstr "Izračunavam dnevne kalorije za hujšanje"
 
-#: pro-features/plus/harris-benedict.php:251
-#: pro-features/plus/harris-benedict.php:274
+#: pro-features/plus/harris-benedict.php:300
+#: pro-features/plus/harris-benedict.php:323
 #, php-format
 msgid "% of total calories required to maintain weight"
 msgstr ""
 
-#: pro-features/plus/harris-benedict.php:252
+#: pro-features/plus/harris-benedict.php:301
 msgid "Rule applied for suggested weight loss"
 msgstr ""
 
-#: pro-features/plus/harris-benedict.php:275
+#: pro-features/plus/harris-benedict.php:324
 msgid "Rule applied for suggested weight gain"
 msgstr ""
 
-#: pro-features/plus/harris-benedict.php:396
+#: pro-features/plus/harris-benedict.php:458
 msgid "calories for weight loss are capped at "
 msgstr ""
 
-#: pro-features/plus/harris-benedict.php:398
+#: pro-features/plus/harris-benedict.php:460
 msgid "This can be modified within "
 msgstr ""
 
-#: pro-features/plus/macronutrient-calculator.php:175
+#: pro-features/plus/macronutrient-calculator.php:190
 msgid "Carbs"
 msgstr "Ogljikovi hidrati"
 
-#: pro-features/plus/meta-fields/activate.php:118
+#: pro-features/plus/meta-fields/activate.php:125
 msgid "Cups of water drank today?"
 msgstr ""
 
-#: pro-features/plus/meta-fields/activate.php:119
+#: pro-features/plus/meta-fields/activate.php:126
 msgid "Water"
 msgstr ""
 
-#: pro-features/plus/meta-fields/activate.php:121
+#: pro-features/plus/meta-fields/activate.php:128
 msgid "cups"
 msgstr ""
 
-#: pro-features/plus/meta-fields/activate.php:148
-#: pro-features/plus/meta-fields/activate.php:149
+#: pro-features/plus/meta-fields/activate.php:155
+#: pro-features/plus/meta-fields/activate.php:156
 msgid "Leg"
 msgstr ""
 
-#: pro-features/plus/meta-fields/activate.php:163
+#: pro-features/plus/meta-fields/activate.php:170
 msgid "Did you stick to your diet?"
 msgstr ""
 
-#: pro-features/plus/meta-fields/activate.php:164
+#: pro-features/plus/meta-fields/activate.php:171
 msgid "Diet"
 msgstr ""
 
@@ -4478,6 +4549,12 @@ msgstr ""
 
 #: pro-features/plus/meta-fields/functions-photos.php:130
 msgid "uploaded this photo of them for their entry on the"
+msgstr ""
+
+#: pro-features/plus/meta-fields/functions-photos.php:424
+#: pro-features/plus/meta-fields/functions-photos.php:425
+#: pro-features/plus/meta-fields/functions.php:36
+msgid "Photo"
 msgstr ""
 
 #: pro-features/plus/meta-fields/functions-photos.php:444
@@ -4496,63 +4573,94 @@ msgstr ""
 msgid "A note about photos"
 msgstr ""
 
-#: pro-features/plus/meta-fields/functions.php:336
+#: pro-features/plus/meta-fields/functions.php:35
+msgid "Number"
+msgstr ""
+
+#: pro-features/plus/meta-fields/functions.php:37
+msgid "Radio buttons"
+msgstr ""
+
+#: pro-features/plus/meta-fields/functions.php:38
+msgid "Range slider"
+msgstr ""
+
+#: pro-features/plus/meta-fields/functions.php:39
+msgid "Dropdown"
+msgstr ""
+
+#: pro-features/plus/meta-fields/functions.php:40
+#, fuzzy
+#| msgid "Target"
+msgid "Large text"
+msgstr "Cilj"
+
+#: pro-features/plus/meta-fields/functions.php:41
+msgid "Small text"
+msgstr ""
+
+#: pro-features/plus/meta-fields/functions.php:352
 #, fuzzy
 #| msgid "Please enter a valid figure for Kg"
 msgid "Please enter a value for"
 msgstr "Prosimo, vnesite težo"
 
-#: pro-features/plus/meta-fields/functions.php:360
+#: pro-features/plus/meta-fields/functions.php:404
 #, fuzzy
 #| msgid "Please enter a valid figure for Kg"
 msgid "Please enter a number for"
 msgstr "Prosimo, vnesite težo"
 
-#: pro-features/plus/meta-fields/functions.php:437
+#: pro-features/plus/meta-fields/functions.php:501
+#: pro-features/plus/meta-fields/functions.php:547
+msgid "No labels/values have been specified for this question."
+msgstr ""
+
+#: pro-features/plus/meta-fields/functions.php:603
 #, fuzzy
 #| msgid "Recent Weight"
 msgid "Replace photo"
 msgstr "Zadnja teža"
 
-#: pro-features/plus/meta-fields/functions.php:437
+#: pro-features/plus/meta-fields/functions.php:603
 #, fuzzy
 #| msgid "Delete existing data"
 msgid "Select photo"
 msgstr "Izbriši obstoječe podatke"
 
-#: pro-features/plus/meta-fields/functions.php:440
+#: pro-features/plus/meta-fields/functions.php:606
 msgid "Please select a photo (png or jpg) for"
 msgstr ""
 
-#: pro-features/plus/meta-fields/functions.php:473
+#: pro-features/plus/meta-fields/functions.php:639
 msgid "Existing photo for this date"
 msgstr ""
 
-#: pro-features/plus/meta-fields/functions.php:477
+#: pro-features/plus/meta-fields/functions.php:643
 #, fuzzy
 #| msgid "Delete existing data"
 msgid "Delete existing photo"
 msgstr "Izbriši obstoječe podatke"
 
-#: pro-features/plus/meta-fields/functions.php:478
+#: pro-features/plus/meta-fields/functions.php:644
 #, fuzzy
 #| msgid "Delete existing data"
 msgid "Existing photo"
 msgstr "Izbriši obstoječe podatke"
 
-#: pro-features/plus/meta-fields/hooks.php:85
-msgid "Key"
+#: pro-features/plus/meta-fields/hooks.php:91
+msgid "Key / Slug"
 msgstr ""
 
-#: pro-features/plus/meta-fields/hooks.php:128 pro-features/user-groups.php:572
+#: pro-features/plus/meta-fields/hooks.php:135 pro-features/user-groups.php:572
 msgid "Group ID"
 msgstr ""
 
-#: pro-features/plus/meta-fields/hooks.php:129
+#: pro-features/plus/meta-fields/hooks.php:136
 msgid "Slug"
 msgstr ""
 
-#: pro-features/plus/meta-fields/hooks.php:131
+#: pro-features/plus/meta-fields/hooks.php:138
 #, fuzzy
 #| msgid "No of entries"
 msgid "No. Fields"
@@ -4594,17 +4702,22 @@ msgid ""
 "fields-accumulator increment-values=\"1,5,10\"]"
 msgstr ""
 
-#: pro-features/plus/meta-fields/shortcodes.php:161
+#: pro-features/plus/meta-fields/shortcodes.php:163
 #, fuzzy
 #| msgid "There was an issue loading this page"
 msgid "There was an issue saving your entry. Please try again."
 msgstr "Prišlo je do težav z nalaganjem strani"
 
-#: pro-features/plus/photos-gallery.php:36
+#: pro-features/plus/meta-fields/shortcodes.php:216
+#: pro-features/shortcode-chart.php:22
+msgid "Currently there is no data to display on the chart."
+msgstr ""
+
+#: pro-features/plus/photos-gallery.php:35
 msgid "No awards."
 msgstr ""
 
-#: pro-features/plus/photos-gallery.php:36
+#: pro-features/plus/photos-gallery.php:35
 msgid "It doesn't look you've uploaded any photos."
 msgstr ""
 
@@ -4620,14 +4733,76 @@ msgstr "rezultatov iskanja za:"
 msgid "No recent photo found."
 msgstr "Zadnja teža"
 
-#: pro-features/plus/photos.php:443
+#: pro-features/plus/photos.php:442
 msgid "Don't show to public?"
 msgstr ""
 
-#: pro-features/plus/photos.php:446
+#: pro-features/plus/photos.php:445
 msgid ""
 "If the user has uploaded this as part of their Weight Tracker progress, they "
 "probably don't want it viewable on a public attachment page!"
+msgstr ""
+
+#: pro-features/plus/shortcode.calculator.php:27
+#, fuzzy
+#| msgid "Current BMI"
+msgid "Your BMI is:"
+msgstr "Trenitni ITM"
+
+#: pro-features/plus/shortcode.calculator.php:28
+#, fuzzy
+#| msgid "Current BMI"
+msgid "Your BMR is:"
+msgstr "Trenitni ITM"
+
+#: pro-features/plus/shortcode.calculator.php:29
+msgid "The following table illustrates your recommended calorie intake:"
+msgstr ""
+
+#: pro-features/plus/shortcode.calculator.php:30
+msgid "The following table illustrates your recommended macronutrient intake:"
+msgstr ""
+
+#: pro-features/plus/shortcode.calculator.php:137
+#, fuzzy
+#| msgid "Please complete all mandatory fields."
+msgid "Please ensure you have completed all of the fields."
+msgstr "Vnesite pravilen datum."
+
+#: pro-features/plus/shortcode.calculator.php:146
+#, fuzzy
+#| msgid "Target Weight"
+msgid "Current weight"
+msgstr "Ciljna teža"
+
+#: pro-features/plus/shortcode.calculator.php:174
+#: pro-features/user-preferences.php:39
+msgid "Your height:"
+msgstr "Vaša višina:"
+
+#: pro-features/plus/shortcode.calculator.php:181
+#: pro-features/user-preferences.php:42
+#, fuzzy
+#| msgid "Gender"
+msgid "Your Gender:"
+msgstr "Spol"
+
+#: pro-features/plus/shortcode.calculator.php:188
+#: pro-features/user-preferences.php:44
+#, fuzzy
+#| msgid "Activity Level"
+msgid "Your Activity Level:"
+msgstr "Stopnja aktivnosti"
+
+#: pro-features/plus/shortcode.calculator.php:198
+#: pro-features/user-preferences.php:43
+#, fuzzy
+#| msgid "Date of Birth"
+msgid "Your Date of Birth:"
+msgstr "Datum rojstva"
+
+#: pro-features/plus/shortcode.calculator.php:212
+msgid "Calculate"
 msgstr ""
 
 #: pro-features/plus/shortcode.wlt.php:30
@@ -4727,16 +4902,6 @@ msgstr ""
 #| msgid "Proteins"
 msgid "and Protein"
 msgstr "Beljakovine"
-
-#: pro-features/shortcode-chart.php:22
-msgid "Currently there is no data to display on the chart."
-msgstr ""
-
-#: pro-features/shortcode-chart.php:63
-#, fuzzy
-#| msgid "No photos could be found for this user."
-msgid "No data could be found for the user."
-msgstr "Za tega uporabnika ni podatkov o teži."
 
 #: pro-features/shortcode-if.php:21
 msgid ""
@@ -4870,10 +5035,6 @@ msgstr ""
 msgid "About You:"
 msgstr "O vas:"
 
-#: pro-features/user-preferences.php:39
-msgid "Your height:"
-msgstr "Vaša višina:"
-
 #: pro-features/user-preferences.php:40
 #, fuzzy
 #| msgid "Which unit would you like to record your weight in:"
@@ -4883,24 +5044,6 @@ msgstr "V katerih enotah bi želeli beležiti težo:"
 #: pro-features/user-preferences.php:41
 msgid "Display dates in the following formats:"
 msgstr "Želena oblika datuma:"
-
-#: pro-features/user-preferences.php:42
-#, fuzzy
-#| msgid "Gender"
-msgid "Your Gender:"
-msgstr "Spol"
-
-#: pro-features/user-preferences.php:43
-#, fuzzy
-#| msgid "Date of Birth"
-msgid "Your Date of Birth:"
-msgstr "Datum rojstva"
-
-#: pro-features/user-preferences.php:44
-#, fuzzy
-#| msgid "Activity Level"
-msgid "Your Activity Level:"
-msgstr "Stopnja aktivnosti"
 
 #: pro-features/user-preferences.php:45
 #, fuzzy
@@ -5002,13 +5145,6 @@ msgstr "Weight Loss Tracker - Graf"
 #| msgid "Please enter a target weight to see your progress."
 msgid "Display a chart to see your current progress."
 msgstr "Vnesite ciljno težo."
-
-#. Plugin Name of the plugin/theme
-#: pro-features/widget-chart.php:18
-#, fuzzy
-#| msgid "Weight Tracker Debug Log"
-msgid "Weight Tracker"
-msgstr "Weight Loss Tracker - Obrazec"
 
 #: pro-features/widget-chart.php:101
 msgid ""
@@ -5167,6 +5303,26 @@ msgstr ""
 #. Author URI of the plugin/theme
 msgid "https://www.YeKen.uk"
 msgstr "https://www.YeKen.uk"
+
+#, fuzzy
+#~| msgid "Animation Duration"
+#~ msgid "Add Photo Field"
+#~ msgstr "Dolžina animacije"
+
+#, fuzzy
+#~| msgid "Animation Duration"
+#~ msgid "Add Text Field"
+#~ msgstr "Dolžina animacije"
+
+#, fuzzy
+#~| msgid "Animation Duration"
+#~ msgid "Add Yes/No Field"
+#~ msgstr "Dolžina animacije"
+
+#, fuzzy
+#~| msgid "No photos could be found for this user."
+#~ msgid "No data could be found for the user."
+#~ msgstr "Za tega uporabnika ni podatkov o teži."
 
 #~ msgid "Notifications"
 #~ msgstr "Obvestila"
@@ -5473,9 +5629,6 @@ msgstr "https://www.YeKen.uk"
 #~| msgid "About You:"
 #~ msgid "... and About You"
 #~ msgstr "O vas:"
-
-#~ msgid "Options"
-#~ msgstr "Izbire"
 
 #~ msgid "No data available in table"
 #~ msgstr "V tabeli ni podatkov"
