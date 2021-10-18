@@ -162,8 +162,6 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 = 9.2 =
 
-// TODO
-
 * New feature: New shortcode [wt-calculator]. Allow logged in and non-logged in users to calculate their BMI, BMR, suggested calorie intake and macronutrients by varying the input parameters. https://docs.yeken.uk/shortcodes/wt-calculator.html
 * Improvement: New argument "always-show" for [wt-shortcode-optin]. If set to true, the buttons shall always be displayed regardless of user choice. https://docs.yeken.uk/shortcodes/wt-challenges-optin.html
 * Improvement: Added the filter "wlt-form-custom-field-row". Specifying this will allow you to inject HTML before each custom field on a form.
