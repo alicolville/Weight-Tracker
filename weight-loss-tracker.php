@@ -158,6 +158,8 @@ if ( true === ws_ls_settings_challenges_enabled() ) {
 	require_once( WS_LS_ABSPATH . 'pro-features/plus/challenge/inc.php' );
 }
 
+require_once( WS_LS_ABSPATH . 'pro-features/plus/messaging/inc.php' );
+
 require_once( WS_LS_ABSPATH . 'pro-features/plus/bmr.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/plus/harris-benedict.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/plus/macronutrient-calculator.php' );
