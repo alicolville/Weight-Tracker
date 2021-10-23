@@ -7,3 +7,5 @@ defined('ABSPATH') or die("Jog on!");
  */
 require_once( 'activate.php' );
 require_once( 'db.php' );
+require_once( 'functions-messages.php' );
+require_once( 'functions-notes.php' );
