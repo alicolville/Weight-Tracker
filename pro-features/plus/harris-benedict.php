@@ -527,7 +527,7 @@ add_filter( 'wlt-filter-calories-pre', 'ws_ls_harris_benedict_filter_show_hide_g
  * @param bool $return_range
  * @return int
  */
-function ws_ls_harris_benedict_filter_calories_to_add( $calories_to_maintain = NULL, $gender = NULL, $return_range = false ): int {
+function ws_ls_harris_benedict_filter_calories_to_add( $calories_to_maintain = NULL, $gender = NULL, $return_range = false ) {
 
 	if( false === WS_LS_IS_PRO_PLUS) {
 		return 0;
