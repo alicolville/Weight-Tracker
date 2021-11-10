@@ -337,3 +337,15 @@ HEX: #f7786b
     background-color: #2196F3 !important;
     height: 30px;
 }
+
+.ws-ls-loading-button {
+  content: ' ' !important;
+  background-image: url(images/spinner.gif) !important;
+  background-size: 16px 16px !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  -webkit-transition: opacity ease .2s;
+  -o-transition: opacity ease .2s;
+  transition: opacity ease .2s;
+}
+
