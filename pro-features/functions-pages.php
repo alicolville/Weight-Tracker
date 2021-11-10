@@ -39,7 +39,14 @@ function ws_ls_user_side_bar( $user_id ) {
 
 	echo '<div class="meta-box-sortables" id="ws-ls-user-data-two">';
 
-	$user_sidebar_order = get_option( 'ws-ls-postbox-order-ws-ls-user-data-two', [ 'user-search', 'most-recent', 'user-information', 'add-entry', 'export-data', 'settings', 'delete-cache', 'delete-data' ] );
+
+	$default_order		= [ 'user-search', 'most-recent', 'user-information', 'notes', 'add-entry', 'export-data', 'settings', 'delete-cache', 'delete-data' ];
+	$user_sidebar_order = get_option( 'ws-ls-postbox-order-ws-ls-user-data-two', $default_order );
+
+	// Notes not in the array (as a new feature)?
+	if ( false === in_array( 'notes', $user_sidebar_order ) ) {
+		$user_sidebar_order = $default_order;
+	}
 
 	// Most recent photo missing? i.e. have we saved the order when it was previously hidden?
 	if ( true === ws_ls_meta_fields_photo_any_enabled() && false === in_array( 'most-recent', $user_sidebar_order ) ) {
@@ -66,6 +73,8 @@ function ws_ls_user_side_bar( $user_id ) {
 			ws_ls_postbox_sidebar_delete_data( $user_id );
 		} elseif ( 'delete-data' === $postbox ) {
 			ws_ls_postbox_sidebar_settings( $user_id );
+		} elseif ( 'notes' === $postbox ) {
+			ws_ls_postbox_user_notes( $user_id );
 		}
 	}
 
@@ -90,7 +99,37 @@ function ws_ls_postbox_user_search( $class = 'ws-ls-user-summary-two' ) {
 }
 
 /**
+ * Postbox for user notes
+ *
+ * @param string $class
+ */
+function ws_ls_postbox_user_notes( $user_id ) {
+
+	$stats 		= ws_ls_messages_db_stats( $user_id );
+	$notes_link = '#';
+
+	?>
+	<div class="postbox <?php ws_ls_postbox_classes( 'notes', 'ws-ls-user-data-two' ); ?>" id="notes">
+		<?php ws_ls_postbox_header( [ 'title' => __( 'Notes', WE_LS_SLUG ), 'postbox-id' => 'notes', 'postbox-col' => 'ws-ls-user-data-two' ] ); ?>
+		<div class="inside"><p>
+			<?php
+				printf( 	__( 'There are <a href="%1$s">%2$d note(s)</a> for this user.', WE_LS_SLUG ),
+							esc_url( $notes_link ),
+							$stats[ 'notes-count' ] ); ?>
+			</p>
+			<form id="wt-add-note">
+				<textarea type="text" placeholder="<?php echo __( 'Add a note for this user...', WE_LS_SLUG ); ?>" id="note" class="widefat" rows="4"></textarea>
+				<input type="submit" class="button" value="<?php echo __( 'Add note', WE_LS_SLUG ); ?>" />
+			</form>
+		</div>
+	</div>
+	<?php
+}
+
+/**
  * Postbox for recent photo
+ *
+ * @param $user_id
  */
 function ws_ls_postbox_sidebar_recent_photo( $user_id ) {
 

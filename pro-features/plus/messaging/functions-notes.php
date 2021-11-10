@@ -15,9 +15,9 @@ function ws_ls_note_add( $user_id, $note ) {
 
 
 
-function test() {
-	//ws_ls_note_add(1, 'test 12345');
-	var_dump(ws_ls_messages_db_stats( 1));
-	die;
-}
-add_action( 'init', 'test' );
+//function test() {
+//	//ws_ls_note_add(1, 'test 12345');
+//	var_dump(ws_ls_messages_db_stats( 1));
+//	die;
+//}
+//add_action( 'init', 'test' );
