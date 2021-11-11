@@ -10,9 +10,11 @@ defined( 'ABSPATH' ) or die( 'Jog on!' );
  * @param $message
  * @param bool $is_note
  *
+ * @param bool $visible_to_user
+ *
  * @return bool
  */
-function ws_ls_messaging_db_add( $to, $from, $message, $is_note = false ) {
+function ws_ls_messaging_db_add( $to, $from, $message, $is_note = false, $visible_to_user = false ) {
 
 	if ( false === WS_LS_IS_PRO ) {
 		return false;
@@ -22,8 +24,8 @@ function ws_ls_messaging_db_add( $to, $from, $message, $is_note = false ) {
 		return false;
 	}
 
-	$data       = [ 'to' => $to, 'from' => $from, 'message_text' => $message ];
-	$formats    = [ '%d', '%d', '%s' ];
+	$data       = [ 'to' => $to, 'from' => $from, 'message_text' => $message, 'visible_to_user' => $visible_to_user ];
+	$formats    = [ '%d', '%d', '%s', '%d' ];
 
 	$key                    = ( true === $is_note ) ? 'note' : 'message';
 	$data[ $key ]           = 1;

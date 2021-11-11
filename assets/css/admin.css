@@ -348,4 +348,10 @@ HEX: #f7786b
   -o-transition: opacity ease .2s;
   transition: opacity ease .2s;
 }
-
+.ws-ls-notes-add-postbox .ws-ls-note-checkbox {
+  height: 30px;
+}
+.ws-ls-notes-add-postbox .ws-ls-note-checkbox label {
+  top: -2px;
+  position: relative;
+}

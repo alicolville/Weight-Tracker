@@ -12,12 +12,15 @@ function ws_ls_note_is_enabled() {
 
 /**
  * Add an admin note for a user
+ *
  * @param $user_id
  * @param $note
  *
+ * @param bool $visible_to_user
+ *
  * @return bool
  */
-function ws_ls_note_add( $user_id, $note ) {
+function ws_ls_note_add( $user_id, $note, $visible_to_user = false ) {
 
 	if ( false === ws_ls_note_is_enabled() ) {
 		return false;
@@ -28,5 +31,5 @@ function ws_ls_note_add( $user_id, $note ) {
 		return false;
 	}
 
-	return ws_ls_messaging_db_add( $user_id, get_current_user_id(), $note, true );
+	return ws_ls_messaging_db_add( $user_id, get_current_user_id(), $note, true, $visible_to_user );
 }

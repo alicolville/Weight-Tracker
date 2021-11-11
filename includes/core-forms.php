@@ -544,12 +544,13 @@ function ws_ls_form_field_checkbox( $arguments = [] ) {
 												'checked'               => false,
 												'show-label'            => false,
 												'css-class'             => '',
+												'css-class-row'         => 'ws-ls-form-row',
 												'include-div'           => true,
 												'required' 				=> false ]);
 	$html = '';
 
 	if ( true === $arguments[ 'include-div' ] ) {
-		$html .= sprintf( '<div id="%1$s-row" class="ws-ls-form-row">', $arguments[ 'name' ] );
+		$html .= sprintf( '<div id="%1$s-row" class="%2$s">', esc_attr( $arguments[ 'name' ] ), esc_attr( $arguments[ 'css-class-row' ] ) );
 	}
 
 	$html .= sprintf( '<input type="checkbox" name="%1$s" id="%2$s" tabindex="%3$d" value="%4$s" class="%5$s" %6$s />',

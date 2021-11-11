@@ -110,11 +110,14 @@ function ws_ls_postbox_user_notes( $user_id ) {
 	$component_id 	= ws_ls_component_id();
 
 	?>
-	<div class="postbox <?php ws_ls_postbox_classes( 'notes', 'ws-ls-user-data-two' ); ?>" id="notes">
+	<div class="postbox ws-ls-notes-add-postbox <?php ws_ls_postbox_classes( 'notes', 'ws-ls-user-data-two' ); ?>" id="notes">
 		<?php ws_ls_postbox_header( [ 'title' => __( 'Notes', WE_LS_SLUG ), 'postbox-id' => 'notes', 'postbox-col' => 'ws-ls-user-data-two' ] ); ?>
 		<div class="inside">
 			<p id="<?php echo $component_id; ?>_errormessage" class="ws-ls-validation-error ws-ls-hide">
 				<?php echo __( 'There was an error adding the note. Please try again.', WE_LS_SLUG ); ?>
+			</p>
+			<p id="<?php echo $component_id; ?>_successmessage" class="ws-ls-good ws-ls-hide">
+				<?php echo __( 'The note has been saved successfully.', WE_LS_SLUG ); ?>
 			</p>
 			<p>
 			<?php
@@ -123,9 +126,24 @@ function ws_ls_postbox_user_notes( $user_id ) {
 							$stats[ 'notes-count' ],
 							$component_id ); ?>
 			</p>
-			<textarea id="<?php echo $component_id; ?>_textarea" type="text" placeholder="<?php echo __( 'Add a note for this user...', WE_LS_SLUG ); ?>" id="note" class="widefat" rows="4"></textarea>
-
 			<?php
+				echo ws_ls_form_field_textarea( [ 	'name' 			=> $component_id . '_textarea',
+													'cols' 			=> 30,
+													'placeholder' 	=> __( 'Add a note for this user...', WE_LS_SLUG )
+				]);
+
+				echo ws_ls_form_field_checkbox( [ 	'id' 				=> $component_id . '_send_email',
+													'title'				=> __( 'Send note to user via email', WE_LS_SLUG ),
+													'show-label'		=> true,
+													'css-class-row' 	=> 'ws-ls-note-checkbox'
+				]);
+
+				echo ws_ls_form_field_checkbox( [ 	'id' 				=> $component_id . '_visible_to_user',
+													 'title'			=> __( 'Allow user to view via [wt-notes]', WE_LS_SLUG ),
+													 'show-label'		=> true,
+													 'css-class-row' 	=> 'ws-ls-note-checkbox'
+				]);
+
 				if ( ws_ls_note_is_enabled() ) {
 					printf( '<button id="%1$s_button" class="button">%2$s</button>',
 							$component_id,
@@ -138,9 +156,10 @@ function ws_ls_postbox_user_notes( $user_id ) {
 			<script>
 				jQuery( document ).ready( function ( $ ) {
 
-					let button_id 		= '#<?php echo $component_id; ?>_button';
-					let textarea_id 	= '#<?php echo $component_id; ?>_textarea';
-					let errormessage_id = '#<?php echo $component_id; ?>_errormessage';
+					let button_id 			= '#<?php echo $component_id; ?>_button';
+					let textarea_id 		= '#<?php echo $component_id; ?>_textarea';
+					let errormessage_id 	= '#<?php echo $component_id; ?>_errormessage';
+					let successmessage_id 	= '#<?php echo $component_id; ?>_successmessage';
 
 					$( button_id ).click( function( event ) {
 
@@ -150,11 +169,14 @@ function ws_ls_postbox_user_notes( $user_id ) {
 
 						$( button_id ).addClass( 'ws-ls-loading-button');
 						$( errormessage_id ).addClass( 'ws-ls-hide');
+						$( successmessage_id ).addClass( 'ws-ls-hide' );
 
-						let data = { 	'action' : 		'ws_ls_add_note',
-										'security' : 	'<?php echo wp_create_nonce( 'ws-ls-add-note' ) ?>',
-										'user-id' :		<?php echo (int) $user_id; ?>,
-										'note' :		note
+						let data = { 	'action' : 			'ws_ls_add_note',
+										'security' : 		'<?php echo wp_create_nonce( 'ws-ls-add-note' ) ?>',
+										'user-id' :			<?php echo (int) $user_id; ?>,
+										'note' :			note,
+										'send-email' :		$( '#<?php echo $component_id; ?>_send_email' ).is(':checked'),
+										'visible-to-user' :	$( '#<?php echo $component_id; ?>_visible_to_user' ).is(':checked')
 						};
 
 						jQuery.post( "<?php echo admin_url('admin-ajax.php'); ?>", data, function ( response ) {
@@ -165,7 +187,8 @@ function ws_ls_postbox_user_notes( $user_id ) {
 							}
 
 							$( textarea_id ).val( '' );
-							$( "#<?php echo $component_id; ?>_count" ).text( response )
+							$( "#<?php echo $component_id; ?>_count" ).text( response );
+							$( successmessage_id ).removeClass( 'ws-ls-hide' );
 
 						}).fail(function() {
 							$( errormessage_id ).removeClass( 'ws-ls-hide' );
