@@ -109,9 +109,14 @@ function ws_ls_postbox_user_notes( $user_id ) {
 	$notes_link 	= '#';
 	$component_id 	= ws_ls_component_id();
 
+	$title = sprintf( __( ': <span id="%3$s_count">%2$d</span>', WE_LS_SLUG ),
+							esc_url( $notes_link ),
+							$stats[ 'notes-count' ],
+							$component_id );
+
 	?>
 	<div class="postbox ws-ls-notes-add-postbox <?php ws_ls_postbox_classes( 'notes', 'ws-ls-user-data-two' ); ?>" id="notes">
-		<?php ws_ls_postbox_header( [ 'title' => __( 'Notes', WE_LS_SLUG ), 'postbox-id' => 'notes', 'postbox-col' => 'ws-ls-user-data-two' ] ); ?>
+		<?php ws_ls_postbox_header( [ 'title' => __( 'Notes', WE_LS_SLUG ) . $title , 'postbox-id' => 'notes', 'postbox-col' => 'ws-ls-user-data-two' ] ); ?>
 		<div class="inside">
 			<p id="<?php echo $component_id; ?>_errormessage" class="ws-ls-validation-error ws-ls-hide">
 				<?php echo __( 'There was an error adding the note. Please try again.', WE_LS_SLUG ); ?>
@@ -121,43 +126,62 @@ function ws_ls_postbox_user_notes( $user_id ) {
 			</p>
 			<p>
 			<?php
-				printf( 	__( 'There are <a href="%1$s"><span id="%3$s_count">%2$d</span> note(s)</a> for this user.', WE_LS_SLUG ),
-							esc_url( $notes_link ),
-							$stats[ 'notes-count' ],
-							$component_id ); ?>
+
+				printf( 	__( '<a href="%1$s">View All</a> /', WE_LS_SLUG ), esc_url( $notes_link ) );
+
+				printf( 	__( ' <a href="#" id="%1$s_view_most_read">View most recent</a><a href="#" class="ws-ls-hide" id="%1$s_hide_most_read">Hide most recent</a>', WE_LS_SLUG ), $component_id );
+				?>
 			</p>
-			<?php
-				echo ws_ls_form_field_textarea( [ 	'name' 			=> $component_id . '_textarea',
+			<div id="<?php echo $component_id; ?>_most_recent_comment_div" class="ws-ls-hide">
+				<hr />
+				<p><?php echo __( 'Most recent comment', WE_LS_SLUG ); ?>:</p>
+				<?php
+				echo ws_ls_form_field_textarea( [ 	'name' 			=> $component_id . '_most_recent',
 													'cols' 			=> 30,
-													'placeholder' 	=> __( 'Add a note for this user...', WE_LS_SLUG )
-				]);
+													'rows'			=> 6,
+													'disabled'		=> true,
+													'placeholder'	=>  __( 'There are no notes for this user', WE_LS_SLUG ),
+													'value'			=> esc_html( $stats[ 'notes-latest-text' ] )
 
-				echo ws_ls_form_field_checkbox( [ 	'id' 				=> $component_id . '_send_email',
-													'title'				=> __( 'Send note to user via email', WE_LS_SLUG ),
-													'show-label'		=> true,
-													'css-class-row' 	=> 'ws-ls-note-checkbox'
 				]);
+				?>
+				<br />
+			</div>
+			<div id="<?php echo $component_id; ?>_add_new_div">
+				<?php
+					echo ws_ls_form_field_textarea( [ 	'name' 			=> $component_id . '_textarea',
+														'cols' 			=> 30,
+														'placeholder' 	=> __( 'Add a note for this user...', WE_LS_SLUG )
+					]);
 
-				echo ws_ls_form_field_checkbox( [ 	'id' 				=> $component_id . '_visible_to_user',
-													 'title'			=> __( 'Allow user to view via [wt-notes]', WE_LS_SLUG ),
-													 'show-label'		=> true,
-													 'css-class-row' 	=> 'ws-ls-note-checkbox'
-				]);
+					echo ws_ls_form_field_checkbox( [ 	'id' 				=> $component_id . '_send_email',
+														'title'				=> __( 'Send note to user via email', WE_LS_SLUG ),
+														'show-label'		=> true,
+														'css-class-row' 	=> 'ws-ls-note-checkbox'
+					]);
 
-				if ( ws_ls_note_is_enabled() ) {
-					printf( '<button id="%1$s_button" class="button">%2$s</button>',
-							$component_id,
-							__( 'Add note', WE_LS_SLUG )
-					);
-				} else {
-					printf( '<a href="%s">Upgrade to Pro to save notes</a>', ws_ls_upgrade_link() );
-				}
-			?>
+					echo ws_ls_form_field_checkbox( [ 	'id' 				=> $component_id . '_visible_to_user',
+														 'title'			=> __( 'Allow user to view via [wt-notes]', WE_LS_SLUG ),
+														 'show-label'		=> true,
+														 'css-class-row' 	=> 'ws-ls-note-checkbox'
+					]);
+
+					if ( ws_ls_note_is_enabled() ) {
+						printf( '<button id="%1$s_button" class="button">%2$s</button>',
+								$component_id,
+								__( 'Add note', WE_LS_SLUG )
+						);
+					} else {
+						printf( '<a href="%s">Upgrade to Pro to save notes</a>', ws_ls_upgrade_link() );
+					}
+				?>
+			</div>
 			<script>
 				jQuery( document ).ready( function ( $ ) {
 
 					let button_id 			= '#<?php echo $component_id; ?>_button';
 					let textarea_id 		= '#<?php echo $component_id; ?>_textarea';
+					let most_recent_id 		= '#<?php echo $component_id; ?>_most_recent';
 					let errormessage_id 	= '#<?php echo $component_id; ?>_errormessage';
 					let successmessage_id 	= '#<?php echo $component_id; ?>_successmessage';
 
@@ -186,7 +210,10 @@ function ws_ls_postbox_user_notes( $user_id ) {
 								return;
 							}
 
+							$( most_recent_id ).val( $( textarea_id ).val() );
+
 							$( textarea_id ).val( '' );
+
 							$( "#<?php echo $component_id; ?>_count" ).text( response );
 							$( successmessage_id ).removeClass( 'ws-ls-hide' );
 
@@ -196,6 +223,31 @@ function ws_ls_postbox_user_notes( $user_id ) {
 						.always(function() {
 							$( button_id ).removeClass( 'ws-ls-loading-button');
 						});;
+					});
+
+					let hide_most_recent_id 	= '#<?php echo $component_id; ?>_hide_most_read';
+					let view_most_recent_id 	= '#<?php echo $component_id; ?>_view_most_read';
+					let view_most_recent_div_id = '#<?php echo $component_id; ?>_most_recent_comment_div';
+					let view_add_new_div_id 	= '#<?php echo $component_id; ?>_add_new_div';
+
+					$( hide_most_recent_id ).click( function( event ) {
+
+						event.preventDefault();
+
+						$( view_most_recent_id ).removeClass( 'ws-ls-hide' );
+						$( hide_most_recent_id ).addClass( 'ws-ls-hide' );
+						$( view_most_recent_div_id ).addClass( 'ws-ls-hide' );
+						$( view_add_new_div_id ).removeClass( 'ws-ls-hide' );
+					});
+
+					$( view_most_recent_id ).click( function( event ) {
+
+						event.preventDefault();
+
+						$( hide_most_recent_id ).removeClass( 'ws-ls-hide' );
+						$( view_most_recent_id ).addClass( 'ws-ls-hide' );
+						$( view_most_recent_div_id ).removeClass( 'ws-ls-hide' );
+						$( view_add_new_div_id ).addClass( 'ws-ls-hide' );
 					});
 
 				});
@@ -563,7 +615,7 @@ function ws_ls_postbox_header( $args = [] ) {
 
 		echo '<div class="postbox-header">';
 
-		printf( '<h2 class="hndle"><span>%1$s</span></h2>', esc_html( $args[ 'title' ] ) );
+		printf( '<h2 class="hndle"><span>%1$s</span></h2>', wp_kses_post( $args[ 'title' ] ) );
 
 		if ( true === $args[ 'show-controls' ] &&
 			 	false === empty( $args[ 'postbox-id' ] ) ) {

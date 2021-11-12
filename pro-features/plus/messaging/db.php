@@ -86,6 +86,8 @@ function ws_ls_messaging_db_get( $message_id ) {
 
 	$result = ( false === empty( $result ) ) ? $result : false;
 
+	$result[ 'message_text' ] = stripslashes( $result[ 'message_text' ] );
+
 	ws_ls_cache_set( 'message-' . (int) $message_id, $result );
 
 	return $result;
@@ -108,9 +110,14 @@ function ws_ls_messages_db_stats( $user_id ) {
 
 	global $wpdb;
 
-	$stats                      = [ 'notes-count' => NULL ];
-	$user_id                    = (int) $user_id;
-	$stats[ 'notes-count' ]     = $wpdb->get_var( 'SELECT count( id ) FROM ' . $wpdb->prefix . WE_LS_MYSQL_MESSAGES . ' WHERE `note` = 1 and `to` = ' . $user_id );
+	$latest_note_id = $wpdb->get_var( 'SELECT id FROM ' . $wpdb->prefix . WE_LS_MYSQL_MESSAGES . ' WHERE `note` = 1 and `to` = ' . $user_id . ' order by created desc' );
+	$latest_note    = ws_ls_messaging_db_get( $latest_note_id );
+
+	$stats                          = [ 'notes-count' => NULL ];
+	$user_id                        = (int) $user_id;
+	$stats[ 'notes-count' ]         = $wpdb->get_var( 'SELECT count( id ) FROM ' . $wpdb->prefix . WE_LS_MYSQL_MESSAGES . ' WHERE `note` = 1 and `to` = ' . $user_id );
+	$stats[ 'notes-latest-id' ]     = $latest_note_id;
+	$stats[ 'notes-latest-text' ]   = ( false === empty( $latest_note[ 'message_text' ] ) ) ? $latest_note[ 'message_text' ] : '';
 
 	ws_ls_cache_user_set( $user_id, 'message-stats', $stats );
 

@@ -10,6 +10,8 @@ function ws_ls_note_is_enabled() {
 	return WS_LS_IS_PRO;
 }
 
+
+
 /**
  * Add an admin note for a user
  *
