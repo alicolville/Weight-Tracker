@@ -68,7 +68,7 @@ function ws_ls_notes_render( $note, $echo = true ) {
 
 	$html = sprintf( '	<div id="%5$s" class="postbox ws-ls-postbox ws-ls-note">
 							<div class="postbox-header ws-ls-note-header">
-								<h2 class="hndle"><span>by %2$s on %3$s (%6$s)</span></h2>
+								<h2 class="hndle"><span>by %2$s on %3$s %6$s</span></h2>
 							<div class="handle-actions hide-if-no-js ws-note-delete-div">
 								<a href="#" class="button-secondary ws-note-delete-action" data-id="%1$d" data-div-id="%5$s"><i class="fa fa-trash"></i></a>
 							</div>
@@ -82,7 +82,7 @@ function ws_ls_notes_render( $note, $echo = true ) {
 						ws_ls_iso_datetime_into_correct_format( $note[ 'created' ] ),
 						$note[ 'message_text' ],
 						ws_ls_component_id(),
-						true === ws_ls_to_bool( $note[ 'visible_to_user' ] ) ? __( 'Visible to user', WE_LS_SLUG ) : __( 'Hidden to user', WE_LS_SLUG )
+						true === ws_ls_to_bool( $note[ 'visible_to_user' ] ) ? __( ' (Visible via [wt-notes])', WE_LS_SLUG ) : ''
 
     );
 
