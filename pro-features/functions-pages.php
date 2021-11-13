@@ -106,11 +106,10 @@ function ws_ls_postbox_user_search( $class = 'ws-ls-user-summary-two' ) {
 function ws_ls_postbox_user_notes( $user_id ) {
 
 	$stats 			= ws_ls_messages_db_stats( $user_id );
-	$notes_link 	= '#';
+	$notes_link 	= ws_ls_get_link_to_notes( $user_id );
 	$component_id 	= ws_ls_component_id();
 
-	$title = sprintf( __( ': <span id="%3$s_count">%2$d</span>', WE_LS_SLUG ),
-							esc_url( $notes_link ),
+	$title = sprintf( __( ': <span id="%2$s_count">%1$d</span>', WE_LS_SLUG ),
 							$stats[ 'notes-count' ],
 							$component_id );
 

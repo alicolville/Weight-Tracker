@@ -3,6 +3,74 @@
 defined( 'ABSPATH' ) or die( 'Jog on!' );
 
 /**
+ * Fetch notes / messages for user
+ * @param $to
+ * @param null $from
+ * @param bool $is_note
+ * @param bool $visible_to_user
+ * @param null $limit
+ * @param bool $ignore_cache
+ *
+ * @return bool|null
+ */
+function ws_ls_messaging_db_select( $to, $from = NULL, $is_note = true, $visible_to_user = NULL, $limit = NULL, $ignore_cache = false ) {
+
+	if ( false === WS_LS_IS_PRO ) {
+		return NULL;
+	}
+
+	$cache_key = 'ws-ls-messaging-' . md5($from . $limit . $is_note . $visible_to_user . $limit );
+
+	// Return cache if found!
+	if ( false === $ignore_cache && $cache = ws_ls_cache_user_get( $to, $cache_key ) ) {
+		return $cache;
+	}
+
+	global $wpdb;
+
+	$sql = 'SELECT * FROM ' . $wpdb->prefix . WE_LS_MYSQL_MESSAGES;
+
+	// -------------------------------------------------
+	// Build where clause
+	// -------------------------------------------------
+	$where = [];
+
+	$where[]    = '`to` = ' . (int) $to;
+
+	if ( false === empty( $from ) ) {
+		$where[] = '`from` = ' . (int) $from;
+	}
+
+	if ( true === $is_note ) {
+		$where[] = 'note = 1';
+	} else {
+		$where[] = 'message = 1';
+	}
+
+	if ( NULL !== $visible_to_user ) {
+		$where[] = 'visible_to_user = ' . (int) $visible_to_user;
+	}
+
+	// Add where
+	if ( false === empty( $where ) ) {
+		$sql .= ' where ' . implode( ' and ', $where );
+	}
+
+	$sql .= ' order by created desc';
+
+	if ( false === empty( $limit ) ) {
+		$sql    .= $wpdb->prepare( ' limit 0, %d', ( true === empty( $limit ) ) ? 10 : (int) $limit );
+	}
+
+	$results = $wpdb->get_results( $sql, ARRAY_A );
+
+	ws_ls_cache_user_set( $to, $cache_key, $results, HOUR_IN_SECONDS );
+
+	return $results;
+}
+
+
+/**
  * Insert a message
  *
  * @param $to
@@ -46,11 +114,21 @@ function ws_ls_messaging_db_add( $to, $from, $message, $is_note = false, $visibl
  */
 function ws_ls_messaging_db_delete( $message_id ) {
 
+	if ( false === WS_LS_IS_PRO ) {
+		return false;
+	}
+
 	if ( true === empty( $message_id ) ) {
 		return false;
 	}
 
 	global $wpdb;
+
+	$message = ws_ls_messaging_db_get( $message_id );
+
+	if ( false === empty( $message[ 'to' ] ) ) {
+		ws_ls_cache_user_delete( $message[ 'to' ] );
+	}
 
 	$result = $wpdb->delete( $wpdb->prefix . WE_LS_MYSQL_MESSAGES,
 		[ 'id' => $message_id ],

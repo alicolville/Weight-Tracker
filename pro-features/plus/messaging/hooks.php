@@ -36,3 +36,21 @@ function ws_ls_note_ajax_add() {
 }
 add_action( 'wp_ajax_ws_ls_add_note', 'ws_ls_note_ajax_add' );
 
+/**
+ * Delete notes
+ */
+function ws_ls_note_ajax_delete() {
+
+	check_ajax_referer( 'ws-ls-delete-note', 'security' );
+
+	$note_id = ws_ls_post_value('id' );
+
+	if ( true === empty( $note_id ) ) {
+		wp_send_json_error( 'Missing ID', 400 );
+	}
+
+	$response = ws_ls_messaging_db_delete( $note_id );
+
+	wp_send_json( (int) $response );
+}
+add_action( 'wp_ajax_ws_ls_delete_note', 'ws_ls_note_ajax_delete' );
