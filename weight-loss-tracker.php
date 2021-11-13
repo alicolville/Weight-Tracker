@@ -117,6 +117,7 @@ require_once( WS_LS_ABSPATH . 'includes/admin-pages/user-data/data-view-all.php'
 require_once( WS_LS_ABSPATH . 'includes/admin-pages/user-data/data-add-edit-entry.php' );
 require_once( WS_LS_ABSPATH . 'includes/admin-pages/user-data/data-edit-target.php' );
 require_once( WS_LS_ABSPATH . 'includes/admin-pages/user-data/data-user.php' );
+require_once( WS_LS_ABSPATH . 'includes/admin-pages/user-data/data-notes.php' );
 require_once( WS_LS_ABSPATH . 'includes/admin-pages/user-data/data-user-edit-settings.php' );
 require_once( WS_LS_ABSPATH . 'includes/admin-pages/user-data/data-search-results.php' );
 require_once( WS_LS_ABSPATH . 'includes/admin-pages/user-data/data-photos.php' );
