@@ -54,3 +54,36 @@ function ws_ls_note_ajax_delete() {
 	wp_send_json( (int) $response );
 }
 add_action( 'wp_ajax_ws_ls_delete_note', 'ws_ls_note_ajax_delete' );
+
+/**
+ * Shortcode for [wt-notes]
+ * @param $user_defined_arguments
+ *
+ * @return string
+ */
+function ws_ls_note_shortcode( $user_defined_arguments ) {
+
+	if ( false === WS_LS_IS_PRO ) {
+		return ws_ls_display_pro_upgrade_notice_for_shortcode();
+	}
+
+	$arguments  = shortcode_atts( [ 'user-id'           => get_current_user_id(),
+									'message-no-data'   => __( 'You currently have no notes from the administrator.', WE_LS_SLUG )
+	], $user_defined_arguments );
+
+	$notes = ws_ls_notes_fetch( $arguments[ 'user-id'], true );
+
+	if ( false === empty( $notes ) ) {
+
+		$html = '';
+
+		foreach ( $notes as $note ) {
+			$html .= ws_ls_notes_render( $note, false );
+		}
+
+		return $html;
+	}
+
+	return sprintf( '<p>%s</p>', esc_html( $arguments[ 'message-no-data'] ) );
+}
+add_shortcode( 'wt-notes', 'ws_ls_note_shortcode' );
