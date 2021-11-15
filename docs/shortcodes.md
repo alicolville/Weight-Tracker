@@ -29,6 +29,7 @@ The majority of the public facing functionality are implemented using [WordPress
 |[[wt-macronutrients]]({{ site.baseurl }}/shortcodes/wt-macronutrients.html)|Displays a macronutrient figure from the macronutrient intake calculations.|
 |[[wt-macronutrients-table]]({{ site.baseurl }}/shortcodes/wt-macronutrients-table.html)|Displays recommendations on the best way to split your calorie intake.|
 |[[wt-message]]({{ site.baseurl }}/shortcodes/wt-message.html)|Display a message when a user has gained/lost weight over a number of consecutive entries.|
+|[[wt-notes]]({{ site.baseurl }}/shortcodes/wt-notes.html)|Display admin notes to the user|
 |[[wt-photo-count]]({{ site.baseurl }}/shortcodes/wt-photo-count.html)|Display the number of photos uploaded by the current user.|
 |[[wt-photo-gallery]]({{ site.baseurl }}/shortcodes/wt-photo-gallery.html)|Display a gallery of the user's uploaded photos ([custom fields]({{ site.baseurl }}/custom-fields.html)).
 |[[wt-photo-oldest]]({{ site.baseurl }}/shortcodes/wt-photo-oldest.html)|Display the the oldest photo uploaded by the user.|
