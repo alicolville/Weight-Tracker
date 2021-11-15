@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight,tracker,chart,bmi,bmr,macronutrient,measure,awards,custom fields,history,measurements,data
 Requires at least: 5.7
 Tested up to: 5.8.1
-Stable tag: 9.2.1
+Stable tag: 9.3
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -55,6 +55,7 @@ For further information read our documentation:
 * **Custom Fields.** Define and ask your user's custom questions on weight entry forms. Add numeric fields (for things like measurements), yes/no and text fields.
 * **Photo Custom Fields**. Add one or more photo fields to your weight entry forms and allow your users to upload photos of their progress. Photos can be viewed, updated and removed by the end user and administrators. Handy shortcodes are provided for displaying galleries, most recent and oldest photo.
 * **Groups**. Define user groups and assign your user's to them. View Weight Difference statistics for the group as a whole.
+* **Admin notes**. Administrators have the ability to store notes against their users. If set to visible, the user can view these via [wt-notes] or receive emails with their content.
 * **BMI.** Allows a user to specify their height. Once specified, their BMI is displayed next to each weight entry. There is also a shortcode to render the latest BMI.
 * **Email notifications.** Receive email notifications when a person updates their target or adds / edits a weight.
 * **Birthday Emails**. Automatically send your user's a birthday email (when they have entered a date of birth).
@@ -156,9 +157,14 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 == Upgrade Notice ==
 
-9.2 - New shortcode [wt-calculator]
+9.3 - Admin notes! AStore notes against your users and optionally share with them.
 
 == Changelog ==
+
+= 9.3 =
+
+* New feature: Admin notes. AStore notes against your users and optionally share with them.
+* New feature: New shortcode [wt-notes] for display admin notes to your users. Read more: https://docs.yeken.uk/shortcodes/wt-calculator.html
 
 = 9.2.1 =
 
