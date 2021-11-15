@@ -160,7 +160,7 @@ function ws_ls_postbox_user_notes( $user_id ) {
 					]);
 
 					echo ws_ls_form_field_checkbox( [ 	'id' 				=> $component_id . '_visible_to_user',
-														 'title'			=> __( 'Allow user to view via [wt-notes]', WE_LS_SLUG ),
+														 'title'			=> __( 'Allow user to view via', WE_LS_SLUG ) . '  <a href="https://docs.yeken.uk/shortcodes/wt-notes.html" target="_blank" rel="noopener">[wt-notes]</a>',
 														 'show-label'		=> true,
 														 'css-class-row' 	=> 'ws-ls-note-checkbox'
 					]);
