@@ -4,7 +4,7 @@
 
 ### What are custom fields?
 
-Custom fields allow a site administrator to ask custom questions of their users when they complete a weight entry. For example, you may want to ask the user “How many cups of water have you drank today?” or “Did you stick to your diet today?”. From the WP Dashboard, under “Weight Tracker” there is a menu item labelled “Custom Fields”. From here, you can see a list of all Custom Fields that have been added and have the ability to add, edit and delete them.
+Custom fields allow a site administrator to ask custom questions of their users when they complete an entry (with or without an entry). For example, you may want to ask the user “How many cups of water have you drank today?” or “Did you stick to your diet today?”. From the WP Dashboard, under “Weight Tracker” there is a menu item labelled “Custom Fields”. From here, you can see a list of all Custom Fields that have been added and have the ability to add, edit and delete them.
 
 [![Custom fields overview](/assets/images/custom-fields-overview.png)](/assets/images/custom-fields-overview.png)
 
