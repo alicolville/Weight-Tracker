@@ -205,6 +205,16 @@ function ws_ls_get_link_to_edit_target( $id ) {
 }
 
 /**
+ * Given a user ID, return a link to edit a user's notes
+ * @param $id
+ *
+ * @return string
+ */
+function ws_ls_get_link_to_notes( $id ) {
+	return esc_url( admin_url( 'admin.php?page=ws-ls-data-home&mode=notes&user-id=' . (int) $id ) );
+}
+
+/**
  * Given a user ID, return a link to view a user's photos
  * @param  int $id User ID
  * @return string

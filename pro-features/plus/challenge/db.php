@@ -379,7 +379,6 @@ function ws_ls_challenges_stats( $challenge_id ) {
 	return $stats;
 }
 
-
 /**
  * Update last processed flag for a user record when processed
  * @param $user_id

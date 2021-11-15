@@ -35,6 +35,9 @@ function ws_ls_admin_page_data_home() {
         case 'groups':
             ws_ls_admin_page_group_view();
             break;
+		case 'notes':
+			ws_ls_admin_page_data_notes_for_user();
+			break;
 		default:
 			ws_ls_admin_page_data_summary();
 			break;

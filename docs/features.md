@@ -21,6 +21,7 @@ Besides the features listed under core, the Pro version benefits from the follow
 -   **Groups**. Define user groups and assign your user's to them. View Weight Difference statistics for the group as a whole.  [Read more about groups.]({{ site.baseurl }}/groups.html)  
 -   **Gamification**. Support for myCred, a popular gamification plugin. Reward your users for weight entries and setting their targets.  [Read more about gamification.]({{ site.baseurl }}/gamification.html)  
 -   **BMI**. A user can specify their height allowing their BMI to be displayed alongside their weight entry.  [Read more about BMI]({{ site.baseurl }}/calculations.html).  
+-   **Admin notes**. Administrators have the ability to store notes against their users. If set to visible, the user can view these via [wt-notes] or receive emails with their content.
 -   **Email Notifications**. Receive email notifications when a person updates their target or adds / edits a weight.  [Read more about email notifications]({{ site.baseurl }}/email-notifications.html).  
 -   **Birthday Emails**. Automatically send your user's a birthday email (when they have entered a date of birth).  
 -   **Widgets**. Widgets that allow you to display the graphs, quick weight entry forms and progress bars within any widget area.  [Read more about widgets.]({{ site.baseurl }}/widgets.html)  

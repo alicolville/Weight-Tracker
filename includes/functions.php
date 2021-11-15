@@ -812,6 +812,29 @@ function ws_ls_iso_date_into_correct_format( $date, $user_id = NULL ) {
 }
 
 /**
+ * Helper function to convert an ISO date into the relevant date/time format
+ *
+ * @param $date
+ * @param null $user_id
+ *
+ * @return false|string
+ */
+function ws_ls_iso_datetime_into_correct_format( $datetime, $user_id = NULL ) {
+
+	$user_id = ( true === empty( $user_id ) ) ? get_current_user_id() : $user_id;
+
+	// Build different date formats
+	if( false === empty( $datetime ) ) {
+
+		$time 	= strtotime( $datetime );
+		$format = ws_ls_setting('use-us-dates', $user_id ) ? 'm/d/Y H:m' : 'd/m/Y H:m';
+
+		return date( $format, $time );
+	}
+
+	return NULL;
+}
+/**
  * Return the link for upgrade page
  * @return string
  */

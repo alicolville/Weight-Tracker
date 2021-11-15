@@ -5,7 +5,7 @@ defined('ABSPATH') or die('Jog on!');
 /**
  * Plugin Name:         Weight Tracker
  * Description:         Allow your users to track their weight, body measurements, photos and other pieces of custom data. Display in charts, tables, shortcodes and widgets. Manage their data, issue awards, email notifications, etc! Provide advanced data on Body Mass Index (BMI), Basal Metabolic Rate (BMR), Calorie intake, Harris Benedict Formula, Macronutrients Calculator and more.
- * Version:             9.2.1
+ * Version:             9.3
  * Requires at least:   5.7
  * Tested up to: 		5.8.1
  * Requires PHP:        7.2
@@ -18,7 +18,7 @@ defined('ABSPATH') or die('Jog on!');
  */
 
 define( 'WS_LS_ABSPATH', plugin_dir_path( __FILE__ ) );
-define( 'WE_LS_CURRENT_VERSION', '9.2.1' );
+define( 'WE_LS_CURRENT_VERSION', '9.3' );
 define( 'WE_LS_DB_VERSION', '9.1' );
 define( 'WE_LS_TITLE', 'Weight Tracker' );
 define( 'WE_LS_SLUG', 'weight-loss-tracker' );
@@ -117,6 +117,7 @@ require_once( WS_LS_ABSPATH . 'includes/admin-pages/user-data/data-view-all.php'
 require_once( WS_LS_ABSPATH . 'includes/admin-pages/user-data/data-add-edit-entry.php' );
 require_once( WS_LS_ABSPATH . 'includes/admin-pages/user-data/data-edit-target.php' );
 require_once( WS_LS_ABSPATH . 'includes/admin-pages/user-data/data-user.php' );
+require_once( WS_LS_ABSPATH . 'includes/admin-pages/user-data/data-notes.php' );
 require_once( WS_LS_ABSPATH . 'includes/admin-pages/user-data/data-user-edit-settings.php' );
 require_once( WS_LS_ABSPATH . 'includes/admin-pages/user-data/data-search-results.php' );
 require_once( WS_LS_ABSPATH . 'includes/admin-pages/user-data/data-photos.php' );
@@ -157,6 +158,8 @@ require_once( WS_LS_ABSPATH . 'pro-features/web-hooks.php' );
 if ( true === ws_ls_settings_challenges_enabled() ) {
 	require_once( WS_LS_ABSPATH . 'pro-features/plus/challenge/inc.php' );
 }
+
+require_once( WS_LS_ABSPATH . 'pro-features/plus/messaging/inc.php' );
 
 require_once( WS_LS_ABSPATH . 'pro-features/plus/bmr.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/plus/harris-benedict.php' );
