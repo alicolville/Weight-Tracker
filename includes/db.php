@@ -283,8 +283,8 @@ function ws_ls_db_entries_get( $arguments = [] ) {
 	                                            'week'                          => NULL,
 	                                            'sort'                          => 'desc',
 												'start'                         => 0,
-												'meta-field-value-condition'    => 'OR',    // Should we SQL OR or AND each meta fields (i.e. OR means return any row that has one or more meta field populated, AND means all)
-												'meta-field-value-exists'       => []       // Only return rows where we have a value for the specified meta field
+												'custom-field-restrict-rows'    => 'any',   // Should we SQL OR or AND each meta fields (i.e. OR means return any row that has one or more meta field populated, AND means all)
+												'custom-field-value-exists'     => []       // Only return rows where we have a value for the specified meta field
 	] );
 
 	$cache_key = 'weights-' . md5( json_encode( $arguments ) );
@@ -314,12 +314,12 @@ function ws_ls_db_entries_get( $arguments = [] ) {
 
 	$inner_join = '';
 
-	if ( false === empty( $arguments[ 'meta-field-value-exists' ] ) ) {
+	if ( false === empty( $arguments[ 'custom-field-value-exists' ] ) ) {
 
-		$sql_condition  = ( 'OR' === $arguments[ 'meta-field-value-condition' ] ) ? 'OR' : 'AND';
+		$sql_condition  = ( 'any' === $arguments[ 'custom-field-restrict-rows' ] ) ? 'OR' : 'AND';
 		$sql_meta_where = [];
 
-		foreach ( $arguments[ 'meta-field-value-exists' ] as $field_id ) {
+		foreach ( $arguments[ 'custom-field-value-exists' ] as $field_id ) {
 
 			$inner_join .= sprintf( ' inner join %2$s as meta_%1$d on ( meta_%1$d.meta_field_id = %1$d and meta_%1$d.entry_id = %3$s.id ) ',
 											$field_id,
