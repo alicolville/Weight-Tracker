@@ -25,7 +25,7 @@ function ws_ls_note_ajax_add() {
 
 		if (false === empty( $current_user->user_email )) {
 
-			$note = str_replace( PHP_EOL, '<br />', $note );
+			$note = ws_ls_notes_sanitise( $note );
 			ws_ls_emailer_send( $current_user->user_email, $email_template['subject'], $email_template['email'], [ 'data' => $note] );
 		}
 	}

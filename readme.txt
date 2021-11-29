@@ -163,6 +163,8 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 = 9.3.1 =
 
+* Bug fix: Escape single quotes when emailing notes to users.
+
 = 9.3 =
 
 * New feature: Admin notes. AStore notes against your users and optionally share with them.
