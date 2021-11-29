@@ -316,22 +316,27 @@ function ws_ls_db_entries_get( $arguments = [] ) {
 
 	if ( false === empty( $arguments[ 'meta-field-value-exists' ] ) ) {
 
-		$condition = ( 'OR' === $arguments[ 'meta-field-value-exists' ] ) ? 'OR' : 'AND';
+		$sql_condition  = ( 'OR' === $arguments[ 'meta-field-value-condition' ] ) ? 'OR' : 'AND';
+		$sql_meta_where = [];
 
 		foreach ( $arguments[ 'meta-field-value-exists' ] as $field_id ) {
-			// $additional_sql .= sprintf( ' %1$s ( %2$d is not null and %1$s <> "")', $condition, $field_id );
-			$inner_join .= sprintf( ' inner join %3$s as meta_%2$d on meta_%2$d.meta_field_id = %2$d
-											and meta_%2$d.entry_id = %4$s.id
-											and ( meta_%2$d.value is not null and meta_%2$d.value <> "") ',
-											$condition,
+
+			$inner_join .= sprintf( ' inner join %2$s as meta_%1$d on ( meta_%1$d.meta_field_id = %1$d and meta_%1$d.entry_id = %3$s.id ) ',
 											$field_id,
 											$wpdb->prefix . WE_LS_MYSQL_META_ENTRY,
 											$wpdb->prefix . WE_LS_TABLENAME );
+
+			$sql_meta_where[] = sprintf( '( meta_%1$d.value is not null and meta_%1$d.value <> "")', $field_id );
+
 		}
 
+		if ( false === empty( $sql_meta_where ) ) {
+			$additional_sql .= ' ' . $sql_condition .  implode( $sql_condition, $sql_meta_where );
+		}
 	}
 
 	$sort_order = ( true === in_array( $arguments[ 'sort' ], ws_ls_db_lookup_sort_orders() ) ) ? $arguments[ 'sort' ] : 'asc';
+
 	$sql =  sprintf( 'SELECT %1$s.id, weight_date, weight_weight as kg, weight_notes as notes, weight_user_id as user_id FROM %1$s%2$s
 						where 1 = 1%3$s order by weight_date %4$s',
 	        $wpdb->prefix . WE_LS_TABLENAME,
