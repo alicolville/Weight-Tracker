@@ -16,23 +16,24 @@ function ws_ls_shortcode_chart( $user_defined_arguments ) {
 	}
 
 	$chart_arguments = shortcode_atts( [
-											'bezier'              	=> ws_ls_option_to_bool( 'ws-ls-bezier-curve' ),
-											'height'              	=> 250,
-											'ignore-login-status' 	=> false,
-											'message-no-data'       => __( 'Currently there is no data to display on the chart.', WE_LS_SLUG ),
-											'max-data-points'     	=> ws_ls_option( 'ws-ls-max-points', '25', true ),
-											'show-gridlines'      	=> ws_ls_option_to_bool( 'ws-ls-grid-lines' ),
-											'show-custom-fields'  	=> true,
-											'show-weight'           => true,
-											'show-target'           => true,
-											'type'                	=> get_option( 'ws-ls-chart-type', 'line' ),
-											'user-id'            	=> get_current_user_id(),
-											'weight-fill-color'   	=> get_option( 'ws-ls-line-fill-colour', '#f9f9f9' ),
-											'weight-line-color'   	=> get_option( 'ws-ls-line-colour', '#aeaeae' ),
-											'weight-target-color' 	=> get_option( 'ws-ls-target-colour', '#76bada' ),
-											'reverse'				=> true,
-											'custom-field-groups'   => '',      // If specified, only show custom fields that are within these groups
-											'custom-field-slugs'    => '',      // If specified, only show the custom fields that are specified
+											'bezier'              	        => ws_ls_option_to_bool( 'ws-ls-bezier-curve' ),
+											'height'              	        => 250,
+											'ignore-login-status' 	        => false,
+											'message-no-data'               => __( 'Currently there is no data to display on the chart.', WE_LS_SLUG ),
+											'max-data-points'     	        => ws_ls_option( 'ws-ls-max-points', '25', true ),
+											'show-gridlines'      	        => ws_ls_option_to_bool( 'ws-ls-grid-lines' ),
+											'show-custom-fields'  	        => true,
+											'show-weight'                   => true,
+											'show-target'                   => true,
+											'type'                	        => get_option( 'ws-ls-chart-type', 'line' ),
+											'user-id'            	        => get_current_user_id(),
+											'weight-fill-color'   	        => get_option( 'ws-ls-line-fill-colour', '#f9f9f9' ),
+											'weight-line-color'   	        => get_option( 'ws-ls-line-colour', '#aeaeae' ),
+											'weight-target-color' 	        => get_option( 'ws-ls-target-colour', '#76bada' ),
+											'reverse'				        => true,
+											'custom-field-restrict-rows'    => 'any',   // Only fetch entries that have either all custom fields completed (all), one or more (any) or leave blank if not concerned.
+											'custom-field-groups'           => '',      // If specified, only show custom fields that are within these groups
+											'custom-field-slugs'            => '',      // If specified, only show the custom fields that are specified
 	], $user_defined_arguments );
 
 	// Make sure they are logged in
@@ -41,7 +42,9 @@ function ws_ls_shortcode_chart( $user_defined_arguments ) {
 		return ws_ls_blockquote_login_prompt();
 	}
 
-	$chart_arguments['height'] = (int) $chart_arguments['height'];
+	$chart_arguments['height']                      = (int) $chart_arguments['height'];
+	$chart_arguments[ 'custom-field-value-exists' ] = [];
+
 
 	// Validate height and ensure height is not below 50
 	if ( $chart_arguments['height'] < 50 ) {
@@ -55,8 +58,18 @@ function ws_ls_shortcode_chart( $user_defined_arguments ) {
 		$chart_arguments['max-data-points'] = ws_ls_option( 'ws-ls-max-points', '25', true );
 	}
 
+	// Do we need to restrict which database rows we fetch from the database?
+	if ( false === empty( $chart_arguments[ 'custom-field-restrict-rows' ] ) ) {
+		$chart_arguments[ 'custom-field-value-exists' ] = ws_ls_meta_fields_slugs_and_groups_to_id( $chart_arguments ) ;
+	}
+
 	// Fetch data for chart
-	$weight_data = ws_ls_entries_get( [ 'user-id' => $chart_arguments['user-id'], 'limit' => $chart_arguments['max-data-points'], 'prep' => true, 'sort' => 'desc' ] );
+	$weight_data = ws_ls_entries_get( [	    'user-id'                       => $chart_arguments['user-id'],
+	                                        'limit'                         => $chart_arguments['max-data-points'],
+	                                        'prep'                          => true,
+	                                        'sort'                          => 'desc',
+	                                        'custom-field-value-exists'     => $chart_arguments[ 'custom-field-value-exists' ],
+											'custom-field-restrict-rows'    => $chart_arguments[ 'custom-field-restrict-rows' ] ]);
 
 	// Reverse array so in cron order
 	if ( true === empty( $weight_data ) ) {
@@ -69,3 +82,22 @@ function ws_ls_shortcode_chart( $user_defined_arguments ) {
 }
 add_shortcode( 'wlt-chart', 'ws_ls_shortcode_chart' );
 add_shortcode( 'wt-chart', 'ws_ls_shortcode_chart' );
+
+
+function ws_ls_meta_fields_slugs_and_groups_to_id( $arguments ) {
+
+	$ids = [];
+
+	if ( false === empty( $arguments[ 'custom-field-groups' ] ) ) {
+		$arguments[ 'custom-field-groups' ] = ws_ls_meta_fields_groups_slugs_to_ids( $arguments[ 'custom-field-groups' ] );
+		$ids = array_merge( $ids, $arguments[ 'custom-field-groups' ] );
+	}
+
+	if ( false === empty( $arguments[ 'custom-field-slugs' ] ) ) {
+		$arguments[ 'custom-field-slugs' ]  = ws_ls_meta_fields_slugs_to_ids( $arguments[ 'custom-field-slugs' ] );
+		$ids = array_merge( $ids, $arguments[ 'custom-field-slugs' ] );
+	}
+
+	return $ids;
+
+}

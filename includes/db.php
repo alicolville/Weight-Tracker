@@ -314,7 +314,8 @@ function ws_ls_db_entries_get( $arguments = [] ) {
 
 	$inner_join = '';
 
-	if ( false === empty( $arguments[ 'custom-field-value-exists' ] ) ) {
+	if ( false === empty( $arguments[ 'custom-field-value-exists' ] )
+			and false === empty( $arguments[ 'custom-field-restrict-rows' ] ) ) {
 
 		$sql_condition  = ( 'any' === $arguments[ 'custom-field-restrict-rows' ] ) ? 'OR' : 'AND';
 		$sql_meta_where = [];
@@ -331,7 +332,7 @@ function ws_ls_db_entries_get( $arguments = [] ) {
 		}
 
 		if ( false === empty( $sql_meta_where ) ) {
-			$additional_sql .= ' ' . $sql_condition .  implode( $sql_condition, $sql_meta_where );
+			$additional_sql .= ' and ( ' . implode( $sql_condition, $sql_meta_where ) . ')';
 		}
 	}
 

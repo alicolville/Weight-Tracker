@@ -210,20 +210,21 @@ function ws_ls_meta_fields_shortcode_chart( $user_defined_arguments ) {
 		return ws_ls_display_pro_upgrade_notice_for_shortcode();
 	}
 
-	$user_defined_arguments = shortcode_atts( [ 'bezier'              	=> ws_ls_option_to_bool( 'ws-ls-bezier-curve' ),
-												'height'              	=> 250,
-												'ignore-login-status' 	=> false,
-												'message-no-data'       => __( 'Currently there is no data to display on the chart.', WE_LS_SLUG ),
-												'max-data-points'     	=> ws_ls_option( 'ws-ls-max-points', '25', true ),
-												'show-gridlines'      	=> ws_ls_option_to_bool( 'ws-ls-grid-lines' ),
-												'type'                	=> get_option( 'ws-ls-chart-type', 'line' ),
-												'user-id'            	=> get_current_user_id(),
-												'weight-fill-color'   	=> get_option( 'ws-ls-line-fill-colour', '#f9f9f9' ),
-												'weight-line-color'   	=> get_option( 'ws-ls-line-colour', '#aeaeae' ),
-												'weight-target-color' 	=> get_option( 'ws-ls-target-colour', '#76bada' ),
-												'reverse'				=> true,
-												'custom-field-groups'   => '',      // If specified, only show custom fields that are within these groups
-												'custom-field-slugs'    => '',      // If specified, only show the custom fields that are specified
+	$user_defined_arguments = shortcode_atts( [ 'bezier'              	        => ws_ls_option_to_bool( 'ws-ls-bezier-curve' ),
+												'height'              	        => 250,
+												'ignore-login-status' 	        => false,
+												'message-no-data'               => __( 'Currently there is no data to display on the chart.', WE_LS_SLUG ),
+												'max-data-points'     	        => ws_ls_option( 'ws-ls-max-points', '25', true ),
+												'show-gridlines'      	        => ws_ls_option_to_bool( 'ws-ls-grid-lines' ),
+												'type'                	        => get_option( 'ws-ls-chart-type', 'line' ),
+												'user-id'            	        => get_current_user_id(),
+												'weight-fill-color'   	        => get_option( 'ws-ls-line-fill-colour', '#f9f9f9' ),
+												'weight-line-color'   	        => get_option( 'ws-ls-line-colour', '#aeaeae' ),
+												'weight-target-color' 	        => get_option( 'ws-ls-target-colour', '#76bada' ),
+												'reverse'				        => true,
+												'custom-field-restrict-rows'    => 'any',   // Only fetch entries that have either all custom fields completed (all), one or more (any) or leave blank if not concerned.
+												'custom-field-groups'           => '',      // If specified, only show custom fields that are within these groups
+												'custom-field-slugs'            => '',      // If specified, only show the custom fields that are specified
 	], $user_defined_arguments );
 
 	$user_defined_arguments[ 'show-weight' ]        = false;

@@ -163,6 +163,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 = 9.3.1 =
 
+* Improvement: Added the argument to 'custom-field-restrict-rows' to [wt-chart] and [wt-custom-field-chart]. This allows you to control if an entry is shown or not by which custom fields have been populated.
 * Bug fix: Escape single quotes when emailing notes to users.
 
 = 9.3 =
