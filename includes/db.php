@@ -278,11 +278,13 @@ function ws_ls_db_entry_for_date( $user_id, $date ) {
  */
 function ws_ls_db_entries_get( $arguments = [] ) {
 
-	$arguments = wp_parse_args( $arguments, [   'user-id'   => get_current_user_id(),
-	                                            'limit'     => ws_ls_option( 'ws-ls-max-points', '25', true ),
-	                                            'week'      => NULL,
-	                                            'sort'      => 'desc',
-												'start'     => 0
+	$arguments = wp_parse_args( $arguments, [   'user-id'                       => get_current_user_id(),
+	                                            'limit'                         => ws_ls_option( 'ws-ls-max-points', '25', true ),
+	                                            'week'                          => NULL,
+	                                            'sort'                          => 'desc',
+												'start'                         => 0,
+												'meta-field-value-condition'    => 'OR',    // Should we SQL OR or AND each meta fields (i.e. OR means return any row that has one or more meta field populated, AND means all)
+												'meta-field-value-exists'       => []       // Only return rows where we have a value for the specified meta field
 	] );
 
 	$cache_key = 'weights-' . md5( json_encode( $arguments ) );
@@ -310,10 +312,33 @@ function ws_ls_db_entries_get( $arguments = [] ) {
 		$additional_sql .= $wpdb->prepare( ' and weight_user_id = %d', $arguments[ 'user-id' ] );
 	}
 
-	$sort_order = ( true === in_array( $arguments[ 'sort' ], ws_ls_db_lookup_sort_orders() ) ) ? $arguments[ 'sort' ] : 'asc';
+	$inner_join = '';
 
-	$sql =  'SELECT id, weight_date, weight_weight as kg, weight_notes as notes, weight_user_id as user_id FROM ' . $wpdb->prefix . WE_LS_TABLENAME .
-	                       ' where 1 = 1' . $additional_sql. ' order by weight_date ' . $sort_order;
+	if ( false === empty( $arguments[ 'meta-field-value-exists' ] ) ) {
+
+		$condition = ( 'OR' === $arguments[ 'meta-field-value-exists' ] ) ? 'OR' : 'AND';
+
+		foreach ( $arguments[ 'meta-field-value-exists' ] as $field_id ) {
+			// $additional_sql .= sprintf( ' %1$s ( %2$d is not null and %1$s <> "")', $condition, $field_id );
+			$inner_join .= sprintf( ' inner join %3$s as meta_%2$d on meta_%2$d.meta_field_id = %2$d
+											and meta_%2$d.entry_id = %4$s.id
+											and ( meta_%2$d.value is not null and meta_%2$d.value <> "") ',
+											$condition,
+											$field_id,
+											$wpdb->prefix . WE_LS_MYSQL_META_ENTRY,
+											$wpdb->prefix . WE_LS_TABLENAME );
+		}
+
+	}
+
+	$sort_order = ( true === in_array( $arguments[ 'sort' ], ws_ls_db_lookup_sort_orders() ) ) ? $arguments[ 'sort' ] : 'asc';
+	$sql =  sprintf( 'SELECT %1$s.id, weight_date, weight_weight as kg, weight_notes as notes, weight_user_id as user_id FROM %1$s%2$s
+						where 1 = 1%3$s order by weight_date %4$s',
+	        $wpdb->prefix . WE_LS_TABLENAME,
+	        $inner_join,
+	        $additional_sql,
+	        $sort_order
+	        );
 
 	if ( false === empty( $arguments[ 'limit'] ) ) {
 		$sql .=  $wpdb->prepare( ' limit %d, %d', $arguments[ 'start' ], $arguments[ 'limit' ] );
