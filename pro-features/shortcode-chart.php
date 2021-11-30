@@ -82,22 +82,3 @@ function ws_ls_shortcode_chart( $user_defined_arguments ) {
 }
 add_shortcode( 'wlt-chart', 'ws_ls_shortcode_chart' );
 add_shortcode( 'wt-chart', 'ws_ls_shortcode_chart' );
-
-
-function ws_ls_meta_fields_slugs_and_groups_to_id( $arguments ) {
-
-	$ids = [];
-
-	if ( false === empty( $arguments[ 'custom-field-groups' ] ) ) {
-		$arguments[ 'custom-field-groups' ] = ws_ls_meta_fields_groups_slugs_to_ids( $arguments[ 'custom-field-groups' ] );
-		$ids = array_merge( $ids, $arguments[ 'custom-field-groups' ] );
-	}
-
-	if ( false === empty( $arguments[ 'custom-field-slugs' ] ) ) {
-		$arguments[ 'custom-field-slugs' ]  = ws_ls_meta_fields_slugs_to_ids( $arguments[ 'custom-field-slugs' ] );
-		$ids = array_merge( $ids, $arguments[ 'custom-field-slugs' ] );
-	}
-
-	return $ids;
-
-}
