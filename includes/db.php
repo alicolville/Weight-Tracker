@@ -283,7 +283,7 @@ function ws_ls_db_entries_get( $arguments = [] ) {
 	                                            'week'                          => NULL,
 	                                            'sort'                          => 'desc',
 												'start'                         => 0,
-												'custom-field-restrict-rows'    => 'any',   // Should we SQL OR or AND each meta fields (i.e. OR means return any row that has one or more meta field populated, AND means all)
+												'custom-field-restrict-rows'    => '',      // Should we SQL OR or AND each meta fields (i.e. OR means return any row that has one or more meta field populated, AND means all)
 												'custom-field-value-exists'     => []       // Only return rows where we have a value for the specified meta field
 	] );
 
