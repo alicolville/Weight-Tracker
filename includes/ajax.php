@@ -91,17 +91,25 @@ function ws_ls_get_table_data() {
 	$custom_field_col_size              = ws_ls_post_value('custom-field-col-size' );
 	$custom_field_groups                = ws_ls_post_value('custom-field-groups' );
 	$custom_field_slugs                 = ws_ls_post_value('custom-field-slugs' );
+	$custom_field_restrict_rows         = ws_ls_post_value('custom-field-restrict-rows' );
+	$custom_field_value_exists          = '';
 
 	// If we have a user ID and we're in admin then hide the name from the user entry page
 	if ( true === ws_ls_datatable_is_user_profile() ) {
 		$front_end = true();
 	}
 
+	// Do we need to restrict which database rows we fetch from the database?
+	if ( false === empty( $custom_field_restrict_rows ) ) {
+		$custom_field_value_exists = ws_ls_meta_fields_slugs_and_groups_to_id( [ 'custom-field-groups' => $custom_field_groups, 'custom-field-slugs' => $custom_field_slugs ] ) ;
+	}
+
 	$data = [
 		'columns'   => ws_ls_datatable_columns( [ 'small-width' => $small_width, 'front-end' => $front_end, 'enable-meta' => $enable_meta, 'enable-bmi' => $enable_bmi, 'enable-weight' => $enable_weight, 'enable-notes' => $enable_notes,
 		                                          'custom-field-col-size' => $custom_field_col_size, 'custom-field-slugs' => $custom_field_slugs, 'custom-field-groups' => $custom_field_groups ] ),
 		'rows'      => ws_ls_datatable_rows( [ 'user-id'  => $user_id, 'limit' => $max_entries, 'smaller-width' => $small_width, 'front-end' => $front_end, 'enable-bmi' => $enable_bmi, 'enable-weight' => $enable_weight, 'enable-notes' => $enable_notes,
-		                                        'enable-meta' => $enable_meta, 'in-admin' => $ws_ls_request_from_admin_screen, 'week' => $week_number, 'bmi-format' => $bmi_format ] ),
+		                                        'enable-meta' => $enable_meta, 'in-admin' => $ws_ls_request_from_admin_screen, 'week' => $week_number, 'bmi-format' => $bmi_format,
+		                                            'custom-field-restrict-rows' => $custom_field_restrict_rows, 'custom-field-value-exists' => $custom_field_value_exists ] ),
 		'table_id'  => $table_id
 	];
 
