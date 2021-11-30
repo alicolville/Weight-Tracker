@@ -362,7 +362,7 @@ function ws_ls_postbox_sidebar_user_information( $user_id ) {
 				</tr>
 				<tr>
 					<th><?php echo __('Diff. from target', WE_LS_SLUG); ?></th>
-					<td class="<?php echo ws_ls_blur(); ?>"><?php echo ws_ls_blur_text( ws_ls_shortcode_difference_in_weight_target($user_id) ); ?></td>
+					<td class="<?php echo ws_ls_blur(); ?>"><?php echo ws_ls_blur_text( ws_ls_shortcode_difference_in_weight_target( [ 'user-id' => $user_id ] ) ); ?></td>
 				</tr>
 				<tr>
 					<th><?php echo __('Current BMI', WE_LS_SLUG); ?></th>

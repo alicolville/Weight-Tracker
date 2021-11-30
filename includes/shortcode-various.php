@@ -115,18 +115,19 @@ add_shortcode( 'wt-difference-since-start', 'ws_ls_shortcode_difference_in_weigh
 
 /**
  * Shortcide [wt-difference-from-target] display weight difference from target
- * @param null $user_id
+ *
+ * @param array $user_defined_arguments
  *
  * @return string|null
  */
-function ws_ls_shortcode_difference_in_weight_target( $user_id = NULL ){
+function ws_ls_shortcode_difference_in_weight_target( $user_defined_arguments = [] ){
 
 	// If not logged in then return no value
 	if( false === is_user_logged_in() ) {
 		return '';
 	}
 
-	$arguments[ 'user-id' ] = ( true === empty( $user_id ) ) ? get_current_user_id() : $user_id;
+	$arguments = shortcode_atts( [	'user-id' => get_current_user_id(), 'invert' => false ], $user_defined_arguments );
 
 	if ( $cache = ws_ls_cache_user_get( $arguments[ 'user-id' ], 'shortcode-target' ) ) {
 		return $cache;
@@ -145,7 +146,11 @@ function ws_ls_shortcode_difference_in_weight_target( $user_id = NULL ){
 	}
 
 	$difference = $latest_entry[ 'kg' ] - $target_weight;
+
+	$difference = ( false === ws_ls_to_bool( $arguments[ 'invert' ] ) ) ? $difference : -$difference ;
+
 	$sign       = ( $difference > 0 ) ? '+' : '';
+
 	$difference = ws_ls_weight_display( $difference, $arguments[ 'user-id' ], false, false, true );
 	$output     = sprintf ('%s%s', $sign, $difference[ 'display' ] );
 
