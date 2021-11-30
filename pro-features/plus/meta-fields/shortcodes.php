@@ -255,7 +255,7 @@ function ws_ls_meta_fields_shortcode_table( $user_defined_arguments ) {
 	                                'custom-field-restrict-rows'    => 'any',   // Only fetch entries that have either all custom fields completed (all), one or more (any) or leave blank if not concerned.
 	                                'custom-field-groups'           => '',      // If specified, only show custom fields that are within these groups
 	                                'custom-field-slugs'            => '',      // If specified, only show the custom fields that are specified
-	                                'custom-field-col-size'         => 'x-large' ] , $user_defined_arguments );
+	                                'custom-field-col-size'         => 'sm' ] , $user_defined_arguments );
 
 	$arguments[ 'weight-mandatory' ] = false;
 
