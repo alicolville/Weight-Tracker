@@ -157,7 +157,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 == Upgrade Notice ==
 
-9.3 - Admin notes! AStore notes against your users and optionally share with them.
+9.3 - Admin notes! Store notes against your users and optionally share with them.
 
 == Changelog ==
 
@@ -165,7 +165,11 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 * Improvement: Added the argument to 'custom-field-restrict-rows' to [wt-table] and [wt-custom-field-table]. This allows you to control if an entry is shown or not by which custom fields have been populated.
 * Improvement: Added the argument to 'custom-field-restrict-rows' to [wt-chart] and [wt-custom-field-chart]. This allows you to control if an entry is shown or not by which custom fields have been populated.
+* Improvement: Added the argument "invert" to the shortcode [wt-difference-from-target].
+* Bug fix: When an image is not specified for a custom photo field, still store a row in the meta field entry table.
 * Bug fix: Escape single quotes when emailing notes to users.
+* Bug fix: When editing an entry via [wt-custom-fields-table], don't display the weight entry part of the form.
+* Bug fix: When editing an entry via [wt-custom-fields-table], only display the custom fields for the fields displayed within the table.
 
 = 9.3 =
 

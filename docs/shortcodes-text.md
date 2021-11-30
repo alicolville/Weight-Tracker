@@ -48,6 +48,10 @@ Display the logged in user's current target weight.
 
 Display the difference between the current user's most recent weight entry and their target weight.
 
+Also supports the argument "invert" to invert negative numbers into positive and vice versa e.g.
+
+    [wt-difference-from-target invert="true"]
+
 **[wt-height]**
 
 Displays the user's height. It also supports the argument “not-specified-text” so you can display a message the user hasn't specified their height e.g.
