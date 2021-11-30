@@ -152,6 +152,8 @@ function ws_ls_form_post_handler_weight( $user_id, $type = 'weight' ) {
 
 				if ( false === empty( $photo_upload ) ) {
 					$value = $photo_upload;
+				} else {
+					$value = '';
 				}
 
 			} else if ( true === isset( $_POST[ $field_key ] ) ) {
