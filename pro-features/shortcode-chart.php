@@ -31,7 +31,7 @@ function ws_ls_shortcode_chart( $user_defined_arguments ) {
 											'weight-line-color'   	        => get_option( 'ws-ls-line-colour', '#aeaeae' ),
 											'weight-target-color' 	        => get_option( 'ws-ls-target-colour', '#76bada' ),
 											'reverse'				        => true,
-											'custom-field-restrict-rows'    => 'any',   // Only fetch entries that have either all custom fields completed (all), one or more (any) or leave blank if not concerned.
+											'custom-field-restrict-rows'    => '',      // Only fetch entries that have either all custom fields completed (all), one or more (any) or leave blank if not concerned.
 											'custom-field-groups'           => '',      // If specified, only show custom fields that are within these groups
 											'custom-field-slugs'            => '',      // If specified, only show the custom fields that are specified
 	], $user_defined_arguments );
