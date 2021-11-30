@@ -157,7 +157,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 == Upgrade Notice ==
 
-9.3 - Admin notes! AStore notes against your users and optionally share with them.
+9.3 - Admin notes! Store notes against your users and optionally share with them.
 
 == Changelog ==
 
