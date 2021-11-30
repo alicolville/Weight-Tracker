@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight,tracker,chart,bmi,bmr,macronutrient,measure,awards,custom fields,history,measurements,data
 Requires at least: 5.7
 Tested up to: 5.8.1
-Stable tag: 9.3
+Stable tag: 9.3.1
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -160,6 +160,12 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 9.3 - Admin notes! AStore notes against your users and optionally share with them.
 
 == Changelog ==
+
+= 9.3.1 =
+
+* Improvement: Added the argument to 'custom-field-restrict-rows' to [wt-table] and [wt-custom-field-table]. This allows you to control if an entry is shown or not by which custom fields have been populated.
+* Improvement: Added the argument to 'custom-field-restrict-rows' to [wt-chart] and [wt-custom-field-chart]. This allows you to control if an entry is shown or not by which custom fields have been populated.
+* Bug fix: Escape single quotes when emailing notes to users.
 
 = 9.3 =
 

@@ -746,3 +746,27 @@ function ws_ls_meta_fields_slugs_to_ids( $slugs ) {
 
 	return $ids;
 }
+
+/**
+ * Merge slugs and groups custom field IDs into one.
+ * @param $arguments
+ *
+ * @return array
+ */
+function ws_ls_meta_fields_slugs_and_groups_to_id( $arguments ) {
+
+	$ids = [];
+
+	if ( false === empty( $arguments[ 'custom-field-groups' ] ) ) {
+		$arguments[ 'custom-field-groups' ] = ws_ls_meta_fields_groups_slugs_to_ids( $arguments[ 'custom-field-groups' ] );
+		$ids = array_merge( $ids, $arguments[ 'custom-field-groups' ] );
+	}
+
+	if ( false === empty( $arguments[ 'custom-field-slugs' ] ) ) {
+		$arguments[ 'custom-field-slugs' ]  = ws_ls_meta_fields_slugs_to_ids( $arguments[ 'custom-field-slugs' ] );
+		$ids = array_merge( $ids, $arguments[ 'custom-field-slugs' ] );
+	}
+
+	return $ids;
+
+}

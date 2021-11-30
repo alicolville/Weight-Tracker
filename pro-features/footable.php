@@ -11,22 +11,23 @@ defined('ABSPATH') or die('Jog on!');
  */
 function ws_ls_data_table_render( $arguments = [] ) {
 
-	$arguments = wp_parse_args( $arguments, [   'user-id'               => NULL,
-	                                            'limit'                 => NULL,
-	                                            'bmi-format'            => 'label',
-	                                            'smaller-width'         => false,
-	                                            'enable-add-edit'       => true,
-												'enable-meta-fields'    => ( true === ws_ls_meta_fields_is_enabled() &&
-												                                ws_ls_meta_fields_number_of_enabled() > 0 ),
-												'enable-bmi'            => true,
-												'enable-notes'          => true,
-												'enable-weight'         => true,
-												'page-size'             => 10,
-												'week'                  => NULL,
-												'custom-field-col-size' => NULL,
-												'weight-mandatory'      => true,
-												'custom-field-groups'   => '',      // If specified, only show custom fields that are within these groups
-												'custom-field-slugs'    => '',      // If specified, only show the custom fields that are specified
+	$arguments = wp_parse_args( $arguments, [   'user-id'                       => NULL,
+	                                            'limit'                         => NULL,
+	                                            'bmi-format'                    => 'label',
+	                                            'smaller-width'                 => false,
+	                                            'enable-add-edit'               => true,
+												'enable-meta-fields'            => ( true === ws_ls_meta_fields_is_enabled() &&
+												                                        ws_ls_meta_fields_number_of_enabled() > 0 ),
+												'enable-bmi'                    => true,
+												'enable-notes'                  => true,
+												'enable-weight'                 => true,
+												'page-size'                     => 10,
+												'week'                          => NULL,
+												'custom-field-col-size'         => NULL,
+												'weight-mandatory'              => true,
+												'custom-field-restrict-rows'    => '',      // Only fetch entries that have either all custom fields completed (all), one or more (any) or leave blank if not concerned.
+	                                            'custom-field-groups'           => '',      // If specified, only show custom fields that are within these groups
+												'custom-field-slugs'            => '',      // If specified, only show the custom fields that are specified
 	] );
 
 	ws_ls_data_table_enqueue_scripts();
@@ -81,7 +82,7 @@ function ws_ls_data_table_render( $arguments = [] ) {
 									data-custom-field-slugs="%10$s"
 									data-custom-field-groups="%11$s"
 									data-custom-field-col-size="%15$s"
-									 >
+									data-custom-field-restrict-rows="%16$s" >
 		</table>',
 			ws_ls_component_id(),
 			true === $arguments[ 'enable-add-edit' ] ? 'true' : 'false',
@@ -97,7 +98,8 @@ function ws_ls_data_table_render( $arguments = [] ) {
 			true === ws_ls_to_bool($arguments[ 'enable-bmi' ] ) ? 'true' : 'false',
 			true === ws_ls_to_bool($arguments[ 'enable-notes' ] ) ? 'true' : 'false',
 			true === ws_ls_to_bool( $arguments[ 'enable-weight' ] ) ? 'true' : 'false',
-			esc_attr( $arguments[ 'custom-field-col-size' ] )
+			esc_attr( $arguments[ 'custom-field-col-size' ] ),
+			esc_attr( $arguments[ 'custom-field-restrict-rows' ] )
 		);
 
 		if ( true === empty( $arguments[ 'user-id' ] ) ) {
@@ -116,18 +118,20 @@ function ws_ls_data_table_render( $arguments = [] ) {
  */
 function ws_ls_datatable_rows( $arguments ) {
 
-	$arguments = wp_parse_args( $arguments, [	    'user-id'               => NULL,
-	                                                'limit'                 => NULL,
-	                                                'smaller-width'         => false,
-	                                                'week'                  => NULL,
-	                                                'front-end'             => false,
-	                                                'sort'                  => 'desc',
-	                                                'enable-bmi'            => true,
-	                                                'enable-meta'           => true,
-	                                                'enable-notes'          => true,
-	                                                'enable-weight'         => true,
-	                                                'bmi-format'            => 'index',
-												    'in-admin'              => false    // Has this request come from the admin area (used to render dates differently)
+	$arguments = wp_parse_args( $arguments, [	    'custom-field-restrict-rows'    => '',      // Should we SQL OR or AND each meta fields (i.e. OR means return any row that has one or more meta field populated, AND means all)
+													'custom-field-value-exists'     => [],
+													'user-id'                       => NULL,
+	                                                'limit'                         => NULL,
+	                                                'smaller-width'                 => false,
+	                                                'week'                          => NULL,
+	                                                'front-end'                     => false,
+	                                                'sort'                          => 'desc',
+	                                                'enable-bmi'                    => true,
+	                                                'enable-meta'                   => true,
+	                                                'enable-notes'                  => true,
+	                                                'enable-weight'                 => true,
+	                                                'bmi-format'                    => 'index',
+												    'in-admin'                      => false    // Has this request come from the admin area (used to render dates differently)
 	] );
 
 	$arguments[ 'enable-bmi' ]      = ws_ls_to_bool( $arguments[ 'enable-bmi' ] );

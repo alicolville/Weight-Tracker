@@ -322,12 +322,14 @@ function ws_ls_entry_get( $arguments = [] ) {
  */
 function ws_ls_entries_get( $arguments ) {
 
-	$arguments = wp_parse_args( $arguments, [   'user-id'   => get_current_user_id(),
-	                                            'limit'     => ws_ls_option( 'ws-ls-max-points', '25', true ),
-	                                            'week'      => NULL,
-	                                            'sort'      => 'asc',
-	                                            'prep'      => false,
-												'reverse'   => false    // Handy when charting
+	$arguments = wp_parse_args( $arguments, [   'custom-field-value-exists'     => '',
+												'custom-field-restrict-rows'    => '',
+												'user-id'   					=> get_current_user_id(),
+	                                            'limit'     					=> ws_ls_option( 'ws-ls-max-points', '25', true ),
+	                                            'week'      					=> NULL,
+	                                            'sort'      					=> 'asc',
+	                                            'prep'      					=> false,
+												'reverse'  						=> false    // Handy when charting
 	] );
 
 	$entries = ws_ls_db_entries_get( $arguments );

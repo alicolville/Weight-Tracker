@@ -14,18 +14,20 @@ function ws_ls_shortcode_table( $user_defined_arguments ) {
 		return ws_ls_display_pro_upgrade_notice_for_shortcode();
 	}
 
-    $arguments = shortcode_atts( [  'enable-add-edit'       => false,
-	                                'weight-mandatory'      => true,
-                                    'enable-bmi'            => true,
-                                    'enable-notes'          => true,
-                                    'enable-weight'         => true,
-						            'enable-meta-fields'    => false,
-						            'enable-custom-fields'  => false,
-						            'custom-field-groups'   => '',      // If specified, only show custom fields that are within these groups
-						            'custom-field-slugs'    => '',      // If specified, only show the custom fields that are specified
-							        'bmi-format'            => 'label',
-							        'week'                  => NULL,
-						            'user-id'               => get_current_user_id() ], $user_defined_arguments );
+    $arguments = shortcode_atts( [  'enable-add-edit'               => false,
+	                                'weight-mandatory'              => true,
+                                    'enable-bmi'                    => true,
+                                    'enable-notes'                  => true,
+                                    'enable-weight'                 => true,
+						            'enable-meta-fields'            => false,
+						            'enable-custom-fields'          => false,
+						            'custom-field-restrict-rows'    => '',      // Only fetch entries that have either all custom fields completed (all), one or more (any) or leave blank if not concerned.
+						            'custom-field-groups'           => '',      // If specified, only show custom fields that are within these groups
+						            'custom-field-slugs'            => '',      // If specified, only show the custom fields that are specified
+	                                'custom-field-col-size'         => '',
+							        'bmi-format'                    => 'label',
+							        'week'                          => NULL,
+						            'user-id'                       => get_current_user_id() ], $user_defined_arguments );
 
     $arguments[ 'user-id' ]                 = (int) $arguments[ 'user-id' ];
 	$arguments[ 'enable-add-edit' ]         = ws_ls_to_bool( $arguments[ 'enable-add-edit' ] );
