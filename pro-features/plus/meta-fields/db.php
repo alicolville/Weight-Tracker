@@ -725,3 +725,39 @@ function ws_ls_meta_fields_groups_add( $name ) {
 
 	return ( false === $result ) ? false : $wpdb->insert_id;
 }
+
+/**
+ * Fetch all the custom field IDs for the given group IDs
+ * @param array $groups
+ *
+ * @return array|bool|object|null
+ */
+function ws_ls_meta_fields_group_field_ids( $groups = [] ) {
+
+	if ( true === empty( $groups ) ) {
+		return NULL;
+	}
+
+	$cache_key = md5( $groups );
+
+	if ( $cache = ws_ls_cache_user_get( 'custom-fields-groups', $cache_key ) ) {
+		return $cache;
+	}
+
+	// Ensure we only have INTs going into SQL statement!
+	$groups = array_map('intval', $groups );
+
+	global $wpdb;
+
+	$sql = 'Select id from ' . $wpdb->prefix . WE_LS_MYSQL_META_FIELDS . ' where group_id in ( %s )';
+
+	$sql = $wpdb->prepare( $sql, implode( ',', $groups ) );
+
+	$results = $wpdb->get_results($sql, ARRAY_A );
+
+	$results = wp_list_pluck( $results, 'id' );
+
+	ws_ls_cache_user_set( 'custom-fields-groups', $cache_key , $results );
+
+	return $results;
+}

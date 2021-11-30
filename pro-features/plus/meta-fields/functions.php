@@ -759,6 +759,9 @@ function ws_ls_meta_fields_slugs_and_groups_to_id( $arguments ) {
 
 	if ( false === empty( $arguments[ 'custom-field-groups' ] ) ) {
 		$arguments[ 'custom-field-groups' ] = ws_ls_meta_fields_groups_slugs_to_ids( $arguments[ 'custom-field-groups' ] );
+
+		$arguments[ 'custom-field-groups' ] = ws_ls_meta_fields_group_field_ids( $arguments[ 'custom-field-groups' ] );
+
 		$ids = array_merge( $ids, $arguments[ 'custom-field-groups' ] );
 	}
 
