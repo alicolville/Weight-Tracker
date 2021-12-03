@@ -45,6 +45,8 @@ function ws_ls_gravity_forms_process( $entry, $form ) {
 
     GFCommon::log_debug( 'Scanning form for these Weight Tracker fields ' . print_r( ws_ls_gravity_forms_keys() , true ) );
 
+	GFCommon::log_debug( 'Fields in GF form: ' . print_r( $form['fields'] , true ) );
+
 	// Extract any fields from the GF Post that we maybe interested in!
 	foreach ( $form['fields'] as $field ) {
 		// Field we're interested in?
