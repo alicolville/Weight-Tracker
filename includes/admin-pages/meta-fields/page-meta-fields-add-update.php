@@ -220,7 +220,7 @@
 																			</tr>',
 																			$i,
 																			( false === empty( $meta_field[ 'options-values' ][ $i ] ) ) ? stripslashes( $meta_field[ 'options-values' ][ $i ] ) : '',
-																			( false === empty( $meta_field[ 'options-labels' ][ $i ] ) ) ? stripslashes( [ 'options-labels' ][ $i ] ) : '',
+																			( false === empty( $meta_field[ 'options-labels' ][ $i ] ) ) ? stripslashes( $meta_field[ 'options-labels' ][ $i ] ) : '',
 																			( $i >= 5 ) ? 'ws-ls-hide' : ''
 																);
 															}
