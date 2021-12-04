@@ -11,22 +11,6 @@ defined('ABSPATH') or die("Jog on!");
         [2] => wlt-kg
         [3] => wlt-pounds
         [4] => wlt-stones
-        [5] => wlt-left-forearm
-        [6] => wlt-right-forearm
-        [7] => wlt-left-bicep
-        [8] => wlt-right-bicep
-        [9] => wlt-left-calf
-        [10] => wlt-right-calf
-        [11] => wlt-left-thigh
-        [12] => wlt-right-thigh
-        [13] => wlt-waist
-        [14] => wlt-shoulders
-        [15] => wlt-height
-        [16] => wlt-buttocks
-        [17] => wlt-hips
-        [18] => wlt-navel
-        [19] => wlt-neck
- *      [20] => wlt-bust-chest
  *      [*] => wlt-meta-[meta key]
  *
  * @param $entry
@@ -49,6 +33,10 @@ function ws_ls_gravity_forms_process( $entry, $form ) {
 
 	// Extract any fields from the GF Post that we maybe interested in!
 	foreach ( $form['fields'] as $field ) {
+
+		// Newer versions of GF store the $fields as arrays
+		$field = (array) $field;
+
 		// Field we're interested in?
 		if ( $wlt_field = ws_ls_gravity_forms_identify_field( $field['cssClass'] ) ) {
 			$matched_fields[ $wlt_field ] = $entry[ $field['id'] ];
@@ -146,11 +134,10 @@ function ws_ls_gravity_forms_process( $entry, $form ) {
 
             $gf_field_key = ws_ls_gravity_forms_meta_fields_key_prefix( $meta_field['field_key'] );
 
-
             if ( false === empty( $matched_fields[ $gf_field_key ] ) ) {
 
             	// Photo?
-				if ( 3 === $meta_field['field_key'] ) {
+				if ( 3 === (int) $meta_field['field_type'] ) {
 
 					$photo_id = attachment_url_to_postid( $matched_fields[ $gf_field_key ] );
 
@@ -228,7 +215,8 @@ function ws_ls_gravity_forms_identify_field( $css_class ) {
 
         foreach ( $keys as $key ) {
 
-            if ( false !== strpos( $css_class, $key ) ) {
+            if ( $css_class === $key ||
+                    false !== strpos( $css_class, $key ) ) {
                 return $key;
             }
 

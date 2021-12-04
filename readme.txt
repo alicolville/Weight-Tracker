@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight,tracker,chart,bmi,bmr,macronutrient,measure,awards,custom fields,history,measurements,data
 Requires at least: 5.7
 Tested up to: 5.8.1
-Stable tag: 9.3.2
+Stable tag: 9.3.3
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -160,6 +160,10 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 9.3 - Admin notes! Store notes against your users and optionally share with them.
 
 == Changelog ==
+
+= 9.3.3 =
+
+* Bug fix: Tweaks to ensure WT works correctly with newer versions of Gravity Forms.
 
 = 9.3.2 =
 
