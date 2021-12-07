@@ -53,7 +53,7 @@
                 id mediumint(9) NOT NULL AUTO_INCREMENT,
                 entry_id int NOT NULL,
                 meta_field_id int NOT NULL,
-                value varchar(800) NOT NULL,
+                value text NOT NULL,
                 migrate int DEFAULT 0,
                 UNIQUE KEY id (id)
             ) $charset_collate;";
