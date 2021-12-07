@@ -146,7 +146,9 @@ function ws_ls_form_post_handler_weight( $user_id, $type = 'weight' ) {
 			$value      = NULL;
 
 			// If photo, we need to process the upload
-			if ( true === WS_LS_IS_PRO && 3 === (int) $field[ 'field_type' ] ) {
+			if ( true === WS_LS_IS_PRO
+			        && 3 === (int) $field[ 'field_type' ]
+						&& ( false === empty( $_FILES[ $field_key ]['type'] ) ) ) {
 
 				$photo_upload = ws_ls_meta_fields_photos_process_upload( $field_key, $date , $user_id, $entry_id, $field['id'] );
 
