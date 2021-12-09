@@ -270,7 +270,7 @@ function ws_ls_cache_generate_key( $key ){
  *
  * @return string
  */
-function ws_ls_cache_generate_key_from_array( $prefix = 'wt', $array ) {
+function ws_ls_cache_generate_key_from_array( $prefix, $array ) {
 
 	if ( false === is_array( $array ) ) {
 		return '';
