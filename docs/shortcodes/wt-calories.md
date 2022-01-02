@@ -33,6 +33,7 @@ The best way to explain how this shortcode works is to look at the output of [wt
 | Argument | Description | Options | Example |
 |--|--|--|--|
 |error-message|When rendering the shortcode, if an error occurs due to missing criteria (for example Date of Birth) a generic message is displayed. You can specify your own message by setting this argument.|Text| [wt-calories error-message="Please complete all the fields on the preference page"]
+|percentage|Specify the percentage of the figure to display. For example, yo may only want to display 50% of the calculated value|100(%) - display default value|[wt-calories percentage=60]
 |progress|Specifies whether to display the calories for "maintain", "gain" "lose" weight. If 'auto' is specified, it will display the relevant type based on the user's selected aim. For example, if they have an aim of losing weight, it will display the value for 'lose'.|'maintain' (default), 'lose', 'gain' or 'auto'|[wt-calories progress="maintain" type="total"]
 |type|Specifies which type of meal or total to display the calorie figures for.|'breakfast', 'lunch', 'dinner', 'snack' or 'total' (default).|[wt-calories progress="maintain" type="total"]
 |user-id|By default, the shortcode will display a calorie figure for the current user. You can display the value for another user by setting this argument to the relevant user ID|Numeric| [wt-calories user-id="1"]

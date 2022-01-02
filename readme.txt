@@ -163,6 +163,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 = 9.3.6 =
 
+* Improvement: Added new argument to [wt-calories] that allows you to specify a percentage of the calculated figure to display e.g. [wt-calories percentage=60]
 * Improvement: Added new field, "challenges-opted-in", to [wt-if]. This allows you to do conditional logic around whether a user has opted in or not to challenges.
 
 = 9.3.5 =

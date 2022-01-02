@@ -1202,6 +1202,29 @@ function ws_ls_blur_text( $text, $pro_plus = false ) {
 }
 
 /**
+ * Return a given percentage of a number
+ * @param $total
+ * @param int $percentage
+ * @return int|string
+ */
+function ws_ls_calculate_percentage_of_number( $total, $percentage = 100 ) {
+
+	$percentage = (int) $percentage;
+
+	if ( 100 === $percentage ) {
+		return $total;
+	}
+
+	if ( $total < 0 ) {
+		return 0;
+	}
+
+	$value = ( $total / 100 ) * $percentage;
+
+	return ws_ls_round_number( $value );
+}
+
+/**
  * Calculate the percentage difference between two numbers
  *
  * @param $previous_weight
