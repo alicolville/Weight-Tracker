@@ -838,13 +838,22 @@ function ws_ls_harris_benedict_setting( $key ) {
 function ws_ls_harris_benedict_defaults( $key = NULL ) {
 
 		$defaults = [
-					'ws-ls-male-cal-cap'        => 1900,
-					'ws-ls-male-min-cal-cap'    => NULL,
-					'ws-ls-female-cal-cap'      => 1400,
-					'ws-ls-female-min-cal-cap'  => NULL,
-					'ws-ls-macro-proteins'      => 25,
-					'ws-ls-macro-carbs'         => 50,
-					'ws-ls-macro-fats'          => 25
+					'ws-ls-male-cal-cap'        			=> 1900,
+					'ws-ls-male-min-cal-cap'    			=> NULL,
+					'ws-ls-female-cal-cap'      			=> 1400,
+					'ws-ls-female-min-cal-cap'  			=> NULL,
+					'ws-ls-macro-proteins'      			=> 25,
+					'ws-ls-macro-carbs'         			=> 50,
+					'ws-ls-macro-fats'          			=> 25,
+					'ws-ls-macro-proteins-maintain'      	=> 25,
+					'ws-ls-macro-carbs-maintain'   			=> 50,
+					'ws-ls-macro-fats-maintain'        		=> 25,
+					'ws-ls-macro-proteins-lose'      		=> 25,
+					'ws-ls-macro-carbs-lose'   				=> 50,
+					'ws-ls-macro-fats-lose'        			=> 25,
+					'ws-ls-macro-proteins-gain'      		=> 25,
+					'ws-ls-macro-carbs-gain'   				=> 50,
+					'ws-ls-macro-fats-gain'        			=> 25
 		];
 
 		return ( NULL !== $key && false === empty( $defaults[ $key ] ) ) ?
