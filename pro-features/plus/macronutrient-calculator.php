@@ -57,9 +57,9 @@ function ws_ls_macro_calculate_raw( $calories, $user_id = false ) {
 
 			$macros[$key]['calories'] = $calories[$key]['total'];
 
-			$protein_calc   = ws_ls_harris_benedict_setting( 'ws-ls-macro-proteins' );
-			$carbs_calc     = ws_ls_harris_benedict_setting( 'ws-ls-macro-carbs' );
-			$fats_calc      = ws_ls_harris_benedict_setting( 'ws-ls-macro-fats' );
+			$protein_calc   = ws_ls_harris_benedict_setting( 'ws-ls-macro-proteins-' . $key );
+			$carbs_calc     = ws_ls_harris_benedict_setting( 'ws-ls-macro-carbs-' . $key );
+			$fats_calc      = ws_ls_harris_benedict_setting( 'ws-ls-macro-fats-' . $key );
 
 			$protein_calc   = $protein_calc / 100;
 			$carbs_calc     = $carbs_calc / 100;
