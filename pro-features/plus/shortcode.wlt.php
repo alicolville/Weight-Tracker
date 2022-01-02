@@ -131,15 +131,7 @@ function ws_ls_shortcode_wlt_display_advanced_tab( $arguments ) {
 
 			if ( true === $include_narrative ) {
 
-				$html .= sprintf('%s %s %s %s %s %s %s.',
-					__('With calories calculated, the we can recommend how those calories should be split into Fats, Carbohydrates and Proteins.  Based on 2010 Dietary Guidelines for Americans we have split it in the following manner:' , WE_LS_SLUG),
-					__('Carbohydrates', WE_LS_SLUG),
-					ws_ls_harris_benedict_setting( 'ws-ls-macro-carbs' ) . '%',
-					__('of calories, Fat', WE_LS_SLUG),
-					ws_ls_harris_benedict_setting( 'ws-ls-macro-fats' ) . '%',
-					__('and Protein', WE_LS_SLUG),
-					ws_ls_harris_benedict_setting( 'ws-ls-macro-proteins' ) . '%'
-				);
+				$html .= sprintf('<p>%s</p>', __( 'With calories calculated, the we can recommend how those calories should be split into Fats, Carbohydrates and Proteins.' , WE_LS_SLUG ) );
 
 			}
 
