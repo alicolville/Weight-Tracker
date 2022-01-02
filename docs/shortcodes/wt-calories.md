@@ -10,21 +10,21 @@ The best way to explain how this shortcode works is to look at the output of [wt
  
  Taking the table above, you may only be interested in displaying the recommended calories to consume at dinner if wanting to lose weight. This is where the [wt-calories] comes into play. Given that example, you could use the shortcode in the following ways:
  
-     [wlt-calories progress="gain" type="total"]
-     [wlt-calories progress="gain" type="breakfast"]
-     [wlt-calories progress="gain" type="lunch"]
-     [wlt-calories progress="gain" type="dinner"]
-     [wlt-calories progress="gain" type="snacks"]
-     [wlt-calories progress="maintain" type="total"]
-     [wlt-calories progress="maintain" type="breakfast"]
-     [wlt-calories progress="maintain" type="lunch"]
-     [wlt-calories progress="maintain" type="dinner"]
-     [wlt-calories progress="maintain" type="snacks"]
-     [wlt-calories progress="lose" type="total"]
-     [wlt-calories progress="lose" type="breakfast"]
-     [wlt-calories progress="lose" type="lunch"]
-     [wlt-calories progress="lose" type="dinner"]
-     [wlt-calories progress="lose" type="snacks"]
+     [wt-calories progress="gain" type="total"]
+     [wt-calories progress="gain" type="breakfast"]
+     [wt-calories progress="gain" type="lunch"]
+     [wt-calories progress="gain" type="dinner"]
+     [wt-calories progress="gain" type="snacks"]
+     [wt-calories progress="maintain" type="total"]
+     [wt-calories progress="maintain" type="breakfast"]
+     [wt-calories progress="maintain" type="lunch"]
+     [wt-calories progress="maintain" type="dinner"]
+     [wt-calories progress="maintain" type="snacks"]
+     [wt-calories progress="lose" type="total"]
+     [wt-calories progress="lose" type="breakfast"]
+     [wt-calories progress="lose" type="lunch"]
+     [wt-calories progress="lose" type="dinner"]
+     [wt-calories progress="lose" type="snacks"]
 
  **Shortcode Arguments**
  
