@@ -1585,3 +1585,13 @@ function ws_ls_get_unit() {
 	return $unit;
 }
 
+/**
+ * Helper function to determine if string contains a given word
+ * @param $haystack
+ * @param $needle
+ * @return bool
+ */
+function ws_ls_string_contains( $haystack, $needle ) {
+	return false !== strpos( $haystack, $needle );
+}
+
