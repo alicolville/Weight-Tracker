@@ -304,22 +304,6 @@ add_shortcode( 'wt-macronutrients-table', 'ws_ls_shortcode_macro_table' );
 
 /**
  *
- * Validate the macro percentages
- *
- * @return bool
- */
-function ws_ls_macro_validate_percentages() {
-
-	$proteins   = ws_ls_harris_benedict_setting( 'ws-ls-macro-proteins' );
-	$fats       = ws_ls_harris_benedict_setting( 'ws-ls-macro-fats' );
-	$carbs      = ws_ls_harris_benedict_setting( 'ws-ls-macro-carbs' );
-
-    // Is their sum 100 (i.e. 100%)
-    return ( 100 === ( $proteins + $fats + $carbs ) );
-}
-
-/**
- *
  * Round a MacroN number
  *
  * @param $value
