@@ -170,7 +170,7 @@ function ws_ls_macro_render_table($user_id, $missing_data_text = false, $additio
                                     <td>%s</td>
                                     <td>%s</td>
                                 </tr>',
-                __('Proteins', WE_LS_SLUG),
+                sprintf( '%s (%s%%)', __( 'Proteins', WE_LS_SLUG ), ws_ls_harris_benedict_setting( 'ws-ls-macro-proteins-' . $key ) ) ,
                 ws_ls_macro_round($macros[$key]['total']['protein']),
                 ws_ls_macro_round($macros[$key]['breakfast']['protein']),
                 ws_ls_macro_round($macros[$key]['lunch']['protein']),
@@ -187,7 +187,7 @@ function ws_ls_macro_render_table($user_id, $missing_data_text = false, $additio
                                     <td>%s</td>
                                     <td>%s</td>
                                 </tr>',
-                __('Carbs', WE_LS_SLUG),
+				sprintf( '%s (%s%%)', __( 'Carbs', WE_LS_SLUG ), ws_ls_harris_benedict_setting( 'ws-ls-macro-carbs-' . $key ) ) ,
                 ws_ls_macro_round($macros[$key]['total']['carbs']),
                 ws_ls_macro_round($macros[$key]['breakfast']['carbs']),
                 ws_ls_macro_round($macros[$key]['lunch']['carbs']),
@@ -204,7 +204,7 @@ function ws_ls_macro_render_table($user_id, $missing_data_text = false, $additio
                                     <td>%s</td>
                                     <td>%s</td>
                                 </tr>',
-                __('Fats', WE_LS_SLUG),
+				sprintf( '%s (%s%%)', __( 'Fats', WE_LS_SLUG ), ws_ls_harris_benedict_setting( 'ws-ls-macro-fats-' . $key ) ) ,
                 ws_ls_macro_round($macros[$key]['total']['fats']),
                 ws_ls_macro_round($macros[$key]['breakfast']['fats']),
                 ws_ls_macro_round($macros[$key]['lunch']['fats']),
