@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight,tracker,chart,bmi,bmr,macronutrient,measure,awards,custom fields,history,measurements,data
 Requires at least: 5.7
 Tested up to: 5.8.1
-Stable tag: 9.3.5
+Stable tag: 9.3.6
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -160,6 +160,11 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 9.3 - Admin notes! Store notes against your users and optionally share with them.
 
 == Changelog ==
+
+= 9.3.6 =
+
+* Improvement: Added new argument to [wt-calories] that allows you to specify a percentage of the calculated figure to display e.g. [wt-calories percentage=60]
+* Improvement: Added new field, "challenges-opted-in", to [wt-if]. This allows you to do conditional logic around whether a user has opted in or not to challenges.
 
 = 9.3.5 =
 
