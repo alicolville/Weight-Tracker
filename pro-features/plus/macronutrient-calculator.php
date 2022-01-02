@@ -57,9 +57,9 @@ function ws_ls_macro_calculate_raw( $calories, $user_id = false ) {
 
 			$macros[$key]['calories'] = $calories[$key]['total'];
 
-			$protein_calc   = ws_ls_harris_benedict_setting( 'ws-ls-macro-proteins' );
-			$carbs_calc     = ws_ls_harris_benedict_setting( 'ws-ls-macro-carbs' );
-			$fats_calc      = ws_ls_harris_benedict_setting( 'ws-ls-macro-fats' );
+			$protein_calc   = ws_ls_harris_benedict_setting( 'ws-ls-macro-proteins-' . $key );
+			$carbs_calc     = ws_ls_harris_benedict_setting( 'ws-ls-macro-carbs-' . $key );
+			$fats_calc      = ws_ls_harris_benedict_setting( 'ws-ls-macro-fats-' . $key );
 
 			$protein_calc   = $protein_calc / 100;
 			$carbs_calc     = $carbs_calc / 100;
@@ -170,7 +170,7 @@ function ws_ls_macro_render_table($user_id, $missing_data_text = false, $additio
                                     <td>%s</td>
                                     <td>%s</td>
                                 </tr>',
-                __('Proteins', WE_LS_SLUG),
+                sprintf( '%s (%s%%)', __( 'Proteins', WE_LS_SLUG ), ws_ls_harris_benedict_setting( 'ws-ls-macro-proteins-' . $key ) ) ,
                 ws_ls_macro_round($macros[$key]['total']['protein']),
                 ws_ls_macro_round($macros[$key]['breakfast']['protein']),
                 ws_ls_macro_round($macros[$key]['lunch']['protein']),
@@ -187,7 +187,7 @@ function ws_ls_macro_render_table($user_id, $missing_data_text = false, $additio
                                     <td>%s</td>
                                     <td>%s</td>
                                 </tr>',
-                __('Carbs', WE_LS_SLUG),
+				sprintf( '%s (%s%%)', __( 'Carbs', WE_LS_SLUG ), ws_ls_harris_benedict_setting( 'ws-ls-macro-carbs-' . $key ) ) ,
                 ws_ls_macro_round($macros[$key]['total']['carbs']),
                 ws_ls_macro_round($macros[$key]['breakfast']['carbs']),
                 ws_ls_macro_round($macros[$key]['lunch']['carbs']),
@@ -204,7 +204,7 @@ function ws_ls_macro_render_table($user_id, $missing_data_text = false, $additio
                                     <td>%s</td>
                                     <td>%s</td>
                                 </tr>',
-                __('Fats', WE_LS_SLUG),
+				sprintf( '%s (%s%%)', __( 'Fats', WE_LS_SLUG ), ws_ls_harris_benedict_setting( 'ws-ls-macro-fats-' . $key ) ) ,
                 ws_ls_macro_round($macros[$key]['total']['fats']),
                 ws_ls_macro_round($macros[$key]['breakfast']['fats']),
                 ws_ls_macro_round($macros[$key]['lunch']['fats']),
@@ -301,22 +301,6 @@ function ws_ls_shortcode_macro_table($user_defined_arguments) {
 }
 add_shortcode( 'wlt-macronutrients-table', 'ws_ls_shortcode_macro_table' );
 add_shortcode( 'wt-macronutrients-table', 'ws_ls_shortcode_macro_table' );
-
-/**
- *
- * Validate the macro percentages
- *
- * @return bool
- */
-function ws_ls_macro_validate_percentages() {
-
-	$proteins   = ws_ls_harris_benedict_setting( 'ws-ls-macro-proteins' );
-	$fats       = ws_ls_harris_benedict_setting( 'ws-ls-macro-fats' );
-	$carbs      = ws_ls_harris_benedict_setting( 'ws-ls-macro-carbs' );
-
-    // Is their sum 100 (i.e. 100%)
-    return ( 100 === ( $proteins + $fats + $carbs ) );
-}
 
 /**
  *

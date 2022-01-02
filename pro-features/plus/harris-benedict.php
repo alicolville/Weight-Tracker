@@ -822,7 +822,7 @@ function ws_ls_harris_benedict_setting( $key ) {
 	$value = (int) get_option( $key, $default_value );
 
 	// Do we want to ensure this value within 0 and 100.
-	if ( true === in_array( $key, [ 'ws-ls-macro-proteins', 'ws-ls-macro-carbs', 'ws-ls-macro-fats' ] ) && ( $value < 0 || $value > 100 ) ) {
+	if ( true === ws_ls_string_contains( $key, 'ws-ls-macro' ) && ( $value < 0 || $value > 100 ) ) {
 		$value = $default_value;
 	}
 
@@ -838,13 +838,22 @@ function ws_ls_harris_benedict_setting( $key ) {
 function ws_ls_harris_benedict_defaults( $key = NULL ) {
 
 		$defaults = [
-					'ws-ls-male-cal-cap'        => 1900,
-					'ws-ls-male-min-cal-cap'    => NULL,
-					'ws-ls-female-cal-cap'      => 1400,
-					'ws-ls-female-min-cal-cap'  => NULL,
-					'ws-ls-macro-proteins'      => 25,
-					'ws-ls-macro-carbs'         => 50,
-					'ws-ls-macro-fats'          => 25
+					'ws-ls-male-cal-cap'        			=> 1900,
+					'ws-ls-male-min-cal-cap'    			=> NULL,
+					'ws-ls-female-cal-cap'      			=> 1400,
+					'ws-ls-female-min-cal-cap'  			=> NULL,
+					'ws-ls-macro-proteins'      			=> 25,	// Deprecated as of 9.3.7
+					'ws-ls-macro-carbs'         			=> 50,	// Deprecated as of 9.3.7
+					'ws-ls-macro-fats'          			=> 25,	// Deprecated as of 9.3.7
+					'ws-ls-macro-proteins-maintain'      	=> 25,
+					'ws-ls-macro-carbs-maintain'   			=> 50,
+					'ws-ls-macro-fats-maintain'        		=> 25,
+					'ws-ls-macro-proteins-lose'      		=> 25,
+					'ws-ls-macro-carbs-lose'   				=> 50,
+					'ws-ls-macro-fats-lose'        			=> 25,
+					'ws-ls-macro-proteins-gain'      		=> 25,
+					'ws-ls-macro-carbs-gain'   				=> 50,
+					'ws-ls-macro-fats-gain'        			=> 25
 		];
 
 		return ( NULL !== $key && false === empty( $defaults[ $key ] ) ) ?

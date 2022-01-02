@@ -27,8 +27,10 @@ jQuery( document ).ready(function ($) {
 
         event.preventDefault();
 
-        var sum = 0;
-        $( '.ws-ls-macro' ).each( function(){
+      let type = $( this ).data( 'type' );
+
+        let sum = 0;
+        $( '.ws-ls-macro-' + type ).each( function(){
             sum += parseInt( this.value );
         });
 

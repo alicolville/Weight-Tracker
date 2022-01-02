@@ -650,29 +650,42 @@ function ws_ls_settings_page_generic() {
 
                                             <h3><?php echo __( 'Macronutrient Calculator' , WE_LS_SLUG); ?></h3>
 
-                                            <table class="form-table">
-                                                <tr class="<?php echo $disable_if_not_pro_plus_class; ?>">
-                                                    <th scope="row"><?php echo __( 'Proteins' , WE_LS_SLUG); ?></th>
-                                                    <td>
-                                                        <input  type="number"  step="any" min="0" max="100" name="ws-ls-macro-proteins" id="ws-ls-macro-proteins" class="ws-ls-macro" value="<?php echo esc_attr( ws_ls_harris_benedict_setting( 'ws-ls-macro-proteins' ) ); ?>" size="3" />%
-                                                        <p><?php echo __('Percentage of Proteins to make up a moderate diet', WE_LS_SLUG);?>. <?php echo ws_ls_calculations_link(); ?>. <em><?php echo __( 'Please note, it may take up to 15 minutes for calorie calculations to change (due to caching).' , WE_LS_SLUG); ?></em></p>
-                                                    </td>
-                                                </tr>
-                                                <tr class="<?php echo $disable_if_not_pro_plus_class; ?>">
-                                                    <th scope="row"><?php echo __( 'Carbohydrates' , WE_LS_SLUG); ?></th>
-                                                    <td>
-                                                        <input  type="number"  step="any" min="0" max="100" name="ws-ls-macro-carbs" id="ws-ls-macro-carbs" class="ws-ls-macro" value="<?php echo esc_attr( ws_ls_harris_benedict_setting( 'ws-ls-macro-carbs' ) ); ?>" size="3" />%
-                                                        <p><?php echo __('Percentage of Carbohydrates to make up a moderate diet', WE_LS_SLUG);?>. <?php echo ws_ls_calculations_link(); ?>. <em><?php echo __( 'Please note, it may take up to 15 minutes for calculations to change (due to caching).' , WE_LS_SLUG); ?></em></p>
-                                                    </td>
-                                                </tr>
-                                                <tr class="<?php echo $disable_if_not_pro_plus_class; ?>">
-                                                    <th scope="row"><?php echo __( 'Fats' , WE_LS_SLUG); ?></th>
-                                                    <td>
-                                                        <input  type="number"  step="any" min="0" max="100" name="ws-ls-macro-fats" id="ws-ls-macro-fats"  class="ws-ls-macro" value="<?php echo esc_attr( ws_ls_harris_benedict_setting( 'ws-ls-macro-fats' ) ); ?>" size="3" />%
-                                                        <p><?php echo __('Percentage of Fats to make up a moderate diet', WE_LS_SLUG);?>. <?php echo ws_ls_calculations_link(); ?>. <em><?php echo __( 'Please note, it may take up to 15 minutes for calculations to change (due to caching).' , WE_LS_SLUG); ?></em></p>
-                                                    </td>
-                                                </tr>
-                                            </table>
+											<table class="form-table">
+												<tr class="<?php echo $disable_if_not_pro_plus_class; ?>">
+													<th scope="row"><?php echo __( 'Percentages per aim' , WE_LS_SLUG); ?></th>
+													<td>
+														<p><?php echo __('For each aim, specify how Macronutrients should be split when calculated.', WE_LS_SLUG);?>. <?php echo ws_ls_calculations_link(); ?>. <em><?php echo __( 'Please note, it may take up to 15 minutes for calculations to change (due to caching).' , WE_LS_SLUG); ?></em></p>
+
+														<table class="widefat ws-ls-calories-modify-table">
+															<thead>
+															<tr>
+																<th class="row-title"></th>
+																<th><?php echo __( 'Proteins' , WE_LS_SLUG); ?></th>
+																<th><?php echo __( 'Carbohydrates' , WE_LS_SLUG); ?></th>
+																<th><?php echo __( 'Fats' , WE_LS_SLUG); ?></th>
+															</tr>
+															</thead>
+															<tbody>
+															<?php foreach ( ['maintain', 'lose', 'gain' ] as $key ): ?>
+																<tr>
+																	<th><?php echo ws_ls_get_macro_name( $key ); ?></th>
+																	<td>
+																		<input  type="number"  step="any" min="0" max="100" name="ws-ls-macro-proteins-<?php echo $key; ?>"  class="ws-ls-macro ws-ls-macro-<?php echo $key; ?>" data-type="<?php echo $key; ?>" value="<?php echo esc_attr( ws_ls_harris_benedict_setting( 'ws-ls-macro-proteins-' . $key ) ); ?>" size=3" />%
+																	</td>
+																	<td>
+																		<input  type="number"  step="any" min="0" max="100" name="ws-ls-macro-carbs-<?php echo $key; ?>" class="ws-ls-macro ws-ls-macro-<?php echo $key; ?>" data-type="<?php echo $key; ?>" value="<?php echo esc_attr( ws_ls_harris_benedict_setting( 'ws-ls-macro-carbs-' . $key ) ); ?>" size="3" />%
+																	</td>
+																	<td>
+																		<input  type="number"  step="any" min="0" max="100" name="ws-ls-macro-fats-<?php echo $key; ?>"  class="ws-ls-macro ws-ls-macro-<?php echo $key; ?>" data-type="<?php echo $key; ?>" value="<?php echo esc_attr( ws_ls_harris_benedict_setting( 'ws-ls-macro-fats-' . $key ) ); ?>" size="3" />%
+																	</td>
+																</tr>
+															<?php endforeach; ?>
+															</tbody>
+														</table>
+													</td>
+												</tr>
+											</table>
+
                                             <h3><?php echo __( 'Macronutrient Calculator: Meals' , WE_LS_SLUG); ?></h3>
                                             <table class="form-table">
                                                 <?php
@@ -1225,12 +1238,21 @@ function ws_ls_register_settings(){
 	    register_setting( 'we-ls-options-group', 'ws-ls-cal-add' );
 	    register_setting( 'we-ls-options-group', 'ws-ls-cal-show-loss' );
 	    register_setting( 'we-ls-options-group', 'ws-ls-cal-show-gain' );
-        register_setting( 'we-ls-options-group', 'ws-ls-macro-proteins' );
-        register_setting( 'we-ls-options-group', 'ws-ls-macro-carbs' );
-        register_setting( 'we-ls-options-group', 'ws-ls-macro-fats' );
 		register_setting( 'we-ls-options-group', 'ws-ls-cal-add-unit' );
 		register_setting( 'we-ls-options-group', 'ws-ls-cal-lose-unit' );
 		register_setting( 'we-ls-options-group', 'ws-ls-challenges-enabled' );
+
+		register_setting( 'we-ls-options-group', 'ws-ls-macro-proteins-maintain' );
+		register_setting( 'we-ls-options-group', 'ws-ls-macro-carbs-maintain' );
+		register_setting( 'we-ls-options-group', 'ws-ls-macro-fats-maintain' );
+
+		register_setting( 'we-ls-options-group', 'ws-ls-macro-proteins-lose' );
+		register_setting( 'we-ls-options-group', 'ws-ls-macro-carbs-lose' );
+		register_setting( 'we-ls-options-group', 'ws-ls-macro-fats-lose' );
+
+		register_setting( 'we-ls-options-group', 'ws-ls-macro-proteins-gain' );
+		register_setting( 'we-ls-options-group', 'ws-ls-macro-carbs-gain' );
+		register_setting( 'we-ls-options-group', 'ws-ls-macro-fats-gain' );
 
         foreach ( ws_ls_harris_benedict_meal_ratio_defaults() as $key => $default ) {
             register_setting( 'we-ls-options-group', sprintf( ' ws-ls-meal-ratio-%s', $key ) );

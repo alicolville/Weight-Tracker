@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight,tracker,chart,bmi,bmr,macronutrient,measure,awards,custom fields,history,measurements,data
 Requires at least: 5.7
 Tested up to: 5.8.1
-Stable tag: 9.3.6
+Stable tag: 9.3.7
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -160,6 +160,10 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 9.3 - Admin notes! Store notes against your users and optionally share with them.
 
 == Changelog ==
+
+= 9.3.7 =
+
+* Improvement: Macronutrient break down (into fats, carbs and proteins) can now be different per aim (maintain, lose or gain).
 
 = 9.3.6 =
 
