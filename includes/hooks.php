@@ -92,6 +92,20 @@ function ws_ls_enqueue_files(){
 }
 
 /**
+ * Enqueue relevant dependencies for UI Kit
+ */
+function ws_ls_enqueue_uikit() {
+
+	wp_enqueue_style( 'yk-uikit', plugins_url( '../assets/uikit/css/uikit.min.css', __FILE__ ), [], WE_LS_CURRENT_VERSION );
+//	wp_enqueue_script( 'yk-uikit', plugins_url( '../assets/uikit/js/uikit.min.js', __FILE__ ), [] , WE_LS_CURRENT_VERSION );
+//	wp_enqueue_script( 'yk-uikit-icons', plugins_url( '../assets/uikit/js/uikit-icons.min.js', __FILE__ ), [] , WE_LS_CURRENT_VERSION);
+
+	wp_enqueue_script( 'yk-uikit', plugins_url( '../assets/uikit/js/uikit.js', __FILE__ ), [] , WE_LS_CURRENT_VERSION );
+	wp_enqueue_script( 'yk-uikit-icons', plugins_url( '../assets/uikit/js/uikit-icons.js', __FILE__ ), [] , WE_LS_CURRENT_VERSION);
+
+}
+
+/**
  * Enqueue ws-ls.js only JS
  */
 function ws_ls_enqueue_files_ws_ls_only() {
