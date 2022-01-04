@@ -96,7 +96,10 @@ function ws_ls_enqueue_files(){
  */
 function ws_ls_enqueue_uikit() {
 
-	wp_enqueue_style( 'yk-uikit', plugins_url( '../assets/uikit/css/uikit.min.css', __FILE__ ), [], WE_LS_CURRENT_VERSION );
+	// TODO: Move this out of here:
+	wp_enqueue_style( 'yk-wt-shortcode', plugins_url( '../assets/css/wt-shortcode.css', __FILE__ ), [], WE_LS_CURRENT_VERSION );
+
+	wp_enqueue_style( 'yk-uikit', plugins_url( '../assets/uikit/css/uikit.css', __FILE__ ), [], WE_LS_CURRENT_VERSION );
 //	wp_enqueue_script( 'yk-uikit', plugins_url( '../assets/uikit/js/uikit.min.js', __FILE__ ), [] , WE_LS_CURRENT_VERSION );
 //	wp_enqueue_script( 'yk-uikit-icons', plugins_url( '../assets/uikit/js/uikit-icons.min.js', __FILE__ ), [] , WE_LS_CURRENT_VERSION);
 

@@ -1,9 +1,9 @@
-/*! yk-uiUIkit 3.9.4 | https://www.getuikit.com | (c) 2014 - 2022 YOOtheme | MIT License */
+/*! ykukUIkit 3.9.4 | https://www.getuikit.com | (c) 2014 - 2022 YOOtheme | MIT License */
 
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('uikit-util')) :
     typeof define === 'function' && define.amd ? define('uikittooltip', ['uikit-util'], factory) :
-    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.yk-uiUIkitTooltip = factory(global.yk-uiUIkit.util));
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.ykukUIkitTooltip = factory(global.ykukUIkit.util));
 })(this, (function (uikitUtil) { 'use strict';
 
     var Container = {
@@ -44,8 +44,8 @@
             duration: 200,
             origin: false,
             transition: 'linear',
-            clsEnter: 'yk-ui-togglabe-enter',
-            clsLeave: 'yk-ui-togglabe-leave',
+            clsEnter: 'ykuk-togglabe-enter',
+            clsLeave: 'ykuk-togglabe-leave',
 
             initProps: {
                 overflow: '',
@@ -320,10 +320,10 @@
             pos: 'top',
             title: '',
             delay: 0,
-            animation: ['yk-ui-animation-scale-up'],
+            animation: ['ykuk-animation-scale-up'],
             duration: 100,
-            cls: 'yk-ui-active',
-            clsPos: 'yk-ui-tooltip'
+            cls: 'ykuk-active',
+            clsPos: 'ykuk-tooltip'
         },
 
         beforeConnect: function() {
@@ -433,8 +433,8 @@
         }
     }
 
-    if (typeof window !== 'undefined' && window.yk-uiUIkit) {
-        window.yk-uiUIkit.component('tooltip', Component);
+    if (typeof window !== 'undefined' && window.ykukUIkit) {
+        window.ykukUIkit.component('tooltip', Component);
     }
 
     return Component;

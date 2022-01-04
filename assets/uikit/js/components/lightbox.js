@@ -1,9 +1,9 @@
-/*! yk-uiUIkit 3.9.4 | https://www.getuikit.com | (c) 2014 - 2022 YOOtheme | MIT License */
+/*! ykukUIkit 3.9.4 | https://www.getuikit.com | (c) 2014 - 2022 YOOtheme | MIT License */
 
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('uikit-util')) :
     typeof define === 'function' && define.amd ? define('uikitlightbox', ['uikit-util'], factory) :
-    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.yk-uiUIkitLightbox = factory(global.yk-uiUIkit.util));
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.ykukUIkitLightbox = factory(global.ykukUIkit.util));
 })(this, (function (uikitUtil) { 'use strict';
 
     var Animations$1 = {
@@ -142,8 +142,8 @@
             duration: 200,
             origin: false,
             transition: 'linear',
-            clsEnter: 'yk-ui-togglabe-enter',
-            clsLeave: 'yk-ui-togglabe-leave',
+            clsEnter: 'ykuk-togglabe-enter',
+            clsLeave: 'ykuk-togglabe-leave',
 
             initProps: {
                 overflow: '',
@@ -337,7 +337,7 @@
         },
 
         data: {
-            cls: 'yk-ui-open',
+            cls: 'ykuk-open',
             escClose: true,
             bgClose: true,
             overlay: true,
@@ -1047,7 +1047,7 @@
                     var cmd = uikitUtil.data(el, this$1$1.attrItem);
 
                     uikitUtil.toggleClass(el, this$1$1.clsActive, uikitUtil.toNumber(cmd) === i);
-                    uikitUtil.toggleClass(el, 'yk-ui-invisible', this$1$1.finite && (cmd === 'previous' && i === 0 || cmd === 'next' && i >= this$1$1.maxIndex));
+                    uikitUtil.toggleClass(el, 'ykuk-invisible', this$1$1.finite && (cmd === 'previous' && i === 0 || cmd === 'next' && i >= this$1$1.maxIndex));
                 });
 
             }
@@ -1077,7 +1077,7 @@
             prevIndex: -1,
             stack: [],
             percent: 0,
-            clsActive: 'yk-ui-active',
+            clsActive: 'ykuk-active',
             clsActivated: false,
             Transitioner: false,
             transitionOptions: {}
@@ -1320,7 +1320,7 @@
 
         data: {
             animation: 'slide',
-            clsActivated: 'yk-ui-transition-active',
+            clsActivated: 'ykuk-transition-active',
             Animations: Animations$1,
             Transitioner: Transitioner
         },
@@ -1388,16 +1388,16 @@
             videoAutoplay: false,
             delayControls: 3000,
             items: [],
-            cls: 'yk-ui-open',
-            clsPage: 'yk-ui-lightbox-page',
-            selList: '.yk-ui-lightbox-items',
-            attrItem: 'yk-ui-lightbox-item',
-            selClose: '.yk-ui-close-large',
-            selCaption: '.yk-ui-lightbox-caption',
+            cls: 'ykuk-open',
+            clsPage: 'ykuk-lightbox-page',
+            selList: '.ykuk-lightbox-items',
+            attrItem: 'ykuk-lightbox-item',
+            selClose: '.ykuk-close-large',
+            selCaption: '.ykuk-lightbox-caption',
             pauseOnHover: false,
             velocity: 2,
             Animations: Animations,
-            template: "<div class=\"yk-ui-lightbox yk-ui-overflow-hidden\"> <ul class=\"yk-ui-lightbox-items\"></ul> <div class=\"yk-ui-lightbox-toolbar yk-ui-position-top yk-ui-text-right yk-ui-transition-slide-top yk-ui-transition-opaque\"> <button class=\"yk-ui-lightbox-toolbar-icon yk-ui-close-large\" type=\"button\" yk-ui-close></button> </div> <a class=\"yk-ui-lightbox-button yk-ui-position-center-left yk-ui-position-medium yk-ui-transition-fade\" href yk-ui-slidenav-previous yk-ui-lightbox-item=\"previous\"></a> <a class=\"yk-ui-lightbox-button yk-ui-position-center-right yk-ui-position-medium yk-ui-transition-fade\" href yk-ui-slidenav-next yk-ui-lightbox-item=\"next\"></a> <div class=\"yk-ui-lightbox-toolbar yk-ui-lightbox-caption yk-ui-position-bottom yk-ui-text-center yk-ui-transition-slide-bottom yk-ui-transition-opaque\"></div> </div>"
+            template: "<div class=\"ykuk-lightbox ykuk-overflow-hidden\"> <ul class=\"ykuk-lightbox-items\"></ul> <div class=\"ykuk-lightbox-toolbar ykuk-position-top ykuk-text-right ykuk-transition-slide-top ykuk-transition-opaque\"> <button class=\"ykuk-lightbox-toolbar-icon ykuk-close-large\" type=\"button\" ykuk-close></button> </div> <a class=\"ykuk-lightbox-button ykuk-position-center-left ykuk-position-medium ykuk-transition-fade\" href ykuk-slidenav-previous ykuk-lightbox-item=\"previous\"></a> <a class=\"ykuk-lightbox-button ykuk-position-center-right ykuk-position-medium ykuk-transition-fade\" href ykuk-slidenav-next ykuk-lightbox-item=\"next\"></a> <div class=\"ykuk-lightbox-toolbar ykuk-lightbox-caption ykuk-position-bottom ykuk-text-center ykuk-transition-slide-bottom ykuk-transition-opaque\"></div> </div>"
         }); },
 
         created: function() {
@@ -1580,7 +1580,7 @@
                     var poster = item.poster;
                     var attrs = item.attrs; if ( attrs === void 0 ) attrs = {};
 
-                    this.setItem(item, '<span yk-ui-spinner></span>');
+                    this.setItem(item, '<span ykuk-spinner></span>');
 
                     if (!src) {
                         return;
@@ -1592,8 +1592,8 @@
                         allow: 'autoplay',
                         allowfullscreen: '',
                         style: 'max-width: 100%; box-sizing: border-box;',
-                        'yk-ui-responsive': '',
-                        'yk-ui-video': ("" + (this.videoAutoplay))
+                        'ykuk-responsive': '',
+                        'ykuk-video': ("" + (this.videoAutoplay))
                     };
 
                     // Image
@@ -1617,7 +1617,7 @@
                             poster: poster,
                             controls: '',
                             playsinline: '',
-                            'yk-ui-video': ("" + (this.videoAutoplay))
+                            'ykuk-video': ("" + (this.videoAutoplay))
                         }, attrs));
 
                         uikitUtil.on(video, 'loadedmetadata', function () {
@@ -1633,7 +1633,7 @@
                             src: src,
                             frameborder: '0',
                             allowfullscreen: '',
-                            class: 'yk-ui-lightbox-iframe'
+                            class: 'ykuk-lightbox-iframe'
                         }, attrs)));
 
                     // YouTube
@@ -1702,7 +1702,7 @@
             },
 
             setError: function(item) {
-                this.setItem(item, '<span yk-ui-icon="icon: bolt; ratio: 2"></span>');
+                this.setItem(item, '<span ykuk-icon="icon: bolt; ratio: 2"></span>');
             },
 
             showControls: function() {
@@ -1710,12 +1710,12 @@
                 clearTimeout(this.controlsTimer);
                 this.controlsTimer = setTimeout(this.hideControls, this.delayControls);
 
-                uikitUtil.addClass(this.$el, 'yk-ui-active', 'yk-ui-transition-active');
+                uikitUtil.addClass(this.$el, 'ykuk-active', 'ykuk-transition-active');
 
             },
 
             hideControls: function() {
-                uikitUtil.removeClass(this.$el, 'yk-ui-active', 'yk-ui-transition-active');
+                uikitUtil.removeClass(this.$el, 'ykuk-active', 'ykuk-transition-active');
             }
 
         }
@@ -1765,7 +1765,7 @@
                 name: 'click',
 
                 delegate: function() {
-                    return ((this.toggle) + ":not(.yk-ui-disabled)");
+                    return ((this.toggle) + ":not(.ykuk-disabled)");
                 },
 
                 handler: function(e) {
@@ -1813,15 +1813,15 @@
 
     };
 
-    function install(yk-uiUIkit, Lightbox) {
+    function install(ykukUIkit, Lightbox) {
 
-        if (!yk-uiUIkit.lightboxPanel) {
-            yk-uiUIkit.component('lightboxPanel', LightboxPanel);
+        if (!ykukUIkit.lightboxPanel) {
+            ykukUIkit.component('lightboxPanel', LightboxPanel);
         }
 
         uikitUtil.assign(
             Lightbox.props,
-            yk-uiUIkit.component('lightboxPanel').options.props
+            ykukUIkit.component('lightboxPanel').options.props
         );
 
     }
@@ -1839,8 +1839,8 @@
         return item;
     }
 
-    if (typeof window !== 'undefined' && window.yk-uiUIkit) {
-        window.yk-uiUIkit.component('lightbox', Component);
+    if (typeof window !== 'undefined' && window.ykukUIkit) {
+        window.ykukUIkit.component('lightbox', Component);
     }
 
     return Component;

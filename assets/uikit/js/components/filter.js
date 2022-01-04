@@ -1,9 +1,9 @@
-/*! yk-uiUIkit 3.9.4 | https://www.getuikit.com | (c) 2014 - 2022 YOOtheme | MIT License */
+/*! ykukUIkit 3.9.4 | https://www.getuikit.com | (c) 2014 - 2022 YOOtheme | MIT License */
 
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('uikit-util')) :
     typeof define === 'function' && define.amd ? define('uikitfilter', ['uikit-util'], factory) :
-    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.yk-uiUIkitFilter = factory(global.yk-uiUIkit.util));
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.ykukUIkitFilter = factory(global.ykukUIkit.util));
 })(this, (function (uikitUtil) { 'use strict';
 
     function getRows(items) {
@@ -85,8 +85,8 @@
         };
     }
 
-    var clsLeave = 'yk-ui-transition-leave';
-    var clsEnter = 'yk-ui-transition-enter';
+    var clsLeave = 'ykuk-transition-leave';
+    var clsEnter = 'ykuk-transition-enter';
 
     function fade(action, target, duration, stagger) {
         if ( stagger === void 0 ) stagger = 0;
@@ -117,7 +117,7 @@
 
             uikitUtil.css(uikitUtil.children(target), {opacity: 0});
 
-            // Ensure yk-uiUIkit updates have propagated
+            // Ensure ykukUIkit updates have propagated
             return new uikitUtil.Promise(function (resolve) { return requestAnimationFrame(function () {
 
                     var nodes = uikitUtil.children(target);
@@ -367,8 +367,8 @@
         data: {
             target: null,
             selActive: false,
-            attrItem: 'yk-ui-filter-control',
-            cls: 'yk-ui-active',
+            attrItem: 'ykuk-filter-control',
+            cls: 'ykuk-active',
             duration: 250
         },
 
@@ -588,8 +588,8 @@
         return uikitUtil.assign([], nodes).sort(function (a, b) { return uikitUtil.data(a, sort).localeCompare(uikitUtil.data(b, sort), undefined, {numeric: true}) * (order === 'asc' || -1); });
     }
 
-    if (typeof window !== 'undefined' && window.yk-uiUIkit) {
-        window.yk-uiUIkit.component('filter', Component);
+    if (typeof window !== 'undefined' && window.ykukUIkit) {
+        window.ykukUIkit.component('filter', Component);
     }
 
     return Component;

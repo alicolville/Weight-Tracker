@@ -1,9 +1,9 @@
-/*! yk-uiUIkit 3.9.4 | https://www.getuikit.com | (c) 2014 - 2022 YOOtheme | MIT License */
+/*! ykukUIkit 3.9.4 | https://www.getuikit.com | (c) 2014 - 2022 YOOtheme | MIT License */
 
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('uikit-util')) :
     typeof define === 'function' && define.amd ? define('uikitcountdown', ['uikit-util'], factory) :
-    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.yk-uiUIkitCountdown = factory(global.yk-uiUIkit.util));
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.ykukUIkitCountdown = factory(global.ykukUIkit.util));
 })(this, (function (uikitUtil) { 'use strict';
 
     var Class = {
@@ -25,7 +25,7 @@
 
         data: {
             date: '',
-            clsWrapper: '.yk-ui-countdown-%unit%'
+            clsWrapper: '.ykuk-countdown-%unit%'
         },
 
         computed: {
@@ -182,8 +182,8 @@
         };
     }
 
-    if (typeof window !== 'undefined' && window.yk-uiUIkit) {
-        window.yk-uiUIkit.component('countdown', Component);
+    if (typeof window !== 'undefined' && window.ykukUIkit) {
+        window.ykukUIkit.component('countdown', Component);
     }
 
     return Component;

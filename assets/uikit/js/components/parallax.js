@@ -1,9 +1,9 @@
-/*! yk-uiUIkit 3.9.4 | https://www.getuikit.com | (c) 2014 - 2022 YOOtheme | MIT License */
+/*! ykukUIkit 3.9.4 | https://www.getuikit.com | (c) 2014 - 2022 YOOtheme | MIT License */
 
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('uikit-util')) :
     typeof define === 'function' && define.amd ? define('uikitparallax', ['uikit-util'], factory) :
-    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.yk-uiUIkitParallax = factory(global.yk-uiUIkit.util));
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.ykukUIkitParallax = factory(global.ykukUIkit.util));
 })(this, (function (uikitUtil) { 'use strict';
 
     var Media = {
@@ -504,8 +504,8 @@
             : document.body;
     }
 
-    if (typeof window !== 'undefined' && window.yk-uiUIkit) {
-        window.yk-uiUIkit.component('parallax', Component);
+    if (typeof window !== 'undefined' && window.ykukUIkit) {
+        window.ykukUIkit.component('parallax', Component);
     }
 
     return Component;

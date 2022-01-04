@@ -1,9 +1,9 @@
-/*! yk-uiUIkit 3.9.4 | https://www.getuikit.com | (c) 2014 - 2022 YOOtheme | MIT License */
+/*! ykukUIkit 3.9.4 | https://www.getuikit.com | (c) 2014 - 2022 YOOtheme | MIT License */
 
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
     typeof define === 'function' && define.amd ? define('uikit', factory) :
-    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.yk-uiUIkit = factory());
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.ykukUIkit = factory());
 })(this, (function () { 'use strict';
 
     var objPrototype = Object.prototype;
@@ -1414,11 +1414,11 @@
     }
 
     var parseCssVar = memoize(function (name) {
-        /* usage in css: .yk-ui-name:before { content:"xyz" } */
+        /* usage in css: .ykuk-name:before { content:"xyz" } */
 
         var element = append(document.documentElement, fragment('<div>'));
 
-        addClass(element, ("yk-ui-" + name));
+        addClass(element, ("ykuk-" + name));
 
         var value = getStyle(element, 'content', ':before');
 
@@ -1431,7 +1431,7 @@
     function getCssVar(name) {
         return (isIE
             ? parseCssVar(name)
-            : getStyles(document.documentElement).getPropertyValue(("--yk-ui-" + name))
+            : getStyles(document.documentElement).getPropertyValue(("--ykuk-" + name))
         ).replace(propertyRe, '$2');
     }
 
@@ -1481,7 +1481,7 @@
                     var type = ref.type;
 
                     clearTimeout(timer);
-                    removeClass(element, 'yk-ui-transition');
+                    removeClass(element, 'ykuk-transition');
                     css(element, {
                         transitionProperty: '',
                         transitionDuration: '',
@@ -1490,7 +1490,7 @@
                     type === 'transitioncanceled' ? reject() : resolve(element);
                 }, {self: true});
 
-                addClass(element, 'yk-ui-transition');
+                addClass(element, 'ykuk-transition');
                 css(element, assign({
                     transitionProperty: Object.keys(props).map(propName).join(','),
                     transitionDuration: (duration + "ms"),
@@ -1516,12 +1516,12 @@
         },
 
         inProgress: function(element) {
-            return hasClass(element, 'yk-ui-transition');
+            return hasClass(element, 'ykuk-transition');
         }
 
     };
 
-    var animationPrefix = 'yk-ui-animation-';
+    var animationPrefix = 'ykuk-animation-';
 
     function animate$1(element, animation, duration, origin, out) {
         if ( duration === void 0 ) duration = 200;
@@ -1549,7 +1549,7 @@
                 addClass(element, animation, animationPrefix + (out ? 'leave' : 'enter'));
 
                 if (startsWith(animation, animationPrefix)) {
-                    origin && addClass(element, ("yk-ui-transform-origin-" + origin));
+                    origin && addClass(element, ("ykuk-transform-origin-" + origin));
                     out && addClass(element, (animationPrefix + "reverse"));
                 }
 
@@ -2671,11 +2671,11 @@
         getViewportClientHeight: getViewportClientHeight
     });
 
-    function globalAPI (yk-uiUIkit) {
+    function globalAPI (ykukUIkit) {
 
-        var DATA = yk-uiUIkit.data;
+        var DATA = ykukUIkit.data;
 
-        yk-uiUIkit.use = function (plugin) {
+        ykukUIkit.use = function (plugin) {
 
             if (plugin.installed) {
                 return;
@@ -2687,17 +2687,17 @@
             return this;
         };
 
-        yk-uiUIkit.mixin = function (mixin, component) {
-            component = (isString(component) ? yk-uiUIkit.component(component) : component) || this;
+        ykukUIkit.mixin = function (mixin, component) {
+            component = (isString(component) ? ykukUIkit.component(component) : component) || this;
             component.options = mergeOptions(component.options, mixin);
         };
 
-        yk-uiUIkit.extend = function (options) {
+        ykukUIkit.extend = function (options) {
 
             options = options || {};
 
             var Super = this;
-            var Sub = function yk-uiUIkitComponent(options) {
+            var Sub = function ykukUIkitComponent(options) {
                 this._init(options);
             };
 
@@ -2711,7 +2711,7 @@
             return Sub;
         };
 
-        yk-uiUIkit.update = function (element, e) {
+        ykukUIkit.update = function (element, e) {
 
             element = element ? toNode(element) : document.body;
 
@@ -2721,7 +2721,7 @@
         };
 
         var container;
-        Object.defineProperty(yk-uiUIkit, 'container', {
+        Object.defineProperty(ykukUIkit, 'container', {
 
             get: function() {
                 return container || document.body;
@@ -2748,9 +2748,9 @@
         }
     }
 
-    function hooksAPI (yk-uiUIkit) {
+    function hooksAPI (ykukUIkit) {
 
-        yk-uiUIkit.prototype._callHook = function (hook) {
+        ykukUIkit.prototype._callHook = function (hook) {
             var this$1$1 = this;
 
 
@@ -2761,7 +2761,7 @@
             }
         };
 
-        yk-uiUIkit.prototype._callConnected = function () {
+        ykukUIkit.prototype._callConnected = function () {
 
             if (this._connected) {
                 return;
@@ -2782,7 +2782,7 @@
             this._callUpdate();
         };
 
-        yk-uiUIkit.prototype._callDisconnected = function () {
+        ykukUIkit.prototype._callDisconnected = function () {
 
             if (!this._connected) {
                 return;
@@ -2798,7 +2798,7 @@
 
         };
 
-        yk-uiUIkit.prototype._callUpdate = function (e) {
+        ykukUIkit.prototype._callUpdate = function (e) {
             var this$1$1 = this;
             if ( e === void 0 ) e = 'update';
 
@@ -2828,7 +2828,7 @@
             this._updates.add(e.type || e);
         };
 
-        yk-uiUIkit.prototype._callWatches = function () {
+        ykukUIkit.prototype._callWatches = function () {
             var this$1$1 = this;
 
 
@@ -2910,11 +2910,11 @@
         }
     }
 
-    function stateAPI (yk-uiUIkit) {
+    function stateAPI (ykukUIkit) {
 
         var uid = 0;
 
-        yk-uiUIkit.prototype._init = function (options) {
+        ykukUIkit.prototype._init = function (options) {
 
             options = options || {};
             options.data = normalizeData(options, this.constructor.options);
@@ -2934,7 +2934,7 @@
             }
         };
 
-        yk-uiUIkit.prototype._initData = function () {
+        ykukUIkit.prototype._initData = function () {
 
             var ref = this.$options;
             var data = ref.data; if ( data === void 0 ) data = {};
@@ -2944,7 +2944,7 @@
             }
         };
 
-        yk-uiUIkit.prototype._initMethods = function () {
+        ykukUIkit.prototype._initMethods = function () {
 
             var ref = this.$options;
             var methods = ref.methods;
@@ -2956,7 +2956,7 @@
             }
         };
 
-        yk-uiUIkit.prototype._initComputeds = function () {
+        ykukUIkit.prototype._initComputeds = function () {
 
             var ref = this.$options;
             var computed = ref.computed;
@@ -2970,7 +2970,7 @@
             }
         };
 
-        yk-uiUIkit.prototype._initProps = function (props) {
+        ykukUIkit.prototype._initProps = function (props) {
 
             var key;
 
@@ -2990,7 +2990,7 @@
             }
         };
 
-        yk-uiUIkit.prototype._initEvents = function () {
+        ykukUIkit.prototype._initEvents = function () {
             var this$1$1 = this;
 
 
@@ -3015,19 +3015,19 @@
             }
         };
 
-        yk-uiUIkit.prototype._unbindEvents = function () {
+        ykukUIkit.prototype._unbindEvents = function () {
             this._events.forEach(function (unbind) { return unbind(); });
             delete this._events;
         };
 
-        yk-uiUIkit.prototype._initObservers = function () {
+        ykukUIkit.prototype._initObservers = function () {
             this._observers = [
                 initChildListObserver(this),
                 initPropsObserver(this)
             ];
         };
 
-        yk-uiUIkit.prototype._disconnectObservers = function () {
+        ykukUIkit.prototype._disconnectObservers = function () {
             this._observers.forEach(function (observer) { return observer && observer.disconnect(); }
             );
         };
@@ -3258,15 +3258,15 @@
         }
     }
 
-    function instanceAPI (yk-uiUIkit) {
+    function instanceAPI (ykukUIkit) {
 
-        var DATA = yk-uiUIkit.data;
+        var DATA = ykukUIkit.data;
 
-        yk-uiUIkit.prototype.$create = function (component, element, data) {
-            return yk-uiUIkit[component](element, data);
+        ykukUIkit.prototype.$create = function (component, element, data) {
+            return ykukUIkit[component](element, data);
         };
 
-        yk-uiUIkit.prototype.$mount = function (el) {
+        ykukUIkit.prototype.$mount = function (el) {
 
             var ref = this.$options;
             var name = ref.name;
@@ -3288,12 +3288,12 @@
             }
         };
 
-        yk-uiUIkit.prototype.$reset = function () {
+        ykukUIkit.prototype.$reset = function () {
             this._callDisconnected();
             this._callConnected();
         };
 
-        yk-uiUIkit.prototype.$destroy = function (removeEl) {
+        ykukUIkit.prototype.$destroy = function (removeEl) {
             if ( removeEl === void 0 ) removeEl = false;
 
 
@@ -3322,22 +3322,22 @@
             }
         };
 
-        yk-uiUIkit.prototype.$emit = function (e) {
+        ykukUIkit.prototype.$emit = function (e) {
             this._callUpdate(e);
         };
 
-        yk-uiUIkit.prototype.$update = function (element, e) {
+        ykukUIkit.prototype.$update = function (element, e) {
             if ( element === void 0 ) element = this.$el;
 
-            yk-uiUIkit.update(element, e);
+            ykukUIkit.update(element, e);
         };
 
-        yk-uiUIkit.prototype.$getComponent = yk-uiUIkit.getComponent;
+        ykukUIkit.prototype.$getComponent = ykukUIkit.getComponent;
 
-        var componentName = memoize(function (name) { return yk-uiUIkit.prefix + hyphenate(name); });
-        Object.defineProperties(yk-uiUIkit.prototype, {
+        var componentName = memoize(function (name) { return ykukUIkit.prefix + hyphenate(name); });
+        Object.defineProperties(ykukUIkit.prototype, {
 
-            $container: Object.getOwnPropertyDescriptor(yk-uiUIkit, 'container'),
+            $container: Object.getOwnPropertyDescriptor(ykukUIkit, 'container'),
 
             $name: {
 
@@ -3351,13 +3351,13 @@
 
     }
 
-    function componentAPI (yk-uiUIkit) {
+    function componentAPI (ykukUIkit) {
 
-        var DATA = yk-uiUIkit.data;
+        var DATA = ykukUIkit.data;
 
         var components = {};
 
-        yk-uiUIkit.component = function (name, options) {
+        ykukUIkit.component = function (name, options) {
 
             var id = hyphenate(name);
 
@@ -3366,19 +3366,19 @@
             if (!options) {
 
                 if (isPlainObject(components[name])) {
-                    components[name] = yk-uiUIkit.extend(components[name]);
+                    components[name] = ykukUIkit.extend(components[name]);
                 }
 
                 return components[name];
 
             }
 
-            yk-uiUIkit[name] = function (element, data) {
+            ykukUIkit[name] = function (element, data) {
                 var i = arguments.length, argsArray = Array(i);
                 while ( i-- ) argsArray[i] = arguments[i];
 
 
-                var component = yk-uiUIkit.component(name);
+                var component = ykukUIkit.component(name);
 
                 return component.options.functional
                     ? new component({data: isPlainObject(element) ? element : [].concat( argsArray )})
@@ -3386,7 +3386,7 @@
 
                 function init(element) {
 
-                    var instance = yk-uiUIkit.getComponent(element, name);
+                    var instance = ykukUIkit.getComponent(element, name);
 
                     if (instance) {
                         if (!data) {
@@ -3407,20 +3407,20 @@
             opt.name = name;
 
             if (opt.install) {
-                opt.install(yk-uiUIkit, opt, name);
+                opt.install(ykukUIkit, opt, name);
             }
 
-            if (yk-uiUIkit._initialized && !opt.functional) {
-                fastdom.read(function () { return yk-uiUIkit[name](("[yk-ui-" + id + "],[data-yk-ui-" + id + "]")); });
+            if (ykukUIkit._initialized && !opt.functional) {
+                fastdom.read(function () { return ykukUIkit[name](("[ykuk-" + id + "],[data-ykuk-" + id + "]")); });
             }
 
             return components[name] = isPlainObject(options) ? opt : options;
         };
 
-        yk-uiUIkit.getComponents = function (element) { return element && element[DATA] || {}; };
-        yk-uiUIkit.getComponent = function (element, name) { return yk-uiUIkit.getComponents(element)[name]; };
+        ykukUIkit.getComponents = function (element) { return element && element[DATA] || {}; };
+        ykukUIkit.getComponent = function (element, name) { return ykukUIkit.getComponents(element)[name]; };
 
-        yk-uiUIkit.connect = function (node) {
+        ykukUIkit.connect = function (node) {
 
             if (node[DATA]) {
                 for (var name in node[DATA]) {
@@ -3433,14 +3433,14 @@
                 var name$1 = getComponentName(node.attributes[i].name);
 
                 if (name$1 && name$1 in components) {
-                    yk-uiUIkit[name$1](node);
+                    ykukUIkit[name$1](node);
                 }
 
             }
 
         };
 
-        yk-uiUIkit.disconnect = function (node) {
+        ykukUIkit.disconnect = function (node) {
             for (var name in node[DATA]) {
                 node[DATA][name]._callDisconnected();
             }
@@ -3449,28 +3449,28 @@
     }
 
     var getComponentName = memoize(function (attribute) {
-        return startsWith(attribute, 'yk-ui-') || startsWith(attribute, 'data-yk-ui-')
-            ? camelize(attribute.replace('data-yk-ui-', '').replace('yk-ui-', ''))
+        return startsWith(attribute, 'ykuk-') || startsWith(attribute, 'data-ykuk-')
+            ? camelize(attribute.replace('data-ykuk-', '').replace('ykuk-', ''))
             : false;
     });
 
-    var yk-uiUIkit = function (options) {
+    var ykukUIkit = function (options) {
         this._init(options);
     };
 
-    yk-uiUIkit.util = util;
-    yk-uiUIkit.data = '__uikit__';
-    yk-uiUIkit.prefix = 'yk-ui-';
-    yk-uiUIkit.options = {};
-    yk-uiUIkit.version = '3.9.4';
+    ykukUIkit.util = util;
+    ykukUIkit.data = '__uikit__';
+    ykukUIkit.prefix = 'ykuk-';
+    ykukUIkit.options = {};
+    ykukUIkit.version = '3.9.4';
 
-    globalAPI(yk-uiUIkit);
-    hooksAPI(yk-uiUIkit);
-    stateAPI(yk-uiUIkit);
-    componentAPI(yk-uiUIkit);
-    instanceAPI(yk-uiUIkit);
+    globalAPI(ykukUIkit);
+    hooksAPI(ykukUIkit);
+    stateAPI(ykukUIkit);
+    componentAPI(ykukUIkit);
+    instanceAPI(ykukUIkit);
 
-    function Core (yk-uiUIkit) {
+    function Core (ykukUIkit) {
 
         if (!inBrowser) {
             return;
@@ -3484,7 +3484,7 @@
             }
             pendingResize = true;
             fastdom.write(function () { return pendingResize = false; });
-            yk-uiUIkit.update(null, 'resize');
+            ykukUIkit.update(null, 'resize');
         };
 
         on(window, 'load resize', handleResize);
@@ -3504,7 +3504,7 @@
             pending = true;
             fastdom.write(function () { return pending = false; });
 
-            yk-uiUIkit.update(null, e.type);
+            ykukUIkit.update(null, e.type);
 
         }, {passive: true, capture: true});
 
@@ -3512,7 +3512,7 @@
         on(document, 'animationstart', function (ref) {
             var target = ref.target;
 
-            if ((css(target, 'animationName') || '').match(/^yk-ui-.*(left|right)/)) {
+            if ((css(target, 'animationName') || '').match(/^ykuk-.*(left|right)/)) {
 
                 started++;
                 css(document.documentElement, 'overflowX', 'hidden');
@@ -3565,10 +3565,10 @@
                 : 'Down';
     }
 
-    function boot (yk-uiUIkit) {
+    function boot (ykukUIkit) {
 
-        var connect = yk-uiUIkit.connect;
-        var disconnect = yk-uiUIkit.disconnect;
+        var connect = ykukUIkit.connect;
+        var disconnect = ykukUIkit.disconnect;
 
         if (!inBrowser || !window.MutationObserver) {
             return;
@@ -3592,7 +3592,7 @@
                 subtree: true
             });
 
-            yk-uiUIkit._initialized = true;
+            ykukUIkit._initialized = true;
         });
 
         function applyChildListMutation(ref) {
@@ -3615,16 +3615,16 @@
 
             var name = getComponentName(attributeName);
 
-            if (!name || !(name in yk-uiUIkit)) {
+            if (!name || !(name in ykukUIkit)) {
                 return;
             }
 
             if (hasAttr(target, attributeName)) {
-                yk-uiUIkit[name](target);
+                ykukUIkit[name](target);
                 return;
             }
 
-            var component = yk-uiUIkit.getComponent(target, name);
+            var component = ykukUIkit.getComponent(target, name);
 
             if (component) {
                 component.$destroy();
@@ -3658,8 +3658,8 @@
             duration: 200,
             origin: false,
             transition: 'linear',
-            clsEnter: 'yk-ui-togglabe-enter',
-            clsLeave: 'yk-ui-togglabe-leave',
+            clsEnter: 'ykuk-togglabe-enter',
+            clsLeave: 'ykuk-togglabe-leave',
 
             initProps: {
                 overflow: '',
@@ -3859,9 +3859,9 @@
             animation: [true],
             collapsible: true,
             multiple: false,
-            clsOpen: 'yk-ui-open',
-            toggle: '> .yk-ui-accordion-title',
-            content: '> .yk-ui-accordion-content',
+            clsOpen: 'ykuk-open',
+            toggle: '> .ykuk-accordion-title',
+            content: '> .ykuk-accordion-content',
             transition: 'ease',
             offset: 0
         },
@@ -3995,7 +3995,7 @@
 
         data: {
             animation: [true],
-            selClose: '.yk-ui-alert-close',
+            selClose: '.ykuk-alert-close',
             duration: 150,
             hideProps: assign({opacity: 0}, Togglable.data.hideProps)
         },
@@ -4287,8 +4287,8 @@
             delayShow: 0,
             delayHide: 800,
             clsDrop: false,
-            animation: ['yk-ui-animation-fade'],
-            cls: 'yk-ui-open',
+            animation: ['ykuk-animation-fade'],
+            cls: 'ykuk-open',
             container: false
         },
 
@@ -4303,7 +4303,7 @@
             clsDrop: function(ref) {
                 var clsDrop = ref.clsDrop;
 
-                return clsDrop || ("yk-ui-" + (this.$options.name));
+                return clsDrop || ("ykuk-" + (this.$options.name));
             },
 
             clsPos: function() {
@@ -4788,8 +4788,8 @@
         },
 
         data: {
-            margin: 'yk-ui-margin-small-top',
-            firstColumn: 'yk-ui-first-column'
+            margin: 'ykuk-margin-small-top',
+            firstColumn: 'ykuk-first-column'
         },
 
         update: {
@@ -4931,14 +4931,14 @@
         },
 
         data: {
-            margin: 'yk-ui-grid-margin',
-            clsStack: 'yk-ui-grid-stack',
+            margin: 'ykuk-grid-margin',
+            clsStack: 'ykuk-grid-stack',
             masonry: false,
             parallax: 0
         },
 
         connected: function() {
-            this.masonry && addClass(this.$el, 'yk-ui-flex-top yk-ui-flex-wrap-top');
+            this.masonry && addClass(this.$el, 'ykuk-flex-top ykuk-flex-wrap-top');
         },
 
         update: [
@@ -5353,7 +5353,7 @@
         },
 
         beforeConnect: function() {
-            this.class += ' yk-ui-svg';
+            this.class += ' ykuk-svg';
         },
 
         connected: function() {
@@ -5525,7 +5525,7 @@
         var length = getMaxPathLength(el);
 
         if (length) {
-            el.style.setProperty('--yk-ui-animation-stroke', length);
+            el.style.setProperty('--ykuk-animation-stroke', length);
         }
 
     }
@@ -5639,7 +5639,7 @@
         isIcon: true,
 
         beforeConnect: function() {
-            addClass(this.$el, 'yk-ui-icon');
+            addClass(this.$el, 'ykuk-icon');
         },
 
         methods: {
@@ -5680,7 +5680,7 @@
         extends: IconComponent,
 
         beforeConnect: function() {
-            addClass(this.$el, 'yk-ui-slidenav');
+            addClass(this.$el, 'ykuk-slidenav');
         },
 
         computed: {
@@ -5688,7 +5688,7 @@
             icon: function(ref, $el) {
                 var icon = ref.icon;
 
-                return hasClass($el, 'yk-ui-slidenav-large')
+                return hasClass($el, 'ykuk-slidenav-large')
                     ? (icon + "-large")
                     : icon;
             }
@@ -5706,9 +5706,9 @@
             icon: function(ref, $el) {
                 var icon = ref.icon;
 
-                return hasClass($el, 'yk-ui-search-icon') && parents($el, '.yk-ui-search-large').length
+                return hasClass($el, 'ykuk-search-icon') && parents($el, '.ykuk-search-large').length
                     ? 'search-large'
-                    : parents($el, '.yk-ui-search-navbar').length
+                    : parents($el, '.ykuk-search-navbar').length
                         ? 'search-navbar'
                         : icon;
             }
@@ -5724,7 +5724,7 @@
         computed: {
 
             icon: function() {
-                return ("close-" + (hasClass(this.$el, 'yk-ui-close-large') ? 'large' : 'icon'));
+                return ("close-" + (hasClass(this.$el, 'ykuk-close-large') ? 'large' : 'icon'));
             }
 
         }
@@ -5744,8 +5744,8 @@
     };
 
     var parsed = {};
-    function install$1(yk-uiUIkit) {
-        yk-uiUIkit.icon.add = function (name, svg) {
+    function install$1(ykukUIkit) {
+        ykukUIkit.icon.add = function (name, svg) {
             var obj;
 
 
@@ -5755,8 +5755,8 @@
                 delete parsed[name];
             });
 
-            if (yk-uiUIkit._initialized) {
-                apply$1(document.body, function (el) { return each(yk-uiUIkit.getComponents(el), function (cmp) {
+            if (ykukUIkit._initialized) {
+                apply$1(document.body, function (el) { return each(ykukUIkit.getComponents(el), function (cmp) {
                         cmp.$options.isIcon && cmp.icon in added && cmp.$reset();
                     }); }
                 );
@@ -6100,8 +6100,8 @@
 
         data: {
             fill: '',
-            clsWrapper: 'yk-ui-leader-fill',
-            clsHide: 'yk-ui-leader-hide',
+            clsWrapper: 'ykuk-leader-fill',
+            clsHide: 'ykuk-leader-hide',
             attrFill: 'data-fill'
         },
 
@@ -6176,7 +6176,7 @@
         },
 
         data: {
-            cls: 'yk-ui-open',
+            cls: 'ykuk-open',
             escClose: true,
             bgClose: true,
             overlay: true,
@@ -6427,9 +6427,9 @@
         mixins: [Modal],
 
         data: {
-            clsPage: 'yk-ui-modal-page',
-            selPanel: '.yk-ui-modal-dialog',
-            selClose: '.yk-ui-modal-close, .yk-ui-modal-close-default, .yk-ui-modal-close-outside, .yk-ui-modal-close-full'
+            clsPage: 'ykuk-modal-page',
+            selPanel: '.ykuk-modal-dialog',
+            selClose: '.ykuk-modal-close, .ykuk-modal-close-default, .ykuk-modal-close-outside, .ykuk-modal-close-full'
         },
 
         events: [
@@ -6441,8 +6441,8 @@
 
                 handler: function() {
 
-                    if (hasClass(this.panel, 'yk-ui-margin-auto-vertical')) {
-                        addClass(this.$el, 'yk-ui-flex');
+                    if (hasClass(this.panel, 'ykuk-margin-auto-vertical')) {
+                        addClass(this.$el, 'ykuk-flex');
                     } else {
                         css(this.$el, 'display', 'block');
                     }
@@ -6459,7 +6459,7 @@
                 handler: function() {
 
                     css(this.$el, 'display', '');
-                    removeClass(this.$el, 'yk-ui-flex');
+                    removeClass(this.$el, 'ykuk-flex');
 
                 }
             }
@@ -6475,7 +6475,7 @@
         modal.dialog = function (content, options) {
 
             var dialog = modal(
-                ("<div class=\"yk-ui-modal\"> <div class=\"yk-ui-modal-dialog\">" + content + "</div> </div>"),
+                ("<div class=\"ykuk-modal\"> <div class=\"ykuk-modal-dialog\">" + content + "</div> </div>"),
                 options
             );
 
@@ -6493,7 +6493,7 @@
                 function (ref) {
                     var labels = ref.labels;
 
-                    return ("<div class=\"yk-ui-modal-body\">" + (isString(message) ? message : html(message)) + "</div> <div class=\"yk-ui-modal-footer yk-ui-text-right\"> <button class=\"yk-ui-button yk-ui-button-primary yk-ui-modal-close\" autofocus>" + (labels.ok) + "</button> </div>");
+                    return ("<div class=\"ykuk-modal-body\">" + (isString(message) ? message : html(message)) + "</div> <div class=\"ykuk-modal-footer ykuk-text-right\"> <button class=\"ykuk-button ykuk-button-primary ykuk-modal-close\" autofocus>" + (labels.ok) + "</button> </div>");
             },
                 options,
                 function (deferred) { return deferred.resolve(); }
@@ -6505,7 +6505,7 @@
                 function (ref) {
                     var labels = ref.labels;
 
-                    return ("<form> <div class=\"yk-ui-modal-body\">" + (isString(message) ? message : html(message)) + "</div> <div class=\"yk-ui-modal-footer yk-ui-text-right\"> <button class=\"yk-ui-button yk-ui-button-default yk-ui-modal-close\" type=\"button\">" + (labels.cancel) + "</button> <button class=\"yk-ui-button yk-ui-button-primary\" autofocus>" + (labels.ok) + "</button> </div> </form>");
+                    return ("<form> <div class=\"ykuk-modal-body\">" + (isString(message) ? message : html(message)) + "</div> <div class=\"ykuk-modal-footer ykuk-text-right\"> <button class=\"ykuk-button ykuk-button-default ykuk-modal-close\" type=\"button\">" + (labels.cancel) + "</button> <button class=\"ykuk-button ykuk-button-primary\" autofocus>" + (labels.ok) + "</button> </div> </form>");
             },
                 options,
                 function (deferred) { return deferred.reject(); }
@@ -6517,7 +6517,7 @@
                 function (ref) {
                     var labels = ref.labels;
 
-                    return ("<form class=\"yk-ui-form-stacked\"> <div class=\"yk-ui-modal-body\"> <label>" + (isString(message) ? message : html(message)) + "</label> <input class=\"yk-ui-input\" value=\"" + (value || '') + "\" autofocus> </div> <div class=\"yk-ui-modal-footer yk-ui-text-right\"> <button class=\"yk-ui-button yk-ui-button-default yk-ui-modal-close\" type=\"button\">" + (labels.cancel) + "</button> <button class=\"yk-ui-button yk-ui-button-primary\">" + (labels.ok) + "</button> </div> </form>");
+                    return ("<form class=\"ykuk-form-stacked\"> <div class=\"ykuk-modal-body\"> <label>" + (isString(message) ? message : html(message)) + "</label> <input class=\"ykuk-input\" value=\"" + (value || '') + "\" autofocus> </div> <div class=\"ykuk-modal-footer ykuk-text-right\"> <button class=\"ykuk-button ykuk-button-default ykuk-modal-close\" type=\"button\">" + (labels.cancel) + "</button> <button class=\"ykuk-button ykuk-button-primary\">" + (labels.ok) + "</button> </div> </form>");
             },
                 options,
                 function (deferred) { return deferred.resolve(null); },
@@ -6560,14 +6560,14 @@
         extends: Accordion,
 
         data: {
-            targets: '> .yk-ui-parent',
+            targets: '> .ykuk-parent',
             toggle: '> a',
             content: '> ul'
         }
 
     };
 
-    var navItem = '.yk-ui-navbar-nav > li > a, .yk-ui-navbar-item, .yk-ui-navbar-toggle';
+    var navItem = '.ykuk-navbar-nav > li > a, .ykuk-navbar-item, .ykuk-navbar-toggle';
 
     var navbar = {
 
@@ -6592,7 +6592,7 @@
         data: {
             dropdown: navItem,
             align: !isRtl ? 'left' : 'right',
-            clsDrop: 'yk-ui-navbar-dropdown',
+            clsDrop: 'ykuk-navbar-dropdown',
             mode: undefined,
             offset: undefined,
             delayShow: undefined,
@@ -6640,14 +6640,14 @@
                         return null;
                     }
 
-                    dropbar = this._dropbar || query(dropbar, this.$el) || $('+ .yk-ui-navbar-dropbar', this.$el);
+                    dropbar = this._dropbar || query(dropbar, this.$el) || $('+ .ykuk-navbar-dropbar', this.$el);
 
                     return dropbar ? dropbar : (this._dropbar = $('<div></div>'));
 
                 },
 
                 watch: function(dropbar) {
-                    addClass(dropbar, 'yk-ui-navbar-dropbar');
+                    addClass(dropbar, 'ykuk-navbar-dropbar');
                 },
 
                 immediate: true
@@ -6865,7 +6865,7 @@
                     }
 
                     if (this.dropbarMode === 'slide') {
-                        addClass(this.dropbar, 'yk-ui-navbar-dropbar-slide');
+                        addClass(this.dropbar, 'ykuk-navbar-dropbar-slide');
                     }
 
                     this.clsDrop && addClass($el, ((this.clsDrop) + "-dropbar"));
@@ -7026,15 +7026,15 @@
             mode: 'slide',
             flip: false,
             overlay: false,
-            clsPage: 'yk-ui-offcanvas-page',
-            clsContainer: 'yk-ui-offcanvas-container',
-            selPanel: '.yk-ui-offcanvas-bar',
-            clsFlip: 'yk-ui-offcanvas-flip',
-            clsContainerAnimation: 'yk-ui-offcanvas-container-animation',
-            clsSidebarAnimation: 'yk-ui-offcanvas-bar-animation',
-            clsMode: 'yk-ui-offcanvas',
-            clsOverlay: 'yk-ui-offcanvas-overlay',
-            selClose: '.yk-ui-offcanvas-close',
+            clsPage: 'ykuk-offcanvas-page',
+            clsContainer: 'ykuk-offcanvas-container',
+            selPanel: '.ykuk-offcanvas-bar',
+            clsFlip: 'ykuk-offcanvas-flip',
+            clsContainerAnimation: 'ykuk-offcanvas-container-animation',
+            clsSidebarAnimation: 'ykuk-offcanvas-bar-animation',
+            clsMode: 'ykuk-offcanvas',
+            clsOverlay: 'ykuk-offcanvas-overlay',
+            selClose: '.ykuk-offcanvas-close',
             container: false
         },
 
@@ -7288,8 +7288,8 @@
         },
 
         data: {
-            selContainer: '.yk-ui-modal',
-            selContent: '.yk-ui-modal-dialog',
+            selContainer: '.ykuk-modal',
+            selContent: '.ykuk-modal-dialog',
             minHeight: 150
         },
 
@@ -7348,7 +7348,7 @@
         props: ['width', 'height'],
 
         connected: function() {
-            addClass(this.$el, 'yk-ui-responsive-width');
+            addClass(this.$el, 'ykuk-responsive-width');
         },
 
         update: {
@@ -7438,7 +7438,7 @@
             offsetLeft: 0,
             repeat: false,
             delay: 0,
-            inViewClass: 'yk-ui-scrollspy-inview'
+            inViewClass: 'ykuk-scrollspy-inview'
         }); },
 
         computed: {
@@ -7492,7 +7492,7 @@
                     this.elements.forEach(function (el) {
 
                         if (!el[stateKey]) {
-                            el[stateKey] = {cls: data(el, 'yk-ui-scrollspy-class') || this$1$1.cls};
+                            el[stateKey] = {cls: data(el, 'ykuk-scrollspy-class') || this$1$1.cls};
                         }
 
                         el[stateKey].show = isInView(el, this$1$1.offsetTop, this$1$1.offsetLeft);
@@ -7552,8 +7552,8 @@
                 toggleClass(el, this.inViewClass, inview);
                 toggleClass(el, state.cls);
 
-                if (/\byk-ui-animation-/.test(state.cls)) {
-                    state.off = once(el, 'animationcancel animationend', function () { return removeClasses(el, 'yk-ui-animation-[\\w-]+'); }
+                if (/\bykuk-animation-/.test(state.cls)) {
+                    state.off = once(el, 'animationcancel animationend', function () { return removeClasses(el, 'ykuk-animation-[\\w-]+'); }
                     );
                 }
 
@@ -7579,7 +7579,7 @@
         },
 
         data: {
-            cls: 'yk-ui-active',
+            cls: 'ykuk-active',
             closest: false,
             scroll: false,
             overflow: true,
@@ -7704,10 +7704,10 @@
             bottom: false,
             offset: 0,
             animation: '',
-            clsActive: 'yk-ui-active',
+            clsActive: 'ykuk-active',
             clsInactive: '',
-            clsFixed: 'yk-ui-sticky-fixed',
-            clsBelow: 'yk-ui-sticky-below',
+            clsFixed: 'ykuk-sticky-fixed',
+            clsBelow: 'ykuk-sticky-below',
             selTarget: '',
             widthElement: false,
             showOnUp: false,
@@ -7755,7 +7755,7 @@
         },
 
         connected: function() {
-            this.placeholder = $('+ .yk-ui-sticky-placeholder', this.$el) || $('<div class="yk-ui-sticky-placeholder"></div>');
+            this.placeholder = $('+ .ykuk-sticky-placeholder', this.$el) || $('<div class="ykuk-sticky-placeholder"></div>');
             this.isFixed = false;
             this.isActive = false;
         },
@@ -8055,13 +8055,13 @@
         },
 
         data: {
-            connect: '~.yk-ui-switcher',
+            connect: '~.ykuk-switcher',
             toggle: '> * > :first-child',
             itemNav: false,
             active: 0,
             swiping: true,
-            cls: 'yk-ui-active',
-            attrItem: 'yk-ui-switcher-item'
+            cls: 'ykuk-active',
+            attrItem: 'ykuk-switcher-item'
         },
 
         computed: {
@@ -8098,7 +8098,7 @@
                 get: function(ref, $el) {
                     var toggle = ref.toggle;
 
-                    return $$(toggle, $el).filter(function (el) { return !matches(el, '.yk-ui-disabled *, .yk-ui-disabled, [disabled]'); });
+                    return $$(toggle, $el).filter(function (el) { return !matches(el, '.ykuk-disabled *, .ykuk-disabled, [disabled]'); });
                 },
 
                 watch: function(toggles) {
@@ -8225,15 +8225,15 @@
 
         data: {
             media: 960,
-            attrItem: 'yk-ui-tab-item'
+            attrItem: 'ykuk-tab-item'
         },
 
         connected: function() {
 
-            var cls = hasClass(this.$el, 'yk-ui-tab-left')
-                ? 'yk-ui-tab-left'
-                : hasClass(this.$el, 'yk-ui-tab-right')
-                    ? 'yk-ui-tab-right'
+            var cls = hasClass(this.$el, 'ykuk-tab-left')
+                ? 'ykuk-tab-left'
+                : hasClass(this.$el, 'ykuk-tab-right')
+                    ? 'ykuk-tab-right'
                     : false;
 
             if (cls) {
@@ -8539,14 +8539,14 @@
     });
 
     // register components
-    each(components, function (component, name) { return yk-uiUIkit.component(name, component); }
+    each(components, function (component, name) { return ykukUIkit.component(name, component); }
     );
 
     // core functionality
-    yk-uiUIkit.use(Core);
+    ykukUIkit.use(Core);
 
-    boot(yk-uiUIkit);
+    boot(ykukUIkit);
 
-    return yk-uiUIkit;
+    return ykukUIkit;
 
 }));

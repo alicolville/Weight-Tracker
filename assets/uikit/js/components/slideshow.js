@@ -1,9 +1,9 @@
-/*! yk-uiUIkit 3.9.4 | https://www.getuikit.com | (c) 2014 - 2022 YOOtheme | MIT License */
+/*! ykukUIkit 3.9.4 | https://www.getuikit.com | (c) 2014 - 2022 YOOtheme | MIT License */
 
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('uikit-util')) :
     typeof define === 'function' && define.amd ? define('uikitslideshow', ['uikit-util'], factory) :
-    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.yk-uiUIkitSlideshow = factory(global.yk-uiUIkit.util));
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.ykukUIkitSlideshow = factory(global.ykukUIkit.util));
 })(this, (function (uikitUtil) { 'use strict';
 
     var Class = {
@@ -522,7 +522,7 @@
                     var cmd = uikitUtil.data(el, this$1$1.attrItem);
 
                     uikitUtil.toggleClass(el, this$1$1.clsActive, uikitUtil.toNumber(cmd) === i);
-                    uikitUtil.toggleClass(el, 'yk-ui-invisible', this$1$1.finite && (cmd === 'previous' && i === 0 || cmd === 'next' && i >= this$1$1.maxIndex));
+                    uikitUtil.toggleClass(el, 'ykuk-invisible', this$1$1.finite && (cmd === 'previous' && i === 0 || cmd === 'next' && i >= this$1$1.maxIndex));
                 });
 
             }
@@ -552,7 +552,7 @@
             prevIndex: -1,
             stack: [],
             percent: 0,
-            clsActive: 'yk-ui-active',
+            clsActive: 'ykuk-active',
             clsActivated: false,
             Transitioner: false,
             transitionOptions: {}
@@ -795,7 +795,7 @@
 
         data: {
             animation: 'slide',
-            clsActivated: 'yk-ui-transition-active',
+            clsActivated: 'ykuk-transition-active',
             Animations: Animations$1,
             Transitioner: Transitioner
         },
@@ -999,9 +999,9 @@
             ratio: '16:9',
             minHeight: false,
             maxHeight: false,
-            selList: '.yk-ui-slideshow-items',
-            attrItem: 'yk-ui-slideshow-item',
-            selNav: '.yk-ui-slideshow-nav',
+            selList: '.ykuk-slideshow-items',
+            attrItem: 'ykuk-slideshow-item',
+            selNav: '.ykuk-slideshow-nav',
             Animations: Animations
         },
 
@@ -1038,8 +1038,8 @@
 
     };
 
-    if (typeof window !== 'undefined' && window.yk-uiUIkit) {
-        window.yk-uiUIkit.component('slideshow', Component);
+    if (typeof window !== 'undefined' && window.ykukUIkit) {
+        window.ykukUIkit.component('slideshow', Component);
     }
 
     return Component;

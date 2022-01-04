@@ -82,6 +82,7 @@ require_once( WS_LS_ABSPATH . 'includes/core-charting.php' );
 require_once( WS_LS_ABSPATH . 'includes/ajax.php' );
 require_once( WS_LS_ABSPATH . 'includes/setup-wizard.php' );
 require_once( WS_LS_ABSPATH . 'includes/shortcode-weight-tracker.php' );
+require_once( WS_LS_ABSPATH . 'includes/shortcode-weight-tracker-beta.php' );
 require_once( WS_LS_ABSPATH . 'includes/shortcode-various.php' );
 require_once( WS_LS_ABSPATH . 'includes/form-handler.php' );
 require_once( WS_LS_ABSPATH . 'includes/email-manager.php' );

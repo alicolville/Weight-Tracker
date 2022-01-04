@@ -1,9 +1,9 @@
-/*! yk-uiUIkit 3.9.4 | https://www.getuikit.com | (c) 2014 - 2022 YOOtheme | MIT License */
+/*! ykukUIkit 3.9.4 | https://www.getuikit.com | (c) 2014 - 2022 YOOtheme | MIT License */
 
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('uikit-util')) :
     typeof define === 'function' && define.amd ? define('uikitsortable', ['uikit-util'], factory) :
-    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.yk-uiUIkitSortable = factory(global.yk-uiUIkit.util));
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.ykukUIkitSortable = factory(global.ykukUIkit.util));
 })(this, (function (uikitUtil) { 'use strict';
 
     function getRows(items) {
@@ -85,8 +85,8 @@
         };
     }
 
-    var clsLeave = 'yk-ui-transition-leave';
-    var clsEnter = 'yk-ui-transition-enter';
+    var clsLeave = 'ykuk-transition-leave';
+    var clsEnter = 'ykuk-transition-enter';
 
     function fade(action, target, duration, stagger) {
         if ( stagger === void 0 ) stagger = 0;
@@ -117,7 +117,7 @@
 
             uikitUtil.css(uikitUtil.children(target), {opacity: 0});
 
-            // Ensure yk-uiUIkit updates have propagated
+            // Ensure ykukUIkit updates have propagated
             return new uikitUtil.Promise(function (resolve) { return requestAnimationFrame(function () {
 
                     var nodes = uikitUtil.children(target);
@@ -382,13 +382,13 @@
         data: {
             group: false,
             threshold: 5,
-            clsItem: 'yk-ui-sortable-item',
-            clsPlaceholder: 'yk-ui-sortable-placeholder',
-            clsDrag: 'yk-ui-sortable-drag',
-            clsDragState: 'yk-ui-drag',
-            clsBase: 'yk-ui-sortable',
-            clsNoDrag: 'yk-ui-sortable-nodrag',
-            clsEmpty: 'yk-ui-sortable-empty',
+            clsItem: 'ykuk-sortable-item',
+            clsPlaceholder: 'ykuk-sortable-placeholder',
+            clsDrag: 'ykuk-sortable-drag',
+            clsDragState: 'ykuk-drag',
+            clsBase: 'ykuk-sortable',
+            clsNoDrag: 'ykuk-sortable-nodrag',
+            clsEmpty: 'ykuk-sortable-empty',
             clsCustom: '',
             handle: false,
             pos: {}
@@ -810,8 +810,8 @@
         return lineA[1] > lineB[0] && lineB[1] > lineA[0];
     }
 
-    if (typeof window !== 'undefined' && window.yk-uiUIkit) {
-        window.yk-uiUIkit.component('sortable', Component);
+    if (typeof window !== 'undefined' && window.ykukUIkit) {
+        window.ykukUIkit.component('sortable', Component);
     }
 
     return Component;

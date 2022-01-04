@@ -1,9 +1,9 @@
-/*! yk-uiUIkit 3.9.4 | https://www.getuikit.com | (c) 2014 - 2022 YOOtheme | MIT License */
+/*! ykukUIkit 3.9.4 | https://www.getuikit.com | (c) 2014 - 2022 YOOtheme | MIT License */
 
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('uikit-util')) :
     typeof define === 'function' && define.amd ? define('uikitslider', ['uikit-util'], factory) :
-    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.yk-uiUIkitSlider = factory(global.yk-uiUIkit.util));
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.ykukUIkitSlider = factory(global.ykukUIkit.util));
 })(this, (function (uikitUtil) { 'use strict';
 
     var Class = {
@@ -396,7 +396,7 @@
                     var cmd = uikitUtil.data(el, this$1$1.attrItem);
 
                     uikitUtil.toggleClass(el, this$1$1.clsActive, uikitUtil.toNumber(cmd) === i);
-                    uikitUtil.toggleClass(el, 'yk-ui-invisible', this$1$1.finite && (cmd === 'previous' && i === 0 || cmd === 'next' && i >= this$1$1.maxIndex));
+                    uikitUtil.toggleClass(el, 'ykuk-invisible', this$1$1.finite && (cmd === 'previous' && i === 0 || cmd === 'next' && i >= this$1$1.maxIndex));
                 });
 
             }
@@ -426,7 +426,7 @@
             prevIndex: -1,
             stack: [],
             percent: 0,
-            clsActive: 'yk-ui-active',
+            clsActive: 'ykuk-active',
             clsActivated: false,
             Transitioner: false,
             transitionOptions: {}
@@ -871,10 +871,10 @@
         data: {
             center: false,
             sets: false,
-            attrItem: 'yk-ui-slider-item',
-            selList: '.yk-ui-slider-items',
-            selNav: '.yk-ui-slider-nav',
-            clsContainer: 'yk-ui-slider-container',
+            attrItem: 'ykuk-slider-item',
+            selList: '.ykuk-slider-items',
+            selNav: '.ykuk-slider-nav',
+            clsContainer: 'ykuk-slider-container',
             Transitioner: Transitioner
         },
 
@@ -1120,8 +1120,8 @@
         return Math.max.apply(Math, [ 0 ].concat( uikitUtil.children(list).map(function (el) { return uikitUtil.dimensions(el).width; }) ));
     }
 
-    if (typeof window !== 'undefined' && window.yk-uiUIkit) {
-        window.yk-uiUIkit.component('slider', Component);
+    if (typeof window !== 'undefined' && window.ykukUIkit) {
+        window.ykukUIkit.component('slider', Component);
     }
 
     return Component;

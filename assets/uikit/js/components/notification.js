@@ -1,9 +1,9 @@
-/*! yk-uiUIkit 3.9.4 | https://www.getuikit.com | (c) 2014 - 2022 YOOtheme | MIT License */
+/*! ykukUIkit 3.9.4 | https://www.getuikit.com | (c) 2014 - 2022 YOOtheme | MIT License */
 
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('uikit-util')) :
     typeof define === 'function' && define.amd ? define('uikitnotification', ['uikit-util'], factory) :
-    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.yk-uiUIkitNotification = factory(global.yk-uiUIkit.util));
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.ykukUIkitNotification = factory(global.ykukUIkit.util));
 })(this, (function (uikitUtil) { 'use strict';
 
     var Container = {
@@ -44,9 +44,9 @@
             timeout: 5000,
             group: null,
             pos: 'top-center',
-            clsContainer: 'yk-ui-notification',
-            clsClose: 'yk-ui-notification-close',
-            clsMsg: 'yk-ui-notification-message'
+            clsContainer: 'ykuk-notification',
+            clsClose: 'ykuk-notification-close',
+            clsMsg: 'ykuk-notification-message'
         },
 
         install: install,
@@ -73,7 +73,7 @@
                 || uikitUtil.append(this.container, ("<div class=\"" + (this.clsContainer) + " " + (this.clsContainer) + "-" + (this.pos) + "\" style=\"display: block\"></div>"));
 
             this.$mount(uikitUtil.append(container,
-                ("<div class=\"" + (this.clsMsg) + (this.status ? (" " + (this.clsMsg) + "-" + (this.status)) : '') + "\"> <a href class=\"" + (this.clsClose) + "\" data-yk-ui-close></a> <div>" + (this.message) + "</div> </div>")
+                ("<div class=\"" + (this.clsMsg) + (this.status ? (" " + (this.clsMsg) + "-" + (this.status)) : '') + "\"> <a href class=\"" + (this.clsClose) + "\" data-ykuk-close></a> <div>" + (this.message) + "</div> </div>")
             ));
 
         },
@@ -148,10 +148,10 @@
 
     };
 
-    function install(yk-uiUIkit) {
-        yk-uiUIkit.notification.closeAll = function (group, immediate) {
+    function install(ykukUIkit) {
+        ykukUIkit.notification.closeAll = function (group, immediate) {
             uikitUtil.apply(document.body, function (el) {
-                var notification = yk-uiUIkit.getComponent(el, 'notification');
+                var notification = ykukUIkit.getComponent(el, 'notification');
                 if (notification && (!group || group === notification.group)) {
                     notification.close(immediate);
                 }
@@ -159,8 +159,8 @@
         };
     }
 
-    if (typeof window !== 'undefined' && window.yk-uiUIkit) {
-        window.yk-uiUIkit.component('notification', Component);
+    if (typeof window !== 'undefined' && window.ykukUIkit) {
+        window.ykukUIkit.component('notification', Component);
     }
 
     return Component;
