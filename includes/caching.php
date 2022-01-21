@@ -163,6 +163,8 @@ function ws_ls_cache_user_delete( $user_id = NULL ) {
 
 	// Delete cache lookup table
 	ws_ls_delete_cache( $user_id );
+
+	do_action( 'wlt-hook-delete-cache-for-user', $user_id );
 }
 
 /**
