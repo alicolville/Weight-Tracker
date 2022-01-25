@@ -16,7 +16,7 @@ function ws_ls_challenges_hook_clear_last_processed_on_data_change( $user_id ) {
     ws_ls_challenges_data_last_processed_reset( $user_id );
 
     // Update the user's data for all challenges
-    ws_ls_challenges_process( $user_id, false );
+	ws_ls_challenges_process( $user_id );
 }
 add_action( 'wlt-hook-delete-cache-for-user', 'ws_ls_challenges_hook_clear_last_processed_on_data_change' );
 
