@@ -55,7 +55,7 @@
     function ws_ls_export_activate() {
 
         // Only run this when the plugin version has changed
-        if( true === update_option('ws-ls-export-version-number', WE_LS_DB_VERSION )) {
+        if( true === update_option('ws-ls-export-version-number', WE_LS_CURRENT_VERSION )) {
 
 			ws_ls_export_create_mysql_tables();
 

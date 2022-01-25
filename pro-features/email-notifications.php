@@ -195,7 +195,7 @@ function ws_ls_email_notification_addresses() {
 function ws_ls_email_notification_activate() {
 
 	// Only run this when the plugin version has changed
-	if( true === update_option('ws-ls-email-notification-db-number', WE_LS_DB_VERSION ) ) {
+	if( true === update_option('ws-ls-email-notification-db-number', WE_LS_CURRENT_VERSION ) ) {
 
 		// Insert the notification template
 		if ( false === ws_ls_emailer_get('email-notify') ) {
