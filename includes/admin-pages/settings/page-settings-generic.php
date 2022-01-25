@@ -275,7 +275,7 @@ function ws_ls_settings_page_generic() {
 															<option value="yes" <?php selected( $challenges_enabled, 'yes' ); ?>><?php echo __( 'Yes', WE_LS_SLUG ); ?></option>
 															<option value="no" <?php selected( $challenges_enabled, 'no' ); ?>><?php echo __( 'No', WE_LS_SLUG ); ?></option>
 														</select>
-														<p> <?php echo __( 'If enabled, Challenge functionality shall be included within shortcodes and admin interface', WE_LS_SLUG ); ?> <a href="https://docs.yeken.uk/challenges/" target="_blank"><?php echo __( 'Read more about Challenges', WE_LS_SLUG ); ?></a></p>
+														<p> <?php echo __( 'If enabled, Challenge functionality shall be included within shortcodes and admin interface', WE_LS_SLUG ); ?> <a href="https://docs.yeken.uk/challenges.html" target="_blank"><?php echo __( 'Read more about Challenges', WE_LS_SLUG ); ?></a></p>
 													</td>
 												</tr>
 											</table>

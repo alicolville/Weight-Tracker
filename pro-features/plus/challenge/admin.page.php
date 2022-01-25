@@ -66,7 +66,7 @@ function ws_ls_challenges_admin_page() {
                                         <?php echo __( 'Add a challenge', WE_LS_SLUG ); ?>
                                     </a>
 	                            <p><?php echo __( 'Why not set challenges for your user\'s within a given time period? Display Total Weight Lost, BMI Change, %Body Weight, Weight Tracker Streaks and Meal Tracker streaks achieved by each user in a league table.', WE_LS_SLUG ); ?>
-		                            <?php echo __( 'Besides viewing all your challenges and their data, the shortcode will allow you to display the league table in the public facing website.', WE_LS_SLUG ); ?> <a href="https://docs.yeken.uk/challenges/" target="_blank"><?php echo __( 'Read more about Challenges', WE_LS_SLUG ); ?></a>
+		                            <?php echo __( 'Besides viewing all your challenges and their data, the shortcode will allow you to display the league table in the public facing website.', WE_LS_SLUG ); ?> <a href="https://docs.yeken.uk/challenges.html" target="_blank"><?php echo __( 'Read more about Challenges', WE_LS_SLUG ); ?></a>
 								</p>
                                 <?php ws_ls_challenges_table(); ?>
                             </div>
@@ -91,6 +91,9 @@ function ws_ls_challenges_admin_page() {
                                                         recalculated for every challenge that isn\'t closed. As the number of challenges grow and remain open, the greater the work load on your web server.
                                                         Please ensure you close (or delete) every challenge when expired.
                                                         ', WE_LS_SLUG ); ?>
+									<strong> <?php echo __('Note: Challenge tables will only update every hour.
+                                                        ', WE_LS_SLUG ); ?></strong>
+
                                </p>
                             </div>
                         </div>

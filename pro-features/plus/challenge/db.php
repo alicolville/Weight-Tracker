@@ -261,7 +261,7 @@ function ws_ls_challenges_data( $args ) {
 
 	$cache_key = 'challenge-data-' . md5( json_encode( $args ) );
 
-	if ( $cache = ws_ls_cache_get( $cache_key ) ) {
+	if ( $cache = ws_ls_cache_user_get( 'challenges', $cache_key ) ) {
 		return $cache;
 	}
 
@@ -309,7 +309,7 @@ function ws_ls_challenges_data( $args ) {
 		$data = array_map( 'ws_ls_challenges_data_expand_row', $data );
 	}
 
-	ws_ls_cache_set( $cache_key, $data );
+	ws_ls_cache_user_set( 'challenges', $cache_key, $data );
 
 	return $data;
 }
