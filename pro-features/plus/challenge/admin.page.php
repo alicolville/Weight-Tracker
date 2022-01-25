@@ -91,6 +91,9 @@ function ws_ls_challenges_admin_page() {
                                                         recalculated for every challenge that isn\'t closed. As the number of challenges grow and remain open, the greater the work load on your web server.
                                                         Please ensure you close (or delete) every challenge when expired.
                                                         ', WE_LS_SLUG ); ?>
+									<strong> <?php echo __('Note: Challenge tables will only update every hour.
+                                                        ', WE_LS_SLUG ); ?></strong>
+
                                </p>
                             </div>
                         </div>
