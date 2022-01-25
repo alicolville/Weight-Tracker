@@ -22,7 +22,7 @@
     function ws_ls_birthdays_activate() {
 
         // Only run this when the plugin version has changed
-        if( true === update_option('ws-ls-birthday-db-number', WE_LS_DB_VERSION )) {
+        if( true === update_option('ws-ls-birthday-db-number', WE_LS_CURRENT_VERSION )) {
 
              // Insert the Birthday template
             if ( false === ws_ls_emailer_get('email-birthday') ) {

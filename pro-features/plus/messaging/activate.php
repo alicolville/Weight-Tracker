@@ -40,7 +40,7 @@ add_action('ws-ls-rebuild-database-tables', 'ws_ls_messaging_create_mysql_tables
 function ws_ls_messaging_activate() {
 
 	// Only run this when the plugin version has changed
-	if( true === update_option('ws-ls-messaging-version-number', WE_LS_DB_VERSION )) {
+	if( true === update_option('ws-ls-messaging-version-number', WE_LS_CURRENT_VERSION )) {
 		ws_ls_messaging_create_mysql_tables();
 
 		ws_ls_note_email_activate();

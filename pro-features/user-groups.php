@@ -54,7 +54,7 @@
 	 */
 	function ws_ls_groups_create_mysql_tables() {
 
-		if( false === update_option('ws-ls-group-version-number', WE_LS_DB_VERSION ) ) {
+		if( false === update_option('ws-ls-group-version-number', WE_LS_CURRENT_VERSION ) ) {
 			return;
 		}
 

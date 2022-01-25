@@ -835,7 +835,7 @@ function ws_ls_db_create_core_tables() {
 	// From version 9 onwards, we allow entries with no weight
 	$wpdb->query( "ALTER TABLE $table_name MODIFY COLUMN weight_weight float NULL;" );
 
-	if ( '9.0/1' === WE_LS_DB_VERSION ) {
+	if ( '9.0/1' === WE_LS_CURRENT_VERSION ) {
 		$wpdb->query( "Update $table_name set weight_pre_upgrade = weight_weight;" );
 	}
 
