@@ -163,7 +163,8 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 = 9.3.9 =
 
-* Fixed challenges documentation links.
+* Bug fix: 2nd attempt at fixing issues where Challenge data wasn't being processed correctly every hour.
+* Bug fix: Updated challenges documentation links.
 
 = 9.3.8 =
 
