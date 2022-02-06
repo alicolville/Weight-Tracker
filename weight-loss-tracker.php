@@ -69,6 +69,7 @@ if( 'pro-plus' === $license_type ){
 
 require_once( WS_LS_ABSPATH . 'includes/caching.php' );
 require_once( WS_LS_ABSPATH . 'includes/db.php' );
+require_once( WS_LS_ABSPATH . 'includes/api.php' );
 require_once( WS_LS_ABSPATH . 'includes/activate.php' );
 require_once( WS_LS_ABSPATH . 'includes/hooks.php' );
 require_once( WS_LS_ABSPATH . 'includes/cron.php' );
