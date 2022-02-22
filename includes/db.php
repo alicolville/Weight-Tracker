@@ -556,6 +556,11 @@ function ws_ls_set_user_preferences( $in_admin_area, $fields = [] ) {
 
     $result = ( $result === false ) ? false : true;
 
+    // If settings are saved correctly, then fire hook for others.
+    if ( true === $result ) {
+	    do_action( 'wlt-hook-user-settings-saved', $db_fields, $db_fields[ 'user_id' ] );
+    }
+
     // Tidy up cache
 	ws_ls_cache_user_delete( $db_fields['user_id'] );
     return $result;
