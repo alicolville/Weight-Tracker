@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight,tracker,chart,bmi,bmr,macronutrient,measure,awards,custom fields,history,measurements,data
 Requires at least: 5.7
 Tested up to: 5.9.1
-Stable tag: 9.3.12
+Stable tag: 9.3.13
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -160,6 +160,12 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 9.3 - Admin notes! Store notes against your users and optionally share with them.
 
 == Changelog ==
+
+= 9.3.13 =
+
+* Improvement: Added the argument "auto-detect" to [wt-group-total-weight-loss] shortcode.
+* Improvement: Added the argument "text-no-difference" to [wt-group-total-weight-loss] shortcode.
+* Bug fix: Small issue fixed where images weren't being processed in forms if set to "Do not show in shortcodes".
 
 = 9.3.12 =
 

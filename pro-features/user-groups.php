@@ -719,13 +719,26 @@
     add_action( 'wp_ajax_groups_users_delete', 'ws_ls_ajax_groups_users_delete' );
 
 /**
- * Sortcode to display total weight difference for group
+ * Shortcode to display total weight difference for group
  * @param $user_defined_arguments
  * @return string|void
  */
 	function ws_ls_groups_shortcode( $user_defined_arguments ) {
 
-		$arguments = shortcode_atts( [ 'id' => 0 ], $user_defined_arguments );
+		$arguments = shortcode_atts( [  'id' => 0,
+		                                'auto-detect' => false,
+		                                'text-no-difference' => __( 'There is no weight difference for this group.', WE_LS_SLUG )
+		], $user_defined_arguments );
+
+		if ( true === ws_ls_to_bool( $arguments[ 'auto-detect' ] ) ) {
+
+			$current_selection = ws_ls_groups_user();
+
+			if ( false === empty( $current_selection[0]['id'] ) ) {
+
+				$arguments['id'] = (int) $current_selection[0]['id'];
+			}
+		}
 
 		if ( false === empty( $arguments['id'] ) ) {
 
@@ -736,7 +749,7 @@
 			}
 		}
 
-		return __('Group ID not found', WE_LS_SLUG);
+		return $arguments[ 'text-no-difference' ];
 	}
 	add_shortcode( 'wlt-group-weight-difference', 'ws_ls_groups_shortcode' );
 	add_shortcode( 'wt-group-weight-difference', 'ws_ls_groups_shortcode' );
