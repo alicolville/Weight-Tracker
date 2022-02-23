@@ -163,6 +163,8 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 = 9.3.13 =
 
+* Improvement: Added the argument "auto-detect" to [wt-group-total-weight-loss] shortcode.
+* Improvement: Added the argument "text-no-difference" to [wt-group-total-weight-loss] shortcode.
 * Bug fix: Small issue fixed where images weren't being processed in forms if set to "Do not show in shortcodes".
 
 = 9.3.12 =
