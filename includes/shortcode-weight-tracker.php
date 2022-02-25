@@ -285,11 +285,15 @@ add_shortcode( 'wt', 'ws_ls_shortcode' );
 
 /**
  * Embed Chart
+ *
+ * @param $weight_data
  * @param $shortcode_arguments
  *
  * @return string
  */
 function ws_ls_shortcode_embed_chart( $weight_data, $shortcode_arguments ) {
+
+	$shortcode_arguments = wp_parse_args( $shortcode_arguments, [ 'hide-title' => false ] );
 
 	$html_output = '';
 
@@ -306,7 +310,10 @@ function ws_ls_shortcode_embed_chart( $weight_data, $shortcode_arguments ) {
 			);
 		}
 
-		$html_output .= ws_ls_title( __( 'In a chart', WE_LS_SLUG ) );
+		if ( false === $shortcode_arguments[ 'hide-title'] ) {
+			$html_output .= ws_ls_title( __( 'In a chart', WE_LS_SLUG ) );
+		}
+
 		$html_output .= ws_ls_display_chart( $weight_data, [ 'custom-field-groups'   => $shortcode_arguments[ 'custom-field-groups' ],
 		                                                     'custom-field-slugs'    => $shortcode_arguments[ 'custom-field-slugs' ] ] );
 
