@@ -60,7 +60,7 @@ The shortcode supports the following arguments:
  
 | Argument | Description | Options | Example |
 |--|--|--|--|
-|field|Allows you to specify which field should be examined.|weight (default), is-logged-in, challenges-opted-in, target, bmr, height, aim, gender, photo, activity-level or dob.|[wt-if field="dob" operator="not-exists"]Please enter your Date of Birth on the settings page.[/wt-if]
+|field|Allows you to specify which field should be examined.|weight (default), previous-weight, is-logged-in, challenges-opted-in, target, bmr, height, aim, gender, photo, activity-level or dob.|[wt-if field="dob" operator="not-exists"]Please enter your Date of Birth on the settings page.[/wt-if]
 |operator|Allows you to state whether field has been populated (exists) or not (not-exists).|exists (default) or not-exists|[wt-if operator="exists" field="weight"]Thank you for adding a weight entry[else]Please add a weight entry[/wt-if]
 |strip-p-br|Specifies whether to remove <p> and <br> tags added by WordPress|true or false (default)|[wt-if strip-p-br="true"]Something[/wt-if]
 |user-id|By default, the shortcode will determine the result for the current user. If you wish to determine the result based on another user, use the following argument.|Numeric| [wt-if user-id="1" field="weight"]Something[/wt-if]
