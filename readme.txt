@@ -163,6 +163,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 = 9.4 =
 
+* Bug fix: Generate cache key correctly when loading groups.
 * Changed "Heavily Overweight" in "BMI" calculations to match NHS terminology (https://www.nhs.uk/common-health-questions/lifestyle/what-is-the-body-mass-index-bmi/)
 
 = 9.3.13 =
