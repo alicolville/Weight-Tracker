@@ -39,7 +39,7 @@
 	                                ?>
 	                                <form method="post">
 	                                    <input type="text" name="group" size="30" maxlength="40" />
-	                                    <input type="submit" value="Add" class="button" <?php if ( false === WS_LS_IS_PRO ) { echo ' disabled'; } ?> />
+	                                    <input type="submit" value="<?php echo __('Add', WE_LS_SLUG); ?>" class="button" <?php if ( false === WS_LS_IS_PRO ) { echo ' disabled'; } ?> />
 	                                </form>
 
 	                                <h4><?php echo __('Existing groups', WE_LS_SLUG); ?></h4>

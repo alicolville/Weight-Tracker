@@ -10,6 +10,11 @@ function ws_ls_admin_page_group_view() {
 
     $group_id = ws_ls_querystring_value( 'id', true, 0 );
 
+    // Are we attempting to update the group name?
+	if ( $new_name = ws_ls_post_value( 'new_group_name' ) ) {
+		ws_ls_groups_update_name( $group_id, $new_name );
+	}
+
     ?>
     <div class="wrap ws-ls-admin-page">
         <div id="icon-options-general" class="icon32"></div>
@@ -30,12 +35,20 @@ function ws_ls_admin_page_group_view() {
                         <div class="postbox">
                             <h3 class="hndle">
                                     <span><?php echo __('View Group', WE_LS_SLUG); ?>
-                                    <?php printf('%s', false === empty( $group['name'] ) ? ': ' . esc_html( $group['name']) : '' ); ?></span>
+                                    <?php printf('%s', false === empty( $group['name'] ) ? ': ' . esc_html( $group['name'] ) : '' ); ?></span>
                                     <?php printf(' ( %d %s )', ws_ls_groups_count( $group_id ), __('user(s)', WE_LS_SLUG) ); ?>
                             </h3>
                             <div style="padding: 0px 15px 0px 15px">
 
                                 <?php if ( false === empty( $group ) ) : ?>
+
+									<h4><?php echo __('Edit group name', WE_LS_SLUG); ?></h4>
+									<form method="post">
+										<input type="text" name="new_group_name" size="30" maxlength="40" value="<?php echo  esc_html( $group['name'] )?>" />
+										<input type="hidden" name="id" value="<?php echo $group_id; ?>" />
+										<input type="submit" value="<?php echo __('Edit', WE_LS_SLUG); ?>" class="button" <?php if ( false === WS_LS_IS_PRO ) { echo ' disabled'; } ?> />
+									</form>
+									<br />
 
                                     <table class="ws-ls-settings-groups-users-list-ajax table ws-ls-loading-table" id="groups-users-list"
                                            data-group-id="<?php echo $group_id; ?>"
