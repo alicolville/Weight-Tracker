@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Weight Loss Tracker\n"
-"POT-Creation-Date: 2021-10-18 15:29+0100\n"
-"PO-Revision-Date: 2021-10-18 15:29+0100\n"
+"POT-Creation-Date: 2022-03-21 12:37+0000\n"
+"PO-Revision-Date: 2022-03-21 12:37+0000\n"
 "Last-Translator: \n"
 "Language-Team: Yeken - email@yeken.uk\n"
 "Language: fr\n"
@@ -73,7 +73,7 @@ msgstr "Stones"
 
 #: admin-pages/awards/page-awards-add-update.php:176
 #: admin-pages/awards/page-awards-add-update.php:187
-#: admin-pages/settings/page-settings-generic.php:110 functions.php:1357
+#: admin-pages/settings/page-settings-generic.php:110 functions.php:1405
 msgid "Pounds"
 msgstr "Pounds"
 
@@ -162,20 +162,20 @@ msgstr "Appliquer aux nouvelles saisies ?"
 #: admin-pages/settings/page-settings-generic.php:384
 #: admin-pages/settings/page-settings-generic.php:408
 #: admin-pages/settings/page-settings-generic.php:557
-#: admin-pages/settings/page-settings-generic.php:728
-#: admin-pages/settings/page-settings-generic.php:823
-#: admin-pages/settings/page-settings-generic.php:859
-#: admin-pages/settings/page-settings-generic.php:917
-#: admin-pages/settings/page-settings-generic.php:938
+#: admin-pages/settings/page-settings-generic.php:741
+#: admin-pages/settings/page-settings-generic.php:836
+#: admin-pages/settings/page-settings-generic.php:872
+#: admin-pages/settings/page-settings-generic.php:930
 #: admin-pages/settings/page-settings-generic.php:951
 #: admin-pages/settings/page-settings-generic.php:964
 #: admin-pages/settings/page-settings-generic.php:977
 #: admin-pages/settings/page-settings-generic.php:990
-#: admin-pages/settings/page-settings-generic.php:1023
-#: admin-pages/settings/page-settings-generic.php:1054
+#: admin-pages/settings/page-settings-generic.php:1003
+#: admin-pages/settings/page-settings-generic.php:1036
 #: admin-pages/settings/page-settings-generic.php:1067
 #: admin-pages/settings/page-settings-generic.php:1080
-#: admin-pages/settings/page-settings-generic.php:1099 functions.php:1243
+#: admin-pages/settings/page-settings-generic.php:1093
+#: admin-pages/settings/page-settings-generic.php:1112 functions.php:1291
 msgid "Yes"
 msgstr "Oui"
 
@@ -205,20 +205,20 @@ msgstr "Oui"
 #: admin-pages/settings/page-settings-generic.php:383
 #: admin-pages/settings/page-settings-generic.php:409
 #: admin-pages/settings/page-settings-generic.php:556
-#: admin-pages/settings/page-settings-generic.php:729
-#: admin-pages/settings/page-settings-generic.php:824
-#: admin-pages/settings/page-settings-generic.php:858
-#: admin-pages/settings/page-settings-generic.php:916
-#: admin-pages/settings/page-settings-generic.php:939
+#: admin-pages/settings/page-settings-generic.php:742
+#: admin-pages/settings/page-settings-generic.php:837
+#: admin-pages/settings/page-settings-generic.php:871
+#: admin-pages/settings/page-settings-generic.php:929
 #: admin-pages/settings/page-settings-generic.php:952
 #: admin-pages/settings/page-settings-generic.php:965
 #: admin-pages/settings/page-settings-generic.php:978
 #: admin-pages/settings/page-settings-generic.php:991
-#: admin-pages/settings/page-settings-generic.php:1024
-#: admin-pages/settings/page-settings-generic.php:1055
+#: admin-pages/settings/page-settings-generic.php:1004
+#: admin-pages/settings/page-settings-generic.php:1037
 #: admin-pages/settings/page-settings-generic.php:1068
 #: admin-pages/settings/page-settings-generic.php:1081
-#: admin-pages/settings/page-settings-generic.php:1098 functions.php:1243
+#: admin-pages/settings/page-settings-generic.php:1094
+#: admin-pages/settings/page-settings-generic.php:1111 functions.php:1291
 msgid "No"
 msgstr "Non"
 
@@ -247,7 +247,7 @@ msgstr "Envoyer un E-mail"
 #: admin-pages/settings/page-settings-generic.php:269
 #: admin-pages/settings/page-settings-generic.php:532
 #: admin-pages/settings/page-settings-generic.php:634
-#: admin-pages/settings/page-settings-generic.php:1017
+#: admin-pages/settings/page-settings-generic.php:1030
 msgid "Enabled"
 msgstr "Activer"
 
@@ -312,9 +312,14 @@ msgid "Hide from shortcodes"
 msgstr "Cacher depuis les racourcis"
 
 #: admin-pages/meta-fields/page-meta-fields-add-update.php:111
+#, fuzzy
+#| msgid ""
+#| "Note: If set to Yes, photos uploaded into this custom field cannot be "
+#| "used in shortcodes i.e. the photos will only be visible to admin."
 msgid ""
 "Note: If set to Yes, photos uploaded into this custom field cannot be used "
-"in shortcodes i.e. the photos will only be visible to admin."
+"in shortcodes i.e. the photos will only be visible to admin. However, the "
+"photo fields can appear in forms."
 msgstr ""
 "Notez que : si vous sélectionnez \"oui\", les photos envoyées dans ce champ "
 "ne pourront pas être utilisées dans des raccourcis i.e.  Les photos ne "
@@ -345,7 +350,7 @@ msgstr ""
 "cible sur le graphique."
 
 #: admin-pages/meta-fields/page-meta-fields-add-update.php:141
-#: admin-pages/settings/page-settings-generic.php:804
+#: admin-pages/settings/page-settings-generic.php:817
 msgid "Field / Question"
 msgstr "Champ / Question"
 
@@ -421,7 +426,7 @@ msgid ""
 msgstr ""
 
 #: admin-pages/meta-fields/page-meta-fields-add-update.php:249
-#: admin-pages/settings/page-settings-generic.php:803
+#: admin-pages/settings/page-settings-generic.php:816
 msgid "Abbreviation"
 msgstr "Abréviation"
 
@@ -1076,7 +1081,7 @@ msgstr "Unités par défaut / formats à utiliser par l'extension"
 msgid "Weight Units"
 msgstr "Unités de poids"
 
-#: admin-pages/settings/page-settings-generic.php:109 functions.php:1357
+#: admin-pages/settings/page-settings-generic.php:109 functions.php:1405
 msgid "Stones & Pounds"
 msgstr "Stones & Pounds"
 
@@ -1431,9 +1436,8 @@ msgstr ""
 #: admin-pages/settings/page-settings-generic.php:458
 #: admin-pages/settings/page-settings-generic.php:543
 #: admin-pages/settings/page-settings-generic.php:645
-#: admin-pages/settings/page-settings-generic.php:665
-#: admin-pages/settings/page-settings-generic.php:672
-#: admin-pages/settings/page-settings-generic.php:695
+#: admin-pages/settings/page-settings-generic.php:657
+#: admin-pages/settings/page-settings-generic.php:708
 msgid ""
 "Please note, it may take up to 15 minutes for calculations to change (due to "
 "caching)."
@@ -1614,92 +1618,83 @@ msgid "Macronutrient Calculator"
 msgstr "Calculatrice à macronutriments"
 
 #: admin-pages/settings/page-settings-generic.php:655
+#, fuzzy
+#| msgid "Percentage from starting weight"
+msgid "Percentages per aim"
+msgstr "Pourcentage par rapport au poids départ"
+
+#: admin-pages/settings/page-settings-generic.php:657
+msgid ""
+"For each aim, specify how Macronutrients should be split when calculated."
+msgstr ""
+
+#: admin-pages/settings/page-settings-generic.php:663
 msgid "Proteins"
 msgstr "Protéines"
 
-#: admin-pages/settings/page-settings-generic.php:658
-msgid "Percentage of Proteins to make up a moderate diet"
-msgstr "Pourcentage de protéines pour constituer un régime équilibré"
-
-#: admin-pages/settings/page-settings-generic.php:658
-msgid ""
-"Please note, it may take up to 15 minutes for calorie calculations to change "
-"(due to caching)."
-msgstr ""
-"S'il vous plaît, notez que cela peut prendre jusqu'à 15 minutes pour que les "
-"calculs de calories changent (en raison de la mise en cache)."
-
-#: admin-pages/settings/page-settings-generic.php:662
+#: admin-pages/settings/page-settings-generic.php:664
 msgid "Carbohydrates"
 msgstr "Glucides"
 
 #: admin-pages/settings/page-settings-generic.php:665
-msgid "Percentage of Carbohydrates to make up a moderate diet"
-msgstr "Pourcentage de glucides pour constituer un régime équilibré"
-
-#: admin-pages/settings/page-settings-generic.php:669
 msgid "Fats"
 msgstr "Graisses"
 
-#: admin-pages/settings/page-settings-generic.php:672
-msgid "Percentage of Fats to make up a moderate diet"
-msgstr "Pourcentage de graisses pour constituer un régime équilibré"
-
-#: admin-pages/settings/page-settings-generic.php:676
+#: admin-pages/settings/page-settings-generic.php:689
 msgid "Macronutrient Calculator: Meals"
 msgstr "Calculatrice de macronutriments : Repas"
 
-#: admin-pages/settings/page-settings-generic.php:693
+#: admin-pages/settings/page-settings-generic.php:706
 msgid "Percentage of calories to split into "
 msgstr "Pourcentage de calories à répartir "
 
-#: admin-pages/settings/page-settings-generic.php:709
+#: admin-pages/settings/page-settings-generic.php:722
 msgid "Default chart type"
 msgstr "Type de graphique par défaut"
 
-#: admin-pages/settings/page-settings-generic.php:715
+#: admin-pages/settings/page-settings-generic.php:728
 msgid "Line Chart"
 msgstr "Graphique en ligne"
 
-#: admin-pages/settings/page-settings-generic.php:715
+#: admin-pages/settings/page-settings-generic.php:728
 #, fuzzy
 #| msgid "Highly Recommended"
 msgid "Recommended"
 msgstr "Hautement recommandé"
 
-#: admin-pages/settings/page-settings-generic.php:716
+#: admin-pages/settings/page-settings-generic.php:729
 msgid "Bar Chart"
 msgstr "Graphique en barres"
 
-#: admin-pages/settings/page-settings-generic.php:722
+#: admin-pages/settings/page-settings-generic.php:735
 msgid "Display gridlines?"
 msgstr "Afficher les lignes de quadrillage?"
 
-#: admin-pages/settings/page-settings-generic.php:731
+#: admin-pages/settings/page-settings-generic.php:744
 #, fuzzy
 #| msgid "If enabled, gridlines will be displayed on the Graph canvas."
 msgid "If enabled, grid lines will be displayed on charts."
 msgstr "Si activé, les quadrillages seront affichés sur le canevas Graphique."
 
-#: admin-pages/settings/page-settings-generic.php:735
+#: admin-pages/settings/page-settings-generic.php:748
 #, fuzzy
 #| msgid "Maximum points per graph"
 msgid "Maximum points per chart"
 msgstr "Maximum de points par graphique"
 
-#: admin-pages/settings/page-settings-generic.php:748
+#: admin-pages/settings/page-settings-generic.php:761
 msgid ""
 "Specifies the maximum number of data points displayed on charts (this does "
 "not effect admin)."
 msgstr ""
 
-#: admin-pages/settings/page-settings-generic.php:753
+#: admin-pages/settings/page-settings-generic.php:766
 #, fuzzy
 #| msgid "Weight colour?"
 msgid "Weight colour"
 msgstr "Couleur du Poids?"
 
-#: admin-pages/settings/page-settings-generic.php:756
+#: admin-pages/settings/page-settings-generic.php:769
 #, fuzzy
 #| msgid ""
 #| "If enabled, enter a HEX colour code to use for the Weight history line / "
@@ -1711,13 +1706,13 @@ msgstr ""
 "Si activé, entrez un code de couleur HEX à utiliser pour la ligne Histoire "
 "du poids / bordure de la barre sur le graphique."
 
-#: admin-pages/settings/page-settings-generic.php:760
+#: admin-pages/settings/page-settings-generic.php:773
 #, fuzzy
 #| msgid "Target line colour?"
 msgid "Target line colour"
 msgstr "Couleur de ligne de la cible?"
 
-#: admin-pages/settings/page-settings-generic.php:763
+#: admin-pages/settings/page-settings-generic.php:776
 #, fuzzy
 #| msgid ""
 #| "If enabled, enter a HEX colour code to use for the Target line on graph."
@@ -1727,11 +1722,11 @@ msgstr ""
 "Si activé, entrez un code de couleur HEX à utiliser pour la ligne de la "
 "cible sur le graphique."
 
-#: admin-pages/settings/page-settings-generic.php:772
+#: admin-pages/settings/page-settings-generic.php:785
 msgid "Text colour"
 msgstr "Couleur du texte"
 
-#: admin-pages/settings/page-settings-generic.php:775
+#: admin-pages/settings/page-settings-generic.php:788
 #, fuzzy
 #| msgid "Enter a HEX colour code to use for text displayed on the graph."
 msgid "Enter a HEX colour code to use for text displayed on the chart."
@@ -1739,11 +1734,11 @@ msgstr ""
 "Si activé, entrez un code de couleur HEX à utiliser pour la ligne de la "
 "cible sur le graphique."
 
-#: admin-pages/settings/page-settings-generic.php:783
+#: admin-pages/settings/page-settings-generic.php:796
 msgid "Font Family"
 msgstr "Famille de police d'écriture"
 
-#: admin-pages/settings/page-settings-generic.php:786
+#: admin-pages/settings/page-settings-generic.php:799
 #, fuzzy
 #| msgid ""
 #| "Specify one or more fonts that should be used when rendering text on the "
@@ -1757,64 +1752,64 @@ msgstr ""
 "graphique. Séparez les polices par une virgule. Laissez vide pour utiliser "
 "la valeur par défaut."
 
-#: admin-pages/settings/page-settings-generic.php:791
+#: admin-pages/settings/page-settings-generic.php:804
 #, fuzzy
 #| msgid "Custom Fields"
 msgid "Custom Field Options"
 msgstr "Champs personnalisés"
 
-#: admin-pages/settings/page-settings-generic.php:795
+#: admin-pages/settings/page-settings-generic.php:808
 #, fuzzy
 #| msgid "Field / Question"
 msgid "Field / Question or Abbreviation"
 msgstr "Champ / Question"
 
-#: admin-pages/settings/page-settings-generic.php:806
+#: admin-pages/settings/page-settings-generic.php:819
 msgid ""
 "When displaying a custom field on a chart, which value should be displayed "
 "in the chart's legend? The field question or abbreviation."
 msgstr ""
 
-#: admin-pages/settings/page-settings-generic.php:811
+#: admin-pages/settings/page-settings-generic.php:824
 msgid "Line Chart Options"
 msgstr "Options Graphique de lignes"
 
-#: admin-pages/settings/page-settings-generic.php:815
+#: admin-pages/settings/page-settings-generic.php:828
 msgid "Bezier Curve?"
 msgstr "Courbe de Bezier?"
 
-#: admin-pages/settings/page-settings-generic.php:826
+#: admin-pages/settings/page-settings-generic.php:839
 #, fuzzy
 #| msgid "If enabled, lines between points on a line graph will be curved"
 msgid "If enabled, lines between points on a line chart will be curved"
 msgstr ""
 "Si activé, les lignes entre les points sur un graphe de ligne seront courbes"
 
-#: admin-pages/settings/page-settings-generic.php:830
+#: admin-pages/settings/page-settings-generic.php:843
 msgid "Point thickness"
 msgstr "Epaisseur du point"
 
-#: admin-pages/settings/page-settings-generic.php:846
+#: admin-pages/settings/page-settings-generic.php:859
 #, fuzzy
 #| msgid "Specifies the point thickness on a line chart."
 msgid "Specifies the point thickness on a line chart. Set to 0 to hide points."
 msgstr "Spécifie l'épaisseur du point sur un graphique en ligne."
 
-#: admin-pages/settings/page-settings-generic.php:850
+#: admin-pages/settings/page-settings-generic.php:863
 msgid "Add a fill under weight line?"
 msgstr "Ajouter un remplissage sous la ligne de poids?"
 
-#: admin-pages/settings/page-settings-generic.php:861
+#: admin-pages/settings/page-settings-generic.php:874
 msgid "If enabled, a fill colour will be added under the weight line."
 msgstr ""
 "Si activé, entrez un code de couleur HEX à utiliser pour la ligne de la "
 "cible sur le graphique."
 
-#: admin-pages/settings/page-settings-generic.php:865
+#: admin-pages/settings/page-settings-generic.php:878
 msgid "Weight Fill Colour"
 msgstr "Couleur de remplissage de poids"
 
-#: admin-pages/settings/page-settings-generic.php:868
+#: admin-pages/settings/page-settings-generic.php:881
 msgid ""
 "If enabled, enter a HEX colour code to use for the fill colour under the "
 "weight line."
@@ -1822,24 +1817,24 @@ msgstr ""
 "Si activé, entrez un code de couleur HEX à utiliser pour remplir les barres "
 "de Poids sur le graphique."
 
-#: admin-pages/settings/page-settings-generic.php:872
+#: admin-pages/settings/page-settings-generic.php:885
 msgid "Weight Fill Opacity"
 msgstr "Couleur de remplissage du poids"
 
-#: admin-pages/settings/page-settings-generic.php:884
+#: admin-pages/settings/page-settings-generic.php:897
 msgid "Specifies the opacity of the fill colour under the weight line."
 msgstr ""
 "Spécifie l'opacité de la couleur de remplissage sous la courbe de poids."
 
-#: admin-pages/settings/page-settings-generic.php:889
+#: admin-pages/settings/page-settings-generic.php:902
 msgid "Bar Chart Options"
 msgstr "Options du graphique en barres"
 
-#: admin-pages/settings/page-settings-generic.php:893
+#: admin-pages/settings/page-settings-generic.php:906
 msgid "Weight fill colour?"
 msgstr "Couleur de remplissage du poids?"
 
-#: admin-pages/settings/page-settings-generic.php:896
+#: admin-pages/settings/page-settings-generic.php:909
 #, fuzzy
 #| msgid ""
 #| "If enabled, enter a HEX colour code to use for filling the Weight bars on "
@@ -1851,19 +1846,19 @@ msgstr ""
 "Si activé, entrez un code de couleur HEX à utiliser pour remplir les barres "
 "de Poids sur le graphique."
 
-#: admin-pages/settings/page-settings-generic.php:907 hooks.php:27
+#: admin-pages/settings/page-settings-generic.php:920 hooks.php:27
 msgid "Settings"
 msgstr "Paramètres"
 
-#: admin-pages/settings/page-settings-generic.php:910
+#: admin-pages/settings/page-settings-generic.php:923
 msgid "Enable email notifications"
 msgstr "Activer les notifications par e-mail"
 
-#: admin-pages/settings/page-settings-generic.php:922
+#: admin-pages/settings/page-settings-generic.php:935
 msgid "Email addresses to notify"
 msgstr "Adresse e-mail à notifier"
 
-#: admin-pages/settings/page-settings-generic.php:928
+#: admin-pages/settings/page-settings-generic.php:941
 msgid ""
 "Specify one or more email addresses to be notified. Seperate multiple emails "
 "with a comma."
@@ -1871,13 +1866,13 @@ msgstr ""
 "Spécifiez une ou plusieurs adresses e-mail à notifier. Séparez plusieurs e-"
 "mail avec une virgule."
 
-#: admin-pages/settings/page-settings-generic.php:932
+#: admin-pages/settings/page-settings-generic.php:945
 #, fuzzy
 #| msgid "their weight / measurements for "
 msgid "New weight / custom field entries"
 msgstr "leur poids / mesures pour "
 
-#: admin-pages/settings/page-settings-generic.php:941
+#: admin-pages/settings/page-settings-generic.php:954
 #, fuzzy
 #| msgid ""
 #| "Receive notifications when a member adds a new weight / measurement entry."
@@ -1887,13 +1882,13 @@ msgstr ""
 "Recevoir des notifications lorsqu'un membre ajoute un nouveau poids / "
 "mensurations."
 
-#: admin-pages/settings/page-settings-generic.php:945
+#: admin-pages/settings/page-settings-generic.php:958
 #, fuzzy
 #| msgid "Edited weight / measurement entries"
 msgid "Edited weight / custom field entries"
 msgstr "Poids / mensurations saisis"
 
-#: admin-pages/settings/page-settings-generic.php:954
+#: admin-pages/settings/page-settings-generic.php:967
 #, fuzzy
 #| msgid ""
 #| "Receive notifications when a member edits an existing weight / "
@@ -1905,74 +1900,74 @@ msgstr ""
 "Recevoir des notifications lorsqu'un membre modifie un poids ou mensuration "
 "existant."
 
-#: admin-pages/settings/page-settings-generic.php:958
+#: admin-pages/settings/page-settings-generic.php:971
 msgid "New / updated targets"
 msgstr "Nouveau / mis à jour de l'objectif de poids"
 
-#: admin-pages/settings/page-settings-generic.php:967
+#: admin-pages/settings/page-settings-generic.php:980
 msgid "Receive notifications when a member adds / edits their target."
 msgstr ""
 "Recevoir des notifications lorsqu'un membre ajoute / modifie son objectif de "
 "poids."
 
-#: admin-pages/settings/page-settings-generic.php:971
+#: admin-pages/settings/page-settings-generic.php:984
 msgid "Include user's email address?"
 msgstr ""
 
-#: admin-pages/settings/page-settings-generic.php:980
+#: admin-pages/settings/page-settings-generic.php:993
 msgid "Include the user's email address within the email body."
 msgstr ""
 
-#: admin-pages/settings/page-settings-generic.php:984
+#: admin-pages/settings/page-settings-generic.php:997
 msgid "Include Weight Summary?"
 msgstr ""
 
-#: admin-pages/settings/page-settings-generic.php:993
+#: admin-pages/settings/page-settings-generic.php:1006
 msgid ""
 "Add additional weight summary information into the email e.g. start weight, "
 "previous weight, difference between both, difference between current weight "
 "and start weight, etc."
 msgstr ""
 
-#: admin-pages/settings/page-settings-generic.php:997
+#: admin-pages/settings/page-settings-generic.php:1010
 msgid "Templates"
 msgstr ""
 
-#: admin-pages/settings/page-settings-generic.php:999
+#: admin-pages/settings/page-settings-generic.php:1012
 msgid ""
 "Email templates are stored within the database and can be edited in the "
 "Email Template manager"
 msgstr ""
 
-#: admin-pages/settings/page-settings-generic.php:1001
+#: admin-pages/settings/page-settings-generic.php:1014
 msgid "Email Template Manager"
 msgstr ""
 
-#: admin-pages/settings/page-settings-generic.php:1010
+#: admin-pages/settings/page-settings-generic.php:1023
 msgid "Webhooks/Slack/Zapier"
 msgstr ""
 
-#: admin-pages/settings/page-settings-generic.php:1012
+#: admin-pages/settings/page-settings-generic.php:1025
 msgid ""
 "Push data to third party applications when a user adds/updates weight "
 "entries or updates their target."
 msgstr ""
 
-#: admin-pages/settings/page-settings-generic.php:1013
+#: admin-pages/settings/page-settings-generic.php:1026
 #, fuzzy
 #| msgid "Read more about calculations"
 msgid "Read more about Webhooks/Slack/Zapier"
 msgstr "En savoir plus sur les calculs"
 
-#: admin-pages/settings/page-settings-generic.php:1026
+#: admin-pages/settings/page-settings-generic.php:1039
 msgid "If set to Yes, data will be fired to the specified endpoints."
 msgstr ""
 
-#: admin-pages/settings/page-settings-generic.php:1030
+#: admin-pages/settings/page-settings-generic.php:1043
 msgid "Endpoint URLs"
 msgstr ""
 
-#: admin-pages/settings/page-settings-generic.php:1041
+#: admin-pages/settings/page-settings-generic.php:1054
 msgid ""
 "Specify one or more endpoints that data should be pushed to. If the endpoint "
 "is a determined to be Slack URL then a message shall be posted within the "
@@ -1980,55 +1975,55 @@ msgid ""
 "representing the data."
 msgstr ""
 
-#: admin-pages/settings/page-settings-generic.php:1042
-#: admin-pages/settings/page-settings-generic.php:1103
+#: admin-pages/settings/page-settings-generic.php:1055
+#: admin-pages/settings/page-settings-generic.php:1116
 msgid "Read more at "
 msgstr "En savoir plus "
 
-#: admin-pages/settings/page-settings-generic.php:1048
+#: admin-pages/settings/page-settings-generic.php:1061
 #, fuzzy
 #| msgid "Number of weight entries"
 msgid "Send data for weight entries?"
 msgstr "Nombre d'entrées de poids"
 
-#: admin-pages/settings/page-settings-generic.php:1057
+#: admin-pages/settings/page-settings-generic.php:1070
 msgid ""
 "When a user adds/updates a weight entry, should data be fired to the "
 "endpoint(s)?"
 msgstr ""
 
-#: admin-pages/settings/page-settings-generic.php:1061
+#: admin-pages/settings/page-settings-generic.php:1074
 msgid "Send data for target updates?"
 msgstr ""
 
-#: admin-pages/settings/page-settings-generic.php:1070
+#: admin-pages/settings/page-settings-generic.php:1083
 msgid ""
 "When a user updates their target, should data be fired to the endpoint(s)?"
 msgstr ""
 
-#: admin-pages/settings/page-settings-generic.php:1074
+#: admin-pages/settings/page-settings-generic.php:1087
 #, fuzzy
 #| msgid "Include thousand separator?"
 msgid "Include admin updates?"
 msgstr "Inclure le séparateur de milliers?"
 
-#: admin-pages/settings/page-settings-generic.php:1083
+#: admin-pages/settings/page-settings-generic.php:1096
 msgid ""
 "Should changes made by admins (via the admin screens) cause data to be fired "
 "to the endpoints?"
 msgstr ""
 
-#: admin-pages/settings/page-settings-generic.php:1089
+#: admin-pages/settings/page-settings-generic.php:1102
 msgid "Form Handlers"
 msgstr ""
 
-#: admin-pages/settings/page-settings-generic.php:1092
+#: admin-pages/settings/page-settings-generic.php:1105
 #, fuzzy
 #| msgid "Enable Gravity Forms"
 msgid "Process Gravity Forms"
 msgstr "Activer Gravity Forms"
 
-#: admin-pages/settings/page-settings-generic.php:1102
+#: admin-pages/settings/page-settings-generic.php:1115
 #, fuzzy
 #| msgid ""
 #| "Examine Gravity Form submissions for weight and measurement data. If "
@@ -2107,6 +2102,25 @@ msgstr "Tous les groupes"
 #: admin-pages/user-data/data-groups.php:62
 msgid "The group could not be found"
 msgstr "Le groupe n'a pas pu être trouvé"
+
+#: admin-pages/user-data/data-notes.php:44 core-forms.php:209
+#: core-forms.php:446 core-tables.php:35
+msgid "Notes"
+msgstr "Remarques"
+
+#: admin-pages/user-data/data-notes.php:45
+#, fuzzy
+#| msgid "No photos could be found for this user."
+msgid "There are currently no notes for this user."
+msgstr "Aucune photo n'a été trouvée pour l'utilisateur spécifié."
+
+#: admin-pages/user-data/data-notes.php:79
+#, fuzzy
+#| msgid "An error occurred while trying to save the user's preferences."
+msgid "An error occurred when attempting to delete the note."
+msgstr ""
+"Une erreur s'est produite lors de l'enregistrement des préférences de "
+"l'utilisateur."
 
 #: admin-pages/user-data/data-photos.php:29
 msgid "User's photos"
@@ -2428,22 +2442,22 @@ msgid ""
 "maximum of 5000 entries. For more data, please view individual user records."
 msgstr ""
 
-#: ajax.php:149 core-forms.php:138 core-tables.php:33
+#: ajax.php:157 core-forms.php:138 core-tables.php:33
 msgid "Date"
 msgstr "Date"
 
-#: ajax.php:150
+#: ajax.php:158
 msgid "Module"
 msgstr ""
 
-#: ajax.php:151
+#: ajax.php:159
 #, fuzzy
 #| msgid "Custom Message"
 msgid "Message"
 msgstr "Message personnalisé"
 
 #: converters.php:113 converters.php:135 converters.php:196
-#: core-charting.php:73 functions.php:1527 functions.php:1533
+#: core-charting.php:73 functions.php:1575 functions.php:1581
 msgid "lbs"
 msgstr "lbs"
 
@@ -2511,10 +2525,6 @@ msgstr "L'objectif de poids de l'utilisateur est actuellement"
 msgid "lb"
 msgstr "lbs"
 
-#: core-forms.php:209 core-forms.php:446 core-tables.php:35
-msgid "Notes"
-msgstr "Remarques"
-
 #: core-forms.php:223
 msgid "Set Target"
 msgstr "Déterminer un objectif"
@@ -2557,7 +2567,7 @@ msgstr "Ajoutez une entrée de poids"
 msgid "Complete the following form"
 msgstr "Afficher les dates dans les formats suivants:"
 
-#: core-forms.php:473 core-forms.php:620
+#: core-forms.php:474 core-forms.php:623
 #, fuzzy
 #| msgid "Please enter a valid figure for Kg"
 msgid "Please select a value for"
@@ -2832,43 +2842,43 @@ msgstr "Voir la semaine"
 msgid "to"
 msgstr "à"
 
-#: functions.php:839
+#: functions.php:864
 msgid "Read more about calculations"
 msgstr "En savoir plus sur les calculs"
 
-#: functions.php:877
+#: functions.php:902
 msgid "Your modifications have been saved"
 msgstr "Vos réglages ont été sauvegardés"
 
-#: functions.php:897
+#: functions.php:922
 #, fuzzy
 #| msgid "Login now"
 msgid "Login"
 msgstr "Connectez-vous maintenant"
 
-#: functions.php:950
+#: functions.php:975
 #, fuzzy
 #| msgid "You must be logged in to edit your settings."
 msgid "You must be logged in to view or edit your data."
 msgstr "Vous devez être connecté pour modifier vos paramètres."
 
-#: functions.php:1095
+#: functions.php:1120
 #, fuzzy
 #| msgid "Upgrade Weight Tracker and get more features!"
 msgid "Upgrade to Pro Plus and get more features!"
 msgstr "Améliore Weight Tracker et obtiens plus d'options !"
 
-#: functions.php:1096
+#: functions.php:1121
 msgid ""
 "Upgrade to Pro Plus version of this plugin to get additional features like "
 "Challenges, Harris Benedict, BMR, Macronutrients and much more!"
 msgstr ""
 
-#: functions.php:1098
+#: functions.php:1123
 msgid "Upgrade Weight Tracker and get more features!"
 msgstr "Améliore Weight Tracker et obtiens plus d'options !"
 
-#: functions.php:1099
+#: functions.php:1124
 #, fuzzy
 #| msgid ""
 #| "Upgrade to the Pro version of this plugin to view, edit and delete your "
@@ -2880,29 +2890,29 @@ msgstr ""
 "Passez à la version Pro de ce plugin pour afficher, modifier et supprimer "
 "les entrées de poids de votre utilisateur"
 
-#: functions.php:1107
+#: functions.php:1132
 #, fuzzy
 #| msgid "Read more at "
 msgid "Read more and upgrade"
 msgstr "En savoir plus "
 
-#: functions.php:1121
+#: functions.php:1146
 #, fuzzy
 #| msgid "Read more and Upgrade to Pro / Pro Plus Version"
 msgid "To view this data, you need to upgrade to the Pro or Pro Plus version."
 msgstr "Mettre à niveau vers la Version Pro"
 
-#: functions.php:1123
+#: functions.php:1148
 #, fuzzy
 #| msgid "Upgrade"
 msgid "Upgrade now"
 msgstr "Surclassement"
 
-#: functions.php:1357 functions.php:1530
+#: functions.php:1405 functions.php:1578
 msgid "Kg"
 msgstr "Kg"
 
-#: functions.php:1533
+#: functions.php:1581
 msgid "St"
 msgstr "St"
 
@@ -3147,6 +3157,22 @@ msgid "A graph shall appear when %d or more weight entries have been entered."
 msgstr ""
 "Un graphique apparaîtra une fois que plusieurs mesures de poids ont été "
 "entrés."
+
+#~ msgid "Percentage of Proteins to make up a moderate diet"
+#~ msgstr "Pourcentage de protéines pour constituer un régime équilibré"
+
+#~ msgid ""
+#~ "Please note, it may take up to 15 minutes for calorie calculations to "
+#~ "change (due to caching)."
+#~ msgstr ""
+#~ "S'il vous plaît, notez que cela peut prendre jusqu'à 15 minutes pour que "
+#~ "les calculs de calories changent (en raison de la mise en cache)."
+
+#~ msgid "Percentage of Carbohydrates to make up a moderate diet"
+#~ msgstr "Pourcentage de glucides pour constituer un régime équilibré"
+
+#~ msgid "Percentage of Fats to make up a moderate diet"
+#~ msgstr "Pourcentage de graisses pour constituer un régime équilibré"
 
 #~ msgid "Number"
 #~ msgstr "Nombre"

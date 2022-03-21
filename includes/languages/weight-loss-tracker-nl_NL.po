@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2021-10-18 15:29+0100\n"
-"PO-Revision-Date: 2021-10-18 15:29+0100\n"
+"POT-Creation-Date: 2022-03-21 12:37+0000\n"
+"PO-Revision-Date: 2022-03-21 12:37+0000\n"
 "Last-Translator: Yvon <yvon@yvonkruger.nl>\n"
 "Language-Team: \n"
 "Language: nl_NL\n"
@@ -30,7 +30,7 @@ msgid "Please complete all mandatory fields."
 msgstr "Voer alstublieft een geldige datum in"
 
 #: includes/admin-pages/awards/page-awards-add-update.php:110
-#: pro-features/export/admin.page.php:149 pro-features/functions-pages.php:439
+#: pro-features/export/admin.page.php:149 pro-features/functions-pages.php:609
 #: pro-features/plus/awards/hooks.php:293 pro-features/widget-chart.php:107
 #: pro-features/widget-form.php:84 pro-features/widget-progress.php:72
 msgid "Title"
@@ -77,13 +77,13 @@ msgstr "Stenen"
 #: includes/admin-pages/awards/page-awards-add-update.php:176
 #: includes/admin-pages/awards/page-awards-add-update.php:187
 #: includes/admin-pages/settings/page-settings-generic.php:110
-#: includes/functions.php:1357
+#: includes/functions.php:1405
 msgid "Pounds"
 msgstr "Ponden"
 
 #: includes/admin-pages/awards/page-awards-add-update.php:192
 #: includes/core-charting.php:100 includes/core-charting.php:283
-#: includes/core-tables.php:34 pro-features/footable.php:330
+#: includes/core-tables.php:34 pro-features/footable.php:336
 #: pro-features/plus/awards/functions.php:32 pro-features/web-hooks.php:241
 msgid "Weight"
 msgstr "Gewicht"
@@ -170,21 +170,21 @@ msgstr "Aantal invoeringen"
 #: includes/admin-pages/settings/page-settings-generic.php:384
 #: includes/admin-pages/settings/page-settings-generic.php:408
 #: includes/admin-pages/settings/page-settings-generic.php:557
-#: includes/admin-pages/settings/page-settings-generic.php:728
-#: includes/admin-pages/settings/page-settings-generic.php:823
-#: includes/admin-pages/settings/page-settings-generic.php:859
-#: includes/admin-pages/settings/page-settings-generic.php:917
-#: includes/admin-pages/settings/page-settings-generic.php:938
+#: includes/admin-pages/settings/page-settings-generic.php:741
+#: includes/admin-pages/settings/page-settings-generic.php:836
+#: includes/admin-pages/settings/page-settings-generic.php:872
+#: includes/admin-pages/settings/page-settings-generic.php:930
 #: includes/admin-pages/settings/page-settings-generic.php:951
 #: includes/admin-pages/settings/page-settings-generic.php:964
 #: includes/admin-pages/settings/page-settings-generic.php:977
 #: includes/admin-pages/settings/page-settings-generic.php:990
-#: includes/admin-pages/settings/page-settings-generic.php:1023
-#: includes/admin-pages/settings/page-settings-generic.php:1054
+#: includes/admin-pages/settings/page-settings-generic.php:1003
+#: includes/admin-pages/settings/page-settings-generic.php:1036
 #: includes/admin-pages/settings/page-settings-generic.php:1067
 #: includes/admin-pages/settings/page-settings-generic.php:1080
-#: includes/admin-pages/settings/page-settings-generic.php:1099
-#: includes/functions.php:1243 pro-features/plus/challenge/functions.php:239
+#: includes/admin-pages/settings/page-settings-generic.php:1093
+#: includes/admin-pages/settings/page-settings-generic.php:1112
+#: includes/functions.php:1291 pro-features/plus/challenge/functions.php:244
 #: pro-features/plus/meta-fields/functions.php:42
 #: pro-features/plus/meta-fields/functions.php:234
 #: pro-features/plus/meta-fields/functions.php:435
@@ -219,21 +219,21 @@ msgstr "Ja"
 #: includes/admin-pages/settings/page-settings-generic.php:383
 #: includes/admin-pages/settings/page-settings-generic.php:409
 #: includes/admin-pages/settings/page-settings-generic.php:556
-#: includes/admin-pages/settings/page-settings-generic.php:729
-#: includes/admin-pages/settings/page-settings-generic.php:824
-#: includes/admin-pages/settings/page-settings-generic.php:858
-#: includes/admin-pages/settings/page-settings-generic.php:916
-#: includes/admin-pages/settings/page-settings-generic.php:939
+#: includes/admin-pages/settings/page-settings-generic.php:742
+#: includes/admin-pages/settings/page-settings-generic.php:837
+#: includes/admin-pages/settings/page-settings-generic.php:871
+#: includes/admin-pages/settings/page-settings-generic.php:929
 #: includes/admin-pages/settings/page-settings-generic.php:952
 #: includes/admin-pages/settings/page-settings-generic.php:965
 #: includes/admin-pages/settings/page-settings-generic.php:978
 #: includes/admin-pages/settings/page-settings-generic.php:991
-#: includes/admin-pages/settings/page-settings-generic.php:1024
-#: includes/admin-pages/settings/page-settings-generic.php:1055
+#: includes/admin-pages/settings/page-settings-generic.php:1004
+#: includes/admin-pages/settings/page-settings-generic.php:1037
 #: includes/admin-pages/settings/page-settings-generic.php:1068
 #: includes/admin-pages/settings/page-settings-generic.php:1081
-#: includes/admin-pages/settings/page-settings-generic.php:1098
-#: includes/functions.php:1243 pro-features/plus/challenge/functions.php:239
+#: includes/admin-pages/settings/page-settings-generic.php:1094
+#: includes/admin-pages/settings/page-settings-generic.php:1111
+#: includes/functions.php:1291 pro-features/plus/challenge/functions.php:244
 #: pro-features/plus/meta-fields/functions.php:42
 #: pro-features/plus/meta-fields/functions.php:231
 #: pro-features/plus/meta-fields/functions.php:434
@@ -275,7 +275,7 @@ msgstr "email"
 #: includes/admin-pages/settings/page-settings-generic.php:269
 #: includes/admin-pages/settings/page-settings-generic.php:532
 #: includes/admin-pages/settings/page-settings-generic.php:634
-#: includes/admin-pages/settings/page-settings-generic.php:1017
+#: includes/admin-pages/settings/page-settings-generic.php:1030
 #: pro-features/plus/awards/hooks.php:301
 #: pro-features/plus/meta-fields/hooks.php:96
 msgid "Enabled"
@@ -283,7 +283,7 @@ msgstr "Inschakelen"
 
 #: includes/admin-pages/awards/page-awards-add-update.php:313
 #: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:325
-#: includes/core-forms.php:234 pro-features/plus/challenge/admin.page.php:105
+#: includes/core-forms.php:234 pro-features/plus/challenge/admin.page.php:108
 msgid "Cancel"
 msgstr "Annuleren"
 
@@ -343,7 +343,8 @@ msgstr ""
 #: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:111
 msgid ""
 "Note: If set to Yes, photos uploaded into this custom field cannot be used "
-"in shortcodes i.e. the photos will only be visible to admin."
+"in shortcodes i.e. the photos will only be visible to admin. However, the "
+"photo fields can appear in forms."
 msgstr ""
 
 #: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:116
@@ -367,7 +368,7 @@ msgid "Note: The HEX colour to use for the line when plotting on a graph."
 msgstr "Voer hier de HEX kleur code in van je streefgewicht in het diagram."
 
 #: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:141
-#: includes/admin-pages/settings/page-settings-generic.php:804
+#: includes/admin-pages/settings/page-settings-generic.php:817
 #: pro-features/plus/meta-fields/hooks.php:90
 msgid "Field / Question"
 msgstr ""
@@ -444,7 +445,7 @@ msgid ""
 msgstr ""
 
 #: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:249
-#: includes/admin-pages/settings/page-settings-generic.php:803
+#: includes/admin-pages/settings/page-settings-generic.php:816
 msgid "Abbreviation"
 msgstr ""
 
@@ -466,7 +467,7 @@ msgstr ""
 
 #: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:267
 #: pro-features/export/admin.page.php:203
-#: pro-features/plus/challenge/functions.php:488
+#: pro-features/plus/challenge/functions.php:493
 #: pro-features/plus/meta-fields/hooks.php:94 pro-features/user-groups.php:111
 #: pro-features/user-groups.php:141 pro-features/user-groups.php:522
 msgid "Group"
@@ -547,7 +548,7 @@ msgid ""
 msgstr ""
 
 #: includes/admin-pages/meta-fields/page-meta-fields-list.php:43
-#: pro-features/footable.php:408 pro-features/plus/awards/hooks.php:298
+#: pro-features/footable.php:414 pro-features/plus/awards/hooks.php:298
 #: pro-features/plus/harris-benedict.php:321
 msgid "Add"
 msgstr ""
@@ -674,7 +675,7 @@ msgstr "Weet je zeker dat je je streefgewicht wilt wissen?"
 #: includes/admin-pages/page-license.php:8
 #: includes/admin-pages/settings/page-settings-email-manager.php:8
 #: includes/admin-pages/settings/page-settings-generic.php:8
-#: pro-features/functions.php:652
+#: pro-features/functions.php:662
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Je hebt geen toestemming voor deze pagina"
 
@@ -909,7 +910,7 @@ msgstr "Hieronder is een lijst met functies van de Pro versie"
 #: includes/admin-pages/page-license.php:273
 #: includes/admin-pages/user-data/data-summary.php:74
 #: includes/admin-pages/user-data/data-user.php:266
-#: pro-features/functions-pages.php:346
+#: pro-features/functions-pages.php:516
 msgid "Are you sure you?"
 msgstr "Weet je het zeker?"
 
@@ -1095,7 +1096,7 @@ msgid "Weight Units"
 msgstr "Gewichtseenheden"
 
 #: includes/admin-pages/settings/page-settings-generic.php:109
-#: includes/functions.php:1357
+#: includes/functions.php:1405
 msgid "Stones & Pounds"
 msgstr "Stenen & ponden"
 
@@ -1306,7 +1307,7 @@ msgstr ""
 
 #: includes/admin-pages/settings/page-settings-generic.php:278
 #: pro-features/plus/challenge/admin.page.php:69
-#: pro-features/plus/challenge/admin.page.php:195
+#: pro-features/plus/challenge/admin.page.php:198
 #, fuzzy
 #| msgid "Read more about calculations"
 msgid "Read more about Challenges"
@@ -1458,9 +1459,8 @@ msgstr ""
 #: includes/admin-pages/settings/page-settings-generic.php:458
 #: includes/admin-pages/settings/page-settings-generic.php:543
 #: includes/admin-pages/settings/page-settings-generic.php:645
-#: includes/admin-pages/settings/page-settings-generic.php:665
-#: includes/admin-pages/settings/page-settings-generic.php:672
-#: includes/admin-pages/settings/page-settings-generic.php:695
+#: includes/admin-pages/settings/page-settings-generic.php:657
+#: includes/admin-pages/settings/page-settings-generic.php:708
 msgid ""
 "Please note, it may take up to 15 minutes for calculations to change (due to "
 "caching)."
@@ -1559,7 +1559,7 @@ msgstr "Vrouwelijke calorieën capaciteit"
 
 #: includes/admin-pages/settings/page-settings-generic.php:525
 #: includes/admin-pages/settings/page-settings-generic.php:627
-#: pro-features/plus/challenge/functions.php:498
+#: pro-features/plus/challenge/functions.php:503
 #: pro-features/plus/harris-benedict.php:302
 #: pro-features/plus/harris-benedict.php:325
 msgid "Everyone"
@@ -1636,101 +1636,91 @@ msgid "Macronutrient Calculator"
 msgstr "Macronutrient Calculator"
 
 #: includes/admin-pages/settings/page-settings-generic.php:655
+#, fuzzy
+#| msgid "Gain weight"
+msgid "Percentages per aim"
+msgstr "Aankomen "
+
+#: includes/admin-pages/settings/page-settings-generic.php:657
+msgid ""
+"For each aim, specify how Macronutrients should be split when calculated."
+msgstr ""
+
+#: includes/admin-pages/settings/page-settings-generic.php:663
 #: pro-features/plus/macronutrient-calculator.php:173
 msgid "Proteins"
 msgstr "Proteïnen"
 
-#: includes/admin-pages/settings/page-settings-generic.php:658
-msgid "Percentage of Proteins to make up a moderate diet"
-msgstr "Proteïnepercentage om een gemiddeld dieet te vormen"
-
-#: includes/admin-pages/settings/page-settings-generic.php:658
-msgid ""
-"Please note, it may take up to 15 minutes for calorie calculations to change "
-"(due to caching)."
-msgstr ""
-"Let op, het kan tot 15 minuten duren voordat de calorieberekeningen worden "
-"gewijzigd (door caching)."
-
-#: includes/admin-pages/settings/page-settings-generic.php:662
-#: pro-features/plus/shortcode.wlt.php:136
+#: includes/admin-pages/settings/page-settings-generic.php:664
 msgid "Carbohydrates"
 msgstr "Koolhydraten"
 
 #: includes/admin-pages/settings/page-settings-generic.php:665
-msgid "Percentage of Carbohydrates to make up a moderate diet"
-msgstr "Koolhydraatpercentage om een gemiddeld dieet te vormen"
-
-#: includes/admin-pages/settings/page-settings-generic.php:669
 #: pro-features/plus/macronutrient-calculator.php:207
 msgid "Fats"
 msgstr "Vetten"
 
-#: includes/admin-pages/settings/page-settings-generic.php:672
-msgid "Percentage of Fats to make up a moderate diet"
-msgstr "Vetpercentage om een gemiddeld dieet te vormen"
-
-#: includes/admin-pages/settings/page-settings-generic.php:676
+#: includes/admin-pages/settings/page-settings-generic.php:689
 #, fuzzy
 #| msgid "Macronutrient Calculator"
 msgid "Macronutrient Calculator: Meals"
 msgstr "Macronutrient Calculator"
 
-#: includes/admin-pages/settings/page-settings-generic.php:693
+#: includes/admin-pages/settings/page-settings-generic.php:706
 #, fuzzy
 #| msgid "Percentage of Carbohydrates to make up a moderate diet"
 msgid "Percentage of calories to split into "
 msgstr "Koolhydraatpercentage om een gemiddeld dieet te vormen"
 
-#: includes/admin-pages/settings/page-settings-generic.php:709
+#: includes/admin-pages/settings/page-settings-generic.php:722
 msgid "Default chart type"
 msgstr "Default tabel type"
 
-#: includes/admin-pages/settings/page-settings-generic.php:715
+#: includes/admin-pages/settings/page-settings-generic.php:728
 #: pro-features/widget-chart.php:116
 msgid "Line Chart"
 msgstr "Lijn van de tabel"
 
-#: includes/admin-pages/settings/page-settings-generic.php:715
+#: includes/admin-pages/settings/page-settings-generic.php:728
 #, fuzzy
 #| msgid "Highly Recommended"
 msgid "Recommended"
 msgstr "Sterk aanbevolen"
 
-#: includes/admin-pages/settings/page-settings-generic.php:716
+#: includes/admin-pages/settings/page-settings-generic.php:729
 #: pro-features/widget-chart.php:117
 msgid "Bar Chart"
 msgstr "Staafdiagram"
 
-#: includes/admin-pages/settings/page-settings-generic.php:722
+#: includes/admin-pages/settings/page-settings-generic.php:735
 msgid "Display gridlines?"
 msgstr "weergave rasterlijnen?"
 
-#: includes/admin-pages/settings/page-settings-generic.php:731
+#: includes/admin-pages/settings/page-settings-generic.php:744
 #, fuzzy
 #| msgid "If enabled, gridlines will be displayed on the Graph canvas."
 msgid "If enabled, grid lines will be displayed on charts."
 msgstr "Indien ingeschakeld, zijn de rasterlijnen zichtbaar op het diagram"
 
-#: includes/admin-pages/settings/page-settings-generic.php:735
+#: includes/admin-pages/settings/page-settings-generic.php:748
 #, fuzzy
 #| msgid "Maximum points per graph"
 msgid "Maximum points per chart"
 msgstr "Maximum aantal punten per diagram"
 
-#: includes/admin-pages/settings/page-settings-generic.php:748
+#: includes/admin-pages/settings/page-settings-generic.php:761
 msgid ""
 "Specifies the maximum number of data points displayed on charts (this does "
 "not effect admin)."
 msgstr ""
 
-#: includes/admin-pages/settings/page-settings-generic.php:753
+#: includes/admin-pages/settings/page-settings-generic.php:766
 #, fuzzy
 #| msgid "Weight colour?"
 msgid "Weight colour"
 msgstr "Gewicht kleur"
 
-#: includes/admin-pages/settings/page-settings-generic.php:756
+#: includes/admin-pages/settings/page-settings-generic.php:769
 #, fuzzy
 #| msgid ""
 #| "If enabled, enter a HEX colour code to use for the Weight history line / "
@@ -1742,13 +1732,13 @@ msgstr ""
 "Indien ingeschakeld, voert u een HEX kleurcode in om te gebruiken voor de "
 "gewicht geschiedenis lijn / staaf grens op grafiek."
 
-#: includes/admin-pages/settings/page-settings-generic.php:760
+#: includes/admin-pages/settings/page-settings-generic.php:773
 #, fuzzy
 #| msgid "Target line colour?"
 msgid "Target line colour"
 msgstr "Kleur van lijn voor streefgewicht?"
 
-#: includes/admin-pages/settings/page-settings-generic.php:763
+#: includes/admin-pages/settings/page-settings-generic.php:776
 #, fuzzy
 #| msgid ""
 #| "If enabled, enter a HEX colour code to use for the Target line on graph."
@@ -1756,51 +1746,51 @@ msgid ""
 "If enabled, enter a HEX colour code to use for the Target line on chart."
 msgstr "Voer hier de HEX kleur code in van je streefgewicht in het diagram."
 
-#: includes/admin-pages/settings/page-settings-generic.php:772
+#: includes/admin-pages/settings/page-settings-generic.php:785
 msgid "Text colour"
 msgstr "Tekst kleur"
 
-#: includes/admin-pages/settings/page-settings-generic.php:775
+#: includes/admin-pages/settings/page-settings-generic.php:788
 #, fuzzy
 #| msgid "Enter a HEX colour code to use for text displayed on the graph."
 msgid "Enter a HEX colour code to use for text displayed on the chart."
 msgstr "Voer hier de HEX kleur code in van je streefgewicht in het diagram."
 
-#: includes/admin-pages/settings/page-settings-generic.php:783
+#: includes/admin-pages/settings/page-settings-generic.php:796
 msgid "Font Family"
 msgstr ""
 
-#: includes/admin-pages/settings/page-settings-generic.php:786
+#: includes/admin-pages/settings/page-settings-generic.php:799
 msgid ""
 "Specify one or more fonts that should be used when rendering text on the "
 "chart. Separate multiple fonts with a comma. Leave blank to use the default."
 msgstr ""
 
-#: includes/admin-pages/settings/page-settings-generic.php:791
+#: includes/admin-pages/settings/page-settings-generic.php:804
 #, fuzzy
 #| msgid "View Custom Fields"
 msgid "Custom Field Options"
 msgstr "Toevoegen / aanpassen van invoer"
 
-#: includes/admin-pages/settings/page-settings-generic.php:795
+#: includes/admin-pages/settings/page-settings-generic.php:808
 msgid "Field / Question or Abbreviation"
 msgstr ""
 
-#: includes/admin-pages/settings/page-settings-generic.php:806
+#: includes/admin-pages/settings/page-settings-generic.php:819
 msgid ""
 "When displaying a custom field on a chart, which value should be displayed "
 "in the chart's legend? The field question or abbreviation."
 msgstr ""
 
-#: includes/admin-pages/settings/page-settings-generic.php:811
+#: includes/admin-pages/settings/page-settings-generic.php:824
 msgid "Line Chart Options"
 msgstr "Lijndiagram opties"
 
-#: includes/admin-pages/settings/page-settings-generic.php:815
+#: includes/admin-pages/settings/page-settings-generic.php:828
 msgid "Bezier Curve?"
 msgstr "Bezier Curve?"
 
-#: includes/admin-pages/settings/page-settings-generic.php:826
+#: includes/admin-pages/settings/page-settings-generic.php:839
 #, fuzzy
 #| msgid "If enabled, lines between points on a line graph will be curved"
 msgid "If enabled, lines between points on a line chart will be curved"
@@ -1808,29 +1798,29 @@ msgstr ""
 "Indien dit is ingeschakeld, zal je zien dat de lijn tussen de punten een "
 "kromme lijn is (ipv strakke lijnen)"
 
-#: includes/admin-pages/settings/page-settings-generic.php:830
+#: includes/admin-pages/settings/page-settings-generic.php:843
 msgid "Point thickness"
 msgstr "Dikte van de punten"
 
-#: includes/admin-pages/settings/page-settings-generic.php:846
+#: includes/admin-pages/settings/page-settings-generic.php:859
 #, fuzzy
 #| msgid "Specifies the point thickness on a line chart."
 msgid "Specifies the point thickness on a line chart. Set to 0 to hide points."
 msgstr "Specificeer de dikte van de punten op de lijngrafiek."
 
-#: includes/admin-pages/settings/page-settings-generic.php:850
+#: includes/admin-pages/settings/page-settings-generic.php:863
 msgid "Add a fill under weight line?"
 msgstr "Voeg een nieuw gewicht toe"
 
-#: includes/admin-pages/settings/page-settings-generic.php:861
+#: includes/admin-pages/settings/page-settings-generic.php:874
 msgid "If enabled, a fill colour will be added under the weight line."
 msgstr "Voer hier een HEX kleur code in van de lijn op het diagram"
 
-#: includes/admin-pages/settings/page-settings-generic.php:865
+#: includes/admin-pages/settings/page-settings-generic.php:878
 msgid "Weight Fill Colour"
 msgstr "Gewicht opvul kleur"
 
-#: includes/admin-pages/settings/page-settings-generic.php:868
+#: includes/admin-pages/settings/page-settings-generic.php:881
 msgid ""
 "If enabled, enter a HEX colour code to use for the fill colour under the "
 "weight line."
@@ -1838,23 +1828,23 @@ msgstr ""
 "Indien ingeschakeld, voert u een HEX kleurcode in om te gebruiken voor het "
 "vullen van de gewicht stafen op de grafiek."
 
-#: includes/admin-pages/settings/page-settings-generic.php:872
+#: includes/admin-pages/settings/page-settings-generic.php:885
 msgid "Weight Fill Opacity"
 msgstr "Gewicht opvul kleur"
 
-#: includes/admin-pages/settings/page-settings-generic.php:884
+#: includes/admin-pages/settings/page-settings-generic.php:897
 msgid "Specifies the opacity of the fill colour under the weight line."
 msgstr ""
 
-#: includes/admin-pages/settings/page-settings-generic.php:889
+#: includes/admin-pages/settings/page-settings-generic.php:902
 msgid "Bar Chart Options"
 msgstr "Staafdiagram opties"
 
-#: includes/admin-pages/settings/page-settings-generic.php:893
+#: includes/admin-pages/settings/page-settings-generic.php:906
 msgid "Weight fill colour?"
 msgstr "Gewicht opvul kleur"
 
-#: includes/admin-pages/settings/page-settings-generic.php:896
+#: includes/admin-pages/settings/page-settings-generic.php:909
 #, fuzzy
 #| msgid ""
 #| "If enabled, enter a HEX colour code to use for filling the Weight bars on "
@@ -1866,20 +1856,20 @@ msgstr ""
 "Indien ingeschakeld, voert u een HEX kleurcode in om te gebruiken voor het "
 "vullen van de gewicht stafen op de grafiek."
 
-#: includes/admin-pages/settings/page-settings-generic.php:907
-#: includes/hooks.php:27 pro-features/functions-pages.php:299
+#: includes/admin-pages/settings/page-settings-generic.php:920
+#: includes/hooks.php:27 pro-features/functions-pages.php:469
 msgid "Settings"
 msgstr "Intstellingen"
 
-#: includes/admin-pages/settings/page-settings-generic.php:910
+#: includes/admin-pages/settings/page-settings-generic.php:923
 msgid "Enable email notifications"
 msgstr "Aanzetten van email notificaties"
 
-#: includes/admin-pages/settings/page-settings-generic.php:922
+#: includes/admin-pages/settings/page-settings-generic.php:935
 msgid "Email addresses to notify"
 msgstr "Verstuur naar email adres(sen)"
 
-#: includes/admin-pages/settings/page-settings-generic.php:928
+#: includes/admin-pages/settings/page-settings-generic.php:941
 msgid ""
 "Specify one or more email addresses to be notified. Seperate multiple emails "
 "with a comma."
@@ -1887,13 +1877,13 @@ msgstr ""
 "Specificeer één of meerdere email adressen voor notificaties. Indien "
 "meerdere emailadressen zijn ingevoerd, scheidt deze dan met een komma."
 
-#: includes/admin-pages/settings/page-settings-generic.php:932
+#: includes/admin-pages/settings/page-settings-generic.php:945
 #, fuzzy
 #| msgid "their weight / measurements for "
 msgid "New weight / custom field entries"
 msgstr "hun gewicht / meting voor"
 
-#: includes/admin-pages/settings/page-settings-generic.php:941
+#: includes/admin-pages/settings/page-settings-generic.php:954
 #, fuzzy
 #| msgid ""
 #| "Receive notifications when a member adds a new weight / measurement entry."
@@ -1902,13 +1892,13 @@ msgid ""
 msgstr ""
 "Ontvang notificaties wanneer een cliënt een gewicht / meting toevoegt. "
 
-#: includes/admin-pages/settings/page-settings-generic.php:945
+#: includes/admin-pages/settings/page-settings-generic.php:958
 #, fuzzy
 #| msgid "Edited weight / measurement entries"
 msgid "Edited weight / custom field entries"
 msgstr "Aangepast invoer gewicht / meting "
 
-#: includes/admin-pages/settings/page-settings-generic.php:954
+#: includes/admin-pages/settings/page-settings-generic.php:967
 #, fuzzy
 #| msgid ""
 #| "Receive notifications when a member edits an existing weight / "
@@ -1918,72 +1908,72 @@ msgid ""
 "entry."
 msgstr "Ontvang notificaties wanneer een cliënt een gewicht / meting aanpast. "
 
-#: includes/admin-pages/settings/page-settings-generic.php:958
+#: includes/admin-pages/settings/page-settings-generic.php:971
 msgid "New / updated targets"
 msgstr "Nieuw / aangepast doel"
 
-#: includes/admin-pages/settings/page-settings-generic.php:967
+#: includes/admin-pages/settings/page-settings-generic.php:980
 msgid "Receive notifications when a member adds / edits their target."
 msgstr "Ontvang notificaties wanneer een cliënt zijn doel toevoegd / aanpast. "
 
-#: includes/admin-pages/settings/page-settings-generic.php:971
+#: includes/admin-pages/settings/page-settings-generic.php:984
 msgid "Include user's email address?"
 msgstr ""
 
-#: includes/admin-pages/settings/page-settings-generic.php:980
+#: includes/admin-pages/settings/page-settings-generic.php:993
 msgid "Include the user's email address within the email body."
 msgstr ""
 
-#: includes/admin-pages/settings/page-settings-generic.php:984
+#: includes/admin-pages/settings/page-settings-generic.php:997
 msgid "Include Weight Summary?"
 msgstr ""
 
-#: includes/admin-pages/settings/page-settings-generic.php:993
+#: includes/admin-pages/settings/page-settings-generic.php:1006
 msgid ""
 "Add additional weight summary information into the email e.g. start weight, "
 "previous weight, difference between both, difference between current weight "
 "and start weight, etc."
 msgstr ""
 
-#: includes/admin-pages/settings/page-settings-generic.php:997
+#: includes/admin-pages/settings/page-settings-generic.php:1010
 msgid "Templates"
 msgstr ""
 
-#: includes/admin-pages/settings/page-settings-generic.php:999
+#: includes/admin-pages/settings/page-settings-generic.php:1012
 msgid ""
 "Email templates are stored within the database and can be edited in the "
 "Email Template manager"
 msgstr ""
 
-#: includes/admin-pages/settings/page-settings-generic.php:1001
+#: includes/admin-pages/settings/page-settings-generic.php:1014
 msgid "Email Template Manager"
 msgstr ""
 
-#: includes/admin-pages/settings/page-settings-generic.php:1010
+#: includes/admin-pages/settings/page-settings-generic.php:1023
 msgid "Webhooks/Slack/Zapier"
 msgstr ""
 
-#: includes/admin-pages/settings/page-settings-generic.php:1012
+#: includes/admin-pages/settings/page-settings-generic.php:1025
 msgid ""
 "Push data to third party applications when a user adds/updates weight "
 "entries or updates their target."
 msgstr ""
 
-#: includes/admin-pages/settings/page-settings-generic.php:1013
+#: includes/admin-pages/settings/page-settings-generic.php:1026
 #, fuzzy
 #| msgid "Read more about calculations"
 msgid "Read more about Webhooks/Slack/Zapier"
 msgstr "Lees hier meer over de berekeningen"
 
-#: includes/admin-pages/settings/page-settings-generic.php:1026
+#: includes/admin-pages/settings/page-settings-generic.php:1039
 msgid "If set to Yes, data will be fired to the specified endpoints."
 msgstr ""
 
-#: includes/admin-pages/settings/page-settings-generic.php:1030
+#: includes/admin-pages/settings/page-settings-generic.php:1043
 msgid "Endpoint URLs"
 msgstr ""
 
-#: includes/admin-pages/settings/page-settings-generic.php:1041
+#: includes/admin-pages/settings/page-settings-generic.php:1054
 msgid ""
 "Specify one or more endpoints that data should be pushed to. If the endpoint "
 "is a determined to be Slack URL then a message shall be posted within the "
@@ -1991,51 +1981,51 @@ msgid ""
 "representing the data."
 msgstr ""
 
-#: includes/admin-pages/settings/page-settings-generic.php:1042
-#: includes/admin-pages/settings/page-settings-generic.php:1103
+#: includes/admin-pages/settings/page-settings-generic.php:1055
+#: includes/admin-pages/settings/page-settings-generic.php:1116
 msgid "Read more at "
 msgstr "Lees hier meer over de berekeningen"
 
-#: includes/admin-pages/settings/page-settings-generic.php:1048
+#: includes/admin-pages/settings/page-settings-generic.php:1061
 #, fuzzy
 #| msgid "Number of weight entries"
 msgid "Send data for weight entries?"
 msgstr "Aantal gewichten ingevoerd"
 
-#: includes/admin-pages/settings/page-settings-generic.php:1057
+#: includes/admin-pages/settings/page-settings-generic.php:1070
 msgid ""
 "When a user adds/updates a weight entry, should data be fired to the "
 "endpoint(s)?"
 msgstr ""
 
-#: includes/admin-pages/settings/page-settings-generic.php:1061
+#: includes/admin-pages/settings/page-settings-generic.php:1074
 msgid "Send data for target updates?"
 msgstr ""
 
-#: includes/admin-pages/settings/page-settings-generic.php:1070
+#: includes/admin-pages/settings/page-settings-generic.php:1083
 msgid ""
 "When a user updates their target, should data be fired to the endpoint(s)?"
 msgstr ""
 
-#: includes/admin-pages/settings/page-settings-generic.php:1074
+#: includes/admin-pages/settings/page-settings-generic.php:1087
 msgid "Include admin updates?"
 msgstr ""
 
-#: includes/admin-pages/settings/page-settings-generic.php:1083
+#: includes/admin-pages/settings/page-settings-generic.php:1096
 msgid ""
 "Should changes made by admins (via the admin screens) cause data to be fired "
 "to the endpoints?"
 msgstr ""
 
-#: includes/admin-pages/settings/page-settings-generic.php:1089
+#: includes/admin-pages/settings/page-settings-generic.php:1102
 msgid "Form Handlers"
 msgstr ""
 
-#: includes/admin-pages/settings/page-settings-generic.php:1092
+#: includes/admin-pages/settings/page-settings-generic.php:1105
 msgid "Process Gravity Forms"
 msgstr ""
 
-#: includes/admin-pages/settings/page-settings-generic.php:1102
+#: includes/admin-pages/settings/page-settings-generic.php:1115
 msgid ""
 "Examine Gravity Form submissions for weight and custom fields. If found, "
 "create a Weight Entry for the user currently logged in."
@@ -2116,6 +2106,29 @@ msgstr "Inschakelen"
 #: includes/admin-pages/user-data/data-groups.php:62
 msgid "The group could not be found"
 msgstr ""
+
+#: includes/admin-pages/user-data/data-notes.php:44 includes/core-forms.php:209
+#: includes/core-forms.php:446 includes/core-tables.php:35
+#: pro-features/email-notifications.php:81
+#: pro-features/export/admin.page.php:249 pro-features/export/functions.php:211
+#: pro-features/footable.php:380 pro-features/functions-pages.php:118
+#: pro-features/plus/challenge/admin.page.php:75 pro-features/web-hooks.php:277
+msgid "Notes"
+msgstr "Notities"
+
+#: includes/admin-pages/user-data/data-notes.php:45
+#, fuzzy
+#| msgid "No photos could be found for this user."
+msgid "There are currently no notes for this user."
+msgstr "Er zijn geen foto's gevonden voor deze gebruiker."
+
+#: includes/admin-pages/user-data/data-notes.php:79
+#, fuzzy
+#| msgid "An error occurred while trying to save the user's preferences."
+msgid "An error occurred when attempting to delete the note."
+msgstr ""
+"Er is een fout opgetreden tijdens het opslaan van de voorkeuren van de "
+"gebruiker."
 
 #: includes/admin-pages/user-data/data-photos.php:29
 msgid "User's photos"
@@ -2247,12 +2260,12 @@ msgid "All Data"
 msgstr "Bekijk alle data"
 
 #: includes/admin-pages/user-data/data-summary.php:144
-#: pro-features/functions-pages.php:279
+#: pro-features/functions-pages.php:449
 msgid "To CSV"
 msgstr "Naar CSV betand"
 
 #: includes/admin-pages/user-data/data-summary.php:148
-#: pro-features/functions-pages.php:283
+#: pro-features/functions-pages.php:453
 msgid "To JSON"
 msgstr "Naar JSON bestand"
 
@@ -2368,7 +2381,7 @@ msgstr ""
 #: includes/admin-pages/user-data/data-user.php:199
 #: includes/admin-pages/user-data/data-user.php:228
 #: includes/admin-pages/user-data/data-user.php:275
-#: pro-features/functions-pages.php:120
+#: pro-features/functions-pages.php:290
 msgid "Upgrade to Pro Plus"
 msgstr "Upgrade naar de Pro Plus versie"
 
@@ -2456,23 +2469,23 @@ msgid ""
 "maximum of 5000 entries. For more data, please view individual user records."
 msgstr ""
 
-#: includes/ajax.php:149 includes/core-forms.php:138
-#: includes/core-tables.php:33 pro-features/footable.php:327
+#: includes/ajax.php:157 includes/core-forms.php:138
+#: includes/core-tables.php:33 pro-features/footable.php:333
 #: pro-features/web-hooks.php:230
 msgid "Date"
 msgstr "Datum"
 
-#: includes/ajax.php:150
+#: includes/ajax.php:158
 msgid "Module"
 msgstr ""
 
-#: includes/ajax.php:151
+#: includes/ajax.php:159
 msgid "Message"
 msgstr ""
 
 #: includes/converters.php:113 includes/converters.php:135
 #: includes/converters.php:196 includes/core-charting.php:73
-#: includes/functions.php:1527 includes/functions.php:1533
+#: includes/functions.php:1575 includes/functions.php:1581
 #: pro-features/shortcode-stats.php:166
 msgid "lbs"
 msgstr "lbs"
@@ -2543,14 +2556,6 @@ msgstr "De cliënt zijn huidige streefgewicht is"
 msgid "lb"
 msgstr "lbs"
 
-#: includes/core-forms.php:209 includes/core-forms.php:446
-#: includes/core-tables.php:35 pro-features/email-notifications.php:81
-#: pro-features/export/admin.page.php:249 pro-features/export/functions.php:211
-#: pro-features/footable.php:374 pro-features/plus/challenge/admin.page.php:75
-#: pro-features/web-hooks.php:277
-msgid "Notes"
-msgstr "Notities"
-
 #: includes/core-forms.php:223
 msgid "Set Target"
 msgstr "Streefgewicht opslaan"
@@ -2569,7 +2574,7 @@ msgstr "Wis je streefgewicht"
 msgid "Your entry has been successfully saved."
 msgstr "Je gewicht is opgeslagen!"
 
-#: includes/core-forms.php:287 pro-features/functions-pages.php:182
+#: includes/core-forms.php:287 pro-features/functions-pages.php:352
 #, fuzzy
 #| msgid "Target Weight"
 msgid "Target weight"
@@ -2593,7 +2598,7 @@ msgstr "Voeg invoer voor een gewicht toe"
 msgid "Complete the following form"
 msgstr "Laat datum zien in de volgende formaten:"
 
-#: includes/core-forms.php:473 includes/core-forms.php:620
+#: includes/core-forms.php:474 includes/core-forms.php:623
 #, fuzzy
 #| msgid "Please enter a valid figure for Kg"
 msgid "Please select a value for"
@@ -2871,43 +2876,43 @@ msgstr "Bekijk week"
 msgid "to"
 msgstr "naar"
 
-#: includes/functions.php:839
+#: includes/functions.php:864
 msgid "Read more about calculations"
 msgstr "Lees hier meer over de berekeningen"
 
-#: includes/functions.php:877
+#: includes/functions.php:902
 msgid "Your modifications have been saved"
 msgstr "Je aanpassing is opgeslagen"
 
-#: includes/functions.php:897
+#: includes/functions.php:922
 #, fuzzy
 #| msgid "Login now"
 msgid "Login"
 msgstr "Nu inloggen"
 
-#: includes/functions.php:950
+#: includes/functions.php:975
 #, fuzzy
 #| msgid "You must be logged in to edit your settings."
 msgid "You must be logged in to view or edit your data."
 msgstr "Je moet ingelogd zijn om je gegevens aan te passen."
 
-#: includes/functions.php:1095
+#: includes/functions.php:1120
 #, fuzzy
 #| msgid "Upgrade to Pro Plus for"
 msgid "Upgrade to Pro Plus and get more features!"
 msgstr "Upgrade naar Pro Plus voor"
 
-#: includes/functions.php:1096
+#: includes/functions.php:1121
 msgid ""
 "Upgrade to Pro Plus version of this plugin to get additional features like "
 "Challenges, Harris Benedict, BMR, Macronutrients and much more!"
 msgstr ""
 
-#: includes/functions.php:1098
+#: includes/functions.php:1123
 msgid "Upgrade Weight Tracker and get more features!"
 msgstr ""
 
-#: includes/functions.php:1099
+#: includes/functions.php:1124
 #, fuzzy
 #| msgid ""
 #| "Upgrade to the Pro version of this plugin to view, edit and delete your "
@@ -2919,29 +2924,29 @@ msgstr ""
 "Ge-upgrade naar de Pro-versie van deze plugin om uw invoer van de cliënten "
 "invoer te bekijken, te bewerken en te verwijderen"
 
-#: includes/functions.php:1107
+#: includes/functions.php:1132
 #, fuzzy
 #| msgid "Read more at "
 msgid "Read more and upgrade"
 msgstr "Lees hier meer over de berekeningen"
 
-#: includes/functions.php:1121
+#: includes/functions.php:1146
 #, fuzzy
 #| msgid "Read more and Upgrade to Pro / Pro Plus Version"
 msgid "To view this data, you need to upgrade to the Pro or Pro Plus version."
 msgstr "Upgraden naar de Pro versie"
 
-#: includes/functions.php:1123
+#: includes/functions.php:1148
 #, fuzzy
 #| msgid "Upgrade"
 msgid "Upgrade now"
 msgstr "Upgrade"
 
-#: includes/functions.php:1357 includes/functions.php:1530
+#: includes/functions.php:1405 includes/functions.php:1578
 msgid "Kg"
 msgstr "Kg"
 
-#: includes/functions.php:1533
+#: includes/functions.php:1581
 msgid "St"
 msgstr "St"
 
@@ -3033,7 +3038,7 @@ msgstr "Legacy Pro"
 msgid "Pro Plus"
 msgstr "Pro Plus"
 
-#: includes/meal-tracker.php:27 pro-features/functions-pages.php:428
+#: includes/meal-tracker.php:27 pro-features/functions-pages.php:598
 #, fuzzy
 #| msgid "Weight Loss Tracker"
 msgid "Weight Tracker Record"
@@ -3161,7 +3166,7 @@ msgid "BMI, BMR, Calories and Macronutrients"
 msgstr "Bekijk BMI, BMR en voorgesteld Calorie en Macronutriënten inname"
 
 #: includes/shortcode-weight-tracker.php:129
-#: pro-features/functions-pages.php:303 pro-features/user-preferences.php:138
+#: pro-features/functions-pages.php:473 pro-features/user-preferences.php:138
 msgid "Preferences"
 msgstr "Voorkeuren"
 
@@ -3274,6 +3279,7 @@ msgid "Difference from Start Weight"
 msgstr "Verschil vanaf het startpunt"
 
 #: pro-features/email-notifications.php:203
+#: pro-features/plus/messaging/activate.php:59
 msgid "Hello"
 msgstr "Hallo"
 
@@ -3290,6 +3296,7 @@ msgstr ""
 "{type}: "
 
 #: pro-features/email-notifications.php:205
+#: pro-features/plus/messaging/activate.php:61
 #, fuzzy
 #| msgid "{data}"
 msgid "<p>{data}</p>"
@@ -3351,7 +3358,7 @@ msgid ""
 "the export."
 msgstr ""
 
-#: pro-features/export/admin.page.php:167 pro-features/footable.php:321
+#: pro-features/export/admin.page.php:167 pro-features/footable.php:327
 #: pro-features/user-groups.php:622
 msgid "User"
 msgstr "Gebruiker"
@@ -3466,7 +3473,7 @@ msgstr ""
 msgid "Difference from start"
 msgstr "Verschil vanaf het startpunt"
 
-#: pro-features/export/functions.php:209 pro-features/footable.php:337
+#: pro-features/export/functions.php:209 pro-features/footable.php:343
 #, fuzzy
 #| msgid "BMR"
 msgid "BMI"
@@ -3707,11 +3714,18 @@ msgstr ""
 
 #: pro-features/feature-list.php:35
 msgid ""
+" <strong>Admin notes</strong>. Administrators have the ability to store "
+"notes against their users. If set to visible, the user can view these via "
+"[wt-notes] or receive emails with their content."
+msgstr ""
+
+#: pro-features/feature-list.php:36
+msgid ""
 " <strong>Gamification</strong>. Support for myCred, a popular gamification "
 "plugin. Reward your users for weight entries and setting their targets."
 msgstr ""
 
-#: pro-features/feature-list.php:36
+#: pro-features/feature-list.php:37
 #, fuzzy
 #| msgid ""
 #| "<strong>BMI.</strong> Allows a user to specify their height. Once "
@@ -3726,7 +3740,7 @@ msgstr ""
 "Eenmaal opgegeven, wordt hun BMI naast elk gewicht invoer weergegeven. Er is "
 "ook een shortcode de laatste BMI weer te geven."
 
-#: pro-features/feature-list.php:37
+#: pro-features/feature-list.php:38
 #, fuzzy
 #| msgid ""
 #| "<strong>Email notifications.</strong> Receive email notifications when a "
@@ -3739,13 +3753,13 @@ msgstr ""
 "client zijn doel gewicht aanpast of bij het toevoegen / aanpassen van "
 "gewicht."
 
-#: pro-features/feature-list.php:38
+#: pro-features/feature-list.php:39
 msgid ""
 " <strong>Birthday Emails.</strong> Automatically send your user's a birthday "
 "email (when they have entered a date of birth)"
 msgstr ""
 
-#: pro-features/feature-list.php:39
+#: pro-features/feature-list.php:40
 #, fuzzy
 #| msgid ""
 #| "<strong>Overall user stats.</strong> Shortcodes that allow you to display "
@@ -3760,7 +3774,7 @@ msgstr ""
 "om de totale verloren / aangekomen voor de gemeenschap en een ander in een "
 "ranglijst weer te geven."
 
-#: pro-features/feature-list.php:40
+#: pro-features/feature-list.php:41
 #, fuzzy
 #| msgid ""
 #| "<strong>Widgets.</strong> Widgets that allow you to display the graph and "
@@ -3772,7 +3786,7 @@ msgstr ""
 "<strong>Widgets.</strong> Met deze widgets zie je snel en makkelijk het "
 "gewicht in de widget area."
 
-#: pro-features/feature-list.php:41
+#: pro-features/feature-list.php:42
 #, fuzzy
 #| msgid ""
 #| "<strong>Chart and form Shortcodes.</strong> That allow you to display the "
@@ -3785,7 +3799,7 @@ msgstr ""
 "<strong>Grafieken en vormen codes.</strong> Dit geeft je toestemming om de "
 "grafiek en het gewicht wat je hebt ingevult te plaatsen op elke post pagina."
 
-#: pro-features/feature-list.php:42
+#: pro-features/feature-list.php:43
 #, fuzzy
 #| msgid ""
 #| "<strong>Progress Bar shortcode.</strong> A shortcode that visually "
@@ -3797,7 +3811,7 @@ msgstr ""
 "<strong>Voortgangs diagram shortcode.</strong> Een shortcode die visueel "
 "weergeeft wat de voortgang is naar hun doelgewicht"
 
-#: pro-features/feature-list.php:43
+#: pro-features/feature-list.php:44
 #, fuzzy
 #| msgid ""
 #| "<strong>Reminder shortcode.</strong> A shortcode that can be used to "
@@ -3810,7 +3824,7 @@ msgstr ""
 "worden om cliënten een herinnering te geven dat ze hun doelgewicht of het "
 "gewicht van die dag nog moeten invoeren."
 
-#: pro-features/feature-list.php:44
+#: pro-features/feature-list.php:45
 #, fuzzy
 #| msgid ""
 #| "<strong>Message shortcode</strong> A shortcode that allows you to "
@@ -3828,7 +3842,7 @@ msgstr ""
 "geeft ook de mogelijk voor het tegenovergestelde, het aanmoedigen wanneer "
 "iemand is aangekomen qua gewicht."
 
-#: pro-features/feature-list.php:45
+#: pro-features/feature-list.php:46
 #, fuzzy
 #| msgid ""
 #| "<strong>Text Shortcodes.</strong> Additional shortcodes for earliest and "
@@ -3840,7 +3854,7 @@ msgstr ""
 "<strong>Tekst codes.</strong> Extra shortcodes voor de meest recente data "
 "wat je hebt ingevult."
 
-#: pro-features/feature-list.php:46
+#: pro-features/feature-list.php:47
 #, fuzzy
 #| msgid ""
 #| "<strong>Progress Bar shortcode / widget.</strong> Display a user's "
@@ -3852,7 +3866,7 @@ msgstr ""
 "<strong>Voortgangs diagram shortcode / widget.</strong> Laat de voortgang "
 "van een cliënt zijn doelgewicht zien."
 
-#: pro-features/feature-list.php:47
+#: pro-features/feature-list.php:48
 #, fuzzy
 #| msgid ""
 #| "<strong>Reminder shortcode.</strong> Display a reminder to enter their "
@@ -3864,7 +3878,7 @@ msgstr ""
 "<strong>Herinnering shortcode.</strong> Laat een herinnering zien voor het "
 "toevoegen van gewicht voor de dag of voeg een doel toe."
 
-#: pro-features/feature-list.php:48
+#: pro-features/feature-list.php:49
 #, fuzzy
 #| msgid ""
 #| "<strong>Admin: View / Delete user data</strong>. Admin will be able to "
@@ -3876,7 +3890,7 @@ msgstr ""
 "<strong>Admin: Bekijk / bewerk gebruikers data</strong>.Je kan als admin "
 "gebruikers data bekijken, veranderen en verwijderen"
 
-#: pro-features/feature-list.php:49
+#: pro-features/feature-list.php:50
 #, fuzzy
 #| msgid ""
 #| "<strong>User preferences</strong>. If enabled, the user will be able to "
@@ -3893,7 +3907,7 @@ msgstr ""
 "het opslaan van je gewicht in Meteric of Imerial. Je kan bepaalde datums en "
 "bepaald gewicht verwijderen."
 
-#: pro-features/feature-list.php:50
+#: pro-features/feature-list.php:51
 #, fuzzy
 #| msgid ""
 #| "<strong>Bar Charts</strong>. Fancy something different to a line chart? "
@@ -3905,7 +3919,7 @@ msgstr ""
 "<strong>Staafdiagram</strong>. Iets anders dan een lijn diagram? Met deze "
 "plugin kan je kiezen voor een staafdiagram."
 
-#: pro-features/feature-list.php:51
+#: pro-features/feature-list.php:52
 #, fuzzy
 #| msgid ""
 #| "<strong>Decimals</strong>. Decimals will be allowed weight in Pounds only "
@@ -3917,7 +3931,7 @@ msgstr ""
 "<strong>Decimalen</strong>. Decimalen zijn alleen te zien in de Ponden of Kg "
 "modes."
 
-#: pro-features/feature-list.php:52
+#: pro-features/feature-list.php:53
 #, fuzzy
 #| msgid ""
 #| "<strong>Delete existing entry</strong>. A logged in user will be able to "
@@ -3929,7 +3943,7 @@ msgstr ""
 "<Strong> Verwijderen bestaande invoer </ strong>. Een ingelogde gebruiker "
 "zal in staat zijn om bestaande invoer van gewicht te bewerken of verwijderen."
 
-#: pro-features/feature-list.php:53
+#: pro-features/feature-list.php:54
 #, fuzzy
 #| msgid ""
 #| "<strong>Better Tables.</strong>. Data tables in front end and admin will "
@@ -3941,7 +3955,7 @@ msgstr ""
 "<strong>Betere tabellen.</strong>. De data in de tabellen in front & and "
 "admin zullen alles ondersteunen"
 
-#: pro-features/feature-list.php:54
+#: pro-features/feature-list.php:55
 #, fuzzy
 #| msgid ""
 #| "<strong>Admin: Extra Settings</strong>. Extra settings to customise the "
@@ -3954,69 +3968,69 @@ msgstr ""
 "<strong>Admin: Extra Instellingen</strong> Extra instellingen om deze plugin "
 "aan te passen o.a. aantal nummers in de grafies, rijen per pagina, ect."
 
-#: pro-features/footable.php:104
+#: pro-features/footable.php:108
 msgid ""
 "Please note: For performance reasons, this table will only update every 5 "
 "minutes."
 msgstr ""
 
-#: pro-features/footable.php:186
+#: pro-features/footable.php:192
 #, fuzzy
 #| msgid "No Weight entered"
 msgid "No weight recorded"
 msgstr "Geen gewicht ingevoerd"
 
-#: pro-features/footable.php:198
+#: pro-features/footable.php:204
 msgid "No Change"
 msgstr ""
 
-#: pro-features/footable.php:205
+#: pro-features/footable.php:211
 msgid "Check record"
 msgstr ""
 
-#: pro-features/footable.php:207
+#: pro-features/footable.php:213
 #, fuzzy
 #| msgid "First entry"
 msgid "First weight entry"
 msgstr "Eerste invoer"
 
-#: pro-features/footable.php:227
+#: pro-features/footable.php:233
 msgid "No height"
 msgstr "Geen lengte"
 
-#: pro-features/footable.php:331 pro-features/user-groups.php:626
+#: pro-features/footable.php:337 pro-features/user-groups.php:626
 msgid "Difference"
 msgstr "Verschil"
 
-#: pro-features/footable.php:337
+#: pro-features/footable.php:343
 msgid "Body Mass Index"
 msgstr "Body Mass Index"
 
-#: pro-features/footable.php:409
+#: pro-features/footable.php:415
 #, fuzzy
 #| msgid "Add / Edit a Custom Field"
 msgid "Add Custom Field"
 msgstr "Toevoegen / aanpassen van invoer"
 
-#: pro-features/footable.php:410
+#: pro-features/footable.php:416
 #, fuzzy
 #| msgid "Add / Edit an entry"
 msgid "Add Award"
 msgstr "Toevoegen / aanpassen van invoer"
 
-#: pro-features/footable.php:411
+#: pro-features/footable.php:417
 msgid "Are you sure you want to delete the row?"
 msgstr "Weet je zeker dat je deze rij  wilt verwijderen?"
 
-#: pro-features/footable.php:412
+#: pro-features/footable.php:418
 msgid "Unfortunately there was an error deleting the row."
 msgstr "Helaas is er een fout opgetreden bij het verwijderen van de rij."
 
-#: pro-features/footable.php:413
+#: pro-features/footable.php:419
 msgid "Search"
 msgstr "Zoeken"
 
-#: pro-features/footable.php:414
+#: pro-features/footable.php:420
 msgid "No data found"
 msgstr "Geen data gevonden"
 
@@ -4027,148 +4041,211 @@ msgstr ""
 "Voer een e-mailadres,  weergave naam of gebruikersnaam in van een gebruiker "
 "en klik op Zoeken."
 
-#: pro-features/functions-pages.php:84
+#: pro-features/functions-pages.php:93
 msgid "User Search"
 msgstr "Zoek gebruiker"
 
-#: pro-features/functions-pages.php:103
+#: pro-features/functions-pages.php:112
+#, php-format
+msgid ": <span id=\"%2$s_count\">%1$d</span>"
+msgstr ""
+
+#: pro-features/functions-pages.php:121
+#, fuzzy
+#| msgid "There was an issue loading this page"
+msgid "There was an error adding the note. Please try again."
+msgstr "Er was een probleem met het laden van deze pagina"
+
+#: pro-features/functions-pages.php:124
+#, fuzzy
+#| msgid "Your settings have been saved!"
+msgid "The note has been saved successfully."
+msgstr "Je gewicht is opgeslagen!"
+
+#: pro-features/functions-pages.php:129
+#, php-format
+msgid "<a href=\"%1$s\">View All</a> /"
+msgstr ""
+
+#: pro-features/functions-pages.php:131
+#, php-format
+msgid ""
+" <a href=\"#\" id=\"%1$s_view_most_read\">View most recent</a><a href=\"#\" "
+"class=\"ws-ls-hide\" id=\"%1$s_hide_most_read\">Hide most recent</a>"
+msgstr ""
+
+#: pro-features/functions-pages.php:136
+#, fuzzy
+#| msgid "Most Recent Photo"
+msgid "Most recent comment"
+msgstr "Meest recente foto"
+
+#: pro-features/functions-pages.php:142
+#, fuzzy
+#| msgid "Entries for this user"
+msgid "There are no notes for this user"
+msgstr "Inschrijvingen voor deze gebruiker"
+
+#: pro-features/functions-pages.php:153
+#, fuzzy
+#| msgid "Entries for this user"
+msgid "Add a note for this user..."
+msgstr "Inschrijvingen voor deze gebruiker"
+
+#: pro-features/functions-pages.php:157
+msgid "Send note to user via email"
+msgstr ""
+
+#: pro-features/functions-pages.php:163
+#, fuzzy
+#| msgid "Allow user to specify a date"
+msgid "Allow user to view via"
+msgstr "Gebruikers toestaan een datum te selecteren"
+
+#: pro-features/functions-pages.php:171
+#, fuzzy
+#| msgid "Add Entry"
+msgid "Add note"
+msgstr "Toevoegen invoer"
+
+#: pro-features/functions-pages.php:273
 msgid "Most Recent Photo"
 msgstr "Meest recente foto"
 
-#: pro-features/functions-pages.php:114
+#: pro-features/functions-pages.php:284
 msgid "No. of photos: "
 msgstr "Aantal foto's:"
 
-#: pro-features/functions-pages.php:117
+#: pro-features/functions-pages.php:287
 msgid "View all"
 msgstr "Bekijk alles"
 
-#: pro-features/functions-pages.php:141
+#: pro-features/functions-pages.php:311
 #, fuzzy
 #| msgid "Summary"
 msgid "User summary"
 msgstr "Samenvatting"
 
-#: pro-features/functions-pages.php:149
+#: pro-features/functions-pages.php:319
 #, fuzzy
 #| msgid "No of entries"
 msgid "No. of entries"
 msgstr "Aantal invoeringen"
 
-#: pro-features/functions-pages.php:153
+#: pro-features/functions-pages.php:323
 #, fuzzy
 #| msgid "Add a weight entry"
 msgid "Starting entry"
 msgstr "Voeg invoer voor een gewicht toe"
 
-#: pro-features/functions-pages.php:162
+#: pro-features/functions-pages.php:332
 #, fuzzy
 #| msgid "Latest Weight"
 msgid "Latest entry"
 msgstr "Laatste gewicht"
 
-#: pro-features/functions-pages.php:178
+#: pro-features/functions-pages.php:348
 #, fuzzy
 #| msgid "Diff. from Start"
 msgid "Diff. from start"
 msgstr "Verschil vanaf start"
 
-#: pro-features/functions-pages.php:188
+#: pro-features/functions-pages.php:358
 msgid "No target set"
 msgstr "Er is geen streefgewicht ingesteld"
 
-#: pro-features/functions-pages.php:194
+#: pro-features/functions-pages.php:364
 #, fuzzy
 #| msgid "Diff. from Target"
 msgid "Diff. from target"
 msgstr "Verschil vanaf doel"
 
-#: pro-features/functions-pages.php:198
+#: pro-features/functions-pages.php:368
 msgid "Current BMI"
 msgstr "Huidige BMI"
 
-#: pro-features/functions-pages.php:199
+#: pro-features/functions-pages.php:369
 msgid "No height specified"
 msgstr "Geen lengte opgegeven"
 
-#: pro-features/functions-pages.php:205
+#: pro-features/functions-pages.php:375
 msgid "Aim"
 msgstr "Doel"
 
-#: pro-features/functions-pages.php:209
+#: pro-features/functions-pages.php:379
 msgid "Height"
 msgstr "Lengte"
 
-#: pro-features/functions-pages.php:213
-#: pro-features/plus/challenge/functions.php:481
+#: pro-features/functions-pages.php:383
+#: pro-features/plus/challenge/functions.php:486
 msgid "Gender"
 msgstr "Geslacht"
 
-#: pro-features/functions-pages.php:217
+#: pro-features/functions-pages.php:387
 #, fuzzy
 #| msgid "Activity Level"
 msgid "Activity level"
 msgstr "Activiteiten niveau"
 
-#: pro-features/functions-pages.php:221
+#: pro-features/functions-pages.php:391
 #, fuzzy
 #| msgid "Date of Birth"
 msgid "Date of birth"
 msgstr "Geboortedatum"
 
-#: pro-features/functions-pages.php:225
+#: pro-features/functions-pages.php:395
 msgid "BMR"
 msgstr "BMR"
 
-#: pro-features/functions-pages.php:230
+#: pro-features/functions-pages.php:400
 msgid "Missing data"
 msgstr "Verloren data"
 
-#: pro-features/functions-pages.php:253 pro-features/functions-pages.php:257
+#: pro-features/functions-pages.php:423 pro-features/functions-pages.php:427
 msgid "Add Entry"
 msgstr "Toevoegen invoer"
 
-#: pro-features/functions-pages.php:261
+#: pro-features/functions-pages.php:431
 msgid "Edit Target"
 msgstr "Bewerk doel"
 
-#: pro-features/functions-pages.php:275
+#: pro-features/functions-pages.php:445
 #, fuzzy
 #| msgid "Export Data"
 msgid "Export data"
 msgstr "Exporteer data"
 
-#: pro-features/functions-pages.php:318
+#: pro-features/functions-pages.php:488
 #, fuzzy
 #| msgid "Delete Cache"
 msgid "Delete cache"
 msgstr "Verwijder Cache"
 
-#: pro-features/functions-pages.php:322
+#: pro-features/functions-pages.php:492
 msgid "Delete Cache for this user"
 msgstr "Verwijder alle cache voor de cliënt"
 
-#: pro-features/functions-pages.php:337
+#: pro-features/functions-pages.php:507
 #, fuzzy
 #| msgid "Delete Data"
 msgid "Delete data"
 msgstr "Verwijder data"
 
-#: pro-features/functions-pages.php:341
+#: pro-features/functions-pages.php:511
 msgid "Delete ALL data for this user"
 msgstr "Verwijder ALLE DATA voor deze cliënt"
 
-#: pro-features/functions-pages.php:347
+#: pro-features/functions-pages.php:517
 msgid "Are you sure you wish to remove the data for this user?"
 msgstr ""
 "Weet je het zeker dat je alle gebruikergegevens wilt wissen voor deze cliënt?"
 
-#: pro-features/functions-pages.php:424
-#: pro-features/plus/challenge/admin.page.php:134
+#: pro-features/functions-pages.php:594
+#: pro-features/plus/challenge/admin.page.php:137
 msgid "Back"
 msgstr "Terug"
 
-#: pro-features/functions-pages.php:426
+#: pro-features/functions-pages.php:596
 msgid "WordPress Record"
 msgstr "WordPress gegevens"
 
@@ -4188,69 +4265,73 @@ msgstr "Gezond"
 msgid "Overweight"
 msgstr "Overgewicht"
 
-#: pro-features/functions.php:70 pro-features/functions.php:112
-msgid "Heavily Overweight"
-msgstr "Zwaar overgewicht"
+#: pro-features/functions.php:70
+msgid "Obese"
+msgstr ""
 
 #: pro-features/functions.php:74
 msgid "Err"
 msgstr ""
 
-#: pro-features/functions.php:304 pro-features/plus/harris-benedict.php:457
+#: pro-features/functions.php:112
+msgid "Heavily Overweight"
+msgstr "Zwaar overgewicht"
+
+#: pro-features/functions.php:314 pro-features/plus/harris-benedict.php:461
 msgid "Female"
 msgstr "Vrouwelijk"
 
-#: pro-features/functions.php:305 pro-features/plus/harris-benedict.php:457
+#: pro-features/functions.php:315 pro-features/plus/harris-benedict.php:461
 msgid "Male"
 msgstr "Mannelijk"
 
-#: pro-features/functions.php:329
+#: pro-features/functions.php:339
 msgid "Little / No Exercise"
 msgstr "Weinig/niet actief"
 
-#: pro-features/functions.php:330
+#: pro-features/functions.php:340
 msgid "Light Exercise"
 msgstr "Lichte oefeningen"
 
-#: pro-features/functions.php:331
+#: pro-features/functions.php:341
 msgid "Moderate Exercise (3-5 days a week)"
 msgstr "Gemiddelde oefeningen (3-5 dagen per week)"
 
-#: pro-features/functions.php:332
+#: pro-features/functions.php:342
 msgid "Very Active (6-7 days a week)"
 msgstr "Zeer Actief (6-7 dagen per week)"
 
-#: pro-features/functions.php:333
+#: pro-features/functions.php:343
 msgid "Extra Active (very active & physical job)"
 msgstr "Extra Actief (erg actief en fysiek werk)"
 
-#: pro-features/functions.php:350
+#: pro-features/functions.php:360
 msgid "Maintain current weight"
 msgstr "Huidige gewicht behouden"
 
-#: pro-features/functions.php:351
+#: pro-features/functions.php:361
 msgid "Lose weight"
 msgstr "Afvallen"
 
-#: pro-features/functions.php:352
+#: pro-features/functions.php:362
 msgid "Gain weight"
 msgstr "Aankomen"
 
-#: pro-features/functions.php:477
+#: pro-features/functions.php:487
 #: pro-features/plus/meta-fields/activate.php:143
 #: pro-features/plus/meta-fields/activate.php:158
 msgid "cm"
 msgstr "cm"
 
-#: pro-features/functions.php:492 pro-features/functions.php:584
-#: pro-features/functions.php:788 pro-features/shortcode-various.php:212
+#: pro-features/functions.php:502 pro-features/functions.php:594
+#: pro-features/functions.php:798 pro-features/shortcode-various.php:212
 #: pro-features/shortcode-various.php:238
 #: pro-features/shortcode-various.php:264
 #: pro-features/shortcode-various.php:292
 msgid "Not Specified"
 msgstr "Niet opgegeven"
 
-#: pro-features/functions.php:698
+#: pro-features/functions.php:708
 msgid "Error: The user does not appear to exist"
 msgstr "Error: De cliënt lijkt niet te bestaan"
 
@@ -4340,7 +4421,7 @@ msgstr ""
 
 #: pro-features/plus/awards/functions.php:61
 #: pro-features/plus/harris-benedict.php:117
-#: pro-features/plus/macronutrient-calculator.php:343
+#: pro-features/plus/macronutrient-calculator.php:327
 #, fuzzy
 #| msgid "Gained"
 msgid "Gain"
@@ -4426,7 +4507,7 @@ msgstr ""
 
 #: pro-features/plus/challenge/admin.page.php:68
 #: pro-features/plus/challenge/admin.page.php:78
-#: pro-features/plus/challenge/admin.page.php:193
+#: pro-features/plus/challenge/admin.page.php:196
 msgid ""
 "Why not set challenges for your user's within a given time period? Display "
 "Total Weight Lost, BMI Change, %Body Weight, Weight Tracker Streaks and Meal "
@@ -4435,7 +4516,7 @@ msgstr ""
 
 #: pro-features/plus/challenge/admin.page.php:69
 #: pro-features/plus/challenge/admin.page.php:79
-#: pro-features/plus/challenge/admin.page.php:194
+#: pro-features/plus/challenge/admin.page.php:197
 msgid ""
 "Besides viewing all your challenges and their data, the shortcode will allow "
 "you to display the league table in the public facing website."
@@ -4476,184 +4557,190 @@ msgid ""
 "                                                        "
 msgstr ""
 
-#: pro-features/plus/challenge/admin.page.php:100
+#: pro-features/plus/challenge/admin.page.php:94
+msgid ""
+"Note: Challenge tables will only update every hour.\n"
+"                                                        "
+msgstr ""
+
+#: pro-features/plus/challenge/admin.page.php:103
 #, fuzzy
 #| msgid "Add a new weight"
 msgid "Add a new challenge"
 msgstr "Voeg een nieuw gewicht toe"
 
-#: pro-features/plus/challenge/admin.page.php:114
+#: pro-features/plus/challenge/admin.page.php:117
 msgid "Name of challenge"
 msgstr ""
 
-#: pro-features/plus/challenge/admin.page.php:116
+#: pro-features/plus/challenge/admin.page.php:119
 msgid "Start Date (only consider entries from this date)"
 msgstr ""
 
-#: pro-features/plus/challenge/admin.page.php:118
+#: pro-features/plus/challenge/admin.page.php:121
 msgid "End Date (only consider entries to this date)"
 msgstr ""
 
-#: pro-features/plus/challenge/admin.page.php:129
+#: pro-features/plus/challenge/admin.page.php:132
 #, fuzzy
 #| msgid "Entries for this user"
 msgid "Entries for this challenge"
 msgstr "Inschrijvingen voor deze gebruiker"
 
-#: pro-features/plus/challenge/admin.page.php:147
+#: pro-features/plus/challenge/admin.page.php:150
 msgid "Processing..."
 msgstr "Verwerken..."
 
-#: pro-features/plus/challenge/admin.page.php:149
+#: pro-features/plus/challenge/admin.page.php:152
 msgid ""
 "Processing existing entries for this challenge. This page will keep "
 "refreshing until the initial challenge data has been processed."
 msgstr ""
 
-#: pro-features/plus/challenge/admin.page.php:154
+#: pro-features/plus/challenge/admin.page.php:157
 msgid "entries processed"
 msgstr ""
 
-#: pro-features/plus/challenge/admin.page.php:184
+#: pro-features/plus/challenge/admin.page.php:187
 #, fuzzy
 #| msgid "Stats disabled"
 msgid "Challenges Disabled"
 msgstr "Statistieken uitgezet"
 
-#: pro-features/plus/challenge/admin.page.php:189
+#: pro-features/plus/challenge/admin.page.php:192
 msgid "Challenges are currently disabled. Please enable via the"
 msgstr ""
 
-#: pro-features/plus/challenge/admin.page.php:190
-#: pro-features/plus/harris-benedict.php:462
+#: pro-features/plus/challenge/admin.page.php:193
+#: pro-features/plus/harris-benedict.php:466
 msgid "settings"
 msgstr "Instellingen"
 
-#: pro-features/plus/challenge/admin.page.php:190
+#: pro-features/plus/challenge/admin.page.php:193
 msgid "page"
 msgstr ""
 
-#: pro-features/plus/challenge/functions.php:198
+#: pro-features/plus/challenge/functions.php:203
 #: pro-features/user-groups.php:621
 msgid "ID"
 msgstr ""
 
-#: pro-features/plus/challenge/functions.php:199
-#: pro-features/plus/challenge/functions.php:351
+#: pro-features/plus/challenge/functions.php:204
+#: pro-features/plus/challenge/functions.php:356
 #: pro-features/plus/meta-fields/hooks.php:137
 #: pro-features/shortcode-stats.php:38 pro-features/user-groups.php:573
 #: pro-features/web-hooks.php:226 pro-features/web-hooks.php:345
 msgid "Name"
 msgstr "Naam"
 
-#: pro-features/plus/challenge/functions.php:200
+#: pro-features/plus/challenge/functions.php:205
 #, fuzzy
 #| msgid "Start Weight"
 msgid "Start Date"
 msgstr "Start gewicht"
 
-#: pro-features/plus/challenge/functions.php:201
+#: pro-features/plus/challenge/functions.php:206
 #, fuzzy
 #| msgid "Date"
 msgid "End Date"
 msgstr "Datum"
 
-#: pro-features/plus/challenge/functions.php:202
+#: pro-features/plus/challenge/functions.php:207
 #, fuzzy
 #| msgid "No. of Entries"
 msgid "No. entries"
 msgstr "Aantal van invoer "
 
-#: pro-features/plus/challenge/functions.php:203
+#: pro-features/plus/challenge/functions.php:208
 #, fuzzy
 #| msgid "Entries for this user"
 msgid "Entries to process"
 msgstr "Inschrijvingen voor deze gebruiker"
 
-#: pro-features/plus/challenge/functions.php:204
+#: pro-features/plus/challenge/functions.php:209
 msgid "Closed"
 msgstr ""
 
-#: pro-features/plus/challenge/functions.php:240
+#: pro-features/plus/challenge/functions.php:245
 #, fuzzy
 #| msgid "View all data"
 msgid "View challenge data"
 msgstr "Bekijk alle data"
 
-#: pro-features/plus/challenge/functions.php:241
+#: pro-features/plus/challenge/functions.php:246
 msgid "Close challenge"
 msgstr ""
 
-#: pro-features/plus/challenge/functions.php:242
+#: pro-features/plus/challenge/functions.php:247
 #, fuzzy
 #| msgid "Delete Cache"
 msgid "Delete challenge"
 msgstr "Verwijder Cache"
 
-#: pro-features/plus/challenge/functions.php:263
+#: pro-features/plus/challenge/functions.php:268
 #, fuzzy
 #| msgid "Weight Difference"
 msgid "Total Weight Loss"
 msgstr "Verschil in gewicht"
 
-#: pro-features/plus/challenge/functions.php:264
+#: pro-features/plus/challenge/functions.php:269
 msgid "BMI Change"
 msgstr ""
 
-#: pro-features/plus/challenge/functions.php:265
+#: pro-features/plus/challenge/functions.php:270
 #, fuzzy
 #| msgid "No height"
 msgid "% Body Weight"
 msgstr "Geen lengte"
 
-#: pro-features/plus/challenge/functions.php:266
+#: pro-features/plus/challenge/functions.php:271
 msgid "Meal Tracker Streaks (Days)"
 msgstr ""
 
-#: pro-features/plus/challenge/functions.php:267
+#: pro-features/plus/challenge/functions.php:272
 #, fuzzy
 #| msgid "Weight Loss Tracker"
 msgid "Weight Tracker Streaks (Weeks)"
 msgstr "Weight Loss Tracker"
 
-#: pro-features/plus/challenge/functions.php:335
+#: pro-features/plus/challenge/functions.php:340
 msgid "Please specify an ID e.g. [wt-challenges id=\"1\"]"
 msgstr ""
 
-#: pro-features/plus/challenge/functions.php:447
+#: pro-features/plus/challenge/functions.php:452
 #, fuzzy
 #| msgid "Summary"
 msgid "Sum"
 msgstr "Samenvatting"
 
-#: pro-features/plus/challenge/functions.php:449
+#: pro-features/plus/challenge/functions.php:454
 msgid "Average"
 msgstr ""
 
-#: pro-features/plus/challenge/functions.php:484
+#: pro-features/plus/challenge/functions.php:489
 msgid "Age Range"
 msgstr ""
 
-#: pro-features/plus/challenge/functions.php:495
-#: pro-features/plus/challenge/functions.php:497
+#: pro-features/plus/challenge/functions.php:500
+#: pro-features/plus/challenge/functions.php:502
 msgid "Opted in"
 msgstr ""
 
-#: pro-features/plus/challenge/functions.php:503
+#: pro-features/plus/challenge/functions.php:508
 #, fuzzy
 #| msgid "No. of Weight Entries"
 msgid "Min. Weight Entries"
 msgstr "Aantal gewichten ingevoerd"
 
-#: pro-features/plus/challenge/functions.php:505
+#: pro-features/plus/challenge/functions.php:510
 msgid "Two or more"
 msgstr ""
 
-#: pro-features/plus/challenge/functions.php:506
+#: pro-features/plus/challenge/functions.php:511
 msgid "One or more"
 msgstr ""
 
-#: pro-features/plus/challenge/functions.php:511
+#: pro-features/plus/challenge/functions.php:516
 msgid "Filter"
 msgstr ""
 
@@ -4700,18 +4787,18 @@ msgid ""
 msgstr ""
 
 #: pro-features/plus/harris-benedict.php:82
-#: pro-features/plus/macronutrient-calculator.php:343
+#: pro-features/plus/macronutrient-calculator.php:327
 msgid "Maintain"
 msgstr "Behouden"
 
 #: pro-features/plus/harris-benedict.php:106
-#: pro-features/plus/macronutrient-calculator.php:343
+#: pro-features/plus/macronutrient-calculator.php:327
 msgid "Lose"
 msgstr "Verliezen"
 
 #: pro-features/plus/harris-benedict.php:210
 #: pro-features/plus/harris-benedict.php:357
-#: pro-features/plus/harris-benedict.php:406
+#: pro-features/plus/harris-benedict.php:410
 #: pro-features/plus/macronutrient-calculator.php:128
 #: pro-features/plus/macronutrient-calculator.php:238
 #: pro-features/plus/macronutrient-calculator.php:286
@@ -4778,17 +4865,35 @@ msgstr ""
 msgid "Rule applied for suggested weight gain"
 msgstr ""
 
-#: pro-features/plus/harris-benedict.php:458
+#: pro-features/plus/harris-benedict.php:462
 msgid "calories for weight loss are capped at "
 msgstr "calorieën voor gewichtsverlies staan maximaal op "
 
-#: pro-features/plus/harris-benedict.php:460
+#: pro-features/plus/harris-benedict.php:464
 msgid "This can be modified within "
 msgstr "Dit kan worden aangepast binnen"
 
 #: pro-features/plus/macronutrient-calculator.php:190
 msgid "Carbs"
 msgstr "Koolhydraten"
+
+#: pro-features/plus/messaging/activate.php:60
+msgid "<p><strong>A new note has been sent to you from {name}:</strong></p>"
+msgstr ""
+
+#: pro-features/plus/messaging/activate.php:63
+#, fuzzy
+#| msgid "added"
+msgid "Note added"
+msgstr "toegevoegd"
+
+#: pro-features/plus/messaging/functions-notes.php:85
+msgid " (Visible via [wt-notes])"
+msgstr ""
+
+#: pro-features/plus/messaging/hooks.php:71
+msgid "You currently have no notes from the administrator."
+msgstr ""
 
 #: pro-features/plus/meta-fields/activate.php:125
 msgid "Cups of water drank today?"
@@ -5166,24 +5271,20 @@ msgstr ""
 msgid "Macronutrients"
 msgstr "macronutriënten"
 
-#: pro-features/plus/shortcode.wlt.php:135
+#: pro-features/plus/shortcode.wlt.php:134
+#, fuzzy
+#| msgid ""
+#| "With calories calculated, the we can recommend how those calories should "
+#| "be split into Fats, Carbohydrates and Proteins.  Based on 2010 Dietary "
+#| "Guidelines for Americans we have split it in the following manner:"
 msgid ""
 "With calories calculated, the we can recommend how those calories should be "
-"split into Fats, Carbohydrates and Proteins.  Based on 2010 Dietary "
-"Guidelines for Americans we have split it in the following manner:"
+"split into Fats, Carbohydrates and Proteins."
 msgstr ""
 "Met calorieën berekend, kunnen we aanraden hoe deze calorieën verdeeld "
 "moeten worden in vetten, koolhydraten en eiwitten. Op basis van de "
 "voedingsrichtsnoeren voor Amerikanen in 2010 hebben we het op de volgende "
 "manier gesplitst:"
-
-#: pro-features/plus/shortcode.wlt.php:138
-msgid "of calories, Fat"
-msgstr "van calorieën, vet"
-
-#: pro-features/plus/shortcode.wlt.php:140
-msgid "and Protein"
-msgstr "en Proteïnen"
 
 #: pro-features/shortcode-if.php:21
 #, fuzzy
@@ -5301,11 +5402,11 @@ msgstr "Verschil in gewicht"
 msgid "No. Entries"
 msgstr "Aantal van invoer "
 
-#: pro-features/user-groups.php:739
-msgid "Group ID not found"
+#: pro-features/user-groups.php:730
+msgid "There is no weight difference for this group."
 msgstr ""
 
-#: pro-features/user-groups.php:753
+#: pro-features/user-groups.php:766
 msgid "No Group"
 msgstr ""
 
@@ -5572,6 +5673,28 @@ msgid "Text to be displayed under bar. Use {t} to display target weight."
 msgstr ""
 "De tekst die onder de balk moet worden weergegeven. Gebruik {t} om het "
 "streefgewicht weer te geven."
+
+#~ msgid "Percentage of Proteins to make up a moderate diet"
+#~ msgstr "Proteïnepercentage om een gemiddeld dieet te vormen"
+
+#~ msgid ""
+#~ "Please note, it may take up to 15 minutes for calorie calculations to "
+#~ "change (due to caching)."
+#~ msgstr ""
+#~ "Let op, het kan tot 15 minuten duren voordat de calorieberekeningen "
+#~ "worden gewijzigd (door caching)."
+
+#~ msgid "Percentage of Carbohydrates to make up a moderate diet"
+#~ msgstr "Koolhydraatpercentage om een gemiddeld dieet te vormen"
+
+#~ msgid "Percentage of Fats to make up a moderate diet"
+#~ msgstr "Vetpercentage om een gemiddeld dieet te vormen"
+
+#~ msgid "of calories, Fat"
+#~ msgstr "van calorieën, vet"
+
+#~ msgid "and Protein"
+#~ msgstr "en Proteïnen"
 
 #, fuzzy
 #~| msgid "Add / Edit a Custom Field"
