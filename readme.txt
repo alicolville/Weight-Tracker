@@ -2,8 +2,8 @@
 Contributors: aliakro
 Tags: weight,tracker,chart,bmi,bmr,macronutrient,measure,awards,custom fields,history,measurements,data
 Requires at least: 5.7
-Tested up to: 5.9.1
-Stable tag: 9.3.13
+Tested up to: 5.9.2
+Stable tag: 9.4
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -160,6 +160,10 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 9.3 - Admin notes! Store notes against your users and optionally share with them.
 
 == Changelog ==
+
+= 9.4 =
+
+* Changed "Heavily Overweight" in "BMI" calculations to match NHS terminology (https://www.nhs.uk/common-health-questions/lifestyle/what-is-the-body-mass-index-bmi/)
 
 = 9.3.13 =
 
