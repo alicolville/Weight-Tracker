@@ -512,14 +512,13 @@ function ws_ls_db_dates_min_max_get( $user_id ) {
  */
 function ws_ls_set_user_preferences( $in_admin_area, $fields = [] ) {
 
-    $db_fields = wp_parse_args( $fields, [ 'user_id' => get_current_user_id() ] );
+	$user_id = ( false === empty( $fields[ 'user_id' ] ) ) ? (int) $fields[ 'user_id' ] : get_current_user_id();
 
-    if ( true === isset( $db_fields[ 'settings' ] ) ) {
+	// Check if we have existing values and load if we do. This allows partial settings to be sent through for saving.
+    $db_fields = wp_parse_args( $fields, ws_ls_db_user_preferences( $user_id ) );
 
-	    if ( false === is_array( $db_fields['settings'] ) ) {
-		    $db_fields['settings'] = [];
-	    }
-
+    if ( true === isset( $db_fields[ 'settings' ] ) &&
+            true === is_array( $db_fields['settings'] ) ) {
 	    $db_fields[ 'settings' ] = json_encode( $db_fields['settings'] );
     }
 

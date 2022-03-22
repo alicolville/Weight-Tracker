@@ -34,22 +34,26 @@ function ws_ls_save_preferences_callback() {
 
 	$in_admin_area = ( NULL !== ws_ls_post_value('we-ls-in-admin' ) ) ? true : false;
 
-	// Look for globals that user's can override
-	$fields             = [
-								'settings' =>   [
-													'WE_LS_DATA_UNITS'  => ws_ls_post_value( 'WE_LS_DATA_UNITS' ),
-													'WE_LS_US_DATE'     => ws_ls_post_value_to_bool( 'WE_LS_US_DATE' )
-												]
-	];
+	$fields = [];
+
+	if ( true === isset( $_POST[ 'WE_LS_DATA_UNITS' ] ) ) {
+		$fields[ 'settings' ] = [ 'WE_LS_DATA_UNITS'  => ws_ls_post_value( 'WE_LS_DATA_UNITS' ),
+		                          'WE_LS_US_DATE'     => ws_ls_post_value_to_bool( 'WE_LS_US_DATE' )
+								];
+	}
 
 	$fields[ 'height' ]         = ws_ls_post_value( 'ws-ls-height', NULL, false, false, 'int' );
 	$fields[ 'gender' ]         = ws_ls_post_value( 'ws-ls-gender', NULL, false, false, 'int' );
 	$fields[ 'aim' ]            = ws_ls_post_value( 'ws-ls-aim', NULL, false, false, 'int' );
-	$fields[ 'activity_level' ] = ws_ls_post_value( 'ws-ls-activity-level', NULL, false, false, 'float' );
+	$fields[ 'activity_level' ] = ws_ls_post_value( 'ws-ls-activity_level', NULL, false, false, 'float' );
 	$fields[ 'dob' ]            = ws_ls_post_value( 'ws-ls-dob' );
 	$fields[ 'user_id' ]        = ws_ls_post_value( 'user-id', NULL, false, false, 'int'  );
 
-	$fields                     = apply_filters( 'wlt-filter-user-settings-save-fields', $fields );
+	$fields = array_filter( $fields, function( $v, $k ) {
+		return NULL !== $v;
+	}, ARRAY_FILTER_USE_BOTH );
+
+	$fields = apply_filters( 'wlt-filter-user-settings-save-fields', $fields );
 
 	do_action( 'ws-ls-hook-user-preference-save', (int) $fields['user_id'], $in_admin_area, $fields );
 
