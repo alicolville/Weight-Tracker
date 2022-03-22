@@ -163,6 +163,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 = 9.4 =
 
+TODO: New attributes on user-settings and docums
 * New feature: Added the field "previous-weight" to [wt-if].
 * Improvement: Added the ability to edit group names.
 * Bug fix: Generate cache key correctly when loading groups.
