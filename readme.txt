@@ -107,17 +107,6 @@ Paypal Donate: [www.paypal.me/yeken](https://www.paypal.me/yeken "www.paypal.me/
 
 Yes! Please visit our dedicated site [Weight Tracker Website](https://weight.yeken.uk "Weight Tracker Website")
 
-= Does it create any custom mySQL tables =
-
-Yes it creates six:
-
-- WP_WS_LS_DATA_TARGETS - Stores user target data.
-- WP_WS_LS_DATA - Store weight and measurement information per user.
-- WS_LS_DATA_USER_PREFERENCES - Stores user preferences.
-- WS_LS_DATA_USER_STATS - Stores user statistics data.
-- WS_LS_META_FIELDS - Defines the Custom Fields that can be asked on weight entry forms.
-- WS_LS_META_ENTRY - Stores the answers for Custom Fields.
-
 = What date formats doe it support? =
 
 Currently it supports both UK (dd/mm/yyy) and US (mm/dd/yyyy) date formats.
