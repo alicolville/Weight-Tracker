@@ -80,6 +80,60 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
     </div>
 </div>';
 
+	$html .= '<div class="ykuk-card ykuk-card-small ykuk-card-default ykuk-width-1-2@m">
+    <div class="ykuk-card-header">
+        <div class="ykuk-grid-small ykuk-flex-middle" ykuk-grid>
+
+            <div class="ykuk-width-expand">
+                <h3 class="ykuk-card-title uk-margin-remove-bottom">Target</h3>
+                <p class="ykuk-text-meta ykuk-margin-remove-top"><time datetime="2016-04-01T19:00">April 01, 2016</time></p>
+            </div>
+        </div>
+    </div>
+    <div class="ykuk-card-body">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+    </div>
+    <div class="ykuk-card-footer">
+        <a href="#" class="ykuk-button ykuk-button-text">Read more</a>
+    </div>
+</div>';
+
+	$html .= '<div class="ykuk-card ykuk-card-small ykuk-card-default ykuk-width-1-2@m">
+    <div class="ykuk-card-header">
+        <div class="ykuk-grid-small ykuk-flex-middle" ykuk-grid>
+
+            <div class="ykuk-width-expand">
+                <h3 class="ykuk-card-title uk-margin-remove-bottom">Target</h3>
+                <p class="ykuk-text-meta ykuk-margin-remove-top"><time datetime="2016-04-01T19:00">April 01, 2016</time></p>
+            </div>
+        </div>
+    </div>
+    <div class="ykuk-card-body">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+    </div>
+    <div class="ykuk-card-footer">
+        <a href="#" class="ykuk-button ykuk-button-text">Read more</a>
+    </div>
+</div>';
+
+	$html .= '<div class="ykuk-card ykuk-card-small ykuk-card-default ykuk-width-1-2@m">
+    <div class="ykuk-card-header">
+        <div class="ykuk-grid-small ykuk-flex-middle" ykuk-grid>
+
+            <div class="ykuk-width-expand">
+                <h3 class="ykuk-card-title uk-margin-remove-bottom">Target</h3>
+                <p class="ykuk-text-meta ykuk-margin-remove-top"><time datetime="2016-04-01T19:00">April 01, 2016</time></p>
+            </div>
+        </div>
+    </div>
+    <div class="ykuk-card-body">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+    </div>
+    <div class="ykuk-card-footer">
+        <a href="#" class="ykuk-button ykuk-button-text">Read more</a>
+    </div>
+</div>';
+
 $html .= '<ul ykuk-tab class="ykuk-flex-right">
     <li class="ykuk-active"><a href="#"><span ykuk-icon="icon: home"></span></a></li>
     <li><a href="#"><span ykuk-icon="icon: history"></span></a></li>
@@ -109,10 +163,32 @@ $html .= '<ul ykuk-tab class="ykuk-flex-right">
 <ul class="ykuk-switcher switcher-container ykuk-margin">
     <li>
 		<h4>Summary</h4>
-		<span class="ykuk-text-small"><span data-ykuk-icon="icon:users" class="ykuk-margin-small-right ykuk-text-primary ykuk-icon"></span>Current weight</span>
-		<h1 class="ykuk-heading-primary ykuk-margin-remove  ykuk-text-primary">24Kg</h1>
-		<div class="ykuk-text-small">
-			<span class="ykuk-text-success uk-icon" data-ykuk-icon="icon: triangle-up">15%</span> more than last week.
+		<div class="ukuk-grid-small ykuk-child-width-expand@s ykuk-text-center" ykuk-grid>
+			<div>
+				<div class="ykuk-card ykuk-card-small ykuk-card-default">
+    <div class="ykuk-card-header">
+        <div class="ykuk-grid-small ykuk-flex-middle" ykuk-grid>
+
+            <div class="ykuk-width-expand">
+                <h3 class="ykuk-card-title uk-margin-remove-bottom">Target</h3>
+                <p class="ykuk-text-meta ykuk-margin-remove-top"><time datetime="2016-04-01T19:00">April 01, 2016</time></p>
+            </div>
+        </div>
+    </div>
+    <div class="ykuk-card-body">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+    </div>
+    <div class="ykuk-card-footer">
+        <a href="#" class="ykuk-button ykuk-button-text">Read more</a>
+    </div>
+</div>
+			</div>
+			<div>
+				<div class="ykuk-card ykuk-card-default ykuk-card-body">Item</div>
+			</div>
+			<div>
+				<div class="ykuk-card ykuk-card-default ykuk-card-body">Item</div>
+			</div>
 		</div>
 
 	</li>
@@ -120,17 +196,24 @@ $html .= '<ul ykuk-tab class="ykuk-flex-right">
 
     <li>Bazinga!</li></ul>';
 
-
+/*
+ *
+ * <span class="ykuk-text-small"><span data-ykuk-icon="icon:users" class="ykuk-margin-small-right ykuk-text-primary ykuk-icon"></span>Current weight</span>
+		<h1 class="ykuk-heading-primary ykuk-margin-remove  ykuk-text-primary">24Kg</h1>
+		<div class="ykuk-text-small">
+			<span class="ykuk-text-success uk-icon" data-ykuk-icon="icon: triangle-up">15%</span> more than last week.
+		</div>
+ */
 
 	// Display chart?
 	if ( false === ws_ls_to_bool( $shortcode_arguments[ 'hide-chart-overview' ] ) ) {
 		$shortcode_arguments[ 'hide-title' ] = true;
-		$html .= ws_ls_shortcode_embed_chart( $weight_data, $shortcode_arguments );
+//		$html .= ws_ls_shortcode_embed_chart( $weight_data, $shortcode_arguments );
 	}
 
-	$html .= '<span class="ykuk-label">Start: 12st 10lb</span>&nbsp;';
-
-	$html .= '<span class="ykuk-label ykuk-label-success">Current: 12st 10lb</span>';
+//	$html .= '<span class="ykuk-label">Start: 12st 10lb</span>&nbsp;';
+//
+//	$html .= '<span class="ykuk-label ykuk-label-success">Current: 12st 10lb</span>';
 
 	$html .= ws_ls_uikit_accordian_open( [ 'multiple' => $shortcode_arguments[ 'accordian-multiple-open' ] ] );
 
