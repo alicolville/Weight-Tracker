@@ -1594,4 +1594,3 @@ function ws_ls_get_unit() {
 function ws_ls_string_contains( $haystack, $needle ) {
 	return false !== strpos( $haystack, $needle );
 }
-

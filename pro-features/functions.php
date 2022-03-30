@@ -67,7 +67,7 @@ function ws_ls_calculate_bmi_label( $bmi ) {
 		else if ( $bmi >= 25 && $bmi <= 29.9 ) {
 			return __( 'Overweight', WE_LS_SLUG );
 		} else if ( $bmi >= 30 ) {
-			return __( 'Heavily Overweight', WE_LS_SLUG );
+			return __( 'Obese', WE_LS_SLUG );
 		}
 	}
 

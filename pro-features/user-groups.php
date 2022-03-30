@@ -315,6 +315,35 @@
 		return ( false === $result ) ? false : $wpdb->insert_id;
 	}
 
+/**
+ * Update group name
+ *
+ * @param $id
+ * @param $name
+ *
+ * @return bool|void
+ */
+function ws_ls_groups_update_name( $id, $name ) {
+
+	if ( false === WS_LS_IS_PRO ) {
+		return false;
+	}
+
+	if ( false === is_admin() ) {
+		return false;
+	}
+
+	if ( true === empty( $name ) ) {
+		return false;
+	}
+
+	global $wpdb;
+
+	$result = $wpdb->update( $wpdb->prefix . WE_LS_MYSQL_GROUPS , [ 'name' => $name ], [ 'id' => $id ], [ '%s' ], [ '%d' ] );
+
+	return ( false === $result ) ? false : $wpdb->insert_id;
+}
+
 	/**
 	 * Delete a group
 	 *
