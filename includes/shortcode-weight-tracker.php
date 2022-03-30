@@ -314,8 +314,10 @@ function ws_ls_shortcode_embed_chart( $weight_data, $shortcode_arguments ) {
 			$html_output .= ws_ls_title( __( 'In a chart', WE_LS_SLUG ) );
 		}
 
-		$html_output .= ws_ls_display_chart( $weight_data, [ 'custom-field-groups'   => $shortcode_arguments[ 'custom-field-groups' ],
-		                                                     'custom-field-slugs'    => $shortcode_arguments[ 'custom-field-slugs' ] ] );
+		$html_output .= ws_ls_display_chart( $weight_data, [    'custom-field-groups'   => $shortcode_arguments[ 'custom-field-groups' ],
+		                                                        'custom-field-slugs'    => $shortcode_arguments[ 'custom-field-slugs' ],
+																'legend-position'       => $shortcode_arguments[ 'legend-position' ]
+		] );
 
 	} else {
 
