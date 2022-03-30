@@ -53,7 +53,7 @@ function ws_ls_challenges_create_mysql_tables() {
                 gender int NULL,
                 opted_in int NOT NULL DEFAULT 0,
                 last_processed datetime DEFAULT NULL,
-                PRIMARY KEY ( user_id, challenge_id )              
+                PRIMARY KEY ( user_id, challenge_id )
             ) $charset_collate;";
 
     dbDelta( $sql );
@@ -66,7 +66,7 @@ add_action('ws-ls-rebuild-database-tables', 'ws_ls_challenges_create_mysql_table
 function ws_ls_challenges_activate() {
 
     // Only run this when the plugin version has changed
-    if( true === update_option( 'ws-ls-challenges-db-number', WE_LS_DB_VERSION ) ) {
+    if( true === update_option( 'ws-ls-challenges-db-number', WE_LS_CURRENT_VERSION ) ) {
         ws_ls_challenges_create_mysql_tables();
     }
 }

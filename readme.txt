@@ -2,8 +2,8 @@
 Contributors: aliakro
 Tags: weight,tracker,chart,bmi,bmr,macronutrient,measure,awards,custom fields,history,measurements,data
 Requires at least: 5.7
-Tested up to: 5.8.1
-Stable tag: 9.3.7
+Tested up to: 5.9.2
+Stable tag: 9.4
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -107,17 +107,6 @@ Paypal Donate: [www.paypal.me/yeken](https://www.paypal.me/yeken "www.paypal.me/
 
 Yes! Please visit our dedicated site [Weight Tracker Website](https://weight.yeken.uk "Weight Tracker Website")
 
-= Does it create any custom mySQL tables =
-
-Yes it creates six:
-
-- WP_WS_LS_DATA_TARGETS - Stores user target data.
-- WP_WS_LS_DATA - Store weight and measurement information per user.
-- WS_LS_DATA_USER_PREFERENCES - Stores user preferences.
-- WS_LS_DATA_USER_STATS - Stores user statistics data.
-- WS_LS_META_FIELDS - Defines the Custom Fields that can be asked on weight entry forms.
-- WS_LS_META_ENTRY - Stores the answers for Custom Fields.
-
 = What date formats doe it support? =
 
 Currently it supports both UK (dd/mm/yyy) and US (mm/dd/yyyy) date formats.
@@ -160,6 +149,41 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 9.3 - Admin notes! Store notes against your users and optionally share with them.
 
 == Changelog ==
+
+= 9.4 =
+
+* New feature: Added additional arguments to [wt-user-settings] so various elements of the settings form can be hidden. Read more: https://docs.yeken.uk/shortcodes/wt-user-settings.html
+* New feature: Added the field "previous-weight" to [wt-if].
+* Improvement: Added the ability to edit group names.
+* Bug fix: Generate cache key correctly when loading groups.
+* Changed "Heavily Overweight" in "BMI" calculations to match NHS terminology (https://www.nhs.uk/common-health-questions/lifestyle/what-is-the-body-mass-index-bmi/)
+
+= 9.3.13 =
+
+* Improvement: Added the argument "auto-detect" to [wt-group-total-weight-loss] shortcode.
+* Improvement: Added the argument "text-no-difference" to [wt-group-total-weight-loss] shortcode.
+* Bug fix: Small issue fixed where images weren't being processed in forms if set to "Do not show in shortcodes".
+
+= 9.3.12 =
+
+* Added new hook when simple user settings are saved.
+
+= 9.3.11 =
+
+* Added new hook when user settings are saved.
+
+= 9.3.10 =
+
+* Improvement: Remove DB constant so DB tables and cron jobs are recreated on every plugin update (if needed)
+
+= 9.3.9 =
+
+* Bug fix: 2nd attempt at fixing issues where Challenge data wasn't being processed correctly every hour.
+* Bug fix: Updated challenges documentation links.
+
+= 9.3.8 =
+
+* Bug fix: Fixed issue where Challenge data wasn't being processed correctly every hour.
 
 = 9.3.7 =
 

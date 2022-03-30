@@ -315,7 +315,7 @@ function ws_ls_form_init( $arguments = [] ) {
 	// Are photo fields enabled for this form?
 	$arguments[ 'photos-enabled' ] = ( false === $arguments[ 'hide-fields-photos' ] &&
 	                                   true === $arguments[ 'meta-enabled' ] &&
-	                                   true === ws_ls_meta_fields_photo_any_enabled( true ) );
+	                                   true === ws_ls_meta_fields_photo_any_enabled( false ) );
 
 	// Custom field filtering?
 	$arguments[ 'custom-field-groups' ] = ws_ls_meta_fields_groups_slugs_to_ids( $arguments[ 'custom-field-groups' ] );

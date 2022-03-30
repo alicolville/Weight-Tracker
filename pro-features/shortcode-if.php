@@ -152,6 +152,9 @@ function ws_ls_shortcode_if_value_exist( $user_id, $fields ) {
                 case 'weight':
                     $value = ws_ls_entry_get_latest_kg( $user_id );
                     break;
+	            case 'previous-weight':
+		            $value = ws_ls_entry_get_previous( [ 'id' => $user_id ] );
+		            break;
                 case 'target':
                     $value = ws_ls_target_get( $user_id, 'kg' );
                     break;
@@ -199,7 +202,7 @@ function ws_ls_shortcode_if_value_exist( $user_id, $fields ) {
  */
 function ws_ls_shortcode_if_valid_field_name( $field ) {
 
-    $fields = [ 'weight', 'target', 'bmr', 'height', 'gender', 'activity_level', 'dob', 'is-logged-in', 'photo', 'aim', 'challenges-opted-in' ];
+    $fields = [ 'weight', 'target', 'bmr', 'height', 'gender', 'activity_level', 'dob', 'previous-weight', 'is-logged-in', 'photo', 'aim', 'challenges-opted-in' ];
 
     // Allow others to override accepted fields.
     $fields = apply_filters( 'wlt-filter-if-allowed-fields', $fields );

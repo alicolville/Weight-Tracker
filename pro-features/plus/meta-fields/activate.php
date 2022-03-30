@@ -80,7 +80,7 @@
     function ws_ls_activate_meta_fields_activate() {
 
         // Only run this when the plugin version has changed
-        if( true === update_option('ws-ls-meta-version-number', WE_LS_DB_VERSION )) {
+        if( true === update_option('ws-ls-meta-version-number', WE_LS_CURRENT_VERSION )) {
 
             ws_ls_meta_fields_create_mysql_tables();
 

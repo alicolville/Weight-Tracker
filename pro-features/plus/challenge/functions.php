@@ -45,6 +45,11 @@ function ws_ls_challenges_process( $user_id = NULL,
 		return count( $users );
 	}
 
+	// Only delete cache when doing an hourly run / initial build
+	if ( NULL === $user_id ) {
+		ws_ls_cache_user_delete( 'challenges' );
+	}
+
 	return false;
 }
 

@@ -511,53 +511,37 @@ function ws_ls_db_dates_min_max_get( $user_id ) {
  * @return bool|false|int
  */
 function ws_ls_set_user_preferences( $in_admin_area, $fields = [] ) {
-    global $wpdb;
 
-    // Defaults for user preference fields
-    $defaults = [
-        'user_id' => get_current_user_id(),
-        'settings' => [],
-        'height' => NULL,
-        'activity_level' => NULL,
-        'gender' => NULL,
-        'aim' => NULL,
-        'dob' => false,
-    ];
+	$user_id = ( false === empty( $fields[ 'user_id' ] ) ) ? (int) $fields[ 'user_id' ] : get_current_user_id();
 
-    $db_fields = wp_parse_args($fields, $defaults);
+	// Check if we have existing values and load if we do. This allows partial settings to be sent through for saving.
+    $db_fields = wp_parse_args( $fields, ws_ls_db_user_preferences( $user_id ) );
 
-    // Validate arguments
-    if ( false === is_array($db_fields['settings']) ) {
-        $db_fields['settings'] = [];
+    if ( true === isset( $db_fields[ 'settings' ] ) &&
+            true === is_array( $db_fields['settings'] ) ) {
+	    $db_fields[ 'settings' ] = json_encode( $db_fields['settings'] );
     }
 
-    $db_fields['settings'] = json_encode($db_fields['settings']);
+	if ( false === empty( $db_fields['dob'] ) ) {
+		$db_fields['dob'] = ws_ls_convert_date_to_iso( $db_fields[ 'dob' ], ( $in_admin_area ) ? false : $db_fields[ 'user_id' ] );
+	}
 
-    $db_fields['dob'] = (false === empty($db_fields['dob'])) ? ws_ls_convert_date_to_iso($db_fields['dob'], ($in_admin_area) ? false : $db_fields['user_id']) : '0000-00-00 00:00:00';
+	if ( true === isset( $db_fields['height'] ) ) {
+		$db_fields[ 'height' ] = ws_ls_height_validate( $db_fields[ 'height' ] );
+	}
 
-    // Save Height, if not specified look up.
-    if (false !== $db_fields['height']) {
-        $db_fields['height'] = ws_ls_height_validate($db_fields['height']);
-    } else {
-        $db_fields['height'] = ws_ls_user_preferences_get( 'height', $db_fields[ 'user_id' ] );
+    $db_field_types = ws_ls_user_preferences_get_formats( $db_fields );
+
+	global $wpdb;
+
+    $result = $wpdb->replace( $wpdb->prefix . WE_LS_USER_PREFERENCES_TABLENAME, $db_fields, $db_field_types );
+
+    if ( true === $result ) {
+	    do_action( 'wlt-hook-user-settings-saved', $db_fields, $db_fields[ 'user_id' ] );
     }
 
-    // Set data types
-    $db_field_types = ws_ls_user_preferences_get_formats($db_fields);
+    ws_ls_cache_user_delete( $db_fields['user_id'] );
 
-    $table_name = $wpdb->prefix . WE_LS_USER_PREFERENCES_TABLENAME;
-
-      // Update or insert
-    $result = $wpdb->replace(
-                            $table_name,
-                            $db_fields,
-                            $db_field_types
-                          );
-
-    $result = ( $result === false ) ? false : true;
-
-    // Tidy up cache
-	ws_ls_cache_user_delete( $db_fields['user_id'] );
     return $result;
 }
 
@@ -643,6 +627,11 @@ function ws_ls_set_user_preference_simple( $field, $value, $user_id = NULL ) {
     );
 
     $result = ($result === false) ? false : true;
+
+	// If settings are saved correctly, then fire hook for others.
+	if ( true === $result ) {
+		do_action( 'wlt-hook-user-settings-saved-simple', $field, $value, $user_id );
+	}
 
     // Tidy up cache
 	ws_ls_cache_user_delete( $user_id );
@@ -835,7 +824,7 @@ function ws_ls_db_create_core_tables() {
 	// From version 9 onwards, we allow entries with no weight
 	$wpdb->query( "ALTER TABLE $table_name MODIFY COLUMN weight_weight float NULL;" );
 
-	if ( '9.0/1' === WE_LS_DB_VERSION ) {
+	if ( '9.0/1' === WE_LS_CURRENT_VERSION ) {
 		$wpdb->query( "Update $table_name set weight_pre_upgrade = weight_weight;" );
 	}
 

@@ -33,7 +33,7 @@ function ws_ls_deactivate() {
  */
 function ws_ls_upgrade() {
 
-	if( true === update_option('ws-ls-version-number', WE_LS_DB_VERSION ) ) {
+	if( true === update_option('ws-ls-version-number', WE_LS_CURRENT_VERSION ) ) {
 
 		ws_ls_db_create_core_tables();
 		ws_ls_activate();

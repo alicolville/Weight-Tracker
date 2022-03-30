@@ -108,7 +108,7 @@
                                                         <option value="1" <?php selected( $checked, 1 ); ?>><?php echo __('No', WE_LS_SLUG); ?></option>
                                                         <option value="2" <?php selected( $checked, 2 ); ?>><?php echo __('Yes', WE_LS_SLUG); ?></option>
                                                     </select>
-                                                    <p class="ws-ls-info"><?php echo __('Note: If set to Yes, photos uploaded into this custom field cannot be used in shortcodes i.e. the photos will only be visible to admin.', WE_LS_SLUG); ?></p>
+                                                    <p class="ws-ls-info"><?php echo __('Note: If set to Yes, photos uploaded into this custom field cannot be used in shortcodes i.e. the photos will only be visible to admin. However, the photo fields can appear in forms.', WE_LS_SLUG); ?></p>
                                                 </div>
                                             </div>
 											<div class="ws-ls-row ws-ls-hide ws-ls-meta-fields-additional-0 ws-ls-meta-fields-additional-4 ws-ls-meta-fields-additional-5 ws-ls-meta-fields-additional-7">

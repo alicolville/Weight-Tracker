@@ -738,7 +738,7 @@ function ws_ls_meta_fields_group_field_ids( $groups = [] ) {
 		return NULL;
 	}
 
-	$cache_key = md5( $groups );
+	$cache_key = md5( json_encode( $groups ) );
 
 	if ( $cache = ws_ls_cache_user_get( 'custom-fields-groups', $cache_key ) ) {
 		return $cache;
