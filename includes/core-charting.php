@@ -25,6 +25,7 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 												'custom-field-groups'   => '',      // If specified, only show custom fields that are within these groups
 												'custom-field-slugs'    => '',      // If specified, only show the custom fields that are specified
 												'height'                => 250,
+												'legend-position'       => 'top',   // 'top' or 'bottom'
 												'message-no-data'       => __( 'No entries could be found for this user.', WE_LS_SLUG ),
 												'show-gridlines'        => ws_ls_option_to_bool( 'ws-ls-grid-lines', 'yes', true ),
 												'show-weight'           => true,
@@ -321,9 +322,10 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 	// Graph legend
 	$graph_options[ 'plugins' ][ 'legend' ][ 'labels' ] = [ 'color'     => $chart_config[ 'font-config' ][ 'fontColor' ],
 															'display'   => true,
-				                                            'font'      => [ 'family' => $chart_config[ 'font-config' ][ 'fontFamily' ] ],
-				                                            'position'  => 'bottom'
+				                                            'font'      => [ 'family' => $chart_config[ 'font-config' ][ 'fontFamily' ] ]
 	];
+
+	$graph_options[ 'plugins' ][ 'legend' ][ 'position' ] = $chart_config[ 'legend-position' ];
 
 	wp_localize_script( 'jquery-chart-ws-ls', $chart_config['id'] . '_options', $graph_options );
 
