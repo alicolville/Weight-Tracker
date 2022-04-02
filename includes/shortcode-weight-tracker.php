@@ -293,7 +293,7 @@ add_shortcode( 'wt', 'ws_ls_shortcode' );
  */
 function ws_ls_shortcode_embed_chart( $weight_data, $shortcode_arguments ) {
 
-	$shortcode_arguments = wp_parse_args( $shortcode_arguments, [ 'hide-title' => false ] );
+	$shortcode_arguments = wp_parse_args( $shortcode_arguments, [ 'hide-title' => false, 'legend-position' => 'top' ] );
 
 	$html_output = '';
 
