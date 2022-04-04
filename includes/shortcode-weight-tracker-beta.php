@@ -68,6 +68,7 @@ $html .= '<ul ykuk-tab class="ykuk-flex-right" ykuk-switcher>
 			<li class="ykuk-active"><a href="#"><span ykuk-icon="icon: home"></span></a></li>
 			<li><a href="#"><span ykuk-icon="icon: plus"></span></a></li>
 			<li><a href="#"><span ykuk-icon="icon: history"></span></a></li>
+			<li><a href="#"><span ykuk-icon="icon: heart"></span></a></li>
 			<li>
 				<a href="#"><span ykuk-icon="icon: settings"></span> <span ykuk-icon="icon: triangle-down"></span></a>
 				<div ykuk-dropdown="mode: click">
@@ -101,9 +102,9 @@ $html .= '<ul class="ykuk-switcher switcher-container ykuk-margin">
 	}
 
 
-	$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 		'header' 		=> __( 'Add a new entry', WE_LS_SLUG ), 
-																'body' 			=> ws_ls_uikit_sample_form()
-															] );
+	// $html .= ws_ls_ui_kit_info_box_with_header_footer( [ 		'header' 		=> __( 'Add a new entry', WE_LS_SLUG ), 
+	// 															'body' 			=> ws_ls_uikit_sample_form()
+	// 														] );
 
 
 	$entry_id = ws_ls_querystring_value( 'ws-edit-entry', true );
@@ -149,9 +150,16 @@ $html .= '<ul class="ykuk-switcher switcher-container ykuk-margin">
 	// 															'body' 			=> $form ] );
 
 $html .='	</li>
-	<li>Add</li>
-    <li>Hello again!</li>
+	<li>';
+	
+	$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 		'header' 		=> __( 'Add a new entry', WE_LS_SLUG ), 
+																'body' 			=> ws_ls_uikit_sample_form()
+															] );
 
+	
+	$html .= '</li>
+    <li>Hello again!</li>
+	<li>' . ws_ls_uikit_advanced() .'</li>
     <li>Bazinga!</li></ul>';
 
 
@@ -296,33 +304,91 @@ function ws_ls_uikit_sample_form() {
 	</form>';
 }
 
+// ykuk-child-width-expand@s
+
 function ws_ls_uikit_summary() {
-	return '<div class="ykuk-grid-small ykuk-child-width-expand@s ykuk-text-center" ykuk-grid>
-				<div class="uk-width-2-3">
-					<div class="ykuk-card ykuk-card-default ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
-							<span class="statistics-text"><a href="#" ykuk-switcher-item="next">Latest Weight</a></span><br />
-							<span class="statistics-number">
-								22Kg <span class="ykuk-label ykuk-label-warning">+6%</span>
+	return '<div class="ykuk-grid-small ykuk-text-center ykuk-child-width-1-1 ykuk-child-width-1-2@s ykuk-child-width-1-4@m ykuk-grid-match ykuk-text-small" ykuk-grid>
+				<div>
+					<div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
+							<span><a href="#" ykuk-switcher-item="next">Latest Weight</a></span><br />
+							<span class="ykuk-text-bold">
+								12st 12lbs <span class="ykuk-label ykuk-label-warning">+6%</span>
 							</span>
 					</div>
 				</div>
 				<div>
-					<div class="ykuk-card ykuk-card-default ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
-							<span class="statistics-text">Previous Weight</span><br />
-							<span class="statistics-number">22Kg</span>
+					<div class="ykuk-card ykuk-card-body ykuk-box-shadow-small ykuk-card-small">
+							<span>Prev Weight</span><br />
+							<span class="ykuk-text-bold">13st 1lb</span>
 					</div>
 				</div>
 				<div>
-					<div class="ykuk-card ykuk-card-default ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
-							<span class="statistics-text">Target Weight</span><br />
-							<span class="statistics-number">22Kg</span>
+					<div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
+							<span><a href="#" ykuk-switcher-item="next">Target Weight</a></span><br />
+							<span class="ykuk-text-bold">11st 12lb</span>
 					</div>
 				</div>
 				<div>
-					<div class="ykuk-card ykuk-card-default ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
-							<span class="statistics-text">Start Weight</span><br />
-							<span class="statistics-number">22Kg</span>
+					<div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
+							<span>Start Weight</span><br />
+							<span class="ykuk-text-bold">15st 12lb</span>
 					</div>
 				</div>
 			</div>';
+}
+
+function ws_ls_uikit_advanced() {
+	return '<div class="ykuk-grid-small ykuk-text-center ykuk-child-width-1-1 ykuk-child-width-1-2@s ykuk-child-width-1-4@m ykuk-grid-match ykuk-text-small" ykuk-grid>
+				<div>
+					<div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
+							<span ykuk-toggle="target: #modal-bmi">BMI</span><br />
+							<span class="ykuk-text-bold">
+								21 <span class="ykuk-label ykuk-label-warning">Overweight</span>
+							</span>
+							<!--<button class="ykuk-button ykuk-button-default ykuk-margin-small-right" type="button" ykuk-toggle="target: #modal-bmi">What is BMI?</button>-->
+					</div>
+				</div>
+
+				<div>
+					<div class="ykuk-card ykuk-card-body ykuk-box-shadow-small ykuk-card-small">
+							<span>Prev Weight</span><br />
+							<span class="ykuk-text-bold">13st 1lb</span>
+					</div>
+				</div>
+				<div>
+					<div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
+							<span><a href="#" ykuk-switcher-item="next">Target Weight</a></span><br />
+							<span class="ykuk-text-bold">11st 12lb</span>
+					</div>
+				</div>
+				<div>
+					<div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
+							<span>Start Weight</span><br />
+							<span class="ykuk-text-bold">15st 12lb</span>
+					</div>
+				</div>
+			</div>
+			
+			
+			<div id="modal-bmi" ykuk-modal>
+				<div class="ykuk-modal-dialog ykuk-modal-body">
+					<button class="ykuk-modal-close-default" type="button" ykuk-close></button>
+					<h2 class="ykuk-modal-title">Default</h2>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				</div>
+			</div>
+
+			<a class="ykuk-button ykuk-button-default" href="#modal-center" ykuk-toggle>Open</a>
+
+			<div id="modal-center" class="ykuk-flex-top" ykuk-modal>
+				<div class="ykuk-modal-dialog ykuk-modal-body ykuk-margin-auto-vertical">
+			
+					<button class="ykuk-modal-close-default" type="button" ykuk-close></button>
+			
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			
+				</div>
+			</div>
+
+			';
 }
