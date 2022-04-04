@@ -16,6 +16,11 @@ function ws_ls_uikit_accordian_open( $args = [] ) {
 	);
 }
 
+add_filter( 'body_class', function( $classes ) {
+	$classes[]  = 'uk-scope';	
+	return $classes;
+ });
+
 function ws_ls_shortcode_beta( $user_defined_arguments ) {
 
 	$shortcode_arguments = shortcode_atts( [
@@ -53,7 +58,9 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 	//$show_photos_tab                            = ( false === ws_ls_to_bool( $shortcode_arguments[ 'hide-tab-photos' ] ) && true === ws_ls_meta_fields_photo_any_enabled( true ) );
 	$week_ranges_enabled                        = ws_ls_to_bool( $shortcode_arguments[ 'enable-week-ranges' ] );
 	$shortcode_arguments[ 'min-chart-points' ]  = (int) $shortcode_arguments[ 'min-chart-points' ];
-	$html                                       = '<div class="ws-ls-tracker uk-scope">';
+	
+	//$html                                       = '<div class="ws-ls-tracker uk-scope">';
+	$html                                       = '<div class="ws-ls-tracker">';
 
 	$selected_week_number   = ( true === $week_ranges_enabled ) ? ws_ls_post_value_numeric( 'week-number' ) : NULL;
 	$weight_data            = ws_ls_entries_get( [  'week'      => $selected_week_number,
@@ -62,6 +69,7 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 	                                                'reverse'   => true,
 	                                                'sort'      => 'desc' ] );
 
+ 
 
 
 $html .= '<ul ykuk-tab class="ykuk-flex-right" ykuk-switcher>
@@ -343,7 +351,7 @@ function ws_ls_uikit_advanced() {
 					<div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
 							<span ykuk-toggle="target: #modal-bmi">BMI</span><br />
 							<span class="ykuk-text-bold">
-								21 <span class="ykuk-label ykuk-label-warning">Overweight</span>
+								21 <span class="ykuk-label ykuk-label-warning" ykuk-tooltip="Hello World">Overweight</span>
 							</span>
 							<!--<button class="ykuk-button ykuk-button-default ykuk-margin-small-right" type="button" ykuk-toggle="target: #modal-bmi">What is BMI?</button>-->
 					</div>
