@@ -30,7 +30,7 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 //		'hide-second-target-form' 	=> false,					    // Hide second Target form
 		'custom-field-groups'       => '',                          // If specified, only show custom fields that are within these groups
 		'custom-field-slugs'        => '',                          // If specified, only show the custom fields that are specified
-//		'bmi-format'                => 'label',                     // Format for display BMI
+		'bmi-format'                => 'label',                     // Format for display BMI
 		'show-add-button' 			=> false,					    // Display a "Add weight" button above the chart.
 //		'show-chart-history' 		=> false,					    // Display a chart on the History tab.
 //		'allow-delete-data' 		=> true,                	    // Show "Delete your data" section
@@ -77,6 +77,7 @@ $html .= '<ul ykuk-tab class="ykuk-flex-right" ykuk-switcher>
 			<li><a href="#"><span ykuk-icon="icon: plus"></span></a></li>
 			<li><a href="#"><span ykuk-icon="icon: history"></span></a></li>
 			<li><a href="#"><span ykuk-icon="icon: heart"></span></a></li>
+			<li><a href="#"><span ykuk-icon="icon: mail"></span></a></li>
 			<li>
 				<a href="#"><span ykuk-icon="icon: settings"></span> <span ykuk-icon="icon: triangle-down"></span></a>
 				<div ykuk-dropdown="mode: click">
@@ -101,11 +102,16 @@ $html .= '<ul class="ykuk-switcher switcher-container ykuk-margin">
 		$shortcode_arguments[ 'hide-title' ] = true;			// TODO
 		$shortcode_arguments[ 'legend-position' ] = 'bottom';
 
-		$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 	'header' 		=> __( 'Chart', WE_LS_SLUG ), 
+		$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 	'header' 		=> __( 'Weight entries', WE_LS_SLUG ), 
 																'body' 			=> ws_ls_shortcode_embed_chart( $weight_data, $shortcode_arguments ), 
 																'footer-link'	=> '#',
 																'footer-text' 	=> __( 'View in tabular format', WE_LS_SLUG ) 
 															] );
+
+		$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 	'header' 		=> __( 'Today\'s calorie intake', WE_LS_SLUG ), 
+			'body' 			=> ws_ls_uikit_mealtracker_summary( [] )
+		] );
+															
 
 	}
 
@@ -165,10 +171,24 @@ $html .='	</li>
 															] );
 
 	
+	$html .= '</li> <li>';
+	
+	$html .= ws_ls_uikit_data_summary();
+
+	$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 'header' 		=> __( 'Your entries', WE_LS_SLUG ), 
+	'body-class'	=> 'ykuk-text-small',		
+	'body' 			=> ws_ls_shortcode_table( [ 'user-id' => $user_id, 'enable-add-edit' => true, 'enable-meta-fields' => true,
+						'week' => $selected_week_number, 'bmi-format' => $shortcode_arguments[ 'bmi-format' ],
+							'custom-field-groups'   => $shortcode_arguments[ 'custom-field-groups' ],
+							'custom-field-slugs'    => $shortcode_arguments[ 'custom-field-slugs' ] ] )
+
+] );
+
 	$html .= '</li>
-    <li>Hello again!</li>
-	<li>' . ws_ls_uikit_advanced() .'</li>
-    <li>Bazinga!</li></ul>';
+	<li>' . ws_ls_uikit_advanced( $shortcode_arguments ) .'</li>
+    <li>Mail</li></ul>
+	<li>Bazinga!</li></ul>
+	';
 
 
 
@@ -231,7 +251,7 @@ function ws_ls_ui_kit_info_box( $args = [] ) {
  */
 function ws_ls_ui_kit_info_box_with_header_footer( $args = [] ) {
 
-	$args = wp_parse_args( $args, [ 'header' => '', 'body' => '', 'footer' => '', 'footer-link' => '', 'footer-text' => '' ] );
+	$args = wp_parse_args( $args, [ 'header' => '', 'body' => '', 'body-class' => '', 'footer' => '', 'footer-link' => '', 'footer-text' => '' ] );
 
 	$html = '<div class="ykuk-card ykuk-card-small ykuk-card-default ykuk-margin-top">';
 
@@ -247,7 +267,7 @@ function ws_ls_ui_kit_info_box_with_header_footer( $args = [] ) {
 		);
 	}
 		
-	$html .= sprintf( '<div class="ykuk-card-body">%s</div>', $args[ 'body' ] );
+	$html .= sprintf( '<div class="ykuk-card-body%s">%s</div>', ( false === empty( $args[ 'body-class' ] ) ) ? ' ' . esc_attr( $args[ 'body-class' ] ) : '', $args[ 'body' ] );
 
 	if ( false === empty( $args[ 'footer-link' ] ) 
 		&& false === empty( $args[ 'footer-text' ] ) ) {
@@ -334,9 +354,45 @@ function ws_ls_uikit_summary() {
 				</div>
 				<div>
 					<div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
+							<span class="ykuk-info-box-header">Latest vs Target</span><br />
+							<span class="ykuk-text-bold">
+								+1st 12lbs <span class="ykuk-label">+12%</span>
+							</span>
+					</div>
+				</div>
+				<div>
+					<div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
 							<span class="ykuk-info-box-header" ykuk-tooltip="The weight that you wish to achieve.">Target Weight</span><br />
 							<span class="ykuk-text-bold">11st 12lb</span><br />
 							<span class="ykuk-info-box-meta"><a href="#">Adjust</a></span>
+					</div>
+				</div>
+			</div>';
+}
+
+function ws_ls_uikit_data_summary() {
+	return '<div class="ykuk-grid-small ykuk-text-center ykuk-child-width-1-1 ykuk-child-width-1-2@s ykuk-child-width-1-4@m ykuk-grid-match ykuk-text-small" ykuk-grid>
+				<div>
+					<div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
+							<span class="ykuk-info-box-header">No. of entries</span><br />
+							<span class="ykuk-text-bold">
+								123 
+							</span>
+					</div>
+				</div>
+				<div>
+					<div class="ykuk-card ykuk-card-body ykuk-box-shadow-small ykuk-card-small">
+							<span class="ykuk-info-box-header">Tracking for</span><br />
+							<span class="ykuk-text-bold">1 year, 6 months</span><br />
+					</div>
+				</div>
+				<div>
+					<div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
+							<span class="ykuk-info-box-header" ykuk-tooltip="The weight you have entered most recently.">Latest Weight</span><br />
+							<span class="ykuk-text-bold">
+								12st 12lbs <span class="ykuk-label ykuk-label-warning" ykuk-tooltip="The difference between your latest weight and previous.">+999%</span>
+							</span>
+							<span class="ykuk-info-box-meta"><a href="#" ykuk-switcher-item="next">01/01/2001</a></span>
 					</div>
 				</div>
 				<div>
@@ -349,8 +405,9 @@ function ws_ls_uikit_summary() {
 			</div>';
 }
 
-function ws_ls_uikit_advanced() {
-	return '<div class="ykuk-grid-small ykuk-text-center ykuk-child-width-1-1 ykuk-child-width-1-2@s ykuk-grid-match ykuk-text-small" ykuk-grid>
+
+function ws_ls_uikit_advanced( $arguments = [] ) {
+	$html = '<div class="ykuk-grid-small ykuk-text-center ykuk-child-width-1-1 ykuk-child-width-1-2@s ykuk-grid-match ykuk-text-small" ykuk-grid>
 				<div>
 					<div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
 							<span class="ykuk-info-box-header" ykuk-toggle="target: #modal-bmi" >BMI</span><br />
@@ -368,11 +425,144 @@ function ws_ls_uikit_advanced() {
 							<span class="ykuk-info-box-meta"><a href="#" ykuk-toggle="target: #modal-bmr">What is BMR?</a></span>
 					</div>
 				</div>
+			</div>	
+				';
 				
-				</div>
+
+				$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 'header' 		=> __( 'Suggested Calorie Intake', WE_LS_SLUG ), 
+				'body-class'	=> 'ykuk-text-small',		
+				'body' 			=> '<p>Once we know your BMR (the number of calories to keep you functioning at rest), we can go on to give you suggestions on how to spread your calorie intake across the day. Firstly we split the figures into daily calorie intake to maintain weight and daily calorie intake to lose weight. Daily calorie intake to lose weight is calculated based on NHS advice – they suggest to lose 1 – 2lbs a week you should subtract 600 calories from your BMR. The two daily figures can be further broken down by recommending how to split calorie intake across the day i.e. breakfast, lunch, dinner and snacks.</p>	<div class="ws-ls-tab-advanced-data">
+						<table class="ws-ls-footable ws-ls-harris-benedict"  >
+				<tr>
+					<th class="ws-ls-empty-cell row-title"></th>
+					<th>Total</th>
+					<th data-breakpoints="xs sm">Breakfast (20%)</th>
+					<th data-breakpoints="xs sm">Lunch (30%)</th>
+					<th data-breakpoints="xs sm">Dinner (30%)</th>
+					<th data-breakpoints="xs sm">Snacks (20%)</th>
+				</tr><tr valign="top" class="alternate">
+						<td class="ws-ls-col-header">Maintain</td>
+						<td>2,588</td>
+						<td>518</td>
+						<td>776</td>
+						<td>776</td>
+						<td>518</td>
+					</tr><tr valign="top" class="">
+						<td class="ws-ls-col-header">Lose</td>
+						<td>2,188</td>
+						<td>438</td>
+						<td>656</td>
+						<td>656</td>
+						<td>438</td>
+					</tr><tr valign="top" class="alternate">
+						<td class="ws-ls-col-header">Gain</td>
+						<td>3,188</td>
+						<td>638</td>
+						<td>956</td>
+						<td>956</td>
+						<td>638</td>
+					</tr></table>
+					'
+				] );
+
+				$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 'header' 		=> __( 'Macronutrients', WE_LS_SLUG ), 
+						'body-class'	=> 'ykuk-text-small',
+						'body' 			=> '<p>With calories calculated, the we can recommend how those calories should be split into Fats, Carbohydrates and Proteins.</p>	<div class="ws-ls-tab-advanced-data">
+						<table class="ws-ls-footable ws-ls-macro"  >
+				<tr>
+					<th class="row-title">Maintain (2,588kcal)</th>
+					<th>Total</th>
+					<th data-breakpoints="xs sm">Breakfast</th>
+					<th data-breakpoints="xs sm">Lunch</th>
+					<th data-breakpoints="xs sm">Dinner</th>
+					<th data-breakpoints="xs sm">Snacks</th>
+				</tr>
+			  <tr valign="top" class="alternate">
+					<td class="ws-ls-col-header">Proteins (10%)</td>
+					<td>64.70</td>
+					<td>12.94</td>
+					<td>19.41</td>
+					<td>19.41</td>
+					<td>12.94</td>
+				</tr>  <tr valign="top" >
+					<td class="ws-ls-col-header">Carbs (20%)</td>
+					<td>129.40</td>
+					<td>25.88</td>
+					<td>38.82</td>
+					<td>38.82</td>
+					<td>25.88</td>
+				</tr>  <tr valign="top" class="alternate">
+					<td class="ws-ls-col-header">Fats (70%)</td>
+					<td>201.29</td>
+					<td>40.26</td>
+					<td>60.39</td>
+					<td>60.39</td>
+					<td>40.26</td>
+				</tr>
+				<tr>
+					<th class="row-title">Lose (2,188kcal)</th>
+					<th>Total</th>
+					<th data-breakpoints="xs sm">Breakfast</th>
+					<th data-breakpoints="xs sm">Lunch</th>
+					<th data-breakpoints="xs sm">Dinner</th>
+					<th data-breakpoints="xs sm">Snacks</th>
+				</tr>
+			  <tr valign="top" class="alternate">
+					<td class="ws-ls-col-header">Proteins (40%)</td>
+					<td>218.80</td>
+					<td>43.76</td>
+					<td>65.64</td>
+					<td>65.64</td>
+					<td>43.76</td>
+				</tr>  <tr valign="top" >
+					<td class="ws-ls-col-header">Carbs (20%)</td>
+					<td>109.40</td>
+					<td>21.88</td>
+					<td>32.82</td>
+					<td>32.82</td>
+					<td>21.88</td>
+				</tr>  <tr valign="top" class="alternate">
+					<td class="ws-ls-col-header">Fats (40%)</td>
+					<td>97.24</td>
+					<td>19.45</td>
+					<td>29.17</td>
+					<td>29.17</td>
+					<td>19.45</td>
+				</tr>
+				<tr>
+					<th class="row-title">Gain (3,188kcal)</th>
+					<th>Total</th>
+					<th data-breakpoints="xs sm">Breakfast</th>
+					<th data-breakpoints="xs sm">Lunch</th>
+					<th data-breakpoints="xs sm">Dinner</th>
+					<th data-breakpoints="xs sm">Snacks</th>
+				</tr>
+			  <tr valign="top" class="alternate">
+					<td class="ws-ls-col-header">Proteins (10%)</td>
+					<td>79.70</td>
+					<td>15.94</td>
+					<td>23.91</td>
+					<td>23.91</td>
+					<td>15.94</td>
+				</tr>  <tr valign="top" >
+					<td class="ws-ls-col-header">Carbs (20%)</td>
+					<td>159.40</td>
+					<td>31.88</td>
+					<td>47.82</td>
+					<td>47.82</td>
+					<td>31.88</td>
+				</tr>  <tr valign="top" class="alternate">
+					<td class="ws-ls-col-header">Fats (70%)</td>
+					<td>247.96</td>
+					<td>49.59</td>
+					<td>74.39</td>
+					<td>74.39</td>
+					<td>49.59</td>
+				</tr></table>'
+				] );
 			
 			
-			<div id="modal-bmi" ykuk-modal>
+	$html .='<div id="modal-bmi" ykuk-modal>
 				<div class="ykuk-modal-dialog ykuk-modal-body">
 					<h2 class="ykuk-modal-title">Body Mass Index (BMI)</h2>
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
@@ -393,4 +583,19 @@ function ws_ls_uikit_advanced() {
 			</div>
 
 			';
+
+	return $html;
+}
+
+function ws_ls_uikit_mealtracker_summary() {
+
+	return '<div class="ykuk-grid-small ykuk-text-center ykuk-child-width-1-1 ykuk-child-width-1-2@s ykuk-grid-match ykuk-text-small" ykuk-grid>
+				<div>
+					' .  yk_mt_shortcode_chart( [] ) . '
+				</div>
+				<div>
+					' . yk_mt_shortcode_table_entries( [] ) . '
+				</div>
+			
+			</div>';
 }
