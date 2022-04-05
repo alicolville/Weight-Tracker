@@ -72,26 +72,14 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
  
 
 
-$html .= '<ul ykuk-tab class="ykuk-flex-right" ykuk-switcher>
-			<li class="ykuk-active"><a href="#"><span ykuk-icon="icon: home"></span></a></li>
-			<li><a href="#"><span ykuk-icon="icon: plus"></span></a></li>
-			<li><a href="#"><span ykuk-icon="icon: history"></span></a></li>
-			<li><a href="#"><span ykuk-icon="icon: heart"></span></a></li>
-			<li><a href="#"><span ykuk-icon="icon: mail"></span></a></li>
-			<li>
-				<a href="#"><span ykuk-icon="icon: settings"></span> <span ykuk-icon="icon: triangle-down"></span></a>
-				<div ykuk-dropdown="mode: click">
-					<ul class="ykuk-nav ykuk-dropdown-nav">
-						<li class="ykuk-active"><a href="#">Active</a></li>
-						<li><a href="#">Item</a></li>
-						<li class="ykuk-nav-header">Header</li>
-						<li><a href="#">Item</a></li>
-						<li><a href="#">Item</a></li>
-						<li class="ykuk-nav-divider"></li>
-						<li><a href="#">Item</a></li>ß
-					</ul>
-				</div>
-			</li>
+$html .= '<ul ykuk-tab class="ykuk-flex-center ykuk-flex-right@s" ykuk-switcher>
+			<li class="ykuk-active ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: home"></span></a></li>
+			<li class="ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: plus"></span></a></li>
+			<li class="ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: history"></span></a></li>
+			<li class="ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: heart"></span></a></li>
+			<li class="ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: image"></span></a></li>
+			<li class="ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: mail"></span></a></li>
+			<li class="ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: settings"></span></a></li>
 		</ul>';
 
 $html .= '<ul class="ykuk-switcher switcher-container ykuk-margin">
@@ -186,8 +174,8 @@ $html .='	</li>
 
 	$html .= '</li>
 	<li>' . ws_ls_uikit_advanced( $shortcode_arguments ) .'</li>
-    <li>Mail</li></ul>
-	<li>Bazinga!</li></ul>
+    <li>Mail</li>
+	<li>Settings</li></ul>
 	';
 
 
@@ -425,13 +413,13 @@ function ws_ls_uikit_advanced( $arguments = [] ) {
 							<span class="ykuk-info-box-meta"><a href="#" ykuk-toggle="target: #modal-bmr">What is BMR?</a></span>
 					</div>
 				</div>
-			</div>	
-				';
+			</div>';
 				
-
 				$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 'header' 		=> __( 'Suggested Calorie Intake', WE_LS_SLUG ), 
-				'body-class'	=> 'ykuk-text-small',		
-				'body' 			=> '<p>Once we know your BMR (the number of calories to keep you functioning at rest), we can go on to give you suggestions on how to spread your calorie intake across the day. Firstly we split the figures into daily calorie intake to maintain weight and daily calorie intake to lose weight. Daily calorie intake to lose weight is calculated based on NHS advice – they suggest to lose 1 – 2lbs a week you should subtract 600 calories from your BMR. The two daily figures can be further broken down by recommending how to split calorie intake across the day i.e. breakfast, lunch, dinner and snacks.</p>	<div class="ws-ls-tab-advanced-data">
+				'body-class'	=> 'ykuk-text-small ykuk-text-right',		
+				'body' 			=> '
+					<p><a ykuk-toggle="cls: ykuk-hidden; target: #calorie-intake-info; animation: ykuk-animation-slide-bottom" class="ykuk-text-right ykuk-icon-link" ykuk-icon="triangle-down">Lean more about suggested calorie intakes</a></p>
+					<p id="calorie-intake-info" class="ykuk-hidden ykuk-text-left">Once we know your BMR (the number of calories to keep you functioning at rest), we can go on to give you suggestions on how to spread your calorie intake across the day. Firstly we split the figures into daily calorie intake to maintain weight and daily calorie intake to lose weight. Daily calorie intake to lose weight is calculated based on NHS advice – they suggest to lose 1 – 2lbs a week you should subtract 600 calories from your BMR. The two daily figures can be further broken down by recommending how to split calorie intake across the day i.e. breakfast, lunch, dinner and snacks.</p>	<div class="ws-ls-tab-advanced-data">
 						<table class="ws-ls-footable ws-ls-harris-benedict"  >
 				<tr>
 					<th class="ws-ls-empty-cell row-title"></th>
