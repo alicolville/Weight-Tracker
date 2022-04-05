@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap');
 
 .ws-ls-tracker * {
-  font-family: 'Roboto Mono', monospace !important;
+  font-family: 'Roboto Mono', monospace;
+}
+
+.ws-ls-tracker .ykuk-info-box-header, .ws-ls-tracker .ykuk-info-box-meta { 
+  font-size: 0.8em;
 }
