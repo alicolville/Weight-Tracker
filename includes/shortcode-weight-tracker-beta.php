@@ -662,7 +662,7 @@ function ws_ls_uikit_messages() {
 			<header class="ykuk-comment-header ykuk-position-relative">
 				<div class="ykuk-grid-medium ykuk-flex-middle" ykuk-grid>
 					<div class="ykuk-width-auto">
-						<img class="ykuk-comment-avatar" src="http://one.wordpress.test/wp-content/plugins/Weight-Tracker/assets/uikit/avatar.jpg" width="80" height="80" alt="">
+						<img class="ykuk-comment-avatar" src="http://one.wordpress.test/wp-content/plugins/weight-tracker/assets/uikit/avatar.jpg" width="80" height="80" alt="">
 					</div>
 					<div class="ykuk-width-expand">
 						<h4 class="ykuk-comment-title ykuk-margin-remove"><a class="ykuk-link-reset" href="#">Author</a></h4>
@@ -681,7 +681,7 @@ function ws_ls_uikit_messages() {
 			<header class="ykuk-comment-header ykuk-position-relative">
 				<div class="ykuk-grid-medium ykuk-flex-middle" ykuk-grid>
 					<div class="ykuk-width-auto">
-						<img class="ykuk-comment-avatar" src="http://one.wordpress.test/wp-content/plugins/Weight-Tracker/assets/uikit/avatar.jpg" width="80" height="80" alt="">
+						<img class="ykuk-comment-avatar" src="http://one.wordpress.test/wp-content/plugins/weight-tracker/assets/uikit/avatar.jpg" width="80" height="80" alt="">
 					</div>
 					<div class="ykuk-width-expand">
 						<h4 class="ykuk-comment-title ykuk-margin-remove"><a class="ykuk-link-reset" href="#">Author</a></h4>
