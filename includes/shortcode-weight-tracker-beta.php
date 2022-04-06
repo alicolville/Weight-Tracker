@@ -170,14 +170,18 @@ $html .='	</li>
 							'custom-field-groups'   => $shortcode_arguments[ 'custom-field-groups' ],
 							'custom-field-slugs'    => $shortcode_arguments[ 'custom-field-slugs' ] ] )
 
-] );
+	]);
 
 	$html .= '</li>
 	<li>' . ws_ls_uikit_advanced( $shortcode_arguments ) .'</li>
-    <li>Mail</li>
-	<li>Settings</li></ul>
-	';
+	<li>' . ws_ls_uikit_gallery() . '</li>
+	<li>';
 
+    $html .= ws_ls_ui_kit_info_box_with_header_footer( [ 'header' 		=> __( 'Messages', WE_LS_SLUG ), 
+														'body-class'	=> 'ykuk-text-small',		
+														'body' 			=> ws_ls_uikit_messages() ]);
+
+	$html .= '</li><li>Settings</li></ul>';
 
 
 	return $html;
@@ -394,6 +398,46 @@ function ws_ls_uikit_data_summary() {
 }
 
 
+// function ws_ls_uikit_mealtracker_summary() {
+
+// 	return '<div class="ykuk-grid-small ykuk-text-center ykuk-child-width-1-1 ykuk-child-width-1-2@s ykuk-grid-match ykuk-text-small" ykuk-grid>
+// 				<div>
+// 					' .  yk_mt_shortcode_chart( [] ) . '
+// 				</div>
+// 				<div>
+					
+// 				</div>
+			
+// 			</div>';
+// }
+
+function ws_ls_uikit_gallery( $arguments = [] ) {
+	$html = '<div class="ykuk-grid-small ykuk-text-center ykuk-child-width-1-1 ykuk-child-width-1-2@s ykuk-grid-match ykuk-text-small" ykuk-grid>
+				<div>
+					' . ws_ls_ui_kit_info_box_with_header_footer( [ 'header' 		=> __( 'Latest Photo', WE_LS_SLUG ), 
+																	'body-class'	=> 'ykuk-text-small ykuk-text-center',		
+																	'body' 			=> ws_ls_photos_shortcode_recent( [] )
+					] ) . '
+				</div>
+				<div>
+				' . ws_ls_ui_kit_info_box_with_header_footer( [ 'header' 		=> __( 'Oldest Photo', WE_LS_SLUG ), 
+																'body-class'	=> 'ykuk-text-small ykuk-text-center',		
+																'body' 			=> ws_ls_photos_shortcode_oldest( [] )
+				] ) . '
+			</div>
+			</div>
+			
+			';
+				
+			$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 'header' 		=> __( 'All of your photos', WE_LS_SLUG ), 
+			'body-class'	=> 'ykuk-text-small ykuk-text-right',		
+			'body' 			=> ws_ls_photos_shortcode_gallery( [] )
+			] );
+				
+	
+	return $html;
+}
+
 function ws_ls_uikit_advanced( $arguments = [] ) {
 	$html = '<div class="ykuk-grid-small ykuk-text-center ykuk-child-width-1-1 ykuk-child-width-1-2@s ykuk-grid-match ykuk-text-small" ykuk-grid>
 				<div>
@@ -419,8 +463,9 @@ function ws_ls_uikit_advanced( $arguments = [] ) {
 				'body-class'	=> 'ykuk-text-small ykuk-text-right',		
 				'body' 			=> '
 					<p><a ykuk-toggle="cls: ykuk-hidden; target: #calorie-intake-info; animation: ykuk-animation-slide-bottom" class="ykuk-text-right ykuk-icon-link" ykuk-icon="triangle-down">Lean more about suggested calorie intakes</a></p>
-					<p id="calorie-intake-info" class="ykuk-hidden ykuk-text-left">Once we know your BMR (the number of calories to keep you functioning at rest), we can go on to give you suggestions on how to spread your calorie intake across the day. Firstly we split the figures into daily calorie intake to maintain weight and daily calorie intake to lose weight. Daily calorie intake to lose weight is calculated based on NHS advice – they suggest to lose 1 – 2lbs a week you should subtract 600 calories from your BMR. The two daily figures can be further broken down by recommending how to split calorie intake across the day i.e. breakfast, lunch, dinner and snacks.</p>	<div class="ws-ls-tab-advanced-data">
-						<table class="ws-ls-footable ws-ls-harris-benedict"  >
+					<p id="calorie-intake-info" class="ykuk-hidden ykuk-text-left">Once we know your BMR (the number of calories to keep you functioning at rest), we can go on to give you suggestions on how to spread your calorie intake across the day. Firstly we split the figures into daily calorie intake to maintain weight and daily calorie intake to lose weight. Daily calorie intake to lose weight is calculated based on NHS advice – they suggest to lose 1 – 2lbs a week you should subtract 600 calories from your BMR. The two daily figures can be further broken down by recommending how to split calorie intake across the day i.e. breakfast, lunch, dinner and snacks.</p>	
+					
+						<table class="ws-ls-footable ykuk-table ykuk-table-striped ykuk-table-small"  >
 				<tr>
 					<th class="ws-ls-empty-cell row-title"></th>
 					<th>Total</th>
@@ -452,11 +497,11 @@ function ws_ls_uikit_advanced( $arguments = [] ) {
 					</tr></table>
 					'
 				] );
-
+				
 				$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 'header' 		=> __( 'Macronutrients', WE_LS_SLUG ), 
 						'body-class'	=> 'ykuk-text-small',
 						'body' 			=> '<p>With calories calculated, the we can recommend how those calories should be split into Fats, Carbohydrates and Proteins.</p>	<div class="ws-ls-tab-advanced-data">
-						<table class="ws-ls-footable ws-ls-macro"  >
+						<table class="ws-ls-footable ykuk-table ykuk-table-striped ykuk-table-small"  >
 				<tr>
 					<th class="row-title">Maintain (2,588kcal)</th>
 					<th>Total</th>
@@ -582,8 +627,89 @@ function ws_ls_uikit_mealtracker_summary() {
 					' .  yk_mt_shortcode_chart( [] ) . '
 				</div>
 				<div>
-					' . yk_mt_shortcode_table_entries( [] ) . '
+					
 				</div>
 			
 			</div>';
+}
+
+//' . yk_mt_shortcode_table_entries( [] ) . '
+
+
+function ws_ls_uikit_messages() {
+	return '<ul class="ykuk-comment-list">
+    <li>
+        <article class="ykuk-comment ykuk-visible-toggle ykuk-comment-primary  ykuk-text-small" tabindex="-1">
+            <header class="ykuk-comment-header ykuk-position-relative">
+                <div class="ykuk-grid-medium ykuk-flex-middle" ykuk-grid>
+                    <div class="ykuk-width-auto">
+                        <img class="ykuk-comment-avatar" src="http://one.wordpress.test/wp-content/plugins/Weight-Tracker/assets/uikit/avatar.jpg" width="80" height="80" alt="">
+                    </div>
+                    <div class="ykuk-width-expand">
+                        <h4 class="ykuk-comment-title ykuk-margin-remove"><a class="ykuk-link-reset" href="#">Author</a></h4>
+                        <p class="ykuk-comment-meta ykuk-margin-remove-top"><a class="ykuk-link-reset" href="#">12 days ago</a></p>
+                    </div>
+                </div>
+                <div class="ykuk-position-top-right ykuk-position-small ykuk-hidden-hover"><a class="ykuk-link-muted" href="#">Reply</a></div>
+            </header>
+            <div class="ykuk-comment-body">
+                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+            </div>
+        </article>
+    </li>
+	<li>
+		<article class="ykuk-comment ykuk-visible-toggle  ykuk-text-small" tabindex="-1">
+			<header class="ykuk-comment-header ykuk-position-relative">
+				<div class="ykuk-grid-medium ykuk-flex-middle" ykuk-grid>
+					<div class="ykuk-width-auto">
+						<img class="ykuk-comment-avatar" src="http://one.wordpress.test/wp-content/plugins/Weight-Tracker/assets/uikit/avatar.jpg" width="80" height="80" alt="">
+					</div>
+					<div class="ykuk-width-expand">
+						<h4 class="ykuk-comment-title ykuk-margin-remove"><a class="ykuk-link-reset" href="#">Author</a></h4>
+						<p class="ykuk-comment-meta ykuk-margin-remove-top"><a class="ykuk-link-reset" href="#">12 days ago</a></p>
+					</div>
+				</div>
+				<div class="ykuk-position-top-right ykuk-position-small ykuk-hidden-hover"><a class="ykuk-link-muted" href="#">Reply</a></div>
+			</header>
+			<div class="ykuk-comment-body">
+				<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+			</div>
+		</article>
+	</li>
+	<li>
+		<article class="ykuk-comment ykuk-visible-toggle ykuk-comment-primary  ykuk-text-small" tabindex="-1">
+			<header class="ykuk-comment-header ykuk-position-relative">
+				<div class="ykuk-grid-medium ykuk-flex-middle" ykuk-grid>
+					<div class="ykuk-width-auto">
+						<img class="ykuk-comment-avatar" src="http://one.wordpress.test/wp-content/plugins/Weight-Tracker/assets/uikit/avatar.jpg" width="80" height="80" alt="">
+					</div>
+					<div class="ykuk-width-expand">
+						<h4 class="ykuk-comment-title ykuk-margin-remove"><a class="ykuk-link-reset" href="#">Author</a></h4>
+						<p class="ykuk-comment-meta ykuk-margin-remove-top"><a class="ykuk-link-reset" href="#">12 days ago</a></p>
+					</div>
+				</div>
+				<div class="ykuk-position-top-right ykuk-position-small ykuk-hidden-hover"><a class="ykuk-link-muted" href="#">Reply</a></div>
+			</header>
+			<div class="ykuk-comment-body">
+				<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+			</div>
+		</article>
+	</li>
+</ul>
+<ul class="ykuk-pagination ykuk-flex-center" ykuk-margin>
+    <li><a href="#"><span ykuk-pagination-previous></span></a></li>
+    <li><a href="#">1</a></li>
+    <li class="ykuk-disabled"><span>...</span></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li><a href="#">6</a></li>
+    <li class="uk-active"><span>7</span></li>
+    <li><a href="#">8</a></li>
+    <li><a href="#">9</a></li>
+    <li><a href="#">10</a></li>
+    <li class="ykuk-disabled"><span>...</span></li>
+    <li><a href="#">20</a></li>
+    <li><a href="#"><span ykuk-pagination-next></span></a></li>
+</ul>
+	';
 }

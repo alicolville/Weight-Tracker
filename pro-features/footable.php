@@ -63,7 +63,7 @@ function ws_ls_data_table_render( $arguments = [] ) {
 
 	} else {
 
-		$html .= sprintf('<table class="ws-ls-user-data-ajax table ws-ls-loading-table" id="%1$s"
+		$html .= sprintf('<table class="ws-ls-user-data-ajax table ws-ls-loading-table ykuk-table" id="%1$s"
 									data-paging="true"
 									data-paging-size="%7$d"
 									data-filtering="true"
