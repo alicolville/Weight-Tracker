@@ -150,6 +150,13 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 == Changelog ==
 
+= 10.0 =
+
+TODO: 
+
+	- Reduce compress UI KIT files.
+	= Document wt-difference-between-latest-previous shortcode
+
 = 9.4 =
 
 * New feature: Added additional arguments to [wt-user-settings] so various elements of the settings form can be hidden. Read more: https://docs.yeken.uk/shortcodes/wt-user-settings.html
