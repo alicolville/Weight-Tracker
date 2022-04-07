@@ -80,6 +80,75 @@ add_shortcode( 'wlt-weight-most-recent', 'ws_ls_shortcode_recent_weight' );
 add_shortcode( 'wt-latest-weight', 'ws_ls_shortcode_recent_weight' );
 
 /**
+ * Shortcide [wt-difference-between-latest-previous] display difference between previous
+ *
+ * @param array $user_defined_arguments
+ *
+ * @return string|null
+ */
+function ws_ls_shortcode_difference_in_weight_previous_latest( $user_defined_arguments = [] ){
+
+	$arguments = shortcode_atts( [	'user-id' 					=> get_current_user_id(), 
+									'invert' 					=> false, 
+									'display' 					=> 'weight', // weight or percentage
+									'include-percentage-sign' 	=> true
+								]				
+	, $user_defined_arguments );
+
+	if ( $cache = ws_ls_cache_user_get( $arguments[ 'user-id' ], 'shortcode-target' ) ) {
+		return $cache;
+	}
+
+	$latest_entry = ws_ls_entry_get_latest( $arguments );
+
+	if ( true === empty( $latest_entry[ 'kg' ] ) ) {
+		return '';
+	}
+
+	$previous_entry = ws_ls_entry_get_previous( $arguments );		
+
+	if( true === empty( $previous_entry ) ) {
+		return '';
+	}
+
+	if ( $previous_entry[ 'id' ] === $latest_entry[ 'id' ] ) {
+		return '';
+	}
+
+	if ( 'percentage' == $arguments[ 'display' ] ) {
+
+		$output = ws_ls_calculate_percentage_difference( $previous_entry[ 'kg' ], $latest_entry[ 'kg' ] );
+
+		if ( true === empty( $output[ 'percentage' ] ) ) {
+			return '';
+		}
+
+		$output = ws_ls_round_number( $output[ 'percentage' ], 1 );
+
+		if ( true === $arguments[ 'include-percentage-sign' ] ) {
+			$output .= '%';
+		}
+
+	} else {
+		
+		$difference = $latest_entry[ 'kg' ] - $previous_entry[ 'kg' ];
+
+		$difference = ( false === ws_ls_to_bool( $arguments[ 'invert' ] ) ) ? $difference : -$difference ;
+
+		$sign       = ( $difference > 0 ) ? '+' : '';
+
+		$difference = ws_ls_weight_display( $difference, $arguments[ 'user-id' ], false, false, true );
+
+		$output     = sprintf ('%s%s', $sign, $difference[ 'display' ] );
+	}
+
+	ws_ls_cache_user_set( $arguments[ 'user-id' ], 'shortcode-latets-previous', $output );
+
+	return $output;
+}
+add_shortcode( 'wt-difference-between-latest-previous', 'ws_ls_shortcode_difference_in_weight_previous_latest' );
+
+/**
  * Display shortcode for difference since start
  * @param null $user_id
  *
@@ -160,4 +229,3 @@ function ws_ls_shortcode_difference_in_weight_target( $user_defined_arguments = 
 }
 add_shortcode( 'wlt-weight-diff-from-target', 'ws_ls_shortcode_difference_in_weight_target' );
 add_shortcode( 'wt-difference-from-target', 'ws_ls_shortcode_difference_in_weight_target' );
-
