@@ -80,6 +80,7 @@ require_once( WS_LS_ABSPATH . 'includes/core-tables.php' );
 require_once( WS_LS_ABSPATH . 'includes/core-charting.php' );
 require_once( WS_LS_ABSPATH . 'includes/ajax.php' );
 require_once( WS_LS_ABSPATH . 'includes/setup-wizard.php' );
+require_once( WS_LS_ABSPATH . 'includes/components.php' );
 require_once( WS_LS_ABSPATH . 'includes/shortcode-weight-tracker.php' );
 require_once( WS_LS_ABSPATH . 'includes/shortcode-weight-tracker-beta.php' );
 require_once( WS_LS_ABSPATH . 'includes/shortcode-various.php' );
