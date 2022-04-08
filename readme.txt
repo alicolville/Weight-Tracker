@@ -157,6 +157,8 @@ TODO:
 	- Reduce compress UI KIT files.
 	= Document wt-difference-between-latest-previous shortcode
 
+* Bug fix: Issue with -0lbs being displayed instead of 0lbs.	
+
 = 9.4 =
 
 * New feature: Added additional arguments to [wt-user-settings] so various elements of the settings form can be hidden. Read more: https://docs.yeken.uk/shortcodes/wt-user-settings.html
