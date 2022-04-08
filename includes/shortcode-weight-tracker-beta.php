@@ -17,7 +17,7 @@ function ws_ls_uikit_accordian_open( $args = [] ) {
 }
 
 add_filter( 'body_class', function( $classes ) {
-	$classes[]  = 'uk-scope';	
+	$classes[]  = 'uk-scope';
 	return $classes;
  });
 
@@ -58,7 +58,7 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 	//$show_photos_tab                            = ( false === ws_ls_to_bool( $shortcode_arguments[ 'hide-tab-photos' ] ) && true === ws_ls_meta_fields_photo_any_enabled( true ) );
 	$week_ranges_enabled                        = ws_ls_to_bool( $shortcode_arguments[ 'enable-week-ranges' ] );
 	$shortcode_arguments[ 'min-chart-points' ]  = (int) $shortcode_arguments[ 'min-chart-points' ];
-	
+
 	//$html                                       = '<div class="ws-ls-tracker uk-scope">';
 	$html                                       = '<div class="ws-ls-tracker">';
 
@@ -69,7 +69,7 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 	                                                'reverse'   => true,
 	                                                'sort'      => 'desc' ] );
 
- 
+
 
 
 $html .= '<ul ykuk-tab class="ykuk-flex-center ykuk-flex-right@s" ykuk-switcher>
@@ -90,21 +90,21 @@ $html .= '<ul class="ykuk-switcher switcher-container ykuk-margin">
 		$shortcode_arguments[ 'hide-title' ] = true;			// TODO
 		$shortcode_arguments[ 'legend-position' ] = 'bottom';
 
-		$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 	'header' 		=> __( 'Weight entries', WE_LS_SLUG ), 
-																'body' 			=> ws_ls_shortcode_embed_chart( $weight_data, $shortcode_arguments ), 
+		$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 	'header' 		=> __( 'Weight entries', WE_LS_SLUG ),
+																'body' 			=> ws_ls_shortcode_embed_chart( $weight_data, $shortcode_arguments ),
 																'footer-link'	=> '#',
-																'footer-text' 	=> __( 'View in tabular format', WE_LS_SLUG ) 
+																'footer-text' 	=> __( 'View in tabular format', WE_LS_SLUG )
 															] );
 
-		$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 	'header' 		=> __( 'Today\'s calorie intake', WE_LS_SLUG ), 
+		$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 	'header' 		=> __( 'Today\'s calorie intake', WE_LS_SLUG ),
 			'body' 			=> ws_ls_uikit_mealtracker_summary( [] )
 		] );
-															
+
 
 	}
 
 
-	// $html .= ws_ls_ui_kit_info_box_with_header_footer( [ 		'header' 		=> __( 'Add a new entry', WE_LS_SLUG ), 
+	// $html .= ws_ls_ui_kit_info_box_with_header_footer( [ 		'header' 		=> __( 'Add a new entry', WE_LS_SLUG ),
 	// 															'body' 			=> ws_ls_uikit_sample_form()
 	// 														] );
 
@@ -148,23 +148,23 @@ $html .= '<ul class="ykuk-switcher switcher-container ykuk-margin">
 	// 	] );
 	// }
 
-	// $html .= ws_ls_ui_kit_info_box_with_header_footer( [ 		'header' 		=> __( 'Add a new entry', WE_LS_SLUG ), 
+	// $html .= ws_ls_ui_kit_info_box_with_header_footer( [ 		'header' 		=> __( 'Add a new entry', WE_LS_SLUG ),
 	// 															'body' 			=> $form ] );
 
 $html .='	</li>
 	<li>';
-	
-	$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 		'header' 		=> __( 'Add a new entry', WE_LS_SLUG ), 
+
+	$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 		'header' 		=> __( 'Add a new entry', WE_LS_SLUG ),
 																'body' 			=> ws_ls_uikit_sample_form()
 															] );
 
-	
+
 	$html .= '</li> <li>';
-	
+
 	$html .= ws_ls_uikit_data_summary();
 
-	$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 'header' 		=> __( 'Your entries', WE_LS_SLUG ), 
-	'body-class'	=> 'ykuk-text-small',		
+	$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 'header' 		=> __( 'Your entries', WE_LS_SLUG ),
+	'body-class'	=> 'ykuk-text-small',
 	'body' 			=> ws_ls_shortcode_table( [ 'user-id' => $user_id, 'enable-add-edit' => true, 'enable-meta-fields' => true,
 						'week' => $selected_week_number, 'bmi-format' => $shortcode_arguments[ 'bmi-format' ],
 							'custom-field-groups'   => $shortcode_arguments[ 'custom-field-groups' ],
@@ -177,8 +177,8 @@ $html .='	</li>
 	<li>' . ws_ls_uikit_gallery() . '</li>
 	<li>';
 
-    $html .= ws_ls_ui_kit_info_box_with_header_footer( [ 'header' 		=> __( 'Messages', WE_LS_SLUG ), 
-														'body-class'	=> 'ykuk-text-small',		
+    $html .= ws_ls_ui_kit_info_box_with_header_footer( [ 'header' 		=> __( 'Messages', WE_LS_SLUG ),
+														'body-class'	=> 'ykuk-text-small',
 														'body' 			=> ws_ls_uikit_messages() ]);
 
 	$html .= '</li><li>Settings</li></ul>';
@@ -189,50 +189,6 @@ $html .='	</li>
 
 }
 add_shortcode( 'wt-beta', 'ws_ls_shortcode_beta' );
-
-function ws_ls_ui_kit_info_box( $args = [] ) {
-
-	$args = wp_parse_args( $args, [ 'percentage_diff' => 0, 'title' => 'Title', 'value' => '999Kg'] );
-
-	$html = sprintf( ' <div class="ykuk-card ykuk-card-default ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
-			                <span class="statistics-text"><a href="#" ykuk-switcher-item="next">%1$s</a></span><br />
-			                <span class="statistics-number">
-			                    %2$s',
-					esc_html( $args[ 'title' ] ),
-					esc_html( $args[ 'value' ] )
-	);
-
-	if ( false === empty( $args[ 'percentage_diff' ] ) ) {
-
-		$args[ 'percentage_diff' ] = (float) $args[ 'percentage_diff' ];
-
-		$span_class     = 'up';
-		$label_class    = 'warning';
-		$sign           = '+';
-
-		if ( $args[ 'percentage_diff' ] < 0 ) {
-			$span_class     = 'down';
-			$label_class    = 'success';
-			$sign           = '';
-		}
-
-		$html .= sprintf( ' 	<span class="ykuk-label ykuk-label-%3$s">
-	            				%4$s%2$s%%
-                                    </span>',
-							$span_class,
-							$args[ 'percentage_diff' ],
-							$label_class,
-							$sign
-		);
-
-	}
-
-	$html .= '     			</span>
-                       </div>';
-
-	return $html;
-}
-
 
 /**
  * Add a info box with header and footer
@@ -258,10 +214,10 @@ function ws_ls_ui_kit_info_box_with_header_footer( $args = [] ) {
 							esc_html( $args[ 'header' ] )
 		);
 	}
-		
+
 	$html .= sprintf( '<div class="ykuk-card-body%s">%s</div>', ( false === empty( $args[ 'body-class' ] ) ) ? ' ' . esc_attr( $args[ 'body-class' ] ) : '', $args[ 'body' ] );
 
-	if ( false === empty( $args[ 'footer-link' ] ) 
+	if ( false === empty( $args[ 'footer-link' ] )
 		&& false === empty( $args[ 'footer-text' ] ) ) {
 
 		$args[ 'footer' ] = sprintf( '<a href="%s" class="ykuk-button ykuk-button-text">%s</a>',
@@ -272,7 +228,7 @@ function ws_ls_ui_kit_info_box_with_header_footer( $args = [] ) {
 
 	if ( false === empty( $args[ 'footer' ] ) ) {
 		$html .= sprintf( '<div class="ykuk-card-footer">%s</div>', wp_kses_post( $args[ 'footer' ] ) );
-	}		
+	}
 
 	$html .= '</div>';
 
@@ -285,7 +241,7 @@ function ws_ls_uikit_sample_form() {
 	return '<form>
 		<fieldset class="ykuk-fieldset">
 
-		
+
 			<div class="ykuk-margin">
 				<input class="ykuk-input" type="text" placeholder="Input">
 			</div>
@@ -327,23 +283,28 @@ function ws_ls_uikit_sample_form() {
 // ykuk-child-width-expand@s
 
 function ws_ls_uikit_summary() {
+
+	$user_id = get_current_user_id();
+
 	return '<div class="ykuk-grid-small ykuk-text-center ykuk-child-width-1-1 ykuk-child-width-1-2@s ykuk-child-width-1-4@m ykuk-grid-match ykuk-text-small" ykuk-grid>
-				<div>
+			' . ws_ls_component_latest_weight( [ 'user-id' => $user_id ] ) .'
+				<!--<div>
 					<div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
 							<span class="ykuk-info-box-header" ykuk-tooltip="The weight you have entered most recently.">Latest Weight</span><br />
 							<span class="ykuk-text-bold">
 								12st 12lbs <span class="ykuk-label ykuk-label-warning" ykuk-tooltip="The difference between your latest weight and previous.">+999%</span>
-							</span>
+							</span><br />
 							<span class="ykuk-info-box-meta"><a href="#" ykuk-switcher-item="next">01/01/2001</a></span>
 					</div>
-				</div>
-				<div>
+				</div>-->
+				<!--<div>
 					<div class="ykuk-card ykuk-card-body ykuk-box-shadow-small ykuk-card-small" ykuk-tooltip="The difference between your latest weight and previous.">
 							<span class="ykuk-info-box-header">Previous Weight</span><br />
 							<span class="ykuk-text-bold">13st 1lb</span><br />
 							<span class="ykuk-info-box-meta"><a href="#" ykuk-switcher-item="next">01/01/2001</a></span>
 					</div>
-				</div>
+				</div>-->
+				' . ws_ls_component_previous_weight( [ 'user-id' => $user_id ] ) . '
 				<div>
 					<div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
 							<span class="ykuk-info-box-header">Latest vs Target</span><br />
@@ -352,13 +313,14 @@ function ws_ls_uikit_summary() {
 							</span>
 					</div>
 				</div>
-				<div>
+				' . ws_ls_component_target_weight( [ 'user-id' => $user_id ] ) . '
+				<!--<div>
 					<div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
 							<span class="ykuk-info-box-header" ykuk-tooltip="The weight that you wish to achieve.">Target Weight</span><br />
 							<span class="ykuk-text-bold">11st 12lb</span><br />
 							<span class="ykuk-info-box-meta"><a href="#">Adjust</a></span>
 					</div>
-				</div>
+				</div>-->
 			</div>';
 }
 
@@ -368,7 +330,7 @@ function ws_ls_uikit_data_summary() {
 					<div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
 							<span class="ykuk-info-box-header">No. of entries</span><br />
 							<span class="ykuk-text-bold">
-								123 
+								123
 							</span>
 					</div>
 				</div>
@@ -383,7 +345,7 @@ function ws_ls_uikit_data_summary() {
 							<span class="ykuk-info-box-header" ykuk-tooltip="The weight you have entered most recently.">Latest Weight</span><br />
 							<span class="ykuk-text-bold">
 								12st 12lbs <span class="ykuk-label ykuk-label-warning" ykuk-tooltip="The difference between your latest weight and previous.">+999%</span>
-							</span>
+							</span><br />
 							<span class="ykuk-info-box-meta"><a href="#" ykuk-switcher-item="next">01/01/2001</a></span>
 					</div>
 				</div>
@@ -405,36 +367,36 @@ function ws_ls_uikit_data_summary() {
 // 					' .  yk_mt_shortcode_chart( [] ) . '
 // 				</div>
 // 				<div>
-					
+
 // 				</div>
-			
+
 // 			</div>';
 // }
 
 function ws_ls_uikit_gallery( $arguments = [] ) {
 	$html = '<div class="ykuk-grid-small ykuk-text-center ykuk-child-width-1-1 ykuk-child-width-1-2@s ykuk-grid-match ykuk-text-small" ykuk-grid>
 				<div>
-					' . ws_ls_ui_kit_info_box_with_header_footer( [ 'header' 		=> __( 'Latest Photo', WE_LS_SLUG ), 
-																	'body-class'	=> 'ykuk-text-small ykuk-text-center',		
+					' . ws_ls_ui_kit_info_box_with_header_footer( [ 'header' 		=> __( 'Latest Photo', WE_LS_SLUG ),
+																	'body-class'	=> 'ykuk-text-small ykuk-text-center',
 																	'body' 			=> ws_ls_photos_shortcode_recent( [] )
 					] ) . '
 				</div>
 				<div>
-				' . ws_ls_ui_kit_info_box_with_header_footer( [ 'header' 		=> __( 'Oldest Photo', WE_LS_SLUG ), 
-																'body-class'	=> 'ykuk-text-small ykuk-text-center',		
+				' . ws_ls_ui_kit_info_box_with_header_footer( [ 'header' 		=> __( 'Oldest Photo', WE_LS_SLUG ),
+																'body-class'	=> 'ykuk-text-small ykuk-text-center',
 																'body' 			=> ws_ls_photos_shortcode_oldest( [] )
 				] ) . '
 			</div>
 			</div>
-			
+
 			';
-				
-			$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 'header' 		=> __( 'All of your photos', WE_LS_SLUG ), 
-			'body-class'	=> 'ykuk-text-small ykuk-text-right',		
+
+			$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 'header' 		=> __( 'All of your photos', WE_LS_SLUG ),
+			'body-class'	=> 'ykuk-text-small ykuk-text-right',
 			'body' 			=> ws_ls_photos_shortcode_gallery( [] )
 			] );
-				
-	
+
+
 	return $html;
 }
 
@@ -458,13 +420,13 @@ function ws_ls_uikit_advanced( $arguments = [] ) {
 					</div>
 				</div>
 			</div>';
-				
-				$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 'header' 		=> __( 'Suggested Calorie Intake', WE_LS_SLUG ), 
-				'body-class'	=> 'ykuk-text-small ykuk-text-right',		
+
+				$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 'header' 		=> __( 'Suggested Calorie Intake', WE_LS_SLUG ),
+				'body-class'	=> 'ykuk-text-small ykuk-text-right',
 				'body' 			=> '
 					<p><a ykuk-toggle="cls: ykuk-hidden; target: #calorie-intake-info; animation: ykuk-animation-slide-bottom" class="ykuk-text-right ykuk-icon-link" ykuk-icon="triangle-down">Lean more about suggested calorie intakes</a></p>
-					<p id="calorie-intake-info" class="ykuk-hidden ykuk-text-left">Once we know your BMR (the number of calories to keep you functioning at rest), we can go on to give you suggestions on how to spread your calorie intake across the day. Firstly we split the figures into daily calorie intake to maintain weight and daily calorie intake to lose weight. Daily calorie intake to lose weight is calculated based on NHS advice – they suggest to lose 1 – 2lbs a week you should subtract 600 calories from your BMR. The two daily figures can be further broken down by recommending how to split calorie intake across the day i.e. breakfast, lunch, dinner and snacks.</p>	
-					
+					<p id="calorie-intake-info" class="ykuk-hidden ykuk-text-left">Once we know your BMR (the number of calories to keep you functioning at rest), we can go on to give you suggestions on how to spread your calorie intake across the day. Firstly we split the figures into daily calorie intake to maintain weight and daily calorie intake to lose weight. Daily calorie intake to lose weight is calculated based on NHS advice – they suggest to lose 1 – 2lbs a week you should subtract 600 calories from your BMR. The two daily figures can be further broken down by recommending how to split calorie intake across the day i.e. breakfast, lunch, dinner and snacks.</p>
+
 						<table class="ws-ls-footable ykuk-table ykuk-table-striped ykuk-table-small"  >
 				<tr>
 					<th class="ws-ls-empty-cell row-title"></th>
@@ -497,8 +459,8 @@ function ws_ls_uikit_advanced( $arguments = [] ) {
 					</tr></table>
 					'
 				] );
-				
-				$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 'header' 		=> __( 'Macronutrients', WE_LS_SLUG ), 
+
+				$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 'header' 		=> __( 'Macronutrients', WE_LS_SLUG ),
 						'body-class'	=> 'ykuk-text-small',
 						'body' 			=> '<p>With calories calculated, the we can recommend how those calories should be split into Fats, Carbohydrates and Proteins.</p>	<div class="ws-ls-tab-advanced-data">
 						<table class="ws-ls-footable ykuk-table ykuk-table-striped ykuk-table-small"  >
@@ -593,8 +555,8 @@ function ws_ls_uikit_advanced( $arguments = [] ) {
 					<td>49.59</td>
 				</tr></table>'
 				] );
-			
-			
+
+
 	$html .='<div id="modal-bmi" ykuk-modal>
 				<div class="ykuk-modal-dialog ykuk-modal-body">
 					<h2 class="ykuk-modal-title">Body Mass Index (BMI)</h2>
@@ -627,9 +589,9 @@ function ws_ls_uikit_mealtracker_summary() {
 					' .  yk_mt_shortcode_chart( [] ) . '
 				</div>
 				<div>
-					
+
 				</div>
-			
+
 			</div>';
 }
 
@@ -643,7 +605,7 @@ function ws_ls_uikit_messages() {
             <header class="ykuk-comment-header ykuk-position-relative">
                 <div class="ykuk-grid-medium ykuk-flex-middle" ykuk-grid>
                     <div class="ykuk-width-auto">
-                        <img class="ykuk-comment-avatar" src="http://one.wordpress.test/wp-content/plugins/Weight-Tracker/assets/uikit/avatar.jpg" width="80" height="80" alt="">
+                        <img class="ykuk-comment-avatar" src="/wp-content/plugins/Weight-Tracker/assets/uikit/avatar.jpg" width="80" height="80" alt="">
                     </div>
                     <div class="ykuk-width-expand">
                         <h4 class="ykuk-comment-title ykuk-margin-remove"><a class="ykuk-link-reset" href="#">Author</a></h4>
@@ -662,7 +624,7 @@ function ws_ls_uikit_messages() {
 			<header class="ykuk-comment-header ykuk-position-relative">
 				<div class="ykuk-grid-medium ykuk-flex-middle" ykuk-grid>
 					<div class="ykuk-width-auto">
-						<img class="ykuk-comment-avatar" src="http://one.wordpress.test/wp-content/plugins/weight-tracker/assets/uikit/avatar.jpg" width="80" height="80" alt="">
+						<img class="ykuk-comment-avatar" src="/wp-content/plugins/weight-tracker/assets/uikit/avatar.jpg" width="80" height="80" alt="">
 					</div>
 					<div class="ykuk-width-expand">
 						<h4 class="ykuk-comment-title ykuk-margin-remove"><a class="ykuk-link-reset" href="#">Author</a></h4>
@@ -681,7 +643,7 @@ function ws_ls_uikit_messages() {
 			<header class="ykuk-comment-header ykuk-position-relative">
 				<div class="ykuk-grid-medium ykuk-flex-middle" ykuk-grid>
 					<div class="ykuk-width-auto">
-						<img class="ykuk-comment-avatar" src="http://one.wordpress.test/wp-content/plugins/weight-tracker/assets/uikit/avatar.jpg" width="80" height="80" alt="">
+						<img class="ykuk-comment-avatar" src="/wp-content/plugins/weight-tracker/assets/uikit/avatar.jpg" width="80" height="80" alt="">
 					</div>
 					<div class="ykuk-width-expand">
 						<h4 class="ykuk-comment-title ykuk-margin-remove"><a class="ykuk-link-reset" href="#">Author</a></h4>
