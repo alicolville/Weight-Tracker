@@ -48,7 +48,7 @@ function ws_ls_component_latest_weight( $args = [] ) {
 
     return sprintf( '<div>
                         <div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
-                                <span class="ykuk-info-box-header" ykuk-tooltip="The weight you have entered most recently.">Latest Weight</span><br />
+                                <span class="ykuk-info-box-header">%3$s</span><br />
                                 <span class="ykuk-text-bold">
                                     %1$s
                                 </span>
@@ -56,12 +56,13 @@ function ws_ls_component_latest_weight( $args = [] ) {
                         </div>
                     </div>',
                     $text_data,
-                    $text_date
+                    $text_date,
+                    __( 'Latest Weight', WE_LS_SLUG )
     );
 }
 
 /**
- * Compment to display the previous weight
+ * Component to display the previous weight
  * @param array $args
  *
  * @return string
@@ -93,6 +94,40 @@ function ws_ls_component_previous_weight( $args = [] ) {
 		$text_data,
 		$text_date,
 		__( 'Previous Weight', WE_LS_SLUG )
+	);
+}
+
+/**
+ * Component to display the target weight
+ * @param array $args
+ *
+ * @return string
+ */
+function ws_ls_component_target_weight( $args = [] ) {
+
+	$args           = wp_parse_args( $args, [ 'user-id' => get_current_user_id() ] );
+	$target_weight  = ws_ls_target_get( $args );
+
+	$text_date      = '';
+	$text_data      = __( 'Not set', WE_LS_SLUG );
+
+	if( false === empty( $target_weight ) ) {
+		$text_data  = $target_weight[ 'display' ];
+	}
+
+	return sprintf( '<div>
+                        <div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
+                                <span class="ykuk-info-box-header">%3$s</span><br />
+                                <span class="ykuk-text-bold">
+                                    %1$s
+                                </span>
+                                %2$s
+                                <br /><span class="ykuk-info-box-meta"><a href="#">Adjust</a></span>
+                        </div>
+                    </div>',
+		$text_data,
+		$text_date,
+		__( 'Target Weight', WE_LS_SLUG )
 	);
 }
 
