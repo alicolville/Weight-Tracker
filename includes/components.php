@@ -2,6 +2,12 @@
 
 defined('ABSPATH') or die('Jog on!');
 
+/**
+ * Component to display the user's latest weight
+ * @param array $args
+ *
+ * @return string
+ */
 function ws_ls_component_latest_weight( $args = [] ) {
 
     $args           = wp_parse_args( $args, [ 'user-id' => get_current_user_id() ] );
@@ -15,18 +21,28 @@ function ws_ls_component_latest_weight( $args = [] ) {
         $text_data  = $latest_entry[ 'display' ];
         $text_date  = sprintf ( '<br /><span class="ykuk-info-box-meta"><a href="#" ykuk-switcher-item="next">%s</a></span>', $latest_entry[ 'display-date' ] );
 
-        $difference = ws_ls_shortcode_difference_in_weight_previous_latest( [ 'user-id' => $args[ 'user-id'], 'display' => 'percentage', 'include-percentage-sign' => false ] );
+        $difference = ws_ls_shortcode_difference_in_weight_previous_latest( [   'display'                   => 'percentage',
+                                                                                'include-percentage-sign'   => false,
+	                                                                            'invert'                    => true,
+                                                                                'user-id'                   => $args[ 'user-id']
+        ] );
 
         if ( false === empty( $difference ) ) {
 
-            // TODO: Depending on the user;'s aim, we need to determine whether the percentage change is positive or negative and change: ykuk-label-warning
-            $class = 'success';
+            $user_aim = (int) ws_ls_user_preferences_get( 'aim' );
 
-            $text_data .= sprintf( ' <span class="ykuk-label ykuk-label-%s" ykuk-tooltip="%s">%s%%</span>',
+	        if ( ( 2 === $user_aim && (float) $difference <= 0 ) ||
+	                ( 3 === $user_aim && (float) $difference >= 0 ) ) {
+	        	$class = 'ykuk-label-success';
+	        } else {
+		        $class = 'ykuk-label-warning';
+	        }
+
+            $text_data .= sprintf( ' <span class="ykuk-label %s" ykuk-tooltip="%s">%s%%</span>',
                                     $class,
                                     __( 'The difference between your latest weight and previous.', WE_LS_SLUG ),
                                     $difference
-            );              
+            );
         }
     }
 
