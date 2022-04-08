@@ -88,11 +88,11 @@ add_shortcode( 'wt-latest-weight', 'ws_ls_shortcode_recent_weight' );
  */
 function ws_ls_shortcode_difference_in_weight_previous_latest( $user_defined_arguments = [] ){
 
-	$arguments = shortcode_atts( [	'user-id' 					=> get_current_user_id(), 
-									'invert' 					=> false, 
+	$arguments = shortcode_atts( [	'user-id' 					=> get_current_user_id(),
+									'invert' 					=> false,
 									'display' 					=> 'weight', // weight or percentage
 									'include-percentage-sign' 	=> true
-								]				
+								]
 	, $user_defined_arguments );
 
 	if ( $cache = ws_ls_cache_user_get( $arguments[ 'user-id' ], 'shortcode-target' ) ) {
@@ -105,7 +105,7 @@ function ws_ls_shortcode_difference_in_weight_previous_latest( $user_defined_arg
 		return '';
 	}
 
-	$previous_entry = ws_ls_entry_get_previous( $arguments );		
+	$previous_entry = ws_ls_entry_get_previous( $arguments );
 
 	if( true === empty( $previous_entry ) ) {
 		return '';
@@ -123,14 +123,16 @@ function ws_ls_shortcode_difference_in_weight_previous_latest( $user_defined_arg
 			return '';
 		}
 
-		$output = ws_ls_round_number( $output[ 'percentage' ], 1 );
+		$output = ( true === $output[ 'increase' ] ) ?  $output[ 'percentage' ] : -$output[ 'percentage' ];
+
+		$output = ws_ls_round_number( $output, 1 );
 
 		if ( true === $arguments[ 'include-percentage-sign' ] ) {
 			$output .= '%';
 		}
 
 	} else {
-		
+
 		$difference = $latest_entry[ 'kg' ] - $previous_entry[ 'kg' ];
 
 		$difference = ( false === ws_ls_to_bool( $arguments[ 'invert' ] ) ) ? $difference : -$difference ;
