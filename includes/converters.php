@@ -185,7 +185,7 @@ function ws_ls_format_stones_pound_for_comparison_display( $weight ) {
 		}
 
 		if ( true === is_numeric( $weight['pounds'] ) ) {
-var_dump( $weight );
+
 			// If both stones and pounds negative then invert pounds.
 			// e.g.
 			// -1 stone -10 pounds will get displayed as -1 stone 10 pounds
