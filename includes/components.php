@@ -60,4 +60,40 @@ function ws_ls_component_latest_weight( $args = [] ) {
     );
 }
 
+/**
+ * Compment to display the previous weight
+ * @param array $args
+ *
+ * @return string
+ */
+function ws_ls_component_previous_weight( $args = [] ) {
+
+	$args           = wp_parse_args( $args, [ 'user-id' => get_current_user_id() ] );
+	$previous_entry = ws_ls_entry_get_previous( $args );
+
+	$text_date      = '';
+	$text_data      = __( 'No data', WE_LS_SLUG );
+
+	if( false === empty( $previous_entry ) ) {
+
+		$text_data  = $previous_entry[ 'display' ];
+		$text_date  = sprintf ( '<br /><span class="ykuk-info-box-meta"><a href="#" ykuk-switcher-item="next">%s</a></span>', $previous_entry[ 'display-date' ] );
+
+	}
+
+	return sprintf( '<div>
+                        <div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
+                                <span class="ykuk-info-box-header">%3$s</span><br />
+                                <span class="ykuk-text-bold">
+                                    %1$s
+                                </span>
+                                %2$s
+                        </div>
+                    </div>',
+		$text_data,
+		$text_date,
+		__( 'Previous Weight', WE_LS_SLUG )
+	);
+}
+
 
