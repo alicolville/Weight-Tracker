@@ -83,7 +83,7 @@ $html .= '<ul ykuk-tab class="ykuk-flex-center ykuk-flex-right@s" ykuk-switcher>
 		</ul>';
 
 $html .= '<ul class="ykuk-switcher switcher-container ykuk-margin">
-    		<li>' . ws_ls_uikit_summary();
+    		<li>' . ws_ls_wt_summary( $shortcode_arguments );
 
 			// Display chart?
 	if ( false === ws_ls_to_bool( $shortcode_arguments[ 'hide-chart-overview' ] ) ) {
@@ -282,47 +282,21 @@ function ws_ls_uikit_sample_form() {
 
 // ykuk-child-width-expand@s
 
-function ws_ls_uikit_summary() {
+function ws_ls_wt_summary() {
 
-	$user_id = get_current_user_id();
+	$args = [ 'user-id' => get_current_user_id() ];
 
-	return '<div class="ykuk-grid-small ykuk-text-center ykuk-child-width-1-1 ykuk-child-width-1-2@s ykuk-child-width-1-4@m ykuk-grid-match ykuk-text-small" ykuk-grid>
-			' . ws_ls_component_latest_weight( [ 'user-id' => $user_id ] ) .'
-				<!--<div>
-					<div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
-							<span class="ykuk-info-box-header" ykuk-tooltip="The weight you have entered most recently.">Latest Weight</span><br />
-							<span class="ykuk-text-bold">
-								12st 12lbs <span class="ykuk-label ykuk-label-warning" ykuk-tooltip="The difference between your latest weight and previous.">+999%</span>
-							</span><br />
-							<span class="ykuk-info-box-meta"><a href="#" ykuk-switcher-item="next">01/01/2001</a></span>
-					</div>
-				</div>-->
-				<!--<div>
-					<div class="ykuk-card ykuk-card-body ykuk-box-shadow-small ykuk-card-small" ykuk-tooltip="The difference between your latest weight and previous.">
-							<span class="ykuk-info-box-header">Previous Weight</span><br />
-							<span class="ykuk-text-bold">13st 1lb</span><br />
-							<span class="ykuk-info-box-meta"><a href="#" ykuk-switcher-item="next">01/01/2001</a></span>
-					</div>
-				</div>-->
-				' . ws_ls_component_previous_weight( [ 'user-id' => $user_id ] ) . '
-				<!--<div>
-					<div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
-							<span class="ykuk-info-box-header">Latest vs Target</span><br />
-							<span class="ykuk-text-bold">
-								+1st 12lbs <span class="ykuk-label">+12%</span>
-							</span>
-					</div>
-				</div>-->
-				' . ws_ls_component_latest_versus_target(  [ 'user-id' => $user_id ] ) . '
-				' . ws_ls_component_target_weight( [ 'user-id' => $user_id ] ) . '
-				<!--<div>
-					<div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
-							<span class="ykuk-info-box-header" ykuk-tooltip="The weight that you wish to achieve.">Target Weight</span><br />
-							<span class="ykuk-text-bold">11st 12lb</span><br />
-							<span class="ykuk-info-box-meta"><a href="#">Adjust</a></span>
-					</div>
-				</div>-->
-			</div>';
+	return sprintf('<div class="ykuk-grid-small ykuk-text-center ykuk-child-width-1-1 ykuk-child-width-1-2@s ykuk-child-width-1-4@m ykuk-grid-match ykuk-text-small" ykuk-grid>
+								%s
+								%s
+								%s
+								%s
+							</div>',
+							ws_ls_component_latest_weight( $args ),
+							ws_ls_component_previous_weight( $args ),
+							ws_ls_component_latest_versus_target( $args ),
+							ws_ls_component_target_weight( $args )
+	);
 }
 
 function ws_ls_uikit_data_summary() {
