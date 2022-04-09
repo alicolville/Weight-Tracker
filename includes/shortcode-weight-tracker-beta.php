@@ -96,9 +96,9 @@ $html .= '<ul class="ykuk-switcher switcher-container ykuk-margin">
 																'footer-text' 	=> __( 'View in tabular format', WE_LS_SLUG )
 															] );
 
-		$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 	'header' 		=> __( 'Today\'s calorie intake', WE_LS_SLUG ),
-			'body' 			=> ws_ls_uikit_mealtracker_summary( [] )
-		] );
+//		$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 	'header' 		=> __( 'Today\'s calorie intake', WE_LS_SLUG ),
+//			'body' 			=> ws_ls_uikit_mealtracker_summary( [] )
+//		] );
 
 
 	}
@@ -305,14 +305,15 @@ function ws_ls_uikit_summary() {
 					</div>
 				</div>-->
 				' . ws_ls_component_previous_weight( [ 'user-id' => $user_id ] ) . '
-				<div>
+				<!--<div>
 					<div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
 							<span class="ykuk-info-box-header">Latest vs Target</span><br />
 							<span class="ykuk-text-bold">
 								+1st 12lbs <span class="ykuk-label">+12%</span>
 							</span>
 					</div>
-				</div>
+				</div>-->
+				' . ws_ls_component_latest_versus_target(  [ 'user-id' => $user_id ] ) . '
 				' . ws_ls_component_target_weight( [ 'user-id' => $user_id ] ) . '
 				<!--<div>
 					<div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">

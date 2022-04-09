@@ -131,4 +131,64 @@ function ws_ls_component_target_weight( $args = [] ) {
 	);
 }
 
+/**
+ * Component to display latest versus target weight
+ * @param array $args
+ * @return string
+ */
+function ws_ls_component_latest_versus_target( $args = [] ) {
 
+	$args           = wp_parse_args( $args, [ 'user-id' => get_current_user_id() ] );
+	$latest_entry   = ws_ls_entry_get_latest( $args );
+	$target_weight  = ws_ls_target_get( $args );
+	$text_data      = __( 'No data', WE_LS_SLUG );
+
+	if( true === empty( $latest_entry ) ) {
+		$text_data = __('No entries', WE_LS_SLUG);
+	} elseif( true === empty( $target_weight ) ) {
+		$text_data = __( 'No target set', WE_LS_SLUG );
+	} elseif ( false === empty( $latest_entry ) ) {
+
+		$kg_difference 	= $latest_entry[ 'kg' ] - $target_weight[ 'kg' ];
+
+		$weight_display = ws_ls_weight_display( $kg_difference, $args[ 'user-id' ], false, false, true );
+
+		$text_data		= $weight_display[ 'display' ];
+
+		$percentage_difference	= ws_ls_calculate_percentage_difference( $target_weight[ 'kg' ], $latest_entry[ 'kg' ] );
+
+		$percentage_difference	= ( true === $percentage_difference[ 'increase' ] ) ?  $percentage_difference[ 'percentage' ] : -$percentage_difference[ 'percentage' ];
+
+		$percentage_difference 	= ws_ls_round_number( $percentage_difference, 1 );
+
+		if ( false === empty( $percentage_difference ) ) {
+
+			$user_aim = (int) ws_ls_user_preferences_get( 'aim' );
+
+			if ( ( 2 === $user_aim && (float) $percentage_difference <= 0 ) ||
+				( 3 === $user_aim && (float) $percentage_difference >= 0 ) ) {
+				$class = 'ykuk-label-success';
+			} else {
+				$class = 'ykuk-label-warning';
+			}
+
+			$text_data .= sprintf( ' <span class="ykuk-label %s" ykuk-tooltip="%s">%s%%</span>',
+				$class,
+				__( 'The difference between your latest weight and target.', WE_LS_SLUG ),
+				$percentage_difference
+			);
+		}
+	}
+
+	return sprintf( '<div>
+                        <div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
+                                <span class="ykuk-info-box-header">%2$s</span><br />
+                                <span class="ykuk-text-bold">
+                                    %1$s
+                                </span>
+                        </div>
+                    </div>',
+		$text_data,
+		__( 'Latest vs Target', WE_LS_SLUG )
+	);
+}
