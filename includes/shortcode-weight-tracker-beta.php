@@ -69,33 +69,13 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 	                                                'reverse'   => true,
 	                                                'sort'      => 'desc' ] );
 
+	// Tab menu
+	$html .= ws_ls_wt_tab_menu( $shortcode_arguments );
 
-
-// Tab menu
-$html .= '	<ul ykuk-tab class="ykuk-flex-center ykuk-flex-right@s" ykuk-switcher>
-				<li class="ykuk-active ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: home"></span></a></li>
-				<li class="ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: plus"></span></a></li>
-				<li class="ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: history"></span></a></li>
-				<li class="ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: heart"></span></a></li>
-				<li class="ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: image"></span></a></li>
-				<li class="ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: mail"></span></a></li>
-				<li class="ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: settings"></span></a></li>
-			</ul>';
-
-// Tabs
-$html .= '	<ul class="ykuk-switcher switcher-container ykuk-margin">
-				<li>' . ws_ls_wt_tab_home( $shortcode_arguments ) . '</li>
-				<li>' . ws_ls_tab_add_entry( $shortcode_arguments ) . '</li> 
-				<li>' . ws_ls_wt_tab_table( $shortcode_arguments ) . '</li>
-				<li>' . ws_ls_wt_tab_advanced( $shortcode_arguments ) .'</li>
-				<li>' . ws_ls_tab_gallery(  $shortcode_arguments ) . '</li>
-				<li>' . ws_ls_tab_notes( $shortcode_arguments ) . '</li>
-				<li>' . ws_ls_tab_settings( $shortcode_arguments ) . '</li>
-			</ul>';
+	// Tabs
+	$html .= ws_ls_wt_tab_panes( $shortcode_arguments );
 
 	return $html;
-
-
 }
 add_shortcode( 'wt-beta', 'ws_ls_shortcode_beta' );
 
@@ -209,6 +189,47 @@ function ws_ls_wt_home_summary( $arguments = []) {
 							ws_ls_component_latest_versus_target( $arguments ),
 							ws_ls_component_target_weight( $arguments )
 	);
+}
+
+/**
+ * Tabs menu
+ * @param array $shortcode_arguments
+ * @return string
+ */
+function ws_ls_wt_tab_menu( $shortcode_arguments = [] ) {
+
+	// Tab menu
+	$html = '	<ul ykuk-tab class="ykuk-flex-center ykuk-flex-right@s" ykuk-switcher>
+					<li class="ykuk-active ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: home"></span></a></li>
+					<li class="ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: plus"></span></a></li>
+					<li class="ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: history"></span></a></li>
+					<li class="ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: heart"></span></a></li>
+					<li class="ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: image"></span></a></li>
+					<li class="ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: mail"></span></a></li>
+					<li class="ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: settings"></span></a></li>
+				</ul>';
+
+	return $html;
+}
+
+/**
+ * Tabs content
+ * @param array $shortcode_arguments
+ * @return string
+ */
+function ws_ls_wt_tab_panes( $shortcode_arguments = [] ) {
+
+	$html = '	<ul class="ykuk-switcher switcher-container ykuk-margin">
+					<li>' . ws_ls_wt_tab_home( $shortcode_arguments ) . '</li>
+					<li>' . ws_ls_tab_add_entry( $shortcode_arguments ) . '</li> 
+					<li>' . ws_ls_wt_tab_table( $shortcode_arguments ) . '</li>
+					<li>' . ws_ls_wt_tab_advanced( $shortcode_arguments ) .'</li>
+					<li>' . ws_ls_tab_gallery(  $shortcode_arguments ) . '</li>
+					<li>' . ws_ls_tab_notes( $shortcode_arguments ) . '</li>
+					<li>' . ws_ls_tab_settings( $shortcode_arguments ) . '</li>
+				</ul>';
+
+	return $html;
 }
 
 /**
