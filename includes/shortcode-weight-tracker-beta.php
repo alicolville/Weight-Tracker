@@ -56,14 +56,14 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 	//$use_tabs 	                                = ( false === ws_ls_to_bool( $shortcode_arguments[ 'disable-tabs' ] ) );
 	//$show_advanced_tab                          = ( false === ws_ls_to_bool( $shortcode_arguments[ 'hide-tab-advanced' ] ) && true === WS_LS_IS_PRO_PLUS );
 	//$show_photos_tab                            = ( false === ws_ls_to_bool( $shortcode_arguments[ 'hide-tab-photos' ] ) && true === ws_ls_meta_fields_photo_any_enabled( true ) );
-	$week_ranges_enabled                        = ws_ls_to_bool( $shortcode_arguments[ 'enable-week-ranges' ] );
+	$shortcode_arguments[ 'enable-week-ranges' ]	= ws_ls_to_bool( $shortcode_arguments[ 'enable-week-ranges' ] );
 	$shortcode_arguments[ 'min-chart-points' ]  = (int) $shortcode_arguments[ 'min-chart-points' ];
 
 	//$html                                       = '<div class="ws-ls-tracker uk-scope">';
 	$html                                       = '<div class="ws-ls-tracker">';
 
-	$selected_week_number   = ( true === $week_ranges_enabled ) ? ws_ls_post_value_numeric( 'week-number' ) : NULL;
-	$weight_data            = ws_ls_entries_get( [  'week'      => $selected_week_number,
+	$selected_week_number   = ( true === $shortcode_arguments[ 'enable-week-ranges' ] ) ? ws_ls_post_value_numeric( 'week-number' ) : NULL;
+	$shortcode_arguments[ 'weight-data' ]            = ws_ls_entries_get( [  'week'      => $selected_week_number,
 	                                                'prep'      => true,
 	                                                'week'      => $selected_week_number,
 	                                                'reverse'   => true,
@@ -83,75 +83,7 @@ $html .= '<ul ykuk-tab class="ykuk-flex-center ykuk-flex-right@s" ykuk-switcher>
 		</ul>';
 
 $html .= '<ul class="ykuk-switcher switcher-container ykuk-margin">
-    		<li>' . ws_ls_wt_summary( $shortcode_arguments );
-
-			// Display chart?
-	if ( false === ws_ls_to_bool( $shortcode_arguments[ 'hide-chart-overview' ] ) ) {
-		$shortcode_arguments[ 'hide-title' ] = true;			// TODO
-		$shortcode_arguments[ 'legend-position' ] = 'bottom';
-
-		$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 	'header' 		=> __( 'Weight entries', WE_LS_SLUG ),
-																'body' 			=> ws_ls_shortcode_embed_chart( $weight_data, $shortcode_arguments ),
-																'footer-link'	=> '#',
-																'footer-text' 	=> __( 'View in tabular format', WE_LS_SLUG )
-															] );
-
-//		$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 	'header' 		=> __( 'Today\'s calorie intake', WE_LS_SLUG ),
-//			'body' 			=> ws_ls_uikit_mealtracker_summary( [] )
-//		] );
-
-
-	}
-
-
-	// $html .= ws_ls_ui_kit_info_box_with_header_footer( [ 		'header' 		=> __( 'Add a new entry', WE_LS_SLUG ),
-	// 															'body' 			=> ws_ls_uikit_sample_form()
-	// 														] );
-
-
-	$entry_id = ws_ls_querystring_value( 'ws-edit-entry', true );
-
-	// $form = '';
-
-	// // Are we in front end and editing enabled, and of course we want to edit, then do so!
-	// if( false === empty( $entry_id ) ) {
-
-	// 	//If we have a Redirect URL, base decode.
-	// 	$redirect_url = ws_ls_querystring_value( 'redirect' );
-
-	// 	if ( false === empty( $redirect_url ) ) {
-	// 		$redirect_url = base64_decode( $redirect_url );
-	// 	}
-
-	// 	$form .= ws_ls_form_weight( [    	'css-class-form'        => 'ws-ls-main-weight-form',
-	// 											'user-id'               => $user_id,
-	// 											'entry-id'              => $entry_id,
-	// 											'hide-fields-photos'    => ws_ls_to_bool( $shortcode_arguments[ 'hide-photos' ] ),
-	// 											'redirect-url'          => $redirect_url,
-	// 											'hide-notes'            => ws_ls_to_bool( $shortcode_arguments[ 'hide-notes' ] ),
-	// 											'hide-confirmation'     => true,
-	// 											'custom-field-groups'   => $shortcode_arguments[ 'custom-field-groups' ],
-	// 											'custom-field-slugs'    => $shortcode_arguments[ 'custom-field-slugs' ],
-	// 											'weight-mandatory'		=> $shortcode_arguments[ 'weight-mandatory' ]
-	// 	] );
-
-	// } else {
-
-	// 	$form .= ws_ls_form_weight( [    	'css-class-form'        => 'ws-ls-main-weight-form',
-	// 											'user-id'               => $user_id,
-	// 											'hide-fields-photos'    => ws_ls_to_bool( $shortcode_arguments[ 'hide-photos' ] ),
-	// 											'hide-notes'            => ws_ls_to_bool( $shortcode_arguments[ 'hide-notes' ] ),
-	// 											'hide-confirmation'     => true,
-	// 											'custom-field-groups'   => $shortcode_arguments[ 'custom-field-groups' ],
-	// 											'custom-field-slugs'    => $shortcode_arguments[ 'custom-field-slugs' ],
-	// 											'weight-mandatory'		=> $shortcode_arguments[ 'weight-mandatory' ]
-	// 	] );
-	// }
-
-	// $html .= ws_ls_ui_kit_info_box_with_header_footer( [ 		'header' 		=> __( 'Add a new entry', WE_LS_SLUG ),
-	// 															'body' 			=> $form ] );
-
-$html .='	</li>
+    		<li>' . ws_ls_wt_home_tab( $shortcode_arguments ) . '	</li>
 	<li>';
 
 	$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 		'header' 		=> __( 'Add a new entry', WE_LS_SLUG ),
@@ -280,9 +212,11 @@ function ws_ls_uikit_sample_form() {
 	</form>';
 }
 
-// ykuk-child-width-expand@s
-
-function ws_ls_wt_summary() {
+/**
+ * Return summary info for home tab
+ * @return string
+ */
+function ws_ls_wt_home_summary() {
 
 	$args = [ 'user-id' => get_current_user_id() ];
 
@@ -298,6 +232,47 @@ function ws_ls_wt_summary() {
 							ws_ls_component_target_weight( $args )
 	);
 }
+
+/**
+ * Return home tab content
+ * @param array $shortcode_arguments
+ * @return string
+ */
+function ws_ls_wt_home_tab( $shortcode_arguments = [] ) {
+
+	$args = wp_parse_args( $shortcode_arguments, [ 'enable-week-ranges' => false ] );
+
+	$html = ws_ls_wt_home_summary( $args );
+
+	// Display chart?
+	if ( false === ws_ls_to_bool( $args[ 'hide-chart-overview' ] ) ) {
+
+		// Configure chart
+		$args[ 'hide-title' ] 		= true;
+		$args[ 'legend-position' ]	= 'bottom';
+
+		$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 	'header' => __( 'Weight entries', WE_LS_SLUG ),
+																'body' => ws_ls_shortcode_embed_chart( $args[ 'weight-data' ]  , $args ),
+																'footer-link' => '#',
+																'footer-text' => __('View in tabular format', WE_LS_SLUG)
+		]);
+	}
+
+	return $html;
+}
+
+
+//function wl_ls_wt_tabs( $shortcode_arguments = [] ) {
+//	$html .= '<ul ykuk-tab class="ykuk-flex-center ykuk-flex-right@s" ykuk-switcher>
+//			<li class="ykuk-active ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: home"></span></a></li>
+//			<li class="ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: plus"></span></a></li>
+//			<li class="ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: history"></span></a></li>
+//			<li class="ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: heart"></span></a></li>
+//			<li class="ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: image"></span></a></li>
+//			<li class="ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: mail"></span></a></li>
+//			<li class="ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: settings"></span></a></li>
+//		</ul>';
+//}
 
 function ws_ls_uikit_data_summary() {
 	return '<div class="ykuk-grid-small ykuk-text-center ykuk-child-width-1-1 ykuk-child-width-1-2@s ykuk-child-width-1-4@m ykuk-grid-match ykuk-text-small" ykuk-grid>
