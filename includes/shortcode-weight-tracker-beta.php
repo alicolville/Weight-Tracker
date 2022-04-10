@@ -62,59 +62,36 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 	//$html                                       = '<div class="ws-ls-tracker uk-scope">';
 	$html                                       = '<div class="ws-ls-tracker">';
 
-	$selected_week_number   = ( true === $shortcode_arguments[ 'enable-week-ranges' ] ) ? ws_ls_post_value_numeric( 'week-number' ) : NULL;
-	$shortcode_arguments[ 'weight-data' ]            = ws_ls_entries_get( [  'week'      => $selected_week_number,
+	$shortcode_arguments[ 'selected-week-number' ]   = ( true === $shortcode_arguments[ 'enable-week-ranges' ] ) ? ws_ls_post_value_numeric( 'week-number' ) : NULL;
+	$shortcode_arguments[ 'weight-data' ]            = ws_ls_entries_get( [  'week'      => $shortcode_arguments[ 'selected-week-number' ] ,
 	                                                'prep'      => true,
-	                                                'week'      => $selected_week_number,
+	                                                'week'      => $shortcode_arguments[ 'selected-week-number' ] ,
 	                                                'reverse'   => true,
 	                                                'sort'      => 'desc' ] );
 
 
 
+// Tab menu
+$html .= '	<ul ykuk-tab class="ykuk-flex-center ykuk-flex-right@s" ykuk-switcher>
+				<li class="ykuk-active ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: home"></span></a></li>
+				<li class="ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: plus"></span></a></li>
+				<li class="ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: history"></span></a></li>
+				<li class="ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: heart"></span></a></li>
+				<li class="ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: image"></span></a></li>
+				<li class="ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: mail"></span></a></li>
+				<li class="ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: settings"></span></a></li>
+			</ul>';
 
-$html .= '<ul ykuk-tab class="ykuk-flex-center ykuk-flex-right@s" ykuk-switcher>
-			<li class="ykuk-active ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: home"></span></a></li>
-			<li class="ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: plus"></span></a></li>
-			<li class="ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: history"></span></a></li>
-			<li class="ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: heart"></span></a></li>
-			<li class="ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: image"></span></a></li>
-			<li class="ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: mail"></span></a></li>
-			<li class="ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: settings"></span></a></li>
-		</ul>';
-
-$html .= '<ul class="ykuk-switcher switcher-container ykuk-margin">
-    		<li>' . ws_ls_wt_home_tab( $shortcode_arguments ) . '	</li>
-	<li>';
-
-	$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 		'header' 		=> __( 'Add a new entry', WE_LS_SLUG ),
-																'body' 			=> ws_ls_uikit_sample_form()
-															] );
-
-
-	$html .= '</li> <li>';
-
-	$html .= ws_ls_uikit_data_summary();
-
-	$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 'header' 		=> __( 'Your entries', WE_LS_SLUG ),
-	'body-class'	=> 'ykuk-text-small',
-	'body' 			=> ws_ls_shortcode_table( [ 'user-id' => $user_id, 'enable-add-edit' => true, 'enable-meta-fields' => true,
-						'week' => $selected_week_number, 'bmi-format' => $shortcode_arguments[ 'bmi-format' ],
-							'custom-field-groups'   => $shortcode_arguments[ 'custom-field-groups' ],
-							'custom-field-slugs'    => $shortcode_arguments[ 'custom-field-slugs' ] ] )
-
-	]);
-
-	$html .= '</li>
-	<li>' . ws_ls_uikit_advanced( $shortcode_arguments ) .'</li>
-	<li>' . ws_ls_uikit_gallery() . '</li>
-	<li>';
-
-    $html .= ws_ls_ui_kit_info_box_with_header_footer( [ 'header' 		=> __( 'Messages', WE_LS_SLUG ),
-														'body-class'	=> 'ykuk-text-small',
-														'body' 			=> ws_ls_uikit_messages() ]);
-
-	$html .= '</li><li>Settings</li></ul>';
-
+// Tabs
+$html .= '	<ul class="ykuk-switcher switcher-container ykuk-margin">
+				<li>' . ws_ls_wt_tab_home( $shortcode_arguments ) . '</li>
+				<li>' . ws_ls_tab_add_entry( $shortcode_arguments ) . '</li> 
+				<li>' . ws_ls_wt_tab_table( $shortcode_arguments ) . '</li>
+				<li>' . ws_ls_wt_tab_advanced( $shortcode_arguments ) .'</li>
+				<li>' . ws_ls_tab_gallery(  $shortcode_arguments ) . '</li>
+				<li>' . ws_ls_tab_notes( $shortcode_arguments ) . '</li>
+				<li>' . ws_ls_tab_settings( $shortcode_arguments ) . '</li>
+			</ul>';
 
 	return $html;
 
@@ -214,11 +191,12 @@ function ws_ls_uikit_sample_form() {
 
 /**
  * Return summary info for home tab
+ * @param array $arguments
  * @return string
  */
-function ws_ls_wt_home_summary() {
+function ws_ls_wt_home_summary( $arguments = []) {
 
-	$args = [ 'user-id' => get_current_user_id() ];
+	$arguments = wp_parse_args( $arguments, [ 'user-id' => get_current_user_id() ] );
 
 	return sprintf('<div class="ykuk-grid-small ykuk-text-center ykuk-child-width-1-1 ykuk-child-width-1-2@s ykuk-child-width-1-4@m ykuk-grid-match ykuk-text-small" ykuk-grid>
 								%s
@@ -226,10 +204,10 @@ function ws_ls_wt_home_summary() {
 								%s
 								%s
 							</div>',
-							ws_ls_component_latest_weight( $args ),
-							ws_ls_component_previous_weight( $args ),
-							ws_ls_component_latest_versus_target( $args ),
-							ws_ls_component_target_weight( $args )
+							ws_ls_component_latest_weight( $arguments ),
+							ws_ls_component_previous_weight( $arguments ),
+							ws_ls_component_latest_versus_target( $arguments ),
+							ws_ls_component_target_weight( $arguments )
 	);
 }
 
@@ -238,7 +216,7 @@ function ws_ls_wt_home_summary() {
  * @param array $shortcode_arguments
  * @return string
  */
-function ws_ls_wt_home_tab( $shortcode_arguments = [] ) {
+function ws_ls_wt_tab_home( $shortcode_arguments = [] ) {
 
 	$args = wp_parse_args( $shortcode_arguments, [ 'enable-week-ranges' => false ] );
 
@@ -260,6 +238,8 @@ function ws_ls_wt_home_tab( $shortcode_arguments = [] ) {
 
 	return $html;
 }
+
+
 
 
 //function wl_ls_wt_tabs( $shortcode_arguments = [] ) {
@@ -323,7 +303,52 @@ function ws_ls_uikit_data_summary() {
 // 			</div>';
 // }
 
-function ws_ls_uikit_gallery( $arguments = [] ) {
+function ws_ls_tab_settings( $arguments = [] ) {
+	return 'Settings';
+}
+
+function ws_ls_tab_notes( $arguments = [] ) {
+	return ws_ls_ui_kit_info_box_with_header_footer( [ 	'header' 		=> __( 'Messages', WE_LS_SLUG ),
+														'body-class'	=> 'ykuk-text-small',
+														'body' 			=> ws_ls_uikit_messages()
+	]);
+}
+
+function ws_ls_tab_add_entry( $arguments = [] ) {
+	return ws_ls_ui_kit_info_box_with_header_footer( [	'header' 		=> __( 'Add a new entry', WE_LS_SLUG ),
+														'body' 			=> ws_ls_uikit_sample_form()
+	] );
+}
+
+/**
+ * Data table tab
+ * @param array $arguments
+ * @return string
+ */
+function ws_ls_wt_tab_table( $arguments = [] ) {
+
+	$html = ws_ls_uikit_data_summary();
+
+	$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 	'header' 		=> __( 'Your entries', WE_LS_SLUG ),
+															'body-class'	=> 'ykuk-text-small',
+															'body' 			=> ws_ls_shortcode_table( [ 	'user-id' 				=> $arguments[ 'user-id' ],
+																											'enable-add-edit' 		=> true,
+																											'enable-meta-fields'	=> true,
+																											'week' 					=> $arguments[ 'selected-week-number' ] ,
+																											'bmi-format' 			=> $arguments[ 'bmi-format' ],
+																											'custom-field-groups'   => $arguments[ 'custom-field-groups' ],
+																											'custom-field-slugs'    => $arguments[ 'custom-field-slugs' ] ] )
+
+	]);
+
+	return $html;
+}
+
+
+
+
+
+function ws_ls_tab_gallery( $arguments = [] ) {
 	$html = '<div class="ykuk-grid-small ykuk-text-center ykuk-child-width-1-1 ykuk-child-width-1-2@s ykuk-grid-match ykuk-text-small" ykuk-grid>
 				<div>
 					' . ws_ls_ui_kit_info_box_with_header_footer( [ 'header' 		=> __( 'Latest Photo', WE_LS_SLUG ),
@@ -350,7 +375,7 @@ function ws_ls_uikit_gallery( $arguments = [] ) {
 	return $html;
 }
 
-function ws_ls_uikit_advanced( $arguments = [] ) {
+function ws_ls_wt_tab_advanced($arguments = [] ) {
 	$html = '<div class="ykuk-grid-small ykuk-text-center ykuk-child-width-1-1 ykuk-child-width-1-2@s ykuk-grid-match ykuk-text-small" ykuk-grid>
 				<div>
 					<div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
