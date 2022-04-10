@@ -196,7 +196,7 @@ function ws_ls_wt_home_summary( $arguments = []) {
  * @param array $shortcode_arguments
  * @return string
  */
-function ws_ls_wt_tab_menu( $shortcode_arguments = [] ) {
+function ws_ls_wt_tab_menu( $arguments = [] ) {
 
 	// Tab menu
 	$html = '	<ul ykuk-tab class="ykuk-flex-center ykuk-flex-right@s" ykuk-switcher>
@@ -217,16 +217,16 @@ function ws_ls_wt_tab_menu( $shortcode_arguments = [] ) {
  * @param array $shortcode_arguments
  * @return string
  */
-function ws_ls_wt_tab_panes( $shortcode_arguments = [] ) {
+function ws_ls_wt_tab_panes( $arguments = [] ) {
 
 	$html = '	<ul class="ykuk-switcher switcher-container ykuk-margin">
-					<li>' . ws_ls_wt_tab_home( $shortcode_arguments ) . '</li>
-					<li>' . ws_ls_tab_add_entry( $shortcode_arguments ) . '</li> 
-					<li>' . ws_ls_wt_tab_table( $shortcode_arguments ) . '</li>
-					<li>' . ws_ls_wt_tab_advanced( $shortcode_arguments ) .'</li>
-					<li>' . ws_ls_tab_gallery(  $shortcode_arguments ) . '</li>
-					<li>' . ws_ls_tab_notes( $shortcode_arguments ) . '</li>
-					<li>' . ws_ls_tab_settings( $shortcode_arguments ) . '</li>
+					<li>' . ws_ls_wt_tab_home( $arguments ) . '</li>
+					<li>' . ws_ls_tab_add_entry( $arguments ) . '</li> 
+					<li>' . ws_ls_wt_tab_table( $arguments ) . '</li>
+					<li>' . ws_ls_wt_tab_advanced( $arguments ) .'</li>
+					<li>' . ws_ls_tab_gallery(  $arguments ) . '</li>
+					<li>' . ws_ls_tab_notes( $arguments ) . '</li>
+					<li>' . ws_ls_tab_settings( $arguments ) . '</li>
 				</ul>';
 
 	return $html;
