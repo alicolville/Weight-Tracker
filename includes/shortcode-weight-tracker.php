@@ -293,7 +293,10 @@ add_shortcode( 'wt', 'ws_ls_shortcode' );
  */
 function ws_ls_shortcode_embed_chart( $weight_data, $shortcode_arguments ) {
 
-	$shortcode_arguments = wp_parse_args( $shortcode_arguments, [ 'hide-title' => false, 'legend-position' => 'top' ] );
+	$shortcode_arguments = wp_parse_args( $shortcode_arguments, [ 	'custom-field-groups' 	=> [],
+																	'custom-field-slugs'	=> [],
+																	'hide-title' 			=> false,
+																	'legend-position' 		=> 'top' ] );
 
 	$html_output = '';
 
@@ -302,7 +305,8 @@ function ws_ls_shortcode_embed_chart( $weight_data, $shortcode_arguments ) {
 	     ( true === empty( $weight_data ) && 0 === $shortcode_arguments[ 'min-chart-points' ] ) ) {
 
 		// Display "Add Weight" button?
-		if( true === ws_ls_to_bool( $shortcode_arguments[ 'show-add-button' ] ) ) {
+		if( false === empty(  $shortcode_arguments[ 'show-add-button' ] ) &&
+				true === ws_ls_to_bool( $shortcode_arguments[ 'show-add-button' ] ) ) {
 			$html_output .= sprintf('	<div class="ws-ls-add-weight-button">
 														<input type="button" onclick="location.href=\'#add-weight\';" value="%s" />
 													</div>',

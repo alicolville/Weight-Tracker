@@ -152,12 +152,13 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 = 10.0 =
 
-TODO: 
+TODO:
 
+  - rtl support (uikit css)
 	- Reduce compress UI KIT files.
-	= Document wt-difference-between-latest-previous shortcode
+	- Document wt-difference-between-latest-previous shortcode
 
-* Bug fix: Issue with -0lbs being displayed instead of 0lbs.	
+* Bug fix: Issue with -0lbs being displayed instead of 0lbs.
 
 = 9.4 =
 
