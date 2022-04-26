@@ -132,6 +132,41 @@ function ws_ls_component_target_weight( $args = [] ) {
 }
 
 /**
+ * Component to display the start weight
+ * @param array $args
+ *
+ * @return string
+ */
+function ws_ls_component_start_weight( $args = [] ) {
+
+	$args           = wp_parse_args( $args, [ 'user-id' => get_current_user_id() ] );
+	$start_weight   = ws_ls_entry_get_oldest( $args );
+
+	$text_date      = '';
+	$text_data      = __( 'Not set', WE_LS_SLUG );
+
+	if( false === empty( $start_weight[ 'display' ] ) ) {
+		$text_data  = $start_weight[ 'display' ];
+		$text_date  = sprintf ( '<br /><span class="ykuk-info-box-meta"><a href="#" ykuk-switcher-item="next">%s</a></span>', $start_weight[ 'display-date' ] );
+	}
+
+	return sprintf( '<div>
+                        <div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
+                                <span class="ykuk-info-box-header">%3$s</span><br />
+                                <span class="ykuk-text-bold">
+                                    %1$s
+                                </span>
+                                %2$s
+                        </div>
+                    </div>',
+		$text_data,
+		$text_date,
+		__( 'Start Weight', WE_LS_SLUG )
+	);
+}
+
+
+/**
  * Component to display latest versus target weight
  * @param array $args
  * @return string

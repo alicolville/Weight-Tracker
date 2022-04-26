@@ -204,25 +204,13 @@ function ws_ls_uikit_data_summary( $arguments = [] ) {
 	return sprintf( '<div class="ykuk-grid-small ykuk-text-center ykuk-child-width-1-1 ykuk-child-width-1-2@s ykuk-child-width-1-4@m ykuk-grid-match ykuk-text-small" ykuk-grid>
 						%s
 						%s
-						<div>
-							<div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
-									<span class="ykuk-info-box-header" ykuk-tooltip="The weight you have entered most recently.">Latest Weight</span><br />
-									<span class="ykuk-text-bold">
-										12st 12lbs <span class="ykuk-label ykuk-label-warning" ykuk-tooltip="The difference between your latest weight and previous.">+999%%</span>
-									</span><br />
-									<span class="ykuk-info-box-meta"><a href="#" ykuk-switcher-item="next">01/01/2001</a></span>
-							</div>
-						</div>
-						<div>
-							<div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
-									<span class="ykuk-info-box-header">Start Weight</span><br />
-									<span class="ykuk-text-bold">15st 12lb</span><br />
-									<span class="ykuk-info-box-meta"><a href="#" ykuk-switcher-item="next">01/01/2001</a></span>
-							</div>
-						</div>
+						%s
+						%s
 					</div>',
 					ws_ls_component_number_of_entries( [ 'user-id' => $arguments[ 'user-id' ] ] ),
-					ws_ls_component_number_of_days_tracking( [ 'user-id' => $arguments[ 'user-id' ] ] )
+					ws_ls_component_number_of_days_tracking( [ 'user-id' => $arguments[ 'user-id' ] ] ),
+					ws_ls_component_latest_weight( [ 'user-id' => $arguments[ 'user-id' ] ] ),
+					ws_ls_component_start_weight( [ 'user-id' => $arguments[ 'user-id' ] ] )
 	);
 }
 
