@@ -192,3 +192,31 @@ function ws_ls_component_latest_versus_target( $args = [] ) {
 		__( 'Latest vs Target', WE_LS_SLUG )
 	);
 }
+
+/**
+ * Component to display the number of entries
+ * @param array $args
+ *
+ * @return string
+ */
+function ws_ls_component_number_of_entries( $args = [] ) {
+
+	$args   = wp_parse_args( $args, [ 'user-id' => get_current_user_id() ] );
+	$counts = ws_ls_db_entries_count( $args[ 'user-id' ] );
+
+	$text_data = ( false === empty( $counts[ 'number-of-entries' ] ) ) ?
+					(int) $counts[ 'number-of-entries' ] :
+						__( 'No data', WE_LS_SLUG );
+
+	return sprintf( '<div>
+                        <div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
+                                <span class="ykuk-info-box-header">%2$s</span><br />
+                                <span class="ykuk-text-bold">
+                                    %1$s
+                                </span>
+                        </div>
+                    </div>',
+		$text_data,
+		__( 'No. weight entries', WE_LS_SLUG )
+	);
+}

@@ -174,7 +174,7 @@ function ws_ls_uikit_sample_form() {
  * @param array $arguments
  * @return string
  */
-function ws_ls_wt_home_summary( $arguments = []) {
+function ws_ls_wt_home_summary( $arguments = [] ) {
 
 	$arguments = wp_parse_args( $arguments, [ 'user-id' => get_current_user_id() ] );
 
@@ -184,10 +184,64 @@ function ws_ls_wt_home_summary( $arguments = []) {
 								%s
 								%s
 							</div>',
-							ws_ls_component_latest_weight( $arguments ),
-							ws_ls_component_previous_weight( $arguments ),
-							ws_ls_component_latest_versus_target( $arguments ),
-							ws_ls_component_target_weight( $arguments )
+							ws_ls_component_latest_weight( [ 'user-id' => $arguments[ 'user-id' ] ] ),
+							ws_ls_component_previous_weight( [ 'user-id' => $arguments[ 'user-id' ] ] ),
+							ws_ls_component_latest_versus_target( [ 'user-id' => $arguments[ 'user-id' ] ] ),
+							ws_ls_component_target_weight( [ 'user-id' => $arguments[ 'user-id' ] ] )
+	);
+}
+
+/**
+ * Return summary info for data tab
+ * @param array $arguments
+ *
+ * @return string
+ */
+function ws_ls_uikit_data_summary( $arguments = [] ) {
+
+	$arguments = wp_parse_args( $arguments, [ 'user-id' => get_current_user_id() ] );
+
+	return sprintf( '<div class="ykuk-grid-small ykuk-text-center ykuk-child-width-1-1 ykuk-child-width-1-2@s ykuk-child-width-1-4@m ykuk-grid-match ykuk-text-small" ykuk-grid>
+						%s
+						<div>
+							<div class="ykuk-card ykuk-card-body ykuk-box-shadow-small ykuk-card-small">
+									<span class="ykuk-info-box-header">Tracking for</span><br />
+									<span class="ykuk-text-bold">1 year, 6 months</span><br />
+							</div>
+						</div>
+						<div>
+							<div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
+									<span class="ykuk-info-box-header" ykuk-tooltip="The weight you have entered most recently.">Latest Weight</span><br />
+									<span class="ykuk-text-bold">
+										12st 12lbs <span class="ykuk-label ykuk-label-warning" ykuk-tooltip="The difference between your latest weight and previous.">+999%%</span>
+									</span><br />
+									<span class="ykuk-info-box-meta"><a href="#" ykuk-switcher-item="next">01/01/2001</a></span>
+							</div>
+						</div>
+						<div>
+							<div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
+									<span class="ykuk-info-box-header">Start Weight</span><br />
+									<span class="ykuk-text-bold">15st 12lb</span><br />
+									<span class="ykuk-info-box-meta"><a href="#" ykuk-switcher-item="next">01/01/2001</a></span>
+							</div>
+						</div>
+					</div>',
+					ws_ls_component_number_of_entries( [ 'user-id' => $arguments[ 'user-id' ] ] ) );
+}
+
+/**
+ * Return summary info for data tab
+ * @param array $arguments
+ * @return string
+ */
+function ws_ls_wt_data_summary( $arguments = []) {
+
+	$arguments = wp_parse_args( $arguments, [ 'user-id' => get_current_user_id() ] );
+
+	return sprintf('<div class="ykuk-grid-small ykuk-text-center ykuk-child-width-1-1 ykuk-child-width-1-2@s ykuk-child-width-1-4@m ykuk-grid-match ykuk-text-small" ykuk-grid>
+								%s
+							</div>',
+		ws_ls_component_number_of_entries( [ 'user-id' => $arguments[ 'user-id' ] ] )
 	);
 }
 
@@ -221,7 +275,7 @@ function ws_ls_wt_tab_panes( $arguments = [] ) {
 
 	$html = '	<ul class="ykuk-switcher switcher-container ykuk-margin">
 					<li>' . ws_ls_wt_tab_home( $arguments ) . '</li>
-					<li>' . ws_ls_tab_add_entry( $arguments ) . '</li> 
+					<li>' . ws_ls_tab_add_entry( $arguments ) . '</li>
 					<li>' . ws_ls_wt_tab_table( $arguments ) . '</li>
 					<li>' . ws_ls_wt_tab_advanced( $arguments ) .'</li>
 					<li>' . ws_ls_tab_gallery(  $arguments ) . '</li>
@@ -275,40 +329,7 @@ function ws_ls_wt_tab_home( $shortcode_arguments = [] ) {
 //		</ul>';
 //}
 
-function ws_ls_uikit_data_summary() {
-	return '<div class="ykuk-grid-small ykuk-text-center ykuk-child-width-1-1 ykuk-child-width-1-2@s ykuk-child-width-1-4@m ykuk-grid-match ykuk-text-small" ykuk-grid>
-				<div>
-					<div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
-							<span class="ykuk-info-box-header">No. of entries</span><br />
-							<span class="ykuk-text-bold">
-								123
-							</span>
-					</div>
-				</div>
-				<div>
-					<div class="ykuk-card ykuk-card-body ykuk-box-shadow-small ykuk-card-small">
-							<span class="ykuk-info-box-header">Tracking for</span><br />
-							<span class="ykuk-text-bold">1 year, 6 months</span><br />
-					</div>
-				</div>
-				<div>
-					<div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
-							<span class="ykuk-info-box-header" ykuk-tooltip="The weight you have entered most recently.">Latest Weight</span><br />
-							<span class="ykuk-text-bold">
-								12st 12lbs <span class="ykuk-label ykuk-label-warning" ykuk-tooltip="The difference between your latest weight and previous.">+999%</span>
-							</span><br />
-							<span class="ykuk-info-box-meta"><a href="#" ykuk-switcher-item="next">01/01/2001</a></span>
-					</div>
-				</div>
-				<div>
-					<div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
-							<span class="ykuk-info-box-header">Start Weight</span><br />
-							<span class="ykuk-text-bold">15st 12lb</span><br />
-							<span class="ykuk-info-box-meta"><a href="#" ykuk-switcher-item="next">01/01/2001</a></span>
-					</div>
-				</div>
-			</div>';
-}
+
 
 
 // function ws_ls_uikit_mealtracker_summary() {
