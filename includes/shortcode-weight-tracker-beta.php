@@ -203,12 +203,7 @@ function ws_ls_uikit_data_summary( $arguments = [] ) {
 
 	return sprintf( '<div class="ykuk-grid-small ykuk-text-center ykuk-child-width-1-1 ykuk-child-width-1-2@s ykuk-child-width-1-4@m ykuk-grid-match ykuk-text-small" ykuk-grid>
 						%s
-						<div>
-							<div class="ykuk-card ykuk-card-body ykuk-box-shadow-small ykuk-card-small">
-									<span class="ykuk-info-box-header">Tracking for</span><br />
-									<span class="ykuk-text-bold">1 year, 6 months</span><br />
-							</div>
-						</div>
+						%s
 						<div>
 							<div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
 									<span class="ykuk-info-box-header" ykuk-tooltip="The weight you have entered most recently.">Latest Weight</span><br />
@@ -226,7 +221,9 @@ function ws_ls_uikit_data_summary( $arguments = [] ) {
 							</div>
 						</div>
 					</div>',
-					ws_ls_component_number_of_entries( [ 'user-id' => $arguments[ 'user-id' ] ] ) );
+					ws_ls_component_number_of_entries( [ 'user-id' => $arguments[ 'user-id' ] ] ),
+					ws_ls_component_number_of_days_tracking( [ 'user-id' => $arguments[ 'user-id' ] ] )
+	);
 }
 
 /**

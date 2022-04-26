@@ -220,3 +220,28 @@ function ws_ls_component_number_of_entries( $args = [] ) {
 		__( 'No. weight entries', WE_LS_SLUG )
 	);
 }
+
+/**
+ * Component to display the number of days tracking
+ * @param array $args
+ *
+ * @return string
+ */
+function ws_ls_component_number_of_days_tracking( $args = [] ) {
+
+	$args   = wp_parse_args( $args, [ 'user-id' => get_current_user_id() ] );
+	$days   = ws_ls_shortcode_days_between_start_and_latest( [ 'user-id' => $args[ 'user-id' ] ] );
+
+	return sprintf( '<div>
+                        <div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
+                                <span class="ykuk-info-box-header">%2$s</span><br />
+                                <span class="ykuk-text-bold">
+                                    %1$s %3$s
+                                </span>
+                        </div>
+                    </div>',
+		ws_ls_round_number( $days ),
+		__( 'Tracking for', WE_LS_SLUG ),
+		__( 'days', WE_LS_SLUG )
+	);
+}
