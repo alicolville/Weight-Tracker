@@ -4,6 +4,10 @@
   font-family: 'Roboto Mono', monospace;
 }
 
-.ws-ls-tracker .ykuk-info-box-header, .ws-ls-tracker .ykuk-info-box-meta { 
+.ws-ls-tracker .ykuk-info-box-header, .ws-ls-tracker .ykuk-info-box-meta {
   font-size: 0.8em;
+}
+
+.ws-ls-tracker .ykuk-table td, .ws-ls-tracker .ykuk-table th {
+  border: none;
 }

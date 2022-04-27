@@ -16,8 +16,10 @@ function ws_ls_uikit_accordian_open( $args = [] ) {
 	);
 }
 
+//TODO: Tidy this up - only want this included when doing uikit related stuff
 add_filter( 'body_class', function( $classes ) {
 	$classes[]  = 'uk-scope';
+	$classes[]  = 'ykuk-scope';
 	return $classes;
  });
 
@@ -25,28 +27,29 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 
 	$shortcode_arguments = shortcode_atts( [
 			'accordian-multiple-open'   => true,                    // NEW: Allow more than one accordian tab to be open
-		'min-chart-points' 			=> 2,	                        // Minimum number of data entries before chart is shown
-//		'hide-first-target-form' 	=> false,					    // Hide first Target form
-//		'hide-second-target-form' 	=> false,					    // Hide second Target form
-		'custom-field-groups'       => '',                          // If specified, only show custom fields that are within these groups
-		'custom-field-slugs'        => '',                          // If specified, only show the custom fields that are specified
-		'bmi-format'                => 'label',                     // Format for display BMI
-		'show-add-button' 			=> false,					    // Display a "Add weight" button above the chart.
-//		'show-chart-history' 		=> false,					    // Display a chart on the History tab.
-//		'allow-delete-data' 		=> true,                	    // Show "Delete your data" section
-		'hide-notes' 				=> ws_ls_setting_hide_notes(),  // Hide notes field
-		'hide-photos' 				=> false,                       // Hide photos part of form
-		'hide-chart-overview' 		=> false,               	    // Hide chart on the overview tab
-//		'hide-tab-photos' 			=> false,                 	    // Hide Photos tab
-//		'hide-tab-advanced' 		=> false,               	    // Hide Advanced tab (macroN, calories, etc)
-//		'hide-tab-descriptions' 	=> ws_ls_option_to_bool( 'ws-ls-tab-hide-descriptions', 'yes' ), // Hide tab descriptions
-//		'hide-advanced-narrative' 	=> false,         			    // Hide text describing BMR, MarcoN, etc
-//		'disable-advanced-tables' 	=> false,         			    // Disable advanced data tables.
-//		'disable-tabs' 				=> false,                       // Disable using tabs.
-//		'disable-second-check' 		=> false,					    // Disable check to see if [wlt] placed more than once
-		'enable-week-ranges'        => false,                       // Enable Week Ranges?
-		'user-id'					=> get_current_user_id(),
-		'weight-mandatory'			=> true,						// Is weight mandatory?
+				'active-tab'                => 'home',                      // Initial active tab
+				'min-chart-points' 			=> 2,	                        // Minimum number of data entries before chart is shown
+		//		'hide-first-target-form' 	=> false,					    // Hide first Target form
+		//		'hide-second-target-form' 	=> false,					    // Hide second Target form
+				'custom-field-groups'       => '',                          // If specified, only show custom fields that are within these groups
+				'custom-field-slugs'        => '',                          // If specified, only show the custom fields that are specified
+				'bmi-format'                => 'label',                     // Format for display BMI
+				'show-add-button' 			=> false,					    // Display a "Add weight" button above the chart.
+		//		'show-chart-history' 		=> false,					    // Display a chart on the History tab.
+		//		'allow-delete-data' 		=> true,                	    // Show "Delete your data" section
+				'hide-notes' 				=> ws_ls_setting_hide_notes(),  // Hide notes field
+				'hide-photos' 				=> false,                       // Hide photos part of form
+				'hide-chart-overview' 		=> false,               	    // Hide chart on the overview tab
+		//		'hide-tab-photos' 			=> false,                 	    // Hide Photos tab
+		//		'hide-tab-advanced' 		=> false,               	    // Hide Advanced tab (macroN, calories, etc)
+		//		'hide-tab-descriptions' 	=> ws_ls_option_to_bool( 'ws-ls-tab-hide-descriptions', 'yes' ), // Hide tab descriptions
+		//		'hide-advanced-narrative' 	=> false,         			    // Hide text describing BMR, MarcoN, etc
+		//		'disable-advanced-tables' 	=> false,         			    // Disable advanced data tables.
+		//		'disable-tabs' 				=> false,                       // Disable using tabs.
+		//		'disable-second-check' 		=> false,					    // Disable check to see if [wlt] placed more than once
+				'enable-week-ranges'        => false,                       // Enable Week Ranges?
+				'user-id'					=> get_current_user_id(),
+				'weight-mandatory'			=> true,						// Is weight mandatory?
 	], $user_defined_arguments );
 
 
@@ -88,7 +91,14 @@ add_shortcode( 'wt-beta', 'ws_ls_shortcode_beta' );
  */
 function ws_ls_ui_kit_info_box_with_header_footer( $args = [] ) {
 
-	$args = wp_parse_args( $args, [ 'header' => '', 'body' => '', 'body-class' => '', 'footer' => '', 'footer-link' => '', 'footer-text' => '' ] );
+	$args = wp_parse_args( $args, [ 'header'        => '',
+	                                'body'          => '',
+	                                'body-class'    => '',
+	                                'footer'        => '',
+	                                'footer-link'   => '',
+	                                'footer-text'   => '',
+									'tab-changer'   => ''
+	] );
 
 	$html = '<div class="ykuk-card ykuk-card-small ykuk-card-default ykuk-margin-top">';
 
@@ -109,8 +119,10 @@ function ws_ls_ui_kit_info_box_with_header_footer( $args = [] ) {
 	if ( false === empty( $args[ 'footer-link' ] )
 		&& false === empty( $args[ 'footer-text' ] ) ) {
 
-		$args[ 'footer' ] = sprintf( '<a href="%s" class="ykuk-button ykuk-button-text">%s</a>',
+		$args[ 'footer' ] = sprintf( '<a href="%s" class="ykuk-button ykuk-button-text%s" data-tab="%s">%s</a>',
 								esc_url( $args[ 'footer-link' ] ),
+								( false === empty( $args[ 'tab-changer' ] ) ) ? ' ws-ls-tab-change' : '',
+								( false === empty( $args[ 'tab-changer' ] ) ) ? $args[ 'tab-changer' ] : '',
 								esc_html( $args[ 'footer-text' ] )
 		);
 	}
@@ -232,21 +244,54 @@ function ws_ls_wt_data_summary( $arguments = []) {
 
 /**
  * Tabs menu
- * @param array $shortcode_arguments
+ *
+ * @param array $arguments
+ *
  * @return string
  */
 function ws_ls_wt_tab_menu( $arguments = [] ) {
 
+	$tabs = [
+				[ 'name' => 'home', 'icon' => 'home' ],
+				[ 'name' => 'add-edit', 'icon' => 'plus' ],
+				[ 'name' => 'history', 'icon' => 'history' ],
+	];
+
+	$tabs[] = [ 'name' => 'advanced', 'icon' => 'heart' ];
+	$tabs[] = [ 'name' => 'gallery', 'icon' => 'image' ];
+	$tabs[] = [ 'name' => 'messages', 'icon' => 'mail' ];
+	$tabs[] = [ 'name' => 'settings', 'icon' => 'settings' ];
+
+	// Store tab names / position in a JS object so JS scripts can look determine their position when
+	// swtiching tabs
+	$tab_names = wp_list_pluck( $tabs, 'name' );
+	wp_localize_script( 'yk-uikit-wt', 'ws_ls_tab_positions', $tab_names );
+
+	$html = '<ul ykuk-tab class="ykuk-tab-menu ykuk-flex-center ykuk-flex-right@s" ykuk-switcher>';
+
+	foreach( $tabs as $tab ) {
+		$html .= sprintf( '	<li class="ykuk-padding-remove-left%s">
+								<a href="#">
+									<span ykuk-icon="icon: %s"></span>
+								</a>
+							</li>',
+							( false === empty( $arguments[ 'active-tab' ] ) && $tab[ 'name' ] === $arguments[ 'active-tab' ] ) ? ' ykuk-active' : '',
+							$tab[ 'icon' ]
+		);
+	}
+
 	// Tab menu
-	$html = '	<ul ykuk-tab class="ykuk-flex-center ykuk-flex-right@s" ykuk-switcher>
-					<li class="ykuk-active ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: home"></span></a></li>
-					<li class="ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: plus"></span></a></li>
-					<li class="ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: history"></span></a></li>
-					<li class="ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: heart"></span></a></li>
-					<li class="ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: image"></span></a></li>
-					<li class="ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: mail"></span></a></li>
-					<li class="ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: settings"></span></a></li>
-				</ul>';
+//	$html = '	<ul ykuk-tab class="ykuk-flex-center ykuk-flex-right@s" ykuk-switcher>
+//					<li class="ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: home"></span></a></li>
+//					<li class="ykuk-active ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: plus"></span></a></li>
+//					<li class="ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: history"></span></a></li>
+//					<li class="ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: heart"></span></a></li>
+//					<li class="ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: image"></span></a></li>
+//					<li class="ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: mail"></span></a></li>
+//					<li class="ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: settings"></span></a></li>
+//				</ul>';
+
+	$html .= '</ul>';
 
 	return $html;
 }
@@ -289,49 +334,19 @@ function ws_ls_wt_tab_home( $shortcode_arguments = [] ) {
 		$args[ 'hide-title' ] 		= true;
 		$args[ 'legend-position' ]	= 'bottom';
 
-		$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 	'header' => __( 'Weight entries', WE_LS_SLUG ),
-																'body' => ws_ls_shortcode_embed_chart( $args[ 'weight-data' ]  , $args ),
-																'footer-link' => '#',
-																'footer-text' => __('View in tabular format', WE_LS_SLUG)
+		$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 	'header'        => __( 'Weight entries', WE_LS_SLUG ),
+																'body'          => ws_ls_shortcode_embed_chart( $args[ 'weight-data' ]  , $args ),
+																'footer-link'   => '#',
+																'footer-text'   => __('View in tabular format', WE_LS_SLUG),
+																'tab-changer'   => 'history'
 		]);
 	}
 
 	return $html;
 }
 
-
-
-
-//function wl_ls_wt_tabs( $shortcode_arguments = [] ) {
-//	$html .= '<ul ykuk-tab class="ykuk-flex-center ykuk-flex-right@s" ykuk-switcher>
-//			<li class="ykuk-active ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: home"></span></a></li>
-//			<li class="ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: plus"></span></a></li>
-//			<li class="ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: history"></span></a></li>
-//			<li class="ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: heart"></span></a></li>
-//			<li class="ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: image"></span></a></li>
-//			<li class="ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: mail"></span></a></li>
-//			<li class="ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: settings"></span></a></li>
-//		</ul>';
-//}
-
-
-
-
-// function ws_ls_uikit_mealtracker_summary() {
-
-// 	return '<div class="ykuk-grid-small ykuk-text-center ykuk-child-width-1-1 ykuk-child-width-1-2@s ykuk-grid-match ykuk-text-small" ykuk-grid>
-// 				<div>
-// 					' .  yk_mt_shortcode_chart( [] ) . '
-// 				</div>
-// 				<div>
-
-// 				</div>
-
-// 			</div>';
-// }
-
 function ws_ls_tab_settings( $arguments = [] ) {
-	return 'Settings';
+	return 'Add target<br /><br />Settings';
 }
 
 function ws_ls_tab_notes( $arguments = [] ) {

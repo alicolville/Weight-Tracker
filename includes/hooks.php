@@ -107,6 +107,8 @@ function ws_ls_enqueue_uikit() {
 	wp_enqueue_script( 'yk-uikit', plugins_url( '../assets/uikit/js/uikit.js', __FILE__ ), [] , WE_LS_CURRENT_VERSION );
 	wp_enqueue_script( 'yk-uikit-icons', plugins_url( '../assets/uikit/js/uikit-icons.js', __FILE__ ), [] , WE_LS_CURRENT_VERSION);
 
+	wp_enqueue_script( 'yk-uikit-wt', plugins_url( '../assets/uikit/js/wt.js', __FILE__ ), [] , WE_LS_CURRENT_VERSION );
+
 }
 
 /**

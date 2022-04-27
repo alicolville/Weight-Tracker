@@ -122,7 +122,7 @@ function ws_ls_component_target_weight( $args = [] ) {
                                     %1$s
                                 </span>
                                 %2$s
-                                <br /><span class="ykuk-info-box-meta"><a href="#">Adjust</a></span>
+                                <br /><span class="ykuk-info-box-meta"><a href="#" class="ws-ls-tab-change" data-tab="settings">Adjust</a></span>
                         </div>
                     </div>',
 		$text_data,
