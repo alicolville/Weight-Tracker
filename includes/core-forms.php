@@ -32,7 +32,9 @@ function ws_ls_form_weight( $arguments = [] ) {
 	                                            'type'                  => 'weight',
 	                                            'weight-mandatory'		=> true,
 	                                            'redirect-url'          => '',
-	                                            'user-id'               => get_current_user_id() ] );
+	                                            'user-id'               => get_current_user_id(),
+												'uikit'                 => false
+	] );
 
 	// Is the user logged in?
 	if ( false === is_user_logged_in() ) {
@@ -64,7 +66,7 @@ function ws_ls_form_weight( $arguments = [] ) {
 	$arguments  				= ws_ls_form_init( $arguments );
 	$html      					= $arguments[ 'html' ];
 
-	$html .= sprintf( '		<form action="%1$s" method="post" class="%12$swe-ls-weight-form we-ls-weight-form-validate ws_ls_display_form %2$s" id="%3$s" data-form-type="%4$s" data-metric-unit="%5$s" %9$s data-form-key="%13$s" ">
+	$html .= sprintf( '		<form action="%1$s" method="post" class="%12$s%14$s %2$s" id="%3$s" data-form-type="%4$s" data-metric-unit="%5$s" %9$s data-form-key="%13$s" ">
 									<input type="hidden" name="type" value="%4$s" />
 									<input type="hidden" name="user-id" value="%6$d" />
 									<input type="hidden" name="security" value="%7$s" />
@@ -83,7 +85,8 @@ function ws_ls_form_weight( $arguments = [] ) {
 									esc_url_raw( $arguments[ 'redirect-url' ] ),
 									$arguments[ 'form-number' ],
 									( 'weight' === $arguments[ 'type' ] && true === ws_ls_to_bool( $arguments[ 'weight-mandatory' ] ) ) ? 'weight-required ' : '',
-									$arguments[ 'form-key' ]
+									$arguments[ 'form-key' ],
+									( false === $arguments[ 'uikit' ] ) ? 'we-ls-weight-form we-ls-weight-form-validate ws_ls_display_form' : ''
 	);
 
 	/*
@@ -133,11 +136,13 @@ function ws_ls_form_weight( $arguments = [] ) {
 			$date = ( false === empty( $arguments['entry']['display-date'] ) ) ?
 				$arguments['entry']['display-date'] : $arguments['todays-date'];
 
-			$html .= ws_ls_form_field_date( [   'name'        => 'we-ls-date',
-			                                    'value'       => $date,
-			                                    'placeholder' => $date,
-			                                    'title'       => __( 'Date', WE_LS_SLUG ),
-												'form-id'     => $arguments[ 'form-id' ]
+			$html .= ws_ls_form_field_date( [   'name'          => 'we-ls-date',
+			                                    'value'         => $date,
+			                                    'placeholder'   => $date,
+			                                    'title'         => __( 'Date', WE_LS_SLUG ),
+												'form-id'       => $arguments[ 'form-id' ],
+												'uikit'         => $arguments[ 'uikit' ],
+												'css-class'     => true === $arguments[ 'uikit' ] ? 'ykuk-width-1-1' : ''
 			] );
 		}
 	}
@@ -184,6 +189,8 @@ function ws_ls_form_weight( $arguments = [] ) {
 		if ( 'stones_pounds' ===  $arguments[ 'data-unit' ] ) {
 			$html .= ws_ls_form_field_number( [     'name'          => 'ws-ls-weight-stones',
 			                                        'placeholder'   => $placeholders[ 'stones' ] . __( 'st', WE_LS_SLUG ),
+			                                        'css-class'     => 'ykuk-input ykuk-width-1-2 ykuk-margin',
+			                                        'uikit'         => $arguments[ 'uikit' ],
 			                                        'value'         => ( false === empty( $arguments[ 'entry' ][ 'stones' ] ) ) ? $arguments[ 'entry' ][ 'stones' ] : '' ] );
 		}
 
@@ -192,6 +199,8 @@ function ws_ls_form_weight( $arguments = [] ) {
 			$html .= ws_ls_form_field_number( [    'name'          => 'ws-ls-weight-pounds',
 			                                       'placeholder'   => $placeholders[ 'pounds' ] . __( 'lb', WE_LS_SLUG ),
 			                                       'max'           => ( 'stones_pounds' ===  $arguments[ 'data-unit' ] ) ? '13.99' : '5000',
+			                                       'css-class'     => 'ykuk-input ykuk-width-1-2 ykuk-margin',
+			                                       'uikit'         => $arguments[ 'uikit' ],
 			                                       'value' => ( true === isset( $arguments[ 'entry' ][ 'pounds' ] ) ) ? $arguments[ 'entry' ][ 'pounds' ] : '' ] );
 		}
 
@@ -347,14 +356,14 @@ function ws_ls_form_field_text( $arguments = [] ) {
 	$html = '';
 
 	if ( true === $arguments[ 'include-div' ] ) {
-		$html .= sprintf( '<div id="%1$s-row" class="ws-ls-form-row">', $arguments[ 'name' ] );
+		$html .= sprintf( '<div id="%1$s-row" class="w1s-ls-form-row">', $arguments[ 'name' ] );
 	}
 
 	if ( true === $arguments[ 'show-label' ] ) {
-		$html .= sprintf( '<label for="%1$s" class="">%2$s</label>', $arguments[ 'id' ], $arguments[ 'title' ]);
+		$html .= sprintf( '<label for="%1$s">%2$s</label>', $arguments[ 'id' ], $arguments[ 'title' ]);
 	}
 
-	$html .= sprintf( '<input type="text" name="%1$s" id="%2$s" tabindex="%3$d" value="%4$s" placeholder="%5$s" size="%6$d" class="%7$s" %8$s />',
+	$html .= sprintf( '<input type="text" name="%1$s" id="%2$s" tabindex="%3$d" value="%4$s" placeholder="%5$s" size="%6$d" class="ykui-input %7$s" %8$s />',
 		$arguments[ 'name' ],
 		esc_attr( $arguments[ 'id' ] ),
 		ws_ls_form_tab_index_next(),
@@ -397,10 +406,15 @@ function ws_ls_form_field_date( $arguments = [] ) {
 												'css-class-row'         => '',
 	                                            'size'                  => 22,
 	                                            'trailing-html'         => '',
-												'include-div'           => true	 ]);
+												'include-div'           => true,
+												'uikit'                 => false,
+												'icon'                  => 'calendar'
+	]);
 	$html = '';
 
-	if ( true === $arguments[ 'include-div' ] ) {
+	$display_wrapping_div = ( true === $arguments[ 'include-div' ] && false === $arguments[ 'uikit' ] );
+
+	if ( true === $display_wrapping_div ) {
 		$html .= sprintf( '<div id="%1$s-row" class="ws-ls-form-row%2$s">', $arguments[ 'name' ], ( false === empty( $arguments[ 'css-class-row' ] ) ) ? ' ' . esc_attr( $arguments[ 'css-class-row' ] ) : '' );
 	}
 
@@ -411,22 +425,24 @@ function ws_ls_form_field_date( $arguments = [] ) {
 							esc_attr( $arguments[ 'css-class-label' ] ) );
 	}
 
-	$html .= sprintf( '<input type="text" name="%1$s" id="%2$s" tabindex="%3$d" value="%4$s" placeholder="%5$s" size="%6$d" class="%7$s" data-form-id="%8$s" />',
-			$arguments[ 'name' ],
-			esc_attr( $arguments[ 'id' ] ),
-			ws_ls_form_tab_index_next(),
-			esc_attr( $arguments[ 'value' ] ),
-			esc_attr( $arguments[ 'placeholder' ] ),
-			$arguments[ 'size' ],
-			$arguments[ 'name' ] . ' ' . $arguments[ 'css-class' ],
-			esc_attr( $arguments[ 'form-id' ] )
+	$component = sprintf( '<input type="text" name="%1$s" id="%2$s" tabindex="%3$d" value="%4$s" placeholder="%5$s" size="%6$d" class="ykuk-input %7$s" data-form-id="%8$s" />',
+							$arguments[ 'name' ],
+							esc_attr( $arguments[ 'id' ] ),
+							ws_ls_form_tab_index_next(),
+							esc_attr( $arguments[ 'value' ] ),
+							esc_attr( $arguments[ 'placeholder' ] ),
+							$arguments[ 'size' ],
+							$arguments[ 'name' ] . ' ' . $arguments[ 'css-class' ],
+							esc_attr( $arguments[ 'form-id' ] )
 	);
+
+	$html .= ws_ls_form_field_add_icon( $component, $arguments[ 'icon' ] );
 
 	if ( false === empty( $arguments[ 'trailing-html' ] ) ) {
 		$html .= $arguments[ 'trailing-html' ];
 	}
 
-	if ( true === $arguments[ 'include-div' ] ) {
+	if ( true === $display_wrapping_div ) {
 		$html .= '</div>';
 	}
 
@@ -460,7 +476,7 @@ function ws_ls_form_field_textarea( $arguments = [] ) {
 	$html = sprintf( '<div id="%1$s-row" class="%2$s">', $arguments[ 'name' ], $arguments[ 'css-class-row' ] );
 
 	if ( true === $arguments[ 'show-label' ] ) {
-		$html .= sprintf( '<label for="%1$s" class="yk-mt__label %3$s">%2$s</label>', $arguments[ 'name' ], $arguments[ 'title' ], $arguments[ 'css-class-label' ] );
+		$html .= sprintf( '<label for="%1$s" class="ykuk-form-label %3$s">%2$s</label>', $arguments[ 'name' ], $arguments[ 'title' ], $arguments[ 'css-class-label' ] );
 	}
 
 	$html .= sprintf( '<textarea name="%1$s" id="%1$s" tabindex="%2$d" placeholder="%3$s" cols="%4$d" rows="%5$d" class="%6$s" %8$s data-msg="%9$s \'%10$s\'." %11$s>%7$s</textarea>',
@@ -504,17 +520,21 @@ function ws_ls_form_field_number( $arguments = [] ) {
 												'trailing-html'         => '',
 												'min'                   => 0,
 												'max'                   => 9999,
-												'step'                  => 'any'
+												'step'                  => 'any',
+												'uikit'                 => false
 	]);
 
-	$html = sprintf( '<div id="%1$s-row" class="ws-ls-form-row">', $arguments[ 'name' ] );
+	$html = '';
 
-	if ( true === $arguments[ 'show-label' ] ) {
-		$html .= sprintf( '<label for="%1$s" class="yk-mt__label %3$s">%2$s</label>', $arguments[ 'name' ], $arguments[ 'title' ], $arguments[ 'css-class' ] );
+	if ( false === $arguments[ 'uikit' ] ) {
+		$html .= sprintf( '<div id="%1$s-row" class="ws-ls-form-row">', $arguments[ 'name' ] );
 	}
 
+	if ( true === $arguments[ 'show-label' ] ) {
+		$html .= sprintf( '<label for="%1$s" class="ykuk-form-label %3$s">%2$s</label>', $arguments[ 'name' ], $arguments[ 'title' ], $arguments[ 'css-class' ] );
+	}
 
-	$html .= sprintf( '<input type="number" name="%1$s" step="%2$s" tabindex="%3$d" value="%4$s" placeholder="%5$s" size="%6$d" class="%7$s" min="%8$s" max="%9$s" />',
+	$html .= sprintf( '<input type="number" name="%1$s" step="%2$s" tabindex="%3$d" value="%4$s" placeholder="%5$s" size="%6$d" class="ykuk-input %7$s" min="%8$s" max="%9$s" />',
 		$arguments[ 'name' ],
 		$arguments[ 'step' ],
 		ws_ls_form_tab_index_next(),
@@ -530,7 +550,10 @@ function ws_ls_form_field_number( $arguments = [] ) {
 		$html .= $arguments[ 'trailing-html' ];
 	}
 
-	return $html . '</div>';
+	if ( false === $arguments[ 'uikit' ] ) {
+		$html .= '</div>';
+	}
+	return $html;
 }
 
 /**
@@ -607,7 +630,7 @@ function ws_ls_form_field_select( $arguments ) {
 	}
 
 	if ( true === $arguments[ 'show-label' ] ) {
-		$html .= sprintf(   '<label id="%4$s" for="%1$s" class="%3$s">%2$s</label>',
+		$html .= sprintf(   '<label id="%4$s" for="%1$s" class="ykuk-form-label %3$s">%2$s</label>',
 							esc_attr( $arguments[ 'key' ] ),
 							esc_attr( $arguments[ 'label' ] ),
 							esc_attr( $arguments[ 'css-class-title' ] ),
@@ -644,6 +667,31 @@ function ws_ls_form_field_select( $arguments ) {
 	}
 
 	return $html;
+}
+
+/**
+ * Add icon to field
+ *
+ * @param $html
+ * @param string $icon
+ * @param string $css_class
+ *
+ * @return string
+ */
+function ws_ls_form_field_add_icon( $html, $icon = '', $css_class = 'ykuk-width-1-1' ) {
+
+	if ( true === empty( $icon ) ) {
+		return $html;
+	}
+
+	return sprintf( '<div class="ykuk-inline %s">
+			            <span class="ykuk-form-icon" ykuk-icon="icon: %s"></span>
+			            %s
+			        </div>',
+		$css_class,
+		$icon,
+		$html
+	);
 }
 
 /**

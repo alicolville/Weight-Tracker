@@ -27,7 +27,7 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 
 	$shortcode_arguments = shortcode_atts( [
 			'accordian-multiple-open'   => true,                    // NEW: Allow more than one accordian tab to be open
-				'active-tab'                => 'home',                      // Initial active tab
+				'active-tab'                => 'add-edit',                      // Initial active tab
 				'min-chart-points' 			=> 2,	                        // Minimum number of data entries before chart is shown
 		//		'hide-first-target-form' 	=> false,					    // Hide first Target form
 		//		'hide-second-target-form' 	=> false,					    // Hide second Target form
@@ -164,7 +164,8 @@ function ws_ls_wt_form( $arguments = [] ) {
 	                                'hide-confirmation'     => true,
 	                                'custom-field-groups'   => $arguments[ 'custom-field-groups' ],
 	                                'custom-field-slugs'    => $arguments[ 'custom-field-slugs' ],
-	                                'weight-mandatory'		=> $arguments[ 'weight-mandatory' ]
+	                                'weight-mandatory'		=> $arguments[ 'weight-mandatory' ],
+									'uikit'                 => true
 	] );
 
 	return $html;
@@ -252,7 +253,7 @@ function ws_ls_wt_tab_menu( $arguments = [] ) {
 	$tabs[] = [ 'name' => 'settings', 'icon' => 'settings' ];
 
 	// Store tab names / position in a JS object so JS scripts can look determine their position when
-	// swtiching tabs
+	// switching tabs
 	$tab_names = wp_list_pluck( $tabs, 'name' );
 	wp_localize_script( 'yk-uikit-wt', 'ws_ls_tab_positions', $tab_names );
 

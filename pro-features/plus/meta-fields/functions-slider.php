@@ -23,7 +23,7 @@ function ws_ls_meta_fields_form_field_range_slider( $field, $value ) {
 	ws_meta_fields_range_slider_enqueue();
 
 	$html = sprintf( '	<div class="ws-ls-meta-field">
-                            <label for="%1$s" class="ws-ls-meta-field-title">%2$s</label>
+                            <label for="%1$s" class="ws-ls-meta-field-title ykuk-form-label">%2$s</label>
                             <div class="ws-ls-meta-fields-slider" id="%4$s"></div>
                             <input id="%4$s-value" name="%1$s" value="%8$s" type="hidden" />
                       	</div>

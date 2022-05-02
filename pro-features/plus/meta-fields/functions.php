@@ -341,7 +341,7 @@ function ws_ls_meta_fields_for_entry_display( $entry_id ) {
     function ws_ls_meta_fields_form_field_text( $field, $value ) {
 
         return sprintf('<div class="ws-ls-meta-field">
-                            <label for="%1$s" class="ws-ls-meta-field-title" >%2$s</label>
+                            <label for="%1$s" class="ws-ls-meta-field-title ykuk-form-label" >%2$s</label>
                             <input type="text" id="%1$s" name="%1$s" %3$s tabindex="%4$s" maxlength="200" value="%5$s" class="%1$s ws-ls-meta-field" data-msg="%6$s \'%2$s\'." placeholder="%7$s" />
                         </div>',
             ws_ls_meta_fields_form_field_generate_id( $field['id'] ),
@@ -393,7 +393,7 @@ function ws_ls_meta_fields_for_entry_display( $entry_id ) {
     	//TODO: Refactor to use ws_ls_form_field_number()
 
         return sprintf('<div class="ws-ls-meta-field">
-                            <label for="%1$s" class="ws-ls-meta-field-title">%2$s</label>
+                            <label for="%1$s" class="ws-ls-meta-field-title ykuk-form-label">%2$s</label>
                             <input type="number" id="%1$s" name="%1$s" %3$s step="any" tabindex="%4$s" maxlength="200" value="%5$s" class="%1$s ws-ls-meta-field" data-msg="%6$s \'%2$s\'." placeholder="%7$s" />
                         </div>',
             ws_ls_meta_fields_form_field_generate_id( $field['id'] ),
@@ -417,7 +417,7 @@ function ws_ls_meta_fields_for_entry_display( $entry_id ) {
     function ws_ls_meta_fields_form_field_yes_no( $field, $value ) {
 
         $html = sprintf( '<div class="ws-ls-meta-field">
-                            <label for="%1$s" class="ws-ls-meta-field-title">%2$s</label>
+                            <label for="%1$s" class="ws-ls-meta-field-title ykuk-form-label">%2$s</label>
                             <select name="%1$s" id="%1$s" tabindex="%3$s" class="%1$s">
                             ',
                             ws_ls_meta_fields_form_field_generate_id( $field['id'] ),
@@ -489,7 +489,7 @@ function ws_ls_meta_fields_form_field_radio_buttons( $field, $value ) {
 	$field_id = ws_ls_meta_fields_form_field_generate_id( $field['id'] );
 
 	$html = sprintf( '<div class="ws-ls-meta-field">
-						<label for="%1$s" class="ws-ls-meta-field-title">%2$s</label>',
+						<label for="%1$s" class="ws-ls-meta-field-title ykuk-form-label">%2$s</label>',
 		$field_id,
 		esc_attr( $field['field_name'] )
 	);
@@ -511,7 +511,7 @@ function ws_ls_meta_fields_form_field_radio_buttons( $field, $value ) {
 
 		$html .= sprintf ( '<div class="ws-ls-meta-field-radio-button">
 							  <input type="radio" id="%2$s" name="%1$s" value="%3$s" %5$s>
-							  <label for="%2$s">%4$s</label>
+							  <label for="%2$s ykuk-form-label">%4$s</label>
 							</div>',
 							$field_id,
 							ws_ls_component_id(),
@@ -579,7 +579,7 @@ function ws_ls_meta_fields_form_field_select( $field, $value ) {
 		$field_id = $field_id ?: ws_ls_meta_fields_form_field_generate_id( $field['id'] );
 
 		$html = sprintf('<div class="ws-ls-meta-field ws-ls-meta-field-photo">
-                            <label for="%1$s" class="ws-ls-meta-field-title">%2$s</label>',
+                            <label for="%1$s" class="ws-ls-meta-field-title ykuk-form-label">%2$s</label>',
                             esc_attr( $field_id ),
 							esc_html( $field['field_name'] )
                         );
