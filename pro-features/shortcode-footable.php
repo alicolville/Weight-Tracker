@@ -27,7 +27,9 @@ function ws_ls_shortcode_table( $user_defined_arguments ) {
 	                                'custom-field-col-size'         => '',
 							        'bmi-format'                    => 'label',
 							        'week'                          => NULL,
-						            'user-id'                       => get_current_user_id() ], $user_defined_arguments );
+						            'user-id'                       => get_current_user_id(),
+                                    'uikit'                         => false
+    ], $user_defined_arguments );
 
     $arguments[ 'user-id' ]                 = (int) $arguments[ 'user-id' ];
 	$arguments[ 'enable-add-edit' ]         = ws_ls_to_bool( $arguments[ 'enable-add-edit' ] );

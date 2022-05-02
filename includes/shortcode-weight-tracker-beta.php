@@ -52,6 +52,10 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 				'weight-mandatory'			=> true,						// Is weight mandatory?
 	], $user_defined_arguments );
 
+	if ( false !== ws_ls_querystring_value( 'ws-ls-edit-entry' ) ) {
+		$shortcode_arguments[ 'active-tab' ] = 'history';
+	}
+
 
 	ws_ls_enqueue_uikit();
 
@@ -157,7 +161,7 @@ function ws_ls_wt_form( $arguments = [] ) {
 	$html .= ws_ls_form_weight( [   'css-class-form'        => 'ws-ls-main-weight-form',
 	                                'user-id'               => $arguments[ 'user-id' ],
 	                                'redirect-url'          => $redirect_url,
-	                                'entry-id'              => 49,//ws_ls_querystring_value('ws-edit-entry', true, NULL ),
+	                                'entry-id'              => ws_ls_querystring_value('ws-edit-entry', true, NULL ),
 	                                'hide-fields-photos'    => ws_ls_to_bool( $arguments[ 'hide-photos' ] ),
 	                                'hide-notes'            => ws_ls_to_bool( $arguments[ 'hide-notes' ] ),
 	                                'hide-title'            => true,
@@ -353,6 +357,7 @@ function ws_ls_tab_notes( $arguments = [] ) {
  * @return string
  */
 function ws_ls_tab_add_entry( $arguments = [] ) {
+
 	return ws_ls_ui_kit_info_box_with_header_footer( [	'header' 		=> __( 'Add a new entry', WE_LS_SLUG ),
 														'body' 			=> ws_ls_wt_form( $arguments )
 	] );
@@ -375,7 +380,9 @@ function ws_ls_wt_tab_table( $arguments = [] ) {
 																											'week' 					=> $arguments[ 'selected-week-number' ] ,
 																											'bmi-format' 			=> $arguments[ 'bmi-format' ],
 																											'custom-field-groups'   => $arguments[ 'custom-field-groups' ],
-																											'custom-field-slugs'    => $arguments[ 'custom-field-slugs' ] ] )
+																											'custom-field-slugs'    => $arguments[ 'custom-field-slugs' ],
+																											'uikit'                => true
+															] )
 
 	]);
 

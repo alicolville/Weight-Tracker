@@ -33,7 +33,8 @@ jQuery( document ).ready(function ( $, undefined ) {
                         'small_width':                    $( this ).data('small-width' ),
                         'table_id':                       table_id,
                         'week':                           $( this ).data( 'week' ),
-                        'bmi-format':                     $( this ).data( 'bmi-format' )
+                        'bmi-format':                     $( this ).data( 'bmi-format' ),
+                        'uikit':                          $( this ).data( 'uikit' )
         };
 
         ws_ls_post_data_to_WP( 'table_data', data, ws_ls_callback_setup_table )
