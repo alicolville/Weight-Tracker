@@ -142,7 +142,7 @@ function ws_ls_form_weight( $arguments = [] ) {
 			                                    'title'         => __( 'Date', WE_LS_SLUG ),
 												'form-id'       => $arguments[ 'form-id' ],
 												'uikit'         => $arguments[ 'uikit' ],
-												'css-class'     => true === $arguments[ 'uikit' ] ? 'ykuk-width-1-1' : ''
+												'css-class'     => 'we-ls-datepicker' . ( true === $arguments[ 'uikit' ] ? ' ykuk-width-1-1' : '' )
 			] );
 		}
 	}

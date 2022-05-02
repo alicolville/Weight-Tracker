@@ -157,7 +157,7 @@ function ws_ls_wt_form( $arguments = [] ) {
 	$html .= ws_ls_form_weight( [   'css-class-form'        => 'ws-ls-main-weight-form',
 	                                'user-id'               => $arguments[ 'user-id' ],
 	                                'redirect-url'          => $redirect_url,
-	                                'entry-id'              => ws_ls_querystring_value('ws-edit-entry', true, NULL ),
+	                                'entry-id'              => 49,//ws_ls_querystring_value('ws-edit-entry', true, NULL ),
 	                                'hide-fields-photos'    => ws_ls_to_bool( $arguments[ 'hide-photos' ] ),
 	                                'hide-notes'            => ws_ls_to_bool( $arguments[ 'hide-notes' ] ),
 	                                'hide-title'            => true,
