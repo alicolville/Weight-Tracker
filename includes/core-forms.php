@@ -22,6 +22,7 @@ function ws_ls_form_weight( $arguments = [] ) {
 	                                            'hide-login-message'    => false,
 	                                            'hide-confirmation'     => false,
 	                                            'hide-notes'            => ws_ls_setting_hide_notes(),
+	                                            'hide-title'            => false,           // Hide main form title
 	                                            'hide-titles'           => false,
 	                                            'html'                  => '',
 	                                            'load-placeholders'     => ws_ls_setting_populate_placeholders_with_previous_values(), // Should we set previous values as form placeholders?
@@ -296,7 +297,7 @@ function ws_ls_form_init( $arguments = [] ) {
 		}
 	}
 
-	if ( false === empty( $title ) ) {
+	if ( false === empty( $title ) && false === $arguments[ 'hide-title' ] ) {
 		$arguments[ 'html' ] .= ws_ls_form_title( $title, $arguments[ 'hide-titles' ] );
 	}
 

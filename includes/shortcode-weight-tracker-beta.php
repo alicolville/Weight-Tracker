@@ -137,48 +137,37 @@ function ws_ls_ui_kit_info_box_with_header_footer( $args = [] ) {
 
 }
 
-// Delete this
-function ws_ls_uikit_sample_form() {
-	return '<form>
-		<fieldset class="ykuk-fieldset">
+/**
+ * Display form for entry
+ * @param array $arguments
+ *
+ * @return string
+ */
+function ws_ls_wt_form( $arguments = [] ) {
 
+	$html       = '';
 
-			<div class="ykuk-margin">
-				<input class="ykuk-input" type="text" placeholder="Input">
-			</div>
+	//If we have a Redirect URL, base decode.
+	$redirect_url = ws_ls_querystring_value( 'redirect' );
 
-			<div class="ykuk-margin">
-				<select class="ykuk-select">
-					<option>Option 01</option>
-					<option>Option 02</option>
-				</select>
-			</div>
+	if ( false === empty( $redirect_url ) ) {
+		$redirect_url = base64_decode( $redirect_url );
+	}
 
-			<div class="ykuk-inline">
-				<span class="ykuk-form-iconr" ykuk-icon="icon: calendar" data-ykuk-datepicker="{}"></span>
-				<input class="ykuk-input">
-			</div>
+	$html .= ws_ls_form_weight( [   'css-class-form'        => 'ws-ls-main-weight-form',
+	                                'user-id'               => $arguments[ 'user-id' ],
+	                                'redirect-url'          => $redirect_url,
+	                                'entry-id'              => ws_ls_querystring_value('ws-edit-entry', true, NULL ),
+	                                'hide-fields-photos'    => ws_ls_to_bool( $arguments[ 'hide-photos' ] ),
+	                                'hide-notes'            => ws_ls_to_bool( $arguments[ 'hide-notes' ] ),
+	                                'hide-title'            => true,
+	                                'hide-confirmation'     => true,
+	                                'custom-field-groups'   => $arguments[ 'custom-field-groups' ],
+	                                'custom-field-slugs'    => $arguments[ 'custom-field-slugs' ],
+	                                'weight-mandatory'		=> $arguments[ 'weight-mandatory' ]
+	] );
 
-			<div class="ykuk-margin">
-				<textarea class="ykuk-textarea" rows="5" placeholder="Textarea"></textarea>
-			</div>
-
-			<div class="ykuk-margin ykuk-grid-small ykuk-child-width-auto ykuk-grid">
-				<label><input class="ykuk-radio" type="radio" name="radio2" checked> A</label>
-				<label><input class="ykuk-radio" type="radio" name="radio2"> B</label>
-			</div>
-
-			<div class="ykuk-margin ykuk-grid-small ykuk-child-width-auto ykuk-grid">
-				<label><input class="ykuk-checkbox" type="checkbox" checked> A</label>
-				<label><input class="ykuk-checkbox" type="checkbox"> B</label>
-			</div>
-
-			<div class="ykuk-margin">
-				<button class="ykuk-button ykuk-button-default">Save</button>
-			</div>
-
-		</fieldset>
-	</form>';
+	return $html;
 }
 
 /**
@@ -356,9 +345,15 @@ function ws_ls_tab_notes( $arguments = [] ) {
 	]);
 }
 
+/**
+ * Display form tab
+ * @param array $arguments
+ *
+ * @return string
+ */
 function ws_ls_tab_add_entry( $arguments = [] ) {
 	return ws_ls_ui_kit_info_box_with_header_footer( [	'header' 		=> __( 'Add a new entry', WE_LS_SLUG ),
-														'body' 			=> ws_ls_uikit_sample_form()
+														'body' 			=> ws_ls_wt_form( $arguments )
 	] );
 }
 

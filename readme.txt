@@ -157,6 +157,7 @@ TODO:
   - rtl support (uikit css)
 	- Reduce compress UI KIT files.
 	- Document wt-difference-between-latest-previous shortcode
+	- document new legend position for chart
 
 * Bug fix: Issue with -0lbs being displayed instead of 0lbs.
 
