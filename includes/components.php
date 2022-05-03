@@ -19,7 +19,10 @@ function ws_ls_component_latest_weight( $args = [] ) {
     if( false === empty( $latest_entry ) ) {
 
         $text_data  = $latest_entry[ 'display' ];
-        $text_date  = sprintf ( '<br /><span class="ykuk-info-box-meta"><a href="#" ykuk-switcher-item="next">%s</a></span>', $latest_entry[ 'display-date' ] );
+        $text_date  = sprintf ( '<br />
+									<span class="ykuk-info-box-meta">
+										<a href="%s">%s</a>
+									</span>', ws_ls_wt_link_edit_entry( $latest_entry[ 'id' ] ), $latest_entry[ 'display-date' ] );
 
         $difference = ws_ls_shortcode_difference_in_weight_previous_latest( [   'display'                   => 'percentage',
                                                                                 'include-percentage-sign'   => false,
@@ -78,7 +81,10 @@ function ws_ls_component_previous_weight( $args = [] ) {
 	if( false === empty( $previous_entry ) ) {
 
 		$text_data  = $previous_entry[ 'display' ];
-		$text_date  = sprintf ( '<br /><span class="ykuk-info-box-meta"><a href="#" ykuk-switcher-item="next">%s</a></span>', $previous_entry[ 'display-date' ] );
+		$text_date  = sprintf ( '<br />
+									<span class="ykuk-info-box-meta">
+										<a href="%s">%s</a>
+									</span>', ws_ls_wt_link_edit_entry( $previous_entry[ 'id' ] ), $previous_entry[ 'display-date' ] );
 
 	}
 
@@ -147,7 +153,12 @@ function ws_ls_component_start_weight( $args = [] ) {
 
 	if( false === empty( $start_weight[ 'display' ] ) ) {
 		$text_data  = $start_weight[ 'display' ];
-		$text_date  = sprintf ( '<br /><span class="ykuk-info-box-meta"><a href="#" ykuk-switcher-item="next">%s</a></span>', $start_weight[ 'display-date' ] );
+
+		$text_date  = sprintf ( '<br />
+									<span class="ykuk-info-box-meta">
+										<a href="%s">%s</a>
+									</span>', ws_ls_wt_link_edit_entry( $start_weight[ 'id' ] ), $start_weight[ 'display-date' ] );
+
 	}
 
 	return sprintf( '<div>
@@ -278,5 +289,25 @@ function ws_ls_component_number_of_days_tracking( $args = [] ) {
 		ws_ls_round_number( $days ),
 		__( 'Tracking for', WE_LS_SLUG ),
 		__( 'days', WE_LS_SLUG )
+	);
+}
+
+/**
+ * Display alert
+ * @param $message
+ * @param string $type
+ *
+ * @return string
+ */
+function ws_ls_component_alert( $message, $type = 'success' ) {
+
+	// Types: danger, warning, success, primary
+
+	return sprintf( '<div class="ykuk-alert-%s" ykuk-alert>
+		                <a class="ykuk-alert-close" ykuk-close></a>
+		                <p>%s</p>
+					</div>',
+					esc_attr( $type ),
+					esc_html( $message )
 	);
 }

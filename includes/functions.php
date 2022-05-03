@@ -893,13 +893,25 @@ function ws_ls_display_notice( $text, $type = 'success' ) {
                             wp_kses_post( $text )
 	);
 }
+
 /**
  * If QS value detected, display data saved message
+ *
+ * @param bool $uikit
+ *
+ * @return string
  */
-function ws_ls_display_data_saved_message() {
+function ws_ls_display_data_saved_message( $uikit = false ) {
 
 	if( 'n' !== ws_ls_querystring_value( 'ws-edit-saved', false, 'n' ) ) {
-		return ws_ls_display_blockquote( __('Your modifications have been saved', WE_LS_SLUG ), 'ws-ls-success' );
+
+		$message = __( 'Your modifications have been saved', WE_LS_SLUG );
+
+		if ( true === $uikit ) {
+			return ws_ls_component_alert( $message );
+		}
+
+		return ws_ls_display_blockquote( $message, 'ws-ls-success' );
 	}
 
 	return '';

@@ -27,7 +27,7 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 
 	$shortcode_arguments = shortcode_atts( [
 			'accordian-multiple-open'   => true,                    // NEW: Allow more than one accordian tab to be open
-				'active-tab'                => 'add-edit',                      // Initial active tab
+				'active-tab'                => 'home',                      // Initial active tab
 				'min-chart-points' 			=> 2,	                        // Minimum number of data entries before chart is shown
 		//		'hide-first-target-form' 	=> false,					    // Hide first Target form
 		//		'hide-second-target-form' 	=> false,					    // Hide second Target form
@@ -52,10 +52,13 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 				'weight-mandatory'			=> true,						// Is weight mandatory?
 	], $user_defined_arguments );
 
-	if ( false !== ws_ls_querystring_value( 'ws-ls-edit-entry' ) ) {
+	if ( null !== ws_ls_querystring_value( 'ws-edit-entry' ) ) {
 		$shortcode_arguments[ 'active-tab' ] = 'history';
 	}
 
+	if ( $active_tab = ws_ls_querystring_value( 'tab' ) ) {
+		$shortcode_arguments[ 'active-tab' ] = $active_tab;
+	}
 
 	ws_ls_enqueue_uikit();
 
@@ -615,9 +618,6 @@ function ws_ls_uikit_mealtracker_summary() {
 			</div>';
 }
 
-//' . yk_mt_shortcode_table_entries( [] ) . '
-
-
 function ws_ls_uikit_messages() {
 	return '<ul class="ykuk-comment-list">
     <li>
@@ -694,4 +694,30 @@ function ws_ls_uikit_messages() {
     <li><a href="#"><span ykuk-pagination-next></span></a></li>
 </ul>
 	';
+}
+
+/**
+ * Return a link for editing an entry
+ * @param $id
+ *
+ * @return string
+ */
+function ws_ls_wt_link_edit_entry( $id ) {
+
+	$edit_link  = remove_query_arg( ['ws-edit-entry', 'ws-edit-cancel', 'ws-edit-saved'], ws_ls_get_url() );
+
+	return esc_url( add_query_arg( 'ws-edit-entry', $id, $edit_link ) );
+}
+
+/**
+ * Goto certain tab
+ * @param $tab
+ *
+ * @return string
+ */
+function ws_ls_wt_link_goto_tab( $tab ) {
+
+	$link  = remove_query_arg( ['ws-edit-entry', 'ws-edit-cancel', 'ws-edit-saved'], ws_ls_get_url() );
+
+	return esc_url( add_query_arg( 'tab', $tab, $link ) );
 }

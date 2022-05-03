@@ -45,7 +45,7 @@ function ws_ls_data_table_render( $arguments = [] ) {
 
 	// Saved data?
 	if (false === is_admin()) {
-		$html = ws_ls_display_data_saved_message();
+		$html = ws_ls_display_data_saved_message( $arguments[ 'uikit' ] );
 	}
 
 	// Are we in front end and editing enabled, and of course we want to edit, then do so!
@@ -56,6 +56,14 @@ function ws_ls_data_table_render( $arguments = [] ) {
 
 		if( false === empty( $redirect_url ) ) {
 			$redirect_url = base64_decode( $redirect_url );
+		}
+
+		if ( true === $arguments[ 'uikit' ] ) {
+
+			$html .= sprintf( '	<p><a href="%s">< %s</a></p>
+								<div class="ykuk-divider-icon ykuk-width-1-1"></div>',
+								ws_ls_wt_link_goto_tab( 'history' ),
+								__( 'return to all entries', WE_LS_SLUG ) );
 		}
 
 		$html .= ws_ls_form_weight( [ 'entry-id' => $entry_id, 'redirect-url' => $redirect_url, 'weight-mandatory' => $arguments[ 'weight-mandatory' ],
