@@ -25,31 +25,27 @@ add_filter( 'body_class', function( $classes ) {
 
 function ws_ls_shortcode_beta( $user_defined_arguments ) {
 
-	$shortcode_arguments = shortcode_atts( [
-			'accordian-multiple-open'   => true,                    // NEW: Allow more than one accordian tab to be open
-				'active-tab'                => 'home',                      // Initial active tab
-				'min-chart-points' 			=> 2,	                        // Minimum number of data entries before chart is shown
-		//		'hide-first-target-form' 	=> false,					    // Hide first Target form
-		//		'hide-second-target-form' 	=> false,					    // Hide second Target form
-				'custom-field-groups'       => '',                          // If specified, only show custom fields that are within these groups
-				'custom-field-slugs'        => '',                          // If specified, only show the custom fields that are specified
-				'bmi-format'                => 'label',                     // Format for display BMI
-				'show-add-button' 			=> false,					    // Display a "Add weight" button above the chart.
-		//		'show-chart-history' 		=> false,					    // Display a chart on the History tab.
-		//		'allow-delete-data' 		=> true,                	    // Show "Delete your data" section
-				'hide-notes' 				=> ws_ls_setting_hide_notes(),  // Hide notes field
-				'hide-photos' 				=> false,                       // Hide photos part of form
-				'hide-chart-overview' 		=> false,               	    // Hide chart on the overview tab
-		//		'hide-tab-photos' 			=> false,                 	    // Hide Photos tab
-		//		'hide-tab-advanced' 		=> false,               	    // Hide Advanced tab (macroN, calories, etc)
-		//		'hide-tab-descriptions' 	=> ws_ls_option_to_bool( 'ws-ls-tab-hide-descriptions', 'yes' ), // Hide tab descriptions
-		//		'hide-advanced-narrative' 	=> false,         			    // Hide text describing BMR, MarcoN, etc
-		//		'disable-advanced-tables' 	=> false,         			    // Disable advanced data tables.
-		//		'disable-tabs' 				=> false,                       // Disable using tabs.
-		//		'disable-second-check' 		=> false,					    // Disable check to see if [wlt] placed more than once
-				'enable-week-ranges'        => false,                       // Enable Week Ranges?
-				'user-id'					=> get_current_user_id(),
-				'weight-mandatory'			=> true,						// Is weight mandatory?
+	$shortcode_arguments = shortcode_atts( [    'accordian-multiple-open'   => true,                    // NEW: Allow more than one accordian tab to be open
+												'active-tab'                => 'home',                      // Initial active tab
+												'min-chart-points' 			=> 2,	                        // Minimum number of data entries before chart is shown
+												'custom-field-groups'       => '',                          // If specified, only show custom fields that are within these groups
+												'custom-field-slugs'        => '',                          // If specified, only show the custom fields that are specified
+												'bmi-format'                => 'label',                     // Format for display BMI
+												'show-add-button' 			=> false,					    // Display a "Add weight" button above the chart.
+												//		'allow-delete-data' 		=> true,                	    // Show "Delete your data" section
+												'hide-notes' 				=> ws_ls_setting_hide_notes(),  // Hide notes field
+												'hide-photos' 				=> false,                       // Hide photos part of form
+												'hide-chart-overview' 		=> false,               	    // Hide chart on the overview tab
+												//		'hide-tab-photos' 			=> false,                 	    // Hide Photos tab
+												//		'hide-tab-advanced' 		=> false,               	    // Hide Advanced tab (macroN, calories, etc)
+												//		'hide-tab-descriptions' 	=> ws_ls_option_to_bool( 'ws-ls-tab-hide-descriptions', 'yes' ), // Hide tab descriptions
+												//		'hide-advanced-narrative' 	=> false,         			    // Hide text describing BMR, MarcoN, etc
+												//		'disable-advanced-tables' 	=> false,         			    // Disable advanced data tables.
+												//		'disable-tabs' 				=> false,                       // Disable using tabs.
+												//		'disable-second-check' 		=> false,					    // Disable check to see if [wlt] placed more than once
+												'enable-week-ranges'        => false,                       // Enable Week Ranges?
+												'user-id'					=> get_current_user_id(),
+												'weight-mandatory'			=> true,						// Is weight mandatory?
 	], $user_defined_arguments );
 
 	if ( null !== ws_ls_querystring_value( 'ws-edit-entry' ) ) {
@@ -62,22 +58,20 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 
 	ws_ls_enqueue_uikit();
 
-	$user_id 	                                = (int) $shortcode_arguments[ 'user-id' ];
-	//$use_tabs 	                                = ( false === ws_ls_to_bool( $shortcode_arguments[ 'disable-tabs' ] ) );
+	$shortcode_arguments[ 'user-id' ]               = (int) $shortcode_arguments[ 'user-id' ];
 	//$show_advanced_tab                          = ( false === ws_ls_to_bool( $shortcode_arguments[ 'hide-tab-advanced' ] ) && true === WS_LS_IS_PRO_PLUS );
 	//$show_photos_tab                            = ( false === ws_ls_to_bool( $shortcode_arguments[ 'hide-tab-photos' ] ) && true === ws_ls_meta_fields_photo_any_enabled( true ) );
 	$shortcode_arguments[ 'enable-week-ranges' ]	= ws_ls_to_bool( $shortcode_arguments[ 'enable-week-ranges' ] );
-	$shortcode_arguments[ 'min-chart-points' ]  = (int) $shortcode_arguments[ 'min-chart-points' ];
+	$shortcode_arguments[ 'min-chart-points' ]      = (int) $shortcode_arguments[ 'min-chart-points' ];
 
-	//$html                                       = '<div class="ws-ls-tracker uk-scope">';
-	$html                                       = '<div class="ws-ls-tracker">';
+	$html                                           = '<div class="ws-ls-tracker">';
 
 	$shortcode_arguments[ 'selected-week-number' ]   = ( true === $shortcode_arguments[ 'enable-week-ranges' ] ) ? ws_ls_post_value_numeric( 'week-number' ) : NULL;
-	$shortcode_arguments[ 'weight-data' ]            = ws_ls_entries_get( [  'week'      => $shortcode_arguments[ 'selected-week-number' ] ,
-	                                                'prep'      => true,
-	                                                'week'      => $shortcode_arguments[ 'selected-week-number' ] ,
-	                                                'reverse'   => true,
-	                                                'sort'      => 'desc' ] );
+	$shortcode_arguments[ 'weight-data' ]            = ws_ls_entries_get( [     'week'      => $shortcode_arguments[ 'selected-week-number' ] ,
+								                                                'prep'      => true,
+								                                                'week'      => $shortcode_arguments[ 'selected-week-number' ] ,
+								                                                'reverse'   => true,
+								                                                'sort'      => 'desc' ] );
 
 	// Tab menu
 	$html .= ws_ls_wt_tab_menu( $shortcode_arguments );

@@ -60,8 +60,7 @@ function ws_ls_data_table_render( $arguments = [] ) {
 
 		if ( true === $arguments[ 'uikit' ] ) {
 
-			$html .= sprintf( '	<p><a href="%s">< %s</a></p>
-								<div class="ykuk-divider-icon ykuk-width-1-1"></div>',
+			$html .= sprintf( '	<p><a href="%s">< %s</a></p>',
 								ws_ls_wt_link_goto_tab( 'history' ),
 								__( 'return to all entries', WE_LS_SLUG ) );
 		}
