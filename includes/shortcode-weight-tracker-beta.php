@@ -2,20 +2,6 @@
 
 defined('ABSPATH') or die('Jog on!');
 
-function ws_ls_uikit_accordian_open( $args = [] ) {
-
-	$args   = wp_parse_args( $args, [ 'multiple'  => false ] );
-	$params = '';
-
-	if ( true === ws_ls_to_bool( $args[ 'multiple' ] ) ) {
-		$params .= ' multiple: true;';
-	}
-
-	return sprintf( '<ul ykuk-accordion%s>',
-		( false === empty( $params ) ) ? '="' . $params . '"' : ''
-	);
-}
-
 //TODO: Tidy this up - only want this included when doing uikit related stuff
 add_filter( 'body_class', function( $classes ) {
 	$classes[]  = 'uk-scope';
@@ -23,10 +9,17 @@ add_filter( 'body_class', function( $classes ) {
 	return $classes;
  });
 
+/**
+ * Shortcode for [wt-beta]
+ * @param $user_defined_arguments
+ *
+ * @return string
+ * @throws Exception
+ */
 function ws_ls_shortcode_beta( $user_defined_arguments ) {
 
 	$shortcode_arguments = shortcode_atts( [    'accordian-multiple-open'   => true,                    // NEW: Allow more than one accordian tab to be open
-												'active-tab'                => 'home',                      // Initial active tab
+												'active-tab'                => 'advanced',                      // Initial active tab
 												'min-chart-points' 			=> 2,	                        // Minimum number of data entries before chart is shown
 												'custom-field-groups'       => '',                          // If specified, only show custom fields that are within these groups
 												'custom-field-slugs'        => '',                          // If specified, only show the custom fields that are specified
@@ -39,7 +32,7 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 												//		'hide-tab-photos' 			=> false,                 	    // Hide Photos tab
 												//		'hide-tab-advanced' 		=> false,               	    // Hide Advanced tab (macroN, calories, etc)
 												//		'hide-tab-descriptions' 	=> ws_ls_option_to_bool( 'ws-ls-tab-hide-descriptions', 'yes' ), // Hide tab descriptions
-												//		'hide-advanced-narrative' 	=> false,         			    // Hide text describing BMR, MarcoN, etc
+												'hide-advanced-narrative' 	=> false,         			    // Hide text describing BMR, MarcoN, etc
 												//		'disable-advanced-tables' 	=> false,         			    // Disable advanced data tables.
 												//		'disable-tabs' 				=> false,                       // Disable using tabs.
 												//		'disable-second-check' 		=> false,					    // Disable check to see if [wlt] placed more than once
@@ -417,18 +410,12 @@ function ws_ls_tab_gallery( $arguments = [] ) {
 	return $html;
 }
 
-function ws_ls_wt_tab_advanced($arguments = [] ) {
-	$html = '<div class="ykuk-grid-small ykuk-text-center ykuk-child-width-1-1 ykuk-child-width-1-2@s ykuk-grid-match ykuk-text-small" ykuk-grid>
-				<div>
-					<div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
-							<span class="ykuk-info-box-header" ykuk-toggle="target: #modal-bmi" >BMI</span><br />
-							<span class="ykuk-text-bold">
-								<span class="ykuk-label ykuk-label-warning">21 - Overweight</span>
-							</span><br />
-							<span class="ykuk-info-box-meta"><a href="#" ykuk-toggle="target: #modal-bmi">What is BMI?</a></span>
-					</div>
-				</div>
+function ws_ls_wt_tab_advanced( $arguments = [] ) {
 
+	// 'hide-advanced-narrative'
+
+	$html = '<div class="ykuk-grid-small ykuk-text-center ykuk-child-width-1-1 ykuk-child-width-1-2@s ykuk-grid-match ykuk-text-small" ykuk-grid>
+				' . ws_ls_component_bmi( $arguments ) . '
 				<div>
 					<div class="ykuk-card ykuk-card-body ykuk-box-shadow-small ykuk-card-small">
 							<span>BMR</span><br />
@@ -574,7 +561,7 @@ function ws_ls_wt_tab_advanced($arguments = [] ) {
 				] );
 
 
-	$html .='<div id="modal-bmi" ykuk-modal>
+	$htmal ='<div id="modal-bmi11" ykuk-modal>
 				<div class="ykuk-modal-dialog ykuk-modal-body">
 					<h2 class="ykuk-modal-title">Body Mass Index (BMI)</h2>
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>

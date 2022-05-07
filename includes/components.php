@@ -311,3 +311,48 @@ function ws_ls_component_alert( $message, $type = 'success' ) {
 					esc_html( $message )
 	);
 }
+
+/**
+ * BMI component
+ * @param array $args
+ *
+ * @return string
+ */
+function ws_ls_component_bmi( $args = [] ) {
+
+	$args           = wp_parse_args( $args, [ 'user-id' => get_current_user_id() ] );
+	$text_link      = '';
+	$text_data      = ws_ls_shortcode_bmi( [ 'display' => 'both', 'no-height-text' => '', 'no-weight-text' => '' ] );
+	$status         = ( false !== strpos( $text_data, 'Healthy' ) ) ? 'success' : 'warning';
+
+	if( true === empty( $args[ 'hide-advanced-narrative' ] ) ) {
+
+		$text_link  = sprintf ( '<br />
+									<span class="ykuk-info-box-meta">
+										<a href="#" ykuk-toggle="target: #modal-bmi">%s</a>
+									</span>', __( 'What is BMI?', WE_LS_SLUG ) );
+	}
+	$html ='<div id="modal-bmi" ykuk-modal>
+				<div class="ykuk-modal-dialog ykuk-modal-body">
+					<h2 class="ykuk-modal-title">Body Mass Index (BMI)</h2>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					<p class="ykuk-text-right">
+						<button class="ykuk-button ykuk-button-default ykuk-modal-close" type="button">Close</button>
+					</p>
+				</div>
+			</div>';
+	$html .= sprintf( '<div>
+	                        <div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
+	                                <span class="ykuk-info-box-header">%3$s</span><br />
+	                                <span class="ykuk-label ykuk-label-%4$s">%1$s</span>
+	                                %2$s
+	                        </div>
+                        </div>',
+						$text_data,
+						$text_link,
+						__( 'BMI', WE_LS_SLUG ),
+						$status
+	);
+
+	return $html;
+}
