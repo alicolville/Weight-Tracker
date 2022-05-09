@@ -322,7 +322,7 @@ function ws_ls_component_bmi( $args = [] ) {
 
 	$args           = wp_parse_args( $args, [ 'user-id' => get_current_user_id() ] );
 	$text_link      = '';
-	$text_data      = ws_ls_shortcode_bmi( [ 'display' => 'both', 'no-height-text' => '', 'no-weight-text' => '' ] );
+	$text_data      = ws_ls_shortcode_bmi( [ 'display' => $args[ 'bmi-format' ], 'no-height-text' => '', 'no-weight-text' => '' ] );
 	$status         = ( false !== strpos( $text_data, 'Healthy' ) ) ? 'success' : 'warning';
 
 	if( true === empty( $args[ 'hide-advanced-narrative' ] ) ) {
@@ -331,17 +331,15 @@ function ws_ls_component_bmi( $args = [] ) {
 									<span class="ykuk-info-box-meta">
 										<a href="#" ykuk-toggle="target: #modal-bmi">%s</a>
 									</span>', __( 'What is BMI?', WE_LS_SLUG ) );
+
+		$text_link .= ws_ls_component_modal(    'modal-bmi',
+												__( 'Body Mass Index (BMI)', WE_LS_SLUG ),
+												__('The BMI (Body Mass Index) is used by the medical profession to quickly determine a person’s weight in regard to their height. From a straight forward calculation the BMI factor can be gained and may be used to determine if a person is underweight, of normal weight, overweight or obese.', WE_LS_SLUG )
+		);
+
 	}
-	$html ='<div id="modal-bmi" ykuk-modal>
-				<div class="ykuk-modal-dialog ykuk-modal-body">
-					<h2 class="ykuk-modal-title">Body Mass Index (BMI)</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-					<p class="ykuk-text-right">
-						<button class="ykuk-button ykuk-button-default ykuk-modal-close" type="button">Close</button>
-					</p>
-				</div>
-			</div>';
-	$html .= sprintf( '<div>
+
+	return sprintf( '<div>
 	                        <div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
 	                                <span class="ykuk-info-box-header">%3$s</span><br />
 	                                <span class="ykuk-label ykuk-label-%4$s">%1$s</span>
@@ -353,6 +351,69 @@ function ws_ls_component_bmi( $args = [] ) {
 						__( 'BMI', WE_LS_SLUG ),
 						$status
 	);
+}
 
-	return $html;
+/**
+ * BMR component
+ * @param array $args
+ *
+ * @return string
+ */
+function ws_ls_component_bmr( $args = [] ) {
+
+	$args           = wp_parse_args( $args, [ 'user-id' => get_current_user_id() ] );
+	$text_link      = '';
+	$text_data      = '1882';
+
+	if( true === empty( $args[ 'hide-advanced-narrative' ] ) ) {
+
+		$text_link  = sprintf ( '<br />
+									<span class="ykuk-info-box-meta">
+										<a href="#" ykuk-toggle="target: #modal-bmr">%s</a>
+									</span>', __( 'What is BMR?', WE_LS_SLUG ) );
+
+		$text_link .= ws_ls_component_modal(    'modal-bmr',
+			__( 'Basal Metabolic Rate (BMR)', WE_LS_SLUG ),
+			__( 'BMR is short for Basal Metabolic Rate. The Basal Metabolic Rate is the number of calories required to keep your body functioning at rest, also known as your metabolism. We calculate your BMR using formulas provided by www.diabetes.co.uk.', WE_LS_SLUG )
+		);
+
+	}
+
+	return sprintf( '<div>
+	                        <div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
+	                                <span class="ykuk-info-box-header">%1$s</span><br />
+	                                <span class="ykuk-text-bold">%2$s</span>
+	                          		%3$s
+                        	</div>
+                     </div>',
+		__( 'BMR', WE_LS_SLUG ),
+		$text_data,
+		$text_link
+	);
+}
+
+/**
+ * Render HTML for a dialog box
+ * @param $element_id
+ * @param $title
+ * @param $body
+ *
+ * @return string
+ */
+function ws_ls_component_modal( $element_id, $title, $body ) {
+
+	return sprintf( '<div id="%s" ykuk-modal>
+									<div class="ykuk-modal-dialog ykuk-modal-body">
+										<h2 class="ykuk-modal-title">%s</h2>
+										<p>%s</p>
+										<p class="ykuk-text-right">
+											<button class="ykuk-button ykuk-button-default ykuk-modal-close" type="button">Close</button>
+										</p>
+									</div>
+								</div>',
+					esc_attr( $element_id ),
+					esc_html( $title ),
+					esc_html( $body )
+	);
+
 }

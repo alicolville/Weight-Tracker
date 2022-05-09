@@ -23,7 +23,7 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 												'min-chart-points' 			=> 2,	                        // Minimum number of data entries before chart is shown
 												'custom-field-groups'       => '',                          // If specified, only show custom fields that are within these groups
 												'custom-field-slugs'        => '',                          // If specified, only show the custom fields that are specified
-												'bmi-format'                => 'label',                     // Format for display BMI
+												'bmi-format'                => 'both',                      // Format for display BMI
 												'show-add-button' 			=> false,					    // Display a "Add weight" button above the chart.
 												//		'allow-delete-data' 		=> true,                	    // Show "Delete your data" section
 												'hide-notes' 				=> ws_ls_setting_hide_notes(),  // Hide notes field
@@ -416,13 +416,7 @@ function ws_ls_wt_tab_advanced( $arguments = [] ) {
 
 	$html = '<div class="ykuk-grid-small ykuk-text-center ykuk-child-width-1-1 ykuk-child-width-1-2@s ykuk-grid-match ykuk-text-small" ykuk-grid>
 				' . ws_ls_component_bmi( $arguments ) . '
-				<div>
-					<div class="ykuk-card ykuk-card-body ykuk-box-shadow-small ykuk-card-small">
-							<span>BMR</span><br />
-							<span class="ykuk-text-bold">1882</span><br />
-							<span class="ykuk-info-box-meta"><a href="#" ykuk-toggle="target: #modal-bmr">What is BMR?</a></span>
-					</div>
-				</div>
+				' . ws_ls_component_bmr( $arguments ) . '
 			</div>';
 
 				$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 'header' 		=> __( 'Suggested Calorie Intake', WE_LS_SLUG ),
