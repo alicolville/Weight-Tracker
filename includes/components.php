@@ -415,5 +415,25 @@ function ws_ls_component_modal( $element_id, $title, $body ) {
 					esc_html( $title ),
 					esc_html( $body )
 	);
+}
 
+/**
+ * Component for expanding text
+ * @param $leading_text
+ * @param $main_text
+ *
+ * @return string
+ */
+function ws_ls_component_expanding_text( $leading_text, $main_text ) {
+
+	return sprintf( '<p>
+						<a ykuk-toggle="cls: ykuk-hidden; target: #%1$s; animation: ykuk-animation-slide-bottom" class="ykuk-text-right ykuk-icon-link" ykuk-icon="triangle-down">
+							%2$s
+						</a>
+					</p>
+					<p id="%1$s" class="ykuk-hidden ykuk-text-left">%3$s</p>',
+					ws_ls_component_id(),
+					esc_html( $leading_text ),
+					esc_html( $main_text )
+	);
 }

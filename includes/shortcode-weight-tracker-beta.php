@@ -410,172 +410,54 @@ function ws_ls_tab_gallery( $arguments = [] ) {
 	return $html;
 }
 
+/**
+ * Render Advanced data tab
+ * @param array $arguments
+ *
+ * @return string
+ */
 function ws_ls_wt_tab_advanced( $arguments = [] ) {
-
-	// 'hide-advanced-narrative'
 
 	$html = '<div class="ykuk-grid-small ykuk-text-center ykuk-child-width-1-1 ykuk-child-width-1-2@s ykuk-grid-match ykuk-text-small" ykuk-grid>
 				' . ws_ls_component_bmi( $arguments ) . '
 				' . ws_ls_component_bmr( $arguments ) . '
 			</div>';
 
-				$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 'header' 		=> __( 'Suggested Calorie Intake', WE_LS_SLUG ),
-				'body-class'	=> 'ykuk-text-small',
-				'body' 			=> '
-					<p><a ykuk-toggle="cls: ykuk-hidden; target: #calorie-intake-info; animation: ykuk-animation-slide-bottom" class="ykuk-text-right ykuk-icon-link" ykuk-icon="triangle-down">Lean more about suggested calorie intakes</a></p>
-					<p id="calorie-intake-info" class="ykuk-hidden ykuk-text-left">Once we know your BMR (the number of calories to keep you functioning at rest), we can go on to give you suggestions on how to spread your calorie intake across the day. Firstly we split the figures into daily calorie intake to maintain weight and daily calorie intake to lose weight. Daily calorie intake to lose weight is calculated based on NHS advice – they suggest to lose 1 – 2lbs a week you should subtract 600 calories from your BMR. The two daily figures can be further broken down by recommending how to split calorie intake across the day i.e. breakfast, lunch, dinner and snacks.</p>
+	$nested_html = '';
 
-						<table class="ws-ls-footable ykuk-table ykuk-table-striped ykuk-table-small"  >
-				<tr>
-					<th class="ws-ls-empty-cell row-title"></th>
-					<th>Total</th>
-					<th data-breakpoints="xs sm">Breakfast (20%)</th>
-					<th data-breakpoints="xs sm">Lunch (30%)</th>
-					<th data-breakpoints="xs sm">Dinner (30%)</th>
-					<th data-breakpoints="xs sm">Snacks (20%)</th>
-				</tr><tr valign="top" class="alternate">
-						<td class="ws-ls-col-header">Maintain</td>
-						<td>2,588</td>
-						<td>518</td>
-						<td>776</td>
-						<td>776</td>
-						<td>518</td>
-					</tr><tr valign="top" class="">
-						<td class="ws-ls-col-header">Lose</td>
-						<td>2,188</td>
-						<td>438</td>
-						<td>656</td>
-						<td>656</td>
-						<td>438</td>
-					</tr><tr valign="top" class="alternate">
-						<td class="ws-ls-col-header">Gain</td>
-						<td>3,188</td>
-						<td>638</td>
-						<td>956</td>
-						<td>956</td>
-						<td>638</td>
-					</tr></table>
-					'
-				] );
+	// --------------------
+	// Calorie intake
+	// --------------------
 
-				$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 'header' 		=> __( 'Macronutrients', WE_LS_SLUG ),
-						'body-class'	=> 'ykuk-text-small',
-						'body' 			=> '<p>With calories calculated, the we can recommend how those calories should be split into Fats, Carbohydrates and Proteins.</p>	<div class="ws-ls-tab-advanced-data">
-						<table class="ws-ls-footable ykuk-table ykuk-table-striped ykuk-table-small"  >
-				<tr>
-					<th class="row-title">Maintain (2,588kcal)</th>
-					<th>Total</th>
-					<th data-breakpoints="xs sm">Breakfast</th>
-					<th data-breakpoints="xs sm">Lunch</th>
-					<th data-breakpoints="xs sm">Dinner</th>
-					<th data-breakpoints="xs sm">Snacks</th>
-				</tr>
-			  <tr valign="top" class="alternate">
-					<td class="ws-ls-col-header">Proteins (10%)</td>
-					<td>64.70</td>
-					<td>12.94</td>
-					<td>19.41</td>
-					<td>19.41</td>
-					<td>12.94</td>
-				</tr>  <tr valign="top" >
-					<td class="ws-ls-col-header">Carbs (20%)</td>
-					<td>129.40</td>
-					<td>25.88</td>
-					<td>38.82</td>
-					<td>38.82</td>
-					<td>25.88</td>
-				</tr>  <tr valign="top" class="alternate">
-					<td class="ws-ls-col-header">Fats (70%)</td>
-					<td>201.29</td>
-					<td>40.26</td>
-					<td>60.39</td>
-					<td>60.39</td>
-					<td>40.26</td>
-				</tr>
-				<tr>
-					<th class="row-title">Lose (2,188kcal)</th>
-					<th>Total</th>
-					<th data-breakpoints="xs sm">Breakfast</th>
-					<th data-breakpoints="xs sm">Lunch</th>
-					<th data-breakpoints="xs sm">Dinner</th>
-					<th data-breakpoints="xs sm">Snacks</th>
-				</tr>
-			  <tr valign="top" class="alternate">
-					<td class="ws-ls-col-header">Proteins (40%)</td>
-					<td>218.80</td>
-					<td>43.76</td>
-					<td>65.64</td>
-					<td>65.64</td>
-					<td>43.76</td>
-				</tr>  <tr valign="top" >
-					<td class="ws-ls-col-header">Carbs (20%)</td>
-					<td>109.40</td>
-					<td>21.88</td>
-					<td>32.82</td>
-					<td>32.82</td>
-					<td>21.88</td>
-				</tr>  <tr valign="top" class="alternate">
-					<td class="ws-ls-col-header">Fats (40%)</td>
-					<td>97.24</td>
-					<td>19.45</td>
-					<td>29.17</td>
-					<td>29.17</td>
-					<td>19.45</td>
-				</tr>
-				<tr>
-					<th class="row-title">Gain (3,188kcal)</th>
-					<th>Total</th>
-					<th data-breakpoints="xs sm">Breakfast</th>
-					<th data-breakpoints="xs sm">Lunch</th>
-					<th data-breakpoints="xs sm">Dinner</th>
-					<th data-breakpoints="xs sm">Snacks</th>
-				</tr>
-			  <tr valign="top" class="alternate">
-					<td class="ws-ls-col-header">Proteins (10%)</td>
-					<td>79.70</td>
-					<td>15.94</td>
-					<td>23.91</td>
-					<td>23.91</td>
-					<td>15.94</td>
-				</tr>  <tr valign="top" >
-					<td class="ws-ls-col-header">Carbs (20%)</td>
-					<td>159.40</td>
-					<td>31.88</td>
-					<td>47.82</td>
-					<td>47.82</td>
-					<td>31.88</td>
-				</tr>  <tr valign="top" class="alternate">
-					<td class="ws-ls-col-header">Fats (70%)</td>
-					<td>247.96</td>
-					<td>49.59</td>
-					<td>74.39</td>
-					<td>74.39</td>
-					<td>49.59</td>
-				</tr></table>'
-				] );
+	if( true === empty( $arguments[ 'hide-advanced-narrative' ] ) ) {
+		$nested_html = ws_ls_component_expanding_text(  __( 'Lean more about suggested calorie intakes', WE_LS_SLUG ),
+														__( 'Once we know your BMR (the number of calories to keep you functioning at rest), we can go on to give you suggestions on how to spread your calorie intake across the day. Firstly we split the figures into daily calorie intake to maintain weight and daily calorie intake to lose weight. Daily calorie intake to lose weight is calculated based on NHS advice – they suggest to lose 1 – 2lbs a week you should subtract 600 calories from your BMR. The two daily figures can be further broken down by recommending how to split calorie intake across the day i.e. breakfast, lunch, dinner and snacks.', WE_LS_SLUG )
+		);
+	}
 
+	$calorie_html = ws_ls_harris_benedict_render_table( $arguments[ 'user-id' ], false,  'ws-ls-footable ykuk-table ykuk-table-striped ykuk-table-small' );
 
-	$htmal ='<div id="modal-bmi11" ykuk-modal>
-				<div class="ykuk-modal-dialog ykuk-modal-body">
-					<h2 class="ykuk-modal-title">Body Mass Index (BMI)</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-					<p class="ykuk-text-right">
-						<button class="ykuk-button ykuk-button-default ykuk-modal-close" type="button">Close</button>
-					</p>
-				</div>
-			</div>
+	$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 'header' 		=> __( 'Suggested Calorie Intake', WE_LS_SLUG ),
+	                                                     'body-class'	=> 'ykuk-text-small',
+	                                                     'body' 		=> $nested_html . $calorie_html
+	] );
 
-			<div id="modal-bmr" ykuk-modal>
-				<div class="ykuk-modal-dialog ykuk-modal-body">
-					<h2 class="ykuk-modal-title">Basal Metabolic Rate (BMR)</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-					<p class="ykuk-text-right">
-						<button class="ykuk-button ykuk-button-default ykuk-modal-close" type="button">Close</button>
-					</p>
-				</div>
-			</div>
+	// --------------------
+	// Macronutrients
+	// --------------------
 
-			';
+	if( true === empty( $arguments[ 'hide-advanced-narrative' ] ) ) {
+		$nested_html = ws_ls_component_expanding_text(  __( 'Lean more about macronutrients', WE_LS_SLUG ),
+														__( 'With calories calculated, the we can recommend how those calories should be split into Fats, Carbohydrates and Proteins.', WE_LS_SLUG )
+		);
+	}
+
+	$calorie_html = ws_ls_macro_render_table( $arguments[ 'user-id' ], false,  'ws-ls-footable ykuk-table ykuk-table-striped ykuk-table-small' );
+
+	$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 'header' 		=> __( 'Macronutrients', WE_LS_SLUG ),
+	                                                     'body-class'	=> 'ykuk-text-small',
+	                                                     'body' 		=> $nested_html . $calorie_html
+	] );
 
 	return $html;
 }
