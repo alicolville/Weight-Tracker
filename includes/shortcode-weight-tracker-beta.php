@@ -392,7 +392,7 @@ function ws_ls_tab_gallery( $arguments = [] ) {
 			';
 
 	$html .= ws_ls_ui_kit_info_box_with_header_footer( [    'header' 		=> __( 'All of your photos', WE_LS_SLUG ),
-															'body-class'	=> 'ykuk-text-small ykuk-text-right',
+															'body-class'	=> 'ykuk-text-small ykuk-text-center',
 															'body' 			=> ws_ls_photos_shortcode_gallery( [] )
 			] );
 
