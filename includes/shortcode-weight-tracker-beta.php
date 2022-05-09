@@ -211,22 +211,6 @@ function ws_ls_uikit_data_summary( $arguments = [] ) {
 }
 
 /**
- * Return summary info for data tab
- * @param array $arguments
- * @return string
- */
-function ws_ls_wt_data_summary( $arguments = []) {
-
-	$arguments = wp_parse_args( $arguments, [ 'user-id' => get_current_user_id() ] );
-
-	return sprintf('<div class="ykuk-grid-small ykuk-text-center ykuk-child-width-1-1 ykuk-child-width-1-2@s ykuk-child-width-1-4@m ykuk-grid-match ykuk-text-small" ykuk-grid>
-								%s
-							</div>',
-		ws_ls_component_number_of_entries( [ 'user-id' => $arguments[ 'user-id' ] ] )
-	);
-}
-
-/**
  * Tabs menu
  *
  * @param array $arguments
