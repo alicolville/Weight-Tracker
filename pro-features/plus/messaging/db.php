@@ -58,19 +58,13 @@ function ws_ls_messaging_db_select( $to, $from = NULL, $is_note = true, $visible
 		$sql .= ' where ' . implode( ' and ', $where );
 	}
 
-	if ( false === empty( $limit ) ) {
-
-		$limit_clause = ' limit ' . ( ( NULL !== $offset ) ? (int) $offset . ', ' : '' );
-
-		$sql .= $limit_clause . (int) $limit;
-	}
-
 	$sql .= ' order by created desc';
 
 	if ( false === empty( $limit ) ) {
-		$sql    .= $wpdb->prepare( ' limit 0, %d', ( true === empty( $limit ) ) ? 10 : (int) $limit );
+		$sql .= sprintf( ' limit %d, %d', $offset, $limit );
+		//$sql    .= $wpdb->prepare( ' limit 0, %d', ( true === empty( $limit ) ) ? 10 : (int) $limit );
 	}
-
+echo $sql;
 	$results = $wpdb->get_results( $sql, ARRAY_A );
 
 	ws_ls_cache_user_set( $to, $cache_key, $results, HOUR_IN_SECONDS );
@@ -200,11 +194,12 @@ function ws_ls_messages_db_stats( $user_id ) {
 	$latest_note_id = $wpdb->get_var( 'SELECT id FROM ' . $wpdb->prefix . WE_LS_MYSQL_MESSAGES . ' WHERE `note` = 1 and `to` = ' . $user_id . ' order by created desc' );
 	$latest_note    = ws_ls_messaging_db_get( $latest_note_id );
 
-	$stats                          = [ 'notes-count' => NULL ];
-	$user_id                        = (int) $user_id;
-	$stats[ 'notes-count' ]         = $wpdb->get_var( 'SELECT count( id ) FROM ' . $wpdb->prefix . WE_LS_MYSQL_MESSAGES . ' WHERE `note` = 1 and `to` = ' . $user_id );
-	$stats[ 'notes-latest-id' ]     = $latest_note_id;
-	$stats[ 'notes-latest-text' ]   = ( false === empty( $latest_note[ 'message_text' ] ) ) ? $latest_note[ 'message_text' ] : '';
+	$stats                              = [ 'notes-count' => NULL, 'notes-count-visible' => NULL ];
+	$user_id                            = (int) $user_id;
+	$stats[ 'notes-count' ]             = $wpdb->get_var( 'SELECT count( id ) FROM ' . $wpdb->prefix . WE_LS_MYSQL_MESSAGES . ' WHERE `note` = 1 and `to` = ' . $user_id );
+	$stats[ 'notes-count-visible' ]     = $wpdb->get_var( 'SELECT count( id ) FROM ' . $wpdb->prefix . WE_LS_MYSQL_MESSAGES . ' WHERE `note` = 1 and `visible_to_user` = 1 and `to` = ' . $user_id );
+	$stats[ 'notes-latest-id' ]         = $latest_note_id;
+	$stats[ 'notes-latest-text' ]       = ( false === empty( $latest_note[ 'message_text' ] ) ) ? $latest_note[ 'message_text' ] : '';
 
 	ws_ls_cache_user_set( $user_id, 'message-stats', $stats );
 

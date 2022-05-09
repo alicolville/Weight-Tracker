@@ -19,7 +19,7 @@ add_filter( 'body_class', function( $classes ) {
 function ws_ls_shortcode_beta( $user_defined_arguments ) {
 
 	$shortcode_arguments = shortcode_atts( [    'accordian-multiple-open'   => true,                    // NEW: Allow more than one accordian tab to be open
-												'active-tab'                => 'advanced',                      // Initial active tab
+												'active-tab'                => 'messages',                      // Initial active tab
 												'min-chart-points' 			=> 2,	                        // Minimum number of data entries before chart is shown
 												'custom-field-groups'       => '',                          // If specified, only show custom fields that are within these groups
 												'custom-field-slugs'        => '',                          // If specified, only show the custom fields that are specified
@@ -329,9 +329,14 @@ function ws_ls_tab_settings( $arguments = [] ) {
 }
 
 function ws_ls_tab_notes( $arguments = [] ) {
+
+	$content = ws_ls_note_shortcode( [ 'user-id' => $arguments[ 'user-id' ], 'notes-per-page' => 1 ]);
+
+
+
 	return ws_ls_ui_kit_info_box_with_header_footer( [ 	'header' 		=> __( 'Messages', WE_LS_SLUG ),
 														'body-class'	=> 'ykuk-text-small',
-														'body' 			=> ws_ls_uikit_messages()
+														'body' 			=> $content // ws_ls_uikit_messages()
 	]);
 }
 

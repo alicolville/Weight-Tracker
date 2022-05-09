@@ -68,17 +68,34 @@ function ws_ls_note_shortcode( $user_defined_arguments ) {
 	}
 
 	$arguments  = shortcode_atts( [ 'user-id'           => get_current_user_id(),
-									'message-no-data'   => __( 'You currently have no notes from the administrator.', WE_LS_SLUG )
+									'paging'            => true,
+									'notes-per-page'    => 10,                    // Return 10 notes by default
+									'message-no-data'   => __( 'You currently have no notes from the administrator.', WE_LS_SLUG ),
+									'uikit'             => false
 	], $user_defined_arguments );
 
-	$notes = ws_ls_notes_fetch( $arguments[ 'user-id'], true );
+	$stats  = ws_ls_messages_db_stats( $arguments[ 'user-id'] );
+	$page   = max(1, ws_ls_querystring_value('notes-page', true ) );
+	$notes  = ws_ls_notes_fetch( $arguments[ 'user-id'], true, (int) $arguments[ 'notes-per-page' ], ( $page - 1 ) * (int) $arguments[ 'notes-per-page' ] );
 
 	if ( false === empty( $notes ) ) {
 
 		$html = '';
 
 		foreach ( $notes as $note ) {
-			$html .= ws_ls_notes_render( $note, false );
+			$html .= ws_ls_notes_render( $note, false, $arguments[ 'uikit' ] );
+		}
+
+		// Need paging?
+		if ( (int) $stats[ 'notes-count-visible' ] > (int) $arguments[ 'notes-per-page' ] ) {
+
+			$html .= paginate_links([	'base'          => add_query_arg('notes-page', '%#%' ),
+										'format'        => '?notes-page=%#%',
+										'current'       => $page,
+										'total'         => $stats[ 'notes-count-visible' ],
+										'prev_text'     => __( '« prev', WE_LS_SLUG ),
+										'next_text'     => __('next »', WE_LS_SLUG ),
+			]);
 		}
 
 		return $html;

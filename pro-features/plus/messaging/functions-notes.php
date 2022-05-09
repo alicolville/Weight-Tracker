@@ -12,19 +12,22 @@ function ws_ls_note_is_enabled() {
 
 /**
  * Fetch notes for the given user
+ *
  * @param $to
  * @param bool $visible_to_user
  * @param null $limit
  *
+ * @param null $offset
+ *
  * @return bool|null
  */
-function ws_ls_notes_fetch( $to, $visible_to_user = false, $limit = NULL ) {
+function ws_ls_notes_fetch( $to, $visible_to_user = false, $limit = NULL, $offset = NULL ) {
 
 	if ( false === ws_ls_note_is_enabled() ) {
 		return false;
 	}
 
-	return ws_ls_messaging_db_select( $to, NULL, true, $visible_to_user, 0, $limit );
+	return ws_ls_messaging_db_select( $to, NULL, true, $visible_to_user, $offset, $limit );
 }
 
 /**
@@ -58,7 +61,7 @@ function ws_ls_note_add( $user_id, $note, $visible_to_user = false ) {
  *
  * @return string
  */
-function ws_ls_notes_render( $note, $echo = true ) {
+function ws_ls_notes_render( $note, $echo = true, $uikit = false ) {
 
 	if ( true === empty( $note ) ) {
 		return '';
