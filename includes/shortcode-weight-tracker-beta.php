@@ -264,17 +264,6 @@ function ws_ls_wt_tab_menu( $arguments = [] ) {
 		);
 	}
 
-	// Tab menu
-//	$html = '	<ul ykuk-tab class="ykuk-flex-center ykuk-flex-right@s" ykuk-switcher>
-//					<li class="ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: home"></span></a></li>
-//					<li class="ykuk-active ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: plus"></span></a></li>
-//					<li class="ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: history"></span></a></li>
-//					<li class="ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: heart"></span></a></li>
-//					<li class="ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: image"></span></a></li>
-//					<li class="ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: mail"></span></a></li>
-//					<li class="ykuk-padding-remove-left"><a href="#"><span ykuk-icon="icon: settings"></span></a></li>
-//				</ul>';
-
 	$html .= '</ul>';
 
 	return $html;
