@@ -4,22 +4,24 @@ defined( 'ABSPATH' ) or die( 'Jog on!' );
 
 /**
  * Fetch notes / messages for user
+ *
  * @param $to
  * @param null $from
  * @param bool $is_note
  * @param bool $visible_to_user
+ * @param int $offset
  * @param null $limit
  * @param bool $ignore_cache
  *
  * @return bool|null
  */
-function ws_ls_messaging_db_select( $to, $from = NULL, $is_note = true, $visible_to_user = NULL, $limit = NULL, $ignore_cache = false ) {
+function ws_ls_messaging_db_select( $to, $from = NULL, $is_note = true, $visible_to_user = NULL, $offset = NULL, $limit = NULL, $ignore_cache = false ) {
 
 	if ( false === WS_LS_IS_PRO ) {
 		return NULL;
 	}
 
-	$cache_key = 'ws-ls-messaging-' . md5($from . $limit . $is_note . $visible_to_user . $limit );
+	$cache_key = 'ws-ls-messaging-' . md5($from . $limit . $is_note . $visible_to_user . $offset . $limit );
 
 	// Return cache if found!
 	if ( false === $ignore_cache && $cache = ws_ls_cache_user_get( $to, $cache_key ) ) {
@@ -54,6 +56,13 @@ function ws_ls_messaging_db_select( $to, $from = NULL, $is_note = true, $visible
 	// Add where
 	if ( false === empty( $where ) ) {
 		$sql .= ' where ' . implode( ' and ', $where );
+	}
+
+	if ( false === empty( $limit ) ) {
+
+		$limit_clause = ' limit ' . ( ( NULL !== $offset ) ? (int) $offset . ', ' : '' );
+
+		$sql .= $limit_clause . (int) $limit;
 	}
 
 	$sql .= ' order by created desc';

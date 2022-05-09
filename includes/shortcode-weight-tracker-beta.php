@@ -276,6 +276,12 @@ function ws_ls_wt_tab_menu( $arguments = [] ) {
  */
 function ws_ls_wt_tab_panes( $arguments = [] ) {
 
+	/*
+	 * Todo:
+	 * Check ws_ls_note_is_enabled() for notes
+	 */
+
+
 	$html = '	<ul class="ykuk-switcher switcher-container ykuk-margin">
 					<li>' . ws_ls_wt_tab_home( $arguments ) . '</li>
 					<li>' . ws_ls_tab_add_entry( $arguments ) . '</li>
