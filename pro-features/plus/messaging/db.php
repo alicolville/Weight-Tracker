@@ -142,6 +142,31 @@ function ws_ls_messaging_db_delete( $message_id ) {
 	return ! empty( $result );
 }
 
+/**
+ * Delete a message
+ * @param $message_id
+ *
+ * @return bool
+ */
+function ws_ls_messaging_db_delete_all_for_user( $user_id ) {
+
+	if ( true === empty( $user_id ) ) {
+		return false;
+	}
+
+	global $wpdb;
+
+	$result = $wpdb->delete( $wpdb->prefix . WE_LS_MYSQL_MESSAGES,
+		[ 'to' => $user_id ],
+		[ '%d' ]
+	);
+
+	ws_ls_cache_user_delete( $user_id );
+
+	return ! empty( $result );
+}
+
+
 
 /**
  * Fetch a message

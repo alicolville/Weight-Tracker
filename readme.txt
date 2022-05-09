@@ -163,6 +163,7 @@ TODO:
 
 * Bug fix: Issue with -0lbs being displayed instead of 0lbs.
 * Bug fix: Time of message not displayed correctly.
+* Bug fix: Messages to a user are removed when "Delete all data" pressed.
 
 = 9.4 =
 

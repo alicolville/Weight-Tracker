@@ -26,8 +26,9 @@ function ws_ls_delete_data_for_user( $user_id = NULL ) {
 
 	    ws_ls_db_entry_delete_all_for_user( $user_id );
 
-		// Update User stats table
 		ws_ls_stats_update_for_user( $user_id );
+
+		ws_ls_messaging_db_delete_all_for_user( $user_id );
 
 		// Let others know we cleared all user data
 		do_action( 'wlt-hook-data-user-deleted', $user_id );
