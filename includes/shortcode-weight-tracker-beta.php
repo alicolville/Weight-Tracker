@@ -379,12 +379,14 @@ function ws_ls_wt_tab_table( $arguments = [] ) {
 	return $html;
 }
 
-
-
-
-
+/**
+ * Render gallery tab
+ * @param array $arguments
+ *
+ * @return string
+ */
 function ws_ls_tab_gallery( $arguments = [] ) {
-	$html = '<div class="ykuk-grid-small ykuk-text-center ykuk-child-width-1-1 ykuk-child-width-1-2@s ykuk-grid-match ykuk-text-small" ykuk-grid>
+	return '<div class="ykuk-grid-small ykuk-text-center ykuk-child-width-1-1 ykuk-child-width-1-2@s ykuk-grid-match ykuk-text-small" ykuk-grid>
 				<div>
 					' . ws_ls_ui_kit_info_box_with_header_footer( [ 'header' 		=> __( 'Latest Photo', WE_LS_SLUG ),
 																	'body-class'	=> 'ykuk-text-small ykuk-text-center',
@@ -405,9 +407,6 @@ function ws_ls_tab_gallery( $arguments = [] ) {
 			'body-class'	=> 'ykuk-text-small ykuk-text-right',
 			'body' 			=> ws_ls_photos_shortcode_gallery( [] )
 			] );
-
-
-	return $html;
 }
 
 /**
@@ -460,19 +459,6 @@ function ws_ls_wt_tab_advanced( $arguments = [] ) {
 	] );
 
 	return $html;
-}
-
-function ws_ls_uikit_mealtracker_summary() {
-
-	return '<div class="ykuk-grid-small ykuk-text-center ykuk-child-width-1-1 ykuk-child-width-1-2@s ykuk-grid-match ykuk-text-small" ykuk-grid>
-				<div>
-					' .  yk_mt_shortcode_chart( [] ) . '
-				</div>
-				<div>
-
-				</div>
-
-			</div>';
 }
 
 function ws_ls_uikit_messages() {
