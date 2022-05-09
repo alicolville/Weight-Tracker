@@ -62,9 +62,8 @@ function ws_ls_messaging_db_select( $to, $from = NULL, $is_note = true, $visible
 
 	if ( false === empty( $limit ) ) {
 		$sql .= sprintf( ' limit %d, %d', $offset, $limit );
-		//$sql    .= $wpdb->prepare( ' limit 0, %d', ( true === empty( $limit ) ) ? 10 : (int) $limit );
 	}
-echo $sql;
+
 	$results = $wpdb->get_results( $sql, ARRAY_A );
 
 	ws_ls_cache_user_set( $to, $cache_key, $results, HOUR_IN_SECONDS );

@@ -80,21 +80,24 @@ function ws_ls_note_shortcode( $user_defined_arguments ) {
 
 	if ( false === empty( $notes ) ) {
 
-		$html = '';
+		$html       = '';
+		$alternate  = true;
 
 		foreach ( $notes as $note ) {
-			$html .= ws_ls_notes_render( $note, false, $arguments[ 'uikit' ] );
+			$html .= ws_ls_notes_render( $note, false, $arguments[ 'uikit' ], $alternate );
+
+			$alternate = !$alternate;
 		}
 
 		// Need paging?
 		if ( (int) $stats[ 'notes-count-visible' ] > (int) $arguments[ 'notes-per-page' ] ) {
 
-			$html .= paginate_links([	'base'          => add_query_arg('notes-page', '%#%' ),
-										'format'        => '?notes-page=%#%',
-										'current'       => $page,
-										'total'         => $stats[ 'notes-count-visible' ],
-										'prev_text'     => __( '« prev', WE_LS_SLUG ),
-										'next_text'     => __('next »', WE_LS_SLUG ),
+			$html .= '<br />' . paginate_links([	'base'          => add_query_arg('notes-page', '%#%' ),
+													'format'        => '?notes-page=%#%',
+													'current'       => $page,
+													'total'         => ceil( $stats[ 'notes-count-visible' ] / $arguments[ 'notes-per-page' ] ),
+													'prev_text'     => __( '« prev', WE_LS_SLUG ),
+													'next_text'     => __('next »', WE_LS_SLUG ),
 			]);
 		}
 

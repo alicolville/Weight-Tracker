@@ -330,13 +330,13 @@ function ws_ls_tab_settings( $arguments = [] ) {
 
 function ws_ls_tab_notes( $arguments = [] ) {
 
-	$content = ws_ls_note_shortcode( [ 'user-id' => $arguments[ 'user-id' ], 'notes-per-page' => 1 ]);
+	$content = ws_ls_note_shortcode( [ 'user-id' => $arguments[ 'user-id' ], 'notes-per-page' => 5, 'uikit' => true ]);
 
 
 
 	return ws_ls_ui_kit_info_box_with_header_footer( [ 	'header' 		=> __( 'Messages', WE_LS_SLUG ),
 														'body-class'	=> 'ykuk-text-small',
-														'body' 			=> $content // ws_ls_uikit_messages()
+														'body' 			=> $content //ws_ls_uikit_messages()
 	]);
 }
 
@@ -462,20 +462,22 @@ function ws_ls_wt_tab_advanced( $arguments = [] ) {
 }
 
 function ws_ls_uikit_messages() {
+
+
+
 	return '<ul class="ykuk-comment-list">
     <li>
         <article class="ykuk-comment ykuk-visible-toggle ykuk-comment-primary  ykuk-text-small" tabindex="-1">
             <header class="ykuk-comment-header ykuk-position-relative">
                 <div class="ykuk-grid-medium ykuk-flex-middle" ykuk-grid>
-                    <div class="ykuk-width-auto">
-                        <img class="ykuk-comment-avatar" src="/wp-content/plugins/Weight-Tracker/assets/uikit/avatar.jpg" width="80" height="80" alt="">
-                    </div>
+                	<div class="ykuk-width-auto">
+					'.get_avatar( 1).'
+					</div>
                     <div class="ykuk-width-expand">
                         <h4 class="ykuk-comment-title ykuk-margin-remove"><a class="ykuk-link-reset" href="#">Author</a></h4>
                         <p class="ykuk-comment-meta ykuk-margin-remove-top"><a class="ykuk-link-reset" href="#">12 days ago</a></p>
                     </div>
                 </div>
-                <div class="ykuk-position-top-right ykuk-position-small ykuk-hidden-hover"><a class="ykuk-link-muted" href="#">Reply</a></div>
             </header>
             <div class="ykuk-comment-body">
                 <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>

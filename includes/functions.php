@@ -829,7 +829,7 @@ function ws_ls_iso_datetime_into_correct_format( $datetime, $user_id = NULL ) {
 	if( false === empty( $datetime ) ) {
 
 		$time 	= strtotime( $datetime );
-		$format = ws_ls_setting('use-us-dates', $user_id ) ? 'm/d/Y H:m' : 'd/m/Y H:m';
+		$format = ws_ls_setting('use-us-dates', $user_id ) ? 'm/d/Y g:ia' : 'd/m/Y g:ia';
 
 		return date( $format, $time );
 	}

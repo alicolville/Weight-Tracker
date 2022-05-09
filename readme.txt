@@ -162,6 +162,7 @@ TODO:
 	- new argument for wt-note: 'message-no-data', 'paging', 'notes-per-page'
 
 * Bug fix: Issue with -0lbs being displayed instead of 0lbs.
+* Bug fix: Time of message not displayed correctly.
 
 = 9.4 =
 
