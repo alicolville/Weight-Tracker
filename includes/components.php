@@ -281,7 +281,7 @@ function ws_ls_component_number_of_days_tracking( $args = [] ) {
 	if ( true === empty( $days ) ) {
 		$days = 0;
 	}
-	
+
 	return sprintf( '<div>
                         <div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
                                 <span class="ykuk-info-box-header">%2$s</span><br />
@@ -327,7 +327,12 @@ function ws_ls_component_bmi( $args = [] ) {
 	$args           = wp_parse_args( $args, [ 'user-id' => get_current_user_id() ] );
 	$text_link      = '';
 	$text_data      = ws_ls_shortcode_bmi( [ 'display' => $args[ 'bmi-format' ], 'no-height-text' => '', 'no-weight-text' => '' ] );
-	$status         = ( false !== strpos( $text_data, 'Healthy' ) ) ? 'success' : 'warning';
+	$status         = ( false !== strpos( $text_data, 'Healthy' ) ) ? 'ykuk-label ykuk-label-success' : 'ykuk-label ykuk-label-warning';
+
+	if ( true === empty( $text_data ) ) {
+		$text_data  = __( 'Missing data', WE_LS_SLUG );
+		$status     = 'ykuk-text-bold';
+	}
 
 	if( true === empty( $args[ 'hide-advanced-narrative' ] ) ) {
 
@@ -346,7 +351,7 @@ function ws_ls_component_bmi( $args = [] ) {
 	return sprintf( '<div>
 	                        <div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
 	                                <span class="ykuk-info-box-header">%3$s</span><br />
-	                                <span class="ykuk-label ykuk-label-%4$s">%1$s</span>
+	                                <span class="%4$s">%1$s</span>
 	                                %2$s
 	                        </div>
                         </div>',
@@ -367,7 +372,11 @@ function ws_ls_component_bmr( $args = [] ) {
 
 	$args           = wp_parse_args( $args, [ 'user-id' => get_current_user_id() ] );
 	$text_link      = '';
-	$text_data      = '1882';
+	$text_data      = ws_ls_shortcode_bmr( [ 'user-id' => $args[ 'user-id' ], 'suppress-errors' => true ] );
+
+	if ( true === empty( $text_data ) ) {
+		$text_data = __( 'Missing data', WE_LS_SLUG );
+	}
 
 	if( true === empty( $args[ 'hide-advanced-narrative' ] ) ) {
 
