@@ -92,8 +92,8 @@ function ws_ls_note_shortcode( $user_defined_arguments ) {
 		// Need paging?
 		if ( (int) $stats[ 'notes-count-visible' ] > (int) $arguments[ 'notes-per-page' ] ) {
 
-			$html .= '<br />' . paginate_links([	'base'          => add_query_arg('notes-page', '%#%' ),
-													'format'        => '?notes-page=%#%',
+			$html .= '<br />' . paginate_links([	'base'          => add_query_arg( [ 'notes-page' => '%#%', 'tab' => 'messages' ] ),
+													'format'        => '?tab=messages&notes-page=%#%',
 													'current'       => $page,
 													'total'         => ceil( $stats[ 'notes-count-visible' ] / $arguments[ 'notes-per-page' ] ),
 													'prev_text'     => __( '« prev', WE_LS_SLUG ),

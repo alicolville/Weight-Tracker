@@ -19,7 +19,7 @@ add_filter( 'body_class', function( $classes ) {
 function ws_ls_shortcode_beta( $user_defined_arguments ) {
 
 	$shortcode_arguments = shortcode_atts( [    'accordian-multiple-open'   => true,                    // NEW: Allow more than one accordian tab to be open
-												'active-tab'                => 'messages',                      // Initial active tab
+												'active-tab'                => 'home',                      // Initial active tab
 												'min-chart-points' 			=> 2,	                        // Minimum number of data entries before chart is shown
 												'custom-field-groups'       => '',                          // If specified, only show custom fields that are within these groups
 												'custom-field-slugs'        => '',                          // If specified, only show the custom fields that are specified
@@ -390,7 +390,7 @@ function ws_ls_wt_tab_table( $arguments = [] ) {
  * @return string
  */
 function ws_ls_tab_gallery( $arguments = [] ) {
-	return '<div class="ykuk-grid-small ykuk-text-center ykuk-child-width-1-1 ykuk-child-width-1-2@s ykuk-grid-match ykuk-text-small" ykuk-grid>
+	$html = '<div class="ykuk-grid-small ykuk-text-center ykuk-child-width-1-1 ykuk-child-width-1-2@s ykuk-grid-match ykuk-text-small" ykuk-grid>
 				<div>
 					' . ws_ls_ui_kit_info_box_with_header_footer( [ 'header' 		=> __( 'Latest Photo', WE_LS_SLUG ),
 																	'body-class'	=> 'ykuk-text-small ykuk-text-center',
@@ -398,19 +398,21 @@ function ws_ls_tab_gallery( $arguments = [] ) {
 					] ) . '
 				</div>
 				<div>
-				' . ws_ls_ui_kit_info_box_with_header_footer( [ 'header' 		=> __( 'Oldest Photo', WE_LS_SLUG ),
-																'body-class'	=> 'ykuk-text-small ykuk-text-center',
-																'body' 			=> ws_ls_photos_shortcode_oldest( [] )
-				] ) . '
-			</div>
+					' . ws_ls_ui_kit_info_box_with_header_footer( [ 'header' 		=> __( 'Oldest Photo', WE_LS_SLUG ),
+																	'body-class'	=> 'ykuk-text-small ykuk-text-center',
+																	'body' 			=> ws_ls_photos_shortcode_oldest( [] )
+					] ) . '
+				</div>
 			</div>
 
 			';
 
-			$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 'header' 		=> __( 'All of your photos', WE_LS_SLUG ),
-			'body-class'	=> 'ykuk-text-small ykuk-text-right',
-			'body' 			=> ws_ls_photos_shortcode_gallery( [] )
+	$html .= ws_ls_ui_kit_info_box_with_header_footer( [    'header' 		=> __( 'All of your photos', WE_LS_SLUG ),
+															'body-class'	=> 'ykuk-text-small ykuk-text-right',
+															'body' 			=> ws_ls_photos_shortcode_gallery( [] )
 			] );
+
+	return $html;
 }
 
 /**
