@@ -278,6 +278,10 @@ function ws_ls_component_number_of_days_tracking( $args = [] ) {
 	$args   = wp_parse_args( $args, [ 'user-id' => get_current_user_id() ] );
 	$days   = ws_ls_shortcode_days_between_start_and_latest( [ 'user-id' => $args[ 'user-id' ] ] );
 
+	if ( true === empty( $days ) ) {
+		$days = 0;
+	}
+	
 	return sprintf( '<div>
                         <div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
                                 <span class="ykuk-info-box-header">%2$s</span><br />
