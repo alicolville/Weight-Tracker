@@ -66,11 +66,20 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 								                                                'reverse'   => true,
 								                                                'sort'      => 'desc' ] );
 
-	// Tab menu
-	$html .= ws_ls_wt_tab_menu( $shortcode_arguments );
+	// Display error if user not logged in
+	if ( false === is_user_logged_in() )	{
 
-	// Tabs
-	$html .= ws_ls_wt_tab_panes( $shortcode_arguments );
+		$html .= ws_ls_component_alert( __( 'You need to be logged in to record your weight.', WE_LS_SLUG ), 'primary', false, true );
+
+	} else {
+
+		// Tab menu
+		$html .= ws_ls_wt_tab_menu( $shortcode_arguments );
+
+		// Tabs
+		$html .= ws_ls_wt_tab_panes( $shortcode_arguments );
+
+	}
 
 	return $html;
 }

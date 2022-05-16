@@ -298,21 +298,29 @@ function ws_ls_component_number_of_days_tracking( $args = [] ) {
 
 /**
  * Display alert
+ *
  * @param $message
  * @param string $type
  *
+ * @param bool $closable
+ * @param bool $include_log_link
+ *
  * @return string
  */
-function ws_ls_component_alert( $message, $type = 'success' ) {
+function ws_ls_component_alert( $message, $type = 'success', $closable = true, $include_log_link = false ) {
 
 	// Types: danger, warning, success, primary
 
-	return sprintf( '<div class="ykuk-alert-%s" ykuk-alert>
-		                <a class="ykuk-alert-close" ykuk-close></a>
-		                <p>%s</p>
+	return sprintf( '<div class="ykuk-alert-%1$s" ykuk-alert>
+		                <a class="ykuk-alert-close" %3$s></a>
+		                <p>%2$s%4$s</p>
 					</div>',
 					esc_attr( $type ),
-					esc_html( $message )
+					esc_html( $message ),
+					true === $closable ? 'ykuk-close' : '',
+					( true === $include_log_link ) ?
+						sprintf( ' <a class="ws-ls-login-link" href="%1$s">%2$s</a>.', esc_url( wp_login_url( get_permalink() ) ), __( 'Login' , WE_LS_SLUG ) ) :
+						''
 	);
 }
 
