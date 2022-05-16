@@ -295,7 +295,7 @@ function ws_ls_wt_tab_panes( $arguments = [] ) {
  */
 function ws_ls_wt_tab_home( $shortcode_arguments = [] ) {
 
-	$args = wp_parse_args( $shortcode_arguments, [ 'enable-week-ranges' => false ] );
+	$args = wp_parse_args( $shortcode_arguments, [ 'enable-week-ranges' => false, 'uikit' => true ] );
 
 	$html = ws_ls_wt_home_summary( $args );
 

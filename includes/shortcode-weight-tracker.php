@@ -296,7 +296,9 @@ function ws_ls_shortcode_embed_chart( $weight_data, $shortcode_arguments ) {
 	$shortcode_arguments = wp_parse_args( $shortcode_arguments, [ 	'custom-field-groups' 	=> [],
 																	'custom-field-slugs'	=> [],
 																	'hide-title' 			=> false,
-																	'legend-position' 		=> 'top' ] );
+																	'legend-position' 		=> 'top',
+																	'uikit'                 => false
+	] );
 
 	$html_output = '';
 
@@ -328,7 +330,10 @@ function ws_ls_shortcode_embed_chart( $weight_data, $shortcode_arguments ) {
 		$message = sprintf( __( 'A graph shall appear when %d or more weight entries have been entered.', WE_LS_SLUG ),
 			$shortcode_arguments[ 'min-chart-points' ] );
 
-		$html_output .= ws_ls_display_blockquote( $message );
+		$html_output .= ( true === empty( $shortcode_arguments[ 'uikit' ] ) ) ?
+								ws_ls_display_blockquote( $message ) :
+									ws_ls_component_alert( $message, 'warning', false );
+
 	}
 
 	return $html_output;
