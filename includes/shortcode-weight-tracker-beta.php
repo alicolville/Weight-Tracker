@@ -264,7 +264,9 @@ function ws_ls_wt_tab_menu( $arguments = [] ) {
 
 /**
  * Tabs content
- * @param array $shortcode_arguments
+ *
+ * @param array $arguments
+ *
  * @return string
  */
 function ws_ls_wt_tab_panes( $arguments = [] ) {
