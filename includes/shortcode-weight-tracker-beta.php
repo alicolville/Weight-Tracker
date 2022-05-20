@@ -103,7 +103,7 @@ function ws_ls_ui_kit_info_box_with_header_footer( $args = [] ) {
 									'tab-changer'   => ''
 	] );
 
-	$html = '<div class="ykuk-card ykuk-card-small ykuk-card-default ykuk-margin-top">';
+	$html = '<div class="ykuk-card ykuk-card-main ykuk-card-small ykuk-card-default ykuk-margin-top">';
 
 	if ( false === empty( $args[ 'header' ] ) ) {
 		$html .= sprintf( ' <div class="ykuk-card-header">
@@ -430,7 +430,7 @@ function ws_ls_wt_tab_advanced( $arguments = [] ) {
 	// --------------------
 
 	if( true === empty( $arguments[ 'hide-advanced-narrative' ] ) ) {
-		$nested_html = ws_ls_component_expanding_text(  __( 'Lean more about suggested calorie intakes', WE_LS_SLUG ),
+		$nested_html = ws_ls_component_expanding_text(  __( 'Learn more about suggested calorie intakes', WE_LS_SLUG ),
 														__( 'Once we know your BMR (the number of calories to keep you functioning at rest), we can go on to give you suggestions on how to spread your calorie intake across the day. Firstly we split the figures into daily calorie intake to maintain weight and daily calorie intake to lose weight. Daily calorie intake to lose weight is calculated based on NHS advice – they suggest to lose 1 – 2lbs a week you should subtract 600 calories from your BMR. The two daily figures can be further broken down by recommending how to split calorie intake across the day i.e. breakfast, lunch, dinner and snacks.', WE_LS_SLUG )
 		);
 	}
@@ -447,7 +447,7 @@ function ws_ls_wt_tab_advanced( $arguments = [] ) {
 	// --------------------
 
 	if( true === empty( $arguments[ 'hide-advanced-narrative' ] ) ) {
-		$nested_html = ws_ls_component_expanding_text(  __( 'Lean more about macronutrients', WE_LS_SLUG ),
+		$nested_html = ws_ls_component_expanding_text(  __( 'Learn more about macronutrients', WE_LS_SLUG ),
 														__( 'With calories calculated, the we can recommend how those calories should be split into Fats, Carbohydrates and Proteins.', WE_LS_SLUG )
 		);
 	}

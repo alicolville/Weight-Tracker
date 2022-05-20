@@ -1,11 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap');
 
-.ws-ls-tracker, .ykuk-modal-dialog *  {
-  font-family: 'Roboto Mono', monospace;
+.ws-ls-tracker, .ws-ls-tracker *, .ykuk-modal-dialog *  {
+  font-family: 'Roboto Mono', monospace !important;
+}
+
+.ws-ls-tracker .ykuk-card-body {
+  font-size: 11pt;
 }
 
 .ws-ls-tracker .ykuk-info-box-header, .ws-ls-tracker .ykuk-info-box-meta {
-  font-size: 0.8em;
+  font-size: 8pt;
+}
+
+.ykuk-card-main h5 {
+  font-size: 12pt;
 }
 
 .ws-ls-tracker .ykuk-table td, .ws-ls-tracker .ykuk-table th {
