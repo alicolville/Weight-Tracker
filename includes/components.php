@@ -414,6 +414,31 @@ function ws_ls_component_bmr( $args = [] ) {
 }
 
 /**
+ * Render link with modal
+ *
+ * @param $title
+ * @param $description
+ *
+ * @param bool $preceeding_br
+ *
+ * @return string
+ */
+function ws_ls_component_modal_with_text_link( $title, $description, $preceeding_br = true ) {
+
+	$id     = ws_ls_component_id();
+	$title  = esc_html( $title );
+	$html   = ( true === $preceeding_br ) ? '<br />' : '';
+
+	$html   .= sprintf ( '<span class="ykuk-info-box-meta">
+								<a href="#" ykuk-toggle="target: #modal-%2$s">%1$s</a>
+							</span>', $title, $id );
+
+	$html .= ws_ls_component_modal('modal-' . $id, $title, esc_html( $description ) );
+
+	return $html;
+}
+
+/**
  * Render HTML for a dialog box
  * @param $element_id
  * @param $title
@@ -457,4 +482,59 @@ function ws_ls_component_expanding_text( $leading_text, $main_text ) {
 					esc_html( $leading_text ),
 					esc_html( $main_text )
 	);
+}
+
+/**
+ * Add a info box with header and footer
+ *
+ * @param $args
+ *
+ * @return string
+ */
+function ws_ls_ui_kit_info_box_with_header_footer( $args = [] ) {
+
+	$args = wp_parse_args( $args, [ 'header'        => '',
+	                                'body'          => '',
+	                                'body-class'    => '',
+	                                'footer'        => '',
+	                                'footer-link'   => '',
+	                                'footer-text'   => '',
+	                                'tab-changer'   => ''
+	] );
+
+	$html = '<div class="ykuk-card ykuk-card-main ykuk-card-small ykuk-card-default ykuk-margin-top">';
+
+	if ( false === empty( $args[ 'header' ] ) ) {
+		$html .= sprintf( ' <div class="ykuk-card-header">
+								<div class="ykuk-grid-small ykuk-flex-middle" ykuk-grid>
+									<div class="ykuk-width-expand">
+										<h5 class="ykuk-margin-remove-bottom ykuk-margin-remove-top">%s</h5>
+									</div>
+								</div>
+							</div>',
+			esc_html( $args[ 'header' ] )
+		);
+	}
+
+	$html .= sprintf( '<div class="ykuk-card-body%s">%s</div>', ( false === empty( $args[ 'body-class' ] ) ) ? ' ' . esc_attr( $args[ 'body-class' ] ) : '', $args[ 'body' ] );
+
+	if ( false === empty( $args[ 'footer-link' ] )
+	     && false === empty( $args[ 'footer-text' ] ) ) {
+
+		$args[ 'footer' ] = sprintf( '<a href="%s" class="ykuk-button ykuk-button-text%s" data-tab="%s">%s</a>',
+			esc_url( $args[ 'footer-link' ] ),
+			( false === empty( $args[ 'tab-changer' ] ) ) ? ' ws-ls-tab-change' : '',
+			( false === empty( $args[ 'tab-changer' ] ) ) ? $args[ 'tab-changer' ] : '',
+			esc_html( $args[ 'footer-text' ] )
+		);
+	}
+
+	if ( false === empty( $args[ 'footer' ] ) ) {
+		$html .= sprintf( '<div class="ykuk-card-footer">%s</div>', wp_kses_post( $args[ 'footer' ] ) );
+	}
+
+	$html .= '</div>';
+
+	return $html;
+
 }

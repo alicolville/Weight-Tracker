@@ -85,60 +85,7 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 }
 add_shortcode( 'wt-beta', 'ws_ls_shortcode_beta' );
 
-/**
- * Add a info box with header and footer
- *
- * @param $args
- *
- * @return string
- */
-function ws_ls_ui_kit_info_box_with_header_footer( $args = [] ) {
 
-	$args = wp_parse_args( $args, [ 'header'        => '',
-	                                'body'          => '',
-	                                'body-class'    => '',
-	                                'footer'        => '',
-	                                'footer-link'   => '',
-	                                'footer-text'   => '',
-									'tab-changer'   => ''
-	] );
-
-	$html = '<div class="ykuk-card ykuk-card-main ykuk-card-small ykuk-card-default ykuk-margin-top">';
-
-	if ( false === empty( $args[ 'header' ] ) ) {
-		$html .= sprintf( ' <div class="ykuk-card-header">
-								<div class="ykuk-grid-small ykuk-flex-middle" ykuk-grid>
-									<div class="ykuk-width-expand">
-										<h5 class="ykuk-margin-remove-bottom ykuk-margin-remove-top">%s</h5>
-									</div>
-								</div>
-							</div>',
-							esc_html( $args[ 'header' ] )
-		);
-	}
-
-	$html .= sprintf( '<div class="ykuk-card-body%s">%s</div>', ( false === empty( $args[ 'body-class' ] ) ) ? ' ' . esc_attr( $args[ 'body-class' ] ) : '', $args[ 'body' ] );
-
-	if ( false === empty( $args[ 'footer-link' ] )
-		&& false === empty( $args[ 'footer-text' ] ) ) {
-
-		$args[ 'footer' ] = sprintf( '<a href="%s" class="ykuk-button ykuk-button-text%s" data-tab="%s">%s</a>',
-								esc_url( $args[ 'footer-link' ] ),
-								( false === empty( $args[ 'tab-changer' ] ) ) ? ' ws-ls-tab-change' : '',
-								( false === empty( $args[ 'tab-changer' ] ) ) ? $args[ 'tab-changer' ] : '',
-								esc_html( $args[ 'footer-text' ] )
-		);
-	}
-
-	if ( false === empty( $args[ 'footer' ] ) ) {
-		$html .= sprintf( '<div class="ykuk-card-footer">%s</div>', wp_kses_post( $args[ 'footer' ] ) );
-	}
-
-	$html .= '</div>';
-
-	return $html;
-
-}
 
 /**
  * Display form for entry
@@ -430,16 +377,15 @@ function ws_ls_wt_tab_advanced( $arguments = [] ) {
 	// --------------------
 
 	if( true === empty( $arguments[ 'hide-advanced-narrative' ] ) ) {
-		$nested_html = ws_ls_component_expanding_text(  __( 'Learn more about suggested calorie intakes', WE_LS_SLUG ),
-														__( 'Once we know your BMR (the number of calories to keep you functioning at rest), we can go on to give you suggestions on how to spread your calorie intake across the day. Firstly we split the figures into daily calorie intake to maintain weight and daily calorie intake to lose weight. Daily calorie intake to lose weight is calculated based on NHS advice – they suggest to lose 1 – 2lbs a week you should subtract 600 calories from your BMR. The two daily figures can be further broken down by recommending how to split calorie intake across the day i.e. breakfast, lunch, dinner and snacks.', WE_LS_SLUG )
-		);
+		$nested_html .= ws_ls_component_modal_with_text_link(   __( 'Learn more about suggested calorie intakes', WE_LS_SLUG ),
+																__( 'Once we know your BMR (the number of calories to keep you functioning at rest), we can go on to give you suggestions on how to spread your calorie intake across the day. Firstly we split the figures into daily calorie intake to maintain weight and daily calorie intake to lose weight. Daily calorie intake to lose weight is calculated based on NHS advice – they suggest to lose 1 – 2lbs a week you should subtract 600 calories from your BMR. The two daily figures can be further broken down by recommending how to split calorie intake across the day i.e. breakfast, lunch, dinner and snacks.', WE_LS_SLUG ) );
 	}
 
 	$calorie_html = ws_ls_harris_benedict_render_table( $arguments[ 'user-id' ], false,  'ws-ls-footable ykuk-table ykuk-table-striped ykuk-table-small' );
 
 	$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 'header' 		=> __( 'Suggested Calorie Intake', WE_LS_SLUG ),
 	                                                     'body-class'	=> 'ykuk-text-small',
-	                                                     'body' 		=> $nested_html . $calorie_html
+	                                                     'body' 		=> $calorie_html . $nested_html
 	] );
 
 	// --------------------
@@ -447,8 +393,8 @@ function ws_ls_wt_tab_advanced( $arguments = [] ) {
 	// --------------------
 
 	if( true === empty( $arguments[ 'hide-advanced-narrative' ] ) ) {
-		$nested_html = ws_ls_component_expanding_text(  __( 'Learn more about macronutrients', WE_LS_SLUG ),
-														__( 'With calories calculated, the we can recommend how those calories should be split into Fats, Carbohydrates and Proteins.', WE_LS_SLUG )
+		$nested_html = ws_ls_component_modal_with_text_link(    __( 'Learn more about macronutrients', WE_LS_SLUG ),
+																__( 'With calories calculated, the we can recommend how those calories should be split into Fats, Carbohydrates and Proteins.', WE_LS_SLUG )
 		);
 	}
 
@@ -456,7 +402,7 @@ function ws_ls_wt_tab_advanced( $arguments = [] ) {
 
 	$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 'header' 		=> __( 'Macronutrients', WE_LS_SLUG ),
 	                                                     'body-class'	=> 'ykuk-text-small',
-	                                                     'body' 		=> $nested_html . $calorie_html
+	                                                     'body' 		=> $calorie_html . $nested_html
 	] );
 
 	return $html;
