@@ -19,7 +19,7 @@ add_filter( 'body_class', function( $classes ) {
 function ws_ls_shortcode_beta( $user_defined_arguments ) {
 
 	$shortcode_arguments = shortcode_atts( [    'accordian-multiple-open'   => true,                    // NEW: Allow more than one accordian tab to be open
-												'active-tab'                => 'home',                      // Initial active tab
+												'active-tab'                => 'settings',                      // Initial active tab
 												'min-chart-points' 			=> 2,	                        // Minimum number of data entries before chart is shown
 												'custom-field-groups'       => '',                          // If specified, only show custom fields that are within these groups
 												'custom-field-slugs'        => '',                          // If specified, only show the custom fields that are specified
@@ -281,12 +281,24 @@ function ws_ls_wt_tab_home( $shortcode_arguments = [] ) {
 	return $html;
 }
 
+/**
+ * Display settings tab
+ * @param array $arguments
+ *
+ * @return string
+ */
 function ws_ls_tab_settings( $arguments = [] ) {
 
-	$html = 'Add target';
+	$html = ws_ls_ui_kit_info_box_with_header_footer( [ 'header'    => __( 'Your target', WE_LS_SLUG ),
+														'body'      => 'add target'
+	]);
 
-	$html .= ws_ls_user_preferences_form( [ 'user-id' => $arguments[ 'user-id' ],
+	$settings = ws_ls_user_preferences_form( [ 'user-id' => $arguments[ 'user-id' ],
 	                                        'allow-delete-data' => ws_ls_to_bool( $arguments[ 'allow-delete-data' ] ) ] );
+
+	$html .= ws_ls_ui_kit_info_box_with_header_footer( [    'header'    => __( 'Settings', WE_LS_SLUG ),
+	                                                        'body'      => $settings
+	]);
 
 	return $html;
 }

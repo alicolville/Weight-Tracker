@@ -638,7 +638,7 @@ function ws_ls_form_field_select( $arguments ) {
 		);
 	}
 
-	$html .= sprintf( '<select id="%1$s" name="%1$s" tabindex="%2$d" class="%3$s" %4$s %5$s data-msg="%6$s \'%7$s\'.">',
+	$html .= sprintf( '<select id="%1$s" name="%1$s" tabindex="%2$d" class="%3$s ykuk-selecth" %4$s %5$s data-msg="%6$s \'%7$s\'.">',
 		esc_attr( $arguments[ 'key' ] ),
 		ws_ls_form_tab_index_next(),
 		esc_attr( $arguments[ 'css-class' ] ),
