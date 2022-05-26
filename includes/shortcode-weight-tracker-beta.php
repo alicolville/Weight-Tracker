@@ -25,7 +25,7 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 												'custom-field-slugs'        => '',                          // If specified, only show the custom fields that are specified
 												'bmi-format'                => 'both',                      // Format for display BMI
 												'show-add-button' 			=> false,					    // Display a "Add weight" button above the chart.
-												//		'allow-delete-data' 		=> true,                	    // Show "Delete your data" section
+												'allow-delete-data' 		=> true,                	    // Show "Delete your data" section
 												'hide-notes' 				=> ws_ls_setting_hide_notes(),  // Hide notes field
 												'hide-photos' 				=> false,                       // Hide photos part of form
 												'hide-chart-overview' 		=> false,               	    // Hide chart on the overview tab
@@ -72,6 +72,12 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 		$html .= ws_ls_component_alert( __( 'You need to be logged in to record your weight.', WE_LS_SLUG ), 'primary', false, true );
 
 	} else {
+
+		if( 'true' === ws_ls_querystring_value( 'user-preference-saved', 'true' ) ) {
+			$html .= ws_ls_component_alert( __( 'Your settings have been successfully saved!', WE_LS_SLUG ) );
+		} elseif( 'true' === ws_ls_querystring_value( 'user-delete-all', 'true' ) ) {
+			$html .= ws_ls_component_alert( __( 'Your data has successfully been deleted.', WE_LS_SLUG ) );
+		}
 
 		// Tab menu
 		$html .= ws_ls_wt_tab_menu( $shortcode_arguments );
@@ -184,7 +190,10 @@ function ws_ls_wt_tab_menu( $arguments = [] ) {
 	$tabs[] = [ 'name' => 'advanced', 'icon' => 'heart' ];
 	$tabs[] = [ 'name' => 'gallery', 'icon' => 'image' ];
 	$tabs[] = [ 'name' => 'messages', 'icon' => 'mail' ];
-	$tabs[] = [ 'name' => 'settings', 'icon' => 'settings' ];
+
+	if( true === ws_ls_user_preferences_is_enabled() ) {
+		$tabs[] = [ 'name' => 'settings', 'icon' => 'settings' ];
+	}
 
 	// Store tab names / position in a JS object so JS scripts can look determine their position when
 	// switching tabs
@@ -223,16 +232,22 @@ function ws_ls_wt_tab_panes( $arguments = [] ) {
 	 * Check ws_ls_note_is_enabled() for notes
 	 */
 
-
-	$html = '	<ul class="ykuk-switcher switcher-container ykuk-margin">
-					<li>' . ws_ls_wt_tab_home( $arguments ) . '</li>
+	$html = '<ul class="ykuk-switcher switcher-container ykuk-margin">';
+	$html .=		'<li>' . ws_ls_wt_tab_home( $arguments ) . '</li>
 					<li>' . ws_ls_tab_add_entry( $arguments ) . '</li>
 					<li>' . ws_ls_wt_tab_table( $arguments ) . '</li>
 					<li>' . ws_ls_wt_tab_advanced( $arguments ) .'</li>
-					<li>' . ws_ls_tab_gallery(  $arguments ) . '</li>
-					<li>' . ws_ls_tab_notes( $arguments ) . '</li>
-					<li>' . ws_ls_tab_settings( $arguments ) . '</li>
-				</ul>';
+					<li>' . ws_ls_tab_gallery(  $arguments ) . '</li>';
+
+	if( true === ws_ls_note_is_enabled() ) {
+		$html .= '<li>' . ws_ls_tab_notes( $arguments ) . '</li>';
+	}
+
+	if( true === ws_ls_user_preferences_is_enabled() ) {
+		$html .= '<li>' . ws_ls_tab_settings( $arguments ) . '</li>';
+	}
+
+	$html .= '</ul>';
 
 	return $html;
 }
@@ -267,7 +282,13 @@ function ws_ls_wt_tab_home( $shortcode_arguments = [] ) {
 }
 
 function ws_ls_tab_settings( $arguments = [] ) {
-	return 'Add target<br /><br />Settings';
+
+	$html = 'Add target';
+
+	$html .= ws_ls_user_preferences_form( [ 'user-id' => $arguments[ 'user-id' ],
+	                                        'allow-delete-data' => ws_ls_to_bool( $arguments[ 'allow-delete-data' ] ) ] );
+
+	return $html;
 }
 
 /**
