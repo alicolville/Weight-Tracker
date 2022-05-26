@@ -35,3 +35,7 @@
 .ykuk-table {
   margin-top: 0px
 }
+
+.ykuk-scope #we-ls-user-pref-submit {
+  height: 38px;
+}

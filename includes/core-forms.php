@@ -619,14 +619,16 @@ function ws_ls_form_field_select( $arguments ) {
 												'css-class-title'       => '',
 												'required'              => false,
 												'js-on-change'          => '',
-												'include-div'           => false
+												'include-div'           => false,
+												'uikit'                 => false
 	]);
 
-	$html       = '';
-	$label_id   = ws_ls_component_id();
+	$html           = '';
+	$label_id       = ws_ls_component_id();
+	$include_row    = ( true === $arguments[ 'include-div' ] || true === $arguments[ 'uikit' ] ) ;
 
-	if ( true === $arguments[ 'include-div' ] ) {
-		$html .= sprintf( '<div id="%1$s-row" class="%2$s">', $arguments[ 'key' ], esc_attr( $arguments[ 'css-class-row' ] ) );
+	if ( $include_row ) {
+		$html .= sprintf( '<div id="%1$s-rowh" class="%2$s ykuk-width-1-1">', $arguments[ 'key' ], esc_attr( $arguments[ 'css-class-row' ] ) );
 	}
 
 	if ( true === $arguments[ 'show-label' ] ) {
@@ -638,7 +640,7 @@ function ws_ls_form_field_select( $arguments ) {
 		);
 	}
 
-	$html .= sprintf( '<select id="%1$s" name="%1$s" tabindex="%2$d" class="%3$s ykuk-selecth" %4$s %5$s data-msg="%6$s \'%7$s\'.">',
+	$html .= sprintf( '<select id="%1$s" name="%1$s" tabindex="%2$d" class="%3$s ykuk-select ykuk-padding-remove-right" %4$s %5$s data-msg="%6$s \'%7$s\'.">',
 		esc_attr( $arguments[ 'key' ] ),
 		ws_ls_form_tab_index_next(),
 		esc_attr( $arguments[ 'css-class' ] ),
@@ -662,7 +664,7 @@ function ws_ls_form_field_select( $arguments ) {
 
 	$html .= '</select>';
 
-	if ( true === $arguments[ 'include-div' ] ) {
+	if ( $include_row ) {
 		$html .= '</div>';
 	}
 
