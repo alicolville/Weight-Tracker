@@ -32,21 +32,18 @@ function ws_ls_challenges_hook_settings_form_opt_in( $html, $user_id ) {
         return $html;
     }
 
-    $html           .= ws_ls_title( __( 'Challenges', WE_LS_SLUG ) );
     $current_value  = ws_ls_user_preferences_get( 'challenge_opt_in', $user_id );
 
-    $html .= sprintf( '    <select name="ws-ls-challenge-opt-in" id="ws-ls-challenge-opt-in" tabindex="%1$d">
-                                        <option value="no">%2$s</option>
-                                        <option value="yes" %3$s>%4$s</option>
-                                    </select>',
-                                    ws_ls_form_tab_index_next(),
-                                    __( 'No - Do not opt me into any challenges', WE_LS_SLUG ),
-                                    selected( '1', $current_value, false ),
-                                    __( 'Yes - Opt me into challenges!', WE_LS_SLUG )
+	$html .= ws_ls_form_field_select( [        'key'        => 'ws-ls-challenge-opt-in',
+	                                           'label'      => __( 'Challenges', WE_LS_SLUG ),
+	                                           'values'     => [ 'no'   => __( 'No - Do not opt me into any challenges', WE_LS_SLUG ),
+	                                                             'yes'  =>  __( 'Yes - Opt me into challenges!', WE_LS_SLUG ) ],
+	                                           'selected'   => ( '1' === $current_value ) ? 'yes' : 'no',
+	                                           'uikit'      => true ] );
 
-    );
 
-    return $html;
+
+	return $html;
 }
 add_filter( 'wlt-filter-user-settings-below-dob',  'ws_ls_challenges_hook_settings_form_opt_in', 15, 2 );
 
