@@ -79,9 +79,7 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
         ws_ls_enqueue_files();
     }
 
-    $html_output = ws_ls_title( $labels['title-about'] );
-
-	$html_output .= '
+	$html_output = '
 
 	<form class="ws-ls-user-pref-form ykuk-grid-small" ykuk-grid method="post" data-redirect-url=' . esc_url( $arguments[ 'redirect-url' ] ) . '>
 	<div class="ws-ls-error-summary">
@@ -119,7 +117,7 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
 		                                            'id'            => 'ws-ls-dob',
 		                                            'title'         => $labels[ 'dob' ],
 		                                            'value'         => ws_ls_get_dob_for_display( $user_id ),
-		                                            'css-class'     => 'we-ls-datepicker ws-ls-dob-field ws-ls-aboutyou-field',
+		                                            'css-class'     => 'we-ls-datepicker ws-ls-dob-field ws-ls-aboutyou-field ykuk-width-1-1',
 		                                            'uikit'         => $arguments[ 'uikit' ],
 		                                            'show-label'    => true ] );
 	}
@@ -129,7 +127,6 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
 	}
 
 	if ( false === ws_ls_to_bool( $arguments[ 'hide-preferences' ] ) ) {
-		$html_output .= ws_ls_title( __('Preferences', WE_LS_SLUG ) );
 
 		$html_output .= ws_ls_form_field_select( [ 'uikit' => $arguments[ 'uikit' ], 'key' => 'WE_LS_DATA_UNITS', 'label' => $labels[ 'weight' ], 'values' => ws_ls_weight_units(), 'selected' => ws_ls_user_preferences_settings_get( 'WE_LS_DATA_UNITS', $user_id ) ] );
 
@@ -143,9 +140,12 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
 
     if ( true !== $arguments[ 'disable-save' ] ) {
 
-	    $html_output .= sprintf('<input name="we-ls-user-pref-submit" type="submit" id="we-ls-user-pref-submit" tabindex="%1$d" class="ws-ls-cancel-form button ykuk-button ykuk-button-default ws-ls-remove-on-submit" value="%2$s" />',
-		    ws_ls_form_tab_index_next(),
-		    __( 'Save Settings', WE_LS_SLUG )
+	    $html_output .= sprintf( '	<div>
+										<input name="we-ls-user-pref-submit" type="submit" id="we-ls-user-pref-submit" tabindex="%1$d" class="ws-ls-cancel-form button ykuk-button ykuk-button-default ws-ls-remove-on-submit" value="%2$s" />
+									</div>
+									',
+								    ws_ls_form_tab_index_next(),
+								    __( 'Save Settings', WE_LS_SLUG )
 	    );
 
     }
@@ -159,7 +159,7 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
 
 	    $post_url = add_query_arg( 'user-delete-all', 'true', ws_ls_get_url() );
 
-	    $html_output .= sprintf( '<form action="%s" class="ws-ls-user-delete-all" method="post">
+	    $html_output .= sprintf( '<form action="%s" class="ws-ls-user-delete-all ykuk-grid-small" ykuk-grid method="post">
 											<div class="ws-ls-error-summary">
                 								<ul></ul>
                 							</div>', esc_url( $post_url ) );
@@ -172,7 +172,10 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
 	                                               'uikit'      => $arguments[ 'uikit' ],
 	                                               'required'   => true ] );
 
-	    $html_output .= sprintf('<input name="submit_button" type="submit" id="we-ls-user-pref-submit" tabindex="%1$d" class="button ykuk-button ykuk-button-default" value="%2$s" /></form>',
+	    $html_output .= sprintf(' 	<div>
+										<input name="submit_button" type="submit" id="we-ls-user-pref-submit" tabindex="%1$d" class="button ykuk-button ykuk-button-default" value="%2$s" />
+									</div>
+								</form>',
 		    ws_ls_form_tab_index_next(),
 		    __( 'Delete', WE_LS_SLUG )
 	    );

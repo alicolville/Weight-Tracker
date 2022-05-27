@@ -412,7 +412,7 @@ function ws_ls_form_field_date( $arguments = [] ) {
 	]);
 	$html = '';
 
-	$display_wrapping_div = ( true === $arguments[ 'include-div' ] && false === $arguments[ 'uikit' ] );
+	$display_wrapping_div = ( true === $arguments[ 'include-div' ] || true === $arguments[ 'uikit' ] );
 
 	if ( true === $display_wrapping_div ) {
 		$html .= sprintf( '<div id="%1$s-row" class="ws-ls-form-row%2$s">', $arguments[ 'name' ], ( false === empty( $arguments[ 'css-class-row' ] ) ) ? ' ' . esc_attr( $arguments[ 'css-class-row' ] ) : '' );
