@@ -106,7 +106,7 @@ function ws_ls_email_notification( $type, $weight_data ) {
 
 			if ( false === empty( $current_user->user_email ) ) {
 				$email_data[ 'data' ] .= sprintf('<h4>%s</h4>', __('User email address', WE_LS_SLUG) );
-				$email_data[ 'data' ] .= sprintf('<p><a href="mailto:%1$s>%1$s</a></p>', esc_html( $current_user->user_email ) );
+				$email_data[ 'data' ] .= sprintf('<p><a href="mailto:%1$s">%1$s</a></p>', esc_html( $current_user->user_email ) );
 			}
 		}
 		// Add weight summary
