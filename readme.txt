@@ -152,9 +152,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 = 10.0 =
 
-	- document new legend position for chart
-	- edit text "Allow user to view via [wt-notes]" to include "and [wt]"
-	- new argument for wt-note: 'message-no-data', 'paging', 'notes-per-page'
+- new argument for wt-note: 'message-no-data', 'paging', 'notes-per-page'
 	- new arguments for user preference form
 	    'show-delete-data'      => true,
 	    hide-titles
