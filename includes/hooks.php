@@ -105,10 +105,10 @@ add_filter( 'body_class', function( $classes ) {
  */
 function ws_ls_enqueue_uikit() {
 
-	wp_enqueue_style( 'yk-uikit', plugins_url( '../assets/uikit/css/uikit.css', __FILE__ ), [], WE_LS_CURRENT_VERSION );
+	wp_enqueue_style( 'yk-uikit', plugins_url( '../assets/uikit/css/uikit.min.css', __FILE__ ), [], WE_LS_CURRENT_VERSION );
 	wp_enqueue_style( 'yk-uikit-theme', plugins_url( '../assets/uikit/css/uikit-theme.css', __FILE__ ), [], WE_LS_CURRENT_VERSION );
-	wp_enqueue_script( 'yk-uikit', plugins_url( '../assets/uikit/js/uikit.js', __FILE__ ), [] , WE_LS_CURRENT_VERSION );
-	wp_enqueue_script( 'yk-uikit-icons', plugins_url( '../assets/uikit/js/uikit-icons.js', __FILE__ ), [] , WE_LS_CURRENT_VERSION);
+	wp_enqueue_script( 'yk-uikit', plugins_url( '../assets/uikit/js/uikit.min.js', __FILE__ ), [] , WE_LS_CURRENT_VERSION );
+	wp_enqueue_script( 'yk-uikit-icons', plugins_url( '../assets/uikit/js/uikit-icons.min.js', __FILE__ ), [] , WE_LS_CURRENT_VERSION);
 	wp_enqueue_script( 'yk-uikit-wt', plugins_url( '../assets/uikit/js/wt.js', __FILE__ ), [] , WE_LS_CURRENT_VERSION );
 }
 
