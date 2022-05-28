@@ -194,7 +194,7 @@ function ws_ls_datatable_rows( $arguments ) {
 				];
 			}
 
-			if( true === $arguments[ 'enable-weight' ] ) {
+			if( true === $arguments[ 'enable-weight' ] && false === $arguments[ 'front-end' ] ) {
 				// Compare to previous weight and determine if a gain / loss in weight
 				$gain_loss = '';
 				$gain_class = '';
@@ -299,7 +299,11 @@ function ws_ls_datatable_rows_localise( $row ) {
 	}
 
 	if ( false === empty( $row[ 'kg' ][ 'value' ] ) ) {
-		$row[ 'kg' ][ 'value' ] = ws_ls_blur_text( ws_ls_weight_display( $row[ 'kg' ][ 'value' ], NULL, 'display', $ws_ls_request_from_admin_screen ) );
+		$row[ 'kg' ][ 'value' ] = ws_ls_weight_display( $row[ 'kg' ][ 'value' ], NULL, 'display', $ws_ls_request_from_admin_screen );
+
+		if ( false !== $ws_ls_request_from_admin_screen ) {
+			$row[ 'kg' ][ 'value' ] = ws_ls_blur_text( $row[ 'kg' ][ 'value' ]  );
+		}
 	}
 
 	return $row;
@@ -346,7 +350,8 @@ function ws_ls_datatable_columns( $arguments = [] ) {
 
 	if ( true === $arguments[ 'enable-weight' ] ) {
 		$columns[] = [ 'name' => 'kg', 'title' => __( 'Weight', WE_LS_SLUG ), 'visible'=> true, 'type' => 'text' ];
-		$columns[] = [ 'name' => 'gainloss', 'title' => ws_ls_tooltip('+/-', __( 'Difference', WE_LS_SLUG ) ), 'visible'=> true, 'breakpoints'=> 'xs', 'type' => 'text' ];
+
+		$columns[] = [ 'name' => 'gainloss', 'title' => ws_ls_tooltip('+/-', __( 'Difference', WE_LS_SLUG ) ), 'visible'=> ! $arguments[ 'front-end' ], 'breakpoints'=> 'xs', 'type' => 'text' ];
 	}
 
 	// Add BMI?

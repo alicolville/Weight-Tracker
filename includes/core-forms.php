@@ -179,7 +179,9 @@ function ws_ls_form_weight( $arguments = [] ) {
 			if ( false === empty( $latest_entry[ 'kg' ] ) ) {
 				$placeholders = ws_ls_weight_display( $latest_entry[ 'kg' ] );
 			}
-			$placeholders[ 'meta' ] = $latest_entry[ 'meta' ];
+			if ( false === empty( $latest_entry[ 'meta' ] ) ) {
+				$placeholders[ 'meta' ] = $latest_entry[ 'meta' ];
+			}
 		}
 	}
 

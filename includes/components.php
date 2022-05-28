@@ -571,15 +571,17 @@ function ws_ls_uikit_data_summary( $arguments = [] ) {
 
 	$arguments = wp_parse_args( $arguments, [ 'user-id' => get_current_user_id() ] );
 
-	return sprintf( '<div class="ykuk-grid-small ykuk-text-center ykuk-child-width-1-1 ykuk-child-width-1-2@s ykuk-child-width-1-4@m ykuk-grid-match ykuk-text-small" ykuk-grid>
-						%s
-						%s
-						%s
-						%s
+	return sprintf( '<div class="ykuk-grid-small ykuk-text-center ykuk-child-width-1-1 ykuk-child-width-1-%5$d@s ykuk-child-width-1-%6$d@m ykuk-grid-match ykuk-text-small" ykuk-grid>
+						%1$s
+						%2$s
+						%3$s
+						%4$s
 					</div>',
 		ws_ls_component_number_of_entries( [ 'user-id' => $arguments[ 'user-id' ] ] ),
-		ws_ls_component_number_of_days_tracking( [ 'user-id' => $arguments[ 'user-id' ] ] ),
+		( true === WS_LS_IS_PRO ) ? ws_ls_component_number_of_days_tracking( [ 'user-id' => $arguments[ 'user-id' ] ] ) : '',
 		ws_ls_component_latest_weight( [ 'user-id' => $arguments[ 'user-id' ] ] ),
-		ws_ls_component_start_weight( [ 'user-id' => $arguments[ 'user-id' ] ] )
+		ws_ls_component_start_weight( [ 'user-id' => $arguments[ 'user-id' ] ] ),
+		( true === WS_LS_IS_PRO ) ? 2 : 3,
+		( true === WS_LS_IS_PRO ) ? 4 : 3
 	);
 }
