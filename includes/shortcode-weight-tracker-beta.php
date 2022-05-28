@@ -240,9 +240,19 @@ function ws_ls_wt_tab_home( $shortcode_arguments = [] ) {
  */
 function ws_ls_tab_settings( $arguments = [] ) {
 
-	$html = ws_ls_ui_kit_info_box_with_header_footer( [ 'header'    => __( 'Your target', WE_LS_SLUG ),
-														'body'      => 'add target'
-	]);
+	// Include target form?
+	if ( true === ws_ls_targets_enabled() ) {
+
+		$html = ws_ls_ui_kit_info_box_with_header_footer( [ 'header'    => __( 'Your target', WE_LS_SLUG ),
+		                                                    'body'      => ws_ls_form_weight( [ 'type'              => 'target',
+		                                                                                        'css-class-form'    => 'ws-ls-target-form',
+		                                                                                        'user-id'           => $arguments[ 'user-id' ],
+		                                                                                        'hide-confirmation' => false,
+			                                                                                    'hide-title'        => true,
+			                                                                                    'uikit'             => true
+		                                                    ] )
+		]);
+	}
 
 	$settings = ws_ls_user_preferences_form( [  'user-id'           => $arguments[ 'user-id' ],
 	                                            'uikit'             => true,
