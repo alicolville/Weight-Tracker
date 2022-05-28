@@ -1,7 +1,0 @@
-Things to do after successful Beta:
-
-- Review the following to use UI Kit alternatives
-    - Form fields
-    - Date Picker
-    - Sliders for custom fields
-    - Refactor all JS, see what can be replaced with UIKIT.
