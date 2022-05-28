@@ -152,11 +152,6 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 = 10.0 =
 
-TODO:
-
-  - rtl support (uikit css)
-	- Reduce compress UI KIT files.
-	- Document wt-difference-between-latest-previous shortcode
 	- document new legend position for chart
 	- edit text "Allow user to view via [wt-notes]" to include "and [wt]"
 	- new argument for wt-note: 'message-no-data', 'paging', 'notes-per-page'

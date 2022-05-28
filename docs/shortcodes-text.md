@@ -8,7 +8,7 @@ The total weight lost by the logged in member.
 
 Display the weight for first weight entry (for the current logged in user).
 
-**[wt-start-date]** (  [Pro]({{ site.baseurl }}/upgrade.html)  )  (8.4+)
+**[wt-start-date]** (  [Pro]({{ site.baseurl }}/upgrade.html)  )
 
 Display the date of first weight entry (for the current logged in user).
 
@@ -16,7 +16,7 @@ Display the date of first weight entry (for the current logged in user).
 
 Display the weight for previous weight entry (for the current logged in user).
 
-**[wt-previous-date]** (  [Pro]({{ site.baseurl }}/upgrade.html)  )  (8.4+)
+**[wt-previous-date]** (  [Pro]({{ site.baseurl }}/upgrade.html)  )
 
 Display the date of previous weight entry (for the current logged in user).
 
@@ -24,7 +24,7 @@ Display the date of previous weight entry (for the current logged in user).
 
 Display the difference between the user's current weight and the previous entry.
 
-**[wt-days-between-start-and-latest]** (  [Pro]({{ site.baseurl }}/upgrade.html)  ) (8.4+)
+**[wt-days-between-start-and-latest]** (  [Pro]({{ site.baseurl }}/upgrade.html)  )
 
 Display the number of days between the user's current weight and the previous entry. The shortcode has two arguments “include-days” (default false) to include the word “days” after the number and “include-brackets” to wrap the data within brackets.
 
@@ -36,7 +36,7 @@ e.g
 
 Display the latest weight for the logged in user.
 
-**[wt-latest-date]** (  [Pro]({{ site.baseurl }}/upgrade.html)  ) (8.4+)
+**[wt-latest-date]** (  [Pro]({{ site.baseurl }}/upgrade.html)  )
 
 Display the weight for latest weight entry (for the current logged in user).
 
@@ -51,6 +51,18 @@ Display the difference between the current user's most recent weight entry and t
 Also supports the argument "invert" to invert negative numbers into positive and vice versa e.g.
 
     [wt-difference-from-target invert="true"]
+    
+**[wt-difference-between-latest-previous]** 
+
+
+Display the difference between the current user's most recent weight entry and the one they have previously entered.
+ 
+    [wt-difference-between-latest-previous invert="true" display="percentage”] 
+      
+Also supports the following arguments:
+* "display" - Specifies whether to display a "weight" (default) or "percentage"
+* "invert" to invert negative numbers into positive and vice versa e.g.
+* "include-percentage-sign" - if displaying a percentage, specifies whether or not to include the percentage sign. Accepts "true" (default) or "false".
 
 **[wt-height]**
 
