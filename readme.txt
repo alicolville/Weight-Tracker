@@ -162,6 +162,7 @@ TODO:
 	- new argument for wt-note: 'message-no-data', 'paging', 'notes-per-page'
 	- new arguments for user preference form
 	    'show-delete-data'      => true,
+	    hide-titles
        'show-user-preferences' => true
        remove allow-delete-data from docs
 

@@ -25,7 +25,7 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 												'custom-field-slugs'        => '',                          // If specified, only show the custom fields that are specified
 												'bmi-format'                => 'both',                      // Format for display BMI
 												'show-add-button' 			=> false,					    // Display a "Add weight" button above the chart.
-												'allow-delete-data' 		=> true,                	    // Show "Delete your data" section
+												'show-delete-data' 		    => true,                	    // Show "Delete your data" section
 												'hide-notes' 				=> ws_ls_setting_hide_notes(),  // Hide notes field
 												'hide-photos' 				=> false,                       // Hide photos part of form
 												'hide-chart-overview' 		=> false,               	    // Hide chart on the overview tab
@@ -294,13 +294,25 @@ function ws_ls_tab_settings( $arguments = [] ) {
 	]);
 
 	$settings = ws_ls_user_preferences_form( [  'user-id'           => $arguments[ 'user-id' ],
-	                                            'allow-delete-data' => ws_ls_to_bool( $arguments[ 'allow-delete-data' ] ),
-												'uikit'             => true
+	                                            'uikit'             => true,
+												'show-delete-data'  => false
 	]);
 
 	$html .= ws_ls_ui_kit_info_box_with_header_footer( [    'header'    => __( 'Settings', WE_LS_SLUG ),
 	                                                        'body'      => $settings
 	]);
+
+	if( false === empty( $arguments[ 'show-delete-data' ] ) ) {
+		$settings = ws_ls_user_preferences_form( [  'user-id'               => $arguments[ 'user-id' ],
+		                                            'hide-titles'           => true,
+		                                            'uikit'                 => true,
+		                                            'show-user-preferences' => false
+		]);
+
+		$html .= ws_ls_ui_kit_info_box_with_header_footer( [    'header'    => __( 'Delete your existing data', WE_LS_SLUG ),
+		                                                        'body'      => $settings
+		]);
+	}
 
 	return $html;
 }

@@ -27,6 +27,7 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
                                     'hide-activity-level'   => false,
                                     'hide-preferences'      => false,
                                     'hide-extras'           => false,
+                                    'hide-titles'           => false,
                                     'user-id'               => get_current_user_id(),
                                     'uikit'                 => false,
                                     'redirect-url'          => '',
@@ -42,7 +43,7 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
     }
 
 	// Delete all the user's data if selected
-	if(  true === ws_ls_to_bool( $arguments['allow-delete-data'] ) && 'true' === ws_ls_querystring_value( 'user-delete-all' ) )	{
+	if(  true === ws_ls_to_bool( $arguments['show-delete-data'] ) && 'true' === ws_ls_querystring_value( 'user-delete-all' ) )	{
 		ws_ls_delete_data_for_user( $user_id );
 	}
 
@@ -73,7 +74,7 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
 		];
 
         // If we're in Admin screens, then hide "delete data"
-        $arguments[ 'allow-delete-data' ] = false;
+        $arguments[ 'show-delete-data' ] = false;
 
 	} else {
 	    // Enqueue front end scripts if needed (mainly for datepicker)
@@ -158,10 +159,12 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
 	}
 
 	// If enabled, show Delete data
-    if( false === empty( $arguments[ 'allow-delete-data' ] ) ||
+    if( ( true === isset( $arguments[ 'allow-delete-data' ] ) && true === $arguments[ 'allow-delete-data' ] ) ||
             false === empty( $arguments[ 'show-delete-data' ] ) ) {
 
-	    $html_output .= ws_ls_title( __( 'Delete existing data', WE_LS_SLUG ) );
+	    if ( false === ws_ls_to_bool( $arguments[ 'hide-titles' ] ) ) {
+		    $html_output .= ws_ls_title( __( 'Delete existing data', WE_LS_SLUG ) );
+	    }
 
 	    $post_url = add_query_arg( 'user-delete-all', 'true', ws_ls_get_url() );
 
