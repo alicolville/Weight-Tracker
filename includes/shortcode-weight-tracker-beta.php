@@ -23,7 +23,7 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 												'hide-photos' 				=> false,                       // Hide photos part of form
 												'hide-chart-overview' 		=> false,               	    // Hide chart on the overview tab
 												//		'hide-tab-photos' 			=> false,                 	    // Hide Photos tab
-												//		'hide-tab-advanced' 		=> false,               	    // Hide Advanced tab (macroN, calories, etc)
+												'hide-tab-advanced' 		=> false,               	    // Hide Advanced tab (macroN, calories, etc)
 												//		'hide-tab-descriptions' 	=> ws_ls_option_to_bool( 'ws-ls-tab-hide-descriptions', 'yes' ), // Hide tab descriptions
 												'hide-advanced-narrative' 	=> false,         			    // Hide text describing BMR, MarcoN, etc
 												//		'disable-advanced-tables' 	=> false,         			    // Disable advanced data tables.
@@ -45,8 +45,8 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 	ws_ls_enqueue_uikit();
 
 	$shortcode_arguments[ 'user-id' ]               = (int) $shortcode_arguments[ 'user-id' ];
-	//$show_advanced_tab                          = ( false === ws_ls_to_bool( $shortcode_arguments[ 'hide-tab-advanced' ] ) && true === WS_LS_IS_PRO_PLUS );
-	//$show_photos_tab                            = ( false === ws_ls_to_bool( $shortcode_arguments[ 'hide-tab-photos' ] ) && true === ws_ls_meta_fields_photo_any_enabled( true ) );
+	$shortcode_arguments[ 'hide-tab-advanced' ]     = ( false === ws_ls_to_bool( $shortcode_arguments[ 'hide-tab-advanced' ] ) && true === WS_LS_IS_PRO_PLUS );
+	//$show_photos_tab                              = ( false === ws_ls_to_bool( $shortcode_arguments[ 'hide-tab-photos' ] ) && true === ws_ls_meta_fields_photo_any_enabled( true ) );
 	$shortcode_arguments[ 'enable-week-ranges' ]	= ws_ls_to_bool( $shortcode_arguments[ 'enable-week-ranges' ] );
 	$shortcode_arguments[ 'min-chart-points' ]      = (int) $shortcode_arguments[ 'min-chart-points' ];
 
@@ -180,7 +180,10 @@ function ws_ls_wt_tab_menu( $arguments = [] ) {
 				[ 'name' => 'history', 'icon' => 'history' ],
 	];
 
-	$tabs[] = [ 'name' => 'advanced', 'icon' => 'heart' ];
+	if ( true === $arguments[ 'hide-tab-advanced' ] ) {
+		$tabs[] = [ 'name' => 'advanced', 'icon' => 'heart' ];
+	}
+
 	$tabs[] = [ 'name' => 'gallery', 'icon' => 'image' ];
 	$tabs[] = [ 'name' => 'messages', 'icon' => 'mail' ];
 
@@ -220,17 +223,16 @@ function ws_ls_wt_tab_menu( $arguments = [] ) {
  */
 function ws_ls_wt_tab_panes( $arguments = [] ) {
 
-	/*
-	 * Todo:
-	 * Check ws_ls_note_is_enabled() for notes
-	 */
-
 	$html = '<ul class="ykuk-switcher switcher-container ykuk-margin">';
 	$html .=		'<li>' . ws_ls_wt_tab_home( $arguments ) . '</li>
 					<li>' . ws_ls_tab_add_entry( $arguments ) . '</li>
-					<li>' . ws_ls_wt_tab_table( $arguments ) . '</li>
-					<li>' . ws_ls_wt_tab_advanced( $arguments ) .'</li>
-					<li>' . ws_ls_tab_gallery(  $arguments ) . '</li>';
+					<li>' . ws_ls_wt_tab_table( $arguments ) . '</li>';
+
+	if ( true === $arguments[ 'hide-tab-advanced' ] ) {
+		$html .= '<li>' . ws_ls_wt_tab_advanced( $arguments ) .'</li>';
+	}
+
+	$html .= '<li>' . ws_ls_tab_gallery(  $arguments ) . '</li>';
 
 	if( true === ws_ls_note_is_enabled() ) {
 		$html .= '<li>' . ws_ls_tab_notes( $arguments ) . '</li>';
