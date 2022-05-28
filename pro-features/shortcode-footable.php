@@ -10,10 +10,6 @@ defined('ABSPATH') or die('Jog on!');
  */
 function ws_ls_shortcode_table( $user_defined_arguments ) {
 
-	if ( false === WS_LS_IS_PRO ) {
-		return ws_ls_display_pro_upgrade_notice_for_shortcode();
-	}
-
     $arguments = shortcode_atts( [  'enable-add-edit'               => false,
 	                                'weight-mandatory'              => true,
                                     'enable-bmi'                    => true,
