@@ -2,13 +2,6 @@
 
 defined('ABSPATH') or die('Jog on!');
 
-//TODO: Tidy this up - only want this included when doing uikit related stuff
-add_filter( 'body_class', function( $classes ) {
-	$classes[]  = 'uk-scope';
-	$classes[]  = 'ykuk-scope';
-	return $classes;
- });
-
 /**
  * Shortcode for [wt-beta]
  * @param $user_defined_arguments

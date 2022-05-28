@@ -92,23 +92,24 @@ function ws_ls_enqueue_files(){
 }
 
 /**
+ * Add scoping for UIkit
+ */
+add_filter( 'body_class', function( $classes ) {
+	$classes[]  = 'uk-scope';
+	$classes[]  = 'ykuk-scope';
+	return $classes;
+});
+
+/**
  * Enqueue relevant dependencies for UI Kit
  */
 function ws_ls_enqueue_uikit() {
 
-	// TODO: Move this out of here:
-	wp_enqueue_style( 'yk-wt-shortcode', plugins_url( '../assets/css/wt-shortcode.css', __FILE__ ), [], WE_LS_CURRENT_VERSION );
-
 	wp_enqueue_style( 'yk-uikit', plugins_url( '../assets/uikit/css/uikit.css', __FILE__ ), [], WE_LS_CURRENT_VERSION );
 	wp_enqueue_style( 'yk-uikit-theme', plugins_url( '../assets/uikit/css/uikit-theme.css', __FILE__ ), [], WE_LS_CURRENT_VERSION );
-//	wp_enqueue_script( 'yk-uikit', plugins_url( '../assets/uikit/js/uikit.min.js', __FILE__ ), [] , WE_LS_CURRENT_VERSION );
-//	wp_enqueue_script( 'yk-uikit-icons', plugins_url( '../assets/uikit/js/uikit-icons.min.js', __FILE__ ), [] , WE_LS_CURRENT_VERSION);
-
 	wp_enqueue_script( 'yk-uikit', plugins_url( '../assets/uikit/js/uikit.js', __FILE__ ), [] , WE_LS_CURRENT_VERSION );
 	wp_enqueue_script( 'yk-uikit-icons', plugins_url( '../assets/uikit/js/uikit-icons.js', __FILE__ ), [] , WE_LS_CURRENT_VERSION);
-
 	wp_enqueue_script( 'yk-uikit-wt', plugins_url( '../assets/uikit/js/wt.js', __FILE__ ), [] , WE_LS_CURRENT_VERSION );
-
 }
 
 /**
