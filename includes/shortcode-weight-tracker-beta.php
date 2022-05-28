@@ -11,8 +11,7 @@ defined('ABSPATH') or die('Jog on!');
  */
 function ws_ls_shortcode_beta( $user_defined_arguments ) {
 
-	$shortcode_arguments = shortcode_atts( [    'accordian-multiple-open'   => true,                    // NEW: Allow more than one accordian tab to be open
-												'active-tab'                => 'settings',                      // Initial active tab
+	$shortcode_arguments = shortcode_atts( [    'active-tab'                => 'home',                      // Initial active tab
 												'min-chart-points' 			=> 2,	                        // Minimum number of data entries before chart is shown
 												'custom-field-groups'       => '',                          // If specified, only show custom fields that are within these groups
 												'custom-field-slugs'        => '',                          // If specified, only show the custom fields that are specified
