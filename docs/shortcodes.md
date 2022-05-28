@@ -4,6 +4,7 @@ The majority of the public facing functionality are implemented using [WordPress
 
 |Shortcode|Description|    
 |--|--|
+|[[wt-beta]]({{ site.baseurl }}/shortcodes/wt-beta.html) |A new shortcode (beta) that will replace [[wt]]({{ site.baseurl }}/shortcodes/wt.html).  
 |[[wt]]({{ site.baseurl }}/shortcodes/wt.html) |A shortcode that encompasses all Weight Tracker front end functionality.|   
 |[[wt-awards]]({{ site.baseurl }}/shortcodes/wt-awards.html)|Display [awards]({{ site.baseurl }}/awards.html) given to the user.
 |[[wt-awards-grid]]({{ site.baseurl }}/shortcodes/wt-awards-grid.html)|Display most recent [award]({{ site.baseurl }}/awards.html) for the given user.
