@@ -152,12 +152,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 = 10.0 =
 
-- new arguments for user preference form
-	    'show-delete-data'      => true,
-	    hide-titles
-       'show-user-preferences' => true
-       remove allow-delete-data from docs
-
+* Improvement: New arguments for [wt-user-settings]: "show-delete-data", "hide-titles" and "show-user-preferences". Read more: https://docs.yeken.uk/shortcodes/wt-user-settings.html
 * Improvement: New arguments for [wt-notes]: "message-no-data", "paging" and "notes-per-page". Read more: https://docs.yeken.uk/shortcodes/wt-notes.html
 * Bug fix: Issue with -0lbs being displayed instead of 0lbs.
 * Bug fix: Time of message not displayed correctly.
