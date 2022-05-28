@@ -1,7 +1,6 @@
-## [wt]
+## [wt-beta] 
+### This shortcode is currently in Beta. Please [contact us]({{ site.baseurl }}/contact.html) to report issues or make suggestions.
 
-### Soon to be replaced with [[wt-beta]]({{ site.baseurl }}/shortcodes/wt-beta.html). This shortcode will soon be replaced by [[wt-beta]]({{ site.baseurl }}/shortcodes/wt-beta.html), please consider using this one instead.
- 
 This is the most popular shortcode for the Weight Tracker plugin and displays upto four sections / tabs when a user is logged into WordPress.    
     
 > The following shortcode is available in both the free and [Pro/Pro Plus]({{ site.baseurl }}/features.html) version of the plugin. The Pro version has the following additional features: 
@@ -9,22 +8,41 @@ This is the most popular shortcode for the Weight Tracker plugin and displays up
 > * Advanced data table for viewing weight entries. Supporting sorting, paging, editing and deleting. 
 > * Support for BMI, BMR, suggested calorie intake and Macronutrients.
 > * A settings page to allow the user to tailor the plugin to their needs. 
+> * Notes
+> * Gallery
 > * User Settings    
  
 *Note: Please only place this shortcode once per page. If placed more than once you may experience unstable results.*    
  
 **Overview**    
 
-![Main image](http://yeken.uk/wp-content/uploads/2021/03/wt-e1615930590182.png)    
-    
-Displays a chart of the user's weight and custom field ([Pro feature]({{ site.baseurl }}/upgrade.html)) entries in either imperial or metric. The appearance of chart can be customised within the admin settings to change its appearance, type, maximum number of points, etc.    
-    
-Below the chart is a target form and weight / custom field entry form. If enabled, the target form allows the user to enter their desired target weight. This target is then displayed on the chart and used by other shortcodes / widgets.    
-    
-The main feature of the Overview screen is the ability to enter a weight for the given day or overwrite a previous entry. These entries are then stored against the user's record in chronological order and displayed on the chart and “In Detail” tab.    
-    
-[Pro]({{ site.baseurl }}/upgrade.html) users that have enabled measurements will be presented with additional fields that allow your user's to enter measurements for various parts of their body. Measurement entries are displayed alongside the weight entries    
-    
+[![Main Image]({{ site.baseurl }}/assets/images/wt2.png)]({{ site.baseurl }}/assets/images/wt2.png)
+   
+The main tab displays the following summary information to user as well as a chart of the user's weight and plottable custom field data ([Pro feature]({{ site.baseurl }}/upgrade.html))
+
+* Latest weight
+* Previous weight
+* Latest vs Target
+* Target Weight
+
+**Add/edit an entry**  
+
+The next tab allows a user to add an entry. Here they can select a date, specify their weight anc complete any additional [custom fields]({{ site.baseurl }}/custom-fields.html) that have been setup.
+
+[![Add]({{ site.baseurl }}/assets/images/wt2-add.png)]({{ site.baseurl }}/assets/images/wt2-add.png)
+
+**History**
+
+The history tab provides the following summary data as well as a data table containing the user's entries:
+
+* Number of weight entries
+* Number of days tracking
+* Latest weight
+* Start weight
+ 
+[![Table]({{ site.baseurl }}/assets/images/wt2-history.png)]({{ site.baseurl }}/assets/images/wt2-history.png)
+ 
+ 
 **In detail**    
 
  “The in Detail” tab has another target form for ease of use but its primary function is to display all of the user's weight and custom field entries in tabular format. The  [Pro]({{ site.baseurl }}/upgrade.html) version has an improved data table with features such as sortable, expandable and contains links to edit / delete each weight entry. The weight entries can also be filtered by the drop down to show all entries or select them by a week by week basis. This filtering is reflected in the table and the chart.    
