@@ -53,6 +53,7 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 								                                                'week'      => $shortcode_arguments[ 'selected-week-number' ] ,
 								                                                'reverse'   => true,
 								                                                'sort'      => 'desc' ] );
+	$html .= ws_ls_uikit_beta_notice();
 
 	// Display error if user not logged in
 	if ( false === is_user_logged_in() )	{
