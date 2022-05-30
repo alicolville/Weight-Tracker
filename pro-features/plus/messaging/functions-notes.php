@@ -12,19 +12,22 @@ function ws_ls_note_is_enabled() {
 
 /**
  * Fetch notes for the given user
+ *
  * @param $to
  * @param bool $visible_to_user
  * @param null $limit
  *
+ * @param null $offset
+ *
  * @return bool|null
  */
-function ws_ls_notes_fetch( $to, $visible_to_user = false, $limit = NULL ) {
+function ws_ls_notes_fetch( $to, $visible_to_user = false, $limit = NULL, $offset = NULL ) {
 
 	if ( false === ws_ls_note_is_enabled() ) {
 		return false;
 	}
 
-	return ws_ls_messaging_db_select( $to, NULL, true, $visible_to_user, $limit );
+	return ws_ls_messaging_db_select( $to, NULL, true, $visible_to_user, $offset, $limit );
 }
 
 /**
@@ -53,12 +56,16 @@ function ws_ls_note_add( $user_id, $note, $visible_to_user = false ) {
 
 /**
  * Render note
+ *
  * @param $note
  * @param bool $echo
  *
+ * @param bool $uikit
+ * @param bool $alternate
+ *
  * @return string
  */
-function ws_ls_notes_render( $note, $echo = true ) {
+function ws_ls_notes_render( $note, $echo = true, $uikit = false, $alternate = false ) {
 
 	if ( true === empty( $note ) ) {
 		return '';
@@ -66,7 +73,30 @@ function ws_ls_notes_render( $note, $echo = true ) {
 
 	$note[ 'message_text' ] = ws_ls_notes_sanitise( $note[ 'message_text' ] );
 
-	$html = sprintf( '	<div id="%5$s" class="postbox ws-ls-postbox ws-ls-note">
+
+	if ( true === $uikit ) {
+		$html = sprintf( '<article class="ykuk-comment ykuk-margin-medium-top ykuk-visible-toggle ykuk-padding-small ykuk-text-small%1$s" tabindex="-1">
+					            <header class="ykuk-comment-header ykuk-position-relative">
+					                <div class="ykuk-grid-medium ykuk-flex-middle" ykuk-grid>
+					                    <div class="ykuk-width-auto">%2$s</div>
+					                    <div class="ykuk-width-expand">
+					                        <h4 class="ykuk-comment-title ykuk-margin-remove">%3$s</h4>
+					                        <p class="ykuk-comment-meta ykuk-margin-remove-top">%4$s</p>
+					                    </div>
+					                </div>
+					            </header>
+					            <div class="ykuk-comment-body">
+					                <p>%5$s</p>
+					            </div>
+					        </article>',
+							( true === $alternate ) ? ' ykuk-background-muted' : '',
+							get_avatar( $note[ 'from' ], 80 ),
+							ws_ls_user_display_name( $note[ 'from' ] ),
+							ws_ls_iso_datetime_into_correct_format( $note[ 'created' ] ),
+							esc_html( $note[ 'message_text' ] )
+		);
+	} else {
+		$html = sprintf( '	<div id="%5$s" class="postbox ws-ls-postbox ws-ls-note">
 							<div class="postbox-header ws-ls-note-header">
 								<%7$s class="hndle"><span>by %2$s on %3$s %6$s</span></%7$s>
 							<div class="handle-actions hide-if-no-js ws-note-delete-div">
@@ -77,15 +107,16 @@ function ws_ls_notes_render( $note, $echo = true ) {
 								<p>%4$s</p>
 							</div>
 						</div>',
-						$note[ 'id' ],
-						ws_ls_user_display_name( $note[ 'from' ] ),
-						ws_ls_iso_datetime_into_correct_format( $note[ 'created' ] ),
-						$note[ 'message_text' ],
-						ws_ls_component_id(),
-						true === ws_ls_to_bool( $note[ 'visible_to_user' ] ) && true === is_admin() ? __( ' (Visible via [wt-notes])', WE_LS_SLUG ) : '',
-						is_admin() ? 'h2' : 'h6'
+			$note[ 'id' ],
+			ws_ls_user_display_name( $note[ 'from' ] ),
+			ws_ls_iso_datetime_into_correct_format( $note[ 'created' ] ),
+			esc_html( $note[ 'message_text' ] ),
+			ws_ls_component_id(),
+			true === ws_ls_to_bool( $note[ 'visible_to_user' ] ) && true === is_admin() ? __( ' (Visible via [wt-notes])', WE_LS_SLUG ) : '',
+			is_admin() ? 'h2' : 'h6'
 
-    );
+		);
+	}
 
 	if ( false === $echo ) {
 		return $html;

@@ -25,6 +25,7 @@ function ws_ls_data_table_render( $arguments = [] ) {
 												'week'                          => NULL,
 												'custom-field-col-size'         => NULL,
 												'weight-mandatory'              => true,
+												'uikit'                         => false,
 												'custom-field-restrict-rows'    => '',      // Only fetch entries that have either all custom fields completed (all), one or more (any) or leave blank if not concerned.
 	                                            'custom-field-groups'           => '',      // If specified, only show custom fields that are within these groups
 												'custom-field-slugs'            => '',      // If specified, only show the custom fields that are specified
@@ -44,7 +45,7 @@ function ws_ls_data_table_render( $arguments = [] ) {
 
 	// Saved data?
 	if (false === is_admin()) {
-		$html = ws_ls_display_data_saved_message();
+		$html = ws_ls_display_data_saved_message( $arguments[ 'uikit' ] );
 	}
 
 	// Are we in front end and editing enabled, and of course we want to edit, then do so!
@@ -57,13 +58,21 @@ function ws_ls_data_table_render( $arguments = [] ) {
 			$redirect_url = base64_decode( $redirect_url );
 		}
 
+		if ( true === $arguments[ 'uikit' ] ) {
+
+			$html .= sprintf( '	<p><a href="%s">< %s</a></p>',
+								ws_ls_wt_link_goto_tab( 'history' ),
+								__( 'return to all entries', WE_LS_SLUG ) );
+		}
+
 		$html .= ws_ls_form_weight( [ 'entry-id' => $entry_id, 'redirect-url' => $redirect_url, 'weight-mandatory' => $arguments[ 'weight-mandatory' ],
 		                                    'custom-field-groups' => $arguments[ 'custom-field-groups' ], 'custom-field-slugs' => $arguments[ 'custom-field-slugs' ],
-		                                        'type' => ( false === ws_ls_to_bool( $arguments[ 'enable-weight' ] ) ) ? 'custom-fields' : 'weight' ] );
+		                                        'type' => ( false === ws_ls_to_bool( $arguments[ 'enable-weight' ] ) ) ? 'custom-fields' : 'weight',
+		                                            'uikit' => $arguments[ 'uikit' ], 'hide-title' => $arguments[ 'uikit' ] ] );
 
 	} else {
 
-		$html .= sprintf('<table class="ws-ls-user-data-ajax table ws-ls-loading-table" id="%1$s"
+		$html .= sprintf('<table class="ws-ls-user-data-ajax table ws-ls-loading-table ykuk-table" id="%1$s"
 									data-paging="true"
 									data-paging-size="%7$d"
 									data-filtering="true"
@@ -84,7 +93,9 @@ function ws_ls_data_table_render( $arguments = [] ) {
 									data-custom-field-slugs="%10$s"
 									data-custom-field-groups="%11$s"
 									data-custom-field-col-size="%15$s"
-									data-custom-field-restrict-rows="%16$s" >
+									data-custom-field-restrict-rows="%16$s"
+									data-uikit="%17$s"
+									 >
 		</table>',
 			ws_ls_component_id(),
 			true === $arguments[ 'enable-add-edit' ] ? 'true' : 'false',
@@ -101,7 +112,8 @@ function ws_ls_data_table_render( $arguments = [] ) {
 			true === ws_ls_to_bool($arguments[ 'enable-notes' ] ) ? 'true' : 'false',
 			true === ws_ls_to_bool( $arguments[ 'enable-weight' ] ) ? 'true' : 'false',
 			esc_attr( $arguments[ 'custom-field-col-size' ] ),
-			esc_attr( $arguments[ 'custom-field-restrict-rows' ] )
+			esc_attr( $arguments[ 'custom-field-restrict-rows' ] ),
+			true === ws_ls_to_bool( $arguments[ 'uikit' ] ) ? 'true' : 'false'
 		);
 
 		if ( true === empty( $arguments[ 'user-id' ] ) ) {
@@ -182,7 +194,7 @@ function ws_ls_datatable_rows( $arguments ) {
 				];
 			}
 
-			if( true === $arguments[ 'enable-weight' ] ) {
+			if( true === $arguments[ 'enable-weight' ] && false === $arguments[ 'front-end' ] ) {
 				// Compare to previous weight and determine if a gain / loss in weight
 				$gain_loss = '';
 				$gain_class = '';
@@ -287,7 +299,11 @@ function ws_ls_datatable_rows_localise( $row ) {
 	}
 
 	if ( false === empty( $row[ 'kg' ][ 'value' ] ) ) {
-		$row[ 'kg' ][ 'value' ] = ws_ls_blur_text( ws_ls_weight_display( $row[ 'kg' ][ 'value' ], NULL, 'display', $ws_ls_request_from_admin_screen ) );
+		$row[ 'kg' ][ 'value' ] = ws_ls_weight_display( $row[ 'kg' ][ 'value' ], NULL, 'display', $ws_ls_request_from_admin_screen );
+
+		if ( false !== $ws_ls_request_from_admin_screen ) {
+			$row[ 'kg' ][ 'value' ] = ws_ls_blur_text( $row[ 'kg' ][ 'value' ]  );
+		}
 	}
 
 	return $row;
@@ -334,7 +350,8 @@ function ws_ls_datatable_columns( $arguments = [] ) {
 
 	if ( true === $arguments[ 'enable-weight' ] ) {
 		$columns[] = [ 'name' => 'kg', 'title' => __( 'Weight', WE_LS_SLUG ), 'visible'=> true, 'type' => 'text' ];
-		$columns[] = [ 'name' => 'gainloss', 'title' => ws_ls_tooltip('+/-', __( 'Difference', WE_LS_SLUG ) ), 'visible'=> true, 'breakpoints'=> 'xs', 'type' => 'text' ];
+
+		$columns[] = [ 'name' => 'gainloss', 'title' => ws_ls_tooltip('+/-', __( 'Difference', WE_LS_SLUG ) ), 'visible'=> ! $arguments[ 'front-end' ], 'breakpoints'=> 'xs', 'type' => 'text' ];
 	}
 
 	// Add BMI?

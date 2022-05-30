@@ -10,10 +10,6 @@ defined('ABSPATH') or die('Jog on!');
  */
 function ws_ls_shortcode_table( $user_defined_arguments ) {
 
-	if ( false === WS_LS_IS_PRO ) {
-		return ws_ls_display_pro_upgrade_notice_for_shortcode();
-	}
-
     $arguments = shortcode_atts( [  'enable-add-edit'               => false,
 	                                'weight-mandatory'              => true,
                                     'enable-bmi'                    => true,
@@ -27,7 +23,9 @@ function ws_ls_shortcode_table( $user_defined_arguments ) {
 	                                'custom-field-col-size'         => '',
 							        'bmi-format'                    => 'label',
 							        'week'                          => NULL,
-						            'user-id'                       => get_current_user_id() ], $user_defined_arguments );
+						            'user-id'                       => get_current_user_id(),
+                                    'uikit'                         => false
+    ], $user_defined_arguments );
 
     $arguments[ 'user-id' ]                 = (int) $arguments[ 'user-id' ];
 	$arguments[ 'enable-add-edit' ]         = ws_ls_to_bool( $arguments[ 'enable-add-edit' ] );

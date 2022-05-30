@@ -1,4 +1,7 @@
-## [wt] 
+## [wt]
+
+### Soon to be replaced with [[wt-beta]]({{ site.baseurl }}/shortcodes/wt-beta.html). This shortcode will soon be replaced by [[wt-beta]]({{ site.baseurl }}/shortcodes/wt-beta.html), please consider using this one instead.
+ 
 This is the most popular shortcode for the Weight Tracker plugin and displays upto four sections / tabs when a user is logged into WordPress.    
     
 > The following shortcode is available in both the free and [Pro/Pro Plus]({{ site.baseurl }}/features.html) version of the plugin. The Pro version has the following additional features: 

@@ -26,8 +26,9 @@ function ws_ls_delete_data_for_user( $user_id = NULL ) {
 
 	    ws_ls_db_entry_delete_all_for_user( $user_id );
 
-		// Update User stats table
 		ws_ls_stats_update_for_user( $user_id );
+
+		ws_ls_messaging_db_delete_all_for_user( $user_id );
 
 		// Let others know we cleared all user data
 		do_action( 'wlt-hook-data-user-deleted', $user_id );
@@ -829,7 +830,7 @@ function ws_ls_iso_datetime_into_correct_format( $datetime, $user_id = NULL ) {
 	if( false === empty( $datetime ) ) {
 
 		$time 	= strtotime( $datetime );
-		$format = ws_ls_setting('use-us-dates', $user_id ) ? 'm/d/Y H:m' : 'd/m/Y H:m';
+		$format = ws_ls_setting('use-us-dates', $user_id ) ? 'm/d/Y g:ia' : 'd/m/Y g:ia';
 
 		return date( $format, $time );
 	}
@@ -893,13 +894,25 @@ function ws_ls_display_notice( $text, $type = 'success' ) {
                             wp_kses_post( $text )
 	);
 }
+
 /**
  * If QS value detected, display data saved message
+ *
+ * @param bool $uikit
+ *
+ * @return string
  */
-function ws_ls_display_data_saved_message() {
+function ws_ls_display_data_saved_message( $uikit = false ) {
 
 	if( 'n' !== ws_ls_querystring_value( 'ws-edit-saved', false, 'n' ) ) {
-		return ws_ls_display_blockquote( __('Your modifications have been saved', WE_LS_SLUG ), 'ws-ls-success' );
+
+		$message = __( 'Your modifications have been saved', WE_LS_SLUG );
+
+		if ( true === $uikit ) {
+			return ws_ls_component_alert( $message );
+		}
+
+		return ws_ls_display_blockquote( $message, 'ws-ls-success' );
 	}
 
 	return '';
@@ -1333,6 +1346,11 @@ function ws_ls_challenges_is_enabled() {
  * @return string
  */
 function ws_ls_round_number( $number, $decimal_places = 0 ) {
+
+	if ( false === is_numeric( $number ) ) {
+		var_dump($number);
+	}
+
 
 	$seperator = ( 'yes' === get_option( 'ws-ls-number-formatting-separator', 'yes' ) ) ? ',' : '';
 

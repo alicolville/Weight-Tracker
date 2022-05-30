@@ -92,6 +92,29 @@ function ws_ls_enqueue_files(){
 }
 
 /**
+ * Add scoping for UIkit
+ */
+add_filter( 'body_class', function( $classes ) {
+	$classes[]  = 'uk-scope';
+	$classes[]  = 'ykuk-scope';
+	return $classes;
+});
+
+/**
+ * Enqueue relevant dependencies for UI Kit
+ */
+function ws_ls_enqueue_uikit() {
+
+	$minified = ws_ls_use_minified();
+
+	wp_enqueue_style( 'yk-uikit', plugins_url( '../assets/uikit/css/uikit' . 	$minified . '.css', __FILE__ ), [], WE_LS_CURRENT_VERSION );
+	wp_enqueue_style( 'yk-uikit-theme', plugins_url( '../assets/uikit/css/uikit-theme.css', __FILE__ ), [], WE_LS_CURRENT_VERSION );
+	wp_enqueue_script( 'yk-uikit', plugins_url( '../assets/uikit/js/uikit' . 	$minified . '.js', __FILE__ ), [] , WE_LS_CURRENT_VERSION );
+	wp_enqueue_script( 'yk-uikit-icons', plugins_url( '../assets/uikit/js/uikit-icons' . 	$minified . '.js', __FILE__ ), [] , WE_LS_CURRENT_VERSION);
+	wp_enqueue_script( 'yk-uikit-wt', plugins_url( '../assets/uikit/js/wt' . 	$minified . '.js', __FILE__ ), [] , WE_LS_CURRENT_VERSION );
+}
+
+/**
  * Enqueue ws-ls.js only JS
  */
 function ws_ls_enqueue_files_ws_ls_only() {

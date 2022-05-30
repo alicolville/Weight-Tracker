@@ -110,8 +110,8 @@ function ws_ls_shortcode_bmr( $user_defined_arguments ) {
                                     'user-id' => false
                                 ], $user_defined_arguments );
 
-    $arguments['suppress-errors'] = ws_ls_force_bool_argument($arguments['suppress-errors']);
-    $arguments['user-id'] = ws_ls_force_numeric_argument($arguments['user-id']);
+    $arguments['suppress-errors']   = ws_ls_force_bool_argument($arguments['suppress-errors']);
+    $arguments['user-id']           = ws_ls_force_numeric_argument($arguments['user-id']);
 
     $bmr = ws_ls_calculate_bmr($arguments['user-id']);
 

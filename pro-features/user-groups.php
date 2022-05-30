@@ -138,8 +138,6 @@
 
 			if ( false === empty( $groups ) ) {
 
-				$html .= ws_ls_title( __('Group', WE_LS_SLUG) );
-
 				$current_selection = ws_ls_groups_user( $user_id );
 
 				$current_selection = ( false === empty( $current_selection[0]['id'] ) ) ? (int) $current_selection[0]['id'] : 0;
@@ -148,17 +146,15 @@
 					$html .= sprintf( '<p><a href="%s">%s</a></p>', ws_ls_groups_link(), __('Add / remove Groups', WE_LS_SLUG) );
 				}
 
-				$html .= sprintf( '<select name="ws-ls-group" id="ws-ls-group" tabindex="%d">', ws_ls_form_tab_index_next() );
+				$groups = wp_list_pluck( $groups, 'name', 'id' );
 
-				foreach ( $groups as $group ) {
-					$html .= sprintf( '<option value="%s" %s>%s</option>',
-										(int) $group['id'],
-										selected( $current_selection, $group['id'], false ),
-										esc_html( $group['name'] )
-					);
-				}
+				$html .= ws_ls_form_field_select( [        'key'        => 'ws-ls-group',
+				                                           'label'      => __( 'Group', WE_LS_SLUG ),
+				                                           'values'     => $groups,
+				                                           'selected'   => $current_selection,
+				                                           'uikit'      => true ] );
 
-				$html .= '</select>';
+
 
 			} else {
 				$html .= __('None', WE_LS_SLUG );

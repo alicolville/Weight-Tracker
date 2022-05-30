@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap');
+
+.ws-ls-tracker, .ws-ls-tracker *, .ykuk-modal-dialog *  {
+  font-family: 'Roboto Mono', monospace !important;
+  font-size: 10pt;
+}
+
+.ws-ls-tracker .ykuk-card-body {
+  font-size: 11pt;
+}
+
+.ws-ls-tracker .ykuk-info-box-header, .ws-ls-tracker .ykuk-info-box-meta {
+  font-size: 8pt;
+}
+
+.ws-ls-tracker .ykuk-card-main h5 {
+  font-size: 12pt;
+}
+
+.ws-ls-tracker .ykuk-table td, .ws-ls-tracker .ykuk-table th {
+  border: none;
+}
+
+.ws-ls-tracker input,
+  .ws-ls-tracker textarea,
+    .ws-ls-tracker select {
+  font-size: 11pt;
+  padding: 5px;
+}
+
+.ykuk-modal-title h2 {
+  font-size: 12px;
+}
+
+.ykuk-table {
+  margin-top: 0px
+}
+
+.ykuk-scope #we-ls-user-pref-submit {
+  height: 38px;
+}

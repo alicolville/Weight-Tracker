@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight,tracker,chart,bmi,bmr,macronutrient,measure,awards,custom fields,history,measurements,data
 Requires at least: 5.7
 Tested up to: 6.0
-Stable tag: 9.4.1
+Stable tag: 10.0
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -146,9 +146,18 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 == Upgrade Notice ==
 
-9.3 - Admin notes! Store notes against your users and optionally share with them.
+10.0 - New shortcode! Beta! [wt-beta]
 
 == Changelog ==
+
+= 10.0 =
+
+* New feature (beta): [wt-beta] - Currently in the process of building out a new version of [wt]! Read more: https://docs.yeken.uk/shortcodes/wt-beta.html
+* Improvement: New arguments for [wt-user-settings]: "show-delete-data", "hide-titles" and "show-user-preferences". Read more: https://docs.yeken.uk/shortcodes/wt-user-settings.html
+* Improvement: New arguments for [wt-notes]: "message-no-data", "paging" and "notes-per-page". Read more: https://docs.yeken.uk/shortcodes/wt-notes.html
+* Bug fix: Issue with -0lbs being displayed instead of 0lbs.
+* Bug fix: Time of message not displayed correctly.
+* Bug fix: Messages to a user are removed when "Delete all data" pressed.
 
 = 9.4.1 =
 

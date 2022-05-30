@@ -491,7 +491,7 @@ function ws_ls_db_dates_min_max_get( $user_id ) {
 	}
 
 	if ( $cache = ws_ls_cache_user_get( $user_id, 'min-max-dates' ) ) {
-	//	return $cache;
+		return $cache;
 	}
 
 	global $wpdb;
