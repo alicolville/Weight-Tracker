@@ -2,8 +2,8 @@
 Contributors: aliakro
 Tags: weight,tracker,chart,bmi,bmr,macronutrient,measure,awards,custom fields,history,measurements,data
 Requires at least: 5.7
-Tested up to: 5.9.2
-Stable tag: 10-beta1
+Tested up to: 6.0
+Stable tag: 10.0
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -158,6 +158,10 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 * Bug fix: Issue with -0lbs being displayed instead of 0lbs.
 * Bug fix: Time of message not displayed correctly.
 * Bug fix: Messages to a user are removed when "Delete all data" pressed.
+
+= 9.4.1 =
+
+* Bug fix: When user's email address was included in email notifications the data would not laod correctly.
 
 = 9.4 =
 
