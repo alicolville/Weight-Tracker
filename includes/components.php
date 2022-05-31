@@ -556,23 +556,6 @@ function ws_ls_wt_home_summary( $arguments = [] ) {
 }
 
 /**
- * Return summary info for data tab
- * @param array $arguments
- *
- * @return string
- */
-function ws_ls_uikit_data_summary( $arguments = [] ) {
-
-	if ( true === empty( $arguments[ 'summary-boxes-data' ] ) ) {
-		return '';
-	}
-
-	$boxes = explode( ',', $arguments[ 'summary-boxes-data' ] );
-
-	return ws_ls_uikit_summary_boxes( $arguments, $boxes );
-}
-
-/**
  * Display summary boxes
  *
  * @param $key

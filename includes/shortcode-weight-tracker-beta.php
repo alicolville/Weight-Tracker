@@ -218,8 +218,8 @@ function ws_ls_wt_tab_panes( $arguments = [] ) {
 function ws_ls_wt_tab_home( $arguments = [] ) {
 
 	$args = wp_parse_args( $arguments, [ 'enable-week-ranges' => false, 'uikit' => true ] );
-
-	$html = ws_ls_wt_home_summary( $args );
+	
+	$html = ws_ls_uikit_data_summary_boxes_display( 'summary-boxes-home', $arguments );
 
 	// Display chart?
 	if ( false === ws_ls_to_bool( $args[ 'hide-chart-overview' ] ) ) {
@@ -322,7 +322,7 @@ function ws_ls_tab_add_entry( $arguments = [] ) {
  */
 function ws_ls_wt_tab_table( $arguments = [] ) {
 
-	$html = ws_ls_uikit_data_summary( $arguments );
+	$html = ws_ls_uikit_data_summary_boxes_display( 'summary-boxes-data', $arguments );
 
 	$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 	'header' 		=> __( 'Your entries', WE_LS_SLUG ),
 															'body-class'	=> 'ykuk-text-small',
