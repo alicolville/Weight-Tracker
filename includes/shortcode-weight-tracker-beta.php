@@ -28,6 +28,9 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 												'hide-custom-fields-chart'  => false,                       // Hide custom fields from chart
 												'hide-custom-fields-table'  => false,                       // Hide custom fields from table
 												'enable-week-ranges'        => false,                       // Enable Week Ranges?
+												'summary-boxes-data'        => 'number-of-entries,number-of-days-tracking,latest-weight,start-weight', // Summary boxes to display at top of data tab
+												'summary-boxes-home'        => 'latest-weight,previous-weight,latest-versus-target,target-weight', // Summary boxes to display at top of data tab
+												'summary-boxes-advanced'    => 'bmi,bmr',                   // Summary boxes to display at top of advanced tab
 												'user-id'					=> get_current_user_id(),
 												'weight-mandatory'			=> true,						// Is weight mandatory?
 	], $user_defined_arguments );
@@ -216,7 +219,7 @@ function ws_ls_wt_tab_home( $arguments = [] ) {
 
 	$args = wp_parse_args( $arguments, [ 'enable-week-ranges' => false, 'uikit' => true ] );
 
-	$html = ws_ls_wt_home_summary( $args );
+	$html = ws_ls_uikit_data_summary_boxes_display( 'summary-boxes-home', $arguments );
 
 	// Display chart?
 	if ( false === ws_ls_to_bool( $args[ 'hide-chart-overview' ] ) ) {
@@ -319,7 +322,7 @@ function ws_ls_tab_add_entry( $arguments = [] ) {
  */
 function ws_ls_wt_tab_table( $arguments = [] ) {
 
-	$html = ws_ls_uikit_data_summary();
+	$html = ws_ls_uikit_data_summary_boxes_display( 'summary-boxes-data', $arguments );
 
 	$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 	'header' 		=> __( 'Your entries', WE_LS_SLUG ),
 															'body-class'	=> 'ykuk-text-small',
@@ -378,10 +381,7 @@ function ws_ls_tab_gallery( $arguments = [] ) {
  */
 function ws_ls_wt_tab_advanced( $arguments = [] ) {
 
-	$html = '<div class="ykuk-grid-small ykuk-text-center ykuk-child-width-1-1 ykuk-child-width-1-2@s ykuk-grid-match ykuk-text-small" ykuk-grid>
-				' . ws_ls_component_bmi( $arguments ) . '
-				' . ws_ls_component_bmr( $arguments ) . '
-			</div>';
+	$html = ws_ls_uikit_data_summary_boxes_display( 'summary-boxes-advanced', $arguments );
 
 	$nested_html = '';
 

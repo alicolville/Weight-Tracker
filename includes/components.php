@@ -276,7 +276,7 @@ function ws_ls_component_number_of_entries( $args = [] ) {
 function ws_ls_component_number_of_days_tracking( $args = [] ) {
 
 	$args   = wp_parse_args( $args, [ 'user-id' => get_current_user_id() ] );
-	$days   = ws_ls_shortcode_days_between_start_and_latest( [ 'user-id' => $args[ 'user-id' ] ] );
+	$days   = ws_ls_shortcode_days_between_start_and_latest( [ 'user-id' => $args[ 'user-id' ] ], true );
 
 	if ( true === empty( $days ) ) {
 		$days = 0;
@@ -540,50 +540,95 @@ function ws_ls_ui_kit_info_box_with_header_footer( $args = [] ) {
 }
 
 /**
- * Return summary info for home tab
- * @param array $arguments
- * @return string
- */
-function ws_ls_wt_home_summary( $arguments = [] ) {
-
-	$arguments = wp_parse_args( $arguments, [ 'user-id' => get_current_user_id() ] );
-
-	return sprintf('<div class="ykuk-grid-small ykuk-text-center ykuk-child-width-1-1 ykuk-child-width-1-2@s ykuk-child-width-1-4@m ykuk-grid-match ykuk-text-small" ykuk-grid>
-								%s
-								%s
-								%s
-								%s
-							</div>',
-		ws_ls_component_latest_weight( [ 'user-id' => $arguments[ 'user-id' ] ] ),
-		ws_ls_component_previous_weight( [ 'user-id' => $arguments[ 'user-id' ] ] ),
-		ws_ls_component_latest_versus_target( [ 'user-id' => $arguments[ 'user-id' ] ] ),
-		ws_ls_component_target_weight( [ 'user-id' => $arguments[ 'user-id' ] ] )
-	);
-}
-
-/**
- * Return summary info for data tab
+ * Display summary boxes
+ *
+ * @param $key
  * @param array $arguments
  *
  * @return string
  */
-function ws_ls_uikit_data_summary( $arguments = [] ) {
+function ws_ls_uikit_data_summary_boxes_display( $key, $arguments = [] ) {
 
-	$arguments = wp_parse_args( $arguments, [ 'user-id' => get_current_user_id() ] );
+	if ( true === empty( $arguments[ $key ] ) ) {
+		return '';
+	}
 
-	return sprintf( '<div class="ykuk-grid-small ykuk-text-center ykuk-child-width-1-1 ykuk-child-width-1-%5$d@s ykuk-child-width-1-%6$d@m ykuk-grid-match ykuk-text-small" ykuk-grid>
-						%1$s
-						%2$s
-						%3$s
-						%4$s
-					</div>',
-		ws_ls_component_number_of_entries( [ 'user-id' => $arguments[ 'user-id' ] ] ),
-		( true === WS_LS_IS_PRO ) ? ws_ls_component_number_of_days_tracking( [ 'user-id' => $arguments[ 'user-id' ] ] ) : '',
-		ws_ls_component_latest_weight( [ 'user-id' => $arguments[ 'user-id' ] ] ),
-		ws_ls_component_start_weight( [ 'user-id' => $arguments[ 'user-id' ] ] ),
-		( true === WS_LS_IS_PRO ) ? 2 : 3,
-		( true === WS_LS_IS_PRO ) ? 4 : 3
+	$boxes = explode( ',', $arguments[ $key ] );
+
+	return ws_ls_uikit_summary_boxes( $arguments, $boxes );
+}
+
+/**
+ * Display summary boxes
+ * @param $arguments
+ * @param array $boxes
+ *
+ * @return string
+ */
+function ws_ls_uikit_summary_boxes( $arguments, $boxes = [] ) {
+
+	$allowed_boxes = [ 'number-of-entries', 'latest-weight', 'start-weight', 'number-of-days-tracking',
+							'target-weight', 'previous-weight', 'latest-versus-target', 'bmi', 'bmr' ];
+
+	// Default box selection
+	if ( true === empty( $boxes ) ) {
+		$boxes = [ 'number-of-entries', 'number-of-days-tracking', 'latest-weight', 'start-weight' ];
+	}
+
+	$boxes = array_intersect( $boxes, $allowed_boxes );
+
+	if ( true === empty( $boxes ) ) {
+		return '<!-- No valid summary boxes -->';
+	}
+
+	$arguments      = wp_parse_args( $arguments, [ 'user-id' => get_current_user_id() ] );
+	$no_boxes       = count( $boxes );
+
+	$breakpoint_m = $no_boxes < 4 ? $no_boxes : 4;
+	$breakpoint_s = $no_boxes < 3 ? $no_boxes : 2;
+
+	$html = sprintf( '<div class="ykuk-grid-small ykuk-text-center ykuk-child-width-1-1 ykuk-child-width-1-%1$d@s ykuk-child-width-1-%2$d@m ykuk-grid-match ykuk-text-small" ykuk-grid>',
+						$breakpoint_s,
+						$breakpoint_m
 	);
+
+	foreach ( $boxes as $box ) {
+
+		switch ( $box ) {
+			case 'number-of-entries':
+				$html .= ws_ls_component_number_of_entries( [ 'user-id' => $arguments[ 'user-id' ] ] );
+				break;
+			case 'number-of-days-tracking':
+				$html .= ws_ls_component_number_of_days_tracking( [ 'user-id' => $arguments[ 'user-id' ] ] );
+				break;
+			case 'latest-weight':
+				$html .= ws_ls_component_latest_weight( [ 'user-id' => $arguments[ 'user-id' ] ] );
+				break;
+			case 'start-weight':
+				$html .= ws_ls_component_start_weight( [ 'user-id' => $arguments[ 'user-id' ] ] );
+				break;
+			case 'target-weight':
+				$html .= ws_ls_component_target_weight( [ 'user-id' => $arguments[ 'user-id' ] ] );
+				break;
+			case 'previous-weight':
+				$html .= ws_ls_component_previous_weight( [ 'user-id' => $arguments[ 'user-id' ] ] );
+				break;
+			case 'latest-versus-target':
+				$html .= ws_ls_component_latest_versus_target( [ 'user-id' => $arguments[ 'user-id' ] ] );
+				break;
+			case 'bmi':
+				$html .= ws_ls_component_bmi( $arguments );
+				break;
+			case 'bmr':
+				$html .= ws_ls_component_bmr( $arguments );
+				break;
+		}
+
+	}
+
+	$html .= '</div>';
+
+	return $html;
 }
 
 /**
