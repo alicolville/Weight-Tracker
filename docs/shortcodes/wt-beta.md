@@ -91,7 +91,10 @@ The shortcode supports the following arguments:
 | disable-tabs    | If set to true, disable tabs and display all content on one "page"  | True or false (default).  |  [wt-beta disable-tabs=true] | |   
 | enable-week-ranges   | If enabled, a drop down of weeks shall be displayed above the "Weight History" table. When a week is selected, the table will be filtered to only show entries within that week. | True or false (default).   | [wt-beta enable-week-ranges=true] |   
 | hide-advanced-narrative | If set to true (default is false) hide the text on the Advanced tab which explains each section.   | True or false (default).   | [wt-beta hide-advanced-narrative=true] |    
-| hide-chart-overview (8.4+)   |  Hide the chart from the "Overview" tab.   | True or false (default).  | [wt-beta hide-chart-overview=true] |     
+| hide-chart-overview   |  Hide the chart from the "Overview" tab.   | True or false (default).  | [wt-beta hide-chart-overview=true] |     
+| hide-custom-fields-chart   |  Hide custom fields from the chart.   | True or false (default).  | [wt-beta hide-custom-fields-chart=true] |     
+| hide-custom-fields-form   |  Hide custom fields from the form.   | True or false (default).  | [wt-beta hide-custom-fields-form=true] |     
+| hide-custom-fields-table   |  Hide custom fields from the table.   | True or false (default).  | [wt-beta hide-custom-fields-table=true] |     					
 | hide-first-target-form | Hide the target form from the Overview tab. | True or false (default).  | [wt-beta hide-first-target-form=true] |  
 | hide-notes | If set to true (default is false) hide the "notes" section of the form.   | True or false (default).   | [wt-beta hide-notes=true] |   
 | hide-photos   | If set to true (default is false) hide the photo upload section of the form.   | True or false (default).   |  [wt-beta hide-photos=true] |   

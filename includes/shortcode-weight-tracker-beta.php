@@ -24,6 +24,9 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 												'hide-tab-photos' 			=> false,                 	    // Hide Photos tab
 												'hide-tab-advanced' 		=> false,               	    // Hide Advanced tab (macroN, calories, etc)
 												'hide-advanced-narrative' 	=> false,         			    // Hide text describing BMR, MarcoN, etc
+												'hide-custom-fields-form'   => false,                       // Hide custom fields from form
+												'hide-custom-fields-chart'  => false,                       // Hide custom fields from chart
+												'hide-custom-fields-table'  => false,                       // Hide custom fields from table
 												'enable-week-ranges'        => false,                       // Enable Week Ranges?
 												'user-id'					=> get_current_user_id(),
 												'weight-mandatory'			=> true,						// Is weight mandatory?
@@ -80,8 +83,6 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 }
 add_shortcode( 'wt-beta', 'ws_ls_shortcode_beta' );
 
-
-
 /**
  * Display form for entry
  * @param array $arguments
@@ -110,7 +111,8 @@ function ws_ls_wt_form( $arguments = [] ) {
 	                                'custom-field-groups'   => $arguments[ 'custom-field-groups' ],
 	                                'custom-field-slugs'    => $arguments[ 'custom-field-slugs' ],
 	                                'weight-mandatory'		=> $arguments[ 'weight-mandatory' ],
-									'uikit'                 => true
+									'uikit'                 => true,
+									'hide-fields-meta'      => $arguments[ 'hide-custom-fields-form' ]
 	] );
 
 	return $html;
@@ -205,12 +207,14 @@ function ws_ls_wt_tab_panes( $arguments = [] ) {
 
 /**
  * Return home tab content
- * @param array $shortcode_arguments
+ *
+ * @param array $arguments
+ *
  * @return string
  */
-function ws_ls_wt_tab_home( $shortcode_arguments = [] ) {
+function ws_ls_wt_tab_home( $arguments = [] ) {
 
-	$args = wp_parse_args( $shortcode_arguments, [ 'enable-week-ranges' => false, 'uikit' => true ] );
+	$args = wp_parse_args( $arguments, [ 'enable-week-ranges' => false, 'uikit' => true ] );
 
 	$html = ws_ls_wt_home_summary( $args );
 
@@ -218,8 +222,9 @@ function ws_ls_wt_tab_home( $shortcode_arguments = [] ) {
 	if ( false === ws_ls_to_bool( $args[ 'hide-chart-overview' ] ) ) {
 
 		// Configure chart
-		$args[ 'hide-title' ] 		= true;
-		$args[ 'legend-position' ]	= 'bottom';
+		$args[ 'hide-title' ] 		        = true;
+		$args[ 'legend-position' ]	        = 'bottom';
+		$args[ 'hide-custom-fields' ]       = $arguments[ 'hide-custom-fields-chart' ];
 
 		$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 	'header'        => __( 'Weight entries', WE_LS_SLUG ),
 																'body'          => ws_ls_shortcode_embed_chart( $args[ 'weight-data' ]  , $args ),
@@ -320,7 +325,7 @@ function ws_ls_wt_tab_table( $arguments = [] ) {
 															'body-class'	=> 'ykuk-text-small',
 															'body' 			=> ws_ls_shortcode_table( [ 	'user-id' 				=> $arguments[ 'user-id' ],
 																											'enable-add-edit' 		=> true,
-																											'enable-meta-fields'	=> true,
+																											'enable-meta-fields'	=> ! $arguments[ 'hide-custom-fields-table' ],
 																											'week' 					=> $arguments[ 'selected-week-number' ] ,
 																											'bmi-format' 			=> $arguments[ 'bmi-format' ],
 																											'custom-field-groups'   => $arguments[ 'custom-field-groups' ],
