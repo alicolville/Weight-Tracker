@@ -39,7 +39,6 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 												'reverse'               => false
 	] );
 
-
 	if ( true === empty( $weight_data ) ) {
 		return esc_html( $chart_config[ 'message-no-data' ] );
 	}
