@@ -540,22 +540,6 @@ function ws_ls_ui_kit_info_box_with_header_footer( $args = [] ) {
 }
 
 /**
- * Return summary info for home tab
- * @param array $arguments
- * @return string
- */
-function ws_ls_wt_home_summary( $arguments = [] ) {
-
-	if ( true === empty( $arguments[ 'summary-boxes-home' ] ) ) {
-		return '';
-	}
-
-	$boxes = explode( ',', $arguments[ 'summary-boxes-home' ] );
-
-	return ws_ls_uikit_summary_boxes( $arguments, $boxes );
-}
-
-/**
  * Display summary boxes
  *
  * @param $key
@@ -584,7 +568,7 @@ function ws_ls_uikit_data_summary_boxes_display( $key, $arguments = [] ) {
 function ws_ls_uikit_summary_boxes( $arguments, $boxes = [] ) {
 
 	$allowed_boxes = [ 'number-of-entries', 'latest-weight', 'start-weight', 'number-of-days-tracking',
-							'target-weight', 'previous-weight', 'latest-versus-previous', 'bmi', 'bmr' ];
+							'target-weight', 'previous-weight', 'latest-versus-target', 'bmi', 'bmr' ];
 
 	// Default box selection
 	if ( true === empty( $boxes ) ) {
@@ -629,7 +613,7 @@ function ws_ls_uikit_summary_boxes( $arguments, $boxes = [] ) {
 			case 'previous-weight':
 				$html .= ws_ls_component_previous_weight( [ 'user-id' => $arguments[ 'user-id' ] ] );
 				break;
-			case 'latest-versus-previous':
+			case 'latest-versus-target':
 				$html .= ws_ls_component_latest_versus_target( [ 'user-id' => $arguments[ 'user-id' ] ] );
 				break;
 			case 'bmi':

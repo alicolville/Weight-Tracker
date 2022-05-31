@@ -218,7 +218,7 @@ function ws_ls_wt_tab_panes( $arguments = [] ) {
 function ws_ls_wt_tab_home( $arguments = [] ) {
 
 	$args = wp_parse_args( $arguments, [ 'enable-week-ranges' => false, 'uikit' => true ] );
-	
+
 	$html = ws_ls_uikit_data_summary_boxes_display( 'summary-boxes-home', $arguments );
 
 	// Display chart?
