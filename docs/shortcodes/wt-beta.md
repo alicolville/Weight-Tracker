@@ -102,12 +102,7 @@ The shortcode supports the following arguments:
 | hide-tab-descriptions    | If set to true (default is false) hide the descriptions under the tab title.  | True or false (default).   |  [wt-beta hide-tab-descriptions=true] |   
 | hide-tab-photos   | If set to true (default is false) hide the Photos tab.   |  True or false (default).   | [wt-beta hide-tab-photos=true] |         
 | show-delete-data  | If set to false (default is true), the section allowing users to delete their own data is hidden.   | True (default) or false   | [wt-beta show-delete-data="false"] |  
-|weight-mandatory|By default, for a weight form, it is mandatory for a weight to be entered. If setting this argument to false, the form can be submitted with out.|true or false (default)|[wt-beta weight-mandatory='true']
-
-												
-												
-												
-												
-												
-												
-												
+|summary-boxes-advanced|Specify the [summary boxes]({{ site.baseurl }}/components.html) to display at top of the advanced tab.|Comma delimited list, [read more]({{ site.baseurl }}/components.html)|[wt-beta summary-boxes-advanced="number-of-entries,number-of-days-tracking,latest-weight,start-weight"]
+|summary-boxes-data|Specify the [summary boxes]({{ site.baseurl }}/components.html) to display at top of the history tab.|Comma delimited list, [read more]({{ site.baseurl }}/components.html)|[wt-beta summary-boxes-data="bmi,bmr"]
+|summary-boxes-home|Specify the [summary boxes]({{ site.baseurl }}/components.html) to display at top of the home tab.|Comma delimited list, [read more]({{ site.baseurl }}/components.html)|[wt-beta summary-boxes-home="latest-weight,start-weight"]
+|weight-mandatory|By default, for a weight form, it is mandatory for a weight to be entered. If setting this argument to false, the form can be submitted with out.|true or false (default)|[wt-beta weight-mandatory='true']					
