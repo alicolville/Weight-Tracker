@@ -28,6 +28,8 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 												'hide-custom-fields-chart'  => false,                       // Hide custom fields from chart
 												'hide-custom-fields-table'  => false,                       // Hide custom fields from table
 												'enable-week-ranges'        => false,                       // Enable Week Ranges?
+												'summary-boxes-data'        => 'number-of-entries,number-of-days-tracking,latest-weight,start-weight', // Summary boxes to display at top of data tab
+												'summary-boxes-home'        => 'latest-weight,previous-weight,latest-versus-target,target-weight', // Summary boxes to display at top of data tab
 												'user-id'					=> get_current_user_id(),
 												'weight-mandatory'			=> true,						// Is weight mandatory?
 	], $user_defined_arguments );
@@ -319,7 +321,7 @@ function ws_ls_tab_add_entry( $arguments = [] ) {
  */
 function ws_ls_wt_tab_table( $arguments = [] ) {
 
-	$html = ws_ls_uikit_data_summary();
+	$html = ws_ls_uikit_data_summary( $arguments );
 
 	$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 	'header' 		=> __( 'Your entries', WE_LS_SLUG ),
 															'body-class'	=> 'ykuk-text-small',

@@ -404,11 +404,13 @@ add_shortcode( 'wt-latest-date', 'ws_ls_shortcode_recent_date' );
  *
  * @param $user_defined_arguments
  *
+ * @param bool $ignore_pro_status
+ *
  * @return string
  */
-function ws_ls_shortcode_days_between_start_and_latest( $user_defined_arguments ) {
+function ws_ls_shortcode_days_between_start_and_latest( $user_defined_arguments, $ignore_pro_status = false ) {
 
-	if ( false === WS_LS_IS_PRO ) {
+	if ( false === WS_LS_IS_PRO && false === $ignore_pro_status ) {
 		return ws_ls_display_pro_upgrade_notice_for_shortcode();
 	}
 
