@@ -18,7 +18,6 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 												'bmi-format'                => 'both',                      // Format for display BMI
 												'disable-main-font'         => false,                       // If set to true, don't include the main font
 												'disable-theme-css'         => false,                       // If set to true, don't include the additional theme CSS used
-												'show-add-button' 			=> false,					    // Display a "Add weight" button above the chart.
 												'show-delete-data' 		    => true,                	    // Show "Delete your data" section
 												'hide-notes' 				=> ws_ls_setting_hide_notes(),  // Hide notes field
 												'hide-photos' 				=> false,                       // Hide photos part of form
