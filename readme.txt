@@ -154,6 +154,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 * Improvement: Added new argument for [wt-beta] "disable-main-font" which if set to true will disable the main font used in the shortcode. Read more: https://docs.yeken.uk/shortcodes/wt-beta.html
 * Improvement: Added new argument for [wt-beta] "disable-theme-css" which if set to true will disable the additional CSS used within the shortcode. Read more: https://docs.yeken.uk/shortcodes/wt-beta.html
+* Bug fix: [wt-beta] if one of the hide-custom-field arguments has been specified then ensure all entries displayed in the chart or table have a weight entry.
 
 = 10.0.2 =
 

@@ -46,20 +46,24 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 
 	ws_ls_enqueue_uikit( ! $shortcode_arguments[ 'disable-theme-css' ], ! $shortcode_arguments[ 'disable-main-font' ] );
 
+	$html                                           = '<div class="ws-ls-tracker">';
 	$shortcode_arguments[ 'user-id' ]               = (int) $shortcode_arguments[ 'user-id' ];
 	$shortcode_arguments[ 'show-tab-advanced' ]     = ( false === ws_ls_to_bool( $shortcode_arguments[ 'hide-tab-advanced' ] ) && true === WS_LS_IS_PRO_PLUS );
 	$shortcode_arguments[ 'show-tab-photos' ]       = ( false === ws_ls_to_bool( $shortcode_arguments[ 'hide-tab-photos' ] ) && true === ws_ls_meta_fields_photo_any_enabled( true ) );
 	$shortcode_arguments[ 'enable-week-ranges' ]	= ws_ls_to_bool( $shortcode_arguments[ 'enable-week-ranges' ] );
 	$shortcode_arguments[ 'min-chart-points' ]      = (int) $shortcode_arguments[ 'min-chart-points' ];
+	$shortcode_arguments[ 'selected-week-number' ]  = ( true === $shortcode_arguments[ 'enable-week-ranges' ] ) ? ws_ls_post_value_numeric( 'week-number' ) : NULL;
 
-	$html                                           = '<div class="ws-ls-tracker">';
+	// If any of the arguments are hiding to custom fields, then ensure all DB entries we fetch have a weight
+	$ensure_we_have_weights = ( false === ws_ls_to_bool( $shortcode_arguments[ 'hide-custom-fields-form' ] ) ||
+		                            true === ws_ls_to_bool( $shortcode_arguments[ 'hide-custom-fields-chart' ] ) ||
+										true === ws_ls_to_bool( $shortcode_arguments[ 'hide-custom-fields-table' ] ) );
 
-	$shortcode_arguments[ 'selected-week-number' ]   = ( true === $shortcode_arguments[ 'enable-week-ranges' ] ) ? ws_ls_post_value_numeric( 'week-number' ) : NULL;
-	$shortcode_arguments[ 'weight-data' ]            = ws_ls_entries_get( [     'week'      => $shortcode_arguments[ 'selected-week-number' ] ,
-								                                                'prep'      => true,
-								                                                'week'      => $shortcode_arguments[ 'selected-week-number' ] ,
-								                                                'reverse'   => true,
-								                                                'sort'      => 'desc' ] );
+	$shortcode_arguments[ 'weight-data' ]   = ws_ls_entries_get( [     'week'              => $shortcode_arguments[ 'selected-week-number' ] ,
+	                                                                   'prep'              => true,
+	                                                                   'must-have-weight'  => $ensure_we_have_weights,
+	                                                                   'reverse'           => true,
+	                                                                   'sort'              => 'desc' ] );
 	$html .= ws_ls_uikit_beta_notice();
 
 	// Display error if user not logged in
