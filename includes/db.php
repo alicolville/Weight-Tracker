@@ -280,6 +280,7 @@ function ws_ls_db_entries_get( $arguments = [] ) {
 
 	$arguments = wp_parse_args( $arguments, [   'user-id'                       => get_current_user_id(),
 	                                            'limit'                         => ws_ls_option( 'ws-ls-max-points', '25', true ),
+												'must-have-weight'              => false,
 	                                            'week'                          => NULL,
 	                                            'sort'                          => 'desc',
 												'start'                         => 0,
@@ -310,6 +311,10 @@ function ws_ls_db_entries_get( $arguments = [] ) {
 	// User ID specified? IF empty or set to 0 then don't add into where clause
 	if ( false === empty( $arguments[ 'user-id' ] ) ) {
 		$additional_sql .= $wpdb->prepare( ' and weight_user_id = %d', $arguments[ 'user-id' ] );
+	}
+
+	if ( false === empty( $arguments[ 'must-have-weight' ] ) ) {
+		$additional_sql .=  ' and weight_weight is not null';
 	}
 
 	$inner_join = '';

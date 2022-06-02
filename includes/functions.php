@@ -326,6 +326,7 @@ function ws_ls_entries_get( $arguments ) {
 	$arguments = wp_parse_args( $arguments, [   'custom-field-value-exists'     => '',
 												'custom-field-restrict-rows'    => '',
 												'user-id'   					=> get_current_user_id(),
+												'must-have-weight'              => false,
 	                                            'limit'     					=> ws_ls_option( 'ws-ls-max-points', '25', true ),
 	                                            'week'      					=> NULL,
 	                                            'sort'      					=> 'asc',
