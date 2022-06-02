@@ -16,6 +16,8 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 												'custom-field-groups'       => '',                          // If specified, only show custom fields that are within these groups
 												'custom-field-slugs'        => '',                          // If specified, only show the custom fields that are specified
 												'bmi-format'                => 'both',                      // Format for display BMI
+												'disable-main-font'         => false,                       // If set to true, don't include the main font
+												'disable-theme-css'         => false,                       // If set to true, don't include the additional theme CSS used
 												'show-add-button' 			=> false,					    // Display a "Add weight" button above the chart.
 												'show-delete-data' 		    => true,                	    // Show "Delete your data" section
 												'hide-notes' 				=> ws_ls_setting_hide_notes(),  // Hide notes field
@@ -43,7 +45,7 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 		$shortcode_arguments[ 'active-tab' ] = $active_tab;
 	}
 
-	ws_ls_enqueue_uikit();
+	ws_ls_enqueue_uikit( ! $shortcode_arguments[ 'disable-theme-css' ], ! $shortcode_arguments[ 'disable-main-font' ] );
 
 	$shortcode_arguments[ 'user-id' ]               = (int) $shortcode_arguments[ 'user-id' ];
 	$shortcode_arguments[ 'show-tab-advanced' ]     = ( false === ws_ls_to_bool( $shortcode_arguments[ 'hide-tab-advanced' ] ) && true === WS_LS_IS_PRO_PLUS );

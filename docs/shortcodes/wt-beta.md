@@ -89,6 +89,8 @@ The shortcode supports the following arguments:
 | disable-advanced-tables    |If set to true, disable advanced data tables (responsive with delete and add / edit options).    | True or false (default).   |  [wt-beta disable-advanced-tables=true] | 
 | disable-second-check   | Disables the check to see if the [wt] shortcode has already been placed on the page. Some themes and plugins may throw an error when this check is enabled.   | True or false (default).   | [wt-beta disable-second-check=true] |   
 | disable-tabs    | If set to true, disable tabs and display all content on one "page"  | True or false (default).  |  [wt-beta disable-tabs=true] | |   
+|disable-main-font|If set to true will disable the main font used in the shortcode|True or False (default)|[wt-beta disable-main-font=true]
+|disable-theme-css|If set to true will disable the additional CSS used in the shortcode|True or False (default)|[wt-beta disable-theme-css=true]
 | enable-week-ranges   | If enabled, a drop down of weeks shall be displayed above the "Weight History" table. When a week is selected, the table will be filtered to only show entries within that week. | True or false (default).   | [wt-beta enable-week-ranges=true] |   
 | hide-advanced-narrative | If set to true (default is false) hide the text on the Advanced tab which explains each section.   | True or false (default).   | [wt-beta hide-advanced-narrative=true] |    
 | hide-chart-overview   |  Hide the chart from the "Overview" tab.   | True or false (default).  | [wt-beta hide-chart-overview=true] |     
