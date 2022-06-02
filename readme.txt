@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight,tracker,chart,bmi,bmr,macronutrient,measure,awards,custom fields,history,measurements,data
 Requires at least: 5.7
 Tested up to: 6.0
-Stable tag: 10.0.2
+Stable tag: 10.0.3
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -149,6 +149,13 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 10.0 - New shortcode! Beta! [wt-beta]
 
 == Changelog ==
+
+= 10.0.3 =
+
+* Improvement: Added a new summary box component "number-of-weight-entries". Read more https://docs.yeken.uk/components.html
+* Improvement: Added new argument for [wt-beta] "disable-main-font" which if set to true will disable the main font used in the shortcode. Read more: https://docs.yeken.uk/shortcodes/wt-beta.html
+* Improvement: Added new argument for [wt-beta] "disable-theme-css" which if set to true will disable the additional CSS used within the shortcode. Read more: https://docs.yeken.uk/shortcodes/wt-beta.html
+* Bug fix: [wt-beta] if one of the hide-custom-field arguments has been specified then ensure all entries displayed in the chart or table have a weight entry.
 
 = 10.0.2 =
 

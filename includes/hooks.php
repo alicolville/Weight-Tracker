@@ -102,13 +102,29 @@ add_filter( 'body_class', function( $classes ) {
 
 /**
  * Enqueue relevant dependencies for UI Kit
+ *
+ * @param bool $include_theme
+ * @param bool $include_font
  */
-function ws_ls_enqueue_uikit() {
+function ws_ls_enqueue_uikit( $include_theme = true, $include_font = true ) {
 
 	$minified = ws_ls_use_minified();
 
 	wp_enqueue_style( 'yk-uikit', plugins_url( '../assets/uikit/css/uikit' . 	$minified . '.css', __FILE__ ), [], WE_LS_CURRENT_VERSION );
-	wp_enqueue_style( 'yk-uikit-theme', plugins_url( '../assets/uikit/css/uikit-theme.css', __FILE__ ), [], WE_LS_CURRENT_VERSION );
+
+	if ( true === $include_theme ) {
+		wp_enqueue_style( 'yk-uikit-theme', plugins_url( '../assets/uikit/css/uikit-theme.css', __FILE__ ), [], WE_LS_CURRENT_VERSION );
+	}
+
+	if ( true === $include_font ) {
+		wp_add_inline_style( 'yk-uikit', '	@import url(\'https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap\');
+
+										.ws-ls-tracker, .ws-ls-tracker *, .ykuk-modal-dialog *  {
+										  font-family: "Roboto Mono", monospace !important;
+										  font-size: 10pt;
+										}' );
+	}
+
 	wp_enqueue_script( 'yk-uikit', plugins_url( '../assets/uikit/js/uikit' . 	$minified . '.js', __FILE__ ), [] , WE_LS_CURRENT_VERSION );
 	wp_enqueue_script( 'yk-uikit-icons', plugins_url( '../assets/uikit/js/uikit-icons' . 	$minified . '.js', __FILE__ ), [] , WE_LS_CURRENT_VERSION);
 	wp_enqueue_script( 'yk-uikit-wt', plugins_url( '../assets/uikit/js/wt' . 	$minified . '.js', __FILE__ ), [] , WE_LS_CURRENT_VERSION );

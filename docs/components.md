@@ -34,7 +34,15 @@ Below are the currently available summary boxes that you can use:
 
 #### number-of-entries
 
+Displays a count all entries (regardless of whether a weight has been entered).
+
 [![](/assets/images/component-number-of-entries.png)](/assets/images/component-number-of-entries.png)
+
+#### number-of-weight-entries
+
+Displays a count of all entries that has a weight entered).
+
+[![](/assets/images/component-number-of-weight-entries.png)](/assets/images/component-number-of-weight-entries.png)
 
 #### number-of-days-tracking
 

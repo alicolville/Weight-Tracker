@@ -263,6 +263,34 @@ function ws_ls_component_number_of_entries( $args = [] ) {
                         </div>
                     </div>',
 		$text_data,
+		__( 'No. entries', WE_LS_SLUG )
+	);
+}
+
+/**
+ * Component to display the number of weight entries
+ * @param array $args
+ *
+ * @return string
+ */
+function ws_ls_component_number_of_weight_entries( $args = [] ) {
+
+	$args   = wp_parse_args( $args, [ 'user-id' => get_current_user_id() ] );
+	$counts = ws_ls_db_entries_count( $args[ 'user-id' ] );
+
+	$text_data = ( false === empty( $counts[ 'number-of-weight-entries' ] ) ) ?
+		(int) $counts[ 'number-of-weight-entries' ] :
+		__( 'No data', WE_LS_SLUG );
+
+	return sprintf( '<div>
+                        <div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
+                                <span class="ykuk-info-box-header">%2$s</span><br />
+                                <span class="ykuk-text-bold">
+                                    %1$s
+                                </span>
+                        </div>
+                    </div>',
+		$text_data,
 		__( 'No. weight entries', WE_LS_SLUG )
 	);
 }
@@ -567,7 +595,7 @@ function ws_ls_uikit_data_summary_boxes_display( $key, $arguments = [] ) {
  */
 function ws_ls_uikit_summary_boxes( $arguments, $boxes = [] ) {
 
-	$allowed_boxes = [ 'number-of-entries', 'latest-weight', 'start-weight', 'number-of-days-tracking',
+	$allowed_boxes = [ 'number-of-entries', 'number-of-weight-entries', 'latest-weight', 'start-weight', 'number-of-days-tracking',
 							'target-weight', 'previous-weight', 'latest-versus-target', 'bmi', 'bmr' ];
 
 	// Default box selection
@@ -597,6 +625,9 @@ function ws_ls_uikit_summary_boxes( $arguments, $boxes = [] ) {
 		switch ( $box ) {
 			case 'number-of-entries':
 				$html .= ws_ls_component_number_of_entries( [ 'user-id' => $arguments[ 'user-id' ] ] );
+				break;
+			case 'number-of-weight-entries':
+				$html .= ws_ls_component_number_of_weight_entries( [ 'user-id' => $arguments[ 'user-id' ] ] );
 				break;
 			case 'number-of-days-tracking':
 				$html .= ws_ls_component_number_of_days_tracking( [ 'user-id' => $arguments[ 'user-id' ] ] );
