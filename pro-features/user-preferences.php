@@ -133,13 +133,13 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
 
 		if ( false === ws_ls_to_bool( $arguments[ 'hide-preferences' ] ) ) {
 
-			$html_output .= ws_ls_form_field_select( [ 'uikit' => $arguments[ 'uikit' ], 'key' => 'WE_LS_DATA_UNITS', 'label' => $labels[ 'weight' ], 'values' => ws_ls_weight_units(), 'selected' => ws_ls_user_preferences_settings_get( 'WE_LS_DATA_UNITS', $user_id ) ] );
+			$html_output .= ws_ls_form_field_select( [ 'uikit' => $arguments[ 'uikit' ], 'key' => 'WE_LS_DATA_UNITS', 'label' => $labels[ 'weight' ], 'values' => ws_ls_weight_units(), 'selected' => ws_ls_setting( 'weight-unit', $user_id ) ] );
 
 			$html_output .= ws_ls_form_field_select( [  'key'       => 'WE_LS_US_DATE',
 			                                            'label'     => $labels[ 'date' ],
 			                                            'uikit'     => $arguments[ 'uikit' ],
 			                                            'values'    => [ 'false'     => __( 'UK (DD/MM/YYYY)', WE_LS_SLUG ), 'true' => __( 'US (MM/DD/YYYY)', WE_LS_SLUG ) ],
-			                                            'selected'  => ( true === ws_ls_user_preferences_settings_get( 'WE_LS_US_DATE', $user_id ) ) ? 'true' : 'false' ] );
+			                                            'selected'  => ( true === ws_ls_setting( 'use-us-dates', $user_id ) ) ? 'true' : 'false' ] );
 
 		}
 

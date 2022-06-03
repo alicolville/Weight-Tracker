@@ -152,6 +152,8 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 = 10.0.4 =
 
+* Bug fix: Ensure if a user hasn't specified a their preferred units or UK/US date then default to admin defaults.
+
 = 10.0.3 =
 
 * Improvement: Added a new summary box component "number-of-weight-entries". Read more https://docs.yeken.uk/components.html

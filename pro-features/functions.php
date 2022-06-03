@@ -869,6 +869,8 @@ function ws_ls_user_preferences_settings( $user_id = NULL ) {
 /**
  * Fetch the user setting
  *
+ * NOTE: This should never be called directly anymore. use ws_ls_setting() instead!
+ *
  * @param string $field
  * @param bool $user_id
  *
@@ -885,7 +887,7 @@ function ws_ls_user_preferences_settings_get( $field = 'WE_LS_DATA_UNITS', $user
 	$settings   = ws_ls_user_preferences_settings( $user_id );
 
 	if ( false === is_array( $settings ) ) {
-		$settings = [];
+		return NULL;
 	}
 
 	$value = ( true === array_key_exists( $field, $settings ) ) ? $settings[ $field ] : NULL;
