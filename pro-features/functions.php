@@ -384,6 +384,20 @@ function ws_ls_heights() {
 }
 
 /**
+ * Convert feet/inches to height
+ * @param $feet
+ * @param int $inches
+ *
+ * @return int
+ */
+function ws_ls_heights_imperial_metric( $feet, $inches = 0 ) {
+
+    $inches = ( $feet * 12 ) + $inches;
+
+	return (int) round($inches / 0.393701);
+}
+
+/**
  * Return metric to imperial conversions for height.
  *
  * @param null $cm

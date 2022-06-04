@@ -25,90 +25,63 @@ function ws_ls_bmi_calculator( $user_defined_arguments ) {
 
 	$html = '<div class="ws-ls-tracker">
 				';
-
-//	if ( false === is_user_logged_in() )	{
-//		//$html .= ws_ls_component_alert( __( 'You need to be logged in to record your weight.', WE_LS_SLUG ), 'primary', false, true );
-//	}
-
 	$html .= sprintf( '	<ul ykuk-tab>
    							<li><a href="#">Metric</a></li>
     						<li class="%s"><a href="#" >Imperial</a></li>
-						</ul>',
+    					</ul>',
 						'kg' !== ws_ls_setting( 'weight-unit', $arguments[ 'user-id' ] ) ? 'ykuk-active' : ''
 	);
 
-	$html .= '<ul class="ykuk-switcher ykuk-margin">';
-
-	$html .= '<li>';
-
-	$html .= ws_ls_form_field_number( [     'name'          => 'ws-ls-weight-kg',
-	                                        'placeholder'   =>  __( 'kg', WE_LS_SLUG ),
-	                                      //  'value'         => ( false === empty( $arguments[ 'entry' ][ 'kg' ] ) ) ? $arguments[ 'entry' ][ 'kg' ] : ''
-	] );
-
-
-	$html .= '</li>';
-
-	$html .= '<li>
-<form class="ykuk-form-horizontal ykuk-margin-large">
-
-    <div class="ykuk-margin">
-        <label class="ykuk-form-label" for="form-horizontal-text">Text</label>
-        <div class="ykuk-form-controls ykuk-grid" ykuk-grid>
-        	<div class="ykuk-width-1-2">
-           	 <input class="ykuk-input" id="form-horizontal-text" type="text" placeholder="Stones">
-           	</div>
-           	<div class="ykuk-width-1-2">
-            <input class="ykuk-input" id="form-horizontal-text" type="text" placeholder="Pounds">
-            </div>
-        </div>
-    </div>
-
-    <div class="ykuk-margin">
-        <label class="ykuk-form-label" for="form-horizontal-select">Select</label>
-        <div class="ykuk-form-controls">
-            <select class="ykuk-select" id="form-horizontal-select">
-                <option>Option 01</option>
-                <option>Option 02</option>
-            </select>
-        </div>
-    </div>
-
-    <div class="ykuk-margin">
-        <div class="ykuk-form-label">Radio</div>
-        <div class="ykuk-form-controls ykuk-form-controls-text">
-            <label><input class="ykuk-radio" type="radio" name="radio1"> Option 01</label><br>
-            <label><input class="ykuk-radio" type="radio" name="radio1"> Option 02</label>
-        </div>
-    </div>
-
-</form>
-</form>
-				<form class="ykuk-grid" ykuk-grid>
-					<label class="ykuk-width-1-1 ykuk-form-controls">Weight</label>
-					<div class="ykuk-width-1-2">';
-
-						$html .= ws_ls_form_field_number( [     'name'          => 'ws-ls-weight-stones',
-						                                        'css-class'     => 'ykuk-input',
-						                                        'uikit'         => true,
-						                                        'placeholder'   => __( 'Stones', WE_LS_SLUG )
-						                                        //'value'         => ( false === empty( $arguments[ 'entry' ][ 'stones' ] ) ) ? $arguments[ 'entry' ][ 'stones' ] : '' ]
-						]);
-
-	$html .=        '</div>
-					<div class="ykuk-width-1-2">';
-
-	$html .= ws_ls_form_field_number( [    'name'          => 'ws-ls-weight-pounds',
-	                                       'max'           => '13.99',
-	                                       'css-class'     => 'ykuk-input',
-	                                       'uikit'         => true,
-	                                       'placeholder'   => __( 'Pounds', WE_LS_SLUG )
-	                                       //'value' => ( true === isset( $arguments[ 'entry' ][ 'pounds' ] ) ) ? $arguments[ 'entry' ][ 'pounds' ] : '' ]
-	]);
-
-	$html .=        '</div>';
-
-	$html .= '</form></li>';
+	$html .= '<ul class="ykuk-switcher ykuk-margin">
+				<li>
+					<form class="ykuk-form-horizontal ykuk-margin-large">
+						<div class="ykuk-alert-primary" ykuk-alert>
+						    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+						</div>
+					    <div class="ykuk-margin">
+					        <label class="ykuk-form-label" for="form-horizontal-text">Weight</label>
+					        <div class="ykuk-form-controls ykuk-grid" ykuk-grid>
+					            <div class="ykuk-width-1-1">
+					             <input class="ykuk-input" id="kg" type="number" min="0" max="400" placeholder="Kg">
+					            </div>
+					        </div>
+					    </div>
+					    <div class="ykuk-margin">
+					        <label class="ykuk-form-label" for="form-horizontal-select">Height</label>
+					        <div class="ykuk-form-controls ykuk-grid" ykuk-grid>
+					            <div class="ykuk-width-1-1">
+					            <input class="ykuk-input" id="cm" type="number" min="10" max="250" placeholder="Cm">
+					            </div>
+					        </div>
+					    </div>
+					</form>
+				</li>
+				<li>
+					<form class="ykuk-form-horizontal ykuk-margin-large">
+					    <div class="ykuk-margin">
+					        <label class="ykuk-form-label" for="form-horizontal-text">Weight</label>
+					        <div class="ykuk-form-controls ykuk-grid" ykuk-grid>
+					            <div class="ykuk-width-1-2">
+					             <input class="ykuk-input" id="stones" type="number" placeholder="Stones" min="0" max="50">
+					            </div>
+					            <div class="ykuk-width-1-2">
+					            <input class="ykuk-input" id="pounds" type="number" placeholder="Pounds" min="0" max="14">
+					            </div>
+					        </div>
+					    </div>
+					    <div class="ykuk-margin">
+					        <label class="ykuk-form-label" for="form-horizontal-select">Height</label>
+					        <div class="ykuk-form-controls ykuk-grid" ykuk-grid>
+					            <div class="ykuk-width-1-2">
+					             <input class="ykuk-input" id="feet" type="text" placeholder="Feet" min="3" max="10">
+					            </div>
+					            <div class="ykuk-width-1-2">
+					            <input class="ykuk-input" id="inches" type="text" placeholder="Inches" min="0" max="12">
+					            </div>
+					        </div>
+					    </div>
+					</form>
+				</li>';
 
 //	// Kg
 //	if ( 'kg' ===  $arguments[ 'data-unit' ] ) {
