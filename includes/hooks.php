@@ -129,7 +129,7 @@ function ws_ls_enqueue_uikit( $include_theme = true, $include_font = true, $load
 	wp_enqueue_script( 'yk-uikit-icons', plugins_url( '../assets/uikit/js/uikit-icons' . 	$minified . '.js', __FILE__ ), [] , WE_LS_CURRENT_VERSION);
 
 	if ( false === empty( $load_ui_script ) ) {
-		wp_enqueue_script( 'yk-uikit-' . $load_ui_script, plugins_url( '../assets/uikit/js/' . $load_ui_script . $minified . '.js', __FILE__ ), [] , WE_LS_CURRENT_VERSION );
+		wp_enqueue_script( 'yk-uikit-' . $load_ui_script, plugins_url( '../assets/js/' . $load_ui_script . $minified . '.js', __FILE__ ), [] , WE_LS_CURRENT_VERSION );
 	}
 
 
