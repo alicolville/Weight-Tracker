@@ -106,7 +106,7 @@ add_filter( 'body_class', function( $classes ) {
  * @param bool $include_theme
  * @param bool $include_font
  */
-function ws_ls_enqueue_uikit( $include_theme = true, $include_font = true ) {
+function ws_ls_enqueue_uikit( $include_theme = true, $include_font = true, $load_ui_script = NULL ) {
 
 	$minified = ws_ls_use_minified();
 
@@ -127,7 +127,12 @@ function ws_ls_enqueue_uikit( $include_theme = true, $include_font = true ) {
 
 	wp_enqueue_script( 'yk-uikit', plugins_url( '../assets/uikit/js/uikit' . 	$minified . '.js', __FILE__ ), [] , WE_LS_CURRENT_VERSION );
 	wp_enqueue_script( 'yk-uikit-icons', plugins_url( '../assets/uikit/js/uikit-icons' . 	$minified . '.js', __FILE__ ), [] , WE_LS_CURRENT_VERSION);
-	wp_enqueue_script( 'yk-uikit-wt', plugins_url( '../assets/uikit/js/wt' . 	$minified . '.js', __FILE__ ), [] , WE_LS_CURRENT_VERSION );
+
+	if ( false === empty( $load_ui_script ) ) {
+		wp_enqueue_script( 'yk-uikit-' . $load_ui_script, plugins_url( '../assets/uikit/js/' . $load_ui_script . $minified . '.js', __FILE__ ), [] , WE_LS_CURRENT_VERSION );
+	}
+
+
 }
 
 /**
