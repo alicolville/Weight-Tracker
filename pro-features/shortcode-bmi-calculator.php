@@ -25,7 +25,7 @@ function ws_ls_bmi_calculator( $user_defined_arguments ) {
 
 	wp_localize_script( 'yk-uikit-bmi-calculator', 'ws_ls_bmi_calc_config', ws_ls_bmi_calculator_js_config() );
 
-	$html = '<div class="ws-ls-tracker">
+	$html = '<div class="ws-ls-bmi-calculator ws-ls-tracker-force-font">
 				';
 	$html .= sprintf( '	<ul ykuk-tab ykuk-switcher>
    							<li><a href="#">Metric</a></li>
@@ -37,9 +37,7 @@ function ws_ls_bmi_calculator( $user_defined_arguments ) {
 	$html .= '<ul class="ykuk-switcher ykuk-margin" >
 				<li>
 					<form id="ws-ls-bmi-calc-metric" class="ykuk-form-horizontal ykuk-margin-large form-calculate-bmi" data-unit="metric">
-						<div class="ykuk-alert-primary ykuk-hidden" ykuk-alert>
-						    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-						</div>
+						<div class="ykuk-hidden bmi-alert" ykuk-alert></div>
 					    <div class="ykuk-margin">
 					        <label class="ykuk-form-label" for="form-horizontal-text">Weight</label>
 					        <div class="ykuk-form-controls ykuk-grid" ykuk-grid>
@@ -57,12 +55,15 @@ function ws_ls_bmi_calculator( $user_defined_arguments ) {
 					        </div>
 					    </div>
 					    <div class="ykuk-margin">
-					    	<button type="button" class="button-calculate-bmi ykuk-button ykuk-button-default">Calculate BMI</button>
+					    	<div class="bmi-spinner ykuk-hidden" ykuk-spinner></div><button type="button" class="button-calculate-bmi ykuk-button ykuk-button-default">Calculate BMI</button>
 					    </div>
 					</form>
 				</li>
 				<li>
-					<form id="ws-ls-bmi-calc-imperial" class="ykuk-form-horizontal ykuk-margin-large form-calculate-bmi">
+					<form id="ws-ls-bmi-calc-imperial" class="ykuk-form-horizontal ykuk-margin-large form-calculate-bmi" data-unit="imperial">
+						<div class="ykuk-hidden bmi-alert" ykuk-alert>
+						    <p></p>
+						</div>
 					    <div class="ykuk-margin">
 					        <label class="ykuk-form-label" for="form-horizontal-text">Weight</label>
 					        <div class="ykuk-form-controls ykuk-grid" ykuk-grid>
@@ -91,14 +92,6 @@ function ws_ls_bmi_calculator( $user_defined_arguments ) {
 					</form>
 				</li>';
 
-//	// Kg
-//	if ( 'kg' ===  $arguments[ 'data-unit' ] ) {
-
-//	}
-
-
-
-
 	$html .= '</ul></div>';
 
 	return $html;
@@ -110,5 +103,43 @@ add_shortcode( 'wt-bmi-calculator', 'ws_ls_bmi_calculator' );
  * JS config for shortcodes
  */
 function ws_ls_bmi_calculator_js_config() {
-	return [ 'ali' => 'hello' ];
+	return [ 'ajax-security-nonce'  => wp_create_nonce( 'ws-ls-nonce' ),
+	         'ajax-url'             => admin_url( 'admin-ajax.php' )
+	];
 }
+
+/**
+ * AJAX handler for calculating BMI
+ */
+function ws_ls_bmi_calculator_ajax() {
+
+	check_ajax_referer( 'ws-ls-nonce', 'security' );
+
+	$unit   = ws_ls_post_value('unit' );
+	$text   = 'ERROR';
+	$class  = 'ykuk-alert-warning';
+
+	if ( 'metric' === $unit ) {
+
+		$cm     = ws_ls_post_value( 'cm', NULL, false, false, 'int' );
+		$kg     = ws_ls_post_value( 'kg', NULL, false, false, 'int' );
+		$bmi    = ws_ls_calculate_bmi( $cm, $kg );
+	} else {
+
+	}
+
+	if ( false === empty( $bmi ) ) {
+		$text   = sprintf( '<h3>%s</h3><p>%s <strong>%s</strong>.</p>',
+							ws_ls_round_number( $bmi, 1 ),
+							__( 'Your weight suggests you are', WE_LS_SLUG ),
+							strtolower( ws_ls_bmi_display( $bmi, 'label' ) )
+		);
+		$class  = ws_ls_calculate_bmi_uikit_class( $bmi );
+	}
+
+	$data = [   'css-class' => $class, 'text' => $text ];
+
+	wp_send_json( $data );
+}
+add_action( 'wp_ajax_ws_ls_bmi_calculator', 'ws_ls_bmi_calculator_ajax' );
+add_action( 'wp_ajax_nopriv_ws_ls_bmi_calculator', 'ws_ls_bmi_calculator_ajax' );

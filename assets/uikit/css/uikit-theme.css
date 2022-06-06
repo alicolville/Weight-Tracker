@@ -1,5 +1,7 @@
 
-
+.ws-ls-tracker, .ws-ls-tracker *, .ykuk-modal-dialog *  {
+  font-size: 10pt;
+}
 .ws-ls-tracker .ykuk-card-body {
   font-size: 11pt;
 }
@@ -33,4 +35,8 @@
 
 .ykuk-scope #we-ls-user-pref-submit {
   height: 38px;
+}
+
+.ykuk-scope .ws-ls-bmi-calculator .bmi-alert p {
+  margin-top: 0px;
 }

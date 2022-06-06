@@ -75,6 +75,31 @@ function ws_ls_calculate_bmi_label( $bmi ) {
 }
 
 /**
+ * Determine the uikit class to represent the given BMI value
+ * @param $bmi
+ *
+ * @return string|void
+ */
+function ws_ls_calculate_bmi_uikit_class( $bmi ) {
+
+	if( true === is_numeric( $bmi ) ) {
+
+		if( $bmi < 18.5 ) {
+			return 'ykuk-alert-danger';
+		} else if ( $bmi >= 18.5 && $bmi <= 24.9 ) {
+			return 'ykuk-alert-success';
+		}
+		else if ( $bmi >= 25 && $bmi <= 29.9 ) {
+			return 'ykuk-alert-warning';
+		} else if ( $bmi >= 30 ) {
+			return 'ykuk-alert-danger';
+		}
+	}
+
+	return __( 'Err', WE_LS_SLUG );
+}
+
+/**
  * @param $bmi
  * @param string $display
  */

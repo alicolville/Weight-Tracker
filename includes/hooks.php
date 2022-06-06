@@ -119,9 +119,8 @@ function ws_ls_enqueue_uikit( $include_theme = true, $include_font = true, $load
 	if ( true === $include_font ) {
 		wp_add_inline_style( 'yk-uikit', '	@import url(\'https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap\');
 
-										.ws-ls-tracker, .ws-ls-tracker *, .ykuk-modal-dialog *  {
+										.ws-ls-tracker, .ws-ls-tracker-force-font *, .ws-ls-tracker *, .ykuk-modal-dialog *  {
 										  font-family: "Roboto Mono", monospace !important;
-										  font-size: 10pt;
 										}' );
 	}
 
