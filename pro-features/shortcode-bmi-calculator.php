@@ -136,6 +136,18 @@ function ws_ls_bmi_calculator_ajax() {
 		$bmi    = ws_ls_calculate_bmi( $cm, $kg );
 	} else {
 
+		$stones     = ws_ls_post_value( 'stones', NULL, false, false, 'int' );
+		$pounds     = ws_ls_post_value( 'pounds', NULL, false, false, 'int' );
+
+		$kg         = ws_ls_convert_stones_pounds_to_kg( $stones, $pounds );
+
+		$feet       = ws_ls_post_value( 'feet', NULL, false, false, 'int' );
+		$inches     = ws_ls_post_value( 'inches', NULL, false, false, 'int' );
+
+		$cm         = ws_ls_heights_imperial_metric( $feet, $inches );
+
+		$bmi        = ws_ls_calculate_bmi( $cm, $kg );
+
 	}
 
 	if ( false === empty( $bmi ) ) {
