@@ -12,16 +12,16 @@ defined('ABSPATH') or die("Jog on!");
  */
 function ws_ls_bmi_calculator( $user_defined_arguments ) {
 
-	if ( false === WS_LS_IS_PRO ) {
-		return ws_ls_display_pro_upgrade_notice_for_shortcode();
-	}
-
 	$arguments = shortcode_atts( [    'disable-main-font'         => false,                       // If set to true, don't include the main font
 	                                  'disable-theme-css'         => false,                       // If set to true, don't include the additional theme CSS used
 	                                  'user-id'					=> get_current_user_id() ],
 	$user_defined_arguments );
 
 	ws_ls_enqueue_uikit( ! $arguments[ 'disable-theme-css' ], ! $arguments[ 'disable-main-font' ], 'bmi-calculator' );
+
+	if ( false === WS_LS_IS_PRO_PLUS ) {
+		return ws_ls_display_pro_upgrade_notice_for_shortcode( true );
+	}
 
 	wp_localize_script( 'yk-uikit-bmi-calculator', 'ws_ls_bmi_calc_config', ws_ls_bmi_calculator_js_config() );
 
