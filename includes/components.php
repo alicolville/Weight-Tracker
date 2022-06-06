@@ -663,7 +663,7 @@ function ws_ls_uikit_summary_boxes( $arguments, $boxes = [] ) {
 }
 
 /**
- * Displayt a notice about it being beta
+ * Display a notice about it being beta
  * @return string
  */
 function ws_ls_uikit_beta_notice() {
