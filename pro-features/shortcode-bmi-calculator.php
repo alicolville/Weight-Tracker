@@ -34,63 +34,73 @@ function ws_ls_bmi_calculator( $user_defined_arguments ) {
 						'kg' !== ws_ls_setting( 'weight-unit', $arguments[ 'user-id' ] ) ? 'ykuk-active' : ''
 	);
 
-	$html .= '<ul class="ykuk-switcher ykuk-margin" >
-				<li>
-					<form id="ws-ls-bmi-calc-metric" class="ykuk-form-horizontal ykuk-margin-large form-calculate-bmi" data-unit="metric">
-						<div class="ykuk-hidden bmi-alert" ykuk-alert></div>
-					    <div class="ykuk-margin">
-					        <label class="ykuk-form-label" for="form-horizontal-text">Weight</label>
-					        <div class="ykuk-form-controls ykuk-grid" ykuk-grid>
-					            <div class="ykuk-width-1-1">
-					             <input class="ykuk-input" id="kg" type="number" min="0" max="400" placeholder="Kg" required>
-					            </div>
-					        </div>
-					    </div>
-					    <div class="ykuk-margin">
-					        <label class="ykuk-form-label" for="form-horizontal-select">Height</label>
-					        <div class="ykuk-form-controls ykuk-grid" ykuk-grid>
-					            <div class="ykuk-width-1-1">
-					            <input class="ykuk-input" id="cm" type="number" min="10" max="250" placeholder="Cm" required>
-					            </div>
-					        </div>
-					    </div>
-					    <div class="ykuk-margin">
-					    	<div class="bmi-spinner ykuk-hidden" ykuk-spinner></div><button type="button" class="button-calculate-bmi ykuk-button ykuk-button-default">Calculate BMI</button>
-					    </div>
-					</form>
-				</li>
-				<li>
-					<form id="ws-ls-bmi-calc-imperial" class="ykuk-form-horizontal ykuk-margin-large form-calculate-bmi" data-unit="imperial">
-						<div class="ykuk-hidden bmi-alert" ykuk-alert>
-						    <p></p>
-						</div>
-					    <div class="ykuk-margin">
-					        <label class="ykuk-form-label" for="form-horizontal-text">Weight</label>
-					        <div class="ykuk-form-controls ykuk-grid" ykuk-grid>
-					            <div class="ykuk-width-1-2">
-					             <input class="ykuk-input" id="stones" type="number" placeholder="Stones" min="0" max="50">
-					            </div>
-					            <div class="ykuk-width-1-2">
-					            <input class="ykuk-input" id="pounds" type="number" placeholder="Pounds" min="0" max="14">
-					            </div>
-					        </div>
-					    </div>
-					    <div class="ykuk-margin">
-					        <label class="ykuk-form-label" for="form-horizontal-select">Height</label>
-					        <div class="ykuk-form-controls ykuk-grid" ykuk-grid>
-					            <div class="ykuk-width-1-2">
-					             <input class="ykuk-input" id="feet" type="text" placeholder="Feet" min="3" max="10">
-					            </div>
-					            <div class="ykuk-width-1-2">
-					            <input class="ykuk-input" id="inches" type="text" placeholder="Inches" min="0" max="12">
-					            </div>
-					        </div>
-					    </div>
-					    <div class="ykuk-margin">
-					    	<button type="button" class="button-calculate-bmi ykuk-button ykuk-button-default">Calculate BMI</button>
-					    </div>
-					</form>
-				</li>';
+	$html .= sprintf( '<ul class="ykuk-switcher ykuk-margin" >
+						<li>
+							<form id="ws-ls-bmi-calc-metric" class="ykuk-form-horizontal ykuk-margin-large form-calculate-bmi" data-unit="metric">
+								<div class="ykuk-hidden bmi-alert" ykuk-alert></div>
+							    <div class="ykuk-margin">
+							        <label class="ykuk-form-label" for="form-horizontal-text">%1$s</label>
+							        <div class="ykuk-form-controls ykuk-grid" ykuk-grid>
+							            <div class="ykuk-width-1-1">
+							             <input class="ykuk-input" id="kg" type="number" min="0" max="400" placeholder="%2$s" required>
+							            </div>
+							        </div>
+							    </div>
+							    <div class="ykuk-margin">
+							        <label class="ykuk-form-label" for="form-horizontal-select">%3$s</label>
+							        <div class="ykuk-form-controls ykuk-grid" ykuk-grid>
+							            <div class="ykuk-width-1-1">
+							            <input class="ykuk-input" id="cm" type="number" min="10" max="250" placeholder="%4$s" required>
+							            </div>
+							        </div>
+							    </div>
+							    <div class="ykuk-margin">
+							        <button type="button" class="button-calculate-bmi ykuk-button ykuk-button-default">%5$s</button>
+							    </div>
+							</form>
+						</li>
+						<li>
+							<form id="ws-ls-bmi-calc-imperial" class="ykuk-form-horizontal ykuk-margin-large form-calculate-bmi" data-unit="imperial">
+								<div class="ykuk-hidden bmi-alert" ykuk-alert>
+								    <p></p>
+								</div>
+							    <div class="ykuk-margin">
+							        <label class="ykuk-form-label" for="form-horizontal-text">%1$s</label>
+							        <div class="ykuk-form-controls ykuk-grid" ykuk-grid>
+							            <div class="ykuk-width-1-2">
+							             <input class="ykuk-input" id="stones" type="number" placeholder="%6$s" min="0" max="50">
+							            </div>
+							            <div class="ykuk-width-1-2">
+							            <input class="ykuk-input" id="pounds" type="number" placeholder="%7$s" min="0" max="14">
+							            </div>
+							        </div>
+							    </div>
+							    <div class="ykuk-margin">
+							        <label class="ykuk-form-label" for="form-horizontal-select">%3$s</label>
+							        <div class="ykuk-form-controls ykuk-grid" ykuk-grid>
+							            <div class="ykuk-width-1-2">
+							             <input class="ykuk-input" id="feet" type="text" placeholder="%8$s" min="3" max="10">
+							            </div>
+							            <div class="ykuk-width-1-2">
+							            <input class="ykuk-input" id="inches" type="text" placeholder="%9$s" min="0" max="12">
+							            </div>
+							        </div>
+							    </div>
+							    <div class="ykuk-margin">
+							        <button type="button" class="button-calculate-bmi ykuk-button ykuk-button-default">%5$s</button>
+							    </div>
+							</form>
+						</li>',
+						__( 'Weight', WE_LS_SLUG ),
+						__( 'Kg', WE_LS_SLUG ),
+						__( 'Height', WE_LS_SLUG ),
+						__( 'Cm', WE_LS_SLUG ),
+						__( 'Calculate BMI', WE_LS_SLUG ),
+						__( 'Stones', WE_LS_SLUG ),
+						__( 'Pounds', WE_LS_SLUG ),
+						__( 'Feet', WE_LS_SLUG ),
+						__( 'Inches', WE_LS_SLUG )
+	);
 
 	$html .= '</ul></div>';
 
