@@ -10,6 +10,7 @@ The majority of the public facing functionality are implemented using [WordPress
 |[[wt-awards-grid]]({{ site.baseurl }}/shortcodes/wt-awards-grid.html)|Display most recent [award]({{ site.baseurl }}/awards.html) for the given user.
 |[[wt-awards-recent]]({{ site.baseurl }}/shortcodes/wt-awards-recent.html)|Display [awards]({{ site.baseurl }}/awards.html) given to the user in gird format.
 |[[wt-bmi]]({{ site.baseurl }}/shortcodes/wt-bmi.html)|Display the user's BMI.|
+|[[wt-bmi-calculator]]({{ site.baseurl }}/shortcodes/wt-bmi-calculator.html)|Displays a BMI calculator for your users to use.|
 |[[wt-bmr]]({{ site.baseurl }}/shortcodes/wt-bmr.html)|Display the user's BMR.|
 |[[wt-calculator]]({{ site.baseurl }}/shortcodes/wt-calculator.html)|Displays a form allowing your users to enter their DoB, gender, age, etc and have their BMI, BMR, suggested calorie intake and MacroN figures calculated for them.|
 |[[wt-calories]]({{ site.baseurl }}/shortcodes/wt-calories.html)|Displays a specific calorie figure from a user's calorie intake figures.|
