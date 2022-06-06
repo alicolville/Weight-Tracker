@@ -12,9 +12,10 @@ defined('ABSPATH') or die("Jog on!");
  */
 function ws_ls_bmi_calculator( $user_defined_arguments ) {
 
-	$arguments = shortcode_atts( [    'disable-main-font'         => false,                       // If set to true, don't include the main font
-	                                  'disable-theme-css'         => false,                       // If set to true, don't include the additional theme CSS used
-	                                  'user-id'					=> get_current_user_id() ],
+	$arguments = shortcode_atts( [  'disable-main-font'         => false,                       // If set to true, don't include the main font
+									'disable-theme-css'         => false,                       // If set to true, don't include the additional theme CSS used
+									'default-tab'               => 'metric',                    // Default tab to display: metric or imperial
+									'user-id'					=> get_current_user_id() ],
 	$user_defined_arguments );
 
 	ws_ls_enqueue_uikit( ! $arguments[ 'disable-theme-css' ], ! $arguments[ 'disable-main-font' ], 'bmi-calculator' );
@@ -31,7 +32,7 @@ function ws_ls_bmi_calculator( $user_defined_arguments ) {
    							<li><a href="#">Metric</a></li>
     						<li class="%s"><a href="#" >Imperial</a></li>
     					</ul>',
-						'kg' !== ws_ls_setting( 'weight-unit', $arguments[ 'user-id' ] ) ? 'ykuk-active' : ''
+						'metric' !== $arguments[ 'default-tab' ] ? 'ykuk-active' : ''
 	);
 
 	$html .= sprintf( '<ul class="ykuk-switcher ykuk-margin" >
