@@ -44,7 +44,7 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 		$shortcode_arguments[ 'active-tab' ] = $active_tab;
 	}
 
-	ws_ls_enqueue_uikit( ! $shortcode_arguments[ 'disable-theme-css' ], ! $shortcode_arguments[ 'disable-main-font' ] );
+	ws_ls_enqueue_uikit( ! $shortcode_arguments[ 'disable-theme-css' ], ! $shortcode_arguments[ 'disable-main-font' ], 'wt' );
 
 	$html                                           = '<div class="ws-ls-tracker">';
 	$shortcode_arguments[ 'user-id' ]               = (int) $shortcode_arguments[ 'user-id' ];

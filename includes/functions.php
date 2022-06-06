@@ -1152,15 +1152,24 @@ function ws_ls_display_pro_upgrade_notice( $prompt_level = '' ) {
 
 /**
  * Upgrade notice for shortcode
+ *
+ * @param bool $uikit
+ *
  * @return string
  */
-function ws_ls_display_pro_upgrade_notice_for_shortcode () {
+function ws_ls_display_pro_upgrade_notice_for_shortcode ( $uikit = false ) {
 
-	return sprintf( '<p>%s <a href="%s">%s</a></p>',
-							__( 'To view this data, you need to upgrade to the Pro or Pro Plus version.', WE_LS_SLUG ),
+	$message = sprintf( '<p>%s <a href="%s">%s</a></p>',
+							__( 'To view this data/shortcode, you need to upgrade to the Pro or Pro Plus version.', WE_LS_SLUG ),
 							esc_url( admin_url('admin.php?page=ws-ls-license') ),
 							__( 'Upgrade now', WE_LS_SLUG )
 	);
+
+	if ( true === $uikit ) {
+		return ws_ls_component_alert( $message, 'warning', false );
+	}
+
+	return $message;
 }
 
 /**

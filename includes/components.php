@@ -344,7 +344,7 @@ function ws_ls_component_alert( $message, $type = 'success', $closable = true, $
 		                <p>%2$s%4$s</p>
 					</div>',
 					esc_attr( $type ),
-					esc_html( $message ),
+					wp_kses_post( $message ),
 					true === $closable ? 'ykuk-close' : '',
 					( true === $include_log_link ) ?
 						sprintf( ' <a class="ws-ls-login-link" href="%1$s">%2$s</a>.', esc_url( wp_login_url( get_permalink() ) ), __( 'Login' , WE_LS_SLUG ) ) :
@@ -663,7 +663,7 @@ function ws_ls_uikit_summary_boxes( $arguments, $boxes = [] ) {
 }
 
 /**
- * Displayt a notice about it being beta
+ * Display a notice about it being beta
  * @return string
  */
 function ws_ls_uikit_beta_notice() {

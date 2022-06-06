@@ -62,14 +62,3 @@ function ws_ls_tab_get_position( name ) {
 
   return ws_ls_tab_positions.indexOf( name );
 }
-
-
-
-
-//
-// var urls = ["google", "yahoo", "facebook"];
-// var cls = $('div').attr('class');
-// var ind = $.inArray(cls, urls);
-
-// console.log('shit');
-// ykukUIkit.tab( ".ws-ls-tracker .ykuk-tab-menu").show(4);

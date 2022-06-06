@@ -75,6 +75,31 @@ function ws_ls_calculate_bmi_label( $bmi ) {
 }
 
 /**
+ * Determine the uikit class to represent the given BMI value
+ * @param $bmi
+ *
+ * @return string|void
+ */
+function ws_ls_calculate_bmi_uikit_class( $bmi ) {
+
+	if( true === is_numeric( $bmi ) ) {
+
+		if( $bmi < 18.5 ) {
+			return 'ykuk-alert-danger';
+		} else if ( $bmi >= 18.5 && $bmi <= 24.9 ) {
+			return 'ykuk-alert-success';
+		}
+		else if ( $bmi >= 25 && $bmi <= 29.9 ) {
+			return 'ykuk-alert-warning';
+		} else if ( $bmi >= 30 ) {
+			return 'ykuk-alert-danger';
+		}
+	}
+
+	return __( 'Err', WE_LS_SLUG );
+}
+
+/**
  * @param $bmi
  * @param string $display
  */
@@ -381,6 +406,20 @@ function ws_ls_heights() {
     array_walk( $all_heights, 'ws_ls_heights_formatter' );
 
     return $all_heights;
+}
+
+/**
+ * Convert feet/inches to height
+ * @param $feet
+ * @param int $inches
+ *
+ * @return int
+ */
+function ws_ls_heights_imperial_metric( $feet, $inches = 0 ) {
+
+    $inches = ( $feet * 12 ) + $inches;
+
+	return (int) round($inches / 0.393701);
 }
 
 /**
