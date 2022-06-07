@@ -93,7 +93,7 @@ function ws_ls_notes_render( $note, $echo = true, $uikit = false, $alternate = f
 							get_avatar( $note[ 'from' ], 80 ),
 							ws_ls_user_display_name( $note[ 'from' ] ),
 							ws_ls_iso_datetime_into_correct_format( $note[ 'created' ] ),
-							esc_html( $note[ 'message_text' ] )
+							$note[ 'message_text' ]
 		);
 	} else {
 		$html = sprintf( '	<div id="%5$s" class="postbox ws-ls-postbox ws-ls-note">
@@ -110,7 +110,7 @@ function ws_ls_notes_render( $note, $echo = true, $uikit = false, $alternate = f
 			$note[ 'id' ],
 			ws_ls_user_display_name( $note[ 'from' ] ),
 			ws_ls_iso_datetime_into_correct_format( $note[ 'created' ] ),
-			esc_html( $note[ 'message_text' ] ),
+			$note[ 'message_text' ],
 			ws_ls_component_id(),
 			true === ws_ls_to_bool( $note[ 'visible_to_user' ] ) && true === is_admin() ? __( ' (Visible via [wt-notes])', WE_LS_SLUG ) : '',
 			is_admin() ? 'h2' : 'h6'
