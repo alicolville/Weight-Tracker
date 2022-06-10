@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight,tracker,chart,bmi,bmr,macronutrient,measure,awards,custom fields,history,measurements,data
 Requires at least: 5.7
 Tested up to: 6.0
-Stable tag: 10.1.1
+Stable tag: 10.1.2
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -36,13 +36,12 @@ For further information read our documentation:
 = Pro Plus Version =
 
 * All of the features that come with a standard Pro license.
-* **Basal Metabolic Rate (BMR) calculations per user**. Shortcodes and extended admin screens to display a user's BMR. For further information on BMR and how it is calculated visit our calculations page.
 * **Harris Benedict formula**. Shortcodes and extended admin screens to a view a person's calorie intake required to maintain and lose weight. For further information on Harris Benedict Formula and how it is calculated visit our calculations page.
 * **Recommended calorie intake per meal time**. Shortcodes and extended admin screens to recommend how a person should split their daily calorie intake across meals. For further information on how this is calculated please visit our calculations page.
 * **Macronutrients Calculator**. Shortcodes and extended admin screens to recommend how their calorie consumption should be split into fats, carbohydrates and proteins. For further information on the Macronutrients Calculator and how these calculations are performed please visit our calculations page.
 * **Additional user preference fields**. Additional user preference fields and shortcodes to display them: Activity Level, Date of Birth and Gender.
 * **Awards**. Awards and Badges! Set awards for: BMI Change, BMI Equals, Weight Gain / Loss from start and Percentage of weight lost from start.
-
+* **BMI Calculator**. A shortcode to display a BMI calculator [wt-bmi-calculator].
 
 [Read more about features](https://weight.yeken.uk/features/ "Read more about features")
 
@@ -149,6 +148,11 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 10.0 - New shortcode! Beta! [wt-beta]
 
 == Changelog ==
+
+= 10.1.2 =
+
+* Improvement: [wt-beta] Show difference column in user data table.
+* Bug fix: Show difference column in admin user data tables.
 
 = 10.1.1 =
 
