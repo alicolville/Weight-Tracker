@@ -32,6 +32,7 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 												'enable-week-ranges'        => false,                       // Enable Week Ranges?
 												'summary-boxes-data'        => 'number-of-entries,number-of-days-tracking,latest-weight,start-weight', // Summary boxes to display at top of data tab
 												'summary-boxes-home'        => 'latest-weight,previous-weight,latest-versus-target,target-weight', // Summary boxes to display at top of data tab
+												'summary-boxes-awards'      => 'latest-award,number-of-awards',
 												'summary-boxes-advanced'    => 'bmi,bmr',                   // Summary boxes to display at top of advanced tab
 												'user-id'					=> get_current_user_id(),
 												'weight-mandatory'			=> true,						// Is weight mandatory?
@@ -195,7 +196,7 @@ function ws_ls_wt_tab_panes( $arguments = [] ) {
 						<li>' . ws_ls_wt_tab_table( $arguments ) . '</li>';
 
 	if ( true === $arguments[ 'show-tab-awards' ] ) {
-		$html .= '<li>' . 'awards' .'</li>';
+		$html .= '<li>' . ws_ls_wt_tab_awards( $arguments ) .'</li>';
 	}
 
 	if ( true === $arguments[ 'show-tab-advanced' ] ) {
@@ -380,6 +381,27 @@ function ws_ls_tab_gallery( $arguments = [] ) {
 															'body-class'	=> 'ykuk-text-small ykuk-text-center',
 															'body' 			=> ws_ls_photos_shortcode_gallery( [] )
 			] );
+
+	return $html;
+}
+
+/**
+ * Render awards data tab
+ * @param array $arguments
+ *
+ * @return string
+ */
+function ws_ls_wt_tab_awards( $arguments = [] ) {
+
+	$html = ws_ls_uikit_data_summary_boxes_display( 'summary-boxes-awards', $arguments );
+
+	$awards = ws_ls_awards_shortcode_gallery( $arguments );
+
+
+	$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 'header' 		=> __( 'Awards', WE_LS_SLUG ),
+	                                                     'body-class'	=> 'ykuk-text-small',
+	                                                     'body' 		=> $awards
+	] );
 
 	return $html;
 }
