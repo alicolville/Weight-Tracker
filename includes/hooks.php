@@ -105,6 +105,7 @@ add_filter( 'body_class', function( $classes ) {
  *
  * @param bool $include_theme
  * @param bool $include_font
+ * @param null $load_ui_script
  */
 function ws_ls_enqueue_uikit( $include_theme = true, $include_font = true, $load_ui_script = NULL ) {
 

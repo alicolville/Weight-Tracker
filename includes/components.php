@@ -409,6 +409,8 @@ function ws_ls_component_number_of_days_tracking( $args = [] ) {
  */
 function ws_ls_component_alert( $message, $type = 'success', $closable = true, $include_log_link = false ) {
 
+	ws_ls_enqueue_uikit( true, true, 'alert' );
+
 	// Types: danger, warning, success, primary
 
 	return sprintf( '<div class="ykuk-alert-%1$s" ykuk-alert>
