@@ -65,6 +65,55 @@ function ws_ls_component_latest_weight( $args = [] ) {
 }
 
 /**
+ * Component to display the latest award
+ * @param array $args
+ */
+function ws_ls_component_latest_award( $args = [] ) {
+
+	$args           = wp_parse_args( $args, [ 'user-id' => get_current_user_id() ] );
+	$awards         = ws_ls_awards_previous_awards( $args[ 'user-id' ], 50, 50, 'timestamp' );
+	$html_thumbnail = '';
+	$html_title     = '';
+
+	if ( false === empty( $awards[0] ) ) {
+
+		$award = $awards[0];
+
+		$thumbnail = NULL;
+
+		if ( false === empty( $award[ 'thumb-with-url' ] ) ) {
+			$thumbnail = $award[ 'thumb-with-url' ];
+		} else if ( false === empty( $award[ 'thumb' ] ) ) {
+			$thumbnail = $award[ 'thumb' ];
+		}
+
+		if ( false === empty( $award['url'] ) ) {
+			$html_title = sprintf( '<a href="%s" target="_blank" rel="noopener">%s</a>', esc_url( $award['url'] ), esc_html( $award['title'] ) );
+		} else {
+			$html_title = esc_html( $award['title'] );
+		}
+
+		if ( false === empty( $thumbnail ) && false === $award['no-badge'] ) {
+			$html_thumbnail = sprintf('<div class="ws-ls-award-latest-img">%s</div>', $thumbnail ) ;
+		}
+	}
+
+	return sprintf( '<div>
+                        <div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
+                                <span class="ykuk-info-box-header">%3$s</span><br />
+                                <span class="ykuk-text-bold">
+                                    %1$s
+                                </span>
+                                %2$s
+                        </div>
+                    </div>',
+		$html_thumbnail,
+		$html_title,
+		__( 'Latest Award', WE_LS_SLUG )
+	);
+
+}
+/**
  * Component to display the previous weight
  * @param array $args
  *
@@ -596,7 +645,7 @@ function ws_ls_uikit_data_summary_boxes_display( $key, $arguments = [] ) {
 function ws_ls_uikit_summary_boxes( $arguments, $boxes = [] ) {
 
 	$allowed_boxes = [ 'number-of-entries', 'number-of-weight-entries', 'latest-weight', 'start-weight', 'number-of-days-tracking',
-							'target-weight', 'previous-weight', 'latest-versus-target', 'bmi', 'bmr' ];
+							'target-weight', 'previous-weight', 'latest-versus-target', 'bmi', 'bmr', 'latest-award' ];
 
 	// Default box selection
 	if ( true === empty( $boxes ) ) {
@@ -634,6 +683,9 @@ function ws_ls_uikit_summary_boxes( $arguments, $boxes = [] ) {
 				break;
 			case 'latest-weight':
 				$html .= ws_ls_component_latest_weight( [ 'user-id' => $arguments[ 'user-id' ] ] );
+				break;
+			case 'latest-award':
+				$html .= ws_ls_component_latest_award( [ 'user-id' => $arguments[ 'user-id' ] ] );
 				break;
 			case 'start-weight':
 				$html .= ws_ls_component_start_weight( [ 'user-id' => $arguments[ 'user-id' ] ] );

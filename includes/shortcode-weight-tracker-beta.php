@@ -22,6 +22,7 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 												'hide-notes' 				=> ws_ls_setting_hide_notes(),  // Hide notes field
 												'hide-photos' 				=> false,                       // Hide photos part of form
 												'hide-chart-overview' 		=> false,               	    // Hide chart on the overview tab
+												'hide-tab-awards' 		    => false,               	    // Hide Awards tab
 												'hide-tab-photos' 			=> false,                 	    // Hide Photos tab
 												'hide-tab-advanced' 		=> false,               	    // Hide Advanced tab (macroN, calories, etc)
 												'hide-advanced-narrative' 	=> false,         			    // Hide text describing BMR, MarcoN, etc
@@ -48,6 +49,7 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 
 	$html                                           = '<div class="ws-ls-tracker">';
 	$shortcode_arguments[ 'user-id' ]               = (int) $shortcode_arguments[ 'user-id' ];
+	$shortcode_arguments[ 'show-tab-awards' ]       = ( false === ws_ls_to_bool( $shortcode_arguments[ 'hide-tab-awards' ] ) && true === WS_LS_IS_PRO_PLUS );
 	$shortcode_arguments[ 'show-tab-advanced' ]     = ( false === ws_ls_to_bool( $shortcode_arguments[ 'hide-tab-advanced' ] ) && true === WS_LS_IS_PRO_PLUS );
 	$shortcode_arguments[ 'show-tab-photos' ]       = ( false === ws_ls_to_bool( $shortcode_arguments[ 'hide-tab-photos' ] ) && true === ws_ls_meta_fields_photo_any_enabled( true ) );
 	$shortcode_arguments[ 'enable-week-ranges' ]	= ws_ls_to_bool( $shortcode_arguments[ 'enable-week-ranges' ] );
@@ -141,8 +143,8 @@ function ws_ls_wt_tab_menu( $arguments = [] ) {
 				[ 'name' => 'history', 'icon' => 'history' ],
 	];
 
-	if ( true === $arguments[ 'show-tab-advanced' ] ) {
-		$tabs[] = [ 'name' => 'advanced', 'icon' => 'heart' ];
+	if ( true === $arguments[ 'show-tab-awards' ] ) {
+		$tabs[] = [ 'name' => 'awards', 'icon' => 'star' ];
 	}
 
 	if ( true === $arguments[ 'show-tab-photos' ] ) {
@@ -191,6 +193,10 @@ function ws_ls_wt_tab_panes( $arguments = [] ) {
 	$html .=		'	<li>' . ws_ls_wt_tab_home( $arguments ) . '</li>
 						<li>' . ws_ls_tab_add_entry( $arguments ) . '</li>
 						<li>' . ws_ls_wt_tab_table( $arguments ) . '</li>';
+
+	if ( true === $arguments[ 'show-tab-awards' ] ) {
+		$html .= '<li>' . 'awards' .'</li>';
+	}
 
 	if ( true === $arguments[ 'show-tab-advanced' ] ) {
 		$html .= '<li>' . ws_ls_wt_tab_advanced( $arguments ) .'</li>';

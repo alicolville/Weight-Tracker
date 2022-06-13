@@ -149,6 +149,11 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 == Changelog ==
 
+TODO: Update docs:
+  - New argument for [wt-beta] 'hide-tab-awards'
+
+* Improvement: Added a new summary box component "latest-award". Read more https://docs.yeken.uk/components.html
+
 = 10.1.3 =
 
 * Improvement: Updated translation files for [wt-beta] and [wt-bmi-calculator].

@@ -28,6 +28,12 @@ Below are the currently available summary boxes that you can use:
 
 [![](/assets/images/component-target.png)](/assets/images/component-target.png)
 
+#### latest-award
+
+> The following shortcode is only available in the [Pro Plus]({{ site.baseurl }}/upgrade.html) version of the plugin.
+
+[![](/assets/images/component-latest-award.png)](/assets/images/component-latest-award.png)
+
 #### latest-versus-target
 
 [![](/assets/images/component-latest-versus-target.png)](/assets/images/component-latest-versus-target.png)
