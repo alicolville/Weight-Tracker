@@ -73,7 +73,7 @@ function ws_ls_component_latest_award( $args = [] ) {
 	$args           = wp_parse_args( $args, [ 'user-id' => get_current_user_id() ] );
 	$awards         = ws_ls_awards_previous_awards( $args[ 'user-id' ], 50, 50, 'timestamp' );
 	$html_thumbnail = '';
-	$html_title     = '';
+	$html_title     = __( 'n/a', WE_LS_SLUG );
 
 	if ( false === empty( $awards[0] ) ) {
 
