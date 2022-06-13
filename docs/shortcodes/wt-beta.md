@@ -42,6 +42,12 @@ The history tab provides the following summary data as well as a data table cont
  
 [![Table]({{ site.baseurl }}/assets/images/wt2-history.png)]({{ site.baseurl }}/assets/images/wt2-history.png)
  
+**Awards**
+ 
+ With a [Pro Plus](https://shop.yeken.uk/product/weight-tracker-pro-plus/) license the "Awards" tab is visible. This allows the user to see which awards have been given to them.
+ 
+ [![Advanced]({{ site.baseurl }}/assets/images/wt2-awards.png)]({{ site.baseurl }}/assets/images/wt2-awards.png)
+ 
 **Advanced**
 
 With a [Pro Plus](https://shop.yeken.uk/product/weight-tracker-pro-plus/) license an additional tab is present with "Advanced" data. This tab contains the following information;
@@ -98,6 +104,7 @@ The shortcode supports the following arguments:
 | hide-notes | If set to true (default is false) hide the "notes" section of the form.   | True or false (default).   | [wt-beta hide-notes=true] |   
 | hide-photos   | If set to true (default is false) hide the photo upload section of the form.   | True or false (default).   |  [wt-beta hide-photos=true] |   
 | hide-tab-advanced   | If set to true (default is false) hide the Advanced tab.   | True or false (default).   | [wt-beta hide-tab-advanced=true] |     
+| hide-tab-awards   | If set to true (default is false) hide the Awards tab.   | True or false (default).   | [wt-beta hide-tab-awards=true] |     
 | hide-tab-descriptions    | If set to true (default is false) hide the descriptions under the tab title.  | True or false (default).   |  [wt-beta hide-tab-descriptions=true] |   
 | hide-tab-photos   | If set to true (default is false) hide the Photos tab.   |  True or false (default).   | [wt-beta hide-tab-photos=true] |         
 | show-delete-data  | If set to false (default is true), the section allowing users to delete their own data is hidden.   | True (default) or false   | [wt-beta show-delete-data="false"] |  

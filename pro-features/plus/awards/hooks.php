@@ -386,7 +386,7 @@ function ws_ls_awards_shortcode_gallery( $user_defined_arguments ) {
 	}
 
 	$user_defined_arguments[ 'source' ] = 'awards';
-	$user_defined_arguments[ 'mode' ] = 'tilesgrid';
+	$user_defined_arguments[ 'mode' ]   = 'tilesgrid';
 
 	return ws_ls_photos_shortcode_gallery( $user_defined_arguments );
 }
