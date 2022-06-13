@@ -405,16 +405,18 @@ function ws_ls_component_number_of_days_tracking( $args = [] ) {
  * @param bool $closable
  * @param bool $include_log_link
  *
+ * @param null $notification_id
+ *
  * @return string
  */
-function ws_ls_component_alert( $message, $type = 'success', $closable = true, $include_log_link = false ) {
+function ws_ls_component_alert( $message, $type = 'success', $closable = true, $include_log_link = false, $notification_id = NULL ) {
 
 	ws_ls_enqueue_uikit( true, true, 'alert' );
 
 	// Types: danger, warning, success, primary
 
 	return sprintf( '<div class="ykuk-alert-%1$s" ykuk-alert>
-		                <a class="ykuk-alert-close" %3$s></a>
+		                <a class="ykuk-alert-close" %3$s data-notification-id="%5$d"></a>
 		                <p>%2$s%4$s</p>
 					</div>',
 					esc_attr( $type ),
@@ -422,7 +424,8 @@ function ws_ls_component_alert( $message, $type = 'success', $closable = true, $
 					true === $closable ? 'ykuk-close' : '',
 					( true === $include_log_link ) ?
 						sprintf( ' <a class="ws-ls-login-link" href="%1$s">%2$s</a>.', esc_url( wp_login_url( get_permalink() ) ), __( 'Login' , WE_LS_SLUG ) ) :
-						''
+						'',
+					$notification_id
 	);
 }
 
