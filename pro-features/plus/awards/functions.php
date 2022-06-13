@@ -100,6 +100,19 @@
     }
 
 	/**
+	 * Return a count of awards for given user
+	 * @param $user_id
+	 *
+	 * @return int
+	 */
+    function ws_ls_awards_count( $user_id ) {
+
+	    $awards = ws_ls_awards_db_given_get( $user_id );
+
+	    return count( $awards );
+    }
+
+	/**
 	 * Return all enabled Awards
 	 *
 	 * @return array|bool
@@ -184,7 +197,7 @@
 				        $previous_no_awards = ws_ls_awards_user_times_awarded( $user_id, $award['id'] );
 
 				        if ( $previous_no_awards >= $award['max_awards'] ) {
-					        continue;
+				        	continue;
 				        }
 
 				        $counts[ $category ] ++;

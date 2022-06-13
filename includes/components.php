@@ -65,6 +65,29 @@ function ws_ls_component_latest_weight( $args = [] ) {
 }
 
 /**
+ * Display number of awards
+ * @param array $args
+ *
+ * @return string
+ */
+function ws_ls_component_number_of_awards( $args = [] ) {
+
+	$args = wp_parse_args( $args, [ 'user-id' => get_current_user_id() ] );
+
+	return sprintf( '<div>
+                        <div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
+                                <div class="ykuk-info-box-header">%2$s</div>
+                                <div class="ykuk-text-bold ykuk-text-large ykuk-margin-top">
+                                    %1$s
+                                </div>
+                        </div>
+                    </div>',
+		ws_ls_awards_count( $args[ 'user-id' ] ),
+		__( 'No. of awards', WE_LS_SLUG )
+	);
+}
+
+/**
  * Component to display the latest award
  * @param array $args
  */
@@ -645,7 +668,7 @@ function ws_ls_uikit_data_summary_boxes_display( $key, $arguments = [] ) {
 function ws_ls_uikit_summary_boxes( $arguments, $boxes = [] ) {
 
 	$allowed_boxes = [ 'number-of-entries', 'number-of-weight-entries', 'latest-weight', 'start-weight', 'number-of-days-tracking',
-							'target-weight', 'previous-weight', 'latest-versus-target', 'bmi', 'bmr', 'latest-award' ];
+							'target-weight', 'previous-weight', 'latest-versus-target', 'bmi', 'bmr', 'latest-award', 'number-of-awards' ];
 
 	// Default box selection
 	if ( true === empty( $boxes ) ) {
@@ -686,6 +709,9 @@ function ws_ls_uikit_summary_boxes( $arguments, $boxes = [] ) {
 				break;
 			case 'latest-award':
 				$html .= ws_ls_component_latest_award( [ 'user-id' => $arguments[ 'user-id' ] ] );
+				break;
+			case 'number-of-awards':
+				$html .= ws_ls_component_number_of_awards( [ 'user-id' => $arguments[ 'user-id' ] ] );
 				break;
 			case 'start-weight':
 				$html .= ws_ls_component_start_weight( [ 'user-id' => $arguments[ 'user-id' ] ] );
