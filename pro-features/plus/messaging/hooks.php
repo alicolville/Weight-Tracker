@@ -110,13 +110,16 @@ add_shortcode( 'wt-notes', 'ws_ls_note_shortcode' );
 
 /**
  * Shortcode for [wt-notices]
+ *
  * @param $user_defined_arguments
+ *
+ * @param bool $disable_pro_check
  *
  * @return string
  */
-function ws_ls_notifications_shortcode( $user_defined_arguments ) {
+function ws_ls_notifications_shortcode( $user_defined_arguments, $disable_pro_check = false ) {
 
-	if ( false === WS_LS_IS_PRO ) {
+	if ( false === WS_LS_IS_PRO_PLUS && false === $disable_pro_check ) {
 		return ws_ls_display_pro_upgrade_notice_for_shortcode();
 	}
 

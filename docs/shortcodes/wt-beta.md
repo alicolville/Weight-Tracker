@@ -102,6 +102,7 @@ The shortcode supports the following arguments:
 | hide-custom-fields-table   |  Hide custom fields from the table.   | True or false (default).  | [wt-beta hide-custom-fields-table=true] |     					
 | hide-first-target-form | Hide the target form from the Overview tab. | True or false (default).  | [wt-beta hide-first-target-form=true] |  
 | hide-notes | If set to true (default is false) hide the "notes" section of the form.   | True or false (default).   | [wt-beta hide-notes=true] |   
+| hide-notifications | If set to true (default is false) hide the "notifications" at the top of the shortcode.   | True or false (default).   | [wt-beta hide-notifications=true] |   
 | hide-photos   | If set to true (default is false) hide the photo upload section of the form.   | True or false (default).   |  [wt-beta hide-photos=true] |   
 | hide-tab-advanced   | If set to true (default is false) hide the Advanced tab.   | True or false (default).   | [wt-beta hide-tab-advanced=true] |     
 | hide-tab-awards   | If set to true (default is false) hide the Awards tab.   | True or false (default).   | [wt-beta hide-tab-awards=true] |     

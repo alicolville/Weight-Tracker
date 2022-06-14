@@ -20,6 +20,7 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 												'disable-theme-css'         => false,                       // If set to true, don't include the additional theme CSS used
 												'show-delete-data' 		    => true,                	    // Show "Delete your data" section
 												'hide-notes' 				=> ws_ls_setting_hide_notes(),  // Hide notes field
+												'hide-notifications' 		=> true,                        // Hide notifications part of form
 												'hide-photos' 				=> false,                       // Hide photos part of form
 												'hide-chart-overview' 		=> false,               	    // Hide chart on the overview tab
 												'hide-tab-awards' 		    => false,               	    // Hide Awards tab
@@ -82,9 +83,9 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 			$html .= ws_ls_component_alert( __( 'Your data has successfully been deleted.', WE_LS_SLUG ) );
 		}
 
-		// TODO: Add ability to disable notifications
-
-		$html .= ws_ls_notifications_shortcode( $shortcode_arguments );
+		if ( true !== ws_ls_to_bool( $shortcode_arguments[ 'hide-notifications' ] ) || true === WS_LS_IS_PRO_PLUS ) {
+			$html .= ws_ls_notifications_shortcode( $shortcode_arguments, true );
+		}
 
 		// Tab menu
 		$html .= ws_ls_wt_tab_menu( $shortcode_arguments );
