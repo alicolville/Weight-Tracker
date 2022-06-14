@@ -153,6 +153,10 @@ function ws_ls_wt_tab_menu( $arguments = [] ) {
 		$tabs[] = [ 'name' => 'awards', 'icon' => 'star' ];
 	}
 
+	if ( true === $arguments[ 'show-tab-advanced' ] ) {
+		$tabs[] = [ 'name' => 'advanced', 'icon' => 'heart' ];
+	}
+
 	if ( true === $arguments[ 'show-tab-photos' ] ) {
 		$tabs[] = [ 'name' => 'gallery', 'icon' => 'image' ];
 	}
