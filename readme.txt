@@ -149,6 +149,11 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 == Changelog ==
 
+TODO: - Minify alert.js
+      - Cron job for deleting old notifications
+
+= XXX =
+
 * New feature: Added a new tab to [wt-beta] to display the user's awards. Read more: https://docs.yeken.uk/shortcodes/wt-beta.html
 * Improvement: Added a new summary box component "latest-award". Read more https://docs.yeken.uk/components.html
 * Improvement: Added a new summary box component "number-of-awards". Read more https://docs.yeken.uk/components.html

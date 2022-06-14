@@ -209,6 +209,26 @@ function ws_ls_awards_log_award( $weight_object, $weight_award, $info ) {
 add_action( 'wlt-award-given', 'ws_ls_awards_log_award', 10, 3 );
 
 /**
+ * Add a notification for an award
+ *
+ * @param $weight_object
+ * @param $weight_award
+ * @param $info
+ */
+function ws_ls_awards_add_notification_for_award( $weight_object, $weight_award, $info ) {
+
+	if ( false === WS_LS_IS_PRO_PLUS ) {
+		return;
+	}
+
+	if ( false === empty( $info['user-id'] ) && false === empty( $weight_award['title'] ) ) {
+		ws_ls_messaging_db_add( $info['user-id'], 1, sprintf('Award received: %s', $weight_award['title'] ), false, true, true );
+	}
+
+}
+add_action( 'wlt-award-given', 'ws_ls_awards_add_notification_for_award', 10, 3 );
+
+/**
  * If applicable, send an email for the award!
  *
  * @param $weight_object

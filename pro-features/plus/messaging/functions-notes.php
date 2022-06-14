@@ -27,7 +27,7 @@ function ws_ls_notes_fetch( $to, $visible_to_user = false, $limit = NULL, $offse
 		return false;
 	}
 
-	return ws_ls_messaging_db_select( $to, NULL, true, $visible_to_user, $offset, $limit );
+	return ws_ls_messaging_db_select( $to, NULL, true, false, NULL, $visible_to_user, $offset, $limit );
 }
 
 /**

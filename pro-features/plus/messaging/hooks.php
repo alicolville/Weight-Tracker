@@ -107,3 +107,38 @@ function ws_ls_note_shortcode( $user_defined_arguments ) {
 	return sprintf( '<p>%s</p>', esc_html( $arguments[ 'message-no-data'] ) );
 }
 add_shortcode( 'wt-notes', 'ws_ls_note_shortcode' );
+
+/**
+ * Shortcode for [wt-notices]
+ * @param $user_defined_arguments
+ *
+ * @return string
+ */
+function ws_ls_notices_shortcode( $user_defined_arguments ) {
+
+	if ( false === WS_LS_IS_PRO ) {
+		return ws_ls_display_pro_upgrade_notice_for_shortcode();
+	}
+
+	$arguments = shortcode_atts( [  'user-id'           => get_current_user_id(),
+	                                'style'             => 'primary',
+	                                'message-no-data'   => ''
+	], $user_defined_arguments );
+
+	$notifications  = ws_ls_messaging_db_select(  $arguments[ 'user-id'], NULL, false, true, false );
+	$html           = '';
+
+	if ( false === empty( $notifications ) ) {
+
+		foreach ( $notifications as $notification ) {
+			$html .= ws_ls_component_alert( $notification[ 'message_text' ], $arguments[ 'style' ], true, false, $notification[ 'id' ] );
+		}
+
+
+	} else {
+		$html .= wp_kses_post( $arguments[ 'message-no-data' ] );
+	}
+
+	return $html;
+}
+add_shortcode( 'wt-notices', 'ws_ls_notices_shortcode' );

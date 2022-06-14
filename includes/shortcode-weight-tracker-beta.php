@@ -82,6 +82,10 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 			$html .= ws_ls_component_alert( __( 'Your data has successfully been deleted.', WE_LS_SLUG ) );
 		}
 
+		// TODO: Add ability to disable notifications
+
+		$html .= ws_ls_notices_shortcode( $shortcode_arguments );
+
 		// Tab menu
 		$html .= ws_ls_wt_tab_menu( $shortcode_arguments );
 
