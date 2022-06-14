@@ -264,3 +264,14 @@ function ws_ls_messages_db_stats( $user_id ) {
 
 	return $stats;
 }
+
+/**
+ * Delete all notifications entries older than 31 days
+ *
+ * @return mixed
+ */
+function ws_ls_messages_db_delete_old() {
+
+	global $wpdb;
+	return $wpdb->query( 'DELETE FROM ' . $wpdb->prefix . WE_LS_MYSQL_MESSAGES . ' WHERE ( `created` < DATE_SUB(now(), INTERVAL 31 DAY ) and `notification` = 1 );' );
+}

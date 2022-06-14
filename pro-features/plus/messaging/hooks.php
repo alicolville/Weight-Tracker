@@ -114,7 +114,7 @@ add_shortcode( 'wt-notes', 'ws_ls_note_shortcode' );
  *
  * @return string
  */
-function ws_ls_notices_shortcode( $user_defined_arguments ) {
+function ws_ls_notifications_shortcode( $user_defined_arguments ) {
 
 	if ( false === WS_LS_IS_PRO ) {
 		return ws_ls_display_pro_upgrade_notice_for_shortcode();
@@ -141,4 +141,15 @@ function ws_ls_notices_shortcode( $user_defined_arguments ) {
 
 	return $html;
 }
-add_shortcode( 'wt-notices', 'ws_ls_notices_shortcode' );
+add_shortcode( 'wt-notifications', 'ws_ls_notifications_shortcode' );   // TODO: Document this? One that's beneficial to surface to end users?
+
+/**
+ * Delete older notifications
+ */
+function ws_ls_notifications_delete_cron() {
+
+	ws_ls_messages_db_delete_old();
+}
+add_action( 'weight_loss_tracker_daily', 'ws_ls_notifications_delete_cron' );
+
+

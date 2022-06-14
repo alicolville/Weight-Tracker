@@ -84,7 +84,7 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 
 		// TODO: Add ability to disable notifications
 
-		$html .= ws_ls_notices_shortcode( $shortcode_arguments );
+		$html .= ws_ls_notifications_shortcode( $shortcode_arguments );
 
 		// Tab menu
 		$html .= ws_ls_wt_tab_menu( $shortcode_arguments );

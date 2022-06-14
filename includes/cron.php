@@ -40,7 +40,6 @@ add_action( 'weight_loss_tracker_hourly', 'ws_ls_licences_cron' );
 function ws_ls_logs_delete_cron() {
 
     ws_ls_log_delete_old();
-
 }
 add_action( 'weight_loss_tracker_hourly', 'ws_ls_logs_delete_cron' );
 
