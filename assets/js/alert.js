@@ -13,7 +13,14 @@
       return;
     }
 
-    // Todo: Post AJAX to say never to show this notification again
+    let data = {  'action'            : 'ws_ls_delete_notification',
+                  'security'          : ws_ls_config[ 'ajax-security-nonce' ],
+                  'notification-id'   : notification_id
+    };
+
+    $.post( ws_ls_config[ 'ajax-url' ], data, function ( response ) {
+
+    });
 
   });
 

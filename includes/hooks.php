@@ -100,6 +100,8 @@ add_filter( 'body_class', function( $classes ) {
 	return $classes;
 });
 
+$uikit_js_enqueued = false;
+
 /**
  * Enqueue relevant dependencies for UI Kit
  *
@@ -128,11 +130,28 @@ function ws_ls_enqueue_uikit( $include_theme = true, $include_font = true, $load
 	wp_enqueue_script( 'yk-uikit', plugins_url( '../assets/uikit/js/uikit' . 	$minified . '.js', __FILE__ ), [] , WE_LS_CURRENT_VERSION );
 	wp_enqueue_script( 'yk-uikit-icons', plugins_url( '../assets/uikit/js/uikit-icons' . 	$minified . '.js', __FILE__ ), [] , WE_LS_CURRENT_VERSION);
 
+	global $uikit_js_enqueued;
+
+	if ( false === $uikit_js_enqueued ) {
+		wp_localize_script( 'yk-uikit', 'wt_config', ws_ls_config_js() );
+	}
+
+
+
 	if ( false === empty( $load_ui_script ) ) {
 		wp_enqueue_script( 'yk-uikit-' . $load_ui_script, plugins_url( '../assets/js/' . $load_ui_script . $minified . '.js', __FILE__ ), [] , WE_LS_CURRENT_VERSION );
 	}
 
 
+}
+
+/**
+ * Add JS config for uikit script
+ * @return array
+ */
+function ws_ls_enqueue_uikit_js() {
+	return [ 'ajax-url'             => admin_url( 'admin-ajax.php' ),
+	         'ajax-security-nonce'  => wp_create_nonce( 'ws-ls-nonce' ) ];
 }
 
 /**

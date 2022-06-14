@@ -22,6 +22,19 @@ function ws_ls_clear_target_callback() {
 add_action( 'wp_ajax_ws_ls_clear_target', 'ws_ls_clear_target_callback' );
 
 /**
+ * AJAX handler for deleting a notification
+ */
+function ws_ls_delete_notification_callback() {
+
+	check_ajax_referer( 'ws-ls-nonce', 'security' );
+
+	$notification_id = ws_ls_post_value('notification-id');
+
+	wp_send_json( ws_ls_notification_db_delete( $notification_id ) );
+}
+add_action( 'wp_ajax_ws_ls_delete_notification', 'ws_ls_delete_notification_callback' );
+
+/**
  * AJAX handler for saving user preferences.
  */
 function ws_ls_save_preferences_callback() {

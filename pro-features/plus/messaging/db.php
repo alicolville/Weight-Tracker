@@ -154,8 +154,32 @@ function ws_ls_messaging_db_delete( $message_id ) {
 }
 
 /**
+ * Delete a notification
+ * @param $notification_id
+ *
+ * @return bool
+ */
+function ws_ls_notification_db_delete( $notification_id ) {
+
+	if ( true === empty( $notification_id ) ) {
+		return false;
+	}
+
+	global $wpdb;
+
+	$result = $wpdb->delete( $wpdb->prefix . WE_LS_MYSQL_MESSAGES,
+		[ 'id' => $notification_id, 'notification' => 1 ],
+		[ '%d', '%d' ]
+	);
+
+	return ! empty( $result );
+}
+
+
+/**
  * Delete a message
- * @param $message_id
+ *
+ * @param $user_id
  *
  * @return bool
  */
