@@ -406,11 +406,15 @@ function ws_ls_photos_db_count_photos( $user_id = false, $hide_from_shortcodes =
  * @param int $width
  * @param int $height
  * @param bool $include_full_url
+ * @param null $css_class
+ *
  * @return bool
  */
-function ws_ls_photo_get( $attachment_id, $width = 200, $height = 200, $include_full_url = true ) {
+function ws_ls_photo_get( $attachment_id, $width = 200, $height = 200, $include_full_url = true, $css_class = NULL ) {
 
-	$photo['thumb'] = wp_get_attachment_image( $attachment_id, array( $width, $height) );
+	$attributes = ( false === empty( $css_class ) ) ? [ 'class' => $css_class ] : '';
+
+	$photo['thumb'] = wp_get_attachment_image( $attachment_id, array( $width, $height), false, $attributes );
 
 	if ( false === empty( $photo['thumb'] )) {
 

@@ -415,9 +415,9 @@ function ws_ls_component_alert( $message, $type = 'success', $closable = true, $
 
 	// Types: danger, warning, success, primary
 
-	return sprintf( '<div class="ykuk-alert-%1$s" ykuk-alert>
+	return sprintf( '<div class="ykuk-display-block ykuk-alert-%1$s" ykuk-alert>
 		                <a class="ykuk-alert-close" %3$s data-notification-id="%5$d"></a>
-		                <p>%2$s%4$s</p>
+		                %2$s%4$s
 					</div>',
 					esc_attr( $type ),
 					wp_kses_post( $message ),

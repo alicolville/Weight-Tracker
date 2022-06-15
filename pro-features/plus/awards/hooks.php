@@ -222,7 +222,13 @@ function ws_ls_awards_add_notification_for_award( $weight_object, $weight_award,
 	}
 
 	if ( false === empty( $info['user-id'] ) && false === empty( $weight_award['title'] ) ) {
-		ws_ls_messaging_db_add( $info['user-id'], 1, sprintf('Award received: %s', $weight_award['title'] ), false, true, true );
+
+		$badge = ( false === empty( $weight_award['badge'] ) ) ? ws_ls_photo_get( $weight_award['badge'], 50, 50, false, 'ykuk-align-left ykuk-margin-remove-adjacent' ) : NULL;
+
+		$thumbnail = ( false === empty( $badge['thumb'] ) ) ? $badge['thumb'] : '';
+
+		ws_ls_messaging_db_add( $info['user-id'], 1, sprintf('%s<p><strong>Award received:</strong></p><p>%s</p>', $thumbnail, $weight_award['title'] ), false, true, true );
+
 	}
 
 }
