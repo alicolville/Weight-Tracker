@@ -18,8 +18,8 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 												'bmi-format'                => 'both',                      // Format for display BMI
 												'disable-main-font'         => false,                       // If set to true, don't include the main font
 												'disable-theme-css'         => false,                       // If set to true, don't include the additional theme CSS used
-												'show-delete-data' 		    => true,                	    // Show "Delete your data" section
-												'hide-notes' 				=> ws_ls_setting_hide_notes(),  // Hide notes field
+												'enable-week-ranges'        => false,                       // Enable Week Ranges?
+	                                            'hide-notes' 				=> ws_ls_setting_hide_notes(),  // Hide notes field
 												'hide-notifications' 		=> true,                        // Hide notifications part of form
 												'hide-photos' 				=> false,                       // Hide photos part of form
 												'hide-chart-overview' 		=> false,               	    // Hide chart on the overview tab
@@ -30,8 +30,9 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 												'hide-custom-fields-form'   => false,                       // Hide custom fields from form
 												'hide-custom-fields-chart'  => false,                       // Hide custom fields from chart
 												'hide-custom-fields-table'  => false,                       // Hide custom fields from table
-												'enable-week-ranges'        => false,                       // Enable Week Ranges?
-												'summary-boxes-data'        => 'number-of-entries,number-of-days-tracking,latest-weight,start-weight', // Summary boxes to display at top of data tab
+												'kiosk-mode'                => false,                       // If in Kiosk mode, allow this UI to be used for multiple isers
+												'show-delete-data' 		    => true,                	    // Show "Delete your data" section
+	                                            'summary-boxes-data'        => 'number-of-entries,number-of-days-tracking,latest-weight,start-weight', // Summary boxes to display at top of data tab
 												'summary-boxes-home'        => 'latest-weight,previous-weight,latest-versus-target,target-weight', // Summary boxes to display at top of data tab
 												'summary-boxes-awards'      => 'latest-award,number-of-awards',
 												'summary-boxes-advanced'    => 'bmi,bmr',                   // Summary boxes to display at top of advanced tab
@@ -39,17 +40,19 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 												'weight-mandatory'			=> true,						// Is weight mandatory?
 	], $user_defined_arguments );
 
+	$html = '<div class="ws-ls-tracker">';
+
 	if ( null !== ws_ls_querystring_value( 'ws-edit-entry' ) ) {
 		$shortcode_arguments[ 'active-tab' ] = 'history';
 	}
-
+	
 	if ( $active_tab = ws_ls_querystring_value( 'tab' ) ) {
 		$shortcode_arguments[ 'active-tab' ] = $active_tab;
 	}
 
 	ws_ls_enqueue_uikit( ! $shortcode_arguments[ 'disable-theme-css' ], ! $shortcode_arguments[ 'disable-main-font' ], 'wt' );
 
-	$html                                           = '<div class="ws-ls-tracker">';
+
 	$shortcode_arguments[ 'user-id' ]               = (int) $shortcode_arguments[ 'user-id' ];
 	$shortcode_arguments[ 'show-tab-awards' ]       = ( false === ws_ls_to_bool( $shortcode_arguments[ 'hide-tab-awards' ] ) && true === WS_LS_IS_PRO_PLUS );
 	$shortcode_arguments[ 'show-tab-advanced' ]     = ( false === ws_ls_to_bool( $shortcode_arguments[ 'hide-tab-advanced' ] ) && true === WS_LS_IS_PRO_PLUS );
@@ -63,7 +66,8 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 		                            true === ws_ls_to_bool( $shortcode_arguments[ 'hide-custom-fields-chart' ] ) ||
 										true === ws_ls_to_bool( $shortcode_arguments[ 'hide-custom-fields-table' ] ) );
 
-	$shortcode_arguments[ 'weight-data' ]   = ws_ls_entries_get( [     'week'              => $shortcode_arguments[ 'selected-week-number' ] ,
+	$shortcode_arguments[ 'weight-data' ]   = ws_ls_entries_get( [     'user-id'           => $shortcode_arguments[ 'user-id' ],
+																	   'week'              => $shortcode_arguments[ 'selected-week-number' ],
 	                                                                   'prep'              => true,
 	                                                                   'must-have-weight'  => $ensure_we_have_weights,
 	                                                                   'reverse'           => true,
@@ -373,13 +377,13 @@ function ws_ls_tab_gallery( $arguments = [] ) {
 				<div>
 					' . ws_ls_ui_kit_info_box_with_header_footer( [ 'header' 		=> __( 'Latest Photo', WE_LS_SLUG ),
 																	'body-class'	=> 'ykuk-text-small ykuk-text-center',
-																	'body' 			=> ws_ls_photos_shortcode_recent( [] )
+																	'body' 			=> ws_ls_photos_shortcode_recent( [ 'user-id' => $arguments[ 'user-id' ] ] )
 					] ) . '
 				</div>
 				<div>
 					' . ws_ls_ui_kit_info_box_with_header_footer( [ 'header' 		=> __( 'Oldest Photo', WE_LS_SLUG ),
 																	'body-class'	=> 'ykuk-text-small ykuk-text-center',
-																	'body' 			=> ws_ls_photos_shortcode_oldest( [] )
+																	'body' 			=> ws_ls_photos_shortcode_oldest( [ 'user-id' => $arguments[ 'user-id' ] ] )
 					] ) . '
 				</div>
 			</div>
@@ -388,7 +392,7 @@ function ws_ls_tab_gallery( $arguments = [] ) {
 
 	$html .= ws_ls_ui_kit_info_box_with_header_footer( [    'header' 		=> __( 'All of your photos', WE_LS_SLUG ),
 															'body-class'	=> 'ykuk-text-small ykuk-text-center',
-															'body' 			=> ws_ls_photos_shortcode_gallery( [] )
+															'body' 			=> ws_ls_photos_shortcode_gallery( [ 'user-id' => $arguments[ 'user-id' ] ] )
 			] );
 
 	return $html;

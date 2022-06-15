@@ -439,7 +439,7 @@ function ws_ls_component_bmi( $args = [] ) {
 
 	$args           = wp_parse_args( $args, [ 'user-id' => get_current_user_id() ] );
 	$text_link      = '';
-	$text_data      = ws_ls_shortcode_bmi( [ 'display' => $args[ 'bmi-format' ], 'no-height-text' => '', 'no-weight-text' => '' ] );
+	$text_data      = ws_ls_shortcode_bmi( [ 'user-id' => $args[ 'user-id' ], 'display' => $args[ 'bmi-format' ], 'no-height-text' => '', 'no-weight-text' => '' ] );
 	$status         = ( false !== strpos( $text_data, 'Healthy' ) ) ? 'ykuk-label ykuk-label-success' : 'ykuk-label ykuk-label-warning';
 
 	if ( true === empty( $text_data ) ) {
