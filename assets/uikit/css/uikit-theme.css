@@ -64,3 +64,10 @@
 .ws-ls-component-user-search .selectize-control.loading:before {
   opacity: .4;
 }
+.ws-ls-search-item {
+  padding: 5px;
+  border-bottom: 1px dotted #CCCCCC;
+}
+.ws-ls-search-item .detail {
+  font-weight: bold;
+}

@@ -40,6 +40,13 @@
       labelField: "user_email",
       searchField: "user_email",
       create: false,
+      render: {
+        option: function (item, escape) {
+          return (
+            '<div class="ws-ls-search-item"><div class="detail">' + item.user_email + '</div>' + item.user_email + '</div>'
+          );
+        },
+      },
       load: function (query, callback) {
         if (!query.length) return callback();
         $.ajax({
