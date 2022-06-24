@@ -40,3 +40,27 @@
 .ykuk-scope .ws-ls-bmi-calculator .bmi-alert p {
   margin-top: 0px;
 }
+
+/* Selectize */
+.ws-ls-component-user-search .selectize-control:before {
+  content: ' ';
+  z-index: 2;
+  position: absolute;
+  top: 50%;
+  right: 34px;
+  display: block;
+  margin: -11px 0 0 0;
+  width: 16px;
+  height: 16px;
+  background-image: url('../../css/images/spinner.gif');
+  background-size: 16px 16px;
+  opacity: 0;
+
+  -webkit-transition: opacity ease .2s;
+  -o-transition: opacity ease .2s;
+  transition: opacity ease .2s;
+}
+
+.ws-ls-component-user-search .selectize-control.loading:before {
+  opacity: .4;
+}

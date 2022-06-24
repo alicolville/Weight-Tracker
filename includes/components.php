@@ -754,7 +754,6 @@ function ws_ls_uikit_beta_notice() {
 	if ( !current_user_can( 'manage_options' ) )  {
 		return '';
 	}
-
 	$key = 'ws-ls-beta-wt-notice';
 
 	if ( 'y' === ws_ls_querystring_value( $key ) ) {
@@ -786,5 +785,38 @@ function ws_ls_uikit_beta_notice() {
 			    </div>
 			</div>';
 
+}
+
+function ws_ls_component_user_search( $arguments ) {
+
+	$arguments = wp_parse_args( $arguments, [   'disable-theme-css'         => false,
+	                                            'disable-main-font'         => false,
+	                                            'disable-not-logged-in'     => false,
+	                                            'querystring-user-id-key'   => 'wt-user-id',
+	                                            'previous-search'           => ''
+	]);
+
+	ws_ls_enqueue_uikit( ! $arguments[ 'disable-theme-css' ], ! $arguments[ 'disable-main-font' ], 'user-search' );
+
+	if ( false === is_user_logged_in() ) {
+		return ( false === ws_ls_to_bool( $arguments[ 'disable-not-logged-in' ] ) ) ?
+					ws_ls_component_alert( __( 'You need to be logged in to search for users.', WE_LS_SLUG ), 'primary', false, true ) :
+						'';
+	}
+
+	wp_enqueue_style( 'wt-selectize', plugins_url( '../assets/css/libraries/selectize.default.min.css', __FILE__ ), [], WE_LS_CURRENT_VERSION );
+	wp_enqueue_script( 'wt-selectize', plugins_url( '../assets/js/libraries/selectize.min.js', __FILE__ ), [ 'yk-uikit' ], WE_LS_CURRENT_VERSION, true );
+	wp_enqueue_script( 'wt-user-search', plugins_url( '../assets/js/user-search.' . ws_ls_use_minified() . 'js', __FILE__ ), [ 'wt-selectize' ], WE_LS_CURRENT_VERSION, true );
+
+	return sprintf( '<div class="ykuk-margin ws-ls-component-user-search">
+				        <label class="ykuk-form-label" for="ykform-stacked-select">%s</label>
+				        <div class="ykuk-form-controls">
+				            <select id="%s">
+				            </select>
+				        </div>
+				    </div>',
+					__( 'Search for a given user', WE_LS_SLUG ),
+					ws_ls_component_id()
+	);
 }
 

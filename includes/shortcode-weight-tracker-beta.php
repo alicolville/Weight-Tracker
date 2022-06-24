@@ -45,7 +45,16 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 	if ( null !== ws_ls_querystring_value( 'ws-edit-entry' ) ) {
 		$shortcode_arguments[ 'active-tab' ] = 'history';
 	}
-	
+
+	if ( true === ws_ls_to_bool( $shortcode_arguments[ 'kiosk-mode' ] ) ) {
+		//$html .= ws_ls_component_alert( __( 'Kiosk mode.', WE_LS_SLUG ), 'warning', false );
+		$shortcode_arguments[ 'user-id' ] = ws_ls_querystring_value( 'wt-user-id', true, get_current_user_id() );
+
+		// TODO: Ensure the user exists!
+
+		$html .= ws_ls_component_user_search( $shortcode_arguments );
+	}
+var_dump($shortcode_arguments[ 'user-id' ]);
 	if ( $active_tab = ws_ls_querystring_value( 'tab' ) ) {
 		$shortcode_arguments[ 'active-tab' ] = $active_tab;
 	}

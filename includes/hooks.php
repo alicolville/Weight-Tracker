@@ -133,15 +133,14 @@ function ws_ls_enqueue_uikit( $include_theme = true, $include_font = true, $load
 	global $uikit_js_enqueued;
 
 	if ( false === $uikit_js_enqueued ) {
-		wp_localize_script( 'yk-uikit', 'wt_config', ws_ls_config_js() );
+		wp_localize_script( 'yk-uikit', 'wt_config', ws_ls_enqueue_uikit_js() );
 	}
 
-
+	$uikit_js_enqueued = true;
 
 	if ( false === empty( $load_ui_script ) ) {
 		wp_enqueue_script( 'yk-uikit-' . $load_ui_script, plugins_url( '../assets/js/' . $load_ui_script . $minified . '.js', __FILE__ ), [] , WE_LS_CURRENT_VERSION );
 	}
-
 
 }
 
