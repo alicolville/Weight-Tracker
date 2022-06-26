@@ -1622,3 +1622,47 @@ function ws_ls_get_unit() {
 function ws_ls_string_contains( $haystack, $needle ) {
 	return false !== strpos( $haystack, $needle );
 }
+
+/**
+ * Search users
+ * @param $search
+ * @param bool $include_meta_search
+ *
+ * @return array
+ */
+function ws_ls_user_search( $search, $include_meta_search = true ) {
+
+	$users_query_table = new WP_User_Query( [ 	'search' 			=> "*{$search}*",
+												'search_columns' 	=> [	'user_login',
+																			'user_nicename',
+																			'user_email',
+			],
+	]);
+
+	$users_via_table = $users_query_table->get_results();
+
+	if ( true === $include_meta_search ) {
+
+		$users_query_meta = new WP_User_Query(	[	'meta_query' => [
+			'relation' => 'OR',
+			[
+				'key' => 'first_name',
+				'value' => $search,
+				'compare' => 'LIKE'
+			],
+			[
+				'key' => 'last_name',
+				'value' => $search,
+				'compare' => 'LIKE'
+			]
+		]]);
+
+		$users_via_meta = $users_query_meta->get_results();
+
+		$combined_users = array_merge( $users_via_table, $users_via_meta );
+
+		return array_unique( $combined_users, SORT_REGULAR );
+	}
+
+	return $users_via_table;
+}

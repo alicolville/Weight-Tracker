@@ -23,6 +23,7 @@ function ws_ls_admin_page_search_results() {
                                 ws_ls_display_pro_upgrade_notice();
                             }
 
+                            // TODO: Use ws_ls_user_search()
                             $search_term = ws_ls_querystring_value( 'search', false );
 
                             if( true === WS_LS_IS_PRO && false === empty( $search_term ) ) {

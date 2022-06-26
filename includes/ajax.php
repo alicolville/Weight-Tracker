@@ -251,15 +251,10 @@ function ws_ls_ajax_user_search() {
 		wp_send_json( $cache );
 	}
 
-	$arguments = [ 'search'         => sprintf( '*%s*', $search ),
-	               'search_columns' => [ 'user_login', 'user_email', 'user_nicename' ],
-	               'fields'         => [ 'ID', 'user_login', 'user_email', 'user_nicename' ]
-	];
+	$users  = ws_ls_user_search( $search, ! empty( $search ) );
+	$data   = [];
 
-	$user_query     = new WP_User_Query( $arguments );
-	$data           = [];
-
-	foreach ( $user_query->get_results() as $user ) {
+	foreach ( $users as $user ) {
 
 		$user_meta = get_user_meta( $user->id );
 		$user_meta = (array) $user_meta;
