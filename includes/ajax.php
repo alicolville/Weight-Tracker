@@ -235,15 +235,25 @@ function ws_ls_ajax_get_entry_for_date() {
 }
 add_action( 'wp_ajax_ws_ls_get_entry_for_date', 'ws_ls_ajax_get_entry_for_date' );
 
+/**
+ * AJAX handler for user search via search component
+ * @return array
+ */
 function ws_ls_ajax_user_search() {
 
 	check_ajax_referer( 'ws-ls-nonce', 'security' );
 
-	// TODO: Add caching!
+	$search = ws_ls_post_value('search' );
 
+	if ( true === empty( $search ) ) {
+		return [];
+	}
 
-	$search = ws_ls_post_value('search');
+	$cache_key = md5( $search );
 
+	if ( $cache = ws_ls_cache_user_get( 'user-search', $cache_key ) ) {
+		wp_send_json( $cache );
+	}
 
 	$arguments = [ 'search'         => sprintf( '*%s*', $search ),
 	               'search_columns' => [ 'user_login', 'user_email', 'user_nicename' ],
@@ -251,62 +261,18 @@ function ws_ls_ajax_user_search() {
 	];
 
 	$user_query     = new WP_User_Query( $arguments );
+	$data           = [];
 
-	// wp_send_json( [ 'pagination' => [ 'more' => false], 'results' => [ 63 => 'Ali Colville' ]]);
+	foreach ( $user_query->get_results() as $user ) {
 
-	//wp_send_json( [ [ 'id' => 123, 'name' => 'Ali Colville' ]]);
+		$data[] = [ 'id'        => $user->id,
+					'title'     => $user->user_nicename,
+					'detail'    => $user->user_email
+		];
+	}
 
-	wp_send_json($user_query->get_results());
+	ws_ls_cache_user_set( 'user-search', $cache_key, $data, MINUTE_IN_SECONDS );
 
-	//if ( 0 !== $user_query->get_total() ) {
-
-//		foreach ( $user_query->get_results() as $user ) {
-//		//	wp_send_json( $user );
-//		}
-	//)
-
-
-	//$results = ws_ls_user_search($search);
-
-//	if ( false === empty ( $results )) {
-//
-//		// Add additional data to object
-//	//	$results = array_map( 'wltbs_get_user_data', $results);
-//
-//		wp_send_json( $results );
-//	}
-//
-//	wp_send_json(100);
+	wp_send_json( $data );
 }
 add_action( 'wp_ajax_ws_ls_user_search', 'ws_ls_ajax_user_search' );
-
-function ws_ls_user_search($name, $limit = false) {
-
-	if(false === empty($name)) {
-
-		global $wpdb;
-
-		$data_table_name = $wpdb->prefix . WE_LS_TABLENAME;
-
-		$sql = "SELECT distinct " . $wpdb->prefix. "users.* FROM " . $wpdb->prefix . "users
-				LEFT JOIN " . $data_table_name . " as wd ON ( " . $wpdb->prefix . "users.ID = wd.weight_user_id )
-				LEFT JOIN " . $wpdb->prefix . "usermeta um ON ( " . $wpdb->prefix . "users.ID = um.user_id )
-				WHERE 1=1 AND um.meta_key = 'last_name' AND um.meta_value LIKE %s
-				ORDER BY user_login ASC";
-
-		if ( false === empty($limit) ) {
-			$sql .= ' limit 0, ' . intval($limit);
-		}
-
-		$name = $wpdb->esc_like( $name );
-
-		$name = '%' . $name . '%';
-//wp_send_json($sql);
-		$sql = $wpdb->prepare($sql,$name);
-
-		return $wpdb->get_results($sql, ARRAY_A);
-
-	}
-	return false;
-
-}
