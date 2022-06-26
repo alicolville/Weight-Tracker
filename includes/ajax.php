@@ -245,10 +245,6 @@ function ws_ls_ajax_user_search() {
 
 	$search = ws_ls_post_value('search' );
 
-	if ( true === empty( $search ) ) {
-		return [];
-	}
-
 	$cache_key = md5( $search );
 
 	if ( $cache = ws_ls_cache_user_get( 'user-search', $cache_key ) ) {

@@ -68,6 +68,6 @@
   padding: 5px;
   border-bottom: 1px dotted #CCCCCC;
 }
-.ws-ls-search-item .detail {
+.ws-ls-search-item .title {
   font-weight: bold;
 }

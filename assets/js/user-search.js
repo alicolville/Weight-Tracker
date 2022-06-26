@@ -4,51 +4,20 @@
 
   $(document).ready(function(){
 
-  //   $( '.ws-ls-component-user-search select' ).selectize({
-  //     preload: false,
-  //     valueField: 'id',
-  //     labelField: 'user_email',
-  //     searchField: 'name',
-  //     options: [],
-  //     load: function (query, callback) {
-  //       this.clearOptions();
-  //
-  //       $.ajax({
-  //         url: wt_config['ajax-url'],
-  //         type: 'POST',
-  //         data: { action: 'ws_ls_user_search', security: wt_config[ 'ajax-security-nonce' ], search: query},
-  //         error: function () {
-  //           callback();
-  //         },
-  //         success: function (res) {
-  //           callback(res);
-  //         }
-  //       });
-  //     },
-  //     onChange: function (value) {
-  //
-  //       console.log( $( this ) );
-  //
-  //       console.log( value );
-  //
-  //     }
-  //   });
-  //
-
     $(".ws-ls-component-user-search select").selectize({
+      preload: ( 'true' === wt_user_search_config[ 'preload' ] ),
       valueField: "id",
-      labelField: "user_email",
-      searchField: "user_email",
-      create: false,
+      labelField: "title",
+      searchField: "title",
       render: {
         option: function (item, escape) {
           return (
-            '<div class="ws-ls-search-item"><div class="detail">' + item.user_email + '</div>' + item.user_email + '</div>'
+            '<div class="ws-ls-search-item"><div class="title">' + item.title + '</div>' + item.detail + '</div>'
           );
         },
       },
       load: function (query, callback) {
-        if (!query.length) return callback();
+
         $.ajax({
           url: wt_config['ajax-url'],
           type: 'POST',
@@ -61,6 +30,10 @@
           }
         });
       },
+      onChange: function (value) {
+
+        console.log(value);
+      }
     });
 
   });

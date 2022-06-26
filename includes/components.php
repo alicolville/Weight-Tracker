@@ -787,6 +787,12 @@ function ws_ls_uikit_beta_notice() {
 
 }
 
+/**
+ * Show user search component
+ * @param $arguments
+ *
+ * @return string
+ */
 function ws_ls_component_user_search( $arguments ) {
 
 	$arguments = wp_parse_args( $arguments, [   'disable-theme-css'         => false,
@@ -807,6 +813,10 @@ function ws_ls_component_user_search( $arguments ) {
 	wp_enqueue_style( 'wt-selectize', plugins_url( '../assets/css/libraries/selectize.default.min.css', __FILE__ ), [], WE_LS_CURRENT_VERSION );
 	wp_enqueue_script( 'wt-selectize', plugins_url( '../assets/js/libraries/selectize.min.js', __FILE__ ), [ 'yk-uikit' ], WE_LS_CURRENT_VERSION, true );
 	wp_enqueue_script( 'wt-user-search', plugins_url( '../assets/js/user-search.' . ws_ls_use_minified() . 'js', __FILE__ ), [ 'wt-selectize' ], WE_LS_CURRENT_VERSION, true );
+
+	$data_stats = ws_ls_db_entries_count();
+
+	wp_localize_script( 'wt-selectize', 'wt_user_search_config', [ 'preload' => ( (int) $data_stats[ 'number-of-users' ] < 1000) ? 'true' : 'false'] );
 
 	return sprintf( '<div class="ykuk-margin ws-ls-component-user-search">
 				        <label class="ykuk-form-label" for="ykform-stacked-select">%s</label>
