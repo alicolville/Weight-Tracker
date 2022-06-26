@@ -261,9 +261,20 @@ function ws_ls_ajax_user_search() {
 
 	foreach ( $user_query->get_results() as $user ) {
 
+		$user_meta = get_user_meta( $user->id );
+		$user_meta = (array) $user_meta;
+
+		$name = sprintf( '%s %s', get_user_meta( $user->id, 'first_name', true ), get_user_meta( $user->id, 'last_name', true ) );
+
+		if ( true === empty( $name ) || ' ' == $name ) {
+			$name = $user->user_nicename;
+		} else {
+			$name = sprintf( '%s (%s)', $name, $user->user_nicename );
+		}
+
 		$data[] = [ 'id'        => $user->id,
-					'title'     => $user->user_nicename,
-					'detail'    => $user->user_email
+					'title'     => $name,
+					'detail'    => $user->user_email .$user_meta->first_name
 		];
 	}
 
