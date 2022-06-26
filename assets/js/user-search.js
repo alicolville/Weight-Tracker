@@ -9,6 +9,7 @@
       valueField: "id",
       labelField: "title",
       searchField: "title",
+      placeholder: wt_user_search_config[ 'placeholder' ],
       render: {
         option: function (item, escape) {
           return (

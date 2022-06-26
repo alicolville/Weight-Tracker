@@ -799,6 +799,7 @@ function ws_ls_component_user_search( $arguments ) {
 	                                            'disable-main-font'         => false,
 	                                            'disable-not-logged-in'     => false,
 	                                            'querystring-user-id-key'   => 'wt-user-id',
+	                                            'placeholder'               => __( 'Search for a user...', WE_LS_SLUG ),
 	                                            'previous-search'           => ''
 	]);
 
@@ -816,16 +817,15 @@ function ws_ls_component_user_search( $arguments ) {
 
 	$data_stats = ws_ls_db_entries_count();
 
-	wp_localize_script( 'wt-selectize', 'wt_user_search_config', [ 'preload' => ( (int) $data_stats[ 'number-of-users' ] < 1000) ? 'true' : 'false'] );
+	wp_localize_script( 'wt-selectize', 'wt_user_search_config', [  'preload'       => ( (int) $data_stats[ 'number-of-users' ] < 1000 ) ? 'true' : 'false',
+																	'placeholder'   => $arguments[ 'placeholder' ] ] );
 
 	return sprintf( '<div class="ykuk-margin ws-ls-component-user-search">
-				        <label class="ykuk-form-label" for="ykform-stacked-select">%s</label>
 				        <div class="ykuk-form-controls">
 				            <select id="%s">
 				            </select>
 				        </div>
 				    </div>',
-					__( 'Search for a given user', WE_LS_SLUG ),
 					ws_ls_component_id()
 	);
 }
