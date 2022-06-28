@@ -273,7 +273,7 @@ function ws_ls_ajax_user_search() {
 		];
 	}
 
-	ws_ls_cache_user_set( 'user-search', $cache_key, $data, MINUTE_IN_SECONDS );
+	ws_ls_cache_user_set( 'user-search', $cache_key, $data, 10 * MINUTE_IN_SECONDS );
 
 	wp_send_json( $data );
 }

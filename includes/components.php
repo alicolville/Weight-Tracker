@@ -798,6 +798,7 @@ function ws_ls_component_user_search( $arguments ) {
 	$arguments = wp_parse_args( $arguments, [   'disable-theme-css'         => false,
 	                                            'disable-main-font'         => false,
 	                                            'disable-not-logged-in'     => false,
+	                                            'preload-max'               => 1200,        // Preload the user list via Ajax if total user count is less than this.
 	                                            'querystring-user-id-key'   => 'wt-user-id',
 	                                            'placeholder'               => __( 'Search for a user...', WE_LS_SLUG ),
 	                                            'previous-search'           => ''
@@ -817,7 +818,7 @@ function ws_ls_component_user_search( $arguments ) {
 
 	$data_stats = ws_ls_db_entries_count();
 
-	wp_localize_script( 'wt-selectize', 'wt_user_search_config', [  'preload'       => ( (int) $data_stats[ 'number-of-users' ] < 1000 ) ? 'true' : 'false',
+	wp_localize_script( 'wt-selectize', 'wt_user_search_config', [  'preload'       => ( (int) $data_stats[ 'number-of-users' ] < (int) $arguments[ 'preload-max' ] ) ? 'true' : 'false',
 																	'placeholder'   => $arguments[ 'placeholder' ] ] );
 
 	return sprintf( '<div class="ykuk-margin ws-ls-component-user-search">

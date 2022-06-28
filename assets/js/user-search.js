@@ -4,7 +4,7 @@
 
   $(document).ready(function(){
 
-    $(".ws-ls-component-user-search select").selectize({
+     $(".ws-ls-component-user-search select").selectize({
       preload: ( 'true' === wt_user_search_config[ 'preload' ] ),
       valueField: "id",
       labelField: "title",
@@ -17,7 +17,16 @@
           );
         },
       },
+      onType: function(){
+
+        if ( 'true' !== wt_user_search_config[ 'preload' ] ) {
+          this.$input[0].selectize.clearOptions();
+          this.$input[0].selectize.refreshOptions(true);
+        }
+      },
       load: function (query, callback) {
+
+        this.clearOptions();
 
         $.ajax({
           url: wt_config['ajax-url'],
@@ -27,6 +36,11 @@
             callback();
           },
           success: function (res) {
+
+            if ( 0 === res.length ) {
+              ykukUIkit.notification({message: 'No results for: ' + query, pos: 'bottom-right', status: 'danger', timeout: 5000})
+            }
+
             callback(res);
           }
         });

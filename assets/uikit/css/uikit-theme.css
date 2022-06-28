@@ -71,3 +71,7 @@
 .ws-ls-search-item .title {
   font-weight: bold;
 }
+.ykuk-notification-message {
+  border: 2px solid #CCCCCC;
+  font-size: 0.8rem !important;
+}

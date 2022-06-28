@@ -54,7 +54,7 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 
 		$html .= ws_ls_component_user_search( $shortcode_arguments );
 	}
-var_dump($shortcode_arguments[ 'user-id' ]);
+
 	if ( $active_tab = ws_ls_querystring_value( 'tab' ) ) {
 		$shortcode_arguments[ 'active-tab' ] = $active_tab;
 	}
