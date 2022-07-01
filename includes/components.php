@@ -820,7 +820,7 @@ function ws_ls_component_user_search( $arguments ) {
 
 	wp_localize_script( 'wt-selectize', 'wt_user_search_config', [  'current-url'               =>  get_permalink(),
 																	'preload'                   => ( (int) $data_stats[ 'number-of-users' ] < (int) $arguments[ 'preload-max' ] ) ? 'true' : 'false',
-																	'placeholder'               => $arguments[ 'placeholder' ],
+																	'placeholder'       => $arguments[ 'placeholder' ],
 																	'querystring-key-user-id'   => $arguments[ 'querystring-key-user-id' ]
 	]);
 

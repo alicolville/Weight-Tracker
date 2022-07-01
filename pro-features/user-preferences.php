@@ -83,7 +83,7 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
 
 	$html_output = '';
 
-	// If enabled, show Delete data
+	// If enabled, show user preferences form
 	if( false === empty( $arguments[ 'show-user-preferences' ] ) ) {
 
 		$html_output .= '<form class="ws-ls-user-pref-form ykuk-grid-small" ykuk-grid method="post" data-redirect-url=' . esc_url( $arguments[ 'redirect-url' ] ) . '>

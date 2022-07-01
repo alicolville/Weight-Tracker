@@ -46,7 +46,9 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 		$shortcode_arguments[ 'active-tab' ] = 'history';
 	}
 
-	if ( true === ws_ls_to_bool( $shortcode_arguments[ 'kiosk-mode' ] ) ) {
+	$shortcode_arguments[ 'kiosk-mode' ] = ws_ls_to_bool( $shortcode_arguments[ 'kiosk-mode' ] );
+
+	if ( true === $shortcode_arguments[ 'kiosk-mode' ] ) {
 
 		$shortcode_arguments[ 'user-id' ] = ws_ls_querystring_value( 'wt-user-id', true, get_current_user_id() );
 
@@ -284,6 +286,11 @@ function ws_ls_wt_tab_home( $arguments = [] ) {
  */
 function ws_ls_tab_settings( $arguments = [] ) {
 
+	$redirect_url =  ( true === $arguments[ 'kiosk-mode' ] ) ?
+						add_query_arg( [    'wt-user-id'            => $arguments[ 'user-id' ],
+											'user-preference-saved' => 'true'
+						], get_permalink() ) : '';
+	
 	// Include target form?
 	if ( true === ws_ls_targets_enabled() ) {
 
@@ -300,7 +307,8 @@ function ws_ls_tab_settings( $arguments = [] ) {
 
 	$settings = ws_ls_user_preferences_form( [  'user-id'           => $arguments[ 'user-id' ],
 	                                            'uikit'             => true,
-												'show-delete-data'  => false
+												'show-delete-data'  => false,
+												'redirect-url'      => $redirect_url
 	]);
 
 	$html .= ws_ls_ui_kit_info_box_with_header_footer( [    'header'    => __( 'Settings', WE_LS_SLUG ),
@@ -311,7 +319,8 @@ function ws_ls_tab_settings( $arguments = [] ) {
 		$settings = ws_ls_user_preferences_form( [  'user-id'               => $arguments[ 'user-id' ],
 		                                            'hide-titles'           => true,
 		                                            'uikit'                 => true,
-		                                            'show-user-preferences' => false
+		                                            'show-user-preferences' => false,
+													'redirect-url'          => $redirect_url
 		]);
 
 		$html .= ws_ls_ui_kit_info_box_with_header_footer( [    'header'    => __( 'Delete your existing data', WE_LS_SLUG ),
