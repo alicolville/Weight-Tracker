@@ -13,7 +13,7 @@
       render: {
         option: function (item, escape) {
           return (
-            '<div class="ws-ls-search-item"><div class="title">' + item.title + '</div>' + item.detail + '</div>'
+            '<div class="ws-ls-search-item"><div class="title" data-test="ali">' + item.title + '</div>' + item.detail + '</div>'
           );
         },
       },
@@ -38,7 +38,7 @@
           success: function (res) {
 
             if ( 0 === res.length ) {
-              ykukUIkit.notification({message: 'No results for: ' + query, pos: 'bottom-right', status: 'danger', timeout: 5000})
+              ykukUIkit.notification({message: 'No results for: <strong>' + query + '</strong>', pos: 'bottom-right', status: 'danger', timeout: 5000})
             }
 
             callback(res);
@@ -47,7 +47,11 @@
       },
       onChange: function (value) {
 
-        console.log(value);
+        let base_url = wt_user_search_config['current-url'] + '?' +
+                        wt_user_search_config[ 'querystring-key-user-id' ] + '=' + value;
+
+        window.location.replace( base_url );
+
       }
     });
 

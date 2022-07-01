@@ -799,9 +799,9 @@ function ws_ls_component_user_search( $arguments ) {
 	                                            'disable-main-font'         => false,
 	                                            'disable-not-logged-in'     => false,
 	                                            'preload-max'               => 1200,        // Preload the user list via Ajax if total user count is less than this.
-	                                            'querystring-user-id-key'   => 'wt-user-id',
 	                                            'placeholder'               => __( 'Search for a user...', WE_LS_SLUG ),
-	                                            'previous-search'           => ''
+	                                            'previous-search'           => '',
+												'querystring-key-user-id'   => 'wt-user-id'
 	]);
 
 	ws_ls_enqueue_uikit( ! $arguments[ 'disable-theme-css' ], ! $arguments[ 'disable-main-font' ], 'user-search' );
@@ -818,8 +818,11 @@ function ws_ls_component_user_search( $arguments ) {
 
 	$data_stats = ws_ls_db_entries_count();
 
-	wp_localize_script( 'wt-selectize', 'wt_user_search_config', [  'preload'       => ( (int) $data_stats[ 'number-of-users' ] < (int) $arguments[ 'preload-max' ] ) ? 'true' : 'false',
-																	'placeholder'   => $arguments[ 'placeholder' ] ] );
+	wp_localize_script( 'wt-selectize', 'wt_user_search_config', [  'current-url'               =>  get_permalink(),
+																	'preload'                   => ( (int) $data_stats[ 'number-of-users' ] < (int) $arguments[ 'preload-max' ] ) ? 'true' : 'false',
+																	'placeholder'               => $arguments[ 'placeholder' ],
+																	'querystring-key-user-id'   => $arguments[ 'querystring-key-user-id' ]
+	]);
 
 	return sprintf( '<div class="ykuk-margin ws-ls-component-user-search">
 				        <div class="ykuk-form-controls">
