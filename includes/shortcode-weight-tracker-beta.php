@@ -368,8 +368,9 @@ function ws_ls_wt_tab_table( $arguments = [] ) {
 																											'week' 					=> $arguments[ 'selected-week-number' ] ,
 																											'bmi-format' 			=> $arguments[ 'bmi-format' ],
 																											'custom-field-groups'   => $arguments[ 'custom-field-groups' ],
+																										    'kiosk-mode'            => $arguments[ 'kiosk-mode' ],
 																											'custom-field-slugs'    => $arguments[ 'custom-field-slugs' ],
-																											'uikit'                => true
+																											'uikit'                 => true
 															] )
 
 	]);
