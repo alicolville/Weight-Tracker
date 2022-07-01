@@ -295,12 +295,13 @@ add_shortcode( 'wt', 'ws_ls_shortcode' );
  */
 function ws_ls_shortcode_embed_chart( $weight_data, $shortcode_arguments ) {
 
-	$shortcode_arguments = wp_parse_args( $shortcode_arguments, [ 	 'custom-field-groups' 	=> [],
-	                                                                 'custom-field-slugs'	=> [],
-																	 'hide-title' 			=> false,
-																	 'legend-position' 		=> 'top',
-																	 'uikit'                => false,
-																	 'hide-custom-fields'   => false
+	$shortcode_arguments = wp_parse_args( $shortcode_arguments, [ 	    'custom-field-groups' 	=> [],
+	                                                                    'custom-field-slugs'	=> [],
+																	    'hide-title' 			=> false,
+																	    'legend-position' 		=> 'top',
+																	    'uikit'                 => false,
+																	    'hide-custom-fields'    => false,
+																		'user-id'               => get_current_user_id()
 
 	] );
 
@@ -327,6 +328,7 @@ function ws_ls_shortcode_embed_chart( $weight_data, $shortcode_arguments ) {
 		$html_output .= ws_ls_display_chart( $weight_data, [    'custom-field-groups'   => $shortcode_arguments[ 'custom-field-groups' ],
 		                                                        'custom-field-slugs'    => $shortcode_arguments[ 'custom-field-slugs' ],
 																'legend-position'       => $shortcode_arguments[ 'legend-position' ],
+																'user-id'               => $shortcode_arguments[ 'user-id' ],
 																'show-meta-fields'      => ! $shortcode_arguments[ 'hide-custom-fields' ]
 		] );
 
