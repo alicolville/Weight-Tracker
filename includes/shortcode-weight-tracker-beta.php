@@ -47,10 +47,12 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 	}
 
 	if ( true === ws_ls_to_bool( $shortcode_arguments[ 'kiosk-mode' ] ) ) {
-		//$html .= ws_ls_component_alert( __( 'Kiosk mode.', WE_LS_SLUG ), 'warning', false );
+
 		$shortcode_arguments[ 'user-id' ] = ws_ls_querystring_value( 'wt-user-id', true, get_current_user_id() );
 
 		// TODO: Ensure the user exists!
+
+		$shortcode_arguments[ 'disable-not-logged-in' ] = true;
 
 		$html .= ws_ls_component_user_search( $shortcode_arguments );
 	}
