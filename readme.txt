@@ -149,6 +149,9 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 == Changelog ==
 
+New components: Detail, starting bmr
+
+New argyment "bmr-type" for "wt-bmr"
 
 = XXX =
 

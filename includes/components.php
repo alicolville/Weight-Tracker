@@ -483,9 +483,9 @@ function ws_ls_component_bmi( $args = [] ) {
  */
 function ws_ls_component_bmr( $args = [] ) {
 
-	$args           = wp_parse_args( $args, [ 'user-id' => get_current_user_id() ] );
+	$args           = wp_parse_args( $args, [ 'user-id' => get_current_user_id(), 'bmr-type' => 'current' ] );
 	$text_link      = '';
-	$text_data      = ws_ls_shortcode_bmr( [ 'user-id' => $args[ 'user-id' ], 'suppress-errors' => true ] );
+	$text_data      = ws_ls_shortcode_bmr( [ 'user-id' => $args[ 'user-id' ], 'bmr-type' => $args[ 'bmr-type' ], 'suppress-errors' => true ] );
 
 	if ( true === empty( $text_data ) ) {
 		$text_data = __( 'Missing data', WE_LS_SLUG );
@@ -512,7 +512,7 @@ function ws_ls_component_bmr( $args = [] ) {
 	                          		%3$s
                         	</div>
                      </div>',
-		__( 'BMR', WE_LS_SLUG ),
+		( 'start' === $args[ 'bmr-type' ] ) ?  __( 'Starting BMR', WE_LS_SLUG ) : __( 'Current BMR', WE_LS_SLUG ),
 		$text_data,
 		$text_link
 	);
@@ -705,7 +705,7 @@ function ws_ls_uikit_summary_boxes( $arguments, $boxes = [] ) {
 
 	$allowed_boxes = [ 'number-of-entries', 'number-of-weight-entries', 'latest-weight', 'start-weight', 'number-of-days-tracking',
 							'target-weight', 'previous-weight', 'latest-versus-target', 'bmi', 'bmr', 'latest-award', 'number-of-awards',
-								'details'];
+								'details', 'start-bmr' ];
 
 	// Default box selection
 	if ( true === empty( $boxes ) ) {
@@ -766,7 +766,10 @@ function ws_ls_uikit_summary_boxes( $arguments, $boxes = [] ) {
 				$html .= ws_ls_component_bmi( $arguments );
 				break;
 			case 'bmr':
-				$html .= ws_ls_component_bmr( $arguments );
+				$html .= ws_ls_component_bmr( [ 'bmr-type'  => 'current', 'user-id' => $arguments[ 'user-id' ] ] );
+				break;
+			case 'start-bmr':
+				$html .= ws_ls_component_bmr( [ 'bmr-type'  => 'start', 'user-id' => $arguments[ 'user-id' ] ] );
 				break;
 			case 'details':
 				$html .= ws_ls_component_details( $arguments );
