@@ -50,13 +50,22 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 
 	if ( true === $shortcode_arguments[ 'kiosk-mode' ] ) {
 
-		$shortcode_arguments[ 'user-id' ] = ws_ls_querystring_value( 'wt-user-id', true, get_current_user_id() );
+		$shortcode_arguments[ 'user-loaded' ]   = false;
+		$user_id_to_load                        = ws_ls_querystring_value( 'wt-user-id', true );
 
-		// TODO: Ensure the user exists!
+		if ( $user_id_to_load && ws_ls_user_exist( $user_id_to_load ) ) {
+			$shortcode_arguments[ 'user-id' ]       = $user_id_to_load;
+			$shortcode_arguments[ 'user-loaded' ]   = true;
+		}
 
 		$shortcode_arguments[ 'disable-not-logged-in' ] = true;
 
 		$html .= ws_ls_component_user_search( $shortcode_arguments );
+
+		// Have we got a selected user? If not, only display drop down box
+		if( false === $shortcode_arguments[ 'user-loaded' ] ) {
+			return $html . '</div>';
+		}
 	}
 
 	if ( $active_tab = ws_ls_querystring_value( 'tab' ) ) {
