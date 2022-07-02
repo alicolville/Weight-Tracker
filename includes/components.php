@@ -184,7 +184,7 @@ function ws_ls_component_previous_weight( $args = [] ) {
 function ws_ls_component_target_weight( $args = [] ) {
 
 	$args           = wp_parse_args( $args, [ 'user-id' => get_current_user_id() ] );
-	$target_weight  = ws_ls_target_get( $args );
+	$target_weight  = ws_ls_target_get( $args[ 'user-id' ] );
 
 	$text_date      = '';
 	$text_data      = __( 'Not set', WE_LS_SLUG );
