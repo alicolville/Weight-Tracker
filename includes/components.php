@@ -258,7 +258,7 @@ function ws_ls_component_latest_versus_target( $args = [] ) {
 
 	$args           = wp_parse_args( $args, [ 'user-id' => get_current_user_id() ] );
 	$latest_entry   = ws_ls_entry_get_latest( $args );
-	$target_weight  = ws_ls_target_get( $args );
+	$target_weight  = ws_ls_target_get( $args[ 'user-id' ] );
 	$text_data      = __( 'No data', WE_LS_SLUG );
 
 	if( true === empty( $latest_entry ) ) {
