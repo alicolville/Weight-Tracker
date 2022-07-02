@@ -820,17 +820,26 @@ function ws_ls_component_user_search( $arguments ) {
 
 	wp_localize_script( 'wt-selectize', 'wt_user_search_config', [  'current-url'               =>  get_permalink(),
 																	'preload'                   => ( (int) $data_stats[ 'number-of-users' ] < (int) $arguments[ 'preload-max' ] ) ? 'true' : 'false',
-																	'placeholder'       => $arguments[ 'placeholder' ],
+																	'placeholder'               => $arguments[ 'placeholder' ],
 																	'querystring-key-user-id'   => $arguments[ 'querystring-key-user-id' ]
 	]);
 
-	return sprintf( '<div class="ykuk-margin ws-ls-component-user-search">
-				        <div class="ykuk-form-controls">
-				            <select id="%s">
+	$reset_link = remove_query_arg( $arguments[ 'querystring-key-user-id' ], ws_ls_get_url() );
+
+	return sprintf( '<div class="ykuk-margin ws-ls-component-user-search ykuk-grid" ykuk-grid>
+				        <div class="ykuk-width-expand">
+				            <select id="%1$s">
 				            </select>
 				        </div>
-				    </div>',
-					ws_ls_component_id()
+				        <div class="ykuk-text-right">
+				            <a href="%2$s" class="ykuk-button ykuk-button-%3$s"  >%4$s</a>
+				        </div>
+				    </div>
+				    <div class="ykuk-divider-icon"></div>',
+					ws_ls_component_id(),
+					esc_url( $reset_link ),
+					( NULL === ws_ls_querystring_value( $arguments[ 'querystring-key-user-id' ] ) ) ? 'default' : 'secondary',
+					__( 'Reset', WE_LS_SLUG )
 	);
 }
 
