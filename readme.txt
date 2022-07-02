@@ -153,6 +153,8 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 = XXX =
 
 * New feature: Added a new tab to [wt-beta] to display the user's awards. Read more: https://docs.yeken.uk/shortcodes/wt-beta.html
+* Improvement: Added a new argument "show-tab-info" to [wt-beta] to add an additional summary tab. Read more: https://docs.yeken.uk/shortcodes/wt-beta.html
+* Improvement: Added a new argument "summary-boxes-summary" to [wt-beta] to specify which components appear on the summary tab. Read more: https://docs.yeken.uk/shortcodes/wt-beta.html
 * Improvement: When a user is given an award, a notification is displayed at the top of the [wt-beta] shortcode.
 * Improvement: Added a new summary box component "latest-award". Read more https://docs.yeken.uk/components.html
 * Improvement: Added a new summary box component "number-of-awards". Read more https://docs.yeken.uk/components.html

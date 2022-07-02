@@ -519,6 +519,37 @@ function ws_ls_component_bmr( $args = [] ) {
 }
 
 /**
+ * Details component
+ * @param array $args
+ *
+ * @return string
+ */
+function ws_ls_component_details( $args = [] ) {
+
+	$args       = wp_parse_args( $args, [ 'user-id' => get_current_user_id() ] );
+	$user       = get_user_by( 'id', $args[ 'user-id' ] );
+	$name       = sprintf( '%s %s', get_user_meta( $args[ 'user-id' ], 'first_name', true ), get_user_meta( $args[ 'user-id' ], 'last_name', true ) );
+
+	if ( true === empty( $name ) || ' ' == $name ) {
+		$name = $user->user_nicename;
+	} else {
+		$name = sprintf( '%s (%s)', $name, $user->user_nicename );
+	}
+
+	return sprintf( '<div>
+	                        <div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
+	                                <span class="ykuk-info-box-header">%1$s</span><br />
+	                                <span class="ykuk-text-bold">%2$s</span><br />
+	                          		<a href="mailto:%3$s">%3$s</a>
+                        	</div>
+                     </div>',
+		__( 'Name', WE_LS_SLUG ),
+		esc_html( $name ),
+		esc_html( $user->user_email )
+	);
+}
+
+/**
  * Render link with modal
  *
  * @param $title
@@ -673,7 +704,8 @@ function ws_ls_uikit_data_summary_boxes_display( $key, $arguments = [] ) {
 function ws_ls_uikit_summary_boxes( $arguments, $boxes = [] ) {
 
 	$allowed_boxes = [ 'number-of-entries', 'number-of-weight-entries', 'latest-weight', 'start-weight', 'number-of-days-tracking',
-							'target-weight', 'previous-weight', 'latest-versus-target', 'bmi', 'bmr', 'latest-award', 'number-of-awards' ];
+							'target-weight', 'previous-weight', 'latest-versus-target', 'bmi', 'bmr', 'latest-award', 'number-of-awards',
+								'details'];
 
 	// Default box selection
 	if ( true === empty( $boxes ) ) {
@@ -735,6 +767,9 @@ function ws_ls_uikit_summary_boxes( $arguments, $boxes = [] ) {
 				break;
 			case 'bmr':
 				$html .= ws_ls_component_bmr( $arguments );
+				break;
+			case 'details':
+				$html .= ws_ls_component_details( $arguments );
 				break;
 		}
 

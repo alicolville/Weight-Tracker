@@ -32,11 +32,13 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 												'hide-custom-fields-table'  => false,                       // Hide custom fields from table
 												'kiosk-mode'                => false,                       // If in Kiosk mode, allow this UI to be used for multiple isers
 												'show-delete-data' 		    => true,                	    // Show "Delete your data" section
+												'show-tab-info' 		    => false,
 	                                            'summary-boxes-data'        => 'number-of-entries,number-of-days-tracking,latest-weight,start-weight', // Summary boxes to display at top of data tab
 												'summary-boxes-home'        => 'latest-weight,previous-weight,latest-versus-target,target-weight', // Summary boxes to display at top of data tab
 												'summary-boxes-awards'      => 'latest-award,number-of-awards',
 												'summary-boxes-advanced'    => 'bmi,bmr',                   // Summary boxes to display at top of advanced tab
-												'user-id'					=> get_current_user_id(),
+												'summary-boxes-summary'     => 'details', // Summary boxes to display at top of data tab
+	                                            'user-id'					=> get_current_user_id(),
 												'weight-mandatory'			=> true,						// Is weight mandatory?
 	], $user_defined_arguments );
 
@@ -50,6 +52,8 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 
 	if ( true === $shortcode_arguments[ 'kiosk-mode' ] ) {
 
+		$shortcode_arguments[ 'show-tab-info' ] = true;
+		$shortcode_arguments[ 'active-tab' ]    = 'summary';
 		$shortcode_arguments[ 'user-loaded' ]   = false;
 		$user_id_to_load                        = ws_ls_querystring_value( 'wt-user-id', true );
 
@@ -169,11 +173,15 @@ function ws_ls_wt_form( $arguments = [] ) {
  */
 function ws_ls_wt_tab_menu( $arguments = [] ) {
 
-	$tabs = [
-				[ 'name' => 'home', 'icon' => 'home' ],
-				[ 'name' => 'add-edit', 'icon' => 'plus' ],
-				[ 'name' => 'history', 'icon' => 'history' ],
-	];
+	$tabs = [];
+
+	if ( true === ws_ls_to_bool( $arguments[ 'show-tab-info'] ) ) {
+		$tabs[] = [ 'name' => 'summary', 'icon' => 'info' ];
+	}
+
+	$tabs[] = [ 'name' => 'home', 'icon' => 'home' ];
+	$tabs[] = [ 'name' => 'add-edit', 'icon' => 'plus' ];
+	$tabs[] = [ 'name' => 'history', 'icon' => 'history' ];
 
 	if ( true === $arguments[ 'show-tab-awards' ] ) {
 		$tabs[] = [ 'name' => 'awards', 'icon' => 'star' ];
@@ -226,6 +234,11 @@ function ws_ls_wt_tab_menu( $arguments = [] ) {
 function ws_ls_wt_tab_panes( $arguments = [] ) {
 
 	$html = '<ul class="ykuk-switcher switcher-container ykuk-margin">';
+
+	if ( true === ws_ls_to_bool( $arguments[ 'show-tab-info'] ) ) {
+		$html .= '<li>' . ws_ls_wt_tab_summary( $arguments ) .'</li>';
+	}
+
 	$html .=		'	<li>' . ws_ls_wt_tab_home( $arguments ) . '</li>
 						<li>' . ws_ls_tab_add_entry( $arguments ) . '</li>
 						<li>' . ws_ls_wt_tab_table( $arguments ) . '</li>';
@@ -253,6 +266,17 @@ function ws_ls_wt_tab_panes( $arguments = [] ) {
 	$html .= '</ul>';
 
 	return $html;
+}
+
+/**
+ * Return Summary tab content
+ * @param array $arguments
+ *
+ * @return string
+ */
+function ws_ls_wt_tab_summary( $arguments = [] ) {
+
+	return ws_ls_uikit_data_summary_boxes_display( 'summary-boxes-summary', $arguments );
 }
 
 /**
