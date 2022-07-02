@@ -290,7 +290,7 @@ function ws_ls_tab_settings( $arguments = [] ) {
 						add_query_arg( [    'wt-user-id'            => $arguments[ 'user-id' ],
 											'user-preference-saved' => 'true'
 						], get_permalink() ) : '';
-	
+
 	// Include target form?
 	if ( true === ws_ls_targets_enabled() ) {
 

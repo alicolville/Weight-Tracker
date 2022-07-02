@@ -24,8 +24,8 @@ function ws_ls_messaging_db_select( $to, $from = NULL, $is_note = true, $is_noti
 
 	$cache_key = 'ws-ls-messaging-' . md5($from . $limit . $is_note . $visible_to_user . $is_notification . $offset . $limit );
 
-	// Return cache if found!
 	if ( false === $ignore_cache && $cache = ws_ls_cache_user_get( $to, $cache_key ) ) {
+		echo ' cache';
 		return $cache;
 	}
 
@@ -121,11 +121,14 @@ function ws_ls_messaging_db_add( $to, $from, $message, $is_note = false, $visibl
 
 /**
  * Delete a message
+ *
  * @param $message_id
+ *
+ * @param bool $is_notification
  *
  * @return bool
  */
-function ws_ls_messaging_db_delete( $message_id ) {
+function ws_ls_messaging_db_delete( $message_id, $is_notification = false ) {
 
 	if ( false === WS_LS_IS_PRO ) {
 		return false;
@@ -143,38 +146,20 @@ function ws_ls_messaging_db_delete( $message_id ) {
 		ws_ls_cache_user_delete( $message[ 'to' ] );
 	}
 
-	$result = $wpdb->delete( $wpdb->prefix . WE_LS_MYSQL_MESSAGES,
-		[ 'id' => $message_id ],
-		[ '%d' ]
-	);
+	$data   = [ 'id' => $message_id ];
+	$format = [ '%d' ];
+
+	if ( true === $is_notification ) {
+		$data[ 'notification' ] = 1 ;
+		$format[]               = '%d';
+	}
+
+	$result = $wpdb->delete( $wpdb->prefix . WE_LS_MYSQL_MESSAGES, $data, $format );
 
 	ws_ls_delete_cache( 'message-' . (int) $message_id );
 
 	return ! empty( $result );
 }
-
-/**
- * Delete a notification
- * @param $notification_id
- *
- * @return bool
- */
-function ws_ls_notification_db_delete( $notification_id ) {
-
-	if ( true === empty( $notification_id ) ) {
-		return false;
-	}
-
-	global $wpdb;
-
-	$result = $wpdb->delete( $wpdb->prefix . WE_LS_MYSQL_MESSAGES,
-		[ 'id' => $notification_id, 'notification' => 1 ],
-		[ '%d', '%d' ]
-	);
-
-	return ! empty( $result );
-}
-
 
 /**
  * Delete a message
@@ -200,8 +185,6 @@ function ws_ls_messaging_db_delete_all_for_user( $user_id ) {
 
 	return ! empty( $result );
 }
-
-
 
 /**
  * Fetch a message
