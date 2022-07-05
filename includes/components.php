@@ -13,7 +13,7 @@ function ws_ls_uikit_summary_boxes( $arguments, $boxes = [] ) {
 
 	$allowed_boxes = [ 'number-of-entries', 'number-of-weight-entries', 'latest-weight', 'start-weight', 'number-of-days-tracking',
 		'target-weight', 'previous-weight', 'latest-versus-target', 'bmi', 'bmr', 'latest-award', 'number-of-awards',
-		'details', 'start-bmr' ];
+		'details', 'start-bmr', 'age-dob' ];
 
 	// Default box selection
 	if ( true === empty( $boxes ) ) {
@@ -81,6 +81,9 @@ function ws_ls_uikit_summary_boxes( $arguments, $boxes = [] ) {
 				break;
 			case 'details':
 				$html .= ws_ls_component_details( $arguments );
+				break;
+			case 'age-dob':
+				$html .= ws_ls_component_age_dob( [ 'user-id' => $arguments[ 'user-id' ] ] );
 				break;
 		}
 
@@ -337,7 +340,6 @@ function ws_ls_component_start_weight( $args = [] ) {
 	);
 }
 
-
 /**
  * Component to display latest versus target weight
  * @param array $args
@@ -482,6 +484,40 @@ function ws_ls_component_number_of_days_tracking( $args = [] ) {
 		ws_ls_round_number( $days ),
 		__( 'Tracking for', WE_LS_SLUG ),
 		__( 'days', WE_LS_SLUG )
+	);
+}
+
+/**
+ * Component to display age/dob
+ * @param array $args
+ *
+ * @return string
+ */
+function ws_ls_component_age_dob( $args = [] ) {
+
+	$args   = wp_parse_args( $args, [ 'user-id' => get_current_user_id() ] );
+	$dob    = ws_ls_get_dob( $args[ 'user-id'] );
+
+	$text_link  = __( 'Set DoB', WE_LS_SLUG );
+	$age        = __( 'DoB missing', WE_LS_SLUG );
+
+	if( false === empty( $dob ) ) {
+		$text_link  = ws_ls_iso_date_into_correct_format( $dob );
+		$age        = ws_ls_age_from_dob( $dob );
+	}
+
+	return sprintf( '<div>
+                        <div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
+                                <span class="ykuk-info-box-header">%2$s</span><br />
+                                <span class="ykuk-text-bold">
+                                    %1$s
+                                </span>
+                                <br /><span class="ykuk-info-box-meta"><a href="#" class="ws-ls-tab-change" data-tab="settings">%3$s</a></span>
+                        </div>
+                    </div>',
+		$age,
+		__( 'Age', WE_LS_SLUG ),
+		$text_link
 	);
 }
 

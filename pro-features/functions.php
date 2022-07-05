@@ -823,6 +823,10 @@ function ws_ls_user_preferences_get( $field = 'gender', $user_id = false, $defau
 
 	$value = ( true === array_key_exists( $field, $user_preferences ) ) ? $user_preferences[ $field ] : $default;
 
+	if ( 'dob' === $field && '0000-00-00 00:00:00' === $value )  {
+		return NULL;
+	}
+
 	return apply_filters( 'wlt-filter-user-setting-' . $field, $value, $user_id, $field );
 }
 

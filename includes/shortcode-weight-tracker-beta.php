@@ -37,7 +37,7 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 												'summary-boxes-home'        => 'latest-weight,previous-weight,latest-versus-target,target-weight', // Summary boxes to display at top of data tab
 												'summary-boxes-awards'      => 'latest-award,number-of-awards',
 												'summary-boxes-advanced'    => 'bmi,bmr',                   // Summary boxes to display at top of advanced tab
-												'summary-boxes-summary'     => 'details,start-weight,start-bmr,bmr', // Summary boxes to display at top of data tab
+												'summary-boxes-summary'     => 'details,start-weight,start-bmr,bmr,age-dob', // Summary boxes to display at top of data tab
 	                                            'user-id'					=> get_current_user_id(),
 												'weight-mandatory'			=> true,						// Is weight mandatory?
 	], $user_defined_arguments );
