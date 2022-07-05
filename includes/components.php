@@ -13,7 +13,7 @@ function ws_ls_uikit_summary_boxes( $arguments, $boxes = [] ) {
 
 	$allowed_boxes = [ 'number-of-entries', 'number-of-weight-entries', 'latest-weight', 'start-weight', 'number-of-days-tracking',
 		'target-weight', 'previous-weight', 'latest-versus-target', 'bmi', 'bmr', 'latest-award', 'number-of-awards',
-		'name-and-email', 'start-bmr', 'start-bmi', 'age-dob', 'activity-level' ];
+		'name-and-email', 'start-bmr', 'start-bmi', 'age-dob', 'activity-level', 'height' ];
 
 	// Default box selection
 	if ( true === empty( $boxes ) ) {
@@ -45,6 +45,9 @@ function ws_ls_uikit_summary_boxes( $arguments, $boxes = [] ) {
 				                                            'title'     => 'Activity Level',
 															'setting'   => 'activity_level'
 				]);
+				break;
+			case 'height':
+				$html .= ws_ls_component_user_setting( [ 'user-id'   => $arguments[ 'user-id' ] ] );
 				break;
 			case 'number-of-entries':
 				$html .= ws_ls_component_number_of_entries( [ 'user-id' => $arguments[ 'user-id' ] ] );
