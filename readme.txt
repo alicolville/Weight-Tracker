@@ -170,6 +170,7 @@ New argyment "bmr-type" for "wt-bmr"
 * Improvement: Added a new summary box component "aim". Read more https://docs.yeken.uk/components.html
 * Improvement: Added a new summary box component "gender". Read more https://docs.yeken.uk/components.html
 * Improvement: Added a new summary box component "group". Read more https://docs.yeken.uk/components.html
+* Improvement: Added a new summary box component "latest-versus-start". Read more https://docs.yeken.uk/components.html
 
 = 10.1.3 =
 

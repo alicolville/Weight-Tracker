@@ -13,7 +13,8 @@ function ws_ls_uikit_summary_boxes( $arguments, $boxes = [] ) {
 
 	$allowed_boxes = [ 'number-of-entries', 'number-of-weight-entries', 'latest-weight', 'start-weight', 'number-of-days-tracking',
 		'target-weight', 'previous-weight', 'latest-versus-target', 'bmi', 'bmr', 'latest-award', 'number-of-awards',
-		'name-and-email', 'start-bmr', 'start-bmi', 'age-dob', 'activity-level', 'height', 'aim', 'gender', 'group' ];
+		'name-and-email', 'start-bmr', 'start-bmi', 'age-dob', 'activity-level', 'height', 'aim', 'gender', 'group',
+		'latest-versus-start' ];
 
 	// Default box selection
 	if ( true === empty( $boxes ) ) {
@@ -95,7 +96,14 @@ function ws_ls_uikit_summary_boxes( $arguments, $boxes = [] ) {
 				$html .= ws_ls_component_previous_weight( [ 'user-id' => $arguments[ 'user-id' ] ] );
 				break;
 			case 'latest-versus-target':
-				$html .= ws_ls_component_latest_versus_target( [ 'user-id' => $arguments[ 'user-id' ] ] );
+				$html .= ws_ls_component_latest_versus_another( [ 'user-id' => $arguments[ 'user-id' ] ] );
+				break;
+			case 'latest-versus-start':
+				$html .= ws_ls_component_latest_versus_another( [   'user-id'               => $arguments[ 'user-id' ],
+																	'compare-against'       => 'start',
+																	'compare-missing-text'  => __( 'Missing data', WE_LS_SLUG ),
+	                                                                'title'                 => __( 'Latest vs Start', WE_LS_SLUG )
+				]);
 				break;
 			case 'bmi':
 				$html .= ws_ls_component_bmi( [ 'bmi-type'  => 'current', 'user-id' => $arguments[ 'user-id' ] ] );
@@ -399,7 +407,7 @@ function ws_ls_component_start_weight( $args = [] ) {
                     </div>',
 		$text_data,
 		$text_date,
-		__( 'Start Weight', WE_LS_SLUG )
+		__( 'Starting Weight', WE_LS_SLUG )
 	);
 }
 
@@ -408,26 +416,38 @@ function ws_ls_component_start_weight( $args = [] ) {
  * @param array $args
  * @return string
  */
-function ws_ls_component_latest_versus_target( $args = [] ) {
+function ws_ls_component_latest_versus_another( $args = [] ) {
 
-	$args           = wp_parse_args( $args, [ 'user-id' => get_current_user_id() ] );
-	$latest_entry   = ws_ls_entry_get_latest( $args );
-	$target_weight  = ws_ls_target_get( $args[ 'user-id' ] );
-	$text_data      = __( 'No data', WE_LS_SLUG );
+	$args           = wp_parse_args( $args, [ 'user-id'                 => get_current_user_id(),
+	                                          'compare-against'         => 'target',
+	                                          'compare-missing-text'    => __( 'No target set', WE_LS_SLUG ),
+	                                          'title'                   => __( 'Latest vs Target', WE_LS_SLUG )
+	] );
+	$comparison_weight  = NULL;
+	$text_data          = __( 'No data', WE_LS_SLUG );
+	$latest_entry       = ws_ls_entry_get_latest( $args );
+
+	if ( 'target' === $args[ 'compare-against' ] ) {
+		$comparison_weight = ws_ls_target_get( $args[ 'user-id' ] );
+	} elseif ( (int) ws_ls_db_entries_count( $args[ 'user-id' ] )[ 'number-of-entries' ] >= 2 ) { // Start weight: Ensure we have 2 or more entries to compare
+		$comparison_weight  = ws_ls_entry_get_oldest( $args[ 'user-id' ] );
+	}
 
 	if( true === empty( $latest_entry ) ) {
 		$text_data = __('No entries', WE_LS_SLUG);
-	} elseif( true === empty( $target_weight ) ) {
-		$text_data = __( 'No target set', WE_LS_SLUG );
+	} elseif( true === empty( $comparison_weight ) ) {
+		$text_data = $args[ 'compare-missing-text' ];
 	} elseif ( false === empty( $latest_entry ) ) {
 
-		$kg_difference 	= $latest_entry[ 'kg' ] - $target_weight[ 'kg' ];
+		$comparison_weight = $comparison_weight[ 'kg' ];
+
+		$kg_difference 	= $latest_entry[ 'kg' ] - $comparison_weight;
 
 		$weight_display = ws_ls_weight_display( $kg_difference, $args[ 'user-id' ], false, false, true );
 
-		$text_data		= $weight_display[ 'display' ];
+		$text_data = $weight_display[ 'display' ];
 
-		$percentage_difference	= ws_ls_calculate_percentage_difference( $target_weight[ 'kg' ], $latest_entry[ 'kg' ] );
+		$percentage_difference	= ws_ls_calculate_percentage_difference( $comparison_weight, $latest_entry[ 'kg' ] );
 
 		$percentage_difference	= ( true === $percentage_difference[ 'increase' ] ) ?  $percentage_difference[ 'percentage' ] : -$percentage_difference[ 'percentage' ];
 
@@ -461,7 +481,7 @@ function ws_ls_component_latest_versus_target( $args = [] ) {
                         </div>
                     </div>',
 		$text_data,
-		__( 'Latest vs Target', WE_LS_SLUG )
+		$args[ 'title' ]
 	);
 }
 
