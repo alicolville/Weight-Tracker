@@ -665,7 +665,7 @@ function ws_ls_component_name_and_email( $args = [] ) {
 	}
 
 	return sprintf( '<div>
-	                        <div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
+	                        <div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small ykuk-overflow-auto">
 	                                <span class="ykuk-info-box-header">%1$s</span><br />
 	                                <span class="ykuk-text-bold">%2$s</span><br />
 	                          		<a href="mailto:%3$s">%3$s</a>
