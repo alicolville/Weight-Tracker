@@ -13,7 +13,7 @@ function ws_ls_uikit_summary_boxes( $arguments, $boxes = [] ) {
 
 	$allowed_boxes = [ 'number-of-entries', 'number-of-weight-entries', 'latest-weight', 'start-weight', 'number-of-days-tracking',
 		'target-weight', 'previous-weight', 'latest-versus-target', 'bmi', 'bmr', 'latest-award', 'number-of-awards',
-		'name-and-email', 'start-bmr', 'start-bmi', 'age-dob' ];
+		'name-and-email', 'start-bmr', 'start-bmi', 'age-dob', 'activity-level' ];
 
 	// Default box selection
 	if ( true === empty( $boxes ) ) {
@@ -40,6 +40,12 @@ function ws_ls_uikit_summary_boxes( $arguments, $boxes = [] ) {
 	foreach ( $boxes as $box ) {
 
 		switch ( $box ) {
+			case 'activity-level':
+				$html .= ws_ls_component_user_setting( [    'user-id'   => $arguments[ 'user-id' ],
+				                                            'title'     => 'Activity Level',
+															'setting'   => 'activity_level'
+				]);
+				break;
 			case 'number-of-entries':
 				$html .= ws_ls_component_number_of_entries( [ 'user-id' => $arguments[ 'user-id' ] ] );
 				break;
@@ -301,6 +307,31 @@ function ws_ls_component_target_weight( $args = [] ) {
 		$text_data,
 		$text_date,
 		__( 'Target Weight', WE_LS_SLUG )
+	);
+}
+
+/**
+ * Component to display a user settings
+ * @param array $args
+ *
+ * @return string
+ */
+function ws_ls_component_user_setting( $args = [] ) {
+
+	$args       = wp_parse_args( $args, [ 'user-id' => get_current_user_id(), 'setting' => 'height', 'title' => __( 'Height', WE_LS_SLUG ) ] );
+	$setting    = ws_ls_display_user_setting( $args[ 'user-id' ], $args[ 'setting' ], __( 'Not set', WE_LS_SLUG ), true );
+
+	return sprintf( '<div>
+                        <div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
+                                <span class="ykuk-info-box-header">%2$s</span><br />
+                                <span class="ykuk-text-bold">
+                                    %1$s
+                                </span>
+                                <br /><span class="ykuk-info-box-meta"><a href="#" class="ws-ls-tab-change" data-tab="settings">Adjust</a></span>
+                        </div>
+                    </div>',
+		esc_html( $setting ),
+		esc_html( $args[ 'title' ] )
 	);
 }
 
