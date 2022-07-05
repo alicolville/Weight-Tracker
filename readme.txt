@@ -149,7 +149,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 == Changelog ==
 
-New components: Detail, starting bmr
+New components: Update docs for each
 
 New argyment "bmr-type" for "wt-bmr"
 
@@ -168,6 +168,8 @@ New argyment "bmr-type" for "wt-bmr"
 * Improvement: Added a new summary box component "activity-level". Read more https://docs.yeken.uk/components.html
 * Improvement: Added a new summary box component "height". Read more https://docs.yeken.uk/components.html
 * Improvement: Added a new summary box component "aim". Read more https://docs.yeken.uk/components.html
+* Improvement: Added a new summary box component "gender". Read more https://docs.yeken.uk/components.html
+
 
 = 10.1.3 =
 
