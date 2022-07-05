@@ -149,6 +149,12 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 == Changelog ==
 
+Things to complete:
+
+- Group view for the day
+- Add a new setting for default Aim (so therefore if missing for a user default to it)
+-	Highlight the ‘Notes’ + symbol in a darker colour if there are any notes to be seen so you’re not opening each + symbol looking for notes.
+
 New components: Update docs for each
 
 New argyment "bmr-type" for "wt-bmr"
