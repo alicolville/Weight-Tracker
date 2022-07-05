@@ -13,7 +13,7 @@ function ws_ls_uikit_summary_boxes( $arguments, $boxes = [] ) {
 
 	$allowed_boxes = [ 'number-of-entries', 'number-of-weight-entries', 'latest-weight', 'start-weight', 'number-of-days-tracking',
 		'target-weight', 'previous-weight', 'latest-versus-target', 'bmi', 'bmr', 'latest-award', 'number-of-awards',
-		'name-and-email', 'start-bmr', 'age-dob' ];
+		'name-and-email', 'start-bmr', 'start-bmi', 'age-dob' ];
 
 	// Default box selection
 	if ( true === empty( $boxes ) ) {
@@ -71,7 +71,10 @@ function ws_ls_uikit_summary_boxes( $arguments, $boxes = [] ) {
 				$html .= ws_ls_component_latest_versus_target( [ 'user-id' => $arguments[ 'user-id' ] ] );
 				break;
 			case 'bmi':
-				$html .= ws_ls_component_bmi( $arguments );
+				$html .= ws_ls_component_bmi( [ 'bmi-type'  => 'current', 'user-id' => $arguments[ 'user-id' ] ] );
+				break;
+			case 'start-bmi':
+				$html .= ws_ls_component_bmi( [ 'bmi-type'  => 'start', 'user-id' => $arguments[ 'user-id' ] ] );
 				break;
 			case 'bmr':
 				$html .= ws_ls_component_bmr( [ 'bmr-type'  => 'current', 'user-id' => $arguments[ 'user-id' ] ] );
@@ -562,9 +565,9 @@ function ws_ls_component_alert( $message, $type = 'success', $closable = true, $
  */
 function ws_ls_component_bmi( $args = [] ) {
 
-	$args           = wp_parse_args( $args, [ 'user-id' => get_current_user_id() ] );
+	$args           = wp_parse_args( $args, [ 'bmi-format' => 'start', 'user-id' => get_current_user_id() ] );
 	$text_link      = '';
-	$text_data      = ws_ls_shortcode_bmi( [ 'user-id' => $args[ 'user-id' ], 'display' => $args[ 'bmi-format' ], 'no-height-text' => '', 'no-weight-text' => '' ] );
+	$text_data      = ws_ls_shortcode_bmi( [ 'user-id' => $args[ 'user-id' ], 'display' => $args[ 'bmi-format' ], 'bmi-type' => $args[ 'bmi-type' ], 'no-height-text' => '', 'no-weight-text' => '' ] );
 	$status         = ( false !== strpos( $text_data, 'Healthy' ) ) ? 'ykuk-label ykuk-label-success' : 'ykuk-label ykuk-label-warning';
 
 	if ( true === empty( $text_data ) ) {
@@ -595,7 +598,7 @@ function ws_ls_component_bmi( $args = [] ) {
                         </div>',
 						$text_data,
 						$text_link,
-						__( 'BMI', WE_LS_SLUG ),
+						( 'start' === $args[ 'bmi-type' ] ) ? __( 'Starting BMI', WE_LS_SLUG ) : __( 'Current BMI', WE_LS_SLUG ),
 						$status
 	);
 }

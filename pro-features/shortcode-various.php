@@ -164,7 +164,8 @@ function ws_ls_shortcode_bmi( $arguments = [] ) {
 		return '';
 	}
 
-	$arguments = shortcode_atts( [      'display'           => 'index',                             // 'index' - Actual BMI value. 'label' - BMI label for given value. 'both' - Label and BMI value in brackets,
+	$arguments = shortcode_atts( [      'bmi-type'          => 'current',   // current, start
+										'display'           => 'index',                             // 'index' - Actual BMI value. 'label' - BMI label for given value. 'both' - Label and BMI value in brackets,
 										'no-height-text'    => __( 'Height needed', WE_LS_SLUG ),
 										'no-weight-text'    => __( 'Weight needed', WE_LS_SLUG ),
 										'user-id'           => get_current_user_id()
@@ -176,7 +177,12 @@ function ws_ls_shortcode_bmi( $arguments = [] ) {
 		return $cache;
 	}
 
-	$kg = ws_ls_entry_get_latest_kg( $arguments['user-id'] );
+	if ( 'start' === $arguments[ 'bmi-type' ] ) {
+		$kg = ws_ls_entry_get_oldest_kg( $arguments['user-id'] );
+	} else {
+		$kg = ws_ls_entry_get_latest_kg( $arguments['user-id'] );
+	}
+
 	$cm = ws_ls_user_preferences_get( 'height', $arguments['user-id']);
 
 	// Don't attempt to calculate BMI if no weight entries!
