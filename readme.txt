@@ -162,6 +162,7 @@ New argyment "bmr-type" for "wt-bmr"
 * Improvement: Added a new summary box component "latest-award". Read more https://docs.yeken.uk/components.html
 * Improvement: Added a new summary box component "number-of-awards". Read more https://docs.yeken.uk/components.html
 * Improvement: Added a new summary box component "age-dob". Read more https://docs.yeken.uk/components.html
+* Improvement: Added a new summary box component "name-and-email. Read more https://docs.yeken.uk/components.html
 
 = 10.1.3 =
 

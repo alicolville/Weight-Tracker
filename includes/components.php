@@ -13,7 +13,7 @@ function ws_ls_uikit_summary_boxes( $arguments, $boxes = [] ) {
 
 	$allowed_boxes = [ 'number-of-entries', 'number-of-weight-entries', 'latest-weight', 'start-weight', 'number-of-days-tracking',
 		'target-weight', 'previous-weight', 'latest-versus-target', 'bmi', 'bmr', 'latest-award', 'number-of-awards',
-		'details', 'start-bmr', 'age-dob' ];
+		'name-and-email', 'start-bmr', 'age-dob' ];
 
 	// Default box selection
 	if ( true === empty( $boxes ) ) {
@@ -79,8 +79,8 @@ function ws_ls_uikit_summary_boxes( $arguments, $boxes = [] ) {
 			case 'start-bmr':
 				$html .= ws_ls_component_bmr( [ 'bmr-type'  => 'start', 'user-id' => $arguments[ 'user-id' ] ] );
 				break;
-			case 'details':
-				$html .= ws_ls_component_details( $arguments );
+			case 'name-and-email':
+				$html .= ws_ls_component_name_and_email( $arguments );
 				break;
 			case 'age-dob':
 				$html .= ws_ls_component_age_dob( [ 'user-id' => $arguments[ 'user-id' ] ] );
@@ -644,12 +644,12 @@ function ws_ls_component_bmr( $args = [] ) {
 }
 
 /**
- * Details component
+ * Name and email component
  * @param array $args
  *
  * @return string
  */
-function ws_ls_component_details( $args = [] ) {
+function ws_ls_component_name_and_email( $args = [] ) {
 
 	$args       = wp_parse_args( $args, [ 'user-id' => get_current_user_id() ] );
 	$user       = get_user_by( 'id', $args[ 'user-id' ] );
