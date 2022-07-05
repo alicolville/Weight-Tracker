@@ -262,16 +262,6 @@ function ws_ls_cache_generate_key( $key ){
 
 	$cache_version = get_option( 'ws-ls-cache-number', WE_LS_INITIAL_CACHE_NUMBER );
 
-	if( true === is_Array( $cache_version ) ) {
-		print_r($cache_version);
-	}
-
-	if( true === is_Array( $key ) ) {
-		var_dump(debug_backtrace());
-		die;
-		print_r($key);
-	}
-
 	return sprintf( 'wt-%s-%s-%s-%d-%s',  WS_LS_IS_PRO_PLUS, WS_LS_IS_PRO, WE_LS_CURRENT_VERSION, $cache_version, $key );
 }
 
