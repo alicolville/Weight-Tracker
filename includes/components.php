@@ -26,11 +26,11 @@ function ws_ls_uikit_summary_boxes( $arguments, $boxes = [] ) {
 		return '<!-- No valid summary boxes -->';
 	}
 
-	$arguments      = wp_parse_args( $arguments, [ 'user-id' => get_current_user_id() ] );
+	$arguments      = wp_parse_args( $arguments, [ 'user-id' => get_current_user_id(), 'breakpoint_s' => 2 ] );
 	$no_boxes       = count( $boxes );
 
 	$breakpoint_m = $no_boxes < 4 ? $no_boxes : 4;
-	$breakpoint_s = $no_boxes < 3 ? $no_boxes : 2;
+	$breakpoint_s = $no_boxes < 3 ? $no_boxes : (int) $arguments[ 'breakpoint_s' ];
 
 	$html = sprintf( '<div class="ykuk-grid-small ykuk-text-center ykuk-child-width-1-1 ykuk-child-width-1-%1$d@s ykuk-child-width-1-%2$d@m ykuk-grid-match ykuk-text-small" ykuk-grid>',
 		$breakpoint_s,

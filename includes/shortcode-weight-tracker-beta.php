@@ -276,6 +276,8 @@ function ws_ls_wt_tab_panes( $arguments = [] ) {
  */
 function ws_ls_wt_tab_summary( $arguments = [] ) {
 
+	$arguments = wp_parse_args( $arguments, [ 'breakpoint_s' => '4' ] );
+
 	return ws_ls_uikit_data_summary_boxes_display( 'summary-boxes-summary', $arguments );
 }
 
