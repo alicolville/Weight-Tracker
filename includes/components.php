@@ -3,6 +3,95 @@
 defined('ABSPATH') or die('Jog on!');
 
 /**
+ * Display summary boxes
+ * @param $arguments
+ * @param array $boxes
+ *
+ * @return string
+ */
+function ws_ls_uikit_summary_boxes( $arguments, $boxes = [] ) {
+
+	$allowed_boxes = [ 'number-of-entries', 'number-of-weight-entries', 'latest-weight', 'start-weight', 'number-of-days-tracking',
+		'target-weight', 'previous-weight', 'latest-versus-target', 'bmi', 'bmr', 'latest-award', 'number-of-awards',
+		'details', 'start-bmr' ];
+
+	// Default box selection
+	if ( true === empty( $boxes ) ) {
+		$boxes = [ 'number-of-entries', 'number-of-days-tracking', 'latest-weight', 'start-weight' ];
+	}
+
+	$boxes = array_intersect( $boxes, $allowed_boxes );
+
+	if ( true === empty( $boxes ) ) {
+		return '<!-- No valid summary boxes -->';
+	}
+
+	$arguments      = wp_parse_args( $arguments, [ 'user-id' => get_current_user_id() ] );
+	$no_boxes       = count( $boxes );
+
+	$breakpoint_m = $no_boxes < 4 ? $no_boxes : 4;
+	$breakpoint_s = $no_boxes < 3 ? $no_boxes : 2;
+
+	$html = sprintf( '<div class="ykuk-grid-small ykuk-text-center ykuk-child-width-1-1 ykuk-child-width-1-%1$d@s ykuk-child-width-1-%2$d@m ykuk-grid-match ykuk-text-small" ykuk-grid>',
+		$breakpoint_s,
+		$breakpoint_m
+	);
+
+	foreach ( $boxes as $box ) {
+
+		switch ( $box ) {
+			case 'number-of-entries':
+				$html .= ws_ls_component_number_of_entries( [ 'user-id' => $arguments[ 'user-id' ] ] );
+				break;
+			case 'number-of-weight-entries':
+				$html .= ws_ls_component_number_of_weight_entries( [ 'user-id' => $arguments[ 'user-id' ] ] );
+				break;
+			case 'number-of-days-tracking':
+				$html .= ws_ls_component_number_of_days_tracking( [ 'user-id' => $arguments[ 'user-id' ] ] );
+				break;
+			case 'latest-weight':
+				$html .= ws_ls_component_latest_weight( [ 'user-id' => $arguments[ 'user-id' ] ] );
+				break;
+			case 'latest-award':
+				$html .= ws_ls_component_latest_award( [ 'user-id' => $arguments[ 'user-id' ] ] );
+				break;
+			case 'number-of-awards':
+				$html .= ws_ls_component_number_of_awards( [ 'user-id' => $arguments[ 'user-id' ] ] );
+				break;
+			case 'start-weight':
+				$html .= ws_ls_component_start_weight( [ 'user-id' => $arguments[ 'user-id' ] ] );
+				break;
+			case 'target-weight':
+				$html .= ws_ls_component_target_weight( [ 'user-id' => $arguments[ 'user-id' ] ] );
+				break;
+			case 'previous-weight':
+				$html .= ws_ls_component_previous_weight( [ 'user-id' => $arguments[ 'user-id' ] ] );
+				break;
+			case 'latest-versus-target':
+				$html .= ws_ls_component_latest_versus_target( [ 'user-id' => $arguments[ 'user-id' ] ] );
+				break;
+			case 'bmi':
+				$html .= ws_ls_component_bmi( $arguments );
+				break;
+			case 'bmr':
+				$html .= ws_ls_component_bmr( [ 'bmr-type'  => 'current', 'user-id' => $arguments[ 'user-id' ] ] );
+				break;
+			case 'start-bmr':
+				$html .= ws_ls_component_bmr( [ 'bmr-type'  => 'start', 'user-id' => $arguments[ 'user-id' ] ] );
+				break;
+			case 'details':
+				$html .= ws_ls_component_details( $arguments );
+				break;
+		}
+
+	}
+
+	$html .= '</div>';
+
+	return $html;
+}
+
+/**
  * Component to display the user's latest weight
  * @param array $args
  *
@@ -692,95 +781,6 @@ function ws_ls_uikit_data_summary_boxes_display( $key, $arguments = [] ) {
 	$boxes = explode( ',', $arguments[ $key ] );
 
 	return ws_ls_uikit_summary_boxes( $arguments, $boxes );
-}
-
-/**
- * Display summary boxes
- * @param $arguments
- * @param array $boxes
- *
- * @return string
- */
-function ws_ls_uikit_summary_boxes( $arguments, $boxes = [] ) {
-
-	$allowed_boxes = [ 'number-of-entries', 'number-of-weight-entries', 'latest-weight', 'start-weight', 'number-of-days-tracking',
-							'target-weight', 'previous-weight', 'latest-versus-target', 'bmi', 'bmr', 'latest-award', 'number-of-awards',
-								'details', 'start-bmr' ];
-
-	// Default box selection
-	if ( true === empty( $boxes ) ) {
-		$boxes = [ 'number-of-entries', 'number-of-days-tracking', 'latest-weight', 'start-weight' ];
-	}
-
-	$boxes = array_intersect( $boxes, $allowed_boxes );
-
-	if ( true === empty( $boxes ) ) {
-		return '<!-- No valid summary boxes -->';
-	}
-
-	$arguments      = wp_parse_args( $arguments, [ 'user-id' => get_current_user_id() ] );
-	$no_boxes       = count( $boxes );
-
-	$breakpoint_m = $no_boxes < 4 ? $no_boxes : 4;
-	$breakpoint_s = $no_boxes < 3 ? $no_boxes : 2;
-
-	$html = sprintf( '<div class="ykuk-grid-small ykuk-text-center ykuk-child-width-1-1 ykuk-child-width-1-%1$d@s ykuk-child-width-1-%2$d@m ykuk-grid-match ykuk-text-small" ykuk-grid>',
-						$breakpoint_s,
-						$breakpoint_m
-	);
-
-	foreach ( $boxes as $box ) {
-
-		switch ( $box ) {
-			case 'number-of-entries':
-				$html .= ws_ls_component_number_of_entries( [ 'user-id' => $arguments[ 'user-id' ] ] );
-				break;
-			case 'number-of-weight-entries':
-				$html .= ws_ls_component_number_of_weight_entries( [ 'user-id' => $arguments[ 'user-id' ] ] );
-				break;
-			case 'number-of-days-tracking':
-				$html .= ws_ls_component_number_of_days_tracking( [ 'user-id' => $arguments[ 'user-id' ] ] );
-				break;
-			case 'latest-weight':
-				$html .= ws_ls_component_latest_weight( [ 'user-id' => $arguments[ 'user-id' ] ] );
-				break;
-			case 'latest-award':
-				$html .= ws_ls_component_latest_award( [ 'user-id' => $arguments[ 'user-id' ] ] );
-				break;
-			case 'number-of-awards':
-				$html .= ws_ls_component_number_of_awards( [ 'user-id' => $arguments[ 'user-id' ] ] );
-				break;
-			case 'start-weight':
-				$html .= ws_ls_component_start_weight( [ 'user-id' => $arguments[ 'user-id' ] ] );
-				break;
-			case 'target-weight':
-				$html .= ws_ls_component_target_weight( [ 'user-id' => $arguments[ 'user-id' ] ] );
-				break;
-			case 'previous-weight':
-				$html .= ws_ls_component_previous_weight( [ 'user-id' => $arguments[ 'user-id' ] ] );
-				break;
-			case 'latest-versus-target':
-				$html .= ws_ls_component_latest_versus_target( [ 'user-id' => $arguments[ 'user-id' ] ] );
-				break;
-			case 'bmi':
-				$html .= ws_ls_component_bmi( $arguments );
-				break;
-			case 'bmr':
-				$html .= ws_ls_component_bmr( [ 'bmr-type'  => 'current', 'user-id' => $arguments[ 'user-id' ] ] );
-				break;
-			case 'start-bmr':
-				$html .= ws_ls_component_bmr( [ 'bmr-type'  => 'start', 'user-id' => $arguments[ 'user-id' ] ] );
-				break;
-			case 'details':
-				$html .= ws_ls_component_details( $arguments );
-				break;
-		}
-
-	}
-
-	$html .= '</div>';
-
-	return $html;
 }
 
 /**
