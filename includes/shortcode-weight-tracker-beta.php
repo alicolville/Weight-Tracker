@@ -44,8 +44,8 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 
 	$html = '<div class="ws-ls-tracker">';
 
-	if ( null !== ws_ls_querystring_value( 'ws-edit-entry' ) ) {
-		$shortcode_arguments[ 'active-tab' ] = 'history';
+	if ( false === is_user_logged_in() ) {
+		$html .= ws_ls_component_alert( __( 'You need to be logged in to record your weight.', WE_LS_SLUG ), 'primary', false, true ) . '</div>';
 	}
 
 	$shortcode_arguments[ 'kiosk-mode' ] = ws_ls_to_bool( $shortcode_arguments[ 'kiosk-mode' ] );
@@ -72,12 +72,13 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 		}
 	}
 
-	if ( $active_tab = ws_ls_querystring_value( 'tab' ) ) {
+	if ( null !== ws_ls_querystring_value( 'ws-edit-entry' ) ) {
+		$shortcode_arguments[ 'active-tab' ] = 'history';
+	} elseif ( $active_tab = ws_ls_querystring_value( 'tab' ) ) {
 		$shortcode_arguments[ 'active-tab' ] = $active_tab;
 	}
 
 	ws_ls_enqueue_uikit( ! $shortcode_arguments[ 'disable-theme-css' ], ! $shortcode_arguments[ 'disable-main-font' ], 'wt' );
-
 
 	$shortcode_arguments[ 'user-id' ]               = (int) $shortcode_arguments[ 'user-id' ];
 	$shortcode_arguments[ 'show-tab-awards' ]       = ( false === ws_ls_to_bool( $shortcode_arguments[ 'hide-tab-awards' ] ) && true === WS_LS_IS_PRO_PLUS );
@@ -100,30 +101,21 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 	                                                                   'sort'              => 'desc' ] );
 	$html .= ws_ls_uikit_beta_notice();
 
-	// Display error if user not logged in
-	if ( false === is_user_logged_in() )	{
-
-		$html .= ws_ls_component_alert( __( 'You need to be logged in to record your weight.', WE_LS_SLUG ), 'primary', false, true );
-
-	} else {
-
-		if( 'true' === ws_ls_querystring_value( 'user-preference-saved', 'true' ) ) {
-			$html .= ws_ls_component_alert( __( 'Your settings have been successfully saved!', WE_LS_SLUG ) );
-		} elseif( 'true' === ws_ls_querystring_value( 'user-delete-all', 'true' ) ) {
-			$html .= ws_ls_component_alert( __( 'Your data has successfully been deleted.', WE_LS_SLUG ) );
-		}
-
-		if ( true !== ws_ls_to_bool( $shortcode_arguments[ 'hide-notifications' ] ) || true === WS_LS_IS_PRO_PLUS ) {
-			$html .= ws_ls_notifications_shortcode( $shortcode_arguments, true );
-		}
-
-		// Tab menu
-		$html .= ws_ls_wt_tab_menu( $shortcode_arguments );
-
-		// Tabs
-		$html .= ws_ls_wt_tab_panes( $shortcode_arguments );
-
+	if( 'true' === ws_ls_querystring_value( 'user-preference-saved', 'true' ) ) {
+		$html .= ws_ls_component_alert( __( 'Your settings have been successfully saved!', WE_LS_SLUG ) );
+	} elseif( 'true' === ws_ls_querystring_value( 'user-delete-all', 'true' ) ) {
+		$html .= ws_ls_component_alert( __( 'Your data has successfully been deleted.', WE_LS_SLUG ) );
 	}
+
+	if ( true !== ws_ls_to_bool( $shortcode_arguments[ 'hide-notifications' ] ) || true === WS_LS_IS_PRO_PLUS ) {
+		$html .= ws_ls_notifications_shortcode( $shortcode_arguments, true );
+	}
+
+	// Tab menu
+	$html .= ws_ls_wt_tab_menu( $shortcode_arguments );
+
+	// Tabs
+	$html .= ws_ls_wt_tab_panes( $shortcode_arguments );
 
 	return $html;
 }
