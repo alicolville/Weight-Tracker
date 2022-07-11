@@ -434,7 +434,7 @@ jQuery( document ).ready(function ( $, undefined ) {
 
       ws_ls_log( 'Users: Fetching Data' );
 
-      ws_ls_post_data_to_WP('get_groups_users', { 'table_id': $(this).attr( 'id' ), 'group_id': $(this).data( 'group-id' ) }, ws_ls_callback_groups_users );
+      ws_ls_post_data_to_WP('get_groups_users', { 'table_id': $(this).attr( 'id' ), 'group_id': $(this).data( 'group-id' ), 'todays_entries_only': $(this).data( 'todays-entries-only' ) }, ws_ls_callback_groups_users );
   });
 
   /**

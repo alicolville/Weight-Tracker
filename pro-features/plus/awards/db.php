@@ -9,7 +9,7 @@
  * @param string $order_by
  * @return array
  */
-    function ws_ls_awards_db_given_get( $user_id, $order_by = 'value' ) {
+    function ws_ls_awards_db_given_get( $user_id, $order_by = 'value', $given_on = NULL ) {
 
         $cache_key = 'awards-given-' . $order_by;
 
@@ -23,6 +23,10 @@
 
         $sql = $wpdb->prepare('Select * from ' . $wpdb->prefix . WE_LS_MYSQL_AWARDS_GIVEN . ' g INNER JOIN
                                 ' . $wpdb->prefix . WE_LS_MYSQL_AWARDS . ' a on g.award_id = a.id where user_id = %d', $user_id);
+
+        if ( false === empty( $given_on ) ) {
+        	$sql .= $wpdb->prepare( ' and DATE( timestamp ) = %s', $given_on );
+        }
 
         $sql .= ( 'value' === $order_by ) ? ' order by a.category, CAST( a.value as DECIMAL( 10, 5 ) )' : ' order by g.timestamp desc' ;
 

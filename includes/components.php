@@ -1013,7 +1013,8 @@ function ws_ls_component_group_view_entries( $arguments ) {
 	                                            'group-id'                  => NULL,
 												'table-allow-delete'        => false,
 												'uikit'                     => true,
-												'enable-group-select'       => true
+												'enable-group-select'       => true,
+												'todays-entries-only'       => false
 	]);
 
 	if ( true === $arguments[ 'uikit' ] ) {
@@ -1033,6 +1034,7 @@ function ws_ls_component_group_view_entries( $arguments ) {
 	$html .= sprintf('<div id="-row" class="ws-ls-form-row ykuk-width-1-1">
 						<table class="ws-ls-settings-groups-users-list-ajax ykuk-table table ws-ls-loading-table" id="groups-users-list"
                            data-group-id="%1$d"
+                           data-todays-entries-only="%3$d"
                            data-paging="true"
                            data-filtering="false"
                            data-sorting="true"
@@ -1046,7 +1048,8 @@ function ws_ls_component_group_view_entries( $arguments ) {
                     	</table>
                     </div>',
 					$arguments[ 'group-id'],
-					( true === $arguments[ 'table-allow-delete' ] ) ? 'true' : 'false'
+					( true === $arguments[ 'table-allow-delete' ] ) ? 'true' : 'false',
+					$arguments[ 'todays-entries-only' ]
 	);
 
 	return $html;

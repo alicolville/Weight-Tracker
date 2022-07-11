@@ -161,6 +161,8 @@ New argyment "bmr-type" for "wt-bmr"
 
 New shortcode: wt-group-view-as-table (document)
 
+minifiy: data.footable.js
+
 = XXX =
 
 * New feature: Added a new tab to [wt-beta] to display the user's awards. Read more: https://docs.yeken.uk/shortcodes/wt-beta.html
