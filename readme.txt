@@ -159,9 +159,12 @@ New components: Update docs for each
 
 New argyment "bmr-type" for "wt-bmr"
 
+New shortcode: wt-group-view-as-table (document)
+
 = XXX =
 
 * New feature: Added a new tab to [wt-beta] to display the user's awards. Read more: https://docs.yeken.uk/shortcodes/wt-beta.html
+* New feature: New shortcode [wt-group-view-as-table]. Read more: https://docs.yeken.uk/shortcodes/wt-group-view-as-table.html
 * Improvement: Added a new argument "show-tab-info" to [wt-beta] to add an additional summary tab. Read more: https://docs.yeken.uk/shortcodes/wt-beta.html
 * Improvement: Added a new argument "summary-boxes-summary" to [wt-beta] to specify which components appear on the summary tab. Read more: https://docs.yeken.uk/shortcodes/wt-beta.html
 * Improvement: When a user is given an award, a notification is displayed at the top of the [wt-beta] shortcode.
@@ -177,6 +180,7 @@ New argyment "bmr-type" for "wt-bmr"
 * Improvement: Added a new summary box component "gender". Read more https://docs.yeken.uk/components.html
 * Improvement: Added a new summary box component "group". Read more https://docs.yeken.uk/components.html
 * Improvement: Added a new summary box component "latest-versus-start". Read more https://docs.yeken.uk/components.html
+* Bug fix: Fixed label for drop downs. Clicking a label should now set focus to drop down.
 
 = 10.1.3 =
 

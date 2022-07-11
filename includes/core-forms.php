@@ -610,19 +610,21 @@ function ws_ls_form_field_checkbox( $arguments = [] ) {
  */
 function ws_ls_form_field_select( $arguments ) {
 
-	$arguments = wp_parse_args( $arguments, [	'key'                   => '',
-												'label'                 => '',
-												'values'                => [],
-												'empty-option'          => false,
-												'selected'              => NULL,
-												'show-label'            => true,
-												'css-class'             => '',
-												'css-class-row'         => 'ws-ls-form-row',
-												'css-class-title'       => '',
-												'required'              => false,
-												'js-on-change'          => '',
-												'include-div'           => false,
-												'uikit'                 => false
+	$arguments = wp_parse_args( $arguments, [	'key'                           => '',
+												'label'                         => '',
+												'values'                        => [],
+												'empty-option'                  => false,
+												'selected'                      => NULL,
+												'show-label'                    => true,
+												'css-class'                     => '',
+												'css-class-row'                 => 'ws-ls-form-row',
+												'css-class-title'               => '',
+												'required'                      => false,
+												'js-on-change'                  => '',
+												'reload-page-on-select'         => false,
+												'reload-page-on-select-qs-key'  => '',
+												'include-div'                   => false,
+												'uikit'                         => false
 	]);
 
 	$html           = '';
@@ -634,23 +636,34 @@ function ws_ls_form_field_select( $arguments ) {
 	}
 
 	if ( true === $arguments[ 'show-label' ] ) {
-		$html .= sprintf(   '<label id="%4$s" for="%1$s" class="ykuk-form-label %3$s">%2$s</label>',
-							esc_attr( $arguments[ 'key' ] ),
+		$html .= sprintf(   '<label for="%1$s" class="ykuk-form-label %3$s">%2$s</label>',
+							$label_id,
 							esc_attr( $arguments[ 'label' ] ),
-							esc_attr( $arguments[ 'css-class-title' ] ),
-							$label_id
+							esc_attr( $arguments[ 'css-class-title' ] )
 		);
 	}
 
-	$html .= sprintf( '<select id="%1$s" name="%1$s" tabindex="%2$d" class="%3$s ykuk-select ykuk-padding-remove-right" %4$s %5$s data-msg="%6$s \'%7$s\'.">',
+	$html .= sprintf( '<select id="%8$s" name="%1$s" tabindex="%2$d" class="%3$s ykuk-select ykuk-padding-remove-right" %4$s %5$s data-msg="%6$s \'%7$s\'.">',
 		esc_attr( $arguments[ 'key' ] ),
 		ws_ls_form_tab_index_next(),
 		esc_attr( $arguments[ 'css-class' ] ),
 		( true === $arguments[ 'required' ] ) ? ' required="required" ' : '',
 		( false === empty( $arguments[ 'js-on-change' ] ) ) ? sprintf( ' onchange="%s"', $arguments[ 'js-on-change' ] ) : '',
 		__( 'Please select a value for'),
-		esc_attr( $arguments[ 'label' ] )
+		esc_attr( $arguments[ 'label' ] ),
+		$label_id
 	);
+
+	if ( true === $arguments[ 'reload-page-on-select' ] ) {
+
+		$js = sprintf( '( function( $ ) { $("#%1$s").change(function(){ window.location.replace( "%2$s?%3$s=" + $(this).val() ) }) } )( jQuery );',
+						$label_id,
+						get_permalink(),
+						$arguments[ 'reload-page-on-select-qs-key' ]
+		);
+
+		wp_add_inline_script(	'yk-uikit', $js);
+	}
 
 	if ( true === $arguments[ 'empty-option' ] ) {
 		$html .= '<option value=""></option>';

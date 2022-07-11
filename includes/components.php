@@ -1000,3 +1000,73 @@ function ws_ls_component_user_search( $arguments ) {
 	);
 }
 
+/**
+ * Component to render group view
+ * @param $arguments
+ *
+ * @return string
+ */
+function ws_ls_component_group_view_entries( $arguments ) {
+
+	$arguments = wp_parse_args( $arguments, [   'disable-theme-css'         => false,
+	                                            'disable-main-font'         => false,
+	                                            'group-id'                  => NULL,
+												'table-allow-delete'        => false,
+												'uikit'                     => true
+	]);
+
+	if ( true === $arguments[ 'uikit' ] ) {
+		ws_ls_enqueue_uikit( ! $arguments[ 'disable-theme-css' ], ! $arguments[ 'disable-main-font' ] );
+	}
+
+	ws_ls_data_table_enqueue_scripts();
+
+	$arguments[ 'group-id' ] = ws_ls_querystring_value( 'group-id', true, $arguments[ 'group-id' ] );
+
+	$html = '';
+
+	$html .= ws_ls_component_group_select( [ 'selected' => $arguments[ 'group-id' ] ] );
+
+	$html .= sprintf('<div id="-row" class="ws-ls-form-row ykuk-width-1-1">
+						<table class="ws-ls-settings-groups-users-list-ajax ykuk-table" id="groups-users-list"
+                           data-group-id="%1$d"
+                           data-paging="true"
+                           data-filtering="false"
+                           data-sorting="true"
+                           data-editing-allow-add="false"
+                           data-editing-allow-edit="false"
+                           data-editing-allow-delete="%2$s"
+                           data-paging-size="40"
+                           data-cascade="true"
+                           data-toggle="true"
+                           data-use-parent-width="true">
+                    	</table>
+                    </div>',
+					$arguments[ 'group-id'],
+					( true === $arguments[ 'table-allow-delete' ] ) ? 'true' : 'false'
+	);
+
+	return $html;
+}
+
+/**
+ * Component to render a select drop down for groups
+ * @param $arguments
+ *
+ * @return string
+ */
+function ws_ls_component_group_select( $arguments ) {
+
+	$arguments  = wp_parse_args( $arguments, [ 'selected' => 0, 'include-empty' => true, 'reload-page-on-select' => true ] );
+	$groups     = ws_ls_groups( $arguments[ 'include-empty' ] );
+	$groups     = wp_list_pluck( $groups, 'name', 'id' );
+
+	$select_args = [    'values'                        => $groups,
+	                    'selected'                      => $arguments[ 'selected' ],
+	                    'uikit'                         => true,
+						'reload-page-on-select'         => true,
+		                'reload-page-on-select-qs-key'  => 'group-id'
+	];
+
+	return ws_ls_form_field_select( $select_args );
+}
