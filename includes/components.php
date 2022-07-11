@@ -1012,7 +1012,8 @@ function ws_ls_component_group_view_entries( $arguments ) {
 	                                            'disable-main-font'         => false,
 	                                            'group-id'                  => NULL,
 												'table-allow-delete'        => false,
-												'uikit'                     => true
+												'uikit'                     => true,
+												'enable-group-select'       => true
 	]);
 
 	if ( true === $arguments[ 'uikit' ] ) {
@@ -1025,10 +1026,12 @@ function ws_ls_component_group_view_entries( $arguments ) {
 
 	$html = '';
 
-	$html .= ws_ls_component_group_select( [ 'selected' => $arguments[ 'group-id' ] ] );
+	if ( true === $arguments[ 'enable-group-select' ] ) {
+		$html .= ws_ls_component_group_select( [ 'selected' => $arguments[ 'group-id' ] ] );
+	}
 
 	$html .= sprintf('<div id="-row" class="ws-ls-form-row ykuk-width-1-1">
-						<table class="ws-ls-settings-groups-users-list-ajax ykuk-table" id="groups-users-list"
+						<table class="ws-ls-settings-groups-users-list-ajax ykuk-table table ws-ls-loading-table" id="groups-users-list"
                            data-group-id="%1$d"
                            data-paging="true"
                            data-filtering="false"
