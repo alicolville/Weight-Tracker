@@ -996,7 +996,7 @@ function ws_ls_component_user_search( $arguments ) {
 					ws_ls_component_id(),
 					esc_url( $reset_link ),
 					( NULL === ws_ls_querystring_value( $arguments[ 'querystring-key-user-id' ] ) ) ? 'default' : 'secondary',
-					__( 'Reset', WE_LS_SLUG )
+					__( 'Clear Screen', WE_LS_SLUG )
 	);
 }
 
