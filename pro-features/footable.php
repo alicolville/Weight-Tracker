@@ -269,6 +269,11 @@ function ws_ls_datatable_rows( $arguments ) {
 				}
 			}
 
+			if( true === $arguments[ 'enable-notes' ] &&
+			        false === empty( $row[ 'notes' ] ) ) {
+				$row =  [ 'options' => [ 'classes' => 'ws-ls-has-note'], 'value' => $row ];
+			}
+
 			array_push( $rows, $row );
 		}
 
