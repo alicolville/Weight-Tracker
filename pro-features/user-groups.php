@@ -665,12 +665,12 @@ function ws_ls_ajax_groups_users_get(){
 	$columns = [
 		[ 'name' => 'id', 'title' => __('ID', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'number', 'visible' => false ],
 		[ 'name' => 'display_name', 'title' => __('User', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ],
-        [ 'name' => 'number-of-entries', 'title' => __('No. Entries', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'number' ],
-        [ 'name' => 'start-weight', 'title' => __('Start', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ],
+        [ 'name' => 'number-of-entries', 'title' => __('No. Entries', WE_LS_SLUG), 'breakpoints'=> 'md', 'type' => 'number' ],
+        [ 'name' => 'start-weight', 'title' => __('Start', WE_LS_SLUG), 'breakpoints'=> 'md', 'type' => 'text' ],
         [ 'name' => 'latest-weight', 'title' => __('Latest', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ],
-        [ 'name' => 'diff-weight', 'title' => __('Diff', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ],
+        [ 'name' => 'diff-weight', 'title' => __('Diff', WE_LS_SLUG), 'breakpoints'=> 'md', 'type' => 'text' ],
         [ 'name' => 'target', 'title' => __('Target', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ],
-		[ 'name' => 'awards', 'title' => __('Awards', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ],
+		[ 'name' => 'awards', 'title' => __('Awards', WE_LS_SLUG), 'breakpoints'=> 'md', 'type' => 'text' ],
 	];
 
 	$rows = [];
