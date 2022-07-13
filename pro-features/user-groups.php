@@ -167,7 +167,7 @@ function ws_ls_groups_hooks_user_preferences_form( $html, $user_id ) {
 add_filter( 'wlt-filter-user-settings-below-dob',  'ws_ls_groups_hooks_user_preferences_form', 15, 2 );
 
 /**
-* Add a <select> for Group to user preference form
+* Save user's group on preference page
 *
 * @param $user_id
 * @param $is_admin
@@ -554,9 +554,11 @@ add_filter( 'wlt-export-columns', 'ws_ls_groups_export_columns' );
  *
  * @param $group_id
  *
+ * @param null $with_entry_date
+ *
  * @return array|null|object
  */
-function ws_ls_groups_users_for_given_group( $group_id ) {
+function ws_ls_groups_users_for_given_group( $group_id, $with_entry_date = NULL ) {
 
 	if ( false === is_numeric( $group_id ) ) {
 		return NULL;
@@ -564,18 +566,33 @@ function ws_ls_groups_users_for_given_group( $group_id ) {
 
 	global $wpdb;
 
-	if ( false === is_admin() && $cache = ws_ls_cache_user_get( 'groups-user-for-given', $group_id ) ) {
+	$cache_key = sprintf( '%s-%s', $group_id, $with_entry_date );
+
+	if ( false === is_admin() && $cache = ws_ls_cache_user_get( $cache_key, $group_id ) ) {
 		return $cache;
 	}
 
-	$sql = 'Select u.id, user_id, display_name from ' . $wpdb->prefix . WE_LS_MYSQL_GROUPS_USER . ' u
-	        inner join ' . $wpdb->prefix . 'users wpu on wpu.id = u.user_id where u.group_id = %d order by wpu.display_name';
+	$sql        = 'Select u.id, user_id, display_name from ' . $wpdb->prefix . WE_LS_MYSQL_GROUPS_USER . ' u
+	                    inner join ' . $wpdb->prefix . 'users wpu on wpu.id = u.user_id';
 
-	$sql = $wpdb->prepare( $sql, $group_id );
+	$where = [];
 
-	$data = $wpdb->get_results( $sql , ARRAY_A );
+	if ( false === empty( $with_entry_date ) ) {
+		$sql        .= ' inner join ' . $wpdb->prefix . WE_LS_TABLENAME . ' entries on entries.weight_user_id = u.user_id';
+		$where[]    = $wpdb->prepare( 'entries.weight_date = %s', $with_entry_date );
+	}
 
-	ws_ls_cache_user_set( 'groups-user-for-given', $group_id, $data );
+	$where[] = 'u.group_id = ' . (int) $group_id;
+
+	$sql    .= ' where ' . implode( ' and ', $where );
+
+	$sql    .= ' order by wpu.display_name';
+
+	$data   = $wpdb->get_results( $sql , ARRAY_A );
+
+	$cache_time = ( false === empty( $with_entry_date ) ) ? MINUTE_IN_SECONDS : 5 * MINUTE_IN_SECONDS;
+
+	ws_ls_cache_user_set( $cache_key, $group_id, $data, $cache_time );
 
 	return $data;
 }
@@ -635,10 +652,13 @@ function ws_ls_ajax_groups_users_get(){
 
 	check_ajax_referer( 'ws-ls-user-tables', 'security' );
 
-	$table_id = ws_ls_post_value( 'table_id' );
-	$group_id = ws_ls_post_value( 'group_id' );
+	$table_id               = ws_ls_post_value( 'table_id' );
+	$group_id               = ws_ls_post_value( 'group_id' );
+	$todays_entries_only    = ws_ls_post_value( 'todays_entries_only' );
 
-	if ( $cache = ws_ls_cache_user_get( 'groups-user-for-given', 'ajax-' . $group_id ) ) {
+	$cache_key = sprintf( 'ajax-group-%d-%d', $group_id, $todays_entries_only );
+
+	if ( $cache = ws_ls_cache_user_get( 'groups-user-for-given', $cache_key ) ) {
 		wp_send_json( $cache );
 	}
 
@@ -646,17 +666,20 @@ function ws_ls_ajax_groups_users_get(){
 		[ 'name' => 'id', 'title' => __('ID', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'number', 'visible' => false ],
 		[ 'name' => 'display_name', 'title' => __('User', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ],
         [ 'name' => 'number-of-entries', 'title' => __('No. Entries', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'number' ],
-        [ 'name' => 'start-weight', 'title' => __('Start Weight', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ],
-        [ 'name' => 'latest-weight', 'title' => __('Latest Weight', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ],
-        [ 'name' => 'diff-weight', 'title' => __('Difference', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ],
+        [ 'name' => 'start-weight', 'title' => __('Start', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ],
+        [ 'name' => 'latest-weight', 'title' => __('Latest', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ],
+        [ 'name' => 'diff-weight', 'title' => __('Diff', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ],
         [ 'name' => 'target', 'title' => __('Target', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ],
+		[ 'name' => 'awards', 'title' => __('Awards', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ],
 	];
 
 	$rows = [];
 
 	if ( true === WS_LS_IS_PRO ) {
 
-		$rows = ws_ls_groups_users_for_given_group( $group_id );
+		$todays_entries_only = ( false === empty( $todays_entries_only ) ) ? date('Y-m-d' ) : NULL;
+
+		$rows = ws_ls_groups_users_for_given_group( $group_id, $todays_entries_only );
 
 		foreach ( $rows as &$row ) {
 
@@ -666,11 +689,16 @@ function ws_ls_ajax_groups_users_get(){
 
 			if ( false === empty( $stats ) ) {
 
+				$awards = ws_ls_awards_db_given_get( $row[ 'user_id' ], 'value', $todays_entries_only );
+				$awards = wp_list_pluck( $awards, 'title' );
+				$awards = ( false === empty( $awards ) ) ? implode( ', ', $awards ) : '';
+
 				$row[ 'number-of-entries' ] = $stats['number-of-entries'];
-				$row[ 'start-weight' ] = ws_ls_shortcode_start_weight( $row[ 'user_id' ] );
-				$row[ 'latest-weight' ] = ws_ls_shortcode_recent_weight( $row[ 'user_id' ] );
-				$row[ 'diff-weight' ] = ws_ls_shortcode_difference_in_weight_from_oldest( $row[ 'user_id' ] );
-				$row[ 'target' ] = ws_ls_target_get( $row[ 'user_id' ], 'display' );
+				$row[ 'start-weight' ]      = ws_ls_shortcode_start_weight( $row[ 'user_id' ] );
+				$row[ 'latest-weight' ]     = ws_ls_shortcode_recent_weight( $row[ 'user_id' ] );
+				$row[ 'diff-weight' ]       = ws_ls_shortcode_difference_in_weight_from_oldest( $row[ 'user_id' ] );
+				$row[ 'target' ]            = ws_ls_target_get( $row[ 'user_id' ], 'display' );
+				$row[ 'awards' ]            = $awards;
 			}
 		}
 
@@ -682,7 +710,7 @@ function ws_ls_ajax_groups_users_get(){
 		'table_id' => $table_id
 	];
 
-	ws_ls_cache_user_set( 'groups', 'ajax-' . $group_id, $data );
+	ws_ls_cache_user_set( 'groups', $cache_key, $data, MINUTE_IN_SECONDS );
 
 	wp_send_json( $data );
 
@@ -808,10 +836,12 @@ add_shortcode( 'wt-group', 'ws_ls_groups_current' );
  */
 function ws_ls_groups_view_as_table( $user_defined_arguments ) {
 
-	$arguments = shortcode_atts( [ 'disable-theme-css'          => false,
-	                               'disable-main-font'          => false,
-	                               'group-id'                   => NULL,
-	                               'enable-group-select'        => true ], $user_defined_arguments );
+	$arguments = shortcode_atts( [  'disable-theme-css'         => false,
+	                                'disable-main-font'         => false,
+	                                'group-id'                  => NULL,
+	                                'enable-group-select'       => false,
+									'todays-entries-only'       => true
+	], $user_defined_arguments );
 
 	return ws_ls_component_group_view_entries( $arguments );
 }
