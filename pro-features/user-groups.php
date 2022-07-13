@@ -839,7 +839,7 @@ function ws_ls_groups_view_as_table( $user_defined_arguments ) {
 	$arguments = shortcode_atts( [  'disable-theme-css'         => false,
 	                                'disable-main-font'         => false,
 	                                'group-id'                  => NULL,
-	                                'enable-group-select'       => false,
+	                                'enable-group-select'       => true,
 									'todays-entries-only'       => true
 	], $user_defined_arguments );
 

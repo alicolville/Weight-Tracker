@@ -1067,7 +1067,8 @@ function ws_ls_component_group_select( $arguments ) {
 	$groups     = ws_ls_groups( $arguments[ 'include-empty' ] );
 	$groups     = wp_list_pluck( $groups, 'name', 'id' );
 
-	$select_args = [    'values'                        => $groups,
+	$select_args = [    'key'                           => ws_ls_component_id(),
+						'values'                        => $groups,
 	                    'selected'                      => $arguments[ 'selected' ],
 	                    'uikit'                         => true,
 						'reload-page-on-select'         => true,
