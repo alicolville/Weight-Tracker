@@ -25,7 +25,8 @@ function ws_ls_form_weight( $arguments = [] ) {
 	                                            'hide-title'            => false,           // Hide main form title
 	                                            'hide-titles'           => false,
 	                                            'html'                  => '',
-	                                            'load-placeholders'     => ws_ls_setting_populate_placeholders_with_previous_values(), // Should we set previous values as form placeholders?
+	                                            'load-placeholders'     => ws_ls_setting_populate_placeholders_with_previous_values(), // Should we set previous values as form placeholders?	                                            'option-force-today'    => false,
+	                                            'kiosk-mode'            => false,
 	                                            'option-force-today'    => false,
 	                                            'option-tiny-mce-notes' => is_admin(),
 	                                            'title'                 => '',
@@ -33,7 +34,7 @@ function ws_ls_form_weight( $arguments = [] ) {
 	                                            'weight-mandatory'		=> true,
 	                                            'redirect-url'          => '',
 	                                            'user-id'               => get_current_user_id(),
-												'uikit'                 => false
+												'uikit'                 => false,
 	] );
 
 	// Is the user logged in?
@@ -60,7 +61,6 @@ function ws_ls_form_weight( $arguments = [] ) {
 
 	// Enqueue relevant JS / CSS
 	ws_ls_enqueue_files();
-
 
 	$arguments[ 'form-key' ] 	= sprintf( 'ws-ls-form-%d', $ws_ls_form_position );	// We need to generate a semi consistent form key that will hopefully remain the same between page loads. This is for the JS focus
 	$arguments  				= ws_ls_form_init( $arguments );
@@ -273,11 +273,11 @@ function ws_ls_form_weight( $arguments = [] ) {
  *
  * @return array
  */
-function ws_ls_form_init( $arguments = [] ) {
+function  ws_ls_form_init( $arguments = [] ) {
 
 	$arguments[ 'form-id' ]     = ws_ls_component_id();
 	$arguments[ 'form-number' ] = ws_ls_form_number_next();
-	$arguments[ 'data-unit' ]   = ws_ls_setting( 'weight-unit', $arguments[ 'user-id' ] );
+	$arguments[ 'data-unit' ]   = ws_ls_setting( 'weight-unit', ( false === $arguments[ 'kiosk-mode' ] ) ? $arguments[ 'user-id' ] : get_current_user_id() );
 	$arguments[ 'todays-date' ] = ws_ls_date_todays_date( $arguments['user-id'] );
 
 	global $save_response;

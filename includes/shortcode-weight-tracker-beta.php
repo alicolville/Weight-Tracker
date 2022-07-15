@@ -150,7 +150,8 @@ function ws_ls_wt_form( $arguments = [] ) {
 	                                'custom-field-slugs'    => $arguments[ 'custom-field-slugs' ],
 	                                'weight-mandatory'		=> $arguments[ 'weight-mandatory' ],
 									'uikit'                 => true,
-									'hide-fields-meta'      => $arguments[ 'hide-custom-fields-form' ]
+									'hide-fields-meta'      => $arguments[ 'hide-custom-fields-form' ],
+									'kiosk-mode'            => $arguments[ 'kiosk-mode' ]
 	] );
 
 	return $html;
