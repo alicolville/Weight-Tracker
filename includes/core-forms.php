@@ -190,7 +190,7 @@ function ws_ls_form_weight( $arguments = [] ) {
 		// Stones field?
 		if ( 'stones_pounds' ===  $arguments[ 'data-unit' ] ) {
 			$html .= ws_ls_form_field_number( [     'name'          => 'ws-ls-weight-stones',
-			                                        'placeholder'   => $placeholders[ 'stones' ] . __( 'st', WE_LS_SLUG ),
+			                                        'placeholder'   => ( false === empty( $placeholders[ 'stones' ] ) ) ? $placeholders[ 'stones' ] . __( 'st', WE_LS_SLUG ) : '',
 			                                        'css-class'     => 'ykuk-input ykuk-width-1-2 ykuk-margin',
 			                                        'uikit'         => $arguments[ 'uikit' ],
 			                                        'value'         => ( false === empty( $arguments[ 'entry' ][ 'stones' ] ) ) ? $arguments[ 'entry' ][ 'stones' ] : '' ] );
@@ -199,7 +199,7 @@ function ws_ls_form_weight( $arguments = [] ) {
 		// Pounds?
 		if ( true === in_array( $arguments[ 'data-unit' ], [ 'stones_pounds', 'pounds_only' ] ) ) {
 			$html .= ws_ls_form_field_number( [    'name'          => 'ws-ls-weight-pounds',
-			                                       'placeholder'   => $placeholders[ 'pounds' ] . __( 'lb', WE_LS_SLUG ),
+			                                       'placeholder'   =>( false === empty( $placeholders[ 'pounds' ] ) ) ? $placeholders[ 'pounds' ] . __( 'lb', WE_LS_SLUG ) : '',
 			                                       'max'           => ( 'stones_pounds' ===  $arguments[ 'data-unit' ] ) ? '13.99' : '5000',
 			                                       'css-class'     => 'ykuk-input ykuk-width-1-2 ykuk-margin',
 			                                       'uikit'         => $arguments[ 'uikit' ],
