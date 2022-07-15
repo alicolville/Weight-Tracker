@@ -443,7 +443,7 @@ function ws_ls_component_latest_versus_another( $args = [] ) {
 
 		$kg_difference 	= $latest_entry[ 'kg' ] - $comparison_weight;
 
-		$weight_display = ws_ls_weight_display( $kg_difference, $args[ 'user-id' ], false, false, true );
+		$weight_display = ws_ls_weight_display( $kg_difference, NULL, false, false, true );
 
 		$text_data = $weight_display[ 'display' ];
 
