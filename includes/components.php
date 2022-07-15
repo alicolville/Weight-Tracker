@@ -615,15 +615,17 @@ function ws_ls_component_age_dob( $args = [] ) {
  *
  * @param null $notification_id
  *
+ * @param string $additional_css_classes
+ *
  * @return string
  */
-function ws_ls_component_alert( $message, $type = 'success', $closable = true, $include_log_link = false, $notification_id = NULL ) {
+function ws_ls_component_alert( $message, $type = 'success', $closable = true, $include_log_link = false, $notification_id = NULL, $additional_css_classes = '' ) {
 
 	ws_ls_enqueue_uikit( true, true, 'alert' );
 
 	// Types: danger, warning, success, primary
 
-	return sprintf( '<div class="ykuk-display-block ykuk-alert-%1$s" ykuk-alert>
+	return sprintf( '<div class="ykuk-display-block ykuk-alert-%1$s %6$s" ykuk-alert>
 		                <a class="ykuk-alert-close" %3$s data-notification-id="%5$d"></a>
 		                %2$s%4$s
 					</div>',
@@ -633,7 +635,8 @@ function ws_ls_component_alert( $message, $type = 'success', $closable = true, $
 					( true === $include_log_link ) ?
 						sprintf( ' <a class="ws-ls-login-link" href="%1$s">%2$s</a>.', esc_url( wp_login_url( get_permalink() ) ), __( 'Login' , WE_LS_SLUG ) ) :
 						'',
-					$notification_id
+					$notification_id,
+					esc_attr( $additional_css_classes )
 	);
 }
 
@@ -1046,10 +1049,13 @@ function ws_ls_component_group_view_entries( $arguments ) {
                            data-toggle="true"
                            data-use-parent-width="true">
                     	</table>
+                    	<div class="ykuk-divider-icon"></div>
+						%4$s
                     </div>',
 					$arguments[ 'group-id'],
 					( true === $arguments[ 'table-allow-delete' ] ) ? 'true' : 'false',
-					$arguments[ 'todays-entries-only' ]
+					$arguments[ 'todays-entries-only' ],
+					ws_ls_component_alert( __( 'Total weight difference for group', WE_LS_SLUG ) . ': <strong><span></span></strong>', 'success', false, false, NULL, 'ykuk-invisible ws-ls-total-lost-count')
 	);
 
 	return $html;

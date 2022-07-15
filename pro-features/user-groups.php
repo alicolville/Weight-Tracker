@@ -667,13 +667,15 @@ function ws_ls_ajax_groups_users_get(){
 		[ 'name' => 'display_name', 'title' => __('User', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ],
         [ 'name' => 'number-of-entries', 'title' => __('No. Entries', WE_LS_SLUG), 'breakpoints'=> 'md', 'type' => 'number' ],
         [ 'name' => 'start-weight', 'title' => __('Start', WE_LS_SLUG), 'breakpoints'=> 'md', 'type' => 'text' ],
+		[ 'name' => 'previous-weight', 'title' => __('Previous', WE_LS_SLUG), 'breakpoints'=> 'md', 'type' => 'text' ],
         [ 'name' => 'latest-weight', 'title' => __('Latest', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ],
-        [ 'name' => 'diff-weight', 'title' => __('Diff', WE_LS_SLUG), 'breakpoints'=> 'md', 'type' => 'text' ],
+        [ 'name' => 'diff-weight', 'title' => __('Diff/Start', WE_LS_SLUG), 'breakpoints'=> 'md', 'type' => 'text' ],
         [ 'name' => 'target', 'title' => __('Target', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ],
 		[ 'name' => 'awards', 'title' => __('Awards', WE_LS_SLUG), 'breakpoints'=> 'md', 'type' => 'text' ],
 	];
 
-	$rows = [];
+	$rows               = [];
+	$total_difference   = 0;
 
 	if ( true === WS_LS_IS_PRO ) {
 
@@ -694,9 +696,21 @@ function ws_ls_ajax_groups_users_get(){
 				$awards = ( false === empty( $awards ) ) ? implode( ', ', $awards ) : '';
 
 				$row[ 'number-of-entries' ] = $stats['number-of-entries'];
-				$row[ 'start-weight' ]      = ws_ls_shortcode_start_weight( $row[ 'user_id' ] );
-				$row[ 'latest-weight' ]     = ws_ls_shortcode_recent_weight( $row[ 'user_id' ] );
-				$row[ 'diff-weight' ]       = ws_ls_shortcode_difference_in_weight_from_oldest( $row[ 'user_id' ] );
+				$row[ 'latest-weight' ]     = ws_ls_entry_get_latest( [ 'user-id' => $row[ 'user_id' ], 'meta' => false ] );
+
+				if ( false === empty( $row[ 'latest-weight' ] ) ) {
+					$row[ 'start-weight' ]      = ws_ls_weight_display( $row[ 'latest-weight' ][ 'first_weight' ], NULL, 'display' );
+					$row[ 'diff-weight' ]       = ws_ls_weight_display( $row[ 'latest-weight' ][ 'difference_from_start_kg' ], NULL, 'display' );
+
+					$row[ 'previous-weight' ]   = ws_ls_entry_get_previous( [ 'user-id' => $row[ 'user_id' ], 'meta' => false ] );
+
+					$difference = $row[ 'latest-weight' ][ 'kg' ] - $row[ 'previous-weight' ][ 'kg' ];
+					$total_difference += $difference;
+
+					$row[ 'previous-weight' ]   = $row[ 'previous-weight' ][ 'display' ];
+					$row[ 'latest-weight' ]     = $row[ 'latest-weight' ][ 'display' ];
+				}
+
 				$row[ 'target' ]            = ws_ls_target_get( $row[ 'user_id' ], 'display' );
 				$row[ 'awards' ]            = $awards;
 			}
@@ -705,9 +719,10 @@ function ws_ls_ajax_groups_users_get(){
 	}
 
 	$data = [
-		'columns' => $columns,
-		'rows' => $rows,
-		'table_id' => $table_id
+		'columns'           => $columns,
+		'rows'              => $rows,
+		'table_id'          => $table_id,
+		'total_difference'  => ws_ls_weight_display( $total_difference, NULL, 'display', false, true )
 	];
 
 	ws_ls_cache_user_set( 'groups', $cache_key, $data, MINUTE_IN_SECONDS );
@@ -840,7 +855,7 @@ function ws_ls_groups_view_as_table( $user_defined_arguments ) {
 	                                'disable-main-font'         => false,
 	                                'group-id'                  => NULL,
 	                                'enable-group-select'       => true,
-									'todays-entries-only'       => false
+									'todays-entries-only'       => true
 	], $user_defined_arguments );
 
 	return ws_ls_component_group_view_entries( $arguments );

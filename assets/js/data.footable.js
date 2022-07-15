@@ -448,6 +448,9 @@ jQuery( document ).ready(function ( $, undefined ) {
       let columns   = ws_ls_apply_formatters( response.columns );
       let rows      = response.rows;
 
+      $( '.ws-ls-total-lost-count span' ).html( response.total_difference );
+      $( '.ws-ls-total-lost-count' ).removeClass( 'ykuk-invisible' );
+
       ws_ls_log('Groups: Rendering Table: ' + table_id );
 
       $( table_id ).removeClass( 'ws-ls-loading-table' );
