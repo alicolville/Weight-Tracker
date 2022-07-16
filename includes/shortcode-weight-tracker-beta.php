@@ -339,6 +339,7 @@ function ws_ls_tab_settings( $arguments = [] ) {
 	$settings = ws_ls_user_preferences_form( [  'user-id'           => $arguments[ 'user-id' ],
 	                                            'uikit'             => true,
 												'show-delete-data'  => false,
+												'kiosk-mode'        => $arguments[ 'kiosk-mode' ],
 												'redirect-url'      => $redirect_url
 	]);
 
@@ -351,6 +352,7 @@ function ws_ls_tab_settings( $arguments = [] ) {
 		                                            'hide-titles'           => true,
 		                                            'uikit'                 => true,
 		                                            'show-user-preferences' => false,
+		                                            'kiosk-mode'            => $arguments[ 'kiosk-mode' ],
 													'redirect-url'          => $redirect_url
 		]);
 

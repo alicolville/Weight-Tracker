@@ -32,13 +32,14 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
                                     'uikit'                 => false,
                                     'redirect-url'          => '',
 	                                'show-delete-data'      => true,
-	                                'show-user-preferences' => true
-                                    ], $user_defined_arguments );
+	                                'show-user-preferences' => true,
+	                                'kiosk-mode'            => false
+    ], $user_defined_arguments );
 
 	$user_id = (int) $arguments['user-id'];
 
     // Have user preferences been allowed in Settings?
-    if ( false === ws_ls_user_preferences_is_enabled() && false === is_admin() ) {
+    if ( false === ws_ls_user_preferences_is_enabled() && false === is_admin() && false === $arguments[ 'kiosk-mode' ]) {
         return ws_ls_display_blockquote( __( 'To use this shortcode, please ensure you have enabled the setting "Allow user settings".', WE_LS_SLUG) );;
     }
 
