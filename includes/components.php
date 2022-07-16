@@ -934,7 +934,6 @@ function ws_ls_uikit_beta_notice() {
 				        <div class="ykuk-alert-warning" ykuk-alert>
 						    <p><strong>Note: Only administrators can see this message.</strong></p>
 						</div>
-			            <h3>This shortcode is currently in <strong>Beta</strong></h3>
 			            <p>This shortcode is currently in <a href="https://www.pcmag.com/encyclopedia/term/beta-version" target="_blank" rel="noopener">Beta</a> and will, at some point, replace
 			            		<a href="https://docs.yeken.uk/shortcodes/wt.html" target="_blank" rel="noopener">[wt]</a>.</p>
 			            <h4>Issues and Feedback</h4>
