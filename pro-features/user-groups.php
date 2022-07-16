@@ -855,7 +855,7 @@ function ws_ls_groups_view_as_table( $user_defined_arguments ) {
 	                                'disable-main-font'         => false,
 	                                'group-id'                  => NULL,
 	                                'enable-group-select'       => true,
-									'todays-entries-only'       => true
+									'todays-entries-only'       => false
 	], $user_defined_arguments );
 
 	return ws_ls_component_group_view_entries( $arguments );

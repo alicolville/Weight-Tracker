@@ -1037,7 +1037,7 @@ function ws_ls_component_group_view_entries( $arguments ) {
 	$html .= sprintf('<div id="-row" class="ws-ls-form-row ykuk-width-1-1">
 						<table class="ws-ls-settings-groups-users-list-ajax ykuk-table table ws-ls-loading-table" id="groups-users-list"
                            data-group-id="%1$d"
-                           data-todays-entries-only="%3$d"
+                           data-todays-entries-only="%3$s"
                            data-paging="true"
                            data-filtering="false"
                            data-sorting="true"
@@ -1054,7 +1054,7 @@ function ws_ls_component_group_view_entries( $arguments ) {
                     </div>',
 					$arguments[ 'group-id'],
 					( true === $arguments[ 'table-allow-delete' ] ) ? 'true' : 'false',
-					$arguments[ 'todays-entries-only' ],
+					( true === $arguments[ 'todays-entries-only' ] ) ? 'true' : 'false',
 					ws_ls_component_alert( __( 'Total weight difference for group', WE_LS_SLUG ) . ': <strong><span></span></strong>', 'success', false, false, NULL, 'ykuk-invisible ws-ls-total-lost-count')
 	);
 
