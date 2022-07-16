@@ -149,7 +149,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 == Changelog ==
 
-- group view open user in correct page
+
 - add new user search into admin
 
 New components: Update docs for each
