@@ -45,7 +45,7 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 	$html = '<div class="ws-ls-tracker">';
 
 	if ( false === is_user_logged_in() ) {
-		$html .= ws_ls_component_alert( __( 'You need to be logged in to record your weight.', WE_LS_SLUG ), 'primary', false, true ) . '</div>';
+		return ws_ls_component_alert( [ 'message' => __( 'You need to be logged in to record your weight.', WE_LS_SLUG ), 'type' => 'primary', 'closable' => false, 'include-login-link' => true ] ) . '</div>';
 	}
 
 	$shortcode_arguments[ 'kiosk-mode' ] = ws_ls_to_bool( $shortcode_arguments[ 'kiosk-mode' ] );
@@ -104,9 +104,9 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 	$html .= ws_ls_uikit_beta_notice();
 
 	if( 'true' === ws_ls_querystring_value( 'user-preference-saved', 'true' ) ) {
-		$html .= ws_ls_component_alert( __( 'Your settings have been successfully saved!', WE_LS_SLUG ) );
+		$html .= ws_ls_component_alert( [ 'message' => __( 'Your settings have been successfully saved!', WE_LS_SLUG ) ] );
 	} elseif( 'true' === ws_ls_querystring_value( 'user-delete-all', 'true' ) ) {
-		$html .= ws_ls_component_alert( __( 'Your data has successfully been deleted.', WE_LS_SLUG ) );
+		$html .= ws_ls_component_alert( [ 'message' => __( 'Your data has successfully been deleted.', WE_LS_SLUG ) ] );
 	}
 
 	if ( true !== ws_ls_to_bool( $shortcode_arguments[ 'hide-notifications' ] ) && true === WS_LS_IS_PRO_PLUS ) {

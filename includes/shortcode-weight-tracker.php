@@ -339,7 +339,7 @@ function ws_ls_shortcode_embed_chart( $weight_data, $shortcode_arguments ) {
 
 		$html_output .= ( true === empty( $shortcode_arguments[ 'uikit' ] ) ) ?
 								ws_ls_display_blockquote( $message ) :
-									ws_ls_component_alert( $message, 'warning', false );
+									ws_ls_component_alert( [ 'message' =>  $message, 'type' => 'warning', 'closable' => false ] );
 
 	}
 

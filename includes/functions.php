@@ -910,7 +910,7 @@ function ws_ls_display_data_saved_message( $uikit = false ) {
 		$message = __( 'Your modifications have been saved', WE_LS_SLUG );
 
 		if ( true === $uikit ) {
-			return ws_ls_component_alert( $message );
+			return ws_ls_component_alert( [ 'message' => $message ] );
 		}
 
 		return ws_ls_display_blockquote( $message, 'ws-ls-success' );
@@ -1166,7 +1166,7 @@ function ws_ls_display_pro_upgrade_notice_for_shortcode ( $uikit = false ) {
 	);
 
 	if ( true === $uikit ) {
-		return ws_ls_component_alert( $message, 'warning', false );
+		return ws_ls_component_alert( [ 'message' => $message, 'type' => 'warning', 'closable' => false ] );
 	}
 
 	return $message;

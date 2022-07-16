@@ -134,10 +134,9 @@ function ws_ls_notifications_shortcode( $user_defined_arguments, $disable_pro_ch
 	if ( false === empty( $notifications ) ) {
 
 		foreach ( $notifications as $notification ) {
-			$html .= ws_ls_component_alert( $notification[ 'message_text' ], $arguments[ 'style' ], true, false, $notification[ 'id' ] );
+			$html .= ws_ls_component_alert( [ 'message' => $notification[ 'message_text' ], 'type' => $arguments[ 'style' ], 'notification-id' => $notification[ 'id' ] ] );
 		}
-
-
+		
 	} else {
 		$html .= wp_kses_post( $arguments[ 'message-no-data' ] );
 	}

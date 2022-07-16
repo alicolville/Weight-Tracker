@@ -619,9 +619,21 @@ function ws_ls_component_age_dob( $args = [] ) {
  *
  * @return string
  */
-function ws_ls_component_alert( $message, $type = 'success', $closable = true, $include_log_link = false, $notification_id = NULL, $additional_css_classes = '' ) {
+function ws_ls_component_alert( $args ) {
 
-	ws_ls_enqueue_uikit( true, true, 'alert' );
+	$args   = wp_parse_args( $args, [   'message'               => '',
+	                                    'disable-main-font'     => false,                       // If set to true, don't include the main font
+	                                    'disable-theme-css'     => false,                       // If set to true, don't include the additional theme CSS used
+	                                    'type'                  => 'success',
+										'closable'              => true,
+										'include-login-link'    => false,
+										'notification-id'       => NULL,
+										'css-classes'           => '',
+										'uikit'                 => true,
+
+	] );
+
+	ws_ls_enqueue_uikit( ! $args[ 'disable-theme-css' ], ! $args[ 'disable-main-font' ], 'alert' );
 
 	// Types: danger, warning, success, primary
 
@@ -629,14 +641,14 @@ function ws_ls_component_alert( $message, $type = 'success', $closable = true, $
 		                <a class="ykuk-alert-close" %3$s data-notification-id="%5$d"></a>
 		                %2$s%4$s
 					</div>',
-					esc_attr( $type ),
-					wp_kses_post( $message ),
-					true === $closable ? 'ykuk-close' : '',
-					( true === $include_log_link ) ?
+					esc_attr( $args[ 'type' ] ),
+					wp_kses_post( $args[ 'message' ] ),
+					true === $args[ 'closable' ] ? 'ykuk-close' : '',
+					( true === $args[ 'include-login-link' ] ) ?
 						sprintf( ' <a class="ws-ls-login-link" href="%1$s">%2$s</a>.', esc_url( wp_login_url( get_permalink() ) ), __( 'Login' , WE_LS_SLUG ) ) :
 						'',
-					$notification_id,
-					esc_attr( $additional_css_classes )
+					$args[ 'notification-id' ],
+					esc_attr( $args[ 'css-classes' ] )
 	);
 }
 
@@ -1005,7 +1017,7 @@ function ws_ls_component_user_search( $arguments ) {
 
 	if ( false === is_user_logged_in() ) {
 		return ( false === ws_ls_to_bool( $arguments[ 'disable-not-logged-in' ] ) ) ?
-					ws_ls_component_alert( __( 'You need to be logged in to search for users.', WE_LS_SLUG ), 'primary', false, true ) :
+					ws_ls_component_alert( [ 'message' => __( 'You need to be logged in to search for users.', WE_LS_SLUG ), 'type' => 'primary', 'closable' => false, 'include=login-link' => true ] ) :
 						'';
 	}
 
@@ -1058,7 +1070,7 @@ function ws_ls_component_group_view_entries( $arguments ) {
 	]);
 
 	if ( true === $arguments[ 'uikit' ] ) {
-		ws_ls_enqueue_uikit( ! $arguments[ 'disable-theme-css' ], ! $arguments[ 'disable-main-font' ] );
+		//ws_ls_enqueue_uikit( ! $arguments[ 'disable-theme-css' ], ! $arguments[ 'disable-main-font' ] );
 	}
 
 	ws_ls_data_table_enqueue_scripts();
@@ -1068,7 +1080,7 @@ function ws_ls_component_group_view_entries( $arguments ) {
 	$html = '';
 
 	if ( true === $arguments[ 'enable-group-select' ] ) {
-		$html .= ws_ls_component_group_select( [ 'selected' => $arguments[ 'group-id' ] ] );
+		//$html .= ws_ls_component_group_select( [ 'selected' => $arguments[ 'group-id' ], 'uikit' => $arguments[ 'uikit' ] ] );
 	}
 
 	$html .= sprintf('<div id="-row" class="ws-ls-form-row ykuk-width-1-1">
@@ -1093,7 +1105,7 @@ function ws_ls_component_group_view_entries( $arguments ) {
 					$arguments[ 'group-id'],
 					( true === $arguments[ 'table-allow-delete' ] ) ? 'true' : 'false',
 					( true === $arguments[ 'todays-entries-only' ] ) ? 'true' : 'false',
-					ws_ls_component_alert( __( 'Total weight difference for group', WE_LS_SLUG ) . ': <strong><span></span></strong>', 'success', false, false, NULL, 'ykuk-invisible ws-ls-total-lost-count'),
+					ws_ls_component_alert( [ 'message' => __( 'Total weight difference for group', WE_LS_SLUG ) . ': <strong><span></span></strong>', 'css-classes' => 'ykuk-invisible ws-ls-total-lost-count' ]),
 					( true === is_admin() ) ? 'true' : 'false'
 	);
 
@@ -1108,14 +1120,14 @@ function ws_ls_component_group_view_entries( $arguments ) {
  */
 function ws_ls_component_group_select( $arguments ) {
 
-	$arguments  = wp_parse_args( $arguments, [ 'selected' => 0, 'include-empty' => true, 'reload-page-on-select' => true ] );
+	$arguments  = wp_parse_args( $arguments, [ 'selected' => 0, 'include-empty' => true, 'reload-page-on-select' => true, 'uikit' => true ] );
 	$groups     = ws_ls_groups( $arguments[ 'include-empty' ] );
 	$groups     = wp_list_pluck( $groups, 'name', 'id' );
 
 	$select_args = [    'key'                           => ws_ls_component_id(),
 						'values'                        => $groups,
 	                    'selected'                      => $arguments[ 'selected' ],
-	                    'uikit'                         => true,
+	                    'uikit'                         => $arguments[ 'uikit' ],
 						'reload-page-on-select'         => true,
 		                'reload-page-on-select-qs-key'  => 'group-id'
 	];

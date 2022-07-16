@@ -49,7 +49,7 @@ function ws_ls_admin_page_group_view() {
 										<input type="submit" value="<?php echo __('Edit', WE_LS_SLUG); ?>" class="button" <?php if ( false === WS_LS_IS_PRO ) { echo ' disabled'; } ?> />
 									</form>
 									<br />
-									<?php echo ws_ls_component_group_view_entries( [ 'group-id' => $group_id ]); ;?>
+									<?php echo ws_ls_component_group_view_entries( [ 'group-id' => $group_id, 'enable-group-select' => false, 'uikit' => false ]); ;?>
                                     <p>
                                         <a class="button-secondary" href="<?php echo admin_url( 'admin.php?page=ws-ls-settings&mode=groups' ); ?>">
                                             <i class="fa fa-arrow-left"></i>
