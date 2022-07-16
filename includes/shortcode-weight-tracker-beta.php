@@ -52,6 +52,8 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 
 	if ( true === $shortcode_arguments[ 'kiosk-mode' ] ) {
 
+		$html .= ws_ls_uikit_data_exposed_notice();
+
 		$shortcode_arguments[ 'show-tab-info' ] = true;
 		$shortcode_arguments[ 'active-tab' ]    = 'summary';
 		$shortcode_arguments[ 'user-loaded' ]   = false;
