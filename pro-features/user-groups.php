@@ -654,6 +654,7 @@ function ws_ls_ajax_groups_users_get(){
 
 	$table_id               = ws_ls_post_value( 'table_id' );
 	$group_id               = ws_ls_post_value( 'group_id' );
+	$is_admin               = ws_ls_post_value( 'is-admin' );
 	$todays_entries_only    = ws_ls_post_value( 'todays_entries_only' );
 
 	$cache_key = sprintf( 'ajax-group-%d-%d', $group_id, $todays_entries_only );
@@ -679,13 +680,13 @@ function ws_ls_ajax_groups_users_get(){
 
 	if ( true === WS_LS_IS_PRO ) {
 
-		$todays_entries_only = ( false === empty( $todays_entries_only ) ) ? date('Y-m-d' ) : NULL;
-
-		$rows = ws_ls_groups_users_for_given_group( $group_id, $todays_entries_only );
+		$todays_entries_only    = ( false === empty( $todays_entries_only ) ) ? date('Y-m-d' ) : NULL;
+		$rows                   = ws_ls_groups_users_for_given_group( $group_id, $todays_entries_only );
+		$is_admin               = ws_ls_to_bool( $is_admin );
 
 		foreach ( $rows as &$row ) {
 
-			$row[ 'display_name' ] = ws_ls_get_link_to_user_profile( $row[ 'user_id' ], $row[ 'display_name' ] );
+			$row[ 'display_name' ] = ( $is_admin ) ? ws_ls_get_link_to_user_profile( $row[ 'user_id' ], $row[ 'display_name' ] ) : $row[ 'display_name' ];
 
 			$stats = ws_ls_db_entries_count( $row[ 'user_id' ] );
 

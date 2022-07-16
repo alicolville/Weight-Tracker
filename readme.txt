@@ -149,7 +149,6 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 == Changelog ==
 
-- add option for no group on groups page
 - group view open user in correct page
 - add new user search into admin
 

@@ -1084,6 +1084,7 @@ function ws_ls_component_group_view_entries( $arguments ) {
                            data-paging-size="40"
                            data-cascade="true"
                            data-toggle="true"
+                           data-is-admin="%5$s"
                            data-use-parent-width="true">
                     	</table>
                     	<div class="ykuk-divider-icon"></div>
@@ -1092,7 +1093,8 @@ function ws_ls_component_group_view_entries( $arguments ) {
 					$arguments[ 'group-id'],
 					( true === $arguments[ 'table-allow-delete' ] ) ? 'true' : 'false',
 					( true === $arguments[ 'todays-entries-only' ] ) ? 'true' : 'false',
-					ws_ls_component_alert( __( 'Total weight difference for group', WE_LS_SLUG ) . ': <strong><span></span></strong>', 'success', false, false, NULL, 'ykuk-invisible ws-ls-total-lost-count')
+					ws_ls_component_alert( __( 'Total weight difference for group', WE_LS_SLUG ) . ': <strong><span></span></strong>', 'success', false, false, NULL, 'ykuk-invisible ws-ls-total-lost-count'),
+					( true === is_admin() ) ? 'true' : 'false'
 	);
 
 	return $html;
