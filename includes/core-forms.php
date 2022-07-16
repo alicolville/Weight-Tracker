@@ -99,7 +99,7 @@ function ws_ls_form_weight( $arguments = [] ) {
 				&& WS_LS_IS_PRO && ws_ls_option_to_bool( 'ws-ls-populate-form-with-values-on-date', 'yes' )
 	) {
 
-		$date           = ws_ls_convert_date_to_iso( $arguments[ 'todays-date' ] );
+		$date           = ws_ls_convert_date_to_iso( $arguments[ 'todays-date' ]);
 		$existing_id    = ws_ls_db_entry_for_date( $arguments[ 'user-id' ], $date );
 
 		if ( false === empty( $existing_id ) ) {
@@ -275,10 +275,11 @@ function ws_ls_form_weight( $arguments = [] ) {
  */
 function  ws_ls_form_init( $arguments = [] ) {
 
+	$user_id                    = ( false === $arguments[ 'kiosk-mode' ] ) ? $arguments[ 'user-id' ] : get_current_user_id();
 	$arguments[ 'form-id' ]     = ws_ls_component_id();
 	$arguments[ 'form-number' ] = ws_ls_form_number_next();
-	$arguments[ 'data-unit' ]   = ws_ls_setting( 'weight-unit', ( false === $arguments[ 'kiosk-mode' ] ) ? $arguments[ 'user-id' ] : get_current_user_id() );
-	$arguments[ 'todays-date' ] = ws_ls_date_todays_date( $arguments['user-id'] );
+	$arguments[ 'data-unit' ]   = ws_ls_setting( 'weight-unit', $user_id );
+	$arguments[ 'todays-date' ] = ws_ls_date_todays_date( $user_id );
 
 	global $save_response;
 
