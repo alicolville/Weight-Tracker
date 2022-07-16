@@ -326,6 +326,7 @@ function ws_ls_tab_settings( $arguments = [] ) {
 		                                                    'body'      => ws_ls_form_weight( [ 'type'              => 'target',
 		                                                                                        'css-class-form'    => 'ws-ls-target-form',
 		                                                                                        'user-id'           => $arguments[ 'user-id' ],
+		                                                                                        'kiosk-mode'        => $arguments[ 'kiosk-mode' ],
 		                                                                                        'hide-confirmation' => false,
 			                                                                                    'hide-title'        => true,
 			                                                                                    'uikit'             => true
