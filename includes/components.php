@@ -633,7 +633,9 @@ function ws_ls_component_alert( $args ) {
 
 	] );
 
-	ws_ls_enqueue_uikit( ! $args[ 'disable-theme-css' ], ! $args[ 'disable-main-font' ], 'alert' );
+	if ( true === $args[ 'uikit' ] ) {
+		ws_ls_enqueue_uikit( ! $args[ 'disable-theme-css' ], ! $args[ 'disable-main-font' ], 'alert' );
+	}
 
 	// Types: danger, warning, success, primary
 
@@ -1070,7 +1072,7 @@ function ws_ls_component_group_view_entries( $arguments ) {
 	]);
 
 	if ( true === $arguments[ 'uikit' ] ) {
-		//ws_ls_enqueue_uikit( ! $arguments[ 'disable-theme-css' ], ! $arguments[ 'disable-main-font' ] );
+		ws_ls_enqueue_uikit( ! $arguments[ 'disable-theme-css' ], ! $arguments[ 'disable-main-font' ] );
 	}
 
 	ws_ls_data_table_enqueue_scripts();
@@ -1080,7 +1082,7 @@ function ws_ls_component_group_view_entries( $arguments ) {
 	$html = '';
 
 	if ( true === $arguments[ 'enable-group-select' ] ) {
-		//$html .= ws_ls_component_group_select( [ 'selected' => $arguments[ 'group-id' ], 'uikit' => $arguments[ 'uikit' ] ] );
+		$html .= ws_ls_component_group_select( [ 'selected' => $arguments[ 'group-id' ], 'uikit' => $arguments[ 'uikit' ] ] );
 	}
 
 	$html .= sprintf('<div id="-row" class="ws-ls-form-row ykuk-width-1-1">
@@ -1105,7 +1107,7 @@ function ws_ls_component_group_view_entries( $arguments ) {
 					$arguments[ 'group-id'],
 					( true === $arguments[ 'table-allow-delete' ] ) ? 'true' : 'false',
 					( true === $arguments[ 'todays-entries-only' ] ) ? 'true' : 'false',
-					ws_ls_component_alert( [ 'message' => __( 'Total weight difference for group', WE_LS_SLUG ) . ': <strong><span></span></strong>', 'css-classes' => 'ykuk-invisible ws-ls-total-lost-count' ]),
+					ws_ls_component_alert( [ 'message' => __( 'Total weight difference for group', WE_LS_SLUG ) . ': <strong><span></span></strong>', 'css-classes' => 'ykuk-invisible ws-ls-total-lost-count', 'uikit' => $arguments[ 'uikit'] ]),
 					( true === is_admin() ) ? 'true' : 'false'
 	);
 
