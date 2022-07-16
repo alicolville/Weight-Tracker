@@ -145,7 +145,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 == Upgrade Notice ==
 
-10.0 - New shortcode! Beta! [wt-beta]
+10.2 - "Kiosk Mode" for [wt-beta]!
 
 == Changelog ==
 
@@ -156,11 +156,11 @@ New argument "bmr-type" for "wt-bmr"
 
 New shortcode: wt-group-view-as-table (document)
 
-Update documentation for kiosk-mode
-
+Update documentation for kiosk-mode (use this URL https://docs.yeken.uk/shortcodes/wt-beta-kiosk-mode.html)
 
 = 10.2 =
 
+* New feature: Added a new "Kiosk mode" for [wt-beta]!! Read more https://docs.yeken.uk/shortcodes/wt-beta-kiosk-mode.html
 * New feature: Added a new tab to [wt-beta] to display the user's awards. Read more: https://docs.yeken.uk/shortcodes/wt-beta.html
 * New feature: New shortcode [wt-group-view-as-table]. Read more: https://docs.yeken.uk/shortcodes/wt-group-view-as-table.html
 * New feature: Added a new setting "Set default aim?" that allows you to specify a default aim if a user has selected one.
