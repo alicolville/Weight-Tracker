@@ -190,7 +190,8 @@ function ws_ls_wt_tab_menu( $arguments = [] ) {
 
 	$tabs[] = [ 'name' => 'messages', 'icon' => 'mail' ];
 
-	if( true === ws_ls_user_preferences_is_enabled() ) {
+	if( true === ws_ls_user_preferences_is_enabled() ||
+			true === $arguments[ 'kiosk-mode' ] ) {
 		$tabs[] = [ 'name' => 'settings', 'icon' => 'settings' ];
 	}
 
@@ -252,7 +253,8 @@ function ws_ls_wt_tab_panes( $arguments = [] ) {
 		$html .= '<li>' . ws_ls_tab_notes( $arguments ) . '</li>';
 	}
 
-	if( true === ws_ls_user_preferences_is_enabled() ) {
+	if( true === ws_ls_user_preferences_is_enabled() ||
+	        true === $arguments[ 'kiosk-mode' ] ) {
 		$html .= '<li>' . ws_ls_tab_settings( $arguments ) . '</li>';
 	}
 
