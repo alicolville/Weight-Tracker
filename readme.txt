@@ -149,17 +149,15 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 == Changelog ==
 
-Things to complete:
-
-- Add a new setting for default Aim (so therefore if missing for a user default to it)
 
 New components: Update docs for each
 
-New argyment "bmr-type" for "wt-bmr"
+New argument "bmr-type" for "wt-bmr"
 
 New shortcode: wt-group-view-as-table (document)
 
-minifiy: data.footable.js, footable.css
+Update documentation for kiosk-mode
+
 
 = 10.2 =
 
