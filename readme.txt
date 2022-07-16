@@ -149,6 +149,12 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 == Changelog ==
 
+- add option for no group on groups page
+- total on group data is display in lbs when user is stones/pounds
+- "Delete your existing data" / "Settings" area disabled if settings disabled in main settings
+- group view open user in correct page
+- add new user search into admin
+- add notification about securing page when in kiosk mode
 
 New components: Update docs for each
 
