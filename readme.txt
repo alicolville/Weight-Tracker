@@ -151,9 +151,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 Things to complete:
 
-- Group view for the day
 - Add a new setting for default Aim (so therefore if missing for a user default to it)
--	Highlight the ‘Notes’ + symbol in a darker colour if there are any notes to be seen so you’re not opening each + symbol looking for notes.
 
 New components: Update docs for each
 
@@ -163,10 +161,11 @@ New shortcode: wt-group-view-as-table (document)
 
 minifiy: data.footable.js, footable.css
 
-= XXX =
+= 10.2 =
 
 * New feature: Added a new tab to [wt-beta] to display the user's awards. Read more: https://docs.yeken.uk/shortcodes/wt-beta.html
 * New feature: New shortcode [wt-group-view-as-table]. Read more: https://docs.yeken.uk/shortcodes/wt-group-view-as-table.html
+* New feature: Added a new setting "Set default aim?" that allows you to specify a default aim if a user has selected one.
 * Improvement: Expand Toggle/button on tables will be red if there is a note for the entry.
 * Improvement: Added a new argument "show-tab-info" to [wt-beta] to add an additional summary tab. Read more: https://docs.yeken.uk/shortcodes/wt-beta.html
 * Improvement: Added a new argument "summary-boxes-summary" to [wt-beta] to specify which components appear on the summary tab. Read more: https://docs.yeken.uk/shortcodes/wt-beta.html

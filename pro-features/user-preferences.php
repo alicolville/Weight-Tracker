@@ -94,7 +94,7 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
 							<input type="hidden" id="ws-ls-user-id" value="' . (int) $user_id . '" />';
 
 		if ( false === ws_ls_to_bool( $arguments[ 'hide-aim' ] ) ) {
-			$html_output .= ws_ls_form_field_select( [ 'uikit' => $arguments[ 'uikit' ], 'key' => 'ws-ls-aim', 'label' => $labels['aim'], 'values' => ws_ls_aims(), 'selected' => ws_ls_user_preferences_get( 'aim', $user_id, 0 ), 'css-class' => 'ws-ls-aboutyou-field' ] );
+			$html_output .= ws_ls_form_field_select( [ 'uikit' => $arguments[ 'uikit' ], 'key' => 'ws-ls-aim', 'label' => $labels['aim'], 'values' => ws_ls_aims(), 'selected' => ws_ls_user_preferences_get( 'aim', $user_id, NULL ), 'css-class' => 'ws-ls-aboutyou-field' ] );
 		}
 
 		if ( false === ws_ls_to_bool( $arguments[ 'hide-extras' ] ) ) {

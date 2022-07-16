@@ -821,6 +821,11 @@ function ws_ls_user_preferences_get( $field = 'gender', $user_id = false, $defau
 		$user_preferences = [];
 	}
 
+	// Default is specified in user admin
+	if ( 'aim' === $field ) {
+		$default = get_option( 'ws-ls-default-aim', NULL );
+	}
+
 	$value = ( true === array_key_exists( $field, $user_preferences ) ) ? $user_preferences[ $field ] : $default;
 
 	if ( 'dob' === $field && '0000-00-00 00:00:00' === $value )  {
