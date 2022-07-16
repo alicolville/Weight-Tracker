@@ -525,7 +525,6 @@ jQuery( document ).ready(function ( $, undefined ) {
 
             for ( let i = 0; i < columns.length; i++ ) {
                 if(  'undefined' !== typeof formatters[ columns[ i ].name ] ) {
-                    ws_ls_log('Applying formatter for: ' + columns[ i ].name );
                     columns[ i ].formatter = formatters[ 'date' ];
                 }
             }
