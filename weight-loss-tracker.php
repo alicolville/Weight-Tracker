@@ -33,6 +33,7 @@ define( 'WE_LS_PRO_PLUS_PRICE', 100.00 );
 
 global $form_number;        // This is used to keep track of multiple forms on a page allowing us to pass messages to each
 global $save_response;      // This is used to keep track of form posts responses
+global $kiosk_mode;         // If using [wt] in Kiosk mode
 
 // -----------------------------------------------------------------------------------------
 // AC: Activate / Deactivate / Uninstall Hooks

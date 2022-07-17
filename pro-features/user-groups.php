@@ -128,7 +128,9 @@ add_filter( 'wlt-filter-admin-user-sidebar-middle',  'ws_ls_groups_hooks_user_si
 */
 function ws_ls_groups_hooks_user_preferences_form( $html, $user_id ) {
 
-	if ( false === is_admin() && false === ws_ls_groups_can_users_edit() ) {
+	global $kiosk_mode;
+
+	if ( false === is_admin() && false === ws_ls_groups_can_users_edit() && true === empty( $kiosk_mode )) {
 		return $html;
 	}
 
@@ -180,11 +182,9 @@ function ws_ls_groups_hooks_user_preferences_save( $user_id, $is_admin, $fields 
 		return;
 	}
 
-	// Update user group?
-	if ( true === $is_admin || true === ws_ls_groups_can_users_edit() ) {
+	$group_id =  ws_ls_post_value('ws-ls-group');
 
-		$group_id =  ws_ls_post_value('ws-ls-group');
-
+	if ( false === empty( $group_id ) ) {
 		ws_ls_groups_add_to_user( (int) $group_id, (int) $user_id );
 		ws_ls_cache_user_delete( 'groups-user-for-given' );
 	}
