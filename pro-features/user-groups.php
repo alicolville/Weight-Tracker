@@ -666,11 +666,11 @@ function ws_ls_ajax_groups_users_get(){
 	$columns = [
 		[ 'name' => 'id', 'title' => __('ID', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'number', 'visible' => false ],
 		[ 'name' => 'display_name', 'title' => __('User', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ],
-        [ 'name' => 'number-of-entries', 'title' => __('No. Entries', WE_LS_SLUG), 'breakpoints'=> 'md', 'type' => 'number' ],
+        [ 'name' => 'number-of-entries', 'title' => __('No. entries', WE_LS_SLUG), 'breakpoints'=> 'md', 'type' => 'number' ],
         [ 'name' => 'start-weight', 'title' => __('Start', WE_LS_SLUG), 'breakpoints'=> 'md', 'type' => 'text' ],
 		[ 'name' => 'previous-weight', 'title' => __('Previous', WE_LS_SLUG), 'breakpoints'=> 'md', 'type' => 'text' ],
         [ 'name' => 'latest-weight', 'title' => __('Latest', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ],
-        [ 'name' => 'diff-weight', 'title' => __('Diff/Start', WE_LS_SLUG), 'breakpoints'=> 'md', 'type' => 'text' ],
+        [ 'name' => 'diff-weight', 'title' => __('Diff from start', WE_LS_SLUG), 'breakpoints'=> 'md', 'type' => 'text' ],
         [ 'name' => 'target', 'title' => __('Target', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ],
 		[ 'name' => 'awards', 'title' => __('Awards', WE_LS_SLUG), 'breakpoints'=> 'md', 'type' => 'text' ],
 	];
@@ -680,7 +680,7 @@ function ws_ls_ajax_groups_users_get(){
 
 	if ( true === WS_LS_IS_PRO ) {
 
-		$todays_entries_only    = ( false === empty( $todays_entries_only ) ) ? date('Y-m-d' ) : NULL;
+		$todays_entries_only    = ( true === ws_ls_to_bool( $todays_entries_only ) ) ? date('Y-m-d' ) : NULL;
 		$rows                   = ws_ls_groups_users_for_given_group( $group_id, $todays_entries_only );
 		$is_admin               = ws_ls_to_bool( $is_admin );
 
@@ -701,11 +701,17 @@ function ws_ls_ajax_groups_users_get(){
 
 				if ( false === empty( $row[ 'latest-weight' ] ) ) {
 					$row[ 'start-weight' ]      = ws_ls_weight_display( $row[ 'latest-weight' ][ 'first_weight' ], NULL, 'display' );
-					$row[ 'diff-weight' ]       = ws_ls_weight_display( $row[ 'latest-weight' ][ 'difference_from_start_kg' ], NULL, 'display' );
-
 					$row[ 'previous-weight' ]   = ws_ls_entry_get_previous( [ 'user-id' => $row[ 'user_id' ], 'meta' => false ] );
 
-					$difference = $row[ 'latest-weight' ][ 'kg' ] - $row[ 'previous-weight' ][ 'kg' ];
+					if ( false === empty( $todays_entries_only ) ) {
+						$difference             = $row[ 'latest-weight' ][ 'kg' ] - $row[ 'previous-weight' ][ 'kg' ];
+						$row[ 'diff-weight' ]   = ws_ls_weight_display( $difference, NULL, 'display', false, true );
+
+					} else {
+						$difference             = $row[ 'latest-weight' ][ 'difference_from_start_kg' ];
+						$row[ 'diff-weight' ]   = ws_ls_weight_display( $row[ 'latest-weight' ][ 'difference_from_start_kg' ], NULL, 'display' );
+					}
+
 					$total_difference += $difference;
 
 					$row[ 'previous-weight' ]   = $row[ 'previous-weight' ][ 'display' ];

@@ -1085,6 +1085,15 @@ function ws_ls_component_group_view_entries( $arguments ) {
 		$html .= ws_ls_component_group_select( [ 'selected' => $arguments[ 'group-id' ], 'uikit' => $arguments[ 'uikit' ] ] );
 	}
 
+	$message = ( true === ws_ls_to_bool( $arguments[ 'todays-entries-only' ] ) ) ?
+					__( 'Total weight difference (between previous/latest)', WE_LS_SLUG ) :
+						__( 'Total weight difference (between start/latest)', WE_LS_SLUG );
+
+	$message = ws_ls_component_alert( [ 'message' => $message . ': <strong><span></span>.</strong>',
+	                                    'css-classes' => 'ykuk-invisible ws-ls-total-lost-count', 'uikit'
+	                                    => $arguments[ 'uikit']
+	]);
+
 	$html .= sprintf('<div id="-row" class="ws-ls-form-row ykuk-width-1-1">
 						<table class="ws-ls-settings-groups-users-list-ajax ykuk-table table ws-ls-loading-table" id="groups-users-list"
                            data-group-id="%1$d"
@@ -1105,9 +1114,9 @@ function ws_ls_component_group_view_entries( $arguments ) {
 						%4$s
                     </div>',
 					$arguments[ 'group-id'],
-					( true === $arguments[ 'table-allow-delete' ] ) ? 'true' : 'false',
-					( true === $arguments[ 'todays-entries-only' ] ) ? 'true' : 'false',
-					ws_ls_component_alert( [ 'message' => __( 'Total weight difference for group', WE_LS_SLUG ) . ': <strong><span></span></strong>', 'css-classes' => 'ykuk-invisible ws-ls-total-lost-count', 'uikit' => $arguments[ 'uikit'] ]),
+					( true === ws_ls_to_bool( $arguments[ 'table-allow-delete' ] ) ) ? 'true' : 'false',
+					( true === ws_ls_to_bool( $arguments[ 'todays-entries-only' ] ) ) ? 'true' : 'false',
+					$message,
 					( true === is_admin() ) ? 'true' : 'false'
 	);
 
