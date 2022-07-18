@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight,tracker,chart,bmi,bmr,macronutrient,measure,awards,custom fields,history,measurements,data
 Requires at least: 5.7
 Tested up to: 6.0
-Stable tag: 10.1.3
+Stable tag: 10.1.4
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -148,6 +148,10 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 10.0 - New shortcode! Beta! [wt-beta]
 
 == Changelog ==
+
+= 10.1.4 =
+
+* Bug fix: For birthday emails, {name} has been replaced with {first-name} and {last-name}. These can be used within the email template.
 
 = 10.1.3 =
 
