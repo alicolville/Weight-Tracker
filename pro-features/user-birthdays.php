@@ -28,7 +28,7 @@
             if ( false === ws_ls_emailer_get('email-birthday') ) {
 
                 ws_ls_emailer_add( 'email-birthday', 'Happy Birthday!', '<center>
-                                                    <h1>Happy Birthday {name}!</h1>
+                                                    <h1>Happy Birthday {first-name} {last-name}!</h1>
                                                     <p>We thought we\'d drop you a quick message to wish you all the best and hope you have a great day!</p>
                                                     <p>All the best,</p>
                                                     <p><a href="{url}" target="_blank" rel="noopener">{name}</a></p>
@@ -59,7 +59,8 @@
             $current_user = get_userdata( $user_id );
 
             $placeholders = [
-                'name' => ( false === empty( $current_user->user_nicename ) ) ? $current_user->user_nicename : ''
+                'first-name' => ( false === empty( $current_user->first_name ) ) ? $current_user->first_name : '',
+	            'last-name' => ( false === empty( $current_user->last_name ) ) ? $current_user->last_name : ''
             ];
 
             if (false === empty( $current_user->user_email )) {

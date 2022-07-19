@@ -44,9 +44,10 @@ Besides the features listed under Pro, the Pro Plus version benefits from the fo
   
 -   [**Awards.**]({{ site.baseurl }}/awards.html) Set awards for: BMI Change, BMI Equals, Weight Gain / Loss from start and Percentage of weight lost from start.  [Read more about awards.]({{ site.baseurl }}/awards.html)  
 -   [**Challenges**]({{ site.baseurl }}/challenges.html).Set challenges for your user's within a given time period? Display Total Weight Lost, BMI Change, %Body Weight, Weight Tracker Streaks and Meal Tracker streaks achieved by each user in a league table.  [Read more]({{ site.baseurl }}/challenges.html).  
--   **All of the features that come with a standard Pro license**.  
+-   [**BMI Calculator**]({{ site.baseurl }}/shortcodes/wt-bmi-calculator.html). Allow your users to enter their details and calculate their BMI.  [Read more]({{ site.baseurl }}/shortcodes/wt-bmi-calculator.html).  
 -   **Basal Metabolic Rate (BMR) calculations per user.** Shortcodes and extended admin screens to display a user's BMR. For further information on BMR and how it is calculated visit our  [calculations page]({{ site.baseurl }}/calculations.html).  
 -   **Harris Benedict formula**. Shortcodes and extended admin screens to a view a person's calorie intake required to maintain and lose weight. For further information on Harris Benedict Formula and how it is calculated visit our  [calculations page]({{ site.baseurl }}/calculations.html).  
 -   **Recommended calorie intake per meal time**. Shortcodes and extended admin screens to recommend how a person should split their daily calorie intake across meals. For further information on how this is calculated please visit our  [calculations page]({{ site.baseurl }}/calculations.html).  
 -   **Macronutrients Calculator**. Shortcodes and extended admin screens to recommend how their calorie consumption should be split into fats, carbohydrates and proteins. For further information on the Macronutrients Calculator and how these calculations are performed please visit our  [calculations page]({{ site.baseurl }}/calculations.html).  
+-   **All of the features that come with a standard Pro license**.  
 -   **Additional user preference fields**. Additional user preference fields and shortcodes to display them: Activity Level, Date of Birth and Gender.

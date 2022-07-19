@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight,tracker,chart,bmi,bmr,macronutrient,measure,awards,custom fields,history,measurements,data
 Requires at least: 5.7
 Tested up to: 6.0
-Stable tag: 10.1.3
+Stable tag: 10.2
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -149,7 +149,6 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 == Changelog ==
 
-
 - add new user search into admin
 
 New components: Update docs for each
@@ -183,6 +182,10 @@ Update documentation for kiosk-mode (use this URL https://docs.yeken.uk/shortcod
 * Improvement: Added a new summary box component "group". Read more https://docs.yeken.uk/components.html
 * Improvement: Added a new summary box component "latest-versus-start". Read more https://docs.yeken.uk/components.html
 * Bug fix: Fixed label for drop downs. Clicking a label should now set focus to drop down.
+
+= 10.1.4 =
+
+* Bug fix: For birthday emails, {name} has been replaced with {first-name} and {last-name}. These can be used within the email template.
 
 = 10.1.3 =
 
