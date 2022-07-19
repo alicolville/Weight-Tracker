@@ -33,10 +33,9 @@ function ws_ls_uikit_summary_boxes( $arguments, $boxes = [] ) {
 	$breakpoint_m = $no_boxes < 4 ? $no_boxes : 4;
 	$breakpoint_s = $no_boxes < 3 ? $no_boxes : (int) $arguments[ 'breakpoint_s' ];
 
-	$html = sprintf( '<div class="ykuk-grid-small ykuk-text-center ykuk-child-width-1-1 ykuk-child-width-1-%1$d@s ykuk-child-width-1-%2$d@m ykuk-grid-match ykuk-text-small" ykuk-grid>',
-		$breakpoint_s,
-		$breakpoint_m
-	);
+	$divider_count = 0;
+
+	$html = ws_ls_uikit_open_grid( $breakpoint_s, $breakpoint_m, $divider_count );
 
 	foreach ( $boxes as $box ) {
 
@@ -75,7 +74,13 @@ function ws_ls_uikit_summary_boxes( $arguments, $boxes = [] ) {
 				$html .= ws_ls_component_number_of_weight_entries( [ 'user-id' => $arguments[ 'user-id' ] ] );
 				break;
 			case 'divider':
-					$html .= '<div class="ykuk-divider-icon ykuk-width-1-1"></div>';
+
+					$html .= '		<div class="ykuk-divider-icon ykuk-width-1-1"></div>
+								</div>';
+
+					$divider_count++;
+
+					$html .= ws_ls_uikit_open_grid( $breakpoint_s, $breakpoint_m,  $divider_count );
 				break;
 			case 'number-of-days-tracking':
 				$html .= ws_ls_component_number_of_days_tracking( [ 'user-id' => $arguments[ 'user-id' ] ] );
@@ -1147,4 +1152,20 @@ function ws_ls_component_group_select( $arguments ) {
 	];
 
 	return ws_ls_form_field_select( $select_args );
+}
+
+/**
+ * Opening for Grid
+ * @param $breakpoint_s
+ * @param $breakpoint_m
+ * @param string $id
+ *
+ * @return string
+ */
+function ws_ls_uikit_open_grid( $breakpoint_s, $breakpoint_m, $id = '' ) {
+	return sprintf( '<div class="ykuk-grid-small ykuk-text-center ykuk-child-width-1-1 ykuk-child-width-1-%1$d@s ykuk-child-width-1-%2$d@m ykuk-grid-match ykuk-text-small ws-ls-section-%3$s" ykuk-grid>',
+		$breakpoint_s,
+		$breakpoint_m,
+		$id
+	);
 }
