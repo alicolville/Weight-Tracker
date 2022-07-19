@@ -236,7 +236,7 @@ function ws_ls_wt_tab_panes( $arguments = [] ) {
 	$html = '<ul class="ykuk-switcher switcher-container ykuk-margin">';
 
 	if ( true === ws_ls_to_bool( $arguments[ 'show-tab-info'] ) ) {
-		$html .= '<li>' . ws_ls_wt_tab_summary( $arguments ) .'</li>';
+		$html .= '<li class="ws-ls-kiosk-tab">' . ws_ls_wt_tab_summary( $arguments ) .'</li>';
 	}
 
 	$html .=		'	<li>' . ws_ls_wt_tab_home( $arguments ) . '</li>
