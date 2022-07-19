@@ -14,7 +14,7 @@ function ws_ls_uikit_summary_boxes( $arguments, $boxes = [] ) {
 	$allowed_boxes = [ 'number-of-entries', 'number-of-weight-entries', 'latest-weight', 'start-weight', 'number-of-days-tracking',
 		'target-weight', 'previous-weight', 'latest-versus-target', 'bmi', 'bmr', 'latest-award', 'number-of-awards',
 		'name-and-email', 'start-bmr', 'start-bmi', 'age-dob', 'activity-level', 'height', 'aim', 'gender', 'group',
-		'latest-versus-start' ];
+		'latest-versus-start', 'divider' ];
 
 	// Default box selection
 	if ( true === empty( $boxes ) ) {
@@ -73,6 +73,9 @@ function ws_ls_uikit_summary_boxes( $arguments, $boxes = [] ) {
 				break;
 			case 'number-of-weight-entries':
 				$html .= ws_ls_component_number_of_weight_entries( [ 'user-id' => $arguments[ 'user-id' ] ] );
+				break;
+			case 'divider':
+					$html .= '<div class="ykuk-divider-icon ykuk-width-1-1"></div>';
 				break;
 			case 'number-of-days-tracking':
 				$html .= ws_ls_component_number_of_days_tracking( [ 'user-id' => $arguments[ 'user-id' ] ] );
