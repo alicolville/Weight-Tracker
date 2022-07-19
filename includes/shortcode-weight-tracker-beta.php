@@ -37,7 +37,7 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 												'summary-boxes-home'        => 'latest-weight,previous-weight,latest-versus-target,target-weight', // Summary boxes to display at top of data tab
 												'summary-boxes-awards'      => 'latest-award,number-of-awards',
 												'summary-boxes-advanced'    => 'bmi,bmr',                   // Summary boxes to display at top of advanced tab
-												'summary-boxes-summary'     => 'start-weight,aim,target-weight,start-bmi,previous-weight,divider,latest-weight,latest-versus-target,latest-versus-start,latest-award,bmr,bmi,divider,name-and-email,gender,age-dob,height,activity-level,group', // Summary boxes to display at top of data tab
+												'summary-boxes-summary'     => 'start-weight,aim,target-weight,start-bmi,previous-weight,divider,weight-difference-since-previous,latest-weight,latest-versus-target,latest-versus-start,latest-award,bmr,bmi,divider,name-and-email,gender,age-dob,height,activity-level,group', // Summary boxes to display at top of data tab
 	                                            'user-id'					=> get_current_user_id(),
 												'weight-mandatory'			=> true,						// Is weight mandatory?
 	], $user_defined_arguments );

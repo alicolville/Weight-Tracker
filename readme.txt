@@ -177,6 +177,7 @@ Update documentation for kiosk-mode (use this URL https://docs.yeken.uk/shortcod
 * Improvement: Added a new summary box component "start-bmi". Read more https://docs.yeken.uk/components.html
 * Improvement: Added a new summary box component "start-bmr". Read more https://docs.yeken.uk/components.html
 * Improvement: Added a new summary box component "activity-level". Read more https://docs.yeken.uk/components.html
+* Improvement: Added a new summary box component "weight-difference-since-previous". Read more https://docs.yeken.uk/components.html
 * Improvement: Added a new summary box component "height". Read more https://docs.yeken.uk/components.html
 * Improvement: Added a new summary box component "aim". Read more https://docs.yeken.uk/components.html
 * Improvement: Added a new summary box component "gender". Read more https://docs.yeken.uk/components.html

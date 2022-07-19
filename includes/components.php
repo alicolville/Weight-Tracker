@@ -14,7 +14,7 @@ function ws_ls_uikit_summary_boxes( $arguments, $boxes = [] ) {
 	$allowed_boxes = [ 'number-of-entries', 'number-of-weight-entries', 'latest-weight', 'start-weight', 'number-of-days-tracking',
 		'target-weight', 'previous-weight', 'latest-versus-target', 'bmi', 'bmr', 'latest-award', 'number-of-awards',
 		'name-and-email', 'start-bmr', 'start-bmi', 'age-dob', 'activity-level', 'height', 'aim', 'gender', 'group',
-		'latest-versus-start', 'divider' ];
+		'latest-versus-start', 'divider', 'weight-difference-since-previous' ];
 
 	// Default box selection
 	if ( true === empty( $boxes ) ) {
@@ -40,6 +40,9 @@ function ws_ls_uikit_summary_boxes( $arguments, $boxes = [] ) {
 	foreach ( $boxes as $box ) {
 
 		switch ( $box ) {
+			case 'weight-difference-since-previous':
+				$html .= ws_ls_component_weight_difference_since_previous( [ 'user-id'   => $arguments[ 'user-id' ] ] );
+				break;
 			case 'gender':
 				$html .= ws_ls_component_user_setting( [    'user-id'   => $arguments[ 'user-id' ],
 				                                            'title'     => __( 'Gender', WE_LS_SLUG ) ,
@@ -200,6 +203,39 @@ function ws_ls_component_latest_weight( $args = [] ) {
                     $text_date,
                     __( 'Latest Weight', WE_LS_SLUG )
     );
+}
+
+/**
+ * Component to display the latest / previous
+ * @param array $args
+ *
+ * @return string
+ */
+function ws_ls_component_weight_difference_since_previous( $args = [] ) {
+
+	$args           = wp_parse_args( $args, [ 'user-id' => get_current_user_id() ] );
+
+	$text_data = ws_ls_shortcode_difference_in_weight_previous_latest( [   'display'                   => 'weight',
+	                                                                        'include-percentage-sign'   => false,
+	                                                                        'invert'                    => false,
+	                                                                        'user-id'                   => $args[ 'user-id']
+	] );
+
+	if ( true === empty( $text_data ) ) {
+		$text_data = __( 'No data', WE_LS_SLUG );
+	}
+
+	return sprintf( '<div>
+                        <div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
+                                <span class="ykuk-info-box-header">%2$s</span><br />
+                                <span class="ykuk-text-bold">
+                                    %1$s
+                                </span>
+                        </div>
+                    </div>',
+		$text_data,
+		__( 'Latest / Previous', WE_LS_SLUG )
+	);
 }
 
 /**
