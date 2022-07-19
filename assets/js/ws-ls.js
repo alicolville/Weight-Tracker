@@ -17,9 +17,11 @@ jQuery( document ).ready( function ( $ ) {
           return;
       }
 
+      let user_id = $( this ).data( 'user-id' );
+
       ws_ls_post( 'ws_ls_clear_target',
-                  { 'user-id' : ws_ls_config[ 'user-id' ] },
-                function() { window.location.replace( ws_ls_config[ 'current-url' ] + '?target-cleared=true' ) } );
+                  { 'user-id' : user_id },
+                function() { window.location.replace( ws_ls_config[ 'current-url' ] + '?target-cleared=true&wt-user-id=' + user_id ) } );
   });
 
   // -----------------------------------------------------------------------
