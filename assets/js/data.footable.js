@@ -80,6 +80,8 @@ jQuery( document ).ready(function ( $, undefined ) {
 
                                                                                 row.delete();
 
+                                                                                $( '.ws-ls-show-if-data-edited' ).removeClass( 'ykuk-invisible' );
+
                                                                                 ws_ls_post_data_to_WP('delete_entry', { row_id : values.db_row_id, 'user_id' : values.user_id }, function( response, data ) {
                                                                                     if( 1 !== response ) {
                                                                                       alert( ws_user_table_config[ 'label-error-delete' ] );

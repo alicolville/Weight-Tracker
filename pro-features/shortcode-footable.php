@@ -25,7 +25,8 @@ function ws_ls_shortcode_table( $user_defined_arguments ) {
 							        'week'                          => NULL,
 						            'user-id'                       => get_current_user_id(),
                                     'uikit'                         => false,
-	                                'kiosk-mode'                    => false
+	                                'kiosk-mode'                    => false,
+	                                'show-refresh-button'           => false
     ], $user_defined_arguments );
 
     $arguments[ 'user-id' ]                 = (int) $arguments[ 'user-id' ];
