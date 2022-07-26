@@ -44,8 +44,8 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
     }
 
 	// Delete all the user's data if selected
-	if(  true === ws_ls_to_bool( $arguments['show-delete-data'] ) && 'true' === ws_ls_querystring_value( 'user-delete-all' ) )	{
-		ws_ls_delete_data_for_user( $user_id );
+	if(  true === ws_ls_to_bool( $arguments['show-delete-data'] ) )	{
+		ws_ls_delete_user_data( $user_id, $arguments['kiosk-mode'] );
 	}
 
     // Decide which set of labels to render

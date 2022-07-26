@@ -318,6 +318,7 @@ function  ws_ls_form_init( $arguments = [] ) {
 	$arguments[ 'post-url' ] = apply_filters( 'wlt_form_url', ws_ls_get_url() );
 
 	$arguments[ 'post-url' ] = remove_query_arg('load-entry', $arguments[ 'post-url' ] );
+	$arguments[ 'post-url' ] = remove_query_arg('user-delete-all', $arguments[ 'post-url' ] );
 
 	// Are meta fields enabled for this form?
 	$arguments[ 'meta-enabled' ]  = ( true === in_array( $arguments[ 'type' ], [ 'custom-fields', 'weight' ] ) &&

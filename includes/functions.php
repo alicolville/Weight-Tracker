@@ -1666,3 +1666,22 @@ function ws_ls_user_search( $search, $include_meta_search = true ) {
 
 	return $users_via_table;
 }
+
+/**
+ * Delete user data
+ * @param $user_id
+ * @param bool $kiosk_mode
+ */
+function ws_ls_delete_user_data( $user_id, $kiosk_mode = false ) {
+
+	if(  'true' === ws_ls_querystring_value( 'user-delete-all' ) )	{
+
+		// Are we in kiosk mode? If so, check QS for a specified user ID
+		if ( true === $kiosk_mode ) {
+			$user_id = ws_ls_querystring_value( 'wt-user-id', true, $user_id );
+		}
+
+		ws_ls_delete_data_for_user( $user_id );
+	}
+
+}

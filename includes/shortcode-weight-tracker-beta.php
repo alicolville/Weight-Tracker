@@ -78,6 +78,10 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 		}
 	}
 
+	if(  true === ws_ls_to_bool( $shortcode_arguments['show-delete-data'] ) )	{
+		ws_ls_delete_user_data( $shortcode_arguments[ 'user-id' ], $shortcode_arguments['kiosk-mode'] );
+	}
+
 	if ( null !== ws_ls_querystring_value( 'ws-edit-entry' ) ) {
 		$shortcode_arguments[ 'active-tab' ] = 'history';
 	} elseif ( $active_tab = ws_ls_querystring_value( 'tab' ) ) {
