@@ -136,7 +136,7 @@ function ws_ls_groups_hooks_user_preferences_form( $html, $user_id ) {
 
 	if ( true === ws_ls_groups_enabled() ) {
 
-		$groups = ws_ls_groups();
+		$groups = ws_ls_groups( true );
 
 		if ( false === empty( $groups ) ) {
 
@@ -152,7 +152,6 @@ function ws_ls_groups_hooks_user_preferences_form( $html, $user_id ) {
 
 			$html .= ws_ls_form_field_select( [ 'key'           => 'ws-ls-group',
 			                                    'label'         => __( 'Group', WE_LS_SLUG ),
-												'empty-option'  => true,
 												'values'        => $groups,
 												'selected'      => $current_selection,
 												'uikit'         => true ] );
@@ -420,7 +419,9 @@ function ws_ls_groups( $include_none = true ) {
 
 	global $wpdb;
 
-	if ( false === is_admin() && $cache = ws_ls_cache_user_get( 'groups', 'all' ) ) {
+	$cache_key = sprintf( 'all-%d', $include_none );
+
+	if ( false === is_admin() && $cache = ws_ls_cache_user_get( 'groups', $cache_key ) ) {
 		return $cache;
 	}
 
@@ -428,11 +429,11 @@ function ws_ls_groups( $include_none = true ) {
 
 	$data = $wpdb->get_results( $sql , ARRAY_A );
 
-	ws_ls_cache_user_set( 'groups', 'all' , $data );
-
 	if ( true === $include_none ) {
 		$data = array_merge( [ [ 'id' => 0, 'name' => __('None', WE_LS_SLUG ) ] ], $data );
 	}
+
+	ws_ls_cache_user_set( 'groups', $cache_key , $data );
 
 	return $data;
 }
