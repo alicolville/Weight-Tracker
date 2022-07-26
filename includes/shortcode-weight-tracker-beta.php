@@ -37,7 +37,7 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 												'summary-boxes-home'        => 'latest-weight,previous-weight,latest-versus-target,target-weight', // Summary boxes to display at top of data tab
 												'summary-boxes-awards'      => 'latest-award,number-of-awards',
 												'summary-boxes-advanced'    => 'bmi,bmr',                   // Summary boxes to display at top of advanced tab
-												'summary-boxes-summary'     => 'weight-difference-since-previous,latest-weight,latest-versus-target,latest-versus-start,latest-award,bmr,bmi,divider,start-weight,aim,target-weight,start-bmi,previous-weight,divider,name-and-email,gender,age-dob,height,activity-level,group', // Summary boxes to display at top of data tab
+												'summary-boxes-summary'     => 'weight-difference-since-previous,latest-weight,latest-versus-target,latest-versus-start,latest-award,bmi,divider,start-weight,aim,target-weight,start-bmi,previous-weight,divider,name-and-email,gender,age-dob,height,activity-level,group', // Summary boxes to display at top of data tab
 	                                            'user-id'					=> get_current_user_id(),
 												'weight-mandatory'			=> true,						// Is weight mandatory?
 	], $user_defined_arguments );
@@ -56,8 +56,6 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 
 		$kiosk_mode = true;
 
-		$html .= ws_ls_uikit_data_exposed_notice();
-
 		$shortcode_arguments[ 'show-tab-info' ] = true;
 		$shortcode_arguments[ 'active-tab' ]    = 'summary';
 		$shortcode_arguments[ 'user-loaded' ]   = false;
@@ -67,6 +65,16 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 			$shortcode_arguments[ 'user-id' ]       = $user_id_to_load;
 			$shortcode_arguments[ 'user-loaded' ]   = true;
 		}
+
+		$shortcode_arguments[ 'todays-entry' ] = ws_ls_entry_get_todays( [ 'user-id' => $shortcode_arguments[ 'user-id' ] ] );
+
+		if ( false === empty( $shortcode_arguments[ 'todays-entry' ] ) ) {
+			$html = '<div class="ws-ls-tracker ws-ls-has-an-entry-for-today">';
+		} else {
+			$html = '<div class="ws-ls-tracker ws-ls-has-no-entry-for-today">';
+		}
+
+		$html .= ws_ls_uikit_data_exposed_notice();
 
 		$shortcode_arguments[ 'disable-not-logged-in' ] = true;
 
@@ -109,6 +117,7 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 	                                                                   'must-have-weight'  => $ensure_we_have_weights,
 	                                                                   'reverse'           => true,
 	                                                                   'sort'              => 'desc' ] );
+
 	$html .= ws_ls_uikit_beta_notice();
 
 	if( 'true' === ws_ls_querystring_value( 'user-preference-saved', 'true' ) ) {

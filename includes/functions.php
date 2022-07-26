@@ -463,6 +463,29 @@ function ws_ls_entry_get_latest( $arguments = [] ) {
 }
 
 /**
+ * Fetch the today's entry
+ * @param array $arguments
+ *
+ * @return string|null
+ */
+function ws_ls_entry_get_todays( $arguments = [] ) {
+
+	$arguments              = wp_parse_args( $arguments, [ 'user-id' => get_current_user_id(), 'meta' => true, 'kg-only' => false ] );
+	$arguments[ 'limit' ]   = 1;
+	$arguments[ 'date' ]	= date('Y-m-d' );
+	$todays_entry      		= ws_ls_db_entries_get( $arguments );
+
+	if ( true === empty( $todays_entry ) ) {
+		return NULL;
+	};
+
+	return ( true === $arguments[ 'kg-only'] &&
+			 false === empty( $todays_entry[ 'kg' ] ) ) ?
+		$todays_entry[ 'kg' ] :
+		$todays_entry;
+}
+
+/**
  * Return Kg for latest weight
  * @param $user_id
  *
