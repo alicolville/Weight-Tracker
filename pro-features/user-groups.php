@@ -150,13 +150,12 @@ function ws_ls_groups_hooks_user_preferences_form( $html, $user_id ) {
 
 			$groups = wp_list_pluck( $groups, 'name', 'id' );
 
-			$html .= ws_ls_form_field_select( [        'key'        => 'ws-ls-group',
-			                                           'label'      => __( 'Group', WE_LS_SLUG ),
-			                                           'values'     => $groups,
-			                                           'selected'   => $current_selection,
-			                                           'uikit'      => true ] );
-
-
+			$html .= ws_ls_form_field_select( [ 'key'           => 'ws-ls-group',
+			                                    'label'         => __( 'Group', WE_LS_SLUG ),
+												'empty-option'  => true,
+												'values'        => $groups,
+												'selected'      => $current_selection,
+												'uikit'         => true ] );
 
 		} else {
 			$html .= __('None', WE_LS_SLUG );
