@@ -183,6 +183,10 @@ Update documentation for kiosk-mode (use this URL https://docs.yeken.uk/shortcod
 * Improvement: Added a new summary box component "gender". Read more https://docs.yeken.uk/components.html
 * Improvement: Added a new summary box component "group". Read more https://docs.yeken.uk/components.html
 * Improvement: Added a new summary box component "latest-versus-start". Read more https://docs.yeken.uk/components.html
+* Improvement: Added a new summary box component "calories-gain". Read more https://docs.yeken.uk/components.html
+* Improvement: Added a new summary box component "calories-auto". Read more https://docs.yeken.uk/components.html
+* Improvement: Added a new summary box component "calories-loss". Read more https://docs.yeken.uk/components.html
+* Improvement: Added a new summary box component "calories-maintain". Read more https://docs.yeken.uk/components.html
 * Bug fix: Fixed label for drop downs. Clicking a label should now set focus to drop down.
 
 = 10.1.4 =

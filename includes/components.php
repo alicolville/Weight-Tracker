@@ -11,10 +11,11 @@ defined('ABSPATH') or die('Jog on!');
  */
 function ws_ls_uikit_summary_boxes( $arguments, $boxes = [] ) {
 
+	// TODO: refactor this. Do we really need this check?
 	$allowed_boxes = [ 'number-of-entries', 'number-of-weight-entries', 'latest-weight', 'start-weight', 'number-of-days-tracking',
 		'target-weight', 'previous-weight', 'latest-versus-target', 'bmi', 'bmr', 'latest-award', 'number-of-awards',
 		'name-and-email', 'start-bmr', 'start-bmi', 'age-dob', 'activity-level', 'height', 'aim', 'gender', 'group',
-		'latest-versus-start', 'divider', 'weight-difference-since-previous' ];
+		'latest-versus-start', 'divider', 'weight-difference-since-previous', 'calories-maintain', 'calories-lose', 'calories-gain', 'calories-auto' ];
 
 	// Default box selection
 	if ( true === empty( $boxes ) ) {
@@ -60,6 +61,18 @@ function ws_ls_uikit_summary_boxes( $arguments, $boxes = [] ) {
 				                                            'title'     => __( 'Activity Level', WE_LS_SLUG ),
 															'setting'   => 'activity_level'
 				]);
+				break;
+			case 'calories-lose':
+				$html .= ws_ls_component_calories( [ 'user-id' => $arguments[ 'user-id' ] ] );
+				break;
+			case 'calories-maintain':
+				$html .= ws_ls_component_calories( [ 'user-id' => $arguments[ 'user-id' ], 'progress' => 'maintain' ] );
+				break;
+			case 'calories-gain':
+				$html .= ws_ls_component_calories( [ 'user-id' => $arguments[ 'user-id' ], 'progress' => 'gain' ] );
+				break;
+			case 'calories-auto':
+				$html .= ws_ls_component_calories( [ 'user-id' => $arguments[ 'user-id' ], 'progress' => 'auto' ] );
 				break;
 			case 'group':
 				$html .= ws_ls_component_user_setting( [    'user-id'   => $arguments[ 'user-id' ],
@@ -554,6 +567,45 @@ function ws_ls_component_number_of_entries( $args = [] ) {
                     </div>',
 		$text_data,
 		__( 'No. entries', WE_LS_SLUG )
+	);
+}
+
+/**
+ * Component to display calories to lose/gain/maintain
+ * @param array $args
+ *
+ * @return string
+ */
+function ws_ls_component_calories( $args = [] ) {
+
+	$args   = wp_parse_args( $args, [ 'user-id' => get_current_user_id(), 'progress' => 'lose', 'type' => 'total', 'add-unit' => true, 'error-message' => __( 'No data', WE_LS_SLUG ) ] );
+
+	$text_data = ws_ls_shortcode_harris_benedict( $args );
+
+	switch ( $args[ 'progress' ] ) {
+		case 'auto':
+			$title = __( 'Calories for meeting aim', WE_LS_SLUG );
+			break;
+		case 'maintain':
+			$title = __( 'Calories for maintaining', WE_LS_SLUG );
+			break;
+		case 'gain':
+			$title = __( 'Calories for gain', WE_LS_SLUG );
+			break;
+		default:
+			$title = __( 'Calories for loss', WE_LS_SLUG );
+	}
+
+	return sprintf( '<div>
+                        <div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
+                                <span class="ykuk-info-box-header">%2$s</span><br />
+                                <span class="ykuk-text-bold">
+                                    %1$s
+                                </span>
+                        </div>
+                    </div>',
+		$text_data,
+		$title
 	);
 }
 
