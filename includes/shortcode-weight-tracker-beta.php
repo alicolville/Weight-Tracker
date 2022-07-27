@@ -11,6 +11,11 @@ defined('ABSPATH') or die('Jog on!');
  */
 function ws_ls_shortcode_beta( $user_defined_arguments ) {
 
+	// Showing groups?
+	if ( ws_ls_querystring_value( 'group-view' ) ) {
+		return ws_ls_groups_view_as_table( [ 'todays-entries-only' => true ] );
+	}
+
 	$shortcode_arguments = shortcode_atts( [    'active-tab'                => 'home',                      // Initial active tab
 												'min-chart-points' 			=> 2,	                        // Minimum number of data entries before chart is shown
 												'custom-field-groups'       => '',                          // If specified, only show custom fields that are within these groups
@@ -135,6 +140,18 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 
 	// Tabs
 	$html .= ws_ls_wt_tab_panes( $shortcode_arguments );
+
+	if ( true === $shortcode_arguments[ 'kiosk-mode' ] ) {
+
+		$groups = ws_ls_groups_user( $shortcode_arguments[ 'user-id' ] );
+
+		$group_id = ( false === empty( $groups[0]['id'] ) ) ? (int) $groups[0]['id'] : NULL;
+
+		$link  = add_query_arg( [ 'group-view' => 'y', 'group-id' => $group_id ], ws_ls_get_url() );
+
+		$html .= sprintf( '	<div class="ykuk-divider-icon ykuk-width-1-1"></div>
+							<a class="ykuk-button ykuk-button-default ykuk-align-center ykuk-width-1-2" type="button" rel="noopener" target="_blank" href="%1$s" >%2$s</a>', esc_url( $link ), __( 'View Group Weight Loss for today', WE_LS_SLUG ) );
+	}
 
 	return $html . '</div>';
 }

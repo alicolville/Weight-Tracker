@@ -661,7 +661,7 @@ function ws_ls_form_field_select( $arguments ) {
 
 		$js = sprintf( '( function( $ ) { $("#%1$s").change(function(){ window.location.replace( "%2$s?%3$s=" + $(this).val() ) }) } )( jQuery );',
 						esc_attr( $arguments[ 'key' ] ),
-						get_permalink(),
+						ws_ls_get_url(),
 						$arguments[ 'reload-page-on-select-qs-key' ]
 		);
 
