@@ -136,7 +136,7 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 	// Tabs
 	$html .= ws_ls_wt_tab_panes( $shortcode_arguments );
 
-	return $html;
+	return $html . '</div>';
 }
 add_shortcode( 'wt-beta', 'ws_ls_shortcode_beta' );
 
