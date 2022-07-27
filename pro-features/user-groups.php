@@ -180,11 +180,15 @@ function ws_ls_groups_hooks_user_preferences_save( $user_id, $is_admin, $fields 
 		return;
 	}
 
-	$group_id =  ws_ls_post_value('ws-ls-group');
+	$group_id = ws_ls_post_value('ws-ls-group');
 
 	if ( false === empty( $group_id ) ) {
 		ws_ls_groups_add_to_user( (int) $group_id, (int) $user_id );
 		ws_ls_cache_user_delete( 'groups-user-for-given' );
+	} else if ( '0' === $group_id ) {
+		ws_ls_groups_remove_all_from_user( $user_id );
+
+		ws_ls_cache_user_delete( $user_id );
 	}
 }
 add_action( 'ws-ls-hook-user-preference-save',  'ws_ls_groups_hooks_user_preferences_save', 10, 3 );
@@ -222,6 +226,21 @@ function ws_ls_groups_add_to_user( $group_id, $user_id = NULL ) {
 	return false;
 }
 
+/**
+ * Remove group from a given user
+ *
+ * @param $user_id
+ *
+ * @return bool|int
+ */
+function ws_ls_groups_remove_all_from_user( $user_id ) {
+
+	global $wpdb;
+
+	$wpdb->delete( $wpdb->prefix . WE_LS_MYSQL_GROUPS_USER, [ 'user_id' => $user_id ], [ '%d' ] );
+
+	return false;
+}
 
 /**
  * Fetch a group
