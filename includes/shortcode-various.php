@@ -91,7 +91,8 @@ function ws_ls_shortcode_difference_in_weight_previous_latest( $user_defined_arg
 	$arguments = shortcode_atts( [	'user-id' 					=> get_current_user_id(),
 									'invert' 					=> false,
 									'display' 					=> 'weight', // weight or percentage
-									'include-percentage-sign' 	=> true
+									'include-percentage-sign' 	=> true,
+									'kiosk-mode'                => false
 								]
 	, $user_defined_arguments );
 
@@ -133,15 +134,19 @@ function ws_ls_shortcode_difference_in_weight_previous_latest( $user_defined_arg
 
 	} else {
 
-		$difference = $latest_entry[ 'kg' ] - $previous_entry[ 'kg' ];
+		$difference             = $latest_entry[ 'kg' ] - $previous_entry[ 'kg' ];
+		$difference             = ( false === ws_ls_to_bool( $arguments[ 'invert' ] ) ) ? $difference : -$difference ;
+		$sign                   = ( $difference > 0 ) ? '+' : '';
+		$weight_to_display      = ws_ls_weight_display( $difference, $arguments[ 'user-id' ], false, false, true );
+		$output                 = sprintf ('%s%s', $sign, $weight_to_display[ 'display' ] );
 
-		$difference = ( false === ws_ls_to_bool( $arguments[ 'invert' ] ) ) ? $difference : -$difference ;
+		if ( true === $arguments[ 'kiosk-mode' ] ) {
 
-		$sign       = ( $difference > 0 ) ? '+' : '';
+			// Note, this currently only supports lose weight!
+			$label = ( $difference <= 0 ) ? 'ykuk-label ykuk-label-success' : 'ykuk-label ykuk-label-warning';
 
-		$difference = ws_ls_weight_display( $difference, $arguments[ 'user-id' ], false, false, true );
-
-		$output     = sprintf ('%s%s', $sign, $difference[ 'display' ] );
+			$output = sprintf( '<span class="%s">%s</span>', $label, $output );
+		}
 	}
 
 	ws_ls_cache_user_set( $arguments[ 'user-id' ], 'shortcode-latets-previous', $output );
