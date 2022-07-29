@@ -149,8 +149,6 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 == Changelog ==
 
-- add new user search into admin
-
 New components: Update docs for each
 
 New argument "bmr-type" for "wt-bmr"
@@ -166,6 +164,7 @@ Update documentation for kiosk-mode (use this URL https://docs.yeken.uk/shortcod
 * New feature: Added a new tab to [wt-beta] to display the user's awards. Read more: https://docs.yeken.uk/shortcodes/wt-beta.html
 * New feature: New shortcode [wt-group-view-as-table]. Read more: https://docs.yeken.uk/shortcodes/wt-group-view-as-table.html
 * New feature: Added a new setting "Set default aim?" that allows you to specify a default aim if a user has selected one.
+* Improvement: Searching for a user will now consider their forename/surname.
 * Improvement: Expand Toggle/button on tables will be red if there is a note for the entry.
 * Improvement: Added a new argument "show-tab-info" to [wt-beta] to add an additional summary tab. Read more: https://docs.yeken.uk/shortcodes/wt-beta.html
 * Improvement: Added a new argument "summary-boxes-summary" to [wt-beta] to specify which components appear on the summary tab. Read more: https://docs.yeken.uk/shortcodes/wt-beta.html

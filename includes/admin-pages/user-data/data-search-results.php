@@ -28,13 +28,14 @@ function ws_ls_admin_page_search_results() {
 
                             if( true === WS_LS_IS_PRO && false === empty( $search_term ) ) {
 
-                                $user_query     = new WP_User_Query( [ 'search' => sprintf( '*%s*', $search_term ) ] );
-                                $count          = $user_query->get_total();
+                                $search_results = ws_ls_user_search( $search_term,true );
 
-                                if( 0 !== $count ) {
+                                print_r($search_results);
+
+                                if( false === empty( $search_results ) ) {
 
                                     printf('<p>%1$d %2$s: <em>"%3$s"</em></p>',
-                                                    $count,
+                                                    count( $search_results ),
                                                     __( 'results were found for', WE_LS_SLUG ),
                                                     esc_html( $search_term )
                                     );
@@ -50,7 +51,7 @@ function ws_ls_admin_page_search_results() {
 	                                        <th><?php echo __( 'Target Weight', WE_LS_SLUG ) ?></th>
                                         </tr>
                                         <?php
-                                            foreach ( $user_query->get_results() as $user ) {
+                                            foreach ( $search_results as $user ) {
                                                 ws_ls_search_row( $user );
                                             }
                                         ?>
