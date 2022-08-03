@@ -7,11 +7,13 @@
  *
  * @param $user_id
  * @param string $order_by
+ * @param null $given_on
+ *
  * @return array
  */
     function ws_ls_awards_db_given_get( $user_id, $order_by = 'value', $given_on = NULL ) {
 
-        $cache_key = 'awards-given-' . $order_by;
+        $cache_key = 'awards-given-' . $order_by . md5( $given_on );
 
         $cache = ws_ls_cache_user_get( $user_id, $cache_key );
 

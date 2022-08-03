@@ -659,9 +659,12 @@ function ws_ls_form_field_select( $arguments ) {
 
 	if ( true === $arguments[ 'reload-page-on-select' ] ) {
 
-		$js = sprintf( '( function( $ ) { $("#%1$s").change(function(){ window.location.replace( "%2$s?%3$s=" + $(this).val() ) }) } )( jQuery );',
+		$url = remove_query_arg( [ $arguments[ 'reload-page-on-select-qs-key' ], 'ws-ls-i' ], ws_ls_get_url() );
+		$url = add_query_arg( 'ws-ls-i', 'y', ws_ls_get_url() );
+
+		$js = sprintf( '( function( $ ) { $("#%1$s").change(function(){ window.location.replace( "%2$s&%3$s=" + $(this).val() ) }) } )( jQuery );',
 						esc_attr( $arguments[ 'key' ] ),
-						ws_ls_get_url(),
+						$url,
 						$arguments[ 'reload-page-on-select-qs-key' ]
 		);
 
