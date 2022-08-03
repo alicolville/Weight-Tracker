@@ -488,7 +488,7 @@ function ws_ls_component_latest_versus_another( $args = [] ) {
 	if ( 'target' === $args[ 'compare-against' ] ) {
 		$comparison_weight = ws_ls_target_get( $args[ 'user-id' ] );
 	} elseif ( (int) ws_ls_db_entries_count( $args[ 'user-id' ] )[ 'number-of-entries' ] >= 2 ) { // Start weight: Ensure we have 2 or more entries to compare
-		$comparison_weight  = ws_ls_entry_get_oldest( $args[ 'user-id' ] );
+		$comparison_weight  = ws_ls_entry_get_oldest( [ 'user-id' => $args[ 'user-id' ] ] );
 	}
 
 	if( true === empty( $latest_entry ) ) {
@@ -513,7 +513,7 @@ function ws_ls_component_latest_versus_another( $args = [] ) {
 
 		if ( false === empty( $percentage_difference ) ) {
 
-			$user_aim = (int) ws_ls_user_preferences_get( 'aim' );
+			$user_aim = (int) ws_ls_user_preferences_get( 'aim', $args[ 'user-id' ] );
 
 			if ( ( 2 === $user_aim && (float) $percentage_difference <= 0 ) ||
 				( 3 === $user_aim && (float) $percentage_difference >= 0 ) ) {
