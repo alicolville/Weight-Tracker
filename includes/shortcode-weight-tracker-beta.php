@@ -354,7 +354,8 @@ function ws_ls_tab_settings( $arguments = [] ) {
 
 	$redirect_url =  ( true === $arguments[ 'kiosk-mode' ] ) ?
 						add_query_arg( [    'wt-user-id'            => $arguments[ 'user-id' ],
-											'user-preference-saved' => 'true'
+											'user-preference-saved' => 'true',
+											'tab'                   => 'settings'
 						], get_permalink() ) : '';
 
 	// Include target form?
@@ -367,7 +368,8 @@ function ws_ls_tab_settings( $arguments = [] ) {
 		                                                                                        'kiosk-mode'        => $arguments[ 'kiosk-mode' ],
 		                                                                                        'hide-confirmation' => false,
 			                                                                                    'hide-title'        => true,
-			                                                                                    'uikit'             => true
+			                                                                                    'uikit'             => true,
+			                                                                                    'redirect-url'      => $redirect_url
 		                                                    ] )
 		]);
 	}
