@@ -722,16 +722,18 @@ function ws_ls_ajax_groups_users_get(){
 					$row[ 'start-weight' ]      = ws_ls_weight_display( $row[ 'latest-weight' ][ 'first_weight' ], NULL, 'display' );
 					$row[ 'previous-weight' ]   = ws_ls_entry_get_previous( [ 'user-id' => $row[ 'user_id' ], 'meta' => false ] );
 
-					if ( false === empty( $todays_entries_only ) ) {
-						$difference             = $row[ 'latest-weight' ][ 'kg' ] - $row[ 'previous-weight' ][ 'kg' ];
-						$row[ 'diff-weight' ]   = ws_ls_weight_display( $difference, NULL, 'display', false, true );
+					if ( (int) $row[ 'number-of-entries' ] > 1 ) {
+						if ( false === empty( $todays_entries_only ) ) {
+							$difference             = $row[ 'latest-weight' ][ 'kg' ] - $row[ 'previous-weight' ][ 'kg' ];
+							$row[ 'diff-weight' ]   = ws_ls_weight_display( $difference, NULL, 'display', false, true );
 
-					} else {
-						$difference             = $row[ 'latest-weight' ][ 'difference_from_start_kg' ];
-						$row[ 'diff-weight' ]   = ws_ls_weight_display( $row[ 'latest-weight' ][ 'difference_from_start_kg' ], NULL, 'display' );
+						} else {
+							$difference             = $row[ 'latest-weight' ][ 'difference_from_start_kg' ];
+							$row[ 'diff-weight' ]   = ws_ls_weight_display( $row[ 'latest-weight' ][ 'difference_from_start_kg' ], NULL, 'display' );
+						}
+
+						$total_difference += $difference;
 					}
-
-					$total_difference += $difference;
 
 					$row[ 'previous-weight' ]   = $row[ 'previous-weight' ][ 'display' ];
 					$row[ 'latest-weight' ]     = $row[ 'latest-weight' ][ 'display' ];
