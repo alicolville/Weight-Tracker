@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Weight Loss Tracker\n"
-"POT-Creation-Date: 2022-07-16 16:14+0100\n"
+"POT-Creation-Date: 2022-08-05 16:33+0100\n"
 "PO-Revision-Date: 2017-09-04 19:10+0100\n"
 "Last-Translator: \n"
 "Language-Team: Yeken - email@yeken.uk\n"
@@ -71,13 +71,13 @@ msgstr ""
 #: includes/admin-pages/awards/page-awards-add-update.php:176
 #: includes/admin-pages/awards/page-awards-add-update.php:187
 #: includes/admin-pages/settings/page-settings-generic.php:110
-#: includes/functions.php:1433 pro-features/shortcode-bmi-calculator.php:101
+#: includes/functions.php:1455 pro-features/shortcode-bmi-calculator.php:101
 msgid "Pounds"
 msgstr ""
 
 #: includes/admin-pages/awards/page-awards-add-update.php:192
 #: includes/core-charting.php:100 includes/core-charting.php:283
-#: includes/core-tables.php:34 pro-features/footable.php:357
+#: includes/core-tables.php:34 pro-features/footable.php:362
 #: pro-features/plus/awards/functions.php:32
 #: pro-features/shortcode-bmi-calculator.php:95 pro-features/web-hooks.php:241
 msgid "Weight"
@@ -172,7 +172,7 @@ msgstr ""
 #: includes/admin-pages/settings/page-settings-generic.php:1092
 #: includes/admin-pages/settings/page-settings-generic.php:1105
 #: includes/admin-pages/settings/page-settings-generic.php:1124
-#: includes/functions.php:1314 pro-features/plus/challenge/functions.php:244
+#: includes/functions.php:1336 pro-features/plus/challenge/functions.php:244
 #: pro-features/plus/meta-fields/functions.php:42
 #: pro-features/plus/meta-fields/functions.php:234
 #: pro-features/plus/meta-fields/functions.php:435
@@ -220,7 +220,7 @@ msgstr ""
 #: includes/admin-pages/settings/page-settings-generic.php:1093
 #: includes/admin-pages/settings/page-settings-generic.php:1106
 #: includes/admin-pages/settings/page-settings-generic.php:1123
-#: includes/functions.php:1314 pro-features/plus/challenge/functions.php:244
+#: includes/functions.php:1336 pro-features/plus/challenge/functions.php:244
 #: pro-features/plus/meta-fields/functions.php:42
 #: pro-features/plus/meta-fields/functions.php:231
 #: pro-features/plus/meta-fields/functions.php:434
@@ -271,8 +271,8 @@ msgstr ""
 #: includes/admin-pages/awards/page-awards-list.php:34
 #: includes/admin-pages/user-data/data-user.php:246
 #: includes/admin-pages/user-data/data-user.php:276 includes/hooks.php:18
-#: includes/shortcode-weight-tracker-beta.php:464
-#: pro-features/user-groups.php:674
+#: includes/shortcode-weight-tracker-beta.php:507
+#: pro-features/user-groups.php:694
 msgid "Awards"
 msgstr ""
 
@@ -414,15 +414,15 @@ msgid "Text display at to end of the entered value when displaying it to the use
 msgstr ""
 
 #: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:267
-#: includes/components.php:64 pro-features/export/admin.page.php:203
+#: includes/components.php:79 pro-features/export/admin.page.php:203
 #: pro-features/plus/challenge/functions.php:493
 #: pro-features/plus/meta-fields/hooks.php:94 pro-features/user-groups.php:111
-#: pro-features/user-groups.php:152 pro-features/user-groups.php:547
+#: pro-features/user-groups.php:154 pro-features/user-groups.php:566
 msgid "Group"
 msgstr ""
 
 #: includes/admin-pages/meta-fields/page-meta-fields-add-update.php:277
-#: pro-features/user-groups.php:146
+#: pro-features/user-groups.php:148
 msgid "Add / remove Groups"
 msgstr ""
 
@@ -479,7 +479,7 @@ msgstr ""
 
 #: includes/admin-pages/meta-fields/page-meta-fields-list.php:43
 #: includes/admin-pages/settings/page-settings-groups.php:42
-#: pro-features/footable.php:436 pro-features/plus/awards/hooks.php:324
+#: pro-features/footable.php:441 pro-features/plus/awards/hooks.php:324
 #: pro-features/plus/harris-benedict.php:321
 msgid "Add"
 msgstr ""
@@ -711,7 +711,7 @@ msgstr ""
 msgid "Never"
 msgstr ""
 
-#: includes/admin-pages/page-license.php:194 includes/components.php:229
+#: includes/admin-pages/page-license.php:194 includes/components.php:287
 msgid "n/a"
 msgstr ""
 
@@ -918,7 +918,7 @@ msgid "Weight Units"
 msgstr ""
 
 #: includes/admin-pages/settings/page-settings-generic.php:109
-#: includes/functions.php:1433
+#: includes/functions.php:1455
 msgid "Stones & Pounds"
 msgstr ""
 
@@ -931,12 +931,12 @@ msgid "UK or US Date format?"
 msgstr ""
 
 #: includes/admin-pages/settings/page-settings-generic.php:119
-#: pro-features/user-preferences.php:141
+#: pro-features/user-preferences.php:142
 msgid "UK (DD/MM/YYYY)"
 msgstr ""
 
 #: includes/admin-pages/settings/page-settings-generic.php:120
-#: pro-features/user-preferences.php:141
+#: pro-features/user-preferences.php:142
 msgid "US (MM/DD/YYYY)"
 msgstr ""
 
@@ -1504,7 +1504,7 @@ msgid "If enabled, enter a HEX colour code to use for filling the Weight bars on
 msgstr ""
 
 #: includes/admin-pages/settings/page-settings-generic.php:932
-#: includes/hooks.php:27 includes/shortcode-weight-tracker-beta.php:343
+#: includes/hooks.php:27 includes/shortcode-weight-tracker-beta.php:384
 #: pro-features/functions-pages.php:469
 msgid "Settings"
 msgstr ""
@@ -1709,10 +1709,10 @@ msgid "The group could not be found"
 msgstr ""
 
 #: includes/admin-pages/user-data/data-notes.php:44 includes/core-forms.php:221
-#: includes/core-forms.php:466 includes/core-tables.php:35
+#: includes/core-forms.php:468 includes/core-tables.php:35
 #: pro-features/email-notifications.php:81
 #: pro-features/export/admin.page.php:249 pro-features/export/functions.php:211
-#: pro-features/footable.php:402 pro-features/functions-pages.php:118
+#: pro-features/footable.php:407 pro-features/functions-pages.php:118
 #: pro-features/plus/challenge/admin.page.php:75 pro-features/web-hooks.php:277
 msgid "Notes"
 msgstr ""
@@ -1765,39 +1765,39 @@ msgstr ""
 msgid "Search Results"
 msgstr ""
 
-#: includes/admin-pages/user-data/data-search-results.php:38
+#: includes/admin-pages/user-data/data-search-results.php:36
 msgid "results were found for"
 msgstr ""
 
-#: includes/admin-pages/user-data/data-search-results.php:46
+#: includes/admin-pages/user-data/data-search-results.php:44
 msgid "Username"
 msgstr ""
 
-#: includes/admin-pages/user-data/data-search-results.php:47
+#: includes/admin-pages/user-data/data-search-results.php:45
 #: pro-features/plus/awards/hooks.php:326
 msgid "Email"
 msgstr ""
 
-#: includes/admin-pages/user-data/data-search-results.php:48
+#: includes/admin-pages/user-data/data-search-results.php:46
 #: pro-features/email-notifications.php:166
 msgid "Start Weight"
 msgstr ""
 
-#: includes/admin-pages/user-data/data-search-results.php:49
-#: includes/components.php:193
+#: includes/admin-pages/user-data/data-search-results.php:47
+#: includes/components.php:217
 msgid "Latest Weight"
 msgstr ""
 
-#: includes/admin-pages/user-data/data-search-results.php:50
-#: includes/components.php:338 pro-features/web-hooks.php:349
+#: includes/admin-pages/user-data/data-search-results.php:48
+#: includes/components.php:396 pro-features/web-hooks.php:349
 msgid "Target Weight"
 msgstr ""
 
-#: includes/admin-pages/user-data/data-search-results.php:62
+#: includes/admin-pages/user-data/data-search-results.php:60
 msgid "No users were found for the given search criteria:"
 msgstr ""
 
-#: includes/admin-pages/user-data/data-search-results.php:67
+#: includes/admin-pages/user-data/data-search-results.php:65
 msgid "No search terms were specified"
 msgstr ""
 
@@ -1935,7 +1935,7 @@ msgstr ""
 msgid "to save changes to your user's settings"
 msgstr ""
 
-#: includes/admin-pages/user-data/data-user.php:27 includes/hooks.php:244
+#: includes/admin-pages/user-data/data-user.php:27 includes/hooks.php:243
 msgid "The preferences for this user have been saved."
 msgstr ""
 
@@ -2025,7 +2025,7 @@ msgid "For performance reasons, the following table shall be restricted to a max
 msgstr ""
 
 #: includes/ajax.php:174 includes/core-forms.php:142
-#: includes/core-tables.php:33 pro-features/footable.php:354
+#: includes/core-tables.php:33 pro-features/footable.php:359
 #: pro-features/web-hooks.php:230
 msgid "Date"
 msgstr ""
@@ -2038,179 +2038,205 @@ msgstr ""
 msgid "Message"
 msgstr ""
 
-#: includes/components.php:46 pro-features/functions-pages.php:383
+#: includes/components.php:49 pro-features/functions-pages.php:383
 #: pro-features/plus/challenge/functions.php:486
 msgid "Gender"
 msgstr ""
 
-#: includes/components.php:52 pro-features/functions-pages.php:375
+#: includes/components.php:55 pro-features/functions-pages.php:375
 msgid "Aim"
 msgstr ""
 
-#: includes/components.php:58
+#: includes/components.php:61
 msgid "Activity Level"
 msgstr ""
 
-#: includes/components.php:104 includes/components.php:657
-#: includes/components.php:702 pro-features/functions-pages.php:400
+#: includes/components.php:128 includes/components.php:768
+#: includes/components.php:813 pro-features/functions-pages.php:400
 msgid "Missing data"
 msgstr ""
 
-#: includes/components.php:105
+#: includes/components.php:129
 msgid "Latest vs Start"
 msgstr ""
 
-#: includes/components.php:147 includes/components.php:281
-#: includes/components.php:427 includes/components.php:501
-#: includes/components.php:529
+#: includes/components.php:171 includes/components.php:239
+#: includes/components.php:339 includes/components.php:485
+#: includes/components.php:559 includes/components.php:582
+#: includes/components.php:626
 msgid "No data"
 msgstr ""
 
-#: includes/components.php:176
+#: includes/components.php:200
 msgid "The difference between your latest weight and previous."
 msgstr ""
 
-#: includes/components.php:216
+#: includes/components.php:251
+msgid "Latest / Previous"
+msgstr ""
+
+#: includes/components.php:274
 msgid "No. of awards"
 msgstr ""
 
-#: includes/components.php:265
+#: includes/components.php:323
 msgid "Latest Award"
 msgstr ""
 
-#: includes/components.php:304 pro-features/email-notifications.php:156
+#: includes/components.php:362 pro-features/email-notifications.php:156
 msgid "Previous Weight"
 msgstr ""
 
-#: includes/components.php:320 includes/components.php:355
-#: includes/components.php:358 includes/components.php:387
+#: includes/components.php:378 includes/components.php:413
+#: includes/components.php:416 includes/components.php:445
 msgid "Not set"
 msgstr ""
 
-#: includes/components.php:350 pro-features/functions-pages.php:379
+#: includes/components.php:408 pro-features/functions-pages.php:379
 #: pro-features/shortcode-bmi-calculator.php:97
 msgid "Height"
 msgstr ""
 
-#: includes/components.php:410 pro-features/web-hooks.php:245
+#: includes/components.php:468 pro-features/web-hooks.php:245
 msgid "Starting Weight"
 msgstr ""
 
-#: includes/components.php:423 pro-features/functions-pages.php:358
+#: includes/components.php:481 pro-features/functions-pages.php:358
 msgid "No target set"
 msgstr ""
 
-#: includes/components.php:424
+#: includes/components.php:482
 msgid "Latest vs Target"
 msgstr ""
 
-#: includes/components.php:437
+#: includes/components.php:495
 msgid "No entries"
 msgstr ""
 
-#: includes/components.php:469
+#: includes/components.php:527
 msgid "The difference between your latest weight and target."
 msgstr ""
 
-#: includes/components.php:512 pro-features/plus/challenge/functions.php:207
+#: includes/components.php:570 pro-features/plus/challenge/functions.php:207
+#: pro-features/user-groups.php:688
 msgid "No. entries"
 msgstr ""
 
-#: includes/components.php:540
+#: includes/components.php:588
+msgid "Calories for meeting aim"
+msgstr ""
+
+#: includes/components.php:591
+msgid "Calories for maintaining"
+msgstr ""
+
+#: includes/components.php:594
+msgid "Calories for gain"
+msgstr ""
+
+#: includes/components.php:597
+msgid "Calories for loss"
+msgstr ""
+
+#: includes/components.php:637
 msgid "No. weight entries"
 msgstr ""
 
-#: includes/components.php:568
+#: includes/components.php:665
 msgid "Tracking for"
 msgstr ""
 
-#: includes/components.php:569 pro-features/shortcode-various.php:451
+#: includes/components.php:666 pro-features/shortcode-various.php:451
 msgid "days"
 msgstr ""
 
-#: includes/components.php:584
+#: includes/components.php:681
 msgid "Set DoB"
 msgstr ""
 
-#: includes/components.php:585
+#: includes/components.php:682
 msgid "DoB missing"
 msgstr ""
 
-#: includes/components.php:602
+#: includes/components.php:699
 msgid "Age"
 msgstr ""
 
-#: includes/components.php:636 includes/functions.php:936
+#: includes/components.php:747 includes/functions.php:958
 msgid "Login"
 msgstr ""
 
-#: includes/components.php:666
+#: includes/components.php:777
 msgid "What is BMI?"
 msgstr ""
 
-#: includes/components.php:669
+#: includes/components.php:780
 msgid "Body Mass Index (BMI)"
 msgstr ""
 
-#: includes/components.php:670 pro-features/plus/shortcode.wlt.php:72
+#: includes/components.php:781 pro-features/plus/shortcode.wlt.php:72
 msgid "The BMI (Body Mass Index) is used by the medical profession to quickly determine a person’s weight in regard to their height. From a straight forward calculation the BMI factor can be gained and may be used to determine if a person is underweight, of normal weight, overweight or obese."
 msgstr ""
 
-#: includes/components.php:684
+#: includes/components.php:795
 msgid "Starting BMI"
 msgstr ""
 
-#: includes/components.php:684 pro-features/functions-pages.php:368
+#: includes/components.php:795 pro-features/functions-pages.php:368
 msgid "Current BMI"
 msgstr ""
 
-#: includes/components.php:710
+#: includes/components.php:821
 msgid "What is BMR?"
 msgstr ""
 
-#: includes/components.php:713
+#: includes/components.php:824
 msgid "Basal Metabolic Rate (BMR)"
 msgstr ""
 
-#: includes/components.php:714 pro-features/plus/shortcode.wlt.php:95
+#: includes/components.php:825 pro-features/plus/shortcode.wlt.php:95
 msgid "BMR is short for Basal Metabolic Rate. The Basal Metabolic Rate is the number of calories required to keep your body functioning at rest, also known as your metabolism. We calculate your BMR using formulas provided by www.diabetes.co.uk."
 msgstr ""
 
-#: includes/components.php:726
+#: includes/components.php:837
 msgid "Starting BMR"
 msgstr ""
 
-#: includes/components.php:726
+#: includes/components.php:837
 msgid "Current BMR"
 msgstr ""
 
-#: includes/components.php:757 pro-features/plus/challenge/functions.php:204
+#: includes/components.php:868 pro-features/plus/challenge/functions.php:204
 #: pro-features/plus/challenge/functions.php:356
 #: pro-features/plus/meta-fields/hooks.php:137
-#: pro-features/shortcode-stats.php:38 pro-features/user-groups.php:615
+#: pro-features/shortcode-stats.php:38 pro-features/user-groups.php:634
 #: pro-features/web-hooks.php:226 pro-features/web-hooks.php:345
 msgid "Name"
 msgstr ""
 
-#: includes/components.php:962
+#: includes/components.php:1110
 msgid "Search for a user..."
 msgstr ""
 
-#: includes/components.php:971
+#: includes/components.php:1119
 msgid "You need to be logged in to search for users."
 msgstr ""
 
-#: includes/components.php:1002
+#: includes/components.php:1150
 msgid "Clear Screen"
 msgstr ""
 
-#: includes/components.php:1058
-msgid "Total weight difference for group"
+#: includes/components.php:1186
+msgid "Total weight difference (between previous/latest)"
+msgstr ""
+
+#: includes/components.php:1187
+msgid "Total weight difference (between start/latest)"
 msgstr ""
 
 #: includes/converters.php:113 includes/converters.php:135
 #: includes/converters.php:196 includes/core-charting.php:73
-#: includes/functions.php:1603 includes/functions.php:1609
+#: includes/functions.php:1625 includes/functions.php:1631
 #: pro-features/shortcode-stats.php:166
 msgid "lbs"
 msgstr ""
@@ -2229,7 +2255,7 @@ msgid "Error. You have disabled all data sets from rendering."
 msgstr ""
 
 #: includes/core-charting.php:149 pro-features/email-notifications.php:67
-#: pro-features/user-groups.php:673
+#: pro-features/user-groups.php:693
 msgid "Target"
 msgstr ""
 
@@ -2281,27 +2307,27 @@ msgstr ""
 msgid "Clear Target"
 msgstr ""
 
-#: includes/core-forms.php:292 includes/form-handler.php:61
+#: includes/core-forms.php:293 includes/form-handler.php:61
 msgid "Your entry has been successfully saved."
 msgstr ""
 
-#: includes/core-forms.php:300 pro-features/functions-pages.php:352
+#: includes/core-forms.php:301 pro-features/functions-pages.php:352
 msgid "Target weight"
 msgstr ""
 
-#: includes/core-forms.php:303
+#: includes/core-forms.php:304
 msgid "Edit an existing entry"
 msgstr ""
 
-#: includes/core-forms.php:305
+#: includes/core-forms.php:306
 msgid "Add a new weight entry"
 msgstr ""
 
-#: includes/core-forms.php:308
+#: includes/core-forms.php:309
 msgid "Complete the following form"
 msgstr ""
 
-#: includes/core-forms.php:494 includes/core-forms.php:653
+#: includes/core-forms.php:496 includes/core-forms.php:655
 msgid "Please select a value for"
 msgstr ""
 
@@ -2546,52 +2572,52 @@ msgstr ""
 msgid "to"
 msgstr ""
 
-#: includes/functions.php:866
+#: includes/functions.php:888
 msgid "Read more about calculations"
 msgstr ""
 
-#: includes/functions.php:910
+#: includes/functions.php:932
 msgid "Your modifications have been saved"
 msgstr ""
 
-#: includes/functions.php:989
+#: includes/functions.php:1011
 msgid "You must be logged in to view or edit your data."
 msgstr ""
 
-#: includes/functions.php:1134
+#: includes/functions.php:1156
 msgid "Upgrade to Pro Plus and get more features!"
 msgstr ""
 
-#: includes/functions.php:1135
+#: includes/functions.php:1157
 msgid "Upgrade to Pro Plus version of this plugin to get additional features like Challenges, Harris Benedict, BMR, Macronutrients and much more!"
 msgstr ""
 
-#: includes/functions.php:1137
+#: includes/functions.php:1159
 msgid "Upgrade Weight Tracker and get more features!"
 msgstr ""
 
-#: includes/functions.php:1138
+#: includes/functions.php:1160
 msgid "Upgrade to the latest Pro or Pro Plus version of this plugin to manipulate your user's data, add custom fields, BMR, Macronutrients and much more!"
 msgstr ""
 
-#: includes/functions.php:1146
+#: includes/functions.php:1168
 msgid "Read more and upgrade"
 msgstr ""
 
-#: includes/functions.php:1163
+#: includes/functions.php:1185
 msgid "To view this data/shortcode, you need to upgrade to the Pro or Pro Plus version."
 msgstr ""
 
-#: includes/functions.php:1165
+#: includes/functions.php:1187
 msgid "Upgrade now"
 msgstr ""
 
-#: includes/functions.php:1433 includes/functions.php:1606
+#: includes/functions.php:1455 includes/functions.php:1628
 #: pro-features/shortcode-bmi-calculator.php:96
 msgid "Kg"
 msgstr ""
 
-#: includes/functions.php:1609
+#: includes/functions.php:1631
 msgid "St"
 msgstr ""
 
@@ -2611,11 +2637,11 @@ msgstr ""
 msgid "Help & Log"
 msgstr ""
 
-#: includes/hooks.php:245
+#: includes/hooks.php:244
 msgid "An error occurred while trying to save the user's preferences."
 msgstr ""
 
-#: includes/hooks.php:267 includes/shortcode-weight-tracker-beta.php:298
+#: includes/hooks.php:266 includes/shortcode-weight-tracker-beta.php:336
 msgid "Weight entries"
 msgstr ""
 
@@ -2653,7 +2679,7 @@ msgstr ""
 
 #: includes/license.php:336 pro-features/plus/meta-fields/db.php:608
 #: pro-features/user-groups.php:108 pro-features/user-groups.php:160
-#: pro-features/user-groups.php:435
+#: pro-features/user-groups.php:452
 msgid "None"
 msgstr ""
 
@@ -2723,82 +2749,86 @@ msgstr ""
 msgid "Coupon"
 msgstr ""
 
-#: includes/shortcode-weight-tracker-beta.php:48
+#: includes/shortcode-weight-tracker-beta.php:53
 #: includes/shortcode-weight-tracker.php:52
 #: pro-features/plus/meta-fields/shortcodes.php:36
 msgid "You need to be logged in to record your weight."
 msgstr ""
 
-#: includes/shortcode-weight-tracker-beta.php:105
+#: includes/shortcode-weight-tracker-beta.php:129
 #: includes/shortcode-weight-tracker.php:71
 msgid "Your settings have been successfully saved!"
 msgstr ""
 
-#: includes/shortcode-weight-tracker-beta.php:107
+#: includes/shortcode-weight-tracker-beta.php:131
 #: includes/shortcode-weight-tracker.php:73
 msgid "Your data has successfully been deleted."
 msgstr ""
 
-#: includes/shortcode-weight-tracker-beta.php:301
+#: includes/shortcode-weight-tracker-beta.php:153
+msgid "View Group Weight Loss for today"
+msgstr ""
+
+#: includes/shortcode-weight-tracker-beta.php:339
 msgid "View in tabular format"
 msgstr ""
 
-#: includes/shortcode-weight-tracker-beta.php:325
+#: includes/shortcode-weight-tracker-beta.php:364
 msgid "Your target"
 msgstr ""
 
-#: includes/shortcode-weight-tracker-beta.php:355
+#: includes/shortcode-weight-tracker-beta.php:397
 msgid "Delete your existing data"
 msgstr ""
 
-#: includes/shortcode-weight-tracker-beta.php:373
+#: includes/shortcode-weight-tracker-beta.php:415
 msgid "Messages"
 msgstr ""
 
-#: includes/shortcode-weight-tracker-beta.php:387
+#: includes/shortcode-weight-tracker-beta.php:429
 msgid "Add a new entry"
 msgstr ""
 
-#: includes/shortcode-weight-tracker-beta.php:401
+#: includes/shortcode-weight-tracker-beta.php:443
 msgid "Your entries"
 msgstr ""
 
-#: includes/shortcode-weight-tracker-beta.php:428
+#: includes/shortcode-weight-tracker-beta.php:471
 msgid "Latest Photo"
 msgstr ""
 
-#: includes/shortcode-weight-tracker-beta.php:434
+#: includes/shortcode-weight-tracker-beta.php:477
 msgid "Oldest Photo"
 msgstr ""
 
-#: includes/shortcode-weight-tracker-beta.php:443
+#: includes/shortcode-weight-tracker-beta.php:486
 msgid "All of your photos"
 msgstr ""
 
-#: includes/shortcode-weight-tracker-beta.php:489
+#: includes/shortcode-weight-tracker-beta.php:532
 msgid "Learn more about suggested calorie intakes"
 msgstr ""
 
-#: includes/shortcode-weight-tracker-beta.php:490
+#: includes/shortcode-weight-tracker-beta.php:533
 #: pro-features/plus/shortcode.wlt.php:114
 msgid "Once we know your BMR (the number of calories to keep you functioning at rest), we can go on to give you suggestions on how to spread your calorie intake across the day. Firstly we split the figures into daily calorie intake to maintain weight and daily calorie intake to lose weight. Daily calorie intake to lose weight is calculated based on NHS advice – they suggest to lose 1 – 2lbs a week you should subtract 600 calories from your BMR. The two daily figures can be further broken down by recommending how to split calorie intake across the day i.e. breakfast, lunch, dinner and snacks."
 msgstr ""
 
-#: includes/shortcode-weight-tracker-beta.php:495
+#: includes/shortcode-weight-tracker-beta.php:538
 #: pro-features/plus/shortcode.wlt.php:109
 msgid "Suggested Calorie Intake"
 msgstr ""
 
-#: includes/shortcode-weight-tracker-beta.php:505
+#: includes/shortcode-weight-tracker-beta.php:548
 msgid "Learn more about macronutrients"
 msgstr ""
 
-#: includes/shortcode-weight-tracker-beta.php:506
+#: includes/shortcode-weight-tracker-beta.php:549
 #: pro-features/plus/shortcode.wlt.php:134
 msgid "With calories calculated, the we can recommend how those calories should be split into Fats, Carbohydrates and Proteins."
 msgstr ""
 
-#: includes/shortcode-weight-tracker-beta.php:512
+#: includes/shortcode-weight-tracker-beta.php:555
 #: pro-features/plus/shortcode.wlt.php:128
 msgid "Macronutrients"
 msgstr ""
@@ -2952,7 +2982,7 @@ msgstr ""
 msgid "Previous exports"
 msgstr ""
 
-#: pro-features/export/admin.page.php:79 pro-features/user-preferences.php:189
+#: pro-features/export/admin.page.php:79 pro-features/user-preferences.php:190
 msgid "Delete"
 msgstr ""
 
@@ -2980,8 +3010,8 @@ msgstr ""
 msgid "Use the following options to specify which weight entries should appear in the export."
 msgstr ""
 
-#: pro-features/export/admin.page.php:167 pro-features/footable.php:348
-#: pro-features/user-groups.php:667
+#: pro-features/export/admin.page.php:167 pro-features/footable.php:353
+#: pro-features/user-groups.php:687
 msgid "User"
 msgstr ""
 
@@ -3082,7 +3112,7 @@ msgstr ""
 msgid "Difference from start"
 msgstr ""
 
-#: pro-features/export/functions.php:209 pro-features/footable.php:365
+#: pro-features/export/functions.php:209 pro-features/footable.php:370
 msgid "BMI"
 msgstr ""
 
@@ -3278,63 +3308,67 @@ msgstr ""
 msgid " <strong>Admin: Extra Settings</strong>. Extra settings to customise the plugin will be added e.g. number of plot points on graph, rows per page, etc."
 msgstr ""
 
-#: pro-features/footable.php:65
+#: pro-features/footable.php:66
 msgid "return to all entries"
 msgstr ""
 
-#: pro-features/footable.php:120
+#: pro-features/footable.php:121
+msgid "Data has changed, refresh screen"
+msgstr ""
+
+#: pro-features/footable.php:125
 msgid "Please note: For performance reasons, this table will only update every 5 minutes."
 msgstr ""
 
-#: pro-features/footable.php:204
+#: pro-features/footable.php:209
 msgid "No weight recorded"
 msgstr ""
 
-#: pro-features/footable.php:216
+#: pro-features/footable.php:221
 msgid "No Change"
 msgstr ""
 
-#: pro-features/footable.php:223
+#: pro-features/footable.php:228
 msgid "Check record"
 msgstr ""
 
-#: pro-features/footable.php:225
+#: pro-features/footable.php:230
 msgid "First weight entry"
 msgstr ""
 
-#: pro-features/footable.php:245
+#: pro-features/footable.php:250
 msgid "No height"
 msgstr ""
 
-#: pro-features/footable.php:359
+#: pro-features/footable.php:364
 msgid "Difference"
 msgstr ""
 
-#: pro-features/footable.php:365
+#: pro-features/footable.php:370
 msgid "Body Mass Index"
 msgstr ""
 
-#: pro-features/footable.php:437
+#: pro-features/footable.php:442
 msgid "Add Custom Field"
 msgstr ""
 
-#: pro-features/footable.php:438
+#: pro-features/footable.php:443
 msgid "Add Award"
 msgstr ""
 
-#: pro-features/footable.php:439
+#: pro-features/footable.php:444
 msgid "Are you sure you want to delete the row?"
 msgstr ""
 
-#: pro-features/footable.php:440
+#: pro-features/footable.php:445
 msgid "Unfortunately there was an error deleting the row."
 msgstr ""
 
-#: pro-features/footable.php:441
+#: pro-features/footable.php:446
 msgid "Search"
 msgstr ""
 
-#: pro-features/footable.php:442
+#: pro-features/footable.php:447
 msgid "No data found"
 msgstr ""
 
@@ -3514,11 +3548,11 @@ msgstr ""
 msgid "Heavily Overweight"
 msgstr ""
 
-#: pro-features/functions.php:339 pro-features/plus/harris-benedict.php:461
+#: pro-features/functions.php:339 pro-features/plus/harris-benedict.php:466
 msgid "Female"
 msgstr ""
 
-#: pro-features/functions.php:340 pro-features/plus/harris-benedict.php:461
+#: pro-features/functions.php:340 pro-features/plus/harris-benedict.php:466
 msgid "Male"
 msgstr ""
 
@@ -3779,7 +3813,7 @@ msgid "Challenges are currently disabled. Please enable via the"
 msgstr ""
 
 #: pro-features/plus/challenge/admin.page.php:193
-#: pro-features/plus/harris-benedict.php:466
+#: pro-features/plus/harris-benedict.php:471
 msgid "settings"
 msgstr ""
 
@@ -3788,7 +3822,7 @@ msgid "page"
 msgstr ""
 
 #: pro-features/plus/challenge/functions.php:203
-#: pro-features/user-groups.php:666
+#: pro-features/user-groups.php:686
 msgid "ID"
 msgstr ""
 
@@ -3925,7 +3959,7 @@ msgstr ""
 
 #: pro-features/plus/harris-benedict.php:210
 #: pro-features/plus/harris-benedict.php:357
-#: pro-features/plus/harris-benedict.php:410
+#: pro-features/plus/harris-benedict.php:415
 #: pro-features/plus/macronutrient-calculator.php:128
 #: pro-features/plus/macronutrient-calculator.php:238
 #: pro-features/plus/macronutrient-calculator.php:286
@@ -3959,6 +3993,7 @@ msgstr ""
 
 #: pro-features/plus/harris-benedict.php:296
 #: pro-features/plus/harris-benedict.php:319
+#: pro-features/plus/harris-benedict.php:392
 msgid "kcal"
 msgstr ""
 
@@ -3985,11 +4020,11 @@ msgstr ""
 msgid "Rule applied for suggested weight gain"
 msgstr ""
 
-#: pro-features/plus/harris-benedict.php:462
+#: pro-features/plus/harris-benedict.php:467
 msgid "calories for weight loss are capped at "
 msgstr ""
 
-#: pro-features/plus/harris-benedict.php:464
+#: pro-features/plus/harris-benedict.php:469
 msgid "This can be modified within "
 msgstr ""
 
@@ -4141,7 +4176,7 @@ msgstr ""
 msgid "Key / Slug"
 msgstr ""
 
-#: pro-features/plus/meta-fields/hooks.php:135 pro-features/user-groups.php:614
+#: pro-features/plus/meta-fields/hooks.php:135 pro-features/user-groups.php:633
 msgid "Group ID"
 msgstr ""
 
@@ -4239,22 +4274,22 @@ msgid "Current weight"
 msgstr ""
 
 #: pro-features/plus/shortcode.calculator.php:174
-#: pro-features/user-preferences.php:53
+#: pro-features/user-preferences.php:54
 msgid "Your height:"
 msgstr ""
 
 #: pro-features/plus/shortcode.calculator.php:181
-#: pro-features/user-preferences.php:56
+#: pro-features/user-preferences.php:57
 msgid "Your Gender:"
 msgstr ""
 
 #: pro-features/plus/shortcode.calculator.php:188
-#: pro-features/user-preferences.php:58
+#: pro-features/user-preferences.php:59
 msgid "Your Activity Level:"
 msgstr ""
 
 #: pro-features/plus/shortcode.calculator.php:198
-#: pro-features/user-preferences.php:57
+#: pro-features/user-preferences.php:58
 msgid "Your Date of Birth:"
 msgstr ""
 
@@ -4383,39 +4418,35 @@ msgstr ""
 msgid "Birthday Email"
 msgstr ""
 
-#: pro-features/user-groups.php:616
+#: pro-features/user-groups.php:635
 msgid "No. Users"
 msgstr ""
 
-#: pro-features/user-groups.php:618
+#: pro-features/user-groups.php:637
 msgid "Total Weight Difference"
 msgstr ""
 
-#: pro-features/user-groups.php:668
-msgid "No. Entries"
-msgstr ""
-
-#: pro-features/user-groups.php:669
+#: pro-features/user-groups.php:689
 msgid "Start"
 msgstr ""
 
-#: pro-features/user-groups.php:670
+#: pro-features/user-groups.php:690
 msgid "Previous"
 msgstr ""
 
-#: pro-features/user-groups.php:671
+#: pro-features/user-groups.php:691
 msgid "Latest"
 msgstr ""
 
-#: pro-features/user-groups.php:672
-msgid "Diff/Start"
+#: pro-features/user-groups.php:692
+msgid "Diff from start"
 msgstr ""
 
-#: pro-features/user-groups.php:798
+#: pro-features/user-groups.php:826
 msgid "There is no weight difference for this group."
 msgstr ""
 
-#: pro-features/user-groups.php:834
+#: pro-features/user-groups.php:862
 msgid "No Group"
 msgstr ""
 
@@ -4423,71 +4454,71 @@ msgstr ""
 msgid "You must be logged in to edit your settings."
 msgstr ""
 
-#: pro-features/user-preferences.php:42
+#: pro-features/user-preferences.php:43
 msgid "To use this shortcode, please ensure you have enabled the setting \"Allow user settings\"."
 msgstr ""
 
-#: pro-features/user-preferences.php:52
+#: pro-features/user-preferences.php:53
 msgid "About You:"
 msgstr ""
 
-#: pro-features/user-preferences.php:54
+#: pro-features/user-preferences.php:55
 msgid "In which unit would you like to record your weight:"
 msgstr ""
 
-#: pro-features/user-preferences.php:55
+#: pro-features/user-preferences.php:56
 msgid "Display dates in the following formats:"
 msgstr ""
 
-#: pro-features/user-preferences.php:59
+#: pro-features/user-preferences.php:60
 msgid "Your aim:"
 msgstr ""
 
-#: pro-features/user-preferences.php:66
+#: pro-features/user-preferences.php:67
 msgid "About User:"
 msgstr ""
 
-#: pro-features/user-preferences.php:67
+#: pro-features/user-preferences.php:68
 msgid "Height:"
 msgstr ""
 
-#: pro-features/user-preferences.php:68
+#: pro-features/user-preferences.php:69
 msgid "Weight unit:"
 msgstr ""
 
-#: pro-features/user-preferences.php:69
+#: pro-features/user-preferences.php:70
 msgid "Date format:"
 msgstr ""
 
-#: pro-features/user-preferences.php:70
+#: pro-features/user-preferences.php:71
 msgid "Gender:"
 msgstr ""
 
-#: pro-features/user-preferences.php:71
+#: pro-features/user-preferences.php:72
 msgid "Date of Birth:"
 msgstr ""
 
-#: pro-features/user-preferences.php:72
+#: pro-features/user-preferences.php:73
 msgid "Activity Level:"
 msgstr ""
 
-#: pro-features/user-preferences.php:73
+#: pro-features/user-preferences.php:74
 msgid "Aim:"
 msgstr ""
 
-#: pro-features/user-preferences.php:153
+#: pro-features/user-preferences.php:154
 msgid "Save Settings"
 msgstr ""
 
-#: pro-features/user-preferences.php:166
+#: pro-features/user-preferences.php:167
 msgid "Delete existing data"
 msgstr ""
 
-#: pro-features/user-preferences.php:177
+#: pro-features/user-preferences.php:178
 msgid "The button below allows you to clear your existing weight history. Confirm:"
 msgstr ""
 
-#: pro-features/user-preferences.php:179
+#: pro-features/user-preferences.php:180
 msgid "DELETE ALL DATA"
 msgstr ""
 

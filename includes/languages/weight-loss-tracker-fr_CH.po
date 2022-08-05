@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Weight Loss Tracker\n"
-"POT-Creation-Date: 2022-07-16 16:15+0100\n"
-"PO-Revision-Date: 2022-07-16 16:15+0100\n"
+"POT-Creation-Date: 2022-08-05 16:32+0100\n"
+"PO-Revision-Date: 2022-08-05 16:32+0100\n"
 "Last-Translator: \n"
 "Language-Team: Yeken - email@yeken.uk\n"
 "Language: fr\n"
@@ -73,7 +73,7 @@ msgstr "Stones"
 
 #: admin-pages/awards/page-awards-add-update.php:176
 #: admin-pages/awards/page-awards-add-update.php:187
-#: admin-pages/settings/page-settings-generic.php:110 functions.php:1433
+#: admin-pages/settings/page-settings-generic.php:110 functions.php:1455
 msgid "Pounds"
 msgstr "Pounds"
 
@@ -175,7 +175,7 @@ msgstr "Toutes les entrées"
 #: admin-pages/settings/page-settings-generic.php:1079
 #: admin-pages/settings/page-settings-generic.php:1092
 #: admin-pages/settings/page-settings-generic.php:1105
-#: admin-pages/settings/page-settings-generic.php:1124 functions.php:1314
+#: admin-pages/settings/page-settings-generic.php:1124 functions.php:1336
 msgid "Yes"
 msgstr "Oui"
 
@@ -218,7 +218,7 @@ msgstr "Oui"
 #: admin-pages/settings/page-settings-generic.php:1080
 #: admin-pages/settings/page-settings-generic.php:1093
 #: admin-pages/settings/page-settings-generic.php:1106
-#: admin-pages/settings/page-settings-generic.php:1123 functions.php:1314
+#: admin-pages/settings/page-settings-generic.php:1123 functions.php:1336
 msgid "No"
 msgstr "Non"
 
@@ -278,7 +278,7 @@ msgstr "Enregistré!"
 #: admin-pages/awards/page-awards-list.php:34
 #: admin-pages/user-data/data-user.php:246
 #: admin-pages/user-data/data-user.php:276 hooks.php:18
-#: shortcode-weight-tracker-beta.php:464
+#: shortcode-weight-tracker-beta.php:507
 msgid "Awards"
 msgstr ""
 
@@ -447,7 +447,7 @@ msgid ""
 msgstr ""
 
 #: admin-pages/meta-fields/page-meta-fields-add-update.php:267
-#: components.php:64
+#: components.php:79
 #, fuzzy
 #| msgid "Enable"
 msgid "Group"
@@ -823,7 +823,7 @@ msgstr "Expire"
 msgid "Never"
 msgstr "Jamais"
 
-#: admin-pages/page-license.php:194 components.php:229
+#: admin-pages/page-license.php:194 components.php:287
 msgid "n/a"
 msgstr "n/a"
 
@@ -1056,7 +1056,7 @@ msgstr ""
 msgid "Weight Units"
 msgstr "Unités de poids"
 
-#: admin-pages/settings/page-settings-generic.php:109 functions.php:1433
+#: admin-pages/settings/page-settings-generic.php:109 functions.php:1455
 msgid "Stones & Pounds"
 msgstr "Stones & Pounds"
 
@@ -1812,7 +1812,7 @@ msgstr ""
 "de Poids sur le graphique."
 
 #: admin-pages/settings/page-settings-generic.php:932 hooks.php:27
-#: shortcode-weight-tracker-beta.php:343
+#: shortcode-weight-tracker-beta.php:384
 msgid "Settings"
 msgstr "Paramètres"
 
@@ -2072,7 +2072,7 @@ msgid "The group could not be found"
 msgstr ""
 
 #: admin-pages/user-data/data-notes.php:44 core-forms.php:221
-#: core-forms.php:466 core-tables.php:35
+#: core-forms.php:468 core-tables.php:35
 msgid "Notes"
 msgstr "Remarques"
 
@@ -2130,36 +2130,36 @@ msgstr ""
 msgid "Search Results"
 msgstr "Résultats de la recherche"
 
-#: admin-pages/user-data/data-search-results.php:38
+#: admin-pages/user-data/data-search-results.php:36
 msgid "results were found for"
 msgstr "résultats ont été trouvés pour:"
 
-#: admin-pages/user-data/data-search-results.php:46
+#: admin-pages/user-data/data-search-results.php:44
 msgid "Username"
 msgstr "Nom d'utilisateur"
 
-#: admin-pages/user-data/data-search-results.php:47
+#: admin-pages/user-data/data-search-results.php:45
 msgid "Email"
 msgstr "Email"
 
-#: admin-pages/user-data/data-search-results.php:48
+#: admin-pages/user-data/data-search-results.php:46
 msgid "Start Weight"
 msgstr "Poids Initial"
 
-#: admin-pages/user-data/data-search-results.php:49 components.php:193
+#: admin-pages/user-data/data-search-results.php:47 components.php:217
 msgid "Latest Weight"
 msgstr "Dernier Poids"
 
-#: admin-pages/user-data/data-search-results.php:50 components.php:338
+#: admin-pages/user-data/data-search-results.php:48 components.php:396
 msgid "Target Weight"
 msgstr "Poids ciblé"
 
-#: admin-pages/user-data/data-search-results.php:62
+#: admin-pages/user-data/data-search-results.php:60
 msgid "No users were found for the given search criteria:"
 msgstr ""
 "Aucun utilisateur n'a été trouvé pour les critères de recherche donnés:"
 
-#: admin-pages/user-data/data-search-results.php:67
+#: admin-pages/user-data/data-search-results.php:65
 msgid "No search terms were specified"
 msgstr "Aucun des termes de recherche ont été spécifiés"
 
@@ -2307,7 +2307,7 @@ msgstr "Modifier les préférences de l'utilisateur"
 msgid "to save changes to your user's settings"
 msgstr ""
 
-#: admin-pages/user-data/data-user.php:27 hooks.php:244
+#: admin-pages/user-data/data-user.php:27 hooks.php:243
 msgid "The preferences for this user have been saved."
 msgstr "Les préférences de cet utilisateur ont été enregistrées."
 
@@ -2431,140 +2431,170 @@ msgstr ""
 msgid "Message"
 msgstr ""
 
-#: components.php:46
+#: components.php:49
 msgid "Gender"
 msgstr "Genre"
 
-#: components.php:52
+#: components.php:55
 msgid "Aim"
 msgstr ""
 
-#: components.php:58
+#: components.php:61
 msgid "Activity Level"
 msgstr "Niveau d'activité"
 
-#: components.php:104 components.php:657 components.php:702
+#: components.php:128 components.php:768 components.php:813
 msgid "Missing data"
 msgstr "Données manquantes"
 
-#: components.php:105
+#: components.php:129
 msgid "Latest vs Start"
 msgstr ""
 
-#: components.php:147 components.php:281 components.php:427 components.php:501
-#: components.php:529
+#: components.php:171 components.php:239 components.php:339 components.php:485
+#: components.php:559 components.php:582 components.php:626
 msgid "No data"
 msgstr ""
 
-#: components.php:176
+#: components.php:200
 msgid "The difference between your latest weight and previous."
 msgstr ""
 
-#: components.php:216
+#: components.php:251
+#, fuzzy
+#| msgid "Latest Weight"
+msgid "Latest / Previous"
+msgstr "Dernier Poids"
+
+#: components.php:274
 #, fuzzy
 #| msgid "No. of Entries"
 msgid "No. of awards"
 msgstr "Nb. d'entrées"
 
-#: components.php:265
+#: components.php:323
 #, fuzzy
 #| msgid "View all data"
 msgid "Latest Award"
 msgstr "Voir toutes les données"
 
-#: components.php:304
+#: components.php:362
 #, fuzzy
 #| msgid "No height"
 msgid "Previous Weight"
 msgstr "Pas de taille"
 
-#: components.php:320 components.php:355 components.php:358 components.php:387
+#: components.php:378 components.php:413 components.php:416 components.php:445
 #, fuzzy
 #| msgid "No target set"
 msgid "Not set"
 msgstr "Pas de cible déterminée"
 
-#: components.php:350
+#: components.php:408
 msgid "Height"
 msgstr "Taille"
 
-#: components.php:410
+#: components.php:468
 #, fuzzy
 #| msgid "Start Weight"
 msgid "Starting Weight"
 msgstr "Poids Initial"
 
-#: components.php:423
+#: components.php:481
 msgid "No target set"
 msgstr "Pas de cible déterminée"
 
-#: components.php:424
+#: components.php:482
 #, fuzzy
 #| msgid "Set Target"
 msgid "Latest vs Target"
 msgstr "Déterminer Cible"
 
-#: components.php:437
+#: components.php:495
 #, fuzzy
 #| msgid "No of entries"
 msgid "No entries"
 msgstr "Nb de Entrées"
 
-#: components.php:469
+#: components.php:527
 msgid "The difference between your latest weight and target."
 msgstr ""
 
-#: components.php:512
+#: components.php:570
 #, fuzzy
 #| msgid "No of entries"
 msgid "No. entries"
 msgstr "Nb de Entrées"
 
-#: components.php:540
+#: components.php:588
+#, fuzzy
+#| msgid "Calories to subtract"
+msgid "Calories for meeting aim"
+msgstr "Calories à soustraire"
+
+#: components.php:591
+#, fuzzy
+#| msgid "Calories to subtract"
+msgid "Calories for maintaining"
+msgstr "Calories à soustraire"
+
+#: components.php:594
+#, fuzzy
+#| msgid "Calories to subtract"
+msgid "Calories for gain"
+msgstr "Calories à soustraire"
+
+#: components.php:597
+#, fuzzy
+#| msgid "Calories to subtract"
+msgid "Calories for loss"
+msgstr "Calories à soustraire"
+
+#: components.php:637
 #, fuzzy
 #| msgid "No. of Weight Entries"
 msgid "No. weight entries"
 msgstr "Nb. d'entrées de Poids"
 
-#: components.php:568
+#: components.php:665
 msgid "Tracking for"
 msgstr ""
 
-#: components.php:569
+#: components.php:666
 msgid "days"
 msgstr ""
 
-#: components.php:584
+#: components.php:681
 msgid "Set DoB"
 msgstr ""
 
-#: components.php:585
+#: components.php:682
 #, fuzzy
 #| msgid "License missing"
 msgid "DoB missing"
 msgstr "Licence manquante"
 
-#: components.php:602
+#: components.php:699
 msgid "Age"
 msgstr ""
 
-#: components.php:636 functions.php:936
+#: components.php:747 functions.php:958
 #, fuzzy
 #| msgid "Login now"
 msgid "Login"
 msgstr "Connectez-vous maintenant"
 
-#: components.php:666
+#: components.php:777
 msgid "What is BMI?"
 msgstr ""
 
-#: components.php:669
+#: components.php:780
 #, fuzzy
 #| msgid "Body Mass Index"
 msgid "Body Mass Index (BMI)"
 msgstr "Indice de masse corporelle"
 
-#: components.php:670
+#: components.php:781
 msgid ""
 "The BMI (Body Mass Index) is used by the medical profession to quickly "
 "determine a person’s weight in regard to their height. From a straight "
@@ -2572,25 +2602,25 @@ msgid ""
 "determine if a person is underweight, of normal weight, overweight or obese."
 msgstr ""
 
-#: components.php:684
+#: components.php:795
 #, fuzzy
 #| msgid "Settings"
 msgid "Starting BMI"
 msgstr "Paramètres"
 
-#: components.php:684
+#: components.php:795
 msgid "Current BMI"
 msgstr "IMC actuel"
 
-#: components.php:710
+#: components.php:821
 msgid "What is BMR?"
 msgstr ""
 
-#: components.php:713
+#: components.php:824
 msgid "Basal Metabolic Rate (BMR)"
 msgstr ""
 
-#: components.php:714
+#: components.php:825
 msgid ""
 "BMR is short for Basal Metabolic Rate. The Basal Metabolic Rate is the "
 "number of calories required to keep your body functioning at rest, also "
@@ -2598,48 +2628,54 @@ msgid ""
 "www.diabetes.co.uk."
 msgstr ""
 
-#: components.php:726
+#: components.php:837
 #, fuzzy
 #| msgid "Settings"
 msgid "Starting BMR"
 msgstr "Paramètres"
 
-#: components.php:726
+#: components.php:837
 #, fuzzy
 #| msgid "Current BMI"
 msgid "Current BMR"
 msgstr "IMC actuel"
 
-#: components.php:757
+#: components.php:868
 msgid "Name"
 msgstr "Prénom"
 
-#: components.php:962
+#: components.php:1110
 #, fuzzy
 #| msgid "Delete Cache for this user"
 msgid "Search for a user..."
 msgstr "Supprimer le cache pour cet utilisateur"
 
-#: components.php:971
+#: components.php:1119
 #, fuzzy
 #| msgid "You need to be logged in to set your target."
 msgid "You need to be logged in to search for users."
 msgstr "Vous devez être connecté pour définir votre cible."
 
-#: components.php:1002
+#: components.php:1150
 #, fuzzy
 #| msgid "Clear Target"
 msgid "Clear Screen"
 msgstr "Effacer Cible"
 
-#: components.php:1058
+#: components.php:1186
 #, fuzzy
 #| msgid "Weight Difference"
-msgid "Total weight difference for group"
+msgid "Total weight difference (between previous/latest)"
+msgstr "Différence de poids"
+
+#: components.php:1187
+#, fuzzy
+#| msgid "Weight Difference"
+msgid "Total weight difference (between start/latest)"
 msgstr "Différence de poids"
 
 #: converters.php:113 converters.php:135 converters.php:196
-#: core-charting.php:73 functions.php:1603 functions.php:1609
+#: core-charting.php:73 functions.php:1625 functions.php:1631
 msgid "lbs"
 msgstr "lbs"
 
@@ -2719,37 +2755,37 @@ msgstr "Enregistrer l'entrée"
 msgid "Clear Target"
 msgstr "Effacer Cible"
 
-#: core-forms.php:292 form-handler.php:61
+#: core-forms.php:293 form-handler.php:61
 #, fuzzy
 #| msgid "Your settings have been saved!"
 msgid "Your entry has been successfully saved."
 msgstr "Vos réglages ont été sauvegardés!"
 
-#: core-forms.php:300
+#: core-forms.php:301
 #, fuzzy
 #| msgid "Target Weight"
 msgid "Target weight"
 msgstr "Poids ciblé"
 
-#: core-forms.php:303
+#: core-forms.php:304
 #, fuzzy
 #| msgid "Add a weight entry"
 msgid "Edit an existing entry"
 msgstr "Ajoutez une entrée de poids"
 
-#: core-forms.php:305
+#: core-forms.php:306
 #, fuzzy
 #| msgid "Add a weight entry"
 msgid "Add a new weight entry"
 msgstr "Ajoutez une entrée de poids"
 
-#: core-forms.php:308
+#: core-forms.php:309
 #, fuzzy
 #| msgid "Display dates in the following formats:"
 msgid "Complete the following form"
 msgstr "Afficher les dates dans les formats suivants:"
 
-#: core-forms.php:494 core-forms.php:653
+#: core-forms.php:496 core-forms.php:655
 #, fuzzy
 #| msgid "Please enter a valid figure for Kg"
 msgid "Please select a value for"
@@ -3024,37 +3060,37 @@ msgstr "Voir la semaine"
 msgid "to"
 msgstr "à"
 
-#: functions.php:866
+#: functions.php:888
 msgid "Read more about calculations"
 msgstr "En savoir plus sur les calculs"
 
-#: functions.php:910
+#: functions.php:932
 msgid "Your modifications have been saved"
 msgstr "Vos réglages ont été sauvegardés!"
 
-#: functions.php:989
+#: functions.php:1011
 #, fuzzy
 #| msgid "You must be logged in to edit your settings."
 msgid "You must be logged in to view or edit your data."
 msgstr "Vous devez être connecté pour modifier vos paramètres."
 
-#: functions.php:1134
+#: functions.php:1156
 #, fuzzy
 #| msgid "Upgrade to Pro Plus for"
 msgid "Upgrade to Pro Plus and get more features!"
 msgstr "Mettre à niveau vers Pro Plus pour"
 
-#: functions.php:1135
+#: functions.php:1157
 msgid ""
 "Upgrade to Pro Plus version of this plugin to get additional features like "
 "Challenges, Harris Benedict, BMR, Macronutrients and much more!"
 msgstr ""
 
-#: functions.php:1137
+#: functions.php:1159
 msgid "Upgrade Weight Tracker and get more features!"
 msgstr ""
 
-#: functions.php:1138
+#: functions.php:1160
 #, fuzzy
 #| msgid ""
 #| "Upgrade to the Pro version of this plugin to view, edit and delete your "
@@ -3066,13 +3102,13 @@ msgstr ""
 "Passez à la version Pro de ce plugin pour afficher, modifier et supprimer "
 "les entrées de poids de votre utilisateur"
 
-#: functions.php:1146
+#: functions.php:1168
 #, fuzzy
 #| msgid "Read more at "
 msgid "Read more and upgrade"
 msgstr "En savoir plus sur les calculs"
 
-#: functions.php:1163
+#: functions.php:1185
 #, fuzzy
 #| msgid "Read more and Upgrade to Pro / Pro Plus Version"
 msgid ""
@@ -3080,17 +3116,17 @@ msgid ""
 "version."
 msgstr "Mettre à niveau vers la Version Pro"
 
-#: functions.php:1165
+#: functions.php:1187
 #, fuzzy
 #| msgid "Upgrade"
 msgid "Upgrade now"
 msgstr "Surclassement"
 
-#: functions.php:1433 functions.php:1606
+#: functions.php:1455 functions.php:1628
 msgid "Kg"
 msgstr "Kg"
 
-#: functions.php:1609
+#: functions.php:1631
 msgid "St"
 msgstr "St"
 
@@ -3114,13 +3150,13 @@ msgstr "Votre licence"
 msgid "Help & Log"
 msgstr ""
 
-#: hooks.php:245
+#: hooks.php:244
 msgid "An error occurred while trying to save the user's preferences."
 msgstr ""
 "Une erreur s'est produite lors de l'enregistrement des préférences de "
 "l'utilisateur."
 
-#: hooks.php:267 shortcode-weight-tracker-beta.php:298
+#: hooks.php:266 shortcode-weight-tracker-beta.php:336
 #, fuzzy
 #| msgid "View weight entries"
 msgid "Weight entries"
@@ -3248,23 +3284,27 @@ msgstr ""
 msgid "Coupon"
 msgstr ""
 
-#: shortcode-weight-tracker-beta.php:48 shortcode-weight-tracker.php:52
+#: shortcode-weight-tracker-beta.php:53 shortcode-weight-tracker.php:52
 msgid "You need to be logged in to record your weight."
 msgstr "Vous devez être connecté pour enregistrer votre poids."
 
-#: shortcode-weight-tracker-beta.php:105 shortcode-weight-tracker.php:71
+#: shortcode-weight-tracker-beta.php:129 shortcode-weight-tracker.php:71
 #, fuzzy
 #| msgid "Your settings have been saved!"
 msgid "Your settings have been successfully saved!"
 msgstr "Vos réglages ont été sauvegardés!"
 
-#: shortcode-weight-tracker-beta.php:107 shortcode-weight-tracker.php:73
+#: shortcode-weight-tracker-beta.php:131 shortcode-weight-tracker.php:73
 #, fuzzy
 #| msgid "Your weight history has been deleted!"
 msgid "Your data has successfully been deleted."
 msgstr "Votre historique de poids a été supprimé!"
 
-#: shortcode-weight-tracker-beta.php:301
+#: shortcode-weight-tracker-beta.php:153
+msgid "View Group Weight Loss for today"
+msgstr ""
+
+#: shortcode-weight-tracker-beta.php:339
 #, fuzzy
 #| msgid "View all user entries in tabular and chart format."
 msgid "View in tabular format"
@@ -3272,59 +3312,59 @@ msgstr ""
 "Afficher toutes les entrées des utilisateurs au format tabulaire et "
 "graphique."
 
-#: shortcode-weight-tracker-beta.php:325
+#: shortcode-weight-tracker-beta.php:364
 #, fuzzy
 #| msgid "Your target weight is"
 msgid "Your target"
 msgstr "Votre poids cible est"
 
-#: shortcode-weight-tracker-beta.php:355
+#: shortcode-weight-tracker-beta.php:397
 #, fuzzy
 #| msgid "Delete existing data"
 msgid "Delete your existing data"
 msgstr "Supprimer les données existantes"
 
-#: shortcode-weight-tracker-beta.php:373
+#: shortcode-weight-tracker-beta.php:415
 msgid "Messages"
 msgstr ""
 
-#: shortcode-weight-tracker-beta.php:387
+#: shortcode-weight-tracker-beta.php:429
 #, fuzzy
 #| msgid "Add a weight entry"
 msgid "Add a new entry"
 msgstr "Ajoutez une entrée de poids"
 
-#: shortcode-weight-tracker-beta.php:401
+#: shortcode-weight-tracker-beta.php:443
 #, fuzzy
 #| msgid "No of entries"
 msgid "Your entries"
 msgstr "Nb de Entrées"
 
-#: shortcode-weight-tracker-beta.php:428
+#: shortcode-weight-tracker-beta.php:471
 #, fuzzy
 #| msgid "Latest Weight"
 msgid "Latest Photo"
 msgstr "Dernier Poids"
 
-#: shortcode-weight-tracker-beta.php:434
+#: shortcode-weight-tracker-beta.php:477
 #, fuzzy
 #| msgid "Delete existing data"
 msgid "Oldest Photo"
 msgstr "Supprimer les données existantes"
 
-#: shortcode-weight-tracker-beta.php:443
+#: shortcode-weight-tracker-beta.php:486
 #, fuzzy
 #| msgid "View a gallery of your photos"
 msgid "All of your photos"
 msgstr "Voir toutes les données"
 
-#: shortcode-weight-tracker-beta.php:489
+#: shortcode-weight-tracker-beta.php:532
 #, fuzzy
 #| msgid "Read more about Custom Fields"
 msgid "Learn more about suggested calorie intakes"
 msgstr "En savoir plus sur les calculs"
 
-#: shortcode-weight-tracker-beta.php:490
+#: shortcode-weight-tracker-beta.php:533
 msgid ""
 "Once we know your BMR (the number of calories to keep you functioning at "
 "rest), we can go on to give you suggestions on how to spread your calorie "
@@ -3336,23 +3376,23 @@ msgid ""
 "split calorie intake across the day i.e. breakfast, lunch, dinner and snacks."
 msgstr ""
 
-#: shortcode-weight-tracker-beta.php:495
+#: shortcode-weight-tracker-beta.php:538
 msgid "Suggested Calorie Intake"
 msgstr ""
 
-#: shortcode-weight-tracker-beta.php:505
+#: shortcode-weight-tracker-beta.php:548
 #, fuzzy
 #| msgid "Read more about calculations"
 msgid "Learn more about macronutrients"
 msgstr "En savoir plus sur les calculs"
 
-#: shortcode-weight-tracker-beta.php:506
+#: shortcode-weight-tracker-beta.php:549
 msgid ""
 "With calories calculated, the we can recommend how those calories should be "
 "split into Fats, Carbohydrates and Proteins."
 msgstr ""
 
-#: shortcode-weight-tracker-beta.php:512
+#: shortcode-weight-tracker-beta.php:555
 #, fuzzy
 #| msgid "Macronutrient Calculator"
 msgid "Macronutrients"
