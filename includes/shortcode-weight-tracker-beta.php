@@ -440,21 +440,30 @@ function ws_ls_tab_add_entry( $arguments = [] ) {
  */
 function ws_ls_wt_tab_table( $arguments = [] ) {
 
-	$html = ws_ls_uikit_data_summary_boxes_display( 'summary-boxes-data', $arguments );
+	$html       = ws_ls_uikit_data_summary_boxes_display( 'summary-boxes-data', $arguments );
+
+	$inner_html = '';
+
+	if ( true === $arguments[ 'enable-week-ranges' ] ) {
+		$week_ranges = ws_ls_week_ranges_get( $arguments[ 'user-id' ] );
+		$inner_html .= ws_ls_week_ranges_display( $week_ranges, $arguments[ 'selected-week-number' ] );
+	}
+
+	$inner_html .= ws_ls_shortcode_table( [ 	'user-id' 				=> $arguments[ 'user-id' ],
+					                            'enable-add-edit' 		=> true,
+					                            'enable-meta-fields'	=> ! $arguments[ 'hide-custom-fields-table' ],
+					                            'week' 					=> $arguments[ 'selected-week-number' ] ,
+					                            'bmi-format' 			=> $arguments[ 'bmi-format' ],
+					                            'custom-field-groups'   => $arguments[ 'custom-field-groups' ],
+					                            'kiosk-mode'            => $arguments[ 'kiosk-mode' ],
+					                            'custom-field-slugs'    => $arguments[ 'custom-field-slugs' ],
+					                            'uikit'                 => true,
+					                            'show-refresh-button'   => true
+	] );
 
 	$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 	'header' 		=> __( 'Your entries', WE_LS_SLUG ),
 															'body-class'	=> 'ykuk-text-small',
-															'body' 			=> ws_ls_shortcode_table( [ 	'user-id' 				=> $arguments[ 'user-id' ],
-																											'enable-add-edit' 		=> true,
-																											'enable-meta-fields'	=> ! $arguments[ 'hide-custom-fields-table' ],
-																											'week' 					=> $arguments[ 'selected-week-number' ] ,
-																											'bmi-format' 			=> $arguments[ 'bmi-format' ],
-																											'custom-field-groups'   => $arguments[ 'custom-field-groups' ],
-																										    'kiosk-mode'            => $arguments[ 'kiosk-mode' ],
-																											'custom-field-slugs'    => $arguments[ 'custom-field-slugs' ],
-																											'uikit'                 => true,
-																											'show-refresh-button'   => true
-															] )
+															'body' 			=> $inner_html
 
 	]);
 
