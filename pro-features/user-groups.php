@@ -879,6 +879,10 @@ add_shortcode( 'wt-group', 'ws_ls_groups_current' );
  */
 function ws_ls_groups_view_as_table( $user_defined_arguments ) {
 
+	if ( false === ws_ls_groups_enabled() ) {
+		return ws_ls_display_pro_upgrade_notice_for_shortcode();
+	}
+
 	$arguments = shortcode_atts( [  'disable-theme-css'         => false,
 	                                'disable-main-font'         => false,
 	                                'group-id'                  => NULL,
