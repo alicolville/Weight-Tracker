@@ -16,9 +16,29 @@ Below are the currently available summary boxes that you can use:
 
 [![](/assets/images/component-activity-level.png)](/assets/images/component-activity-level.png)
 
+#### aim
+
+[![](/assets/images/component-aim.png)](/assets/images/component-aim.png)
+
 #### age-dob
 
 [![](/assets/images/component-age-dob.png)](/assets/images/component-age-dob.png)
+
+#### calories-gain
+
+[![](/assets/images/component-calories-gain.png)](/assets/images/component-calories-gain.png)
+
+#### calories-loss
+
+[![](/assets/images/component-calories-loss.png)](/assets/images/component-calories-loss.png)
+
+#### calories-maintain
+
+[![](/assets/images/component-calories-maintain.png)](/assets/images/component-calories-maintain.png)
+
+#### calories-auto
+
+[![](/assets/images/component-calories-auto.png)](/assets/images/component-calories-auto.png)
 
 #### divider
 
@@ -26,9 +46,25 @@ Below are the currently available summary boxes that you can use:
 
 [![](/assets/images/component-divider.png)](/assets/images/component-divider.png)
 
+#### gender
+
+[![](/assets/images/component-gender.png)](/assets/images/component-gender.png)
+
+#### group
+
+[![](/assets/images/component-group.png)](/assets/images/component-group.png)
+
+#### height
+
+[![](/assets/images/component-height.png)](/assets/images/component-height.png)
+
 #### latest-weight
 
 [![](/assets/images/component-latest-weight.png)](/assets/images/component-latest-weight.png)
+
+#### latest-versus-target
+
+[![](/assets/images/component-latest-versus-target.png)](/assets/images/component-latest-versus-target.png)
 
 #### name-and-email
 
