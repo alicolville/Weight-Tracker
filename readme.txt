@@ -151,8 +151,6 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 New components: Update docs for each
 
-New argument "bmr-type" for "wt-bmr"
-
 New shortcode: wt-group-view-as-table (document)
 
 Update documentation for kiosk-mode (use this URL https://docs.yeken.uk/shortcodes/wt-beta-kiosk-mode.html)
