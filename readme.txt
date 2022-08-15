@@ -188,6 +188,7 @@ Update documentation for kiosk-mode (use this URL https://docs.yeken.uk/shortcod
 * Improvement: Added a new summary box component "calories-loss". Read more https://docs.yeken.uk/components.html
 * Improvement: Added a new summary box component "calories-maintain". Read more https://docs.yeken.uk/components.html
 * Bug fix: Fixed label for drop downs. Clicking a label should now set focus to drop down.
+* Bug fix: Fixed "show-delete-data" argument so the "Delete data" part of the form is properly hidden.
 
 = 10.1.4 =
 
