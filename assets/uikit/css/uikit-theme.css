@@ -75,3 +75,12 @@
   border: 2px solid #CCCCCC;
   font-size: 0.8rem !important;
 }
+.ws-ls-kiosk-tab .ws-ls-section-0 .ykuk-card {
+  background-color: #E9F7EF;
+}
+.ws-ls-kiosk-tab .ws-ls-section-1 .ykuk-card {
+  background-color: #FEF9E7;
+}
+.ws-ls-kiosk-tab .ws-ls-section-2 .ykuk-card {
+  background-color: #F4ECF7;
+}
