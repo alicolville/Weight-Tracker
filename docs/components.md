@@ -12,9 +12,27 @@ Using shortcode arguments on [[wt-beta]]({{ site.baseurl }}/shortcodes/wt-beta.h
 
 Below are the currently available summary boxes that you can use:
 
+#### activity-level
+
+[![](/assets/images/component-activity-level.png)](/assets/images/component-activity-level.png)
+
+#### age-dob
+
+[![](/assets/images/component-age-dob.png)](/assets/images/component-age-dob.png)
+
+#### divider
+
+(this creates a new section and adds a divider)
+
+[![](/assets/images/component-divider.png)](/assets/images/component-divider.png)
+
 #### latest-weight
 
 [![](/assets/images/component-latest-weight.png)](/assets/images/component-latest-weight.png)
+
+#### name-and-email
+
+[![](/assets/images/component-name-and-email.png)](/assets/images/component-name-and-email.png)
 
 #### previous-weight
 
@@ -23,6 +41,15 @@ Below are the currently available summary boxes that you can use:
 #### start-weight
 
 [![](/assets/images/component-start-weight.png)](/assets/images/component-start-weight.png)
+
+#### start-bmi
+
+[![](/assets/images/component-start-bmi.png)](/assets/images/component-start-bmi.png)
+
+#### start-bmr
+
+[![](/assets/images/component-start-bmr.png)](/assets/images/component-start-bmr.png)
+
 
 #### target-weight
 
@@ -63,4 +90,8 @@ Displays a count of all entries that has a weight entered).
 #### bmi
 
 [![](/assets/images/component-bmi.png)](/assets/images/component-bmi.png)
+								
+#### weight-difference-since-previous
+
+[![](/assets/images/component-weight-difference-since-previous.png)](/assets/images/component-weight-difference-since-previous.png)								
 								
