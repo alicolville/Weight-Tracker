@@ -149,8 +149,6 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 == Changelog ==
 
-New components: Update docs for each
-
 Update documentation for kiosk-mode (use this URL https://docs.yeken.uk/shortcodes/wt-beta-kiosk-mode.html)
 'summary-boxes-kiosk'
 
