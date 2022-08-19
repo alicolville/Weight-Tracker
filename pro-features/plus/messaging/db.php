@@ -25,7 +25,6 @@ function ws_ls_messaging_db_select( $to, $from = NULL, $is_note = true, $is_noti
 	$cache_key = 'ws-ls-messaging-' . md5($from . $limit . $is_note . $visible_to_user . $is_notification . $offset . $limit );
 
 	if ( false === $ignore_cache && $cache = ws_ls_cache_user_get( $to, $cache_key ) ) {
-		echo ' cache';
 		return $cache;
 	}
 
