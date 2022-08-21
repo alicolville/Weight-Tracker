@@ -36,6 +36,7 @@ For further information read our documentation:
 = Pro Plus Version =
 
 * All of the features that come with a standard Pro license.
+* **Kiosk mode**. [wt-kiosk] shortcode for allowing your administrators and staff to search and edit a user's record on the front end of the website.
 * **Harris Benedict formula**. Shortcodes and extended admin screens to a view a person's calorie intake required to maintain and lose weight. For further information on Harris Benedict Formula and how it is calculated visit our calculations page.
 * **Recommended calorie intake per meal time**. Shortcodes and extended admin screens to recommend how a person should split their daily calorie intake across meals. For further information on how this is calculated please visit our calculations page.
 * **Macronutrients Calculator**. Shortcodes and extended admin screens to recommend how their calorie consumption should be split into fats, carbohydrates and proteins. For further information on the Macronutrients Calculator and how these calculations are performed please visit our calculations page.
@@ -149,12 +150,9 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 == Changelog ==
 
-Update documentation for kiosk-mode (use this URL https://docs.yeken.uk/shortcodes/wt-beta-kiosk-mode.html)
-'summary-boxes-kiosk'
-
 = 10.2 =
 
-* New feature: Added a new "Kiosk mode" for [wt-beta]!! Read more https://docs.yeken.uk/shortcodes/wt-beta-kiosk-mode.html
+* New feature: Added a new "Kiosk mode" for [wt-beta]!! Read more https://docs.yeken.uk/shortcodes/wt-kiosk.html
 * New feature: Added a new tab to [wt-beta] to display the user's awards. Read more: https://docs.yeken.uk/shortcodes/wt-beta.html
 * New feature: New shortcode [wt-group-view-as-table]. Read more: https://docs.yeken.uk/shortcodes/wt-group-view-as-table.html
 * New feature: Added a new setting "Set default aim?" that allows you to specify a default aim if a user has selected one.
