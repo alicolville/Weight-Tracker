@@ -170,7 +170,7 @@ function ws_ls_component_latest_weight( $args = [] ) {
     $text_date      = '';
     $text_data      = __( 'No data', WE_LS_SLUG );
 
-    if( false === empty( $latest_entry ) ) {
+    if( false === empty( $latest_entry[ 'kg' ] ) ) {
 
         $text_data  = $latest_entry[ 'display' ];
         $text_date  = sprintf ( '<br />

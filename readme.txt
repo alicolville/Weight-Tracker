@@ -184,6 +184,7 @@ Update documentation for kiosk-mode (use this URL https://docs.yeken.uk/shortcod
 * Bug fix: Fixed label for drop downs. Clicking a label should now set focus to drop down.
 * Bug fix: Fixed "show-delete-data" argument on [wt-beta] so the "Delete data" part of the form is properly hidden.
 * Bug fix: Fixed "enable-week-ranges" argument on [wt-beta] to ensure week selectors appear.
+* Bug fix: Fixed issuer where BMR calculations would throw a fatal error if latest weight was 0.
 
 = 10.1.4 =
 

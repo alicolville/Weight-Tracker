@@ -456,10 +456,13 @@ function ws_ls_entry_get_latest( $arguments = [] ) {
 
 	$latest_entry = ws_ls_entry_get( $arguments );
 
-	return ( true === $arguments[ 'kg-only'] &&
-	         false === empty( $latest_entry[ 'kg' ] ) ) ?
-				$latest_entry[ 'kg' ] :
-					$latest_entry;
+	if ( true === $arguments[ 'kg-only'] ) {
+		return ( false === empty( $latest_entry[ 'kg' ] ) ) ?
+					$latest_entry[ 'kg' ] :
+						NULL;
+	}
+
+	return $latest_entry;
 }
 
 /**
