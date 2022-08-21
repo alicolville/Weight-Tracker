@@ -25,7 +25,8 @@ function ws_ls_messaging_create_mysql_tables() {
                 `to` int DEFAULT 0 NOT NULL,
                 `from` int DEFAULT 0 NOT NULL,
                 visible_to_user int DEFAULT 0 NOT NULL,
-                message_text text NOT NULL,
+                notification int DEFAULT 0 NOT NULL,
+               	message_text text NOT NULL,
                 created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 UNIQUE KEY id (id)
             ) $charset_collate;";

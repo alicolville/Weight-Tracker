@@ -209,6 +209,32 @@ function ws_ls_awards_log_award( $weight_object, $weight_award, $info ) {
 add_action( 'wlt-award-given', 'ws_ls_awards_log_award', 10, 3 );
 
 /**
+ * Add a notification for an award
+ *
+ * @param $weight_object
+ * @param $weight_award
+ * @param $info
+ */
+function ws_ls_awards_add_notification_for_award( $weight_object, $weight_award, $info ) {
+
+	if ( false === WS_LS_IS_PRO_PLUS ) {
+		return;
+	}
+
+	if ( false === empty( $info['user-id'] ) && false === empty( $weight_award['title'] ) ) {
+
+		$badge = ( false === empty( $weight_award['badge'] ) ) ? ws_ls_photo_get( $weight_award['badge'], 50, 50, false, 'ykuk-align-left ykuk-margin-remove-adjacent' ) : NULL;
+
+		$thumbnail = ( false === empty( $badge['thumb'] ) ) ? $badge['thumb'] : '';
+
+		ws_ls_messaging_db_add( $info['user-id'], 1, sprintf('%s<p><strong>Award received:</strong></p><p>%s</p>', $thumbnail, $weight_award['title'] ), false, true, true );
+
+	}
+
+}
+add_action( 'wlt-award-given', 'ws_ls_awards_add_notification_for_award', 10, 3 );
+
+/**
  * If applicable, send an email for the award!
  *
  * @param $weight_object
@@ -386,7 +412,7 @@ function ws_ls_awards_shortcode_gallery( $user_defined_arguments ) {
 	}
 
 	$user_defined_arguments[ 'source' ] = 'awards';
-	$user_defined_arguments[ 'mode' ] = 'tilesgrid';
+	$user_defined_arguments[ 'mode' ]   = 'tilesgrid';
 
 	return ws_ls_photos_shortcode_gallery( $user_defined_arguments );
 }

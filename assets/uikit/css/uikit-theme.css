@@ -14,7 +14,7 @@
   font-size: 12pt;
 }
 
-.ws-ls-tracker .ykuk-table td, .ws-ls-tracker .ykuk-table th {
+.ykuk-table td, .ykuk-table th {
   border: none;
 }
 
@@ -39,4 +39,48 @@
 
 .ykuk-scope .ws-ls-bmi-calculator .bmi-alert p {
   margin-top: 0px;
+}
+
+/* Selectize */
+.ws-ls-component-user-search .selectize-control:before {
+  content: ' ';
+  z-index: 2;
+  position: absolute;
+  top: 50%;
+  right: 34px;
+  display: block;
+  margin: -11px 0 0 0;
+  width: 16px;
+  height: 16px;
+  background-image: url('../../css/images/spinner.gif');
+  background-size: 16px 16px;
+  opacity: 0;
+
+  -webkit-transition: opacity ease .2s;
+  -o-transition: opacity ease .2s;
+  transition: opacity ease .2s;
+}
+
+.ws-ls-component-user-search .selectize-control.loading:before {
+  opacity: .4;
+}
+.ws-ls-search-item {
+  padding: 5px;
+  border-bottom: 1px dotted #CCCCCC;
+}
+.ws-ls-search-item .title {
+  font-weight: bold;
+}
+.ykuk-notification-message {
+  border: 2px solid #CCCCCC;
+  font-size: 0.8rem !important;
+}
+.ws-ls-kiosk-tab .ws-ls-section-0 .ykuk-card {
+  background-color: #E9F7EF;
+}
+.ws-ls-kiosk-tab .ws-ls-section-1 .ykuk-card {
+  background-color: #FEF9E7;
+}
+.ws-ls-kiosk-tab .ws-ls-section-2 .ykuk-card {
+  background-color: #F4ECF7;
 }

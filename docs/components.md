@@ -12,9 +12,63 @@ Using shortcode arguments on [[wt-beta]]({{ site.baseurl }}/shortcodes/wt-beta.h
 
 Below are the currently available summary boxes that you can use:
 
+#### activity-level
+
+[![](/assets/images/component-activity-level.png)](/assets/images/component-activity-level.png)
+
+#### aim
+
+[![](/assets/images/component-aim.png)](/assets/images/component-aim.png)
+
+#### age-dob
+
+[![](/assets/images/component-age-dob.png)](/assets/images/component-age-dob.png)
+
+#### calories-gain
+
+[![](/assets/images/component-calories-gain.png)](/assets/images/component-calories-gain.png)
+
+#### calories-loss
+
+[![](/assets/images/component-calories-loss.png)](/assets/images/component-calories-loss.png)
+
+#### calories-maintain
+
+[![](/assets/images/component-calories-maintain.png)](/assets/images/component-calories-maintain.png)
+
+#### calories-auto
+
+[![](/assets/images/component-calories-auto.png)](/assets/images/component-calories-auto.png)
+
+#### divider
+
+(this creates a new section and adds a divider)
+
+[![](/assets/images/component-divider.png)](/assets/images/component-divider.png)
+
+#### gender
+
+[![](/assets/images/component-gender.png)](/assets/images/component-gender.png)
+
+#### group
+
+[![](/assets/images/component-group.png)](/assets/images/component-group.png)
+
+#### height
+
+[![](/assets/images/component-height.png)](/assets/images/component-height.png)
+
 #### latest-weight
 
 [![](/assets/images/component-latest-weight.png)](/assets/images/component-latest-weight.png)
+
+#### latest-versus-target
+
+[![](/assets/images/component-latest-versus-target.png)](/assets/images/component-latest-versus-target.png)
+
+#### name-and-email
+
+[![](/assets/images/component-name-and-email.png)](/assets/images/component-name-and-email.png)
 
 #### previous-weight
 
@@ -24,9 +78,30 @@ Below are the currently available summary boxes that you can use:
 
 [![](/assets/images/component-start-weight.png)](/assets/images/component-start-weight.png)
 
+#### start-bmi
+
+[![](/assets/images/component-start-bmi.png)](/assets/images/component-start-bmi.png)
+
+#### start-bmr
+
+[![](/assets/images/component-start-bmr.png)](/assets/images/component-start-bmr.png)
+
+
 #### target-weight
 
 [![](/assets/images/component-target.png)](/assets/images/component-target.png)
+
+#### latest-award
+
+> The following shortcode is only available in the [Pro Plus]({{ site.baseurl }}/upgrade.html) version of the plugin.
+
+[![](/assets/images/component-latest-award.png)](/assets/images/component-latest-award.png)
+
+#### number-of-awards
+
+> The following shortcode is only available in the [Pro Plus]({{ site.baseurl }}/upgrade.html) version of the plugin.
+
+[![](/assets/images/component-number-of-awards.png)](/assets/images/component-number-of-awards.png)
 
 #### latest-versus-target
 
@@ -51,4 +126,8 @@ Displays a count of all entries that has a weight entered).
 #### bmi
 
 [![](/assets/images/component-bmi.png)](/assets/images/component-bmi.png)
+								
+#### weight-difference-since-previous
+
+[![](/assets/images/component-weight-difference-since-previous.png)](/assets/images/component-weight-difference-since-previous.png)								
 								

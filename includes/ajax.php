@@ -22,6 +22,19 @@ function ws_ls_clear_target_callback() {
 add_action( 'wp_ajax_ws_ls_clear_target', 'ws_ls_clear_target_callback' );
 
 /**
+ * AJAX handler for deleting a notification
+ */
+function ws_ls_delete_notification_callback() {
+
+	check_ajax_referer( 'ws-ls-nonce', 'security' );
+
+	$notification_id = ws_ls_post_value('notification-id');
+
+	wp_send_json( ws_ls_messaging_db_delete( $notification_id, true ) );
+}
+add_action( 'wp_ajax_ws_ls_delete_notification', 'ws_ls_delete_notification_callback' );
+
+/**
  * AJAX handler for saving user preferences.
  */
 function ws_ls_save_preferences_callback() {
@@ -221,3 +234,47 @@ function ws_ls_ajax_get_entry_for_date() {
 	wp_send_json( $entry );
 }
 add_action( 'wp_ajax_ws_ls_get_entry_for_date', 'ws_ls_ajax_get_entry_for_date' );
+
+/**
+ * AJAX handler for user search via search component
+ * @return array
+ */
+function ws_ls_ajax_user_search() {
+
+	check_ajax_referer( 'ws-ls-nonce', 'security' );
+
+	$search = ws_ls_post_value('search' );
+
+	$cache_key = md5( $search );
+
+	if ( $cache = ws_ls_cache_user_get( 'user-search', $cache_key ) ) {
+		wp_send_json( $cache );
+	}
+
+	$users  = ws_ls_user_search( $search, ! empty( $search ) );
+	$data   = [];
+
+	foreach ( $users as $user ) {
+
+		$user_meta = get_user_meta( $user->id );
+		$user_meta = (array) $user_meta;
+
+		$name = sprintf( '%s %s', get_user_meta( $user->id, 'first_name', true ), get_user_meta( $user->id, 'last_name', true ) );
+
+		if ( true === empty( $name ) || ' ' == $name ) {
+			$name = $user->user_nicename;
+		} else {
+			$name = sprintf( '%s (%s)', $name, $user->user_nicename );
+		}
+
+		$data[] = [ 'id'        => $user->id,
+					'title'     => $name,
+					'detail'    => $user->user_email .$user_meta->first_name
+		];
+	}
+
+	ws_ls_cache_user_set( 'user-search', $cache_key, $data, 10 * MINUTE_IN_SECONDS );
+
+	wp_send_json( $data );
+}
+add_action( 'wp_ajax_ws_ls_user_search', 'ws_ls_ajax_user_search' );

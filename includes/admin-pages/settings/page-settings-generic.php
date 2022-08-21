@@ -126,6 +126,18 @@ function ws_ls_settings_page_generic() {
                                                 <h3><?php echo __( 'User experience' , WE_LS_SLUG); ?></h3>
                                                 <table class="form-table">
 													<tr>
+														<th scope="row"><?php echo __( 'Set default aim?' , WE_LS_SLUG); ?></th>
+														<td>
+															<?php
+																echo ws_ls_form_field_select( [ 'key' 			=> 'ws-ls-default-aim',
+																								'show-label' 	=> false,
+																								'values' 		=> ws_ls_aims(),
+																								'selected' 		=> get_option( 'ws-ls-default-aim', NULL ) ] );
+															?>
+															<p><?php echo __('If enabled, you can specify the default aim when a user has not selected one.', WE_LS_SLUG); ?></p>
+														</td>
+													</tr>
+													<tr>
                                                         <th scope="row"><?php echo __( 'Allow target weights?' , WE_LS_SLUG); ?></th>
                                                         <td>
 	                                                        <?php
@@ -1168,6 +1180,7 @@ function ws_ls_register_settings(){
     register_setting( 'we-ls-options-group', 'ws-ls-fill-under-weight-line-opacity' );
     register_setting( 'we-ls-options-group', 'ws-ls-fill-under-weight-line-colour' );
 	register_setting( 'we-ls-options-group', 'ws-ls-number-formatting-separator' );
+	register_setting( 'we-ls-options-group', 'ws-ls-default-aim' );
 
 	// Tabs
 	register_setting( 'we-ls-options-group', 'ws-ls-tab-window-resize' );

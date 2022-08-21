@@ -356,9 +356,10 @@ function ws_ls_shortcode_harris_benedict( $user_defined_arguments ) {
 	$arguments = shortcode_atts( [
 									'error-message' 	=> __('Please ensure all relevant data to calculate calorie intake has been entered i.e. Activity Level, Date of Birth, Current Weight, Gender and Height.', WE_LS_SLUG ),
 									'user-id' 			=> false,
+									'add-unit'          => false,
 									'progress' 			=> 'maintain',		// 'maintain', 'lose', 'gain', 'auto'
 									'type' 				=> 'total',			// 'breakfast', 'lunch', 'dinner', 'snack', 'total'
-									'percentage'		=> '100'			// Percentage of the figure to display
+									'percentage'		=> '100',			// Percentage of the figure to display
 									],
 									$user_defined_arguments
 	);
@@ -386,6 +387,10 @@ function ws_ls_shortcode_harris_benedict( $user_defined_arguments ) {
 	}
 
 	$display_value = ws_ls_calculate_percentage_of_number( $calorie_intake[ $progress ][ $type ], $arguments[ 'percentage' ] );
+
+	if ( true === $arguments[ 'add-unit' ] ) {
+		$display_value .= __( 'kcal', WE_LS_SLUG );
+	}
 
 	return esc_html( $display_value );
 }

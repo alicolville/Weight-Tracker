@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight,tracker,chart,bmi,bmr,macronutrient,measure,awards,custom fields,history,measurements,data
 Requires at least: 5.7
 Tested up to: 6.0
-Stable tag: 10.1.4
+Stable tag: 10.2
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -36,6 +36,7 @@ For further information read our documentation:
 = Pro Plus Version =
 
 * All of the features that come with a standard Pro license.
+* **Kiosk mode**. [wt-kiosk] shortcode for allowing your administrators and staff to search and edit a user's record on the front end of the website.
 * **Harris Benedict formula**. Shortcodes and extended admin screens to a view a person's calorie intake required to maintain and lose weight. For further information on Harris Benedict Formula and how it is calculated visit our calculations page.
 * **Recommended calorie intake per meal time**. Shortcodes and extended admin screens to recommend how a person should split their daily calorie intake across meals. For further information on how this is calculated please visit our calculations page.
 * **Macronutrients Calculator**. Shortcodes and extended admin screens to recommend how their calorie consumption should be split into fats, carbohydrates and proteins. For further information on the Macronutrients Calculator and how these calculations are performed please visit our calculations page.
@@ -145,9 +146,43 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 == Upgrade Notice ==
 
-10.0 - New shortcode! Beta! [wt-beta]
+10.2 - "Kiosk Mode" for [wt-beta]!
 
 == Changelog ==
+
+= 10.2 =
+
+* New feature: Added a new "Kiosk mode" for [wt-beta]!! Read more https://docs.yeken.uk/shortcodes/wt-kiosk.html
+* New feature: Added a new tab to [wt-beta] to display the user's awards. Read more: https://docs.yeken.uk/shortcodes/wt-beta.html
+* New feature: New shortcode [wt-group-view-as-table]. Read more: https://docs.yeken.uk/shortcodes/wt-group-view-as-table.html
+* New feature: Added a new setting "Set default aim?" that allows you to specify a default aim if a user has selected one.
+* Improvement: Searching for a user will now consider their forename/surname.
+* Improvement: Expand Toggle/button on tables will be red if there is a note for the entry.
+* Improvement: Added a new argument "show-tab-info" to [wt-beta] to add an additional summary tab. Read more: https://docs.yeken.uk/shortcodes/wt-beta.html
+* Improvement: Added a new argument "summary-boxes-summary" to [wt-beta] to specify which components appear on the summary tab. Read more: https://docs.yeken.uk/shortcodes/wt-beta.html
+* Improvement: When a user is given an award, a notification is displayed at the top of the [wt-beta] shortcode.
+* Improvement: Added a new summary box component "latest-award". Read more https://docs.yeken.uk/components.html
+* Improvement: Added a new summary box component "number-of-awards". Read more https://docs.yeken.uk/components.html
+* Improvement: Added a new summary box component "age-dob". Read more https://docs.yeken.uk/components.html
+* Improvement: Added a new summary box component "divider". Read more https://docs.yeken.uk/components.html
+* Improvement: Added a new summary box component "name-and-email". Read more https://docs.yeken.uk/components.html
+* Improvement: Added a new summary box component "start-bmi". Read more https://docs.yeken.uk/components.html
+* Improvement: Added a new summary box component "start-bmr". Read more https://docs.yeken.uk/components.html
+* Improvement: Added a new summary box component "activity-level". Read more https://docs.yeken.uk/components.html
+* Improvement: Added a new summary box component "weight-difference-since-previous". Read more https://docs.yeken.uk/components.html
+* Improvement: Added a new summary box component "height". Read more https://docs.yeken.uk/components.html
+* Improvement: Added a new summary box component "aim". Read more https://docs.yeken.uk/components.html
+* Improvement: Added a new summary box component "gender". Read more https://docs.yeken.uk/components.html
+* Improvement: Added a new summary box component "group". Read more https://docs.yeken.uk/components.html
+* Improvement: Added a new summary box component "latest-versus-start". Read more https://docs.yeken.uk/components.html
+* Improvement: Added a new summary box component "calories-gain". Read more https://docs.yeken.uk/components.html
+* Improvement: Added a new summary box component "calories-auto". Read more https://docs.yeken.uk/components.html
+* Improvement: Added a new summary box component "calories-loss". Read more https://docs.yeken.uk/components.html
+* Improvement: Added a new summary box component "calories-maintain". Read more https://docs.yeken.uk/components.html
+* Bug fix: Fixed label for drop downs. Clicking a label should now set focus to drop down.
+* Bug fix: Fixed "show-delete-data" argument on [wt-beta] so the "Delete data" part of the form is properly hidden.
+* Bug fix: Fixed "enable-week-ranges" argument on [wt-beta] to ensure week selectors appear.
+* Bug fix: Fixed issuer where BMR calculations would throw a fatal error if latest weight was 0.
 
 = 10.1.4 =
 

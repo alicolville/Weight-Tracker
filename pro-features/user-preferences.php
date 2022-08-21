@@ -32,19 +32,20 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
                                     'uikit'                 => false,
                                     'redirect-url'          => '',
 	                                'show-delete-data'      => true,
-	                                'show-user-preferences' => true
-                                    ], $user_defined_arguments );
+	                                'show-user-preferences' => true,
+	                                'kiosk-mode'            => false
+    ], $user_defined_arguments );
 
 	$user_id = (int) $arguments['user-id'];
 
     // Have user preferences been allowed in Settings?
-    if ( false === ws_ls_user_preferences_is_enabled() && false === is_admin() ) {
+    if ( false === ws_ls_user_preferences_is_enabled() && false === is_admin() && false === $arguments[ 'kiosk-mode' ]) {
         return ws_ls_display_blockquote( __( 'To use this shortcode, please ensure you have enabled the setting "Allow user settings".', WE_LS_SLUG) );;
     }
 
 	// Delete all the user's data if selected
-	if(  true === ws_ls_to_bool( $arguments['show-delete-data'] ) && 'true' === ws_ls_querystring_value( 'user-delete-all' ) )	{
-		ws_ls_delete_data_for_user( $user_id );
+	if(  true === ws_ls_to_bool( $arguments['show-delete-data'] ) )	{
+		ws_ls_delete_user_data( $user_id, $arguments['kiosk-mode'] );
 	}
 
     // Decide which set of labels to render
@@ -83,7 +84,7 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
 
 	$html_output = '';
 
-	// If enabled, show Delete data
+	// If enabled, show user preferences form
 	if( false === empty( $arguments[ 'show-user-preferences' ] ) ) {
 
 		$html_output .= '<form class="ws-ls-user-pref-form ykuk-grid-small" ykuk-grid method="post" data-redirect-url=' . esc_url( $arguments[ 'redirect-url' ] ) . '>
@@ -94,7 +95,7 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
 							<input type="hidden" id="ws-ls-user-id" value="' . (int) $user_id . '" />';
 
 		if ( false === ws_ls_to_bool( $arguments[ 'hide-aim' ] ) ) {
-			$html_output .= ws_ls_form_field_select( [ 'uikit' => $arguments[ 'uikit' ], 'key' => 'ws-ls-aim', 'label' => $labels['aim'], 'values' => ws_ls_aims(), 'selected' => ws_ls_user_preferences_get( 'aim', $user_id, 0 ), 'css-class' => 'ws-ls-aboutyou-field' ] );
+			$html_output .= ws_ls_form_field_select( [ 'uikit' => $arguments[ 'uikit' ], 'key' => 'ws-ls-aim', 'label' => $labels['aim'], 'values' => ws_ls_aims(), 'selected' => ws_ls_user_preferences_get( 'aim', $user_id, NULL ), 'css-class' => 'ws-ls-aboutyou-field' ] );
 		}
 
 		if ( false === ws_ls_to_bool( $arguments[ 'hide-extras' ] ) ) {

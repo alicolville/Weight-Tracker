@@ -8,22 +8,22 @@ defined( 'ABSPATH' ) or die( 'Jog on!' );
  * @param $to
  * @param null $from
  * @param bool $is_note
- * @param bool $visible_to_user
- * @param int $offset
+ * @param bool $is_notification
+ * @param null $visible_to_user
+ * @param null $offset
  * @param null $limit
  * @param bool $ignore_cache
  *
- * @return bool|null
+ * @return array|bool|object|stdClass[]|null
  */
-function ws_ls_messaging_db_select( $to, $from = NULL, $is_note = true, $visible_to_user = NULL, $offset = NULL, $limit = NULL, $ignore_cache = false ) {
+function ws_ls_messaging_db_select( $to, $from = NULL, $is_note = true, $is_notification = false, $visible_to_user = NULL, $offset = NULL, $limit = NULL, $ignore_cache = false ) {
 
 	if ( false === WS_LS_IS_PRO ) {
 		return NULL;
 	}
 
-	$cache_key = 'ws-ls-messaging-' . md5($from . $limit . $is_note . $visible_to_user . $offset . $limit );
+	$cache_key = 'ws-ls-messaging-' . md5($from . $limit . $is_note . $visible_to_user . $is_notification . $offset . $limit );
 
-	// Return cache if found!
 	if ( false === $ignore_cache && $cache = ws_ls_cache_user_get( $to, $cache_key ) ) {
 		return $cache;
 	}
@@ -51,6 +51,10 @@ function ws_ls_messaging_db_select( $to, $from = NULL, $is_note = true, $visible
 
 	if ( NULL !== $visible_to_user ) {
 		$where[] = 'visible_to_user = ' . (int) $visible_to_user;
+	}
+
+	if ( NULL !== $is_notification ) {
+		$where[] = 'notification = ' . (int) $is_notification;
 	}
 
 	// Add where
@@ -82,9 +86,11 @@ function ws_ls_messaging_db_select( $to, $from = NULL, $is_note = true, $visible
  *
  * @param bool $visible_to_user
  *
+ * @param bool $notification
+ *
  * @return bool
  */
-function ws_ls_messaging_db_add( $to, $from, $message, $is_note = false, $visible_to_user = false ) {
+function ws_ls_messaging_db_add( $to, $from, $message, $is_note = false, $visible_to_user = false, $notification = false ) {
 
 	if ( false === WS_LS_IS_PRO ) {
 		return false;
@@ -94,8 +100,12 @@ function ws_ls_messaging_db_add( $to, $from, $message, $is_note = false, $visibl
 		return false;
 	}
 
-	$data       = [ 'to' => $to, 'from' => $from, 'message_text' => $message, 'visible_to_user' => $visible_to_user ];
-	$formats    = [ '%d', '%d', '%s', '%d' ];
+	$data       = [ 'to'                => $to,
+	                'from'              => $from,
+	                'message_text'      => $message,
+	                'notification'      => $notification ];
+
+	$formats    = [ '%d', '%d', '%s', '%d', '%d' ];
 
 	$key                    = ( true === $is_note ) ? 'note' : 'message';
 	$data[ $key ]           = 1;
@@ -110,11 +120,14 @@ function ws_ls_messaging_db_add( $to, $from, $message, $is_note = false, $visibl
 
 /**
  * Delete a message
+ *
  * @param $message_id
+ *
+ * @param bool $is_notification
  *
  * @return bool
  */
-function ws_ls_messaging_db_delete( $message_id ) {
+function ws_ls_messaging_db_delete( $message_id, $is_notification = false ) {
 
 	if ( false === WS_LS_IS_PRO ) {
 		return false;
@@ -132,10 +145,15 @@ function ws_ls_messaging_db_delete( $message_id ) {
 		ws_ls_cache_user_delete( $message[ 'to' ] );
 	}
 
-	$result = $wpdb->delete( $wpdb->prefix . WE_LS_MYSQL_MESSAGES,
-		[ 'id' => $message_id ],
-		[ '%d' ]
-	);
+	$data   = [ 'id' => $message_id ];
+	$format = [ '%d' ];
+
+	if ( true === $is_notification ) {
+		$data[ 'notification' ] = 1 ;
+		$format[]               = '%d';
+	}
+
+	$result = $wpdb->delete( $wpdb->prefix . WE_LS_MYSQL_MESSAGES, $data, $format );
 
 	ws_ls_delete_cache( 'message-' . (int) $message_id );
 
@@ -144,7 +162,8 @@ function ws_ls_messaging_db_delete( $message_id ) {
 
 /**
  * Delete a message
- * @param $message_id
+ *
+ * @param $user_id
  *
  * @return bool
  */
@@ -165,8 +184,6 @@ function ws_ls_messaging_db_delete_all_for_user( $user_id ) {
 
 	return ! empty( $result );
 }
-
-
 
 /**
  * Fetch a message
@@ -228,4 +245,15 @@ function ws_ls_messages_db_stats( $user_id ) {
 	ws_ls_cache_user_set( $user_id, 'message-stats', $stats );
 
 	return $stats;
+}
+
+/**
+ * Delete all notifications entries older than 31 days
+ *
+ * @return mixed
+ */
+function ws_ls_messages_db_delete_old() {
+
+	global $wpdb;
+	return $wpdb->query( 'DELETE FROM ' . $wpdb->prefix . WE_LS_MYSQL_MESSAGES . ' WHERE ( `created` < DATE_SUB(now(), INTERVAL 31 DAY ) and `notification` = 1 );' );
 }

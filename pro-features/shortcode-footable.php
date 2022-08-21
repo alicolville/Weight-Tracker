@@ -24,7 +24,9 @@ function ws_ls_shortcode_table( $user_defined_arguments ) {
 							        'bmi-format'                    => 'label',
 							        'week'                          => NULL,
 						            'user-id'                       => get_current_user_id(),
-                                    'uikit'                         => false
+                                    'uikit'                         => false,
+	                                'kiosk-mode'                    => false,
+	                                'show-refresh-button'           => false
     ], $user_defined_arguments );
 
     $arguments[ 'user-id' ]                 = (int) $arguments[ 'user-id' ];
@@ -33,7 +35,8 @@ function ws_ls_shortcode_table( $user_defined_arguments ) {
 	$arguments[ 'enable-custom-fields' ]    = ws_ls_to_bool( $arguments[ 'enable-custom-fields' ] );
 
 	// Check, that the person logged in is the person that is wanting to do the editing.
-	if( true === $arguments['enable-add-edit'] && get_current_user_id() !== $arguments['user-id'] ) {
+	if( false === $arguments[ 'kiosk-mode'] &&
+	        true === $arguments['enable-add-edit'] && get_current_user_id() !== $arguments['user-id'] ) {
 		$arguments[ 'enable-add-edit' ] = false;
 	}
 

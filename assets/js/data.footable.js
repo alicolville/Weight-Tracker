@@ -80,6 +80,8 @@ jQuery( document ).ready(function ( $, undefined ) {
 
                                                                                 row.delete();
 
+                                                                                $( '.ws-ls-show-if-data-edited' ).removeClass( 'ykuk-invisible' );
+
                                                                                 ws_ls_post_data_to_WP('delete_entry', { row_id : values.db_row_id, 'user_id' : values.user_id }, function( response, data ) {
                                                                                     if( 1 !== response ) {
                                                                                       alert( ws_user_table_config[ 'label-error-delete' ] );
@@ -434,7 +436,7 @@ jQuery( document ).ready(function ( $, undefined ) {
 
       ws_ls_log( 'Users: Fetching Data' );
 
-      ws_ls_post_data_to_WP('get_groups_users', { 'table_id': $(this).attr( 'id' ), 'group_id': $(this).data( 'group-id' ) }, ws_ls_callback_groups_users );
+      ws_ls_post_data_to_WP('get_groups_users', { 'table_id': $(this).attr( 'id' ), 'group_id': $(this).data( 'group-id' ), 'todays_entries_only': $(this).data( 'todays-entries-only' ) , 'is-admin': $(this).data( 'is-admin' )}, ws_ls_callback_groups_users );
   });
 
   /**
@@ -447,6 +449,9 @@ jQuery( document ).ready(function ( $, undefined ) {
       let table_id  = '#' + response.table_id;
       let columns   = ws_ls_apply_formatters( response.columns );
       let rows      = response.rows;
+
+      $( '.ws-ls-total-lost-count span' ).html( response.total_difference );
+      $( '.ws-ls-total-lost-count' ).removeClass( 'ykuk-invisible' );
 
       ws_ls_log('Groups: Rendering Table: ' + table_id );
 
@@ -522,7 +527,6 @@ jQuery( document ).ready(function ( $, undefined ) {
 
             for ( let i = 0; i < columns.length; i++ ) {
                 if(  'undefined' !== typeof formatters[ columns[ i ].name ] ) {
-                    ws_ls_log('Applying formatter for: ' + columns[ i ].name );
                     columns[ i ].formatter = formatters[ 'date' ];
                 }
             }

@@ -25,7 +25,8 @@ function ws_ls_form_weight( $arguments = [] ) {
 	                                            'hide-title'            => false,           // Hide main form title
 	                                            'hide-titles'           => false,
 	                                            'html'                  => '',
-	                                            'load-placeholders'     => ws_ls_setting_populate_placeholders_with_previous_values(), // Should we set previous values as form placeholders?
+	                                            'load-placeholders'     => ws_ls_setting_populate_placeholders_with_previous_values(), // Should we set previous values as form placeholders?	                                            'option-force-today'    => false,
+	                                            'kiosk-mode'            => false,
 	                                            'option-force-today'    => false,
 	                                            'option-tiny-mce-notes' => is_admin(),
 	                                            'title'                 => '',
@@ -33,7 +34,7 @@ function ws_ls_form_weight( $arguments = [] ) {
 	                                            'weight-mandatory'		=> true,
 	                                            'redirect-url'          => '',
 	                                            'user-id'               => get_current_user_id(),
-												'uikit'                 => false
+												'uikit'                 => false,
 	] );
 
 	// Is the user logged in?
@@ -60,7 +61,6 @@ function ws_ls_form_weight( $arguments = [] ) {
 
 	// Enqueue relevant JS / CSS
 	ws_ls_enqueue_files();
-
 
 	$arguments[ 'form-key' ] 	= sprintf( 'ws-ls-form-%d', $ws_ls_form_position );	// We need to generate a semi consistent form key that will hopefully remain the same between page loads. This is for the JS focus
 	$arguments  				= ws_ls_form_init( $arguments );
@@ -99,7 +99,7 @@ function ws_ls_form_weight( $arguments = [] ) {
 				&& WS_LS_IS_PRO && ws_ls_option_to_bool( 'ws-ls-populate-form-with-values-on-date', 'yes' )
 	) {
 
-		$date           = ws_ls_convert_date_to_iso( $arguments[ 'todays-date' ] );
+		$date           = ws_ls_convert_date_to_iso( $arguments[ 'todays-date' ]);
 		$existing_id    = ws_ls_db_entry_for_date( $arguments[ 'user-id' ], $date );
 
 		if ( false === empty( $existing_id ) ) {
@@ -190,7 +190,7 @@ function ws_ls_form_weight( $arguments = [] ) {
 		// Stones field?
 		if ( 'stones_pounds' ===  $arguments[ 'data-unit' ] ) {
 			$html .= ws_ls_form_field_number( [     'name'          => 'ws-ls-weight-stones',
-			                                        'placeholder'   => $placeholders[ 'stones' ] . __( 'st', WE_LS_SLUG ),
+			                                        'placeholder'   => false === empty( $placeholders[ 'stones' ] ) ? $placeholders[ 'stones' ] . __( 'st', WE_LS_SLUG ) : __( 'st', WE_LS_SLUG ),
 			                                        'css-class'     => 'ykuk-input ykuk-width-1-2 ykuk-margin',
 			                                        'uikit'         => $arguments[ 'uikit' ],
 			                                        'value'         => ( false === empty( $arguments[ 'entry' ][ 'stones' ] ) ) ? $arguments[ 'entry' ][ 'stones' ] : '' ] );
@@ -199,7 +199,7 @@ function ws_ls_form_weight( $arguments = [] ) {
 		// Pounds?
 		if ( true === in_array( $arguments[ 'data-unit' ], [ 'stones_pounds', 'pounds_only' ] ) ) {
 			$html .= ws_ls_form_field_number( [    'name'          => 'ws-ls-weight-pounds',
-			                                       'placeholder'   => $placeholders[ 'pounds' ] . __( 'lb', WE_LS_SLUG ),
+			                                       'placeholder'   =>( false === empty( $placeholders[ 'pounds' ] ) ) ? $placeholders[ 'pounds' ] . __( 'lb', WE_LS_SLUG ) : __( 'lb', WE_LS_SLUG ),
 			                                       'max'           => ( 'stones_pounds' ===  $arguments[ 'data-unit' ] ) ? '13.99' : '5000',
 			                                       'css-class'     => 'ykuk-input ykuk-width-1-2 ykuk-margin',
 			                                       'uikit'         => $arguments[ 'uikit' ],
@@ -252,9 +252,10 @@ function ws_ls_form_weight( $arguments = [] ) {
 	if ( 'target' === $arguments[ 'type' ] &&
 			false === is_admin() &&
 				false === empty( ws_ls_target_get( $arguments[ 'user-id' ] ) ) ){
-		$html .= sprintf('&nbsp;<button type="button" tabindex="%1$d" class="ws-ls-clear-target button ws-ls-remove-on-submit ykuk-button ykuk-button-default" >%2$s</button>',
+		$html .= sprintf('&nbsp;<button type="button" tabindex="%1$d" class="ws-ls-clear-target button ws-ls-remove-on-submit ykuk-button ykuk-button-default" data-user-id="%3$d" >%2$s</button>',
 			ws_ls_form_tab_index_next(),
-			__( 'Clear Target', WE_LS_SLUG )
+			__( 'Clear Target', WE_LS_SLUG ),
+			$arguments[ 'user-id' ]
 		);
 	}
 
@@ -273,12 +274,13 @@ function ws_ls_form_weight( $arguments = [] ) {
  *
  * @return array
  */
-function ws_ls_form_init( $arguments = [] ) {
+function  ws_ls_form_init( $arguments = [] ) {
 
+	$user_id                    = ( false === $arguments[ 'kiosk-mode' ] ) ? $arguments[ 'user-id' ] : get_current_user_id();
 	$arguments[ 'form-id' ]     = ws_ls_component_id();
 	$arguments[ 'form-number' ] = ws_ls_form_number_next();
-	$arguments[ 'data-unit' ]   = ws_ls_setting( 'weight-unit', $arguments[ 'user-id' ] );
-	$arguments[ 'todays-date' ] = ws_ls_date_todays_date( $arguments['user-id'] );
+	$arguments[ 'data-unit' ]   = ws_ls_setting( 'weight-unit', $user_id );
+	$arguments[ 'todays-date' ] = ws_ls_date_todays_date( $user_id );
 
 	global $save_response;
 
@@ -316,6 +318,7 @@ function ws_ls_form_init( $arguments = [] ) {
 	$arguments[ 'post-url' ] = apply_filters( 'wlt_form_url', ws_ls_get_url() );
 
 	$arguments[ 'post-url' ] = remove_query_arg('load-entry', $arguments[ 'post-url' ] );
+	$arguments[ 'post-url' ] = remove_query_arg('user-delete-all', $arguments[ 'post-url' ] );
 
 	// Are meta fields enabled for this form?
 	$arguments[ 'meta-enabled' ]  = ( true === in_array( $arguments[ 'type' ], [ 'custom-fields', 'weight' ] ) &&
@@ -610,19 +613,21 @@ function ws_ls_form_field_checkbox( $arguments = [] ) {
  */
 function ws_ls_form_field_select( $arguments ) {
 
-	$arguments = wp_parse_args( $arguments, [	'key'                   => '',
-												'label'                 => '',
-												'values'                => [],
-												'empty-option'          => false,
-												'selected'              => NULL,
-												'show-label'            => true,
-												'css-class'             => '',
-												'css-class-row'         => 'ws-ls-form-row',
-												'css-class-title'       => '',
-												'required'              => false,
-												'js-on-change'          => '',
-												'include-div'           => false,
-												'uikit'                 => false
+	$arguments = wp_parse_args( $arguments, [	'key'                           => '',
+												'label'                         => '',
+												'values'                        => [],
+												'empty-option'                  => false,
+												'selected'                      => NULL,
+												'show-label'                    => true,
+												'css-class'                     => '',
+												'css-class-row'                 => 'ws-ls-form-row',
+												'css-class-title'               => '',
+												'required'                      => false,
+												'js-on-change'                  => '',
+												'reload-page-on-select'         => false,
+												'reload-page-on-select-qs-key'  => '',
+												'include-div'                   => false,
+												'uikit'                         => false
 	]);
 
 	$html           = '';
@@ -634,11 +639,10 @@ function ws_ls_form_field_select( $arguments ) {
 	}
 
 	if ( true === $arguments[ 'show-label' ] ) {
-		$html .= sprintf(   '<label id="%4$s" for="%1$s" class="ykuk-form-label %3$s">%2$s</label>',
+		$html .= sprintf(   '<label for="%1$s" class="ykuk-form-label %3$s">%2$s</label>',
 							esc_attr( $arguments[ 'key' ] ),
 							esc_attr( $arguments[ 'label' ] ),
-							esc_attr( $arguments[ 'css-class-title' ] ),
-							$label_id
+							esc_attr( $arguments[ 'css-class-title' ] )
 		);
 	}
 
@@ -649,8 +653,23 @@ function ws_ls_form_field_select( $arguments ) {
 		( true === $arguments[ 'required' ] ) ? ' required="required" ' : '',
 		( false === empty( $arguments[ 'js-on-change' ] ) ) ? sprintf( ' onchange="%s"', $arguments[ 'js-on-change' ] ) : '',
 		__( 'Please select a value for'),
-		esc_attr( $arguments[ 'label' ] )
+		esc_attr( $arguments[ 'label' ] ),
+		$label_id
 	);
+
+	if ( true === $arguments[ 'reload-page-on-select' ] ) {
+
+		$url = remove_query_arg( [ $arguments[ 'reload-page-on-select-qs-key' ], 'ws-ls-i' ], ws_ls_get_url() );
+		$url = add_query_arg( 'ws-ls-i', 'y', ws_ls_get_url() );
+
+		$js = sprintf( '( function( $ ) { $("#%1$s").change(function(){ window.location.replace( "%2$s&%3$s=" + $(this).val() ) }) } )( jQuery );',
+						esc_attr( $arguments[ 'key' ] ),
+						$url,
+						$arguments[ 'reload-page-on-select-qs-key' ]
+		);
+
+		wp_add_inline_script(	'yk-uikit', $js);
+	}
 
 	if ( true === $arguments[ 'empty-option' ] ) {
 		$html .= '<option value=""></option>';

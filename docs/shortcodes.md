@@ -25,7 +25,8 @@ The majority of the public facing functionality are implemented using [WordPress
 |[[wt-form]]({{ site.baseurl }}/shortcodes/wt-form.html)|Display a target or weight entry / [custom fields]({{ site.baseurl }}/custom-fields.html) form.|
 |[[wt-form-target]]({{ site.baseurl }}/shortcodes/wt-form-target.html)|Display a target form.|
 |[[wt-group]]({{ site.baseurl }}/shortcodes/wt-group.html)|Display the user's current [group]({{ site.baseurl }}/groups.html).
-|[[wt-group-total-weight-loss]]({{ site.baseurl }}/shortcodes/wt-group-total-weight-loss.html)|Display the the weight lost by the entire [group]({{ site.baseurl }}/groups.html).
+|[[wt-group-total-weight-loss]]({{ site.baseurl }}/shortcodes/wt-group-total-weight-loss.html)|Display the weight lost by the entire [group]({{ site.baseurl }}/groups.html).
+|[[wt-group-view-as-table]]({{ site.baseurl }}/shortcodes/wt-group-view-as-table.html)|Display a table of summary information for users within a given [group]({{ site.baseurl }}/groups.html).
 |[[wt-if]]({{ site.baseurl }}/shortcodes/wt-if.html)|Add conditional display logic based on whether WT data has been completed or not.|
 |[[wt-league-table]]({{ site.baseurl }}/shortcodes/wt-league-table.html)|Display a league table of Weight Tracker users.|
 |[[wt-macronutrients]]({{ site.baseurl }}/shortcodes/wt-macronutrients.html)|Displays a macronutrient figure from the macronutrient intake calculations.|

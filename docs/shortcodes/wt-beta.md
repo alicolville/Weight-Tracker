@@ -42,6 +42,12 @@ The history tab provides the following summary data as well as a data table cont
  
 [![Table]({{ site.baseurl }}/assets/images/wt2-history.png)]({{ site.baseurl }}/assets/images/wt2-history.png)
  
+**Awards**
+ 
+ With a [Pro Plus](https://shop.yeken.uk/product/weight-tracker-pro-plus/) license the "Awards" tab is visible. This allows the user to see which awards have been given to them.
+ 
+ [![Advanced]({{ site.baseurl }}/assets/images/wt2-awards.png)]({{ site.baseurl }}/assets/images/wt2-awards.png)
+ 
 **Advanced**
 
 With a [Pro Plus](https://shop.yeken.uk/product/weight-tracker-pro-plus/) license an additional tab is present with "Advanced" data. This tab contains the following information;
@@ -96,12 +102,16 @@ The shortcode supports the following arguments:
 | hide-custom-fields-table   |  Hide custom fields from the table.   | True or false (default).  | [wt-beta hide-custom-fields-table=true] |     					
 | hide-first-target-form | Hide the target form from the Overview tab. | True or false (default).  | [wt-beta hide-first-target-form=true] |  
 | hide-notes | If set to true (default is false) hide the "notes" section of the form.   | True or false (default).   | [wt-beta hide-notes=true] |   
+| hide-notifications | If set to true (default is false) hide the "notifications" at the top of the shortcode.   | True or false (default).   | [wt-beta hide-notifications=true] |   
 | hide-photos   | If set to true (default is false) hide the photo upload section of the form.   | True or false (default).   |  [wt-beta hide-photos=true] |   
 | hide-tab-advanced   | If set to true (default is false) hide the Advanced tab.   | True or false (default).   | [wt-beta hide-tab-advanced=true] |     
+| hide-tab-awards   | If set to true (default is false) hide the Awards tab.   | True or false (default).   | [wt-beta hide-tab-awards=true] |     
 | hide-tab-descriptions    | If set to true (default is false) hide the descriptions under the tab title.  | True or false (default).   |  [wt-beta hide-tab-descriptions=true] |   
 | hide-tab-photos   | If set to true (default is false) hide the Photos tab.   |  True or false (default).   | [wt-beta hide-tab-photos=true] |         
-| show-delete-data  | If set to false (default is true), the section allowing users to delete their own data is hidden.   | True (default) or false   | [wt-beta show-delete-data="false"] |  
+| show-delete-data  | If set to false (default is true), the section allowing users to delete their own data is hidden.   | True (default) or false   | [wt-beta show-delete-data=false] |  
+|kiosk-mode|If set to true (default is false) then the tool will be switched to kiosk mode (read more: [wt-kiosk]({{ site.baseurl }}/shortcodes/wt-kiosk.html))|true or false (default)| [wt-beta kiosk-mode=true] |  
 |summary-boxes-advanced|Specify the [summary boxes]({{ site.baseurl }}/components.html) to display at top of the advanced tab.|Comma delimited list, [read more]({{ site.baseurl }}/components.html)|[wt-beta summary-boxes-advanced="number-of-entries,number-of-days-tracking,latest-weight,start-weight"]
 |summary-boxes-data|Specify the [summary boxes]({{ site.baseurl }}/components.html) to display at top of the history tab.|Comma delimited list, [read more]({{ site.baseurl }}/components.html)|[wt-beta summary-boxes-data="bmi,bmr"]
 |summary-boxes-home|Specify the [summary boxes]({{ site.baseurl }}/components.html) to display at top of the home tab.|Comma delimited list, [read more]({{ site.baseurl }}/components.html)|[wt-beta summary-boxes-home="latest-weight,start-weight"]
+|summary-boxes-kiosk|Specify the [summary boxes]({{ site.baseurl }}/components.html) to display on the summary tab (when in kiosk mode).|Comma delimited list, [read more]({{ site.baseurl }}/components.html) ( default: "weight-difference-since-previous,latest-weight,latest-versus-target,latest-versus-start,latest-award,bmi,calories-lose,calories-maintain,divider,start-weight,aim,target-weight,start-bmi,start-bmr,previous-weight,divider,name-and-email,gender,age-dob,height,activity-level,group")|[wt-beta kiosk-mode=true summary-boxes-kiosk="latest-weight,start-weight"]
 |weight-mandatory|By default, for a weight form, it is mandatory for a weight to be entered. If setting this argument to false, the form can be submitted with out.|true or false (default)|[wt-beta weight-mandatory='true']					

@@ -456,10 +456,36 @@ function ws_ls_entry_get_latest( $arguments = [] ) {
 
 	$latest_entry = ws_ls_entry_get( $arguments );
 
+	if ( true === $arguments[ 'kg-only'] ) {
+		return ( false === empty( $latest_entry[ 'kg' ] ) ) ?
+					$latest_entry[ 'kg' ] :
+						NULL;
+	}
+
+	return $latest_entry;
+}
+
+/**
+ * Fetch the today's entry
+ * @param array $arguments
+ *
+ * @return string|null
+ */
+function ws_ls_entry_get_todays( $arguments = [] ) {
+
+	$arguments              = wp_parse_args( $arguments, [ 'user-id' => get_current_user_id(), 'meta' => true, 'kg-only' => false ] );
+	$arguments[ 'limit' ]   = 1;
+	$arguments[ 'date' ]	= date('Y-m-d' );
+	$todays_entry      		= ws_ls_db_entries_get( $arguments );
+
+	if ( true === empty( $todays_entry ) ) {
+		return NULL;
+	};
+
 	return ( true === $arguments[ 'kg-only'] &&
-	         false === empty( $latest_entry[ 'kg' ] ) ) ?
-				$latest_entry[ 'kg' ] :
-					$latest_entry;
+			 false === empty( $todays_entry[ 'kg' ] ) ) ?
+		$todays_entry[ 'kg' ] :
+		$todays_entry;
 }
 
 /**
@@ -775,8 +801,7 @@ function ws_ls_get_url( $base_64_encode = false ) {
 
     $current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 
-	// Wee hack, replace removedata querystring value
-	$current_url = str_replace('removedata', 'removed', $current_url);
+	$current_url = remove_query_arg( [ 'group-id', 'removedata', 'removed' ] , $current_url );
 
 	return ( true === $base_64_encode ) ? base64_encode( $current_url ) : $current_url;
 }
@@ -910,7 +935,7 @@ function ws_ls_display_data_saved_message( $uikit = false ) {
 		$message = __( 'Your modifications have been saved', WE_LS_SLUG );
 
 		if ( true === $uikit ) {
-			return ws_ls_component_alert( $message );
+			return ws_ls_component_alert( [ 'message' => $message ] );
 		}
 
 		return ws_ls_display_blockquote( $message, 'ws-ls-success' );
@@ -1160,13 +1185,13 @@ function ws_ls_display_pro_upgrade_notice( $prompt_level = '' ) {
 function ws_ls_display_pro_upgrade_notice_for_shortcode ( $uikit = false ) {
 
 	$message = sprintf( '<p>%s <a href="%s">%s</a></p>',
-							__( 'To view this data/shortcode, you need to upgrade to the Pro or Pro Plus version.', WE_LS_SLUG ),
+							__( 'To view this data/shortcode, you need to upgrade.', WE_LS_SLUG ),
 							esc_url( admin_url('admin.php?page=ws-ls-license') ),
 							__( 'Upgrade now', WE_LS_SLUG )
 	);
 
 	if ( true === $uikit ) {
-		return ws_ls_component_alert( $message, 'warning', false );
+		return ws_ls_component_alert( [ 'message' => $message, 'type' => 'warning', 'closable' => false ] );
 	}
 
 	return $message;
@@ -1621,4 +1646,67 @@ function ws_ls_get_unit() {
  */
 function ws_ls_string_contains( $haystack, $needle ) {
 	return false !== strpos( $haystack, $needle );
+}
+
+/**
+ * Search users
+ * @param $search
+ * @param bool $include_meta_search
+ *
+ * @return array
+ */
+function ws_ls_user_search( $search, $include_meta_search = true ) {
+
+	$users_query_table = new WP_User_Query( [ 	'search' 			=> "*{$search}*",
+												'search_columns' 	=> [	'user_login',
+																			'user_nicename',
+																			'user_email',
+			],
+	]);
+
+	$users_via_table = $users_query_table->get_results();
+
+	if ( true === $include_meta_search ) {
+
+		$users_query_meta = new WP_User_Query(	[	'meta_query' => [
+			'relation' => 'OR',
+			[
+				'key' => 'first_name',
+				'value' => $search,
+				'compare' => 'LIKE'
+			],
+			[
+				'key' => 'last_name',
+				'value' => $search,
+				'compare' => 'LIKE'
+			]
+		]]);
+
+		$users_via_meta = $users_query_meta->get_results();
+
+		$combined_users = array_merge( $users_via_table, $users_via_meta );
+
+		return array_unique( $combined_users, SORT_REGULAR );
+	}
+
+	return $users_via_table;
+}
+
+/**
+ * Delete user data
+ * @param $user_id
+ * @param bool $kiosk_mode
+ */
+function ws_ls_delete_user_data( $user_id, $kiosk_mode = false ) {
+
+	if(  'true' === ws_ls_querystring_value( 'user-delete-all' ) )	{
+
+		// Are we in kiosk mode? If so, check QS for a specified user ID
+		if ( true === $kiosk_mode ) {
+			$user_id = ws_ls_querystring_value( 'wt-user-id', true, $user_id );
+		}
+
+		ws_ls_delete_data_for_user( $user_id );
+	}
+
 }

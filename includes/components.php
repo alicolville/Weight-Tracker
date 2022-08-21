@@ -3,6 +3,160 @@
 defined('ABSPATH') or die('Jog on!');
 
 /**
+ * Display summary boxes
+ * @param $arguments
+ * @param array $boxes
+ *
+ * @return string
+ */
+function ws_ls_uikit_summary_boxes( $arguments, $boxes = [] ) {
+
+	// TODO: refactor this. Do we really need this check?
+	$allowed_boxes = [ 'number-of-entries', 'number-of-weight-entries', 'latest-weight', 'start-weight', 'number-of-days-tracking',
+		'target-weight', 'previous-weight', 'latest-versus-target', 'bmi', 'bmr', 'latest-award', 'number-of-awards',
+		'name-and-email', 'start-bmr', 'start-bmi', 'age-dob', 'activity-level', 'height', 'aim', 'gender', 'group',
+		'latest-versus-start', 'divider', 'weight-difference-since-previous', 'calories-maintain', 'calories-lose', 'calories-gain', 'calories-auto' ];
+
+	// Default box selection
+	if ( true === empty( $boxes ) ) {
+		$boxes = [ 'number-of-entries', 'number-of-days-tracking', 'latest-weight', 'start-weight' ];
+	}
+
+	$boxes = array_intersect( $boxes, $allowed_boxes );
+
+	if ( true === empty( $boxes ) ) {
+		return '<!-- No valid summary boxes -->';
+	}
+
+	$arguments      = wp_parse_args( $arguments, [ 'user-id' => get_current_user_id(), 'breakpoint_s' => 2 ] );
+	$no_boxes       = count( $boxes );
+
+	$breakpoint_m = $no_boxes < 4 ? $no_boxes : 4;
+	$breakpoint_s = $no_boxes < 3 ? $no_boxes : (int) $arguments[ 'breakpoint_s' ];
+
+	$divider_count = 0;
+
+	$html = ws_ls_uikit_open_grid( $breakpoint_s, $breakpoint_m, $divider_count );
+
+	foreach ( $boxes as $box ) {
+
+		switch ( $box ) {
+			case 'weight-difference-since-previous':
+				$html .= ws_ls_component_weight_difference_since_previous( [ 'user-id'   => $arguments[ 'user-id' ] ] );
+				break;
+			case 'gender':
+				$html .= ws_ls_component_user_setting( [    'user-id'   => $arguments[ 'user-id' ],
+				                                            'title'     => __( 'Gender', WE_LS_SLUG ) ,
+				                                            'setting'   => 'gender'
+				]);
+				break;
+			case 'aim':
+				$html .= ws_ls_component_user_setting( [    'user-id'   => $arguments[ 'user-id' ],
+				                                            'title'     => __( 'Aim', WE_LS_SLUG ) ,
+				                                            'setting'   => 'aim'
+				]);
+				break;
+			case 'activity-level':
+				$html .= ws_ls_component_user_setting( [    'user-id'   => $arguments[ 'user-id' ],
+				                                            'title'     => __( 'Activity Level', WE_LS_SLUG ),
+															'setting'   => 'activity_level'
+				]);
+				break;
+			case 'calories-lose':
+				$html .= ws_ls_component_calories( [ 'user-id' => $arguments[ 'user-id' ] ] );
+				break;
+			case 'calories-maintain':
+				$html .= ws_ls_component_calories( [ 'user-id' => $arguments[ 'user-id' ], 'progress' => 'maintain' ] );
+				break;
+			case 'calories-gain':
+				$html .= ws_ls_component_calories( [ 'user-id' => $arguments[ 'user-id' ], 'progress' => 'gain' ] );
+				break;
+			case 'calories-auto':
+				$html .= ws_ls_component_calories( [ 'user-id' => $arguments[ 'user-id' ], 'progress' => 'auto' ] );
+				break;
+			case 'group':
+				$html .= ws_ls_component_user_setting( [    'user-id'   => $arguments[ 'user-id' ],
+				                                            'title'     => __( 'Group', WE_LS_SLUG ),
+				                                            'setting'   => 'group'
+				]);
+				break;
+			case 'height':
+				$html .= ws_ls_component_user_setting( [ 'user-id'   => $arguments[ 'user-id' ] ] );
+				break;
+			case 'number-of-entries':
+				$html .= ws_ls_component_number_of_entries( [ 'user-id' => $arguments[ 'user-id' ] ] );
+				break;
+			case 'number-of-weight-entries':
+				$html .= ws_ls_component_number_of_weight_entries( [ 'user-id' => $arguments[ 'user-id' ] ] );
+				break;
+			case 'divider':
+
+					$html .= '		<div class="ykuk-divider-icon ykuk-width-1-1"></div>
+								</div>';
+
+					$divider_count++;
+
+					$html .= ws_ls_uikit_open_grid( $breakpoint_s, $breakpoint_m,  $divider_count );
+				break;
+			case 'number-of-days-tracking':
+				$html .= ws_ls_component_number_of_days_tracking( [ 'user-id' => $arguments[ 'user-id' ] ] );
+				break;
+			case 'latest-weight':
+				$html .= ws_ls_component_latest_weight( [ 'user-id' => $arguments[ 'user-id' ] ] );
+				break;
+			case 'latest-award':
+				$html .= ws_ls_component_latest_award( [ 'user-id' => $arguments[ 'user-id' ] ] );
+				break;
+			case 'number-of-awards':
+				$html .= ws_ls_component_number_of_awards( [ 'user-id' => $arguments[ 'user-id' ] ] );
+				break;
+			case 'start-weight':
+				$html .= ws_ls_component_start_weight( [ 'user-id' => $arguments[ 'user-id' ] ] );
+				break;
+			case 'target-weight':
+				$html .= ws_ls_component_target_weight( [ 'user-id' => $arguments[ 'user-id' ] ] );
+				break;
+			case 'previous-weight':
+				$html .= ws_ls_component_previous_weight( [ 'user-id' => $arguments[ 'user-id' ] ] );
+				break;
+			case 'latest-versus-target':
+				$html .= ws_ls_component_latest_versus_another( [ 'user-id' => $arguments[ 'user-id' ] ] );
+				break;
+			case 'latest-versus-start':
+				$html .= ws_ls_component_latest_versus_another( [   'user-id'               => $arguments[ 'user-id' ],
+																	'compare-against'       => 'start',
+																	'compare-missing-text'  => __( 'Missing data', WE_LS_SLUG ),
+	                                                                'title'                 => __( 'Latest vs Start', WE_LS_SLUG )
+				]);
+				break;
+			case 'bmi':
+				$html .= ws_ls_component_bmi( [ 'bmi-type'  => 'current', 'user-id' => $arguments[ 'user-id' ] ] );
+				break;
+			case 'start-bmi':
+				$html .= ws_ls_component_bmi( [ 'bmi-type'  => 'start', 'user-id' => $arguments[ 'user-id' ] ] );
+				break;
+			case 'bmr':
+				$html .= ws_ls_component_bmr( [ 'bmr-type'  => 'current', 'user-id' => $arguments[ 'user-id' ] ] );
+				break;
+			case 'start-bmr':
+				$html .= ws_ls_component_bmr( [ 'bmr-type'  => 'start', 'user-id' => $arguments[ 'user-id' ] ] );
+				break;
+			case 'name-and-email':
+				$html .= ws_ls_component_name_and_email( $arguments );
+				break;
+			case 'age-dob':
+				$html .= ws_ls_component_age_dob( [ 'user-id' => $arguments[ 'user-id' ] ] );
+				break;
+		}
+
+	}
+
+	$html .= '</div>';
+
+	return $html;
+}
+
+/**
  * Component to display the user's latest weight
  * @param array $args
  *
@@ -16,7 +170,7 @@ function ws_ls_component_latest_weight( $args = [] ) {
     $text_date      = '';
     $text_data      = __( 'No data', WE_LS_SLUG );
 
-    if( false === empty( $latest_entry ) ) {
+    if( false === empty( $latest_entry[ 'kg' ] ) ) {
 
         $text_data  = $latest_entry[ 'display' ];
         $text_date  = sprintf ( '<br />
@@ -65,6 +219,112 @@ function ws_ls_component_latest_weight( $args = [] ) {
 }
 
 /**
+ * Component to display the latest / previous
+ * @param array $args
+ *
+ * @return string
+ */
+function ws_ls_component_weight_difference_since_previous( $args = [] ) {
+
+	$args = wp_parse_args( $args, [ 'user-id' => get_current_user_id() ] );
+
+	$text_data = ws_ls_shortcode_difference_in_weight_previous_latest( [    'display'                   => 'weight',
+	                                                                        'include-percentage-sign'   => false,
+	                                                                        'invert'                    => false,
+	                                                                        'user-id'                   => $args[ 'user-id'],
+																			'kiosk-mode'                => true
+	] );
+
+	if ( true === empty( $text_data ) ) {
+		$text_data = __( 'No data', WE_LS_SLUG );
+	}
+
+	return sprintf( '<div>
+                        <div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
+                                <span class="ykuk-info-box-header">%2$s</span><br />
+                                <span class="ykuk-text-bold">
+                                    %1$s
+                                </span>
+                        </div>
+                    </div>',
+		$text_data,
+		__( 'Latest / Previous', WE_LS_SLUG )
+	);
+}
+
+/**
+ * Display number of awards
+ * @param array $args
+ *
+ * @return string
+ */
+function ws_ls_component_number_of_awards( $args = [] ) {
+
+	$args = wp_parse_args( $args, [ 'user-id' => get_current_user_id() ] );
+
+	return sprintf( '<div>
+                        <div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
+                                <div class="ykuk-info-box-header">%2$s</div>
+                                <div class="ykuk-text-bold ykuk-text-large ykuk-margin-top">
+                                    %1$s
+                                </div>
+                        </div>
+                    </div>',
+		ws_ls_awards_count( $args[ 'user-id' ] ),
+		__( 'No. of awards', WE_LS_SLUG )
+	);
+}
+
+/**
+ * Component to display the latest award
+ * @param array $args
+ */
+function ws_ls_component_latest_award( $args = [] ) {
+
+	$args           = wp_parse_args( $args, [ 'user-id' => get_current_user_id() ] );
+	$awards         = ws_ls_awards_previous_awards( $args[ 'user-id' ], 50, 50, 'timestamp' );
+	$html_thumbnail = '';
+	$html_title     = __( 'n/a', WE_LS_SLUG );
+
+	if ( false === empty( $awards[0] ) ) {
+
+		$award = $awards[0];
+
+		$thumbnail = NULL;
+
+		if ( false === empty( $award[ 'thumb-with-url' ] ) ) {
+			$thumbnail = $award[ 'thumb-with-url' ];
+		} else if ( false === empty( $award[ 'thumb' ] ) ) {
+			$thumbnail = $award[ 'thumb' ];
+		}
+
+		if ( false === empty( $award['url'] ) ) {
+			$html_title = sprintf( '<a href="%s" target="_blank" rel="noopener">%s</a>', esc_url( $award['url'] ), esc_html( $award['title'] ) );
+		} else {
+			$html_title = esc_html( $award['title'] );
+		}
+
+		if ( false === empty( $thumbnail ) && false === $award['no-badge'] ) {
+			$html_thumbnail = sprintf('<div class="ws-ls-award-latest-img">%s</div>', $thumbnail ) ;
+		}
+	}
+
+	return sprintf( '<div>
+                        <div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
+                                <span class="ykuk-info-box-header">%3$s</span><br />
+                                <span class="ykuk-text-bold">
+                                    %1$s
+                                </span>
+                                %2$s
+                        </div>
+                    </div>',
+		$html_thumbnail,
+		$html_title,
+		__( 'Latest Award', WE_LS_SLUG )
+	);
+
+}
+/**
  * Component to display the previous weight
  * @param array $args
  *
@@ -112,7 +372,7 @@ function ws_ls_component_previous_weight( $args = [] ) {
 function ws_ls_component_target_weight( $args = [] ) {
 
 	$args           = wp_parse_args( $args, [ 'user-id' => get_current_user_id() ] );
-	$target_weight  = ws_ls_target_get( $args );
+	$target_weight  = ws_ls_target_get( $args[ 'user-id' ] );
 
 	$text_date      = '';
 	$text_data      = __( 'Not set', WE_LS_SLUG );
@@ -134,6 +394,39 @@ function ws_ls_component_target_weight( $args = [] ) {
 		$text_data,
 		$text_date,
 		__( 'Target Weight', WE_LS_SLUG )
+	);
+}
+
+/**
+ * Component to display a user settings
+ * @param array $args
+ *
+ * @return string
+ */
+function ws_ls_component_user_setting( $args = [] ) {
+
+	$args = wp_parse_args( $args, [ 'user-id' => get_current_user_id(), 'setting' => 'height', 'title' => __( 'Height', WE_LS_SLUG ) ] );
+
+	if ( 'group' === $args[ 'setting' ] ) {
+		$groups = ws_ls_groups_user( $args[ 'user-id'] );
+
+		$setting = ( false === empty( $groups ) ) ? $groups[ 0 ][ 'name' ] : __( 'Not set', WE_LS_SLUG );
+
+	} else {
+		$setting = ws_ls_display_user_setting( $args[ 'user-id' ], $args[ 'setting' ], __( 'Not set', WE_LS_SLUG ), true );
+	}
+
+	return sprintf( '<div>
+                        <div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
+                                <span class="ykuk-info-box-header">%2$s</span><br />
+                                <span class="ykuk-text-bold">
+                                    %1$s
+                                </span>
+                                <br /><span class="ykuk-info-box-meta"><a href="#" class="ws-ls-tab-change" data-tab="settings">Adjust</a></span>
+                        </div>
+                    </div>',
+		esc_html( $setting ),
+		esc_html( $args[ 'title' ] )
 	);
 }
 
@@ -172,36 +465,47 @@ function ws_ls_component_start_weight( $args = [] ) {
                     </div>',
 		$text_data,
 		$text_date,
-		__( 'Start Weight', WE_LS_SLUG )
+		__( 'Starting Weight', WE_LS_SLUG )
 	);
 }
-
 
 /**
  * Component to display latest versus target weight
  * @param array $args
  * @return string
  */
-function ws_ls_component_latest_versus_target( $args = [] ) {
+function ws_ls_component_latest_versus_another( $args = [] ) {
 
-	$args           = wp_parse_args( $args, [ 'user-id' => get_current_user_id() ] );
-	$latest_entry   = ws_ls_entry_get_latest( $args );
-	$target_weight  = ws_ls_target_get( $args );
-	$text_data      = __( 'No data', WE_LS_SLUG );
+	$args           = wp_parse_args( $args, [ 'user-id'                 => get_current_user_id(),
+	                                          'compare-against'         => 'target',
+	                                          'compare-missing-text'    => __( 'No target set', WE_LS_SLUG ),
+	                                          'title'                   => __( 'Latest vs Target', WE_LS_SLUG )
+	] );
+	$comparison_weight  = NULL;
+	$text_data          = __( 'No data', WE_LS_SLUG );
+	$latest_entry       = ws_ls_entry_get_latest( $args );
+
+	if ( 'target' === $args[ 'compare-against' ] ) {
+		$comparison_weight = ws_ls_target_get( $args[ 'user-id' ] );
+	} elseif ( (int) ws_ls_db_entries_count( $args[ 'user-id' ] )[ 'number-of-entries' ] >= 2 ) { // Start weight: Ensure we have 2 or more entries to compare
+		$comparison_weight  = ws_ls_entry_get_oldest( [ 'user-id' => $args[ 'user-id' ] ] );
+	}
 
 	if( true === empty( $latest_entry ) ) {
 		$text_data = __('No entries', WE_LS_SLUG);
-	} elseif( true === empty( $target_weight ) ) {
-		$text_data = __( 'No target set', WE_LS_SLUG );
+	} elseif( true === empty( $comparison_weight ) ) {
+		$text_data = $args[ 'compare-missing-text' ];
 	} elseif ( false === empty( $latest_entry ) ) {
 
-		$kg_difference 	= $latest_entry[ 'kg' ] - $target_weight[ 'kg' ];
+		$comparison_weight = $comparison_weight[ 'kg' ];
 
-		$weight_display = ws_ls_weight_display( $kg_difference, $args[ 'user-id' ], false, false, true );
+		$kg_difference 	= $latest_entry[ 'kg' ] - $comparison_weight;
 
-		$text_data		= $weight_display[ 'display' ];
+		$weight_display = ws_ls_weight_display( $kg_difference, NULL, false, false, true );
 
-		$percentage_difference	= ws_ls_calculate_percentage_difference( $target_weight[ 'kg' ], $latest_entry[ 'kg' ] );
+		$text_data = $weight_display[ 'display' ];
+
+		$percentage_difference	= ws_ls_calculate_percentage_difference( $comparison_weight, $latest_entry[ 'kg' ] );
 
 		$percentage_difference	= ( true === $percentage_difference[ 'increase' ] ) ?  $percentage_difference[ 'percentage' ] : -$percentage_difference[ 'percentage' ];
 
@@ -209,7 +513,7 @@ function ws_ls_component_latest_versus_target( $args = [] ) {
 
 		if ( false === empty( $percentage_difference ) ) {
 
-			$user_aim = (int) ws_ls_user_preferences_get( 'aim' );
+			$user_aim = (int) ws_ls_user_preferences_get( 'aim', $args[ 'user-id' ] );
 
 			if ( ( 2 === $user_aim && (float) $percentage_difference <= 0 ) ||
 				( 3 === $user_aim && (float) $percentage_difference >= 0 ) ) {
@@ -235,7 +539,7 @@ function ws_ls_component_latest_versus_target( $args = [] ) {
                         </div>
                     </div>',
 		$text_data,
-		__( 'Latest vs Target', WE_LS_SLUG )
+		$args[ 'title' ]
 	);
 }
 
@@ -264,6 +568,45 @@ function ws_ls_component_number_of_entries( $args = [] ) {
                     </div>',
 		$text_data,
 		__( 'No. entries', WE_LS_SLUG )
+	);
+}
+
+/**
+ * Component to display calories to lose/gain/maintain
+ * @param array $args
+ *
+ * @return string
+ */
+function ws_ls_component_calories( $args = [] ) {
+
+	$args   = wp_parse_args( $args, [ 'user-id' => get_current_user_id(), 'progress' => 'lose', 'type' => 'total', 'add-unit' => true, 'error-message' => __( 'No data', WE_LS_SLUG ) ] );
+
+	$text_data = ws_ls_shortcode_harris_benedict( $args );
+
+	switch ( $args[ 'progress' ] ) {
+		case 'auto':
+			$title = __( 'Calories for meeting aim', WE_LS_SLUG );
+			break;
+		case 'maintain':
+			$title = __( 'Calories for maintaining', WE_LS_SLUG );
+			break;
+		case 'gain':
+			$title = __( 'Calories for gain', WE_LS_SLUG );
+			break;
+		default:
+			$title = __( 'Calories for loss', WE_LS_SLUG );
+	}
+
+	return sprintf( '<div>
+                        <div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
+                                <span class="ykuk-info-box-header">%2$s</span><br />
+                                <span class="ykuk-text-bold">
+                                    %1$s
+                                </span>
+                        </div>
+                    </div>',
+		$text_data,
+		$title
 	);
 }
 
@@ -325,6 +668,40 @@ function ws_ls_component_number_of_days_tracking( $args = [] ) {
 }
 
 /**
+ * Component to display age/dob
+ * @param array $args
+ *
+ * @return string
+ */
+function ws_ls_component_age_dob( $args = [] ) {
+
+	$args   = wp_parse_args( $args, [ 'user-id' => get_current_user_id() ] );
+	$dob    = ws_ls_get_dob( $args[ 'user-id'] );
+
+	$text_link  = __( 'Set DoB', WE_LS_SLUG );
+	$age        = __( 'DoB missing', WE_LS_SLUG );
+
+	if( false === empty( $dob ) ) {
+		$text_link  = ws_ls_iso_date_into_correct_format( $dob );
+		$age        = ws_ls_age_from_dob( $dob );
+	}
+
+	return sprintf( '<div>
+                        <div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
+                                <span class="ykuk-info-box-header">%2$s</span><br />
+                                <span class="ykuk-text-bold">
+                                    %1$s
+                                </span>
+                                <br /><span class="ykuk-info-box-meta"><a href="#" class="ws-ls-tab-change" data-tab="settings">%3$s</a></span>
+                        </div>
+                    </div>',
+		$age,
+		__( 'Age', WE_LS_SLUG ),
+		$text_link
+	);
+}
+
+/**
  * Display alert
  *
  * @param $message
@@ -333,22 +710,44 @@ function ws_ls_component_number_of_days_tracking( $args = [] ) {
  * @param bool $closable
  * @param bool $include_log_link
  *
+ * @param null $notification_id
+ *
+ * @param string $additional_css_classes
+ *
  * @return string
  */
-function ws_ls_component_alert( $message, $type = 'success', $closable = true, $include_log_link = false ) {
+function ws_ls_component_alert( $args ) {
+
+	$args   = wp_parse_args( $args, [   'message'               => '',
+	                                    'disable-main-font'     => false,                       // If set to true, don't include the main font
+	                                    'disable-theme-css'     => false,                       // If set to true, don't include the additional theme CSS used
+	                                    'type'                  => 'success',
+										'closable'              => true,
+										'include-login-link'    => false,
+										'notification-id'       => NULL,
+										'css-classes'           => '',
+										'uikit'                 => true,
+
+	] );
+
+	if ( true === $args[ 'uikit' ] ) {
+		ws_ls_enqueue_uikit( ! $args[ 'disable-theme-css' ], ! $args[ 'disable-main-font' ], 'alert' );
+	}
 
 	// Types: danger, warning, success, primary
 
-	return sprintf( '<div class="ykuk-alert-%1$s" ykuk-alert>
-		                <a class="ykuk-alert-close" %3$s></a>
-		                <p>%2$s%4$s</p>
+	return sprintf( '<div class="ykuk-display-block ykuk-alert-%1$s %6$s" ykuk-alert>
+		                <a class="ykuk-alert-close" %3$s data-notification-id="%5$d"></a>
+		                %2$s%4$s
 					</div>',
-					esc_attr( $type ),
-					wp_kses_post( $message ),
-					true === $closable ? 'ykuk-close' : '',
-					( true === $include_log_link ) ?
+					esc_attr( $args[ 'type' ] ),
+					wp_kses_post( $args[ 'message' ] ),
+					true === $args[ 'closable' ] ? 'ykuk-close' : '',
+					( true === $args[ 'include-login-link' ] ) ?
 						sprintf( ' <a class="ws-ls-login-link" href="%1$s">%2$s</a>.', esc_url( wp_login_url( get_permalink() ) ), __( 'Login' , WE_LS_SLUG ) ) :
-						''
+						'',
+					$args[ 'notification-id' ],
+					esc_attr( $args[ 'css-classes' ] )
 	);
 }
 
@@ -360,9 +759,9 @@ function ws_ls_component_alert( $message, $type = 'success', $closable = true, $
  */
 function ws_ls_component_bmi( $args = [] ) {
 
-	$args           = wp_parse_args( $args, [ 'user-id' => get_current_user_id() ] );
+	$args           = wp_parse_args( $args, [ 'bmi-format' => 'start', 'user-id' => get_current_user_id() ] );
 	$text_link      = '';
-	$text_data      = ws_ls_shortcode_bmi( [ 'display' => $args[ 'bmi-format' ], 'no-height-text' => '', 'no-weight-text' => '' ] );
+	$text_data      = ws_ls_shortcode_bmi( [ 'user-id' => $args[ 'user-id' ], 'display' => $args[ 'bmi-format' ], 'bmi-type' => $args[ 'bmi-type' ], 'no-height-text' => '', 'no-weight-text' => '' ] );
 	$status         = ( false !== strpos( $text_data, 'Healthy' ) ) ? 'ykuk-label ykuk-label-success' : 'ykuk-label ykuk-label-warning';
 
 	if ( true === empty( $text_data ) ) {
@@ -393,7 +792,7 @@ function ws_ls_component_bmi( $args = [] ) {
                         </div>',
 						$text_data,
 						$text_link,
-						__( 'BMI', WE_LS_SLUG ),
+						( 'start' === $args[ 'bmi-type' ] ) ? __( 'Starting BMI', WE_LS_SLUG ) : __( 'Current BMI', WE_LS_SLUG ),
 						$status
 	);
 }
@@ -406,9 +805,9 @@ function ws_ls_component_bmi( $args = [] ) {
  */
 function ws_ls_component_bmr( $args = [] ) {
 
-	$args           = wp_parse_args( $args, [ 'user-id' => get_current_user_id() ] );
+	$args           = wp_parse_args( $args, [ 'user-id' => get_current_user_id(), 'bmr-type' => 'current' ] );
 	$text_link      = '';
-	$text_data      = ws_ls_shortcode_bmr( [ 'user-id' => $args[ 'user-id' ], 'suppress-errors' => true ] );
+	$text_data      = ws_ls_shortcode_bmr( [ 'user-id' => $args[ 'user-id' ], 'bmr-type' => $args[ 'bmr-type' ], 'suppress-errors' => true ] );
 
 	if ( true === empty( $text_data ) ) {
 		$text_data = __( 'Missing data', WE_LS_SLUG );
@@ -435,9 +834,40 @@ function ws_ls_component_bmr( $args = [] ) {
 	                          		%3$s
                         	</div>
                      </div>',
-		__( 'BMR', WE_LS_SLUG ),
+		( 'start' === $args[ 'bmr-type' ] ) ?  __( 'Starting BMR', WE_LS_SLUG ) : __( 'Current BMR', WE_LS_SLUG ),
 		$text_data,
 		$text_link
+	);
+}
+
+/**
+ * Name and email component
+ * @param array $args
+ *
+ * @return string
+ */
+function ws_ls_component_name_and_email( $args = [] ) {
+
+	$args       = wp_parse_args( $args, [ 'user-id' => get_current_user_id() ] );
+	$user       = get_user_by( 'id', $args[ 'user-id' ] );
+	$name       = sprintf( '%s %s', get_user_meta( $args[ 'user-id' ], 'first_name', true ), get_user_meta( $args[ 'user-id' ], 'last_name', true ) );
+
+	if ( true === empty( $name ) || ' ' == $name ) {
+		$name = $user->user_nicename;
+	} else {
+		$name = sprintf( '%s (%s)', $name, $user->user_nicename );
+	}
+
+	return sprintf( '<div>
+	                        <div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small ykuk-overflow-auto">
+	                                <span class="ykuk-info-box-header">%1$s</span><br />
+	                                <span class="ykuk-text-bold">%2$s</span><br />
+	                          		<a href="mailto:%3$s">%3$s</a>
+                        	</div>
+                     </div>',
+		__( 'Name', WE_LS_SLUG ),
+		esc_html( $name ),
+		esc_html( $user->user_email )
 	);
 }
 
@@ -587,82 +1017,6 @@ function ws_ls_uikit_data_summary_boxes_display( $key, $arguments = [] ) {
 }
 
 /**
- * Display summary boxes
- * @param $arguments
- * @param array $boxes
- *
- * @return string
- */
-function ws_ls_uikit_summary_boxes( $arguments, $boxes = [] ) {
-
-	$allowed_boxes = [ 'number-of-entries', 'number-of-weight-entries', 'latest-weight', 'start-weight', 'number-of-days-tracking',
-							'target-weight', 'previous-weight', 'latest-versus-target', 'bmi', 'bmr' ];
-
-	// Default box selection
-	if ( true === empty( $boxes ) ) {
-		$boxes = [ 'number-of-entries', 'number-of-days-tracking', 'latest-weight', 'start-weight' ];
-	}
-
-	$boxes = array_intersect( $boxes, $allowed_boxes );
-
-	if ( true === empty( $boxes ) ) {
-		return '<!-- No valid summary boxes -->';
-	}
-
-	$arguments      = wp_parse_args( $arguments, [ 'user-id' => get_current_user_id() ] );
-	$no_boxes       = count( $boxes );
-
-	$breakpoint_m = $no_boxes < 4 ? $no_boxes : 4;
-	$breakpoint_s = $no_boxes < 3 ? $no_boxes : 2;
-
-	$html = sprintf( '<div class="ykuk-grid-small ykuk-text-center ykuk-child-width-1-1 ykuk-child-width-1-%1$d@s ykuk-child-width-1-%2$d@m ykuk-grid-match ykuk-text-small" ykuk-grid>',
-						$breakpoint_s,
-						$breakpoint_m
-	);
-
-	foreach ( $boxes as $box ) {
-
-		switch ( $box ) {
-			case 'number-of-entries':
-				$html .= ws_ls_component_number_of_entries( [ 'user-id' => $arguments[ 'user-id' ] ] );
-				break;
-			case 'number-of-weight-entries':
-				$html .= ws_ls_component_number_of_weight_entries( [ 'user-id' => $arguments[ 'user-id' ] ] );
-				break;
-			case 'number-of-days-tracking':
-				$html .= ws_ls_component_number_of_days_tracking( [ 'user-id' => $arguments[ 'user-id' ] ] );
-				break;
-			case 'latest-weight':
-				$html .= ws_ls_component_latest_weight( [ 'user-id' => $arguments[ 'user-id' ] ] );
-				break;
-			case 'start-weight':
-				$html .= ws_ls_component_start_weight( [ 'user-id' => $arguments[ 'user-id' ] ] );
-				break;
-			case 'target-weight':
-				$html .= ws_ls_component_target_weight( [ 'user-id' => $arguments[ 'user-id' ] ] );
-				break;
-			case 'previous-weight':
-				$html .= ws_ls_component_previous_weight( [ 'user-id' => $arguments[ 'user-id' ] ] );
-				break;
-			case 'latest-versus-target':
-				$html .= ws_ls_component_latest_versus_target( [ 'user-id' => $arguments[ 'user-id' ] ] );
-				break;
-			case 'bmi':
-				$html .= ws_ls_component_bmi( $arguments );
-				break;
-			case 'bmr':
-				$html .= ws_ls_component_bmr( $arguments );
-				break;
-		}
-
-	}
-
-	$html .= '</div>';
-
-	return $html;
-}
-
-/**
  * Display a notice about it being beta
  * @return string
  */
@@ -671,7 +1025,6 @@ function ws_ls_uikit_beta_notice() {
 	if ( !current_user_can( 'manage_options' ) )  {
 		return '';
 	}
-
 	$key = 'ws-ls-beta-wt-notice';
 
 	if ( 'y' === ws_ls_querystring_value( $key ) ) {
@@ -692,7 +1045,6 @@ function ws_ls_uikit_beta_notice() {
 				        <div class="ykuk-alert-warning" ykuk-alert>
 						    <p><strong>Note: Only administrators can see this message.</strong></p>
 						</div>
-			            <h3>This shortcode is currently in <strong>Beta</strong></h3>
 			            <p>This shortcode is currently in <a href="https://www.pcmag.com/encyclopedia/term/beta-version" target="_blank" rel="noopener">Beta</a> and will, at some point, replace
 			            		<a href="https://docs.yeken.uk/shortcodes/wt.html" target="_blank" rel="noopener">[wt]</a>.</p>
 			            <h4>Issues and Feedback</h4>
@@ -705,3 +1057,204 @@ function ws_ls_uikit_beta_notice() {
 
 }
 
+/**
+ * Display a notice about data being exposed
+ *
+ * @param string $key
+ *
+ * @return string
+ */
+function ws_ls_uikit_data_exposed_notice( $key = 'ws-ls-kiosk-wt-notice' ) {
+
+	if ( !current_user_can( 'manage_options' ) )  {
+		return '';
+	}
+
+	if ( 'y' === ws_ls_querystring_value( $key ) ) {
+		update_option( $key, 'n' );
+	}
+
+	if ( 'n' === get_option( $key, 'y' ) ) {
+		return '';
+	}
+
+	$link = ws_ls_get_url();
+
+	$link = add_query_arg($key, 'y', $link );
+
+	return '<div class="ykuk-child-width-1-1@s" ykuk-grid>
+			    <div>
+			        <div class="ykuk-background-muted ykuk-padding">
+				        <div class="ykuk-alert-danger" ykuk-alert>
+						    <p><strong>Note: Only administrators can see this message.</strong></p>
+						</div>
+			            <p>Please note, in "kiosk-mode" your user data is exposed unless you ensure this page is secured from the general public.</p>
+			             <a class="ykuk-button ykuk-button-default" href="' . esc_url( $link ) . '">Hide this message</a>
+			        </div>
+			    </div>
+			</div>';
+
+}
+/**
+ * Show user search component
+ * @param $arguments
+ *
+ * @return string
+ */
+function ws_ls_component_user_search( $arguments ) {
+
+	$arguments = wp_parse_args( $arguments, [   'disable-theme-css'         => false,
+	                                            'disable-main-font'         => false,
+	                                            'disable-not-logged-in'     => false,
+	                                            'preload-max'               => 1200,        // Preload the user list via Ajax if total user count is less than this.
+	                                            'placeholder'               => __( 'Search for a user...', WE_LS_SLUG ),
+	                                            'previous-search'           => '',
+												'querystring-key-user-id'   => 'wt-user-id'
+	]);
+
+	ws_ls_enqueue_uikit( ! $arguments[ 'disable-theme-css' ], ! $arguments[ 'disable-main-font' ], 'user-search' );
+
+	if ( false === is_user_logged_in() ) {
+		return ( false === ws_ls_to_bool( $arguments[ 'disable-not-logged-in' ] ) ) ?
+					ws_ls_component_alert( [ 'message' => __( 'You need to be logged in to search for users.', WE_LS_SLUG ), 'type' => 'primary', 'closable' => false, 'include=login-link' => true ] ) :
+						'';
+	}
+
+	wp_enqueue_style( 'wt-selectize', plugins_url( '../assets/css/libraries/selectize.default.min.css', __FILE__ ), [], WE_LS_CURRENT_VERSION );
+	wp_enqueue_script( 'wt-selectize', plugins_url( '../assets/js/libraries/selectize.min.js', __FILE__ ), [ 'yk-uikit' ], WE_LS_CURRENT_VERSION, true );
+	wp_enqueue_script( 'wt-user-search', plugins_url( '../assets/js/user-search.' . ws_ls_use_minified() . 'js', __FILE__ ), [ 'wt-selectize' ], WE_LS_CURRENT_VERSION, true );
+
+	$data_stats = ws_ls_db_entries_count();
+
+	wp_localize_script( 'wt-selectize', 'wt_user_search_config', [  'current-url'               =>  get_permalink(),
+																	'preload'                   => ( (int) $data_stats[ 'number-of-users' ] < (int) $arguments[ 'preload-max' ] ) ? 'true' : 'false',
+																	'placeholder'               => $arguments[ 'placeholder' ],
+																	'querystring-key-user-id'   => $arguments[ 'querystring-key-user-id' ]
+	]);
+
+	$reset_link = remove_query_arg( $arguments[ 'querystring-key-user-id' ], ws_ls_get_url() );
+
+	return sprintf( '<div class="ykuk-margin ws-ls-component-user-search ykuk-grid" ykuk-grid>
+				        <div class="ykuk-width-expand">
+				            <select id="%1$s">
+				            </select>
+				        </div>
+				        <div class="ykuk-text-right">
+				            <a href="%2$s" class="ykuk-button ykuk-button-%3$s"  >%4$s</a>
+				        </div>
+				    </div>
+				    <div class="ykuk-divider-icon"></div>',
+					ws_ls_component_id(),
+					esc_url( $reset_link ),
+					( NULL === ws_ls_querystring_value( $arguments[ 'querystring-key-user-id' ] ) ) ? 'default' : 'secondary',
+					__( 'Clear Screen', WE_LS_SLUG )
+	);
+}
+
+/**
+ * Component to render group view
+ * @param $arguments
+ *
+ * @return string
+ */
+function ws_ls_component_group_view_entries( $arguments ) {
+
+	$arguments = wp_parse_args( $arguments, [   'disable-theme-css'         => false,
+	                                            'disable-main-font'         => false,
+	                                            'group-id'                  => NULL,
+												'table-allow-delete'        => false,
+												'uikit'                     => true,
+												'enable-group-select'       => true,
+												'todays-entries-only'       => false
+	]);
+
+	if ( true === $arguments[ 'uikit' ] ) {
+		ws_ls_enqueue_uikit( ! $arguments[ 'disable-theme-css' ], ! $arguments[ 'disable-main-font' ] );
+	}
+
+	ws_ls_data_table_enqueue_scripts();
+
+	$arguments[ 'group-id' ] = ws_ls_querystring_value( 'group-id', true, $arguments[ 'group-id' ] );
+
+	$html = '';
+
+	if ( true === $arguments[ 'enable-group-select' ] ) {
+		$html .= ws_ls_component_group_select( [ 'selected' => $arguments[ 'group-id' ], 'uikit' => $arguments[ 'uikit' ] ] );
+	}
+
+	$message = ( true === ws_ls_to_bool( $arguments[ 'todays-entries-only' ] ) ) ?
+					__( 'Total weight difference (between previous/latest)', WE_LS_SLUG ) :
+						__( 'Total weight difference (between start/latest)', WE_LS_SLUG );
+
+	$message = ws_ls_component_alert( [ 'message' => $message . ': <strong><span></span>.</strong>',
+	                                    'css-classes' => 'ykuk-invisible ws-ls-total-lost-count', 'uikit'
+	                                    => $arguments[ 'uikit']
+	]);
+
+	$html .= sprintf('<div id="-row" class="ws-ls-form-row ykuk-width-1-1">
+						<table class="ws-ls-settings-groups-users-list-ajax ykuk-table table ws-ls-loading-table" id="groups-users-list"
+                           data-group-id="%1$d"
+                           data-todays-entries-only="%3$s"
+                           data-paging="true"
+                           data-filtering="false"
+                           data-sorting="true"
+                           data-editing-allow-add="false"
+                           data-editing-allow-edit="false"
+                           data-editing-allow-delete="%2$s"
+                           data-paging-size="40"
+                           data-cascade="true"
+                           data-toggle="true"
+                           data-is-admin="%5$s"
+                           data-use-parent-width="true">
+                    	</table>
+                    	<div class="ykuk-divider-icon"></div>
+						%4$s
+                    </div>',
+					$arguments[ 'group-id'],
+					( true === ws_ls_to_bool( $arguments[ 'table-allow-delete' ] ) ) ? 'true' : 'false',
+					( true === ws_ls_to_bool( $arguments[ 'todays-entries-only' ] ) ) ? 'true' : 'false',
+					$message,
+					( true === is_admin() ) ? 'true' : 'false'
+	);
+
+	return $html;
+}
+
+/**
+ * Component to render a select drop down for groups
+ * @param $arguments
+ *
+ * @return string
+ */
+function ws_ls_component_group_select( $arguments ) {
+
+	$arguments  = wp_parse_args( $arguments, [ 'selected' => 0, 'include-empty' => true, 'reload-page-on-select' => true, 'uikit' => true ] );
+	$groups     = ws_ls_groups( $arguments[ 'include-empty' ] );
+	$groups     = wp_list_pluck( $groups, 'name', 'id' );
+
+	$select_args = [    'key'                           => ws_ls_component_id(),
+						'values'                        => $groups,
+	                    'selected'                      => $arguments[ 'selected' ],
+	                    'uikit'                         => $arguments[ 'uikit' ],
+						'reload-page-on-select'         => true,
+		                'reload-page-on-select-qs-key'  => 'group-id'
+	];
+
+	return ws_ls_form_field_select( $select_args );
+}
+
+/**
+ * Opening for Grid
+ * @param $breakpoint_s
+ * @param $breakpoint_m
+ * @param string $id
+ *
+ * @return string
+ */
+function ws_ls_uikit_open_grid( $breakpoint_s, $breakpoint_m, $id = '' ) {
+	return sprintf( '<div class="ykuk-grid-small ykuk-text-center ykuk-child-width-1-1 ykuk-child-width-1-%1$d@s ykuk-child-width-1-%2$d@m ykuk-grid-match ykuk-text-small ws-ls-section-%3$s" ykuk-grid>',
+		$breakpoint_s,
+		$breakpoint_m,
+		$id
+	);
+}

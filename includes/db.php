@@ -281,6 +281,7 @@ function ws_ls_db_entries_get( $arguments = [] ) {
 	$arguments = wp_parse_args( $arguments, [   'user-id'                       => get_current_user_id(),
 	                                            'limit'                         => ws_ls_option( 'ws-ls-max-points', '25', true ),
 												'must-have-weight'              => false,
+	                                            'date'                          => NULL,
 	                                            'week'                          => NULL,
 	                                            'sort'                          => 'desc',
 												'start'                         => 0,
@@ -315,6 +316,10 @@ function ws_ls_db_entries_get( $arguments = [] ) {
 
 	if ( false === empty( $arguments[ 'must-have-weight' ] ) ) {
 		$additional_sql .=  ' and weight_weight is not null';
+	}
+
+	if ( false === empty( $arguments[ 'date' ] ) ) {
+		$additional_sql .= $wpdb->prepare( ' and ( weight_date = %s )', $arguments[ 'date' ] );
 	}
 
 	$inner_join = '';

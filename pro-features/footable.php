@@ -26,6 +26,7 @@ function ws_ls_data_table_render( $arguments = [] ) {
 												'custom-field-col-size'         => NULL,
 												'weight-mandatory'              => true,
 												'uikit'                         => false,
+												'show-refresh-button'           => false,
 												'custom-field-restrict-rows'    => '',      // Only fetch entries that have either all custom fields completed (all), one or more (any) or leave blank if not concerned.
 	                                            'custom-field-groups'           => '',      // If specified, only show custom fields that are within these groups
 												'custom-field-slugs'            => '',      // If specified, only show the custom fields that are specified
@@ -68,7 +69,7 @@ function ws_ls_data_table_render( $arguments = [] ) {
 		$html .= ws_ls_form_weight( [ 'entry-id' => $entry_id, 'redirect-url' => $redirect_url, 'weight-mandatory' => $arguments[ 'weight-mandatory' ],
 		                                    'custom-field-groups' => $arguments[ 'custom-field-groups' ], 'custom-field-slugs' => $arguments[ 'custom-field-slugs' ],
 		                                        'type' => ( false === ws_ls_to_bool( $arguments[ 'enable-weight' ] ) ) ? 'custom-fields' : 'weight',
-		                                            'uikit' => $arguments[ 'uikit' ], 'hide-title' => $arguments[ 'uikit' ] ] );
+		                                            'uikit' => $arguments[ 'uikit' ], 'user-id' => $arguments[ 'user-id' ], 'hide-title' => $arguments[ 'uikit' ] ] );
 
 	} else {
 
@@ -96,7 +97,9 @@ function ws_ls_data_table_render( $arguments = [] ) {
 									data-custom-field-restrict-rows="%16$s"
 									data-uikit="%17$s"
 									 >
-		</table>',
+		</table>
+		%18$s
+		',
 			ws_ls_component_id(),
 			true === $arguments[ 'enable-add-edit' ] ? 'true' : 'false',
 			false === empty( $arguments[ 'user-id' ] ) ? $arguments[ 'user-id' ] : 'false',
@@ -113,7 +116,9 @@ function ws_ls_data_table_render( $arguments = [] ) {
 			true === ws_ls_to_bool( $arguments[ 'enable-weight' ] ) ? 'true' : 'false',
 			esc_attr( $arguments[ 'custom-field-col-size' ] ),
 			esc_attr( $arguments[ 'custom-field-restrict-rows' ] ),
-			true === ws_ls_to_bool( $arguments[ 'uikit' ] ) ? 'true' : 'false'
+			true === ws_ls_to_bool( $arguments[ 'uikit' ] ) ? 'true' : 'false',
+			true === ws_ls_to_bool( $arguments[ 'show-refresh-button' ] ) ?
+				sprintf( '<button class="ykuk-button ykuk-button-default ws-ls-show-if-data-edited ykuk-invisible" type="button" onclick="location.reload();">%1$s</button>', __( 'Data has changed, refresh screen', WE_LS_SLUG ) ) : ''
 		);
 
 		if ( true === empty( $arguments[ 'user-id' ] ) ) {
@@ -267,6 +272,11 @@ function ws_ls_datatable_rows( $arguments ) {
 						$row[ 'meta-' . $key ] = ws_ls_fields_display_field_value( $field, $key );
 					}
 				}
+			}
+
+			if( true === $arguments[ 'enable-notes' ] &&
+			        false === empty( $row[ 'notes' ] ) ) {
+				$row =  [ 'options' => [ 'classes' => 'ws-ls-has-note'], 'value' => $row ];
 			}
 
 			array_push( $rows, $row );

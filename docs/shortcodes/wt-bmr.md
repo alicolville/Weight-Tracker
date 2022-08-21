@@ -8,5 +8,6 @@ The shortcode supports the following arguments:
 
 | Argument | Description | Options | Example |
 |--|--|--|--|
+|bmr-type|Specify whether to displaying the starting BMR or the current.|"start" or "current" (default)|[wt-bmr bmr-type="start"]
 |user-id|By default, the shortcode will render the BMR for the logged in user. You can display the BMR for another user by setting this argument to the relevant user ID.|Numeric|[wt-bmr user-id="1"]
 |suppress-errors|When calculating BMR, errors maybe displayed if certain criteria is missing e.g. Date of Birth, Gender, etc. Setting this argument to true will hide the errors from the user.|True or false (default).|[wt-bmr suppress-errors="true"]
