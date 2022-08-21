@@ -61,6 +61,10 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 
 		$kiosk_mode = true;
 
+		if ( false === WS_LS_IS_PRO_PLUS ) {
+			return ws_ls_display_pro_upgrade_notice_for_shortcode( true );
+		}
+
 		$shortcode_arguments[ 'show-tab-info' ] = true;
 		$shortcode_arguments[ 'active-tab' ]    = 'summary';
 		$shortcode_arguments[ 'user-loaded' ]   = false;
@@ -158,6 +162,25 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 	return $html . '</div>';
 }
 add_shortcode( 'wt-beta', 'ws_ls_shortcode_beta' );
+
+/**
+ * Wrapper for [wt] to enable shortcode mode
+ * @param $user_defined_arguments
+ *
+ * @return string
+ * @throws Exception
+ */
+function ws_ls_shortcode_wt_kiosk( $user_defined_arguments ) {
+
+	if ( false === WS_LS_IS_PRO_PLUS ) {
+		return ws_ls_display_pro_upgrade_notice_for_shortcode( true );
+	}
+
+	$arguments = shortcode_atts( [ 'kiosk-mode' => true ], $user_defined_arguments );
+
+	return ws_ls_shortcode_beta( $arguments );
+}
+add_shortcode( 'wt-kiosk', 'ws_ls_shortcode_wt_kiosk' );
 
 /**
  * Display form for entry
