@@ -176,7 +176,7 @@ function ws_ls_shortcode_wt_kiosk( $user_defined_arguments ) {
 		return ws_ls_display_pro_upgrade_notice_for_shortcode( true );
 	}
 
-	$arguments = shortcode_atts( [ 'kiosk-mode' => true ], $user_defined_arguments );
+	$arguments = wp_parse_args( [ 'kiosk-mode' => true ], $user_defined_arguments );
 
 	return ws_ls_shortcode_beta( $arguments );
 }
