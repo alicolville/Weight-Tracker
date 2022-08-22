@@ -682,6 +682,8 @@ function ws_ls_ajax_groups_users_get(){
 		wp_send_json( $cache );
 	}
 
+	$diff_label = ( true === ws_ls_to_bool( $todays_entries_only ) ) ? __('Diff from start', WE_LS_SLUG) : __('Diff from prev', WE_LS_SLUG);
+
 	$columns = [
 		[ 'name' => 'id', 'title' => __('ID', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'number', 'visible' => false ],
 		[ 'name' => 'display_name', 'title' => __('User', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ],
@@ -689,7 +691,7 @@ function ws_ls_ajax_groups_users_get(){
         [ 'name' => 'start-weight', 'title' => __('Start', WE_LS_SLUG), 'breakpoints'=> 'md', 'type' => 'text' ],
 		[ 'name' => 'previous-weight', 'title' => __('Previous', WE_LS_SLUG), 'breakpoints'=> 'md', 'type' => 'text' ],
         [ 'name' => 'latest-weight', 'title' => __('Latest', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ],
-        [ 'name' => 'diff-weight', 'title' => __('Diff from start', WE_LS_SLUG), 'breakpoints'=> 'md', 'type' => 'text' ],
+        [ 'name' => 'diff-weight', 'title' => $diff_label, 'breakpoints'=> 'md', 'type' => 'text' ],
         [ 'name' => 'target', 'title' => __('Target', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ],
 		[ 'name' => 'awards', 'title' => __('Awards', WE_LS_SLUG), 'breakpoints'=> 'md', 'type' => 'text' ],
 	];

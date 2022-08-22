@@ -153,6 +153,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 = 10.2.1 =
 
 * Bug fix: [wt-kiosk] now passes the arguments correctly to the underlying [wt-beta] shortcode.
+* Bug fix: When showing today's entries for the group, then show the correct label "Diff from start".
 
 = 10.2 =
 
