@@ -27,7 +27,7 @@ function ws_ls_notes_fetch( $to, $visible_to_user = false, $limit = NULL, $offse
 		return false;
 	}
 
-	return ws_ls_messaging_db_select( $to, NULL, true, false, NULL, $visible_to_user, $offset, $limit );
+	return ws_ls_messaging_db_select( $to, NULL, true, false, $visible_to_user, $offset, $limit );
 }
 
 /**
@@ -99,7 +99,7 @@ function ws_ls_notes_render( $note, $echo = true, $uikit = false, $alternate = f
 		$html = sprintf( '	<div id="%5$s" class="postbox ws-ls-postbox ws-ls-note">
 							<div class="postbox-header ws-ls-note-header">
 								<%7$s class="hndle"><span>by %2$s on %3$s %6$s</span></%7$s>
-							<div class="handle-actions hide-if-no-js ws-note-delete-div">
+							<div class="handle-actions hide-if-no-js ws-note-delete-div %8$s">
 								<a href="#" class="button-secondary ws-note-delete-action" data-id="%1$d" data-div-id="%5$s"><i class="fa fa-trash"></i></a>
 							</div>
 							</div>
@@ -113,8 +113,8 @@ function ws_ls_notes_render( $note, $echo = true, $uikit = false, $alternate = f
 			$note[ 'message_text' ],
 			ws_ls_component_id(),
 			true === ws_ls_to_bool( $note[ 'visible_to_user' ] ) && true === is_admin() ? __( ' (Visible via [wt-notes])', WE_LS_SLUG ) : '',
-			is_admin() ? 'h2' : 'h6'
-
+			is_admin() ? 'h2' : 'h6',
+			! is_admin() ? 'ws-ls-hide' : ''
 		);
 	}
 
