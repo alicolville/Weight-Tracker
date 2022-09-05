@@ -223,7 +223,7 @@ function ws_ls_form_weight( $arguments = [] ) {
 	}
 
 	// Render Meta Fields
-	if ( true === $arguments[ 'meta-enabled' ] ) {
+	if ( true === $arguments[ 'meta-enabled' ] && true !== $arguments[ 'hide-fields-meta' ] ) {
 		$html .= ws_ls_meta_fields_form( $arguments, $placeholders );
 	}
 

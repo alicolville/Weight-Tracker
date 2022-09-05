@@ -150,6 +150,10 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 == Changelog ==
 
+= 10.2.4 =
+
+* Bug fix: Hide custom fields when editing an entry if "hide-custom-fields" specified on [wt-beta]. https://github.com/alicolville/Weight-Tracker/issues/492
+
 = 10.2.3 =
 
 * Bug fix: Fixed an issue where notes aren't visible: https://github.com/alicolville/Weight-Tracker/issues/495

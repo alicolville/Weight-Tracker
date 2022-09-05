@@ -53,7 +53,8 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 		return ws_ls_component_alert( [ 'message' => __( 'You need to be logged in to record your weight.', WE_LS_SLUG ), 'type' => 'primary', 'closable' => false, 'include-login-link' => true ] ) . '</div>';
 	}
 
-	$shortcode_arguments[ 'kiosk-mode' ] = ws_ls_to_bool( $shortcode_arguments[ 'kiosk-mode' ] );
+	$shortcode_arguments[ 'kiosk-mode' ]        = ws_ls_to_bool( $shortcode_arguments[ 'kiosk-mode' ] );
+	$shortcode_arguments[ 'hide-fields-meta' ]  = ws_ls_to_bool( $shortcode_arguments[ 'hide-custom-fields-form' ] );
 
 	if ( true === $shortcode_arguments[ 'kiosk-mode' ] ) {
 
@@ -450,7 +451,6 @@ function ws_ls_tab_notes( $arguments = [] ) {
  * @return string
  */
 function ws_ls_tab_add_entry( $arguments = [] ) {
-
 	return ws_ls_ui_kit_info_box_with_header_footer( [	'header' 		=> __( 'Add a new entry', WE_LS_SLUG ),
 														'body' 			=> ws_ls_wt_form( $arguments )
 	] );
@@ -481,7 +481,8 @@ function ws_ls_wt_tab_table( $arguments = [] ) {
 					                            'kiosk-mode'            => $arguments[ 'kiosk-mode' ],
 					                            'custom-field-slugs'    => $arguments[ 'custom-field-slugs' ],
 					                            'uikit'                 => true,
-					                            'show-refresh-button'   => true
+					                            'show-refresh-button'   => true,
+												'enable-meta-fields'    => ! $arguments[ 'hide-fields-meta' ]
 	] );
 
 	$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 	'header' 		=> __( 'Your entries', WE_LS_SLUG ),

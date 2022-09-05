@@ -68,7 +68,7 @@ function ws_ls_data_table_render( $arguments = [] ) {
 
 		$html .= ws_ls_form_weight( [ 'entry-id' => $entry_id, 'redirect-url' => $redirect_url, 'weight-mandatory' => $arguments[ 'weight-mandatory' ],
 		                                    'custom-field-groups' => $arguments[ 'custom-field-groups' ], 'custom-field-slugs' => $arguments[ 'custom-field-slugs' ],
-		                                        'type' => ( false === ws_ls_to_bool( $arguments[ 'enable-weight' ] ) ) ? 'custom-fields' : 'weight',
+		                                        'type' => ( false === ws_ls_to_bool( $arguments[ 'enable-weight' ] ) ) ? 'custom-fields' : 'weight', 'hide-fields-meta' => ! $arguments[ 'enable-meta-fields' ],
 		                                            'uikit' => $arguments[ 'uikit' ], 'user-id' => $arguments[ 'user-id' ], 'hide-title' => $arguments[ 'uikit' ] ] );
 
 	} else {
