@@ -103,6 +103,7 @@ function ws_ls_messaging_db_add( $to, $from, $message, $is_note = false, $visibl
 	$data       = [ 'to'                => $to,
 	                'from'              => $from,
 	                'message_text'      => $message,
+	                'visible_to_user'   => $visible_to_user,
 	                'notification'      => $notification ];
 
 	$formats    = [ '%d', '%d', '%s', '%d', '%d' ];

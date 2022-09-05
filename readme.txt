@@ -152,6 +152,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 = 10.2.3 =
 
+* Bug fix: Fixed an issue where notes aren't visible: https://github.com/alicolville/Weight-Tracker/issues/495
 * Bug fix: Fixed a CSS reference to a missing image https://github.com/alicolville/Weight-Tracker/issues/494
 
 = 10.2.2 =
