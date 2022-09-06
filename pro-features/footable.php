@@ -68,7 +68,7 @@ function ws_ls_data_table_render( $arguments = [] ) {
 
 		$html .= ws_ls_form_weight( [ 'entry-id' => $entry_id, 'redirect-url' => $redirect_url, 'weight-mandatory' => $arguments[ 'weight-mandatory' ],
 		                                    'custom-field-groups' => $arguments[ 'custom-field-groups' ], 'custom-field-slugs' => $arguments[ 'custom-field-slugs' ],
-		                                        'type' => ( false === ws_ls_to_bool( $arguments[ 'enable-weight' ] ) ) ? 'custom-fields' : 'weight',
+		                                        'type' => ( false === ws_ls_to_bool( $arguments[ 'enable-weight' ] ) ) ? 'custom-fields' : 'weight', 'hide-fields-meta' => ! $arguments[ 'enable-meta-fields' ],
 		                                            'uikit' => $arguments[ 'uikit' ], 'user-id' => $arguments[ 'user-id' ], 'hide-title' => $arguments[ 'uikit' ] ] );
 
 	} else {
@@ -274,9 +274,10 @@ function ws_ls_datatable_rows( $arguments ) {
 				}
 			}
 
+			$row = [ 'options' => [ 'classes' => 'ws-ls-empty' ], 'value' => $row ];
 			if( true === $arguments[ 'enable-notes' ] &&
-			        false === empty( $row[ 'notes' ] ) ) {
-				$row =  [ 'options' => [ 'classes' => 'ws-ls-has-note'], 'value' => $row ];
+			        false === empty( $row[ 'value' ][ 'notes' ] ) ) {
+				$row[ 'options' ][ 'classes' ] = 'ws-ls-has-note';
 			}
 
 			array_push( $rows, $row );
@@ -305,14 +306,14 @@ function ws_ls_datatable_rows_localise( $row ) {
 	global $ws_ls_request_from_admin_screen;
 
 	if ( false === empty( $row[ 'previous-weight-diff' ] ) ) {
-		$row[ 'gainloss' ][ 'value' ] = ws_ls_blur_text( ws_ls_weight_display( $row[ 'previous-weight-diff' ], NULL, 'display', $ws_ls_request_from_admin_screen, true ) );
+		$row[ 'value' ][ 'gainloss' ][ 'value' ] = ws_ls_blur_text( ws_ls_weight_display( $row[ 'value' ][ 'previous-weight-diff' ], NULL, 'display', $ws_ls_request_from_admin_screen, true ) );
 	}
 
-	if ( false === empty( $row[ 'kg' ][ 'value' ] ) ) {
-		$row[ 'kg' ][ 'value' ] = ws_ls_weight_display( $row[ 'kg' ][ 'value' ], NULL, 'display', $ws_ls_request_from_admin_screen );
+	if ( false === empty( $row[ 'value' ][ 'kg' ][ 'value' ] ) ) {
+		$row[ 'value' ][ 'kg' ][ 'value' ] = ws_ls_weight_display( $row[ 'value' ][ 'kg' ][ 'value' ], NULL, 'display', $ws_ls_request_from_admin_screen );
 
 		if ( false !== $ws_ls_request_from_admin_screen ) {
-			$row[ 'kg' ][ 'value' ] = ws_ls_blur_text( $row[ 'kg' ][ 'value' ]  );
+			$row[ 'value' ][ 'kg' ][ 'value' ] = ws_ls_blur_text( $row[ 'value' ][ 'kg' ][ 'value' ]  );
 		}
 	}
 

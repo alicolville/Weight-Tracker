@@ -2,8 +2,8 @@
 Contributors: aliakro
 Tags: weight,tracker,chart,bmi,bmr,macronutrient,measure,awards,custom fields,history,measurements,data
 Requires at least: 5.7
-Tested up to: 6.0
-Stable tag: 10.2.3
+Tested up to: 6.0.2
+Stable tag: 10.2.4
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -149,6 +149,11 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 10.2 - "Kiosk Mode" for [wt-beta]!
 
 == Changelog ==
+
+= 10.2.4 =
+
+* Bug fix: Hide custom fields when editing an entry if "hide-custom-fields" specified on [wt-beta]. https://github.com/alicolville/Weight-Tracker/issues/492
+* Bug fix: Fixed an issue where weights were not being formatted correctly in a table if a note had been added.
 
 = 10.2.3 =
 
