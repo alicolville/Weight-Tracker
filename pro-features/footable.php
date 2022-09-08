@@ -210,6 +210,7 @@ function ws_ls_datatable_rows( $arguments ) {
 				} elseif( false === empty( $previous_user_weight[ $entry[ 'user_id' ] ] ) ) {
 
 					if ( false === empty( $entry[ 'kg' ] ) ) {
+
 						$row[ 'previous-weight' ] = $previous_user_weight[ $entry[ 'user_id' ] ];
 
 						if ( $entry['kg'] > $previous_user_weight[ $entry[ 'user_id' ] ] ) {
@@ -305,7 +306,7 @@ function ws_ls_datatable_rows_localise( $row ) {
 
 	global $ws_ls_request_from_admin_screen;
 
-	if ( false === empty( $row[ 'previous-weight-diff' ] ) ) {
+	if ( false === empty( $row[ 'value' ][ 'previous-weight-diff' ] ) ) {
 		$row[ 'value' ][ 'gainloss' ][ 'value' ] = ws_ls_blur_text( ws_ls_weight_display( $row[ 'value' ][ 'previous-weight-diff' ], NULL, 'display', $ws_ls_request_from_admin_screen, true ) );
 	}
 
