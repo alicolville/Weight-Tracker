@@ -152,6 +152,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 = 10.2.5 =
 
+* Bug fix: In a table, show comparision data between weights.
 * Bug fix: Corrected fix in 10.2.3 and put the correct image path in the CSS file!
 
 = 10.2.4 =
