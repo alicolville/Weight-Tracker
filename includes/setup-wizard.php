@@ -101,7 +101,6 @@ function wl_ls_setup_wizard_meal_tracker_html() {
     <p><img src="<?php echo plugins_url( 'admin-pages/assets/images/meal-tracker-logo.png', __FILE__ ); ?>" width="100" height="100" style="margin-right:20px" align="left" />
         <?php echo __( 'Why not check out our sister plugin Meal Tracker. Allow your user\'s to track their meals and calorie intake too!', WE_LS_SLUG ); ?></p>
     <p><strong><?php echo __( 'Get Meal Tracker Now', WE_LS_SLUG); ?>.</strong></p>
-    <p style="font-weight: bold; font-size: 18px;"><?php echo __( '20% off coupon', WE_LS_SLUG); ?>: 20-OFF-MEAL-TRACKER</p>
     <p><a href="https://wordpress.org/plugins/meal-tracker/" rel="noopener noreferrer" target="_blank"><?php echo __( 'from WordPress.org', WE_LS_SLUG); ?></a> /
         <a href="https://shop.yeken.uk/product/meal-tracker-premium/" rel="noopener noreferrer" target="_blank"><?php echo __( 'Upgrade to Premium', WE_LS_SLUG); ?></a> /
         <a href="mailto:email@yeken.uk" ><?php echo __( 'Any questions, email@yeken.uk', WE_LS_SLUG); ?></a></p>
