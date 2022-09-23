@@ -128,7 +128,7 @@ function ws_ls_notifications_shortcode( $user_defined_arguments, $disable_pro_ch
 	                                'message-no-data'   => ''
 	], $user_defined_arguments );
 
-	$notifications  = ws_ls_messaging_db_select(  $arguments[ 'user-id'], NULL, false, true, false );
+	$notifications  = ws_ls_messaging_db_select(  $arguments[ 'user-id'], NULL, false, true );
 	$html           = '';
 
 	if ( false === empty( $notifications ) ) {
