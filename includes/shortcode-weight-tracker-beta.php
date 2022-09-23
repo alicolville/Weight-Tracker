@@ -36,7 +36,8 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 												'hide-custom-fields-chart'  => false,                       // Hide custom fields from chart
 												'hide-custom-fields-table'  => false,                       // Hide custom fields from table
 												'kiosk-mode'                => false,                       // If in Kiosk mode, allow this UI to be used for multiple isers
-												'show-delete-data' 		    => true,                	    // Show "Delete your data" section
+												'kiosk-hide-editing-name' 	=> false,                       // Hide name of the person we're editing
+	                                            'show-delete-data' 		    => true,                	    // Show "Delete your data" section
 												'show-tab-info' 		    => false,
 	                                            'summary-boxes-data'        => 'number-of-entries,number-of-days-tracking,latest-weight,start-weight', // Summary boxes to display at top of data tab
 												'summary-boxes-home'        => 'latest-weight,previous-weight,latest-versus-target,target-weight', // Summary boxes to display at top of data tab
@@ -89,6 +90,14 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 		$shortcode_arguments[ 'disable-not-logged-in' ] = true;
 
 		$html .= ws_ls_component_user_search( $shortcode_arguments );
+
+		if ( true === $shortcode_arguments[ 'user-loaded' ]
+				&& false === ws_ls_to_bool( $shortcode_arguments[ 'kiosk-hide-editing-name' ] )) {
+			$html .= sprintf( '%s: <strong>%s</strong>',
+								__( 'Editing', WE_LS_SLUG ),
+								ws_ls_user_get_name( $shortcode_arguments[ 'user-id' ] )
+								);
+		}
 
 		// Have we got a selected user? If not, only display drop down box
 		if( false === $shortcode_arguments[ 'user-loaded' ] ) {

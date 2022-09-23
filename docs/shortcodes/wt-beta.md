@@ -110,6 +110,7 @@ The shortcode supports the following arguments:
 | hide-tab-photos   | If set to true (default is false) hide the Photos tab.   |  True or false (default).   | [wt-beta hide-tab-photos=true] |         
 | show-delete-data  | If set to false (default is true), the section allowing users to delete their own data is hidden.   | True (default) or false   | [wt-beta show-delete-data=false] |  
 |kiosk-mode|If set to true (default is false) then the tool will be switched to kiosk mode (read more: [wt-kiosk]({{ site.baseurl }}/shortcodes/wt-kiosk.html))|true or false (default)| [wt-beta kiosk-mode=true] |  
+|kiosk-hide-editing-name|If set to true (default is false) then hide the "Editing" message for the selected user|true or false (default)| [wt-beta kiosk-hide-editing-name=true] |  
 |summary-boxes-advanced|Specify the [summary boxes]({{ site.baseurl }}/components.html) to display at top of the advanced tab.|Comma delimited list, [read more]({{ site.baseurl }}/components.html)|[wt-beta summary-boxes-advanced="number-of-entries,number-of-days-tracking,latest-weight,start-weight"]
 |summary-boxes-data|Specify the [summary boxes]({{ site.baseurl }}/components.html) to display at top of the history tab.|Comma delimited list, [read more]({{ site.baseurl }}/components.html)|[wt-beta summary-boxes-data="bmi,bmr"]
 |summary-boxes-home|Specify the [summary boxes]({{ site.baseurl }}/components.html) to display at top of the home tab.|Comma delimited list, [read more]({{ site.baseurl }}/components.html)|[wt-beta summary-boxes-home="latest-weight,start-weight"]
