@@ -2,7 +2,7 @@
 
 > The following shortcode is only available in the [Pro Plus]({{ site.baseurl }}/features.html) version of the plugin.
 
-[wt-kiosk] is an extension of the popular [wt]({{ site.baseurl }}/shortcodes/wt.html) shortcode. [wt] is aimed at the end user and provides them a tool to view and edit their data. [wt-kiosk] however, is designed for your administrators and staff and extends the [wt] user interface by providing an additional search box allowing you search for your site users. Selecting a user reloads the page and popluates the [wt-beta] tool with the selected user's data. This allows your team to search and update all of their user records from the front end of the website.
+[wt-kiosk] is an extension of the popular [wt]({{ site.baseurl }}/shortcodes/wt.html) shortcode. [wt] is aimed at the end user and provides them a tool to view and edit their data. [wt-kiosk] however, is designed for your administrators and staff and extends the [wt] user interface by providing an additional search box allowing you search for your site users. Selecting a user reloads the page and popluates the [wt] tool with the selected user's data. This allows your team to search and update all of their user records from the front end of the website.
 
 An additional summary tab is also added allowing your team to get a quick summary of the user's accounts.
    
