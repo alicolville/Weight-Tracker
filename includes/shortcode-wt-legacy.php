@@ -60,7 +60,7 @@ function ws_ls_shortcode_wt_legacy( $user_defined_arguments ) {
 	$shortcode_arguments[ 'min-chart-points' ]  = (int) $shortcode_arguments[ 'min-chart-points' ];
     $html_output                                = '';
 
-	$html_output .= ws_ls_wt_beta_upgrade_notice();
+	$html_output .= ws_ls_wt_legacy_notice();
 
 	// If a form was previously submitted then display resulting message!
 	if ( false === empty( $save_response[ 'message' ] ) ){
@@ -381,23 +381,11 @@ function ws_ls_title( $title_text ) {
  * Display a notice about it being beta
  * @return string
  */
-function ws_ls_wt_beta_upgrade_notice() {
+function ws_ls_wt_legacy_notice() {
 
 	if ( !current_user_can( 'manage_options' ) )  {
 		return '';
 	}
-
-	$key = 'ws-ls-wt-legacy-notice';
-
-	if ( 'y' === ws_ls_querystring_value( $key ) ) {
-		update_option( $key, 'n' );
-	}
-
-	if ( 'n' === get_option( $key, 'y' ) ) {
-		return '';
-	}
-
-	$link = ws_ls_get_url();
 
 	$message = '<p>
 					<strong>
@@ -408,5 +396,5 @@ function ws_ls_wt_beta_upgrade_notice() {
 			    <p><a href="https://docs.yeken.uk/shortcodes/wt.html" target="_blank" rel="noopener">https://docs.yeken.uk/shortcodes/wt.html</a>.</p>
 ';
 
-	return ws_ls_blockquote_success( $message );
+	return ws_ls_blockquote_error( $message );
 }

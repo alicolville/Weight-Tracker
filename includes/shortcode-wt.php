@@ -3,7 +3,7 @@
 defined('ABSPATH') or die('Jog on!');
 
 /**
- * Shortcode for [wt-beta]
+ * Shortcode for [wt]
  * @param $user_defined_arguments
  *
  * @return string
