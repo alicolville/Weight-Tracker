@@ -22,17 +22,34 @@ function ws_ls_shortcode_reminder($user_defined_arguments, $content = null) {
 
 	$message = '';
 
-	$arguments = shortcode_atts([   'type'              => 'weight',    // Type of message:
-																		// 		'weight' - check they have entered a weight for today.
-																		// 		'target' - check they have entered a target weight
-																		//		'both' - check if they have entered both
-									'message'           => '',			// Custom message
-									'additional_css'    => '',		    // Additional class for containing element
-									'link'              => ''			// Wrap the message in a link
+	$arguments = shortcode_atts([   'user-id'           => get_current_user_id(),
+									'type'              => 'weight',                // Type of message:
+																					// 		'weight' - check they have entered a weight for today.
+																					// 		'target' - check they have entered a target weight
+																					//		'both' - check if they have entered both
+									'message'           => '',			            // Custom message
+									'number-of-days'    => NULL,                    // Have they entered a weight in the last x days?
+									'additional_css'    => '',		                // Additional class for containing element
+									'link'              => ''			            // Wrap the message in a link
 								], $user_defined_arguments );
 
-	$target_required = ( true === in_array( $arguments[ 'type' ], [ 'target', 'both' ] ) && true === ws_ls_targets_enabled() && NULL == ws_ls_target_get( get_current_user_id() ) );
-	$weight_required = ( true === in_array( $arguments[ 'type' ], [ 'weight', 'both' ] ) && !ws_ls_db_entry_for_date( get_current_user_id(), date('Y-m-d') ) );
+	$arguments[ 'user-id' ] = (int) $arguments[ 'user-id' ];
+
+	$target_required = ( true === in_array( $arguments[ 'type' ], [ 'target', 'both' ] ) && true === ws_ls_targets_enabled() && NULL == ws_ls_target_get( $arguments[ 'user-id' ] ) );
+
+	$weight_required = true;
+
+	// Weight entry - determine the period of time we should consider
+	if ( true === in_array( $arguments[ 'type' ], [ 'weight', 'both' ] ) ) {
+
+		// If no time period today, then only consider today!
+		if ( true === empty( $arguments[ 'number-of-days' ] ) ) {
+			$weight_required = ! ws_ls_db_entry_for_date( $arguments[ 'user-id' ], date('Y-m-d') );
+		} else {
+			$weight_entries     = ws_ls_db_entries_last_x_days( $arguments );
+			$weight_required    = empty( $weight_entries );
+		}
+	}
 
 	// Missing both?
 	if ( 'both' == $arguments[ 'type' ] && $target_required && $weight_required ) {
@@ -42,7 +59,7 @@ function ws_ls_shortcode_reminder($user_defined_arguments, $content = null) {
 		$message = __( 'Please remember to enter your target weight.', WE_LS_SLUG );
 	// Do they have a weight entry for today?
 	} else if ( 'weight' == $arguments[ 'type' ] && $weight_required) {
-		$message = __( 'Please remember to enter your weight for today.', WE_LS_SLUG ) ;
+		$message = __( 'Please remember to enter your weight.', WE_LS_SLUG ) ;
 	}
 
 	// Do we have a message to display?
