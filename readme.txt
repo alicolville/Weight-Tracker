@@ -150,6 +150,8 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 == Changelog ==
 
+= 10.3 =
+
 = 10.2.7 =
 
 * Bug fix: Corrected issue where notifications aren't shown in Kiosk mode.
