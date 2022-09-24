@@ -130,8 +130,6 @@ function ws_ls_shortcode_wt( $user_defined_arguments ) {
 	                                                                   'reverse'           => true,
 	                                                                   'sort'              => 'desc' ] );
 
-	$html .= ws_ls_uikit_beta_notice();
-
 	if( 'true' === ws_ls_querystring_value( 'user-preference-saved', 'true' ) ) {
 		$html .= ws_ls_component_alert( [ 'message' => __( 'Your settings have been successfully saved!', WE_LS_SLUG ) ] );
 	} elseif( 'true' === ws_ls_querystring_value( 'user-delete-all', 'true' ) ) {

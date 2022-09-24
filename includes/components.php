@@ -1017,47 +1017,6 @@ function ws_ls_uikit_data_summary_boxes_display( $key, $arguments = [] ) {
 }
 
 /**
- * Display a notice about it being beta
- * @return string
- */
-function ws_ls_uikit_beta_notice() {
-
-	if ( !current_user_can( 'manage_options' ) )  {
-		return '';
-	}
-	$key = 'ws-ls-beta-wt-notice';
-
-	if ( 'y' === ws_ls_querystring_value( $key ) ) {
-		update_option( $key, 'n' );
-	}
-
-	if ( 'n' === get_option( $key, 'y' ) ) {
-		return '';
-	}
-
-	$link = ws_ls_get_url();
-
-	$link = add_query_arg($key, 'y', $link );
-
-	return '<div class="ykuk-child-width-1-1@s" ykuk-grid>
-			    <div>
-			        <div class="ykuk-dark ykuk-background-muted ykuk-padding">
-				        <div class="ykuk-alert-warning" ykuk-alert>
-						    <p><strong>Note: Only administrators can see this message.</strong></p>
-						</div>
-			            <p>This shortcode is currently in <a href="https://www.pcmag.com/encyclopedia/term/beta-version" target="_blank" rel="noopener">Beta</a> and will, at some point, replace
-			            		<a href="https://docs.yeken.uk/shortcodes/wt.html" target="_blank" rel="noopener">[wt]</a>.</p>
-			            <h4>Issues and Feedback</h4>
-			            <p>If you have any issues or feedback regarding [wt-beta] then please raise them at my GitHub page:</p>
-			            <p><a href="https://github.com/alicolville/Weight-Tracker/issues" target="_blank" rel="noopener">https://github.com/alicolville/Weight-Tracker/issues</a>.</p>
-			            <a class="ykuk-button ykuk-button-default" href="' . esc_url( $link ) . '">Hide this message</a>
-			        </div>
-			    </div>
-			</div>';
-
-}
-
-/**
  * Display a notice about data being exposed
  *
  * @param string $key

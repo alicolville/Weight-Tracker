@@ -387,7 +387,7 @@ function ws_ls_wt_beta_upgrade_notice() {
 		return '';
 	}
 
-	$key = 'ws-ls-wt-upgrade-notice';
+	$key = 'ws-ls-wt-legacy-notice';
 
 	if ( 'y' === ws_ls_querystring_value( $key ) ) {
 		update_option( $key, 'n' );
@@ -399,15 +399,13 @@ function ws_ls_wt_beta_upgrade_notice() {
 
 	$link = ws_ls_get_url();
 
-	$link = add_query_arg($key, 'y', $link );
-
 	$message = '<p>
 					<strong>
 						Note: Only administrators can see this message.
 					</strong>
 				</p>
-			    <p>This shortcode, [wt] will be replaced in the near future with a modern replacement. To test that the newer version works smoothly with your website, we have released a beta. You can test this beta by placing the shortcode [wt-beta]. Read more:</p>
-			    <p><a href="https://docs.yeken.uk/shortcodes/wt-beta.html" target="_blank" rel="noopener">https://docs.yeken.uk/shortcodes/wt-beta.html</a>.</p>
+			    <p>This shortcode, [wt-legacy] will soon be deprecated and removed from the plugin. Please switch to [wt]. Read more:</p>
+			    <p><a href="https://docs.yeken.uk/shortcodes/wt.html" target="_blank" rel="noopener">https://docs.yeken.uk/shortcodes/wt.html</a>.</p>
 ';
 
 	return ws_ls_blockquote_success( $message );
