@@ -9,7 +9,7 @@ defined('ABSPATH') or die('Jog on!');
  * @return string
  * @throws Exception
  */
-function ws_ls_shortcode_beta( $user_defined_arguments ) {
+function ws_ls_shortcode_wt( $user_defined_arguments ) {
 
 	// Showing groups?
 	if ( ws_ls_querystring_value( 'group-view' ) ) {
@@ -162,7 +162,8 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 
 	return $html . '</div>';
 }
-add_shortcode( 'wt-beta', 'ws_ls_shortcode_beta' );
+add_shortcode( 'wt', 'ws_ls_shortcode_wt' );
+add_shortcode( 'wt-beta', 'ws_ls_shortcode_wt' );
 
 /**
  * Wrapper for [wt] to enable shortcode mode

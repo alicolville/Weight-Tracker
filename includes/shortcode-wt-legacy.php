@@ -11,7 +11,7 @@ $ws_ls_wlt_already_placed   = false;
  * @return string
  * @throws Exception
  */
-function ws_ls_shortcode( $user_defined_arguments ) {
+function ws_ls_shortcode_wt_legacy( $user_defined_arguments ) {
 
 	global $save_response;
 	global $ws_ls_wlt_already_placed;
@@ -282,8 +282,8 @@ function ws_ls_shortcode( $user_defined_arguments ) {
 	return $html_output;
 
 }
-add_shortcode( 'wlt', 'ws_ls_shortcode' );
-add_shortcode( 'wt', 'ws_ls_shortcode' );
+add_shortcode( 'wlt', 'ws_ls_shortcode_wt_legacy' );
+add_shortcode( 'wt-legacy', 'ws_ls_shortcode_wt_legacy' );
 
 /**
  * Embed Chart

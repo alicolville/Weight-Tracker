@@ -152,6 +152,8 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 = 10.3 =
 
+* New feature: [wt-beta] has now replaced the older version. So [wt] contains the new functionality, the older shortcode can still be used (for now) by using the shortcode [wt-legacy] https://docs.yeken.uk/shortcodes/wt-legacy.html
+
 = 10.2.7 =
 
 * Bug fix: Corrected issue where notifications aren't shown in Kiosk mode.
