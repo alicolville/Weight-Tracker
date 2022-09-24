@@ -148,31 +148,6 @@ function ws_ls_migrate_measurement_fields(){
 }
 
 /**
- * Display a message when old shortcode names are used.
- */
-function ws_ls_shortcode_old_names() {
-	return ws_ls_display_blockquote( __( 'You are using an old shortcode. It is now deprecated but will exist under a different name. Please view the plugin documentation and use a suitable replacement: https://docs.yeken.uk/shortcodes/', WE_LS_SLUG) );
-}
-add_shortcode( 'weight-loss-tracker-chart', 'ws_ls_shortcode_old_names' );
-add_shortcode( 'weightloss_target_weight', 'ws_ls_shortcode_old_names' );
-add_shortcode( 'weightlosstracker', 'ws_ls_shortcode_old_names' );
-add_shortcode( 'weightloss_weight_start', 'ws_ls_shortcode_old_names' );
-add_shortcode( 'weightloss_weight_most_recent', 'ws_ls_shortcode_old_names' );
-add_shortcode( 'weightloss_weight_difference_from_target', 'ws_ls_shortcode_old_names' );
-add_shortcode( 'weightlosstracker', 'ws_ls_shortcode_old_names' );
-add_shortcode( 'weightloss_weight_difference', 'ws_ls_shortcode_old_names' );
-add_shortcode( 'weight-loss-tracker-most-recent-bmi', 'ws_ls_shortcode_old_names' );
-add_shortcode( 'wlt-recent-bmi', 'ws_ls_shortcode_old_names' );
-add_shortcode( 'weight-loss-tracker-form', 'ws_ls_shortcode_old_names' );
-add_shortcode( 'weight-loss-tracker', 'ws_ls_shortcode_old_names' );
-add_shortcode( 'weight-loss-tracker-table', 'ws_ls_shortcode_old_names' );
-add_shortcode( 'weight-loss-tracker-progress-bar', 'ws_ls_shortcode_old_names' );
-add_shortcode( 'weight-loss-tracker-message', 'ws_ls_shortcode_old_names' );
-add_shortcode( 'weight-loss-tracker-reminder', 'ws_ls_shortcode_old_names' );
-add_shortcode( 'weight-loss-tracker-league-table', 'ws_ls_shortcode_old_names' );
-add_shortcode( 'weight-loss-tracker-total-lost', 'ws_ls_shortcode_old_names' );
-
-/**
  * As of 9.3.7, macro percentages can be specified based upon aim (i.e. maintain, gain, lose). To ensure values are migrated properly, take the existing
  * macro percentages and port to the three types.
  */
