@@ -180,7 +180,7 @@ function ws_ls_shortcode_wt_kiosk( $user_defined_arguments ) {
 
 	$arguments = wp_parse_args( [ 'kiosk-mode' => true ], $user_defined_arguments );
 
-	return ws_ls_shortcode_beta( $arguments );
+	return ws_ls_shortcode_wt( $arguments );
 }
 add_shortcode( 'wt-kiosk', 'ws_ls_shortcode_wt_kiosk' );
 
