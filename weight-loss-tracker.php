@@ -51,7 +51,7 @@ include WS_LS_ABSPATH . 'includes/license.php';
 $license_type = ws_ls_has_a_valid_license();
 
 // Standard Pro license?
-if( true === in_array( $license_type, [ 'pro', 'pro-old', 'pro-plus' ] ) ){
+if( true === in_array( $license_type, [ 'pro', 'pro-plus' ] ) ){
 	define( 'WS_LS_IS_PRO', true );
 } else {
 	define( 'WS_LS_IS_PRO', false );

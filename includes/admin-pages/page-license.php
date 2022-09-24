@@ -51,7 +51,7 @@ function ws_ls_advertise_pro() {
 					 $license_decoded = ws_ls_license_decode($license);
 				 }
 
-				 $display_pro_plus_marketing = (false === $license_type || true === in_array($license_type, ['pro', 'pro-old']));
+				 $display_pro_plus_marketing = (false === $license_type || 'pro' === $license_type );
 				 $display_pro_marketing = (true === empty($license_type));
 			?>
 			<div id="icon-options-general" class="icon32"></div>
@@ -74,24 +74,6 @@ function ws_ls_advertise_pro() {
 											__('can offer you and your members a lot more features to help you and them manage their weight. There are two types of License that you can purchase, Pro and Pro Plus. Pro contains an enriched feature set and user experience and is a must! Pro Plus extends Pro with features such as BMR, Calorie intake, Macronutrient Calculator, etc.', WE_LS_SLUG),
 											__('Of course, by purchasing a license, you are supporting the future of this plugin and it is gratefully appreciated.', WE_LS_SLUG)
 										);
-									} elseif ('pro-old' === $license_type) {
-
-										echo sprintf('<h3>%s</h3><p>%s</p><h3>%s</h3><p>%s</p>',
-											__('Legacy Pro License', WE_LS_SLUG),
-											__('Our licensing has model has changed, Prior to September 2017 it used to be a one off payment that enabled the Pro features of the plugin. This is still the case and any old licenses will still be honoured.', WE_LS_SLUG),
-											__('Moving to a yearly license', WE_LS_SLUG),
-											__('There is no reason to move to a yearly license - Pro features will remain the same for legacy and new Pro subscriptions. However, if you were to move to a yearly subscription you will be supporting the development of the plugin (and I\'ll give you a big hug).', WE_LS_SLUG)
-										);
-
-										echo sprintf('<h3>%s</h3><p>%s %s %s</p>',
-											__('Pro Plus License', WE_LS_SLUG),
-											__('Of course, thank you for purchasing a Pro license - it is much appreciated. As you can see below, you can further expand the features of', WE_LS_SLUG),
-											WE_LS_TITLE,
-											__('by extending your license to Pro Plus. Pro Plus extends Pro with features such as BMR, Calorie intake, Macronutrient Calculator, etc. You can view the additional features that Pro Plus offers you below.', WE_LS_SLUG)
-										);
-
-										$display_pro_marketing = true;
-
 									} elseif ( $display_pro_plus_marketing ) {
 
 										echo sprintf('<p>%s %s %s</p>',
@@ -140,9 +122,7 @@ function ws_ls_advertise_pro() {
 										}
 										if ( $display_pro_marketing ) :
 
-												$button_text = ('pro-old' === $license_type) ?
-																	__('Switch to a yearly Pro license for ', WE_LS_SLUG) . '&pound;' . $price . __(' a year', WE_LS_SLUG) :
-																			__('Upgrade to Pro for ', WE_LS_SLUG) . '&pound;' . $price . __(' a year', WE_LS_SLUG); ?>
+												$button_text = __('Upgrade to Pro for ', WE_LS_SLUG) . '&pound;' . $price . __(' a year', WE_LS_SLUG); ?>
 											<a href="<?php echo WE_LS_UPGRADE_TO_PRO_URL; ?>?hash=<?php echo ws_ls_generate_site_hash(); ?>" target="_blank" rel="noopener noreferrer" class="button-primary ws-ls-upgrade-button"><i class="fa fa-plus"></i> <?php echo $button_text; ?></a>
 										<?php endif; ?>
 									</center>
@@ -186,9 +166,7 @@ function ws_ls_advertise_pro() {
                                             <td>
                                                 <?php
 
-                                                    if('pro-old' === $license_type) {
-                                                        echo __('Never', WE_LS_SLUG);
-                                                    } elseif (true === in_array($license_type, ['pro', 'pro-plus'])) {
+                                                    if (true === in_array($license_type, ['pro', 'pro-plus'])) {
                                                         echo esc_html( ws_ls_iso_date_into_correct_format( $license_decoded['expiry-date'] ) );
                                                     } else {
                                                         echo __('n/a', WE_LS_SLUG);
