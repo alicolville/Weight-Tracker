@@ -617,6 +617,23 @@ function ws_ls_groups_users_for_given_group( $group_id, $with_entry_date = NULL 
 }
 
 /**
+ * Fetch user IDs for all user's that don't have a group record
+ *
+ * Note:    This is a one off helper function, it's isn't aimed at identifying users that have 0 for their group. This is to detect
+ *          all users that have no row wp_WS_LS_GROUPS_USER. This function was used in an upgrade script so we could add a row for all users (set to 0)
+ *          for those that didn't currently have a group assigned. This was to make things easier when querying for users that don't have a group
+ *          (to save checking for a 0 or a missing row)
+ *
+ * @return array
+ */
+function ws_ls_groups_get_users_with_no_group() {
+
+	global $wpdb;
+
+	return $wpdb->get_col( 'Select ID from ' . $wpdb->prefix . 'users where ID not in ( SELECT distinct `user_id` FROM ' . $wpdb->prefix . WE_LS_MYSQL_GROUPS_USER . ' )' );
+}
+
+/**
 	Get Groups
  **/
 function ws_ls_ajax_groups_get(){
