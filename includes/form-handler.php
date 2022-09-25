@@ -37,6 +37,8 @@ function ws_ls_form_post_handler(){
 			return ws_ls_save_form_error_prep( $form_number, __( 'The given user hash did not match the logged in user', WE_LS_SLUG ) );
 		}
 
+		do_action( 'wlt-hook-data-attempting-added-edited', $user_id );
+
 		$result = false;
 
 		// Process posted form and save!

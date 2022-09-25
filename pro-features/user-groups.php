@@ -948,3 +948,20 @@ function ws_ls_groups_fix_set_no_group() {
 	}
 }
 add_action( 'admin_init', 'ws_ls_groups_fix_set_no_group' );
+
+/**
+ * Hook on to an attempted save of entry, if we have no group for this user, then add.
+ * @param $user_id
+ */
+function ws_ls_groups_add_missing_group( $user_id ) {
+
+	$current_selection = ws_ls_groups_user( $user_id );
+
+	// If we have a group, do nothing.
+	if ( false === empty( $current_selection[0]['id'] ) ) {
+		return;
+	}
+
+	ws_ls_groups_add_to_user( 0, $user_id );
+}
+add_action( 'wlt-hook-data-attempting-added-edited', 'ws_ls_groups_add_missing_group', 10, 1 );
