@@ -153,7 +153,8 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 = 10.3 =
 
 * New feature: [wt-beta] has now replaced the older version. So [wt] contains the new functionality, the older shortcode can still be used (for now) by using the shortcode [wt-legacy] https://docs.yeken.uk/shortcodes/wt-legacy.html
-* Improvement: Added "number-of-days" argument to [wt-reminder] shortcode. https://docs.yeken.uk/shortcodes/wt-reminder.html
+* Improvement: Added "number-of-days" argument to [wt-reminder] shortcode. https://docs.yeken.uk/shortcodes/wt-reminder.html - See https://github.com/alicolville/Weight-Tracker/issues/268
+* Improvement: Added an option to display users from all groups on [wt-group-view-as-table] and in [wt-kiosk] mode. See https://github.com/alicolville/Weight-Tracker/issues/487.
 * Improvement: General refactoring of code.
 
 = 10.2.7 =

@@ -1187,8 +1187,8 @@ function ws_ls_component_group_view_entries( $arguments ) {
  */
 function ws_ls_component_group_select( $arguments ) {
 
-	$arguments  = wp_parse_args( $arguments, [ 'selected' => 0, 'include-empty' => true, 'reload-page-on-select' => true, 'uikit' => true ] );
-	$groups     = ws_ls_groups( $arguments[ 'include-empty' ] );
+	$arguments  = wp_parse_args( $arguments, [ 'selected' => 0, 'include-empty' => true, 'include-all-groups' => true, 'reload-page-on-select' => true, 'uikit' => true ] );
+	$groups     = ws_ls_groups( $arguments[ 'include-empty' ], $arguments[ 'include-all-groups' ] );
 	$groups     = wp_list_pluck( $groups, 'name', 'id' );
 
 	$select_args = [    'key'                           => ws_ls_component_id(),

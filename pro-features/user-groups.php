@@ -182,15 +182,8 @@ function ws_ls_groups_hooks_user_preferences_save( $user_id, $is_admin, $fields 
 
 	$group_id = ws_ls_post_value('ws-ls-group');
 
-	if ( false === empty( $group_id ) ) {
-		ws_ls_groups_add_to_user( (int) $group_id, (int) $user_id );
-		ws_ls_cache_user_delete( 'groups-user-for-given' );
-	} else if ( '0' === $group_id ) {
-		ws_ls_groups_remove_all_from_user( $user_id );
 	ws_ls_groups_add_to_user( (int) $group_id, (int) $user_id );
 
-		ws_ls_cache_user_delete( $user_id );
-	}
 	ws_ls_cache_user_delete( $user_id );
 	ws_ls_cache_user_delete( 'groups-user-for-given' );
 }
@@ -432,12 +425,6 @@ function ws_ls_groups_user_tidy_up( $group_id ) {
 add_action( 'wlt-group-deleting', 'ws_ls_groups_user_tidy_up' );
 
 /**
-* Fetch all groups
-*
-* @param bool $include_none
-* @return array
-*/
-function ws_ls_groups( $include_none = true ) {
  * Fetch all groups
  *
  * @param bool $include_none
@@ -460,7 +447,6 @@ function ws_ls_groups( $include_none = true, $include_all_groups = false ) {
 	$data = $wpdb->get_results( $sql , ARRAY_A );
 
 	if ( true === $include_none ) {
-		$data = array_merge( [ [ 'id' => 0, 'name' => __('None', WE_LS_SLUG ) ] ], $data );
 		$data = array_merge( [ [ 'id' => 0, 'name' => __('No Group', WE_LS_SLUG ) ] ], $data );
 	}
 
@@ -617,7 +603,9 @@ function ws_ls_groups_users_for_given_group( $group_id, $with_entry_date = NULL 
 		$where[]    = $wpdb->prepare( 'entries.weight_date = %s', $with_entry_date );
 	}
 
-	$where[] = 'u.group_id = ' . (int) $group_id;
+	if ( -1 !== (int) $group_id ) {
+		$where[] = 'u.group_id = ' . (int) $group_id;
+	}
 
 	$sql    .= ' where ' . implode( ' and ', $where );
 
@@ -646,7 +634,7 @@ function ws_ls_groups_get_users_with_no_group() {
 
 	global $wpdb;
 
-	return $wpdb->get_col( 'Select ID from ' . $wpdb->prefix . 'users where ID not in ( SELECT distinct `user_id` FROM ' . $wpdb->prefix . WE_LS_MYSQL_GROUPS_USER . ' )' );
+	return $wpdb->get_col( 'Select ID from ' . $wpdb->prefix . WE_LS_TABLENAME . ' where ID not in ( SELECT distinct `user_id` FROM ' . $wpdb->prefix . WE_LS_MYSQL_GROUPS_USER . ' )' );
 }
 
 /**
