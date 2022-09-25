@@ -438,6 +438,14 @@ add_action( 'wlt-group-deleting', 'ws_ls_groups_user_tidy_up' );
 * @return array
 */
 function ws_ls_groups( $include_none = true ) {
+ * Fetch all groups
+ *
+ * @param bool $include_none
+ * @param bool $include_all_groups
+ *
+ * @return array
+ */
+function ws_ls_groups( $include_none = true, $include_all_groups = false ) {
 
 	global $wpdb;
 
@@ -453,6 +461,11 @@ function ws_ls_groups( $include_none = true ) {
 
 	if ( true === $include_none ) {
 		$data = array_merge( [ [ 'id' => 0, 'name' => __('None', WE_LS_SLUG ) ] ], $data );
+		$data = array_merge( [ [ 'id' => 0, 'name' => __('No Group', WE_LS_SLUG ) ] ], $data );
+	}
+
+	if ( true === $include_all_groups ) {
+		$data = array_merge( [ [ 'id' => -1, 'name' => __('All Groups', WE_LS_SLUG ) ] ], $data );
 	}
 
 	ws_ls_cache_user_set( 'groups', $cache_key , $data );
