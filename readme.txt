@@ -153,9 +153,9 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 = 10.3 =
 
 * New feature: [wt-beta] has now replaced the older version. So [wt] contains the new functionality, the older shortcode can still be used (for now) by using the shortcode [wt-legacy] https://docs.yeken.uk/shortcodes/wt-legacy.html
+* Improvement: General refactoring of code.
 * Improvement: Added "number-of-days" argument to [wt-reminder] shortcode. https://docs.yeken.uk/shortcodes/wt-reminder.html - See https://github.com/alicolville/Weight-Tracker/issues/268
 * Improvement: Added an option to display users from all groups on [wt-group-view-as-table] and in [wt-kiosk] mode. See https://github.com/alicolville/Weight-Tracker/issues/487.
-* Improvement: General refactoring of code.
 * Improvement: [wt-group-view-as-table] added new argument "default-to-users-group", if set to true, the table will default to logged in user's current group. See https://github.com/alicolville/Weight-Tracker/issues/510
 * Improvement: Added "Diff. from Start Weight" column to search results within admin. See https://github.com/alicolville/Weight-Tracker/issues/473
 * Improvement: Added a new option when exporting data, "All groups". Allows you to state to export data for users that are in any group. https://github.com/alicolville/Weight-Tracker/issues/510
