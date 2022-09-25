@@ -193,7 +193,7 @@ function ws_ls_export_admin_page_new() {
 
 										} else {
 
-											$user_groups = ws_ls_groups();
+											$user_groups = ws_ls_groups( true, true );
 											$user_groups = wp_list_pluck( $user_groups, 'name', 'id' );
 
 											if ( false === empty( $user_groups ) ) {

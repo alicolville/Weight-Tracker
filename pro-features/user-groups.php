@@ -548,6 +548,8 @@ function ws_ls_groups_export_add( $row ) {
 
     if ( false === empty( $group[ 0 ][ 'name' ] ) ) {
         $row[ 'group' ] = $group[ 0 ][ 'name' ];
+    } else {
+	    $row[ 'group' ] = __( 'No Group', WE_LS_SLUG );
     }
 
     return $row;
