@@ -927,3 +927,20 @@ function ws_ls_groups_link_to_page( $group_id ) {
 
 	return esc_url( $url );
 }
+
+/**
+ * Hooked on to admin_init, this will add a row for each user to the groups table.
+ */
+function ws_ls_groups_fix_set_no_group() {
+
+	if( false === update_option( 'ws-ls-group-add-missing-group-row', WE_LS_CURRENT_VERSION ) ) {
+		return;
+	}
+
+	$users_needing_group_row = ws_ls_groups_get_users_with_no_group();
+
+	foreach( $users_needing_group_row as $user_id ) {
+		ws_ls_groups_add_to_user( 0, $user_id );
+	}
+}
+add_action( 'admin_init', 'ws_ls_groups_fix_set_no_group' );
