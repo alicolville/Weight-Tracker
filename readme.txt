@@ -160,6 +160,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 * Improvement: Added "Diff. from Start Weight" column to search results within admin. See https://github.com/alicolville/Weight-Tracker/issues/473
 * Improvement: Added limited support for shortcodes within notes. See https://github.com/alicolville/Weight-Tracker/issues/393
 * Improvement: Added support for {first-name} and {last-name} tags within email notifications for notes. See https://github.com/alicolville/Weight-Tracker/issues/393
+* Improvement: Added {first-name} to initial email template for a new note (will need to be manually added if you installed WT pre this update). See https://github.com/alicolville/Weight-Tracker/issues/393
 * Improvement: Added a new option when exporting data, "All groups". Allows you to state to export data for users that are in any group. https://github.com/alicolville/Weight-Tracker/issues/510
 * Bug fix: When exporting data, selecting "None" for group had no effect. This has now been fixed. See https://github.com/alicolville/Weight-Tracker/issues/480
 
