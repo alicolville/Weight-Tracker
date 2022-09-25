@@ -187,9 +187,12 @@ function ws_ls_groups_hooks_user_preferences_save( $user_id, $is_admin, $fields 
 		ws_ls_cache_user_delete( 'groups-user-for-given' );
 	} else if ( '0' === $group_id ) {
 		ws_ls_groups_remove_all_from_user( $user_id );
+	ws_ls_groups_add_to_user( (int) $group_id, (int) $user_id );
 
 		ws_ls_cache_user_delete( $user_id );
 	}
+	ws_ls_cache_user_delete( $user_id );
+	ws_ls_cache_user_delete( 'groups-user-for-given' );
 }
 add_action( 'ws-ls-hook-user-preference-save',  'ws_ls_groups_hooks_user_preferences_save', 10, 3 );
 
