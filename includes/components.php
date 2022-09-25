@@ -1118,7 +1118,8 @@ function ws_ls_component_user_search( $arguments ) {
  */
 function ws_ls_component_group_view_entries( $arguments ) {
 
-	$arguments = wp_parse_args( $arguments, [   'disable-theme-css'         => false,
+	$arguments = wp_parse_args( $arguments, [   'default-to-users-group'    => false,
+												'disable-theme-css'         => false,
 	                                            'disable-main-font'         => false,
 	                                            'group-id'                  => NULL,
 												'table-allow-delete'        => false,
@@ -1134,6 +1135,15 @@ function ws_ls_component_group_view_entries( $arguments ) {
 	ws_ls_data_table_enqueue_scripts();
 
 	$arguments[ 'group-id' ] = ws_ls_querystring_value( 'group-id', true, $arguments[ 'group-id' ] );
+
+	// If we have no group id, and it's enabled, default to the current user's group.
+	if( true === empty( $arguments[ 'group-id' ] ) &&
+			true === ws_ls_to_bool( $arguments[ 'default-to-users-group' ] ) ) {
+
+		$groups = ws_ls_groups_user( get_current_user_id() );
+
+		$arguments[ 'group-id' ] = ( false === empty( $groups[0]['id'] ) ) ? (int) $groups[0]['id'] : NULL;
+	}
 
 	$html = '';
 

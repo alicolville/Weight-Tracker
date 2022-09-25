@@ -12,6 +12,7 @@ The shortcode supports the following arguments:
  
 | Argument | Description | Options | Example |
 |--|--|--|--|
+|default-to-users-group|If set to true, the table will default to logged in user's current group|True or False (default)|[wt-group-view-as-table default-to-users-group=true]
 |disable-main-font|If set to true will disable the main font used in the shortcode|True or False (default)|[wt-group-view-as-table disable-main-font=true]
 |disable-theme-css|If set to true will disable the additional CSS used in the shortcode|True or False (default)|[wt-group-view-as-table disable-theme-css=true]
 |group-id	|Specifies the group ID to show user information for.	|Number. Defaults to 0|	[wt-group-view-as-table group-id=123]
