@@ -126,7 +126,7 @@ function ws_ls_settings_page_generic() {
 												<h3><?php echo __( 'Target weights' , WE_LS_SLUG); ?></h3>
 												<table class="form-table">
 													<tr>
-														<th scope="row"><?php echo __( 'Allow target weights?' , WE_LS_SLUG); ?></th>
+														<th scope="row"><?php echo __( 'Allow user\'s to specify their own target weights?' , WE_LS_SLUG); ?></th>
 														<td>
 															<?php
 															$target_weights = get_option( 'ws-ls-allow-targets', 'yes' );
@@ -135,7 +135,7 @@ function ws_ls_settings_page_generic() {
 																<option value="yes" <?php selected( $target_weights, 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG); ?></option>
 																<option value="no" <?php selected( $target_weights, 'no' ); ?>><?php echo __('No', WE_LS_SLUG); ?></option>
 															</select>
-															<p><?php echo __('If enabled, a user is allowed to enter a target weight. This will be displayed as a horizontal bar on the line chart.', WE_LS_SLUG); ?></p>
+															<p><?php echo __('If enabled, a user is allowed to enter a target weight. This will always override the suggested target. This will be displayed as a horizontal bar on the line chart.', WE_LS_SLUG); ?></p>
 														</td>
 													</tr>
 												</table>
