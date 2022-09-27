@@ -125,17 +125,45 @@ function ws_ls_settings_page_generic() {
                                                 </table>
 												<h3><?php echo __( 'Target weights' , WE_LS_SLUG); ?></h3>
 												<table class="form-table">
+
 													<tr>
-														<th scope="row"><?php echo __( 'Allow user\'s to specify their own target weights?' , WE_LS_SLUG); ?></th>
+														<th scope="row"><?php echo __( 'Target weights enabled?' , WE_LS_SLUG); ?></th>
 														<td>
 															<?php
-															$target_weights = get_option( 'ws-ls-allow-targets', 'yes' );
+																$target_weights = get_option( 'ws-ls-allow-targets', 'yes' );
 															?>
 															<select id="ws-ls-allow-targets" name="ws-ls-allow-targets">
 																<option value="yes" <?php selected( $target_weights, 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG); ?></option>
 																<option value="no" <?php selected( $target_weights, 'no' ); ?>><?php echo __('No', WE_LS_SLUG); ?></option>
 															</select>
-															<p><?php echo __('If enabled, a user is allowed to enter a target weight. This will always override the suggested target. This will be displayed as a horizontal bar on the line chart.', WE_LS_SLUG); ?></p>
+															<p><?php echo __('If enabled, the user or Weight Tracker can specify target weights for the user. This will be displayed on line charts and within various screens/shortcodes.', WE_LS_SLUG); ?></p>
+														</td>
+													</tr>
+													<tr>
+														<th scope="row"><?php echo __( 'Allow Weight Tracker to calculate a user\'s suggested target weight?' , WE_LS_SLUG); ?></th>
+														<td>
+															<?php
+															$target_weights = get_option( 'ws-ls-allow-targets-suggested', 'no' );
+															?>
+															<select id="ws-ls-allow-suggested" name="ws-ls-allow-targets-suggested">
+																<option value="no" <?php selected( $target_weights, 'no' ); ?>><?php echo __('No', WE_LS_SLUG); ?></option>
+																<option value="yes" <?php selected( $target_weights, 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG); ?></option>
+															</select>
+															<p><?php echo __('If enabled, a suggested target weight shall be calculated for the user. This can be overridden by the user if the following option is set to Yes.', WE_LS_SLUG); ?></p>
+															<p><?php echo __( 'Formula used: Kg = 2.2 x BMI + (3.5 x BMI) x (Height in meters minus 1.5)' , WE_LS_SLUG); ?>. <?php echo ws_ls_calculations_link(); ?></p>
+														</td>
+													</tr>
+													<tr>
+														<th scope="row"><?php echo __( 'Allow user\'s to specify their own target weights?' , WE_LS_SLUG); ?></th>
+														<td>
+															<?php
+															$target_weights = get_option( 'ws-ls-allow-targets-user', 'yes' );
+															?>
+															<select id="ws-ls-allow-targets-user" name="ws-ls-allow-targets-user">
+																<option value="yes" <?php selected( $target_weights, 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG); ?></option>
+																<option value="no" <?php selected( $target_weights, 'no' ); ?>><?php echo __('No', WE_LS_SLUG); ?></option>
+															</select>
+															<p><?php echo __('If enabled, a user is allowed to enter a target weight. This will always override the suggested target.', WE_LS_SLUG); ?></p>
 														</td>
 													</tr>
 												</table>
@@ -1170,6 +1198,8 @@ function ws_ls_register_settings(){
 
     register_setting( 'we-ls-options-group', 'ws-ls-units' );
     register_setting( 'we-ls-options-group', 'ws-ls-allow-targets' );
+	register_setting( 'we-ls-options-group', 'ws-ls-allow-targets-suggested' );
+	register_setting( 'we-ls-options-group', 'ws-ls-allow-targets-user' );
 	register_setting( 'we-ls-options-group', 'ws-ls-caching' );
 	register_setting( 'we-ls-options-group', 'ws-ls-target-colour' );
     register_setting( 'we-ls-options-group', 'ws-ls-line-fill-colour' );
