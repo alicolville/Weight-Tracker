@@ -114,11 +114,3 @@ Below is an example Macronutrient table created for a user:
 This data is used to power [shortcodes]({{ site.baseurl }}/shortcodes.html)  such as [[wt-macronutrients]]({{ site.baseurl }}/shortcodes/wt-macronutrients.html) and [[wt-macronutrients-table]]({{ site.baseurl }}/shortcodes/wt-macronutrients-table.html).
 
 Sources:  [Be Strong](https://mybestrong.com/), [My Fitness Pal Blog](http://blog.myfitnesspal.com/ask-the-dietitian-whats-the-best-carb-protein-and-fat-breakdown-for-weight-loss/)  and [2010 Dietary Guidelines](https://health.gov/dietaryguidelines/2010/)
-
-## Suggested Target Weight
-
-Weight Tracker can calculate suggested target weights for user's based upon their BMI and height. The following formula is used:
-
-`Kg = 2.2 x BMI + (3.5 x BMI) x (Height in meters minus 1.5)`
-
-Sources: [Weight Tracker users](https://github.com/alicolville/Weight-Tracker/issues/502).
