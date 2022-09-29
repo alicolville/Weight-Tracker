@@ -22,7 +22,7 @@ function ws_ls_delete_data_for_user( $user_id = NULL ) {
 
 	    $user_id = ( NULL === $user_id ) ? get_current_user_id() : $user_id;
 
-        ws_ls_db_target_user_delete( $user_id );
+        ws_ls_db_target_delete( $user_id );
 
 	    ws_ls_db_entry_delete_all_for_user( $user_id );
 
@@ -254,7 +254,7 @@ function ws_ls_target_get( $user_id = NULL, $field = NULL ) {
 	$user_id 	= ( NULL === $user_id ) ? get_current_user_id() : $user_id;
 
 	$weight 	= NULL;
-	$kg 		= ws_ls_db_target_user_get( $user_id );
+	$kg 		= ws_ls_db_target_get( $user_id );
 
 	if ( false === empty( $kg ) ) {
 		$weight = ws_ls_weight_display( $kg );
