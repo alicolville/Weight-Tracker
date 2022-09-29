@@ -79,12 +79,12 @@ function ws_ls_form_post_handler_target( $user_id ) {
 
 	// If nothing specified, then delete existing target
 	if ( true === empty( $kg ) ) {
-		return ( false !== ws_ls_db_target_delete( $user_id ) );
+		return ( false !== ws_ls_db_target_user_delete( $user_id ) );
 	}
 
 	do_action( 'wlt-hook-data-added-edited', [ 'user-id' => $user_id, 'type' => 'target', 'mode' => 'update' ],  [ 'kg' => $kg ] );
 
-	return ( false !== ws_ls_db_target_set( $user_id, $kg ) );
+	return ( false !== ws_ls_db_target_user_set( $user_id, $kg ) );
 }
 
 /**

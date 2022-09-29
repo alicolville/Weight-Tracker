@@ -15,7 +15,7 @@ define( 'WE_LS_EMAIL_TABLENAME', 'WS_LS_EMAIL_TEMPLATES' );
  * @param $user_id
  * @return string|null
  */
-function ws_ls_db_target_get( $user_id ) {
+function ws_ls_db_target_user_get( $user_id ) {
 
 	if ( true === empty( $user_id ) ) {
 		return NULL;
@@ -42,7 +42,7 @@ function ws_ls_db_target_get( $user_id ) {
  * @param $user_id
  * @return bool
  */
-function ws_ls_db_target_delete( $user_id ) {
+function ws_ls_db_target_user_delete( $user_id ) {
 
 	global $wpdb;
 
@@ -62,7 +62,7 @@ function ws_ls_db_target_delete( $user_id ) {
  * @param $user_id
  * @param $kg
  */
-function ws_ls_db_target_set( $user_id, $kg ) {
+function ws_ls_db_target_user_set( $user_id, $kg ) {
 
 	if ( true === empty( $user_id ) || true === empty( $kg ) ) {
 		return false;
@@ -71,7 +71,7 @@ function ws_ls_db_target_set( $user_id, $kg ) {
 	global $wpdb;
 
 	// Does the user have an existing target?
-	$target_exist   = ( false === empty( ws_ls_db_target_get( $user_id ) ) );
+	$target_exist   = ( false === empty( ws_ls_db_target_user_get( $user_id ) ) );
 	$result         = false;
 	$table_name     = $wpdb->prefix . WE_LS_TARGETS_TABLENAME;
 
