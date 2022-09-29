@@ -813,21 +813,14 @@ function ws_meta_fields_value_get( $arguments ) {
 
 	return [ 'error' => false, 'value' => $value ];
 }
-
-function testing(){
-
-	$ids = ws_meta_fields_value_get( [ 'key' => 'cups-of-water-drank-today', 'which' => 'previous' ] );
-	var_Dump($ids);
-	die;
-
-}
-//add_action( 'admin_init', 'testing' );
-
 /*
  * TODO:
+ * update readme.text
+ * add docs
  *
- * 1) function to fetch latest custom field value
- * 2) function to fetch the first custom field
- * 3) function to fetch the previous
+ *
+ * [wt-custom-fields-latest slug="cups-of-water-drank-today"]
+[wt-custom-fields-previous slug="cups-of-water-drank-today"]
+[wt-custom-fields-oldest slug="cups-of-water-drank-today"]
  * 4) function to count number of entries
  */
