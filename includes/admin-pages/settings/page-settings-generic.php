@@ -123,23 +123,7 @@ function ws_ls_settings_page_generic() {
 														</td>
 													</tr>
                                                 </table>
-												<h3><?php echo __( 'Target weights' , WE_LS_SLUG); ?></h3>
-												<table class="form-table">
-													<tr>
-														<th scope="row"><?php echo __( 'Allow target weights?' , WE_LS_SLUG); ?></th>
-														<td>
-															<?php
-															$target_weights = get_option( 'ws-ls-allow-targets', 'yes' );
-															?>
-															<select id="ws-ls-allow-targets" name="ws-ls-allow-targets">
-																<option value="yes" <?php selected( $target_weights, 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG); ?></option>
-																<option value="no" <?php selected( $target_weights, 'no' ); ?>><?php echo __('No', WE_LS_SLUG); ?></option>
-															</select>
-															<p><?php echo __('If enabled, a user is allowed to enter a target weight. This will be displayed as a horizontal bar on the line chart.', WE_LS_SLUG); ?></p>
-														</td>
-													</tr>
-												</table>
-												<h3><?php echo __( 'User experience' , WE_LS_SLUG); ?></h3>
+                                                <h3><?php echo __( 'User experience' , WE_LS_SLUG); ?></h3>
                                                 <table class="form-table">
 													<tr>
 														<th scope="row"><?php echo __( 'Set default aim?' , WE_LS_SLUG); ?></th>
@@ -153,6 +137,19 @@ function ws_ls_settings_page_generic() {
 															<p><?php echo __('If enabled, you can specify the default aim when a user has not selected one.', WE_LS_SLUG); ?></p>
 														</td>
 													</tr>
+													<tr>
+                                                        <th scope="row"><?php echo __( 'Allow target weights?' , WE_LS_SLUG); ?></th>
+                                                        <td>
+	                                                        <?php
+	                                                            $target_weights = get_option( 'ws-ls-allow-targets', 'yes' );
+	                                                        ?>
+                                                            <select id="ws-ls-allow-targets" name="ws-ls-allow-targets">
+                                                                <option value="yes" <?php selected( $target_weights, 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG); ?></option>
+                                                                <option value="no" <?php selected( $target_weights, 'no' ); ?>><?php echo __('No', WE_LS_SLUG); ?></option>
+                                                            </select>
+                                                            <p><?php echo __('If enabled, a user is allowed to enter a target weight. This will be displayed as a horizontal bar on the line chart.', WE_LS_SLUG); ?></p>
+                                                        </td>
+                                                    </tr>
                                                     <tr class="<?php echo $disable_if_not_pro_class; ?>">
                                                         <th scope="row"><?php echo __( 'Display BMI in tables?' , WE_LS_SLUG); ?></th>
 														<?php
