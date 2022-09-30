@@ -813,14 +813,48 @@ function ws_meta_fields_value_get( $arguments ) {
 
 	return [ 'error' => false, 'value' => $value ];
 }
-/*
- * TODO:
- * update readme.text
- * add docs
+
+/**
+ * Fetch a count of how many times a custom field has been entered
+ * @param $arguments
  *
- *
- * [wt-custom-fields-latest slug="cups-of-water-drank-today"]
-[wt-custom-fields-previous slug="cups-of-water-drank-today"]
-[wt-custom-fields-oldest slug="cups-of-water-drank-today"]
- * 4) function to count number of entries
+ * @return array|bool|string[]|null
  */
+function ws_meta_fields_value_count( $arguments ) {
+
+	$arguments = wp_parse_args( $arguments, [ 'user-id'   => get_current_user_id(), 'key' => '' ] );
+
+	if ( true === empty( $arguments[ 'key' ] ) ) {
+		return [ 'error' => 'Missing key/slug' ];
+	}
+
+	$cache_key = 'custom-field-value-count-' . md5( json_encode( $arguments ) );
+
+	if ( $cache = ws_ls_cache_user_get( $arguments[ 'user-id' ], $cache_key ) ) {
+		return $cache;
+	}
+
+	// Convert slug to ID?
+	if ( false === is_numeric( $arguments[ 'key' ] ) ) {
+
+		$arguments[ 'key' ] = ws_ls_meta_fields_slug_to_id( $arguments[ 'key' ] );
+
+		if ( true === empty( $arguments[ 'key' ] ) ) {
+			return [ 'error' => 'Invalid slug' ];
+		}
+	}
+
+	global $wpdb;
+
+	$sql    =  $wpdb->prepare( 'SELECT count( e.value ) FROM ' . $wpdb->prefix . WE_LS_TABLENAME . ' d
+								INNER JOIN ' . $wpdb->prefix . WE_LS_MYSQL_META_ENTRY . ' e on e.entry_id = d.id
+								where e.meta_field_id = %d and d.weight_user_id = %d and e.value is not null and e.value <> \'\'',
+				$arguments[ 'key' ], $arguments[ 'user-id' ]
+	);
+
+	$value = $wpdb->get_var( $sql );
+
+	ws_ls_cache_user_set( $arguments[ 'user-id' ], $cache_key, $value );
+
+	return [ 'error' => false, 'value' => $value ];
+}

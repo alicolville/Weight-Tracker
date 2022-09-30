@@ -12,4 +12,4 @@ The following arguments are the most popular for this shortcode:
  
 | Argument | Description | Options | Example |
 |slug|Specify the slug of the [custom field]({{ site.baseurl }}/custom-fields.html) you wish to display the value for.|Text|[wt-custom-fields-oldest slug="cups-of-water"]
-|user-id|By default, the shortcode will save data against the current user. You can specify this argument to save the form data against another user ID.|Numeric| [wt-custom-fields-oldest user-id="1" slug="cups-of-water"]
+|user-id|By default, the shortcode will display data for the current user. You can specify this argument to display data for another user ID|Numeric| [wt-custom-fields-oldest user-id="1" slug="cups-of-water"]

@@ -156,6 +156,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 * New feature: Added the shortcode [wt-custom-fields-latest] for displaying the latest value of a custom field. https://docs.yeken.uk/shortcodes/wt-custom-fields-latest.html
 * New feature: Added the shortcode [wt-custom-fields-latest] for displaying the latest value of a custom field. https://docs.yeken.uk/shortcodes/wt-custom-fields-latest.html
 * New feature: Added the shortcode [wt-custom-fields-previous] for displaying the latest value of a custom field. https://docs.yeken.uk/shortcodes/wt-custom-fields-previous.html
+* New feature: Added the shortcode [wt-custom-fields-count] for displaying a count of how many times the given custom field has been entered. https://docs.yeken.uk/shortcodes/wt-custom-fields-previous.html
 * Improvement: General refactoring of code.
 * Improvement: Added "number-of-days" argument to [wt-reminder] shortcode. https://docs.yeken.uk/shortcodes/wt-reminder.html - See https://github.com/alicolville/Weight-Tracker/issues/268
 * Improvement: Added an option to display users from all groups on [wt-group-view-as-table] and in [wt-kiosk] mode. See https://github.com/alicolville/Weight-Tracker/issues/487.

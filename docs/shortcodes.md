@@ -19,6 +19,7 @@ The majority of the public facing functionality are implemented using [WordPress
 |[[wt-challenges-optin]]({{ site.baseurl }}/shortcodes/wt-challenges-optin.html)|Display buttons allow the using to opt in and out of [Challenges]({{ site.baseurl }}/challenges.html).|
 |[[wt-custom-fields-chart]]({{ site.baseurl }}/shortcodes/wt-custom-fields-chart.html)|Displays a chart of the user’s [custom field]({{ site.baseurl }}/custom-fields.html) entries.|
 |[[wt-custom-fields-form]]({{ site.baseurl }}/shortcodes/wt-custom-fields-form.html)|Displays a form for [custom fields]({{ site.baseurl }}/custom-fields.html) only.|
+|[[wt-custom-fields-count]]({{ site.baseurl }}/shortcodes/wt-custom-fields-count.html)|Displays a count for the given [custom field]({{ site.baseurl }}/custom-fields.html) .|
 |[[wt-custom-fields-latest]]({{ site.baseurl }}/shortcodes/wt-custom-fields-latest.html)|Displays the latest value for the given [custom field]({{ site.baseurl }}/custom-fields.html) .|
 |[[wt-custom-fields-oldest]]({{ site.baseurl }}/shortcodes/wt-custom-fields-oldest.html)|Displays the oldest value for the given [custom field]({{ site.baseurl }}/custom-fields.html) .|
 |[[wt-custom-fields-previous]]({{ site.baseurl }}/shortcodes/wt-custom-fields-previous.html)|Displays the previous value for the given [custom field]({{ site.baseurl }}/custom-fields.html) .|
