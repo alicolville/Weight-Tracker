@@ -156,8 +156,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 * New feature: Added the shortcode [wt-custom-fields-latest] for displaying the latest value of a custom field. https://docs.yeken.uk/shortcodes/wt-custom-fields-latest.html
 * New feature: Added the shortcode [wt-custom-fields-latest] for displaying the latest value of a custom field. https://docs.yeken.uk/shortcodes/wt-custom-fields-latest.html
 * New feature: Added the shortcode [wt-custom-fields-previous] for displaying the latest value of a custom field. https://docs.yeken.uk/shortcodes/wt-custom-fields-previous.html
-* New feature: Added the shortcode [wt-custom-fields-count] for displaying a count of how many times the given custom field has been entered. https://docs.yeken.uk/shortcodes/wt-custom-fields-previous.html
-* Improvement: General refactoring of code.
+* New feature: Added the shortcode [wt-custom-fields-count] for displaying a count of how many times the given custom field has been entered. https://docs.yeken.uk/shortcodes/wt-custom-fields-previous.html.
 * Improvement: Added "number-of-days" argument to [wt-reminder] shortcode. https://docs.yeken.uk/shortcodes/wt-reminder.html - See https://github.com/alicolville/Weight-Tracker/issues/268
 * Improvement: Added an option to display users from all groups on [wt-group-view-as-table] and in [wt-kiosk] mode. See https://github.com/alicolville/Weight-Tracker/issues/487.
 * Improvement: [wt-group-view-as-table] added new argument "default-to-users-group", if set to true, the table will default to logged in user's current group. See https://github.com/alicolville/Weight-Tracker/issues/510
@@ -166,6 +165,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 * Improvement: Added support for {first-name} and {last-name} tags within email notifications for notes. See https://github.com/alicolville/Weight-Tracker/issues/393
 * Improvement: Added {first-name} to initial email template for a new note (will need to be manually added if you installed WT pre this update). See https://github.com/alicolville/Weight-Tracker/issues/393
 * Improvement: Added a new option when exporting data, "All groups". Allows you to state to export data for users that are in any group. https://github.com/alicolville/Weight-Tracker/issues/510
+* Improvement: General refactoring of code
 * Bug fix: When exporting data, selecting "None" for group had no effect. This has now been fixed. See https://github.com/alicolville/Weight-Tracker/issues/480
 
 = 10.2.7 =
