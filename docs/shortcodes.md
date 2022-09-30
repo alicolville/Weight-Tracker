@@ -20,6 +20,7 @@ The majority of the public facing functionality are implemented using [WordPress
 |[[wt-custom-fields-chart]]({{ site.baseurl }}/shortcodes/wt-custom-fields-chart.html)|Displays a chart of the user’s [custom field]({{ site.baseurl }}/custom-fields.html) entries.|
 |[[wt-custom-fields-form]]({{ site.baseurl }}/shortcodes/wt-custom-fields-form.html)|Displays a form for [custom fields]({{ site.baseurl }}/custom-fields.html) only.|
 |[[wt-custom-fields-latest]]({{ site.baseurl }}/shortcodes/wt-custom-fields-latest.html)|Displays the latest value for the given [custom field]({{ site.baseurl }}/custom-fields.html) .|
+|[[wt-custom-fields-oldest]]({{ site.baseurl }}/shortcodes/wt-custom-fields-oldest.html)|Displays the oldest value for the given [custom field]({{ site.baseurl }}/custom-fields.html) .|
 |[[wt-custom-fields-table]]({{ site.baseurl }}/shortcodes/wt-custom-fields-table.html)|Displays a table of the user’s [custom field]({{ site.baseurl }}/custom-fields.html) entries.|
 |[[wt-custom-fields-accumulator]]({{ site.baseurl }}/shortcodes/wt-custom-fields-accumulator.html)|Allow user's to quickly increment a [custom field]({{ site.baseurl }}/custom-fields.html) value for today.|
 |[[wt-form]]({{ site.baseurl }}/shortcodes/wt-form.html)|Display a target or weight entry / [custom fields]({{ site.baseurl }}/custom-fields.html) form.|
