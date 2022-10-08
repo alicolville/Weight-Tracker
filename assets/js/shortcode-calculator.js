@@ -10,10 +10,12 @@
     let form_id   = form.attr('id');
     let is_valid  = true;
     let data      = { 'unit' : form.data( 'unit' ) };
-    let action    = 'ws_ls_bmi_calculator';
+    let action    = form.data( 'action' );
 
     // Validate form and build data object for ajax call
     $( '#' + form_id + ' .ykuk-input' ).each( function() {
+
+      console.log($(this).attr('id'));
 
       if ( $(this).val() === '' ) {
 

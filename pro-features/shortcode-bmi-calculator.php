@@ -37,7 +37,7 @@ function ws_ls_bmi_calculator( $user_defined_arguments ) {
 
 	$html .= sprintf( '<ul class="ykuk-switcher ykuk-margin" >
 						<li>
-							<form id="ws-ls-bmi-calc-metric" class="ykuk-form-horizontal ykuk-margin-large form-calculate" data-unit="metric">
+							<form id="ws-ls-bmi-calc-metric" class="ykuk-form-horizontal ykuk-margin-large form-calculate" data-unit="metric" data-action="ws_ls_bmi_calculator">
 								<div class="ykuk-hidden bmi-alert" ykuk-alert></div>
 							    <div class="ykuk-margin">
 							        <label class="ykuk-form-label" for="form-horizontal-text">%1$s</label>
@@ -61,7 +61,7 @@ function ws_ls_bmi_calculator( $user_defined_arguments ) {
 							</form>
 						</li>
 						<li>
-							<form id="ws-ls-bmi-calc-imperial" class="ykuk-form-horizontal ykuk-margin-large form-calculate" data-unit="imperial">
+							<form id="ws-ls-bmi-calc-imperial" class="ykuk-form-horizontal ykuk-margin-large form-calculate" data-unit="imperial" data-action="ws_ls_bmi_calculator">
 								<div class="ykuk-hidden bmi-alert" ykuk-alert>
 								    <p></p>
 								</div>
