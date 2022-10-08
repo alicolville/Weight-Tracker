@@ -135,6 +135,7 @@ require_once( WS_LS_ABSPATH . 'pro-features/shortcode-reminders.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/shortcode-progress-bar.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/shortcode-messages.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/shortcode-bmi-calculator.php' );
+require_once( WS_LS_ABSPATH . 'pro-features/shortcode-hip-waist-ratio-calculator.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/shortcode-if.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/plus/shortcode.wlt.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/plus/photos.php' );

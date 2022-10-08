@@ -15,8 +15,6 @@
     // Validate form and build data object for ajax call
     $( '#' + form_id + ' .ykuk-input' ).each( function() {
 
-      console.log($(this).attr('id'));
-
       if ( $(this).val() === '' ) {
 
         $(this).addClass( 'ykuk-form-danger' );
