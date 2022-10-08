@@ -18,13 +18,13 @@ function ws_ls_bmi_calculator( $user_defined_arguments ) {
 									'user-id'					=> get_current_user_id() ],
 	$user_defined_arguments );
 
-	ws_ls_enqueue_uikit( ! $arguments[ 'disable-theme-css' ], ! $arguments[ 'disable-main-font' ], 'bmi-calculator' );
+	ws_ls_enqueue_uikit( ! $arguments[ 'disable-theme-css' ], ! $arguments[ 'disable-main-font' ], 'shortcode-calculator' );
 
 	if ( false === WS_LS_IS_PRO_PLUS ) {
 		return ws_ls_display_pro_upgrade_notice_for_shortcode( true );
 	}
 
-	wp_localize_script( 'yk-uikit-bmi-calculator', 'ws_ls_bmi_calc_config', ws_ls_bmi_calculator_js_config() );
+	wp_localize_script( 'yk-uikit-shortcode-calculator', 'ws_ls_calc_config', ws_ls_calculator_js_config() );
 
 	$html = '<div class="ws-ls-bmi-calculator ws-ls-tracker-force-font">
 				';
@@ -37,7 +37,7 @@ function ws_ls_bmi_calculator( $user_defined_arguments ) {
 
 	$html .= sprintf( '<ul class="ykuk-switcher ykuk-margin" >
 						<li>
-							<form id="ws-ls-bmi-calc-metric" class="ykuk-form-horizontal ykuk-margin-large form-calculate-bmi" data-unit="metric">
+							<form id="ws-ls-bmi-calc-metric" class="ykuk-form-horizontal ykuk-margin-large form-calculate" data-unit="metric">
 								<div class="ykuk-hidden bmi-alert" ykuk-alert></div>
 							    <div class="ykuk-margin">
 							        <label class="ykuk-form-label" for="form-horizontal-text">%1$s</label>
@@ -56,12 +56,12 @@ function ws_ls_bmi_calculator( $user_defined_arguments ) {
 							        </div>
 							    </div>
 							    <div class="ykuk-margin">
-							        <button type="button" class="button-calculate-bmi ykuk-button ykuk-button-default">%5$s</button>
+							        <button type="button" class="button-calculate ykuk-button ykuk-button-default">%5$s</button>
 							    </div>
 							</form>
 						</li>
 						<li>
-							<form id="ws-ls-bmi-calc-imperial" class="ykuk-form-horizontal ykuk-margin-large form-calculate-bmi" data-unit="imperial">
+							<form id="ws-ls-bmi-calc-imperial" class="ykuk-form-horizontal ykuk-margin-large form-calculate" data-unit="imperial">
 								<div class="ykuk-hidden bmi-alert" ykuk-alert>
 								    <p></p>
 								</div>
@@ -88,7 +88,7 @@ function ws_ls_bmi_calculator( $user_defined_arguments ) {
 							        </div>
 							    </div>
 							    <div class="ykuk-margin">
-							        <button type="button" class="button-calculate-bmi ykuk-button ykuk-button-default">%5$s</button>
+							        <button type="button" class="button-calculate ykuk-button ykuk-button-default">%5$s</button>
 							    </div>
 							</form>
 						</li>',
@@ -113,7 +113,7 @@ add_shortcode( 'wt-bmi-calculator', 'ws_ls_bmi_calculator' );
 /**
  * JS config for shortcodes
  */
-function ws_ls_bmi_calculator_js_config() {
+function ws_ls_calculator_js_config() {
 	return [ 'ajax-security-nonce'  => wp_create_nonce( 'ws-ls-nonce' ),
 	         'ajax-url'             => admin_url( 'admin-ajax.php' )
 	];

@@ -2,7 +2,7 @@
 
   'use strict';
 
-  $( '.form-calculate-bmi .button-calculate-bmi' ).click( function( event ) {
+  $( '.form-calculate .button-calculate' ).click( function( event ) {
 
     event.preventDefault();
 
@@ -10,6 +10,7 @@
     let form_id   = form.attr('id');
     let is_valid  = true;
     let data      = { 'unit' : form.data( 'unit' ) };
+    let action    = 'ws_ls_bmi_calculator';
 
     // Validate form and build data object for ajax call
     $( '#' + form_id + ' .ykuk-input' ).each( function() {
@@ -30,10 +31,10 @@
 
     if ( true === is_valid ) {
 
-      data[ 'action' ]    = 'ws_ls_bmi_calculator';
-      data[ 'security' ]  = ws_ls_bmi_calc_config['ajax-security-nonce'];
+      data[ 'action' ]    = action;
+      data[ 'security' ]  = ws_ls_calc_config['ajax-security-nonce'];
 
-      $.post( ws_ls_bmi_calc_config[ 'ajax-url' ], data, function ( response ) {
+      $.post( ws_ls_calc_config[ 'ajax-url' ], data, function ( response ) {
 
           let alert =  $( '#' + form_id + ' .bmi-alert' );
 
