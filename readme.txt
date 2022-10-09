@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight,tracker,chart,bmi,bmr,macronutrient,measure,awards,custom fields,history,measurements,data
 Requires at least: 5.7
 Tested up to: 6.0.2
-Stable tag: 10.2.7
+Stable tag: 10.3
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -152,8 +152,6 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 == Changelog ==
 
 = 10.3 =
-
-TODO: minifiy caclualtor js
 
 * New feature: Added the shortcode [wt-waist-to-hip-ratio-calculator] which renders a hip-to-waist ratio calculator. https://docs.yeken.uk/shortcodes/wt-waist-to-hip-ratio-calculator.html
 * New feature: [wt-beta] has now replaced the older version. So [wt] contains the new functionality, the older shortcode can still be used (for now) by using the shortcode [wt-legacy] https://docs.yeken.uk/shortcodes/wt-legacy.html
