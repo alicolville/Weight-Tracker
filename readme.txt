@@ -43,6 +43,7 @@ For further information read our documentation:
 * **Additional user preference fields**. Additional user preference fields and shortcodes to display them: Activity Level, Date of Birth and Gender.
 * **Awards**. Awards and Badges! Set awards for: BMI Change, BMI Equals, Weight Gain / Loss from start and Percentage of weight lost from start.
 * **BMI Calculator**. A shortcode to display a BMI calculator [wt-bmi-calculator].
+* **Waist-to-Hip ratio Calculator**. A shortcode to display a BMI calculator [wt-waist-to-hip-ratio-calculator].
 
 [Read more about features](https://weight.yeken.uk/features/ "Read more about features")
 
