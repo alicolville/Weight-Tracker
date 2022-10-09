@@ -161,6 +161,7 @@ TODO: minifiy caclualtor js
 * New feature: Added the shortcode [wt-custom-fields-latest] for displaying the latest value of a custom field. https://docs.yeken.uk/shortcodes/wt-custom-fields-latest.html
 * New feature: Added the shortcode [wt-custom-fields-previous] for displaying the latest value of a custom field. https://docs.yeken.uk/shortcodes/wt-custom-fields-previous.html
 * New feature: Added the shortcode [wt-custom-fields-count] for displaying a count of how many times the given custom field has been entered. https://docs.yeken.uk/shortcodes/wt-custom-fields-previous.html.
+* Improvement: Added the following fields to web hooks: 'weight-previous-kg', 'weight-previous-display', 'weight-difference-latest-previous-kg' and 'weight-difference-latest-previous-display' - See https://github.com/alicolville/Weight-Tracker/issues/517
 * Improvement: Added "number-of-days" argument to [wt-reminder] shortcode. https://docs.yeken.uk/shortcodes/wt-reminder.html - See https://github.com/alicolville/Weight-Tracker/issues/268
 * Improvement: Added an option to display users from all groups on [wt-group-view-as-table] and in [wt-kiosk] mode. See https://github.com/alicolville/Weight-Tracker/issues/487.
 * Improvement: [wt-group-view-as-table] added new argument "default-to-users-group", if set to true, the table will default to logged in user's current group. See https://github.com/alicolville/Weight-Tracker/issues/510
