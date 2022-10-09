@@ -152,7 +152,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 = 10.3 =
 
-TODO: write docs for: wt-waist-to-hip-ratio-calculator
+TODO: minifiy caclualtor js
 
 * New feature: Added the shortcode [wt-waist-to-hip-ratio-calculator] which renders a hip-to-waist ratio calculator. https://docs.yeken.uk/shortcodes/wt-waist-to-hip-ratio-calculator.html
 * New feature: [wt-beta] has now replaced the older version. So [wt] contains the new functionality, the older shortcode can still be used (for now) by using the shortcode [wt-legacy] https://docs.yeken.uk/shortcodes/wt-legacy.html

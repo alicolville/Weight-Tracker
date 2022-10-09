@@ -1,7 +1,5 @@
 ## [wt-bmi-calculator] 
-
-This is the most popular shortcode for the Weight Tracker plugin and displays upto four sections / tabs when a user is logged into WordPress.    
-    
+ 
 > The following shortcode is only available in the [Pro Plus]({{ site.baseurl }}/features.html) version of the plugin.
  
 **Overview** 
