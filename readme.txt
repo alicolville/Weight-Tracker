@@ -171,6 +171,11 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 * Improvement: General refactoring of code
 * Bug fix: When exporting data, selecting "None" for group had no effect. This has now been fixed. See https://github.com/alicolville/Weight-Tracker/issues/480
 
+= 10.2.8 =
+
+* Improvement: Show an "Editing [Name]" message when a user is selected in Kiosk mode.
+* Improvement: New argument for [wt-beta], "kiosk-hide-editing-name", to hide "Editing [Name]" message.
+
 = 10.2.7 =
 
 * Bug fix: Corrected issue where notifications aren't shown in Kiosk mode.

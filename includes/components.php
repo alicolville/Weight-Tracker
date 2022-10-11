@@ -850,13 +850,7 @@ function ws_ls_component_name_and_email( $args = [] ) {
 
 	$args       = wp_parse_args( $args, [ 'user-id' => get_current_user_id() ] );
 	$user       = get_user_by( 'id', $args[ 'user-id' ] );
-	$name       = sprintf( '%s %s', get_user_meta( $args[ 'user-id' ], 'first_name', true ), get_user_meta( $args[ 'user-id' ], 'last_name', true ) );
-
-	if ( true === empty( $name ) || ' ' == $name ) {
-		$name = $user->user_nicename;
-	} else {
-		$name = sprintf( '%s (%s)', $name, $user->user_nicename );
-	}
+	$name       = ws_ls_user_get_name( $args[ 'user-id' ] );
 
 	return sprintf( '<div>
 	                        <div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small ykuk-overflow-auto">

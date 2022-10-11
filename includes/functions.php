@@ -1710,3 +1710,23 @@ function ws_ls_delete_user_data( $user_id, $kiosk_mode = false ) {
 	}
 
 }
+
+/**
+ * Fetch a user's display name
+ * @param $user_id
+ *
+ * @return string
+ */
+function ws_ls_user_get_name( $user_id ) {
+
+	$user   = get_user_by( 'id', $user_id );
+	$name 	= sprintf( '%s %s', get_user_meta( $user_id, 'first_name', true ), get_user_meta( $user_id, 'last_name', true ) );
+
+	if ( true === empty( $name ) || ' ' == $name ) {
+		$name = $user->user_nicename;
+	} else {
+		$name = sprintf( '%s (%s)', $name, $user->user_nicename );
+	}
+
+	return $name;
+}
