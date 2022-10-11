@@ -21,11 +21,6 @@ function ws_ls_has_a_valid_license() {
 		return $license_type;
 	}
 
-	// Do we have a valid old Pro license?
-	if(ws_ls_has_a_valid_old_pro_license()) {
-		return 'pro-old';
-	}
-
     return false;
 }
 
@@ -344,9 +339,6 @@ function ws_ls_license_display_name($license = false) {
         switch ($license) {
             case 'pro':
                 $return_value = __('Yearly Pro', WE_LS_SLUG);
-                break;
-            case 'pro-old':
-                $return_value = __('Legacy Pro', WE_LS_SLUG);
                 break;
             case 'pro-plus':
                 $return_value = __('Pro Plus', WE_LS_SLUG);

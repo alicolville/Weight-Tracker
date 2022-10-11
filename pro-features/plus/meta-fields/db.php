@@ -761,3 +761,100 @@ function ws_ls_meta_fields_group_field_ids( $groups = [] ) {
 
 	return $results;
 }
+
+/**
+ * Function to look up the latest/oldest/previous value for a custom field
+ * @param $arguments
+ *
+ * @return array|bool|string[]|null
+ */
+function ws_meta_fields_value_get( $arguments ) {
+
+	$arguments = wp_parse_args( $arguments, [   'user-id'   => get_current_user_id(),
+	                                            'which'     => 'latest',                // 'oldest' / 'latest' / 'previous'
+	                                            'key'       => ''
+	] );
+
+	if ( true === empty( $arguments[ 'key' ] ) ) {
+		return [ 'error' => 'Missing key/slug' ];
+	}
+
+	$cache_key = 'custom-field-value-' . md5( json_encode( $arguments ) );
+
+	if ( $cache = ws_ls_cache_user_get( $arguments[ 'user-id' ], $cache_key ) ) {
+		return $cache;
+	}
+
+	// Convert slug to ID?
+	if ( false === is_numeric( $arguments[ 'key' ] ) ) {
+
+		$arguments[ 'key' ] = ws_ls_meta_fields_slug_to_id( $arguments[ 'key' ] );
+
+		if ( true === empty( $arguments[ 'key' ] ) ) {
+			return [ 'error' => 'Invalid slug' ];
+		}
+	}
+
+	$sort_order = ( 'oldest' === $arguments[ 'which' ] ) ?  'asc' : 'desc';
+	$limit      = ( 'previous' === $arguments[ 'which' ] ) ? ' limit 1, 1' : ' limit 0, 1';
+
+	global $wpdb;
+
+	$sql    =  $wpdb->prepare( 'SELECT e.value FROM ' . $wpdb->prefix . WE_LS_TABLENAME . ' d
+								INNER JOIN ' . $wpdb->prefix . WE_LS_MYSQL_META_ENTRY . ' e on e.entry_id = d.id
+								where e.meta_field_id = %d and d.weight_user_id = %d and e.value is not null and e.value <> \'\'
+								order by weight_date ' . $sort_order  . $limit,
+								$arguments[ 'key' ], $arguments[ 'user-id' ]
+	);
+
+	$value = $wpdb->get_var( $sql );
+
+	ws_ls_cache_user_set( $arguments[ 'user-id' ], $cache_key, $value );
+
+	return [ 'error' => false, 'value' => $value ];
+}
+
+/**
+ * Fetch a count of how many times a custom field has been entered
+ * @param $arguments
+ *
+ * @return array|bool|string[]|null
+ */
+function ws_meta_fields_value_count( $arguments ) {
+
+	$arguments = wp_parse_args( $arguments, [ 'user-id'   => get_current_user_id(), 'key' => '' ] );
+
+	if ( true === empty( $arguments[ 'key' ] ) ) {
+		return [ 'error' => 'Missing key/slug' ];
+	}
+
+	$cache_key = 'custom-field-value-count-' . md5( json_encode( $arguments ) );
+
+	if ( $cache = ws_ls_cache_user_get( $arguments[ 'user-id' ], $cache_key ) ) {
+		return $cache;
+	}
+
+	// Convert slug to ID?
+	if ( false === is_numeric( $arguments[ 'key' ] ) ) {
+
+		$arguments[ 'key' ] = ws_ls_meta_fields_slug_to_id( $arguments[ 'key' ] );
+
+		if ( true === empty( $arguments[ 'key' ] ) ) {
+			return [ 'error' => 'Invalid slug' ];
+		}
+	}
+
+	global $wpdb;
+
+	$sql    =  $wpdb->prepare( 'SELECT count( e.value ) FROM ' . $wpdb->prefix . WE_LS_TABLENAME . ' d
+								INNER JOIN ' . $wpdb->prefix . WE_LS_MYSQL_META_ENTRY . ' e on e.entry_id = d.id
+								where e.meta_field_id = %d and d.weight_user_id = %d and e.value is not null and e.value <> \'\'',
+				$arguments[ 'key' ], $arguments[ 'user-id' ]
+	);
+
+	$value = $wpdb->get_var( $sql );
+
+	ws_ls_cache_user_set( $arguments[ 'user-id' ], $cache_key, $value );
+
+	return [ 'error' => false, 'value' => $value ];
+}

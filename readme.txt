@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight,tracker,chart,bmi,bmr,macronutrient,measure,awards,custom fields,history,measurements,data
 Requires at least: 5.7
 Tested up to: 6.0.2
-Stable tag: 10.2.8
+Stable tag: 10.3
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -43,6 +43,7 @@ For further information read our documentation:
 * **Additional user preference fields**. Additional user preference fields and shortcodes to display them: Activity Level, Date of Birth and Gender.
 * **Awards**. Awards and Badges! Set awards for: BMI Change, BMI Equals, Weight Gain / Loss from start and Percentage of weight lost from start.
 * **BMI Calculator**. A shortcode to display a BMI calculator [wt-bmi-calculator].
+* **Waist-to-Hip ratio Calculator**. A shortcode to display a BMI calculator [wt-waist-to-hip-ratio-calculator].
 
 [Read more about features](https://weight.yeken.uk/features/ "Read more about features")
 
@@ -149,6 +150,26 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 10.2 - "Kiosk Mode" for [wt-beta]!
 
 == Changelog ==
+
+= 10.3 =
+
+* New feature: Added the shortcode [wt-waist-to-hip-ratio-calculator] which renders a hip-to-waist ratio calculator. https://docs.yeken.uk/shortcodes/wt-waist-to-hip-ratio-calculator.html
+* New feature: [wt-beta] has now replaced the older version. So [wt] contains the new functionality, the older shortcode can still be used (for now) by using the shortcode [wt-legacy] https://docs.yeken.uk/shortcodes/wt-legacy.html
+* New feature: Added the shortcode [wt-custom-fields-latest] for displaying the latest value of a custom field. https://docs.yeken.uk/shortcodes/wt-custom-fields-latest.html
+* New feature: Added the shortcode [wt-custom-fields-latest] for displaying the latest value of a custom field. https://docs.yeken.uk/shortcodes/wt-custom-fields-latest.html
+* New feature: Added the shortcode [wt-custom-fields-previous] for displaying the latest value of a custom field. https://docs.yeken.uk/shortcodes/wt-custom-fields-previous.html
+* New feature: Added the shortcode [wt-custom-fields-count] for displaying a count of how many times the given custom field has been entered. https://docs.yeken.uk/shortcodes/wt-custom-fields-previous.html.
+* Improvement: Added the following fields to web hooks: 'weight-previous-kg', 'weight-previous-display', 'weight-difference-latest-previous-kg' and 'weight-difference-latest-previous-display' - See https://github.com/alicolville/Weight-Tracker/issues/517
+* Improvement: Added "number-of-days" argument to [wt-reminder] shortcode. https://docs.yeken.uk/shortcodes/wt-reminder.html - See https://github.com/alicolville/Weight-Tracker/issues/268
+* Improvement: Added an option to display users from all groups on [wt-group-view-as-table] and in [wt-kiosk] mode. See https://github.com/alicolville/Weight-Tracker/issues/487.
+* Improvement: [wt-group-view-as-table] added new argument "default-to-users-group", if set to true, the table will default to logged in user's current group. See https://github.com/alicolville/Weight-Tracker/issues/510
+* Improvement: Added "Diff. from Start Weight" column to search results within admin. See https://github.com/alicolville/Weight-Tracker/issues/473
+* Improvement: Added limited support for shortcodes within notes. See https://github.com/alicolville/Weight-Tracker/issues/393
+* Improvement: Added support for {first-name} and {last-name} tags within email notifications for notes. See https://github.com/alicolville/Weight-Tracker/issues/393
+* Improvement: Added {first-name} to initial email template for a new note (will need to be manually added if you installed WT pre this update). See https://github.com/alicolville/Weight-Tracker/issues/393
+* Improvement: Added a new option when exporting data, "All groups". Allows you to state to export data for users that are in any group. https://github.com/alicolville/Weight-Tracker/issues/510
+* Improvement: General refactoring of code
+* Bug fix: When exporting data, selecting "None" for group had no effect. This has now been fixed. See https://github.com/alicolville/Weight-Tracker/issues/480
 
 = 10.2.8 =
 

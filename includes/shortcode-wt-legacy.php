@@ -11,7 +11,7 @@ $ws_ls_wlt_already_placed   = false;
  * @return string
  * @throws Exception
  */
-function ws_ls_shortcode( $user_defined_arguments ) {
+function ws_ls_shortcode_wt_legacy( $user_defined_arguments ) {
 
 	global $save_response;
 	global $ws_ls_wlt_already_placed;
@@ -60,7 +60,7 @@ function ws_ls_shortcode( $user_defined_arguments ) {
 	$shortcode_arguments[ 'min-chart-points' ]  = (int) $shortcode_arguments[ 'min-chart-points' ];
     $html_output                                = '';
 
-	$html_output .= ws_ls_wt_beta_upgrade_notice();
+	$html_output .= ws_ls_wt_legacy_notice();
 
 	// If a form was previously submitted then display resulting message!
 	if ( false === empty( $save_response[ 'message' ] ) ){
@@ -282,8 +282,8 @@ function ws_ls_shortcode( $user_defined_arguments ) {
 	return $html_output;
 
 }
-add_shortcode( 'wlt', 'ws_ls_shortcode' );
-add_shortcode( 'wt', 'ws_ls_shortcode' );
+add_shortcode( 'wlt', 'ws_ls_shortcode_wt_legacy' );
+add_shortcode( 'wt-legacy', 'ws_ls_shortcode_wt_legacy' );
 
 /**
  * Embed Chart
@@ -381,34 +381,20 @@ function ws_ls_title( $title_text ) {
  * Display a notice about it being beta
  * @return string
  */
-function ws_ls_wt_beta_upgrade_notice() {
+function ws_ls_wt_legacy_notice() {
 
 	if ( !current_user_can( 'manage_options' ) )  {
 		return '';
 	}
-
-	$key = 'ws-ls-wt-upgrade-notice';
-
-	if ( 'y' === ws_ls_querystring_value( $key ) ) {
-		update_option( $key, 'n' );
-	}
-
-	if ( 'n' === get_option( $key, 'y' ) ) {
-		return '';
-	}
-
-	$link = ws_ls_get_url();
-
-	$link = add_query_arg($key, 'y', $link );
 
 	$message = '<p>
 					<strong>
 						Note: Only administrators can see this message.
 					</strong>
 				</p>
-			    <p>This shortcode, [wt] will be replaced in the near future with a modern replacement. To test that the newer version works smoothly with your website, we have released a beta. You can test this beta by placing the shortcode [wt-beta]. Read more:</p>
-			    <p><a href="https://docs.yeken.uk/shortcodes/wt-beta.html" target="_blank" rel="noopener">https://docs.yeken.uk/shortcodes/wt-beta.html</a>.</p>
+			    <p>This shortcode, [wt-legacy] will soon be deprecated and removed from the plugin. Please switch to [wt]. Read more:</p>
+			    <p><a href="https://docs.yeken.uk/shortcodes/wt.html" target="_blank" rel="noopener">https://docs.yeken.uk/shortcodes/wt.html</a>.</p>
 ';
 
-	return ws_ls_blockquote_success( $message );
+	return ws_ls_blockquote_error( $message );
 }

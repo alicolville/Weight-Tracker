@@ -57,7 +57,7 @@ function ws_ls_note_email_activate() {
 		// Insert the notification template
 		if ( false === ws_ls_emailer_get('note-added') ) {
 
-			$email = sprintf( '<p>%s,</p>', __( 'Hello' , WE_LS_SLUG) );
+			$email = sprintf( '<p>%s {first-name},</p>', __( 'Hello' , WE_LS_SLUG) );
 			$email .= __( '<p><strong>A new note has been sent to you from {name}:</strong></p>' , WE_LS_SLUG);
 			$email .= __( '<p>{data}</p>' , WE_LS_SLUG) . PHP_EOL . PHP_EOL;
 

@@ -86,8 +86,8 @@ function ws_ls_db_export_identify_weight_entries( $export_id ) {
 	$where = [];
 
 	// User Group
-	if ( false === empty( $options[ 'user-group' ] ) ) {
-		$where[] = sprintf( 'weight_user_id in ( select user_id from ' . $wpdb->prefix . WE_LS_MYSQL_GROUPS_USER . ' where group_id = %d )', $options[ 'user-group' ] );
+	if ( true === isset( $options[ 'user-group' ] ) && -1 !== (int) $options[ 'user-group' ] ) {
+		$where[] = sprintf( 'weight_user_id in ( select user_id from ' . $wpdb->prefix . WE_LS_MYSQL_GROUPS_USER . ' where group_id = %d )', (int) $options[ 'user-group' ] );
 	}
 
 	// User ID

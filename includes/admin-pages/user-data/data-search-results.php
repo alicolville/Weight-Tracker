@@ -46,6 +46,7 @@ function ws_ls_admin_page_search_results() {
                                             <th><?php echo __( 'Start Weight', WE_LS_SLUG ) ?></th>
                                             <th><?php echo __( 'Latest Weight', WE_LS_SLUG ) ?></th>
 	                                        <th><?php echo __( 'Target Weight', WE_LS_SLUG ) ?></th>
+											<th><?php echo __( 'Diff. from Start Weight', WE_LS_SLUG ) ?></th>
                                         </tr>
                                         <?php
                                             foreach ( $search_results as $user ) {
@@ -92,6 +93,7 @@ function ws_ls_search_row( $user, $class = '') {
                             <td><a href="%2$s">%5$s</a></td>
                             <td>%6$s</td>
                             <td>%7$s</td>
+                            <td>%8$s</td>
                         </tr>',
             esc_attr( $class ),
             ws_ls_get_link_to_user_profile( $user->data->ID ),
@@ -99,6 +101,7 @@ function ws_ls_search_row( $user, $class = '') {
             esc_attr( $user->data->user_email ),
             ws_ls_shortcode_start_weight( $user->data->ID ),
             ws_ls_shortcode_recent_weight( $user->data->ID ),
-	        ws_ls_target_get( $user->data->ID, 'display' )
+	        ws_ls_target_get( $user->data->ID, 'display' ),
+			ws_ls_shortcode_difference_in_weight_from_oldest( $user->data->ID )
     );
  }

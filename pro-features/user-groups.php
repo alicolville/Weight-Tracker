@@ -182,14 +182,10 @@ function ws_ls_groups_hooks_user_preferences_save( $user_id, $is_admin, $fields 
 
 	$group_id = ws_ls_post_value('ws-ls-group');
 
-	if ( false === empty( $group_id ) ) {
-		ws_ls_groups_add_to_user( (int) $group_id, (int) $user_id );
-		ws_ls_cache_user_delete( 'groups-user-for-given' );
-	} else if ( '0' === $group_id ) {
-		ws_ls_groups_remove_all_from_user( $user_id );
+	ws_ls_groups_add_to_user( (int) $group_id, (int) $user_id );
 
-		ws_ls_cache_user_delete( $user_id );
-	}
+	ws_ls_cache_user_delete( $user_id );
+	ws_ls_cache_user_delete( 'groups-user-for-given' );
 }
 add_action( 'ws-ls-hook-user-preference-save',  'ws_ls_groups_hooks_user_preferences_save', 10, 3 );
 
@@ -429,12 +425,14 @@ function ws_ls_groups_user_tidy_up( $group_id ) {
 add_action( 'wlt-group-deleting', 'ws_ls_groups_user_tidy_up' );
 
 /**
-* Fetch all groups
-*
-* @param bool $include_none
-* @return array
-*/
-function ws_ls_groups( $include_none = true ) {
+ * Fetch all groups
+ *
+ * @param bool $include_none
+ * @param bool $include_all_groups
+ *
+ * @return array
+ */
+function ws_ls_groups( $include_none = true, $include_all_groups = false ) {
 
 	global $wpdb;
 
@@ -449,7 +447,11 @@ function ws_ls_groups( $include_none = true ) {
 	$data = $wpdb->get_results( $sql , ARRAY_A );
 
 	if ( true === $include_none ) {
-		$data = array_merge( [ [ 'id' => 0, 'name' => __('None', WE_LS_SLUG ) ] ], $data );
+		$data = array_merge( [ [ 'id' => 0, 'name' => __('No Group', WE_LS_SLUG ) ] ], $data );
+	}
+
+	if ( true === $include_all_groups ) {
+		$data = array_merge( [ [ 'id' => -1, 'name' => __('All Groups', WE_LS_SLUG ) ] ], $data );
 	}
 
 	ws_ls_cache_user_set( 'groups', $cache_key , $data );
@@ -546,6 +548,8 @@ function ws_ls_groups_export_add( $row ) {
 
     if ( false === empty( $group[ 0 ][ 'name' ] ) ) {
         $row[ 'group' ] = $group[ 0 ][ 'name' ];
+    } else {
+	    $row[ 'group' ] = __( 'No Group', WE_LS_SLUG );
     }
 
     return $row;
@@ -601,7 +605,9 @@ function ws_ls_groups_users_for_given_group( $group_id, $with_entry_date = NULL 
 		$where[]    = $wpdb->prepare( 'entries.weight_date = %s', $with_entry_date );
 	}
 
-	$where[] = 'u.group_id = ' . (int) $group_id;
+	if ( -1 !== (int) $group_id ) {
+		$where[] = 'u.group_id = ' . (int) $group_id;
+	}
 
 	$sql    .= ' where ' . implode( ' and ', $where );
 
@@ -614,6 +620,23 @@ function ws_ls_groups_users_for_given_group( $group_id, $with_entry_date = NULL 
 	ws_ls_cache_user_set( $cache_key, $group_id, $data, $cache_time );
 
 	return $data;
+}
+
+/**
+ * Fetch user IDs for all user's that don't have a group record
+ *
+ * Note:    This is a one off helper function, it's isn't aimed at identifying users that have 0 for their group. This is to detect
+ *          all users that have no row wp_WS_LS_GROUPS_USER. This function was used in an upgrade script so we could add a row for all users (set to 0)
+ *          for those that didn't currently have a group assigned. This was to make things easier when querying for users that don't have a group
+ *          (to save checking for a 0 or a missing row)
+ *
+ * @return array
+ */
+function ws_ls_groups_get_users_with_no_group() {
+
+	global $wpdb;
+
+	return $wpdb->get_col( 'Select ID from ' . $wpdb->prefix . WE_LS_TABLENAME . ' where ID not in ( SELECT distinct `user_id` FROM ' . $wpdb->prefix . WE_LS_MYSQL_GROUPS_USER . ' )' );
 }
 
 /**
@@ -885,7 +908,8 @@ function ws_ls_groups_view_as_table( $user_defined_arguments ) {
 		return ws_ls_display_pro_upgrade_notice_for_shortcode();
 	}
 
-	$arguments = shortcode_atts( [  'disable-theme-css'         => false,
+	$arguments = shortcode_atts( [  'default-to-users-group'    => false,
+									'disable-theme-css'         => false,
 	                                'disable-main-font'         => false,
 	                                'group-id'                  => NULL,
 	                                'enable-group-select'       => true,
@@ -907,3 +931,37 @@ function ws_ls_groups_link_to_page( $group_id ) {
 
 	return esc_url( $url );
 }
+
+/**
+ * Hooked on to admin_init, this will add a row for each user to the groups table.
+ */
+function ws_ls_groups_fix_set_no_group() {
+
+	if( false === update_option( 'ws-ls-group-add-missing-group-row', WE_LS_CURRENT_VERSION ) ) {
+		return;
+	}
+
+	$users_needing_group_row = ws_ls_groups_get_users_with_no_group();
+
+	foreach( $users_needing_group_row as $user_id ) {
+		ws_ls_groups_add_to_user( 0, $user_id );
+	}
+}
+add_action( 'admin_init', 'ws_ls_groups_fix_set_no_group' );
+
+/**
+ * Hook on to an attempted save of entry, if we have no group for this user, then add.
+ * @param $user_id
+ */
+function ws_ls_groups_add_missing_group( $user_id ) {
+
+	$current_selection = ws_ls_groups_user( $user_id );
+
+	// If we have a group, do nothing.
+	if ( false === empty( $current_selection[0]['id'] ) ) {
+		return;
+	}
+
+	ws_ls_groups_add_to_user( 0, $user_id );
+}
+add_action( 'wlt-hook-data-attempting-added-edited', 'ws_ls_groups_add_missing_group', 10, 1 );

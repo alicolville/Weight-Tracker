@@ -26,7 +26,16 @@ function ws_ls_note_ajax_add() {
 		if (false === empty( $current_user->user_email )) {
 
 			$note = ws_ls_notes_sanitise( $note );
-			ws_ls_emailer_send( $current_user->user_email, $email_template['subject'], $email_template['email'], [ 'data' => $note] );
+
+			$current_user = get_userdata( $user_id );
+
+			$placeholders = [
+				'first-name'    => ( false === empty( $current_user->first_name ) ) ? $current_user->first_name : '',
+				'last-name'     => ( false === empty( $current_user->last_name ) ) ? $current_user->last_name : '',
+				'data'          => do_shortcode( $note )
+			];
+
+			ws_ls_emailer_send( $current_user->user_email, $email_template['subject'], $email_template['email'], $placeholders );
 		}
 	}
 

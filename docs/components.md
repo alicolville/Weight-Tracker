@@ -1,12 +1,12 @@
 # Summary boxes
 
-Summary boxes appear at the top of certain tabs on the [[wt-beta]]({{ site.baseurl }}/shortcodes/wt-beta.html) shortcode.
+Summary boxes appear at the top of certain tabs on the [[wt]]({{ site.baseurl }}/shortcodes/wt.html) shortcode.
 
 [![Example](/assets/images/component-example.png)](/assets/images/component-example.png)
 
-Using shortcode arguments on [[wt-beta]]({{ site.baseurl }}/shortcodes/wt-beta.html), you are able to specify which summary boxes appear on each tab and in what order. To do this, simply specify the summary box slugs in a comma delimited list in the order you wish them to be displayed e.g.
+Using shortcode arguments on [[wt]]({{ site.baseurl }}/shortcodes/wt.html), you are able to specify which summary boxes appear on each tab and in what order. To do this, simply specify the summary box slugs in a comma delimited list in the order you wish them to be displayed e.g.
 
-    [wt-beta summary-boxes-home='latest-weight,bmi,bmr' ]
+    [wt summary-boxes-home='latest-weight,bmi,bmr' ]
 
 ### Available summary boxes
 

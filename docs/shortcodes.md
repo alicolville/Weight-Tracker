@@ -4,8 +4,7 @@ The majority of the public facing functionality are implemented using [WordPress
 
 |Shortcode|Description|    
 |--|--|
-|[[wt-beta]]({{ site.baseurl }}/shortcodes/wt-beta.html) |A new shortcode (beta) that will replace [[wt]]({{ site.baseurl }}/shortcodes/wt.html).  
-|[[wt]]({{ site.baseurl }}/shortcodes/wt.html) |A shortcode that encompasses all Weight Tracker front end functionality.|   
+|[[wt]]({{ site.baseurl }}/shortcodes/wt.html) |A new shortcode (beta) that will replace [[wt]]({{ site.baseurl }}/shortcodes/wt.html).   
 |[[wt-awards]]({{ site.baseurl }}/shortcodes/wt-awards.html)|Display [awards]({{ site.baseurl }}/awards.html) given to the user.
 |[[wt-awards-grid]]({{ site.baseurl }}/shortcodes/wt-awards-grid.html)|Display most recent [award]({{ site.baseurl }}/awards.html) for the given user.
 |[[wt-awards-recent]]({{ site.baseurl }}/shortcodes/wt-awards-recent.html)|Display [awards]({{ site.baseurl }}/awards.html) given to the user in gird format.
@@ -20,6 +19,10 @@ The majority of the public facing functionality are implemented using [WordPress
 |[[wt-challenges-optin]]({{ site.baseurl }}/shortcodes/wt-challenges-optin.html)|Display buttons allow the using to opt in and out of [Challenges]({{ site.baseurl }}/challenges.html).|
 |[[wt-custom-fields-chart]]({{ site.baseurl }}/shortcodes/wt-custom-fields-chart.html)|Displays a chart of the user’s [custom field]({{ site.baseurl }}/custom-fields.html) entries.|
 |[[wt-custom-fields-form]]({{ site.baseurl }}/shortcodes/wt-custom-fields-form.html)|Displays a form for [custom fields]({{ site.baseurl }}/custom-fields.html) only.|
+|[[wt-custom-fields-count]]({{ site.baseurl }}/shortcodes/wt-custom-fields-count.html)|Displays a count for the given [custom field]({{ site.baseurl }}/custom-fields.html) .|
+|[[wt-custom-fields-latest]]({{ site.baseurl }}/shortcodes/wt-custom-fields-latest.html)|Displays the latest value for the given [custom field]({{ site.baseurl }}/custom-fields.html) .|
+|[[wt-custom-fields-oldest]]({{ site.baseurl }}/shortcodes/wt-custom-fields-oldest.html)|Displays the oldest value for the given [custom field]({{ site.baseurl }}/custom-fields.html) .|
+|[[wt-custom-fields-previous]]({{ site.baseurl }}/shortcodes/wt-custom-fields-previous.html)|Displays the previous value for the given [custom field]({{ site.baseurl }}/custom-fields.html) .|
 |[[wt-custom-fields-table]]({{ site.baseurl }}/shortcodes/wt-custom-fields-table.html)|Displays a table of the user’s [custom field]({{ site.baseurl }}/custom-fields.html) entries.|
 |[[wt-custom-fields-accumulator]]({{ site.baseurl }}/shortcodes/wt-custom-fields-accumulator.html)|Allow user's to quickly increment a [custom field]({{ site.baseurl }}/custom-fields.html) value for today.|
 |[[wt-form]]({{ site.baseurl }}/shortcodes/wt-form.html)|Display a target or weight entry / [custom fields]({{ site.baseurl }}/custom-fields.html) form.|
@@ -27,7 +30,9 @@ The majority of the public facing functionality are implemented using [WordPress
 |[[wt-group]]({{ site.baseurl }}/shortcodes/wt-group.html)|Display the user's current [group]({{ site.baseurl }}/groups.html).
 |[[wt-group-total-weight-loss]]({{ site.baseurl }}/shortcodes/wt-group-total-weight-loss.html)|Display the weight lost by the entire [group]({{ site.baseurl }}/groups.html).
 |[[wt-group-view-as-table]]({{ site.baseurl }}/shortcodes/wt-group-view-as-table.html)|Display a table of summary information for users within a given [group]({{ site.baseurl }}/groups.html).
+|[[wt-waist-to-hip-ratio-calculator]]({{ site.baseurl }}/shortcodes/wt-waist-to-hip-ratio-calculator.html)|Displays a Waist-to-Hip ratio calculator for your users to use.|
 |[[wt-if]]({{ site.baseurl }}/shortcodes/wt-if.html)|Add conditional display logic based on whether WT data has been completed or not.|
+|[[wt-legacy]]({{ site.baseurl }}/shortcodes/wt-legacy.html) |A shortcode that encompasses all Weight Tracker front end functionality.|  
 |[[wt-league-table]]({{ site.baseurl }}/shortcodes/wt-league-table.html)|Display a league table of Weight Tracker users.|
 |[[wt-macronutrients]]({{ site.baseurl }}/shortcodes/wt-macronutrients.html)|Displays a macronutrient figure from the macronutrient intake calculations.|
 |[[wt-macronutrients-table]]({{ site.baseurl }}/shortcodes/wt-macronutrients-table.html)|Displays recommendations on the best way to split your calorie intake.|

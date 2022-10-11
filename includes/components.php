@@ -1011,47 +1011,6 @@ function ws_ls_uikit_data_summary_boxes_display( $key, $arguments = [] ) {
 }
 
 /**
- * Display a notice about it being beta
- * @return string
- */
-function ws_ls_uikit_beta_notice() {
-
-	if ( !current_user_can( 'manage_options' ) )  {
-		return '';
-	}
-	$key = 'ws-ls-beta-wt-notice';
-
-	if ( 'y' === ws_ls_querystring_value( $key ) ) {
-		update_option( $key, 'n' );
-	}
-
-	if ( 'n' === get_option( $key, 'y' ) ) {
-		return '';
-	}
-
-	$link = ws_ls_get_url();
-
-	$link = add_query_arg($key, 'y', $link );
-
-	return '<div class="ykuk-child-width-1-1@s" ykuk-grid>
-			    <div>
-			        <div class="ykuk-dark ykuk-background-muted ykuk-padding">
-				        <div class="ykuk-alert-warning" ykuk-alert>
-						    <p><strong>Note: Only administrators can see this message.</strong></p>
-						</div>
-			            <p>This shortcode is currently in <a href="https://www.pcmag.com/encyclopedia/term/beta-version" target="_blank" rel="noopener">Beta</a> and will, at some point, replace
-			            		<a href="https://docs.yeken.uk/shortcodes/wt.html" target="_blank" rel="noopener">[wt]</a>.</p>
-			            <h4>Issues and Feedback</h4>
-			            <p>If you have any issues or feedback regarding [wt-beta] then please raise them at my GitHub page:</p>
-			            <p><a href="https://github.com/alicolville/Weight-Tracker/issues" target="_blank" rel="noopener">https://github.com/alicolville/Weight-Tracker/issues</a>.</p>
-			            <a class="ykuk-button ykuk-button-default" href="' . esc_url( $link ) . '">Hide this message</a>
-			        </div>
-			    </div>
-			</div>';
-
-}
-
-/**
  * Display a notice about data being exposed
  *
  * @param string $key
@@ -1153,7 +1112,8 @@ function ws_ls_component_user_search( $arguments ) {
  */
 function ws_ls_component_group_view_entries( $arguments ) {
 
-	$arguments = wp_parse_args( $arguments, [   'disable-theme-css'         => false,
+	$arguments = wp_parse_args( $arguments, [   'default-to-users-group'    => false,
+												'disable-theme-css'         => false,
 	                                            'disable-main-font'         => false,
 	                                            'group-id'                  => NULL,
 												'table-allow-delete'        => false,
@@ -1169,6 +1129,15 @@ function ws_ls_component_group_view_entries( $arguments ) {
 	ws_ls_data_table_enqueue_scripts();
 
 	$arguments[ 'group-id' ] = ws_ls_querystring_value( 'group-id', true, $arguments[ 'group-id' ] );
+
+	// If we have no group id, and it's enabled, default to the current user's group.
+	if( true === empty( $arguments[ 'group-id' ] ) &&
+			true === ws_ls_to_bool( $arguments[ 'default-to-users-group' ] ) ) {
+
+		$groups = ws_ls_groups_user( get_current_user_id() );
+
+		$arguments[ 'group-id' ] = ( false === empty( $groups[0]['id'] ) ) ? (int) $groups[0]['id'] : NULL;
+	}
 
 	$html = '';
 
@@ -1222,8 +1191,8 @@ function ws_ls_component_group_view_entries( $arguments ) {
  */
 function ws_ls_component_group_select( $arguments ) {
 
-	$arguments  = wp_parse_args( $arguments, [ 'selected' => 0, 'include-empty' => true, 'reload-page-on-select' => true, 'uikit' => true ] );
-	$groups     = ws_ls_groups( $arguments[ 'include-empty' ] );
+	$arguments  = wp_parse_args( $arguments, [ 'selected' => 0, 'include-empty' => true, 'include-all-groups' => true, 'reload-page-on-select' => true, 'uikit' => true ] );
+	$groups     = ws_ls_groups( $arguments[ 'include-empty' ], $arguments[ 'include-all-groups' ] );
 	$groups     = wp_list_pluck( $groups, 'name', 'id' );
 
 	$select_args = [    'key'                           => ws_ls_component_id(),

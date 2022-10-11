@@ -215,7 +215,7 @@ function ws_ls_shortcode_difference_in_weight_target( $user_defined_arguments = 
 		return '';
 	}
 
-	$target_weight = ws_ls_db_target_get( $arguments[ 'user-id' ] );
+	$target_weight = ws_ls_target_get( $arguments[ 'user-id' ], 'kg' );
 
 	if ( true === empty( $target_weight ) ) {
 		return '';

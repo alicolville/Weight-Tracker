@@ -187,6 +187,17 @@ function ws_ls_webhooks_data_prep_weight( $entry ) {
 	$data[ 'weight-first-display' ]                     = ws_ls_weight_display( $entry[ 'first_weight' ], $data[ 'user-id' ], 'display', true );
 	$data[ 'weight-difference-from-start-kg' ]          = $entry[ 'difference_from_start_kg' ];
 	$data[ 'weight-difference-from-start-display' ]     = ws_ls_weight_display( $entry[ 'difference_from_start_kg' ], $data[ 'user-id' ], 'display', true, true );
+	$data[ 'weight-previous-kg' ]                       = NULL;
+
+	$previous_weight = ws_ls_entry_get_previous( [ 'user-id' => $entry[ 'user_id' ], 'meta' => false ] );
+
+	if ( false === empty( $previous_weight[ 'kg' ] ) ) {
+		$data[ 'weight-previous-kg' ]                           = $previous_weight[ 'kg' ];
+		$data[ 'weight-previous-display']                       = ws_ls_weight_display( $previous_weight[ 'kg' ], $data[ 'user-id' ], 'display', true, true );
+		$data[ 'weight-difference-latest-previous-kg' ]         = $data[ 'weight-kg' ] - $data[ 'weight-previous-kg' ];
+		$data[ 'weight-difference-latest-previous-display' ]    = ws_ls_weight_display( $data[ 'weight-difference-latest-previous-kg' ], $data[ 'user-id' ], 'display', true, true );
+	}
+
 	$data[ 'notes' ]                                    = $entry[ 'notes' ];
 	$data[ 'url-user-profile' ]                         = ws_ls_get_link_to_user_profile( $entry[ 'user_id' ], NULL, false );
 	$data[ 'url-entry-edit' ]                           = ws_ls_get_link_to_edit_entry( $entry[ 'user_id' ], $entry[ 'id' ], false, $data[ 'url-user-profile' ] );

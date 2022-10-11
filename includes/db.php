@@ -267,6 +267,49 @@ function ws_ls_db_entry_for_date( $user_id, $date ) {
 }
 
 /**
+ * Fetch weight entries for the last x days
+ * @param array $arguments
+ *
+ * @return array|bool|object|stdClass[]|null
+ */
+function ws_ls_db_entries_last_x_days( $arguments = [] ) {
+
+	$arguments = wp_parse_args( $arguments, [ 'user-id' => get_current_user_id(), 'number-of-days' => 7 ] );
+
+	$cache_key = 'weights-last-x-days' . md5( json_encode( $arguments ) );
+
+	if ( $cache = ws_ls_cache_user_get( $arguments[ 'user-id'], $cache_key ) ) {
+		return $cache;
+	}
+
+	global $wpdb;
+	$additional_sql = '';
+
+	// User ID specified? IF empty or set to 0 then don't add into where clause
+	if ( false === empty( $arguments[ 'user-id' ] ) ) {
+		$additional_sql .= $wpdb->prepare( ' and weight_user_id = %d', $arguments[ 'user-id' ] );
+	}
+
+	$additional_sql .=  ' and weight_weight is not null';
+
+	if ( false === empty( $arguments[ 'number-of-days' ] ) ) {
+		$additional_sql .= $wpdb->prepare( ' and ( DATE(weight_date) > (NOW() - INTERVAL %d DAY) )', $arguments[ 'number-of-days' ] );
+	}
+
+	$sql =  sprintf( 'SELECT %1$s.id, weight_date, weight_weight as kg, weight_notes as notes, weight_user_id as user_id FROM %1$s
+						where 1 = 1%2$s order by weight_date',
+						$wpdb->prefix . WE_LS_TABLENAME,
+						$additional_sql
+	);
+
+	$results = $wpdb->get_results( $sql, ARRAY_A );
+
+	ws_ls_cache_user_set( $arguments[ 'user-id'], $cache_key, $results );
+
+	return $results;
+}
+
+/**
  * Fetch weight entries for user
  *
  * Don't call this function directly. Call: ws_ls_entries_get()

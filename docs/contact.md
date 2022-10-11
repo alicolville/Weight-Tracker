@@ -3,13 +3,6 @@
   
 If you wish to contact YeKen or have an issue with Weight Tracker, please use the following methods to get in touch.  
 
-## Beta of [wt-beta] > GitHub Issues  
-  
-If you have any issues or suggestions for the beta of [[wt-beta]]({{ site.baseurl }}/shortcodes/wt-beta.html) then please report them via GitHub. *Please add as much detail as possible.*  
-  
-[https://github.com/alicolville/Weight-Tracker/issues](https://github.com/alicolville/Weight-Tracker/issues)  
-  
-  
 ## Issues > WordPress.org forum
   
 Ideally, if you have a technical issue, I'd prefer you to ask for help on the plugin's WordPress.org forum. That way, solving your problem publicly may help others if they come across the same issue. You may find the answer to your problem is already there.  

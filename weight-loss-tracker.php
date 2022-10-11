@@ -5,7 +5,7 @@ defined('ABSPATH') or die('Jog on!');
 /**
  * Plugin Name:         Weight Tracker
  * Description:         Allow your users to track their weight, body measurements, photos and other pieces of custom data. Display in charts, tables, shortcodes and widgets. Manage their data, issue awards, email notifications, etc! Provide advanced data on Body Mass Index (BMI), Basal Metabolic Rate (BMR), Calorie intake, Harris Benedict Formula, Macronutrients Calculator and more.
- * Version:             10.2.8
+ * Version:             10.3
  * Requires at least:   5.7
  * Tested up to: 		6.0.2
  * Requires PHP:        7.2
@@ -18,7 +18,7 @@ defined('ABSPATH') or die('Jog on!');
  */
 
 define( 'WS_LS_ABSPATH', plugin_dir_path( __FILE__ ) );
-define( 'WE_LS_CURRENT_VERSION', '10.2.8' );
+define( 'WE_LS_CURRENT_VERSION', '10.3' );
 define( 'WE_LS_TITLE', 'Weight Tracker' );
 define( 'WE_LS_SLUG', 'weight-loss-tracker' );
 define( 'WE_LS_LICENSE_TYPES_URL', 'https://docs.yeken.uk/features.html' );
@@ -51,7 +51,7 @@ include WS_LS_ABSPATH . 'includes/license.php';
 $license_type = ws_ls_has_a_valid_license();
 
 // Standard Pro license?
-if( true === in_array( $license_type, [ 'pro', 'pro-old', 'pro-plus' ] ) ){
+if( true === in_array( $license_type, [ 'pro', 'pro-plus' ] ) ){
 	define( 'WS_LS_IS_PRO', true );
 } else {
 	define( 'WS_LS_IS_PRO', false );
@@ -82,8 +82,8 @@ require_once( WS_LS_ABSPATH . 'includes/core-charting.php' );
 require_once( WS_LS_ABSPATH . 'includes/ajax.php' );
 require_once( WS_LS_ABSPATH . 'includes/setup-wizard.php' );
 require_once( WS_LS_ABSPATH . 'includes/components.php' );
-require_once( WS_LS_ABSPATH . 'includes/shortcode-weight-tracker.php' );
-require_once( WS_LS_ABSPATH . 'includes/shortcode-weight-tracker-beta.php' );
+require_once( WS_LS_ABSPATH . 'includes/shortcode-wt-legacy.php' );
+require_once( WS_LS_ABSPATH . 'includes/shortcode-wt.php' );
 require_once( WS_LS_ABSPATH . 'includes/shortcode-various.php' );
 require_once( WS_LS_ABSPATH . 'includes/form-handler.php' );
 require_once( WS_LS_ABSPATH . 'includes/email-manager.php' );
@@ -135,6 +135,7 @@ require_once( WS_LS_ABSPATH . 'pro-features/shortcode-reminders.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/shortcode-progress-bar.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/shortcode-messages.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/shortcode-bmi-calculator.php' );
+require_once( WS_LS_ABSPATH . 'pro-features/shortcode-hip-waist-ratio-calculator.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/shortcode-if.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/plus/shortcode.wlt.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/plus/photos.php' );

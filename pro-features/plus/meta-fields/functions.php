@@ -720,7 +720,7 @@ function ws_ls_meta_fields_groups_slugs_to_ids( $slugs ) {
 }
 
 /**
- * Take one or many custom field group slugs and convert to ID
+ * Take one or many custom field slugs and convert to ID
  * @param $slugs
  *
  * @return array
@@ -745,6 +745,27 @@ function ws_ls_meta_fields_slugs_to_ids( $slugs ) {
 	}
 
 	return $ids;
+}
+
+/**
+ * Take one custom field slugs and convert an to ID
+ * @param $slug
+ *
+ * @return array
+ */
+function ws_ls_meta_fields_slug_to_id( $slug ) {
+
+	if ( true === empty( $slug ) ) {
+		return null;
+	}
+
+	$key = ws_ls_meta_fields_slugs_to_ids( $slug );
+
+	if ( true === empty( $key[ 0 ] ) ) {
+		return null;
+	}
+
+	return (int) $key[ 0 ];
 }
 
 /**

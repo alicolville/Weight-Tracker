@@ -72,9 +72,10 @@ function ws_ls_notes_render( $note, $echo = true, $uikit = false, $alternate = f
 	}
 
 	$note[ 'message_text' ] = ws_ls_notes_sanitise( $note[ 'message_text' ] );
-
+	$note[ 'message_text' ] = do_shortcode( $note[ 'message_text' ] );
 
 	if ( true === $uikit ) {
+
 		$html = sprintf( '<article class="ykuk-comment ykuk-margin-medium-top ykuk-visible-toggle ykuk-padding-small ykuk-text-small%1$s" tabindex="-1">
 					            <header class="ykuk-comment-header ykuk-position-relative">
 					                <div class="ykuk-grid-medium ykuk-flex-middle" ykuk-grid>

@@ -3,13 +3,13 @@
 defined('ABSPATH') or die('Jog on!');
 
 /**
- * Shortcode for [wt-beta]
+ * Shortcode for [wt]
  * @param $user_defined_arguments
  *
  * @return string
  * @throws Exception
  */
-function ws_ls_shortcode_beta( $user_defined_arguments ) {
+function ws_ls_shortcode_wt( $user_defined_arguments ) {
 
 	// Showing groups?
 	if ( ws_ls_querystring_value( 'group-view' ) ) {
@@ -139,8 +139,6 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 	                                                                   'reverse'           => true,
 	                                                                   'sort'              => 'desc' ] );
 
-	$html .= ws_ls_uikit_beta_notice();
-
 	if( 'true' === ws_ls_querystring_value( 'user-preference-saved', 'true' ) ) {
 		$html .= ws_ls_component_alert( [ 'message' => __( 'Your settings have been successfully saved!', WE_LS_SLUG ) ] );
 	} elseif( 'true' === ws_ls_querystring_value( 'user-delete-all', 'true' ) ) {
@@ -171,7 +169,8 @@ function ws_ls_shortcode_beta( $user_defined_arguments ) {
 
 	return $html . '</div>';
 }
-add_shortcode( 'wt-beta', 'ws_ls_shortcode_beta' );
+add_shortcode( 'wt', 'ws_ls_shortcode_wt' );
+add_shortcode( 'wt-beta', 'ws_ls_shortcode_wt' );
 
 /**
  * Wrapper for [wt] to enable shortcode mode
@@ -188,7 +187,7 @@ function ws_ls_shortcode_wt_kiosk( $user_defined_arguments ) {
 
 	$arguments = wp_parse_args( [ 'kiosk-mode' => true ], $user_defined_arguments );
 
-	return ws_ls_shortcode_beta( $arguments );
+	return ws_ls_shortcode_wt( $arguments );
 }
 add_shortcode( 'wt-kiosk', 'ws_ls_shortcode_wt_kiosk' );
 
