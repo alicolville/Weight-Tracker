@@ -412,29 +412,32 @@ function ws_ls_tab_settings( $arguments = [] ) {
 		]);
 	}
 
-	$settings = ws_ls_user_preferences_form( [  'user-id'           => $arguments[ 'user-id' ],
-	                                            'uikit'             => true,
-												'show-delete-data'  => false,
-												'kiosk-mode'        => $arguments[ 'kiosk-mode' ],
-												'redirect-url'      => $redirect_url
-	]);
+	if( true === ws_ls_user_preferences_is_enabled() ) {
 
-	$html .= ws_ls_ui_kit_info_box_with_header_footer( [    'header'    => __( 'Settings', WE_LS_SLUG ),
-	                                                        'body'      => $settings
-	]);
-
-	if( true === $arguments[ 'show-delete-data' ] ) {
-		$settings = ws_ls_user_preferences_form( [  'user-id'               => $arguments[ 'user-id' ],
-		                                            'hide-titles'           => true,
-		                                            'uikit'                 => true,
-		                                            'show-user-preferences' => false,
-		                                            'kiosk-mode'            => $arguments[ 'kiosk-mode' ],
-													'redirect-url'          => $redirect_url
+		$settings = ws_ls_user_preferences_form( [  'user-id'           => $arguments[ 'user-id' ],
+		                                            'uikit'             => true,
+		                                            'show-delete-data'  => false,
+		                                            'kiosk-mode'        => $arguments[ 'kiosk-mode' ],
+		                                            'redirect-url'      => $redirect_url
 		]);
 
-		$html .= ws_ls_ui_kit_info_box_with_header_footer( [    'header'    => __( 'Delete your existing data', WE_LS_SLUG ),
+		$html .= ws_ls_ui_kit_info_box_with_header_footer( [    'header'    => __( 'Settings', WE_LS_SLUG ),
 		                                                        'body'      => $settings
 		]);
+
+		if( true === $arguments[ 'show-delete-data' ] ) {
+			$settings = ws_ls_user_preferences_form( [  'user-id'               => $arguments[ 'user-id' ],
+			                                            'hide-titles'           => true,
+			                                            'uikit'                 => true,
+			                                            'show-user-preferences' => false,
+			                                            'kiosk-mode'            => $arguments[ 'kiosk-mode' ],
+			                                            'redirect-url'          => $redirect_url
+			]);
+
+			$html .= ws_ls_ui_kit_info_box_with_header_footer( [    'header'    => __( 'Delete your existing data', WE_LS_SLUG ),
+			                                                        'body'      => $settings
+			]);
+		}
 	}
 
 	return $html;
