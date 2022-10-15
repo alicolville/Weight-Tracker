@@ -381,19 +381,24 @@ function ws_ls_component_target_weight( $args = [] ) {
 		$text_data  = $target_weight[ 'display' ];
 	}
 
+	if ( false === ws_ls_targets_enabled() ) {
+		$text_data = __( 'Targets not enabled in settings', WE_LS_SLUG );
+	}
+
 	return sprintf( '<div>
                         <div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
-                                <span class="ykuk-info-box-header">%3$s</span><br />
+                                <span class="ykuk-info-box-header %4$s">%3$s</span><br />
                                 <span class="ykuk-text-bold">
                                     %1$s
                                 </span>
                                 %2$s
-                                <br /><span class="ykuk-info-box-meta"><a href="#" class="ws-ls-tab-change" data-tab="settings">Adjust</a></span>
+                                <br /><span class="ykuk-info-box-meta %4$s"><a href="#" class="ws-ls-tab-change" data-tab="settings">Adjust</a></span>
                         </div>
                     </div>',
 		$text_data,
 		$text_date,
-		__( 'Target Weight', WE_LS_SLUG )
+		__( 'Target Weight', WE_LS_SLUG ),
+		! ws_ls_targets_enabled() ? 'ws-ls-hide' : ''
 	);
 }
 

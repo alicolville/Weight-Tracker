@@ -156,6 +156,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 * Bug fix: Do not show gain/loss column within data tables (on main site) when not in Pro or Pro plus mode.
 * Bug fix: [wt] - enable the settings tab if Targets enabled when not in Pro or Pro plus mode.
 * Bug fix: [wt] - Don't display the messages tab if messages aren't enabled.
+* Bug fix: [wt] - Don't display target component if targets have been disabled in admin.
 
 = 10.3 =
 
