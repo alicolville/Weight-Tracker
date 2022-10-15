@@ -151,6 +151,10 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 == Changelog ==
 
+= 10.3.1 =
+
+* Bug fix: Do not show gain/loss column within data tables (on main site) when not in Pro or Pro plus mode.
+
 = 10.3 =
 
 * New feature: Added the shortcode [wt-waist-to-hip-ratio-calculator] which renders a hip-to-waist ratio calculator. https://docs.yeken.uk/shortcodes/wt-waist-to-hip-ratio-calculator.html
