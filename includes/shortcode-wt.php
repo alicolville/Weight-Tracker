@@ -258,10 +258,13 @@ function ws_ls_wt_tab_menu( $arguments = [] ) {
 		$tabs[] = [ 'name' => 'gallery', 'icon' => 'image' ];
 	}
 
-	$tabs[] = [ 'name' => 'messages', 'icon' => 'mail' ];
+	if( true === ws_ls_note_is_enabled() ) {
+		$tabs[] = [ 'name' => 'messages', 'icon' => 'mail' ];
+	}
 
 	if( true === ws_ls_user_preferences_is_enabled() ||
-			true === $arguments[ 'kiosk-mode' ] ) {
+	        true === ws_ls_targets_enabled() ||
+				true === $arguments[ 'kiosk-mode' ] ) {
 		$tabs[] = [ 'name' => 'settings', 'icon' => 'settings' ];
 	}
 
@@ -324,7 +327,8 @@ function ws_ls_wt_tab_panes( $arguments = [] ) {
 	}
 
 	if( true === ws_ls_user_preferences_is_enabled() ||
-	        true === $arguments[ 'kiosk-mode' ] ) {
+	        true === ws_ls_targets_enabled() ||
+	            true === $arguments[ 'kiosk-mode' ] ) {
 		$html .= '<li>' . ws_ls_tab_settings( $arguments ) . '</li>';
 	}
 

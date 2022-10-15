@@ -154,6 +154,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 = 10.3.1 =
 
 * Bug fix: Do not show gain/loss column within data tables (on main site) when not in Pro or Pro plus mode.
+* Bug fix: [wt] - enable the settings tab if Targets enabled when not in Pro or Pro plus mode.
 
 = 10.3 =
 
