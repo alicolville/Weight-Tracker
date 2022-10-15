@@ -36,6 +36,7 @@ function ws_ls_shortcode_wt( $user_defined_arguments ) {
 												'hide-custom-fields-chart'  => false,                       // Hide custom fields from chart
 												'hide-custom-fields-table'  => false,                       // Hide custom fields from table
 												'kiosk-mode'                => false,                       // If in Kiosk mode, allow this UI to be used for multiple isers
+												'kiosk-barcode-scanner'     => false,                       // Enable barcode scanner for selecting user records
 												'kiosk-hide-editing-name' 	=> false,                       // Hide name of the person we're editing
 	                                            'show-delete-data' 		    => true,                	    // Show "Delete your data" section
 												'show-tab-info' 		    => false,
