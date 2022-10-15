@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight,tracker,chart,bmi,bmr,macronutrient,measure,awards,custom fields,history,measurements,data
 Requires at least: 5.7
 Tested up to: 6.0.2
-Stable tag: 10.3
+Stable tag: 10.3.1
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -150,6 +150,13 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 10.2 - "Kiosk Mode" for [wt-beta]!
 
 == Changelog ==
+
+= 10.3.1 =
+
+* Bug fix: Do not show gain/loss column within data tables (on main site) when not in Pro or Pro plus mode.
+* Bug fix: [wt] - enable the settings tab if Targets enabled when not in Pro or Pro plus mode.
+* Bug fix: [wt] - Don't display the messages tab if messages aren't enabled.
+* Bug fix: [wt] - Don't display target component if targets have been disabled in admin.
 
 = 10.3 =
 

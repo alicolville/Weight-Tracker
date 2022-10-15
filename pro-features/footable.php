@@ -363,7 +363,9 @@ function ws_ls_datatable_columns( $arguments = [] ) {
 	if ( true === $arguments[ 'enable-weight' ] ) {
 		$columns[] = [ 'name' => 'kg', 'title' => __( 'Weight', WE_LS_SLUG ), 'visible'=> true, 'type' => 'text' ];
 
-		$columns[] = [ 'name' => 'gainloss', 'title' => ws_ls_tooltip('+/-', __( 'Difference', WE_LS_SLUG ) ), 'visible'=> true, 'breakpoints'=> 'xs', 'type' => 'text' ];
+		if ( false === $arguments[ 'front-end' ] || true === WS_LS_IS_PRO ) {
+			$columns[] = [ 'name' => 'gainloss', 'title' => ws_ls_tooltip('+/-', __( 'Difference', WE_LS_SLUG ) ), 'visible'=> true, 'breakpoints'=> 'xs', 'type' => 'text' ];
+		}
 	}
 
 	// Add BMI?
