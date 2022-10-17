@@ -151,6 +151,11 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 == Changelog ==
 
+= 10.3.2 =
+
+* Improvement: Added support for Barcode scanning in [wt-kiosk].
+* Improvement: [wt-kiosk] - hide the "Clear Screen" button until a user record has been selected.
+
 = 10.3.1 =
 
 * Bug fix: Do not show gain/loss column within data tables (on main site) when not in Pro or Pro plus mode.
