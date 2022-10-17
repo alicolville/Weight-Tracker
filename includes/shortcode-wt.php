@@ -55,8 +55,9 @@ function ws_ls_shortcode_wt( $user_defined_arguments ) {
 		return ws_ls_component_alert( [ 'message' => __( 'You need to be logged in to record your weight.', WE_LS_SLUG ), 'type' => 'primary', 'closable' => false, 'include-login-link' => true ] ) . '</div>';
 	}
 
-	$shortcode_arguments[ 'kiosk-mode' ]        = ws_ls_to_bool( $shortcode_arguments[ 'kiosk-mode' ] );
-	$shortcode_arguments[ 'hide-fields-meta' ]  = ws_ls_to_bool( $shortcode_arguments[ 'hide-custom-fields-form' ] );
+	$shortcode_arguments[ 'kiosk-mode' ]                = ws_ls_to_bool( $shortcode_arguments[ 'kiosk-mode' ] );
+	$shortcode_arguments[ 'kiosk-barcode-scanner' ]     = ws_ls_to_bool( $shortcode_arguments[ 'kiosk-barcode-scanner' ] );
+	$shortcode_arguments[ 'hide-fields-meta' ]          = ws_ls_to_bool( $shortcode_arguments[ 'hide-custom-fields-form' ] );
 
 	if ( true === $shortcode_arguments[ 'kiosk-mode' ] ) {
 
@@ -89,6 +90,11 @@ function ws_ls_shortcode_wt( $user_defined_arguments ) {
 		$html .= ws_ls_uikit_data_exposed_notice();
 
 		$shortcode_arguments[ 'disable-not-logged-in' ] = true;
+
+		if ( false === $shortcode_arguments[ 'user-loaded' ] &&
+		        true === $shortcode_arguments[ 'kiosk-barcode-scanner' ] ) {
+			$html .= ws_ls_barcode_reader();
+		}
 
 		$html .= ws_ls_component_user_search( $shortcode_arguments );
 

@@ -1092,35 +1092,22 @@ function ws_ls_component_user_search( $arguments ) {
 
 	$reset_link = remove_query_arg( $arguments[ 'querystring-key-user-id' ], ws_ls_get_url() );
 
-	//kiosk-barcode-scanner
-
-	wp_enqueue_script( 'wt-kiosk-barcode', 'https://unpkg.com/html5-qrcode' );
-	wp_enqueue_script( 'yk-uikit-barcy', plugins_url( '../assets/js/barcode-scanner.js', __FILE__ ), [ 'wt-kiosk-barcode' ] , WE_LS_CURRENT_VERSION );
-	return sprintf( '
-
-
-<div id="wt-barcode-reader" class="ws-ls-hide"></div>
-<div id="qr-reader-results"></div>
-
-
-<div class="ykuk-margin ws-ls-component-user-search ykuk-grid" ykuk-grid>
+	return sprintf( '<div class="ykuk-margin ws-ls-component-user-search ykuk-grid" ykuk-grid>
 				        <div class="ykuk-width-expand">
 				            <select id="%1$s">
 				            </select>
 				        </div>
-				        <div class="ykuk-text-right">
-				        	<a class="ykuk-button ykuk-button-%3$s wt-show-barcode-scanner" ykuk-icon="camera" >SCAN</a>
-				            <a href="%2$s" class="ykuk-button ykuk-button-%3$s"  >%4$s</a>
+				        <div class="ykuk-text-right%5$s">
+				        	<a href="%2$s" class="ykuk-button ykuk-button-%3$s"  >%4$s</a>
 				        </div>
 				    </div>
 				    <div class="ykuk-divider-icon"></div>',
 					ws_ls_component_id(),
 					esc_url( $reset_link ),
 					( NULL === ws_ls_querystring_value( $arguments[ 'querystring-key-user-id' ] ) ) ? 'default' : 'secondary',
-					__( 'Clear', WE_LS_SLUG )
+					( false === $arguments[ 'kiosk-barcode-scanner' ] ) ? __( 'Clear Screen', WE_LS_SLUG ) : __( 'Clear / Scan Another', WE_LS_SLUG ),
+					( false === $arguments[ 'user-loaded' ] ) ? ' ws-ls-hide' : ''
 	);
-
-
 }
 
 /**
