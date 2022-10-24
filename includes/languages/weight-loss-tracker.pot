@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Weight Loss Tracker\n"
-"POT-Creation-Date: 2022-08-05 16:33+0100\n"
+"POT-Creation-Date: 2022-10-24 21:22+0100\n"
 "PO-Revision-Date: 2017-09-04 19:10+0100\n"
 "Last-Translator: \n"
 "Language-Team: Yeken - email@yeken.uk\n"
@@ -71,15 +71,15 @@ msgstr ""
 #: includes/admin-pages/awards/page-awards-add-update.php:176
 #: includes/admin-pages/awards/page-awards-add-update.php:187
 #: includes/admin-pages/settings/page-settings-generic.php:110
-#: includes/functions.php:1455 pro-features/shortcode-bmi-calculator.php:101
+#: includes/functions.php:1458 pro-features/shortcode-bmi-calculator.php:101
 msgid "Pounds"
 msgstr ""
 
 #: includes/admin-pages/awards/page-awards-add-update.php:192
 #: includes/core-charting.php:100 includes/core-charting.php:283
-#: includes/core-tables.php:34 pro-features/footable.php:362
+#: includes/core-tables.php:34 pro-features/footable.php:364
 #: pro-features/plus/awards/functions.php:32
-#: pro-features/shortcode-bmi-calculator.php:95 pro-features/web-hooks.php:241
+#: pro-features/shortcode-bmi-calculator.php:95 pro-features/web-hooks.php:252
 msgid "Weight"
 msgstr ""
 
@@ -172,7 +172,7 @@ msgstr ""
 #: includes/admin-pages/settings/page-settings-generic.php:1092
 #: includes/admin-pages/settings/page-settings-generic.php:1105
 #: includes/admin-pages/settings/page-settings-generic.php:1124
-#: includes/functions.php:1336 pro-features/plus/challenge/functions.php:244
+#: includes/functions.php:1339 pro-features/plus/challenge/functions.php:244
 #: pro-features/plus/meta-fields/functions.php:42
 #: pro-features/plus/meta-fields/functions.php:234
 #: pro-features/plus/meta-fields/functions.php:435
@@ -220,7 +220,7 @@ msgstr ""
 #: includes/admin-pages/settings/page-settings-generic.php:1093
 #: includes/admin-pages/settings/page-settings-generic.php:1106
 #: includes/admin-pages/settings/page-settings-generic.php:1123
-#: includes/functions.php:1336 pro-features/plus/challenge/functions.php:244
+#: includes/functions.php:1339 pro-features/plus/challenge/functions.php:244
 #: pro-features/plus/meta-fields/functions.php:42
 #: pro-features/plus/meta-fields/functions.php:231
 #: pro-features/plus/meta-fields/functions.php:434
@@ -271,8 +271,7 @@ msgstr ""
 #: includes/admin-pages/awards/page-awards-list.php:34
 #: includes/admin-pages/user-data/data-user.php:246
 #: includes/admin-pages/user-data/data-user.php:276 includes/hooks.php:18
-#: includes/shortcode-weight-tracker-beta.php:507
-#: pro-features/user-groups.php:694
+#: includes/shortcode-wt.php:565 pro-features/user-groups.php:719
 msgid "Awards"
 msgstr ""
 
@@ -417,7 +416,7 @@ msgstr ""
 #: includes/components.php:79 pro-features/export/admin.page.php:203
 #: pro-features/plus/challenge/functions.php:493
 #: pro-features/plus/meta-fields/hooks.php:94 pro-features/user-groups.php:111
-#: pro-features/user-groups.php:154 pro-features/user-groups.php:566
+#: pro-features/user-groups.php:154 pro-features/user-groups.php:570
 msgid "Group"
 msgstr ""
 
@@ -479,7 +478,7 @@ msgstr ""
 
 #: includes/admin-pages/meta-fields/page-meta-fields-list.php:43
 #: includes/admin-pages/settings/page-settings-groups.php:42
-#: pro-features/footable.php:441 pro-features/plus/awards/hooks.php:324
+#: pro-features/footable.php:445 pro-features/plus/awards/hooks.php:324
 #: pro-features/plus/harris-benedict.php:321
 msgid "Add"
 msgstr ""
@@ -611,160 +610,126 @@ msgid "Of course, by purchasing a license, you are supporting the future of this
 msgstr ""
 
 #: includes/admin-pages/page-license.php:80
-msgid "Legacy Pro License"
-msgstr ""
-
-#: includes/admin-pages/page-license.php:81
-msgid "Our licensing has model has changed, Prior to September 2017 it used to be a one off payment that enabled the Pro features of the plugin. This is still the case and any old licenses will still be honoured."
-msgstr ""
-
-#: includes/admin-pages/page-license.php:82
-msgid "Moving to a yearly license"
-msgstr ""
-
-#: includes/admin-pages/page-license.php:83
-msgid "There is no reason to move to a yearly license - Pro features will remain the same for legacy and new Pro subscriptions. However, if you were to move to a yearly subscription you will be supporting the development of the plugin (and I'll give you a big hug)."
-msgstr ""
-
-#: includes/admin-pages/page-license.php:87
-msgid "Pro Plus License"
-msgstr ""
-
-#: includes/admin-pages/page-license.php:88
-msgid "Of course, thank you for purchasing a Pro license - it is much appreciated. As you can see below, you can further expand the features of"
-msgstr ""
-
-#: includes/admin-pages/page-license.php:90
-#: includes/admin-pages/page-license.php:100
-msgid "by extending your license to Pro Plus. Pro Plus extends Pro with features such as BMR, Calorie intake, Macronutrient Calculator, etc. You can view the additional features that Pro Plus offers you below."
-msgstr ""
-
-#: includes/admin-pages/page-license.php:98
 msgid "Of course, a big thank you purchasing a Pro license at some point - it is much appreciated. As you can see below, you can further expand the features of"
 msgstr ""
 
-#: includes/admin-pages/page-license.php:106
+#: includes/admin-pages/page-license.php:82
+msgid "by extending your license to Pro Plus. Pro Plus extends Pro with features such as BMR, Calorie intake, Macronutrient Calculator, etc. You can view the additional features that Pro Plus offers you below."
+msgstr ""
+
+#: includes/admin-pages/page-license.php:88
 msgid "Thank you kind soul, you have purchased a Pro Plus license. A huge thank you for supporting me and this plugin!"
 msgstr ""
 
-#: includes/admin-pages/page-license.php:113
+#: includes/admin-pages/page-license.php:95
 msgid "In case you need, your <strong>Site Hash</strong> is"
 msgstr ""
 
-#: includes/admin-pages/page-license.php:123
+#: includes/admin-pages/page-license.php:105
 msgid "Get a free 7 day trial!"
 msgstr ""
 
-#: includes/admin-pages/page-license.php:130
+#: includes/admin-pages/page-license.php:112
 msgid "Upgrade to Pro Plus for"
 msgstr ""
 
-#: includes/admin-pages/page-license.php:130
-#: includes/admin-pages/page-license.php:245
-#: includes/admin-pages/page-license.php:259
+#: includes/admin-pages/page-license.php:112
+#: includes/admin-pages/page-license.php:225
+#: includes/admin-pages/page-license.php:239
 msgid "a year"
 msgstr ""
 
-#: includes/admin-pages/page-license.php:144
-msgid "Switch to a yearly Pro license for "
-msgstr ""
-
-#: includes/admin-pages/page-license.php:144
-#: includes/admin-pages/page-license.php:145
-msgid " a year"
-msgstr ""
-
-#: includes/admin-pages/page-license.php:145
+#: includes/admin-pages/page-license.php:125
 msgid "Upgrade to Pro for "
 msgstr ""
 
-#: includes/admin-pages/page-license.php:160
+#: includes/admin-pages/page-license.php:125
+msgid " a year"
+msgstr ""
+
+#: includes/admin-pages/page-license.php:140
 msgid "Add or Update License"
 msgstr ""
 
-#: includes/admin-pages/page-license.php:165
+#: includes/admin-pages/page-license.php:145
 msgid "Copy and paste the license given to you by YeKen into this box and click \"Apply License\""
 msgstr ""
 
-#: includes/admin-pages/page-license.php:168
+#: includes/admin-pages/page-license.php:148
 msgid "Apply License"
 msgstr ""
 
-#: includes/admin-pages/page-license.php:173
+#: includes/admin-pages/page-license.php:153
 msgid "Your License Information"
 msgstr ""
 
-#: includes/admin-pages/page-license.php:177
+#: includes/admin-pages/page-license.php:157
 msgid "Site Hash"
 msgstr ""
 
-#: includes/admin-pages/page-license.php:181
+#: includes/admin-pages/page-license.php:161
 #: pro-features/plus/meta-fields/hooks.php:92 pro-features/widget-chart.php:114
 msgid "Type"
 msgstr ""
 
-#: includes/admin-pages/page-license.php:185
+#: includes/admin-pages/page-license.php:165
 msgid "Expires"
 msgstr ""
 
-#: includes/admin-pages/page-license.php:190
-msgid "Never"
-msgstr ""
-
-#: includes/admin-pages/page-license.php:194 includes/components.php:287
+#: includes/admin-pages/page-license.php:172 includes/components.php:287
 msgid "n/a"
 msgstr ""
 
-#: includes/admin-pages/page-license.php:204
+#: includes/admin-pages/page-license.php:182
 msgid "Your Existing License"
 msgstr ""
 
-#: includes/admin-pages/page-license.php:210
+#: includes/admin-pages/page-license.php:188
 msgid "Remove License"
 msgstr ""
 
-#: includes/admin-pages/page-license.php:219
+#: includes/admin-pages/page-license.php:197
 msgid "Documentation"
 msgstr ""
 
-#: includes/admin-pages/page-license.php:222
+#: includes/admin-pages/page-license.php:200
 msgid "Need further help or information, please visit our documentation site:"
 msgstr ""
 
-#: includes/admin-pages/page-license.php:234
+#: includes/admin-pages/page-license.php:213
 #, php-format
 msgid "50% off - When upgrading from Pro to Pro Plus"
 msgstr ""
 
-#: includes/admin-pages/page-license.php:241
+#: includes/admin-pages/page-license.php:221
 msgid "Pro Plus Features"
 msgstr ""
 
-#: includes/admin-pages/page-license.php:245
+#: includes/admin-pages/page-license.php:225
 msgid "Below is a list of the intended features of the Pro Plus version"
 msgstr ""
 
-#: includes/admin-pages/page-license.php:245
-#: includes/admin-pages/page-license.php:259
+#: includes/admin-pages/page-license.php:225
+#: includes/admin-pages/page-license.php:239
 msgid "You can upgrade for"
 msgstr ""
 
-#: includes/admin-pages/page-license.php:254
+#: includes/admin-pages/page-license.php:234
 msgid "Pro Features"
 msgstr ""
 
-#: includes/admin-pages/page-license.php:259
+#: includes/admin-pages/page-license.php:239
 msgid "Below is a list of the intended features of the Pro version"
 msgstr ""
 
-#: includes/admin-pages/page-license.php:273
+#: includes/admin-pages/page-license.php:253
 #: includes/admin-pages/user-data/data-summary.php:74
 #: includes/admin-pages/user-data/data-user.php:266
 #: pro-features/functions-pages.php:516
 msgid "Are you sure you?"
 msgstr ""
 
-#: includes/admin-pages/page-license.php:274
+#: includes/admin-pages/page-license.php:254
 msgid "Are you sure you wish to remove the license for this site? Removing it may cause your user's to lose functionality."
 msgstr ""
 
@@ -918,7 +883,7 @@ msgid "Weight Units"
 msgstr ""
 
 #: includes/admin-pages/settings/page-settings-generic.php:109
-#: includes/functions.php:1455
+#: includes/functions.php:1458
 msgid "Stones & Pounds"
 msgstr ""
 
@@ -1093,8 +1058,7 @@ msgstr ""
 
 #: includes/admin-pages/settings/page-settings-generic.php:294
 #: includes/admin-pages/user-data/data-user.php:134
-#: includes/shortcode-weight-tracker.php:111
-#: pro-features/plus/shortcode.wlt.php:23
+#: includes/shortcode-wt-legacy.php:111 pro-features/plus/shortcode.wlt.php:23
 msgid "Photos"
 msgstr ""
 
@@ -1171,7 +1135,7 @@ msgid "If enabled, a Happy Birthday email shall be sent to users on their birthd
 msgstr ""
 
 #: includes/admin-pages/settings/page-settings-generic.php:386
-#: includes/shortcode-weight-tracker.php:121
+#: includes/shortcode-wt-legacy.php:121
 msgid "Advanced"
 msgstr ""
 
@@ -1504,7 +1468,7 @@ msgid "If enabled, enter a HEX colour code to use for filling the Weight bars on
 msgstr ""
 
 #: includes/admin-pages/settings/page-settings-generic.php:932
-#: includes/hooks.php:27 includes/shortcode-weight-tracker-beta.php:384
+#: includes/hooks.php:27 includes/shortcode-wt.php:432
 #: pro-features/functions-pages.php:469
 msgid "Settings"
 msgstr ""
@@ -1701,6 +1665,7 @@ msgid "Edit"
 msgstr ""
 
 #: includes/admin-pages/user-data/data-groups.php:56
+#: pro-features/user-groups.php:454
 msgid "All Groups"
 msgstr ""
 
@@ -1712,8 +1677,8 @@ msgstr ""
 #: includes/core-forms.php:468 includes/core-tables.php:35
 #: pro-features/email-notifications.php:81
 #: pro-features/export/admin.page.php:249 pro-features/export/functions.php:211
-#: pro-features/footable.php:407 pro-features/functions-pages.php:118
-#: pro-features/plus/challenge/admin.page.php:75 pro-features/web-hooks.php:277
+#: pro-features/footable.php:411 pro-features/functions-pages.php:118
+#: pro-features/plus/challenge/admin.page.php:75 pro-features/web-hooks.php:288
 msgid "Notes"
 msgstr ""
 
@@ -1789,15 +1754,19 @@ msgid "Latest Weight"
 msgstr ""
 
 #: includes/admin-pages/user-data/data-search-results.php:48
-#: includes/components.php:396 pro-features/web-hooks.php:349
+#: includes/components.php:400 pro-features/web-hooks.php:360
 msgid "Target Weight"
 msgstr ""
 
-#: includes/admin-pages/user-data/data-search-results.php:60
+#: includes/admin-pages/user-data/data-search-results.php:49
+msgid "Diff. from Start Weight"
+msgstr ""
+
+#: includes/admin-pages/user-data/data-search-results.php:61
 msgid "No users were found for the given search criteria:"
 msgstr ""
 
-#: includes/admin-pages/user-data/data-search-results.php:65
+#: includes/admin-pages/user-data/data-search-results.php:66
 msgid "No search terms were specified"
 msgstr ""
 
@@ -2025,8 +1994,8 @@ msgid "For performance reasons, the following table shall be restricted to a max
 msgstr ""
 
 #: includes/ajax.php:174 includes/core-forms.php:142
-#: includes/core-tables.php:33 pro-features/footable.php:359
-#: pro-features/web-hooks.php:230
+#: includes/core-tables.php:33 pro-features/footable.php:361
+#: pro-features/web-hooks.php:241
 msgid "Date"
 msgstr ""
 
@@ -2040,6 +2009,7 @@ msgstr ""
 
 #: includes/components.php:49 pro-features/functions-pages.php:383
 #: pro-features/plus/challenge/functions.php:486
+#: pro-features/shortcode-hip-waist-ratio-calculator.php:127
 msgid "Gender"
 msgstr ""
 
@@ -2051,8 +2021,8 @@ msgstr ""
 msgid "Activity Level"
 msgstr ""
 
-#: includes/components.php:128 includes/components.php:768
-#: includes/components.php:813 pro-features/functions-pages.php:400
+#: includes/components.php:128 includes/components.php:773
+#: includes/components.php:818 pro-features/functions-pages.php:400
 msgid "Missing data"
 msgstr ""
 
@@ -2061,9 +2031,9 @@ msgid "Latest vs Start"
 msgstr ""
 
 #: includes/components.php:171 includes/components.php:239
-#: includes/components.php:339 includes/components.php:485
-#: includes/components.php:559 includes/components.php:582
-#: includes/components.php:626
+#: includes/components.php:339 includes/components.php:490
+#: includes/components.php:564 includes/components.php:587
+#: includes/components.php:631
 msgid "No data"
 msgstr ""
 
@@ -2087,156 +2057,164 @@ msgstr ""
 msgid "Previous Weight"
 msgstr ""
 
-#: includes/components.php:378 includes/components.php:413
-#: includes/components.php:416 includes/components.php:445
+#: includes/components.php:378 includes/components.php:418
+#: includes/components.php:421 includes/components.php:450
 msgid "Not set"
 msgstr ""
 
-#: includes/components.php:408 pro-features/functions-pages.php:379
+#: includes/components.php:385
+msgid "Targets not enabled in settings"
+msgstr ""
+
+#: includes/components.php:413 pro-features/functions-pages.php:379
 #: pro-features/shortcode-bmi-calculator.php:97
 msgid "Height"
 msgstr ""
 
-#: includes/components.php:468 pro-features/web-hooks.php:245
+#: includes/components.php:473 pro-features/web-hooks.php:256
 msgid "Starting Weight"
 msgstr ""
 
-#: includes/components.php:481 pro-features/functions-pages.php:358
+#: includes/components.php:486 pro-features/functions-pages.php:358
 msgid "No target set"
 msgstr ""
 
-#: includes/components.php:482
+#: includes/components.php:487
 msgid "Latest vs Target"
 msgstr ""
 
-#: includes/components.php:495
+#: includes/components.php:500
 msgid "No entries"
 msgstr ""
 
-#: includes/components.php:527
+#: includes/components.php:532
 msgid "The difference between your latest weight and target."
 msgstr ""
 
-#: includes/components.php:570 pro-features/plus/challenge/functions.php:207
-#: pro-features/user-groups.php:688
+#: includes/components.php:575 pro-features/plus/challenge/functions.php:207
+#: pro-features/user-groups.php:713
 msgid "No. entries"
 msgstr ""
 
-#: includes/components.php:588
+#: includes/components.php:593
 msgid "Calories for meeting aim"
 msgstr ""
 
-#: includes/components.php:591
+#: includes/components.php:596
 msgid "Calories for maintaining"
 msgstr ""
 
-#: includes/components.php:594
+#: includes/components.php:599
 msgid "Calories for gain"
 msgstr ""
 
-#: includes/components.php:597
+#: includes/components.php:602
 msgid "Calories for loss"
 msgstr ""
 
-#: includes/components.php:637
+#: includes/components.php:642
 msgid "No. weight entries"
 msgstr ""
 
-#: includes/components.php:665
+#: includes/components.php:670
 msgid "Tracking for"
 msgstr ""
 
-#: includes/components.php:666 pro-features/shortcode-various.php:451
+#: includes/components.php:671 pro-features/shortcode-various.php:451
 msgid "days"
 msgstr ""
 
-#: includes/components.php:681
+#: includes/components.php:686
 msgid "Set DoB"
 msgstr ""
 
-#: includes/components.php:682
+#: includes/components.php:687
 msgid "DoB missing"
 msgstr ""
 
-#: includes/components.php:699
+#: includes/components.php:704
 msgid "Age"
 msgstr ""
 
-#: includes/components.php:747 includes/functions.php:958
+#: includes/components.php:752 includes/functions.php:961
 msgid "Login"
 msgstr ""
 
-#: includes/components.php:777
+#: includes/components.php:782
 msgid "What is BMI?"
 msgstr ""
 
-#: includes/components.php:780
+#: includes/components.php:785
 msgid "Body Mass Index (BMI)"
 msgstr ""
 
-#: includes/components.php:781 pro-features/plus/shortcode.wlt.php:72
+#: includes/components.php:786 pro-features/plus/shortcode.wlt.php:72
 msgid "The BMI (Body Mass Index) is used by the medical profession to quickly determine a person’s weight in regard to their height. From a straight forward calculation the BMI factor can be gained and may be used to determine if a person is underweight, of normal weight, overweight or obese."
 msgstr ""
 
-#: includes/components.php:795
+#: includes/components.php:800
 msgid "Starting BMI"
 msgstr ""
 
-#: includes/components.php:795 pro-features/functions-pages.php:368
+#: includes/components.php:800 pro-features/functions-pages.php:368
 msgid "Current BMI"
 msgstr ""
 
-#: includes/components.php:821
+#: includes/components.php:826
 msgid "What is BMR?"
 msgstr ""
 
-#: includes/components.php:824
+#: includes/components.php:829
 msgid "Basal Metabolic Rate (BMR)"
 msgstr ""
 
-#: includes/components.php:825 pro-features/plus/shortcode.wlt.php:95
+#: includes/components.php:830 pro-features/plus/shortcode.wlt.php:95
 msgid "BMR is short for Basal Metabolic Rate. The Basal Metabolic Rate is the number of calories required to keep your body functioning at rest, also known as your metabolism. We calculate your BMR using formulas provided by www.diabetes.co.uk."
 msgstr ""
 
-#: includes/components.php:837
+#: includes/components.php:842
 msgid "Starting BMR"
 msgstr ""
 
-#: includes/components.php:837
+#: includes/components.php:842
 msgid "Current BMR"
 msgstr ""
 
-#: includes/components.php:868 pro-features/plus/challenge/functions.php:204
+#: includes/components.php:867 pro-features/plus/challenge/functions.php:204
 #: pro-features/plus/challenge/functions.php:356
 #: pro-features/plus/meta-fields/hooks.php:137
-#: pro-features/shortcode-stats.php:38 pro-features/user-groups.php:634
-#: pro-features/web-hooks.php:226 pro-features/web-hooks.php:345
+#: pro-features/shortcode-stats.php:38 pro-features/user-groups.php:657
+#: pro-features/web-hooks.php:237 pro-features/web-hooks.php:356
 msgid "Name"
 msgstr ""
 
-#: includes/components.php:1110
+#: includes/components.php:1068
 msgid "Search for a user..."
 msgstr ""
 
-#: includes/components.php:1119
+#: includes/components.php:1077
 msgid "You need to be logged in to search for users."
 msgstr ""
 
-#: includes/components.php:1150
+#: includes/components.php:1108
 msgid "Clear Screen"
 msgstr ""
 
-#: includes/components.php:1186
+#: includes/components.php:1108
+msgid "Clear / Scan Another"
+msgstr ""
+
+#: includes/components.php:1155
 msgid "Total weight difference (between previous/latest)"
 msgstr ""
 
-#: includes/components.php:1187
+#: includes/components.php:1156
 msgid "Total weight difference (between start/latest)"
 msgstr ""
 
 #: includes/converters.php:113 includes/converters.php:135
 #: includes/converters.php:196 includes/core-charting.php:73
-#: includes/functions.php:1625 includes/functions.php:1631
+#: includes/functions.php:1628 includes/functions.php:1634
 #: pro-features/shortcode-stats.php:166
 msgid "lbs"
 msgstr ""
@@ -2255,7 +2233,7 @@ msgid "Error. You have disabled all data sets from rendering."
 msgstr ""
 
 #: includes/core-charting.php:149 pro-features/email-notifications.php:67
-#: pro-features/user-groups.php:693
+#: pro-features/user-groups.php:718
 msgid "Target"
 msgstr ""
 
@@ -2307,7 +2285,7 @@ msgstr ""
 msgid "Clear Target"
 msgstr ""
 
-#: includes/core-forms.php:293 includes/form-handler.php:61
+#: includes/core-forms.php:293 includes/form-handler.php:63
 msgid "Your entry has been successfully saved."
 msgstr ""
 
@@ -2524,22 +2502,6 @@ msgstr ""
 msgid "NE"
 msgstr ""
 
-#: includes/deprecated.php:154
-msgid "You are using an old shortcode. It is now deprecated but will exist under a different name. Please view the plugin documentation and use a suitable replacement: https://docs.yeken.uk/shortcodes/"
-msgstr ""
-
-#: includes/deprecated.php:187 pro-features/widget-chart.php:18
-msgid "Weight Tracker"
-msgstr ""
-
-#: includes/deprecated.php:188
-msgid "Your current Weight Tracker license will soon no longer be supported by the plugin."
-msgstr ""
-
-#: includes/deprecated.php:189
-msgid "Read more about replacing legacy licenses"
-msgstr ""
-
 #: includes/form-handler.php:25
 msgid "No user hash could be found"
 msgstr ""
@@ -2552,7 +2514,7 @@ msgstr ""
 msgid "The given user hash did not match the logged in user"
 msgstr ""
 
-#: includes/form-handler.php:50
+#: includes/form-handler.php:52
 msgid "An error occurred while saving your data"
 msgstr ""
 
@@ -2572,52 +2534,52 @@ msgstr ""
 msgid "to"
 msgstr ""
 
-#: includes/functions.php:888
+#: includes/functions.php:891
 msgid "Read more about calculations"
 msgstr ""
 
-#: includes/functions.php:932
+#: includes/functions.php:935
 msgid "Your modifications have been saved"
 msgstr ""
 
-#: includes/functions.php:1011
+#: includes/functions.php:1014
 msgid "You must be logged in to view or edit your data."
 msgstr ""
 
-#: includes/functions.php:1156
+#: includes/functions.php:1159
 msgid "Upgrade to Pro Plus and get more features!"
 msgstr ""
 
-#: includes/functions.php:1157
+#: includes/functions.php:1160
 msgid "Upgrade to Pro Plus version of this plugin to get additional features like Challenges, Harris Benedict, BMR, Macronutrients and much more!"
 msgstr ""
 
-#: includes/functions.php:1159
+#: includes/functions.php:1162
 msgid "Upgrade Weight Tracker and get more features!"
 msgstr ""
 
-#: includes/functions.php:1160
+#: includes/functions.php:1163
 msgid "Upgrade to the latest Pro or Pro Plus version of this plugin to manipulate your user's data, add custom fields, BMR, Macronutrients and much more!"
 msgstr ""
 
-#: includes/functions.php:1168
+#: includes/functions.php:1171
 msgid "Read more and upgrade"
 msgstr ""
 
-#: includes/functions.php:1185
-msgid "To view this data/shortcode, you need to upgrade to the Pro or Pro Plus version."
+#: includes/functions.php:1188
+msgid "To view this data/shortcode, you need to upgrade."
 msgstr ""
 
-#: includes/functions.php:1187
+#: includes/functions.php:1190
 msgid "Upgrade now"
 msgstr ""
 
-#: includes/functions.php:1455 includes/functions.php:1628
+#: includes/functions.php:1458 includes/functions.php:1631
 #: pro-features/shortcode-bmi-calculator.php:96
 msgid "Kg"
 msgstr ""
 
-#: includes/functions.php:1631
+#: includes/functions.php:1634
 msgid "St"
 msgstr ""
 
@@ -2641,57 +2603,52 @@ msgstr ""
 msgid "An error occurred while trying to save the user's preferences."
 msgstr ""
 
-#: includes/hooks.php:266 includes/shortcode-weight-tracker-beta.php:336
+#: includes/hooks.php:266 includes/shortcode-wt.php:382
 msgid "Weight entries"
 msgstr ""
 
-#: includes/license.php:105
+#: includes/license.php:100
 msgid "Weight Tracker License"
 msgstr ""
 
-#: includes/license.php:106
+#: includes/license.php:101
 msgid "Your license expires in"
 msgstr ""
 
-#: includes/license.php:108
+#: includes/license.php:103
 msgid "days. Please renew your license as soon as possible"
 msgstr ""
 
-#: includes/license.php:248
+#: includes/license.php:243
 msgid "License missing"
 msgstr ""
 
-#: includes/license.php:255
+#: includes/license.php:250
 msgid "Could not decode / verify license"
 msgstr ""
 
-#: includes/license.php:260
+#: includes/license.php:255
 msgid "Invalid license hash"
 msgstr ""
 
-#: includes/license.php:265
+#: includes/license.php:260
 msgid "This license doesn't appear to be for this site (no match on site hash)."
 msgstr ""
 
-#: includes/license.php:273
+#: includes/license.php:268
 msgid "This license has expired."
 msgstr ""
 
-#: includes/license.php:336 pro-features/plus/meta-fields/db.php:608
+#: includes/license.php:331 pro-features/plus/meta-fields/db.php:608
 #: pro-features/user-groups.php:108 pro-features/user-groups.php:160
-#: pro-features/user-groups.php:452
 msgid "None"
 msgstr ""
 
-#: includes/license.php:346
+#: includes/license.php:341
 msgid "Yearly Pro"
 msgstr ""
 
-#: includes/license.php:349
-msgid "Legacy Pro"
-msgstr ""
-
-#: includes/license.php:352
+#: includes/license.php:344
 msgid "Pro Plus"
 msgstr ""
 
@@ -2724,180 +2681,171 @@ msgid "Get Meal Tracker Now"
 msgstr ""
 
 #: includes/setup-wizard.php:104
-#, php-format
-msgid "20% off coupon"
-msgstr ""
-
-#: includes/setup-wizard.php:105
 msgid "from WordPress.org"
 msgstr ""
 
-#: includes/setup-wizard.php:106
+#: includes/setup-wizard.php:105
 msgid "Upgrade to Premium"
 msgstr ""
 
-#: includes/setup-wizard.php:107
+#: includes/setup-wizard.php:106
 msgid "Any questions, email@yeken.uk"
 msgstr ""
 
-#: includes/setup-wizard.php:119
+#: includes/setup-wizard.php:118
 #, php-format
 msgid "Use the following coupon code to receive 50% off when upgrading from Pro to Pro Plus. Simply apply it during the checkout process."
 msgstr ""
 
-#: includes/setup-wizard.php:120
+#: includes/setup-wizard.php:119
 msgid "Coupon"
 msgstr ""
 
-#: includes/shortcode-weight-tracker-beta.php:53
-#: includes/shortcode-weight-tracker.php:52
+#: includes/shortcode-wt-legacy.php:45
+msgid "This shortcode can only be placed once on a page / post. To disable this check, try: [wt disable-second-check=true]"
+msgstr ""
+
+#: includes/shortcode-wt-legacy.php:52 includes/shortcode-wt.php:55
 #: pro-features/plus/meta-fields/shortcodes.php:36
 msgid "You need to be logged in to record your weight."
 msgstr ""
 
-#: includes/shortcode-weight-tracker-beta.php:129
-#: includes/shortcode-weight-tracker.php:71
+#: includes/shortcode-wt-legacy.php:71 includes/shortcode-wt.php:151
 msgid "Your settings have been successfully saved!"
 msgstr ""
 
-#: includes/shortcode-weight-tracker-beta.php:131
-#: includes/shortcode-weight-tracker.php:73
+#: includes/shortcode-wt-legacy.php:73 includes/shortcode-wt.php:153
 msgid "Your data has successfully been deleted."
 msgstr ""
 
-#: includes/shortcode-weight-tracker-beta.php:153
-msgid "View Group Weight Loss for today"
-msgstr ""
-
-#: includes/shortcode-weight-tracker-beta.php:339
-msgid "View in tabular format"
-msgstr ""
-
-#: includes/shortcode-weight-tracker-beta.php:364
-msgid "Your target"
-msgstr ""
-
-#: includes/shortcode-weight-tracker-beta.php:397
-msgid "Delete your existing data"
-msgstr ""
-
-#: includes/shortcode-weight-tracker-beta.php:415
-msgid "Messages"
-msgstr ""
-
-#: includes/shortcode-weight-tracker-beta.php:429
-msgid "Add a new entry"
-msgstr ""
-
-#: includes/shortcode-weight-tracker-beta.php:443
-msgid "Your entries"
-msgstr ""
-
-#: includes/shortcode-weight-tracker-beta.php:471
-msgid "Latest Photo"
-msgstr ""
-
-#: includes/shortcode-weight-tracker-beta.php:477
-msgid "Oldest Photo"
-msgstr ""
-
-#: includes/shortcode-weight-tracker-beta.php:486
-msgid "All of your photos"
-msgstr ""
-
-#: includes/shortcode-weight-tracker-beta.php:532
-msgid "Learn more about suggested calorie intakes"
-msgstr ""
-
-#: includes/shortcode-weight-tracker-beta.php:533
-#: pro-features/plus/shortcode.wlt.php:114
-msgid "Once we know your BMR (the number of calories to keep you functioning at rest), we can go on to give you suggestions on how to spread your calorie intake across the day. Firstly we split the figures into daily calorie intake to maintain weight and daily calorie intake to lose weight. Daily calorie intake to lose weight is calculated based on NHS advice – they suggest to lose 1 – 2lbs a week you should subtract 600 calories from your BMR. The two daily figures can be further broken down by recommending how to split calorie intake across the day i.e. breakfast, lunch, dinner and snacks."
-msgstr ""
-
-#: includes/shortcode-weight-tracker-beta.php:538
-#: pro-features/plus/shortcode.wlt.php:109
-msgid "Suggested Calorie Intake"
-msgstr ""
-
-#: includes/shortcode-weight-tracker-beta.php:548
-msgid "Learn more about macronutrients"
-msgstr ""
-
-#: includes/shortcode-weight-tracker-beta.php:549
-#: pro-features/plus/shortcode.wlt.php:134
-msgid "With calories calculated, the we can recommend how those calories should be split into Fats, Carbohydrates and Proteins."
-msgstr ""
-
-#: includes/shortcode-weight-tracker-beta.php:555
-#: pro-features/plus/shortcode.wlt.php:128
-msgid "Macronutrients"
-msgstr ""
-
-#: includes/shortcode-weight-tracker.php:45
-msgid "This shortcode can only be placed once on a page / post. To disable this check, try: [wt disable-second-check=true]"
-msgstr ""
-
-#: includes/shortcode-weight-tracker.php:95
+#: includes/shortcode-wt-legacy.php:95
 #: pro-features/plus/challenge/admin.page.php:77
 msgid "Overview"
 msgstr ""
 
-#: includes/shortcode-weight-tracker.php:96
+#: includes/shortcode-wt-legacy.php:96
 msgid "Chart and add a new entry"
 msgstr ""
 
-#: includes/shortcode-weight-tracker.php:100
+#: includes/shortcode-wt-legacy.php:100
 msgid "History"
 msgstr ""
 
-#: includes/shortcode-weight-tracker.php:101
+#: includes/shortcode-wt-legacy.php:101
 msgid "View all of your entries"
 msgstr ""
 
-#: includes/shortcode-weight-tracker.php:101
+#: includes/shortcode-wt-legacy.php:101
 msgid "View your latest entries"
 msgstr ""
 
-#: includes/shortcode-weight-tracker.php:112
+#: includes/shortcode-wt-legacy.php:112
 msgid "View a gallery of your photos"
 msgstr ""
 
-#: includes/shortcode-weight-tracker.php:122
+#: includes/shortcode-wt-legacy.php:122
 msgid "BMI, BMR, Calories and Macronutrients"
 msgstr ""
 
-#: includes/shortcode-weight-tracker.php:131
-#: pro-features/functions-pages.php:473
+#: includes/shortcode-wt-legacy.php:131 pro-features/functions-pages.php:473
 msgid "Preferences"
 msgstr ""
 
-#: includes/shortcode-weight-tracker.php:132
+#: includes/shortcode-wt-legacy.php:132
 msgid "Customise this tool for you"
 msgstr ""
 
-#: includes/shortcode-weight-tracker.php:228
+#: includes/shortcode-wt-legacy.php:228
 msgid "Weight History"
 msgstr ""
 
-#: includes/shortcode-weight-tracker.php:245
+#: includes/shortcode-wt-legacy.php:245
 msgid "No data could be found for this week, please try selecting another:"
 msgstr ""
 
-#: includes/shortcode-weight-tracker.php:251
+#: includes/shortcode-wt-legacy.php:251
 msgid "You haven't entered any weight data yet."
 msgstr ""
 
-#: includes/shortcode-weight-tracker.php:320
+#: includes/shortcode-wt-legacy.php:320
 msgid "Add a weight entry"
 msgstr ""
 
-#: includes/shortcode-weight-tracker.php:325
+#: includes/shortcode-wt-legacy.php:325
 msgid "In a chart"
 msgstr ""
 
-#: includes/shortcode-weight-tracker.php:337
+#: includes/shortcode-wt-legacy.php:337
 #, php-format
 msgid "A graph shall appear when %d or more weight entries have been entered."
+msgstr ""
+
+#: includes/shortcode-wt.php:105
+msgid "Editing"
+msgstr ""
+
+#: includes/shortcode-wt.php:175
+msgid "View Group Weight Loss for today"
+msgstr ""
+
+#: includes/shortcode-wt.php:385
+msgid "View in tabular format"
+msgstr ""
+
+#: includes/shortcode-wt.php:410
+msgid "Your target"
+msgstr ""
+
+#: includes/shortcode-wt.php:445
+msgid "Delete your existing data"
+msgstr ""
+
+#: includes/shortcode-wt.php:464
+msgid "Messages"
+msgstr ""
+
+#: includes/shortcode-wt.php:477
+msgid "Add a new entry"
+msgstr ""
+
+#: includes/shortcode-wt.php:511
+msgid "Your entries"
+msgstr ""
+
+#: includes/shortcode-wt.php:529
+msgid "Latest Photo"
+msgstr ""
+
+#: includes/shortcode-wt.php:535
+msgid "Oldest Photo"
+msgstr ""
+
+#: includes/shortcode-wt.php:544
+msgid "All of your photos"
+msgstr ""
+
+#: includes/shortcode-wt.php:590
+msgid "Learn more about suggested calorie intakes"
+msgstr ""
+
+#: includes/shortcode-wt.php:591 pro-features/plus/shortcode.wlt.php:114
+msgid "Once we know your BMR (the number of calories to keep you functioning at rest), we can go on to give you suggestions on how to spread your calorie intake across the day. Firstly we split the figures into daily calorie intake to maintain weight and daily calorie intake to lose weight. Daily calorie intake to lose weight is calculated based on NHS advice – they suggest to lose 1 – 2lbs a week you should subtract 600 calories from your BMR. The two daily figures can be further broken down by recommending how to split calorie intake across the day i.e. breakfast, lunch, dinner and snacks."
+msgstr ""
+
+#: includes/shortcode-wt.php:596 pro-features/plus/shortcode.wlt.php:109
+msgid "Suggested Calorie Intake"
+msgstr ""
+
+#: includes/shortcode-wt.php:606
+msgid "Learn more about macronutrients"
+msgstr ""
+
+#: includes/shortcode-wt.php:607 pro-features/plus/shortcode.wlt.php:134
+msgid "With calories calculated, the we can recommend how those calories should be split into Fats, Carbohydrates and Proteins."
+msgstr ""
+
+#: includes/shortcode-wt.php:613 pro-features/plus/shortcode.wlt.php:128
+msgid "Macronutrients"
 msgstr ""
 
 #: pro-features/email-notifications.php:61
@@ -3010,8 +2958,8 @@ msgstr ""
 msgid "Use the following options to specify which weight entries should appear in the export."
 msgstr ""
 
-#: pro-features/export/admin.page.php:167 pro-features/footable.php:353
-#: pro-features/user-groups.php:687
+#: pro-features/export/admin.page.php:167 pro-features/footable.php:355
+#: pro-features/user-groups.php:712
 msgid "User"
 msgstr ""
 
@@ -3112,7 +3060,7 @@ msgstr ""
 msgid "Difference from start"
 msgstr ""
 
-#: pro-features/export/functions.php:209 pro-features/footable.php:370
+#: pro-features/export/functions.php:209 pro-features/footable.php:374
 msgid "BMI"
 msgstr ""
 
@@ -3169,142 +3117,154 @@ msgid " <strong>All of the features that come with a standard <a href=\""
 msgstr ""
 
 #: pro-features/feature-list.php:12
-msgid " <strong>Basal Metabolic Rate (BMR) calculations per user</strong>. Shortcodes and extended admin screens to display a user's BMR. For further information on BMR and how it is calculated visit <a href=\""
+msgid "<strong>[wt-kiosk]</strong> - allowing your administrators and staff to search and edit a user's record on the front end of your website."
 msgstr ""
 
 #: pro-features/feature-list.php:13
-msgid " <strong>Harris Benedict formula</strong>. Shortcodes and extended admin screens to a view a person's calorie intake required to maintain and lose weight. For further information on Harris Benedict Formula and how it is calculated visit <a href=\""
+msgid " <strong>Basal Metabolic Rate (BMR) calculations per user</strong>. Shortcodes and extended admin screens to display a user's BMR. For further information on BMR and how it is calculated visit <a href=\""
 msgstr ""
 
 #: pro-features/feature-list.php:14
-msgid " <strong>Recommended calorie intake per meal time</strong>. Shortcodes and extended admin screens to recommend how a person should split their daily calorie intake across meals. For further information on how this is calculated please visit <a href=\""
+msgid " <strong>Harris Benedict formula</strong>. Shortcodes and extended admin screens to a view a person's calorie intake required to maintain and lose weight. For further information on Harris Benedict Formula and how it is calculated visit <a href=\""
 msgstr ""
 
 #: pro-features/feature-list.php:15
-msgid " <strong>Macronutrients Calculator</strong>. Shortcodes and extended admin screens to recommend how their calorie consumption should be split into fats, carbohydrates and proteins. For further information on the Macronutrients Calculator and how these calculations are performed please visit <a href=\""
+msgid " <strong>Recommended calorie intake per meal time</strong>. Shortcodes and extended admin screens to recommend how a person should split their daily calorie intake across meals. For further information on how this is calculated please visit <a href=\""
 msgstr ""
 
 #: pro-features/feature-list.php:16
-msgid " <strong>Additional user preference fields</strong>. Additional user preference fields and shortcodes to display them: Activity Level, Date of Birth and Gender."
+msgid " <strong>Macronutrients Calculator</strong>. Shortcodes and extended admin screens to recommend how their calorie consumption should be split into fats, carbohydrates and proteins. For further information on the Macronutrients Calculator and how these calculations are performed please visit <a href=\""
 msgstr ""
 
 #: pro-features/feature-list.php:17
-msgid " <strong>Awards</strong>. Awards and Badges! Set awards for: BMI Change, BMI Equals, Weight Gain / Loss from start and Percentage of weight lost from start."
+msgid " <strong>Additional user preference fields</strong>. Additional user preference fields and shortcodes to display them: Activity Level, Date of Birth and Gender."
 msgstr ""
 
 #: pro-features/feature-list.php:18
+msgid " <strong>Awards</strong>. Awards and Badges! Set awards for: BMI Change, BMI Equals, Weight Gain / Loss from start and Percentage of weight lost from start."
+msgstr ""
+
+#: pro-features/feature-list.php:19
 msgid " <strong>Challenges</strong>. Set challenges for your user's within a given time period? Display Total Weight Lost, BMI Change, %Body Weight, Weight Tracker Streaks and Meal Tracker streaks achieved by each user in a league table. Besides viewing all your challenges and their data, the shortcode will allow you to display the league table in the public facing website."
 msgstr ""
 
-#: pro-features/feature-list.php:28
-msgid " <strong>Access your user's data.</strong> Admin can view, edit and delete user data. Various tools for viewing user's graphs, tables of entries, BMI, targets, weight lost / gained stats and much more."
+#: pro-features/feature-list.php:20
+msgid " <strong>BMI Calculator</strong>A quick tool to allow your users to enter their measurements/weight to calculate their BMI."
 msgstr ""
 
-#: pro-features/feature-list.php:29
-msgid " <strong>Challenges.</strong> Create and display challenges for users over different time periods."
-msgstr ""
-
-#: pro-features/feature-list.php:30
-msgid " <strong>Custom Fields.</strong> Create and add your own questions to weight entry forms to gather additional information."
+#: pro-features/feature-list.php:21
+msgid " <strong>Waist-to-Hip ratio Calculator</strong>A quick tool to allow your users to enter their measurements to calculate their Waist-to-Hip ratio."
 msgstr ""
 
 #: pro-features/feature-list.php:31
-msgid " <strong>Photo Custom Fields</strong>. Add one or more photo fields to your weight entry forms and allow your users to upload photos of their progress. Photos can be viewed, updated and removed by the end user and administrators. Handy shortcodes are provided for displaying galleries, most recent and oldest photo."
+msgid " <strong>Access your user's data.</strong> Admin can view, edit and delete user data. Various tools for viewing user's graphs, tables of entries, BMI, targets, weight lost / gained stats and much more."
 msgstr ""
 
 #: pro-features/feature-list.php:32
-msgid " <strong>Export all data or a particular user.</strong> Export in JSON or CSV format."
+msgid " <strong>Challenges.</strong> Create and display challenges for users over different time periods."
 msgstr ""
 
 #: pro-features/feature-list.php:33
-msgid " <strong>Webhooks, Zapier & Slack</strong>. Push weight entry data and targets to Slack channels, Zapier or your own custom Webhooks!"
+msgid " <strong>Custom Fields.</strong> Create and add your own questions to weight entry forms to gather additional information."
 msgstr ""
 
 #: pro-features/feature-list.php:34
-msgid " <strong>Groups</strong>. Define user groups and assign your user's to them. View Weight Difference statistics for the group as a whole."
+msgid " <strong>Photo Custom Fields</strong>. Add one or more photo fields to your weight entry forms and allow your users to upload photos of their progress. Photos can be viewed, updated and removed by the end user and administrators. Handy shortcodes are provided for displaying galleries, most recent and oldest photo."
 msgstr ""
 
 #: pro-features/feature-list.php:35
-msgid " <strong>Admin notes</strong>. Administrators have the ability to store notes against their users. If set to visible, the user can view these via [wt-notes] or receive emails with their content."
+msgid " <strong>Export all data or a particular user.</strong> Export in JSON or CSV format."
 msgstr ""
 
 #: pro-features/feature-list.php:36
-msgid " <strong>Gamification</strong>. Support for myCred, a popular gamification plugin. Reward your users for weight entries and setting their targets."
+msgid " <strong>Webhooks, Zapier & Slack</strong>. Push weight entry data and targets to Slack channels, Zapier or your own custom Webhooks!"
 msgstr ""
 
 #: pro-features/feature-list.php:37
-msgid " <strong>BMI.</strong> Allows a user to specify their height. Once specified, their BMI is displayed next to each weight entry. There is also a shortcode to render the latest BMI."
+msgid " <strong>Groups</strong>. Define user groups and assign your user's to them. View Weight Difference statistics for the group as a whole."
 msgstr ""
 
 #: pro-features/feature-list.php:38
-msgid " <strong>Email notifications.</strong> Receive email notifications when a person updates their target or adds / edits a weight."
+msgid " <strong>Admin notes</strong>. Administrators have the ability to store notes against their users. If set to visible, the user can view these via [wt-notes] or receive emails with their content."
 msgstr ""
 
 #: pro-features/feature-list.php:39
-msgid " <strong>Birthday Emails.</strong> Automatically send your user's a birthday email (when they have entered a date of birth)"
+msgid " <strong>Gamification</strong>. Support for myCred, a popular gamification plugin. Reward your users for weight entries and setting their targets."
 msgstr ""
 
 #: pro-features/feature-list.php:40
-msgid " <strong>Overall user stats.</strong> Shortcodes that allow you to display the total lost / gained for the community and another to display a league table."
+msgid " <strong>BMI.</strong> Allows a user to specify their height. Once specified, their BMI is displayed next to each weight entry. There is also a shortcode to render the latest BMI."
 msgstr ""
 
 #: pro-features/feature-list.php:41
-msgid " <strong>Widgets.</strong> Widgets that allow you to display the graph and quick weight entry form within any widget area."
+msgid " <strong>Email notifications.</strong> Receive email notifications when a person updates their target or adds / edits a weight."
 msgstr ""
 
 #: pro-features/feature-list.php:42
-msgid " <strong>Chart and form Shortcodes.</strong> That allow you to display the graph and quick weight entry form by placing a shortcode on any post or page."
+msgid " <strong>Birthday Emails.</strong> Automatically send your user's a birthday email (when they have entered a date of birth)"
 msgstr ""
 
 #: pro-features/feature-list.php:43
-msgid " <strong>Progress Bar shortcode.</strong> A shortcode that visually displays the logged in user's progress towards their target"
+msgid " <strong>Overall user stats.</strong> Shortcodes that allow you to display the total lost / gained for the community and another to display a league table."
 msgstr ""
 
 #: pro-features/feature-list.php:44
-msgid " <strong>Reminder shortcode.</strong> A shortcode that can be used to remind the user to enter their target or weight for today."
+msgid " <strong>Widgets.</strong> Widgets that allow you to display the graph and quick weight entry form within any widget area."
 msgstr ""
 
 #: pro-features/feature-list.php:45
-msgid " <strong>Message shortcode</strong> A shortcode that allows you to congratulate a user when they lose weight x number of times. It also provides the opposite allowing you to provide encouragement when someone gains weight."
+msgid " <strong>Chart and form Shortcodes.</strong> That allow you to display the graph and quick weight entry form by placing a shortcode on any post or page."
 msgstr ""
 
 #: pro-features/feature-list.php:46
-msgid " <strong>Text Shortcodes.</strong> Additional shortcodes for earliest and most recent dates entered."
+msgid " <strong>Progress Bar shortcode.</strong> A shortcode that visually displays the logged in user's progress towards their target"
 msgstr ""
 
 #: pro-features/feature-list.php:47
-msgid " <strong>Progress Bar shortcode / widget.</strong> Display a user's progress towards their weight target."
+msgid " <strong>Reminder shortcode.</strong> A shortcode that can be used to remind the user to enter their target or weight for today."
 msgstr ""
 
 #: pro-features/feature-list.php:48
-msgid " <strong>Reminder shortcode.</strong> Display a reminder to enter their weight for the given day or enter a target."
+msgid " <strong>Message shortcode</strong> A shortcode that allows you to congratulate a user when they lose weight x number of times. It also provides the opposite allowing you to provide encouragement when someone gains weight."
 msgstr ""
 
 #: pro-features/feature-list.php:49
-msgid " <strong>Admin: View / Delete user data</strong>. Admin will be able to view and delete existing user data."
+msgid " <strong>Text Shortcodes.</strong> Additional shortcodes for earliest and most recent dates entered."
 msgstr ""
 
 #: pro-features/feature-list.php:50
-msgid " <strong>User preferences</strong>. If enabled, the user will be able to select which unit they wish to store their weight in Metric or Imperial. They will also be able to specify date format and clear all their weight data."
+msgid " <strong>Progress Bar shortcode / widget.</strong> Display a user's progress towards their weight target."
 msgstr ""
 
 #: pro-features/feature-list.php:51
-msgid " <strong>Bar Charts</strong>. Fancy something different to a line chart? The plugin will also support Bar Charts."
+msgid " <strong>Reminder shortcode.</strong> Display a reminder to enter their weight for the given day or enter a target."
 msgstr ""
 
 #: pro-features/feature-list.php:52
-msgid " <strong>Decimals</strong>. Decimals will be allowed weight in Pounds only or Kg modes."
+msgid " <strong>Admin: View / Delete user data</strong>. Admin will be able to view and delete existing user data."
 msgstr ""
 
 #: pro-features/feature-list.php:53
-msgid " <strong>Delete existing entry</strong>. A logged in user will be able to delete or edit an existing weight entry."
+msgid " <strong>User preferences</strong>. If enabled, the user will be able to select which unit they wish to store their weight in Metric or Imperial. They will also be able to specify date format and clear all their weight data."
 msgstr ""
 
 #: pro-features/feature-list.php:54
-msgid " <strong>Better Tables.</strong>. Data tables in front end and admin will support paging and sorting."
+msgid " <strong>Bar Charts</strong>. Fancy something different to a line chart? The plugin will also support Bar Charts."
 msgstr ""
 
 #: pro-features/feature-list.php:55
+msgid " <strong>Decimals</strong>. Decimals will be allowed weight in Pounds only or Kg modes."
+msgstr ""
+
+#: pro-features/feature-list.php:56
+msgid " <strong>Delete existing entry</strong>. A logged in user will be able to delete or edit an existing weight entry."
+msgstr ""
+
+#: pro-features/feature-list.php:57
+msgid " <strong>Better Tables.</strong>. Data tables in front end and admin will support paging and sorting."
+msgstr ""
+
+#: pro-features/feature-list.php:58
 msgid " <strong>Admin: Extra Settings</strong>. Extra settings to customise the plugin will be added e.g. number of plot points on graph, rows per page, etc."
 msgstr ""
 
@@ -3324,51 +3284,51 @@ msgstr ""
 msgid "No weight recorded"
 msgstr ""
 
-#: pro-features/footable.php:221
+#: pro-features/footable.php:222
 msgid "No Change"
 msgstr ""
 
-#: pro-features/footable.php:228
+#: pro-features/footable.php:229
 msgid "Check record"
 msgstr ""
 
-#: pro-features/footable.php:230
+#: pro-features/footable.php:231
 msgid "First weight entry"
 msgstr ""
 
-#: pro-features/footable.php:250
+#: pro-features/footable.php:251
 msgid "No height"
 msgstr ""
 
-#: pro-features/footable.php:364
+#: pro-features/footable.php:367
 msgid "Difference"
 msgstr ""
 
-#: pro-features/footable.php:370
+#: pro-features/footable.php:374
 msgid "Body Mass Index"
 msgstr ""
 
-#: pro-features/footable.php:442
+#: pro-features/footable.php:446
 msgid "Add Custom Field"
 msgstr ""
 
-#: pro-features/footable.php:443
+#: pro-features/footable.php:447
 msgid "Add Award"
 msgstr ""
 
-#: pro-features/footable.php:444
+#: pro-features/footable.php:448
 msgid "Are you sure you want to delete the row?"
 msgstr ""
 
-#: pro-features/footable.php:445
+#: pro-features/footable.php:449
 msgid "Unfortunately there was an error deleting the row."
 msgstr ""
 
-#: pro-features/footable.php:446
+#: pro-features/footable.php:450
 msgid "Search"
 msgstr ""
 
-#: pro-features/footable.php:447
+#: pro-features/footable.php:451
 msgid "No data found"
 msgstr ""
 
@@ -3541,6 +3501,7 @@ msgid "Obese"
 msgstr ""
 
 #: pro-features/functions.php:74 pro-features/functions.php:99
+#: pro-features/shortcode-hip-waist-ratio-calculator.php:225
 msgid "Err"
 msgstr ""
 
@@ -3549,10 +3510,12 @@ msgid "Heavily Overweight"
 msgstr ""
 
 #: pro-features/functions.php:339 pro-features/plus/harris-benedict.php:466
+#: pro-features/shortcode-hip-waist-ratio-calculator.php:128
 msgid "Female"
 msgstr ""
 
 #: pro-features/functions.php:340 pro-features/plus/harris-benedict.php:466
+#: pro-features/shortcode-hip-waist-ratio-calculator.php:129
 msgid "Male"
 msgstr ""
 
@@ -3822,7 +3785,7 @@ msgid "page"
 msgstr ""
 
 #: pro-features/plus/challenge/functions.php:203
-#: pro-features/user-groups.php:686
+#: pro-features/user-groups.php:711
 msgid "ID"
 msgstr ""
 
@@ -4040,19 +4003,19 @@ msgstr ""
 msgid "Note added"
 msgstr ""
 
-#: pro-features/plus/messaging/functions-notes.php:115
+#: pro-features/plus/messaging/functions-notes.php:116
 msgid " (Visible via [wt-notes])"
 msgstr ""
 
-#: pro-features/plus/messaging/hooks.php:73
+#: pro-features/plus/messaging/hooks.php:82
 msgid "You currently have no notes from the administrator."
 msgstr ""
 
-#: pro-features/plus/messaging/hooks.php:99
+#: pro-features/plus/messaging/hooks.php:108
 msgid "« prev"
 msgstr ""
 
-#: pro-features/plus/messaging/hooks.php:100
+#: pro-features/plus/messaging/hooks.php:109
 msgid "next »"
 msgstr ""
 
@@ -4176,7 +4139,7 @@ msgstr ""
 msgid "Key / Slug"
 msgstr ""
 
-#: pro-features/plus/meta-fields/hooks.php:135 pro-features/user-groups.php:633
+#: pro-features/plus/meta-fields/hooks.php:135 pro-features/user-groups.php:656
 msgid "Group ID"
 msgstr ""
 
@@ -4223,6 +4186,16 @@ msgstr ""
 #: pro-features/plus/meta-fields/shortcodes.php:216
 #: pro-features/shortcode-chart.php:22
 msgid "Currently there is no data to display on the chart."
+msgstr ""
+
+#: pro-features/plus/meta-fields/shortcodes.php:281
+#: pro-features/plus/meta-fields/shortcodes.php:344
+msgid "You must specify a slug."
+msgstr ""
+
+#: pro-features/plus/meta-fields/shortcodes.php:287
+#: pro-features/plus/meta-fields/shortcodes.php:350
+msgid "The slug you specified does not exist."
 msgstr ""
 
 #: pro-features/plus/photos-gallery.php:35
@@ -4294,6 +4267,7 @@ msgid "Your Date of Birth:"
 msgstr ""
 
 #: pro-features/plus/shortcode.calculator.php:212
+#: pro-features/shortcode-hip-waist-ratio-calculator.php:126
 msgid "Calculate"
 msgstr ""
 
@@ -4349,6 +4323,38 @@ msgstr ""
 msgid "Your weight suggests you are"
 msgstr ""
 
+#: pro-features/shortcode-hip-waist-ratio-calculator.php:122
+msgid "Waist (cm)"
+msgstr ""
+
+#: pro-features/shortcode-hip-waist-ratio-calculator.php:123
+msgid "Waist (inches)"
+msgstr ""
+
+#: pro-features/shortcode-hip-waist-ratio-calculator.php:124
+msgid "Hip (cm)"
+msgstr ""
+
+#: pro-features/shortcode-hip-waist-ratio-calculator.php:125
+msgid "Hip (inches)"
+msgstr ""
+
+#: pro-features/shortcode-hip-waist-ratio-calculator.php:165
+msgid "Moderate Health Risk"
+msgstr ""
+
+#: pro-features/shortcode-hip-waist-ratio-calculator.php:168
+msgid "High Health Risk"
+msgstr ""
+
+#: pro-features/shortcode-hip-waist-ratio-calculator.php:171
+msgid "Low Health Risk"
+msgstr ""
+
+#: pro-features/shortcode-hip-waist-ratio-calculator.php:175
+msgid "Your ratio"
+msgstr ""
+
 #: pro-features/shortcode-if.php:21
 msgid "To use this shortcode, you must specify content between opening and closing tag e.g. [wlt-if]something to show if IF is true[/wlt-if]"
 msgstr ""
@@ -4374,16 +4380,16 @@ msgstr ""
 msgid "Please add a weight entry to see your progress."
 msgstr ""
 
-#: pro-features/shortcode-reminders.php:39
+#: pro-features/shortcode-reminders.php:56
 msgid "Please remember to enter your weight for today as well as your target weight."
 msgstr ""
 
-#: pro-features/shortcode-reminders.php:42
+#: pro-features/shortcode-reminders.php:59
 msgid "Please remember to enter your target weight."
 msgstr ""
 
-#: pro-features/shortcode-reminders.php:45
-msgid "Please remember to enter your weight for today."
+#: pro-features/shortcode-reminders.php:62
+msgid "Please remember to enter your weight."
 msgstr ""
 
 #: pro-features/shortcode-stats.php:39
@@ -4418,36 +4424,41 @@ msgstr ""
 msgid "Birthday Email"
 msgstr ""
 
-#: pro-features/user-groups.php:635
+#: pro-features/user-groups.php:450 pro-features/user-groups.php:552
+#: pro-features/user-groups.php:887
+msgid "No Group"
+msgstr ""
+
+#: pro-features/user-groups.php:658
 msgid "No. Users"
 msgstr ""
 
-#: pro-features/user-groups.php:637
+#: pro-features/user-groups.php:660
 msgid "Total Weight Difference"
 msgstr ""
 
-#: pro-features/user-groups.php:689
-msgid "Start"
-msgstr ""
-
-#: pro-features/user-groups.php:690
-msgid "Previous"
-msgstr ""
-
-#: pro-features/user-groups.php:691
-msgid "Latest"
-msgstr ""
-
-#: pro-features/user-groups.php:692
+#: pro-features/user-groups.php:708
 msgid "Diff from start"
 msgstr ""
 
-#: pro-features/user-groups.php:826
-msgid "There is no weight difference for this group."
+#: pro-features/user-groups.php:708
+msgid "Diff from prev"
 msgstr ""
 
-#: pro-features/user-groups.php:862
-msgid "No Group"
+#: pro-features/user-groups.php:714
+msgid "Start"
+msgstr ""
+
+#: pro-features/user-groups.php:715
+msgid "Previous"
+msgstr ""
+
+#: pro-features/user-groups.php:716
+msgid "Latest"
+msgstr ""
+
+#: pro-features/user-groups.php:851
+msgid "There is no weight difference for this group."
 msgstr ""
 
 #: pro-features/user-preferences.php:17
@@ -4522,19 +4533,19 @@ msgstr ""
 msgid "DELETE ALL DATA"
 msgstr ""
 
-#: pro-features/web-hooks.php:215
+#: pro-features/web-hooks.php:226
 msgid "A weight entry has been added/updated"
 msgstr ""
 
-#: pro-features/web-hooks.php:289
+#: pro-features/web-hooks.php:300
 msgid "View Entry"
 msgstr ""
 
-#: pro-features/web-hooks.php:294 pro-features/web-hooks.php:360
+#: pro-features/web-hooks.php:305 pro-features/web-hooks.php:371
 msgid "View Profile"
 msgstr ""
 
-#: pro-features/web-hooks.php:334
+#: pro-features/web-hooks.php:345
 msgid "A new target has been set"
 msgstr ""
 
@@ -4544,6 +4555,10 @@ msgstr ""
 
 #: pro-features/widget-chart.php:14
 msgid "Display a chart to see your current progress."
+msgstr ""
+
+#: pro-features/widget-chart.php:18
+msgid "Weight Tracker"
 msgstr ""
 
 #: pro-features/widget-chart.php:101
