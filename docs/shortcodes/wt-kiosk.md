@@ -18,5 +18,6 @@ The shortcode supports the following arguments:
     
 | Argument | Description | Options | Example |    
 |--|--|--|--|   
-| bmi-format | Specify the format that BMI should be displayed in.  |'label' (default), 'both' or 'index'    | [wt bmi-format='both'] |   
+| bmi-format | Specify the format that BMI should be displayed in.  |'label' (default), 'both' or 'index'    | [wt-kiosk bmi-format='both'] |   
+|kiosk-barcode-scanner|If set to true, a barcode scanner shall appear at the top when in Kiosk mode. Please note, the barcode/QR code must contain a WordPress user ID e.g. 233. Upon a successful scan, the relevant user record shall be loaded.|True or False (default)|[wt-kiosk kiosk-mode=true kiosk-barcode-scanner=true]
 |summary-boxes-kiosk|Specify the [summary boxes]({{ site.baseurl }}/components.html) to display on the summary tab.|Comma delimited list, [read more]({{ site.baseurl }}/components.html) ( default: "weight-difference-since-previous,latest-weight,latest-versus-target,latest-versus-start,latest-award,bmi,calories-lose,calories-maintain,divider,start-weight,aim,target-weight,start-bmi,start-bmr,previous-weight,divider,name-and-email,gender,age-dob,height,activity-level,group")|[wt-kiosk summary-boxes-kiosk="latest-weight,start-weight"]

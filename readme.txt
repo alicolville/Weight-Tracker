@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight,tracker,chart,bmi,bmr,macronutrient,measure,awards,custom fields,history,measurements,data
 Requires at least: 5.7
 Tested up to: 6.0.2
-Stable tag: 10.3.1
+Stable tag: 10.3.2
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -153,7 +153,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 = 10.3.2 =
 
-* Improvement: Added support for Barcode scanning in [wt-kiosk].
+* Improvement: Added support for Barcode scanning in [wt-kiosk]. Read more: https://docs.yeken.uk/shortcodes/wt-kiosk.html
 * Improvement: [wt-kiosk] - hide the "Clear Screen" button until a user record has been selected.
 
 = 10.3.1 =
