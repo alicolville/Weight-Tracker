@@ -147,7 +147,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 == Upgrade Notice ==
 
-10.2 - "Kiosk Mode" for [wt-beta]!
+10.2 - "Kiosk Mode" for [wt]!
 
 == Changelog ==
 
@@ -155,6 +155,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 * Improvement: Added support for Barcode scanning in [wt-kiosk]. Read more: https://docs.yeken.uk/shortcodes/wt-kiosk.html
 * Improvement: [wt-kiosk] - hide the "Clear Screen" button until a user record has been selected.
+* Maintenance: Updated language files.
 
 = 10.3.1 =
 

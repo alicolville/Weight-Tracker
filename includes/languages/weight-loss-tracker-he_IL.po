@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Weight Loss Tracker\n"
-"POT-Creation-Date: 2022-08-05 16:32+0100\n"
-"PO-Revision-Date: 2022-08-05 16:32+0100\n"
+"POT-Creation-Date: 2022-10-24 21:23+0100\n"
+"PO-Revision-Date: 2022-10-24 21:23+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: he_IL\n"
@@ -83,15 +83,15 @@ msgstr "אבנים"
 #: includes/admin-pages/awards/page-awards-add-update.php:176
 #: includes/admin-pages/awards/page-awards-add-update.php:187
 #: includes/admin-pages/settings/page-settings-generic.php:110
-#: includes/functions.php:1455 pro-features/shortcode-bmi-calculator.php:101
+#: includes/functions.php:1458 pro-features/shortcode-bmi-calculator.php:101
 msgid "Pounds"
 msgstr "פאונד"
 
 #: includes/admin-pages/awards/page-awards-add-update.php:192
 #: includes/core-charting.php:100 includes/core-charting.php:283
-#: includes/core-tables.php:34 pro-features/footable.php:362
+#: includes/core-tables.php:34 pro-features/footable.php:364
 #: pro-features/plus/awards/functions.php:32
-#: pro-features/shortcode-bmi-calculator.php:95 pro-features/web-hooks.php:241
+#: pro-features/shortcode-bmi-calculator.php:95 pro-features/web-hooks.php:252
 msgid "Weight"
 msgstr "משקל"
 
@@ -189,7 +189,7 @@ msgstr "האם להחיל על ערכים חדשים?"
 #: includes/admin-pages/settings/page-settings-generic.php:1092
 #: includes/admin-pages/settings/page-settings-generic.php:1105
 #: includes/admin-pages/settings/page-settings-generic.php:1124
-#: includes/functions.php:1336 pro-features/plus/challenge/functions.php:244
+#: includes/functions.php:1339 pro-features/plus/challenge/functions.php:244
 #: pro-features/plus/meta-fields/functions.php:42
 #: pro-features/plus/meta-fields/functions.php:234
 #: pro-features/plus/meta-fields/functions.php:435
@@ -238,7 +238,7 @@ msgstr "כן"
 #: includes/admin-pages/settings/page-settings-generic.php:1093
 #: includes/admin-pages/settings/page-settings-generic.php:1106
 #: includes/admin-pages/settings/page-settings-generic.php:1123
-#: includes/functions.php:1336 pro-features/plus/challenge/functions.php:244
+#: includes/functions.php:1339 pro-features/plus/challenge/functions.php:244
 #: pro-features/plus/meta-fields/functions.php:42
 #: pro-features/plus/meta-fields/functions.php:231
 #: pro-features/plus/meta-fields/functions.php:434
@@ -290,8 +290,7 @@ msgstr "שמור"
 #: includes/admin-pages/awards/page-awards-list.php:34
 #: includes/admin-pages/user-data/data-user.php:246
 #: includes/admin-pages/user-data/data-user.php:276 includes/hooks.php:18
-#: includes/shortcode-weight-tracker-beta.php:507
-#: pro-features/user-groups.php:694
+#: includes/shortcode-wt.php:565 pro-features/user-groups.php:719
 msgid "Awards"
 msgstr "פרסים"
 
@@ -469,7 +468,7 @@ msgstr ""
 #: includes/components.php:79 pro-features/export/admin.page.php:203
 #: pro-features/plus/challenge/functions.php:493
 #: pro-features/plus/meta-fields/hooks.php:94 pro-features/user-groups.php:111
-#: pro-features/user-groups.php:154 pro-features/user-groups.php:566
+#: pro-features/user-groups.php:154 pro-features/user-groups.php:570
 msgid "Group"
 msgstr "קבוצה"
 
@@ -560,7 +559,7 @@ msgstr ""
 
 #: includes/admin-pages/meta-fields/page-meta-fields-list.php:43
 #: includes/admin-pages/settings/page-settings-groups.php:42
-#: pro-features/footable.php:441 pro-features/plus/awards/hooks.php:324
+#: pro-features/footable.php:445 pro-features/plus/awards/hooks.php:324
 #: pro-features/plus/harris-benedict.php:321
 msgid "Add"
 msgstr "הוספה"
@@ -725,47 +724,15 @@ msgstr ""
 "תודה על כך."
 
 #: includes/admin-pages/page-license.php:80
-msgid "Legacy Pro License"
-msgstr "רישיון Pro מורשה"
-
-#: includes/admin-pages/page-license.php:81
 msgid ""
-"Our licensing has model has changed, Prior to September 2017 it used to be a "
-"one off payment that enabled the Pro features of the plugin. This is still "
-"the case and any old licenses will still be honoured."
+"Of course, a big thank you purchasing a Pro license at some point - it is "
+"much appreciated. As you can see below, you can further expand the features "
+"of"
 msgstr ""
-"מודל הרישיונות שלנו השתנה, מאז ספטמבר 2017. זה היה תשלום אחד שאיפשר את "
-"תכונות ה-Pro של הפלאגין. אנו ממשיכים לכבד את כל הרישיונות שהוענקו לפני כן."
+"כמובן, תודה רבה של רכישת רישיון Pro בשלב כלשהו - אנו מעריכים זאת מאוד. .כפי "
+"שניתן לראות למטה, תוכל להרחיב עוד את התכונות של"
 
 #: includes/admin-pages/page-license.php:82
-msgid "Moving to a yearly license"
-msgstr "מעבר לרישיון שנתי"
-
-#: includes/admin-pages/page-license.php:83
-msgid ""
-"There is no reason to move to a yearly license - Pro features will remain "
-"the same for legacy and new Pro subscriptions. However, if you were to move "
-"to a yearly subscription you will be supporting the development of the "
-"plugin (and I'll give you a big hug)."
-msgstr ""
-"אין סיבה לעבור לרישיון שנתי - תכונות Pro יישארו זהות עבור מנויים מהדור הקודם "
-"והחדש. עם זאת, אם תעבור למנוי שנתי, תתמוך בפיתו הפלאגין (ואני אתן לך חיבוק "
-"גדול)."
-
-#: includes/admin-pages/page-license.php:87
-msgid "Pro Plus License"
-msgstr "רישיון פרו +"
-
-#: includes/admin-pages/page-license.php:88
-msgid ""
-"Of course, thank you for purchasing a Pro license - it is much appreciated. "
-"As you can see below, you can further expand the features of"
-msgstr ""
-"כמובן, תודה על רכישת רישיון Pro - זה מוערך מאוד. כפי שניתן לראות למטה, תוכל "
-"להרחיב עוד יותר את התכונות של"
-
-#: includes/admin-pages/page-license.php:90
-#: includes/admin-pages/page-license.php:100
 msgid ""
 "by extending your license to Pro Plus. Pro Plus extends Pro with features "
 "such as BMR, Calorie intake, Macronutrient Calculator, etc. You can view the "
@@ -775,16 +742,7 @@ msgstr ""
 "BMR, צריכת קלוריות, מחשבון מקרונוטריינטים, וכו'. ניתן לקרוא מהן התכונות "
 "הנוספות של Pro Plus למטה."
 
-#: includes/admin-pages/page-license.php:98
-msgid ""
-"Of course, a big thank you purchasing a Pro license at some point - it is "
-"much appreciated. As you can see below, you can further expand the features "
-"of"
-msgstr ""
-"כמובן, תודה רבה של רכישת רישיון Pro בשלב כלשהו - אנו מעריכים זאת מאוד. .כפי "
-"שניתן לראות למטה, תוכל להרחיב עוד את התכונות של"
-
-#: includes/admin-pages/page-license.php:106
+#: includes/admin-pages/page-license.php:88
 msgid ""
 "Thank you kind soul, you have purchased a Pro Plus license. A huge thank you "
 "for supporting me and this plugin!"
@@ -792,42 +750,37 @@ msgstr ""
 "תודה לך, נשמה טובה, רכשת רישיון ל Pro Plusץ תודה רבה על התמיכה בי ובפלאגין "
 "הזה!"
 
-#: includes/admin-pages/page-license.php:113
+#: includes/admin-pages/page-license.php:95
 msgid "In case you need, your <strong>Site Hash</strong> is"
 msgstr "במקרה שאתה צריך, <strong>Site Hash</strong> שלך הוא"
 
-#: includes/admin-pages/page-license.php:123
+#: includes/admin-pages/page-license.php:105
 msgid "Get a free 7 day trial!"
 msgstr "קבל 7 ימים של התנסות בחינם!"
 
-#: includes/admin-pages/page-license.php:130
+#: includes/admin-pages/page-license.php:112
 msgid "Upgrade to Pro Plus for"
 msgstr "שדרג ל Pro Plus עבור"
 
-#: includes/admin-pages/page-license.php:130
-#: includes/admin-pages/page-license.php:245
-#: includes/admin-pages/page-license.php:259
+#: includes/admin-pages/page-license.php:112
+#: includes/admin-pages/page-license.php:225
+#: includes/admin-pages/page-license.php:239
 msgid "a year"
 msgstr "לשנה"
 
-#: includes/admin-pages/page-license.php:144
-msgid "Switch to a yearly Pro license for "
-msgstr "עבור לרישיון Pro שנתי עבור "
-
-#: includes/admin-pages/page-license.php:144
-#: includes/admin-pages/page-license.php:145
-msgid " a year"
-msgstr " לשנה"
-
-#: includes/admin-pages/page-license.php:145
+#: includes/admin-pages/page-license.php:125
 msgid "Upgrade to Pro for "
 msgstr "שדרג ל Pro עבור "
 
-#: includes/admin-pages/page-license.php:160
+#: includes/admin-pages/page-license.php:125
+msgid " a year"
+msgstr " לשנה"
+
+#: includes/admin-pages/page-license.php:140
 msgid "Add or Update License"
 msgstr "הרחבה או עדכון רישיון"
 
-#: includes/admin-pages/page-license.php:165
+#: includes/admin-pages/page-license.php:145
 msgid ""
 "Copy and paste the license given to you by YeKen into this box and click "
 "\"Apply License\""
@@ -835,85 +788,81 @@ msgstr ""
 "העתק והדבק את הרישיון שניתן לך על ידי YeKen לתוך תיבת זה ולחץ על \"החלת "
 "רישיון\""
 
-#: includes/admin-pages/page-license.php:168
+#: includes/admin-pages/page-license.php:148
 msgid "Apply License"
 msgstr "הרחבה או עדכון רישיון"
 
-#: includes/admin-pages/page-license.php:173
+#: includes/admin-pages/page-license.php:153
 msgid "Your License Information"
 msgstr "נתוני הרישיון שלך"
 
-#: includes/admin-pages/page-license.php:177
+#: includes/admin-pages/page-license.php:157
 msgid "Site Hash"
 msgstr "Site Hash"
 
-#: includes/admin-pages/page-license.php:181
+#: includes/admin-pages/page-license.php:161
 #: pro-features/plus/meta-fields/hooks.php:92 pro-features/widget-chart.php:114
 msgid "Type"
 msgstr "סוג"
 
-#: includes/admin-pages/page-license.php:185
+#: includes/admin-pages/page-license.php:165
 msgid "Expires"
 msgstr "פג תוקף"
 
-#: includes/admin-pages/page-license.php:190
-msgid "Never"
-msgstr "לעולם"
-
-#: includes/admin-pages/page-license.php:194 includes/components.php:287
+#: includes/admin-pages/page-license.php:172 includes/components.php:287
 msgid "n/a"
 msgstr "לא זמין"
 
-#: includes/admin-pages/page-license.php:204
+#: includes/admin-pages/page-license.php:182
 msgid "Your Existing License"
 msgstr "הרישיון הנוכחי שלך"
 
-#: includes/admin-pages/page-license.php:210
+#: includes/admin-pages/page-license.php:188
 msgid "Remove License"
 msgstr "הסר רישיון"
 
-#: includes/admin-pages/page-license.php:219
+#: includes/admin-pages/page-license.php:197
 msgid "Documentation"
 msgstr "תיעוד"
 
-#: includes/admin-pages/page-license.php:222
+#: includes/admin-pages/page-license.php:200
 msgid "Need further help or information, please visit our documentation site:"
 msgstr "אם ברצונך בעזרה או מידע נוספים, בבקשה כנס לאתר התיעוד שלנו:"
 
-#: includes/admin-pages/page-license.php:234
+#: includes/admin-pages/page-license.php:213
 #, php-format
 msgid "50% off - When upgrading from Pro to Pro Plus"
 msgstr ""
 
-#: includes/admin-pages/page-license.php:241
+#: includes/admin-pages/page-license.php:221
 msgid "Pro Plus Features"
 msgstr "תכונות Pro Plus"
 
-#: includes/admin-pages/page-license.php:245
+#: includes/admin-pages/page-license.php:225
 msgid "Below is a list of the intended features of the Pro Plus version"
 msgstr "למטה יש רשימה של התוספות הצפויות של גרסת פרו פלוס"
 
-#: includes/admin-pages/page-license.php:245
-#: includes/admin-pages/page-license.php:259
+#: includes/admin-pages/page-license.php:225
+#: includes/admin-pages/page-license.php:239
 msgid "You can upgrade for"
 msgstr "שדרג עבור"
 
-#: includes/admin-pages/page-license.php:254
+#: includes/admin-pages/page-license.php:234
 msgid "Pro Features"
 msgstr "תכונות Pro"
 
-#: includes/admin-pages/page-license.php:259
+#: includes/admin-pages/page-license.php:239
 msgid "Below is a list of the intended features of the Pro version"
 msgstr "למטה יש רשימה של התוספות הצפויות של גרסת פרו פלוס"
 
-#: includes/admin-pages/page-license.php:273
+#: includes/admin-pages/page-license.php:253
 #: includes/admin-pages/user-data/data-summary.php:74
 #: includes/admin-pages/user-data/data-user.php:266
 #: pro-features/functions-pages.php:516
 msgid "Are you sure you?"
 msgstr "האם הינך בטוח?"
 
-#: includes/admin-pages/page-license.php:274
+#: includes/admin-pages/page-license.php:254
 msgid ""
 "Are you sure you wish to remove the license for this site? Removing it may "
 "cause your user's to lose functionality."
@@ -1099,7 +1048,7 @@ msgid "Weight Units"
 msgstr "יחידות משקל"
 
 #: includes/admin-pages/settings/page-settings-generic.php:109
-#: includes/functions.php:1455
+#: includes/functions.php:1458
 msgid "Stones & Pounds"
 msgstr "אבנים ופאונד"
 
@@ -1320,8 +1269,7 @@ msgstr "קריאה נוספת אודות חישובים"
 
 #: includes/admin-pages/settings/page-settings-generic.php:294
 #: includes/admin-pages/user-data/data-user.php:134
-#: includes/shortcode-weight-tracker.php:111
-#: pro-features/plus/shortcode.wlt.php:23
+#: includes/shortcode-wt-legacy.php:111 pro-features/plus/shortcode.wlt.php:23
 msgid "Photos"
 msgstr "תמונות"
 
@@ -1409,7 +1357,7 @@ msgstr ""
 "ההולדת שלהם."
 
 #: includes/admin-pages/settings/page-settings-generic.php:386
-#: includes/shortcode-weight-tracker.php:121
+#: includes/shortcode-wt-legacy.php:121
 msgid "Advanced"
 msgstr "מתקדם"
 
@@ -1863,7 +1811,7 @@ msgstr ""
 "אם אפשרות זו מופעלת, הזינו קוד צבע הקסדצימאלי HEX, למילוי עמודות המשקל בגרף."
 
 #: includes/admin-pages/settings/page-settings-generic.php:932
-#: includes/hooks.php:27 includes/shortcode-weight-tracker-beta.php:384
+#: includes/hooks.php:27 includes/shortcode-wt.php:432
 #: pro-features/functions-pages.php:469
 msgid "Settings"
 msgstr "הגדרות"
@@ -2116,6 +2064,7 @@ msgid "Edit"
 msgstr ""
 
 #: includes/admin-pages/user-data/data-groups.php:56
+#: pro-features/user-groups.php:454
 #, fuzzy
 #| msgid "Groups"
 msgid "All Groups"
@@ -2131,8 +2080,8 @@ msgstr "מזהה קבוצה (ID) לא נמצא"
 #: includes/core-forms.php:468 includes/core-tables.php:35
 #: pro-features/email-notifications.php:81
 #: pro-features/export/admin.page.php:249 pro-features/export/functions.php:211
-#: pro-features/footable.php:407 pro-features/functions-pages.php:118
-#: pro-features/plus/challenge/admin.page.php:75 pro-features/web-hooks.php:277
+#: pro-features/footable.php:411 pro-features/functions-pages.php:118
+#: pro-features/plus/challenge/admin.page.php:75 pro-features/web-hooks.php:288
 msgid "Notes"
 msgstr "הערות"
 
@@ -2222,15 +2171,21 @@ msgid "Latest Weight"
 msgstr "המשקל העדכני ביותר"
 
 #: includes/admin-pages/user-data/data-search-results.php:48
-#: includes/components.php:396 pro-features/web-hooks.php:349
+#: includes/components.php:400 pro-features/web-hooks.php:360
 msgid "Target Weight"
 msgstr "משקל היעד"
 
-#: includes/admin-pages/user-data/data-search-results.php:60
+#: includes/admin-pages/user-data/data-search-results.php:49
+#, fuzzy
+#| msgid "Difference from start"
+msgid "Diff. from Start Weight"
+msgstr "הפרש מההתחלה"
+
+#: includes/admin-pages/user-data/data-search-results.php:61
 msgid "No users were found for the given search criteria:"
 msgstr "לא נמצאו משתמשים עבור הקריטריונים של החיפוש שהוגדרו:"
 
-#: includes/admin-pages/user-data/data-search-results.php:65
+#: includes/admin-pages/user-data/data-search-results.php:66
 msgid "No search terms were specified"
 msgstr "לא צוינו מונחי חיפוש"
 
@@ -2486,8 +2441,8 @@ msgid ""
 msgstr ""
 
 #: includes/ajax.php:174 includes/core-forms.php:142
-#: includes/core-tables.php:33 pro-features/footable.php:359
-#: pro-features/web-hooks.php:230
+#: includes/core-tables.php:33 pro-features/footable.php:361
+#: pro-features/web-hooks.php:241
 msgid "Date"
 msgstr "תאריך"
 
@@ -2501,6 +2456,7 @@ msgstr "הודעה"
 
 #: includes/components.php:49 pro-features/functions-pages.php:383
 #: pro-features/plus/challenge/functions.php:486
+#: pro-features/shortcode-hip-waist-ratio-calculator.php:127
 msgid "Gender"
 msgstr "מין"
 
@@ -2514,8 +2470,8 @@ msgstr "מטרה"
 msgid "Activity Level"
 msgstr "רמת פעילות:"
 
-#: includes/components.php:128 includes/components.php:768
-#: includes/components.php:813 pro-features/functions-pages.php:400
+#: includes/components.php:128 includes/components.php:773
+#: includes/components.php:818 pro-features/functions-pages.php:400
 msgid "Missing data"
 msgstr "נתונים חסרים"
 
@@ -2526,9 +2482,9 @@ msgid "Latest vs Start"
 msgstr "המשקל העדכני ביותר"
 
 #: includes/components.php:171 includes/components.php:239
-#: includes/components.php:339 includes/components.php:485
-#: includes/components.php:559 includes/components.php:582
-#: includes/components.php:626
+#: includes/components.php:339 includes/components.php:490
+#: includes/components.php:564 includes/components.php:587
+#: includes/components.php:631
 #, fuzzy
 #| msgid "No data found"
 msgid "No data"
@@ -2564,122 +2520,126 @@ msgstr "המשקל העדכני ביותר"
 msgid "Previous Weight"
 msgstr "לרדת במשקל"
 
-#: includes/components.php:378 includes/components.php:413
-#: includes/components.php:416 includes/components.php:445
+#: includes/components.php:378 includes/components.php:418
+#: includes/components.php:421 includes/components.php:450
 #, fuzzy
 #| msgid "No target set"
 msgid "Not set"
 msgstr "לא הוגדר יעד"
 
-#: includes/components.php:408 pro-features/functions-pages.php:379
+#: includes/components.php:385
+msgid "Targets not enabled in settings"
+msgstr ""
+
+#: includes/components.php:413 pro-features/functions-pages.php:379
 #: pro-features/shortcode-bmi-calculator.php:97
 msgid "Height"
 msgstr "גובה"
 
-#: includes/components.php:468 pro-features/web-hooks.php:245
+#: includes/components.php:473 pro-features/web-hooks.php:256
 #, fuzzy
 #| msgid "Start Weight"
 msgid "Starting Weight"
 msgstr "משקל התחלה"
 
-#: includes/components.php:481 pro-features/functions-pages.php:358
+#: includes/components.php:486 pro-features/functions-pages.php:358
 msgid "No target set"
 msgstr "לא הוגדר יעד"
 
-#: includes/components.php:482
+#: includes/components.php:487
 #, fuzzy
 #| msgid "Set Target"
 msgid "Latest vs Target"
 msgstr "הגדרת יעד"
 
-#: includes/components.php:495
+#: includes/components.php:500
 #, fuzzy
 #| msgid "No. of Entries"
 msgid "No entries"
 msgstr "מספר ערכי משקל/מדידה שתועדו"
 
-#: includes/components.php:527
+#: includes/components.php:532
 #, fuzzy
 #| msgid "The difference in weight from the starting weight."
 msgid "The difference between your latest weight and target."
 msgstr "ההפרש במשקל מהמשקל ההתחלתי."
 
-#: includes/components.php:570 pro-features/plus/challenge/functions.php:207
-#: pro-features/user-groups.php:688
+#: includes/components.php:575 pro-features/plus/challenge/functions.php:207
+#: pro-features/user-groups.php:713
 #, fuzzy
 #| msgid "No. of Entries"
 msgid "No. entries"
 msgstr "מספר ערכי משקל/מדידה שתועדו"
 
-#: includes/components.php:588
+#: includes/components.php:593
 #, fuzzy
 #| msgid "Calories to subtract"
 msgid "Calories for meeting aim"
 msgstr "קלוריות לחיסור"
 
-#: includes/components.php:591
+#: includes/components.php:596
 #, fuzzy
 #| msgid "Calories to subtract"
 msgid "Calories for maintaining"
 msgstr "קלוריות לחיסור"
 
-#: includes/components.php:594
+#: includes/components.php:599
 #, fuzzy
 #| msgid "Calories to subtract"
 msgid "Calories for gain"
 msgstr "קלוריות לחיסור"
 
-#: includes/components.php:597
+#: includes/components.php:602
 #, fuzzy
 #| msgid "Calories to subtract"
 msgid "Calories for loss"
 msgstr "קלוריות לחיסור"
 
-#: includes/components.php:637
+#: includes/components.php:642
 #, fuzzy
 #| msgid "No. of Weight Entries"
 msgid "No. weight entries"
 msgstr "מספר ערכי משקל שתועדו"
 
-#: includes/components.php:665
+#: includes/components.php:670
 msgid "Tracking for"
 msgstr ""
 
-#: includes/components.php:666 pro-features/shortcode-various.php:451
+#: includes/components.php:671 pro-features/shortcode-various.php:451
 msgid "days"
 msgstr ""
 
-#: includes/components.php:681
+#: includes/components.php:686
 msgid "Set DoB"
 msgstr ""
 
-#: includes/components.php:682
+#: includes/components.php:687
 #, fuzzy
 #| msgid "License missing"
 msgid "DoB missing"
 msgstr "רשיון חסר"
 
-#: includes/components.php:699
+#: includes/components.php:704
 msgid "Age"
 msgstr ""
 
-#: includes/components.php:747 includes/functions.php:958
+#: includes/components.php:752 includes/functions.php:961
 #, fuzzy
 #| msgid "Login now"
 msgid "Login"
 msgstr "יש להתחבר כעת"
 
-#: includes/components.php:777
+#: includes/components.php:782
 msgid "What is BMI?"
 msgstr ""
 
-#: includes/components.php:780
+#: includes/components.php:785
 #, fuzzy
 #| msgid "Body Mass Index"
 msgid "Body Mass Index (BMI)"
 msgstr "מדד מסת הגוף (BMI)"
 
-#: includes/components.php:781 pro-features/plus/shortcode.wlt.php:72
+#: includes/components.php:786 pro-features/plus/shortcode.wlt.php:72
 msgid ""
 "The BMI (Body Mass Index) is used by the medical profession to quickly "
 "determine a person’s weight in regard to their height. From a straight "
@@ -2690,27 +2650,27 @@ msgstr ""
 "של אנשים ביחס לגובהם. חישוב פקטור ה-BMI מאפשר לקבוע באופן כללי אם אדם הוא "
 "רזה, בעל משקל תקין, עם עודף משקל קל או שמן."
 
-#: includes/components.php:795
+#: includes/components.php:800
 #, fuzzy
 #| msgid "Add a weight entry"
 msgid "Starting BMI"
 msgstr "הוספת ערך משקל"
 
-#: includes/components.php:795 pro-features/functions-pages.php:368
+#: includes/components.php:800 pro-features/functions-pages.php:368
 msgid "Current BMI"
 msgstr "ה-BMI הנוכחי"
 
-#: includes/components.php:821
+#: includes/components.php:826
 msgid "What is BMR?"
 msgstr ""
 
-#: includes/components.php:824
+#: includes/components.php:829
 #, fuzzy
 #| msgid "BMR (Basal Metabolic Rate)"
 msgid "Basal Metabolic Rate (BMR)"
 msgstr "BMR (מדד חילוף חומרים בזאלי)"
 
-#: includes/components.php:825 pro-features/plus/shortcode.wlt.php:95
+#: includes/components.php:830 pro-features/plus/shortcode.wlt.php:95
 msgid ""
 "BMR is short for Basal Metabolic Rate. The Basal Metabolic Rate is the "
 "number of calories required to keep your body functioning at rest, also "
@@ -2721,51 +2681,55 @@ msgstr ""
 "לשמור על תפקוד גופך במנוחה, והינו חלק מהפרמטרים של חילוף החומרים שלך. אנו "
 "מחשבים את BMR באמצעות נוסחאות המסופקות על ידי www.diabetes.co.uk."
 
-#: includes/components.php:837
+#: includes/components.php:842
 #, fuzzy
 #| msgid "Add a weight entry"
 msgid "Starting BMR"
 msgstr "הוספת ערך משקל"
 
-#: includes/components.php:837
+#: includes/components.php:842
 #, fuzzy
 #| msgid "Current BMI"
 msgid "Current BMR"
 msgstr "ה-BMI הנוכחי"
 
-#: includes/components.php:868 pro-features/plus/challenge/functions.php:204
+#: includes/components.php:867 pro-features/plus/challenge/functions.php:204
 #: pro-features/plus/challenge/functions.php:356
 #: pro-features/plus/meta-fields/hooks.php:137
-#: pro-features/shortcode-stats.php:38 pro-features/user-groups.php:634
-#: pro-features/web-hooks.php:226 pro-features/web-hooks.php:345
+#: pro-features/shortcode-stats.php:38 pro-features/user-groups.php:657
+#: pro-features/web-hooks.php:237 pro-features/web-hooks.php:356
 msgid "Name"
 msgstr "שם"
 
-#: includes/components.php:1110
+#: includes/components.php:1068
 #, fuzzy
 #| msgid "Delete Cache for this user"
 msgid "Search for a user..."
 msgstr "מחיקת מטמון עבור משתמש זה"
 
-#: includes/components.php:1119
+#: includes/components.php:1077
 #, fuzzy
 #| msgid "You need to be logged in to set your target."
 msgid "You need to be logged in to search for users."
 msgstr "אתה צריך להיות מחובר למערכת, כדי להגדיר את היעד שלך."
 
-#: includes/components.php:1150
+#: includes/components.php:1108
 #, fuzzy
 #| msgid "Clear Target"
 msgid "Clear Screen"
 msgstr "מחיקת יעד"
 
-#: includes/components.php:1186
+#: includes/components.php:1108
+msgid "Clear / Scan Another"
+msgstr ""
+
+#: includes/components.php:1155
 #, fuzzy
 #| msgid "Total Weight Difference"
 msgid "Total weight difference (between previous/latest)"
 msgstr "הפרש משקל כולל"
 
-#: includes/components.php:1187
+#: includes/components.php:1156
 #, fuzzy
 #| msgid "Total Weight Difference"
 msgid "Total weight difference (between start/latest)"
@@ -2773,7 +2737,7 @@ msgstr "הפרש משקל כולל"
 
 #: includes/converters.php:113 includes/converters.php:135
 #: includes/converters.php:196 includes/core-charting.php:73
-#: includes/functions.php:1625 includes/functions.php:1631
+#: includes/functions.php:1628 includes/functions.php:1634
 #: pro-features/shortcode-stats.php:166
 msgid "lbs"
 msgstr "פאונד"
@@ -2794,7 +2758,7 @@ msgid "Error. You have disabled all data sets from rendering."
 msgstr ""
 
 #: includes/core-charting.php:149 pro-features/email-notifications.php:67
-#: pro-features/user-groups.php:693
+#: pro-features/user-groups.php:718
 msgid "Target"
 msgstr "יעד"
 
@@ -2856,7 +2820,7 @@ msgstr "שמירת ערך"
 msgid "Clear Target"
 msgstr "מחיקת יעד"
 
-#: includes/core-forms.php:293 includes/form-handler.php:61
+#: includes/core-forms.php:293 includes/form-handler.php:63
 #, fuzzy
 #| msgid "Your settings have been saved!"
 msgid "Your entry has been successfully saved."
@@ -3097,30 +3061,6 @@ msgstr "צוואר"
 msgid "NE"
 msgstr "צ"
 
-#: includes/deprecated.php:154
-msgid ""
-"You are using an old shortcode. It is now deprecated but will exist under a "
-"different name. Please view the plugin documentation and use a suitable "
-"replacement: https://docs.yeken.uk/shortcodes/"
-msgstr ""
-
-#. Plugin Name of the plugin/theme
-#: includes/deprecated.php:187 pro-features/widget-chart.php:18
-msgid "Weight Tracker"
-msgstr "מנהל מעקב משקל"
-
-#: includes/deprecated.php:188
-msgid ""
-"Your current Weight Tracker license will soon no longer be supported by the "
-"plugin."
-msgstr ""
-
-#: includes/deprecated.php:189
-#, fuzzy
-#| msgid "Read more about calculations"
-msgid "Read more about replacing legacy licenses"
-msgstr "קריאה נוספת אודות חישובים"
-
 #: includes/form-handler.php:25
 #, fuzzy
 #| msgid "Group ID not found"
@@ -3137,7 +3077,7 @@ msgstr "לא נמצאו תמונות."
 msgid "The given user hash did not match the logged in user"
 msgstr ""
 
-#: includes/form-handler.php:50
+#: includes/form-handler.php:52
 #, fuzzy
 #| msgid "An error occurred while saving your data!"
 msgid "An error occurred while saving your data"
@@ -3159,27 +3099,27 @@ msgstr "צפייה בשבוע"
 msgid "to"
 msgstr "עד"
 
-#: includes/functions.php:888
+#: includes/functions.php:891
 msgid "Read more about calculations"
 msgstr "קריאה נוספת אודות חישובים"
 
-#: includes/functions.php:932
+#: includes/functions.php:935
 msgid "Your modifications have been saved"
 msgstr "השינויים שלך נשמרו"
 
-#: includes/functions.php:1011
+#: includes/functions.php:1014
 #, fuzzy
 #| msgid "You must be logged in to edit your settings."
 msgid "You must be logged in to view or edit your data."
 msgstr "עליך להיות מחובר כדי לערוך את ההגדרות שלך."
 
-#: includes/functions.php:1156
+#: includes/functions.php:1159
 #, fuzzy
 #| msgid "Upgrade Weight Tracker and get more features!"
 msgid "Upgrade to Pro Plus and get more features!"
 msgstr "שדרוג מנהל מעקב אחר משקל, כדי לקבל תכונות נוספות!"
 
-#: includes/functions.php:1157
+#: includes/functions.php:1160
 #, fuzzy
 #| msgid ""
 #| "Upgrade to the latest Pro or Pro Plus version of this plugin to "
@@ -3193,11 +3133,11 @@ msgstr ""
 "המשתמש שלך, להוסיף שדות מותאמים אישית, BMR, חומרים מזינים מאקרונוטריינטים "
 "ועוד הרבה יותר!"
 
-#: includes/functions.php:1159
+#: includes/functions.php:1162
 msgid "Upgrade Weight Tracker and get more features!"
 msgstr "שדרוג מנהל מעקב אחר משקל, כדי לקבל תכונות נוספות!"
 
-#: includes/functions.php:1160
+#: includes/functions.php:1163
 #, fuzzy
 #| msgid ""
 #| "Upgrade to the latest Pro or Pro Plus version of this plugin to "
@@ -3211,32 +3151,30 @@ msgstr ""
 "המשתמש שלך, להוסיף שדות מותאמים אישית, BMR, חומרים מזינים מאקרונוטריינטים "
 "ועוד הרבה יותר!"
 
-#: includes/functions.php:1168
+#: includes/functions.php:1171
 #, fuzzy
 #| msgid "Read more at "
 msgid "Read more and upgrade"
 msgstr "קרא עוד ב "
 
-#: includes/functions.php:1185
+#: includes/functions.php:1188
 #, fuzzy
 #| msgid "Read more and Upgrade to Pro / Pro Plus Version"
-msgid ""
-"To view this data/shortcode, you need to upgrade to the Pro or Pro Plus "
-"version."
+msgid "To view this data/shortcode, you need to upgrade."
 msgstr "קריאת פרטים נוספים, ושדרוג לגרסה Pro או Pro Plus"
 
-#: includes/functions.php:1187
+#: includes/functions.php:1190
 #, fuzzy
 #| msgid "Upgrade"
 msgid "Upgrade now"
 msgstr "שידרוג"
 
-#: includes/functions.php:1455 includes/functions.php:1628
+#: includes/functions.php:1458 includes/functions.php:1631
 #: pro-features/shortcode-bmi-calculator.php:96
 msgid "Kg"
 msgstr "ק\"ג"
 
-#: includes/functions.php:1631
+#: includes/functions.php:1634
 msgid "St"
 msgstr "סנט"
 
@@ -3264,64 +3202,59 @@ msgstr "עזרה ותיעוד"
 msgid "An error occurred while trying to save the user's preferences."
 msgstr "אירעה שגיאה בעת ניסיון לשמור את העדפות המשתמש."
 
-#: includes/hooks.php:266 includes/shortcode-weight-tracker-beta.php:336
+#: includes/hooks.php:266 includes/shortcode-wt.php:382
 #, fuzzy
 #| msgid "View weight entries"
 msgid "Weight entries"
 msgstr "הצג ערכי משקל שהוזנו"
 
-#: includes/license.php:105
+#: includes/license.php:100
 #, fuzzy
 #| msgid "Weight Tracker"
 msgid "Weight Tracker License"
 msgstr "מנהל מעקב משקל"
 
-#: includes/license.php:106
+#: includes/license.php:101
 #, fuzzy
 #| msgid "Your license has been applied!"
 msgid "Your license expires in"
 msgstr "הרישיון שלך התקבל!"
 
-#: includes/license.php:108
+#: includes/license.php:103
 msgid "days. Please renew your license as soon as possible"
 msgstr ""
 
-#: includes/license.php:248
+#: includes/license.php:243
 msgid "License missing"
 msgstr "רשיון חסר"
 
-#: includes/license.php:255
+#: includes/license.php:250
 msgid "Could not decode / verify license"
 msgstr "לא היתה אפשרות לפענח/לוודא רישיון"
 
-#: includes/license.php:260
+#: includes/license.php:255
 msgid "Invalid license hash"
 msgstr "קוד hash לא חוקי של רשיון"
 
-#: includes/license.php:265
+#: includes/license.php:260
 msgid ""
 "This license doesn't appear to be for this site (no match on site hash)."
 msgstr "לא נראה שרשיון זה מיועד לאתר זה (אין התאמה בקוד hash של האתר)."
 
-#: includes/license.php:273
+#: includes/license.php:268
 msgid "This license has expired."
 msgstr "רשיון זה פג."
 
-#: includes/license.php:336 pro-features/plus/meta-fields/db.php:608
+#: includes/license.php:331 pro-features/plus/meta-fields/db.php:608
 #: pro-features/user-groups.php:108 pro-features/user-groups.php:160
-#: pro-features/user-groups.php:452
 msgid "None"
 msgstr "אין"
 
-#: includes/license.php:346
+#: includes/license.php:341
 msgid "Yearly Pro"
 msgstr "שנתי Pro"
 
-#: includes/license.php:349
-msgid "Legacy Pro"
-msgstr "Legacy Pro"
-
-#: includes/license.php:352
+#: includes/license.php:344
 msgid "Pro Plus"
 msgstr "פרו פלוס"
 
@@ -3361,121 +3294,199 @@ msgid "Get Meal Tracker Now"
 msgstr ""
 
 #: includes/setup-wizard.php:104
-#, php-format
-msgid "20% off coupon"
-msgstr ""
-
-#: includes/setup-wizard.php:105
 #, fuzzy
 #| msgid "WordPress Record"
 msgid "from WordPress.org"
 msgstr "הקלטת וורדפרס"
 
-#: includes/setup-wizard.php:106
+#: includes/setup-wizard.php:105
 #, fuzzy
 #| msgid "Upgrade to Pro"
 msgid "Upgrade to Premium"
 msgstr "שדרג ל-Pro"
 
-#: includes/setup-wizard.php:107
+#: includes/setup-wizard.php:106
 msgid "Any questions, email@yeken.uk"
 msgstr ""
 
-#: includes/setup-wizard.php:119
+#: includes/setup-wizard.php:118
 #, php-format
 msgid ""
 "Use the following coupon code to receive 50% off when upgrading from Pro to "
 "Pro Plus. Simply apply it during the checkout process."
 msgstr ""
 
-#: includes/setup-wizard.php:120
+#: includes/setup-wizard.php:119
 msgid "Coupon"
 msgstr ""
 
-#: includes/shortcode-weight-tracker-beta.php:53
-#: includes/shortcode-weight-tracker.php:52
+#: includes/shortcode-wt-legacy.php:45
+#, fuzzy
+#| msgid "This shortcode can only be placed once on a page / post."
+msgid ""
+"This shortcode can only be placed once on a page / post. To disable this "
+"check, try: [wt disable-second-check=true]"
+msgstr "שורטקוד זה יכול להיות ממוקם רק פעם אחת על עמוד או פוסט."
+
+#: includes/shortcode-wt-legacy.php:52 includes/shortcode-wt.php:55
 #: pro-features/plus/meta-fields/shortcodes.php:36
 msgid "You need to be logged in to record your weight."
 msgstr "עליך להיות מחובר (login) למערכת כדי לתעד את משקלך."
 
-#: includes/shortcode-weight-tracker-beta.php:129
-#: includes/shortcode-weight-tracker.php:71
+#: includes/shortcode-wt-legacy.php:71 includes/shortcode-wt.php:151
 #, fuzzy
 #| msgid "Your settings have been saved!"
 msgid "Your settings have been successfully saved!"
 msgstr "ההגדרות שלך נשמרו!"
 
-#: includes/shortcode-weight-tracker-beta.php:131
-#: includes/shortcode-weight-tracker.php:73
+#: includes/shortcode-wt-legacy.php:73 includes/shortcode-wt.php:153
 #, fuzzy
 #| msgid "Your weight history has been deleted!"
 msgid "Your data has successfully been deleted."
 msgstr "היסטוריית המשקל שלך נמחקה!"
 
-#: includes/shortcode-weight-tracker-beta.php:153
+#: includes/shortcode-wt-legacy.php:95
+#: pro-features/plus/challenge/admin.page.php:77
+msgid "Overview"
+msgstr "סקירה כללית"
+
+#: includes/shortcode-wt-legacy.php:96
+msgid "Chart and add a new entry"
+msgstr "לתרשים ולהוספת משקל חדש"
+
+#: includes/shortcode-wt-legacy.php:100
+#, fuzzy
+#| msgid "Weight History"
+msgid "History"
+msgstr "היסטוריית משקל"
+
+#: includes/shortcode-wt-legacy.php:101
+msgid "View all of your entries"
+msgstr "הצג את כל ערכי משקל/מדידה שתועדו"
+
+#: includes/shortcode-wt-legacy.php:101
+#, fuzzy
+#| msgid "View all of your entries"
+msgid "View your latest entries"
+msgstr "הצג את כל ערכי משקל/מדידה שתועדו"
+
+#: includes/shortcode-wt-legacy.php:112
+msgid "View a gallery of your photos"
+msgstr "צפייה בגלריית התמונות שלך"
+
+#: includes/shortcode-wt-legacy.php:122
+#, fuzzy
+#| msgid "View BMI, BMR and suggested Calorie and Macronutrient intake"
+msgid "BMI, BMR, Calories and Macronutrients"
+msgstr "הצגת BMI, BMR, צריכת קלוריות מוצעת, ומאקרונוטריינטים"
+
+#: includes/shortcode-wt-legacy.php:131 pro-features/functions-pages.php:473
+msgid "Preferences"
+msgstr "העדפות"
+
+#: includes/shortcode-wt-legacy.php:132
+#, fuzzy
+#| msgid "Customise this tool and tell us a little more about you"
+msgid "Customise this tool for you"
+msgstr "התאם/י כלי זה לעצמך באופן אישי, וספר/י לנו קצת יותר עליך"
+
+#: includes/shortcode-wt-legacy.php:228
+msgid "Weight History"
+msgstr "היסטוריית משקל"
+
+#: includes/shortcode-wt-legacy.php:245
+#, fuzzy
+#| msgid "There is no data for this week, please try selecting another:"
+msgid "No data could be found for this week, please try selecting another:"
+msgstr "אין נתונים לשבוע זה, אנא נסה לבחור באפשרות אחרת:"
+
+#: includes/shortcode-wt-legacy.php:251
+msgid "You haven't entered any weight data yet."
+msgstr "עדיין לא הזנת נתוני משקל."
+
+#: includes/shortcode-wt-legacy.php:320
+msgid "Add a weight entry"
+msgstr "הוספת ערך משקל"
+
+#: includes/shortcode-wt-legacy.php:325
+msgid "In a chart"
+msgstr "בתרשים"
+
+#: includes/shortcode-wt-legacy.php:337
+#, fuzzy, php-format
+#| msgid "A graph will appear once several weights have been entered."
+msgid "A graph shall appear when %d or more weight entries have been entered."
+msgstr "לאחר הזנת מספר מדידות משקל יופיע גרף."
+
+#: includes/shortcode-wt.php:105
+#, fuzzy
+#| msgid "Edit weight"
+msgid "Editing"
+msgstr "ערוך משקל"
+
+#: includes/shortcode-wt.php:175
 msgid "View Group Weight Loss for today"
 msgstr ""
 
-#: includes/shortcode-weight-tracker-beta.php:339
+#: includes/shortcode-wt.php:385
 msgid "View in tabular format"
 msgstr ""
 
-#: includes/shortcode-weight-tracker-beta.php:364
+#: includes/shortcode-wt.php:410
 #, fuzzy
 #| msgid "Your target weight is"
 msgid "Your target"
 msgstr "משקל היעד שלך הוא"
 
-#: includes/shortcode-weight-tracker-beta.php:397
+#: includes/shortcode-wt.php:445
 #, fuzzy
 #| msgid "Delete existing data"
 msgid "Delete your existing data"
 msgstr "מחק נתונים קיימים"
 
-#: includes/shortcode-weight-tracker-beta.php:415
+#: includes/shortcode-wt.php:464
 #, fuzzy
 #| msgid "Message"
 msgid "Messages"
 msgstr "הודעה"
 
-#: includes/shortcode-weight-tracker-beta.php:429
+#: includes/shortcode-wt.php:477
 #, fuzzy
 #| msgid "Add a weight entry"
 msgid "Add a new entry"
 msgstr "הוספת ערך משקל"
 
-#: includes/shortcode-weight-tracker-beta.php:443
+#: includes/shortcode-wt.php:511
 #, fuzzy
 #| msgid "No. of Entries"
 msgid "Your entries"
 msgstr "מספר ערכי משקל/מדידה שתועדו"
 
-#: includes/shortcode-weight-tracker-beta.php:471
+#: includes/shortcode-wt.php:529
 #, fuzzy
 #| msgid "Latest Weight"
 msgid "Latest Photo"
 msgstr "המשקל העדכני ביותר"
 
-#: includes/shortcode-weight-tracker-beta.php:477
+#: includes/shortcode-wt.php:535
 #, fuzzy
 #| msgid "Select photo"
 msgid "Oldest Photo"
 msgstr "בחירת תמונה"
 
-#: includes/shortcode-weight-tracker-beta.php:486
+#: includes/shortcode-wt.php:544
 #, fuzzy
 #| msgid "View a gallery of your photos"
 msgid "All of your photos"
 msgstr "צפייה בגלריית התמונות שלך"
 
-#: includes/shortcode-weight-tracker-beta.php:532
+#: includes/shortcode-wt.php:590
 #, fuzzy
 #| msgid "Suggested Calorie Intake"
 msgid "Learn more about suggested calorie intakes"
 msgstr "צריכת הקלוריות המוצעת"
 
-#: includes/shortcode-weight-tracker-beta.php:533
-#: pro-features/plus/shortcode.wlt.php:114
+#: includes/shortcode-wt.php:591 pro-features/plus/shortcode.wlt.php:114
 msgid ""
 "Once we know your BMR (the number of calories to keep you functioning at "
 "rest), we can go on to give you suggestions on how to spread your calorie "
@@ -3495,19 +3506,17 @@ msgstr ""
 "וקלוריות לירידה), בחלוקה מומלצת במהלך היום, כלומר ארוחת בוקר, צהריים, ארוחת "
 "ערב וחטיפים."
 
-#: includes/shortcode-weight-tracker-beta.php:538
-#: pro-features/plus/shortcode.wlt.php:109
+#: includes/shortcode-wt.php:596 pro-features/plus/shortcode.wlt.php:109
 msgid "Suggested Calorie Intake"
 msgstr "צריכת הקלוריות המוצעת"
 
-#: includes/shortcode-weight-tracker-beta.php:548
+#: includes/shortcode-wt.php:606
 #, fuzzy
 #| msgid "Read more about calculations"
 msgid "Learn more about macronutrients"
 msgstr "קריאה נוספת אודות חישובים"
 
-#: includes/shortcode-weight-tracker-beta.php:549
-#: pro-features/plus/shortcode.wlt.php:134
+#: includes/shortcode-wt.php:607 pro-features/plus/shortcode.wlt.php:134
 #, fuzzy
 #| msgid ""
 #| "With calories calculated, the we can recommend how those calories should "
@@ -3521,92 +3530,9 @@ msgstr ""
 "לצרוך קלוריות אלה בשומנים, פחמימות וחלבונים. בהתבסס ההנחיות התזונתיות משנת "
 "2010 מטעם משרד הבריאות של ארה\"ב, מומלץ לעשות זאת באופן הבא:"
 
-#: includes/shortcode-weight-tracker-beta.php:555
-#: pro-features/plus/shortcode.wlt.php:128
+#: includes/shortcode-wt.php:613 pro-features/plus/shortcode.wlt.php:128
 msgid "Macronutrients"
 msgstr "מקרו-נוטריינטים"
-
-#: includes/shortcode-weight-tracker.php:45
-#, fuzzy
-#| msgid "This shortcode can only be placed once on a page / post."
-msgid ""
-"This shortcode can only be placed once on a page / post. To disable this "
-"check, try: [wt disable-second-check=true]"
-msgstr "שורטקוד זה יכול להיות ממוקם רק פעם אחת על עמוד או פוסט."
-
-#: includes/shortcode-weight-tracker.php:95
-#: pro-features/plus/challenge/admin.page.php:77
-msgid "Overview"
-msgstr "סקירה כללית"
-
-#: includes/shortcode-weight-tracker.php:96
-msgid "Chart and add a new entry"
-msgstr "לתרשים ולהוספת משקל חדש"
-
-#: includes/shortcode-weight-tracker.php:100
-#, fuzzy
-#| msgid "Weight History"
-msgid "History"
-msgstr "היסטוריית משקל"
-
-#: includes/shortcode-weight-tracker.php:101
-msgid "View all of your entries"
-msgstr "הצג את כל ערכי משקל/מדידה שתועדו"
-
-#: includes/shortcode-weight-tracker.php:101
-#, fuzzy
-#| msgid "View all of your entries"
-msgid "View your latest entries"
-msgstr "הצג את כל ערכי משקל/מדידה שתועדו"
-
-#: includes/shortcode-weight-tracker.php:112
-msgid "View a gallery of your photos"
-msgstr "צפייה בגלריית התמונות שלך"
-
-#: includes/shortcode-weight-tracker.php:122
-#, fuzzy
-#| msgid "View BMI, BMR and suggested Calorie and Macronutrient intake"
-msgid "BMI, BMR, Calories and Macronutrients"
-msgstr "הצגת BMI, BMR, צריכת קלוריות מוצעת, ומאקרונוטריינטים"
-
-#: includes/shortcode-weight-tracker.php:131
-#: pro-features/functions-pages.php:473
-msgid "Preferences"
-msgstr "העדפות"
-
-#: includes/shortcode-weight-tracker.php:132
-#, fuzzy
-#| msgid "Customise this tool and tell us a little more about you"
-msgid "Customise this tool for you"
-msgstr "התאם/י כלי זה לעצמך באופן אישי, וספר/י לנו קצת יותר עליך"
-
-#: includes/shortcode-weight-tracker.php:228
-msgid "Weight History"
-msgstr "היסטוריית משקל"
-
-#: includes/shortcode-weight-tracker.php:245
-#, fuzzy
-#| msgid "There is no data for this week, please try selecting another:"
-msgid "No data could be found for this week, please try selecting another:"
-msgstr "אין נתונים לשבוע זה, אנא נסה לבחור באפשרות אחרת:"
-
-#: includes/shortcode-weight-tracker.php:251
-msgid "You haven't entered any weight data yet."
-msgstr "עדיין לא הזנת נתוני משקל."
-
-#: includes/shortcode-weight-tracker.php:320
-msgid "Add a weight entry"
-msgstr "הוספת ערך משקל"
-
-#: includes/shortcode-weight-tracker.php:325
-msgid "In a chart"
-msgstr "בתרשים"
-
-#: includes/shortcode-weight-tracker.php:337
-#, fuzzy, php-format
-#| msgid "A graph will appear once several weights have been entered."
-msgid "A graph shall appear when %d or more weight entries have been entered."
-msgstr "לאחר הזנת מספר מדידות משקל יופיע גרף."
 
 #: pro-features/email-notifications.php:61
 msgid "added"
@@ -3747,8 +3673,8 @@ msgid ""
 "the export."
 msgstr ""
 
-#: pro-features/export/admin.page.php:167 pro-features/footable.php:353
-#: pro-features/user-groups.php:687
+#: pro-features/export/admin.page.php:167 pro-features/footable.php:355
+#: pro-features/user-groups.php:712
 msgid "User"
 msgstr "משתמש"
 
@@ -3866,7 +3792,7 @@ msgstr "הודעה מותאמת אישית"
 msgid "Difference from start"
 msgstr "הפרש מההתחלה"
 
-#: pro-features/export/functions.php:209 pro-features/footable.php:370
+#: pro-features/export/functions.php:209 pro-features/footable.php:374
 #, fuzzy
 #| msgid "BMR"
 msgid "BMI"
@@ -3933,6 +3859,12 @@ msgid " <strong>All of the features that come with a standard <a href=\""
 msgstr "<strong> כל התכונות המגיעות עם < a href = \" סטנדרטי"
 
 #: pro-features/feature-list.php:12
+msgid ""
+"<strong>[wt-kiosk]</strong> - allowing your administrators and staff to "
+"search and edit a user's record on the front end of your website."
+msgstr ""
+
+#: pro-features/feature-list.php:13
 #, fuzzy
 #| msgid ""
 #| "<strong>Basal Metabolic Rate (BMR) calculations per user</strong>. "
@@ -3947,7 +3879,7 @@ msgstr ""
 "קיצור ומסכי ניהול מורחבים כדי להציג BMR של משתמש. למידע נוסף על BMR וכיצד "
 "הוא מחושב, יש להיכנס ל- < a href = \""
 
-#: pro-features/feature-list.php:13
+#: pro-features/feature-list.php:14
 #, fuzzy
 #| msgid ""
 #| "<strong>Harris Benedict formula</strong>. Shortcodes and extended admin "
@@ -3964,7 +3896,7 @@ msgstr ""
 "להציג את צריכת הקלוריות הנדרשת כדי לשמור ולרזות. למידע נוסף על נוסחת האריס "
 "בנדיקט וכיצד הוא מחושב יש להיכנס ל- < a href = \""
 
-#: pro-features/feature-list.php:14
+#: pro-features/feature-list.php:15
 #, fuzzy
 #| msgid ""
 #| "<strong>Recommended calorie intake per meal time</strong>. Shortcodes and "
@@ -3981,7 +3913,7 @@ msgstr ""
 "מורחב, על מנת להמליץ כיצד לחלק את צריכת הקלוריות היומית על פני ארוחות. לקבלת "
 "מידע נוסף אודות אופן החישוב, יש להיכנס ל- < a href = \""
 
-#: pro-features/feature-list.php:15
+#: pro-features/feature-list.php:16
 #, fuzzy
 #| msgid ""
 #| "<strong>Macronutrients Calculator</strong>. Shortcodes and extended admin "
@@ -4001,7 +3933,7 @@ msgstr ""
 "למידע נוסף על מחשבון מקרו-נוטריינטים, וכיצד חישובים אלה מתבצעים, יש להיכנס "
 "ל- < a href = \""
 
-#: pro-features/feature-list.php:16
+#: pro-features/feature-list.php:17
 #, fuzzy
 #| msgid ""
 #| "<strong>Additional user preference fields</strong>. Additional user "
@@ -4015,7 +3947,7 @@ msgstr ""
 "<strong> שדות העדפת משתמש נוספים </strong>. שדות העדפת משתמש נוספים וקודי "
 "קיצור להצגתם: רמת פעילות, תאריך לידה ומגדר."
 
-#: pro-features/feature-list.php:17
+#: pro-features/feature-list.php:18
 #, fuzzy
 #| msgid ""
 #| "<strong>Awards</strong>. Awards and Badges! Set awards for: BMI Change, "
@@ -4029,7 +3961,7 @@ msgstr ""
 ". פרסים <strong> </strong> פרסים ותגים! הגדרת פרסים עבור: שינוי BMI, הגעה ל-"
 "BMI, עלייה/ירידה במשקל מאז ההתחלה, ואחוז משקל שירד מאז ההתחלה."
 
-#: pro-features/feature-list.php:18
+#: pro-features/feature-list.php:19
 msgid ""
 " <strong>Challenges</strong>. Set challenges for your user's within a given "
 "time period? Display Total Weight Lost, BMI Change, %Body Weight, Weight "
@@ -4038,7 +3970,19 @@ msgid ""
 "will allow you to display the league table in the public facing website."
 msgstr ""
 
-#: pro-features/feature-list.php:28
+#: pro-features/feature-list.php:20
+msgid ""
+" <strong>BMI Calculator</strong>A quick tool to allow your users to enter "
+"their measurements/weight to calculate their BMI."
+msgstr ""
+
+#: pro-features/feature-list.php:21
+msgid ""
+" <strong>Waist-to-Hip ratio Calculator</strong>A quick tool to allow your "
+"users to enter their measurements to calculate their Waist-to-Hip ratio."
+msgstr ""
+
+#: pro-features/feature-list.php:31
 #, fuzzy
 #| msgid ""
 #| "<strong>Access your user's data.</strong> Admin can view, edit and delete "
@@ -4053,13 +3997,13 @@ msgstr ""
 "נתוני משתמש. כלים שונים לצפייה גרפים של המשתמש, טבלאות של ערכים, BMI, יעדים, "
 "משקל שירד/עלה, סטטיסטיקות ועוד הרבה יותר."
 
-#: pro-features/feature-list.php:29
+#: pro-features/feature-list.php:32
 msgid ""
 " <strong>Challenges.</strong> Create and display challenges for users over "
 "different time periods."
 msgstr ""
 
-#: pro-features/feature-list.php:30
+#: pro-features/feature-list.php:33
 #, fuzzy
 #| msgid ""
 #| "<strong>Custom Fields.</strong> Create and add your own questions to "
@@ -4071,7 +4015,7 @@ msgstr ""
 "<strong> שדות מותאמים אישית. </strong> צור והוסף שאלות משלך לטפסי הזנת משקל "
 "כדי לאסוף מידע נוסף."
 
-#: pro-features/feature-list.php:31
+#: pro-features/feature-list.php:34
 #, fuzzy
 #| msgid ""
 #| "<strong>Photo Custom Fields</strong>. Add one or more photo fields to "
@@ -4091,7 +4035,7 @@ msgstr ""
 "להציג תמונות, לעדכן ולהסיר אותן על-ידי משתמש הקצה ומנהלי הרשת. קודי קיצור "
 "שימושיים מסופקים להצגת גלריות, התמונה העדכנית והישנה ביותר."
 
-#: pro-features/feature-list.php:32
+#: pro-features/feature-list.php:35
 #, fuzzy
 #| msgid ""
 #| "<strong>Export all data or a particular user.</strong> Export in JSON or "
@@ -4102,13 +4046,13 @@ msgid ""
 msgstr ""
 "<strong> ייצוא כל הנתונים או משתמש מסוים. </strong> ייצוא בפורמט JSON או CSV."
 
-#: pro-features/feature-list.php:33
+#: pro-features/feature-list.php:36
 msgid ""
 " <strong>Webhooks, Zapier & Slack</strong>. Push weight entry data and "
 "targets to Slack channels, Zapier or your own custom Webhooks!"
 msgstr ""
 
-#: pro-features/feature-list.php:34
+#: pro-features/feature-list.php:37
 #, fuzzy
 #| msgid ""
 #| "<strong>Groups</strong>. Define user groups and assign your user's to "
@@ -4120,20 +4064,20 @@ msgstr ""
 "<strong> קבוצות </strong>. הגדרת קבוצות משתמשים והוספת משתמשים להן. הצגת "
 "סטטיסטיקות הפרש משקל עבור כל הקבוצה יחדיו."
 
-#: pro-features/feature-list.php:35
+#: pro-features/feature-list.php:38
 msgid ""
 " <strong>Admin notes</strong>. Administrators have the ability to store "
 "notes against their users. If set to visible, the user can view these via "
 "[wt-notes] or receive emails with their content."
 msgstr ""
 
-#: pro-features/feature-list.php:36
+#: pro-features/feature-list.php:39
 msgid ""
 " <strong>Gamification</strong>. Support for myCred, a popular gamification "
 "plugin. Reward your users for weight entries and setting their targets."
 msgstr ""
 
-#: pro-features/feature-list.php:37
+#: pro-features/feature-list.php:40
 #, fuzzy
 #| msgid ""
 #| "<strong>BMI.</strong> Allows a user to specify their height. Once "
@@ -4148,7 +4092,7 @@ msgstr ""
 "BMI שלהם מוצג לצד כל ערך משקל שהם מקלידים. יש גם shortcode להראות את ה-BMI "
 "האחרון."
 
-#: pro-features/feature-list.php:38
+#: pro-features/feature-list.php:41
 #, fuzzy
 #| msgid ""
 #| "<strong>Email notifications.</strong> Receive email notifications when a "
@@ -4160,7 +4104,7 @@ msgstr ""
 "<strong> הודעות דוא\"ל. </strong> קבל הודעת דוא\"ל, כאשר משתמש מעדכן את היעד "
 "שלהם או מוסיף/עורך משקל."
 
-#: pro-features/feature-list.php:39
+#: pro-features/feature-list.php:42
 #, fuzzy
 #| msgid ""
 #| "<strong>Birthday Emails.</strong> Automatically send your user's a "
@@ -4172,7 +4116,7 @@ msgstr ""
 "<strong> מיילים לימי הולדת. </strong> שלח באופן אוטומטי למשתמשים שלך דואר "
 "אלקטרוני ליום הולדת (כאשר הם הקלידו תאריך לידה)"
 
-#: pro-features/feature-list.php:40
+#: pro-features/feature-list.php:43
 #, fuzzy
 #| msgid ""
 #| "<strong>Overall user stats.</strong> Shortcodes that allow you to display "
@@ -4186,7 +4130,7 @@ msgstr ""
 "<strong> סטטיסטיקת משתמש כוללת. </strong> קודי קיצור המאפשרים לך להציג את סה"
 "\"כ הירידה/עלייה של הקהילה, ובנוסף כדי להציג שולחן ליגה."
 
-#: pro-features/feature-list.php:41
+#: pro-features/feature-list.php:44
 #, fuzzy
 #| msgid ""
 #| "<strong>Widgets.</strong> Widgets that allow you to display the graph and "
@@ -4198,7 +4142,7 @@ msgstr ""
 "<strong> ווידג'טים </strong> יישומונים המאפשרים לך להציג את הגרף ואת טופס "
 "הזנת המשקל המהיר בתוך כל אזור יישומון."
 
-#: pro-features/feature-list.php:42
+#: pro-features/feature-list.php:45
 #, fuzzy
 #| msgid ""
 #| "<strong>Chart and form Shortcodes.</strong> That allow you to display the "
@@ -4211,7 +4155,7 @@ msgstr ""
 "<strong> קודי קיצור של טפסים ותרשימים </strong> המאפשרים לך להציג את טופס "
 "הזנת הגרף והמשקל המהיר על-ידי הצבת קוד קיצור על כל פוסט או עמוד."
 
-#: pro-features/feature-list.php:43
+#: pro-features/feature-list.php:46
 #, fuzzy
 #| msgid ""
 #| "<strong>Progress Bar shortcode.</strong> A shortcode that visually "
@@ -4223,7 +4167,7 @@ msgstr ""
 "<strong> קוד קיצור של בר-התקדמות </strong> קוד קיצורהמציג חזותית את התקדמות "
 "המשתמש המחובר למערכת, לכיוון היעד שלהם"
 
-#: pro-features/feature-list.php:44
+#: pro-features/feature-list.php:47
 #, fuzzy
 #| msgid ""
 #| "<strong>Reminder shortcode.</strong> A shortcode that can be used to "
@@ -4235,7 +4179,7 @@ msgstr ""
 "<strong> קוד קיצור של תזכורת </strong> קוד קיצור שניתן להשתמש בו כדי להזכיר "
 "למשתמשים להזין את היעד או המשקל שלהם להיום."
 
-#: pro-features/feature-list.php:45
+#: pro-features/feature-list.php:48
 #, fuzzy
 #| msgid ""
 #| "<strong>Message shortcode</strong> A shortcode that allows you to "
@@ -4251,7 +4195,7 @@ msgstr ""
 "<strong> קוד קיצור של הודעה </strong> קוד קיצור המאפשר לך לברך משתמשים כאשר "
 "מספר פעמיםהם מורידים במשקל, או להפך - מאפשר לך לעודד כאשר מישהו צובר משקל."
 
-#: pro-features/feature-list.php:46
+#: pro-features/feature-list.php:49
 #, fuzzy
 #| msgid ""
 #| "<strong>Text Shortcodes.</strong> Additional shortcodes for earliest and "
@@ -4263,7 +4207,7 @@ msgstr ""
 "<strong> קודי קיצור של טקסט. </strong> קודי קיצור נוספים עבור התאריכים "
 "המוקדמים והאחרונים שהוזנו."
 
-#: pro-features/feature-list.php:47
+#: pro-features/feature-list.php:50
 #, fuzzy
 #| msgid ""
 #| "<strong>Progress Bar shortcode / widget.</strong> Display a user's "
@@ -4275,7 +4219,7 @@ msgstr ""
 "<strong> קודי קיצור של בר-התקדמות </strong> הצגת התקדמות המשתמשים כלפי יעד "
 "המשקל שלהם."
 
-#: pro-features/feature-list.php:48
+#: pro-features/feature-list.php:51
 #, fuzzy
 #| msgid ""
 #| "<strong>Reminder shortcode.</strong> Display a reminder to enter their "
@@ -4287,7 +4231,7 @@ msgstr ""
 "<strong> קוד קיצור לתזכורת </strong> הצגת תזכורת להזנת המשקל עבור היום הנתון "
 "או הזנת יעד."
 
-#: pro-features/feature-list.php:49
+#: pro-features/feature-list.php:52
 #, fuzzy
 #| msgid ""
 #| "<strong>Admin: View / Delete user data</strong>. Admin will be able to "
@@ -4299,7 +4243,7 @@ msgstr ""
 "<strong> למנהל המערכת: צפייה / מחיקת נתוני משתמש </strong> מנהל המערכת מסוגל "
 "להציג ולמחוק נתוני משתמש קיימים."
 
-#: pro-features/feature-list.php:50
+#: pro-features/feature-list.php:53
 #, fuzzy
 #| msgid ""
 #| "<strong>User preferences</strong>. If enabled, the user will be able to "
@@ -4316,7 +4260,7 @@ msgstr ""
 "מדידה ברצונם לתעד את משקלם - בקילוגרם או פאונד. כמו כן, הם יוכלו לציין תבנית "
 "תאריך ולנקות את כל נתוני המשקל שלהם."
 
-#: pro-features/feature-list.php:51
+#: pro-features/feature-list.php:54
 #, fuzzy
 #| msgid ""
 #| "<strong>Bar Charts</strong>. Fancy something different to a line chart? "
@@ -4328,7 +4272,7 @@ msgstr ""
 "<strong> בר תרשימים </strong>. ברצונך שיהיה משהו אחר מתרשים קו? תוסף מנהל "
 "מעקב אחר משקל, מסוגל להראות גם תרשימי בר עמודות."
 
-#: pro-features/feature-list.php:52
+#: pro-features/feature-list.php:55
 #, fuzzy
 #| msgid ""
 #| "<strong>Decimals</strong>. Decimals will be allowed weight in Pounds only "
@@ -4340,7 +4284,7 @@ msgstr ""
 "<strong> עשרוניים </strong>. שברים עשרוניים יתאפשרו אם יחידות המשקל יהיו "
 "בקילו או בפאונד בלבד."
 
-#: pro-features/feature-list.php:53
+#: pro-features/feature-list.php:56
 #, fuzzy
 #| msgid ""
 #| "<strong>Delete existing entry</strong>. A logged in user will be able to "
@@ -4352,7 +4296,7 @@ msgstr ""
 "<strong> מחיקת ערך קיים </strong>. למשתמשים מחוברים תהיה אפשרות למחוק או "
 "לערוך ערך משקל קיים."
 
-#: pro-features/feature-list.php:54
+#: pro-features/feature-list.php:57
 #, fuzzy
 #| msgid ""
 #| "<strong>Better Tables.</strong>. Data tables in front end and admin will "
@@ -4364,7 +4308,7 @@ msgstr ""
 "<strong> טבלאות טובות יותר. </strong> טבלאות נתונים יהיו זמינות למשתמשים, "
 "ומנהל המערכת יתמוך בעימוד ובמיון."
 
-#: pro-features/feature-list.php:55
+#: pro-features/feature-list.php:58
 #, fuzzy
 #| msgid ""
 #| "<strong>Admin: Extra Settings</strong>. Extra settings to customise the "
@@ -4400,55 +4344,55 @@ msgstr ""
 msgid "No weight recorded"
 msgstr "לא הוזן משקל"
 
-#: pro-features/footable.php:221
+#: pro-features/footable.php:222
 #, fuzzy
 #| msgid "BMI: Change"
 msgid "No Change"
 msgstr "BMI: שינוי"
 
-#: pro-features/footable.php:228
+#: pro-features/footable.php:229
 msgid "Check record"
 msgstr ""
 
-#: pro-features/footable.php:230
+#: pro-features/footable.php:231
 #, fuzzy
 #| msgid "First entry"
 msgid "First weight entry"
 msgstr "ערך ראשון"
 
-#: pro-features/footable.php:250
+#: pro-features/footable.php:251
 msgid "No height"
 msgstr "אין גובה"
 
-#: pro-features/footable.php:364
+#: pro-features/footable.php:367
 msgid "Difference"
 msgstr "הבדל"
 
-#: pro-features/footable.php:370
+#: pro-features/footable.php:374
 msgid "Body Mass Index"
 msgstr "מדד מסת הגוף (BMI)"
 
-#: pro-features/footable.php:442
+#: pro-features/footable.php:446
 msgid "Add Custom Field"
 msgstr "מיפוי שדות מותאמים אישית"
 
-#: pro-features/footable.php:443
+#: pro-features/footable.php:447
 msgid "Add Award"
 msgstr "הוסף פרס"
 
-#: pro-features/footable.php:444
+#: pro-features/footable.php:448
 msgid "Are you sure you want to delete the row?"
 msgstr "האם בטוח שברצונך למחוק את השורה?"
 
-#: pro-features/footable.php:445
+#: pro-features/footable.php:449
 msgid "Unfortunately there was an error deleting the row."
 msgstr "למרבה הצער, אירעה שגיאה במחיקת השורה."
 
-#: pro-features/footable.php:446
+#: pro-features/footable.php:450
 msgid "Search"
 msgstr "חיפוש"
 
-#: pro-features/footable.php:447
+#: pro-features/footable.php:451
 msgid "No data found"
 msgstr "לא נמצאו נתונים"
 
@@ -4660,6 +4604,7 @@ msgid "Obese"
 msgstr ""
 
 #: pro-features/functions.php:74 pro-features/functions.php:99
+#: pro-features/shortcode-hip-waist-ratio-calculator.php:225
 msgid "Err"
 msgstr ""
 
@@ -4668,10 +4613,12 @@ msgid "Heavily Overweight"
 msgstr "השמנת יתר"
 
 #: pro-features/functions.php:339 pro-features/plus/harris-benedict.php:466
+#: pro-features/shortcode-hip-waist-ratio-calculator.php:128
 msgid "Female"
 msgstr "נקבה"
 
 #: pro-features/functions.php:340 pro-features/plus/harris-benedict.php:466
+#: pro-features/shortcode-hip-waist-ratio-calculator.php:129
 msgid "Male"
 msgstr "זכר"
 
@@ -4997,7 +4944,7 @@ msgid "page"
 msgstr ""
 
 #: pro-features/plus/challenge/functions.php:203
-#: pro-features/user-groups.php:686
+#: pro-features/user-groups.php:711
 msgid "ID"
 msgstr "מזהה"
 
@@ -5252,19 +5199,19 @@ msgstr ""
 msgid "Note added"
 msgstr "טלפון"
 
-#: pro-features/plus/messaging/functions-notes.php:115
+#: pro-features/plus/messaging/functions-notes.php:116
 msgid " (Visible via [wt-notes])"
 msgstr ""
 
-#: pro-features/plus/messaging/hooks.php:73
+#: pro-features/plus/messaging/hooks.php:82
 msgid "You currently have no notes from the administrator."
 msgstr ""
 
-#: pro-features/plus/messaging/hooks.php:99
+#: pro-features/plus/messaging/hooks.php:108
 msgid "« prev"
 msgstr ""
 
-#: pro-features/plus/messaging/hooks.php:100
+#: pro-features/plus/messaging/hooks.php:109
 msgid "next »"
 msgstr ""
 
@@ -5392,7 +5339,7 @@ msgstr "תמונה קיימת"
 msgid "Key / Slug"
 msgstr ""
 
-#: pro-features/plus/meta-fields/hooks.php:135 pro-features/user-groups.php:633
+#: pro-features/plus/meta-fields/hooks.php:135 pro-features/user-groups.php:656
 #, fuzzy
 #| msgid "Group"
 msgid "Group ID"
@@ -5453,6 +5400,18 @@ msgstr "היתה בעיה בטעינת דף זה"
 #: pro-features/plus/meta-fields/shortcodes.php:216
 #: pro-features/shortcode-chart.php:22
 msgid "Currently there is no data to display on the chart."
+msgstr ""
+
+#: pro-features/plus/meta-fields/shortcodes.php:281
+#: pro-features/plus/meta-fields/shortcodes.php:344
+#, fuzzy
+#| msgid "Allow user to specify a date"
+msgid "You must specify a slug."
+msgstr "אפשר למשתמש לציין תאריך"
+
+#: pro-features/plus/meta-fields/shortcodes.php:287
+#: pro-features/plus/meta-fields/shortcodes.php:350
+msgid "The slug you specified does not exist."
 msgstr ""
 
 #: pro-features/plus/photos-gallery.php:35
@@ -5536,6 +5495,7 @@ msgid "Your Date of Birth:"
 msgstr "תאריך הלידה שלך:"
 
 #: pro-features/plus/shortcode.calculator.php:212
+#: pro-features/shortcode-hip-waist-ratio-calculator.php:126
 msgid "Calculate"
 msgstr ""
 
@@ -5598,6 +5558,42 @@ msgstr "אינץ'"
 msgid "Your weight suggests you are"
 msgstr "משקלך היום"
 
+#: pro-features/shortcode-hip-waist-ratio-calculator.php:122
+#, fuzzy
+#| msgid "Waist"
+msgid "Waist (cm)"
+msgstr "מותניים"
+
+#: pro-features/shortcode-hip-waist-ratio-calculator.php:123
+msgid "Waist (inches)"
+msgstr ""
+
+#: pro-features/shortcode-hip-waist-ratio-calculator.php:124
+msgid "Hip (cm)"
+msgstr ""
+
+#: pro-features/shortcode-hip-waist-ratio-calculator.php:125
+msgid "Hip (inches)"
+msgstr ""
+
+#: pro-features/shortcode-hip-waist-ratio-calculator.php:165
+msgid "Moderate Health Risk"
+msgstr ""
+
+#: pro-features/shortcode-hip-waist-ratio-calculator.php:168
+msgid "High Health Risk"
+msgstr ""
+
+#: pro-features/shortcode-hip-waist-ratio-calculator.php:171
+msgid "Low Health Risk"
+msgstr ""
+
+#: pro-features/shortcode-hip-waist-ratio-calculator.php:175
+#, fuzzy
+#| msgid "Your aim:"
+msgid "Your ratio"
+msgstr "המטרה שלך:"
+
 #: pro-features/shortcode-if.php:21
 #, fuzzy
 #| msgid ""
@@ -5635,18 +5631,20 @@ msgstr "יש להזין משקל יעד כדי לראות את התקדמותך.
 msgid "Please add a weight entry to see your progress."
 msgstr "יש להוסיף ערך משקל כדי לראות את התקדמותך."
 
-#: pro-features/shortcode-reminders.php:39
+#: pro-features/shortcode-reminders.php:56
 msgid ""
 "Please remember to enter your weight for today as well as your target weight."
 msgstr "יש לזכור להכניס את משקלך להיום, כמו גם משקל היעד שלך."
 
-#: pro-features/shortcode-reminders.php:42
+#: pro-features/shortcode-reminders.php:59
 msgid "Please remember to enter your target weight."
 msgstr "יש לזכור להכניס את משקל היעד שלך."
 
-#: pro-features/shortcode-reminders.php:45
-msgid "Please remember to enter your weight for today."
-msgstr "יש לזכור להכניס את משקלך להיום."
+#: pro-features/shortcode-reminders.php:62
+#, fuzzy
+#| msgid "Please remember to enter your target weight."
+msgid "Please remember to enter your weight."
+msgstr "יש לזכור להכניס את משקל היעד שלך."
 
 #: pro-features/shortcode-stats.php:39
 msgid "Weight Difference"
@@ -5686,47 +5684,54 @@ msgstr "נדרש משקל"
 msgid "Birthday Email"
 msgstr "מיילים ליום הולדת"
 
-#: pro-features/user-groups.php:635
+#: pro-features/user-groups.php:450 pro-features/user-groups.php:552
+#: pro-features/user-groups.php:887
+msgid "No Group"
+msgstr "ללא קבוצה"
+
+#: pro-features/user-groups.php:658
 #, fuzzy
 #| msgid "User"
 msgid "No. Users"
 msgstr "משתמש"
 
-#: pro-features/user-groups.php:637
+#: pro-features/user-groups.php:660
 msgid "Total Weight Difference"
 msgstr "הפרש משקל כולל"
 
-#: pro-features/user-groups.php:689
-#, fuzzy
-#| msgid "Start Weight"
-msgid "Start"
-msgstr "משקל התחלה"
-
-#: pro-features/user-groups.php:690
-#, fuzzy
-#| msgid "Lose weight"
-msgid "Previous"
-msgstr "לרדת במשקל"
-
-#: pro-features/user-groups.php:691
-#, fuzzy
-#| msgid "Latest Weight"
-msgid "Latest"
-msgstr "המשקל העדכני ביותר"
-
-#: pro-features/user-groups.php:692
+#: pro-features/user-groups.php:708
 #, fuzzy
 #| msgid "Diff. from Start"
 msgid "Diff from start"
 msgstr "הפרש מההתחלה"
 
-#: pro-features/user-groups.php:826
+#: pro-features/user-groups.php:708
+#, fuzzy
+#| msgid "Diff. from Target"
+msgid "Diff from prev"
+msgstr "נשאר עד ליעד"
+
+#: pro-features/user-groups.php:714
+#, fuzzy
+#| msgid "Start Weight"
+msgid "Start"
+msgstr "משקל התחלה"
+
+#: pro-features/user-groups.php:715
+#, fuzzy
+#| msgid "Lose weight"
+msgid "Previous"
+msgstr "לרדת במשקל"
+
+#: pro-features/user-groups.php:716
+#, fuzzy
+#| msgid "Latest Weight"
+msgid "Latest"
+msgstr "המשקל העדכני ביותר"
+
+#: pro-features/user-groups.php:851
 msgid "There is no weight difference for this group."
 msgstr ""
-
-#: pro-features/user-groups.php:862
-msgid "No Group"
-msgstr "ללא קבוצה"
 
 #: pro-features/user-preferences.php:17
 msgid "You must be logged in to edit your settings."
@@ -5803,23 +5808,23 @@ msgstr "הלחצן שלמטה מאפשר לך לנקות את היסטוריית
 msgid "DELETE ALL DATA"
 msgstr "מחוק את כל הנתונים"
 
-#: pro-features/web-hooks.php:215
+#: pro-features/web-hooks.php:226
 msgid "A weight entry has been added/updated"
 msgstr ""
 
-#: pro-features/web-hooks.php:289
+#: pro-features/web-hooks.php:300
 #, fuzzy
 #| msgid "Save Entry"
 msgid "View Entry"
 msgstr "שמירת ערך"
 
-#: pro-features/web-hooks.php:294 pro-features/web-hooks.php:360
+#: pro-features/web-hooks.php:305 pro-features/web-hooks.php:371
 #, fuzzy
 #| msgid "No Group"
 msgid "View Profile"
 msgstr "ללא קבוצה"
 
-#: pro-features/web-hooks.php:334
+#: pro-features/web-hooks.php:345
 msgid "A new target has been set"
 msgstr ""
 
@@ -5830,6 +5835,11 @@ msgstr "מנהל מעקב משקל - תרשים"
 #: pro-features/widget-chart.php:14
 msgid "Display a chart to see your current progress."
 msgstr "הצג תרשים כדי לראות את ההתקדמות הנוכחית שלך."
+
+#. Plugin Name of the plugin/theme
+#: pro-features/widget-chart.php:18
+msgid "Weight Tracker"
+msgstr "מנהל מעקב משקל"
 
 #: pro-features/widget-chart.php:101
 msgid ""
@@ -5991,6 +6001,57 @@ msgstr ""
 #. Author URI of the plugin/theme
 msgid "https://www.YeKen.uk"
 msgstr "https://www.YeKen.uk"
+
+#~ msgid "Legacy Pro License"
+#~ msgstr "רישיון Pro מורשה"
+
+#~ msgid ""
+#~ "Our licensing has model has changed, Prior to September 2017 it used to "
+#~ "be a one off payment that enabled the Pro features of the plugin. This is "
+#~ "still the case and any old licenses will still be honoured."
+#~ msgstr ""
+#~ "מודל הרישיונות שלנו השתנה, מאז ספטמבר 2017. זה היה תשלום אחד שאיפשר את "
+#~ "תכונות ה-Pro של הפלאגין. אנו ממשיכים לכבד את כל הרישיונות שהוענקו לפני כן."
+
+#~ msgid "Moving to a yearly license"
+#~ msgstr "מעבר לרישיון שנתי"
+
+#~ msgid ""
+#~ "There is no reason to move to a yearly license - Pro features will remain "
+#~ "the same for legacy and new Pro subscriptions. However, if you were to "
+#~ "move to a yearly subscription you will be supporting the development of "
+#~ "the plugin (and I'll give you a big hug)."
+#~ msgstr ""
+#~ "אין סיבה לעבור לרישיון שנתי - תכונות Pro יישארו זהות עבור מנויים מהדור "
+#~ "הקודם והחדש. עם זאת, אם תעבור למנוי שנתי, תתמוך בפיתו הפלאגין (ואני אתן "
+#~ "לך חיבוק גדול)."
+
+#~ msgid "Pro Plus License"
+#~ msgstr "רישיון פרו +"
+
+#~ msgid ""
+#~ "Of course, thank you for purchasing a Pro license - it is much "
+#~ "appreciated. As you can see below, you can further expand the features of"
+#~ msgstr ""
+#~ "כמובן, תודה על רכישת רישיון Pro - זה מוערך מאוד. כפי שניתן לראות למטה, "
+#~ "תוכל להרחיב עוד יותר את התכונות של"
+
+#~ msgid "Switch to a yearly Pro license for "
+#~ msgstr "עבור לרישיון Pro שנתי עבור "
+
+#~ msgid "Never"
+#~ msgstr "לעולם"
+
+#, fuzzy
+#~| msgid "Read more about calculations"
+#~ msgid "Read more about replacing legacy licenses"
+#~ msgstr "קריאה נוספת אודות חישובים"
+
+#~ msgid "Legacy Pro"
+#~ msgstr "Legacy Pro"
+
+#~ msgid "Please remember to enter your weight for today."
+#~ msgstr "יש לזכור להכניס את משקלך להיום."
 
 #, fuzzy
 #~| msgid "No. of Entries"
@@ -6176,9 +6237,6 @@ msgstr "https://www.YeKen.uk"
 
 #~ msgid "Add a new weight"
 #~ msgstr "יש להוסיף מדידת משקל חדשה"
-
-#~ msgid "Edit weight"
-#~ msgstr "ערוך משקל"
 
 #~ msgid "Please enter a valid figure for pounds"
 #~ msgstr "לגבי פאונד - נא להזין ערך חוקי"
