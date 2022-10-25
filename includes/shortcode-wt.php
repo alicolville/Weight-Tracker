@@ -92,7 +92,6 @@ function ws_ls_shortcode_wt( $user_defined_arguments ) {
 		$shortcode_arguments[ 'disable-not-logged-in' ] = true;
 
 		if ( true === WS_LS_IS_PRO_PLUS &&
-		        false === $shortcode_arguments[ 'user-loaded' ] &&
 		            true === $shortcode_arguments[ 'kiosk-barcode-scanner' ] ) {
 			$html .= ws_ls_barcode_reader();
 		}

@@ -19,10 +19,18 @@ let wt_barcode_callback_success = ( decodedText, decodedResult ) => {
   window.location.replace( base_url );
 };
 
-let wt_barcode_library_config = { fps: 10, qrbox: { width: 250, height: 250 }};
+/**
+ * Start barcode reader
+ */
+function wt_barcode_start() {
 
-// Initiate Barcode reader
-wt_barcode_reader.start({ facingMode: "environment" }, wt_barcode_library_config, wt_barcode_callback_success);
+  let wt_barcode_library_config = { fps: 10, qrbox: { width: 250, height: 250 }};
+
+  wt_barcode_reader.start({ facingMode: "environment" }, wt_barcode_library_config, wt_barcode_callback_success);
+
+  const div = document.getElementById('ykuk-barcode-reader-container');
+  div.classList.remove('ws-ls-hide');
+}
 
 /*
   Make a beep sound!

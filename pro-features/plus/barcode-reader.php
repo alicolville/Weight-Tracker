@@ -18,10 +18,12 @@ function ws_ls_barcode_reader( $arguments = [] ) {
 
 	wp_localize_script( 'yk-barcode-scanner', 'wt_barcode_scanner_config', [  'current-url' => get_permalink(), 'querystring-key-user-id' => $arguments[ 'querystring-key-user-id' ] ] );
 
-	return '<div class="ykuk-child-width-1-1 ykuk-text-center" ykuk-grid >
+	return '<div id="ykuk-barcode-reader-container" class="ykuk-child-width-1-1 ykuk-text-center ws-ls-hide" ykuk-grid >
 			    <div>
 			        <div class="ykuk-card ykuk-card-default ykuk-card-body">
-			            <div id="wt-barcode-reader" ></div>
+			        	<center>
+			        		<div id="wt-barcode-reader"></div>
+						</center>
 			        </div>
 			    </div>
 			</div>';
