@@ -22,7 +22,8 @@ function ws_ls_barcode_reader( $arguments = [] ) {
 			    <div>
 			        <div class="ykuk-card ykuk-card-default ykuk-card-body">
 			        	<center>
-			        		<div id="wt-barcode-reader"></div>
+			        		<div id="wt-barcode-reader" class="ykuk-margin-bottom"></div>
+			        		<select id="wt-barcode-reader-devices-list"></select>
 						</center>
 			        </div>
 			    </div>

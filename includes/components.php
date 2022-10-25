@@ -1091,7 +1091,6 @@ function ws_ls_component_user_search( $arguments ) {
 	]);
 
 	$reset_link = remove_query_arg( $arguments[ 'querystring-key-user-id' ], ws_ls_get_url() );
-	var_dump($arguments[ 'kiosk-barcode-scanner' ]);
 
 	return sprintf( '<div class="ykuk-margin ws-ls-component-user-search ykuk-grid" ykuk-grid>
 				        <div class="ykuk-width-expand">
@@ -1100,7 +1099,7 @@ function ws_ls_component_user_search( $arguments ) {
 				        </div>
 				        <div class="ykuk-text-right">
 				        	<a href="%2$s" class="ykuk-button ykuk-button-%3$s%5$s">%4$s</a>
-				        	<a onclick="wt_barcode_start()" class="ykuk-button ykuk-button-secondary%6$s"  >%7$s</a>
+				        	<a onclick="wt_barcode_reader_show()" class="ykuk-button ykuk-button-secondary%6$s"  >%7$s</a>
 				        </div>
 				    </div>
 				    <div class="ykuk-divider-icon"></div>',

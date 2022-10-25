@@ -1,6 +1,7 @@
 'use strict';
 
-const wt_barcode_reader = new Html5Qrcode( 'wt-barcode-reader', false);
+const wt_barcode_reader           = new Html5Qrcode( 'wt-barcode-reader', false);
+const wt_barcode_devices_list     = document.getElementById('wt-barcode-reader-devices-list');
 
 // Callback for a successful scan
 let wt_barcode_callback_success = ( decodedText, decodedResult ) => {
@@ -22,15 +23,82 @@ let wt_barcode_callback_success = ( decodedText, decodedResult ) => {
 /**
  * Start barcode reader
  */
-function wt_barcode_start() {
+function wt_barcode_camera_initialise( device_id = null ) {
+
+  // Check localstorage?
+  if ( null === device_id ) {
+    device_id = localStorage.getItem('ws-ls-barcode-device' ) || null;
+  }
 
   let wt_barcode_library_config = { fps: 10, qrbox: { width: 250, height: 250 }};
 
-  wt_barcode_reader.start({ facingMode: "environment" }, wt_barcode_library_config, wt_barcode_callback_success);
+  device_id = ( null === device_id ) ? { facingMode: "environment" } : device_id;
+
+  wt_barcode_reader.start(device_id, wt_barcode_library_config, wt_barcode_callback_success);
+}
+
+/**
+ * Change device if camera is already running
+ * @param device_id
+ */
+function wt_barcode_camera_change( device_id = null ) {
+  wt_barcode_reader.stop().then((ignore) => {
+    wt_barcode_camera_initialise( device_id );
+  }).catch((err) => {
+    // Stop failed, handle it.
+  });
+}
+
+/**
+ * Show barcode reader
+ */
+function wt_barcode_reader_show() {
+
+  wt_barcode_cameras_populate_list();
 
   const div = document.getElementById('ykuk-barcode-reader-container');
   div.classList.remove('ws-ls-hide');
+
+  wt_barcode_camera_initialise();
 }
+
+/**
+ * Populate drop down list of available cameras
+ */
+function wt_barcode_cameras_populate_list() {
+
+  Html5Qrcode.getCameras().then(devices => {
+    if ( devices && devices.length ) {
+
+      for(let i in devices) {
+        console.log(devices[i]);
+        wt_barcode_devices_list.add(new Option(devices[i].label, devices[i].id));
+      }
+      
+      // If we have a stored selected value then set.
+      let selected_device = localStorage.getItem('ws-ls-barcode-device' ) || null;
+
+      if( null !== selected_device ) {
+        wt_barcode_devices_list.value = selected_device;
+      }
+    }
+  }).catch(err => {
+    alert( 'Could not load cameras for Barcode Reader' );
+  });
+
+  return null;
+}
+
+/**
+ * Upon a selecting a device, set device ID
+ */
+wt_barcode_devices_list.addEventListener('change', (event) => {
+
+  localStorage.setItem('ws-ls-barcode-device', wt_barcode_devices_list.value);
+
+  wt_barcode_camera_change( wt_barcode_devices_list.value );
+
+});
 
 /*
   Make a beep sound!
