@@ -54,8 +54,6 @@ function wt_barcode_camera_change( device_id = null ) {
  */
 function wt_barcode_reader_show() {
 
-  wt_barcode_cameras_populate_list();
-
   const div = document.getElementById('ykuk-barcode-reader-container');
   div.classList.remove('ws-ls-hide');
 
@@ -71,10 +69,9 @@ function wt_barcode_cameras_populate_list() {
     if ( devices && devices.length ) {
 
       for(let i in devices) {
-        console.log(devices[i]);
         wt_barcode_devices_list.add(new Option(devices[i].label, devices[i].id));
       }
-      
+
       // If we have a stored selected value then set.
       let selected_device = localStorage.getItem('ws-ls-barcode-device' ) || null;
 
@@ -88,6 +85,8 @@ function wt_barcode_cameras_populate_list() {
 
   return null;
 }
+
+wt_barcode_cameras_populate_list();
 
 /**
  * Upon a selecting a device, set device ID
