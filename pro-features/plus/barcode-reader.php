@@ -27,5 +27,17 @@ function ws_ls_barcode_reader( $arguments = [] ) {
 						</center>
 			        </div>
 			    </div>
+			</div>
+			<div id="ykuk-barcode-lazer-container" class="ykuk-child-width-1-1 ykuk-text-center ws-ls-hide" ykuk-grid >
+			    <div>
+			        <div class="ykuk-card ykuk-card-default ykuk-card-body">
+			        	<div class="ykuk-margin ykuk-child-width-1-1">
+					        <div class="ykuk-inline">
+					            <span class="ykuk-form-icon" ykuk-icon="icon: credit-card"></span>
+					            <input class="ykuk-input" type="text" id="ykuk-barcode-lazer-value">
+					        </div>
+					    </div>
+			        </div>
+			    </div>
 			</div>';
 }
