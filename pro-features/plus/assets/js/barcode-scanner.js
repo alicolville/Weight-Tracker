@@ -13,7 +13,7 @@ let wt_barcode_callback_success = ( decodedText, decodedResult ) => {
   const div = document.getElementById('wt-barcode-reader');
 
   div.innerHTML = `<div class="ykuk-margin-bottom-remove"><div ykuk-spinner="ratio: 3"></div></div>`;
-  
+
   wt_barcode_redirect( decodedText );
 };
 
@@ -56,9 +56,9 @@ function wt_barcode_lazer_show() {
   let barcode_reader = document.getElementById('ykuk-barcode-lazer-value');
   barcode_reader.focus();
 
+  // If we have a value inserted into the text field, disable and redirect
   barcode_reader.addEventListener('change', (event) => {
 
-   // localStorage.setItem('ws-ls-barcode-device', wt_barcode_devices_list.value );
     barcode_reader.readOnly = true;
 
     wt_barcode_redirect( barcode_reader.value );
@@ -149,24 +149,3 @@ function wt_barcode_querystring_value( key ) {
     }
   }
 }
-
-// document.addEventListener('textInput', function (e){
-//  // if(e.data.length >= 6){
-//     console.log('IR scan textInput', e.data);
-//     e.preventDefault();
-//  // }
-// });
-
-// let UPC = '';
-// document.addEventListener("keydown", function(e) {
-//   const textInput = e.key || String.fromCharCode(e.keyCode);
-//   const targetName = e.target.localName;
-//   let newUPC = '';
-//   if (textInput && textInput.length === 1 && targetName !== 'input'){
-//     newUPC = UPC+textInput;
-//
-//     if (newUPC.length >= 6) {
-//       console.log('barcode scanned:  ', newUPC);
-//     }
-//   }
-// });

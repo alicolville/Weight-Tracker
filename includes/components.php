@@ -1099,8 +1099,8 @@ function ws_ls_component_user_search( $arguments ) {
 				        </div>
 				        <div class="ykuk-text-right">
 				        	<a href="%2$s" class="ykuk-button ykuk-button-%3$s%5$s">%4$s</a>
-				        	<a onclick="wt_barcode_reader_show()" class="ykuk-button ykuk-button-secondary%6$s" ykuk-icon="icon: camera" ></a>
-				        	<a onclick="wt_barcode_lazer_show()" class="ykuk-button ykuk-button-secondary%6$s" ykuk-icon="icon: credit-card" ></a>
+				        	<a onclick="wt_barcode_reader_show()" class="ykuk-button ykuk-button-barcode ykuk-button-secondary%6$s" ykuk-icon="icon: camera" ></a>
+				        	<a onclick="wt_barcode_lazer_show()" class="ykuk-button ykuk-button-barcode ykuk-button-secondary%6$s" ykuk-icon="icon: credit-card" ></a>
 				        </div>
 				    </div>
 				    <div class="ykuk-divider-icon"></div>',
