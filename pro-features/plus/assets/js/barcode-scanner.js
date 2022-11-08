@@ -63,6 +63,8 @@ function wt_barcode_lazer_show() {
 
     barcode_reader.readOnly = true;
 
+    wt_barcode_beep();
+
     wt_barcode_redirect( barcode_reader.value );
   });
 }
