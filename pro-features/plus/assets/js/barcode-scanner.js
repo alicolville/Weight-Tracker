@@ -39,6 +39,8 @@ function wt_barcode_camera_initialise( device_id = null ) {
  */
 function wt_barcode_reader_show() {
 
+  wt_barcode_cameras_populate_list();
+
   const div = document.getElementById('ykuk-barcode-reader-container');
   div.classList.remove('ws-ls-hide');
 
@@ -96,13 +98,11 @@ function wt_barcode_cameras_populate_list() {
       }
     }
   }).catch(err => {
-    alert( 'Could not load cameras for Barcode Reader' );
+    alert( wt_barcode_scanner_config[ 'text-error-loading-cameras' ] );
   });
 
   return null;
 }
-
-wt_barcode_cameras_populate_list();
 
 // Has the user selected another Camera? Yes, show scanner by default!
 if( 'undefined' !== typeof( wt_barcode_querystring_value('camera-id') ) ) {
