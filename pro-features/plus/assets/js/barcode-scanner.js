@@ -47,7 +47,7 @@ function wt_barcode_lazer_show() {
     div.classList.add('ws-ls-hide');
     return;
   }
-  
+
   let barcode_reader = document.getElementById('ykuk-barcode-lazer-value');
   barcode_reader.focus();
 
@@ -78,6 +78,14 @@ function wt_barcode_redirect( user_id ) {
  */
 function wt_barcode_reader_show() {
 
+  const div = document.getElementById('ykuk-barcode-reader-container');
+
+  if ( false === div.classList.contains( 'ws-ls-hide' ) ) {
+    wt_barcode_reader.stop();
+    div.classList.add('ws-ls-hide');
+    return;
+  }
+
   Html5Qrcode.getCameras().then(devices => {
     if ( devices && devices.length ) {
 
@@ -92,7 +100,6 @@ function wt_barcode_reader_show() {
         wt_barcode_devices_list.value = selected_device;
       }
 
-      const div = document.getElementById('ykuk-barcode-reader-container');
       div.classList.remove('ws-ls-hide');
 
       wt_barcode_camera_initialise();
