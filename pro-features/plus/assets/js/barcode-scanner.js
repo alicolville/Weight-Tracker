@@ -40,8 +40,14 @@ function wt_barcode_camera_initialise( device_id = null ) {
 function wt_barcode_lazer_show() {
 
   const div = document.getElementById('ykuk-barcode-lazer-container');
-  div.classList.remove('ws-ls-hide');
 
+  if ( div.classList.contains( 'ws-ls-hide' ) ) {
+    div.classList.remove('ws-ls-hide');
+  } else {
+    div.classList.add('ws-ls-hide');
+    return;
+  }
+  
   let barcode_reader = document.getElementById('ykuk-barcode-lazer-value');
   barcode_reader.focus();
 
