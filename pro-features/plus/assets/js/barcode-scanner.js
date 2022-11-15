@@ -35,19 +35,6 @@ function wt_barcode_camera_initialise( device_id = null ) {
 }
 
 /**
- * Show barcode reader
- */
-function wt_barcode_reader_show() {
-
-  wt_barcode_cameras_populate_list();
-
-  const div = document.getElementById('ykuk-barcode-reader-container');
-  div.classList.remove('ws-ls-hide');
-
-  wt_barcode_camera_initialise();
-}
-
-/**
  * Show barcode reader for hand held
  */
 function wt_barcode_lazer_show() {
@@ -83,7 +70,7 @@ function wt_barcode_redirect( user_id ) {
 /**
  * Populate drop down list of available cameras
  */
-function wt_barcode_cameras_populate_list() {
+function wt_barcode_reader_show() {
 
   Html5Qrcode.getCameras().then(devices => {
     if ( devices && devices.length ) {
@@ -98,6 +85,11 @@ function wt_barcode_cameras_populate_list() {
       if( null !== selected_device ) {
         wt_barcode_devices_list.value = selected_device;
       }
+
+      const div = document.getElementById('ykuk-barcode-reader-container');
+      div.classList.remove('ws-ls-hide');
+
+      wt_barcode_camera_initialise();
     }
   }).catch(err => {
     alert( wt_barcode_scanner_config[ 'text-error-loading-cameras' ] );
