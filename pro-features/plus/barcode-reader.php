@@ -11,14 +11,15 @@ defined('ABSPATH') or die('Jog on!');
  */
 function ws_ls_barcode_reader( $arguments = [] ) {
 
-	$arguments = wp_parse_args( $arguments, [ 'querystring-key-user-id' => 'wt-user-id' ] );
+	$arguments = wp_parse_args( $arguments, [ 'querystring-key-user-id' => 'wt-user-id', 'open' => '' ] );
 
 	wp_enqueue_script( 'wt-kiosk-barcode', 'https://unpkg.com/html5-qrcode' );
 	wp_enqueue_script( 'yk-barcode-scanner', plugins_url( 'assets/js/barcode-scanner.js', __FILE__ ), [ 'wt-kiosk-barcode' ] , WE_LS_CURRENT_VERSION );
 
 	$config = [ 'current-url'                   => get_permalink(),
 	            'querystring-key-user-id'       => $arguments[ 'querystring-key-user-id' ],
-				'text-error-loading-cameras'    => __( 'Could not load any cameras for the barcode reader. Please ensure you have one or more cameras attached to this device and you are accessing it via https.', WE_LS_SLUG )
+				'text-error-loading-cameras'    => __( 'Could not load any cameras for the barcode reader. Please ensure you have one or more cameras attached to this device and you are accessing it via https.', WE_LS_SLUG ),
+				'open'                          => $arguments[ 'open' ]
 	];
 
 	wp_localize_script( 'yk-barcode-scanner', 'wt_barcode_scanner_config', $config );

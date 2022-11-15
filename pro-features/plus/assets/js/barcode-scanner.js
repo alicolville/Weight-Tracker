@@ -116,6 +116,16 @@ if( 'undefined' !== typeof( wt_barcode_querystring_value('camera-id') ) ) {
   wt_barcode_reader_show();
 }
 
+// Default scanner to load?
+switch ( wt_barcode_scanner_config[ 'open' ] ) {
+  case 'lazer':
+    wt_barcode_lazer_show();
+    break;
+  case 'camera':
+    wt_barcode_reader_show();
+    break;
+}
+
 /**
  * Upon a selecting a device, set device ID and reload page
  */

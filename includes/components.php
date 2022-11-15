@@ -1100,7 +1100,7 @@ function ws_ls_component_user_search( $arguments ) {
 				        <div class="ykuk-text-right">
 				        	<a href="%2$s" class="ykuk-button ykuk-button-%3$s%5$s">%4$s</a>
 				        	<a onclick="wt_barcode_reader_show()" class="ykuk-button ykuk-button-barcode ykuk-button-secondary%6$s" ykuk-icon="icon: camera" ></a>
-				        	<a onclick="wt_barcode_lazer_show()" class="ykuk-button ykuk-button-barcode ykuk-button-secondary%6$s" ykuk-icon="icon: credit-card" ></a>
+				        	<a onclick="wt_barcode_lazer_show()" class="ykuk-button ykuk-button-barcode ykuk-button-secondary%7$s" ykuk-icon="icon: credit-card" ></a>
 				        </div>
 				    </div>
 				    <div class="ykuk-divider-icon"></div>',
@@ -1109,7 +1109,8 @@ function ws_ls_component_user_search( $arguments ) {
 					( NULL === ws_ls_querystring_value( $arguments[ 'querystring-key-user-id' ] ) ) ? 'default' : 'secondary',
 					( false === $arguments[ 'kiosk-barcode-scanner' ] ) ? __( 'Clear Screen', WE_LS_SLUG ) : __( 'Clear', WE_LS_SLUG ),
 					( false === $arguments[ 'user-loaded' ] ) ? ' ws-ls-hide' : '',
-					( false === $arguments[ 'kiosk-barcode-scanner' ] ) ? ' ws-ls-hide' : ''
+					( false === $arguments[ 'kiosk-barcode-scanner' ] || false === $arguments[ 'kiosk-barcode-scanner-camera' ] ) ? ' ws-ls-hide' : '',
+					( false === $arguments[ 'kiosk-barcode-scanner' ] || false === $arguments[ 'kiosk-barcode-scanner-lazer' ] ) ? ' ws-ls-hide' : ''
 	);
 }
 /**

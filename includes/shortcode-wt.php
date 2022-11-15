@@ -36,8 +36,11 @@ function ws_ls_shortcode_wt( $user_defined_arguments ) {
 												'hide-custom-fields-chart'  => false,                       // Hide custom fields from chart
 												'hide-custom-fields-table'  => false,                       // Hide custom fields from table
 												'kiosk-mode'                => false,                       // If in Kiosk mode, allow this UI to be used for multiple isers
-												'kiosk-barcode-scanner'     => false,                       // Enable barcode scanner for selecting user records
-												'kiosk-hide-editing-name' 	=> false,                       // Hide name of the person we're editing
+												'kiosk-barcode-scanner'         => false,                   // Enable barcode scanner for selecting user records
+												'kiosk-barcode-scanner-camera'  => true,                    // Enable scanner that uses the devices cameras for scanning barcodes/QR codes
+												'kiosk-barcode-scanner-lazer'   => true,                    // Enable support for external barcode reader (which uses text input)
+												'kiosk-barcode-scanner-open'    => '',                      // 'lazer' / 'camera' - if specified will open one on page load
+	                                            'kiosk-hide-editing-name' 	=> false,                       // Hide name of the person we're editing
 	                                            'show-delete-data' 		    => true,                	    // Show "Delete your data" section
 												'show-tab-info' 		    => false,
 	                                            'summary-boxes-data'        => 'number-of-entries,number-of-days-tracking,latest-weight,start-weight', // Summary boxes to display at top of data tab
@@ -93,7 +96,10 @@ function ws_ls_shortcode_wt( $user_defined_arguments ) {
 
 		if ( true === WS_LS_IS_PRO_PLUS &&
 		            true === $shortcode_arguments[ 'kiosk-barcode-scanner' ] ) {
-			$html .= ws_ls_barcode_reader();
+			$html .= ws_ls_barcode_reader( [ 'camera'   => $shortcode_arguments[ 'kiosk-barcode-scanner-camera' ],
+			                                 'lazer'    => $shortcode_arguments[ 'kiosk-barcode-scanner-lazer'],
+											 'open'     => $shortcode_arguments[ 'kiosk-barcode-scanner-open']
+			] );
 		}
 
 		$html .= ws_ls_component_user_search( $shortcode_arguments );
