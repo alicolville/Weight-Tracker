@@ -4,7 +4,8 @@ The majority of the public facing functionality are implemented using [WordPress
 
 |Shortcode|Description|    
 |--|--|
-|[[wt]]({{ site.baseurl }}/shortcodes/wt.html) |A new shortcode (beta) that will replace [[wt]]({{ site.baseurl }}/shortcodes/wt.html).   
+|[[wt]]({{ site.baseurl }}/shortcodes/wt.html) |A shortcode that encompasses all Weight Tracker front end functionality [[wt]]({{ site.baseurl }}/shortcodes/wt.html).   
+|[[wt-kiosk]]({{ site.baseurl }}/shortcodes/wt-kiosk.html) |An extension of [[wt]]({{ site.baseurl }}/shortcodes/wt.html) that allows the shortcode to be used in Kiosk mode.
 |[[wt-awards]]({{ site.baseurl }}/shortcodes/wt-awards.html)|Display [awards]({{ site.baseurl }}/awards.html) given to the user.
 |[[wt-awards-grid]]({{ site.baseurl }}/shortcodes/wt-awards-grid.html)|Display most recent [award]({{ site.baseurl }}/awards.html) for the given user.
 |[[wt-awards-recent]]({{ site.baseurl }}/shortcodes/wt-awards-recent.html)|Display [awards]({{ site.baseurl }}/awards.html) given to the user in gird format.
@@ -32,7 +33,7 @@ The majority of the public facing functionality are implemented using [WordPress
 |[[wt-group-view-as-table]]({{ site.baseurl }}/shortcodes/wt-group-view-as-table.html)|Display a table of summary information for users within a given [group]({{ site.baseurl }}/groups.html).
 |[[wt-waist-to-hip-ratio-calculator]]({{ site.baseurl }}/shortcodes/wt-waist-to-hip-ratio-calculator.html)|Displays a Waist-to-Hip ratio calculator for your users to use.|
 |[[wt-if]]({{ site.baseurl }}/shortcodes/wt-if.html)|Add conditional display logic based on whether WT data has been completed or not.|
-|[[wt-legacy]]({{ site.baseurl }}/shortcodes/wt-legacy.html) |A shortcode that encompasses all Weight Tracker front end functionality.|  
+|[[wt-legacy]]({{ site.baseurl }}/shortcodes/wt-legacy.html) |A legacy version of [[wt]]({{ site.baseurl }}/shortcodes/wt.html).|  
 |[[wt-league-table]]({{ site.baseurl }}/shortcodes/wt-league-table.html)|Display a league table of Weight Tracker users.|
 |[[wt-macronutrients]]({{ site.baseurl }}/shortcodes/wt-macronutrients.html)|Displays a macronutrient figure from the macronutrient intake calculations.|
 |[[wt-macronutrients-table]]({{ site.baseurl }}/shortcodes/wt-macronutrients-table.html)|Displays recommendations on the best way to split your calorie intake.|
