@@ -15,7 +15,7 @@
     // Validate form and build data object for ajax call
     $( '#' + form_id + ' .ykuk-input' ).each( function() {
 
-      if ( $(this).val() === '' ) {
+      if ( $(this).val() === '' && false === $(this).hasClass( 'ws-ls-hide' ) ) {
 
         $(this).addClass( 'ykuk-form-danger' );
         is_valid = false;

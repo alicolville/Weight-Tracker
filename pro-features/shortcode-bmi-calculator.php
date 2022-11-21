@@ -35,6 +35,8 @@ function ws_ls_bmi_calculator( $user_defined_arguments ) {
 						'metric' !== $arguments[ 'default-tab' ] ? 'ykuk-active' : ''
 	);
 
+	$pounds_only = ( 'pounds_only' === ws_ls_settings_weight_unit() );
+
 	$html .= sprintf( '<ul class="ykuk-switcher ykuk-margin" >
 						<li>
 							<form id="ws-ls-bmi-calc-metric" class="ykuk-form-horizontal ykuk-margin-large form-calculate" data-unit="metric" data-action="ws_ls_bmi_calculator">
@@ -68,10 +70,10 @@ function ws_ls_bmi_calculator( $user_defined_arguments ) {
 							    <div class="ykuk-margin">
 							        <label class="ykuk-form-label" for="form-horizontal-text">%1$s</label>
 							        <div class="ykuk-form-controls ykuk-grid" ykuk-grid>
-							            <div class="ykuk-width-1-2">
-							             <input class="ykuk-input" id="stones" type="number" placeholder="%6$s" min="0" max="50">
+							            <div class="ykuk-width-1-2%11$s">
+							             <input class="ykuk-input%11$s" id="stones" type="number" placeholder="%6$s" min="0" max="50">
 							            </div>
-							            <div class="ykuk-width-1-2">
+							            <div class="ykuk-width-1-%10$d">
 							            <input class="ykuk-input" id="pounds" type="number" placeholder="%7$s" min="0" max="14">
 							            </div>
 							        </div>
@@ -100,7 +102,9 @@ function ws_ls_bmi_calculator( $user_defined_arguments ) {
 						__( 'Stones', WE_LS_SLUG ),
 						__( 'Pounds', WE_LS_SLUG ),
 						__( 'Feet', WE_LS_SLUG ),
-						__( 'Inches', WE_LS_SLUG )
+						__( 'Inches', WE_LS_SLUG ),
+						( true === $pounds_only ) ? 1 : 2,
+						( true === $pounds_only ) ? ' ws-ls-hide' : ''
 	);
 
 	$html .= '</ul></div>';
