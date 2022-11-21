@@ -84,3 +84,7 @@
 .ws-ls-kiosk-tab .ws-ls-section-2 .ykuk-card {
   background-color: #F4ECF7;
 }
+.ykuk-button-barcode svg {
+  position: relative;
+  top: 5px;
+}

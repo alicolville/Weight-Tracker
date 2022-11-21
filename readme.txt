@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight,tracker,chart,bmi,bmr,macronutrient,measure,awards,custom fields,history,measurements,data
 Requires at least: 5.7
 Tested up to: 6.0.2
-Stable tag: 10.3.1
+Stable tag: 10.3.2
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -37,6 +37,7 @@ For further information read our documentation:
 
 * All of the features that come with a standard Pro license.
 * **Kiosk mode**. [wt-kiosk] shortcode for allowing your administrators and staff to search and edit a user's record on the front end of the website.
+* **Barcode scanner**. Beta. Barcode scanner for scanning user IDs when using [wt-kiosk].
 * **Harris Benedict formula**. Shortcodes and extended admin screens to a view a person's calorie intake required to maintain and lose weight. For further information on Harris Benedict Formula and how it is calculated visit our calculations page.
 * **Recommended calorie intake per meal time**. Shortcodes and extended admin screens to recommend how a person should split their daily calorie intake across meals. For further information on how this is calculated please visit our calculations page.
 * **Macronutrients Calculator**. Shortcodes and extended admin screens to recommend how their calorie consumption should be split into fats, carbohydrates and proteins. For further information on the Macronutrients Calculator and how these calculations are performed please visit our calculations page.
@@ -147,9 +148,17 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 == Upgrade Notice ==
 
-10.2 - "Kiosk Mode" for [wt-beta]!
+10.3.2 - Beta support for barcode readers in "Kiosk Mode" for [wt]!
 
 == Changelog ==
+
+= 10.3.2 =
+
+* Improvement: Added Beta support for Barcode scanning in [wt-kiosk]. Read more: https://docs.yeken.uk/shortcodes/wt-kiosk.html
+* Improvement: [wt-kiosk] - hide the "Clear Screen" button until a user record has been selected.
+* Improvement: [wt-bmi-calculator] now respects setting "Weight Units". If "Pounds only" the Stones field is hidden. Read more: https://github.com/alicolville/Weight-Tracker/issues/532
+* Bug fix: [wt-hip-waist-calculator] now populates the correct gender.
+* Maintenance: Updated language files.
 
 = 10.3.1 =
 

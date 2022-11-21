@@ -36,7 +36,11 @@ function ws_ls_shortcode_wt( $user_defined_arguments ) {
 												'hide-custom-fields-chart'  => false,                       // Hide custom fields from chart
 												'hide-custom-fields-table'  => false,                       // Hide custom fields from table
 												'kiosk-mode'                => false,                       // If in Kiosk mode, allow this UI to be used for multiple isers
-												'kiosk-hide-editing-name' 	=> false,                       // Hide name of the person we're editing
+												'kiosk-barcode-scanner'         => false,                   // Enable barcode scanner for selecting user records
+												'kiosk-barcode-scanner-camera'  => true,                    // Enable scanner that uses the devices cameras for scanning barcodes/QR codes
+												'kiosk-barcode-scanner-lazer'   => true,                    // Enable support for external barcode reader (which uses text input)
+												'kiosk-barcode-scanner-open'    => '',                      // 'lazer' / 'camera' - if specified will open one on page load
+	                                            'kiosk-hide-editing-name' 	=> false,                       // Hide name of the person we're editing
 	                                            'show-delete-data' 		    => true,                	    // Show "Delete your data" section
 												'show-tab-info' 		    => false,
 	                                            'summary-boxes-data'        => 'number-of-entries,number-of-days-tracking,latest-weight,start-weight', // Summary boxes to display at top of data tab
@@ -54,8 +58,9 @@ function ws_ls_shortcode_wt( $user_defined_arguments ) {
 		return ws_ls_component_alert( [ 'message' => __( 'You need to be logged in to record your weight.', WE_LS_SLUG ), 'type' => 'primary', 'closable' => false, 'include-login-link' => true ] ) . '</div>';
 	}
 
-	$shortcode_arguments[ 'kiosk-mode' ]        = ws_ls_to_bool( $shortcode_arguments[ 'kiosk-mode' ] );
-	$shortcode_arguments[ 'hide-fields-meta' ]  = ws_ls_to_bool( $shortcode_arguments[ 'hide-custom-fields-form' ] );
+	$shortcode_arguments[ 'kiosk-mode' ]                = ws_ls_to_bool( $shortcode_arguments[ 'kiosk-mode' ] );
+	$shortcode_arguments[ 'kiosk-barcode-scanner' ]     = ws_ls_to_bool( $shortcode_arguments[ 'kiosk-barcode-scanner' ] );
+	$shortcode_arguments[ 'hide-fields-meta' ]          = ws_ls_to_bool( $shortcode_arguments[ 'hide-custom-fields-form' ] );
 
 	if ( true === $shortcode_arguments[ 'kiosk-mode' ] ) {
 
@@ -88,6 +93,14 @@ function ws_ls_shortcode_wt( $user_defined_arguments ) {
 		$html .= ws_ls_uikit_data_exposed_notice();
 
 		$shortcode_arguments[ 'disable-not-logged-in' ] = true;
+
+		if ( true === WS_LS_IS_PRO_PLUS &&
+		            true === $shortcode_arguments[ 'kiosk-barcode-scanner' ] ) {
+			$html .= ws_ls_barcode_reader( [ 'camera'   => $shortcode_arguments[ 'kiosk-barcode-scanner-camera' ],
+			                                 'lazer'    => $shortcode_arguments[ 'kiosk-barcode-scanner-lazer'],
+											 'open'     => $shortcode_arguments[ 'kiosk-barcode-scanner-open']
+			] );
+		}
 
 		$html .= ws_ls_component_user_search( $shortcode_arguments );
 

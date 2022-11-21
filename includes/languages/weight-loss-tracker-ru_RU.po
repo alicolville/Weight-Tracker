@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Weight Loss Tracker\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-05 16:32+0100\n"
-"PO-Revision-Date: 2022-08-05 16:32+0100\n"
+"POT-Creation-Date: 2022-10-24 21:23+0100\n"
+"PO-Revision-Date: 2022-10-24 21:23+0100\n"
 "Last-Translator: Роман <yanshevroman@yandex.ru>\n"
 "Language-Team: Русский\n"
 "Language: ru_RU\n"
@@ -75,7 +75,7 @@ msgstr "Стоуны"
 
 #: admin-pages/awards/page-awards-add-update.php:176
 #: admin-pages/awards/page-awards-add-update.php:187
-#: admin-pages/settings/page-settings-generic.php:110 functions.php:1455
+#: admin-pages/settings/page-settings-generic.php:110 functions.php:1458
 msgid "Pounds"
 msgstr "Фунты"
 
@@ -177,7 +177,7 @@ msgstr "Все данные"
 #: admin-pages/settings/page-settings-generic.php:1079
 #: admin-pages/settings/page-settings-generic.php:1092
 #: admin-pages/settings/page-settings-generic.php:1105
-#: admin-pages/settings/page-settings-generic.php:1124 functions.php:1336
+#: admin-pages/settings/page-settings-generic.php:1124 functions.php:1339
 msgid "Yes"
 msgstr "Да"
 
@@ -220,7 +220,7 @@ msgstr "Да"
 #: admin-pages/settings/page-settings-generic.php:1080
 #: admin-pages/settings/page-settings-generic.php:1093
 #: admin-pages/settings/page-settings-generic.php:1106
-#: admin-pages/settings/page-settings-generic.php:1123 functions.php:1336
+#: admin-pages/settings/page-settings-generic.php:1123 functions.php:1339
 msgid "No"
 msgstr "Нет"
 
@@ -279,8 +279,7 @@ msgstr "Сохранено!"
 
 #: admin-pages/awards/page-awards-list.php:34
 #: admin-pages/user-data/data-user.php:246
-#: admin-pages/user-data/data-user.php:276 hooks.php:18
-#: shortcode-weight-tracker-beta.php:507
+#: admin-pages/user-data/data-user.php:276 hooks.php:18 shortcode-wt.php:565
 msgid "Awards"
 msgstr ""
 
@@ -687,47 +686,15 @@ msgstr ""
 "благодарен вам за это."
 
 #: admin-pages/page-license.php:80
-msgid "Legacy Pro License"
-msgstr "Обновить лицензию до Pro"
-
-#: admin-pages/page-license.php:81
 msgid ""
-"Our licensing has model has changed, Prior to September 2017 it used to be a "
-"one off payment that enabled the Pro features of the plugin. This is still "
-"the case and any old licenses will still be honoured."
-msgstr ""
-"У нашего лицензирования изменилась модель. До сентября 2017 года это был "
-"один платеж, который включал функции Pro плагина. Это все еще так, и все "
-"старые лицензии будут по-прежнему соблюдаться."
-
-#: admin-pages/page-license.php:82
-msgid "Moving to a yearly license"
-msgstr "Перейти к лицензии на год"
-
-#: admin-pages/page-license.php:83
-msgid ""
-"There is no reason to move to a yearly license - Pro features will remain "
-"the same for legacy and new Pro subscriptions. However, if you were to move "
-"to a yearly subscription you will be supporting the development of the "
-"plugin (and I'll give you a big hug)."
-msgstr ""
-"Не обязательно обновлять годовую лицензию - функции Про останутся прежними "
-"для устаревших и новых подписок. Однако, если Вы обновите годовую подписку, "
-"Вы поддержите развитие плагина ( и я буду Вам очень благодарен )."
-
-#: admin-pages/page-license.php:87
-msgid "Pro Plus License"
-msgstr "Pro Plus лицензия"
-
-#: admin-pages/page-license.php:88
-msgid ""
-"Of course, thank you for purchasing a Pro license - it is much appreciated. "
-"As you can see below, you can further expand the features of"
+"Of course, a big thank you purchasing a Pro license at some point - it is "
+"much appreciated. As you can see below, you can further expand the features "
+"of"
 msgstr ""
 "Большое спасибо за покупку лицензии Pro - это очень ценно для меня. Как вы "
 "можете видеть ниже, вы можете расширить функции"
 
-#: admin-pages/page-license.php:90 admin-pages/page-license.php:100
+#: admin-pages/page-license.php:82
 msgid ""
 "by extending your license to Pro Plus. Pro Plus extends Pro with features "
 "such as BMR, Calorie intake, Macronutrient Calculator, etc. You can view the "
@@ -737,16 +704,7 @@ msgstr ""
 "как ИМТ, потребление калорий, калькулятор нутриентов и т. Д. Вы можете "
 "просмотреть дополнительные функции, которые есть в Pro Plus ниже."
 
-#: admin-pages/page-license.php:98
-msgid ""
-"Of course, a big thank you purchasing a Pro license at some point - it is "
-"much appreciated. As you can see below, you can further expand the features "
-"of"
-msgstr ""
-"Большое спасибо за покупку лицензии Pro - это очень ценно для меня. Как вы "
-"можете видеть ниже, вы можете расширить функции"
-
-#: admin-pages/page-license.php:106
+#: admin-pages/page-license.php:88
 msgid ""
 "Thank you kind soul, you have purchased a Pro Plus license. A huge thank you "
 "for supporting me and this plugin!"
@@ -754,40 +712,36 @@ msgstr ""
 "Спасибо, хороший человек, вы приобрели лицензию Pro Plus. Огромное спасибо "
 "за поддержку этого плагина!"
 
-#: admin-pages/page-license.php:113
+#: admin-pages/page-license.php:95
 msgid "In case you need, your <strong>Site Hash</strong> is"
 msgstr "На всякий случай, <strong>Хэш вашего сайта</strong>"
 
-#: admin-pages/page-license.php:123
+#: admin-pages/page-license.php:105
 msgid "Get a free 7 day trial!"
 msgstr "Попробуй 7 дней бесплатно!"
 
-#: admin-pages/page-license.php:130
+#: admin-pages/page-license.php:112
 msgid "Upgrade to Pro Plus for"
 msgstr "Обновить до Pro Plus для"
 
-#: admin-pages/page-license.php:130 admin-pages/page-license.php:245
-#: admin-pages/page-license.php:259
+#: admin-pages/page-license.php:112 admin-pages/page-license.php:225
+#: admin-pages/page-license.php:239
 msgid "a year"
 msgstr "год"
 
-#: admin-pages/page-license.php:144
-msgid "Switch to a yearly Pro license for "
-msgstr "переключиться на годовую Pro лицензию для"
-
-#: admin-pages/page-license.php:144 admin-pages/page-license.php:145
-msgid " a year"
-msgstr "год"
-
-#: admin-pages/page-license.php:145
+#: admin-pages/page-license.php:125
 msgid "Upgrade to Pro for "
 msgstr "Обновить до Pro для"
 
-#: admin-pages/page-license.php:160
+#: admin-pages/page-license.php:125
+msgid " a year"
+msgstr "год"
+
+#: admin-pages/page-license.php:140
 msgid "Add or Update License"
 msgstr "Добавить или обновить лицензию"
 
-#: admin-pages/page-license.php:165
+#: admin-pages/page-license.php:145
 msgid ""
 "Copy and paste the license given to you by YeKen into this box and click "
 "\"Apply License\""
@@ -795,83 +749,79 @@ msgstr ""
 "Скопируйте и вставьте лицензию, предоставленную вам от YeKen в это поле, и "
 "нажмите «Применить лицензию»,"
 
-#: admin-pages/page-license.php:168
+#: admin-pages/page-license.php:148
 msgid "Apply License"
 msgstr "Подтвердить лицензию"
 
-#: admin-pages/page-license.php:173
+#: admin-pages/page-license.php:153
 msgid "Your License Information"
 msgstr "Информация о вашей лицензии"
 
-#: admin-pages/page-license.php:177
+#: admin-pages/page-license.php:157
 msgid "Site Hash"
 msgstr "Хэш сайта"
 
-#: admin-pages/page-license.php:181
+#: admin-pages/page-license.php:161
 msgid "Type"
 msgstr "Тип"
 
-#: admin-pages/page-license.php:185
+#: admin-pages/page-license.php:165
 msgid "Expires"
 msgstr "Истекает"
 
-#: admin-pages/page-license.php:190
-msgid "Never"
-msgstr "Никогда"
-
-#: admin-pages/page-license.php:194 components.php:287
+#: admin-pages/page-license.php:172 components.php:287
 msgid "n/a"
 msgstr "н/д"
 
-#: admin-pages/page-license.php:204
+#: admin-pages/page-license.php:182
 msgid "Your Existing License"
 msgstr "Активные лицензии"
 
-#: admin-pages/page-license.php:210
+#: admin-pages/page-license.php:188
 msgid "Remove License"
 msgstr "Удалить лицензию"
 
-#: admin-pages/page-license.php:219
+#: admin-pages/page-license.php:197
 msgid "Documentation"
 msgstr "Документация"
 
-#: admin-pages/page-license.php:222
+#: admin-pages/page-license.php:200
 msgid "Need further help or information, please visit our documentation site:"
 msgstr ""
 "Нужна дополнительная помощь или информация, пожалуйста, посетите наш сайт и "
 "ознакомьтесь с документацией:"
 
-#: admin-pages/page-license.php:234
+#: admin-pages/page-license.php:213
 #, php-format
 msgid "50% off - When upgrading from Pro to Pro Plus"
 msgstr ""
 
-#: admin-pages/page-license.php:241
+#: admin-pages/page-license.php:221
 msgid "Pro Plus Features"
 msgstr "Pro Plus лицензия"
 
-#: admin-pages/page-license.php:245
+#: admin-pages/page-license.php:225
 msgid "Below is a list of the intended features of the Pro Plus version"
 msgstr "Ниже представлен список возможностей версии Pro Plus"
 
-#: admin-pages/page-license.php:245 admin-pages/page-license.php:259
+#: admin-pages/page-license.php:225 admin-pages/page-license.php:239
 msgid "You can upgrade for"
 msgstr "Вы можете обновить до"
 
-#: admin-pages/page-license.php:254
+#: admin-pages/page-license.php:234
 msgid "Pro Features"
 msgstr "Pro Plus"
 
-#: admin-pages/page-license.php:259
+#: admin-pages/page-license.php:239
 msgid "Below is a list of the intended features of the Pro version"
 msgstr "Ниже представлен список возможностей версии Pro"
 
-#: admin-pages/page-license.php:273 admin-pages/user-data/data-summary.php:74
+#: admin-pages/page-license.php:253 admin-pages/user-data/data-summary.php:74
 #: admin-pages/user-data/data-user.php:266
 msgid "Are you sure you?"
 msgstr "Вы уверены?"
 
-#: admin-pages/page-license.php:274
+#: admin-pages/page-license.php:254
 msgid ""
 "Are you sure you wish to remove the license for this site? Removing it may "
 "cause your user's to lose functionality."
@@ -1051,7 +1001,7 @@ msgstr "Единицы измерения по умолчанию"
 msgid "Weight Units"
 msgstr "Единица веса"
 
-#: admin-pages/settings/page-settings-generic.php:109 functions.php:1455
+#: admin-pages/settings/page-settings-generic.php:109 functions.php:1458
 msgid "Stones & Pounds"
 msgstr "Стоуны и фунты"
 
@@ -1275,7 +1225,7 @@ msgid "Read more about Challenges"
 msgstr "Подробнее о рассчетах"
 
 #: admin-pages/settings/page-settings-generic.php:294
-#: admin-pages/user-data/data-user.php:134 shortcode-weight-tracker.php:111
+#: admin-pages/user-data/data-user.php:134 shortcode-wt-legacy.php:111
 msgid "Photos"
 msgstr "Фотографии"
 
@@ -1364,7 +1314,7 @@ msgid ""
 msgstr ""
 
 #: admin-pages/settings/page-settings-generic.php:386
-#: shortcode-weight-tracker.php:121
+#: shortcode-wt-legacy.php:121
 msgid "Advanced"
 msgstr "Дополнительная информация"
 
@@ -1816,7 +1766,7 @@ msgstr ""
 "использоваться для заливки веса на графике."
 
 #: admin-pages/settings/page-settings-generic.php:932 hooks.php:27
-#: shortcode-weight-tracker-beta.php:384
+#: shortcode-wt.php:432
 msgid "Settings"
 msgstr "Настройки"
 
@@ -2166,15 +2116,21 @@ msgstr "Начальный вес"
 msgid "Latest Weight"
 msgstr "Последний вес"
 
-#: admin-pages/user-data/data-search-results.php:48 components.php:396
+#: admin-pages/user-data/data-search-results.php:48 components.php:400
 msgid "Target Weight"
 msgstr "Желаемый вес"
 
-#: admin-pages/user-data/data-search-results.php:60
+#: admin-pages/user-data/data-search-results.php:49
+#, fuzzy
+#| msgid "Difference from start"
+msgid "Diff. from Start Weight"
+msgstr "Разница от начала"
+
+#: admin-pages/user-data/data-search-results.php:61
 msgid "No users were found for the given search criteria:"
 msgstr "По заданным критерием пользователей не найдено:"
 
-#: admin-pages/user-data/data-search-results.php:65
+#: admin-pages/user-data/data-search-results.php:66
 msgid "No search terms were specified"
 msgstr "Не указаны условия поиска"
 
@@ -2458,7 +2414,7 @@ msgstr "Цель"
 msgid "Activity Level"
 msgstr "Уровень активности"
 
-#: components.php:128 components.php:768 components.php:813
+#: components.php:128 components.php:773 components.php:818
 msgid "Missing data"
 msgstr "Недостающие данные"
 
@@ -2466,8 +2422,8 @@ msgstr "Недостающие данные"
 msgid "Latest vs Start"
 msgstr ""
 
-#: components.php:171 components.php:239 components.php:339 components.php:485
-#: components.php:559 components.php:582 components.php:626
+#: components.php:171 components.php:239 components.php:339 components.php:490
+#: components.php:564 components.php:587 components.php:631
 #, fuzzy
 #| msgid "No data found"
 msgid "No data"
@@ -2501,117 +2457,121 @@ msgstr "Посмотреть все"
 msgid "Previous Weight"
 msgstr "Снижение веса"
 
-#: components.php:378 components.php:413 components.php:416 components.php:445
+#: components.php:378 components.php:418 components.php:421 components.php:450
 #, fuzzy
 #| msgid "No target set"
 msgid "Not set"
 msgstr "Нет цели"
 
-#: components.php:408
+#: components.php:385
+msgid "Targets not enabled in settings"
+msgstr ""
+
+#: components.php:413
 msgid "Height"
 msgstr "Рост"
 
-#: components.php:468
+#: components.php:473
 #, fuzzy
 #| msgid "Start Weight"
 msgid "Starting Weight"
 msgstr "Начальный вес"
 
-#: components.php:481
+#: components.php:486
 msgid "No target set"
 msgstr "Нет цели"
 
-#: components.php:482
+#: components.php:487
 #, fuzzy
 #| msgid "Set Target"
 msgid "Latest vs Target"
 msgstr "Установить цель"
 
-#: components.php:495
+#: components.php:500
 #, fuzzy
 #| msgid "No of entries"
 msgid "No entries"
 msgstr "Нет записей"
 
-#: components.php:527
+#: components.php:532
 msgid "The difference between your latest weight and target."
 msgstr ""
 
-#: components.php:570
+#: components.php:575
 #, fuzzy
 #| msgid "No of entries"
 msgid "No. entries"
 msgstr "Нет записей"
 
-#: components.php:588
+#: components.php:593
 #, fuzzy
 #| msgid "Calories to subtract"
 msgid "Calories for meeting aim"
 msgstr "Вычитаемые калории"
 
-#: components.php:591
+#: components.php:596
 #, fuzzy
 #| msgid "Calories to subtract"
 msgid "Calories for maintaining"
 msgstr "Вычитаемые калории"
 
-#: components.php:594
+#: components.php:599
 #, fuzzy
 #| msgid "Calories to subtract"
 msgid "Calories for gain"
 msgstr "Вычитаемые калории"
 
-#: components.php:597
+#: components.php:602
 #, fuzzy
 #| msgid "Calories to subtract"
 msgid "Calories for loss"
 msgstr "Вычитаемые калории"
 
-#: components.php:637
+#: components.php:642
 #, fuzzy
 #| msgid "No. of Weight Entries"
 msgid "No. weight entries"
 msgstr "Количество записей веса."
 
-#: components.php:665
+#: components.php:670
 msgid "Tracking for"
 msgstr ""
 
-#: components.php:666
+#: components.php:671
 msgid "days"
 msgstr ""
 
-#: components.php:681
+#: components.php:686
 msgid "Set DoB"
 msgstr ""
 
-#: components.php:682
+#: components.php:687
 #, fuzzy
 #| msgid "License missing"
 msgid "DoB missing"
 msgstr "Ожидание лицензии"
 
-#: components.php:699
+#: components.php:704
 msgid "Age"
 msgstr ""
 
-#: components.php:747 functions.php:958
+#: components.php:752 functions.php:961
 #, fuzzy
 #| msgid "Login now"
 msgid "Login"
 msgstr "Войти сейчас"
 
-#: components.php:777
+#: components.php:782
 msgid "What is BMI?"
 msgstr ""
 
-#: components.php:780
+#: components.php:785
 #, fuzzy
 #| msgid "Body Mass Index"
 msgid "Body Mass Index (BMI)"
 msgstr "Индекс массы тела"
 
-#: components.php:781
+#: components.php:786
 msgid ""
 "The BMI (Body Mass Index) is used by the medical profession to quickly "
 "determine a person’s weight in regard to their height. From a straight "
@@ -2623,27 +2583,27 @@ msgstr ""
 "может использоваться для определения того, имеет ли человек недостаточный, "
 "нормальный, избыточный вес или ожирение."
 
-#: components.php:795
+#: components.php:800
 #, fuzzy
 #| msgid "Settings"
 msgid "Starting BMI"
 msgstr "Настройки"
 
-#: components.php:795
+#: components.php:800
 msgid "Current BMI"
 msgstr "Текущий ИМТ"
 
-#: components.php:821
+#: components.php:826
 msgid "What is BMR?"
 msgstr ""
 
-#: components.php:824
+#: components.php:829
 #, fuzzy
 #| msgid "BMR (Basal Metabolic Rate)"
 msgid "Basal Metabolic Rate (BMR)"
 msgstr "БОВ (Базовый обмен веществ)"
 
-#: components.php:825
+#: components.php:830
 msgid ""
 "BMR is short for Basal Metabolic Rate. The Basal Metabolic Rate is the "
 "number of calories required to keep your body functioning at rest, also "
@@ -2655,54 +2615,58 @@ msgstr ""
 "работоспособности вашего тела, также известная как ваш метаболизм. Мы "
 "вычисляем Ваш БОВ, используя формулы, предоставленные www.diabetes.co.uk."
 
-#: components.php:837
+#: components.php:842
 #, fuzzy
 #| msgid "Settings"
 msgid "Starting BMR"
 msgstr "Настройки"
 
-#: components.php:837
+#: components.php:842
 #, fuzzy
 #| msgid "Current BMI"
 msgid "Current BMR"
 msgstr "Текущий ИМТ"
 
-#: components.php:868
+#: components.php:867
 msgid "Name"
 msgstr "Имя"
 
-#: components.php:1110
+#: components.php:1068
 #, fuzzy
 #| msgid "Delete Cache for this user"
 msgid "Search for a user..."
 msgstr "Очистить кэш этого пользователя"
 
-#: components.php:1119
+#: components.php:1077
 #, fuzzy
 #| msgid "You need to be logged in to set your target."
 msgid "You need to be logged in to search for users."
 msgstr "Вы должны войти, чтобы поставить цель"
 
-#: components.php:1150
+#: components.php:1108
 #, fuzzy
 #| msgid "Clear Target"
 msgid "Clear Screen"
 msgstr "Очистить цель"
 
-#: components.php:1186
+#: components.php:1108
+msgid "Clear / Scan Another"
+msgstr ""
+
+#: components.php:1155
 #, fuzzy
 #| msgid "Weight Difference"
 msgid "Total weight difference (between previous/latest)"
 msgstr "Разница в весе"
 
-#: components.php:1187
+#: components.php:1156
 #, fuzzy
 #| msgid "Weight Difference"
 msgid "Total weight difference (between start/latest)"
 msgstr "Разница в весе"
 
 #: converters.php:113 converters.php:135 converters.php:196
-#: core-charting.php:73 functions.php:1625 functions.php:1631
+#: core-charting.php:73 functions.php:1628 functions.php:1634
 msgid "lbs"
 msgstr "Фунты"
 
@@ -2782,7 +2746,7 @@ msgstr "Сохранить запись"
 msgid "Clear Target"
 msgstr "Очистить цель"
 
-#: core-forms.php:293 form-handler.php:61
+#: core-forms.php:293 form-handler.php:63
 #, fuzzy
 #| msgid "Your settings have been saved!"
 msgid "Your entry has been successfully saved."
@@ -3022,31 +2986,6 @@ msgstr "Шея"
 msgid "NE"
 msgstr "Линия пупка"
 
-#: deprecated.php:154
-msgid ""
-"You are using an old shortcode. It is now deprecated but will exist under a "
-"different name. Please view the plugin documentation and use a suitable "
-"replacement: https://docs.yeken.uk/shortcodes/"
-msgstr ""
-
-#: deprecated.php:187
-#, fuzzy
-#| msgid "Weight Tracker Debug Log"
-msgid "Weight Tracker"
-msgstr "Weight Tracker Рекорд"
-
-#: deprecated.php:188
-msgid ""
-"Your current Weight Tracker license will soon no longer be supported by the "
-"plugin."
-msgstr ""
-
-#: deprecated.php:189
-#, fuzzy
-#| msgid "Read more about calculations"
-msgid "Read more about replacing legacy licenses"
-msgstr "Подробнее о рассчетах"
-
 #: form-handler.php:25
 #, fuzzy
 #| msgid "No photos could be found for this user."
@@ -3063,7 +3002,7 @@ msgstr "Фотографий не найдено."
 msgid "The given user hash did not match the logged in user"
 msgstr ""
 
-#: form-handler.php:50
+#: form-handler.php:52
 #, fuzzy
 #| msgid "An error occurred while saving your data!"
 msgid "An error occurred while saving your data"
@@ -3085,37 +3024,37 @@ msgstr "Посмотреть неделю"
 msgid "to"
 msgstr "до"
 
-#: functions.php:888
+#: functions.php:891
 msgid "Read more about calculations"
 msgstr "Подробнее о рассчетах"
 
-#: functions.php:932
+#: functions.php:935
 msgid "Your modifications have been saved"
 msgstr "Ваши изменения сохранены"
 
-#: functions.php:1011
+#: functions.php:1014
 #, fuzzy
 #| msgid "You must be logged in to edit your settings."
 msgid "You must be logged in to view or edit your data."
 msgstr "Для изменения настроек необходимо войти в систему."
 
-#: functions.php:1156
+#: functions.php:1159
 #, fuzzy
 #| msgid "Upgrade to Pro Plus for"
 msgid "Upgrade to Pro Plus and get more features!"
 msgstr "Обновить до Pro Plus для"
 
-#: functions.php:1157
+#: functions.php:1160
 msgid ""
 "Upgrade to Pro Plus version of this plugin to get additional features like "
 "Challenges, Harris Benedict, BMR, Macronutrients and much more!"
 msgstr ""
 
-#: functions.php:1159
+#: functions.php:1162
 msgid "Upgrade Weight Tracker and get more features!"
 msgstr ""
 
-#: functions.php:1160
+#: functions.php:1163
 #, fuzzy
 #| msgid ""
 #| "Upgrade to the Pro version of this plugin to view, edit and delete your "
@@ -3127,31 +3066,29 @@ msgstr ""
 "Обновите до Pro версии плагин для просмотра, редактирования и удаления "
 "данных веса ваших пользователей"
 
-#: functions.php:1168
+#: functions.php:1171
 #, fuzzy
 #| msgid "Read more at "
 msgid "Read more and upgrade"
 msgstr "Подробнее на"
 
-#: functions.php:1185
+#: functions.php:1188
 #, fuzzy
 #| msgid "Read more and Upgrade to Pro / Pro Plus Version"
-msgid ""
-"To view this data/shortcode, you need to upgrade to the Pro or Pro Plus "
-"version."
+msgid "To view this data/shortcode, you need to upgrade."
 msgstr "Обновить до Pro версии"
 
-#: functions.php:1187
+#: functions.php:1190
 #, fuzzy
 #| msgid "Upgrade"
 msgid "Upgrade now"
 msgstr "Обновить"
 
-#: functions.php:1455 functions.php:1628
+#: functions.php:1458 functions.php:1631
 msgid "Kg"
 msgstr "Кг"
 
-#: functions.php:1631
+#: functions.php:1634
 msgid "St"
 msgstr "Ст"
 
@@ -3179,63 +3116,59 @@ msgstr ""
 msgid "An error occurred while trying to save the user's preferences."
 msgstr "Произошла ошибка при сохранении настроек пользователя."
 
-#: hooks.php:266 shortcode-weight-tracker-beta.php:336
+#: hooks.php:266 shortcode-wt.php:382
 #, fuzzy
 #| msgid "View weight entries"
 msgid "Weight entries"
 msgstr "Посмотреть записи веса"
 
-#: license.php:105
+#: license.php:100
 #, fuzzy
 #| msgid "Weight Loss Tracker"
 msgid "Weight Tracker License"
 msgstr "Weight Loss Tracker"
 
-#: license.php:106
+#: license.php:101
 #, fuzzy
 #| msgid "Your license has been applied!"
 msgid "Your license expires in"
 msgstr "Ваша лицензия принята!"
 
-#: license.php:108
+#: license.php:103
 msgid "days. Please renew your license as soon as possible"
 msgstr ""
 
-#: license.php:248
+#: license.php:243
 msgid "License missing"
 msgstr "Ожидание лицензии"
 
-#: license.php:255
+#: license.php:250
 msgid "Could not decode / verify license"
 msgstr "Не удалось проверить / подтвердить лицензию"
 
-#: license.php:260
+#: license.php:255
 msgid "Invalid license hash"
 msgstr "Недопустимый Хэш лицензии"
 
-#: license.php:265
+#: license.php:260
 msgid ""
 "This license doesn't appear to be for this site (no match on site hash)."
 msgstr ""
 "Эта лицензия не предназначена для данного сайта ( хэш сайта не совпадает )."
 
-#: license.php:273
+#: license.php:268
 msgid "This license has expired."
 msgstr "Срок действия лицензии истек."
 
-#: license.php:336
+#: license.php:331
 msgid "None"
 msgstr "Нет"
 
-#: license.php:346
+#: license.php:341
 msgid "Yearly Pro"
 msgstr "Ежегодная Pro"
 
-#: license.php:349
-msgid "Legacy Pro"
-msgstr "Обновить до Pro"
-
-#: license.php:352
+#: license.php:344
 msgid "Pro Plus"
 msgstr "Pro Plus"
 
@@ -3275,116 +3208,197 @@ msgid "Get Meal Tracker Now"
 msgstr ""
 
 #: setup-wizard.php:104
-#, php-format
-msgid "20% off coupon"
-msgstr ""
-
-#: setup-wizard.php:105
 #, fuzzy
 #| msgid "WordPress Record"
 msgid "from WordPress.org"
 msgstr "Запись WordPress"
 
-#: setup-wizard.php:106
+#: setup-wizard.php:105
 #, fuzzy
 #| msgid "Upgrade to Pro"
 msgid "Upgrade to Premium"
 msgstr "Обновить до Pro для"
 
-#: setup-wizard.php:107
+#: setup-wizard.php:106
 msgid "Any questions, email@yeken.uk"
 msgstr ""
 
-#: setup-wizard.php:119
+#: setup-wizard.php:118
 #, php-format
 msgid ""
 "Use the following coupon code to receive 50% off when upgrading from Pro to "
 "Pro Plus. Simply apply it during the checkout process."
 msgstr ""
 
-#: setup-wizard.php:120
+#: setup-wizard.php:119
 msgid "Coupon"
 msgstr ""
 
-#: shortcode-weight-tracker-beta.php:53 shortcode-weight-tracker.php:52
+#: shortcode-wt-legacy.php:45
+#, fuzzy
+#| msgid "This shortcode can only be placed once on a page / post."
+msgid ""
+"This shortcode can only be placed once on a page / post. To disable this "
+"check, try: [wt disable-second-check=true]"
+msgstr ""
+"Этот короткий код может быть размещен только один раз на странице / записи"
+
+#: shortcode-wt-legacy.php:52 shortcode-wt.php:55
 msgid "You need to be logged in to record your weight."
 msgstr "Вы должны войти в систему, чтобы записать свой вес."
 
-#: shortcode-weight-tracker-beta.php:129 shortcode-weight-tracker.php:71
+#: shortcode-wt-legacy.php:71 shortcode-wt.php:151
 #, fuzzy
 #| msgid "Your settings have been saved!"
 msgid "Your settings have been successfully saved!"
 msgstr "Ваши настройки сохранены!"
 
-#: shortcode-weight-tracker-beta.php:131 shortcode-weight-tracker.php:73
+#: shortcode-wt-legacy.php:73 shortcode-wt.php:153
 #, fuzzy
 #| msgid "Your weight history has been deleted!"
 msgid "Your data has successfully been deleted."
 msgstr "Выша история веса была удалена!"
 
-#: shortcode-weight-tracker-beta.php:153
+#: shortcode-wt-legacy.php:95
+msgid "Overview"
+msgstr "Главная"
+
+#: shortcode-wt-legacy.php:96
+msgid "Chart and add a new entry"
+msgstr "Диаграмма и добавление новых записей"
+
+#: shortcode-wt-legacy.php:100
+#, fuzzy
+#| msgid "Weight History"
+msgid "History"
+msgstr "История веса"
+
+#: shortcode-wt-legacy.php:101
+msgid "View all of your entries"
+msgstr "Посмотреть все Ваши данные"
+
+#: shortcode-wt-legacy.php:101
+#, fuzzy
+#| msgid "View all of your entries"
+msgid "View your latest entries"
+msgstr "Посмотреть все Ваши данные"
+
+#: shortcode-wt-legacy.php:112
+msgid "View a gallery of your photos"
+msgstr "Посмотреть все Ваши фотографии"
+
+#: shortcode-wt-legacy.php:122
+#, fuzzy
+#| msgid "View BMI, BMR and suggested Calorie and Macronutrient intake"
+msgid "BMI, BMR, Calories and Macronutrients"
+msgstr "Посмотреть ИМТ, БОВ, рекомендуемое количество калорий и нутриентов"
+
+#: shortcode-wt-legacy.php:131
+msgid "Preferences"
+msgstr "Личная информация"
+
+#: shortcode-wt-legacy.php:132
+#, fuzzy
+#| msgid "Customise this tool and tell us a little more about you"
+msgid "Customise this tool for you"
+msgstr "Расскажите немного о Вас, чтобы мы могли дать подробные рекомендации"
+
+#: shortcode-wt-legacy.php:228
+msgid "Weight History"
+msgstr "История веса"
+
+#: shortcode-wt-legacy.php:245
+#, fuzzy
+#| msgid "There is no data for this week, please try selecting another:"
+msgid "No data could be found for this week, please try selecting another:"
+msgstr "За эту неделю нет данных, пожалуйста, выберите другую."
+
+#: shortcode-wt-legacy.php:251
+msgid "You haven't entered any weight data yet."
+msgstr "Вы еще не указали данные своего веса"
+
+#: shortcode-wt-legacy.php:320
+msgid "Add a weight entry"
+msgstr "Добавить данные веса"
+
+#: shortcode-wt-legacy.php:325
+msgid "In a chart"
+msgstr "На диаграмме"
+
+#: shortcode-wt-legacy.php:337
+#, fuzzy, php-format
+#| msgid "A graph will appear once several weights have been entered."
+msgid "A graph shall appear when %d or more weight entries have been entered."
+msgstr ""
+"График появится после того, как Вы введете несколько значений Вашего веса."
+
+#: shortcode-wt.php:105
+msgid "Editing"
+msgstr ""
+
+#: shortcode-wt.php:175
 msgid "View Group Weight Loss for today"
 msgstr ""
 
-#: shortcode-weight-tracker-beta.php:339
+#: shortcode-wt.php:385
 #, fuzzy
 #| msgid "View all user entries in tabular and chart format."
 msgid "View in tabular format"
 msgstr "Посмотреть все записи пользователя в виде таблицы и диаграммы."
 
-#: shortcode-weight-tracker-beta.php:364
+#: shortcode-wt.php:410
 #, fuzzy
 #| msgid "Your target weight is"
 msgid "Your target"
 msgstr "Ваш желаемый вес"
 
-#: shortcode-weight-tracker-beta.php:397
+#: shortcode-wt.php:445
 #, fuzzy
 #| msgid "Delete existing data"
 msgid "Delete your existing data"
 msgstr "Удалить существующие данные"
 
-#: shortcode-weight-tracker-beta.php:415
+#: shortcode-wt.php:464
 msgid "Messages"
 msgstr ""
 
-#: shortcode-weight-tracker-beta.php:429
+#: shortcode-wt.php:477
 #, fuzzy
 #| msgid "Add a weight entry"
 msgid "Add a new entry"
 msgstr "Добавить данные веса"
 
-#: shortcode-weight-tracker-beta.php:443
+#: shortcode-wt.php:511
 #, fuzzy
 #| msgid "No of entries"
 msgid "Your entries"
 msgstr "Нет записей"
 
-#: shortcode-weight-tracker-beta.php:471
+#: shortcode-wt.php:529
 #, fuzzy
 #| msgid "Latest Weight"
 msgid "Latest Photo"
 msgstr "Последний вес"
 
-#: shortcode-weight-tracker-beta.php:477
+#: shortcode-wt.php:535
 #, fuzzy
 #| msgid "Select a photo"
 msgid "Oldest Photo"
 msgstr "Выбрать фото"
 
-#: shortcode-weight-tracker-beta.php:486
+#: shortcode-wt.php:544
 #, fuzzy
 #| msgid "View a gallery of your photos"
 msgid "All of your photos"
 msgstr "Посмотреть все Ваши фотографии"
 
-#: shortcode-weight-tracker-beta.php:532
+#: shortcode-wt.php:590
 #, fuzzy
 #| msgid "Suggested Calorie Intake"
 msgid "Learn more about suggested calorie intakes"
 msgstr "Рекомендуемое количество калорий"
 
-#: shortcode-weight-tracker-beta.php:533
+#: shortcode-wt.php:591
 msgid ""
 "Once we know your BMR (the number of calories to keep you functioning at "
 "rest), we can go on to give you suggestions on how to spread your calorie "
@@ -3404,17 +3418,17 @@ msgstr ""
 "600 калорий из вашего ИМТ. Ниже представлено оптимальное распределение "
 "калорий в течение дня, то есть на завтрак, обед, ужин и перекусы."
 
-#: shortcode-weight-tracker-beta.php:538
+#: shortcode-wt.php:596
 msgid "Suggested Calorie Intake"
 msgstr "Рекомендуемое количество калорий"
 
-#: shortcode-weight-tracker-beta.php:548
+#: shortcode-wt.php:606
 #, fuzzy
 #| msgid "Read more about calculations"
 msgid "Learn more about macronutrients"
 msgstr "Подробнее о рассчетах"
 
-#: shortcode-weight-tracker-beta.php:549
+#: shortcode-wt.php:607
 #, fuzzy
 #| msgid ""
 #| "With calories calculated, the we can recommend how those calories should "
@@ -3428,91 +3442,64 @@ msgstr ""
 "разделены на жиры, углеводы и белки. Основываясь на диетических "
 "рекомендациях 2010 года для американцев, мы разделили его следующим образом: "
 
-#: shortcode-weight-tracker-beta.php:555
+#: shortcode-wt.php:613
 msgid "Macronutrients"
 msgstr "Нутриенты"
 
-#: shortcode-weight-tracker.php:45
+#~ msgid "Legacy Pro License"
+#~ msgstr "Обновить лицензию до Pro"
+
+#~ msgid ""
+#~ "Our licensing has model has changed, Prior to September 2017 it used to "
+#~ "be a one off payment that enabled the Pro features of the plugin. This is "
+#~ "still the case and any old licenses will still be honoured."
+#~ msgstr ""
+#~ "У нашего лицензирования изменилась модель. До сентября 2017 года это был "
+#~ "один платеж, который включал функции Pro плагина. Это все еще так, и все "
+#~ "старые лицензии будут по-прежнему соблюдаться."
+
+#~ msgid "Moving to a yearly license"
+#~ msgstr "Перейти к лицензии на год"
+
+#~ msgid ""
+#~ "There is no reason to move to a yearly license - Pro features will remain "
+#~ "the same for legacy and new Pro subscriptions. However, if you were to "
+#~ "move to a yearly subscription you will be supporting the development of "
+#~ "the plugin (and I'll give you a big hug)."
+#~ msgstr ""
+#~ "Не обязательно обновлять годовую лицензию - функции Про останутся "
+#~ "прежними для устаревших и новых подписок. Однако, если Вы обновите "
+#~ "годовую подписку, Вы поддержите развитие плагина ( и я буду Вам очень "
+#~ "благодарен )."
+
+#~ msgid "Pro Plus License"
+#~ msgstr "Pro Plus лицензия"
+
+#~ msgid ""
+#~ "Of course, thank you for purchasing a Pro license - it is much "
+#~ "appreciated. As you can see below, you can further expand the features of"
+#~ msgstr ""
+#~ "Большое спасибо за покупку лицензии Pro - это очень ценно для меня. Как "
+#~ "вы можете видеть ниже, вы можете расширить функции"
+
+#~ msgid "Switch to a yearly Pro license for "
+#~ msgstr "переключиться на годовую Pro лицензию для"
+
+#~ msgid "Never"
+#~ msgstr "Никогда"
+
 #, fuzzy
-#| msgid "This shortcode can only be placed once on a page / post."
-msgid ""
-"This shortcode can only be placed once on a page / post. To disable this "
-"check, try: [wt disable-second-check=true]"
-msgstr ""
-"Этот короткий код может быть размещен только один раз на странице / записи"
+#~| msgid "Weight Tracker Debug Log"
+#~ msgid "Weight Tracker"
+#~ msgstr "Weight Tracker Рекорд"
 
-#: shortcode-weight-tracker.php:95
-msgid "Overview"
-msgstr "Главная"
-
-#: shortcode-weight-tracker.php:96
-msgid "Chart and add a new entry"
-msgstr "Диаграмма и добавление новых записей"
-
-#: shortcode-weight-tracker.php:100
 #, fuzzy
-#| msgid "Weight History"
-msgid "History"
-msgstr "История веса"
+#~| msgid "Read more about calculations"
+#~ msgid "Read more about replacing legacy licenses"
+#~ msgstr "Подробнее о рассчетах"
 
-#: shortcode-weight-tracker.php:101
-msgid "View all of your entries"
-msgstr "Посмотреть все Ваши данные"
-
-#: shortcode-weight-tracker.php:101
-#, fuzzy
-#| msgid "View all of your entries"
-msgid "View your latest entries"
-msgstr "Посмотреть все Ваши данные"
-
-#: shortcode-weight-tracker.php:112
-msgid "View a gallery of your photos"
-msgstr "Посмотреть все Ваши фотографии"
-
-#: shortcode-weight-tracker.php:122
-#, fuzzy
-#| msgid "View BMI, BMR and suggested Calorie and Macronutrient intake"
-msgid "BMI, BMR, Calories and Macronutrients"
-msgstr "Посмотреть ИМТ, БОВ, рекомендуемое количество калорий и нутриентов"
-
-#: shortcode-weight-tracker.php:131
-msgid "Preferences"
-msgstr "Личная информация"
-
-#: shortcode-weight-tracker.php:132
-#, fuzzy
-#| msgid "Customise this tool and tell us a little more about you"
-msgid "Customise this tool for you"
-msgstr "Расскажите немного о Вас, чтобы мы могли дать подробные рекомендации"
-
-#: shortcode-weight-tracker.php:228
-msgid "Weight History"
-msgstr "История веса"
-
-#: shortcode-weight-tracker.php:245
-#, fuzzy
-#| msgid "There is no data for this week, please try selecting another:"
-msgid "No data could be found for this week, please try selecting another:"
-msgstr "За эту неделю нет данных, пожалуйста, выберите другую."
-
-#: shortcode-weight-tracker.php:251
-msgid "You haven't entered any weight data yet."
-msgstr "Вы еще не указали данные своего веса"
-
-#: shortcode-weight-tracker.php:320
-msgid "Add a weight entry"
-msgstr "Добавить данные веса"
-
-#: shortcode-weight-tracker.php:325
-msgid "In a chart"
-msgstr "На диаграмме"
-
-#: shortcode-weight-tracker.php:337
-#, fuzzy, php-format
-#| msgid "A graph will appear once several weights have been entered."
-msgid "A graph shall appear when %d or more weight entries have been entered."
-msgstr ""
-"График появится после того, как Вы введете несколько значений Вашего веса."
+#~ msgid "Legacy Pro"
+#~ msgstr "Обновить до Pro"
 
 #~ msgid "Percentage of Proteins to make up a moderate diet"
 #~ msgstr "Количество белков в диете"
@@ -3642,11 +3629,6 @@ msgstr ""
 #~| msgid "Recent Weight"
 #~ msgid "Most Recent Weight"
 #~ msgstr "Недавний вес"
-
-#, fuzzy
-#~| msgid "Difference from start"
-#~ msgid "Difference from Start Weight"
-#~ msgstr "Разница от начала"
 
 #~ msgid "Hello"
 #~ msgstr "Здравствуйте"
