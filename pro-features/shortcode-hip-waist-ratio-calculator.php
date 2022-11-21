@@ -86,7 +86,7 @@ function ws_ls_waist_to_hip_ratio_calculator( $user_defined_arguments ) {
 							            <div class="ykuk-width-1-1">
 							             	<select class="ykuk-select ykuk-input" name="imperial_gender" id="imperial_gender">
 										        <option value="1">%7$s</option>
-										        <option value="2">%8$s</option>
+										        <option value="2" %9$s>%8$s</option>
 										    </select>
 							            </div>
 							        </div>
@@ -127,7 +127,7 @@ function ws_ls_waist_to_hip_ratio_calculator( $user_defined_arguments ) {
 		__( 'Gender', WE_LS_SLUG ),
 		__( 'Female', WE_LS_SLUG ),
 		__( 'Male', WE_LS_SLUG ),
-		selected( 2, $gender, true )
+		selected( 2, $gender, false )
 	);
 
 	$html .= '</ul></div>';

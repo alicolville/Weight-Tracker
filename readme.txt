@@ -157,6 +157,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 * Improvement: Added Beta support for Barcode scanning in [wt-kiosk]. Read more: https://docs.yeken.uk/shortcodes/wt-kiosk.html
 * Improvement: [wt-kiosk] - hide the "Clear Screen" button until a user record has been selected.
 * Improvement: [wt-bmi-calculator] now respects setting "Weight Units". If "Pounds only" the Stones field is hidden. Read more: https://github.com/alicolville/Weight-Tracker/issues/532
+* Bug fix: [wt-hip-waist-calculator] now populates the correct gender.
 * Maintenance: Updated language files.
 
 = 10.3.1 =
