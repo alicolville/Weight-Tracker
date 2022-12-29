@@ -161,7 +161,7 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
 
 	// If enabled, show Delete data
     if( ( true === isset( $arguments[ 'allow-delete-data' ] ) && true === $arguments[ 'allow-delete-data' ] ) ||
-            false === empty( $arguments[ 'show-delete-data' ] ) ) {
+            true === ws_ls_to_bool( $arguments[ 'show-delete-data' ] ) ) {
 
 	    if ( false === ws_ls_to_bool( $arguments[ 'hide-titles' ] ) ) {
 		    $html_output .= ws_ls_title( __( 'Delete existing data', WE_LS_SLUG ) );
