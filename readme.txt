@@ -154,6 +154,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 = 10.3.3 =
 
+* Improvement: Added a new summary box component "user-id". Read more https://docs.yeken.uk/components.html
 * Bug fix: [wt-user-settings] now correctly respects the "show-delete-data" argument correctly.
 
 = 10.3.2 =

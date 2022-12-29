@@ -15,7 +15,7 @@ function ws_ls_uikit_summary_boxes( $arguments, $boxes = [] ) {
 	$allowed_boxes = [ 'number-of-entries', 'number-of-weight-entries', 'latest-weight', 'start-weight', 'number-of-days-tracking',
 		'target-weight', 'previous-weight', 'latest-versus-target', 'bmi', 'bmr', 'latest-award', 'number-of-awards',
 		'name-and-email', 'start-bmr', 'start-bmi', 'age-dob', 'activity-level', 'height', 'aim', 'gender', 'group',
-		'latest-versus-start', 'divider', 'weight-difference-since-previous', 'calories-maintain', 'calories-lose', 'calories-gain', 'calories-auto' ];
+		'latest-versus-start', 'divider', 'weight-difference-since-previous', 'calories-maintain', 'calories-lose', 'calories-gain', 'calories-auto', 'user-id' ];
 
 	// Default box selection
 	if ( true === empty( $boxes ) ) {
@@ -143,6 +143,9 @@ function ws_ls_uikit_summary_boxes( $arguments, $boxes = [] ) {
 				break;
 			case 'name-and-email':
 				$html .= ws_ls_component_name_and_email( $arguments );
+				break;
+			case 'user-id':
+				$html .= ws_ls_component_user_id( $arguments );
 				break;
 			case 'age-dob':
 				$html .= ws_ls_component_age_dob( [ 'user-id' => $arguments[ 'user-id' ] ] );
@@ -867,6 +870,27 @@ function ws_ls_component_name_and_email( $args = [] ) {
 		__( 'Name', WE_LS_SLUG ),
 		esc_html( $name ),
 		esc_html( $user->user_email )
+	);
+}
+
+/**
+ * User ID component
+ * @param array $args
+ *
+ * @return string
+ */
+function ws_ls_component_user_id( $args = [] ) {
+
+	$args = wp_parse_args( $args, [ 'user-id' => get_current_user_id() ] );
+
+	return sprintf( '<div>
+	                        <div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small ykuk-overflow-auto">
+	                                <span class="ykuk-info-box-header">%1$s</span><br />
+	                                <span class="ykuk-text-bold">%2$d</span>
+                        	</div>
+                     </div>',
+		__( 'User ID', WE_LS_SLUG ),
+		$args[ 'user-id' ]
 	);
 }
 

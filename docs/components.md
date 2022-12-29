@@ -24,6 +24,10 @@ Below are the currently available summary boxes that you can use:
 
 [![](/assets/images/component-age-dob.png)](/assets/images/component-age-dob.png)
 
+#### bmi
+
+[![](/assets/images/component-bmi.png)](/assets/images/component-bmi.png)
+
 #### calories-gain
 
 [![](/assets/images/component-calories-gain.png)](/assets/images/component-calories-gain.png)
@@ -122,11 +126,11 @@ Displays a count of all entries that has a weight entered).
 #### number-of-days-tracking
 
 [![](/assets/images/component-number-of-days-tracking.png)](/assets/images/component-number-of-days-tracking.png)
+	
+#### user-id
 
-#### bmi
-
-[![](/assets/images/component-bmi.png)](/assets/images/component-bmi.png)
-								
+[![](/assets/images/component-user-id.png)](/assets/images/component-user-id.png)								
+									
 #### weight-difference-since-previous
 
 [![](/assets/images/component-weight-difference-since-previous.png)](/assets/images/component-weight-difference-since-previous.png)								
