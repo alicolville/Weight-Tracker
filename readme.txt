@@ -2,8 +2,8 @@
 Contributors: aliakro
 Tags: weight,tracker,chart,bmi,bmr,macronutrient,measure,awards,custom fields,history,measurements,data
 Requires at least: 5.7
-Tested up to: 6.0.2
-Stable tag: 10.3.2
+Tested up to: 6.1.1
+Stable tag: 10.3.3
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -151,6 +151,11 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 10.3.2 - Beta support for barcode readers in "Kiosk Mode" for [wt]!
 
 == Changelog ==
+
+= 10.3.3 =
+
+* Improvement: Added a new summary box component "user-id". Read more https://docs.yeken.uk/components.html
+* Bug fix: [wt-user-settings] now correctly respects the "show-delete-data" argument correctly.
 
 = 10.3.2 =
 
