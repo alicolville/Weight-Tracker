@@ -156,6 +156,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 * Maintenance: Removed reference to deprecated WP functionality (WP_User->id).
 * Bug fix: Removed invalid reference to "$user_meta->first_name".
+* Bug fix: Corrected caching issue with "Latest Weight" component / shortcode.
 
 = 10.3.3 =
 
