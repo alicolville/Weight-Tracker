@@ -267,7 +267,7 @@ function ws_ls_ajax_user_search() {
 			$name = sprintf( '%s (%s)', $name, $user->user_nicename );
 		}
 
-		$data[] = [ 'id'        => $user->id,
+		$data[] = [ 'id'        => $user->ID,
 					'title'     => $name,
 					'detail'    => $user->user_email .$user_meta->first_name
 		];

@@ -152,6 +152,10 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 == Changelog ==
 
+= 10.3.4 =
+
+* Maintenance: Removed reference to deprecated WP functionality (WP_User->id)
+
 = 10.3.3 =
 
 * Improvement: Added a new summary box component "user-id". Read more https://docs.yeken.uk/components.html
