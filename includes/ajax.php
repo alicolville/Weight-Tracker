@@ -269,7 +269,7 @@ function ws_ls_ajax_user_search() {
 
 		$data[] = [ 'id'        => $user->ID,
 					'title'     => $name,
-					'detail'    => $user->user_email .$user_meta->first_name
+					'detail'    => $user->user_email
 		];
 	}
 

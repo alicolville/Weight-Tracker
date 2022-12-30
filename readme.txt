@@ -154,7 +154,8 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 = 10.3.4 =
 
-* Maintenance: Removed reference to deprecated WP functionality (WP_User->id)
+* Maintenance: Removed reference to deprecated WP functionality (WP_User->id).
+* Bug fix: Removed invalid reference to "$user_meta->first_name".
 
 = 10.3.3 =
 
