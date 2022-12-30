@@ -96,7 +96,9 @@ function ws_ls_shortcode_difference_in_weight_previous_latest( $user_defined_arg
 								]
 	, $user_defined_arguments );
 
-	if ( $cache = ws_ls_cache_user_get( $arguments[ 'user-id' ], 'shortcode-target' ) ) {
+	$cache_key = 'shortcode-diff-prev-latest-' . md5( json_encode( $arguments ) );
+
+	if ( $cache = ws_ls_cache_user_get( $arguments[ 'user-id' ], $cache_key ) ) {
 		return $cache;
 	}
 
@@ -149,7 +151,7 @@ function ws_ls_shortcode_difference_in_weight_previous_latest( $user_defined_arg
 		}
 	}
 
-	ws_ls_cache_user_set( $arguments[ 'user-id' ], 'shortcode-latets-previous', $output );
+	ws_ls_cache_user_set( $arguments[ 'user-id' ], $cache_key, $output );
 
 	return $output;
 }
