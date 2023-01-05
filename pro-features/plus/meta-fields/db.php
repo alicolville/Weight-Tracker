@@ -807,11 +807,12 @@ function ws_meta_fields_value_get( $arguments ) {
 								$arguments[ 'key' ], $arguments[ 'user-id' ]
 	);
 
-	$value = $wpdb->get_var( $sql );
+	$value  = $wpdb->get_var( $sql );
+	$data   = [ 'error' => false, 'value' => $value ];
 
-	ws_ls_cache_user_set( $arguments[ 'user-id' ], $cache_key, $value );
+	ws_ls_cache_user_set( $arguments[ 'user-id' ], $cache_key, $data );
 
-	return [ 'error' => false, 'value' => $value ];
+	return $data;
 }
 
 /**

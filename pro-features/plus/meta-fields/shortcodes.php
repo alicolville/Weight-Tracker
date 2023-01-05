@@ -127,8 +127,6 @@ function ws_ls_meta_fields_shortcode_accumulator( $user_defined_arguments ) {
 
 	$html .= '</div>';
 
-
-//var_dump($todays_entry);
 	return $html;
 
 }
