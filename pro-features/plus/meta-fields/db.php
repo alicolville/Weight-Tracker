@@ -106,24 +106,6 @@ function ws_ls_meta_delete( $entry_id, $meta_field_id ) {
 }
 
 /**
- * Delete previous migrated values
- *
- * @return bool
- */
-function ws_ls_meta_delete_migrated() {
-
-	if ( false === is_admin() ) {
-		return false;
-	}
-
-	global $wpdb;
-
-	$result = $wpdb->delete( $wpdb->prefix . WE_LS_MYSQL_META_ENTRY, [ 'migrate' => 1 ], [ '%d' ] );
-
-	return ( 1 === $result );
-}
-
-/**
  * Delete all meta entries for given weight entry
  *
  * @param $entry_id

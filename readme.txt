@@ -155,6 +155,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 = 10.3.5 =
 
 * Bug fix: Fixed PHP error being thrown in [wt-custom-fields-latest] due to caching issue.
+* Maintenance: Removed redundant photo migration code (from old system into custom fields). This code was added 4 years ago, if folks haven't updated since then, then I doubt they will be now!
 
 = 10.3.4 =
 
