@@ -443,7 +443,7 @@ jQuery( document ).ready(function ( $, undefined ) {
                     'is-admin': $(this).data( 'is-admin' ),
                     'hide_column_gains': $(this).data( 'hide-column-gains' ), 
                     'hide_column_losses': $(this).data( 'hide-column-losses' ), 
-                    'hide_column_diff_from_pre': $(this).data( 'hide-column-diff-from-prev' ), 
+                    'hide_column_diff_from_prev': $(this).data( 'hide-column-diff-from-prev' ), 
                     'hide_summary_row': $(this).data( 'hide-summary-row' ), 
                   };
 

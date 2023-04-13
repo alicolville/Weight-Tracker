@@ -152,6 +152,10 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 == Changelog ==
 
+= 10.3.5 =
+
+* Improvment: Added the argument "hide-column-diff-from-prev" to the shortcode "wt-group-view-as-table". Read more: https://docs.yeken.uk/shortcodes/wt-group-view-as-table.html
+
 = 10.3.4 =
 
 * Maintenance: Removed reference to deprecated WP functionality (WP_User->id).

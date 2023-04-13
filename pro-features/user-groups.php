@@ -694,10 +694,11 @@ function ws_ls_ajax_groups_users_get(){
 
 	check_ajax_referer( 'ws-ls-user-tables', 'security' );
 
-	$table_id               = ws_ls_post_value( 'table_id' );
-	$group_id               = ws_ls_post_value( 'group_id' );
-	$is_admin               = ws_ls_post_value( 'is-admin' );
-	$todays_entries_only    = ws_ls_post_value( 'todays_entries_only' );
+	$table_id               	= ws_ls_post_value( 'table_id' );
+	$group_id               	= ws_ls_post_value( 'group_id' );
+	$is_admin               	= ws_ls_post_value( 'is-admin' );
+	$todays_entries_only   		= ws_ls_post_value( 'todays_entries_only' );
+	$hide_col_diff_from_prev	= ws_ls_post_value_to_bool( 'hide_column_diff_from_prev' );
 
 	$cache_key = sprintf( 'ajax-group-%d-%d', $group_id, $todays_entries_only );
 
@@ -713,11 +714,15 @@ function ws_ls_ajax_groups_users_get(){
         [ 'name' => 'number-of-entries', 'title' => __('No. entries', WE_LS_SLUG), 'breakpoints'=> 'md', 'type' => 'number' ],
         [ 'name' => 'start-weight', 'title' => __('Start', WE_LS_SLUG), 'breakpoints'=> 'md', 'type' => 'text' ],
 		[ 'name' => 'previous-weight', 'title' => __('Previous', WE_LS_SLUG), 'breakpoints'=> 'md', 'type' => 'text' ],
-        [ 'name' => 'latest-weight', 'title' => __('Latest', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ],
-        [ 'name' => 'diff-weight', 'title' => $diff_label, 'breakpoints'=> 'md', 'type' => 'text' ],
-        [ 'name' => 'target', 'title' => __('Target', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ],
-		[ 'name' => 'awards', 'title' => __('Awards', WE_LS_SLUG), 'breakpoints'=> 'md', 'type' => 'text' ],
-	];
+        [ 'name' => 'latest-weight', 'title' => __('Latest', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ] ];
+	
+	if ( false === $hide_col_diff_from_prev ) {
+		$columns[] = [ 'name' => 'diff-weight', 'title' => $diff_label, 'breakpoints'=> 'md', 'type' => 'text' ];
+	}
+
+    $columns[] = [ 'name' => 'target', 'title' => __('Target', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ];
+	$columns[] = [ 'name' => 'awards', 'title' => __('Awards', WE_LS_SLUG), 'breakpoints'=> 'md', 'type' => 'text' ];
+	
 
 	$rows               = [];
 	$total_difference   = 0;
