@@ -908,12 +908,16 @@ function ws_ls_groups_view_as_table( $user_defined_arguments ) {
 		return ws_ls_display_pro_upgrade_notice_for_shortcode();
 	}
 
-	$arguments = shortcode_atts( [  'default-to-users-group'    => false,
-									'disable-theme-css'         => false,
-	                                'disable-main-font'         => false,
-	                                'group-id'                  => NULL,
-	                                'enable-group-select'       => true,
-									'todays-entries-only'       => false
+	$arguments = shortcode_atts( [  'default-to-users-group'    	=> false,
+									'disable-theme-css'         	=> false,
+	                                'disable-main-font'         	=> false,
+	                                'group-id'                  	=> NULL,
+	                                'enable-group-select'       	=> true,
+									'todays-entries-only'       	=> false,
+									'hide-column-gains'       		=> false,
+									'hide-column-losses'       		=> false,
+									'hide-column-diff-from-prev'	=> false,
+									'hide-summary-row'				=> false
 	], $user_defined_arguments );
 
 	return ws_ls_component_group_view_entries( $arguments );

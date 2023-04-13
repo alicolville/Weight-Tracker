@@ -1145,14 +1145,18 @@ function ws_ls_component_user_search( $arguments ) {
  */
 function ws_ls_component_group_view_entries( $arguments ) {
 
-	$arguments = wp_parse_args( $arguments, [   'default-to-users-group'    => false,
-												'disable-theme-css'         => false,
-	                                            'disable-main-font'         => false,
-	                                            'group-id'                  => NULL,
-												'table-allow-delete'        => false,
-												'uikit'                     => true,
-												'enable-group-select'       => true,
-												'todays-entries-only'       => false
+	$arguments = wp_parse_args( $arguments, [   'default-to-users-group'    	=> false,
+												'disable-theme-css'        		=> false,
+	                                            'disable-main-font'        	 	=> false,
+	                                            'group-id'                  	=> NULL,
+												'table-allow-delete'        	=> false,
+												'uikit'                     	=> true,
+												'enable-group-select'       	=> true,
+												'todays-entries-only'       	=> false,
+												'hide-column-gains'       		=> false,
+												'hide-column-losses'       		=> false,
+												'hide-column-diff-from-prev'	=> false,
+												'hide-summary-row'				=> false
 	]);
 
 	if ( true === $arguments[ 'uikit' ] ) {
@@ -1201,6 +1205,10 @@ function ws_ls_component_group_view_entries( $arguments ) {
                            data-cascade="true"
                            data-toggle="true"
                            data-is-admin="%5$s"
+						   data-hide-column-gains="%6$s"
+						   data-hide-column-losses="%7$s"
+						   data-hide-column-diff-from-prev="%8$s"
+						   data-hide-summary-row="%9$s"
                            data-use-parent-width="true">
                     	</table>
                     	<div class="ykuk-divider-icon"></div>
@@ -1210,7 +1218,11 @@ function ws_ls_component_group_view_entries( $arguments ) {
 					( true === ws_ls_to_bool( $arguments[ 'table-allow-delete' ] ) ) ? 'true' : 'false',
 					( true === ws_ls_to_bool( $arguments[ 'todays-entries-only' ] ) ) ? 'true' : 'false',
 					$message,
-					( true === is_admin() ) ? 'true' : 'false'
+					( true === is_admin() ) ? 'true' : 'false',
+					$arguments[ 'hide-column-gains' ],
+					$arguments[ 'hide-column-losses' ],
+					$arguments[ 'hide-column-diff-from-prev' ],
+					$arguments[ 'hide-summary-row' ]
 	);
 
 	return $html;
