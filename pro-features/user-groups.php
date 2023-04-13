@@ -699,6 +699,8 @@ function ws_ls_ajax_groups_users_get(){
 	$is_admin               	= ws_ls_post_value( 'is-admin' );
 	$todays_entries_only   		= ws_ls_post_value( 'todays_entries_only' );
 	$hide_col_diff_from_prev	= ws_ls_post_value_to_bool( 'hide_column_diff_from_prev' );
+	$hide_column_gains			= ws_ls_post_value_to_bool( 'hide_column_gains' );
+	$hide_column_losses			= ws_ls_post_value_to_bool( 'hide_column_losses' );
 
 	$cache_key = sprintf( 'ajax-group-%d-%d', $group_id, $todays_entries_only );
 
@@ -720,10 +722,17 @@ function ws_ls_ajax_groups_users_get(){
 		$columns[] = [ 'name' => 'diff-weight', 'title' => $diff_label, 'breakpoints'=> 'md', 'type' => 'text' ];
 	}
 
+	if ( false === $hide_column_losses ) {
+		$columns[] = [ 'name' => 'losses', 'title' => __('Losses', WE_LS_SLUG), 'breakpoints'=> 'md', 'type' => 'text' ];
+	}
+
+	if ( false === $hide_column_gains ) {
+		$columns[] = [ 'name' => 'gains', 'title' => __('Gains', WE_LS_SLUG), 'breakpoints'=> 'md', 'type' => 'text' ];
+	}
+
     $columns[] = [ 'name' => 'target', 'title' => __('Target', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ];
 	$columns[] = [ 'name' => 'awards', 'title' => __('Awards', WE_LS_SLUG), 'breakpoints'=> 'md', 'type' => 'text' ];
 	
-
 	$rows               = [];
 	$total_difference   = 0;
 
@@ -751,9 +760,11 @@ function ws_ls_ajax_groups_users_get(){
 				if ( false === empty( $row[ 'latest-weight' ] ) ) {
 					$row[ 'start-weight' ]      = ws_ls_weight_display( $row[ 'latest-weight' ][ 'first_weight' ], NULL, 'display' );
 					$row[ 'previous-weight' ]   = ws_ls_entry_get_previous( [ 'user-id' => $row[ 'user_id' ], 'meta' => false ] );
-
+					
 					if ( (int) $row[ 'number-of-entries' ] > 1 ) {
+						
 						if ( false === empty( $todays_entries_only ) ) {
+							
 							$difference             = $row[ 'latest-weight' ][ 'kg' ] - $row[ 'previous-weight' ][ 'kg' ];
 							$row[ 'diff-weight' ]   = ws_ls_weight_display( $difference, NULL, 'display', false, true );
 
@@ -763,10 +774,20 @@ function ws_ls_ajax_groups_users_get(){
 						}
 
 						$total_difference += $difference;
+
+						$row[ 'losses' ] 	= NULL;
+						$row[ 'gains' ] 	= NULL;
+
+						if ( $difference > 0 ) {
+							$row[ 'gains' ] = ws_ls_weight_display( $difference, NULL, 'display', false, true );
+						} else {
+							$row[ 'losses' ] = ws_ls_weight_display( $difference, NULL, 'display', false, true );
+					}
 					}
 
 					$row[ 'previous-weight' ]   = $row[ 'previous-weight' ][ 'display' ];
 					$row[ 'latest-weight' ]     = $row[ 'latest-weight' ][ 'display' ];
+
 				}
 
 				$row[ 'target' ]            = ws_ls_target_get( $row[ 'user_id' ], 'display' );

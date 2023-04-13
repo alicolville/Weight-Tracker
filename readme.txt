@@ -154,7 +154,8 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 = 10.3.5 =
 
-* Improvment: Added the argument "hide-column-diff-from-prev" to the shortcode "wt-group-view-as-table". Read more: https://docs.yeken.uk/shortcodes/wt-group-view-as-table.html
+* Improvement: Added two new columns, "gains" and "losses" to the shortcode [wt-group-view-as-table]. Read more: https://docs.yeken.uk/shortcodes/wt-group-view-as-table.html
+* Improvement: Added the argument "hide-column-diff-from-prev", "hide-column-gains", "hide-column-losses" to the shortcode [wt-group-view-as-table]. Read more: https://docs.yeken.uk/shortcodes/wt-group-view-as-table.html
 
 = 10.3.4 =
 
