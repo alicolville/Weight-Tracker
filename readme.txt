@@ -2,8 +2,8 @@
 Contributors: aliakro
 Tags: weight,tracker,chart,bmi,bmr,macronutrient,measure,awards,custom fields,history,measurements,data
 Requires at least: 5.7
-Tested up to: 6.1.1
-Stable tag: 10.3.4
+Tested up to: 6.2
+Stable tag: 10.3.5
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -151,6 +151,11 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 10.3.2 - Beta support for barcode readers in "Kiosk Mode" for [wt]!
 
 == Changelog ==
+
+= 10.3.5 =
+
+* Improvement: Added two new columns, "gains" and "losses" to the shortcode [wt-group-view-as-table]. Read more: https://docs.yeken.uk/shortcodes/wt-group-view-as-table.html
+* Improvement: Added the argument "hide-column-diff-from-prev", "hide-column-gains", "hide-column-losses" to the shortcode [wt-group-view-as-table]. Read more: https://docs.yeken.uk/shortcodes/wt-group-view-as-table.html
 
 = 10.3.4 =
 

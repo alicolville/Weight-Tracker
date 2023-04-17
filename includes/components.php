@@ -1145,14 +1145,18 @@ function ws_ls_component_user_search( $arguments ) {
  */
 function ws_ls_component_group_view_entries( $arguments ) {
 
-	$arguments = wp_parse_args( $arguments, [   'default-to-users-group'    => false,
-												'disable-theme-css'         => false,
-	                                            'disable-main-font'         => false,
-	                                            'group-id'                  => NULL,
-												'table-allow-delete'        => false,
-												'uikit'                     => true,
-												'enable-group-select'       => true,
-												'todays-entries-only'       => false
+	$arguments = wp_parse_args( $arguments, [   'default-to-users-group'    	=> false,
+												'disable-theme-css'        		=> false,
+	                                            'disable-main-font'        	 	=> false,
+	                                            'group-id'                  	=> NULL,
+												'table-allow-delete'        	=> false,
+												'uikit'                     	=> true,
+												'enable-group-select'       	=> true,
+												'todays-entries-only'       	=> false,
+												'hide-column-gains'       		=> false,
+												'hide-column-losses'       		=> false,
+												'hide-column-diff-from-prev'	=> false,
+												'hide-summary-row'				=> false
 	]);
 
 	if ( true === $arguments[ 'uikit' ] ) {
@@ -1178,13 +1182,23 @@ function ws_ls_component_group_view_entries( $arguments ) {
 		$html .= ws_ls_component_group_select( [ 'selected' => $arguments[ 'group-id' ], 'uikit' => $arguments[ 'uikit' ] ] );
 	}
 
-	$message = ( true === ws_ls_to_bool( $arguments[ 'todays-entries-only' ] ) ) ?
+	$display_text = ( true === ws_ls_to_bool( $arguments[ 'todays-entries-only' ] ) ) ?
 					__( 'Total weight difference (between previous/latest)', WE_LS_SLUG ) :
 						__( 'Total weight difference (between start/latest)', WE_LS_SLUG );
+	
+	$message = ws_ls_component_alert( [ 'message' 		=> __( 'Total losses', WE_LS_SLUG ) . ': <strong><span></span>.</strong>',
+										'css-classes' 	=> 'ykuk-invisible ws-ls-total-losses-count', 
+										'uikit' 		=> $arguments[ 'uikit']
+	]);
 
-	$message = ws_ls_component_alert( [ 'message' => $message . ': <strong><span></span>.</strong>',
-	                                    'css-classes' => 'ykuk-invisible ws-ls-total-lost-count', 'uikit'
-	                                    => $arguments[ 'uikit']
+	$message .= ws_ls_component_alert( [ 'message' 		=> __( 'Total gains', WE_LS_SLUG ) . ': <strong><span></span>.</strong>',
+										'css-classes' 	=> 'ykuk-invisible ws-ls-total-gains-count', 
+										'uikit' 		=> $arguments[ 'uikit']
+	]);
+
+	$message .= ws_ls_component_alert( [ 'message' 		=> $display_text . ': <strong><span></span>.</strong>',
+	                                    'css-classes' 	=> 'ykuk-invisible ws-ls-total-lost-count', 
+										'uikit' 		=> $arguments[ 'uikit']
 	]);
 
 	$html .= sprintf('<div id="-row" class="ws-ls-form-row ykuk-width-1-1">
@@ -1201,6 +1215,10 @@ function ws_ls_component_group_view_entries( $arguments ) {
                            data-cascade="true"
                            data-toggle="true"
                            data-is-admin="%5$s"
+						   data-hide-column-gains="%6$s"
+						   data-hide-column-losses="%7$s"
+						   data-hide-column-diff-from-prev="%8$s"
+						   data-hide-summary-row="%9$s"
                            data-use-parent-width="true">
                     	</table>
                     	<div class="ykuk-divider-icon"></div>
@@ -1210,7 +1228,11 @@ function ws_ls_component_group_view_entries( $arguments ) {
 					( true === ws_ls_to_bool( $arguments[ 'table-allow-delete' ] ) ) ? 'true' : 'false',
 					( true === ws_ls_to_bool( $arguments[ 'todays-entries-only' ] ) ) ? 'true' : 'false',
 					$message,
-					( true === is_admin() ) ? 'true' : 'false'
+					( true === is_admin() ) ? 'true' : 'false',
+					$arguments[ 'hide-column-gains' ],
+					$arguments[ 'hide-column-losses' ],
+					$arguments[ 'hide-column-diff-from-prev' ],
+					$arguments[ 'hide-summary-row' ]
 	);
 
 	return $html;

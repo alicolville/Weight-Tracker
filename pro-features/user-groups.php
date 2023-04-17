@@ -694,10 +694,13 @@ function ws_ls_ajax_groups_users_get(){
 
 	check_ajax_referer( 'ws-ls-user-tables', 'security' );
 
-	$table_id               = ws_ls_post_value( 'table_id' );
-	$group_id               = ws_ls_post_value( 'group_id' );
-	$is_admin               = ws_ls_post_value( 'is-admin' );
-	$todays_entries_only    = ws_ls_post_value( 'todays_entries_only' );
+	$table_id               	= ws_ls_post_value( 'table_id' );
+	$group_id               	= ws_ls_post_value( 'group_id' );
+	$is_admin               	= ws_ls_post_value( 'is-admin' );
+	$todays_entries_only   		= ws_ls_post_value( 'todays_entries_only' );
+	$hide_col_diff_from_prev	= ws_ls_post_value_to_bool( 'hide_column_diff_from_prev' );
+	$hide_column_gains			= ws_ls_post_value_to_bool( 'hide_column_gains' );
+	$hide_column_losses			= ws_ls_post_value_to_bool( 'hide_column_losses' );
 
 	$cache_key = sprintf( 'ajax-group-%d-%d', $group_id, $todays_entries_only );
 
@@ -713,12 +716,23 @@ function ws_ls_ajax_groups_users_get(){
         [ 'name' => 'number-of-entries', 'title' => __('No. entries', WE_LS_SLUG), 'breakpoints'=> 'md', 'type' => 'number' ],
         [ 'name' => 'start-weight', 'title' => __('Start', WE_LS_SLUG), 'breakpoints'=> 'md', 'type' => 'text' ],
 		[ 'name' => 'previous-weight', 'title' => __('Previous', WE_LS_SLUG), 'breakpoints'=> 'md', 'type' => 'text' ],
-        [ 'name' => 'latest-weight', 'title' => __('Latest', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ],
-        [ 'name' => 'diff-weight', 'title' => $diff_label, 'breakpoints'=> 'md', 'type' => 'text' ],
-        [ 'name' => 'target', 'title' => __('Target', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ],
-		[ 'name' => 'awards', 'title' => __('Awards', WE_LS_SLUG), 'breakpoints'=> 'md', 'type' => 'text' ],
-	];
+        [ 'name' => 'latest-weight', 'title' => __('Latest', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ] ];
+	
+	if ( false === $hide_col_diff_from_prev ) {
+		$columns[] = [ 'name' => 'diff-weight', 'title' => $diff_label, 'breakpoints'=> 'md', 'type' => 'text' ];
+	}
 
+	if ( false === $hide_column_losses ) {
+		$columns[] = [ 'name' => 'losses', 'title' => __('Losses', WE_LS_SLUG), 'breakpoints'=> 'md', 'type' => 'text' ];
+	}
+
+	if ( false === $hide_column_gains ) {
+		$columns[] = [ 'name' => 'gains', 'title' => __('Gains', WE_LS_SLUG), 'breakpoints'=> 'md', 'type' => 'text' ];
+	}
+
+    $columns[] = [ 'name' => 'target', 'title' => __('Target', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ];
+	$columns[] = [ 'name' => 'awards', 'title' => __('Awards', WE_LS_SLUG), 'breakpoints'=> 'md', 'type' => 'text' ];
+	
 	$rows               = [];
 	$total_difference   = 0;
 
@@ -727,6 +741,9 @@ function ws_ls_ajax_groups_users_get(){
 		$todays_entries_only    = ( true === ws_ls_to_bool( $todays_entries_only ) ) ? date('Y-m-d' ) : NULL;
 		$rows                   = ws_ls_groups_users_for_given_group( $group_id, $todays_entries_only );
 		$is_admin               = ws_ls_to_bool( $is_admin );
+
+		$loss_total = 0;
+		$gain_total = 0;
 
 		foreach ( $rows as &$row ) {
 
@@ -746,9 +763,11 @@ function ws_ls_ajax_groups_users_get(){
 				if ( false === empty( $row[ 'latest-weight' ] ) ) {
 					$row[ 'start-weight' ]      = ws_ls_weight_display( $row[ 'latest-weight' ][ 'first_weight' ], NULL, 'display' );
 					$row[ 'previous-weight' ]   = ws_ls_entry_get_previous( [ 'user-id' => $row[ 'user_id' ], 'meta' => false ] );
-
+					
 					if ( (int) $row[ 'number-of-entries' ] > 1 ) {
+						
 						if ( false === empty( $todays_entries_only ) ) {
+							
 							$difference             = $row[ 'latest-weight' ][ 'kg' ] - $row[ 'previous-weight' ][ 'kg' ];
 							$row[ 'diff-weight' ]   = ws_ls_weight_display( $difference, NULL, 'display', false, true );
 
@@ -758,10 +777,26 @@ function ws_ls_ajax_groups_users_get(){
 						}
 
 						$total_difference += $difference;
+
+						$row[ 'losses' ] 	= NULL;
+						$row[ 'gains' ] 	= NULL;
+
+						if ( $difference > 0 ) {
+
+							$gain_total += $difference;
+
+							$row[ 'gains' ] = ws_ls_weight_display( $difference, NULL, 'display', false, true );
+
+						} else {
+							$row[ 'losses' ] = ws_ls_weight_display( $difference, NULL, 'display', false, true );
+
+							$loss_total += $difference;
+					}
 					}
 
 					$row[ 'previous-weight' ]   = $row[ 'previous-weight' ][ 'display' ];
 					$row[ 'latest-weight' ]     = $row[ 'latest-weight' ][ 'display' ];
+
 				}
 
 				$row[ 'target' ]            = ws_ls_target_get( $row[ 'user_id' ], 'display' );
@@ -775,7 +810,9 @@ function ws_ls_ajax_groups_users_get(){
 		'columns'           => $columns,
 		'rows'              => $rows,
 		'table_id'          => $table_id,
-		'total_difference'  => ws_ls_weight_display( $total_difference, NULL, 'display', false, true )
+		'total_difference'  => ws_ls_weight_display( $total_difference, NULL, 'display', false, true ),
+		'total_gains'       => ws_ls_weight_display( $gain_total, NULL, 'display', false, true ),
+		'total_losses'      => ws_ls_weight_display( $loss_total, NULL, 'display', false, true ),
 	];
 
 	ws_ls_cache_user_set( 'groups', $cache_key, $data, MINUTE_IN_SECONDS );
@@ -908,12 +945,16 @@ function ws_ls_groups_view_as_table( $user_defined_arguments ) {
 		return ws_ls_display_pro_upgrade_notice_for_shortcode();
 	}
 
-	$arguments = shortcode_atts( [  'default-to-users-group'    => false,
-									'disable-theme-css'         => false,
-	                                'disable-main-font'         => false,
-	                                'group-id'                  => NULL,
-	                                'enable-group-select'       => true,
-									'todays-entries-only'       => false
+	$arguments = shortcode_atts( [  'default-to-users-group'    	=> false,
+									'disable-theme-css'         	=> false,
+	                                'disable-main-font'         	=> false,
+	                                'group-id'                  	=> NULL,
+	                                'enable-group-select'       	=> true,
+									'todays-entries-only'       	=> false,
+									'hide-column-gains'       		=> false,
+									'hide-column-losses'       		=> false,
+									'hide-column-diff-from-prev'	=> false,
+									'hide-summary-row'				=> false
 	], $user_defined_arguments );
 
 	return ws_ls_component_group_view_entries( $arguments );

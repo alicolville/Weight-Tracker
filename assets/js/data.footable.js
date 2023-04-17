@@ -436,7 +436,18 @@ jQuery( document ).ready(function ( $, undefined ) {
 
       ws_ls_log( 'Users: Fetching Data' );
 
-      ws_ls_post_data_to_WP('get_groups_users', { 'table_id': $(this).attr( 'id' ), 'group_id': $(this).data( 'group-id' ), 'todays_entries_only': $(this).data( 'todays-entries-only' ) , 'is-admin': $(this).data( 'is-admin' )}, ws_ls_callback_groups_users );
+      let data = { 
+                    'table_id': $(this).attr( 'id' ), 
+                    'group_id': $(this).data( 'group-id' ), 
+                    'todays_entries_only': $(this).data( 'todays-entries-only' ), 
+                    'is-admin': $(this).data( 'is-admin' ),
+                    'hide_column_gains': $(this).data( 'hide-column-gains' ), 
+                    'hide_column_losses': $(this).data( 'hide-column-losses' ), 
+                    'hide_column_diff_from_prev': $(this).data( 'hide-column-diff-from-prev' ), 
+                    'hide_summary_row': $(this).data( 'hide-summary-row' ), 
+                  };
+
+      ws_ls_post_data_to_WP('get_groups_users', data, ws_ls_callback_groups_users );
   });
 
   /**
@@ -452,6 +463,12 @@ jQuery( document ).ready(function ( $, undefined ) {
 
       $( '.ws-ls-total-lost-count span' ).html( response.total_difference );
       $( '.ws-ls-total-lost-count' ).removeClass( 'ykuk-invisible' );
+
+      $( '.ws-ls-total-losses-count span' ).html( response.total_losses );
+      $( '.ws-ls-total-losses-count' ).removeClass( 'ykuk-invisible' );
+
+      $( '.ws-ls-total-gains-count span' ).html( response.total_gains );
+      $( '.ws-ls-total-gains-count' ).removeClass( 'ykuk-invisible' );
 
       ws_ls_log('Groups: Rendering Table: ' + table_id );
 
