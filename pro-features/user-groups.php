@@ -742,6 +742,9 @@ function ws_ls_ajax_groups_users_get(){
 		$rows                   = ws_ls_groups_users_for_given_group( $group_id, $todays_entries_only );
 		$is_admin               = ws_ls_to_bool( $is_admin );
 
+		$loss_total = 0;
+		$gain_total = 0;
+
 		foreach ( $rows as &$row ) {
 
 			$row[ 'display_name' ] = ( $is_admin ) ? ws_ls_get_link_to_user_profile( $row[ 'user_id' ], $row[ 'display_name' ] ) : $row[ 'display_name' ];
@@ -779,9 +782,15 @@ function ws_ls_ajax_groups_users_get(){
 						$row[ 'gains' ] 	= NULL;
 
 						if ( $difference > 0 ) {
+
+							$gain_total += $difference;
+
 							$row[ 'gains' ] = ws_ls_weight_display( $difference, NULL, 'display', false, true );
+
 						} else {
 							$row[ 'losses' ] = ws_ls_weight_display( $difference, NULL, 'display', false, true );
+
+							$loss_total += $difference;
 					}
 					}
 
@@ -801,7 +810,9 @@ function ws_ls_ajax_groups_users_get(){
 		'columns'           => $columns,
 		'rows'              => $rows,
 		'table_id'          => $table_id,
-		'total_difference'  => ws_ls_weight_display( $total_difference, NULL, 'display', false, true )
+		'total_difference'  => ws_ls_weight_display( $total_difference, NULL, 'display', false, true ),
+		'total_gains'       => ws_ls_weight_display( $gain_total, NULL, 'display', false, true ),
+		'total_losses'      => ws_ls_weight_display( $loss_total, NULL, 'display', false, true ),
 	];
 
 	ws_ls_cache_user_set( 'groups', $cache_key, $data, MINUTE_IN_SECONDS );

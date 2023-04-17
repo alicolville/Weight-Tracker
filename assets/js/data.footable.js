@@ -464,6 +464,12 @@ jQuery( document ).ready(function ( $, undefined ) {
       $( '.ws-ls-total-lost-count span' ).html( response.total_difference );
       $( '.ws-ls-total-lost-count' ).removeClass( 'ykuk-invisible' );
 
+      $( '.ws-ls-total-losses-count span' ).html( response.total_losses );
+      $( '.ws-ls-total-losses-count' ).removeClass( 'ykuk-invisible' );
+
+      $( '.ws-ls-total-gains-count span' ).html( response.total_gains );
+      $( '.ws-ls-total-gains-count' ).removeClass( 'ykuk-invisible' );
+
       ws_ls_log('Groups: Rendering Table: ' + table_id );
 
       $( table_id ).removeClass( 'ws-ls-loading-table' );
