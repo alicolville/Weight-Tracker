@@ -93,16 +93,7 @@
 	            ws_ls_meta_fields_load_examples();
 	        }
 
-			// Do we have Photos to migrate from the old photo system to new?
-	        if ( ws_ls_meta_fields_photos_do_we_need_to_migrate() ) {
-
-                // If example Photo meta field doesn't exist, then add it!
-                ws_ls_meta_fields_photos_create_example_field();
-
-		        ws_ls_log_add('photo-migrate', 'Photos have been identified for migrating from old photo system to new!' );
-
-		        ws_ls_meta_fields_photos_migrate_old();
-	        }
+	        ws_ls_meta_fields_photos_create_example_field();
 
 	        // Do we need to migrate measurements?
 			ws_ls_migrate_measurements_into_meta_fields();

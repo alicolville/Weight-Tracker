@@ -47,40 +47,6 @@ function ws_ls_help_page() {
 				    </div>
 					<?php if ( true === current_user_can( 'manage_options' ) && 'y' === ws_ls_querystring_value('yeken') ) : ?>
 
-                        <div class="postbox">
-                            <h3 class="hndle"><span><?php echo __( 'Custom Fields: Migrate photos from old system to Custom Fields', WE_LS_SLUG); ?> </span></h3>
-                            <div style="padding: 0px 15px 0px 15px">
-                                <p><?php echo __( 'This will migrate photos from the old system to the new custom fields. It will create a custom field with the key "photo". Note! It will remove any existing migrated photos before re-adding them.', WE_LS_SLUG ); ?></p>
-                                    <p><a href="<?php echo esc_url( admin_url( 'admin.php?page=ws-ls-help&yeken=y&photomigrate=y') ); ?>" >Run</a></p>
-
-								<?php
-
-								ws_ls_log_add('help-page', 'YeKen Tool options shown!' );
-
-								if ( 'y' === ws_ls_querystring_value('photomigrate') ) {
-
-								    ws_ls_log_add('photo-migrate', 'Started manually via help page.' );
-
-								    // If example Photo meta field doesn't exist, then add it!
-									ws_ls_meta_fields_photos_create_example_field();
-
-									// Do we have Photos to migrate from the old photo system to new?
-									if ( ws_ls_meta_fields_photos_do_we_need_to_migrate( true ) ) {
-
-										ws_ls_meta_delete_migrated();
-
-										ws_ls_log_add('photo-migrate', 'Photos have been identified for migrating from old photo system to new!' );
-
-										ws_ls_meta_fields_photos_migrate_old( true );
-
-										echo '<p><strong>' . __( 'Done. View Log below for further information.', WE_LS_SLUG) . '</strong></p>';
-									}
-								}
-
-								?>
-                            </div>
-                        </div>
-
 						<div class="postbox">
 							<h3 class="hndle"><span><?php echo __( 'Custom Fields: Migrate measurements from old system to Custom Fields', WE_LS_SLUG); ?> </span></h3>
 							<div style="padding: 0px 15px 0px 15px">
