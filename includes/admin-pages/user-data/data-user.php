@@ -60,6 +60,8 @@ function ws_ls_admin_page_data_user() {
                     	unset( $user_order[ 'photos' ] );
                     }
 
+					$user_order = apply_filters( 'wlt-filters-postbox-order-ws-ls-user-data-one', $user_order );
+
 					foreach ( $user_order as $postbox ) {
 
 						if ( 'chart' === $postbox ) {
