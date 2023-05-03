@@ -320,7 +320,7 @@ function ws_ls_get_email_link( $user_id, $include_brackets = false ) {
         return '';
     }
 
-    return sprintf('  %1$s<a href="mailto:%2$s">%2$s</a>%3$s',
+    return sprintf('<span class="wt-user-header-email-link">  %1$s<a href="mailto:%2$s">%2$s</a>%3$s</span>',
         ( $include_brackets ) ? '( ' : '',
         esc_attr( $user_data->user_email ),
         ( $include_brackets ) ? ' )' : ''
