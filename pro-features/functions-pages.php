@@ -424,7 +424,11 @@ function ws_ls_postbox_sidebar_add_entry( $user_id ) {
 		<div class="inside">
 			<a class="button-primary" href="<?php echo ws_ls_get_link_to_edit_entry( $user_id ); ?>">
 				<i class="fa fa-calendar-plus-o"></i>
-				<?php echo __('Add Entry', WE_LS_SLUG); ?>
+				<?php
+
+					$text = apply_filters( 'wlt-filter-admin-user-sidebar-add-entry-text', 'Add Entry' );
+					echo __( $text, WE_LS_SLUG); 
+				?>
 			</a>
 			<a class="button-secondary" href="<?php echo ws_ls_get_link_to_edit_target( $user_id ); ?>">
 				<i class="fa fa-bullseye"></i>
