@@ -448,11 +448,11 @@ function ws_ls_postbox_sidebar_export_data( $user_id ) {
 	<div class="postbox ws-ls-user-data <?php ws_ls_postbox_classes( 'export-data', 'ws-ls-user-data-two' ); ?>" id="export-data">
 		<?php ws_ls_postbox_header( [ 'title' => __( 'Export data', WE_LS_SLUG ), 'postbox-id' => 'export-data', 'postbox-col' => 'ws-ls-user-data-two' ] ); ?>
 		<div class="inside">
-			<a class="button-secondary" href="<?php echo ws_ls_export_link('new', [ 'user-id' => $user_id, 'format' => 'csv' ] ); ?>">
+			<a class="button-secondary button-wt-to-excel" href="<?php echo ws_ls_export_link('new', [ 'user-id' => $user_id, 'format' => 'csv' ] ); ?>">
 				<i class="fa fa-file-excel-o"></i>
 				<?php echo __('To CSV', WE_LS_SLUG); ?>
 			</a>
-			<a class="button-secondary" href="<?php echo ws_ls_export_link('new', [ 'user-id' => $user_id, 'format' => 'json' ] ); ?>">
+			<a class="button-secondary button-wt-to-json" href="<?php echo ws_ls_export_link('new', [ 'user-id' => $user_id, 'format' => 'json' ] ); ?>">
 				<i class="fa fa-file-code-o"></i>
 				<?php echo __('To JSON', WE_LS_SLUG); ?>
 			</a>
@@ -586,9 +586,9 @@ function ws_ls_user_header( $user_id, $previous_url = false ) {
         <h3>%s %s</h3>
         <div class="postbox ws-ls-user-data">
             <div class="inside">
-                <a href="%s" class="button-secondary"><i class="fa fa-arrow-left"></i> <span>%s</span></a>
-                <a href="%s" class="button-secondary"><i class="fa fa-wordpress"></i> <span>%s</span></a>
-                <a href="%s" class="button-secondary"><i class="fa fa-line-chart"></i> <span>%s</span></a>
+                <a href="%s" class="button-secondary button-wt-back"><i class="fa fa-arrow-left"></i> <span>%s</span></a>
+                <a href="%s" class="button-secondary button-wt-wp-record"><i class="fa fa-wordpress"></i> <span>%s</span></a>
+                <a href="%s" class="button-secondary button-wt-record"><i class="fa fa-line-chart"></i> <span>%s</span></a>
                 %s
             </div>
         </div>',

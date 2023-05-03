@@ -139,11 +139,11 @@ function ws_ls_postbox_export() {
 	<div class="postbox <?php ws_ls_postbox_classes( 'export', 'ws-ls-user-summary-two' ); ?>" id="export">
 		<?php ws_ls_postbox_header( [ 'title' => __( 'Export all data', WE_LS_SLUG ), 'postbox-id' => 'export', 'postbox-col' => 'ws-ls-user-summary-two' ] ); ?>
 		<div class="inside">
-			<a class="button-secondary" href="<?php echo ws_ls_export_link('new', [ 'format' => 'csv', 'title' => __( 'All Data', WE_LS_SLUG ) ] ); ?>">
+			<a class="button-secondary button-wt-to-excel" href="<?php echo ws_ls_export_link('new', [ 'format' => 'csv', 'title' => __( 'All Data', WE_LS_SLUG ) ] ); ?>">
 				<i class="fa fa-file-excel-o"></i>
 				<?php echo __('To CSV', WE_LS_SLUG); ?>
 			</a>
-			<a class="button-secondary" href="<?php echo ws_ls_export_link('new', [ 'format' => 'json', 'title' => __( 'All Data', WE_LS_SLUG ) ] ); ?>">
+			<a class="button-secondary button-wt-to-json" href="<?php echo ws_ls_export_link('new', [ 'format' => 'json', 'title' => __( 'All Data', WE_LS_SLUG ) ] ); ?>">
 				<i class="fa fa-file-code-o"></i>
 				<?php echo __('To JSON', WE_LS_SLUG); ?>
 			</a>
