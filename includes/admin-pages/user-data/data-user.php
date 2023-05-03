@@ -83,7 +83,13 @@ function ws_ls_admin_page_data_user() {
 				</div>
 			</div>
 			<div id="postbox-container-1" class="postbox-container">
-				<?php ws_ls_user_side_bar( $user_id ); ?>
+				<?php 
+					if ( true === (bool) apply_filters( 'wlt-filters-admin-show-standard-sidebar', true ) ) {
+						ws_ls_user_side_bar( $user_id ); 
+					}
+
+					do_action( 'wlt-actions-admin-sidebar' );
+				?>
 			</div>
 		</div>
 		<br class="clear">

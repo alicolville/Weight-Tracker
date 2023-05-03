@@ -39,6 +39,12 @@ function ws_ls_user_side_bar( $user_id ) {
 
 	echo '<div class="meta-box-sortables" id="ws-ls-user-data-two">';
 
+	// Allow an additional admin section to be added in
+	$customised_section = apply_filters( 'wlt-filters-admin-sidebar-custom-section', '' );
+
+	if ( false === empty( $customised_section ) ) {
+		echo wp_kses_post( $customised_section  );
+	}
 
 	$default_order		= [ 'user-search', 'most-recent', 'user-information', 'notes', 'add-entry', 'export-data', 'settings', 'delete-cache', 'delete-data' ];
 	$user_sidebar_order = get_option( 'ws-ls-postbox-order-ws-ls-user-data-two', $default_order );
@@ -52,6 +58,8 @@ function ws_ls_user_side_bar( $user_id ) {
 	if ( true === ws_ls_meta_fields_photo_any_enabled() && false === in_array( 'most-recent', $user_sidebar_order ) ) {
 		array_unshift($user_sidebar_order , 'most-recent' );
 	}
+
+	$user_sidebar_order = apply_filters( 'wlt-filters-postbox-order-ws-ls-user-data-sidebar', $user_sidebar_order );
 
 	foreach ( $user_sidebar_order as $postbox ) {
 
@@ -75,6 +83,8 @@ function ws_ls_user_side_bar( $user_id ) {
 			ws_ls_postbox_sidebar_settings( $user_id );
 		} elseif ( 'notes' === $postbox ) {
 			ws_ls_postbox_user_notes( $user_id );
+		} else {
+			call_user_func( 'ws_ls_postbox_sidebar_' . $postbox, $user_id) ;	
 		}
 	}
 
