@@ -411,9 +411,7 @@ function ws_ls_datatable_columns( $arguments = [] ) {
 		array_push($columns, [ 'name' => 'notes', 'title' => __( 'Notes', WE_LS_SLUG ), 'breakpoints'=> 'lg', 'type' => 'text' ] );
 	}
 
-	$columns = apply_filters( 'wlt-filter-front-end-data-table-columns', $columns );
-
-	return $columns;
+	return apply_filters( 'wlt-filter-front-end-data-table-columns', $columns, $arguments[ 'front-end' ] );
 }
 
 
