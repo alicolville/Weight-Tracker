@@ -130,7 +130,7 @@ function ws_ls_get_table_data() {
 		'table_id'  => $table_id
 	];
 
-	$data = apply_filters( 'wlt-filter-user-table-data', $data );
+	$data = apply_filters( 'wlt-filter-user-table-data', $data, $front_end );
 
 	wp_send_json( $data );
 }

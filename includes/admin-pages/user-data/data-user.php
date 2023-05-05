@@ -304,7 +304,7 @@ function ws_ls_postbox_user_entries( $user_id ) {
 
 			    $bmi_enabled = apply_filters( 'wlt-filter-admin-user-entries-enable-bmi', true );
 
-			    echo ws_ls_data_table_render( [ 'smaller-width' => true, 'user-id' => $user_id, 'bmi-format' => 'both', 'enable-bmi' => $bmi_enabled ] );
+			    echo ws_ls_data_table_render( [ 'smaller-width' => true, 'user-id' => $user_id, 'bmi-format' => 'both', 'enable-bmi' => $bmi_enabled, 'name' => 'user-entries-data-home'  ] );
 
                 ?>
 		</div>

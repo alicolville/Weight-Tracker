@@ -23,6 +23,7 @@ function ws_ls_data_table_render( $arguments = [] ) {
 												'enable-weight'                 => true,
 												'page-size'                     => 10,
 												'week'                          => NULL,
+												'name'                          => NULL,
 												'custom-field-col-size'         => NULL,
 												'weight-mandatory'              => true,
 												'uikit'                         => false,
@@ -95,7 +96,8 @@ function ws_ls_data_table_render( $arguments = [] ) {
 									data-custom-field-groups="%11$s"
 									data-custom-field-col-size="%15$s"
 									data-custom-field-restrict-rows="%16$s"
-									data-uikit="%17$s"
+									data-uikit="%17$s",
+									data-name="%19$s"
 									 >
 		</table>
 		%18$s
@@ -118,7 +120,8 @@ function ws_ls_data_table_render( $arguments = [] ) {
 			esc_attr( $arguments[ 'custom-field-restrict-rows' ] ),
 			true === ws_ls_to_bool( $arguments[ 'uikit' ] ) ? 'true' : 'false',
 			true === ws_ls_to_bool( $arguments[ 'show-refresh-button' ] ) ?
-				sprintf( '<button class="ykuk-button ykuk-button-default ws-ls-show-if-data-edited ykuk-invisible" type="button" onclick="location.reload();">%1$s</button>', __( 'Data has changed, refresh screen', WE_LS_SLUG ) ) : ''
+			sprintf( '<button class="ykuk-button ykuk-button-default ws-ls-show-if-data-edited ykuk-invisible" type="button" onclick="location.reload();">%1$s</button>', __( 'Data has changed, refresh screen', WE_LS_SLUG ) ) : '',
+			esc_attr( $arguments[ 'name' ] )
 		);
 
 		if ( true === empty( $arguments[ 'user-id' ] ) ) {
@@ -413,7 +416,6 @@ function ws_ls_datatable_columns( $arguments = [] ) {
 
 	return apply_filters( 'wlt-filter-front-end-data-table-columns', $columns, $arguments[ 'front-end' ] );
 }
-
 
 /**
  * Enqueue relevant CSS / JS when needed to make footables work
