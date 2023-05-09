@@ -49,7 +49,7 @@ function ws_ls_admin_page_data_summary() {
 						$user_summary_order = get_option( 'ws-ls-postbox-order-ws-ls-user-summary-two', [ 'user-search', 'quick-stats', 'view-all', 'export', 'delete-data' ] );
 
                         $user_summary_order = apply_filters( 'wlt-filters-postbox-order-ws-ls-user-summary-two', $user_summary_order );
-                        
+
 						foreach ( $user_summary_order as $postbox ) {
 
 							if ( 'user-search' === $postbox ) {
