@@ -100,9 +100,11 @@ function ws_ls_user_side_bar( $user_id ) {
  * @param string $class
  */
 function ws_ls_postbox_user_search( $class = 'ws-ls-user-summary-two' ) {
+
+    $title = apply_filters( 'wlt-filter-user-search-title', __( 'User Search', WE_LS_SLUG ) );
 ?>
 	<div class="postbox <?php ws_ls_postbox_classes( 'user-search', $class ); ?>" id="user-search">
-		<?php ws_ls_postbox_header( [ 'title' => __( 'User Search', WE_LS_SLUG ), 'postbox-id' => 'user-search', 'postbox-col' => $class ] ); ?>
+		<?php ws_ls_postbox_header( [ 'title' => $title, 'postbox-id' => 'user-search', 'postbox-col' => $class ] ); ?>
 		<div class="inside">
 			<?php ws_ls_box_user_search_form(); ?>
 		</div>
