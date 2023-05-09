@@ -84,7 +84,9 @@ function ws_ls_user_side_bar( $user_id ) {
 		} elseif ( 'notes' === $postbox ) {
 			ws_ls_postbox_user_notes( $user_id );
 		} else {
-			call_user_func( 'ws_ls_postbox_sidebar_' . $postbox, $user_id) ;	
+            if ( true === function_exists( 'ws_ls_postbox_sidebar_' . $postbox ) ) {
+	            call_user_func( 'ws_ls_postbox_sidebar_' . $postbox, $user_id) ;
+            }
 		}
 	}
 
