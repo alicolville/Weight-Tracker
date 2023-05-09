@@ -242,7 +242,52 @@ function ws_ls_datatable_rows( $arguments ) {
 
 				$row[ 'gainloss' ][ 'value']                = $gain_loss;
 				$row[ 'gainloss' ][ 'options']['classes']   = 'ws-ls-' . $gain_class .  ws_ls_blur();
+
+				// Gain / Loss compared with start weight
+				$gain_loss = '';
+				$gain_class = '';
+
+				$start_weight = ws_ls_entry_get_oldest_kg( $entry[ 'user_id' ] );
+
+				if ( true === empty( $entry[ 'kg' ] ) ) {
+					$gain_class = 'same';
+					$gain_loss = __( 'No weight recorded', WE_LS_SLUG );
+				} elseif( false === empty(  $start_weight ) ) {
+
+					$start_weight = (float) $start_weight;
+
+					if ( false === empty( $entry[ 'kg' ] ) ) {
+
+						$entry[ 'kg' ] = (float) $entry[ 'kg' ];
+
+						$gain_loss = $entry['kg'] - $start_weight;
+
+						if ( $entry['kg'] > $start_weight ) {
+							$gain_class = 'gain';
+						} elseif ( $entry[ 'kg' ] < $start_weight ) {
+							$gain_class = 'loss';
+						} elseif ( $entry['kg'] == $start_weight ) {
+							$gain_class = 'same';
+							$gain_loss = __( 'No Change', WE_LS_SLUG );
+						}
+					}
+
+				} elseif ( true === empty( $arguments[ 'user-id' ] )) {
+					$gain_loss = $entry[ 'user_profile' ] = sprintf('<a href="%s" rel="noopener noreferrer" target="_blank">%s</a>', ws_ls_get_link_to_user_profile( $entry[ 'user_id' ] ), __( 'Check record', WE_LS_SLUG ) );
+				} elseif ( false === empty( $entry[ 'kg' ] ) ) {
+					$gain_loss = __( 'First weight entry', WE_LS_SLUG );
+				} else {
+					$gain_loss = '';
+				}
+
+				if ( true === is_numeric( $gain_loss ) ) {
+					$gain_loss = ws_ls_weight_display( $gain_loss, $arguments['user-id'], 'display' );
+				}
+
+				$row[ 'gainlossfromstart' ][ 'value']                = $gain_loss;
+				$row[ 'gainlossfromstart' ][ 'options']['classes']   = 'ws-ls-' . $gain_class .  ws_ls_blur();
 			}
+
 			if( true === $arguments[ 'enable-notes' ] ) {
 				$row[ 'notes' ] = wp_kses_post( $entry[ 'notes' ] );
 			}
