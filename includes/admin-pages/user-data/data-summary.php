@@ -29,6 +29,8 @@ function ws_ls_admin_page_data_summary() {
 
                         $user_summary_order = get_option( 'ws-ls-postbox-order-ws-ls-user-summary-one', [ 'league-table', 'weight-change-by-group', 'summary-entries' ] );
 
+                        $user_summary_order = apply_filters( 'wlt-filters-postbox-order-ws-ls-user-summary-one', $user_summary_order );
+
 						foreach ( $user_summary_order as $postbox ) {
 
 							if ( 'league-table' === $postbox ) {
@@ -37,6 +39,10 @@ function ws_ls_admin_page_data_summary() {
 								ws_ls_postbox_change_by_groups();
 							} elseif ( 'summary-entries' === $postbox ) {
 								ws_ls_postbox_latest_entries();
+							} else {
+                                if ( true === function_exists( 'ws_ls_postbox_' . $postbox ) ) {
+                                    call_user_func( 'ws_ls_postbox_' . $postbox ) ;
+                                }
 							}
 						}
                     ?>
