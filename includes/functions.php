@@ -520,6 +520,20 @@ function ws_ls_entry_get_previous( $arguments = [] ) {
 }
 
 /**
+ * Return Kg for previous weight
+ * @param $user_id
+ *
+ * @return string|null
+ */
+function ws_ls_entry_get_previous_kg( $user_id = NULL ) {
+
+	$user_id = ( NULL === $user_id ) ? get_current_user_id() : $user_id;
+
+	return ws_ls_entry_get_previous( [ 'user-id' => $user_id, 'meta' => false, 'kg-only' => true ] );
+}
+
+
+/**
  *  DEPRECATED: replace with ws_ls_to_bool()
  *
  * Force a string to boolean
