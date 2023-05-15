@@ -82,24 +82,39 @@ function ws_ls_stats_update_for_user( $user_id ) {
 		return;
 	}
 
+
+
+
 	$stats =  [];
 
-	$stats[ 'user_id' ]           = $user_id;
-	$stats[ 'start_weight' ]      = ws_ls_entry_get_oldest_kg( $user_id );
-	$stats[ 'recent_weight' ]     = ws_ls_entry_get_latest_kg( $user_id );
-	$stats[ 'weight_difference' ] = ( true === is_numeric( $stats[ 'start_weight' ] ) && true === is_numeric( $stats[ 'recent_weight' ] ) ) ? $stats[ 'recent_weight' ] - $stats[ 'start_weight' ] : 0;
-	$stats[ 'last_update' ]       = current_time( 'mysql', 1 );
+	$stats[ 'user_id' ]             = $user_id;
+	$stats[ 'group_id' ]            = ws_ls_groups_user_get_id( $user_id );
+	$stats[ 'start_weight' ]        = ws_ls_entry_get_oldest_kg( $user_id );
 
-	$entry_stats                  = ws_ls_db_entries_count( $user_id, false );
-	$stats[ 'no_entries' ]        = $entry_stats[ 'number-of-entries' ];
-    $stats[ 'target_added' ]      = ( $entry_stats[ 'number-of-targets' ] > 0) ? 1 : 0;
+	$latest_entry   = ws_ls_entry_get_latest( [ 'user-id' => $user_id, 'meta' => false ] );
+	$previous_entry = ws_ls_entry_get_previous( [ 'user-id' => $user_id, 'meta' => false ] );
+
+	$stats[ 'recent_weight' ]               = ( false === empty( $latest_entry[ 'kg' ] ) ) ? $latest_entry[ 'kg' ] : NULL;
+	$stats[ 'recent_weight_date' ]          = ( false === empty( $latest_entry[ 'weight_date' ] ) ) ? $latest_entry[ 'weight_date' ] : NULL;
+	$stats[ 'previous_weight' ]             = ( false === empty( $previous_entry[ 'kg' ] ) ) ? $previous_entry[ 'kg' ] : NULL;
+	$stats[ 'weight_difference_previous' ]  = ( true === is_numeric( $stats[ 'recent_weight' ] ) && true === is_numeric( $stats[ 'previous_weight' ] ) ) ? $stats[ 'recent_weight' ] - $stats[ 'previous_weight' ] : 0;
+	$stats[ 'weight_difference' ]           = ( true === is_numeric( $stats[ 'start_weight' ] ) && true === is_numeric( $stats[ 'recent_weight' ] ) ) ? $stats[ 'recent_weight' ] - $stats[ 'start_weight' ] : 0;
+	$stats[ 'last_update' ]                 = current_time( 'mysql', 1 );
+	$entry_stats                            = ws_ls_db_entries_count( $user_id, false );
+	$stats[ 'no_entries' ]                  = $entry_stats[ 'number-of-entries' ];
+    $stats[ 'target_added' ]                = ( $entry_stats[ 'number-of-targets' ] > 0) ? 1 : 0;
+
+
+	$dates = ws_ls_db_dates_min_max_get( $user_id );
+	//print_r($dates);
+	$stats[ 'week_count' ]          = ( false === empty( $dates[ 'min' ] ) && false === empty( $dates[ 'max' ] ) ) ?
+										ws_ls_challenges_diff_between_dates_in_weeks( $dates[ 'min' ], $dates[ 'max' ] ) :
+											NULL;
 
 	global $wpdb;
-	$wpdb->replace( $wpdb->prefix . WE_LS_USER_STATS_TABLENAME, $stats, array('%d', '%f', '%f', '%f', '%s') );
+	$wpdb->replace( $wpdb->prefix . WE_LS_USER_STATS_TABLENAME, $stats, [ '%d', '%d', '%f', '%f', '%s', '%f', '%f', '%f', '%s', '%d', '%d' , '%d'] );
 
-		ws_ls_stats_refresh_summary_stats();
-
-	return;
+	ws_ls_stats_refresh_summary_stats();
 }
 
 /**

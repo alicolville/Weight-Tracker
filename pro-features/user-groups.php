@@ -532,6 +532,19 @@ function ws_ls_groups_user( $user_id = NULL ) {
 }
 
 /**
+ * Fetch group id for given user (only works if we're still using one group per user)
+ *
+ * @param $group_id
+ * @return array
+ */
+function ws_ls_groups_user_get_id( $user_id ) {
+
+	$group = ws_ls_groups_user( $user_id);
+
+	return ( false === empty( $group[0]['id'] ) ) ? $group[0]['id'] : NULL;
+}
+
+/**
 * Add group to CSV / JSON export
 * @param $row
 * @return mixed

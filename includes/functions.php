@@ -509,14 +509,19 @@ function ws_ls_entry_get_latest_kg( $user_id = NULL ) {
  */
 function ws_ls_entry_get_previous( $arguments = [] ) {
 
-	$arguments              = wp_parse_args( $arguments, [ 'user-id' => get_current_user_id(), 'meta' => true ] );
+	$arguments              = wp_parse_args( $arguments, [ 'user-id' => get_current_user_id(), 'meta' => true, 'kg-only' => false ] );
 	$arguments[ 'id' ]      = ws_ls_db_entry_previous( $arguments );
 
 	if ( true === empty( $arguments[ 'id' ] ) ) {
 		return NULL;
 	}
 
-	return ws_ls_entry_get( $arguments );
+	$previous_entry = ws_ls_entry_get( $arguments );
+
+    return ( true === $arguments[ 'kg-only'] &&
+	              false === empty( $previous_entry[ 'kg' ] ) ) ?
+	    $previous_entry[ 'kg' ] :
+	    $previous_entry;
 }
 
 /**
