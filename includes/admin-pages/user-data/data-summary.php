@@ -15,6 +15,7 @@ function ws_ls_admin_page_data_summary() {
         do_action( 'wlt-hook-data-all-deleted' );
     }
 
+    ws_ls_data_table_enqueue_scripts();
 ?>
 <div class="wrap ws-ls-user-data ws-ls-admin-page">
 	<h1><?php echo __('Summary', WE_LS_SLUG); ?></h1>

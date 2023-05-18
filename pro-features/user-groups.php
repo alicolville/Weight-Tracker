@@ -636,6 +636,16 @@ function ws_ls_groups_users_for_given_group( $group_id, $with_entry_date = NULL 
 }
 
 /**
+ * Return a count for the number of users within a group
+ * @param $group_id
+ *
+ * @return int
+ */
+function ws_ls_groups_users_for_given_group_count( $group_id ) {
+	return count( ws_ls_groups_users_for_given_group( $group_id ) );
+}
+
+/**
  * Fetch user IDs for all user's that don't have a group record
  *
  * Note:    This is a one off helper function, it's isn't aimed at identifying users that have 0 for their group. This is to detect
