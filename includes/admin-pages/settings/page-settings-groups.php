@@ -42,6 +42,13 @@
 	                                    <input type="submit" value="<?php echo __('Add', WE_LS_SLUG); ?>" class="button" <?php if ( false === WS_LS_IS_PRO ) { echo ' disabled'; } ?> />
 	                                </form>
 
+                               <?php
+
+                                    do_action( 'wlt-hook-custom-group-table' );
+
+                                    $enable_table = apply_filters( 'wlt-filters-admin-group-view-enabled', true );
+
+                                 if ( true === $enable_table ) { ?>
 	                                <h4><?php echo __('Existing groups', WE_LS_SLUG); ?></h4>
 
 	                                <table class="ws-ls-settings-groups-list-ajax table ws-ls-loading-table" id="groups-list"
@@ -55,7 +62,9 @@
 	                                       data-toggle="true"
 	                                       data-use-parent-width="true">
 	                                </table>
+                                <?php }
 
+                                 ?>
                             </div>
                         </div>
 
