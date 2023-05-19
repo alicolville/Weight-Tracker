@@ -76,7 +76,11 @@ function ws_ls_admin_page_data_user() {
 							ws_ls_postbox_awards( $user_id );
 						} elseif ( 'user-entries' === $postbox ) {
 							ws_ls_postbox_user_entries( $user_id );
-						}
+						} else {
+                                if ( true === function_exists( 'ws_ls_postbox_' . $postbox ) ) {
+                                    call_user_func( 'ws_ls_postbox_' . $postbox ) ;
+                                }
+							}
 					}
 
  					?>
