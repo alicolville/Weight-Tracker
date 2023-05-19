@@ -6,9 +6,10 @@ function ws_ls_admin_page_view_all() {
 
     ws_ls_permission_check_message();
 
-?>
+	$title = apply_filters( 'wlt-filter-view-all-title', __( 'View All Data', WE_LS_SLUG ) );
+    ?>
 <div class="wrap ws-ls-user-data ws-ls-admin-page">
-	<h1><?php echo __('View All Data', WE_LS_SLUG); ?></h1>
+	<h1><?php echo $title; ?></h1>
 	<div id="poststuff">
 		<div id="post-body" class="metabox-holder">
 			<div id="post-body-content">
@@ -20,7 +21,7 @@ function ws_ls_admin_page_view_all() {
                     ?>
 					<div class="postbox">
 
-						<h2 class="hndle"><span><?php echo __('View All Data', WE_LS_SLUG); ?></span></h2>
+						<h2 class="hndle"><span><?php echo $title; ?></span></h2>
 
 						<div class="inside">
 							<?php
