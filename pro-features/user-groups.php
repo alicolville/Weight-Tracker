@@ -186,6 +186,8 @@ function ws_ls_groups_hooks_user_preferences_save( $user_id, $is_admin, $fields 
 
 	ws_ls_cache_user_delete( $user_id );
 	ws_ls_cache_user_delete( 'groups-user-for-given' );
+
+	ws_ls_stats_update_for_user( $user_id );
 }
 add_action( 'ws-ls-hook-user-preference-save',  'ws_ls_groups_hooks_user_preferences_save', 10, 3 );
 

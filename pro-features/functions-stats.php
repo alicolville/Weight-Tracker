@@ -82,9 +82,6 @@ function ws_ls_stats_update_for_user( $user_id ) {
 		return;
 	}
 
-
-
-
 	$stats =  [];
 
 	$stats[ 'user_id' ]             = $user_id;
