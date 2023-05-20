@@ -152,7 +152,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 == Changelog ==
 
-= 10.3.7 =
+= 10.3.8 =
 
 * Maintenance: Some general improvements to the code base and additional triggers for stats table to be refreshed.
 
