@@ -84,6 +84,8 @@ function ws_ls_form_post_handler_target( $user_id ) {
 
 	do_action( 'wlt-hook-data-added-edited', [ 'user-id' => $user_id, 'type' => 'target', 'mode' => 'update' ],  [ 'kg' => $kg ] );
 
+	ws_ls_stats_update_for_user( $user_id );
+
 	return ( false !== ws_ls_db_target_set( $user_id, $kg ) );
 }
 

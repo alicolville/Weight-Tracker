@@ -23,6 +23,7 @@ function ws_ls_data_table_render( $arguments = [] ) {
 												'enable-weight'                 => true,
 												'page-size'                     => 10,
 												'week'                          => NULL,
+												'name'                          => NULL,
 												'custom-field-col-size'         => NULL,
 												'weight-mandatory'              => true,
 												'uikit'                         => false,
@@ -95,7 +96,8 @@ function ws_ls_data_table_render( $arguments = [] ) {
 									data-custom-field-groups="%11$s"
 									data-custom-field-col-size="%15$s"
 									data-custom-field-restrict-rows="%16$s"
-									data-uikit="%17$s"
+									data-uikit="%17$s",
+									data-name="%19$s"
 									 >
 		</table>
 		%18$s
@@ -118,7 +120,8 @@ function ws_ls_data_table_render( $arguments = [] ) {
 			esc_attr( $arguments[ 'custom-field-restrict-rows' ] ),
 			true === ws_ls_to_bool( $arguments[ 'uikit' ] ) ? 'true' : 'false',
 			true === ws_ls_to_bool( $arguments[ 'show-refresh-button' ] ) ?
-				sprintf( '<button class="ykuk-button ykuk-button-default ws-ls-show-if-data-edited ykuk-invisible" type="button" onclick="location.reload();">%1$s</button>', __( 'Data has changed, refresh screen', WE_LS_SLUG ) ) : ''
+			sprintf( '<button class="ykuk-button ykuk-button-default ws-ls-show-if-data-edited ykuk-invisible" type="button" onclick="location.reload();">%1$s</button>', __( 'Data has changed, refresh screen', WE_LS_SLUG ) ) : '',
+			esc_attr( $arguments[ 'name' ] )
 		);
 
 		if ( true === empty( $arguments[ 'user-id' ] ) ) {
@@ -239,7 +242,52 @@ function ws_ls_datatable_rows( $arguments ) {
 
 				$row[ 'gainloss' ][ 'value']                = $gain_loss;
 				$row[ 'gainloss' ][ 'options']['classes']   = 'ws-ls-' . $gain_class .  ws_ls_blur();
+
+				// Gain / Loss compared with start weight
+				$gain_loss = '';
+				$gain_class = '';
+
+				$start_weight = ws_ls_entry_get_oldest_kg( $entry[ 'user_id' ] );
+
+				if ( true === empty( $entry[ 'kg' ] ) ) {
+					$gain_class = 'same';
+					$gain_loss = __( 'No weight recorded', WE_LS_SLUG );
+				} elseif( false === empty(  $start_weight ) ) {
+
+					$start_weight = (float) $start_weight;
+
+					if ( false === empty( $entry[ 'kg' ] ) ) {
+
+						$entry[ 'kg' ] = (float) $entry[ 'kg' ];
+
+						$gain_loss = $entry['kg'] - $start_weight;
+
+						if ( $entry['kg'] > $start_weight ) {
+							$gain_class = 'gain';
+						} elseif ( $entry[ 'kg' ] < $start_weight ) {
+							$gain_class = 'loss';
+						} elseif ( $entry['kg'] == $start_weight ) {
+							$gain_class = 'same';
+							$gain_loss = __( 'No Change', WE_LS_SLUG );
+						}
+					}
+
+				} elseif ( true === empty( $arguments[ 'user-id' ] )) {
+					$gain_loss = $entry[ 'user_profile' ] = sprintf('<a href="%s" rel="noopener noreferrer" target="_blank">%s</a>', ws_ls_get_link_to_user_profile( $entry[ 'user_id' ] ), __( 'Check record', WE_LS_SLUG ) );
+				} elseif ( false === empty( $entry[ 'kg' ] ) ) {
+					$gain_loss = __( 'First weight entry', WE_LS_SLUG );
+				} else {
+					$gain_loss = '';
+				}
+
+				if ( true === is_numeric( $gain_loss ) ) {
+					$gain_loss = ws_ls_weight_display( $gain_loss, $arguments['user-id'], 'display' );
+				}
+
+				$row[ 'gainlossfromstart' ][ 'value']                = $gain_loss;
+				$row[ 'gainlossfromstart' ][ 'options']['classes']   = 'ws-ls-' . $gain_class .  ws_ls_blur();
 			}
+
 			if( true === $arguments[ 'enable-notes' ] ) {
 				$row[ 'notes' ] = wp_kses_post( $entry[ 'notes' ] );
 			}
@@ -411,11 +459,8 @@ function ws_ls_datatable_columns( $arguments = [] ) {
 		array_push($columns, [ 'name' => 'notes', 'title' => __( 'Notes', WE_LS_SLUG ), 'breakpoints'=> 'lg', 'type' => 'text' ] );
 	}
 
-	$columns = apply_filters( 'wlt-filter-front-end-data-table-columns', $columns );
-
-	return $columns;
+	return apply_filters( 'wlt-filter-front-end-data-table-columns', $columns, $arguments[ 'front-end' ] );
 }
-
 
 /**
  * Enqueue relevant CSS / JS when needed to make footables work

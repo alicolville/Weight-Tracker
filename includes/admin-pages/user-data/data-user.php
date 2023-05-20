@@ -60,6 +60,8 @@ function ws_ls_admin_page_data_user() {
                     	unset( $user_order[ 'photos' ] );
                     }
 
+					$user_order = apply_filters( 'wlt-filters-postbox-order-ws-ls-user-data-one', $user_order );
+
 					foreach ( $user_order as $postbox ) {
 
 						if ( 'chart' === $postbox ) {
@@ -74,14 +76,24 @@ function ws_ls_admin_page_data_user() {
 							ws_ls_postbox_awards( $user_id );
 						} elseif ( 'user-entries' === $postbox ) {
 							ws_ls_postbox_user_entries( $user_id );
-						}
+						} else {
+                                if ( true === function_exists( 'ws_ls_postbox_' . $postbox ) ) {
+                                    call_user_func( 'ws_ls_postbox_' . $postbox ) ;
+                                }
+							}
 					}
 
  					?>
 				</div>
 			</div>
 			<div id="postbox-container-1" class="postbox-container">
-				<?php ws_ls_user_side_bar( $user_id ); ?>
+				<?php 
+					if ( true === (bool) apply_filters( 'wlt-filters-admin-show-standard-sidebar', true ) ) {
+						ws_ls_user_side_bar( $user_id ); 
+					}
+
+					do_action( 'wlt-actions-admin-sidebar' );
+				?>
 			</div>
 		</div>
 		<br class="clear">
@@ -292,7 +304,13 @@ function ws_ls_postbox_user_entries( $user_id ) {
 	<div class="postbox <?php ws_ls_postbox_classes( 'user-entries', 'ws-ls-user-data-one' ); ?>" id="user-entries">
 		<?php ws_ls_postbox_header( [ 'title' => __( 'Entries for this user', WE_LS_SLUG ), 'postbox-id' => 'user-entries', 'postbox-col' => 'ws-ls-user-data-one' ] ); ?>
 		<div class="inside">
-			<?php echo ws_ls_data_table_render( [ 'smaller-width' => true, 'user-id' => $user_id, 'bmi-format' => 'both' ] ); ?>
+			<?php
+
+			    $bmi_enabled = apply_filters( 'wlt-filter-admin-user-entries-enable-bmi', true );
+
+			    echo ws_ls_data_table_render( [ 'smaller-width' => true, 'user-id' => $user_id, 'bmi-format' => 'both', 'enable-bmi' => $bmi_enabled, 'name' => 'user-entries-data-home'  ] );
+
+                ?>
 		</div>
 	</div>
 <?php

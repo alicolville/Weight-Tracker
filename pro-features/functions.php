@@ -293,8 +293,8 @@ function ws_ls_get_link_to_edit_entry( $user_id, $entry_id = false, $escape_url 
 function ws_ls_get_link_to_export( $type = 'csv', $user_id = false ) {
 
     $type = ( 'json' === $type ) ? 'application/json' : 'text/csv';
-
-    $base_url = admin_url( 'admin-post.php?action=export_data&file-type=' . $type);
+	
+	$base_url = admin_url( 'admin.php?page=ws-ls-export-data&mode=new&format=' . $type );
 
     if( false === empty( $user_id ) ) {
         $base_url .= '&user-id=' . (int) $user_id;
@@ -320,7 +320,7 @@ function ws_ls_get_email_link( $user_id, $include_brackets = false ) {
         return '';
     }
 
-    return sprintf('  %1$s<a href="mailto:%2$s">%2$s</a>%3$s',
+    return sprintf('<span class="wt-user-header-email-link">  %1$s<a href="mailto:%2$s">%2$s</a>%3$s</span>',
         ( $include_brackets ) ? '( ' : '',
         esc_attr( $user_data->user_email ),
         ( $include_brackets ) ? ' )' : ''

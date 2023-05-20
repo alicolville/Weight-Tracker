@@ -34,7 +34,8 @@ jQuery( document ).ready(function ( $, undefined ) {
                         'table_id':                       table_id,
                         'week':                           $( this ).data( 'week' ),
                         'bmi-format':                     $( this ).data( 'bmi-format' ),
-                        'uikit':                          $( this ).data( 'uikit' )
+                        'uikit':                          $( this ).data( 'uikit' ),
+                        'name':                           $( this ).data( 'name' )
         };
 
         ws_ls_post_data_to_WP( 'table_data', data, ws_ls_callback_setup_table )

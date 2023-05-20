@@ -39,6 +39,12 @@ function ws_ls_user_side_bar( $user_id ) {
 
 	echo '<div class="meta-box-sortables" id="ws-ls-user-data-two">';
 
+	// Allow an additional admin section to be added in
+	$customised_section = apply_filters( 'wlt-filters-admin-sidebar-custom-section', '' );
+
+	if ( false === empty( $customised_section ) ) {
+		echo wp_kses_post( $customised_section  );
+	}
 
 	$default_order		= [ 'user-search', 'most-recent', 'user-information', 'notes', 'add-entry', 'export-data', 'settings', 'delete-cache', 'delete-data' ];
 	$user_sidebar_order = get_option( 'ws-ls-postbox-order-ws-ls-user-data-two', $default_order );
@@ -52,6 +58,8 @@ function ws_ls_user_side_bar( $user_id ) {
 	if ( true === ws_ls_meta_fields_photo_any_enabled() && false === in_array( 'most-recent', $user_sidebar_order ) ) {
 		array_unshift($user_sidebar_order , 'most-recent' );
 	}
+
+	$user_sidebar_order = apply_filters( 'wlt-filters-postbox-order-ws-ls-user-data-sidebar', $user_sidebar_order );
 
 	foreach ( $user_sidebar_order as $postbox ) {
 
@@ -75,6 +83,10 @@ function ws_ls_user_side_bar( $user_id ) {
 			ws_ls_postbox_sidebar_settings( $user_id );
 		} elseif ( 'notes' === $postbox ) {
 			ws_ls_postbox_user_notes( $user_id );
+		} else {
+            if ( true === function_exists( 'ws_ls_postbox_sidebar_' . $postbox ) ) {
+	            call_user_func( 'ws_ls_postbox_sidebar_' . $postbox, $user_id) ;
+            }
 		}
 	}
 
@@ -88,9 +100,11 @@ function ws_ls_user_side_bar( $user_id ) {
  * @param string $class
  */
 function ws_ls_postbox_user_search( $class = 'ws-ls-user-summary-two' ) {
+
+    $title = apply_filters( 'wlt-filter-user-search-title', __( 'User Search', WE_LS_SLUG ) );
 ?>
 	<div class="postbox <?php ws_ls_postbox_classes( 'user-search', $class ); ?>" id="user-search">
-		<?php ws_ls_postbox_header( [ 'title' => __( 'User Search', WE_LS_SLUG ), 'postbox-id' => 'user-search', 'postbox-col' => $class ] ); ?>
+		<?php ws_ls_postbox_header( [ 'title' => $title, 'postbox-id' => 'user-search', 'postbox-col' => $class ] ); ?>
 		<div class="inside">
 			<?php ws_ls_box_user_search_form(); ?>
 		</div>
@@ -424,7 +438,11 @@ function ws_ls_postbox_sidebar_add_entry( $user_id ) {
 		<div class="inside">
 			<a class="button-primary" href="<?php echo ws_ls_get_link_to_edit_entry( $user_id ); ?>">
 				<i class="fa fa-calendar-plus-o"></i>
-				<?php echo __('Add Entry', WE_LS_SLUG); ?>
+				<?php
+
+					$text = apply_filters( 'wlt-filter-admin-user-sidebar-add-entry-text', 'Add Entry' );
+					echo __( $text, WE_LS_SLUG); 
+				?>
 			</a>
 			<a class="button-secondary" href="<?php echo ws_ls_get_link_to_edit_target( $user_id ); ?>">
 				<i class="fa fa-bullseye"></i>
@@ -444,11 +462,11 @@ function ws_ls_postbox_sidebar_export_data( $user_id ) {
 	<div class="postbox ws-ls-user-data <?php ws_ls_postbox_classes( 'export-data', 'ws-ls-user-data-two' ); ?>" id="export-data">
 		<?php ws_ls_postbox_header( [ 'title' => __( 'Export data', WE_LS_SLUG ), 'postbox-id' => 'export-data', 'postbox-col' => 'ws-ls-user-data-two' ] ); ?>
 		<div class="inside">
-			<a class="button-secondary" href="<?php echo ws_ls_export_link('new', [ 'user-id' => $user_id, 'format' => 'csv' ] ); ?>">
+			<a class="button-secondary button-wt-to-excel" href="<?php echo ws_ls_export_link('new', [ 'user-id' => $user_id, 'format' => 'csv' ] ); ?>">
 				<i class="fa fa-file-excel-o"></i>
 				<?php echo __('To CSV', WE_LS_SLUG); ?>
 			</a>
-			<a class="button-secondary" href="<?php echo ws_ls_export_link('new', [ 'user-id' => $user_id, 'format' => 'json' ] ); ?>">
+			<a class="button-secondary button-wt-to-json" href="<?php echo ws_ls_export_link('new', [ 'user-id' => $user_id, 'format' => 'json' ] ); ?>">
 				<i class="fa fa-file-code-o"></i>
 				<?php echo __('To JSON', WE_LS_SLUG); ?>
 			</a>
@@ -582,9 +600,9 @@ function ws_ls_user_header( $user_id, $previous_url = false ) {
         <h3>%s %s</h3>
         <div class="postbox ws-ls-user-data">
             <div class="inside">
-                <a href="%s" class="button-secondary"><i class="fa fa-arrow-left"></i> <span>%s</span></a>
-                <a href="%s" class="button-secondary"><i class="fa fa-wordpress"></i> <span>%s</span></a>
-                <a href="%s" class="button-secondary"><i class="fa fa-line-chart"></i> <span>%s</span></a>
+                <a href="%s" class="button-secondary button-wt-back"><i class="fa fa-arrow-left"></i> <span>%s</span></a>
+                <a href="%s" class="button-secondary button-wt-wp-record"><i class="fa fa-wordpress"></i> <span>%s</span></a>
+                <a href="%s" class="button-secondary button-wt-record"><i class="fa fa-line-chart"></i> <span>%s</span></a>
                 %s
             </div>
         </div>',

@@ -186,6 +186,8 @@ function ws_ls_groups_hooks_user_preferences_save( $user_id, $is_admin, $fields 
 
 	ws_ls_cache_user_delete( $user_id );
 	ws_ls_cache_user_delete( 'groups-user-for-given' );
+
+	ws_ls_stats_update_for_user( $user_id );
 }
 add_action( 'ws-ls-hook-user-preference-save',  'ws_ls_groups_hooks_user_preferences_save', 10, 3 );
 
@@ -532,6 +534,19 @@ function ws_ls_groups_user( $user_id = NULL ) {
 }
 
 /**
+ * Fetch group id for given user (only works if we're still using one group per user)
+ *
+ * @param $group_id
+ * @return array
+ */
+function ws_ls_groups_user_get_id( $user_id ) {
+
+	$group = ws_ls_groups_user( $user_id);
+
+	return ( false === empty( $group[0]['id'] ) ) ? $group[0]['id'] : NULL;
+}
+
+/**
 * Add group to CSV / JSON export
 * @param $row
 * @return mixed
@@ -620,6 +635,16 @@ function ws_ls_groups_users_for_given_group( $group_id, $with_entry_date = NULL 
 	ws_ls_cache_user_set( $cache_key, $group_id, $data, $cache_time );
 
 	return $data;
+}
+
+/**
+ * Return a count for the number of users within a group
+ * @param $group_id
+ *
+ * @return int
+ */
+function ws_ls_groups_users_for_given_group_count( $group_id ) {
+	return count( ws_ls_groups_users_for_given_group( $group_id ) );
 }
 
 /**

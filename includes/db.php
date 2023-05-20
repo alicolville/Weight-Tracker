@@ -917,9 +917,14 @@ function ws_ls_db_create_core_tables() {
 
 	$sql = "CREATE TABLE $table_name (
 			user_id integer NOT NULL,
+			group_id integer NULL,
+			week_count integer NULL,
 			start_weight float DEFAULT 0 NULL,
+			previous_weight float DEFAULT 0 NULL,
 			recent_weight float DEFAULT 0 NULL,
+			recent_weight_date datetime NULL,
 			weight_difference float DEFAULT 0 NULL,
+			weight_difference_previous float DEFAULT 0 NULL,
 			sum_of_weights float DEFAULT 0 NULL,
 			no_entries integer DEFAULT 0 NULL,
 			target_added integer DEFAULT 0 NULL,

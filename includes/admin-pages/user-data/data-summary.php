@@ -15,6 +15,7 @@ function ws_ls_admin_page_data_summary() {
         do_action( 'wlt-hook-data-all-deleted' );
     }
 
+    ws_ls_data_table_enqueue_scripts();
 ?>
 <div class="wrap ws-ls-user-data ws-ls-admin-page">
 	<h1><?php echo __('Summary', WE_LS_SLUG); ?></h1>
@@ -29,6 +30,8 @@ function ws_ls_admin_page_data_summary() {
 
                         $user_summary_order = get_option( 'ws-ls-postbox-order-ws-ls-user-summary-one', [ 'league-table', 'weight-change-by-group', 'summary-entries' ] );
 
+                        $user_summary_order = apply_filters( 'wlt-filters-postbox-order-ws-ls-user-summary-one', $user_summary_order );
+
 						foreach ( $user_summary_order as $postbox ) {
 
 							if ( 'league-table' === $postbox ) {
@@ -37,6 +40,10 @@ function ws_ls_admin_page_data_summary() {
 								ws_ls_postbox_change_by_groups();
 							} elseif ( 'summary-entries' === $postbox ) {
 								ws_ls_postbox_latest_entries();
+							} else {
+                                if ( true === function_exists( 'ws_ls_postbox_' . $postbox ) ) {
+                                    call_user_func( 'ws_ls_postbox_' . $postbox ) ;
+                                }
 							}
 						}
                     ?>
@@ -47,6 +54,8 @@ function ws_ls_admin_page_data_summary() {
 					<?php
 
 						$user_summary_order = get_option( 'ws-ls-postbox-order-ws-ls-user-summary-two', [ 'user-search', 'quick-stats', 'view-all', 'export', 'delete-data' ] );
+
+                        $user_summary_order = apply_filters( 'wlt-filters-postbox-order-ws-ls-user-summary-two', $user_summary_order );
 
 						foreach ( $user_summary_order as $postbox ) {
 
@@ -139,11 +148,11 @@ function ws_ls_postbox_export() {
 	<div class="postbox <?php ws_ls_postbox_classes( 'export', 'ws-ls-user-summary-two' ); ?>" id="export">
 		<?php ws_ls_postbox_header( [ 'title' => __( 'Export all data', WE_LS_SLUG ), 'postbox-id' => 'export', 'postbox-col' => 'ws-ls-user-summary-two' ] ); ?>
 		<div class="inside">
-			<a class="button-secondary" href="<?php echo ws_ls_export_link('new', [ 'format' => 'csv', 'title' => __( 'All Data', WE_LS_SLUG ) ] ); ?>">
+			<a class="button-secondary button-wt-to-excel" href="<?php echo ws_ls_export_link('new', [ 'format' => 'csv', 'title' => __( 'All Data', WE_LS_SLUG ) ] ); ?>">
 				<i class="fa fa-file-excel-o"></i>
 				<?php echo __('To CSV', WE_LS_SLUG); ?>
 			</a>
-			<a class="button-secondary" href="<?php echo ws_ls_export_link('new', [ 'format' => 'json', 'title' => __( 'All Data', WE_LS_SLUG ) ] ); ?>">
+			<a class="button-secondary button-wt-to-json" href="<?php echo ws_ls_export_link('new', [ 'format' => 'json', 'title' => __( 'All Data', WE_LS_SLUG ) ] ); ?>">
 				<i class="fa fa-file-code-o"></i>
 				<?php echo __('To JSON', WE_LS_SLUG); ?>
 			</a>
