@@ -54,28 +54,6 @@ function ws_ls_challenges_process( $user_id = NULL,
 }
 
 /**
- * Return difference between two dayes in weels
- * @param $date1
- * @param $date2
- * @return float
- */
-function ws_ls_challenges_diff_between_dates_in_weeks( $date1, $date2 ) {
-
-	if ( true === empty( $date1 ) || true === empty( $date2 )  ) {
-		return 0;
-	}
-
-	if ( $date1 > $date2 ) {
-		return ws_ls_challenges_diff_between_dates_in_weeks( $date2, $date1 );
-	}
-
-	$first = DateTime::createFromFormat( 'Y-m-d h:i:s', $date1 );
-	$second = DateTime::createFromFormat( 'Y-m-d h:i:s', $date2 );
-
-	return floor($first->diff( $second )->days/7 );
-}
-
-/**
  * Update the data for the given row
  *
  * @param $user_id
@@ -117,7 +95,7 @@ function ws_ls_challenges_data_update_row( $user_id, $challenge_id ) {
 	$data[ 'count_wt_entries' ]         = count( $weight_entries );
 	$data[ 'date_start' ]               = $weight_entries[ 0 ][ 'weight_date' ];
 	$data[ 'date_latest' ]              = $weight_entries[ $data[ 'count_wt_entries' ] - 1 ][ 'weight_date' ];
-	$data[ 'count_wt_entries_week' ]    = ws_ls_challenges_diff_between_dates_in_weeks( $data[ 'date_start' ], $data[ 'date_latest' ] );
+	$data[ 'count_wt_entries_week' ]    = ws_ls_diff_between_dates_in_weeks( $data[ 'date_start' ], $data[ 'date_latest' ] );
 	$data[ 'weight_start' ]             = $weight_entries[ 0 ][ 'kg' ];
 	$data[ 'weight_latest' ]            = $weight_entries[ $data[ 'count_wt_entries' ] - 1 ][ 'kg' ];
 	$data[ 'weight_diff' ]              = ws_ls_round_number( $data[ 'weight_latest' ] - $data[ 'weight_start' ], 3 );
