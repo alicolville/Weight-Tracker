@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight,tracker,chart,bmi,bmr,macronutrient,measure,awards,custom fields,history,measurements,data
 Requires at least: 5.7
 Tested up to: 6.2
-Stable tag: 10.3.8
+Stable tag: 10.3.9
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -151,6 +151,10 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 10.3.2 - Beta support for barcode readers in "Kiosk Mode" for [wt]!
 
 == Changelog ==
+
+= 10.3.9 =
+
+* Bug fix: Error being thrown when Challenges were not enabled.
 
 = 10.3.8 =
 

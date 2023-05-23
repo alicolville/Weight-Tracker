@@ -954,3 +954,25 @@ function ws_ls_user_preferences_settings_get( $field = 'WE_LS_DATA_UNITS', $user
 function ws_ls_bmi_in_tables() {
 	return ( WS_LS_IS_PRO && ( 'yes' == get_option('ws-ls-display-bmi-in-tables', 'yes' ) ) );
 }
+
+/**
+ * Return difference between two dayes in weels
+ * @param $date1
+ * @param $date2
+ * @return float
+ */
+function ws_ls_diff_between_dates_in_weeks( $date1, $date2 ) {
+
+	if ( true === empty( $date1 ) || true === empty( $date2 )  ) {
+		return 0;
+	}
+
+	if ( $date1 > $date2 ) {
+		return ws_ls_diff_between_dates_in_weeks( $date2, $date1 );
+	}
+
+	$first = DateTime::createFromFormat( 'Y-m-d h:i:s', $date1 );
+	$second = DateTime::createFromFormat( 'Y-m-d h:i:s', $date2 );
+
+	return floor($first->diff( $second )->days/7 );
+}

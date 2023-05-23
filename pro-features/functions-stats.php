@@ -103,9 +103,9 @@ function ws_ls_stats_update_for_user( $user_id ) {
 
 
 	$dates = ws_ls_db_dates_min_max_get( $user_id );
-	//print_r($dates);
+
 	$stats[ 'week_count' ]          = ( false === empty( $dates[ 'min' ] ) && false === empty( $dates[ 'max' ] ) ) ?
-										ws_ls_challenges_diff_between_dates_in_weeks( $dates[ 'min' ], $dates[ 'max' ] ) :
+										ws_ls_diff_between_dates_in_weeks( $dates[ 'min' ], $dates[ 'max' ] ) :
 											NULL;
 
 	global $wpdb;
