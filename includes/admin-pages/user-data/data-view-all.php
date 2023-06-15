@@ -64,7 +64,7 @@ function ws_ls_admin_page_view_all() {
 
                                         $show_meta = get_option( 'ws-ls-show-meta' ) ? true : false;
 
-                                        echo ws_ls_data_table_render( [ 'limit' => 5000, 'enable-meta-fields' => $show_meta ] );
+                                        echo ws_ls_data_table_render( [ 'limit' => 5000, 'enable-meta-fields' => $show_meta, 'custom-field-col-size' => 'xs' ] );
 
                                         if ( ws_ls_meta_fields_number_of_enabled() > 0 ) {
 
