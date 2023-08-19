@@ -178,7 +178,7 @@
 			        if ( 2 === (int) $award[ 'enabled' ] ) {
 
 				        // Consider whether gaining or losing weight
-				        if ( false === in_array( $category, [ 'bmi-equals' ] ) ) {
+				        if ( false === in_array( $category, [ 'bmi-equals', 'weight-target' ] ) ) {
 
 					        // If specified, strip out the gain or loss awards. For example, if the user has gained since start weight then we can assume they will not be winning
 					        // any "loss" awards.
