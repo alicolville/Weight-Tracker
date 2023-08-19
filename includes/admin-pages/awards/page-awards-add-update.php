@@ -56,7 +56,7 @@ function ws_ls_awards_add_update_page() {
 	        }
 
 	        // If weight percentage, switch the values.
-	        if ( true === in_array( $award['category'], [ 'bmi-equals' ] ) ) {
+	        if ( true === in_array( $award['category'], [ 'bmi-equals', 'weight-target' ] ) ) {
 		        unset( $award['gain_loss'] );
 	        }
 
