@@ -155,7 +155,7 @@ jQuery( document ).ready(function ($) {
     // Show / hide additional fields on meta fields add / update
     function ws_ls_awards_show_additional() {
 
-        var award_ids = [ 'bmi', 'bmi-equals', 'weight', 'weight-percentage' ];
+        var award_ids = [ 'bmi', 'bmi-equals', 'weight', 'weight-percentage', 'weight-target' ];
 
         var value = $('#category').val();
 

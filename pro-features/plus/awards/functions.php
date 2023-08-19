@@ -31,7 +31,7 @@
 		    return [
 			    'weight'            => __('Weight', WE_LS_SLUG ),
 			    'weight-percentage' => __('Weight %', WE_LS_SLUG ),
-			    'weight-target'     => __('Weight <= Target', WE_LS_SLUG ),
+			    'weight-target'     => __('Target met', WE_LS_SLUG ),
 			    'bmi'               => __('BMI: Change', WE_LS_SLUG ),
 			    'bmi-equals'        => __('BMI: Equals', WE_LS_SLUG ),
 		    ];
@@ -41,7 +41,7 @@
         $fields = [
 	        'bmi'               => __('BMI: Change', WE_LS_SLUG ),
 	        'bmi-equals'        => __('BMI: Equals', WE_LS_SLUG ),
-	        'weight-target'     => __('Target weight met (Weight <= Target)', WE_LS_SLUG ),
+	        'weight-target'     => __('Reached Target weight', WE_LS_SLUG ),
             'weight'            => __('Weight change in units', WE_LS_SLUG ),
             'weight-percentage' => __('Weight change as a percentage', WE_LS_SLUG )
 

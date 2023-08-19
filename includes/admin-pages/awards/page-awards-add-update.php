@@ -56,7 +56,7 @@ function ws_ls_awards_add_update_page() {
 	        }
 
 	        // If weight percentage, switch the values.
-	        if ( 'bmi-equals' === $award['category'] ) {
+	        if ( true === in_array( $award['category'], [ 'bmi-equals' ] ) ) {
 		        unset( $award['gain_loss'] );
 	        }
 
@@ -135,7 +135,7 @@ function ws_ls_awards_add_update_page() {
                                                     <?php endif; ?>
                                              </div>
                                         </div>
-                                        <div class="ws-ls-row hide-bmi-equals">
+                                        <div class="ws-ls-row hide-bmi-equals hide-weight-target">
                                             <div class="ws-ls-cell">
                                                 <label for="gain_loss"><?php echo __('Gain or Loss', WE_LS_SLUG); ?></label>
                                             </div>
