@@ -41,9 +41,9 @@
         $fields = [
 	        'bmi'               => __('BMI: Change', WE_LS_SLUG ),
 	        'bmi-equals'        => __('BMI: Equals', WE_LS_SLUG ),
-	        'weight-target'     => __('Reached Target weight', WE_LS_SLUG ),
-            'weight'            => __('Weight change in units', WE_LS_SLUG ),
-            'weight-percentage' => __('Weight change as a percentage', WE_LS_SLUG )
+	        'weight-target'     => __('Weight: Target met (based on user aim)', WE_LS_SLUG ),
+            'weight'            => __('Weight: Change in units', WE_LS_SLUG ),
+            'weight-percentage' => __('Weight: Change as a percentage', WE_LS_SLUG )
 
         ];
 
