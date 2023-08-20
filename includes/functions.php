@@ -1315,7 +1315,6 @@ function ws_ls_calculate_percentage_difference( $previous_weight, $current_weigh
 
         $decrease = $previous_weight - $current_weight;
         $difference['percentage'] = $decrease /$previous_weight * 100;
-
     }
 
     return $difference;
