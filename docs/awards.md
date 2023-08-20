@@ -5,7 +5,8 @@
 
 -   **Weight**. Define goals in terms of weight lost or gained. For example, set goals of 1Kg Lost, 2Kg Lost, etc
 -   **Weight %**. Define goals in terms of percentage of weight lost or gained. For example, set goals of 5% Weight Lost, 10% Weight Lost, etc
--   **BMI: Change.** Define goals in terms of BMI changing. For example, issue an award for someone's BMI decreasing in terms of classification
+-  **Weight - Target Met**. Depending on whether the use aiming to gain or lose weight, define goals in terms of reaching a target weight.
+- **BMI: Change.** Define goals in terms of BMI changing. For example, issue an award for someone's BMI decreasing in terms of classification
 -   **BMI Equals**. Define goals in terms of BMI equalling a given BMI classification. For example, their BMI has now changed and equals “Healthy”
 
 ### Defining Awards
