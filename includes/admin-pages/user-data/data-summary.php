@@ -148,14 +148,18 @@ function ws_ls_postbox_export() {
 	<div class="postbox <?php ws_ls_postbox_classes( 'export', 'ws-ls-user-summary-two' ); ?>" id="export">
 		<?php ws_ls_postbox_header( [ 'title' => __( 'Export all data', WE_LS_SLUG ), 'postbox-id' => 'export', 'postbox-col' => 'ws-ls-user-summary-two' ] ); ?>
 		<div class="inside">
-			<a class="button-secondary button-wt-to-excel" href="<?php echo ws_ls_export_link('new', [ 'format' => 'csv', 'title' => __( 'All Data', WE_LS_SLUG ) ] ); ?>">
-				<i class="fa fa-file-excel-o"></i>
-				<?php echo __('To CSV', WE_LS_SLUG); ?>
-			</a>
-			<a class="button-secondary button-wt-to-json" href="<?php echo ws_ls_export_link('new', [ 'format' => 'json', 'title' => __( 'All Data', WE_LS_SLUG ) ] ); ?>">
-				<i class="fa fa-file-code-o"></i>
-				<?php echo __('To JSON', WE_LS_SLUG); ?>
-			</a>
+		    <?php if ( ! ws_ls_permission_check_export_delete() ) : ?>
+				<?php printf( '<p>%s</p>',  __('You do not have permission to do this.', WE_LS_SLUG ) ); ?>
+			<?php else : ?>
+                <a class="button-secondary button-wt-to-excel" href="<?php echo ws_ls_export_link('new', [ 'format' => 'csv', 'title' => __( 'All Data', WE_LS_SLUG ) ] ); ?>">
+                    <i class="fa fa-file-excel-o"></i>
+                    <?php echo __('To CSV', WE_LS_SLUG); ?>
+                </a>
+                <a class="button-secondary button-wt-to-json" href="<?php echo ws_ls_export_link('new', [ 'format' => 'json', 'title' => __( 'All Data', WE_LS_SLUG ) ] ); ?>">
+                    <i class="fa fa-file-code-o"></i>
+                    <?php echo __('To JSON', WE_LS_SLUG); ?>
+                </a>
+			<?php endif; ?>
 		</div>
 	</div>
 <?php
@@ -166,10 +170,14 @@ function ws_ls_postbox_delete_data() {
 	<div class="postbox <?php ws_ls_postbox_classes( 'delete-data', 'ws-ls-user-summary-two' ); ?>" id="delete-data" >
 		<?php ws_ls_postbox_header( [ 'title' => __( 'Delete Data', WE_LS_SLUG ), 'postbox-id' => 'delete-data', 'postbox-col' => 'ws-ls-user-summary-two' ] ); ?>
 		<div class="inside">
-			<a class="button-secondary delete-confirm" href="<?php echo admin_url( 'admin.php?page=ws-ls-data-home&removedata=y' ); ?>">
-				<i class="fa fa-exclamation-circle"></i>
-				<?php echo __('Delete data for ALL users', WE_LS_SLUG); ?>
-			</a>
+		<?php if ( ! ws_ls_permission_check_export_delete() ) : ?>
+				<?php printf( '<p>%s</p>',  __('You do not have permission to do this.', WE_LS_SLUG ) ); ?>
+			<?php else : ?>
+                <a class="button-secondary delete-confirm" href="<?php echo admin_url( 'admin.php?page=ws-ls-data-home&removedata=y' ); ?>">
+                    <i class="fa fa-exclamation-circle"></i>
+                    <?php echo __('Delete data for ALL users', WE_LS_SLUG); ?>
+                </a>
+			<?php endif; ?>
 		</div>
 	</div>
 <?php

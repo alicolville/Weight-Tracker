@@ -29,19 +29,22 @@
     	if ( true === $simple ) {
 
 		    return [
-			    'weight' => __('Weight', WE_LS_SLUG),
-			    'weight-percentage' => __('Weight %', WE_LS_SLUG),
-			    'bmi' => __('BMI: Change', WE_LS_SLUG),
-			    'bmi-equals' => __('BMI: Equals', WE_LS_SLUG),
+			    'weight'            => __('Weight', WE_LS_SLUG ),
+			    'weight-percentage' => __('Weight %', WE_LS_SLUG ),
+			    'weight-target'     => __('Target met', WE_LS_SLUG ),
+			    'bmi'               => __('BMI: Change', WE_LS_SLUG ),
+			    'bmi-equals'        => __('BMI: Equals', WE_LS_SLUG ),
 		    ];
 
 	    }
 
         $fields = [
-	        'bmi' => __('BMI: Change', WE_LS_SLUG),
-	        'bmi-equals' => __('BMI: Equals', WE_LS_SLUG),
-            'weight' => __('Weight change in units', WE_LS_SLUG),
-            'weight-percentage' => __('Weight change as a percentage', WE_LS_SLUG)
+	        'bmi'               => __('BMI: Change', WE_LS_SLUG ),
+	        'bmi-equals'        => __('BMI: Equals', WE_LS_SLUG ),
+	        'weight-target'     => __('Weight: Target met (based on user aim)', WE_LS_SLUG ),
+            'weight'            => __('Weight: Change in units', WE_LS_SLUG ),
+            'weight-percentage' => __('Weight: Change as a percentage', WE_LS_SLUG )
+
         ];
 
         return $fields;
@@ -175,7 +178,7 @@
 			        if ( 2 === (int) $award[ 'enabled' ] ) {
 
 				        // Consider whether gaining or losing weight
-				        if ( false === in_array( $category, [ 'bmi-equals' ] ) ) {
+				        if ( false === in_array( $category, [ 'bmi-equals', 'weight-target' ] ) ) {
 
 					        // If specified, strip out the gain or loss awards. For example, if the user has gained since start weight then we can assume they will not be winning
 					        // any "loss" awards.

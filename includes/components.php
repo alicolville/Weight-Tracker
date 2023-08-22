@@ -515,9 +515,15 @@ function ws_ls_component_latest_versus_another( $args = [] ) {
 
 		$percentage_difference	= ws_ls_calculate_percentage_difference( $comparison_weight, $latest_entry[ 'kg' ] );
 
-		$percentage_difference	= ( true === $percentage_difference[ 'increase' ] ) ?  $percentage_difference[ 'percentage' ] : -$percentage_difference[ 'percentage' ];
+		if ( NULL === $percentage_difference ) {
+			$percentage_difference = 0;
+		} else {
 
-		$percentage_difference 	= ws_ls_round_number( $percentage_difference, 1 );
+			$percentage_difference	= ( NULL !== $percentage_difference &&
+			                              true === $percentage_difference[ 'increase' ] ) ?  $percentage_difference[ 'percentage' ] : -$percentage_difference[ 'percentage' ];
+
+			$percentage_difference 	= ws_ls_round_number( $percentage_difference, 1 );
+		}
 
 		if ( false === empty( $percentage_difference ) ) {
 

@@ -11,9 +11,11 @@ function ws_ls_admin_page_data_user() {
     // Ensure this WP user ID exists!
     ws_ls_user_exist_check( $user_id );
 
-    // DELETE ALL DATA FOR THIS USER!! AHH!!
-    if ( true === isset( $_GET['removedata'] ) && 'y' == $_GET['removedata'] ) {
-        ws_ls_delete_data_for_user( $user_id);
+    // Delete all data for this user
+    if ( 'y' === ws_ls_querystring_value( 'removedata' )
+        && ws_ls_permission_check_export_delete() ) {
+
+        ws_ls_delete_data_for_user( $user_id );
     }
 
     // Delete all awards for this user

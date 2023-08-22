@@ -36,6 +36,34 @@ function ws_ls_awards_listen( $info, $weight_object ) {
 
 		    $start_weight = ws_ls_entry_get_oldest_kg( $info['user-id'] );
 
+			// ---------------------------------------------------------------
+			// Target Met Awards
+			// ---------------------------------------------------------------
+
+			if ( false === empty( $awards['counts']['weight-target'] ) ) {
+
+				$target_kg                      = ws_ls_db_target_get( $info['user-id'] );
+
+				$user_aim                       = (int) ws_ls_user_preferences_get( 'aim', $info[ 'user-id' ] );
+
+
+				if ( false === empty( $target_kg ) ) {
+
+					foreach ( $awards['awards']['weight-target'] as $weight_award ) {
+
+						if ( (( $user_aim === 2 ) && $weight_object['kg'] <= $target_kg ) ||
+						     ( 3 === $user_aim && $weight_object['kg'] >= $target_kg )  ) {
+
+							ws_ls_awards_db_given_add( $info['user-id'], $weight_award['id'] );
+
+							// Throw hook out so other's can process award e.g. send emails. Log etc.
+							do_action( 'wlt-award-given', $weight_object, $weight_award, $info );
+
+						}
+					}
+				}
+			}
+
 		    // ---------------------------------------------------------------
 		    // Weight Awards
             // ---------------------------------------------------------------
@@ -53,6 +81,7 @@ function ws_ls_awards_listen( $info, $weight_object ) {
 	                if ( $weight_award['value'] > $weight_difference_from_start ) {
                         continue;
                     }
+
                     if ( ( true === $losing_weight && 'loss' === $weight_award['gain_loss'] ) ||
                             ( false === $losing_weight && 'gain' === $weight_award['gain_loss'] )  ) {
 

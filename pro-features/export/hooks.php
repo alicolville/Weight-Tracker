@@ -7,7 +7,7 @@ defined('ABSPATH') or die('Jog on.');
  */
 function ws_ls_export_admin_menu() {
 
-	add_submenu_page( 'ws-ls-data-home', __( 'Export Data', WE_LS_SLUG ),  __( 'Export Data', WE_LS_SLUG ), 'manage_options', 'ws-ls-export-data', 'ws_ls_export_admin_page', 5 );
+	add_submenu_page( 'ws-ls-data-home', __( 'Export Data', WE_LS_SLUG ),  __( 'Export Data', WE_LS_SLUG ), ws_ls_permission_export_delete_role(), 'ws-ls-export-data', 'ws_ls_export_admin_page', 5 );
 }
 add_action( 'admin_menu', 'ws_ls_export_admin_menu' );
 
