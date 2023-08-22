@@ -154,6 +154,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 = 10.4 =
 
+* New feature: New Setting "Who can export and delete user data?" to allow you to specify which roles can export and delete user data.
 * Improvement: Added new arguments ( 'weight', 'include-percentage-sign' and 'invert' ) for shortcode [wt-difference-from-target]. Thanks @shakethatweight-simon for the PR!
 * Bug fix: Fixed error being displayed when latest weight equals target weight within the "Latest vs Target" component on [wt].
 * Maintenance: Removed redundant code for migrating from old measurement fields.
