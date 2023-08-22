@@ -353,7 +353,20 @@ function ws_ls_settings_page_generic() {
                                                             <option value="read_private_posts" <?php selected( $edit_permissions, 'read_private_posts' ); ?>><?php echo __( 'Editors and above', WE_LS_SLUG ); ?></option>
                                                             <option value="publish_posts" <?php selected( $edit_permissions, 'publish_posts' ); ?>><?php echo __( 'Authors and above', WE_LS_SLUG ); ?></option>
                                                         </select>
-                                                        <p><?php echo __('Specify the minimum level of user role that maybe view or edit user data.', WE_LS_SLUG)?></p>
+                                                        <p><?php echo __('Specify the minimum level of user role that can view or edit user data.', WE_LS_SLUG)?></p>
+                                                    </td>
+                                                </tr>
+                                                <tr class="<?php echo $disable_if_not_pro_class; ?>">
+                                                    <th scope="row"><?php echo __( 'Who can export and delete user data?' , WE_LS_SLUG); ?></th>
+		                                            <?php
+		                                            $delete_export_permissions = ws_ls_permission_export_delete_role();
+		                                            ?>
+                                                    <td>
+                                                        <select id="ws-ls-export-delete-permissions" name="ws-ls-export-delete-permissions">
+                                                            <option value="manage_options" <?php selected( $delete_export_permissions, 'manage_options' ); ?>><?php echo __( 'Administrators Only', WE_LS_SLUG ); ?></option>
+                                                            <option value="read_private_posts" <?php selected( $delete_export_permissions, 'read_private_posts' ); ?>><?php echo __( 'Editors and above', WE_LS_SLUG ); ?></option>
+                                                        </select>
+                                                        <p><?php echo __('Specify the minimum level of user role that can export or delete user data.', WE_LS_SLUG)?></p>
                                                     </td>
                                                 </tr>
                                             </table>
@@ -1174,6 +1187,7 @@ function ws_ls_register_settings(){
     register_setting( 'we-ls-options-group', 'ws-ls-use-us-dates' );
     register_setting( 'we-ls-options-group', 'ws-ls-disable-css' );
 	register_setting( 'we-ls-options-group', 'ws-ls-edit-permissions' );
+	register_setting( 'we-ls-options-group', 'ws-ls-export-delete-permissions' );
     register_setting( 'we-ls-options-group', 'ws-ls-text-colour' );
     register_setting( 'we-ls-options-group', 'ws-ls-font-family' );
 	register_setting( 'we-ls-options-group', 'ws-ls-fill-under-weight-line' );

@@ -721,6 +721,24 @@ function ws_ls_permission_role() {
 }
 
 /**
+ * Can the current user export/delete data?
+ * @return bool
+ */
+function ws_ls_permission_check_export_delete() {
+	return current_user_can( ws_ls_permission_export_delete_role() );
+}
+
+/**
+ * Get the minimum user role allowed for exporting/deleting data pages in admin
+ * @return mixed|void
+ */
+function ws_ls_permission_export_delete_role() {
+	$permission_role = get_option( 'ws-ls-export-delete-permissions', 'manage_options' );
+
+	return ( false === empty( $permission_role ) ) ? $permission_role : 'manage_options';
+}
+
+/**
  * Helper function to determine if the user exists in WP
  *
  * @param $user_id
