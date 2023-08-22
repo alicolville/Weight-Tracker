@@ -148,7 +148,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 == Upgrade Notice ==
 
-10.3.2 - Beta support for barcode readers in "Kiosk Mode" for [wt]!
+10.4: New award for user's meeting their target
 
 == Changelog ==
 
