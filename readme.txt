@@ -2,7 +2,7 @@
 Contributors: aliakro
 Tags: weight,tracker,chart,bmi,bmr,macronutrient,measure,awards,custom fields,history,measurements,data
 Requires at least: 5.7
-Tested up to: 6.2
+Tested up to: 6.3
 Stable tag: 10.4
 Requires PHP: 7.2
 License: GPLv2 or later
