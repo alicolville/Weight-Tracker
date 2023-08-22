@@ -15,7 +15,7 @@ function ws_ls_admin_page_data_user() {
     if ( 'y' === ws_ls_querystring_value( 'removedata' )
         && ws_ls_permission_check_export_delete() ) {
 
-        ws_ls_delete_data_for_user( $user_id);
+        ws_ls_delete_data_for_user( $user_id );
     }
 
     // Delete all awards for this user
