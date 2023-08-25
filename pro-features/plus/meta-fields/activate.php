@@ -94,10 +94,7 @@
 	        }
 
 	        ws_ls_meta_fields_photos_create_example_field();
-
-	        // Do we need to migrate measurements?
-			ws_ls_migrate_measurements_into_meta_fields();
-
+			
         }
     }
     add_action( 'admin_init', 'ws_ls_activate_meta_fields_activate' );

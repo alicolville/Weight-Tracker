@@ -152,6 +152,10 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 == Changelog ==
 
+= 10.5 =
+
+* Bug fix: Removed reference to ws_ls_migrate_measurements_into_meta_fields() which was causing a fatal error for some users.
+
 = 10.4 =
 
 * New feature: New Setting "Who can export and delete user data?" to allow you to specify which roles can export and delete user data.

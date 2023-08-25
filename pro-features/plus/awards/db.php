@@ -46,11 +46,20 @@
      * @param $award_id
      * @return bool
      */
-    function ws_ls_awards_db_given_add( $user_id, $award_id ) {
+    function ws_ls_awards_db_given_add( $user_id, $award_id, $added_by_entry_id = NULL ) {
 
         global $wpdb;
 
-        $result = $wpdb->insert( $wpdb->prefix . WE_LS_MYSQL_AWARDS_GIVEN , [ 'user_id' => $user_id , 'award_id' => $award_id ], [ '%d', '%d' ] );
+		$data       = [ 'user_id' => $user_id , 'award_id' => $award_id ];
+		$formats    = [ '%d', '%d' ];
+
+		// added_by_entry_id, will allow us to track which weight entry the award was given for. Therefore, if the entry is deleted, we can delete the award(s) too.
+		if ( false === empty( $added_by_entry_id ) ) {
+			$data['added_by_entry_id'] = $added_by_entry_id;
+			$formats[]                 = '%d';
+		}
+
+        $result = $wpdb->insert( $wpdb->prefix . WE_LS_MYSQL_AWARDS_GIVEN , $data, $formats );
 
         ws_ls_cache_user_delete( $user_id );
 
@@ -260,30 +269,30 @@
     function ws_ls_awards_formats( $data ) {
 
         $formats = [
-            'id' => '%d',
-            'title' => '%s',
-            'category' => '%s',
-            'gain_loss' => '%s',
-            'badge' => '%d',
-	        'bmi_equals' => '%d',
-            'url' => '%s',
-            'compare' => '%s',
-            'custom_message' => '%s',
-            'max_awards' => '%d',
-            'enabled' => '%d',
-            'send_email' => '%d',
-            'apply_to_update' => '%d',
-            'apply_to_add' => '%d',
-            'value' => '%s'
+				        'id'              => '%d',
+				        'title'           => '%s',
+				        'category'        => '%s',
+				        'gain_loss'       => '%s',
+				        'badge'           => '%d',
+				        'bmi_equals'      => '%d',
+				        'url'             => '%s',
+				        'compare'         => '%s',
+				        'custom_message'  => '%s',
+				        'max_awards'      => '%d',
+				        'enabled'         => '%d',
+				        'send_email'      => '%d',
+				        'apply_to_update' => '%d',
+				        'apply_to_add'    => '%d',
+				        'value'           => '%s'
         ];
 
-        $return = [];
+	    $return = [];
 
-        foreach ( $data as $key => $value) {
-            if ( false === empty( $formats[ $key ] ) ) {
-                $return[] = $formats[ $key ];
-            }
-        }
+	    foreach ( $data as $key => $value ) {
+		    if ( false === empty( $formats[ $key ] ) ) {
+			    $return[] = $formats[ $key ];
+		    }
+	    }
 
         return $return;
     }
