@@ -78,7 +78,7 @@ function ws_ls_enqueue_files(){
 
 	wp_enqueue_script( 'jquery-ui-datepicker' );
 	wp_enqueue_script( 'ws-ls-js', plugins_url( '../assets/js/ws-ls' . 	$minified . '.js', __FILE__ ), [], WE_LS_CURRENT_VERSION, true );
-	wp_enqueue_script( 'ws-ls-js-form', plugins_url( '../assets/js/ws-ls-entry-form' . 	$minified . '.js', __FILE__ ), [], WE_LS_CURRENT_VERSION, true );
+	wp_enqueue_script( 'ws-ls-js-form', plugins_url( '../assets/js/ws-ls-entry-form' . 	$minified . '.js', __FILE__ ), [ 'jquery' ], WE_LS_CURRENT_VERSION, true );
 
     // Add localization data for JS
 	wp_localize_script('ws-ls-js', 'ws_ls_config', ws_ls_config_js() );
@@ -139,7 +139,7 @@ function ws_ls_enqueue_uikit( $include_theme = true, $include_font = true, $load
 	$uikit_js_enqueued = true;
 
 	if ( false === empty( $load_ui_script ) ) {
-		wp_enqueue_script( 'yk-uikit-' . $load_ui_script, plugins_url( '../assets/js/' . $load_ui_script . $minified . '.js', __FILE__ ), [] , WE_LS_CURRENT_VERSION );
+		wp_enqueue_script( 'yk-uikit-' . $load_ui_script, plugins_url( '../assets/js/' . $load_ui_script . $minified . '.js', __FILE__ ), [ 'jquery' ] , WE_LS_CURRENT_VERSION, true );
 	}
 
 }
@@ -160,7 +160,7 @@ function ws_ls_enqueue_files_ws_ls_only() {
 
 	$minified = ws_ls_use_minified();
 
-	wp_enqueue_script( 'ws-ls-js', plugins_url( '../assets/js/ws-ls' . 	$minified . '.js', __FILE__ ), [], WE_LS_CURRENT_VERSION, true );
+	wp_enqueue_script( 'ws-ls-js', plugins_url( '../assets/js/ws-ls' . 	$minified . '.js', __FILE__ ), [ 'jquery' ], WE_LS_CURRENT_VERSION, true );
 
 	// Add localization data for JS
 	wp_localize_script('ws-ls-js', 'ws_ls_config', ws_ls_config_js() );
@@ -226,7 +226,7 @@ function ws_ls_enqueue_form_dependencies() {
 	wp_enqueue_script( 'jquery-ui-datepicker' );
 	wp_enqueue_script( 'jquery-validate',plugins_url( '../assets/js/libraries/jquery.validate.min.js', __FILE__ ), [ 'jquery' ], WE_LS_CURRENT_VERSION );
 	wp_enqueue_script( 'jquery-validate-additional',plugins_url( '../assets/js/libraries/additional-methods.min.js', __FILE__ ), [ 'jquery', 'jquery-validate' ], WE_LS_CURRENT_VERSION );
-	wp_enqueue_script( 'ws-ls-js', plugins_url( '../assets/js/ws-ls-entry-form' . $minified . '.js', __FILE__ ), [], WE_LS_CURRENT_VERSION, true );
+	wp_enqueue_script( 'ws-ls-js', plugins_url( '../assets/js/ws-ls-entry-form' . $minified . '.js', __FILE__ ), [ 'jquery' ], WE_LS_CURRENT_VERSION, true );
 	wp_localize_script( 'ws-ls-js', 'ws_ls_config', ws_ls_config_js() );
 }
 

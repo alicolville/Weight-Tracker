@@ -152,8 +152,14 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 == Changelog ==
 
+= 10.6 =
+
+* Improvement: Some jQuery scripts are now loaded in the footer rather than the header.
+
 = 10.5 =
 
+* New feature: Added the arguments "bmi-alert-if-below" and "bmi-alert-if-above" to [wt] to show an alert if the user's BMI is below or above the specified value.
+* New feature: Added the arguments "bmi-alert-if-below" and "bmi-alert-if-above" to [wt-kiosk] to show an alert if the user's BMI is below or above the specified value.
 * Improvement: Added a new setting "Delete awards when weight entry deleted?". If enabled, any awards that were awarded to a user will be deleted when the weight entry is deleted (only works with awards added in version 10.5 onwards). Read more: https://github.com/alicolville/Weight-Tracker/issues/549
 * Bug fix: Removed reference to ws_ls_migrate_measurements_into_meta_fields() which was causing a fatal error for some users.
 
