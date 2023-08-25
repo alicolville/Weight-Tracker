@@ -303,7 +303,7 @@ function ws_ls_settings_page_generic() {
                                                             <option value="yes" <?php selected( $awards_enabled, 'yes' ); ?>><?php echo __( 'Yes', WE_LS_SLUG ); ?></option>
                                                             <option value="no" <?php selected( $awards_enabled, 'no' ); ?>><?php echo __( 'No', WE_LS_SLUG ); ?></option>
                                                         </select>
-                                                        <p> <?php echo __( 'If set to yes, when a weight entry is deleted (for awards given in versions 10.5 and above) any awards that were given at that time are also deleted. Please note, awards will automatically be re-added when a new entry is added if the entry meets the award criteria. ', WE_LS_SLUG ); ?> "></p>
+                                                        <p> <?php echo __( 'If set to yes, when a weight entry is deleted (for awards given in versions 10.5 and above) any awards that were given at that time are also deleted. Please note, awards will automatically be re-added when a new entry is added if the entry meets the award criteria. ', WE_LS_SLUG ); ?></p>
                                                     </td>
                                                 </tr>
                                             </table>
