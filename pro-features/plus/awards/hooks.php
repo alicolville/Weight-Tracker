@@ -218,7 +218,9 @@ add_action( 'wlt-hook-data-added-edited', 'ws_ls_awards_listen', 10, 2 );
  */
 function ws_ls_awards_listen_entry_deleted( $entry ) {
 
-	// TODO: Add new setting to enable / disable this!
+	if ( 'yes' !== get_option( 'ws-ls-awards-delete-when-entry-deleted-enabled', 'no' ) ) {
+		return;
+	}
 
 	if( false === empty( $entry[ 'id' ] ) ) {
 		ws_ls_awards_db_delete_awards_for_given_entry_id( $entry[ 'id' ], $entry[ 'user-id' ] );
