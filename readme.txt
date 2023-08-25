@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight,tracker,chart,bmi,bmr,macronutrient,measure,awards,custom fields,history,measurements,data
 Requires at least: 5.7
 Tested up to: 6.3
-Stable tag: 10.5
+Stable tag: 10.6
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -154,12 +154,12 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 = 10.6 =
 
+* New feature: Added the arguments "bmi-alert-if-below" and "bmi-alert-if-above" to [wt] to show an alert if the user's BMI is below or above the specified value.
+* New feature: Added the arguments "bmi-alert-if-below" and "bmi-alert-if-above" to [wt-kiosk] to show an alert if the user's BMI is below or above the specified value.
 * Improvement: Some jQuery scripts are now loaded in the footer rather than the header.
 
 = 10.5 =
 
-* New feature: Added the arguments "bmi-alert-if-below" and "bmi-alert-if-above" to [wt] to show an alert if the user's BMI is below or above the specified value.
-* New feature: Added the arguments "bmi-alert-if-below" and "bmi-alert-if-above" to [wt-kiosk] to show an alert if the user's BMI is below or above the specified value.
 * Improvement: Added a new setting "Delete awards when weight entry deleted?". If enabled, any awards that were awarded to a user will be deleted when the weight entry is deleted (only works with awards added in version 10.5 onwards). Read more: https://github.com/alicolville/Weight-Tracker/issues/549
 * Bug fix: Removed reference to ws_ls_migrate_measurements_into_meta_fields() which was causing a fatal error for some users.
 
