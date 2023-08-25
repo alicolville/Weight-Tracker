@@ -11,74 +11,90 @@
  *
  * @return array
  */
-    function ws_ls_awards_db_given_get( $user_id, $order_by = 'value', $given_on = NULL ) {
+function ws_ls_awards_db_given_get( $user_id, $order_by = 'value', $given_on = NULL ) {
 
-        $cache_key = 'awards-given-' . $order_by . md5( $given_on );
+    $cache_key = 'awards-given-' . $order_by . md5( $given_on );
 
-        $cache = ws_ls_cache_user_get( $user_id, $cache_key );
+    $cache = ws_ls_cache_user_get( $user_id, $cache_key );
 
-        if ( true === is_array( $cache ) ) {
-           return $cache;
-        }
-
-        global $wpdb;
-
-        $sql = $wpdb->prepare('Select * from ' . $wpdb->prefix . WE_LS_MYSQL_AWARDS_GIVEN . ' g INNER JOIN
-                                ' . $wpdb->prefix . WE_LS_MYSQL_AWARDS . ' a on g.award_id = a.id where user_id = %d', $user_id);
-
-        if ( false === empty( $given_on ) ) {
-        	$sql .= $wpdb->prepare( ' and DATE( timestamp ) = %s', $given_on );
-        }
-
-        $sql .= ( 'value' === $order_by ) ? ' order by a.category, CAST( a.value as DECIMAL( 10, 5 ) )' : ' order by g.timestamp desc' ;
-
-        $results = $wpdb->get_results( $sql, ARRAY_A );
-
-        ws_ls_cache_user_set( $user_id, $cache_key, $results );
-
-        return $results;
+    if ( true === is_array( $cache ) ) {
+       return $cache;
     }
 
-    /**
-     * Add an award to a user
-     *
-     * @param $user_id
-     * @param $award_id
-     * @return bool
-     */
-    function ws_ls_awards_db_given_add( $user_id, $award_id, $added_by_entry_id = NULL ) {
+    global $wpdb;
 
-        global $wpdb;
+    $sql = $wpdb->prepare('Select * from ' . $wpdb->prefix . WE_LS_MYSQL_AWARDS_GIVEN . ' g INNER JOIN
+                            ' . $wpdb->prefix . WE_LS_MYSQL_AWARDS . ' a on g.award_id = a.id where user_id = %d', $user_id);
 
-		$data       = [ 'user_id' => $user_id , 'award_id' => $award_id ];
-		$formats    = [ '%d', '%d' ];
-
-		// added_by_entry_id, will allow us to track which weight entry the award was given for. Therefore, if the entry is deleted, we can delete the award(s) too.
-		if ( false === empty( $added_by_entry_id ) ) {
-			$data['added_by_entry_id'] = $added_by_entry_id;
-			$formats[]                 = '%d';
-		}
-
-        $result = $wpdb->insert( $wpdb->prefix . WE_LS_MYSQL_AWARDS_GIVEN , $data, $formats );
-
-        ws_ls_cache_user_delete( $user_id );
-
-        return ( false === $result ) ? false : $wpdb->insert_id;
+    if ( false === empty( $given_on ) ) {
+        $sql .= $wpdb->prepare( ' and DATE( timestamp ) = %s', $given_on );
     }
 
-	/**
-	 * Delete awards to a user
-	 *
-	 * @param $user_id
-	 */
-	function ws_ls_awards_db_delete_awards_for_user( $user_id ) {
+    $sql .= ( 'value' === $order_by ) ? ' order by a.category, CAST( a.value as DECIMAL( 10, 5 ) )' : ' order by g.timestamp desc' ;
 
-		global $wpdb;
+    $results = $wpdb->get_results( $sql, ARRAY_A );
 
-		$result = $wpdb->delete( $wpdb->prefix . WE_LS_MYSQL_AWARDS_GIVEN , [ 'user_id' => $user_id ], [ '%d' ] );
+    ws_ls_cache_user_set( $user_id, $cache_key, $results );
 
+    return $results;
+}
+
+/**
+ * Add an award to a user
+ *
+ * @param $user_id
+ * @param $award_id
+ * @return bool
+ */
+function ws_ls_awards_db_given_add( $user_id, $award_id, $added_by_entry_id = NULL ) {
+
+    global $wpdb;
+
+	$data       = [ 'user_id' => $user_id , 'award_id' => $award_id ];
+	$formats    = [ '%d', '%d' ];
+
+	// added_by_entry_id, will allow us to track which weight entry the award was given for. Therefore, if the entry is deleted, we can delete the award(s) too.
+	if ( false === empty( $added_by_entry_id ) ) {
+		$data['added_by_entry_id'] = $added_by_entry_id;
+		$formats[]                 = '%d';
+	}
+
+    $result = $wpdb->insert( $wpdb->prefix . WE_LS_MYSQL_AWARDS_GIVEN , $data, $formats );
+
+    ws_ls_cache_user_delete( $user_id );
+
+    return ( false === $result ) ? false : $wpdb->insert_id;
+}
+
+/**
+ * Delete awards to a user
+ *
+ * @param $user_id
+ */
+function ws_ls_awards_db_delete_awards_for_user( $user_id ) {
+
+	global $wpdb;
+
+	$result = $wpdb->delete( $wpdb->prefix . WE_LS_MYSQL_AWARDS_GIVEN , [ 'user_id' => $user_id ], [ '%d' ] );
+
+	ws_ls_cache_user_delete( $user_id );
+}
+
+/**
+ * Delete awards to a user
+ *
+ * @param $user_id
+ */
+function ws_ls_awards_db_delete_awards_for_given_entry_id( $entry_id, $user_id = NULL ) {
+
+	global $wpdb;
+
+	$result = $wpdb->delete( $wpdb->prefix . WE_LS_MYSQL_AWARDS_GIVEN , [ 'added_by_entry_id' => $entry_id ], [ '%d' ] );
+
+	if ( false === empty( $user_id ) ) {
 		ws_ls_cache_user_delete( $user_id );
 	}
+}
 
 /**
  * Fetch all Awards

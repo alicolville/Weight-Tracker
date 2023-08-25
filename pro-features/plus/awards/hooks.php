@@ -213,6 +213,22 @@ function ws_ls_awards_listen( $info, $weight_object ) {
 add_action( 'wlt-hook-data-added-edited', 'ws_ls_awards_listen', 10, 2 );
 
 /**
+ * If a user deletes an entry, then check whether there are any awards to delete.
+ * @param $entry
+ */
+function ws_ls_awards_listen_entry_deleted( $entry ) {
+
+	// TODO: Add new setting to enable / disable this!
+
+	if( false === empty( $entry[ 'id' ] ) ) {
+		ws_ls_awards_db_delete_awards_for_given_entry_id( $entry[ 'id' ], $entry[ 'user-id' ] );
+	}
+
+}
+add_action( 'wlt-hook-data-entry-deleted', 'ws_ls_awards_listen_entry_deleted' );
+
+
+/**
  * Log award
  *
  * @param $weight_object
