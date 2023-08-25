@@ -19,6 +19,8 @@ The shortcode supports the following arguments:
 | Argument | Description | Options | Example |    
 |--|--|--|--|   
 | bmi-format | Specify the format that BMI should be displayed in.  |'label' (default), 'both' or 'index'    | [wt-kiosk bmi-format='both'] |   
+| bmi-alert-if-below | If specified, show an alert if the user's BMI is below this value|false (default) or numeric | [wt bmi-alert-if-below='17'] |
+| bmi-alert-if-above | If specified, show an alert if the user's BMI is above this value|false (default) or numeric | [wt bmi-alert-if-above='30'] |
 |kiosk-barcode-scanner|If set to true, a barcode scanner shall appear at the top when in Kiosk mode. Please note, the barcode/QR code must contain a WordPress user ID e.g. 233. Upon a successful scan, the relevant user record shall be loaded.|True or False (default)|[wt-kiosk kiosk-mode=true kiosk-barcode-scanner=true]
 |kiosk-barcode-scanner-camera|If set to true, a barcode/QR scanner that uses the device's cameras shall be displayed|True (true) or False|[wt-kiosk kiosk-mode=true kiosk-barcode-scanner=true kiosk-barcode-scanner-camera=true ]
 |kiosk-barcode-scanner-lazer|If set to true, support for an external barcode scanner shall be displayed|True (true) or False|[wt-kiosk kiosk-mode=true kiosk-barcode-scanner=true kiosk-barcode-scanner-lazer=true ]
