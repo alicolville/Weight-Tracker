@@ -89,6 +89,8 @@ The shortcode supports the following arguments:
 | Argument | Description | Options | Example |    
 |--|--|--|--|   
 | bmi-format | Specify the format that BMI should be displayed in.  |'label' (default), 'both' or 'index'    | [wt bmi-format='both'] |   
+| bmi-alert-if-below | If specified, show an alert if the user's BMI is below this value|false (default) or numeric | [wt bmi-alert-if-below='17'] |
+| bmi-alert-if-above | If specified, show an alert if the user's BMI is above this value|false (default) or numeric | [wt bmi-alert-if-above='30'] |
 | custom-field-groups   | Specify one or more custom field group slugs. Specifying groups will ensure that only custom fields within those groups are displayed on the control.   | An individual slug or multiple slugs comma delimited.   | [wt custom-field-groups='measurements'] [wt custom-field-groups='measurements,fitness-test'] |   
 | custom-field-slugs   | Specify one or more custom field slugs. Specifying slugs will ensure only the fields specified are displayed on the control.   | An individual slug or multiple slugs comma delimited.   | [wt custom-field-slugs='waist'] [wt custom-field-slugs='waist,bicep,distance-run'] |    
 |disable-main-font|If set to true will disable the main font used in the shortcode|True or False (default)|[wt disable-main-font=true]

@@ -21,6 +21,8 @@ function ws_ls_shortcode_wt( $user_defined_arguments ) {
 												'custom-field-groups'       => '',                          // If specified, only show custom fields that are within these groups
 												'custom-field-slugs'        => '',                          // If specified, only show the custom fields that are specified
 												'bmi-format'                => 'both',                      // Format for display BMI
+												'bmi-alert-if-below'        => false,                       // If specified, show an alert if BMI is below this value
+												'bmi-alert-if-above'        => false,                       // If specified, show an alert if BMI is above this value
 												'disable-main-font'         => false,                       // If set to true, don't include the main font
 												'disable-theme-css'         => false,                       // If set to true, don't include the additional theme CSS used
 												'enable-week-ranges'        => false,                       // Enable Week Ranges?
@@ -161,6 +163,8 @@ function ws_ls_shortcode_wt( $user_defined_arguments ) {
 	if ( true !== ws_ls_to_bool( $shortcode_arguments[ 'hide-notifications' ] ) && true === WS_LS_IS_PRO_PLUS ) {
 		$html .= ws_ls_notifications_shortcode( $shortcode_arguments, true );
 	}
+
+	$html .= ws_ls_component_bmi_warning_notifications( $shortcode_arguments );
 
 	// Tab menu
 	$html .= ws_ls_wt_tab_menu( $shortcode_arguments );
