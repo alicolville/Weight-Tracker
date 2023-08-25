@@ -3,6 +3,38 @@
 defined('ABSPATH') or die("Jog on!");
 
 /**
+ * Fetch BMI value for user
+ *
+ * @param $user_id
+ *
+ * @return float|null
+ */
+function ws_ls_get_bmi_for_user( $user_id ) {
+
+	if ( $cache = ws_ls_cache_user_get($user_id, 'bmi-raw' ) ) {
+		return $cache;
+	}
+
+	$height = ws_ls_user_preferences_get( 'height', $user_id );
+
+	if ( true === empty( $height ) ) {
+		return NULL;
+	}
+
+	$weight = ws_ls_entry_get_latest_kg( $user_id );
+
+	if ( true === empty( $weight ) ) {
+		return NULL;
+	}
+
+	$bmi = ws_ls_calculate_bmi( $height, $weight );
+
+	ws_ls_cache_user_set( $user_id, 'bmi-raw', $bmi );
+
+	return $bmi;
+}
+
+/**
  * Fetch BMI value for data table
  *
  * @param $cm

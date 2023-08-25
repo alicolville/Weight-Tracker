@@ -812,6 +812,43 @@ function ws_ls_component_bmi( $args = [] ) {
 }
 
 /**
+ * Display warning notifications for BMI if they fall above or below a certain value
+ * @param $args
+ *
+ * @return string
+ */
+function ws_ls_component_bmi_warning_notifications( $args ) {
+
+	$args = wp_parse_args( $args, [
+		'bmi-alert-if-above' => null,
+		'bmi-alert-if-below' => null,
+		'user-id'            => get_current_user_id()
+	] );
+
+	$bmi    = ws_ls_get_bmi_for_user( $args[ 'user-id' ] );
+
+	if ( true === empty( $bmi ) ) {
+		return '';
+	}
+
+	$html       = '';
+	$prefix     = ( false === empty( $args[ 'kiosk-mode'] ) ) ? __( 'User\'s ', WE_LS_SLUG ) : __( 'Your ', WE_LS_SLUG );
+
+	if ( false === empty( $args[ 'bmi-alert-if-above' ] ) &&
+	        (float) $bmi > (float) $args[ 'bmi-alert-if-above' ] ) {
+		$html .= ws_ls_component_alert( [ 'message' => $prefix . sprintf( __( 'BMI is above %s.', WE_LS_SLUG ), $args[ 'bmi-alert-if-above' ] ), 'type' => 'danger' ] );
+	}
+
+	if ( false === empty( $args[ 'bmi-alert-if-below' ] ) &&
+	        $bmi < (float) $args[ 'bmi-alert-if-below' ] ) {
+		$html .= ws_ls_component_alert( [ 'message' => $prefix . sprintf( __( 'BMI is below %s.', WE_LS_SLUG ), $args[ 'bmi-alert-if-below' ] ), 'type' => 'danger' ] );
+	}
+
+	return $html;
+
+}
+
+/**
  * BMR component
  * @param array $args
  *
