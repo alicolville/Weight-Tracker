@@ -54,7 +54,7 @@ function ws_ls_awards_listen( $info, $weight_object ) {
 						if ( (( $user_aim === 2 ) && $weight_object['kg'] <= $target_kg ) ||
 						     ( 3 === $user_aim && $weight_object['kg'] >= $target_kg )  ) {
 
-							ws_ls_awards_db_given_add( $info['user-id'], $weight_award['id'] );
+							ws_ls_awards_db_given_add( $info['user-id'], $weight_award['id'], $weight_object[ 'id' ] );
 
 							// Throw hook out so other's can process award e.g. send emails. Log etc.
 							do_action( 'wlt-award-given', $weight_object, $weight_award, $info );
@@ -85,7 +85,7 @@ function ws_ls_awards_listen( $info, $weight_object ) {
                     if ( ( true === $losing_weight && 'loss' === $weight_award['gain_loss'] ) ||
                             ( false === $losing_weight && 'gain' === $weight_award['gain_loss'] )  ) {
 
-                        ws_ls_awards_db_given_add( $info['user-id'], $weight_award['id'] );
+                        ws_ls_awards_db_given_add( $info['user-id'], $weight_award['id'], $weight_object[ 'id' ] );
 
                         // Throw hook out so other's can process award e.g. send emails. Log etc.
                         do_action( 'wlt-award-given', $weight_object, $weight_award, $info );
@@ -124,7 +124,7 @@ function ws_ls_awards_listen( $info, $weight_object ) {
 
 								if ( $current_label === $award_label ) {
 
-									ws_ls_awards_db_given_add( $info['user-id'], $bmi_award['id'] );
+									ws_ls_awards_db_given_add( $info['user-id'], $bmi_award['id'], $weight_object[ 'id' ]  );
 
 									// Throw hook out so other's can process award e.g. send emails. Log etc.
 									do_action( 'wlt-award-given', $weight_object, $bmi_award, $info );
@@ -163,7 +163,7 @@ function ws_ls_awards_listen( $info, $weight_object ) {
 
                                 if ( ( false === $increase_in_bmi && 'loss' === $bmi_award['gain_loss'] ) || ( true === $increase_in_bmi && 'gain' === $bmi_award['gain_loss'] ) ) {
 
-                                    ws_ls_awards_db_given_add( $info['user-id'], $bmi_award['id'] );
+                                    ws_ls_awards_db_given_add( $info['user-id'], $bmi_award['id'], $weight_object[ 'id' ] );
 
                                     // Throw hook out so other's can process award e.g. send emails. Log etc.
                                     do_action( 'wlt-award-given', $weight_object, $bmi_award, $info );
@@ -199,7 +199,7 @@ function ws_ls_awards_listen( $info, $weight_object ) {
                             continue;
                         }
 
-                        ws_ls_awards_db_given_add( $info['user-id'], $percentage_award['id'] );
+                        ws_ls_awards_db_given_add( $info['user-id'], $percentage_award['id'], $weight_object[ 'id' ] );
 
                         do_action( 'wlt-award-given', $weight_object, $percentage_award, $info );
 
@@ -211,6 +211,24 @@ function ws_ls_awards_listen( $info, $weight_object ) {
 
 }
 add_action( 'wlt-hook-data-added-edited', 'ws_ls_awards_listen', 10, 2 );
+
+/**
+ * If a user deletes an entry, then check whether there are any awards to delete.
+ * @param $entry
+ */
+function ws_ls_awards_listen_entry_deleted( $entry ) {
+
+	if ( 'yes' !== get_option( 'ws-ls-awards-delete-when-entry-deleted-enabled', 'no' ) ) {
+		return;
+	}
+
+	if( false === empty( $entry[ 'id' ] ) ) {
+		ws_ls_awards_db_delete_awards_for_given_entry_id( $entry[ 'id' ], $entry[ 'user-id' ] );
+	}
+
+}
+add_action( 'wlt-hook-data-entry-deleted', 'ws_ls_awards_listen_entry_deleted' );
+
 
 /**
  * Log award

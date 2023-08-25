@@ -281,7 +281,7 @@ function ws_ls_settings_page_generic() {
 													<th scope="row"><?php echo __( 'Enabled' , WE_LS_SLUG); ?></th>
 													<td>
 														<?php
-														$challenges_enabled = get_option( 'ws-ls-challenges-enabled', 'yes' );
+														    $challenges_enabled = get_option( 'ws-ls-challenges-enabled', 'yes' );
 														?>
 														<select id="ws-ls-challenges-enabled" name="ws-ls-challenges-enabled">
 															<option value="yes" <?php selected( $challenges_enabled, 'yes' ); ?>><?php echo __( 'Yes', WE_LS_SLUG ); ?></option>
@@ -291,6 +291,22 @@ function ws_ls_settings_page_generic() {
 													</td>
 												</tr>
 											</table>
+                                            <h3><?php echo __( 'Awards' , WE_LS_SLUG); ?></h3>
+                                            <table class="form-table">
+                                                <tr class="<?php echo $disable_if_not_pro_class; ?>">
+                                                    <th scope="row"><?php echo __( 'Delete awards when weight entry deleted?' , WE_LS_SLUG); ?></th>
+                                                    <td>
+														<?php
+														    $awards_enabled = get_option( 'ws-ls-awards-delete-when-entry-deleted-enabled', 'no' );
+														?>
+                                                        <select id="ws-ls-awards-delete-when-entry-deleted-enabled" name="ws-ls-awards-delete-when-entry-deleted-enabled">
+                                                            <option value="yes" <?php selected( $awards_enabled, 'yes' ); ?>><?php echo __( 'Yes', WE_LS_SLUG ); ?></option>
+                                                            <option value="no" <?php selected( $awards_enabled, 'no' ); ?>><?php echo __( 'No', WE_LS_SLUG ); ?></option>
+                                                        </select>
+                                                        <p> <?php echo __( 'If set to yes, when a weight entry is deleted (for awards given in versions 10.5 and above) any awards that were given at that time are also deleted. Please note, awards will automatically be re-added when a new entry is added if the entry meets the award criteria. ', WE_LS_SLUG ); ?> "></p>
+                                                    </td>
+                                                </tr>
+                                            </table>
                                             <h3><?php echo __( 'Photos' , WE_LS_SLUG); ?></h3>
                                             <table class="form-table">
                                                 <tr class="<?php echo $disable_if_not_pro_class; ?>">
@@ -1268,6 +1284,7 @@ function ws_ls_register_settings(){
 		register_setting( 'we-ls-options-group', 'ws-ls-cal-add-unit' );
 		register_setting( 'we-ls-options-group', 'ws-ls-cal-lose-unit' );
 		register_setting( 'we-ls-options-group', 'ws-ls-challenges-enabled' );
+	    register_setting( 'we-ls-options-group', 'ws-ls-awards-delete-when-entry-deleted-enabled' );
 
 		register_setting( 'we-ls-options-group', 'ws-ls-macro-proteins-maintain' );
 		register_setting( 'we-ls-options-group', 'ws-ls-macro-carbs-maintain' );

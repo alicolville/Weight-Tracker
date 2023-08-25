@@ -45,6 +45,7 @@ function ws_ls_awards_create_mysql_tables() {
                 id mediumint(9) NOT NULL AUTO_INCREMENT,
                 user_id int NOT NULL,
                 award_id int NOT NULL,
+                added_by_entry_id int NULL,
                 timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 UNIQUE KEY id (id)
             ) $charset_collate;";
