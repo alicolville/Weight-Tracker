@@ -1034,6 +1034,15 @@ function ws_ls_blockquote_login_prompt( ) {
 }
 
 /**
+ * @param $title_text
+ *
+ * @return string
+ */
+function ws_ls_title( $title_text ) {
+	return sprintf( '<h3 class="ws_ls_title">%s</h3>', esc_html( $title_text ) );
+}
+
+/**
  * Calculate max upload size (taken from Drupal)
  * @return float|int
  */

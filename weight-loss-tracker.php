@@ -82,7 +82,6 @@ require_once( WS_LS_ABSPATH . 'includes/core-charting.php' );
 require_once( WS_LS_ABSPATH . 'includes/ajax.php' );
 require_once( WS_LS_ABSPATH . 'includes/setup-wizard.php' );
 require_once( WS_LS_ABSPATH . 'includes/components.php' );
-require_once( WS_LS_ABSPATH . 'includes/shortcode-wt-legacy.php' );
 require_once( WS_LS_ABSPATH . 'includes/shortcode-wt.php' );
 require_once( WS_LS_ABSPATH . 'includes/shortcode-various.php' );
 require_once( WS_LS_ABSPATH . 'includes/form-handler.php' );
