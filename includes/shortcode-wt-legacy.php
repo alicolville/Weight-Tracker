@@ -283,66 +283,6 @@ function ws_ls_shortcode_wt_legacy( $user_defined_arguments ) {
 
 }
 
-/**
- * Embed Chart
- *
- * @param $weight_data
- * @param $shortcode_arguments
- *
- * @return string
- */
-function ws_ls_shortcode_embed_chart( $weight_data, $shortcode_arguments ) {
-
-	$shortcode_arguments = wp_parse_args( $shortcode_arguments, [ 	    'custom-field-groups' 	=> [],
-	                                                                    'custom-field-slugs'	=> [],
-																	    'hide-title' 			=> false,
-																	    'legend-position' 		=> 'top',
-																	    'uikit'                 => false,
-																	    'hide-custom-fields'    => false,
-																		'user-id'               => get_current_user_id()
-
-	] );
-
-	$html_output = '';
-
-	// Do we have enough data points to display a chart?
-	if ( ( false === empty( $weight_data ) && count( $weight_data ) >= $shortcode_arguments[ 'min-chart-points' ] ) ||
-	     ( true === empty( $weight_data ) && 0 === $shortcode_arguments[ 'min-chart-points' ] ) ) {
-
-		// Display "Add Weight" button?
-		if( false === empty(  $shortcode_arguments[ 'show-add-button' ] ) &&
-				true === ws_ls_to_bool( $shortcode_arguments[ 'show-add-button' ] ) ) {
-			$html_output .= sprintf('	<div class="ws-ls-add-weight-button">
-														<input type="button" onclick="location.href=\'#add-weight\';" value="%s" />
-													</div>',
-				__( 'Add a weight entry', WE_LS_SLUG )
-			);
-		}
-
-		if ( false === $shortcode_arguments[ 'hide-title'] ) {
-			$html_output .= ws_ls_title( __( 'In a chart', WE_LS_SLUG ) );
-		}
-
-		$html_output .= ws_ls_display_chart( $weight_data, [    'custom-field-groups'   => $shortcode_arguments[ 'custom-field-groups' ],
-		                                                        'custom-field-slugs'    => $shortcode_arguments[ 'custom-field-slugs' ],
-																'legend-position'       => $shortcode_arguments[ 'legend-position' ],
-																'user-id'               => $shortcode_arguments[ 'user-id' ],
-																'show-meta-fields'      => ! $shortcode_arguments[ 'hide-custom-fields' ]
-		] );
-
-	} else {
-
-		$message = sprintf( __( 'A graph shall appear when %d or more weight entries have been entered.', WE_LS_SLUG ),
-			$shortcode_arguments[ 'min-chart-points' ] );
-
-		$html_output .= ( true === empty( $shortcode_arguments[ 'uikit' ] ) ) ?
-								ws_ls_display_blockquote( $message ) :
-									ws_ls_component_alert( [ 'message' =>  $message, 'type' => 'warning', 'closable' => false ] );
-
-	}
-
-	return $html_output;
-}
 
 /**
 * HTML for opening tab
