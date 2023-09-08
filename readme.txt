@@ -152,6 +152,12 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 == Changelog ==
 
+= 10.7 =
+
+* Maintenance: Removed support for the shortcode [wt-beta], you must use [wt] instead.
+* Maintenance: Removed support for the shortcode [wlt], you must use [wt] instead.
+* Maintenance: Removed support for the shortcode [wt-legacy], you must use [wt] instead.
+
 = 10.6 =
 
 * New feature: Added the arguments "bmi-alert-if-below" and "bmi-alert-if-above" to [wt] to show an alert if the user's BMI is below or above the specified value.

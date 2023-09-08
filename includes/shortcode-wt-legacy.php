@@ -282,8 +282,6 @@ function ws_ls_shortcode_wt_legacy( $user_defined_arguments ) {
 	return $html_output;
 
 }
-add_shortcode( 'wlt', 'ws_ls_shortcode_wt_legacy' );
-add_shortcode( 'wt-legacy', 'ws_ls_shortcode_wt_legacy' );
 
 /**
  * Embed Chart
