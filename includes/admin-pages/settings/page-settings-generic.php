@@ -230,21 +230,6 @@ function ws_ls_settings_page_generic() {
 														</td>
 													</tr>
 											</table>
-											<h3><?php echo __( 'Tab appearance' , WE_LS_SLUG); ?></h3>
-											<table class="form-table">
-
-
-												<tr>
-													<th scope="row"><?php echo __( 'Switching to a drop down' , WE_LS_SLUG); ?></th>
-													<?php
-														$tab_resize = get_option( 'ws-ls-tab-window-resize', '1200' );
-													?>
-													<td>
-														<input type="number" step="any" min="0" max="5000" name="ws-ls-tab-window-resize" id="ws-ls-tab-window-resize" value="<?php echo esc_attr( $tab_resize ); ?>" size="11" /> <?php echo __( 'pixels', WE_LS_SLUG ); ?>
-														<p><?php echo __( 'At which browser size (and below) should the tabs render as a dropdown instead', WE_LS_SLUG ); ?>.</p>
-													</td>
-												</tr>
-											</table>
 											<h3><?php echo __( 'Challenges' , WE_LS_SLUG); ?></h3>
 											<table class="form-table">
 												<tr class="<?php echo $disable_if_not_pro_class; ?>">
@@ -1181,9 +1166,6 @@ function ws_ls_register_settings(){
     register_setting( 'we-ls-options-group', 'ws-ls-fill-under-weight-line-colour' );
 	register_setting( 'we-ls-options-group', 'ws-ls-number-formatting-separator' );
 	register_setting( 'we-ls-options-group', 'ws-ls-default-aim' );
-
-	// Tabs
-	register_setting( 'we-ls-options-group', 'ws-ls-tab-window-resize' );
 
     // Pro only open
     if( WS_LS_IS_PRO ){
