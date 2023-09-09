@@ -1413,10 +1413,7 @@ function ws_ls_round_number( $number, $decimal_places = 0 ) {
 		var_dump($number);
 	}
 
-
-	$seperator = ( 'yes' === get_option( 'ws-ls-number-formatting-separator', 'yes' ) ) ? ',' : '';
-
-	return number_format( $number, $decimal_places, '.', $seperator );
+	return number_format( $number, $decimal_places, '.', ',' );
 }
 
 /**

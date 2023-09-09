@@ -160,6 +160,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 * Maintenance: Removed redundant setting "Hide tab descriptions" from the "User Experience" settings page.
 * Maintenance: Removed redundant setting "Tab appearance" from the "User Experience" settings page.
 * Maintenance: Removed redundant setting "Switching to a drop down" from the "User Experience" settings page.
+* Maintenance: Removed setting "Include thousand separator?" from the "User Experience" settings page. A comma shall be used by default.
 
 = 10.6 =
 
