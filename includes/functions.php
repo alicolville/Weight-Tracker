@@ -1397,8 +1397,7 @@ function ws_ls_user_display_name( $user_id ) {
  * @return bool
  */
 function ws_ls_challenges_is_enabled() {
-    return ( WS_LS_IS_PRO_PLUS &&
-				true === ws_ls_settings_challenges_enabled() );
+    return WS_LS_IS_PRO_PLUS;
 }
 
 /**
@@ -1451,14 +1450,6 @@ function ws_ls_css_is_disabled() {
  */
 function ws_ls_targets_enabled() {
 	return ( 'yes' === get_option( 'ws-ls-allow-targets', 'yes' ) );
-}
-
-/**
- * Challenges enabled?
- * @return bool
- */
-function ws_ls_settings_challenges_enabled() {
-	return ( 'yes' === get_option( 'ws-ls-challenges-enabled', 'yes' ) );
 }
 
 /**
