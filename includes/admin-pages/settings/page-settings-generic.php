@@ -233,25 +233,7 @@ function ws_ls_settings_page_generic() {
 											<h3><?php echo __( 'Tab appearance' , WE_LS_SLUG); ?></h3>
 											<table class="form-table">
 
-												<tr>
-													<th scope="row"><?php echo __( 'Tab theme' , WE_LS_SLUG); ?></th>
-													<td>
-														<?php
-														$tab_theme = get_option( 'ws-ls-tab-theme', 'silver' );
-														?>
-														<select id="ws-ls-tab-theme" name="ws-ls-tab-theme">
-															<option value="black" <?php selected( $hide_descriptions, 'black' ); ?>><?php echo __( 'Black', WE_LS_SLUG ); ?></option>
-															<option value="blue" <?php selected( $tab_theme, 'blue' ); ?>><?php echo __( 'Blue', WE_LS_SLUG ); ?></option>
-															<option value="crystal" <?php selected( $tab_theme, 'crystal' ); ?>><?php echo __( 'Crystal', WE_LS_SLUG ); ?></option>
-															<option value="deepblue" <?php selected( $tab_theme, 'deepblue' ); ?>><?php echo __( 'Deep Blue', WE_LS_SLUG ); ?></option>
-															<option value="gray" <?php selected( $tab_theme, 'gray' ); ?>><?php echo __( 'Gray', WE_LS_SLUG ); ?></option>
-															<option value="orange" <?php selected( $tab_theme, 'orange' ); ?>><?php echo __( 'Orange', WE_LS_SLUG ); ?></option>
-															<option value="red" <?php selected( $tab_theme, 'red' ); ?>><?php echo __( 'Red', WE_LS_SLUG ); ?></option>
-															<option value="silver" <?php selected( $tab_theme, 'silver' ); ?>><?php echo __( 'Silver', WE_LS_SLUG ); ?></option>
-															<option value="white" <?php selected( $tab_theme, 'white' ); ?>><?php echo __( 'White', WE_LS_SLUG ); ?></option>
-														</select>
-													</td>
-												</tr>
+
 												<tr>
 													<th scope="row"><?php echo __( 'Switching to a drop down' , WE_LS_SLUG); ?></th>
 													<?php
@@ -1202,7 +1184,6 @@ function ws_ls_register_settings(){
 
 	// Tabs
 	register_setting( 'we-ls-options-group', 'ws-ls-tab-window-resize' );
-	register_setting( 'we-ls-options-group', 'ws-ls-tab-theme' );
 
     // Pro only open
     if( WS_LS_IS_PRO ){

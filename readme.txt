@@ -158,6 +158,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 * Maintenance: Removed support for the shortcode [wlt], you must use [wt] instead.
 * Maintenance: Removed support for the shortcode [wt-legacy], you must use [wt] instead.
 * Maintenance: Removed redundant setting "Hide tab descriptions" from the "User Experience" settings page.
+* Maintenance: Removed redundant setting "Tab appearance" from the "User Experience" settings page.
 
 = 10.6 =
 
