@@ -25,24 +25,6 @@ jQuery( document ).ready( function ( $ ) {
   });
 
   // -----------------------------------------------------------------------
-  // Tabs (ZoZo)
-  // -----------------------------------------------------------------------
-
-  // Just saved data or cancelled?  If so, set default Tab to be "In Detail"
-  let default_tab = ( ws_ls_querystring_value( 'ws-edit-saved' ) || ws_ls_querystring_value( 'ws-edit-cancel' ) ) ? 'tab2' : 'tab1';
-
-  let tabs_are_ready = function( event, item ) {
-      $( '#ws-ls-tabs-loading' ).addClass( 'ws-ls-hide' );
-      $( '#' + item.id ).addClass( 'ws-ls-force-show' );
-      $( '#' + item.id ).removeClass( 'ws-ls-hide' );
-  };
-
-  ws_ls_config[ 'tab-config' ][ 'defaultTab' ]  = default_tab;
-  ws_ls_config[ 'tab-config' ][ 'ready' ]       = tabs_are_ready;
-
-  tabs_global = $( '#ws-ls-tabs' ).zozoTabs( ws_ls_config[ 'tab-config' ] );
-
-  // -----------------------------------------------------------------------
   // Progress Bar
   // -----------------------------------------------------------------------
 
