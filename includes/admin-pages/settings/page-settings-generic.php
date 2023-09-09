@@ -232,19 +232,7 @@ function ws_ls_settings_page_generic() {
 											</table>
 											<h3><?php echo __( 'Tab appearance' , WE_LS_SLUG); ?></h3>
 											<table class="form-table">
-												<tr>
-													<th scope="row"><?php echo __( 'Hide tab descriptions' , WE_LS_SLUG); ?></th>
-													<td>
-														<?php
-														$hide_descriptions = get_option( 'ws-ls-tab-hide-descriptions', 'no' );
-														?>
-														<select id="ws-ls-tab-hide-descriptions" name="ws-ls-tab-hide-descriptions">
-															<option value="yes" <?php selected( $hide_descriptions, 'yes' ); ?>><?php echo __( 'Yes', WE_LS_SLUG ); ?></option>
-															<option value="no" <?php selected( $hide_descriptions, 'no' ); ?>><?php echo __( 'No', WE_LS_SLUG ); ?></option>
-														</select>
-														<p> <?php echo __( 'If enabled, the description text under each tab title shall be hidden', WE_LS_SLUG ); ?>.</p>
-													</td>
-												</tr>
+
 												<tr>
 													<th scope="row"><?php echo __( 'Tab theme' , WE_LS_SLUG); ?></th>
 													<td>
@@ -1214,7 +1202,6 @@ function ws_ls_register_settings(){
 
 	// Tabs
 	register_setting( 'we-ls-options-group', 'ws-ls-tab-window-resize' );
-	register_setting( 'we-ls-options-group', 'ws-ls-tab-hide-descriptions' );
 	register_setting( 'we-ls-options-group', 'ws-ls-tab-theme' );
 
     // Pro only open
