@@ -53,8 +53,7 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
 
     // Decide which set of labels to render
 	$labels = [
-                'title-about'       => __( 'About You:', WE_LS_SLUG ),
-				'height'            => __( 'Your height:', WE_LS_SLUG ),
+                'height'            => __( 'Your height:', WE_LS_SLUG ),
 				'weight'            => __( 'In which unit would you like to record your weight:', WE_LS_SLUG ),
 				'date'              => __( 'Display dates in the following formats:', WE_LS_SLUG ),
                 'gender'            => __( 'Your Gender:', WE_LS_SLUG ),
@@ -66,9 +65,7 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
 	// If admin, add notice and override labels
 	if( is_admin() ) {
 
-		$labels = [
-		                'title-about'       => __( 'About User:', WE_LS_SLUG ),
-					    'height'            => __( 'Height:', WE_LS_SLUG ),
+		$labels = [     'height'            => __( 'Height:', WE_LS_SLUG ),
 					    'weight'            => __( 'Weight unit:', WE_LS_SLUG ),
 					    'date'              => __( 'Date format:', WE_LS_SLUG ),
                         'gender'            => __( 'Gender:', WE_LS_SLUG ),

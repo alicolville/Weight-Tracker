@@ -396,7 +396,7 @@ function ws_ls_datatable_columns( $arguments = [] ) {
 					[ 'name' => 'user_id', 'title' => 'USER ID', 'visible' => false, 'type' => 'number' ]
 	];
 
-	// If not front end, add nice nice name
+	// If not front end, add nice name
 	if ( false === $arguments[ 'front-end' ] ) {
 		$columns[] = [ 'name' => 'user_nicename', 'title' => __( 'User', WE_LS_SLUG ), 'breakpoints'=> '', 'type' => 'text' ];
 	} else {
