@@ -367,9 +367,7 @@ function ws_ls_challenges_stats( $challenge_id ) {
 	}
 
 	global $wpdb;
-
-	$stats = [ 'count' => NULL, 'to-be-processed' => NULL, 'processed' => NULL ];
-
+	
 	$challenge_id = (int) $challenge_id;
 
 	$stats[ 'count' ]           = $wpdb->get_var( 'SELECT count( user_id ) FROM ' . $wpdb->prefix . WE_LS_MYSQL_CHALLENGES_DATA . ' WHERE challenge_id = ' . $challenge_id );

@@ -80,7 +80,7 @@ function ws_ls_convert_kg_to_lb( $kg ) {
  * @return array
  */
 function ws_ls_convert_kg_to_stone_pounds( $kg ) {
-	
+
 	$totalPounds = Round($kg * 2.20462, 3 );
 	$weight[ 'stones' ] = $totalPounds < 0 ? -1 * floor(-1 * $totalPounds / 14 ) : floor($totalPounds / 14 );
 	$weight[ 'pounds' ] = Round ( fmod( $totalPounds, 14 ), 2 );

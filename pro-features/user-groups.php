@@ -557,8 +557,6 @@ function ws_ls_groups_export_add( $row ) {
         return $row;
     }
 
-    $row[ 'group' ] = '';
-
     $group = ws_ls_groups_user( $row[ 'user_id' ] );
 
     if ( false === empty( $group[ 0 ][ 'name' ] ) ) {
