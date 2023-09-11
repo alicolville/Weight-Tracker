@@ -138,9 +138,7 @@ function ws_ls_harris_benedict_calculate_calories_raw( $bmr, $gender, $activity_
 		$calorie_intake[ $key ] = array_map('ws_ls_round_bmr_harris', $calorie_intake[$key]);
 	}
 
-	$calorie_intake = apply_filters( 'wlt-filter-harris-benedict', $calorie_intake, $user_id, $bmr, $activity_level, $calories_to_lose, $calories_to_gain, $gender );
-
-	return $calorie_intake;
+	return apply_filters( 'wlt-filter-harris-benedict', $calorie_intake, $user_id, $bmr, $activity_level, $calories_to_lose, $calories_to_gain, $gender );
 }
 
 /**

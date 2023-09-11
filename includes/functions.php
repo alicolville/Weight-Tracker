@@ -309,9 +309,7 @@ function ws_ls_entry_get( $arguments = [] ) {
 
 	}
 
-	$entry = ws_ls_weight_prep( $entry );
-
-	return $entry;
+	return ws_ls_weight_prep( $entry );
 }
 
 /**

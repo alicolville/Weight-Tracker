@@ -174,9 +174,7 @@ function ws_ls_shortcode_stats_display_value( $stats, $arguments ) {
 		}
 
 		// Allow theme developer to override stats message
-		$stats = apply_filters( 'wlt-filter-stats-shortcode', $stats);
-
-		return $stats;
+		return apply_filters( 'wlt-filter-stats-shortcode', $stats );
 	}
 
 	return '';

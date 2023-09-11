@@ -456,7 +456,6 @@ function ws_ls_challenges_get_meal_tracker_entries( $user_id, $start_date = NULL
 
 	$result = $wpdb->get_results( $sql, ARRAY_A );
 
-	$result = ( false === empty( $result ) ) ? $result : false;
+	return ( ! empty( $result ) ) ? $result : false;
 
-	return $result;
 }

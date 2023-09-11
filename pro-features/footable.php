@@ -339,9 +339,7 @@ function ws_ls_datatable_rows( $arguments ) {
 	$rows = array_reverse( $rows );
 
 	// Localise the row for the user viewing
-	$rows = array_map( 'ws_ls_datatable_rows_localise', $rows );
-
-	return $rows;
+	return array_map( 'ws_ls_datatable_rows_localise', $rows );
 }
 
 /**

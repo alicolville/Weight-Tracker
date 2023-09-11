@@ -38,7 +38,7 @@
 
 	    }
 
-        $fields = [
+        return [
 	        'bmi'               => __('BMI: Change', WE_LS_SLUG ),
 	        'bmi-equals'        => __('BMI: Equals', WE_LS_SLUG ),
 	        'weight-target'     => __('Weight: Target met (based on user aim)', WE_LS_SLUG ),
@@ -47,7 +47,6 @@
 
         ];
 
-        return $fields;
     }
 
 	/**
