@@ -124,6 +124,8 @@ function ws_ls_notes_render( $note, $echo = true, $uikit = false, $alternate = f
 	}
 
 	echo $html;
+
+	return '';
 }
 
 /**

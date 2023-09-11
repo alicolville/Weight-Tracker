@@ -990,7 +990,7 @@ function ws_ls_display_blockquote( $text, $class = '', $just_echo = false, $incl
 
 	if ( true === $just_echo ) {
 		echo $html_output;
-		return;
+		return '';
 	}
 
 	return $html_output;
