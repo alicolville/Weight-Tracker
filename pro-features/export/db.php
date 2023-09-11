@@ -275,7 +275,7 @@ function ws_ls_db_export_criteria_step( $export_id, $step = 0 ) {
 								[ '%d' ],
 								[ '%d' ] );
 
-	ws_ls_cache_user_delete( 'exports', (int) $export_id );
+	ws_ls_cache_user_delete( 'exports' );
 
 	return $result;
 }
@@ -296,7 +296,7 @@ function ws_ls_db_export_criteria_count( $export_id, $count = 0 ) {
 		[ '%d' ],
 		[ '%d' ] );
 
-	ws_ls_cache_user_delete( 'exports', (int) $export_id );
+	ws_ls_cache_user_delete( 'exports' );
 
 	return $result;
 }
