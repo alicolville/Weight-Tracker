@@ -123,8 +123,6 @@ function ws_ls_email_notification( $type, $weight_data ) {
 			ws_ls_emailer_send( $email_addresses, $email_data[ 'subject' ], $message[ 'email' ], $email_data );
 		}
 	}
-
-	return;
 }
 add_action( 'wlt-hook-data-added-edited', 'ws_ls_email_notification', 10, 2);
 
