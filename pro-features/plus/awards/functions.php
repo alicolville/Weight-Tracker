@@ -61,10 +61,8 @@
     	switch ( $gain_loss ) {
     		case 'gain';
     		    return __('Gain', WE_LS_SLUG);
-    		    break;
 		    case 'loss':
 			    return __('Loss', WE_LS_SLUG);
-				break;
 		    default:
 		    	return '';
 	    }

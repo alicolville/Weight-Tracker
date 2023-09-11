@@ -144,13 +144,10 @@ function ws_ls_bmi_display( $bmi, $display = 'index' ) {
 	switch ( $display ) {
 		case 'label':
 			return ws_ls_calculate_bmi_label( $bmi );
-			break;
 		case 'both':
 			return sprintf( '%s (%s)', ws_ls_calculate_bmi_label( $bmi ), $bmi );
-			break;
 		default:
 			return $bmi;
-			break;
 	}
 
 	return '';

@@ -229,10 +229,8 @@ function ws_ls_meta_fields_for_entry_display( $entry_id ) {
         switch ( (int) $value ) {
             case 1:
                 return __('No', WE_LS_SLUG);
-                break;
             case 2:
                 return __('Yes', WE_LS_SLUG);
-                break;
             default:
                 return '';
 

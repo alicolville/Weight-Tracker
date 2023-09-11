@@ -1569,13 +1569,10 @@ function ws_ls_setting( $key = 'weight-unit', $user_id = NULL, $force_admin = fa
 
 		case 'weight-unit':
 			return ws_ls_settings_weight_unit();
-			break;
 		case 'use-imperial':
 			return ws_ls_settings_weight_is_imperial();
-			break;
 		case 'use-us-dates':
 			return ws_ls_settings_date_is_us();
-			break;
 	}
 
 	return NULL;
