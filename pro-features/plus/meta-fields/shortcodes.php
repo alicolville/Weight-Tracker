@@ -95,8 +95,7 @@ function ws_ls_meta_fields_shortcode_accumulator( $user_defined_arguments ) {
 
 	$increments = explode( ',', $shortcode_arguments[ 'increment-values' ] );
 
-	if ( true == empty( $shortcode_arguments[ 'increment-values' ] ) ||
-	            true === empty( $increments ) ) {
+	if ( empty( $shortcode_arguments['increment-values'] ) || empty( $increments ) ) {
 		return __( 'Please ensure you have a valid list of increment values e.g. [wt-custom-fields-accumulator increment-values="1,5,10"]', WE_LS_SLUG );
 	}
 
