@@ -140,7 +140,5 @@ function ws_ls_notes_sanitise( $content ) {
 
 	$content = stripslashes( $content );
 	$content = wp_kses_post( $content );
-	$content = str_replace( PHP_EOL, '<br />', $content );
-
-	return $content;
+	return str_replace( PHP_EOL, '<br />', $content );
 }

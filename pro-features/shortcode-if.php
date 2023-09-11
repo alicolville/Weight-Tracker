@@ -38,7 +38,7 @@ function ws_ls_shortcode_if( $user_defined_arguments, $content = null, $level = 
     }
 
     // Remove Pro Plus fields if they don't have a license
-    if( false === WS_LS_IS_PRO_PLUS && true === in_array( $arguments[ 'field' ], [ 'bmr' ] ) ) {
+    if( false === WS_LS_IS_PRO_PLUS && true === ( $arguments['field'] == 'bmr' ) ) {
         return sprintf( '<p>%s</p>', __( 'Unfortunately the field you specified is for Pro Plus licenses only.', WE_LS_SLUG ) );
     }
 
