@@ -112,7 +112,6 @@ function ws_ls_weight_display( $kg, $user_id = NULL, $key = false, $force_admin 
 			$weight[ 'pounds' ] 		= ws_ls_convert_kg_to_lb( $kg );
 			$weight[ 'display' ] 		= sprintf( '%s%s', $weight[ 'pounds' ], __( 'lbs', WE_LS_SLUG ) );
 			$weight[ 'graph-value' ] 	= $weight[ 'pounds' ];
-			$weight[ 'pounds' ]         = $weight['pounds'];
 			$weight[ 'imperial' ]       = true;
 			break;
 
