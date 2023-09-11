@@ -28,7 +28,7 @@ function ws_ls_groups_can_users_edit() {
 		return false;
 	}
 
-	return 'yes' === get_option('ws-ls-enable-groups-user-edit', false ) ? true : false;
+	return 'yes' === get_option('ws-ls-enable-groups-user-edit', false );
 }
 
 /**

@@ -45,7 +45,7 @@ function ws_ls_save_preferences_callback() {
 
 	check_ajax_referer( 'ws-ls-nonce', 'security' );
 
-	$in_admin_area = ( NULL !== ws_ls_post_value('we-ls-in-admin' ) ) ? true : false;
+	$in_admin_area = NULL !== ws_ls_post_value('we-ls-in-admin' );
 
 	$fields = [];
 

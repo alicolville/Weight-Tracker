@@ -191,12 +191,12 @@ function ws_ls_postbox_league_table() {
 			// If changing gain / loss set options
 			if( false === empty($_GET['show-gain'])) {
 
-				$value = ('y' === $_GET['show-gain']) ? true : false;
+				$value = 'y' === $_GET['show-gain'];
 				update_option('ws-ls-show-gains', $value);
 			}
 
 			// Are we wanting to see who has lost the most? Or gained?
-			$show_gain 	= get_option('ws-ls-show-gains') ? true : false;
+			$show_gain 	= (bool) get_option( 'ws-ls-show-gains' );
 			$title 		= ( false === $show_gain ) ? __( 'League table for those that have lost the most', WE_LS_SLUG ) : __( 'League Table for those that have gained the most', WE_LS_SLUG );
 
 			ws_ls_postbox_header( [ 'title' => $title, 'postbox-id' => 'league-table' ] );
@@ -250,12 +250,12 @@ function ws_ls_postbox_latest_entries() {?>
 
 			// Show meta data?
 			if( false === empty( $_GET['show-meta'] ) ) {
-				$value = ( 'y' === $_GET['show-meta'] ) ? true : false;
+				$value = 'y' === $_GET['show-meta'];
 				update_option('ws-ls-show-meta', $value );
 			}
 
 			$entries_limit  = (int) get_option( 'ws-ls-entries-limit', 100 );
-			$show_meta  	= get_option( 'ws-ls-show-meta' ) ? true : false;
+			$show_meta  	= (bool) get_option( 'ws-ls-show-meta' );
 
 			$title = ( false === empty( $entries_limit ) ) ? sprintf( 'Last %d entries', $entries_limit ) : __( 'All entries', WE_LS_SLUG );
 

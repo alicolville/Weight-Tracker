@@ -630,7 +630,7 @@ function ws_ls_force_dimension_argument($value, $default = false) {
 	if ( false === empty($value) ) {
 
 		// Is this a percentage?
-		$is_percentage = (false !== stripos($value, '%') ) ? true: false;
+		$is_percentage = false !== stripos( $value, '%' );
 
 		// Strip % sign out if needed
 		$value = ( $is_percentage ) ? ws_ls_remove_non_numeric($value) : $value;

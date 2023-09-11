@@ -394,7 +394,7 @@ function ws_ls_meta_fields_key_exist( $key ) {
 
     $count = $wpdb->get_var( $sql );
 
-    return ( 0 === (int) $count ) ? false : true;
+    return ! ( ( 0 === (int) $count ) );
 }
 
 /**

@@ -479,7 +479,7 @@ function ws_ls_harris_benedict_show_lose_figures() {
 		return false;
 	}
 
-	return 'no' === get_option('ws-ls-cal-show-loss', true ) ? false : true;
+	return ! ( 'no' === get_option( 'ws-ls-cal-show-loss', true ) );
 }
 
 /**
@@ -493,7 +493,7 @@ function ws_ls_harris_benedict_show_gain_figures() {
 		return false;
 	}
 
-	return 'yes' === get_option('ws-ls-cal-show-gain', false ) ? true : false;
+	return 'yes' === get_option('ws-ls-cal-show-gain', false );
 }
 
 /**

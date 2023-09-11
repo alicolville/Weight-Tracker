@@ -782,7 +782,7 @@ function ws_ls_user_exist( $user_id ) {
         return false;
     }
 
-    return ( false === get_userdata( $user_id ) ) ? false : true;
+    return ! ( ( false === get_userdata( $user_id ) ) );
 }
 
 /**

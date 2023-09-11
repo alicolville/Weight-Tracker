@@ -213,7 +213,7 @@
         // Loop through each award in DB, count it's type and decide whether to consider issuing it.
 
         return [
-            'any' => ( count( $awards ) > 0 ) ? true : false,
+            'any' => count( $awards ) > 0,
             'counts' => $counts,
             'awards' => $awards
         ];
@@ -367,5 +367,5 @@
 	 * @return bool
 	 */
 	function ws_ls_awards_email_notifications_enabled() {
-		return 'y' === get_option('ws-ls-awards-email-notifications', false ) ? true : false;
+		return 'y' === get_option('ws-ls-awards-email-notifications', false );
 	}

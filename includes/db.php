@@ -635,7 +635,7 @@ function ws_ls_set_user_preference( $field, $value, $user_id = NULL ) {
         $db_field_types
     );
 
-    $result = ($result === false) ? false : true;
+    $result = ! ( ( $result === false ) );
 
     // Tidy up cache
 	ws_ls_cache_user_delete( $db_fields['user_id'] );
@@ -680,7 +680,7 @@ function ws_ls_set_user_preference_simple( $field, $value, $user_id = NULL ) {
         [ '%d' ]
     );
 
-    $result = ($result === false) ? false : true;
+    $result = ! ( ( $result === false ) );
 
 	// If settings are saved correctly, then fire hook for others.
 	if ( true === $result ) {
