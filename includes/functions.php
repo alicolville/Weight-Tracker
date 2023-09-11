@@ -1437,7 +1437,7 @@ function ws_ls_user_preferences_is_enabled() {
 }
 
 /**
- * Hass CSS been disabled?
+ * Has CSS been disabled?
  * @return bool
  */
 function ws_ls_css_is_disabled() {
