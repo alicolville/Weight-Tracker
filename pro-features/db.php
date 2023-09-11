@@ -24,7 +24,7 @@ function ws_ls_db_stats_sum_weight_difference() {
 	global $wpdb;
 	$result = $wpdb->get_var( 'SELECT sum( weight_difference ) FROM ' . $wpdb->prefix . WE_LS_USER_STATS_TABLENAME );
 
-	return ( false == empty( $result ) ) ? floatval( $result ) : false;
+	return ! empty( $result ) ? floatval( $result ) : false;
 }
 
 /**
@@ -90,7 +90,7 @@ function ws_ls_db_stats_league_table_fetch( $ignore_cache = false, $limit = 10, 
 	$where = [];
 
 	// Select only users that have lost weight?
-	if( true == ws_ls_force_bool_argument( $losers_only ) ) {
+	if( ws_ls_force_bool_argument( $losers_only ) ) {
 		$where[] = 'weight_difference <= 0';
 	}
 

@@ -92,9 +92,7 @@ function ws_ls_harris_benedict_calculate_calories_raw( $bmr, $gender, $activity_
 	$calories_to_lose   = ( $calorie_intake['maintain']['total'] > $calories_to_lose ) ? $calorie_intake['maintain']['total'] - $calories_to_lose : $calorie_intake['maintain']['total'];
 	$is_female          = ws_ls_is_female_raw( $gender );
 
-	$calorie_cap        = ( true == $is_female ) ?
-		ws_ls_harris_benedict_setting( 'ws-ls-female-cal-cap' )
-		: ws_ls_harris_benedict_setting( 'ws-ls-male-cal-cap' );
+	$calorie_cap        = $is_female ?	ws_ls_harris_benedict_setting( 'ws-ls-female-cal-cap' ) : ws_ls_harris_benedict_setting( 'ws-ls-male-cal-cap' );
 
 	// If suggested calorie intake to lose weight is above the cap, then set to cap.
 	if ( $calories_to_lose > $calorie_cap ) {
@@ -458,9 +456,7 @@ function ws_ls_display_calorie_cap( $user_id = false ) {
 function ws_ls_display_calorie_cap_raw( $gender ) {
 
 	$is_female          = ws_ls_is_female_raw( $gender );
-	$calorie_cap        = ( true == $is_female ) ?
-		ws_ls_harris_benedict_setting( 'ws-ls-female-cal-cap' ) :
-		ws_ls_harris_benedict_setting( 'ws-ls-male-cal-cap' );
+	$calorie_cap        = $is_female ? ws_ls_harris_benedict_setting( 'ws-ls-female-cal-cap' ) : ws_ls_harris_benedict_setting( 'ws-ls-male-cal-cap' );
 
 	return sprintf('%s %s %s. %s <a href="%s">%s</a>.',
 		($is_female) ? __('Female', WE_LS_SLUG ) : __('Male', WE_LS_SLUG ),

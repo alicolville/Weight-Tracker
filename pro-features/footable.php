@@ -514,7 +514,7 @@ function ws_ls_data_js_config() {
 
     } else {
 		$config[ 'current-url-base64' ]     = ws_ls_get_url( true );
-        $config[ 'us-date' ]                = ( true == ws_ls_settings_date_is_us() ) ? 'true' : 'false';
+        $config[ 'us-date' ]                = ws_ls_settings_date_is_us() ? 'true' : 'false';
 
 	    // Have we detected were in Admin, on a user profile?
 	    if ( true === ws_ls_datatable_is_user_profile() ) {

@@ -13,7 +13,7 @@ function ws_ls_clear_target_callback() {
 
   	$user_id = ws_ls_post_value('user-id');
 
-	if( true == ws_ls_db_target_delete( $user_id ) ){
+	if( ws_ls_db_target_delete( $user_id ) ){
 		wp_send_json(1);
 	}
 
@@ -70,7 +70,7 @@ function ws_ls_save_preferences_callback() {
 
 	do_action( 'ws-ls-hook-user-preference-save', (int) $fields['user_id'], $in_admin_area, $fields );
 
-	if( false == ws_ls_set_user_preferences( $in_admin_area, $fields ) ){
+	if( ! ws_ls_set_user_preferences( $in_admin_area, $fields ) ){
 		wp_send_json (0 );
 	}
 

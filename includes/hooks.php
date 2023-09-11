@@ -231,7 +231,7 @@ function ws_ls_enqueue_form_dependencies() {
  * @return string
  */
 function ws_ls_use_minified() {
-	return ( defined('SCRIPT_DEBUG' ) && false == SCRIPT_DEBUG ) ? '.min' : '';
+	return ( defined('SCRIPT_DEBUG' ) && ! SCRIPT_DEBUG ) ? '.min' : '';
 }
 
 function ws_ls_admin_config() {

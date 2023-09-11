@@ -739,8 +739,7 @@ function ws_ls_db_user_preferences( $user_id = NULL, $use_cache = true ) {
 
 	$cache = ws_ls_cache_user_get( $user_id, 'user-preferences' );
 
-	if ( true == $use_cache &&
-	     false === empty( $cache )  )   {
+	if ( $use_cache && ! empty( $cache )  )   {
 		return $cache;
 	}
 
@@ -768,8 +767,7 @@ function ws_ls_db_entries_count( $user_id = NULL, $use_cache = true ) {
 
 	$cache = ws_ls_cache_user_get( $user_id, 'entry-counts' );
 
-	if ( true == $use_cache &&
-	        false === empty( $cache )  )   {
+	if (  $use_cache && ! empty( $cache )  )   {
 		return $cache;
 	}
 

@@ -365,7 +365,7 @@ function ws_ls_has_a_valid_old_pro_license() {
 
 	$valid_license = get_option(WS_LS_LICENSE_VALID);
 
-    if(true == $valid_license) {
+    if( $valid_license ) {
       return true;
     }
 

@@ -1161,7 +1161,7 @@ function ws_ls_photo_display_max_upload_size() {
 
     $upload_size = ws_ls_photo_get_sizes($max_size);
 
-    return ( true == is_array($upload_size) ) ? ws_ls_display_max_server_upload_size() : $upload_size;
+    return  is_array( $upload_size ) ? ws_ls_display_max_server_upload_size() : $upload_size;
 }
 
 /**

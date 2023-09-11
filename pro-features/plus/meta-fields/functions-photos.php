@@ -115,7 +115,7 @@
 			// The wp_insert_attachment function needs the literal system path, which was passed back from wp_handle_upload
 			$file_name_and_location = $uploaded_file['file'];
 
-			if( true == empty( $user_id ) ){
+			if( empty( $user_id ) ){
 				$user_id = get_current_user_id();
 			}
 
