@@ -186,7 +186,7 @@ function ws_ls_shortcode_wt( $user_defined_arguments ) {
 
 	return $html . '</div>';
 }
-add_shortcode( 'wt', 'ws_ls_shortcode_wt' );;
+add_shortcode( 'wt', 'ws_ls_shortcode_wt' );
 
 /**
  * Wrapper for [wt] to enable shortcode mode

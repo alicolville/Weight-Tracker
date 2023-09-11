@@ -478,7 +478,7 @@ function ws_ls_entry_get_todays( $arguments = [] ) {
 
 	if ( true === empty( $todays_entry ) ) {
 		return NULL;
-	};
+	}
 
 	return ( true === $arguments[ 'kg-only'] &&
 			 false === empty( $todays_entry[ 'kg' ] ) ) ?
