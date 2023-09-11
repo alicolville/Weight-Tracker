@@ -329,7 +329,7 @@ function ws_ls_datatable_rows( $arguments ) {
 				$row[ 'options' ][ 'classes' ] = 'ws-ls-has-note';
 			}
 
-			array_push( $rows, $row );
+			$rows[] = $row;
 		}
 
 		ws_ls_cache_user_set( $arguments[ 'user-id' ], $cache_key, $rows );
@@ -419,7 +419,8 @@ function ws_ls_datatable_columns( $arguments = [] ) {
 	// Add BMI?
 	if( true === $arguments[ 'enable-bmi' ] &&
 	        true === ws_ls_bmi_in_tables() ) {
-		array_push($columns, [ 'name' => 'bmi', 'title' => ws_ls_tooltip( __( 'BMI', WE_LS_SLUG ), __( 'Body Mass Index', WE_LS_SLUG ) ), 'breakpoints'=> 'xs', 'type' => 'text' ] );
+
+		$columns[] = [ 'name' => 'bmi', 'title' => ws_ls_tooltip( __( 'BMI', WE_LS_SLUG ), __( 'Body Mass Index', WE_LS_SLUG ) ), 'breakpoints'=> 'xs', 'type' => 'text' ];
 	}
 
     if ( true === $arguments[ 'enable-meta' ] &&
@@ -450,13 +451,13 @@ function ws_ls_datatable_columns( $arguments = [] ) {
 			        continue;
 		        }
 
-		        array_push($columns, [ 'name' => 'meta-' . $field['id'], 'title' => stripslashes( $field['field_name'] ), 'breakpoints'=> $column_size, 'type' => 'text' ] );
+		        $columns[] = [ 'name' => 'meta-' . $field['id'], 'title' => stripslashes( $field['field_name'] ), 'breakpoints'=> $column_size, 'type' => 'text' ];
 			}
         }
     }
 
 	if ( true === $arguments[ 'enable-notes' ] ) {
-		array_push($columns, [ 'name' => 'notes', 'title' => __( 'Notes', WE_LS_SLUG ), 'breakpoints'=> 'lg', 'type' => 'text' ] );
+		$columns[] = [ 'name' => 'notes', 'title' => __( 'Notes', WE_LS_SLUG ), 'breakpoints'=> 'lg', 'type' => 'text' ];
 	}
 
 	return apply_filters( 'wlt-filter-front-end-data-table-columns', $columns, $arguments[ 'front-end' ] );
