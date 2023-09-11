@@ -33,7 +33,6 @@ The majority of the public facing functionality are implemented using [WordPress
 |[[wt-group-view-as-table]]({{ site.baseurl }}/shortcodes/wt-group-view-as-table.html)|Display a table of summary information for users within a given [group]({{ site.baseurl }}/groups.html).
 |[[wt-waist-to-hip-ratio-calculator]]({{ site.baseurl }}/shortcodes/wt-waist-to-hip-ratio-calculator.html)|Displays a Waist-to-Hip ratio calculator for your users to use.|
 |[[wt-if]]({{ site.baseurl }}/shortcodes/wt-if.html)|Add conditional display logic based on whether WT data has been completed or not.|
-|[[wt-legacy]]({{ site.baseurl }}/shortcodes/wt-legacy.html) |A legacy version of [[wt]]({{ site.baseurl }}/shortcodes/wt.html).|  
 |[[wt-league-table]]({{ site.baseurl }}/shortcodes/wt-league-table.html)|Display a league table of Weight Tracker users.|
 |[[wt-macronutrients]]({{ site.baseurl }}/shortcodes/wt-macronutrients.html)|Displays a macronutrient figure from the macronutrient intake calculations.|
 |[[wt-macronutrients-table]]({{ site.baseurl }}/shortcodes/wt-macronutrients-table.html)|Displays recommendations on the best way to split your calorie intake.|

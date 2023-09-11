@@ -38,7 +38,7 @@ function ws_ls_shortcode_stats_league_total( $user_defined_arguments ) {
 							<th class="ws-col-name-th">' . __('Name', WE_LS_SLUG) . '</th>
 							<th class="ws-weight-diff-th">' . __('Weight Difference', WE_LS_SLUG) . '</th>';
 
-							if(true == $arguments['show_percentage']) {
+							if( $arguments['show_percentage'] ) {
 								$html .= '<th class="ws-weight-diff-th">+/-</th>';
 							}
 
@@ -62,12 +62,12 @@ function ws_ls_shortcode_stats_league_total( $user_defined_arguments ) {
             }
 
             // Get the display value for weight
-            $stats = ws_ls_shortcode_stats_display_value([ 'kg' => $row['weight_difference'], 'display-unit' => ws_ls_setting( 'weight-unit' ), 'display-value' => '' ], $arguments );
+            $stats = ws_ls_shortcode_stats_display_value([ 'kg' => $row['weight_difference'], 'display-unit' => ws_ls_setting(), 'display-value' => '' ], $arguments );
 
             $percentage = '';
 
             // Calculate %
-            if( true == $arguments[ 'show_percentage' ] && 0 !== (int) $row[ 'start_weight' ] ) {
+            if( $arguments['show_percentage'] && 0 !== (int) $row[ 'start_weight' ] ) {
                 $percentage = ( ( $row[ 'recent_weight' ] - $row[ 'start_weight' ]) / $row[ 'start_weight' ] ) * 100;
                 $percentage = ( false === ws_ls_to_bool( $arguments[ 'invert' ] ) ) ? $percentage : -$percentage ;
                 $percentage = round( $percentage ) . '%';
@@ -89,7 +89,7 @@ function ws_ls_shortcode_stats_league_total( $user_defined_arguments ) {
                 ws_ls_blur(),
                 $display_name,
                 ws_ls_blur_text( $stats[ 'display-value' ] ),
-                ( true == $arguments[ 'show_percentage' ] ) ? '<td ' . $table_cell . ' class="' . ws_ls_blur() . '">' . ws_ls_blur_text( $percentage ) . '</td>' : '',
+                $arguments['show_percentage'] ? '<td ' . $table_cell . ' class="' . ws_ls_blur() . '">' . ws_ls_blur_text( $percentage ) . '</td>' : '',
                 ws_ls_blur_text( $row[ 'no_entries' ] )
             );
 
@@ -122,7 +122,7 @@ function ws_ls_shortcode_stats_total_lost( $user_defined_arguments ) {
 
 	$arguments      = shortcode_atts( [	'display' => 'number/text', 'force-to-kg' => 'false', 'invert' => false ], $user_defined_arguments );
 	$summary_stats  = ws_ls_stats_get_summary_stats();
-	$stats = ws_ls_shortcode_stats_display_value( [ 'kg' => $summary_stats['difference'], 'display-unit' => ws_ls_setting('weight-unit' ), 'display-value' => '' ], $arguments );
+	$stats = ws_ls_shortcode_stats_display_value( [ 'kg' => $summary_stats['difference'], 'display-unit' => ws_ls_setting(), 'display-value' => '' ], $arguments );
 
 	return $stats['display-value'];
 }
@@ -157,7 +157,7 @@ function ws_ls_shortcode_stats_display_value( $stats, $arguments ) {
 		}
 
 		// Ignore global and user settings and force display to Kg?
-		if( true == ws_ls_to_bool( $arguments[ 'force-to-kg' ] ) ) {
+		if( ws_ls_to_bool( $arguments['force-to-kg'] ) ) {
 			$stats[ 'display-unit' ] = 'kg';
 		}
 
@@ -174,9 +174,7 @@ function ws_ls_shortcode_stats_display_value( $stats, $arguments ) {
 		}
 
 		// Allow theme developer to override stats message
-		$stats = apply_filters( 'wlt-filter-stats-shortcode', $stats);
-
-		return $stats;
+		return apply_filters( 'wlt-filter-stats-shortcode', $stats );
 	}
 
 	return '';

@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight,tracker,chart,bmi,bmr,macronutrient,measure,awards,custom fields,history,measurements,data
 Requires at least: 5.7
 Tested up to: 6.3
-Stable tag: 10.6
+Stable tag: 10.7
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -151,6 +151,18 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 10.4: New award for user's meeting their target
 
 == Changelog ==
+
+= 10.7 =
+
+* Maintenance: Removed support for the shortcode [wt-beta], you must use [wt] instead.
+* Maintenance: Removed support for the shortcode [wlt], you must use [wt] instead.
+* Maintenance: Removed support for the shortcode [wt-legacy], you must use [wt] instead.
+* Maintenance: Removed redundant setting "Hide tab descriptions" from the "User Experience" settings page.
+* Maintenance: Removed redundant setting "Tab appearance" from the "User Experience" settings page.
+* Maintenance: Removed redundant setting "Switching to a drop down" from the "User Experience" settings page.
+* Maintenance: Removed redundant setting "Switching to a drop down" from the "User Experience" settings page.
+* Maintenance: Challenges functionality is now enabled by default.
+* Maintenance: Based on PHPStorm inspection made 129+ changes to code for optimisation.
 
 = 10.6 =
 

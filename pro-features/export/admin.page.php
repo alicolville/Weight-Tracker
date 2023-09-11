@@ -266,7 +266,7 @@ function ws_ls_export_admin_page_new() {
 				</div>
 				<div id="postbox-container-1" class="postbox-container">
 					<div class="postbox">
-						<h2 class="hndle"><span><?php echo esc_html( 'Output', WE_LS_SLUG ); ?></span></h2>
+						<h2 class="hndle"><span><?php echo __( 'Output', WE_LS_SLUG ); ?></span></h2>
 						<div class="inside">
 							<?php
 
@@ -277,7 +277,7 @@ function ws_ls_export_admin_page_new() {
 						</div>
 					</div>
 					<div class="postbox">
-						<h2 class="hndle"><span><?php echo esc_html( 'Options', WE_LS_SLUG ); ?></span></h2>
+						<h2 class="hndle"><span><?php echo __( 'Options', WE_LS_SLUG ); ?></span></h2>
 						<div class="inside">
 							<center>
 								<input type="submit" class="button-primary" value="<?php echo __( 'Run Report', WE_LS_SLUG ); ?>" />

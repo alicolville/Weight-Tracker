@@ -208,7 +208,7 @@ function ws_ls_webhooks_data_prep_weight( $entry ) {
 		$data[ 'custom-fields' ] = [];
 
 		foreach ( $entry[ 'meta' ] as $id => $value ) {
-			$index                              = ws_ls_meta_fields_get_column( $id, 'field_key' );
+			$index                              = ws_ls_meta_fields_get_column( $id );
 			$data[ 'custom-fields' ][ $index ]  = ws_ls_fields_display_field_value( $value, $id, true );
 		}
 	}

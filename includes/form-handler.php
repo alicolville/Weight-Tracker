@@ -226,7 +226,7 @@ function ws_ls_form_post_handler_extract_weight( $get_or_post = 'post' ) {
 	// Are we lucky? Metric by default?
 	$kg = 'post' === $get_or_post ?
 									ws_ls_post_value( 'ws-ls-weight-kg', NULL, true ) :
-										ws_ls_querystring_value( 'ws-ls-weight-kg', false, NULL, true );
+										ws_ls_querystring_value( 'ws-ls-weight-kg', false, NULL );
 
 	if ( NULL !== $kg ) {
 		return $kg;
@@ -234,11 +234,11 @@ function ws_ls_form_post_handler_extract_weight( $get_or_post = 'post' ) {
 
 	$stones = 'post' === $get_or_post ?
 										ws_ls_post_value( 'ws-ls-weight-stones', NULL, true ) :
-											ws_ls_querystring_value( 'ws-ls-weight-stones', false, NULL, true );
+											ws_ls_querystring_value( 'ws-ls-weight-stones', false, NULL );
 
 	$pounds = 'post' === $get_or_post ?
 										ws_ls_post_value( 'ws-ls-weight-pounds', NULL, true ) :
-											ws_ls_querystring_value( 'ws-ls-weight-pounds', false, NULL, true );
+											ws_ls_querystring_value( 'ws-ls-weight-pounds', false, NULL );
 
 	// Stones and Pounds
 	if ( NULL !== $stones ) {

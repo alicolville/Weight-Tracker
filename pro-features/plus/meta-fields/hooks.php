@@ -145,10 +145,7 @@ function ws_ls_meta_fields_ajax_custom_field_groups_get(){
 		$rows = ws_ls_meta_fields_groups( false );
 
 		foreach ( $rows as &$row ) {
-			$row[ 'id' ]        = $row[ 'id' ];
-			$row[ 'slug' ]      = $row[ 'slug' ];
-			$row[ 'name' ]      = $row[ 'name' ];
-			$row[ 'count' ]     = ws_ls_meta_fields_groups_count( $row[ 'id' ] );
+			$row[ 'count' ] = ws_ls_meta_fields_groups_count( $row[ 'id' ] );
 		}
 
 	}

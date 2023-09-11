@@ -15,9 +15,7 @@ function ws_ls_meta( $entry_id ) {
 
 	$sql = $wpdb->prepare( 'Select * from ' . $wpdb->prefix . WE_LS_MYSQL_META_ENTRY . ' where entry_id = %d', $entry_id );
 
-	$data = $wpdb->get_results( $sql, ARRAY_A );
-
-	return $data;
+	return $wpdb->get_results( $sql, ARRAY_A );
 }
 
 /**
@@ -33,9 +31,7 @@ function ws_ls_meta_for_given_meta_field( $meta_field_id ) {
 
 	$sql = $wpdb->prepare( 'Select * from ' . $wpdb->prefix . WE_LS_MYSQL_META_ENTRY . ' where meta_field_id = %d', $meta_field_id );
 
-	$data = $wpdb->get_results( $sql, ARRAY_A );
-
-	return $data;
+	return $wpdb->get_results( $sql, ARRAY_A );
 }
 
 /**
@@ -159,11 +155,9 @@ function ws_ls_meta_fields_enabled() {
     if ( false === empty( $fields ) ) {
 
         // Remove any disabled fields!
-        $fields = array_filter( $fields, function( $value ) {
+        return array_filter( $fields, function( $value ) {
             return ( false === empty( $value['enabled'] ) && 2 === (int) $value['enabled'] );
         });
-
-        return $fields;
     }
 
     return [];
@@ -394,7 +388,7 @@ function ws_ls_meta_fields_key_exist( $key ) {
 
     $count = $wpdb->get_var( $sql );
 
-    return ( 0 === (int) $count ) ? false : true;
+    return ! ( ( 0 === (int) $count ) );
 }
 
 /**

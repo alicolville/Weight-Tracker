@@ -28,10 +28,7 @@ function ws_ls_admin_page_data_notes_for_user() {
 						$notes = ws_ls_notes_fetch( $user_id, NULL );
 
 						if ( false === empty( $notes ) ) {
-
-							if ( false === empty( $notes ) ) {
-								array_map( 'ws_ls_notes_render', $notes );
-							}
+						    array_map( 'ws_ls_notes_render', $notes );
 						} else {
 							printf( '	<div class="postbox ws-ls-postbox">
 											<div class="postbox-header ws-ls-note-header">

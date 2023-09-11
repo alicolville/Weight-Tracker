@@ -56,7 +56,7 @@ function ws_ls_cache_user_get( $user_id, $key ) {
 	// If no data is found at this key, presume the cache entry has expired, so remove from lookup.
 	if ( false === $data_value ) {
 		unset( $user_lookup_table[ $key ] );
-		ws_ls_cache_set( $user_id, $user_lookup_table, WE_LS_CACHE_TIME );
+		ws_ls_cache_set( $user_id, $user_lookup_table );
 	}
 
 	return $data_value;

@@ -28,7 +28,7 @@ function ws_ls_groups_can_users_edit() {
 		return false;
 	}
 
-	return 'yes' === get_option('ws-ls-enable-groups-user-edit', false ) ? true : false;
+	return 'yes' === get_option('ws-ls-enable-groups-user-edit', false );
 }
 
 /**
@@ -136,7 +136,7 @@ function ws_ls_groups_hooks_user_preferences_form( $html, $user_id ) {
 
 	if ( true === ws_ls_groups_enabled() ) {
 
-		$groups = ws_ls_groups( true );
+		$groups = ws_ls_groups();
 
 		if ( false === empty( $groups ) ) {
 
@@ -556,8 +556,6 @@ function ws_ls_groups_export_add( $row ) {
     if ( false === ws_ls_groups_enabled () ) {
         return $row;
     }
-
-    $row[ 'group' ] = '';
 
     $group = ws_ls_groups_user( $row[ 'user_id' ] );
 
@@ -1030,4 +1028,4 @@ function ws_ls_groups_add_missing_group( $user_id ) {
 
 	ws_ls_groups_add_to_user( 0, $user_id );
 }
-add_action( 'wlt-hook-data-attempting-added-edited', 'ws_ls_groups_add_missing_group', 10, 1 );
+add_action( 'wlt-hook-data-attempting-added-edited', 'ws_ls_groups_add_missing_group' );

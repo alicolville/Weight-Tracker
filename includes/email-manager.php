@@ -484,7 +484,7 @@ function ws_ls_emailer_get_all( $only_editable = true ) {
 
 	$sql = 'Select * from ' . $wpdb->prefix . WE_LS_EMAIL_TABLENAME;
 
-	if ( true == $only_editable ) {
+	if ( $only_editable ) {
 		$sql .= ' where editable = 1';
 	}
 

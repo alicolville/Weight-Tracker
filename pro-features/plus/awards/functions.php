@@ -38,7 +38,7 @@
 
 	    }
 
-        $fields = [
+        return [
 	        'bmi'               => __('BMI: Change', WE_LS_SLUG ),
 	        'bmi-equals'        => __('BMI: Equals', WE_LS_SLUG ),
 	        'weight-target'     => __('Weight: Target met (based on user aim)', WE_LS_SLUG ),
@@ -47,7 +47,6 @@
 
         ];
 
-        return $fields;
     }
 
 	/**
@@ -62,10 +61,8 @@
     	switch ( $gain_loss ) {
     		case 'gain';
     		    return __('Gain', WE_LS_SLUG);
-    		    break;
 		    case 'loss':
 			    return __('Loss', WE_LS_SLUG);
-				break;
 		    default:
 		    	return '';
 	    }
@@ -213,7 +210,7 @@
         // Loop through each award in DB, count it's type and decide whether to consider issuing it.
 
         return [
-            'any' => ( count( $awards ) > 0 ) ? true : false,
+            'any' => count( $awards ) > 0,
             'counts' => $counts,
             'awards' => $awards
         ];
@@ -367,5 +364,5 @@
 	 * @return bool
 	 */
 	function ws_ls_awards_email_notifications_enabled() {
-		return 'y' === get_option('ws-ls-awards-email-notifications', false ) ? true : false;
+		return 'y' === get_option('ws-ls-awards-email-notifications', false );
 	}

@@ -18,8 +18,6 @@ function ws_ls_harris_benedict_migrate_old_macro_percentages() {
 			update_option( 'ws-ls-macro-carbs-' . $key, ws_ls_harris_benedict_setting( 'ws-ls-macro-carbs' ) );
 			update_option( 'ws-ls-macro-fats-' . $key, ws_ls_harris_benedict_setting( 'ws-ls-macro-fats' ) );
 		}
-
-		return;
 	}
 }
 add_action( 'admin_init', 'ws_ls_harris_benedict_migrate_old_macro_percentages' );

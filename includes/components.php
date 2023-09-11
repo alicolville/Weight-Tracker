@@ -31,7 +31,7 @@ function ws_ls_uikit_summary_boxes( $arguments, $boxes = [] ) {
 	$arguments      = wp_parse_args( $arguments, [ 'user-id' => get_current_user_id(), 'breakpoint_s' => 2 ] );
 	$no_boxes       = count( $boxes );
 
-	$breakpoint_m = $no_boxes < 4 ? $no_boxes : 4;
+	$breakpoint_m = min( $no_boxes, 4 );
 	$breakpoint_s = $no_boxes < 3 ? $no_boxes : (int) $arguments[ 'breakpoint_s' ];
 
 	$divider_count = 0;
@@ -519,8 +519,7 @@ function ws_ls_component_latest_versus_another( $args = [] ) {
 			$percentage_difference = 0;
 		} else {
 
-			$percentage_difference	= ( NULL !== $percentage_difference &&
-			                              true === $percentage_difference[ 'increase' ] ) ?  $percentage_difference[ 'percentage' ] : -$percentage_difference[ 'percentage' ];
+			$percentage_difference	= ( true === $percentage_difference[ 'increase' ] ) ?  $percentage_difference[ 'percentage' ] : -$percentage_difference[ 'percentage' ];
 
 			$percentage_difference 	= ws_ls_round_number( $percentage_difference, 1 );
 		}

@@ -232,8 +232,6 @@ function ws_ls_datatable_rows( $arguments ) {
 					$gain_loss = $entry[ 'user_profile' ] = sprintf('<a href="%s" rel="noopener noreferrer" target="_blank">%s</a>', ws_ls_get_link_to_user_profile( $entry[ 'user_id' ] ), __( 'Check record', WE_LS_SLUG ) );
 				} elseif ( false === empty( $entry[ 'kg' ] ) ) {
 					$gain_loss = __( 'First weight entry', WE_LS_SLUG );
-				} else {
-					$gain_loss = '';
 				}
 
 				if ( false === empty( $entry[ 'kg' ] ) ) {
@@ -276,8 +274,6 @@ function ws_ls_datatable_rows( $arguments ) {
 					$gain_loss = $entry[ 'user_profile' ] = sprintf('<a href="%s" rel="noopener noreferrer" target="_blank">%s</a>', ws_ls_get_link_to_user_profile( $entry[ 'user_id' ] ), __( 'Check record', WE_LS_SLUG ) );
 				} elseif ( false === empty( $entry[ 'kg' ] ) ) {
 					$gain_loss = __( 'First weight entry', WE_LS_SLUG );
-				} else {
-					$gain_loss = '';
 				}
 
 				if ( true === is_numeric( $gain_loss ) ) {
@@ -329,7 +325,7 @@ function ws_ls_datatable_rows( $arguments ) {
 				$row[ 'options' ][ 'classes' ] = 'ws-ls-has-note';
 			}
 
-			array_push( $rows, $row );
+			$rows[] = $row;
 		}
 
 		ws_ls_cache_user_set( $arguments[ 'user-id' ], $cache_key, $rows );
@@ -339,9 +335,7 @@ function ws_ls_datatable_rows( $arguments ) {
 	$rows = array_reverse( $rows );
 
 	// Localise the row for the user viewing
-	$rows = array_map( 'ws_ls_datatable_rows_localise', $rows );
-
-	return $rows;
+	return array_map( 'ws_ls_datatable_rows_localise', $rows );
 }
 
 /**
@@ -398,7 +392,7 @@ function ws_ls_datatable_columns( $arguments = [] ) {
 					[ 'name' => 'user_id', 'title' => 'USER ID', 'visible' => false, 'type' => 'number' ]
 	];
 
-	// If not front end, add nice nice name
+	// If not front end, add nice name
 	if ( false === $arguments[ 'front-end' ] ) {
 		$columns[] = [ 'name' => 'user_nicename', 'title' => __( 'User', WE_LS_SLUG ), 'breakpoints'=> '', 'type' => 'text' ];
 	} else {
@@ -419,7 +413,8 @@ function ws_ls_datatable_columns( $arguments = [] ) {
 	// Add BMI?
 	if( true === $arguments[ 'enable-bmi' ] &&
 	        true === ws_ls_bmi_in_tables() ) {
-		array_push($columns, [ 'name' => 'bmi', 'title' => ws_ls_tooltip( __( 'BMI', WE_LS_SLUG ), __( 'Body Mass Index', WE_LS_SLUG ) ), 'breakpoints'=> 'xs', 'type' => 'text' ] );
+
+		$columns[] = [ 'name' => 'bmi', 'title' => ws_ls_tooltip( __( 'BMI', WE_LS_SLUG ), __( 'Body Mass Index', WE_LS_SLUG ) ), 'breakpoints'=> 'xs', 'type' => 'text' ];
 	}
 
     if ( true === $arguments[ 'enable-meta' ] &&
@@ -450,13 +445,13 @@ function ws_ls_datatable_columns( $arguments = [] ) {
 			        continue;
 		        }
 
-		        array_push($columns, [ 'name' => 'meta-' . $field['id'], 'title' => stripslashes( $field['field_name'] ), 'breakpoints'=> $column_size, 'type' => 'text' ] );
+		        $columns[] = [ 'name' => 'meta-' . $field['id'], 'title' => stripslashes( $field['field_name'] ), 'breakpoints'=> $column_size, 'type' => 'text' ];
 			}
         }
     }
 
 	if ( true === $arguments[ 'enable-notes' ] ) {
-		array_push($columns, [ 'name' => 'notes', 'title' => __( 'Notes', WE_LS_SLUG ), 'breakpoints'=> 'lg', 'type' => 'text' ] );
+		$columns[] = [ 'name' => 'notes', 'title' => __( 'Notes', WE_LS_SLUG ), 'breakpoints'=> 'lg', 'type' => 'text' ];
 	}
 
 	return apply_filters( 'wlt-filter-front-end-data-table-columns', $columns, $arguments[ 'front-end' ] );
@@ -513,7 +508,7 @@ function ws_ls_data_js_config() {
 
     } else {
 		$config[ 'current-url-base64' ]     = ws_ls_get_url( true );
-        $config[ 'us-date' ]                = ( true == ws_ls_settings_date_is_us() ) ? 'true' : 'false';
+        $config[ 'us-date' ]                = ws_ls_settings_date_is_us() ? 'true' : 'false';
 
 	    // Have we detected were in Admin, on a user profile?
 	    if ( true === ws_ls_datatable_is_user_profile() ) {

@@ -104,7 +104,7 @@ function ws_ls_shortcode_calculator( $user_defined_arguments ) {
 			$html_output .= sprintf( '<p class="ws-ls-calc-bmi">%1$s <span>%2$s</span>.</p>', esc_html( $arguments[ 'text-bmi' ] ), esc_html( $bmi ) );
 		}
 
-		$calories = ws_ls_harris_benedict_calculate_calories_raw( $bmr, $entry[ 'ws-ls-gender' ], $entry[ 'ws-ls-activity-level' ], false );
+		$calories = ws_ls_harris_benedict_calculate_calories_raw( $bmr, $entry[ 'ws-ls-gender' ], $entry[ 'ws-ls-activity-level' ] );
 
 		if ( true === ws_ls_to_bool( $arguments[ 'results-show-calories' ] ) ) {
 

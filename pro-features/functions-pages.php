@@ -71,8 +71,6 @@ function ws_ls_user_side_bar( $user_id ) {
 			ws_ls_postbox_sidebar_user_information( $user_id );
 		} elseif ( 'add-entry' === $postbox ) {
 			ws_ls_postbox_sidebar_add_entry( $user_id );
-		} elseif ( 'user-information' === $postbox ) {
-			ws_ls_postbox_sidebar_user_information( $user_id );
 		} elseif ( 'export-data' === $postbox ) {
 			ws_ls_postbox_sidebar_export_data( $user_id );
 		} elseif ( 'settings' === $postbox ) {

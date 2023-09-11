@@ -23,7 +23,7 @@ function ws_ls_awards_add_update_page() {
             $mandatory_fields = array_merge( $mandatory_fields, [ 'weight_percentage' ] );
         } else if ( 'weight' === $award['category'] ) {
             if( ws_ls_setting( 'use-imperial' ) ) {
-                if ( 'stones_pounds' === ws_ls_setting( 'weight-unit' ) ) {
+                if ( 'stones_pounds' === ws_ls_setting() ) {
                     $mandatory_fields = array_merge( $mandatory_fields, [ 'stones', 'pounds' ] );
                     $award['value'] = ws_ls_convert_stones_pounds_to_kg( $award['stones'], $award['pounds'] );
                 } else {
@@ -159,7 +159,7 @@ function ws_ls_awards_add_update_page() {
 
                                                     if( ws_ls_setting( 'use-imperial' ) ) {
 
-                                                       if ( 'stones_pounds' === ws_ls_setting( 'weight-unit' ) ) {
+                                                       if ( 'stones_pounds' === ws_ls_setting() ) {
 
                                                            if ( true === $validation_fail ) {
                                                                $weight['stones'] = $award['stones'];

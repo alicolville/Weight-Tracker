@@ -11,7 +11,7 @@ function ws_ls_settings_page_generic() {
 	$disable_if_not_pro_class = (WS_LS_IS_PRO) ? '' : 'ws-ls-disabled';
     $disable_if_not_pro_plus_class = (WS_LS_IS_PRO_PLUS) ? '' : 'ws-ls-disabled-pro-plus';
 
-  	$clear_cache = ( isset($_GET['settings-updated']) && 'true' == $_GET['settings-updated'] ) ? true : false;
+  	$clear_cache = isset( $_GET[ 'settings-updated' ] ) && 'true' == $_GET[ 'settings-updated' ];
 
 	if ( true === is_admin() && false === empty( $_GET['recreatetables'] ) ) {
 
@@ -230,67 +230,6 @@ function ws_ls_settings_page_generic() {
 														</td>
 													</tr>
 											</table>
-											<h3><?php echo __( 'Tab appearance' , WE_LS_SLUG); ?></h3>
-											<table class="form-table">
-												<tr>
-													<th scope="row"><?php echo __( 'Hide tab descriptions' , WE_LS_SLUG); ?></th>
-													<td>
-														<?php
-														$hide_descriptions = get_option( 'ws-ls-tab-hide-descriptions', 'no' );
-														?>
-														<select id="ws-ls-tab-hide-descriptions" name="ws-ls-tab-hide-descriptions">
-															<option value="yes" <?php selected( $hide_descriptions, 'yes' ); ?>><?php echo __( 'Yes', WE_LS_SLUG ); ?></option>
-															<option value="no" <?php selected( $hide_descriptions, 'no' ); ?>><?php echo __( 'No', WE_LS_SLUG ); ?></option>
-														</select>
-														<p> <?php echo __( 'If enabled, the description text under each tab title shall be hidden', WE_LS_SLUG ); ?>.</p>
-													</td>
-												</tr>
-												<tr>
-													<th scope="row"><?php echo __( 'Tab theme' , WE_LS_SLUG); ?></th>
-													<td>
-														<?php
-														$tab_theme = get_option( 'ws-ls-tab-theme', 'silver' );
-														?>
-														<select id="ws-ls-tab-theme" name="ws-ls-tab-theme">
-															<option value="black" <?php selected( $hide_descriptions, 'black' ); ?>><?php echo __( 'Black', WE_LS_SLUG ); ?></option>
-															<option value="blue" <?php selected( $tab_theme, 'blue' ); ?>><?php echo __( 'Blue', WE_LS_SLUG ); ?></option>
-															<option value="crystal" <?php selected( $tab_theme, 'crystal' ); ?>><?php echo __( 'Crystal', WE_LS_SLUG ); ?></option>
-															<option value="deepblue" <?php selected( $tab_theme, 'deepblue' ); ?>><?php echo __( 'Deep Blue', WE_LS_SLUG ); ?></option>
-															<option value="gray" <?php selected( $tab_theme, 'gray' ); ?>><?php echo __( 'Gray', WE_LS_SLUG ); ?></option>
-															<option value="orange" <?php selected( $tab_theme, 'orange' ); ?>><?php echo __( 'Orange', WE_LS_SLUG ); ?></option>
-															<option value="red" <?php selected( $tab_theme, 'red' ); ?>><?php echo __( 'Red', WE_LS_SLUG ); ?></option>
-															<option value="silver" <?php selected( $tab_theme, 'silver' ); ?>><?php echo __( 'Silver', WE_LS_SLUG ); ?></option>
-															<option value="white" <?php selected( $tab_theme, 'white' ); ?>><?php echo __( 'White', WE_LS_SLUG ); ?></option>
-														</select>
-													</td>
-												</tr>
-												<tr>
-													<th scope="row"><?php echo __( 'Switching to a drop down' , WE_LS_SLUG); ?></th>
-													<?php
-														$tab_resize = get_option( 'ws-ls-tab-window-resize', '1200' );
-													?>
-													<td>
-														<input type="number" step="any" min="0" max="5000" name="ws-ls-tab-window-resize" id="ws-ls-tab-window-resize" value="<?php echo esc_attr( $tab_resize ); ?>" size="11" /> <?php echo __( 'pixels', WE_LS_SLUG ); ?>
-														<p><?php echo __( 'At which browser size (and below) should the tabs render as a dropdown instead', WE_LS_SLUG ); ?>.</p>
-													</td>
-												</tr>
-											</table>
-											<h3><?php echo __( 'Challenges' , WE_LS_SLUG); ?></h3>
-											<table class="form-table">
-												<tr class="<?php echo $disable_if_not_pro_class; ?>">
-													<th scope="row"><?php echo __( 'Enabled' , WE_LS_SLUG); ?></th>
-													<td>
-														<?php
-														    $challenges_enabled = get_option( 'ws-ls-challenges-enabled', 'yes' );
-														?>
-														<select id="ws-ls-challenges-enabled" name="ws-ls-challenges-enabled">
-															<option value="yes" <?php selected( $challenges_enabled, 'yes' ); ?>><?php echo __( 'Yes', WE_LS_SLUG ); ?></option>
-															<option value="no" <?php selected( $challenges_enabled, 'no' ); ?>><?php echo __( 'No', WE_LS_SLUG ); ?></option>
-														</select>
-														<p> <?php echo __( 'If enabled, Challenge functionality shall be included within shortcodes and admin interface', WE_LS_SLUG ); ?> <a href="https://docs.yeken.uk/challenges.html" target="_blank"><?php echo __( 'Read more about Challenges', WE_LS_SLUG ); ?></a></p>
-													</td>
-												</tr>
-											</table>
                                             <h3><?php echo __( 'Awards' , WE_LS_SLUG); ?></h3>
                                             <table class="form-table">
                                                 <tr class="<?php echo $disable_if_not_pro_class; ?>">
@@ -340,22 +279,6 @@ function ws_ls_settings_page_generic() {
                                                     </td>
                                                 </tr>
                                             </table>
-											<h3><?php echo __( 'Number formatting' , WE_LS_SLUG); ?></h3>
-											<table class="form-table">
-												<tr>
-													<th scope="row"><?php echo __( 'Include thousand separator?' , WE_LS_SLUG); ?></th>
-													<td>
-														<?php
-															$include_separator = get_option( 'ws-ls-number-formatting-separator', 'yes' );
-														?>
-														<select id="ws-ls-number-formatting-separator" name="ws-ls-number-formatting-separator">
-															<option value="yes" <?php selected( $include_separator, 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG); ?></option>
-															<option value="no" <?php selected( $include_separator, 'no' ); ?>><?php echo __('No', WE_LS_SLUG); ?></option>
-														</select>
-														<p><?php echo __('If enabled, larger numbers shall be split up by commas e.g. 2,300 instead of 2300', WE_LS_SLUG); ?>.</p>
-													</td>
-												</tr>
-											</table>
                                             <h3><?php echo __( 'Permissions' , WE_LS_SLUG); ?></h3>
                                             <table class="form-table">
                                                 <tr class="<?php echo $disable_if_not_pro_class; ?>">
@@ -1209,13 +1132,7 @@ function ws_ls_register_settings(){
 	register_setting( 'we-ls-options-group', 'ws-ls-fill-under-weight-line' );
     register_setting( 'we-ls-options-group', 'ws-ls-fill-under-weight-line-opacity' );
     register_setting( 'we-ls-options-group', 'ws-ls-fill-under-weight-line-colour' );
-	register_setting( 'we-ls-options-group', 'ws-ls-number-formatting-separator' );
 	register_setting( 'we-ls-options-group', 'ws-ls-default-aim' );
-
-	// Tabs
-	register_setting( 'we-ls-options-group', 'ws-ls-tab-window-resize' );
-	register_setting( 'we-ls-options-group', 'ws-ls-tab-hide-descriptions' );
-	register_setting( 'we-ls-options-group', 'ws-ls-tab-theme' );
 
     // Pro only open
     if( WS_LS_IS_PRO ){
@@ -1283,8 +1200,7 @@ function ws_ls_register_settings(){
 	    register_setting( 'we-ls-options-group', 'ws-ls-cal-show-gain' );
 		register_setting( 'we-ls-options-group', 'ws-ls-cal-add-unit' );
 		register_setting( 'we-ls-options-group', 'ws-ls-cal-lose-unit' );
-		register_setting( 'we-ls-options-group', 'ws-ls-challenges-enabled' );
-	    register_setting( 'we-ls-options-group', 'ws-ls-awards-delete-when-entry-deleted-enabled' );
+		register_setting( 'we-ls-options-group', 'ws-ls-awards-delete-when-entry-deleted-enabled' );
 
 		register_setting( 'we-ls-options-group', 'ws-ls-macro-proteins-maintain' );
 		register_setting( 'we-ls-options-group', 'ws-ls-macro-carbs-maintain' );

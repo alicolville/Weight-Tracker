@@ -239,9 +239,7 @@ function ws_ls_gravity_forms_keys() {
 
     $keys = array_merge( $keys, ws_ls_gravity_forms_weight_keys() );
     $keys = array_merge( $keys, ws_ls_gravity_forms_preferences_keys() );
-    $keys = array_merge( $keys, ws_ls_gravity_forms_meta_fields_keys() );
-
-    return $keys;
+    return array_merge( $keys, ws_ls_gravity_forms_meta_fields_keys() );
 }
 
 /**
@@ -256,9 +254,7 @@ function ws_ls_gravity_forms_weight_keys() {
     $keys[] = $prefix . 'pounds';
     $keys[] = $prefix . 'stones';
 
-    $keys = apply_filters( 'wlt-filters-gf-weight-keys', $keys );
-
-    return $keys;
+    return apply_filters( 'wlt-filters-gf-weight-keys', $keys );
 }
 
 /**
@@ -272,9 +268,7 @@ function ws_ls_gravity_forms_preferences_keys() {
 
     $keys[] = $prefix . 'body-type';
 
-    $keys = apply_filters( 'wlt-filters-gf-preferences-keys', $keys );
-
-    return $keys;
+    return apply_filters( 'wlt-filters-gf-preferences-keys', $keys );
 }
 
 /**

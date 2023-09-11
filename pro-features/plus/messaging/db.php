@@ -236,7 +236,6 @@ function ws_ls_messages_db_stats( $user_id ) {
 	$latest_note_id = $wpdb->get_var( 'SELECT id FROM ' . $wpdb->prefix . WE_LS_MYSQL_MESSAGES . ' WHERE `note` = 1 and `to` = ' . $user_id . ' order by created desc' );
 	$latest_note    = ws_ls_messaging_db_get( $latest_note_id );
 
-	$stats                              = [ 'notes-count' => NULL, 'notes-count-visible' => NULL ];
 	$user_id                            = (int) $user_id;
 	$stats[ 'notes-count' ]             = $wpdb->get_var( 'SELECT count( id ) FROM ' . $wpdb->prefix . WE_LS_MYSQL_MESSAGES . ' WHERE `note` = 1 and `to` = ' . $user_id );
 	$stats[ 'notes-count-visible' ]     = $wpdb->get_var( 'SELECT count( id ) FROM ' . $wpdb->prefix . WE_LS_MYSQL_MESSAGES . ' WHERE `note` = 1 and `visible_to_user` = 1 and `to` = ' . $user_id );

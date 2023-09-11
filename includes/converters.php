@@ -56,7 +56,7 @@ function ws_ls_convert_pounds_to_stones( $pounds ) {
  * @return array
  */
 function ws_ls_convert_pounds_to_stone_pounds( $lb ) {
-	$weight = [ 'stones' => 0, 'pounds' => 0 ];
+
 	$weight[ 'stones' ] = $lb < 0 ? -1 * floor(-1 * $lb / 14 ) : floor($lb / 14 );
 	$weight[ 'pounds' ] = Round( fmod( $lb, 14 ), 1 );
 	return $weight;
@@ -80,7 +80,7 @@ function ws_ls_convert_kg_to_lb( $kg ) {
  * @return array
  */
 function ws_ls_convert_kg_to_stone_pounds( $kg ) {
-	$weight = [ 'stones' => 0, 'pounds' => 0 ];
+
 	$totalPounds = Round($kg * 2.20462, 3 );
 	$weight[ 'stones' ] = $totalPounds < 0 ? -1 * floor(-1 * $totalPounds / 14 ) : floor($totalPounds / 14 );
 	$weight[ 'pounds' ] = Round ( fmod( $totalPounds, 14 ), 2 );
@@ -112,7 +112,6 @@ function ws_ls_weight_display( $kg, $user_id = NULL, $key = false, $force_admin 
 			$weight[ 'pounds' ] 		= ws_ls_convert_kg_to_lb( $kg );
 			$weight[ 'display' ] 		= sprintf( '%s%s', $weight[ 'pounds' ], __( 'lbs', WE_LS_SLUG ) );
 			$weight[ 'graph-value' ] 	= $weight[ 'pounds' ];
-			$weight[ 'pounds' ]         = $weight['pounds'];
 			$weight[ 'imperial' ]       = true;
 			break;
 

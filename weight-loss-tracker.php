@@ -5,7 +5,7 @@ defined('ABSPATH') or die('Jog on!');
 /**
  * Plugin Name:         Weight Tracker
  * Description:         Allow your users to track their weight, body measurements, photos and other pieces of custom data. Display in charts, tables, shortcodes and widgets. Manage their data, issue awards, email notifications, etc! Provide advanced data on Body Mass Index (BMI), Basal Metabolic Rate (BMR), Calorie intake, Harris Benedict Formula, Macronutrients Calculator and more.
- * Version:             10.6
+ * Version:             10.7
  * Requires at least:   5.7
  * Tested up to: 		6.3
  * Requires PHP:        7.2
@@ -18,7 +18,7 @@ defined('ABSPATH') or die('Jog on!');
  */
 
 define( 'WS_LS_ABSPATH', plugin_dir_path( __FILE__ ) );
-define( 'WE_LS_CURRENT_VERSION', '10.6' );
+define( 'WE_LS_CURRENT_VERSION', '10.7' );
 define( 'WE_LS_TITLE', 'Weight Tracker' );
 define( 'WE_LS_SLUG', 'weight-loss-tracker' );
 define( 'WE_LS_LICENSE_TYPES_URL', 'https://docs.yeken.uk/features.html' );
@@ -28,8 +28,8 @@ define( 'WE_LS_UPGRADE_TO_PRO_PLUS_URL', 'https://shop.yeken.uk/product/weight-t
 define( 'WE_LS_FREE_TRIAL_URL', 'https://shop.yeken.uk/get-a-trial-license/' );
 define( 'WE_LS_CDN_CHART_JS', 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.0/chart.min.js' );
 define( 'WE_LS_CDN_FONT_AWESOME_CSS', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' );
-define( 'WE_LS_PRO_PRICE', 50.00 );
-define( 'WE_LS_PRO_PLUS_PRICE', 100.00 );
+define( 'WE_LS_PRO_PRICE', 60.00 );
+define( 'WE_LS_PRO_PLUS_PRICE', 120.00 );
 
 global $form_number;        // This is used to keep track of multiple forms on a page allowing us to pass messages to each
 global $save_response;      // This is used to keep track of form posts responses
@@ -82,7 +82,6 @@ require_once( WS_LS_ABSPATH . 'includes/core-charting.php' );
 require_once( WS_LS_ABSPATH . 'includes/ajax.php' );
 require_once( WS_LS_ABSPATH . 'includes/setup-wizard.php' );
 require_once( WS_LS_ABSPATH . 'includes/components.php' );
-require_once( WS_LS_ABSPATH . 'includes/shortcode-wt-legacy.php' );
 require_once( WS_LS_ABSPATH . 'includes/shortcode-wt.php' );
 require_once( WS_LS_ABSPATH . 'includes/shortcode-various.php' );
 require_once( WS_LS_ABSPATH . 'includes/form-handler.php' );
@@ -159,11 +158,7 @@ require_once( WS_LS_ABSPATH . 'pro-features/plus/awards/db.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/plus/awards/hooks.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/email-notifications.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/web-hooks.php' );
-
-if ( true === ws_ls_settings_challenges_enabled() ) {
-	require_once( WS_LS_ABSPATH . 'pro-features/plus/challenge/inc.php' );
-}
-
+require_once( WS_LS_ABSPATH . 'pro-features/plus/challenge/inc.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/plus/messaging/inc.php' );
 
 require_once( WS_LS_ABSPATH . 'pro-features/plus/bmr.php' );

@@ -309,9 +309,7 @@ function ws_ls_entry_get( $arguments = [] ) {
 
 	}
 
-	$entry = ws_ls_weight_prep( $entry );
-
-	return $entry;
+	return ws_ls_weight_prep( $entry );
 }
 
 /**
@@ -480,7 +478,7 @@ function ws_ls_entry_get_todays( $arguments = [] ) {
 
 	if ( true === empty( $todays_entry ) ) {
 		return NULL;
-	};
+	}
 
 	return ( true === $arguments[ 'kg-only'] &&
 			 false === empty( $todays_entry[ 'kg' ] ) ) ?
@@ -548,7 +546,7 @@ function ws_ls_entry_get_previous_kg( $user_id = NULL ) {
 function ws_ls_force_bool_argument( $value ) {
 
     return ( 'true' === strtolower( $value ) ||
-            ( true === is_bool( $value ) && true === $value ) );
+            (  true === $value ) );
 }
 
 /**
@@ -630,7 +628,7 @@ function ws_ls_force_dimension_argument($value, $default = false) {
 	if ( false === empty($value) ) {
 
 		// Is this a percentage?
-		$is_percentage = (false !== stripos($value, '%') ) ? true: false;
+		$is_percentage = false !== stripos( $value, '%' );
 
 		// Strip % sign out if needed
 		$value = ( $is_percentage ) ? ws_ls_remove_non_numeric($value) : $value;
@@ -990,7 +988,7 @@ function ws_ls_display_blockquote( $text, $class = '', $just_echo = false, $incl
 
 	if ( true === $just_echo ) {
 		echo $html_output;
-		return;
+		return '';
 	}
 
 	return $html_output;
@@ -1031,6 +1029,15 @@ function ws_ls_blockquote_error( $text, $class = 'ws-ls-error-text', $just_echo 
  */
 function ws_ls_blockquote_login_prompt( ) {
 	return ws_ls_display_blockquote( __( 'You must be logged in to view or edit your data.' , WE_LS_SLUG ) , '', false, true );
+}
+
+/**
+ * @param $title_text
+ *
+ * @return string
+ */
+function ws_ls_title( $title_text ) {
+	return sprintf( '<h3 class="ws_ls_title">%s</h3>', esc_html( $title_text ) );
 }
 
 /**
@@ -1152,7 +1159,7 @@ function ws_ls_photo_display_max_upload_size() {
 
     $upload_size = ws_ls_photo_get_sizes($max_size);
 
-    return ( true == is_array($upload_size) ) ? ws_ls_display_max_server_upload_size() : $upload_size;
+    return  is_array( $upload_size ) ? ws_ls_display_max_server_upload_size() : $upload_size;
 }
 
 /**
@@ -1388,8 +1395,7 @@ function ws_ls_user_display_name( $user_id ) {
  * @return bool
  */
 function ws_ls_challenges_is_enabled() {
-    return ( WS_LS_IS_PRO_PLUS &&
-				true === ws_ls_settings_challenges_enabled() );
+    return WS_LS_IS_PRO_PLUS;
 }
 
 /**
@@ -1404,10 +1410,7 @@ function ws_ls_round_number( $number, $decimal_places = 0 ) {
 		var_dump($number);
 	}
 
-
-	$seperator = ( 'yes' === get_option( 'ws-ls-number-formatting-separator', 'yes' ) ) ? ',' : '';
-
-	return number_format( $number, $decimal_places, '.', $seperator );
+	return number_format( $number, $decimal_places );
 }
 
 /**
@@ -1432,7 +1435,7 @@ function ws_ls_user_preferences_is_enabled() {
 }
 
 /**
- * Hass CSS been disabled?
+ * Has CSS been disabled?
  * @return bool
  */
 function ws_ls_css_is_disabled() {
@@ -1445,14 +1448,6 @@ function ws_ls_css_is_disabled() {
  */
 function ws_ls_targets_enabled() {
 	return ( 'yes' === get_option( 'ws-ls-allow-targets', 'yes' ) );
-}
-
-/**
- * Challenges enabled?
- * @return bool
- */
-function ws_ls_settings_challenges_enabled() {
-	return ( 'yes' === get_option( 'ws-ls-challenges-enabled', 'yes' ) );
 }
 
 /**
@@ -1574,13 +1569,10 @@ function ws_ls_setting( $key = 'weight-unit', $user_id = NULL, $force_admin = fa
 
 		case 'weight-unit':
 			return ws_ls_settings_weight_unit();
-			break;
 		case 'use-imperial':
 			return ws_ls_settings_weight_is_imperial();
-			break;
 		case 'use-us-dates':
 			return ws_ls_settings_date_is_us();
-			break;
 	}
 
 	return NULL;
@@ -1641,7 +1633,7 @@ function ws_ls_weight_difference_from_start( $user_id, $kg ) {
  */
 function ws_ls_get_unit() {
 
-	switch ( ws_ls_setting( 'weight-unit' )) {
+	switch ( ws_ls_setting() ) {
 		case 'pounds_only':
 			$unit = __("lbs", WE_LS_SLUG);
 			break;

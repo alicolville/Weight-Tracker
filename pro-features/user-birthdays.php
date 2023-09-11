@@ -13,7 +13,7 @@
 			return false;
 		}
 
-		return 'yes' === get_option('ws-ls-enable-birthdays', false ) ? true : false;
+		return 'yes' === get_option('ws-ls-enable-birthdays', false );
 	}
 
     /**

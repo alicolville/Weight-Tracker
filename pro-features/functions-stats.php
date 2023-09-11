@@ -35,7 +35,7 @@ add_action( 'wlt-hook-data-user-deleted', 'ws_ls_stats_run_cron' );	// Tidy up s
  */
 function ws_ls_stats_run_cron_for_first_time() {
 
-	if( false == get_option('ws-ls-stats-run-for-first-time')) {
+	if( ! get_option( 'ws-ls-stats-run-for-first-time' ) ) {
 		ws_ls_stats_run_cron();
 		update_option('ws-ls-stats-run-for-first-time', true);
 	}

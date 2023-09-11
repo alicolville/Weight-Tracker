@@ -144,13 +144,10 @@ function ws_ls_bmi_display( $bmi, $display = 'index' ) {
 	switch ( $display ) {
 		case 'label':
 			return ws_ls_calculate_bmi_label( $bmi );
-			break;
 		case 'both':
 			return sprintf( '%s (%s)', ws_ls_calculate_bmi_label( $bmi ), $bmi );
-			break;
 		default:
 			return $bmi;
-			break;
 	}
 
 	return '';
@@ -400,9 +397,7 @@ function ws_ls_activity_levels() {
 					        '1.9'   => __( 'Extra Active (very active & physical job)', WE_LS_SLUG )
     ];
 
-	$activity_levels = apply_filters( 'wlt-filter-activity-levels', $activity_levels );
-
-    return $activity_levels;
+	return apply_filters( 'wlt-filter-activity-levels', $activity_levels );
 }
 
 /**
@@ -419,12 +414,8 @@ function ws_ls_aims() {
         3 => __('Gain weight', WE_LS_SLUG)
     ];
 
-    $aims = apply_filters( 'wlt-filter-aims', $aims );
-
-    return $aims;
+    return apply_filters( 'wlt-filter-aims', $aims );
 }
-
-
 
 /**
  * Return an array of heights
@@ -782,7 +773,7 @@ function ws_ls_user_exist( $user_id ) {
         return false;
     }
 
-    return ( false === get_userdata( $user_id ) ) ? false : true;
+    return ! ( ( false === get_userdata( $user_id ) ) );
 }
 
 /**
@@ -822,9 +813,7 @@ function ws_ls_get_progress_attribute_from_aim() {
 		    $aim_string = 'lose';
     }
 
-    $aim_string = apply_filters( 'wlt-filter-aim-progress-attribute', $aim_string, $aim_int );
-
-    return $aim_string;
+    return apply_filters( 'wlt-filter-aim-progress-attribute', $aim_string, $aim_int );
 }
 
 /**

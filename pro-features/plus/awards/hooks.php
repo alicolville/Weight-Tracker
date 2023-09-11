@@ -179,7 +179,7 @@ function ws_ls_awards_listen( $info, $weight_object ) {
             // Percentage of body weight lost
             // ---------------------------------------------------------------
 
-            if ( false === empty( $awards['counts']['weight-percentage'] ) && false === empty( $weight_object['difference_from_start_kg'] ) ) {
+            if ( false === empty( $awards['counts']['weight-percentage'] ) ) {
 
                 $percentage_difference = ws_ls_calculate_percentage_difference( $start_weight, $weight_object['kg'] );
 

@@ -40,7 +40,7 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
 
     // Have user preferences been allowed in Settings?
     if ( false === ws_ls_user_preferences_is_enabled() && false === is_admin() && false === $arguments[ 'kiosk-mode' ]) {
-        return ws_ls_display_blockquote( __( 'To use this shortcode, please ensure you have enabled the setting "Allow user settings".', WE_LS_SLUG) );;
+        return ws_ls_display_blockquote( __( 'To use this shortcode, please ensure you have enabled the setting "Allow user settings".', WE_LS_SLUG) );
     }
 
 	// Delete all the user's data if selected
@@ -53,8 +53,7 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
 
     // Decide which set of labels to render
 	$labels = [
-                'title-about'       => __( 'About You:', WE_LS_SLUG ),
-				'height'            => __( 'Your height:', WE_LS_SLUG ),
+                'height'            => __( 'Your height:', WE_LS_SLUG ),
 				'weight'            => __( 'In which unit would you like to record your weight:', WE_LS_SLUG ),
 				'date'              => __( 'Display dates in the following formats:', WE_LS_SLUG ),
                 'gender'            => __( 'Your Gender:', WE_LS_SLUG ),
@@ -66,9 +65,7 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
 	// If admin, add notice and override labels
 	if( is_admin() ) {
 
-		$labels = [
-		                'title-about'       => __( 'About User:', WE_LS_SLUG ),
-					    'height'            => __( 'Height:', WE_LS_SLUG ),
+		$labels = [     'height'            => __( 'Height:', WE_LS_SLUG ),
 					    'weight'            => __( 'Weight unit:', WE_LS_SLUG ),
 					    'date'              => __( 'Date format:', WE_LS_SLUG ),
                         'gender'            => __( 'Gender:', WE_LS_SLUG ),
@@ -85,8 +82,6 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
         ws_ls_enqueue_files();
     }
 
-	$html_output = '';
-
 	// If enabled, show user preferences form
 	if( false === empty( $arguments[ 'show-user-preferences' ] ) ) {
 
@@ -98,7 +93,7 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
 							<input type="hidden" id="ws-ls-user-id" value="' . (int) $user_id . '" />';
 
 		if ( false === ws_ls_to_bool( $arguments[ 'hide-aim' ] ) ) {
-			$html_output .= ws_ls_form_field_select( [ 'uikit' => $arguments[ 'uikit' ], 'key' => 'ws-ls-aim', 'label' => $labels['aim'], 'values' => ws_ls_aims(), 'selected' => ws_ls_user_preferences_get( 'aim', $user_id, NULL ), 'css-class' => 'ws-ls-aboutyou-field' ] );
+			$html_output .= ws_ls_form_field_select( [ 'uikit' => $arguments[ 'uikit' ], 'key' => 'ws-ls-aim', 'label' => $labels['aim'], 'values' => ws_ls_aims(), 'selected' => ws_ls_user_preferences_get( 'aim', $user_id ), 'css-class' => 'ws-ls-aboutyou-field' ] );
 		}
 
 		if ( false === ws_ls_to_bool( $arguments[ 'hide-extras' ] ) ) {

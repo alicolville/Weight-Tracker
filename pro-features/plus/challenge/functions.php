@@ -502,7 +502,7 @@ function ws_ls_challenges_show_filters() {
  */
 function ws_ls_challenge_filters_group_select_values() {
 
-	$groups = ws_ls_groups( true );
+	$groups = ws_ls_groups();
 	return wp_list_pluck( $groups, 'name', 'id' );
 }
 
@@ -520,7 +520,5 @@ function ws_ls_challenge_link( $challenge_id, $mode = 'view' ) {
 
 	$url = sprintf( 'admin.php?page=ws-ls-challenges&mode=%1$s&challenge-id=%2$d', $mode, $challenge_id );
 
-	$url = admin_url( $url );
-
-	return $url;
+	return admin_url( $url );
 }

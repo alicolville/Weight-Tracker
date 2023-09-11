@@ -448,6 +448,7 @@ function ws_ls_db_entry_delete_all() {
 	$wpdb->query('TRUNCATE TABLE ' . $wpdb->prefix . WE_LS_TARGETS_TABLENAME );
 	$wpdb->query('TRUNCATE TABLE ' . $wpdb->prefix . WE_LS_TABLENAME );
 	$wpdb->query('TRUNCATE TABLE ' . $wpdb->prefix . WE_LS_USER_STATS_TABLENAME );
+
 }
 
 /**
@@ -634,7 +635,7 @@ function ws_ls_set_user_preference( $field, $value, $user_id = NULL ) {
         $db_field_types
     );
 
-    $result = ($result === false) ? false : true;
+    $result = ! ( ( $result === false ) );
 
     // Tidy up cache
 	ws_ls_cache_user_delete( $db_fields['user_id'] );
@@ -679,7 +680,7 @@ function ws_ls_set_user_preference_simple( $field, $value, $user_id = NULL ) {
         [ '%d' ]
     );
 
-    $result = ($result === false) ? false : true;
+    $result = ! ( ( $result === false ) );
 
 	// If settings are saved correctly, then fire hook for others.
 	if ( true === $result ) {
@@ -738,8 +739,7 @@ function ws_ls_db_user_preferences( $user_id = NULL, $use_cache = true ) {
 
 	$cache = ws_ls_cache_user_get( $user_id, 'user-preferences' );
 
-	if ( true == $use_cache &&
-	     false === empty( $cache )  )   {
+	if ( $use_cache && ! empty( $cache )  )   {
 		return $cache;
 	}
 
@@ -767,8 +767,7 @@ function ws_ls_db_entries_count( $user_id = NULL, $use_cache = true ) {
 
 	$cache = ws_ls_cache_user_get( $user_id, 'entry-counts' );
 
-	if ( true == $use_cache &&
-	        false === empty( $cache )  )   {
+	if (  $use_cache && ! empty( $cache )  )   {
 		return $cache;
 	}
 

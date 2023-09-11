@@ -24,7 +24,7 @@ function ws_ls_db_stats_sum_weight_difference() {
 	global $wpdb;
 	$result = $wpdb->get_var( 'SELECT sum( weight_difference ) FROM ' . $wpdb->prefix . WE_LS_USER_STATS_TABLENAME );
 
-	return ( false == empty( $result ) ) ? floatval( $result ) : false;
+	return ! empty( $result ) ? floatval( $result ) : false;
 }
 
 /**
@@ -42,7 +42,7 @@ function ws_ls_db_stats_insert_missing_user_ids_into_stats() {
 			Select distinct weight_user_id, NULL, NULL, NULL, NOW() - INTERVAL 7 DAY from $data_table_name where weight_weight is not null and weight_user_id not in (Select user_id from $stats_table_name)";
 
 	$wpdb->query( $sql );
-	return;
+
 }
 
 /**
@@ -58,8 +58,6 @@ function ws_ls_db_stats_remove_deleted_user_ids_from_stats() {
 	$sql = "Delete from $stats_table_name Where user_id not in ( Select ID from $data_table_name )";
 
 	$wpdb->query( $sql );
-
-	return;
 }
 
 /**
@@ -90,7 +88,7 @@ function ws_ls_db_stats_league_table_fetch( $ignore_cache = false, $limit = 10, 
 	$where = [];
 
 	// Select only users that have lost weight?
-	if( true == ws_ls_force_bool_argument( $losers_only ) ) {
+	if( ws_ls_force_bool_argument( $losers_only ) ) {
 		$where[] = 'weight_difference <= 0';
 	}
 
@@ -127,5 +125,4 @@ function ws_ls_db_stats_clear_last_updated_date(){
 
 	// Note: Set last update to 7 days ago so this record is considered to be out of date and requiring a refresh
 	$wpdb->query( 'Update ' . $wpdb->prefix . WE_LS_USER_STATS_TABLENAME . ' set last_update = NOW() - INTERVAL 7 DAY' );
-	return;
 }

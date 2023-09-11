@@ -58,11 +58,11 @@ function ws_ls_admin_page_view_all() {
 
                                         // Show meta data?
                                         if ( false === empty( $_GET['show-meta'] ) ) {
-                                            $value = ( 'y' === $_GET['show-meta'] ) ? true : false;
+                                            $value = 'y' === $_GET['show-meta'];
                                             update_option( 'ws-ls-show-meta', $value );
                                         }
 
-                                        $show_meta = get_option( 'ws-ls-show-meta' ) ? true : false;
+                                        $show_meta = (bool) get_option( 'ws-ls-show-meta' );
 
                                         echo ws_ls_data_table_render( [ 'limit' => 5000, 'enable-meta-fields' => $show_meta, 'custom-field-col-size' => 'xs' ] );
 

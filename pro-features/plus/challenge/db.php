@@ -367,9 +367,7 @@ function ws_ls_challenges_stats( $challenge_id ) {
 	}
 
 	global $wpdb;
-
-	$stats = [ 'count' => NULL, 'to-be-processed' => NULL, 'processed' => NULL ];
-
+	
 	$challenge_id = (int) $challenge_id;
 
 	$stats[ 'count' ]           = $wpdb->get_var( 'SELECT count( user_id ) FROM ' . $wpdb->prefix . WE_LS_MYSQL_CHALLENGES_DATA . ' WHERE challenge_id = ' . $challenge_id );
@@ -456,7 +454,6 @@ function ws_ls_challenges_get_meal_tracker_entries( $user_id, $start_date = NULL
 
 	$result = $wpdb->get_results( $sql, ARRAY_A );
 
-	$result = ( false === empty( $result ) ) ? $result : false;
+	return ( ! empty( $result ) ) ? $result : false;
 
-	return $result;
 }

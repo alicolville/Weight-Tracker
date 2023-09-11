@@ -61,7 +61,7 @@ function ws_ls_shortcode_progress_bar( $user_defined_arguments ) {
 	$arguments['animation-duration']        = ws_ls_force_numeric_argument( $arguments[ 'animation-duration' ], 1400 );
 
 	// If no width or height specified by user, then set circle to a better default size.
-	if('circle' == $arguments['type'] && false == $arguments['width-height-specified']) {
+	if( 'circle' == $arguments['type'] && ! $arguments['width-height-specified'] ) {
 		$arguments['width'] = '150px';
 		$arguments['height'] = '150px';
 	}

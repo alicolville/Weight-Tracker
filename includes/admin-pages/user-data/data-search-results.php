@@ -23,11 +23,11 @@ function ws_ls_admin_page_search_results() {
                                 ws_ls_display_pro_upgrade_notice();
                             }
 
-                            $search_term = ws_ls_querystring_value( 'search', false );
+                            $search_term = ws_ls_querystring_value( 'search' );
 
                             if( true === WS_LS_IS_PRO && false === empty( $search_term ) ) {
 
-                                $search_results = ws_ls_user_search( $search_term,true );
+                                $search_results = ws_ls_user_search( $search_term );
 
                                 if( false === empty( $search_results ) ) {
 
