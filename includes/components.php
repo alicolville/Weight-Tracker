@@ -519,8 +519,7 @@ function ws_ls_component_latest_versus_another( $args = [] ) {
 			$percentage_difference = 0;
 		} else {
 
-			$percentage_difference	= ( NULL !== $percentage_difference &&
-			                              true === $percentage_difference[ 'increase' ] ) ?  $percentage_difference[ 'percentage' ] : -$percentage_difference[ 'percentage' ];
+			$percentage_difference	= ( true === $percentage_difference[ 'increase' ] ) ?  $percentage_difference[ 'percentage' ] : -$percentage_difference[ 'percentage' ];
 
 			$percentage_difference 	= ws_ls_round_number( $percentage_difference, 1 );
 		}

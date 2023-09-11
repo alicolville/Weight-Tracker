@@ -82,8 +82,6 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
         ws_ls_enqueue_files();
     }
 
-	$html_output = '';
-
 	// If enabled, show user preferences form
 	if( false === empty( $arguments[ 'show-user-preferences' ] ) ) {
 

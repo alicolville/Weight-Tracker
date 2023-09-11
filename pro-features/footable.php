@@ -232,8 +232,6 @@ function ws_ls_datatable_rows( $arguments ) {
 					$gain_loss = $entry[ 'user_profile' ] = sprintf('<a href="%s" rel="noopener noreferrer" target="_blank">%s</a>', ws_ls_get_link_to_user_profile( $entry[ 'user_id' ] ), __( 'Check record', WE_LS_SLUG ) );
 				} elseif ( false === empty( $entry[ 'kg' ] ) ) {
 					$gain_loss = __( 'First weight entry', WE_LS_SLUG );
-				} else {
-					$gain_loss = '';
 				}
 
 				if ( false === empty( $entry[ 'kg' ] ) ) {
@@ -276,8 +274,6 @@ function ws_ls_datatable_rows( $arguments ) {
 					$gain_loss = $entry[ 'user_profile' ] = sprintf('<a href="%s" rel="noopener noreferrer" target="_blank">%s</a>', ws_ls_get_link_to_user_profile( $entry[ 'user_id' ] ), __( 'Check record', WE_LS_SLUG ) );
 				} elseif ( false === empty( $entry[ 'kg' ] ) ) {
 					$gain_loss = __( 'First weight entry', WE_LS_SLUG );
-				} else {
-					$gain_loss = '';
 				}
 
 				if ( true === is_numeric( $gain_loss ) ) {
