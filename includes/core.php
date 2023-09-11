@@ -36,7 +36,7 @@ function ws_ls_config_js() {
 					'date-picker-locale'                => ws_ls_config_js_datapicker_locale(),
 					'in-admin'                          => ( is_admin() ) ? 'true' : 'false',
 					'max-photo-upload'                  => ws_ls_photo_max_upload_size(),
-					'form-load-previous'                => false === is_admin() && WS_LS_IS_PRO && ws_ls_option_to_bool( 'ws-ls-populate-form-with-values-on-date', 'yes' ),
+					'form-load-previous'                => false === is_admin() && WS_LS_IS_PRO && ws_ls_option_to_bool( 'ws-ls-populate-form-with-values-on-date' ),
 					'focus'             	  			=> ws_ls_querystring_value( 'focus' ),
 					'load-entry-url'                    => apply_filters( 'wlt_current_url', get_permalink() ),
 	];

@@ -1412,7 +1412,7 @@ function ws_ls_round_number( $number, $decimal_places = 0 ) {
 		var_dump($number);
 	}
 
-	return number_format( $number, $decimal_places, '.', ',' );
+	return number_format( $number, $decimal_places );
 }
 
 /**
@@ -1638,7 +1638,7 @@ function ws_ls_weight_difference_from_start( $user_id, $kg ) {
  */
 function ws_ls_get_unit() {
 
-	switch ( ws_ls_setting( 'weight-unit' )) {
+	switch ( ws_ls_setting() ) {
 		case 'pounds_only':
 			$unit = __("lbs", WE_LS_SLUG);
 			break;

@@ -153,7 +153,7 @@ function ws_ls_macro_render_table($user_id, $missing_data_text = false, $additio
                                 </tr>
                             ',
 				ws_ls_get_macro_name( $key ),
-				ws_ls_round_number( $macros[$key]['calories'], 0 ),
+				ws_ls_round_number( $macros[$key]['calories'] ),
                 __('Total', WE_LS_SLUG),
                 __('Breakfast', WE_LS_SLUG),
                 __('Lunch', WE_LS_SLUG),

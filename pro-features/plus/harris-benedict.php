@@ -88,7 +88,7 @@ function ws_ls_harris_benedict_calculate_calories_raw( $bmr, $gender, $activity_
 	// Lose
 	// --------------------------------------------------
 
-	$calories_to_lose   = ws_ls_harris_benedict_filter_calories_to_lose( $calorie_intake['maintain']['total'], $gender, false  );
+	$calories_to_lose   = ws_ls_harris_benedict_filter_calories_to_lose( $calorie_intake['maintain']['total'], $gender );
 	$calories_to_lose   = ( $calorie_intake['maintain']['total'] > $calories_to_lose ) ? $calorie_intake['maintain']['total'] - $calories_to_lose : $calorie_intake['maintain']['total'];
 	$is_female          = ws_ls_is_female_raw( $gender );
 
@@ -522,7 +522,7 @@ function ws_ls_harris_benedict_filter_show_hide_gains_loss( $calorie_intake ) {
 
 	return $calorie_intake;
 }
-add_filter( 'wlt-filter-calories-pre', 'ws_ls_harris_benedict_filter_show_hide_gains_loss', 10, 1 );
+add_filter( 'wlt-filter-calories-pre', 'ws_ls_harris_benedict_filter_show_hide_gains_loss' );
 
 /**
  * Return the setting for calories to add weight

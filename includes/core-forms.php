@@ -96,7 +96,7 @@ function ws_ls_form_weight( $arguments = [] ) {
 
 	if ( true === in_array( $arguments[ 'type' ], [ 'custom-fields', 'weight' ] ) &&
 	        ( true === empty( $arguments[ 'entry-id' ] ) && empty( $arguments[ 'entry' ] ) )
-				&& WS_LS_IS_PRO && ws_ls_option_to_bool( 'ws-ls-populate-form-with-values-on-date', 'yes' )
+				&& WS_LS_IS_PRO && ws_ls_option_to_bool( 'ws-ls-populate-form-with-values-on-date' )
 	) {
 
 		$date           = ws_ls_convert_date_to_iso( $arguments[ 'todays-date' ]);
@@ -330,7 +330,7 @@ function  ws_ls_form_init( $arguments = [] ) {
 	// Are photo fields enabled for this form?
 	$arguments[ 'photos-enabled' ] = ( false === $arguments[ 'hide-fields-photos' ] &&
 	                                   true === $arguments[ 'meta-enabled' ] &&
-	                                   true === ws_ls_meta_fields_photo_any_enabled( false ) );
+	                                   true === ws_ls_meta_fields_photo_any_enabled() );
 
 	// Custom field filtering?
 	$arguments[ 'custom-field-groups' ] = ws_ls_meta_fields_groups_slugs_to_ids( $arguments[ 'custom-field-groups' ] );

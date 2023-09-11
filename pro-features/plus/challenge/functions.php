@@ -502,7 +502,7 @@ function ws_ls_challenges_show_filters() {
  */
 function ws_ls_challenge_filters_group_select_values() {
 
-	$groups = ws_ls_groups( true );
+	$groups = ws_ls_groups();
 	return wp_list_pluck( $groups, 'name', 'id' );
 }
 
