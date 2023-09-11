@@ -21,7 +21,7 @@ function ws_ls_challenges_shortcodes_opt_in( $user_defined_arguments ) {
 	$get_optin = ws_ls_querystring_value( 'opt-in' );
 
 	// Update user preferences;
-	if ( false !== $get_optin && true === in_array( $get_optin, [ 'yes', 'no' ] ) ) {
+	if ( true === in_array( $get_optin, [ 'yes', 'no' ] ) ) {
         ws_ls_set_user_preference_simple( 'challenge_opt_in', ( 'yes' === $get_optin ) ? 1 : 0 );
 
         return sprintf( '<p>%1$s %2$s.</p> ',

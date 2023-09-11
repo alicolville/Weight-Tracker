@@ -546,7 +546,7 @@ function ws_ls_entry_get_previous_kg( $user_id = NULL ) {
 function ws_ls_force_bool_argument( $value ) {
 
     return ( 'true' === strtolower( $value ) ||
-            ( true === is_bool( $value ) && true === $value ) );
+            (  true === $value ) );
 }
 
 /**
