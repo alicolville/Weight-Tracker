@@ -181,3 +181,55 @@ function ws_ls_load_textdomain() {
 	load_plugin_textdomain( WE_LS_SLUG, false, dirname( plugin_basename( __FILE__ )  ) . '/includes/languages/' );
 }
 add_action('plugins_loaded', 'ws_ls_load_textdomain');
+
+
+function test( $macros ){
+
+	foreach ( $macros as $set ) {
+
+		print_r( $set );
+	}
+
+
+	die;
+}
+// add_filter( 'wlt-filter-macros', 'test' );
+
+
+
+function ws_ls_macro_convert_calories_to_g( $calories, $type = 'protein' ) {
+
+	if ( ! in_array( $type, [ 'protein', 'carbs', 'fat' ] ) ) {
+		return $calories;
+	}
+
+
+	return 0;
+}
+
+function ws_ls_macro_filter_convert_calories_to_g( $macros, $calories, $user_id ) {
+
+	print_r( $macros );
+
+	foreach ( $macros as $key => $macro ) {
+
+		print_r($macro);
+
+
+//		foreach ( $macro as $type => $value ) {
+//			$macros[ $key ][ $type ] = ws_ls_macro_convert_calories_to_g( $value, $type );
+//		}
+
+
+		// $macros[ $key ][ 'protein' ] = ws_ls_macro_convert_calories_to_g( $macro[ $key ][ 'protein' ], 'protein' );
+	}
+
+
+	//$macros[ 'total' ][ 'protein' ] = ws_ls_macro_convert_calories_to_g( $calories, 'protein' );
+
+	print_r( $macros );
+	//var_dump( $macros, $calories, $user_id);
+	die;
+
+}
+add_filter( 'wlt-filter-macros-lose', 'ws_ls_macro_filter_convert_calories_to_g', 10, 3 );
