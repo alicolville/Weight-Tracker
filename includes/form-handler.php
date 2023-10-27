@@ -209,7 +209,16 @@ function ws_ls_form_post_handler_weight( $user_id, $type = 'weight' ) {
 function ws_ls_form_post_handler_determine_type() {
 	$type = ws_ls_post_value( 'type' );
 
-	return ( true === in_array( $type, [ 'custom-fields', 'target', 'weight' ] ) ) ?
+	/*
+	 * "Mixed" isn't widely supported at the moment and was intended for forms that contain both latest weight and target.
+	 *
+	 * In "Mixed" mode, target weight fields are prefixed with "ws-ls-target-" instead of "ws-ls-weight-"
+	 *
+	 * Currently, "mixed" is only supported by custom plugins.
+	 *
+	 */
+
+	return ( true === in_array( $type, [ 'custom-fields', 'mixed' , 'target', 'weight' ] ) ) ?
 				$type :
 					NULL;
 }
