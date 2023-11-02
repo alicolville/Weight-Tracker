@@ -99,11 +99,16 @@ function ws_ls_convert_kg_to_stone_pounds( $kg ) {
  *
  * @return array|null
  */
-function ws_ls_weight_display( $kg, $user_id = NULL, $key = false, $force_admin = false, $comparison_value = false ) {
+function ws_ls_weight_display( $kg, $user_id = NULL, $key = false, $force_admin = false, $comparison_value = false, $format = null ) {
 
 	$weight 	            = [];
 	$weight[ 'user-id' ]    = ( NULL === $user_id ) ? get_current_user_id() : $user_id;
-	$weight[ 'format' ]     = ws_ls_setting( 'weight-unit', $weight[ 'user-id' ], $force_admin );
+
+	if ( true === empty( $format ) ) {
+		$format = ws_ls_setting( 'weight-unit', $weight[ 'user-id' ], $force_admin );
+	}
+
+	$weight[ 'format' ]     = $format;
 	$weight[ 'kg' ]         = $kg;
 
 	switch ( $weight[ 'format' ] ) {
