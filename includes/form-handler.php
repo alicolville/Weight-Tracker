@@ -43,11 +43,14 @@ function ws_ls_form_post_handler(){
 
 		// Process posted form and save!
 		if ( true === in_array( $submission_type, [ 'mixed', 'target' ] ) ) {
-			$result = ws_ls_form_post_handler_target( $user_id );
+
+			$prefix = ( 'mixed' === $submission_type ) ? 'ws-ls-target-' : 'ws-ls-weight-';
+
+			$result = ws_ls_form_post_handler_target( $user_id, $prefix );
 		}
 
 		if ( true === in_array( $submission_type, [ 'custom-fields', 'mixed', 'weight' ] ) ) {
-			$result = ws_ls_form_post_handler_weight( $user_id, $submission_type );
+			$result = ws_ls_form_post_handler_weight( $user_id );
 		}
 
 		if ( true === empty( $result ) ) {
@@ -71,18 +74,16 @@ add_action( 'admin_init', 'ws_ls_form_post_handler' );
 
 /**
  * Update the user's target
+ *
  * @param $user_id
+ * @param string $prefix
  *
  * @return bool
  */
-function ws_ls_form_post_handler_target( $user_id ) {
+function ws_ls_form_post_handler_target( $user_id, $prefix = 'ws-ls-weight-' ) {
 
 	// Start by searching for standard weight field names, if nothing (e.g. potentially in "mixed" mode) then look for target weight field names
-	$kg = ws_ls_form_post_handler_extract_weight();
-
-	if ( true === empty( $kg ) ) {
-		$kg = ws_ls_form_post_handler_extract_weight( 'post', 'ws-ls-target-' );
-	}
+	$kg = ws_ls_form_post_handler_extract_weight( 'post', $prefix );
 
 	// If nothing specified, then delete existing target
 	if ( true === empty( $kg ) ) {
@@ -101,11 +102,10 @@ function ws_ls_form_post_handler_target( $user_id ) {
  *
  * @param $user_id
  *
- * @param string $type
  *
  * @return bool
  */
-function ws_ls_form_post_handler_weight( $user_id, $type = 'weight' ) {
+function ws_ls_form_post_handler_weight( $user_id ) {
 
 	if ( true === empty( $user_id ) ) {
 		return false;
