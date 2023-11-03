@@ -717,7 +717,7 @@ function ws_ls_user_preferences_get_formats( $db_fields ) {
 
     $lookup = apply_filters( 'wlt-filter-user-settings-db-formats', $lookup );
 
-    foreach ( $db_fields as $key ) {
+    foreach ( $db_fields as $key => $value ) {
         if( false === empty($lookup[$key])) {
             $formats[] = $lookup[$key];
         }
