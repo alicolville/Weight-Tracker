@@ -42,10 +42,15 @@ function ws_ls_form_post_handler(){
 		$result = false;
 
 		// Process posted form and save!
-		if ( 'target' === $submission_type ) {
-			$result = ws_ls_form_post_handler_target( $user_id );
-		} else {    // weight / custom-fields
-			$result = ws_ls_form_post_handler_weight( $user_id, $submission_type );
+		if ( true === in_array( $submission_type, [ 'mixed', 'target' ] ) ) {
+
+			$prefix = ( 'mixed' === $submission_type ) ? 'ws-ls-target-' : 'ws-ls-weight-';
+
+			$result = ws_ls_form_post_handler_target( $user_id, $prefix );
+		}
+
+		if ( true === in_array( $submission_type, [ 'custom-fields', 'mixed', 'weight' ] ) ) {
+			$result = ws_ls_form_post_handler_weight( $user_id );
 		}
 
 		if ( true === empty( $result ) ) {
@@ -69,13 +74,16 @@ add_action( 'admin_init', 'ws_ls_form_post_handler' );
 
 /**
  * Update the user's target
+ *
  * @param $user_id
+ * @param string $prefix
  *
  * @return bool
  */
-function ws_ls_form_post_handler_target( $user_id ) {
+function ws_ls_form_post_handler_target( $user_id, $prefix = 'ws-ls-weight-' ) {
 
-	$kg = ws_ls_form_post_handler_extract_weight();
+	// Start by searching for standard weight field names, if nothing (e.g. potentially in "mixed" mode) then look for target weight field names
+	$kg = ws_ls_form_post_handler_extract_weight( 'post', $prefix );
 
 	// If nothing specified, then delete existing target
 	if ( true === empty( $kg ) ) {
@@ -94,11 +102,10 @@ function ws_ls_form_post_handler_target( $user_id ) {
  *
  * @param $user_id
  *
- * @param string $type
  *
  * @return bool
  */
-function ws_ls_form_post_handler_weight( $user_id, $type = 'weight' ) {
+function ws_ls_form_post_handler_weight( $user_id ) {
 
 	if ( true === empty( $user_id ) ) {
 		return false;
@@ -207,9 +214,19 @@ function ws_ls_form_post_handler_weight( $user_id, $type = 'weight' ) {
  * @return string|null
  */
 function ws_ls_form_post_handler_determine_type() {
+
 	$type = ws_ls_post_value( 'type' );
 
-	return ( true === in_array( $type, [ 'custom-fields', 'target', 'weight' ] ) ) ?
+	/*
+	 * "Mixed" isn't widely supported at the moment and was intended for forms that contain both latest weight and target.
+	 *
+	 * In "Mixed" mode, target weight fields are prefixed with "ws-ls-target-" instead of "ws-ls-weight-"
+	 *
+	 * Currently, "mixed" is only supported by custom plugins.
+	 *
+	 */
+
+	return ( true === in_array( $type, [ 'custom-fields', 'mixed' , 'target', 'weight' ] ) ) ?
 				$type :
 					NULL;
 }
@@ -218,27 +235,34 @@ function ws_ls_form_post_handler_determine_type() {
  * Scan the form post for relevant weight fields and convert them into Kg
  *
  * @param string $get_or_post
+ * @param string $prefix "ws-ls-weight-" or "ws-ls-target-"
  *
  * @return float|null
  */
-function ws_ls_form_post_handler_extract_weight( $get_or_post = 'post' ) {
+function ws_ls_form_post_handler_extract_weight( $get_or_post = 'post', $prefix = 'ws-ls-weight-' ) {
+
+	$key = sprintf( '%s%s', $prefix, 'kg' );
 
 	// Are we lucky? Metric by default?
 	$kg = 'post' === $get_or_post ?
-									ws_ls_post_value( 'ws-ls-weight-kg', NULL, true ) :
-										ws_ls_querystring_value( 'ws-ls-weight-kg', false, NULL );
+									ws_ls_post_value( $key, NULL, true ) :
+										ws_ls_querystring_value( $key, false, NULL );
 
 	if ( NULL !== $kg ) {
 		return $kg;
 	}
 
+	$key = sprintf( '%s%s', $prefix, 'stones' );
+
 	$stones = 'post' === $get_or_post ?
-										ws_ls_post_value( 'ws-ls-weight-stones', NULL, true ) :
-											ws_ls_querystring_value( 'ws-ls-weight-stones', false, NULL );
+										ws_ls_post_value( $key, NULL, true ) :
+											ws_ls_querystring_value( $key, false, NULL );
+
+	$key = sprintf( '%s%s', $prefix, 'pounds' );
 
 	$pounds = 'post' === $get_or_post ?
-										ws_ls_post_value( 'ws-ls-weight-pounds', NULL, true ) :
-											ws_ls_querystring_value( 'ws-ls-weight-pounds', false, NULL );
+										ws_ls_post_value( $key, NULL, true ) :
+											ws_ls_querystring_value( $key, false, NULL );
 
 	// Stones and Pounds
 	if ( NULL !== $stones ) {
