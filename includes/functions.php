@@ -1277,13 +1277,15 @@ function ws_ls_blur_text( $text, $pro_plus = false ) {
 
 /**
  * Return a given percentage of a number
+ *
  * @param $total
  * @param int $percentage
+ *
  * @return int|string
  */
 function ws_ls_calculate_percentage_of_number( $total, $percentage = 100 ) {
 
-	$percentage = (int) $percentage;
+	$percentage = (float) $percentage;
 
 	if ( 100 === $percentage ) {
 		return $total;
