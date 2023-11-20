@@ -1,3 +1,4 @@
 bundle exec jekyll serve --baseurl ''
 
-bundle add webrick
+- Update all dependencies
+bundle update
