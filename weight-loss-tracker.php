@@ -183,19 +183,6 @@ function ws_ls_load_textdomain() {
 add_action('plugins_loaded', 'ws_ls_load_textdomain');
 
 
-function test( $macros ){
-
-	foreach ( $macros as $set ) {
-
- echo $set;
-		print_r( $set );
-	}
-
-
-	die;
-}
-// add_filter( 'wlt-filter-macros', 'test' );
-
 
 /**
  * For a given Macro, convert the macro into g
