@@ -3,7 +3,7 @@
 
 Thank you for showing an interest in upgrading your copy of Weight Tracker to the Pro or Pro Plus version. Upgrading will help support the ongoing development of the plugin, provide you with an [extended feature set]({{ site.baseurl }}/features.html) and free updates for the lifespan of your license.
 
-| Core (free)      | Pro (£50 a year) |Pro Plus (£100 a year) |
+| Core (free)      | [Pro](https://shop.yeken.uk/product/weight-tracker-pro/) |[Pro Plus](https://shop.yeken.uk/product/weight-tracker-pro-plus/)|
 | ----------- | ----------- |----------- |
 | Record weight entries for any date.      | All Free features       | All Free & Pro features
 | [Shortcodes]({{ site.baseurl }}/shortcodes.html)   | [Custom fields]({{ site.baseurl }}/custom-fields.html) | [Awards]({{ site.baseurl }}/awards.html)
