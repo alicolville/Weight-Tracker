@@ -187,6 +187,7 @@ function test( $macros ){
 
 	foreach ( $macros as $set ) {
 
+ echo $set;
 		print_r( $set );
 	}
 
@@ -199,37 +200,57 @@ function test( $macros ){
 
 function ws_ls_macro_convert_calories_to_g( $calories, $type = 'protein' ) {
 
-	if ( ! in_array( $type, [ 'protein', 'carbs', 'fat' ] ) ) {
+	if ( ! in_array( $type, [ 'protein', 'carbs', 'fats' ] ) ) {
 		return $calories;
 	}
 
+    if ( true === empty( $calories ) ) {
+        return 0;
+    }
 
-	return 0;
+    switch ( $type ) {
+
+        case 'protein':
+            $calories = $calories / (float) apply_filters( 'wlt-filter-protein-cal-gram-ratio', 4 );
+            break;
+        case 'carbs':
+            $calories = $calories / (float) apply_filters( 'wlt-filter-carbs-cal-gram-ratio', 4 );
+            break;
+        case 'fats':
+            $calories = $calories / (float) apply_filters( 'wlt-filter-fats-cal-gram-ratio', 9 );
+            break;
+    }
+
+    return $calories;
 }
 
+/**
+ * For a given Macro, convert the macro into g
+ *
+ * (handy tool for validating)
+ * https://www.omnicalculator.com/conversion/grams-to-calories
+ *
+ * @param $macros
+ * @param $calories
+ * @param $user_id
+ * @return mixed
+ */
 function ws_ls_macro_filter_convert_calories_to_g( $macros, $calories, $user_id ) {
 
 	print_r( $macros );
 
 	foreach ( $macros as $key => $macro ) {
 
-		print_r($macro);
+        if ( ! is_array( $macros[ $key ] ) ) {
+            continue;
+        }
 
-
-//		foreach ( $macro as $type => $value ) {
-//			$macros[ $key ][ $type ] = ws_ls_macro_convert_calories_to_g( $value, $type );
-//		}
-
-
-		// $macros[ $key ][ 'protein' ] = ws_ls_macro_convert_calories_to_g( $macro[ $key ][ 'protein' ], 'protein' );
+		foreach ( $macros[ $key ] as $type => $value ) {
+			$macros[ $key ][ $type ] = ws_ls_macro_convert_calories_to_g( $value, $type );
+		}
 	}
+    print_r( $macros );
 
-
-	//$macros[ 'total' ][ 'protein' ] = ws_ls_macro_convert_calories_to_g( $calories, 'protein' );
-
-	print_r( $macros );
-	//var_dump( $macros, $calories, $user_id);
-	die;
-
+   return  $macros;
 }
 add_filter( 'wlt-filter-macros-lose', 'ws_ls_macro_filter_convert_calories_to_g', 10, 3 );
