@@ -183,19 +183,17 @@ function ws_ls_load_textdomain() {
 add_action('plugins_loaded', 'ws_ls_load_textdomain');
 
 
-
 /**
- * For a given Macro, convert the macro into g
+ *  For a given Macro, convert the macro into g
  *
- * (handy tool for validating)
- * https://www.omnicalculator.com/conversion/grams-to-calories
+ *  (handy tool for validating)
+ *  https://www.omnicalculator.com/conversion/grams-to-calories
  *
- * @param $macros
  * @param $calories
- * @param $user_id
- * @return mixed
+ * @param $type
+ * @return float|int|mixed
  */
-function ws_ls_macro_convert_calories_to_g( $calories, $type = 'protein' ) {
+function ws_ls_macro_convert_calories_to_g($calories, $type = 'protein' ) {
 
 	if ( ! in_array( $type, [ 'protein', 'carbs', 'fats' ] ) ) {
 		return $calories;
