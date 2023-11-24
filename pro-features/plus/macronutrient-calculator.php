@@ -110,10 +110,10 @@ function ws_ls_macro_calculate_raw( $calories, $user_id = false ) {
  * @param bool $missing_data_text
  * @param string $additional_css_class
  * @param null $macros
- *
+ * @param bool $allow_display_in_grams
  * @return string
  */
-function ws_ls_macro_render_table($user_id, $missing_data_text = false, $additional_css_class = '', $macros = NULL ) {
+function ws_ls_macro_render_table($user_id, $missing_data_text = false, $additional_css_class = '', $macros = NULL, $allow_display_in_grams = true ) {
 
 	if( false === WS_LS_IS_PRO_PLUS ) {
 		return '';
@@ -141,6 +141,10 @@ function ws_ls_macro_render_table($user_id, $missing_data_text = false, $additio
         		continue;
         	}
 
+            if ( true === $allow_display_in_grams ) {
+                $macros[ $key ] = ws_ls_macro_get_grams_for_calories( $macros[ $key ] );
+            }
+
             // Table Header
             $html .= sprintf('
                                 <tr>
@@ -161,6 +165,21 @@ function ws_ls_macro_render_table($user_id, $missing_data_text = false, $additio
                 __('Snacks', WE_LS_SLUG)
             );
 
+            foreach ( [ 'total', 'breakfast', 'lunch', 'dinner', 'snacks' ] as $meal_time ) {
+
+                foreach ( [ 'carbs', 'fats', 'protein' ] as $macro_type ) {
+
+                    $macros[ $key ][ $meal_time ][ $macro_type ] = sprintf( '<span class="ws-ls-calorie-data">%s</span>', ws_ls_macro_round( $macros[ $key ][ $meal_time ][ $macro_type ] ) );
+
+                    if ( true === $allow_display_in_grams ) {
+                        $macros[ $key ][ $meal_time ][ $macro_type ] .= sprintf( '<span class="ws-ls-gram-data ws-ls-hide">%s%s</span>',
+                                                                                        ws_ls_macro_round( $macros[ $key ][ $meal_time ][ 'grams' ][ $macro_type ] ),
+                                                                                        __( 'g', WE_LS_SLUG )
+                        );
+                    }
+                }
+            }
+
             // Protein
             $html .= sprintf('  <tr valign="top" class="alternate">
                                     <td class="ws-ls-col-header">%s</td>
@@ -171,11 +190,11 @@ function ws_ls_macro_render_table($user_id, $missing_data_text = false, $additio
                                     <td>%s</td>
                                 </tr>',
                 sprintf( '%s (%s%%)', __( 'Proteins', WE_LS_SLUG ), ws_ls_harris_benedict_setting( 'ws-ls-macro-proteins-' . $key ) ) ,
-                ws_ls_macro_round($macros[$key]['total']['protein']),
-                ws_ls_macro_round($macros[$key]['breakfast']['protein']),
-                ws_ls_macro_round($macros[$key]['lunch']['protein']),
-                ws_ls_macro_round($macros[$key]['dinner']['protein']),
-                ws_ls_macro_round($macros[$key]['snacks']['protein'])
+                $macros[$key]['total']['protein'],
+                $macros[$key]['breakfast']['protein'],
+                $macros[$key]['lunch']['protein'],
+                $macros[$key]['dinner']['protein'],
+                $macros[$key]['snacks']['protein']
             );
 
             // Carbs
@@ -188,11 +207,11 @@ function ws_ls_macro_render_table($user_id, $missing_data_text = false, $additio
                                     <td>%s</td>
                                 </tr>',
 				sprintf( '%s (%s%%)', __( 'Carbs', WE_LS_SLUG ), ws_ls_harris_benedict_setting( 'ws-ls-macro-carbs-' . $key ) ) ,
-                ws_ls_macro_round($macros[$key]['total']['carbs']),
-                ws_ls_macro_round($macros[$key]['breakfast']['carbs']),
-                ws_ls_macro_round($macros[$key]['lunch']['carbs']),
-                ws_ls_macro_round($macros[$key]['dinner']['carbs']),
-                ws_ls_macro_round($macros[$key]['snacks']['carbs'])
+                $macros[$key]['total']['carbs'],
+                $macros[$key]['breakfast']['carbs'],
+                $macros[$key]['lunch']['carbs'],
+                $macros[$key]['dinner']['carbs'],
+                $macros[$key]['snacks']['carbs']
             );
 
             // Fats
@@ -205,21 +224,133 @@ function ws_ls_macro_render_table($user_id, $missing_data_text = false, $additio
                                     <td>%s</td>
                                 </tr>',
 				sprintf( '%s (%s%%)', __( 'Fats', WE_LS_SLUG ), ws_ls_harris_benedict_setting( 'ws-ls-macro-fats-' . $key ) ) ,
-                ws_ls_macro_round($macros[$key]['total']['fats']),
-                ws_ls_macro_round($macros[$key]['breakfast']['fats']),
-                ws_ls_macro_round($macros[$key]['lunch']['fats']),
-                ws_ls_macro_round($macros[$key]['dinner']['fats']),
-                ws_ls_macro_round($macros[$key]['snacks']['fats'])
+                $macros[$key]['total']['fats'],
+                $macros[$key]['breakfast']['fats'],
+                $macros[$key]['lunch']['fats'],
+                $macros[$key]['dinner']['fats'],
+                $macros[$key]['snacks']['fats']
             );
 
         }
         $html .= '</table>';
+
+        if ( true === $allow_display_in_grams ) {
+
+            $html .= sprintf('   <button id="%1$s" class="ws-ls-hide"></button>
+                                        <br />
+                                    <script>
+                                        jQuery( function( $ ) {
+                                          
+                                            function show_grams() {
+                                                $( ".ws-ls-gram-data" ).removeClass( "ws-ls-hide" );
+                                                $( ".ws-ls-calorie-data" ).addClass( "ws-ls-hide" );
+                                            }
+                                            
+                                            function show_calories() {
+                                                $( ".ws-ls-calorie-data" ).removeClass( "ws-ls-hide" );
+                                                $( ".ws-ls-gram-data" ).addClass( "ws-ls-hide" );
+                                            }
+                                            
+                                            function toggle_macro_values() {
+                                               
+                                                let view_as_grams = localStorage.getItem( "view-as-grams" );
+                                           
+                                                if ( "true" === view_as_grams ) {
+                                                    $( "#%1$s" ).html( "%2$s" );
+                                                    show_grams();
+                                                } else {
+                                                    $( "#%1$s" ).html( "%3$s" );
+                                                    show_calories();
+                                                }
+                                                
+                                                $( "#%1$s" ).removeClass( "ws-ls-hide" );
+                                            }
+                                      
+                                            toggle_macro_values();
+                                            
+                                            $( "#%1$s" ).click( function( event ) {
+                                                event.preventDefault();
+                                                
+                                                if( "true" === localStorage.getItem( "view-as-grams" ) ) {
+                                                    localStorage.setItem( "view-as-grams", "false" );
+                                                } else {
+                                                    localStorage.setItem( "view-as-grams", "true" );
+                                                }
+                                                
+                                                toggle_macro_values();
+                                            });
+                                        });
+                                    </script>',
+                ws_ls_component_id(),
+                __( 'View as calories', WE_LS_SLUG ),
+                __( 'View as grams', WE_LS_SLUG )
+            );
+        }
+
         return $html;
 
     } else {
-        return '<p>' . esc_html($missing_data_text) . '</p>';
+        return sprintf( '<p>%s</p>' . esc_html( $missing_data_text ) );
     }
 
+}
+
+/**
+ *  For a given Macro, convert the macro into g
+ *
+ *  (handy tool for validating)
+ *  https://www.omnicalculator.com/conversion/grams-to-calories
+ *
+ * @param $calories
+ * @param $type
+ * @return float|int|mixed
+ */
+function ws_ls_macro_convert_calories_to_g($calories, $type = 'protein' ) {
+
+    if ( ! in_array( $type, [ 'protein', 'carbs', 'fats' ] ) ) {
+        return $calories;
+    }
+
+    if ( true === empty( $calories ) ) {
+        return 0;
+    }
+
+    switch ( $type ) {
+
+        case 'protein':
+            $calories = $calories / (float) apply_filters( 'wlt-filter-protein-cal-gram-ratio', 4 );
+            break;
+        case 'carbs':
+            $calories = $calories / (float) apply_filters( 'wlt-filter-carbs-cal-gram-ratio', 4 );
+            break;
+        case 'fats':
+            $calories = $calories / (float) apply_filters( 'wlt-filter-fats-cal-gram-ratio', 9 );
+            break;
+    }
+
+    return $calories;
+}
+
+/**
+ * Calculate grams for given macros
+ * @param $macros
+ * @return array
+ */
+function ws_ls_macro_get_grams_for_calories( $macros ) {
+
+    foreach ( $macros as $key => $macro ) {
+
+        if ( ! is_array( $macros[ $key ] ) ) {
+            continue;
+        }
+
+        foreach ( $macros[ $key ] as $type => $value ) {
+            $macros[ $key ][ 'grams' ][ $type ] = ws_ls_macro_convert_calories_to_g( $value, $type );
+        }
+
+    }
+
+    return $macros;
 }
 
 /**
