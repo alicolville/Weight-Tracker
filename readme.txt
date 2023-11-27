@@ -148,9 +148,15 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 == Upgrade Notice ==
 
-10.4: New award for user's meeting their target
+10.7.1: Macronutrient values can now be displayed in grams within data tables.
 
 == Changelog ==
+
+= 10.7.1 =
+
+* New feature: Allow macronutrients to be displayed in grams within the admin panel and the shortcodes: [wt] & [wt-macronutrients-table]
+* New feature: Added argument "allow-macros-in-grams" to [wt-macronutrients-table] which allows for gram values for Macros to be disabled. Read more: https://docs.yeken.uk/shortcodes/wt-macronutrients-table.html
+* New feature: Added argument "allow-macros-in-grams" to [wt] which allows for gram values for Macros to be disabled. Read more: https://docs.yeken.uk/shortcodes/wt.html
 
 = 10.7 =
 

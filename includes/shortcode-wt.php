@@ -16,7 +16,8 @@ function ws_ls_shortcode_wt( $user_defined_arguments ) {
 		return ws_ls_groups_view_as_table( [ 'todays-entries-only' => true ] );
 	}
 
-	$shortcode_arguments = shortcode_atts( [    'active-tab'                => 'home',                      // Initial active tab
+	$shortcode_arguments = shortcode_atts( [    'allow-macros-in-grams' 	=> true,
+                                                'active-tab'                => 'home',                      // Initial active tab
 												'min-chart-points' 			=> 2,	                        // Minimum number of data entries before chart is shown
 												'custom-field-groups'       => '',                          // If specified, only show custom fields that are within these groups
 												'custom-field-slugs'        => '',                          // If specified, only show the custom fields that are specified
@@ -616,7 +617,7 @@ function ws_ls_wt_tab_advanced( $arguments = [] ) {
 		);
 	}
 
-	$calorie_html = ws_ls_macro_render_table( $arguments[ 'user-id' ], false,  'ws-ls-footable ykuk-table ykuk-table-striped ykuk-table-small' );
+	$calorie_html = ws_ls_macro_render_table( $arguments[ 'user-id' ], false,  'ws-ls-footable ykuk-table ykuk-table-striped ykuk-table-small', NULL, $arguments[ 'allow-macros-in-grams' ] );
 
 	$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 'header' 		=> __( 'Macronutrients', WE_LS_SLUG ),
 	                                                     'body-class'	=> 'ykuk-text-small',

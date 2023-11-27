@@ -14,6 +14,7 @@ The shortcode supports the following arguments:
  
 | Argument | Description | Options | Example |
 |--|--|--|--|
+| allow-macros-in-grams | Allow macro values to be toggled between grams and calories. | true (default) or false | [wt allow-macros-in-grams=false]                                                                   |
 |css-class|Adds an additional CSS class to the HTML <table> tag|Text|[wt-macronutrients-table css-class="my-table-format-css"]
 |disable-jquery|If set to true, the JavaScript that converts the simple HTML table into a responsive one shall be disabled.|True or False (default)	|[wt-macronutrients-table disable-jquery=true]
 |error-message|When rendering the table, if an error occurs due to missing criteria (for example Date of Birth) a generic message is displayed. This can be replaced by specifying this argument.|Text|[wt-macronutrients-table error-message="Please complete all the fields on the preference page"]

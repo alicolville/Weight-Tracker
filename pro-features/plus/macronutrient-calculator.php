@@ -413,10 +413,11 @@ function ws_ls_shortcode_macro_table($user_defined_arguments) {
 		return '';
 	}
 
-	$arguments = shortcode_atts([	'css-class' 		=> '',
-									'error-message' 	=> __('Please ensure all relevant data to calculate calorie intake has been entered i.e. Activity Level, Date of Birth, Current Weight, Gender and Height.', WE_LS_SLUG ),
-									'user-id' 			=> false,
-                                    'disable-jquery' 	=> false
+	$arguments = shortcode_atts([	'css-class' 		        => '',
+	                                'allow-macros-in-grams' 	=> true,
+									'error-message' 	        => __('Please ensure all relevant data to calculate calorie intake has been entered i.e. Activity Level, Date of Birth, Current Weight, Gender and Height.', WE_LS_SLUG ),
+									'user-id' 			        => false,
+                                    'disable-jquery' 	        => false
 								], $user_defined_arguments );
 
 	$arguments[ 'user-id' ] 		= (int) $arguments['user-id'];
@@ -428,7 +429,7 @@ function ws_ls_shortcode_macro_table($user_defined_arguments) {
         $arguments[ 'css-class' ] .= ' ws-ls-footable';
     }
 
-	return ws_ls_macro_render_table( $arguments[ 'user-id' ], $arguments[ 'error-message' ], $arguments[ 'css-class' ] );
+	return ws_ls_macro_render_table( $arguments[ 'user-id' ], $arguments[ 'error-message' ], $arguments[ 'css-class' ], NULL, $arguments[ 'allow-macros-in-grams' ] );
 }
 add_shortcode( 'wlt-macronutrients-table', 'ws_ls_shortcode_macro_table' );
 add_shortcode( 'wt-macronutrients-table', 'ws_ls_shortcode_macro_table' );
