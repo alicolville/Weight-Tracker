@@ -16,6 +16,7 @@ function ws_ls_data_table_render( $arguments = [] ) {
 	                                            'bmi-format'                    => 'label',
 	                                            'smaller-width'                 => false,
 	                                            'enable-add-edit'               => true,
+                                                'anchor-reference'              => 'wt-table-edit',
 												'enable-meta-fields'            => ( true === ws_ls_meta_fields_is_enabled() &&
 												                                        ws_ls_meta_fields_number_of_enabled() > 0 ),
 												'enable-bmi'                    => true,
@@ -501,7 +502,7 @@ function ws_ls_data_js_config() {
         // Strip old edit and cancel QS values
 		$edit_link                          = remove_query_arg( ['ws-edit-entry', 'ws-edit-cancel', 'ws-edit-saved'], $edit_link );
 
-		$config[ 'edit-url' ]               = esc_url( add_query_arg( 'ws-edit-entry', '|ws-id|', $edit_link ) );
+		$config[ 'edit-url' ]               = esc_url( add_query_arg( 'ws-edit-entry', '|ws-id|', $edit_link ) ) ;
 		$config[ 'current-url-base64' ]     = add_query_arg( 'ws-edit-saved', 'true', $edit_link );
 		$config[ 'current-url-base64' ]     = base64_encode($config['current-url-base64']);
         $config[ 'us-date' ]                = ( false === ws_ls_setting('use-us-dates', get_current_user_id() ) ) ? 'false' : 'true';

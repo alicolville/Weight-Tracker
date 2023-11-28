@@ -101,7 +101,7 @@ jQuery( document ).ready(function ( $, undefined ) {
                                                     var url = ws_user_table_config[ 'edit-url' ];
                                                     url = url.replace( '|ws-id|', values.db_row_id );
 
-                                                    window.location.href = url + '&user-id=' + values.user_id + '&redirect=' + ws_user_table_config[ 'current-url-base64' ];
+                                                    window.location.href = url + '&user-id=' + values.user_id + '&redirect=' + ws_user_table_config[ 'current-url-base64' ] + '#wt-table';
                                                 } else {
                                                     window.location.href = ws_user_table_config[ 'base-url' ] + '&mode=entry&user-id=' + values.user_id + '&entry-id=' + values.db_row_id + '&redirect=' + ws_user_table_config[ 'current-url-base64' ];
                                                 }
