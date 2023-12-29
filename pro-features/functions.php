@@ -75,6 +75,10 @@ function ws_ls_calculate_bmi( $cm, $kg ) {
         return false;
     }
 
+    if ( true === is_array( $kg ) ) {
+        return false;
+    }
+
     $bmi = $kg / ( $cm * $cm );
     $bmi = $bmi * 10000;
 

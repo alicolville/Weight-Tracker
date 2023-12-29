@@ -361,7 +361,7 @@ function ws_ls_weight_prep( $weight ) {
 		$weight = array_merge( $weight, $dates );
 	}
 
-	if ( false === empty( $weight[ 'kg' ] ) ) {
+	if ( true === isset( $weight[ 'kg' ] ) ) {
 
 		// Add Weight display values
 		$display_values = ws_ls_weight_display( $weight[ 'kg' ] );
@@ -1313,6 +1313,10 @@ function ws_ls_calculate_percentage_difference( $previous_weight, $current_weigh
         return NULL;
     }
 
+    if ( 0 === (int) $previous_weight ) {
+        return NULL;
+    }
+
     $difference = [ 'current' => $current_weight, 'increase' => ( $current_weight > $previous_weight ), 'previous' => $previous_weight ];
 
     if ( true === $difference['increase'] ) {
@@ -1323,7 +1327,7 @@ function ws_ls_calculate_percentage_difference( $previous_weight, $current_weigh
     } else {
 
         $decrease = $previous_weight - $current_weight;
-        $difference['percentage'] = $decrease /$previous_weight * 100;
+        $difference['percentage'] = $decrease / $previous_weight * 100;
     }
 
     return $difference;
