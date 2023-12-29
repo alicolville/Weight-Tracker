@@ -391,7 +391,7 @@ function ws_ls_entry_get_oldest( $arguments = [] ) {
 	$oldest_entry = ws_ls_entry_get( $arguments );
 
 	return ( true === $arguments[ 'kg-only'] &&
-			false === empty( $oldest_entry[ 'kg' ] ) ) ?
+			true === isset( $oldest_entry[ 'kg' ] ) ) ?
 				$oldest_entry[ 'kg' ] :
 					$oldest_entry;
 
