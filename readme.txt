@@ -1,10 +1,10 @@
 ﻿=== Weight Tracker ===
 Contributors: aliakro
 Tags: weight,tracker,chart,bmi,bmr,macronutrient,measure,awards,custom fields,history,measurements,data
-Requires at least: 5.7
-Tested up to: 6.3
-Stable tag: 10.7.2
-Requires PHP: 7.2
+Requires at least: 6.0
+Tested up to: 6.4.3
+Stable tag: 10.7.3
+Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate Link: https://www.paypal.me/yeken
@@ -151,6 +151,13 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 10.4: New award for user's meeting their target
 
 == Changelog ==
+
+= 10.7.3 =
+
+* New feature: Added "hide-tab-messages" argument to [wt] shortcode.
+* Maintenance: Bumped min supported version of WordPress.
+* Maintenance: Bumped min supported version of PHP to 7.4.
+* Maintenance: Fixed PHP deprecated warnings were found.
 
 = 10.7.2 =
 

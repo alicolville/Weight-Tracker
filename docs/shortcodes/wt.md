@@ -107,6 +107,7 @@ The shortcode supports the following arguments:
 | hide-photos   | If set to true (default is false) hide the photo upload section of the form.   | True or false (default).   |  [wt hide-photos=true] |   
 | hide-tab-advanced   | If set to true (default is false) hide the Advanced tab.   | True or false (default).   | [wt hide-tab-advanced=true] |     
 | hide-tab-awards   | If set to true (default is false) hide the Awards tab.   | True or false (default).   | [wt hide-tab-awards=true] |     
+| hide-tab-messages    | If set to true (default is false) hide the messages tab.  | True or false (default).   |  [wt hide-tab-descriptions=true] |   
 | hide-tab-descriptions    | If set to true (default is false) hide the descriptions under the tab title.  | True or false (default).   |  [wt hide-tab-descriptions=true] |   
 | hide-tab-photos   | If set to true (default is false) hide the Photos tab.   |  True or false (default).   | [wt hide-tab-photos=true] |         
 | show-delete-data  | If set to false (default is true), the section allowing users to delete their own data is hidden.   | True (default) or false   | [wt show-delete-data=false] |  

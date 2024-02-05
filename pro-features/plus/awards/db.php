@@ -13,7 +13,7 @@
  */
 function ws_ls_awards_db_given_get( $user_id, $order_by = 'value', $given_on = NULL ) {
 
-    $cache_key = 'awards-given-' . $order_by . md5( $given_on );
+    $cache_key = sprintf( 'awards-given-%s-%s', $order_by, ( false === empty( $given_on ) ? $given_on : 'empty' ) ) ;
 
     $cache = ws_ls_cache_user_get( $user_id, $cache_key );
 
