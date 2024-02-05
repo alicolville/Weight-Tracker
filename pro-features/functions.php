@@ -200,7 +200,7 @@ function ws_ls_get_link_to_user_data() {
  */
 function ws_ls_get_link_to_user_profile( $user_id, $display_text = NULL, $escape_url = true ) {
 
-	$cache_key = 'profile-url-' .sanitize_title( $display_text );
+	$cache_key = sprintf( 'profile-url-%s', ( false === empty( $display_text ) ? sanitize_title( $display_text ) : 'empty' ) );
 
 	if ( $cache = ws_ls_cache_user_get( $user_id, $cache_key ) ) {
 		return $cache;
