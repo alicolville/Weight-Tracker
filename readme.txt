@@ -2,8 +2,8 @@
 Contributors: aliakro
 Tags: weight,tracker,chart,bmi,bmr,macronutrient,measure,awards,custom fields,history,measurements,data
 Requires at least: 5.7
-Tested up to: 6.3
-Stable tag: 10.7.2
+Tested up to: 6.4.3
+Stable tag: 10.7.3
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -151,6 +151,10 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 10.4: New award for user's meeting their target
 
 == Changelog ==
+
+= 10.7.3 =
+
+* New feature: Added "hide-tab-messages" argument to [wt] shortcode.
 
 = 10.7.2 =
 

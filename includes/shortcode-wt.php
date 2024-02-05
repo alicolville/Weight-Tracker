@@ -33,6 +33,7 @@ function ws_ls_shortcode_wt( $user_defined_arguments ) {
 												'hide-tab-awards' 		    => false,               	    // Hide Awards tab
 												'hide-tab-photos' 			=> false,                 	    // Hide Photos tab
 												'hide-tab-advanced' 		=> false,               	    // Hide Advanced tab (macroN, calories, etc)
+												'hide-tab-messages' 		=> false,               	    // Hide Messages tab 
 												'hide-advanced-narrative' 	=> false,         			    // Hide text describing BMR, MarcoN, etc
 												'hide-custom-fields-form'   => false,                       // Hide custom fields from form
 												'hide-custom-fields-chart'  => false,                       // Hide custom fields from chart
@@ -274,7 +275,8 @@ function ws_ls_wt_tab_menu( $arguments = [] ) {
 		$tabs[] = [ 'name' => 'gallery', 'icon' => 'image' ];
 	}
 
-	if( true === ws_ls_note_is_enabled() ) {
+	if( true === $arguments[ 'show-tab-messages' ] &&
+			true === ws_ls_note_is_enabled() ) {
 		$tabs[] = [ 'name' => 'messages', 'icon' => 'mail' ];
 	}
 
@@ -338,7 +340,8 @@ function ws_ls_wt_tab_panes( $arguments = [] ) {
 		$html .= '<li>' . ws_ls_tab_gallery(  $arguments ) . '</li>';
 	}
 
-	if( true === ws_ls_note_is_enabled() ) {
+	if( true === $arguments[ 'show-tab-messages' ] &&
+			true === ws_ls_note_is_enabled() ) {
 		$html .= '<li>' . ws_ls_tab_notes( $arguments ) . '</li>';
 	}
 
