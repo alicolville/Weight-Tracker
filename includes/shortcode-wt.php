@@ -139,6 +139,7 @@ function ws_ls_shortcode_wt( $user_defined_arguments ) {
 	$shortcode_arguments[ 'show-tab-awards' ]       = ( false === ws_ls_to_bool( $shortcode_arguments[ 'hide-tab-awards' ] ) && true === WS_LS_IS_PRO_PLUS );
 	$shortcode_arguments[ 'show-tab-advanced' ]     = ( false === ws_ls_to_bool( $shortcode_arguments[ 'hide-tab-advanced' ] ) && true === WS_LS_IS_PRO_PLUS );
 	$shortcode_arguments[ 'show-tab-photos' ]       = ( false === ws_ls_to_bool( $shortcode_arguments[ 'hide-tab-photos' ] ) && true === ws_ls_meta_fields_photo_any_enabled( true ) );
+    $shortcode_arguments[ 'show-tab-messages' ]     = ( false === ws_ls_to_bool( $shortcode_arguments[ 'hide-tab-messages' ] ) && true === ws_ls_note_is_enabled() );
 	$shortcode_arguments[ 'enable-week-ranges' ]	= ws_ls_to_bool( $shortcode_arguments[ 'enable-week-ranges' ] );
 	$shortcode_arguments[ 'min-chart-points' ]      = (int) $shortcode_arguments[ 'min-chart-points' ];
 	$shortcode_arguments[ 'selected-week-number' ]  = ( true === $shortcode_arguments[ 'enable-week-ranges' ] ) ? ws_ls_post_value_numeric( 'week-number' ) : NULL;
@@ -275,8 +276,7 @@ function ws_ls_wt_tab_menu( $arguments = [] ) {
 		$tabs[] = [ 'name' => 'gallery', 'icon' => 'image' ];
 	}
 
-	if( true === $arguments[ 'show-tab-messages' ] &&
-			true === ws_ls_note_is_enabled() ) {
+	if( true === $arguments[ 'show-tab-messages' ] ) {
 		$tabs[] = [ 'name' => 'messages', 'icon' => 'mail' ];
 	}
 
@@ -340,8 +340,7 @@ function ws_ls_wt_tab_panes( $arguments = [] ) {
 		$html .= '<li>' . ws_ls_tab_gallery(  $arguments ) . '</li>';
 	}
 
-	if( true === $arguments[ 'show-tab-messages' ] &&
-			true === ws_ls_note_is_enabled() ) {
+	if( true === $arguments[ 'show-tab-messages' ] ) {
 		$html .= '<li>' . ws_ls_tab_notes( $arguments ) . '</li>';
 	}
 
