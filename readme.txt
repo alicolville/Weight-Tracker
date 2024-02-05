@@ -157,6 +157,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 * New feature: Added "hide-tab-messages" argument to [wt] shortcode.
 * Maintenance: Bumped min supported version of WordPress.
 * Maintenance: Bumped min supported version of PHP to 7.4.
+* Maintenance: Fixed PHP deprecated warnings were found.
 
 = 10.7.2 =
 
