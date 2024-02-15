@@ -491,7 +491,7 @@ function ws_ls_form_field_textarea( $arguments = [] ) {
 		$arguments[ 'cols' ],
 		$arguments[ 'rows' ],
 		$arguments[ 'name' ] . ' ' . $arguments[ 'css-class' ],
-		esc_textarea( $arguments[ 'value' ] ),
+        ( false === empty( $arguments[ 'value' ] ) ? esc_textarea( $arguments[ 'value' ] ) : '' ),
 		( true === $arguments[ 'mandatory' ] ? 'required' : ''),
 		__( 'Please select a value for'),
 		esc_attr( $arguments[ 'title' ] ),

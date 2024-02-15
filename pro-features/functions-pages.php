@@ -593,19 +593,19 @@ function ws_ls_side_bar_render_rows( $rows ) {
  * @param $user_id
  * @param bool $previous_url
  */
-function ws_ls_user_header( $user_id, $previous_url = false ) {
+function ws_ls_user_header($user_id, $previous_url = false ) {
 
 	if( true === empty( $user_id ) || false === ws_ls_user_exist_check( $user_id ) ) {
 		return;
 	}
 
-    $previous_url = ( true === empty( $previous_url ) ) ? ws_ls_get_link_to_user_data() : $previous_url;
+    $previous_url = ( true === empty( $previous_url ) ) ? ws_ls_get_link_to_user_data() : esc_url( $previous_url );
 
     $additional_links = apply_filters( 'wt_ls_user_profile_header_links', '', $user_id );
 
     echo sprintf('
         <h3>%s %s</h3>
-        <div class="postbox ws-ls-user-data">
+        <div class="postbox ws-ls-user-data" >
             <div class="inside">
                 <a href="%s" class="button-secondary button-wt-back"><i class="fa fa-arrow-left"></i> <span>%s</span></a>
                 <a href="%s" class="button-secondary button-wt-wp-record"><i class="fa fa-wordpress"></i> <span>%s</span></a>
@@ -615,7 +615,7 @@ function ws_ls_user_header( $user_id, $previous_url = false ) {
         </div>',
         ws_ls_user_display_name( $user_id ),
         ws_ls_get_email_link( $user_id, true ),
-        esc_url( $previous_url ),
+        $previous_url,
         __( 'Back', WE_LS_SLUG ),
         get_edit_user_link( $user_id ),
         __('WordPress Record', WE_LS_SLUG ),
