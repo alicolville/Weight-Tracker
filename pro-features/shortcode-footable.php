@@ -24,6 +24,7 @@ function ws_ls_shortcode_table( $user_defined_arguments ) {
 							        'bmi-format'                    => 'label',
 							        'week'                          => NULL,
 						            'user-id'                       => get_current_user_id(),
+                                    'table-id'                      => 'wt-sc-table',  // Used as an anchor tag primarily so we know where to jump to when switching between edit mode
                                     'uikit'                         => false,
 	                                'kiosk-mode'                    => false,
 	                                'show-refresh-button'           => false
