@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight,tracker,chart,bmi,bmr,macronutrient,measure,awards,custom fields,history,measurements,data
 Requires at least: 6.0
 Tested up to: 6.4.3
-Stable tag: 10.7.3
+Stable tag: 10.7.4
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -151,6 +151,10 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 10.4: New award for user's meeting their target
 
 == Changelog ==
+
+= 10.7.3 =
+
+* Improvement: When [wt-table] is within edit mode, clicking an edit link will jump to the correct place om the page. Read more: https://github.com/alicolville/Weight-Tracker/issues/569
 
 = 10.7.3 =
 
