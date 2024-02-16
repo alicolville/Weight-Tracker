@@ -11,18 +11,10 @@ defined('ABSPATH') or die('Jog on!');
  */
 function ws_ls_uikit_summary_boxes( $arguments, $boxes = [] ) {
 
-	// TODO: refactor this. Do we really need this check?
-	$allowed_boxes = [ 'number-of-entries', 'number-of-weight-entries', 'latest-weight', 'start-weight', 'number-of-days-tracking',
-		'target-weight', 'previous-weight', 'latest-versus-target', 'bmi', 'bmr', 'latest-award', 'number-of-awards',
-		'name-and-email', 'start-bmr', 'start-bmi', 'age-dob', 'activity-level', 'height', 'aim', 'gender', 'group',
-		'latest-versus-start', 'divider', 'weight-difference-since-previous', 'calories-maintain', 'calories-lose', 'calories-gain', 'calories-auto', 'user-id' ];
-
 	// Default box selection
 	if ( true === empty( $boxes ) ) {
 		$boxes = [ 'number-of-entries', 'number-of-days-tracking', 'latest-weight', 'start-weight' ];
 	}
-
-	$boxes = array_intersect( $boxes, $allowed_boxes );
 
 	if ( true === empty( $boxes ) ) {
 		return '<!-- No valid summary boxes -->';
