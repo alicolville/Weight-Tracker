@@ -16,6 +16,7 @@ function ws_ls_data_table_render( $arguments = [] ) {
 	                                            'bmi-format'                    => 'label',
 	                                            'smaller-width'                 => false,
 	                                            'enable-add-edit'               => true,
+                                                'anchor-reference'              => 'wt-table-edit',
 												'enable-meta-fields'            => ( true === ws_ls_meta_fields_is_enabled() &&
 												                                        ws_ls_meta_fields_number_of_enabled() > 0 ),
 												'enable-bmi'                    => true,
@@ -30,24 +31,22 @@ function ws_ls_data_table_render( $arguments = [] ) {
 												'show-refresh-button'           => false,
 												'custom-field-restrict-rows'    => '',      // Only fetch entries that have either all custom fields completed (all), one or more (any) or leave blank if not concerned.
 	                                            'custom-field-groups'           => '',      // If specified, only show custom fields that are within these groups
-												'custom-field-slugs'            => '',      // If specified, only show the custom fields that are specified
+												'custom-field-slugs'            => '',      // If specified, only show the custom fields that are specified,
+                                                'table-id'                      => '',  // Used as an anchor tag primarily so we know where to jump to when switching between edit mode
 	] );
 
 	ws_ls_data_table_enqueue_scripts();
 
-	$html = '';
-
-	// Saved data?
-	if ( false === is_admin() ) {
-		$html .= ws_ls_display_data_saved_message();
-	}
-
-	$html = '';
-	$entry_id = ws_ls_querystring_value('ws-edit-entry', true);
+	$html               = '';
+    $entry_id           = ws_ls_querystring_value('ws-edit-entry', true);
 
 	// Saved data?
 	if (false === is_admin()) {
 		$html = ws_ls_display_data_saved_message( $arguments[ 'uikit' ] );
+
+        if ( false === empty( $arguments[ 'table-id' ] ) ) {
+            $html .= sprintf( '<a id="%s"></a>', esc_attr( $arguments[ 'table-id' ] ) );
+        }
 	}
 
 	// Are we in front end and editing enabled, and of course we want to edit, then do so!
@@ -58,6 +57,10 @@ function ws_ls_data_table_render( $arguments = [] ) {
 
 		if( false === empty( $redirect_url ) ) {
 			$redirect_url = base64_decode( $redirect_url );
+
+            if ( false === empty( $arguments[ 'table-id' ] ) ) {
+                $redirect_url .= sprintf('#%s', esc_attr( $arguments[ 'table-id' ] ) );
+            }
 		}
 
 		if ( true === $arguments[ 'uikit' ] ) {
@@ -97,7 +100,8 @@ function ws_ls_data_table_render( $arguments = [] ) {
 									data-custom-field-col-size="%15$s"
 									data-custom-field-restrict-rows="%16$s"
 									data-uikit="%17$s",
-									data-name="%19$s"
+									data-name="%19$s",
+									data-jump-to="%20$s"
 									 >
 		</table>
 		%18$s
@@ -121,7 +125,8 @@ function ws_ls_data_table_render( $arguments = [] ) {
 			true === ws_ls_to_bool( $arguments[ 'uikit' ] ) ? 'true' : 'false',
 			true === ws_ls_to_bool( $arguments[ 'show-refresh-button' ] ) ?
 			sprintf( '<button class="ykuk-button ykuk-button-default ws-ls-show-if-data-edited ykuk-invisible" type="button" onclick="location.reload();">%1$s</button>', __( 'Data has changed, refresh screen', WE_LS_SLUG ) ) : '',
-			esc_attr( $arguments[ 'name' ] )
+			esc_attr( $arguments[ 'name' ] ),
+            esc_attr( $arguments[ 'table-id' ] )
 		);
 
 		if ( true === empty( $arguments[ 'user-id' ] ) ) {
@@ -501,7 +506,7 @@ function ws_ls_data_js_config() {
         // Strip old edit and cancel QS values
 		$edit_link                          = remove_query_arg( ['ws-edit-entry', 'ws-edit-cancel', 'ws-edit-saved'], $edit_link );
 
-		$config[ 'edit-url' ]               = esc_url( add_query_arg( 'ws-edit-entry', '|ws-id|', $edit_link ) );
+		$config[ 'edit-url' ]               = esc_url( add_query_arg( 'ws-edit-entry', '|ws-id|', $edit_link ) ) ;
 		$config[ 'current-url-base64' ]     = add_query_arg( 'ws-edit-saved', 'true', $edit_link );
 		$config[ 'current-url-base64' ]     = base64_encode($config['current-url-base64']);
         $config[ 'us-date' ]                = ( false === ws_ls_setting('use-us-dates', get_current_user_id() ) ) ? 'false' : 'true';
