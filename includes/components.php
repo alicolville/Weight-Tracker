@@ -11,18 +11,10 @@ defined('ABSPATH') or die('Jog on!');
  */
 function ws_ls_uikit_summary_boxes( $arguments, $boxes = [] ) {
 
-	// TODO: refactor this. Do we really need this check?
-	$allowed_boxes = [ 'number-of-entries', 'number-of-weight-entries', 'latest-weight', 'start-weight', 'number-of-days-tracking',
-		'target-weight', 'previous-weight', 'latest-versus-target', 'bmi', 'bmr', 'latest-award', 'number-of-awards',
-		'name-and-email', 'start-bmr', 'start-bmi', 'age-dob', 'activity-level', 'height', 'aim', 'gender', 'group',
-		'latest-versus-start', 'divider', 'weight-difference-since-previous', 'calories-maintain', 'calories-lose', 'calories-gain', 'calories-auto', 'user-id' ];
-
 	// Default box selection
 	if ( true === empty( $boxes ) ) {
 		$boxes = [ 'number-of-entries', 'number-of-days-tracking', 'latest-weight', 'start-weight' ];
 	}
-
-	$boxes = array_intersect( $boxes, $allowed_boxes );
 
 	if ( true === empty( $boxes ) ) {
 		return '<!-- No valid summary boxes -->';
@@ -39,6 +31,14 @@ function ws_ls_uikit_summary_boxes( $arguments, $boxes = [] ) {
 	$html = ws_ls_uikit_open_grid( $breakpoint_s, $breakpoint_m, $divider_count );
 
 	foreach ( $boxes as $box ) {
+
+        $custom_field = ws_ls_component_is_custom_field( $box );
+
+        if ( false !== $custom_field ) {
+
+            $html .= ws_ls_component_custom_field_render( [ 'custom-field'  => $custom_field, 'user-id' => $arguments[ 'user-id' ] ] );
+            continue;
+        }
 
 		switch ( $box ) {
 			case 'weight-difference-since-previous':
@@ -157,6 +157,65 @@ function ws_ls_uikit_summary_boxes( $arguments, $boxes = [] ) {
 	$html .= '</div>';
 
 	return $html;
+}
+
+/**
+ * Is the component specified a custom field?
+ * @param $box
+ * @return array|false
+ */
+function ws_ls_component_is_custom_field( $box ) {
+
+    if ( false === strpos( $box, 'custom-field-' ) )  {
+        return false;
+    }
+
+    $custom_field = [   'mode' => 'latest',
+                        'slug' => str_replace( [ 'custom-field-latest-', 'custom-field-previous-', 'custom-field-oldest-' ], [ '', '', '' ], $box )
+    ];
+
+    if ( null === ws_ls_meta_fields_slug_to_id( $custom_field[ 'slug' ] ) ) {
+        return false;
+    }
+
+    if ( false !== strpos( $box, 'custom-field-oldest-' ) ) {
+        $custom_field[ 'mode' ] = 'oldest';
+    } else if ( false !== strpos( $box, 'custom-field-previous' ) )  {
+        $custom_field[ 'mode' ] = 'previous';
+    }
+
+    return $custom_field;
+}
+
+/**
+ * Render a custom field component
+ * @param $args
+ * @return string
+ */
+function ws_ls_component_custom_field_render( $args) {
+
+    if ( true === empty( $args ) ) {
+        return '';
+    }
+
+    $args           = wp_parse_args( $args, [ 'custom-field' => $args, 'user-id' => get_current_user_id() ] );
+    $custom_field   = ws_ls_meta_fields_shortcode_value_latest( [  'slug' => $args[ 'custom-field' ]['slug'], 'user-id' => $args[ 'user-id' ], 'which' => $args[ 'custom-field' ]['mode'], 'return-as-array' => true ] );
+
+    $title  = sprintf( '%s %s', ucwords( $args[ 'custom-field' ]['mode'] ), ws_ls_meta_fields_get_column( $custom_field[ 'id' ], 'field_name' ) );
+    $value  = sprintf( '%s%s', $custom_field[ 'display' ], ws_ls_meta_fields_get_column( $custom_field[ 'id' ], 'suffix' ) );
+
+    return sprintf( '<div>
+                        <div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
+                                <span class="ykuk-info-box-header">%1$s</span><br />
+                                <span class="ykuk-text-bold">
+                                    %2$s
+                                </span>
+                        </div>
+                    </div>',
+        $title,
+        $value
+    );
+
 }
 
 /**

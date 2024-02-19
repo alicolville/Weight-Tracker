@@ -44,6 +44,31 @@ Below are the currently available summary boxes that you can use:
 
 [![](/assets/images/component-calories-auto.png)](/assets/images/component-calories-auto.png)
 
+#### custom-field-latest-[slug]
+
+Display the latest value for the given custom field. Replace [slug] with the desired custom field's slug e.g.
+
+    custom-field-latest-leg
+
+[![](/assets/images/component-custom-field-previous.png)](/assets/images/component-custom-field-previous.png)
+
+#### custom-field-previous-[slug]
+
+Display the previous value for the given custom field. Replace [slug] with the desired custom field's slug e.g.
+
+    custom-field-previous-leg
+
+[![](/assets/images/component-custom-field-previous.png)](/assets/images/component-custom-field-previous.png)
+
+#### custom-field-oldest-[slug]
+
+Display the oldest value for the given custom field. Replace [slug] with the desired custom field's slug e.g.
+
+    custom-field-oldest-leg
+
+[![](/assets/images/component-custom-field-oldest.png)](/assets/images/component-custom-field-oldest.png)
+
+
 #### divider
 
 (this creates a new section and adds a divider)
