@@ -171,8 +171,12 @@ function ws_ls_component_is_custom_field( $box ) {
     }
 
     $custom_field = [   'mode' => 'latest',
-                        'name' => str_replace( [ 'custom-field-latest-', 'custom-field-previous-', 'custom-field-oldest-' ], [ '', '', '' ], $box )
+                        'slug' => str_replace( [ 'custom-field-latest-', 'custom-field-previous-', 'custom-field-oldest-' ], [ '', '', '' ], $box )
     ];
+
+    if ( null === ws_ls_meta_fields_slug_to_id( $custom_field[ 'slug' ] ) ) {
+        return false;
+    }
 
     if ( false !== strpos( $box, 'custom-field-oldest-' ) ) {
         $custom_field[ 'mode' ] = 'oldest';
@@ -195,8 +199,7 @@ function ws_ls_component_custom_field_render( $args) {
     }
 
     $args           = wp_parse_args( $args, [ 'custom-field' => $args, 'user-id' => get_current_user_id() ] );
-
-    $custom_field   = ws_ls_meta_fields_shortcode_value_latest( [  'slug' => $args[ 'custom-field' ]['name'], 'user-id' => $args[ 'user-id' ], 'which' => $args[ 'custom-field' ]['mode'], 'return-as-array' => true ] );
+    $custom_field   = ws_ls_meta_fields_shortcode_value_latest( [  'slug' => $args[ 'custom-field' ]['slug'], 'user-id' => $args[ 'user-id' ], 'which' => $args[ 'custom-field' ]['mode'], 'return-as-array' => true ] );
 
     $title  = sprintf( '%s %s', ucwords( $args[ 'custom-field' ]['mode'] ), ws_ls_meta_fields_get_column( $custom_field[ 'id' ], 'field_name' ) );
     $value  = sprintf( '%s%s', $custom_field[ 'display' ], ws_ls_meta_fields_get_column( $custom_field[ 'id' ], 'suffix' ) );
