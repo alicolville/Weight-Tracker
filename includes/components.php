@@ -32,6 +32,14 @@ function ws_ls_uikit_summary_boxes( $arguments, $boxes = [] ) {
 
 	foreach ( $boxes as $box ) {
 
+        $custom_field = ws_ls_component_is_custom_field( $box );
+
+        if ( false !== $custom_field ) {
+
+            $html .= ws_ls_component_custom_field_render( [ 'custom-field'  => $custom_field, 'user-id' => $arguments[ 'user-id' ] ] );
+            continue;
+        }
+
 		switch ( $box ) {
 			case 'weight-difference-since-previous':
 				$html .= ws_ls_component_weight_difference_since_previous( [ 'user-id'   => $arguments[ 'user-id' ] ] );
@@ -149,6 +157,62 @@ function ws_ls_uikit_summary_boxes( $arguments, $boxes = [] ) {
 	$html .= '</div>';
 
 	return $html;
+}
+
+/**
+ * Is the component specified a custom field?
+ * @param $box
+ * @return array|false
+ */
+function ws_ls_component_is_custom_field( $box ) {
+
+    if ( false === strpos( $box, 'custom-field-' ) )  {
+        return false;
+    }
+
+    $custom_field = [   'mode' => 'latest',
+                        'name' => str_replace( [ 'custom-field-latest-', 'custom-field-previous-', 'custom-field-oldest-' ], [ '', '', '' ], $box )
+    ];
+
+    if ( false !== strpos( $box, 'custom-field-oldest-' ) ) {
+        $custom_field[ 'mode' ] = 'oldest';
+    } else if ( false !== strpos( $box, 'custom-field-previous' ) )  {
+        $custom_field[ 'mode' ] = 'previous';
+    }
+
+    return $custom_field;
+}
+
+/**
+ * Render a custom field component
+ * @param $args
+ * @return string
+ */
+function ws_ls_component_custom_field_render( $args) {
+
+    if ( true === empty( $args ) ) {
+        return '';
+    }
+
+    $args           = wp_parse_args( $args, [ 'custom-field' => $args, 'user-id' => get_current_user_id() ] );
+
+    $custom_field   = ws_ls_meta_fields_shortcode_value_latest( [  'slug' => $args[ 'custom-field' ]['name'], 'user-id' => $args[ 'user-id' ], 'which' => $args[ 'custom-field' ]['mode'], 'return-as-array' => true ] );
+
+    $title  = sprintf( '%s %s', ucwords( $args[ 'custom-field' ]['mode'] ), ws_ls_meta_fields_get_column( $custom_field[ 'id' ], 'field_name' ) );
+    $value  = sprintf( '%s%s', $custom_field[ 'display' ], ws_ls_meta_fields_get_column( $custom_field[ 'id' ], 'suffix' ) );
+
+    return sprintf( '<div>
+                        <div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
+                                <span class="ykuk-info-box-header">%1$s</span><br />
+                                <span class="ykuk-text-bold">
+                                    %2$s
+                                </span>
+                        </div>
+                    </div>',
+        $title,
+        $value
+    );
+
 }
 
 /**
