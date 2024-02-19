@@ -272,26 +272,31 @@ function ws_ls_meta_fields_shortcode_value_latest( $user_defined_arguments ) {
 		return ws_ls_display_pro_upgrade_notice_for_shortcode();
 	}
 
-	$arguments = shortcode_atts( [  'slug' => '', 'user-id' => get_current_user_id(), 'which' => 'latest' ] , $user_defined_arguments );
+	$arguments = shortcode_atts( [  'slug' => '', 'user-id' => get_current_user_id(), 'which' => 'latest', 'return-as-array' => false ] , $user_defined_arguments );
 
 	if ( true === empty( $arguments[ 'slug' ] ) ) {
 		return __( 'You must specify a slug.', WE_LS_SLUG );
 	}
 
-	$meta_field_id = ws_ls_meta_fields_slug_to_id( $arguments[ 'slug' ] );
+    $meta_field = [ 'id' => ws_ls_meta_fields_slug_to_id( $arguments[ 'slug' ] ), 'slug' => $arguments[ 'slug' ] ];
 
-	if ( true === empty( $meta_field_id ) ) {
+    $meta_field[ 'id' ] = ws_ls_meta_fields_slug_to_id( $arguments[ 'slug' ] );
+
+	if ( true === empty( $meta_field[ 'id' ] ) ) {
 		return __( 'The slug you specified does not exist.', WE_LS_SLUG );
 	}
 
-	$arguments[ 'key' ] = $meta_field_id;
+	$arguments[ 'key' ] = $meta_field[ 'id' ];
 	$value              = ws_meta_fields_value_get( $arguments );
 
 	if ( false === empty( $value[ 'error' ] ) ) {
 		return $value[ 'error' ];
 	}
 
-	return ws_ls_fields_display_field_value( $value[ 'value' ], $arguments[ 'key' ] );
+    $meta_field[ 'value' ]      = $value;
+    $meta_field[ 'display' ]    = ws_ls_fields_display_field_value( $value[ 'value' ], $arguments[ 'key' ] );
+
+	return ( false === $arguments[ 'return-as-array' ] ) ? $meta_field[ 'display' ] : $meta_field;
 }
 add_shortcode( 'wt-custom-fields-latest', 'ws_ls_meta_fields_shortcode_value_latest' );
 
