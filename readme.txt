@@ -152,6 +152,11 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 == Changelog ==
 
+= 10.*.* =
+
+* Maintenance: Updated Chart.js library to 4.4.1.
+* Maintenance: Removed deprecated "ltrim()" warning when no redirect-url specified on [wt] and [wt-form]
+
 = 10.8 =
 
 * New feature: Added new components to display custom fields (latest, previous and oldest) within summary boxes on [wt] shortcode. Read more: https://docs.yeken.uk/components.html
