@@ -155,6 +155,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 = 10.*.* =
 
 * Maintenance: Updated Chart.js library to 4.4.1.
+* Maintenance: Removed deprecated "ltrim()" warning when no redirect-url specified on [wt] and [wt-form]
 
 = 10.8 =
 

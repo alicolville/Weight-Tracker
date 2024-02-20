@@ -82,7 +82,7 @@ function ws_ls_form_weight( $arguments = [] ) {
 									esc_attr( wp_hash( $arguments[ 'user-id' ] ) ),
 									( NULL === ws_ls_querystring_value( 'load-entry', NULL ) ) ? $arguments[ 'entry-id' ] : '',
 									( true === $arguments[ 'photos-enabled' ]  ) ? 'enctype="multipart/form-data"' : '',
-									esc_url_raw( $arguments[ 'redirect-url' ] ),
+                                    ( false === empty( $arguments[ 'redirect-url' ] ) ? esc_url_raw( $arguments[ 'redirect-url' ] ) : '' ),
 									$arguments[ 'form-number' ],
 									( 'weight' === $arguments[ 'type' ] && true === ws_ls_to_bool( $arguments[ 'weight-mandatory' ] ) ) ? 'weight-required ' : '',
 									$arguments[ 'form-key' ],
@@ -274,7 +274,7 @@ function ws_ls_form_weight( $arguments = [] ) {
  *
  * @return array
  */
-function  ws_ls_form_init( $arguments = [] ) {
+function ws_ls_form_init( $arguments = [] ) {
 
 	$user_id                    = ( false === $arguments[ 'kiosk-mode' ] ) ? $arguments[ 'user-id' ] : get_current_user_id();
 	$arguments[ 'form-id' ]     = ws_ls_component_id();
