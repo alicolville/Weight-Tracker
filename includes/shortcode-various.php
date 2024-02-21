@@ -90,7 +90,7 @@ function ws_ls_shortcode_difference_in_weight_previous_latest( $user_defined_arg
 
 	$arguments = shortcode_atts( [	'user-id' 					=> get_current_user_id(),
 									'invert' 					=> false,
-									'display' 					=> 'weight', // weight or percentage
+									'display' 					=> 'weight', // both, weight or percentage
 									'include-percentage-sign' 	=> true,
 									'kiosk-mode'                => false
 								]
@@ -118,7 +118,9 @@ function ws_ls_shortcode_difference_in_weight_previous_latest( $user_defined_arg
 		return '';
 	}
 
-	if ( 'percentage' == $arguments[ 'display' ] ) {
+    $html = '';
+
+	if ( true === in_array(  $arguments[ 'display' ], [ 'both', 'percentage' ] ) ) {
 
 		$output = ws_ls_calculate_percentage_difference( $previous_entry[ 'kg' ], $latest_entry[ 'kg' ] );
 
@@ -126,34 +128,40 @@ function ws_ls_shortcode_difference_in_weight_previous_latest( $user_defined_arg
 			return '';
 		}
 
-		$output = ( true === $output[ 'increase' ] ) ?  $output[ 'percentage' ] : -$output[ 'percentage' ];
+		$difference = ( true === $output[ 'increase' ] ) ?  $output[ 'percentage' ] : -$output[ 'percentage' ];
 
-		$output = ws_ls_round_number( $output, 1 );
+        $html .= ws_ls_round_number( $difference, 1 );
 
 		if ( true === $arguments[ 'include-percentage-sign' ] ) {
-			$output .= '%';
+            $html .= '%';
 		}
 
-	} else {
+	}
+
+    if ( 'both' == $arguments[ 'display' ] ) {
+        $html .= ' / ';
+    }
+
+    if ( true === in_array(  $arguments[ 'display' ], [ 'both', 'weight' ] ) ) {
 
 		$difference             = $latest_entry[ 'kg' ] - $previous_entry[ 'kg' ];
 		$difference             = ( false === ws_ls_to_bool( $arguments[ 'invert' ] ) ) ? $difference : -$difference ;
 		$sign                   = ( $difference > 0 ) ? '+' : '';
 		$weight_to_display      = ws_ls_weight_display( $difference, $arguments[ 'user-id' ], false, false, true );
-		$output                 = sprintf ('%s%s', $sign, $weight_to_display[ 'display' ] );
+        $html                   .= sprintf ('%s%s', $sign, $weight_to_display[ 'display' ] );
 
 		if ( true === $arguments[ 'kiosk-mode' ] ) {
 
 			// Note, this currently only supports lose weight!
 			$label = ( $difference <= 0 ) ? 'ykuk-label ykuk-label-success' : 'ykuk-label ykuk-label-warning';
 
-			$output = sprintf( '<span class="%s">%s</span>', $label, $output );
+            $html .= sprintf( '<span class="%s">%s</span>', $label, $html );
 		}
 	}
 
-	ws_ls_cache_user_set( $arguments[ 'user-id' ], $cache_key, $output );
+	ws_ls_cache_user_set( $arguments[ 'user-id' ], $cache_key, $html );
 
-	return $output;
+	return $html;
 }
 add_shortcode( 'wt-difference-between-latest-previous', 'ws_ls_shortcode_difference_in_weight_previous_latest' );
 

@@ -154,6 +154,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 = 10.*.* =
 
+* New feature: Added the option "both" to the "display" argument of [wt-difference-between-latest-previous]. This option will display both weight and percentage.
 * Maintenance: Updated Chart.js library to 4.4.1.
 * Maintenance: Removed deprecated "ltrim()" warning when no redirect-url specified on [wt] and [wt-form]
 

@@ -63,7 +63,7 @@ Display the difference between the current user's most recent weight entry and t
     [wt-difference-between-latest-previous invert="true" display="percentage”] 
       
 Also supports the following arguments:
-* "display" - Specifies whether to display a "weight" (default) or "percentage"
+* "display" - Specifies whether to display a "weight" (default), "percentage" or "both".
 * "invert" to invert negative numbers into positive and vice versa e.g.
 * "include-percentage-sign" - if displaying a percentage, specifies whether or not to include the percentage sign. Accepts "true" (default) or "false".
 
