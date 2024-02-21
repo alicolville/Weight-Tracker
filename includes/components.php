@@ -240,8 +240,8 @@ function ws_ls_component_latest_weight( $args = [] ) {
 										<a href="%s">%s</a>
 									</span>', ws_ls_wt_link_edit_entry( $latest_entry[ 'id' ] ), $latest_entry[ 'display-date' ] );
 
-        $difference = ws_ls_shortcode_difference_in_weight_previous_latest( [   'display'                   => 'percentage',
-                                                                                'include-percentage-sign'   => false,
+        $difference = ws_ls_shortcode_difference_in_weight_previous_latest( [   'display'                   => 'both',
+                                                                                'include-percentage-sign'   => true,
 	                                                                            'invert'                    => true,
                                                                                 'user-id'                   => $args[ 'user-id']
         ] );
@@ -257,7 +257,7 @@ function ws_ls_component_latest_weight( $args = [] ) {
 		        $class = 'ykuk-label-warning';
 	        }
 
-            $text_data .= sprintf( ' <span class="ykuk-label %s" ykuk-tooltip="%s">%s%%</span>',
+            $text_data .= sprintf( ' <span class="ykuk-label %s" ykuk-tooltip="%s">%s</span>',
                                     $class,
                                     __( 'The difference between your latest weight and previous.', WE_LS_SLUG ),
                                     $difference
