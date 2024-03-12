@@ -91,6 +91,14 @@ Display the oldest value for the given custom field. Replace [slug] with the des
 
 [![](/assets/images/component-latest-weight.png)](/assets/images/component-latest-weight.png)
 
+#### latest-weight-difference-as-percentage
+
+Same box as "latest-weight" but forces the difference to be displayed as a percentage.
+
+#### latest-weight-difference-as-weight
+
+Same box as "latest-weight" but forces the difference to be displayed in weight. 
+
 #### latest-versus-target
 
 [![](/assets/images/component-latest-versus-target.png)](/assets/images/component-latest-versus-target.png)
