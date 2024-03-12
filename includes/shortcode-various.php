@@ -258,6 +258,7 @@ function ws_ls_shortcode_difference_in_weight_previous_latest( $user_defined_arg
     if ( true === in_array(  $arguments[ 'display' ], [ 'both', 'weight' ] ) ) {
 
         $difference             = $latest_entry[ 'kg' ] - $previous_entry[ 'kg' ];
+		echo $difference;
         $difference             = ( false === ws_ls_to_bool( $arguments[ 'invert' ] ) ) ? $difference : -$difference ;
         $sign                   = ( $difference > 0 ) ? '+' : '';
         $weight_to_display      = ws_ls_weight_display( $difference, $arguments[ 'user-id' ], false, false, true );
