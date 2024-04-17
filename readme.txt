@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight,tracker,chart,bmi,bmr,macronutrient,measure,awards,custom fields,history,measurements,data
 Requires at least: 6.0
 Tested up to: 6.4.3
-Stable tag: 10.8
+Stable tag: 10.8.1
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -152,8 +152,11 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 == Changelog ==
 
-= 10.*.* =
+= 10.8.1 =
 
+* New feature: Added the option "both" to the "display" argument of [wt-difference-from-target]. This option will display both weight and percentage.
+* New feature: Added the option "both" to the "display" argument of [wt-difference-between-latest-previous]. This option will display both weight and percentage.
+* New feature: Added the slightly new components "latest-weight-difference-as-percentage" and "latest-weight-difference-as-weight" to change how the difference figure of "latest-weight" is rendered". Read more: https://docs.yeken.uk/components.html
 * Maintenance: Updated Chart.js library to 4.4.1.
 * Maintenance: Removed deprecated "ltrim()" warning when no redirect-url specified on [wt] and [wt-form]
 

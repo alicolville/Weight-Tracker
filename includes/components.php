@@ -102,8 +102,12 @@ function ws_ls_uikit_summary_boxes( $arguments, $boxes = [] ) {
 				$html .= ws_ls_component_number_of_days_tracking( [ 'user-id' => $arguments[ 'user-id' ] ] );
 				break;
 			case 'latest-weight':
+			case 'latest-weight-difference-as-percentage':
 				$html .= ws_ls_component_latest_weight( [ 'user-id' => $arguments[ 'user-id' ] ] );
 				break;
+			case 'latest-weight-difference-as-weight':
+				$html .= ws_ls_component_latest_weight( [ 'user-id' => $arguments[ 'user-id' ], 'difference-display' => 'weight' ] );
+				break;	
 			case 'latest-award':
 				$html .= ws_ls_component_latest_award( [ 'user-id' => $arguments[ 'user-id' ] ] );
 				break;
@@ -226,7 +230,7 @@ function ws_ls_component_custom_field_render( $args) {
  */
 function ws_ls_component_latest_weight( $args = [] ) {
 
-    $args           = wp_parse_args( $args, [ 'user-id' => get_current_user_id() ] );
+    $args           = wp_parse_args( $args, [ 'difference-display' => 'percentage', 'user-id' => get_current_user_id() ] );
     $latest_entry   = ws_ls_entry_get_latest( $args );
 
     $text_date      = '';
@@ -240,9 +244,9 @@ function ws_ls_component_latest_weight( $args = [] ) {
 										<a href="%s">%s</a>
 									</span>', ws_ls_wt_link_edit_entry( $latest_entry[ 'id' ] ), $latest_entry[ 'display-date' ] );
 
-        $difference = ws_ls_shortcode_difference_in_weight_previous_latest( [   'display'                   => 'percentage',
-                                                                                'include-percentage-sign'   => false,
-	                                                                            'invert'                    => true,
+        $difference = ws_ls_shortcode_difference_in_weight_previous_latest( [   'display'                   => $args[ 'difference-display' ],
+                                                                                'include-percentage-sign'   => true,
+	                                                                            'invert'                    => ( 'percentage' === $args[ 'difference-display' ] ),
                                                                                 'user-id'                   => $args[ 'user-id']
         ] );
 
@@ -257,7 +261,7 @@ function ws_ls_component_latest_weight( $args = [] ) {
 		        $class = 'ykuk-label-warning';
 	        }
 
-            $text_data .= sprintf( ' <span class="ykuk-label %s" ykuk-tooltip="%s">%s%%</span>',
+            $text_data .= sprintf( ' <span class="ykuk-label %s ykuk-width-1-1" ykuk-tooltip="%s">%s</span>',
                                     $class,
                                     __( 'The difference between your latest weight and previous.', WE_LS_SLUG ),
                                     $difference
@@ -290,7 +294,7 @@ function ws_ls_component_weight_difference_since_previous( $args = [] ) {
 
 	$args = wp_parse_args( $args, [ 'user-id' => get_current_user_id() ] );
 
-	$text_data = ws_ls_shortcode_difference_in_weight_previous_latest( [    'display'                   => 'weight',
+	$text_data = ws_ls_shortcode_difference_in_weight_previous_latest( [    'display'                   => 'percentage',
 	                                                                        'include-percentage-sign'   => false,
 	                                                                        'invert'                    => false,
 	                                                                        'user-id'                   => $args[ 'user-id'],
