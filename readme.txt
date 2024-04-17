@@ -162,6 +162,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 = 10.8 =
 
 * New feature: Added new components to display custom fields (latest, previous and oldest) within summary boxes on [wt] shortcode. Read more: https://docs.yeken.uk/components.html
+* New feature: Added the slightly new components "latest-weight-difference-as-percentage" and "latest-weight-difference-as-weight" to change how the difference figure of "latest-weight" is rendered". Read more: https://docs.yeken.uk/components.html
 
 = 10.7.3 =
 
