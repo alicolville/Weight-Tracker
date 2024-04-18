@@ -12,3 +12,4 @@ includes/.DS_Store
 includes/react/frontend/node_modules
 docs/_site/*
 playwright/.auth/user.json
+playwright/playwright/.auth/user.json
