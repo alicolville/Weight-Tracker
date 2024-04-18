@@ -295,11 +295,12 @@ function ws_ls_wt_tab_menu( $arguments = [] ) {
 
 	foreach( $tabs as $tab ) {
 		$html .= sprintf( '	<li class="ykuk-padding-remove-left%s">
-								<a href="#">
+								<a href="#" data-testid="wt-tab-%s">
 									<span ykuk-icon="icon: %s"></span>
 								</a>
 							</li>',
 							( false === empty( $arguments[ 'active-tab' ] ) && $tab[ 'name' ] === $arguments[ 'active-tab' ] ) ? ' ykuk-active' : '',
+							$tab[ 'name' ],
 							$tab[ 'icon' ]
 		);
 	}
