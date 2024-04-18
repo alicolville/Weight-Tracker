@@ -56,12 +56,26 @@ test.describe( 'WT Shortcode', () => {
 
         await page.goto('http://localhost/weight-tracker/');
     
+        // Start by deleting all weight entries
+        await page.getByTestId('wt-tab-settings').click();
+        await page.getByLabel('The button below allows you').selectOption('yes');
+        await page.getByRole('button', { name: 'Delete' }).click();
+        await expect(page.locator('#wp--skip-link--target')).toContainText('Your data has successfully been deleted.');
+
+        // Add a new weight entry
         await page.getByTestId('wt-tab-add-edit').click();
-     
-        await page.getByTestId('wt-tab-add-edit').click();
+
         await page.getByTestId('we-ls-date').click();
         await page.getByLabel('Select month').selectOption('0');
         await page.getByLabel('Select year').selectOption('2019');
         await page.getByRole('link', { name: '1', exact: true }).click();
         await expect(page.getByTestId('we-ls-date')).toHaveValue('01/01/2019');
-})
+        await page.getByTestId('ws-form-weight').fill('200');
+        await page.getByTestId('we-ls-notes').fill('Add a wee note here');
+        await page.getByRole('button', { name: 'Save Entry' }).click();
+
+        // Validate that it was added
+        await page.getByTestId('wt-tab-history').click();
+        await expect(page.locator('.ws-ls-user-data-ajax')).toContainText('200kg');
+        await expect(page.locator('.ws-ls-user-data-ajax')).toContainText('1/1/2019');
+});

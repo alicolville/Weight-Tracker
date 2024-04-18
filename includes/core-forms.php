@@ -210,7 +210,9 @@ function ws_ls_form_weight( $arguments = [] ) {
 		if ( 'kg' ===  $arguments[ 'data-unit' ] ) {
 			$html .= ws_ls_form_field_number( [     'name'          => 'ws-ls-weight-kg',
 			                                        'placeholder'   => $placeholders[ 'kg' ] . __( 'kg', WE_LS_SLUG ),
-			                                        'value'         => ( false === empty( $arguments[ 'entry' ][ 'kg' ] ) ) ? $arguments[ 'entry' ][ 'kg' ] : '' ] );
+			                                        'value'         => ( false === empty( $arguments[ 'entry' ][ 'kg' ] ) ) ? $arguments[ 'entry' ][ 'kg' ] : '',
+													'testid'		=> ( 'target' == $arguments[ 'type' ] ) ? 'ws-form-target' : 'ws-form-weight'
+												] );
 		}
 	}
 
