@@ -674,7 +674,7 @@ function ws_ls_form_field_select( $arguments ) {
 	$include_row    = ( true === $arguments[ 'include-div' ] || true === $arguments[ 'uikit' ] ) ;
 
 	if ( $include_row ) {
-		$html .= sprintf( '<div id="%1$s-row" class="%2$s" data-testid="%1$s" ykuk-width-1-1">', $arguments[ 'key' ], esc_attr( $arguments[ 'css-class-row' ] ) );
+		$html .= sprintf( '<div id="%1$s-row" class="%2$s ykuk-width-1-1" data-testid="%1$s">', $arguments[ 'key' ], esc_attr( $arguments[ 'css-class-row' ] ) );
 	}
 
 	if ( true === $arguments[ 'show-label' ] ) {
