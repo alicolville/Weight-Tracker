@@ -28,9 +28,11 @@ export default defineConfig({
   },
   // Configure projects for major browsers.
   projects: [
+    { name: 'auth', testMatch: /.*\.auth\.js/ },
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
+      dependencies: ['auth'],
     },
   ],
   // Run your local dev server before starting the tests.
