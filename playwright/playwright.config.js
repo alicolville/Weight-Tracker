@@ -4,7 +4,7 @@ export default defineConfig({
   projects: [
     {
       name: "auth",
-      testMatch: /.*\.auth\.js/
+      testMatch: /.*\.auth\.ts/
     },
     {
       name: "chromium",
@@ -12,7 +12,7 @@ export default defineConfig({
         ...devices["Desktop Chrome"],
         storageState: ".auth/user.json"
       },
-      testMatch: /.*\.test*\.js/,
+      testMatch: /.*\.test*\.ts/,
       dependencies: ["auth"],
     },
   ],

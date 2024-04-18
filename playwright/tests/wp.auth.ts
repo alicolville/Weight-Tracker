@@ -6,7 +6,7 @@ const authFile = '.auth/user.json';
 setup('WP: Authenticate', async ({ page }) => {
   
   await page.goto('http://localhost/wp-login.php');
-  await page.getByLabel('Username or Email Address').fill('admin');
+  await page.getByLabel('Username or Email Address').fill('playwright');
   await page.locator('#user_pass').fill('password');
   await page.getByRole('button', { name: 'Log In' }).click();
   await page.waitForURL('http://localhost/wp-admin/');
