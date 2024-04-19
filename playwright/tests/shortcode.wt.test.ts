@@ -49,8 +49,6 @@ test.describe( 'WT Shortcode', () => {
         await expect(page.getByLabel('Display dates in the')).toContainText('UK (DD/MM/YYYY)');
         await expect(page.getByLabel('Your Date of Birth:')).toHaveValue('19/06/1992');
     });
-})
-
 
     test('add a weight', async ({ page }) => {
 
@@ -78,4 +76,30 @@ test.describe( 'WT Shortcode', () => {
         await page.getByTestId('wt-tab-history').click();
         await expect(page.locator('.ws-ls-user-data-ajax')).toContainText('200kg');
         await expect(page.locator('.ws-ls-user-data-ajax')).toContainText('1/1/2019');
+    });
+
+    test('add a target', async ({ page }) => {
+
+        await page.goto('http://localhost/weight-tracker/');
+        await page.getByTestId('wt-tab-settings').click();
+        await page.getByTestId('ws-form-target').click();
+        await page.getByTestId('ws-form-target').fill('455');
+        await page.getByRole('button', { name: 'Set Target' }).click();
+        await page.getByTestId('wt-tab-settings').click();
+    
+        await expect(page.getByText('Your target weight is 455kg.')).toBeVisible();
+
+        page.on('dialog', dialog => dialog.accept());
+
+        await page.getByRole('button', { name: 'Clear Target' }).click();
+
+        await page.getByTestId('wt-tab-settings').click();
+        await page.getByTestId('ws-form-target').click();
+        await expect(page.getByTestId('ws-form-target')).toBeEmpty();
+    });
 });
+
+
+function delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
+}    
