@@ -99,15 +99,15 @@ function ws_ls_postbox_quick_stats() {
 					echo sprintf('<table class="ws-ls-sidebar-stats">
 										<tr>
 											<th>%1$s</th>
-											<td>%2$s</td>
+											<td data-testid="wt-no-wp-users">%2$s</td>
 										</tr>
 										<tr>
 											<th>%3$s</th>
-											<td class="%9$s">%4$s</td>
+											<td class="%9$s" data-testid="wt-no-weights">%4$s</td>
 										</tr>
 										<tr>
 											<th>%5$s</th>
-											<td class="%9$s">%6$s</td>
+											<td class="%9$s" data-testid="wt-no-targets">%6$s</td>
 										</tr>
 								   </table>
 
