@@ -210,7 +210,9 @@ function ws_ls_form_weight( $arguments = [] ) {
 		if ( 'kg' ===  $arguments[ 'data-unit' ] ) {
 			$html .= ws_ls_form_field_number( [     'name'          => 'ws-ls-weight-kg',
 			                                        'placeholder'   => $placeholders[ 'kg' ] . __( 'kg', WE_LS_SLUG ),
-			                                        'value'         => ( false === empty( $arguments[ 'entry' ][ 'kg' ] ) ) ? $arguments[ 'entry' ][ 'kg' ] : '' ] );
+			                                        'value'         => ( false === empty( $arguments[ 'entry' ][ 'kg' ] ) ) ? $arguments[ 'entry' ][ 'kg' ] : '',
+													'testid'		=> ( 'target' == $arguments[ 'type' ] ) ? 'ws-form-target' : 'ws-form-weight'
+												] );
 		}
 	}
 
@@ -357,7 +359,13 @@ function ws_ls_form_field_text( $arguments = [] ) {
 												'size'                  => 22,
 												'trailing-html'         => '',
 												'include-div'           => true,
-												'required' 				=> false ]);
+												'required' 				=> false,
+												'testid'				=> ''
+	]);
+
+	if ( true === empty( $arguments[ 'testid' ] ) ) {
+		$arguments[ 'testid' ] = $arguments[ 'name' ];
+	}
 	$html = '';
 
 	if ( true === $arguments[ 'include-div' ] ) {
@@ -368,7 +376,7 @@ function ws_ls_form_field_text( $arguments = [] ) {
 		$html .= sprintf( '<label for="%1$s">%2$s</label>', $arguments[ 'id' ], $arguments[ 'title' ]);
 	}
 
-	$html .= sprintf( '<input type="text" name="%1$s" id="%2$s" tabindex="%3$d" value="%4$s" placeholder="%5$s" size="%6$d" class="ykui-input %7$s" %8$s />',
+	$html .= sprintf( '<input type="text" name="%1$s" data-testid="%9$s" id="%2$s" tabindex="%3$d" value="%4$s" placeholder="%5$s" size="%6$d" class="ykui-input %7$s" %8$s />',
 		$arguments[ 'name' ],
 		esc_attr( $arguments[ 'id' ] ),
 		ws_ls_form_tab_index_next(),
@@ -376,7 +384,8 @@ function ws_ls_form_field_text( $arguments = [] ) {
 		esc_attr( $arguments[ 'placeholder' ] ),
 		$arguments[ 'size' ],
 		$arguments[ 'name' ] . ' ' . $arguments[ 'css-class' ],
-		( true === $arguments[ 'required' ] ) ? 'required="required"' : ''
+		( true === $arguments[ 'required' ] ) ? 'required="required"' : '',
+		esc_attr( $arguments[ 'testid' ] )
 	);
 
 	if ( false === empty( $arguments[ 'trailing-html' ] ) ) {
@@ -413,8 +422,14 @@ function ws_ls_form_field_date( $arguments = [] ) {
 	                                            'trailing-html'         => '',
 												'include-div'           => true,
 												'uikit'                 => false,
-												'icon'                  => 'calendar'
+												'icon'                  => 'calendar',
+												'testid'				=> ''
 	]);
+
+	if ( true === empty( $arguments[ 'testid' ] ) ) {
+		$arguments[ 'testid' ] = $arguments[ 'name' ];
+	}
+
 	$html = '';
 
 	$display_wrapping_div = ( true === $arguments[ 'include-div' ] || true === $arguments[ 'uikit' ] );
@@ -430,7 +445,7 @@ function ws_ls_form_field_date( $arguments = [] ) {
 							esc_attr( $arguments[ 'css-class-label' ] ) );
 	}
 
-	$component = sprintf( '<input type="text" name="%1$s" id="%2$s" tabindex="%3$d" value="%4$s" placeholder="%5$s" size="%6$d" class="ykuk-input %7$s" data-form-id="%8$s" />',
+	$component = sprintf( '<input type="text" name="%1$s" data-testid="%1$s" id="%2$s" tabindex="%3$d" value="%4$s" placeholder="%5$s" size="%6$d" class="ykuk-input %7$s" data-form-id="%8$s" />',
 							$arguments[ 'name' ],
 							esc_attr( $arguments[ 'id' ] ),
 							ws_ls_form_tab_index_next(),
@@ -438,7 +453,8 @@ function ws_ls_form_field_date( $arguments = [] ) {
 							esc_attr( $arguments[ 'placeholder' ] ),
 							$arguments[ 'size' ],
 							$arguments[ 'name' ] . ' ' . $arguments[ 'css-class' ],
-							esc_attr( $arguments[ 'form-id' ] )
+							esc_attr( $arguments[ 'form-id' ] ),
+							esc_attr( $arguments[ 'testid' ] )
 	);
 
 	$html .= ws_ls_form_field_add_icon( $component, $arguments[ 'icon' ] );
@@ -475,8 +491,14 @@ function ws_ls_form_field_textarea( $arguments = [] ) {
 												'cols'                  => 39,
 												'rows'                  => 4,
 												'mandatory'				=> false,
-												'disabled'				=> false
-	]);
+												'disabled'				=> false,
+												'testid'				=> ''
+											]);
+										
+	if ( true === empty( $arguments[ 'testid' ] ) ) {
+		$arguments[ 'testid' ] = $arguments[ 'name' ];
+	}
+
 
 	$html = sprintf( '<div id="%1$s-row" class="%2$s">', $arguments[ 'name' ], $arguments[ 'css-class-row' ] );
 
@@ -484,7 +506,7 @@ function ws_ls_form_field_textarea( $arguments = [] ) {
 		$html .= sprintf( '<label for="%1$s" class="ykuk-form-label %3$s">%2$s</label>', $arguments[ 'name' ], $arguments[ 'title' ], $arguments[ 'css-class-label' ] );
 	}
 
-	$html .= sprintf( '<textarea name="%1$s" id="%1$s" tabindex="%2$d" placeholder="%3$s" cols="%4$d" rows="%5$d" class="%6$s" %8$s data-msg="%9$s \'%10$s\'." %11$s>%7$s</textarea>',
+	$html .= sprintf( '<textarea name="%1$s" data-testid="%12$s" id="%1$s" tabindex="%2$d" placeholder="%3$s" cols="%4$d" rows="%5$d" class="%6$s" %8$s data-msg="%9$s \'%10$s\'." %11$s>%7$s</textarea>',
 		$arguments[ 'name' ],
 		ws_ls_form_tab_index_next(),
 		esc_attr( $arguments[ 'placeholder' ] ),
@@ -495,7 +517,8 @@ function ws_ls_form_field_textarea( $arguments = [] ) {
 		( true === $arguments[ 'mandatory' ] ? 'required' : ''),
 		__( 'Please select a value for'),
 		esc_attr( $arguments[ 'title' ] ),
-		( true === $arguments[ 'disabled' ] ) ? ' disabled="disabled"' : ''
+		( true === $arguments[ 'disabled' ] ) ? ' disabled="disabled"' : '',
+		esc_attr( $arguments[ 'testid' ] )
 	);
 
 	if ( false === empty( $arguments[ 'trailing-html' ] ) ) {
@@ -526,8 +549,13 @@ function ws_ls_form_field_number( $arguments = [] ) {
 												'min'                   => 0,
 												'max'                   => 9999,
 												'step'                  => 'any',
-												'uikit'                 => false
+												'uikit'                 => false,
+												'testid'				=> ''
 	]);
+
+	if ( true === empty( $arguments[ 'testid' ] ) ) {
+		$arguments[ 'testid' ] = $arguments[ 'name' ];
+	}
 
 	$html = '';
 
@@ -539,7 +567,7 @@ function ws_ls_form_field_number( $arguments = [] ) {
 		$html .= sprintf( '<label for="%1$s" class="ykuk-form-label %3$s">%2$s</label>', $arguments[ 'name' ], $arguments[ 'title' ], $arguments[ 'css-class' ] );
 	}
 
-	$html .= sprintf( '<input type="number" name="%1$s" step="%2$s" tabindex="%3$d" value="%4$s" placeholder="%5$s" size="%6$d" class="ykuk-input %7$s" min="%8$s" max="%9$s" />',
+	$html .= sprintf( '<input type="number" data-testid="%10$s" name="%1$s" step="%2$s" tabindex="%3$d" value="%4$s" placeholder="%5$s" size="%6$d" class="ykuk-input %7$s" min="%8$s" max="%9$s" />',
 		$arguments[ 'name' ],
 		$arguments[ 'step' ],
 		ws_ls_form_tab_index_next(),
@@ -548,7 +576,8 @@ function ws_ls_form_field_number( $arguments = [] ) {
 		$arguments[ 'size' ],
 		$arguments[ 'name' ] . ' ' . $arguments[ 'css-class' ],
 		$arguments[ 'min' ],
-		$arguments[ 'max' ]
+		$arguments[ 'max' ],
+		esc_attr( $arguments[ 'testid' ] )
 	);
 
 	if ( false === empty( $arguments[ 'trailing-html' ] ) ) {
@@ -577,20 +606,27 @@ function ws_ls_form_field_checkbox( $arguments = [] ) {
 												'css-class'             => '',
 												'css-class-row'         => 'ws-ls-form-row',
 												'include-div'           => true,
-												'required' 				=> false ]);
+												'required' 				=> false,
+												'testid'				=> ''
+											]);
+										
+	if ( true === empty( $arguments[ 'testid' ] ) ) {
+		$arguments[ 'testid' ] = $arguments[ 'name' ];
+	}
 	$html = '';
 
 	if ( true === $arguments[ 'include-div' ] ) {
 		$html .= sprintf( '<div id="%1$s-row" class="%2$s">', esc_attr( $arguments[ 'name' ] ), esc_attr( $arguments[ 'css-class-row' ] ) );
 	}
 
-	$html .= sprintf( '<input type="checkbox" name="%1$s" id="%2$s" tabindex="%3$d" value="%4$s" class="%5$s" %6$s />',
+	$html .= sprintf( '<input type="checkbox" name="%1$s" data-testid="%7$s" id="%2$s" tabindex="%3$d" value="%4$s" class="%5$s" %6$s />',
 		$arguments[ 'name' ],
 		esc_attr( $arguments[ 'id' ] ),
 		ws_ls_form_tab_index_next(),
 		esc_attr( $arguments[ 'value' ] ),
 		$arguments[ 'css-class' ],
-		true === $arguments[ 'checked' ] ? ' checked="checked" ' : ''
+		true === $arguments[ 'checked' ] ? ' checked="checked" ' : '',
+		esc_attr( $arguments[ 'testid'] )
 	);
 
 	if ( true === $arguments[ 'show-label' ] ) {
@@ -627,15 +663,20 @@ function ws_ls_form_field_select( $arguments ) {
 												'reload-page-on-select'         => false,
 												'reload-page-on-select-qs-key'  => '',
 												'include-div'                   => false,
-												'uikit'                         => false
-	]);
+												'uikit'                         => false,
+												'testid'						=> ''
+											]);
+										
+	if ( true === empty( $arguments[ 'testid' ] ) ) {
+		$arguments[ 'testid' ] = $arguments[ 'key' ];
+	}
 
 	$html           = '';
 	$label_id       = ws_ls_component_id();
 	$include_row    = ( true === $arguments[ 'include-div' ] || true === $arguments[ 'uikit' ] ) ;
 
 	if ( $include_row ) {
-		$html .= sprintf( '<div id="%1$s-row" class="%2$s ykuk-width-1-1">', $arguments[ 'key' ], esc_attr( $arguments[ 'css-class-row' ] ) );
+		$html .= sprintf( '<div id="%1$s-row" class="%2$s ykuk-width-1-1" data-testid="%1$s">', $arguments[ 'key' ], esc_attr( $arguments[ 'css-class-row' ] ) );
 	}
 
 	if ( true === $arguments[ 'show-label' ] ) {
@@ -646,7 +687,7 @@ function ws_ls_form_field_select( $arguments ) {
 		);
 	}
 
-	$html .= sprintf( '<select id="%1$s" name="%1$s" tabindex="%2$d" class="%3$s ykuk-select ykuk-padding-remove-right" %4$s %5$s data-msg="%6$s \'%7$s\'.">',
+	$html .= sprintf( '<select id="%1$s" name="%1$s" data-testid="%9$s" tabindex="%2$d" class="%3$s ykuk-select ykuk-padding-remove-right" %4$s %5$s data-msg="%6$s \'%7$s\'.">',
 		esc_attr( $arguments[ 'key' ] ),
 		ws_ls_form_tab_index_next(),
 		esc_attr( $arguments[ 'css-class' ] ),
@@ -654,7 +695,8 @@ function ws_ls_form_field_select( $arguments ) {
 		( false === empty( $arguments[ 'js-on-change' ] ) ) ? sprintf( ' onchange="%s"', $arguments[ 'js-on-change' ] ) : '',
 		__( 'Please select a value for'),
 		esc_attr( $arguments[ 'label' ] ),
-		$label_id
+		$label_id,
+		esc_attr( $arguments[ 'testid'] )
 	);
 
 	if ( true === $arguments[ 'reload-page-on-select' ] ) {
