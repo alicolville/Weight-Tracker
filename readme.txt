@@ -2,7 +2,7 @@
 Contributors: aliakro
 Tags: weight,tracker,chart,bmi,bmr,macronutrient,measure,awards,custom fields,history,measurements,data
 Requires at least: 6.0
-Tested up to: 6.4.3
+Tested up to: 6.5
 Stable tag: 10.8.1
 Requires PHP: 7.4
 License: GPLv2 or later
@@ -151,6 +151,10 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 10.8: New components for displaying custom field data on [wt] shortcode.
 
 == Changelog ==
+
+= 10.8.2 =
+
+* Maintenance: Updated tested with WP 6.5 note.
 
 = 10.8.1 =
 
