@@ -7,7 +7,7 @@ defined('ABSPATH') or die('Jog on!');
  * Description:         Allow your users to track their weight, body measurements, photos and other pieces of custom data. Display in charts, tables, shortcodes and widgets. Manage their data, issue awards, email notifications, etc! Provide advanced data on Body Mass Index (BMI), Basal Metabolic Rate (BMR), Calorie intake, Harris Benedict Formula, Macronutrients Calculator and more.
  * Version:             10.8.1
  * Requires at least:   6.0
- * Tested up to: 		6.4.3
+ * Tested up to: 	6.5
  * Requires PHP:        7.4
  * Author:              Ali Colville
  * Author URI:          https://www.YeKen.uk
