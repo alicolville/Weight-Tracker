@@ -29,7 +29,7 @@ function ws_ls_shortcode_if( $user_defined_arguments, $content = null, $level = 
 
     // Validate arguments
     $arguments[ 'user-id' ]         = ws_ls_force_numeric_argument( $arguments[ 'user-id' ], get_current_user_id());
-    $arguments[ 'operator' ]        = ( true === in_array( $arguments[ 'operator' ], [ 'exists', 'not-exists' ] ) ) ? $arguments[ 'operator' ] : 'exists';
+    $arguments[ 'operator' ]        = ( true === in_array( $arguments[ 'operator' ], ws_ls_shortcode_if_allows_operators() ) ) ? $arguments[ 'operator' ] : 'exists';
     $arguments[ 'field' ]           = ( true === empty( $arguments[ 'field' ] ) ) ? 'weight' : $arguments[ 'field' ];
 
     // Strip out BR / P tags?
@@ -41,7 +41,7 @@ function ws_ls_shortcode_if( $user_defined_arguments, $content = null, $level = 
     if( false === WS_LS_IS_PRO_PLUS && true === ( $arguments['field'] == 'bmr' ) ) {
         return sprintf( '<p>%s</p>', __( 'Unfortunately the field you specified is for Pro Plus licenses only.', WE_LS_SLUG ) );
     }
-
+var_dump($arguments);
     $else_content   = '';
     $else_tag       = ( $level > 0 ) ? sprintf('[else-%d]', $level ) : '[else]';
 
@@ -71,6 +71,14 @@ function ws_ls_shortcode_if( $user_defined_arguments, $content = null, $level = 
 }
 add_shortcode( 'wlt-if', 'ws_ls_shortcode_if' );
 add_shortcode( 'wt-if', 'ws_ls_shortcode_if' );
+
+/**
+ * Return allowed operators for [if] shortcode
+ * @return array
+ */
+function ws_ls_shortcode_if_allows_operators() {
+    return [ 'exists', 'not-exists', 'equals', 'greater-than', 'less-than' ];
+}
 
 /**
  * Remove <br> and <p> tags from text
