@@ -56,9 +56,21 @@ var_dump($arguments);
         $content = substr( $content, 0, $else_location );
     }
 
-    $does_all_values_exist  = ws_ls_shortcode_if_value_exist( $arguments[ 'user-id' ], $arguments[ 'field' ] );
-    $display_true_condition = 	(   ( true === $does_all_values_exist && 'exists' === $arguments[ 'operator' ] ) ||		    // True if field exists
-							        ( false === $does_all_values_exist && 'not-exists' === $arguments[ 'operator' ] ) );	// True if field does not exist
+    $display_true_condition = false;
+
+    if ( true === in_array( $arguments[ 'field' ], [ 'exists', 'not-exists' ] ) )  {
+        $does_all_values_exist  = ws_ls_shortcode_if_value_exist( $arguments[ 'user-id' ], $arguments[ 'field' ] );
+        $display_true_condition = 	(   ( true === $does_all_values_exist && 'exists' === $arguments[ 'operator' ] ) ||		    // True if field exists
+                                            ( false === $does_all_values_exist && 'not-exists' === $arguments[ 'operator' ] ) );	                        // True if field does not exist
+    } else {
+
+        // comparison logic (i.e. greater-than, less-than, equals)
+        $display_true_condition = ws_ls_shortcode_if_comparison( $arguments[ 'field' ], $arguments[ 'user-id' ], 'kg' );
+
+
+    }
+
+
 
     // If we should display true content, then do so. IF not, and it was specified, display [else]
     if( true === $display_true_condition ) {
@@ -72,6 +84,43 @@ var_dump($arguments);
 add_shortcode( 'wlt-if', 'ws_ls_shortcode_if' );
 add_shortcode( 'wt-if', 'ws_ls_shortcode_if' );
 
+
+function ws_ls_shortcode_if_comparison( $field, $user_id, $operator = 'exists' ) {
+
+    $unit = 'kg'; // todo, change to support pounds
+
+    // Fetch the value to compare against
+    $comparison_value = ws_ls_shortcode_if_comparison_get_value( $field, $user_id, $unit );
+
+    var_dump( 'comp-value', $comparison_value);
+
+    return false;
+}
+
+/**
+ * Fetch the value we wish to compare against
+ * @param $field
+ * @param $user_id
+ * @param $unit
+ * @return array|string|null
+ */
+function ws_ls_shortcode_if_comparison_get_value( $field, $user_id, $unit = 'kg' ) {
+
+    $value = NULL;
+
+    switch( $field ) {
+        case 'weight':
+            $value = ws_ls_entry_get_latest_kg( $user_id );
+            break;
+        case 'target':
+            $value = ws_ls_target_get( $user_id, 'kg' );
+            break;
+    }
+
+    // TODO: If needed in pounds, convert here.
+
+    return $value;
+}
 /**
  * Return allowed operators for [if] shortcode
  * @return array
