@@ -25,7 +25,8 @@ function ws_ls_shortcode_if( $user_defined_arguments, $content = null, $level = 
 								        'operator'      => 'exists',				// exists, not-exists
 								        'field'         => 'weight',				// weight, target, bmr, height, gender, activity-level, dob, is-logged-in, aim
                                         'value'         => NULL,
-								        'strip-p-br'    => false
+								        'strip-p-br'    => false,
+                                        'unit'          => 'kg'                     // kg / pounds
     ], $user_defined_arguments );
 
     // Validate arguments
@@ -42,7 +43,6 @@ function ws_ls_shortcode_if( $user_defined_arguments, $content = null, $level = 
     if( false === WS_LS_IS_PRO_PLUS && true === ( $arguments['field'] == 'bmr' ) ) {
         return sprintf( '<p>%s</p>', __( 'Unfortunately the field you specified is for Pro Plus licenses only.', WE_LS_SLUG ) );
     }
-var_dump($arguments);
 
     $else_content   = '';
     $else_tag       = ( $level > 0 ) ? sprintf('[else-%d]', $level ) : '[else]';
@@ -62,8 +62,8 @@ var_dump($arguments);
 
     if ( true === in_array( $arguments[ 'field' ], [ 'exists', 'not-exists' ] ) )  {
         $does_all_values_exist  = ws_ls_shortcode_if_value_exist( $arguments[ 'user-id' ], $arguments[ 'field' ] );
-        $display_true_condition = 	(   ( true === $does_all_values_exist && 'exists' === $arguments[ 'operator' ] ) ||		    // True if field exists
-                                            ( false === $does_all_values_exist && 'not-exists' === $arguments[ 'operator' ] ) );	                        // True if field does not exist
+        $display_true_condition = 	(   ( true === $does_all_values_exist && 'exists' === $arguments[ 'operator' ] ) ||		        // True if field exists
+                                            ( false === $does_all_values_exist && 'not-exists' === $arguments[ 'operator' ] ) );	// True if field does not exist
     } else {
 
         if ( true === empty( $arguments[ 'value' ] ) ) {
@@ -71,7 +71,7 @@ var_dump($arguments);
         }
 
         // comparison logic (i.e. greater-than, less-than, equals)
-        $display_true_condition = ws_ls_shortcode_if_comparison( $arguments[ 'field' ], $arguments[ 'user-id' ], $arguments[ 'value' ], 'kg' );
+        $display_true_condition = ws_ls_shortcode_if_comparison( $arguments[ 'field' ], $arguments[ 'user-id' ], $arguments[ 'operator' ], $arguments[ 'value' ],  $arguments[ 'unit' ] );
 
     }
 
@@ -90,17 +90,36 @@ add_shortcode( 'wlt-if', 'ws_ls_shortcode_if' );
 add_shortcode( 'wt-if', 'ws_ls_shortcode_if' );
 
 
-function ws_ls_shortcode_if_comparison( $field, $user_id, $value, $operator = 'exists', $unit = 'kg' ) {
-
-    $unit = 'kg'; // todo, change to support pounds
+function ws_ls_shortcode_if_comparison( $field, $user_id, $operator, $shortcode_value, $unit = 'kg' ) {
+   
+    if ( 'pounds' === $unit ) {
+        $shortcode_value = ws_ls_convert_pounds_to_kg( $shortcode_value );
+    }
 
     // Fetch the value to compare against
-    $comparison_value = ws_ls_shortcode_if_comparison_get_value( $field, $user_id, $unit );
+    $db_value           = ws_ls_shortcode_if_comparison_get_value( $field, $user_id, $unit );
+    $shortcode_value    = (float) $shortcode_value;
 
-    var_dump( 'comp-value', $comparison_value);
+    switch ( $operator ) {
 
-
-    var_dump( 'comp-value-float',  $comparison_value);
+        case 'equals':
+            return $shortcode_value === $db_value; 
+            break;
+        case 'greater-than':
+            return $db_value > $shortcode_value; 
+            break;    
+        case 'greater-than-or-equal-to':
+            return $db_value >= $shortcode_value; 
+            break;
+        case 'less-than':
+            return $db_value > $shortcode_value; 
+            break;    
+        case 'less-than-or-equal-to':
+            return $db_value >= $shortcode_value; 
+            break;  
+        default:    // invalid operator
+            return false;    
+    }
 
     return false;
 }
@@ -124,8 +143,6 @@ function ws_ls_shortcode_if_comparison_get_value( $field, $user_id, $unit = 'kg'
             $value = ws_ls_target_get( $user_id, 'kg' );
             break;
     }
-   
-    // TODO: If needed in pounds, convert here.
 
     return NULL !== $value ? (float) $value : NULL;
 }
@@ -134,7 +151,7 @@ function ws_ls_shortcode_if_comparison_get_value( $field, $user_id, $unit = 'kg'
  * @return array
  */
 function ws_ls_shortcode_if_allows_operators() {
-    return [ 'exists', 'not-exists', 'equals', 'greater-than', 'less-than' ];
+    return [ 'exists', 'not-exists', 'equals', 'greater-than','greater-than-or-equal-to', 'less-than', 'less-than-or-equal-to' ];
 }
 
 /**

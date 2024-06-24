@@ -447,7 +447,7 @@ function ws_ls_entry_get_latest( $arguments = [] ) {
 	$arguments              = wp_parse_args( $arguments, [ 'user-id' => get_current_user_id(), 'meta' => true, 'kg-only' => false ] );
 	$arguments[ 'which']    = 'latest';
 	$arguments[ 'id' ]      = ws_ls_db_entry_latest_or_oldest( $arguments );
-    print_r($arguments);
+
 	if ( true === empty( $arguments[ 'id' ] ) ) {
 		return NULL;
 	}
