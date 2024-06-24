@@ -97,7 +97,7 @@ function ws_ls_shortcode_if_comparison( $field, $user_id, $operator, $shortcode_
     }
 
     // Fetch the value to compare against
-    $db_value           = ws_ls_shortcode_if_comparison_get_value( $field, $user_id, $unit );
+    $db_value           = ws_ls_shortcode_if_comparison_get_value( $field, $user_id );
     $shortcode_value    = (float) $shortcode_value;
 
     switch ( $operator ) {
@@ -112,7 +112,7 @@ function ws_ls_shortcode_if_comparison( $field, $user_id, $operator, $shortcode_
             return $db_value >= $shortcode_value; 
             break;
         case 'less-than':
-            return $db_value > $shortcode_value; 
+            return $db_value < $shortcode_value; 
             break;    
         case 'less-than-or-equal-to':
             return $db_value >= $shortcode_value; 
@@ -131,7 +131,7 @@ function ws_ls_shortcode_if_comparison( $field, $user_id, $operator, $shortcode_
  * @param $unit
  * @return array|string|null
  */
-function ws_ls_shortcode_if_comparison_get_value( $field, $user_id, $unit = 'kg' ) {
+function ws_ls_shortcode_if_comparison_get_value( $field, $user_id ) {
 
     $value = NULL;
 
@@ -146,8 +146,16 @@ function ws_ls_shortcode_if_comparison_get_value( $field, $user_id, $unit = 'kg'
             $value = ws_ls_entry_get_previous( [ 'id' => $user_id ] );
             break; 
         case 'no-days':
-            return ws_ls_shortcode_days_between_start_and_latest( [ 'user-id' => $user_id ], true );
+            $value = ws_ls_shortcode_days_between_start_and_latest( [ 'user-id' => $user_id ], true );
             break;       
+        case 'no-entries':
+
+            $counts = ws_ls_db_entries_count( $user_id );
+
+            $value = ( false === empty( $counts[ 'number-of-weight-entries' ] ) ) ?
+                        (int) $counts[ 'number-of-weight-entries' ] :
+                            NULL ;
+            break; 
     }
 
     return NULL !== $value ? (float) $value : NULL;
