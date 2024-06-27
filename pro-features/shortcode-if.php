@@ -10,7 +10,7 @@ defined('ABSPATH') or die("Jog on");
  * @param $level - used to determine level of IF nesting
  * @return string
  */
-function ws_ls_shortcode_if( $user_defined_arguments, $content = null, $level = 0 ) {
+function ws_ls_shortcode_if( $user_defined_arguments, $content, $shortcode, $level = 0 ) {
 
 	if ( false === WS_LS_IS_PRO ) {
 		return ws_ls_display_pro_upgrade_notice_for_shortcode();
@@ -60,7 +60,7 @@ function ws_ls_shortcode_if( $user_defined_arguments, $content = null, $level = 
 
     $display_true_condition = false;
 
-    if ( true === in_array( $arguments[ 'field' ], [ 'exists', 'not-exists' ] ) )  {
+    if ( true === in_array( $arguments[ 'operator' ], [ 'exists', 'not-exists' ] ) )  {
         $does_all_values_exist  = ws_ls_shortcode_if_value_exist( $arguments[ 'user-id' ], $arguments[ 'field' ] );
         $display_true_condition = 	(   ( true === $does_all_values_exist && 'exists' === $arguments[ 'operator' ] ) ||		        // True if field exists
                                             ( false === $does_all_values_exist && 'not-exists' === $arguments[ 'operator' ] ) );	// True if field does not exist
@@ -74,8 +74,6 @@ function ws_ls_shortcode_if( $user_defined_arguments, $content = null, $level = 
         $display_true_condition = ws_ls_shortcode_if_comparison( $arguments[ 'field' ], $arguments[ 'user-id' ], $arguments[ 'operator' ], $arguments[ 'value' ],  $arguments[ 'unit' ] );
 
     }
-
-
 
     // If we should display true content, then do so. IF not, and it was specified, display [else]
     if( true === $display_true_condition ) {
@@ -313,8 +311,8 @@ function ws_ls_shortcode_if_valid_field_name( $field ) {
  * @param null $content
  * @return string
  */
-function ws_ls_shortcode_if_level_one( $user_defined_arguments, $content = null ) {
-    return ws_ls_shortcode_if( $user_defined_arguments, $content, 1 );
+function ws_ls_shortcode_if_level_one( $user_defined_arguments, $content, $shortcode ) {
+    return ws_ls_shortcode_if( $user_defined_arguments, $content, $shortcode, 1 );
 }
 add_shortcode( 'wlt-if-1', 'ws_ls_shortcode_if_level_one' );
 add_shortcode( 'wt-if-1', 'ws_ls_shortcode_if_level_one' );
@@ -326,8 +324,8 @@ add_shortcode( 'wt-if-1', 'ws_ls_shortcode_if_level_one' );
  * @param null $content
  * @return string
  */
-function ws_ls_shortcode_if_level_two( $user_defined_arguments, $content = null ) {
-    return ws_ls_shortcode_if( $user_defined_arguments, $content, 2 );
+function ws_ls_shortcode_if_level_two( $user_defined_arguments, $content, $shortcode ) {
+    return ws_ls_shortcode_if( $user_defined_arguments, $content, $shortcode, 2 );
 }
 add_shortcode( 'wlt-if-2', 'ws_ls_shortcode_if_level_two' );
 add_shortcode( 'wt-if-2', 'ws_ls_shortcode_if_level_two' );
@@ -339,8 +337,8 @@ add_shortcode( 'wt-if-2', 'ws_ls_shortcode_if_level_two' );
  * @param null $content
  * @return string
  */
-function ws_ls_shortcode_if_level_three( $user_defined_arguments, $content = null ) {
-    return ws_ls_shortcode_if( $user_defined_arguments, $content, 3 );
+function ws_ls_shortcode_if_level_three( $user_defined_arguments, $content, $shortcode ) {
+    return ws_ls_shortcode_if( $user_defined_arguments, $content, $shortcode, 3 );
 }
 add_shortcode( 'wlt-if-3', 'ws_ls_shortcode_if_level_three' );
 add_shortcode( 'wt-if-3', 'ws_ls_shortcode_if_level_three' );
