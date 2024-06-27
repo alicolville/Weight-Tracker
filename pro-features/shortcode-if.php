@@ -113,7 +113,7 @@ function ws_ls_shortcode_if_comparison( $field, $user_id, $operator, $shortcode_
             return $db_value < $shortcode_value; 
             break;    
         case 'less-than-or-equal-to':
-            return $db_value >= $shortcode_value; 
+            return $db_value <= $shortcode_value;
             break;  
         default:    // invalid operator
             return false;    
