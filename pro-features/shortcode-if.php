@@ -134,6 +134,10 @@ function ws_ls_shortcode_if_comparison_get_value( $field, $user_id ) {
     $value = NULL;
 
     switch( $field ) {
+        case 'difference-from-start':
+            $latest_entry = ws_ls_entry_get_latest(  [ 'user-id' => $user_id ] );
+            $value = ( false === empty( $latest_entry[ 'difference_from_start_kg' ] ) ) ? $latest_entry[ 'difference_from_start_kg' ] : NULL;
+            break;
         case 'weight':
             $value = ws_ls_entry_get_latest_kg( $user_id );
             break;
