@@ -411,6 +411,55 @@ function ws_ls_entry_get_oldest_kg( $user_id ) {
 }
 
 /**
+ * Return the percentage or numeric difference between the latest and previous weight.
+ *
+ * Note: Slimmed down version of ws_ls_shortcode_difference_in_weight_previous_latest() - should probably look to refactor
+ *
+ * @param $user_id
+ * @param $percentage
+ * @return float|null
+ */
+function ws_ls_entry_difference_between_latest_and_previous( $user_id = NULL, $percentage = false ) {
+
+    $user_id = ( NULL === $user_id ) ? get_current_user_id() : $user_id;
+
+    $cache_key = 'entry-diff-prev-latest-' . (int) $user_id;
+
+    if ( $cache = ws_ls_cache_user_get( $user_id, $cache_key ) ) {
+        return $cache;
+    }
+
+    $latest_entry = ws_ls_entry_get_latest( [ 'user-id' => $user_id ] );
+
+    if ( true === empty( $latest_entry[ 'kg' ] ) ) {
+        return '';
+    }
+
+    $previous_entry = ws_ls_entry_get_previous( [ 'user-id' => $user_id ] );
+
+    if( true === empty( $previous_entry ) ) {
+        return NULL;
+    }
+
+    if ( $previous_entry[ 'id' ] === $latest_entry[ 'id' ] ) {
+        return NULL;
+    }
+
+    if ( true === $percentage ) {
+
+        $output = ws_ls_calculate_percentage_difference( $previous_entry[ 'kg' ], $latest_entry[ 'kg' ] );
+
+        if ( true === empty( $output[ 'percentage' ] ) ) {
+            return NULL;
+        }
+
+        return ( true === $output[ 'increase' ] ) ?  $output[ 'percentage' ] : -$output[ 'percentage' ];
+    }
+
+    return $latest_entry[ 'kg' ] - $previous_entry[ 'kg' ];
+}
+
+/**
  * Fetch the start date for the given user
  *
  * @param $user_id
