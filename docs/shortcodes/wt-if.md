@@ -4,14 +4,14 @@
 
 In some cases, you may only wish to display content if the user has completed certain WT fields. Let's say for example, you have a page where you wish to display a chart and some text introductory text, there is no point displaying the chart if the user has not entered their weight. The shortcode [wt-if] allows you some basic logic to specify “if exists” or “if not exists” type logic. So using the example above, you could have something like:
 
-    [wt-if field="weight" operator="exists]
+    [wt-if field="weight" operator="exists"]
     	Some introductory text here explaining the chart.
     	[wt-chart]
     [/wt-if]
 
 We can also further expand this with an [else] clause. If the above condition is not met, we can specify what should be display instead e.g.
 
-    [wt-if field="weight" operator="exists]
+    [wt-if field="weight" operator="exists"]
     	Some introductory text here explaining the chart.
     	[wt-chart]
     [else]
