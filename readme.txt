@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight,tracker,chart,history,macronutrient
 Requires at least: 6.0
 Tested up to: 6.5
-Stable tag: 10.8.3
+Stable tag: 10.8.4
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -151,6 +151,10 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 10.8: New components for displaying custom field data on [wt] shortcode.
 
 == Changelog ==
+
+= 10.8.4 = 
+
+* Maintenance: Updated code around Gravity Forms to deal with PHP8.2 and false being a possible return from getLastErrors().
 
 = 10.8.3 = 
 
