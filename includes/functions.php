@@ -830,7 +830,10 @@ function ws_ls_get_url( $base_64_encode = false ) {
  */
 function ws_ls_iso_date_valid( $iso_date ) {
 	$dt = DateTime::createFromFormat("Y-m-d", $iso_date);
-	return $dt !== false && !array_sum($dt::getLastErrors());
+
+	$errors = ( false !== $dt ) ? $dt::getLastErrors() : false;
+
+	return $dt !== false && ( false === $errors || !array_sum($errors) );
 }
 
 /**
