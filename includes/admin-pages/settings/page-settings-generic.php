@@ -321,21 +321,7 @@ function ws_ls_settings_page_generic() {
                                                     </td>
                                                 </tr>
                                             </table>
-                                            <h3><?php echo __( 'Birthday Emails' , WE_LS_SLUG); ?></h3>
-                                            <table class="form-table">
-                                                <tr class="<?php echo $disable_if_not_pro_class; ?>">
-                                                    <th scope="row"><?php echo __( 'Enable?' , WE_LS_SLUG); ?></th>
-                                                    <td>
-                                                        <select id="ws-ls-enable-birthdays" name="ws-ls-enable-birthdays">
-                                                            <option value="no" <?php selected( get_option('ws-ls-enable-birthdays'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
-                                                            <option value="yes" <?php selected( get_option('ws-ls-enable-birthdays'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
-                                                        </select>
-                                                        <p><?php echo __('If enabled, a Happy Birthday email shall be sent to users on their birthday.', WE_LS_SLUG)?></p>
-
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                            <h3><?php echo __( 'Advanced' , WE_LS_SLUG); ?></h3>
+                                           <?php echo __( 'Advanced' , WE_LS_SLUG); ?></h3>
                                             <table class="form-table">
                                                 <tr>
                                                     <th scope="row"><?php echo __( 'Disable plugin CSS?' , WE_LS_SLUG); ?></th>
@@ -881,7 +867,21 @@ function ws_ls_settings_page_generic() {
                                                     ws_ls_display_pro_upgrade_notice();
                                                 }
                                                 ?>
-												<h3><?php echo __( 'Settings' , WE_LS_SLUG); ?></h3>
+												<h3><?php echo __( 'User notifications' , WE_LS_SLUG); ?></h3>
+												<table class="form-table">
+													<tr class="<?php echo $disable_if_not_pro_class; ?>">
+														<th scope="row"><?php echo __( 'Birthday Emails' , WE_LS_SLUG); ?></th>
+														<td>
+															<select id="ws-ls-enable-birthdays" name="ws-ls-enable-birthdays">
+																<option value="no" <?php selected( get_option('ws-ls-enable-birthdays'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+																<option value="yes" <?php selected( get_option('ws-ls-enable-birthdays'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+															</select>
+															<p><?php echo __('If enabled, a Happy Birthday email shall be sent to users on their birthday. Note: This can be disabled by the user.', WE_LS_SLUG)?></p>
+
+														</td>
+													</tr>
+												</table>
+												<h3><?php echo __( 'Admin notifications' , WE_LS_SLUG); ?></h3>
 												<table class="form-table">
 													<tr class="<?php echo $disable_if_not_pro_class; ?>">
 														<th scope="row"><?php echo __( 'Enable email notifications', WE_LS_SLUG ); ?></th>

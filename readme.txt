@@ -152,6 +152,11 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 == Changelog ==
 
+= 10.* = 
+
+* New feature:
+* Improvement: Moved "Birthday emails" setting to "Emails & Notifications" tab within Weight Tracker settings.
+
 = 10.8.4 = 
 
 * Maintenance: Updated code around Gravity Forms to deal with PHP8.2 and false being a possible return from getLastErrors().
