@@ -154,7 +154,8 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 = 10.* = 
 
-* New feature:
+* New feature: Users can now opt out of emails from Weight Tracker via the user preferences [wt-user-settings] or [wt].
+* New feature: Users can now opt out of birthday emails. 
 * Improvement: Moved "Birthday emails" setting to "Emails & Notifications" tab within Weight Tracker settings.
 
 = 10.8.4 = 

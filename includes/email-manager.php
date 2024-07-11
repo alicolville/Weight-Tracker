@@ -637,7 +637,7 @@ function ws_ls_emailer_user_lists( $user_id = NULL ) {
 
 	$lists 		= ws_ls_user_preferences_get( 'email_lists', $user_id );
 
-	return ( false === empty( $lists ) ) ? $lists : ws_ls_emailer_lists_default_setting();
+	return ( false === empty( $lists ) ) ? json_decode( $lists, true ) : ws_ls_emailer_lists_default_setting();
 }
 
 /**
@@ -649,7 +649,7 @@ function ws_ls_emailer_user_lists( $user_id = NULL ) {
  */
 function ws_ls_emailer_lists_default_setting() {
 	$lists = [
-				'birthday' => true
+				'birthdays' => true
 	];
 
 	return apply_filters( 'wlt-filter-email-lists-default-settings', $lists );
