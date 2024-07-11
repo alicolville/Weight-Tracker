@@ -16,7 +16,7 @@ function ws_ls_email_enabled() {
 }
 
 /**
- * Send email notifications for weight / meta updates as wel as targets
+ * Send email notifications for weight / meta updates as well as targets
  * @param $type
  * @param $weight_data
  */
