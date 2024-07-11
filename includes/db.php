@@ -707,6 +707,7 @@ function ws_ls_user_preferences_get_formats( $db_fields ) {
 			    'activity_level'    => '%f',
 			    'aim'               => '%d',
 			    'dob'               => '%s',
+				'email_lists'       => '%s',
 			    'gender'            => '%d',
 			    'height'            => '%d',
 		        'settings'          => '%s',
