@@ -907,6 +907,7 @@ function ws_ls_db_create_core_tables() {
              dob datetime NULL,
              body_type float DEFAULT 0 NULL,
              challenge_opt_in float DEFAULT -1 NULL,
+			 email_lists text null,
 			 UNIQUE KEY user_id (user_id)
 	 ) $charset_collate;";
 
