@@ -662,8 +662,64 @@ function ws_ls_emailer_lists_default_setting() {
  */
 function ws_ls_emailer_lists_default_labels() {
 	$labels = [
-				'birthday' => __( 'Birthday emails', WE_LS_SLUG )
+				'birthdays' => __( 'Birthday emails', WE_LS_SLUG )
 	];
 
 	return apply_filters( 'wlt-filter-email-lists-default-labels', $labels );
 }
+
+/**
+ * Return form HTML for email opt in lists
+ *
+ * @return string
+ */
+function ws_ls_emailer_optout_form( $user_id = NULL, $uikit = true ) {
+
+	$user_id 	= ( NULL === $user_id ) ? get_current_user_id() : $user_id;	
+	
+	$lists 	= ws_ls_emailer_lists_default_setting();
+	$labels = ws_ls_emailer_lists_default_labels();
+
+	$html_output = '';
+
+	foreach( $lists as $key => $value ) {
+
+		$html_output .= ws_ls_form_field_select( [  'key'       => sprintf( 'email-optin-%s', $key ),
+													'label'     => sprintf( '%s:', $labels[ $key ] ),
+													'uikit'     => $uikit,
+													'values'    => [ 'true' => __( 'Yes', WE_LS_SLUG ), 'false' => __( 'No', WE_LS_SLUG ) ],
+													'selected'  => ( true === ws_ls_emailer_user_has_optedin( $key, $user_id ) ) ? 'true' : 'false' ] );
+												
+	}
+
+	return $html_output;
+}
+
+/**
+ * Filter user preferences form and check for user optin fields.
+ * 
+ */
+add_filter( 'wlt-filter-user-settings-save-fields', function ( $fields ) {
+
+	if ( true === empty( $fields[ 'user_id' ] ) ) {
+		return $fields;
+	}
+
+	$lists 	= ws_ls_emailer_lists_default_setting();
+	$values = [];
+
+	foreach ( $lists as $list => $default_value ) {
+
+		$form_key 			= sprintf( 'email-optin-%s', $list );
+		$values[ $list ] 	= ws_ls_post_value( $form_key, 'missing' ); 
+
+		// If any optin field is missing then let's be safe and assume there is an issue with the form
+		if ( 'missing' === $values[ $list ] ) {
+			return $fields;
+		}
+	}
+	
+	$fields[ 'email_lists'] = $values;
+
+	return $fields;
+});

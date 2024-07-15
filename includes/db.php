@@ -576,6 +576,11 @@ function  ws_ls_set_user_preferences( $in_admin_area, $fields = [] ) {
 	    $db_fields[ 'settings' ] = json_encode( $db_fields['settings'] );
     }
 
+	if ( true === isset( $db_fields[ 'email_lists' ] ) &&
+            true === is_array( $db_fields['email_lists'] ) ) {
+	    $db_fields[ 'email_lists' ] = json_encode( $db_fields['email_lists'] );
+    }
+	
 	if ( false === empty( $db_fields['dob'] ) ) {
 		$db_fields['dob'] = ws_ls_convert_date_to_iso( $db_fields[ 'dob' ], ( $in_admin_area ) ? false : $db_fields[ 'user_id' ] );
 	}
