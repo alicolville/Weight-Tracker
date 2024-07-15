@@ -564,7 +564,7 @@ function ws_ls_db_dates_min_max_get( $user_id ) {
  *
  * @return bool|false|int
  */
-function ws_ls_set_user_preferences( $in_admin_area, $fields = [] ) {
+function  ws_ls_set_user_preferences( $in_admin_area, $fields = [] ) {
 
 	$user_id = ( false === empty( $fields[ 'user_id' ] ) ) ? (int) $fields[ 'user_id' ] : get_current_user_id();
 
@@ -706,6 +706,7 @@ function ws_ls_user_preferences_get_formats( $db_fields ) {
     $lookup = [
 			    'activity_level'    => '%f',
 			    'aim'               => '%d',
+				'body_type'         => '%d',
 			    'dob'               => '%s',
 				'email_lists'       => '%s',
 			    'gender'            => '%d',

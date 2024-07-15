@@ -18,7 +18,7 @@ defined('ABSPATH') or die('Jog on!');
  */
 
 define( 'WS_LS_ABSPATH', plugin_dir_path( __FILE__ ) );
-define( 'WE_LS_CURRENT_VERSION', '10.8.4' );
+define( 'WE_LS_CURRENT_VERSION', '10.8.4aa' );
 define( 'WE_LS_TITLE', 'Weight Tracker' );
 define( 'WE_LS_SLUG', 'weight-loss-tracker' );
 define( 'WE_LS_LICENSE_TYPES_URL', 'https://docs.yeken.uk/features.html' );
@@ -181,3 +181,16 @@ function ws_ls_load_textdomain() {
 	load_plugin_textdomain( WE_LS_SLUG, false, dirname( plugin_basename( __FILE__ )  ) . '/includes/languages/' );
 }
 add_action('plugins_loaded', 'ws_ls_load_textdomain');
+
+
+
+function test() {
+
+	$user_id = 1;
+
+	$s = ws_ls_emailer_user_lists( $user_id );
+	print_r( $s);
+	var_dump(ws_ls_emailer_user_has_optedin( 'birthdays', $user_id ));
+	die;
+}
+// add_action( 'init', 'test' );
