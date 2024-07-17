@@ -655,6 +655,7 @@ function ws_ls_emailer_user_lists( $user_id = NULL ) {
 function ws_ls_emailer_lists_default_setting() {
 	$lists = [
 				'awards' 	=> true,
+				'notes'		=> true,
 				'birthdays' => true
 	];
 
@@ -664,12 +665,15 @@ function ws_ls_emailer_lists_default_setting() {
 /**
  * Fetch labels for email lists
  *
+ * Note: All new mailing lists must be added here
+ *
  * @return array
  */
 function ws_ls_emailer_lists_default_labels() {
 	$labels = [
-				'awards' 	=> __( 'Award emails', WE_LS_SLUG ),
-				'birthdays' => __( 'Birthday emails', WE_LS_SLUG )
+				'awards' 	=> __( 'Notifications about new awards', WE_LS_SLUG ),
+				'birthdays' => __( 'Birthday emails', WE_LS_SLUG ),
+				'notes' 	=> __( 'Notifications about new notes', WE_LS_SLUG )
 	];
 
 	return apply_filters( 'wlt-filter-email-lists-default-labels', $labels );

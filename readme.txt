@@ -158,6 +158,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 * New feature: Admin can now manage user's opt out preferences when editing a user's settings.
 * New feature: Users can now opt out of birthday emails. 
 * New feature: Users can now opt out of new award emails. 
+* New feature: Users can now opt out of new note emails. 
 * Improvement: Added "hide-email-optout" argument to [wt-user-settings] and [wt] shortcodes to hide the email opt out form.
 * Improvement: Moved "Birthday emails" setting to "Emails & Notifications" tab within Weight Tracker settings.
 
