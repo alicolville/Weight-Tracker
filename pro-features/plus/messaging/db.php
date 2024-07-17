@@ -106,6 +106,8 @@ function ws_ls_messaging_db_add( $to, $from, $message, $is_note = false, $visibl
 	                'visible_to_user'   => $visible_to_user,
 	                'notification'      => $notification ];
 
+	do_action( 'wlt-hook-data-new-note', $data );
+
 	$formats    = [ '%d', '%d', '%s', '%d', '%d' ];
 
 	$key                    = ( true === $is_note ) ? 'note' : 'message';

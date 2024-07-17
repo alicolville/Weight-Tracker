@@ -1048,6 +1048,19 @@ function ws_ls_settings_page_generic() {
 													</td>
 												</tr>
 												<tr class="<?php echo $disable_if_not_pro_class; ?>">
+													<th scope="row"><?php echo __( 'Send data for new notes?', WE_LS_SLUG ); ?></th>
+													<td>
+														<?php
+														$is_enabled = get_option( 'ws-ls-webhooks-new-note-enabled', 'no' );
+														?>
+														<select id="ws-ls-webhooks-new-note-enabled" name="ws-ls-webhooks-new-note-enabled">
+															<option value="yes" <?php selected( $is_enabled, 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+															<option value="no" <?php selected( $is_enabled, 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+														</select>
+														<p><?php echo __( 'When a user receives a new note, should data be fired to the endpoint(s)?', WE_LS_SLUG); ?></p>
+													</td>
+												</tr>
+												<tr class="<?php echo $disable_if_not_pro_class; ?>">
 													<th scope="row"><?php echo __( 'Include admin updates?', WE_LS_SLUG ); ?></th>
 													<td>
 														<?php
@@ -1182,6 +1195,7 @@ function ws_ls_register_settings(){
 		register_setting( 'we-ls-options-group', 'ws-ls-webhooks-admin-changes-enabled' );
 		register_setting( 'we-ls-options-group', 'ws-ls-webhooks-weight-entries-enabled' );
 		register_setting( 'we-ls-options-group', 'ws-ls-webhooks-targets-enabled' );
+		register_setting( 'we-ls-options-group', 'ws-ls-webhooks-new-note-enabled' );
 
         // Photos
 	    register_setting( 'we-ls-options-group', 'ws-ls-photos-max-size' );

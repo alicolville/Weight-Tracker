@@ -154,6 +154,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 = 10.* = 
 
+* New feature: Web Hooks: Data can now be fired to endpoints for new notes, see new setting "Send data for new notes".
 * New feature: Users can now opt out of emails from Weight Tracker via the user preferences [wt-user-settings] or [wt].
 * New feature: Admin can now manage user's opt out preferences when editing a user's settings.
 * New feature: Users can now opt out of birthday emails. 
