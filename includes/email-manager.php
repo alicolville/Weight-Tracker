@@ -425,6 +425,11 @@ function ws_ls_emailer_replace_placeholders( $email, $placeholders ) {
 	if( false === empty( $email ) && false === empty( $placeholders ) ) {
 
 		foreach ( $placeholders as $key => $value ) {
+	
+			if ( NULL === $value ) {
+				$value = '';
+			}	
+
 			$email = str_replace('{' . $key . '}', $value, $email );
 		}
 
@@ -649,6 +654,7 @@ function ws_ls_emailer_user_lists( $user_id = NULL ) {
  */
 function ws_ls_emailer_lists_default_setting() {
 	$lists = [
+				'awards' 	=> true,
 				'birthdays' => true
 	];
 
@@ -662,6 +668,7 @@ function ws_ls_emailer_lists_default_setting() {
  */
 function ws_ls_emailer_lists_default_labels() {
 	$labels = [
+				'awards' 	=> __( 'Award emails', WE_LS_SLUG ),
 				'birthdays' => __( 'Birthday emails', WE_LS_SLUG )
 	];
 

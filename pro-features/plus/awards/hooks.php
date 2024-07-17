@@ -304,6 +304,11 @@ function ws_ls_awards_send_email( $weight_object, $award, $info ) {
         return;
     }
 
+	// Has user opted in to award notifications
+	if ( false === ws_ls_emailer_user_has_optedin( 'awards', $info['user-id'] ) ) {
+		return;
+	}
+
     $email_template = ws_ls_emailer_get( 'email-award ');
 
     if ( false === empty( $email_template ) ) {
