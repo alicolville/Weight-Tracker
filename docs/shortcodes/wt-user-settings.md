@@ -21,6 +21,7 @@ The shortcode supports the following arguments:
 |hide-dob|Hide Date of Birth field|true or false (default)|[wt-user-settings hide-dob=true]
 |hide-extras|Hide additional fields|true or false (default)|[wt-user-settings hide-extras=true]
 |hide-height|Hide height field|true or false (default)|[wt-user-settings hide-height=true]
+| hide-email-optout | Hide the email opt out form. | True or false (default).  | [wt-user-settings hide-email-optout=true] | 
 |hide-gender|Hide gender field|true or false (default)|[wt-user-settings hide-gender=true]
 |hide-preferences|Hide preference fields|true or false (default)|[wt-user-settings hide-preferences=true]
 |hide-titles|Hide the section titles|True or false (default)|[wt-user-settings hide-titles=true]

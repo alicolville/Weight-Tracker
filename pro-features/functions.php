@@ -357,6 +357,32 @@ function ws_ls_get_email_link( $user_id, $include_brackets = false ) {
 }
 
 /**
+ * Return a simple object to represent user data
+ *
+ * @param $user_id
+ * @return array
+ */
+function ws_ls_simple_user_object( $user_id = NULL ) {
+
+	$user_id = ( NULL === $user_id ) ? get_current_user_id() : $user_id;
+	
+	$user_data = get_userdata( $user_id );
+
+	if ( false == $user_data) {
+		return [];
+	}
+
+	$data = [];
+
+	$data[ 'user-id' ]				= $user_id;
+	$data[ 'email' ]				= $user_data->user_email;
+	$data[ 'display-name' ]    		= ws_ls_user_display_name( $user_id );
+	$data[ 'url-user-profile' ]     = ws_ls_get_link_to_user_profile( $user_id, NULL, false );
+
+	return $data;
+}
+
+/**
  * Return an array of supported genders
  *
  * @return array

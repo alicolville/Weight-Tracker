@@ -27,6 +27,7 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
                                     'hide-activity-level'   => false,
                                     'hide-preferences'      => false,
                                     'hide-extras'           => false,
+									'hide-email-optout'     => false,
                                     'hide-titles'           => false,
                                     'user-id'               => get_current_user_id(),
                                     'uikit'                 => false,
@@ -141,6 +142,16 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
 			                                            'selected'  => ( true === ws_ls_setting( 'use-us-dates', $user_id ) ) ? 'true' : 'false' ] );
 
 		}
+
+		if ( false === ws_ls_to_bool( $arguments[ 'hide-email-optout' ] ) ) {
+			$html_output .=  sprintf( '<div class="ws-ls-form-row ykuk-width-1-1">
+											<h3>%s</h3>
+											<p class="ws-ls-hide-if-admin">%s</p>
+										</div>', __( 'Email notifications', WE_LS_SLUG ),
+										__( 'Select the email notifications that you would like to receive:', WE_LS_SLUG )
+									);
+			$html_output .=  ws_ls_emailer_optout_form();
+		}	
 
 		if ( true !== $arguments[ 'disable-save' ] ) {
 

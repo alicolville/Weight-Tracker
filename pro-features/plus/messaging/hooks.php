@@ -17,7 +17,8 @@ function ws_ls_note_ajax_add() {
 		return 0;
 	}
 
-	if ( true === ws_ls_post_value_to_bool('send-email' ) ) {
+	if ( true === ws_ls_post_value_to_bool('send-email', $user_id) &&
+			true === ws_ls_emailer_user_has_optedin( 'notes', ) ) {
 
 		$email_template = ws_ls_emailer_get( 'note-added' );
 

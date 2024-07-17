@@ -100,7 +100,8 @@ The shortcode supports the following arguments:
 | hide-chart-overview   |  Hide the chart from the "Overview" tab.   | True or false (default).  | [wt hide-chart-overview=true] |     
 | hide-custom-fields-chart   |  Hide custom fields from the chart.   | True or false (default).  | [wt hide-custom-fields-chart=true] |     
 | hide-custom-fields-form   |  Hide custom fields from the form.   | True or false (default).  | [wt hide-custom-fields-form=true] |     
-| hide-custom-fields-table   |  Hide custom fields from the table.   | True or false (default).  | [wt hide-custom-fields-table=true] |     					
+| hide-custom-fields-table   |  Hide custom fields from the table.   | True or false (default).  | [wt hide-custom-fields-table=true] |     	
+| hide-email-optout | Hide the email opt out form on settings tab. | True or false (default).  | [wt hide-email-optout=true] |  				
 | hide-first-target-form | Hide the target form from the Overview tab. | True or false (default).  | [wt hide-first-target-form=true] |  
 | hide-notes | If set to true (default is false) hide the "notes" section of the form.   | True or false (default).   | [wt hide-notes=true] |   
 | hide-notifications | If set to true (default is false) hide the "notifications" at the top of the shortcode.   | True or false (default).   | [wt hide-notifications=true] |   

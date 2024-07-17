@@ -30,6 +30,7 @@ function ws_ls_shortcode_wt( $user_defined_arguments ) {
 												'hide-notifications' 		=> false,                        // Hide notifications part of form
 												'hide-photos' 				=> false,                       // Hide photos part of form
 												'hide-chart-overview' 		=> false,               	    // Hide chart on the overview tab
+												'hide-email-optout'     	=> false,						// Hide email opt in form
 												'hide-tab-awards' 		    => false,               	    // Hide Awards tab
 												'hide-tab-photos' 			=> false,                 	    // Hide Photos tab
 												'hide-tab-advanced' 		=> false,               	    // Hide Advanced tab (macroN, calories, etc)
@@ -230,7 +231,8 @@ function ws_ls_wt_form( $arguments = [] ) {
 	                                'user-id'               => $arguments[ 'user-id' ],
 	                                'redirect-url'          => $redirect_url,
 	                                'entry-id'              => ws_ls_querystring_value('ws-edit-entry', true, NULL ),
-	                                'hide-fields-photos'    => ws_ls_to_bool( $arguments[ 'hide-photos' ] ),
+	                                'hide-email-optout'     => false,
+									'hide-fields-photos'    => ws_ls_to_bool( $arguments[ 'hide-photos' ] ),
 	                                'hide-notes'            => ws_ls_to_bool( $arguments[ 'hide-notes' ] ),
 	                                'hide-title'            => true,
 	                                'hide-confirmation'     => true,
@@ -408,7 +410,7 @@ function ws_ls_wt_tab_home( $arguments = [] ) {
  * @return string
  */
 function ws_ls_tab_settings( $arguments = [] ) {
-
+	
 	$redirect_url =  ( true === $arguments[ 'kiosk-mode' ] ) ?
 						add_query_arg( [    'wt-user-id'            => $arguments[ 'user-id' ],
 											'user-preference-saved' => 'true',
@@ -432,10 +434,11 @@ function ws_ls_tab_settings( $arguments = [] ) {
 	}
 
 	if( true === ws_ls_user_preferences_is_enabled() ) {
-
+		
 		$settings = ws_ls_user_preferences_form( [  'user-id'           => $arguments[ 'user-id' ],
 		                                            'uikit'             => true,
-		                                            'show-delete-data'  => false,
+													'show-delete-data'  => false,
+													'hide-email-optout' => $arguments[ 'hide-email-optout' ],
 		                                            'kiosk-mode'        => $arguments[ 'kiosk-mode' ],
 		                                            'redirect-url'      => $redirect_url
 		]);

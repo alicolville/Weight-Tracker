@@ -86,17 +86,21 @@ function ws_ls_webhooks_endpoints_contain_slack() {
  */
 function ws_ls_webhooks_process_this( $type ) {
 
-
-
 	// If this is from an admin screen, do we want to process it?
 	if ( true === is_admin() &&
 	     'yes' !== get_option( 'ws-ls-webhooks-admin-changes-enabled', 'no' ) ) {
 		return false;
 	}
 
-	// Do we want to weight entries?
+	// Do we want to process weight entries?
 	if ( 'weight' === $type &&
 	     'yes' !== get_option( 'ws-ls-webhooks-weight-entries-enabled', 'no' ) ) {
+		return false;
+	}
+
+	// Do we want to process notes?
+	if ( 'new-note' === $type &&
+	     'yes' !== get_option( 'ws-ls-webhooks-new-note-enabled', 'no' ) ) {
 		return false;
 	}
 
@@ -139,6 +143,34 @@ function ws_ls_webhooks_weight_target( $type, $entry ) {
 
 }
 add_action( 'wlt-hook-data-added-edited', 'ws_ls_webhooks_weight_target', 10, 2 );
+
+/**
+ * Listen out for new note hooks
+ * @param $note
+ */
+function ws_ls_webhooks_new_note( $note ) {
+	
+	if ( false === ws_ls_webhooks_enabled() ) {
+		return;
+	}
+
+	// Want to process this?
+	if ( false === ws_ls_webhooks_process_this( 'new-note' ) ) {
+		return;
+	}
+
+	$note[ 'user-from' ] 	= ws_ls_simple_user_object( $note[ 'from' ] );
+	$note[ 'user-to' ] 		= ws_ls_simple_user_object( $note[ 'to' ] );
+	$note[ 'timestamp' ]	= date( "Y-m-d H:i:s" );
+	
+	$endpoints = ws_ls_webhooks_urls();
+
+	foreach ( ws_ls_webhooks_urls() as $endpoint ) {
+		ws_ls_webhooks_send( $endpoint, $note );
+	}
+
+}
+add_action( 'wlt-hook-data-new-note', 'ws_ls_webhooks_new_note' );
 
 /**
  * Fire data to webhook endpoint

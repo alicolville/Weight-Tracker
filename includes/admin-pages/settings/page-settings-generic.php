@@ -321,21 +321,7 @@ function ws_ls_settings_page_generic() {
                                                     </td>
                                                 </tr>
                                             </table>
-                                            <h3><?php echo __( 'Birthday Emails' , WE_LS_SLUG); ?></h3>
-                                            <table class="form-table">
-                                                <tr class="<?php echo $disable_if_not_pro_class; ?>">
-                                                    <th scope="row"><?php echo __( 'Enable?' , WE_LS_SLUG); ?></th>
-                                                    <td>
-                                                        <select id="ws-ls-enable-birthdays" name="ws-ls-enable-birthdays">
-                                                            <option value="no" <?php selected( get_option('ws-ls-enable-birthdays'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
-                                                            <option value="yes" <?php selected( get_option('ws-ls-enable-birthdays'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
-                                                        </select>
-                                                        <p><?php echo __('If enabled, a Happy Birthday email shall be sent to users on their birthday.', WE_LS_SLUG)?></p>
-
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                            <h3><?php echo __( 'Advanced' , WE_LS_SLUG); ?></h3>
+                                           <?php echo __( 'Advanced' , WE_LS_SLUG); ?></h3>
                                             <table class="form-table">
                                                 <tr>
                                                     <th scope="row"><?php echo __( 'Disable plugin CSS?' , WE_LS_SLUG); ?></th>
@@ -881,7 +867,21 @@ function ws_ls_settings_page_generic() {
                                                     ws_ls_display_pro_upgrade_notice();
                                                 }
                                                 ?>
-												<h3><?php echo __( 'Settings' , WE_LS_SLUG); ?></h3>
+												<h3><?php echo __( 'User notifications' , WE_LS_SLUG); ?></h3>
+												<table class="form-table">
+													<tr class="<?php echo $disable_if_not_pro_class; ?>">
+														<th scope="row"><?php echo __( 'Birthday Emails' , WE_LS_SLUG); ?></th>
+														<td>
+															<select id="ws-ls-enable-birthdays" name="ws-ls-enable-birthdays">
+																<option value="no" <?php selected( get_option('ws-ls-enable-birthdays'), 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+																<option value="yes" <?php selected( get_option('ws-ls-enable-birthdays'), 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+															</select>
+															<p><?php echo __('If enabled, a Happy Birthday email shall be sent to users on their birthday. Note: This can be disabled by the user.', WE_LS_SLUG)?></p>
+
+														</td>
+													</tr>
+												</table>
+												<h3><?php echo __( 'Admin notifications' , WE_LS_SLUG); ?></h3>
 												<table class="form-table">
 													<tr class="<?php echo $disable_if_not_pro_class; ?>">
 														<th scope="row"><?php echo __( 'Enable email notifications', WE_LS_SLUG ); ?></th>
@@ -1048,6 +1048,19 @@ function ws_ls_settings_page_generic() {
 													</td>
 												</tr>
 												<tr class="<?php echo $disable_if_not_pro_class; ?>">
+													<th scope="row"><?php echo __( 'Send data for new notes?', WE_LS_SLUG ); ?></th>
+													<td>
+														<?php
+														$is_enabled = get_option( 'ws-ls-webhooks-new-note-enabled', 'no' );
+														?>
+														<select id="ws-ls-webhooks-new-note-enabled" name="ws-ls-webhooks-new-note-enabled">
+															<option value="yes" <?php selected( $is_enabled, 'yes' ); ?>><?php echo __('Yes', WE_LS_SLUG)?></option>
+															<option value="no" <?php selected( $is_enabled, 'no' ); ?>><?php echo __('No', WE_LS_SLUG)?></option>
+														</select>
+														<p><?php echo __( 'When a user receives a new note, should data be fired to the endpoint(s)?', WE_LS_SLUG); ?></p>
+													</td>
+												</tr>
+												<tr class="<?php echo $disable_if_not_pro_class; ?>">
 													<th scope="row"><?php echo __( 'Include admin updates?', WE_LS_SLUG ); ?></th>
 													<td>
 														<?php
@@ -1182,6 +1195,7 @@ function ws_ls_register_settings(){
 		register_setting( 'we-ls-options-group', 'ws-ls-webhooks-admin-changes-enabled' );
 		register_setting( 'we-ls-options-group', 'ws-ls-webhooks-weight-entries-enabled' );
 		register_setting( 'we-ls-options-group', 'ws-ls-webhooks-targets-enabled' );
+		register_setting( 'we-ls-options-group', 'ws-ls-webhooks-new-note-enabled' );
 
         // Photos
 	    register_setting( 'we-ls-options-group', 'ws-ls-photos-max-size' );

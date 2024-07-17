@@ -425,6 +425,11 @@ function ws_ls_emailer_replace_placeholders( $email, $placeholders ) {
 	if( false === empty( $email ) && false === empty( $placeholders ) ) {
 
 		foreach ( $placeholders as $key => $value ) {
+	
+			if ( NULL === $value ) {
+				$value = '';
+			}	
+
 			$email = str_replace('{' . $key . '}', $value, $email );
 		}
 
@@ -584,3 +589,148 @@ function ws_ls_emailer_send( $to, $subject, $message, $placeholders = [] ) {
 
 	return false;
 }
+
+/**
+ * Has the user opted in for the given list?
+ *
+ * @param $list_name
+ * @param $user_id
+ * @return array
+ */
+function ws_ls_emailer_user_has_optedin( $list_name, $user_id = NULL ) {
+
+	if ( true === empty( $list_name ) ) {
+		return false;
+	}
+
+	$user_id = ( NULL === $user_id ) ? get_current_user_id() : $user_id;
+
+	// Ensure emails are enabled globally
+	if ( false === ws_ls_email_enabled() ) {
+		return false;
+	}
+
+	$lists = ws_ls_emailer_user_lists( $user_id );
+
+	// If we don't have a value in the user settings, we can assume we haven't saved their preferences 
+	// yet, or, we potentially have a new mailing list (so look up default)
+	if ( false === array_key_exists( $list_name, $lists ) ) {
+
+		$defaults = ws_ls_emailer_lists_default_setting();
+
+		// Invalid email list?
+		if ( ! array_key_exists( $list_name, $defaults ) ) {
+			return false;
+		}
+
+		$lists[ $list_name ] = $defaults[ $list_name ];
+
+	}
+
+	return ws_ls_to_bool( $lists[ $list_name ] );
+}
+
+/**
+ * Fetch user's email list preferences from settings
+ *
+ * @param $user_id
+ * @return array
+ */
+function ws_ls_emailer_user_lists( $user_id = NULL ) {
+
+	$user_id 	= ( NULL === $user_id ) ? get_current_user_id() : $user_id;
+
+	$lists 		= ws_ls_user_preferences_get( 'email_lists', $user_id );
+
+	return ( false === empty( $lists ) ) ? json_decode( $lists, true ) : ws_ls_emailer_lists_default_setting();
+}
+
+/**
+ * Fetch default email list preferences
+ *
+ * Note: All new mailing lists must be added here
+ * 
+ * @return array
+ */
+function ws_ls_emailer_lists_default_setting() {
+	$lists = [
+				'awards' 	=> true,
+				'notes'		=> true,
+				'birthdays' => true
+	];
+
+	return apply_filters( 'wlt-filter-email-lists-default-settings', $lists );
+}
+
+/**
+ * Fetch labels for email lists
+ *
+ * Note: All new mailing lists must be added here
+ *
+ * @return array
+ */
+function ws_ls_emailer_lists_default_labels() {
+	$labels = [
+				'awards' 	=> __( 'Notifications about new awards', WE_LS_SLUG ),
+				'birthdays' => __( 'Birthday emails', WE_LS_SLUG ),
+				'notes' 	=> __( 'Notifications about new notes', WE_LS_SLUG )
+	];
+
+	return apply_filters( 'wlt-filter-email-lists-default-labels', $labels );
+}
+
+/**
+ * Return form HTML for email opt in lists
+ *
+ * @return string
+ */
+function ws_ls_emailer_optout_form( $user_id = NULL, $uikit = true ) {
+
+	$user_id 	= ( NULL === $user_id ) ? get_current_user_id() : $user_id;	
+	
+	$lists 	= ws_ls_emailer_lists_default_setting();
+	$labels = ws_ls_emailer_lists_default_labels();
+
+	$html_output = '';
+
+	foreach( $lists as $key => $value ) {
+
+		$html_output .= ws_ls_form_field_select( [  'key'       => sprintf( 'email-optin-%s', $key ),
+													'label'     => sprintf( '%s:', $labels[ $key ] ),
+													'uikit'     => $uikit,
+													'values'    => [ 'true' => __( 'Yes', WE_LS_SLUG ), 'false' => __( 'No', WE_LS_SLUG ) ],
+													'selected'  => ( true === ws_ls_emailer_user_has_optedin( $key, $user_id ) ) ? 'true' : 'false' ] );
+												
+	}
+
+	return $html_output;
+}
+
+/**
+ * Filter user preferences form and check for user optin fields.
+ * 
+ */
+add_filter( 'wlt-filter-user-settings-save-fields', function ( $fields ) {
+
+	if ( true === empty( $fields[ 'user_id' ] ) ) {
+		return $fields;
+	}
+
+	$lists 	= ws_ls_emailer_lists_default_setting();
+	$values = [];
+
+	foreach ( $lists as $list => $default_value ) {
+
+		$form_key 			= sprintf( 'email-optin-%s', $list );
+		$values[ $list ] 	= ws_ls_post_value( $form_key, 'missing' ); 
+
+		// If any optin field is missing then let's be safe and assume there is an issue with the form
+		if ( 'missing' === $values[ $list ] ) {
+			return $fields;
+		}
+	}
+	
+	$fields[ 'email_lists'] = $values;
+
+	return $fields;
+});
