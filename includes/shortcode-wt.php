@@ -145,8 +145,8 @@ function ws_ls_shortcode_wt( $user_defined_arguments ) {
 	$shortcode_arguments[ 'min-chart-points' ]      = (int) $shortcode_arguments[ 'min-chart-points' ];
 	$shortcode_arguments[ 'selected-week-number' ]  = ( true === $shortcode_arguments[ 'enable-week-ranges' ] ) ? ws_ls_post_value_numeric( 'week-number' ) : NULL;
 
-	// If any of the arguments are hiding to custom fields, then ensure all DB entries we fetch have a weight
-	$ensure_we_have_weights = ( false === ws_ls_to_bool( $shortcode_arguments[ 'hide-custom-fields-form' ] ) ||
+	// If any of the arguments are hiding custom fields, then ensure all DB entries we fetch have a weight
+	$ensure_we_have_weights = ( true === ws_ls_to_bool( $shortcode_arguments[ 'hide-custom-fields-form' ] ) ||
 		                            true === ws_ls_to_bool( $shortcode_arguments[ 'hide-custom-fields-chart' ] ) ||
 										true === ws_ls_to_bool( $shortcode_arguments[ 'hide-custom-fields-table' ] ) );
 
