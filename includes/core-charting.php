@@ -345,7 +345,6 @@ function ws_ls_charting_enqueue_scripts() {
 
 	$minified = ws_ls_use_minified();
 
-	wp_enqueue_script( 'ws-ls-chart-js-polyfill', 'https://polyfill.io/v3/polyfill.min.js?features=ResizeObserver', [ 'jquery' ], WE_LS_CURRENT_VERSION );
-	wp_enqueue_script( 'ws-ls-chart-js', WE_LS_CDN_CHART_JS, [ 'jquery', 'ws-ls-chart-js-polyfill' ], WE_LS_CURRENT_VERSION );
+	wp_enqueue_script( 'ws-ls-chart-js', WE_LS_CDN_CHART_JS, [ 'jquery' ], WE_LS_CURRENT_VERSION );
 	wp_enqueue_script( 'jquery-chart-ws-ls', plugins_url( '../assets/js/ws-ls-chart' . $minified . '.js', __FILE__ ), [ 'ws-ls-chart-js' ], WE_LS_CURRENT_VERSION, true );
 }

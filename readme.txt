@@ -2,8 +2,8 @@
 Contributors: aliakro
 Tags: weight,tracker,chart,history,macronutrient
 Requires at least: 6.0
-Tested up to: 6.61
-Stable tag: 10.9.1
+Tested up to: 6.5
+Stable tag: 10.9.2
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -151,6 +151,10 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 10.9: New user settings for opting in and out of email notifications.
 
 == Changelog ==
+
+= 10.9.2 =
+
+* Security fix: Removed reference to PolyFill ResizeObserver
 
 = 10.9.1 =
 
