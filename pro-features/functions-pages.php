@@ -187,83 +187,16 @@ function ws_ls_postbox_user_notes( $user_id ) {
 					}
 				?>
 			</div>
-			<script>
-				jQuery( document ).ready( function ( $ ) {
+			<?php
 
-					let button_id 			= '#<?php echo $component_id; ?>_button';
-					let textarea_id 		= '#<?php echo $component_id; ?>_textarea';
-					let most_recent_id 		= '#<?php echo $component_id; ?>_most_recent';
-					let errormessage_id 	= '#<?php echo $component_id; ?>_errormessage';
-					let successmessage_id 	= '#<?php echo $component_id; ?>_successmessage';
+				wp_enqueue_script( 'wt-admin-notes-add', plugins_url( '../assets/js/admin.data-notes-add.js', __FILE__ ), [ 'jquery' ], WE_LS_CURRENT_VERSION, true );
 
-					$( button_id ).click( function( event ) {
-
-						event.preventDefault();
-
-						let note = $( textarea_id ).val();
-
-						$( button_id ).addClass( 'ws-ls-loading-button');
-						$( errormessage_id ).addClass( 'ws-ls-hide');
-						$( successmessage_id ).addClass( 'ws-ls-hide' );
-
-						let data = { 	'action' : 			'ws_ls_add_note',
-										'security' : 		'<?php echo wp_create_nonce( 'ws-ls-add-note' ) ?>',
-										'user-id' :			<?php echo (int) $user_id; ?>,
-										'note' :			note,
-										'send-email' :		$( '#<?php echo $component_id; ?>_send_email' ).is(':checked'),
-										'visible-to-user' :	$( '#<?php echo $component_id; ?>_visible_to_user' ).is(':checked')
-						};
-
-						jQuery.post( "<?php echo admin_url('admin-ajax.php'); ?>", data, function ( response ) {
-
-							if ( parseInt( response ) === 0 ) {
-								$( errormessage_id ).removeClass( 'ws-ls-hide' );
-								return;
-							}
-
-							$( most_recent_id ).val( $( textarea_id ).val() );
-
-							$( textarea_id ).val( '' );
-
-							$( "#<?php echo $component_id; ?>_count" ).text( response );
-							$( successmessage_id ).removeClass( 'ws-ls-hide' );
-
-						}).fail(function() {
-							$( errormessage_id ).removeClass( 'ws-ls-hide' );
-						})
-						.always(function() {
-							$( button_id ).removeClass( 'ws-ls-loading-button');
-						});;
-					});
-
-					let hide_most_recent_id 	= '#<?php echo $component_id; ?>_hide_most_read';
-					let view_most_recent_id 	= '#<?php echo $component_id; ?>_view_most_read';
-					let view_most_recent_div_id = '#<?php echo $component_id; ?>_most_recent_comment_div';
-					let view_add_new_div_id 	= '#<?php echo $component_id; ?>_add_new_div';
-
-					$( hide_most_recent_id ).click( function( event ) {
-
-						event.preventDefault();
-
-						$( view_most_recent_id ).removeClass( 'ws-ls-hide' );
-						$( hide_most_recent_id ).addClass( 'ws-ls-hide' );
-						$( view_most_recent_div_id ).addClass( 'ws-ls-hide' );
-						$( view_add_new_div_id ).removeClass( 'ws-ls-hide' );
-					});
-
-					$( view_most_recent_id ).click( function( event ) {
-
-						event.preventDefault();
-
-						$( hide_most_recent_id ).removeClass( 'ws-ls-hide' );
-						$( view_most_recent_id ).addClass( 'ws-ls-hide' );
-						$( view_most_recent_div_id ).removeClass( 'ws-ls-hide' );
-						$( view_add_new_div_id ).addClass( 'ws-ls-hide' );
-					});
-
-				});
-
-			</script>
+				wp_localize_script( 'wt-admin-notes-add', 'ws_notes_add_config', [ 	'component_id'	=> $component_id,
+																					'user_id'		=> (int) $user_id,
+																					'nonce' 		=> wp_create_nonce( 'ws-ls-add-note' ),
+																					'url'			=> admin_url( 'admin-ajax.php' ),
+																					'error-message'	=> __( 'An error occurred when attempting to delete the note.', WE_LS_SLUG ) ]);
+			?>
 		</div>
 	</div>
 	<?php
