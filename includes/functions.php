@@ -92,10 +92,7 @@ function ws_ls_create_dialog_jquery_code( $title, $message, $class_used_to_promp
 
     $id_hash = md5($title . $message . $class_used_to_prompt_confirmation );
 
-    printf('<div id="%1$s" title="%2$s">
-                        <p>%3$s</p>
-                    </div>
-                    <script>
+    $dialog_js = sprintf('
                         jQuery( function( $ ) {
                             let $info = $( "#%1$s" );
                             $info.dialog({
@@ -104,7 +101,7 @@ function ws_ls_create_dialog_jquery_code( $title, $message, $class_used_to_promp
                                 "autoOpen"      : false
                             });
 
-                            $( ".%4$s" ).click( function( event ) {
+                            $( ".%3$s" ).click( function( event ) {
                                 event.preventDefault();
                                 target_url = $( this ).attr( "href" );
                                 let  $info = $( "#%1$s" );
@@ -115,7 +112,7 @@ function ws_ls_create_dialog_jquery_code( $title, $message, $class_used_to_promp
                                     "closeOnEscape" : true,
                                     "buttons"       : {
                                         "Yes": function() {
-                                            %5$s
+                                            %4$s
                                         },
                                         "No": function() {
                                             $(this).dialog( "close" );
@@ -126,14 +123,21 @@ function ws_ls_create_dialog_jquery_code( $title, $message, $class_used_to_promp
                             });
 
                         });
-                    </script>',
+                    ',
         $id_hash,
-        esc_attr( $title ),
         wp_kses_post( $message ),
         esc_attr( $class_used_to_prompt_confirmation ),
         ( true === $js_call ) ? $js_call : 'window.location.href = target_url;'
     );
 
+	printf('<div id="%1$s" title="%2$s">
+				<p>%3$s</p>
+			</div>',
+			$id_hash,
+			esc_attr( $title ),
+			wp_kses_post( $message ));
+
+	wp_add_inline_script( 'jquery-ui-dialog', $dialog_js );
 }
 
 /**
