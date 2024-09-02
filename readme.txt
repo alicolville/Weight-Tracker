@@ -152,11 +152,12 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 == Changelog ==
 
-= 10.9.3 =
+= 10.10 =
 
 Several fixes based upon WordPress's plugin feedback:
 
-* Included all non minified versions of JS / CSS.
+* Included all non minified versions of JS.
+* Updated Readme to include references to 3rd party libraries.
 
 = 10.9.2 =
 
