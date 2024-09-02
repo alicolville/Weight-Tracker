@@ -221,15 +221,6 @@ function ws_ls_export_admin_page_new() {
 
 									echo '</div>';
 
-									if ( false === empty( $title ) ) {
-
-										printf( ' <script>
-														jQuery( document ).ready(function ($) {
-															$( "#ws-ls-export-new-form .set-title" ).val( "%s" )
-														});
-													</script>', esc_js( $title ) );
-
-									}
 								?>
 							</div>
 						</div>
