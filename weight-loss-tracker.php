@@ -27,7 +27,7 @@ define( 'WE_LS_CALCULATIONS_URL', '	https://docs.yeken.uk/calculations.html' );
 define( 'WE_LS_UPGRADE_TO_PRO_URL', 'https://shop.yeken.uk/product/weight-tracker-pro/' );
 define( 'WE_LS_UPGRADE_TO_PRO_PLUS_URL', 'https://shop.yeken.uk/product/weight-tracker-pro-plus/' );
 define( 'WE_LS_FREE_TRIAL_URL', 'https://shop.yeken.uk/get-a-trial-license/' );
-define( 'WE_LS_CDN_CHART_JS', WS_LS_BASE_URL . 'assets/js/libraries/chart-4.4.1.js' );
+define( 'WE_LS_CDN_CHART_JS', WS_LS_BASE_URL . 'assets/js/libraries/chart-4.4.1.min.js' );
 define( 'WE_LS_CDN_FONT_AWESOME_CSS', WS_LS_BASE_URL . 'assets/css/libraries/fontawesome-4.7.0.min.css' );
 define( 'WE_LS_PRO_PRICE', 60.00 );
 define( 'WE_LS_PRO_PLUS_PRICE', 120.00 );
