@@ -17,10 +17,10 @@ function ws_ls_advertise_pro() {
 
 		<div class="wrap ws-ls-admin-page">
 			<?php
-				if (isset($_GET['add-license']) && 'true' == $_GET['add-license'] && !empty($_POST['license-key'])){
+				if ( 'true' === ws_ls_querystring_value( 'add-license' ) && NULL !== ws_ls_post_value( 'license-key' ) ){
 
-					$valid_old_license = false;
-					$entered_license = $_POST['license-key'];
+					$valid_old_license 	= false;
+					$entered_license 	= ws_ls_post_value( 'license-key' );
 
 					// First try validating and applying a new subscription license
 					$valid_new_license = ws_ls_license_apply( $entered_license, false);
@@ -92,7 +92,7 @@ function ws_ls_advertise_pro() {
 									} ?>
 
                                     <center>
-                                        <h3><?php echo esc_html__('In case you need, your <strong>Site Hash</strong> is', WE_LS_SLUG); ?>: <?php echo ws_ls_generate_site_hash(); ?></h3>
+                                        <h3><?php echo esc_html__('In case you need, your Site Hash is', WE_LS_SLUG); ?>: <?php echo ws_ls_generate_site_hash(); ?></h3>
 
                                         <?php
 
