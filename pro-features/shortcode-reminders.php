@@ -53,13 +53,13 @@ function ws_ls_shortcode_reminder($user_defined_arguments, $content = null) {
 
 	// Missing both?
 	if ( 'both' == $arguments[ 'type' ] && $target_required && $weight_required ) {
-		$message = __( 'Please remember to enter your weight for today as well as your target weight.', WE_LS_SLUG ) ;
+		$message = esc_html__( 'Please remember to enter your weight for today as well as your target weight.', WE_LS_SLUG ) ;
 	// Do they have a target weight?
 	} else if ( 'target' == $arguments[ 'type' ]  && $target_required ) {
-		$message = __( 'Please remember to enter your target weight.', WE_LS_SLUG );
+		$message = esc_html__( 'Please remember to enter your target weight.', WE_LS_SLUG );
 	// Do they have a weight entry for today?
 	} else if ( 'weight' == $arguments[ 'type' ] && $weight_required) {
-		$message = __( 'Please remember to enter your weight.', WE_LS_SLUG ) ;
+		$message = esc_html__( 'Please remember to enter your weight.', WE_LS_SLUG ) ;
 	}
 
 	// Do we have a message to display?

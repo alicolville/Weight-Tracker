@@ -31,17 +31,17 @@
 
                         ?>
                         <div class="postbox">
-                            <h3 class="hndle"><span><?php echo __('Awards', WE_LS_SLUG); ?></span></h3>
+                            <h3 class="hndle"><span><?php echo esc_html__('Awards', WE_LS_SLUG); ?></span></h3>
                             <div style="padding: 0px 15px 0px 15px">
 
                                 <div class="ws-ls-table">
                                     <div class="ws-ls-row">
                                         <div class="ws-ls-cell">
-                                            <p><?php echo __('Issue awards to your user\'s for meeting certain goals.' , WE_LS_SLUG); ?>
-                                                <a href="https://docs.yeken.uk/awards.html" target="_blank" rel="noopener"><?php echo __('Read more about Awards', WE_LS_SLUG); ?></a>
+                                            <p><?php echo esc_html__('Issue awards to your user\'s for meeting certain goals.' , WE_LS_SLUG); ?>
+                                                <a href="https://docs.yeken.uk/awards.html" target="_blank" rel="noopener"><?php echo esc_html__('Read more about Awards', WE_LS_SLUG); ?></a>
                                             </p>
                                             <?php if ( false === $emails_enabled ): ?>
-                                                <p class="ws-ls-validation-error"><strong><?php echo __('Emails Disabled', WE_LS_SLUG); ?></strong>: <?php echo __('Emails will not be sent for email enabled awards. This allows you to test awards without emails being sent. Use the button to the right enable them', WE_LS_SLUG); ?>.</p>
+                                                <p class="ws-ls-validation-error"><strong><?php echo esc_html__('Emails Disabled', WE_LS_SLUG); ?></strong>: <?php echo esc_html__('Emails will not be sent for email enabled awards. This allows you to test awards without emails being sent. Use the button to the right enable them', WE_LS_SLUG); ?>.</p>
                                             <?php endif; ?>
                                         </div>
                                         <div class="ws-ls-cell" style="text-align: right">

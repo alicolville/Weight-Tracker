@@ -32,14 +32,14 @@ function ws_ls_meta_fields_base_url( $args = [] ) {
  */
 function ws_ls_meta_fields_types() {
 	return [
-		0 => __( 'Number', WE_LS_SLUG),
-		3 => __( 'Photo', WE_LS_SLUG),
-		5 => __( 'Radio buttons', WE_LS_SLUG ),
-		4 => __( 'Range slider', WE_LS_SLUG ),
-		7 => __( 'Dropdown', WE_LS_SLUG ),
-		6 => __( 'Large text', WE_LS_SLUG ),
-		1 => __( 'Small text', WE_LS_SLUG ),
-		2 => __( 'Yes', WE_LS_SLUG ) . ' / ' . __( 'No', WE_LS_SLUG )
+		0 => esc_html__( 'Number', WE_LS_SLUG),
+		3 => esc_html__( 'Photo', WE_LS_SLUG),
+		5 => esc_html__( 'Radio buttons', WE_LS_SLUG ),
+		4 => esc_html__( 'Range slider', WE_LS_SLUG ),
+		7 => esc_html__( 'Dropdown', WE_LS_SLUG ),
+		6 => esc_html__( 'Large text', WE_LS_SLUG ),
+		1 => esc_html__( 'Small text', WE_LS_SLUG ),
+		2 => esc_html__( 'Yes', WE_LS_SLUG ) . ' / ' . esc_html__( 'No', WE_LS_SLUG )
 	];
 }
 
@@ -228,9 +228,9 @@ function ws_ls_meta_fields_for_entry_display( $entry_id ) {
 
         switch ( (int) $value ) {
             case 1:
-                return __('No', WE_LS_SLUG);
+                return esc_html__('No', WE_LS_SLUG);
             case 2:
-                return __('Yes', WE_LS_SLUG);
+                return esc_html__('Yes', WE_LS_SLUG);
             default:
                 return '';
 
@@ -347,7 +347,7 @@ function ws_ls_meta_fields_for_entry_display( $entry_id ) {
             2 === (int) $field['mandatory'] ? ' required' : '',
             ws_ls_form_tab_index_next(),
             ( false === empty( $value ) ) ? esc_attr( $value ) : '',
-            __('Please enter a value for', WE_LS_SLUG),
+            esc_html__('Please enter a value for', WE_LS_SLUG),
 	        ( false === empty( $field[ 'placeholder' ] ) ) ? esc_attr( $field[ 'placeholder' ] ) : ''
         );
 
@@ -399,7 +399,7 @@ function ws_ls_meta_fields_for_entry_display( $entry_id ) {
             2 === (int)  $field['mandatory'] ? ' required' : '',
             ws_ls_form_tab_index_next(),
             ( false === empty( $value ) ) ? esc_attr( $value ) : '',
-            __('Please enter a number for', WE_LS_SLUG),
+            esc_html__('Please enter a number for', WE_LS_SLUG),
 	        ( false === empty( $field[ 'placeholder' ] ) ) ? esc_attr( $field[ 'placeholder' ] ) : ''
         );
 
@@ -429,8 +429,8 @@ function ws_ls_meta_fields_for_entry_display( $entry_id ) {
             $html .= sprintf( '<option value="0" %1$s ></option>', selected( $value, 0, false ) );
         }
 
-        $html .= sprintf( '<option value="1" %1$s>%2$s</option>', selected( $value, 1, false ), __('No', WE_LS_SLUG) );
-        $html .= sprintf( '<option value="2" %1$s>%2$s</option>', selected( $value, 2, false ), __('Yes', WE_LS_SLUG) );
+        $html .= sprintf( '<option value="1" %1$s>%2$s</option>', selected( $value, 1, false ), esc_html__('No', WE_LS_SLUG) );
+        $html .= sprintf( '<option value="2" %1$s>%2$s</option>', selected( $value, 2, false ), esc_html__('Yes', WE_LS_SLUG) );
 
         $html .= '</select></div>';
 
@@ -496,7 +496,7 @@ function ws_ls_meta_fields_form_field_radio_buttons( $field, $value ) {
 	$field = ws_ls_meta_fields_form_prep_options( $field );
 
 	if ( true === empty( $field[ 'options-labels' ] ) ) {
-		$html .= '<p>' . __( 'No labels/values have been specified for this question.', WE_LS_SLUG ) . '</p>';
+		$html .= '<p>' . esc_html__( 'No labels/values have been specified for this question.', WE_LS_SLUG ) . '</p>';
 	}
 
 	$first = true;
@@ -542,7 +542,7 @@ function ws_ls_meta_fields_form_field_select( $field, $value ) {
 	$field = ws_ls_meta_fields_form_prep_options( $field );
 
 	if ( true === empty( $field[ 'options' ] ) ) {
-		return '<p>' . __( 'No labels/values have been specified for this question.', WE_LS_SLUG ) . '</p>';
+		return '<p>' . esc_html__( 'No labels/values have been specified for this question.', WE_LS_SLUG ) . '</p>';
 	}
 
 	return ws_ls_form_field_select([	'key' 			    =>  ws_ls_meta_fields_form_field_generate_id( $field['id'] ),
@@ -598,10 +598,10 @@ function ws_ls_meta_fields_form_field_select( $field, $value ) {
                         ',
             esc_attr( $field_id ),
             ws_ls_form_tab_index_next(),
-            ( false === empty( $value ) ) ? __('Replace photo', WE_LS_SLUG) : __('Select photo', WE_LS_SLUG),
+            ( false === empty( $value ) ) ? esc_html__('Replace photo', WE_LS_SLUG) : esc_html__('Select photo', WE_LS_SLUG),
             2 === (int) $field['mandatory'] ? 'y' : 'n',
             true === empty( $value ) && 2 === (int) $field['mandatory'] ? 'required' : '',
-            __('Please select a photo (png or jpg) for', WE_LS_SLUG),
+            esc_html__('Please select a photo (png or jpg) for', WE_LS_SLUG),
             esc_attr( $field['field_name'] ),
             ws_ls_component_id()
         );
@@ -634,12 +634,12 @@ function ws_ls_meta_fields_form_field_select( $field, $value ) {
 										 ',
 						esc_url( $full_url ),
 						esc_url( $thumbnail[0] ),
-						__('Existing photo for this date', WE_LS_SLUG),
+						esc_html__('Existing photo for this date', WE_LS_SLUG),
 						(int) $attachment_id,
 						(int) $thumbnail[1],
 						(int) $thumbnail[2],
-						__( 'Delete existing photo', WE_LS_SLUG ),
-						__( 'Existing photo', WE_LS_SLUG ),
+						esc_html__( 'Delete existing photo', WE_LS_SLUG ),
+						esc_html__( 'Existing photo', WE_LS_SLUG ),
 						esc_attr( $field_id ),
 						2 === (int) $field['mandatory'] ? 'y' : 'n'
 					);

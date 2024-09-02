@@ -125,7 +125,7 @@ function ws_ls_macro_render_table($user_id, $missing_data_text = false, $additio
 		$macros = ws_ls_macro_calculate( $user_id );
 	}
 
-    $missing_data_text = ( false === $missing_data_text ) ? __('Please ensure all relevant data to calculate calorie intake has been entered i.e. Activity Level, Date of Birth, Current Weight, Gender and Height.', WE_LS_SLUG) : $missing_data_text;
+    $missing_data_text = ( false === $missing_data_text ) ? esc_html__('Please ensure all relevant data to calculate calorie intake has been entered i.e. Activity Level, Date of Birth, Current Weight, Gender and Height.', WE_LS_SLUG) : $missing_data_text;
 
     if ( false === empty( $macros ) ) {
 
@@ -154,11 +154,11 @@ function ws_ls_macro_render_table($user_id, $missing_data_text = false, $additio
                             ',
 				ws_ls_get_macro_name( $key ),
 				ws_ls_round_number( $macros[$key]['calories'] ),
-                __('Total', WE_LS_SLUG),
-                __('Breakfast', WE_LS_SLUG),
-                __('Lunch', WE_LS_SLUG),
-                __('Dinner', WE_LS_SLUG),
-                __('Snacks', WE_LS_SLUG)
+                esc_html__('Total', WE_LS_SLUG),
+                esc_html__('Breakfast', WE_LS_SLUG),
+                esc_html__('Lunch', WE_LS_SLUG),
+                esc_html__('Dinner', WE_LS_SLUG),
+                esc_html__('Snacks', WE_LS_SLUG)
             );
 
             // Protein
@@ -170,7 +170,7 @@ function ws_ls_macro_render_table($user_id, $missing_data_text = false, $additio
                                     <td>%s</td>
                                     <td>%s</td>
                                 </tr>',
-                sprintf( '%s (%s%%)', __( 'Proteins', WE_LS_SLUG ), ws_ls_harris_benedict_setting( 'ws-ls-macro-proteins-' . $key ) ) ,
+                sprintf( '%s (%s%%)', esc_html__( 'Proteins', WE_LS_SLUG ), ws_ls_harris_benedict_setting( 'ws-ls-macro-proteins-' . $key ) ) ,
                 ws_ls_macro_round($macros[$key]['total']['protein']),
                 ws_ls_macro_round($macros[$key]['breakfast']['protein']),
                 ws_ls_macro_round($macros[$key]['lunch']['protein']),
@@ -187,7 +187,7 @@ function ws_ls_macro_render_table($user_id, $missing_data_text = false, $additio
                                     <td>%s</td>
                                     <td>%s</td>
                                 </tr>',
-				sprintf( '%s (%s%%)', __( 'Carbs', WE_LS_SLUG ), ws_ls_harris_benedict_setting( 'ws-ls-macro-carbs-' . $key ) ) ,
+				sprintf( '%s (%s%%)', esc_html__( 'Carbs', WE_LS_SLUG ), ws_ls_harris_benedict_setting( 'ws-ls-macro-carbs-' . $key ) ) ,
                 ws_ls_macro_round($macros[$key]['total']['carbs']),
                 ws_ls_macro_round($macros[$key]['breakfast']['carbs']),
                 ws_ls_macro_round($macros[$key]['lunch']['carbs']),
@@ -204,7 +204,7 @@ function ws_ls_macro_render_table($user_id, $missing_data_text = false, $additio
                                     <td>%s</td>
                                     <td>%s</td>
                                 </tr>',
-				sprintf( '%s (%s%%)', __( 'Fats', WE_LS_SLUG ), ws_ls_harris_benedict_setting( 'ws-ls-macro-fats-' . $key ) ) ,
+				sprintf( '%s (%s%%)', esc_html__( 'Fats', WE_LS_SLUG ), ws_ls_harris_benedict_setting( 'ws-ls-macro-fats-' . $key ) ) ,
                 ws_ls_macro_round($macros[$key]['total']['fats']),
                 ws_ls_macro_round($macros[$key]['breakfast']['fats']),
                 ws_ls_macro_round($macros[$key]['lunch']['fats']),
@@ -235,7 +235,7 @@ function ws_ls_shortcode_macro( $user_defined_arguments ) {
 	}
 
 	$arguments = shortcode_atts([
-									'error-message' 	=> __('Please ensure all relevant data to calculate calorie intake has been entered i.e. Activity Level, Date of Birth, Current Weight, Gender and Height.', WE_LS_SLUG ),
+									'error-message' 	=> esc_html__('Please ensure all relevant data to calculate calorie intake has been entered i.e. Activity Level, Date of Birth, Current Weight, Gender and Height.', WE_LS_SLUG ),
 									'user-id' 			=> false,
 									'progress' 			=> 'maintain',	// 'maintain', 'lose', 'gain', 'auto'
 									'nutrient' 			=> 'fats', 		// 'fats', 'protein', 'carbs'
@@ -283,7 +283,7 @@ function ws_ls_shortcode_macro_table($user_defined_arguments) {
 	}
 
 	$arguments = shortcode_atts([	'css-class' 		=> '',
-									'error-message' 	=> __('Please ensure all relevant data to calculate calorie intake has been entered i.e. Activity Level, Date of Birth, Current Weight, Gender and Height.', WE_LS_SLUG ),
+									'error-message' 	=> esc_html__('Please ensure all relevant data to calculate calorie intake has been entered i.e. Activity Level, Date of Birth, Current Weight, Gender and Height.', WE_LS_SLUG ),
 									'user-id' 			=> false,
                                     'disable-jquery' 	=> false
 								], $user_defined_arguments );
@@ -324,7 +324,7 @@ function ws_ls_macro_round($value) {
  */
 function ws_ls_get_macro_name( $key ) {
 
-    $lookup = [ 'maintain' => __('Maintain', WE_LS_SLUG), 'lose' => __('Lose', WE_LS_SLUG), 'gain' => __('Gain', WE_LS_SLUG) ];
+    $lookup = [ 'maintain' => esc_html__('Maintain', WE_LS_SLUG), 'lose' => esc_html__('Lose', WE_LS_SLUG), 'gain' => esc_html__('Gain', WE_LS_SLUG) ];
 
     $lookup = apply_filters( 'wlt-filter-macros-labels', $lookup );
 

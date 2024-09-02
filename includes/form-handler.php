@@ -22,19 +22,19 @@ function ws_ls_form_post_handler(){
 		$user_hash = ws_ls_post_value( 'security' );
 
 		if ( true === empty( $user_hash ) ) {
-			return ws_ls_save_form_error_prep( $form_number, __( 'No user hash could be found', WE_LS_SLUG ) );
+			return ws_ls_save_form_error_prep( $form_number, esc_html__( 'No user hash could be found', WE_LS_SLUG ) );
 		}
 
 		// Got a user ID?
 		$user_id = ws_ls_post_value( 'user-id' );
 
 		if ( true === empty( $user_id ) ) {
-			return ws_ls_save_form_error_prep( $form_number, __( 'No user ID has been found', WE_LS_SLUG ) );
+			return ws_ls_save_form_error_prep( $form_number, esc_html__( 'No user ID has been found', WE_LS_SLUG ) );
 		}
 
 		// Does the hash work for the given user ID?
 		if( $user_hash !== wp_hash( $user_id ) ) {
-			return ws_ls_save_form_error_prep( $form_number, __( 'The given user hash did not match the logged in user', WE_LS_SLUG ) );
+			return ws_ls_save_form_error_prep( $form_number, esc_html__( 'The given user hash did not match the logged in user', WE_LS_SLUG ) );
 		}
 
 		do_action( 'wlt-hook-data-attempting-added-edited', $user_id );
@@ -54,7 +54,7 @@ function ws_ls_form_post_handler(){
 		}
 
 		if ( true === empty( $result ) ) {
-			return ws_ls_save_form_error_prep( $form_number, __( 'An error occurred while saving your data', WE_LS_SLUG ) );
+			return ws_ls_save_form_error_prep( $form_number, esc_html__( 'An error occurred while saving your data', WE_LS_SLUG ) );
 		}
 
 		// Redirect?
@@ -65,7 +65,7 @@ function ws_ls_form_post_handler(){
 			exit;
 		}
 
-		$message = apply_filters( 'wlt-filter-form-saved-message', __( 'Your entry has been successfully saved.', WE_LS_SLUG ) );
+		$message = apply_filters( 'wlt-filter-form-saved-message', esc_html__( 'Your entry has been successfully saved.', WE_LS_SLUG ) );
 
 		return ws_ls_save_form_error_prep( $form_number, $message, false );
 }

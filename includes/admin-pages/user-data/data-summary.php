@@ -18,7 +18,7 @@ function ws_ls_admin_page_data_summary() {
     ws_ls_data_table_enqueue_scripts();
 ?>
 <div class="wrap ws-ls-user-data ws-ls-admin-page">
-	<h1><?php echo __('Summary', WE_LS_SLUG); ?></h1>
+	<h1><?php echo esc_html__('Summary', WE_LS_SLUG); ?></h1>
 	<div id="poststuff">
 		<div id="post-body" class="metabox-holder columns-2">
 			<div id="post-body-content">
@@ -80,15 +80,15 @@ function ws_ls_admin_page_data_summary() {
 	</div>
 <?php
 
-    ws_ls_create_dialog_jquery_code(__('Are you sure you?', WE_LS_SLUG),
-        __('Are you sure you wish to remove all user data?', WE_LS_SLUG) . '<br /><br />',
+    ws_ls_create_dialog_jquery_code(esc_html__('Are you sure you?', WE_LS_SLUG),
+        esc_html__('Are you sure you wish to remove all user data?', WE_LS_SLUG) . '<br /><br />',
         'delete-confirm');
 }
 
 function ws_ls_postbox_quick_stats() {
 ?>
 	<div class="postbox <?php ws_ls_postbox_classes( 'quick-stats', 'ws-ls-user-summary-two' ); ?>" id="quick-stats">
-		<?php ws_ls_postbox_header( [ 'title' => __( 'Quick Stats', WE_LS_SLUG ), 'postbox-id' => 'quick-stats', 'postbox-col' => 'ws-ls-user-summary-two' ] ); ?>
+		<?php ws_ls_postbox_header( [ 'title' => esc_html__( 'Quick Stats', WE_LS_SLUG ), 'postbox-id' => 'quick-stats', 'postbox-col' => 'ws-ls-user-summary-two' ] ); ?>
 		<div class="inside">
 			<?php
 
@@ -112,13 +112,13 @@ function ws_ls_postbox_quick_stats() {
 								   </table>
 
 									<p><small>(* %7$s %8$s)</small></p>',
-									__('No. of WordPress users', WE_LS_SLUG),
+									esc_html__('No. of WordPress users', WE_LS_SLUG),
 									$entry_counts['number-of-users'],
-									__('No. of Weight Entries', WE_LS_SLUG),
+									esc_html__('No. of Weight Entries', WE_LS_SLUG),
 									ws_ls_blur_text( $entry_counts['number-of-entries'] ),
-									__('No. of Target Entries', WE_LS_SLUG),
+									esc_html__('No. of Target Entries', WE_LS_SLUG),
 									ws_ls_blur_text( $entry_counts['number-of-targets'] ),
-									__('refreshed every 15 minutes', WE_LS_SLUG),
+									esc_html__('refreshed every 15 minutes', WE_LS_SLUG),
 									'<a href="' . admin_url( 'admin.php?page=ws-ls-data-home&regenerate-stats=y' ) . '"><small>Regenerate these stats</small></a>',
 									ws_ls_blur( false, false )
 					);
@@ -132,11 +132,11 @@ function ws_ls_postbox_quick_stats() {
 function ws_ls_postbox_view_all() {
 ?>
 	<div class="postbox <?php ws_ls_postbox_classes( 'view-all', 'ws-ls-user-summary-two' ); ?>" id="view-all">
-		<?php ws_ls_postbox_header( [ 'title' => __( 'View all data', WE_LS_SLUG ), 'postbox-id' => 'view-all', 'postbox-col' => 'ws-ls-user-summary-two' ] ); ?>
+		<?php ws_ls_postbox_header( [ 'title' => esc_html__( 'View all data', WE_LS_SLUG ), 'postbox-id' => 'view-all', 'postbox-col' => 'ws-ls-user-summary-two' ] ); ?>
 		<div class="inside">
 			<a class="button-primary" href="<?php echo ws_ls_get_link_to_user_data() . '&amp;mode=all'; ?>">
 				<i class="fa fa-book"></i>
-				<?php echo __('View all entries', WE_LS_SLUG); ?>
+				<?php echo esc_html__('View all entries', WE_LS_SLUG); ?>
 			</a>
 		</div>
 	</div>
@@ -146,18 +146,18 @@ function ws_ls_postbox_view_all() {
 function ws_ls_postbox_export() {
 ?>
 	<div class="postbox <?php ws_ls_postbox_classes( 'export', 'ws-ls-user-summary-two' ); ?>" id="export">
-		<?php ws_ls_postbox_header( [ 'title' => __( 'Export all data', WE_LS_SLUG ), 'postbox-id' => 'export', 'postbox-col' => 'ws-ls-user-summary-two' ] ); ?>
+		<?php ws_ls_postbox_header( [ 'title' => esc_html__( 'Export all data', WE_LS_SLUG ), 'postbox-id' => 'export', 'postbox-col' => 'ws-ls-user-summary-two' ] ); ?>
 		<div class="inside">
 		    <?php if ( ! ws_ls_permission_check_export_delete() ) : ?>
-				<?php printf( '<p>%s</p>',  __('You do not have permission to do this.', WE_LS_SLUG ) ); ?>
+				<?php printf( '<p>%s</p>',  esc_html__('You do not have permission to do this.', WE_LS_SLUG ) ); ?>
 			<?php else : ?>
-                <a class="button-secondary button-wt-to-excel" href="<?php echo ws_ls_export_link('new', [ 'format' => 'csv', 'title' => __( 'All Data', WE_LS_SLUG ) ] ); ?>">
+                <a class="button-secondary button-wt-to-excel" href="<?php echo ws_ls_export_link('new', [ 'format' => 'csv', 'title' => esc_html__( 'All Data', WE_LS_SLUG ) ] ); ?>">
                     <i class="fa fa-file-excel-o"></i>
-                    <?php echo __('To CSV', WE_LS_SLUG); ?>
+                    <?php echo esc_html__('To CSV', WE_LS_SLUG); ?>
                 </a>
-                <a class="button-secondary button-wt-to-json" href="<?php echo ws_ls_export_link('new', [ 'format' => 'json', 'title' => __( 'All Data', WE_LS_SLUG ) ] ); ?>">
+                <a class="button-secondary button-wt-to-json" href="<?php echo ws_ls_export_link('new', [ 'format' => 'json', 'title' => esc_html__( 'All Data', WE_LS_SLUG ) ] ); ?>">
                     <i class="fa fa-file-code-o"></i>
-                    <?php echo __('To JSON', WE_LS_SLUG); ?>
+                    <?php echo esc_html__('To JSON', WE_LS_SLUG); ?>
                 </a>
 			<?php endif; ?>
 		</div>
@@ -168,14 +168,14 @@ function ws_ls_postbox_export() {
 function ws_ls_postbox_delete_data() {
 ?>
 	<div class="postbox <?php ws_ls_postbox_classes( 'delete-data', 'ws-ls-user-summary-two' ); ?>" id="delete-data" >
-		<?php ws_ls_postbox_header( [ 'title' => __( 'Delete Data', WE_LS_SLUG ), 'postbox-id' => 'delete-data', 'postbox-col' => 'ws-ls-user-summary-two' ] ); ?>
+		<?php ws_ls_postbox_header( [ 'title' => esc_html__( 'Delete Data', WE_LS_SLUG ), 'postbox-id' => 'delete-data', 'postbox-col' => 'ws-ls-user-summary-two' ] ); ?>
 		<div class="inside">
 		<?php if ( ! ws_ls_permission_check_export_delete() ) : ?>
-				<?php printf( '<p>%s</p>',  __('You do not have permission to do this.', WE_LS_SLUG ) ); ?>
+				<?php printf( '<p>%s</p>',  esc_html__('You do not have permission to do this.', WE_LS_SLUG ) ); ?>
 			<?php else : ?>
                 <a class="button-secondary delete-confirm" href="<?php echo admin_url( 'admin.php?page=ws-ls-data-home&removedata=y' ); ?>">
                     <i class="fa fa-exclamation-circle"></i>
-                    <?php echo __('Delete data for ALL users', WE_LS_SLUG); ?>
+                    <?php echo esc_html__('Delete data for ALL users', WE_LS_SLUG); ?>
                 </a>
 			<?php endif; ?>
 		</div>
@@ -197,7 +197,7 @@ function ws_ls_postbox_league_table() {
 
 			// Are we wanting to see who has lost the most? Or gained?
 			$show_gain 	= (bool) get_option( 'ws-ls-show-gains' );
-			$title 		= ( false === $show_gain ) ? __( 'League table for those that have lost the most', WE_LS_SLUG ) : __( 'League Table for those that have gained the most', WE_LS_SLUG );
+			$title 		= ( false === $show_gain ) ? esc_html__( 'League table for those that have lost the most', WE_LS_SLUG ) : esc_html__( 'League Table for those that have gained the most', WE_LS_SLUG );
 
 			ws_ls_postbox_header( [ 'title' => $title, 'postbox-id' => 'league-table' ] );
 		?>
@@ -218,18 +218,18 @@ function ws_ls_postbox_league_table() {
 			if( true === WS_LS_IS_PRO ) {
 				?>
 				<p>
-					<small><?php echo __( 'Please note: For performance reasons, this table only will update every hour. Click the following button to manually update.', WE_LS_SLUG ); ?></small>
+					<small><?php echo esc_html__( 'Please note: For performance reasons, this table only will update every hour. Click the following button to manually update.', WE_LS_SLUG ); ?></small>
 				</p>
 				<a class="btn button-secondary"
 				   href="<?php echo admin_url( 'admin.php?page=ws-ls-data-home&regenerate-stats=y' ); ?>"><i
-						class="fa fa-refresh"></i> <?php echo __( 'Regenerate these stats', WE_LS_SLUG ); ?>
+						class="fa fa-refresh"></i> <?php echo esc_html__( 'Regenerate these stats', WE_LS_SLUG ); ?>
 				</a>
 				<?php
 
 				echo sprintf(
 					'<a class="btn button-secondary" href="%s"><i class="fa fa-arrows-v"></i> %s</a>',
 					admin_url( 'admin.php?page=ws-ls-data-home&show-gain=' ) . ( ( false === $show_gain ) ? 'y' : 'n' ),
-					( false === $show_gain ) ? __( 'Show who has gained the most', WE_LS_SLUG ) : __( 'Show who has lost the most', WE_LS_SLUG )
+					( false === $show_gain ) ? esc_html__( 'Show who has gained the most', WE_LS_SLUG ) : esc_html__( 'Show who has lost the most', WE_LS_SLUG )
 				);
 			}
 			?>
@@ -257,7 +257,7 @@ function ws_ls_postbox_latest_entries() {?>
 			$entries_limit  = (int) get_option( 'ws-ls-entries-limit', 100 );
 			$show_meta  	= (bool) get_option( 'ws-ls-show-meta' );
 
-			$title = ( false === empty( $entries_limit ) ) ? sprintf( 'Last %d entries', $entries_limit ) : __( 'All entries', WE_LS_SLUG );
+			$title = ( false === empty( $entries_limit ) ) ? sprintf( 'Last %d entries', $entries_limit ) : esc_html__( 'All entries', WE_LS_SLUG );
 
 			ws_ls_postbox_header( [ 'title' => $title, 'postbox-id' => 'summary-entries' ] );
 		?>
@@ -274,7 +274,7 @@ function ws_ls_postbox_latest_entries() {?>
 					echo sprintf(
 								'<a class="btn button-secondary" href="%s"><i class="fa fa-book"></i> %s</a>&nbsp;',
 								admin_url( 'admin.php?page=ws-ls-data-home&entries-limit=100' ),
-								__( 'Show 100 recent entries', WE_LS_SLUG )
+								esc_html__( 'Show 100 recent entries', WE_LS_SLUG )
 							);
 				}
 
@@ -282,15 +282,15 @@ function ws_ls_postbox_latest_entries() {?>
 					echo sprintf(
 								'<a class="btn button-secondary" href="%s"><i class="fa fa-book"></i> %s</a>&nbsp;',
 								admin_url( 'admin.php?page=ws-ls-data-home&entries-limit=500' ),
-								__( 'Show 500 recent entries', WE_LS_SLUG )
+								esc_html__( 'Show 500 recent entries', WE_LS_SLUG )
 							);
 				}
 
 				if ( false === empty( $entries_limit ) ) {
 					echo sprintf('<a class="btn button-secondary" href="%s"><i class="fa fa-book"></i> %s (%s)</a>&nbsp;',
 									admin_url( 'admin.php?page=ws-ls-data-home&entries-limit=0' ),
-									__( 'Show all entries', WE_LS_SLUG ),
-									__( 'slow!', WE_LS_SLUG )
+									esc_html__( 'Show all entries', WE_LS_SLUG ),
+									esc_html__( 'slow!', WE_LS_SLUG )
 								);
 				}
 
@@ -298,7 +298,7 @@ function ws_ls_postbox_latest_entries() {?>
 					echo sprintf(
 						'<a class="btn button-secondary" href="%s"><i class="fas fa-book-reader"></i> %s</a>',
 						admin_url( 'admin.php?page=ws-ls-data-home&show-meta=' ) . ( ( false === $show_meta ) ? 'y' : 'n'),
-						( false === $show_meta ) ? __( 'Include Custom Fields (Slower)', WE_LS_SLUG ) : __( 'Hide Custom Fields (Quicker)', WE_LS_SLUG )
+						( false === $show_meta ) ? esc_html__( 'Include Custom Fields (Slower)', WE_LS_SLUG ) : esc_html__( 'Hide Custom Fields (Quicker)', WE_LS_SLUG )
 					);
 				}
 
@@ -318,7 +318,7 @@ function ws_ls_postbox_change_by_groups() {
 	?>
 	<div class="postbox <?php ws_ls_postbox_classes( 'weight-change-by-group' ); ?>" id="weight-change-by-group">
 		<?php
-			ws_ls_postbox_header( [ 'title' => __( 'Weight change by group', WE_LS_SLUG ), 'postbox-id' => 'weight-change-by-group' ] );
+			ws_ls_postbox_header( [ 'title' => esc_html__( 'Weight change by group', WE_LS_SLUG ), 'postbox-id' => 'weight-change-by-group' ] );
 		?>
 		<div class="inside">
 			<table class="ws-ls-settings-groups-list-ajax table ws-ls-loading-table" id="groups-list-stats"
@@ -333,8 +333,8 @@ function ws_ls_postbox_change_by_groups() {
 				   data-toggle="true"
 				   data-use-parent-width="true">
 			</table>
-			<a class="btn button-secondary" href="<?php echo admin_url( 'admin.php?page=ws-ls-data-home&regenerate-stats=y' ); ?>"><i class="fa fa-refresh"></i> <?php echo __('Regenerate these stats', WE_LS_SLUG); ?></a>
-			<a class="btn button-secondary" href="<?php echo admin_url( 'admin.php?page=ws-ls-settings&mode=groups' ); ?>"><i class="fa fa-eye"></i> <?php echo __('View / Edit', WE_LS_SLUG); ?></a>
+			<a class="btn button-secondary" href="<?php echo admin_url( 'admin.php?page=ws-ls-data-home&regenerate-stats=y' ); ?>"><i class="fa fa-refresh"></i> <?php echo esc_html__('Regenerate these stats', WE_LS_SLUG); ?></a>
+			<a class="btn button-secondary" href="<?php echo admin_url( 'admin.php?page=ws-ls-settings&mode=groups' ); ?>"><i class="fa fa-eye"></i> <?php echo esc_html__('View / Edit', WE_LS_SLUG); ?></a>
 		</div>
 	</div>
 

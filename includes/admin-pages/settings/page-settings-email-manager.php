@@ -5,7 +5,7 @@ defined('ABSPATH') or die('Jog on!');
 function ws_ls_settings_email_manager() {
 
 	if ( !current_user_can( 'manage_options' ) )  {
-		wp_die( __( 'You do not have sufficient permissions to access this page.' , WE_LS_SLUG) );
+		wp_die( esc_html__( 'You do not have sufficient permissions to access this page.' , WE_LS_SLUG) );
 	}
 
 	?>
@@ -24,7 +24,7 @@ function ws_ls_settings_email_manager() {
 				<div class="meta-box-sortables ui-sortable">
 
 					<div class="postbox">
-						<h3 class="hndle"><span><?php echo __( 'Email Manager', WE_LS_SLUG ); ?></span></h3>
+						<h3 class="hndle"><span><?php echo esc_html__( 'Email Manager', WE_LS_SLUG ); ?></span></h3>
 
 						<div class="inside">
 							<?php
@@ -36,9 +36,9 @@ function ws_ls_settings_email_manager() {
 									$email 		= ws_ls_post_value( 'email' );
 
 									if ( false === ws_ls_emailer_update( $slug, $subject, $email ) ) {
-										ws_ls_display_notice(__( 'There was an error saving your changes.', WE_LS_SLUG ), 'error' );
+										ws_ls_display_notice(esc_html__( 'There was an error saving your changes.', WE_LS_SLUG ), 'error' );
 									} else {
-										ws_ls_display_notice(__( 'Email template has been updated.', WE_LS_SLUG ) );
+										ws_ls_display_notice(esc_html__( 'Email template has been updated.', WE_LS_SLUG ) );
 									}
 								}
 
@@ -83,10 +83,10 @@ function ws_ls_settings_email_manager_all_list() {
 	$email_templates = ws_ls_emailer_get_all();
 
 	if ( true === empty( $email_templates ) ) {
-		printf( '<p>%s</p>', __( 'No email templates were found in the database.', WE_LS_SLUG ) );
+		printf( '<p>%s</p>', esc_html__( 'No email templates were found in the database.', WE_LS_SLUG ) );
 	}
 
-	printf( '<p>%s:</p><ul>', __( 'Select an email to edit', WE_LS_SLUG ) );
+	printf( '<p>%s:</p><ul>', esc_html__( 'Select an email to edit', WE_LS_SLUG ) );
 
 	foreach ( $email_templates as $template ) {
 
@@ -107,7 +107,7 @@ function ws_ls_settings_email_manager_edit_form( $slug ) {
 	$template = ws_ls_emailer_get( $slug );
 
 	if ( true === empty( $template ) ) {
-		echo __( 'An error occurred loading the email template', WE_LS_SLUG );
+		echo esc_html__( 'An error occurred loading the email template', WE_LS_SLUG );
 	}
 
 	printf( '<form action="%1$s" method="POST">
@@ -118,14 +118,14 @@ function ws_ls_settings_email_manager_edit_form( $slug ) {
 	);
 
 	if ( 'email-notify' !== $slug ) {
-		echo ws_ls_form_field_text( [ 'name' => 'subject', 'value' => $template[ 'subject' ], 'title' => __( 'Subject', WE_LS_SLUG ), 'show-label' => true, 'css-class' => 'widefat', 'required' => true ] );
+		echo ws_ls_form_field_text( [ 'name' => 'subject', 'value' => $template[ 'subject' ], 'title' => esc_html__( 'Subject', WE_LS_SLUG ), 'show-label' => true, 'css-class' => 'widefat', 'required' => true ] );
 	} else {
 		echo '<input type="hidden" name="subject" value="" />' ;
 	}
 
-	echo ws_ls_form_field_textarea( [ 'name' => 'email', 'value' => $template[ 'email' ], 'title' => __( 'Body', WE_LS_SLUG ), 'show-label' => true, 'css-class' => 'widefat', 'required' => true, 'rows' => 20  ] );
+	echo ws_ls_form_field_textarea( [ 'name' => 'email', 'value' => $template[ 'email' ], 'title' => esc_html__( 'Body', WE_LS_SLUG ), 'show-label' => true, 'css-class' => 'widefat', 'required' => true, 'rows' => 20  ] );
 
-	printf( '<button name="submit_button" type="submit" tabindex="%1$d" class="button ws-ls-remove-on-submit" >%2$s</button>', ws_ls_form_tab_index_next(), __( 'Save', WE_LS_SLUG ) );
+	printf( '<button name="submit_button" type="submit" tabindex="%1$d" class="button ws-ls-remove-on-submit" >%2$s</button>', ws_ls_form_tab_index_next(), esc_html__( 'Save', WE_LS_SLUG ) );
 
 	echo '</form>';
 }

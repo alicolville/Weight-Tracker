@@ -28,7 +28,7 @@ function ws_ls_shortcode_progress_bar( $user_defined_arguments ) {
 										'animation-duration'    => 1400,	    // Animation time in ms. Defaults to 1400
 										'width'                 => '100%',		// % or pixels
 										'height'                => '100%',		// % or pixels
-										'percentage-text'       => __( 'towards your target of {t}.', WE_LS_SLUG ),
+										'percentage-text'       => esc_html__( 'towards your target of {t}.', WE_LS_SLUG ),
 										'user-id'               => get_current_user_id()
 								], $user_defined_arguments );
 
@@ -36,19 +36,19 @@ function ws_ls_shortcode_progress_bar( $user_defined_arguments ) {
 
 	// Are targets enabled? If not, no point carrying on!
 	if( false === ws_ls_targets_enabled() ) {
-		return ws_ls_shortcode_progress_bar_display_error( __( 'This shortcode can not be used as Target weights have been disabled in the plugin\'s settings.', WE_LS_SLUG ), $display_errors );
+		return ws_ls_shortcode_progress_bar_display_error( esc_html__( 'This shortcode can not be used as Target weights have been disabled in the plugin\'s settings.', WE_LS_SLUG ), $display_errors );
 	}
 
 	$arguments[ 'target-weight' ] = ws_ls_target_get( $arguments[ 'user-id' ], 'kg' );
 
 	if ( true === empty( $arguments[ 'target-weight' ] ) ) {
-		return ws_ls_shortcode_progress_bar_display_error( __( 'Please enter a target weight to see your progress.', WE_LS_SLUG ), $display_errors );
+		return ws_ls_shortcode_progress_bar_display_error( esc_html__( 'Please enter a target weight to see your progress.', WE_LS_SLUG ), $display_errors );
 	}
 
 	$arguments[ 'weight' ] = ws_ls_entry_get_latest_kg();
 
 	if ( true === empty( $arguments[ 'weight' ] ) ) {
-		return ws_ls_shortcode_progress_bar_display_error( __( 'Please add a weight entry to see your progress.', WE_LS_SLUG ), $display_errors );
+		return ws_ls_shortcode_progress_bar_display_error( esc_html__( 'Please add a weight entry to see your progress.', WE_LS_SLUG ), $display_errors );
 	}
 
 	$arguments[ 'target-weight-display' ] = ws_ls_weight_display( $arguments[ 'target-weight' ], $arguments[ 'user-id' ], 'display' );

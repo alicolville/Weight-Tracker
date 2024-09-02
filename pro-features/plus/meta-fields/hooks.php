@@ -87,13 +87,13 @@ function ws_ls_meta_fields_ajax_list() {
 
     $columns = [
                     [ 'name' => 'id', 'title' => 'ID', 'visible'=> true, 'type' => 'number' ],
-                    [ 'name' => 'field_name', 'title' => __('Field / Question', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
-                    [ 'name' => 'field_key', 'title' => __('Key / Slug', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
-                    [ 'name' => 'field_type', 'title' => __('Type', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
-                    [ 'name' => 'sort', 'title' => __('Display Order', WE_LS_SLUG), 'visible'=> true, 'type' => 'number' ],
-                    [ 'name' => 'group', 'title' => __('Group', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
-                    [ 'name' => 'mandatory', 'title' => __('Mandatory', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
-                    [ 'name' => 'enabled', 'title' => __('Enabled', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ]
+                    [ 'name' => 'field_name', 'title' => esc_html__('Field / Question', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
+                    [ 'name' => 'field_key', 'title' => esc_html__('Key / Slug', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
+                    [ 'name' => 'field_type', 'title' => esc_html__('Type', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
+                    [ 'name' => 'sort', 'title' => esc_html__('Display Order', WE_LS_SLUG), 'visible'=> true, 'type' => 'number' ],
+                    [ 'name' => 'group', 'title' => esc_html__('Group', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
+                    [ 'name' => 'mandatory', 'title' => esc_html__('Mandatory', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
+                    [ 'name' => 'enabled', 'title' => esc_html__('Enabled', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ]
     ];
 
     $meta_fields = ws_ls_meta_fields();
@@ -132,10 +132,10 @@ function ws_ls_meta_fields_ajax_custom_field_groups_get(){
 	}
 
 	$columns = [
-		[ 'name' => 'id', 'title' => __('Group ID', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'number', 'visible' => false ],
-		[ 'name' => 'slug', 'title' => __( 'Slug', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ],
-		[ 'name' => 'name', 'title' => __( 'Name', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ],
-		[ 'name' => 'count', 'title' => __( 'No. Fields', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'number' ],
+		[ 'name' => 'id', 'title' => esc_html__('Group ID', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'number', 'visible' => false ],
+		[ 'name' => 'slug', 'title' => esc_html__( 'Slug', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ],
+		[ 'name' => 'name', 'title' => esc_html__( 'Name', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ],
+		[ 'name' => 'count', 'title' => esc_html__( 'No. Fields', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'number' ],
 	];
 
 	$rows = [];

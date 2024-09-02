@@ -34,19 +34,19 @@ function ws_ls_admin_page_group_view() {
                         ?>
                         <div class="postbox">
                             <h3 class="hndle">
-                                    <span><?php echo __('View Group', WE_LS_SLUG); ?>
+                                    <span><?php echo esc_html__('View Group', WE_LS_SLUG); ?>
                                     <?php printf('%s', false === empty( $group['name'] ) ? ': ' . esc_html( $group['name'] ) : '' ); ?></span>
-                                    <?php printf(' ( %d %s )', ws_ls_groups_count( $group_id ), __('user(s)', WE_LS_SLUG) ); ?>
+                                    <?php printf(' ( %d %s )', ws_ls_groups_count( $group_id ), esc_html__('user(s)', WE_LS_SLUG) ); ?>
                             </h3>
                             <div style="padding: 0px 15px 0px 15px">
 
                                 <?php if ( false === empty( $group ) ) : ?>
 
-									<h4><?php echo __('Edit group name', WE_LS_SLUG); ?></h4>
+									<h4><?php echo esc_html__('Edit group name', WE_LS_SLUG); ?></h4>
 									<form method="post">
 										<input type="text" name="new_group_name" size="30" maxlength="40" value="<?php echo  esc_html( $group['name'] )?>" />
 										<input type="hidden" name="id" value="<?php echo $group_id; ?>" />
-										<input type="submit" value="<?php echo __('Edit', WE_LS_SLUG); ?>" class="button" <?php if ( false === WS_LS_IS_PRO ) { echo ' disabled'; } ?> />
+										<input type="submit" value="<?php echo esc_html__('Edit', WE_LS_SLUG); ?>" class="button" <?php if ( false === WS_LS_IS_PRO ) { echo ' disabled'; } ?> />
 									</form>
 									<br />
 									<?php
@@ -59,13 +59,13 @@ function ws_ls_admin_page_group_view() {
                                     <p>
                                         <a class="button-secondary" href="<?php echo admin_url( 'admin.php?page=ws-ls-settings&mode=groups' ); ?>">
                                             <i class="fa fa-arrow-left"></i>
-                                            <?php echo __('All Groups', WE_LS_SLUG); ?>
+                                            <?php echo esc_html__('All Groups', WE_LS_SLUG); ?>
                                         </a>
                                     </p>
 
                                 <?php else: ?>
 
-                                    <p><?php echo __('The group could not be found', WE_LS_SLUG); ?>.</p>
+                                    <p><?php echo esc_html__('The group could not be found', WE_LS_SLUG); ?>.</p>
 
                                 <?php endif; ?>
                                 <br clear="both"/>

@@ -67,7 +67,7 @@ function ws_ls_data_table_render( $arguments = [] ) {
 
 			$html .= sprintf( '	<p><a href="%s">< %s</a></p>',
 								ws_ls_wt_link_goto_tab( 'history' ),
-								__( 'return to all entries', WE_LS_SLUG ) );
+								esc_html__( 'return to all entries', WE_LS_SLUG ) );
 		}
 
 		$html .= ws_ls_form_weight( [ 'entry-id' => $entry_id, 'redirect-url' => $redirect_url, 'weight-mandatory' => $arguments[ 'weight-mandatory' ],
@@ -124,13 +124,13 @@ function ws_ls_data_table_render( $arguments = [] ) {
 			esc_attr( $arguments[ 'custom-field-restrict-rows' ] ),
 			true === ws_ls_to_bool( $arguments[ 'uikit' ] ) ? 'true' : 'false',
 			true === ws_ls_to_bool( $arguments[ 'show-refresh-button' ] ) ?
-			sprintf( '<button class="ykuk-button ykuk-button-default ws-ls-show-if-data-edited ykuk-invisible" type="button" onclick="location.reload();">%1$s</button>', __( 'Data has changed, refresh screen', WE_LS_SLUG ) ) : '',
+			sprintf( '<button class="ykuk-button ykuk-button-default ws-ls-show-if-data-edited ykuk-invisible" type="button" onclick="location.reload();">%1$s</button>', esc_html__( 'Data has changed, refresh screen', WE_LS_SLUG ) ) : '',
 			esc_attr( $arguments[ 'name' ] ),
             esc_attr( $arguments[ 'table-id' ] )
 		);
 
 		if ( true === empty( $arguments[ 'user-id' ] ) ) {
-			$html .= sprintf( '<p><small>%s</small></p>', __( 'Please note: For performance reasons, this table will only update every 5 minutes.', WE_LS_SLUG ) );
+			$html .= sprintf( '<p><small>%s</small></p>', esc_html__( 'Please note: For performance reasons, this table will only update every 5 minutes.', WE_LS_SLUG ) );
 		}
 	}
 
@@ -214,7 +214,7 @@ function ws_ls_datatable_rows( $arguments ) {
 
 				if ( true === empty( $entry[ 'kg' ] ) ) {
 					$gain_class = 'same';
-					$gain_loss = __( 'No weight recorded', WE_LS_SLUG );
+					$gain_loss = esc_html__( 'No weight recorded', WE_LS_SLUG );
 				} elseif( false === empty( $previous_user_weight[ $entry[ 'user_id' ] ] ) ) {
 
 					if ( false === empty( $entry[ 'kg' ] ) ) {
@@ -227,16 +227,16 @@ function ws_ls_datatable_rows( $arguments ) {
 							$gain_class = 'loss';
 						} elseif ( $entry['kg'] == $previous_user_weight[ $entry[ 'user_id' ] ] ) {
 							$gain_class = 'same';
-							$gain_loss = __( 'No Change', WE_LS_SLUG );
+							$gain_loss = esc_html__( 'No Change', WE_LS_SLUG );
 						}
 
 						$row[ 'previous-weight-diff' ] = $entry['kg'] - $previous_user_weight[ $entry[ 'user_id' ] ];
 					}
 
 				} elseif ( true === empty( $arguments[ 'user-id' ] )) {
-					$gain_loss = $entry[ 'user_profile' ] = sprintf('<a href="%s" rel="noopener noreferrer" target="_blank">%s</a>', ws_ls_get_link_to_user_profile( $entry[ 'user_id' ] ), __( 'Check record', WE_LS_SLUG ) );
+					$gain_loss = $entry[ 'user_profile' ] = sprintf('<a href="%s" rel="noopener noreferrer" target="_blank">%s</a>', ws_ls_get_link_to_user_profile( $entry[ 'user_id' ] ), esc_html__( 'Check record', WE_LS_SLUG ) );
 				} elseif ( false === empty( $entry[ 'kg' ] ) ) {
-					$gain_loss = __( 'First weight entry', WE_LS_SLUG );
+					$gain_loss = esc_html__( 'First weight entry', WE_LS_SLUG );
 				}
 
 				if ( false === empty( $entry[ 'kg' ] ) ) {
@@ -254,7 +254,7 @@ function ws_ls_datatable_rows( $arguments ) {
 
 				if ( true === empty( $entry[ 'kg' ] ) ) {
 					$gain_class = 'same';
-					$gain_loss = __( 'No weight recorded', WE_LS_SLUG );
+					$gain_loss = esc_html__( 'No weight recorded', WE_LS_SLUG );
 				} elseif( false === empty(  $start_weight ) ) {
 
 					$start_weight = (float) $start_weight;
@@ -271,14 +271,14 @@ function ws_ls_datatable_rows( $arguments ) {
 							$gain_class = 'loss';
 						} elseif ( $entry['kg'] == $start_weight ) {
 							$gain_class = 'same';
-							$gain_loss = __( 'No Change', WE_LS_SLUG );
+							$gain_loss = esc_html__( 'No Change', WE_LS_SLUG );
 						}
 					}
 
 				} elseif ( true === empty( $arguments[ 'user-id' ] )) {
-					$gain_loss = $entry[ 'user_profile' ] = sprintf('<a href="%s" rel="noopener noreferrer" target="_blank">%s</a>', ws_ls_get_link_to_user_profile( $entry[ 'user_id' ] ), __( 'Check record', WE_LS_SLUG ) );
+					$gain_loss = $entry[ 'user_profile' ] = sprintf('<a href="%s" rel="noopener noreferrer" target="_blank">%s</a>', ws_ls_get_link_to_user_profile( $entry[ 'user_id' ] ), esc_html__( 'Check record', WE_LS_SLUG ) );
 				} elseif ( false === empty( $entry[ 'kg' ] ) ) {
-					$gain_loss = __( 'First weight entry', WE_LS_SLUG );
+					$gain_loss = esc_html__( 'First weight entry', WE_LS_SLUG );
 				}
 
 				if ( true === is_numeric( $gain_loss ) ) {
@@ -297,7 +297,7 @@ function ws_ls_datatable_rows( $arguments ) {
 			        true === ws_ls_bmi_in_tables() ) {
 
 				if ( false === empty( $entry[ 'kg' ] ) ) {
-					$row[ 'bmi' ] = [   'value' => ws_ls_get_bmi_for_table( ws_ls_user_preferences_get( 'height', $entry[ 'user_id' ] ), $entry[ 'kg' ], __( 'No height', WE_LS_SLUG ), $arguments[ 'bmi-format'] ),
+					$row[ 'bmi' ] = [   'value' => ws_ls_get_bmi_for_table( ws_ls_user_preferences_get( 'height', $entry[ 'user_id' ] ), $entry[ 'kg' ], esc_html__( 'No height', WE_LS_SLUG ), $arguments[ 'bmi-format'] ),
 						'options' => [ 'classes' => '' ]
 					];
 				} else {
@@ -399,19 +399,19 @@ function ws_ls_datatable_columns( $arguments = [] ) {
 
 	// If not front end, add nice name
 	if ( false === $arguments[ 'front-end' ] ) {
-		$columns[] = [ 'name' => 'user_nicename', 'title' => __( 'User', WE_LS_SLUG ), 'breakpoints'=> '', 'type' => 'text' ];
+		$columns[] = [ 'name' => 'user_nicename', 'title' => esc_html__( 'User', WE_LS_SLUG ), 'breakpoints'=> '', 'type' => 'text' ];
 	} else {
 		// If in the front end, switch to smaller width (hide meta fields etc)
 		$arguments[ 'small-width' ] = $arguments[ 'front-end' ];
 	}
 
-	$columns[] = [ 'name' => 'date', 'title' => __( 'Date', WE_LS_SLUG ), 'breakpoints'=> '', 'type' => 'date' ];
+	$columns[] = [ 'name' => 'date', 'title' => esc_html__( 'Date', WE_LS_SLUG ), 'breakpoints'=> '', 'type' => 'date' ];
 
 	if ( true === $arguments[ 'enable-weight' ] ) {
-		$columns[] = [ 'name' => 'kg', 'title' => __( 'Weight', WE_LS_SLUG ), 'visible'=> true, 'type' => 'text' ];
+		$columns[] = [ 'name' => 'kg', 'title' => esc_html__( 'Weight', WE_LS_SLUG ), 'visible'=> true, 'type' => 'text' ];
 
 		if ( false === $arguments[ 'front-end' ] || true === WS_LS_IS_PRO ) {
-			$columns[] = [ 'name' => 'gainloss', 'title' => ws_ls_tooltip('+/-', __( 'Difference', WE_LS_SLUG ) ), 'visible'=> true, 'breakpoints'=> 'xs', 'type' => 'text' ];
+			$columns[] = [ 'name' => 'gainloss', 'title' => ws_ls_tooltip('+/-', esc_html__( 'Difference', WE_LS_SLUG ) ), 'visible'=> true, 'breakpoints'=> 'xs', 'type' => 'text' ];
 		}
 	}
 
@@ -419,7 +419,7 @@ function ws_ls_datatable_columns( $arguments = [] ) {
 	if( true === $arguments[ 'enable-bmi' ] &&
 	        true === ws_ls_bmi_in_tables() ) {
 
-		$columns[] = [ 'name' => 'bmi', 'title' => ws_ls_tooltip( __( 'BMI', WE_LS_SLUG ), __( 'Body Mass Index', WE_LS_SLUG ) ), 'breakpoints'=> 'xs', 'type' => 'text' ];
+		$columns[] = [ 'name' => 'bmi', 'title' => ws_ls_tooltip( esc_html__( 'BMI', WE_LS_SLUG ), esc_html__( 'Body Mass Index', WE_LS_SLUG ) ), 'breakpoints'=> 'xs', 'type' => 'text' ];
 	}
 
     if ( true === $arguments[ 'enable-meta' ] &&
@@ -456,7 +456,7 @@ function ws_ls_datatable_columns( $arguments = [] ) {
     }
 
 	if ( true === $arguments[ 'enable-notes' ] ) {
-		$columns[] = [ 'name' => 'notes', 'title' => __( 'Notes', WE_LS_SLUG ), 'breakpoints'=> 'lg', 'type' => 'text' ];
+		$columns[] = [ 'name' => 'notes', 'title' => esc_html__( 'Notes', WE_LS_SLUG ), 'breakpoints'=> 'lg', 'type' => 'text' ];
 	}
 
 	return apply_filters( 'wlt-filter-front-end-data-table-columns', $columns, $arguments[ 'front-end' ] );
@@ -487,13 +487,13 @@ function ws_ls_data_js_config() {
 					'base-url'                      => ws_ls_get_link_to_user_data(),
 					'base-url-meta-fields'          => ws_ls_meta_fields_base_url(),
 					'base-url-awards'               => ws_ls_awards_base_url(),
-					'label-add'                     =>  __( 'Add' , WE_LS_SLUG ),
-                    'label-meta-fields-add-button'  =>  __( 'Add Custom Field', WE_LS_SLUG ),
-					'label-awards-add-button'       =>  __( 'Add Award', WE_LS_SLUG ),
-					'label-confirm-delete'          =>  __( 'Are you sure you want to delete the row?', WE_LS_SLUG ),
-					'label-error-delete'            =>  __( 'Unfortunately there was an error deleting the row.', WE_LS_SLUG ),
-                    'locale-search-text'            =>  __( 'Search', WE_LS_SLUG ),
-					'locale-no-results'             =>  __( 'No data found', WE_LS_SLUG ),
+					'label-add'                     =>  esc_html__( 'Add' , WE_LS_SLUG ),
+                    'label-meta-fields-add-button'  =>  esc_html__( 'Add Custom Field', WE_LS_SLUG ),
+					'label-awards-add-button'       =>  esc_html__( 'Add Award', WE_LS_SLUG ),
+					'label-confirm-delete'          =>  esc_html__( 'Are you sure you want to delete the row?', WE_LS_SLUG ),
+					'label-error-delete'            =>  esc_html__( 'Unfortunately there was an error deleting the row.', WE_LS_SLUG ),
+                    'locale-search-text'            =>  esc_html__( 'Search', WE_LS_SLUG ),
+					'locale-no-results'             =>  esc_html__( 'No data found', WE_LS_SLUG ),
 					'hide-display-name'             => false
 				];
 	// Add some extra config settings if not in admin

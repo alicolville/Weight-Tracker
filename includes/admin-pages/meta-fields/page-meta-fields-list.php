@@ -20,13 +20,13 @@
                             }
                         ?>
                         <div class="postbox">
-                            <h3 class="hndle"><span><?php echo __('Custom Fields', WE_LS_SLUG); ?></span></h3>
+                            <h3 class="hndle"><span><?php echo esc_html__('Custom Fields', WE_LS_SLUG); ?></span></h3>
                             <div style="padding: 0px 15px 0px 15px">
 
-                                <p><?php echo __( 'Custom Fields allows you to ask your user\'s additional questions when adding a weight entry.
+                                <p><?php echo esc_html__( 'Custom Fields allows you to ask your user\'s additional questions when adding a weight entry.
                                                         For example, you may wish to ask them how many cups of water they drank today or perhaps how they are feeling.
                                                             You can use the following screen to add as many questions as you wish.', WE_LS_SLUG); ?>
-                                                        <a href="https://docs.yeken.uk/custom-fields.html" target="_blank" rel="noopener"><?php echo __('Read more about Custom Fields', WE_LS_SLUG); ?></a>
+                                                        <a href="https://docs.yeken.uk/custom-fields.html" target="_blank" rel="noopener"><?php echo esc_html__('Read more about Custom Fields', WE_LS_SLUG); ?></a>
                                                         </p>
 
 	                            <?php
@@ -40,14 +40,14 @@
 														</a> ',
 														esc_url( $base_url ),
 														$key,
-														__( 'Add', WE_LS_SLUG ),
+														esc_html__( 'Add', WE_LS_SLUG ),
 														$name,
-														__( 'field', WE_LS_SLUG )
+														esc_html__( 'field', WE_LS_SLUG )
 										);
 									}
 
 	                            ?>
-								<a href="<?php echo ws_ls_meta_fields_groups_link(); ?>&amp;field_type=2" class="button"><?php echo __( 'Add / remove groups', WE_LS_SLUG ); ?></a>
+								<a href="<?php echo ws_ls_meta_fields_groups_link(); ?>&amp;field_type=2" class="button"><?php echo esc_html__( 'Add / remove groups', WE_LS_SLUG ); ?></a>
 
                                 <table class="ws-ls-meta-fields-list-ajax table ws-ls-loading-table" id="meta-fields-list"
                                        data-paging="true"

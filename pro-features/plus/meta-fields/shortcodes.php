@@ -23,9 +23,9 @@ function ws_ls_meta_fields_shortcode_accumulator( $user_defined_arguments ) {
 												'hide-value'        => false,
 												'hide-login-prompt' => false,
 												'increment-values'  => '-1,-5,-10,1,5,10',         // A string of comma delimited integers of allowed increments
-												'value-text'        => sprintf( '%s <strong>{value}</strong>.', __( 'So far you have recorded:', WE_LS_SLUG ) ),
+												'value-text'        => sprintf( '%s <strong>{value}</strong>.', esc_html__( 'So far you have recorded:', WE_LS_SLUG ) ),
 												'value-level'       => 'p',
-												'saved-text'        => __( 'Your entry has been saved!', WE_LS_SLUG )
+												'saved-text'        => esc_html__( 'Your entry has been saved!', WE_LS_SLUG )
 
 	], $user_defined_arguments );
 
@@ -33,25 +33,25 @@ function ws_ls_meta_fields_shortcode_accumulator( $user_defined_arguments ) {
 	if ( false === is_user_logged_in() ) {
 		return ( true !== ws_ls_to_bool( $shortcode_arguments[ 'hide-login-prompt' ] ) ) ?
 							'' :
-								ws_ls_display_blockquote( __( 'You need to be logged in to record your weight.', WE_LS_SLUG ) , '', false, true );
+								ws_ls_display_blockquote( esc_html__( 'You need to be logged in to record your weight.', WE_LS_SLUG ) , '', false, true );
 	}
 
 	if ( true === empty( $shortcode_arguments[ 'slug' ] ) ) {
-		return __( 'Please specify a custom field slug e.g. [wt-custom-fields-accumulator slug="cups-of-water-drank-today"].', WE_LS_SLUG );
+		return esc_html__( 'Please specify a custom field slug e.g. [wt-custom-fields-accumulator slug="cups-of-water-drank-today"].', WE_LS_SLUG );
 	}
 
 	$meta_field = ws_ls_meta_fields_get( [ $shortcode_arguments[ 'slug' ] ] );
 
 	if ( 2 !== (int) $meta_field[ 'enabled'] ) {
-		return __( 'The custom field needs to be enabled.', WE_LS_SLUG );
+		return esc_html__( 'The custom field needs to be enabled.', WE_LS_SLUG );
 	}
 
 	if ( true === empty( $meta_field ) ) {
-		return __( 'The custom field could not be found for the given slug.', WE_LS_SLUG );
+		return esc_html__( 'The custom field could not be found for the given slug.', WE_LS_SLUG );
 	}
 
 	if ( 0 !== (int) $meta_field[ 'field_type' ] ) {
-		return __( 'This shortcode will only work for numeric custom fields.', WE_LS_SLUG );
+		return esc_html__( 'This shortcode will only work for numeric custom fields.', WE_LS_SLUG );
 	}
 
 	ws_ls_meta_fields_shortcode_accumulator_enqueue_scripts();
@@ -96,7 +96,7 @@ function ws_ls_meta_fields_shortcode_accumulator( $user_defined_arguments ) {
 	$increments = explode( ',', $shortcode_arguments[ 'increment-values' ] );
 
 	if ( empty( $shortcode_arguments['increment-values'] ) || empty( $increments ) ) {
-		return __( 'Please ensure you have a valid list of increment values e.g. [wt-custom-fields-accumulator increment-values="1,5,10"]', WE_LS_SLUG );
+		return esc_html__( 'Please ensure you have a valid list of increment values e.g. [wt-custom-fields-accumulator increment-values="1,5,10"]', WE_LS_SLUG );
 	}
 
 
@@ -157,7 +157,7 @@ function ws_ls_meta_fields_shortcode_js() {
 	return [    'ajax-url'              => admin_url( 'admin-ajax.php' ),
 				'ajax-security-nonce'   => wp_create_nonce( 'ws-ls-nonce' ),
 				'text-saving'           => '<i class="fa fa-circle-o-notch fa-spin"></i>',
-				'text-failure'          => __( 'There was an issue saving your entry. Please try again.', WE_LS_SLUG ),
+				'text-failure'          => esc_html__( 'There was an issue saving your entry. Please try again.', WE_LS_SLUG ),
 	];
 }
 /**
@@ -210,7 +210,7 @@ function ws_ls_meta_fields_shortcode_chart( $user_defined_arguments ) {
 	$user_defined_arguments = shortcode_atts( [ 'bezier'              	        => ws_ls_option_to_bool( 'ws-ls-bezier-curve' ),
 												'height'              	        => 250,
 												'ignore-login-status' 	        => false,
-												'message-no-data'               => __( 'Currently there is no data to display on the chart.', WE_LS_SLUG ),
+												'message-no-data'               => esc_html__( 'Currently there is no data to display on the chart.', WE_LS_SLUG ),
 												'max-data-points'     	        => ws_ls_option( 'ws-ls-max-points', '25', true ),
 												'show-gridlines'      	        => ws_ls_option_to_bool( 'ws-ls-grid-lines' ),
 												'type'                	        => get_option( 'ws-ls-chart-type', 'line' ),
@@ -275,7 +275,7 @@ function ws_ls_meta_fields_shortcode_value_latest( $user_defined_arguments ) {
 	$arguments = shortcode_atts( [  'slug' => '', 'user-id' => get_current_user_id(), 'which' => 'latest', 'return-as-array' => false ] , $user_defined_arguments );
 
 	if ( true === empty( $arguments[ 'slug' ] ) ) {
-		return __( 'You must specify a slug.', WE_LS_SLUG );
+		return esc_html__( 'You must specify a slug.', WE_LS_SLUG );
 	}
 
     $meta_field = [ 'id' => ws_ls_meta_fields_slug_to_id( $arguments[ 'slug' ] ), 'slug' => $arguments[ 'slug' ] ];
@@ -283,7 +283,7 @@ function ws_ls_meta_fields_shortcode_value_latest( $user_defined_arguments ) {
     $meta_field[ 'id' ] = ws_ls_meta_fields_slug_to_id( $arguments[ 'slug' ] );
 
 	if ( true === empty( $meta_field[ 'id' ] ) ) {
-		return __( 'The slug you specified does not exist.', WE_LS_SLUG );
+		return esc_html__( 'The slug you specified does not exist.', WE_LS_SLUG );
 	}
 
 	$arguments[ 'key' ] = $meta_field[ 'id' ];
@@ -343,13 +343,13 @@ function ws_ls_meta_fields_shortcode_value_count( $user_defined_arguments ) {
 	$arguments = shortcode_atts( [  'slug' => '', 'user-id' => get_current_user_id() ] , $user_defined_arguments );
 
 	if ( true === empty( $arguments[ 'slug' ] ) ) {
-		return __( 'You must specify a slug.', WE_LS_SLUG );
+		return esc_html__( 'You must specify a slug.', WE_LS_SLUG );
 	}
 
 	$meta_field_id = ws_ls_meta_fields_slug_to_id( $arguments[ 'slug' ] );
 
 	if ( true === empty( $meta_field_id ) ) {
-		return __( 'The slug you specified does not exist.', WE_LS_SLUG );
+		return esc_html__( 'The slug you specified does not exist.', WE_LS_SLUG );
 	}
 
 	$arguments[ 'key' ] = $meta_field_id;

@@ -14,7 +14,7 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
 
     // If not logged in then return no value
     if ( false === is_user_logged_in() )	{
-		return ws_ls_display_blockquote( __('You must be logged in to edit your settings.', WE_LS_SLUG) , '', false, true);
+		return ws_ls_display_blockquote( esc_html__('You must be logged in to edit your settings.', WE_LS_SLUG) , '', false, true);
     }
 
     $html_output = '';
@@ -41,7 +41,7 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
 
     // Have user preferences been allowed in Settings?
     if ( false === ws_ls_user_preferences_is_enabled() && false === is_admin() && false === $arguments[ 'kiosk-mode' ]) {
-        return ws_ls_display_blockquote( __( 'To use this shortcode, please ensure you have enabled the setting "Allow user settings".', WE_LS_SLUG) );
+        return ws_ls_display_blockquote( esc_html__( 'To use this shortcode, please ensure you have enabled the setting "Allow user settings".', WE_LS_SLUG) );
     }
 
 	// Delete all the user's data if selected
@@ -54,25 +54,25 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
 
     // Decide which set of labels to render
 	$labels = [
-                'height'            => __( 'Your height:', WE_LS_SLUG ),
-				'weight'            => __( 'In which unit would you like to record your weight:', WE_LS_SLUG ),
-				'date'              => __( 'Display dates in the following formats:', WE_LS_SLUG ),
-                'gender'            => __( 'Your Gender:', WE_LS_SLUG ),
-                'dob'               => __( 'Your Date of Birth:', WE_LS_SLUG ),
-                'activitylevel'     => __( 'Your Activity Level:', WE_LS_SLUG ),
-                'aim'               => __( 'Your aim:' , WE_LS_SLUG )
+                'height'            => esc_html__( 'Your height:', WE_LS_SLUG ),
+				'weight'            => esc_html__( 'In which unit would you like to record your weight:', WE_LS_SLUG ),
+				'date'              => esc_html__( 'Display dates in the following formats:', WE_LS_SLUG ),
+                'gender'            => esc_html__( 'Your Gender:', WE_LS_SLUG ),
+                'dob'               => esc_html__( 'Your Date of Birth:', WE_LS_SLUG ),
+                'activitylevel'     => esc_html__( 'Your Activity Level:', WE_LS_SLUG ),
+                'aim'               => esc_html__( 'Your aim:' , WE_LS_SLUG )
 	];
 
 	// If admin, add notice and override labels
 	if( is_admin() ) {
 
-		$labels = [     'height'            => __( 'Height:', WE_LS_SLUG ),
-					    'weight'            => __( 'Weight unit:', WE_LS_SLUG ),
-					    'date'              => __( 'Date format:', WE_LS_SLUG ),
-                        'gender'            => __( 'Gender:', WE_LS_SLUG ),
-                        'dob'               => __( 'Date of Birth:', WE_LS_SLUG ),
-                        'activitylevel'     => __( 'Activity Level:', WE_LS_SLUG ),
-                        'aim'               => __( 'Aim:', WE_LS_SLUG )
+		$labels = [     'height'            => esc_html__( 'Height:', WE_LS_SLUG ),
+					    'weight'            => esc_html__( 'Weight unit:', WE_LS_SLUG ),
+					    'date'              => esc_html__( 'Date format:', WE_LS_SLUG ),
+                        'gender'            => esc_html__( 'Gender:', WE_LS_SLUG ),
+                        'dob'               => esc_html__( 'Date of Birth:', WE_LS_SLUG ),
+                        'activitylevel'     => esc_html__( 'Activity Level:', WE_LS_SLUG ),
+                        'aim'               => esc_html__( 'Aim:', WE_LS_SLUG )
 		];
 
         // If we're in Admin screens, then hide "delete data"
@@ -138,7 +138,7 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
 			$html_output .= ws_ls_form_field_select( [  'key'       => 'WE_LS_US_DATE',
 			                                            'label'     => $labels[ 'date' ],
 			                                            'uikit'     => $arguments[ 'uikit' ],
-			                                            'values'    => [ 'false'     => __( 'UK (DD/MM/YYYY)', WE_LS_SLUG ), 'true' => __( 'US (MM/DD/YYYY)', WE_LS_SLUG ) ],
+			                                            'values'    => [ 'false'     => esc_html__( 'UK (DD/MM/YYYY)', WE_LS_SLUG ), 'true' => esc_html__( 'US (MM/DD/YYYY)', WE_LS_SLUG ) ],
 			                                            'selected'  => ( true === ws_ls_setting( 'use-us-dates', $user_id ) ) ? 'true' : 'false' ] );
 
 		}
@@ -147,8 +147,8 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
 			$html_output .=  sprintf( '<div class="ws-ls-form-row ykuk-width-1-1">
 											<h3>%s</h3>
 											<p class="ws-ls-hide-if-admin">%s</p>
-										</div>', __( 'Email notifications', WE_LS_SLUG ),
-										__( 'Select the email notifications that you would like to receive:', WE_LS_SLUG )
+										</div>', esc_html__( 'Email notifications', WE_LS_SLUG ),
+										esc_html__( 'Select the email notifications that you would like to receive:', WE_LS_SLUG )
 									);
 			$html_output .=  ws_ls_emailer_optout_form();
 		}	
@@ -160,7 +160,7 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
 									</div>
 									',
 				ws_ls_form_tab_index_next(),
-				__( 'Save Settings', WE_LS_SLUG )
+				esc_html__( 'Save Settings', WE_LS_SLUG )
 			);
 
 		}
@@ -173,7 +173,7 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
             true === ws_ls_to_bool( $arguments[ 'show-delete-data' ] ) ) {
 
 	    if ( false === ws_ls_to_bool( $arguments[ 'hide-titles' ] ) ) {
-		    $html_output .= ws_ls_title( __( 'Delete existing data', WE_LS_SLUG ) );
+		    $html_output .= ws_ls_title( esc_html__( 'Delete existing data', WE_LS_SLUG ) );
 	    }
 
 	    $post_url = add_query_arg( 'user-delete-all', 'true', ws_ls_get_url() );
@@ -184,9 +184,9 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
                 							</div>', esc_url( $post_url ) );
 
 	    $html_output .= ws_ls_form_field_select( [ 'key'        => 'ws-ls-delete-all',
-	                                               'label'      => __( 'The button below allows you to clear your existing weight history. Confirm:', WE_LS_SLUG ),
+	                                               'label'      => esc_html__( 'The button below allows you to clear your existing weight history. Confirm:', WE_LS_SLUG ),
 	                                               'values'     => [ '' => '',
-																	    'yes' => __( 'DELETE ALL DATA', WE_LS_SLUG )
+																	    'yes' => esc_html__( 'DELETE ALL DATA', WE_LS_SLUG )
 		                                                            ],
 	                                               'uikit'      => $arguments[ 'uikit' ],
 	                                               'required'   => true ] );
@@ -196,7 +196,7 @@ function ws_ls_user_preferences_form( $user_defined_arguments ) {
 									</div>
 								</form>',
 		    ws_ls_form_tab_index_next(),
-		    __( 'Delete', WE_LS_SLUG )
+		    esc_html__( 'Delete', WE_LS_SLUG )
 	    );
     }
 

@@ -35,14 +35,14 @@ function ws_ls_shortcode_stats_league_total( $user_defined_arguments ) {
 					<thead>
 						<tr>
 							<th class="ws-col-rank-th"></th>
-							<th class="ws-col-name-th">' . __('Name', WE_LS_SLUG) . '</th>
-							<th class="ws-weight-diff-th">' . __('Weight Difference', WE_LS_SLUG) . '</th>';
+							<th class="ws-col-name-th">' . esc_html__('Name', WE_LS_SLUG) . '</th>
+							<th class="ws-weight-diff-th">' . esc_html__('Weight Difference', WE_LS_SLUG) . '</th>';
 
 							if( $arguments['show_percentage'] ) {
 								$html .= '<th class="ws-weight-diff-th">+/-</th>';
 							}
 
-							$html .= '<th>' . __('No of entries', WE_LS_SLUG) . '</th>
+							$html .= '<th>' . esc_html__('No of entries', WE_LS_SLUG) . '</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -103,7 +103,7 @@ function ws_ls_shortcode_stats_league_total( $user_defined_arguments ) {
 		return apply_filters( 'wlt-filter-stats-table-html', $html);
 	}
 
-	return sprintf( '<p>%s</p>', __( 'The league table has not been generated yet. This is a scheduled task so please check back in 15 minutes or try pressing the button below.', WE_LS_SLUG ) );
+	return sprintf( '<p>%s</p>', esc_html__( 'The league table has not been generated yet. This is a scheduled task so please check back in 15 minutes or try pressing the button below.', WE_LS_SLUG ) );
 }
 add_shortcode( 'wlt-league-table', 'ws_ls_shortcode_stats_league_total' );
 add_shortcode( 'wt-league-table', 'ws_ls_shortcode_stats_league_total' );
@@ -147,7 +147,7 @@ function ws_ls_shortcode_stats_display_value( $stats, $arguments ) {
 		// If display number text, remove sign and use text to represent gain / loss
 		if( 'number/text' == $arguments[ 'display' ] ) {
 
-			$stats['display-value'] = ($difference <= 0) ? __( 'Lost', WE_LS_SLUG ) : __( 'Gained', WE_LS_SLUG );
+			$stats['display-value'] = ($difference <= 0) ? esc_html__( 'Lost', WE_LS_SLUG ) : esc_html__( 'Gained', WE_LS_SLUG );
 			$stats['display-value'] .= ': ';
 			$difference             = abs( $difference );
 
@@ -163,14 +163,14 @@ function ws_ls_shortcode_stats_display_value( $stats, $arguments ) {
 
 		switch ( $stats[ 'display-unit' ] ) {
 			case 'pounds_only':
-				$stats[ 'display-value' ] .= ws_ls_convert_kg_to_lb( $difference ) . __( 'lbs', WE_LS_SLUG );
+				$stats[ 'display-value' ] .= ws_ls_convert_kg_to_lb( $difference ) . esc_html__( 'lbs', WE_LS_SLUG );
 				break;
 			case 'stones_pounds':
 				$weight = ws_ls_convert_kg_to_stone_pounds( $difference );
 				$stats[ 'display-value' ] .= ws_ls_format_stones_pound_for_comparison_display( $weight );
 				break;
 			default:
-				$stats['display-value'] .= ws_ls_round_decimals( $difference )  . __('kg', WE_LS_SLUG);
+				$stats['display-value'] .= ws_ls_round_decimals( $difference )  . esc_html__('kg', WE_LS_SLUG);
 		}
 
 		// Allow theme developer to override stats message

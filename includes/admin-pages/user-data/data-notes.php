@@ -38,8 +38,8 @@ function ws_ls_admin_page_data_notes_for_user() {
 												<p>%s</p>
 											</div>
 										</div>',
-										__( 'Notes', WE_LS_SLUG ),
-										__( 'There are currently no notes for this user.', WE_LS_SLUG )
+										esc_html__( 'Notes', WE_LS_SLUG ),
+										esc_html__( 'There are currently no notes for this user.', WE_LS_SLUG )
 							);
 						}
  					?>
@@ -57,7 +57,7 @@ function ws_ls_admin_page_data_notes_for_user() {
 
 				wp_localize_script( 'wt-admin-notes', 'ws_notes_config', [ 	'nonce' 		=> wp_create_nonce( 'ws-ls-delete-note' ),
 																			'url'			=> admin_url( 'admin-ajax.php' ),
-																			'error-message'	=> __( 'An error occurred when attempting to delete the note.', WE_LS_SLUG ) ]);
+																			'error-message'	=> esc_html__( 'An error occurred when attempting to delete the note.', WE_LS_SLUG ) ]);
 			}
 
 		?>

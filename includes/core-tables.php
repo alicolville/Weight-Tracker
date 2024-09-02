@@ -30,9 +30,9 @@ function ws_ls_display_table( $user_id, $weight_data ) {
 						  </tr>
 						  </thead>
 						<tbody>',
-		__( 'Date', WE_LS_SLUG ),
-		sprintf( '%s (%s)', __( 'Weight', WE_LS_SLUG ), ws_ls_get_unit() ),
-		__( 'Notes', WE_LS_SLUG )
+		esc_html__( 'Date', WE_LS_SLUG ),
+		sprintf( '%s (%s)', esc_html__( 'Weight', WE_LS_SLUG ), ws_ls_get_unit() ),
+		esc_html__( 'Notes', WE_LS_SLUG )
 	);
 
 	foreach ( $weight_data as $weight_object ) {

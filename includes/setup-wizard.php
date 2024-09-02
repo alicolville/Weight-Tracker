@@ -13,9 +13,9 @@ function ws_ls_setup_wizard_notice() {
                         <p>%1$s <strong>%2$s</strong>! %3$s.</p>
                         <p><a href="%4$s" class="button button-primary">Run wizard</a></p>
                     </div>',
-                    __( 'Welcome to' , WE_LS_SLUG),
+                    esc_html__( 'Welcome to' , WE_LS_SLUG),
                     WE_LS_TITLE,
-                    __( 'You\'re almost there, but a wizard might help you setup the plugin' , WE_LS_SLUG),
+                    esc_html__( 'You\'re almost there, but a wizard might help you setup the plugin' , WE_LS_SLUG),
                     esc_url( ws_ls_setup_wizard_get_link() )
     );
 }
@@ -83,8 +83,8 @@ add_action( 'wp_ajax_ws_ls_setup_wizard_dismiss', 'ws_ls_setup_wizard_dismiss_no
 function wl_ls_setup_wizard_custom_notification_html() {
 	?>
 
-		<p><img src="<?php echo plugins_url( 'admin-pages/assets/images/yeken-logo.png', __FILE__ ); ?>" width="100" height="100" style="margin-right:20px" align="left" /><?php echo __( 'If require plugin modifications to Weight Tracker, or need a new plugin built, or perhaps you need a developer to help you with your website then please don\'t hesitiate get in touch!', WE_LS_SLUG ); ?></p>
-		<p><strong><?php echo __( 'We provide fixed priced quotes.', WE_LS_SLUG); ?></strong></p>
+		<p><img src="<?php echo plugins_url( 'admin-pages/assets/images/yeken-logo.png', __FILE__ ); ?>" width="100" height="100" style="margin-right:20px" align="left" /><?php echo esc_html__( 'If require plugin modifications to Weight Tracker, or need a new plugin built, or perhaps you need a developer to help you with your website then please don\'t hesitiate get in touch!', WE_LS_SLUG ); ?></p>
+		<p><strong><?php echo esc_html__( 'We provide fixed priced quotes.', WE_LS_SLUG); ?></strong></p>
 		<p><a href="https://www.yeken.uk" rel="noopener noreferrer" target="_blank">YeKen.uk</a> /
 			<a href="https://profiles.wordpress.org/aliakro" rel="noopener noreferrer" target="_blank">WordPress Profile</a> /
 			<a href="mailto:email@yeken.uk" >email@yeken.uk</a></p>
@@ -99,11 +99,11 @@ function wl_ls_setup_wizard_custom_notification_html() {
 function wl_ls_setup_wizard_meal_tracker_html() {
 ?>
     <p><img src="<?php echo plugins_url( 'admin-pages/assets/images/meal-tracker-logo.png', __FILE__ ); ?>" width="100" height="100" style="margin-right:20px" align="left" />
-        <?php echo __( 'Why not check out our sister plugin Meal Tracker. Allow your user\'s to track their meals and calorie intake too!', WE_LS_SLUG ); ?></p>
-    <p><strong><?php echo __( 'Get Meal Tracker Now', WE_LS_SLUG); ?>.</strong></p>
-    <p><a href="https://wordpress.org/plugins/meal-tracker/" rel="noopener noreferrer" target="_blank"><?php echo __( 'from WordPress.org', WE_LS_SLUG); ?></a> /
-        <a href="https://shop.yeken.uk/product/meal-tracker-premium/" rel="noopener noreferrer" target="_blank"><?php echo __( 'Upgrade to Premium', WE_LS_SLUG); ?></a> /
-        <a href="mailto:email@yeken.uk" ><?php echo __( 'Any questions, email@yeken.uk', WE_LS_SLUG); ?></a></p>
+        <?php echo esc_html__( 'Why not check out our sister plugin Meal Tracker. Allow your user\'s to track their meals and calorie intake too!', WE_LS_SLUG ); ?></p>
+    <p><strong><?php echo esc_html__( 'Get Meal Tracker Now', WE_LS_SLUG); ?>.</strong></p>
+    <p><a href="https://wordpress.org/plugins/meal-tracker/" rel="noopener noreferrer" target="_blank"><?php echo esc_html__( 'from WordPress.org', WE_LS_SLUG); ?></a> /
+        <a href="https://shop.yeken.uk/product/meal-tracker-premium/" rel="noopener noreferrer" target="_blank"><?php echo esc_html__( 'Upgrade to Premium', WE_LS_SLUG); ?></a> /
+        <a href="mailto:email@yeken.uk" ><?php echo esc_html__( 'Any questions, email@yeken.uk', WE_LS_SLUG); ?></a></p>
     <br clear="both"/>
 
     <?php
@@ -115,8 +115,8 @@ function wl_ls_setup_wizard_meal_tracker_html() {
 function wl_ls_setup_discount_to_pro_plus_html() {
 	?>
 	<p><img src="<?php echo plugins_url( 'admin-pages/assets/images/50-off.jpg', __FILE__ ); ?>" width="100" height="100" style="margin-right:20px" align="left" />
-		<?php echo __( 'Use the following coupon code to receive 50% off when upgrading from Pro to Pro Plus. Simply apply it during the checkout process.', WE_LS_SLUG ); ?>.</p>
-	<p style="font-weight: bold; font-size: 18px;"><?php echo __( 'Coupon', WE_LS_SLUG); ?>: 50-OFF-PRO-PLUS</p>
+		<?php echo esc_html__( 'Use the following coupon code to receive 50% off when upgrading from Pro to Pro Plus. Simply apply it during the checkout process.', WE_LS_SLUG ); ?>.</p>
+	<p style="font-weight: bold; font-size: 18px;"><?php echo esc_html__( 'Coupon', WE_LS_SLUG); ?>: 50-OFF-PRO-PLUS</p>
 
 	<br clear="both"/>
 

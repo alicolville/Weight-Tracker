@@ -94,15 +94,15 @@ function ws_ls_bmi_calculator( $user_defined_arguments ) {
 							    </div>
 							</form>
 						</li>',
-						__( 'Weight', WE_LS_SLUG ),
-						__( 'Kg', WE_LS_SLUG ),
-						__( 'Height', WE_LS_SLUG ),
-						__( 'Cm', WE_LS_SLUG ),
-						__( 'Calculate BMI', WE_LS_SLUG ),
-						__( 'Stones', WE_LS_SLUG ),
-						__( 'Pounds', WE_LS_SLUG ),
-						__( 'Feet', WE_LS_SLUG ),
-						__( 'Inches', WE_LS_SLUG ),
+						esc_html__( 'Weight', WE_LS_SLUG ),
+						esc_html__( 'Kg', WE_LS_SLUG ),
+						esc_html__( 'Height', WE_LS_SLUG ),
+						esc_html__( 'Cm', WE_LS_SLUG ),
+						esc_html__( 'Calculate BMI', WE_LS_SLUG ),
+						esc_html__( 'Stones', WE_LS_SLUG ),
+						esc_html__( 'Pounds', WE_LS_SLUG ),
+						esc_html__( 'Feet', WE_LS_SLUG ),
+						esc_html__( 'Inches', WE_LS_SLUG ),
 						( true === $pounds_only ) ? 1 : 2,
 						( true === $pounds_only ) ? ' ws-ls-hide' : ''
 	);
@@ -158,7 +158,7 @@ function ws_ls_bmi_calculator_ajax() {
 	if ( false === empty( $bmi ) ) {
 		$text   = sprintf( '<h3>%s</h3><p>%s <strong>%s</strong>.</p>',
 							ws_ls_round_number( $bmi, 1 ),
-							__( 'Your weight suggests you are', WE_LS_SLUG ),
+							esc_html__( 'Your weight suggests you are', WE_LS_SLUG ),
 							strtolower( ws_ls_bmi_display( $bmi, 'label' ) )
 		);
 		$class  = ws_ls_calculate_bmi_uikit_class( $bmi );

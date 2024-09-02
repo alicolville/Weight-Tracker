@@ -11,22 +11,22 @@ function ws_ls_config_js() {
 	$user_id            = get_current_user_id();
 	$user_id            = apply_filters( 'wlt-filter-js-ws-ls-config-user-id', $user_id );
 	$message_for_pounds = ( 'stones_pounds' == ws_ls_setting('weight-unit', $user_id ) ) ?
-									__( 'Please enter a value between 0-13.99 for pounds', WE_LS_SLUG ) :
-										__( 'Please enter a value between 1 and 5000 for pounds', WE_LS_SLUG );
+									esc_html__( 'Please enter a value between 0-13.99 for pounds', WE_LS_SLUG ) :
+										esc_html__( 'Please enter a value between 1 and 5000 for pounds', WE_LS_SLUG );
 
 	$use_us_date        = ws_ls_setting('use-us-dates', $user_id );
 
 	$config = [     'us-date'                           => ( $use_us_date ) ? 'true' : 'false',
 					'date-format'                       => ( $use_us_date ) ? 'mm/dd/yy' : 'dd/mm/yy',
-    	            'clear-target'                      => __( 'Are you sure you wish to clear your target weight?', WE_LS_SLUG ),
+    	            'clear-target'                      => esc_html__( 'Are you sure you wish to clear your target weight?', WE_LS_SLUG ),
 					'validation-about-you-mandatory'    => ( true === ws_ls_option_to_bool( 'ws-ls-about-you-mandatory', 'no', true ) ) ? 'true' : 'false',
 					'validation-we-ls-weight-pounds'    => $message_for_pounds,
-					'validation-we-ls-weight-kg'        => __( 'Please enter a value between 1 and 5000 for Kg', WE_LS_SLUG ),
-					'validation-we-ls-weight-stones'    => __( 'Please enter a value between 1 and 5000 for Stones', WE_LS_SLUG ),
-					'validation-we-ls-date'             => __( 'Please enter a valid date', WE_LS_SLUG ),
-					'validation-we-ls-history'          => __( 'Please confirm that you wish to delete ALL of your user data', WE_LS_SLUG ),
-					'validation-we-ls-photo'            => __( 'Your photo must be less than ', WE_LS_SLUG ) . ws_ls_photo_display_max_upload_size(),
-    	            'confirmation-delete'               => __( 'Are you sure you wish to delete this entry? If so, press OK.', WE_LS_SLUG ),
+					'validation-we-ls-weight-kg'        => esc_html__( 'Please enter a value between 1 and 5000 for Kg', WE_LS_SLUG ),
+					'validation-we-ls-weight-stones'    => esc_html__( 'Please enter a value between 1 and 5000 for Stones', WE_LS_SLUG ),
+					'validation-we-ls-date'             => esc_html__( 'Please enter a valid date', WE_LS_SLUG ),
+					'validation-we-ls-history'          => esc_html__( 'Please confirm that you wish to delete ALL of your user data', WE_LS_SLUG ),
+					'validation-we-ls-photo'            => esc_html__( 'Your photo must be less than ', WE_LS_SLUG ) . ws_ls_photo_display_max_upload_size(),
+    	            'confirmation-delete'               => esc_html__( 'Are you sure you wish to delete this entry? If so, press OK.', WE_LS_SLUG ),
 					'ajax-url'                          => admin_url( 'admin-ajax.php' ),
 					'ajax-security-nonce'               => wp_create_nonce( 'ws-ls-nonce' ),
 					'is-pro'                            => ( WS_LS_IS_PRO ) ? 'true' : 'false',
@@ -45,11 +45,11 @@ function ws_ls_config_js() {
 	if( true === ws_ls_option_to_bool( 'ws-ls-about-you-mandatory', 'no', true ) ) {
 
 	    $config['validation-user-pref-messages'] = [
-											            'ws-ls-height'          => __( 'Please select or enter a value for height.', WE_LS_SLUG ),
-											            'ws-ls-activity-level'  => __( 'Please select or enter a value for activity level.', WE_LS_SLUG ),
-											            'ws-ls-gender'          => __( 'Please select or enter a value for gender.', WE_LS_SLUG ),
-											            'we-ls-dob'             => __( 'Please enter a valid date.', WE_LS_SLUG ),
-											            'ws-ls-aim'             => __( 'Please select your aim.', WE_LS_SLUG )
+											            'ws-ls-height'          => esc_html__( 'Please select or enter a value for height.', WE_LS_SLUG ),
+											            'ws-ls-activity-level'  => esc_html__( 'Please select or enter a value for activity level.', WE_LS_SLUG ),
+											            'ws-ls-gender'          => esc_html__( 'Please select or enter a value for gender.', WE_LS_SLUG ),
+											            'we-ls-dob'             => esc_html__( 'Please enter a valid date.', WE_LS_SLUG ),
+											            'ws-ls-aim'             => esc_html__( 'Please select your aim.', WE_LS_SLUG )
         ];
 
         $config['validation-user-pref-rules']   = [
@@ -59,7 +59,7 @@ function ws_ls_config_js() {
 										            'ws-ls-activity-level'  => [ 'required' => true, 'min' => 1 ]
         ];
 
-        $config['validation-required']          = __( 'This field is required.', WE_LS_SLUG );
+        $config['validation-required']          = esc_html__( 'This field is required.', WE_LS_SLUG );
 	}
 
 	$config[ 'load-entry-url' ] = add_query_arg( 'load-entry', '{entry-id}', $config[ 'load-entry-url' ] );
@@ -77,8 +77,8 @@ function ws_ls_config_js_datapicker_locale() {
 	global $wp_locale;
 
 	return [
-	        'closeText'         => __( 'Done', WE_LS_SLUG ),
-	        'currentText'       => __( 'Today', WE_LS_SLUG ),
+	        'closeText'         => esc_html__( 'Done', WE_LS_SLUG ),
+	        'currentText'       => esc_html__( 'Today', WE_LS_SLUG ),
 	        'monthNames'        => array_values( $wp_locale->month ),
 	        'monthNamesShort'   => array_values( $wp_locale->month_abbrev ),
 	        'dayNames'          => array_values( $wp_locale->weekday ),
@@ -86,6 +86,6 @@ function ws_ls_config_js_datapicker_locale() {
 	        'dayNamesMin'       => array_values( $wp_locale->weekday_initial ),
 	    	// get the start of week from WP general setting
 	        'firstDay'          => get_option( 'start_of_week' ),
-			'entry-found'       => __( 'An entry has been found for this date. Would you like to load the existing entry?', WE_LS_SLUG ) . PHP_EOL . PHP_EOL . __( 'Note: Any unsaved data shall be lost!', WE_LS_SLUG )
+			'entry-found'       => esc_html__( 'An entry has been found for this date. Would you like to load the existing entry?', WE_LS_SLUG ) . PHP_EOL . PHP_EOL . esc_html__( 'Note: Any unsaved data shall be lost!', WE_LS_SLUG )
 	];
 }

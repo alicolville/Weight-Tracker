@@ -58,7 +58,7 @@ function ws_ls_photos_shortcode_oldest($user_defined_arguments) {
         $user_defined_arguments = [];
     }
 
-	$user_defined_arguments['error-message'] = (true === empty($user_defined_arguments['error-message'])) ? __('No photos were found.', WE_LS_SLUG ) : $user_defined_arguments['error-message'];
+	$user_defined_arguments['error-message'] = (true === empty($user_defined_arguments['error-message'])) ? esc_html__('No photos were found.', WE_LS_SLUG ) : $user_defined_arguments['error-message'];
     $user_defined_arguments['recent'] = false;
 
 	return ws_ls_photos_shortcode_core($user_defined_arguments);
@@ -75,7 +75,7 @@ function ws_ls_photos_shortcode_core($user_defined_arguments) {
 
     $arguments = shortcode_atts([
 		'css-class' => '',
-    	'error-message' => __('No recent photo found.', WE_LS_SLUG ),
+    	'error-message' => esc_html__('No recent photo found.', WE_LS_SLUG ),
 		'height' => 200,
 		'hide-date' => false,
         'user-id' => get_current_user_id(),
@@ -443,10 +443,10 @@ function ws_ls_photos_attachment_fields_to_edit( $form_fields, $post ) {
 	$already_hidden = (bool) get_post_meta($post->ID, 'ws-ls-hide-image', true);
 
 	$form_fields['ws_ls_hide_image'] = array(
-		'label' => __( 'Don\'t show to public?', WE_LS_SLUG ),
+		'label' => esc_html__( 'Don\'t show to public?', WE_LS_SLUG ),
 		'input' => 'html',
 		'html' => '<label for="attachments-'.$post->ID.'-ws-ls-hide-image"><input type="checkbox" id="attachments-'.$post->ID.'-ws-ls-hide-image" name="attachments['.$post->ID.'][ws-ls-hide-image]" value="1"'.($already_hidden ? ' checked="checked"' : '').' /></label>',
-		'helps' => __( 'If the user has uploaded this as part of their Weight Tracker progress, they probably don\'t want it viewable on a public attachment page!', WE_LS_SLUG ),
+		'helps' => esc_html__( 'If the user has uploaded this as part of their Weight Tracker progress, they probably don\'t want it viewable on a public attachment page!', WE_LS_SLUG ),
 	);
 
 	return $form_fields;

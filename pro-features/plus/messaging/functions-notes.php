@@ -113,7 +113,7 @@ function ws_ls_notes_render( $note, $echo = true, $uikit = false, $alternate = f
 			ws_ls_iso_datetime_into_correct_format( $note[ 'created' ] ),
 			$note[ 'message_text' ],
 			ws_ls_component_id(),
-			true === ws_ls_to_bool( $note[ 'visible_to_user' ] ) && true === is_admin() ? __( ' (Visible via [wt-notes])', WE_LS_SLUG ) : '',
+			true === ws_ls_to_bool( $note[ 'visible_to_user' ] ) && true === is_admin() ? esc_html__( ' (Visible via [wt-notes])', WE_LS_SLUG ) : '',
 			is_admin() ? 'h2' : 'h6',
 			! is_admin() ? 'ws-ls-hide' : ''
 		);

@@ -232,7 +232,7 @@ function ws_ls_age_ranges_array_map_to_string( $element ) {
 
 	$text = ( true === empty( $element[ 'min' ] ) ) ? 0 : $element[ 'min' ];
 
-	$text .= ( true === empty( $element[ 'max' ] ) ) ? '+' : sprintf( ' %s %d', __( 'to', WE_LS_SLUG ), $element[ 'max' ] );
+	$text .= ( true === empty( $element[ 'max' ] ) ) ? '+' : sprintf( ' %s %d', esc_html__( 'to', WE_LS_SLUG ), $element[ 'max' ] );
 
 	return ( '0+' === $text )  ? '' : $text;
 }

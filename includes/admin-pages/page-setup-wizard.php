@@ -19,16 +19,16 @@ function ws_ls_setup_wizard_page() {
 					<div class="meta-box-sortables ui-sortable">
 
 						<div class="postbox">
-							<h3 class="hndle"><span><?php echo __( 'Setup Wizard', WE_LS_SLUG); ?> </span></h3>
+							<h3 class="hndle"><span><?php echo esc_html__( 'Setup Wizard', WE_LS_SLUG); ?> </span></h3>
 							<div style="padding: 15px 15px 0px 15px">
                                 <div id="ws-ls-tabs">
                                     <ul>
-                                        <li><a>1. <?php echo __( 'Introduction', WE_LS_SLUG); ?><span><?php echo __( 'Thank you for using Weight Tracker', WE_LS_SLUG); ?></span></a></li>
-                                        <li><a>2. <?php echo __( 'Setup', WE_LS_SLUG); ?><span><?php echo __( 'How to use Shortcodes and Widgets', WE_LS_SLUG); ?></span></a></li>
-                                        <li><a>3. <?php echo __( 'Admin Interface', WE_LS_SLUG); ?><span><?php echo __( 'Viewing and interacting with your user\'s data', WE_LS_SLUG); ?></span></a></li>
-                                        <li><a>4. <?php echo __( 'Features and Guides', WE_LS_SLUG); ?><span><?php echo __( 'Useful features and guides', WE_LS_SLUG); ?></span></a></li>
-                                        <li><a>5. <?php echo __( 'Meal Tracker', WE_LS_SLUG ); ?><span><?php echo __( 'Track meals and calories too', WE_LS_SLUG); ?></span></a></li>
-                                        <li><a>6. <?php echo __( 'Customisations', WE_LS_SLUG); ?><span><?php echo __( 'Custom modifications to Weight Tracker', WE_LS_SLUG); ?></span></a></li>
+                                        <li><a>1. <?php echo esc_html__( 'Introduction', WE_LS_SLUG); ?><span><?php echo esc_html__( 'Thank you for using Weight Tracker', WE_LS_SLUG); ?></span></a></li>
+                                        <li><a>2. <?php echo esc_html__( 'Setup', WE_LS_SLUG); ?><span><?php echo esc_html__( 'How to use Shortcodes and Widgets', WE_LS_SLUG); ?></span></a></li>
+                                        <li><a>3. <?php echo esc_html__( 'Admin Interface', WE_LS_SLUG); ?><span><?php echo esc_html__( 'Viewing and interacting with your user\'s data', WE_LS_SLUG); ?></span></a></li>
+                                        <li><a>4. <?php echo esc_html__( 'Features and Guides', WE_LS_SLUG); ?><span><?php echo esc_html__( 'Useful features and guides', WE_LS_SLUG); ?></span></a></li>
+                                        <li><a>5. <?php echo esc_html__( 'Meal Tracker', WE_LS_SLUG ); ?><span><?php echo esc_html__( 'Track meals and calories too', WE_LS_SLUG); ?></span></a></li>
+                                        <li><a>6. <?php echo esc_html__( 'Customisations', WE_LS_SLUG); ?><span><?php echo esc_html__( 'Custom modifications to Weight Tracker', WE_LS_SLUG); ?></span></a></li>
                                     </ul>
                                     <div>
                                         <div>

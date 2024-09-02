@@ -80,7 +80,7 @@ function ws_ls_note_shortcode( $user_defined_arguments ) {
 	$arguments  = shortcode_atts( [ 'user-id'           => get_current_user_id(),
 									'paging'            => true,
 									'notes-per-page'    => 10,                    // Return 10 notes by default
-									'message-no-data'   => __( 'You currently have no notes from the administrator.', WE_LS_SLUG ),
+									'message-no-data'   => esc_html__( 'You currently have no notes from the administrator.', WE_LS_SLUG ),
 									'uikit'             => false
 	], $user_defined_arguments );
 
@@ -106,8 +106,8 @@ function ws_ls_note_shortcode( $user_defined_arguments ) {
 													'format'        => '?tab=messages&notes-page=%#%',
 													'current'       => $page,
 													'total'         => ceil( $stats[ 'notes-count-visible' ] / $arguments[ 'notes-per-page' ] ),
-													'prev_text'     => __( '« prev', WE_LS_SLUG ),
-													'next_text'     => __('next »', WE_LS_SLUG ),
+													'prev_text'     => esc_html__( '« prev', WE_LS_SLUG ),
+													'next_text'     => esc_html__('next »', WE_LS_SLUG ),
 			]);
 		}
 

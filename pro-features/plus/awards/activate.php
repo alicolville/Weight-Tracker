@@ -74,7 +74,7 @@ function ws_ls_awards_activate() {
 											{badge}
 											{url-link}
 											{custom_message}',
-		                                    __( 'Receiving an award' , WE_LS_SLUG )
+		                                    esc_html__( 'Receiving an award' , WE_LS_SLUG )
 	        );
 
         }

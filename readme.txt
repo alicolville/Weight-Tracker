@@ -171,6 +171,7 @@ Several fixes based upon WordPress's plugin feedback:
 * CDNs for the following have been removed, their files are now served via the plugins folder: Chart.js, FontAwesome
 * Updated Readme to include references to 3rd party libraries.
 * Moved inline <script> into external JS files.
+* Changed all references of __() to esc_html__().
 
 = 10.9.2 =
 

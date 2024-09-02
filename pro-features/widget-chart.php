@@ -10,12 +10,12 @@ class ws_ls_widget_chart extends WP_Widget {
 
 		parent::__construct(
 			'ws_ls_widget_chart',
-			__( 'Weight Tracker - Chart', WE_LS_SLUG ),
-			array( 'description' => __( 'Display a chart to see your current progress.', WE_LS_SLUG ) ) // Args
+			esc_html__( 'Weight Tracker - Chart', WE_LS_SLUG ),
+			array( 'description' => esc_html__( 'Display a chart to see your current progress.', WE_LS_SLUG ) ) // Args
 		);
 
 		$this->field_values = array(
-			'title'                 => __( 'Weight Tracker', WE_LS_SLUG ),
+			'title'                 => esc_html__( 'Weight Tracker', WE_LS_SLUG ),
 			'max-points'            => 5,
 			'user-id'               => '',
 			'type'                  => 'line',
@@ -98,30 +98,30 @@ class ws_ls_widget_chart extends WP_Widget {
 		}
 
 		?>
-		<p><?php echo __( 'Display a chart and / or form for the current user. The widget will be hidden if the user is <strong>not logged in</strong>.', WE_LS_SLUG ); ?></p>
+		<p><?php echo esc_html__( 'Display a chart and / or form for the current user. The widget will be hidden if the user is <strong>not logged in</strong>.', WE_LS_SLUG ); ?></p>
 
 		<p>
 			<?php
 				$field_id = $this->get_field_id( 'title' );
 			?>
-			<label for="<?php echo $field_id; ?>"><?php echo __( 'Title', WE_LS_SLUG ); ?></label>
+			<label for="<?php echo $field_id; ?>"><?php echo esc_html__( 'Title', WE_LS_SLUG ); ?></label>
 			<input class="widefat" id="<?php echo $field_id; ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $field_values['title'] ); ?>">
 		</p>
 		<p>
 			<?php
 				$field_id = $this->get_field_id( 'type' );
 			?>
-			<label for="<?php echo $field_id; ?>"><?php echo __( 'Type', WE_LS_SLUG ); ?></label>
+			<label for="<?php echo $field_id; ?>"><?php echo esc_html__( 'Type', WE_LS_SLUG ); ?></label>
 			<select class="widefat" name="<?php echo $this->get_field_name( 'type' ); ?>" id="<?php echo $field_id; ?>">
-				<option value="line" <?php selected( $field_values['type'], 'line' ); ?>><?php echo __( 'Line Chart', WE_LS_SLUG ); ?></option>
-				<option value="bar" <?php selected( $field_values['type'], 'bar' ); ?>><?php echo __( 'Bar Chart', WE_LS_SLUG ); ?></option>
+				<option value="line" <?php selected( $field_values['type'], 'line' ); ?>><?php echo esc_html__( 'Line Chart', WE_LS_SLUG ); ?></option>
+				<option value="bar" <?php selected( $field_values['type'], 'bar' ); ?>><?php echo esc_html__( 'Bar Chart', WE_LS_SLUG ); ?></option>
 			</select>
 		</p>
 		<p>
 			<?php
 				$field_id = $this->get_field_id( 'max-points' );
 			?>
-			<label for="<?php echo $field_id; ?>"><?php echo __( 'Maximum number of plot points on chart', WE_LS_SLUG ); ?></label>
+			<label for="<?php echo $field_id; ?>"><?php echo esc_html__( 'Maximum number of plot points on chart', WE_LS_SLUG ); ?></label>
 			<select class="widefat" name="<?php echo $this->get_field_name( 'max-points' ); ?>" id="<?php echo $field_id; ?>">
 				<option value="5" <?php selected( $field_values['max-points'], '5' ); ?>>5</option>
 				<option value="10" <?php selected( $field_values['max-points'], '10' ); ?>>10</option>
@@ -134,30 +134,30 @@ class ws_ls_widget_chart extends WP_Widget {
 				$field_id = $this->get_field_id( 'not-logged-in-message' );
 			?>
 			<label
-				for="<?php echo $field_id; ?>"><?php echo __( 'Message to display if not logged in', WE_LS_SLUG ); ?></label>
+				for="<?php echo $field_id; ?>"><?php echo esc_html__( 'Message to display if not logged in', WE_LS_SLUG ); ?></label>
 			<input class="widefat" id="<?php echo $field_id; ?>" name="<?php echo $this->get_field_name( 'not-logged-in-message' ); ?>" type="text" value="<?php echo esc_attr( $field_values['not-logged-in-message'] ); ?>">
 		</p>
 		<p>
-			<small><?php echo __( 'By default the widget is hidden if the user is not logged in. If you wish, you can display a message to the visitor instead.', WE_LS_SLUG ); ?></small>
+			<small><?php echo esc_html__( 'By default the widget is hidden if the user is not logged in. If you wish, you can display a message to the visitor instead.', WE_LS_SLUG ); ?></small>
 		</p>
 		<p>
 			<?php
 			$field_id = $this->get_field_id( 'user-id' );
 			?>
-			<label for="<?php echo $field_id; ?>"><?php echo __( 'User ID (leave blank to show chart for current user)', WE_LS_SLUG ); ?></label>
+			<label for="<?php echo $field_id; ?>"><?php echo esc_html__( 'User ID (leave blank to show chart for current user)', WE_LS_SLUG ); ?></label>
 			<input class="widefat" id="<?php echo $field_id; ?>" name="<?php echo $this->get_field_name( 'user-id' ); ?>" type="text" value="<?php echo (int) $field_values['user-id']; ?>">
 		</p>
 		<p>
-			<small><?php echo __( 'Note: By default, the chart will be displayed in the weight unit chosen by the logged in user. If not specified the plugin default will be used.', WE_LS_SLUG ); ?></small>
+			<small><?php echo esc_html__( 'Note: By default, the chart will be displayed in the weight unit chosen by the logged in user. If not specified the plugin default will be used.', WE_LS_SLUG ); ?></small>
 		</p>
 
 		<p><?php
 			$field_id = $this->get_field_id( 'exclude-measurements' );
 			?>
-			<label for="<?php echo $field_id; ?>"><?php echo __( 'Hide Meta Fields (Pro)?', WE_LS_SLUG ); ?></label>
+			<label for="<?php echo $field_id; ?>"><?php echo esc_html__( 'Hide Meta Fields (Pro)?', WE_LS_SLUG ); ?></label>
 			<select class="widefat" name="<?php echo $this->get_field_name( 'exclude-measurements' ); ?>" id="<?php echo $field_id; ?>">
-				<option value="no" <?php selected( $field_values['exclude-measurements'], 'no' ); ?>><?php echo __( 'No', WE_LS_SLUG ); ?></option>
-				<option value="yes" <?php selected( $field_values['exclude-measurements'], 'yes' ); ?>><?php echo __( 'Yes', WE_LS_SLUG ); ?></option>
+				<option value="no" <?php selected( $field_values['exclude-measurements'], 'no' ); ?>><?php echo esc_html__( 'No', WE_LS_SLUG ); ?></option>
+				<option value="yes" <?php selected( $field_values['exclude-measurements'], 'yes' ); ?>><?php echo esc_html__( 'Yes', WE_LS_SLUG ); ?></option>
 			</select>
 		</p>
 

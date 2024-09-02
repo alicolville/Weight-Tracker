@@ -18,7 +18,7 @@ function ws_ls_shortcode_if( $user_defined_arguments, $content = null, $level = 
 
     // Check if we have content between opening and closing [wlt-if] tags, if we don't then nothing to render so why bother proceeding?
     if( true === empty( $content ) ) {
-        return sprintf( '<p>%s</p>',  __( 'To use this shortcode, you must specify content between opening and closing tag e.g. [wlt-if]something to show if IF is true[/wlt-if]', WE_LS_SLUG ) );
+        return sprintf( '<p>%s</p>',  esc_html__( 'To use this shortcode, you must specify content between opening and closing tag e.g. [wlt-if]something to show if IF is true[/wlt-if]', WE_LS_SLUG ) );
     }
 
     $arguments = shortcode_atts( [      'user-id'       => get_current_user_id(),
@@ -39,7 +39,7 @@ function ws_ls_shortcode_if( $user_defined_arguments, $content = null, $level = 
 
     // Remove Pro Plus fields if they don't have a license
     if( false === WS_LS_IS_PRO_PLUS && true === ( $arguments['field'] == 'bmr' ) ) {
-        return sprintf( '<p>%s</p>', __( 'Unfortunately the field you specified is for Pro Plus licenses only.', WE_LS_SLUG ) );
+        return sprintf( '<p>%s</p>', esc_html__( 'Unfortunately the field you specified is for Pro Plus licenses only.', WE_LS_SLUG ) );
     }
 
     $else_content   = '';

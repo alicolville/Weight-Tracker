@@ -12,22 +12,22 @@ function ws_ls_build_admin_menu() {
 	add_menu_page( WE_LS_TITLE, WE_LS_TITLE, $minimum_role_to_view, 'ws-ls-data-home', 'ws_ls_admin_page_data_home', 'dashicons-chart-line');
 
     // Display manage user screens to relevant roles.
-    add_submenu_page( 'ws-ls-data-home', __( 'User Data', WE_LS_SLUG ),  __( 'User Data', WE_LS_SLUG ), $minimum_role_to_view, 'ws-ls-data-home', 'ws_ls_admin_page_data_home' );
-	add_submenu_page( 'ws-ls-data-home', __( 'User Groups', WE_LS_SLUG ),  __( 'User Groups', WE_LS_SLUG ), 'manage_options', 'ws-ls-user-groups', 'ws_ls_settings_page_group' );
-	add_submenu_page( 'ws-ls-data-home', __( 'Custom Fields', WE_LS_SLUG ),  __('Custom Fields', WE_LS_SLUG), 'manage_options', 'ws-ls-meta-fields', 'ws_ls_meta_fields_page' );
-    add_submenu_page( 'ws-ls-data-home', __( 'Awards', WE_LS_SLUG ),  __('Awards', WE_LS_SLUG), 'manage_options', 'ws-ls-awards', 'ws_ls_awards_page' );
-    add_submenu_page( 'ws-ls-data-home', __( 'Challenges', WE_LS_SLUG ),  __('Challenges', WE_LS_SLUG), 'manage_options', 'ws-ls-challenges', 'ws_ls_challenges_admin_page' );
+    add_submenu_page( 'ws-ls-data-home', esc_html__( 'User Data', WE_LS_SLUG ),  esc_html__( 'User Data', WE_LS_SLUG ), $minimum_role_to_view, 'ws-ls-data-home', 'ws_ls_admin_page_data_home' );
+	add_submenu_page( 'ws-ls-data-home', esc_html__( 'User Groups', WE_LS_SLUG ),  esc_html__( 'User Groups', WE_LS_SLUG ), 'manage_options', 'ws-ls-user-groups', 'ws_ls_settings_page_group' );
+	add_submenu_page( 'ws-ls-data-home', esc_html__( 'Custom Fields', WE_LS_SLUG ),  esc_html__('Custom Fields', WE_LS_SLUG), 'manage_options', 'ws-ls-meta-fields', 'ws_ls_meta_fields_page' );
+    add_submenu_page( 'ws-ls-data-home', esc_html__( 'Awards', WE_LS_SLUG ),  esc_html__('Awards', WE_LS_SLUG), 'manage_options', 'ws-ls-awards', 'ws_ls_awards_page' );
+    add_submenu_page( 'ws-ls-data-home', esc_html__( 'Challenges', WE_LS_SLUG ),  esc_html__('Challenges', WE_LS_SLUG), 'manage_options', 'ws-ls-challenges', 'ws_ls_challenges_admin_page' );
 
-	$menu_text = ( false === WS_LS_IS_PRO && false === WS_LS_IS_PRO_PLUS ) ? __('Upgrade', WE_LS_SLUG) : __('Your License', WE_LS_SLUG);
+	$menu_text = ( false === WS_LS_IS_PRO && false === WS_LS_IS_PRO_PLUS ) ? esc_html__('Upgrade', WE_LS_SLUG) : esc_html__('Your License', WE_LS_SLUG);
 
-	add_submenu_page( 'ws-ls-data-home', __('Settings', WE_LS_SLUG),  __('Settings', WE_LS_SLUG), 'manage_options', 'ws-ls-settings', 'ws_ls_settings_page');
+	add_submenu_page( 'ws-ls-data-home', esc_html__('Settings', WE_LS_SLUG),  esc_html__('Settings', WE_LS_SLUG), 'manage_options', 'ws-ls-settings', 'ws_ls_settings_page');
 	add_submenu_page( 'ws-ls-data-home', $menu_text,  $menu_text, 'manage_options', 'ws-ls-license', 'ws_ls_advertise_pro');
 
     if ( true === ws_ls_setup_wizard_show_notice() ) {
-        add_submenu_page( 'ws-ls-data-home', __('Setup Wizard', WE_LS_SLUG),  __('Setup Wizard', WE_LS_SLUG), 'manage_options', 'ws-ls-data-setup-wizard', 'ws_ls_setup_wizard_page');
+        add_submenu_page( 'ws-ls-data-home', esc_html__('Setup Wizard', WE_LS_SLUG),  esc_html__('Setup Wizard', WE_LS_SLUG), 'manage_options', 'ws-ls-data-setup-wizard', 'ws_ls_setup_wizard_page');
     }
 
-	add_submenu_page( 'ws-ls-data-home', __('Help & Log', WE_LS_SLUG),  __('Help & Log', WE_LS_SLUG), 'manage_options', 'ws-ls-help', 'ws_ls_help_page');
+	add_submenu_page( 'ws-ls-data-home', esc_html__('Help & Log', WE_LS_SLUG),  esc_html__('Help & Log', WE_LS_SLUG), 'manage_options', 'ws-ls-help', 'ws_ls_help_page');
 
 }
 add_action( 'admin_menu', 'ws_ls_build_admin_menu' );
@@ -236,8 +236,8 @@ function ws_ls_use_minified() {
 
 function ws_ls_admin_config() {
 	return [	'ajax-security-nonce'       => wp_create_nonce( 'ws-ls-nonce' ),
-				'preferences-save-ok'       => __('The preferences for this user have been saved.', WE_LS_SLUG ),
-				'preferences-saved-fail'    => __('An error occurred while trying to save the user\'s preferences.', WE_LS_SLUG ),
+				'preferences-save-ok'       => esc_html__('The preferences for this user have been saved.', WE_LS_SLUG ),
+				'preferences-saved-fail'    => esc_html__('An error occurred while trying to save the user\'s preferences.', WE_LS_SLUG ),
 				'preferences-page'          => ws_ls_get_link_to_user_profile(( false === empty( $_GET[ 'user-id'] ) ) ? esc_attr( $_GET[ 'user-id' ] ) : '' ) ];
 }
 
@@ -259,7 +259,7 @@ add_action( 'wlt-hook-data-user-deleted', 'ws_ls_tidy_cache_on_delete' );
 function wlt_user_action_links( $actions, $user_object ) {
     $actions[ 'weight-tracker' ] = sprintf(  '<a href="%s">%s</a>',
         ws_ls_get_link_to_user_profile( $user_object->ID ),
-        __( 'Weight entries', WE_LS_SLUG )
+        esc_html__( 'Weight entries', WE_LS_SLUG )
     );
 
     return $actions;
