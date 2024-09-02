@@ -156,8 +156,9 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 Several fixes based upon WordPress's plugin feedback:
 
-* Included all non minified versions of JS.
+* Included all non minified versions of 3rd party JS.
 * Updated Readme to include references to 3rd party libraries.
+* Moved inline <script> into external JS files.
 
 = 10.9.2 =
 

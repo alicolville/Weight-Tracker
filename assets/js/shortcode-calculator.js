@@ -46,3 +46,7 @@
   });
 
 } )( jQuery );
+
+function updateInputValue(val, elId) {   
+    document.getElementById(elId).value=val;
+}

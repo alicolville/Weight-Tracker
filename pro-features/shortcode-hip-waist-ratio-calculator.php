@@ -113,11 +113,6 @@ function ws_ls_waist_to_hip_ratio_calculator( $user_defined_arguments ) {
 							        <button type="button" class="button-calculate ykuk-button ykuk-button-default">%5$s</button>
 							    </div>
 							</form>
-							<script>
-									function updateInputValue(val, elId) {
-							          document.getElementById(elId).value=val;
-							        }
-							</script>
 						</li>',
 		__( 'Waist (cm)', WE_LS_SLUG ),
 		__( 'Waist (inches)', WE_LS_SLUG ),
