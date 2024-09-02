@@ -1766,4 +1766,3 @@ function ws_ls_js_redirect( $url ) {
 
 	wp_enqueue_script( 'wt-js-simple-redirect', plugins_url( '../assets/js/simple-redirect.js', __FILE__ ), [ 'jquery' ], WE_LS_CURRENT_VERSION, true );
 }
-
