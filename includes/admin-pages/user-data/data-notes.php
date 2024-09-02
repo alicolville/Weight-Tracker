@@ -61,18 +61,6 @@ function ws_ls_admin_page_data_notes_for_user() {
 			}
 
 		?>
-		<style>
-			.ws-note-delete {
-				margin: 2px;
-			}
-
-			<?php if ( false === is_admin() ): ?>
-					.ws-note-delete-div {
-						display: none !important;
-					}
-			<?php endif; ?>
-		</style>
-
 		<br class="clear">
 	</div>
 <?php
