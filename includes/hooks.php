@@ -238,7 +238,7 @@ function ws_ls_admin_config() {
 	return [	'ajax-security-nonce'       => wp_create_nonce( 'ws-ls-nonce' ),
 				'preferences-save-ok'       => esc_html__('The preferences for this user have been saved.', WE_LS_SLUG ),
 				'preferences-saved-fail'    => esc_html__('An error occurred while trying to save the user\'s preferences.', WE_LS_SLUG ),
-				'preferences-page'          => ws_ls_get_link_to_user_profile(( false === empty( $_GET[ 'user-id'] ) ) ? esc_attr( $_GET[ 'user-id' ] ) : '' ) ];
+				'preferences-page'          => ws_ls_get_link_to_user_profile(( false === empty( $_GET[ 'user-id'] ) ) ? (int) $_GET[ 'user-id' ] : '' ) ];
 }
 
 /**
