@@ -44,7 +44,7 @@ function ws_ls_challenges_admin_page() {
             }
         }
     }
-
+    
     ?>
     <div class="wrap ws-ls-challenges ws-ls-admin-page">
     <div id="poststuff">
@@ -156,10 +156,13 @@ function ws_ls_challenges_admin_page() {
                                     if ( false !== $entries_processed ) {
                                         printf( '<p>- %d %s</p>', $entries_processed, __('entries processed', WE_LS_SLUG ) );
 
-                                        printf( '<script>window.location.replace( "%s" )</script>', ws_ls_challenge_link( 1, 'processing' ) );
+                                        $redirect_url = ws_ls_challenge_link( 1, 'processing' );
                                     } else {
-                                        printf( '<script>window.location.replace( "%s" )</script>', ws_ls_challenge_link( 1, 'list' ) );
+                                        $redirect_url = ws_ls_challenge_link( 1, 'list' );
                                     }
+                                    
+                                    ws_ls_js_redirect( $redirect_url );
+
                                 ?>
                             </div>
                         </div>

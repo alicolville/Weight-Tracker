@@ -1749,3 +1749,21 @@ function ws_ls_user_get_name( $user_id ) {
 
 	return $name;
 }
+
+/**
+ * Redirect using JS
+ * @param $user_id
+ *
+ * @return string
+ */
+function ws_ls_js_redirect( $url ) {
+
+	if ( true === empty( $url ) ) {
+		return;
+	}
+
+	printf( '<span class="ws-ls-js-redirect" data-url="%s"></span>', esc_url( $url ) );
+
+	wp_enqueue_script( 'wt-js-simple-redirect', plugins_url( '../assets/js/simple-redirect.js', __FILE__ ), [ 'jquery' ], WE_LS_CURRENT_VERSION, true );
+}
+
