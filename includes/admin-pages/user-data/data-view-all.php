@@ -6,7 +6,7 @@ function ws_ls_admin_page_view_all() {
 
     ws_ls_permission_check_message();
 
-	$title = apply_filters( 'wlt-filter-view-all-title', __( 'View All Data', WE_LS_SLUG ) );
+	$title = apply_filters( 'wlt-filter-view-all-title', esc_html__( 'View All Data', WE_LS_SLUG ) );
     ?>
 <div class="wrap ws-ls-user-data ws-ls-admin-page">
 	<h1><?php echo $title; ?></h1>
@@ -39,21 +39,21 @@ function ws_ls_admin_page_view_all() {
                                                                             <strong>%s:</strong> %s | <strong>%s:</strong> %s | <strong>%s:</strong> %s |
                                                                             <a href="%s">%s</a> | <a href="%s">%s</a>
                                                                         </p>',
-                                                __( 'Number of WordPress users', WE_LS_SLUG ),
+                                                esc_html__( 'Number of WordPress users', WE_LS_SLUG ),
                                                 ws_ls_round_number( $entry_counts['number-of-users'] ),
-                                                __( 'Number of weight entries', WE_LS_SLUG ),
+                                                esc_html__( 'Number of weight entries', WE_LS_SLUG ),
                                                 ws_ls_round_number( $entry_counts['number-of-entries'] ),
-                                                __( 'Number of targets entered', WE_LS_SLUG ),
+                                                esc_html__( 'Number of targets entered', WE_LS_SLUG ),
                                                 ws_ls_round_number( $entry_counts['number-of-targets'] ),
                                                 ws_ls_get_link_to_export(),
-                                                __( 'Export to CSV', WE_LS_SLUG ),
+                                                esc_html__( 'Export to CSV', WE_LS_SLUG ),
                                                 ws_ls_get_link_to_export( 'json' ),
-                                                __( 'Export to JSON', WE_LS_SLUG )
+                                                esc_html__( 'Export to JSON', WE_LS_SLUG )
                                             );
                                         }
 
                                         if ( $entry_counts['number-of-entries'] > 5000 ) {
-                                            printf( '<p class="ws-ls-validation-error"><strong>%s</strong></p>', __( 'For performance reasons, the following table shall be restricted to a maximum of 5000 entries. For more data, please view individual user records.' ) );
+                                            printf( '<p class="ws-ls-validation-error"><strong>%s</strong></p>', esc_html__( 'For performance reasons, the following table shall be restricted to a maximum of 5000 entries. For more data, please view individual user records.' ) );
                                         }
 
                                         // Show meta data?
@@ -71,7 +71,7 @@ function ws_ls_admin_page_view_all() {
                                             echo sprintf(
                                                 '&nbsp;<a class="btn button-secondary" href="%s"><i class="fas fa-book-reader"></i> %s</a>',
                                                 admin_url( 'admin.php?page=ws-ls-data-home&mode=all&show-meta=' ) . ( ( false === $show_meta ) ? 'y' : 'n' ),
-                                                ( false === $show_meta ) ? __( 'Include Custom Fields (Slower)', WE_LS_SLUG ) : __( 'Hide Custom Fields (Quicker)', WE_LS_SLUG )
+                                                ( false === $show_meta ) ? esc_html__( 'Include Custom Fields (Slower)', WE_LS_SLUG ) : esc_html__( 'Hide Custom Fields (Quicker)', WE_LS_SLUG )
                                             );
 
                                         }

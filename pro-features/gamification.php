@@ -18,14 +18,14 @@ defined('ABSPATH') or die( 'Jog on!' );
 function ws_ls_mycred_add_hooks( $installed, $point_type ) {
 
 	// Weight added
-	$installed[ 'ws_ls_weight_entry' ] = [	'title'        => __( 'Weight Tracker: Weight Entry Added', WE_LS_SLUG ),
-											'description'  => __( 'Reward a user when they have recorded a new weight entry.', WE_LS_SLUG ),
+	$installed[ 'ws_ls_weight_entry' ] = [	'title'        => esc_html__( 'Weight Tracker: Weight Entry Added', WE_LS_SLUG ),
+											'description'  => esc_html__( 'Reward a user when they have recorded a new weight entry.', WE_LS_SLUG ),
 											'callback'     => [ 'ws_ls_mycred_weight_entry_class' ]
 	];
 
 	// Target added
-	$installed[ 'ws_ls_target_set' ] = 	[	'title'        => __( 'Weight Tracker: Target set', WE_LS_SLUG ),
-												'description'  => __( 'Reward a user when they have set their target.', WE_LS_SLUG ),
+	$installed[ 'ws_ls_target_set' ] = 	[	'title'        => esc_html__( 'Weight Tracker: Target set', WE_LS_SLUG ),
+												'description'  => esc_html__( 'Reward a user when they have set their target.', WE_LS_SLUG ),
 												'callback'     => [ 'ws_ls_mycred_target_set_class' ]
 	];
 
@@ -51,7 +51,7 @@ function ws_ls_mycred_load_hooks() {
 			parent::__construct( [
 				'id'       => 'ws_ls_weight_entry',
 				'defaults' => [ 'ws_ls_weight_entry'    => [	'creds'  => 10,
-															'log'    => __( 'Weight entry added', WE_LS_SLUG ),
+															'log'    => esc_html__( 'Weight entry added', WE_LS_SLUG ),
 															'limit'  => '0/x'
 															]
 				]
@@ -167,7 +167,7 @@ function ws_ls_mycred_load_hooks() {
 			parent::__construct( [
 									'id'       => 'ws_ls_target_set',
 									'defaults' => [ 'ws_ls_target_set'    => [	'creds'  => 10,
-																			'log'    => __( 'Weight target set', WE_LS_SLUG ),
+																			'log'    => esc_html__( 'Weight target set', WE_LS_SLUG ),
 																			'limit'  => '0/x'
 									]
 								]

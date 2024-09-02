@@ -32,7 +32,7 @@ function ws_ls_photos_shortcode_gallery($user_defined_arguments) {
 	}
 
 	$arguments = shortcode_atts([   'error-message'                         => ( false === empty( $user_defined_arguments[ 'source' ] ) ) ?
-																				__('No awards.', WE_LS_SLUG ) : __('It doesn\'t look you\'ve uploaded any photos.', WE_LS_SLUG ),
+																				esc_html__('No awards.', WE_LS_SLUG ) : esc_html__('It doesn\'t look you\'ve uploaded any photos.', WE_LS_SLUG ),
 									'user-id'                               => get_current_user_id(),
 									'mode'                                  => 'default',                   // Gallery type: carousel, default or compact
 									'height'                                => 800,                         // Height of slider if compact or default theme

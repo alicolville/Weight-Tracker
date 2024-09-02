@@ -5,7 +5,7 @@ defined('ABSPATH') or die('Jog on!');
 /**
  * Plugin Name:         Weight Tracker
  * Description:         Allow your users to track their weight, body measurements, photos and other pieces of custom data. Display in charts, tables, shortcodes and widgets. Manage their data, issue awards, email notifications, etc! Provide advanced data on Body Mass Index (BMI), Basal Metabolic Rate (BMR), Calorie intake, Harris Benedict Formula, Macronutrients Calculator and more.
- * Version:             10.9.2
+ * Version:             10.10
  * Requires at least:   6.0
  * Tested up to:		6.5
  * Requires PHP:        7.4
@@ -18,7 +18,8 @@ defined('ABSPATH') or die('Jog on!');
  */
 
 define( 'WS_LS_ABSPATH', plugin_dir_path( __FILE__ ) );
-define( 'WE_LS_CURRENT_VERSION', '10.9.2' );
+define( 'WS_LS_BASE_URL', plugin_dir_url( __FILE__ ) );
+define( 'WE_LS_CURRENT_VERSION', '10.10' );
 define( 'WE_LS_TITLE', 'Weight Tracker' );
 define( 'WE_LS_SLUG', 'weight-loss-tracker' );
 define( 'WE_LS_LICENSE_TYPES_URL', 'https://docs.yeken.uk/features.html' );
@@ -26,8 +27,8 @@ define( 'WE_LS_CALCULATIONS_URL', '	https://docs.yeken.uk/calculations.html' );
 define( 'WE_LS_UPGRADE_TO_PRO_URL', 'https://shop.yeken.uk/product/weight-tracker-pro/' );
 define( 'WE_LS_UPGRADE_TO_PRO_PLUS_URL', 'https://shop.yeken.uk/product/weight-tracker-pro-plus/' );
 define( 'WE_LS_FREE_TRIAL_URL', 'https://shop.yeken.uk/get-a-trial-license/' );
-define( 'WE_LS_CDN_CHART_JS', 'https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js' );
-define( 'WE_LS_CDN_FONT_AWESOME_CSS', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' );
+define( 'WE_LS_CDN_CHART_JS', WS_LS_BASE_URL . 'assets/js/libraries/chart-4.4.1.min.js' );
+define( 'WE_LS_CDN_FONT_AWESOME_CSS', WS_LS_BASE_URL . 'assets/css/libraries/fontawesome-4.7.0.min.css' );
 define( 'WE_LS_PRO_PRICE', 60.00 );
 define( 'WE_LS_PRO_PLUS_PRICE', 120.00 );
 
@@ -181,16 +182,3 @@ function ws_ls_load_textdomain() {
 	load_plugin_textdomain( WE_LS_SLUG, false, dirname( plugin_basename( __FILE__ )  ) . '/includes/languages/' );
 }
 add_action('plugins_loaded', 'ws_ls_load_textdomain');
-
-
-
-function test() {
-
-	$user_id = 1;
-
-	$s = ws_ls_emailer_user_lists( $user_id );
-	print_r( $s);
-	var_dump(ws_ls_emailer_user_has_optedin( 'birthdays', $user_id ));
-	die;
-}
-// add_action( 'init', 'test' );

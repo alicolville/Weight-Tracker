@@ -57,11 +57,11 @@ function ws_ls_note_email_activate() {
 		// Insert the notification template
 		if ( false === ws_ls_emailer_get('note-added') ) {
 
-			$email = sprintf( '<p>%s {first-name},</p>', __( 'Hello' , WE_LS_SLUG) );
-			$email .= __( '<p><strong>A new note has been sent to you from {name}:</strong></p>' , WE_LS_SLUG);
-			$email .= __( '<p>{data}</p>' , WE_LS_SLUG) . PHP_EOL . PHP_EOL;
+			$email = sprintf( '<p>%s {first-name},</p>', esc_html__( 'Hello' , WE_LS_SLUG) );
+			$email .= esc_html__( '<p><strong>A new note has been sent to you from {name}:</strong></p>' , WE_LS_SLUG);
+			$email .= esc_html__( '<p>{data}</p>' , WE_LS_SLUG) . PHP_EOL . PHP_EOL;
 
-			ws_ls_emailer_add( 'note-added', 'Weight Tracker: New note', $email, __( 'Note added' , WE_LS_SLUG ) );
+			ws_ls_emailer_add( 'note-added', 'Weight Tracker: New note', $email, esc_html__( 'Note added' , WE_LS_SLUG ) );
 		}
 }
 

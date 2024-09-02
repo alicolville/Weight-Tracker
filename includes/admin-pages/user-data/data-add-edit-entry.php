@@ -12,7 +12,7 @@ function ws_ls_admin_page_data_add_edit() {
 
 	// We need to ensure we either have a user id (to add a new entry to) OR an existing entry ID so we can load / edit it.
 	if(empty($user_id) && empty($entry_id)) {
-		echo __('There was an issue loading this page', WE_LS_SLUG);
+		echo esc_html__('There was an issue loading this page', WE_LS_SLUG);
 		return;
 	}
 
@@ -38,7 +38,7 @@ function ws_ls_admin_page_data_add_edit() {
                         }
                         ?>
 						<div class="postbox">
-							<h2><span><?php echo __('Add / Edit an entry', WE_LS_SLUG); ?></span></h2>
+							<h2><span><?php echo esc_html__('Add / Edit an entry', WE_LS_SLUG); ?></span></h2>
 							<div class="inside">
 								<?php
 	                                if ( true === WS_LS_IS_PRO ) {
@@ -51,7 +51,7 @@ function ws_ls_admin_page_data_add_edit() {
 		                                ] );
 
 	                                } else {
-	                                    echo sprintf( '<p>%s</p>', __('A Pro license is required to add / edit a weight entry.', WE_LS_SLUG) );
+	                                    echo sprintf( '<p>%s</p>', esc_html__('A Pro license is required to add / edit a weight entry.', WE_LS_SLUG) );
                                     }
                                 ?>
 							</div>

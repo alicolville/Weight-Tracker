@@ -59,7 +59,7 @@ function ws_ls_shortcode_wt( $user_defined_arguments ) {
 	$html = '<div class="ws-ls-tracker">';
 
 	if ( false === is_user_logged_in() ) {
-		return ws_ls_component_alert( [ 'message' => __( 'You need to be logged in to record your weight.', WE_LS_SLUG ), 'type' => 'primary', 'closable' => false, 'include-login-link' => true ] ) . '</div>';
+		return ws_ls_component_alert( [ 'message' => esc_html__( 'You need to be logged in to record your weight.', WE_LS_SLUG ), 'type' => 'primary', 'closable' => false, 'include-login-link' => true ] ) . '</div>';
 	}
 
 	$shortcode_arguments[ 'kiosk-mode' ]                = ws_ls_to_bool( $shortcode_arguments[ 'kiosk-mode' ] );
@@ -111,7 +111,7 @@ function ws_ls_shortcode_wt( $user_defined_arguments ) {
 		if ( true === $shortcode_arguments[ 'user-loaded' ]
 				&& false === ws_ls_to_bool( $shortcode_arguments[ 'kiosk-hide-editing-name' ] )) {
 			$html .= sprintf( '%s: <strong>%s</strong>',
-								__( 'Editing', WE_LS_SLUG ),
+								esc_html__( 'Editing', WE_LS_SLUG ),
 								ws_ls_user_get_name( $shortcode_arguments[ 'user-id' ] )
 								);
 		}
@@ -158,9 +158,9 @@ function ws_ls_shortcode_wt( $user_defined_arguments ) {
 	                                                                   'sort'              => 'desc' ] );
 
 	if( 'true' === ws_ls_querystring_value( 'user-preference-saved', 'true' ) ) {
-		$html .= ws_ls_component_alert( [ 'message' => __( 'Your settings have been successfully saved!', WE_LS_SLUG ) ] );
+		$html .= ws_ls_component_alert( [ 'message' => esc_html__( 'Your settings have been successfully saved!', WE_LS_SLUG ) ] );
 	} elseif( 'true' === ws_ls_querystring_value( 'user-delete-all', 'true' ) ) {
-		$html .= ws_ls_component_alert( [ 'message' => __( 'Your data has successfully been deleted.', WE_LS_SLUG ) ] );
+		$html .= ws_ls_component_alert( [ 'message' => esc_html__( 'Your data has successfully been deleted.', WE_LS_SLUG ) ] );
 	}
 
 	if ( true !== ws_ls_to_bool( $shortcode_arguments[ 'hide-notifications' ] ) && true === WS_LS_IS_PRO_PLUS ) {
@@ -184,7 +184,7 @@ function ws_ls_shortcode_wt( $user_defined_arguments ) {
 		$link  = add_query_arg( [ 'group-view' => 'y', 'group-id' => $group_id ], ws_ls_get_url() );
 
 		$html .= sprintf( '	<div class="ykuk-divider-icon ykuk-width-1-1"></div>
-							<a class="ykuk-button ykuk-button-default ykuk-align-center ykuk-width-1-2" type="button" rel="noopener" target="_blank" href="%1$s" >%2$s</a>', esc_url( $link ), __( 'View Group Weight Loss for today', WE_LS_SLUG ) );
+							<a class="ykuk-button ykuk-button-default ykuk-align-center ykuk-width-1-2" type="button" rel="noopener" target="_blank" href="%1$s" >%2$s</a>', esc_url( $link ), esc_html__( 'View Group Weight Loss for today', WE_LS_SLUG ) );
 	}
 
 	return $html . '</div>';
@@ -392,10 +392,10 @@ function ws_ls_wt_tab_home( $arguments = [] ) {
 		$args[ 'legend-position' ]	        = 'bottom';
 		$args[ 'hide-custom-fields' ]       = $arguments[ 'hide-custom-fields-chart' ];
 
-		$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 	'header'        => __( 'Weight entries', WE_LS_SLUG ),
+		$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 	'header'        => esc_html__( 'Weight entries', WE_LS_SLUG ),
 																'body'          => ws_ls_shortcode_embed_chart( $args[ 'weight-data' ]  , $args ),
 																'footer-link'   => '#',
-																'footer-text'   => __('View in tabular format', WE_LS_SLUG),
+																'footer-text'   => esc_html__('View in tabular format', WE_LS_SLUG),
 																'tab-changer'   => 'history'
 		]);
 	}
@@ -420,7 +420,7 @@ function ws_ls_tab_settings( $arguments = [] ) {
 	// Include target form?
 	if ( true === ws_ls_targets_enabled() ) {
 
-		$html = ws_ls_ui_kit_info_box_with_header_footer( [ 'header'    => __( 'Your target', WE_LS_SLUG ),
+		$html = ws_ls_ui_kit_info_box_with_header_footer( [ 'header'    => esc_html__( 'Your target', WE_LS_SLUG ),
 		                                                    'body'      => ws_ls_form_weight( [ 'type'              => 'target',
 		                                                                                        'css-class-form'    => 'ws-ls-target-form',
 		                                                                                        'user-id'           => $arguments[ 'user-id' ],
@@ -443,7 +443,7 @@ function ws_ls_tab_settings( $arguments = [] ) {
 		                                            'redirect-url'      => $redirect_url
 		]);
 
-		$html .= ws_ls_ui_kit_info_box_with_header_footer( [    'header'    => __( 'Settings', WE_LS_SLUG ),
+		$html .= ws_ls_ui_kit_info_box_with_header_footer( [    'header'    => esc_html__( 'Settings', WE_LS_SLUG ),
 		                                                        'body'      => $settings
 		]);
 
@@ -456,7 +456,7 @@ function ws_ls_tab_settings( $arguments = [] ) {
 			                                            'redirect-url'          => $redirect_url
 			]);
 
-			$html .= ws_ls_ui_kit_info_box_with_header_footer( [    'header'    => __( 'Delete your existing data', WE_LS_SLUG ),
+			$html .= ws_ls_ui_kit_info_box_with_header_footer( [    'header'    => esc_html__( 'Delete your existing data', WE_LS_SLUG ),
 			                                                        'body'      => $settings
 			]);
 		}
@@ -475,7 +475,7 @@ function ws_ls_tab_notes( $arguments = [] ) {
 
 	$content = ws_ls_note_shortcode( [ 'user-id' => $arguments[ 'user-id' ], 'notes-per-page' => 5, 'uikit' => true ]);
 
-	return ws_ls_ui_kit_info_box_with_header_footer( [ 	'header' 		=> __( 'Messages', WE_LS_SLUG ),
+	return ws_ls_ui_kit_info_box_with_header_footer( [ 	'header' 		=> esc_html__( 'Messages', WE_LS_SLUG ),
 														'body-class'	=> 'ykuk-text-small',
 														'body' 			=> $content
 	]);
@@ -488,7 +488,7 @@ function ws_ls_tab_notes( $arguments = [] ) {
  * @return string
  */
 function ws_ls_tab_add_entry( $arguments = [] ) {
-	return ws_ls_ui_kit_info_box_with_header_footer( [	'header' 		=> __( 'Add a new entry', WE_LS_SLUG ),
+	return ws_ls_ui_kit_info_box_with_header_footer( [	'header' 		=> esc_html__( 'Add a new entry', WE_LS_SLUG ),
 														'body' 			=> ws_ls_wt_form( $arguments )
 	] );
 }
@@ -522,7 +522,7 @@ function ws_ls_wt_tab_table( $arguments = [] ) {
 												'enable-meta-fields'    => ! $arguments[ 'hide-fields-meta' ]
 	] );
 
-	$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 	'header' 		=> __( 'Your entries', WE_LS_SLUG ),
+	$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 	'header' 		=> esc_html__( 'Your entries', WE_LS_SLUG ),
 															'body-class'	=> 'ykuk-text-small',
 															'body' 			=> $inner_html
 
@@ -540,13 +540,13 @@ function ws_ls_wt_tab_table( $arguments = [] ) {
 function ws_ls_tab_gallery( $arguments = [] ) {
 	$html = '<div class="ykuk-grid-small ykuk-text-center ykuk-child-width-1-1 ykuk-child-width-1-2@s ykuk-grid-match ykuk-text-small" ykuk-grid>
 				<div>
-					' . ws_ls_ui_kit_info_box_with_header_footer( [ 'header' 		=> __( 'Latest Photo', WE_LS_SLUG ),
+					' . ws_ls_ui_kit_info_box_with_header_footer( [ 'header' 		=> esc_html__( 'Latest Photo', WE_LS_SLUG ),
 																	'body-class'	=> 'ykuk-text-small ykuk-text-center',
 																	'body' 			=> ws_ls_photos_shortcode_recent( [ 'user-id' => $arguments[ 'user-id' ] ] )
 					] ) . '
 				</div>
 				<div>
-					' . ws_ls_ui_kit_info_box_with_header_footer( [ 'header' 		=> __( 'Oldest Photo', WE_LS_SLUG ),
+					' . ws_ls_ui_kit_info_box_with_header_footer( [ 'header' 		=> esc_html__( 'Oldest Photo', WE_LS_SLUG ),
 																	'body-class'	=> 'ykuk-text-small ykuk-text-center',
 																	'body' 			=> ws_ls_photos_shortcode_oldest( [ 'user-id' => $arguments[ 'user-id' ] ] )
 					] ) . '
@@ -555,7 +555,7 @@ function ws_ls_tab_gallery( $arguments = [] ) {
 
 			';
 
-	$html .= ws_ls_ui_kit_info_box_with_header_footer( [    'header' 		=> __( 'All of your photos', WE_LS_SLUG ),
+	$html .= ws_ls_ui_kit_info_box_with_header_footer( [    'header' 		=> esc_html__( 'All of your photos', WE_LS_SLUG ),
 															'body-class'	=> 'ykuk-text-small ykuk-text-center',
 															'body' 			=> ws_ls_photos_shortcode_gallery( [ 'user-id' => $arguments[ 'user-id' ] ] )
 			] );
@@ -576,7 +576,7 @@ function ws_ls_wt_tab_awards( $arguments = [] ) {
 	$awards = ws_ls_awards_shortcode_gallery( $arguments );
 
 
-	$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 'header' 		=> __( 'Awards', WE_LS_SLUG ),
+	$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 'header' 		=> esc_html__( 'Awards', WE_LS_SLUG ),
 	                                                     'body-class'	=> 'ykuk-text-small',
 	                                                     'body' 		=> $awards
 	] );
@@ -601,13 +601,13 @@ function ws_ls_wt_tab_advanced( $arguments = [] ) {
 	// --------------------
 
 	if( true === empty( $arguments[ 'hide-advanced-narrative' ] ) ) {
-		$nested_html .= ws_ls_component_modal_with_text_link(   __( 'Learn more about suggested calorie intakes', WE_LS_SLUG ),
-																__( 'Once we know your BMR (the number of calories to keep you functioning at rest), we can go on to give you suggestions on how to spread your calorie intake across the day. Firstly we split the figures into daily calorie intake to maintain weight and daily calorie intake to lose weight. Daily calorie intake to lose weight is calculated based on NHS advice – they suggest to lose 1 – 2lbs a week you should subtract 600 calories from your BMR. The two daily figures can be further broken down by recommending how to split calorie intake across the day i.e. breakfast, lunch, dinner and snacks.', WE_LS_SLUG ) );
+		$nested_html .= ws_ls_component_modal_with_text_link(   esc_html__( 'Learn more about suggested calorie intakes', WE_LS_SLUG ),
+																esc_html__( 'Once we know your BMR (the number of calories to keep you functioning at rest), we can go on to give you suggestions on how to spread your calorie intake across the day. Firstly we split the figures into daily calorie intake to maintain weight and daily calorie intake to lose weight. Daily calorie intake to lose weight is calculated based on NHS advice – they suggest to lose 1 – 2lbs a week you should subtract 600 calories from your BMR. The two daily figures can be further broken down by recommending how to split calorie intake across the day i.e. breakfast, lunch, dinner and snacks.', WE_LS_SLUG ) );
 	}
 
 	$calorie_html = ws_ls_harris_benedict_render_table( $arguments[ 'user-id' ], false,  'ws-ls-footable ykuk-table ykuk-table-striped ykuk-table-small' );
 
-	$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 'header' 		=> __( 'Suggested Calorie Intake', WE_LS_SLUG ),
+	$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 'header' 		=> esc_html__( 'Suggested Calorie Intake', WE_LS_SLUG ),
 	                                                     'body-class'	=> 'ykuk-text-small',
 	                                                     'body' 		=> $calorie_html . $nested_html
 	] );
@@ -617,14 +617,14 @@ function ws_ls_wt_tab_advanced( $arguments = [] ) {
 	// --------------------
 
 	if( true === empty( $arguments[ 'hide-advanced-narrative' ] ) ) {
-		$nested_html = ws_ls_component_modal_with_text_link(    __( 'Learn more about macronutrients', WE_LS_SLUG ),
-																__( 'With calories calculated, the we can recommend how those calories should be split into Fats, Carbohydrates and Proteins.', WE_LS_SLUG )
+		$nested_html = ws_ls_component_modal_with_text_link(    esc_html__( 'Learn more about macronutrients', WE_LS_SLUG ),
+																esc_html__( 'With calories calculated, the we can recommend how those calories should be split into Fats, Carbohydrates and Proteins.', WE_LS_SLUG )
 		);
 	}
 
 	$calorie_html = ws_ls_macro_render_table( $arguments[ 'user-id' ], false,  'ws-ls-footable ykuk-table ykuk-table-striped ykuk-table-small' );
 
-	$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 'header' 		=> __( 'Macronutrients', WE_LS_SLUG ),
+	$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 'header' 		=> esc_html__( 'Macronutrients', WE_LS_SLUG ),
 	                                                     'body-class'	=> 'ykuk-text-small',
 	                                                     'body' 		=> $calorie_html . $nested_html
 	] );
@@ -690,12 +690,12 @@ function ws_ls_shortcode_embed_chart( $weight_data, $shortcode_arguments ) {
 			$html_output .= sprintf('	<div class="ws-ls-add-weight-button">
 														<input type="button" onclick="location.href=\'#add-weight\';" value="%s" />
 													</div>',
-				__( 'Add a weight entry', WE_LS_SLUG )
+				esc_html__( 'Add a weight entry', WE_LS_SLUG )
 			);
 		}
 
 		if ( false === $shortcode_arguments[ 'hide-title'] ) {
-			$html_output .= ws_ls_title( __( 'In a chart', WE_LS_SLUG ) );
+			$html_output .= ws_ls_title( esc_html__( 'In a chart', WE_LS_SLUG ) );
 		}
 
 		$html_output .= ws_ls_display_chart( $weight_data, [    'custom-field-groups'   => $shortcode_arguments[ 'custom-field-groups' ],
@@ -707,7 +707,7 @@ function ws_ls_shortcode_embed_chart( $weight_data, $shortcode_arguments ) {
 
 	} else {
 
-		$message = sprintf( __( 'A graph shall appear when %d or more weight entries have been entered.', WE_LS_SLUG ),
+		$message = sprintf( esc_html__( 'A graph shall appear when %d or more weight entries have been entered.', WE_LS_SLUG ),
 			$shortcode_arguments[ 'min-chart-points' ] );
 
 		$html_output .= ( true === empty( $shortcode_arguments[ 'uikit' ] ) ) ?

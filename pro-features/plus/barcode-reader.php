@@ -18,7 +18,7 @@ function ws_ls_barcode_reader( $arguments = [] ) {
 
 	$config = [ 'current-url'                   => get_permalink(),
 	            'querystring-key-user-id'       => $arguments[ 'querystring-key-user-id' ],
-				'text-error-loading-cameras'    => __( 'Could not load any cameras for the barcode reader. Please ensure you have one or more cameras attached to this device and you are accessing it via https.', WE_LS_SLUG ),
+				'text-error-loading-cameras'    => esc_html__( 'Could not load any cameras for the barcode reader. Please ensure you have one or more cameras attached to this device and you are accessing it via https.', WE_LS_SLUG ),
 				'open'                          => $arguments[ 'open' ]
 	];
 

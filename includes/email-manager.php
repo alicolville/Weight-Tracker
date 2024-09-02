@@ -671,9 +671,9 @@ function ws_ls_emailer_lists_default_setting() {
  */
 function ws_ls_emailer_lists_default_labels() {
 	$labels = [
-				'awards' 	=> __( 'Notifications about new awards', WE_LS_SLUG ),
-				'birthdays' => __( 'Birthday emails', WE_LS_SLUG ),
-				'notes' 	=> __( 'Notifications about new notes', WE_LS_SLUG )
+				'awards' 	=> esc_html__( 'Notifications about new awards', WE_LS_SLUG ),
+				'birthdays' => esc_html__( 'Birthday emails', WE_LS_SLUG ),
+				'notes' 	=> esc_html__( 'Notifications about new notes', WE_LS_SLUG )
 	];
 
 	return apply_filters( 'wlt-filter-email-lists-default-labels', $labels );
@@ -698,7 +698,7 @@ function ws_ls_emailer_optout_form( $user_id = NULL, $uikit = true ) {
 		$html_output .= ws_ls_form_field_select( [  'key'       => sprintf( 'email-optin-%s', $key ),
 													'label'     => sprintf( '%s:', $labels[ $key ] ),
 													'uikit'     => $uikit,
-													'values'    => [ 'true' => __( 'Yes', WE_LS_SLUG ), 'false' => __( 'No', WE_LS_SLUG ) ],
+													'values'    => [ 'true' => esc_html__( 'Yes', WE_LS_SLUG ), 'false' => esc_html__( 'No', WE_LS_SLUG ) ],
 													'selected'  => ( true === ws_ls_emailer_user_has_optedin( $key, $user_id ) ) ? 'true' : 'false' ] );
 												
 	}

@@ -20,14 +20,14 @@
                             }
                         ?>
                         <div class="postbox">
-                            <h3 class="hndle"><span><?php echo __( 'Manage User Groups', WE_LS_SLUG ); ?></span></h3>
+                            <h3 class="hndle"><span><?php echo esc_html__( 'Manage User Groups', WE_LS_SLUG ); ?></span></h3>
                             <div style="padding: 0px 15px 0px 15px">
 
-                                <p><?php echo __( 'Assign your users to groups - this will allow you to group members together and calculate the weight difference for entire groups.', WE_LS_SLUG ); ?>
-                                    <a href="https://docs.yeken.uk/groups.html" target="_blank" rel="noopener"><?php echo __( 'Read more about Groups', WE_LS_SLUG ); ?></a>
+                                <p><?php echo esc_html__( 'Assign your users to groups - this will allow you to group members together and calculate the weight difference for entire groups.', WE_LS_SLUG ); ?>
+                                    <a href="https://docs.yeken.uk/groups.html" target="_blank" rel="noopener"><?php echo esc_html__( 'Read more about Groups', WE_LS_SLUG ); ?></a>
                                 </p>
 
-	                                <h4><?php echo __('Add a new group', WE_LS_SLUG); ?></h4>
+	                                <h4><?php echo esc_html__('Add a new group', WE_LS_SLUG); ?></h4>
 	                                <?php
 
 	                                    $new_group = ws_ls_post_value( 'group' );
@@ -39,7 +39,7 @@
 	                                ?>
 	                                <form method="post">
 	                                    <input type="text" name="group" size="30" maxlength="40" />
-	                                    <input type="submit" value="<?php echo __('Add', WE_LS_SLUG); ?>" class="button" <?php if ( false === WS_LS_IS_PRO ) { echo ' disabled'; } ?> />
+	                                    <input type="submit" value="<?php echo esc_html__('Add', WE_LS_SLUG); ?>" class="button" <?php if ( false === WS_LS_IS_PRO ) { echo ' disabled'; } ?> />
 	                                </form>
 
                                <?php
@@ -49,7 +49,7 @@
                                     $enable_table = apply_filters( 'wlt-filters-admin-group-view-enabled', true );
 
                                  if ( true === $enable_table ) { ?>
-	                                <h4><?php echo __('Existing groups', WE_LS_SLUG); ?></h4>
+	                                <h4><?php echo esc_html__('Existing groups', WE_LS_SLUG); ?></h4>
 
 	                                <table class="ws-ls-settings-groups-list-ajax table ws-ls-loading-table" id="groups-list"
 	                                       data-paging="true"

@@ -26,7 +26,7 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 												'custom-field-slugs'    => '',      // If specified, only show the custom fields that are specified
 												'height'                => 250,
 												'legend-position'       => 'top',   // 'top' or 'bottom'
-												'message-no-data'       => __( 'No entries could be found for this user.', WE_LS_SLUG ),
+												'message-no-data'       => esc_html__( 'No entries could be found for this user.', WE_LS_SLUG ),
 												'show-gridlines'        => ws_ls_option_to_bool( 'ws-ls-grid-lines', 'yes', true ),
 												'show-weight'           => true,
 												'show-target'           => true,
@@ -54,7 +54,7 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 	         false === $chart_config[ 'show-target' ] &&
 	            false === $chart_config[ 'show-meta-fields' ]
 	) {
-		return __( 'Error. You have disabled all data sets from rendering.', WE_LS_SLUG );
+		return esc_html__( 'Error. You have disabled all data sets from rendering.', WE_LS_SLUG );
 	}
 
 	$chart_config[ 'id' ]               = ws_ls_component_id();
@@ -70,7 +70,7 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 	$chart_config[ 'meta-fields' ]      =  WS_LS_IS_PRO ? ws_ls_meta_fields_plottable( $chart_config ) : false;
 	$chart_config[ 'show-meta-fields' ] = ( true === ws_ls_to_bool( $chart_config[ 'show-meta-fields' ] ) &&
 	                                        false === empty( $chart_config[ 'meta-fields' ] ) );
-	$chart_config[ 'y-axis-unit' ]      = ( 'kg' !== ws_ls_setting( 'weight-unit', $chart_config[ 'user-id' ] ) ) ? __( 'lbs', WE_LS_SLUG ) : __( 'kg', WE_LS_SLUG );
+	$chart_config[ 'y-axis-unit' ]      = ( 'kg' !== ws_ls_setting( 'weight-unit', $chart_config[ 'user-id' ] ) ) ? esc_html__( 'lbs', WE_LS_SLUG ) : esc_html__( 'kg', WE_LS_SLUG );
 	$chart_config[ 'point-size' ]       = ws_ls_option_to_int( 'ws-ls-point-size', 3, true );
 	$chart_config[ 'line-thickness' ]   = 2;
 	$chart_config[ 'target-weight' ]    = false;
@@ -97,7 +97,7 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 
 		$graph_data['datasets'][ $index_weight ] = [
 			'fill'        => false,
-			'label'       => __( 'Weight', WE_LS_SLUG ),
+			'label'       => esc_html__( 'Weight', WE_LS_SLUG ),
 			'borderColor' => $chart_config[ 'weight-line-color' ],
 			'data'        => [],
 			'yAxisID'     => AXIS_WEIGHT_AND_TARGET,
@@ -146,7 +146,7 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 		// If target weights are enabled, then include into javascript data object
 		if ( false === empty( $chart_config[ 'target-weight' ] ) ) {
 
-			$graph_data['datasets'][ $index_target ] = [  'label'           => __( 'Target', WE_LS_SLUG ),
+			$graph_data['datasets'][ $index_target ] = [  'label'           => esc_html__( 'Target', WE_LS_SLUG ),
 														'borderColor'       => $chart_config[ 'target-fill-color' ],
 														'borderWidth'       => $chart_config[ 'line-thickness' ],
 														'pointRadius'       => 0,
@@ -280,7 +280,7 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 									'grid'      => [ 'drawOnChartArea' => $chart_config[ 'show-gridlines' ] ],
 									'position'  => 'left',
 									'title'     => [	'display'   => true,
-														'text'      => sprintf( '%s (%s)', __( 'Weight', WE_LS_SLUG ), $chart_config[ 'y-axis-unit' ] ),
+														'text'      => sprintf( '%s (%s)', esc_html__( 'Weight', WE_LS_SLUG ), $chart_config[ 'y-axis-unit' ] ),
 														'color'     => $chart_config['font-config']['fontColor'],
 														'font'      => [ 'family' => $chart_config[ 'font-config' ][ 'fontFamily' ] ]
 									],
@@ -293,7 +293,7 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 	// If we only have one custom field, then use that suffix for the y axis label.
 	if( $count_meta_fields > 1 ||
 	    true === empty( $y_axis_label ) ) {
-		$y_axis_label = __( 'Additional Fields', WE_LS_SLUG );
+		$y_axis_label = esc_html__( 'Additional Fields', WE_LS_SLUG );
 	}
 
 	// Custom fields?

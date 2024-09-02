@@ -33,7 +33,7 @@
                                                     <p>All the best,</p>
                                                     <p><a href="{url}" target="_blank" rel="noopener">{name}</a></p>
                                                 </center>',
-	                                            __( 'Birthday Email' , WE_LS_SLUG )
+	                                            esc_html__( 'Birthday Email' , WE_LS_SLUG )
                 );
             }
 

@@ -24,10 +24,10 @@ function ws_ls_shortcode_calculator( $user_defined_arguments ) {
 	                                'results-show-calories'     => true,                            // Show calories on results page
 	                                'results-show-macros'       => true,                            // Show macros on results page
 	                                'results-show-form'         => true,                            // If true, always show the form when rendering results
-	                                'text-bmi'                  => __( 'Your BMI is:', WE_LS_SLUG ),
-	                                'text-bmr'                  => __( 'Your BMR is:', WE_LS_SLUG ),
-	                                'text-calories'             => __( 'The following table illustrates your recommended calorie intake:', WE_LS_SLUG ),
-	                                'text-macros'               => __( 'The following table illustrates your recommended macronutrient intake:', WE_LS_SLUG ),
+	                                'text-bmi'                  => esc_html__( 'Your BMI is:', WE_LS_SLUG ),
+	                                'text-bmr'                  => esc_html__( 'Your BMR is:', WE_LS_SLUG ),
+	                                'text-calories'             => esc_html__( 'The following table illustrates your recommended calorie intake:', WE_LS_SLUG ),
+	                                'text-macros'               => esc_html__( 'The following table illustrates your recommended macronutrient intake:', WE_LS_SLUG ),
 	], $user_defined_arguments );
 
 	// Enqueue front end scripts if needed (mainly for datepicker)
@@ -134,7 +134,7 @@ function ws_ls_shortcode_calculator( $user_defined_arguments ) {
 						        <p>%1$s</p>
                                 <ul></ul>
                             </div>',
-				__( 'Please ensure you have completed all of the fields.', WE_LS_SLUG ) );
+				esc_html__( 'Please ensure you have completed all of the fields.', WE_LS_SLUG ) );
 		}
 
 		//-------------------------------------------------------
@@ -143,19 +143,19 @@ function ws_ls_shortcode_calculator( $user_defined_arguments ) {
 
 		$data_unit = ws_ls_setting( 'weight-unit', $user_id );
 
-		$html_output .= sprintf( '<label class="yk-mt__label">%1$s:</label>', __( 'Current weight', WE_LS_SLUG ) );
+		$html_output .= sprintf( '<label class="yk-mt__label">%1$s:</label>', esc_html__( 'Current weight', WE_LS_SLUG ) );
 
 		// Stones field?
 		if ( 'stones_pounds' === $data_unit ) {
 			$html_output .= ws_ls_form_field_number( [      'name'          => 'ws-ls-weight-stones',
-			                                                'placeholder'   => __( 'st', WE_LS_SLUG ),
+			                                                'placeholder'   => esc_html__( 'st', WE_LS_SLUG ),
 			                                                'value'         => $entry[ 'ws-ls-weight-stones' ] ]);
 		}
 
 		// Pounds?
 		if ( true === in_array( $data_unit, [ 'stones_pounds', 'pounds_only' ] ) ) {
 			$html_output .= ws_ls_form_field_number( [      'name'          => 'ws-ls-weight-pounds',
-			                                                'placeholder'   => __( 'lb', WE_LS_SLUG ),
+			                                                'placeholder'   => esc_html__( 'lb', WE_LS_SLUG ),
 			                                                'max'           => ( 'stones_pounds' ===  $data_unit ) ? '13.99' : '5000',
 			                                                'value' => $entry[ 'ws-ls-weight-pounds' ] ] );
 		}
@@ -163,7 +163,7 @@ function ws_ls_shortcode_calculator( $user_defined_arguments ) {
 		// Kg
 		if ( 'kg' ===  $data_unit ) {
 			$html_output .= ws_ls_form_field_number( [      'name'          => 'ws-ls-weight-kg',
-			                                                'placeholder'   => __( 'kg', WE_LS_SLUG ),
+			                                                'placeholder'   => esc_html__( 'kg', WE_LS_SLUG ),
 			                                                'value'         => $entry[ 'ws-ls-weight-kg' ] ]);
 		}
 
@@ -171,21 +171,21 @@ function ws_ls_shortcode_calculator( $user_defined_arguments ) {
 		// Height
 		//-------------------------------------------------------
 
-		$html_output .= ws_ls_form_field_select( [ 'key' => 'ws-ls-height', 'label' => __( 'Your height:', WE_LS_SLUG ), 'values' => ws_ls_heights(), 'empty-option' => true, 'include-div' => true,
+		$html_output .= ws_ls_form_field_select( [ 'key' => 'ws-ls-height', 'label' => esc_html__( 'Your height:', WE_LS_SLUG ), 'values' => ws_ls_heights(), 'empty-option' => true, 'include-div' => true,
 		                                           'selected' => ( false === empty( $entry[ 'ws-ls-height' ] ) ) ? $entry[ 'ws-ls-height' ] : '', 'css-class' => 'ws-ls-aboutyou-field' ] );
 
 		//-------------------------------------------------------
 		// Gender
 		//-------------------------------------------------------
 
-		$html_output .= ws_ls_form_field_select( [ 'key' => 'ws-ls-gender', 'required' => true, 'label' => __( 'Your Gender:', WE_LS_SLUG ), 'values' => ws_ls_genders(), 'include-div' => true,
+		$html_output .= ws_ls_form_field_select( [ 'key' => 'ws-ls-gender', 'required' => true, 'label' => esc_html__( 'Your Gender:', WE_LS_SLUG ), 'values' => ws_ls_genders(), 'include-div' => true,
 		                                           'selected' => ( false === empty( $entry[ 'ws-ls-gender' ] ) ) ? $entry[ 'ws-ls-gender' ] : '', 'css-class' => 'ws-ls-aboutyou-field' ] );
 
 		//-------------------------------------------------------
 		// Activity Level
 		//-------------------------------------------------------
 
-		$html_output .= ws_ls_form_field_select( [ 'key' => 'ws-ls-activity-level', 'required' => true, 'label' => __( 'Your Activity Level:', WE_LS_SLUG ), 'values' => ws_ls_activity_levels(), 'include-div' => true,
+		$html_output .= ws_ls_form_field_select( [ 'key' => 'ws-ls-activity-level', 'required' => true, 'label' => esc_html__( 'Your Activity Level:', WE_LS_SLUG ), 'values' => ws_ls_activity_levels(), 'include-div' => true,
 		                                           'selected' => ( false === empty( $entry[ 'ws-ls-activity-level' ] ) ) ? $entry[ 'ws-ls-activity-level' ] : '', 'css-class' => 'ws-ls-aboutyou-field' ] );
 
 		//-------------------------------------------------------
@@ -195,7 +195,7 @@ function ws_ls_shortcode_calculator( $user_defined_arguments ) {
 		$html_output .= ws_ls_form_field_date( [    'name'          => 'ws-ls-dob',
 		                                            'id'            => 'ws-ls-dob',
 													'include-div' => true,
-		                                            'title'         => __( 'Your Date of Birth:', WE_LS_SLUG ),
+		                                            'title'         => esc_html__( 'Your Date of Birth:', WE_LS_SLUG ),
 		                                            'value'         => ( false === empty( $entry[ 'ws-ls-dob' ] ) ) ? $entry[ 'ws-ls-dob' ] : '',
 		                                            'css-class'     => 'we-ls-datepicker ws-ls-dob-field ws-ls-aboutyou-field',
 		                                            'show-label'    => true ] );
@@ -209,7 +209,7 @@ function ws_ls_shortcode_calculator( $user_defined_arguments ) {
 
 		$html_output .= sprintf('<input type="submit" tabindex="%1$d" value="%2$s" name="ws-ls-submit" />',
 			ws_ls_form_tab_index_next(),
-			__( 'Calculate', WE_LS_SLUG )
+			esc_html__( 'Calculate', WE_LS_SLUG )
 		);
 
 		$html_output .= '</form>';

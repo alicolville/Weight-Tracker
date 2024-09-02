@@ -66,7 +66,7 @@ function ws_ls_admin_check_mysql_tables_exist() {
 
     // Return error message if tables missing
     if (!empty($error_text))  {
-        return  __('The following MySQL tables are missing for this plugin', WE_LS_SLUG) . ':<ul>' . $error_text . '</ul>';
+        return  esc_html__('The following MySQL tables are missing for this plugin', WE_LS_SLUG) . ':<ul>' . $error_text . '</ul>';
     }
     return false;
 }
@@ -92,10 +92,7 @@ function ws_ls_create_dialog_jquery_code( $title, $message, $class_used_to_promp
 
     $id_hash = md5($title . $message . $class_used_to_prompt_confirmation );
 
-    printf('<div id="%1$s" title="%2$s">
-                        <p>%3$s</p>
-                    </div>
-                    <script>
+    $dialog_js = sprintf('
                         jQuery( function( $ ) {
                             let $info = $( "#%1$s" );
                             $info.dialog({
@@ -104,7 +101,7 @@ function ws_ls_create_dialog_jquery_code( $title, $message, $class_used_to_promp
                                 "autoOpen"      : false
                             });
 
-                            $( ".%4$s" ).click( function( event ) {
+                            $( ".%3$s" ).click( function( event ) {
                                 event.preventDefault();
                                 target_url = $( this ).attr( "href" );
                                 let  $info = $( "#%1$s" );
@@ -115,7 +112,7 @@ function ws_ls_create_dialog_jquery_code( $title, $message, $class_used_to_promp
                                     "closeOnEscape" : true,
                                     "buttons"       : {
                                         "Yes": function() {
-                                            %5$s
+                                            %4$s
                                         },
                                         "No": function() {
                                             $(this).dialog( "close" );
@@ -126,14 +123,21 @@ function ws_ls_create_dialog_jquery_code( $title, $message, $class_used_to_promp
                             });
 
                         });
-                    </script>',
+                    ',
         $id_hash,
-        esc_attr( $title ),
         wp_kses_post( $message ),
         esc_attr( $class_used_to_prompt_confirmation ),
         ( true === $js_call ) ? $js_call : 'window.location.href = target_url;'
     );
 
+	printf('<div id="%1$s" title="%2$s">
+				<p>%3$s</p>
+			</div>',
+			$id_hash,
+			esc_attr( $title ),
+			wp_kses_post( $message ));
+
+	wp_add_inline_script( 'jquery-ui-dialog', $dialog_js );
 }
 
 /**
@@ -194,7 +198,7 @@ function ws_ls_week_ranges_get( $user_id = NULL ) {
 	// Grab all the weekly intervals between those dates
 	$interval       = new DateInterval( 'P1W' );
 	$daterange      = new DatePeriod( $start_date, $interval ,$end_date );
-	$date_ranges    = [ 0 => [ 'display' => __( 'View all weeks', WE_LS_SLUG ), 'start' => $start_date->format( 'Y-m-d' ), 'end' => $end_date->format( 'Y-m-d' ) ] ];
+	$date_ranges    = [ 0 => [ 'display' => esc_html__( 'View all weeks', WE_LS_SLUG ), 'start' => $start_date->format( 'Y-m-d' ), 'end' => $end_date->format( 'Y-m-d' ) ] ];
 	$date_format    = ws_ls_get_date_format( $user_id );
 
 	$i = 1;
@@ -204,7 +208,7 @@ function ws_ls_week_ranges_get( $user_id = NULL ) {
 
 		$end_of_week    = clone $date;
 		$end_of_week    = date_modify( $end_of_week, '+1 week' );
-		$display        = sprintf( '%s %d - %s %s %s', __( 'View Week', WE_LS_SLUG ), $i, $date->format( $date_format ), __('to', WE_LS_SLUG), $end_of_week->format( $date_format ) );
+		$display        = sprintf( '%s %d - %s %s %s', esc_html__( 'View Week', WE_LS_SLUG ), $i, $date->format( $date_format ), esc_html__('to', WE_LS_SLUG), $end_of_week->format( $date_format ) );
 
 		$date_ranges[ $i ] =  [     'start'     => $date->format( 'Y-m-d' ),
 		                            'end'       => $end_of_week->format( 'Y-m-d' ),
@@ -818,6 +822,8 @@ function ws_ls_get_url( $base_64_encode = false ) {
 
     $current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 
+	$current_url = sanitize_url( $current_url );
+	
 	$current_url = remove_query_arg( [ 'group-id', 'removedata', 'removed' ] , $current_url );
 
 	return ( true === $base_64_encode ) ? base64_encode( $current_url ) : $current_url;
@@ -908,7 +914,7 @@ function ws_ls_calculations_link( $link_only = false ) {
 
     $url = 'https://docs.yeken.uk/calculations.html';
 
-    return ( false === $link_only ) ? sprintf('<a href="%s" target="blank">%s</a>', $url, __( 'Read more about calculations', WE_LS_SLUG ) ) : $url;
+    return ( false === $link_only ) ? sprintf('<a href="%s" target="blank">%s</a>', $url, esc_html__( 'Read more about calculations', WE_LS_SLUG ) ) : $url;
 }
 
 /**
@@ -952,7 +958,7 @@ function ws_ls_display_data_saved_message( $uikit = false ) {
 
 	if( 'n' !== ws_ls_querystring_value( 'ws-edit-saved', false, 'n' ) ) {
 
-		$message = __( 'Your modifications have been saved', WE_LS_SLUG );
+		$message = esc_html__( 'Your modifications have been saved', WE_LS_SLUG );
 
 		if ( true === $uikit ) {
 			return ws_ls_component_alert( [ 'message' => $message ] );
@@ -978,7 +984,7 @@ function ws_ls_display_data_saved_message( $uikit = false ) {
 function ws_ls_display_blockquote( $text, $class = '', $just_echo = false, $include_log_link = false ) {
 
 	$login_link = ( true === $include_log_link ) ?
-					sprintf( ' <a class="ws-ls-login-link" href="%1$s">%2$s</a>.', esc_url( wp_login_url( get_permalink() ) ), __( 'Login' , WE_LS_SLUG ) ) :
+					sprintf( ' <a class="ws-ls-login-link" href="%1$s">%2$s</a>.', esc_url( wp_login_url( get_permalink() ) ), esc_html__( 'Login' , WE_LS_SLUG ) ) :
 					'';
 
 	$html_output = sprintf('	<blockquote class="ws-ls-blockquote%s">
@@ -1031,7 +1037,7 @@ function ws_ls_blockquote_error( $text, $class = 'ws-ls-error-text', $just_echo 
  * @return string
  */
 function ws_ls_blockquote_login_prompt( ) {
-	return ws_ls_display_blockquote( __( 'You must be logged in to view or edit your data.' , WE_LS_SLUG ) , '', false, true );
+	return ws_ls_display_blockquote( esc_html__( 'You must be logged in to view or edit your data.' , WE_LS_SLUG ) , '', false, true );
 }
 
 /**
@@ -1185,11 +1191,11 @@ function ws_ls_display_pro_upgrade_notice( $prompt_level = '' ) {
 
 	// Is there a certain Pro level we're prompting for?
 	if ( 'pro-plus' === $prompt_level ) {
-		$title 		= __( 'Upgrade to Pro Plus and get more features!', WE_LS_SLUG );
-		$message 	= __( 'Upgrade to Pro Plus version of this plugin to get additional features like Challenges, Harris Benedict, BMR, Macronutrients and much more!', WE_LS_SLUG );
+		$title 		= esc_html__( 'Upgrade to Pro Plus and get more features!', WE_LS_SLUG );
+		$message 	= esc_html__( 'Upgrade to Pro Plus version of this plugin to get additional features like Challenges, Harris Benedict, BMR, Macronutrients and much more!', WE_LS_SLUG );
 	} else {
-		$title 		= __( 'Upgrade Weight Tracker and get more features!', WE_LS_SLUG );
-		$message 	= __( 'Upgrade to the latest Pro or Pro Plus version of this plugin to manipulate your user\'s data, add custom fields, BMR, Macronutrients and much more!', WE_LS_SLUG );
+		$title 		= esc_html__( 'Upgrade Weight Tracker and get more features!', WE_LS_SLUG );
+		$message 	= esc_html__( 'Upgrade to the latest Pro or Pro Plus version of this plugin to manipulate your user\'s data, add custom fields, BMR, Macronutrients and much more!', WE_LS_SLUG );
 	}
 
 	?>
@@ -1197,7 +1203,7 @@ function ws_ls_display_pro_upgrade_notice( $prompt_level = '' ) {
         <h3 class="hndle"><span><?php echo $title; ?> </span></h3>
         <div style="padding: 0px 15px 0px 15px">
             <p><?php echo $message; ?></p>
-            <p><a href="<?php echo esc_url( admin_url('admin.php?page=ws-ls-license') ); ?>" class="button-primary"><?php echo __( 'Read more and upgrade', WE_LS_SLUG); ?></a></p>
+            <p><a href="<?php echo esc_url( admin_url('admin.php?page=ws-ls-license') ); ?>" class="button-primary"><?php echo esc_html__( 'Read more and upgrade', WE_LS_SLUG); ?></a></p>
         </div>
     </div>
 
@@ -1214,9 +1220,9 @@ function ws_ls_display_pro_upgrade_notice( $prompt_level = '' ) {
 function ws_ls_display_pro_upgrade_notice_for_shortcode ( $uikit = false ) {
 
 	$message = sprintf( '<p>%s <a href="%s">%s</a></p>',
-							__( 'To view this data/shortcode, you need to upgrade.', WE_LS_SLUG ),
+							esc_html__( 'To view this data/shortcode, you need to upgrade.', WE_LS_SLUG ),
 							esc_url( admin_url('admin.php?page=ws-ls-license') ),
-							__( 'Upgrade now', WE_LS_SLUG )
+							esc_html__( 'Upgrade now', WE_LS_SLUG )
 	);
 
 	if ( true === $uikit ) {
@@ -1366,7 +1372,7 @@ function ws_ls_calculate_percentage_difference_as_number( $previous_weight, $cur
  */
 function ws_ls_boolean_as_yes_no_string( $value, $true_value = 2 ) {
 
-	return ( (int) $true_value == (int) $value ) ? __('Yes', WE_LS_SLUG) : __('No', WE_LS_SLUG);
+	return ( (int) $true_value == (int) $value ) ? esc_html__('Yes', WE_LS_SLUG) : esc_html__('No', WE_LS_SLUG);
 }
 
 /**
@@ -1473,7 +1479,7 @@ function ws_ls_weight_unit_label( $key ) {
  * @return array
  */
 function ws_ls_weight_units() {
-	return [ 'kg' => __( 'Kg', WE_LS_SLUG ), 'pounds_only' => __( 'Pounds', WE_LS_SLUG ), 'stones_pounds' => __( 'Stones & Pounds', WE_LS_SLUG ) ];
+	return [ 'kg' => esc_html__( 'Kg', WE_LS_SLUG ), 'pounds_only' => esc_html__( 'Pounds', WE_LS_SLUG ), 'stones_pounds' => esc_html__( 'Stones & Pounds', WE_LS_SLUG ) ];
 }
 
 /**
@@ -1640,13 +1646,13 @@ function ws_ls_get_unit() {
 
 	switch ( ws_ls_setting() ) {
 		case 'pounds_only':
-			$unit = __("lbs", WE_LS_SLUG);
+			$unit = esc_html__("lbs", WE_LS_SLUG);
 			break;
 		case 'kg':
-			$unit = __("Kg", WE_LS_SLUG);
+			$unit = esc_html__("Kg", WE_LS_SLUG);
 			break;
 		default:
-			$unit = __("St", WE_LS_SLUG) . " " . __("lbs", WE_LS_SLUG);
+			$unit = esc_html__("St", WE_LS_SLUG) . " " . esc_html__("lbs", WE_LS_SLUG);
 			break;
 	}
 
@@ -1744,4 +1750,21 @@ function ws_ls_user_get_name( $user_id ) {
 	}
 
 	return $name;
+}
+
+/**
+ * Redirect using JS
+ * @param $user_id
+ *
+ * @return string
+ */
+function ws_ls_js_redirect( $url ) {
+
+	if ( true === empty( $url ) ) {
+		return;
+	}
+
+	printf( '<span class="ws-ls-js-redirect" data-url="%s"></span>', esc_url( $url ) );
+
+	wp_enqueue_script( 'wt-js-simple-redirect', plugins_url( '../assets/js/simple-redirect.js', __FILE__ ), [ 'jquery' ], WE_LS_CURRENT_VERSION, true );
 }

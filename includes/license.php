@@ -97,10 +97,10 @@ function ws_ls_display_license_expiry_warning() {
                 <p><strong>%s</strong>: %s %d %s. <a href="%s?hash=%s" rel="noopener noreferrer" target="_blank" >Renew your license now</a></p>
             </div>',
 	            ( $days_until_expiry < 7 ) ? 'error' : 'warning',
-                __('Weight Tracker License', WE_LS_SLUG ),
-	            __('Your license expires in', WE_LS_SLUG ),
+                esc_html__('Weight Tracker License', WE_LS_SLUG ),
+	            esc_html__('Your license expires in', WE_LS_SLUG ),
 	            $days_until_expiry,
-	            __('days. Please renew your license as soon as possible', WE_LS_SLUG ),
+	            esc_html__('days. Please renew your license as soon as possible', WE_LS_SLUG ),
                 WE_LS_UPGRADE_TO_PRO_PLUS_URL,
                 ws_ls_generate_site_hash()
     );
@@ -240,24 +240,24 @@ function ws_ls_license_remove( $type = 'both' ) {
 function ws_ls_license_validate($license) {
 
 	if(true === empty($license)) {
-		return __('License missing', WE_LS_SLUG);
+		return esc_html__('License missing', WE_LS_SLUG);
 	}
 
 	// Decode license
 	$license = ws_ls_license_decode($license);
 
 	if (true === empty($license)) {
-		return __('Could not decode / verify license', WE_LS_SLUG);
+		return esc_html__('Could not decode / verify license', WE_LS_SLUG);
 	}
 
 	// Does site hash in license meet this site's actual hash?
 	if ( true === empty($license['site-hash'])) {
-		return __('Invalid license hash', WE_LS_SLUG);
+		return esc_html__('Invalid license hash', WE_LS_SLUG);
 	}
 
 	// Match this site hash?
 	if ( ws_ls_generate_site_hash() !== $license['site-hash']) {
-		return __('This license doesn\'t appear to be for this site (no match on site hash).', WE_LS_SLUG);
+		return esc_html__('This license doesn\'t appear to be for this site (no match on site hash).', WE_LS_SLUG);
 	}
 
 	// Valid date?
@@ -265,7 +265,7 @@ function ws_ls_license_validate($license) {
 	$expire_time = strtotime($license['expiry-date']);
 
 	if ($expire_time < $today_time) {
-		return __('This license has expired.', WE_LS_SLUG);
+		return esc_html__('This license has expired.', WE_LS_SLUG);
 	}
 
 	return true;
@@ -328,7 +328,7 @@ function ws_ls_generate_site_hash() {
  */
 function ws_ls_license_display_name($license = false) {
 
-    $return_value = __('None', WE_LS_SLUG);
+    $return_value = esc_html__('None', WE_LS_SLUG);
 
     if( true === empty($license) ) {
         $license = ws_ls_license();
@@ -338,10 +338,10 @@ function ws_ls_license_display_name($license = false) {
 
         switch ($license) {
             case 'pro':
-                $return_value = __('Yearly Pro', WE_LS_SLUG);
+                $return_value = esc_html__('Yearly Pro', WE_LS_SLUG);
                 break;
             case 'pro-plus':
-                $return_value = __('Pro Plus', WE_LS_SLUG);
+                $return_value = esc_html__('Pro Plus', WE_LS_SLUG);
                 break;
         }
 

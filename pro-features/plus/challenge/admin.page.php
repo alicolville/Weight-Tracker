@@ -26,7 +26,7 @@ function ws_ls_challenges_admin_page() {
         $name = ws_ls_post_value( 'ws-ls-name' );
 
         if( true === empty( $name ) ) {
-            $error = __( 'Please ensure you enter a name for the challenge.', WE_LS_SLUG );
+            $error = esc_html__( 'Please ensure you enter a name for the challenge.', WE_LS_SLUG );
         }
 
         if( true === empty( $error ) ) {
@@ -40,11 +40,11 @@ function ws_ls_challenges_admin_page() {
 
                 $mode = 'processing';
             } else {
-                $error = __( 'There was an error saving the challenge to the database.', WE_LS_SLUG );
+                $error = esc_html__( 'There was an error saving the challenge to the database.', WE_LS_SLUG );
             }
         }
     }
-
+    
     ?>
     <div class="wrap ws-ls-challenges ws-ls-admin-page">
     <div id="poststuff">
@@ -58,40 +58,40 @@ function ws_ls_challenges_admin_page() {
 	                ?>
                     <?php if ( true === in_array( $mode, [ 'delete', 'close', 'list' ] ) ): ?>
                         <div class="postbox">
-                            <h2 class="hndle"><span><?php echo __( 'Current Challenges', WE_LS_SLUG ); ?></span></h2>
+                            <h2 class="hndle"><span><?php echo esc_html__( 'Current Challenges', WE_LS_SLUG ); ?></span></h2>
                             <div class="inside">
                                 <p>
                                     <a href="<?php echo ws_ls_challenge_link( 1, 'add' ); ?>" class="btn btn-default button-primary">
                                         <i class="fa fa-plus"></i>
-                                        <?php echo __( 'Add a challenge', WE_LS_SLUG ); ?>
+                                        <?php echo esc_html__( 'Add a challenge', WE_LS_SLUG ); ?>
                                     </a>
-	                            <p><?php echo __( 'Why not set challenges for your user\'s within a given time period? Display Total Weight Lost, BMI Change, %Body Weight, Weight Tracker Streaks and Meal Tracker streaks achieved by each user in a league table.', WE_LS_SLUG ); ?>
-		                            <?php echo __( 'Besides viewing all your challenges and their data, the shortcode will allow you to display the league table in the public facing website.', WE_LS_SLUG ); ?> <a href="https://docs.yeken.uk/challenges.html" target="_blank"><?php echo __( 'Read more about Challenges', WE_LS_SLUG ); ?></a>
+	                            <p><?php echo esc_html__( 'Why not set challenges for your user\'s within a given time period? Display Total Weight Lost, BMI Change, %Body Weight, Weight Tracker Streaks and Meal Tracker streaks achieved by each user in a league table.', WE_LS_SLUG ); ?>
+		                            <?php echo esc_html__( 'Besides viewing all your challenges and their data, the shortcode will allow you to display the league table in the public facing website.', WE_LS_SLUG ); ?> <a href="https://docs.yeken.uk/challenges.html" target="_blank"><?php echo esc_html__( 'Read more about Challenges', WE_LS_SLUG ); ?></a>
 								</p>
                                 <?php ws_ls_challenges_table(); ?>
                             </div>
                         </div>
                         <div class="postbox">
-                            <h2 class="hndle"><span><?php echo __( 'Notes', WE_LS_SLUG ); ?></span></h2>
+                            <h2 class="hndle"><span><?php echo esc_html__( 'Notes', WE_LS_SLUG ); ?></span></h2>
                             <div class="inside">
-	                            <h4><?php echo __( 'Overview', WE_LS_SLUG ); ?></h4>
-	                            <p><?php echo __( 'Why not set challenges for your user\'s within a given time period? Display Total Weight Lost, BMI Change, %Body Weight, Weight Tracker Streaks and Meal Tracker streaks achieved by each user in a league table.', WE_LS_SLUG ); ?>
-	                            <?php echo __( 'Besides viewing all your challenges and their data, the shortcode will allow you to display the league table in the public facing website.', WE_LS_SLUG ); ?></p>
+	                            <h4><?php echo esc_html__( 'Overview', WE_LS_SLUG ); ?></h4>
+	                            <p><?php echo esc_html__( 'Why not set challenges for your user\'s within a given time period? Display Total Weight Lost, BMI Change, %Body Weight, Weight Tracker Streaks and Meal Tracker streaks achieved by each user in a league table.', WE_LS_SLUG ); ?>
+	                            <?php echo esc_html__( 'Besides viewing all your challenges and their data, the shortcode will allow you to display the league table in the public facing website.', WE_LS_SLUG ); ?></p>
 
-                               <h4><?php echo __('User Opt-in', WE_LS_SLUG ); ?></h4>
+                               <h4><?php echo esc_html__('User Opt-in', WE_LS_SLUG ); ?></h4>
                                 <p>
-                                    <?php echo __('By default, all of your users are opted out of challenges. This saves their name and data being displayed in public challenge tables.
+                                    <?php echo esc_html__('By default, all of your users are opted out of challenges. This saves their name and data being displayed in public challenge tables.
                                                     The user will need to opt-in to participate. To do this, they can either update their preferences (a new option has been added)
                                                       or you can place this shortcode [wlt-challenges-optin] to provide simple links allowing them to opt in, or out.
                                                         ', WE_LS_SLUG ); ?>
                                 </p>
-                               <h4><?php echo __('Performance', WE_LS_SLUG ); ?></h4>
+                               <h4><?php echo esc_html__('Performance', WE_LS_SLUG ); ?></h4>
                                <p>
-                                   <?php echo __('Performance: Please be aware, that every time a user updates their profile by adding or editing a weight, their statistics are
+                                   <?php echo esc_html__('Performance: Please be aware, that every time a user updates their profile by adding or editing a weight, their statistics are
                                                         recalculated for every challenge that isn\'t closed. As the number of challenges grow and remain open, the greater the work load on your web server.
                                                         Please ensure you close (or delete) every challenge when expired.
                                                         ', WE_LS_SLUG ); ?>
-									<strong> <?php echo __('Note: Challenge tables will only update every hour.
+									<strong> <?php echo esc_html__('Note: Challenge tables will only update every hour.
                                                         ', WE_LS_SLUG ); ?></strong>
 
                                </p>
@@ -100,12 +100,12 @@ function ws_ls_challenges_admin_page() {
                     <?php endif; ?>
                     <?php if ( 'add' === $mode ): ?>
                         <div class="postbox">
-                            <h2 class="hndle"><span><?php echo __('Add a new challenge', WE_LS_SLUG ); ?></span></h2>
+                            <h2 class="hndle"><span><?php echo esc_html__('Add a new challenge', WE_LS_SLUG ); ?></span></h2>
                             <div class="inside">
                                 <p>
                                     <a href="<?php echo ws_ls_challenge_link( 1, 'list' ); ?>" class="btn btn-default button">
                                         <i class="fa fa-arrow-left"></i>
-                                        <?php echo __( 'Cancel', WE_LS_SLUG ); ?>
+                                        <?php echo esc_html__( 'Cancel', WE_LS_SLUG ); ?>
                                     </a>
                                 </p>
                                 <?php
@@ -114,11 +114,11 @@ function ws_ls_challenges_admin_page() {
                                     }
                                 ?>
                                 <form method="post" action="<?php echo ws_ls_challenge_link( 1, 'add' ); ?>" class="we-ls-weight-form ws_ls_display_form">
-                                    <label for="ws-ls-name"><?php echo __( 'Name of challenge', WE_LS_SLUG ); ?></label>
+                                    <label for="ws-ls-name"><?php echo esc_html__( 'Name of challenge', WE_LS_SLUG ); ?></label>
                                     <input type="text" name="ws-ls-name" id="ws-ls-name" tabindex="1" value="<?php echo ws_ls_post_value( 'ws-ls-name', '' ); ?>" />
-                                    <label for="ws-ls-start-date"><?php echo __( 'Start Date (only consider entries from this date)', WE_LS_SLUG ); ?></label>
+                                    <label for="ws-ls-start-date"><?php echo esc_html__( 'Start Date (only consider entries from this date)', WE_LS_SLUG ); ?></label>
                                     <input type="text" name="ws-ls-start-date" id="ws-ls-start-date" tabindex="2" value="<?php echo ws_ls_post_value( 'ws-ls-start-date', false,'' ); ?>" class="we-ls-datepicker we-ls-challenge-datepicker" />
-                                    <label for="ws-ls-end-date"><?php echo __( 'End Date (only consider entries to this date)', WE_LS_SLUG ); ?></label>
+                                    <label for="ws-ls-end-date"><?php echo esc_html__( 'End Date (only consider entries to this date)', WE_LS_SLUG ); ?></label>
                                     <input type="text" name="ws-ls-end-date" id="ws-ls-end-date" tabindex="3" value="<?php echo ws_ls_post_value( 'ws-ls-end-date', false,'' ); ?>" class="we-ls-datepicker we-ls-challenge-datepicker" />
                                     <br />
                                     <input type="hidden" name="add-challenge" value="true" />
@@ -129,12 +129,12 @@ function ws_ls_challenges_admin_page() {
                     <?php endif; ?>
                     <?php if ( 'view' === $mode && false !== $challenge_id ): ?>
                         <div class="postbox">
-                            <h2 class="hndle"><span><?php echo __('Entries for this challenge', WE_LS_SLUG ); ?></span></h2>
+                            <h2 class="hndle"><span><?php echo esc_html__('Entries for this challenge', WE_LS_SLUG ); ?></span></h2>
                             <div class="inside">
                                 <p>
                                     <a href="<?php echo ws_ls_challenge_link( 1, 'list' ); ?>" class="btn btn-default button">
                                         <i class="fa fa-arrow-left"></i>
-                                        <?php echo __( 'Back', WE_LS_SLUG ); ?>
+                                        <?php echo esc_html__( 'Back', WE_LS_SLUG ); ?>
                                     </a>
                                 </p>
                                 <?php
@@ -147,19 +147,22 @@ function ws_ls_challenges_admin_page() {
                     <?php endif; ?>
                     <?php if ( 'processing' === $mode ): ?>
                         <div class="postbox">
-                            <h2 class="hndle"><span><?php echo __('Processing...', WE_LS_SLUG ); ?></span></h2>
+                            <h2 class="hndle"><span><?php echo esc_html__('Processing...', WE_LS_SLUG ); ?></span></h2>
                             <div class="inside">
-                                <p><?php echo __('Processing existing entries for this challenge. This page will keep refreshing until the initial challenge data has been processed.', WE_LS_SLUG ); ?>...</p>
+                                <p><?php echo esc_html__('Processing existing entries for this challenge. This page will keep refreshing until the initial challenge data has been processed.', WE_LS_SLUG ); ?>...</p>
                                 <?php
                                     $entries_processed = ws_ls_challenges_process( NULL, true, 150 );
 
                                     if ( false !== $entries_processed ) {
-                                        printf( '<p>- %d %s</p>', $entries_processed, __('entries processed', WE_LS_SLUG ) );
+                                        printf( '<p>- %d %s</p>', $entries_processed, esc_html__('entries processed', WE_LS_SLUG ) );
 
-                                        printf( '<script>window.location.replace( "%s" )</script>', ws_ls_challenge_link( 1, 'processing' ) );
+                                        $redirect_url = ws_ls_challenge_link( 1, 'processing' );
                                     } else {
-                                        printf( '<script>window.location.replace( "%s" )</script>', ws_ls_challenge_link( 1, 'list' ) );
+                                        $redirect_url = ws_ls_challenge_link( 1, 'list' );
                                     }
+                                    
+                                    ws_ls_js_redirect( $redirect_url );
+
                                 ?>
                             </div>
                         </div>
@@ -184,18 +187,18 @@ function ws_ls_challenges_admin_disabled() { ?>
                     }
                     ?>
                     <div class="postbox">
-                        <h2 class="hndle"><span><?php echo __( 'Challenges Disabled', WE_LS_SLUG ); ?></span></h2>
+                        <h2 class="hndle"><span><?php echo esc_html__( 'Challenges Disabled', WE_LS_SLUG ); ?></span></h2>
 	                    <div class="inside">
 
 		                    <p>
 			                    <strong>
-				                    <?php echo __( 'Challenges are currently disabled. Please enable via the', WE_LS_SLUG ); ?>
-			                        <a href="<?php echo ws_ls_get_link_to_settings(); ?>"><?php echo __( 'settings', WE_LS_SLUG ); ?></a> <?php echo __( 'page', WE_LS_SLUG ); ?>.
+				                    <?php echo esc_html__( 'Challenges are currently disabled. Please enable via the', WE_LS_SLUG ); ?>
+			                        <a href="<?php echo ws_ls_get_link_to_settings(); ?>"><?php echo esc_html__( 'settings', WE_LS_SLUG ); ?></a> <?php echo esc_html__( 'page', WE_LS_SLUG ); ?>.
 			                    </strong>
 		                    </p>
-		                    <p><?php echo __( 'Why not set challenges for your user\'s within a given time period? Display Total Weight Lost, BMI Change, %Body Weight, Weight Tracker Streaks and Meal Tracker streaks achieved by each user in a league table.', WE_LS_SLUG ); ?></p>
-		                    <p><?php echo __( 'Besides viewing all your challenges and their data, the shortcode will allow you to display the league table in the public facing website.', WE_LS_SLUG ); ?></p>
-		                    <a href="https://docs.yeken.uk/challenges.html" class="button" target="_blank"><?php echo __( 'Read more about Challenges', WE_LS_SLUG ); ?></a>
+		                    <p><?php echo esc_html__( 'Why not set challenges for your user\'s within a given time period? Display Total Weight Lost, BMI Change, %Body Weight, Weight Tracker Streaks and Meal Tracker streaks achieved by each user in a league table.', WE_LS_SLUG ); ?></p>
+		                    <p><?php echo esc_html__( 'Besides viewing all your challenges and their data, the shortcode will allow you to display the league table in the public facing website.', WE_LS_SLUG ); ?></p>
+		                    <a href="https://docs.yeken.uk/challenges.html" class="button" target="_blank"><?php echo esc_html__( 'Read more about Challenges', WE_LS_SLUG ); ?></a>
 		                    <p>
 
 

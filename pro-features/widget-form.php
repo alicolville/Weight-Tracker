@@ -8,11 +8,11 @@ class ws_ls_widget_form extends WP_Widget {
 
 	function __construct() {
 
-		parent::__construct( 'ws_ls_widget_form', __( 'Weight Tracker - Form', WE_LS_SLUG ),
-										[ 'description' => __('Display a quick entry form for logged in users to record their weight for today.', WE_LS_SLUG ) ] );
+		parent::__construct( 'ws_ls_widget_form', esc_html__( 'Weight Tracker - Form', WE_LS_SLUG ),
+										[ 'description' => esc_html__('Display a quick entry form for logged in users to record their weight for today.', WE_LS_SLUG ) ] );
 
         $this->field_values = [
-                                    'title'                     => __( 'Your weight today', WE_LS_SLUG ),
+                                    'title'                     => esc_html__( 'Your weight today', WE_LS_SLUG ),
 									'force_todays_date'         => 'yes',
 			                        'not-logged-in-message'     => '',
 									'exclude-measurements'      => 'no',

@@ -346,7 +346,7 @@ function ws_ls_awards_send_email( $weight_object, $award, $info ) {
         // Does this award have a URL?
         if ( false === empty( $award['url' ] ) ) {
 	        $award['url-link'] = sprintf('<h2><a href="%s" target="_blank" rel="noopener">%s</a></h2>',
-		            esc_url( $award['url' ] ), __('View Award', WE_LS_SLUG) );
+		            esc_url( $award['url' ] ), esc_html__('View Award', WE_LS_SLUG) );
         } else {
 	        $award['url-link'] = '';
         }
@@ -368,15 +368,15 @@ function ws_ls_awards_ajax_list() {
 
 	$columns = [
 		[ 'name' => 'id', 'title' => 'ID', 'visible'=> false, 'type' => 'number' ],
-		[ 'name' => 'title', 'title' => __('Title', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
-		[ 'name' => 'category', 'title' => __('Category', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
-		[ 'name' => 'gain_loss', 'title' => __('Gain / Loss', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
-		[ 'name' => 'value', 'title' => __('Value', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
-		//[ 'name' => 'max_awards', 'title' => __('Max. Awards', WE_LS_SLUG), 'visible'=> true, 'type' => 'number' ],
-		[ 'name' => 'apply_to_add', 'title' => __('Add', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
-		[ 'name' => 'apply_to_update', 'title' => __('Update', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
-		[ 'name' => 'send_email', 'title' => __('Email', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
-		[ 'name' => 'enabled', 'title' => __('Enabled', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
+		[ 'name' => 'title', 'title' => esc_html__('Title', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
+		[ 'name' => 'category', 'title' => esc_html__('Category', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
+		[ 'name' => 'gain_loss', 'title' => esc_html__('Gain / Loss', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
+		[ 'name' => 'value', 'title' => esc_html__('Value', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
+		//[ 'name' => 'max_awards', 'title' => esc_html__('Max. Awards', WE_LS_SLUG), 'visible'=> true, 'type' => 'number' ],
+		[ 'name' => 'apply_to_add', 'title' => esc_html__('Add', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
+		[ 'name' => 'apply_to_update', 'title' => esc_html__('Update', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
+		[ 'name' => 'send_email', 'title' => esc_html__('Email', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
+		[ 'name' => 'enabled', 'title' => esc_html__('Enabled', WE_LS_SLUG), 'visible'=> true, 'type' => 'text' ],
 	];
 
 	$awards = ws_ls_awards();
@@ -485,7 +485,7 @@ function ws_ls_awards_shortcode_grid( $user_defined_arguments ) {
 	}
 
 	$arguments = shortcode_atts([
-									'message'       => __('No awards', WE_LS_SLUG),
+									'message'       => esc_html__('No awards', WE_LS_SLUG),
 									'user-id'       => get_current_user_id(),
 									'thumb-width'   => 150,
 									'thumb-height'  => 150

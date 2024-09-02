@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight,tracker,chart,history,macronutrient
 Requires at least: 6.0
 Tested up to: 6.5
-Stable tag: 10.9.2
+Stable tag: 10.10
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -92,9 +92,20 @@ Need further help? Please visit the dedicated site:
 
 [Weight Tracker Website](https://weight.yeken.uk "Weight Tracker Website")
 
-= Donate =
+== 3rd Party Libraries == 
 
-Paypal Donate: [www.paypal.me/yeken](https://www.paypal.me/yeken "www.paypal.me/yeken")
+As with most modern software, this plugins utilises other 3rd party plugins. Depending on how you use the plugin (i.e. which shortcodes) determines which libraries maybe used. Below is a list of the 3rd party libraries used:
+
+* [UI Kit](https://getuikit.com/)
+* [Chart.js](https://www.chartjs.org/)
+* [Font Awesome](https://fontawesome.com/)
+* [Footable](https://fooplugins.github.io/FooTable/)
+* [Selectize](https://github.com/selectize/selectize.js)
+* [jQuery Validation Plugin](https://jqueryvalidation.org/)
+* [jQuery Slider Pips](https://github.com/simeydotme/jQuery-ui-Slider-Pips)
+* [ProgressBar.js](https://kimmobrunfeldt.github.io/progressbar.js)
+* [ZOZO UI Tabs](http://www.zozoui.com)
+* [Unite Gallery](https://github.com/vvvmax/unitegallery)
 
 == Installation ==
 
@@ -151,6 +162,17 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 10.9: New user settings for opting in and out of email notifications.
 
 == Changelog ==
+
+= 10.10 =
+
+Several fixes based upon WordPress's plugin feedback:
+
+* Included all non minified versions of 3rd party JS.
+* CDNs for the following have been removed, their files are now served via the plugins folder: Chart.js, FontAwesome
+* Updated Readme to include references to 3rd party libraries.
+* Moved inline <script> into external JS files.
+* Changed all references of __() to esc_html__().
+* Various other minor underlying code tweaks.
 
 = 10.9.2 =
 

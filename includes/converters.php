@@ -115,13 +115,13 @@ function ws_ls_weight_display( $kg, $user_id = NULL, $key = false, $force_admin 
 
 		case 'pounds_only':
 			$weight[ 'pounds' ] 		= ws_ls_convert_kg_to_lb( $kg );
-			$weight[ 'display' ] 		= sprintf( '%s%s', $weight[ 'pounds' ], __( 'lbs', WE_LS_SLUG ) );
+			$weight[ 'display' ] 		= sprintf( '%s%s', $weight[ 'pounds' ], esc_html__( 'lbs', WE_LS_SLUG ) );
 			$weight[ 'graph-value' ] 	= $weight[ 'pounds' ];
 			$weight[ 'imperial' ]       = true;
 			break;
 
 		case 'kg':
-			$weight[ 'display' ] 		= sprintf( '%s%s', ws_ls_round_decimals( $kg ), __( 'kg', WE_LS_SLUG ) );
+			$weight[ 'display' ] 		= sprintf( '%s%s', ws_ls_round_decimals( $kg ), esc_html__( 'kg', WE_LS_SLUG ) );
 			$weight[ 'graph-value' ] 	= $weight['kg'];
 			$weight[ 'imperial' ]       = false;
 			break;
@@ -136,7 +136,7 @@ function ws_ls_weight_display( $kg, $user_id = NULL, $key = false, $force_admin 
 				$imperial[ 'stones' ]++;
 			}
 
-			$weight[ 'display' ] 		= sprintf( '%s%s %s%s', $imperial[ 'stones' ],__( 'st' , WE_LS_SLUG), $imperial[ 'pounds' ], __( 'lbs' , WE_LS_SLUG) );
+			$weight[ 'display' ] 		= sprintf( '%s%s %s%s', $imperial[ 'stones' ],esc_html__( 'st' , WE_LS_SLUG), $imperial[ 'pounds' ], esc_html__( 'lbs' , WE_LS_SLUG) );
 			$weight[ 'graph-value' ] 	= ( $imperial['stones'] * 14 ) + $imperial['pounds'];
 			$weight[ 'stones' ]         = $imperial['stones'];
 			$weight[ 'pounds' ]         = $imperial['pounds'];
@@ -185,7 +185,7 @@ function ws_ls_format_stones_pound_for_comparison_display( $weight ) {
 		}
 
 		if ($show_stones) {
-			$text[] = $weight['stones'] . __( 'st', WE_LS_SLUG );
+			$text[] = $weight['stones'] . esc_html__( 'st', WE_LS_SLUG );
 		}
 
 		if ( true === is_numeric( $weight['pounds'] ) ) {
@@ -197,7 +197,7 @@ function ws_ls_format_stones_pound_for_comparison_display( $weight ) {
 				$weight['pounds'] = abs($weight['pounds']);
 			}
 
-			$text[] = $weight['pounds'] . __('lbs', WE_LS_SLUG);
+			$text[] = $weight['pounds'] . esc_html__('lbs', WE_LS_SLUG);
 		}
 
 		return implode(' ', $text);

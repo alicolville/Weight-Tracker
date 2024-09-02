@@ -110,10 +110,10 @@
 				false === ws_ls_meta_fields_key_exist( 'cups-of-water-drank-today' ) ) {
             // Number
             ws_ls_meta_fields_add([
-                'field_name' => __('Cups of water drank today?', WE_LS_SLUG),
-                'abv' => __('Water', WE_LS_SLUG),
+                'field_name' => esc_html__('Cups of water drank today?', WE_LS_SLUG),
+                'abv' => esc_html__('Water', WE_LS_SLUG),
                 'field_type' => 0,
-                'suffix' => __('cups', WE_LS_SLUG),
+                'suffix' => esc_html__('cups', WE_LS_SLUG),
                 'mandatory' => 2,
                 'enabled' => 1,
                 'sort' => 100,
@@ -125,10 +125,10 @@
 	    if ( false === ws_ls_meta_fields_key_exist( 'waist' ) ) {
 		    // Number
 		    ws_ls_meta_fields_add([
-			    'field_name' => __('Waist', WE_LS_SLUG),
-			    'abv' => __('Waist', WE_LS_SLUG),
+			    'field_name' => esc_html__('Waist', WE_LS_SLUG),
+			    'abv' => esc_html__('Waist', WE_LS_SLUG),
 			    'field_type' => 0,
-			    'suffix' => __('cm', WE_LS_SLUG),
+			    'suffix' => esc_html__('cm', WE_LS_SLUG),
 			    'mandatory' => 1,
 			    'enabled' => 1,
 			    'sort' => 100,
@@ -140,10 +140,10 @@
 	    if ( false === ws_ls_meta_fields_key_exist( 'leg' ) ) {
 		    // Number
 		    ws_ls_meta_fields_add([
-			    'field_name' => __('Leg', WE_LS_SLUG),
-			    'abv' => __('Leg', WE_LS_SLUG),
+			    'field_name' => esc_html__('Leg', WE_LS_SLUG),
+			    'abv' => esc_html__('Leg', WE_LS_SLUG),
 			    'field_type' => 0,
-			    'suffix' => __('cm', WE_LS_SLUG),
+			    'suffix' => esc_html__('cm', WE_LS_SLUG),
 			    'mandatory' => 1,
 			    'enabled' => 1,
 			    'sort' => 100,
@@ -155,8 +155,8 @@
         if ( false === ws_ls_meta_fields_key_exist( 'did-you-stick-to-your-diet' ) ) {
             // Yes / No
             ws_ls_meta_fields_add([
-                'field_name' => __('Did you stick to your diet?', WE_LS_SLUG),
-                'abv' => __('Diet', WE_LS_SLUG),
+                'field_name' => esc_html__('Did you stick to your diet?', WE_LS_SLUG),
+                'abv' => esc_html__('Diet', WE_LS_SLUG),
                 'field_type' => 2,
                 'suffix' => '',
                 'mandatory' => 1,

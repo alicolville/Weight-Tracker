@@ -25,8 +25,8 @@ function ws_ls_challenges_shortcodes_opt_in( $user_defined_arguments ) {
         ws_ls_set_user_preference_simple( 'challenge_opt_in', ( 'yes' === $get_optin ) ? 1 : 0 );
 
         return sprintf( '<p>%1$s %2$s.</p> ',
-                            __( 'You have been', WE_LS_SLUG ),
-                            ( 'yes' === $get_optin ) ? __( 'opted into all challenges', WE_LS_SLUG ) : __( 'opted out of all challenges', WE_LS_SLUG )
+                            esc_html__( 'You have been', WE_LS_SLUG ),
+                            ( 'yes' === $get_optin ) ? esc_html__( 'opted into all challenges', WE_LS_SLUG ) : esc_html__( 'opted out of all challenges', WE_LS_SLUG )
         );
     }
 
@@ -49,9 +49,9 @@ function ws_ls_challenges_shortcodes_opt_in( $user_defined_arguments ) {
 						 ',
 		esc_url( $current_url ),
 		'?opt-in=yes',
-		__( 'Opt in', WE_LS_SLUG ),
+		esc_html__( 'Opt in', WE_LS_SLUG ),
 		'?opt-in=no',
-		__( 'Opt Out', WE_LS_SLUG )
+		esc_html__( 'Opt Out', WE_LS_SLUG )
 	);
 }
 add_shortcode( 'wlt-challenges-optin', 'ws_ls_challenges_shortcodes_opt_in' );
@@ -86,8 +86,8 @@ function ws_ls_challenges_view_entries_guide() {
     }
 
     printf( '<h3>%1$s</h3><p>%2$s</p>',
-                __( 'Display data on the front end ', WE_LS_SLUG ),
-                __( 'If you wish to display this table on a page or post, use the following shortcode: ', WE_LS_SLUG )
+                esc_html__( 'Display data on the front end ', WE_LS_SLUG ),
+                esc_html__( 'If you wish to display this table on a page or post, use the following shortcode: ', WE_LS_SLUG )
     );
 
     $arguments = '';

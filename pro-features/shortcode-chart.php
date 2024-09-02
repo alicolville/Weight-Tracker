@@ -19,7 +19,7 @@ function ws_ls_shortcode_chart( $user_defined_arguments ) {
 											'bezier'              	        => ws_ls_option_to_bool( 'ws-ls-bezier-curve' ),
 											'height'              	        => 250,
 											'ignore-login-status' 	        => false,
-											'message-no-data'               => __( 'Currently there is no data to display on the chart.', WE_LS_SLUG ),
+											'message-no-data'               => esc_html__( 'Currently there is no data to display on the chart.', WE_LS_SLUG ),
 											'max-data-points'     	        => ws_ls_option( 'ws-ls-max-points', '25', true ),
 											'show-gridlines'      	        => ws_ls_option_to_bool( 'ws-ls-grid-lines' ),
 											'show-custom-fields'  	        => true,

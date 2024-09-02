@@ -581,7 +581,7 @@ function ws_ls_meta_fields_groups( $include_none = true ) {
 	ws_ls_cache_user_set( 'custom-fields-groups', 'all' , $data );
 
 	if ( true === $include_none ) {
-		$data = array_merge( [ [ 'id' => 0, 'name' => __('None', WE_LS_SLUG ) ] ], $data );
+		$data = array_merge( [ [ 'id' => 0, 'name' => esc_html__('None', WE_LS_SLUG ) ] ], $data );
 	}
 
 	return $data;

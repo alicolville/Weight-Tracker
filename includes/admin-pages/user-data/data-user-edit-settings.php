@@ -23,7 +23,7 @@ function ws_ls_admin_page_settings_user() {
                         }
                     ?>
 					<div class="postbox">
-						<h2 class="hndle"><span><?php echo __('Edit user preferences', WE_LS_SLUG); ?></span></h2>
+						<h2 class="hndle"><span><?php echo esc_html__('Edit user preferences', WE_LS_SLUG); ?></span></h2>
 						<div class="inside">
                             <br />
 							<?php
@@ -35,8 +35,8 @@ function ws_ls_admin_page_settings_user() {
 
                                     echo sprintf('<p><a href="%s">%s</a> %s.</p>',
                                         ws_ls_upgrade_link(),
-                                        __('Upgrade to Pro', WE_LS_SLUG),
-                                        __('to save changes to your user\'s settings' , WE_LS_SLUG)
+                                        esc_html__('Upgrade to Pro', WE_LS_SLUG),
+                                        esc_html__('to save changes to your user\'s settings' , WE_LS_SLUG)
                                     );
 
                                 }

@@ -20,14 +20,14 @@ function ws_ls_meta_fields_page_group() {
 						}
 						?>
 						<div class="postbox">
-							<h3 class="hndle"><span><?php echo __( 'Manage Custom Field Groups', WE_LS_SLUG ); ?></span></h3>
+							<h3 class="hndle"><span><?php echo esc_html__( 'Manage Custom Field Groups', WE_LS_SLUG ); ?></span></h3>
 							<div style="padding: 0px 15px 0px 15px">
 
-								<p><?php echo __( 'Assign your custom fields to groups - this will allow you to display certain groups of custom fields on forms and charts.', WE_LS_SLUG ); ?>
-									<a href="https://docs.yeken.uk/custom-fields.html" target="_blank" rel="noopener"><?php echo __( 'Read more about Custom Fields', WE_LS_SLUG ); ?></a>.
+								<p><?php echo esc_html__( 'Assign your custom fields to groups - this will allow you to display certain groups of custom fields on forms and charts.', WE_LS_SLUG ); ?>
+									<a href="https://docs.yeken.uk/custom-fields.html" target="_blank" rel="noopener"><?php echo esc_html__( 'Read more about Custom Fields', WE_LS_SLUG ); ?></a>.
 								</p>
 
-								<h4><?php echo __('Add a new custom field group', WE_LS_SLUG); ?></h4>
+								<h4><?php echo esc_html__('Add a new custom field group', WE_LS_SLUG); ?></h4>
 								<?php
 
 								$new_group = ws_ls_post_value( 'group' );
@@ -42,7 +42,7 @@ function ws_ls_meta_fields_page_group() {
 									<input type="submit" value="Add" class="button" <?php if ( false === WS_LS_IS_PRO ) { echo ' disabled'; } ?> />
 								</form>
 
-								<h4><?php echo __( 'Existing custom field groups', WE_LS_SLUG ); ?></h4>
+								<h4><?php echo esc_html__( 'Existing custom field groups', WE_LS_SLUG ); ?></h4>
 
 								<table class="ws-ls-settings-custom-field-groups-list-ajax table ws-ls-loading-table" id="custom-field-list"
 								       data-paging="true"

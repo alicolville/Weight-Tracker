@@ -1,6 +1,29 @@
 jQuery( document ).ready( function ( $ ) {
 
   // -----------------------------------------------------------------------
+  // Custom Fields slider
+  // -----------------------------------------------------------------------
+
+  $( '.ws-ls-meta-fields-slider' ).each( function () {
+    
+    let id = '#' + this.id;
+
+    $( id ).slider({
+        min: 	$( this ).data( 'min' ),
+        max: 	$( this ).data( 'max' ),
+        step:	$( this ).data( 'step' ),
+        value: $( this ).data( 'value' )
+    }
+    ).slider( "pips", {
+      rest: $( this ).data( 'pips' )
+    }
+    ).on( "slidechange", function(e,ui) {
+      $( id + "-value" ).val( ui.value );
+    });
+    
+  });
+
+  // -----------------------------------------------------------------------
   // Custom Fields accumulator
   // -----------------------------------------------------------------------
 

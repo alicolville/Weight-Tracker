@@ -35,9 +35,9 @@ function ws_ls_challenges_hook_settings_form_opt_in( $html, $user_id ) {
     $current_value  = ws_ls_user_preferences_get( 'challenge_opt_in', $user_id );
 
 	$html .= ws_ls_form_field_select( [        'key'        => 'ws-ls-challenge-opt-in',
-	                                           'label'      => __( 'Challenges', WE_LS_SLUG ),
-	                                           'values'     => [ 'no'   => __( 'No - Do not opt me into any challenges', WE_LS_SLUG ),
-	                                                             'yes'  =>  __( 'Yes - Opt me into challenges!', WE_LS_SLUG ) ],
+	                                           'label'      => esc_html__( 'Challenges', WE_LS_SLUG ),
+	                                           'values'     => [ 'no'   => esc_html__( 'No - Do not opt me into any challenges', WE_LS_SLUG ),
+	                                                             'yes'  =>  esc_html__( 'Yes - Opt me into challenges!', WE_LS_SLUG ) ],
 	                                           'selected'   => ( '1' === $current_value ) ? 'yes' : 'no',
 	                                           'uikit'      => true ] );
 
