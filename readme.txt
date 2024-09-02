@@ -172,6 +172,7 @@ Several fixes based upon WordPress's plugin feedback:
 * Updated Readme to include references to 3rd party libraries.
 * Moved inline <script> into external JS files.
 * Changed all references of __() to esc_html__().
+* Various other minor underlying code tweaks.
 
 = 10.9.2 =
 
