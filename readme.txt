@@ -152,6 +152,12 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 == Changelog ==
 
+= 10.9.3 =
+
+Several fixes based upon WordPress's plugin feedback:
+
+* Included all non minified versions of JS / CSS.
+
 = 10.9.2 =
 
 * Security fix: Removed reference to PolyFill ResizeObserver
