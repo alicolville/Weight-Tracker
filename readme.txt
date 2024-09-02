@@ -96,15 +96,16 @@ Need further help? Please visit the dedicated site:
 
 As with most modern software, this plugins utilises other 3rd party plugins. Depending on how you use the plugin (i.e. which shortcodes) determines which libraries maybe used. Below is a list of the 3rd party libraries used:
 
- - [UI Kit](https://getuikit.com/)
- - [Chart.js](https://www.chartjs.org/)
- - [Footable](https://fooplugins.github.io/FooTable/)
- - [Selectize](https://github.com/selectize/selectize.js)
- - [jQuery Validation Plugin](https://jqueryvalidation.org/)
- - [jQuery Slider Pips](https://github.com/simeydotme/jQuery-ui-Slider-Pips)
- - [ProgressBar.js](https://kimmobrunfeldt.github.io/progressbar.js)
- - [ZOZO UI Tabs](http://www.zozoui.com)
- - [Unite Gallery](https://github.com/vvvmax/unitegallery)
+* [UI Kit](https://getuikit.com/)
+* [Chart.js](https://www.chartjs.org/)
+* [Font Awesome](https://fontawesome.com/)
+* [Footable](https://fooplugins.github.io/FooTable/)
+* [Selectize](https://github.com/selectize/selectize.js)
+* [jQuery Validation Plugin](https://jqueryvalidation.org/)
+* [jQuery Slider Pips](https://github.com/simeydotme/jQuery-ui-Slider-Pips)
+* [ProgressBar.js](https://kimmobrunfeldt.github.io/progressbar.js)
+* [ZOZO UI Tabs](http://www.zozoui.com)
+* [Unite Gallery](https://github.com/vvvmax/unitegallery)
 
 == Installation ==
 
@@ -167,7 +168,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 Several fixes based upon WordPress's plugin feedback:
 
 * Included all non minified versions of 3rd party JS.
-* CDNs for the following have been removed, their files are now served via the plugins folder: Chart.js
+* CDNs for the following have been removed, their files are now served via the plugins folder: Chart.js, FontAwesome
 * Updated Readme to include references to 3rd party libraries.
 * Moved inline <script> into external JS files.
 
