@@ -167,6 +167,9 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 == Changelog ==
 
+[todo]: Replace WE_LS_SLUG in transaltion
+
+
 = 10.10.1 =
 
 * Updated Chart.js to 4.4.4.

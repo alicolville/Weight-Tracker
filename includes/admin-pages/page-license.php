@@ -31,10 +31,10 @@ function ws_ls_advertise_pro() {
 					}
 
 					if ($valid_old_license || true === $valid_new_license) {
-						ws_ls_display_notice(esc_html__('Your license has been applied!', WE_LS_SLUG));
+						ws_ls_display_notice( esc_html__( 'Your license has been applied!', WE_LS_SLUG ) );
 						ws_ls_cache_delete_all();
 					} else {
-						ws_ls_display_notice(esc_html__('An error occurred applying your license: ', WE_LS_SLUG) . $valid_new_license, 'error');
+						ws_ls_display_notice( esc_html__('An error occurred applying your license: ', WE_LS_SLUG ) . $valid_new_license, 'error');
 					}
 				}
 
@@ -68,19 +68,19 @@ function ws_ls_advertise_pro() {
 								<div class="inside">
 									<?php if ($display_pro_plus_marketing && $display_pro_marketing) {
 
-										echo sprintf('<p>%s %s %s</p><p>%s</p>',
-											esc_html__('As you can see from the features listed below, the', WE_LS_SLUG),
-											WE_LS_TITLE,
-											esc_html__('can offer you and your members a lot more features to help you and them manage their weight. There are two types of License that you can purchase, Pro and Pro Plus. Pro contains an enriched feature set and user experience and is a must! Pro Plus extends Pro with features such as BMR, Calorie intake, Macronutrient Calculator, etc.', WE_LS_SLUG),
-											esc_html__('Of course, by purchasing a license, you are supporting the future of this plugin and it is gratefully appreciated.', WE_LS_SLUG)
-										);
+										ws_ls_echo_wp_kses( sprintf('<p>%s %s %s</p><p>%s</p>',
+																esc_html__('As you can see from the features listed below, the', WE_LS_SLUG),
+																WE_LS_TITLE,
+																esc_html__('can offer you and your members a lot more features to help you and them manage their weight. There are two types of License that you can purchase, Pro and Pro Plus. Pro contains an enriched feature set and user experience and is a must! Pro Plus extends Pro with features such as BMR, Calorie intake, Macronutrient Calculator, etc.', WE_LS_SLUG),
+																esc_html__('Of course, by purchasing a license, you are supporting the future of this plugin and it is gratefully appreciated.', WE_LS_SLUG )
+															));
 									} elseif ( $display_pro_plus_marketing ) {
 
-										echo sprintf('<p>%s %s %s</p>',
-											esc_html__('Of course, a big thank you purchasing a Pro license at some point - it is much appreciated. As you can see below, you can further expand the features of', WE_LS_SLUG),
-											WE_LS_TITLE,
-											esc_html__('by extending your license to Pro Plus. Pro Plus extends Pro with features such as BMR, Calorie intake, Macronutrient Calculator, etc. You can view the additional features that Pro Plus offers you below.', WE_LS_SLUG)
-										);
+										ws_ls_echo_wp_kses( sprintf('<p>%s %s %s</p>',
+																esc_html__('Of course, a big thank you purchasing a Pro license at some point - it is much appreciated. As you can see below, you can further expand the features of', WE_LS_SLU G),
+																WE_LS_TITLE,
+																esc_html__('by extending your license to Pro Plus. Pro Plus extends Pro with features such as BMR, Calorie intake, Macronutrient Calculator, etc. You can view the additional features that Pro Plus offers you below.', WE_LS_SLUG)
+															));
 
 									} else {
 
@@ -149,7 +149,7 @@ function ws_ls_advertise_pro() {
 
 								<div class="inside">
 
-									<form action="<?php echo admin_url('admin.php?page=ws-ls-license&add-license=true'); ?>" method="post">
+									<form action="<?php ws_ls_echo( admin_url('admin.php?page=ws-ls-license&add-license=true') ); ?>" method="post">
 										<p><?php echo esc_html__('Copy and paste the license given to you by YeKen into this box and click "Apply License"', WE_LS_SLUG); ?>.</p>
 										<textarea rows="5" style="width:100%"  name="license-key"></textarea>
                                         <br /><br />
@@ -163,11 +163,11 @@ function ws_ls_advertise_pro() {
                                     <table class="ws-ls-sidebar-stats">
                                         <tr>
                                             <th><?php echo esc_html__('Site Hash', WE_LS_SLUG); ?></th>
-                                            <td><?php echo esc_html( ws_ls_generate_site_hash() ); ?></td>
+                                            <td><?php ws_ls_echo( ws_ls_generate_site_hash() ); ?></td>
                                         </tr>
                                         <tr>
                                             <th><?php echo esc_html__('Type', WE_LS_SLUG); ?></th>
-                                            <td><a href="<?php echo esc_url( WE_LS_LICENSE_TYPES_URL ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html( $license_name ); ?></a></td>
+                                            <td><a href="<?php echo esc_url( WE_LS_LICENSE_TYPES_URL ); ?>" target="_blank" rel="noopener noreferrer"><?php ws_ls_echo( ( $license_name ); ?></a></td>
                                         </tr>
                                         <tr>
                                             <th><?php echo esc_html__('Expires', WE_LS_SLUG); ?></th>
@@ -175,7 +175,7 @@ function ws_ls_advertise_pro() {
                                                 <?php
 
                                                     if (true === in_array($license_type, ['pro', 'pro-plus'])) {
-                                                        echo esc_html( ws_ls_iso_date_into_correct_format( $license_decoded['expiry-date'] ) );
+                                                        ws_ls_echo( ws_ls_iso_date_into_correct_format( $license_decoded['expiry-date'] ) );
                                                     } else {
                                                         echo esc_html__('n/a', WE_LS_SLUG);
                                                     }
@@ -185,7 +185,7 @@ function ws_ls_advertise_pro() {
                                         </tr>
 										<?php $existing_license = ws_ls_license_get_old_or_new(); ?>
 
-										<?php if ( false === empty($existing_license)): ?>
+										<?php if ( false === empty( $existing_license )): ?>
 											<tr class="last">
 	                                            <th colspan="2"><?php echo esc_html__('Your Existing License', WE_LS_SLUG); ?></th>
 											</tr>
@@ -193,7 +193,7 @@ function ws_ls_advertise_pro() {
 												<td colspan="2"><textarea rows="5" style="width:100%"><?php echo esc_textarea($existing_license); ?></textarea></td>
 											</tr>
 											<tr class="last">
-												<td colspan="2"><a href="<?php echo admin_url('admin.php?page=ws-ls-license&remove-license=true'); ?>" class="button-secondary delete-license"><?php echo esc_html__('Remove License', WE_LS_SLUG); ?></a></td>
+												<td colspan="2"><a href="<?php echo esc_url( admin_url('admin.php?page=ws-ls-license&remove-license=true' ) ); ?>" class="button-secondary delete-license"><?php echo esc_html__('Remove License', WE_LS_SLUG); ?></a></td>
 											</tr>
 
 										<?php endif; ?>
@@ -207,7 +207,7 @@ function ws_ls_advertise_pro() {
                                 <div class="inside">
                                     <p><?php echo esc_html__('Need further help or information, please visit our documentation site:', WE_LS_SLUG); ?></p>
                                     <p><strong><a href="https://docs.yeken.uk" target="_blank" rel="noopener noreferrer">docs.yeken.uk</a></strong></p>
-                                    <a href="https://docs.yeken.uk" target="_blank" rel="noopener noreferrer"><img class="widefat" src="<?php echo plugins_url( 'assets/images/weight-yeken-uk.png', __FILE__ ); ?>" /></a>
+                                    <a href="https://docs.yeken.uk" target="_blank" rel="noopener noreferrer"><img class="widefat" src="<?php ws_ls_echo( plugins_url( 'assets/images/weight-yeken-uk.png', __FILE__ ) ); ?>" /></a>
                                 </div>
                             </div>
 						</div>
@@ -250,8 +250,8 @@ function ws_ls_advertise_pro() {
 
 <?php
 
-	ws_ls_create_dialog_jquery_code(esc_html__('Are you sure you?', WE_LS_SLUG),
-        esc_html__('Are you sure you wish to remove the license for this site? Removing it may cause your user\'s to lose functionality.', WE_LS_SLUG) . '<br /><br />',
+	ws_ls_create_dialog_jquery_code( esc_html__('Are you sure you?', WE_LS_SLUG ),
+        esc_html__('Are you sure you wish to remove the license for this site? Removing it may cause your user\'s to lose functionality.', WE_LS_SLUG ) . '<br /><br />',
         'delete-license');
 
 }
