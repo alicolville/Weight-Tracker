@@ -996,7 +996,7 @@ function ws_ls_display_blockquote( $text, $class = '', $just_echo = false, $incl
 						);
 
 	if ( true === $just_echo ) {
-		echo $html_output;
+		ws_ls_echo_wp_kses( $html_output );
 		return '';
 	}
 
@@ -1808,5 +1808,16 @@ function ws_ls_echo_wp_kses( $value ) {
  * Our version of kses and the HTML we are happy with
  */
 function ws_ls_wp_kses( $value ) {
-	return wp_kses( $value, [ 'canvas', 'p', 'a', 'div', 'span', 'em', 'table', 'tr', 'td' ] );
+
+	$basic_tags = wp_kses_allowed_html( 'html' );
+
+	$basic_tags[ 'a' ] 		= [ 'id' => true, 'class' => true, 'href' => true, 'title' => true, 'target' => true];
+	$basic_tags[ 'canvas' ] = [ 'id' => true, 'class' => true ];
+	$basic_tags[ 'div' ]	= [];	
+	$basic_tags[ 'span' ]	= [];			
+	$basic_tags[ 'table' ]	= [];	
+	$basic_tags[ 'tr' ]		= [];	
+	$basic_tags[ 'td' ]		= [];	
+
+	return wp_kses( $value, $basic_tags );
 }
