@@ -83,7 +83,7 @@ add_action( 'wp_ajax_ws_ls_setup_wizard_dismiss', 'ws_ls_setup_wizard_dismiss_no
 function wl_ls_setup_wizard_custom_notification_html() {
 	?>
 
-		<p><img src="<?php echo plugins_url( 'admin-pages/assets/images/yeken-logo.png', __FILE__ ); ?>" width="100" height="100" style="margin-right:20px" align="left" /><?php echo esc_html__( 'If require plugin modifications to Weight Tracker, or need a new plugin built, or perhaps you need a developer to help you with your website then please don\'t hesitiate get in touch!', WE_LS_SLUG ); ?></p>
+		<p><img src="<?php ws_ls_echo( WS_LS_BASE_URL . 'includes/admin-pages/assets/images/yeken-logo.png' ); ?>" width="100" height="100" style="margin-right:20px" align="left" /><?php echo esc_html__( 'If require plugin modifications to Weight Tracker, or need a new plugin built, or perhaps you need a developer to help you with your website then please don\'t hesitiate get in touch!', WE_LS_SLUG ); ?></p>
 		<p><strong><?php echo esc_html__( 'We provide fixed priced quotes.', WE_LS_SLUG); ?></strong></p>
 		<p><a href="https://www.yeken.uk" rel="noopener noreferrer" target="_blank">YeKen.uk</a> /
 			<a href="https://profiles.wordpress.org/aliakro" rel="noopener noreferrer" target="_blank">WordPress Profile</a> /
@@ -98,7 +98,7 @@ function wl_ls_setup_wizard_custom_notification_html() {
  */
 function wl_ls_setup_wizard_meal_tracker_html() {
 ?>
-    <p><img src="<?php echo plugins_url( 'admin-pages/assets/images/meal-tracker-logo.png', __FILE__ ); ?>" width="100" height="100" style="margin-right:20px" align="left" />
+    <p><img src="<?php ws_ls_echo( WS_LS_BASE_URL . 'includes/admin-pages/assets/images/meal-tracker-logo.png' ); ?>" width="100" height="100" style="margin-right:20px" align="left" />
         <?php echo esc_html__( 'Why not check out our sister plugin Meal Tracker. Allow your user\'s to track their meals and calorie intake too!', WE_LS_SLUG ); ?></p>
     <p><strong><?php echo esc_html__( 'Get Meal Tracker Now', WE_LS_SLUG); ?>.</strong></p>
     <p><a href="https://wordpress.org/plugins/meal-tracker/" rel="noopener noreferrer" target="_blank"><?php echo esc_html__( 'from WordPress.org', WE_LS_SLUG); ?></a> /
