@@ -287,5 +287,3 @@ function ws_ls_display_features( $features ) {
 
 	echo '</table>';
 }
-
-
