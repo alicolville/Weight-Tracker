@@ -1820,6 +1820,7 @@ function ws_ls_wp_kses( $value ) {
 	$basic_tags[ 'table' ]	= [ 'id' => true, 'class' => true ];	
 	$basic_tags[ 'tr' ]		= [ 'id' => true, 'class' => true ];	
 	$basic_tags[ 'td' ]		= [ 'id' => true, 'class' => true ];	
+	$basic_tags[ 'li' ]		= [ 'class' => true ];	
 
 	return wp_kses( $value, $basic_tags );
 }

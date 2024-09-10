@@ -207,7 +207,7 @@ function ws_ls_advertise_pro() {
 					<div id="post-body" class="metabox-holder columns-3">
 						<div id="post-body-content">
 							<div class="meta-box-sortables ui-sortable">
-								<?php if ( false === WS_LS_IS_PRO_PLUS && true === WS_LS_IS_PRO ): ?>
+								<?php if ( false === WS_LS_IS_PRO_PLUS && false === WS_LS_IS_PRO ): ?>
 									<div class="postbox ws-ls-advertise-pro-plus">
 										<h3 class="hndle highlight-title">
                                             <?php echo esc_html__('Pro Plus Features', WE_LS_SLUG); ?>
@@ -248,35 +248,36 @@ function ws_ls_advertise_pro() {
 
 }
 
-function ws_ls_display_features($features) {
+/**
+ * Render a list of features
+ * @param array features
+ */
+function ws_ls_display_features( $features ) {
 
+	if ( true === empty( $features ) ) {
+		return;
+	}
 
-	if (false === empty($features)):
-?>
-	<table class="form-table" >
-		<?php
+	echo '<table class="form-table yk-mt-features-table">';
 
-		$class = '';
+	$class = '';
 
-		foreach ($features as $feature) {
+	foreach ( $features as $feature ) {
 
-			$class = ('alternate' == $class) ? '' : 'alternate';
+		$class 	= ('alternate' == $class) ? '' : 'alternate';
+		$row 	= sprintf( '<tr class="%1$s">
+								<td>
+									&middot; <strong>%2$s</strong> - %3$s
+								</td>
+							</tr>',
+			$class,
+			$feature[ 'title' ],
+			$feature[ 'description' ] );
 
-			?>
-			<tr valign="top" class="<?php echo $class; ?>">
-				<td scope="row" style="padding-left:30px"><label for="tablecell">
-					&middot; <?php echo $feature; ?>
-				</label></td>
+		ws_ls_echo_wp_kses( $row );	
+	}	
 
-			</tr>
-
-			<?php
-		}
-		?>
-	</table>
-<?php
-
-	endif;
+	echo '</table>';
 }
 
- ?>
+
