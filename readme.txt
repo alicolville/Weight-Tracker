@@ -171,6 +171,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 * Updated Chart.js to 4.4.4.
 * Updated jqueryvalidation.js to 1.19.5.
+* Updated Selctize.js to 0.15.2.
 
 = 10.10 =
 
