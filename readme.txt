@@ -107,6 +107,10 @@ As with most modern software, this plugins utilises other 3rd party plugins. Dep
 * [ZOZO UI Tabs](http://www.zozoui.com)
 * [Unite Gallery](https://github.com/vvvmax/unitegallery)
 
+YeKen libraries:
+
+* [YeKen Shop API prices](https://shop.yeken.uk) - [Privacy Policy](https://shop.yeken.uk/privacy-policy/)
+
 == Installation ==
 
 1. Install "Weight Tracker" via the "Plugins" page in WordPress Admin (or download zip and upload).
