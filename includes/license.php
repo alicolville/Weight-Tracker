@@ -313,10 +313,10 @@ function ws_ls_generate_site_hash() {
 	}
 
     // Generate a basic site key from URL and plugin slug
-    $site_hash = md5(WE_LS_SLUG . '-' . site_url() );
+    $site_hash = md5( WE_LS_SLUG . '-' . site_url() );
   	$site_hash = substr( $site_hash, 0, 6 );
 
-  	update_option(WS_LS_LICENSE_SITE_HASH, $site_hash );
+  	update_option( WS_LS_LICENSE_SITE_HASH, $site_hash );
 
     return $site_hash;
 }
@@ -435,10 +435,10 @@ if ( false === function_exists( 'yeken_license_api_fetch_licenses' ) ) {
      */
     function yeken_license_api_fetch_licenses() {
 
-        if ( $cache = get_transient( 'yeken_api_prices' ) ) {
+        if ( $cache = get_transient( '_yeken_api_prices' ) ) {
             return $cache;
         }
-
+        
         $response = wp_remote_get( 'https://shop.yeken.uk/wp-json/yeken/v1/license-prices/' );
 
         // All ok?
@@ -449,7 +449,7 @@ if ( false === function_exists( 'yeken_license_api_fetch_licenses' ) ) {
             if ( false === empty( $body ) ) {
 
                 $body = json_decode( $body, true );
-                set_transient( 'yeken_api_prices', $body, 216000 ); // Cache for 6 hours
+                set_transient( '_yeken_api_prices', $body, 216000 ); // Cache for 6 hours
 
                 return $body;
             }

@@ -1815,6 +1815,7 @@ function ws_ls_wp_kses( $value ) {
 	$basic_tags[ 'a' ] 		= [ 'id' => true, 'class' => true, 'href' => true, 'title' => true, 'target' => true];
 	$basic_tags[ 'canvas' ] = [ 'id' => true, 'class' => true ];
 	$basic_tags[ 'div' ]	= [ 'id' => true, 'class' => true, 'style' => true ];	
+	$basic_tags[ 'i' ]		= [ 'id' => true, 'class' => true ];	
 	$basic_tags[ 'p' ]		= [ 'id' => true, 'class' => true ];		
 	$basic_tags[ 'span' ]	= [ 'id' => true, 'class' => true ];			
 	$basic_tags[ 'table' ]	= [ 'id' => true, 'class' => true ];	

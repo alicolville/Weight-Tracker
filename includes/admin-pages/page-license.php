@@ -47,20 +47,20 @@ function ws_ls_advertise_pro() {
 				 $license_decoded = false;
 
 				 if (true === in_array($license_type, ['pro', 'pro-plus'])) {
-					 $license = ws_ls_license();
-					 $license_decoded = ws_ls_license_decode($license);
+					 $license 			= ws_ls_license();
+					 $license_decoded 	= ws_ls_license_decode( $license) ;
 				 }
 
-				 $display_pro_plus_marketing = (false === $license_type || 'pro' === $license_type );
-				 $display_pro_marketing = (true === empty($license_type));
+				 $display_pro_plus_marketing 	= (false === $license_type || 'pro' === $license_type );
+				 $display_pro_marketing 		= (true === empty($license_type));
 			?>
 			<div id="icon-options-general" class="icon32"></div>
 					<div id="poststuff">
 				<div id="post-body" class="metabox-holder columns-2">
 					<div id="post-body-content">
 						<?php
-                       		$price = ws_ls_license_pro_price();
-							$proprice = ws_ls_license_pro_plus_price();
+                       		$price 		= ws_ls_license_pro_price();
+							$proprice 	= ws_ls_license_pro_plus_price();
 						?>
 						<div class="meta-box-sortables ui-sortable">
 							<div class="postbox">
@@ -84,47 +84,55 @@ function ws_ls_advertise_pro() {
 
 									} else {
 
-										echo sprintf('<p>%s</p><p>%s</p>',
-											esc_html__('Thank you kind soul, you have purchased a Pro Plus license. A huge thank you for supporting me and this plugin!', WE_LS_SLUG),
-											ws_ls_url_license_types()
-										);
+										echo sprintf('<p>%s</p>', esc_html__( 'Thank you for purchasing a license! Your support means a lot to me, and I greatly appreciate you choosing to back this plugin!', WE_LS_SLUG ) );
 
 									} ?>
 
                                     <center>
-                                        <h3><?php echo esc_html__('In case you need, your Site Hash is', WE_LS_SLUG); ?>: <?php echo ws_ls_generate_site_hash(); ?></h3>
+                                        <h3><?php echo esc_html__('In case you need, your Site Hash is', WE_LS_SLUG); ?>: <?php ws_ls_echo( ws_ls_generate_site_hash() ); ?></h3>
 
                                         <?php
 
 										if ( false === WS_LS_IS_PRO && false === WS_LS_IS_PRO_PLUS )  {
 
-                                            echo sprintf('<a href="%s?hash=%s&license=%s" rel="noopener noreferrer" target="_blank" class="button-primary ws-ls-upgrade-button"><i class="fa fa-angellist"></i> %s</a>',
-                                                WE_LS_FREE_TRIAL_URL,
-                                                ws_ls_generate_site_hash(),
-                                                ws_ls_license_get_old_or_new(),
-                                                esc_html__( 'Get a free 7 day trial!', WE_LS_SLUG )
-                                            );
+											$button_html = sprintf('<a href="%s?hash=%s&license=%s" rel="noopener noreferrer" target="_blank" class="button-primary ws-ls-upgrade-button"><i class="fa fa-angellist"></i> %s</a>',
+																	WE_LS_FREE_TRIAL_URL,
+																	ws_ls_generate_site_hash(),
+																	ws_ls_license_get_old_or_new(),
+																	esc_html__( 'Get a free 7 day trial!', WE_LS_SLUG ));
 
+                                            ws_ls_echo_wp_kses( $button_html );					
 										}
 
 										if ( $display_pro_plus_marketing )  {
 
-											$text = esc_html__( 'Upgrade to Pro Plus for', WE_LS_SLUG) . ' &pound;' . $proprice . ' ' . esc_html__('a year', WE_LS_SLUG);
+											$text = sprintf( '%s  &pound;%s %s', esc_html__( 'Upgrade to Pro Plus for', WE_LS_SLUG), $proprice, esc_html__( 'a year', WE_LS_SLUG ) );
 											$link = WE_LS_UPGRADE_TO_PRO_PLUS_URL;
 
-											echo sprintf('<a href="%s?hash=%s&license=%s" rel="noopener noreferrer" target="_blank" class="button-primary ws-ls-upgrade-button"><i class="fa fa-plus"></i> <i class="fa fa-plus"></i> %s</a>',
-												$link,
-												ws_ls_generate_site_hash(),
-												ws_ls_license_get_old_or_new(),
-												$text
-											);
+											$button_html = sprintf('<a href="%s?hash=%s&license=%s" rel="noopener noreferrer" target="_blank" class="button-primary ws-ls-upgrade-button"><i class="fa fa-plus"></i> <i class="fa fa-plus"></i> %s</a>',
+																	$link,
+																	ws_ls_generate_site_hash(),
+																	ws_ls_license_get_old_or_new(),
+																	$text );
+
+											ws_ls_echo_wp_kses( $button_html );	
 
 										}
-										if ( $display_pro_marketing ) :
 
-												$button_text = esc_html__('Upgrade to Pro for ', WE_LS_SLUG) . '&pound;' . $price . esc_html__(' a year', WE_LS_SLUG); ?>
-											<a href="<?php echo WE_LS_UPGRADE_TO_PRO_URL; ?>?hash=<?php echo ws_ls_generate_site_hash(); ?>" target="_blank" rel="noopener noreferrer" class="button-primary ws-ls-upgrade-button"><i class="fa fa-plus"></i> <?php echo $button_text; ?></a>
-										<?php endif; ?>
+										if ( $display_pro_marketing ) {
+									
+											$text = sprintf( '%s  &pound;%s %s', esc_html__( 'Upgrade to Pro for', WE_LS_SLUG), $price, esc_html__( 'a year', WE_LS_SLUG ) );
+											$link = WE_LS_UPGRADE_TO_PRO_URL;
+
+											$button_html = sprintf('<a href="%s?hash=%s&license=%s" rel="noopener noreferrer" target="_blank" class="button-primary ws-ls-upgrade-button"><i class="fa fa-plus"></i> %s</a>',
+																	$link,
+																	ws_ls_generate_site_hash(),
+																	ws_ls_license_get_old_or_new(),
+																	$text );
+
+											ws_ls_echo_wp_kses( $button_html );	
+										}
+									?>
 									</center>
 								</div>
 							</div>
