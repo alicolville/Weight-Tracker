@@ -166,6 +166,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 = 10.10.1 =
 
 * Updated Chart.js to 4.4.4.
+* Updated jqueryvalidation.js to 1.19.5.
 
 = 10.10 =
 
