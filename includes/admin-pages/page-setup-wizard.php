@@ -45,7 +45,7 @@ function ws_ls_setup_wizard_page() {
                                             <h3>Settings</h3>
                                             <p>The Weight Tracker plugin is highly configurable, you should review and modify the settings to suit your needs.</p>
 
-                                            <a href="<?php echo ws_ls_get_link_to_settings(); ?>" class="button"><i class="fa fa-link"></i> View Settings Page</a>
+                                            <a href="<?php  ws_ls_echo_wp_kses( ws_ls_get_link_to_settings() ); ?>" class="button"><i class="fa fa-link"></i> View Settings Page</a>
 
                                             <h3>Documentation</h3>
                                             <p>Further help and documentation, please visit our documentation site:</p>
@@ -63,7 +63,7 @@ function ws_ls_setup_wizard_page() {
                                                 [gallery]. If you are unsure about shortcodes and their use, you should consider reading <a href="https://en.support.wordpress.com/shortcodes/" target="_blank" rel="noopener">WordPress's documentation</a>.
                                             </p>
                                             <h4>Weight Tracker shortcodes</h4>
-                                            <p><img src="<?php echo plugins_url( 'assets/images/shortcode-example.png', __FILE__ ); ?>" style="margin-right:20px" align="left" class="setup-wizard-image"/>
+                                            <p><img src="<?php ws_ls_echo( plugins_url( 'assets/images/shortcode-example.png', __FILE__ ) ); ?>" style="margin-right:20px" align="left" class="setup-wizard-image"/>
                                                 Weight Tracker ships with nearly 30 WordPress shortcodes. These  <a href="https://en.support.wordpress.com/shortcodes/" target="_blank" rel="noopener">shortcodes</a> render the required forms, graphs, interfaces, data, photos, etc that power Weight Tracker and the tools that will enrich your user's experience.</p>
                                             <p>It's highly recommended that you browse the <a href="https://en.support.wordpress.com/shortcodes/" target="_blank" rel="noopener">Weight Tracker shortcode documentation</a> to get an idea of the features you can build.</p>
                                             <p><strong>A simple, one page example</strong></p>
@@ -124,12 +124,12 @@ function ws_ls_setup_wizard_page() {
                                         </div>
                                         <div>
                                             <p>
-                                                <img src="<?php echo plugins_url( 'assets/images/user-data.png', __FILE__ ); ?>" style="margin-right:20px" align="left" class="setup-wizard-image"/>
-                                                Weight Tracker contains an extensive admin section for viewing and manipulating your user's data. You can access it from the WordPress admin menu by navigating to Weight Tracker > <a href="<?php echo ws_ls_get_link_to_user_data(); ?>">Manage User Data</a>
+                                                <img src="<?php ws_ls_echo( WS_LS_BASE_URL . 'includes/admin-pages/assets/images/user-data.png' ); ?>" style="margin-right:20px" align="left" class="setup-wizard-image"/>
+                                                Weight Tracker contains an extensive admin section for viewing and manipulating your user's data. You can access it from the WordPress admin menu by navigating to Weight Tracker > <a href="<?php ws_ls_echo( ws_ls_get_link_to_user_data() ); ?>">Manage User Data</a>
                                             </p>
 
                                                 <p>
-                                                    <a href="<?php echo ws_ls_get_link_to_user_data(); ?>" class="button"><i class="fa fa-link"></i> View User Data</a>
+                                                    <a href="<?php ws_ls_echo( ws_ls_get_link_to_user_data() ); ?>" class="button"><i class="fa fa-link"></i> View User Data</a>
                                                 </p>
 
                                         </div>

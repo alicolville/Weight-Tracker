@@ -77,7 +77,7 @@ function ws_ls_advertise_pro() {
 									} elseif ( $display_pro_plus_marketing ) {
 
 										ws_ls_echo_wp_kses( sprintf('<p>%s %s %s</p>',
-																esc_html__('Of course, a big thank you purchasing a Pro license at some point - it is much appreciated. As you can see below, you can further expand the features of', WE_LS_SLU G),
+																esc_html__('Of course, a big thank you purchasing a Pro license at some point - it is much appreciated. As you can see below, you can further expand the features of', WE_LS_SLUG ),
 																WE_LS_TITLE,
 																esc_html__('by extending your license to Pro Plus. Pro Plus extends Pro with features such as BMR, Calorie intake, Macronutrient Calculator, etc. You can view the additional features that Pro Plus offers you below.', WE_LS_SLUG)
 															));
@@ -167,7 +167,7 @@ function ws_ls_advertise_pro() {
                                         </tr>
                                         <tr>
                                             <th><?php echo esc_html__('Type', WE_LS_SLUG); ?></th>
-                                            <td><a href="<?php echo esc_url( WE_LS_LICENSE_TYPES_URL ); ?>" target="_blank" rel="noopener noreferrer"><?php ws_ls_echo( ( $license_name ); ?></a></td>
+                                            <td><a href="<?php echo esc_url( WE_LS_LICENSE_TYPES_URL ); ?>" target="_blank" rel="noopener noreferrer"><?php ws_ls_echo( $license_name ); ?></a></td>
                                         </tr>
                                         <tr>
                                             <th><?php echo esc_html__('Expires', WE_LS_SLUG); ?></th>
@@ -222,7 +222,7 @@ function ws_ls_advertise_pro() {
 	                                    </h3>
 	                                   <div style="padding: 0px 15px 0px 15px">
 											<div class="inside">
-												<p><?php echo esc_html__('Below is a list of the intended features of the Pro Plus version', WE_LS_SLUG); ?>. <strong><?php echo esc_html__('You can upgrade for', WE_LS_SLUG); ?> &pound;<?php echo $proprice; ?> <?php echo esc_html__('a year', WE_LS_SLUG); ?>.</strong> <?php echo ws_ls_url_license_types(); ?>:</p>
+												<p><?php echo esc_html__('Below is a list of the intended features of the Pro Plus version', WE_LS_SLUG); ?>. <strong><?php echo esc_html__('You can upgrade for', WE_LS_SLUG); ?> &pound;<?php ws_ls_echo( $proprice ); ?> <?php echo esc_html__('a year', WE_LS_SLUG); ?>.</strong> <?php ws_ls_echo_wp_kses( ws_ls_url_license_types() ); ?>:</p>
 												<?php ws_ls_display_features( ws_ls_feature_list_pro_plus() ); ?>
 											</div>
 										</div>
@@ -236,7 +236,7 @@ function ws_ls_advertise_pro() {
 	                                   <div style="padding: 0px 15px 0px 15px">
 
 										<div class="inside">
-											<p><?php echo esc_html__('Below is a list of the intended features of the Pro version', WE_LS_SLUG); ?>.  <strong><?php echo esc_html__('You can upgrade for', WE_LS_SLUG); ?> &pound;<?php echo $price; ?> <?php echo esc_html__('a year', WE_LS_SLUG); ?>.</strong> <?php echo ws_ls_url_license_types(); ?>:</p>
+											<p><?php echo esc_html__('Below is a list of the intended features of the Pro version', WE_LS_SLUG); ?>.  <strong><?php echo esc_html__('You can upgrade for', WE_LS_SLUG); ?> &pound;<?php ws_ls_echo( $price ); ?> <?php echo esc_html__('a year', WE_LS_SLUG); ?>.</strong> <?php ws_ls_echo_wp_kses( ws_ls_url_license_types() ); ?>:</p>
 											<?php ws_ls_display_features( ws_ls_feature_list_pro() ); ?>
 										</div>
 									</div>
