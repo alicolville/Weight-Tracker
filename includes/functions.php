@@ -1768,3 +1768,45 @@ function ws_ls_js_redirect( $url ) {
 
 	wp_enqueue_script( 'wt-js-simple-redirect', plugins_url( '../assets/js/simple-redirect.js', __FILE__ ), [ 'jquery' ], WE_LS_CURRENT_VERSION, true );
 }
+
+/**
+ * Santise and echo
+ * 
+ * A wrapper around PHP echo for WP's sake. Their automated scanner flags all sorts of issues with just use of echo() without their sanitising
+ * functions called before it - even though the code is sanitising correctly in other places user input etc. 
+ */
+function ws_ls_echo( $value, $sanitiser = 'sanitize_text_field' ) {
+
+	switch ( $sanitiser ) {
+
+		case 'esc_html':
+			echo esc_html( $value );
+			break;
+		case 'wp_kses':
+			echo ws_ls_wp_kses( $value );
+			break;	
+		default:
+			echo sanitize_text_field( $value );
+	}
+}
+
+/**
+ * Easy to use wrapper around yk_mt_echo()
+ */
+function ws_ls_echo_esc_html( $value ) {
+	ws_ls_echo( $value, $sanitiser = 'esc_html' );
+}
+
+/**
+ * Easy to use wrapper around yk_mt_wp_kses()
+ */
+function ws_ls_echo_wp_kses( $value ) {
+	echo ws_ls_wp_kses( $value );
+}
+
+/**
+ * Our version of kses and the HTML we are happy with
+ */
+function ws_ls_wp_kses( $value ) {
+	return wp_kses( $value, [ 'canvas', 'p', 'a', 'div', 'span', 'em', 'table', 'tr', 'td' ] );
+}
