@@ -322,7 +322,7 @@
                                             <div class="ws-ls-row">
                                                 <div class="ws-ls-cell"></div>
                                                 <div class="ws-ls-cell">
-                                                    <a class="comment-submit button" href="<?php echo ws_ls_meta_fields_base_url(); ?>"><?php echo esc_html__('Cancel', WE_LS_SLUG); ?></a>
+                                                    <a class="comment-submit button" href="<?php echo esc_url( ws_ls_meta_fields_base_url() ); ?>"><?php echo esc_html__('Cancel', WE_LS_SLUG); ?></a>
 													<input name="submit_button" type="submit" value="<?php echo esc_html__('Save', WE_LS_SLUG); ?>" class="comment-submit button button-primary"  <?php if ( false === ws_ls_meta_fields_is_enabled() ) { echo ' disabled'; } ?> >
                                                 </div>
                                             </div>

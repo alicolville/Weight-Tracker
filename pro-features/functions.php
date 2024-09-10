@@ -186,7 +186,7 @@ function ws_ls_tooltip( $text, $tooltip ) {
  * @return string
  */
 function ws_ls_get_link_to_user_data() {
-	return admin_url( 'admin.php?page=ws-ls-data-home');
+	return esc_url( admin_url( 'admin.php?page=ws-ls-data-home') );
 }
 
 /**
@@ -282,7 +282,7 @@ function ws_ls_get_link_to_photos( $id ) {
  * @return string
  */
 function ws_ls_get_link_to_settings() {
-    return admin_url( 'admin.php?page=ws-ls-settings' );
+    return esc_url( admin_url( 'admin.php?page=ws-ls-settings' ) );
 }
 
 /**

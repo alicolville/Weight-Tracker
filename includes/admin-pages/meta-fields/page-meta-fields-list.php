@@ -47,7 +47,7 @@
 									}
 
 	                            ?>
-								<a href="<?php echo ws_ls_meta_fields_groups_link(); ?>&amp;field_type=2" class="button"><?php echo esc_html__( 'Add / remove groups', WE_LS_SLUG ); ?></a>
+								<a href="<?php echo esc_url( ws_ls_meta_fields_groups_link() ); ?>&amp;field_type=2" class="button"><?php echo esc_html__( 'Add / remove groups', WE_LS_SLUG ); ?></a>
 
                                 <table class="ws-ls-meta-fields-list-ajax table ws-ls-loading-table" id="meta-fields-list"
                                        data-paging="true"
