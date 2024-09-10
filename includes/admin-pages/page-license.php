@@ -208,14 +208,6 @@ function ws_ls_advertise_pro() {
 						<div id="post-body-content">
 							<div class="meta-box-sortables ui-sortable">
 								<?php if ( false === WS_LS_IS_PRO_PLUS && true === WS_LS_IS_PRO ): ?>
-									<!--
-										<div class="postbox">
-											<h3 class="hndle"><span><?php echo esc_html__( '50% off - When upgrading from Pro to Pro Plus', WE_LS_SLUG); ?> </span></h3>
-											<div style="padding: 0px 15px 0px 15px">
-												<?php wl_ls_setup_discount_to_pro_plus_html(); ?>
-											</div>
-										</div>
-									-->
 									<div class="postbox ws-ls-advertise-pro-plus">
 										<h3 class="hndle highlight-title">
                                             <?php echo esc_html__('Pro Plus Features', WE_LS_SLUG); ?>

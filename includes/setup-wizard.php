@@ -108,18 +108,3 @@ function wl_ls_setup_wizard_meal_tracker_html() {
 
     <?php
 }
-
-/**
- * HTML for discount to pro plus
- */
-function wl_ls_setup_discount_to_pro_plus_html() {
-	?>
-	<p><img src="<?php echo plugins_url( 'admin-pages/assets/images/50-off.jpg', __FILE__ ); ?>" width="100" height="100" style="margin-right:20px" align="left" />
-		<?php echo esc_html__( 'Use the following coupon code to receive 50% off when upgrading from Pro to Pro Plus. Simply apply it during the checkout process.', WE_LS_SLUG ); ?>.</p>
-	<p style="font-weight: bold; font-size: 18px;"><?php echo esc_html__( 'Coupon', WE_LS_SLUG); ?>: 50-OFF-PRO-PLUS</p>
-
-	<br clear="both"/>
-
-	<?php
-}
-
