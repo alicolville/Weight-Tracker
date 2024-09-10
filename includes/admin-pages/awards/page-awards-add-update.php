@@ -310,7 +310,7 @@ function ws_ls_awards_add_update_page() {
                                         <div class="ws-ls-row">
                                             <div class="ws-ls-cell"></div>
                                             <div class="ws-ls-cell">
-                                                <a class="comment-submit button" href="<?php echo ws_ls_awards_base_url(); ?>"><?php echo esc_html__('Cancel', WE_LS_SLUG); ?></a>
+                                                <a class="comment-submit button" href="<?php echo esc_url( ws_ls_awards_base_url() ); ?>"><?php echo esc_html__('Cancel', WE_LS_SLUG); ?></a>
 
                                                 <?php if ( true === ws_ls_awards_is_enabled() ): ?>
                                                     <input name="submit_button" type="submit" value="<?php echo esc_html__('Save', WE_LS_SLUG); ?>" class="comment-submit button button-primary">

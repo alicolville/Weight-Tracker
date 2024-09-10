@@ -169,6 +169,8 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 [todo]: Replace WE_LS_SLUG in transaltion
 
+search for "echo ws_" for echo checks
+seatch for "echo sprintf" for echo
 
 = 10.10.1 =
 
