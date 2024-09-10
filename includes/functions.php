@@ -1201,7 +1201,7 @@ function ws_ls_display_pro_upgrade_notice( $prompt_level = '' ) {
 
 	?>
     <div class="postbox ws-ls-advertise">
-        <h3 class="hndle"><span><?php echo $title; ?> </span></h3>
+        <h3 class="hndle"><span><?php ws_ls_echo( $title ); ?> </span></h3>
         <div style="padding: 0px 15px 0px 15px">
             <p><?php ws_ls_echo( $message ); ?></p>
             <p><a href="<?php echo esc_url( admin_url('admin.php?page=ws-ls-license') ); ?>" class="button-primary"><?php ws_ls_echo( esc_html__( 'Read more and upgrade', WE_LS_SLUG) ); ?></a></p>
