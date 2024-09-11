@@ -10,10 +10,15 @@ jobs:
     steps:
     - name: 🚚 Get latest code
       uses: actions/checkout@v3
-    
+
     - name: 📂 Sync files
-      uses: im-machakata/FTP-Deploy-Action@v4.3.4
+      uses: leandrorepos/ftp-deploy@1.0.0
       with:
         server: ${{ secrets.FTP_URL }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
+        exclude:
+          - **/.git*
+          - **/.git*/**
+          - **/node_modules/**
+          - fileToExclude.txt
