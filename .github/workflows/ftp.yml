@@ -16,4 +16,4 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           url: ${{ secrets.FTP_URL }}
           upload-file-filed-name: "weight-tracker-latest.zip"
-          query-params: "="
+          #query-params: "="
