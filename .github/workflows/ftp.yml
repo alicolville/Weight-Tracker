@@ -4,17 +4,24 @@ on:
     branches:
       - master
 jobs:
-  web-deploy:
-    name: 🎉 Deploy
+  build:
+    name: Build release zip
     runs-on: ubuntu-latest
     steps:
-    - name: 🚚 Get latest code
+    - name: Checkout
       uses: actions/checkout@v3
 
-    - name: 📂 Sync files
-      uses: leandrorepos/ftp-deploy@1.0.0
-      with:
-        server: ${{ secrets.FTP_URL }}
-        username: ${{ secrets.FTP_USERNAME }}
-        password: ${{ secrets.FTP_PASSWORD }}
+    - name: Build plugin # Remove or modify this step as needed
+      run: |
+        composer install --no-dev
+        npm install
+        npm run build
+
+    - name: Generate zip
+      uses: 10up/action-wordpress-plugin-build-zip@stable
+
+      
+      #  server: ${{ secrets.FTP_URL }}
+     #  username: ${{ secrets.FTP_USERNAME }}
+     #   password: ${{ secrets.FTP_PASSWORD }}
 
