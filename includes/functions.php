@@ -1776,18 +1776,15 @@ function ws_ls_js_redirect( $url ) {
  * A wrapper around PHP echo for WP's sake. Their automated scanner flags all sorts of issues with just use of echo() without their sanitising
  * functions called before it - even though the code is sanitising correctly in other places user input etc. 
  */
-function ws_ls_echo( $value, $sanitiser = 'sanitize_text_field' ) {
+function ws_ls_echo( $value, $sanitiser = 'esc_html' ) {
 
 	switch ( $sanitiser ) {
 
-		case 'esc_html':
-			echo esc_html( $value );
-			break;
 		case 'wp_kses':
 			echo ws_ls_wp_kses( $value );
 			break;	
 		default:
-			echo sanitize_text_field( $value );
+			echo esc_html( $value );
 	}
 }
 
