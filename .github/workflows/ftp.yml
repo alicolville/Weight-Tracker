@@ -1,0 +1,19 @@
+name: ftp-deploy
+on: 
+  push:
+    branches:
+      - master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run zipit action
+        uses: Neeraj319/zipit-action@main # use the latest tag
+        with:
+          zip-file-name: "weight-tracker-latest.zip"
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          url: ${{ secrets.FTP_URL }}
+          upload-file-filed-name: "weight-tracker-latest.zip"
+          query-params: "="
