@@ -15,7 +15,7 @@ jobs:
         directory: ./weight-tracker/
         #command: cp -a ./ ./weight-tracker/
         type: 'zip'
-        filename: './weight-trackerdist/weight-tracker.zip'
+        filename: './weight-tracker/dist/weight-tracker.zip'
         exclusions: '*.git* /*node_modules/* .editorconfig /playwright* /docs* /dist*'
     - name:  Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
