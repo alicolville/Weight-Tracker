@@ -11,4 +11,9 @@ jobs:
         type: 'zip'
         filename: 'release.zip'
         exclusions: '*.git* /*node_modules/* .editorconfig'
-        directory: ../../dist/weight-loss-tracker.zip
+    - name:  Sync files
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      with:
+        server: ftp.yeken.uk
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_URL }}
