@@ -11,4 +11,4 @@ jobs:
         type: 'zip'
         filename: 'release.zip'
         exclusions: '*.git* /*node_modules/* .editorconfig'
-        directory: ../dist/weight-loss-tracker.zip
+        directory: ../../dist/weight-loss-tracker.zip
