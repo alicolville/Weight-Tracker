@@ -172,6 +172,9 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 search for "echo ws_" for echo checks
 seatch for "echo sprintf" for echo
 
+move all marketing stuff into their own file (see page.license)
+create a PHP function to regenerate all readme features from array
+
 = 10.10.1 =
 
 * Updated Chart.js to 4.4.4.

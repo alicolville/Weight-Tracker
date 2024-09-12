@@ -315,3 +315,12 @@ function ws_ls_shortcode_display_pro_features() {
 	return ws_ls_display_features( ws_ls_feature_list_pro_plus(), false, 'ul' );
 }
 add_shortcode( 'wt-pro-features-table', 'ws_ls_shortcode_display_pro_features' );
+
+/**
+ * Display WP Version
+ * @return text
+ */
+function ws_ls_shortcode_version() {
+	return esc_html( WE_LS_CURRENT_VERSION );
+}
+add_shortcode( 'wt-version', 'ws_ls_shortcode_version' );
