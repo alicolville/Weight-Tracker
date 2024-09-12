@@ -1,4 +1,4 @@
-name: Create Archive
+name: Zip and FTP
 on: [push]
 jobs:
   build:
