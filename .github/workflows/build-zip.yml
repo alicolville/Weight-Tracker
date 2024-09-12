@@ -8,10 +8,11 @@ jobs:
     - name: Archive Release
       uses: thedoctor0/zip-release@0.7.5
       with:
-        command: mkdir -p release
+        # command: mkdir -p release
         #custom: --transform 's,^,weight-tracker/,'
+        directory: ./
+        command: cp -a ./ ./weight-tracker/
         type: 'zip'
-        #directory: ./
         filename: './dist/weight-tracker.zip'
         exclusions: '*.git* /*node_modules/* .editorconfig /playwright* /docs* /dist*'
     - name:  Sync files
