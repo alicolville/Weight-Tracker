@@ -15,7 +15,7 @@ jobs:
         directory: ./weight-tracker
         #command: cp -a ./ ./weight-tracker/
         type: 'zip'
-        filename: './dist/weight-tracker.zip'
+        filename: './weight-tracker/dist/weight-tracker.zip'
         exclusions: '*.git* /*node_modules/* .editorconfig /playwright* /docs* /dist*'
     - name:  Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
@@ -23,4 +23,4 @@ jobs:
         server: ${{ secrets.FTP_URL }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: ./dist/
+        local-dir: ./weight-tracker/dist/
