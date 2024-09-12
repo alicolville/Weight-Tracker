@@ -10,7 +10,7 @@ jobs:
       with:
         type: 'zip'
         #directory: ./
-        filename: './dist/release.zip'
+        filename: './dist/weight-tracker.zip'
         exclusions: '*.git* /*node_modules/* .editorconfig'
     - name:  Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
