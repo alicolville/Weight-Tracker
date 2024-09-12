@@ -9,6 +9,7 @@ jobs:
       uses: thedoctor0/zip-release@0.7.5
       with:
         type: 'zip'
+        directory: ./dist/
         filename: 'release.zip'
         exclusions: '*.git* /*node_modules/* .editorconfig'
     - name:  Sync files
