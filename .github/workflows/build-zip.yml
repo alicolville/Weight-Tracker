@@ -11,7 +11,7 @@ jobs:
         type: 'zip'
         #directory: ./
         filename: './dist/weight-tracker.zip'
-        exclusions: '*.git* /*node_modules/* .editorconfig /playwright* /docs*'
+        exclusions: '*.git* /*node_modules/* .editorconfig /playwright* /docs* /dist*'
     - name:  Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
