@@ -1,4 +1,4 @@
-name: Zip and FTP #2
+name: Zip and FTP #3
 on: [push]
 jobs:
   build:
