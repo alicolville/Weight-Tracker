@@ -5,13 +5,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
+      with:
+          path: ./weight-tracker/weight-tracker/
     - name: Archive Release
       uses: thedoctor0/zip-release@0.7.5
       with:
         # command: mkdir -p release
         #custom: --transform 's,^,weight-tracker/,'
-        directory: ./
-        command: cp -a ./ ./weight-tracker/
+        directory: ./weight-tracker
+        #command: cp -a ./ ./weight-tracker/
         type: 'zip'
         filename: './dist/weight-tracker.zip'
         exclusions: '*.git* /*node_modules/* .editorconfig /playwright* /docs* /dist*'
