@@ -182,3 +182,16 @@ function ws_ls_load_textdomain() {
 	load_plugin_textdomain( WE_LS_SLUG, false, dirname( plugin_basename( __FILE__ )  ) . '/includes/languages/' );
 }
 add_action('plugins_loaded', 'ws_ls_load_textdomain');
+
+add_action( 'init', function() {
+
+	wp_admin_notice(
+		__( 'Your success message here.', 'weight-loss-tracker' ),
+		array(
+			'id'                 => '1111',
+			'dismissible'        => true,
+			'type'				 => 'info'
+		)
+	);
+
+});

@@ -85,8 +85,8 @@ function wl_ls_setup_wizard_custom_notification_html() {
 
 		<p><img src="<?php ws_ls_echo( WS_LS_BASE_URL . 'includes/admin-pages/assets/images/yeken-logo.png' ); ?>" width="100" height="100" style="margin-right:20px" align="left" /><?php echo esc_html__( 'If require plugin modifications to Weight Tracker, or need a new plugin built, or perhaps you need a developer to help you with your website then please don\'t hesitiate get in touch!', WE_LS_SLUG ); ?></p>
 		<p><strong><?php echo esc_html__( 'We provide fixed priced quotes.', WE_LS_SLUG); ?></strong></p>
-		<p><a href="https://www.yeken.uk" rel="noopener noreferrer" target="_blank">YeKen.uk</a> /
-			<a href="https://profiles.wordpress.org/aliakro" rel="noopener noreferrer" target="_blank">WordPress Profile</a> /
+		<p><a href="https://weighttracker.yeken.uk" rel="noopener noreferrer" target="_blank">Weight Tracker Plugin</a> /
+        <a href="https://www.yeken.uk" rel="noopener noreferrer" target="_blank">YeKen.uk</a> /
 			<a href="mailto:email@yeken.uk" >email@yeken.uk</a></p>
 		<br clear="both"/>
 
@@ -97,6 +97,9 @@ function wl_ls_setup_wizard_custom_notification_html() {
  * HTML for mention of meal tracker
  */
 function wl_ls_setup_wizard_meal_tracker_html() {
+
+    return;
+
 ?>
     <p><img src="<?php ws_ls_echo( WS_LS_BASE_URL . 'includes/admin-pages/assets/images/meal-tracker-logo.png' ); ?>" width="100" height="100" style="margin-right:20px" align="left" />
         <?php echo esc_html__( 'Why not check out our sister plugin Meal Tracker. Allow your user\'s to track their meals and calorie intake too!', WE_LS_SLUG ); ?></p>

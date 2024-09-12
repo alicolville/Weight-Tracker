@@ -299,7 +299,7 @@ function ws_ls_display_features( $features, $echo = true, $format = 'table'  ) {
 				$html_template = '<li><strong>%2$s</strong> - %3$s</li>';
 				break;
 			default:	
-				$html_template = '* **%2$s** - %3$s';
+				$html_template = '* **%2$s** - %3$s' . PHP_EOL;
 		}
 
 		$row 	= sprintf( 	$html_template,
@@ -354,3 +354,9 @@ function ws_ls_shortcode_version() {
 	return esc_html( WE_LS_CURRENT_VERSION );
 }
 add_shortcode( 'wt-version', 'ws_ls_shortcode_version' );
+
+// add_action( 'init', function() {
+// 	ws_ls_display_features(  ws_ls_feature_list_pro(), true, $format = 'markdown'  );
+// 	ws_ls_display_features(  ws_ls_feature_list_pro_plus(), true, $format = 'markdown'  );
+// 	die;
+// });
