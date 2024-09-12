@@ -260,30 +260,58 @@ function ws_ls_advertise_pro() {
  * Render a list of features
  * @param array features
  */
-function ws_ls_display_features( $features ) {
+function ws_ls_display_features( $features, $echo = true, $format = 'table'  ) {
 
 	if ( true === empty( $features ) ) {
 		return;
 	}
 
-	echo '<table class="form-table yk-mt-features-table">';
+	$html = 'table' === $format ? '<table class="form-table yk-mt-features-table">' : '<ul>';
 
 	$class = '';
 
 	foreach ( $features as $feature ) {
 
 		$class 	= ('alternate' == $class) ? '' : 'alternate';
-		$row 	= sprintf( '<tr class="%1$s">
-								<td>
-									&middot; <strong>%2$s</strong> - %3$s
-								</td>
-							</tr>',
-			$class,
-			$feature[ 'title' ],
-			$feature[ 'description' ] );
 
-		ws_ls_echo_wp_kses( $row );	
+		$html_template = 'table' === $format ? '<tr class="%1$s">
+													<td>
+														&middot; <strong>%2$s</strong> - %3$s
+													</td>
+												</tr>' : 
+												'<li><strong>%2$s</strong> - %3$s</li>';
+
+		$row 	= sprintf( 	$html_template,
+							$class,
+							$feature[ 'title' ],
+							$feature[ 'description' ] );
+
+		$html .= $row;
 	}	
 
-	echo '</table>';
+	$html .= 'table' === $format ? '</table>' : '</ul>';
+
+	if ( false === $echo ) {
+		return $html;
+	}
+
+	ws_ls_echo_wp_kses( $html );	
 }
+
+/**
+ * Render a list of features
+ * @param array features
+ */
+function ws_ls_shortcode_display_features() {
+	return ws_ls_display_features( ws_ls_feature_list_pro(), false, 'ul' );
+}
+add_shortcode( 'wt-features-table', 'ws_ls_shortcode_display_features' );
+
+/**
+ * Render a list of pro features
+ * @param array features
+ */
+function ws_ls_shortcode_display_pro_features() {
+	return ws_ls_display_features( ws_ls_feature_list_pro_plus(), false, 'ul' );
+}
+add_shortcode( 'wt-pro-features-table', 'ws_ls_shortcode_display_pro_features' );
