@@ -5,14 +5,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-      with:
-          path: ./weight-tracker/
     - name: Archive Release
       uses: thedoctor0/zip-release@0.7.5
       with:
         # command: mkdir -p release
         #custom: --transform 's,^,weight-tracker/,'
-        directory: ./weight-tracker/
+        #directory: ./weight-tracker/
         #command: cp -a ./ ./weight-tracker/
         type: 'zip'
         filename: './weight-tracker/dist/weight-tracker.zip'
@@ -23,4 +21,4 @@ jobs:
         server: ${{ secrets.FTP_URL }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: ./weight-tracker/dist/
+        local-dir: ./dist/
