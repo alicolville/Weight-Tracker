@@ -6,16 +6,16 @@ jobs:
     steps:
     - uses: actions/checkout@master
       with:
-          path: ./weight-tracker/weight-tracker/
+          path: ./weight-tracker/
     - name: Archive Release
       uses: thedoctor0/zip-release@0.7.5
       with:
         # command: mkdir -p release
         #custom: --transform 's,^,weight-tracker/,'
-        directory: ./weight-tracker
+        directory: ./weight-tracker/
         #command: cp -a ./ ./weight-tracker/
         type: 'zip'
-        filename: './weight-tracker/weight-tracker/dist/weight-tracker.zip'
+        filename: './weight-trackerdist/weight-tracker.zip'
         exclusions: '*.git* /*node_modules/* .editorconfig /playwright* /docs* /dist*'
     - name:  Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
@@ -23,4 +23,4 @@ jobs:
         server: ${{ secrets.FTP_URL }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: ./weight-tracker/weight-tracker/dist/
+        local-dir: ./weight-tracker/dist/
