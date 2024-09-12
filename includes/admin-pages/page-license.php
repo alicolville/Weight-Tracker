@@ -259,11 +259,24 @@ function ws_ls_advertise_pro() {
 /**
  * Render a list of features
  * @param array features
+ * @param bool $echo
+ * @param string $format 'table' or 'ul' or 'markdown'
  */
 function ws_ls_display_features( $features, $echo = true, $format = 'table'  ) {
 
 	if ( true === empty( $features ) ) {
 		return;
+	}
+
+	switch( $format ) {
+		case 'table':
+			$html = '';
+			break;
+		case 'ul':
+			$html = '';
+			break;
+		default:
+			$html = '';
 	}
 
 	$html = 'table' === $format ? '<table class="form-table yk-mt-features-table">' : '<ul>';
@@ -274,12 +287,20 @@ function ws_ls_display_features( $features, $echo = true, $format = 'table'  ) {
 
 		$class 	= ('alternate' == $class) ? '' : 'alternate';
 
-		$html_template = 'table' === $format ? '<tr class="%1$s">
-													<td>
-														&middot; <strong>%2$s</strong> - %3$s
-													</td>
-												</tr>' : 
-												'<li><strong>%2$s</strong> - %3$s</li>';
+		switch( $format ) {
+			case 'table':
+				$html_template = '<tr class="%1$s">
+										<td>
+											&middot; <strong>%2$s</strong> - %3$s
+										</td>
+									</tr>';
+				break;
+			case 'ul':
+				$html_template = '<li><strong>%2$s</strong> - %3$s</li>';
+				break;
+			default:	
+				$html_template = '* **%2$s** - %3$s';
+		}
 
 		$row 	= sprintf( 	$html_template,
 							$class,
@@ -289,7 +310,16 @@ function ws_ls_display_features( $features, $echo = true, $format = 'table'  ) {
 		$html .= $row;
 	}	
 
-	$html .= 'table' === $format ? '</table>' : '</ul>';
+	switch( $format ) {
+		case 'table':
+			$html .= '</table>';
+			break;
+		case 'ul':
+			$html .= '</ul>';
+			break;
+		default:
+			$html .= '';
+	}
 
 	if ( false === $echo ) {
 		return $html;
