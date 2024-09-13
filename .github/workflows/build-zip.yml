@@ -22,7 +22,7 @@ jobs:
         directory: /home/runner/work/Weight-Tracker/Weight-Tracker/
         filename: '/tmp/zip/weight-tracker.zip'
         exclusions: '*.git* /*node_modules/* .editorconfig /*playwright* /*docs* /*dist*'
-    - name:  FTP: Zip file for user downloads
+    - name:  FTP - Zip file for user downloads
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
         server: ${{ secrets.FTP_URL }}
