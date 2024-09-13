@@ -12,14 +12,14 @@ jobs:
           mkdir /tmp/zip/
           mkdir /tmp/code/       
     - name: Copy files from repo
-      run: rsync -av /home/runner/work/Weight-Tracker/Weight-Tracker/ /tmp/code/weight-loss-tracker/ --exclude thefoldertoexclude
+      run: rsync -av /home/runner/work/Weight-Tracker/Weight-Tracker/ /tmp/code/weight-loss-tracker/ --exclude={'docs/','/dist','playwright', '*.git*' }
     - name: Archive Release
       uses: thedoctor0/zip-release@0.7.5
       with:
         type: 'zip'
         directory: /tmp/code/
         filename: '/tmp/zip/weight-tracker.zip'
-        exclusions: '*.git* /*node_modules/* .editorconfig /playwright* /docs* /dist*'
+        #exclusions: '*.git* /*node_modules/* .editorconfig /playwright* /docs* /dist*'
     - name:  Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
