@@ -7,11 +7,12 @@ jobs:
     - uses: actions/checkout@v4
       with:
         path: /home/runner/work/Weight-Tracker/Weight-Tracker/weight-loss-tracker/weight-loss-tracker/
-    - name: Create dir
-      run: |
-          mkdir /tmp/zip/ 
+    #- name: Create dir
+      #run: |
+       #   mkdir /tmp/zip/ 
     - name: Create code dir
       run: |
+          mkdir /tmp/zip/
           mkdir /tmp/code/       
     - name: Copy files from repo
       run: rsync -av /home/runner/work/Weight-Tracker/Weight-Tracker/weight-loss-tracker/ /tmp/code/weight-loss-tracker/ --exclude thefoldertoexclude
