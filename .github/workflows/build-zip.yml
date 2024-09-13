@@ -5,13 +5,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-      with:
-        path: ./tmp/weight-loss-tracker/
+     # with:
+      #  path: ./tmp/weight-loss-tracker/
+    - name: Create dir
+      run: |
+          mkdir ./tmp/zip/   
     - name: Archive Release
       uses: thedoctor0/zip-release@0.7.5
       with:
         type: 'zip'
-        directory: ./tmp/weight-loss-tracker/
+        directory: ./tmp/zip/weight-loss-tracker/
         filename: './dist/weight-tracker.zip'
         exclusions: '*.git* /*node_modules/* .editorconfig /playwright* /docs* /dist*'
     - name:  Sync files
@@ -20,4 +23,4 @@ jobs:
         server: ${{ secrets.FTP_URL }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: ./dist/
+        local-dir: ./tmp/zip/ 
