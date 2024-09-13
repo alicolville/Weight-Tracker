@@ -5,14 +5,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-     # with:
-      #  path: /home/runner/work/Weight-Tracker/Weight-Tracker/weight-loss-tracker/weight-loss-tracker/
+      with:
+        path: /home/runner/work/Weight-Tracker/Weight-Tracker/weight-loss-tracker/weight-loss-tracker/
     - name: Create temporary directories
       run: | 
           mkdir /tmp/zip/
           mkdir /tmp/code/       
     - name: Copy files from repo
-      run: rsync -av $GITHUB_WORKSPACE /tmp/code/weight-loss-tracker/
+      run: rsync -av /home/runner/work/Weight-Tracker/Weight-Tracker/weight-loss-tracker/ /tmp/code/weight-loss-tracker/
     - name: Archive Release
       uses: thedoctor0/zip-release@0.7.5
       with:
