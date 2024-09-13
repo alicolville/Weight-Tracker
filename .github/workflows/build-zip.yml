@@ -6,12 +6,12 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       with:
-        path: ./tmp/weight-loss-tracker
+        path: ./tmp/weight-loss-tracker/
     - name: Archive Release
       uses: thedoctor0/zip-release@0.7.5
       with:
         type: 'zip'
-        #directory: ./
+        directory: ./tmp/weight-loss-tracker/
         filename: './dist/weight-tracker.zip'
         exclusions: '*.git* /*node_modules/* .editorconfig /playwright* /docs* /dist*'
     - name:  Sync files
