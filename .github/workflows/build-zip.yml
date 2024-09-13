@@ -12,7 +12,7 @@ jobs:
           mkdir /tmp/zip/
           mkdir /tmp/code/       
     - name: Copy files from repo
-      run: rsync -av /home/runner/work/Weight-Tracker/Weight-Tracker/ /tmp/code/weight-loss-tracker/ --exclude={'docs/','/dist','playwright', '*.git*' }
+      run: rsync -av --exclude={'docs/','/dist','playwright', '*.git*' } /home/runner/work/Weight-Tracker/Weight-Tracker/ /tmp/code/weight-loss-tracker/
     - name: Archive Release
       uses: thedoctor0/zip-release@0.7.5
       with:
