@@ -170,16 +170,6 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 == Changelog ==
 
-[todo]: Replace WE_LS_SLUG in transaltion
-
-search for "echo ws_" for echo checks
-seatch for "echo sprintf" for echo
-
-move all marketing stuff into their own file (see page.license)
-create a PHP function to regenerate all readme features from array
-
-resinstate: wl_ls_setup_wizard_meal_tracker_html
-
 = 10.10.1 =
 
 * Updated Chart.js to 4.4.4.
@@ -187,6 +177,7 @@ resinstate: wl_ls_setup_wizard_meal_tracker_html
 * Updated Selctize.js to 0.15.2.
 * Extra data escaping and sanitisation.
 * Updated Readme.txt and documentaion.
+* Added some new marketing shortcodes - for use on weighttracker.yeken.uk
 
 = 10.10 =
 
