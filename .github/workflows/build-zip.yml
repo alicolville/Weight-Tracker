@@ -1,4 +1,4 @@
-name: Zip and FTP #3
+name: Build WP Plugin (zip) and FTP to web server #3
 on: [push]
 jobs:
   build:
@@ -11,16 +11,14 @@ jobs:
       run: | 
           mkdir /tmp/zip/
           mkdir /tmp/code/       
-   # - name: Copy files from repo
-    #  run: rsync -av /home/runner/work/Weight-Tracker/Weight-Tracker/weight-loss-tracker/ /tmp/code/weight-loss-tracker/
-    - name: Archive Release
+    - name: Build the zip (excluding certain folders)
       uses: thedoctor0/zip-release@0.7.5
       with:
         type: 'zip'
         directory: /home/runner/work/Weight-Tracker/Weight-Tracker/
         filename: '/tmp/zip/weight-tracker.zip'
         exclusions: '*.git* /*node_modules/* .editorconfig /*playwright* /*docs* /*dist*'
-    - name:  Sync files
+    - name:  FTP files to web server
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
         server: ${{ secrets.FTP_URL }}
@@ -28,5 +26,3 @@ jobs:
         password: ${{ secrets.FTP_PASSWORD }}
         local-dir: /tmp/zip/ 
 
-
-# --exclude={'docs/','/dist','playwright', '*.git*' }
