@@ -9,11 +9,10 @@ jobs:
       #  path: /home/runner/work/Weight-Tracker/Weight-Tracker/weight-loss-tracker/weight-loss-tracker/
     - name: Create temporary directories
       run: | 
-          echo $GITHUB_WORKSPACE
           mkdir /tmp/zip/
           mkdir /tmp/code/       
     - name: Copy files from repo
-      run: rsync -av --exclude={'docs/','/dist','/playwright','*.git*' }  $GITHUB_WORKSPACE /tmp/code/weight-loss-tracker/
+      run: rsync -av $GITHUB_WORKSPACE /tmp/code/weight-loss-tracker/
     - name: Archive Release
       uses: thedoctor0/zip-release@0.7.5
       with:
