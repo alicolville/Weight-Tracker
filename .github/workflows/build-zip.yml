@@ -29,4 +29,11 @@ jobs:
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
         local-dir: /tmp/zip/ 
+    - name:  FTP - copy raw plugin files to web host
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      with:
+        server: ${{ secrets.FTP_URL }}
+        username: ${{ secrets.FTP_WT_USERNAME }}
+        password: ${{ secrets.FTP_WT_PASSWORD }}
+        local-dir: /home/runner/work/Weight-Tracker/Weight-Tracker/weight-loss-tracker/
 
