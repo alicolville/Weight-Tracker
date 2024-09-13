@@ -15,7 +15,7 @@ jobs:
       with:
         type: 'zip'
         #directory: /tmp/zip/weight-loss-tracker/
-        filename: '/tmp/weight-tracker.zip'
+        filename: '/tmp/zip/weight-tracker.zip'
         exclusions: '*.git* /*node_modules/* .editorconfig /playwright* /docs* /dist*'
     - name:  Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
