@@ -36,4 +36,11 @@ jobs:
         username: ${{ secrets.FTP_WT_USERNAME }}
         password: ${{ secrets.FTP_WT_PASSWORD }}
         local-dir: /home/runner/work/Weight-Tracker/Weight-Tracker/weight-loss-tracker/
-
+        dry-run: true
+        exclude: |
+           **/.git*
+           **/.git*/**
+           **/node_modules/**
+           **/docs/**
+           **/playwright/**
+           **/dist/**
