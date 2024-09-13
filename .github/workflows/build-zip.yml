@@ -1,5 +1,9 @@
 name: Build WP Plugin (zip) and FTP to web server #3
 on: [push]
+#on:
+#  push:
+#    tags:
+ #     - v1.**
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -18,7 +22,7 @@ jobs:
         directory: /home/runner/work/Weight-Tracker/Weight-Tracker/
         filename: '/tmp/zip/weight-tracker.zip'
         exclusions: '*.git* /*node_modules/* .editorconfig /*playwright* /*docs* /*dist*'
-    - name:  FTP files to web server
+    - name:  FTP: Zip file for user downloads
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
         server: ${{ secrets.FTP_URL }}
