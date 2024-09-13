@@ -121,9 +121,7 @@ function ws_ls_postbox_user_notes( $user_id ) {
 	$notes_link 	= ws_ls_get_link_to_notes( $user_id );
 	$component_id 	= ws_ls_component_id();
 
-	$title = sprintf( esc_html__( ': <span id="%2$s_count">%1$d</span>', WE_LS_SLUG ),
-							$stats[ 'notes-count' ],
-							$component_id );
+	$title = sprintf( ': <span id="%2$s_count">%1$d</span>', (int) $stats[ 'notes-count' ], $component_id );
 
 	?>
 	<div class="postbox ws-ls-notes-add-postbox <?php ws_ls_postbox_classes( 'notes', 'ws-ls-user-data-two' ); ?>" id="notes">
@@ -138,10 +136,11 @@ function ws_ls_postbox_user_notes( $user_id ) {
 			<p>
 			<?php
 
-				printf( 	esc_html__( '<a href="%1$s">View All</a> /', WE_LS_SLUG ), esc_url( $notes_link ) );
+				ws_ls_echo_wp_kses( sprintf( '<a href="%1$s">%2$s</a> /', esc_url( $notes_link ), esc_html__( 'View All', WE_LS_SLUG ) ) );
 
-				printf( 	esc_html__( ' <a href="#" id="%1$s_view_most_read">View most recent</a><a href="#" class="ws-ls-hide" id="%1$s_hide_most_read">Hide most recent</a>', WE_LS_SLUG ), $component_id );
-				?>
+				ws_ls_echo_wp_kses( sprintf( ' <a href="#" id="%1$s_view_most_read">%2$s</a><a href="#" class="ws-ls-hide" id="%1$s_hide_most_read">%3$s</a>', $component_id, esc_html__( 'View most recent', WE_LS_SLUG ), esc_html__( 'Hide most recent', WE_LS_SLUG ) ) );
+
+			?>
 			</p>
 			<div id="<?php echo $component_id; ?>_most_recent_comment_div" class="ws-ls-hide">
 				<hr />

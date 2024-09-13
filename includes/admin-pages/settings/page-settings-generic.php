@@ -372,7 +372,7 @@ function ws_ls_settings_page_generic() {
 													?>
 													<td>
 														<input  type="number" step="any" min="800" max="5000" name="ws-ls-female-min-cal-cap" id="ws-ls-female-min-cal-cap" value="<?php echo esc_attr( $female_min_calorie_cap ); ?>" size="11" />
-														<p><?php echo esc_html__('If specified, any calorie intake suggestions below this value shall be replaced by it e.g. if Weight Tracker calculates the recommended calorie intake to lose weight at 940kcal and the safety is set to 1200kcal, then Weight Tracker has calculated a value below your limits. The safety value will replace the calculated value and set it to 1200kcal.', WE_LS_SLUG);?>. <?php echo ws_ls_calculations_link(); ?>. <em><?php echo esc_html__( 'Please note, it may take up to 15 minutes for calculations to change (due to caching).' , WE_LS_SLUG); ?></em></p>
+														<p><?php echo esc_html__('If specified, any calorie intake suggestions below this value shall be replaced by it e.g. if Weight Tracker calculates the recommended calorie intake to lose weight at 940kcal and the safety is set to 1200kcal, then Weight Tracker has calculated a value below your limits. The safety value will replace the calculated value and set it to 1200kcal.', WE_LS_SLUG);?>. <?php echo esc_url( ws_ls_calculations_link() ); ?>. <em><?php echo esc_html__( 'Please note, it may take up to 15 minutes for calculations to change (due to caching).' , WE_LS_SLUG); ?></em></p>
 													</td>
 												</tr>
                                                  <tr class="<?php echo $disable_if_not_pro_plus_class; ?>">
@@ -382,7 +382,7 @@ function ws_ls_settings_page_generic() {
 													 ?>
                                                     <td>
                                                         <input  type="number"  step="any" min="0" max="5000" name="ws-ls-female-cal-cap" id="ws-ls-female-cal-cap" value="<?php echo esc_attr( $female_calorie_cap ); ?>" size="11" />
-                                                        <p><?php echo esc_html__('Specify a maximum value for number of daily calories allowed to achieve weight loss. As per NHS guidelines, females are set to 1400kcal by default', WE_LS_SLUG);?>. <?php echo ws_ls_calculations_link(); ?>. <em><?php echo esc_html__( 'Please note, it may take up to 15 minutes for calculations to change (due to caching).' , WE_LS_SLUG); ?></em></p>
+                                                        <p><?php echo esc_html__('Specify a maximum value for number of daily calories allowed to achieve weight loss. As per NHS guidelines, females are set to 1400kcal by default', WE_LS_SLUG);?>. <?php echo esc_url( ws_ls_calculations_link() ); ?>. <em><?php echo esc_html__( 'Please note, it may take up to 15 minutes for calculations to change (due to caching).' , WE_LS_SLUG); ?></em></p>
                                                     </td>
                                                 </tr>
                                                 <tr class="<?php echo $disable_if_not_pro_plus_class; ?>">
@@ -396,7 +396,7 @@ function ws_ls_settings_page_generic() {
 															}
 														?>
                                                         <input  type="number"  step="any" min="800" max="5000" name="ws-ls-male-min-cal-cap" id="ws-ls-male-min-cal-cap" value="<?php echo esc_attr( $male_min_calorie_cap ); ?>" size="11" />
-														<p><?php echo esc_html__('If specified, any calorie intake suggestions below this value shall be replaced by it e.g. if Weight Tracker calculates the recommended calorie intake to lose weight at 940kcal and the safety is set to 1200kcal, then Weight Tracker has calculated a value below your limits. The safety value will replace the calculated value and set it to 1200kcal.', WE_LS_SLUG);?>. <?php echo ws_ls_calculations_link(); ?>. <em><?php echo esc_html__( 'Please note, it may take up to 15 minutes for calculations to change (due to caching).' , WE_LS_SLUG); ?></em></p>
+														<p><?php echo esc_html__('If specified, any calorie intake suggestions below this value shall be replaced by it e.g. if Weight Tracker calculates the recommended calorie intake to lose weight at 940kcal and the safety is set to 1200kcal, then Weight Tracker has calculated a value below your limits. The safety value will replace the calculated value and set it to 1200kcal.', WE_LS_SLUG);?>. <?php echo esc_url( ws_ls_calculations_link() ); ?>. <em><?php echo esc_html__( 'Please note, it may take up to 15 minutes for calculations to change (due to caching).' , WE_LS_SLUG); ?></em></p>
 												</tr>
 												<tr class="<?php echo $disable_if_not_pro_plus_class; ?>">
 													<th scope="row"><?php echo esc_html__( 'Male Maximum Calorie Cap' , WE_LS_SLUG); ?></th>
@@ -405,7 +405,7 @@ function ws_ls_settings_page_generic() {
 															$male_calorie_cap = ws_ls_harris_benedict_setting( 'ws-ls-male-cal-cap' );
 														?>
 														<input  type="number"  step="any" min="0" max="5000" name="ws-ls-male-cal-cap" id="ws-ls-male-cal-cap" value="<?php echo esc_attr( $male_calorie_cap ); ?>" size="11" />
-														<p><?php echo esc_html__('Specify a maximum value for number of daily calories allowed to achieve weight loss. As per NHS guidelines, males are set to 1900kcal by default', WE_LS_SLUG);?>. <?php echo ws_ls_calculations_link(); ?>. <em><?php echo esc_html__( 'Please note, it may take up to 15 minutes for calculations to change (due to caching).' , WE_LS_SLUG); ?></em></p></td>
+														<p><?php echo esc_html__('Specify a maximum value for number of daily calories allowed to achieve weight loss. As per NHS guidelines, males are set to 1900kcal by default', WE_LS_SLUG);?>. <?php echo esc_url( ws_ls_calculations_link() ); ?>. <em><?php echo esc_html__( 'Please note, it may take up to 15 minutes for calculations to change (due to caching).' , WE_LS_SLUG); ?></em></p></td>
 												</tr>
 											    <tr class="<?php echo $disable_if_not_pro_plus_class; ?>">
                                                     <th scope="row"><?php echo esc_html__( 'Calories to subtract' , WE_LS_SLUG); ?></th>
@@ -490,7 +490,7 @@ function ws_ls_settings_page_generic() {
 														</table>
 														<br />
 														<p><a class="button ws-ls-calorie-subtract-ranges-show-more"><?php echo esc_html__( 'Show more rows' , WE_LS_SLUG); ?></a></p>
-														 <p><?php echo esc_html__('Please note, there is no validation around these ranges. Each range will be considered and the first successful match shall be applied - others will be ignored', WE_LS_SLUG);?>. <?php echo ws_ls_calculations_link(); ?>. <em><?php echo esc_html__( 'Please note, it may take up to 15 minutes for calculations to change (due to caching).' , WE_LS_SLUG); ?></em></p>
+														 <p><?php echo esc_html__('Please note, there is no validation around these ranges. Each range will be considered and the first successful match shall be applied - others will be ignored', WE_LS_SLUG);?>. <?php echo esc_url( ws_ls_calculations_link() ); ?>. <em><?php echo esc_html__( 'Please note, it may take up to 15 minutes for calculations to change (due to caching).' , WE_LS_SLUG); ?></em></p>
                                                     </td>
                                                 </tr>
 
@@ -592,7 +592,7 @@ function ws_ls_settings_page_generic() {
 														</table>
 														<br />
 														<p><a class="button ws-ls-calorie-add-ranges-show-more"><?php echo esc_html__( 'Show more rows' , WE_LS_SLUG); ?></a></p>
-														<p><?php echo esc_html__('Please note, there is no validation around these ranges. Each range will be considered and the first successful match shall be applied - others will be ignored', WE_LS_SLUG);?>. <?php echo ws_ls_calculations_link(); ?>. <em><?php echo esc_html__( 'Please note, it may take up to 15 minutes for calculations to change (due to caching).' , WE_LS_SLUG); ?></em></p>
+														<p><?php echo esc_html__('Please note, there is no validation around these ranges. Each range will be considered and the first successful match shall be applied - others will be ignored', WE_LS_SLUG);?>. <?php echo esc_url( ws_ls_calculations_link() ); ?>. <em><?php echo esc_html__( 'Please note, it may take up to 15 minutes for calculations to change (due to caching).' , WE_LS_SLUG); ?></em></p>
 													</td>
 												</tr>
 
@@ -604,7 +604,7 @@ function ws_ls_settings_page_generic() {
 												<tr class="<?php echo $disable_if_not_pro_plus_class; ?>">
 													<th scope="row"><?php echo esc_html__( 'Percentages per aim' , WE_LS_SLUG); ?></th>
 													<td>
-														<p><?php echo esc_html__('For each aim, specify how Macronutrients should be split when calculated.', WE_LS_SLUG);?>. <?php echo ws_ls_calculations_link(); ?>. <em><?php echo esc_html__( 'Please note, it may take up to 15 minutes for calculations to change (due to caching).' , WE_LS_SLUG); ?></em></p>
+														<p><?php echo esc_html__('For each aim, specify how Macronutrients should be split when calculated.', WE_LS_SLUG);?>. <?php echo esc_url( ws_ls_calculations_link() ); ?>. <em><?php echo esc_html__( 'Please note, it may take up to 15 minutes for calculations to change (due to caching).' , WE_LS_SLUG); ?></em></p>
 
 														<table class="widefat ws-ls-calories-modify-table">
 															<thead>
@@ -618,7 +618,7 @@ function ws_ls_settings_page_generic() {
 															<tbody>
 															<?php foreach ( ['maintain', 'lose', 'gain' ] as $key ): ?>
 																<tr>
-																	<th><?php echo ws_ls_get_macro_name( $key ); ?></th>
+																	<th><?php echo ws_ls_echo( ws_ls_get_macro_name( $key ) ); ?></th>
 																	<td>
 																		<input  type="number"  step="any" min="0" max="100" name="ws-ls-macro-proteins-<?php echo $key; ?>"  class="ws-ls-macro ws-ls-macro-<?php echo $key; ?>" data-type="<?php echo $key; ?>" value="<?php echo esc_attr( ws_ls_harris_benedict_setting( 'ws-ls-macro-proteins-' . $key ) ); ?>" size=3" />%
 																	</td>

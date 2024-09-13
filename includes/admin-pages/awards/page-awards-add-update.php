@@ -102,7 +102,7 @@ function ws_ls_awards_add_update_page() {
                                         <p class="ws-ls-validation-error">&middot; <?php echo esc_html__('Please complete all mandatory fields.', WE_LS_SLUG); ?></p>
                                     <?php endif; ?>
                                     <?php if ( false === empty( $id ) ) : ?>
-                                        <input type="hidden" name="id" value="<?php echo $id; ?>"/>
+                                        <input type="hidden" name="id" value="<?php ws_ls_echo( $id ); ?>"/>
                                     <?php endif; ?>
                                     <div class="ws-ls-table">
                                         <div class="ws-ls-row">
@@ -234,7 +234,7 @@ function ws_ls_awards_add_update_page() {
                                                 <?php
                                                     $value = ( false === empty( $award['badge'] ) ) ? $award['badge'] : NULL;
 
-                                                    echo ws_ls_meta_fields_form_field_photo([ 'field_name' => '', 'mandatory' => 1], $value, 'award-badge-yeken' );
+                                                    echo ws_ls_meta_fields_form_field_photo([ 'field_name' => '', 'mandatory' => 1 ], $value, 'award-badge-yeken' );
 
                                                 ?>
                                             </div>
@@ -310,7 +310,7 @@ function ws_ls_awards_add_update_page() {
                                         <div class="ws-ls-row">
                                             <div class="ws-ls-cell"></div>
                                             <div class="ws-ls-cell">
-                                                <a class="comment-submit button" href="<?php echo ws_ls_awards_base_url(); ?>"><?php echo esc_html__('Cancel', WE_LS_SLUG); ?></a>
+                                                <a class="comment-submit button" href="<?php echo esc_url( ws_ls_awards_base_url() ); ?>"><?php echo esc_html__('Cancel', WE_LS_SLUG); ?></a>
 
                                                 <?php if ( true === ws_ls_awards_is_enabled() ): ?>
                                                     <input name="submit_button" type="submit" value="<?php echo esc_html__('Save', WE_LS_SLUG); ?>" class="comment-submit button button-primary">

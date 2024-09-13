@@ -939,11 +939,12 @@ function ws_ls_display_notice( $text, $type = 'success' ) {
 	            && false === in_array( $type, [ 'success', 'error', 'warning', 'info' ] ) ) ? 'success' :
 					$type;
 
-	echo sprintf('	<div class="notice notice-%s">
-								<p>%s</p>
-							</div>',
-                            wp_kses_post( $type ),
-                            wp_kses_post( $text )
+	ws_ls_echo_wp_kses( sprintf( '	<div class="notice notice-%s">
+										<p>%s</p>
+									</div>',
+									$type,
+									$text
+						) 
 	);
 }
 
@@ -996,7 +997,7 @@ function ws_ls_display_blockquote( $text, $class = '', $just_echo = false, $incl
 						);
 
 	if ( true === $just_echo ) {
-		echo $html_output;
+		ws_ls_echo_wp_kses( $html_output );
 		return '';
 	}
 
@@ -1200,10 +1201,10 @@ function ws_ls_display_pro_upgrade_notice( $prompt_level = '' ) {
 
 	?>
     <div class="postbox ws-ls-advertise">
-        <h3 class="hndle"><span><?php echo $title; ?> </span></h3>
+        <h3 class="hndle"><span><?php ws_ls_echo( $title ); ?> </span></h3>
         <div style="padding: 0px 15px 0px 15px">
-            <p><?php echo $message; ?></p>
-            <p><a href="<?php echo esc_url( admin_url('admin.php?page=ws-ls-license') ); ?>" class="button-primary"><?php echo esc_html__( 'Read more and upgrade', WE_LS_SLUG); ?></a></p>
+            <p><?php ws_ls_echo( $message ); ?></p>
+            <p><a href="<?php echo esc_url( admin_url('admin.php?page=ws-ls-license') ); ?>" class="button-primary"><?php ws_ls_echo( esc_html__( 'Read more and upgrade', WE_LS_SLUG) ); ?></a></p>
         </div>
     </div>
 
@@ -1767,4 +1768,57 @@ function ws_ls_js_redirect( $url ) {
 	printf( '<span class="ws-ls-js-redirect" data-url="%s"></span>', esc_url( $url ) );
 
 	wp_enqueue_script( 'wt-js-simple-redirect', plugins_url( '../assets/js/simple-redirect.js', __FILE__ ), [ 'jquery' ], WE_LS_CURRENT_VERSION, true );
+}
+
+/**
+ * Santise and echo
+ * 
+ * A wrapper around PHP echo for WP's sake. Their automated scanner flags all sorts of issues with just use of echo() without their sanitising
+ * functions called before it - even though the code is sanitising correctly in other places user input etc. 
+ */
+function ws_ls_echo( $value, $sanitiser = 'esc_html' ) {
+
+	switch ( $sanitiser ) {
+
+		case 'wp_kses':
+			echo ws_ls_wp_kses( $value );
+			break;	
+		default:
+			echo esc_html( $value );
+	}
+}
+
+/**
+ * Easy to use wrapper around yk_mt_echo()
+ */
+function ws_ls_echo_esc_html( $value ) {
+	ws_ls_echo( $value, $sanitiser = 'esc_html' );
+}
+
+/**
+ * Easy to use wrapper around yk_mt_wp_kses()
+ */
+function ws_ls_echo_wp_kses( $value ) {
+	echo ws_ls_wp_kses( $value );
+}
+
+/**
+ * Our version of kses and the HTML we are happy with
+ */
+function ws_ls_wp_kses( $value ) {
+
+	$basic_tags = wp_kses_allowed_html( 'html' );
+
+	$basic_tags[ 'a' ] 		= [ 'id' => true, 'class' => true, 'href' => true, 'title' => true, 'target' => true];
+	$basic_tags[ 'canvas' ] = [ 'id' => true, 'class' => true ];
+	$basic_tags[ 'div' ]	= [ 'id' => true, 'class' => true, 'style' => true ];	
+	$basic_tags[ 'i' ]		= [ 'id' => true, 'class' => true ];	
+	$basic_tags[ 'p' ]		= [ 'id' => true, 'class' => true ];		
+	$basic_tags[ 'span' ]	= [ 'id' => true, 'class' => true ];			
+	$basic_tags[ 'table' ]	= [ 'id' => true, 'class' => true ];	
+	$basic_tags[ 'tr' ]		= [ 'id' => true, 'class' => true ];	
+	$basic_tags[ 'td' ]		= [ 'id' => true, 'class' => true ];	
+	$basic_tags[ 'li' ]		= [ 'class' => true ];	
+
+	return wp_kses( $value, $basic_tags );
 }

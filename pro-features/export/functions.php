@@ -20,7 +20,7 @@ function ws_ls_export_link( $mode = 'view', $querystring_values = [] ) {
 		$url = add_query_arg( $querystring_values, $url );
 	}
 
-	return $url;
+	return esc_url( $url );
 }
 
 /**
