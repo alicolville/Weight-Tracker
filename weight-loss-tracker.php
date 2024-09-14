@@ -88,6 +88,7 @@ require_once( WS_LS_ABSPATH . 'includes/shortcode-various.php' );
 require_once( WS_LS_ABSPATH . 'includes/form-handler.php' );
 require_once( WS_LS_ABSPATH . 'includes/email-manager.php' );
 require_once( WS_LS_ABSPATH . 'includes/meal-tracker.php' );
+require_once( WS_LS_ABSPATH . 'includes/marketing.php' );
 require_once( WS_LS_ABSPATH . 'includes/admin-pages/settings/page-settings.php' );
 require_once( WS_LS_ABSPATH . 'includes/admin-pages/settings/page-settings-generic.php' );
 require_once( WS_LS_ABSPATH . 'includes/admin-pages/settings/page-settings-groups.php' );
