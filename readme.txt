@@ -170,7 +170,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 == Changelog ==
 
-= 10.10.1 =
+= 10.10.2 =
 
 * New Feature: Admin notifications from YeKen.uk
 * Bug fix: Fixed an issue with "Show Wizard" not being dismissable.
