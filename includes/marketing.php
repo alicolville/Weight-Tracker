@@ -88,8 +88,6 @@ function ws_ls_updates_admin_notice() {
 	
 		ws_ls_updates_display_notice( $json );
 	}
-
-	ws_ls_marketing_update_key_last_dismissed(2);
 }
 add_action( 'admin_notices', 'ws_ls_updates_admin_notice' );
 
