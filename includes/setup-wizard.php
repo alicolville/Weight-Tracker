@@ -9,14 +9,15 @@ define( 'WE_LS_SETUP_WIZARD_DIMISS_OPTION', 'ws-ls-setup-wizard-dismiss' );
  */
 function ws_ls_setup_wizard_notice() {
 
-    printf('<div class="updated notice is-dismissible setup-wizard-dismiss">
+    printf('<div class="updated notice is-dismissible setup-wizard-dismiss" data-nonce="%5$s">
                         <p>%1$s <strong>%2$s</strong>! %3$s.</p>
                         <p><a href="%4$s" class="button button-primary">Run wizard</a></p>
                     </div>',
                     esc_html__( 'Welcome to' , WE_LS_SLUG),
                     WE_LS_TITLE,
                     esc_html__( 'You\'re almost there, but a wizard might help you setup the plugin' , WE_LS_SLUG),
-                    esc_url( ws_ls_setup_wizard_get_link() )
+                    esc_url( ws_ls_setup_wizard_get_link() ),
+                    esc_attr( wp_create_nonce( 'ws-ls-nonce' ) )
     );
 }
 
@@ -35,7 +36,7 @@ function ws_ls_setup_wizard_get_link() {
  * @return bool
  */
 function ws_ls_setup_wizard_show_notice() {
-    return ( false === (bool) get_option( WE_LS_SETUP_WIZARD_DIMISS_OPTION ) );
+    return ( false === (bool) get_transient( WE_LS_SETUP_WIZARD_DIMISS_OPTION ) );
 }
 
 /**
@@ -56,7 +57,7 @@ add_action( 'plugins_loaded', 'ws_ls_setup_wizard_help_page_show_links_again' );
  * Show Wizard Links again
  */
 function ws_ls_setup_wizard_show_notice_links_again() {
-    delete_option( WE_LS_SETUP_WIZARD_DIMISS_OPTION );
+    delete_transient( WE_LS_SETUP_WIZARD_DIMISS_OPTION );
 }
 
 /**
@@ -73,9 +74,19 @@ add_action( 'admin_notices', 'ws_ls_setup_wizard_show_admin_notice' );
  * Update option on whether to show wizard
  */
 function ws_ls_setup_wizard_dismiss_notice() {
-    update_option( WE_LS_SETUP_WIZARD_DIMISS_OPTION, true );
+   $result = set_transient( WE_LS_SETUP_WIZARD_DIMISS_OPTION, 'yes' );
 }
-add_action( 'wp_ajax_ws_ls_setup_wizard_dismiss', 'ws_ls_setup_wizard_dismiss_notice' );
+
+/**
+ * Ajax handler to dismiss setup wizard
+ */
+function ws_ls_setup_wizard_ajax_dismiss() {
+
+    check_ajax_referer( 'ws-ls-nonce', 'security' );
+
+    ws_ls_setup_wizard_dismiss_notice();
+}
+add_action( 'wp_ajax_setup_wizard_dismiss', 'ws_ls_setup_wizard_ajax_dismiss' );
 
 /**
  * HTML for mention of custom work

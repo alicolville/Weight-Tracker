@@ -35,11 +35,12 @@ function ws_ls_help_page() {
                     </div>
 
 					<div class="postbox">
-						<h3 class="hndle"><span><?php echo esc_html__( 'Documentation and Release notes', WE_LS_SLUG); ?> </span></h3>
+						<h3 class="hndle"><span><?php echo esc_html__( 'Useful Links', WE_LS_SLUG); ?> </span></h3>
 						<div style="padding: 0px 15px 0px 15px">
-							<p><?php echo esc_html__( 'You can find detailed documentation for this plugin at our site:', WE_LS_SLUG ); ?></p>
+							<p><?php echo esc_html__( 'The following websites may be helpful for gaining a better understanding of the weight tracker:', WE_LS_SLUG ); ?></p>
                             <p>
-	                            <a href="https://docs.yeken.uk" rel="noopener noreferrer"  class="button"  target="_blank"><?php echo esc_html__( 'View Documentation', WE_LS_SLUG ); ?></a>
+                                <a href="https://weighttracker.yeken.uk" rel="noopener noreferrer"  class="button"  target="_blank"><?php echo esc_html__( 'Weight Tracker plugin site', WE_LS_SLUG ); ?></a>  
+	                            <a href="https://docs.yeken.uk" rel="noopener noreferrer"  class="button"  target="_blank"><?php echo esc_html__( 'Documentation Site', WE_LS_SLUG ); ?></a>
 	                            <a href="https://github.com/alicolville/Weight-Tracker/releases"  class="button"  rel="noopener noreferrer" target="_blank"><?php echo esc_html__( 'Release Notes', WE_LS_SLUG ); ?></a>
                             </p>
 						</div>

@@ -65,20 +65,19 @@ jQuery( document ).ready(function ($) {
     $(".ws-ls-disabled input").prop('disabled', true);
     $(".ws-ls-disabled select").prop('disabled', true);
 
-    $( '.notice.is-dismissible' ).on('click', '.notice-dismiss', function ( event ) {
+    $( '.ws-ls-update-notice' ).on('click', '.notice-dismiss', function ( event ) {
 
         event.preventDefault();
-        var $this = $(this);
-        if( 'undefined' == $this.parent().data('wsmd5') ){
-            return;
+       
+        if( false == $( this ).parent().hasClass( 'ws-ls-update-notice' ) ){
+          return;
         }
-
-        var ws_md5 = $this.parent().data('wsmd5');
-
+      
         $.post( ajaxurl, {
             action: 'ws_ls_dismiss_notice',
             url: ajaxurl,
-            md5: ws_md5
+            security: $( this ).parent().data( 'nonce' ),
+            update_key: $( this ).parent().data('update-key')
         });
 
     });
@@ -181,14 +180,18 @@ jQuery( document ).ready(function ($) {
     // ------------------------------------------------------------
     // Setup Wizard
     // ------------------------------------------------------------
-
-    $( '.setup-wizard-dismiss' ).on('click', '.notice-dismiss, .dismiss-wizard', function ( event ) {
+    $( '.notice.is-dismissible' ).on('click', '.notice-dismiss', function ( event ) {
 
         event.preventDefault();
 
+        if( false == $( this ).parent().hasClass( 'setup-wizard-dismiss' ) ){
+            return;
+        }
+        
         $.post( ajaxurl, {
-            action: 'ws_ls_setup_wizard_dismiss',
-            url: ajaxurl
+            action: 'setup_wizard_dismiss',
+            url: ajaxurl,
+            "security" : $( this ).parent().data( 'nonce' )
         });
     });
 
