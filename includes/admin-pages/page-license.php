@@ -205,8 +205,8 @@ function ws_ls_advertise_pro() {
         						<h3 class="hndle"><span><?php echo esc_html__('Documentation', WE_LS_SLUG); ?></span></h3>
 
                                 <div class="inside">
-                                    <p><?php echo esc_html__('Need further help or information, please visit our documentation site:', WE_LS_SLUG); ?></p>
-                                    <p><strong><a href="https://docs.yeken.uk" target="_blank" rel="noopener noreferrer">docs.yeken.uk</a></strong></p>
+                                    <p><?php echo esc_html__('For additional assistance or details, please visit our documentation site.', WE_LS_SLUG); ?></p>
+                                    <p><strong><a href="https://docs.yeken.uk" target="_blank" rel="noopener noreferrer">docs.yeken.uk</a></strong> or <a href="https://weighttracker.yeken.uk" target="_blank" rel="noopener noreferrer">weighttracker.yeken.uk</a></strong></p>
                                     <a href="https://docs.yeken.uk" target="_blank" rel="noopener noreferrer"><img class="widefat" src="<?php ws_ls_echo( plugins_url( 'assets/images/weight-yeken-uk.png', __FILE__ ) ); ?>" /></a>
                                 </div>
                             </div>
