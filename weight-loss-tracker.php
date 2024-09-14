@@ -5,7 +5,7 @@ defined('ABSPATH') or die('Jog on!');
 /**
  * Plugin Name:         Weight Tracker
  * Description:         Allow your users to track their weight, body measurements, photos and other pieces of custom data. Display in charts, tables, shortcodes and widgets. Manage their data, issue awards, email notifications, etc! Provide advanced data on Body Mass Index (BMI), Basal Metabolic Rate (BMR), Calorie intake, Harris Benedict Formula, Macronutrients Calculator and more.
- * Version:             10.10.1
+ * Version:             10.10.2
  * Requires at least:   6.0
  * Tested up to:		6.5
  * Requires PHP:        7.4
@@ -17,11 +17,12 @@ defined('ABSPATH') or die('Jog on!');
  * Domain Path:         /includes/languages
  */
 
-define( 'WE_LS_CURRENT_VERSION', '10.10.1' );
+define( 'WE_LS_CURRENT_VERSION', '10.10.2' );
 define( 'WS_LS_ABSPATH', plugin_dir_path( __FILE__ ) );
 define( 'WS_LS_BASE_URL', plugin_dir_url( __FILE__ ) );
 define( 'WE_LS_TITLE', 'Weight Tracker' );
 define( 'WE_LS_SLUG', 'weight-loss-tracker' );
+define( 'WE_LS_YEKEN_UPDATES_URL', 'https://yeken.uk/downloads/_updates/weight-tracker.json' );
 define( 'WE_LS_LICENSE_TYPES_URL', 'https://docs.yeken.uk/features.html' );
 define( 'WE_LS_CALCULATIONS_URL', '	https://docs.yeken.uk/calculations.html' );
 define( 'WE_LS_UPGRADE_TO_PRO_URL', 'https://shop.yeken.uk/product/weight-tracker-pro/' );
