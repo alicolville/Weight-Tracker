@@ -57,7 +57,7 @@ function ws_ls_updates_display_notice( $json ) {
 
 	if ( !empty( $json[ 'url'] ) && !empty( $json[ 'url-title' ] ) ) {
 		$button = sprintf( '<p>
-								<a href="%1$s" class="button button-primary">%2$s</a>
+								<a href="%1$s" class="button button-primary" target="_blank" rel="noopener">%2$s</a>
 							</p>',
 							esc_url( $json[ 'url' ] ),
 							ws_ls_wp_kses( $json[ 'url-title' ] )
