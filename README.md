@@ -1,6 +1,6 @@
 # Weight Tracker
 
-[Weight Tracker](https://wordpress.org/plugins/weight-loss-tracker/) is a [WordPress](https://wordpress.org) plugin that allows your users to track their weight, measurements, photos and custom data! Support for BMI, BMR, Calorie Intake, Macronutrients and much more!
+[Weight Tracker](https://weighttracker.yeken.uk/) is a [WordPress](https://wordpress.org) plugin that allows your users to track their weight, measurements, photos and custom data! Support for BMI, BMR, Calorie Intake, Macronutrients and much more!
 
 The plugin can be found on the WordPress plugin directory: https://wordpress.org/plugins/weight-loss-tracker/
 
