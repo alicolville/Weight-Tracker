@@ -1,6 +1,6 @@
 {
     "name" : "Weight Tracker",
-    "version" : "10.10.4",
+    "version" : "10.10.5",
     "download_url" : "https://weighttracker.yeken.uk/downloads/weight-tracker/weight-tracker.zip",
     "sections" : {
         "description" : "Allow your users to track their weight, measurements, photos and custom data! Support for BMI, BMR, Calorie Intake, Macronutrients and much more!"
