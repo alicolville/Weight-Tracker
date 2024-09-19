@@ -23,6 +23,7 @@ define( 'WS_LS_BASE_URL', plugin_dir_url( __FILE__ ) );
 define( 'WE_LS_TITLE', 'Weight Tracker' );
 define( 'WE_LS_SLUG', 'weight-loss-tracker' );
 define( 'WE_LS_YEKEN_UPDATES_URL', 'https://yeken.uk/downloads/_updates/weight-tracker.json' );
+define( 'WE_LS_YEKEN_LATEST_RELEASE_MANIFEST', 'https://raw.githubusercontent.com/alicolville/Weight-Tracker/refs/heads/master/release.json' );
 define( 'WE_LS_LICENSE_TYPES_URL', 'https://docs.yeken.uk/features.html' );
 define( 'WE_LS_CALCULATIONS_URL', '	https://docs.yeken.uk/calculations.html' );
 define( 'WE_LS_UPGRADE_TO_PRO_URL', 'https://shop.yeken.uk/product/weight-tracker-pro/' );
@@ -75,6 +76,7 @@ require_once( WS_LS_ABSPATH . 'includes/db.php' );
 require_once( WS_LS_ABSPATH . 'includes/activate.php' );
 require_once( WS_LS_ABSPATH . 'includes/hooks.php' );
 require_once( WS_LS_ABSPATH . 'includes/cron.php' );
+require_once( WS_LS_ABSPATH . 'plugin-update-checker/plugin-update-checker.php' );
 require_once( WS_LS_ABSPATH . 'includes/functions.php' );
 require_once( WS_LS_ABSPATH . 'includes/converters.php' );
 require_once( WS_LS_ABSPATH . 'includes/core.php' );
@@ -184,3 +186,11 @@ function ws_ls_load_textdomain() {
 	load_plugin_textdomain( WE_LS_SLUG, false, dirname( plugin_basename( __FILE__ )  ) . '/includes/languages/' );
 }
 add_action('plugins_loaded', 'ws_ls_load_textdomain');
+
+
+// -----------------------------------------------------------------------------------------
+// Since we're no longer hosted on WordPress.org, use the following for auto updates
+// -----------------------------------------------------------------------------------------
+use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+
+$wt_plugin_updater = PucFactory::buildUpdateChecker( WE_LS_YEKEN_LATEST_RELEASE_MANIFEST, __FILE__, WE_LS_SLUG );
