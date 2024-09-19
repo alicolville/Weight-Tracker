@@ -4,3 +4,4 @@
 .distignore
 /docs
 /playwright
+release.json
