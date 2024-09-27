@@ -32,7 +32,7 @@ function ws_ls_config_js() {
 					'is-pro'                            => ( WS_LS_IS_PRO ) ? 'true' : 'false',
 					'user-id'                           => $user_id,
 					'current-url'                       => apply_filters( 'wlt_current_url', get_permalink() ),
-					'photos-enabled'                    => ( ws_ls_meta_fields_photo_any_enabled( true ) ) ? 'true' : 'false',
+					'photos-enabled'                    => ws_ls_meta_fields_photo_any_enabled( false ) ? 'true' : 'false',
 					'date-picker-locale'                => ws_ls_config_js_datapicker_locale(),
 					'in-admin'                          => ( is_admin() ) ? 'true' : 'false',
 					'max-photo-upload'                  => ws_ls_photo_max_upload_size(),
