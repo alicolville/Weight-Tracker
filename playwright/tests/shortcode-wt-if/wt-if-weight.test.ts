@@ -10,8 +10,9 @@ test.describe( 'wt-if weight', () => {
         await expect(page.locator('.wt-if-weight-exists')).toContainText('Weight Exists: exists');
         
         // await set_user_target(page, '50');
-       
-
+        await set_user_weight(page, '01/10/2024', '999' );
+        await clear_user_weight(page );
+        
         // /**
         //  * Check IF statements with test data
         //  */
@@ -100,21 +101,33 @@ test.describe( 'wt-if weight', () => {
 
     // });
 
-    // async function set_user_target(page, target){
-    //     await page.goto('http://localhost/weight-tracker/');
-    //     await page.getByRole('link', { name: 'Adjust' }).click();
-    //     await page.getByTestId('ws-form-target').click();
-    //     await page.getByTestId('ws-form-target').fill( target);
-    //     await page.getByRole('button', { name: 'Set Target' }).click();
-    //     await page.goto('http://localhost/if-statements/if-statements-target/');
-    // }
+    async function set_user_weight(page, date, weight){
 
-    // async function clear_user_target(page){
-    //     await page.goto('http://localhost/weight-tracker/');
-    //     await page.getByTestId('wt-tab-settings').click();
-    //     page.on('dialog', dialog => dialog.accept());
-    //     await page.getByRole('button', { name: 'Clear Target' }).click();
-    //     await page.waitForURL('http://localhost/weight-tracker/?target-cleared=true&wt-user-id=8');
-    // }
+        await page.goto('http://localhost/weight-tracker/');
+        await page.getByTestId('wt-tab-add-edit').click();
+        await page.getByTestId('we-ls-date').fill(date);
+        await page.getByTestId('wt-tab-add-edit').click();
+        await page.getByTestId('ws-form-weight').fill(weight);
+        await page.getByRole('button', { name: 'Save Entry' }).click();
+
+        // Start by deleting all weight entries
+await page.getByTestId('wt-tab-settings').click();
+await page.getByLabel('The button below allows you').selectOption('yes');
+await page.getByRole('button', { name: 'Delete' }).click();
+await expect(page.locator('#wp--skip-link--target')).toContainText('Your data has successfully been deleted.');
+
+
+
+    }
+
+    async function clear_user_weight(page){
+        // await page.goto('http://localhost/weight-tracker/');
+        // await page.getByTestId('wt-tab-history').click();
+        // page.once('dialog', dialog => {
+        //     console.log(`Dialog message: ${dialog.message()}`);
+        //     dialog.dismiss().catch(() => {});
+        // });
+        // await page.getByRole('button').nth(1).click();
+    }
 
 });
