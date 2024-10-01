@@ -3,6 +3,7 @@
 .idea/vcs.xml
 .idea/weight-loss-tracker.iml
 .idea/workspace.xml
+node_modules/
 includes/languages/.DS_Store
 assets/css/.DS_Store
 assets/css/libraries/.DS_Store
@@ -15,3 +16,6 @@ playwright/.auth/user.json
 playwright/playwright/.auth/user.json
 assets/.DS_Store
 .DS_Store
+node_modules/.bin/playwright
+playwright-report/
+.auth/user.json
