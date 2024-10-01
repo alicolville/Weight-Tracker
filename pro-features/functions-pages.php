@@ -8,7 +8,7 @@ defined('ABSPATH') or die('Naw ya dinnie!');
 
 function ws_ls_box_user_search_form( $ajax_mode = false ) {
 
-	?>	<p><?php echo __('Enter a user\'s email address, display name or username and click Search.', WE_LS_SLUG); ?></p>
+	?>	<p><?php echo esc_html__('Enter a user\'s email address, display name or username and click Search.', WE_LS_SLUG); ?></p>
 		<form id="wlt-user-search"
 				<?php if (false === $ajax_mode): ?>
 					method="get" action="<?php echo ws_ls_get_link_to_user_data(); ?>"
@@ -99,7 +99,7 @@ function ws_ls_user_side_bar( $user_id ) {
  */
 function ws_ls_postbox_user_search( $class = 'ws-ls-user-summary-two' ) {
 
-    $title = apply_filters( 'wlt-filter-user-search-title', __( 'User Search', WE_LS_SLUG ) );
+    $title = apply_filters( 'wlt-filter-user-search-title', esc_html__( 'User Search', WE_LS_SLUG ) );
 ?>
 	<div class="postbox <?php ws_ls_postbox_classes( 'user-search', $class ); ?>" id="user-search">
 		<?php ws_ls_postbox_header( [ 'title' => $title, 'postbox-id' => 'user-search', 'postbox-col' => $class ] ); ?>
@@ -121,37 +121,36 @@ function ws_ls_postbox_user_notes( $user_id ) {
 	$notes_link 	= ws_ls_get_link_to_notes( $user_id );
 	$component_id 	= ws_ls_component_id();
 
-	$title = sprintf( __( ': <span id="%2$s_count">%1$d</span>', WE_LS_SLUG ),
-							$stats[ 'notes-count' ],
-							$component_id );
+	$title = sprintf( ': <span id="%2$s_count">%1$d</span>', (int) $stats[ 'notes-count' ], $component_id );
 
 	?>
 	<div class="postbox ws-ls-notes-add-postbox <?php ws_ls_postbox_classes( 'notes', 'ws-ls-user-data-two' ); ?>" id="notes">
-		<?php ws_ls_postbox_header( [ 'title' => __( 'Notes', WE_LS_SLUG ) . $title , 'postbox-id' => 'notes', 'postbox-col' => 'ws-ls-user-data-two' ] ); ?>
+		<?php ws_ls_postbox_header( [ 'title' => esc_html__( 'Notes', WE_LS_SLUG ) . $title , 'postbox-id' => 'notes', 'postbox-col' => 'ws-ls-user-data-two' ] ); ?>
 		<div class="inside">
 			<p id="<?php echo $component_id; ?>_errormessage" class="ws-ls-validation-error ws-ls-hide">
-				<?php echo __( 'There was an error adding the note. Please try again.', WE_LS_SLUG ); ?>
+				<?php echo esc_html__( 'There was an error adding the note. Please try again.', WE_LS_SLUG ); ?>
 			</p>
 			<p id="<?php echo $component_id; ?>_successmessage" class="ws-ls-good ws-ls-hide">
-				<?php echo __( 'The note has been saved successfully.', WE_LS_SLUG ); ?>
+				<?php echo esc_html__( 'The note has been saved successfully.', WE_LS_SLUG ); ?>
 			</p>
 			<p>
 			<?php
 
-				printf( 	__( '<a href="%1$s">View All</a> /', WE_LS_SLUG ), esc_url( $notes_link ) );
+				ws_ls_echo_wp_kses( sprintf( '<a href="%1$s">%2$s</a> /', esc_url( $notes_link ), esc_html__( 'View All', WE_LS_SLUG ) ) );
 
-				printf( 	__( ' <a href="#" id="%1$s_view_most_read">View most recent</a><a href="#" class="ws-ls-hide" id="%1$s_hide_most_read">Hide most recent</a>', WE_LS_SLUG ), $component_id );
-				?>
+				ws_ls_echo_wp_kses( sprintf( ' <a href="#" id="%1$s_view_most_read">%2$s</a><a href="#" class="ws-ls-hide" id="%1$s_hide_most_read">%3$s</a>', $component_id, esc_html__( 'View most recent', WE_LS_SLUG ), esc_html__( 'Hide most recent', WE_LS_SLUG ) ) );
+
+			?>
 			</p>
 			<div id="<?php echo $component_id; ?>_most_recent_comment_div" class="ws-ls-hide">
 				<hr />
-				<p><?php echo __( 'Most recent comment', WE_LS_SLUG ); ?>:</p>
+				<p><?php echo esc_html__( 'Most recent comment', WE_LS_SLUG ); ?>:</p>
 				<?php
 				echo ws_ls_form_field_textarea( [ 	'name' 			=> $component_id . '_most_recent',
 													'cols' 			=> 30,
 													'rows'			=> 6,
 													'disabled'		=> true,
-													'placeholder'	=>  __( 'There are no notes for this user', WE_LS_SLUG ),
+													'placeholder'	=>  esc_html__( 'There are no notes for this user', WE_LS_SLUG ),
 													'value'			=> esc_html( $stats[ 'notes-latest-text' ] )
 
 				]);
@@ -162,17 +161,17 @@ function ws_ls_postbox_user_notes( $user_id ) {
 				<?php
 					echo ws_ls_form_field_textarea( [ 	'name' 			=> $component_id . '_textarea',
 														'cols' 			=> 30,
-														'placeholder' 	=> __( 'Add a note for this user...', WE_LS_SLUG )
+														'placeholder' 	=> esc_html__( 'Add a note for this user...', WE_LS_SLUG )
 					]);
 
 					echo ws_ls_form_field_checkbox( [ 	'id' 				=> $component_id . '_send_email',
-														'title'				=> __( 'Send note to user via email', WE_LS_SLUG ),
+														'title'				=> esc_html__( 'Send note to user via email', WE_LS_SLUG ),
 														'show-label'		=> true,
 														'css-class-row' 	=> 'ws-ls-note-checkbox'
 					]);
 
 					echo ws_ls_form_field_checkbox( [ 	'id' 				=> $component_id . '_visible_to_user',
-														 'title'			=> __( 'Visible to the user?', WE_LS_SLUG ),
+														 'title'			=> esc_html__( 'Visible to the user?', WE_LS_SLUG ),
 														 'show-label'		=> true,
 														 'css-class-row' 	=> 'ws-ls-note-checkbox'
 					]);
@@ -180,90 +179,23 @@ function ws_ls_postbox_user_notes( $user_id ) {
 					if ( ws_ls_note_is_enabled() ) {
 						printf( '<button id="%1$s_button" class="button">%2$s</button>',
 								$component_id,
-								__( 'Add note', WE_LS_SLUG )
+								esc_html__( 'Add note', WE_LS_SLUG )
 						);
 					} else {
 						printf( '<a href="%s">Upgrade to Pro to save notes</a>', ws_ls_upgrade_link() );
 					}
 				?>
 			</div>
-			<script>
-				jQuery( document ).ready( function ( $ ) {
+			<?php
 
-					let button_id 			= '#<?php echo $component_id; ?>_button';
-					let textarea_id 		= '#<?php echo $component_id; ?>_textarea';
-					let most_recent_id 		= '#<?php echo $component_id; ?>_most_recent';
-					let errormessage_id 	= '#<?php echo $component_id; ?>_errormessage';
-					let successmessage_id 	= '#<?php echo $component_id; ?>_successmessage';
+				wp_enqueue_script( 'wt-admin-notes-add', plugins_url( '../assets/js/admin.data-notes-add.js', __FILE__ ), [ 'jquery' ], WE_LS_CURRENT_VERSION, true );
 
-					$( button_id ).click( function( event ) {
-
-						event.preventDefault();
-
-						let note = $( textarea_id ).val();
-
-						$( button_id ).addClass( 'ws-ls-loading-button');
-						$( errormessage_id ).addClass( 'ws-ls-hide');
-						$( successmessage_id ).addClass( 'ws-ls-hide' );
-
-						let data = { 	'action' : 			'ws_ls_add_note',
-										'security' : 		'<?php echo wp_create_nonce( 'ws-ls-add-note' ) ?>',
-										'user-id' :			<?php echo (int) $user_id; ?>,
-										'note' :			note,
-										'send-email' :		$( '#<?php echo $component_id; ?>_send_email' ).is(':checked'),
-										'visible-to-user' :	$( '#<?php echo $component_id; ?>_visible_to_user' ).is(':checked')
-						};
-
-						jQuery.post( "<?php echo admin_url('admin-ajax.php'); ?>", data, function ( response ) {
-
-							if ( parseInt( response ) === 0 ) {
-								$( errormessage_id ).removeClass( 'ws-ls-hide' );
-								return;
-							}
-
-							$( most_recent_id ).val( $( textarea_id ).val() );
-
-							$( textarea_id ).val( '' );
-
-							$( "#<?php echo $component_id; ?>_count" ).text( response );
-							$( successmessage_id ).removeClass( 'ws-ls-hide' );
-
-						}).fail(function() {
-							$( errormessage_id ).removeClass( 'ws-ls-hide' );
-						})
-						.always(function() {
-							$( button_id ).removeClass( 'ws-ls-loading-button');
-						});;
-					});
-
-					let hide_most_recent_id 	= '#<?php echo $component_id; ?>_hide_most_read';
-					let view_most_recent_id 	= '#<?php echo $component_id; ?>_view_most_read';
-					let view_most_recent_div_id = '#<?php echo $component_id; ?>_most_recent_comment_div';
-					let view_add_new_div_id 	= '#<?php echo $component_id; ?>_add_new_div';
-
-					$( hide_most_recent_id ).click( function( event ) {
-
-						event.preventDefault();
-
-						$( view_most_recent_id ).removeClass( 'ws-ls-hide' );
-						$( hide_most_recent_id ).addClass( 'ws-ls-hide' );
-						$( view_most_recent_div_id ).addClass( 'ws-ls-hide' );
-						$( view_add_new_div_id ).removeClass( 'ws-ls-hide' );
-					});
-
-					$( view_most_recent_id ).click( function( event ) {
-
-						event.preventDefault();
-
-						$( hide_most_recent_id ).removeClass( 'ws-ls-hide' );
-						$( view_most_recent_id ).addClass( 'ws-ls-hide' );
-						$( view_most_recent_div_id ).removeClass( 'ws-ls-hide' );
-						$( view_add_new_div_id ).addClass( 'ws-ls-hide' );
-					});
-
-				});
-
-			</script>
+				wp_localize_script( 'wt-admin-notes-add', 'ws_notes_add_config', [ 	'component_id'	=> $component_id,
+																					'user_id'		=> (int) $user_id,
+																					'nonce' 		=> wp_create_nonce( 'ws-ls-add-note' ),
+																					'url'			=> admin_url( 'admin-ajax.php' ),
+																					'error-message'	=> esc_html__( 'An error occurred when attempting to delete the note.', WE_LS_SLUG ) ]);
+			?>
 		</div>
 	</div>
 	<?php
@@ -282,7 +214,7 @@ function ws_ls_postbox_sidebar_recent_photo( $user_id ) {
 
 ?>
 	<div class="postbox <?php ws_ls_postbox_classes( 'most-recent', 'ws-ls-user-data-two' ); ?>" id="most-recent">
-		<?php ws_ls_postbox_header( [ 'title' => __( 'Most Recent Photo', WE_LS_SLUG ), 'postbox-id' => 'most-recent', 'postbox-col' => 'ws-ls-user-data-two' ] ); ?>
+		<?php ws_ls_postbox_header( [ 'title' => esc_html__( 'Most Recent Photo', WE_LS_SLUG ), 'postbox-id' => 'most-recent', 'postbox-col' => 'ws-ls-user-data-two' ] ); ?>
 		<div class="inside">
 			<center>
 				<?php
@@ -293,13 +225,13 @@ function ws_ls_postbox_sidebar_recent_photo( $user_id ) {
 					$photo_count = ws_ls_photos_db_count_photos( $user_id );
 
 					echo sprintf('<p>%s <strong>%s</strong>. <a href="%s">%s</a></p>',
-						__( 'No. of photos: ', WE_LS_SLUG ),
+						esc_html__( 'No. of photos: ', WE_LS_SLUG ),
 						$photo_count,
 						ws_ls_get_link_to_photos( $user_id),
-						__( 'View all', WE_LS_SLUG )
+						esc_html__( 'View all', WE_LS_SLUG )
 					);
 				} else {
-					echo sprintf('<a href="%s">%s</a>', ws_ls_upgrade_link(), __( 'Upgrade to Pro Plus', WE_LS_SLUG ) );
+					echo sprintf('<a href="%s">%s</a>', ws_ls_upgrade_link(), esc_html__( 'Upgrade to Pro Plus', WE_LS_SLUG ) );
 				}
 				?>
 			</center>
@@ -320,7 +252,7 @@ function ws_ls_postbox_sidebar_user_information( $user_id ) {
 
 ?>
 	<div class="postbox ws-ls-user-data <?php ws_ls_postbox_classes( 'user-information', 'ws-ls-user-data-two' ); ?>" id="user-information">
-		<?php ws_ls_postbox_header( [ 'title' => __( 'User summary', WE_LS_SLUG ), 'postbox-id' => 'user-information', 'postbox-col' => 'ws-ls-user-data-two' ] ); ?>
+		<?php ws_ls_postbox_header( [ 'title' => esc_html__( 'User summary', WE_LS_SLUG ), 'postbox-id' => 'user-information', 'postbox-col' => 'ws-ls-user-data-two' ] ); ?>
 		<div class="inside">
 			<table class="ws-ls-sidebar-stats">
 
@@ -328,11 +260,11 @@ function ws_ls_postbox_sidebar_user_information( $user_id ) {
 
 				<?php $stats = ws_ls_db_entries_count($user_id); ?>
 				<tr>
-					<th><?php echo __('No. of entries', WE_LS_SLUG); ?></th>
+					<th><?php echo esc_html__('No. of entries', WE_LS_SLUG); ?></th>
 					<td><?php echo $stats['number-of-entries']; ?></td>
 				</tr>
 				<tr>
-					<th><?php echo __( 'Starting entry', WE_LS_SLUG ); ?></th>
+					<th><?php echo esc_html__( 'Starting entry', WE_LS_SLUG ); ?></th>
 					<td class="<?php echo ws_ls_blur(); ?>"><?php echo ws_ls_blur_text( ws_ls_shortcode_start_date( $user_id ) ); ?></td>
 				</tr>
 				<tr>
@@ -341,7 +273,7 @@ function ws_ls_postbox_sidebar_user_information( $user_id ) {
 				</tr>
 				<?php if ( (int) $stats['number-of-entries'] > 1 ) : ?>
 					<tr>
-						<th><?php echo __( 'Latest entry', WE_LS_SLUG ); ?></th>
+						<th><?php echo esc_html__( 'Latest entry', WE_LS_SLUG ); ?></th>
 						<td class="<?php echo ws_ls_blur(); ?>">
 							<?php
 
@@ -357,59 +289,59 @@ function ws_ls_postbox_sidebar_user_information( $user_id ) {
 					</tr>
 				<?php endif; ?>
 				<tr>
-					<th><?php echo __('Diff. from start', WE_LS_SLUG); ?></th>
+					<th><?php echo esc_html__('Diff. from start', WE_LS_SLUG); ?></th>
 					<td class="<?php echo ws_ls_blur(); ?>"><?php echo ws_ls_blur_text( ws_ls_shortcode_difference_in_weight_from_oldest($user_id) ); ?></td>
 				</tr>
 				<tr>
-					<th><?php echo __('Target weight', WE_LS_SLUG); ?></th>
+					<th><?php echo esc_html__('Target weight', WE_LS_SLUG); ?></th>
 					<td class="<?php echo ws_ls_blur(); ?>">
 						<a href="<?php echo ws_ls_get_link_to_edit_target($user_id); ?>">
 							<?php
 
 							$target = ws_ls_target_get( $user_id );
-							echo ( true === empty( $target[ 'display' ] ) ) ? __( 'No target set', WE_LS_SLUG ) : ws_ls_blur_text( $target[ 'display' ] );
+							echo ( true === empty( $target[ 'display' ] ) ) ? esc_html__( 'No target set', WE_LS_SLUG ) : ws_ls_blur_text( $target[ 'display' ] );
 							?>
 						</a>
 					</td>
 				</tr>
 				<tr>
-					<th><?php echo __('Diff. from target', WE_LS_SLUG); ?></th>
+					<th><?php echo esc_html__('Diff. from target', WE_LS_SLUG); ?></th>
 					<td class="<?php echo ws_ls_blur(); ?>"><?php echo ws_ls_blur_text( ws_ls_shortcode_difference_in_weight_target( [ 'user-id' => $user_id ] ) ); ?></td>
 				</tr>
 				<tr>
-					<th><?php echo __('Current BMI', WE_LS_SLUG); ?></th>
-					<td class="<?php echo ws_ls_blur(); ?>"><?php echo ws_ls_shortcode_bmi([ 'user-id' => $user_id, 'display' => 'both', 'no-height-text' => __('No height specified', WE_LS_SLUG)]); ?></td>
+					<th><?php echo esc_html__('Current BMI', WE_LS_SLUG); ?></th>
+					<td class="<?php echo ws_ls_blur(); ?>"><?php echo ws_ls_shortcode_bmi([ 'user-id' => $user_id, 'display' => 'both', 'no-height-text' => esc_html__('No height specified', WE_LS_SLUG)]); ?></td>
 				</tr>
 
 				<?php echo ws_ls_side_bar_render_rows( apply_filters( 'wlt-filter-admin-user-sidebar-middle', [], $user_id) ); ?>
 
 				<tr>
-					<th><?php echo __('Aim', WE_LS_SLUG); ?></th>
+					<th><?php echo esc_html__('Aim', WE_LS_SLUG); ?></th>
 					<td class="<?php echo ws_ls_blur(); ?>"><a href="<?php echo $settings_url; ?>"><?php echo ws_ls_blur_text( ws_ls_display_user_setting($user_id, 'aim') ); ?></a></td>
 				</tr>
 				<tr>
-					<th><?php echo __('Height', WE_LS_SLUG); ?></th>
+					<th><?php echo esc_html__('Height', WE_LS_SLUG); ?></th>
 					<td class="<?php echo ws_ls_blur(); ?>"><a href="<?php echo $settings_url; ?>"><?php echo ws_ls_blur_text ( ws_ls_display_user_setting($user_id, 'height') ); ?></a></td>
 				</tr>
 				<tr>
-					<th><?php echo __('Gender', WE_LS_SLUG); ?></th>
+					<th><?php echo esc_html__('Gender', WE_LS_SLUG); ?></th>
 					<td class="<?php echo ws_ls_blur(); ?>"><a href="<?php echo $settings_url; ?>"><?php echo ws_ls_blur_text( ws_ls_display_user_setting($user_id, 'gender') ); ?></a></td>
 				</tr>
 				<tr>
-					<th><?php echo __('Activity level', WE_LS_SLUG); ?></th>
+					<th><?php echo esc_html__('Activity level', WE_LS_SLUG); ?></th>
 					<td class="<?php echo ws_ls_blur(); ?>"><a href="<?php echo $settings_url; ?>"><?php echo ws_ls_blur_text( ws_ls_display_user_setting($user_id, 'activity_level', false, true) ); ?></a></td>
 				</tr>
 				<tr>
-					<th><?php echo __('Date of birth', WE_LS_SLUG); ?></th>
+					<th><?php echo esc_html__('Date of birth', WE_LS_SLUG); ?></th>
 					<td class="<?php echo ws_ls_blur(); ?>"><a href="<?php echo $settings_url; ?>"><?php echo ws_ls_blur_text( ws_ls_get_dob_for_display($user_id, false, true) ); ?></a></td>
 				</tr>
 				<tr class="last">
-					<th><?php echo __('BMR', WE_LS_SLUG); ?></th>
+					<th><?php echo esc_html__('BMR', WE_LS_SLUG); ?></th>
 					<td>
 						<?php
 						if(ws_ls_has_a_valid_pro_plus_license()) {
 							$bmr = ws_ls_calculate_bmr($user_id, false);
-							echo (false === empty($bmr)) ? esc_html($bmr) : __('Missing data', WE_LS_SLUG);
+							echo (false === empty($bmr)) ? esc_html($bmr) : esc_html__('Missing data', WE_LS_SLUG);
 						} else {
 							echo sprintf('<a href="%s">Upgrade to Pro Plus</a>', ws_ls_upgrade_link());
 						}
@@ -432,19 +364,19 @@ function ws_ls_postbox_sidebar_user_information( $user_id ) {
 function ws_ls_postbox_sidebar_add_entry( $user_id ) {
 ?>
 	<div class="postbox ws-ls-user-data <?php ws_ls_postbox_classes( 'add-entry', 'ws-ls-user-data-two' ); ?>" id="add-entry">
-		<?php ws_ls_postbox_header( [ 'title' => __( 'Add Entry', WE_LS_SLUG ), 'postbox-id' => 'add-entry', 'postbox-col' => 'ws-ls-user-data-two' ] ); ?>
+		<?php ws_ls_postbox_header( [ 'title' => esc_html__( 'Add Entry', WE_LS_SLUG ), 'postbox-id' => 'add-entry', 'postbox-col' => 'ws-ls-user-data-two' ] ); ?>
 		<div class="inside">
 			<a class="button-primary" href="<?php echo ws_ls_get_link_to_edit_entry( $user_id ); ?>">
 				<i class="fa fa-calendar-plus-o"></i>
 				<?php
 
 					$text = apply_filters( 'wlt-filter-admin-user-sidebar-add-entry-text', 'Add Entry' );
-					echo __( $text, WE_LS_SLUG); 
+					echo esc_html__( $text, WE_LS_SLUG); 
 				?>
 			</a>
 			<a class="button-secondary" href="<?php echo ws_ls_get_link_to_edit_target( $user_id ); ?>">
 				<i class="fa fa-bullseye"></i>
-				<?php echo __('Edit Target', WE_LS_SLUG); ?>
+				<?php echo esc_html__('Edit Target', WE_LS_SLUG); ?>
 			</a>
 		</div>
 	</div>
@@ -459,18 +391,18 @@ function ws_ls_postbox_sidebar_export_data( $user_id ) {
 
 ?>
 	<div class="postbox ws-ls-user-data <?php ws_ls_postbox_classes( 'export-data', 'ws-ls-user-data-two' ); ?>" id="export-data">
-		<?php ws_ls_postbox_header( [ 'title' => __( 'Export data', WE_LS_SLUG ), 'postbox-id' => 'export-data', 'postbox-col' => 'ws-ls-user-data-two' ] ); ?>
+		<?php ws_ls_postbox_header( [ 'title' => esc_html__( 'Export data', WE_LS_SLUG ), 'postbox-id' => 'export-data', 'postbox-col' => 'ws-ls-user-data-two' ] ); ?>
 		<div class="inside">
             <?php if ( ! ws_ls_permission_check_export_delete() ) : ?>
-	        	<?php printf( '<p>%s</p>',  __('You do not have permission to do this.', WE_LS_SLUG ) ); ?>
+	        	<?php printf( '<p>%s</p>',  esc_html__('You do not have permission to do this.', WE_LS_SLUG ) ); ?>
             <?php else : ?>
                 <a class="button-secondary button-wt-to-excel" href="<?php echo ws_ls_export_link('new', [ 'user-id' => $user_id, 'format' => 'csv' ] ); ?>">
                     <i class="fa fa-file-excel-o"></i>
-                    <?php echo __('To CSV', WE_LS_SLUG); ?>
+                    <?php echo esc_html__('To CSV', WE_LS_SLUG); ?>
                 </a>
                 <a class="button-secondary button-wt-to-json" href="<?php echo ws_ls_export_link('new', [ 'user-id' => $user_id, 'format' => 'json' ] ); ?>">
                     <i class="fa fa-file-code-o"></i>
-                    <?php echo __('To JSON', WE_LS_SLUG); ?>
+                    <?php echo esc_html__('To JSON', WE_LS_SLUG); ?>
                 </a>
 		    <?php endif; ?>
 		</div>
@@ -487,11 +419,11 @@ function ws_ls_postbox_sidebar_settings( $user_id ) {
 	$settings_url = ws_ls_get_link_to_user_settings( $user_id );
 ?>
 	<div class="postbox ws-ls-user-data <?php ws_ls_postbox_classes( 'settings', 'ws-ls-user-data-two' ); ?>" id="settings">
-		<?php ws_ls_postbox_header( [ 'title' => __( 'Settings', WE_LS_SLUG ), 'postbox-id' => 'settings', 'postbox-col' => 'ws-ls-user-data-two' ] ); ?>
+		<?php ws_ls_postbox_header( [ 'title' => esc_html__( 'Settings', WE_LS_SLUG ), 'postbox-id' => 'settings', 'postbox-col' => 'ws-ls-user-data-two' ] ); ?>
 		<div class="inside">
 			<a class="button-secondary" href="<?php echo $settings_url; ?>">
 				<i class="fa fa-cog"></i>
-				<?php echo __('Preferences', WE_LS_SLUG); ?>
+				<?php echo esc_html__('Preferences', WE_LS_SLUG); ?>
 			</a>
 			<a href="<?php echo get_edit_user_link( $user_id ); ?>" class="button-secondary"><i class="fa fa-wordpress"></i> WordPress Record</a>
 		</div>
@@ -506,11 +438,11 @@ function ws_ls_postbox_sidebar_settings( $user_id ) {
 function ws_ls_postbox_sidebar_delete_cache( $user_id ) {
 ?>
 	<div class="postbox ws-ls-user-data <?php ws_ls_postbox_classes( 'delete-cache', 'ws-ls-user-data-two' ); ?>" id="delete-cache">
-		<?php ws_ls_postbox_header( [ 'title' => __( 'Delete cache', WE_LS_SLUG ), 'postbox-id' => 'delete-cache', 'postbox-col' => 'ws-ls-user-data-two' ] ); ?>
+		<?php ws_ls_postbox_header( [ 'title' => esc_html__( 'Delete cache', WE_LS_SLUG ), 'postbox-id' => 'delete-cache', 'postbox-col' => 'ws-ls-user-data-two' ] ); ?>
 		<div class="inside">
 			<a class="button-secondary" href="<?php echo esc_url( ws_ls_get_link_to_delete_user_cache( $user_id ) ); ?>">
 				<i class="fa fa-refresh"></i>
-				<?php echo __( 'Delete Cache for this user', WE_LS_SLUG ); ?>
+				<?php echo esc_html__( 'Delete Cache for this user', WE_LS_SLUG ); ?>
 			</a>
 		</div>
 	</div>
@@ -525,21 +457,21 @@ function ws_ls_postbox_sidebar_delete_cache( $user_id ) {
 function ws_ls_postbox_sidebar_delete_data( $user_id ) {
 ?>
 	<div class="postbox ws-ls-user-data <?php ws_ls_postbox_classes( 'delete-data', 'ws-ls-user-data-two' ); ?>" id="delete-data">
-		<?php ws_ls_postbox_header( [ 'title' => __( 'Delete data', WE_LS_SLUG ), 'postbox-id' => 'delete-data', 'postbox-col' => 'ws-ls-user-data-two' ] ); ?>
+		<?php ws_ls_postbox_header( [ 'title' => esc_html__( 'Delete data', WE_LS_SLUG ), 'postbox-id' => 'delete-data', 'postbox-col' => 'ws-ls-user-data-two' ] ); ?>
 		<div class="inside">
 			<?php if ( ! ws_ls_permission_check_export_delete() ) : ?>
-				<?php printf( '<p>%s</p>',  __('You do not have permission to do this.', WE_LS_SLUG ) ); ?>
+				<?php printf( '<p>%s</p>',  esc_html__('You do not have permission to do this.', WE_LS_SLUG ) ); ?>
 			<?php else : ?>
                 <a class="button-secondary delete-confirm" href="<?php echo esc_url( admin_url( 'admin.php?page=ws-ls-data-home&mode=user&removedata=y&user-id=' . $user_id ) ); ?>">
                     <i class="fa fa-trash-o"></i>
-					<?php echo __('Delete ALL data for this user', WE_LS_SLUG); ?>
+					<?php echo esc_html__('Delete ALL data for this user', WE_LS_SLUG); ?>
                 </a>
 			<?php endif; ?>
 		</div>
 	</div>
 <?php
-	ws_ls_create_dialog_jquery_code(__('Are you sure you?', WE_LS_SLUG),
-		__('Are you sure you wish to remove the data for this user?', WE_LS_SLUG) . '<br /><br />',
+	ws_ls_create_dialog_jquery_code(esc_html__('Are you sure you?', WE_LS_SLUG),
+		esc_html__('Are you sure you wish to remove the data for this user?', WE_LS_SLUG) . '<br /><br />',
 		'delete-confirm');
 }
 
@@ -616,11 +548,11 @@ function ws_ls_user_header($user_id, $previous_url = false ) {
         ws_ls_user_display_name( $user_id ),
         ws_ls_get_email_link( $user_id, true ),
         $previous_url,
-        __( 'Back', WE_LS_SLUG ),
+        esc_html__( 'Back', WE_LS_SLUG ),
         get_edit_user_link( $user_id ),
-        __('WordPress Record', WE_LS_SLUG ),
+        esc_html__('WordPress Record', WE_LS_SLUG ),
         ws_ls_get_link_to_user_profile( $user_id ),
-        __('Weight Tracker Record', WE_LS_SLUG ),
+        esc_html__('Weight Tracker Record', WE_LS_SLUG ),
         wp_kses_post( $additional_links )
     );
 }
@@ -631,7 +563,7 @@ function ws_ls_user_header($user_id, $previous_url = false ) {
  */
 function ws_ls_postbox_header( $args = [] ) {
 
-		$args = wp_parse_args( $args, [		'title'			=> __( 'Title', WE_LS_SLUG ),
+		$args = wp_parse_args( $args, [		'title'			=> esc_html__( 'Title', WE_LS_SLUG ),
 											'show-controls' => true,
 											'postbox-id'	=> NULL,
 											'postbox-col'	=> 'ws-ls-user-summary-one'

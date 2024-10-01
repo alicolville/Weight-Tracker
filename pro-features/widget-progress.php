@@ -8,9 +8,9 @@ class ws_ls_widget_progress_bar extends WP_Widget {
 
 	function __construct() {
 
-		parent::__construct( 'ws_ls_widget_progress_bar', __( 'Weight Tracker - Progress Bar', WE_LS_SLUG ),[ 'description' => __('A progress bar to indicate weight loss towards target.', WE_LS_SLUG ) ] );
+		parent::__construct( 'ws_ls_widget_progress_bar', esc_html__( 'Weight Tracker - Progress Bar', WE_LS_SLUG ),[ 'description' => esc_html__('A progress bar to indicate weight loss towards target.', WE_LS_SLUG ) ] );
 
-        $this->field_values = [ 'title'                 => __( 'Weight Progress', WE_LS_SLUG ),
+        $this->field_values = [ 'title'                 => esc_html__( 'Weight Progress', WE_LS_SLUG ),
 								'type'                  => 'line',
 								'stroke-width'          => 3,
 								'stroke-colour'         => '#FFEA82',
@@ -18,7 +18,7 @@ class ws_ls_widget_progress_bar extends WP_Widget {
 								'trail-colour'          => '#EEE',
 								'text-colour'           => '#000',
 								'animation-duration'    => 1400,
-								'percentage-text'       => __( 'towards your target of {t}.', WE_LS_SLUG )
+								'percentage-text'       => esc_html__( 'towards your target of {t}.', WE_LS_SLUG )
         ];
 	}
 

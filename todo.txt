@@ -1,0 +1,6 @@
+- Replace WE_LS_SLUG in translation
+- search for "echo ws_" for echo checks and escape if needed
+- search for "echo sprintf" for echo and escape if needed
+- move all marketing stuff into their own file (see page.license)
+- create a PHP function to regenerate all readme features from array
+- Re-instate: wl_ls_setup_wizard_meal_tracker_html

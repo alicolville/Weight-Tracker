@@ -7,7 +7,7 @@ defined('ABSPATH') or die('Jog on.');
  */
 function ws_ls_export_admin_menu() {
 
-	add_submenu_page( 'ws-ls-data-home', __( 'Export Data', WE_LS_SLUG ),  __( 'Export Data', WE_LS_SLUG ), ws_ls_permission_export_delete_role(), 'ws-ls-export-data', 'ws_ls_export_admin_page', 5 );
+	add_submenu_page( 'ws-ls-data-home', esc_html__( 'Export Data', WE_LS_SLUG ),  esc_html__( 'Export Data', WE_LS_SLUG ), ws_ls_permission_export_delete_role(), 'ws-ls-export-data', 'ws_ls_export_admin_page', 5 );
 }
 add_action( 'admin_menu', 'ws_ls_export_admin_menu' );
 
@@ -26,13 +26,13 @@ function ws_ls_export_ajax_process() {
 	$id     = ws_ls_post_value( 'id' );
 
 	if ( true === empty( $id ) ) {
-		ws_ls_export_ajax_error( $return, __( 'Export ID could not be determined.' , WE_LS_SLUG ) );
+		ws_ls_export_ajax_error( $return, esc_html__( 'Export ID could not be determined.' , WE_LS_SLUG ) );
 	}
 
 	$export = ws_ls_db_export_criteria_get( $id );
 
 	if ( true === empty( $export ) ) {
-		ws_ls_export_ajax_error( $return, __( 'Export criteria could not be loaded.' , WE_LS_SLUG ) );
+		ws_ls_export_ajax_error( $return, esc_html__( 'Export criteria could not be loaded.' , WE_LS_SLUG ) );
 	}
 
 	$current_step = (int) $export[ 'step' ];
@@ -43,7 +43,7 @@ function ws_ls_export_ajax_process() {
 	if ( 0 === $current_step ) {
 
 		ws_ls_db_export_identify_weight_entries( $id );
-		$return[ 'message' ]    = __( 'Initialising: Rows have been identified for the export.', WE_LS_SLUG );
+		$return[ 'message' ]    = esc_html__( 'Initialising: Rows have been identified for the export.', WE_LS_SLUG );
 		$return[ 'percentage' ] = 40;
 		ws_ls_db_export_criteria_step( $id, 1 );
 
@@ -55,16 +55,16 @@ function ws_ls_export_ajax_process() {
 		$physical_path = ws_ls_export_file_physical_folder( $id );
 
 		if ( false === wp_mkdir_p( $physical_path ) ) {
-			ws_ls_export_ajax_error( $return, __( 'There was an issue creating the export folder: ' , WE_LS_SLUG ) . $physical_path );
+			ws_ls_export_ajax_error( $return, esc_html__( 'There was an issue creating the export folder: ' , WE_LS_SLUG ) . $physical_path );
 		}
 
 		$physical_path_to_file = ws_ls_export_file_physical_path( $id );
 
 		if ( false === touch( $physical_path_to_file ) ) {
-			ws_ls_export_ajax_error( $return, __( 'There was an issue creating the export file: ' , WE_LS_SLUG ) . $physical_path_to_file );
+			ws_ls_export_ajax_error( $return, esc_html__( 'There was an issue creating the export file: ' , WE_LS_SLUG ) . $physical_path_to_file );
 		}
 
-		$return[ 'message' ]    = __( 'Initialising: created empty file on disk.', WE_LS_SLUG );
+		$return[ 'message' ]    = esc_html__( 'Initialising: created empty file on disk.', WE_LS_SLUG );
 		$return[ 'percentage' ] = 70;
 
 		ws_ls_db_export_criteria_step( $id, 2 );
@@ -78,7 +78,7 @@ function ws_ls_export_ajax_process() {
 
 		ws_ls_db_export_criteria_count( $id, $number_of_records );
 
-		$return['message']    = sprintf( 'Initialising: %d %s', $number_of_records, __( 'records have been identified for this report.', WE_LS_SLUG ) );
+		$return['message']    = sprintf( 'Initialising: %d %s', $number_of_records, esc_html__( 'records have been identified for this report.', WE_LS_SLUG ) );
 		$return['percentage'] = 100;
 
 		ws_ls_db_export_criteria_step( $id, 20 );
@@ -94,7 +94,7 @@ function ws_ls_export_ajax_process() {
 		// There are no more rows to process
 		if ( true === empty( $rows_to_process ) ) {
 
-			$return['message']    = __( 'Preparing data: Complete.', WE_LS_SLUG );
+			$return['message']    = esc_html__( 'Preparing data: Complete.', WE_LS_SLUG );
 			$return['percentage'] = 100;
 
 			ws_ls_db_export_criteria_step( $id, 40 );
@@ -104,7 +104,7 @@ function ws_ls_export_ajax_process() {
 			foreach ( $rows_to_process as $row ) {
 
 				if ( false === ws_ls_export_update_export_row( $export, $row ) ) {
-					ws_ls_export_ajax_error( $return, __( 'There was an error processing weight entry', WE_LS_SLUG ) . ': ' . $row['entry_id'] );
+					ws_ls_export_ajax_error( $return, esc_html__( 'There was an error processing weight entry', WE_LS_SLUG ) . ': ' . $row['entry_id'] );
 				}
 			}
 
@@ -140,7 +140,7 @@ function ws_ls_export_ajax_process() {
 		}
 
 		ws_ls_db_export_criteria_step( $id, 42 );
-		$return['message']    = __( 'Saving to disk: Column headers', WE_LS_SLUG );
+		$return['message']    = esc_html__( 'Saving to disk: Column headers', WE_LS_SLUG );
 		$return['percentage'] = 5;
 
 		// ------------------------------------------------------------------------------------------------------
@@ -152,7 +152,7 @@ function ws_ls_export_ajax_process() {
 
 		if ( true === empty( $rows_to_write ) ) {
 
-			$return['message']    = __( 'Saving to disk: Complete.', WE_LS_SLUG );
+			$return['message']    = esc_html__( 'Saving to disk: Complete.', WE_LS_SLUG );
 			$return['percentage'] = 100;
 
 			ws_ls_db_export_criteria_step( $id, 47 );
@@ -218,7 +218,7 @@ function ws_ls_export_ajax_process() {
 
 		ws_ls_db_export_criteria_step( $id, 100 );
 
-		$return[ 'message' ]        = sprintf( '<a href="%s">%s</a>', ws_ls_export_file_url( $id ), __( 'Download', WE_LS_SLUG ) );
+		$return[ 'message' ]        = sprintf( '<a href="%s">%s</a>', ws_ls_export_file_url( $id ), esc_html__( 'Download', WE_LS_SLUG ) );
 		$return[ 'percentage' ]     = 100;
 		$return[ 'continue' ]       = false;
 	}

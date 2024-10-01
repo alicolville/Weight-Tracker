@@ -95,19 +95,19 @@ function ws_ls_awards_add_update_page() {
 
                         ?>
                         <div class="postbox">
-                            <h3 class="hndle"><span><?php echo __('Add / Edit an Award', WE_LS_SLUG); ?> </span></h3>
+                            <h3 class="hndle"><span><?php echo esc_html__('Add / Edit an Award', WE_LS_SLUG); ?> </span></h3>
                             <div style="padding: 0px 15px 0px 15px">
                                 <form action="<?php echo esc_url( admin_url('admin.php?page=ws-ls-awards&mode=add-edit' ) ); ?>" novalidate enctype="multipart/form-data" method="post" id="ws-ls-awards-form" class="ws-ls-meta-fields-form">
                                     <?php if ( $validation_fail ): ?>
-                                        <p class="ws-ls-validation-error">&middot; <?php echo __('Please complete all mandatory fields.', WE_LS_SLUG); ?></p>
+                                        <p class="ws-ls-validation-error">&middot; <?php echo esc_html__('Please complete all mandatory fields.', WE_LS_SLUG); ?></p>
                                     <?php endif; ?>
                                     <?php if ( false === empty( $id ) ) : ?>
-                                        <input type="hidden" name="id" value="<?php echo $id; ?>"/>
+                                        <input type="hidden" name="id" value="<?php ws_ls_echo( $id ); ?>"/>
                                     <?php endif; ?>
                                     <div class="ws-ls-table">
                                         <div class="ws-ls-row">
                                             <div class="ws-ls-cell">
-                                                <label for="title"><?php echo __('Title', WE_LS_SLUG); ?></label>
+                                                <label for="title"><?php echo esc_html__('Title', WE_LS_SLUG); ?></label>
                                             </div>
                                             <div class="ws-ls-cell">
                                                 <input type="text" name="title" id="title"  size="40" maxlength="200" class="<?php if ( true === $validation_fail && true === empty( $award['title'] ) ) { echo 'ws-ls-mandatory-field'; } ?>" value="<?php echo ( false === empty( $award['title'] ) ) ? esc_attr( $award['title'] ) : ''; ?>"/><span class="ws-ls-mandatory">*</span>
@@ -116,7 +116,7 @@ function ws_ls_awards_add_update_page() {
                                         </div>
                                         <div class="ws-ls-row">
                                             <div class="ws-ls-cell ws-ls-label-col">
-                                                <label for="category"><?php echo __('Award Type', WE_LS_SLUG); ?></label>
+                                                <label for="category"><?php echo esc_html__('Award Type', WE_LS_SLUG); ?></label>
                                             </div>
                                             <div class="ws-ls-cell">
                                                     <?php
@@ -129,7 +129,7 @@ function ws_ls_awards_add_update_page() {
                                                             }
                                                         ?>
                                                     </select>
-                                                    <p class="ws-ls-info"><?php echo __('Awards are decided by comparing the difference between the user\'s latest weight and their starting weight.', WE_LS_SLUG); ?></p>
+                                                    <p class="ws-ls-info"><?php echo esc_html__('Awards are decided by comparing the difference between the user\'s latest weight and their starting weight.', WE_LS_SLUG); ?></p>
                                                     <?php if ( false === empty( $award['id'] ) ) : ?>
                                                         <input type="hidden" name="category" value="<?php echo $checked; ?>" />
                                                     <?php endif; ?>
@@ -137,20 +137,20 @@ function ws_ls_awards_add_update_page() {
                                         </div>
                                         <div class="ws-ls-row hide-bmi-equals hide-weight-target">
                                             <div class="ws-ls-cell">
-                                                <label for="gain_loss"><?php echo __('Gain or Loss', WE_LS_SLUG); ?></label>
+                                                <label for="gain_loss"><?php echo esc_html__('Gain or Loss', WE_LS_SLUG); ?></label>
                                             </div>
                                             <?php $checked = ( false === empty( $award['gain_loss'] ) && 'gain' === $award['gain_loss'] ) ? 'gain' : 'loss'; ?>
                                             <div class="ws-ls-cell">
                                                 <select name="gain_loss" id="gain_loss">
-                                                    <option value="gain" <?php selected( $checked, 'gain' ); ?>><?php echo __('Increase in value', WE_LS_SLUG); ?></option>
-                                                    <option value="loss" <?php selected( $checked, 'loss' ); ?>><?php echo __('Decrease in value', WE_LS_SLUG); ?></option>
+                                                    <option value="gain" <?php selected( $checked, 'gain' ); ?>><?php echo esc_html__('Increase in value', WE_LS_SLUG); ?></option>
+                                                    <option value="loss" <?php selected( $checked, 'loss' ); ?>><?php echo esc_html__('Decrease in value', WE_LS_SLUG); ?></option>
                                                 </select>
-                                                <p class="ws-ls-info"><?php echo __('For example, if you wish to award someone for losing 10Kg, you would select "Decrease in value".', WE_LS_SLUG); ?></p>
+                                                <p class="ws-ls-info"><?php echo esc_html__('For example, if you wish to award someone for losing 10Kg, you would select "Decrease in value".', WE_LS_SLUG); ?></p>
                                             </div>
                                         </div>
                                         <div class="ws-ls-row" id="ws-ls-awards-additional-weight">
                                             <div class="ws-ls-cell">
-                                                <label><?php echo __('Weight difference', WE_LS_SLUG); ?></label>
+                                                <label><?php echo esc_html__('Weight difference', WE_LS_SLUG); ?></label>
                                             </div>
                                             <div class="ws-ls-cell">
                                                 <?php
@@ -171,9 +171,9 @@ function ws_ls_awards_add_update_page() {
                                                                $weight['pounds'] = $conversion['pounds'];
                                                            }
 
-                                                           printf( '<input novalidate type="number" step="any" min="0" name="stones" id="stones" value="%s" placeholder="%s" size="11" class="%s">', esc_attr( $weight['stones'] ), __('Stones', WE_LS_SLUG),
+                                                           printf( '<input novalidate type="number" step="any" min="0" name="stones" id="stones" value="%s" placeholder="%s" size="11" class="%s">', esc_attr( $weight['stones'] ), esc_html__('Stones', WE_LS_SLUG),
                                                                ( true === $validation_fail && in_array( 'stones', $failed_validation ) ) ? 'ws-ls-mandatory-field' : '');
-                                                           printf( '<input novalidate type="number" step="any" min="0" max="13.99" name="pounds" id="pounds" value="%s" placeholder="%s" size="11"  class="%s">',  esc_attr( $weight['pounds'] ), __('Pounds', WE_LS_SLUG),
+                                                           printf( '<input novalidate type="number" step="any" min="0" max="13.99" name="pounds" id="pounds" value="%s" placeholder="%s" size="11"  class="%s">',  esc_attr( $weight['pounds'] ), esc_html__('Pounds', WE_LS_SLUG),
                                                                ( true === $validation_fail && in_array( 'pounds', $failed_validation ) ) ? 'ws-ls-mandatory-field' : '' );
                                                        }
                                                        else {
@@ -184,21 +184,21 @@ function ws_ls_awards_add_update_page() {
                                                                $weight['pounds'] = ws_ls_convert_kg_to_lb( $award['value'] );
                                                            }
 
-                                                           printf( '<input novalidate type="number" step="any" min="1" name="pounds" id="pounds" value="%s" placeholder="%s" size="11" class="%s" >', esc_attr( $weight['pounds'] ), __('Pounds', WE_LS_SLUG),
+                                                           printf( '<input novalidate type="number" step="any" min="1" name="pounds" id="pounds" value="%s" placeholder="%s" size="11" class="%s" >', esc_attr( $weight['pounds'] ), esc_html__('Pounds', WE_LS_SLUG),
                                                                ( true === $validation_fail && in_array( 'pounds', $failed_validation ) ) ? 'ws-ls-mandatory-field' : '');
                                                        }
 
                                                     } else {
-                                                        printf( '<input novalidate type="number" step="any" min="1" name="value" id="value" value="%s" placeholder="%s" size="11" class="%s"> %s', esc_attr( $award['value'] ), __('Weight', WE_LS_SLUG) . ' (' . __('kg', WE_LS_SLUG) . ')',
-                                                           ( true === $validation_fail && in_array( 'value', $failed_validation ) ) ? 'ws-ls-mandatory-field' : '' , __('kg', WE_LS_SLUG)  );
+                                                        printf( '<input novalidate type="number" step="any" min="1" name="value" id="value" value="%s" placeholder="%s" size="11" class="%s"> %s', esc_attr( $award['value'] ), esc_html__('Weight', WE_LS_SLUG) . ' (' . esc_html__('kg', WE_LS_SLUG) . ')',
+                                                           ( true === $validation_fail && in_array( 'value', $failed_validation ) ) ? 'ws-ls-mandatory-field' : '' , esc_html__('kg', WE_LS_SLUG)  );
                                                     }
                                                 ?>
-                                                <p class="ws-ls-info"><?php echo __('The difference in weight from the starting weight.', WE_LS_SLUG); ?></p>
+                                                <p class="ws-ls-info"><?php echo esc_html__('The difference in weight from the starting weight.', WE_LS_SLUG); ?></p>
                                             </div>
                                         </div>
                                         <div class="ws-ls-row" id="ws-ls-awards-additional-bmi-equals">
                                             <div class="ws-ls-cell ws-ls-label-col">
-                                                <label for="bmi_equals"><?php echo __('BMI Equals', WE_LS_SLUG); ?></label>
+                                                <label for="bmi_equals"><?php echo esc_html__('BMI Equals', WE_LS_SLUG); ?></label>
                                             </div>
                                             <div class="ws-ls-cell">
 			                                    <?php
@@ -216,106 +216,106 @@ function ws_ls_awards_add_update_page() {
                                         </div>
                                         <div class="ws-ls-row" id="ws-ls-awards-additional-weight-percentage">
                                             <div class="ws-ls-cell">
-                                                <label for="weight_percentage"><?php echo __('Percentage from starting weight', WE_LS_SLUG); ?></label>
+                                                <label for="weight_percentage"><?php echo esc_html__('Percentage from starting weight', WE_LS_SLUG); ?></label>
                                             </div>
                                             <?php
                                                 $value = ( true === $validation_fail && false === empty( $award['weight_percentage'] ) ) ? $award['weight_percentage'] : $award['value'];
                                             ?>
                                             <div class="ws-ls-cell">
                                                 <input type="number" min="0" novalidate max="1000" id="weight_percentage" name="weight_percentage" class="<?php if ( true === $validation_fail && in_array( 'weight_percentage', $failed_validation ) ) { echo 'ws-ls-mandatory-field'; } ?>" value="<?php echo esc_attr( $value ) ?>" />
-                                                <p class="ws-ls-info"><?php echo __('Specify the percentage difference from the starting weight.', WE_LS_SLUG); ?></p>
+                                                <p class="ws-ls-info"><?php echo esc_html__('Specify the percentage difference from the starting weight.', WE_LS_SLUG); ?></p>
                                             </div>
                                         </div>
                                         <div class="ws-ls-row">
                                             <div class="ws-ls-cell ws-ls-label-top">
-                                                <label for="award-badge-yeken"><?php echo __('Award Badge', WE_LS_SLUG); ?></label>
+                                                <label for="award-badge-yeken"><?php echo esc_html__('Award Badge', WE_LS_SLUG); ?></label>
                                             </div>
                                             <div class="ws-ls-cell">
                                                 <?php
                                                     $value = ( false === empty( $award['badge'] ) ) ? $award['badge'] : NULL;
 
-                                                    echo ws_ls_meta_fields_form_field_photo([ 'field_name' => '', 'mandatory' => 1], $value, 'award-badge-yeken' );
+                                                    echo ws_ls_meta_fields_form_field_photo([ 'field_name' => '', 'mandatory' => 1 ], $value, 'award-badge-yeken' );
 
                                                 ?>
                                             </div>
                                         </div>
                                         <div class="ws-ls-row">
                                             <div class="ws-ls-cell ws-ls-label-top">
-                                                <label for="max_awards"><?php echo __('Custom Message', WE_LS_SLUG); ?></label>
+                                                <label for="max_awards"><?php echo esc_html__('Custom Message', WE_LS_SLUG); ?></label>
                                             </div>
                                           <div class="ws-ls-cell">
                                                 <input type="text" name="custom_message" id="custom_message"  size="70" maxlength="190" value="<?php echo ( false === empty( $award['custom_message'] ) ) ? esc_attr( $award['custom_message'] ) : ''; ?>"/>
-                                                <p class="ws-ls-info"><?php echo __('Add a custom message to be inserted into the email. Replaces the {custom_message} within the email template.', WE_LS_SLUG); ?></p>
+                                                <p class="ws-ls-info"><?php echo esc_html__('Add a custom message to be inserted into the email. Replaces the {custom_message} within the email template.', WE_LS_SLUG); ?></p>
                                             </div>
                                         </div>
                                         <div class="ws-ls-row">
                                             <div class="ws-ls-cell ws-ls-label-top">
-                                                <label for="max_awards"><?php echo __('URL', WE_LS_SLUG); ?></label>
+                                                <label for="max_awards"><?php echo esc_html__('URL', WE_LS_SLUG); ?></label>
                                             </div>
                                             <div class="ws-ls-cell">
                                                 <input type="text" name="url" id="url"  size="70" maxlength="200" value="<?php echo ( false === empty( $award['url'] ) ) ? esc_url( $award['url'] ) : ''; ?>"/>
-                                                <p class="ws-ls-info"><?php echo __('If specified, badges and award title will click through to the given URL.', WE_LS_SLUG); ?></p>
+                                                <p class="ws-ls-info"><?php echo esc_html__('If specified, badges and award title will click through to the given URL.', WE_LS_SLUG); ?></p>
                                             </div>
                                         </div>
                                         <div class="ws-ls-row">
                                             <div class="ws-ls-cell ws-ls-label-col">
-                                                <label for="apply_to_add"><?php echo __('Apply to new entries?', WE_LS_SLUG); ?></label>
+                                                <label for="apply_to_add"><?php echo esc_html__('Apply to new entries?', WE_LS_SLUG); ?></label>
                                             </div>
                                             <?php $checked = ( false === empty( $award['apply_to_add'] ) && 1 === (int) $award['apply_to_add'] ) ? 1 : 0; ?>
                                             <div class="ws-ls-cell">
                                                 <select name="apply_to_add" id="apply_to_add">
-                                                    <option value="1" <?php selected( $checked, 1 ); ?>><?php echo __('Yes', WE_LS_SLUG); ?></option>
-                                                    <option value="0" <?php selected( $checked, 0 ); ?>><?php echo __('No', WE_LS_SLUG); ?></option>
+                                                    <option value="1" <?php selected( $checked, 1 ); ?>><?php echo esc_html__('Yes', WE_LS_SLUG); ?></option>
+                                                    <option value="0" <?php selected( $checked, 0 ); ?>><?php echo esc_html__('No', WE_LS_SLUG); ?></option>
                                                 </select>
-                                                <p class="ws-ls-info"><?php echo __('Can the award be given when a user adds a new weight entry?.', WE_LS_SLUG); ?></p>
+                                                <p class="ws-ls-info"><?php echo esc_html__('Can the award be given when a user adds a new weight entry?.', WE_LS_SLUG); ?></p>
                                             </div>
                                         </div>
                                         <div class="ws-ls-row">
                                             <div class="ws-ls-cell ws-ls-label-col">
-                                                <label for="apply_to_update"><?php echo __('Apply to updated entries?', WE_LS_SLUG); ?></label>
+                                                <label for="apply_to_update"><?php echo esc_html__('Apply to updated entries?', WE_LS_SLUG); ?></label>
                                             </div>
                                             <?php $checked = ( false === empty( $award['apply_to_update'] ) && 1 === (int) $award['apply_to_update'] ) ? 1 : 0; ?>
                                             <div class="ws-ls-cell">
                                                 <select name="apply_to_update" id="apply_to_update">
-                                                    <option value="1" <?php selected( $checked, 1 ); ?>><?php echo __('Yes', WE_LS_SLUG); ?></option>
-                                                    <option value="0" <?php selected( $checked, 0 ); ?>><?php echo __('No', WE_LS_SLUG); ?></option>
+                                                    <option value="1" <?php selected( $checked, 1 ); ?>><?php echo esc_html__('Yes', WE_LS_SLUG); ?></option>
+                                                    <option value="0" <?php selected( $checked, 0 ); ?>><?php echo esc_html__('No', WE_LS_SLUG); ?></option>
                                                 </select>
-                                                <p class="ws-ls-info"><?php echo __('Can the award be given when a user updates an existing weight entry?.', WE_LS_SLUG); ?></p>
+                                                <p class="ws-ls-info"><?php echo esc_html__('Can the award be given when a user updates an existing weight entry?.', WE_LS_SLUG); ?></p>
                                             </div>
                                         </div>
                                         <div class="ws-ls-row">
                                             <div class="ws-ls-cell ws-ls-label-col">
-                                                <label for="enabled"><?php echo __('Send Email', WE_LS_SLUG); ?></label>
+                                                <label for="enabled"><?php echo esc_html__('Send Email', WE_LS_SLUG); ?></label>
                                             </div>
                                             <?php $checked = ( false === empty( $award['send_email'] ) && 2 === (int) $award['send_email'] ) ? 2 : 0; ?>
                                             <div class="ws-ls-cell">
                                                 <select name="send_email" id="send_email">
-                                                    <option value="2" <?php selected( $checked, 2 ); ?>><?php echo __('Yes', WE_LS_SLUG); ?></option>
-                                                    <option value="1" <?php selected( $checked, 1 ); ?>><?php echo __('No', WE_LS_SLUG); ?></option>
+                                                    <option value="2" <?php selected( $checked, 2 ); ?>><?php echo esc_html__('Yes', WE_LS_SLUG); ?></option>
+                                                    <option value="1" <?php selected( $checked, 1 ); ?>><?php echo esc_html__('No', WE_LS_SLUG); ?></option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="ws-ls-row">
                                             <div class="ws-ls-cell ws-ls-label-col">
-                                                <label for="enabled"><?php echo __('Enabled', WE_LS_SLUG); ?></label>
+                                                <label for="enabled"><?php echo esc_html__('Enabled', WE_LS_SLUG); ?></label>
                                             </div>
                                             <?php $checked = ( false === empty( $award['enabled'] ) && 2 === (int) $award['enabled'] ) ? 2 : 0; ?>
                                             <div class="ws-ls-cell">
                                                 <select name="enabled" id="enabled">
-                                                    <option value="1" <?php selected( $checked, 1 ); ?>><?php echo __('No', WE_LS_SLUG); ?></option>
-                                                    <option value="2" <?php selected( $checked, 2 ); ?>><?php echo __('Yes', WE_LS_SLUG); ?></option>
+                                                    <option value="1" <?php selected( $checked, 1 ); ?>><?php echo esc_html__('No', WE_LS_SLUG); ?></option>
+                                                    <option value="2" <?php selected( $checked, 2 ); ?>><?php echo esc_html__('Yes', WE_LS_SLUG); ?></option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="ws-ls-row">
                                             <div class="ws-ls-cell"></div>
                                             <div class="ws-ls-cell">
-                                                <a class="comment-submit button" href="<?php echo ws_ls_awards_base_url(); ?>"><?php echo __('Cancel', WE_LS_SLUG); ?></a>
+                                                <a class="comment-submit button" href="<?php echo esc_url( ws_ls_awards_base_url() ); ?>"><?php echo esc_html__('Cancel', WE_LS_SLUG); ?></a>
 
                                                 <?php if ( true === ws_ls_awards_is_enabled() ): ?>
-                                                    <input name="submit_button" type="submit" value="<?php echo __('Save', WE_LS_SLUG); ?>" class="comment-submit button button-primary">
+                                                    <input name="submit_button" type="submit" value="<?php echo esc_html__('Save', WE_LS_SLUG); ?>" class="comment-submit button button-primary">
                                                 <?php else: ?>
-                                                    <a class="comment-submit button button-primary" href="<?php echo esc_url( admin_url('admin.php?page=ws-ls-license') ); ?>"><?php echo __('Save', WE_LS_SLUG); ?></a>
+                                                    <a class="comment-submit button button-primary" href="<?php echo esc_url( admin_url('admin.php?page=ws-ls-license') ); ?>"><?php echo esc_html__('Save', WE_LS_SLUG); ?></a>
                                                 <?php endif; ?>
                                             </div>
                                         </div>

@@ -33,7 +33,7 @@
                                                     <p>All the best,</p>
                                                     <p><a href="{url}" target="_blank" rel="noopener">{name}</a></p>
                                                 </center>',
-	                                            __( 'Birthday Email' , WE_LS_SLUG )
+	                                            esc_html__( 'Birthday Email' , WE_LS_SLUG )
                 );
             }
 
@@ -101,19 +101,26 @@
 
 	    $birthday_boys_or_girls = ws_ls_birthdays_identify();
 
-	    $i = 0;
+	    $sent       = 0;
+        $opted_out  = 0;
 
 	    if ( false === empty( $birthday_boys_or_girls ) ) {
 
 	    	foreach ( $birthday_boys_or_girls as $celebrate ) {
 
+                if ( ! ws_ls_emailer_user_has_optedin( 'birthdays', $celebrate[ 'user_id' ] ) ) {
+                    $opted_out++;
+                    continue;
+                }
+
 	    		if ( true === ws_ls_birthdays_send_email( $celebrate[ 'user_id' ] ) ) {
-				    $i++;
+				    $sent++;
 			    }
 		    }
 	    }
 
-	    ws_ls_log_add( 'birthdays', sprintf( 'Birthday emails sent today: %d', $i ) );
+	    ws_ls_log_add( 'birthdays', sprintf( 'Birthday emails sent today: %d', $sent ) );
+        ws_ls_log_add( 'birthdays', sprintf( 'Number of users opted out of today\'s birthday email: %d', $opted_out ) );
     }
 	add_action('weight_loss_tracker_daily', 'ws_ls_birthdays_send_daily_emails');
 

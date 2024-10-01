@@ -1,2 +1,11 @@
+/.git
+/.github
+.gitignore
+.distignore
 /docs
 /playwright
+release.json
+todo.txt
+Weight-Tracker.code-workspace
+package-lock.json
+package.json

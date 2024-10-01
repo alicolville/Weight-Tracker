@@ -51,7 +51,7 @@ function ws_ls_form_weight( $arguments = [] ) {
 
 		// Did we manage to fetch an entry?
 		if ( true === empty( $arguments[ 'entry' ] ) ) {
-			return ws_ls_blockquote_error( __( 'The selected entry no longer exists.', WE_LS_SLUG ) );
+			return ws_ls_blockquote_error( esc_html__( 'The selected entry no longer exists.', WE_LS_SLUG ) );
 		}
 
 		$arguments[ 'hide-button-cancel' ] = false;
@@ -109,10 +109,10 @@ function ws_ls_form_weight( $arguments = [] ) {
 			$url .= '#' . $arguments[ 'form-key' ];
 
 			$html .= sprintf( '<p class="ws-ls-previous-entry-noticews-ls-previous-entry-notice"><strong>%1$s:</strong> %2$s <a href="%3$s">%4$s</a></p>',
-								__( 'Note', WE_LS_SLUG ),
-								__( 'Data has previously been entered for this date and will be replaced if this form is submitted.', WE_LS_SLUG ),
+								esc_html__( 'Note', WE_LS_SLUG ),
+								esc_html__( 'Data has previously been entered for this date and will be replaced if this form is submitted.', WE_LS_SLUG ),
 								esc_url( $url ),
-								__( 'Load the existing data.', WE_LS_SLUG )
+								esc_html__( 'Load the existing data.', WE_LS_SLUG )
 			);
 
 		}
@@ -122,7 +122,7 @@ function ws_ls_form_weight( $arguments = [] ) {
 							<div class="ws-ls-error-summary">
 						        <p>%1$s</p>
                                 <ul></ul>
-                            </div>', __( 'Please correct the following:', WE_LS_SLUG ) );
+                            </div>', esc_html__( 'Please correct the following:', WE_LS_SLUG ) );
 
 	// Weight / Custom fields form? Display date field?
 	if ( true === in_array( $arguments[ 'type' ], [ 'custom-fields', 'weight' ] ) ) {
@@ -139,7 +139,7 @@ function ws_ls_form_weight( $arguments = [] ) {
 			$html .= ws_ls_form_field_date( [   'name'          => 'we-ls-date',
 			                                    'value'         => $date,
 			                                    'placeholder'   => $date,
-			                                    'title'         => __( 'Date', WE_LS_SLUG ),
+			                                    'title'         => esc_html__( 'Date', WE_LS_SLUG ),
 												'form-id'       => $arguments[ 'form-id' ],
 												'uikit'         => $arguments[ 'uikit' ],
 												'css-class'     => 'we-ls-datepicker' . ( true === $arguments[ 'uikit' ] ? ' ykuk-width-1-1' : '' )
@@ -155,7 +155,7 @@ function ws_ls_form_weight( $arguments = [] ) {
 		if ( false === empty( $target_weight[ 'display' ] ) ) {
 
 			$html .= sprintf( '<p class="ws-ls-target">%1$s <strong>%2$s</strong>.</p>',
-					( false === is_admin() ) ? __( 'Your target weight is', WE_LS_SLUG ) : __( 'The user\'s target weight is currently', WE_LS_SLUG ),
+					( false === is_admin() ) ? esc_html__( 'Your target weight is', WE_LS_SLUG ) : esc_html__( 'The user\'s target weight is currently', WE_LS_SLUG ),
 					esc_html( $target_weight[ 'display' ] )
 			);
 
@@ -190,7 +190,7 @@ function ws_ls_form_weight( $arguments = [] ) {
 		// Stones field?
 		if ( 'stones_pounds' ===  $arguments[ 'data-unit' ] ) {
 			$html .= ws_ls_form_field_number( [     'name'          => 'ws-ls-weight-stones',
-			                                        'placeholder'   => false === empty( $placeholders[ 'stones' ] ) ? $placeholders[ 'stones' ] . __( 'st', WE_LS_SLUG ) : __( 'st', WE_LS_SLUG ),
+			                                        'placeholder'   => false === empty( $placeholders[ 'stones' ] ) ? $placeholders[ 'stones' ] . esc_html__( 'st', WE_LS_SLUG ) : esc_html__( 'st', WE_LS_SLUG ),
 			                                        'css-class'     => 'ykuk-input ykuk-width-1-2 ykuk-margin',
 			                                        'uikit'         => $arguments[ 'uikit' ],
 			                                        'value'         => ( false === empty( $arguments[ 'entry' ][ 'stones' ] ) ) ? $arguments[ 'entry' ][ 'stones' ] : '' ] );
@@ -199,7 +199,7 @@ function ws_ls_form_weight( $arguments = [] ) {
 		// Pounds?
 		if ( true === in_array( $arguments[ 'data-unit' ], [ 'stones_pounds', 'pounds_only' ] ) ) {
 			$html .= ws_ls_form_field_number( [    'name'          => 'ws-ls-weight-pounds',
-			                                       'placeholder'   =>( false === empty( $placeholders[ 'pounds' ] ) ) ? $placeholders[ 'pounds' ] . __( 'lb', WE_LS_SLUG ) : __( 'lb', WE_LS_SLUG ),
+			                                       'placeholder'   =>( false === empty( $placeholders[ 'pounds' ] ) ) ? $placeholders[ 'pounds' ] . esc_html__( 'lb', WE_LS_SLUG ) : esc_html__( 'lb', WE_LS_SLUG ),
 			                                       'max'           => ( 'stones_pounds' ===  $arguments[ 'data-unit' ] ) ? '13.99' : '5000',
 			                                       'css-class'     => 'ykuk-input ykuk-width-1-2 ykuk-margin',
 			                                       'uikit'         => $arguments[ 'uikit' ],
@@ -209,7 +209,7 @@ function ws_ls_form_weight( $arguments = [] ) {
 		// Kg
 		if ( 'kg' ===  $arguments[ 'data-unit' ] ) {
 			$html .= ws_ls_form_field_number( [     'name'          => 'ws-ls-weight-kg',
-			                                        'placeholder'   => $placeholders[ 'kg' ] . __( 'kg', WE_LS_SLUG ),
+			                                        'placeholder'   => $placeholders[ 'kg' ] . esc_html__( 'kg', WE_LS_SLUG ),
 			                                        'value'         => ( false === empty( $arguments[ 'entry' ][ 'kg' ] ) ) ? $arguments[ 'entry' ][ 'kg' ] : '',
 													'testid'		=> ( 'target' == $arguments[ 'type' ] ) ? 'ws-form-target' : 'ws-form-weight'
 												] );
@@ -220,7 +220,7 @@ function ws_ls_form_weight( $arguments = [] ) {
 	        false === $arguments[ 'hide-notes' ] ) {
 
 		$html .= ws_ls_form_field_textarea( [   'name'          => 'we-ls-notes',
-		                                        'placeholder'   => __( 'Notes', WE_LS_SLUG ),
+		                                        'placeholder'   => esc_html__( 'Notes', WE_LS_SLUG ),
 		                                        'value'         => ( false === empty( $arguments[ 'entry' ][ 'notes' ] ) ) ? $arguments[ 'entry' ][ 'notes' ] : '' ] );
 	}
 
@@ -234,7 +234,7 @@ function ws_ls_form_weight( $arguments = [] ) {
 							<div class="ws-ls-form-processing-throbber ws-ls-loading ws-ls-hide"></div>
 							<button name="submit_button" type="submit" tabindex="%1$d" class="button ws-ls-remove-on-submit ykuk-button ykuk-button-default" for="%3$s" >%2$s</button>',
 							ws_ls_form_tab_index_next(),
-							( 'target' === $arguments[ 'type' ] ) ?  __( 'Set Target', WE_LS_SLUG ) :  __( 'Save Entry', WE_LS_SLUG ),
+							( 'target' === $arguments[ 'type' ] ) ?  esc_html__( 'Set Target', WE_LS_SLUG ) :  esc_html__( 'Save Entry', WE_LS_SLUG ),
 							$arguments[ 'form-id' ]
 	);
 
@@ -245,7 +245,7 @@ function ws_ls_form_weight( $arguments = [] ) {
 		$html .= sprintf('&nbsp;<button type="button" tabindex="%1$d" class="ws-ls-cancel-form button ws-ls-remove-on-submit ykuk-button ykuk-button-default" data-form-id="%2$s">%3$s</button>',
 			ws_ls_form_tab_index_next(),
 			$arguments[ 'form-id' ],
-			__( 'Cancel', WE_LS_SLUG )
+			esc_html__( 'Cancel', WE_LS_SLUG )
 		);
 	}
 
@@ -256,7 +256,7 @@ function ws_ls_form_weight( $arguments = [] ) {
 				false === empty( ws_ls_target_get( $arguments[ 'user-id' ] ) ) ){
 		$html .= sprintf('&nbsp;<button type="button" tabindex="%1$d" class="ws-ls-clear-target button ws-ls-remove-on-submit ykuk-button ykuk-button-default" data-user-id="%3$d" >%2$s</button>',
 			ws_ls_form_tab_index_next(),
-			__( 'Clear Target', WE_LS_SLUG ),
+			esc_html__( 'Clear Target', WE_LS_SLUG ),
 			$arguments[ 'user-id' ]
 		);
 	}
@@ -292,7 +292,7 @@ function ws_ls_form_init( $arguments = [] ) {
 	if ( false === empty( $save_response ) &&
 	        false === $arguments[ 'hide-confirmation' ] &&
 	     $arguments[ 'form-number'] === $save_response['form_number'] ){
-		$arguments[ 'html' ] .=  ( true === $save_response[ 'error' ] ) ? $save_response[ 'message' ] : ws_ls_display_blockquote( __( 'Your entry has been successfully saved.', WE_LS_SLUG ) );
+		$arguments[ 'html' ] .=  ( true === $save_response[ 'error' ] ) ? $save_response[ 'message' ] : ws_ls_display_blockquote( esc_html__( 'Your entry has been successfully saved.', WE_LS_SLUG ) );
 	}
 
 	// Main title for form
@@ -300,15 +300,15 @@ function ws_ls_form_init( $arguments = [] ) {
 
 	if ( true === empty( $title ) ) {
 		if ( 'target' === $arguments[ 'type' ] ) {
-			$title = __( 'Target weight', WE_LS_SLUG );
+			$title = esc_html__( 'Target weight', WE_LS_SLUG );
 		} elseif ( 'weight' === $arguments[ 'type' ] ) {
 			if ( false === empty( $arguments[ 'entry' ] ) ) {
-				$title = __( 'Edit an existing entry', WE_LS_SLUG );
+				$title = esc_html__( 'Edit an existing entry', WE_LS_SLUG );
 			} else {
-				$title = __( 'Add a new weight entry', WE_LS_SLUG );
+				$title = esc_html__( 'Add a new weight entry', WE_LS_SLUG );
 			}
 		} elseif ( 'custom-fields' === $arguments[ 'type' ] ) {
-			$title = __( 'Complete the following form', WE_LS_SLUG );
+			$title = esc_html__( 'Complete the following form', WE_LS_SLUG );
 		}
 	}
 
@@ -481,7 +481,7 @@ function ws_ls_form_field_textarea( $arguments = [] ) {
 	$arguments = wp_parse_args( $arguments, [	'type'                  => 'date',
 												'name'                  => '',
 												'value'                 => NULL,
-												'placeholder'           => __( 'Notes', WE_LS_SLUG ),
+												'placeholder'           => esc_html__( 'Notes', WE_LS_SLUG ),
 												'show-label'            => false,
 												'title'                 => '',
 												'css-class'             => 'we-ls-textarea',
@@ -515,7 +515,7 @@ function ws_ls_form_field_textarea( $arguments = [] ) {
 		$arguments[ 'name' ] . ' ' . $arguments[ 'css-class' ],
         ( false === empty( $arguments[ 'value' ] ) ? esc_textarea( $arguments[ 'value' ] ) : '' ),
 		( true === $arguments[ 'mandatory' ] ? 'required' : ''),
-		__( 'Please select a value for'),
+		esc_html__( 'Please select a value for'),
 		esc_attr( $arguments[ 'title' ] ),
 		( true === $arguments[ 'disabled' ] ) ? ' disabled="disabled"' : '',
 		esc_attr( $arguments[ 'testid' ] )
@@ -693,7 +693,7 @@ function ws_ls_form_field_select( $arguments ) {
 		esc_attr( $arguments[ 'css-class' ] ),
 		( true === $arguments[ 'required' ] ) ? ' required="required" ' : '',
 		( false === empty( $arguments[ 'js-on-change' ] ) ) ? sprintf( ' onchange="%s"', $arguments[ 'js-on-change' ] ) : '',
-		__( 'Please select a value for'),
+		esc_html__( 'Please select a value for'),
 		esc_attr( $arguments[ 'label' ] ),
 		$label_id,
 		esc_attr( $arguments[ 'testid'] )

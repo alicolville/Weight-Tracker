@@ -166,8 +166,8 @@ function ws_ls_shortcode_bmi( $arguments = [] ) {
 
 	$arguments = shortcode_atts( [      'bmi-type'          => 'current',   // current, start
 										'display'           => 'index',                             // 'index' - Actual BMI value. 'label' - BMI label for given value. 'both' - Label and BMI value in brackets,
-										'no-height-text'    => __( 'Height needed', WE_LS_SLUG ),
-										'no-weight-text'    => __( 'Weight needed', WE_LS_SLUG ),
+										'no-height-text'    => esc_html__( 'Height needed', WE_LS_SLUG ),
+										'no-weight-text'    => esc_html__( 'Weight needed', WE_LS_SLUG ),
 										'user-id'           => get_current_user_id()
 						           ], $arguments );
 
@@ -216,7 +216,7 @@ function ws_ls_shortcode_activity_level( $user_defined_arguments ) {
 		return ws_ls_display_pro_upgrade_notice_for_shortcode();
 	}
 
-	$arguments = shortcode_atts( [  'not-specified-text'    => __( 'Not Specified', WE_LS_SLUG ),
+	$arguments = shortcode_atts( [  'not-specified-text'    => esc_html__( 'Not Specified', WE_LS_SLUG ),
 									'user-id'               => get_current_user_id(),
 									'shorten'               => false
 								], $user_defined_arguments );
@@ -242,7 +242,7 @@ function ws_ls_shortcode_gender( $user_defined_arguments ) {
 		return ws_ls_display_pro_upgrade_notice_for_shortcode();
 	}
 
-	$arguments = shortcode_atts( [  'not-specified-text'    => __( 'Not Specified', WE_LS_SLUG ),
+	$arguments = shortcode_atts( [  'not-specified-text'    => esc_html__( 'Not Specified', WE_LS_SLUG ),
 	                                'user-id'               => get_current_user_id(),
 	                                'shorten'               => false
 	], $user_defined_arguments );
@@ -268,7 +268,7 @@ function ws_ls_shortcode_dob( $user_defined_arguments ) {
 		return ws_ls_display_pro_upgrade_notice_for_shortcode();
 	}
 
-	$arguments = shortcode_atts( [ 'not-specified-text' => __( 'Not Specified', WE_LS_SLUG ), 'user-id' => get_current_user_id() ], $user_defined_arguments );
+	$arguments = shortcode_atts( [ 'not-specified-text' => esc_html__( 'Not Specified', WE_LS_SLUG ), 'user-id' => get_current_user_id() ], $user_defined_arguments );
 
 	$cache_key = ws_ls_cache_generate_key_from_array( 'shortcode-dob', $arguments );
 
@@ -296,7 +296,7 @@ function ws_ls_shortcode_height( $user_defined_arguments ) {
 		return ws_ls_display_pro_upgrade_notice_for_shortcode();
 	}
 
-	$arguments = shortcode_atts( [  'not-specified-text'    => __( 'Not Specified', WE_LS_SLUG ),
+	$arguments = shortcode_atts( [  'not-specified-text'    => esc_html__( 'Not Specified', WE_LS_SLUG ),
 	                                'user-id'               => get_current_user_id()
 	], $user_defined_arguments );
 
@@ -448,7 +448,7 @@ function ws_ls_shortcode_days_between_start_and_latest( $user_defined_arguments,
 	}
 
 	$text = ( true === ws_ls_to_bool( $arguments[ 'include-days' ] ) ) ?
-				sprintf( '%d %s', $difference->days, __( 'days', WE_LS_SLUG ) ) :
+				sprintf( '%d %s', $difference->days, esc_html__( 'days', WE_LS_SLUG ) ) :
 					$difference->days;
 
 	return ( true === ws_ls_to_bool( $arguments[ 'include-brackets' ] ) ) ?

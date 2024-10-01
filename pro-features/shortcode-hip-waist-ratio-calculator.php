@@ -113,20 +113,15 @@ function ws_ls_waist_to_hip_ratio_calculator( $user_defined_arguments ) {
 							        <button type="button" class="button-calculate ykuk-button ykuk-button-default">%5$s</button>
 							    </div>
 							</form>
-							<script>
-									function updateInputValue(val, elId) {
-							          document.getElementById(elId).value=val;
-							        }
-							</script>
 						</li>',
-		__( 'Waist (cm)', WE_LS_SLUG ),
-		__( 'Waist (inches)', WE_LS_SLUG ),
-		__( 'Hip (cm)', WE_LS_SLUG ),
-		__( 'Hip (inches)', WE_LS_SLUG ),
-		__( 'Calculate', WE_LS_SLUG ),
-		__( 'Gender', WE_LS_SLUG ),
-		__( 'Female', WE_LS_SLUG ),
-		__( 'Male', WE_LS_SLUG ),
+		esc_html__( 'Waist (cm)', WE_LS_SLUG ),
+		esc_html__( 'Waist (inches)', WE_LS_SLUG ),
+		esc_html__( 'Hip (cm)', WE_LS_SLUG ),
+		esc_html__( 'Hip (inches)', WE_LS_SLUG ),
+		esc_html__( 'Calculate', WE_LS_SLUG ),
+		esc_html__( 'Gender', WE_LS_SLUG ),
+		esc_html__( 'Female', WE_LS_SLUG ),
+		esc_html__( 'Male', WE_LS_SLUG ),
 		selected( 2, $gender, false )
 	);
 
@@ -162,17 +157,17 @@ function ws_ls_waist_to_hip_ratio_calculator_ajax() {
 
 		switch ( $class ){
 			case 'ykuk-alert-warning':
-					$description = __( 'Moderate Health Risk', WE_LS_SLUG );
+					$description = esc_html__( 'Moderate Health Risk', WE_LS_SLUG );
 				break;
 			case 'ykuk-alert-danger':
-				$description = __( 'High Health Risk', WE_LS_SLUG );
+				$description = esc_html__( 'High Health Risk', WE_LS_SLUG );
 				break;
 			default:
-				$description = __( 'Low Health Risk', WE_LS_SLUG );
+				$description = esc_html__( 'Low Health Risk', WE_LS_SLUG );
 		}
 
 		$text   = sprintf( '<h3>%s: %s</h3><p>%s.</p>',
-			__( 'Your ratio', WE_LS_SLUG ),
+			esc_html__( 'Your ratio', WE_LS_SLUG ),
 			ws_ls_round_number( $ratio, 2 ),
 			$description
 		);
@@ -222,5 +217,5 @@ function ws_ls_calculate_waist_to_hip_ratio_uikit_class( $ratio, $gender ) {
 
 	}
 
-	return __( 'Err', WE_LS_SLUG );
+	return esc_html__( 'Err', WE_LS_SLUG );
 }

@@ -46,19 +46,19 @@ function ws_ls_uikit_summary_boxes( $arguments, $boxes = [] ) {
 				break;
 			case 'gender':
 				$html .= ws_ls_component_user_setting( [    'user-id'   => $arguments[ 'user-id' ],
-				                                            'title'     => __( 'Gender', WE_LS_SLUG ) ,
+				                                            'title'     => esc_html__( 'Gender', WE_LS_SLUG ) ,
 				                                            'setting'   => 'gender'
 				]);
 				break;
 			case 'aim':
 				$html .= ws_ls_component_user_setting( [    'user-id'   => $arguments[ 'user-id' ],
-				                                            'title'     => __( 'Aim', WE_LS_SLUG ) ,
+				                                            'title'     => esc_html__( 'Aim', WE_LS_SLUG ) ,
 				                                            'setting'   => 'aim'
 				]);
 				break;
 			case 'activity-level':
 				$html .= ws_ls_component_user_setting( [    'user-id'   => $arguments[ 'user-id' ],
-				                                            'title'     => __( 'Activity Level', WE_LS_SLUG ),
+				                                            'title'     => esc_html__( 'Activity Level', WE_LS_SLUG ),
 															'setting'   => 'activity_level'
 				]);
 				break;
@@ -76,7 +76,7 @@ function ws_ls_uikit_summary_boxes( $arguments, $boxes = [] ) {
 				break;
 			case 'group':
 				$html .= ws_ls_component_user_setting( [    'user-id'   => $arguments[ 'user-id' ],
-				                                            'title'     => __( 'Group', WE_LS_SLUG ),
+				                                            'title'     => esc_html__( 'Group', WE_LS_SLUG ),
 				                                            'setting'   => 'group'
 				]);
 				break;
@@ -129,8 +129,8 @@ function ws_ls_uikit_summary_boxes( $arguments, $boxes = [] ) {
 			case 'latest-versus-start':
 				$html .= ws_ls_component_latest_versus_another( [   'user-id'               => $arguments[ 'user-id' ],
 																	'compare-against'       => 'start',
-																	'compare-missing-text'  => __( 'Missing data', WE_LS_SLUG ),
-	                                                                'title'                 => __( 'Latest vs Start', WE_LS_SLUG )
+																	'compare-missing-text'  => esc_html__( 'Missing data', WE_LS_SLUG ),
+	                                                                'title'                 => esc_html__( 'Latest vs Start', WE_LS_SLUG )
 				]);
 				break;
 			case 'bmi':
@@ -234,7 +234,7 @@ function ws_ls_component_latest_weight( $args = [] ) {
     $latest_entry   = ws_ls_entry_get_latest( $args );
 
     $text_date      = '';
-    $text_data      = __( 'No data', WE_LS_SLUG );
+    $text_data      = esc_html__( 'No data', WE_LS_SLUG );
 
     if( false === empty( $latest_entry[ 'kg' ] ) ) {
 
@@ -263,7 +263,7 @@ function ws_ls_component_latest_weight( $args = [] ) {
 
             $text_data .= sprintf( ' <span class="ykuk-label %s ykuk-width-1-1" ykuk-tooltip="%s">%s</span>',
                                     $class,
-                                    __( 'The difference between your latest weight and previous.', WE_LS_SLUG ),
+                                    esc_html__( 'The difference between your latest weight and previous.', WE_LS_SLUG ),
                                     $difference
             );
         }
@@ -280,7 +280,7 @@ function ws_ls_component_latest_weight( $args = [] ) {
                     </div>',
                     $text_data,
                     $text_date,
-                    __( 'Latest Weight', WE_LS_SLUG )
+                    esc_html__( 'Latest Weight', WE_LS_SLUG )
     );
 }
 
@@ -302,7 +302,7 @@ function ws_ls_component_weight_difference_since_previous( $args = [] ) {
 	] );
 
 	if ( true === empty( $text_data ) ) {
-		$text_data = __( 'No data', WE_LS_SLUG );
+		$text_data = esc_html__( 'No data', WE_LS_SLUG );
 	}
 
 	return sprintf( '<div>
@@ -314,7 +314,7 @@ function ws_ls_component_weight_difference_since_previous( $args = [] ) {
                         </div>
                     </div>',
 		$text_data,
-		__( 'Latest / Previous', WE_LS_SLUG )
+		esc_html__( 'Latest / Previous', WE_LS_SLUG )
 	);
 }
 
@@ -337,7 +337,7 @@ function ws_ls_component_number_of_awards( $args = [] ) {
                         </div>
                     </div>',
 		ws_ls_awards_count( $args[ 'user-id' ] ),
-		__( 'No. of awards', WE_LS_SLUG )
+		esc_html__( 'No. of awards', WE_LS_SLUG )
 	);
 }
 
@@ -350,7 +350,7 @@ function ws_ls_component_latest_award( $args = [] ) {
 	$args           = wp_parse_args( $args, [ 'user-id' => get_current_user_id() ] );
 	$awards         = ws_ls_awards_previous_awards( $args[ 'user-id' ], 50, 50, 'timestamp' );
 	$html_thumbnail = '';
-	$html_title     = __( 'n/a', WE_LS_SLUG );
+	$html_title     = esc_html__( 'n/a', WE_LS_SLUG );
 
 	if ( false === empty( $awards[0] ) ) {
 
@@ -386,7 +386,7 @@ function ws_ls_component_latest_award( $args = [] ) {
                     </div>',
 		$html_thumbnail,
 		$html_title,
-		__( 'Latest Award', WE_LS_SLUG )
+		esc_html__( 'Latest Award', WE_LS_SLUG )
 	);
 
 }
@@ -402,7 +402,7 @@ function ws_ls_component_previous_weight( $args = [] ) {
 	$previous_entry = ws_ls_entry_get_previous( $args );
 
 	$text_date      = '';
-	$text_data      = __( 'No data', WE_LS_SLUG );
+	$text_data      = esc_html__( 'No data', WE_LS_SLUG );
 
 	if( false === empty( $previous_entry ) ) {
 
@@ -425,7 +425,7 @@ function ws_ls_component_previous_weight( $args = [] ) {
                     </div>',
 		$text_data,
 		$text_date,
-		__( 'Previous Weight', WE_LS_SLUG )
+		esc_html__( 'Previous Weight', WE_LS_SLUG )
 	);
 }
 
@@ -441,14 +441,14 @@ function ws_ls_component_target_weight( $args = [] ) {
 	$target_weight  = ws_ls_target_get( $args[ 'user-id' ] );
 
 	$text_date      = '';
-	$text_data      = __( 'Not set', WE_LS_SLUG );
+	$text_data      = esc_html__( 'Not set', WE_LS_SLUG );
 
 	if( false === empty( $target_weight ) ) {
 		$text_data  = $target_weight[ 'display' ];
 	}
 
 	if ( false === ws_ls_targets_enabled() ) {
-		$text_data = __( 'Targets not enabled in settings', WE_LS_SLUG );
+		$text_data = esc_html__( 'Targets not enabled in settings', WE_LS_SLUG );
 	}
 
 	return sprintf( '<div>
@@ -463,7 +463,7 @@ function ws_ls_component_target_weight( $args = [] ) {
                     </div>',
 		$text_data,
 		$text_date,
-		__( 'Target Weight', WE_LS_SLUG ),
+		esc_html__( 'Target Weight', WE_LS_SLUG ),
 		! ws_ls_targets_enabled() ? 'ws-ls-hide' : ''
 	);
 }
@@ -476,15 +476,15 @@ function ws_ls_component_target_weight( $args = [] ) {
  */
 function ws_ls_component_user_setting( $args = [] ) {
 
-	$args = wp_parse_args( $args, [ 'user-id' => get_current_user_id(), 'setting' => 'height', 'title' => __( 'Height', WE_LS_SLUG ) ] );
+	$args = wp_parse_args( $args, [ 'user-id' => get_current_user_id(), 'setting' => 'height', 'title' => esc_html__( 'Height', WE_LS_SLUG ) ] );
 
 	if ( 'group' === $args[ 'setting' ] ) {
 		$groups = ws_ls_groups_user( $args[ 'user-id'] );
 
-		$setting = ( false === empty( $groups ) ) ? $groups[ 0 ][ 'name' ] : __( 'Not set', WE_LS_SLUG );
+		$setting = ( false === empty( $groups ) ) ? $groups[ 0 ][ 'name' ] : esc_html__( 'Not set', WE_LS_SLUG );
 
 	} else {
-		$setting = ws_ls_display_user_setting( $args[ 'user-id' ], $args[ 'setting' ], __( 'Not set', WE_LS_SLUG ), true );
+		$setting = ws_ls_display_user_setting( $args[ 'user-id' ], $args[ 'setting' ], esc_html__( 'Not set', WE_LS_SLUG ), true );
 	}
 
 	return sprintf( '<div>
@@ -513,7 +513,7 @@ function ws_ls_component_start_weight( $args = [] ) {
 	$start_weight   = ws_ls_entry_get_oldest( $args );
 
 	$text_date      = '';
-	$text_data      = __( 'Not set', WE_LS_SLUG );
+	$text_data      = esc_html__( 'Not set', WE_LS_SLUG );
 
 	if( false === empty( $start_weight[ 'display' ] ) ) {
 		$text_data  = $start_weight[ 'display' ];
@@ -536,7 +536,7 @@ function ws_ls_component_start_weight( $args = [] ) {
                     </div>',
 		$text_data,
 		$text_date,
-		__( 'Starting Weight', WE_LS_SLUG )
+		esc_html__( 'Starting Weight', WE_LS_SLUG )
 	);
 }
 
@@ -549,11 +549,11 @@ function ws_ls_component_latest_versus_another( $args = [] ) {
 
 	$args           = wp_parse_args( $args, [ 'user-id'                 => get_current_user_id(),
 	                                          'compare-against'         => 'target',
-	                                          'compare-missing-text'    => __( 'No target set', WE_LS_SLUG ),
-	                                          'title'                   => __( 'Latest vs Target', WE_LS_SLUG )
+	                                          'compare-missing-text'    => esc_html__( 'No target set', WE_LS_SLUG ),
+	                                          'title'                   => esc_html__( 'Latest vs Target', WE_LS_SLUG )
 	] );
 	$comparison_weight  = NULL;
-	$text_data          = __( 'No data', WE_LS_SLUG );
+	$text_data          = esc_html__( 'No data', WE_LS_SLUG );
 	$latest_entry       = ws_ls_entry_get_latest( $args );
 
 	if ( 'target' === $args[ 'compare-against' ] ) {
@@ -563,7 +563,7 @@ function ws_ls_component_latest_versus_another( $args = [] ) {
 	}
 
 	if( true === empty( $latest_entry ) ) {
-		$text_data = __('No entries', WE_LS_SLUG);
+		$text_data = esc_html__('No entries', WE_LS_SLUG);
 	} elseif( true === empty( $comparison_weight ) ) {
 		$text_data = $args[ 'compare-missing-text' ];
 	} elseif ( false === empty( $latest_entry ) ) {
@@ -600,7 +600,7 @@ function ws_ls_component_latest_versus_another( $args = [] ) {
 
 			$text_data .= sprintf( ' <span class="ykuk-label %s" ykuk-tooltip="%s">%s%%</span>',
 				$class,
-				__( 'The difference between your latest weight and target.', WE_LS_SLUG ),
+				esc_html__( 'The difference between your latest weight and target.', WE_LS_SLUG ),
 				$percentage_difference
 			);
 		}
@@ -632,7 +632,7 @@ function ws_ls_component_number_of_entries( $args = [] ) {
 
 	$text_data = ( false === empty( $counts[ 'number-of-entries' ] ) ) ?
 					(int) $counts[ 'number-of-entries' ] :
-						__( 'No data', WE_LS_SLUG );
+						esc_html__( 'No data', WE_LS_SLUG );
 
 	return sprintf( '<div>
                         <div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
@@ -643,7 +643,7 @@ function ws_ls_component_number_of_entries( $args = [] ) {
                         </div>
                     </div>',
 		$text_data,
-		__( 'No. entries', WE_LS_SLUG )
+		esc_html__( 'No. entries', WE_LS_SLUG )
 	);
 }
 
@@ -655,22 +655,22 @@ function ws_ls_component_number_of_entries( $args = [] ) {
  */
 function ws_ls_component_calories( $args = [] ) {
 
-	$args   = wp_parse_args( $args, [ 'user-id' => get_current_user_id(), 'progress' => 'lose', 'type' => 'total', 'add-unit' => true, 'error-message' => __( 'No data', WE_LS_SLUG ) ] );
+	$args   = wp_parse_args( $args, [ 'user-id' => get_current_user_id(), 'progress' => 'lose', 'type' => 'total', 'add-unit' => true, 'error-message' => esc_html__( 'No data', WE_LS_SLUG ) ] );
 
 	$text_data = ws_ls_shortcode_harris_benedict( $args );
 
 	switch ( $args[ 'progress' ] ) {
 		case 'auto':
-			$title = __( 'Calories for meeting aim', WE_LS_SLUG );
+			$title = esc_html__( 'Calories for meeting aim', WE_LS_SLUG );
 			break;
 		case 'maintain':
-			$title = __( 'Calories for maintaining', WE_LS_SLUG );
+			$title = esc_html__( 'Calories for maintaining', WE_LS_SLUG );
 			break;
 		case 'gain':
-			$title = __( 'Calories for gain', WE_LS_SLUG );
+			$title = esc_html__( 'Calories for gain', WE_LS_SLUG );
 			break;
 		default:
-			$title = __( 'Calories for loss', WE_LS_SLUG );
+			$title = esc_html__( 'Calories for loss', WE_LS_SLUG );
 	}
 
 	return sprintf( '<div>
@@ -699,7 +699,7 @@ function ws_ls_component_number_of_weight_entries( $args = [] ) {
 
 	$text_data = ( false === empty( $counts[ 'number-of-weight-entries' ] ) ) ?
 		(int) $counts[ 'number-of-weight-entries' ] :
-		__( 'No data', WE_LS_SLUG );
+		esc_html__( 'No data', WE_LS_SLUG );
 
 	return sprintf( '<div>
                         <div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
@@ -710,7 +710,7 @@ function ws_ls_component_number_of_weight_entries( $args = [] ) {
                         </div>
                     </div>',
 		$text_data,
-		__( 'No. weight entries', WE_LS_SLUG )
+		esc_html__( 'No. weight entries', WE_LS_SLUG )
 	);
 }
 
@@ -738,8 +738,8 @@ function ws_ls_component_number_of_days_tracking( $args = [] ) {
                         </div>
                     </div>',
 		ws_ls_round_number( $days ),
-		__( 'Tracking for', WE_LS_SLUG ),
-		__( 'days', WE_LS_SLUG )
+		esc_html__( 'Tracking for', WE_LS_SLUG ),
+		esc_html__( 'days', WE_LS_SLUG )
 	);
 }
 
@@ -754,8 +754,8 @@ function ws_ls_component_age_dob( $args = [] ) {
 	$args   = wp_parse_args( $args, [ 'user-id' => get_current_user_id() ] );
 	$dob    = ws_ls_get_dob( $args[ 'user-id'] );
 
-	$text_link  = __( 'Set DoB', WE_LS_SLUG );
-	$age        = __( 'DoB missing', WE_LS_SLUG );
+	$text_link  = esc_html__( 'Set DoB', WE_LS_SLUG );
+	$age        = esc_html__( 'DoB missing', WE_LS_SLUG );
 
 	if( false === empty( $dob ) ) {
 		$text_link  = ws_ls_iso_date_into_correct_format( $dob );
@@ -772,7 +772,7 @@ function ws_ls_component_age_dob( $args = [] ) {
                         </div>
                     </div>',
 		$age,
-		__( 'Age', WE_LS_SLUG ),
+		esc_html__( 'Age', WE_LS_SLUG ),
 		$text_link
 	);
 }
@@ -820,7 +820,7 @@ function ws_ls_component_alert( $args ) {
 					wp_kses_post( $args[ 'message' ] ),
 					true === $args[ 'closable' ] ? 'ykuk-close' : '',
 					( true === $args[ 'include-login-link' ] ) ?
-						sprintf( ' <a class="ws-ls-login-link" href="%1$s">%2$s</a>.', esc_url( wp_login_url( get_permalink() ) ), __( 'Login' , WE_LS_SLUG ) ) :
+						sprintf( ' <a class="ws-ls-login-link" href="%1$s">%2$s</a>.', esc_url( wp_login_url( get_permalink() ) ), esc_html__( 'Login' , WE_LS_SLUG ) ) :
 						'',
 					$args[ 'notification-id' ],
 					esc_attr( $args[ 'css-classes' ] )
@@ -841,7 +841,7 @@ function ws_ls_component_bmi( $args = [] ) {
 	$status         = ( false !== strpos( $text_data, 'Healthy' ) ) ? 'ykuk-label ykuk-label-success' : 'ykuk-label ykuk-label-warning';
 
 	if ( true === empty( $text_data ) ) {
-		$text_data  = __( 'Missing data', WE_LS_SLUG );
+		$text_data  = esc_html__( 'Missing data', WE_LS_SLUG );
 		$status     = 'ykuk-text-bold';
 	}
 
@@ -850,11 +850,11 @@ function ws_ls_component_bmi( $args = [] ) {
 		$text_link  = sprintf ( '<br />
 									<span class="ykuk-info-box-meta">
 										<a href="#" ykuk-toggle="target: #modal-bmi">%s</a>
-									</span>', __( 'What is BMI?', WE_LS_SLUG ) );
+									</span>', esc_html__( 'What is BMI?', WE_LS_SLUG ) );
 
 		$text_link .= ws_ls_component_modal(    'modal-bmi',
-												__( 'Body Mass Index (BMI)', WE_LS_SLUG ),
-												__('The BMI (Body Mass Index) is used by the medical profession to quickly determine a person’s weight in regard to their height. From a straight forward calculation the BMI factor can be gained and may be used to determine if a person is underweight, of normal weight, overweight or obese.', WE_LS_SLUG )
+												esc_html__( 'Body Mass Index (BMI)', WE_LS_SLUG ),
+												esc_html__('The BMI (Body Mass Index) is used by the medical profession to quickly determine a person’s weight in regard to their height. From a straight forward calculation the BMI factor can be gained and may be used to determine if a person is underweight, of normal weight, overweight or obese.', WE_LS_SLUG )
 		);
 
 	}
@@ -868,7 +868,7 @@ function ws_ls_component_bmi( $args = [] ) {
                         </div>',
 						$text_data,
 						$text_link,
-						( 'start' === $args[ 'bmi-type' ] ) ? __( 'Starting BMI', WE_LS_SLUG ) : __( 'Current BMI', WE_LS_SLUG ),
+						( 'start' === $args[ 'bmi-type' ] ) ? esc_html__( 'Starting BMI', WE_LS_SLUG ) : esc_html__( 'Current BMI', WE_LS_SLUG ),
 						$status
 	);
 }
@@ -894,16 +894,16 @@ function ws_ls_component_bmi_warning_notifications( $args ) {
 	}
 
 	$html       = '';
-	$prefix     = ( false === empty( $args[ 'kiosk-mode'] ) ) ? __( 'User\'s ', WE_LS_SLUG ) : __( 'Your ', WE_LS_SLUG );
+	$prefix     = ( false === empty( $args[ 'kiosk-mode'] ) ) ? esc_html__( 'User\'s ', WE_LS_SLUG ) : esc_html__( 'Your ', WE_LS_SLUG );
 
 	if ( false === empty( $args[ 'bmi-alert-if-above' ] ) &&
 	        (float) $bmi > (float) $args[ 'bmi-alert-if-above' ] ) {
-		$html .= ws_ls_component_alert( [ 'message' => $prefix . sprintf( __( 'BMI is above %s.', WE_LS_SLUG ), $args[ 'bmi-alert-if-above' ] ), 'type' => 'danger' ] );
+		$html .= ws_ls_component_alert( [ 'message' => $prefix . sprintf( esc_html__( 'BMI is above %s.', WE_LS_SLUG ), $args[ 'bmi-alert-if-above' ] ), 'type' => 'danger' ] );
 	}
 
 	if ( false === empty( $args[ 'bmi-alert-if-below' ] ) &&
 	        $bmi < (float) $args[ 'bmi-alert-if-below' ] ) {
-		$html .= ws_ls_component_alert( [ 'message' => $prefix . sprintf( __( 'BMI is below %s.', WE_LS_SLUG ), $args[ 'bmi-alert-if-below' ] ), 'type' => 'danger' ] );
+		$html .= ws_ls_component_alert( [ 'message' => $prefix . sprintf( esc_html__( 'BMI is below %s.', WE_LS_SLUG ), $args[ 'bmi-alert-if-below' ] ), 'type' => 'danger' ] );
 	}
 
 	return $html;
@@ -923,7 +923,7 @@ function ws_ls_component_bmr( $args = [] ) {
 	$text_data      = ws_ls_shortcode_bmr( [ 'user-id' => $args[ 'user-id' ], 'bmr-type' => $args[ 'bmr-type' ], 'suppress-errors' => true ] );
 
 	if ( true === empty( $text_data ) ) {
-		$text_data = __( 'Missing data', WE_LS_SLUG );
+		$text_data = esc_html__( 'Missing data', WE_LS_SLUG );
 	}
 
 	if( true === empty( $args[ 'hide-advanced-narrative' ] ) ) {
@@ -931,11 +931,11 @@ function ws_ls_component_bmr( $args = [] ) {
 		$text_link  = sprintf ( '<br />
 									<span class="ykuk-info-box-meta">
 										<a href="#" ykuk-toggle="target: #modal-bmr">%s</a>
-									</span>', __( 'What is BMR?', WE_LS_SLUG ) );
+									</span>', esc_html__( 'What is BMR?', WE_LS_SLUG ) );
 
 		$text_link .= ws_ls_component_modal(    'modal-bmr',
-			__( 'Basal Metabolic Rate (BMR)', WE_LS_SLUG ),
-			__( 'BMR is short for Basal Metabolic Rate. The Basal Metabolic Rate is the number of calories required to keep your body functioning at rest, also known as your metabolism. We calculate your BMR using formulas provided by www.diabetes.co.uk.', WE_LS_SLUG )
+			esc_html__( 'Basal Metabolic Rate (BMR)', WE_LS_SLUG ),
+			esc_html__( 'BMR is short for Basal Metabolic Rate. The Basal Metabolic Rate is the number of calories required to keep your body functioning at rest, also known as your metabolism. We calculate your BMR using formulas provided by www.diabetes.co.uk.', WE_LS_SLUG )
 		);
 
 	}
@@ -947,7 +947,7 @@ function ws_ls_component_bmr( $args = [] ) {
 	                          		%3$s
                         	</div>
                      </div>',
-		( 'start' === $args[ 'bmr-type' ] ) ?  __( 'Starting BMR', WE_LS_SLUG ) : __( 'Current BMR', WE_LS_SLUG ),
+		( 'start' === $args[ 'bmr-type' ] ) ?  esc_html__( 'Starting BMR', WE_LS_SLUG ) : esc_html__( 'Current BMR', WE_LS_SLUG ),
 		$text_data,
 		$text_link
 	);
@@ -972,7 +972,7 @@ function ws_ls_component_name_and_email( $args = [] ) {
 	                          		<a href="mailto:%3$s">%3$s</a>
                         	</div>
                      </div>',
-		__( 'Name', WE_LS_SLUG ),
+		esc_html__( 'Name', WE_LS_SLUG ),
 		esc_html( $name ),
 		esc_html( $user->user_email )
 	);
@@ -994,7 +994,7 @@ function ws_ls_component_user_id( $args = [] ) {
 	                                <span class="ykuk-text-bold">%2$d</span>
                         	</div>
                      </div>',
-		__( 'User ID', WE_LS_SLUG ),
+		esc_html__( 'User ID', WE_LS_SLUG ),
 		$args[ 'user-id' ]
 	);
 }
@@ -1194,7 +1194,7 @@ function ws_ls_component_user_search( $arguments ) {
 	                                            'disable-main-font'         => false,
 	                                            'disable-not-logged-in'     => false,
 	                                            'preload-max'               => 1200,        // Preload the user list via Ajax if total user count is less than this.
-	                                            'placeholder'               => __( 'Search for a user...', WE_LS_SLUG ),
+	                                            'placeholder'               => esc_html__( 'Search for a user...', WE_LS_SLUG ),
 	                                            'previous-search'           => '',
 												'querystring-key-user-id'   => 'wt-user-id'
 	]);
@@ -1203,7 +1203,7 @@ function ws_ls_component_user_search( $arguments ) {
 
 	if ( false === is_user_logged_in() ) {
 		return ( false === ws_ls_to_bool( $arguments[ 'disable-not-logged-in' ] ) ) ?
-					ws_ls_component_alert( [ 'message' => __( 'You need to be logged in to search for users.', WE_LS_SLUG ), 'type' => 'primary', 'closable' => false, 'include=login-link' => true ] ) :
+					ws_ls_component_alert( [ 'message' => esc_html__( 'You need to be logged in to search for users.', WE_LS_SLUG ), 'type' => 'primary', 'closable' => false, 'include=login-link' => true ] ) :
 						'';
 	}
 
@@ -1236,7 +1236,7 @@ function ws_ls_component_user_search( $arguments ) {
 					ws_ls_component_id(),
 					esc_url( $reset_link ),
 					( NULL === ws_ls_querystring_value( $arguments[ 'querystring-key-user-id' ] ) ) ? 'default' : 'secondary',
-					( false === $arguments[ 'kiosk-barcode-scanner' ] ) ? __( 'Clear Screen', WE_LS_SLUG ) : __( 'Clear', WE_LS_SLUG ),
+					( false === $arguments[ 'kiosk-barcode-scanner' ] ) ? esc_html__( 'Clear Screen', WE_LS_SLUG ) : esc_html__( 'Clear', WE_LS_SLUG ),
 					( false === $arguments[ 'user-loaded' ] ) ? ' ws-ls-hide' : '',
 					( false === $arguments[ 'kiosk-barcode-scanner' ] || false === $arguments[ 'kiosk-barcode-scanner-camera' ] ) ? ' ws-ls-hide' : '',
 					( false === $arguments[ 'kiosk-barcode-scanner' ] || false === $arguments[ 'kiosk-barcode-scanner-lazer' ] ) ? ' ws-ls-hide' : ''
@@ -1288,15 +1288,15 @@ function ws_ls_component_group_view_entries( $arguments ) {
 	}
 
 	$display_text = ( true === ws_ls_to_bool( $arguments[ 'todays-entries-only' ] ) ) ?
-					__( 'Total weight difference (between previous/latest)', WE_LS_SLUG ) :
-						__( 'Total weight difference (between start/latest)', WE_LS_SLUG );
+					esc_html__( 'Total weight difference (between previous/latest)', WE_LS_SLUG ) :
+						esc_html__( 'Total weight difference (between start/latest)', WE_LS_SLUG );
 	
-	$message = ws_ls_component_alert( [ 'message' 		=> __( 'Total losses', WE_LS_SLUG ) . ': <strong><span></span>.</strong>',
+	$message = ws_ls_component_alert( [ 'message' 		=> esc_html__( 'Total losses', WE_LS_SLUG ) . ': <strong><span></span>.</strong>',
 										'css-classes' 	=> 'ykuk-invisible ws-ls-total-losses-count', 
 										'uikit' 		=> $arguments[ 'uikit']
 	]);
 
-	$message .= ws_ls_component_alert( [ 'message' 		=> __( 'Total gains', WE_LS_SLUG ) . ': <strong><span></span>.</strong>',
+	$message .= ws_ls_component_alert( [ 'message' 		=> esc_html__( 'Total gains', WE_LS_SLUG ) . ': <strong><span></span>.</strong>',
 										'css-classes' 	=> 'ykuk-invisible ws-ls-total-gains-count', 
 										'uikit' 		=> $arguments[ 'uikit']
 	]);

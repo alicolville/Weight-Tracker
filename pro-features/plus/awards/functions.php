@@ -29,21 +29,21 @@
     	if ( true === $simple ) {
 
 		    return [
-			    'weight'            => __('Weight', WE_LS_SLUG ),
-			    'weight-percentage' => __('Weight %', WE_LS_SLUG ),
-			    'weight-target'     => __('Target met', WE_LS_SLUG ),
-			    'bmi'               => __('BMI: Change', WE_LS_SLUG ),
-			    'bmi-equals'        => __('BMI: Equals', WE_LS_SLUG ),
+			    'weight'            => esc_html__('Weight', WE_LS_SLUG ),
+			    'weight-percentage' => esc_html__('Weight %', WE_LS_SLUG ),
+			    'weight-target'     => esc_html__('Target met', WE_LS_SLUG ),
+			    'bmi'               => esc_html__('BMI: Change', WE_LS_SLUG ),
+			    'bmi-equals'        => esc_html__('BMI: Equals', WE_LS_SLUG ),
 		    ];
 
 	    }
 
         return [
-	        'bmi'               => __('BMI: Change', WE_LS_SLUG ),
-	        'bmi-equals'        => __('BMI: Equals', WE_LS_SLUG ),
-	        'weight-target'     => __('Weight: Target met (based on user aim)', WE_LS_SLUG ),
-            'weight'            => __('Weight: Change in units', WE_LS_SLUG ),
-            'weight-percentage' => __('Weight: Change as a percentage', WE_LS_SLUG )
+	        'bmi'               => esc_html__('BMI: Change', WE_LS_SLUG ),
+	        'bmi-equals'        => esc_html__('BMI: Equals', WE_LS_SLUG ),
+	        'weight-target'     => esc_html__('Weight: Target met (based on user aim)', WE_LS_SLUG ),
+            'weight'            => esc_html__('Weight: Change in units', WE_LS_SLUG ),
+            'weight-percentage' => esc_html__('Weight: Change as a percentage', WE_LS_SLUG )
 
         ];
 
@@ -60,9 +60,9 @@
 
     	switch ( $gain_loss ) {
     		case 'gain';
-    		    return __('Gain', WE_LS_SLUG);
+    		    return esc_html__('Gain', WE_LS_SLUG);
 		    case 'loss':
-			    return __('Loss', WE_LS_SLUG);
+			    return esc_html__('Loss', WE_LS_SLUG);
 		    default:
 		    	return '';
 	    }
@@ -310,7 +310,7 @@
 		$html = '';
 
 		$arguments = shortcode_atts([
-			'error-message' => ( is_admin() ) ? __('The user has no awards', WE_LS_SLUG ) : __('You have no awards yet', WE_LS_SLUG ),
+			'error-message' => ( is_admin() ) ? esc_html__('The user has no awards', WE_LS_SLUG ) : esc_html__('You have no awards yet', WE_LS_SLUG ),
 			'user-id' => get_current_user_id(),
 		], $user_defined_arguments );
 

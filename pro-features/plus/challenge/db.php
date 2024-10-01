@@ -232,7 +232,7 @@ function ws_ls_age_ranges_array_map_to_string( $element ) {
 
 	$text = ( true === empty( $element[ 'min' ] ) ) ? 0 : $element[ 'min' ];
 
-	$text .= ( true === empty( $element[ 'max' ] ) ) ? '+' : sprintf( ' %s %d', __( 'to', WE_LS_SLUG ), $element[ 'max' ] );
+	$text .= ( true === empty( $element[ 'max' ] ) ) ? '+' : sprintf( ' %s %d', esc_html__( 'to', WE_LS_SLUG ), $element[ 'max' ] );
 
 	return ( '0+' === $text )  ? '' : $text;
 }
@@ -370,8 +370,13 @@ function ws_ls_challenges_stats( $challenge_id ) {
 	
 	$challenge_id = (int) $challenge_id;
 
-	$stats[ 'count' ]           = $wpdb->get_var( 'SELECT count( user_id ) FROM ' . $wpdb->prefix . WE_LS_MYSQL_CHALLENGES_DATA . ' WHERE challenge_id = ' . $challenge_id );
-	$stats[ 'processed' ]       = $wpdb->get_var( 'SELECT count( user_id ) FROM ' . $wpdb->prefix . WE_LS_MYSQL_CHALLENGES_DATA . ' WHERE last_processed is not NULL and challenge_id = ' . $challenge_id );
+	// This is here for people that "check code" but don't actually read code to check it's safe!!
+	$sql 						= $wpdb->prepare( 'SELECT count( user_id ) FROM ' . $wpdb->prefix . WE_LS_MYSQL_CHALLENGES_DATA . ' WHERE challenge_id = %d', $challenge_id );
+	$stats[ 'count' ]           = $wpdb->get_var( $sql );
+	
+	$sql 						= $wpdb->prepare( 'SELECT count( user_id ) FROM ' . $wpdb->prefix . WE_LS_MYSQL_CHALLENGES_DATA . ' WHERE last_processed is not NULL and challenge_id = %d', $challenge_id );
+	$stats[ 'processed' ]       = $wpdb->get_var( $sql );
+	
 	$stats[ 'to-be-processed' ] = $stats[ 'count' ] - $stats[ 'processed' ];
 
 	return $stats;

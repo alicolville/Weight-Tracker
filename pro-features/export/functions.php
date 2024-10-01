@@ -20,7 +20,7 @@ function ws_ls_export_link( $mode = 'view', $querystring_values = [] ) {
 		$url = add_query_arg( $querystring_values, $url );
 	}
 
-	return $url;
+	return esc_url( $url );
 }
 
 /**
@@ -31,10 +31,10 @@ function ws_ls_export_date_ranges() {
 
 	return [
 				'' 			=> '',
-				'today' 	=> __( 'Today', WE_LS_SLUG ),
-				'last-7' 	=> __( 'Last 7 Days', WE_LS_SLUG ),
-				'last-31' 	=> __( 'Last 31 Days', WE_LS_SLUG ),
-				'custom'	=> __( 'Custom date range', WE_LS_SLUG )
+				'today' 	=> esc_html__( 'Today', WE_LS_SLUG ),
+				'last-7' 	=> esc_html__( 'Last 7 Days', WE_LS_SLUG ),
+				'last-31' 	=> esc_html__( 'Last 31 Days', WE_LS_SLUG ),
+				'custom'	=> esc_html__( 'Custom date range', WE_LS_SLUG )
 	];
 }
 
@@ -205,10 +205,10 @@ function ws_ls_export_column_names( $export_criteria ) {
 		'user_nicename'                 => 'Nicename',
 		'date-display'                  => 'Date',
 		'weight'                        => ws_ls_settings_weight_unit_readable(),
-		'difference_from_start_display' => __( 'Difference from start', WE_LS_SLUG ),
-		'bmi'                           => __( 'BMI', WE_LS_SLUG ),
-		'bmi-readable'                  => __( 'BMI Label', WE_LS_SLUG ),
-		'weight_notes'                  => __( 'Notes', WE_LS_SLUG )
+		'difference_from_start_display' => esc_html__( 'Difference from start', WE_LS_SLUG ),
+		'bmi'                           => esc_html__( 'BMI', WE_LS_SLUG ),
+		'bmi-readable'                  => esc_html__( 'BMI Label', WE_LS_SLUG ),
+		'weight_notes'                  => esc_html__( 'Notes', WE_LS_SLUG )
 	];
 
 	$options = ( false === empty( $export_criteria[ 'options' ] ) ) ? $export_criteria[ 'options' ] : NULL;

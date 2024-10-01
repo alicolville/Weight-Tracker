@@ -55,7 +55,7 @@ function ws_ls_get_bmi_for_table( $cm, $kg, $no_height_text = false, $display = 
 	} else {
 
         $no_height_text = ( true === empty( $no_height_text ) ) ?
-	                        __( 'Add Height for BMI', WE_LS_SLUG ) :
+	                        esc_html__( 'Add Height for BMI', WE_LS_SLUG ) :
 	                            $no_height_text;
 
 		return esc_html( $no_height_text );
@@ -92,18 +92,18 @@ function ws_ls_calculate_bmi_label( $bmi ) {
 	if( true === is_numeric( $bmi ) ) {
 
 		if( $bmi < 18.5 ) {
-			return __( 'Underweight', WE_LS_SLUG );
+			return esc_html__( 'Underweight', WE_LS_SLUG );
 		} else if ( $bmi >= 18.5 && $bmi <= 24.9 ) {
-			return __( 'Healthy', WE_LS_SLUG );
+			return esc_html__( 'Healthy', WE_LS_SLUG );
 		}
 		else if ( $bmi >= 25 && $bmi <= 29.9 ) {
-			return __( 'Overweight', WE_LS_SLUG );
+			return esc_html__( 'Overweight', WE_LS_SLUG );
 		} else if ( $bmi >= 30 ) {
-			return __( 'Obese', WE_LS_SLUG );
+			return esc_html__( 'Obese', WE_LS_SLUG );
 		}
 	}
 
-	return __( 'Err', WE_LS_SLUG );
+	return esc_html__( 'Err', WE_LS_SLUG );
 }
 
 /**
@@ -128,7 +128,7 @@ function ws_ls_calculate_bmi_uikit_class( $bmi ) {
 		}
 	}
 
-	return __( 'Err', WE_LS_SLUG );
+	return esc_html__( 'Err', WE_LS_SLUG );
 }
 
 /**
@@ -160,10 +160,10 @@ function ws_ls_bmi_display( $bmi, $display = 'index' ) {
  */
 function ws_ls_bmi_all_labels() {
 	return [
-				0 => __( 'Underweight', WE_LS_SLUG ),
-				1 => __( 'Healthy', WE_LS_SLUG ),
-				2 => __( 'Overweight', WE_LS_SLUG ),
-				3 => __( 'Heavily Overweight', WE_LS_SLUG )
+				0 => esc_html__( 'Underweight', WE_LS_SLUG ),
+				1 => esc_html__( 'Healthy', WE_LS_SLUG ),
+				2 => esc_html__( 'Overweight', WE_LS_SLUG ),
+				3 => esc_html__( 'Heavily Overweight', WE_LS_SLUG )
 	];
 }
 
@@ -186,7 +186,7 @@ function ws_ls_tooltip( $text, $tooltip ) {
  * @return string
  */
 function ws_ls_get_link_to_user_data() {
-	return admin_url( 'admin.php?page=ws-ls-data-home');
+	return esc_url( admin_url( 'admin.php?page=ws-ls-data-home') );
 }
 
 /**
@@ -282,7 +282,7 @@ function ws_ls_get_link_to_photos( $id ) {
  * @return string
  */
 function ws_ls_get_link_to_settings() {
-    return admin_url( 'admin.php?page=ws-ls-settings' );
+    return esc_url( admin_url( 'admin.php?page=ws-ls-settings' ) );
 }
 
 /**
@@ -357,6 +357,32 @@ function ws_ls_get_email_link( $user_id, $include_brackets = false ) {
 }
 
 /**
+ * Return a simple object to represent user data
+ *
+ * @param $user_id
+ * @return array
+ */
+function ws_ls_simple_user_object( $user_id = NULL ) {
+
+	$user_id = ( NULL === $user_id ) ? get_current_user_id() : $user_id;
+	
+	$user_data = get_userdata( $user_id );
+
+	if ( false == $user_data) {
+		return [];
+	}
+
+	$data = [];
+
+	$data[ 'user-id' ]				= $user_id;
+	$data[ 'email' ]				= $user_data->user_email;
+	$data[ 'display-name' ]    		= ws_ls_user_display_name( $user_id );
+	$data[ 'url-user-profile' ]     = ws_ls_get_link_to_user_profile( $user_id, NULL, false );
+
+	return $data;
+}
+
+/**
  * Return an array of supported genders
  *
  * @return array
@@ -365,8 +391,8 @@ function ws_ls_genders() {
 
     return [
         0 => '',
-        1 => __('Female', WE_LS_SLUG),
-        2 => __('Male', WE_LS_SLUG)
+        1 => esc_html__('Female', WE_LS_SLUG),
+        2 => esc_html__('Male', WE_LS_SLUG)
     ];
 }
 
@@ -390,11 +416,11 @@ function ws_ls_genders_get( $id ) {
 function ws_ls_activity_levels() {
 
     $activity_levels = [    '0'     => '',
-					        '1.2'   => __( 'Little / No Exercise', WE_LS_SLUG ),
-					        '1.375' => __( 'Light Exercise', WE_LS_SLUG ),
-					        '1.55'  => __( 'Moderate Exercise (3-5 days a week)', WE_LS_SLUG ),
-					        '1.725' => __( 'Very Active (6-7 days a week)', WE_LS_SLUG ),
-					        '1.9'   => __( 'Extra Active (very active & physical job)', WE_LS_SLUG )
+					        '1.2'   => esc_html__( 'Little / No Exercise', WE_LS_SLUG ),
+					        '1.375' => esc_html__( 'Light Exercise', WE_LS_SLUG ),
+					        '1.55'  => esc_html__( 'Moderate Exercise (3-5 days a week)', WE_LS_SLUG ),
+					        '1.725' => esc_html__( 'Very Active (6-7 days a week)', WE_LS_SLUG ),
+					        '1.9'   => esc_html__( 'Extra Active (very active & physical job)', WE_LS_SLUG )
     ];
 
 	return apply_filters( 'wlt-filter-activity-levels', $activity_levels );
@@ -409,9 +435,9 @@ function ws_ls_aims() {
 
     $aims = [
         0 => '',
-        1 => __('Maintain current weight', WE_LS_SLUG),
-        2 => __('Lose weight', WE_LS_SLUG),
-        3 => __('Gain weight', WE_LS_SLUG)
+        1 => esc_html__('Maintain current weight', WE_LS_SLUG),
+        2 => esc_html__('Lose weight', WE_LS_SLUG),
+        3 => esc_html__('Gain weight', WE_LS_SLUG)
     ];
 
     return apply_filters( 'wlt-filter-aims', $aims );
@@ -546,7 +572,7 @@ function ws_ls_heights_metric_to_imperial( $cm = NULL ) {
  * @param $key
  */
 function ws_ls_heights_formatter( &$height, $key ) {
-    $height = sprintf( '%3$d%4$s - %1$d\' %2$s"', $height['feet'], $height['inches'],  $key, __('cm', WE_LS_SLUG) );
+    $height = sprintf( '%3$d%4$s - %1$d\' %2$s"', $height['feet'], $height['inches'],  $key, esc_html__('cm', WE_LS_SLUG) );
 }
 
 /**
@@ -561,7 +587,7 @@ function ws_ls_heights_formatter( &$height, $key ) {
 function ws_ls_display_user_setting( $user_id, $field = 'dob', $not_specified_text = false, $shorten = false ) {
 
 	$user_id            = ( true === empty( $user_id )) ? get_current_user_id() : $user_id;
-	$not_specified_text = ( false === $not_specified_text ) ? __( 'Not Specified', WE_LS_SLUG ) : esc_html( $not_specified_text );
+	$not_specified_text = ( false === $not_specified_text ) ? esc_html__( 'Not Specified', WE_LS_SLUG ) : esc_html( $not_specified_text );
 	$user_data          = ws_ls_user_preferences_get( $field, $user_id );
 
 	switch ( $field ) {
@@ -653,7 +679,7 @@ function ws_ls_get_dob_for_display( $user_id = NULL, $not_specified_text = '', $
 	$user_id    = ( true === empty( $user_id ) ) ? get_current_user_id() : $user_id;
 	$dob        = ws_ls_get_dob( $user_id );
 
-	$not_specified_text = ( false === $not_specified_text) ? __( 'Not Specified', WE_LS_SLUG ) : esc_html( $not_specified_text );
+	$not_specified_text = ( false === $not_specified_text) ? esc_html__( 'Not Specified', WE_LS_SLUG ) : esc_html( $not_specified_text );
 
     if (false === empty( $dob ) && '0000-00-00 00:00:00' !== $dob ) {
 		$html = ws_ls_iso_date_into_correct_format( $dob, $user_id );
@@ -721,7 +747,7 @@ function ws_ls_age_from_dob( $dob ) {
  */
 function ws_ls_permission_check_message() {
     if ( false === ws_ls_permission_check() )  {
-        wp_die( __( 'You do not have sufficient permissions to access this page.' , WE_LS_SLUG ) );
+        wp_die( esc_html__( 'You do not have sufficient permissions to access this page.' , WE_LS_SLUG ) );
     }
 }
 
@@ -785,7 +811,7 @@ function ws_ls_user_exist( $user_id ) {
 function ws_ls_user_exist_check($user_id ) {
 
     if ( false === ws_ls_user_exist( $user_id ) ) {
-        wp_die( __( 'Error: The user does not appear to exist' , WE_LS_SLUG ) );
+        wp_die( esc_html__( 'Error: The user does not appear to exist' , WE_LS_SLUG ) );
     }
 
     return true;
@@ -882,7 +908,7 @@ function ws_ls_user_preferences_get( $field = 'gender', $user_id = false, $defau
  */
 function ws_ls_user_preferences_display( $arguments = [] ) {
 
-	$arguments = wp_parse_args( $arguments, [ 'user-id' => get_current_user_id(), 'field' => 'dob', 'shorten' => false , 'not-specified-text' => __( 'Not Specified', WE_LS_SLUG ) ] );
+	$arguments = wp_parse_args( $arguments, [ 'user-id' => get_current_user_id(), 'field' => 'dob', 'shorten' => false , 'not-specified-text' => esc_html__( 'Not Specified', WE_LS_SLUG ) ] );
 
 	$cache_key = ws_ls_cache_generate_key_from_array( 'pref-display-', $arguments );
 

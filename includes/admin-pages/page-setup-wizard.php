@@ -19,16 +19,16 @@ function ws_ls_setup_wizard_page() {
 					<div class="meta-box-sortables ui-sortable">
 
 						<div class="postbox">
-							<h3 class="hndle"><span><?php echo __( 'Setup Wizard', WE_LS_SLUG); ?> </span></h3>
+							<h3 class="hndle"><span><?php echo esc_html__( 'Setup Wizard', WE_LS_SLUG); ?> </span></h3>
 							<div style="padding: 15px 15px 0px 15px">
                                 <div id="ws-ls-tabs">
                                     <ul>
-                                        <li><a>1. <?php echo __( 'Introduction', WE_LS_SLUG); ?><span><?php echo __( 'Thank you for using Weight Tracker', WE_LS_SLUG); ?></span></a></li>
-                                        <li><a>2. <?php echo __( 'Setup', WE_LS_SLUG); ?><span><?php echo __( 'How to use Shortcodes and Widgets', WE_LS_SLUG); ?></span></a></li>
-                                        <li><a>3. <?php echo __( 'Admin Interface', WE_LS_SLUG); ?><span><?php echo __( 'Viewing and interacting with your user\'s data', WE_LS_SLUG); ?></span></a></li>
-                                        <li><a>4. <?php echo __( 'Features and Guides', WE_LS_SLUG); ?><span><?php echo __( 'Useful features and guides', WE_LS_SLUG); ?></span></a></li>
-                                        <li><a>5. <?php echo __( 'Meal Tracker', WE_LS_SLUG ); ?><span><?php echo __( 'Track meals and calories too', WE_LS_SLUG); ?></span></a></li>
-                                        <li><a>6. <?php echo __( 'Customisations', WE_LS_SLUG); ?><span><?php echo __( 'Custom modifications to Weight Tracker', WE_LS_SLUG); ?></span></a></li>
+                                        <li><a>1. <?php echo esc_html__( 'Introduction', WE_LS_SLUG); ?><span><?php echo esc_html__( 'Thank you for using Weight Tracker', WE_LS_SLUG); ?></span></a></li>
+                                        <li><a>2. <?php echo esc_html__( 'Setup', WE_LS_SLUG); ?><span><?php echo esc_html__( 'How to use Shortcodes and Widgets', WE_LS_SLUG); ?></span></a></li>
+                                        <li><a>3. <?php echo esc_html__( 'Admin Interface', WE_LS_SLUG); ?><span><?php echo esc_html__( 'Viewing and interacting with your user\'s data', WE_LS_SLUG); ?></span></a></li>
+                                        <li><a>4. <?php echo esc_html__( 'Features and Guides', WE_LS_SLUG); ?><span><?php echo esc_html__( 'Useful features and guides', WE_LS_SLUG); ?></span></a></li>
+                                        <li><a>5. <?php echo esc_html__( 'Meal Tracker', WE_LS_SLUG ); ?><span><?php echo esc_html__( 'Track meals and calories too', WE_LS_SLUG); ?></span></a></li>
+                                        <li><a>6. <?php echo esc_html__( 'Customisations', WE_LS_SLUG); ?><span><?php echo esc_html__( 'Custom modifications to Weight Tracker', WE_LS_SLUG); ?></span></a></li>
                                     </ul>
                                     <div>
                                         <div>
@@ -45,7 +45,7 @@ function ws_ls_setup_wizard_page() {
                                             <h3>Settings</h3>
                                             <p>The Weight Tracker plugin is highly configurable, you should review and modify the settings to suit your needs.</p>
 
-                                            <a href="<?php echo ws_ls_get_link_to_settings(); ?>" class="button"><i class="fa fa-link"></i> View Settings Page</a>
+                                            <a href="<?php  ws_ls_echo_wp_kses( ws_ls_get_link_to_settings() ); ?>" class="button"><i class="fa fa-link"></i> View Settings Page</a>
 
                                             <h3>Documentation</h3>
                                             <p>Further help and documentation, please visit our documentation site:</p>
@@ -63,7 +63,7 @@ function ws_ls_setup_wizard_page() {
                                                 [gallery]. If you are unsure about shortcodes and their use, you should consider reading <a href="https://en.support.wordpress.com/shortcodes/" target="_blank" rel="noopener">WordPress's documentation</a>.
                                             </p>
                                             <h4>Weight Tracker shortcodes</h4>
-                                            <p><img src="<?php echo plugins_url( 'assets/images/shortcode-example.png', __FILE__ ); ?>" style="margin-right:20px" align="left" class="setup-wizard-image"/>
+                                            <p><img src="<?php ws_ls_echo( plugins_url( 'assets/images/shortcode-example.png', __FILE__ ) ); ?>" style="margin-right:20px" align="left" class="setup-wizard-image"/>
                                                 Weight Tracker ships with nearly 30 WordPress shortcodes. These  <a href="https://en.support.wordpress.com/shortcodes/" target="_blank" rel="noopener">shortcodes</a> render the required forms, graphs, interfaces, data, photos, etc that power Weight Tracker and the tools that will enrich your user's experience.</p>
                                             <p>It's highly recommended that you browse the <a href="https://en.support.wordpress.com/shortcodes/" target="_blank" rel="noopener">Weight Tracker shortcode documentation</a> to get an idea of the features you can build.</p>
                                             <p><strong>A simple, one page example</strong></p>
@@ -124,12 +124,12 @@ function ws_ls_setup_wizard_page() {
                                         </div>
                                         <div>
                                             <p>
-                                                <img src="<?php echo plugins_url( 'assets/images/user-data.png', __FILE__ ); ?>" style="margin-right:20px" align="left" class="setup-wizard-image"/>
-                                                Weight Tracker contains an extensive admin section for viewing and manipulating your user's data. You can access it from the WordPress admin menu by navigating to Weight Tracker > <a href="<?php echo ws_ls_get_link_to_user_data(); ?>">Manage User Data</a>
+                                                <img src="<?php ws_ls_echo( WS_LS_BASE_URL . 'includes/admin-pages/assets/images/user-data.png' ); ?>" style="margin-right:20px" align="left" class="setup-wizard-image"/>
+                                                Weight Tracker contains an extensive admin section for viewing and manipulating your user's data. You can access it from the WordPress admin menu by navigating to Weight Tracker > <a href="<?php ws_ls_echo( ws_ls_get_link_to_user_data() ); ?>">Manage User Data</a>
                                             </p>
 
                                                 <p>
-                                                    <a href="<?php echo ws_ls_get_link_to_user_data(); ?>" class="button"><i class="fa fa-link"></i> View User Data</a>
+                                                    <a href="<?php ws_ls_echo( ws_ls_get_link_to_user_data() ); ?>" class="button"><i class="fa fa-link"></i> View User Data</a>
                                                 </p>
 
                                         </div>

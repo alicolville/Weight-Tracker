@@ -178,13 +178,13 @@ function ws_ls_challenges_table() {
 	<table class="ws-ls-footable ws-ls-footable-basic widefat" data-paging="true" data-sorting="true" data-state="true">
 		<thead>
 		<tr>
-			<th data-type="number"><?php echo __( 'ID', WE_LS_SLUG ); ?></th>
-			<th data-type="text"><?php echo __( 'Name', WE_LS_SLUG ); ?></th>
-			<th data-breakpoints="xs" data-type="date" data-format-string="D/M/Y"><?php echo __( 'Start Date', WE_LS_SLUG ); ?></th>
-			<th data-breakpoints="xs" data-type="date" data-format-string="D/M/Y"><?php echo __( 'End Date', WE_LS_SLUG ); ?></th>
-			<th data-breakpoints="xs" data-type="number"><?php echo __( 'No. entries', WE_LS_SLUG ); ?></th>
-			<th data-breakpoints="xs" data-type="number"><?php echo __( 'Entries to process', WE_LS_SLUG ); ?></th>
-			<th data-breakpoints="xs" data-type="text"><?php echo __( 'Closed', WE_LS_SLUG ); ?></th>
+			<th data-type="number"><?php echo esc_html__( 'ID', WE_LS_SLUG ); ?></th>
+			<th data-type="text"><?php echo esc_html__( 'Name', WE_LS_SLUG ); ?></th>
+			<th data-breakpoints="xs" data-type="date" data-format-string="D/M/Y"><?php echo esc_html__( 'Start Date', WE_LS_SLUG ); ?></th>
+			<th data-breakpoints="xs" data-type="date" data-format-string="D/M/Y"><?php echo esc_html__( 'End Date', WE_LS_SLUG ); ?></th>
+			<th data-breakpoints="xs" data-type="number"><?php echo esc_html__( 'No. entries', WE_LS_SLUG ); ?></th>
+			<th data-breakpoints="xs" data-type="number"><?php echo esc_html__( 'Entries to process', WE_LS_SLUG ); ?></th>
+			<th data-breakpoints="xs" data-type="text"><?php echo esc_html__( 'Closed', WE_LS_SLUG ); ?></th>
 			<th data-breakpoints="xs"></th>
 		</tr>
 		</thead>
@@ -219,10 +219,10 @@ function ws_ls_challenges_table() {
 					ws_ls_iso_date_into_correct_format( $challenge[ 'end_date' ] ),
 					$stats[ 'count' ],
 					$stats[ 'to-be-processed' ],
-					( 1 === (int) $challenge[ 'enabled' ] ) ? __( 'No', WE_LS_SLUG ) : __( 'Yes', WE_LS_SLUG ),
-					__( 'View challenge data', WE_LS_SLUG ),
-					__( 'Close challenge', WE_LS_SLUG ),
-					__( 'Delete challenge', WE_LS_SLUG ),
+					( 1 === (int) $challenge[ 'enabled' ] ) ? esc_html__( 'No', WE_LS_SLUG ) : esc_html__( 'Yes', WE_LS_SLUG ),
+					esc_html__( 'View challenge data', WE_LS_SLUG ),
+					esc_html__( 'Close challenge', WE_LS_SLUG ),
+					esc_html__( 'Delete challenge', WE_LS_SLUG ),
 					ws_ls_challenge_link( $challenge[ 'id' ] ),
 					ws_ls_challenge_link( $challenge[ 'id' ], 'close' ),
 					ws_ls_challenge_link( $challenge[ 'id' ], 'delete' )
@@ -243,11 +243,11 @@ function ws_ls_challenges_table() {
 function ws_ls_challenges_entry_columns_defaults() {
 
 	return [
-		'weight_diff'           => [ 'title' => __( 'Total Weight Loss', WE_LS_SLUG ), 'type' => 'text' ],
-		'bmi_diff'              => [ 'title' => __( 'BMI Change', WE_LS_SLUG ) ],
-		'weight_percentage'     => [ 'title' => __( '% Body Weight', WE_LS_SLUG ) ],
-		'count_mt_entries'      => [ 'title' => __( 'Meal Tracker Streaks (Days)', WE_LS_SLUG ) ],
-		'count_wt_entries_week' => [ 'title' => __( 'Weight Tracker Streaks (Weeks)', WE_LS_SLUG ) ]
+		'weight_diff'           => [ 'title' => esc_html__( 'Total Weight Loss', WE_LS_SLUG ), 'type' => 'text' ],
+		'bmi_diff'              => [ 'title' => esc_html__( 'BMI Change', WE_LS_SLUG ) ],
+		'weight_percentage'     => [ 'title' => esc_html__( '% Body Weight', WE_LS_SLUG ) ],
+		'count_mt_entries'      => [ 'title' => esc_html__( 'Meal Tracker Streaks (Days)', WE_LS_SLUG ) ],
+		'count_wt_entries_week' => [ 'title' => esc_html__( 'Weight Tracker Streaks (Weeks)', WE_LS_SLUG ) ]
 	];
 }
 
@@ -315,7 +315,7 @@ function ws_ls_challenges_view_entries( $args ) {
 	]);
 
 	if ( true === empty( $args[ 'id' ] ) ) {
-		return __( 'Please specify an ID e.g. [wt-challenges id="1"]');
+		return esc_html__( 'Please specify an ID e.g. [wt-challenges id="1"]');
 	}
 
 	$data = ws_ls_challenges_data( $args );
@@ -331,7 +331,7 @@ function ws_ls_challenges_view_entries( $args ) {
                                     <thead>
                                         <tr>
                                             <th data-type="text">%s</th>',
-		__( 'Name', WE_LS_SLUG )
+		esc_html__( 'Name', WE_LS_SLUG )
 	);
 
 	foreach ( $columns as $key => $details ) {
@@ -427,9 +427,9 @@ function ws_ls_challenges_view_entries( $args ) {
                                         </tbody>
                                    </table>',
 			$html_columns,
-			__( 'Sum', WE_LS_SLUG ),
+			esc_html__( 'Sum', WE_LS_SLUG ),
 			$html_sums,
-			__( 'Average', WE_LS_SLUG ),
+			esc_html__( 'Average', WE_LS_SLUG ),
 			$html_averages
 		);
 	}
@@ -461,37 +461,37 @@ function ws_ls_challenges_show_filters() {
 	}
 
 	// Gender
-	$html .= ws_ls_form_field_select( [ 'key' => 'gender', 'label' => __( 'Gender', WE_LS_SLUG ) . ':', 'values' => ws_ls_genders(), 'selected' => ws_ls_querystring_value( 'gender', true ) ] );
+	$html .= ws_ls_form_field_select( [ 'key' => 'gender', 'label' => esc_html__( 'Gender', WE_LS_SLUG ) . ':', 'values' => ws_ls_genders(), 'selected' => ws_ls_querystring_value( 'gender', true ) ] );
 
 	// Age range
-	$html .= ws_ls_form_field_select( [ 'key' => 'age-range', 'label' => __( 'Age Range', WE_LS_SLUG ) . ':', 'values' => ws_ls_age_ranges( true ), 'selected' => ws_ls_querystring_value( 'age-range', true ) ] );
+	$html .= ws_ls_form_field_select( [ 'key' => 'age-range', 'label' => esc_html__( 'Age Range', WE_LS_SLUG ) . ':', 'values' => ws_ls_age_ranges( true ), 'selected' => ws_ls_querystring_value( 'age-range', true ) ] );
 
 	// Group
 	if ( true === ws_ls_groups_enabled () ) {
-		$html .= ws_ls_form_field_select( [ 'key' => 'group-id', 'label' => __( 'Group', WE_LS_SLUG ) . ':', 'values' => ws_ls_challenge_filters_group_select_values(), 'selected' => ws_ls_querystring_value( 'group-id', true ) ] );
+		$html .= ws_ls_form_field_select( [ 'key' => 'group-id', 'label' => esc_html__( 'Group', WE_LS_SLUG ) . ':', 'values' => ws_ls_challenge_filters_group_select_values(), 'selected' => ws_ls_querystring_value( 'group-id', true ) ] );
 	}
 
 	// Optin
 	if ( true === is_admin() ) {
 
 		$html .= ws_ls_form_field_select( [     'key'       => 'opt-in',
-		                                        'label'     => __( 'Opted in', WE_LS_SLUG ) . ':',
+		                                        'label'     => esc_html__( 'Opted in', WE_LS_SLUG ) . ':',
 		                                        'values'    => [
-													1 => __( 'Opted in', WE_LS_SLUG ),
-													0 => __( 'Everyone', WE_LS_SLUG )
+													1 => esc_html__( 'Opted in', WE_LS_SLUG ),
+													0 => esc_html__( 'Everyone', WE_LS_SLUG )
 												],
 		                                        'selected' => ws_ls_querystring_value( 'opt-in', true ) ] );
 
 		$html .= ws_ls_form_field_select( [     'key'       => 'min-wt-entries',
-		                                        'label'     => __( 'Min. Weight Entries', WE_LS_SLUG ) . ':',
+		                                        'label'     => esc_html__( 'Min. Weight Entries', WE_LS_SLUG ) . ':',
 		                                        'values'    => [
-			                                        2 => __( 'Two or more', WE_LS_SLUG ),
-			                                        1 => __( 'One or more', WE_LS_SLUG )
+			                                        2 => esc_html__( 'Two or more', WE_LS_SLUG ),
+			                                        1 => esc_html__( 'One or more', WE_LS_SLUG )
 		                                        ],
 		                                        'selected' => ws_ls_querystring_value( 'min-wt-entries', true ) ] );
 	}
 
-	$html .= sprintf( '<input type="submit" class="btn button-primary" value="%s" /></form>', __( 'Filter', WE_LS_SLUG ) );
+	$html .= sprintf( '<input type="submit" class="btn button-primary" value="%s" /></form>', esc_html__( 'Filter', WE_LS_SLUG ) );
 
 	return $html;
 }

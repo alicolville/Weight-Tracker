@@ -105,10 +105,10 @@ function ws_ls_groups_hooks_user_side_bar( $rows, $user_id ) {
 
 		$groups = ws_ls_groups_user( $user_id );
 
-		$text = ( false === empty( $groups ) ) ? $groups[ 0 ]['name'] :  __('None', WE_LS_SLUG );
+		$text = ( false === empty( $groups ) ) ? $groups[ 0 ]['name'] :  esc_html__('None', WE_LS_SLUG );
 
 		$rows[] = [
-			'th' =>  __('Group', WE_LS_SLUG ),
+			'th' =>  esc_html__('Group', WE_LS_SLUG ),
 			'td' => sprintf( '<a href="%s">%s</a>', esc_url( $settings_url ), esc_html( $text ) )
 		];
 
@@ -145,19 +145,19 @@ function ws_ls_groups_hooks_user_preferences_form( $html, $user_id ) {
 			$current_selection = ( false === empty( $current_selection[0]['id'] ) ) ? (int) $current_selection[0]['id'] : 0;
 
 			if ( true === is_admin() ) {
-				$html .= sprintf( '<p><a href="%s">%s</a></p>', ws_ls_groups_link(), __('Add / remove Groups', WE_LS_SLUG) );
+				$html .= sprintf( '<p><a href="%s">%s</a></p>', ws_ls_groups_link(), esc_html__('Add / remove Groups', WE_LS_SLUG) );
 			}
 
 			$groups = wp_list_pluck( $groups, 'name', 'id' );
 
 			$html .= ws_ls_form_field_select( [ 'key'           => 'ws-ls-group',
-			                                    'label'         => __( 'Group', WE_LS_SLUG ),
+			                                    'label'         => esc_html__( 'Group', WE_LS_SLUG ),
 												'values'        => $groups,
 												'selected'      => $current_selection,
 												'uikit'         => true ] );
 
 		} else {
-			$html .= __('None', WE_LS_SLUG );
+			$html .= esc_html__('None', WE_LS_SLUG );
 		}
 
 	}
@@ -449,11 +449,11 @@ function ws_ls_groups( $include_none = true, $include_all_groups = false ) {
 	$data = $wpdb->get_results( $sql , ARRAY_A );
 
 	if ( true === $include_none ) {
-		$data = array_merge( [ [ 'id' => 0, 'name' => __('No Group', WE_LS_SLUG ) ] ], $data );
+		$data = array_merge( [ [ 'id' => 0, 'name' => esc_html__('No Group', WE_LS_SLUG ) ] ], $data );
 	}
 
 	if ( true === $include_all_groups ) {
-		$data = array_merge( [ [ 'id' => -1, 'name' => __('All Groups', WE_LS_SLUG ) ] ], $data );
+		$data = array_merge( [ [ 'id' => -1, 'name' => esc_html__('All Groups', WE_LS_SLUG ) ] ], $data );
 	}
 
 	ws_ls_cache_user_set( 'groups', $cache_key , $data );
@@ -562,7 +562,7 @@ function ws_ls_groups_export_add( $row ) {
     if ( false === empty( $group[ 0 ][ 'name' ] ) ) {
         $row[ 'group' ] = $group[ 0 ][ 'name' ];
     } else {
-	    $row[ 'group' ] = __( 'No Group', WE_LS_SLUG );
+	    $row[ 'group' ] = esc_html__( 'No Group', WE_LS_SLUG );
     }
 
     return $row;
@@ -580,7 +580,7 @@ function ws_ls_groups_export_columns( $columns ) {
         return $columns;
     }
 
-    $columns[ 'group' ] = __( 'Group', WE_LS_SLUG );
+    $columns[ 'group' ] = esc_html__( 'Group', WE_LS_SLUG );
     return $columns;
 }
 add_filter( 'wlt-export-columns', 'ws_ls_groups_export_columns' );
@@ -676,11 +676,11 @@ function ws_ls_ajax_groups_get(){
 	}
 
 	$columns = [
-		[ 'name' => 'id', 'title' => __('Group ID', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'number', 'visible' => true ],
-		[ 'name' => 'name', 'title' => __('Name', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ],
-		[ 'name' => 'count', 'title' => __('No. Users', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'number' ],
+		[ 'name' => 'id', 'title' => esc_html__('Group ID', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'number', 'visible' => true ],
+		[ 'name' => 'name', 'title' => esc_html__('Name', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ],
+		[ 'name' => 'count', 'title' => esc_html__('No. Users', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'number' ],
 		[ 'name' => 'weight_difference', 'title' => '', 'breakpoints'=> '', 'type' => 'number', 'visible' => false ],
-		[ 'name' => 'weight_display', 'title' => __('Total Weight Difference', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ]
+		[ 'name' => 'weight_display', 'title' => esc_html__('Total Weight Difference', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ]
 	];
 
 	$rows = [];
@@ -731,30 +731,30 @@ function ws_ls_ajax_groups_users_get(){
 		wp_send_json( $cache );
 	}
 
-	$diff_label = ( true === ws_ls_to_bool( $todays_entries_only ) ) ? __('Diff from start', WE_LS_SLUG) : __('Diff from prev', WE_LS_SLUG);
+	$diff_label = ( true === ws_ls_to_bool( $todays_entries_only ) ) ? esc_html__('Diff from start', WE_LS_SLUG) : esc_html__('Diff from prev', WE_LS_SLUG);
 
 	$columns = [
-		[ 'name' => 'id', 'title' => __('ID', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'number', 'visible' => false ],
-		[ 'name' => 'display_name', 'title' => __('User', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ],
-        [ 'name' => 'number-of-entries', 'title' => __('No. entries', WE_LS_SLUG), 'breakpoints'=> 'md', 'type' => 'number' ],
-        [ 'name' => 'start-weight', 'title' => __('Start', WE_LS_SLUG), 'breakpoints'=> 'md', 'type' => 'text' ],
-		[ 'name' => 'previous-weight', 'title' => __('Previous', WE_LS_SLUG), 'breakpoints'=> 'md', 'type' => 'text' ],
-        [ 'name' => 'latest-weight', 'title' => __('Latest', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ] ];
+		[ 'name' => 'id', 'title' => esc_html__('ID', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'number', 'visible' => false ],
+		[ 'name' => 'display_name', 'title' => esc_html__('User', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ],
+        [ 'name' => 'number-of-entries', 'title' => esc_html__('No. entries', WE_LS_SLUG), 'breakpoints'=> 'md', 'type' => 'number' ],
+        [ 'name' => 'start-weight', 'title' => esc_html__('Start', WE_LS_SLUG), 'breakpoints'=> 'md', 'type' => 'text' ],
+		[ 'name' => 'previous-weight', 'title' => esc_html__('Previous', WE_LS_SLUG), 'breakpoints'=> 'md', 'type' => 'text' ],
+        [ 'name' => 'latest-weight', 'title' => esc_html__('Latest', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ] ];
 	
 	if ( false === $hide_col_diff_from_prev ) {
 		$columns[] = [ 'name' => 'diff-weight', 'title' => $diff_label, 'breakpoints'=> 'md', 'type' => 'text' ];
 	}
 
 	if ( false === $hide_column_losses ) {
-		$columns[] = [ 'name' => 'losses', 'title' => __('Losses', WE_LS_SLUG), 'breakpoints'=> 'md', 'type' => 'text' ];
+		$columns[] = [ 'name' => 'losses', 'title' => esc_html__('Losses', WE_LS_SLUG), 'breakpoints'=> 'md', 'type' => 'text' ];
 	}
 
 	if ( false === $hide_column_gains ) {
-		$columns[] = [ 'name' => 'gains', 'title' => __('Gains', WE_LS_SLUG), 'breakpoints'=> 'md', 'type' => 'text' ];
+		$columns[] = [ 'name' => 'gains', 'title' => esc_html__('Gains', WE_LS_SLUG), 'breakpoints'=> 'md', 'type' => 'text' ];
 	}
 
-    $columns[] = [ 'name' => 'target', 'title' => __('Target', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ];
-	$columns[] = [ 'name' => 'awards', 'title' => __('Awards', WE_LS_SLUG), 'breakpoints'=> 'md', 'type' => 'text' ];
+    $columns[] = [ 'name' => 'target', 'title' => esc_html__('Target', WE_LS_SLUG), 'breakpoints'=> '', 'type' => 'text' ];
+	$columns[] = [ 'name' => 'awards', 'title' => esc_html__('Awards', WE_LS_SLUG), 'breakpoints'=> 'md', 'type' => 'text' ];
 	
 	$rows               = [];
 	$total_difference   = 0;
@@ -908,7 +908,7 @@ function ws_ls_groups_shortcode( $user_defined_arguments ) {
 
 	$arguments = shortcode_atts( [  'id' => 0,
 	                                'auto-detect' => false,
-	                                'text-no-difference' => __( 'There is no weight difference for this group.', WE_LS_SLUG )
+	                                'text-no-difference' => esc_html__( 'There is no weight difference for this group.', WE_LS_SLUG )
 	], $user_defined_arguments );
 
 	if ( true === ws_ls_to_bool( $arguments[ 'auto-detect' ] ) ) {
@@ -944,7 +944,7 @@ add_shortcode( 'wt-group-total-weight-loss', 'ws_ls_groups_shortcode' );
  */
 function ws_ls_groups_current( $user_defined_arguments ) {
 
-    $arguments = shortcode_atts( [ 'user-id' => 0, 'no-group-text' => __('No Group', WE_LS_SLUG) ], $user_defined_arguments );
+    $arguments = shortcode_atts( [ 'user-id' => 0, 'no-group-text' => esc_html__('No Group', WE_LS_SLUG) ], $user_defined_arguments );
 
     $arguments[ 'user-id'] = ws_ls_force_numeric_argument( $arguments[ 'user-id'], NULL );
 

@@ -20,14 +20,14 @@ function ws_ls_shortcode_wlt_display_photos_tab( $user_id = null ) {
 
 	if ( $user_id ) {
 
-        $html .= sprintf('<h3>%s</h3>', __( 'Photos', WE_LS_SLUG ) );
+        $html .= sprintf('<h3>%s</h3>', esc_html__( 'Photos', WE_LS_SLUG ) );
 
 		$photo_count = ws_ls_photos_db_count_photos( $user_id, true );
 
 		if ( $photo_count > 0 ) {
 
 			$html .= sprintf('<p>%s <strong>%s</strong> %s:</p>',
-									__('You have uploaded', WE_LS_SLUG),
+									esc_html__('You have uploaded', WE_LS_SLUG),
 									$photo_count,
 									_n( 'photo', 'photos', $photo_count, WE_LS_SLUG )
 			);
@@ -35,7 +35,7 @@ function ws_ls_shortcode_wlt_display_photos_tab( $user_id = null ) {
 			$html .= ws_ls_photos_shortcode_gallery( ['user-id' => $user_id] );
 
 		} else {
-			$html .= '<p>' . __('It looks like you haven\'t uploaded any photos yet', WE_LS_SLUG) . '.</p>';
+			$html .= '<p>' . esc_html__('It looks like you haven\'t uploaded any photos yet', WE_LS_SLUG) . '.</p>';
 		}
 	}
 
@@ -63,42 +63,42 @@ function ws_ls_shortcode_wlt_display_advanced_tab( $arguments ) {
 	if ( $user_id ) {
 
 		// BMI
-		$html .= sprintf('<h3>%s</h3>', __( 'BMI (Body Mass Index)', WE_LS_SLUG ) );
+		$html .= sprintf('<h3>%s</h3>', esc_html__( 'BMI (Body Mass Index)', WE_LS_SLUG ) );
 
 		if ( ws_ls_shortcode_if_value_exist( $user_id, [ 'weight', 'height' ] ) ) {
 
 			if ( true === $include_narrative ) {
 				$html .= sprintf( '<p>%s</p>',
-											__('The BMI (Body Mass Index) is used by the medical profession to quickly determine a person’s weight in regard to their height. From a straight forward calculation the BMI factor can be gained and may be used to determine if a person is underweight, of normal weight, overweight or obese.', WE_LS_SLUG ) );
+											esc_html__('The BMI (Body Mass Index) is used by the medical profession to quickly determine a person’s weight in regard to their height. From a straight forward calculation the BMI factor can be gained and may be used to determine if a person is underweight, of normal weight, overweight or obese.', WE_LS_SLUG ) );
 			}
 
 			$html .= sprintf('	<div class="ws-ls-tab-advanced-data">
 										<p>%s: <span>%s</span></p>
 									</div>',
-				__('Your current BMI is', WE_LS_SLUG),
+				esc_html__('Your current BMI is', WE_LS_SLUG),
 				ws_ls_shortcode_bmi( [ 'user-id' => $user_id, 'display' => 'both' ] )
 
 			);
 
 		} else {
-			$html .= sprintf( '<p>%s</p>', __( 'Before we can calculate your BMI, we need your current weight and height.', WE_LS_SLUG ) );
+			$html .= sprintf( '<p>%s</p>', esc_html__( 'Before we can calculate your BMI, we need your current weight and height.', WE_LS_SLUG ) );
 		}
 
 		$got_bmr = ws_ls_shortcode_if_value_exist( $user_id, 'bmr' );
-		$bmr_missing_text = sprintf( '<p>%s</p>', __( 'To allow us to calculate this, we need your latest weight, date of birth, height and gender.', WE_LS_SLUG ) );
+		$bmr_missing_text = sprintf( '<p>%s</p>', esc_html__( 'To allow us to calculate this, we need your latest weight, date of birth, height and gender.', WE_LS_SLUG ) );
 
 		// BMR
-		$html .= sprintf('<h3>%s</h3>', __( 'BMR (Basal Metabolic Rate)', WE_LS_SLUG ) );
+		$html .= sprintf('<h3>%s</h3>', esc_html__( 'BMR (Basal Metabolic Rate)', WE_LS_SLUG ) );
 
 		if ( true === $got_bmr ) {
 			if ( true === $include_narrative ) {
-				$html .= sprintf( '<p>%s</p>',  __( 'BMR is short for Basal Metabolic Rate. The Basal Metabolic Rate is the number of calories required to keep your body functioning at rest, also known as your metabolism. We calculate your BMR using formulas provided by www.diabetes.co.uk.', WE_LS_SLUG ) );
+				$html .= sprintf( '<p>%s</p>',  esc_html__( 'BMR is short for Basal Metabolic Rate. The Basal Metabolic Rate is the number of calories required to keep your body functioning at rest, also known as your metabolism. We calculate your BMR using formulas provided by www.diabetes.co.uk.', WE_LS_SLUG ) );
 			}
 
 			$html .= sprintf('	<div class="ws-ls-tab-advanced-data">
 										<p>%s: <span>%s</span></p>
 									</div>',
-				__('Your current BMR is', WE_LS_SLUG),
+				esc_html__('Your current BMR is', WE_LS_SLUG),
 				ws_ls_shortcode_bmr(['user-id' => $user_id])
 			);
 		} else {
@@ -106,12 +106,12 @@ function ws_ls_shortcode_wlt_display_advanced_tab( $arguments ) {
 		}
 
 		// Calories
-		$html .= sprintf( '<h3>%s</h3>', __('Suggested Calorie Intake', WE_LS_SLUG ) );
+		$html .= sprintf( '<h3>%s</h3>', esc_html__('Suggested Calorie Intake', WE_LS_SLUG ) );
 
 		if ( true === $got_bmr ) {
 
 			if ( true === $include_narrative ) {
-				$html .= sprintf( '<p>%s</p>', __('Once we know your BMR (the number of calories to keep you functioning at rest), we can go on to give you suggestions on how to spread your calorie intake across the day. Firstly we split the figures into daily calorie intake to maintain weight and daily calorie intake to lose weight. Daily calorie intake to lose weight is calculated based on NHS advice – they suggest to lose 1 – 2lbs a week you should subtract 600 calories from your BMR. The two daily figures can be further broken down by recommending how to split calorie intake across the day i.e. breakfast, lunch, dinner and snacks.', WE_LS_SLUG ) );
+				$html .= sprintf( '<p>%s</p>', esc_html__('Once we know your BMR (the number of calories to keep you functioning at rest), we can go on to give you suggestions on how to spread your calorie intake across the day. Firstly we split the figures into daily calorie intake to maintain weight and daily calorie intake to lose weight. Daily calorie intake to lose weight is calculated based on NHS advice – they suggest to lose 1 – 2lbs a week you should subtract 600 calories from your BMR. The two daily figures can be further broken down by recommending how to split calorie intake across the day i.e. breakfast, lunch, dinner and snacks.', WE_LS_SLUG ) );
 			}
 
 			$html .= sprintf('	<div class="ws-ls-tab-advanced-data">
@@ -125,13 +125,13 @@ function ws_ls_shortcode_wlt_display_advanced_tab( $arguments ) {
 		}
 
 		// Macro N
-		$html .= sprintf('<h3>%s</h3>', __('Macronutrients', WE_LS_SLUG ) );
+		$html .= sprintf('<h3>%s</h3>', esc_html__('Macronutrients', WE_LS_SLUG ) );
 
 		if ( true === $got_bmr ) {
 
 			if ( true === $include_narrative ) {
 
-				$html .= sprintf('<p>%s</p>', __( 'With calories calculated, the we can recommend how those calories should be split into Fats, Carbohydrates and Proteins.' , WE_LS_SLUG ) );
+				$html .= sprintf('<p>%s</p>', esc_html__( 'With calories calculated, the we can recommend how those calories should be split into Fats, Carbohydrates and Proteins.' , WE_LS_SLUG ) );
 
 			}
 

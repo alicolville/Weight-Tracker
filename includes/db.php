@@ -564,7 +564,7 @@ function ws_ls_db_dates_min_max_get( $user_id ) {
  *
  * @return bool|false|int
  */
-function ws_ls_set_user_preferences( $in_admin_area, $fields = [] ) {
+function  ws_ls_set_user_preferences( $in_admin_area, $fields = [] ) {
 
 	$user_id = ( false === empty( $fields[ 'user_id' ] ) ) ? (int) $fields[ 'user_id' ] : get_current_user_id();
 
@@ -576,6 +576,11 @@ function ws_ls_set_user_preferences( $in_admin_area, $fields = [] ) {
 	    $db_fields[ 'settings' ] = json_encode( $db_fields['settings'] );
     }
 
+	if ( true === isset( $db_fields[ 'email_lists' ] ) &&
+            true === is_array( $db_fields['email_lists'] ) ) {
+	    $db_fields[ 'email_lists' ] = json_encode( $db_fields['email_lists'] );
+    }
+	
 	if ( false === empty( $db_fields['dob'] ) ) {
 		$db_fields['dob'] = ws_ls_convert_date_to_iso( $db_fields[ 'dob' ], ( $in_admin_area ) ? false : $db_fields[ 'user_id' ] );
 	}
@@ -706,7 +711,9 @@ function ws_ls_user_preferences_get_formats( $db_fields ) {
     $lookup = [
 			    'activity_level'    => '%f',
 			    'aim'               => '%d',
+				'body_type'         => '%d',
 			    'dob'               => '%s',
+				'email_lists'       => '%s',
 			    'gender'            => '%d',
 			    'height'            => '%d',
 		        'settings'          => '%s',
@@ -770,12 +777,12 @@ function ws_ls_db_entries_count( $user_id = NULL, $use_cache = true ) {
 	if (  $use_cache && ! empty( $cache )  )   {
 		return $cache;
 	}
-
-	$where          = ( -1 !== $user_id ) ? ' where weight_user_id = ' . (int) $user_id : '';
-	$where_weight   = ' where weight_weight is not null' . ( ( -1 !== $user_id ) ? ' and weight_user_id = ' . (int) $user_id : '' );
-
 	global $wpdb;
 
+	$where          = ( -1 !== $user_id ) ? $wpdb->prepare( ' where weight_user_id = %d', $user_id ) : '';
+	$where_weight   = ' where weight_weight is not null' . ( ( -1 !== $user_id ) ? $wpdb->prepare( ' and weight_user_id = %d', $user_id ) : '' );
+
+	
     $stats = [      'number-of-entries'             => $wpdb->get_var('SELECT count( id ) FROM ' . $wpdb->prefix . WE_LS_TABLENAME . $where ),
                     'number-of-weight-entries'      => $wpdb->get_var('SELECT count( id ) FROM ' . $wpdb->prefix . WE_LS_TABLENAME . $where_weight ),
 	                'number-of-users'               => $wpdb->get_var('SELECT count( id ) FROM ' . $wpdb->prefix . 'users'),
@@ -907,6 +914,7 @@ function ws_ls_db_create_core_tables() {
              dob datetime NULL,
              body_type float DEFAULT 0 NULL,
              challenge_opt_in float DEFAULT -1 NULL,
+			 email_lists text null,
 			 UNIQUE KEY user_id (user_id)
 	 ) $charset_collate;";
 

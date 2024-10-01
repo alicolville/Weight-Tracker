@@ -10,7 +10,7 @@
 - Supports UK and US date formats
 - [Includes translations]({{ site.baseurl }}/translate.html) for several  languages, e.g. German, Dutch, Brazilian-Portuguese, etc
   
-## Pro license (£50 a year )
+## Pro license (£60 a year )
 ### *Includes core features and the following:*
 
 Besides the features listed under core, the Pro version benefits from the following:  
@@ -37,7 +37,7 @@ Besides the features listed under core, the Pro version benefits from the follow
 -   **Better Tables**. Data tables in front end and admin will support paging and sorting.  
 -   **Admin**:  **Extra Settings**. Extra settings to customise the plugin will be added, e.g. number of plot points on graph, rows per page, etc.  
   
-## Pro Plus license (£100 a year )
+## Pro Plus license (£120 a year )
 ### *Includes Core and Pro features as well as the following:*
   
 Besides the features listed under Pro, the Pro Plus version benefits from the following:  

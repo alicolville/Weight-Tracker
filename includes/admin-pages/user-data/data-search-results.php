@@ -8,14 +8,14 @@ function ws_ls_admin_page_search_results() {
 
     ?>
     <div class="wrap ws-ls-user-data ws-ls-admin-page">
-    <h1><?php echo __( 'Search Results', WE_LS_SLUG ); ?></h1>
+    <h1><?php echo esc_html__( 'Search Results', WE_LS_SLUG ); ?></h1>
     <div id="poststuff">
         <div id="post-body" class="metabox-holder">
             <div id="post-body-content">
                 <div class="meta-box-sortables ui-sortable">
                     <div class="postbox">
 
-                        <h2 class="hndle"><span><?php echo __( 'Search Results', WE_LS_SLUG ); ?></span></h2>
+                        <h2 class="hndle"><span><?php echo esc_html__( 'Search Results', WE_LS_SLUG ); ?></span></h2>
 
                         <div class="inside">
                          <?php
@@ -33,7 +33,7 @@ function ws_ls_admin_page_search_results() {
 
                                     printf('<p>%1$d %2$s: <em>"%3$s"</em></p>',
                                                     count( $search_results ),
-                                                    __( 'results were found for', WE_LS_SLUG ),
+                                                    esc_html__( 'results were found for', WE_LS_SLUG ),
                                                     esc_html( $search_term )
                                     );
 
@@ -41,12 +41,12 @@ function ws_ls_admin_page_search_results() {
 
                                     <table class="widefat">
                                         <tr>
-                                            <th class="row-title"><?php echo __( 'Username', WE_LS_SLUG ) ?></th>
-                                            <th><?php echo __( 'Email', WE_LS_SLUG ) ?></th>
-                                            <th><?php echo __( 'Start Weight', WE_LS_SLUG ) ?></th>
-                                            <th><?php echo __( 'Latest Weight', WE_LS_SLUG ) ?></th>
-	                                        <th><?php echo __( 'Target Weight', WE_LS_SLUG ) ?></th>
-											<th><?php echo __( 'Diff. from Start Weight', WE_LS_SLUG ) ?></th>
+                                            <th class="row-title"><?php echo esc_html__( 'Username', WE_LS_SLUG ) ?></th>
+                                            <th><?php echo esc_html__( 'Email', WE_LS_SLUG ) ?></th>
+                                            <th><?php echo esc_html__( 'Start Weight', WE_LS_SLUG ) ?></th>
+                                            <th><?php echo esc_html__( 'Latest Weight', WE_LS_SLUG ) ?></th>
+	                                        <th><?php echo esc_html__( 'Target Weight', WE_LS_SLUG ) ?></th>
+											<th><?php echo esc_html__( 'Diff. from Start Weight', WE_LS_SLUG ) ?></th>
                                         </tr>
                                         <?php
                                             foreach ( $search_results as $user ) {
@@ -58,12 +58,12 @@ function ws_ls_admin_page_search_results() {
 
                                 } else {
                                     echo sprintf('<p>%s: <em>"%s"</em></p>',
-                                        __( 'No users were found for the given search criteria:', WE_LS_SLUG ),
+                                        esc_html__( 'No users were found for the given search criteria:', WE_LS_SLUG ),
                                         esc_html( $search_term )
                                     );
                                 }
                             } else {
-                                echo __( 'No search terms were specified', WE_LS_SLUG );
+                                echo esc_html__( 'No search terms were specified', WE_LS_SLUG );
                             }
                             ?>
                         </div>

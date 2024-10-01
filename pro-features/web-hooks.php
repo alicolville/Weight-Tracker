@@ -86,17 +86,21 @@ function ws_ls_webhooks_endpoints_contain_slack() {
  */
 function ws_ls_webhooks_process_this( $type ) {
 
-
-
 	// If this is from an admin screen, do we want to process it?
 	if ( true === is_admin() &&
 	     'yes' !== get_option( 'ws-ls-webhooks-admin-changes-enabled', 'no' ) ) {
 		return false;
 	}
 
-	// Do we want to weight entries?
+	// Do we want to process weight entries?
 	if ( 'weight' === $type &&
 	     'yes' !== get_option( 'ws-ls-webhooks-weight-entries-enabled', 'no' ) ) {
+		return false;
+	}
+
+	// Do we want to process notes?
+	if ( 'new-note' === $type &&
+	     'yes' !== get_option( 'ws-ls-webhooks-new-note-enabled', 'no' ) ) {
 		return false;
 	}
 
@@ -139,6 +143,34 @@ function ws_ls_webhooks_weight_target( $type, $entry ) {
 
 }
 add_action( 'wlt-hook-data-added-edited', 'ws_ls_webhooks_weight_target', 10, 2 );
+
+/**
+ * Listen out for new note hooks
+ * @param $note
+ */
+function ws_ls_webhooks_new_note( $note ) {
+	
+	if ( false === ws_ls_webhooks_enabled() ) {
+		return;
+	}
+
+	// Want to process this?
+	if ( false === ws_ls_webhooks_process_this( 'new-note' ) ) {
+		return;
+	}
+
+	$note[ 'user-from' ] 	= ws_ls_simple_user_object( $note[ 'from' ] );
+	$note[ 'user-to' ] 		= ws_ls_simple_user_object( $note[ 'to' ] );
+	$note[ 'timestamp' ]	= date( "Y-m-d H:i:s" );
+	
+	$endpoints = ws_ls_webhooks_urls();
+
+	foreach ( ws_ls_webhooks_urls() as $endpoint ) {
+		ws_ls_webhooks_send( $endpoint, $note );
+	}
+
+}
+add_action( 'wlt-hook-data-new-note', 'ws_ls_webhooks_new_note' );
 
 /**
  * Fire data to webhook endpoint
@@ -223,7 +255,7 @@ function ws_ls_webhooks_data_prep_weight( $entry ) {
 									'type'  => 'header',
 									'text'  => [
 										'type'  => 'plain_text',
-										'text'  => __( 'A weight entry has been added/updated', WE_LS_SLUG ),
+										'text'  => esc_html__( 'A weight entry has been added/updated', WE_LS_SLUG ),
 										'emoji' => false
 									]
 		];
@@ -234,11 +266,11 @@ function ws_ls_webhooks_data_prep_weight( $entry ) {
 			'fields'  => [
 				[
 					'type'  => 'mrkdwn',
-					'text'  => sprintf( '*%1$s:*%2$s %3$s', __( 'Name', WE_LS_SLUG ), PHP_EOL, $data[ 'user-display-name' ] )
+					'text'  => sprintf( '*%1$s:*%2$s %3$s', esc_html__( 'Name', WE_LS_SLUG ), PHP_EOL, $data[ 'user-display-name' ] )
 				],
 				[
 					'type'  => 'mrkdwn',
-					'text'  => sprintf( '*%1$s:*%2$s %3$s', __( 'Date', WE_LS_SLUG ), PHP_EOL, $data[ 'weight-display' ] )
+					'text'  => sprintf( '*%1$s:*%2$s %3$s', esc_html__( 'Date', WE_LS_SLUG ), PHP_EOL, $data[ 'weight-display' ] )
 				]
 			]
 		];
@@ -249,11 +281,11 @@ function ws_ls_webhooks_data_prep_weight( $entry ) {
 			'fields'  => [
 				[
 					'type'  => 'mrkdwn',
-					'text'  => sprintf( '*%1$s:*%2$s %3$s %2$s (%4$s)', __( 'Weight', WE_LS_SLUG ), PHP_EOL, $data[ 'weight-display' ], $data[ 'weight-difference-from-start-display' ] )
+					'text'  => sprintf( '*%1$s:*%2$s %3$s %2$s (%4$s)', esc_html__( 'Weight', WE_LS_SLUG ), PHP_EOL, $data[ 'weight-display' ], $data[ 'weight-difference-from-start-display' ] )
 				],
 				[
 					'type'  => 'mrkdwn',
-					'text'  => sprintf( '*%1$s:*%2$s %3$s', __( 'Starting Weight', WE_LS_SLUG ), PHP_EOL, $data[ 'weight-first-display' ] )
+					'text'  => sprintf( '*%1$s:*%2$s %3$s', esc_html__( 'Starting Weight', WE_LS_SLUG ), PHP_EOL, $data[ 'weight-first-display' ] )
 				]
 			]
 
@@ -285,7 +317,7 @@ function ws_ls_webhooks_data_prep_weight( $entry ) {
 				'fields'  => [
 					[
 						'type'  => 'mrkdwn',
-						'text'  => sprintf( '*%1$s:*%2$s %3$s %2$s', __( 'Notes', WE_LS_SLUG ), PHP_EOL, wp_strip_all_tags( $data[ 'notes' ] ) )
+						'text'  => sprintf( '*%1$s:*%2$s %3$s %2$s', esc_html__( 'Notes', WE_LS_SLUG ), PHP_EOL, wp_strip_all_tags( $data[ 'notes' ] ) )
 					]
 				]
 			];
@@ -297,12 +329,12 @@ function ws_ls_webhooks_data_prep_weight( $entry ) {
 			'elements'  => [
 				[
 					'type'  => 'button',
-					'text'  => [ 'type' => 'plain_text', 'text' => __( 'View Entry', WE_LS_SLUG ) ],
+					'text'  => [ 'type' => 'plain_text', 'text' => esc_html__( 'View Entry', WE_LS_SLUG ) ],
 					'url'   => $data[ 'url-entry-edit' ]
 				],
 				[
 					'type'  => 'button',
-					'text'  => [ 'type' => 'plain_text', 'text' => __( 'View Profile', WE_LS_SLUG ) ],
+					'text'  => [ 'type' => 'plain_text', 'text' => esc_html__( 'View Profile', WE_LS_SLUG ) ],
 					'url'   => $data[ 'url-user-profile' ]
 				]
 			]
@@ -342,7 +374,7 @@ function ws_ls_webhooks_data_prep_target( $target ) {
 			'type'  => 'header',
 			'text'  => [
 				'type'  => 'plain_text',
-				'text'  => __( 'A new target has been set', WE_LS_SLUG ),
+				'text'  => esc_html__( 'A new target has been set', WE_LS_SLUG ),
 				'emoji' => false
 			]
 		];
@@ -353,11 +385,11 @@ function ws_ls_webhooks_data_prep_target( $target ) {
 			'fields'  => [
 				[
 					'type'  => 'mrkdwn',
-					'text'  => sprintf( '*%1$s:*%2$s %3$s', __( 'Name', WE_LS_SLUG ), PHP_EOL, $data[ 'user-display-name' ] )
+					'text'  => sprintf( '*%1$s:*%2$s %3$s', esc_html__( 'Name', WE_LS_SLUG ), PHP_EOL, $data[ 'user-display-name' ] )
 				],
 				[
 					'type'  => 'mrkdwn',
-					'text'  => sprintf( '*%1$s:*%2$s %3$s', __( 'Target Weight', WE_LS_SLUG ), PHP_EOL, $data[ 'weight-display' ] )
+					'text'  => sprintf( '*%1$s:*%2$s %3$s', esc_html__( 'Target Weight', WE_LS_SLUG ), PHP_EOL, $data[ 'weight-display' ] )
 				]
 			]
 		];
@@ -368,7 +400,7 @@ function ws_ls_webhooks_data_prep_target( $target ) {
 			'elements'  => [
 				[
 					'type'  => 'button',
-					'text'  => [ 'type' => 'plain_text', 'text' => __( 'View Profile', WE_LS_SLUG ) ],
+					'text'  => [ 'type' => 'plain_text', 'text' => esc_html__( 'View Profile', WE_LS_SLUG ) ],
 					'url'   => $data[ 'url-user-profile' ]
 				]
 			]

@@ -173,9 +173,9 @@ function ws_ls_ajax_get_errors(){
 	$table_id = ws_ls_post_value('table_id');
 
 	$columns = [
-					[ 'name' => 'timestamp', 'title' => __( 'Date', WE_LS_SLUG ), 'breakpoints'=> '', 'type' => 'date' ],
-					[ 'name' => 'module', 'title' => __( 'Module', WE_LS_SLUG ), 'breakpoints'=> '', 'type' => 'text' ],
-					[ 'name' => 'message', 'title' => __( 'Message', WE_LS_SLUG ), 'breakpoints'=> '', 'type' => 'text' ]
+					[ 'name' => 'timestamp', 'title' => esc_html__( 'Date', WE_LS_SLUG ), 'breakpoints'=> '', 'type' => 'date' ],
+					[ 'name' => 'module', 'title' => esc_html__( 'Module', WE_LS_SLUG ), 'breakpoints'=> '', 'type' => 'text' ],
+					[ 'name' => 'message', 'title' => esc_html__( 'Message', WE_LS_SLUG ), 'breakpoints'=> '', 'type' => 'text' ]
 	];
 
 	$data = [

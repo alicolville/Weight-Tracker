@@ -127,7 +127,7 @@
 			$attachment = array(
 				'post_mime_type' => $mime_type['type'],
 				'post_title' => ( $user_data ) ? $user_data->user_nicename . ' (' . $date_text . ')' : $date_text,
-				'post_content' => ( $user_data ) ? __('The user ', WE_LS_SLUG) . $user_data->user_nicename . ', ' . __('uploaded this photo of them for their entry on the', WE_LS_SLUG) . ' ' . $date_text : '',
+				'post_content' => ( $user_data ) ? esc_html__('The user ', WE_LS_SLUG) . $user_data->user_nicename . ', ' . esc_html__('uploaded this photo of them for their entry on the', WE_LS_SLUG) . ' ' . $date_text : '',
 				'post_status' => 'inherit'
 			);
 
@@ -319,8 +319,8 @@
 	        ws_ls_log_add('meta-field-setup', 'Adding photo field.' );
 
 	        ws_ls_meta_fields_add([
-		        'field_name' => __('Photo', WE_LS_SLUG),
-		        'abv' => __('Photo', WE_LS_SLUG),
+		        'field_name' => esc_html__('Photo', WE_LS_SLUG),
+		        'abv' => esc_html__('Photo', WE_LS_SLUG),
 		        'field_type' => 3,
 		        'suffix' => '',
 		        'mandatory' => 1,
@@ -339,8 +339,8 @@
 	function ws_ls_meta_fields_photos_form_display_info() {
 
         return sprintf( '<p><small><strong>%3$s</strong>: %1$s%2$s</small></p>',
-            __('Photos are only visible to you and administrators. ', WE_LS_SLUG),
-            __('Photos must be under', WE_LS_SLUG) . ' ' . ws_ls_photo_display_max_upload_size() . ' ' . __('or they will silently fail to upload.', WE_LS_SLUG),
-            __('A note about photos', WE_LS_SLUG)
+            esc_html__('Photos are only visible to you and administrators. ', WE_LS_SLUG),
+            esc_html__('Photos must be under', WE_LS_SLUG) . ' ' . ws_ls_photo_display_max_upload_size() . ' ' . esc_html__('or they will silently fail to upload.', WE_LS_SLUG),
+            esc_html__('A note about photos', WE_LS_SLUG)
         );
     }
