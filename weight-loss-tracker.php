@@ -76,7 +76,7 @@ require_once( WS_LS_ABSPATH . 'includes/db.php' );
 require_once( WS_LS_ABSPATH . 'includes/activate.php' );
 require_once( WS_LS_ABSPATH . 'includes/hooks.php' );
 require_once( WS_LS_ABSPATH . 'includes/cron.php' );
-require_once( WS_LS_ABSPATH . 'plugin-update-checker/plugin-update-checker.php' );
+require_once( WS_LS_ABSPATH . 'includes/plugin-update-checker/plugin-update-checker.php' );
 require_once( WS_LS_ABSPATH . 'includes/functions.php' );
 require_once( WS_LS_ABSPATH . 'includes/converters.php' );
 require_once( WS_LS_ABSPATH . 'includes/core.php' );
