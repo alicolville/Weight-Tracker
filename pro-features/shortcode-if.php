@@ -96,6 +96,11 @@ function ws_ls_shortcode_if_comparison( $field, $user_id, $operator, $shortcode_
 
     // Fetch the value to compare against
     $db_value           = ws_ls_shortcode_if_comparison_get_value( $field, $user_id );
+   
+    if ( NULL === $db_value ) {
+        return false;
+    }
+   
     $shortcode_value    = (float) $shortcode_value;
 
     switch ( $operator ) {
