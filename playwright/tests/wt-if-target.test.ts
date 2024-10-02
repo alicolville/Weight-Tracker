@@ -56,7 +56,35 @@ test.describe( 'wt-if target', () => {
         await weightTracker.goto();
         await weightTracker.target_clear();
     });
-    
+
+    test('greater than or equal to', async ({ weightTracker, page }) => {
+        
+        await page.goto('http://localhost/if-statements/if-statements-target/');
+        await expect(page.locator('.greater-than-or-equal-to')).toContainText('Target greater than or equal to 55: no');
+       
+        await weightTracker.goto();
+        await weightTracker.target_set('35');
+       
+        await page.goto('http://localhost/if-statements/if-statements-target/');
+        await expect(page.locator('.greater-than-or-equal-to')).toContainText('Target greater than or equal to 55: no');
+       
+        await weightTracker.goto();
+        await weightTracker.target_set('77');
+       
+        await page.goto('http://localhost/if-statements/if-statements-target/');
+        await expect(page.locator('.greater-than-or-equal-to')).toContainText('Target greater than or equal to 55: yes');
+       
+        await weightTracker.goto();
+        await weightTracker.target_set('55');
+       
+        await page.goto('http://localhost/if-statements/if-statements-target/');
+        await expect(page.locator('.greater-than-or-equal-to')).toContainText('Target greater than or equal to 55: yes');
+       
+        await weightTracker.goto();
+        await weightTracker.weight_set_defaults();
+
+    });
+
     test('less than', async ({ weightTracker, page }) => {
         
         await page.goto('http://localhost/if-statements/if-statements-target/');
@@ -77,6 +105,34 @@ test.describe( 'wt-if target', () => {
         await weightTracker.goto();
         await weightTracker.target_clear();
        
+    });
+
+    test('less than or equal to', async ({ weightTracker, page }) => {
+        
+        await page.goto('http://localhost/if-statements/if-statements-target/');
+        await expect(page.locator('.less-than-or-equal-to')).toContainText('Target less than or equal to 66: no');
+       
+        await weightTracker.goto();
+        await weightTracker.target_set('35');
+       
+        await page.goto('http://localhost/if-statements/if-statements-target/');
+        await expect(page.locator('.less-than-or-equal-to')).toContainText('Target less than or equal to 66: yes');
+       
+        await weightTracker.goto();
+        await weightTracker.target_set('100');
+       
+        await page.goto('http://localhost/if-statements/if-statements-target/');
+        await expect(page.locator('.less-than-or-equal-to')).toContainText('Target less than or equal to 66: no');
+       
+        await weightTracker.goto();
+        await weightTracker.target_set('66');
+       
+        await page.goto('http://localhost/if-statements/if-statements-target/');
+        await expect(page.locator('.less-than-or-equal-to')).toContainText('Target less than or equal to 66: yes');
+       
+        await weightTracker.goto();
+        await weightTracker.weight_set_defaults();
+
     });
 
     test('equals', async ({ weightTracker, page }) => {
