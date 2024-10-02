@@ -1,17 +1,30 @@
-import { test, expect } from '@playwright/test';
+
+import { test as base, expect } from '@playwright/test';
+import { WeightTracker } from '.././weight-tracker';
+
+const test = base.extend<{ weightTracker: WeightTracker }>({
+    weightTracker: async ({ page }, use) => {
+
+        // Clear all weight entries and add a start weight.
+        const weightTracker = new WeightTracker(page);
+        await weightTracker.goto();
+        await weightTracker.weight_set_defaults();
+        await use(weightTracker);
+    },
+});
 
 test.describe( 'wt-if target', () => {
 
     test.describe.configure( { mode: 'serial' } );
     
-    test('missing/exists', async ({ page }) => {
+    test('missing/exists', async ({ weightTracker, page }) => {
         
         await page.goto('http://localhost/if-statements/if-statements-target/');
         await expect(page.locator('.wt-if-target-exists')).toContainText('Target Exists: missing');
         
-        await set_user_target(page, '50');
+        await weightTracker.goto();
+        await weightTracker.target_set('50');
        
-
         /**
          * Check IF statements with test data
          */
@@ -19,102 +32,72 @@ test.describe( 'wt-if target', () => {
         await expect(page.locator('.wt-if-target-exists')).toContainText('Target Exists: exists');
         await expect(page.locator('.wt-if-target-greater-40')).toContainText('Target greater than 40: yes');
 
-        await clear_user_target(page);
-       
-        /**
-         * Validate clean up
-         */
-        await page.goto('http://localhost/if-statements/if-statements-target/');
-
-        await expect(page.locator('.wt-if-target-exists')).toContainText('Target Exists: missing');
-        await expect(page.locator('.wt-if-target-greater-40')).toContainText('Target greater than 40: no');
+        await weightTracker.goto();
+        await weightTracker.target_clear();
     });
 
-    test('greater than', async ({ page }) => {
+    test('greater than', async ({ weightTracker, page }) => {
         
         await page.goto('http://localhost/if-statements/if-statements-target/');
         await expect(page.locator('.wt-if-target-exists')).toContainText('Target Exists: missing');
         
-        await set_user_target(page, '45');
+        await weightTracker.goto();
+        await weightTracker.target_set('45');
        
+        await page.goto('http://localhost/if-statements/if-statements-target/');
         await expect(page.locator('.wt-if-target-greater-40')).toContainText('Target greater than 40: yes');
 
-        await set_user_target(page, '35');
+        await weightTracker.goto();
+        await weightTracker.target_set('35');
        
-        await expect(page.locator('.wt-if-target-greater-40')).toContainText('Target greater than 40: no');
-
-        await clear_user_target(page);
-       
-        /**
-         * Validate clean up
-         */
         await page.goto('http://localhost/if-statements/if-statements-target/');
-
-        await expect(page.locator('.wt-if-target-exists')).toContainText('Target Exists: missing');
         await expect(page.locator('.wt-if-target-greater-40')).toContainText('Target greater than 40: no');
+
+        await weightTracker.goto();
+        await weightTracker.target_clear();
     });
     
-    test('less than', async ({ page }) => {
+    test('less than', async ({ weightTracker, page }) => {
         
         await page.goto('http://localhost/if-statements/if-statements-target/');
         await expect(page.locator('.wt-if-target-exists')).toContainText('Target Exists: missing');
         
-        await set_user_target(page, '40');
+        await weightTracker.goto();
+        await weightTracker.target_set('40');
        
+        await page.goto('http://localhost/if-statements/if-statements-target/');
         await expect(page.locator('.wt-if-target-less-70')).toContainText('Target less than 70: yes');
 
-        await set_user_target(page, '72');
+        await weightTracker.goto();
+        await weightTracker.target_set('72');
+
+        await page.goto('http://localhost/if-statements/if-statements-target/');
         await expect(page.locator('.wt-if-target-less-70')).toContainText('Target less than 70: no');
 
-        await clear_user_target(page);
+        await weightTracker.goto();
+        await weightTracker.target_clear();
        
-        /**
-         * Validate clean up
-         */
-        await page.goto('http://localhost/if-statements/if-statements-target/');
-
-        await expect(page.locator('.wt-if-target-exists')).toContainText('Target Exists: missing');
-
     });
 
-    test('equals', async ({ page }) => {
+    test('equals', async ({ weightTracker, page }) => {
         
         await page.goto('http://localhost/if-statements/if-statements-target/');
         await expect(page.locator('.wt-if-target-exists')).toContainText('Target Exists: missing');
         
-        await set_user_target(page, '40');
+        await weightTracker.goto();
+        await weightTracker.target_set('40');
        
+        await page.goto('http://localhost/if-statements/if-statements-target/');
         await expect(page.locator('.wt-if-target-equals-43')).toContainText('Target equals 43: no');
 
-        await set_user_target(page, '43');
+        await weightTracker.goto();
+        await weightTracker.target_set('43');
+
+        await page.goto('http://localhost/if-statements/if-statements-target/');
         await expect(page.locator('.wt-if-target-equals-43')).toContainText('Target equals 43: yes');
 
-        await clear_user_target(page);
-       
-        /**
-         * Validate clean up
-         */
-        await page.goto('http://localhost/if-statements/if-statements-target/');
-
-        await expect(page.locator('.wt-if-target-exists')).toContainText('Target Exists: missing');
+        await weightTracker.goto();
+        await weightTracker.target_clear();
 
     });
-
-    async function set_user_target(page, target){
-        await page.goto('http://localhost/weight-tracker/');
-        await page.getByRole('link', { name: 'Adjust' }).click();
-        await page.getByTestId('ws-form-target').click();
-        await page.getByTestId('ws-form-target').fill( target);
-        await page.getByRole('button', { name: 'Set Target' }).click();
-        await page.goto('http://localhost/if-statements/if-statements-target/');
-    }
-
-    async function clear_user_target(page){
-        await page.goto('http://localhost/weight-tracker/');
-        await page.getByTestId('wt-tab-settings').click();
-        page.on('dialog', dialog => dialog.accept());
-        await page.getByRole('button', { name: 'Clear Target' }).click();
-        await page.waitForURL('http://localhost/weight-tracker/?target-cleared=true&wt-user-id=8');
-    }
-
 });

@@ -4,7 +4,7 @@ test.describe( 'WT Shortcode', () => {
 
     test.describe.configure( { mode: 'serial' } );
     
-  
+
     test('exist on page', async ({ page }) => {
         await page.goto('http://localhost/weight-tracker/');
        
