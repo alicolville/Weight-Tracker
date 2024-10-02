@@ -41,9 +41,14 @@ export class WeightTracker {
   }
 
   async target_clear(){
-    await this.page.getByTestId('wt-tab-settings').click();
-    this.page.on('dialog', dialog => dialog.accept());
-    await this.page.getByRole('button', { name: 'Clear Target' }).click();
-  }
 
+    await this.page.getByTestId('wt-tab-settings').click();
+      
+    const visible = await this.page.getByRole('button', { name: 'Clear Target' }).isVisible();
+    
+    if (visible) {
+      this.page.on('dialog', dialog => dialog.accept());
+      await this.page.getByRole('button', { name: 'Clear Target' }).click();
+    }    
+  }
 }

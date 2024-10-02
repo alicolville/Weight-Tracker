@@ -1,5 +1,5 @@
 import { test as base, expect } from '@playwright/test';
-import { WeightTracker } from '.././weight-tracker';
+import { WeightTracker } from './weight-tracker';
 
  
 const test = base.extend<{ weightTracker: WeightTracker }>({

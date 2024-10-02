@@ -1,6 +1,6 @@
 
 import { test as base, expect } from '@playwright/test';
-import { WeightTracker } from '.././weight-tracker';
+import { WeightTracker } from './weight-tracker';
 
 const test = base.extend<{ weightTracker: WeightTracker }>({
     weightTracker: async ({ page }, use) => {
@@ -8,7 +8,7 @@ const test = base.extend<{ weightTracker: WeightTracker }>({
         // Clear all weight entries and add a start weight.
         const weightTracker = new WeightTracker(page);
         await weightTracker.goto();
-        await weightTracker.weight_set_defaults();
+        await weightTracker.target_clear();
         await use(weightTracker);
     },
 });
