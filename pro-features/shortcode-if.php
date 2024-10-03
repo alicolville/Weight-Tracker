@@ -154,7 +154,7 @@ function ws_ls_shortcode_if_comparison_get_value( $field, $user_id ) {
             $value = ws_ls_target_get( $user_id, 'kg' );
             break;
         case 'previous-weight':
-            $value = ws_ls_entry_get_previous( [ 'id' => $user_id ] );
+            $value = ws_ls_entry_get_previous( [ 'id' => $user_id, 'kg-only' => true ] );
             break; 
         case 'no-days':
             $value = ws_ls_shortcode_days_between_start_and_latest( [ 'user-id' => $user_id ], true );
