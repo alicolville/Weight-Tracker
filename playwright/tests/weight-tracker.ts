@@ -14,11 +14,13 @@ export class WeightTracker {
   }
 
   async weight_set_defaults(){
+      await this.goto();
       await this.weight_clear_all();
       await this.weight_add( '01/01/2019', '200' );
   }
 
   async weight_add( date, weight){
+      await this.goto();
       await this.page.getByTestId('wt-tab-add-edit').click();
       await this.page.getByTestId('we-ls-date').fill(date);
       await this.page.getByTestId('wt-tab-add-edit').click();
@@ -27,6 +29,7 @@ export class WeightTracker {
   }
 
   async weight_clear_all(){
+      await this.goto();
       await this.page.getByTestId('wt-tab-settings').click();
       await this.page.getByLabel('The button below allows you').selectOption('yes');
       await this.page.getByRole('button', { name: 'Delete' }).click();
@@ -34,6 +37,7 @@ export class WeightTracker {
   }
 
   async target_set(target){
+      await this.goto();
       await this.page.getByRole('link', { name: 'Adjust' }).click();
       await this.page.getByTestId('ws-form-target').click();
       await this.page.getByTestId('ws-form-target').fill( target);
@@ -41,7 +45,7 @@ export class WeightTracker {
   }
 
   async target_clear(){
-
+    await this.goto();
     await this.page.getByTestId('wt-tab-settings').click();
       
     const visible = await this.page.getByRole('button', { name: 'Clear Target' }).isVisible();

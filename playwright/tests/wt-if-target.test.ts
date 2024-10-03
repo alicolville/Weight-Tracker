@@ -7,7 +7,7 @@ const test = base.extend<{ weightTracker: WeightTracker }>({
 
         // Clear all weight entries and add a start weight.
         const weightTracker = new WeightTracker(page);
-        await weightTracker.goto();
+        
         await weightTracker.target_clear();
         await use(weightTracker);
     },
@@ -22,7 +22,6 @@ test.describe( 'wt-if target', () => {
         await page.goto('http://localhost/if-statements/if-statements-target/');
         await expect(page.locator('.wt-if-target-exists')).toContainText('Target Exists: missing');
         
-        await weightTracker.goto();
         await weightTracker.target_set('50');
        
         /**
@@ -32,7 +31,6 @@ test.describe( 'wt-if target', () => {
         await expect(page.locator('.wt-if-target-exists')).toContainText('Target Exists: exists');
         await expect(page.locator('.wt-if-target-greater-40')).toContainText('Target greater than 40: yes');
 
-        await weightTracker.goto();
         await weightTracker.target_clear();
     });
 
@@ -41,19 +39,17 @@ test.describe( 'wt-if target', () => {
         await page.goto('http://localhost/if-statements/if-statements-target/');
         await expect(page.locator('.wt-if-target-exists')).toContainText('Target Exists: missing');
         
-        await weightTracker.goto();
         await weightTracker.target_set('45');
        
         await page.goto('http://localhost/if-statements/if-statements-target/');
         await expect(page.locator('.wt-if-target-greater-40')).toContainText('Target greater than 40: yes');
-
-        await weightTracker.goto();
+        
         await weightTracker.target_set('35');
        
         await page.goto('http://localhost/if-statements/if-statements-target/');
         await expect(page.locator('.wt-if-target-greater-40')).toContainText('Target greater than 40: no');
 
-        await weightTracker.goto();
+        
         await weightTracker.target_clear();
     });
 
@@ -62,25 +58,21 @@ test.describe( 'wt-if target', () => {
         await page.goto('http://localhost/if-statements/if-statements-target/');
         await expect(page.locator('.greater-than-or-equal-to')).toContainText('Target greater than or equal to 55: no');
        
-        await weightTracker.goto();
         await weightTracker.target_set('35');
        
         await page.goto('http://localhost/if-statements/if-statements-target/');
         await expect(page.locator('.greater-than-or-equal-to')).toContainText('Target greater than or equal to 55: no');
        
-        await weightTracker.goto();
         await weightTracker.target_set('77');
        
         await page.goto('http://localhost/if-statements/if-statements-target/');
         await expect(page.locator('.greater-than-or-equal-to')).toContainText('Target greater than or equal to 55: yes');
        
-        await weightTracker.goto();
         await weightTracker.target_set('55');
        
         await page.goto('http://localhost/if-statements/if-statements-target/');
         await expect(page.locator('.greater-than-or-equal-to')).toContainText('Target greater than or equal to 55: yes');
        
-        await weightTracker.goto();
         await weightTracker.weight_set_defaults();
 
     });
@@ -90,19 +82,16 @@ test.describe( 'wt-if target', () => {
         await page.goto('http://localhost/if-statements/if-statements-target/');
         await expect(page.locator('.wt-if-target-exists')).toContainText('Target Exists: missing');
         
-        await weightTracker.goto();
         await weightTracker.target_set('40');
        
         await page.goto('http://localhost/if-statements/if-statements-target/');
         await expect(page.locator('.wt-if-target-less-70')).toContainText('Target less than 70: yes');
 
-        await weightTracker.goto();
         await weightTracker.target_set('72');
 
         await page.goto('http://localhost/if-statements/if-statements-target/');
         await expect(page.locator('.wt-if-target-less-70')).toContainText('Target less than 70: no');
 
-        await weightTracker.goto();
         await weightTracker.target_clear();
        
     });
@@ -111,26 +100,22 @@ test.describe( 'wt-if target', () => {
         
         await page.goto('http://localhost/if-statements/if-statements-target/');
         await expect(page.locator('.less-than-or-equal-to')).toContainText('Target less than or equal to 66: no');
-       
-        await weightTracker.goto();
+        
         await weightTracker.target_set('35');
        
         await page.goto('http://localhost/if-statements/if-statements-target/');
         await expect(page.locator('.less-than-or-equal-to')).toContainText('Target less than or equal to 66: yes');
-       
-        await weightTracker.goto();
+        
         await weightTracker.target_set('100');
        
         await page.goto('http://localhost/if-statements/if-statements-target/');
         await expect(page.locator('.less-than-or-equal-to')).toContainText('Target less than or equal to 66: no');
        
-        await weightTracker.goto();
         await weightTracker.target_set('66');
        
         await page.goto('http://localhost/if-statements/if-statements-target/');
         await expect(page.locator('.less-than-or-equal-to')).toContainText('Target less than or equal to 66: yes');
-       
-        await weightTracker.goto();
+        
         await weightTracker.weight_set_defaults();
 
     });
@@ -140,19 +125,16 @@ test.describe( 'wt-if target', () => {
         await page.goto('http://localhost/if-statements/if-statements-target/');
         await expect(page.locator('.wt-if-target-exists')).toContainText('Target Exists: missing');
         
-        await weightTracker.goto();
         await weightTracker.target_set('40');
        
         await page.goto('http://localhost/if-statements/if-statements-target/');
         await expect(page.locator('.wt-if-target-equals-43')).toContainText('Target equals 43: no');
-
-        await weightTracker.goto();
+        
         await weightTracker.target_set('43');
 
         await page.goto('http://localhost/if-statements/if-statements-target/');
         await expect(page.locator('.wt-if-target-equals-43')).toContainText('Target equals 43: yes');
-
-        await weightTracker.goto();
+        
         await weightTracker.target_clear();
 
     });

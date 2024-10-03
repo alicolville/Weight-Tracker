@@ -7,7 +7,7 @@ const test = base.extend<{ weightTracker: WeightTracker }>({
 
         // Clear all weight entries and add a start weight.
         const weightTracker = new WeightTracker(page);
-        await weightTracker.goto();
+        
         await weightTracker.weight_set_defaults();
         await use(weightTracker);
     },
@@ -63,19 +63,19 @@ test.describe( 'wt-if previous weight', () => {
         await expect(page.locator('.greater-than')).toContainText('greater than: no');
 
 
-        // await weightTracker.goto();
+        // 
         // await weightTracker.weight_add( '01/10/2024', '81' );
        
         // await page.goto('http://localhost/if-statements/previous-weight/');
         // await expect(page.locator('.wt-if-weight-greater-than-80')).toContainText('Weight greater than 80: yes');
 
-        // await weightTracker.goto();
+        // 
         // await weightTracker.weight_add( '01/10/2024', '79' );
        
         // await page.goto('http://localhost/if-statements/previous-weight/');
         // await expect(page.locator('.wt-if-weight-greater-than-80')).toContainText('Weight greater than 80: no');
        
-        await weightTracker.goto();
+        
         await weightTracker.weight_set_defaults();
 
     });
@@ -85,25 +85,25 @@ test.describe( 'wt-if previous weight', () => {
         await page.goto('http://localhost/if-statements/previous-weight/');
         await expect(page.locator('.wt-if-weight-greater-than-or-equal-to-233')).toContainText('Weight greater than or equal to 233: no');
        
-        await weightTracker.goto();
+        
         await weightTracker.weight_add( '01/10/2024', '500' );
        
         await page.goto('http://localhost/if-statements/previous-weight/');
         await expect(page.locator('.wt-if-weight-greater-than-or-equal-to-233')).toContainText('Weight greater than or equal to 233: yes');
 
-        await weightTracker.goto();
+        
         await weightTracker.weight_add( '01/10/2024', '30' );
        
         await page.goto('http://localhost/if-statements/previous-weight/');
         await expect(page.locator('.wt-if-weight-greater-than-or-equal-to-233')).toContainText('Weight greater than or equal to 233: no');
        
-        await weightTracker.goto();
+        
         await weightTracker.weight_add( '01/10/2024', '233' );
        
         await page.goto('http://localhost/if-statements/previous-weight/');
         await expect(page.locator('.wt-if-weight-greater-than-or-equal-to-233')).toContainText('Weight greater than or equal to 233: yes');
         
-        await weightTracker.goto();
+        
         await weightTracker.weight_set_defaults();
 
     });
@@ -128,7 +128,7 @@ test.describe( 'wt-if previous weight', () => {
         await page.goto('http://localhost/if-statements/previous-weight/');
         await expect(page.locator('.wt-if-weight-less-than-30')).toContainText('Weight less than 30: no');
        
-        await weightTracker.goto();
+        
         await weightTracker.weight_set_defaults();
 
     });
@@ -138,25 +138,25 @@ test.describe( 'wt-if previous weight', () => {
         await page.goto('http://localhost/if-statements/previous-weight/');
         await expect(page.locator('.wt-if-weight-less-than-or-equal-to-13')).toContainText('Weight less than or equal to 13: no');
        
-        await weightTracker.goto();
+        
         await weightTracker.weight_add( '01/10/2024', '500' );
        
         await page.goto('http://localhost/if-statements/previous-weight/');
         await expect(page.locator('.wt-if-weight-less-than-or-equal-to-13')).toContainText('Weight less than or equal to 13: no');
        
-        await weightTracker.goto();
+        
         await weightTracker.weight_add( '01/10/2024', '10' );
        
         await page.goto('http://localhost/if-statements/previous-weight/');
         await expect(page.locator('.wt-if-weight-less-than-or-equal-to-13')).toContainText('Weight less than or equal to 13: yes');
        
-        await weightTracker.goto();
+        
         await weightTracker.weight_add( '01/10/2024', '13' );
        
         await page.goto('http://localhost/if-statements/previous-weight/');
         await expect(page.locator('.wt-if-weight-less-than-or-equal-to-13')).toContainText('Weight less than or equal to 13: yes');
        
-        await weightTracker.goto();
+        
         await weightTracker.weight_set_defaults();
 
     });
@@ -166,19 +166,19 @@ test.describe( 'wt-if previous weight', () => {
         await page.goto('http://localhost/if-statements/previous-weight/');
         await expect(page.locator('.wt-if-weight-equals-67')).toContainText('Weight equals 67: no');
        
-        await weightTracker.goto();
+        
         await weightTracker.weight_add( '01/10/2024', '67' );
 
         await page.goto('http://localhost/if-statements/previous-weight/');
         await expect(page.locator('.wt-if-weight-equals-67')).toContainText('Weight equals 67: yes');
 
-        await weightTracker.goto();
+        
         await weightTracker.weight_add( '01/10/2024', '66' );
 
         await page.goto('http://localhost/if-statements/previous-weight/');
         await expect(page.locator('.wt-if-weight-equals-67')).toContainText('Weight equals 67: no');
 
-        await weightTracker.goto();
+        
         await weightTracker.weight_set_defaults();
 
     });
