@@ -141,7 +141,6 @@ function ws_ls_shortcode_if_comparison_get_value( $field, $user_id ) {
     switch( $field ) {
         case 'difference-from-previous':
             $value =  ws_ls_entry_difference_between_latest_and_previous( $user_id );
-            var_dump($value);
             break;
         case 'difference-from-start':
             $latest_entry = ws_ls_entry_get_latest(  [ 'user-id' => $user_id ] );
