@@ -48,7 +48,7 @@ jQuery( document ).ready( function ( $ ) {
 
     button.html( ws_ls_meta_fields_config[ 'text-saving' ] ) ;
 
-    ws_ls_post( 'ws_ls_meta_field_accumulator',
+    ws_ls_meta_field_post( 'ws_ls_meta_field_accumulator',
       { 'increment' : increment, 'meta-field-id' : button.data( 'meta-field-id' ) },
       function( data, response ) {
 
@@ -83,7 +83,7 @@ jQuery( document ).ready( function ( $ ) {
  * @param data
  * @param callback
  */
-function ws_ls_post( action, data, callback ) {
+function ws_ls_meta_field_post( action, data, callback ) {
 
   data[ 'action' ]    = action;
   data[ 'security' ]  = ws_ls_meta_fields_config['ajax-security-nonce'];
