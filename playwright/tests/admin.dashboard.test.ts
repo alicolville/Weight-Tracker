@@ -4,7 +4,6 @@ test.describe( 'Admin Dashboard', () => {
 
     test.describe.configure( { mode: 'serial' } );
     
-
     test('check quick stats', async ({ page }) => {
         
         await page.goto('http://localhost/wp-admin/admin.php?page=ws-ls-data-home');
