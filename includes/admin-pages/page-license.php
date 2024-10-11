@@ -167,7 +167,7 @@ function ws_ls_advertise_pro() {
                                         </tr>
                                         <tr>
                                             <th><?php echo esc_html__('Type', WE_LS_SLUG); ?></th>
-                                            <td><a href="<?php echo esc_url( WE_LS_LICENSE_TYPES_URL ); ?>" target="_blank" rel="noopener noreferrer"><?php ws_ls_echo( $license_name ); ?></a></td>
+                                            <td id="ws-ls-license-type"><a href="<?php echo esc_url( WE_LS_LICENSE_TYPES_URL ); ?>" target="_blank" rel="noopener noreferrer"><?php ws_ls_echo( $license_name ); ?></a></td>
                                         </tr>
                                         <tr>
                                             <th><?php echo esc_html__('Expires', WE_LS_SLUG); ?></th>
