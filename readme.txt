@@ -175,6 +175,7 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 * Info: Due the changes below, you will see the notifications for Setupp Wizard and message from Yeken again until dismissed.
 
 * Improvement: Switched Setup Wizard notice to use wp options over transients when storing whether to show or hide.
+* Improvement: Switched notices from Yeken to use wp options over transients when storing whether to show or hide.
 
 = 10.15 =
 
