@@ -2,7 +2,7 @@
 
 defined('ABSPATH') or die('Jog on!');
 
-define( 'WE_LS_SETUP_WIZARD_DIMISS_OPTION', 'ws-ls-setup-wizard-dismiss' );
+define( 'WE_LS_SETUP_WIZARD_DISMISS_OPTION', 'ws-ls-setup-wizard-dismiss-prompt' );
 
 /**
  * Display HTML for admin notice
@@ -11,7 +11,7 @@ function ws_ls_setup_wizard_notice() {
 
     printf('<div class="updated notice is-dismissible setup-wizard-dismiss" data-nonce="%5$s">
                         <p>%1$s <strong>%2$s</strong>! %3$s.</p>
-                        <p><a href="%4$s" class="button button-primary">Run wizard</a></p>
+                        <p><a href="%4$s" class="button button-primary ws-ls-run-wizard">Run wizard</a></p>
                     </div>',
                     esc_html__( 'Welcome to' , WE_LS_SLUG),
                     WE_LS_TITLE,
@@ -36,7 +36,7 @@ function ws_ls_setup_wizard_get_link() {
  * @return bool
  */
 function ws_ls_setup_wizard_show_notice() {
-    return ( false === (bool) get_transient( WE_LS_SETUP_WIZARD_DIMISS_OPTION ) );
+    return ( 'yes' !== get_option( WE_LS_SETUP_WIZARD_DISMISS_OPTION, 'no' ) );
 }
 
 /**
@@ -57,7 +57,7 @@ add_action( 'plugins_loaded', 'ws_ls_setup_wizard_help_page_show_links_again' );
  * Show Wizard Links again
  */
 function ws_ls_setup_wizard_show_notice_links_again() {
-    delete_transient( WE_LS_SETUP_WIZARD_DIMISS_OPTION );
+    update_option( WE_LS_SETUP_WIZARD_DISMISS_OPTION, 'no' );
 }
 
 /**
@@ -74,7 +74,7 @@ add_action( 'admin_notices', 'ws_ls_setup_wizard_show_admin_notice' );
  * Update option on whether to show wizard
  */
 function ws_ls_setup_wizard_dismiss_notice() {
-   $result = set_transient( WE_LS_SETUP_WIZARD_DIMISS_OPTION, 'yes' );
+   $result = update_option( WE_LS_SETUP_WIZARD_DISMISS_OPTION, 'yes' );
 }
 
 /**

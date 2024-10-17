@@ -6,7 +6,7 @@ defined('ABSPATH') or die('Jog on!');
  * Display admin notice for notification from yeken.uk
  */
 function ws_ls_get_marketing_message() {
-
+	
 	if ( $cache = get_transient( '_yeken_weight_tracker_update' ) ) {
 		return $cache;
 	}
@@ -35,12 +35,12 @@ function ws_ls_get_marketing_message() {
  * Get/Set key of notice last dismissed.
  */
 function ws_ls_marketing_update_key_last_dismissed( $key = NULL ) {
-
+	
 	if ( NULL !== $key ) {
-		set_transient( '_yeken_weight_tracker_update_key_last_dismissed', $key );
+		update_option( '_yeken_weight_tracker_update_key_last_dismissed', $key );
 	}
 	
-	return get_transient( '_yeken_weight_tracker_update_key_last_dismissed' ) ;
+	return get_option( '_yeken_weight_tracker_update_key_last_dismissed' ) ;
 
 }
 
