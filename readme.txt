@@ -170,6 +170,10 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 == Changelog ==
 
+= 10.15.1 =
+
+* Improvement: Switched Setup Wizard notice to use wp options over transients when storing whether to show or hide.
+
 = 10.15 =
 
 * Bug fix: Fixed an issue where user preferences wouldn't submit if a slide field was on the from.
