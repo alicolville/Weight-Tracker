@@ -11,7 +11,7 @@ function ws_ls_setup_wizard_notice() {
 
     printf('<div class="updated notice is-dismissible setup-wizard-dismiss" data-nonce="%5$s">
                         <p>%1$s <strong>%2$s</strong>! %3$s.</p>
-                        <p><a href="%4$s" class="button button-primary">Run wizard</a></p>
+                        <p><a href="%4$s" class="button button-primary ws-ls-run-wizard">Run wizard</a></p>
                     </div>',
                     esc_html__( 'Welcome to' , WE_LS_SLUG),
                     WE_LS_TITLE,
