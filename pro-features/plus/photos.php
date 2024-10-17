@@ -127,7 +127,7 @@ function ws_ls_photos_shortcode_core($user_defined_arguments) {
  * @return string
  */
 function ws_ls_photos_shortcode_render( $image, $css_class = '', $hide_date = true ) {
-
+print_r($image);
 	if ( isset( $image['photo_id'], $image['thumb'], $image['full']) ) {
 
 		return sprintf('
@@ -414,7 +414,9 @@ function ws_ls_photo_get( $attachment_id, $width = 200, $height = 200, $include_
 
 	$attributes = ( false === empty( $css_class ) ) ? [ 'class' => $css_class ] : '';
 
-	$photo['thumb'] = wp_get_attachment_image( $attachment_id, array( $width, $height), false, $attributes );
+	$size = add_image_size( 'wt-photo', $width, $height, true );
+
+	$photo['thumb'] = wp_get_attachment_image( $attachment_id, 'thumbnail', false, $attributes );
 
 	if ( false === empty( $photo['thumb'] )) {
 
