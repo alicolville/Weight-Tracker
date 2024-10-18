@@ -1,6 +1,6 @@
 # Custom sizes
 
-For some photo based shortcodes, you have the ability to pass a "custom-size" argument. In essence, this allows you pass a WordPress image sizes. These can include the standard ones [defined in WordPress core](https://developer.wordpress.org/reference/functions/add_image_size/#reserved-image-size-names)  (e.g. ‘thumb’, ‘thumbnail’, ‘medium’, ‘medium_large’, ‘large’, and ‘post-thumbnail’) or ones you have defined yourself.
+For some photo based shortcodes, you have the ability to pass a "custom-size" argument. In essence, this allows you pass a WordPress image sizes. These can include the standard ones [defined in WordPress core](https://developer.wordpress.org/reference/functions/add_image_size/#reserved-image-size-names) (e.g. ‘thumb’, ‘thumbnail’, ‘medium’, ‘medium_large’, ‘large’, and ‘post-thumbnail’) or ones you have defined yourself.
 
 ### Defining your own images sizes
 
