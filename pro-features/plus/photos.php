@@ -431,11 +431,6 @@ function ws_ls_photo_get( $attachment_id, $width = 200, $height = 200, $include_
 	return false;
 }
 
-add_action( 'after_setup_theme', 'wpdocs_theme_setup' );
-function wpdocs_theme_setup() {
-	add_image_size( 'wt-photo', 400, 600, true ); // (cropped)
-}
-
 // ------------------------------------------------------------------
 //
 // Attachments
