@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight,tracker,chart,history,macronutrient
 Requires at least: 6.0
 Tested up to: 6.5
-Stable tag: 10.15.1
+Stable tag: 10.16
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -166,9 +166,13 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 == Upgrade Notice ==
 
-10.9: New user settings for opting in and out of email notifications.
+10.16: New feature: Added argument "custom-size" to shortcodes [wt-photo-oldest] and [wt-photo-recent]. Read more at https://docs.yeken.uk/custom-sizes.html.
 
 == Changelog ==
+
+= 10.16 =
+
+* New feature: Added argument "custom-size" to shortcodes [wt-photo-oldest] and [wt-photo-recent]. Read more at https://docs.yeken.uk/custom-sizes.html.
 
 = 10.15.1 =
 
