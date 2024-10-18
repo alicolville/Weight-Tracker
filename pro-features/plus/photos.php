@@ -74,15 +74,16 @@ function ws_ls_photos_shortcode_core($user_defined_arguments) {
     }
 
     $arguments = shortcode_atts([
-		'css-class' => '',
-    	'error-message' => esc_html__('No recent photo found.', WE_LS_SLUG ),
-		'height' => 200,
-		'hide-date' => false,
-        'user-id' => get_current_user_id(),
-		'recent' => true,
-        'width' => 200,
-	    'custom-fields-to-use' => '',
-	    'maximum' => 1
+		'css-class' 			=> '',
+    	'error-message' 		=> esc_html__('No recent photo found.', WE_LS_SLUG ),
+		'height' 				=> 200,
+		'hide-date' 			=> false,
+        'user-id' 				=> get_current_user_id(),
+		'recent' 				=> true,
+        'width' 				=> 200,
+	    'custom-fields-to-use' 	=> '',
+	    'maximum'				=> 1,
+		'custom-size' 			=> ''
     ], $user_defined_arguments );
 
     $arguments['user-id'] = ws_ls_force_numeric_argument($arguments['user-id'], get_current_user_id());
@@ -95,7 +96,7 @@ function ws_ls_photos_shortcode_core($user_defined_arguments) {
 
     // Fetch photo
     $photos = ws_ls_photos_db_get_recent_or_latest( $arguments['user-id'], $arguments['recent'], $arguments['width'],
-	                                                    $arguments['height'], $arguments['custom-fields-to-use'], true );
+	                                                    $arguments['height'], $arguments['custom-fields-to-use'], true, $arguments['custom-size'] );
 
     if ( false === empty( $photos ) ) {
 
@@ -127,7 +128,7 @@ function ws_ls_photos_shortcode_core($user_defined_arguments) {
  * @return string
  */
 function ws_ls_photos_shortcode_render( $image, $css_class = '', $hide_date = true ) {
-print_r($image);
+
 	if ( isset( $image['photo_id'], $image['thumb'], $image['full']) ) {
 
 		return sprintf('
@@ -172,7 +173,8 @@ function ws_ls_photos_db_get_recent_or_latest( $user_id = false,
 														$width = 200,
 															$height = 200,
 																$meta_fields_to_use = '',
-																	$hide_from_shortcodes = false ) {
+																	$hide_from_shortcodes = false,
+																		$custom_wp_size = NULL ) {
 
     $user_id = (true === empty($user_id)) ? get_current_user_id() : $user_id;
 
@@ -218,7 +220,7 @@ function ws_ls_photos_db_get_recent_or_latest( $user_id = false,
 				break;
 			}
 
-			$photo_src = ws_ls_photo_get( $photo['photo_id'], $width, $height );
+			$photo_src = ws_ls_photo_get( $photo['photo_id'], $width, $height, true, NULL, $custom_wp_size );
 
 			if ( false === empty( $photo_src ) ) {
 
@@ -410,13 +412,12 @@ function ws_ls_photos_db_count_photos( $user_id = false, $hide_from_shortcodes =
  *
  * @return bool
  */
-function ws_ls_photo_get( $attachment_id, $width = 200, $height = 200, $include_full_url = true, $css_class = NULL ) {
-
+function ws_ls_photo_get( $attachment_id, $width = 200, $height = 200, $include_full_url = true, $css_class = NULL, $custom_wp_size = NULL ) {
+	
 	$attributes = ( false === empty( $css_class ) ) ? [ 'class' => $css_class ] : '';
-
-	$size = add_image_size( 'wt-photo', $width, $height, true );
-
-	$photo['thumb'] = wp_get_attachment_image( $attachment_id, 'thumbnail', false, $attributes );
+	$size 		= !empty( $custom_wp_size ) ? $custom_wp_size : [ $width, $height ];
+	
+	$photo['thumb'] = wp_get_attachment_image( $attachment_id, $size, false, $attributes );
 
 	if ( false === empty( $photo['thumb'] )) {
 
@@ -428,6 +429,11 @@ function ws_ls_photo_get( $attachment_id, $width = 200, $height = 200, $include_
 	}
 
 	return false;
+}
+
+add_action( 'after_setup_theme', 'wpdocs_theme_setup' );
+function wpdocs_theme_setup() {
+	add_image_size( 'wt-photo', 400, 600, true ); // (cropped)
 }
 
 // ------------------------------------------------------------------
