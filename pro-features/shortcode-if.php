@@ -10,7 +10,7 @@ defined('ABSPATH') or die("Jog on");
  * @param $level - used to determine level of IF nesting
  * @return string
  */
-function ws_ls_shortcode_if( $user_defined_arguments, $content = null, $level = 0 ) {
+function ws_ls_shortcode_if( $user_defined_arguments, $content, $shortcode, $level = 0 ) {
 
 	if ( false === WS_LS_IS_PRO ) {
 		return ws_ls_display_pro_upgrade_notice_for_shortcode();
@@ -24,12 +24,14 @@ function ws_ls_shortcode_if( $user_defined_arguments, $content = null, $level = 
     $arguments = shortcode_atts( [      'user-id'       => get_current_user_id(),
 								        'operator'      => 'exists',				// exists, not-exists
 								        'field'         => 'weight',				// weight, target, bmr, height, gender, activity-level, dob, is-logged-in, aim
-								        'strip-p-br'    => false
+                                        'value'         => NULL,
+								        'strip-p-br'    => false,
+                                        'unit'          => 'kg'                     // kg / pounds
     ], $user_defined_arguments );
 
     // Validate arguments
     $arguments[ 'user-id' ]         = ws_ls_force_numeric_argument( $arguments[ 'user-id' ], get_current_user_id());
-    $arguments[ 'operator' ]        = ( true === in_array( $arguments[ 'operator' ], [ 'exists', 'not-exists' ] ) ) ? $arguments[ 'operator' ] : 'exists';
+    $arguments[ 'operator' ]        = ( true === in_array( $arguments[ 'operator' ], ws_ls_shortcode_if_allows_operators() ) ) ? $arguments[ 'operator' ] : 'exists';
     $arguments[ 'field' ]           = ( true === empty( $arguments[ 'field' ] ) ) ? 'weight' : $arguments[ 'field' ];
 
     // Strip out BR / P tags?
@@ -56,9 +58,22 @@ function ws_ls_shortcode_if( $user_defined_arguments, $content = null, $level = 
         $content = substr( $content, 0, $else_location );
     }
 
-    $does_all_values_exist  = ws_ls_shortcode_if_value_exist( $arguments[ 'user-id' ], $arguments[ 'field' ] );
-    $display_true_condition = 	(   ( true === $does_all_values_exist && 'exists' === $arguments[ 'operator' ] ) ||		    // True if field exists
-							        ( false === $does_all_values_exist && 'not-exists' === $arguments[ 'operator' ] ) );	// True if field does not exist
+    $display_true_condition = false;
+
+    if ( true === in_array( $arguments[ 'operator' ], [ 'exists', 'not-exists' ] ) )  {
+        $does_all_values_exist  = ws_ls_shortcode_if_value_exist( $arguments[ 'user-id' ], $arguments[ 'field' ] );
+        $display_true_condition = 	(   ( true === $does_all_values_exist && 'exists' === $arguments[ 'operator' ] ) ||		        // True if field exists
+                                            ( false === $does_all_values_exist && 'not-exists' === $arguments[ 'operator' ] ) );	// True if field does not exist
+    } else {
+
+        if ( true === empty( $arguments[ 'value' ] ) ) {
+            return sprintf( '<p>%s</p>', __( 'For comparisons, you must specify a value to compare against.', WE_LS_SLUG ) );
+        }
+
+        // comparison logic (i.e. greater-than, less-than, equals)
+        $display_true_condition = ws_ls_shortcode_if_comparison( $arguments[ 'field' ], $arguments[ 'user-id' ], $arguments[ 'operator' ], $arguments[ 'value' ],  $arguments[ 'unit' ] );
+
+    }
 
     // If we should display true content, then do so. IF not, and it was specified, display [else]
     if( true === $display_true_condition ) {
@@ -71,6 +86,106 @@ function ws_ls_shortcode_if( $user_defined_arguments, $content = null, $level = 
 }
 add_shortcode( 'wlt-if', 'ws_ls_shortcode_if' );
 add_shortcode( 'wt-if', 'ws_ls_shortcode_if' );
+
+
+function ws_ls_shortcode_if_comparison( $field, $user_id, $operator, $shortcode_value, $unit = 'kg' ) {
+   
+    if ( 'pounds' === $unit ) {
+        $shortcode_value = ws_ls_convert_pounds_to_kg( $shortcode_value );
+    }
+
+    // Fetch the value to compare against
+    $db_value           = ws_ls_shortcode_if_comparison_get_value( $field, $user_id );
+   
+    if ( NULL === $db_value ) {
+        return false;
+    }
+   
+    $shortcode_value    = (float) $shortcode_value;
+
+    switch ( $operator ) {
+
+        case 'equals':
+            return $shortcode_value === $db_value; 
+            break;
+        case 'greater-than':
+            return $db_value > $shortcode_value; 
+            break;    
+        case 'greater-than-or-equal-to':
+            return $db_value >= $shortcode_value; 
+            break;
+        case 'less-than':
+            return $db_value < $shortcode_value; 
+            break;    
+        case 'less-than-or-equal-to':
+            return $db_value <= $shortcode_value;
+            break;  
+        default:    // invalid operator
+            return false;    
+    }
+
+    return false;
+}
+
+/**
+ * Fetch the value we wish to compare against
+ * @param $field
+ * @param $user_id
+ * @param $unit
+ * @return array|string|null
+ */
+function ws_ls_shortcode_if_comparison_get_value( $field, $user_id ) {
+
+    $value = NULL;
+
+    switch( $field ) {
+        case 'difference-from-previous':
+            $value =  ws_ls_entry_difference_between_latest_and_previous( $user_id );
+            break;
+        case 'difference-from-start':
+            $latest_entry = ws_ls_entry_get_latest(  [ 'user-id' => $user_id ] );
+            $value = ( false === empty( $latest_entry[ 'difference_from_start_kg' ] ) ) ? $latest_entry[ 'difference_from_start_kg' ] : NULL;
+            break;
+        case 'weight':
+            $value = ws_ls_entry_get_latest_kg( $user_id );
+            break;
+        case 'target':
+            $value = ws_ls_target_get( $user_id, 'kg' );
+            break;
+        case 'previous-weight':
+            $value = ws_ls_entry_get_previous( [ 'id' => $user_id, 'kg-only' => true ] );
+            break; 
+        case 'no-days':
+            $value = ws_ls_shortcode_days_between_start_and_latest( [ 'user-id' => $user_id ], true );
+            break;       
+        case 'no-entries':
+
+            $counts = ws_ls_db_entries_count( $user_id );
+
+            $value = ( false === empty( $counts[ 'number-of-weight-entries' ] ) ) ?
+                        (int) $counts[ 'number-of-weight-entries' ] :
+                            NULL ;
+            break; 
+    }
+
+    if ( NULL === $value ) {
+        return NULL;
+    }
+
+    // Weight comparison? If so, we need to format into pounds if needed
+    if ( true === in_array( $field, [ 'difference-from-previous', 'difference-from-start', 'weight', 'target', 'previous-weight' ] ) ) {
+        $value = ws_ls_weight_display( $value, NULL, 'graph-value', true );
+    }
+
+    return NULL !== $value ? (float) $value : NULL;
+}
+/**
+ * Return allowed operators for [if] shortcode
+ * @return array
+ */
+function ws_ls_shortcode_if_allows_operators() {
+    return [ 'exists', 'not-exists', 'equals', 'greater-than','greater-than-or-equal-to', 'less-than', 'less-than-or-equal-to' ];
+}
 
 /**
  * Remove <br> and <p> tags from text
@@ -217,8 +332,8 @@ function ws_ls_shortcode_if_valid_field_name( $field ) {
  * @param null $content
  * @return string
  */
-function ws_ls_shortcode_if_level_one( $user_defined_arguments, $content = null ) {
-    return ws_ls_shortcode_if( $user_defined_arguments, $content, 1 );
+function ws_ls_shortcode_if_level_one( $user_defined_arguments, $content, $shortcode ) {
+    return ws_ls_shortcode_if( $user_defined_arguments, $content, $shortcode, 1 );
 }
 add_shortcode( 'wlt-if-1', 'ws_ls_shortcode_if_level_one' );
 add_shortcode( 'wt-if-1', 'ws_ls_shortcode_if_level_one' );
@@ -230,8 +345,8 @@ add_shortcode( 'wt-if-1', 'ws_ls_shortcode_if_level_one' );
  * @param null $content
  * @return string
  */
-function ws_ls_shortcode_if_level_two( $user_defined_arguments, $content = null ) {
-    return ws_ls_shortcode_if( $user_defined_arguments, $content, 2 );
+function ws_ls_shortcode_if_level_two( $user_defined_arguments, $content, $shortcode ) {
+    return ws_ls_shortcode_if( $user_defined_arguments, $content, $shortcode, 2 );
 }
 add_shortcode( 'wlt-if-2', 'ws_ls_shortcode_if_level_two' );
 add_shortcode( 'wt-if-2', 'ws_ls_shortcode_if_level_two' );
@@ -243,8 +358,8 @@ add_shortcode( 'wt-if-2', 'ws_ls_shortcode_if_level_two' );
  * @param null $content
  * @return string
  */
-function ws_ls_shortcode_if_level_three( $user_defined_arguments, $content = null ) {
-    return ws_ls_shortcode_if( $user_defined_arguments, $content, 3 );
+function ws_ls_shortcode_if_level_three( $user_defined_arguments, $content, $shortcode ) {
+    return ws_ls_shortcode_if( $user_defined_arguments, $content, $shortcode, 3 );
 }
 add_shortcode( 'wlt-if-3', 'ws_ls_shortcode_if_level_three' );
 add_shortcode( 'wt-if-3', 'ws_ls_shortcode_if_level_three' );
