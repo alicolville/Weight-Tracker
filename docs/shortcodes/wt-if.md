@@ -38,6 +38,8 @@ In some cases, you may wish to check if a value is greater than, less than or eq
 'equals', 'greater-than','greater-than-or-equal-to', 'less-than' or 'less-than-or-equal-to'.
 ```
 
+> Note: Comparisons around weight will be made in either Kg or Pounds dependant on your default weight unit.
+
 Compaison IF statements can only be used with the following fields:
 
 | Field | Description |

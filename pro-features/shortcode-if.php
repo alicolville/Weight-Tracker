@@ -168,6 +168,15 @@ function ws_ls_shortcode_if_comparison_get_value( $field, $user_id ) {
             break; 
     }
 
+    if ( NULL === $value ) {
+        return NULL;
+    }
+
+    // Weight comparison? If so, we need to format into pounds if needed
+    if ( true === in_array( $field, [ 'difference-from-previous', 'difference-from-start', 'weight', 'target', 'previous-weight' ] ) ) {
+        $value = ws_ls_weight_display( $value, NULL, 'graph-value', true );
+    }
+
     return NULL !== $value ? (float) $value : NULL;
 }
 /**
