@@ -145,6 +145,24 @@ function ws_ls_webhooks_weight_target( $type, $entry ) {
 add_action( 'wlt-hook-data-added-edited', 'ws_ls_webhooks_weight_target', 10, 2 );
 
 /**
+ * Manually fire an a web hook for this weight entry
+ */
+function ws_ls_webhooks_manually_fire_weight( $user_id, $entry_id ) {
+
+	if ( true === empty( $user_id ) ) {
+		return;
+	}
+
+	if ( true === empty( $entry_id ) ) {
+		return;
+	}
+
+	$entry = ws_ls_entry_get( [ 'user-id' => $user_id, 'id' => $entry_id, 'meta' => true ] );
+
+	ws_ls_webhooks_weight_target( [ 'type' => 'weight', 'mode' => 'resend' ], $entry );
+}
+
+/**
  * Listen out for new note hooks
  * @param $note
  */

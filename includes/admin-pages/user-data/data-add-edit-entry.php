@@ -40,7 +40,7 @@ function ws_ls_admin_page_data_add_edit() {
 						<div class="postbox">
 							<h2><span><?php echo esc_html__('Add / Edit an entry', WE_LS_SLUG); ?></span></h2>
 							<div class="inside">
-								<?php
+								<?php 
 	                                if ( true === WS_LS_IS_PRO ) {
 
 		                                echo ws_ls_form_weight( [    'user-id'              => $user_id,
@@ -49,6 +49,31 @@ function ws_ls_admin_page_data_add_edit() {
 		                                                             'hide-login-message'   => true,
 																	 'weight-mandatory'		=> false
 		                                ] );
+
+										// Allow to manually fire web hook again
+										if ( true === ws_ls_webhooks_enabled() ) {
+
+											$link = ws_ls_get_url();
+
+											$link = add_query_arg( [ 'webhook-entry-id' => $entry_id, 'webhook-user-id' => $user_id ] );
+										
+											printf( '	<br />
+														<hr />
+														<h3>%1$s<h3>
+														<a class="button-secondary" href="%2$s"><i class="fa fa-arrow-right"></i> %3$s</a>',  
+														esc_html__( 'Web Hooks', WE_LS_SLUG ),
+														esc_url( $link ), 
+														esc_html__( 'Re-send to endpoint(s)', WE_LS_SLUG ) );		
+
+											$entry_id 	= ws_ls_querystring_value( 'webhook-entry-id' );		
+											$user_id 	= ws_ls_querystring_value( 'webhook-user-id' );		
+
+											if ( false === empty( $user_id ) && 
+													false === empty( $entry_id ) ) {
+														ws_ls_webhooks_manually_fire_weight( $user_id, $entry_id );
+														printf( '<p>%s</p>', esc_html__( 'Sent!', WE_LS_SLUG ) );
+											}
+										}
 
 	                                } else {
 	                                    echo sprintf( '<p>%s</p>', esc_html__('A Pro license is required to add / edit a weight entry.', WE_LS_SLUG) );
