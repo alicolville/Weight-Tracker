@@ -32,13 +32,13 @@ At the moment this shortcode is in it's infancy, so  [please get in touch]({{ si
 
 **Comparison IF statements**
 
-In some cases, you may wish to check if a value is greater than, less than or equal to a given number. For this, the following "operator" values exist:
+In some cases, you may wish to check if a field is greater than, less than or equal to a given number. For this, the following "operator" values exist:
 
 ```
 'equals', 'greater-than','greater-than-or-equal-to', 'less-than' or 'less-than-or-equal-to'.
 ```
 
-> Note: Comparisons around weight will be made in either Kg or Pounds dependant on your default weight unit.
+> Note: Weight comparisons will be made in either kilograms (kg) or pounds (lbs), depending on your default weight unit.
 
 Compaison IF statements can only be used with the following fields:
 
