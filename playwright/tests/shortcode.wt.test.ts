@@ -5,9 +5,9 @@ test.describe( 'WT Shortcode', () => {
     test.describe.configure( { mode: 'serial' } );
     
     test('exist on page', async ({ page }) => {
-        await page.goto('http://localhost/weight-tracker/');
+        await page.goto('http://localhost/');
        
-        await expect(page).toHaveTitle(/Weight Tracker/);
+        await expect(page).toHaveTitle(/Test/);
       
         // If the following is true, can assume shortcode is rendering when logged in
         await expect(page.getByRole('link', { name: 'VIEW IN TABULAR FORMAT' })).toBeVisible();
@@ -15,7 +15,7 @@ test.describe( 'WT Shortcode', () => {
     
     test('set user settings', async ({ page }) => {
 
-        await page.goto('http://localhost/weight-tracker/');
+        await page.goto('http://localhost/');
     
         await page.getByTestId('wt-tab-settings').click();
        
@@ -51,7 +51,7 @@ test.describe( 'WT Shortcode', () => {
 
     test('add a weight', async ({ page }) => {
 
-        await page.goto('http://localhost/weight-tracker/');
+        await page.goto('http://localhost/');
     
         // Start by deleting all weight entries
         await page.getByTestId('wt-tab-settings').click();
@@ -79,7 +79,7 @@ test.describe( 'WT Shortcode', () => {
 
     test('add a target', async ({ page }) => {
 
-        await page.goto('http://localhost/weight-tracker/');
+        await page.goto('http://localhost/');
         await page.getByTestId('wt-tab-settings').click();
         await page.getByTestId('ws-form-target').click();
         await page.getByTestId('ws-form-target').fill('455');

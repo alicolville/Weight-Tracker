@@ -17,7 +17,7 @@ test.describe.configure( { mode: 'serial' } );
 
 test('wt-if difference from start', async ({ weightTracker, page }) => {
     
-    await page.goto('http://localhost/if-statements/difference-from-start/');
+    await page.goto('http://localhost/tests/if-statements/difference-from-start/');
     await expect(page.locator('.greater-than')).toContainText('greater than: no');
     await expect(page.locator('.greater-than-or-equal-to')).toContainText('greater than or equal to: no');
     await expect(page.locator('.less-than')).toContainText('less than: no');
@@ -26,7 +26,7 @@ test('wt-if difference from start', async ({ weightTracker, page }) => {
 
     await weightTracker.weight_add( '11/01/2024', '213' );
 
-    await page.goto('http://localhost/if-statements/difference-from-start/');
+    await page.goto('http://localhost/tests/if-statements/difference-from-start/');
     await expect(page.locator('.greater-than')).toContainText('greater than: no');
     await expect(page.locator('.greater-than-or-equal-to')).toContainText('greater than or equal to: no');
     await expect(page.locator('.less-than')).toContainText('less than: yes');
@@ -35,12 +35,12 @@ test('wt-if difference from start', async ({ weightTracker, page }) => {
 
     await weightTracker.weight_add( '11/01/2024', '214' );
 
-    await page.goto('http://localhost/if-statements/difference-from-start/');
+    await page.goto('http://localhost/tests/if-statements/difference-from-start/');
     await expect(page.locator('.less-than-or-equal-to')).toContainText('less than or equal to: no');
 
     await weightTracker.weight_add( '11/02/2024', '250' );
 
-    await page.goto('http://localhost/if-statements/difference-from-start/');
+    await page.goto('http://localhost/tests/if-statements/difference-from-start/');
     await expect(page.locator('.greater-than')).toContainText('greater than: no');
     await expect(page.locator('.greater-than-or-equal-to')).toContainText('greater than or equal to: no');
     await expect(page.locator('.less-than')).toContainText('less than: no');
@@ -49,17 +49,17 @@ test('wt-if difference from start', async ({ weightTracker, page }) => {
 
     await weightTracker.weight_add( '11/03/2024', '280' );
 
-    await page.goto('http://localhost/if-statements/difference-from-start/');
+    await page.goto('http://localhost/tests/if-statements/difference-from-start/');
     await expect(page.locator('.greater-than')).toContainText('greater than: no');
 
     await weightTracker.weight_add( '11/04/2024', '281' );
 
-    await page.goto('http://localhost/if-statements/difference-from-start/');
+    await page.goto('http://localhost/tests/if-statements/difference-from-start/');
     await expect(page.locator('.greater-than')).toContainText('greater than: yes');
 
     await weightTracker.weight_add( '11/04/2024', '290' );
 
-    await page.goto('http://localhost/if-statements/difference-from-start/');
+    await page.goto('http://localhost/tests/if-statements/difference-from-start/');
     await expect(page.locator('.greater-than')).toContainText('greater than: yes');
     await expect(page.locator('.greater-than-or-equal-to')).toContainText('greater than or equal to: yes');
     await expect(page.locator('.less-than')).toContainText('less than: no');
@@ -68,7 +68,7 @@ test('wt-if difference from start', async ({ weightTracker, page }) => {
 
     await weightTracker.weight_add( '11/04/2024', '289' );
    
-    await page.goto('http://localhost/if-statements/difference-from-start/');
+    await page.goto('http://localhost/tests/if-statements/difference-from-start/');
     await expect(page.locator('.greater-than-or-equal-to')).toContainText('greater than or equal to: no');
 
     await weightTracker.weight_set_defaults();

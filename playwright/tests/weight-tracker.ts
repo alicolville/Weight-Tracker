@@ -10,7 +10,7 @@ export class WeightTracker {
   }
 
   async goto() {
-      await this.page.goto('http://localhost/weight-tracker/');
+      await this.page.goto('http://localhost/');
   }
 
   async weight_set_defaults(){
