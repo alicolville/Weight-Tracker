@@ -178,20 +178,23 @@ function ws_ls_gravity_forms_process( $entry, $form ) {
     GFCommon::log_debug( 'Data trying to be saved: ' . print_r( $weight, true ) );
 
 	// Add weight entry!
-    $result = ws_ls_db_entry_set( $weight , $user_id );
+    $entry_id = ws_ls_db_entry_set( $weight , $user_id );
 
-    if ( false === empty( $result ) ) {
+    if ( false === empty( $entry_id ) ) {
 
         GFCommon::log_debug( 'Weight entry saved!' );
 
 		foreach ( $meta as $key => $value ) {
 
-			$meta_field = [ 'entry_id' => $result, 'key' => $key, 'value' => $value ];
+			$meta_field = [ 'entry_id' => $entry_id, 'key' => $key, 'value' => $value ];
 
 			GFCommon::log_debug( 'Adding meta data: ' . print_r( $meta_field, true ) );
 
 			ws_ls_meta_add_to_entry( $meta_field );
 		}
+
+        ws_ls_webhooks_manually_fire_weight( $user_id, $entry_id, 'add' );
+
     } else {
         GFCommon::log_debug( 'Weight entry did not save correctly :(' );
     }
