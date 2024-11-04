@@ -147,7 +147,7 @@ add_action( 'wlt-hook-data-added-edited', 'ws_ls_webhooks_weight_target', 10, 2 
 /**
  * Manually fire an a web hook for this weight entry
  */
-function ws_ls_webhooks_manually_fire_weight( $user_id, $entry_id ) {
+function ws_ls_webhooks_manually_fire_weight( $user_id, $entry_id, $mode_label = 'resend' ) {
 
 	if ( true === empty( $user_id ) ) {
 		return;
@@ -159,7 +159,7 @@ function ws_ls_webhooks_manually_fire_weight( $user_id, $entry_id ) {
 
 	$entry = ws_ls_entry_get( [ 'user-id' => $user_id, 'id' => $entry_id, 'meta' => true ] );
 
-	ws_ls_webhooks_weight_target( [ 'type' => 'weight', 'mode' => 'resend' ], $entry );
+	ws_ls_webhooks_weight_target( [ 'type' => 'weight', 'mode' => $mode_label ], $entry );
 }
 
 /**
