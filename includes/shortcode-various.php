@@ -261,14 +261,30 @@ function ws_ls_shortcode_difference_in_weight_previous_latest( $user_defined_arg
         $difference             = ( false === ws_ls_to_bool( $arguments[ 'invert' ] ) ) ? $difference : -$difference ;
         $sign                   = ( $difference > 0 ) ? '+' : '';
         $weight_to_display      = ws_ls_weight_display( $difference, $arguments[ 'user-id' ], false, false, true );
+	
         $html                   .= sprintf ('%s%s', $sign, $weight_to_display[ 'display' ] );
 
         if ( true === $arguments[ 'kiosk-mode' ] ) {
 
-            // Note, this currently only supports lose weight!
-            $label = ( $difference <= 0 ) ? 'ykuk-label ykuk-label-success' : 'ykuk-label ykuk-label-warning';
+          	$output = ws_ls_calculate_percentage_difference( $previous_entry[ 'kg' ], $latest_entry[ 'kg' ] );
 
-            $html .= sprintf( '<span class="%s">%s</span>', $label, $html );
+			if ( false === empty( $output[ 'percentage' ] ) ) {
+			
+				$percentage_difference = ( true === $output[ 'increase' ] ) ?  $output[ 'percentage' ] : -$output[ 'percentage' ];
+		
+				$user_aim = (int) ws_ls_user_preferences_get( 'aim', $arguments[ 'user-id' ] );
+				
+				if ( ( 2 === $user_aim && (float) $percentage_difference <= 0 ) ||
+					( 3 === $user_aim && (float) $percentage_difference >= 0 ) ) {
+					$class = 'ykuk-label-success';
+				} else {
+					$class = 'ykuk-label-warning';
+				}
+
+				$percentage_difference = ws_ls_round_number( $percentage_difference, 1 );
+
+				$html .= sprintf( '<br /><span class="ykuk-label %s">%s%%</span>', $class, $percentage_difference );
+			}
         }
     }
 

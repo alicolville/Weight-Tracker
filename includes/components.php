@@ -294,7 +294,7 @@ function ws_ls_component_weight_difference_since_previous( $args = [] ) {
 
 	$args = wp_parse_args( $args, [ 'user-id' => get_current_user_id() ] );
 
-	$text_data = ws_ls_shortcode_difference_in_weight_previous_latest( [    'display'                   => 'percentage',
+	$text_data = ws_ls_shortcode_difference_in_weight_previous_latest( [    'display'                   => 'weight',
 	                                                                        'include-percentage-sign'   => false,
 	                                                                        'invert'                    => false,
 	                                                                        'user-id'                   => $args[ 'user-id'],
