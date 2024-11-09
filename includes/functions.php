@@ -1871,3 +1871,30 @@ function ws_ls_wp_kses( $value ) {
 
 	return wp_kses( $value, $basic_tags );
 }
+
+/**
+ * Helper function to disable admin page if the user doesn't have the correct user role.
+ */
+function ws_ls_permission_check_message() {
+    if ( false === ws_ls_permission_check() )  {
+        wp_die( esc_html__( 'You do not have sufficient permissions to access this page.' , WE_LS_SLUG ) );
+    }
+}
+
+/**
+ * Can the current user view this admin data page?
+ * @return bool
+ */
+function ws_ls_permission_check() {
+	return current_user_can( ws_ls_permission_role() );
+}
+
+/**
+ * Get the minimum user role allowed for viewing data pages in admin
+ * @return mixed|void
+ */
+function ws_ls_permission_role() {
+	$permission_role = get_option( 'ws-ls-edit-permissions', 'manage_options' );
+
+	return ( false === empty( $permission_role ) ) ? $permission_role : 'manage_options';
+}
