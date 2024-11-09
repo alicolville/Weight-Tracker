@@ -107,6 +107,16 @@ require_once( WS_LS_ABSPATH . 'includes/admin-pages/meta-fields/page-meta-fields
 require_once( WS_LS_ABSPATH . 'includes/admin-pages/awards/page-awards.php' );
 require_once( WS_LS_ABSPATH . 'includes/admin-pages/awards/page-awards-list.php' );
 require_once( WS_LS_ABSPATH . 'includes/admin-pages/awards/page-awards-add-update.php' );
+require_once( WS_LS_ABSPATH . 'includes/admin-pages/user-data/data-home.php' );
+require_once( WS_LS_ABSPATH . 'includes/admin-pages/user-data/data-summary.php' );
+require_once( WS_LS_ABSPATH . 'includes/admin-pages/user-data/data-view-all.php' );
+require_once( WS_LS_ABSPATH . 'includes/admin-pages/user-data/data-add-edit-entry.php' );
+require_once( WS_LS_ABSPATH . 'includes/admin-pages/user-data/data-edit-target.php' );
+require_once( WS_LS_ABSPATH . 'includes/admin-pages/user-data/data-user.php' );
+require_once( WS_LS_ABSPATH . 'includes/admin-pages/user-data/data-notes.php' );
+require_once( WS_LS_ABSPATH . 'includes/admin-pages/user-data/data-user-edit-settings.php' );
+require_once( WS_LS_ABSPATH . 'includes/admin-pages/user-data/data-search-results.php' );
+require_once( WS_LS_ABSPATH . 'includes/admin-pages/user-data/data-photos.php' );
 require_once( WS_LS_ABSPATH . 'includes/deprecated.php' );
 
 // -----------------------------------------------------------------------------------------
