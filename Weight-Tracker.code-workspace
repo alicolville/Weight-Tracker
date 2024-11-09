@@ -7,7 +7,7 @@
 			"path": "."
 		},
 		{
-			"path": "../../.."
+			"path": "../weight-tracker-pro"
 		}
 	],
 	"settings": {}
