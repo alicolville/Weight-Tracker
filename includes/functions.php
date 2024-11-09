@@ -2,6 +2,15 @@
 defined('ABSPATH') or die("Jog on!");
 
 /**
+ * Is the main Pro Weight Tracker plugin installed?
+ * 
+ * @return bool
+ */
+function ws_ls_pro_plugin_intalled() {
+    return defined( 'WE_LS_PRO_CURRENT_VERSION' );
+}
+
+/**
  * Delete all targets and weight entries
  */
 function ws_ls_delete_existing_data() {
