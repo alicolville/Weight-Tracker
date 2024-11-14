@@ -1907,3 +1907,32 @@ function ws_ls_permission_role() {
 
 	return ( false === empty( $permission_role ) ) ? $permission_role : 'manage_options';
 }
+
+/**
+ * Return base URL for user data
+ * @return string
+ */
+function ws_ls_get_link_to_user_data() {
+	return esc_url( admin_url( 'admin.php?page=ws-ls-data-home') );
+}
+
+/**
+ * Return base URL for meta fields
+ *
+ * @param array $args
+ *
+ * @return string
+ */
+function ws_ls_meta_fields_base_url( $args = [] ) {
+
+	$url = admin_url( 'admin.php?page=ws-ls-meta-fields' );
+
+	return ( false === empty( $args ) ) ? add_query_arg( $args, $url ) : $url;
+}
+/*
+* Return base URL for meta fields
+* @return string
+*/
+function ws_ls_awards_base_url() {
+	return admin_url( 'admin.php?page=ws-ls-awards');
+}

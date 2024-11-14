@@ -639,6 +639,8 @@ function ws_ls_settings_page_generic() {
                                             <h3><?php echo esc_html__( 'Macronutrient Calculator: Meals' , WE_LS_SLUG); ?></h3>
                                             <table class="form-table">
                                                 <?php
+													if( ws_ls_pro_plugin_intalled() ) {
+
                                                         foreach ( ws_ls_harris_benedict_meal_ratio_defaults() as $key => $default ) {
 
                                                             printf( '<tr class="%1$s">
@@ -658,6 +660,7 @@ function ws_ls_settings_page_generic() {
                                                                 esc_html__( 'Please note, it may take up to 15 minutes for calculations to change (due to caching).' , WE_LS_SLUG )
                                                             );
                                                         }
+													}	
                                                 ?>
                                             </table>
                                         </div>
@@ -1228,14 +1231,16 @@ function ws_ls_register_settings(){
 		register_setting( 'we-ls-options-group', 'ws-ls-macro-carbs-gain' );
 		register_setting( 'we-ls-options-group', 'ws-ls-macro-fats-gain' );
 
-        foreach ( ws_ls_harris_benedict_meal_ratio_defaults() as $key => $default ) {
-            register_setting( 'we-ls-options-group', sprintf( ' ws-ls-meal-ratio-%s', $key ) );
-        }
+		if( ws_ls_pro_plugin_intalled() ) {	
+			foreach ( ws_ls_harris_benedict_meal_ratio_defaults() as $key => $default ) {
+				register_setting( 'we-ls-options-group', sprintf( ' ws-ls-meal-ratio-%s', $key ) );
+			}
 
-        // Calories to subtract
-		foreach ( ws_ls_harris_benedict_calorie_subtract_ranges_keys() as $key ) {
-			register_setting( 'we-ls-options-group', $key );
-		}
+			// Calories to subtract
+			foreach ( ws_ls_harris_benedict_calorie_subtract_ranges_keys() as $key ) {
+				register_setting( 'we-ls-options-group', $key );
+			}
+		}	
     }
 }
 add_action( 'admin_init', 'ws_ls_register_settings' );
