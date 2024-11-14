@@ -10,6 +10,23 @@ function ws_ls_pro_plugin_intalled() {
     return defined( 'WE_LS_PRO_CURRENT_VERSION' );
 }
 
+
+/**
+ * Is a Pro Weight Tracker feature enabled?
+ * 
+ * @return bool
+ */
+function ws_ls_pro_feature_enabled( $key ) {
+
+	if ( true === empty( $key ) ) {
+		return false;
+	}
+
+	$is_enabled = apply_filters( 'wlt-pro-enabled-', false );
+	
+	return $is_enabled;
+}
+
 /**
  * Delete all targets and weight entries
  */
