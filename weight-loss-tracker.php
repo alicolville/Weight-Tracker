@@ -31,7 +31,7 @@ define( 'WE_LS_UPGRADE_TO_PRO_PLUS_URL', 'https://shop.yeken.uk/product/weight-t
 define( 'WE_LS_FREE_TRIAL_URL', 'https://shop.yeken.uk/get-a-trial-license/' );
 define( 'WE_LS_CDN_CHART_JS', WS_LS_BASE_URL . 'assets/js/libraries/chart-4.4.4.min.js' );
 define( 'WE_LS_CDN_FONT_AWESOME_CSS', WS_LS_BASE_URL . 'assets/css/libraries/fontawesome-4.7.0.min.css' );
-define( 'WE_LS_PRO_PRICE', 60.00 );
+define( 'WE_LS_PREMIUM_PRICE', 70.00 );
 define( 'WE_LS_PRO_PLUS_PRICE', 120.00 );
 
 global $form_number;        // This is used to keep track of multiple forms on a page allowing us to pass messages to each
@@ -55,11 +55,13 @@ $license_type = ws_ls_has_a_valid_license();
 
 // Standard Pro license?
 if( true === in_array( $license_type, [ 'pro', 'pro-plus' ] ) ){
-	define( 'WS_LS_IS_PRO', true );
-	define( 'WS_LS_IS_PRO_PLUS', true );
+	define( 'WS_LS_IS_PREMIUM', true );
+	define( 'WS_LS_IS_PRO', true );			// Legacy
+	define( 'WS_LS_IS_PRO_PLUS', true );	// Legacy
 } else {
-	define( 'WS_LS_IS_PRO', false );
-	define( 'WS_LS_IS_PRO_PLUS', false );
+	define( 'WS_LS_IS_PREMIUM', false );
+	define( 'WS_LS_IS_PRO', false );		// Legacy
+	define( 'WS_LS_IS_PRO_PLUS', false );	// Legacy
 }
 
 // -----------------------------------------------------------------------------------------
