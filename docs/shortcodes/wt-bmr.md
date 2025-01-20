@@ -1,6 +1,6 @@
 ## [wt-bmr]
 
-> The following shortcode is only available in the [Pro Plus]({{ site.baseurl }}/upgrade.html) version of the plugin.
+> The following shortcode is only available in the [Premium]({{ site.baseurl }}/upgrade.html) version of the plugin.
 
 [wt-bmr] renders the user's Basal Metabolic Rate (BMR). For more information on BMR and how it is calculated please read the [calculations guide]({{ site.baseurl }}/calculations.html).
 

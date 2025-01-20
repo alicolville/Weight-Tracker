@@ -12,9 +12,9 @@ Within the next few versions of Weight Tracker, your current legacy license will
  
  If you do decide to switch to an annual license, please email me at [email@yeken.uk](mailto:email@yeken.uk) with your site hash and I'll happily send you a free license for this year along with a voucher code that gives you 50% off the following 2 years!
  
-## Upgrade to Pro Plus
+## Upgrade to Premium
   
-If you would like to make the step up to a Pro Plus license, I will happily provide you with a voucher code that gives you the first 2 years at 50% of the standard cost. Please email me at [email@yeken.uk](mailto:email@yeken.uk) and I'll reply with a voucher code.
+If you would like to make the step up to a Premium license, I will happily provide you with a voucher code that gives you the first 2 years at 50% of the standard cost. Please email me at [email@yeken.uk](mailto:email@yeken.uk) and I'll reply with a voucher code.
   
 ## Prefer to switch to a newer Pro lifetime license?
   

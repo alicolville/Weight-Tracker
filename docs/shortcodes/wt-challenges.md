@@ -1,6 +1,6 @@
 ## [wt-challenges]
 
-> The following shortcode is only available in the [Pro Plus]({{ site.baseurl }}/upgrade.html) version of the plugin.
+> The following shortcode is only available in the [Premium]({{ site.baseurl }}/upgrade.html) version of the plugin.
 
 This shortcode will render a [Challenge]({{ site.baseurl }}/challenges.html) league table.
 

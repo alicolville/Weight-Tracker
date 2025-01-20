@@ -2,7 +2,7 @@
 
 This is the most popular shortcode for the Weight Tracker plugin and displays upto four sections / tabs when a user is logged into WordPress.    
     
-> The following shortcode is available in both the free and [Pro/Pro Plus]({{ site.baseurl }}/features.html) version of the plugin. The Pro version has the following additional features: 
+> The following shortcode is available in both the free and [Pro/Premium]({{ site.baseurl }}/features.html) version of the plugin. The Pro version has the following additional features: 
 > * Support for measurements and  [custom fields]({{ site.baseurl }}/custom-fields.html). 
 > * Advanced data table for viewing weight entries. Supporting sorting, paging, editing and deleting. 
 > * Support for BMI, BMR, suggested calorie intake and Macronutrients.
@@ -43,13 +43,13 @@ The history tab provides the following summary data as well as a data table cont
  
 **Awards**
  
- With a [Pro Plus](https://shop.yeken.uk/product/weight-tracker-pro-plus/) license the "Awards" tab is visible. This allows the user to see which awards have been given to them.
+ With a [Premium](https://shop.yeken.uk/product/weight-tracker-pro-plus/) license the "Awards" tab is visible. This allows the user to see which awards have been given to them.
  
  [![Advanced]({{ site.baseurl }}/assets/images/wt2-awards.png)]({{ site.baseurl }}/assets/images/wt2-awards.png)
  
 **Advanced**
 
-With a [Pro Plus](https://shop.yeken.uk/product/weight-tracker-pro-plus/) license an additional tab is present with "Advanced" data. This tab contains the following information;
+With a [Premium](https://shop.yeken.uk/product/weight-tracker-pro-plus/) license an additional tab is present with "Advanced" data. This tab contains the following information;
  
 - BMI (Body Mass Index)
 - BMR (Basal Metabolic Rate)

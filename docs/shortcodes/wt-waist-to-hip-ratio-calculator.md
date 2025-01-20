@@ -1,6 +1,6 @@
 ## [wt-waist-to-hip-ratio-calculator] 
 
-> The following shortcode is only available in the [Pro Plus]({{ site.baseurl }}/features.html) version of the plugin.
+> The following shortcode is only available in the [Premium]({{ site.baseurl }}/features.html) version of the plugin.
  
 **Overview** 
 

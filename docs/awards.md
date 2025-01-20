@@ -1,7 +1,7 @@
 # Awards
-> The following feature is only available in the [Pro Plus]({{ site.baseurl }}/upgrade.html)  version of the plugin.
+> The following feature is only available in the [Premium]({{ site.baseurl }}/upgrade.html)  version of the plugin.
 
-[Pro Plus]({{ site.baseurl }}/upgrade.html)  sites have the ability to give users awards for reaching defined goals. Currently you can set awards for:
+[Premium]({{ site.baseurl }}/upgrade.html)  sites have the ability to give users awards for reaching defined goals. Currently you can set awards for:
 
 -   **Weight**. Define goals in terms of weight lost or gained. For example, set goals of 1Kg Lost, 2Kg Lost, etc
 -   **Weight %**. Define goals in terms of percentage of weight lost or gained. For example, set goals of 5% Weight Lost, 10% Weight Lost, etc

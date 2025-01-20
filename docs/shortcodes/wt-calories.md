@@ -1,6 +1,6 @@
 ## [wt-calories]
 
-> The following shortcode is only available in the [Pro Plus]({{ site.baseurl }}/upgrade.html) version of the plugin.
+> The following shortcode is only available in the [Premium]({{ site.baseurl }}/upgrade.html) version of the plugin.
 
 [wt-calories] displays a specific calorie figure from a user's calorie intake figures. For more information on calorie calculations please visit our [calculations guide]({{ site.baseurl }}/calculations.html).
  

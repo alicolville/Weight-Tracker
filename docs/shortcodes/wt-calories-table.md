@@ -1,6 +1,6 @@
 ## [wt-calories-table]
 
-> The following shortcode is only available in the [Pro Plus]({{ site.baseurl }}/upgrade.html) version of the plugin.
+> The following shortcode is only available in the [Premium]({{ site.baseurl }}/upgrade.html) version of the plugin.
 
 [wt-calories-table] displays recommendations on the best way to split your calorie intake (for maintaining, gaining or losing weight) over the day. For more information on calorie calculations please visit our [calculations guide]({{ site.baseurl }}/calculations.html).
  

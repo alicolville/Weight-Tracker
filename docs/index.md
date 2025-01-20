@@ -2,7 +2,7 @@
 
 Weight Tracker is an easy to use [WordPress Plugin](https://wordpress.org/plugins/weight-loss-tracker/) that allows registered users of your website to track their weight, measurements, photos, custom fields, etc. History can be displayed in both tables & charts. Support for BMI, BMR, Calorie Intake, Macronutrients and much more!    
     
-The plugin is available in a [Free](https://wordpress.org/plugins/weight-loss-tracker/) and [Pro](https://shop.yeken.uk/product/weight-tracker-pro/)/[Pro Plus](https://shop.yeken.uk/product/weight-tracker-pro-plus/) version. This documentation will help you to set up Weight Tracker to suit your business.  
+The plugin is available in a [Free](https://wordpress.org/plugins/weight-loss-tracker/) and [Pro](https://shop.yeken.uk/product/weight-tracker-pro/)/[Premium](https://shop.yeken.uk/product/weight-tracker-pro-plus/) version. This documentation will help you to set up Weight Tracker to suit your business.  
   
 ## Features  
   
@@ -25,7 +25,7 @@ A demo site with Weight Tracker installed can be found at [https://demo.yeken.uk
 
 ## Free Trial 
 
-If you would like to trial the Pro Plus version of the plugin, then we are happy to provide a free trial. [Get your free trial now](https://shop.yeken.uk/get-a-trial-license/). 
+If you would like to trial the Premium version of the plugin, then we are happy to provide a free trial. [Get your free trial now](https://shop.yeken.uk/get-a-trial-license/). 
 
 ## Translate Weight Tracker  
 All [YeKen](https://www.yeken.uk) plugins are fully translatable and can be translated with [Loco Translate](https://en-gb.wordpress.org/plugins/loco-translate/). For further information, please read our [guide on translating YeKen plugins]({{ site.baseurl}}/translate.html).
