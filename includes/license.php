@@ -2,6 +2,8 @@
 
 defined('ABSPATH') or die('Jog on!');
 
+define('WS_LS_LICENSE_SITE_HASH', 'ws-ls-license-site-hash');
+
 /**
  * Determines whether the user has a valid license (Pro or Pro plus)
  *
@@ -146,18 +148,7 @@ function ws_ls_license_get_old_or_new() {
 
     $license = ws_ls_license();
 
-    if(false === empty($license)) {
-        return $license;
-    }
-
-    $license = ws_ls_get_license();
-
-    if(false === empty($license)) {
-        return $license;
-    }
-
-    return '';
-
+    return ( false === empty( $license ) ) ? $license : '';
 }
 
 /**
@@ -207,29 +198,17 @@ function ws_ls_license_apply( $license, $is_cron = true ) {
 }
 
 /**
- * Remove new and old licenses
- * @param string $type
+ * Remove new license
  */
-function ws_ls_license_remove( $type = 'both' ) {
+function ws_ls_license_remove() {
 
-	ws_ls_log_add( 'license', sprintf( 'License removed: %s', $type ) );
+	ws_ls_log_add( 'license', 'License removed'  );
 
-    if(true === in_array($type, ['new', 'both'])) {
-        delete_option(WS_LS_LICENSE_2);
-        delete_option(WS_LS_LICENSE_2_TYPE);
-        delete_option(WS_LS_LICENSE_2_VALID);
+    delete_option(WS_LS_LICENSE_2);
+    delete_option(WS_LS_LICENSE_2_TYPE);
+    delete_option(WS_LS_LICENSE_2_VALID);
 
-		// Fire comms to Yeken to record expire
-		do_action('wlt-hook-license-expired' );
-	}
-
-	if(true === in_array($type, ['old', 'both'])) {
-        delete_option(WS_LS_LICENSE);
-        delete_option(WS_LS_LICENSE_VALID);
-
-		// Fire comms to Yeken to record expire
-		do_action('wlt-hook-license-expired' );
-    }
+	do_action('wlt-hook-license-expired' );
 }
 
 /**
@@ -348,60 +327,6 @@ function ws_ls_license_display_name($license = false) {
     }
 
     return $return_value;
-}
-
-// ------------------------------------------------------------------------------------------------------------
-// Old licensing
-// ------------------------------------------------------------------------------------------------------------
-
-define('WS_LS_LICENSE_SITE_HASH', 'ws-ls-license-site-hash');
-define('WS_LS_LICENSE', 'ws-ls-license');
-define('WS_LS_LICENSE_VALID', 'ws-ls-license-valid');
-
-/**
-*	Check for old valid pro license
-**/
-function ws_ls_has_a_valid_old_pro_license() {
-
-	$valid_license = get_option(WS_LS_LICENSE_VALID);
-
-    if( $valid_license ) {
-      return true;
-    }
-
-    return false;
-}
-
-/**
- *    Generate an old Pro license so it can be compared against one entered.
- * @param $site_hash
- * @return string
- */
-function ws_ls_generate_old_pro_license($site_hash) {
-	return md5('yeken.co.uk' . $site_hash);
-}
-
-/**
- *    Validate and store an old Pro license
- * @param $license_key_from_yeken
- * @return bool
- */
-function ws_ls_is_validate_old_pro_license($license_key_from_yeken) {
-    $site_hash = ws_ls_generate_site_hash();
-    $comparison_license = ws_ls_generate_old_pro_license($site_hash);
-    if ($comparison_license == $license_key_from_yeken){
-        update_option(WS_LS_LICENSE, $license_key_from_yeken);
-        update_option(WS_LS_LICENSE_VALID, true);
-        return true;
-    }
-    return false;
-}
-
-/**
-* 	Fetch old PRO license from WP Options
-**/
-function ws_ls_get_license() {
-	return get_option(WS_LS_LICENSE);
 }
 
 /**
