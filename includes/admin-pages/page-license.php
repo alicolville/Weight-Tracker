@@ -46,8 +46,6 @@ function ws_ls_advertise_premium() {
 				$license_decoded 	= ws_ls_license_decode( $license) ;
 			}
 
-		//	 $display_pro_plus_marketing 	= (false === $license_type || 'pro' === $license_type );
-				$display_premium_marketing = !WS_LS_IS_PREMIUM;
 		?>
 		<div id="icon-options-general" class="icon32"></div>
 				<div id="poststuff">
@@ -65,7 +63,7 @@ function ws_ls_advertise_premium() {
 								</h3>
 							<div class="inside">
 								<p>
-									<?php if ( $display_premium_marketing ){ 
+									<?php if ( !WS_LS_IS_PREMIUM ){ 
 										echo esc_html__( 'The Weight Tracker Premium provides an array of enhanced features, such as BMR calculation, calorie intake tracking, and a macronutrient calculator, designed to help both you and your members manage weight more effectively. By purchasing a licence, you are not only unlocking these additional features but also supporting the continued development of this plugin — your support is truly appreciated.', WE_LS_SLUG );
 									} else { 
 										echo esc_html__( 'Thank you for purchasing a license! Your support means a lot to me, and I greatly appreciate you choosing to back this plugin!', WE_LS_SLUG );
@@ -76,7 +74,7 @@ function ws_ls_advertise_premium() {
 
 									<?php
 
-									if ( false === WS_LS_IS_PREMIUM )  {
+									if ( !WS_LS_IS_PREMIUM )  {
 
 										$button_html = sprintf('<a href="%s?hash=%s&license=%s" rel="noopener noreferrer" target="_blank" class="button-primary ws-ls-upgrade-button"><i class="fa fa-clock-o"></i> %s</a>',
 																WE_LS_FREE_TRIAL_URL,
@@ -85,11 +83,7 @@ function ws_ls_advertise_premium() {
 																esc_html__( 'Get a free 14 day trial', WE_LS_SLUG ));
 
 										ws_ls_echo_wp_kses( $button_html );					
-									}
-
-
-									if ( $display_premium_marketing ) {
-								
+									
 										$text = sprintf( '%s  &pound;%s %s', esc_html__( 'Upgrade to Premium for', WE_LS_SLUG), $price, esc_html__( 'a year', WE_LS_SLUG ) );
 										$link = WE_LS_UPGRADE_TO_PRO_URL;
 
