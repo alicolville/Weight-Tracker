@@ -5,7 +5,7 @@ defined('ABSPATH') or die('Jog on!');
 define('WS_LS_LICENSE_SITE_HASH', 'ws-ls-license-site-hash');
 
 /**
- * Determines whether the user has a valid license (Pro or Pro plus)
+ * Determines whether the user has a valid license (Pro or Pro plus - AKA Premium)
  *
  * @return bool|string
  */
@@ -16,10 +16,10 @@ function ws_ls_has_a_valid_license() {
 		return false;
 	}
 
-	// Do we have an Pro Plus license?
+	// Do we have an Premium license?
 	$license_type = ws_ls_has_a_valid_subscription_license();
 
-	if(false !== $license_type) {
+	if( false !== $license_type) {
 		return $license_type;
 	}
 
@@ -33,7 +33,7 @@ function ws_ls_has_a_valid_license() {
 function ws_ls_is_site_hash_banned() {
 
 	$site_hash 		= ws_ls_generate_site_hash();
-	$banned_hashes 	= [ 'de984a', '83f801', '2078f4', '82f9ec', 'e4a552', '2e70f2' ];
+	$banned_hashes 	= [ '' ];
 
 	return ( in_array( $site_hash, $banned_hashes ) );
 }
@@ -123,11 +123,11 @@ define('WS_LS_LICENSE_2_VALID', 'ws-ls-license-2-valid');
 **/
 function ws_ls_has_a_valid_subscription_license() {
 
-    $license_valid = get_option(WS_LS_LICENSE_2_VALID);
+    $license_valid = get_option( WS_LS_LICENSE_2_VALID );
 
-	if(false === empty($license_valid) && 'y' == $license_valid) {
-		$license_type = get_option(WS_LS_LICENSE_2_TYPE);
-		return (true === in_array($license_type, ['pro', 'pro-plus']) ? $license_type : false);
+	if( false === empty( $license_valid ) && 'y' == $license_valid) {
+		$license_type = get_option( WS_LS_LICENSE_2_TYPE );
+		return ( true === in_array( $license_type, [ 'pro', 'pro-plus' ] ) ? $license_type : false);
 	}
 
     return false;
@@ -305,7 +305,7 @@ function ws_ls_generate_site_hash() {
  * @param bool $license
  * @return mixed
  */
-function ws_ls_license_display_name($license = false) {
+function ws_ls_license_display_name( $license = false ) {
 
     $return_value = esc_html__('None', WE_LS_SLUG);
 
@@ -313,17 +313,9 @@ function ws_ls_license_display_name($license = false) {
         $license = ws_ls_license();
     }
 
-    if(false === empty($license)) {
-
-        switch ($license) {
-            case 'pro':
-                $return_value = esc_html__('Yearly Pro', WE_LS_SLUG);
-                break;
-            case 'pro-plus':
-                $return_value = esc_html__('Pro Plus', WE_LS_SLUG);
-                break;
-        }
-
+    if( false === empty( $license ) ) {
+        $return_value = esc_html__('Premum', WE_LS_SLUG);
+          
     }
 
     return $return_value;

@@ -17,6 +17,9 @@ function ws_ls_advertise_premium() {
 	<div class="wrap ws-ls-admin-page">
 		<?php
 			
+			/**
+			 * Apply a new or updated license
+			 */
 			$entered_license = ws_ls_post_value( 'wt-license-key' );
 
 			if ( false === empty( $entered_license ) ){
@@ -33,19 +36,6 @@ function ws_ls_advertise_premium() {
 				}
 			}
 
-			$license = '';
-
-			$license_type = ws_ls_has_a_valid_license();
-
-			$license_name = ws_ls_license_display_name( $license_type );
-
-			$license_decoded = false;
-
-			if ( true === in_array( $license_type, [ 'pro', 'pro-plus' ] )) {
-				$license 			= ws_ls_license();
-				$license_decoded 	= ws_ls_license_decode( $license) ;
-			}
-
 		?>
 		<div id="icon-options-general" class="icon32"></div>
 				<div id="poststuff">
@@ -58,7 +48,11 @@ function ws_ls_advertise_premium() {
 						<div class="postbox">
 							<h3 class="hndle">
 									<span>
-										<?php echo esc_html__( 'Upgrade to Weight Tracker Premium', WE_LS_SLUG ); ?>
+										<?php if ( !WS_LS_IS_PREMIUM ){ 
+											echo esc_html__( 'Upgrade to Weight Tracker Premium', WE_LS_SLUG );
+										} else { 
+											echo esc_html__( 'Thank you', WE_LS_SLUG );
+										} ?>
 									</span>
 								</h3>
 							<div class="inside">
@@ -128,6 +122,9 @@ function ws_ls_advertise_premium() {
 									<?php echo esc_html__('Your license information', WE_LS_SLUG); ?>
 								</span>
 							</h3>
+							<?php
+								$valid_license = ws_ls_has_a_valid_license();		
+							?>
 							<div class="inside">
 								<table class="ws-ls-sidebar-stats">
 									<tr>
@@ -136,23 +133,30 @@ function ws_ls_advertise_premium() {
 									</tr>
 									<tr>
 										<th><?php echo esc_html__('Type', WE_LS_SLUG); ?></th>
-										<td id="ws-ls-license-type"><a href="<?php echo esc_url( WE_LS_LICENSE_TYPES_URL ); ?>" target="_blank" rel="noopener noreferrer"><?php ws_ls_echo( $license_name ); ?></a></td>
+										<td id="ws-ls-license-type">
+											<a href="<?php echo esc_url( WE_LS_LICENSE_TYPES_URL ); ?>" target="_blank" rel="noopener noreferrer">
+												<?php echo ( $valid_license ? 'Premium' : 'None' ); ?>
+											</a>
+										</td>
 									</tr>
 									<tr>
 										<th><?php echo esc_html__('Expires', WE_LS_SLUG); ?></th>
 										<td>
 											<?php
-												if (true === in_array($license_type, ['pro', 'pro-plus'])) {
-													ws_ls_echo( ws_ls_iso_date_into_correct_format( $license_decoded['expiry-date'] ) );
+												if ( $valid_license ) {
+
+													$license 			= ws_ls_license();
+													$license_decoded 	= ws_ls_license_decode( $license ) ;
+
+													ws_ls_echo( ws_ls_iso_date_into_correct_format( $license_decoded[ 'expiry-date' ] ) );
+							
 												} else {
-													echo esc_html__('n/a', WE_LS_SLUG);
+													echo esc_html__( 'n/a', WE_LS_SLUG );
 												}
 											?>
 										</td>
 									</tr>
-									<?php $existing_license = ws_ls_license_get_old_or_new(); ?>
-
-									<?php if ( false === empty( $existing_license )): ?>
+									<?php if ( $valid_license ): ?>
 										<tr class="last">
 											<th colspan="2">
 												<?php echo esc_html__( 'Your existing license', WE_LS_SLUG ); ?>
@@ -160,9 +164,7 @@ function ws_ls_advertise_premium() {
 										</tr>
 										<tr class="last">
 											<td colspan="2">
-												<textarea rows="5" style="width:100%">
-														<?php echo esc_textarea( $existing_license ); ?>
-												</textarea>
+												<textarea rows="5" style="width:100%"><?php echo esc_textarea( ws_ls_license_get_old_or_new() ); ?></textarea>
 											</td>
 										</tr>
 										<tr class="last">
