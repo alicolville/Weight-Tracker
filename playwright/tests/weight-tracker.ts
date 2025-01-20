@@ -25,7 +25,8 @@ export class WeightTracker {
       await this.page.getByTestId('we-ls-date').fill(date);
       await this.page.getByTestId('wt-tab-add-edit').click();
       await this.page.getByTestId('ws-form-weight').fill(weight);
-      await this.page.getByRole('button', { name: 'Save Entry' }).click();
+      await this.page.locator('.ws-ls-save-entry-button-weight').click();
+
   }
 
   async weight_clear_all(){
@@ -41,7 +42,7 @@ export class WeightTracker {
       await this.page.getByRole('link', { name: 'Adjust' }).click();
       await this.page.getByTestId('ws-form-target').click();
       await this.page.getByTestId('ws-form-target').fill( target);
-      await this.page.getByRole('button', { name: 'Set Target' }).click();
+      await this.page.locator('.ws-ls-save-entry-button-target').click();
   }
 
   async target_clear(){

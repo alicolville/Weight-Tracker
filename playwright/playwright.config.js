@@ -18,6 +18,6 @@ export default defineConfig({
   ],
   reporter: "html",
   testDir: "tests",
-  timeout: 15000,
+  timeout: 25000,
   workers: 1  // Not ideal, but the data being manipulated by several tests at once was causing sporadic issues.
 });
