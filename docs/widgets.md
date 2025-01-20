@@ -1,6 +1,6 @@
 # Widgets
 
-> The following shortcode is only available in the [Pro]({{ site.baseurl }}/upgrade.html) version of the plugin.
+> The following shortcode is only available in the [Premium]({{ site.baseurl }}/upgrade.html) version of the plugin.
 
 Widgets allow you to embed Weight Tracker functionality into your widget areas. These can be added to your widget areas / side bars via the WP dashboard under Appearance > Widgets.
 

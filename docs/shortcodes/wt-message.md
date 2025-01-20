@@ -1,6 +1,6 @@
 # [wt-message]
 
-> The following shortcode is only available in the [Pro]({{ site.baseurl }}/upgrade.html) version of the plugin.
+> The following shortcode is only available in the [Premium]({{ site.baseurl }}/upgrade.html) version of the plugin.
 
 The message shortcode allows custom content to be displayed when a user has gained or lost weight over a number of consecutive weight entries. This will allow you to motivate people when they gain weight or congratulate if they lose weight (or vice versa).
 

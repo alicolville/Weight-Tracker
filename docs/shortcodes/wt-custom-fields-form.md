@@ -1,6 +1,6 @@
 ## [wt-custom-fields-form]
 
-> The following shortcode is only available in the [Pro]({{ site.baseurl }}/upgrade.html) version of the plugin.
+> The following shortcode is only available in the [Premium]({{ site.baseurl }}/upgrade.html) version of the plugin.
 
 This shortcode is an extension of [[wt-form]]({{ site.baseurl }}/shortcodes/wt-form.html) and displays a form for custom [custom fields]({{ site.baseurl }}/custom-fields.html) only.
 

@@ -2,7 +2,7 @@
 
 This is the most popular shortcode for the Weight Tracker plugin and displays upto four sections / tabs when a user is logged into WordPress.    
     
-> The following shortcode is available in both the free and [Pro/Premium]({{ site.baseurl }}/features.html) version of the plugin. The Pro version has the following additional features: 
+> The following shortcode is available in both the free and [Premium]({{ site.baseurl }}/features.html) version of the plugin. The Premium version has the following additional features: 
 > * Support for measurements and  [custom fields]({{ site.baseurl }}/custom-fields.html). 
 > * Advanced data table for viewing weight entries. Supporting sorting, paging, editing and deleting. 
 > * Support for BMI, BMR, suggested calorie intake and Macronutrients.
@@ -17,7 +17,7 @@ This is the most popular shortcode for the Weight Tracker plugin and displays up
 
 [![Main Image]({{ site.baseurl }}/assets/images/wt2.png)]({{ site.baseurl }}/assets/images/wt2.png)
    
-The main tab displays the following summary information to user as well as a chart of the user's weight and plottable custom field data ([Pro feature]({{ site.baseurl }}/upgrade.html))
+The main tab displays the following summary information to user as well as a chart of the user's weight and plottable custom field data ([Premium feature]({{ site.baseurl }}/upgrade.html))
 
 * Latest weight
 * Previous weight
@@ -70,7 +70,7 @@ The photos tab will show the user their oldest and latest photo. Below this will
  
 If enabled, this tab shall display all of the messages sent to a user by an administrator.  
    
-Note: This is a [Pro]({{ site.baseurl }}/upgrade.html) feature. 
+Note: This is a [Premium]({{ site.baseurl }}/upgrade.html) feature. 
 
 [![Messages]({{ site.baseurl }}/assets/images/wt2-messages.png)]({{ site.baseurl }}/assets/images/wt2-messages.png)
    
@@ -78,7 +78,7 @@ Note: This is a [Pro]({{ site.baseurl }}/upgrade.html) feature.
   
 If enabled, the last tab allows the user to edit their profile (specifying height, gender, etc), preferred data units, and the option to delete all of their data.    
     
-Note: This is a [Pro]({{ site.baseurl }}/upgrade.html) feature. 
+Note: This is a [Premium]({{ site.baseurl }}/upgrade.html) feature. 
 
 [![Settings]({{ site.baseurl }}/assets/images/wt2-settings.png)]({{ site.baseurl }}/assets/images/wt2-settings.png)
     

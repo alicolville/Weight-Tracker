@@ -1,6 +1,6 @@
 # Custom fields
 
-> The following feature is only available in the [Pro]({{ site.baseurl }}/upgrade.html) version of the plugin.
+> The following feature is only available in the [Premium]({{ site.baseurl }}/upgrade.html) version of the plugin.
 
 ### What are custom fields?
 

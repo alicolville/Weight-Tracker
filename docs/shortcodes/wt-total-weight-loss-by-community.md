@@ -1,7 +1,7 @@
 
 ## [wt-total-weight-loss-by-community]
 
-> The following shortcode is only available in the [Pro]({{ site.baseurl }}/upgrade.html) version of the plugin.
+> The following shortcode is only available in the [Premium]({{ site.baseurl }}/upgrade.html) version of the plugin.
 
 Render the weight lost by the entire community. If you wish to display the total weight loss for the current user then you should use: [[wt-difference-since-start]]({{ site.baseurl }}/shortcodes-text.html).
 

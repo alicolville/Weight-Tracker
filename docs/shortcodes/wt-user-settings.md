@@ -1,6 +1,6 @@
 ## [wt-user-settings]
 
-> The following shortcode is only available in the [Pro]({{ site.baseurl }}/upgrade.html) version of the plugin.
+> The following shortcode is only available in the [Premium]({{ site.baseurl }}/upgrade.html) version of the plugin.
 
 Render a user settings form which allows the user to change their Weight Tracker preferences.
 

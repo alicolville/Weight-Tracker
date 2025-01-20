@@ -1,6 +1,6 @@
 # Your legacy license will soon expire
   
-Within the next few versions of Weight Tracker, your current legacy license will no longer be supported. Of course, **we will honour all legacy licenses** by replacing them with a newer lifetime Pro license. The main reason for doing this is to simplify the code base and not have two licensing models to support.
+Within the next few versions of Weight Tracker, your current legacy license will no longer be supported. Of course, **we will honour all legacy licenses** by replacing them with a newer lifetime Premium license. The main reason for doing this is to simplify the code base and not have two licensing models to support.
 
 > As always, thank you for your support! It really is appreciated!
 
@@ -16,6 +16,6 @@ Within the next few versions of Weight Tracker, your current legacy license will
   
 If you would like to make the step up to a Premium license, I will happily provide you with a voucher code that gives you the first 2 years at 50% of the standard cost. Please email me at [email@yeken.uk](mailto:email@yeken.uk) and I'll reply with a voucher code.
   
-## Prefer to switch to a newer Pro lifetime license?
+## Prefer to switch to a newer Premium lifetime license?
   
-If you would prefer to switch your license over to a Pro lifetime license (a like for like replacement), then please email me at [email@yeken.uk](mailto:email@yeken.uk) with your site hash and I'll send you another license that doesn't expire.
+If you would prefer to switch your license over to a Premium lifetime license (a like for like replacement), then please email me at [email@yeken.uk](mailto:email@yeken.uk) with your site hash and I'll send you another license that doesn't expire.

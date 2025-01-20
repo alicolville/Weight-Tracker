@@ -1,6 +1,6 @@
 ## [wt-notes]
 
-> The following shortcode is only available in the [Pro]({{ site.baseurl }}/upgrade.html) version of the plugin.
+> The following shortcode is only available in the [Premium]({{ site.baseurl }}/upgrade.html) version of the plugin.
 
 [wt-notes] shall display all the notes for the current logged in user. Notes can be added against a user via their profile page in the admin interfaces.
 

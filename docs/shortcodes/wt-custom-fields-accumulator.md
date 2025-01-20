@@ -1,6 +1,6 @@
 ## [wt-custom-fields-accumulator]
 
-> The following shortcode is only available in the [Pro]({{ site.baseurl }}/upgrade.html) version of the plugin.
+> The following shortcode is only available in the [Premium]({{ site.baseurl }}/upgrade.html) version of the plugin.
 
 The accumulator shortcode displays a series of buttons that allow the user to increment the value of a numeric [custom field]({{ site.baseurl }}/custom-fields.html) for today's entry. 
 

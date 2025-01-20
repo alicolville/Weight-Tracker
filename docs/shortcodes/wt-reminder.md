@@ -1,6 +1,6 @@
 ## [wt-reminder]
 
-> The following shortcode is only available in the [Pro]({{ site.baseurl }}/upgrade.html) version of the plugin.
+> The following shortcode is only available in the [Premium]({{ site.baseurl }}/upgrade.html) version of the plugin.
 
 Render reminders to logged in users asking them to add a target weight or weight / [custom fields]({{ site.baseurl }}/custom-fields.html) entry for today.
 

@@ -205,7 +205,7 @@ function ws_ls_shortcode_version() {
 }
 add_shortcode( 'wt-version', 'ws_ls_shortcode_version' );
 
-add_action( 'init', function() {
-	ws_ls_display_features(  ws_ls_feature_list_premium(), true, $format = 'markdown'  );
-	die;
-});
+// add_action( 'init', function() {
+// 	ws_ls_display_features(  ws_ls_feature_list_premium(), true, $format = 'markdown'  );
+// 	die;
+// });
