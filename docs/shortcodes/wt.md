@@ -43,13 +43,13 @@ The history tab provides the following summary data as well as a data table cont
  
 **Awards**
  
- With a [Premium](https://shop.yeken.uk/product/weight-tracker-pro-plus/) license the "Awards" tab is visible. This allows the user to see which awards have been given to them.
+ With a [Premium](https://shop.yeken.uk/product/weight-tracker-premium/) license the "Awards" tab is visible. This allows the user to see which awards have been given to them.
  
  [![Advanced]({{ site.baseurl }}/assets/images/wt2-awards.png)]({{ site.baseurl }}/assets/images/wt2-awards.png)
  
 **Advanced**
 
-With a [Premium](https://shop.yeken.uk/product/weight-tracker-pro-plus/) license an additional tab is present with "Advanced" data. This tab contains the following information;
+With a [Premium](https://shop.yeken.uk/product/weight-tracker-premium/) license an additional tab is present with "Advanced" data. This tab contains the following information;
  
 - BMI (Body Mass Index)
 - BMR (Basal Metabolic Rate)
