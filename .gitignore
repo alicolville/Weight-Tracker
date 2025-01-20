@@ -20,3 +20,4 @@ node_modules/.bin/playwright
 playwright-report/
 playwright/.auth/user.json
 .auth/user.json
+.auth/user.json
