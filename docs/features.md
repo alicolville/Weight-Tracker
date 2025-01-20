@@ -10,44 +10,44 @@
 - Supports UK and US date formats
 - [Includes translations]({{ site.baseurl }}/translate.html) for several  languages, e.g. German, Dutch, Brazilian-Portuguese, etc
   
-## Pro license (£60 a year )
+## Premium (£70 a year )
 ### *Includes core features and the following:*
 
 Besides the features listed under core, the Pro version benefits from the following:  
   
--   **Custom Fields**. Create and add your own questions to weight entry forms to gather additional information. These may be questions around measurements, cups of water consumed, etc.  [Read more about custom fields.]({{ site.baseurl }}/custom-fields.html)  
--   **Photo Custom Fields**. Add one or more photo fields to your weight entry forms and allow your users to upload photos of their progress. Photos can be viewed, updated and removed by the end user and administrators. Handy shortcodes are provided for displaying galleries, most recent and oldest photo.  [Read more about custom fields.]({{ site.baseurl }}/custom-fields.html)  
--   **Webhooks, Zapier & Slack**. Push weight entry data and targets to Slack channels, Zapier or your own custom Webhooks.  [Read more about Webhooks, Zapier & Slack.]({{ site.baseurl }}/web-hooks.html)  
--   **Groups**. Define user groups and assign your user's to them. View Weight Difference statistics for the group as a whole.  [Read more about groups.]({{ site.baseurl }}/groups.html)  
--   **Gamification**. Support for myCred, a popular gamification plugin. Reward your users for weight entries and setting their targets.  [Read more about gamification.]({{ site.baseurl }}/gamification.html)  
--   **BMI**. A user can specify their height allowing their BMI to be displayed alongside their weight entry.  [Read more about BMI]({{ site.baseurl }}/calculations.html).  
--   **Admin notes**. Administrators have the ability to store notes against their users. If set to visible, the user can view these via [wt-notes] or receive emails with their content.
--   **Email Notifications**. Receive email notifications when a person updates their target or adds / edits a weight.  [Read more about email notifications]({{ site.baseurl }}/email-notifications.html).  
--   **Birthday Emails**. Automatically send your user's a birthday email (when they have entered a date of birth).  
--   **Widgets**. Widgets that allow you to display the graphs, quick weight entry forms and progress bars within any widget area.  [Read more about widgets.]({{ site.baseurl }}/widgets.html)  
--   **Chart and form shortcodes**. That allow you to display the  [graph]({{ site.baseurl }}/shortcodes/wt-chart.html)  and quick  [weight entry form]({{ site.baseurl }}/shortcodes/wt-form.html)  by placing a shortcode on any post or page.  
--   **Progress Bar shortcode**. A shortcode that visually displays the logged in user's progress towards their target.  [Read more]({{ site.baseurl }}/shortcodes/wt-progress-bar.html).  
--   **Reminder shortcode**. A shortcode that can be used to remind the user to enter their target or weight for today.  [Read more]({{ site.baseurl }}/shortcodes/wt-reminder.html).  
--   **Message shortcode**. A shortcode that allows you to congratulate a user when they lose weight x number of times. It also provides the opposite allowing you to provide encouragement when someone gains weight.  [Read more]({{ site.baseurl }}/shortcodes/wt-message.html).  
--   **Text shortcodes**. Additional shortcodes for earliest and most recent dates entered.  [Read more]({{ site.baseurl }}/shortcodes-text.html).  
--   **Admin**:  **View / Delete user data**. Admin will be able to view and delete existing user data.  
--   **User preferences**. If enabled, the user will be able to select which unit they wish to store their weight - Metric or Imperial. They will also be able to specify date format and clear all their weight data.  
--   **Bar Charts**. Fancy something different to a line chart? The plugin will also support Bar Charts.  
--   **Delete existing entry**. A logged in user will be able to delete or edit an existing weight entry.  
--   **Better Tables**. Data tables in front end and admin will support paging and sorting.  
--   **Admin**:  **Extra Settings**. Extra settings to customise the plugin will be added, e.g. number of plot points on graph, rows per page, etc.  
-  
-## Pro Plus license (£120 a year )
-### *Includes Core and Pro features as well as the following:*
-  
-Besides the features listed under Pro, the Pro Plus version benefits from the following:  
-  
--   [**Awards.**]({{ site.baseurl }}/awards.html) Set awards for: BMI Change, BMI Equals, Weight Gain / Loss from start and Percentage of weight lost from start.  [Read more about awards.]({{ site.baseurl }}/awards.html)  
--   [**Challenges**]({{ site.baseurl }}/challenges.html).Set challenges for your user's within a given time period? Display Total Weight Lost, BMI Change, %Body Weight, Weight Tracker Streaks and Meal Tracker streaks achieved by each user in a league table.  [Read more]({{ site.baseurl }}/challenges.html).  
--   [**BMI Calculator**]({{ site.baseurl }}/shortcodes/wt-bmi-calculator.html). Allow your users to enter their details and calculate their BMI.  [Read more]({{ site.baseurl }}/shortcodes/wt-bmi-calculator.html).  
--   **Basal Metabolic Rate (BMR) calculations per user.** Shortcodes and extended admin screens to display a user's BMR. For further information on BMR and how it is calculated visit our  [calculations page]({{ site.baseurl }}/calculations.html).  
--   **Harris Benedict formula**. Shortcodes and extended admin screens to a view a person's calorie intake required to maintain and lose weight. For further information on Harris Benedict Formula and how it is calculated visit our  [calculations page]({{ site.baseurl }}/calculations.html).  
--   **Recommended calorie intake per meal time**. Shortcodes and extended admin screens to recommend how a person should split their daily calorie intake across meals. For further information on how this is calculated please visit our  [calculations page]({{ site.baseurl }}/calculations.html).  
--   **Macronutrients Calculator**. Shortcodes and extended admin screens to recommend how their calorie consumption should be split into fats, carbohydrates and proteins. For further information on the Macronutrients Calculator and how these calculations are performed please visit our  [calculations page]({{ site.baseurl }}/calculations.html).  
--   **All of the features that come with a standard Pro license**.  
--   **Additional user preference fields**. Additional user preference fields and shortcodes to display them: Activity Level, Date of Birth and Gender.
+* **[wt-kiosk]** - A shortcode enabling your administrators and staff to search for and edit user records directly from the front end of your website.
+* **Barcode scanner** - an integrated barcode scanner for seamless user ID scanning when utilising the [wt-kiosk] feature.
+* **Basal Metabolic Rate (BMR) calculations per user** - with shortcodes and enhanced admin screens to display and manage individual BMR data.
+* **Harris Benedict formula** - Shortcodes and expanded admin screens to view a person&#039;s required calorie intake for maintaining or losing weight.
+* **Recommended calorie intake per meal time** - Shortcodes and advanced admin screens to recommend how a person should distribute their daily calorie intake across meals.
+* **Macronutrients Calculator** - Shortcodes and enhanced admin screens to recommend how to divide calorie consumption among fats, carbohydrates, and proteins.
+* **Additional user preference fields** - Additional user preference fields and shortcodes for displaying Activity Level, Date of Birth, and Gender.
+* **Awards** - Awards and badges for achievements such as BMI Change, BMI Milestones, Weight Gain/Loss from the start, and Percentage of Weight Lost from the start.
+* **Challenges** - Create challenges for your users within a specified time frame, and showcase their achievements such as Total Weight Lost, BMI Change, Percentage of Body Weight Lost, Weight Tracker Streaks, and Meal Tracker Streaks in a league table. The shortcode will enable you to view all challenges and their data, as well as display the league table on your public-facing website.
+* **BMI Calculator** - A handy tool for users to quickly input their measurements and weight to calculate their BMI.
+* **Waist-to-Hip ratio Calculator** - A convenient tool for users to quickly enter their measurements and calculate their Waist-to-Hip ratio.
+* **Custom Fields** - Customise weight entry forms by creating and adding your own questions to collect additional information from users.
+* **Photo Custom Fields** - Enhance your weight entry forms by adding one or more photo fields, enabling users to upload photos showcasing their progress. Both users and administrators can view, update, and delete these photos. Convenient shortcodes are provided to display galleries, as well as the most recent and oldest photos.
+* **Access your user&#039;s data** - Administrators can view, edit, and delete user data, with tools for analysing user graphs, entry tables, BMI, targets, weight loss/gain statistics, and more.
+* **Challenges** - Develop and showcase challenges for users across different time frames, allowing for flexible goal-setting and progress tracking.
+* **Data Export.** - Export data for individual users in either JSON or CSV format
+* **Webhooks, Zapier &amp; Slack** - Send weight entry data and targets to Slack channels, Zapier, or your custom webhooks for seamless integration and notifications.
+* **Groups** - Create user groups and assign users to them, then view collective Weight Difference statistics for each group.
+* **Admin notes** - Administrators can store notes for users, which can be set to visible so that users can view them through the [wt-notes] shortcode or receive them via email.
+* **Gamification** - Integrate with myCred, a popular gamification plugin, to reward users for logging weight entries and setting targets.
+* **Body Mass Index** - Allows users to enter their height, automatically displaying their BMI alongside each weight entry. Additionally, shortcodes are available to render the most recent and starting BMI.
+* **Email notifications** - Receive email notifications whenever a user updates their target or adds/edits their weight entries.
+* **Birthday Emails** - Automatically send birthday emails to your users on their special day.
+* **Comprehensive user statistics** - Shortcodes to display the total weight lost or gained by the community, and another to showcase a league table.
+* **Widgets** - Widgets to display a graph and a quick weight entry form in any widget area.
+* **Chart and form shortcodes** - Shortcodes that allow you to display the graph and quick weight entry form on any post or page.
+* **Progress Bar shortcode / widget** - A shortcode that visually displays the logged-in user&#039;s progress towards their target.
+* **Reminder shortcode** - A shortcode that prompts users to enter their target or weight for today.
+* **Message shortcode** - A shortcode that congratulates users when they achieve weight loss milestones and can also offer encouragement when they gain weight.
+* **Text Shortcodes** - Additional shortcodes for displaying the earliest and most recent dates entered.
+* **Admin: View / Delete user data** - Administrators will be able to view and delete existing user data.
+* **User preferences** - If enabled, users can choose to store their weight in either Metric or Imperial units, specify their preferred date format, and clear all their weight data.
+* **Bar Charts** - Fancy something different to a line chart? The plugin will also support Bar Charts.
+* **Delete existing entry** - A logged-in user can delete or edit their existing weight entries.
+* **Richer data tables** - Data can be visualised and interacted with through enhanced HTML tables.
+* **Admin: Additional settings** - Additional settings will be added for further customisation of the plugin, such as adjusting the number of plot points on graphs, the number of rows per page, and more.
