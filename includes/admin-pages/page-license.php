@@ -13,7 +13,6 @@ function ws_ls_advertise_premium() {
 	}
 
 	?>
-
 	<div class="wrap ws-ls-admin-page">
 		<?php
 			
@@ -35,7 +34,6 @@ function ws_ls_advertise_premium() {
 					ws_ls_display_notice( esc_html__('An error occurred applying your license: ', WE_LS_SLUG ) . $valid_new_license, 'error');
 				}
 			}
-
 		?>
 		<div id="icon-options-general" class="icon32"></div>
 				<div id="poststuff">
@@ -79,10 +77,9 @@ function ws_ls_advertise_premium() {
 										ws_ls_echo_wp_kses( $button_html );					
 									
 										$text = sprintf( '%s  &pound;%s %s', esc_html__( 'Upgrade to Premium for', WE_LS_SLUG), $price, esc_html__( 'a year', WE_LS_SLUG ) );
-										$link = WE_LS_UPGRADE_TO_PRO_URL;
-
+										
 										$button_html = sprintf('<a href="%s?hash=%s&license=%s" rel="noopener noreferrer" target="_blank" class="button-primary ws-ls-upgrade-button"><i class="fa fa-plus"></i> %s</a>',
-																$link,
+																WE_LS_UPGRADE_TO_PREMIUM_URL,
 																ws_ls_generate_site_hash(),
 																ws_ls_license_get_old_or_new(),
 																$text );
