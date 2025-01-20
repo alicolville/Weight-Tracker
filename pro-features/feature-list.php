@@ -3,15 +3,19 @@
 defined('ABSPATH') or die('Jog on!');
 
 /**
- * Return an array of Pro Plus features.
+ * Return an array of Premium features.
+ * @return array
+ */
+function ws_ls_feature_list_premium() {
+	return array_merge( ws_ls_feature_list_pro_plus(), ws_ls_feature_list_pro() );
+}
+
+/**
+ * Return an array of Pro Plus features. (Legacy license type)
  * @return array
  */
 function ws_ls_feature_list_pro_plus() {
 	return [
-				[ 	
-					'title'			=> esc_html__( 'Includes all the features of a standard Pro License, ', WE_LS_SLUG ), 
-					'description'	=> esc_html__( 'plus these additional benefits:', WE_LS_SLUG )
-				],
 				[ 	
 					'title'			=> '[wt-kiosk]', 
 					'description'	=> esc_html__( 'A shortcode enabling your administrators and staff to search for and edit user records directly from the front end of your website.' , WE_LS_SLUG )
@@ -60,7 +64,7 @@ function ws_ls_feature_list_pro_plus() {
 }
 
 /**
- * Return an array of Pro features.
+ * Return an array of Pro features. (Legacy license type)
  * @return array
  */
 function ws_ls_feature_list_pro() {

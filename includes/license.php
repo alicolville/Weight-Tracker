@@ -405,27 +405,15 @@ function ws_ls_get_license() {
 }
 
 /**
- * Fetch Pro license price
+ * Fetch Premium license price
  *
  * @return float|null
  */
-function ws_ls_license_pro_price() {
+function ws_ls_license_premium() {
 
     $price = yeken_license_price( 'pro' );
 
-    return ( false === empty( $price ) ) ? $price : WE_LS_PRO_PRICE;
-}
-
-/**
- * Fetch Pro plus license price
- *
- * @return float|null
- */
-function ws_ls_license_pro_plus_price() {
-
-    $price = yeken_license_price( 'pro-plus' );
-
-    return ( false === empty( $price ) ) ? $price : WE_LS_PRO_PLUS_PRICE;
+    return ( false === empty( $price ) ) ? $price : WE_LS_PREMIUM_PRICE;
 }
 
 if ( false === function_exists( 'yeken_license_api_fetch_licenses' ) ) {
