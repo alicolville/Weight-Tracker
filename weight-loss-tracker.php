@@ -31,7 +31,6 @@ define( 'WE_LS_FREE_TRIAL_URL', 'https://shop.yeken.uk/get-a-trial-license/' );
 define( 'WE_LS_CDN_CHART_JS', WS_LS_BASE_URL . 'assets/js/libraries/chart-4.4.4.min.js' );
 define( 'WE_LS_CDN_FONT_AWESOME_CSS', WS_LS_BASE_URL . 'assets/css/libraries/fontawesome-4.7.0.min.css' );
 define( 'WE_LS_PREMIUM_PRICE', 70.00 );
-define( 'WE_LS_PRO_PLUS_PRICE', 120.00 );
 
 global $form_number;        // This is used to keep track of multiple forms on a page allowing us to pass messages to each
 global $save_response;      // This is used to keep track of form posts responses
@@ -45,14 +44,14 @@ register_activation_hook( __FILE__, 'ws_ls_activate' );
 register_deactivation_hook( __FILE__, 'ws_ls_deactivate' );
 
 // -----------------------------------------------------------------------------------------
-// AC: Check if valid pro license (if valid license)
+// AC: Check if valid Premium license
 // ----------------------------------------------------------------------------------------
 
 include WS_LS_ABSPATH . 'includes/license.php';
 
 $license_type = ws_ls_has_a_valid_license();
 
-// Standard Pro license?
+// Premium
 if( true === in_array( $license_type, [ 'pro', 'pro-plus' ] ) ){
 	define( 'WS_LS_IS_PREMIUM', true );
 	define( 'WS_LS_IS_PRO', true );			// Legacy
