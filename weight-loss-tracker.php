@@ -55,12 +55,12 @@ $license_type = ws_ls_has_a_valid_license();
 // Standard Pro license?
 if( true === in_array( $license_type, [ 'pro', 'pro-plus' ] ) ){
 	define( 'WS_LS_IS_PREMIUM', true );
-	define( 'W1S_LS_IS_PRO', true );			// Legacy
-	define( 'W1S_LS_IS_PRO_PLUS', true );	// Legacy
+	define( 'WS_LS_IS_PRO', true );			// Legacy
+	define( 'WS_LS_IS_PRO_PLUS', true );	// Legacy
 } else {
 	define( 'WS_LS_IS_PREMIUM', false );
-	define( 'W1S_LS_IS_PRO', false );		// Legacy
-	define( 'W1S_LS_IS_PRO_PLUS', false );	// Legacy
+	define( 'WS_LS_IS_PRO', false );		// Legacy
+	define( 'WS_LS_IS_PRO_PLUS', false );	// Legacy
 }
 
 // -----------------------------------------------------------------------------------------
