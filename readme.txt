@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight,tracker,chart,history,macronutrient
 Requires at least: 6.0
 Tested up to: 6.5
-Stable tag: 10.18.1
+Stable tag: 10.19
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -33,9 +33,8 @@ For further information read our documentation:
 
 [Weight Tracker - Documentation](https://weight.yeken.uk/shortcodes "Weight Tracker - Documentation")
 
-= Pro Plus Version =
+= Premium Version =
 
-* **Includes all the features of a standard Pro License, ** - plus these additional benefits:
 * **[wt-kiosk]** - A shortcode enabling your administrators and staff to search for and edit user records directly from the front end of your website.
 * **Barcode scanner** - an integrated barcode scanner for seamless user ID scanning when utilising the [wt-kiosk] feature.
 * **Basal Metabolic Rate (BMR) calculations per user** - with shortcodes and enhanced admin screens to display and manage individual BMR data.
@@ -47,12 +46,6 @@ For further information read our documentation:
 * **Challenges** - Create challenges for your users within a specified time frame, and showcase their achievements such as Total Weight Lost, BMI Change, Percentage of Body Weight Lost, Weight Tracker Streaks, and Meal Tracker Streaks in a league table. The shortcode will enable you to view all challenges and their data, as well as display the league table on your public-facing website.
 * **BMI Calculator** - A handy tool for users to quickly input their measurements and weight to calculate their BMI.
 * **Waist-to-Hip ratio Calculator** - A convenient tool for users to quickly enter their measurements and calculate their Waist-to-Hip ratio.
-
-
-[Read more about features](https://weight.yeken.uk/features/ "Read more about features")
-
-= Pro Version =
-
 * **Custom Fields** - Customise weight entry forms by creating and adding your own questions to collect additional information from users.
 * **Photo Custom Fields** - Enhance your weight entry forms by adding one or more photo fields, enabling users to upload photos showcasing their progress. Both users and administrators can view, update, and delete these photos. Convenient shortcodes are provided to display galleries, as well as the most recent and oldest photos.
 * **Access your user&#039;s data** - Administrators can view, edit, and delete user data, with tools for analysing user graphs, entry tables, BMI, targets, weight loss/gain statistics, and more.
@@ -169,6 +162,10 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 10.17: New feature: Expanded [wt-if] shortcodes to include comparison modes.
 
 == Changelog ==
+
+= 10.19 =
+
+* New feature: Unified licensing, Pro Plus and Pro merged into Premium.
 
 = 10.18.1 =
 
