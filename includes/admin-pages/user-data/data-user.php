@@ -39,7 +39,7 @@ function ws_ls_admin_page_data_user() {
 	<div id="poststuff">
 		<?php 	ws_ls_user_header( $user_id );
 
-				if ( true !== WS_LS_IS_PRO ) {
+				if ( true !== WS_LS_IS_PREMIUM ) {
 					ws_ls_display_pro_upgrade_notice();
 				}
         ?>
@@ -120,7 +120,7 @@ function ws_ls_postbox_chart( $user_id ) {
 				// Fetch last 25 weight entries
 				$weight_data = ws_ls_entries_get( [ 'user-id' => $user_id, 'limit' => 25, 'prep' => true, 'sort' => 'desc', 'reverse' => true ] );
 
-				if ( true !== WS_LS_IS_PRO ) {
+				if ( true !== WS_LS_IS_PREMIUM ) {
 
 					echo sprintf('<p><a href="%s">%s</a> %s.</p>',
 						ws_ls_upgrade_link(),
@@ -170,7 +170,7 @@ function ws_ls_postbox_photos( $user_id ) {
 						'hide-from-shortcodes' => false
 					] );
 				}
-			} else if ( true === WS_LS_IS_PRO ) {
+			} else if ( true === WS_LS_IS_PREMIUM ) {
 
 				echo sprintf('<p><a href="%s">%s</a> %s.</p>',
 					ws_ls_meta_fields_base_url(),

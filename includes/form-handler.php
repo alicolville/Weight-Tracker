@@ -157,7 +157,7 @@ function ws_ls_form_post_handler_weight( $user_id ) {
 			$value      = NULL;
 
 			// If photo, we need to process the upload
-			if ( true === WS_LS_IS_PRO
+			if ( true === WS_LS_IS_PREMIUM
 			        && 3 === (int) $field[ 'field_type' ]
 						&& ( false === empty( $_FILES[ $field_key ]['type'] ) ) ) {
 
@@ -190,7 +190,7 @@ function ws_ls_form_post_handler_weight( $user_id ) {
 	ws_ls_cache_user_delete( $user_id );
 
 	// Update User stats table and throw notification hook
-	if ( true === WS_LS_IS_PRO ) {
+	if ( true === WS_LS_IS_PREMIUM ) {
 
 		ws_ls_stats_update_for_user( $user_id );
 

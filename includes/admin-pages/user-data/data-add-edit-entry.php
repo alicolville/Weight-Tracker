@@ -33,7 +33,7 @@ function ws_ls_admin_page_data_add_edit() {
 				<div id="post-body-content">
 					<div class="meta-box-sortables ui-sortable">
                         <?php
-                        if ( true !== WS_LS_IS_PRO ) {
+                        if ( true !== WS_LS_IS_PREMIUM ) {
                             ws_ls_display_pro_upgrade_notice();
                         }
                         ?>
@@ -41,7 +41,7 @@ function ws_ls_admin_page_data_add_edit() {
 							<h2><span><?php echo esc_html__('Add / Edit an entry', WE_LS_SLUG); ?></span></h2>
 							<div class="inside">
 								<?php 
-	                                if ( true === WS_LS_IS_PRO ) {
+	                                if ( true === WS_LS_IS_PREMIUM ) {
 
 		                                echo ws_ls_form_weight( [    'user-id'              => $user_id,
 		                                                             'entry-id'             => $entry_id,

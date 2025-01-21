@@ -1017,7 +1017,7 @@ function ws_ls_user_preferences_settings_get( $field = 'WE_LS_DATA_UNITS', $user
  * @return bool
  */
 function ws_ls_bmi_in_tables() {
-	return ( WS_LS_IS_PRO && ( 'yes' == get_option('ws-ls-display-bmi-in-tables', 'yes' ) ) );
+	return ( WS_LS_IS_PREMIUM && ( 'yes' == get_option('ws-ls-display-bmi-in-tables', 'yes' ) ) );
 }
 
 /**

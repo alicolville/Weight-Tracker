@@ -18,7 +18,7 @@ function ws_ls_admin_page_settings_user() {
 			<div id="post-body-content">
 				<div class="meta-box-sortables ui-sortable">
                     <?php
-                        if ( true !== WS_LS_IS_PRO ) {
+                        if ( true !== WS_LS_IS_PREMIUM ) {
                             ws_ls_display_pro_upgrade_notice();
                         }
                     ?>
@@ -27,7 +27,7 @@ function ws_ls_admin_page_settings_user() {
 						<div class="inside">
                             <br />
 							<?php
-                                $disable_save = ( false === WS_LS_IS_PRO );
+                                $disable_save = ( false === WS_LS_IS_PREMIUM );
 
 								echo ws_ls_user_preferences_form(['user-id' => $user_id,  'allow-delete-data' => false, 'disable-save' => $disable_save ] );
 

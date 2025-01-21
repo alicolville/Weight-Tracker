@@ -19,7 +19,7 @@ defined('ABSPATH') or die("Jog on!");
  */
 function ws_ls_calculate_bmr( $user_id = false, $return_error = true, $bmr_type = 'current' ) {
 
-    if( false === WS_LS_IS_PRO ) {
+    if( false === WS_LS_IS_PREMIUM ) {
 	    return '';
     }
 
@@ -109,7 +109,7 @@ function ws_ls_calculate_bmr_raw( $gender, $weight, $height, $age, $user_id = fa
  */
 function ws_ls_shortcode_bmr( $user_defined_arguments ) {
 
-    if( false === WS_LS_IS_PRO ) {
+    if( false === WS_LS_IS_PREMIUM ) {
         return '';
     }
 

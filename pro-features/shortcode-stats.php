@@ -10,7 +10,7 @@ defined('ABSPATH') or die("Jog on!");
  */
 function ws_ls_shortcode_stats_league_total( $user_defined_arguments ) {
 
-	if ( false === WS_LS_IS_PRO ) {
+	if ( false === WS_LS_IS_PREMIUM ) {
 		return ws_ls_display_pro_upgrade_notice_for_shortcode();
 	}
 
@@ -116,7 +116,7 @@ add_shortcode( 'wt-league-table', 'ws_ls_shortcode_stats_league_total' );
  */
 function ws_ls_shortcode_stats_total_lost( $user_defined_arguments ) {
 
-	if ( false === WS_LS_IS_PRO ) {
+	if ( false === WS_LS_IS_PREMIUM ) {
 		return ws_ls_display_pro_upgrade_notice_for_shortcode();
 	}
 

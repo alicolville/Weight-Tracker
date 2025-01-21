@@ -9,7 +9,7 @@
 	 */
 	function ws_ls_birthdays_enabled() {
 
-		if ( false === WS_LS_IS_PRO ) {
+		if ( false === WS_LS_IS_PREMIUM ) {
 			return false;
 		}
 

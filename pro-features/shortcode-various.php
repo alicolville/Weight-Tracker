@@ -12,7 +12,7 @@ defined('ABSPATH') or die("Jog on!");
  */
 function ws_ls_shortcode_previous_weight( $user_id = NULL ) {
 
-	if ( false === WS_LS_IS_PRO ) {
+	if ( false === WS_LS_IS_PREMIUM ) {
 		return ws_ls_display_pro_upgrade_notice_for_shortcode();
 	}
 
@@ -45,7 +45,7 @@ add_shortcode('wt-previous-weight', 'ws_ls_shortcode_previous_weight');
  */
 function ws_ls_shortcode_previous_date( $user_id = NULL ) {
 
-	if ( false === WS_LS_IS_PRO ) {
+	if ( false === WS_LS_IS_PREMIUM ) {
 		return ws_ls_display_pro_upgrade_notice_for_shortcode();
 	}
 
@@ -75,7 +75,7 @@ add_shortcode( 'wt-previous-date', 'ws_ls_shortcode_previous_date' );
  */
 function ws_ls_shortcode_start_date( $user_id = NULL ) {
 
-	if ( false === WS_LS_IS_PRO ) {
+	if ( false === WS_LS_IS_PREMIUM ) {
 		return ws_ls_display_pro_upgrade_notice_for_shortcode();
 	}
 
@@ -107,7 +107,7 @@ add_shortcode( 'wt-start-date', 'ws_ls_shortcode_start_date' );
  */
 function ws_ls_shortcode_weight_difference_previous( $user_id = false ){
 
-	if ( false === WS_LS_IS_PRO ) {
+	if ( false === WS_LS_IS_PREMIUM ) {
 		return ws_ls_display_pro_upgrade_notice_for_shortcode();
 	}
 
@@ -155,7 +155,7 @@ add_shortcode('wt-difference-from-previous', 'ws_ls_shortcode_weight_difference_
  */
 function ws_ls_shortcode_bmi( $arguments = [] ) {
 
-	if ( false === WS_LS_IS_PRO ) {
+	if ( false === WS_LS_IS_PREMIUM ) {
 		return ws_ls_display_pro_upgrade_notice_for_shortcode();
 	}
 
@@ -212,7 +212,7 @@ add_shortcode( 'wt-bmi', 'ws_ls_shortcode_bmi' );
  */
 function ws_ls_shortcode_activity_level( $user_defined_arguments ) {
 
-	if ( false === WS_LS_IS_PRO ) {
+	if ( false === WS_LS_IS_PREMIUM ) {
 		return ws_ls_display_pro_upgrade_notice_for_shortcode();
 	}
 
@@ -238,7 +238,7 @@ add_shortcode( 'wt-activity-level', 'ws_ls_shortcode_activity_level' );
  */
 function ws_ls_shortcode_gender( $user_defined_arguments ) {
 
-	if ( false === WS_LS_IS_PRO ) {
+	if ( false === WS_LS_IS_PREMIUM ) {
 		return ws_ls_display_pro_upgrade_notice_for_shortcode();
 	}
 
@@ -264,7 +264,7 @@ add_shortcode( 'wt-gender', 'ws_ls_shortcode_gender' );
  */
 function ws_ls_shortcode_dob( $user_defined_arguments ) {
 
-	if ( false === WS_LS_IS_PRO ) {
+	if ( false === WS_LS_IS_PREMIUM ) {
 		return ws_ls_display_pro_upgrade_notice_for_shortcode();
 	}
 
@@ -292,7 +292,7 @@ add_shortcode( 'wt-dob', 'ws_ls_shortcode_dob' );
  */
 function ws_ls_shortcode_height( $user_defined_arguments ) {
 
-	if ( false === WS_LS_IS_PRO ) {
+	if ( false === WS_LS_IS_PREMIUM ) {
 		return ws_ls_display_pro_upgrade_notice_for_shortcode();
 	}
 
@@ -326,7 +326,7 @@ add_shortcode( 'wt-height', 'ws_ls_shortcode_height' );
  */
 function ws_ls_shortcode_new_users( $user_defined_arguments ) {
 
-	if ( false === WS_LS_IS_PRO ) {
+	if ( false === WS_LS_IS_PREMIUM ) {
 		return ws_ls_display_pro_upgrade_notice_for_shortcode();
 	}
 
@@ -379,7 +379,7 @@ add_shortcode( 'wt-new-users', 'ws_ls_shortcode_new_users' );
  */
 function ws_ls_shortcode_recent_date( $user_id = NULL ) {
 
-	if ( false === WS_LS_IS_PRO ) {
+	if ( false === WS_LS_IS_PREMIUM ) {
 		return ws_ls_display_pro_upgrade_notice_for_shortcode();
 	}
 
@@ -416,7 +416,7 @@ add_shortcode( 'wt-latest-date', 'ws_ls_shortcode_recent_date' );
  */
 function ws_ls_shortcode_days_between_start_and_latest( $user_defined_arguments, $ignore_pro_status = false ) {
 
-	if ( false === WS_LS_IS_PRO && false === $ignore_pro_status ) {
+	if ( false === WS_LS_IS_PREMIUM && false === $ignore_pro_status ) {
 		return ws_ls_display_pro_upgrade_notice_for_shortcode();
 	}
 

@@ -16,7 +16,7 @@ add_action( 'admin_menu', 'ws_ls_export_admin_menu' );
  */
 function ws_ls_export_ajax_process() {
 
-	if ( false === WS_LS_IS_PRO ) {
+	if ( false === WS_LS_IS_PREMIUM ) {
 		return;
 	}
 

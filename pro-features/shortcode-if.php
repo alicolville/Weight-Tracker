@@ -12,7 +12,7 @@ defined('ABSPATH') or die("Jog on");
  */
 function ws_ls_shortcode_if( $user_defined_arguments, $content, $shortcode, $level = 0 ) {
 
-	if ( false === WS_LS_IS_PRO ) {
+	if ( false === WS_LS_IS_PREMIUM ) {
 		return ws_ls_display_pro_upgrade_notice_for_shortcode();
 	}
 
@@ -256,7 +256,7 @@ function ws_ls_shortcode_if_value_exist( $user_id, $fields ) {
                     break;
 	            case 'photo':
 
-                    if (false !== WS_LS_IS_PRO ) {
+                    if (false !== WS_LS_IS_PREMIUM ) {
                         $value = ws_ls_photos_db_get_recent_or_latest( $user_id );
                     }
 

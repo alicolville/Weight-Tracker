@@ -298,7 +298,7 @@ function ws_ls_entry_get( $arguments = [] ) {
 			$entry['kg'] - $entry['first_weight'] :
 			0;
 
-		if ( true === WS_LS_IS_PRO &&
+		if ( true === WS_LS_IS_PREMIUM &&
 		     true === ws_ls_meta_fields_is_enabled() ) {
 
 			$entry['meta'] = ws_ls_meta( $arguments['id'] );
@@ -621,7 +621,7 @@ function ws_ls_to_bool( $string ) {
 function ws_ls_option( $key, $default, $has_to_be_pro = false ) {
 
 	// If they need to be a Pro user and not, the apply default
-	if ( true === $has_to_be_pro && false === WS_LS_IS_PRO ) {
+	if ( true === $has_to_be_pro && false === WS_LS_IS_PREMIUM ) {
 		return $default;
 	}
 
@@ -1297,7 +1297,7 @@ function ws_ls_blur( $pro_plus = false, $space_before = true ) {
         $class = ' ' . $class;
     }
 
-    if ( false === $pro_plus && false === WS_LS_IS_PRO ) {
+    if ( false === $pro_plus && false === WS_LS_IS_PREMIUM ) {
         return $class;
     } elseif ( true === $pro_plus && false === WS_LS_IS_PREMIUM ) {
         return $class;
@@ -1319,7 +1319,7 @@ function ws_ls_blur_text( $text, $pro_plus = false ) {
 
         $blur = false;
 
-        if ( false === $pro_plus && false === WS_LS_IS_PRO ) {
+        if ( false === $pro_plus && false === WS_LS_IS_PREMIUM ) {
             $blur = true;
         } elseif ( true === $pro_plus && false === WS_LS_IS_PREMIUM ) {
             $blur = true;
@@ -1488,7 +1488,7 @@ function ws_ls_component_id() {
  */
 function ws_ls_user_preferences_is_enabled() {
 
-	if ( false === WS_LS_IS_PRO ) {
+	if ( false === WS_LS_IS_PREMIUM ) {
 		return false;
 	}
 

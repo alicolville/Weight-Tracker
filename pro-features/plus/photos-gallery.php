@@ -27,7 +27,7 @@ function ws_ls_photos_gallery_js_css($mode = 'default') {
  */
 function ws_ls_photos_shortcode_gallery($user_defined_arguments) {
 
-	if( false === WS_LS_IS_PRO ) {
+	if( false === WS_LS_IS_PREMIUM ) {
 		return '';
 	}
 

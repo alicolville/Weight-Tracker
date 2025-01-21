@@ -55,12 +55,12 @@ $license_type = ws_ls_has_a_valid_license();
 // Standard Pro license?
 if( true === in_array( $license_type, [ 'pro', 'pro-plus' ] ) ){
 	define( 'WS_LS_IS_PREMIUM', true );
-	define( 'WS_LS_IS_PRO', true );			// Legacy
-	define( 'WS_LS_IS_PRO_PLUS', true );	// Legacy
+	define( 'W1S_LS_IS_PRO', true );			// Legacy
+	define( 'W1S_LS_IS_PRO_PLUS', true );	// Legacy
 } else {
 	define( 'WS_LS_IS_PREMIUM', false );
-	define( 'WS_LS_IS_PRO', false );		// Legacy
-	define( 'WS_LS_IS_PRO_PLUS', false );	// Legacy
+	define( 'W1S_LS_IS_PRO', false );		// Legacy
+	define( 'W1S_LS_IS_PRO_PLUS', false );	// Legacy
 }
 
 // -----------------------------------------------------------------------------------------
@@ -149,7 +149,7 @@ require_once( WS_LS_ABSPATH . 'pro-features/db.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/functions-stats.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/hooks.php' );
 
-if ( true === WS_LS_IS_PRO ) {
+if ( true === WS_LS_IS_PREMIUM ) {
 	require_once( WS_LS_ABSPATH . 'pro-features/gamification.php' );
 }
 
@@ -169,7 +169,7 @@ require_once( WS_LS_ABSPATH . 'pro-features/plus/shortcode.calculator.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/export/inc.php' );
 
 // Gravity Forms
-if ( true === WS_LS_IS_PRO && 'yes' == get_option( 'ws-ls-gf-enable', 'yes' ) ) {
+if ( true === WS_LS_IS_PREMIUM && 'yes' == get_option( 'ws-ls-gf-enable', 'yes' ) ) {
 	require_once( WS_LS_ABSPATH . 'pro-features/hook-gravity-forms.php' );
 }
 

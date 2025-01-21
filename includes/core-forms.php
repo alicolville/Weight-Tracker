@@ -96,7 +96,7 @@ function ws_ls_form_weight( $arguments = [] ) {
 
 	if ( true === in_array( $arguments[ 'type' ], [ 'custom-fields', 'weight' ] ) &&
 	        ( true === empty( $arguments[ 'entry-id' ] ) && empty( $arguments[ 'entry' ] ) )
-				&& WS_LS_IS_PRO && ws_ls_option_to_bool( 'ws-ls-populate-form-with-values-on-date' )
+				&& WS_LS_IS_PREMIUM && ws_ls_option_to_bool( 'ws-ls-populate-form-with-values-on-date' )
 	) {
 
 		$date           = ws_ls_convert_date_to_iso( $arguments[ 'todays-date' ]);

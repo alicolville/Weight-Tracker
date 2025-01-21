@@ -410,7 +410,7 @@ function ws_ls_datatable_columns( $arguments = [] ) {
 	if ( true === $arguments[ 'enable-weight' ] ) {
 		$columns[] = [ 'name' => 'kg', 'title' => esc_html__( 'Weight', WE_LS_SLUG ), 'visible'=> true, 'type' => 'text' ];
 
-		if ( false === $arguments[ 'front-end' ] || true === WS_LS_IS_PRO ) {
+		if ( false === $arguments[ 'front-end' ] || true === WS_LS_IS_PREMIUM ) {
 			$columns[] = [ 'name' => 'gainloss', 'title' => ws_ls_tooltip('+/-', esc_html__( 'Difference', WE_LS_SLUG ) ), 'visible'=> true, 'breakpoints'=> 'xs', 'type' => 'text' ];
 		}
 	}

@@ -16,7 +16,7 @@ defined('ABSPATH') or die("Jog on!");
  */
 function ws_ls_meta_fields_form_field_range_slider( $field, $value ) {
 
-	if ( false === WS_LS_IS_PRO ) {
+	if ( false === WS_LS_IS_PREMIUM ) {
 		return '';
 	}
 

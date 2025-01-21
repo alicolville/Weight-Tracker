@@ -45,7 +45,7 @@ function ws_ls_export_date_ranges() {
  */
 function ws_ls_export_insert( $options ) {
 
-	if ( false === WS_LS_IS_PRO ) {
+	if ( false === WS_LS_IS_PREMIUM ) {
 		return false;
 	}
 

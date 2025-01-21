@@ -48,7 +48,7 @@ function ws_ls_admin_page_photos() {
 	                                                                            'hide-from-shortcodes' => false
 	                                    ]);
 
-                                    } else if ( true === WS_LS_IS_PRO ) {
+                                    } else if ( true === WS_LS_IS_PREMIUM ) {
 
                                         echo sprintf('<p><a href="%s">%s</a> %s.</p>',
                                             ws_ls_meta_fields_base_url(),

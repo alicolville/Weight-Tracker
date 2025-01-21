@@ -8,7 +8,7 @@ defined('ABSPATH') or die("Jog on!");
  */
 function ws_ls_email_enabled() {
 
-	if ( false === WS_LS_IS_PRO ) {
+	if ( false === WS_LS_IS_PREMIUM ) {
 		return false;
 	}
 

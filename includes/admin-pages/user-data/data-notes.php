@@ -16,7 +16,7 @@ function ws_ls_admin_page_data_notes_for_user() {
 	<div id="poststuff">
 		<?php 	ws_ls_user_header( $user_id );
 
-				if ( true !== WS_LS_IS_PRO ) {
+				if ( true !== WS_LS_IS_PREMIUM ) {
 					ws_ls_display_pro_upgrade_notice();
 				}
         ?>

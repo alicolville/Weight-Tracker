@@ -67,7 +67,7 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 	$chart_config[ 'custom-field-groups' ] = ws_ls_meta_fields_groups_slugs_to_ids( $chart_config[ 'custom-field-groups' ] );
 	$chart_config[ 'custom-field-slugs' ]  = ws_ls_meta_fields_slugs_to_ids( $chart_config[ 'custom-field-slugs' ] );
 
-	$chart_config[ 'meta-fields' ]      =  WS_LS_IS_PRO ? ws_ls_meta_fields_plottable( $chart_config ) : false;
+	$chart_config[ 'meta-fields' ]      =  WS_LS_IS_PREMIUM ? ws_ls_meta_fields_plottable( $chart_config ) : false;
 	$chart_config[ 'show-meta-fields' ] = ( true === ws_ls_to_bool( $chart_config[ 'show-meta-fields' ] ) &&
 	                                        false === empty( $chart_config[ 'meta-fields' ] ) );
 	$chart_config[ 'y-axis-unit' ]      = ( 'kg' !== ws_ls_setting( 'weight-unit', $chart_config[ 'user-id' ] ) ) ? esc_html__( 'lbs', WE_LS_SLUG ) : esc_html__( 'kg', WE_LS_SLUG );
@@ -77,7 +77,7 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 	$chart_config[ 'show-target' ]      = ( true === ws_ls_targets_enabled() && true === ws_ls_to_bool( $chart_config[ 'show-target' ] ) );
 
 	// Line graphs only for non-pro
-	if ( false === WS_LS_IS_PRO ) {
+	if ( false === WS_LS_IS_PREMIUM ) {
 		$chart_config['type'] = 'line';
 	}
 

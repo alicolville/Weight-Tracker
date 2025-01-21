@@ -15,7 +15,7 @@
 
                     <div class="meta-box-sortables ui-sortable">
                         <?php
-                            if ( false === WS_LS_IS_PRO ) {
+                            if ( false === WS_LS_IS_PREMIUM ) {
                                 ws_ls_display_pro_upgrade_notice();
                             }
                         ?>
@@ -39,7 +39,7 @@
 	                                ?>
 	                                <form method="post">
 	                                    <input type="text" name="group" size="30" maxlength="40" />
-	                                    <input type="submit" value="<?php echo esc_html__('Add', WE_LS_SLUG); ?>" class="button" <?php if ( false === WS_LS_IS_PRO ) { echo ' disabled'; } ?> />
+	                                    <input type="submit" value="<?php echo esc_html__('Add', WE_LS_SLUG); ?>" class="button" <?php if ( false === WS_LS_IS_PREMIUM ) { echo ' disabled'; } ?> />
 	                                </form>
 
                                <?php

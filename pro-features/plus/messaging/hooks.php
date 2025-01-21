@@ -73,7 +73,7 @@ add_action( 'wp_ajax_ws_ls_delete_note', 'ws_ls_note_ajax_delete' );
  */
 function ws_ls_note_shortcode( $user_defined_arguments ) {
 
-	if ( false === WS_LS_IS_PRO ) {
+	if ( false === WS_LS_IS_PREMIUM ) {
 		return ws_ls_display_pro_upgrade_notice_for_shortcode();
 	}
 
