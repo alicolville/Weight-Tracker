@@ -182,7 +182,6 @@ function ws_ls_load_textdomain() {
 }
 add_action('plugins_loaded', 'ws_ls_load_textdomain');
 
-
 // -----------------------------------------------------------------------------------------
 // Since we're no longer hosted on WordPress.org, use the following for auto updates
 // -----------------------------------------------------------------------------------------
