@@ -103,7 +103,7 @@ function ws_ls_display_license_expiry_warning() {
 	            esc_html__('Your license expires in', WE_LS_SLUG ),
 	            $days_until_expiry,
 	            esc_html__('days. Please renew your license as soon as possible', WE_LS_SLUG ),
-                WE_LS_UPGRADE_TO_PRO_PLUS_URL,
+                WE_LS_UPGRADE_TO_PREMIUM_URL,
                 ws_ls_generate_site_hash()
     );
 

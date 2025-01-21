@@ -26,8 +26,7 @@ define( 'WE_LS_YEKEN_UPDATES_URL', 'https://yeken.uk/downloads/_updates/weight-t
 define( 'WE_LS_YEKEN_LATEST_RELEASE_MANIFEST', 'https://raw.githubusercontent.com/alicolville/Weight-Tracker/refs/heads/master/release.json' );
 define( 'WE_LS_LICENSE_TYPES_URL', 'https://docs.yeken.uk/features.html' );
 define( 'WE_LS_CALCULATIONS_URL', '	https://docs.yeken.uk/calculations.html' );
-define( 'WE_LS_UPGRADE_TO_PRO_URL', 'https://shop.yeken.uk/product/weight-tracker-premium/' );
-define( 'WE_LS_UPGRADE_TO_PRO_PLUS_URL', 'https://shop.yeken.uk/product/weight-tracker-premium/' );
+define( 'WE_LS_UPGRADE_TO_PREMIUM_URL', 'https://shop.yeken.uk/product/weight-tracker-premium/' );
 define( 'WE_LS_FREE_TRIAL_URL', 'https://shop.yeken.uk/get-a-trial-license/' );
 define( 'WE_LS_CDN_CHART_JS', WS_LS_BASE_URL . 'assets/js/libraries/chart-4.4.4.min.js' );
 define( 'WE_LS_CDN_FONT_AWESOME_CSS', WS_LS_BASE_URL . 'assets/css/libraries/fontawesome-4.7.0.min.css' );
