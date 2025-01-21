@@ -8,7 +8,7 @@
      * @return bool
      */
     function ws_ls_awards_is_enabled() {
-        return WS_LS_IS_PRO_PLUS;
+        return WS_LS_IS_PREMIUM;
     }
     /*
     * Return base URL for meta fields
@@ -303,7 +303,7 @@
 	 */
 	function ws_ls_awards_render_badges( $user_defined_arguments ) {
 
-		if( false === WS_LS_IS_PRO_PLUS ) {
+		if( false === WS_LS_IS_PREMIUM ) {
 			return '';
 		}
 

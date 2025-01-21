@@ -12,7 +12,7 @@ defined('ABSPATH') or die("Jog on!");
  */
 function ws_ls_shortcode_calculator( $user_defined_arguments ) {
 
-	if( false === WS_LS_IS_PRO_PLUS ) {
+	if( false === WS_LS_IS_PREMIUM ) {
 		return ws_ls_display_pro_upgrade_notice_for_shortcode();
 	}
 

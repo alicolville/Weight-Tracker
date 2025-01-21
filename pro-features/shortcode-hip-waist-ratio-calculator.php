@@ -20,7 +20,7 @@ function ws_ls_waist_to_hip_ratio_calculator( $user_defined_arguments ) {
 
 	ws_ls_enqueue_uikit( ! $arguments[ 'disable-theme-css' ], ! $arguments[ 'disable-main-font' ], 'shortcode-calculator' );
 
-	if ( false === WS_LS_IS_PRO_PLUS ) {
+	if ( false === WS_LS_IS_PREMIUM ) {
 		return ws_ls_display_pro_upgrade_notice_for_shortcode( true );
 	}
 

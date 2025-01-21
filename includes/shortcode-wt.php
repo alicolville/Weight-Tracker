@@ -72,7 +72,7 @@ function ws_ls_shortcode_wt( $user_defined_arguments ) {
 
 		$kiosk_mode = true;
 
-		if ( false === WS_LS_IS_PRO_PLUS ) {
+		if ( false === WS_LS_IS_PREMIUM ) {
 			return ws_ls_display_pro_upgrade_notice_for_shortcode( true );
 		}
 
@@ -98,7 +98,7 @@ function ws_ls_shortcode_wt( $user_defined_arguments ) {
 
 		$shortcode_arguments[ 'disable-not-logged-in' ] = true;
 
-		if ( true === WS_LS_IS_PRO_PLUS &&
+		if ( true === WS_LS_IS_PREMIUM &&
 		            true === $shortcode_arguments[ 'kiosk-barcode-scanner' ] ) {
 			$html .= ws_ls_barcode_reader( [ 'camera'   => $shortcode_arguments[ 'kiosk-barcode-scanner-camera' ],
 			                                 'lazer'    => $shortcode_arguments[ 'kiosk-barcode-scanner-lazer'],
@@ -137,8 +137,8 @@ function ws_ls_shortcode_wt( $user_defined_arguments ) {
 	ws_ls_enqueue_uikit( ! $shortcode_arguments[ 'disable-theme-css' ], ! $shortcode_arguments[ 'disable-main-font' ], 'wt' );
 
 	$shortcode_arguments[ 'user-id' ]               = (int) $shortcode_arguments[ 'user-id' ];
-	$shortcode_arguments[ 'show-tab-awards' ]       = ( false === ws_ls_to_bool( $shortcode_arguments[ 'hide-tab-awards' ] ) && true === WS_LS_IS_PRO_PLUS );
-	$shortcode_arguments[ 'show-tab-advanced' ]     = ( false === ws_ls_to_bool( $shortcode_arguments[ 'hide-tab-advanced' ] ) && true === WS_LS_IS_PRO_PLUS );
+	$shortcode_arguments[ 'show-tab-awards' ]       = ( false === ws_ls_to_bool( $shortcode_arguments[ 'hide-tab-awards' ] ) && true === WS_LS_IS_PREMIUM );
+	$shortcode_arguments[ 'show-tab-advanced' ]     = ( false === ws_ls_to_bool( $shortcode_arguments[ 'hide-tab-advanced' ] ) && true === WS_LS_IS_PREMIUM );
 	$shortcode_arguments[ 'show-tab-photos' ]       = ( false === ws_ls_to_bool( $shortcode_arguments[ 'hide-tab-photos' ] ) && true === ws_ls_meta_fields_photo_any_enabled( true ) );
     $shortcode_arguments[ 'show-tab-messages' ]     = ( false === ws_ls_to_bool( $shortcode_arguments[ 'hide-tab-messages' ] ) && true === ws_ls_note_is_enabled() );
 	$shortcode_arguments[ 'enable-week-ranges' ]	= ws_ls_to_bool( $shortcode_arguments[ 'enable-week-ranges' ] );
@@ -163,7 +163,7 @@ function ws_ls_shortcode_wt( $user_defined_arguments ) {
 		$html .= ws_ls_component_alert( [ 'message' => esc_html__( 'Your data has successfully been deleted.', WE_LS_SLUG ) ] );
 	}
 
-	if ( true !== ws_ls_to_bool( $shortcode_arguments[ 'hide-notifications' ] ) && true === WS_LS_IS_PRO_PLUS ) {
+	if ( true !== ws_ls_to_bool( $shortcode_arguments[ 'hide-notifications' ] ) && true === WS_LS_IS_PREMIUM ) {
 		$html .= ws_ls_notifications_shortcode( $shortcode_arguments, true );
 	}
 
@@ -200,7 +200,7 @@ add_shortcode( 'wt', 'ws_ls_shortcode_wt' );
  */
 function ws_ls_shortcode_wt_kiosk( $user_defined_arguments ) {
 
-	if ( false === WS_LS_IS_PRO_PLUS ) {
+	if ( false === WS_LS_IS_PREMIUM ) {
 		return ws_ls_display_pro_upgrade_notice_for_shortcode( true );
 	}
 

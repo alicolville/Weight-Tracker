@@ -11,7 +11,7 @@ defined('ABSPATH') or die("Jog on!");
  */
 function ws_ls_challenges_shortcodes_opt_in( $user_defined_arguments ) {
 
-    if( false === WS_LS_IS_PRO_PLUS ) {
+    if( false === WS_LS_IS_PREMIUM ) {
         return '';
     }
 
@@ -64,7 +64,7 @@ add_shortcode( 'wt-challenges-optin', 'ws_ls_challenges_shortcodes_opt_in' );
  */
 function ws_ls_challenges_shortcodes_list_entries( $user_defined_arguments ) {
 
-    if( false === WS_LS_IS_PRO_PLUS ) {
+    if( false === WS_LS_IS_PREMIUM ) {
         return '';
     }
 

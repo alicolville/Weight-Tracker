@@ -1299,7 +1299,7 @@ function ws_ls_blur( $pro_plus = false, $space_before = true ) {
 
     if ( false === $pro_plus && false === WS_LS_IS_PRO ) {
         return $class;
-    } elseif ( true === $pro_plus && false === WS_LS_IS_PRO_PLUS ) {
+    } elseif ( true === $pro_plus && false === WS_LS_IS_PREMIUM ) {
         return $class;
     }
 
@@ -1321,7 +1321,7 @@ function ws_ls_blur_text( $text, $pro_plus = false ) {
 
         if ( false === $pro_plus && false === WS_LS_IS_PRO ) {
             $blur = true;
-        } elseif ( true === $pro_plus && false === WS_LS_IS_PRO_PLUS ) {
+        } elseif ( true === $pro_plus && false === WS_LS_IS_PREMIUM ) {
             $blur = true;
         }
 
@@ -1456,7 +1456,7 @@ function ws_ls_user_display_name( $user_id ) {
  * @return bool
  */
 function ws_ls_challenges_is_enabled() {
-    return WS_LS_IS_PRO_PLUS;
+    return WS_LS_IS_PREMIUM;
 }
 
 /**

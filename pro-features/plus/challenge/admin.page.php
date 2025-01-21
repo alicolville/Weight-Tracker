@@ -52,7 +52,7 @@ function ws_ls_challenges_admin_page() {
             <div id="post-body-content">
                 <div class="meta-box-sortables ui-sortable">
 	                <?php
-		                if ( true !== WS_LS_IS_PRO_PLUS ) {
+		                if ( true !== WS_LS_IS_PREMIUM ) {
 			                ws_ls_display_pro_upgrade_notice( 'pro-plus' );
 		                }
 	                ?>
@@ -182,7 +182,7 @@ function ws_ls_challenges_admin_disabled() { ?>
             <div id="post-body-content">
                 <div class="meta-box-sortables ui-sortable">
                     <?php
-                    if ( true !== WS_LS_IS_PRO_PLUS ) {
+                    if ( true !== WS_LS_IS_PREMIUM ) {
                         ws_ls_display_pro_upgrade_notice();
                     }
                     ?>
