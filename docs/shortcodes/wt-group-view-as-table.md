@@ -1,6 +1,6 @@
 ## [wt-group-view-as-table]
 
-> The following shortcode is only available in the [Pro]({{ site.baseurl }}/upgrade.html) version of the plugin.
+> The following shortcode is only available in the [Premium]({{ site.baseurl }}/upgrade.html) version of the plugin.
 
 A shortcode that renders a table of summary information for users within a given group.
 

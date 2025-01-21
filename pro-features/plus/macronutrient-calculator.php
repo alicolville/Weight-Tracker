@@ -10,7 +10,7 @@ defined('ABSPATH') or die("Jog on!");
  */
 function ws_ls_macro_calculate( $user_id = false ) {
 
-	if( false === WS_LS_IS_PRO_PLUS ) {
+	if( false === WS_LS_IS_PREMIUM ) {
 		return NULL;
 	}
 
@@ -115,7 +115,7 @@ function ws_ls_macro_calculate_raw( $calories, $user_id = false ) {
  */
 function ws_ls_macro_render_table($user_id, $missing_data_text = false, $additional_css_class = '', $macros = NULL ) {
 
-	if( false === WS_LS_IS_PRO_PLUS ) {
+	if( false === WS_LS_IS_PREMIUM ) {
 		return '';
 	}
 
@@ -230,7 +230,7 @@ function ws_ls_macro_render_table($user_id, $missing_data_text = false, $additio
  */
 function ws_ls_shortcode_macro( $user_defined_arguments ) {
 
-	if( false === WS_LS_IS_PRO_PLUS ) {
+	if( false === WS_LS_IS_PREMIUM ) {
 		return ws_ls_display_pro_upgrade_notice_for_shortcode();
 	}
 
@@ -278,7 +278,7 @@ add_shortcode( 'wt-macronutrients', 'ws_ls_shortcode_macro' );
  */
 function ws_ls_shortcode_macro_table($user_defined_arguments) {
 
-	if( false === WS_LS_IS_PRO_PLUS ) {
+	if( false === WS_LS_IS_PREMIUM ) {
 		return '';
 	}
 

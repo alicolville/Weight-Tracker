@@ -10,7 +10,7 @@ defined('ABSPATH') or die("Jog on!");
  */
 function ws_ls_shortcode_wlt_display_photos_tab( $user_id = null ) {
 
-	if( false === WS_LS_IS_PRO ) {
+	if( false === WS_LS_IS_PREMIUM ) {
 		return '';
 	}
 
@@ -50,7 +50,7 @@ function ws_ls_shortcode_wlt_display_photos_tab( $user_id = null ) {
  */
 function ws_ls_shortcode_wlt_display_advanced_tab( $arguments ) {
 
-	if( false === WS_LS_IS_PRO_PLUS ) {
+	if( false === WS_LS_IS_PREMIUM ) {
 		return '';
 	}
 

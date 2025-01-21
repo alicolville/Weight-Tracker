@@ -12,7 +12,7 @@ defined('ABSPATH') or die("Jog on!");
  */
 function ws_ls_message_add( $to, $from, $message ) {
 
-	if ( false === WS_LS_IS_PRO_PLUS ) {
+	if ( false === WS_LS_IS_PREMIUM ) {
 		return false;
 	}
 

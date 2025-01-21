@@ -18,7 +18,7 @@ defined( 'ABSPATH' ) or die( 'Jog on!' );
  */
 function ws_ls_messaging_db_select( $to, $from = NULL, $is_note = true, $is_notification = false, $visible_to_user = NULL, $offset = NULL, $limit = NULL, $ignore_cache = false ) {
 
-	if ( false === WS_LS_IS_PRO ) {
+	if ( false === WS_LS_IS_PREMIUM ) {
 		return NULL;
 	}
 
@@ -92,7 +92,7 @@ function ws_ls_messaging_db_select( $to, $from = NULL, $is_note = true, $is_noti
  */
 function ws_ls_messaging_db_add( $to, $from, $message, $is_note = false, $visible_to_user = false, $notification = false ) {
 
-	if ( false === WS_LS_IS_PRO ) {
+	if ( false === WS_LS_IS_PREMIUM ) {
 		return false;
 	}
 
@@ -132,7 +132,7 @@ function ws_ls_messaging_db_add( $to, $from, $message, $is_note = false, $visibl
  */
 function ws_ls_messaging_db_delete( $message_id, $is_notification = false ) {
 
-	if ( false === WS_LS_IS_PRO ) {
+	if ( false === WS_LS_IS_PREMIUM ) {
 		return false;
 	}
 

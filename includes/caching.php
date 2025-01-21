@@ -262,7 +262,7 @@ function ws_ls_cache_generate_key( $key ){
 
 	$cache_version = get_option( 'ws-ls-cache-number', WE_LS_INITIAL_CACHE_NUMBER );
 
-	return sprintf( 'wt-%s-%s-%s-%d-%s',  WS_LS_IS_PRO_PLUS, WS_LS_IS_PRO, WE_LS_CURRENT_VERSION, $cache_version, $key );
+	return sprintf( 'wt-%s-%s-%s-%d-%s',  WS_LS_IS_PREMIUM, WS_LS_IS_PREMIUM, WE_LS_CURRENT_VERSION, $cache_version, $key );
 }
 
 /**

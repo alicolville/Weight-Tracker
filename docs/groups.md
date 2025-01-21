@@ -1,6 +1,6 @@
 # Groups
 
-> The following shortcode is only available in the [Pro]({{ site.baseurl }}/upgrade.html) version of the plugin.
+> The following shortcode is only available in the [Premium]({{ site.baseurl }}/upgrade.html) version of the plugin.
 
 The grouping feature allows users to be added into groups. Grouping lets weight difference be calculated at a group level and displayed on the “Manage User Data” summary page. This allows you to see collectively which groups have gained or lost the most weight.
 

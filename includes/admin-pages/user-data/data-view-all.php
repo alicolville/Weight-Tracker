@@ -15,7 +15,7 @@ function ws_ls_admin_page_view_all() {
 			<div id="post-body-content">
 				<div class="meta-box-sortables ui-sortable">
                     <?php
-                    if ( true !== WS_LS_IS_PRO ) {
+                    if ( true !== WS_LS_IS_PREMIUM ) {
                         ws_ls_display_pro_upgrade_notice();
                     }
                     ?>

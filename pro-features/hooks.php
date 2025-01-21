@@ -7,7 +7,7 @@ defined('ABSPATH') or die("Jog on!");
  */
 function we_ls_register_widgets() {
 
-    if ( false === WS_LS_IS_PRO ) {
+    if ( false === WS_LS_IS_PREMIUM ) {
         return;
     }
 

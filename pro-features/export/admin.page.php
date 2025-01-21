@@ -42,7 +42,7 @@ function ws_ls_export_admin_page_summary() {
 						<h2 class="hndle"><span><?php echo esc_html__( 'Export Data', WE_LS_SLUG ); ?></span></h2>
 						<div class="inside">
 							<?php
-								if ( true !== WS_LS_IS_PRO ) {
+								if ( true !== WS_LS_IS_PREMIUM ) {
 									ws_ls_display_pro_upgrade_notice();
 								}
 							?>
@@ -140,7 +140,7 @@ function ws_ls_export_admin_page_new() {
 							<h2 class="hndle"><span><?php echo esc_html__( 'Details', WE_LS_SLUG ); ?></span></h2>
 							<div class="inside">
 								<?php
-									if (true !== WS_LS_IS_PRO) {
+									if (true !== WS_LS_IS_PREMIUM) {
 										ws_ls_display_pro_upgrade_notice();
 									}
 
@@ -308,7 +308,7 @@ function ws_ls_export_admin_page_process() {
 						<div class="inside">
 							<?php
 
-								if ( true !== WS_LS_IS_PRO ) {
+								if ( true !== WS_LS_IS_PREMIUM ) {
 									ws_ls_display_pro_upgrade_notice();
 
 									echo esc_html__( 'Please upgrade for your report to be generated.', WE_LS_SLUG );

@@ -1,6 +1,6 @@
 ## [wt-custom-fields-count]
 
-> The following shortcode is only available in the [Pro]({{ site.baseurl }}/upgrade.html) version of the plugin.
+> The following shortcode is only available in the [Premium]({{ site.baseurl }}/upgrade.html) version of the plugin.
 
 This shortcode is used to display a count of how many times a custom field has been entered for the given custom field.
 

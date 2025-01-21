@@ -39,7 +39,7 @@ add_action( 'wp_ajax_ws_ls_delete_notification', 'ws_ls_delete_notification_call
  */
 function ws_ls_save_preferences_callback() {
 
-	if ( false === WS_LS_IS_PRO ) {
+	if ( false === WS_LS_IS_PREMIUM ) {
 		wp_send_json( 0 );
 	}
 
@@ -141,7 +141,7 @@ Ajax handler used for deleting rows in a footable
  **/
 function ws_ls_footable_delete_entry() {
 
-	if ( false === WS_LS_IS_PRO ) {
+	if ( false === WS_LS_IS_PREMIUM ) {
 		wp_send_json(0 );
 	}
 

@@ -1,6 +1,6 @@
 # Gravity Forms
 
-> The following shortcode is only available in the [Pro]({{ site.baseurl }}/upgrade.html) version of the plugin.
+> The following shortcode is only available in the [Premium]({{ site.baseurl }}/upgrade.html) version of the plugin.
 
 This shortcode can be used to display a progress bar indicating the current user's progress towards their target weight. Below is an example of the rendered shortcode:
 

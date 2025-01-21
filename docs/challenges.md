@@ -1,6 +1,6 @@
 # Challenges
 
-> The following feature is only available in the [Pro Plus](/upgrade.html)  version of the plugin.
+> The following feature is only available in the [Premium](/upgrade.html)  version of the plugin.
 
 Challenges provide the ability, for a given time period, to create league tables to show user progress in relation to others. Users can be ranked on Total Weight Lost, BMI Change, %Body Weight, Weight Tracker Streaks and Meal Tracker streaks.
 

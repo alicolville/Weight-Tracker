@@ -1,8 +1,8 @@
 ## [wt-table]
 
-> The following shortcode is available in both the free and [Pro]({{ site.baseurl }}/upgrade.html) version of the plugin. However, the non-pro version is a simple HTML table with limited functionality.
+> The following shortcode is available in both the free and [Premium]({{ site.baseurl }}/upgrade.html) version of the plugin. However, the non-pro version is a simple HTML table with limited functionality.
 
-This shortcode displays the weight and [custom fields]({{ site.baseurl }}/custom-fields.html) for the given user in a tabular format. Below is an example of how the rendered shortcode looks ([Pro]({{ site.baseurl }}/upgrade.html) version).
+This shortcode displays the weight and [custom fields]({{ site.baseurl }}/custom-fields.html) for the given user in a tabular format. Below is an example of how the rendered shortcode looks ([Premium]({{ site.baseurl }}/upgrade.html) version).
 
 [![Table]({{ site.baseurl }}/assets/images/table.png)]({{ site.baseurl }}/assets/images/table.png)
 

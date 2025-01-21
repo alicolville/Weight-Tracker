@@ -10,7 +10,7 @@ defined('ABSPATH') or die("Jog on!");
  */
 function ws_ls_harris_benedict_calculate_calories( $user_id = false ) {
 
-	if( false === WS_LS_IS_PRO_PLUS ) {
+	if( false === WS_LS_IS_PREMIUM ) {
 		return NULL;
 	}
 
@@ -62,7 +62,7 @@ function ws_ls_harris_benedict_calculate_calories( $user_id = false ) {
  */
 function ws_ls_harris_benedict_calculate_calories_raw( $bmr, $gender, $activity_level, $user_id = false ) {
 
-	if( false === WS_LS_IS_PRO_PLUS ) {
+	if( false === WS_LS_IS_PREMIUM ) {
 		return NULL;
 	}
 
@@ -193,7 +193,7 @@ function ws_ls_harris_benedict_meal_ratio_defaults() {
  */
 function ws_ls_harris_benedict_render_table( $user_id, $missing_data_text = false,  $additional_css_class = '', $email = false, $include_range = true, $calories = NULL ) {
 
-	if( false === WS_LS_IS_PRO_PLUS ) {
+	if( false === WS_LS_IS_PREMIUM ) {
 		return '';
 	}
 
@@ -345,7 +345,7 @@ function ws_ls_harris_benedict_render_table( $user_id, $missing_data_text = fals
  */
 function ws_ls_shortcode_harris_benedict( $user_defined_arguments ) {
 
-	if( false === WS_LS_IS_PRO_PLUS ) {
+	if( false === WS_LS_IS_PREMIUM ) {
 		return '';
 	}
 
@@ -403,7 +403,7 @@ add_shortcode( 'wt-calories', 'ws_ls_shortcode_harris_benedict' );
  */
 function ws_ls_shortcode_harris_benedict_table( $user_defined_arguments ) {
 
-	if( false === WS_LS_IS_PRO_PLUS ) {
+	if( false === WS_LS_IS_PREMIUM ) {
 		return '';
 	}
 
@@ -473,7 +473,7 @@ function ws_ls_display_calorie_cap_raw( $gender ) {
  */
 function ws_ls_harris_benedict_show_lose_figures() {
 
-	if ( false === WS_LS_IS_PRO_PLUS ) {
+	if ( false === WS_LS_IS_PREMIUM ) {
 		return false;
 	}
 
@@ -487,7 +487,7 @@ function ws_ls_harris_benedict_show_lose_figures() {
  */
 function ws_ls_harris_benedict_show_gain_figures() {
 
-	if ( false === WS_LS_IS_PRO_PLUS ) {
+	if ( false === WS_LS_IS_PREMIUM ) {
 		return false;
 	}
 
@@ -504,7 +504,7 @@ function ws_ls_harris_benedict_show_gain_figures() {
  */
 function ws_ls_harris_benedict_filter_show_hide_gains_loss( $calorie_intake ) {
 
-	if( false === WS_LS_IS_PRO_PLUS) {
+	if( false === WS_LS_IS_PREMIUM) {
 		return $calorie_intake;
 	}
 
@@ -532,7 +532,7 @@ add_filter( 'wlt-filter-calories-pre', 'ws_ls_harris_benedict_filter_show_hide_g
  */
 function ws_ls_harris_benedict_filter_calories_to_add( $calories_to_maintain = NULL, $gender = NULL, $return_range = false ) {
 
-	if( false === WS_LS_IS_PRO_PLUS) {
+	if( false === WS_LS_IS_PREMIUM) {
 		return 0;
 	}
 
@@ -596,7 +596,7 @@ function ws_ls_harris_benedict_filter_calories_to_add( $calories_to_maintain = N
  */
 function ws_ls_harris_benedict_filter_calories_to_lose( $calories_to_maintain = NULL, $gender = NULL, $return_range = false ) {
 
-	if( false === WS_LS_IS_PRO_PLUS) {
+	if( false === WS_LS_IS_PREMIUM) {
 		return 0;
 	}
 
@@ -814,7 +814,7 @@ function ws_ls_harris_benedict_setting( $key ) {
 	$default_value = ws_ls_harris_benedict_defaults( $key );
 
 	// apply default if no Pro Plus license
-	if ( false === WS_LS_IS_PRO_PLUS ) {
+	if ( false === WS_LS_IS_PREMIUM ) {
 		return $default_value;
 	}
 

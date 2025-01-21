@@ -19,13 +19,13 @@ function ws_ls_admin_page_search_results() {
 
                         <div class="inside">
                          <?php
-                            if ( true !== WS_LS_IS_PRO ) {
+                            if ( true !== WS_LS_IS_PREMIUM ) {
                                 ws_ls_display_pro_upgrade_notice();
                             }
 
                             $search_term = ws_ls_querystring_value( 'search' );
 
-                            if( true === WS_LS_IS_PRO && false === empty( $search_term ) ) {
+                            if( true === WS_LS_IS_PREMIUM && false === empty( $search_term ) ) {
 
                                 $search_results = ws_ls_user_search( $search_term );
 

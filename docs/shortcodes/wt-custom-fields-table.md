@@ -1,6 +1,6 @@
 ## [wt-custom-fields-table]
 
-> The following shortcode is only available in the [Pro]({{ site.baseurl }}/upgrade.html) version of the plugin.
+> The following shortcode is only available in the [Premium]({{ site.baseurl }}/upgrade.html) version of the plugin.
 
 This shortcode displays the [custom field]({{ site.baseurl }}/custom-fields.html) entries for the given user in a tabular format. Below is an example of how the rendered shortcode looks.
 

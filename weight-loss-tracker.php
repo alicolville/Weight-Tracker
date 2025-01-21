@@ -5,7 +5,7 @@ defined('ABSPATH') or die('Jog on!');
 /**
  * Plugin Name:         Weight Tracker
  * Description:         Allow your users to track their weight, body measurements, photos and other pieces of custom data. Display in charts, tables, shortcodes and widgets. Manage their data, issue awards, email notifications, etc! Provide advanced data on Body Mass Index (BMI), Basal Metabolic Rate (BMR), Calorie intake, Harris Benedict Formula, Macronutrients Calculator and more.
- * Version:             10.18.1
+ * Version:             10.19
  * Requires at least:   6.0
  * Tested up to:		6.5
  * Requires PHP:        7.4
@@ -17,7 +17,7 @@ defined('ABSPATH') or die('Jog on!');
  * Domain Path:         /includes/languages
  */
 
-define( 'WE_LS_CURRENT_VERSION', '10.18.1' );
+define( 'WE_LS_CURRENT_VERSION', '10.19' );
 define( 'WS_LS_ABSPATH', plugin_dir_path( __FILE__ ) );
 define( 'WS_LS_BASE_URL', plugin_dir_url( __FILE__ ) );
 define( 'WE_LS_TITLE', 'Weight Tracker' );
@@ -26,13 +26,11 @@ define( 'WE_LS_YEKEN_UPDATES_URL', 'https://yeken.uk/downloads/_updates/weight-t
 define( 'WE_LS_YEKEN_LATEST_RELEASE_MANIFEST', 'https://raw.githubusercontent.com/alicolville/Weight-Tracker/refs/heads/master/release.json' );
 define( 'WE_LS_LICENSE_TYPES_URL', 'https://docs.yeken.uk/features.html' );
 define( 'WE_LS_CALCULATIONS_URL', '	https://docs.yeken.uk/calculations.html' );
-define( 'WE_LS_UPGRADE_TO_PRO_URL', 'https://shop.yeken.uk/product/weight-tracker-pro/' );
-define( 'WE_LS_UPGRADE_TO_PRO_PLUS_URL', 'https://shop.yeken.uk/product/weight-tracker-pro-plus/' );
+define( 'WE_LS_UPGRADE_TO_PREMIUM_URL', 'https://shop.yeken.uk/product/weight-tracker-premium/' );
 define( 'WE_LS_FREE_TRIAL_URL', 'https://shop.yeken.uk/get-a-trial-license/' );
 define( 'WE_LS_CDN_CHART_JS', WS_LS_BASE_URL . 'assets/js/libraries/chart-4.4.4.min.js' );
 define( 'WE_LS_CDN_FONT_AWESOME_CSS', WS_LS_BASE_URL . 'assets/css/libraries/fontawesome-4.7.0.min.css' );
-define( 'WE_LS_PRO_PRICE', 60.00 );
-define( 'WE_LS_PRO_PLUS_PRICE', 120.00 );
+define( 'WE_LS_PREMIUM_PRICE', 70.00 );
 
 global $form_number;        // This is used to keep track of multiple forms on a page allowing us to pass messages to each
 global $save_response;      // This is used to keep track of form posts responses
@@ -46,25 +44,22 @@ register_activation_hook( __FILE__, 'ws_ls_activate' );
 register_deactivation_hook( __FILE__, 'ws_ls_deactivate' );
 
 // -----------------------------------------------------------------------------------------
-// AC: Check if valid pro license (if valid license)
+// AC: Check if valid Premium license
 // ----------------------------------------------------------------------------------------
 
 include WS_LS_ABSPATH . 'includes/license.php';
 
 $license_type = ws_ls_has_a_valid_license();
 
-// Standard Pro license?
+// Premium
 if( true === in_array( $license_type, [ 'pro', 'pro-plus' ] ) ){
-	define( 'WS_LS_IS_PRO', true );
+	define( 'WS_LS_IS_PREMIUM', true );
+	define( 'WS_LS_IS_PRO', true );			// Legacy
+	define( 'WS_LS_IS_PRO_PLUS', true );	// Legacy
 } else {
-	define( 'WS_LS_IS_PRO', false );
-}
-
-// Pro Plus license?
-if( 'pro-plus' === $license_type ){
-	define( 'WS_LS_IS_PRO_PLUS', true );
-} else {
-	define( 'WS_LS_IS_PRO_PLUS', false );
+	define( 'WS_LS_IS_PREMIUM', false );
+	define( 'WS_LS_IS_PRO', false );		// Legacy
+	define( 'WS_LS_IS_PRO_PLUS', false );	// Legacy
 }
 
 // -----------------------------------------------------------------------------------------
@@ -153,7 +148,7 @@ require_once( WS_LS_ABSPATH . 'pro-features/db.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/functions-stats.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/hooks.php' );
 
-if ( true === WS_LS_IS_PRO ) {
+if ( true === WS_LS_IS_PREMIUM ) {
 	require_once( WS_LS_ABSPATH . 'pro-features/gamification.php' );
 }
 
@@ -173,7 +168,7 @@ require_once( WS_LS_ABSPATH . 'pro-features/plus/shortcode.calculator.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/export/inc.php' );
 
 // Gravity Forms
-if ( true === WS_LS_IS_PRO && 'yes' == get_option( 'ws-ls-gf-enable', 'yes' ) ) {
+if ( true === WS_LS_IS_PREMIUM && 'yes' == get_option( 'ws-ls-gf-enable', 'yes' ) ) {
 	require_once( WS_LS_ABSPATH . 'pro-features/hook-gravity-forms.php' );
 }
 
@@ -186,7 +181,6 @@ function ws_ls_load_textdomain() {
 	load_plugin_textdomain( WE_LS_SLUG, false, dirname( plugin_basename( __FILE__ )  ) . '/includes/languages/' );
 }
 add_action('plugins_loaded', 'ws_ls_load_textdomain');
-
 
 // -----------------------------------------------------------------------------------------
 // Since we're no longer hosted on WordPress.org, use the following for auto updates

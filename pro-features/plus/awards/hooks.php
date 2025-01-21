@@ -10,7 +10,7 @@
  */
 function ws_ls_awards_listen( $info, $weight_object ) {
 
-    if ( false === WS_LS_IS_PRO_PLUS ) {
+    if ( false === WS_LS_IS_PREMIUM ) {
         return;
     }
 
@@ -239,7 +239,7 @@ add_action( 'wlt-hook-data-entry-deleted', 'ws_ls_awards_listen_entry_deleted' )
  */
 function ws_ls_awards_log_award( $weight_object, $weight_award, $info ) {
 
-    if ( false === WS_LS_IS_PRO_PLUS ) {
+    if ( false === WS_LS_IS_PREMIUM ) {
 	    return;
     }
 
@@ -264,7 +264,7 @@ add_action( 'wlt-award-given', 'ws_ls_awards_log_award', 10, 3 );
  */
 function ws_ls_awards_add_notification_for_award( $weight_object, $weight_award, $info ) {
 
-	if ( false === WS_LS_IS_PRO_PLUS ) {
+	if ( false === WS_LS_IS_PREMIUM ) {
 		return;
 	}
 
@@ -290,7 +290,7 @@ add_action( 'wlt-award-given', 'ws_ls_awards_add_notification_for_award', 10, 3 
  */
 function ws_ls_awards_send_email( $weight_object, $award, $info ) {
 
-    if ( false === WS_LS_IS_PRO_PLUS ) {
+    if ( false === WS_LS_IS_PREMIUM ) {
 	    return;
     }
 
@@ -455,7 +455,7 @@ add_action( 'wp_ajax_awards_delete', 'ws_ls_award_ajax_delete' );
  */
 function ws_ls_awards_shortcode_gallery( $user_defined_arguments ) {
 
-	if( false === WS_LS_IS_PRO_PLUS ) {
+	if( false === WS_LS_IS_PREMIUM ) {
 		return '';
 	}
 
@@ -480,7 +480,7 @@ add_shortcode('wt-awards', 'ws_ls_awards_shortcode_gallery');
  */
 function ws_ls_awards_shortcode_grid( $user_defined_arguments ) {
 
-	if( false === WS_LS_IS_PRO_PLUS ) {
+	if( false === WS_LS_IS_PREMIUM ) {
 		return '';
 	}
 
@@ -525,7 +525,7 @@ add_shortcode('wt-awards-grid', 'ws_ls_awards_shortcode_grid');
  */
 function ws_ls_awards_shortcode_recent( $user_defined_arguments ) {
 
-	if( false === WS_LS_IS_PRO_PLUS ) {
+	if( false === WS_LS_IS_PREMIUM ) {
 		return '';
 	}
 

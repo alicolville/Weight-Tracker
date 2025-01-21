@@ -8,7 +8,7 @@
  * @return bool
  */
 function ws_ls_meta_fields_is_enabled() {
-	return WS_LS_IS_PRO;
+	return WS_LS_IS_PREMIUM;
 }
 
 /**
@@ -480,7 +480,7 @@ function ws_ls_meta_fields_form_prep_options( $field ) {
  */
 function ws_ls_meta_fields_form_field_radio_buttons( $field, $value ) {
 
-	if ( false === WS_LS_IS_PRO ) {
+	if ( false === WS_LS_IS_PREMIUM ) {
 		return '';
 	}
 
@@ -534,7 +534,7 @@ function ws_ls_meta_fields_form_field_radio_buttons( $field, $value ) {
  */
 function ws_ls_meta_fields_form_field_select( $field, $value ) {
 
-	if ( false === WS_LS_IS_PRO ) {
+	if ( false === WS_LS_IS_PREMIUM ) {
 		return '';
 	}
 
@@ -570,7 +570,7 @@ function ws_ls_meta_fields_form_field_select( $field, $value ) {
  */
 	function ws_ls_meta_fields_form_field_photo( $field, $value, $field_id = NULL ) {
 
-		if ( false === WS_LS_IS_PRO ) {
+		if ( false === WS_LS_IS_PREMIUM ) {
 			return '';
 		}
 

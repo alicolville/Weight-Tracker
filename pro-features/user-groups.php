@@ -12,7 +12,7 @@ define( 'WE_LS_MYSQL_GROUPS_USER', 'WS_LS_GROUPS_USER' );
  */
 function ws_ls_groups_enabled() {
 
-	return WS_LS_IS_PRO;
+	return WS_LS_IS_PREMIUM;
 
 	// return 'no' === get_option('ws-ls-enable-groups', true ) ? false : true;
 }
@@ -24,7 +24,7 @@ function ws_ls_groups_enabled() {
  */
 function ws_ls_groups_can_users_edit() {
 
-	if ( false === WS_LS_IS_PRO ) {
+	if ( false === WS_LS_IS_PREMIUM ) {
 		return false;
 	}
 
@@ -302,7 +302,7 @@ function ws_ls_groups_count( $id ) {
  */
 function ws_ls_groups_add( $name ) {
 
-	if ( false === WS_LS_IS_PRO ) {
+	if ( false === WS_LS_IS_PREMIUM ) {
 		return false;
 	}
 
@@ -336,7 +336,7 @@ function ws_ls_groups_add( $name ) {
 */
 function ws_ls_groups_update_name( $id, $name ) {
 
-if ( false === WS_LS_IS_PRO ) {
+if ( false === WS_LS_IS_PREMIUM ) {
 	return false;
 }
 
@@ -685,7 +685,7 @@ function ws_ls_ajax_groups_get(){
 
 	$rows = [];
 
-	if ( true === WS_LS_IS_PRO ) {
+	if ( true === WS_LS_IS_PREMIUM ) {
 
 		$rows = ws_ls_groups( false );
 
@@ -759,7 +759,7 @@ function ws_ls_ajax_groups_users_get(){
 	$rows               = [];
 	$total_difference   = 0;
 
-	if ( true === WS_LS_IS_PRO ) {
+	if ( true === WS_LS_IS_PREMIUM ) {
 
 		$todays_entries_only    = ( true === ws_ls_to_bool( $todays_entries_only ) ) ? date('Y-m-d' ) : NULL;
 		$rows                   = ws_ls_groups_users_for_given_group( $group_id, $todays_entries_only );

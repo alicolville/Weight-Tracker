@@ -15,7 +15,7 @@ function ws_ls_meta_fields_page_group() {
 
 					<div class="meta-box-sortables ui-sortable">
 						<?php
-						if ( false === WS_LS_IS_PRO ) {
+						if ( false === WS_LS_IS_PREMIUM ) {
 							ws_ls_display_pro_upgrade_notice();
 						}
 						?>
@@ -39,7 +39,7 @@ function ws_ls_meta_fields_page_group() {
 								?>
 								<form method="post">
 									<input type="text" name="group" size="30" maxlength="40" />
-									<input type="submit" value="Add" class="button" <?php if ( false === WS_LS_IS_PRO ) { echo ' disabled'; } ?> />
+									<input type="submit" value="Add" class="button" <?php if ( false === WS_LS_IS_PREMIUM ) { echo ' disabled'; } ?> />
 								</form>
 
 								<h4><?php echo esc_html__( 'Existing custom field groups', WE_LS_SLUG ); ?></h4>

@@ -1,6 +1,6 @@
 ## [wt-calculator]
 
-> The following shortcode is only available in the [Pro Plus]({{ site.baseurl }}/upgrade.html) version of the plugin.
+> The following shortcode is only available in the [Premium]({{ site.baseurl }}/upgrade.html) version of the plugin.
 
 This shortcode displays a form that allows your users to calculate their BMI, BMR, suggested calorie intake and Macronurtrient suggestions. The calculated figures are derived from a combination of the WT settings and the data entered by the user on the rendered form.
 

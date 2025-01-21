@@ -26,7 +26,7 @@ function ws_ls_admin_page_group_view() {
 
                     <div class="meta-box-sortables ui-sortable">
                         <?php
-                            if ( true !== WS_LS_IS_PRO ) {
+                            if ( true !== WS_LS_IS_PREMIUM ) {
                                 ws_ls_display_pro_upgrade_notice();
                             }
 
@@ -46,7 +46,7 @@ function ws_ls_admin_page_group_view() {
 									<form method="post">
 										<input type="text" name="new_group_name" size="30" maxlength="40" value="<?php echo  esc_html( $group['name'] )?>" />
 										<input type="hidden" name="id" value="<?php echo $group_id; ?>" />
-										<input type="submit" value="<?php echo esc_html__('Edit', WE_LS_SLUG); ?>" class="button" <?php if ( false === WS_LS_IS_PRO ) { echo ' disabled'; } ?> />
+										<input type="submit" value="<?php echo esc_html__('Edit', WE_LS_SLUG); ?>" class="button" <?php if ( false === WS_LS_IS_PREMIUM ) { echo ' disabled'; } ?> />
 									</form>
 									<br />
 									<?php

@@ -69,7 +69,7 @@ add_shortcode('wt-photo-oldest', 'ws_ls_photos_shortcode_oldest');
 
 function ws_ls_photos_shortcode_core($user_defined_arguments) {
 
-    if( false === WS_LS_IS_PRO ) {
+    if( false === WS_LS_IS_PREMIUM ) {
         return '';
     }
 

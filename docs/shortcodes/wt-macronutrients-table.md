@@ -1,6 +1,6 @@
 ## [wt-macronutrients-table]
 
-> The following shortcode is only available in the [Pro Plus]({{ site.baseurl }}/upgrade.html) version of the plugin.
+> The following shortcode is only available in the [Premium]({{ site.baseurl }}/upgrade.html) version of the plugin.
 
 [wt-macronutrients-table] displays recommendations on the best way to split your calorie intake (for maintaining and losing weight) into macronutrients i.e. Fats, Carbohydrates and Proteins. For more information on macronutrient calculations please read our [calculations guide]({{ site.baseurl }}/calculations.html).
 

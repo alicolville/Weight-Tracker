@@ -14,7 +14,7 @@
 
 		$photo_fields = ws_ls_meta_fields_photos_all( $hide_from_shortcodes );
 
-		return true === WS_LS_IS_PRO && ! empty( $photo_fields );
+		return true === WS_LS_IS_PREMIUM && ! empty( $photo_fields );
 	}
 
 /**

@@ -12,7 +12,7 @@ defined('ABSPATH') or die("Jog on");
  */
 function ws_ls_shortcode_if( $user_defined_arguments, $content, $shortcode, $level = 0 ) {
 
-	if ( false === WS_LS_IS_PRO ) {
+	if ( false === WS_LS_IS_PREMIUM ) {
 		return ws_ls_display_pro_upgrade_notice_for_shortcode();
 	}
 
@@ -40,7 +40,7 @@ function ws_ls_shortcode_if( $user_defined_arguments, $content, $shortcode, $lev
     }
 
     // Remove Pro Plus fields if they don't have a license
-    if( false === WS_LS_IS_PRO_PLUS && true === ( $arguments['field'] == 'bmr' ) ) {
+    if( false === WS_LS_IS_PREMIUM && true === ( $arguments['field'] == 'bmr' ) ) {
         return sprintf( '<p>%s</p>', esc_html__( 'Unfortunately the field you specified is for Pro Plus licenses only.', WE_LS_SLUG ) );
     }
 
@@ -256,7 +256,7 @@ function ws_ls_shortcode_if_value_exist( $user_id, $fields ) {
                     break;
 	            case 'photo':
 
-                    if (false !== WS_LS_IS_PRO ) {
+                    if (false !== WS_LS_IS_PREMIUM ) {
                         $value = ws_ls_photos_db_get_recent_or_latest( $user_id );
                     }
 
@@ -275,7 +275,7 @@ function ws_ls_shortcode_if_value_exist( $user_id, $fields ) {
                     break;
                 case 'bmr':
 
-                    if ( true === WS_LS_IS_PRO_PLUS ) {
+                    if ( true === WS_LS_IS_PREMIUM ) {
                         $value = ws_ls_calculate_bmr( $user_id );
                         $value = ( false === is_numeric( $value ) ) ? '' : $value;
                     } else {

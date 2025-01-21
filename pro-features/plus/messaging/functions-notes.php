@@ -7,7 +7,7 @@ defined('ABSPATH') or die("Jog on!");
  * @return bool
  */
 function ws_ls_note_is_enabled() {
-	return WS_LS_IS_PRO;
+	return WS_LS_IS_PREMIUM;
 }
 
 /**

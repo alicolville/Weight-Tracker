@@ -1,6 +1,6 @@
 ## [wt-macronutrients]
 
-> The following shortcode is only available in the [Pro Plus]({{ site.baseurl }}/upgrade.html) version of the plugin.
+> The following shortcode is only available in the [Premium]({{ site.baseurl }}/upgrade.html) version of the plugin.
 
 [wt-macronutrients] displays a specific macronutrient figure from the macronutrient intake calculations. For more information on macronutrient calculations please visit our [calculations guide]({{ site.baseurl }}/calculations.html).
 

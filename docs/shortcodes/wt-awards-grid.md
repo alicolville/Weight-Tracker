@@ -1,6 +1,6 @@
 ## [wt-awards-grid]
 
-> The following shortcode is only available in the [Pro Plus]({{ site.baseurl }}/upgrade.html) version of the plugin.
+> The following shortcode is only available in the [Premium]({{ site.baseurl }}/upgrade.html) version of the plugin.
 
 Render all [awards]({{ site.baseurl }}/awards.html) (that have a badge) in a grid format for the given user. Read more about [awards]({{ site.baseurl }}/awards.html).
 

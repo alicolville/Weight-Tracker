@@ -1,6 +1,6 @@
 ## [wt-custom-fields-chart]
 
-> The following shortcode is only available in the [Pro]({{ site.baseurl }}/upgrade.html) version of the plugin.
+> The following shortcode is only available in the [Premium]({{ site.baseurl }}/upgrade.html) version of the plugin.
 
 This shortcode renders a chart of the user’s [custom field]({{ site.baseurl }}/custom-fields.html) entries.
 

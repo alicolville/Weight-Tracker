@@ -24,7 +24,7 @@ function ws_ls_admin_page_data_summary() {
 			<div id="post-body-content">
 				<div class="meta-box-sortables ui-sortable" id="ws-ls-user-summary-one">
                     <?php
-                        if ( true !== WS_LS_IS_PRO ) {
+                        if ( true !== WS_LS_IS_PREMIUM ) {
                             ws_ls_display_pro_upgrade_notice();
                         }
 
@@ -206,7 +206,7 @@ function ws_ls_postbox_league_table() {
 			$ignore_cache = false;
 
 			// Run stats if plugin version number has changed!
-			if( true === WS_LS_IS_PRO && update_option('ws-ls-version-number-stats', WE_LS_CURRENT_VERSION) || (false === empty($_GET['regenerate-stats']) && 'y' == $_GET['regenerate-stats'])) {
+			if( true === WS_LS_IS_PREMIUM && update_option('ws-ls-version-number-stats', WE_LS_CURRENT_VERSION) || (false === empty($_GET['regenerate-stats']) && 'y' == $_GET['regenerate-stats'])) {
 				ws_ls_db_stats_clear_last_updated_date();
 				ws_ls_stats_run_cron();
 				ws_ls_tidy_cache_on_delete();
@@ -215,7 +215,7 @@ function ws_ls_postbox_league_table() {
 
 			echo ws_ls_shortcode_stats_league_total(['ignore_cache' => $ignore_cache, 'order' => (false === $show_gain) ? 'asc' : 'desc']);
 
-			if( true === WS_LS_IS_PRO ) {
+			if( true === WS_LS_IS_PREMIUM ) {
 				?>
 				<p>
 					<small><?php echo esc_html__( 'Please note: For performance reasons, this table only will update every hour. Click the following button to manually update.', WE_LS_SLUG ); ?></small>

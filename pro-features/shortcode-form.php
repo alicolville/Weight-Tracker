@@ -12,7 +12,7 @@ global $form_number;
  */
 function ws_ls_shortcode_form( $user_defined_arguments ) {
 
-    if( false === WS_LS_IS_PRO ) {
+    if( false === WS_LS_IS_PREMIUM ) {
        return false;
     }
 
@@ -67,7 +67,7 @@ add_shortcode( 'wt-form', 'ws_ls_shortcode_form' );
  */
 function ws_ls_shortcode_target_form( $user_defined_arguments ) {
 
-	if( false === WS_LS_IS_PRO ) {
+	if( false === WS_LS_IS_PREMIUM ) {
 		return false;
 	}
 

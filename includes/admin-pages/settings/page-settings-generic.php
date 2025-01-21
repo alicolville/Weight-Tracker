@@ -8,8 +8,8 @@ function ws_ls_settings_page_generic() {
 		wp_die( esc_html__( 'You do not have sufficient permissions to access this page.' , WE_LS_SLUG) );
 	}
 
-	$disable_if_not_pro_class = (WS_LS_IS_PRO) ? '' : 'ws-ls-disabled';
-    $disable_if_not_pro_plus_class = (WS_LS_IS_PRO_PLUS) ? '' : 'ws-ls-disabled-pro-plus';
+	$disable_if_not_pro_class = (WS_LS_IS_PREMIUM) ? '' : 'ws-ls-disabled';
+    $disable_if_not_pro_plus_class = (WS_LS_IS_PREMIUM) ? '' : 'ws-ls-disabled-pro-plus';
 
   	$clear_cache = isset( $_GET[ 'settings-updated' ] ) && 'true' == $_GET[ 'settings-updated' ];
 
@@ -82,7 +82,7 @@ function ws_ls_settings_page_generic() {
 									<div>
 										<div>
                                                 <?php
-                                                    if ( false === WS_LS_IS_PRO ) {
+                                                    if ( false === WS_LS_IS_PREMIUM ) {
                                                         ws_ls_display_pro_upgrade_notice();
                                                     }
                                                 ?>
@@ -340,7 +340,7 @@ function ws_ls_settings_page_generic() {
 										</div>
 										<div>
                                             <?php
-                                                if ( false === WS_LS_IS_PRO_PLUS ) {
+                                                if ( false === WS_LS_IS_PREMIUM ) {
                                                     ws_ls_display_pro_upgrade_notice();
                                                 }
                                             ?>
@@ -663,7 +663,7 @@ function ws_ls_settings_page_generic() {
                                         </div>
 										<div>
                                             <?php
-                                            if ( false === WS_LS_IS_PRO ) {
+                                            if ( false === WS_LS_IS_PREMIUM ) {
                                                 ws_ls_display_pro_upgrade_notice();
                                             }
                                             ?>
@@ -863,7 +863,7 @@ function ws_ls_settings_page_generic() {
 										</div>
 											<div>
                                                 <?php
-                                                if ( false === WS_LS_IS_PRO ) {
+                                                if ( false === WS_LS_IS_PREMIUM ) {
                                                     ws_ls_display_pro_upgrade_notice();
                                                 }
                                                 ?>
@@ -980,7 +980,7 @@ function ws_ls_settings_page_generic() {
 											</div>
                                         <div>
                                             <?php
-                                            if ( false === WS_LS_IS_PRO ) {
+                                            if ( false === WS_LS_IS_PREMIUM ) {
                                                 ws_ls_display_pro_upgrade_notice();
                                             }
                                             ?>
@@ -1148,7 +1148,7 @@ function ws_ls_register_settings(){
 	register_setting( 'we-ls-options-group', 'ws-ls-default-aim' );
 
     // Pro only open
-    if( WS_LS_IS_PRO ){
+    if( WS_LS_IS_PREMIUM ){
 
         register_setting( 'we-ls-options-group', 'ws-ls-allow-user-preferences' );
 		register_setting( 'we-ls-options-group', 'ws-ls-about-you-mandatory' );
@@ -1202,7 +1202,7 @@ function ws_ls_register_settings(){
     }
 
     // Pro Plus
-    if ( WS_LS_IS_PRO_PLUS ) {
+    if ( WS_LS_IS_PREMIUM ) {
 
         register_setting( 'we-ls-options-group', 'ws-ls-female-cal-cap' );
 		register_setting( 'we-ls-options-group', 'ws-ls-female-min-cal-cap' );

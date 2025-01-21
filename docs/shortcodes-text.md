@@ -1,6 +1,6 @@
 ## Shortcodes
 
-**[wt-difference-since-start]** ( [Pro]({{ site.baseurl }}/upgrade.html) )
+**[wt-difference-since-start]** ( [Premium]({{ site.baseurl }}/upgrade.html) )
 
 The total weight lost by the logged in member.
 
@@ -8,23 +8,23 @@ The total weight lost by the logged in member.
 
 Display the weight for first weight entry (for the current logged in user).
 
-**[wt-start-date]** (  [Pro]({{ site.baseurl }}/upgrade.html)  )
+**[wt-start-date]** (  [Premium]({{ site.baseurl }}/upgrade.html)  )
 
 Display the date of first weight entry (for the current logged in user).
 
-**[wt-previous-weight]** (  [Pro]({{ site.baseurl }}/upgrade.html) )
+**[wt-previous-weight]** (  [Premium]({{ site.baseurl }}/upgrade.html) )
 
 Display the weight for previous weight entry (for the current logged in user).
 
-**[wt-previous-date]** (  [Pro]({{ site.baseurl }}/upgrade.html)  )
+**[wt-previous-date]** (  [Premium]({{ site.baseurl }}/upgrade.html)  )
 
 Display the date of previous weight entry (for the current logged in user).
 
-**[wt-difference-from-previous]** (  [Pro]({{ site.baseurl }}/upgrade.html) )
+**[wt-difference-from-previous]** (  [Premium]({{ site.baseurl }}/upgrade.html) )
 
 Display the difference between the user's current weight and the previous entry.
 
-**[wt-days-between-start-and-latest]** (  [Pro]({{ site.baseurl }}/upgrade.html)  )
+**[wt-days-between-start-and-latest]** (  [Premium]({{ site.baseurl }}/upgrade.html)  )
 
 Display the number of days between the user's current weight and the previous entry. The shortcode has two arguments “include-days” (default false) to include the word “days” after the number and “include-brackets” to wrap the data within brackets.
 
@@ -36,7 +36,7 @@ e.g
 
 Display the latest weight for the logged in user.
 
-**[wt-latest-date]** (  [Pro]({{ site.baseurl }}/upgrade.html)  )
+**[wt-latest-date]** (  [Premium]({{ site.baseurl }}/upgrade.html)  )
 
 Display the weight for latest weight entry (for the current logged in user).
 
@@ -44,7 +44,7 @@ Display the weight for latest weight entry (for the current logged in user).
 
 Display the logged in user's current target weight.
 
-**[wt-difference-from-target]** (  [Pro]({{ site.baseurl }}/upgrade.html) )
+**[wt-difference-from-target]** (  [Premium]({{ site.baseurl }}/upgrade.html) )
 
 Display the difference between the current user's most recent weight entry and their target weight.
 

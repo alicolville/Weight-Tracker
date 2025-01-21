@@ -11,7 +11,7 @@ defined('ABSPATH') or die("Jog on!");
  */
 function ws_ls_shortcode_reminder($user_defined_arguments, $content = null) {
 
-	if ( false === WS_LS_IS_PRO ) {
+	if ( false === WS_LS_IS_PREMIUM ) {
 		return ws_ls_display_pro_upgrade_notice_for_shortcode();
 	}
 

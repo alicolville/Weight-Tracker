@@ -1,6 +1,6 @@
 ## [wt-awards-recent]
 
-> The following shortcode is only available in the [Pro Plus]({{ site.baseurl }}/upgrade.html) version of the plugin.
+> The following shortcode is only available in the [Premium]({{ site.baseurl }}/upgrade.html) version of the plugin.
 
 Render the most recent [award]({{ site.baseurl }}/awards.html) for the given user. Read more about [awards]({{ site.baseurl }}/awards.html). Awards are sorted by category and then value. 
 

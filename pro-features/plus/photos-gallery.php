@@ -27,7 +27,7 @@ function ws_ls_photos_gallery_js_css($mode = 'default') {
  */
 function ws_ls_photos_shortcode_gallery($user_defined_arguments) {
 
-	if( false === WS_LS_IS_PRO ) {
+	if( false === WS_LS_IS_PREMIUM ) {
 		return '';
 	}
 
@@ -56,7 +56,7 @@ function ws_ls_photos_shortcode_gallery($user_defined_arguments) {
 	$arguments['direction']                             = ( false === in_array($arguments['direction'], ['asc', 'desc'])) ? 'desc' : $arguments['direction'];
 
 	// Only allow this to render awards if in pro mode
-	if ( 'awards' === $arguments['source'] && false === WS_LS_IS_PRO_PLUS ) {
+	if ( 'awards' === $arguments['source'] && false === WS_LS_IS_PREMIUM ) {
 		$arguments['source'] = 'photos';
 	}
 

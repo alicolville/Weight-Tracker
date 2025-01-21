@@ -140,7 +140,7 @@ function ws_ls_meta_fields_ajax_custom_field_groups_get(){
 
 	$rows = [];
 
-	if ( true === WS_LS_IS_PRO ) {
+	if ( true === WS_LS_IS_PREMIUM ) {
 
 		$rows = ws_ls_meta_fields_groups( false );
 

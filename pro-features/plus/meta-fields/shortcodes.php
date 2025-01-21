@@ -168,7 +168,7 @@ function ws_ls_meta_fields_shortcode_js() {
  */
 function ws_ls_meta_fields_shortcode_form( $user_defined_arguments ) {
 
-	if( false === WS_LS_IS_PRO ) {
+	if( false === WS_LS_IS_PREMIUM ) {
 		return false;
 	}
 

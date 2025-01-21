@@ -73,7 +73,7 @@ add_action( 'wp_ajax_ws_ls_delete_note', 'ws_ls_note_ajax_delete' );
  */
 function ws_ls_note_shortcode( $user_defined_arguments ) {
 
-	if ( false === WS_LS_IS_PRO ) {
+	if ( false === WS_LS_IS_PREMIUM ) {
 		return ws_ls_display_pro_upgrade_notice_for_shortcode();
 	}
 
@@ -129,7 +129,7 @@ add_shortcode( 'wt-notes', 'ws_ls_note_shortcode' );
  */
 function ws_ls_notifications_shortcode( $user_defined_arguments, $disable_pro_check = false ) {
 
-	if ( false === WS_LS_IS_PRO_PLUS && false === $disable_pro_check ) {
+	if ( false === WS_LS_IS_PREMIUM && false === $disable_pro_check ) {
 		return ws_ls_display_pro_upgrade_notice_for_shortcode();
 	}
 

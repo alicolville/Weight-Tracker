@@ -1,6 +1,6 @@
 ## [wt-if]
 
-> The following shortcode is only available in the [Pro]({{ site.baseurl }}/upgrade.html) version of the plugin.
+> The following shortcode is only available in the [Premium]({{ site.baseurl }}/upgrade.html) version of the plugin.
 
 In some cases, you may only wish to display content if the user has completed certain WT fields. Let's say for example, you have a page where you wish to display a chart and some text introductory text, there is no point displaying the chart if the user has not entered their weight. The shortcode [wt-if] allows you some basic logic to specify “if exists” or “if not exists” type logic. So using the example above, you could have something like:
 

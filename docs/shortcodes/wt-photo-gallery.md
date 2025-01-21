@@ -1,6 +1,6 @@
 ## [wt-photo-gallery]
 
-> The following shortcode is only available in the [Pro Plus]({{ site.baseurl }}/upgrade.html) version of the plugin.
+> The following shortcode is only available in the [Premium]({{ site.baseurl }}/upgrade.html) version of the plugin.
 
 Render a gallery of the user's uploaded photos ([custom fields]({{ site.baseurl }}/custom-fields.html)). The shortcode supports two different types of gallery:
 

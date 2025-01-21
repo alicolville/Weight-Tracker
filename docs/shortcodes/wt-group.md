@@ -1,6 +1,6 @@
 ## [wt-group]
 
-> The following shortcode is only available in the [Pro]({{ site.baseurl }}/upgrade.html) version of the plugin.
+> The following shortcode is only available in the [Premium]({{ site.baseurl }}/upgrade.html) version of the plugin.
 
 Render the user's current [group]({{ site.baseurl }}/groups.html).
 
