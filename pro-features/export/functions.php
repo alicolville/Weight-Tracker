@@ -203,6 +203,7 @@ function ws_ls_export_column_names( $export_criteria ) {
 	$names = [
 		'user_id'                       => 'User ID',
 		'user_nicename'                 => 'Nicename',
+		'user_email'                 	=> 'Email Address',
 		'date-display'                  => 'Date',
 		'weight'                        => ws_ls_settings_weight_unit_readable(),
 		'difference_from_start_display' => esc_html__( 'Difference from start', WE_LS_SLUG ),
@@ -242,6 +243,7 @@ function ws_ls_export_column_names( $export_criteria ) {
 function ws_ls_export_update_export_row( $export_criteria, $data ) {
 
 	$data[ 'user_nicename' ]	= ws_ls_user_display_name( $data[ 'user_id' ] );
+	$data[ 'user_email' ]		= ws_ls_user_email_address( $data[ 'user_id' ] );
 	$data[ 'date-display' ]		= ( '0000-00-00 00:00:00' !== $data[ 'weight_date' ] ) ? ws_ls_convert_ISO_date_into_locale( $data[ 'weight_date' ], 'display-date' ) : '00/00/0000';
 	$has_weight					= ! empty( $data['kg'] );
 	$data[ 'weight' ]			= $has_weight ? ws_ls_weight_display( $data['kg'], $data[ 'user_id' ], 'display', true ) : '';

@@ -3,7 +3,7 @@ Contributors: aliakro
 Tags: weight,tracker,chart,history,macronutrient
 Requires at least: 6.0
 Tested up to: 6.5
-Stable tag: 10.19
+Stable tag: 10.20
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -162,6 +162,10 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 10.17: New feature: Expanded [wt-if] shortcodes to include comparison modes.
 
 == Changelog ==
+
+= 10.20 =
+
+* Improvement: Added "Email Address" to CSV exports.
 
 = 10.19 =
 
