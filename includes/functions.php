@@ -1452,6 +1452,29 @@ function ws_ls_user_display_name( $user_id ) {
 }
 
 /**
+ * Fetch a user's email address
+ * @param $user_id
+ * @return string
+ */
+function ws_ls_user_email_address( $user_id ) {
+
+    if ( true === empty( $user_id ) ) {
+        return '';
+    }
+
+	if ( $cache = ws_ls_cache_user_get( $user_id, 'email-address' ) ) {
+		return $cache;
+	}
+	
+	$user 			= get_user_by( 'id', $user_id );
+	$email_address 	= ( false === empty( $user ) ) ? $user->user_email : '';
+
+	ws_ls_cache_user_set( $user_id, 'email-address', $email_address );
+
+	return $email_address;
+}
+
+/**
  * Challenges enabled?
  * @return bool
  */
