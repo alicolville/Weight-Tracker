@@ -163,6 +163,8 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 
 == Changelog ==
 
+! Remember to update Release.json
+
 = 10.20.1 =
 
 * Updated WP version after compatibility tests.
