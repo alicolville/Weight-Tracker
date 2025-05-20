@@ -39,13 +39,6 @@ function ws_ls_is_site_hash_banned() {
 }
 
 /**
-* Returns true if the user has a proper Pro plus license
-**/
-function ws_ls_has_a_valid_pro_plus_license() {
-	return ('pro-plus' == ws_ls_has_a_valid_license());
-}
-
-/**
  * Return the number of days until the license expires
  *
  * @return int|null

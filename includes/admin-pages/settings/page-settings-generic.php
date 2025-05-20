@@ -1201,7 +1201,7 @@ function ws_ls_register_settings(){
 	    register_setting( 'we-ls-options-group', 'ws-ls-photos-max-size' );
     }
 
-    // Pro Plus
+    // Premium
     if ( WS_LS_IS_PREMIUM ) {
 
         register_setting( 'we-ls-options-group', 'ws-ls-female-cal-cap' );

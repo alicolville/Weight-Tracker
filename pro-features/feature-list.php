@@ -11,7 +11,7 @@ function ws_ls_feature_list_premium() {
 }
 
 /**
- * Return an array of Pro Plus features. (Legacy license type)
+ * Return an array of Premium features. (Legacy license type)
  * @return array
  */
 function ws_ls_feature_list_pro_plus() {

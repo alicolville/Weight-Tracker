@@ -1241,11 +1241,11 @@ function ws_ls_display_pro_upgrade_notice( $prompt_level = '' ) {
 
 	// Is there a certain Pro level we're prompting for?
 	if ( 'pro-plus' === $prompt_level ) {
-		$title 		= esc_html__( 'Upgrade to Pro Plus and get more features!', WE_LS_SLUG );
-		$message 	= esc_html__( 'Upgrade to Pro Plus version of this plugin to get additional features like Challenges, Harris Benedict, BMR, Macronutrients and much more!', WE_LS_SLUG );
+		$title 		= esc_html__( 'Upgrade to Premium and get more features!', WE_LS_SLUG );
+		$message 	= esc_html__( 'Upgrade to Premium version of this plugin to get additional features like Challenges, Harris Benedict, BMR, Macronutrients and much more!', WE_LS_SLUG );
 	} else {
 		$title 		= esc_html__( 'Upgrade Weight Tracker and get more features!', WE_LS_SLUG );
-		$message 	= esc_html__( 'Upgrade to the latest Pro or Pro Plus version of this plugin to manipulate your user\'s data, add custom fields, BMR, Macronutrients and much more!', WE_LS_SLUG );
+		$message 	= esc_html__( 'Upgrade to the latest Premium version of this plugin to manipulate your user\'s data, add custom fields, BMR, Macronutrients and much more!', WE_LS_SLUG );
 	}
 
 	?>
