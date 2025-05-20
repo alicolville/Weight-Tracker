@@ -124,7 +124,7 @@ function ws_ls_postbox_chart( $user_id ) {
 
 					echo sprintf('<p><a href="%s">%s</a> %s.</p>',
 						ws_ls_upgrade_link(),
-						esc_html__( 'Upgrade to Pro', WE_LS_SLUG ),
+						esc_html__( 'Upgrade to Premium', WE_LS_SLUG ),
 						esc_html__( 'to view the a chart of the user\'s weight entries.' , WE_LS_SLUG )
 					);
 
@@ -182,7 +182,7 @@ function ws_ls_postbox_photos( $user_id ) {
 
 				echo sprintf('<p><a href="%s">%s</a> %s.</p>',
 					ws_ls_upgrade_link(),
-					esc_html__( 'Upgrade to Pro', WE_LS_SLUG ),
+					esc_html__( 'Upgrade to Premium', WE_LS_SLUG ),
 					esc_html__( 'to allow a user to upload photos of their progress. Before a user can upload photos, you must add one or more custom fields' , WE_LS_SLUG )
 				);
 			}
@@ -203,14 +203,14 @@ function ws_ls_postbox_macros( $user_id ) {
 		  <div class="inside">
 		<?php
 
-			if( true === ws_ls_has_a_valid_pro_plus_license() ) {
+			if( true === WS_LS_IS_PREMIUM ) {
 
 			 	echo ws_ls_macro_render_table( $user_id, false, 'ws-ls-footable' );
 
 			} else {
 				  printf('<p><a href="%s">%s</a> <strong>- %s</strong> - %s. %s.</p>',
 					  ws_ls_upgrade_link(),
-					  esc_html__( 'Upgrade to Pro Plus', WE_LS_SLUG ),
+					  esc_html__( 'Upgrade to Premium', WE_LS_SLUG ),
 					  esc_html__( 'Macronutrient Calculator', WE_LS_SLUG ),
 					  esc_html__( 'view the user\'s suggested Macronutrient intake based on their recommended calorie intake' , WE_LS_SLUG ),
 					  ws_ls_calculations_link()
@@ -232,14 +232,14 @@ function ws_ls_postbox_daily_calories( $user_id ) {
 		  <div class="inside">
 		<?php
 
-			if( true === ws_ls_has_a_valid_pro_plus_license() ) {
+			if( true === WS_LS_IS_PREMIUM ) {
 
 			 	echo ws_ls_harris_benedict_render_table( $user_id, false, 'ws-ls-footable' );
 
 			} else {
 				  printf('<p><a href="%s">%s</a> <strong>- %s</strong> - %s. %s.</p>',
 					  ws_ls_upgrade_link(),
-					  esc_html__( 'Upgrade to Pro Plus', WE_LS_SLUG ),
+					  esc_html__( 'Upgrade to Premium', WE_LS_SLUG ),
 					  esc_html__( 'Daily calorie needs', WE_LS_SLUG ),
 					  esc_html__( 'view the user\'s daily calorie intake required to either maintain or lose weight (Harris Benedict formula)' , WE_LS_SLUG ),
 					  ws_ls_calculations_link()
@@ -261,7 +261,7 @@ function ws_ls_postbox_awards( $user_id ) {
 		  <div class="inside">
 		<?php
 
-			if( true === ws_ls_has_a_valid_pro_plus_license() ) {
+			if( true === WS_LS_IS_PREMIUM ) {
 
 			 	$awards = ws_ls_awards_previous_awards( $user_id );
 
@@ -286,7 +286,7 @@ function ws_ls_postbox_awards( $user_id ) {
 			} else {
 				  printf('<p><a href="%s">%s</a> <strong>- %s</strong> - %s. <a href="%s">%s</a>.</p>',
 					  ws_ls_upgrade_link(),
-					  esc_html__( 'Upgrade to Pro Plus', WE_LS_SLUG ),
+					  esc_html__( 'Upgrade to Premium', WE_LS_SLUG ),
 					  esc_html__( 'Awards', WE_LS_SLUG ),
 					  esc_html__( 'view and issue awards based upon users meeting your certain goals' , WE_LS_SLUG ),
 					  ws_ls_awards_base_url(),

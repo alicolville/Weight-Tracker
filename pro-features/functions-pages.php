@@ -219,7 +219,7 @@ function ws_ls_postbox_sidebar_recent_photo( $user_id ) {
 			<center>
 				<?php
 
-				if( true === ws_ls_has_a_valid_pro_plus_license() ) {
+				if( true === WS_LS_IS_PREMIUM ) {
 					echo ws_ls_photos_shortcode_recent( [ 'user-id' => $user_id, 'width' => 200, 'height' => 200, 'hide-date' => true ] );
 
 					$photo_count = ws_ls_photos_db_count_photos( $user_id );
@@ -231,7 +231,7 @@ function ws_ls_postbox_sidebar_recent_photo( $user_id ) {
 						esc_html__( 'View all', WE_LS_SLUG )
 					);
 				} else {
-					echo sprintf('<a href="%s">%s</a>', ws_ls_upgrade_link(), esc_html__( 'Upgrade to Pro Plus', WE_LS_SLUG ) );
+					echo sprintf('<a href="%s">%s</a>', ws_ls_upgrade_link(), esc_html__( 'Upgrade to Premium', WE_LS_SLUG ) );
 				}
 				?>
 			</center>
@@ -339,7 +339,7 @@ function ws_ls_postbox_sidebar_user_information( $user_id ) {
 					<th><?php echo esc_html__('BMR', WE_LS_SLUG); ?></th>
 					<td>
 						<?php
-						if(ws_ls_has_a_valid_pro_plus_license()) {
+						if(WS_LS_IS_PREMIUM) {
 							$bmr = ws_ls_calculate_bmr($user_id, false);
 							echo (false === empty($bmr)) ? esc_html($bmr) : esc_html__('Missing data', WE_LS_SLUG);
 						} else {

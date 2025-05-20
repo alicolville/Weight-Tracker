@@ -39,9 +39,9 @@ function ws_ls_shortcode_if( $user_defined_arguments, $content, $shortcode, $lev
         $content = ws_ls_shortcode_if_remove_p_br($content);
     }
 
-    // Remove Pro Plus fields if they don't have a license
+    // Remove Premium fields if they don't have a license
     if( false === WS_LS_IS_PREMIUM && true === ( $arguments['field'] == 'bmr' ) ) {
-        return sprintf( '<p>%s</p>', esc_html__( 'Unfortunately the field you specified is for Pro Plus licenses only.', WE_LS_SLUG ) );
+        return sprintf( '<p>%s</p>', esc_html__( 'Unfortunately the field you specified is for Premium licenses only.', WE_LS_SLUG ) );
     }
 
     $else_content   = '';

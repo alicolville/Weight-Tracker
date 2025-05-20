@@ -60,7 +60,7 @@ function ws_ls_admin_page_photos() {
 
                                         echo sprintf('<p><a href="%s">%s</a> %s.</p>',
                                             ws_ls_upgrade_link(),
-                                            esc_html__('Upgrade to Pro', WE_LS_SLUG),
+                                            esc_html__('Upgrade to Premium', WE_LS_SLUG),
                                             esc_html__('to allow a user to upload photos of their progress' , WE_LS_SLUG)
                                         );
                                     }

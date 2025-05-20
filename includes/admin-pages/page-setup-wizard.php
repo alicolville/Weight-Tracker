@@ -145,7 +145,7 @@ function ws_ls_setup_wizard_page() {
                                             <a href="https://docs.yeken.uk/custom-fields.html" target="_blank" rel="noopener" class="button"><i class="fa fa-link"></i> Read more</a>
 
                                             <h4>Awards</h4>
-                                            <p>As of version 7.0, Pro Plus sites have the ability to give users awards for reaching defined goals. Currently you can set awards for change in Weight, change in Weight %, change in BMI and a BMI being met.</p>
+                                            <p>As of version 7.0, Premium sites have the ability to give users awards for reaching defined goals. Currently you can set awards for change in Weight, change in Weight %, change in BMI and a BMI being met.</p>
                                             <a href="https://docs.yeken.uk/awards.html" target="_blank" rel="noopener" class="button"><i class="fa fa-link"></i> Read more</a>
 
                                             <h4>Gravity Forms</h4>

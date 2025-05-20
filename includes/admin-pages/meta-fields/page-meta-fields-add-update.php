@@ -20,7 +20,7 @@
                 }
             }
 
-            // If the user has selected a Photo Field, but isn't pro plus, then redirect!
+            // If the user has selected a Photo Field, but isn't Premium, then redirect!
             if ( false === WS_LS_IS_PREMIUM && 3 === (int) $meta_field['field_type'] ) {
                 $validation_fail = true;
             }
