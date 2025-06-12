@@ -458,13 +458,14 @@ function ws_ls_component_target_weight( $args = [] ) {
                                     %1$s
                                 </span>
                                 %2$s
-                                <br /><span class="ykuk-info-box-meta %4$s"><a href="#" class="ws-ls-tab-change" data-tab="settings">Adjust</a></span>
+                                <br /><span class="ykuk-info-box-meta %4$s"><a href="#" class="ws-ls-tab-change" data-tab="settings">%5$s</a></span>
                         </div>
                     </div>',
 		$text_data,
 		$text_date,
 		esc_html__( 'Target Weight', WE_LS_SLUG ),
-		! ws_ls_targets_enabled() ? 'ws-ls-hide' : ''
+		! ws_ls_targets_enabled() ? 'ws-ls-hide' : '',
+		esc_html__( 'Adjust', WE_LS_SLUG )
 	);
 }
 
@@ -493,11 +494,12 @@ function ws_ls_component_user_setting( $args = [] ) {
                                 <span class="ykuk-text-bold">
                                     %1$s
                                 </span>
-                                <br /><span class="ykuk-info-box-meta"><a href="#" class="ws-ls-tab-change" data-tab="settings">Adjust</a></span>
+                                <br /><span class="ykuk-info-box-meta"><a href="#" class="ws-ls-tab-change" data-tab="settings">%3$s</a></span>
                         </div>
                     </div>',
 		esc_html( $setting ),
-		esc_html( $args[ 'title' ] )
+		esc_html( $args[ 'title' ] ),
+		esc_html__( 'Adjust', WE_LS_SLUG )
 	);
 }
 
