@@ -20,10 +20,10 @@ function ws_ls_uikit_summary_boxes( $arguments, $boxes = [] ) {
 		return '<!-- No valid summary boxes -->';
 	}
 
-	$arguments      = wp_parse_args( $arguments, [ 'user-id' => get_current_user_id(), 'breakpoint_s' => 2 ] );
+	$arguments      = wp_parse_args( $arguments, [ 'user-id' => get_current_user_id(), 'min-boxes' => 4, 'breakpoint_s' => 2, 'remove-edit-link' => false ] );
 	$no_boxes       = count( $boxes );
 
-	$breakpoint_m = min( $no_boxes, 4 );
+	$breakpoint_m = min( $no_boxes, (int) $arguments[ 'min-boxes' ] );
 	$breakpoint_s = $no_boxes < 3 ? $no_boxes : (int) $arguments[ 'breakpoint_s' ];
 
 	$divider_count = 0;
@@ -103,7 +103,7 @@ function ws_ls_uikit_summary_boxes( $arguments, $boxes = [] ) {
 				break;
 			case 'latest-weight':
 			case 'latest-weight-difference-as-percentage':
-				$html .= ws_ls_component_latest_weight( [ 'user-id' => $arguments[ 'user-id' ] ] );
+				$html .= ws_ls_component_latest_weight( [ 'user-id' => $arguments[ 'user-id'], 'remove-edit-link' => $arguments[ 'remove-edit-link' ] ] );
 				break;
 			case 'latest-weight-difference-as-weight':
 				$html .= ws_ls_component_latest_weight( [ 'user-id' => $arguments[ 'user-id' ], 'difference-display' => 'weight' ] );
@@ -115,13 +115,13 @@ function ws_ls_uikit_summary_boxes( $arguments, $boxes = [] ) {
 				$html .= ws_ls_component_number_of_awards( [ 'user-id' => $arguments[ 'user-id' ] ] );
 				break;
 			case 'start-weight':
-				$html .= ws_ls_component_start_weight( [ 'user-id' => $arguments[ 'user-id' ] ] );
+				$html .= ws_ls_component_start_weight( [ 'user-id' => $arguments[ 'user-id'], 'remove-edit-link' => $arguments[ 'remove-edit-link' ] ] );
 				break;
 			case 'target-weight':
-				$html .= ws_ls_component_target_weight( [ 'user-id' => $arguments[ 'user-id' ] ] );
+				$html .= ws_ls_component_target_weight( [ 'user-id' => $arguments[ 'user-id' ], 'remove-edit-link' => $arguments[ 'remove-edit-link' ] ] );
 				break;
 			case 'previous-weight':
-				$html .= ws_ls_component_previous_weight( [ 'user-id' => $arguments[ 'user-id' ] ] );
+				$html .= ws_ls_component_previous_weight( [ 'user-id' => $arguments[ 'user-id' ], 'remove-edit-link' => $arguments[ 'remove-edit-link' ] ] );
 				break;
 			case 'latest-versus-target':
 				$html .= ws_ls_component_latest_versus_another( [ 'user-id' => $arguments[ 'user-id' ] ] );
@@ -230,7 +230,7 @@ function ws_ls_component_custom_field_render( $args) {
  */
 function ws_ls_component_latest_weight( $args = [] ) {
 
-    $args           = wp_parse_args( $args, [ 'difference-display' => 'percentage', 'user-id' => get_current_user_id() ] );
+    $args           = wp_parse_args( $args, [ 'difference-display' => 'percentage', 'user-id' => get_current_user_id(), 'remove-edit-link' => false ] );
     $latest_entry   = ws_ls_entry_get_latest( $args );
 
     $text_date      = '';
@@ -239,10 +239,14 @@ function ws_ls_component_latest_weight( $args = [] ) {
     if( false === empty( $latest_entry[ 'kg' ] ) ) {
 
         $text_data  = $latest_entry[ 'display' ];
+
+		$link = ( true === $args[ 'remove-edit-link' ] ) ? 
+					esc_html( $latest_entry[ 'display-date' ] ) : sprintf( '<a href="%s">%s</a>', ws_ls_wt_link_edit_entry( $latest_entry[ 'id' ] ), esc_html( $latest_entry[ 'display-date' ] ) );
+
         $text_date  = sprintf ( '<br />
 									<span class="ykuk-info-box-meta">
-										<a href="%s">%s</a>
-									</span>', ws_ls_wt_link_edit_entry( $latest_entry[ 'id' ] ), $latest_entry[ 'display-date' ] );
+										%s
+									</span>', $link );
 
         $difference = ws_ls_shortcode_difference_in_weight_previous_latest( [   'display'                   => $args[ 'difference-display' ],
                                                                                 'include-percentage-sign'   => true,
@@ -398,7 +402,7 @@ function ws_ls_component_latest_award( $args = [] ) {
  */
 function ws_ls_component_previous_weight( $args = [] ) {
 
-	$args           = wp_parse_args( $args, [ 'user-id' => get_current_user_id() ] );
+	$args           = wp_parse_args( $args, [ 'user-id' => get_current_user_id(), 'remove-edit-link' => false ] );
 	$previous_entry = ws_ls_entry_get_previous( $args );
 
 	$text_date      = '';
@@ -406,12 +410,14 @@ function ws_ls_component_previous_weight( $args = [] ) {
 
 	if( false === empty( $previous_entry ) ) {
 
+		$link = ( true === $args[ 'remove-edit-link' ] ) ? 
+					esc_html( $previous_entry[ 'display-date' ] ) : sprintf( '<a href="%s">%s</a>', ws_ls_wt_link_edit_entry( $previous_entry[ 'id' ] ), esc_html( $previous_entry[ 'display-date' ] ) );
+
 		$text_data  = $previous_entry[ 'display' ];
 		$text_date  = sprintf ( '<br />
 									<span class="ykuk-info-box-meta">
-										<a href="%s">%s</a>
-									</span>', ws_ls_wt_link_edit_entry( $previous_entry[ 'id' ] ), $previous_entry[ 'display-date' ] );
-
+										%s
+									</span>', $link );
 	}
 
 	return sprintf( '<div>
@@ -451,6 +457,9 @@ function ws_ls_component_target_weight( $args = [] ) {
 		$text_data = esc_html__( 'Targets not enabled in settings', WE_LS_SLUG );
 	}
 
+	$link = ( true === $args[ 'remove-edit-link' ] ) ? 
+					'' : sprintf( '<a href="#" class="ws-ls-tab-change" data-tab="settings">%1$s</a>', esc_html__( 'Adjust', WE_LS_SLUG ) );
+
 	return sprintf( '<div>
                         <div class="ykuk-card ykuk-card-small ykuk-card-body ykuk-box-shadow-small">
                                 <span class="ykuk-info-box-header %4$s">%3$s</span><br />
@@ -458,14 +467,14 @@ function ws_ls_component_target_weight( $args = [] ) {
                                     %1$s
                                 </span>
                                 %2$s
-                                <br /><span class="ykuk-info-box-meta %4$s"><a href="#" class="ws-ls-tab-change" data-tab="settings">%5$s</a></span>
+                                <br /><span class="ykuk-info-box-meta %4$s">%5$s</span>
                         </div>
                     </div>',
 		$text_data,
 		$text_date,
 		esc_html__( 'Target Weight', WE_LS_SLUG ),
 		! ws_ls_targets_enabled() ? 'ws-ls-hide' : '',
-		esc_html__( 'Adjust', WE_LS_SLUG )
+		$link
 	);
 }
 
@@ -511,19 +520,23 @@ function ws_ls_component_user_setting( $args = [] ) {
  */
 function ws_ls_component_start_weight( $args = [] ) {
 
-	$args           = wp_parse_args( $args, [ 'user-id' => get_current_user_id() ] );
+	$args           = wp_parse_args( $args, [ 'user-id' => get_current_user_id(), 'remove-edit-link' => false ] );
 	$start_weight   = ws_ls_entry_get_oldest( $args );
 
 	$text_date      = '';
 	$text_data      = esc_html__( 'Not set', WE_LS_SLUG );
 
 	if( false === empty( $start_weight[ 'display' ] ) ) {
+		
+		$link = ( true === $args[ 'remove-edit-link' ] ) ? 
+				esc_html( $start_weight[ 'display-date' ] ) : sprintf( '<a href="%s">%s</a>', ws_ls_wt_link_edit_entry( $start_weight[ 'id' ] ), esc_html( $start_weight[ 'display-date' ] ) );
+
 		$text_data  = $start_weight[ 'display' ];
 
 		$text_date  = sprintf ( '<br />
 									<span class="ykuk-info-box-meta">
-										<a href="%s">%s</a>
-									</span>', ws_ls_wt_link_edit_entry( $start_weight[ 'id' ] ), $start_weight[ 'display-date' ] );
+										%s
+									</span>', $link );
 
 	}
 
