@@ -15,7 +15,7 @@ function ws_ls_admin_page_view_all() {
 			<div id="post-body-content">
 				<div class="meta-box-sortables ui-sortable">
                     <?php
-                    if ( true !== WS_LS_IS_PREMIUM ) {
+                    if ( true !== ( defined('WS_LS_IS_PREMIUM') && WS_LS_IS_PREMIUM ) ) {
                         ws_ls_display_pro_upgrade_notice();
                     }
                     ?>
@@ -34,22 +34,36 @@ function ws_ls_admin_page_view_all() {
 
                                         if ( false === empty( $entry_counts ) ) {
 
-                                            echo sprintf( '
-                                                                        <p>
-                                                                            <strong>%s:</strong> %s | <strong>%s:</strong> %s | <strong>%s:</strong> %s |
-                                                                            <a href="%s">%s</a> | <a href="%s">%s</a>
-                                                                        </p>',
-                                                esc_html__( 'Number of WordPress users', WE_LS_SLUG ),
-                                                ws_ls_round_number( $entry_counts['number-of-users'] ),
-                                                esc_html__( 'Number of weight entries', WE_LS_SLUG ),
-                                                ws_ls_round_number( $entry_counts['number-of-entries'] ),
-                                                esc_html__( 'Number of targets entered', WE_LS_SLUG ),
-                                                ws_ls_round_number( $entry_counts['number-of-targets'] ),
-                                                ws_ls_get_link_to_export(),
-                                                esc_html__( 'Export to CSV', WE_LS_SLUG ),
-                                                ws_ls_get_link_to_export( 'json' ),
-                                                esc_html__( 'Export to JSON', WE_LS_SLUG )
-                                            );
+                                            if ( function_exists( 'ws_ls_get_link_to_export' ) ) {
+                                                echo sprintf( '
+                                                                            <p>
+                                                                                <strong>%s:</strong> %s | <strong>%s:</strong> %s | <strong>%s:</strong> %s |
+                                                                                <a href="%s">%s</a> | <a href="%s">%s</a>
+                                                                            </p>',
+                                                    esc_html__( 'Number of WordPress users', WE_LS_SLUG ),
+                                                    ws_ls_round_number( $entry_counts['number-of-users'] ),
+                                                    esc_html__( 'Number of weight entries', WE_LS_SLUG ),
+                                                    ws_ls_round_number( $entry_counts['number-of-entries'] ),
+                                                    esc_html__( 'Number of targets entered', WE_LS_SLUG ),
+                                                    ws_ls_round_number( $entry_counts['number-of-targets'] ),
+                                                    ws_ls_get_link_to_export(),
+                                                    esc_html__( 'Export to CSV', WE_LS_SLUG ),
+                                                    ws_ls_get_link_to_export( 'json' ),
+                                                    esc_html__( 'Export to JSON', WE_LS_SLUG )
+                                                );
+                                            } else {
+                                                echo sprintf( '
+                                                                            <p>
+                                                                                <strong>%s:</strong> %s | <strong>%s:</strong> %s | <strong>%s:</strong> %s
+                                                                            </p>',
+                                                    esc_html__( 'Number of WordPress users', WE_LS_SLUG ),
+                                                    ws_ls_round_number( $entry_counts['number-of-users'] ),
+                                                    esc_html__( 'Number of weight entries', WE_LS_SLUG ),
+                                                    ws_ls_round_number( $entry_counts['number-of-entries'] ),
+                                                    esc_html__( 'Number of targets entered', WE_LS_SLUG ),
+                                                    ws_ls_round_number( $entry_counts['number-of-targets'] )
+                                                );
+                                            }
                                         }
 
                                         if ( $entry_counts['number-of-entries'] > 5000 ) {
@@ -64,9 +78,11 @@ function ws_ls_admin_page_view_all() {
 
                                         $show_meta = (bool) get_option( 'ws-ls-show-meta' );
 
-                                        echo ws_ls_data_table_render( [ 'limit' => 5000, 'enable-meta-fields' => $show_meta, 'custom-field-col-size' => 'xs' ] );
+                                        if ( function_exists( 'ws_ls_data_table_render' ) ) {
+                                            echo ws_ls_data_table_render( [ 'limit' => 5000, 'enable-meta-fields' => $show_meta, 'custom-field-col-size' => 'xs' ] );
+                                        }
 
-                                        if ( ws_ls_meta_fields_number_of_enabled() > 0 ) {
+                                        if ( function_exists( 'ws_ls_meta_fields_number_of_enabled' ) && ws_ls_meta_fields_number_of_enabled() > 0 ) {
 
                                             echo sprintf(
                                                 '&nbsp;<a class="btn button-secondary" href="%s"><i class="fas fa-book-reader"></i> %s</a>',

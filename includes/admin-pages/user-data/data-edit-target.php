@@ -29,7 +29,7 @@ function ws_ls_admin_page_data_edit_target() {
 				<div id="post-body-content">
 					<div class="meta-box-sortables ui-sortable">
                         <?php
-                        if ( true !== WS_LS_IS_PREMIUM ) {
+                        if ( true !== ( defined('WS_LS_IS_PREMIUM') && WS_LS_IS_PREMIUM ) ) {
                             ws_ls_display_pro_upgrade_notice();
                         }
                         ?>
@@ -37,7 +37,7 @@ function ws_ls_admin_page_data_edit_target() {
 							<h2><span><?php echo esc_html__('Edit user\'s target', WE_LS_SLUG); ?></span></h2>
 							<div class="inside">
                                 <?php
-                                    if ( true === WS_LS_IS_PREMIUM ) {
+                                    if ( true === ( defined('WS_LS_IS_PREMIUM') && WS_LS_IS_PREMIUM ) ) {
 
 	                                    echo ws_ls_form_weight( [    'user-id'              => $user_id,
 	                                                                 'type'       			=> 'target',
@@ -56,7 +56,7 @@ function ws_ls_admin_page_data_edit_target() {
 					</div>
 				</div>
 				<div id="postbox-container-1" class="postbox-container">
-					<?php ws_ls_user_side_bar($user_id); ?>
+					<?php if ( function_exists( 'ws_ls_user_side_bar' ) ) { ws_ls_user_side_bar($user_id); } ?>
 				</div>
 			</div>
 		</div>

@@ -44,25 +44,6 @@ register_activation_hook( __FILE__, 'ws_ls_activate' );
 register_deactivation_hook( __FILE__, 'ws_ls_deactivate' );
 
 // -----------------------------------------------------------------------------------------
-// AC: Check if valid Premium license
-// ----------------------------------------------------------------------------------------
-
-include WS_LS_ABSPATH . 'includes/license.php';
-
-$license_type = ws_ls_has_a_valid_license();
-
-// Premium
-if( true === in_array( $license_type, [ 'pro', 'pro-plus' ] ) ){
-	define( 'WS_LS_IS_PREMIUM', true );
-	define( 'WS_LS_IS_PRO', true );			// Legacy
-	define( 'WS_LS_IS_PRO_PLUS', true );	// Legacy
-} else {
-	define( 'WS_LS_IS_PREMIUM', false );
-	define( 'WS_LS_IS_PRO', false );		// Legacy
-	define( 'WS_LS_IS_PRO_PLUS', false );	// Legacy
-}
-
-// -----------------------------------------------------------------------------------------
 // AC: Include all relevant PHP files
 // -----------------------------------------------------------------------------------------
 
@@ -71,7 +52,6 @@ require_once( WS_LS_ABSPATH . 'includes/db.php' );
 require_once( WS_LS_ABSPATH . 'includes/activate.php' );
 require_once( WS_LS_ABSPATH . 'includes/hooks.php' );
 require_once( WS_LS_ABSPATH . 'includes/cron.php' );
-require_once( WS_LS_ABSPATH . 'includes/plugin-update-checker/plugin-update-checker.php' );
 require_once( WS_LS_ABSPATH . 'includes/functions.php' );
 require_once( WS_LS_ABSPATH . 'includes/converters.php' );
 require_once( WS_LS_ABSPATH . 'includes/core.php' );
@@ -95,23 +75,6 @@ require_once( WS_LS_ABSPATH . 'includes/admin-pages/user-data/data-groups.php' )
 require_once( WS_LS_ABSPATH . 'includes/admin-pages/page-help.php' );
 require_once( WS_LS_ABSPATH . 'includes/admin-pages/page-license.php' );
 require_once( WS_LS_ABSPATH . 'includes/admin-pages/page-setup-wizard.php' );
-require_once( WS_LS_ABSPATH . 'includes/admin-pages/meta-fields/page-meta-fields.php' );
-require_once( WS_LS_ABSPATH . 'includes/admin-pages/meta-fields/page-meta-fields-add-update.php' );
-require_once( WS_LS_ABSPATH . 'includes/admin-pages/meta-fields/page-meta-fields-list.php' );
-require_once( WS_LS_ABSPATH . 'includes/admin-pages/meta-fields/page-meta-fields-groups.php' );
-require_once( WS_LS_ABSPATH . 'includes/admin-pages/awards/page-awards.php' );
-require_once( WS_LS_ABSPATH . 'includes/admin-pages/awards/page-awards-list.php' );
-require_once( WS_LS_ABSPATH . 'includes/admin-pages/awards/page-awards-add-update.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/plus/meta-fields/activate.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/plus/meta-fields/db.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/plus/meta-fields/hooks.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/plus/meta-fields/functions.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/plus/meta-fields/functions-photos.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/plus/meta-fields/functions-slider.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/plus/meta-fields/shortcodes.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/feature-list.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/functions.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/functions-pages.php' );
 require_once( WS_LS_ABSPATH . 'includes/admin-pages/user-data/data-home.php' );
 require_once( WS_LS_ABSPATH . 'includes/admin-pages/user-data/data-summary.php' );
 require_once( WS_LS_ABSPATH . 'includes/admin-pages/user-data/data-view-all.php' );
@@ -122,56 +85,6 @@ require_once( WS_LS_ABSPATH . 'includes/admin-pages/user-data/data-notes.php' );
 require_once( WS_LS_ABSPATH . 'includes/admin-pages/user-data/data-user-edit-settings.php' );
 require_once( WS_LS_ABSPATH . 'includes/admin-pages/user-data/data-search-results.php' );
 require_once( WS_LS_ABSPATH . 'includes/admin-pages/user-data/data-photos.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/user-groups.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/user-birthdays.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/user-preferences.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/shortcode-chart.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/shortcode-form.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/shortcode-footable.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/shortcode-various.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/shortcode-stats.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/shortcode-reminders.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/shortcode-progress-bar.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/shortcode-messages.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/shortcode-bmi-calculator.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/shortcode-hip-waist-ratio-calculator.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/shortcode-if.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/plus/barcode-reader.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/plus/shortcode.wlt.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/plus/photos.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/plus/photos-gallery.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/widget-chart.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/widget-form.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/widget-progress.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/footable.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/db.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/functions-stats.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/hooks.php' );
-
-if ( true === WS_LS_IS_PREMIUM ) {
-	require_once( WS_LS_ABSPATH . 'pro-features/gamification.php' );
-}
-
-require_once( WS_LS_ABSPATH . 'pro-features/plus/awards/activate.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/plus/awards/functions.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/plus/awards/db.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/plus/awards/hooks.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/email-notifications.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/web-hooks.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/plus/challenge/inc.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/plus/messaging/inc.php' );
-
-require_once( WS_LS_ABSPATH . 'pro-features/plus/bmr.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/plus/harris-benedict.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/plus/macronutrient-calculator.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/plus/shortcode.calculator.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/export/inc.php' );
-
-// Gravity Forms
-if ( true === WS_LS_IS_PREMIUM && 'yes' == get_option( 'ws-ls-gf-enable', 'yes' ) ) {
-	require_once( WS_LS_ABSPATH . 'pro-features/hook-gravity-forms.php' );
-}
-
 require_once( WS_LS_ABSPATH . 'includes/deprecated.php' );
 
 // -----------------------------------------------------------------------------------------
@@ -181,10 +94,3 @@ function ws_ls_load_textdomain() {
 	load_plugin_textdomain( WE_LS_SLUG, false, dirname( plugin_basename( __FILE__ )  ) . '/includes/languages/' );
 }
 add_action('plugins_loaded', 'ws_ls_load_textdomain');
-
-// -----------------------------------------------------------------------------------------
-// Since we're no longer hosted on WordPress.org, use the following for auto updates
-// -----------------------------------------------------------------------------------------
-use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
-
-$wt_plugin_updater = PucFactory::buildUpdateChecker( WE_LS_YEKEN_LATEST_RELEASE_MANIFEST, __FILE__, WE_LS_SLUG );

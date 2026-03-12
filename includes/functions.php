@@ -298,7 +298,7 @@ function ws_ls_entry_get( $arguments = [] ) {
 			$entry['kg'] - $entry['first_weight'] :
 			0;
 
-		if ( true === WS_LS_IS_PREMIUM &&
+		if ( true === ( defined('WS_LS_IS_PREMIUM') && WS_LS_IS_PREMIUM ) &&
 		     true === ws_ls_meta_fields_is_enabled() ) {
 
 			$entry['meta'] = ws_ls_meta( $arguments['id'] );
@@ -621,7 +621,7 @@ function ws_ls_to_bool( $string ) {
 function ws_ls_option( $key, $default, $has_to_be_pro = false ) {
 
 	// If they need to be a Pro user and not, the apply default
-	if ( true === $has_to_be_pro && false === WS_LS_IS_PREMIUM ) {
+	if ( true === $has_to_be_pro && false === ( defined('WS_LS_IS_PREMIUM') && WS_LS_IS_PREMIUM ) ) {
 		return $default;
 	}
 
@@ -1297,9 +1297,9 @@ function ws_ls_blur( $pro_plus = false, $space_before = true ) {
         $class = ' ' . $class;
     }
 
-    if ( false === $pro_plus && false === WS_LS_IS_PREMIUM ) {
+    if ( false === $pro_plus && false === ( defined('WS_LS_IS_PREMIUM') && WS_LS_IS_PREMIUM ) ) {
         return $class;
-    } elseif ( true === $pro_plus && false === WS_LS_IS_PREMIUM ) {
+    } elseif ( true === $pro_plus && false === ( defined('WS_LS_IS_PREMIUM') && WS_LS_IS_PREMIUM ) ) {
         return $class;
     }
 
@@ -1319,9 +1319,9 @@ function ws_ls_blur_text( $text, $pro_plus = false ) {
 
         $blur = false;
 
-        if ( false === $pro_plus && false === WS_LS_IS_PREMIUM ) {
+        if ( false === $pro_plus && false === ( defined('WS_LS_IS_PREMIUM') && WS_LS_IS_PREMIUM ) ) {
             $blur = true;
-        } elseif ( true === $pro_plus && false === WS_LS_IS_PREMIUM ) {
+        } elseif ( true === $pro_plus && false === ( defined('WS_LS_IS_PREMIUM') && WS_LS_IS_PREMIUM ) ) {
             $blur = true;
         }
 
@@ -1479,7 +1479,7 @@ function ws_ls_user_email_address( $user_id ) {
  * @return bool
  */
 function ws_ls_challenges_is_enabled() {
-    return WS_LS_IS_PREMIUM;
+    return ( defined('WS_LS_IS_PREMIUM') && WS_LS_IS_PREMIUM );
 }
 
 /**
@@ -1511,7 +1511,7 @@ function ws_ls_component_id() {
  */
 function ws_ls_user_preferences_is_enabled() {
 
-	if ( false === WS_LS_IS_PREMIUM ) {
+	if ( false === ( defined('WS_LS_IS_PREMIUM') && WS_LS_IS_PREMIUM ) ) {
 		return false;
 	}
 
@@ -1889,8 +1889,53 @@ function ws_ls_wp_kses( $value ) {
 	$basic_tags[ 'span' ]	= [ 'id' => true, 'class' => true ];			
 	$basic_tags[ 'table' ]	= [ 'id' => true, 'class' => true ];	
 	$basic_tags[ 'tr' ]		= [ 'id' => true, 'class' => true ];	
-	$basic_tags[ 'td' ]		= [ 'id' => true, 'class' => true ];	
-	$basic_tags[ 'li' ]		= [ 'class' => true ];	
+	$basic_tags[ 'td' ]		= [ 'id' => true, 'class' => true ];
+	$basic_tags[ 'li' ]		= [ 'class' => true ];
 
 	return wp_kses( $value, $basic_tags );
+}
+
+/**
+ * Get the minimum user role allowed for viewing data pages in admin
+ * @return mixed|void
+ */
+function ws_ls_permission_role() {
+	$permission_role = get_option( 'ws-ls-edit-permissions', 'manage_options' );
+
+	return ( false === empty( $permission_role ) ) ? $permission_role : 'manage_options';
+}
+
+/**
+ * Can the current user view this admin data page?
+ * @return bool
+ */
+function ws_ls_permission_check() {
+	return current_user_can( ws_ls_permission_role() );
+}
+
+/**
+ * Helper function to disable admin page if the user doesn't have the correct user role.
+ */
+function ws_ls_permission_check_message() {
+	if ( false === ws_ls_permission_check() ) {
+		wp_die( esc_html__( 'You do not have sufficient permissions to access this page.', WE_LS_SLUG ) );
+	}
+}
+
+/**
+ * Get the minimum user role allowed for exporting/deleting data pages in admin
+ * @return mixed|void
+ */
+function ws_ls_permission_export_delete_role() {
+	$permission_role = get_option( 'ws-ls-export-delete-permissions', 'manage_options' );
+
+	return ( false === empty( $permission_role ) ) ? $permission_role : 'manage_options';
+}
+
+/**
+ * Can the current user export/delete data?
+ * @return bool
+ */
+function ws_ls_permission_check_export_delete() {
+	return current_user_can( ws_ls_permission_export_delete_role() );
 }

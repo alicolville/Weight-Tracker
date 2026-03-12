@@ -15,7 +15,9 @@ function ws_ls_admin_page_data_summary() {
         do_action( 'wlt-hook-data-all-deleted' );
     }
 
-    ws_ls_data_table_enqueue_scripts();
+    if ( function_exists( 'ws_ls_data_table_enqueue_scripts' ) ) {
+        ws_ls_data_table_enqueue_scripts();
+    }
 ?>
 <div class="wrap ws-ls-user-data ws-ls-admin-page">
 	<h1><?php echo esc_html__('Summary', WE_LS_SLUG); ?></h1>
@@ -24,7 +26,7 @@ function ws_ls_admin_page_data_summary() {
 			<div id="post-body-content">
 				<div class="meta-box-sortables ui-sortable" id="ws-ls-user-summary-one">
                     <?php
-                        if ( true !== WS_LS_IS_PREMIUM ) {
+                        if ( true !== ( defined('WS_LS_IS_PREMIUM') && WS_LS_IS_PREMIUM ) ) {
                             ws_ls_display_pro_upgrade_notice();
                         }
 
@@ -60,7 +62,9 @@ function ws_ls_admin_page_data_summary() {
 						foreach ( $user_summary_order as $postbox ) {
 
 							if ( 'user-search' === $postbox ) {
+							if ( function_exists( 'ws_ls_postbox_user_search' ) ) {
 								ws_ls_postbox_user_search();
+							}
 							} elseif ( 'quick-stats' === $postbox ) {
 								ws_ls_postbox_quick_stats();
 							} elseif ( 'view-all' === $postbox ) {
@@ -151,6 +155,7 @@ function ws_ls_postbox_export() {
 		    <?php if ( ! ws_ls_permission_check_export_delete() ) : ?>
 				<?php printf( '<p>%s</p>',  esc_html__('You do not have permission to do this.', WE_LS_SLUG ) ); ?>
 			<?php else : ?>
+                <?php if ( function_exists( 'ws_ls_export_link' ) ) : ?>
                 <a class="button-secondary button-wt-to-excel" href="<?php echo ws_ls_export_link('new', [ 'format' => 'csv', 'title' => esc_html__( 'All Data', WE_LS_SLUG ) ] ); ?>">
                     <i class="fa fa-file-excel-o"></i>
                     <?php echo esc_html__('To CSV', WE_LS_SLUG); ?>
@@ -159,6 +164,7 @@ function ws_ls_postbox_export() {
                     <i class="fa fa-file-code-o"></i>
                     <?php echo esc_html__('To JSON', WE_LS_SLUG); ?>
                 </a>
+                <?php endif; ?>
 			<?php endif; ?>
 		</div>
 	</div>
@@ -206,7 +212,7 @@ function ws_ls_postbox_league_table() {
 			$ignore_cache = false;
 
 			// Run stats if plugin version number has changed!
-			if( true === WS_LS_IS_PREMIUM && update_option('ws-ls-version-number-stats', WE_LS_CURRENT_VERSION) || (false === empty($_GET['regenerate-stats']) && 'y' == $_GET['regenerate-stats'])) {
+			if( true === ( defined('WS_LS_IS_PREMIUM') && WS_LS_IS_PREMIUM ) && update_option('ws-ls-version-number-stats', WE_LS_CURRENT_VERSION) || (false === empty($_GET['regenerate-stats']) && 'y' == $_GET['regenerate-stats'])) {
 				ws_ls_db_stats_clear_last_updated_date();
 				ws_ls_stats_run_cron();
 				ws_ls_tidy_cache_on_delete();
@@ -215,7 +221,7 @@ function ws_ls_postbox_league_table() {
 
 			echo ws_ls_shortcode_stats_league_total(['ignore_cache' => $ignore_cache, 'order' => (false === $show_gain) ? 'asc' : 'desc']);
 
-			if( true === WS_LS_IS_PREMIUM ) {
+			if( true === ( defined('WS_LS_IS_PREMIUM') && WS_LS_IS_PREMIUM ) ) {
 				?>
 				<p>
 					<small><?php echo esc_html__( 'Please note: For performance reasons, this table only will update every hour. Click the following button to manually update.', WE_LS_SLUG ); ?></small>
@@ -268,7 +274,9 @@ function ws_ls_postbox_latest_entries() {?>
 					$entries_limit = NULL;
 				}
 
-				echo ws_ls_data_table_render( [ 'limit' => $entries_limit, 'smaller-width' => true, 'enable-meta-fields' => $show_meta, 'page-size' => 20, 'bmi-format' => 'both' ] );
+				if ( function_exists( 'ws_ls_data_table_render' ) ) {
+					echo ws_ls_data_table_render( [ 'limit' => $entries_limit, 'smaller-width' => true, 'enable-meta-fields' => $show_meta, 'page-size' => 20, 'bmi-format' => 'both' ] );
+				}
 
 				if ( 100 !== $entries_limit ) {
 					echo sprintf(
@@ -294,7 +302,7 @@ function ws_ls_postbox_latest_entries() {?>
 								);
 				}
 
-				if ( ws_ls_meta_fields_number_of_enabled() > 0 ) {
+				if ( function_exists( 'ws_ls_meta_fields_number_of_enabled' ) && ws_ls_meta_fields_number_of_enabled() > 0 ) {
 					echo sprintf(
 						'<a class="btn button-secondary" href="%s"><i class="fas fa-book-reader"></i> %s</a>',
 						admin_url( 'admin.php?page=ws-ls-data-home&show-meta=' ) . ( ( false === $show_meta ) ? 'y' : 'n'),
@@ -311,7 +319,7 @@ function ws_ls_postbox_latest_entries() {?>
 
 function ws_ls_postbox_change_by_groups() {
 
-	if ( false === ws_ls_groups_do_we_have_any() ) {
+	if ( ! function_exists( 'ws_ls_groups_do_we_have_any' ) || false === ws_ls_groups_do_we_have_any() ) {
 		return;
 	}
 

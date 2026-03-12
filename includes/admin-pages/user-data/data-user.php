@@ -19,7 +19,7 @@ function ws_ls_admin_page_data_user() {
     }
 
     // Delete all awards for this user
-	if ( true === isset( $_GET['remove-awards'] ) && 'y' == $_GET['remove-awards'] ) {
+	if ( true === isset( $_GET['remove-awards'] ) && 'y' == $_GET['remove-awards'] && function_exists( 'ws_ls_awards_db_delete_awards_for_user' ) ) {
 		ws_ls_awards_db_delete_awards_for_user( $user_id );
 	}
 
@@ -39,7 +39,7 @@ function ws_ls_admin_page_data_user() {
 	<div id="poststuff">
 		<?php 	ws_ls_user_header( $user_id );
 
-				if ( true !== WS_LS_IS_PREMIUM ) {
+				if ( true !== ( defined('WS_LS_IS_PREMIUM') && WS_LS_IS_PREMIUM ) ) {
 					ws_ls_display_pro_upgrade_notice();
 				}
         ?>
@@ -90,8 +90,8 @@ function ws_ls_admin_page_data_user() {
 			</div>
 			<div id="postbox-container-1" class="postbox-container">
 				<?php 
-					if ( true === (bool) apply_filters( 'wlt-filters-admin-show-standard-sidebar', true ) ) {
-						ws_ls_user_side_bar( $user_id ); 
+					if ( true === (bool) apply_filters( 'wlt-filters-admin-show-standard-sidebar', true ) && function_exists( 'ws_ls_user_side_bar' ) ) {
+						ws_ls_user_side_bar( $user_id );
 					}
 
 					do_action( 'wlt-actions-admin-sidebar' );
@@ -120,7 +120,7 @@ function ws_ls_postbox_chart( $user_id ) {
 				// Fetch last 25 weight entries
 				$weight_data = ws_ls_entries_get( [ 'user-id' => $user_id, 'limit' => 25, 'prep' => true, 'sort' => 'desc', 'reverse' => true ] );
 
-				if ( true !== WS_LS_IS_PREMIUM ) {
+				if ( true !== ( defined('WS_LS_IS_PREMIUM') && WS_LS_IS_PREMIUM ) ) {
 
 					echo sprintf('<p><a href="%s">%s</a> %s.</p>',
 						ws_ls_upgrade_link(),
@@ -148,7 +148,7 @@ function ws_ls_postbox_photos( $user_id ) {
 		<?php ws_ls_postbox_header( [ 'title' => esc_html__( 'Photos', WE_LS_SLUG ), 'postbox-id' => 'photos', 'postbox-col' => 'ws-ls-user-data-one' ] ); ?>
 		<div class="inside">
 			<?php
-			if( true === ws_ls_meta_fields_photo_any_enabled() ) {
+			if( function_exists( 'ws_ls_meta_fields_photo_any_enabled' ) && true === ws_ls_meta_fields_photo_any_enabled() ) {
 
 				$photo_count = ws_ls_photos_db_count_photos( $user_id );
 
@@ -170,7 +170,7 @@ function ws_ls_postbox_photos( $user_id ) {
 						'hide-from-shortcodes' => false
 					] );
 				}
-			} else if ( true === WS_LS_IS_PREMIUM ) {
+			} else if ( true === ( defined('WS_LS_IS_PREMIUM') && WS_LS_IS_PREMIUM ) ) {
 
 				echo sprintf('<p><a href="%s">%s</a> %s.</p>',
 					ws_ls_meta_fields_base_url(),
@@ -203,7 +203,7 @@ function ws_ls_postbox_macros( $user_id ) {
 		  <div class="inside">
 		<?php
 
-			if( true === WS_LS_IS_PREMIUM ) {
+			if( true === ( defined('WS_LS_IS_PREMIUM') && WS_LS_IS_PREMIUM ) ) {
 
 			 	echo ws_ls_macro_render_table( $user_id, false, 'ws-ls-footable' );
 
@@ -232,7 +232,7 @@ function ws_ls_postbox_daily_calories( $user_id ) {
 		  <div class="inside">
 		<?php
 
-			if( true === WS_LS_IS_PREMIUM ) {
+			if( true === ( defined('WS_LS_IS_PREMIUM') && WS_LS_IS_PREMIUM ) ) {
 
 			 	echo ws_ls_harris_benedict_render_table( $user_id, false, 'ws-ls-footable' );
 
@@ -261,7 +261,7 @@ function ws_ls_postbox_awards( $user_id ) {
 		  <div class="inside">
 		<?php
 
-			if( true === WS_LS_IS_PREMIUM ) {
+			if( true === ( defined('WS_LS_IS_PREMIUM') && WS_LS_IS_PREMIUM ) ) {
 
 			 	$awards = ws_ls_awards_previous_awards( $user_id );
 
@@ -310,7 +310,9 @@ function ws_ls_postbox_user_entries( $user_id ) {
 
 			    $bmi_enabled = apply_filters( 'wlt-filter-admin-user-entries-enable-bmi', true );
 
-			    echo ws_ls_data_table_render( [ 'smaller-width' => true, 'user-id' => $user_id, 'bmi-format' => 'both', 'enable-bmi' => $bmi_enabled, 'name' => 'user-entries-data-home'  ] );
+			    if ( function_exists( 'ws_ls_data_table_render' ) ) {
+		        echo ws_ls_data_table_render( [ 'smaller-width' => true, 'user-id' => $user_id, 'bmi-format' => 'both', 'enable-bmi' => $bmi_enabled, 'name' => 'user-entries-data-home'  ] );
+		    }
 
                 ?>
 		</div>

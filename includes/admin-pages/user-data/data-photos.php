@@ -30,7 +30,7 @@ function ws_ls_admin_page_photos() {
                             <div class="inside">
                                 <?php
 
-                                    if( ws_ls_meta_fields_photo_any_enabled() ) {
+                                    if( function_exists( 'ws_ls_meta_fields_photo_any_enabled' ) && ws_ls_meta_fields_photo_any_enabled() ) {
 
 	                                    $photo_count = ws_ls_photos_db_count_photos($user_id);
 
@@ -48,7 +48,7 @@ function ws_ls_admin_page_photos() {
 	                                                                            'hide-from-shortcodes' => false
 	                                    ]);
 
-                                    } else if ( true === WS_LS_IS_PREMIUM ) {
+                                    } else if ( true === ( defined('WS_LS_IS_PREMIUM') && WS_LS_IS_PREMIUM ) ) {
 
                                         echo sprintf('<p><a href="%s">%s</a> %s.</p>',
                                             ws_ls_meta_fields_base_url(),
@@ -70,7 +70,7 @@ function ws_ls_admin_page_photos() {
                     </div>
                 </div>
                 <div id="postbox-container-1" class="postbox-container">
-                    <?php ws_ls_user_side_bar($user_id); ?>
+                    <?php if ( function_exists( 'ws_ls_user_side_bar' ) ) { ws_ls_user_side_bar($user_id); } ?>
                 </div>
             </div>
         </div>

@@ -18,7 +18,7 @@ function ws_ls_admin_page_settings_user() {
 			<div id="post-body-content">
 				<div class="meta-box-sortables ui-sortable">
                     <?php
-                        if ( true !== WS_LS_IS_PREMIUM ) {
+                        if ( true !== ( defined('WS_LS_IS_PREMIUM') && WS_LS_IS_PREMIUM ) ) {
                             ws_ls_display_pro_upgrade_notice();
                         }
                     ?>
@@ -27,18 +27,20 @@ function ws_ls_admin_page_settings_user() {
 						<div class="inside">
                             <br />
 							<?php
-                                $disable_save = ( false === WS_LS_IS_PREMIUM );
+                                $disable_save = ( false === ( defined('WS_LS_IS_PREMIUM') && WS_LS_IS_PREMIUM ) );
 
-								echo ws_ls_user_preferences_form(['user-id' => $user_id,  'allow-delete-data' => false, 'disable-save' => $disable_save ] );
+                                if ( function_exists( 'ws_ls_user_preferences_form' ) ) {
+									echo ws_ls_user_preferences_form(['user-id' => $user_id,  'allow-delete-data' => false, 'disable-save' => $disable_save ] );
 
-                                if ( $disable_save ) {
+                                    if ( $disable_save ) {
 
-                                    echo sprintf('<p><a href="%s">%s</a> %s.</p>',
-                                        ws_ls_upgrade_link(),
-                                        esc_html__('Upgrade to Premium', WE_LS_SLUG),
-                                        esc_html__('to save changes to your user\'s settings' , WE_LS_SLUG)
-                                    );
+                                        echo sprintf('<p><a href="%s">%s</a> %s.</p>',
+                                            ws_ls_upgrade_link(),
+                                            esc_html__('Upgrade to Premium', WE_LS_SLUG),
+                                            esc_html__('to save changes to your user\'s settings' , WE_LS_SLUG)
+                                        );
 
+                                    }
                                 }
     						?>
 						</div>
@@ -47,7 +49,7 @@ function ws_ls_admin_page_settings_user() {
 				</div>
 			</div>
 			<div id="postbox-container-1" class="postbox-container">
-				<?php ws_ls_user_side_bar( $user_id ); ?>
+				<?php if ( function_exists( 'ws_ls_user_side_bar' ) ) { ws_ls_user_side_bar( $user_id ); } ?>
 			</div>
 		</div>
 		<br class="clear">

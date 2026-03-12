@@ -16,7 +16,7 @@ function ws_ls_admin_page_data_notes_for_user() {
 	<div id="poststuff">
 		<?php 	ws_ls_user_header( $user_id );
 
-				if ( true !== WS_LS_IS_PREMIUM ) {
+				if ( true !== ( defined('WS_LS_IS_PREMIUM') && WS_LS_IS_PREMIUM ) ) {
 					ws_ls_display_pro_upgrade_notice();
 				}
         ?>
@@ -25,10 +25,12 @@ function ws_ls_admin_page_data_notes_for_user() {
 
 				<div class="meta-box-sortables ui-sortable" id="ws-ls-user-data-one">
                     <?php
-						$notes = ws_ls_notes_fetch( $user_id, NULL );
+						$notes = function_exists( 'ws_ls_notes_fetch' ) ? ws_ls_notes_fetch( $user_id, NULL ) : [];
 
 						if ( false === empty( $notes ) ) {
-						    array_map( 'ws_ls_notes_render', $notes );
+						    if ( function_exists( 'ws_ls_notes_render' ) ) {
+						        array_map( 'ws_ls_notes_render', $notes );
+						    }
 						} else {
 							printf( '	<div class="postbox ws-ls-postbox">
 											<div class="postbox-header ws-ls-note-header">
@@ -46,7 +48,7 @@ function ws_ls_admin_page_data_notes_for_user() {
 				</div>
 			</div>
 			<div id="postbox-container-1" class="postbox-container">
-				<?php ws_ls_user_side_bar( $user_id ); ?>
+				<?php if ( function_exists( 'ws_ls_user_side_bar' ) ) { ws_ls_user_side_bar( $user_id ); } ?>
 			</div>
 		</div>
 		<?php 
