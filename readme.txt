@@ -2,8 +2,8 @@
 Contributors: aliakro
 Tags: weight,tracker,chart,history,macronutrient
 Requires at least: 6.0
-Tested up to: 6.8.1
-Stable tag: 10.20.3
+Tested up to: 6.9.4
+Stable tag: 10.20.4
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -164,6 +164,10 @@ Measurements are created using Custom Fields. You can therefore specify the unit
 == Changelog ==
 
 ! Remember to update Release.json
+
+= 10.20.4 =
+
+* Maintenance: Updated and tested to WP version 6.9.4.
 
 = 10.20.3 =
 
