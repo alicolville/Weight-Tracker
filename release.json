@@ -1,8 +1,8 @@
 {
     "name" : "Weight Tracker",
-    "version" : "10.20.3",
+    "version" : "10.20.4",
     "download_url" : "https://weighttracker.yeken.uk/downloads/weight-tracker/weight-tracker.zip",
     "sections" : {
-        "description" : "Bug fix: Fixed an issue where some strings labelled 'Adjust' were not being translated correctly."
+        "description" : "Maintenance: Updated and tested to WP version 6.9.4."
     }
 }
