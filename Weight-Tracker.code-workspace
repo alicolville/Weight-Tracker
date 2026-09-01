@@ -10,5 +10,15 @@
 			"path": "../../.."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"files.exclude": {
+			"**/wp-content/plugins/snippet-shortcodes-premium": true
+		},
+		"files.watcherExclude": {
+			"**/wp-content/plugins/snippet-shortcodes-premium/**": true
+		},
+		"search.exclude": {
+			"**/wp-content/plugins/snippet-shortcodes-premium": true
+		}
+	}
 }

@@ -23,6 +23,7 @@ export class WeightTracker {
       await this.goto();
       await this.page.getByTestId('wt-tab-add-edit').click();
       await this.page.getByTestId('we-ls-date').fill(date);
+      await this.page.keyboard.press('Escape'); // Close the jQuery UI datepicker, which otherwise overlaps the tab link below
       await this.page.getByTestId('wt-tab-add-edit').click();
       await this.page.getByTestId('ws-form-weight').fill(weight);
       await this.page.locator('.ws-ls-save-entry-button-weight').click();
