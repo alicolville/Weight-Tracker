@@ -41,8 +41,10 @@ function ws_ls_upgrade() {
 		// This will force all stat entries to be recreated.
 		ws_ls_db_stats_clear_last_updated_date();
 
-		// Check the license is still valid
-		ws_ls_licences_cron();
+		// Check the license is still valid (Premium plugin only - this function doesn't exist without it)
+		if ( true === function_exists( 'ws_ls_licences_cron' ) ) {
+			ws_ls_licences_cron();
+		}
 
 		do_action( 'ws-ls-plugin-updated' );
 	}

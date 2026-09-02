@@ -23,7 +23,6 @@ define( 'WS_LS_BASE_URL', plugin_dir_url( __FILE__ ) );
 define( 'WE_LS_TITLE', 'Weight Tracker' );
 define( 'WE_LS_SLUG', 'weight-loss-tracker' );
 define( 'WE_LS_YEKEN_UPDATES_URL', 'https://yeken.uk/downloads/_updates/weight-tracker.json' );
-define( 'WE_LS_YEKEN_LATEST_RELEASE_MANIFEST', 'https://raw.githubusercontent.com/alicolville/Weight-Tracker/refs/heads/master/release.json' );
 define( 'WE_LS_LICENSE_TYPES_URL', 'https://docs.yeken.uk/features.html' );
 define( 'WE_LS_CALCULATIONS_URL', '	https://docs.yeken.uk/calculations.html' );
 define( 'WE_LS_UPGRADE_TO_PREMIUM_URL', 'https://shop.yeken.uk/product/weight-tracker-premium/' );
@@ -46,20 +45,28 @@ register_deactivation_hook( __FILE__, 'ws_ls_deactivate' );
 // -----------------------------------------------------------------------------------------
 // AC: Check if valid Premium license
 // ----------------------------------------------------------------------------------------
+//
+// The Weight Tracker Premium plugin (a separate plugin - see CLAUDE.md for why) announces
+// itself via the 'wlt-filter-is-premium-active' filter, registered at its own top-level file
+// load time. We can't read that until our own plugins_loaded callback: WordPress finishes
+// including every active plugin's main file (this one and Premium's) before firing
+// plugins_loaded for any of them, so by then Premium's filter is guaranteed to be registered
+// regardless of which of the two plugins happens to load first alphabetically. Reading it any
+// earlier than that would always see the "no Premium" default.
+//
+// WS_LS_IS_PREMIUM is only read from inside function bodies invoked later (shortcode render,
+// AJAX, admin pages) - never at file-parse time - so defining it here instead of immediately
+// is safe.
 
-include WS_LS_ABSPATH . 'includes/license.php';
+add_action( 'plugins_loaded', 'ws_ls_bootstrap_premium_flag', 5 );
 
-$license_type = ws_ls_has_a_valid_license();
+function ws_ls_bootstrap_premium_flag() {
 
-// Premium
-if( true === in_array( $license_type, [ 'pro', 'pro-plus' ] ) ){
-	define( 'WS_LS_IS_PREMIUM', true );
-	define( 'WS_LS_IS_PRO', true );			// Legacy
-	define( 'WS_LS_IS_PRO_PLUS', true );	// Legacy
-} else {
-	define( 'WS_LS_IS_PREMIUM', false );
-	define( 'WS_LS_IS_PRO', false );		// Legacy
-	define( 'WS_LS_IS_PRO_PLUS', false );	// Legacy
+	$is_premium = true === apply_filters( 'wlt-filter-is-premium-active', false );
+
+	define( 'WS_LS_IS_PREMIUM', $is_premium );
+	define( 'WS_LS_IS_PRO', $is_premium );			// Legacy
+	define( 'WS_LS_IS_PRO_PLUS', $is_premium );	// Legacy
 }
 
 // -----------------------------------------------------------------------------------------
@@ -71,7 +78,6 @@ require_once( WS_LS_ABSPATH . 'includes/db.php' );
 require_once( WS_LS_ABSPATH . 'includes/activate.php' );
 require_once( WS_LS_ABSPATH . 'includes/hooks.php' );
 require_once( WS_LS_ABSPATH . 'includes/cron.php' );
-require_once( WS_LS_ABSPATH . 'includes/plugin-update-checker/plugin-update-checker.php' );
 require_once( WS_LS_ABSPATH . 'includes/functions.php' );
 require_once( WS_LS_ABSPATH . 'includes/converters.php' );
 require_once( WS_LS_ABSPATH . 'includes/core.php' );
@@ -148,9 +154,10 @@ require_once( WS_LS_ABSPATH . 'pro-features/db.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/functions-stats.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/hooks.php' );
 
-if ( true === WS_LS_IS_PREMIUM ) {
-	require_once( WS_LS_ABSPATH . 'pro-features/gamification.php' );
-}
+// Unconditional, matching every other pro-features/ file - it doesn't check WS_LS_IS_PREMIUM
+// internally, and that constant isn't defined yet this early (see the plugins_loaded note
+// above), so a runtime check here would always see "not premium" regardless of license.
+require_once( WS_LS_ABSPATH . 'pro-features/gamification.php' );
 
 require_once( WS_LS_ABSPATH . 'pro-features/plus/awards/activate.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/plus/awards/functions.php' );
@@ -167,9 +174,15 @@ require_once( WS_LS_ABSPATH . 'pro-features/plus/macronutrient-calculator.php' )
 require_once( WS_LS_ABSPATH . 'pro-features/plus/shortcode.calculator.php' );
 require_once( WS_LS_ABSPATH . 'pro-features/export/inc.php' );
 
-// Gravity Forms
-if ( true === WS_LS_IS_PREMIUM && 'yes' == get_option( 'ws-ls-gf-enable', 'yes' ) ) {
-	require_once( WS_LS_ABSPATH . 'pro-features/hook-gravity-forms.php' );
+// Gravity Forms - deferred to plugins_loaded (after ws_ls_bootstrap_premium_flag(), priority 5
+// above) since WS_LS_IS_PREMIUM isn't defined yet this early. See the plugins_loaded note above.
+add_action( 'plugins_loaded', 'ws_ls_maybe_load_gravity_forms_hook', 10 );
+
+function ws_ls_maybe_load_gravity_forms_hook() {
+
+	if ( true === WS_LS_IS_PREMIUM && 'yes' == get_option( 'ws-ls-gf-enable', 'yes' ) ) {
+		require_once( WS_LS_ABSPATH . 'pro-features/hook-gravity-forms.php' );
+	}
 }
 
 require_once( WS_LS_ABSPATH . 'includes/deprecated.php' );
@@ -183,8 +196,7 @@ function ws_ls_load_textdomain() {
 add_action('plugins_loaded', 'ws_ls_load_textdomain');
 
 // -----------------------------------------------------------------------------------------
-// Since we're no longer hosted on WordPress.org, use the following for auto updates
+// This plugin is (again) hosted on wordpress.org, which handles update checks/delivery
+// natively - the custom plugin-update-checker + private release manifest now only matter
+// for the separately-sold Premium plugin, so that wiring has moved there.
 // -----------------------------------------------------------------------------------------
-use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
-
-$wt_plugin_updater = PucFactory::buildUpdateChecker( WE_LS_YEKEN_LATEST_RELEASE_MANIFEST, __FILE__, WE_LS_SLUG );

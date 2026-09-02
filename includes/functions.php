@@ -1894,3 +1894,108 @@ function ws_ls_wp_kses( $value ) {
 
 	return wp_kses( $value, $basic_tags );
 }
+
+define( 'WS_LS_LICENSE_SITE_HASH', 'ws-ls-license-site-hash' );
+
+/**
+ * Generate a site hash to identify this site. Used both for license
+ * validation (Premium plugin) and generic site-fingerprinting (e.g. the
+ * "yk-wt-{hash}" body class below), so it lives here rather than in
+ * Premium's license.php.
+ **/
+function ws_ls_generate_site_hash() {
+
+	$site_hash = get_option( WS_LS_LICENSE_SITE_HASH );
+
+	if ( false !== $site_hash ) {
+		return $site_hash;
+	}
+
+	// Generate a basic site key from URL and plugin slug
+	$site_hash = md5( WE_LS_SLUG . '-' . site_url() );
+	$site_hash = substr( $site_hash, 0, 6 );
+
+	update_option( WS_LS_LICENSE_SITE_HASH, $site_hash );
+
+	return $site_hash;
+}
+
+/**
+ * Fetch Premium license price. This is just marketing/pricing display (works
+ * the same whether or not this site has a license), used by both the free
+ * plugin's own "Upgrade" page and the Premium plugin's "Your License" page -
+ * so it lives here rather than in Premium's license.php.
+ *
+ * @return float|null
+ */
+function ws_ls_license_premium() {
+
+    $price = yeken_license_price( 'pro' );
+
+    return ( false === empty( $price ) ) ? $price : WE_LS_PREMIUM_PRICE;
+}
+
+if ( false === function_exists( 'yeken_license_api_fetch_licenses' ) ) {
+
+    /**
+     * Call out to YeKen API for license prices
+     */
+    function yeken_license_api_fetch_licenses() {
+
+        if ( $cache = get_transient( '_yeken_api_prices' ) ) {
+            return $cache;
+        }
+
+        $response = wp_remote_get( 'https://shop.yeken.uk/wp-json/yeken/v1/license-prices/' );
+
+        // All ok?
+        if ( 200 === wp_remote_retrieve_response_code( $response ) ) {
+
+            $body = wp_remote_retrieve_body( $response );
+
+            if ( false === empty( $body ) ) {
+
+                $body = json_decode( $body, true );
+                set_transient( '_yeken_api_prices', $body, 216000 ); // Cache for 6 hours
+
+                return $body;
+            }
+        }
+
+        return NULL;
+    }
+
+	/**
+	 * Fetch a certain product price
+	 * @param $sku
+	 * @param string $type
+	 * @return |null
+	 */
+    function yeken_license_price( $sku, $type = 'yearly' ) {
+
+        $licenses = yeken_license_api_fetch_licenses();
+
+        return ( false === empty( $licenses[ $sku ][ $type ] ) ) ? $licenses[ $sku ][ $type ] : NULL;
+    }
+
+    /**
+     * Render out license prices
+     *
+     * @param $args
+     * @return mixed|string
+     */
+    function yeken_license_shortcode( $args ) {
+
+        $args = wp_parse_args( $args, [ 'sku' => 'sv-premium', 'type' => 'yearly', 'prefix' => '&pound;' ] );
+
+        $price = yeken_license_price( $args[ 'sku' ], $args[ 'type' ] );
+
+        if ( false === empty( $price ) ) {
+            return sprintf( '%s%d', esc_html(  $args[ 'prefix' ] ), $price );
+        }
+
+        return '';
+    }
+    add_shortcode( 'yeken-license-price', 'yeken_license_shortcode' );
+
+}

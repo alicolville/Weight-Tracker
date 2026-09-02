@@ -24,17 +24,6 @@ add_action('cron_schedules', 'ws_ls_schedules');
 
 
 /**
- * Check if the license is still valid
- */
-function ws_ls_licences_cron() {
-
-	$existing_license = ws_ls_license();
-
-	ws_ls_license_apply( $existing_license );
-}
-add_action( 'weight_loss_tracker_hourly', 'ws_ls_licences_cron' );
-
-/**
  * Delete older log files
  */
 function ws_ls_logs_delete_cron() {

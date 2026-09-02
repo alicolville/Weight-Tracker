@@ -18,10 +18,15 @@ function ws_ls_build_admin_menu() {
     add_submenu_page( 'ws-ls-data-home', esc_html__( 'Awards', WE_LS_SLUG ),  esc_html__('Awards', WE_LS_SLUG), 'manage_options', 'ws-ls-awards', 'ws_ls_awards_page' );
     add_submenu_page( 'ws-ls-data-home', esc_html__( 'Challenges', WE_LS_SLUG ),  esc_html__('Challenges', WE_LS_SLUG), 'manage_options', 'ws-ls-challenges', 'ws_ls_challenges_admin_page' );
 
-	$menu_text = ( false === WS_LS_IS_PREMIUM ) ? esc_html__('Upgrade', WE_LS_SLUG) : esc_html__('Your License', WE_LS_SLUG);
-
 	add_submenu_page( 'ws-ls-data-home', esc_html__('Settings', WE_LS_SLUG),  esc_html__('Settings', WE_LS_SLUG), 'manage_options', 'ws-ls-settings', 'ws_ls_settings_page');
-	add_submenu_page( 'ws-ls-data-home', $menu_text,  $menu_text, 'manage_options', 'ws-ls-license', 'ws_ls_advertise_premium');
+
+	// The Premium plugin registers its own "Your License" submenu on this same slug
+	// (see weight-tracker-premium/includes/page-license.php) when it's installed - only
+	// show this free-tier upsell version when Premium genuinely isn't present at all.
+	if ( false === has_filter( 'wlt-filter-is-premium-active' ) ) {
+		$menu_text = esc_html__( 'Upgrade', WE_LS_SLUG );
+		add_submenu_page( 'ws-ls-data-home', $menu_text, $menu_text, 'manage_options', 'ws-ls-license', 'ws_ls_upgrade_page' );
+	}
 
     if ( true === ws_ls_setup_wizard_show_notice() ) {
         add_submenu_page( 'ws-ls-data-home', esc_html__('Setup Wizard', WE_LS_SLUG),  esc_html__('Setup Wizard', WE_LS_SLUG), 'manage_options', 'ws-ls-data-setup-wizard', 'ws_ls_setup_wizard_page');
@@ -275,7 +280,8 @@ function wlt_body_class( $classes ) {
 
 	$classes[]  = 'yk-wt';
 	$classes[]  = 'yk-wt-' . ws_ls_generate_site_hash();
-	$license    = ws_ls_has_a_valid_license();
+	// ws_ls_has_a_valid_license() only exists when the Premium plugin is installed.
+	$license    = ( true === function_exists( 'ws_ls_has_a_valid_license' ) ) ? ws_ls_has_a_valid_license() : false;
 	$classes[]  = sprintf( 'yk-wt-%s', ( false === empty( $license ) ) ? esc_attr( $license ) : 'no-license' );
 
 	return $classes;
