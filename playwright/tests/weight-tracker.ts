@@ -49,12 +49,61 @@ export class WeightTracker {
   async target_clear(){
     await this.goto();
     await this.page.getByTestId('wt-tab-settings').click();
-      
+
     const visible = await this.page.getByRole('button', { name: 'Clear Target' }).isVisible();
-    
+
     if (visible) {
       this.page.on('dialog', dialog => dialog.accept());
       await this.page.getByRole('button', { name: 'Clear Target' }).click();
-    }    
+    }
+  }
+
+  // Clicking "Save Settings" fires an AJAX request and, on success, the page's own JS
+  // does a window.location.replace(...?user-preference-saved=true) itself - it's not a
+  // normal form submission Playwright can wait on. If we return right after the click, the
+  // next action (often another goto()) can race that in-flight save and abort it before the
+  // server ever sees it, leaving the setting unchanged. So wait for the resulting reload.
+  async save_settings() {
+      await Promise.all([
+          this.page.waitForURL(/user-preference-saved=true/),
+          this.page.getByRole('button', { name: 'Save Settings' }).click(),
+      ]);
+  }
+
+  async settings_set_unit(unit: string) {
+      await this.goto();
+      await this.page.getByTestId('wt-tab-settings').click();
+      await this.page.getByLabel('In which unit would you like').selectOption(unit);
+      await this.save_settings();
+  }
+
+  async settings_set_date_format(format: string) {
+      await this.goto();
+      await this.page.getByTestId('wt-tab-settings').click();
+      await this.page.getByLabel('Display dates in the').selectOption(format);
+      await this.save_settings();
+  }
+
+  async settings_set_height(height: string) {
+      await this.goto();
+      await this.page.getByTestId('wt-tab-settings').click();
+      await this.page.getByLabel('Your height:').selectOption(height);
+      await this.save_settings();
+  }
+
+  async settings_clear_height() {
+      await this.goto();
+      await this.page.getByTestId('wt-tab-settings').click();
+      await this.page.getByLabel('Your height:').evaluate((select: HTMLSelectElement) => {
+          select.selectedIndex = -1;
+      });
+      await this.save_settings();
+  }
+
+  async history_wait_for_loaded() {
+      await this.goto();
+      await this.page.getByTestId('wt-tab-history').click();
+      // Wait until FooTable removes the loading class after its AJAX call
+      await this.page.locator('.ws-ls-user-data-ajax:not(.ws-ls-loading-table)').waitFor();
   }
 }
