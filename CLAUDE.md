@@ -67,6 +67,7 @@ A single JS config object (built by `ws_ls_config_js()` in `includes/core.php`, 
 - `playwright/tests/weight-tracker.ts` exports a `WeightTracker` helper class wrapping common UI flows (`weight_add`, `target_set`, `settings_set_height`, ...) against `data-testid` attributes rendered by the PHP. Prefer adding a method here over duplicating raw locators in a new spec file.
 - Any helper that clicks "Save Settings" must wait for the resulting reload (matching `?user-preference-saved=true`) before returning, per the AJAX gotcha above — don't just `.click()` and continue.
 - **Tests must restore state.** Every test (or its fixture) should leave shared data back the way it found it — clear/reset whatever it added (weight entries, target, height, other preferences) rather than relying on the next test's `beforeEach` to clean up after it. Existing helpers like `weight_clear_all()`, `target_clear()` follow this already; keep new tests consistent with it, since the suite runs serially against one shared WordPress user's data.
+- `workers: 1` only serializes tests *within one `npx playwright test` invocation*. It does nothing to stop two separate invocations (e.g. your own terminal run and an IDE's Playwright runner, or two agents) from hitting the same shared WordPress install at the same time — that produces a cascade of unrelated-looking failures on both sides, not a real regression. Before treating a sudden wave of failures as a bug, check whether another test run was in flight at the same time.
 
 ## Workflow
 
