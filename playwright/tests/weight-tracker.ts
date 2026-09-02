@@ -57,40 +57,4 @@ export class WeightTracker {
       await this.page.getByRole('button', { name: 'Clear Target' }).click();
     }    
   }
-
-  async settings_set_unit(unit: string) {
-      await this.goto();
-      await this.page.getByTestId('wt-tab-settings').click();
-      await this.page.getByLabel('In which unit would you like').selectOption(unit);
-      await this.page.getByRole('button', { name: 'Save Settings' }).click();
-  }
-
-  async settings_set_date_format(format: string) {
-      await this.goto();
-      await this.page.getByTestId('wt-tab-settings').click();
-      await this.page.getByLabel('Display dates in the').selectOption(format);
-      await this.page.getByRole('button', { name: 'Save Settings' }).click();
-  }
-
-  async settings_set_height(height: string) {
-      await this.goto();
-      await this.page.getByTestId('wt-tab-settings').click();
-      await this.page.getByLabel('Your height:').selectOption(height);
-      await this.page.getByRole('button', { name: 'Save Settings' }).click();
-  }
-
-  // Returns today's date as DD/MM/YYYY (UK input format)
-  get_today_uk(): string {
-      const d = new Date();
-      const dd = String(d.getDate()).padStart(2, '0');
-      const mm = String(d.getMonth() + 1).padStart(2, '0');
-      return `${dd}/${mm}/${d.getFullYear()}`;
-  }
-
-  async history_wait_for_loaded() {
-      await this.goto();
-      await this.page.getByTestId('wt-tab-history').click();
-      // Wait until FooTable removes the loading class after its AJAX call
-      await this.page.locator('.ws-ls-user-data-ajax:not(.ws-ls-loading-table)').waitFor();
-  }
 }

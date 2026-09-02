@@ -7,7 +7,7 @@
 			"path": "."
 		},
 		{
-			"path": "../../../../../docker-wordpress"
+			"path": "../../.."
 		}
 	],
 	"settings": {
