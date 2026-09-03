@@ -26,9 +26,14 @@ function ws_ls_delete_data_for_user( $user_id = NULL ) {
 
 	    ws_ls_db_entry_delete_all_for_user( $user_id );
 
-		ws_ls_stats_update_for_user( $user_id );
+		// Stats/messaging are Premium features - both functions only exist with it.
+		if ( true === function_exists( 'ws_ls_stats_update_for_user' ) ) {
+			ws_ls_stats_update_for_user( $user_id );
+		}
 
-		ws_ls_messaging_db_delete_all_for_user( $user_id );
+		if ( true === function_exists( 'ws_ls_messaging_db_delete_all_for_user' ) ) {
+			ws_ls_messaging_db_delete_all_for_user( $user_id );
+		}
 
 		// Let others know we cleared all user data
 		do_action( 'wlt-hook-data-user-deleted', $user_id );
@@ -44,15 +49,19 @@ function ws_ls_admin_check_mysql_tables_exist() {
     $tables_to_check = [    $wpdb->prefix . WE_LS_TARGETS_TABLENAME,
 							$wpdb->prefix . WE_LS_TABLENAME,
 							$wpdb->prefix . WE_LS_USER_PREFERENCES_TABLENAME,
-							$wpdb->prefix . WE_LS_MYSQL_META_FIELDS,
-							$wpdb->prefix . WE_LS_MYSQL_META_ENTRY,
-							$wpdb->prefix . WE_LS_MYSQL_AWARDS,
-							$wpdb->prefix . WE_LS_MYSQL_AWARDS_GIVEN,
-							$wpdb->prefix . WE_LS_MYSQL_GROUPS,
-							$wpdb->prefix . WE_LS_MYSQL_GROUPS_USER,
-							$wpdb->prefix . WE_LS_MYSQL_EXPORT_REPORT,
-							$wpdb->prefix . WE_LS_MYSQL_EXPORT
                        ];
+
+    // The following table-name constants are only defined by the Premium plugin (meta
+    // fields/awards/groups/export all live there).
+    $premium_table_constants = [ 'WE_LS_MYSQL_META_FIELDS', 'WE_LS_MYSQL_META_ENTRY', 'WE_LS_MYSQL_AWARDS',
+                                  'WE_LS_MYSQL_AWARDS_GIVEN', 'WE_LS_MYSQL_GROUPS', 'WE_LS_MYSQL_GROUPS_USER',
+                                  'WE_LS_MYSQL_EXPORT_REPORT', 'WE_LS_MYSQL_EXPORT' ];
+
+    foreach ( $premium_table_constants as $constant_name ) {
+        if ( true === defined( $constant_name ) ) {
+            $tables_to_check[] = $wpdb->prefix . constant( $constant_name );
+        }
+    }
 
     // Check each table exists!
     foreach( $tables_to_check as $table_name ) {
@@ -1621,7 +1630,8 @@ function ws_ls_setting( $key = 'weight-unit', $user_id = NULL, $force_admin = fa
 	if ( false === empty( $user_id )
 	            && true === ws_ls_user_preferences_is_enabled() &&
 	                false === $force_admin &&
-		 				false === $in_admin ) {
+		 				false === $in_admin &&
+		 				true === function_exists( 'ws_ls_user_preferences_settings_get' ) ) {
 
 		$user_preference    = NULL;
 		$legacy_key         = $mappings[ $key ];
@@ -1918,6 +1928,90 @@ function ws_ls_generate_site_hash() {
 	update_option( WS_LS_LICENSE_SITE_HASH, $site_hash );
 
 	return $site_hash;
+}
+
+/**
+ * @param $link
+ * @param $label
+ *
+ * @return string
+ */
+function ws_ls_render_link( $link, $label ) {
+	return sprintf( '<a href="%s">%s</a>', esc_url( $link ), esc_html( $label ) );
+}
+
+/**
+ * Get link to settings page
+ * @return string
+ */
+function ws_ls_get_link_to_settings() {
+    return esc_url( admin_url( 'admin.php?page=ws-ls-settings' ) );
+}
+
+/**
+ * Return base URL for user data. Genuinely tier-independent as a URL-builder even though the
+ * page it points to (ws-ls-data-home) shows different content depending on whether Premium is
+ * installed.
+ * @return string
+ */
+function ws_ls_get_link_to_user_data() {
+	return esc_url( admin_url( 'admin.php?page=ws-ls-data-home') );
+}
+
+/**
+ * Given a user ID, return a link to the user's profile. The page this points to only exists
+ * with Premium installed, but this function is just a URL-builder - it lives here so callers
+ * elsewhere in the free plugin (hooks.php, meal-tracker.php, shortcode-wt.php) don't need their
+ * own function_exists() guard just to build a link.
+ *
+ * @param int $user_id User ID
+ * @param null $display_text
+ * @param bool $escape_url
+ *
+ * @return string
+ */
+function ws_ls_get_link_to_user_profile( $user_id, $display_text = NULL, $escape_url = true ) {
+
+	$cache_key = sprintf( 'profile-url-%s', ( false === empty( $display_text ) ? sanitize_title( $display_text ) : 'empty' ) );
+
+	if ( $cache = ws_ls_cache_user_get( $user_id, $cache_key ) ) {
+		return $cache;
+	}
+
+	$profile_url = admin_url( 'admin.php?page=ws-ls-data-home&mode=user&user-id=' . (int) $user_id );
+
+	if ( true === $escape_url ) {
+		$profile_url = esc_url( $profile_url );
+	}
+
+	$profile_url = ( NULL !== $display_text ) ?
+			ws_ls_render_link( $profile_url, $display_text ) :
+			$profile_url;
+
+	ws_ls_cache_user_set( $user_id, $cache_key, $profile_url );
+
+	return $profile_url;
+}
+
+/**
+ * Are Custom Fields (a Premium feature) enabled? Trivially just the license flag, so it lives
+ * here rather than needing a function_exists() guard at each of its several call sites.
+ * @return bool
+ */
+function ws_ls_meta_fields_is_enabled() {
+	return WS_LS_IS_PREMIUM;
+}
+
+/**
+ * Get the minimum user role allowed for viewing data pages in admin. Generic infrastructure
+ * used by the admin menu builder itself (includes/hooks.php) - not gated premium logic, even
+ * though the underlying option is only ever exposed in a Premium settings screen.
+ * @return mixed|void
+ */
+function ws_ls_permission_role() {
+	$permission_role = get_option( 'ws-ls-edit-permissions', 'manage_options' );
+
+	return ( false === empty( $permission_role ) ) ? $permission_role : 'manage_options';
 }
 
 /**

@@ -93,97 +93,13 @@ require_once( WS_LS_ABSPATH . 'includes/form-handler.php' );
 require_once( WS_LS_ABSPATH . 'includes/email-manager.php' );
 require_once( WS_LS_ABSPATH . 'includes/meal-tracker.php' );
 require_once( WS_LS_ABSPATH . 'includes/marketing.php' );
+require_once( WS_LS_ABSPATH . 'includes/feature-list.php' );
 require_once( WS_LS_ABSPATH . 'includes/admin-pages/settings/page-settings.php' );
 require_once( WS_LS_ABSPATH . 'includes/admin-pages/settings/page-settings-generic.php' );
-require_once( WS_LS_ABSPATH . 'includes/admin-pages/settings/page-settings-groups.php' );
 require_once( WS_LS_ABSPATH . 'includes/admin-pages/settings/page-settings-email-manager.php' );
-require_once( WS_LS_ABSPATH . 'includes/admin-pages/user-data/data-groups.php' );
 require_once( WS_LS_ABSPATH . 'includes/admin-pages/page-help.php' );
 require_once( WS_LS_ABSPATH . 'includes/admin-pages/page-license.php' );
 require_once( WS_LS_ABSPATH . 'includes/admin-pages/page-setup-wizard.php' );
-require_once( WS_LS_ABSPATH . 'includes/admin-pages/meta-fields/page-meta-fields.php' );
-require_once( WS_LS_ABSPATH . 'includes/admin-pages/meta-fields/page-meta-fields-add-update.php' );
-require_once( WS_LS_ABSPATH . 'includes/admin-pages/meta-fields/page-meta-fields-list.php' );
-require_once( WS_LS_ABSPATH . 'includes/admin-pages/meta-fields/page-meta-fields-groups.php' );
-require_once( WS_LS_ABSPATH . 'includes/admin-pages/awards/page-awards.php' );
-require_once( WS_LS_ABSPATH . 'includes/admin-pages/awards/page-awards-list.php' );
-require_once( WS_LS_ABSPATH . 'includes/admin-pages/awards/page-awards-add-update.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/plus/meta-fields/activate.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/plus/meta-fields/db.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/plus/meta-fields/hooks.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/plus/meta-fields/functions.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/plus/meta-fields/functions-photos.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/plus/meta-fields/functions-slider.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/plus/meta-fields/shortcodes.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/feature-list.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/functions.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/functions-pages.php' );
-require_once( WS_LS_ABSPATH . 'includes/admin-pages/user-data/data-home.php' );
-require_once( WS_LS_ABSPATH . 'includes/admin-pages/user-data/data-summary.php' );
-require_once( WS_LS_ABSPATH . 'includes/admin-pages/user-data/data-view-all.php' );
-require_once( WS_LS_ABSPATH . 'includes/admin-pages/user-data/data-add-edit-entry.php' );
-require_once( WS_LS_ABSPATH . 'includes/admin-pages/user-data/data-edit-target.php' );
-require_once( WS_LS_ABSPATH . 'includes/admin-pages/user-data/data-user.php' );
-require_once( WS_LS_ABSPATH . 'includes/admin-pages/user-data/data-notes.php' );
-require_once( WS_LS_ABSPATH . 'includes/admin-pages/user-data/data-user-edit-settings.php' );
-require_once( WS_LS_ABSPATH . 'includes/admin-pages/user-data/data-search-results.php' );
-require_once( WS_LS_ABSPATH . 'includes/admin-pages/user-data/data-photos.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/user-groups.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/user-birthdays.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/user-preferences.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/shortcode-chart.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/shortcode-form.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/shortcode-footable.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/shortcode-various.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/shortcode-stats.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/shortcode-reminders.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/shortcode-progress-bar.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/shortcode-messages.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/shortcode-bmi-calculator.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/shortcode-hip-waist-ratio-calculator.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/shortcode-if.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/plus/barcode-reader.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/plus/shortcode.wlt.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/plus/photos.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/plus/photos-gallery.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/widget-chart.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/widget-form.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/widget-progress.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/footable.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/db.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/functions-stats.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/hooks.php' );
-
-// Unconditional, matching every other pro-features/ file - it doesn't check WS_LS_IS_PREMIUM
-// internally, and that constant isn't defined yet this early (see the plugins_loaded note
-// above), so a runtime check here would always see "not premium" regardless of license.
-require_once( WS_LS_ABSPATH . 'pro-features/gamification.php' );
-
-require_once( WS_LS_ABSPATH . 'pro-features/plus/awards/activate.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/plus/awards/functions.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/plus/awards/db.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/plus/awards/hooks.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/email-notifications.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/web-hooks.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/plus/challenge/inc.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/plus/messaging/inc.php' );
-
-require_once( WS_LS_ABSPATH . 'pro-features/plus/bmr.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/plus/harris-benedict.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/plus/macronutrient-calculator.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/plus/shortcode.calculator.php' );
-require_once( WS_LS_ABSPATH . 'pro-features/export/inc.php' );
-
-// Gravity Forms - deferred to plugins_loaded (after ws_ls_bootstrap_premium_flag(), priority 5
-// above) since WS_LS_IS_PREMIUM isn't defined yet this early. See the plugins_loaded note above.
-add_action( 'plugins_loaded', 'ws_ls_maybe_load_gravity_forms_hook', 10 );
-
-function ws_ls_maybe_load_gravity_forms_hook() {
-
-	if ( true === WS_LS_IS_PREMIUM && 'yes' == get_option( 'ws-ls-gf-enable', 'yes' ) ) {
-		require_once( WS_LS_ABSPATH . 'pro-features/hook-gravity-forms.php' );
-	}
-}
 
 require_once( WS_LS_ABSPATH . 'includes/deprecated.php' );
 

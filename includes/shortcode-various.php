@@ -277,3 +277,57 @@ function ws_ls_shortcode_difference_in_weight_previous_latest( $user_defined_arg
     return $html;
 }
 add_shortcode( 'wt-difference-between-latest-previous', 'ws_ls_shortcode_difference_in_weight_previous_latest' );
+
+/**
+ * Shortcode for [wt-days-between-start-and-latest] - number of days between the oldest and
+ * most recent entry.
+ *
+ * @param $user_defined_arguments
+ * @param bool $ignore_pro_status Set true to bypass the Premium gate below - used by
+ *             includes/components.php's free-tier "days tracking" widget, which reuses this
+ *             function directly rather than duplicating its logic.
+ *
+ * @return string
+ */
+function ws_ls_shortcode_days_between_start_and_latest( $user_defined_arguments, $ignore_pro_status = false ) {
+
+	if ( false === WS_LS_IS_PREMIUM && false === $ignore_pro_status ) {
+		return ws_ls_display_pro_upgrade_notice_for_shortcode();
+	}
+
+	$arguments = shortcode_atts( [ 'user-id' => get_current_user_id(), 'include-brackets' => false, 'include-days' => false ], $user_defined_arguments );
+
+	if( false === is_user_logged_in() ) {
+		return '';
+	}
+
+	$latest_entry = ws_ls_entry_get_latest( $arguments );
+
+	if ( true === empty( $latest_entry[ 'raw' ] ) ) {
+		return '';
+	}
+
+	$oldest_entry = ws_ls_entry_get_oldest( $arguments );
+
+	if ( true === empty( $oldest_entry[ 'raw' ] ) ) {
+		return '';
+	}
+
+
+	$latest_entry   = date_create( $latest_entry[ 'raw' ] );
+	$oldest_entry   = date_create( $oldest_entry[ 'raw' ] );
+	$difference     = date_diff( $latest_entry, $oldest_entry, true);
+
+	if ( true === empty( $difference->days ) ) {
+		return '';
+	}
+
+	$text = ( true === ws_ls_to_bool( $arguments[ 'include-days' ] ) ) ?
+				sprintf( '%d %s', $difference->days, esc_html__( 'days', WE_LS_SLUG ) ) :
+					$difference->days;
+
+	return ( true === ws_ls_to_bool( $arguments[ 'include-brackets' ] ) ) ?
+				sprintf( '(%s)', $text ) :
+					$text;
+}
+add_shortcode( 'wt-days-between-start-and-latest', 'ws_ls_shortcode_days_between_start_and_latest' );

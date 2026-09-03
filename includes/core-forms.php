@@ -335,9 +335,11 @@ function ws_ls_form_init( $arguments = [] ) {
 	                                   true === $arguments[ 'meta-enabled' ] &&
 	                                   true === ws_ls_meta_fields_photo_any_enabled() );
 
-	// Custom field filtering?
-	$arguments[ 'custom-field-groups' ] = ws_ls_meta_fields_groups_slugs_to_ids( $arguments[ 'custom-field-groups' ] );
-	$arguments[ 'custom-field-slugs' ]  = ws_ls_meta_fields_slugs_to_ids( $arguments[ 'custom-field-slugs' ] );
+	// Custom field filtering (Premium feature)?
+	if ( true === WS_LS_IS_PREMIUM ) {
+		$arguments[ 'custom-field-groups' ] = ws_ls_meta_fields_groups_slugs_to_ids( $arguments[ 'custom-field-groups' ] );
+		$arguments[ 'custom-field-slugs' ]  = ws_ls_meta_fields_slugs_to_ids( $arguments[ 'custom-field-slugs' ] );
+	}
 
 	return $arguments;
 }

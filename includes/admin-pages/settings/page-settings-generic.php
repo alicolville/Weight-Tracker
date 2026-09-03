@@ -131,7 +131,7 @@ function ws_ls_settings_page_generic() {
 															<?php
 																echo ws_ls_form_field_select( [ 'key' 			=> 'ws-ls-default-aim',
 																								'show-label' 	=> false,
-																								'values' 		=> ws_ls_aims(),
+																								'values' 		=> ( true === function_exists( 'ws_ls_aims' ) ) ? ws_ls_aims() : [],
 																								'selected' 		=> get_option( 'ws-ls-default-aim', NULL ) ] );
 															?>
 															<p><?php echo esc_html__('If enabled, you can specify the default aim when a user has not selected one.', WE_LS_SLUG); ?></p>
@@ -273,7 +273,7 @@ function ws_ls_settings_page_generic() {
                                                         <p><?php echo sprintf( '%s %s <a href="%s">%s</a>' ,
                                                                                         esc_html__('Maximum photo size (in MB) that is allowed to be uploaded. ' , WE_LS_SLUG),
                                                                                         esc_html__('This is used as part of Custom Fields.' , WE_LS_SLUG),
-		                                                                                ws_ls_meta_fields_base_url(),
+		                                                                                ( true === function_exists( 'ws_ls_meta_fields_base_url' ) ) ? ws_ls_meta_fields_base_url() : '',
 		                                                                                esc_html__('View Custom Fields' , WE_LS_SLUG)
                                                             ); ?></em></p>
                                                     </td>
@@ -298,7 +298,7 @@ function ws_ls_settings_page_generic() {
                                                 <tr class="<?php echo $disable_if_not_pro_class; ?>">
                                                     <th scope="row"><?php echo esc_html__( 'Who can export and delete user data?' , WE_LS_SLUG); ?></th>
 		                                            <?php
-		                                            $delete_export_permissions = ws_ls_permission_export_delete_role();
+		                                            $delete_export_permissions = ( true === function_exists( 'ws_ls_permission_export_delete_role' ) ) ? ws_ls_permission_export_delete_role() : 'manage_options';
 		                                            ?>
                                                     <td>
                                                         <select id="ws-ls-export-delete-permissions" name="ws-ls-export-delete-permissions">
@@ -364,7 +364,7 @@ function ws_ls_settings_page_generic() {
 												<tr class="<?php echo $disable_if_not_pro_plus_class; ?>">
 													<th scope="row"><?php echo esc_html__( 'Female Minimum Calorie Cap' , WE_LS_SLUG); ?></th>
 													<?php
-														$female_min_calorie_cap = ws_ls_harris_benedict_setting( 'ws-ls-female-min-cal-cap' );
+														$female_min_calorie_cap = ( true === function_exists( 'ws_ls_harris_benedict_setting' ) ? ws_ls_harris_benedict_setting( 'ws-ls-female-min-cal-cap' ) : 0 );
 
 														if ( true === empty( $female_min_calorie_cap ) ) {
 															$female_min_calorie_cap = '';
@@ -378,7 +378,7 @@ function ws_ls_settings_page_generic() {
                                                  <tr class="<?php echo $disable_if_not_pro_plus_class; ?>">
                                                     <th scope="row"><?php echo esc_html__( 'Female Maximum Calorie Cap' , WE_LS_SLUG); ?></th>
 													 <?php
-													 	$female_calorie_cap =  ws_ls_harris_benedict_setting( 'ws-ls-female-cal-cap' );
+													 	$female_calorie_cap =  ( true === function_exists( 'ws_ls_harris_benedict_setting' ) ? ws_ls_harris_benedict_setting( 'ws-ls-female-cal-cap' ) : 0 );
 													 ?>
                                                     <td>
                                                         <input  type="number"  step="any" min="0" max="5000" name="ws-ls-female-cal-cap" id="ws-ls-female-cal-cap" value="<?php echo esc_attr( $female_calorie_cap ); ?>" size="11" />
@@ -389,7 +389,7 @@ function ws_ls_settings_page_generic() {
                                                     <th scope="row"><?php echo esc_html__( 'Male Minimum Calorie Cap' , WE_LS_SLUG); ?></th>
                                                     <td>
 														<?php
-															$male_min_calorie_cap = ws_ls_harris_benedict_setting( 'ws-ls-male-min-cal-cap' );
+															$male_min_calorie_cap = ( true === function_exists( 'ws_ls_harris_benedict_setting' ) ? ws_ls_harris_benedict_setting( 'ws-ls-male-min-cal-cap' ) : 0 );
 
 															if ( true === empty( $male_min_calorie_cap ) ) {
 																$male_min_calorie_cap = '';
@@ -402,7 +402,7 @@ function ws_ls_settings_page_generic() {
 													<th scope="row"><?php echo esc_html__( 'Male Maximum Calorie Cap' , WE_LS_SLUG); ?></th>
 													<td>
 														<?php
-															$male_calorie_cap = ws_ls_harris_benedict_setting( 'ws-ls-male-cal-cap' );
+															$male_calorie_cap = ( true === function_exists( 'ws_ls_harris_benedict_setting' ) ? ws_ls_harris_benedict_setting( 'ws-ls-male-cal-cap' ) : 0 );
 														?>
 														<input  type="number"  step="any" min="0" max="5000" name="ws-ls-male-cal-cap" id="ws-ls-male-cal-cap" value="<?php echo esc_attr( $male_calorie_cap ); ?>" size="11" />
 														<p><?php echo esc_html__('Specify a maximum value for number of daily calories allowed to achieve weight loss. As per NHS guidelines, males are set to 1900kcal by default', WE_LS_SLUG);?>. <?php echo esc_url( ws_ls_calculations_link() ); ?>. <em><?php echo esc_html__( 'Please note, it may take up to 15 minutes for calculations to change (due to caching).' , WE_LS_SLUG); ?></em></p></td>
@@ -411,7 +411,7 @@ function ws_ls_settings_page_generic() {
                                                     <th scope="row"><?php echo esc_html__( 'Calories to subtract' , WE_LS_SLUG); ?></th>
                                                     <?php
 
-														$subtract_ranges = ws_ls_harris_benedict_calorie_subtract_ranges();
+														$subtract_ranges = ( true === function_exists( 'ws_ls_harris_benedict_calorie_subtract_ranges' ) ) ? ws_ls_harris_benedict_calorie_subtract_ranges() : [];
                                                     ?>
                                                     <td>
 														<p><?php echo esc_html__( 'Once the daily calorie intake to maintain weight has been established, use the following table to define how many calories should be subtracted for the user to lose weight. You have the ability to set up ranges - if the user\'s calorie intake figure to maintain weight lands within that range you have the ability to specify whether to subtract a fixed number of calories or a percentage of the calorie intake.
@@ -513,7 +513,7 @@ function ws_ls_settings_page_generic() {
 													<th scope="row"><?php echo esc_html__( 'Calories to add' , WE_LS_SLUG); ?></th>
 													<?php
 
-													$add_ranges = ws_ls_harris_benedict_calorie_add_ranges();
+													$add_ranges = ( true === function_exists( 'ws_ls_harris_benedict_calorie_add_ranges' ) ) ? ws_ls_harris_benedict_calorie_add_ranges() : [];
 													?>
 													<td>
 														<p><?php echo esc_html__( 'Once the daily calorie intake to maintain weight has been established, use the following table to define how many calories should be subtracted for the user to gain weight. You have the ability to set up ranges - if the user\'s calorie intake figure to maintain weight lands within that range you have the ability to specify whether to add a fixed number of calories or a percentage of the calorie intake.
@@ -618,15 +618,15 @@ function ws_ls_settings_page_generic() {
 															<tbody>
 															<?php foreach ( ['maintain', 'lose', 'gain' ] as $key ): ?>
 																<tr>
-																	<th><?php echo ws_ls_echo( ws_ls_get_macro_name( $key ) ); ?></th>
+																	<th><?php echo ws_ls_echo( ( true === function_exists( 'ws_ls_get_macro_name' ) ) ? ws_ls_get_macro_name( $key ) : ucfirst( $key ) ); ?></th>
 																	<td>
-																		<input  type="number"  step="any" min="0" max="100" name="ws-ls-macro-proteins-<?php echo $key; ?>"  class="ws-ls-macro ws-ls-macro-<?php echo $key; ?>" data-type="<?php echo $key; ?>" value="<?php echo esc_attr( ws_ls_harris_benedict_setting( 'ws-ls-macro-proteins-' . $key ) ); ?>" size=3" />%
+																		<input  type="number"  step="any" min="0" max="100" name="ws-ls-macro-proteins-<?php echo $key; ?>"  class="ws-ls-macro ws-ls-macro-<?php echo $key; ?>" data-type="<?php echo $key; ?>" value="<?php echo esc_attr( ( true === function_exists( 'ws_ls_harris_benedict_setting' ) ? ws_ls_harris_benedict_setting( 'ws-ls-macro-proteins-' . $key ) : 0 ) ); ?>" size=3" />%
 																	</td>
 																	<td>
-																		<input  type="number"  step="any" min="0" max="100" name="ws-ls-macro-carbs-<?php echo $key; ?>" class="ws-ls-macro ws-ls-macro-<?php echo $key; ?>" data-type="<?php echo $key; ?>" value="<?php echo esc_attr( ws_ls_harris_benedict_setting( 'ws-ls-macro-carbs-' . $key ) ); ?>" size="3" />%
+																		<input  type="number"  step="any" min="0" max="100" name="ws-ls-macro-carbs-<?php echo $key; ?>" class="ws-ls-macro ws-ls-macro-<?php echo $key; ?>" data-type="<?php echo $key; ?>" value="<?php echo esc_attr( ( true === function_exists( 'ws_ls_harris_benedict_setting' ) ? ws_ls_harris_benedict_setting( 'ws-ls-macro-carbs-' . $key ) : 0 ) ); ?>" size="3" />%
 																	</td>
 																	<td>
-																		<input  type="number"  step="any" min="0" max="100" name="ws-ls-macro-fats-<?php echo $key; ?>"  class="ws-ls-macro ws-ls-macro-<?php echo $key; ?>" data-type="<?php echo $key; ?>" value="<?php echo esc_attr( ws_ls_harris_benedict_setting( 'ws-ls-macro-fats-' . $key ) ); ?>" size="3" />%
+																		<input  type="number"  step="any" min="0" max="100" name="ws-ls-macro-fats-<?php echo $key; ?>"  class="ws-ls-macro ws-ls-macro-<?php echo $key; ?>" data-type="<?php echo $key; ?>" value="<?php echo esc_attr( ( true === function_exists( 'ws_ls_harris_benedict_setting' ) ? ws_ls_harris_benedict_setting( 'ws-ls-macro-fats-' . $key ) : 0 ) ); ?>" size="3" />%
 																	</td>
 																</tr>
 															<?php endforeach; ?>
@@ -639,7 +639,8 @@ function ws_ls_settings_page_generic() {
                                             <h3><?php echo esc_html__( 'Macronutrient Calculator: Meals' , WE_LS_SLUG); ?></h3>
                                             <table class="form-table">
                                                 <?php
-                                                        foreach ( ws_ls_harris_benedict_meal_ratio_defaults() as $key => $default ) {
+                                                        // Meal-ratio settings are a Premium feature - both functions only exist with it.
+                                                        foreach ( ( ( true === function_exists( 'ws_ls_harris_benedict_meal_ratio_defaults' ) ) ? ws_ls_harris_benedict_meal_ratio_defaults() : [] ) as $key => $default ) {
 
                                                             printf( '<tr class="%1$s">
                                                                                         <th scope="row">%2$s</th>
@@ -652,7 +653,7 @@ function ws_ls_settings_page_generic() {
                                                                 $disable_if_not_pro_plus_class,
                                                                 esc_html( ucfirst( $key ) ),
                                                                 $key,
-                                                                ws_ls_harris_benedict_meal_ratio_get( $key ),
+                                                                ( true === function_exists( 'ws_ls_harris_benedict_meal_ratio_get' ) ) ? ws_ls_harris_benedict_meal_ratio_get( $key ) : 0,
                                                                 esc_html__( 'Percentage of calories to split into ', WE_LS_SLUG ),
                                                                 ws_ls_calculations_link(),
                                                                 esc_html__( 'Please note, it may take up to 15 minutes for calculations to change (due to caching).' , WE_LS_SLUG )
@@ -1228,12 +1229,14 @@ function ws_ls_register_settings(){
 		register_setting( 'we-ls-options-group', 'ws-ls-macro-carbs-gain' );
 		register_setting( 'we-ls-options-group', 'ws-ls-macro-fats-gain' );
 
-        foreach ( ws_ls_harris_benedict_meal_ratio_defaults() as $key => $default ) {
+        // Harris-Benedict/macronutrient settings are a Premium feature - both functions
+        // below only exist with it.
+        foreach ( ( ( true === function_exists( 'ws_ls_harris_benedict_meal_ratio_defaults' ) ) ? ws_ls_harris_benedict_meal_ratio_defaults() : [] ) as $key => $default ) {
             register_setting( 'we-ls-options-group', sprintf( ' ws-ls-meal-ratio-%s', $key ) );
         }
 
         // Calories to subtract
-		foreach ( ws_ls_harris_benedict_calorie_subtract_ranges_keys() as $key ) {
+		foreach ( ( ( true === function_exists( 'ws_ls_harris_benedict_calorie_subtract_ranges_keys' ) ) ? ws_ls_harris_benedict_calorie_subtract_ranges_keys() : [] ) as $key ) {
 			register_setting( 'we-ls-options-group', $key );
 		}
     }

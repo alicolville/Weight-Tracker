@@ -9,21 +9,34 @@ function ws_ls_build_admin_menu() {
 
 	$minimum_role_to_view = ws_ls_permission_role();
 
-	add_menu_page( WE_LS_TITLE, WE_LS_TITLE, $minimum_role_to_view, 'ws-ls-data-home', 'ws_ls_admin_page_data_home', 'dashicons-chart-line');
+	// "Manage user data" (BMI/BMR/groups/photos/etc for a specific user) is a Premium feature
+	// (readme.txt lists it as one) - its real implementation lives entirely in the Premium
+	// plugin (ws_ls_admin_page_data_home() there), including being the default landing page
+	// for this menu's top-level click. Fall back to a simple free-tier explainer page when
+	// Premium isn't installed, rather than leaving the top-level menu with nothing to render.
+	$user_data_is_premium = has_filter( 'wlt-filter-is-premium-active' );
+	$home_callback        = ( true === $user_data_is_premium ) ? 'ws_ls_admin_page_data_home' : 'ws_ls_admin_page_data_home_free';
+
+	add_menu_page( WE_LS_TITLE, WE_LS_TITLE, $minimum_role_to_view, 'ws-ls-data-home', $home_callback, 'dashicons-chart-line');
 
     // Display manage user screens to relevant roles.
-    add_submenu_page( 'ws-ls-data-home', esc_html__( 'User Data', WE_LS_SLUG ),  esc_html__( 'User Data', WE_LS_SLUG ), $minimum_role_to_view, 'ws-ls-data-home', 'ws_ls_admin_page_data_home' );
-	add_submenu_page( 'ws-ls-data-home', esc_html__( 'User Groups', WE_LS_SLUG ),  esc_html__( 'User Groups', WE_LS_SLUG ), 'manage_options', 'ws-ls-user-groups', 'ws_ls_settings_page_group' );
-	add_submenu_page( 'ws-ls-data-home', esc_html__( 'Custom Fields', WE_LS_SLUG ),  esc_html__('Custom Fields', WE_LS_SLUG), 'manage_options', 'ws-ls-meta-fields', 'ws_ls_meta_fields_page' );
-    add_submenu_page( 'ws-ls-data-home', esc_html__( 'Awards', WE_LS_SLUG ),  esc_html__('Awards', WE_LS_SLUG), 'manage_options', 'ws-ls-awards', 'ws_ls_awards_page' );
-    add_submenu_page( 'ws-ls-data-home', esc_html__( 'Challenges', WE_LS_SLUG ),  esc_html__('Challenges', WE_LS_SLUG), 'manage_options', 'ws-ls-challenges', 'ws_ls_challenges_admin_page' );
+    add_submenu_page( 'ws-ls-data-home', esc_html__( 'User Data', WE_LS_SLUG ),  esc_html__( 'User Data', WE_LS_SLUG ), $minimum_role_to_view, 'ws-ls-data-home', $home_callback );
+
+	// Groups/Custom Fields/Awards/Challenges are all Premium features too - their callbacks
+	// only exist once the Premium plugin has loaded, so only register these when it has.
+	if ( true === $user_data_is_premium ) {
+		add_submenu_page( 'ws-ls-data-home', esc_html__( 'User Groups', WE_LS_SLUG ),  esc_html__( 'User Groups', WE_LS_SLUG ), 'manage_options', 'ws-ls-user-groups', 'ws_ls_settings_page_group' );
+		add_submenu_page( 'ws-ls-data-home', esc_html__( 'Custom Fields', WE_LS_SLUG ),  esc_html__('Custom Fields', WE_LS_SLUG), 'manage_options', 'ws-ls-meta-fields', 'ws_ls_meta_fields_page' );
+		add_submenu_page( 'ws-ls-data-home', esc_html__( 'Awards', WE_LS_SLUG ),  esc_html__('Awards', WE_LS_SLUG), 'manage_options', 'ws-ls-awards', 'ws_ls_awards_page' );
+		add_submenu_page( 'ws-ls-data-home', esc_html__( 'Challenges', WE_LS_SLUG ),  esc_html__('Challenges', WE_LS_SLUG), 'manage_options', 'ws-ls-challenges', 'ws_ls_challenges_admin_page' );
+	}
 
 	add_submenu_page( 'ws-ls-data-home', esc_html__('Settings', WE_LS_SLUG),  esc_html__('Settings', WE_LS_SLUG), 'manage_options', 'ws-ls-settings', 'ws_ls_settings_page');
 
 	// The Premium plugin registers its own "Your License" submenu on this same slug
 	// (see weight-tracker-premium/includes/page-license.php) when it's installed - only
 	// show this free-tier upsell version when Premium genuinely isn't present at all.
-	if ( false === has_filter( 'wlt-filter-is-premium-active' ) ) {
+	if ( false === $user_data_is_premium ) {
 		$menu_text = esc_html__( 'Upgrade', WE_LS_SLUG );
 		add_submenu_page( 'ws-ls-data-home', $menu_text, $menu_text, 'manage_options', 'ws-ls-license', 'ws_ls_upgrade_page' );
 	}
@@ -36,6 +49,26 @@ function ws_ls_build_admin_menu() {
 
 }
 add_action( 'admin_menu', 'ws_ls_build_admin_menu' );
+
+/**
+ * Free-tier landing page for the top-level admin menu, shown only when the Premium plugin
+ * isn't installed (see ws_ls_build_admin_menu() above) - managing other users' data is a
+ * Premium feature, so there's nothing free-tier to show here beyond pointing at Settings and
+ * the upgrade page.
+ */
+function ws_ls_admin_page_data_home_free() {
+	?>
+	<div class="wrap ws-ls-admin-page">
+		<h1><?php echo esc_html( WE_LS_TITLE ); ?></h1>
+		<p><?php echo esc_html__( 'Viewing and editing your users\' weight/measurement data from wp-admin is a Premium feature.', WE_LS_SLUG ); ?></p>
+		<p><?php echo esc_html__( 'Your users can still track their own weight using the [wt] shortcode on the front end - use the Settings page to configure units, date format, and which fields are shown.', WE_LS_SLUG ); ?></p>
+		<p>
+			<a href="<?php echo esc_url( admin_url( 'admin.php?page=ws-ls-settings' ) ); ?>" class="button-secondary"><?php echo esc_html__( 'Settings', WE_LS_SLUG ); ?></a>
+			<a href="<?php echo esc_url( admin_url( 'admin.php?page=ws-ls-license' ) ); ?>" class="button-primary"><?php echo esc_html__( 'Upgrade to Premium', WE_LS_SLUG ); ?></a>
+		</p>
+	</div>
+	<?php
+}
 
 /**
  * Enqueue required CSS

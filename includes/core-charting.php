@@ -63,9 +63,11 @@ function ws_ls_display_chart( $weight_data, $options = [] ) {
 											'fontFamily' => get_option( 'ws-ls-font-family', '' )
 	];
 
-	// Custom field filtering?
-	$chart_config[ 'custom-field-groups' ] = ws_ls_meta_fields_groups_slugs_to_ids( $chart_config[ 'custom-field-groups' ] );
-	$chart_config[ 'custom-field-slugs' ]  = ws_ls_meta_fields_slugs_to_ids( $chart_config[ 'custom-field-slugs' ] );
+	// Custom field filtering (Premium feature)?
+	if ( true === WS_LS_IS_PREMIUM ) {
+		$chart_config[ 'custom-field-groups' ] = ws_ls_meta_fields_groups_slugs_to_ids( $chart_config[ 'custom-field-groups' ] );
+		$chart_config[ 'custom-field-slugs' ]  = ws_ls_meta_fields_slugs_to_ids( $chart_config[ 'custom-field-slugs' ] );
+	}
 
 	$chart_config[ 'meta-fields' ]      =  WS_LS_IS_PREMIUM ? ws_ls_meta_fields_plottable( $chart_config ) : false;
 	$chart_config[ 'show-meta-fields' ] = ( true === ws_ls_to_bool( $chart_config[ 'show-meta-fields' ] ) &&

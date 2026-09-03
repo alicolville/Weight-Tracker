@@ -8,6 +8,12 @@ defined('ABSPATH') or die("Jog on!");
  */
 function ws_ls_harris_benedict_migrate_old_macro_percentages() {
 
+	// ws_ls_harris_benedict_setting() only exists with the Premium plugin - nothing to
+	// migrate without it anyway.
+	if ( false === function_exists( 'ws_ls_harris_benedict_setting' ) ) {
+		return;
+	}
+
 	if ( true === update_option( 'ws-ls-migrated-macro-percentages', 'y' ) ) {
 
 		ws_ls_log_add('migration', 'Migrating macro percentages to each aim.' );

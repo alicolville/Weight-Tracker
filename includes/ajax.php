@@ -30,7 +30,8 @@ function ws_ls_delete_notification_callback() {
 
 	$notification_id = ws_ls_post_value('notification-id');
 
-	wp_send_json( ws_ls_messaging_db_delete( $notification_id, true ) );
+	// Messaging/notifications are a Premium feature.
+	wp_send_json( ( true === function_exists( 'ws_ls_messaging_db_delete' ) ) ? ws_ls_messaging_db_delete( $notification_id, true ) : false );
 }
 add_action( 'wp_ajax_ws_ls_delete_notification', 'ws_ls_delete_notification_callback' );
 
@@ -87,6 +88,11 @@ Load data for user table (admin)
 function ws_ls_get_table_data() {
 
 	check_ajax_referer( 'ws-ls-user-tables', 'security' );
+
+	// The richer data table is entirely a Premium feature.
+	if ( false === function_exists( 'ws_ls_datatable_columns' ) ) {
+		wp_send_json( [] );
+	}
 
 	global $ws_ls_request_from_admin_screen;
 

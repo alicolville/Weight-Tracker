@@ -605,8 +605,8 @@ function ws_ls_emailer_user_has_optedin( $list_name, $user_id = NULL ) {
 
 	$user_id = ( NULL === $user_id ) ? get_current_user_id() : $user_id;
 
-	// Ensure emails are enabled globally
-	if ( false === ws_ls_email_enabled() ) {
+	// Ensure emails are enabled globally (Premium feature - function only exists with it)
+	if ( false === function_exists( 'ws_ls_email_enabled' ) || false === ws_ls_email_enabled() ) {
 		return false;
 	}
 
@@ -640,7 +640,8 @@ function ws_ls_emailer_user_lists( $user_id = NULL ) {
 
 	$user_id 	= ( NULL === $user_id ) ? get_current_user_id() : $user_id;
 
-	$lists 		= ws_ls_user_preferences_get( 'email_lists', $user_id );
+	// ws_ls_user_preferences_get() only exists with the Premium plugin.
+	$lists 		= ( true === function_exists( 'ws_ls_user_preferences_get' ) ) ? ws_ls_user_preferences_get( 'email_lists', $user_id ) : NULL;
 
 	return ( false === empty( $lists ) ) ? json_decode( $lists, true ) : ws_ls_emailer_lists_default_setting();
 }

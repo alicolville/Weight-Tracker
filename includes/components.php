@@ -174,6 +174,13 @@ function ws_ls_component_is_custom_field( $box ) {
         return false;
     }
 
+    // Custom Fields are a Premium feature - nothing can be a valid custom field without it,
+    // and ws_ls_component_custom_field_render() (the only caller of this) is unreachable
+    // once this returns false, so guarding here is enough.
+    if ( false === function_exists( 'ws_ls_meta_fields_slug_to_id' ) ) {
+        return false;
+    }
+
     $custom_field = [   'mode' => 'latest',
                         'slug' => str_replace( [ 'custom-field-latest-', 'custom-field-previous-', 'custom-field-oldest-' ], [ '', '', '' ], $box )
     ];
@@ -256,7 +263,9 @@ function ws_ls_component_latest_weight( $args = [] ) {
 
         if ( false === empty( $difference ) ) {
 
-            $user_aim = (int) ws_ls_user_preferences_get( 'aim' );
+            // Colour-coding against the user's aim is a Premium enhancement on this
+            // otherwise free-tier component.
+            $user_aim = ( true === function_exists( 'ws_ls_user_preferences_get' ) ) ? (int) ws_ls_user_preferences_get( 'aim' ) : 0;
 
 	        if ( ( 2 === $user_aim && (float) $difference <= 0 ) ||
 	                ( 3 === $user_aim && (float) $difference >= 0 ) ) {
@@ -340,7 +349,7 @@ function ws_ls_component_number_of_awards( $args = [] ) {
                                 </div>
                         </div>
                     </div>',
-		ws_ls_awards_count( $args[ 'user-id' ] ),
+		( true === function_exists( 'ws_ls_awards_count' ) ) ? ws_ls_awards_count( $args[ 'user-id' ] ) : 0,
 		esc_html__( 'No. of awards', WE_LS_SLUG )
 	);
 }
@@ -352,7 +361,8 @@ function ws_ls_component_number_of_awards( $args = [] ) {
 function ws_ls_component_latest_award( $args = [] ) {
 
 	$args           = wp_parse_args( $args, [ 'user-id' => get_current_user_id() ] );
-	$awards         = ws_ls_awards_previous_awards( $args[ 'user-id' ], 50, 50, 'timestamp' );
+	// Awards are a Premium feature.
+	$awards         = ( true === function_exists( 'ws_ls_awards_previous_awards' ) ) ? ws_ls_awards_previous_awards( $args[ 'user-id' ], 50, 50, 'timestamp' ) : [];
 	$html_thumbnail = '';
 	$html_title     = esc_html__( 'n/a', WE_LS_SLUG );
 
@@ -488,13 +498,17 @@ function ws_ls_component_user_setting( $args = [] ) {
 
 	$args = wp_parse_args( $args, [ 'user-id' => get_current_user_id(), 'setting' => 'height', 'title' => esc_html__( 'Height', WE_LS_SLUG ) ] );
 
+	// Every setting this component can show (height/gender/DOB/aim/group/...) is a Premium
+	// user-preference field.
 	if ( 'group' === $args[ 'setting' ] ) {
-		$groups = ws_ls_groups_user( $args[ 'user-id'] );
+		$groups = ( true === function_exists( 'ws_ls_groups_user' ) ) ? ws_ls_groups_user( $args[ 'user-id'] ) : [];
 
 		$setting = ( false === empty( $groups ) ) ? $groups[ 0 ][ 'name' ] : esc_html__( 'Not set', WE_LS_SLUG );
 
 	} else {
-		$setting = ws_ls_display_user_setting( $args[ 'user-id' ], $args[ 'setting' ], esc_html__( 'Not set', WE_LS_SLUG ), true );
+		$setting = ( true === function_exists( 'ws_ls_display_user_setting' ) ) ?
+			ws_ls_display_user_setting( $args[ 'user-id' ], $args[ 'setting' ], esc_html__( 'Not set', WE_LS_SLUG ), true ) :
+			esc_html__( 'Not set', WE_LS_SLUG );
 	}
 
 	return sprintf( '<div>
@@ -604,7 +618,9 @@ function ws_ls_component_latest_versus_another( $args = [] ) {
 
 		if ( false === empty( $percentage_difference ) ) {
 
-			$user_aim = (int) ws_ls_user_preferences_get( 'aim', $args[ 'user-id' ] );
+			// Colour-coding against the user's aim is a Premium enhancement on this
+			// otherwise free-tier component.
+			$user_aim = ( true === function_exists( 'ws_ls_user_preferences_get' ) ) ? (int) ws_ls_user_preferences_get( 'aim', $args[ 'user-id' ] ) : 0;
 
 			if ( ( 2 === $user_aim && (float) $percentage_difference <= 0 ) ||
 				( 3 === $user_aim && (float) $percentage_difference >= 0 ) ) {
@@ -672,7 +688,8 @@ function ws_ls_component_calories( $args = [] ) {
 
 	$args   = wp_parse_args( $args, [ 'user-id' => get_current_user_id(), 'progress' => 'lose', 'type' => 'total', 'add-unit' => true, 'error-message' => esc_html__( 'No data', WE_LS_SLUG ) ] );
 
-	$text_data = ws_ls_shortcode_harris_benedict( $args );
+	// Harris-Benedict calorie calculation is a Premium feature.
+	$text_data = ( true === function_exists( 'ws_ls_shortcode_harris_benedict' ) ) ? ws_ls_shortcode_harris_benedict( $args ) : '';
 
 	switch ( $args[ 'progress' ] ) {
 		case 'auto':
@@ -766,8 +783,9 @@ function ws_ls_component_number_of_days_tracking( $args = [] ) {
  */
 function ws_ls_component_age_dob( $args = [] ) {
 
+	// Date of Birth is a Premium user-preference field.
 	$args   = wp_parse_args( $args, [ 'user-id' => get_current_user_id() ] );
-	$dob    = ws_ls_get_dob( $args[ 'user-id'] );
+	$dob    = ( true === function_exists( 'ws_ls_get_dob' ) ) ? ws_ls_get_dob( $args[ 'user-id'] ) : NULL;
 
 	$text_link  = esc_html__( 'Set DoB', WE_LS_SLUG );
 	$age        = esc_html__( 'DoB missing', WE_LS_SLUG );
@@ -852,7 +870,9 @@ function ws_ls_component_bmi( $args = [] ) {
 
 	$args           = wp_parse_args( $args, [ 'bmi-format' => 'start', 'user-id' => get_current_user_id() ] );
 	$text_link      = '';
-	$text_data      = ws_ls_shortcode_bmi( [ 'user-id' => $args[ 'user-id' ], 'display' => $args[ 'bmi-format' ], 'bmi-type' => $args[ 'bmi-type' ], 'no-height-text' => '', 'no-weight-text' => '' ] );
+	// BMI is a Premium feature.
+	$text_data      = ( true === function_exists( 'ws_ls_shortcode_bmi' ) ) ?
+		ws_ls_shortcode_bmi( [ 'user-id' => $args[ 'user-id' ], 'display' => $args[ 'bmi-format' ], 'bmi-type' => $args[ 'bmi-type' ], 'no-height-text' => '', 'no-weight-text' => '' ] ) : '';
 	$status         = ( false !== strpos( $text_data, 'Healthy' ) ) ? 'ykuk-label ykuk-label-success' : 'ykuk-label ykuk-label-warning';
 
 	if ( true === empty( $text_data ) ) {
@@ -902,7 +922,8 @@ function ws_ls_component_bmi_warning_notifications( $args ) {
 		'user-id'            => get_current_user_id()
 	] );
 
-	$bmi    = ws_ls_get_bmi_for_user( $args[ 'user-id' ] );
+	// BMI is a Premium feature.
+	$bmi    = ( true === function_exists( 'ws_ls_get_bmi_for_user' ) ) ? ws_ls_get_bmi_for_user( $args[ 'user-id' ] ) : NULL;
 
 	if ( true === empty( $bmi ) ) {
 		return '';
@@ -935,7 +956,9 @@ function ws_ls_component_bmr( $args = [] ) {
 
 	$args           = wp_parse_args( $args, [ 'user-id' => get_current_user_id(), 'bmr-type' => 'current' ] );
 	$text_link      = '';
-	$text_data      = ws_ls_shortcode_bmr( [ 'user-id' => $args[ 'user-id' ], 'bmr-type' => $args[ 'bmr-type' ], 'suppress-errors' => true ] );
+	// BMR is a Premium feature.
+	$text_data      = ( true === function_exists( 'ws_ls_shortcode_bmr' ) ) ?
+		ws_ls_shortcode_bmr( [ 'user-id' => $args[ 'user-id' ], 'bmr-type' => $args[ 'bmr-type' ], 'suppress-errors' => true ] ) : '';
 
 	if ( true === empty( $text_data ) ) {
 		$text_data = esc_html__( 'Missing data', WE_LS_SLUG );

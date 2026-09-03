@@ -4,7 +4,11 @@ defined('ABSPATH') or die('Jog on!');
 
 function ws_ls_help_page() {
 
-	ws_ls_data_table_enqueue_scripts();
+	// The richer data-table styling only exists with the Premium plugin - the log table
+	// below still renders fine as a plain HTML table without it.
+	if ( true === function_exists( 'ws_ls_data_table_enqueue_scripts' ) ) {
+		ws_ls_data_table_enqueue_scripts();
+	}
 
     ?>
 		<div class="wrap ws-ls-admin-page">
@@ -76,7 +80,7 @@ function ws_ls_help_page() {
                                         );
                                     }
 
-                                    if ( true === ws_ls_awards_is_enabled() ) {
+                                    if ( true === function_exists( 'ws_ls_awards_is_enabled' ) && true === ws_ls_awards_is_enabled() ) {
 
                                        if ( true === isset( $_GET['deleteallawards'] )) {
 

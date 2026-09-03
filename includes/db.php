@@ -138,7 +138,11 @@ function ws_ls_db_entry_set( $data, $user_id, $existing_id = NULL ) {
 		ws_ls_delete_cache( sprintf( 'entry-%d', $result ) );
 	}
 
-	ws_ls_stats_update_for_user( $user_id );
+	// Stats are used by Premium features (league tables, group stats, awards) - the table
+	// still exists (created by Free), but only Premium populates/reads it.
+	if ( true === function_exists( 'ws_ls_stats_update_for_user' ) ) {
+		ws_ls_stats_update_for_user( $user_id );
+	}
 
 	// Delete cache for the given user
 	ws_ls_cache_user_delete( $user_id );
@@ -655,6 +659,9 @@ function ws_ls_set_user_preference( $field, $value, $user_id = NULL ) {
  * @param null $user_id
  * @return bool
  */
+// ws_ls_user_preferences_settings() below is only defined by Premium, but this function's
+// only caller anywhere (pro-features/plus/challenge/shortcodes.php) is itself Premium-only,
+// so it's unreachable rather than unsafe in a free-only install.
 function ws_ls_set_user_preference_simple( $field, $value, $user_id = NULL ) {
 
     // Ensure we have a value!

@@ -11,8 +11,8 @@ defined('ABSPATH') or die('Jog on!');
  */
 function ws_ls_shortcode_wt( $user_defined_arguments ) {
 
-	// Showing groups?
-	if ( ws_ls_querystring_value( 'group-view' ) ) {
+	// Showing groups? (Premium feature - the function only exists once it's loaded)
+	if ( ws_ls_querystring_value( 'group-view' ) && true === function_exists( 'ws_ls_groups_view_as_table' ) ) {
 		return ws_ls_groups_view_as_table( [ 'todays-entries-only' => true ] );
 	}
 
@@ -139,8 +139,10 @@ function ws_ls_shortcode_wt( $user_defined_arguments ) {
 	$shortcode_arguments[ 'user-id' ]               = (int) $shortcode_arguments[ 'user-id' ];
 	$shortcode_arguments[ 'show-tab-awards' ]       = ( false === ws_ls_to_bool( $shortcode_arguments[ 'hide-tab-awards' ] ) && true === WS_LS_IS_PREMIUM );
 	$shortcode_arguments[ 'show-tab-advanced' ]     = ( false === ws_ls_to_bool( $shortcode_arguments[ 'hide-tab-advanced' ] ) && true === WS_LS_IS_PREMIUM );
-	$shortcode_arguments[ 'show-tab-photos' ]       = ( false === ws_ls_to_bool( $shortcode_arguments[ 'hide-tab-photos' ] ) && true === ws_ls_meta_fields_photo_any_enabled( true ) );
-    $shortcode_arguments[ 'show-tab-messages' ]     = ( false === ws_ls_to_bool( $shortcode_arguments[ 'hide-tab-messages' ] ) && true === ws_ls_note_is_enabled() );
+	// Both Photo Custom Fields and Notes are Premium features - the functions that decide
+	// whether they're enabled only exist once Premium is loaded.
+	$shortcode_arguments[ 'show-tab-photos' ]       = ( false === ws_ls_to_bool( $shortcode_arguments[ 'hide-tab-photos' ] ) && true === function_exists( 'ws_ls_meta_fields_photo_any_enabled' ) && true === ws_ls_meta_fields_photo_any_enabled( true ) );
+    $shortcode_arguments[ 'show-tab-messages' ]     = ( false === ws_ls_to_bool( $shortcode_arguments[ 'hide-tab-messages' ] ) && true === function_exists( 'ws_ls_note_is_enabled' ) && true === ws_ls_note_is_enabled() );
 	$shortcode_arguments[ 'enable-week-ranges' ]	= ws_ls_to_bool( $shortcode_arguments[ 'enable-week-ranges' ] );
 	$shortcode_arguments[ 'min-chart-points' ]      = (int) $shortcode_arguments[ 'min-chart-points' ];
 	$shortcode_arguments[ 'selected-week-number' ]  = ( true === $shortcode_arguments[ 'enable-week-ranges' ] ) ? ws_ls_post_value_numeric( 'week-number' ) : NULL;
@@ -433,8 +435,11 @@ function ws_ls_tab_settings( $arguments = [] ) {
 		]);
 	}
 
-	if( true === ws_ls_user_preferences_is_enabled() ) {
-		
+	// ws_ls_user_preferences_form() already bails to an upgrade notice internally when
+	// unlicensed (it's entirely Premium, including the "delete your data" mode below) - the
+	// function_exists() check here just extends that same behaviour to "not installed".
+	if( true === ws_ls_user_preferences_is_enabled() && true === function_exists( 'ws_ls_user_preferences_form' ) ) {
+
 		$settings = ws_ls_user_preferences_form( [  'user-id'           => $arguments[ 'user-id' ],
 		                                            'uikit'             => true,
 													'show-delete-data'  => false,
@@ -509,18 +514,30 @@ function ws_ls_wt_tab_table( $arguments = [] ) {
 		$inner_html .= ws_ls_week_ranges_display( $week_ranges, $arguments[ 'selected-week-number' ] );
 	}
 
-	$inner_html .= ws_ls_shortcode_table( [ 	'user-id' 				=> $arguments[ 'user-id' ],
-					                            'enable-add-edit' 		=> true,
-					                            'enable-meta-fields'	=> ! $arguments[ 'hide-custom-fields-table' ],
-					                            'week' 					=> $arguments[ 'selected-week-number' ] ,
-					                            'bmi-format' 			=> $arguments[ 'bmi-format' ],
-					                            'custom-field-groups'   => $arguments[ 'custom-field-groups' ],
-					                            'kiosk-mode'            => $arguments[ 'kiosk-mode' ],
-					                            'custom-field-slugs'    => $arguments[ 'custom-field-slugs' ],
-					                            'uikit'                 => true,
-					                            'show-refresh-button'   => true,
-												'enable-meta-fields'    => ! $arguments[ 'hide-fields-meta' ]
-	] );
+	// TODO(follow-up): ws_ls_shortcode_table() lives entirely in the Premium plugin
+	// (pro-features/shortcode-footable.php + footable.php), but its own internal gating
+	// (footable.php) shows the base columns to everyone and only gates a handful of extras
+	// (gain/loss, BMI, meta fields) on WS_LS_IS_PREMIUM - meaning this table was already
+	// intended as free-tier-visible, just currently housed entirely in the Premium plugin.
+	// Rather than partially move it now (its own internal calls into meta-fields/awards
+	// functions would need the same treatment), it's guarded here for a stable split;
+	// free-only installs lose the data table entirely until that's revisited.
+	if ( true === function_exists( 'ws_ls_shortcode_table' ) ) {
+		$inner_html .= ws_ls_shortcode_table( [ 	'user-id' 				=> $arguments[ 'user-id' ],
+						                            'enable-add-edit' 		=> true,
+						                            'enable-meta-fields'	=> ! $arguments[ 'hide-custom-fields-table' ],
+						                            'week' 					=> $arguments[ 'selected-week-number' ] ,
+						                            'bmi-format' 			=> $arguments[ 'bmi-format' ],
+						                            'custom-field-groups'   => $arguments[ 'custom-field-groups' ],
+						                            'kiosk-mode'            => $arguments[ 'kiosk-mode' ],
+						                            'custom-field-slugs'    => $arguments[ 'custom-field-slugs' ],
+						                            'uikit'                 => true,
+						                            'show-refresh-button'   => true,
+													'enable-meta-fields'    => ! $arguments[ 'hide-fields-meta' ]
+		] );
+	} else {
+		$inner_html .= ws_ls_display_pro_upgrade_notice_for_shortcode();
+	}
 
 	$html .= ws_ls_ui_kit_info_box_with_header_footer( [ 	'header' 		=> esc_html__( 'Your entries', WE_LS_SLUG ),
 															'body-class'	=> 'ykuk-text-small',

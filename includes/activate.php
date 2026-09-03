@@ -38,8 +38,10 @@ function ws_ls_upgrade() {
 		ws_ls_db_create_core_tables();
 		ws_ls_activate();
 
-		// This will force all stat entries to be recreated.
-		ws_ls_db_stats_clear_last_updated_date();
+		// This will force all stat entries to be recreated (Premium plugin only).
+		if ( true === function_exists( 'ws_ls_db_stats_clear_last_updated_date' ) ) {
+			ws_ls_db_stats_clear_last_updated_date();
+		}
 
 		// Check the license is still valid (Premium plugin only - this function doesn't exist without it)
 		if ( true === function_exists( 'ws_ls_licences_cron' ) ) {
