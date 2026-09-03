@@ -9,37 +9,26 @@ function ws_ls_build_admin_menu() {
 
 	$minimum_role_to_view = ws_ls_permission_role();
 
-	// "Manage user data" (BMI/BMR/groups/photos/etc for a specific user) is a Premium feature
-	// (readme.txt lists it as one) - its real implementation lives entirely in the Premium
-	// plugin (ws_ls_admin_page_data_home() there), including being the default landing page
-	// for this menu's top-level click. Fall back to a simple free-tier explainer page when
-	// Premium isn't installed, rather than leaving the top-level menu with nothing to render.
-	$user_data_is_premium = has_filter( 'wlt-filter-is-premium-active' );
-	$home_callback        = ( true === $user_data_is_premium ) ? 'ws_ls_admin_page_data_home' : 'ws_ls_admin_page_data_home_free';
-
-	add_menu_page( WE_LS_TITLE, WE_LS_TITLE, $minimum_role_to_view, 'ws-ls-data-home', $home_callback, 'dashicons-chart-line');
+	// Every Premium-only menu item stays visible even without Premium (or without a current
+	// license) - it just routes to the free upgrade page instead of the real one. See the
+	// ws_ls_route_*() functions below: each checks WS_LS_IS_PREMIUM (true only when Premium
+	// is installed AND currently licensed) before calling the real, Premium-only callback.
+	add_menu_page( WE_LS_TITLE, WE_LS_TITLE, $minimum_role_to_view, 'ws-ls-data-home', 'ws_ls_route_data_home', 'dashicons-chart-line');
 
     // Display manage user screens to relevant roles.
-    add_submenu_page( 'ws-ls-data-home', esc_html__( 'User Data', WE_LS_SLUG ),  esc_html__( 'User Data', WE_LS_SLUG ), $minimum_role_to_view, 'ws-ls-data-home', $home_callback );
-
-	// Groups/Custom Fields/Awards/Challenges are all Premium features too - their callbacks
-	// only exist once the Premium plugin has loaded, so only register these when it has.
-	if ( true === $user_data_is_premium ) {
-		add_submenu_page( 'ws-ls-data-home', esc_html__( 'User Groups', WE_LS_SLUG ),  esc_html__( 'User Groups', WE_LS_SLUG ), 'manage_options', 'ws-ls-user-groups', 'ws_ls_settings_page_group' );
-		add_submenu_page( 'ws-ls-data-home', esc_html__( 'Custom Fields', WE_LS_SLUG ),  esc_html__('Custom Fields', WE_LS_SLUG), 'manage_options', 'ws-ls-meta-fields', 'ws_ls_meta_fields_page' );
-		add_submenu_page( 'ws-ls-data-home', esc_html__( 'Awards', WE_LS_SLUG ),  esc_html__('Awards', WE_LS_SLUG), 'manage_options', 'ws-ls-awards', 'ws_ls_awards_page' );
-		add_submenu_page( 'ws-ls-data-home', esc_html__( 'Challenges', WE_LS_SLUG ),  esc_html__('Challenges', WE_LS_SLUG), 'manage_options', 'ws-ls-challenges', 'ws_ls_challenges_admin_page' );
-	}
+    add_submenu_page( 'ws-ls-data-home', esc_html__( 'User Data', WE_LS_SLUG ),  esc_html__( 'User Data', WE_LS_SLUG ), $minimum_role_to_view, 'ws-ls-data-home', 'ws_ls_route_data_home' );
+	add_submenu_page( 'ws-ls-data-home', esc_html__( 'User Groups', WE_LS_SLUG ),  esc_html__( 'User Groups', WE_LS_SLUG ), 'manage_options', 'ws-ls-user-groups', 'ws_ls_route_settings_page_group' );
+	add_submenu_page( 'ws-ls-data-home', esc_html__( 'Custom Fields', WE_LS_SLUG ),  esc_html__('Custom Fields', WE_LS_SLUG), 'manage_options', 'ws-ls-meta-fields', 'ws_ls_route_meta_fields_page' );
+    add_submenu_page( 'ws-ls-data-home', esc_html__( 'Awards', WE_LS_SLUG ),  esc_html__('Awards', WE_LS_SLUG), 'manage_options', 'ws-ls-awards', 'ws_ls_route_awards_page' );
+    add_submenu_page( 'ws-ls-data-home', esc_html__( 'Challenges', WE_LS_SLUG ),  esc_html__('Challenges', WE_LS_SLUG), 'manage_options', 'ws-ls-challenges', 'ws_ls_route_challenges_page' );
 
 	add_submenu_page( 'ws-ls-data-home', esc_html__('Settings', WE_LS_SLUG),  esc_html__('Settings', WE_LS_SLUG), 'manage_options', 'ws-ls-settings', 'ws_ls_settings_page');
 
-	// The Premium plugin registers its own "Your License" submenu on this same slug
-	// (see weight-tracker-premium/includes/page-license.php) when it's installed - only
-	// show this free-tier upsell version when Premium genuinely isn't present at all.
-	if ( false === $user_data_is_premium ) {
-		$menu_text = esc_html__( 'Upgrade', WE_LS_SLUG );
-		add_submenu_page( 'ws-ls-data-home', $menu_text, $menu_text, 'manage_options', 'ws-ls-license', 'ws_ls_upgrade_page' );
-	}
+	// Label follows "is Premium installed" (matching ws_ls_route_license_page()'s own check),
+	// not "is it currently licensed" - once Premium is installed this is where you manage
+	// that license (including a lapsed/removed one), not just an upsell.
+	$menu_text = ( true === function_exists( 'ws_ls_advertise_premium' ) ) ? esc_html__( 'Your License', WE_LS_SLUG ) : esc_html__( 'Upgrade', WE_LS_SLUG );
+	add_submenu_page( 'ws-ls-data-home', $menu_text, $menu_text, 'manage_options', 'ws-ls-license', 'ws_ls_route_license_page' );
 
     if ( true === ws_ls_setup_wizard_show_notice() ) {
         add_submenu_page( 'ws-ls-data-home', esc_html__('Setup Wizard', WE_LS_SLUG),  esc_html__('Setup Wizard', WE_LS_SLUG), 'manage_options', 'ws-ls-data-setup-wizard', 'ws_ls_setup_wizard_page');
@@ -51,10 +40,48 @@ function ws_ls_build_admin_menu() {
 add_action( 'admin_menu', 'ws_ls_build_admin_menu' );
 
 /**
- * Free-tier landing page for the top-level admin menu, shown only when the Premium plugin
- * isn't installed (see ws_ls_build_admin_menu() above) - managing other users' data is a
- * Premium feature, so there's nothing free-tier to show here beyond pointing at Settings and
- * the upgrade page.
+ * Router callbacks for the Premium-only menu items above. Each calls the real Premium
+ * function if this site is currently licensed for it, otherwise falls back to the free
+ * upgrade page - covers both "Premium plugin not installed" and "installed but unlicensed"
+ * the same way, since WS_LS_IS_PREMIUM is false in both cases.
+ */
+function ws_ls_route_data_home() {
+	( true === WS_LS_IS_PREMIUM && true === function_exists( 'ws_ls_admin_page_data_home' ) ) ? ws_ls_admin_page_data_home() : ws_ls_admin_page_data_home_free();
+}
+
+function ws_ls_route_settings_page_group() {
+	( true === WS_LS_IS_PREMIUM && true === function_exists( 'ws_ls_settings_page_group' ) ) ? ws_ls_settings_page_group() : ws_ls_upgrade_page();
+}
+
+function ws_ls_route_meta_fields_page() {
+	( true === WS_LS_IS_PREMIUM && true === function_exists( 'ws_ls_meta_fields_page' ) ) ? ws_ls_meta_fields_page() : ws_ls_upgrade_page();
+}
+
+function ws_ls_route_awards_page() {
+	( true === WS_LS_IS_PREMIUM && true === function_exists( 'ws_ls_awards_page' ) ) ? ws_ls_awards_page() : ws_ls_upgrade_page();
+}
+
+function ws_ls_route_challenges_page() {
+	( true === WS_LS_IS_PREMIUM && true === function_exists( 'ws_ls_challenges_admin_page' ) ) ? ws_ls_challenges_admin_page() : ws_ls_upgrade_page();
+}
+
+// Unlike the other routers, this one checks whether Premium is *installed* rather than
+// whether it's currently *licensed* - this page's whole job is managing the license
+// (entering/removing/renewing it), and ws_ls_advertise_premium() already handles both the
+// licensed and unlicensed states internally (including the license-entry form). Routing this
+// one on WS_LS_IS_PREMIUM instead would show the licensed-free generic upgrade page - with no
+// entry form - the moment a license is removed, permanently locking the license out of being
+// re-entered through the UI.
+function ws_ls_route_license_page() {
+	( true === function_exists( 'ws_ls_advertise_premium' ) ) ? ws_ls_advertise_premium() : ws_ls_upgrade_page();
+}
+
+/**
+ * Free-tier landing page for the top-level "User Data" menu item specifically - shown by
+ * ws_ls_route_data_home() whenever this site isn't currently licensed for Premium (plugin
+ * missing, or installed but unlicensed). The other router callbacks fall back to
+ * ws_ls_upgrade_page() instead, since they're reached from a submenu rather than being the
+ * click target for the whole plugin.
  */
 function ws_ls_admin_page_data_home_free() {
 	?>
